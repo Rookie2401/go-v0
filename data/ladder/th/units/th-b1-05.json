@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-05",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "กระต่ายกับเต่า",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-05",
+    "title": "กระต่ายกับเต่า — The hare and the tortoise (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132241 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132241",
+    "attribution": "Adapted retelling of \"กระต่ายกับเต่า\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132241, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"กระต่ายกับเต่า\" (th-gap-recovery-aesop-10); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132241) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the old-style small words (เจ้า, ข้า, ท่าน, จึง, ครั้น, เถิด) are the fable register on purpose; the hare says เจ้า to the tortoise and the tortoise says ท่าน / ข้าพเจ้า. The closing talk between Ton and Ball is an addition to the original."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "animals",
+    "race",
+    "pride"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "เต่าขาสั้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ในป่าแห่งหนึ่ง มีกระต่ายตัวหนึ่งที่วิ่งเร็วมาก",
+              "english": "In a forest there was a hare that ran very fast."
+            },
+            {
+              "text": "วันหนึ่ง มันเห็นเต่าตัวหนึ่งเดินช้าๆ อยู่ริมทาง",
+              "english": "One day it saw a tortoise walking slowly by the road."
+            },
+            {
+              "text": "กระต่ายหัวร่อและพูดว่า เต่า ขาเจ้าสั้นนัก เจ้าเดินช้าจริงๆ",
+              "english": "The hare laughed and said: \"Tortoise, your legs are so short, and you walk so slowly!\""
+            },
+            {
+              "text": "เต่าไม่โกรธ มันตอบว่า ท่านวิ่งเร็วเหมือนลม และขาของข้าพเจ้าสั้นกว่าท่านก็จริง",
+              "english": "The tortoise was not angry. It answered, \"You run as fast as the wind, and my legs are shorter than yours, it is true.\""
+            },
+            {
+              "text": "แต่ข้าพเจ้าอยากลองวิ่งกับท่านสักครั้ง ท่านจะว่าอย่างไร",
+              "english": "\"But I would like to run with you once. What do you say?\""
+            },
+            {
+              "text": "กระต่ายได้ยินเต่าชวนอย่างนั้นก็หัวร่อ",
+              "english": "When the hare heard the tortoise invite it like that, it laughed."
+            },
+            {
+              "text": "มันนึกว่าตัวเองต้องชนะ จึงตกลงทันที",
+              "english": "It thought it was sure to win, so it agreed at once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ผู้ตัดสิน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "สัตว์สองตัวไปหาหมาจิ้งจอก และบอกเรื่องที่ตกลงกัน",
+              "english": "The two animals went to the fox and told him what they had agreed."
+            },
+            {
+              "text": "หมาจิ้งจอกจะเป็นผู้เลือกทางที่จะวิ่ง และจะรออยู่ที่ปลายทางเพื่อตัดสิน",
+              "english": "The fox would choose the course, and wait at the finish to judge."
+            },
+            {
+              "text": "ถึงวันที่ตกลงกัน กระต่ายกับเต่ามายืนที่จุดเริ่มต้น",
+              "english": "On the agreed day the hare and the tortoise stood at the starting point."
+            },
+            {
+              "text": "หมาจิ้งจอกร้องว่า เริ่มได้",
+              "english": "The fox called, \"Begin!\""
+            },
+            {
+              "text": "กระต่ายวิ่งออกไปทันที มันเร็วมากจนเต่ามองไม่เห็นแล้ว",
+              "english": "The hare ran off at once. It was so fast that the tortoise could no longer see it."
+            },
+            {
+              "text": "เต่าเดินช้าๆ ทีละนิด มันไม่หยุดเลย",
+              "english": "The tortoise walked slowly, little by little. It never stopped."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "กระต่ายหลับ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อวิ่งมาไกล กระต่ายมองไปข้างหลัง แต่ไม่เห็นเต่า",
+              "english": "When it had run far, the hare looked back but could not see the tortoise."
+            },
+            {
+              "text": "มันคิดว่า เต่าอยู่ไกลมาก ข้าพักสักหน่อยดีกว่า",
+              "english": "It thought, \"The tortoise must be far behind. I had better rest a little.\""
+            },
+            {
+              "text": "กระต่ายเชื่อว่าตัวเองเร็ว จึงไม่ระวัง",
+              "english": "The hare believed it was fast, so it stopped being careful."
+            },
+            {
+              "text": "มันนอนลงใต้ต้นไม้ แล้วก็หลับไป",
+              "english": "It lay down under a tree and fell asleep."
+            },
+            {
+              "text": "เต่ายังเดินต่อไป ผ่านต้นไม้ต้นนั้นไปอย่างเงียบๆ",
+              "english": "The tortoise walked on, and passed that tree quietly."
+            },
+            {
+              "text": "เต่าเหนื่อยมาก แต่ไม่ยอมหยุด",
+              "english": "The tortoise was very tired, but it would not stop."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปลายทาง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ครั้นกระต่ายตื่นขึ้น ฟ้าใกล้จะมืดแล้ว",
+              "english": "When the hare woke up, it was nearly dark."
+            },
+            {
+              "text": "มันตกใจ รีบวิ่งไปให้เร็วที่สุด",
+              "english": "It was startled and ran as fast as it could."
+            },
+            {
+              "text": "แต่เมื่อมันไปถึงปลายทาง ก็เห็นเต่ายืนอยู่ข้างหมาจิ้งจอกแล้ว",
+              "english": "But when it reached the finish, it saw the tortoise already standing beside the fox."
+            },
+            {
+              "text": "หมาจิ้งจอกบอกว่า เต่าชนะ",
+              "english": "The fox said, \"The tortoise has won.\""
+            },
+            {
+              "text": "กระต่ายไม่พูดอะไรอีกเลย มันนั่งลงเงียบๆ",
+              "english": "The hare said nothing more. It sat down quietly."
+            },
+            {
+              "text": "เรื่องนี้สอนว่า อย่าดูถูกคนที่เราคิดว่าไม่ดี เพราะเขาอาจชนะเราได้",
+              "english": "This story teaches us: do not look down on someone you think is not good, because he may beat us."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้นกับบอล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนนั้น ต้นเล่านิทานเรื่องนี้ให้บอลฟัง",
+              "english": "That night Ton told this fable to Ball."
+            },
+            {
+              "text": "บอลถามว่า ทำไมกระต่ายหลับครับ",
+              "english": "Ball asked, \"Why did the hare sleep?\""
+            },
+            {
+              "text": "ต้นตอบว่า เพราะกระต่ายมั่นใจเกินไป",
+              "english": "Ton answered, \"Because the hare was too sure of itself.\""
+            },
+            {
+              "text": "บอลหัวร่อ แล้วบอกว่า ผมจะไม่เป็นกระต่ายครับ ผมจะเป็นเต่า",
+              "english": "Ball laughed and said, \"I won't be the hare. I'll be the tortoise.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

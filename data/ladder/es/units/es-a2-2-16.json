@@ -470,6 +470,91 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Mi familia y sus oficios",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En mi familia todos tenían un oficio, y yo los recuerdo a todos.",
+              "english": "In my family everybody had a trade, and I remember them all."
+            },
+            {
+              "text": "Mi papá era un hombre trabajador y trabajaba en el campo desde la madrugada.",
+              "english": "My father was a hard-working man and worked in the fields from dawn."
+            },
+            {
+              "text": "Mi mamá era cocinera y tenía un puesto en el mercado de la aldea.",
+              "english": "My mother was a cook and had a stall in the village market."
+            },
+            {
+              "text": "Con ese puesto había ganancias algunos días y pérdidas otros días, pero nunca nos faltó la comida.",
+              "english": "With that stall there were profits on some days and losses on others, but we never lacked food."
+            },
+            {
+              "text": "Mi hermano mayor era chofer, y manejaba un camión por los caminos de la montaña.",
+              "english": "My older brother was a driver, and drove a truck along the mountain roads."
+            },
+            {
+              "text": "Mi hermana quería ser maestra, y mi tío decía que una profesora vale más que un tractor.",
+              "english": "My sister wanted to be a teacher, and my uncle said that a teacher is worth more than a tractor."
+            },
+            {
+              "text": "Mi tío era músico, y el domingo tocaba en la fiesta de la iglesia.",
+              "english": "My uncle was a musician, and on Sunday he played at the church festival."
+            },
+            {
+              "text": "Mi prima soñaba con ser piloto, y todos decíamos que era una locura.",
+              "english": "My cousin dreamed of being a pilot, and we all said it was crazy."
+            },
+            {
+              "text": "Un abogado de la capital les ayudó a mis papás a hacer un trato con el dueño de la tierra.",
+              "english": "A lawyer from the capital helped my parents make a deal with the owner of the land."
+            },
+            {
+              "text": "Gracias a ese trato, pudimos guardar la cebada en un lugar seco.",
+              "english": "Thanks to that deal, we were able to keep the barley in a dry place."
+            },
+            {
+              "text": "Antes los ratones se comían la mitad, porque mi hermano menor era perezoso y dejaba la puerta abierta.",
+              "english": "Before, the mice ate half of it, because my younger brother was lazy and left the door open."
+            },
+            {
+              "text": "Cuando yo dije que quería ir a la universidad, mis papás se sorprendieron.",
+              "english": "When I said that I wanted to go to the university, my parents were surprised."
+            },
+            {
+              "text": "—¿Vos querés ser enfermera? —preguntó mi papá—. ¿Y quién va a pagar tus estudios?",
+              "english": "\"You want to be a nurse?\" asked my father. \"And who will pay for your studies?\""
+            },
+            {
+              "text": "—Yo voy a trabajar y a estudiar al mismo tiempo —le contesté.",
+              "english": "\"I will work and study at the same time,\" I answered."
+            },
+            {
+              "text": "Mi mamá no dijo nada, pero esa noche me dio una copia de su receta de tamales y unas notas de dinero.",
+              "english": "My mother said nothing, but that night she gave me a copy of her tamale recipe and some banknotes."
+            },
+            {
+              "text": "Es un hecho que sin mis papás no estaría aquí.",
+              "english": "It is a fact that without my parents I would not be here."
+            },
+            {
+              "text": "Hoy, cada vez que espero mi turno en el hospital o atiendo a un paciente, pienso en ellos.",
+              "english": "Today, every time I wait my turn at the hospital or take care of a patient, I think of them."
+            },
+            {
+              "text": "Los demás me dicen que soy muy seria, pero en mi corazón soy una muchacha de campo.",
+              "english": "The others tell me I am very serious, but in my heart I am a country girl."
+            },
+            {
+              "text": "Un profesor me dijo una vez: «Lo real de tu vida no está en los libros, sino en tus manos».",
+              "english": "A professor once told me: \"The real part of your life is not in books, but in your hands.\""
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

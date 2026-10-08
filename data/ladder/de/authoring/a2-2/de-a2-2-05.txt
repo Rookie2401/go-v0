@@ -1,0 +1,185 @@
+=== de-a2-2-05
+speakers: S=Sam, W=Frau Weber, H=Hausmeister, T=Pastor Thomas
+## Im Treppenhaus
+Sam kommt am Abend nach Hause. || Sam comes home in the evening.
+Im Treppenhaus ist ein großes Blatt: die Hausordnung. || In the stairwell there is a big sheet: the house rules.
+Er hat es schon oft gesehen, aber nie gelesen. || He has often seen it but never read it.
+Heute liest er es genau. || Today he reads it carefully.
+„Hausordnung für alle Mieter. Bitte beachten Sie:“ || "House rules for all tenants. Please note:"
+„1. Das Rauchen ist im ganzen Haus verboten.“ || "1. Smoking is forbidden in the whole house."
+„2. Der Müll wird getrennt. Jeder Müll gehört in die richtige Mülltonne.“ || "2. Rubbish is sorted. Every kind of rubbish belongs in the right bin."
+„3. Im Flur und im Treppenhaus dürfen keine Fahrräder stehen.“ || "3. No bicycles may stand in the hall or the stairwell."
+„4. Von 22 bis 6 Uhr bitte leise sein. Es wird um Rücksicht gebeten.“ || "4. From 10 p.m. to 6 a.m. please be quiet. Consideration is requested."
+„5. Das Parken ist nur auf dem Parkplatz erlaubt.“ || "5. Parking is only allowed on the car park."
+„6. Im Winter bitte nicht die Heizung hoch stellen, sondern kurz lüften.“ || "6. In winter please do not turn the heating up, but air the room briefly."
+„7. Der Hausmeister ist am Montag von 8 bis 10 Uhr im Haus.“ || "7. The caretaker is in the house on Monday from 8 to 10."
+Sam liest alles noch einmal. || Sam reads everything once more.
+Dann geht er zu Frau Weber. || Then he goes to Frau Weber.
+
+## Bei Frau Weber
+[S] Frau Weber, darf ich Sie etwas fragen? || Frau Weber, may I ask you something?
+[W] Natürlich. || Of course.
+[W] Setzen Sie sich bitte. || Please sit down.
+[W] Was gibt es? || What is it?
+[S] Ich habe die Hausordnung gelesen. || I have read the house rules.
+[S] Ich habe nicht alles verstanden. || I did not understand everything.
+[W] Das ist nicht schlimm. || That is not bad.
+[W] Fragen Sie nur. || Just ask.
+[S] Warum ist das Rauchen im Haus verboten? || Why is smoking forbidden in the house?
+[S] Ist das eine deutsche Regel? || Is that a German rule?
+[W] Nein, das ist keine deutsche, sondern meine Regel. || No, that is not a German rule but my rule.
+[W] Man riecht es im ganzen Haus. || You can smell it in the whole house.
+[W] Das Treppenhaus ist für alle da, nicht nur für einen. || The stairwell is there for everybody, not only for one person.
+[S] Ich verstehe. || I understand.
+[S] Und was heißt „abstellen“? || And what does "abstellen" mean?
+[W] Wenn man etwas im Flur stehen lässt, zum Beispiel ein Fahrrad. || When you leave something standing in the hall, for example a bicycle.
+[W] Stellen Sie Ihr Fahrrad bitte im Keller ab, nicht im Flur. || Please put your bicycle down in the cellar, not in the hall.
+[W] Sonst kann im Notfall keiner durch. || Otherwise nobody can get through in an emergency.
+[S] Das ist ein guter Grund. || That is a good reason.
+[S] Und der Müll? || And the rubbish?
+[W] Im Hof steht eine Mülltonne für das Essen und eine für alles andere. || In the yard there is a bin for food and one for everything else.
+[S] Das ist viel Arbeit. || That is a lot of work.
+[S] Warum trennt man alles? || Why does one sort everything?
+[W] Das ist gut für die Stadt, und es spart Geld. || That is good for the city, and it saves money.
+[W] Wir trennen das Essen, und wir nehmen die graue Tonne für den Rest. || We separate the food, and we take the grey bin for the rest.
+[S] Ist Besuch auch erlaubt? || Is it allowed to have visitors too?
+[W] Natürlich. || Of course.
+[W] Gäste dürfen kommen, aber nach zehn Uhr bitte leise. || Guests may come, but after ten o'clock please quietly.
+[S] Und was heißt „lüften“? || And what does "lüften" mean?
+[S] Ich öffne im Winter auch das Fenster. || I open the window in winter too.
+[W] Das ist es ja! || That is just it!
+[W] Lüften Sie kurz, aber ganz: Fenster auf, fünf Minuten, Fenster zu. || Air briefly but fully: window open, five minutes, window shut.
+[W] Nicht den ganzen Tag, sonst wird es kalt, und die Heizung läuft für nichts. || Not all day, otherwise it gets cold and the heating runs for nothing.
+[S] Die Heizung ist teuer, nicht wahr? || The heating is expensive, isn't it?
+[W] Sehr. || Very.
+[W] Ich bezahle monatlich fast hundert Euro Nebenkosten allein dafür. || I pay almost a hundred euros a month in extra costs for that alone.
+[W] Wenn Sie also sparen, sparen wir alle. || So if you save, we all save.
+
+## Der Hausmeister
+Am Montag früh klopft es an Sams Tür. || On Monday morning there is a knock at Sam's door.
+Draußen steht der Hausmeister. || Outside stands the caretaker.
+Er hat einen Brief in der Hand. || He has a letter in his hand.
+[H] Guten Morgen, Herr Sam. || Good morning, Herr Sam.
+[H] Haben Sie kurz Zeit? || Do you have a moment?
+[S] Guten Morgen. || Good morning.
+[S] Ja, natürlich. || Yes, of course.
+[S] Setzen Sie sich. || Sit down.
+[H] Ich habe eine Mitteilung vom Vermieter. || I have a message from the landlord.
+[H] Sie ist für alle Mieter. || It is for all tenants.
+[H] Im Brief steht, dass die Miete im neuen Jahr nicht höher wird. || The letter says that the rent will not go up in the new year.
+[H] Aber die Nebenkosten werden höher. || But the extra costs will go up.
+[S] Warum werden sie höher? || Why do they go up?
+[H] Das Haus ist alt. || The house is old.
+[H] Der Vermieter plant viel, aber das braucht Zeit. || The landlord is planning a lot, but that takes time.
+[H] Bis dahin brauchen wir alle Geduld. || Until then we all need patience.
+[H] Und wir müssen alle mithelfen. || And we all have to help.
+[S] Was kann ich tun? || What can I do?
+[H] Schließen Sie nachts die Tür richtig. || At night close the door properly.
+[H] Bitte beachten Sie das. || Please note that.
+[H] Und noch etwas: Ihre Musik ist abends manchmal zu laut. || And one more thing: your music is sometimes too loud in the evening.
+[S] Das wusste ich nicht. || I did not know that.
+[S] Ich möchte niemanden stören. || I do not want to disturb anybody.
+[H] Ich meine das nicht böse. || I do not mean it badly.
+[H] Rücksicht ist das Wichtigste in der Nachbarschaft. || Consideration is the most important thing in the neighbourhood.
+[H] Erlaubt ist, was die anderen nicht stört. || What is allowed is what does not disturb the others.
+[H] So sagt man bei uns. || That is what we say.
+[S] Ich verstehe. || I understand.
+[S] Ab jetzt höre ich die Musik leiser. || From now on I will listen to the music more quietly.
+[H] Danke. || Thank you.
+[H] Und stellen Sie nichts vor die Tür. || And do not put anything in front of the door.
+[H] Das ist ein Problem für alle. || That is a problem for everybody.
+[H] Der Weg zur Mülltonne ist nicht weit, also bringen Sie alles nach unten. || The way to the bin is not far, so take everything downstairs.
+[S] Das mache ich. || I will do that.
+[S] Muss ich noch ein Formular ausfüllen? || Do I have to fill in another form?
+[H] Nein, diesmal nicht. || No, not this time.
+[H] Eine Unterschrift brauche ich nicht. || I do not need a signature.
+[H] Meine Öffnungszeit ist am Montag von acht bis zehn. || My opening time is Monday from eight to ten.
+[H] Kommen Sie dann, wenn Sie etwas brauchen. || Come then if you need something.
+[H] Der Vermieter hat mich geschickt, aber ich bin eigentlich nur ein Nachbar mit vielen Schlüsseln. || The landlord sent me, but I am really just a neighbour with many keys.
+[S] Das gefällt mir. || I like that.
+[S] Danke für die Hilfe. || Thank you for the help.
+
+## Die Mitteilung in der Gemeinde
+Am Sonntag liest Pastor Thomas im Gottesdienst die Mitteilung der Gemeinde vor. || On Sunday Pastor Thomas reads out the church announcement in the service.
+[T] Zuerst eine Mitteilung: Nach dem Gottesdienst gibt es Kaffee im Raum neben dem Ausgang. || First an announcement: after the service there is coffee in the room next to the exit.
+[T] Bitte parken Sie nicht vor der Kirche. || Please do not park in front of the church.
+[T] Es wird gebeten, hinten zu parken. || You are asked to park at the back.
+[T] Nehmen Sie bitte Rücksicht auf die Nachbarn. || Please be considerate of the neighbours.
+[T] Sie haben viel Geduld mit uns. || They have a lot of patience with us.
+[T] Auch Mieter mit einem Problem sind bei uns willkommen. || Tenants with a problem are also welcome here.
+[T] Wer ein Zimmer sucht, kann bei uns fragen. || Whoever is looking for a room can ask us.
+[T] Wir haben ein möbliertes Zimmer mit 14 Quadratmetern. || We have a furnished room with 14 square metres.
+[T] Es ist frei, und die Miete ist günstig. || It is free, and the rent is cheap.
+[T] Die Kaution ist klein. || The deposit is small.
+[T] Wer ein Formular braucht, kann es am Schalter im Büro abholen. || Whoever needs a form can pick it up at the counter in the office.
+[T] Und wer sich anmelden will, darf den Ausweis nicht vergessen. || And whoever wants to register must not forget the identity card.
+[T] Man muss ihn beim Amt zeigen. || One has to show it at the office.
+Nach dem Gottesdienst fragt Sam Thomas, ob er das Rauchen vor der Kirche verbieten kann. || After the service Sam asks Thomas whether he can forbid smoking in front of the church.
+[T] Das ist ein Wunsch, den viele haben. || That is a wish many people have.
+[T] Aber ich kann nur bitten. || But I can only ask.
+[T] Das ist die Regel der Gemeinde: Wir bitten, wir befehlen nicht. || That is the rule of the church: we ask, we do not command.
+[S] Das ist wahrscheinlich besser. || That is probably better.
+[S] Ich hoffe, die Leute verstehen es. || I hope the people understand.
+
+## Frau Webers Kuchen
+Am Nachmittag backt Frau Weber einen Apfelkuchen. || In the afternoon Frau Weber bakes an apple cake.
+Sam hilft in der Küche. || Sam helps in the kitchen.
+[W] Haben Sie Lust, ein Rezept zu lernen? || Do you feel like learning a recipe?
+[W] Es ist einfach. || It is simple.
+[S] Gern. || Gladly.
+[S] Ich habe nämlich noch nie einen Kuchen gebacken. || You see, I have never baked a cake before.
+[W] Dann hören Sie zu. || Then listen.
+[W] Zuerst die Äpfel waschen und schneiden. || First wash and cut the apples.
+[W] Dann Mehl, Zucker, Butter und ein Ei in eine Schüssel geben. || Then put flour, sugar, butter and an egg into a bowl.
+[W] Alles gut mischen. || Mix everything well.
+[W] Dann kommen die Äpfel in die Form. || Then the apples go into the tin.
+[W] Den Ofen auf 180 Grad stellen. || Set the oven to 180 degrees.
+[W] Der Kuchen bleibt 40 Minuten im Ofen. || The cake stays in the oven for 40 minutes.
+[W] Beachten Sie die Zeit. || Note the time.
+[W] Zu lange im Ofen ist zu viel. || Too long in the oven is too much.
+[S] Das ist wirklich einfach. || That is really simple.
+[S] Ich habe fast alles verstanden. || I understood almost everything.
+[W] Ein Rezept hat eine Ordnung: Man macht es langsam und nimmt keine Abkürzung. || A recipe has an order: you do it slowly and take no shortcut.
+[W] Eine Nachbarschaft braucht auch Geduld. || A neighbourhood needs patience too.
+[S] Meiner Meinung nach ist beides ein Weg zum Frieden. || In my opinion both are a way to peace.
+[W] Ich denke das auch. || I think so too.
+[W] Wir können den Kuchen verteilen, damit die Nachbarschaft sich freut. || We can hand the cake out so that the neighbourhood is pleased.
+[S] Das ist ein guter Vorschlag. || That is a good suggestion.
+[S] Ich überlege nur, wer zuerst bekommt. || I am only thinking about who gets one first.
+[W] Es ist bestimmt möglich, mit der Frau unten anzufangen. || It is certainly possible to begin with the woman downstairs.
+[W] Sie ist sicher zu Hause. || She is surely at home.
+[S] Und vielleicht verabreden wir uns mit allen zu einem Kaffee. || And perhaps we can arrange a coffee with everybody.
+[S] Das wäre eine Lösung für die Musik. || That would be a solution for the music.
+Als der Kuchen fertig ist, liegt ein Brief im Briefkasten. || When the cake is ready there is a letter in the letterbox.
+Er kommt von der Behörde. || It comes from the authority.
+Sam öffnet ihn mit zitternden Händen. || Sam opens it with trembling hands.
+Seine Erlaubnis für den Aufenthalt ist da. || His permit for his stay has arrived.
+Der Antrag war in Ordnung. || The application was fine.
+Ein Mitarbeiter hat auch eine Bescheinigung für seinen Wohnsitz dazugelegt. || An employee has also added a certificate for his place of residence.
+Die Gebühr hat er schon bezahlt, nur den alten Ausweis muss er noch am Amt abgeben. || He has already paid the fee, only the old identity card he still has to hand in at the office.
+Sam ist kein Ausländer mehr ohne Papiere. || Sam is no longer a foreigner without papers.
+Er ist ein Gast, der bleiben darf. || He is a guest who may stay.
+Er sieht den Hausmeister im Hof und gibt ihm ein Stück Kuchen. || He sees the caretaker in the yard and gives him a piece of cake.
+Dann nimmt er den Rest und klopft bei der Frau unten an die Tür. || Then he takes the rest and knocks on the door of the woman downstairs.
+
+## Erinnerst du dich?
+Sam denkt an den Abend bei Sabine. || Sam thinks of the evening at Sabine's.
+Er saß still auf dem Sofa. || He sat quietly on the sofa.
+Ein Zeugnis ist keine Rede, hat Daniel gesagt. || A testimony is not a speech, Daniel said.
+Er musste seine Eltern verlassen, und der Abschied am Flughafen war schlimm. || He had to leave his parents, and the farewell at the airport was bad.
+Keiner hat zu Frau Weber gesagt: Hör auf zu weinen. || Nobody said to Frau Weber: Stop crying.
+
+Anna hat nachmittags mit Oma gesprochen. || Anna talked with Oma in the afternoon.
+Sie hat von Sam und dem Sprachkurs erzählt. || She told about Sam and the language course.
+Oma hat Frau Weber eine nette Dame genannt. || Oma called Frau Weber a nice lady.
+Das Visum aus Amerika reicht in Deutschland nicht. || The visa from America is not enough in Germany.
+Sam musste seine Unterschrift daruntersetzen. || Sam had to put his signature underneath.
+Ohne Ausweis gibt es Ärger, sagt Oma. || Without an ID there is trouble, says Oma.
+Die Heimatgemeinden von David und Ruth schicken Spenden. || The home churches of David and Ruth send donations.
+Oma hat einen Korb mit Äpfeln für Lukas. || Oma has a basket of apples for Lukas.
+
+Das graue Gebäude kann man nicht übersehen. || You cannot overlook the gray building.
+Nach einer halben Stunde war alles vorbei. || After half an hour everything was over.
+Sam ist froh, und er hat jetzt einen Ausweis. || Sam is glad, and he now has an ID.
+Er geht gern zu Anna und Lukas, und er lernt jeden Tag mehr. || He likes going to Anna and Lukas, and he learns more every day.
+Am Abend sitzt er in seinem Zimmer und liest ein Buch. || In the evening he sits in his room and reads a book.

@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-16",
+  "lang": "nb",
+  "title": "The Christmas bazaar",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-16",
+    "title": "The Christmas bazaar (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". The church's Christmas bazaar organised by dugnad. Passive with \"bli\" and in -s, relative clauses, and many recalled words from the housing and shop units. The sums are invented; nobody is named beyond the cast."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "church",
+    "community",
+    "dugnad",
+    "bazaar",
+    "organising",
+    "money"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "solveig": "Solveig",
+    "emma": "Emma",
+    "nico": "Nils",
+    "mons": "Mons"
+  },
+  "sections": [
+    {
+      "title": "Spørsmålet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En dag kom Solveig til bokhandelen. «Vi skal ha basar i kirka,» sa hun. «Kan du hjelpe oss, Sam? Vi trenger noen som kan organisere. Noen må organisere lodd og plakater, og lodd og plakater er mye arbeid.»",
+              "english": "One day Solveig came to the bookshop. \"We are going to have a bazaar at the church,\" she said. \"Can you help us, Sam? We need someone who can organise. Someone has to organise raffle tickets and posters, and raffle tickets and posters are a lot of work.\""
+            },
+            {
+              "text": "Jeg har aldri vært med på en basar. Hva er det?",
+              "english": "I have never taken part in a bazaar. What is it?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er en dag da kirka selger kaker og gaver som folk har laget selv. Vi samler penger til dem som trenger hjelp. Vi samler også gaver. Alle hjelper med dugnad.",
+              "english": "It is a day when the church sells cakes and gifts that people have made themselves. We collect money for those who need help. We also collect presents. Everyone helps with dugnad.",
+              "speaker": "solveig"
+            },
+            {
+              "text": "Sam sa ja med en gang. Han husket hvor mange som hadde hjulpet ham da han flyttet, og nå ville han også hjelpe.",
+              "english": "Sam said yes at once. He remembered how many had helped him when he moved, and now he wanted to help too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Å organisere",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hver kveld i to uker var Sam i kirka. Emma var lederen, og hun organiserte alt. Hun hadde laget en liste over alt som måtte gjøres.",
+              "english": "Every evening for two weeks Sam was at the church. Emma was the leader, and she organised everything. She had made a list of everything that had to be done."
+            },
+            {
+              "text": "Det er mye å organisere, men vi har tid. Du tar plakatene og loddene, Sam.",
+              "english": "There is a lot to organise, but we have time. You take the posters and the raffle tickets, Sam.",
+              "speaker": "emma"
+            },
+            {
+              "text": "Sam laget plakater på papir. Han skrev: «Basar i kirka på lørdag klokka elleve. Kaker, lodd, kaffe og gaver.» Så satte han plakatene i bokhandelen og i butikkene i byen.",
+              "english": "Sam made posters on paper. He wrote: \"Bazaar at the church on Saturday at eleven. Cakes, raffle tickets, coffee and gifts.\" Then he put the posters in the bookshop and in the shops in town."
+            },
+            {
+              "text": "Sjefen i bokhandelen leste plakaten. «Jeg kan gi dere en kasse med gamle bøker,» sa han. «De kan selges på basaren.»",
+              "english": "The manager of the bookshop read the poster. \"I can give you a box of old books,\" he said. \"They can be sold at the bazaar.\""
+            },
+            {
+              "text": "Silje og Marta strikket gaver til basaren, og Solveig strikket også. Erik kom med to kasser kaffe.",
+              "english": "Silje and Marta knitted gifts for the bazaar, and Solveig knitted too. Erik came with two boxes of coffee."
+            },
+            {
+              "text": "Jeg kan ikke strikke med gips på armen. Men jeg kan lage hjerter av papir!",
+              "english": "I cannot knit with a cast on my arm. But I can make hearts out of paper!",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Basaren",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På lørdag var det mange folk i kirka. Bordene var tunge, og Mons fra huset kom for å bære dem. «Jeg er gammel, men jeg kan løfte,» sa han.",
+              "english": "On Saturday there were many people in the church. The tables were heavy, and Mons from the house came to carry them. \"I am old, but I can lift,\" he said."
+            },
+            {
+              "text": "Marta hadde bakt tretti brød, og de var allerede solgt klokka tolv. Kakene var allerede borte også. Marta satt bak bordet med kaker. Sofie kom med barna sine, og de kjøpte hver sin kake.",
+              "english": "Marta had baked thirty loaves, and they were already sold at twelve o'clock. The cakes were already gone too. Marta sat behind the table with cakes. Sofie came with her children, and they each bought a cake."
+            },
+            {
+              "text": "Sam satt bak et bord med lodd, og Nils var hos ham. Alle fikk et nummer, og premien var en stor kake.",
+              "english": "Sam sat behind a table with raffle tickets, and Nils was with him. Everyone got a number, and the prize was a big cake."
+            },
+            {
+              "text": "Kjøp lodd! Det er bare tjue kroner! Premien er kake!",
+              "english": "Buy a ticket! It is only twenty kroner! The prize is cake!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Jeg kjøper to. Jeg trenger ikke mer kake, men jeg vil gjerne hjelpe.",
+              "english": "I will buy two. I do not need more cake, but I would like to help.",
+              "speaker": "mons"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pengene",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da basaren var slutt, satt Sam og Emma og samlet pengene. De regnet to ganger.",
+              "english": "When the bazaar was over, Sam and Emma sat collecting the money. They counted twice."
+            },
+            {
+              "text": "Tjue tusen kroner! Så mange penger har vi aldri samlet før. Vi har allerede samlet mye, og nå kan vi gi mer.",
+              "english": "Twenty thousand kroner! We have never collected so much money before. We have already collected a lot, and now we can give more.",
+              "speaker": "emma"
+            },
+            {
+              "text": "Folk var snille. Og dugnaden gikk bra, selv om det var mye som kunne gått feil. Jeg har allerede lært så mye av dere.",
+              "english": "People were kind. And the dugnad went well, even though there was a lot that could have gone wrong. I have already learned so much from you.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Før de gikk, ryddet alle etter seg. Papir kom i hver sin pose, plast i en annen, og glass i kassen. Ingen kastet noe feil, for alle husket reglene fra huset til Sam.",
+              "english": "Before they left, everyone tidied up after themselves. Paper went in a bag each, plastic in another, and glass in the box. Nobody threw anything wrong, because everyone remembered the rules from Sam's house."
+            },
+            {
+              "text": "Den kvelden var Sam veldig trøtt, men han var glad. Han hadde fått gi noe, og han hadde lært at det er godt å gi.",
+              "english": "That evening Sam was very tired, but he was glad. He had been allowed to give something, and he had learned that it is good to give."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam sjekket plakaten en gang til: Var den riktig eller feil? Politikerne var invitert, men ingen kom. Nils kom på sykkel, med hjelm på hodet. Anna hadde vakt og kunne ikke komme, men hun hadde tatt ansvar for å måle temperaturen til de eldre i kirka. Sam husket hyrden som lette etter sauen, og han ville lete også.",
+              "english": "Sam checked the poster once more: was it right or wrong? The politicians were invited, but nobody came. Nils came on a bicycle, with a helmet on his head. Anna was on duty and could not come, but she had taken responsibility for measuring the temperature of the elderly in the church. Sam remembered the shepherd who looked for the sheep, and he wanted to look too."
+            },
+            {
+              "text": "På en lapp hadde han skrevet hvem som hadde kjøpt lodd, og kvitteringen la han i kassen. Nils satte sykkelen sin ved kirka. Sam ba for dem som ikke var friske, og for omsorgen i byen. Lignelsen om sauen var mellom de beste tekstene han kjente.",
+              "english": "On a note he had written who had bought raffle tickets, and the receipt he put in the box. Nils put his bicycle by the church. Sam prayed for those who were not well, and for the care in the town. The parable about the sheep was among the best texts he knew."
+            },
+            {
+              "text": "Ingen falt på basaren, men Anna hadde med medisin i veska, for det var mange eldre der. Lederen i gruppen takket alle.",
+              "english": "Nobody fell at the bazaar, but Anna had medicine in her bag, because there were many elderly people there. The leader of the group thanked everyone."
+            },
+            {
+              "text": "Sam gledet seg over hver krone som kom inn.",
+              "english": "Sam was glad about every krone that came in."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

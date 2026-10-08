@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-11",
+  "lang": "nb",
+  "title": "The local election",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-11",
+    "title": "The local election (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A simple account of a municipal election, in the form of a newspaper article followed by family and workplace conversations. Passive in -s (det stemmes), indirect speech, and \"hvis ... ville\". The statements about voting rights and the voting procedure are general and unchecked; a Norwegian reviewer must check them. No real party is named."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "election",
+    "news",
+    "opinions",
+    "passive",
+    "indirect speech",
+    "conditionals"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "news"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "ana": "Anna",
+    "sam": "Sam",
+    "marta": "Marta",
+    "nico": "Nils",
+    "erik": "Erik"
+  },
+  "sections": [
+    {
+      "title": "Avisen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nyhet fra byen",
+              "english": "News from the town"
+            },
+            {
+              "text": "Om en uke er det valg i kommunen. Da skal folk i byen stemme på partiene, og partiet som får mange stemmer, får ordføreren.",
+              "english": "In a week there is an election in the municipality. Then people in the town will vote for the parties, and the party that gets many votes gets the mayor."
+            },
+            {
+              "text": "Det stemmes på skolene. Mange snakker om skolen som kommunen skal bygge, om bussene og om hva det koster å bo i byen.",
+              "english": "Voting takes place at the schools. Many people talk about the school that the municipality is to build, about the buses and about what it costs to live in town."
+            },
+            {
+              "text": "Hvert parti har sin mening, og politikerne snakker høyt. I avisen er det debatt hver dag.",
+              "english": "Every party has its opinion, and the politicians speak loudly. In the newspaper there is a debate every day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ved frokosten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Lars leste avisen høyt, og Sam og Anna lyttet.",
+              "english": "Lars read the newspaper aloud, and Sam and Anna listened."
+            },
+            {
+              "text": "Se her! Et parti vil ha mange busser, og et parti vil ha en ny skole. Jeg så debatten i går.",
+              "english": "Look here! One party wants many buses, and one party wants a new school. I saw the debate yesterday.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Debatten var lang. Politikerne snakket høyt, og ingen lyttet.",
+              "english": "The debate was long. The politicians spoke loudly, and nobody listened.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Hvem skal du stemme på, Lars?",
+              "english": "Whom will you vote for, Lars?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det sier jeg ikke. Men jeg skal tenke på elevene mine, for jeg er lærer.",
+              "english": "I will not say. But I will think about my pupils, because I am a teacher.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg skal stemme på partiet som vil ha mange sykepleiere. Hvis det ble mange, ville jeg ikke vært så trøtt!",
+              "english": "I will vote for the party that wants many nurses. If there were many, I would not be so tired!",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg kan ikke stemme. Jeg har ikke bodd her lenge.",
+              "english": "I cannot vote. I have not lived here for long.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei. Jeg tror at du må ha bodd her i tre år. Men du kan lese og lytte, og du kan ha en mening.",
+              "english": "No. I think that you must have lived here for three years. But you can read and listen, and you can have an opinion.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag var det middag hos Marta, og alle snakket om valget.",
+              "english": "On Sunday there was dinner at Marta's, and everyone talked about the election."
+            },
+            {
+              "text": "Jeg har stemt hver gang fra jeg var liten. Jeg liker partiet som tenker på gamle folk.",
+              "english": "I have voted every time from when I was small. I like the party that thinks about old people.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg skal stemme på kaken! Politikere spiser kake hver dag.",
+              "english": "I will vote for the cake! Politicians eat cake every day.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Du er for liten, Nils. Men de kommer til skolen din, og du kan spørre dem om kake.",
+              "english": "You are too small, Nils. But they are coming to your school, and you can ask them about cake.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Alle lo. Så ble Marta rolig.",
+              "english": "Everyone laughed. Then Marta became calm."
+            },
+            {
+              "text": "Det er viktig å stemme. Hvis vi ikke stemmer, bestemmer politikerne alene. Og alle har rett til å si sin mening.",
+              "english": "It is important to vote. If we do not vote, the politicians decide alone. And everyone has the right to give their opinion.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg forstår. Hvis jeg kunne, ville jeg tenke lenge før jeg bestemte meg.",
+              "english": "I understand. If I could, I would think for a long time before I decided.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "I bokhandelen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På fredag kom en kunde til bokhandelen. Han ville ha en bok om byen og valget, og han spurte Sam hva han mente om det.",
+              "english": "On Friday a customer came to the bookshop. He wanted a book about the town and the election, and he asked Sam what he thought about it."
+            },
+            {
+              "text": "Jeg kan ikke stemme, så jeg kan ikke hjelpe deg med det. Men jeg skal gjerne finne en bok til deg.",
+              "english": "I cannot vote, so I cannot help you with that. But I will gladly find a book for you.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vi selger ikke meninger, bare bøker! Men Sam finner den beste boka.",
+              "english": "We do not sell opinions, only books! But Sam will find the best book.",
+              "speaker": "erik"
+            },
+            {
+              "text": "Sam gikk til hyllene og fant en bok om byen. Kunden takket, og han betalte ved kassen.",
+              "english": "Sam went to the shelves and found a book about the town. The customer thanked him, and he paid at the till."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Valgdagen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På lørdag gikk Anna og Lars til skolen, og de stemte. Sam gikk med dem, og han så på mens folk ventet.",
+              "english": "On Saturday Anna and Lars went to the school, and they voted. Sam went with them, and he watched while people waited."
+            },
+            {
+              "text": "Om kvelden satt de i stua. Svaret kom sent. Ordføreren ble en dame som hadde jobbet mange år som lærer.",
+              "english": "In the evening they sat in the living room. The answer came late. The mayor became a lady who had worked many years as a teacher."
+            },
+            {
+              "text": "Hun kjenner skolene. Det er bra for byen og for elevene.",
+              "english": "She knows the schools. That is good for the town and for the pupils.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Sam tenkte at det var godt å bo i en kommune der mange fikk si sin mening. Han ba for byen og for ordføreren.",
+              "english": "Sam thought that it was good to live in a municipality where many people could give their opinion. He prayed for the town and for the mayor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hjemme hadde Sam en lapp på døra om støy i huset. Han sammenlignet valget med visningen: begge gangene var det viktig å se selv. Han sparte penger hver måned, og han ville kjøpe pizza til alle som hadde løftet sofaen hans.",
+              "english": "At home Sam had a note on the door about noise in the house. He compared the election with the viewing: both times it was important to see for oneself. He saved money every month, and he wanted to buy pizza for everyone who had lifted his sofa."
+            },
+            {
+              "text": "Sam tenkte på flekken på veggen i den første leiligheten og på depositumet han hadde betalt. Hver uke kastet han søppel i riktig pose, og han vasket trappen når det var hans tur.",
+              "english": "Sam thought of the patch on the wall in the first flat and of the deposit he had paid. Every week he threw rubbish in the right bag, and he washed the stairs when it was his turn."
+            },
+            {
+              "text": "Kassen med bøker om valget var tung. Etterpå vasket Sam gulvet i bokhandelen, for det var hans tur.",
+              "english": "The box of books about the election was heavy. Afterwards Sam washed the floor in the bookshop, because it was his turn."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

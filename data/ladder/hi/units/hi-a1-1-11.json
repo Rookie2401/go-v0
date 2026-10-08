@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Volume unit: three new words and the morning vocabulary brought back. \"चाचा जी\" is Aman's father's younger brother (visiting); Aman's parents are not mentioned anywhere in the ladder so far: reviewer/plan owner to confirm the family. Honorific plurals for नानी, चाचा जी, रवि सर, मीरा दीदी. \"सब\" is avoided on purpose (it first appears in an in-place draft later). The frame जी + verb is avoided because the adapter reads जी before a verb as जीना. Words outside the plan (measured): none."
+    "notes": "Volume unit: three new words and the morning vocabulary brought back. \"चाचा जी\" is Aman's father's younger brother (visiting); Aman's parents are not mentioned anywhere in the ladder so far: reviewer/plan owner to confirm the family. Honorific plurals for नानी, चाचा जी, रवि सर, मीरा दीदी. \"सब\" is avoided on purpose (it first appears in an in-place draft later). The frame जी + verb is avoided because the adapter reads जी before a verb as जीना. Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -250,6 +250,26 @@
             {
               "text": "वह बोलते हैं, \"अमन, सुबह उठिए!\"",
               "english": "He says, \"Aman, get up in the morning!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर अमन के अध्यापक हैं।",
+              "english": "Ravi sir is Aman's teacher."
+            },
+            {
+              "text": "वह स्कूल में अध्यापक हैं।",
+              "english": "He is a teacher at the school."
+            },
+            {
+              "text": "अध्यापक बहुत अच्छे हैं।",
+              "english": "The teacher is very good."
+            },
+            {
+              "text": "मेज़ पर लाल आम है।",
+              "english": "There is a red mango on the table."
             }
           ]
         }

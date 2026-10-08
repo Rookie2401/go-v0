@@ -1,0 +1,98 @@
+=== de-a1-2-13
+speakers: eva=Eva, sam=Sam, thomas=Thomas, ruth=Ruth, david=David
+## Im Kurs
+Im Kurs sagt Eva: "Sprechen Sie heute über Menschen." || In the course Eva says: "Talk about people today."
+[eva] Wie sind die Menschen? || What are the people like?
+[eva] Sprechen Sie auch über die Stadt. || Talk about the city too.
+[sam] Ich möchte über meine Freunde sprechen. || I would like to talk about my friends.
+[eva] Gut. || Good.
+[eva] Haben Sie ein Foto? || Do you have a photo?
+[sam] Ja, hier ist ein Foto von der Gemeinde. || Yes, here is a photo of the church.
+[sam] Das ist Thomas. || That is Thomas.
+[sam] Er ist Pastor. || He is a pastor.
+[sam] Er ist freundlich und ruhig. || He is friendly and calm.
+[sam] Er sieht nett aus. || He looks nice.
+[sam] Er hat kurzes Haar und helle Augen. || He has short hair and light eyes.
+[eva] Wie alt ist er? || How old is he?
+[sam] Er ist älter als David. || He is older than David.
+[sam] Das ist Ruth. || That is Ruth.
+[sam] Sie ist jung, aber Thomas ist älter als sie. || She is young, but Thomas is older than she is.
+[sam] Sie hat dunkles Haar und ein freundliches Gesicht. || She has dark hair and a friendly face.
+[sam] Frau Weber hat kurzes Haar, und die Jacke von David ist dunkel. || Mrs Weber has short hair, and David's jacket is dark.
+[sam] Sie ist größer als David. || She is taller than David.
+[sam] Und das ist David. || And this is David.
+[sam] Er hat eine Brille. || He has glasses.
+[sam] Thomas hat auch eine Brille. || Thomas has glasses too.
+[sam] David ist stark. || David is strong.
+[sam] Er ist am stärksten. || He is the strongest.
+[eva] Sehr gut. || Very good.
+[eva] Man sagt: groß, größer, am größten. || You say: big, bigger, the biggest.
+[eva] Das ist die Grammatik. || That is the grammar.
+[sam] Ich verstehe. || I understand.
+[sam] Ich übe das, aber ich mache noch Fehler. || I am practising it, but I still make mistakes.
+[eva] Das ist nicht schwer. || That is not hard.
+[eva] Ich erkläre es noch einmal. || I will explain it once more.
+[eva] Das Wort "nett" ist ein gutes Wort. || The word "nett" is a good word.
+[sam] Frau Weber ist eine nette Frau. || Mrs Weber is a nice woman.
+[sam] Ich bin bei ihr eingezogen. || I moved in with her.
+[sam] Sie ist alt, aber sie ist gesund. || She is old, but she is well.
+[sam] Sie hat helles Haar und ein freundliches Gesicht. || She has light hair and a friendly face.
+[sam] Frau Weber hat ein dickes Buch, und die Jacke von Ben ist dünn. || Mrs Weber has a thick book, and Ben's jacket is thin.
+[sam] Anna ist jünger als Lukas. || Anna is younger than Lukas.
+[sam] Lukas ist lustig, und er hat eine Brille. || Lukas is funny, and he has glasses.
+[sam] Ben ist ein Kind. || Ben is a child.
+[sam] Er hat ein lustiges Gesicht. || He has a funny face.
+[sam] Eva ist eine nette Lehrerin. || Eva is a nice teacher.
+[sam] Ihr Buch ist dick, und mein Heft ist dünn. || Her book is thick, and my exercise book is thin.
+[sam] Ich glaube, dass jeder Mensch einen Freund braucht. || I believe that every person needs a friend.
+[sam] Ich möchte auch nett aussehen. || I want to look nice too.
+[eva] Ja, Herr Miller. || Yes, Mr Miller.
+[eva] Sehr gut. || Very good.
+
+## Orte
+[eva] Und wie sind der See und der Berg? || And what are the lake and the hill like?
+[sam] Der Berg ist hoch, und der Berg ist höher als der Wald. || The hill is high, and the hill is higher than the forest.
+[sam] Der See ist am schönsten. || The lake is the loveliest.
+[sam] Er ist nicht weit von Leipzig. || It is not far from Leipzig.
+[sam] Der Wald ist ruhiger als die Stadt, und er ist dunkel. || The forest is calmer than the city, and it is dark.
+[sam] Der Himmel am See ist hell, und der Berg ist am höchsten. || The sky at the lake is bright, and the hill is the highest.
+[sam] Die Stunde im Wald ist kurz, aber schön. || The hour in the forest is short, but lovely.
+[sam] Dort haben wir einen Ausflug gemacht. || We made an excursion there.
+[sam] Wir haben ein Picknick gemacht und fotografiert. || We had a picnic and took photographs.
+[sam] Ben ist ins Wasser gesprungen, und wir sind geschwommen. || Ben jumped into the water, and we swam.
+[sam] Max hat den Ball geworfen, und Ben hat ihn gefangen. || Max threw the ball, and Ben caught it.
+[sam] Die anderen Kinder haben gespielt. || The other children played.
+[sam] Der Bus war voll, aber der Wald war leer. || The bus was full, but the forest was empty.
+[eva] Sie sprechen gut. || You speak well.
+[eva] Ich verstehe alles. || I understand everything.
+[eva] Die Sprache ist für Sie leichter als vor zwei Wochen. || The language is easier for you than two weeks ago.
+[sam] Mein Nachbar, Herr Schmidt, ist freundlicher als ich. || My neighbour, Herr Schmidt, is friendlier than I am.
+
+## Nach dem Kurs
+Nach dem Kurs treffen sich Sam, Thomas, Ruth und David. || After the course Sam, Thomas, Ruth and David meet.
+[david] Hallo, Sam! || Hello, Sam!
+[david] Wie war der Kurs? || How was the course?
+[sam] Gut! || Good!
+[sam] Ich habe über euch gesprochen. || I talked about you.
+[ruth] Was sagst du über uns? || What do you say about us?
+[sam] Thomas ist freundlich, Ruth ist jünger als er, und David ist am stärksten. || Thomas is friendly, Ruth is younger than he is, and David is the strongest.
+[david] Ja! || Yes!
+[david] Ich bin stärker als Thomas! || I am stronger than Thomas!
+[thomas] Nein, ich bin lustiger als du, David. || No, I am funnier than you, David.
+[ruth] Du bist nicht lustig, du bist ruhig. || You are not funny, you are calm.
+[thomas] Meine Bibel ist dick, und dein Buch ist dünn, David. || My Bible is thick, and your book is thin, David.
+[david] Hilfe! || Help!
+[david] Meine Hand tut weh, ich brauche Hilfe mit der Bibel! || My hand hurts, I need help with the Bible!
+Alle lachen. || Everyone laughs.
+[sam] Ich war in der Praxis. || I was at the doctor's.
+[sam] Ich habe ein Rezept und ein Medikament bekommen. || I got a prescription and a medicine.
+[sam] In der Apotheke habe ich das Medikament gekauft. || I bought the medicine at the pharmacy.
+[sam] Jetzt habe ich keine Erkältung und keine Schmerzen. || Now I have no cold and no pain.
+[sam] Mein Fuß tut auch nicht weh. || My foot does not hurt either.
+[sam] Ich fühle mich besser als gestern. || I feel better than yesterday.
+[ruth] Du bist wieder gesund, Sam. || You are well again, Sam.
+[sam] Danke! || Thank you!
+[sam] Ich frage dich: Wie fühlst du dich, Ruth? || I ask you: how do you feel, Ruth?
+[ruth] Gut! || Good!
+[ruth] Ich kenne dich nur zwei Wochen, aber du bist ein Freund. || I have known you only two weeks, but you are a friend.
+

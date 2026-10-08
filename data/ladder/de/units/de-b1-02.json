@@ -1,0 +1,528 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-02",
+  "lang": "de",
+  "title": "Sam's letter to his home church",
+  "contentType": "letter",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-02",
+    "title": "Sam's letter to his home church (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Second recall unit at the head of the bridge: Sam writes to his home church at the end of his first year and looks back on what he has learned and met. Teaches no new words of its own on purpose."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "letter",
+    "thanks",
+    "home church",
+    "year"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Der Brief",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Leipzig, am 12. Dezember",
+              "english": "Leipzig, 12 December"
+            },
+            {
+              "text": "Liebe Freunde in der Heimatgemeinde,",
+              "english": "Dear friends in my home church,"
+            },
+            {
+              "text": "heute schreibe ich Euch einen langen Brief, denn ich habe ein Jahr in Deutschland hinter mir.",
+              "english": "Today I am writing you a long letter, because I have a year in Germany behind me."
+            },
+            {
+              "text": "Ich danke Euch für Euer Gebet und für Eure Unterstützung.",
+              "english": "I thank you for your prayer and for your support."
+            },
+            {
+              "text": "Ohne Euch wäre ich nicht hier.",
+              "english": "Without you I would not be here."
+            },
+            {
+              "text": "Mein Deutsch ist nicht perfekt, aber es wird jeden Monat besser.",
+              "english": "My German is not perfect, but it gets better every month."
+            },
+            {
+              "text": "Ich kann jetzt mit den Nachbarn sprechen, im Supermarkt einkaufen und einen Brief lesen.",
+              "english": "I can now talk with the neighbours, shop in the supermarket and read a letter."
+            },
+            {
+              "text": "Manchmal verstehe ich noch nicht alles, aber meine Freunde haben viel Geduld.",
+              "english": "Sometimes I still do not understand everything, but my friends have a lot of patience."
+            },
+            {
+              "text": "Im Folgenden schreibe ich Euch, woran ich mich besonders erinnere.",
+              "english": "In what follows I will write you what I especially remember."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich beginne mit dem Anfang, denn er war nicht leicht.",
+              "english": "I begin with the beginning, because it was not easy."
+            },
+            {
+              "text": "Vor einem Jahr habe ich mich bei der Mission beworben.",
+              "english": "A year ago I applied to the mission."
+            },
+            {
+              "text": "Auf einer Missionskonferenz kam mir damals ein Gedanke, den ich nicht vergessen konnte.",
+              "english": "At a mission conference back then a thought came to me that I could not forget."
+            },
+            {
+              "text": "Wochenlang habe ich darüber gebetet.",
+              "english": "For weeks I prayed about it."
+            },
+            {
+              "text": "Mein Bruder sagte, nach meiner Abreise bleibe eine Lücke.",
+              "english": "My brother said that after my departure a gap would remain."
+            },
+            {
+              "text": "Ohne Euch hätte ich es nicht gewagt.",
+              "english": "Without you I would not have dared it."
+            },
+            {
+              "text": "Ihr habt mich in Eurer Gemeinde aufgenommen und gesegnet.",
+              "english": "You took me in in your church and blessed me."
+            },
+            {
+              "text": "Eure Gaben und Eure Treue haben mich getragen.",
+              "english": "Your gifts and your faithfulness have carried me."
+            },
+            {
+              "text": "Die Summe aus der Gemeindekasse war so groß, dass ich sprachlos war.",
+              "english": "The sum from the church fund was so large that I was speechless."
+            },
+            {
+              "text": "Ihr seid wirklich sehr großzügig gewesen.",
+              "english": "You have really been very generous."
+            },
+            {
+              "text": "Dafür möchte ich mich herzlich bei Euch bedanken.",
+              "english": "For that I would like to thank you warmly."
+            },
+            {
+              "text": "Es ist eine Ehre, für Euch hier zu arbeiten.",
+              "english": "It is an honour to work here for you."
+            },
+            {
+              "text": "Euer Gebet ist mein täglicher Antrieb.",
+              "english": "Your prayer is my daily drive."
+            },
+            {
+              "text": "Ich weiß, dass ich mich jederzeit auf meine Unterstützer verlassen kann.",
+              "english": "I know that I can rely on my supporters at any time."
+            },
+            {
+              "text": "Vieles hat sich in diesem Jahr geändert, aber Eure Hilfe ist unverändert geblieben.",
+              "english": "Much has changed this year, but your help has remained unchanged."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auch beim Geld habe ich viel gelernt.",
+              "english": "I have also learned a lot about money."
+            },
+            {
+              "text": "Mein Freund Jonas wollte eine kleine Werkstatt für Fahrräder aufmachen.",
+              "english": "My friend Jonas wanted to open a small workshop for bicycles."
+            },
+            {
+              "text": "An einem Samstagabend saß er verlegen im Café und drehte seine Tasse in den Händen.",
+              "english": "One Saturday evening he sat in the cafe embarrassed and turned his cup in his hands."
+            },
+            {
+              "text": "Er traute sich kaum, Herrn Schmidt zu fragen.",
+              "english": "He hardly dared to ask Herr Schmidt."
+            },
+            {
+              "text": "Ich habe nebenbei die Tassen gespült und alles gehört.",
+              "english": "On the side I washed the cups and heard everything."
+            },
+            {
+              "text": "Jonas wollte nicht unhöflich sein, und Herr Schmidt antwortete höflich und ehrlich.",
+              "english": "Jonas did not want to be rude, and Herr Schmidt answered politely and honestly."
+            },
+            {
+              "text": "„Na, ich beiße nicht“, sagte er lachend.",
+              "english": "\"Well, I do not bite,\" he said laughing."
+            },
+            {
+              "text": "Die Bank wollte neun Prozent Zinsen.",
+              "english": "The bank wanted nine percent interest."
+            },
+            {
+              "text": "Im Vergleich zur Bank war Herr Schmidt sehr großzügig.",
+              "english": "Compared with the bank, Herr Schmidt was very generous."
+            },
+            {
+              "text": "Jonas hatte ein gutes Argument und musste lange rechnen.",
+              "english": "Jonas had a good argument and had to calculate for a long time."
+            },
+            {
+              "text": "Er hatte kaum Bargeld und wenig Geld auf dem Konto.",
+              "english": "He had hardly any cash and little money in his account."
+            },
+            {
+              "text": "Er nannte sogar das Datum, an dem er alles zurückzahlen wollte.",
+              "english": "He even named the date by which he wanted to pay everything back."
+            },
+            {
+              "text": "Herr Schmidt stellte nur eine Bedingung: Jonas soll ehrlich bleiben.",
+              "english": "Herr Schmidt set only one condition: Jonas should stay honest."
+            },
+            {
+              "text": "Der Schock war groß gewesen, als die Bank Nein sagte, aber die Freude war dann riesig.",
+              "english": "The shock had been great when the bank said no, but the joy was then enormous."
+            },
+            {
+              "text": "Jonas hat vor, irgendwann selbstständig zu sein.",
+              "english": "Jonas plans to be self-employed at some point."
+            },
+            {
+              "text": "Für ihn ist das Freiheit.",
+              "english": "For him that is freedom."
+            },
+            {
+              "text": "Wenn er die Prüfung nicht besteht, will er sie wiederholen.",
+              "english": "If he does not pass the exam, he wants to repeat it."
+            },
+            {
+              "text": "Hoffentlich wird sich sein Traum bald erfüllen.",
+              "english": "Hopefully his dream will soon come true."
+            },
+            {
+              "text": "In seiner Werkstatt liegen Metall und Material in den Regalen, und überall steht ein Rad.",
+              "english": "In his workshop metal and material lie on the shelves, and a bicycle stands everywhere."
+            },
+            {
+              "text": "Das erste Geld hat er pünktlich zurückgebracht.",
+              "english": "He brought the first money back on time."
+            },
+            {
+              "text": "Meinetwegen hätte er nicht so viel Angst haben müssen, denn ich glaube an ihn.",
+              "english": "As far as I am concerned he did not have to be so afraid, because I believe in him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auch die Geschichte von Marta und ihrem Schlüsselbund vergesse ich nicht.",
+              "english": "I also do not forget the story of Marta and her key ring."
+            },
+            {
+              "text": "Frau Weber hatte zum Glück einen Ersatzschlüssel.",
+              "english": "Luckily Frau Weber had a spare key."
+            },
+            {
+              "text": "Im Fundbüro standen riesige Regale, aber die Schlüssel waren nicht dabei.",
+              "english": "In the lost property office there were huge shelves, but the keys were not there."
+            },
+            {
+              "text": "Die Wochen vergingen, und der Mann schüttelte nur den Kopf.",
+              "english": "The weeks passed, and the man only shook his head."
+            },
+            {
+              "text": "Dann brachte eine Fremde aus Hamburg die Schlüssel hierher.",
+              "english": "Then a stranger from Hamburg brought the keys here."
+            },
+            {
+              "text": "Sie hatte den Anhänger mit dem Namen der Backstube gefunden.",
+              "english": "She had found the pendant with the name of the bakery."
+            },
+            {
+              "text": "So ließ sich das Rätsel doch noch lösen.",
+              "english": "So the riddle could still be solved after all."
+            },
+            {
+              "text": "Marta hat ihre Schlüssel zurückbekommen.",
+              "english": "Marta got her keys back."
+            },
+            {
+              "text": "Sie lachte und weinte zugleich, und Tränen liefen ihr über das Gesicht.",
+              "english": "She laughed and cried at the same time, and tears ran down her face."
+            },
+            {
+              "text": "Sie hat die Fremde ganz fest gedrückt.",
+              "english": "She hugged the stranger very tightly."
+            },
+            {
+              "text": "Ich selbst habe mich am Anfang oft verlaufen.",
+              "english": "I myself got lost often at the beginning."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Meine Freundin Anna habe ich in der Gemeinde kennengelernt.",
+              "english": "I got to know my friend Anna in the church."
+            },
+            {
+              "text": "Sie arbeitet fleißig im Krankenhaus, auch wenn die Arbeit anstrengend ist.",
+              "english": "She works diligently in the hospital, even though the work is tiring."
+            },
+            {
+              "text": "Sie ist streng und gleichzeitig gütig.",
+              "english": "She is strict and at the same time kind."
+            },
+            {
+              "text": "Als Kind hat ihre Oma auf sie aufgepasst.",
+              "english": "As a child her grandmother looked after her."
+            },
+            {
+              "text": "Fast hätte sie die Ausbildung aufgegeben, aber dann nahm sie zwei Wochen Urlaub.",
+              "english": "She almost gave up her training, but then she took two weeks of holiday."
+            },
+            {
+              "text": "Sie hat die Schule gewechselt und ihr Ziel erreicht.",
+              "english": "She changed schools and reached her goal."
+            },
+            {
+              "text": "Früher hat sie in einem Laden Flaschen sortiert.",
+              "english": "Earlier she sorted bottles in a shop."
+            },
+            {
+              "text": "Im Urlaub reist sie gern, wie im freien Jahr nach dem Abitur.",
+              "english": "On holiday she likes to travel, as in the free year after school."
+            },
+            {
+              "text": "Wir wollten im Sommer nach Dresden reisen, aber wir haben den Zug nicht erreicht.",
+              "english": "In the summer we wanted to travel to Dresden, but we did not catch the train."
+            },
+            {
+              "text": "Danach konnten wir nicht mehr weiterfahren.",
+              "english": "After that we could not continue travelling."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auch in der Gemeinde ist viel passiert.",
+              "english": "A lot has happened in the church too."
+            },
+            {
+              "text": "Eine besondere Freude war der Hauskreis von Sabine.",
+              "english": "A special joy was the house group of Sabine."
+            },
+            {
+              "text": "Ich habe jede Woche einen Bericht verfasst, auch über die vergangene Woche.",
+              "english": "I wrote a report every week, also about the past week."
+            },
+            {
+              "text": "Die Gemeinde ist gewachsen, und die Entwicklung gefällt mir sehr.",
+              "english": "The church has grown, and I like the development very much."
+            },
+            {
+              "text": "Der Jugendkreis hat mit einem kleinen Konzert gepunktet.",
+              "english": "The youth group scored points with a small concert."
+            },
+            {
+              "text": "Viele Gespräche haben mich bewegt, und ich möchte besonders eines erwähnen.",
+              "english": "Many conversations moved me, and I would like to mention one in particular."
+            },
+            {
+              "text": "Im Frühling war ich bei einer Beerdigung dabei.",
+              "english": "In spring I was at a funeral."
+            },
+            {
+              "text": "Im ersten Moment konnte ich nichts sagen.",
+              "english": "At the first moment I could not say anything."
+            },
+            {
+              "text": "In der Tat hat die Gemeinde mich dort sehr getragen.",
+              "english": "In fact the church carried me very much there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Im Winter war ich krank und lag wochenlang im Bett.",
+              "english": "In winter I was ill and lay in bed for weeks."
+            },
+            {
+              "text": "Ich war nicht in der Lage, allein einzukaufen.",
+              "english": "I was not in a position to shop alone."
+            },
+            {
+              "text": "Frau Weber hat mich gepflegt und mir mit ihrer Wärme geholfen.",
+              "english": "Frau Weber nursed me and helped me with her warmth."
+            },
+            {
+              "text": "Ich habe mich dumm gefühlt, weil ich nichts tun konnte.",
+              "english": "I felt stupid because I could not do anything."
+            },
+            {
+              "text": "Aber ich habe gelernt, mit Hilfe umzugehen.",
+              "english": "But I learned to deal with help."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mein Deutsch braucht noch Übung.",
+              "english": "My German still needs practice."
+            },
+            {
+              "text": "Mit Herrn Schmidt habe ich schon lange Gespräche geführt.",
+              "english": "I have already had long conversations with Herr Schmidt."
+            },
+            {
+              "text": "Die Menschen hier haben mich geprägt.",
+              "english": "The people here have shaped me."
+            },
+            {
+              "text": "Was Ihr mir gegeben habt, kann ich nie ganz wiedergeben.",
+              "english": "What you have given me I can never fully give back."
+            },
+            {
+              "text": "Erstens danke ich Gott, zweitens Euch, drittens meinen Nachbarn und viertens allen Freunden hier.",
+              "english": "First I thank God, second you, third my neighbours and fourth all the friends here."
+            },
+            {
+              "text": "Bis zum vierten Monat dachte ich oft ans Aufgeben.",
+              "english": "Until the fourth month I often thought of giving up."
+            },
+            {
+              "text": "Ich hoffe, ich kann bald wiederkommen und Euch alles erzählen.",
+              "english": "I hope I can come back soon and tell you everything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich noch?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Noch einen Gedanken möchte ich Euch schreiben, bevor ich schließe.",
+              "english": "I would like to write you one more thought before I close."
+            },
+            {
+              "text": "Ich denke oft an einen Freitagabend bei David und Ruth.",
+              "english": "I often think of a Friday evening at David and Ruth's."
+            },
+            {
+              "text": "Wir saßen alle am Tisch, und Sabine hatte eine Idee.",
+              "english": "We all sat at the table, and Sabine had an idea."
+            },
+            {
+              "text": "Sie wollte einen Märchenabend machen, mit Kindern und Eltern.",
+              "english": "She wanted to hold a fairy-tale evening, with children and parents."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Zuerst hatte sie lange im Hausflur vor den Behältern gestanden.",
+              "english": "First she had stood for a long time in the hallway in front of the containers."
+            },
+            {
+              "text": "Sie wusste nicht, was sie damit machen sollte.",
+              "english": "She did not know what she should do with them."
+            },
+            {
+              "text": "Dann kam das Team und half ihr, und am Ende war alles gut.",
+              "english": "Then the team came and helped her, and in the end everything was fine."
+            },
+            {
+              "text": "Daran denke ich gern, und ich freue mich auf Euch.",
+              "english": "I like to think of that, and I am looking forward to you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ein Abend ist mir besonders wichtig geworden.",
+              "english": "One evening has become especially important to me."
+            },
+            {
+              "text": "Es war ein Freitagabend, und alle waren bei David und Ruth.",
+              "english": "It was a Friday evening, and everyone was at David and Ruth's."
+            },
+            {
+              "text": "Sabine hatte Bücher und Spiele in großen Behältern mitgebracht.",
+              "english": "Sabine had brought books and games in big containers."
+            },
+            {
+              "text": "Die Kinder haben mit den Spielen gelacht, und wir haben lange gesprochen.",
+              "english": "The children laughed with the games, and we talked for a long time."
+            },
+            {
+              "text": "Danach habe ich zum ersten Mal gedacht: Hier bin ich zu Hause.",
+              "english": "After that I thought for the first time: Here I am at home."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

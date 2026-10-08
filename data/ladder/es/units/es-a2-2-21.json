@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-21",
+  "lang": "es",
+  "title": "Baleadas para el desayuno",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-21",
+    "title": "Baleadas for breakfast (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honduran-register unit 1 of 6 (new, course-authored; the Honduran strand asked for by docs/audits/COURSE-AUDIT-2026-10-07.md 4.5). Everyday Honduran Spanish with voseo throughout in the speech between friends and family (querés, tenés, probá, pasame, mirá, sentate, lavate, ayudame, esperá) and usted for the elder (doña Marta) and the neighbour. Local words, each for the Honduran reviewer to confirm: baleada (flour tortilla folded over beans, cheese and cream), mantequilla used for the cream, tajadas, cuajada, pulpería, cipote, pisto, chele, catracho, ahorita, \"vaya pues\", \"cheque\" (OK), \"gracias a Dios\", \"¿cómo amaneciste?\", \"fogón\" and \"comal\" for the village kitchen, the proverb \"quien madruga, Dios lo ayuda\". The last section is a short list of such words in Sam's notebook. The professions chat and the yard of doña Marta bring back on purpose the words of es-a2-2-14 and es-a2-2-15 (the recycling pass of 2026-10-08)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily life",
+    "food",
+    "honduran register"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "honduran-register"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition",
+    "honduras"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Temprano en la cocina",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Son las seis de la mañana, y en la casa de doña Marta ya huele a café.",
+              "english": "It is six in the morning, and in doña Marta's house it already smells of coffee."
+            },
+            {
+              "text": "Doña Marta está cerca del fogón.",
+              "english": "Doña Marta is near the stove."
+            },
+            {
+              "text": "Sobre el comal hay unas tortillas, y toda la casa huele a maíz.",
+              "english": "On the griddle there are some tortillas, and the whole house smells of corn."
+            },
+            {
+              "text": "Karla entra con una sonrisa grande.",
+              "english": "Karla comes in with a big smile."
+            },
+            {
+              "text": "—Buenos días, doña Marta. ¿Cómo amaneció?",
+              "english": "\"Good morning, doña Marta. How did you wake up?\""
+            },
+            {
+              "text": "—Muy bien, mi niña, gracias a Dios. ¿Y vos? ¿Cómo amaneciste?",
+              "english": "\"Very well, my girl, thank God. And you? How did you wake up?\""
+            },
+            {
+              "text": "—Con hambre —dice Karla, y se ríe.",
+              "english": "\"Hungry,\" says Karla, and laughs."
+            },
+            {
+              "text": "—Entonces ayudame. Hoy vamos a hacer baleadas para todos.",
+              "english": "\"Then help me. Today we are going to make baleadas for everybody.\""
+            },
+            {
+              "text": "Sam todavía duerme. Es un chele grande, y en esta casa todos lo cuidan.",
+              "english": "Sam is still asleep. He is a big fair-skinned fellow, and in this house everybody looks after him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "¿Qué es una baleada?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una baleada es una tortilla de harina, suave y caliente.",
+              "english": "A baleada is a flour tortilla, soft and hot."
+            },
+            {
+              "text": "Se cierra por la mitad y lleva frijoles fritos, queso y mantequilla.",
+              "english": "It is closed over in half and has fried beans, cheese and cream."
+            },
+            {
+              "text": "Si querés una baleada con todo, también lleva huevo y aguacate.",
+              "english": "If you want a baleada \"with everything,\" it also has egg and avocado."
+            },
+            {
+              "text": "La harina se hace con trigo, y por eso la tortilla es blanca.",
+              "english": "The flour is made from wheat, and that is why the tortilla is white."
+            },
+            {
+              "text": "La tortilla de maíz es otra cosa, pero en Honduras a la gente le gustan las dos.",
+              "english": "The corn tortilla is something else, but in Honduras people like both."
+            },
+            {
+              "text": "—Mirá, Karla, así se hace —dice doña Marta—. Un poco de frijoles, un poco de queso, y ya.",
+              "english": "\"Look, Karla, this is how it is done,\" says doña Marta. \"A little beans, a little cheese, and that's it.\""
+            },
+            {
+              "text": "—Es muy fácil —dice Karla.",
+              "english": "\"It is very easy,\" says Karla."
+            },
+            {
+              "text": "—Parece fácil —contesta la señora—. Pero para hacerla bien hay que tener cuidado.",
+              "english": "\"It seems easy,\" answers the lady. \"But to make it well you have to be careful.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la mesa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cuando Sam llega, ya hay de todo en la mesa.",
+              "english": "When Sam arrives, there is already everything on the table."
+            },
+            {
+              "text": "Hay baleadas, tajadas de plátano, huevos, cuajada y café con pan.",
+              "english": "There are baleadas, slices of fried plantain, eggs, fresh cheese and coffee with bread."
+            },
+            {
+              "text": "—Buenos días, Sam. ¿Cómo amaneciste? —pregunta Karla.",
+              "english": "\"Good morning, Sam. How did you wake up?\" asks Karla."
+            },
+            {
+              "text": "—Bien, gracias. Dormí muy bien.",
+              "english": "\"Fine, thanks. I slept very well.\""
+            },
+            {
+              "text": "—Sentate, pues. Probá una baleada —dice doña Marta—. ¿Querés mantequilla?",
+              "english": "\"Sit down, then. Try a baleada,\" says doña Marta. \"Do you want cream?\""
+            },
+            {
+              "text": "—Sí, por favor. Pasame también un poco de café.",
+              "english": "\"Yes, please. Pass me some coffee too.\""
+            },
+            {
+              "text": "—¿Y tenés hambre?",
+              "english": "\"And are you hungry?\""
+            },
+            {
+              "text": "—Mucha. Todo huele muy rico.",
+              "english": "\"Very. Everything smells very good.\""
+            },
+            {
+              "text": "Sam come la primera baleada y se queda callado un momento.",
+              "english": "Sam eats the first baleada and is quiet for a moment."
+            },
+            {
+              "text": "—¿Y te gustó? —pregunta Karla.",
+              "english": "\"And did you like it?\" asks Karla."
+            },
+            {
+              "text": "—Está cheque —dice Sam, y todos se ríen.",
+              "english": "\"It's cheque,\" says Sam, and everybody laughs."
+            },
+            {
+              "text": "—¡Ya habla como un catracho! —dice doña Marta.",
+              "english": "\"He already talks like a Honduran!\" says doña Marta."
+            },
+            {
+              "text": "Nico llega corriendo y se sienta a la mesa.",
+              "english": "Nico arrives running and sits at the table."
+            },
+            {
+              "text": "—Buenos días, abuela. Hoy hay baleadas, ¿verdad?",
+              "english": "\"Good morning, grandmother. Today there are baleadas, right?\""
+            },
+            {
+              "text": "—Sí, cipote, pero primero lavate las manos.",
+              "english": "\"Yes, kid, but first wash your hands.\""
+            },
+            {
+              "text": "—Ahorita voy —dice él, y no se mueve.",
+              "english": "\"I'm going right now,\" he says, and does not move."
+            },
+            {
+              "text": "—Ahorita, ahorita —dice doña Marta—. Ahorita quiere decir \"más tarde\", y a veces quiere decir \"mañana\".",
+              "english": "\"Right now, right now,\" says doña Marta. \"Ahorita means 'later,' and sometimes it means 'tomorrow.'\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "¿Qué vas a ser?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mientras comen, Karla le hace una pregunta a Nico.",
+              "english": "While they eat, Karla asks Nico a question."
+            },
+            {
+              "text": "—Nico, ¿qué querés ser cuando seas grande?",
+              "english": "\"Nico, what do you want to be when you grow up?\""
+            },
+            {
+              "text": "—Quiero ser piloto, para viajar por todo el mundo.",
+              "english": "\"I want to be a pilot, to travel all over the world.\""
+            },
+            {
+              "text": "—Yo quiero ser chofer —dice Sam, y todos se ríen.",
+              "english": "\"I want to be a driver,\" says Sam, and everybody laughs."
+            },
+            {
+              "text": "—No, Sam, vos sos amigo, no chofer —dice Nico—. Y vos, Karla, ¿qué querés estudiar en la universidad?",
+              "english": "\"No, Sam, you are a friend, not a driver,\" says Nico. \"And you, Karla, what do you want to study at the university?\""
+            },
+            {
+              "text": "—Quiero ser maestra, como mi mamá. Ella es profesora en la escuela de la aldea, y a mí me gusta enseñar.",
+              "english": "\"I want to be a teacher, like my mom. She is a teacher at the village school, and I like to teach.\""
+            },
+            {
+              "text": "—Mi papá es profesor también —dice Sam—, y mi tío quiere ser abogado. Dice que el mundo necesita abogados honestos.",
+              "english": "\"My dad is a teacher too,\" says Sam, \"and my uncle wants to be a lawyer. He says the world needs honest lawyers.\""
+            },
+            {
+              "text": "—Yo de joven quería ser música —dice doña Marta—, pero mi papá me dijo que no había pisto para estudiar.",
+              "english": "\"When I was young I wanted to be a musician,\" says doña Marta, \"but my father told me there was no money to study.\""
+            },
+            {
+              "text": "—Mi hermano sí es músico, abuela —dice Nico—. Canta en la iglesia todos los domingos.",
+              "english": "\"My brother is a musician, grandmother,\" says Nico. \"He sings at church every Sunday.\""
+            },
+            {
+              "text": "Nico cambia de idea otra vez y dice que quiere ser cocinero, porque el cocinero come primero.",
+              "english": "Nico changes his mind again and says he wants to be a cook, because the cook eats first."
+            },
+            {
+              "text": "—Esperá tu turno —dice Karla—. Los demás también tienen ideas.",
+              "english": "\"Wait your turn,\" says Karla. \"The others have dreams too.\""
+            },
+            {
+              "text": "Sam saca su cuaderno y escribe unas notas sobre el desayuno.",
+              "english": "Sam takes out his notebook and writes some notes about the breakfast."
+            },
+            {
+              "text": "—¿Y vos qué escribís? —pregunta Nico.",
+              "english": "\"And what are you writing?\" asks Nico."
+            },
+            {
+              "text": "—Escribo que una baleada real es mejor que cualquier baleada del libro.",
+              "english": "\"I am writing that a real baleada is better than any baleada in the book.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El patio de doña Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después del desayuno, Nico lleva a Sam al patio.",
+              "english": "After breakfast, Nico takes Sam to the yard."
+            },
+            {
+              "text": "—Mirá, Sam: estos son los patos, y estos son los conejos.",
+              "english": "\"Look, Sam: these are the ducks, and these are the rabbits.\""
+            },
+            {
+              "text": "Los patos comen maíz, y los conejos comen hierba fresca.",
+              "english": "The ducks eat corn, and the rabbits eat fresh grass."
+            },
+            {
+              "text": "La cebada es para el caballo de don Carlos, que trabaja en el campo.",
+              "english": "The barley is for the horse of don Carlos, who works in the fields."
+            },
+            {
+              "text": "—¿Y no hay ratones? —pregunta Sam.",
+              "english": "\"And aren't there mice?\" asks Sam."
+            },
+            {
+              "text": "—Sí hay, pero el perro es muy perezoso y no los mira.",
+              "english": "\"Yes, there are, but the dog is very lazy and does not look at them.\""
+            },
+            {
+              "text": "—Una vez vi una serpiente en la hierba —dice Nico—. Era larga y delgada.",
+              "english": "\"Once I saw a snake in the grass,\" says Nico. \"It was long and thin.\""
+            },
+            {
+              "text": "—¿Y qué hiciste?",
+              "english": "\"And what did you do?\""
+            },
+            {
+              "text": "—Corrí y llamé a mi abuela. Ella no le tiene susto a nada.",
+              "english": "\"I ran and called my grandmother. She is not afraid of anything.\""
+            },
+            {
+              "text": "Doña Marta sale con agua para los animales y se ríe.",
+              "english": "Doña Marta comes out with water for the animals and laughs."
+            },
+            {
+              "text": "—Quien madruga, Dios lo ayuda —dice—. Y quien tiene un patio, tiene trabajo.",
+              "english": "\"God helps whoever gets up early,\" she says. \"And whoever has a yard has work.\""
+            },
+            {
+              "text": "Su oficio es hacer baleadas para vender.",
+              "english": "Her trade is making baleadas to sell."
+            },
+            {
+              "text": "Los sábados pone un puesto en la esquina, y la gente de toda la aldea viene a comprar.",
+              "english": "On Saturdays she sets up a stall on the corner, and people from all over the village come to buy."
+            },
+            {
+              "text": "Una baleada con todo vale veinte lempiras.",
+              "english": "A baleada with everything is worth twenty lempiras."
+            },
+            {
+              "text": "Con esa venta no hay mucha ganancia, pero tampoco hay pérdida.",
+              "english": "With that sale there is not much profit, but there is no loss either."
+            },
+            {
+              "text": "Don Carlos le trae la harina de trigo, y ella le paga con baleadas. Es un buen trato.",
+              "english": "Don Carlos brings her the wheat flour, and she pays him with baleadas. It is a good deal."
+            },
+            {
+              "text": "—Don Carlos es muy cortés y muy trabajador —dice doña Marta—. Hizo su casa con sus manos. Esa casa es obra suya.",
+              "english": "\"Don Carlos is very polite and very hard-working,\" says doña Marta. \"He built his house with his hands. That house is his work.\""
+            },
+            {
+              "text": "Hizo sus estudios en la ciudad y volvió a la aldea. Eso es un hecho que no todos hacen.",
+              "english": "He did his studies in the city and came back to the village. That is something not everybody does."
+            },
+            {
+              "text": "Sam se sorprende. No sabía que don Carlos había estudiado tanto.",
+              "english": "Sam is surprised. He did not know that don Carlos had studied so much."
+            },
+            {
+              "text": "—Qué mañana tan hermosa —dice Sam—. Gracias por la compañía, doña Marta.",
+              "english": "\"What a beautiful morning,\" says Sam. \"Thank you for the company, doña Marta.\""
+            },
+            {
+              "text": "—Gracias a vos, mi hijo. Llevate una copia de la receta, para que hagas baleadas en tu casa.",
+              "english": "\"Thanks to you, my son. Take a copy of the recipe with you, so that you can make baleadas at home.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El cuaderno de Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche Sam abre su cuaderno y escribe las palabras nuevas de la mañana.",
+              "english": "That night Sam opens his notebook and writes the new words of the morning."
+            },
+            {
+              "text": "Una pulpería es una tienda pequeña de la esquina, donde se compra de todo un poco.",
+              "english": "A pulpería is a small shop on the corner, where you buy a little of everything."
+            },
+            {
+              "text": "Un cipote es un niño, y una cipota es una niña.",
+              "english": "A cipote is a boy, and a cipota is a girl."
+            },
+            {
+              "text": "El pisto es el dinero, y un chele es una persona de piel clara, como él.",
+              "english": "Pisto is money, and a chele is a fair-skinned person, like him."
+            },
+            {
+              "text": "Un catracho es un hondureño, y la gente lo dice con cariño.",
+              "english": "A catracho is a Honduran, and people say it with affection."
+            },
+            {
+              "text": "\"Ahorita\" no siempre quiere decir ahora mismo.",
+              "english": "\"Ahorita\" does not always mean right now."
+            },
+            {
+              "text": "\"Cheque\" quiere decir que todo está bien, y \"vaya pues\" quiere decir \"está bien, entonces\".",
+              "english": "\"Cheque\" means that everything is fine, and \"vaya pues\" means \"all right, then.\""
+            },
+            {
+              "text": "Al final, Sam escribe una frase para no olvidar el día: «En Honduras, un desayuno no es solo comida; es compañía».",
+              "english": "At the end, Sam writes a sentence so as not to forget the day: \"In Honduras, a breakfast is not just food; it is company.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Spanish package, Honduran-register strand)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-15",
+  "lang": "sq",
+  "title": "Darka te Teuta",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-15",
+    "title": "Albanian ladder, b1-bridge: Darka te Teuta (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Darka te Teuta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në mbrëmje shtëpia e Teutës ishte me shumë zëra dhe erëra të mira.",
+              "english": "On Saturday evening Teuta's house was with many voices and good smells."
+            },
+            {
+              "text": "Në tavolinë kishte supë me perime, një sallatë të madhe, dy lloje djathi dhe një byrek që kishte bërë vetë Teuta.",
+              "english": "On the table there was vegetable soup, a big salad, two kinds of cheese and a byrek that Teuta had made herself."
+            },
+            {
+              "text": "Burri i saj, që quhej Agim dhe punonte në një furrë buke, e priti Samin me të dy duart.",
+              "english": "Her husband, who was called Agim and worked in a bakery, received Sam with both hands."
+            },
+            {
+              "text": "— Ti je ai që mëson fëmijët anglisht? — pyeti.",
+              "english": "\"You are the one who teaches children English?\" he asked."
+            },
+            {
+              "text": "— Po, — tha Sami.",
+              "english": "\"Yes,\" said Sam."
+            },
+            {
+              "text": "— Por nuk e di se kush mëson kë.",
+              "english": "\"But I do not know who teaches whom.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur të gjithë u ulën, Agimi ngriti gotën me ujë.",
+              "english": "When they all sat down, Agim raised his glass of water."
+            },
+            {
+              "text": "— Për miqtë që vijnë nga larg, — tha ai.",
+              "english": "\"To the friends who come from far away,\" he said."
+            },
+            {
+              "text": "— Dhe për rrugën që i sjell.",
+              "english": "\"And to the road that brings them.\""
+            },
+            {
+              "text": "— Rruga ishte e gjatë, por e bukur, — tha Dritani.",
+              "english": "\"The road was long, but beautiful,\" said Dritan."
+            },
+            {
+              "text": "— Gjergji ishte pak i sëmurë në Elbasan, por pas çajit u bë mirë.",
+              "english": "\"Gjergj was a little sick in Elbasan, but after the tea he got well.\""
+            },
+            {
+              "text": "— Kjo ishte buka e Mirës, — qeshi Gjergji.",
+              "english": "\"That was Mira's bread,\" laughed Gjergj."
+            },
+            {
+              "text": "— Çdo gjë që ajo jep ka një fuqi të vogël.",
+              "english": "\"Everything she gives has a small power.\""
+            },
+            {
+              "text": "— Mos e lavdëro shumë, — tha Mira.",
+              "english": "\"Do not praise her too much,\" said Mira."
+            },
+            {
+              "text": "— Do të mendojë se ka një mrekulli në çantë.",
+              "english": "\"She will think she has a miracle in her bag.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas supës Agimi e pyeti Samin se si i dukej Shqipëria pas një viti.",
+              "english": "After the soup Agim asked Sam how Albania seemed to him after a year."
+            },
+            {
+              "text": "Sami mendoi një moment para se të përgjigjej.",
+              "english": "Sam thought for a moment before answering."
+            },
+            {
+              "text": "— Kur erdha, — tha ai, — një grua në treg më tha se gjuha jonë është e vështirë, por se njerëzit janë më të lehtë se gjuha.",
+              "english": "\"When I came,\" he said, \"a woman at the market told me that our language is difficult, but that the people are easier than the language.\""
+            },
+            {
+              "text": "— Atëherë nuk e besova.",
+              "english": "\"Then I did not believe it.\""
+            },
+            {
+              "text": "— Tani e di që kishte të drejtë.",
+              "english": "\"Now I know she was right.\""
+            },
+            {
+              "text": "— Në Amerikë njerëzit janë shumë të dashur, por rrallë të ftojnë në shtëpi pa e pyetur më parë.",
+              "english": "\"In America people are very kind, but they rarely invite you home without asking first.\""
+            },
+            {
+              "text": "— Këtu një i huaj hyn në një shtëpi dhe brenda pesë minutash ka në dorë një gotë kafe.",
+              "english": "\"Here a stranger enters a house and within five minutes has a glass of coffee in his hand.\""
+            },
+            {
+              "text": "— Kjo është për ne një ligj më i vjetër se çdo ligj i shkruar, — tha Agimi.",
+              "english": "\"For us this is a law older than any written law,\" said Agim."
+            },
+            {
+              "text": "— Mikun e presim, edhe nëse nuk kemi asgjë.",
+              "english": "\"We receive the guest even if we have nothing.\""
+            },
+            {
+              "text": "— Në fund e ndajmë atë që kemi.",
+              "english": "\"In the end we share what we have.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ardi, që po hante byrek me të dy duart, ngriti kokën.",
+              "english": "Ardi, who was eating byrek with both hands, raised his head."
+            },
+            {
+              "text": "Elira e mbante kukullën e re në dorë gjithë natën, dhe e mbante edhe kur hëngri.",
+              "english": "Elira held the new doll in her hand all night, and held it even when she ate."
+            },
+            {
+              "text": "Mira e pa dhe buzëqeshi, sepse kukulla ishte dhurata që e kishte blerë në treg.",
+              "english": "Mira saw it and smiled, because the doll was the gift she had bought at the market."
+            },
+            {
+              "text": "— Po nëse kemi shumë miq dhe pak byrek? — pyeti.",
+              "english": "\"And if we have many friends and little byrek?\" he asked."
+            },
+            {
+              "text": "— Atëherë çdo njeri ha një pjesë të vogël dhe të gjithë mbeten të lumtur, — tha Teuta.",
+              "english": "\"Then each person eats a small piece and everybody remains happy,\" said Teuta."
+            },
+            {
+              "text": "— Kjo është një matematikë e re, — tha Gjergji.",
+              "english": "'That is a new kind of mathematics,' said Gjergj."
+            },
+            {
+              "text": "Agimi i tregoi Ardit një lëndinë të madhe pas shkollës, ku fëmijët luanin çdo pasdite.",
+              "english": "Agim showed Ardi a big lawn behind the school, where the children played every afternoon."
+            },
+            {
+              "text": "— Të shkosh në një qytet tjetër kërkon pak guxim, — i tha ai Samit.",
+              "english": "'Going to another city takes a little courage,' he told Sam."
+            },
+            {
+              "text": "— Por të mbetesh kërkon më shumë.",
+              "english": "'But staying takes more.'"
+            },
+            {
+              "text": "— Është matematika e zemrës, — u përgjigj Teuta.",
+              "english": "\"It is the mathematics of the heart,\" Teuta answered."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas darkës prindërit u ulën pranë sobës, dhe fëmijët luajtën me një lojë me letra.",
+              "english": "After dinner the parents sat by the stove, and the children played a card game."
+            },
+            {
+              "text": "Dritani i tregoi Agimit për kompaninë, për çatinë e shkollës dhe për punën e re.",
+              "english": "Dritan told Agim about the company, about the school roof and about the new job."
+            },
+            {
+              "text": "Agimi e dëgjoi pa thënë asnjë fjalë.",
+              "english": "Agim listened without saying a word."
+            },
+            {
+              "text": "— Dhe nëse nuk do të kishe humbur punën, nuk do të ishe sot këtu, — tha ai në fund.",
+              "english": "\"And if you had not lost your job, you would not be here today,\" he said in the end."
+            },
+            {
+              "text": "— Ndoshta çdo gjë ka një arsye.",
+              "english": "\"Perhaps everything has a reason.\""
+            },
+            {
+              "text": "— Ndoshta, — tha Dritani.",
+              "english": "\"Perhaps,\" said Dritan."
+            },
+            {
+              "text": "— Por nuk do ta zgjidhja vetë këtë mënyrë për ta mësuar.",
+              "english": "\"But I would not have chosen this way to learn it myself.\""
+            },
+            {
+              "text": "Teuta u ngrit për të sjellë çajin, dhe Sami e ndihmoi të mblidhte pjatat.",
+              "english": "Teuta got up to bring the tea, and Sam helped her to gather the plates."
+            },
+            {
+              "text": "— Faleminderit që e solle Mirën, — pëshpëriti ajo.",
+              "english": "\"Thank you for bringing Mira,\" she whispered."
+            },
+            {
+              "text": "— Ishte e trishtuar vitin e kaluar, dhe tani qesh përsëri.",
+              "english": "\"She was sad last year, and now she laughs again.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Para se të flinin, Teuta e pyeti Mirën nëse do të vinin të dielën në kishë me ta.",
+              "english": "Before they went to sleep, Teuta asked Mira whether they would come to church with them on Sunday."
+            },
+            {
+              "text": "— Kisha jonë është e vogël dhe e vjetër, — tha ajo.",
+              "english": "\"Our church is small and old,\" she said."
+            },
+            {
+              "text": "— Por njerëzit janë të ngrohtë, dhe pastori e njeh çdo fëmijë me emër.",
+              "english": "\"But the people are warm, and the pastor knows every child by name.\""
+            },
+            {
+              "text": "— Do të vijmë, — u përgjigj Mira pa u menduar.",
+              "english": "\"We will come,\" Mira answered without thinking."
+            },
+            {
+              "text": "— Kemi një dhuratë për ata që na presin: një bukë të Dritës dhe një shishe me mjaltë që na dhanë Ana dhe Sami.",
+              "english": "\"We have a gift for those who are waiting for us: a loaf from Drita and a bottle of honey that Ana and Sam gave us.\""
+            },
+            {
+              "text": "Teuta qeshi dhe e mori në krah.",
+              "english": "Teuta laughed and took her in her arms."
+            },
+            {
+              "text": "— Ju sillni gjithë Shqipërinë në një çantë, — tha.",
+              "english": "\"You bring all of Albania in one bag,\" she said."
+            },
+            {
+              "text": "Jashtë filloi të binte shi i hollë, dhe dritat e qytetit u ndezën një nga një.",
+              "english": "Outside a fine rain began to fall, and the lights of the city came on one by one."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nëse mundeni, ejani të shtunën.",
+              "english": "If you can, come on Saturday."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

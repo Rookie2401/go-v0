@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-19",
+  "lang": "sq",
+  "title": "Një email për nënën",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-19",
+    "title": "Albanian ladder, b1-bridge: Një email për nënën (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një email për nënën",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të premten në mbrëmje Sami u ul para kompjuterit dhe shkroi një mesazh të gjatë për nënën.",
+              "english": "On Friday evening Sam sat down in front of the computer and wrote a long message to his mother."
+            },
+            {
+              "text": "Ai e shkroi në anglisht, por këtu e lexojmë në shqip, siç e mendonte ai.",
+              "english": "He wrote it in English, but here we read it in Albanian, as he was thinking it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "«E dashur nënë,",
+              "english": "\"Dear Mother,"
+            },
+            {
+              "text": "Kjo është hera e dytë që të shkruaj nga Tirana pas një telefonate, dhe këtë herë dua të të them më shumë se «jam mirë».",
+              "english": "This is the second time that I write to you from Tirana after a phone call, and this time I want to tell you more than \"I am well.\""
+            },
+            {
+              "text": "Kam mësuar shumë gjëra këtë muaj, dhe disa prej tyre nuk i kam mësuar në klasë.",
+              "english": "I have learned many things this month, and some of them I did not learn in a class."
+            },
+            {
+              "text": "Klubi im po shkon mirë.",
+              "english": "My club is going well."
+            },
+            {
+              "text": "Fëmijët kanë filluar të më pyesin pyetje që nuk i dija, dhe unë kam filluar t'u them: «Nuk e di, por do ta kërkoj.»",
+              "english": "The children have started to ask me questions I did not know, and I have started to tell them: \"I do not know, but I will look for it.\""
+            },
+            {
+              "text": "Nuk e kisha menduar se kjo do të ishte fjala më e mirë e vitit.",
+              "english": "I had not thought that this would be the best phrase of the year."
+            },
+            {
+              "text": "Ke pyetur për Dritanin.",
+              "english": "You asked about Dritan."
+            },
+            {
+              "text": "Ai ka një punë të re si shofer dhe ndihet shumë më mirë, edhe pse në fillim ishte i trishtuar.",
+              "english": "He has a new job as a driver and feels much better, although at first he was sad."
+            },
+            {
+              "text": "Më ka thënë se humbja e punës i ka mësuar të pranojë ndihmën.",
+              "english": "He has told me that losing his job has taught him to accept help."
+            },
+            {
+              "text": "Unë mendoj se kjo është një nga gjërat më të vështira që mund të mësojë njeriu.",
+              "english": "I think that this is one of the most difficult things a person can learn."
+            },
+            {
+              "text": "Pastaj, ti e di që gjyshja Drita ka dy kafshë në shtëpi, por një ditë Ardi i solli edhe një qen të tretë në çantë.",
+              "english": "Then, you know that grandmother Drita has two animals in the house, but one day Ardi brought a third dog in his bag."
+            },
+            {
+              "text": "Pronarin e qenit e gjetëm, dhe unë kam parë një djalë dhjetë vjeç të mësojë të japë diçka që e do.",
+              "english": "We found the dog's owner, and I have seen a ten-year-old boy learn to give away something he loves."
+            },
+            {
+              "text": "Po të ishe këtu, do ta kishe parë dhe ti, dhe do të kishe qarë.",
+              "english": "If you had been here, you would have seen it too, and you would have cried."
+            },
+            {
+              "text": "Kam udhëtuar edhe në Korçë, një qytet të bukur pranë liqenit, dhe kam shkuar në një kishë të vogël.",
+              "english": "I have also travelled to Korça, a beautiful city near the lake, and I have been to a small church."
+            },
+            {
+              "text": "Atje Ana, infermierja që e di, tregoi pse e zgjodhi punën e saj.",
+              "english": "There Ana, the nurse you know, told why she chose her work."
+            },
+            {
+              "text": "Nuk e kisha dëgjuar kurrë një njeri ta tregonte kështu.",
+              "english": "I had never heard a person tell it like that."
+            },
+            {
+              "text": "Pas dy javësh kam shkuar me të në një fshat dhe kam takuar një plak që kishte mbajtur një lutje në zemër për gjashtëdhjetë vite.",
+              "english": "After two weeks I went with her to a village and met an old man who had kept a prayer in his heart for sixty years."
+            },
+            {
+              "text": "Kjo më ka ndryshuar më shumë se një libër.",
+              "english": "This has changed me more than a book."
+            },
+            {
+              "text": "Tani do të të them diçka tjetër, që të jesh i qetë.",
+              "english": "Now I will tell you something else, so that you will be calm."
+            },
+            {
+              "text": "Shkolla më ka ofruar një kontratë, për një vit më shumë.",
+              "english": "The school has offered me a contract for one more year."
+            },
+            {
+              "text": "Nuk e kam nënshkruar ende.",
+              "english": "I have not signed it yet."
+            },
+            {
+              "text": "Në këtë kohë jeta ime ka marrë një formë të vogël: çdo mëngjes pi kafe te gjyshja Drita, çdo ditë mësoj fëmijët, çdo mbrëmje lexoj një faqe nga një libër shqip.",
+              "english": "In this time my life has taken a small shape: every morning I drink coffee at grandmother Drita's, every day I teach the children, every evening I read a page from an Albanian book."
+            },
+            {
+              "text": "Më pëlqen shiu i qytetit, çaji me mjaltë dhe autobusët plot njerëz.",
+              "english": "I like the rain of the city, tea with honey and the crowded buses."
+            },
+            {
+              "text": "Edhe fjalët që nuk i dija më parë, tani më vijnë vetë në gjuhë, si një shtëpi që e njeh edhe natën.",
+              "english": "Even the words I did not know before now come to my tongue by themselves, like a house you know even at night."
+            },
+            {
+              "text": "Dua të flas me ty dhe me babain para se të vendos, sepse nuk dua të vendos vetëm nga frika, dhe jo nga dëshira për të mos u larguar.",
+              "english": "I want to talk with you and with Dad before I decide, because I do not want to decide only out of fear, and not out of the wish not to go away."
+            },
+            {
+              "text": "Të dua shumë,",
+              "english": "I love you very much,"
+            },
+            {
+              "text": "Sam.»",
+              "english": "Sam.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nëna iu përgjigj të shtunën në mëngjes, dhe përgjigjja ishte e shkurtër.",
+              "english": "His mother answered on Saturday morning, and the answer was short."
+            },
+            {
+              "text": "«Biri im,",
+              "english": "\"My son,"
+            },
+            {
+              "text": "e lexova mesazhin tre herë, dhe edhe një herë me babain.",
+              "english": "I read the message three times, and once more with your father."
+            },
+            {
+              "text": "Ai tha se, nëse e do këtë punë, duhet ta nënshkruash, sepse një njeri që nuk e ka nënshkruar kurrë asgjë nuk di ku qëndron.",
+              "english": "He said that, if you like this work, you should sign it, because a person who has never signed anything does not know where he stands."
+            },
+            {
+              "text": "Unë ende mendoj se do të të kujtoj çdo ditë.",
+              "english": "I still think I will remember you every day."
+            },
+            {
+              "text": "Por një nënë që e dërgon një djalë në botë nuk ka të drejtë të thotë që ai duhet të kthehet kur ai gjen një shtëpi.",
+              "english": "But a mother who sends a son into the world has no right to say that he must come back when he finds a home."
+            },
+            {
+              "text": "Ne do të vijmë të të shohim në pranverë, nëse na ftoni te gjyshja Drita për një byrek.",
+              "english": "We will come to see you in the spring, if you invite us to grandmother Drita's for a byrek."
+            },
+            {
+              "text": "Nënë.»",
+              "english": "Mother.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

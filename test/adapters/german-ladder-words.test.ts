@@ -106,3 +106,33 @@ describe('the trip points of the plan, section 7', () => {
     expect(first('Ein Kranker kommt.', 'Kranker')).toBe('Kranke/NOUN');
   });
 });
+
+describe('words of the b1-bridge and the recycling pass (2026-10-08)', () => {
+  it('nouns keep one lemma in the plural (Ratten, Hasen, Astrologen, Boote, Federn, Teams, Diebe, Gänse, Fürsten, Schwäne)', () => {
+    expect(first('Die Ratten laufen weg.', 'Ratten')).toBe('Ratte/NOUN');
+    expect(first('Die Hasen laufen.', 'Hasen')).toBe('Hase/NOUN');
+    expect(first('Die Astrologen lesen Sterne.', 'Astrologen')).toBe('Astrolog/NOUN');
+    expect(first('Die Boote fahren.', 'Boote')).toBe('Boot/NOUN');
+    expect(first('Die Federn sind weich.', 'Federn')).toBe('Feder/NOUN');
+    expect(first('Die Teams spielen.', 'Teams')).toBe('Team/NOUN');
+    expect(first('Er sah die Diebe.', 'Diebe')).toBe('Dieb/NOUN');
+    expect(first('Die Gänse laufen.', 'Gänse')).toBe('Gans/NOUN');
+    expect(first('Die Fürsten kamen.', 'Fürsten')).toBe('Fürst/NOUN');
+    expect(first('Die Schwäne schwimmen.', 'Schwäne')).toBe('Schwan/NOUN');
+  });
+
+  it('verbs and adjectives of the fairy tales have their own lemma (steinalt, schütten, streicheln, schlau, undankbar)', () => {
+    expect(first('Der Mann ist steinalt.', 'steinalt')).toBe('steinalt/ADJ');
+    expect(first('Er schüttete die Suppe.', 'schüttete')).toBe('schütten/VERB');
+    expect(first('Sie streichelt die Katze.', 'streichelt')).toBe('streicheln/VERB');
+    expect(first('Er will die Katze streicheln.', 'streicheln')).toBe('streicheln/VERB');
+    expect(first('Ein schlaues Tier.', 'schlaues')).toBe('schlau/ADJ');
+    expect(first('Das Kind ist undankbar.', 'undankbar')).toBe('undankbar/ADJ');
+  });
+
+  it('eher, eh, augenblicklich, sogleich and the old gleichwie are adverbs with their own lemma', () => {
+    for (const [text, w] of [['Ich bin eher müde.', 'eher'], ['Das weiß ich eh.', 'eh'], ['Er war augenblicklich weg.', 'augenblicklich'], ['Ich helfe sogleich.', 'sogleich'], ['Gleichwie ich liebe.', 'Gleichwie']] as const) {
+      expect(first(text, w), w).toBe(`${w.toLowerCase()}/ADV`);
+    }
+  });
+});

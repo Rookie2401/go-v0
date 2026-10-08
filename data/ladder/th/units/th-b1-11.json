@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-11",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "กบกับวัว",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-11",
+    "title": "กบกับวัว — The frog and the ox (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 145232 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=145232",
+    "attribution": "Adapted retelling of \"อึ่งอ่างกับวัว\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 145232, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"อึ่งอ่างกับวัว\" (th-gap-recovery-aesop-24); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 145232) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the library fable has an อึ่งอ่าง (a toad); here the animal is a plain กบ (frog), which the learner already knows, and the plot and the moral are unchanged. The mother says เจ้า to her child. The closing talk between Ton and Sam is an addition to the original."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "animals",
+    "pride",
+    "envy"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ลูกกบเล่าเรื่อง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันหนึ่ง เชือกที่ผูกวัวตัวใหญ่ขาด วัวจึงเดินกินหญ้าอยู่ริมลำธาร",
+              "english": "One day the rope that tied a big ox snapped, and the ox went walking along the stream, eating grass."
+            },
+            {
+              "text": "มันไม่ทันมอง จึงเดินเหยียบกบหลายตัวที่อยู่ในหญ้า",
+              "english": "It did not look, and so it trod on several frogs in the grass."
+            },
+            {
+              "text": "กบหลายตัวตาย เหลือรอดอยู่ตัวเดียว",
+              "english": "Many frogs died, and only one was left alive."
+            },
+            {
+              "text": "เมื่อแม่กบกลับมา ลูกกบวิ่งไปหาแม่",
+              "english": "When the mother frog came back, the little frog ran to her."
+            },
+            {
+              "text": "ลูกกบร้องไห้ และเล่าว่า แม่ครับ มีสัตว์ตัวใหญ่มากมาเหยียบพี่น้องของผมตายหมดเลย",
+              "english": "The little frog cried and told her, \"Mother, a huge animal came and trod all my brothers and sisters to death.\""
+            },
+            {
+              "text": "ผมรอดมาตัวเดียว",
+              "english": "\"I alone escaped.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แม่กบอยากตัวใหญ่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แม่กบถามว่า ตัวใหญ่ขนาดนี้ไหม แล้วแม่ก็ทำให้ตัวใหญ่ขึ้น",
+              "english": "The mother frog asked, \"Was it this big?\" and made herself bigger."
+            },
+            {
+              "text": "ลูกกบตอบว่า ใหญ่กว่านั้นอีกครับ",
+              "english": "The little frog answered, \"Even bigger than that.\""
+            },
+            {
+              "text": "แม่กบทำให้ตัวใหญ่ขึ้นอีก และถามว่า ขนาดนี้ไหม",
+              "english": "The mother frog made herself bigger still and asked, \"This big?\""
+            },
+            {
+              "text": "ลูกกบตอบว่า ยังไม่ถึงครึ่งหนึ่งของมันเลยครับ",
+              "english": "The little frog answered, \"Not even half of it yet.\""
+            },
+            {
+              "text": "แม่กบโกรธ และคิดว่า ข้าเองก็ทำให้ตัวใหญ่เท่าสัตว์ตัวนั้นได้",
+              "english": "The mother frog was angry and thought, \"I too can make myself as big as that animal.\""
+            },
+            {
+              "text": "แม่กบหายใจเข้าลึกๆ และทำให้ตัวใหญ่ขึ้นอีก",
+              "english": "The mother frog drew a deep breath and made herself bigger again."
+            },
+            {
+              "text": "ลูกกบร้องว่า แม่ครับ หยุดเถิดครับ ตัวแม่จะแตก",
+              "english": "The little frog cried, \"Mother, please stop! You will burst.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตัวแตก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แต่แม่กบไม่ฟัง มันอยากให้ตัวใหญ่เท่าวัว",
+              "english": "But the mother frog did not listen. She wanted to be as big as an ox."
+            },
+            {
+              "text": "มันหายใจเข้าอีกครั้งหนึ่ง และทำให้ตัวใหญ่ที่สุด",
+              "english": "She breathed in once more and made herself as big as she could."
+            },
+            {
+              "text": "ทันใดนั้น ตัวของแม่กบก็แตกออก",
+              "english": "In that instant the mother frog's body burst."
+            },
+            {
+              "text": "ลูกกบร้องไห้อยู่ข้างแม่",
+              "english": "The little frog cried beside its mother."
+            },
+            {
+              "text": "เรื่องนี้สอนว่า คนที่อยากเท่าคนที่ใหญ่กว่า โดยวิธีที่ไม่ถูก ย่อมทำให้ตัวเองเสียหาย",
+              "english": "This story teaches us: whoever tries to equal a greater person by a wrong means will only bring harm on himself."
+            },
+            {
+              "text": "ตัวเล็กเท่าไรก็ไม่เป็นไร ถ้ายังเป็นตัวของตัวเอง",
+              "english": "It does not matter how small one is, as long as one is oneself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้นกับแซม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เสาร์ต่อมา ต้นเล่านิทานเรื่องนี้ให้แซมฟัง",
+              "english": "The following Saturday Ton told this story to Sam."
+            },
+            {
+              "text": "แซมถามว่า ทำไมแม่กบไม่ฟังลูกครับ",
+              "english": "Sam asked, \"Why didn't the mother frog listen to her child?\""
+            },
+            {
+              "text": "ต้นตอบว่า เพราะแม่กบอยากชนะ ไม่อยากฟัง",
+              "english": "Ton answered, \"Because the mother frog wanted to win and did not want to listen.\""
+            },
+            {
+              "text": "แซมพูดว่า ผมเคยเป็นอย่างนั้นเหมือนกันครับ",
+              "english": "Sam said, \"I have been like that too.\""
+            },
+            {
+              "text": "ผมเคยดูถูกคนที่พูดภาษาไทยไม่ได้ ทั้งที่ภาษาไทยของผมก็ยังไม่ดีครับ",
+              "english": "\"I once looked down on people who could not speak Thai, when my own Thai is still not good.\""
+            },
+            {
+              "text": "เมื่อวานผมเห็นมดเดินเป็นแถวหน้าร้านป้าแดง ไม่มีตัวไหนอยากใหญ่เกินตัวเลยครับ",
+              "english": "\"Yesterday I saw ants walking in a line in front of Auntie Daeng's shop. Not one of them wanted to be bigger than it is.\""
+            },
+            {
+              "text": "ต้นหัวร่อ และบอกว่า ทุกคนเคยเป็นครับ",
+              "english": "Ton laughed and said, \"Everyone has.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

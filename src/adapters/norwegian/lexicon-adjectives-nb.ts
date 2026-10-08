@@ -55,7 +55,7 @@ trang = tight
 åpen = open | n:åpent
 lukket = closed
 full = full | n:fullt
-tom = empty | n:tomt
+tom = empty | n:tomt; pl:tomme
 varm = warm
 kald = cold
 kjølig = cool
@@ -250,4 +250,10 @@ nyttig = useful
 unyttig = useless
 tilfreds = satisfied | n:tilfreds
 alene/i = alone
+// ── bridge additions (b1-bridge ladder, 2026-10-08; machine-draft, unchecked) ──
+nervøs = nervous
+ærlig = honest
+fuktig = damp
+forsiktig = careful
+uvanlig = unusual
 `;

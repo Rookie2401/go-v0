@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Pastor Anil; Pastor Anil says तुम to Sam; the narration uses plural verbs for him. In his own story Anil uses plural verbs for his father (मेरे बाप), his mother (माँ), his uncle and the old pastor. Please check बाप (blunt but natural in a testimony; पिता is used elsewhere) and तू (his mother to the child Anil, and Anil to God in prayer: only these three uses). Christian vocabulary kept plain (परमेश्वर, प्रार्थना, क्षमा, शांति, सुसमाचार, अनुग्रह, आत्मा); no Scripture quoted. The story is invented for the course: the court case about the shop papers is told simply and is not a legal account (please check अदालत, वकील, सिपाही and the fee-waiver forms). Frames chosen for the adapter: \"रात भर\", \"दिन भर\", \"ज़िंदगी भर\" (भर); \"मेरी पोती\" with the possessive (पोती); \"शुद्ध दिल\", \"शुद्ध पानी\" (शुद्ध)."
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Pastor Anil; Pastor Anil says तुम to Sam; the narration uses plural verbs for him. In his own story Anil uses plural verbs for his father (मेरे बाप), his mother (माँ), his uncle and the old pastor. Please check बाप (blunt but natural in a testimony; पिता is used elsewhere) and तू (his mother to the child Anil, and Anil to God in prayer: only these three uses). Christian vocabulary kept plain (परमेश्वर, प्रार्थना, क्षमा, शांति, सुसमाचार, अनुग्रह, आत्मा); no Scripture quoted. The story is invented for the course: the court case about the shop papers is told simply and is not a legal account (please check अदालत, वकील, सिपाही and the fee-waiver forms). Frames chosen for the adapter: \"रात भर\", \"दिन भर\", \"ज़िंदगी भर\" (भर); \"मेरी पोती\" with the possessive (पोती); \"शुद्ध दिल\", \"शुद्ध पानी\" (शुद्ध). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -654,6 +654,38 @@
             {
               "text": "तभी चर्च की घंटी बजी, और एक छोटी बच्ची दौड़कर सैम के पास आई।",
               "english": "Just then the church bell rang, and a little girl came running to Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सभा के बाद एक बच्चा दौड़कर पास्टर अनिल के पास आया।",
+              "english": "After the meeting a child came running to Pastor Anil."
+            },
+            {
+              "text": "उसके हाथ में एक चमकीला खिलौना था, और वह बहुत ख़ुश दिख रहा था।",
+              "english": "He had a shiny toy in his hand, and he looked very happy."
+            },
+            {
+              "text": "पास्टर अनिल ने मुस्कराकर कहा, \"वाह, यह खिलौना तो बहुत सुंदर है!\"",
+              "english": "Pastor Anil smiled and said, \"Wow, this toy is very beautiful!\""
+            },
+            {
+              "text": "बच्चे ने कहा, \"मेरे दादाजी इसे बाज़ार से लाए हैं।\"",
+              "english": "The child said, \"My grandfather brought it from the market.\""
+            },
+            {
+              "text": "सैम ने सोचा कि इस बच्चे का बचपन कितना अच्छा है, और उसे अपने दादाजी की याद आई।",
+              "english": "Sam thought how good this child's childhood is, and he remembered his own grandfather."
+            },
+            {
+              "text": "उधर दूसरे बच्चे को नानी ने डाँटा, क्योंकि वह सावधान नहीं था।",
+              "english": "Over there Nani scolded the other child because he was not careful."
+            },
+            {
+              "text": "सैम ने तय किया कि वह पास्टर अनिल की कहानी लिखेगा, क्योंकि उनके बचपन के दिन भी बीत गए हैं।",
+              "english": "Sam decided that he would write Pastor Anil's story, because the days of his childhood too have passed."
             }
           ]
         }

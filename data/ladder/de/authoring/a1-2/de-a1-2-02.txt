@@ -1,0 +1,76 @@
+=== de-a1-2-02
+speakers: sam=Sam, lukas=Lukas, ben=Ben, weber=Frau Weber
+## Vier Jahreszeiten
+Sam, Lukas und Ben sind in der Küche. || Sam, Lukas and Ben are in the kitchen.
+Es regnet. || It is raining.
+[sam] Lukas, wie ist das Wetter in Leipzig? || Lukas, what is the weather like in Leipzig?
+[lukas] Es gibt vier Jahreszeiten: Frühling, Sommer, Herbst und Winter. || There are four seasons: spring, summer, autumn and winter.
+[ben] Ich habe den Sommer gern! || I like the summer!
+[lukas] Und was ist deine Jahreszeit, Sam? || And what is your season, Sam?
+[sam] Ich habe den Herbst gern. || I like the autumn.
+
+## Frühling und Sommer
+[lukas] Im Frühling wird es warm. || In spring it gets warm.
+[lukas] Die Sonne scheint, und es ist schön im Park. || The sun shines, and it is lovely in the park.
+[lukas] Aber es regnet auch, und der Regen ist kalt. || But it also rains, and the rain is cold.
+[ben] Ich mag den Regen nicht. || I do not like the rain.
+[lukas] Im Sommer wird es heiß. || In summer it gets hot.
+[lukas] Dann sind es 30 Grad. || Then it is 30 degrees.
+[lukas] Wenn die Sonne scheint, ist es heiß. || When the sun shines, it is hot.
+[lukas] Wenn es heiß ist, trinken wir viel Wasser. || When it is hot, we drink a lot of water.
+[ben] Dann spiele ich im Park. || Then I play in the park.
+[lukas] Im Frühling sind es 15 Grad. || In spring it is 15 degrees.
+[sam] Ich brauche dann auch viel Wasser! || Then I need a lot of water too!
+
+## Herbst und Winter
+[lukas] Im Herbst regnet es viel, denn der Wind kommt. || In autumn it rains a lot, because the wind comes.
+[lukas] Der Wind ist kalt, und das Wetter wird kalt. || The wind is cold, and the weather gets cold.
+[sam] Der Wind in Leipzig ist kalt! || The wind in Leipzig is cold!
+[lukas] Wenn es kalt ist, bleiben wir zu Hause. || When it is cold, we stay at home.
+[lukas] Im Winter gibt es Schnee. || In winter there is snow.
+[lukas] Es sind nur zwei Grad. || It is only two degrees.
+[ben] Ich möchte Schnee! || I want snow!
+[ben] Wir können im Schnee spielen. || We can play in the snow.
+[lukas] Dann scheint die Sonne nicht viel. || Then the sun does not shine much.
+[lukas] Dann sind die Kinder krank. || Then the children are ill.
+[lukas] Kopf, Hals und Bauch tun weh. || Head, throat and stomach hurt.
+[lukas] Sie haben Fieber und brauchen eine Tablette. || They have a fever and need a tablet.
+[lukas] Sie legen sich ins Bett, und bald sind sie wieder gesund. || They lie down in bed, and soon they are well again.
+[sam] Ich habe immer kalt. || I am always cold.
+
+## In der Gemeinde
+[lukas] Im Winter ist die Gemeinde warm. || In winter the church is warm.
+[lukas] Wir singen Lieder, wir beten, und wir lesen die Bibel. || We sing songs, we pray, and we read the Bible.
+[sam] Der Gottesdienst ist immer schön. || The service is always lovely.
+[ben] Ich verliere immer etwas. || I always lose something.
+[ben] Ich suche den Rucksack und das Heft. || I look for the school bag and the exercise book.
+[lukas] Ben findet nichts! || Ben finds nothing!
+[lukas] Der Rucksack liegt hinter dem Stuhl. || The school bag is behind the chair.
+[lukas] Das Heft liegt unter dem Tisch. || The exercise book is under the table.
+[ben] Ich höre den Regen, und ich bin müde, denn es ist spät. || I hear the rain, and I am tired, because it is late.
+[sam] Hast du schon Zeit, Lukas? || Do you have time already, Lukas?
+[sam] Ich möchte alle Jahreszeiten in Leipzig sehen, denn ich komme aus den USA. || I would like to see all the seasons in Leipzig, because I come from the USA.
+[lukas] In der Woche sollen wir Frau Weber helfen. || This week we are to help Mrs Weber.
+[lukas] Du bist ein Freund von Frau Weber, Sam. || You are a friend of Mrs Weber's, Sam.
+[sam] Ja, und sie hat gern die Sonne. || Yes, and she likes the sun.
+[lukas] Dann gehen wir im Frühling in den Park. || Then we will go to the park in spring.
+[lukas] Wir trinken Kaffee, und ich koche Suppe. || We drink coffee, and I cook soup.
+[ben] Ich habe Hunger! || I am hungry!
+[ben] Gibt es Kuchen? || Is there cake?
+[lukas] Ja, es gibt Kuchen von Marta. || Yes, there is cake from Marta.
+[sam] Ben, hier ist ein Stuhl. || Ben, here is a chair.
+[sam] Er steht neben dem Tisch. || It is next to the table.
+
+## Bei Frau Weber
+Es ist Abend. || It is evening.
+Sam und Lukas sind bei Frau Weber. || Sam and Lukas are at Mrs Weber's.
+[weber] Guten Abend, Herr Miller! || Good evening, Mr Miller!
+[weber] Guten Abend, Lukas! || Good evening, Lukas!
+[weber] Das Haus ist warm, und der Kaffee ist da. || The house is warm, and the coffee is there.
+[sam] Danke, Frau Weber! || Thank you, Mrs Weber!
+[sam] Wie geht es Ihnen? || How are you?
+[weber] Gut, danke. || Fine, thank you.
+[weber] Ich habe Suppe, Brot und Käse. || I have soup, bread and cheese.
+[weber] Möchten Sie essen? || Would you like to eat?
+[lukas] Ja, gern, wir haben Hunger. || Yes, gladly, we are hungry.
+

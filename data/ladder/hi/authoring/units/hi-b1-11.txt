@@ -1,0 +1,49 @@
+id: hi-b1-11
+title: सफ़ाई का दिन
+domain: daily-life
+topics: home, cleaning, family, humour
+notes: Fifth controlled unit of the b1 bridge. It prepares the words of two GDL stories placed right after it, "नानी की ऐनक" (hi-b1-12) and "चूहा सिकंदर, घर के अंदर" (hi-b1-13): ऐनक, जासूस, गुम, बाथरूम, सोफ़ा, कुशन, ताली, बजाना, दुबकना, घुसना, each used three times, in a cleaning Saturday at Seeta Nani's house where Aman plays detective (the plot is not the plot of either story). It brings back a few words that the long GDL story hi-b1-07 met once (नकल, कविता, पार्क, झुंड, पसंदीदा). Machine-drafted; a Hindi reviewer should check the household vocabulary.
+---
+## शनिवार की सुबह
+शनिवार की सुबह नानी ने कहा, "आज घर की सफ़ाई का दिन है।" || On Saturday morning Nani said, "Today is the day for cleaning the house."
+सैम ने बाथरूम धोया, और अमन ने कमरों से सारी किताबें उठाईं। || Sam washed the bathroom, and Aman picked up all the books from the rooms.
+नानी रसोई में लड्डू बना रही थीं, क्योंकि आज शाम पास्टर अनिल आने वाले थे। || Nani was making laddus in the kitchen, because Pastor Anil was to come this evening.
+अमन बोला, "नानी, मैं आज जासूस बनूँगा, और घर की हर गुम चीज़ ढूँढ़ूँगा।" || Aman said, "Nani, today I will be a detective, and I will find every lost thing in the house."
+नानी ने हँसकर कहा, "ठीक है, पर पहले अपना कमरा साफ़ करो।" || Nani said with a laugh, "All right, but first clean your room."
+अमन ने जल्दी से अपना कमरा साफ़ किया, और फिर वह सैम से मिला। || Aman cleaned his room quickly, and then he met Sam.
+
+## नानी का स्वेटर
+रसोई का काम ख़त्म करके नानी बैठक में बैठीं और अपना स्वेटर बुनने लगीं। || Finishing the kitchen work Nani sat in the sitting room and began knitting her sweater.
+ऊन का गोला दरी पर रखा था, और मोती ने उस पर अपना पाँव रख दिया। || The ball of wool lay on the rug, and Moti put his paw on it.
+सैम शाम को अक्सर टहलने जाता है, पर आज उसने घर में ही रहने का सोचा। || Sam often goes for a walk in the evening, but today he thought of staying at home.
+
+## गुम चीज़ें
+सबसे पहले अमन ने बाथरूम में देखा, पर वहाँ कुछ गुम नहीं था। || First of all Aman looked in the bathroom, but nothing was lost there.
+फिर वह बैठक में गया, जहाँ नानी का सबसे पसंदीदा सोफ़ा रखा था। || Then he went into the sitting room, where Nani's most favourite sofa was kept.
+उसने सारे कुशन उठाए, और पहला कुशन उठाते ही उसे घर की एक चाबी मिल गई। || He lifted all the cushions, and as soon as he lifted the first cushion he found a key of the house.
+सैम ने ताली बजाई और कहा, "वाह जासूस! पहली चीज़ मिल गई!" || Sam clapped and said, "Wow, detective! The first thing is found!"
+अमन ने दूसरा कुशन उठाया, तो नीचे से पास्टर अनिल की ऐनक निकली। || Aman lifted the second cushion, and Pastor Anil's spectacles came out from below.
+वह ऐनक कई दिन से गुम थी, और पास्टर जी उसे हर जगह ढूँढ़ चुके थे। || Those spectacles had been lost for several days, and the pastor had looked for them everywhere.
+नानी ने खुश होकर ताली बजाई और बोलीं, "अब इसे शाम को पास्टर जी को दे देंगे।" || Nani clapped happily and said, "Now we will give it to the pastor in the evening."
+
+## दुबका हुआ मोती
+तभी सैम ने देखा कि मोती सोफ़े के पीछे दुबका बैठा है। || Just then Sam saw that Moti was sitting crouched behind the sofa.
+मोती को झाड़ू से डर लगता है, इसलिए वह सफ़ाई के दिन हमेशा कहीं दुबक जाता है। || Moti is afraid of the broom, so on cleaning days he always crouches somewhere.
+अमन ने उसे बुलाया, पर वह और पीछे घुस गया। || Aman called him, but he went further in behind.
+सैम ने कहा, "उसकी नकल करो, अमन, शायद वह आ जाए।" || Sam said, "Copy him, Aman, perhaps he will come."
+अमन भी पीछे घुस गया और कुत्ते की तरह भौंकने लगा। || Aman too went in behind and began to bark like a dog.
+सैम भी सोफ़े के पीछे घुस गया, पर मोती नहीं निकला। || Sam too went in behind the sofa, but Moti did not come out.
+फिर मोती अपने आप बाहर निकल आया और बच्चों के झुंड के साथ दौड़ने लगा। || Then Moti came out by himself and began running with the herd of children.
+नानी हँसते हँसते बोलीं, "जासूस ने तो मोती को भी पकड़ लिया!" || Nani said, laughing, "The detective has caught even Moti!"
+
+## शाम
+शाम को पास्टर अनिल आए, तो नानी ने उन्हें उनकी ऐनक दी। || In the evening when Pastor Anil came, Nani gave him his spectacles.
+उन्होंने कहा, "मैं इसे बाथरूम से लेकर पार्क तक हर जगह ढूँढ़ चुका था!" || He said, "I had looked for it everywhere, from the bathroom to the park!"
+अमन ने खुश होकर कहा, "यह मेरा पहला काम था, और मैं इसमें पास हो गया।" || Aman said happily, "This was my first job, and I passed in it."
+सबने लड्डू खाए, और पास्टर अनिल ने अमन के लिए एक छोटी सी कविता भी सुनाई। || Everybody ate laddus, and Pastor Anil even recited a small poem for Aman.
+मोती कुर्सी के नीचे दुबककर सबको देखता रहा, और बच्चों ने उसके लिए भी लड्डू का एक टुकड़ा रखा। || Moti crouched under the chair and went on looking at everybody, and the children kept a piece of laddu for him too.
+सब लोगों ने फिर ताली बजाई, और नानी ने सबके लिए चाय बनाई। || Everybody clapped again, and Nani made tea for everybody.
+नानी ने कहा, "आज घर साफ़ भी हुआ, और खोई हुई चीज़ें भी मिल गईं।" || Nani said, "Today the house got clean, and the lost things were found too."
+सैम ने कहा, "नानी, मुझे ऐसा शनिवार बहुत पसंद आया।" || Sam said, "Nani, I liked such a Saturday very much."
+नानी बोलीं, "तो अगले शनिवार भी हम सब मिलकर काम करेंगे।" || Nani said, "Then next Saturday too we will all work together."
+अमन ने सिर हिलाकर कहा, "और अगली बार मैं पापा के कमरे में भी जासूस बनूँगा।" || Aman nodded and said, "And next time I will be a detective in Papa's room too."

@@ -1,4 +1,4 @@
-// Builds data/ladder/nb/ladder.json and units/*.json from the authoring files in this folder (a1-1/NN.txt, a1-2/NN.txt, a2-1/NN.txt, a2-2/NN.txt).
+// Builds data/ladder/nb/ladder.json and units/*.json from the authoring files in this folder (a1-1/NN.txt, a1-2/NN.txt, a2-1/NN.txt, a2-2/NN.txt, b1-bridge/NN.txt).
 // Run from the repository root:  node data/ladder/nb/authoring/build.mjs
 // The authoring format is described in README.txt next to this file. The JSON units are the deliverable; this script is
 // only how they were produced, kept so that a reviewer's corrections can be made in the text files and rebuilt.
@@ -18,8 +18,8 @@ try {
 } catch { /* defaults */ }
 const fill = (s) => s.replace(/\{(ana|luis|marta|nico|sam|city)\}/g, (_, k) => names[k]);
 
-const STAGES = ['a1-1', 'a1-2', 'a2-1', 'a2-2'];
-const LEVEL = { 'a1-1': 'A1', 'a1-2': 'A1', 'a2-1': 'A2', 'a2-2': 'A2' };
+const STAGES = ['a1-1', 'a1-2', 'a2-1', 'a2-2', 'b1-bridge'];
+const LEVEL = { 'a1-1': 'A1', 'a1-2': 'A1', 'a2-1': 'A2', 'a2-2': 'A2', 'b1-bridge': 'B1' };
 const units = [];
 const ladderUnits = [];
 

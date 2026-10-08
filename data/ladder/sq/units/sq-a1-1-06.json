@@ -1,0 +1,247 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-06",
+  "lang": "sq",
+  "title": "Mëngjes",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-06",
+    "title": "Albanian ladder, a1-1: Mëngjes (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Mëngjes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Është mëngjes.",
+              "english": "It is morning."
+            },
+            {
+              "text": "Sam zgjohet herët.",
+              "english": "Sam wakes up early."
+            },
+            {
+              "text": "Ai shkon në kuzhinë.",
+              "english": "He goes to the kitchen."
+            },
+            {
+              "text": "Kuzhina ka një dritare të madhe.",
+              "english": "The kitchen has a big window."
+            },
+            {
+              "text": "Sam pi ujë dhe ha bukë.",
+              "english": "Sam drinks water and eats bread."
+            },
+            {
+              "text": "Tani Sam nuk është i lodhur.",
+              "english": "Now Sam is not tired."
+            },
+            {
+              "text": "Ai lexon pak në shqip.",
+              "english": "He reads a little in Albanian."
+            },
+            {
+              "text": "Pastaj Sam shkon në treg.",
+              "english": "Then Sam goes to the market."
+            },
+            {
+              "text": "Rruga e tregut nuk është e gjatë.",
+              "english": "The road to the market is not long."
+            },
+            {
+              "text": "Në treg është gjyshi i Ardit.",
+              "english": "Ardi's grandfather is at the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana zgjohet herët.",
+              "english": "Ana wakes up early."
+            },
+            {
+              "text": "Ajo punon në klinikë sot.",
+              "english": "She works at the clinic today."
+            },
+            {
+              "text": "Ana lahet dhe vishet.",
+              "english": "Ana washes and gets dressed."
+            },
+            {
+              "text": "Pastaj ajo shkon në kuzhinë.",
+              "english": "Then she goes to the kitchen."
+            },
+            {
+              "text": "Luan është në kuzhinë.",
+              "english": "Luan is in the kitchen."
+            },
+            {
+              "text": "Ai përgatit kafe.",
+              "english": "He makes coffee."
+            },
+            {
+              "text": "— Mirëmëngjes, Ana!",
+              "english": "\"Good morning, Ana!\""
+            },
+            {
+              "text": "— Mirëmëngjes, Luan!",
+              "english": "\"Good morning, Luan!\""
+            },
+            {
+              "text": "Ana pi kafe dhe ha bukë.",
+              "english": "Ana drinks coffee and eats bread."
+            },
+            {
+              "text": "Është mëngjes i bukur.",
+              "english": "It is a beautiful morning."
+            },
+            {
+              "text": "Ana shkon në klinikë.",
+              "english": "Ana goes to the clinic."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mëngjes Ardi zgjohet herët.",
+              "english": "In the morning Ardi wakes up early."
+            },
+            {
+              "text": "Ai lahet dhe vishet.",
+              "english": "He washes and gets dressed."
+            },
+            {
+              "text": "Gjyshja përgatit çaj në kuzhinë.",
+              "english": "Grandmother makes tea in the kitchen."
+            },
+            {
+              "text": "Ajo i jep çaj dhe bukë.",
+              "english": "She gives him tea and bread."
+            },
+            {
+              "text": "Ardi pi çaj dhe ha bukë.",
+              "english": "Ardi drinks tea and eats bread."
+            },
+            {
+              "text": "Macja pi qumësht.",
+              "english": "The cat drinks milk."
+            },
+            {
+              "text": "Qeni dhe macja janë në kuzhinë.",
+              "english": "The dog and the cat are in the kitchen."
+            },
+            {
+              "text": "Pastaj Ardi shkon në shkollë me gjyshin.",
+              "english": "Then Ardi goes to school with his grandfather."
+            },
+            {
+              "text": "Rruga është e gjatë.",
+              "english": "The road is long."
+            },
+            {
+              "text": "Ai është i lumtur.",
+              "english": "He is happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gjergji është në dhomë.",
+              "english": "Gjergj is in his room."
+            },
+            {
+              "text": "Ai lahet dhe vishet.",
+              "english": "He washes and gets dressed."
+            },
+            {
+              "text": "Nëna është në kuzhinë.",
+              "english": "The mother is in the kitchen."
+            },
+            {
+              "text": "Ajo përgatit çaj.",
+              "english": "She makes tea."
+            },
+            {
+              "text": "— Mirëmëngjes, nënë! — thotë Gjergji.",
+              "english": "\"Good morning, mother!\" says Gjergj."
+            },
+            {
+              "text": "— Mirëmëngjes, Gjergj! A do çaj?",
+              "english": "\"Good morning, Gjergj! Do you want tea?\""
+            },
+            {
+              "text": "— Jo, dua qumësht dhe bukë.",
+              "english": "\"No, I want milk and bread.\""
+            },
+            {
+              "text": "Nëna i jep qumështin.",
+              "english": "The mother gives him the milk."
+            },
+            {
+              "text": "Gjergji e pi qumështin dhe ha bukën.",
+              "english": "Gjergj drinks the milk and eats the bread."
+            },
+            {
+              "text": "Pastaj shkon në shkollë.",
+              "english": "Then he goes to school."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

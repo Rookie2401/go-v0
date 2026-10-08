@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Prices are written in digits (30, 40, 20 रुपये किलो) as the plan says. Ramesh the vegetable seller is addressed as रमेश जी by Sam, and calls Sam सैम जी. Aman's ball in the bag is the reason for the three uses of गेंद (a word the later in-place text needs). प्याज़ is treated as feminine (सस्ती). \"बहुत महँगे हैं!\" drops the subject (टमाटर) on purpose, spoken style. Words outside the plan (measured): none."
+    "notes": "Prices are written in digits (30, 40, 20 रुपये किलो) as the plan says. Ramesh the vegetable seller is addressed as रमेश जी by Sam, and calls Sam सैम जी. Aman's ball in the bag is the reason for the three uses of गेंद (a word the later in-place text needs). प्याज़ is treated as feminine (सस्ती). \"बहुत महँगे हैं!\" drops the subject (टमाटर) on purpose, spoken style. Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -290,6 +290,26 @@
             {
               "text": "नानी बोलती हैं, \"आज हम रोटी, दाल और चावल खाते हैं।\"",
               "english": "Nani says, \"Today we eat roti, dal and rice.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर अमन के अध्यापक हैं।",
+              "english": "Ravi sir is Aman's teacher."
+            },
+            {
+              "text": "टमाटर लाल है।",
+              "english": "The tomato is red."
+            },
+            {
+              "text": "लाल टमाटर बहुत अच्छे हैं।",
+              "english": "Red tomatoes are very good."
+            },
+            {
+              "text": "नानी रोज़ बाज़ार जाती हैं।",
+              "english": "Nani goes to the market every day."
             }
           ]
         }

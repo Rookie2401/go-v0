@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "First-person testimony in simple language. The perfective with ने (मैंने ... माँगी; उसने कहा कि ...) and कि-clauses; habitual past (करते थे, पढ़ता था). Christian words as Hindi churches say them (परमेश्वर, यीशु, क्षमा, शांति, कलीसिया). परमेश्वर and यीशु are read as names by the adapter and count as known. \"मेरी गवाही\" is the plan's word for testimony; a Hindi Christian reviewer should confirm that गवाही is the natural everyday word. The last third brings back the Diwali, kitchen and message words as the story of the first year in this city. Sam's personal history here (a quiet home, work, money, an empty heart) is invented for the course and must be checked by the owner. Words outside the plan (measured, adapter lemmas x tokens): कपड़ा×2 (under-met)."
+    "notes": "First-person testimony in simple language. The perfective with ने (मैंने ... माँगी; उसने कहा कि ...) and कि-clauses; habitual past (करते थे, पढ़ता था). Christian words as Hindi churches say them (परमेश्वर, यीशु, क्षमा, शांति, कलीसिया). परमेश्वर and यीशु are read as names by the adapter and count as known. \"मेरी गवाही\" is the plan's word for testimony; a Hindi Christian reviewer should confirm that गवाही is the natural everyday word. The last third brings back the Diwali, kitchen and message words as the story of the first year in this city. Sam's personal history here (a quiet home, work, money, an empty heart) is invented for the course and must be checked by the owner. Words outside the plan (measured, adapter lemmas x tokens): कपड़ा×2 (under-met). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -374,6 +374,26 @@
             {
               "text": "परमेश्वर ने मेरी नौकरी और मेरा साल अच्छा किया।",
               "english": "God made my job and my year good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मेरी पढ़ाई अच्छी थी, और मैं छाया में बैठकर सोचता था।",
+              "english": "My studies were good, and I sat in the shade and thought."
+            },
+            {
+              "text": "मैं धीरे धीरे समझा कि पैसा सब कुछ नहीं है।",
+              "english": "Slowly I understood that money is not everything."
+            },
+            {
+              "text": "मेरी नौकरी अच्छी थी, लेकिन मेरा दिल ठंडा था।",
+              "english": "My job was good, but my heart was cold."
+            },
+            {
+              "text": "मैंने चिड़िया को देखा, और वही चिड़िया मेरे लिए एक गीत गाती थी।",
+              "english": "I saw a bird, and that very bird sang a song for me."
             }
           ]
         }

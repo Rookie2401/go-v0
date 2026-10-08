@@ -1,0 +1,76 @@
+=== de-a1-1-02
+speakers: sam=Sam, weber=Frau Weber
+## Das Haus
+Sam ist bei Frau Weber. || Sam is at Mrs Weber's.
+Das Haus ist in der Stadt. || The house is in the city.
+[weber] Guten Morgen, Herr Miller! || Good morning, Mr Miller!
+[weber] Kommen Sie! || Come in!
+[sam] Guten Morgen, Frau Weber. || Good morning, Mrs Weber.
+[sam] Danke! || Thank you!
+[weber] Wie geht es Ihnen? || How are you?
+[sam] Gut, danke. || Fine, thank you.
+[sam] Und Ihnen? || And you?
+[weber] Auch gut, danke. || Also fine, thank you.
+[weber] Das Haus ist klein. || The house is small.
+[weber] Aber es ist schön. || But it is nice.
+[weber] Und da ist das Zimmer für Sie. || And there is the room for you.
+[sam] Das ist sehr schön! || That is very nice!
+
+## Das Zimmer
+Das Zimmer ist klein, aber schön. || The room is small, but nice.
+[weber] Da ist das Fenster. || There is the window.
+[sam] Das Fenster ist groß. || The window is big.
+[weber] Das Bett ist beim Fenster. || The bed is by the window.
+[sam] Und das Bett ist auch groß. || And the bed is big too.
+[weber] Es gibt einen Tisch und einen Stuhl. || There is a table and a chair.
+[sam] Der Stuhl ist beim Tisch. || The chair is by the table.
+[sam] Und da ist ein Buch. || And there is a book.
+[weber] Ja, das Buch ist für Sie. || Yes, the book is for you.
+[weber] Es ist in Deutsch. || It is in German.
+[sam] Das ist sehr gut, danke! || That is very good, thank you!
+[sam] Ich möchte gern Deutsch sprechen. || I would like to speak German.
+
+## Die Küche und das Bad
+[weber] Kommen Sie, Herr Miller. || Come, Mr Miller.
+[weber] Hier ist die Küche. || Here is the kitchen.
+[weber] Die Küche ist groß. || The kitchen is big.
+[weber] Hier gibt es drei Stühle. || There are three chairs here.
+[weber] Hier ist Kaffee und Brot. || Here is coffee and bread.
+[weber] Und hier ist das Bad. || And here is the bathroom.
+[sam] Das Bad ist klein. || The bathroom is small.
+[weber] Ja, aber es ist gut. || Yes, but it is good.
+[weber] Es gibt kein Bad im Zimmer. || There is no bathroom in the room.
+[sam] Nein? || No?
+[sam] Wo? || Where?
+[weber] Hier, im Haus. || Here, in the house.
+[sam] Das ist gut. || That is good.
+
+## Der Schlüssel
+[weber] Ich gebe Ihnen den Schlüssel für das Haus. || I give you the key for the house.
+[sam] Danke, Frau Weber! || Thank you, Mrs Weber!
+[weber] Ihre Tasche ist auf dem Bett. || Your bag is on the bed.
+
+## Kaffee in der Küche
+Sam und Frau Weber sind in der Küche. || Sam and Mrs Weber are in the kitchen.
+[weber] Möchten Sie einen Kaffee? || Would you like a coffee?
+[sam] Ja, gern. || Yes, gladly.
+[sam] Danke. || Thank you.
+[weber] Anna kommt heute auch in die Kirche. || Anna is coming to church today too.
+[sam] Das ist schön, Anna ist auch in der Kirche. || That is nice, Anna is in church too.
+[weber] Anna ist sehr gut. || Anna is very good.
+[weber] Sie arbeitet in der Klinik. || She works at the clinic.
+[weber] Und Lukas ist Lehrer in der Schule. || And Lukas is a teacher at the school.
+[sam] Ja, ich weiß. || Yes, I know.
+[weber] Heute ist Sonntag. || Today is Sunday.
+[weber] Ich gehe in die Kirche. || I am going to church.
+[weber] Gehen Sie mit, Herr Miller? || Are you coming along, Mr Miller?
+[sam] Ja, ich gehe gern mit. || Yes, I will gladly come along.
+[weber] Haben Sie Hunger? || Are you hungry?
+[sam] Ja, ich habe Hunger. || Yes, I am hungry.
+[weber] Hier ist Brot. || Here is bread.
+[weber] Und möchten Sie Wasser? || And would you like water?
+[sam] Ja, bitte. || Yes, please.
+[sam] Ich trinke gern Wasser. || I like drinking water.
+[weber] Gut. || Good.
+[weber] Wir gehen in die Kirche. || We are going to church.
+

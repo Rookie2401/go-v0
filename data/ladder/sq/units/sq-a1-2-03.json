@@ -139,8 +139,8 @@
               "english": "On Thursday Sam is at home."
             },
             {
-              "text": "Ai nuk bën asgjë në mëngjes. Ai fle.",
-              "english": "He does nothing in the morning. He sleeps."
+              "text": "Ai nuk bën asgjë në mëngjes. Ai fle. Natën Sam lexon një histori në shqip.",
+              "english": "He does nothing in the morning. He sleeps. At night Sam reads a story in Albanian."
             },
             {
               "text": "Pastaj Sam mëson shqip. Ai lexon dhe shkruan shumë.",
@@ -219,8 +219,8 @@
         {
           "sentences": [
             {
-              "text": "Të dielën Sam shkon në kishë.",
-              "english": "On Sunday Sam goes to church."
+              "text": "Të dielën Sam shkon në kishë. Një burrë thotë: — Jezusi vdiq për mëkatet tona dhe u ringjall. Sam lutet: — Zot, faleminderit!",
+              "english": "On Sunday Sam goes to church. A man says: \"Jesus died for our sins and rose again.\" Sam prays: \"Lord, thank you!\""
             },
             {
               "text": "Ai duhet të vijë në orën dhjetë.",

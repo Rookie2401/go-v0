@@ -1,0 +1,135 @@
+=== de-a2-1-05
+speakers: S=Sam, A=Anna, V=Verkäuferin, J=Jonas
+## In der Straßenbahn
+Es ist Samstag im November, und es ist kalt. || It is Saturday in November, and it is cold.
+Sam fährt mit Anna in die Stadt. || Sam is going into town with Anna.
+[A] Wie war der Sommer in Leipzig? || How was the summer in Leipzig?
+[S] Er war schön. || It was lovely.
+[S] Ich war oft draußen, und ich hatte nur dünne Kleidung. || I was often outside, and I only had thin clothes.
+[A] Der Winter ist lang und dunkel, und es ist oft sehr kalt. || The winter is long and dark, and it is often very cold.
+[A] Um vier Uhr ist es schon dunkel. || At four o'clock it is already dark.
+[S] In den USA ist der Winter nicht so lang. || In the USA the winter is not so long.
+[S] Dann brauche ich eine Hose und eine Jacke. || Then I need trousers and a jacket.
+[A] Ich kenne ein gutes Geschäft in der Stadt. || I know a good shop in town.
+[A] Die Preise sind dort gut, und es gibt viel für den Winter. || The prices there are good, and there is a lot for winter.
+[S] Das ist gut. || That is good.
+[S] Ich habe nicht viel Zeit. || I do not have much time.
+[A] Wir haben Zeit. || We have time.
+[A] Das Geschäft ist am Markt. || The shop is at the market.
+[S] Wie lange fahren wir? || How long will we be on the tram?
+[A] Zehn Minuten. || Ten minutes.
+[A] Dort ist schon die Haltestelle. || There is the stop already.
+Sie steigen aus. || They get off.
+Es regnet, und Sam hat keinen Regenschirm. || It is raining, and Sam has no umbrella.
+
+## Im Geschäft
+Das Geschäft ist groß, und es gibt sehr viel Kleidung. || The shop is big, and there are a lot of clothes.
+[V] Guten Tag! || Good day!
+[V] Was wünschen Sie? || What would you like?
+[S] Guten Tag. || Good day.
+[S] Ich brauche eine warme Jacke. || I need a warm jacket.
+[A] Und einen Pullover. || And a pullover.
+[V] Die Hosen finden Sie dort. || You will find the trousers over there.
+[V] Gern. || Gladly.
+[V] Welche Größe haben Sie? || What size are you?
+[S] Ich weiß es nicht genau. || I do not know exactly.
+[V] Das ist nicht schlimm. || That is not a problem.
+[V] Probieren Sie diese Jacke an. || Try this jacket on.
+Sam nimmt die Jacke. || Sam takes the jacket.
+[S] Sie ist zu groß. || It is too big.
+[V] Dann nehmen wir eine kleinere Größe. || Then we will take a smaller size.
+[V] Die Jacke gibt es in Blau, Schwarz und Grau. || The jacket comes in blue, black and grey.
+[A] Blau passt zu dir. || Blue suits you.
+[V] Die Jacke passt sehr gut. || The jacket fits very well.
+[S] Was kostet sie? || What does it cost?
+[V] Sie kostet hundert Euro. || It costs a hundred euros.
+[S] Das ist teuer! || That is expensive!
+[A] Die graue Jacke ist billiger. || The grey jacket is cheaper.
+[V] Ja, sie kostet nur sechzig Euro. || Yes, it costs only sixty euros.
+[S] Das ist billig, aber die Farbe ist nicht schön. || That is cheap, but the colour is not nice.
+[A] Welche Farbe magst du? || Which colour do you like?
+[S] Ich mag Grün. || I like green.
+[S] Die Jacke gibt es nicht in Grün. || The jacket does not come in green.
+[V] Sonst haben wir sie nur in Rot und Gelb. || Otherwise we only have it in red and yellow.
+[S] Rot und Gelb sind nicht meine Farben. || Red and yellow are not my colours.
+[A] Dann nimm die blaue Jacke. || Then take the blue jacket.
+[A] Sie ist teuer, aber sie ist gut. || It is expensive, but it is good.
+[S] Gut, ich nehme sie. || All right, I will take it.
+
+## Die Mütze und die Geschichte
+Anna sieht eine Mütze. || Anna sees a hat.
+[A] Diese Mütze war braun, und mein Opa hat sie immer getragen. || This hat was brown, and my grandpa always wore it.
+[S] Sie ist schön. || It is lovely.
+[S] Wie alt ist sie? || How old is it?
+[A] Sehr alt. || Very old.
+[A] Opa ist vor zehn Jahren gestorben. || Grandpa died ten years ago.
+[S] Das ist traurig. || That is sad.
+[A] Das war damals im Dorf. || That was back then in the village.
+[S] Hat sie eine Geschichte? || Does it have a story?
+[A] Ja. || Yes.
+[A] Mein Onkel hat sie ihm zum Geburtstag geschenkt. || My uncle gave it to him for his birthday.
+[A] Meine Tante hat für uns Kinder grüne Pullover gemacht. || My aunt made green pullovers for us children.
+[A] Wir haben die Hosen und die Jacken von unseren Geschwistern getragen. || We wore our brothers' and sisters' trousers and jackets.
+[S] Wie auf einem Bauernhof! || Like on a farm!
+[A] Sieh, hier ist ein Pullover mit einer Kuh. || Look, here is a pullover with a cow.
+[A] Er ist gelb. || It is yellow.
+[A] Und hier ist eine Jacke mit einem Pferd. || And here is a jacket with a horse.
+[A] Das Pferd ist braun. || The horse is brown.
+[S] Wie in den Ferien auf dem Bauernhof! || Like in the holidays on the farm!
+[A] Ben rennt oft mit dem roten Ball. || Ben often runs with the red ball.
+[A] Seine braunen Schuhe sind alt. || His brown shoes are old.
+[A] Er braucht neue Schuhe. || He needs new shoes.
+
+## Ein Hemd für die Einladung
+[S] Ich brauche noch ein weißes Hemd. || I still need a white shirt.
+[S] Pastor Thomas hat uns zu seinem Geburtstag eingeladen. || Pastor Thomas has invited us to his birthday.
+[S] Er hat am dritten Dezember Geburtstag. || His birthday is on the third of December.
+[A] Die Einladung habe ich auch. || I have the invitation too.
+[S] Ja. || Yes.
+[S] Der Dezember ist der letzte Monat im Jahr, und Februar ist erst der zweite. || December is the last month of the year, and February is only the second.
+[V] Wir haben dieses Hemd in Weiß und in Grau. || We have this shirt in white and in grey.
+[S] Ich nehme das weiße. || I will take the white one.
+[S] Darf ich es anprobieren? || May I try it on?
+[V] Ja, gern. || Yes, gladly.
+[S] Es ist zu klein. || It is too small.
+[V] Dann nehmen wir eine größere Größe. || Then we will take a bigger size.
+[S] Jetzt passt es. || Now it fits.
+[S] Ich nehme das Hemd. || I will take the shirt.
+
+## Jonas im Geschäft
+Auf einmal ist Jonas da. || All at once Jonas is there.
+[J] Hallo! || Hello!
+[J] Ich suche schwarze Schuhe für die Firma. || I am looking for black shoes for the company.
+[S] Hast du den Vertrag unterschrieben? || Did you sign the contract?
+[J] Ja! || Yes!
+[J] Ich bin jetzt Mechaniker. || I am a mechanic now.
+[J] Die Stelle ist gut. || The job is good.
+[A] Wo arbeitest du? || Where do you work?
+[J] In einer kleinen Firma am Bahnhof. || In a small company at the station.
+[J] Am Montag beginne ich. || I start on Monday.
+[J] Mein Lebenslauf und meine Bewerbung waren richtig, und das Gespräch war auch gut. || My CV and my application were right, and the interview was good too.
+[J] Ich habe schon Erfahrung, und ich verdiene gut. || I already have experience, and I earn well.
+[J] Meine Kollegen tragen alle Schwarz. || My colleagues all wear black.
+[A] Dann nimm die da. || Then take those there.
+[A] Sie sind nicht teuer. || They are not expensive.
+[J] Sie sind sogar billig. || They are even cheap.
+[J] Ich habe sie erst eine Minute, aber ich mag sie. || I have had them only a minute, but I like them.
+[V] Zusammen sind das 140 Euro. || Together that is 140 euros.
+Sam gibt ihr die Euro. || Sam gives her the euros.
+
+## Später im Café
+Später sitzen Sam und Anna im Café. || Later Sam and Anna sit in the café.
+[A] Jetzt hast du Kleidung für das ganze Jahr. || Now you have clothes for the whole year.
+[A] Im Januar und Februar ist es sehr kalt, und im März und April regnet es. || In January and February it is very cold, and in March and April it rains.
+[A] Im Mai, Juni, Juli und August ist es warm, und die Sonne scheint oft. || In May, June, July and August it is warm, and the sun often shines.
+[A] Im September, Oktober und November wird es wieder kalt. || In September, October and November it gets cold again.
+[A] Im Dezember kommt der Schnee. || In December the snow comes.
+[A] In unserem Dorf stand dann immer ein großer Baum auf dem Platz. || In our village there was always a big tree in the square then.
+[S] Das sind zwölf Monate! || That is twelve months!
+[A] Und nächste Woche kaufst du eine Mütze. || And next week you will buy a hat.
+[A] Wir haben eine Einladung. || We have an invitation.
+[A] Was kaufen wir für Thomas? || What shall we buy for Thomas?
+[S] Welchen Kuchen backen wir? || Which cake shall we bake?
+[S] Wir backen einen Kuchen. || We will bake a cake.
+[A] Gut, ich backe ihn, und du kaufst Kaffee. || Good, I will bake it, and you buy coffee.
+

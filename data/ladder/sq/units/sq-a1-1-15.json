@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-15",
+  "lang": "sq",
+  "title": "Darka",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-15",
+    "title": "Albanian ladder, a1-1: Darka (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Darka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot bie shi.",
+              "english": "Today it is raining."
+            },
+            {
+              "text": "Ana del nga klinika.",
+              "english": "Ana leaves the clinic."
+            },
+            {
+              "text": "Ajo vjen nga puna.",
+              "english": "She comes home from work."
+            },
+            {
+              "text": "Ajo punon shumë në klinikë.",
+              "english": "She works a lot at the clinic."
+            },
+            {
+              "text": "Ajo është e lodhur.",
+              "english": "She is tired."
+            },
+            {
+              "text": "Luan është në kuzhinë.",
+              "english": "Luan is in the kitchen."
+            },
+            {
+              "text": "Ai bën darkë.",
+              "english": "He makes dinner."
+            },
+            {
+              "text": "Ana ulet në tavolinë.",
+              "english": "Ana sits down at the table."
+            },
+            {
+              "text": "Mbi tavolinë ka dy pjata.",
+              "english": "On the table there are two plates."
+            },
+            {
+              "text": "Luan i jep çaj.",
+              "english": "Luan gives her tea."
+            },
+            {
+              "text": "Ana e merr çajin dhe lexon.",
+              "english": "Ana takes the tea and reads."
+            },
+            {
+              "text": "Pastaj Luan dhe Ana hanë.",
+              "english": "Then Luan and Ana eat."
+            },
+            {
+              "text": "Orizi, buka dhe djathi janë të mira.",
+              "english": "The rice, the bread and the cheese are good."
+            },
+            {
+              "text": "Ana thotë: — Faleminderit, Luan!",
+              "english": "Ana says: \"Thank you, Luan!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sot Sam ha darkë te Drita.",
+              "english": "Today Sam has dinner at Drita's."
+            },
+            {
+              "text": "Gjyshja Drita bën bukë dhe oriz.",
+              "english": "Grandmother Drita makes bread and rice."
+            },
+            {
+              "text": "Luan blen bukë dhe oriz.",
+              "english": "Luan buys bread and rice."
+            },
+            {
+              "text": "Pjatat janë mbi tavolinë.",
+              "english": "The plates are on the table."
+            },
+            {
+              "text": "Të gjithë ulen në tavolinë.",
+              "english": "Everyone sits down at the table."
+            },
+            {
+              "text": "— Mirë se vjen, Sam! Hyr, të lutem.",
+              "english": "\"Welcome, Sam! Come in, please.\""
+            },
+            {
+              "text": "— Shtëpia juaj është shumë e bukur.",
+              "english": "\"Your house is very beautiful.\""
+            },
+            {
+              "text": "Ata hanë dhe flasin shqip.",
+              "english": "They eat and speak Albanian."
+            },
+            {
+              "text": "Sam kupton shumë.",
+              "english": "Sam understands a lot."
+            },
+            {
+              "text": "Orizi është shumë i mirë.",
+              "english": "The rice is very good."
+            },
+            {
+              "text": "Pastaj Ardi dhe Sam lajnë pjatat.",
+              "english": "Then Ardi and Sam wash the plates."
+            },
+            {
+              "text": "Gjyshja pi kafe dhe buzëqesh.",
+              "english": "Grandmother drinks coffee and smiles."
+            },
+            {
+              "text": "Ajo është e lumtur.",
+              "english": "She is happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Te Dritani babai vjen nga puna.",
+              "english": "At Dritan's the father comes home from work."
+            },
+            {
+              "text": "Ai është i lodhur, por i lumtur.",
+              "english": "He is tired, but happy."
+            },
+            {
+              "text": "Mira, gruaja e Dritanit, e ka bërë darkën.",
+              "english": "Mira, Dritan's wife, has made the dinner."
+            },
+            {
+              "text": "— Si ishte dita? — pyet babai.",
+              "english": "\"How was the day?\" asks the father."
+            },
+            {
+              "text": "— Mirë, — thotë Gjergji.",
+              "english": "\"Good,\" says Gjergj."
+            },
+            {
+              "text": "— Mësuesi na dha një libër të ri.",
+              "english": "\"The teacher gave us a new book.\""
+            },
+            {
+              "text": "— Unë i shkrova gjyshes, — thotë Elira.",
+              "english": "\"I wrote to grandmother,\" says Elira."
+            },
+            {
+              "text": "Pas darkës fëmijët lajnë pjatat dhe luajnë.",
+              "english": "After dinner the children wash the plates and play."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam dhe Luan pinë kafe.",
+              "english": "Sam and Luan drink coffee."
+            },
+            {
+              "text": "Dje Sam ishte në kishë me Luanin.",
+              "english": "Yesterday Sam was at church with Luan."
+            },
+            {
+              "text": "Sam i jep Luanit një letër.",
+              "english": "Sam gives Luan a letter."
+            },
+            {
+              "text": "— Luan, a beson te Perëndia? — pyet Sam.",
+              "english": "\"Luan, do you believe in God?\" asks Sam."
+            },
+            {
+              "text": "— Po, besoj.",
+              "english": "\"Yes, I believe.\""
+            },
+            {
+              "text": "— Edhe unë besoj.",
+              "english": "\"I believe too.\""
+            },
+            {
+              "text": "— Ana gjithashtu beson.",
+              "english": "\"Ana believes too.\""
+            },
+            {
+              "text": "— Po Drita?",
+              "english": "\"And Drita?\""
+            },
+            {
+              "text": "— Drita shkon në kishë çdo të diel.",
+              "english": "\"Drita goes to church every Sunday.\""
+            },
+            {
+              "text": "— Mirë. Unë dua të lexoj Biblën me ty.",
+              "english": "\"Good. I want to read the Bible with you.\""
+            },
+            {
+              "text": "— Shumë mirë, Sam.",
+              "english": "\"Very good, Sam.\""
+            },
+            {
+              "text": "Pastaj Sam fillon të lexojë me Luanin.",
+              "english": "Then Sam begins to read with Luan."
+            },
+            {
+              "text": "Ata lexojnë bashkë.",
+              "english": "They read together."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. This is a letter (contentType letter in the plan), but the schema rejects \"letter\" (it allows story, dialogue, nonfiction, scripture, transcript, testimony, generated-prep), so the draft carries nonfiction. One voice (Sam), no speaker lines. Salutation आदरणीय पास्टर जी और कलीसिया के प्रिय परिवार; closing परमेश्वर की शांति के साथ, आपका प्रिय भाई सैम. Honorific plurals for रवि जी, सीता नानी, मीरा दीदी and the lawyer. Ravi's title सर is deliberately not used: the adapter has no known lemma सर for the learner, so he is called रवि जी here; the reviewer may wish to restore रवि सर and schedule सर. The neighbours' mandir is mentioned only as a landmark, with respect. Nani's husband is not mentioned. No Scripture is quoted. The story of the fat king is the children's story of the next text in the ladder, mentioned only as a story Aman's class reads. Outside word kept: सुई (needle, ×1). Please check: \"पैर छूना\" (touching an elder feet), \"भेंट\" meaning a gift or offering, \"सरकार के दफ़्तर\" (a government office), \"डाक से भेजना\", and that Meera didi works at the \"अस्पताल\" here (world facts say clinic; क्लिनिक is not in the palette)."
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. This is a letter (contentType letter in the plan), but the schema rejects \"letter\" (it allows story, dialogue, nonfiction, scripture, transcript, testimony, generated-prep), so the draft carries nonfiction. One voice (Sam), no speaker lines. Salutation आदरणीय पास्टर जी और कलीसिया के प्रिय परिवार; closing परमेश्वर की शांति के साथ, आपका प्रिय भाई सैम. Honorific plurals for रवि जी, सीता नानी, मीरा दीदी and the lawyer. Ravi's title सर is deliberately not used: the adapter has no known lemma सर for the learner, so he is called रवि जी here; the reviewer may wish to restore रवि सर and schedule सर. The neighbours' mandir is mentioned only as a landmark, with respect. Nani's husband is not mentioned. No Scripture is quoted. The story of the fat king is the children's story of the next text in the ladder, mentioned only as a story Aman's class reads. Outside word kept: सुई (needle, ×1). Please check: \"पैर छूना\" (touching an elder feet), \"भेंट\" meaning a gift or offering, \"सरकार के दफ़्तर\" (a government office), \"डाक से भेजना\", and that Meera didi works at the \"अस्पताल\" here (world facts say clinic; क्लिनिक is not in the palette). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -561,6 +561,18 @@
             {
               "text": "आपका प्रिय भाई सैम",
               "english": "Your dear brother, Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यहाँ के नन्हे बच्चे भी हमारी प्रार्थना सभा में आते हैं।",
+              "english": "The tiny children here also come to our prayer meeting."
+            },
+            {
+              "text": "सब लोग हर रविवार को चर्च में आते हैं।",
+              "english": "Everybody comes to church every Sunday."
             }
           ]
         }

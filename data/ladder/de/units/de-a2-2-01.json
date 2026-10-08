@@ -43,6 +43,19 @@
     "conversation"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "speakers": {
     "S": "Sam",
     "A": "Anna",
@@ -71,154 +84,154 @@
         {
           "sentences": [
             {
+              "speaker": "A",
               "text": "Ich habe einen Vorschlag für Samstag.",
-              "english": "I have a suggestion for Saturday.",
-              "speaker": "A"
+              "english": "I have a suggestion for Saturday."
             },
             {
+              "speaker": "A",
               "text": "Aber ich weiß noch nicht, ob alles möglich ist.",
-              "english": "But I do not know yet whether everything is possible.",
-              "speaker": "A"
+              "english": "But I do not know yet whether everything is possible."
             },
             {
+              "speaker": "L",
               "text": "Dann sag ihn uns doch.",
-              "english": "Then tell us.",
-              "speaker": "L"
+              "english": "Then tell us."
             },
             {
+              "speaker": "A",
               "text": "Am Morgen hat Jonas einen Termin.",
-              "english": "In the morning Jonas has an appointment.",
-              "speaker": "A"
+              "english": "In the morning Jonas has an appointment."
             },
             {
+              "speaker": "A",
               "text": "Er sucht ein Zimmer und möchte um zehn Uhr eins sehen.",
-              "english": "He is looking for a room and wants to see one at ten o'clock.",
-              "speaker": "A"
+              "english": "He is looking for a room and wants to see one at ten o'clock."
             },
             {
+              "speaker": "A",
               "text": "Es ist möbliert, und es kostet monatlich 280 Euro.",
-              "english": "It is furnished, and it costs 280 euros a month.",
-              "speaker": "A"
+              "english": "It is furnished, and it costs 280 euros a month."
             },
             {
+              "speaker": "S",
               "text": "Ist das nicht wahrscheinlich ein sehr kleines Zimmer?",
-              "english": "Isn't it probably a very small room?",
-              "speaker": "S"
+              "english": "Isn't it probably a very small room?"
             },
             {
+              "speaker": "A",
               "text": "Vielleicht.",
-              "english": "Perhaps.",
-              "speaker": "A"
+              "english": "Perhaps."
             },
             {
+              "speaker": "A",
               "text": "Aber es ist bestimmt schön.",
-              "english": "But it is certainly nice.",
-              "speaker": "A"
+              "english": "But it is certainly nice."
             },
             {
+              "speaker": "A",
               "text": "Dazu kommt noch eine Kaution.",
-              "english": "On top of that there is a deposit.",
-              "speaker": "A"
+              "english": "On top of that there is a deposit."
             },
             {
+              "speaker": "A",
               "text": "Jonas hat gefragt, ob du mitkommst, Sam.",
-              "english": "Jonas asked whether you would come along, Sam.",
-              "speaker": "A"
+              "english": "Jonas asked whether you would come along, Sam."
             },
             {
+              "speaker": "S",
               "text": "Ich?",
-              "english": "Me?",
-              "speaker": "S"
+              "english": "Me?"
             },
             {
+              "speaker": "S",
               "text": "Warum braucht er mich?",
-              "english": "Why does he need me?",
-              "speaker": "S"
+              "english": "Why does he need me?"
             },
             {
+              "speaker": "A",
               "text": "Du hast bei Frau Weber alles über Miete und Kaution gelernt.",
-              "english": "You learned everything about rent and deposit at Frau Weber's.",
-              "speaker": "A"
+              "english": "You learned everything about rent and deposit at Frau Weber's."
             },
             {
+              "speaker": "A",
               "text": "Ich denke, dass er deshalb gern einen Freund dabei hat.",
-              "english": "I think that is why he would like to have a friend with him.",
-              "speaker": "A"
+              "english": "I think that is why he would like to have a friend with him."
             },
             {
+              "speaker": "S",
               "text": "Das ist ein guter Grund.",
-              "english": "That is a good reason.",
-              "speaker": "S"
+              "english": "That is a good reason."
             },
             {
+              "speaker": "S",
               "text": "Ich komme gern mit, wenn mein Deutsch gut genug ist.",
-              "english": "I will gladly come along, if my German is good enough.",
-              "speaker": "S"
+              "english": "I will gladly come along, if my German is good enough."
             },
             {
+              "speaker": "L",
               "text": "Dein Deutsch ist gut.",
-              "english": "Your German is good.",
-              "speaker": "L"
+              "english": "Your German is good."
             },
             {
+              "speaker": "L",
               "text": "Du sprichst viel besser als im Sommer.",
-              "english": "You speak much better than in the summer.",
-              "speaker": "L"
+              "english": "You speak much better than in the summer."
             },
             {
+              "speaker": "S",
               "text": "Was meinst du, Anna?",
-              "english": "What do you think, Anna?",
-              "speaker": "S"
+              "english": "What do you think, Anna?"
             },
             {
+              "speaker": "S",
               "text": "Ist das wirklich eine gute Idee?",
-              "english": "Is that really a good idea?",
-              "speaker": "S"
+              "english": "Is that really a good idea?"
             },
             {
+              "speaker": "A",
               "text": "Das ist meine Meinung: Ja.",
-              "english": "That is my opinion: yes.",
-              "speaker": "A"
+              "english": "That is my opinion: yes."
             },
             {
+              "speaker": "L",
               "text": "Das ist auch meine Meinung.",
-              "english": "That is my opinion too.",
-              "speaker": "L"
+              "english": "That is my opinion too."
             },
             {
+              "speaker": "L",
               "text": "Das hilft Jonas.",
-              "english": "That helps Jonas.",
-              "speaker": "L"
+              "english": "That helps Jonas."
             },
             {
+              "speaker": "S",
               "text": "Dann ist das ein guter Vorschlag.",
-              "english": "Then that is a good suggestion.",
-              "speaker": "S"
+              "english": "Then that is a good suggestion."
             },
             {
+              "speaker": "S",
               "text": "Ich muss kurz überlegen.",
-              "english": "I need to think for a moment.",
-              "speaker": "S"
+              "english": "I need to think for a moment."
             },
             {
+              "speaker": "A",
               "text": "Hat der Vermieter ein Problem mit zwei Gästen?",
-              "english": "Does the landlord have a problem with two guests?",
-              "speaker": "A"
+              "english": "Does the landlord have a problem with two guests?"
             },
             {
+              "speaker": "A",
               "text": "Ich glaube es nicht.",
-              "english": "I do not think so.",
-              "speaker": "A"
+              "english": "I do not think so."
             },
             {
+              "speaker": "S",
               "text": "Gut.",
-              "english": "Good.",
-              "speaker": "S"
+              "english": "Good."
             },
             {
+              "speaker": "S",
               "text": "Dann ist der Morgen geplant.",
-              "english": "Then the morning is planned.",
-              "speaker": "S"
+              "english": "Then the morning is planned."
             }
           ]
         }
@@ -230,124 +243,124 @@
         {
           "sentences": [
             {
+              "speaker": "A",
               "text": "Am Mittag möchte ich zur Post.",
-              "english": "At noon I would like to go to the post office.",
-              "speaker": "A"
+              "english": "At noon I would like to go to the post office."
             },
             {
+              "speaker": "S",
               "text": "Ich auch!",
-              "english": "Me too!",
-              "speaker": "S"
+              "english": "Me too!"
             },
             {
+              "speaker": "S",
               "text": "Ich will nämlich ein Päckchen schicken.",
-              "english": "I want to send a parcel, you see.",
-              "speaker": "S"
+              "english": "I want to send a parcel, you see."
             },
             {
+              "speaker": "S",
               "text": "Meine Mutter hat Geburtstag, und ich habe ihr einen Brief geschrieben.",
-              "english": "My mother has a birthday, and I have written her a letter.",
-              "speaker": "S"
+              "english": "My mother has a birthday, and I have written her a letter."
             },
             {
+              "speaker": "S",
               "text": "In das Päckchen kommt auch ein Gruß von Frau Weber.",
-              "english": "A greeting from Frau Weber is also going into the parcel.",
-              "speaker": "S"
+              "english": "A greeting from Frau Weber is also going into the parcel."
             },
             {
+              "speaker": "L",
               "text": "Wie lange ist die Post am Samstag offen?",
-              "english": "How long is the post office open on Saturday?",
-              "speaker": "L"
+              "english": "How long is the post office open on Saturday?"
             },
             {
+              "speaker": "A",
               "text": "Sie ist bis zwölf Uhr offen, glaube ich.",
-              "english": "It is open until twelve, I believe.",
-              "speaker": "A"
+              "english": "It is open until twelve, I believe."
             },
             {
+              "speaker": "A",
               "text": "Ich bin nicht sicher.",
-              "english": "I am not sure.",
-              "speaker": "A"
+              "english": "I am not sure."
             },
             {
+              "speaker": "A",
               "text": "Wir müssen eine Briefmarke kaufen, sonst kommt das Päckchen nicht an.",
-              "english": "We have to buy a stamp, otherwise the parcel does not arrive.",
-              "speaker": "A"
+              "english": "We have to buy a stamp, otherwise the parcel does not arrive."
             },
             {
+              "speaker": "S",
               "text": "Das ist wirklich ein Problem.",
-              "english": "That really is a problem.",
-              "speaker": "S"
+              "english": "That really is a problem."
             },
             {
+              "speaker": "S",
               "text": "Wenn Jonas zu lange braucht, kommen wir zu spät.",
-              "english": "If Jonas takes too long, we will be too late.",
-              "speaker": "S"
+              "english": "If Jonas takes too long, we will be too late."
             },
             {
+              "speaker": "L",
               "text": "Dafür gibt es eine Lösung.",
-              "english": "There is a solution for that.",
-              "speaker": "L"
+              "english": "There is a solution for that."
             },
             {
+              "speaker": "L",
               "text": "Du gehst zuerst allein zur Post, und wir sehen uns später.",
-              "english": "You go to the post office alone first, and we meet later.",
-              "speaker": "L"
+              "english": "You go to the post office alone first, and we meet later."
             },
             {
+              "speaker": "S",
               "text": "Ist das möglich?",
-              "english": "Is that possible?",
-              "speaker": "S"
+              "english": "Is that possible?"
             },
             {
+              "speaker": "S",
               "text": "Ich bin sicher nicht schnell genug.",
-              "english": "I am surely not fast enough.",
-              "speaker": "S"
+              "english": "I am surely not fast enough."
             },
             {
+              "speaker": "L",
               "text": "Es geht nicht um die Zeit, sondern um den Weg.",
-              "english": "It is not about the time but about the way.",
-              "speaker": "L"
+              "english": "It is not about the time but about the way."
             },
             {
+              "speaker": "L",
               "text": "Aber du kennst den Weg.",
-              "english": "But you know the way.",
-              "speaker": "L"
+              "english": "But you know the way."
             },
             {
+              "speaker": "L",
               "text": "Du bist schnell genug.",
-              "english": "You are fast enough.",
-              "speaker": "L"
+              "english": "You are fast enough."
             },
             {
+              "speaker": "L",
               "text": "Du hast ja noch zwei Stunden Zeit.",
-              "english": "After all, you have two hours.",
-              "speaker": "L"
+              "english": "After all, you have two hours."
             },
             {
+              "speaker": "S",
               "text": "Das ist eigentlich die beste Lösung.",
-              "english": "That is actually the best solution.",
-              "speaker": "S"
+              "english": "That is actually the best solution."
             },
             {
+              "speaker": "S",
               "text": "Ich wollte nämlich nicht, dass Jonas wartet.",
-              "english": "You see, I did not want Jonas to wait.",
-              "speaker": "S"
+              "english": "You see, I did not want Jonas to wait."
             },
             {
+              "speaker": "L",
               "text": "Das ist keine Lösung für immer, nur für den Samstag.",
-              "english": "That is not a solution forever, only for Saturday.",
-              "speaker": "L"
+              "english": "That is not a solution forever, only for Saturday."
             },
             {
+              "speaker": "S",
               "text": "Ich vermisse meine Heimat nämlich nicht so sehr, aber meine Mutter vermisse ich.",
-              "english": "You see, I do not miss my home country so much, but I do miss my mother.",
-              "speaker": "S"
+              "english": "You see, I do not miss my home country so much, but I do miss my mother."
             },
             {
+              "speaker": "A",
               "text": "Es kommt bestimmt an, und wenn es wirklich ankommt, freut sie sich.",
-              "english": "It will certainly arrive, and if it really arrives, she will be glad.",
-              "speaker": "A"
+              "english": "It will certainly arrive, and if it really arrives, she will be glad."
             }
           ]
         }
@@ -359,139 +372,139 @@
         {
           "sentences": [
             {
+              "speaker": "A",
               "text": "Am Nachmittag spielt Ben in der Kinderkirche.",
-              "english": "In the afternoon Ben is acting in the children's church.",
-              "speaker": "A"
+              "english": "In the afternoon Ben is acting in the children's church."
             },
             {
+              "speaker": "A",
               "text": "Er spielt nicht den älteren, sondern den jüngeren Sohn.",
-              "english": "He plays not the older but the younger son.",
-              "speaker": "A"
+              "english": "He plays not the older but the younger son."
             },
             {
+              "speaker": "A",
               "text": "Das ist sein größter Wunsch.",
-              "english": "That is his greatest wish.",
-              "speaker": "A"
+              "english": "That is his greatest wish."
             },
             {
+              "speaker": "S",
               "text": "Das ist auch mein Wunsch: Ben soll Spaß haben.",
-              "english": "That is my wish too: Ben should have fun.",
-              "speaker": "S"
+              "english": "That is my wish too: Ben should have fun."
             },
             {
+              "speaker": "L",
               "text": "Kennst du die Geschichte, Sam?",
-              "english": "Do you know the story, Sam?",
-              "speaker": "L"
+              "english": "Do you know the story, Sam?"
             },
             {
+              "speaker": "S",
               "text": "Ich glaube schon.",
-              "english": "I think so.",
-              "speaker": "S"
+              "english": "I think so."
             },
             {
+              "speaker": "S",
               "text": "Der Sohn nimmt sein Erbe und geht weg.",
-              "english": "The son takes his inheritance and goes away.",
-              "speaker": "S"
+              "english": "The son takes his inheritance and goes away."
             },
             {
+              "speaker": "S",
               "text": "Er gibt alles Geld aus, und am Ende hütet er Schweine.",
-              "english": "He spends all the money, and in the end he looks after pigs.",
-              "speaker": "S"
+              "english": "He spends all the money, and in the end he looks after pigs."
             },
             {
+              "speaker": "A",
               "text": "Er hat so viel Hunger, dass er das Futter der Schweine essen möchte.",
-              "english": "He is so hungry that he would like to eat the pigs' food.",
-              "speaker": "A"
+              "english": "He is so hungry that he would like to eat the pigs' food."
             },
             {
+              "speaker": "S",
               "text": "Dann kehrt er zurück und sagt, dass er seine Schuld bereut.",
-              "english": "Then he returns and says that he regrets his guilt.",
-              "speaker": "S"
+              "english": "Then he returns and says that he regrets his guilt."
             },
             {
+              "speaker": "A",
               "text": "Sein Vater umarmt und küsst ihn.",
-              "english": "His father hugs and kisses him.",
-              "speaker": "A"
+              "english": "His father hugs and kisses him."
             },
             {
+              "speaker": "A",
               "text": "Er gibt ihm einen Ring, und alle feiern ein Fest.",
-              "english": "He gives him a ring, and everybody celebrates with a feast.",
-              "speaker": "A"
+              "english": "He gives him a ring, and everybody celebrates with a feast."
             },
             {
+              "speaker": "L",
               "text": "Der Vater sagt: „Mein Sohn war tot und ist wieder lebendig.“",
-              "english": "The father says: \"My son was dead and is alive again.\"",
-              "speaker": "L"
+              "english": "The father says: \"My son was dead and is alive again.\""
             },
             {
+              "speaker": "S",
               "text": "Und der ältere Bruder ist wütend, oder?",
-              "english": "And the older brother is angry, isn't he?",
-              "speaker": "S"
+              "english": "And the older brother is angry, isn't he?"
             },
             {
+              "speaker": "A",
               "text": "Ja.",
-              "english": "Yes.",
-              "speaker": "A"
+              "english": "Yes."
             },
             {
+              "speaker": "A",
               "text": "Er arbeitet auf dem Feld und bekommt jeden Tag seinen Lohn.",
-              "english": "He works in the field and gets his wages every day.",
-              "speaker": "A"
+              "english": "He works in the field and gets his wages every day."
             },
             {
+              "speaker": "A",
               "text": "Er denkt: Der Arbeiter bekommt wohl mehr Freude als ich.",
-              "english": "He thinks: the workers probably get more joy than I do.",
-              "speaker": "A"
+              "english": "He thinks: the workers probably get more joy than I do."
             },
             {
+              "speaker": "L",
               "text": "Darauf antwortet der Vater: „Alles, was ich habe, gehört auch dir.“",
-              "english": "To that the father answers: \"Everything I have belongs to you too.\"",
-              "speaker": "L"
+              "english": "To that the father answers: \"Everything I have belongs to you too.\""
             },
             {
+              "speaker": "A",
               "text": "Der Vater ist reich, aber er liebt seine Söhne mehr als sein Geld.",
-              "english": "The father is rich, but he loves his sons more than his money.",
-              "speaker": "A"
+              "english": "The father is rich, but he loves his sons more than his money."
             },
             {
+              "speaker": "S",
               "text": "Ich freue mich schon auf Ben.",
-              "english": "I am already looking forward to Ben.",
-              "speaker": "S"
+              "english": "I am already looking forward to Ben."
             },
             {
+              "speaker": "A",
               "text": "Er übt schon zwei Wochen.",
-              "english": "He has been practising for two weeks already.",
-              "speaker": "A"
+              "english": "He has been practising for two weeks already."
             },
             {
+              "speaker": "A",
               "text": "Er hofft, dass alle kommen.",
-              "english": "He hopes that everyone comes.",
-              "speaker": "A"
+              "english": "He hopes that everyone comes."
             },
             {
+              "speaker": "S",
               "text": "Ich hoffe es auch.",
-              "english": "I hope so too.",
-              "speaker": "S"
+              "english": "I hope so too."
             },
             {
+              "speaker": "S",
               "text": "Wir wollen uns vor dem Spiel verabreden.",
-              "english": "Let us arrange to meet before the play.",
-              "speaker": "S"
+              "english": "Let us arrange to meet before the play."
             },
             {
+              "speaker": "A",
               "text": "Es kostet nichts, aber die Gemeinde bittet um eine kleine Spende.",
-              "english": "It costs nothing, but the church asks for a small donation.",
-              "speaker": "A"
+              "english": "It costs nothing, but the church asks for a small donation."
             },
             {
+              "speaker": "L",
               "text": "Wofür ist die Spende?",
-              "english": "What is the donation for?",
-              "speaker": "L"
+              "english": "What is the donation for?"
             },
             {
+              "speaker": "A",
               "text": "Für neue Kleider, denn die Kinder haben nichts Schönes zum Anziehen.",
-              "english": "For new costumes, because the children have nothing nice to wear.",
-              "speaker": "A"
+              "english": "For new costumes, because the children have nothing nice to wear."
             }
           ]
         }
@@ -503,269 +516,269 @@
         {
           "sentences": [
             {
+              "speaker": "L",
               "text": "Und am Abend habe ich einen Wunsch.",
-              "english": "And in the evening I have a wish.",
-              "speaker": "L"
+              "english": "And in the evening I have a wish."
             },
             {
+              "speaker": "L",
               "text": "Ich möchte bei mir ein Spiel über Deutschland machen.",
-              "english": "I would like to hold a game about Germany at my place.",
-              "speaker": "L"
+              "english": "I would like to hold a game about Germany at my place."
             },
             {
+              "speaker": "L",
               "text": "Alle Freunde kommen, und Sam kann viel lernen.",
-              "english": "All our friends come, and Sam can learn a lot.",
-              "speaker": "L"
+              "english": "All our friends come, and Sam can learn a lot."
             },
             {
+              "speaker": "L",
               "text": "Das ist der Grund für den Abend.",
-              "english": "That is the reason for the evening.",
-              "speaker": "L"
+              "english": "That is the reason for the evening."
             },
             {
+              "speaker": "S",
               "text": "Ein Spiel über Deutschland?",
-              "english": "A game about Germany?",
-              "speaker": "S"
+              "english": "A game about Germany?"
             },
             {
+              "speaker": "S",
               "text": "Hast du Lust, mich zu prüfen?",
-              "english": "Do you feel like testing me?",
-              "speaker": "S"
+              "english": "Do you feel like testing me?"
             },
             {
+              "speaker": "A",
               "text": "Du hast einen guten Grund zu lernen, Sam.",
-              "english": "You have a good reason to learn, Sam.",
-              "speaker": "A"
+              "english": "You have a good reason to learn, Sam."
             },
             {
+              "speaker": "L",
               "text": "Keine Angst.",
-              "english": "Don't worry.",
-              "speaker": "L"
+              "english": "Don't worry."
             },
             {
+              "speaker": "L",
               "text": "Wir nennen den Abend „Deutschland für Neue“.",
-              "english": "We will call the evening \"Germany for newcomers\".",
-              "speaker": "L"
+              "english": "We will call the evening \"Germany for newcomers\"."
             },
             {
+              "speaker": "A",
               "text": "Was für Fragen hast du?",
-              "english": "What kind of questions do you have?",
-              "speaker": "A"
+              "english": "What kind of questions do you have?"
             },
             {
+              "speaker": "L",
               "text": "Zum Beispiel: Wie heißt die Hauptstadt von Sachsen?",
-              "english": "For example: what is the capital of Saxony called?",
-              "speaker": "L"
+              "english": "For example: what is the capital of Saxony called?"
             },
             {
+              "speaker": "L",
               "text": "In welchem Bundesland leben wir?",
-              "english": "In which federal state do we live?",
-              "speaker": "L"
+              "english": "In which federal state do we live?"
             },
             {
+              "speaker": "L",
               "text": "Wie heißt der große Fluss in Dresden?",
-              "english": "What is the big river in Dresden called?",
-              "speaker": "L"
+              "english": "What is the big river in Dresden called?"
             },
             {
+              "speaker": "L",
               "text": "Wie heißt das Meer im Norden?",
-              "english": "What is the sea in the north called?",
-              "speaker": "L"
+              "english": "What is the sea in the north called?"
             },
             {
+              "speaker": "L",
               "text": "Und welche Insel liegt dort?",
-              "english": "And which island is there?",
-              "speaker": "L"
+              "english": "And which island is there?"
             },
             {
+              "speaker": "L",
               "text": "Wie viele Kilometer hat die Küste?",
-              "english": "How many kilometres long is the coast?",
-              "speaker": "L"
+              "english": "How many kilometres long is the coast?"
             },
             {
+              "speaker": "S",
               "text": "Das weiß ich nicht.",
-              "english": "I don't know that.",
-              "speaker": "S"
+              "english": "I don't know that."
             },
             {
+              "speaker": "S",
               "text": "Aber ich lerne gern.",
-              "english": "But I like learning.",
-              "speaker": "S"
+              "english": "But I like learning."
             },
             {
+              "speaker": "L",
               "text": "Dann lernst du etwas.",
-              "english": "Then you learn something.",
-              "speaker": "L"
+              "english": "Then you learn something."
             },
             {
+              "speaker": "L",
               "text": "Noch eine Frage: Welche Währung hat Deutschland?",
-              "english": "One more question: what currency does Germany have?",
-              "speaker": "L"
+              "english": "One more question: what currency does Germany have?"
             },
             {
+              "speaker": "S",
               "text": "Den Euro!",
-              "english": "The euro!",
-              "speaker": "S"
+              "english": "The euro!"
             },
             {
+              "speaker": "S",
               "text": "Das weiß ich.",
-              "english": "I know that.",
-              "speaker": "S"
+              "english": "I know that."
             },
             {
+              "speaker": "L",
               "text": "Wie viele Millionen Menschen leben in diesem Land?",
-              "english": "How many millions of people live in this country?",
-              "speaker": "L"
+              "english": "How many millions of people live in this country?"
             },
             {
+              "speaker": "L",
               "text": "Welche Länder liegen im Westen, im Osten und im Süden?",
-              "english": "Which countries lie in the west, the east and the south?",
-              "speaker": "L"
+              "english": "Which countries lie in the west, the east and the south?"
             },
             {
+              "speaker": "L",
               "text": "Wie lang ist die Grenze zu Österreich?",
-              "english": "How long is the border with Austria?",
-              "speaker": "L"
+              "english": "How long is the border with Austria?"
             },
             {
+              "speaker": "L",
               "text": "Wer wählt den Kanzler, und wann ist die nächste Wahl?",
-              "english": "Who elects the chancellor, and when is the next election?",
-              "speaker": "L"
+              "english": "Who elects the chancellor, and when is the next election?"
             },
             {
+              "speaker": "A",
               "text": "Das ist eine Frage für Bürger, nicht für Neue.",
-              "english": "That is a question for citizens, not for newcomers.",
-              "speaker": "A"
+              "english": "That is a question for citizens, not for newcomers."
             },
             {
+              "speaker": "L",
               "text": "Das ist richtig.",
-              "english": "True.",
-              "speaker": "L"
+              "english": "True."
             },
             {
+              "speaker": "L",
               "text": "Ich frage auch: Was macht die Regierung, und was macht der Staat?",
-              "english": "I will also ask: what does the government do, and what does the state do?",
-              "speaker": "L"
+              "english": "I will also ask: what does the government do, and what does the state do?"
             },
             {
+              "speaker": "S",
               "text": "Das sind viele Fragen über die Welt, in der ich jetzt lebe.",
-              "english": "Those are many questions about the world in which I now live.",
-              "speaker": "S"
+              "english": "Those are many questions about the world in which I now live."
             },
             {
+              "speaker": "L",
               "text": "Eigentlich ist es keine Schule, sondern ein Spiel.",
-              "english": "Really it is not school but a game.",
-              "speaker": "L"
+              "english": "Really it is not school but a game."
             },
             {
+              "speaker": "L",
               "text": "Wer verliert, macht den Kaffee.",
-              "english": "Whoever loses makes the coffee.",
-              "speaker": "L"
+              "english": "Whoever loses makes the coffee."
             },
             {
+              "speaker": "A",
               "text": "Ich bin nicht sicher, ob alle Freunde Lust haben.",
-              "english": "I am not sure whether all our friends will feel like it.",
-              "speaker": "A"
+              "english": "I am not sure whether all our friends will feel like it."
             },
             {
+              "speaker": "L",
               "text": "Wir können es machen.",
-              "english": "We can do it.",
-              "speaker": "L"
+              "english": "We can do it."
             },
             {
+              "speaker": "L",
               "text": "Ich überlege schon, wen ich einlade.",
-              "english": "I am already thinking about whom to invite.",
-              "speaker": "L"
+              "english": "I am already thinking about whom to invite."
             },
             {
+              "speaker": "A",
               "text": "Daniel hat bestimmt Lust.",
-              "english": "Daniel certainly feels like it.",
-              "speaker": "A"
+              "english": "Daniel certainly feels like it."
             },
             {
+              "speaker": "A",
               "text": "Und Sabine auch.",
-              "english": "And Sabine too.",
-              "speaker": "A"
+              "english": "And Sabine too."
             },
             {
+              "speaker": "S",
               "text": "Meinst du, dass Daniel Zeit hat?",
-              "english": "Do you think that Daniel has time?",
-              "speaker": "S"
+              "english": "Do you think that Daniel has time?"
             },
             {
+              "speaker": "L",
               "text": "Ich denke schon.",
-              "english": "I think so.",
-              "speaker": "L"
+              "english": "I think so."
             },
             {
+              "speaker": "L",
               "text": "Es ist aber wahrscheinlich besser, wenn ich ihn zuerst frage.",
-              "english": "But it is probably better if I ask him first.",
-              "speaker": "L"
+              "english": "But it is probably better if I ask him first."
             },
             {
+              "speaker": "L",
               "text": "Ich möchte mich auch mit Sabine verabreden.",
-              "english": "I would also like to arrange a time with Sabine.",
-              "speaker": "L"
+              "english": "I would also like to arrange a time with Sabine."
             },
             {
+              "speaker": "L",
               "text": "Sam, kannst du dich mit Daniel verabreden?",
-              "english": "Sam, can you arrange a time with Daniel?",
-              "speaker": "L"
+              "english": "Sam, can you arrange a time with Daniel?"
             },
             {
+              "speaker": "A",
               "text": "Was ist, wenn es regnet?",
-              "english": "What if it rains?",
-              "speaker": "A"
+              "english": "What if it rains?"
             },
             {
+              "speaker": "A",
               "text": "Dann kommt vielleicht keiner.",
-              "english": "Then perhaps nobody comes.",
-              "speaker": "A"
+              "english": "Then perhaps nobody comes."
             },
             {
+              "speaker": "A",
               "text": "Es regnet am Samstag wahrscheinlich.",
-              "english": "It will probably rain on Saturday.",
-              "speaker": "A"
+              "english": "It will probably rain on Saturday."
             },
             {
+              "speaker": "L",
               "text": "Es ist ein Abend zu Hause, nicht im Park.",
-              "english": "It is an evening at home, not in the park.",
-              "speaker": "L"
+              "english": "It is an evening at home, not in the park."
             },
             {
+              "speaker": "L",
               "text": "Der Regen ist kein Problem.",
-              "english": "The rain is not a problem.",
-              "speaker": "L"
+              "english": "The rain is not a problem."
             },
             {
+              "speaker": "L",
               "text": "Was meint ihr?",
-              "english": "What do you think?",
-              "speaker": "L"
+              "english": "What do you think?"
             },
             {
+              "speaker": "L",
               "text": "Ist der Plan zu groß für einen Tag?",
-              "english": "Is the plan too big for one day?",
-              "speaker": "L"
+              "english": "Is the plan too big for one day?"
             },
             {
+              "speaker": "A",
               "text": "Eigentlich ist die Freundschaft wichtig, nicht das Spiel.",
-              "english": "Really it is the friendship that matters, not the game.",
-              "speaker": "A"
+              "english": "Really it is the friendship that matters, not the game."
             },
             {
+              "speaker": "L",
               "text": "Da hast du recht.",
-              "english": "You are right there.",
-              "speaker": "L"
+              "english": "You are right there."
             },
             {
+              "speaker": "L",
               "text": "Ich schreibe auf dem Computer eine Liste.",
-              "english": "I will write a list on the computer.",
-              "speaker": "L"
+              "english": "I will write a list on the computer."
             },
             {
+              "speaker": "S",
               "text": "Ich hoffe, dass ich nicht verliere.",
-              "english": "I hope I do not lose.",
-              "speaker": "S"
+              "english": "I hope I do not lose."
             }
           ]
         }
@@ -777,101 +790,88 @@
         {
           "sentences": [
             {
+              "speaker": "A",
               "text": "Also, noch einmal von vorn.",
-              "english": "So, once more from the beginning.",
-              "speaker": "A"
+              "english": "So, once more from the beginning."
             },
             {
+              "speaker": "A",
               "text": "Ich plane gern, das wisst ihr.",
-              "english": "I like planning, as you know.",
-              "speaker": "A"
+              "english": "I like planning, as you know."
             },
             {
+              "speaker": "A",
               "text": "Um zehn Uhr gehen Jonas und Sam zum Zimmer.",
-              "english": "At ten o'clock Jonas and Sam go to see the room.",
-              "speaker": "A"
+              "english": "At ten o'clock Jonas and Sam go to see the room."
             },
             {
+              "speaker": "A",
               "text": "Danach geht Sam allein zur Post.",
-              "english": "After that Sam goes to the post office alone.",
-              "speaker": "A"
+              "english": "After that Sam goes to the post office alone."
             },
             {
+              "speaker": "A",
               "text": "Am Nachmittag sehen wir Bens Spiel, und am Abend kommen die Freunde.",
-              "english": "In the afternoon we watch Ben's play, and in the evening the friends come.",
-              "speaker": "A"
+              "english": "In the afternoon we watch Ben's play, and in the evening the friends come."
             },
             {
+              "speaker": "A",
               "text": "Habt ihr noch einen Vorschlag?",
-              "english": "Do you have another suggestion?",
-              "speaker": "A"
+              "english": "Do you have another suggestion?"
             },
             {
+              "speaker": "A",
               "text": "Ist alles möglich?",
-              "english": "Is everything possible?",
-              "speaker": "A"
+              "english": "Is everything possible?"
             },
             {
+              "speaker": "S",
               "text": "Das sind drei große Dinge für einen Tag.",
-              "english": "That is three big things for one day.",
-              "speaker": "S"
+              "english": "That is three big things for one day."
             },
             {
+              "speaker": "S",
               "text": "Vielleicht ist das zu viel?",
-              "english": "Perhaps that is too much?",
-              "speaker": "S"
+              "english": "Perhaps that is too much?"
             },
             {
+              "speaker": "L",
               "text": "Wenn es zu viel ist, lassen wir das Spiel ausfallen.",
-              "english": "If it is too much, we will drop the game.",
-              "speaker": "L"
+              "english": "If it is too much, we will drop the game."
             },
             {
+              "speaker": "A",
               "text": "Nein, nein.",
-              "english": "No, no.",
-              "speaker": "A"
+              "english": "No, no."
             },
             {
+              "speaker": "A",
               "text": "Meiner Meinung nach haben wir alles gut überlegt.",
-              "english": "In my opinion we have thought everything over well.",
-              "speaker": "A"
+              "english": "In my opinion we have thought everything over well."
             },
             {
+              "speaker": "S",
               "text": "Dann sage ich ja.",
-              "english": "Then I say yes.",
-              "speaker": "S"
+              "english": "Then I say yes."
             },
             {
+              "speaker": "S",
               "text": "Danke für alles.",
-              "english": "Thank you for everything.",
-              "speaker": "S"
+              "english": "Thank you for everything."
             },
             {
+              "speaker": "L",
               "text": "Gern geschehen.",
-              "english": "You're welcome.",
-              "speaker": "L"
+              "english": "You're welcome."
             },
             {
+              "speaker": "L",
               "text": "Und vergiss das Päckchen nicht!",
-              "english": "And don't forget the parcel!",
-              "speaker": "L"
+              "english": "And don't forget the parcel!"
             }
           ]
         }
       ]
     }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
-        }
-      }
-    ]
-  }
+  ]
 }

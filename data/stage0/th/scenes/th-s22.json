@@ -1,0 +1,348 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-08",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0 as a decoding-practice scene (words already met in the sound steps); needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "sound",
+      "title": "Dead syllables: class and length decide",
+      "text": "ปวด, ปาก and นก end in a stop (t, k): they are dead syllables, cut off short. The class of the first letter decides the tone. On mid-class ป they are low (ปวด, ปาก). On low-class น a short dead syllable is high (นก) and a long one is falling (นาก). Spell it out slowly the first time and you will begin to hear which word a tone belongs to.",
+      "explains": [
+        "th.practice.dead-syllables"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "recall",
+      "prompt": "Say that you are not well.",
+      "basedOn": [
+        "l2",
+        "th.feelings"
+      ],
+      "accept": [
+        {
+          "text": "ไม่สบาย"
+        },
+        {
+          "text": "ไม่สบายครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ไม่สบายค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ไม่สบาย"
+        },
+        {
+          "text": "ไม่สบายครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ไม่สบายค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมไม่สบาย",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันไม่สบาย",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมไม่สบายครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันไม่สบายค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say that your tooth hurts a lot.",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "ปวดฟันมาก"
+        },
+        {
+          "text": "ปวดฟันมากครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ปวดฟันมากค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ปวดฟันมาก"
+        },
+        {
+          "text": "ปวดฟันมากครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ปวดฟันมากค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมปวดฟันมาก",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันปวดฟันมาก",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมปวดฟันมากครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันปวดฟันมากค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    }
+  ],
+  "id": "th-s22",
+  "title": {
+    "en": "At the hospital",
+    "target": "ที่โรงพยาบาล"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "nico"
+    ],
+    "places": [
+      "clinic"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "เป็นอะไรคะ",
+      "en": "What is the matter?",
+      "speaker": "ana",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ผมไม่สบายครับ",
+      "en": "I am not well.",
+      "speaker": "nico",
+      "picture": "🤒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ผมปวดฟันมากครับ",
+      "en": "My tooth hurts a lot.",
+      "speaker": "nico",
+      "picture": "🦷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ผมปวดหูด้วยครับ",
+      "en": "My ear hurts too.",
+      "speaker": "nico",
+      "picture": "👂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ขอดูปากค่ะ",
+      "en": "Let me look at your mouth.",
+      "speaker": "ana",
+      "picture": "👄",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ตาไม่แดงค่ะ",
+      "en": "Your eyes are not red.",
+      "speaker": "ana",
+      "picture": "👁️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "ปวดขาไหมคะ",
+      "en": "Does your leg hurt?",
+      "speaker": "ana",
+      "picture": "🦵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "ไม่ปวดครับ",
+      "en": "No, it does not hurt.",
+      "speaker": "nico",
+      "picture": "🙅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l9",
+      "text": "กินข้าวแล้วไหมคะ",
+      "en": "Have you eaten yet?",
+      "speaker": "ana",
+      "picture": "🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l10",
+      "text": "กินข้าวหนึ่งจานแล้วครับ",
+      "en": "I have eaten one plate of rice.",
+      "speaker": "nico",
+      "picture": "🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l11",
+      "text": "กินยาก่อนนอนค่ะ",
+      "en": "Take the medicine before you sleep.",
+      "speaker": "ana",
+      "picture": "💊",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l12",
+      "text": "ผมจะกินยาก่อนนอนครับ",
+      "en": "I will take the medicine before I sleep.",
+      "speaker": "nico",
+      "picture": "🌙",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ปวด"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "th.practice.dead-syllables",
+    "th.practice.finals",
+    "th.feelings",
+    "th.negation-mai",
+    "th.mai-question",
+    "th.also-ko"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What hurts a lot?"
+      },
+      "options": [
+        {
+          "en": "a tooth",
+          "picture": "🦷"
+        },
+        {
+          "en": "a leg",
+          "picture": "🦵"
+        },
+        {
+          "en": "an eye",
+          "picture": "👁️"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l7",
+        "l8"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does his leg hurt?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l11",
+        "l12"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What will Ball do before he sleeps?"
+      },
+      "options": [
+        {
+          "en": "Take his medicine"
+        },
+        {
+          "en": "Eat rice"
+        },
+        {
+          "en": "Read a book"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

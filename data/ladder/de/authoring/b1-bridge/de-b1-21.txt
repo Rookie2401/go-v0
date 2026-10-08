@@ -1,0 +1,67 @@
+=== de-b1-21 | narrative | work | A day on the farm | Ein Tag auf dem Bauernhof | farm, work, loyalty, helpers
+speakers: lukas=Lukas, ben=Ben, anna=Anna, sam=Sam, krause=Herr Krause
+note: Prepares the vocabulary of the next text (Grimm, Der kluge Knecht): klug, Knecht, ausschicken, ausbleiben, treu, Mühe, Weisheit. Today's German; the tale itself is not told.
+## Auf dem Hof
+Im Herbst fährt die Familie zu einem Bauernhof vor der Stadt. || In autumn the family drives to a farm outside the city.
+Lukas kennt den Bauern, und die Kinder dürfen die Tiere sehen. || Lukas knows the farmer, and the children may see the animals.
+Es ist ein schöner Tag, die Sonne scheint, und es ist nicht mehr heiß. || It is a beautiful day, the sun is shining, and it is no longer hot.
+Auf dem Hof arbeitet ein alter Mann, und alle nennen ihn den Knecht. || An old man works on the farm, and everyone calls him the farmhand.
+[ben] Warum Knecht? Er heißt doch Herr Krause. || Why Knecht? His name is Herr Krause.
+[lukas] So hat man früher einen Helfer auf dem Hof genannt. || That is what a helper on the farm used to be called.
+[lukas] Der Bauer hat ihn jeden Morgen ausgeschickt, und er hat die Arbeit gemacht. || Every morning the farmer sent him out, and he did the work.
+[lukas] Wenn er zu lange ausblieb, hat der Bauer gewartet und sich Sorgen gemacht. || If he stayed out too long, the farmer waited and worried.
+[lukas] Heute sagt man nicht mehr Knecht. Man sagt Mitarbeiter. || Today one no longer says Knecht. One says employee.
+[sam] Herr Krause ist ein kluger Mann, oder? || Herr Krause is a clever man, isn't he?
+[lukas] Ja, sehr klug. Er arbeitet seit vielen Jahren hier, und er ist immer treu geblieben. || Yes, very clever. He has worked here for many years, and he has always stayed loyal.
+[anna] Das sieht man. Alle Tiere kennen ihn. || You can see that. All the animals know him.
+
+## Am Nachmittag
+Herr Krause zeigt Ben die Kühe, die Schweine und die Pferde. || Herr Krause shows Ben the cows, the pigs and the horses.
+Ben darf ein Pferd streicheln, und er lacht die ganze Zeit. || Ben may pet a horse, and he laughs the whole time.
+[krause] Die Arbeit auf dem Hof macht viel Mühe. || The work on the farm takes a lot of effort.
+[krause] Aber ich bin gern hier, und ich bin dem Hof treu. || But I am glad to be here, and I am loyal to the farm.
+[ben] Schickt der Bauer Sie noch aus? || Does the farmer still send you out?
+[krause] Ja, am Morgen schickt er mich aus, und ich hole die Kühe vom Feld. || Yes, in the morning he sends me out, and I fetch the cows from the field.
+[krause] Manchmal bleibe ich lange aus, denn die Kühe sind langsam. || Sometimes I stay out for a long time, because the cows are slow.
+[sam] Was ist das Wichtigste bei Ihrer Arbeit? || What is the most important thing in your work?
+[krause] Man braucht Geduld und ein bisschen Weisheit. || You need patience and a little wisdom.
+[krause] Ein kluger Mensch weiß, wann er etwas sagen muss und wann er still sein muss. || A clever person knows when he has to say something and when he has to be quiet.
+[sam] Das ist eine gute Regel, auch für mich im Deutschkurs. || That is a good rule, also for me in the German course.
+[anna] Ben, du bleibst zu lange aus! Komm jetzt, wir fahren nach Hause. || Ben, you are staying out too long! Come now, we are driving home.
+[ben] Ich komme! Ich gebe mir Mühe! || I'm coming! I'm making an effort!
+Auf der Rückfahrt schläft Ben im Auto ein. || On the way back Ben falls asleep in the car.
+Sam schaut aus dem Fenster und denkt an den alten Mann. || Sam looks out of the window and thinks of the old man.
+Ein kluger Mann und ein treuer Mann: Das ist viel, und Sam möchte auch so sein. || A clever man and a loyal man: that is a lot, and Sam would like to be like that too.
+
+## Erinnerst du dich?
+Am Abend sitzen Lukas, Anna und Sam noch in der Küche, und Ben bringt ein Buch mit. || In the evening Lukas, Anna and Sam are still sitting in the kitchen, and Ben brings a book.
+[ben] Das ist mein Lesebuch aus der Schule. Es ist ganz alt! || That is my reader from school. It is quite old!
+[lukas] Aus welchem Jahr ist es? || From which year is it?
+[ben] Es ist von neunzehnhundert. Das steht hier vorn. || It is from nineteen hundred. It says so here at the front.
+[anna] Dann ist es sehr alt. Was steht denn darin? || Then it is very old. What is in it then?
+[ben] Märchen und Sprichwörter. Ein Sprichwort habe ich schon gelernt. || Tales and proverbs. I have already learned one proverb.
+[sam] Ich habe im Stadtmagazin einen Artikel über einen Fuchs gelesen. || I read an article about a fox in the city magazine.
+[sam] Der Fuchs kann nachts laut schreien, und viele Leute haben Angst. || The fox can scream loudly at night, and many people are afraid.
+[ben] Sam, weißt du, was ein Sprichwort bedeutet? || Sam, do you know what a proverb means?
+[sam] Es ist ein altes, kluges Wort, das alle Leute kennen. || It is an old, clever saying that everyone knows.
+Alle lachen, und Lukas macht noch einen Tee. Es ist ein schöner Abend. || Everyone laughs, and Lukas makes some more tea. It is a nice evening.
+
+## Erinnerst du dich daran?
+Am Abend liegt Ben in seinem Bett, und Anna sitzt bei ihm. || In the evening Ben lies in his bed, and Anna sits with him.
+[ben] Mama, erzähl mir das Märchen! Es heißt: Die Sternthaler. || Mama, tell me the tale! It is called: The Sternthaler.
+[anna] Das arme Mädchen hat kein Kämmerchen mehr und kein Bettchen. || The poor girl has no little room any more and no little bed.
+[ben] Es hat nur die Kleider auf dem Leib und ein Stück Brot. || She has only the clothes on her body and a piece of bread.
+[anna] Ein mitleidiges Herz hat ihr das Brot geschenkt. || A compassionate heart gave her the bread.
+[ben] Dann sagt ein Mann: Ich bin so hungerig. || Then a man says: I am so hungry.
+[anna] Hungerig ist ein altes Wort für hungrig. || Hungerig is an old word for hungry.
+
+[ben] Ein Kind friert am Kopf und sucht etwas, womit es ihn bedecken kann. || A child is cold on its head and looks for something with which it can cover it.
+[anna] Das Mädchen gibt ihm die Mütze. || The girl gives it her cap.
+[ben] Ein anderes Kind hat kein Leibchen. Da gibt das Mädchen ihm seins. || Another child has no bodice. Then the girl gives it hers.
+[ben] Dann bittet noch ein Kind um ein Röcklein, und auch das gibt sie hin. || Then another child asks for a little skirt, and she gives that away too.
+[anna] Endlich gelangt sie in einen Wald, und es wird dunkel. || At last she reaches a forest, and it gets dark.
+[ben] Und dann fallen die Sterne vom Himmel, und es sind blanke Taler! || And then the stars fall from the sky, and they are shining Taler!
+[anna] Ja, und ihr neues Hemd ist das allerfeinste Hemd, das man kennt. || Yes, and her new shirt is the very finest shirt that one knows.
+[ben] Das Mädchen ist wirklich gut, Mama. Es gibt alles und bleibt doch froh. || The girl is really good, Mama. She gives everything and still stays happy.
+[anna] Ja, und am Ende hat sie mehr als vorher. Jetzt schläfst du, Ben. || Yes, and in the end she has more than before. Now you sleep, Ben.
+[ben] Gute Nacht, Mama. Ich habe heute viel gelernt. || Good night, Mama. I learned a lot today.

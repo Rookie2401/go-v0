@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-24",
+  "lang": "sq",
+  "title": "Një dasmë në fshat",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-24",
+    "title": "Albanian ladder, b1-bridge: Një dasmë në fshat (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një dasmë në fshat",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Në fund të prillit doktoresha Arta, shoqja e Anës nga klinika, u martua në fshatin e nënës së saj, dy orë larg Tiranës.",
+              "english": "At the end of April Dr Arta, Ana's friend from the clinic, got married in her mother's village, two hours from Tirana."
+            },
+            {
+              "text": "Ajo i kishte ftuar të gjithë miqtë e klinikës, edhe Anën, edhe Samin, dhe këta të dy u nisën të shtunën në mëngjes me një autobus plot njerëz dhe çanta.",
+              "english": "She had invited all the friends of the clinic, Ana and Sam too, and these two set off on Saturday morning with a bus full of people and bags."
+            },
+            {
+              "text": "Sami mbante në dorë një zarf të vogël me para, siç i kishte shpjeguar Ana, sepse në dasmat shqiptare mysafirët nuk sjellin gjithmonë dhurata të mëdha, por japin diçka për çiftin e ri.",
+              "english": "Sam held in his hand a small envelope with money, as Ana had explained to him, because at Albanian weddings guests do not always bring big gifts, but give something for the young couple."
+            },
+            {
+              "text": "— Sa duhet të vë brenda? — kishte pyetur ai.",
+              "english": "\"How much should I put inside?\" he had asked."
+            },
+            {
+              "text": "— Aq sa mendon se do të doje të merrje vetë, — kishte thënë Ana.",
+              "english": "\"As much as you think you would like to receive yourself,\" Ana had said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Fshati ishte plot njerëz që nga rruga.",
+              "english": "The village was full of people from the road onwards."
+            },
+            {
+              "text": "Para shtëpisë së nuses kishte një portë me degë dhe me shirita të kuq, dhe nga oborri vinte muzikë me daulle.",
+              "english": "In front of the bride's house there was a gate with branches and red ribbons, and from the yard came music with drums."
+            },
+            {
+              "text": "Gratë me shalle me ngjyra kalonin nga një shtëpi në një tjetër me tavolina me ëmbëlsira, dhe fëmijët vraponin mes këmbëve të njerëzve.",
+              "english": "Women with coloured shawls passed from one house to another with trays of sweets, and the children ran between people's legs."
+            },
+            {
+              "text": "Një plak me një kapelë të bardhë i priti miqtë e nuses me një gotë të vogël dhe me një fjalë të mirë.",
+              "english": "An old man in a white hat received the bride's friends with a small glass and a kind word."
+            },
+            {
+              "text": "— Mirë se vini, — tha.",
+              "english": "\"Welcome,\" he said."
+            },
+            {
+              "text": "— Në këtë shtëpi pasi hyni, nuk ju quajmë më të huaj.",
+              "english": "\"In this house, once you enter, we no longer call you strangers.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dasma filloi me një ceremoni të vogël në oborr, ku Arta me një fustan të bardhë dhe dhëndri me një kostum të errët e premtuan dashurinë para dy familjeve dhe një pastori të ftuar.",
+              "english": "The wedding began with a small ceremony in the yard, where Arta in a white dress and the groom in a dark suit promised their love before the two families and an invited pastor."
+            },
+            {
+              "text": "Kur pastori i pyeti nëse duan të jenë bashkë, Arta tha «po» aq fort, sa gratë e rreshtit të parë u hodhën nga karriget.",
+              "english": "When the pastor asked them whether they wanted to be together, Arta said \"yes\" so loudly that the women of the first row jumped off their chairs."
+            },
+            {
+              "text": "Të gjithë qeshën, edhe dhëndri, i cili kishte qenë i bardhë në fytyrë gjithë mëngjesin.",
+              "english": "Everyone laughed, even the groom, who had been white in the face all morning."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj filloi darka, dhe me të filloi muzika.",
+              "english": "Then the dinner began, and with it the music."
+            },
+            {
+              "text": "Mbi tavolinat e gjata kishte mish, oriz, perime, byrek dhe një pjatë të madhe me ëmbëlsira me mjaltë.",
+              "english": "On the long tables there was meat, rice, vegetables, byrek and a big plate of sweets with honey."
+            },
+            {
+              "text": "Sami hëngri aq shumë, sa kur dolën vallet nuk mund të lëvizte.",
+              "english": "Sam ate so much that when the dances began he could not move."
+            },
+            {
+              "text": "Por një grua e vjetër e mori për dore dhe e çoi në rreth.",
+              "english": "But an old woman took him by the hand and led him into the circle."
+            },
+            {
+              "text": "— Do të mësosh ta vallëzosh, bir, — tha ajo.",
+              "english": "\"You will learn to dance it, son,\" she said."
+            },
+            {
+              "text": "— Është më e lehtë se gjuha.",
+              "english": "\"It is easier than the language.\""
+            },
+            {
+              "text": "Sami u përpoq.",
+              "english": "Sam tried."
+            },
+            {
+              "text": "Ai e mësoi hapin e parë, e humbi hapin e dytë, dhe në hapin e tretë ra mbi një djalë të vogël, që u përkul dhe e hoqi nga rruga si një gur.",
+              "english": "He learned the first step, lost the second step, and at the third step fell onto a small boy, who bent down and moved him out of the way like a stone."
+            },
+            {
+              "text": "Gratë qeshën aq shumë, sa dikush duhej t'u sillte ujë.",
+              "english": "The women laughed so much that someone had to bring them water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Por në rrethin tjetër, pak më larg, Sami pa një fytyrë që e njihte.",
+              "english": "But in the other circle, a little further away, Sam saw a face he knew."
+            },
+            {
+              "text": "Ishte plaku nga fshati i Anës, me kostumin e dasmës dhe me një lule prej letre në xhep.",
+              "english": "It was the old man from Ana's village, in his wedding suit and with a paper flower in his pocket."
+            },
+            {
+              "text": "Ai kishte ardhur me nipin e tij, që ishte mik i dhëndrit.",
+              "english": "He had come with his grandson, who was a friend of the groom."
+            },
+            {
+              "text": "Plaku nuk vallëzonte, por rrinte në anë dhe shikonte, me fytyrën e një njeriu që është në vendin e tij.",
+              "english": "The old man did not dance, but stood on the side and watched, with the face of a person who is in his own place."
+            },
+            {
+              "text": "Kur e pa Samin, i bëri me dorë dhe i tha në heshtje, vetëm me buzët: «Ec, ec.»",
+              "english": "When he saw Sam, he waved and said to him silently, only with his lips: \"Go on, go on.\""
+            },
+            {
+              "text": "Sami qeshi dhe vazhdoi, ngadalë, që të mos binte përsëri.",
+              "english": "Sam laughed and went on, slowly, so as not to fall again."
+            },
+            {
+              "text": "Në mbrëmje, kur autobusi po kthehej në qytet, ai e shkroi në fletore: «Sot kam mësuar të vallëzoj, pak. Dhe kam mësuar se një i huaj nuk është një njeri që nuk ka vend, por një njeri që ka vend në shumë shtëpi.»",
+              "english": "In the evening, as the bus was going back to the city, he wrote in his notebook: \"Today I have learned to dance, a little. And I have learned that a stranger is not a person who has no place, but a person who has a place in many houses.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në autobus Ana u ul pranë tij me një copë ëmbëlsirë të lidhur në një shami.",
+              "english": "On the bus Ana sat down beside him with a piece of sweet tied in a cloth."
+            },
+            {
+              "text": "— Ta kam sjellë për rrugën, — tha.",
+              "english": "\"I brought it for you for the road,\" she said."
+            },
+            {
+              "text": "— Je i lodhur?",
+              "english": "\"Are you tired?\""
+            },
+            {
+              "text": "— Jam i lumtur, — u përgjigj Sami.",
+              "english": "\"I am happy,\" Sam answered."
+            },
+            {
+              "text": "— Por kam dhimbje në këmbë, sepse një grua e vjetër më mësoi të vallëzoj me forcë.",
+              "english": "\"But my feet hurt, because an old woman taught me to dance with force.\""
+            },
+            {
+              "text": "— Je një i huaj që e ka vallëzuar atë valle gjithë natën, — qeshi Ana.",
+              "english": "\"You are a stranger who has danced that dance the whole night,\" laughed Ana."
+            },
+            {
+              "text": "— A të erdhën lotët? — e pyeti ai.",
+              "english": "\"Did tears come to you?\" he asked her."
+            },
+            {
+              "text": "— Pak.",
+              "english": "\"A little.\""
+            },
+            {
+              "text": "— Artën e njoh prej katër vitesh, dhe e kam parë të flejë në spital të lodhur dhe të qajë për pacientët.",
+              "english": "\"I have known Arta for four years, and I have seen her sleep in the hospital tired and cry for her patients.\""
+            },
+            {
+              "text": "— Sot e pashë të qeshë në fustan të bardhë.",
+              "english": "\"Today I saw her laugh in a white dress.\""
+            },
+            {
+              "text": "— Është mirë të shohësh një njeri që ka bërë shumë për njerëzit të ketë diçka edhe për vete.",
+              "english": "\"It is good to see a person who has done much for people have something for himself too.\""
+            },
+            {
+              "text": "Sami e shikoi nga dritarja fshatin që po largohej dhe tha: — Ndoshta nuk do të më ftojnë kurrë në dasmën time.",
+              "english": "Sam looked out of the window at the village moving away and said: \"Perhaps they will never invite me to my own wedding.\""
+            },
+            {
+              "text": "— Je shumë i ri për të folur kështu, — tha Ana.",
+              "english": "\"You are too young to talk like that,\" said Ana."
+            },
+            {
+              "text": "— Dhe pastaj, ti ke njerëz që do të të ftojnë nga gjithë lagjja.",
+              "english": "\"And besides, you have people who will invite you from the whole neighbourhood.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-11",
+  "lang": "hi",
+  "title": "सफ़ाई का दिन",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-11",
+    "title": "\"सफ़ाई का दिन\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Fifth controlled unit of the b1 bridge. It prepares the words of two GDL stories placed right after it, \"नानी की ऐनक\" (hi-b1-12) and \"चूहा सिकंदर, घर के अंदर\" (hi-b1-13): ऐनक, जासूस, गुम, बाथरूम, सोफ़ा, कुशन, ताली, बजाना, दुबकना, घुसना, each used three times, in a cleaning Saturday at Seeta Nani's house where Aman plays detective (the plot is not the plot of either story). It brings back a few words that the long GDL story hi-b1-07 met once (नकल, कविता, पार्क, झुंड, पसंदीदा). Machine-drafted; a Hindi reviewer should check the household vocabulary. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "home",
+    "cleaning",
+    "family",
+    "humour"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "शनिवार की सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शनिवार की सुबह नानी ने कहा, \"आज घर की सफ़ाई का दिन है।\"",
+              "english": "On Saturday morning Nani said, \"Today is the day for cleaning the house.\""
+            },
+            {
+              "text": "सैम ने बाथरूम धोया, और अमन ने कमरों से सारी किताबें उठाईं।",
+              "english": "Sam washed the bathroom, and Aman picked up all the books from the rooms."
+            },
+            {
+              "text": "नानी रसोई में लड्डू बना रही थीं, क्योंकि आज शाम पास्टर अनिल आने वाले थे।",
+              "english": "Nani was making laddus in the kitchen, because Pastor Anil was to come this evening."
+            },
+            {
+              "text": "अमन बोला, \"नानी, मैं आज जासूस बनूँगा, और घर की हर गुम चीज़ ढूँढ़ूँगा।\"",
+              "english": "Aman said, \"Nani, today I will be a detective, and I will find every lost thing in the house.\""
+            },
+            {
+              "text": "नानी ने हँसकर कहा, \"ठीक है, पर पहले अपना कमरा साफ़ करो।\"",
+              "english": "Nani said with a laugh, \"All right, but first clean your room.\""
+            },
+            {
+              "text": "अमन ने जल्दी से अपना कमरा साफ़ किया, और फिर वह सैम से मिला।",
+              "english": "Aman cleaned his room quickly, and then he met Sam."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "नानी का स्वेटर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रसोई का काम ख़त्म करके नानी बैठक में बैठीं और अपना स्वेटर बुनने लगीं।",
+              "english": "Finishing the kitchen work Nani sat in the sitting room and began knitting her sweater."
+            },
+            {
+              "text": "ऊन का गोला दरी पर रखा था, और मोती ने उस पर अपना पाँव रख दिया।",
+              "english": "The ball of wool lay on the rug, and Moti put his paw on it."
+            },
+            {
+              "text": "सैम शाम को अक्सर टहलने जाता है, पर आज उसने घर में ही रहने का सोचा।",
+              "english": "Sam often goes for a walk in the evening, but today he thought of staying at home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गुम चीज़ें",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सबसे पहले अमन ने बाथरूम में देखा, पर वहाँ कुछ गुम नहीं था।",
+              "english": "First of all Aman looked in the bathroom, but nothing was lost there."
+            },
+            {
+              "text": "फिर वह बैठक में गया, जहाँ नानी का सबसे पसंदीदा सोफ़ा रखा था।",
+              "english": "Then he went into the sitting room, where Nani's most favourite sofa was kept."
+            },
+            {
+              "text": "उसने सारे कुशन उठाए, और पहला कुशन उठाते ही उसे घर की एक चाबी मिल गई।",
+              "english": "He lifted all the cushions, and as soon as he lifted the first cushion he found a key of the house."
+            },
+            {
+              "text": "सैम ने ताली बजाई और कहा, \"वाह जासूस! पहली चीज़ मिल गई!\"",
+              "english": "Sam clapped and said, \"Wow, detective! The first thing is found!\""
+            },
+            {
+              "text": "अमन ने दूसरा कुशन उठाया, तो नीचे से पास्टर अनिल की ऐनक निकली।",
+              "english": "Aman lifted the second cushion, and Pastor Anil's spectacles came out from below."
+            },
+            {
+              "text": "वह ऐनक कई दिन से गुम थी, और पास्टर जी उसे हर जगह ढूँढ़ चुके थे।",
+              "english": "Those spectacles had been lost for several days, and the pastor had looked for them everywhere."
+            },
+            {
+              "text": "नानी ने खुश होकर ताली बजाई और बोलीं, \"अब इसे शाम को पास्टर जी को दे देंगे।\"",
+              "english": "Nani clapped happily and said, \"Now we will give it to the pastor in the evening.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दुबका हुआ मोती",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "तभी सैम ने देखा कि मोती सोफ़े के पीछे दुबका बैठा है।",
+              "english": "Just then Sam saw that Moti was sitting crouched behind the sofa."
+            },
+            {
+              "text": "मोती को झाड़ू से डर लगता है, इसलिए वह सफ़ाई के दिन हमेशा कहीं दुबक जाता है।",
+              "english": "Moti is afraid of the broom, so on cleaning days he always crouches somewhere."
+            },
+            {
+              "text": "अमन ने उसे बुलाया, पर वह और पीछे घुस गया।",
+              "english": "Aman called him, but he went further in behind."
+            },
+            {
+              "text": "सैम ने कहा, \"उसकी नकल करो, अमन, शायद वह आ जाए।\"",
+              "english": "Sam said, \"Copy him, Aman, perhaps he will come.\""
+            },
+            {
+              "text": "अमन भी पीछे घुस गया और कुत्ते की तरह भौंकने लगा।",
+              "english": "Aman too went in behind and began to bark like a dog."
+            },
+            {
+              "text": "सैम भी सोफ़े के पीछे घुस गया, पर मोती नहीं निकला।",
+              "english": "Sam too went in behind the sofa, but Moti did not come out."
+            },
+            {
+              "text": "फिर मोती अपने आप बाहर निकल आया और बच्चों के झुंड के साथ दौड़ने लगा।",
+              "english": "Then Moti came out by himself and began running with the herd of children."
+            },
+            {
+              "text": "नानी हँसते हँसते बोलीं, \"जासूस ने तो मोती को भी पकड़ लिया!\"",
+              "english": "Nani said, laughing, \"The detective has caught even Moti!\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शाम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शाम को पास्टर अनिल आए, तो नानी ने उन्हें उनकी ऐनक दी।",
+              "english": "In the evening when Pastor Anil came, Nani gave him his spectacles."
+            },
+            {
+              "text": "उन्होंने कहा, \"मैं इसे बाथरूम से लेकर पार्क तक हर जगह ढूँढ़ चुका था!\"",
+              "english": "He said, \"I had looked for it everywhere, from the bathroom to the park!\""
+            },
+            {
+              "text": "अमन ने खुश होकर कहा, \"यह मेरा पहला काम था, और मैं इसमें पास हो गया।\"",
+              "english": "Aman said happily, \"This was my first job, and I passed in it.\""
+            },
+            {
+              "text": "सबने लड्डू खाए, और पास्टर अनिल ने अमन के लिए एक छोटी सी कविता भी सुनाई।",
+              "english": "Everybody ate laddus, and Pastor Anil even recited a small poem for Aman."
+            },
+            {
+              "text": "मोती कुर्सी के नीचे दुबककर सबको देखता रहा, और बच्चों ने उसके लिए भी लड्डू का एक टुकड़ा रखा।",
+              "english": "Moti crouched under the chair and went on looking at everybody, and the children kept a piece of laddu for him too."
+            },
+            {
+              "text": "सब लोगों ने फिर ताली बजाई, और नानी ने सबके लिए चाय बनाई।",
+              "english": "Everybody clapped again, and Nani made tea for everybody."
+            },
+            {
+              "text": "नानी ने कहा, \"आज घर साफ़ भी हुआ, और खोई हुई चीज़ें भी मिल गईं।\"",
+              "english": "Nani said, \"Today the house got clean, and the lost things were found too.\""
+            },
+            {
+              "text": "सैम ने कहा, \"नानी, मुझे ऐसा शनिवार बहुत पसंद आया।\"",
+              "english": "Sam said, \"Nani, I liked such a Saturday very much.\""
+            },
+            {
+              "text": "नानी बोलीं, \"तो अगले शनिवार भी हम सब मिलकर काम करेंगे।\"",
+              "english": "Nani said, \"Then next Saturday too we will all work together.\""
+            },
+            {
+              "text": "अमन ने सिर हिलाकर कहा, \"और अगली बार मैं पापा के कमरे में भी जासूस बनूँगा।\"",
+              "english": "Aman nodded and said, \"And next time I will be a detective in Papa's room too.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "छत की बेल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सफ़ाई के बाद सैम और अमन छत पर गए, जहाँ अंगूर की बेल लगी थी।",
+              "english": "After the cleaning Sam and Aman went to the roof, where the grape vine grew."
+            },
+            {
+              "text": "बेल की एक डाली अब भी सूखी थी, और अमन ने कहा, \"यह बेल से जुड़ी नहीं रही।\"",
+              "english": "One branch of the vine was still dry, and Aman said, \"This one did not stay joined to the vine.\""
+            },
+            {
+              "text": "सैम बोला, \"जो डाली सूख जाती है, उसे लोग आग में डालते हैं और वह जल जाती है।\"",
+              "english": "Sam said, \"The branch that dries up, people put in the fire and it burns.\""
+            },
+            {
+              "text": "अमन ने कहा, \"पर जो बेल से जुड़ी रहती है, वह फलती है, और स्वामी उसकी देखभाल करता है।\"",
+              "english": "Aman said, \"But the one that stays joined to the vine bears fruit, and the owner takes care of it.\""
+            },
+            {
+              "text": "पास्टर अनिल ने बताया कि चेलों को भी लोगों ने सताया था, पर वे यीशु से जुड़े रहे।",
+              "english": "Pastor Anil told them that the disciples too had been persecuted by people, but they stayed joined to Jesus."
+            },
+            {
+              "text": "अमन ने कहा, \"अंगूर की बेल की सूखी डाली आग में जल जाती है, पर चेला यीशु से जुड़ा रहता है।\"",
+              "english": "Aman said, \"The dry branch of the grape vine burns in the fire, but the disciple stays joined to Jesus.\""
+            },
+            {
+              "text": "सैम ने कहा, \"तब तो अंगूर की हर डाली को आग से बचाना चाहिए, और हर चेले को भी।\"",
+              "english": "Sam said, \"Then every branch of the grape vine should be saved from the fire, and every disciple too.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

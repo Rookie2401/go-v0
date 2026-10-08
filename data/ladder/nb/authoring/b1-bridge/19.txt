@@ -1,0 +1,37 @@
+=== nb-b1-bridge-19 | story | nature | Winter holiday at the cabin | Ferie på hytta | nature,winter,skiing,cabin,fog,modal perfect,past perfect
+note: A winter holiday at the family cabin. Past tense and past perfect, the modal perfect (burde ha, skulle ha), and a short adventure in fog. Safety advice is general; a Norwegian reviewer should check how natural the mountain talk sounds. No real place is named.
+## Ferie
+Om vinteren hadde skolen ferie, og {luis} spurte om {sam} ville være med til hytta. Den lå i fjellet, to timer med tog og en time med buss fra {city}. || In winter the school had a holiday, and Lars asked whether Sam wanted to come to the cabin. It lay in the mountains, two hours by train and an hour by bus from Bergen.
+{ana}, {luis}, {marta} og {nico} var med, og {sam} hadde pakket i god tid. Han hadde aldri gått på ski, men han hadde skiene til {luis}. || Anna, Lars, Marta and Nils were coming, and Sam had packed in good time. He had never been on skis, but he had Lars's skis.
+Hytta var liten, og i stua var det en peis. || The cabin was small, and in the living room there was a fireplace.
+
+## Ski
+Den første dagen lærte {luis} {sam} å gå på ski. Det gikk dårlig. {sam} falt tre ganger, og {nico} lo så mye at han falt han også. || The first day Lars taught Sam to go on skis. It went badly. Sam fell three times, and Nils laughed so much that he fell too.
+[luis] Du må være forsiktig. Ikke gå for fort, og se mot der du vil gå. || You must be careful. Do not go too fast, and look towards where you want to go.
+[marta] Vær forsiktig, {sam}! Jeg vil ikke ha deg på legevakten, som {nico}. || Be careful, Sam! I do not want you at the emergency clinic, like Nils.
+Etter noen timer gikk det bedre. {sam} fant løypa, og han gikk rolig bak {luis}. Det var rolig i fjellet, og han kunne gå langt. || After a few hours it went better. Sam found the trail, and he went calmly behind Lars. It was calm in the mountains, and he could go far.
+Om kvelden satt de ved peisen og drakk varm kakao. Alle var trøtte, men {sam} var stolt. Han hadde gått langt på ski! || In the evening they sat by the fireplace and drank hot cocoa. Everyone was tired, but Sam was proud. He had gone far on skis!
+
+## Tåken
+Den andre dagen var sola ute, og {sam} ville gå alene. «Bare en liten tur,» sa han. {luis} sa at han burde vente, men {sam} hadde allerede skiene på. || The second day the sun was out, and Sam wanted to go alone. "Just a little trip," he said. Lars said that he ought to wait, but Sam already had his skis on.
+Han gikk i løypa mot fjellet, og først var alt bra. Men etter en time kom tåken. Den kom fort, og snart kunne han ikke se langt. || He went on the trail towards the mountain, and at first everything was fine. But after an hour the fog came. It came fast, and soon he could not see far.
+{sam} stoppet. Han var redd, og han tenkte: Jeg burde ha sagt hvor jeg skulle. Jeg skulle ha tatt med {nico} eller {luis}. || Sam stopped. He was afraid, and he thought: I should have said where I was going. I should have taken Nils or Lars with me.
+Så husket han det {luis} hadde sagt: Når tåken kommer, må du være rolig og vente. Se på sporene dine i snøen, og følg dem tilbake. || Then he remembered what Lars had said: When the fog comes, you must be calm and wait. Look at your tracks in the snow, and follow them back.
+Han så på snøen, og der var sporene hans, ennå der. Han fulgte dem forsiktig, og han ba mens han gikk. Han hadde mistet løypa, men han hadde ikke mistet håpet. || He looked at the snow, and there were his tracks, still there. He followed them carefully, and he prayed as he walked. He had lost the trail, but he had not lost hope.
+
+## Hjemme igjen
+Etter lang tid hørte han en stemme. Det var {luis}, som hadde lett etter ham. || After a long time he heard a voice. It was Lars, who had been looking for him.
+[luis] Der er du! Jeg var redd. Neste gang sier du hvor du går! || There you are! I was afraid. Next time you say where you are going!
+[sam] Ja. Jeg burde ha sagt det. Jeg er lei for det, og jeg er veldig glad for at du kom. || Yes. I should have said so. I am sorry, and I am very glad that you came.
+På kvelden satt alle ved peisen en gang til. {marta} fortalte om fjellet i gamle dager, og {sam} lyttet med varm kakao og tenkte at han aldri skulle glemme den dagen. || In the evening everyone sat by the fireplace once more. Marta told about the mountain in the old days, and Sam listened with hot cocoa and thought that he would never forget that day.
+
+## Siste dagen
+Dagen etter var sola ute, og alle gikk på ski sammen mot et lite vann. {sam} gikk først, og han fulgte løypa uten å se seg tilbake. || The day after the sun was out, and everyone went skiing together towards a little lake. Sam went first, and he followed the trail without looking back.
+Ved vannet drakk de kakao og spiste brød med ost. Det var ingen tåke nå, bare sol og snø. || By the lake they drank cocoa and ate bread with cheese. There was no fog now, only sun and snow.
+[nico] Jeg vil gå på ski hver ferie! Nå går vi mot hytta! || I want to go skiing every holiday! Now we are going towards the cabin!
+[marta] En ferie i fjellet er den beste ferien. Og tåken er snill, når den er over. || A holiday in the mountains is the best holiday. And the fog is kind, when it is over.
+{sam} tenkte på tåken og på sporene i snøen. Han hadde lært at det er bra å si hvor du går. Han fulgte de andre mot hytta, og han var glad. || Sam thought about the fog and the tracks in the snow. He had learned that it is good to say where you are going. He followed the others towards the cabin, and he was glad.
+
+{ana} hadde hatt vakt på julaften, og hun var ganske trøtt, men på hytta fikk hun hvile. Bak hytta var det mer snø enn ved døra, og om kvelden samlet de seg ved peisen. De pyntet hytta som på julaften, og de slo av lyset og satt med bare peisen. Prisen for turen var bra for alle. || Anna had been on duty on Christmas Eve, and she was quite tired, but at the cabin she got to rest. Behind the cabin there was more snow than at the door, and in the evening they gathered by the fireplace. They decorated the cabin as on Christmas Eve, and they switched off the light and sat with only the fireplace. The price of the trip was good for everyone.
+På hytta spiste de grøt om morgenen, og om natten kunne de se stjernene over fjellet. {marta} fortalte en lignelse, og de hadde bare lyset fra peisen. De bruker ikke mye strøm på hytta. || At the cabin they ate porridge in the morning, and at night they could see the stars over the mountain. Marta told a parable, and they had only the light from the fireplace. They do not use much electricity at the cabin.
+Egentlig trengte de ikke å betale noe for hytta, selv om prisene hadde økt. || Actually they did not need to pay anything for the cabin, even though prices had risen.

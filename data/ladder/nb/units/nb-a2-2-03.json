@@ -189,8 +189,8 @@
         {
           "sentences": [
             {
-              "text": "Toget fra stasjonen gikk langt, gjennom fjellet. Utsikten var bra.",
-              "english": "The train from the station went far, through the mountain. The view was good."
+              "text": "Toget fra stasjonen gikk langt, gjennom fjellet. Utsikten var bra. Sam skal komme tilbake.",
+              "english": "The train from the station went far, through the mountain. The view was good. Sam will come back."
             }
           ]
         },
@@ -205,8 +205,8 @@
         {
           "sentences": [
             {
-              "text": "De bygger skolen, og den åpner snart. Nyheten er bra.",
-              "english": "They are building the school, and it opens soon. The news is good."
+              "text": "De bygger skolen, og den åpner snart. Nyheten er bra. Sam vil gå dit, for der er det plass.",
+              "english": "They are building the school, and it opens soon. The news is good. Sam wants to go there, because there is room there."
             }
           ]
         }

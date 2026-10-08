@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-08",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ลุงเล็กขับรถสองแถว",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-08",
+    "title": "ลุงเล็กขับรถสองแถว — Uncle Lek, who drives the songthaew (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A short biography of an invented, composite person in everyday third-person narration. For the reviewer: ลุงเล็ก, the songthaew trade, the fares and the northern-city details are plausible but invented; nothing is claimed about a real person."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "biography",
+    "work",
+    "songthaew",
+    "old age"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "เด็กชายจากแม่ริม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ลุงเล็กเกิดที่หมู่บ้านเล็กๆ ใกล้เมืองเชียงใหม่",
+              "english": "Uncle Lek was born in a small village near Chiang Mai."
+            },
+            {
+              "text": "พ่อของเขาทำสวน ครอบครัวไม่มีเงินมาก",
+              "english": "His father worked a garden, and the family did not have much money."
+            },
+            {
+              "text": "ตอนอายุสิบสอง ลุงเล็กเลิกเรียนเพื่อไปช่วยพ่อทำงาน",
+              "english": "At twelve Uncle Lek stopped school in order to go and help his father work."
+            },
+            {
+              "text": "เขาอยากเรียนต่อ แต่ครอบครัวไม่มีเงินจ่ายค่าเรียน",
+              "english": "He wanted to go on studying, but the family had no money for the fees."
+            },
+            {
+              "text": "ตอนเด็ก ลุงเล็กชอบนั่งดูมดเดินเป็นแถวที่หน้าบ้าน",
+              "english": "As a child Uncle Lek liked to sit and watch ants walking in a line in front of the house."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "รถคันแรก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่ออายุยี่สิบห้าปี ลุงเล็กไปทำงานเป็นคนขับรถให้ร้านแห่งหนึ่ง",
+              "english": "At twenty-five Uncle Lek went to work as a driver for a shop."
+            },
+            {
+              "text": "เขาเก็บเงินทุกเดือน และไม่ซื้อของที่ไม่ต้องใช้",
+              "english": "He saved money every month and did not buy things he did not need."
+            },
+            {
+              "text": "สิบปีต่อมา เขามีเงินพอซื้อรถสองแถวเก่าคันหนึ่ง",
+              "english": "Ten years later he had enough to buy an old songthaew."
+            },
+            {
+              "text": "รถคันนั้นเป็นสีแดง มีเสียงดังมาก และมีควันดำออกมา แต่ลุงเล็กภูมิใจมาก",
+              "english": "That truck was red, very noisy, and gave off black smoke, but Uncle Lek was very proud of it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ชีวิตบนถนน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ทุกเช้า ลุงเล็กตื่นตีห้า และขับรถไปรับคนที่ตลาด",
+              "english": "Every morning Uncle Lek woke at five and drove to pick up people at the market."
+            },
+            {
+              "text": "ผู้โดยสารมีทั้งนักเรียน คนขายของ และพระ",
+              "english": "His passengers included students, market sellers and monks."
+            },
+            {
+              "text": "เขาช่วยผู้โดยสารเอาของขึ้นหลังคารถทุกครั้ง",
+              "english": "He always helped the passengers put their goods on the roof of the truck."
+            },
+            {
+              "text": "เขาไม่เคยดูถูกผู้โดยสารคนไหนเลย",
+              "english": "He never looked down on any passenger."
+            },
+            {
+              "text": "ค่ารถไม่แพง แต่ถ้าใครไม่มีเงิน ลุงเล็กก็ไม่ปฏิเสธ",
+              "english": "The fare was not high, and if anyone had no money, Uncle Lek did not refuse them."
+            },
+            {
+              "text": "เขาบอกว่า คนเราต้องมีน้ำใจต่อกัน",
+              "english": "He said, \"People must be generous to one another.\""
+            },
+            {
+              "text": "บางครั้ง ลุงเล็กขับรถพาคนไข้ไปโรงพยาบาลตอนดึก",
+              "english": "Sometimes Uncle Lek drove sick people to the hospital late at night."
+            },
+            {
+              "text": "มะลิรู้จักเขาดี เพราะเขาเคยพาคนไข้มาส่งที่เธอบ่อยๆ",
+              "english": "Mali knew him well, because he had often brought patients to her."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันที่รถเสีย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ปีที่แล้ว รถของลุงเล็กเสียกลางทาง",
+              "english": "Last year Uncle Lek's truck broke down in the middle of the road."
+            },
+            {
+              "text": "คนซ่อมรถพูดว่า ค่าซ่อมแพงมาก ลุงเล็กไม่มีเงิน และเขาเกรงใจที่จะขอให้ใครช่วย",
+              "english": "The mechanic said the repair was very expensive. Uncle Lek had no money, and he felt too shy to ask anyone for help."
+            },
+            {
+              "text": "แต่คนที่เคยนั่งรถของเขารู้เรื่อง",
+              "english": "But the people who had ridden in his truck heard about it."
+            },
+            {
+              "text": "คนขายของที่ตลาดช่วยกันเก็บเงิน ทุกคนให้นิดหน่อย",
+              "english": "The market sellers collected money together, each giving a little."
+            },
+            {
+              "text": "เด็กนักเรียนให้เหรียญที่เก็บไว้",
+              "english": "The schoolchildren gave coins they had saved."
+            },
+            {
+              "text": "ในที่สุด รถก็ได้ซ่อมโดยไม่ต้องเป็นหนี้ใคร",
+              "english": "In the end the truck was mended without his owing anyone a debt."
+            },
+            {
+              "text": "ลุงเล็กร้องไห้ และพูดว่า ผมไม่คิดว่าจะมีวันนี้",
+              "english": "Uncle Lek cried and said, \"I never thought a day like this would come.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตอนนี้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนนี้ลุงเล็กอายุหกสิบปี แต่ยังขับรถทุกวัน",
+              "english": "Now Uncle Lek is sixty but still drives every day."
+            },
+            {
+              "text": "เขามีลูกสองคน คนหนึ่งเป็นครู",
+              "english": "He has two children, and one is a teacher."
+            },
+            {
+              "text": "เขาบอกว่า ผมไม่มีเงินมาก แต่ผมมีเพื่อนมาก",
+              "english": "He says, \"I do not have much money, but I have many friends.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-14",
+  "lang": "nb",
+  "title": "What does a nurse do?",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-14",
+    "title": "What does a nurse do? (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Anna tells Lars's class about her work. Explanatory Norwegian with relative clauses (en som ..., en vakt som ...), superlatives (det vanskeligste, den beste) and questions. General and simplified; no real hospital is named. A Norwegian reviewer should check how natural the classroom talk sounds."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "work",
+    "health",
+    "explanation",
+    "relative clauses",
+    "comparison",
+    "questions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "ana": "Anna",
+    "elev": "En elev",
+    "nico": "Nils",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "I klasserommet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En dag spurte Lars om Anna ville komme til klassen hans. Elevene skulle lære om arbeid, og Lars mente at ingen kunne fortelle bedre om en sykepleier enn Anna.",
+              "english": "One day Lars asked whether Anna would come to his class. The pupils were going to learn about work, and Lars thought that nobody could tell better about a nurse than Anna."
+            },
+            {
+              "text": "Sam var også med. Han satt og lyttet. Nils satt med gipsen sin, og han var stolt av den.",
+              "english": "Sam was there too. He sat and listened. Nils sat with his cast, and he was proud of it."
+            },
+            {
+              "text": "Dette er Anna, søsteren min. Hun er sykepleier. Nå skal dere få høre hva hun gjør.",
+              "english": "This is Anna, my sister. She is a nurse. Now you will hear what she does.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Arbeidet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hei, alle sammen. En sykepleier er en som hjelper folk som er syke. Noen er syke i noen dager, og noen er syke i lang tid.",
+              "english": "Hi, everyone. A nurse is someone who helps people who are ill. Some are ill for a few days, and some are ill for a long time.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg jobber på en klinikk. Hver dag treffer jeg mange pasienter. Jeg måler temperaturen til pasientene, og jeg gir dem medisin når legen har sagt det.",
+              "english": "I work at a clinic. Every day I meet many patients. I measure the patients' temperature, and I give them medicine when the doctor has said so.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Gjør det vondt å måle temperaturen?",
+              "english": "Does it hurt to measure the temperature?",
+              "speaker": "elev"
+            },
+            {
+              "text": "Nei, det gjør ikke vondt. Det er ganske lett.",
+              "english": "No, it does not hurt. It is quite easy.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Men det vanskeligste er ikke å gi medisin. Det vanskeligste er å lytte. Mange pasienter er redde, og de trenger noen som har tid.",
+              "english": "But the most difficult thing is not giving medicine. The most difficult thing is listening. Many patients are afraid, and they need someone who has time.",
+              "speaker": "ana"
+            },
+            {
+              "text": "En annen dag hadde jeg en pasient som var ganske gammel og veldig redd. Jeg satt hos ham i en time. Han trengte ikke medisin, han trengte bare noen.",
+              "english": "One day I had a patient who was quite old and very afraid. I sat with him for an hour. He did not need medicine, he only needed someone.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Vakt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jobber du om natten også?",
+              "english": "Do you work at night too?",
+              "speaker": "elev"
+            },
+            {
+              "text": "Ja, noen ganger. Da har jeg vakt hele natten. Jeg må måle temperaturen til alle pasientene, også om natten. Mens mange sover, er jeg på jobb. Det er en vakt som kan være lang, og jeg blir ganske trøtt.",
+              "english": "Yes, sometimes. Then I am on duty all night. I must measure the temperature of all the patients, also at night. While many sleep, I am at work. It is a shift that can be long, and I get quite tired.",
+              "speaker": "ana"
+            },
+            {
+              "text": "En annen vakt var veldig rolig, og da fikk jeg lese i en bok. Men jeg liker arbeidet, fordi jeg får være med når noen blir frisk. Den dagen er den beste dagen.",
+              "english": "Another shift was very quiet, and then I got to read in a book. But I like the work, because I get to be there when someone gets well. That day is the best day.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Blir alle friske?",
+              "english": "Does everyone get well?",
+              "speaker": "elev"
+            },
+            {
+              "text": "Nei, ikke alle. Men mange blir friske, og vi gjør det vi kan.",
+              "english": "No, not everyone. But many get well, and we do what we can.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Hva er det viktigste for en sykepleier?",
+              "english": "What is the most important thing for a nurse?",
+              "speaker": "elev"
+            },
+            {
+              "text": "Ansvar og omsorg. Ansvar er å gjøre det du skal gjøre, hver dag. Omsorg er å være snill og lytte til folk du møter. Med ansvar og omsorg blir mange friske.",
+              "english": "Responsibility and care. Responsibility is to do what you are to do, every day. Care is to be kind and to listen to the people you meet. With responsibility and care many get well.",
+              "speaker": "ana"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nils spør",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg hadde en sykepleier da jeg fikk gips. Hun var nesten like snill som deg, Anna!",
+              "english": "I had a nurse when I got a cast. She was almost as kind as you, Anna!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Alle lo, og Anna var glad. «Takk, Nils. Det var bra sagt. En annen gang skal jeg fortelle mer.»",
+              "english": "Everyone laughed, and Anna was glad. \"Thank you, Nils. That was well said. Another time I will tell more.\""
+            },
+            {
+              "text": "Etterpå gikk elevene ut i pausen. Sam var igjen med Lars og Anna.",
+              "english": "Afterwards the pupils went out for the break. Sam stayed with Lars and Anna."
+            },
+            {
+              "text": "Jeg har ikke tenkt så mye på hva du gjør. Nå forstår jeg hvorfor du er så trøtt etter vakten.",
+              "english": "I had not thought so much about what you do. Now I understand why you are so tired after the shift.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg er trøtt, men jeg er også glad. Jeg tror at alle kan hjelpe noen, og at det er en måte å takke Gud på.",
+              "english": "I am tired, but I am also glad. I think that everyone can help someone, and that it is a way of thanking God.",
+              "speaker": "ana"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På vei hjem tenkte Sam på kontrakten og på hvordan Anna hadde forklart den. Armen til Nils var bra igjen, men han hadde fortsatt hjelm på hodet hver dag. Kommunen hadde kjøpt nye kasser til glass, og det var ikke et problem lenger. Kunden som var sint, hadde klaget, men hun hadde fått en ny kvittering.",
+              "english": "On the way home Sam thought of the contract and of how Anna had explained it. Nils's arm was good again, but he still had a helmet on his head every day. The municipality had bought new boxes for glass, and it was no longer a problem. The customer who was angry had complained, but she had got a new receipt."
+            },
+            {
+              "text": "Sam kunne ikke løfte kassene med glass ennå, men han kunne sykle til jobben. Han leste en engelsk bok som han skulle levere tilbake. De snakket om partiene og hvilken mening de hadde, men han hadde ikke nok tid til å lese alt.",
+              "english": "Sam could not lift the boxes of glass yet, but he could cycle to work. He read an English book that he was going to return. They talked about the parties and which opinion they had, but he did not have enough time to read everything."
+            },
+            {
+              "text": "Det var støy fra naboene, og Sam sa at han ville stemme for en ny regel på neste møte. Den sinte kunden hadde ringt igjen. Nils ville aldri mer sykle uten hjelm etter bruddet.",
+              "english": "There was noise from the neighbours, and Sam said that he would vote for a new rule at the next meeting. The angry customer had called again. Nils would never again cycle without a helmet after the fracture."
+            },
+            {
+              "text": "Kunden skulle ikke klage mer, og Nils falt ikke igjen. Hun hadde fått pengene tilbake.",
+              "english": "The customer was not going to complain any more, and Nils did not fall again. She had got her money back."
+            },
+            {
+              "text": "Bruddet i armen var nesten bra igjen.",
+              "english": "The fracture in the arm was almost good again."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

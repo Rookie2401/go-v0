@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-02",
+  "lang": "sq",
+  "title": "Motër dhe vëlla",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-02",
+    "title": "Albanian ladder, a1-1: Motër dhe vëlla (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Motër dhe vëlla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana dhe Luan janë motër dhe vëlla.",
+              "english": "Ana and Luan are sister and brother."
+            },
+            {
+              "text": "Ata jetojnë në një shtëpi të vogël.",
+              "english": "They live in a small house."
+            },
+            {
+              "text": "Sot është e diel.",
+              "english": "Today is Sunday."
+            },
+            {
+              "text": "Luan është në kuzhinë.",
+              "english": "Luan is in the kitchen."
+            },
+            {
+              "text": "Ai pi kafe dhe lexon një libër.",
+              "english": "He drinks coffee and reads a book."
+            },
+            {
+              "text": "Ana është në dhomë.",
+              "english": "Ana is in the room."
+            },
+            {
+              "text": "Ajo është e lodhur.",
+              "english": "She is tired."
+            },
+            {
+              "text": "— Ana, a do kafe?",
+              "english": "\"Ana, do you want coffee?\""
+            },
+            {
+              "text": "— Jo, faleminderit. Dua ujë.",
+              "english": "\"No, thank you. I want water.\""
+            },
+            {
+              "text": "Luan pi kafe.",
+              "english": "Luan drinks coffee."
+            },
+            {
+              "text": "Pastaj Ana dhe Luan shkojnë në kishë.",
+              "english": "Then Ana and Luan go to church."
+            },
+            {
+              "text": "Në kishë është edhe gjyshja Drita.",
+              "english": "Grandmother Drita is at church too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam është në rrugë.",
+              "english": "Sam is in the street."
+            },
+            {
+              "text": "Ai ka një çantë me bukë.",
+              "english": "He has a bag with bread."
+            },
+            {
+              "text": "Ardi është me një vajzë.",
+              "english": "Ardi is with a girl."
+            },
+            {
+              "text": "Kush është ajo?",
+              "english": "Who is she?"
+            },
+            {
+              "text": "Sam nuk e di.",
+              "english": "Sam does not know."
+            },
+            {
+              "text": "— Përshëndetje, Ardi!",
+              "english": "\"Hello, Ardi!\""
+            },
+            {
+              "text": "— Përshëndetje, Sam! Kjo është Elira.",
+              "english": "\"Hello, Sam! This is Elira.\""
+            },
+            {
+              "text": "— Gëzohem, Elira!",
+              "english": "\"Pleased to meet you, Elira!\""
+            },
+            {
+              "text": "— Gëzohem, Sam!",
+              "english": "\"Pleased to meet you, Sam!\""
+            },
+            {
+              "text": "Ardi dhe Elira shkojnë në shkollë.",
+              "english": "Ardi and Elira go to school."
+            },
+            {
+              "text": "Ardi është djalë i mirë.",
+              "english": "Ardi is a good boy."
+            },
+            {
+              "text": "Edhe Elira është shumë e mirë.",
+              "english": "Elira is very good too."
+            },
+            {
+              "text": "Sam shkon në shtëpi me bukë.",
+              "english": "Sam goes home with bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gjyshja e Ardit është Drita.",
+              "english": "Ardi's grandmother is Drita."
+            },
+            {
+              "text": "Ardi jeton me gjyshen.",
+              "english": "Ardi lives with his grandmother."
+            },
+            {
+              "text": "Shtëpia e gjyshes është e vogël.",
+              "english": "The grandmother's house is small."
+            },
+            {
+              "text": "Nëna e Ardit nuk është këtu.",
+              "english": "Ardi's mother is not here."
+            },
+            {
+              "text": "Ajo punon në Tiranë.",
+              "english": "She works in Tirana."
+            },
+            {
+              "text": "Sot gjyshja ka bukë dhe oriz.",
+              "english": "Today grandmother has bread and rice."
+            },
+            {
+              "text": "Ardi ha oriz.",
+              "english": "Ardi eats rice."
+            },
+            {
+              "text": "Gjyshja pi kafe.",
+              "english": "Grandmother drinks coffee."
+            },
+            {
+              "text": "— Ardi, a të pëlqen orizi?",
+              "english": "\"Ardi, do you like the rice?\""
+            },
+            {
+              "text": "— Po, gjyshe, më pëlqen shumë.",
+              "english": "\"Yes, grandmother, I like it very much.\""
+            },
+            {
+              "text": "Ardi është i lodhur.",
+              "english": "Ardi is tired."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sot Ana punon në klinikë.",
+              "english": "Today Ana works at the clinic."
+            },
+            {
+              "text": "Në klinikë ka një djalë me nënën.",
+              "english": "At the clinic there is a boy with his mother."
+            },
+            {
+              "text": "Ai është i lodhur.",
+              "english": "He is tired."
+            },
+            {
+              "text": "— Kush je ti? — thotë Ana.",
+              "english": "\"Who are you?\" says Ana."
+            },
+            {
+              "text": "— Jam nëna. Ai nuk pi ujë.",
+              "english": "\"I am the mother. He does not drink water.\""
+            },
+            {
+              "text": "— A do ujë? A do çaj?",
+              "english": "\"Do you want water? Do you want tea?\""
+            },
+            {
+              "text": "Ai pi pak ujë.",
+              "english": "He drinks a little water."
+            },
+            {
+              "text": "— Faleminderit shumë!",
+              "english": "\"Thank you very much!\""
+            },
+            {
+              "text": "— S'ka përse.",
+              "english": "\"You're welcome.\""
+            },
+            {
+              "text": "Në klinikë ka edhe një vajzë.",
+              "english": "At the clinic there is also a girl."
+            },
+            {
+              "text": "Ajo është e lodhur, por është mirë.",
+              "english": "She is tired, but she is well."
+            },
+            {
+              "text": "Ana pi kafe me Luanin.",
+              "english": "Ana drinks coffee with Luan."
+            },
+            {
+              "text": "Luan ka bukë dhe oriz.",
+              "english": "Luan has bread and rice."
+            },
+            {
+              "text": "Ana nuk është e lodhur tani.",
+              "english": "Ana is not tired now."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana i jep ujë djalit.",
+              "english": "Ana gives the boy water."
+            },
+            {
+              "text": "Tani djali është mirë.",
+              "english": "Now the boy is well."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -1,29 +1,29 @@
 === nb-a1-2-11 | story | family | Nils's birthday | Bursdagen til {nico} | birthday,cake,gift,guests,party
 note: "Gratulerer med dagen" is the fixed birthday greeting; "Gratulerer med bursdagen" is also correct.
 ## Bursdag
-I dag har {nico} bursdag. Han er elleve år. || Today it is Nils's birthday. He is eleven years old.
-{marta} har bakt en stor kake. Hun liker å bake. || Marta has baked a big cake. She likes baking.
+I dag har {nico} bursdag. Det er en stor bursdag, for han er elleve år. || Today it is Nils's birthday. It is a big birthday, for he is eleven years old.
+{marta} har bakt en stor kake. Kaken er til {nico}. Hun liker å bake. || Marta has baked a big cake. The cake is for Nils. She likes baking.
 Alle kommer til {marta}. Hun er glad. || Everyone comes to Marta's. She is happy.
 {sam} er gjest. {ana} og {luis} er gjester også. || Sam is a guest. Anna and Lars are guests too.
-{marta} liker gjester. Hun er glad. || Marta likes guests. She is happy.
+{marta} liker å ha besøk. Hun er glad. || Marta likes having visitors. She is happy.
 
 ## Gaver
 [sam] Gratulerer med dagen, {nico}! Her er en gave. || Happy birthday, Nils! Here is a gift.
 [nico] Takk for gaven, {sam}! || Thank you for the gift, Sam!
-{nico} tar gaven. Det er en bok. || Nils takes the gift. It is a book.
+{nico} tar den. Det er en bok. || Nils takes it. It is a book.
 [nico] Jeg liker bøker. Jeg vil lese den hver dag. || I like books. I want to read it every day.
-[ana] Gratulerer, {nico}! Du er elleve år nå. || Congratulations, Nils! You are eleven now.
+[ana] Hei, {nico}! Du er elleve år nå. || Hi, Nils! You are eleven now.
 [luis] Gratulerer med bursdagen! Du er en bra elev. || Happy birthday! You are a good pupil.
 [marta] Her er jakka fra meg. || Here is the jacket from me.
 [nico] Takk, bestemor! Jeg trenger en jakke. || Thank you, grandmother! I need a jacket.
 
 ## Kake og sang
-Alle synger en sang for {nico}. {sam} synger litt. || Everyone sings a song for Nils. Sam sings a little.
+Gjestene synger en sang for {nico}. {sam} synger litt. || The guests sing a song for Nils. Sam sings a little.
 Kaken er stor. Alle spiser kake. || The cake is big. Everyone eats cake.
 [sam] Den er veldig god, {marta}! || It is very good, Marta!
 [marta] Takk, {sam}! Du må komme hver søndag. || Thank you, Sam! You must come every Sunday.
 [sam] Ja, gjerne! Det er en bra bursdag. || Yes, gladly! It is a good birthday.
-{nico} er glad. Han har bok og jakke. Han er ikke trøtt i dag! || Nils is happy. He has a book and a jacket. He is not tired today!
+Alle sier gratulerer, og {nico} er glad. Han har gaven fra {sam}, og han har ei jakke. Han er ikke trøtt i dag! || Everyone says congratulations, and Nils is happy. He has the gift from Sam, and he has a jacket. He is not tired today!
 
 ## Husker du?
 {nico} tenkte på gaven. Han mistet den ikke, og han husket at {sam} var snill. || Nils thought about the gift. He did not lose it, and he remembered that Sam was kind.

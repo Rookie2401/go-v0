@@ -33,7 +33,7 @@ import { NB_VARIETIES, NN_VARIETIES } from './varieties';
 import { normalizeNo, segmentSentencesNo, tokenizeNo } from './text';
 import type { NoStandard } from './types';
 
-const VERSION = '1';
+const VERSION = '2'; // 2 (2026-10-08): b1-bridge lexicon additions (62 nouns, 13 verbs, 5 adjectives) and in-place fixes
 
 // ── numbers 0–999 999 ──
 const U = ['null', 'en', 'to', 'tre', 'fire', 'fem', 'seks', 'sju', 'åtte', 'ni', 'ti', 'elleve', 'tolv', 'tretten', 'fjorten', 'femten', 'seksten', 'sytten', 'atten', 'nitten'];

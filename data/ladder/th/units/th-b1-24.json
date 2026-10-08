@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-24",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "สมุดของแซม หน้าสุดท้าย",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-24",
+    "title": "สมุดของแซม หน้าสุดท้าย — Sam's notebook: the last page (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A reflective first-person text that gathers the fables and scenes of the b1-bridge, in the written register. For the reviewer: the moral of each fable is paraphrased from the retellings, and the last lines are a personal statement by an invented narrator, not an instruction to the learner."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "reflection",
+    "fables",
+    "lessons",
+    "gratitude"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "หน้าสุดท้าย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนก่อนกลับเชียงใหม่ แซมนั่งเขียนในสมุดเล่มเก่าของเขา",
+              "english": "The night before going back to Chiang Mai, Sam sat writing in his old notebook."
+            },
+            {
+              "text": "เขาเขียนว่า ตลอดปีที่ผ่านมา ผมเรียนรู้จากนิทานมากกว่าที่คิด",
+              "english": "He wrote: \"Over the past year I learned from the fables more than I expected.\""
+            },
+            {
+              "text": "ผมจะเขียนไว้ทีละเรื่อง เพื่อไม่ให้ลืม",
+              "english": "\"I will write them down one at a time, so as not to forget.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "สิ่งที่นิทานสอนผม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เรื่องกระต่ายกับเต่าสอนผมว่า อย่าประมาท และอย่าดูถูกคนที่ดูช้า",
+              "english": "The hare and the tortoise taught me not to be careless and not to look down on someone who seems slow."
+            },
+            {
+              "text": "เรื่องมดกับจักจั่นสอนว่า ควรเก็บไว้เมื่อยังมีแรง",
+              "english": "The ants and the cicada taught me to save while I still have strength."
+            },
+            {
+              "text": "เรื่องราชสีห์กับหนูสอนว่า ตัวเล็กก็ช่วยตัวใหญ่ได้",
+              "english": "The lion and the mouse taught me that the small can help the great."
+            },
+            {
+              "text": "เรื่องกบกับวัวสอนว่า อย่าอยากใหญ่เกินตัว",
+              "english": "The frog and the ox taught me not to want to be bigger than I am."
+            },
+            {
+              "text": "เรื่องกระต่ายกับกบสอนว่า ความกลัวไม่ได้มีแต่เรา",
+              "english": "The hares and the frogs taught me that fear does not belong to us alone."
+            },
+            {
+              "text": "เรื่องพ่อค้าเกลือสอนว่า คนที่โกงเขา สักวันก็ต้องได้ผลของตัวเอง",
+              "english": "The salt merchant taught me that a cheat will one day get the result of his own deed."
+            },
+            {
+              "text": "เรื่องคนตัดไม้สอนว่า คนซื่อสัตย์ไม่เสียอะไร",
+              "english": "The woodcutter taught me that an honest man loses nothing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คนที่ผมต้องขอบคุณ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมขอบคุณยายของมะลิ ที่สอนผมทำน้ำพริก และให้ผมนั่งดูนา",
+              "english": "I thank Mali's grandmother, who taught me to make chilli dip and let me sit watching the field."
+            },
+            {
+              "text": "ผมขอบคุณลุงเล็ก ที่ขับรถพาผมไปทุกที่ และไม่เคยเก็บเงินเกิน",
+              "english": "I thank Uncle Lek, who drove me everywhere and never charged me too much."
+            },
+            {
+              "text": "ผมขอบคุณป้าแดง ที่ให้ข้าวต้มผมกินในวันที่ฝนตก",
+              "english": "I thank Auntie Daeng, who gave me rice porridge on the day it rained."
+            },
+            {
+              "text": "ผมขอบคุณต้น ที่ฟังผมเมื่อผมเขียนไม่ได้",
+              "english": "I thank Ton, who listened to me when I could not write."
+            },
+            {
+              "text": "ผมขอบคุณบอล ที่ถามคำถามที่ผมตอบไม่ได้",
+              "english": "I thank Ball, who asked questions I could not answer."
+            },
+            {
+              "text": "และผมขอบคุณมะลิ ซึ่งช่วยแปลทุกอย่างที่ผมไม่เข้าใจ",
+              "english": "And I thank Mali, who helped translate everything I did not understand."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่ผมอยากเป็น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ทุกคนในซอยยกย่องลุงเล็ก เพราะลุงเล็กปฏิบัติต่อทุกคนเหมือนกัน",
+              "english": "Everyone in the lane honours Uncle Lek, because Uncle Lek treats everyone alike."
+            },
+            {
+              "text": "ผมไม่อยากเลียนคนที่ทำชั่ว แต่อยากเลียนคนที่ทำดี",
+              "english": "I do not want to imitate those who do wrong, but those who do good."
+            },
+            {
+              "text": "ผมอยากดำเนินชีวิตอย่างซื่อสัตย์ เหมือนที่ลุงเล็กทำ",
+              "english": "I want to walk through life honestly, as Uncle Lek does."
+            },
+            {
+              "text": "ขอให้มิตรสหายทุกคนเจริญ และมีสันติสุขในใจ",
+              "english": "May all my friends prosper and have peace in their hearts."
+            },
+            {
+              "text": "แซมเขียนทั้งหมดนี้ด้วยหมึกสีน้ำเงิน",
+              "english": "Sam wrote all this in blue ink."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หน้าต่อไป",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมรู้ว่าภาษาไทยของผมยังไม่ดี",
+              "english": "I know my Thai is still not good."
+            },
+            {
+              "text": "แต่ผมอ่านนิทานได้แล้ว และอ่านจดหมายได้บางฉบับ",
+              "english": "But I can read fables now, and some letters."
+            },
+            {
+              "text": "พรุ่งนี้ผมจะเริ่มอ่านเรื่องที่ยากกว่านี้",
+              "english": "Tomorrow I will start reading harder things than these."
+            },
+            {
+              "text": "ถ้าผมอ่านไม่เข้าใจ ผมจะถามอีกครั้ง และอีกครั้ง",
+              "english": "If I do not understand, I will ask again, and again."
+            },
+            {
+              "text": "แซมปิดสมุดเล่มนั้น และหัวร่ออย่างมีความสุข",
+              "english": "Sam closed that notebook and laughed happily."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

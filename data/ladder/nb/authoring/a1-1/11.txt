@@ -4,7 +4,7 @@ Været i {city} er ofte vått. Men sola er også ute. || The weather in Bergen i
 I {city} regner det ofte. || In Bergen it often rains.
 Folk sier: «Det regner alltid i {city}!» || People say: "It always rains in Bergen!"
 Men det regner ikke alltid. Mange dager er sola ute. || But it does not always rain. Many days the sun is out.
-I dag regner det. Det er kaldt og vått. || Today it is raining. It is cold and wet.
+I dag regner det. Det er vått. || Today it is raining. It is wet.
 Været er ikke bra i dag. || The weather is not good today.
 
 ## {sam} og regnet
@@ -23,6 +23,8 @@ Det regner. {ana} og {luis} er hjemme i dag. || It is raining. Anna and Lars are
 [ana] Ja, gjerne! Jeg vil ha te med melk. || Yes, please! I want tea with milk.
 [luis] Vi er hjemme, og vi drikker te. Det er bra. || We are at home, and we drink tea. That is good.
 [ana] Jeg liker regn i dag. || I like rain today.
+[luis] Jeg vil ha brød med ost. Vil du ha brød, {ana}? || I want bread with cheese. Do you want bread, Anna?
+[ana] Ja, gjerne! Takk, {luis}. || Yes, please! Thanks, Lars.
 
 ## Sola
 Dagen etter er sola ute! || The next day the sun is out!

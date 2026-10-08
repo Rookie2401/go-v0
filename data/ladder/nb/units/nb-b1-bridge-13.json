@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-13",
+  "lang": "nb",
+  "title": "A fall from the bicycle",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-13",
+    "title": "A fall from the bicycle (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". An accident and a visit to the emergency clinic (legevakt). Past tense, past perfect, passive with \"bli\" (ble kjørt), conditionals (hvis ... hadde ... ville). The medical facts are general and simple; a Norwegian reviewer should check how natural the clinic talk sounds."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "health",
+    "accident",
+    "emergency",
+    "passive",
+    "past perfect",
+    "indirect speech"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "nico": "Nils",
+    "ana": "Anna",
+    "lege": "Legen",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Veien til kirka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På lørdag var Sam ute med Nils. De hadde hver sin sykkel, og de skulle sykle til kirka. Nils hadde hjelm på hodet, for moren hans hadde sagt at han aldri måtte sykle uten hjelm.",
+              "english": "On Saturday Sam was out with Nils. They each had a bicycle, and they were going to cycle to the church. Nils had a helmet on his head, because his mother had said that he must never cycle without a helmet."
+            },
+            {
+              "text": "Veien var lang, og Nils var glad.",
+              "english": "The road was long, and Nils was happy."
+            },
+            {
+              "text": "Ikke for fort, Nils! Vent på meg!",
+              "english": "Not too fast, Nils! Wait for me!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Men Nils hørte ikke. Han syklet fort, og så falt han. Sykkelen lå i veien, og Nils lå på veien.",
+              "english": "But Nils did not hear. He cycled fast, and then he fell. The bicycle lay in the road, and Nils lay on the road."
+            },
+            {
+              "text": "Sam kom til ham. Nils gråt, og hele armen gjorde vondt.",
+              "english": "Sam came to him. Nils cried, and his whole arm hurt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjelp",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Armen min! Det gjør så vondt! Jeg falt!",
+              "english": "My arm! It hurts so much! I fell!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ligg rolig. Ikke flytt armen. Jeg ringer til Anna.",
+              "english": "Lie calmly. Do not move your arm. I will call Anna.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Sam ringte med en gang. Anna var hjemme, og det var godt.",
+              "english": "Sam called at once. Anna was at home, and that was good."
+            },
+            {
+              "text": "Hun snakket rolig med Nils. «Uten hjelm hadde dette vært mye verre,» sa hun.",
+              "english": "She spoke calmly with Nils. \"Without a helmet this would have been much worse,\" she said."
+            },
+            {
+              "text": "Det er nok et brudd. Vi må til legevakten. Du gjør det bra, Nils.",
+              "english": "It is probably a fracture. We must go to the emergency clinic. You are doing well, Nils.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nils ble kjørt til legevakten, og Sam satt hos ham hele veien. Han ba en bønn og tenkte på sykkelen.",
+              "english": "Nils was driven to the emergency clinic, and Sam sat with him all the way. He said a prayer and thought of the bicycle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På legevakten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det var mange folk på legevakten, og de måtte vente i to timer. Det gjorde mer og mer vondt.",
+              "english": "There were many people at the emergency clinic, and they had to wait for two hours. It hurt more and more."
+            },
+            {
+              "text": "Har du hatt gips, Sam?",
+              "english": "Have you had a cast, Sam?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Ja. Da jeg var elleve år, falt jeg fra en hest. Jeg gråt like mye som deg.",
+              "english": "Yes. When I was eleven, I fell from a horse. I cried just as much as you.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Til slutt kom en lege og hilste på dem.",
+              "english": "At last a doctor came and greeted them."
+            },
+            {
+              "text": "Hei, Nils. Fortell meg hva du gjorde.",
+              "english": "Hi, Nils. Tell me what you did.",
+              "speaker": "lege"
+            },
+            {
+              "text": "Jeg falt. Jeg syklet for fort.",
+              "english": "I fell. I cycled too fast.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Hvor gjør det vondt? Kan du løfte armen?",
+              "english": "Where does it hurt? Can you lift your arm?",
+              "speaker": "lege"
+            },
+            {
+              "text": "Nei. Det gjør for vondt.",
+              "english": "No. It hurts too much.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Legen kjente på armen og så på den lenge. Så sa han:",
+              "english": "The doctor felt the arm and looked at it for a long time. Then he said:"
+            },
+            {
+              "text": "Det er et brudd, men det er et lite brudd. Du får gips, og den skal sitte på i seks uker.",
+              "english": "It is a fracture, but it is a small fracture. You will get a cast, and it is to stay on for six weeks.",
+              "speaker": "lege"
+            },
+            {
+              "text": "Seks uker? Kan jeg ikke sykle da?",
+              "english": "Six weeks? Can I not cycle then?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Nei. Men uten hjelm hadde det vært verre.",
+              "english": "No. But without a helmet it would have been worse.",
+              "speaker": "lege"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gipsen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da Marta kom, hadde Nils fått gips på hele armen. Hun gråt litt og ba en bønn.",
+              "english": "When Marta came, Nils had got a cast on his whole arm. She cried a little and said a prayer."
+            },
+            {
+              "text": "Gud være takket. Det kunne vært mye verre. Jeg vil at alle barn skal ha hjelm.",
+              "english": "Thank God. It could have been much worse. I want all children to have a helmet.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Se på gipsen min, bestemor! Alle skal skrive navnet sitt på den!",
+              "english": "Look at my cast, grandmother! Everyone is going to write their name on it!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Når kan jeg spille igjen, Sam?",
+              "english": "When can I play again, Sam?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Om seks uker. Men så blir det bra igjen.",
+              "english": "In six weeks. But then it will be good again.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Alle lo, og det var godt å le etter en lang dag. Sam var den første som skrev et navn: «Bli bra snart! Hilsen Sam.»",
+              "english": "Everyone laughed, and it was good to laugh after a long day. Sam was the first to write a name: \"Get well soon! Greetings, Sam.\""
+            },
+            {
+              "text": "På søndag ba presten for Nils i kirka, og alle sang for ham. Nils satt hos Marta, og han var glad.",
+              "english": "On Sunday the pastor prayed for Nils in the church, and everyone sang for him. Nils sat with Marta, and he was glad."
+            },
+            {
+              "text": "Nå må du hvile, og du må høre på legen.",
+              "english": "Now you must rest, and you must listen to the doctor.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg skal prøve, men det er vanskelig for meg å hvile.",
+              "english": "I will try, but it is difficult for me to rest.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Den kvelden gikk Sam hjem til den nye leiligheten. Han var trøtt, men han tenkte på hvor fort en dag kan bli vanskelig, og han takket Gud fordi det gikk bra.",
+              "english": "That evening Sam went home to the new flat. He was tired, but he thought about how fast a day can become difficult, and he thanked God because it went well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden sjekket Sam telefonen: Erik hadde skrevet at de måtte bestille nye bøker, og at en kunde hadde klaget igjen. Sam tenkte på utleieren og depositumet, på den store sofaen og på plasten som ikke var et problem lenger.",
+              "english": "In the evening Sam checked the phone: Erik had written that they had to order new books, and that a customer had complained again. Sam thought of the landlord and the deposit, of the big sofa and of the plastic that was no longer a problem."
+            },
+            {
+              "text": "Den kvelden bestilte Lars pizza til alle, og de kastet søppelet sammen. De snakket om valget: hvert parti hadde sin mening om sykehus og legevakter. Sam sjekket om boka han hadde bestilt til Nils, var kommet. Den var på engelsk! Han måtte levere den tilbake.",
+              "english": "That evening Lars ordered pizza for everyone, and they threw the rubbish out together. They talked about the election: each party had its opinion about hospitals and emergency clinics. Sam checked whether the book he had ordered for Nils had come. It was in English! He had to hand it back."
+            },
+            {
+              "text": "Han la glass i kassen, som Mons hadde sagt. Ordføreren hadde sendt en hilsen til legevakten. Den sinte kunden hadde ringt igjen, men nå var hun glad.",
+              "english": "He put glass in the box, as Mons had said. The mayor had sent a greeting to the emergency clinic. The angry customer had called again, but now she was glad."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

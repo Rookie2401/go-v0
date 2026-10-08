@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Volume unit. The title uses शाम and गली, words the plan teaches in later units; the text itself avoids them (they are not in the palette yet). कहना is used only in the present (कहता है, कहती हैं, कहते हैं); बोलना carries the other speech. The man who sells vegetables at the door is not named. Words outside the plan (measured): none."
+    "notes": "Volume unit. The title uses शाम and गली, words the plan teaches in later units; the text itself avoids them (they are not in the palette yet). कहना is used only in the present (कहता है, कहती हैं, कहते हैं); बोलना carries the other speech. The man who sells vegetables at the door is not named. Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -238,6 +238,38 @@
             {
               "text": "नानी बोलती हैं, \"धन्यवाद! नमस्ते!\"",
               "english": "Nani says, \"Thank you! Goodbye!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज हम बाग़ में जाते हैं।",
+              "english": "Today we go to the garden."
+            },
+            {
+              "text": "बाग़ में बहुत पेड़ हैं।",
+              "english": "There are many trees in the garden."
+            },
+            {
+              "text": "एक पेड़ छोटा है।",
+              "english": "One tree is small."
+            },
+            {
+              "text": "उस पेड़ पर लाल फूल हैं।",
+              "english": "There are red flowers on that tree."
+            },
+            {
+              "text": "सैम को फूल बहुत पसंद हैं।",
+              "english": "Sam likes flowers very much."
+            },
+            {
+              "text": "अमन का फूल लाल है।",
+              "english": "Aman's flower is red."
+            },
+            {
+              "text": "नानी को बाग़ पसंद है।",
+              "english": "Nani likes the garden."
             }
           ]
         }

@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-30",
+  "lang": "hi",
+  "title": "बेसन के लड्डू",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-30",
+    "title": "\"बेसन के लड्डू\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Fourteenth controlled unit of the b1 bridge, an instruction text (the text type of hi-a1-2-11 \"सीता नानी की दाल\" and hi-a2-1-11 \"चाय कैसे बनती है\") framed by a scene in Seeta Nani's kitchen. It teaches only a few cooking words (बेसन, भूनना, गूँधना, चाशनी, मेवा, गोल), and it brings back, as ordinary words in the kitchen scene, the words of the earlier bridge units whose recurrence the gate needs (wood and nails of hi-b1-02, ants and flies of hi-b1-04 and hi-b1-15, the parrot of hi-b1-06, the spectacles of hi-b1-11, the sky and the sun of hi-b1-23). Machine-drafted; a Hindi reviewer should check the recipe words and the quantities. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "food",
+    "recipe",
+    "instructions",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "त्योहार से पहले",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "त्योहार से पहले नानी हर साल बेसन के लड्डू बनाती हैं।",
+              "english": "Before the festival Nani makes besan laddus every year."
+            },
+            {
+              "text": "इस बार सैम और अमन भी रसोई में उनकी मदद कर रहे थे।",
+              "english": "This time Sam and Aman were helping her in the kitchen too."
+            },
+            {
+              "text": "नानी ने अपनी ऐनक लगाई और पुरानी कॉपी खोलकर पढ़ना शुरू किया।",
+              "english": "Nani put on her spectacles and opened the old notebook and began to read."
+            },
+            {
+              "text": "अमन बोला, \"नानी, आज हम सारे काम ख़ुद करेंगे।\"",
+              "english": "Aman said, \"Nani, today we will do all the work ourselves.\""
+            },
+            {
+              "text": "नानी ने हँसकर कहा, \"ठीक है, पर पहले हाथ धो लो, और आग के पास ध्यान से रहना।\"",
+              "english": "Nani said with a laugh, \"All right, but first wash your hands, and be careful near the fire.\""
+            },
+            {
+              "text": "सैम ने देखा कि चूल्हे की लकड़ी अभी गीली थी, इसलिए आग धीरे धीरे जल रही थी।",
+              "english": "Sam saw that the wood of the stove was still wet, so the fire was burning slowly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "लड्डू बनाने का तरीक़ा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी ने कहा, \"सबसे पहले एक कड़ाही में दो चम्मच घी डालो।\"",
+              "english": "Nani said, \"First of all put two spoonfuls of ghee in a pan.\""
+            },
+            {
+              "text": "\"घी गरम हो जाए, तब उसमें दो कटोरी बेसन डालो।\"",
+              "english": "\"When the ghee gets hot, put two bowls of besan into it.\""
+            },
+            {
+              "text": "\"अब बेसन को धीमी आँच पर भूनो, और चम्मच से उसे बार बार हिलाओ।\"",
+              "english": "\"Now roast the besan on a low flame, and stir it again and again with a spoon.\""
+            },
+            {
+              "text": "\"जब बेसन सुनहरा हो जाए और उसकी ख़ुशबू आने लगे, तब आग बंद कर दो।\"",
+              "english": "\"When the besan turns golden and its fragrance begins to come, turn off the fire.\""
+            },
+            {
+              "text": "\"बेसन ठंडा हो जाए, तब उसमें चीनी और इलायची मिलाओ।\"",
+              "english": "\"When the besan cools, mix sugar and cardamom into it.\""
+            },
+            {
+              "text": "\"फिर थोड़े से मेवे डालकर सबको अच्छी तरह मिलाओ।\"",
+              "english": "\"Then add a few nuts and mix everything well.\""
+            },
+            {
+              "text": "अमन ने पूछा, \"नानी, मेवे यानी क्या?\"",
+              "english": "Aman asked, \"Nani, what do 'meve' mean?\""
+            },
+            {
+              "text": "\"मेवे यानी सूखे फल, जो हम मिठाई में डालते हैं,\" नानी ने कहा।",
+              "english": "\"Meve means dry fruits, which we put in sweets,\" Nani said."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गोल लड्डू",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "\"अब थोड़ा थोड़ा बेसन हाथ में लो और उसे गोल करके एक थाली में रखो।\"",
+              "english": "\"Now take a little besan in your hand, make it round, and put it on a plate.\""
+            },
+            {
+              "text": "सैम ने पहला लड्डू बनाया, पर वह बहुत टेढ़ा हो गया।",
+              "english": "Sam made the first laddu, but it came out very crooked."
+            },
+            {
+              "text": "अमन हँसकर बोला, \"सैम, यह लड्डू नहीं, पहिया है!\"",
+              "english": "Aman said laughing, \"Sam, this is not a laddu, it is a wheel!\""
+            },
+            {
+              "text": "नानी ने कहा, \"कोई बात नहीं, हाथ धीरे धीरे सीखता है, जैसे कील ठोकना सीखा जाता है।\"",
+              "english": "Nani said, \"Never mind, the hand learns slowly, as driving a nail is learnt.\""
+            },
+            {
+              "text": "कुछ देर में थाली में बीस लड्डू रखे थे।",
+              "english": "In a little while twenty laddus were on the plate."
+            },
+            {
+              "text": "तभी शर्मा अंकल का तोता राजा खिड़की पर आकर बोला, \"ह’लो!\"",
+              "english": "Just then Sharma uncle's parrot Raja came to the window and said, \"H'llo!\""
+            },
+            {
+              "text": "नानी ने कहा, \"राजा, तुम्हें भी एक लड्डू मिलेगा, पर पहले मक्खियों और चींटियों से इन्हें बचाना है।\"",
+              "english": "Nani said, \"Raja, you will get a laddu too, but first these have to be saved from flies and ants.\""
+            },
+            {
+              "text": "\"मिठाई बाहर रखोगे, तो मक्खियाँ मँडराएँगी और चींटियाँ चढ़ जाएँगी।\"",
+              "english": "\"If you keep sweets outside, flies will hover and ants will climb on them.\""
+            },
+            {
+              "text": "इसलिए सैम ने लड्डू कपड़े की थैली में रखे, प्लास्टिक की थैली में नहीं, क्योंकि प्लास्टिक का इस्तेमाल अब वे कम करते थे।",
+              "english": "So Sam put the laddus in a cloth bag, not in a plastic bag, because they used plastic less now."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शाम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शाम को पास्टर अनिल आए, और छत पर सबने लड्डू खाए।",
+              "english": "In the evening Pastor Anil came, and on the roof everybody ate laddus."
+            },
+            {
+              "text": "सूर्य डूब रहा था, और आकाश लाल हो गया था।",
+              "english": "The sun was setting, and the sky had turned red."
+            },
+            {
+              "text": "पास्टर अनिल ने कहा, \"इतने मीठे लड्डू हों, तो पूरी सृष्टि का धन्यवाद करना चाहिए।\"",
+              "english": "Pastor Anil said, \"When there are laddus so sweet, one should thank the whole creation.\""
+            },
+            {
+              "text": "सैम ने कहा, \"आज मैंने सीखा कि थोड़े से बेसन और घी से भी इतना आनंद मिल सकता है।\"",
+              "english": "Sam said, \"Today I learnt that even from a little besan and ghee so much joy can be had.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सब के लिए",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी ने कहा, \"धरती पर हर प्राणी को मिठाई पसंद है, पृथ्वी की यह रीत पुरानी है, और मक्खियाँ तो दुष्ट हैं!\"",
+              "english": "Nani said, \"Every living creature on the earth likes sweets, this custom of the earth is old, and the flies are wicked indeed!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

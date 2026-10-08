@@ -1,0 +1,79 @@
+=== de-b1-28 | dialogue | daily-life | Old trades in the school project | Berufe früher und heute | jobs, trades, school project, interview
+speakers: lukas=Lukas, ben=Ben, max=Max, lena=Lena, schuster=Herr Peters
+note: Prepares the vocabulary of the next text (Guerber, Die vier Brüder): Hase, Jäger, Schuster, Dieb, Astrolog, augenblicklich, Rock, Handwerk. Today's German; the tale itself is not told.
+## Das Projekt
+In Lukas' Klasse gibt es ein Projekt: Berufe früher und heute. || In Lukas' class there is a project: jobs in the past and today.
+Ben kommt zu Besuch, denn er darf bei den Interviews helfen. || Ben comes to visit, because he may help with the interviews.
+[lukas] Wir sammeln alte Berufe, und wir sprechen mit Leuten, die so arbeiten. || We are collecting old trades, and we talk to people who work like that.
+[max] Mein Opa war Jäger. Er hat im Wald gearbeitet. || My grandfather was a hunter. He worked in the forest.
+[lena] Ein Jäger schießt Tiere, oder? Das finde ich nicht schön. || A hunter shoots animals, right? I do not find that nice.
+[max] Er hat auch Hasen gezählt und im Winter Futter gebracht. || He also counted hares and brought food in winter.
+[lukas] Ein Jäger ist auch ein Beruf für Menschen, die die Tiere kennen. || A hunter is also a job for people who know the animals.
+[ben] Ich habe den Hasen im Park gesehen. Er war augenblicklich weg, als ich kam. || I saw the hare in the park. He was gone at once when I came.
+[lukas] Hasen sind schnell. Sie laufen augenblicklich los. || Hares are fast. They run off at once.
+
+## Beim Schuster
+Am Nachmittag besuchen Lukas, Ben und die Klasse einen Schuster in der Altstadt. || In the afternoon Lukas, Ben and the class visit a shoemaker in the old town.
+Herr Peters sitzt in einer kleinen Werkstatt, und es riecht nach Leder. || Herr Peters is sitting in a small workshop, and it smells of leather.
+[schuster] Willkommen! Ich bin Schuster, und das ist mein Handwerk. || Welcome! I am a shoemaker, and this is my trade.
+[ben] Was ist ein Handwerk? || What is a trade?
+[schuster] Ein Handwerk ist eine Arbeit mit den Händen. Ein Bäcker hat ein Handwerk, ein Mechaniker auch. || A trade is work with the hands. A baker has a trade, a mechanic too.
+[schuster] Ich mache Schuhe und repariere sie. || I make shoes and repair them.
+[lena] Kann man bei Ihnen auch einen Rock reparieren? || Can one also have a skirt repaired at your place?
+[schuster] Nein, einen Rock macht ein Schneider. Ich mache nur Schuhe. || No, a tailor makes a skirt. I only make shoes.
+[schuster] Aber wenn der Schuh kaputt ist, helfe ich sogleich. || But when the shoe is broken, I help at once.
+[ben] Haben Sie schon einmal einen Dieb gesehen? || Have you ever seen a thief?
+[schuster] Einmal ja. Ein Dieb hat Schuhe aus meinem Laden gestohlen. || Once, yes. A thief stole shoes from my shop.
+[schuster] Die Polizei hat ihn sofort gefunden. || The police found him at once.
+[max] Und was haben Sie gemacht? || And what did you do?
+[schuster] Ich habe dem Dieb ein Paar Schuhe geschenkt. Seine waren kaputt. || I gave the thief a pair of shoes. His were broken.
+
+## Die Sterne
+Auf dem Rückweg kommen sie an einem Museum vorbei. || On the way back they pass a museum.
+Im Fenster steht ein altes Bild von einem Mann mit einem Fernrohr. || In the window there is an old picture of a man with a telescope.
+[lukas] Das ist ein Astrolog, ein Mann, der die Sterne liest. || That is an astrologer, a man who reads the stars.
+[ben] Und was macht er mit den Sternen? || And what does he do with the stars?
+[lukas] Früher hat man gedacht, die Sterne zeigen die Zukunft. || In the past people thought the stars show the future.
+[lukas] Der Astrolog hat den Menschen gesagt, was kommt. || The astrologer told people what was coming.
+[lena] Glauben Sie das auch? || Do you believe that too?
+[lukas] Nein. Gott zeigt die Zukunft, nicht die Sterne, und ein Astrolog kennt sie nicht. || No. God shows the future, not the stars, and an astrologer does not know it.
+[ben] Dann ist Astrolog kein richtiges Handwerk. || Then astrologer is not a proper trade.
+[lukas] Richtig, Ben. Aber es ist ein alter Beruf, und er gehört zu unserem Projekt. || Right, Ben. But it is an old job, and it belongs to our project.
+Die Kinder schreiben alle Berufe auf, und das Projekt ist augenblicklich ein Erfolg. || The children write down all the jobs, and the project is an instant success.
+
+## Erinnerst du dich?
+Nach dem Interview sitzen die Kinder noch in der Schule, und Lukas fragt sie nach den alten Märchen. || After the interview the children are still sitting at school, and Lukas asks them about the old tales.
+[lukas] Wer weiß noch etwas über den alten Großvater im Märchen? || Who still knows something about the old grandfather in the tale?
+[lena] Er ist steinalt, fast taub, und seine Augen sind trüb. || He is very old, almost deaf, and his eyes are dim.
+[max] Seine Knie tun weh, und die Suppe fließt auf das Tischtuch. || His knees hurt, and the soup flows onto the tablecloth.
+[ben] Das Tischtuch ist nass, und die Familie ist böse auf ihn. || The tablecloth is wet, and the family is angry with him.
+[lena] Ich schütte nie etwas auf den Tisch, denn ich habe Angst vor dem Großvater. || I never spill anything on the table, because I am afraid of the grandfather.
+[lukas] Aber es gibt keinen Grund zur Angst! Der Enkel lernt daraus etwas. || But there is no reason to be afraid! The grandson learns something from it.
+[ben] Mein Urgroßvater war auch alt, und Oma erzählt oft von ihm. || My great-grandfather was old too, and Oma often talks about him.
+[schuster] Meine Großeltern hatten auch ein Handwerk. Daraus habe ich viel gelernt. || My grandparents had a trade too. I learned a lot from that.
+
+## Erinnerst du dich daran?
+Am nächsten Tag liest Lukas der Klasse noch zwei alte Märchen vor. || The next day Lukas reads two more old tales to the class.
+[max] Lukas, wozu lesen wir eigentlich alte Märchen? || Lukas, what do we actually read old tales for?
+[lukas] Aus ihnen lernt man etwas über das Leben, und die Wörter sind schön. || One learns something about life from them, and the words are beautiful.
+[lukas] Das erste Märchen handelt von einem klugen Knecht. || The first tale is about a clever servant.
+[lena] Er bleibt lange aus, und der Herr befürchtet, dass ihm etwas zugestoßen ist. || He stays out a long time, and the master fears that something has happened to him.
+[ben] Der Herr will sich nach ihm umsehen und erblickt ihn endlich im Feld. || The master wants to look around for him and at last catches sight of him in the field.
+[max] Er holt den Knecht ein und fragt: Wo ist die Kuh? || He catches up with the servant and asks: Where is the cow?
+[lena] Der Knecht sagt: Ich suche drei Amseln. Eine sehe ich, und die dritte jage ich. || The servant says: I am looking for three blackbirds. One I see, and the third I chase.
+[lukas] Der Herr lässt sich keine Mühe verdrießen, aber der Knecht bekümmert sich nicht um seine Befehle. || The master does not let any effort vex him, but the servant does not trouble himself about his orders.
+[ben] Am Ende steht: Tut, was euch einfällt, dann handelt ihr weise. Aber so ist es nicht immer weise! || At the end it says: Do what occurs to you, then you act wisely. But it is not always wise like that!
+[lukas] Da hast du recht, Ben. Man darf nicht nur tun, was man will. || You are right there, Ben. One may not only do what one wants.
+[lukas] Euern Herrn fragen, steht da, aber ein guter Knecht fragt ihn doch. || Ask your master, it says there, but a good servant does ask him.
+
+Das zweite Märchen handelt von einem steinalten Großvater. || The second tale is about a stone-old grandfather.
+[max] Mein Urgroßvater war auch sehr alt, und er hat oft geseufzt. || My great-grandfather was also very old, and he often sighed.
+[lukas] Im Märchen ekeln sich der Sohn und seine Frau vor dem alten Mann. || In the tale the son and his wife are disgusted by the old man.
+[lena] Sie geben ihm sein Essen in ein irdenes Schüsselchen, und er ist betrübt. || They give him his food in an earthen bowl, and he is sad.
+[ben] Seine zitterigen Hände lassen es fallen, und es zerbrach. || His trembling hands let it fall, and it broke.
+[max] Die Frau schalt, und er seufzte nur. || The woman scolded, and he only sighed.
+[lukas] Dann kaufen sie ihm ein hölzernes Schüsselchen. || Then they buy him a wooden bowl.
+[lena] Der kleine Enkel sammelt Brettlein und macht ein Tröglein. || The little grandson collects small boards and makes a little trough.
+[ben] Da holten die Eltern alsofort den Großvater an den Tisch. || Then the parents at once fetched the grandfather to the table.
+[ben] Sie sagten auch nichts zu der verschütteten Suppe. || They did not say anything about the spilled soup either.
+[lukas] Gut gemacht! Morgen schreiben wir alle diese Märchen in unser Projekt. || Well done! Tomorrow we will write all these tales into our project.

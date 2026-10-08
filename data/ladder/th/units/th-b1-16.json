@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-16",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "พ่อค้าเกลือกับวัวต่าง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-16",
+    "title": "พ่อค้าเกลือกับวัวต่าง — The salt merchant and his ox (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 149795 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=149795",
+    "attribution": "Adapted retelling of \"พ่อค้าเกลือกับโคต่าง\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 149795, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"พ่อค้าเกลือกับโคต่าง\" (th-gap-recovery-aesop-40); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 149795) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the merchant is a plain man and speaks plain Thai; the old-style words (จึง, ครั้น, ทุกคราว) are deliberate fable register. The ending between Sam and Lung Lek is an addition to the original."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "animals",
+    "cheating",
+    "work"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "วัวต่างตกน้ำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "พ่อค้าเกลือคนหนึ่งมีวัวต่างตัวหนึ่ง",
+              "english": "A salt merchant had an ox that carried his goods."
+            },
+            {
+              "text": "ทุกสัปดาห์ เขาเอาเกลือใส่หลังวัว แล้วเดินไปขายที่ตลาดไกลๆ",
+              "english": "Every week he put salt on the ox's back and walked to a market far away."
+            },
+            {
+              "text": "เกลือหนักมาก และวัวเหนื่อยทุกครั้ง",
+              "english": "The salt was very heavy, and the ox was tired every time."
+            },
+            {
+              "text": "วันหนึ่ง เมื่อข้ามลำธาร วัวเหยียบหินที่เปียก และตกลงไปในน้ำ",
+              "english": "One day, as they crossed a stream, the ox stepped on a wet stone and fell into the water."
+            },
+            {
+              "text": "กว่าพ่อค้าจะพาวัวขึ้นมาได้ เกลือที่อยู่บนหลังก็หายไปในน้ำหมดแล้ว",
+              "english": "By the time the merchant got the ox out, the salt on its back had all vanished into the water."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ความคิดของวัว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อขึ้นจากน้ำ วัวรู้สึกว่าหลังเบา",
+              "english": "When it came out of the water, the ox felt that its back was light."
+            },
+            {
+              "text": "มันคิดว่า ถ้าเราลงน้ำ ของที่บรรทุกก็เบาลง",
+              "english": "It thought, \"If I go into the water, my load gets lighter.\""
+            },
+            {
+              "text": "วัวดีใจที่ได้ความคิดใหม่",
+              "english": "The ox was pleased with its new idea."
+            },
+            {
+              "text": "ตั้งแต่นั้นมา ทุกครั้งที่ถึงลำธาร วัวก็ล้มตัวลงนอนในน้ำ",
+              "english": "From then on, every time they came to a stream, the ox lay down in the water."
+            },
+            {
+              "text": "เกลือก็หายไปในน้ำหมดทุกครั้ง",
+              "english": "And every time the salt vanished into the water."
+            },
+            {
+              "text": "พ่อค้าขายเกลือไม่ได้เลย และขาดทุนมาก",
+              "english": "The merchant could not sell any salt and lost a lot of money."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "พ่อค้าคิดได้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "พ่อค้าไม่ใช่คนโง่ เขารู้ว่าวัวโกง",
+              "english": "The merchant was not a fool. He knew the ox was cheating."
+            },
+            {
+              "text": "เขาจึงคิดหาวิธีสอนวัว",
+              "english": "So he thought of a way to teach the ox."
+            },
+            {
+              "text": "วันต่อมา เขาไม่ใส่เกลือ แต่เอาผ้าใส่ลงบนหลังวัว",
+              "english": "The next day he did not load salt, but loaded cloth on the ox's back."
+            },
+            {
+              "text": "ผ้าเบามาก แต่เขาใส่หลายผืนจนหนักเหมือนเกลือ",
+              "english": "Cloth is very light, but he loaded so many pieces that it was as heavy as the salt."
+            },
+            {
+              "text": "วัวไม่รู้อะไรเลย มันเดินตามเจ้าของไปอย่างเคย",
+              "english": "The ox knew nothing and followed its master as usual."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ลงน้ำอีกครั้ง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อถึงลำธาร วัวล้มตัวลงในน้ำเหมือนทุกครั้ง",
+              "english": "When they reached the stream, the ox lay down in the water as always."
+            },
+            {
+              "text": "แต่คราวนี้ ผ้าเปียกน้ำ และหนักขึ้นมาก",
+              "english": "But this time the cloth got wet and grew much heavier."
+            },
+            {
+              "text": "วัวลุกขึ้นมา และรู้สึกหนักกว่าเดิมหลายเท่า",
+              "english": "The ox stood up and felt many times heavier than before."
+            },
+            {
+              "text": "มันเดินอย่างลำบาก และเข้าใจว่าเจ้าของรู้เรื่อง",
+              "english": "It walked with difficulty and understood that its master knew all about it."
+            },
+            {
+              "text": "ตั้งแต่วันนั้น วัวไม่เคยล้มตัวลงในน้ำอีกเลย",
+              "english": "From that day the ox never lay down in the water again."
+            },
+            {
+              "text": "เรื่องนี้สอนว่า คนที่โกงเขาบ่อยๆ สักวันหนึ่งก็จะได้รับผลของมันเอง",
+              "english": "This story teaches us: a person who often cheats others will one day receive the result himself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ลุงเล็กกับแซม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อแซมเล่าเรื่องนี้ให้ลุงเล็กฟัง ลุงเล็กหัวร่อดังมาก",
+              "english": "When Sam told this story to Uncle Lek, Uncle Lek laughed very loudly."
+            },
+            {
+              "text": "เขาพูดว่า รถสองแถวของผมก็เคยมีผู้โดยสารโกงเหมือนกัน",
+              "english": "He said, \"Passengers have cheated on my songthaew too.\""
+            },
+            {
+              "text": "บางคนบอกว่าลงที่ตลาด แต่ลงที่โรงเรียน ค่ารถจึงถูกกว่า",
+              "english": "\"Some say they will get off at the market but get off at the school, so the fare is cheaper.\""
+            },
+            {
+              "text": "แซมถามว่า แล้วลุงทำอย่างไรครับ",
+              "english": "Sam asked, \"And what do you do?\""
+            },
+            {
+              "text": "ลุงเล็กตอบว่า ผมให้พวกเขานั่งต่อไป แต่ที่จริงแล้วเขาต้องจ่ายเพิ่ม",
+              "english": "Uncle Lek answered, \"I let them stay on. Really they should pay more.\""
+            },
+            {
+              "text": "ลุงเล็กพูดอีกว่า ช่วงสงกรานต์ ผู้โดยสารเปียกทั้งคัน แต่ไม่มีใครโกรธ",
+              "english": "Uncle Lek went on, \"At Songkran the passengers get wet all through the truck, but nobody gets angry.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

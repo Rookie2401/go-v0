@@ -1,0 +1,91 @@
+=== de-a1-2-03
+speakers: ben=Ben, lukas=Lukas, anna=Anna, sam=Sam
+## Es regnet
+Es ist Samstag, und es regnet. || It is Saturday, and it rains.
+Es ist Wochenende, aber das Wetter ist schlecht. || It is the weekend, but the weather is bad.
+Ben ist bei Lukas. || Ben is at Lukas's.
+Am Morgen essen sie Brötchen mit Butter und Ei. || In the morning they eat rolls with butter and egg.
+[lukas] Am Wochenende ist die Schule aus. || At the weekend school is out.
+[ben] Ja, aber was machen wir heute? || Yes, but what are we doing today?
+[lukas] Das Wetter ist schlecht. || The weather is bad.
+[lukas] Wir bleiben zu Hause. || We are staying at home.
+[ben] Ich möchte nicht zu Hause bleiben. || I do not want to stay at home.
+[ben] Ich bin traurig. || I am sad.
+[ben] Mein Kopf tut weh, und mein Bauch auch. || My head hurts, and my stomach too.
+[lukas] Hast du Fieber? || Do you have a fever?
+[lukas] Tut der Hals weh? || Does your throat hurt?
+[ben] Nein, aber ich bin traurig. || No, but I am sad.
+[lukas] Du bist gesund, Ben. || You are well, Ben.
+[lukas] Du brauchst keine Tablette. || You do not need a tablet.
+[lukas] Du bist nicht krank. || You are not ill.
+[lukas] Leg dich nicht ins Bett! || Do not lie down in bed!
+[lukas] Wir können einmal ins Kino gehen. || We could go to the cinema for once.
+[ben] Ich war noch nie im Kino! || I have never been to the cinema!
+[lukas] Dann gehen wir einmal. || Then let us go for once.
+[lukas] Es gibt einen neuen Film. || There is a new film.
+[ben] Ein neuer Film! || A new film!
+[ben] Ich bin glücklich! || I am happy!
+
+## Jacke und Regenschirm
+[lukas] Nimm die Jacke und den Regenschirm. || Take the jacket and the umbrella.
+Ben legt sein Heft in den Rucksack. || Ben puts his exercise book in his school bag.
+Er sucht die Jacke und den Regenschirm. || He looks for the jacket and the umbrella.
+Die Jacke liegt unter dem Bett. || The jacket is under the bed.
+[ben] Wo ist der Regenschirm? || Where is the umbrella?
+[ben] Ich verliere alles! || I lose everything!
+[lukas] Er steht neben dem Rucksack. || It is next to the school bag.
+Ben findet ihn, und er nimmt sie. || Ben finds it, and he takes it.
+Lukas nimmt sein Handy. || Lukas takes his phone.
+Er schreibt eine Nachricht an Anna. || He writes a message to Anna.
+[lukas] Hallo Anna! || Hello Anna!
+[lukas] Ben und ich gehen heute ins Kino. || Ben and I are going to the cinema today.
+[lukas] Kommst du mit? || Are you coming?
+[anna] Ich kann nicht. || I cannot.
+[anna] Ich arbeite am Samstag und am Sonntag. || I work on Saturday and Sunday.
+[anna] Ich habe am Montag einen Termin, aber ruf mich bald an! || I have an appointment on Monday, but call me soon!
+
+## Im Kino
+Ben und Lukas sehen den Film. || Ben and Lukas watch the film.
+Ben lacht. || Ben laughs.
+Lukas lacht auch. || Lukas laughs too.
+Dann ist es traurig. || Then it is sad.
+Ben weint. || Ben cries.
+[ben] Ich weine nicht! || I am not crying!
+[ben] Ich lache! || I am laughing!
+[lukas] Du musst nicht weinen, Ben. || You do not have to cry, Ben.
+Dann sind alle glücklich. || Then everyone is happy.
+[ben] Ich war noch nie so glücklich! || I have never been so happy!
+
+## Pizza
+Dann essen Ben und Lukas Pizza. || Then Ben and Lukas eat pizza.
+[ben] Die Pizza ist lecker! || The pizza is tasty!
+[lukas] Ich habe genug. || I have enough.
+[lukas] Hast du auch genug? || Do you have enough too?
+[ben] Nein, ich habe nicht genug! || No, I do not have enough!
+[ben] Ich möchte einmal eine große Pizza! || I would like a big pizza for once!
+Lukas ruft Anna an. || Lukas calls Anna.
+Anna möchte auch mitkommen. || Anna would like to come along too.
+Sam ist auch da, mit seinem neuen Handy. || Sam is there too, with his new phone.
+[sam] Hallo, Ben! || Hello, Ben!
+[sam] Hallo, Lukas! || Hello, Lukas!
+[sam] Wie war es? || How was it?
+[ben] Gut! || Good!
+[ben] Und es ist so lecker hier! || And it is so tasty here!
+[anna] Das Wetter ist schlecht, aber ihr seid froh. || The weather is bad, but you are happy.
+Lukas liest das Wetter auf dem Handy. || Lukas reads the weather on his phone.
+[lukas] Am Montag regnet es, am Dienstag auch. || On Monday it rains, on Tuesday too.
+[lukas] Am Mittwoch gibt es Wind, und am Donnerstag scheint die Sonne. || On Wednesday there is wind, and on Thursday the sun shines.
+[lukas] Am Freitag wird es warm. || On Friday it gets warm.
+[ben] Gut! || Good!
+[ben] Ich möchte bald wieder gehen, am Wochenende! || I would like to go again soon, at the weekend!
+[anna] Wir gehen jetzt zusammen nach Hause. || We are going home together now.
+[ben] Ich bin müde. || I am tired.
+[ben] Ich möchte schlafen. || I want to sleep.
+[sam] Ich komme auch mit. || I am coming along too.
+[sam] Die Straßenbahn fährt um acht Uhr ab. || The tram leaves at eight o'clock.
+[lukas] Tschüs, Ben! || Bye, Ben!
+[lukas] Morgen ist Sonntag. || Tomorrow is Sunday.
+[ben] Dann gehen wir in die Kirche, mit Oma! || Then we go to church, with Grandma!
+[lukas] Gut, wir bleiben nicht zu Hause. || Good, we are not staying at home.
+[lukas] Wir gehen morgen wieder. || We are going again tomorrow.
+

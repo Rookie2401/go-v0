@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Meera didi is a nurse (Stage 0); the text says she works at the अस्पताल because क्लिनिक has no reading in the word list yet (the title keeps the plan's word). \"रवि को ... है\" style experiencer sentences: अमन को बुखार है, मुझे सिर में दर्द है. The doctor is spoken of with honorific plural (देखते हैं, बोलते हैं). \"आप आराम कीजिए\", \"यह दवा लीजिए\" are the standard polite imperatives. खाँसी is used only in the frame \"मुझे खाँसी है / को खाँसी है\" (bare form is read as खाँसना). Words outside the plan (measured): none."
+    "notes": "Meera didi is a nurse (Stage 0); the text says she works at the अस्पताल because क्लिनिक has no reading in the word list yet (the title keeps the plan's word). \"रवि को ... है\" style experiencer sentences: अमन को बुखार है, मुझे सिर में दर्द है. The doctor is spoken of with honorific plural (देखते हैं, बोलते हैं). \"आप आराम कीजिए\", \"यह दवा लीजिए\" are the standard polite imperatives. खाँसी is used only in the frame \"मुझे खाँसी है / को खाँसी है\" (bare form is read as खाँसना). Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -294,6 +294,30 @@
             {
               "text": "अमन बोलता है, \"ठीक है, नानी। मैं ख़ुश हूँ।\"",
               "english": "Aman says, \"It is fine, Nani. I am happy.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सब लोग अपना काम करते हैं।",
+              "english": "Everybody does their own work."
+            },
+            {
+              "text": "नानी अपना काम करती हैं।",
+              "english": "Nani does her own work."
+            },
+            {
+              "text": "सैम अपना बैग लेता है।",
+              "english": "Sam takes his own bag."
+            },
+            {
+              "text": "शाम को हम घर जाते हैं।",
+              "english": "In the evening we go home."
+            },
+            {
+              "text": "बाग़ में पेड़ हैं, फूल हैं।",
+              "english": "In the garden there are trees and flowers."
             }
           ]
         }

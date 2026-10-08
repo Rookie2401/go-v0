@@ -59,7 +59,7 @@ const LANG = 'hi' as const;
 // '4': the ladder plan's gaps (data/ladder/hi/PLAN.md 6-7): ~230 more lemmas (frame words, numerals 31-99, names), the everyday noun first
 // for words written like a verb form (गाड़ी, भाई, सही, फल, the name सीता: hindi/noun-first.ts), कमरों read as कमरा
 // '5': the first reading of the ladder (101 units): जी after a name or title, ~20 more words, and the neighbour rules of hindi/ladder-context.ts (किरण, सीख, पूरी, सजा, सोता, बिल …)
-const VERSION = '5';
+const VERSION = '6';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */

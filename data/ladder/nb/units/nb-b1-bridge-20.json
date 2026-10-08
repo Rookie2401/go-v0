@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-20",
+  "lang": "nb",
+  "title": "Easter",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-20",
+    "title": "Easter (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Easter in Norway: the custom of Easter crime novels (krim), the Good Friday and Easter Sunday services and chocolate eggs. The Easter story is told in the course's own words, briefly and with respect; it is not a Bible translation. The customs are general and unchecked; a Norwegian reviewer should check them and the church language."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "Easter",
+    "traditions",
+    "church",
+    "bookshop",
+    "indirect speech",
+    "relative clauses"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "faith"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "erik": "Erik",
+    "nico": "Nils",
+    "solveig": "Solveig"
+  },
+  "sections": [
+    {
+      "title": "Krim i bokhandelen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Før påske satte de et stort bord i bokhandelen. På bordet lå bare krim.",
+              "english": "Before Easter they put a big table in the bookshop. On the table there was only crime fiction."
+            },
+            {
+              "text": "Hvorfor selger vi bare disse bøkene nå? Jeg forstår det ikke.",
+              "english": "Why are we selling only these books now? I do not understand it.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er en tradisjon. I påsken leser mange disse bøkene. Krim er bøker med en gåte, og du vil vite svaret.",
+              "english": "It is a tradition. At Easter many people read these books. Crime novels are books with a riddle, and you want to know the answer.",
+              "speaker": "erik"
+            },
+            {
+              "text": "Folk tar enten en bok om en gåte eller en bok om fjell med til hytta. Blant kundene våre er det mange som kommer bare nå.",
+              "english": "People take either a book about a riddle or a book about mountains to the cabin. Among our customers there are many who come only now.",
+              "speaker": "erik"
+            },
+            {
+              "text": "Sam hjalp mange kunder å finne en krim. Han syntes at det var en bra tradisjon, selv om han ikke likte gåter så godt. Silje tok med seg tre krim til fjellet.",
+              "english": "Sam helped many customers to find a crime novel. He thought that it was a good tradition, even though he did not like riddles so much. Silje took three crime novels with her to the mountains."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Langfredag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På fredag gikk Sam til kirka. Det var en rolig gudstjeneste, og ingen sang høyt. I kirka var det et stort kors, og Sam satt og så på korset.",
+              "english": "On Friday Sam went to the church. It was a quiet service, and nobody sang loudly. In the church there was a big cross, and Sam sat and looked at the cross."
+            },
+            {
+              "text": "Presten fortalte at Jesus døde på et kors. Han døde for alle. Vennene hans var redde, og de gikk hjem uten håp. Han ble lagt i en grav. Graven var kald og mørk.",
+              "english": "The pastor told that Jesus died on a cross. He died for everyone. His friends were afraid, and they went home without hope. He was laid in a grave. The grave was cold and dark."
+            },
+            {
+              "text": "Blant dem som satt i kirka, var små og gamle. De hadde enten tvil eller tro i hjertet, og mange hadde begge.",
+              "english": "Among those who sat in the church were small and old. They had either doubt or faith in their hearts, and many had both."
+            },
+            {
+              "text": "Sam tenkte på hva det vil si å tilgi. Han ba rolig: «Takk, Gud, for at du døde for oss. Hjelp meg å tilgi dem som har gjort meg vondt.»",
+              "english": "Sam thought about what it means to forgive. He prayed calmly: \"Thank you, God, that you died for us. Help me to forgive those who have hurt me.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Påskemorgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag var kirka lys, og mange hadde kommet. Presten sa med glad stemme: «Graven var tom! Ja, graven var tom! Han døde, men han lever!»",
+              "english": "On Sunday the church was bright, and many had come. The pastor said in a glad voice: \"The grave was empty! Yes, the grave was empty! He died, but he lives!\""
+            },
+            {
+              "text": "Alle sang gamle sanger om glede og håp. Sam sang med, og han var glad. Han tenkte at en grav som er tom, er det største håpet vi har.",
+              "english": "Everyone sang old songs about joy and hope. Sam sang along, and he was glad. He thought that a grave that is empty is the greatest hope we have."
+            },
+            {
+              "text": "Etter gudstjenesten sa Marta: «Jeg har gått i kirka i åtti år. Hver gang er graven like tom, og hver gang er jeg like glad.»",
+              "english": "After the service Marta said: \"I have gone to church for eighty years. Every time the grave is just as empty, and every time I am just as glad.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Eggene",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etterpå gikk de til Solveig. Hun hadde lagt sjokolade i alle rom, egg av sjokolade, og barna skulle lete etter dem.",
+              "english": "Afterwards they went to Solveig's. She had put chocolate in every room, eggs of chocolate, and the children were to look for them."
+            },
+            {
+              "text": "Barna til Sofie og Nils lette og lette. Blant sofaer og bøker fant de egg etter egg, og alle fikk sjokolade.",
+              "english": "Sofie's children and Nils searched and searched. Among sofas and books they found egg after egg, and everyone got chocolate."
+            },
+            {
+              "text": "Eggene er tomme! Jeg vil ha mer sjokolade!",
+              "english": "The eggs are empty! I want more chocolate!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Du kan enten ta mer sjokolade eller lete etter mange egg, Nils. Men ikke begge!",
+              "english": "You can either take more chocolate or look for many eggs, Nils. But not both!",
+              "speaker": "solveig"
+            },
+            {
+              "text": "Alle lo. Sam satt og så på dem, og han tenkte at påsken er en rolig dag og en glad dag.",
+              "english": "Everyone laughed. Sam sat and looked at them, and he thought that Easter is a quiet day and a glad day."
+            },
+            {
+              "text": "Den kvelden ba Sam: «Takk, Gud, for påsken. Takk for håpet. La meg aldri glemme at graven er tom.»",
+              "english": "That evening Sam prayed: \"Thank you, God, for Easter. Thank you for the hope. Let me never forget that the grave is empty.\""
+            },
+            {
+              "text": "Etterpå gikk alle ut i sola, og Sam sa at han aldri hadde sett så mange glade barn på en gang.",
+              "english": "Afterwards everyone went out into the sun, and Sam said that he had never seen so many happy children at once."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna hadde vakt i påsken og målte temperaturen til mange. Det var ganske rolig. I kirka fortalte presten om hyrden og om Guds kjærlighet. Julen var allerede langt borte, men Nils husket mandelen og treet, som de hadde pyntet. Silje spurte om prisen på bøkene, og Erik ga et tips: Samle bøkene med krim på ett bord.",
+              "english": "Anna had been on duty at Easter and measured the temperature of many. It was quite calm. In the church the pastor told about the shepherd and about God's love. Christmas was already far away, but Nils remembered the almond and the tree, which they had decorated. Silje asked about the price of the books, and Erik gave a tip: collect the books with crime fiction on one table."
+            },
+            {
+              "text": "I påsken var det ferie, og Sam fulgte sporene etter ski i snøen, og de spiste grøt til frokost. Anna hadde med medisin i veska, men ingen var syke. Silje laget en plakat om krim, og Erik brukte den i vinduet.",
+              "english": "In the Easter holiday Sam followed the tracks of skis in the snow, and they ate porridge for breakfast. Anna had medicine in her bag, but nobody was ill. Silje made a poster about crime fiction, and Erik used it in the window."
+            },
+            {
+              "text": "Erik var bak bordet med krim, og han sa at prisen på bøker hadde økt litt.",
+              "english": "Erik was behind the table with crime fiction, and he said that the price of books had risen a little."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+=== de-a1-1-06
+speakers: sam=Sam, marta=Marta, schmidt=Herr Schmidt
+## Auf dem Markt
+Heute ist Markt in Leipzig. || Today is market day in Leipzig.
+Sam möchte einkaufen. || Sam wants to go shopping.
+Marta verkauft Brot. || Marta sells bread.
+[sam] Guten Tag, Marta! || Good day, Marta!
+[marta] Guten Tag, Sam! || Good day, Sam!
+[marta] Was kaufst du heute? || What are you buying today?
+[sam] Ich kaufe Brot, Käse, Tomaten und Äpfel. || I am buying bread, cheese, tomatoes and apples.
+[sam] Frau Weber kocht heute Suppe. || Mrs Weber is cooking soup today.
+[marta] Hier ist das Brot. || Here is the bread.
+[marta] Was möchtest du? || What would you like?
+[sam] Ein Brot, bitte. || One loaf, please.
+[sam] Wie viel kostet das? || How much does that cost?
+[marta] Vier Euro. || Four euros.
+[sam] Das ist gut. || That is good.
+[sam] Der Preis ist sehr gut. || The price is very good.
+[marta] Und etwas Kuchen? || And some cake?
+[marta] Der Kuchen ist so lecker. || The cake is so tasty.
+[sam] Darf ich etwas Kuchen haben? || May I have some cake?
+[marta] Ja, gern. || Yes, gladly.
+[marta] Da ist ein Stuhl für dich. || There is a chair for you.
+[marta] Ich bin siebzig Jahre alt, ich bin den ganzen Tag hier. || I am seventy years old, I am here all day.
+[sam] Du bist siebzig? || You are seventy?
+[sam] Das ist nicht alt! || That is not old!
+[marta] Der Markt ist hundert Jahre alt! || The market is a hundred years old!
+[marta] Alle kommen gern auf den Markt. || Everyone likes coming to the market.
+[sam] Ich spreche Deutsch auf dem Markt, das ist gut für mein Deutsch. || I speak German at the market, that is good for my German.
+[marta] Ben ist heute bei Papa. || Ben is with his father today.
+
+## Bei Herr Schmidt
+Herr Schmidt ist auch hier. || Herr Schmidt is here too.
+[sam] Guten Tag, Herr Schmidt! || Good day, Herr Schmidt!
+[sam] Sie sind auch hier? || You are here too?
+[schmidt] Ja, mein Bruder und ich sind zusammen auf dem Markt. || Yes, my brother and I are at the market together.
+[schmidt] Das ist mein Bruder. || This is my brother.
+[schmidt] Sein Name ist Jakob. || His name is Jakob.
+[schmidt] Was darf es sein, Herr Miller? || What can I get you, Mr Miller?
+[sam] Zwei Kilo Tomaten und ein Kilo Äpfel, bitte. || Two kilos of tomatoes and one kilo of apples, please.
+[sam] Und ein Kilo Käse. || And a kilo of cheese.
+[schmidt] Gern. || Gladly.
+[schmidt] Alle sind sehr gut. || They are all very good.
+[sam] Woher sind die Äpfel? || Where are the apples from?
+[schmidt] Aus Sachsen. || From Saxony.
+[schmidt] Sie sind groß. || They are big.
+[schmidt] Der Preis für Äpfel ist gut. || The price for apples is good.
+[sam] Wie viel kostet alles? || How much is everything?
+[schmidt] Zusammen acht Euro. || Eight euros altogether.
+[sam] Ich habe fünfzig Euro. || I have fifty euros.
+[schmidt] Fünfzig Euro? || Fifty euros?
+[schmidt] Das ist viel! || That is a lot!
+[schmidt] Aber es geht. || But it is all right.
+[schmidt] Hier sind 42 Euro. || Here are 42 euros.
+[sam] Danke, Herr Schmidt! || Thank you, Herr Schmidt!
+[sam] Darf ich ein Bild für meine Mutter und meine Familie haben? || May I have a picture for my mother and my family?
+[schmidt] Ja, gern. || Yes, gladly.
+[schmidt] Ein Bild vom Markt? || A picture of the market?
+[sam] Ja! || Yes!
+[sam] Frau Weber und ich essen heute zusammen Suppe. || Mrs Weber and I are eating soup together today.
+[sam] Im Bad von Frau Weber ist ein Fenster, da sind Tomaten. || In Mrs Weber's bathroom there is a window, there are tomatoes there.
+[sam] Aber sie sind klein. || But they are small.
+
+## Bei Marta
+[marta] Sam, hier sind das Brot und der Kuchen. || Sam, here are the bread and the cake.
+[sam] Danke, Marta! || Thank you, Marta!
+[sam] Wie ist dein Kuchen? || What is your cake like?
+[marta] Er ist ganz lecker. || It is quite tasty.
+[marta] Nimm etwas Kuchen für Frau Weber. || Take some cake for Mrs Weber.
+[sam] Ich nehme auch Kuchen für Anna und Lukas. || I am taking cake for Anna and Lukas too.
+[marta] Das ist schön. || That is nice.
+[marta] Du kaufst gut, Sam! || You shop well, Sam!
+[sam] Danke, Marta! || Thank you, Marta!
+[sam] Auf Wiedersehen! || Goodbye!
+[marta] Sam, du bist heute sehr gut. || Sam, you are very good today.
+[marta] Hier ist Wasser für dich. || Here is water for you.
+[sam] Danke, Marta. || Thank you, Marta.
+[sam] Ich habe Hunger, und das Brot ist so lecker. || I am hungry, and the bread is so tasty.
+[marta] Ja, das ist mein Brot. || Yes, that is my bread.
+[marta] Ich koche gern. || I like cooking.
+

@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "First future-tense unit (-ऊँगा / -ऊँगी / -एगा / -एँगे / -ओगे). रवि सर and मीरा दीदी use आप to Sam and तुम to Aman; Aman says तुम-forms never to adults. \"अगले हफ़्ते\" is the oblique of अगला before a noun. \"छुट्टी\" is used for Ravi sir's day off and the school holiday. The word आदमी/औरत pair recycles the church unit. Words outside the plan (measured, adapter lemmas x tokens): बारिश×2, तब×1 (under-met)."
+    "notes": "First future-tense unit (-ऊँगा / -ऊँगी / -एगा / -एँगे / -ओगे). रवि सर and मीरा दीदी use आप to Sam and तुम to Aman; Aman says तुम-forms never to adults. \"अगले हफ़्ते\" is the oblique of अगला before a noun. \"छुट्टी\" is used for Ravi sir's day off and the school holiday. The word आदमी/औरत pair recycles the church unit. Words outside the plan (measured, adapter lemmas x tokens): बारिश×2, तब×1 (under-met). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -463,6 +463,62 @@
               "speaker": "ravi",
               "text": "हम बाज़ार में मिलेंगे।",
               "english": "We will meet at the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज सुबह अमन देर से उठता है।",
+              "english": "This morning Aman gets up late."
+            },
+            {
+              "text": "वह घबराता है, क्योंकि स्कूल की बस जल्दी आती है।",
+              "english": "He gets flustered, because the school bus comes early."
+            },
+            {
+              "text": "तभी गली में एक कुत्ता भौंकता है।",
+              "english": "Just then a dog barks in the lane."
+            },
+            {
+              "text": "उसकी आवाज़ सुनकर नानी बाहर आती हैं।",
+              "english": "Hearing its sound Nani comes out."
+            },
+            {
+              "text": "नानी अमन को बैग देती हैं और बोलती हैं, \"जल्दी जाओ!\"",
+              "english": "Nani gives Aman his bag and says, \"Go quickly!\""
+            },
+            {
+              "text": "अमन भागता है, तो स्कूल की बस रुकती है।",
+              "english": "Aman runs, and the school bus stops."
+            },
+            {
+              "text": "इसलिए आज अमन को स्कूल में देर नहीं होती।",
+              "english": "So today Aman is not late for school."
+            },
+            {
+              "text": "सैम यह सब देखता है और हँसता है।",
+              "english": "Sam sees all this and laughs."
+            },
+            {
+              "text": "नानी बोलती हैं, \"अमन, कल सुबह जल्दी उठना।\"",
+              "english": "Nani says, \"Aman, get up early tomorrow morning.\""
+            },
+            {
+              "text": "अमन बोलता है, \"ठीक है, नानी। मैं कल जल्दी उठूँगा।\"",
+              "english": "Aman says, \"All right, Nani. I will get up early tomorrow.\""
+            },
+            {
+              "text": "सैम फ़ोन पर बोलता है, \"हैलो, चाचा जी!\"",
+              "english": "Sam says on the phone, \"Hello, Chacha ji!\""
+            },
+            {
+              "text": "चाचा जी की गाड़ी नानी के लिए दवा लाती है।",
+              "english": "Chacha ji's vehicle brings medicine for Nani."
+            },
+            {
+              "text": "रात को नानी की गली में बहुत लोग बैठते हैं।",
+              "english": "At night many people sit in Nani's lane."
             }
           ]
         }

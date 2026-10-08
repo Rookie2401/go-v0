@@ -431,6 +431,87 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Posdata: la casa cerrada",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "P.D. Queremos contarles algo que pasó el sábado, porque nos tocó el corazón.",
+              "english": "P.S. We want to tell you something that happened on Saturday, because it touched our hearts."
+            },
+            {
+              "text": "Un niño de la aldea encontró una llave vieja en el barro, y su abuela abrió con ella una casa cerrada hace cuarenta años.",
+              "english": "A boy from the village found an old key in the mud, and his grandmother opened with it a house that had been closed for forty years."
+            },
+            {
+              "text": "Nosotros llegamos en la madrugada, con un camión de la iglesia lleno de sacos de maíz y de agua.",
+              "english": "We arrived at dawn, with a church truck full of sacks of corn and water."
+            },
+            {
+              "text": "Afuera hacía frío, pero adentro la casa estaba oscura y llena de polvo.",
+              "english": "Outside it was cold, but inside the house was dark and full of dust."
+            },
+            {
+              "text": "Doña Marta limpió una silla con un trapo, se sentó y no dijo nada por un rato.",
+              "english": "Doña Marta cleaned a chair with a cloth, sat down and said nothing for a while."
+            },
+            {
+              "text": "Alguien tocó un escalón de la escalera, y el escalón sonó como un tambor.",
+              "english": "Someone stepped on a step of the staircase, and the step sounded like a drum."
+            },
+            {
+              "text": "Nico tenía heridas pequeñas en las manos, pero no lloró y no quiso molestarlo a nadie.",
+              "english": "Nico had small wounds on his hands, but he did not cry and did not want to bother anybody."
+            },
+            {
+              "text": "Don Carlos, que estaba muy ocupado con sus clientes, vino a mediodía con su prima y con azúcar para el café.",
+              "english": "Don Carlos, who was very busy with his customers, came at noon with his cousin and sugar for the coffee."
+            },
+            {
+              "text": "Nos contó que hace años el papá de doña Marta tenía una deuda con su familia.",
+              "english": "He told us that years ago doña Marta's father owed a debt to his family."
+            },
+            {
+              "text": "El pago nunca llegó, pero tampoco hubo nadie que fuera a cobrarle.",
+              "english": "The payment never came, but there was nobody who went to collect it either."
+            },
+            {
+              "text": "Esa deuda se acabó con una sola frase: «Entre vecinos no hay deuda».",
+              "english": "That debt ended with a single sentence: \"Between neighbours there is no debt.\""
+            },
+            {
+              "text": "Un estudiante que pasaba por el camino se quedó a comer el almuerzo con nosotros.",
+              "english": "A student who was passing along the road stayed to have lunch with us."
+            },
+            {
+              "text": "Por la noche, en la cena, doña Marta metió la llave en el bolsillo de su delantal y dijo: —Ahora sí puedo dormir.",
+              "english": "At night, at dinner, doña Marta put the key in her apron pocket and said: \"Now I can sleep.\""
+            },
+            {
+              "text": "Les pedimos que oren por ella, y también por todos los que esperan algo desde hace muchos años.",
+              "english": "We ask you to pray for her, and also for all those who have been waiting for something for many years."
+            },
+            {
+              "text": "La espera, a veces, es más larga que la deuda.",
+              "english": "The waiting, sometimes, is longer than the debt."
+            },
+            {
+              "text": "Y algo más, para que no piensen que solo trabajamos: esta semana también comimos baleadas con tajadas, aguacate y cuajada en casa de doña Marta.",
+              "english": "And one more thing, so you do not think we only work: this week we also ate baleadas with fried plantain, avocado and fresh cheese at doña Marta's house."
+            },
+            {
+              "text": "Ella nos pregunta cada día cómo amanecimos, y siempre contestamos que cheque.",
+              "english": "Every day she asks us how we woke up, and we always answer that we are fine."
+            },
+            {
+              "text": "Gracias por su apoyo, y que Dios los bendiga.",
+              "english": "Thank you for your support, and may God bless you."
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

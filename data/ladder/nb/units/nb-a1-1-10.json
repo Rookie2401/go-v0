@@ -137,8 +137,8 @@
               "speaker": "sjafor"
             },
             {
-              "text": "Den stopper bare litt. Mange folk går ut. Alle går ut, og Sam går ut også.",
-              "english": "It stops only a little. Many people get out. Everyone gets out, and Sam gets out too."
+              "text": "Den stopper bare litt. Mange folk går ut, og Sam går ut også.",
+              "english": "It stops only a little. Many people get out, and Sam gets out too."
             },
             {
               "text": "Mange takk! Ha det bra!",
@@ -174,8 +174,8 @@
               "speaker": "dame"
             },
             {
-              "text": "Rett fram og til høyre?",
-              "english": "Straight ahead and to the right?",
+              "text": "Går jeg rett fram og til høyre?",
+              "english": "Do I go straight ahead and to the right?",
               "speaker": "sam"
             },
             {
@@ -198,8 +198,8 @@
               "english": "Sam goes straight ahead. Then he turns right."
             },
             {
-              "text": "Unnskyld, er dette klinikken?",
-              "english": "Excuse me, is this the clinic?",
+              "text": "Unnskyld, er det klinikken?",
+              "english": "Excuse me, is that the clinic?",
               "speaker": "sam"
             },
             {

@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-16",
+  "lang": "sq",
+  "title": "Dëshmia e Anës",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-16",
+    "title": "Albanian ladder, b1-bridge: Dëshmia e Anës (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Church or testimony content: needs a theological reviewer as well."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Dëshmia e Anës",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën në mëngjes kisha e Korçës ishte e vogël dhe plot njerëz.",
+              "english": "On Sunday morning the church of Korça was small and full of people."
+            },
+            {
+              "text": "Kishte rreth dyzet karrige të vjetra, një tavolinë të vogël dhe një dritare të gjatë, nga e cila hynte dielli i mëngjesit.",
+              "english": "There were about forty old chairs, a small table and a tall window through which the morning sun came in."
+            },
+            {
+              "text": "Teuta dhe Agimi i kishin ulur miqtë e tyre në karriget e mesit, dhe fëmijët ishin ulur në dysheme, pranë dritares, me letra dhe laps, dhe Elira me kukullën e saj.",
+              "english": "Teuta and Agim had seated their friends on the middle chairs, and the children were sitting on the floor, by the window, with paper and a pencil, and Elira with her doll."
+            },
+            {
+              "text": "Pastori, një burrë i hollë me flokë të bardha, mbaroi predikimin dhe pastaj tha:",
+              "english": "The pastor, a thin man with white hair, finished the sermon and then said:"
+            },
+            {
+              "text": "— Kemi sot mysafirë nga Tirana, dhe më kanë thënë se njëri prej tyre ka diçka për të treguar.",
+              "english": "\"Today we have guests from Tirana, and I have been told that one of them has something to tell.\""
+            },
+            {
+              "text": "Të gjithë u kthyen nga Ana.",
+              "english": "Everyone turned to Ana."
+            },
+            {
+              "text": "Ajo e shikoi Mirën, që i buzëqeshi, pastaj u ngrit ngadalë, me kujdes.",
+              "english": "She looked at Mira, who smiled at her, then rose slowly, carefully."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Nuk jam mësuar të flas para njerëzve, — filloi Ana.",
+              "english": "\"I am not used to speaking in front of people,\" Ana began."
+            },
+            {
+              "text": "— Dhe kjo kërkon guxim, më shumë se çdo natë në spital.",
+              "english": "'And this takes courage, more than any night in the hospital.'"
+            },
+            {
+              "text": "— Jam infermiere, dhe puna ime është të dëgjoj.",
+              "english": "\"I am a nurse, and my work is to listen.\""
+            },
+            {
+              "text": "— Por sot do të flas për arsyen pse e zgjodha këtë punë.",
+              "english": "\"But today I will talk about the reason why I chose this work.\""
+            },
+            {
+              "text": "— Kur isha dymbëdhjetë vjeç, nëna ime ishte në spital me një sëmundje të rëndë.",
+              "english": "\"When I was twelve, my mother was in hospital with a serious illness.\""
+            },
+            {
+              "text": "— Ishim aty pesë javë, dhe unë flija në një karrige pranë shtratit të saj.",
+              "english": "\"We were there for five weeks, and I slept on a chair beside her bed.\""
+            },
+            {
+              "text": "— Një natë, kur kisha shumë frikë, erdhi një infermiere e re.",
+              "english": "\"One night, when I was very afraid, a young nurse came.\""
+            },
+            {
+              "text": "— Nuk më tha asgjë të madhe.",
+              "english": "\"She did not say anything big to me.\""
+            },
+            {
+              "text": "— Më solli një batanije dhe një çaj, u ul pranë meje dhe më pyeti çfarë më pëlqen në shkollë.",
+              "english": "\"She brought me a blanket and a tea, sat down beside me and asked what I liked at school.\""
+            },
+            {
+              "text": "— Atë natë vendosa që një ditë do të isha si ajo.",
+              "english": "\"That night I decided that one day I would be like her.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana heshti një moment, dhe në dhomë nuk dëgjohej asgjë përveç shiut jashtë.",
+              "english": "Ana was silent for a moment, and in the room nothing could be heard except the rain outside."
+            },
+            {
+              "text": "— Nëna ime shpëtoi, — tha ajo.",
+              "english": "\"My mother recovered,\" she said."
+            },
+            {
+              "text": "— Por vite më vonë, në universitet, pashë shumë njerëz që nuk shpëtuan.",
+              "english": "\"But years later, at university, I saw many people who did not recover.\""
+            },
+            {
+              "text": "— Dhe fillova të pyes: ku është Zoti në këtë spital?",
+              "english": "\"And I began to ask: where is God in this hospital?\""
+            },
+            {
+              "text": "— Një ditë një grua e vjetër, që po vdiste, më tha diçka që nuk e harrova kurrë.",
+              "english": "\"One day an old woman, who was dying, told me something that I never forgot.\""
+            },
+            {
+              "text": "— Më tha: «Zoti nuk është këtu për të na ruajtur nga vdekja, por për të na mbajtur për dore kur vdesim.»",
+              "english": "\"She said to me: 'God is not here to keep us from death, but to hold us by the hand when we die.'\""
+            },
+            {
+              "text": "— Atë ditë nuk e kuptova.",
+              "english": "\"That day I did not understand.\""
+            },
+            {
+              "text": "— Mendova se ishte një fjalë që njerëzit e thonë kur nuk kanë tjetër.",
+              "english": "\"I thought it was a word people say when they have nothing else.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Kaluan vite, — vazhdoi Ana.",
+              "english": "\"Years passed,\" Ana went on."
+            },
+            {
+              "text": "— Unë punova shumë, dhe nuk lutesha më.",
+              "english": "\"I worked a lot, and I no longer prayed.\""
+            },
+            {
+              "text": "— Pastaj më ftoi Luani në kishën e tij, dhe unë shkova vetëm për ta mos e lënë të vetëm.",
+              "english": "\"Then Luan invited me to his church, and I went only so as not to leave him alone.\""
+            },
+            {
+              "text": "— Dëgjova njerëz që nuk kishin përgjigje për çdo pyetje, por që nuk kishin frikë nga pyetjet.",
+              "english": "\"I heard people who did not have an answer for every question, but who were not afraid of the questions.\""
+            },
+            {
+              "text": "— Dhe një ditë, në një natë të gjatë pune, më erdhi në mendje fjala e gruas së vjetër.",
+              "english": "'And one day, on a long night of work, the word of the old woman came to my mind.'"
+            },
+            {
+              "text": "— E kuptova.",
+              "english": "\"I understood it.\""
+            },
+            {
+              "text": "— Zoti nuk më kishte premtuar që spitali do të ishte pa dhimbje.",
+              "english": "\"God had not promised me that the hospital would be without pain.\""
+            },
+            {
+              "text": "— Më kishte premtuar që nuk do të isha vetëm në të.",
+              "english": "\"He had promised me that I would not be alone in it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana u ul pa shtuar asgjë.",
+              "english": "Ana sat down without adding anything."
+            },
+            {
+              "text": "Për një kohë të gjatë askush nuk lëvizi.",
+              "english": "For a long time nobody moved."
+            },
+            {
+              "text": "Pastori tha një lutje të shkurtër dhe të qetë, pa fjalë të mëdha.",
+              "english": "The pastor said a short and calm prayer, without big words."
+            },
+            {
+              "text": "Kur lutja mbaroi, një grua e vjetër u ngrit nga karriget e fundit, u ul pranë Anës dhe ia mbajti dorën me të dy duart.",
+              "english": "When the prayer ended, an old woman got up from the last chairs, sat down beside Ana and held her hand with both hands."
+            },
+            {
+              "text": "— Edhe unë kam qenë infermiere trembëdhjetë vite, — i pëshpëriti.",
+              "english": "\"I too was a nurse for thirteen years,\" she whispered to her."
+            },
+            {
+              "text": "— Faleminderit që e the.",
+              "english": "\"Thank you for saying it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas shërbimit pastori i ftoi të gjithë në një dhomë të vogël pas kishës, ku kishte çaj, byrek dhe mjaltë.",
+              "english": "After the service the pastor invited everyone to a small room behind the church, where there was tea, byrek and honey."
+            },
+            {
+              "text": "Ardi e preku Anën në krah.",
+              "english": "Ardi touched Ana on the arm."
+            },
+            {
+              "text": "— Ana, a po qanin njerëzit sepse ishin të trishtuar? — pyeti ai me zë të ulët.",
+              "english": "\"Ana, were the people crying because they were sad?\" he asked in a low voice."
+            },
+            {
+              "text": "— Jo, Ardi, — tha ajo.",
+              "english": "\"No, Ardi,\" she said."
+            },
+            {
+              "text": "— Ndonjëherë njeriu qan kur dikush thotë me zë të lartë diçka që ai e ndjen prej kohësh.",
+              "english": "\"Sometimes a person cries when someone says aloud something that he has felt for a long time.\""
+            },
+            {
+              "text": "Sami, që qëndronte pranë, e shikoi Anën, por nuk tha asgjë.",
+              "english": "Sam, who was standing nearby, looked at Ana, but said nothing."
+            },
+            {
+              "text": "Më vonë, kur të gjithë po hanin byrek, ai erdhi pranë saj dhe e pyeti: — A mund ta shkruaj në fletore atë që the për gruan e vjetër?",
+              "english": "Later, when everybody was eating byrek, he came up to her and asked: \"May I write in my notebook what you said about the old woman?\""
+            },
+            {
+              "text": "— Shkruaje, — qeshi Ana me sy plot dashuri.",
+              "english": "\"Write it,\" laughed Ana with eyes full of love."
+            },
+            {
+              "text": "— Por shkruaje me shkrim të madh, që ta lexosh edhe kur të kesh nevojë.",
+              "english": "\"But write it in big letters, so that you can read it even when you are in need.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

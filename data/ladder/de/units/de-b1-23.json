@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-23",
+  "lang": "de",
+  "title": "Sunday at Grandfather's table",
+  "contentType": "narrative",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-23",
+    "title": "Sunday at Grandfather's table (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next text (Grimm, Der alte Großvater und der Enkel): Großvater, Schüsselchen, Erde, daraus, steinalt, trüb, taub, Knie, schütten, Tischtuch, fließen. Today's German; the tale itself is not told."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "family",
+    "old age",
+    "respect",
+    "kindness"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "ben": "Ben",
+    "lukas": "Lukas",
+    "anna": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Der alte Mann",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag essen alle bei Oma Marta, und Martas Vater ist auch da.",
+              "english": "On Sunday everyone eats at Oma Marta's, and Marta's father is there too."
+            },
+            {
+              "text": "Ben nennt ihn Opa, aber er ist sein Urgroßvater.",
+              "english": "Ben calls him Opa, but he is his great-grandfather."
+            },
+            {
+              "text": "Der Großvater ist steinalt, und er sieht schlecht.",
+              "english": "The grandfather is stone-old, and he sees badly."
+            },
+            {
+              "text": "Seine Augen sind trüb, und sein Gesicht ist müde.",
+              "english": "His eyes are cloudy, and his face is tired."
+            },
+            {
+              "text": "Er hört fast nichts mehr, denn er ist taub.",
+              "english": "He hears almost nothing any more, because he is deaf."
+            },
+            {
+              "speaker": "ben",
+              "text": "Opa, willst du Suppe?",
+              "english": "Opa, do you want soup?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Er hört dich nicht, Ben. Du musst laut sprechen.",
+              "english": "He does not hear you, Ben. You have to speak loudly."
+            },
+            {
+              "speaker": "ben",
+              "text": "Opa! Suppe!",
+              "english": "Opa! Soup!"
+            },
+            {
+              "text": "Der Großvater lächelt und nickt.",
+              "english": "The grandfather smiles and nods."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Tisch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta gibt ihrem Vater ein Schüsselchen Suppe.",
+              "english": "Marta gives her father a small bowl of soup."
+            },
+            {
+              "text": "Ein Schüsselchen ist kleiner als ein Teller, und der alte Mann kann es besser halten.",
+              "english": "A small bowl is smaller than a plate, and the old man can hold it better."
+            },
+            {
+              "text": "Seine Hände zittern, und ein bisschen Suppe fließt auf das Tischtuch.",
+              "english": "His hands tremble, and a little soup flows onto the tablecloth."
+            },
+            {
+              "text": "Der Großvater sieht es und schaut traurig.",
+              "english": "The grandfather sees it and looks sad."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das macht nichts, Opa.",
+              "english": "It doesn't matter, Opa."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich schütte auch oft etwas auf den Tisch.",
+              "english": "I often spill something on the table too."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich lege dir ein Tuch auf die Knie, Vater.",
+              "english": "I'll put a cloth on your knees, Father."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dann fließt nichts mehr auf die Hose.",
+              "english": "Then nothing will flow onto your trousers."
+            },
+            {
+              "text": "Der alte Mann sagt nichts, aber seine Augen sind nicht mehr so trüb.",
+              "english": "The old man says nothing, but his eyes are not so cloudy any more."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Früher war es nicht überall so, Oma.",
+              "english": "In the past it was not like this everywhere, Oma."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Manche Familien haben ihre alten Menschen allein essen lassen.",
+              "english": "Some families let their old people eat alone."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das war nicht gut. Man darf einen Menschen nicht vergessen, weil er alt ist.",
+              "english": "That was not good. One must not forget a person because he is old."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein altes Märchen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Essen sitzt die Familie noch lange am Tisch.",
+              "english": "After the meal the family sits at the table for a long time."
+            },
+            {
+              "text": "Draußen im Garten ist die Erde nass vom Regen.",
+              "english": "Outside in the garden the earth is wet from the rain."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, erzähl uns etwas!",
+              "english": "Oma, tell us something!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich kenne ein Märchen über einen Großvater, der allein essen muss.",
+              "english": "I know a fairy tale about a grandfather who has to eat alone."
+            },
+            {
+              "speaker": "marta",
+              "text": "Er bekommt sein Essen in einem Schüsselchen aus Holz, und er sitzt hinter dem Ofen.",
+              "english": "He gets his food in a small wooden bowl, and he sits behind the stove."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das ist traurig. Aber was passiert dann?",
+              "english": "That is sad. But what happens then?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Das liest du bald selbst, Ben. Ich sage nur: Der Enkel lernt daraus etwas.",
+              "english": "You will read that yourself soon, Ben. I only say: the grandson learns something from it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und ich lerne auch etwas daraus. Ich werde immer gut zu Opa sein.",
+              "english": "And I learn something from it too. I will always be good to Opa."
+            },
+            {
+              "text": "Der Großvater hört nichts, aber er sieht die Familie an, und er lächelt.",
+              "english": "The grandfather hears nothing, but he looks at the family, and he smiles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Essen sitzt die Familie noch am Tisch, und Ben holt sein altes Lesebuch.",
+              "english": "After the meal the family is still sitting at the table, and Ben fetches his old reader."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, in meinem Lesebuch steht ein Sprichwort. Kennst du es?",
+              "english": "Oma, there is a proverb in my reader. Do you know it?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, ich kenne viele Sprichwörter. Sie sind alt und klug.",
+              "english": "Yes, I know many proverbs. They are old and clever."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Auf dem Tisch liegt auch ein Magazin mit einem Artikel über Füchse.",
+              "english": "There is also a magazine on the table with an article about foxes."
+            },
+            {
+              "speaker": "anna",
+              "text": "Den Artikel hat Sam im Stadtmagazin gefunden.",
+              "english": "Sam found the article in the city magazine."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ein Fuchs kann nachts schreien, hat er gesagt.",
+              "english": "A fox can scream at night, he said."
+            },
+            {
+              "speaker": "ben",
+              "text": "Wo bleibt Sam eigentlich? Er bleibt heute lange aus.",
+              "english": "Where is Sam, actually? He is staying out late today."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Er hat heute Abend den Deutschkurs.",
+              "english": "He has his German course this evening."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ein treuer Freund wartet gern auf ihn.",
+              "english": "A loyal friend gladly waits for him."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich halte ihm die Tür auf, wenn er kommt.",
+              "english": "I will hold the door open for him when he comes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend sitzt Ben noch bei Oma Marta, und sie erzählen sich alte Märchen.",
+              "english": "In the evening Ben is still sitting with Oma Marta, and they tell each other old tales."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, kennst du das Märchen Die Sternthaler?",
+              "english": "Oma, do you know the tale The Sternthaler?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, das arme Mädchen hat kein Kämmerchen und kein Bettchen mehr.",
+              "english": "Yes, the poor girl has no little room and no little bed any more."
+            },
+            {
+              "speaker": "marta",
+              "text": "Es hat nur noch die Kleider auf dem Leib.",
+              "english": "She has only the clothes on her body left."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ein mitleidiges Herz hat ihr ein Stück Brot geschenkt.",
+              "english": "A compassionate heart gave her a piece of bread."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aber ein Mann ist hungerig, und das Mädchen gibt ihm das Brot.",
+              "english": "But a man is hungry, and the girl gives him the bread."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ein Kind sucht etwas, womit es seinen Kopf bedecken kann.",
+              "english": "A child looks for something with which it can cover its head."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ein anderes Kind hat kein Leibchen. Das Mädchen gibt ihm seins.",
+              "english": "Another child has no bodice. The girl gives it hers."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und ein drittes Kind bekommt ein Röcklein von ihr.",
+              "english": "And a third child gets a little skirt from her."
+            },
+            {
+              "speaker": "ben",
+              "text": "Endlich gelangt das Mädchen in einen Wald, und dann fallen die Sterne.",
+              "english": "At last the girl reaches a forest, and then the stars fall."
+            },
+            {
+              "speaker": "ben",
+              "text": "Es sind blanke Taler, und das neue Hemd ist aus Linnen.",
+              "english": "They are shining Taler, and the new shirt is made of linen."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Kennst du auch das Märchen vom klugen Knecht?",
+              "english": "Do you also know the tale of the clever servant?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja! Der Herr schickt ihn aus, aber der Knecht bleibt lange aus.",
+              "english": "Yes! The master sends him out, but the servant stays out a long time."
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Herr befürchtet, dass seinem Knecht etwas zugestoßen ist.",
+              "english": "The master fears that something has happened to his servant."
+            },
+            {
+              "speaker": "ben",
+              "text": "Er will sich nach ihm umsehen, und endlich erblickt er ihn auf dem Feld.",
+              "english": "He wants to look around for him, and at last he catches sight of him in the field."
+            },
+            {
+              "speaker": "marta",
+              "text": "Als der Herr ihn eingeholt hat, fragt er: Wo ist die Kuh?",
+              "english": "When the master has caught up with him, he asks: Where is the cow?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Knecht sagt: Ich suche drei Amseln. Eine sehe ich, und die dritte jage ich.",
+              "english": "The servant says: I am looking for three blackbirds. One I see, and the third I chase."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ein treuer Knecht lässt sich keine Mühe verdrießen, denkt der Herr.",
+              "english": "A loyal servant does not let any effort vex him, thinks the master."
+            },
+            {
+              "speaker": "ben",
+              "text": "Hans bekümmert sich nicht um die Befehle seines Herrn.",
+              "english": "Hans does not trouble himself about the orders of his master."
+            },
+            {
+              "speaker": "marta",
+              "text": "Am Ende steht, man soll nicht euern Herrn fragen. Dann handelt man weise.",
+              "english": "At the end it says one should not ask your master. Then one acts wisely."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Und Opa? Er ist auch steinalt, und er ist taub.",
+              "english": "And Opa? He is stone-old too, and he is deaf."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, Vater ist steinalt, und seine Augen sind trüb.",
+              "english": "Yes, Father is stone-old, and his eyes are cloudy."
+            },
+            {
+              "speaker": "marta",
+              "text": "Weil er taub ist, muss man laut mit ihm sprechen.",
+              "english": "Because he is deaf, one has to speak loudly with him."
+            },
+            {
+              "speaker": "ben",
+              "text": "Seine Knie tun weh, und du legst ihm ein Tuch auf die Knie.",
+              "english": "His knees hurt, and you put a cloth on his knees."
+            },
+            {
+              "speaker": "marta",
+              "text": "Er schüttet manchmal Suppe auf den Tisch, denn seine Hände zittern.",
+              "english": "He sometimes spills soup on the table, because his hands tremble."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich schütte auch oft etwas aus, und dann ist das Tischtuch nass.",
+              "english": "I often spill something too, and then the tablecloth is wet."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dann fließt die Suppe auf das Tischtuch, und wir lachen.",
+              "english": "Then the soup flows onto the tablecloth, and we laugh."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und was lernt der Enkel im Märchen daraus?",
+              "english": "And what does the grandson learn from it in the tale?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lukas und Anna kommen mit Tee ins Zimmer und setzen sich zu Ben und Oma.",
+              "english": "Lukas and Anna come into the room with tea and sit down with Ben and Oma."
+            },
+            {
+              "speaker": "anna",
+              "text": "Was erzählt ihr denn so lange?",
+              "english": "What are you telling each other for so long?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Über Märchen, Mama. Oma weiß so viele!",
+              "english": "About fairy tales, Mama. Oma knows so many!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das ist gut. Mit Märchen lernt man die Wörter.",
+              "english": "That is good. With fairy tales one learns the words."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, und man lernt auch, wie man gut zu den Menschen ist.",
+              "english": "Yes, and one also learns how to be good to people."
+            },
+            {
+              "speaker": "anna",
+              "text": "Gut zu sein ist nicht schwer, wenn man will.",
+              "english": "Being good is not hard if you want to."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Aber man muss es jeden Tag wieder tun.",
+              "english": "But one has to do it again every day."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich will jeden Tag gut zu Opa sein.",
+              "english": "I want to be good to Opa every day."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das freut mich, Ben. Du bist ein guter Junge.",
+              "english": "That makes me glad, Ben. You are a good boy."
+            },
+            {
+              "text": "Der Großvater schläft in seinem Stuhl, und sein Gesicht ist froh.",
+              "english": "The grandfather sleeps in his chair, and his face is happy."
+            },
+            {
+              "speaker": "anna",
+              "text": "Seht ihr, er hat einen schönen Tag gehabt.",
+              "english": "You see, he has had a beautiful day."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir kommen am Sonntag wieder, und wir bringen Brot und Kuchen mit.",
+              "english": "We will come again on Sunday, and we will bring bread and cake."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das ist schön. Dann essen wir alle wieder zusammen.",
+              "english": "That is nice. Then we will all eat together again."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und ich lese euch dann ein Märchen vor.",
+              "english": "And then I will read you a fairy tale."
+            },
+            {
+              "speaker": "anna",
+              "text": "Gut, aber jetzt gehen wir nach Hause. Es ist spät.",
+              "english": "Good, but now we are going home. It is late."
+            },
+            {
+              "speaker": "ben",
+              "text": "Gute Nacht, Oma! Gute Nacht, Opa!",
+              "english": "Good night, Oma! Good night, Opa!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Gute Nacht, ihr Lieben. Kommt gut nach Hause.",
+              "english": "Good night, my dears. Get home safely."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Draußen ist es dunkel, aber im Auto ist es warm.",
+              "english": "Outside it is dark, but in the car it is warm."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Mama hat heute sehr schön erzählt. Hat es dir gefallen, Ben?",
+              "english": "Mama told it very nicely today. Did you like it, Ben?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, sehr. Ich möchte auch so gut erzählen.",
+              "english": "Yes, very much. I would like to tell stories so well too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Dann musst du viel lesen und jeden Tag ein bisschen üben.",
+              "english": "Then you must read a lot and practise a little every day."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das mache ich. Morgen lese ich in der Schule das Märchen noch einmal.",
+              "english": "I will. Tomorrow I will read the tale again at school."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Und ich möchte wissen, was deine Klasse dazu sagt.",
+              "english": "And I would like to know what your class says about it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Alle Kinder in meiner Klasse mögen Märchen. Wir hören gern zu.",
+              "english": "All the children in my class like fairy tales. We like to listen."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das ist schön. Und am Wochenende besuchen wir Oma wieder.",
+              "english": "That is nice. And at the weekend we will visit Oma again."
+            },
+            {
+              "speaker": "ben",
+              "text": "Darf ich dann bei ihr schlafen? Ich will ihr am Morgen helfen.",
+              "english": "May I sleep at her place then? I want to help her in the morning."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wenn Oma es möchte, gern. Wir fragen sie am Telefon.",
+              "english": "If Oma wants it, gladly. We will ask her on the phone."
+            },
+            {
+              "text": "Zu Hause trinkt Ben noch ein Glas Wasser und geht ins Bett.",
+              "english": "At home Ben drinks another glass of water and goes to bed."
+            },
+            {
+              "text": "Anna sagt gute Nacht und geht leise aus dem Zimmer.",
+              "english": "Anna says good night and goes quietly out of the room."
+            },
+            {
+              "text": "Es ist still im Haus, und bald schläft Ben ein. Er träumt von Oma, von Opa und von den alten Märchen.",
+              "english": "It is quiet in the house, and soon Ben falls asleep. He dreams of Oma, of Opa and of the old tales."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

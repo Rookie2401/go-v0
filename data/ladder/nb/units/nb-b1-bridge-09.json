@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-09",
+  "lang": "nb",
+  "title": "Moving day",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-09",
+    "title": "Moving day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Passive with \"bli\" (ble båret, ble lagt, ble åpnet) and the Norwegian custom of \"dugnad\". Many people from church and from the bookshop help Sam move. Names Jonas and Emma are invented."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "moving",
+    "helping",
+    "dugnad",
+    "passive",
+    "church",
+    "friends"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "marta": "Marta",
+    "silje": "Silje",
+    "nico": "Nils",
+    "jonas": "Jonas",
+    "erik": "Erik",
+    "emma": "Emma",
+    "solveig": "Solveig"
+  },
+  "sections": [
+    {
+      "title": "Lørdag morgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Klokka åtte var en stor bil ved huset til Anna og Lars. Lars hadde leid den, og været var godt.",
+              "english": "At eight o'clock a big van was at Anna and Lars's house. Lars had rented it, and the weather was good."
+            },
+            {
+              "text": "Sam hadde pakket kasser i en uke. Det var tretti kasser med bøker og mat.",
+              "english": "Sam had been packing boxes for a week. There were thirty boxes with books and food."
+            },
+            {
+              "text": "Mange hadde kommet for å hjelpe: Marta og Nils, Solveig fra kirka, Erik og Silje fra bokhandelen, og to fra kirka som het Jonas og Emma.",
+              "english": "Many had come to help: Marta and Nils, Solveig from church, Erik and Silje from the bookshop, and two from church called Jonas and Emma."
+            },
+            {
+              "text": "Jeg visste ikke at så mange ville komme. Takk, alle sammen!",
+              "english": "I did not know that so many would come. Thank you, all of you!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Dette er dugnad, Sam. Når noen trenger hjelp, kommer alle.",
+              "english": "This is dugnad, Sam. When someone needs help, everyone comes.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Vi har ikke dugnad der jeg kommer fra. Det er en bra regel.",
+              "english": "We do not have dugnad where I come from. It is a good rule.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du må komme tidlig på mandag, for da kommer det fire nye kasser.",
+              "english": "You must come early on Monday, because then four new boxes are coming.",
+              "speaker": "silje"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tunge ting",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Først ble kassene båret til bilen. Det var mange, og de var tunge. Nils bar de letteste, og han var veldig glad.",
+              "english": "First the boxes were carried to the car. There were many, and they were heavy. Nils carried the lightest, and he was very glad."
+            },
+            {
+              "text": "Så kom sofaen. Den var stor og tung, og trappen i det nye huset var lang. Fire av dem løftet den, og de lo og sang.",
+              "english": "Then came the sofa. It was big and heavy, and the stairs in the new house were long. Four of them lifted it, and they laughed and sang."
+            },
+            {
+              "text": "Kan jeg også løfte?",
+              "english": "Can I also lift?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Husk trappen og døren! Den er liten.",
+              "english": "Remember the stairs and the door! It is small.",
+              "speaker": "jonas"
+            },
+            {
+              "text": "Løft sammen! Jeg har båret tyngre kasser enn dette. Men aldri en sofa i en trapp!",
+              "english": "Lift together! I have carried heavier boxes than this. But never a sofa on a staircase!",
+              "speaker": "erik"
+            },
+            {
+              "text": "Sofaen kom inn, og alle var glade.",
+              "english": "The sofa came in, and everyone was glad."
+            },
+            {
+              "text": "Når jeg blir stor, skal jeg lage en bil som kan bære sofaer!",
+              "english": "When I grow up, I will make a car that can carry sofas!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Alle lo, og Erik sa at han skulle kjøpe den første.",
+              "english": "Everyone laughed, and Erik said that he would buy the first one."
+            },
+            {
+              "text": "Etter sofaen ble sengen båret til stua, og så bordet. Til slutt ble alle kassene åpnet, og bøkene ble lagt på hyllene.",
+              "english": "After the sofa the bed was carried to the living room, and then the table. In the end all the boxes were opened, and the books were put on the shelves."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Pizza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Klokka ett var alt på plass. Etter dugnaden satt alle i stua, for Sam hadde bare sofa og seng.",
+              "english": "At one o'clock everything was in place. After the dugnad everyone sat in the living room, because Sam only had a sofa and a bed."
+            },
+            {
+              "text": "Nå skal jeg betale pizza til alle for lønnen min!",
+              "english": "Now I will pay for pizza for everyone with my pay!",
+              "speaker": "sam"
+            },
+            {
+              "text": "Pizzaen kom, og de spiste og lo. Pizzaen var god. Marta hadde bakt brød, og Solveig hadde med kaffe.",
+              "english": "The pizza came, and they ate and laughed. The pizza was good. Marta had baked bread, and Solveig had brought coffee."
+            },
+            {
+              "text": "Det er et bra sted, Sam. Det er lyst, og det er ikke langt til kirka.",
+              "english": "It is a good place, Sam. It is bright, and it is not far to the church.",
+              "speaker": "emma"
+            },
+            {
+              "text": "Du er heldig. Magnus var en god utleier, og nå har du en god nabo også. Jeg bor i etasjen under deg.",
+              "english": "You are lucky. Magnus was a good landlord, and now you have a good neighbour too. I live on the floor below you.",
+              "speaker": "solveig"
+            },
+            {
+              "text": "Er det riktig? Da må jeg være rolig etter klokka ti! Ja, jeg er heldig.",
+              "english": "Is that right? Then I must be quiet after ten o'clock! Yes, I am lucky.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kan være rolig, og jeg kan være glad. Det er en god regel for oss begge.",
+              "english": "You can be quiet, and I can be glad. That is a good rule for both of us.",
+              "speaker": "solveig"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kvelden",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da alle hadde gått, satt Sam alene i stua. Det var kasser i alle rom, men han var ikke lei seg. Han tenkte på annonsene i avisen, på visningen med den fuktige flekken og på kontrakten som han hadde skrevet under.",
+              "english": "When everyone had gone, Sam sat alone in the living room. There were boxes in every room, but he was not sad. He thought of the advertisements in the newspaper, of the viewing with the damp patch and of the contract that he had signed."
+            },
+            {
+              "text": "Anna og Lars gikk sammen. «Dette er ditt sted nå,» sa Anna. «Du må komme på middag på søndag. Du er heldig som har så mange venner.»",
+              "english": "Anna and Lars left together. \"This is your place now,\" said Anna. \"You must come to dinner on Sunday. You are lucky to have so many friends.\""
+            },
+            {
+              "text": "Sam ba: «Takk, Gud, for at så mange hjalp meg i dag. La meg også hjelpe noen en dag.»",
+              "english": "Sam prayed: \"Thank you, God, that so many helped me today. Let me also help someone one day.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Fordi Sam hadde deltid, kunne han flytte på en lørdag. Til lunsj spiste de pizza i kjøkkenet i hans egen leilighet, og Lars forklarte alt om dusjen. Nummeret på døren var tre.",
+              "english": "Because Sam worked part-time, he could move on a Saturday. For lunch they ate pizza in the kitchen of his own flat, and Lars explained everything about the shower. The number on the door was three."
+            },
+            {
+              "text": "Veggene var malt, og vinduet var skiftet. Han kunne bare flytte annenhver helg, så han måtte gjøre det nå.",
+              "english": "The walls had been painted, and the window had been replaced. He could only move every other weekend, so he had to do it now."
+            },
+            {
+              "text": "Kontrakten lå i en kasse, og Sam hadde skrevet under den.",
+              "english": "The contract lay in a box, and Sam had signed it."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

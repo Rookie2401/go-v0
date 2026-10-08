@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "SCRIPTURE RETELLING (the parable of Luke 15:11-32) told by Seeta Nani to Aman in the drafter's own simple words; it is NOT a quotation of the IRV or of any translation, and it uses everyday words (the Bible-register words of the neighbouring units are used sparingly: पापी, तेरा, दास, आनंद, नाराज़, अकाल, परदेस, जायदाद, मित्र, सूअर). It needs a Scripture-competent reviewer as well as a linguistic one: the details to check are the father's running, the ring and the new clothes, the elder brother's anger, and the closing line. The frame (Aman has spent his pocket money in advance) and the modern comparisons (meter, petrol, traffic, receipt, school admission) are the drafter's own devices for recycling the words of the last units. Scripture retelling: Scripture-competent review needed. The adapter reads feminine 'पूरी' as the food पूरी (one token). Outside the plan (1 lemma, 1 tokens, 0.1 per 100 words): पूरी. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+    "notes": "SCRIPTURE RETELLING (the parable of Luke 15:11-32) told by Seeta Nani to Aman in the drafter's own simple words; it is NOT a quotation of the IRV or of any translation, and it uses everyday words (the Bible-register words of the neighbouring units are used sparingly: पापी, तेरा, दास, आनंद, नाराज़, अकाल, परदेस, जायदाद, मित्र, सूअर). It needs a Scripture-competent reviewer as well as a linguistic one: the details to check are the father's running, the ring and the new clothes, the elder brother's anger, and the closing line. The frame (Aman has spent his pocket money in advance) and the modern comparisons (meter, petrol, traffic, receipt, school admission) are the drafter's own devices for recycling the words of the last units. Scripture retelling: Scripture-competent review needed. The adapter reads feminine 'पूरी' as the food पूरी (one token). Outside the plan (1 lemma, 1 tokens, 0.1 per 100 words): पूरी. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -530,6 +530,30 @@
             {
               "text": "और सीता नानी ने मन में सोचा कि कहानी ने अपना काम कर दिया है, क्योंकि सुनने वाले को सिर्फ़ पैसे की नहीं, घर की भी याद आ गई है।",
               "english": "And Seeta Nani thought in her heart that the story had done its work, because the listener had remembered not only the money but home too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रविवार को गिरजाघर में पादरी जी ने यह कहानी सुनाई, और सब ईसाई ध्यान से सुनते रहे।",
+              "english": "On Sunday in the church building the padri ji told this story, and all the Christians kept listening carefully."
+            },
+            {
+              "text": "बाहर बरसात हो रही थी, और कुछ मछुआरे भी भीगकर अंदर आ गए।",
+              "english": "Outside it was raining, and some fishermen too came inside soaked."
+            },
+            {
+              "text": "एक छोटा खिलाड़ी लड़का अपने गीले बाल पोंछ रहा था।",
+              "english": "A small sportsman boy was wiping his wet hair."
+            },
+            {
+              "text": "कहानी सुनते हुए हर इंसान एक पल के लिए रुक गया।",
+              "english": "While listening to the story every person stopped for a moment."
+            },
+            {
+              "text": "यह कहानी कई सदी पुरानी है, फिर भी आज की लगती है।",
+              "english": "This story is many centuries old, yet it seems of today."
             }
           ]
         }

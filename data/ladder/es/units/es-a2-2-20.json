@@ -462,6 +462,91 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Una semana normal",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mucha gente piensa que un misionero vive de un modo distinto, pero mis semanas son normales.",
+              "english": "Many people think that a missionary lives in a different way, but my weeks are normal."
+            },
+            {
+              "text": "El primero es el lunes: limpiamos la casa con un trapo, y el polvo del camino nos sigue hasta la cocina.",
+              "english": "The first is Monday: we clean the house with a cloth, and the dust of the road follows us into the kitchen."
+            },
+            {
+              "text": "El segundo es el martes: estoy ocupado en la tienda de don Carlos, porque me pide ayuda con los sacos de azúcar.",
+              "english": "The second is Tuesday: I am busy in don Carlos's shop, because he asks me for help with the sacks of sugar."
+            },
+            {
+              "text": "Los clientes llegan temprano, y yo todavía no sé cobrarles. Solo ayudo con las bolsas.",
+              "english": "The customers arrive early, and I still do not know how to charge them. I only help with the bags."
+            },
+            {
+              "text": "El tercero es el miércoles: visito a una familia que vive en una casa cerrada y oscura.",
+              "english": "The third is Wednesday: I visit a family that lives in a closed, dark house."
+            },
+            {
+              "text": "Subo un escalón, y la madera suena bajo mis zapatos mojados.",
+              "english": "I climb a step, and the wood creaks under my wet shoes."
+            },
+            {
+              "text": "Adentro hay una mesa, una vela y una niña que me espera sentada.",
+              "english": "Inside there is a table, a candle and a girl who waits for me sitting down."
+            },
+            {
+              "text": "Los gastos de la semana son pocos: pan, café, un poco de transporte.",
+              "english": "The expenses of the week are few: bread, coffee, a little transport."
+            },
+            {
+              "text": "Las necesidades de la aldea, en cambio, son muchas.",
+              "english": "The needs of the village, on the other hand, are many."
+            },
+            {
+              "text": "No tenemos mucho apoyo de afuera, pero tenemos esperanza.",
+              "english": "We do not have much support from outside, but we have hope."
+            },
+            {
+              "text": "A veces el pago por mi trabajo es una sola sonrisa.",
+              "english": "Sometimes the payment for my work is a single smile."
+            },
+            {
+              "text": "El viernes es mi día favorito, porque cantamos con los niños y todos hacen ruido con alegría.",
+              "english": "Friday is my favorite day, because we sing with the children and everybody makes noise with joy."
+            },
+            {
+              "text": "En el bolsillo llevo un papel con los nombres de las personas por las que oro.",
+              "english": "In my pocket I carry a paper with the names of the people I pray for."
+            },
+            {
+              "text": "La espera también es parte del trabajo: a veces espero horas por una persona que no llega.",
+              "english": "Waiting is also part of the work: sometimes I wait hours for a person who does not come."
+            },
+            {
+              "text": "Cuando todo está listo, el sábado, me siento a escribir mi informe.",
+              "english": "When everything is ready, on Saturday, I sit down to write my report."
+            },
+            {
+              "text": "Después del informe, un chele como yo se sienta a comer una baleada con mantequilla y aguacate.",
+              "english": "After the report, a fair-skinned fellow like me sits down to eat a baleada with cream and avocado."
+            },
+            {
+              "text": "Doña Marta la hace en el comal sobre el fogón, y cada tortilla sale caliente.",
+              "english": "Doña Marta makes it on the griddle over the stove, and every tortilla comes out hot."
+            },
+            {
+              "text": "Le pregunto cuánto es, y ella me contesta que ahí no se cobra pisto: se cobra compañía.",
+              "english": "I ask her how much it is, and she answers that there they do not charge money: they charge company."
+            },
+            {
+              "text": "Escribo lo mismo que ustedes ya saben: que esas semanas normales no son pequeñas para Dios.",
+              "english": "I write what you already know: that those normal weeks are not small to God."
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

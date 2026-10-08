@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "\"रवि सर\" (Ravi the teacher, Meera's brother) is called सर by Aman and Sam; सर is not in the plan's lists (it counts as unknown for its three uses here, then known). \"यह लो\" is the informal give-and-take imperative to a child (तुम form); तुम-forms are used to Aman. Honorific plural for रवि सर (बोलते हैं, जाते हैं, वह ... हैं). Words outside the plan (measured, adapter lemmas x tokens): सर×3 (the address term for Ravi sir; not on any list), लेकिन×1, तुम्हारा×1 (under-met)."
+    "notes": "\"रवि सर\" (Ravi the teacher, Meera's brother) is called सर by Aman and Sam; सर is not in the plan's lists (it counts as unknown for its three uses here, then known). \"यह लो\" is the informal give-and-take imperative to a child (तुम form); तुम-forms are used to Aman. Honorific plural for रवि सर (बोलते हैं, जाते हैं, वह ... हैं). Words outside the plan (measured, adapter lemmas x tokens): सर×3 (the address term for Ravi sir; not on any list), लेकिन×1, तुम्हारा×1 (under-met). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -254,6 +254,22 @@
             {
               "text": "अमन चर्च भी जाता है।",
               "english": "Aman goes to church too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मोती घर में नहीं है।",
+              "english": "Moti is not in the house."
+            },
+            {
+              "text": "अमन बोलता है, \"कुत्ता कहाँ है?\"",
+              "english": "Aman says, \"Where is the dog?\""
+            },
+            {
+              "text": "माँ और पापा भी घर में नहीं हैं।",
+              "english": "Mother and father are not in the house either."
             }
           ]
         }

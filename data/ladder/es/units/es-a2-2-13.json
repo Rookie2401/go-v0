@@ -846,6 +846,95 @@
           ]
         }
       ]
+    },
+    {
+      "title": "El juego de los recuerdos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nico propone otro juego: cada uno cuenta lo que mejor recuerda del viaje.",
+              "english": "Nico suggests another game: each one tells what he remembers best from the trip."
+            },
+            {
+              "text": "—Yo empiezo —dice Karla—. Recuerdo la mañana en que partimos.",
+              "english": "\"I'll start,\" says Karla. \"I remember the morning we set out.\""
+            },
+            {
+              "text": "En la pared había un calendario, y Sam puso una cruz roja en ese día.",
+              "english": "On the wall there was a calendar, and Sam put a red cross on that day."
+            },
+            {
+              "text": "Partimos a las cinco, y a los veinte minutos atravesamos el puente del río.",
+              "english": "We set out at five, and twenty minutes later we crossed the bridge over the river."
+            },
+            {
+              "text": "—Del otro lado aparecieron las mulas —dice Sam—. Una mula me siguió y casi se comió mi mochila.",
+              "english": "\"On the other side the mules appeared,\" says Sam. \"One mule followed me and almost ate my backpack.\""
+            },
+            {
+              "text": "—Yo recuerdo la noche del terremoto —dice Nico—. La casa se movió un minuto, y todos salimos corriendo.",
+              "english": "\"I remember the night of the earthquake,\" says Nico. \"The house moved for a minute, and we all ran out.\""
+            },
+            {
+              "text": "—Eso fue un susto —dice Karla—. Yo mejor cuento el día en que alcancé el autobús.",
+              "english": "\"That was a fright,\" says Karla. \"I'd rather tell about the day I caught up with the bus.\""
+            },
+            {
+              "text": "Corrí mucho, y cuando lo alcancé no podía hablar.",
+              "english": "I ran a lot, and when I caught up with it I could not speak."
+            },
+            {
+              "text": "—Y yo recuerdo el lugar donde hallamos agua para nadar —dice Sam.",
+              "english": "\"And I remember the place where we found water to swim in,\" says Sam."
+            },
+            {
+              "text": "Nico saltó al río con los zapatos puestos, y Karla se rió mucho.",
+              "english": "Nico jumped into the river with his shoes on, and Karla laughed a lot."
+            },
+            {
+              "text": "—Sam, ¿vos nunca nadás?",
+              "english": "\"Sam, don't you ever swim?\""
+            },
+            {
+              "text": "—Casi nunca. En mi país hay nieve en invierno, y el agua del río siempre está fría.",
+              "english": "\"Almost never. In my country there is snow in winter, and the river water is always cold.\""
+            },
+            {
+              "text": "Después hablan del blog de Sam.",
+              "english": "Then they talk about Sam's blog."
+            },
+            {
+              "text": "—Escribiste del tren, de la moto y del barco —dice Karla.",
+              "english": "\"You wrote about the train, the motorbike and the boat,\" says Karla."
+            },
+            {
+              "text": "—¿Y el desierto? —pregunta Nico.",
+              "english": "\"And the desert?\" asks Nico."
+            },
+            {
+              "text": "—El desierto fue lo más bonito: sol, arena y calma. Pero lo más largo fue el avión.",
+              "english": "\"The desert was the most beautiful: sun, sand and calm. But the longest was the plane.\""
+            },
+            {
+              "text": "Al final, Nico recuerda un cuento de Jesús.",
+              "english": "At the end, Nico remembers a story of Jesus."
+            },
+            {
+              "text": "—Unos ladrones le pegaron a un hombre y lo dejaron en el camino.",
+              "english": "\"Some robbers beat a man and left him on the road.\""
+            },
+            {
+              "text": "—Un sacerdote lo vio y siguió de largo —dice Karla.",
+              "english": "\"A priest saw him and went on,\" says Karla."
+            },
+            {
+              "text": "—Pero otro hombre sí se detuvo. Por eso el mandamiento de amar al vecino no es solo una idea.",
+              "english": "\"But another man did stop. That is why the commandment to love your neighbour is not just an idea.\""
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

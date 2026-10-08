@@ -3,7 +3,7 @@ note: "glemme" is regular; "må" is the modal "must/have to". "har glemt" is the
 ## Mandag morgen
 Det er mandag morgen. Klokka er sju. || It is Monday morning. It is seven o'clock.
 {ana} må gå til klinikken. || Anna has to go to the clinic.
-Men {ana} har ikke nøkkelen. Den er borte. || But Anna does not have the key. It is gone.
+{ana} har ikke nøkkelen. Den er borte. || Anna does not have the key. It is gone.
 [ana] Hvor er nøkkelen? Jeg må finne den! || Where is the key? I have to find it!
 [luis] Jeg vet ikke, {ana}. Har du den i vesken? || I do not know, Anna. Do you have it in the bag?
 [ana] Nei, den er ikke i vesken. Den er borte! || No, it is not in the bag. It is gone!
@@ -11,13 +11,13 @@ Men {ana} har ikke nøkkelen. Den er borte. || But Anna does not have the key. I
 ## De leter
 {ana} leter i stua. Den er ikke på bordet. Den er ikke under sengen. || Anna looks in the living room. It is not on the table. It is not under the bed.
 {sam} kommer inn. || Sam comes in.
-[sam] Hei, {ana}! Hva leter du etter? || Hi, Anna! What are you looking for?
+[sam] Hei, {ana}! Hva er det? || Hi, Anna! What is it?
 [ana] Jeg leter etter nøkkelen. Den er borte! || I am looking for the key. It is gone!
 [sam] Jeg kan hjelpe deg. Er den under bordet? || I can help you. Is it under the table?
-[luis] Er den under sengen? || Is it under the bed?
+[luis] Er den i sengen? || Is it in the bed?
 {sam} finner telefonen til {ana}. || Sam finds Anna's phone.
 [sam] Her er telefonen din. Men den er ikke her. || Here is your phone. But it is not here.
-[ana] Takk, {sam}! Telefonen er bra, men jeg må finne den. || Thanks, Sam! The phone is good, but I have to find it.
+[ana] Takk, {sam}! Telefonen er bra, men jeg må ha nøkkelen. || Thanks, Sam! The phone is good, but I need the key.
 
 ## Den er i jakka
 {nico} kommer inn. Han går til skolen. || Nils comes in. He is going to school.
@@ -27,7 +27,7 @@ Men {ana} har ikke nøkkelen. Den er borte. || But Anna does not have the key. I
 [luis] Du glemmer ofte mye, {ana}. || You often forget a lot, Anna.
 [ana] Ja, jeg glemmer mye. Takk, {nico}! || Yes, I forget a lot. Thanks, Nils!
 [sam] Nå ligger den i vesken din. || Now it is in your bag.
-[ana] Ja, den ligger her. Nå går jeg. Ha det bra! || Yes, it is here. Now I am going. Goodbye!
+[ana] Ja, den er her. Nå går jeg. Ha det bra! || Yes, it is here. Now I am going. Goodbye!
 [luis] Ha det bra, {ana}! Du er ofte trøtt, men du er glad. || Goodbye, Anna! You are often tired, but you are happy.
 {ana} går til bussen. Hun er glad. Det er bra! || Anna goes to the bus. She is happy. That is good!
 
@@ -37,6 +37,7 @@ Men {ana} har ikke nøkkelen. Den er borte. || But Anna does not have the key. I
 [sam] Ja, gjerne. Jeg liker brød med ost. || Yes, please. I like bread with cheese.
 [luis] {ana} jobber mye. Hun er ofte trøtt. || Anna works a lot. She is often tired.
 [sam] Ja, men hun er glad. Hun liker klinikken. || Yes, but she is happy. She likes the clinic.
+[luis] {ana} leter ofte etter nøkkelen. Den ligger ofte under bordet, og hun må finne den. || Anna often looks for the key. It is often under the table, and she has to find it.
 
 ## Husker du?
 På søndag leser presten i bibelen. Alle ber og synger en sang. Gud elsker oss, og vi har det i hjertet. || On Sunday the pastor reads in the Bible. Everyone prays and sings a song. God loves us, and we have it in our hearts.

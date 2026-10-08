@@ -1,0 +1,47 @@
+id: hi-b1-29
+title: अंधेर नगरी (कहानी की तरह)
+domain: narrative
+adapted: bharatendu-andher-nagari
+topics: literature, play, satire, justice, retelling
+notes: Adapted unit (the contract's `adapted` kind): a short retelling in plain modern Hindi of the first plot of Bharatendu Harishchandra's play "अंधेर नगरी" (1881), the library work text:hi:bharatendu-andher-nagari (rights in the library: verified public domain in India and the United States, canModify true; the Wikisource transcription is CC BY-SA 4.0, so the attribution and the share-alike term are carried). The play itself (3,273 words, about 68 % known after the whole bridge, 598 new lemmas) stays library material; this retelling teaches the few words that the story turns on (टका, सेर, भाजी, खाजा, महंत, कोतवाल, दरबार, फाँसी, महाराज, कारीगर) and the two disciples' names, so that the play can be read next. The ending is the play's own (the foolish king is hanged by his own order); a Hindi reviewer and a Christian reader should check that it is told as a satire and not as a model. Machine-drafted.
+---
+## बाज़ार
+एक महंत अपने दो चेलों के साथ यात्रा पर थे। || A mahant was travelling with his two disciples.
+बड़े चेले का नाम गोबरधनदास था, और छोटे का नाम नारायणदास। || The elder disciple's name was Gobardhandas, and the younger's Narayandas.
+चलते चलते वे एक बड़े नगर में पहुँचे, जिसका नाम अंधेर नगरी था। || As they walked they reached a big city whose name was Andher Nagari.
+गोबरधनदास बाज़ार गया, तो उसे बड़ा अजीब लगा। || When Gobardhandas went to the market, it seemed very strange to him.
+वहाँ भाजी एक टके सेर थी, और खाजा भी एक टके सेर। || There vegetables were one taka a ser, and khaja sweets too were one taka a ser.
+उसने सोचा, "वाह! यहाँ सब कुछ कितना सस्ता है!" || He thought, "Wow! How cheap everything is here!"
+वह दौड़कर गुरु के पास आया और बोला, "चलिए, हम यहीं रहेंगे।" || He came running to his guru and said, "Come, let us stay right here."
+
+## महंत की बात
+उन्होंने बाज़ार देखा और कहा, "यहाँ अच्छी और बुरी चीज़ का एक ही दाम है।" || He looked at the market and said, "Here good and bad things have the same price."
+"जहाँ हर चीज़ एक टके सेर हो, वहाँ अच्छे और बुरे में कोई फ़र्क नहीं होता।" || "Where everything is one taka a ser, there is no difference between good and bad."
+"ऐसी जगह न्याय भी नहीं होता, इसलिए यहाँ रहना ठीक नहीं।" || "In such a place there is no justice either, so it is not right to stay here."
+पर गोबरधनदास ने बात नहीं मानी, और उसने कहा, "मैं तो यहीं रुकूँगा।" || But Gobardhandas did not listen, and he said, "I will stay right here."
+वे बोले, "ठीक है, मैं नारायणदास को लेकर आगे जाता हूँ; पर जब परेशानी आए, तो मुझे बुलाना।" || He said, "All right, I am going ahead taking Narayandas; but when trouble comes, call me."
+
+## दीवार गिर गई
+गोबरधनदास रोज़ खाजा खाने लगा, और कुछ दिनों में वह बहुत मोटा हो गया। || Gobardhandas began to eat khaja every day, and in a few days he became very fat.
+उन्हीं दिनों नगर के एक कारीगर की बनाई हुई दीवार गिर गई। || In those very days a wall made by a craftsman of the city fell down.
+उसके नीचे एक आदमी की बकरी आ गई, और वह बच नहीं सकी। || Under it a man's goat came, and she could not survive.
+वह आदमी रोता हुआ दरबार पहुँचा और बोला, "महाराज, न्याय कीजिए! मेरी बकरी चली गई है।" || The man reached the court weeping and said, "Maharaj, do justice! My goat is gone."
+
+## राजा का न्याय
+उस नगर का राजा बहुत सीधा था, और उसके दरबार में कोई बात सोच समझकर नहीं होती थी। || The king of that city was very simple, and in his court nothing was done with thought.
+राजा ने कहा, "दीवार किसने बनाई थी? उसे बुलाओ।" || The king said, "Who made the wall? Call him."
+कारीगर आया, तो उसने कहा, "महाराज, इसमें मेरी ग़लती नहीं, भिश्ती ने ज़्यादा पानी डाल दिया।" || When the craftsman came he said, "Maharaj, it is not my fault, the water-carrier put in too much water."
+इस तरह बात एक से दूसरे तक जाती रही, और आख़िर में कोतवाल से पूछा गया। || In this way the matter went from one to another, and in the end the kotwal was asked.
+कोतवाल ने कहा, "उस समय एक मोटा आदमी सड़क से जा रहा था, उसी के कारण सब हुआ।" || The kotwal said, "At that time a fat man was passing along the road, everything happened because of him."
+
+## फाँसी
+राजा ने कहा, "उसी मोटे आदमी को पकड़ लाओ, और उसे फाँसी दो!" || The king said, "Bring that very fat man, and give him the gallows!"
+सिपाही बाज़ार गए और गोबरधनदास को पकड़ लाए, क्योंकि वहाँ वही सबसे मोटा था। || The soldiers went to the market and brought Gobardhandas, because there he was the fattest.
+गोबरधनदास रोया और चिल्लाया, "गुरु! मुझे बचाओ!" || Gobardhandas wept and shouted, "Guru! Save me!"
+तभी महंत आ गए, और उन्होंने चेले के कान में कुछ कहा। || Just then the mahant came, and he said something in his disciple's ear.
+गोबरधनदास अब हँसने लगा, और बोला, "महाराज, मुझे जल्दी फाँसी दीजिए!" || Gobardhandas began to laugh now, and said, "Maharaj, hang me quickly!"
+राजा चौंका और उसने पूछा, "तुम इतने खुश क्यों हो?" || The king was startled and asked, "Why are you so happy?"
+महंत ने कहा, "इस समय जो फाँसी पर चढ़ेगा, वह सीधा स्वर्ग जाएगा।" || The mahant said, "Whoever goes up on the gallows at this time will go straight to heaven."
+राजा बोला, "तो मैं ही चढ़ूँगा, क्योंकि स्वर्ग पर पहला अधिकार तो राजा का है!" || The king said, "Then I myself will go up, because the first right to heaven is the king's!"
+और इस तरह राजा अपने ही न्याय से चढ़ गया, और अंधेर नगरी का अंधेर ख़त्म हुआ। || And so the king went up by his own justice, and the darkness of Andher Nagari came to an end.
+महंत अपने दोनों चेलों के साथ आगे चल दिए, और गोबरधनदास ने कहा, "अब मैं समझा कि सब कुछ सस्ता होना अच्छी बात नहीं।" || The mahant went on with both his disciples, and Gobardhandas said, "Now I understand that it is not a good thing for everything to be cheap."

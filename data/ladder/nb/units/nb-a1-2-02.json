@@ -80,8 +80,8 @@
               "english": "Anna has to go to the clinic."
             },
             {
-              "text": "Men Anna har ikke nøkkelen. Den er borte.",
-              "english": "But Anna does not have the key. It is gone."
+              "text": "Anna har ikke nøkkelen. Den er borte.",
+              "english": "Anna does not have the key. It is gone."
             },
             {
               "text": "Hvor er nøkkelen? Jeg må finne den!",
@@ -116,8 +116,8 @@
               "english": "Sam comes in."
             },
             {
-              "text": "Hei, Anna! Hva leter du etter?",
-              "english": "Hi, Anna! What are you looking for?",
+              "text": "Hei, Anna! Hva er det?",
+              "english": "Hi, Anna! What is it?",
               "speaker": "sam"
             },
             {
@@ -131,8 +131,8 @@
               "speaker": "sam"
             },
             {
-              "text": "Er den under sengen?",
-              "english": "Is it under the bed?",
+              "text": "Er den i sengen?",
+              "english": "Is it in the bed?",
               "speaker": "luis"
             },
             {
@@ -145,8 +145,8 @@
               "speaker": "sam"
             },
             {
-              "text": "Takk, Sam! Telefonen er bra, men jeg må finne den.",
-              "english": "Thanks, Sam! The phone is good, but I have to find it.",
+              "text": "Takk, Sam! Telefonen er bra, men jeg må ha nøkkelen.",
+              "english": "Thanks, Sam! The phone is good, but I need the key.",
               "speaker": "ana"
             }
           ]
@@ -193,7 +193,7 @@
               "speaker": "sam"
             },
             {
-              "text": "Ja, den ligger her. Nå går jeg. Ha det bra!",
+              "text": "Ja, den er her. Nå går jeg. Ha det bra!",
               "english": "Yes, it is here. Now I am going. Goodbye!",
               "speaker": "ana"
             },
@@ -238,6 +238,11 @@
               "text": "Ja, men hun er glad. Hun liker klinikken.",
               "english": "Yes, but she is happy. She likes the clinic.",
               "speaker": "sam"
+            },
+            {
+              "text": "Anna leter ofte etter nøkkelen. Den ligger ofte under bordet, og hun må finne den.",
+              "english": "Anna often looks for the key. It is often under the table, and she has to find it.",
+              "speaker": "luis"
             }
           ]
         }

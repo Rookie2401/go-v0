@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-02",
+  "lang": "sq",
+  "title": "Klubi i anglishtes",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-02",
+    "title": "Albanian ladder, b1-bridge: Klubi i anglishtes (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Klubi i anglishtes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën Sam arriti në shkollë një orë para kohës.",
+              "english": "On Saturday Sam arrived at the school an hour before time."
+            },
+            {
+              "text": "Ai e pastroi dërrasën dhe shkroi mbi të emrin e tij.",
+              "english": "He cleaned the blackboard and wrote his name on it."
+            },
+            {
+              "text": "Pastaj i vendosi karriget në rreth, u ul dhe priti.",
+              "english": "Then he put the chairs in a circle, sat down and waited."
+            },
+            {
+              "text": "Kishte pak frikë, ashtu siç kishte pasur një vit më parë në treg.",
+              "english": "He was a little afraid, just as he had been a year earlier at the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në orën dhjetë erdhën fëmijët.",
+              "english": "At ten o'clock the children came."
+            },
+            {
+              "text": "Ishin dymbëdhjetë, dhe tre prej tyre ishin Ardi, Elira dhe Gjergji.",
+              "english": "There were twelve, and three of them were Ardi, Elira and Gjergj."
+            },
+            {
+              "text": "Të gjithë u ulën në heshtje dhe e shikonin Samin me sy të mëdhenj.",
+              "english": "They all sat down in silence and looked at Sam with big eyes."
+            },
+            {
+              "text": "Sami tha «mirëmëngjes» në anglisht.",
+              "english": "Sam said 'good morning' in English."
+            },
+            {
+              "text": "— Mirëmëngjes! — u përgjigjën fëmijët me një zë, në shqip.",
+              "english": "'Good morning!' answered the children, in one voice, in Albanian."
+            },
+            {
+              "text": "Pastaj të gjithë qeshën, edhe Sami.",
+              "english": "Then they all laughed, Sam too."
+            },
+            {
+              "text": "Dhe heshtja mbaroi.",
+              "english": "And the silence was over."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Mësues, si thuhet «faleminderit» në anglisht? — pyeti Elira.",
+              "english": "\"Teacher, how do you say 'faleminderit' in English?\" asked Elira."
+            },
+            {
+              "text": "Sami e tha fjalën në anglisht, ngadalë, dhe fëmijët e thanë pas tij.",
+              "english": "Sam said the word in English, slowly, and the children said it after him."
+            },
+            {
+              "text": "Fëmijët e thanë të gjithë bashkë, por askush nuk e tha mirë.",
+              "english": "The children said it all together, but nobody said it well."
+            },
+            {
+              "text": "— Gjuha ime nuk ka vend për këtë fjalë, — tha Gjergji dhe e preku gjuhën me gisht.",
+              "english": "\"My tongue has no room for this word,\" said Gjergj, and touched his tongue with his finger."
+            },
+            {
+              "text": "— Edhe gjuha ime nuk kishte vend për «dhjetë», — tha Sami.",
+              "english": "\"My tongue had no room for 'dhjetë' either,\" said Sam."
+            },
+            {
+              "text": "— Dhe tani? — pyeti Ardi.",
+              "english": "\"And now?\" asked Ardi."
+            },
+            {
+              "text": "— Tani e them lehtë, — u përgjigj ai.",
+              "english": "'Now I say it easily,' he answered."
+            },
+            {
+              "text": "— Kështu ndodh me çdo fjalë, pak nga pak.",
+              "english": "\"That is how it goes with every word, little by little.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj Sami i mori figurat nga çanta.",
+              "english": "Then Sam took the pictures out of his bag."
+            },
+            {
+              "text": "Kishte një mollë, një mace, një qen dhe pak bukë.",
+              "english": "There was an apple, a cat, a dog and some bread."
+            },
+            {
+              "text": "Ai e ngriti figurën e maces dhe pyeti: — Kush e di si thuhet kjo në anglisht?",
+              "english": "He held up the picture of the cat and asked: \"Who knows how you say this in English?\""
+            },
+            {
+              "text": "Ardi ngriti dorën.",
+              "english": "Ardi raised his hand."
+            },
+            {
+              "text": "Ardi e tha fjalën në anglisht, pa gabim.",
+              "english": "Ardi said the word in English, without a mistake."
+            },
+            {
+              "text": "— Si e di? — pyeti Sami i habitur.",
+              "english": "\"How do you know?\" asked Sam, surprised."
+            },
+            {
+              "text": "— E kam parë në një film, — tha Ardi i gëzuar.",
+              "english": "'I have seen it in a film,' said Ardi, glad."
+            },
+            {
+              "text": "— Në film ata flasin shumë shpejt, por unë e kuptova.",
+              "english": "'In the film they speak very fast, but I understood it.'"
+            },
+            {
+              "text": "Fëmijët e dëgjuan me gëzim, sepse nuk e prisnin këtë nga Ardi.",
+              "english": "The children listened with joy, because they had not expected this from Ardi."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj ata e luajtën një lojë të vogël.",
+              "english": "Then they played a small game."
+            },
+            {
+              "text": "Sami e ngriti një figurë, dhe fëmija që dinte fjalën duhej ta thoshte me zë të lartë.",
+              "english": "Sam held up a picture, and the child who knew the word had to say it out loud."
+            },
+            {
+              "text": "Kur ishte radha e qenit, askush nuk dinte asgjë, dhe të gjithë filluan të bërtasin si qen.",
+              "english": "When it was the dog's turn, nobody knew anything, and they all began to shout like dogs."
+            },
+            {
+              "text": "Mira, që po kalonte pranë derës, e hapi pak dhe u habit.",
+              "english": "Mira, who was passing by the door, opened it a little and was surprised."
+            },
+            {
+              "text": "— Çfarë ndodh këtu? — pyeti ajo.",
+              "english": "\"What is going on here?\" she asked."
+            },
+            {
+              "text": "— Mësojmë anglisht, — u përgjigj Elira me zë të qetë.",
+              "english": "'We are learning English,' Elira answered in a calm voice."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në fund të orës Sami bëri një gabim.",
+              "english": "At the end of the hour Sam made a mistake."
+            },
+            {
+              "text": "Ai donte të thoshte: «Ju jeni nxënës shumë të mirë», por tha: «Ju jeni nxënës shumë të ngrohtë.»",
+              "english": "He wanted to say: \"You are very good pupils,\" but he said: \"You are very warm pupils.\""
+            },
+            {
+              "text": "Elira qeshi dhe i tha: — Mësues, nxënësit nuk janë të ngrohtë, ata janë të mirë!",
+              "english": "Elira laughed and said to him: 'Teacher, pupils are not warm, they are good!'"
+            },
+            {
+              "text": "— Faleminderit, Elira, — tha Sami.",
+              "english": "\"Thank you, Elira,\" said Sam."
+            },
+            {
+              "text": "— Ti më mëson shqip, dhe unë të mësoj anglisht.",
+              "english": "\"You teach me Albanian, and I teach you English.\""
+            },
+            {
+              "text": "— Kjo është e drejtë.",
+              "english": "'That is fair.'"
+            },
+            {
+              "text": "Pastaj ai u dha fëmijëve një detyrë.",
+              "english": "Then he gave the children homework."
+            },
+            {
+              "text": "Çdo fëmijë duhej të gjente në shtëpi tri fjalë anglisht dhe t'i sillte të shtunën tjetër.",
+              "english": "Each child had to find three English words at home and bring them the next Saturday."
+            },
+            {
+              "text": "— Po nëse nuk gjejmë asnjë? — pyeti një djalë.",
+              "english": "\"And if we find none?\" asked a boy."
+            },
+            {
+              "text": "— Atëherë do ta pyesim gjyshen, — tha Elira, — sepse ajo ka parë gjithçka.",
+              "english": "\"Then we will ask grandmother,\" said Elira, \"because she has seen everything.\""
+            },
+            {
+              "text": "Para se të largoheshin, Sami e shkroi në dërrasë një listë me tri fjalë të reja.",
+              "english": "Before they left, Sam wrote on the blackboard a list of three new words."
+            },
+            {
+              "text": "— Provoni t'i thoni në shtëpi, — u tha ai fëmijëve.",
+              "english": "'Try to say them at home,' he told the children."
+            },
+            {
+              "text": "Elira e shkroi listën në fletore me shkrim të madh.",
+              "english": "Elira wrote the list in her notebook in big letters."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur fëmijët dolën, Luani erdhi te dera.",
+              "english": "When the children went out, Luan came to the door."
+            },
+            {
+              "text": "— Si shkoi? — pyeti ai.",
+              "english": "\"How did it go?\" he asked."
+            },
+            {
+              "text": "— Mendoj se unë mësova më shumë se ata, — tha Sami.",
+              "english": "\"I think I learned more than they did,\" said Sam."
+            },
+            {
+              "text": "— Kështu ndodh gjithmonë në klasë, — buzëqeshi Luani.",
+              "english": "\"That is always how it goes in a class,\" Luan smiled."
+            },
+            {
+              "text": "— Nëse mësuesi mëson, fëmijët mësojnë edhe më shumë.",
+              "english": "\"If the teacher learns, the children learn even more.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

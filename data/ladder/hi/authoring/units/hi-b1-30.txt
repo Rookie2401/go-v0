@@ -1,0 +1,40 @@
+id: hi-b1-30
+title: बेसन के लड्डू
+domain: instructions
+topics: food, recipe, instructions, family
+notes: Fourteenth controlled unit of the b1 bridge, an instruction text (the text type of hi-a1-2-11 "सीता नानी की दाल" and hi-a2-1-11 "चाय कैसे बनती है") framed by a scene in Seeta Nani's kitchen. It teaches only a few cooking words (बेसन, भूनना, गूँधना, चाशनी, मेवा, गोल), and it brings back, as ordinary words in the kitchen scene, the words of the earlier bridge units whose recurrence the gate needs (wood and nails of hi-b1-02, ants and flies of hi-b1-04 and hi-b1-15, the parrot of hi-b1-06, the spectacles of hi-b1-11, the sky and the sun of hi-b1-23). Machine-drafted; a Hindi reviewer should check the recipe words and the quantities.
+---
+## त्योहार से पहले
+त्योहार से पहले नानी हर साल बेसन के लड्डू बनाती हैं। || Before the festival Nani makes besan laddus every year.
+इस बार सैम और अमन भी रसोई में उनकी मदद कर रहे थे। || This time Sam and Aman were helping her in the kitchen too.
+नानी ने अपनी ऐनक लगाई और पुरानी कॉपी खोलकर पढ़ना शुरू किया। || Nani put on her spectacles and opened the old notebook and began to read.
+अमन बोला, "नानी, आज हम सारे काम ख़ुद करेंगे।" || Aman said, "Nani, today we will do all the work ourselves."
+नानी ने हँसकर कहा, "ठीक है, पर पहले हाथ धो लो, और आग के पास ध्यान से रहना।" || Nani said with a laugh, "All right, but first wash your hands, and be careful near the fire."
+सैम ने देखा कि चूल्हे की लकड़ी अभी गीली थी, इसलिए आग धीरे धीरे जल रही थी। || Sam saw that the wood of the stove was still wet, so the fire was burning slowly.
+
+## लड्डू बनाने का तरीक़ा
+नानी ने कहा, "सबसे पहले एक कड़ाही में दो चम्मच घी डालो।" || Nani said, "First of all put two spoonfuls of ghee in a pan."
+"घी गरम हो जाए, तब उसमें दो कटोरी बेसन डालो।" || "When the ghee gets hot, put two bowls of besan into it."
+"अब बेसन को धीमी आँच पर भूनो, और चम्मच से उसे बार बार हिलाओ।" || "Now roast the besan on a low flame, and stir it again and again with a spoon."
+"जब बेसन सुनहरा हो जाए और उसकी ख़ुशबू आने लगे, तब आग बंद कर दो।" || "When the besan turns golden and its fragrance begins to come, turn off the fire."
+"बेसन ठंडा हो जाए, तब उसमें चीनी और इलायची मिलाओ।" || "When the besan cools, mix sugar and cardamom into it."
+"फिर थोड़े से मेवे डालकर सबको अच्छी तरह मिलाओ।" || "Then add a few nuts and mix everything well."
+अमन ने पूछा, "नानी, मेवे यानी क्या?" || Aman asked, "Nani, what do 'meve' mean?"
+"मेवे यानी सूखे फल, जो हम मिठाई में डालते हैं," नानी ने कहा। || "Meve means dry fruits, which we put in sweets," Nani said.
+
+## गोल लड्डू
+"अब थोड़ा थोड़ा बेसन हाथ में लो और उसे गोल करके एक थाली में रखो।" || "Now take a little besan in your hand, make it round, and put it on a plate."
+सैम ने पहला लड्डू बनाया, पर वह बहुत टेढ़ा हो गया। || Sam made the first laddu, but it came out very crooked.
+अमन हँसकर बोला, "सैम, यह लड्डू नहीं, पहिया है!" || Aman said laughing, "Sam, this is not a laddu, it is a wheel!"
+नानी ने कहा, "कोई बात नहीं, हाथ धीरे धीरे सीखता है, जैसे कील ठोकना सीखा जाता है।" || Nani said, "Never mind, the hand learns slowly, as driving a nail is learnt."
+कुछ देर में थाली में बीस लड्डू रखे थे। || In a little while twenty laddus were on the plate.
+तभी शर्मा अंकल का तोता राजा खिड़की पर आकर बोला, "ह’लो!" || Just then Sharma uncle's parrot Raja came to the window and said, "H'llo!"
+नानी ने कहा, "राजा, तुम्हें भी एक लड्डू मिलेगा, पर पहले मक्खियों और चींटियों से इन्हें बचाना है।" || Nani said, "Raja, you will get a laddu too, but first these have to be saved from flies and ants."
+"मिठाई बाहर रखोगे, तो मक्खियाँ मँडराएँगी और चींटियाँ चढ़ जाएँगी।" || "If you keep sweets outside, flies will hover and ants will climb on them."
+इसलिए सैम ने लड्डू कपड़े की थैली में रखे, प्लास्टिक की थैली में नहीं, क्योंकि प्लास्टिक का इस्तेमाल अब वे कम करते थे। || So Sam put the laddus in a cloth bag, not in a plastic bag, because they used plastic less now.
+
+## शाम
+शाम को पास्टर अनिल आए, और छत पर सबने लड्डू खाए। || In the evening Pastor Anil came, and on the roof everybody ate laddus.
+सूर्य डूब रहा था, और आकाश लाल हो गया था। || The sun was setting, and the sky had turned red.
+पास्टर अनिल ने कहा, "इतने मीठे लड्डू हों, तो पूरी सृष्टि का धन्यवाद करना चाहिए।" || Pastor Anil said, "When there are laddus so sweet, one should thank the whole creation."
+सैम ने कहा, "आज मैंने सीखा कि थोड़े से बेसन और घी से भी इतना आनंद मिल सकता है।" || Sam said, "Today I learnt that even from a little besan and ghee so much joy can be had."

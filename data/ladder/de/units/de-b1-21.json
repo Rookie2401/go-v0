@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-21",
+  "lang": "de",
+  "title": "A day on the farm",
+  "contentType": "narrative",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-21",
+    "title": "A day on the farm (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next text (Grimm, Der kluge Knecht): klug, Knecht, ausschicken, ausbleiben, treu, Mühe, Weisheit. Today's German; the tale itself is not told."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "farm",
+    "work",
+    "loyalty",
+    "helpers"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "lukas": "Lukas",
+    "ben": "Ben",
+    "anna": "Anna",
+    "sam": "Sam",
+    "krause": "Herr Krause"
+  },
+  "sections": [
+    {
+      "title": "Auf dem Hof",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Herbst fährt die Familie zu einem Bauernhof vor der Stadt.",
+              "english": "In autumn the family drives to a farm outside the city."
+            },
+            {
+              "text": "Lukas kennt den Bauern, und die Kinder dürfen die Tiere sehen.",
+              "english": "Lukas knows the farmer, and the children may see the animals."
+            },
+            {
+              "text": "Es ist ein schöner Tag, die Sonne scheint, und es ist nicht mehr heiß.",
+              "english": "It is a beautiful day, the sun is shining, and it is no longer hot."
+            },
+            {
+              "text": "Auf dem Hof arbeitet ein alter Mann, und alle nennen ihn den Knecht.",
+              "english": "An old man works on the farm, and everyone calls him the farmhand."
+            },
+            {
+              "speaker": "ben",
+              "text": "Warum Knecht? Er heißt doch Herr Krause.",
+              "english": "Why Knecht? His name is Herr Krause."
+            },
+            {
+              "speaker": "lukas",
+              "text": "So hat man früher einen Helfer auf dem Hof genannt.",
+              "english": "That is what a helper on the farm used to be called."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Der Bauer hat ihn jeden Morgen ausgeschickt, und er hat die Arbeit gemacht.",
+              "english": "Every morning the farmer sent him out, and he did the work."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wenn er zu lange ausblieb, hat der Bauer gewartet und sich Sorgen gemacht.",
+              "english": "If he stayed out too long, the farmer waited and worried."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Heute sagt man nicht mehr Knecht. Man sagt Mitarbeiter.",
+              "english": "Today one no longer says Knecht. One says employee."
+            },
+            {
+              "speaker": "sam",
+              "text": "Herr Krause ist ein kluger Mann, oder?",
+              "english": "Herr Krause is a clever man, isn't he?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ja, sehr klug. Er arbeitet seit vielen Jahren hier, und er ist immer treu geblieben.",
+              "english": "Yes, very clever. He has worked here for many years, and he has always stayed loyal."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das sieht man. Alle Tiere kennen ihn.",
+              "english": "You can see that. All the animals know him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Am Nachmittag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Herr Krause zeigt Ben die Kühe, die Schweine und die Pferde.",
+              "english": "Herr Krause shows Ben the cows, the pigs and the horses."
+            },
+            {
+              "text": "Ben darf ein Pferd streicheln, und er lacht die ganze Zeit.",
+              "english": "Ben may pet a horse, and he laughs the whole time."
+            },
+            {
+              "speaker": "krause",
+              "text": "Die Arbeit auf dem Hof macht viel Mühe.",
+              "english": "The work on the farm takes a lot of effort."
+            },
+            {
+              "speaker": "krause",
+              "text": "Aber ich bin gern hier, und ich bin dem Hof treu.",
+              "english": "But I am glad to be here, and I am loyal to the farm."
+            },
+            {
+              "speaker": "ben",
+              "text": "Schickt der Bauer Sie noch aus?",
+              "english": "Does the farmer still send you out?"
+            },
+            {
+              "speaker": "krause",
+              "text": "Ja, am Morgen schickt er mich aus, und ich hole die Kühe vom Feld.",
+              "english": "Yes, in the morning he sends me out, and I fetch the cows from the field."
+            },
+            {
+              "speaker": "krause",
+              "text": "Manchmal bleibe ich lange aus, denn die Kühe sind langsam.",
+              "english": "Sometimes I stay out for a long time, because the cows are slow."
+            },
+            {
+              "speaker": "sam",
+              "text": "Was ist das Wichtigste bei Ihrer Arbeit?",
+              "english": "What is the most important thing in your work?"
+            },
+            {
+              "speaker": "krause",
+              "text": "Man braucht Geduld und ein bisschen Weisheit.",
+              "english": "You need patience and a little wisdom."
+            },
+            {
+              "speaker": "krause",
+              "text": "Ein kluger Mensch weiß, wann er etwas sagen muss und wann er still sein muss.",
+              "english": "A clever person knows when he has to say something and when he has to be quiet."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist eine gute Regel, auch für mich im Deutschkurs.",
+              "english": "That is a good rule, also for me in the German course."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ben, du bleibst zu lange aus! Komm jetzt, wir fahren nach Hause.",
+              "english": "Ben, you are staying out too long! Come now, we are driving home."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich komme! Ich gebe mir Mühe!",
+              "english": "I'm coming! I'm making an effort!"
+            },
+            {
+              "text": "Auf der Rückfahrt schläft Ben im Auto ein.",
+              "english": "On the way back Ben falls asleep in the car."
+            },
+            {
+              "text": "Sam schaut aus dem Fenster und denkt an den alten Mann.",
+              "english": "Sam looks out of the window and thinks of the old man."
+            },
+            {
+              "text": "Ein kluger Mann und ein treuer Mann: Das ist viel, und Sam möchte auch so sein.",
+              "english": "A clever man and a loyal man: that is a lot, and Sam would like to be like that too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend sitzen Lukas, Anna und Sam noch in der Küche, und Ben bringt ein Buch mit.",
+              "english": "In the evening Lukas, Anna and Sam are still sitting in the kitchen, and Ben brings a book."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das ist mein Lesebuch aus der Schule. Es ist ganz alt!",
+              "english": "That is my reader from school. It is quite old!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Aus welchem Jahr ist es?",
+              "english": "From which year is it?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Es ist von neunzehnhundert. Das steht hier vorn.",
+              "english": "It is from nineteen hundred. It says so here at the front."
+            },
+            {
+              "speaker": "anna",
+              "text": "Dann ist es sehr alt. Was steht denn darin?",
+              "english": "Then it is very old. What is in it then?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Märchen und Sprichwörter. Ein Sprichwort habe ich schon gelernt.",
+              "english": "Tales and proverbs. I have already learned one proverb."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe im Stadtmagazin einen Artikel über einen Fuchs gelesen.",
+              "english": "I read an article about a fox in the city magazine."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Fuchs kann nachts laut schreien, und viele Leute haben Angst.",
+              "english": "The fox can scream loudly at night, and many people are afraid."
+            },
+            {
+              "speaker": "ben",
+              "text": "Sam, weißt du, was ein Sprichwort bedeutet?",
+              "english": "Sam, do you know what a proverb means?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Es ist ein altes, kluges Wort, das alle Leute kennen.",
+              "english": "It is an old, clever saying that everyone knows."
+            },
+            {
+              "text": "Alle lachen, und Lukas macht noch einen Tee. Es ist ein schöner Abend.",
+              "english": "Everyone laughs, and Lukas makes some more tea. It is a nice evening."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend liegt Ben in seinem Bett, und Anna sitzt bei ihm.",
+              "english": "In the evening Ben lies in his bed, and Anna sits with him."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mama, erzähl mir das Märchen! Es heißt: Die Sternthaler.",
+              "english": "Mama, tell me the tale! It is called: The Sternthaler."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das arme Mädchen hat kein Kämmerchen mehr und kein Bettchen.",
+              "english": "The poor girl has no little room any more and no little bed."
+            },
+            {
+              "speaker": "ben",
+              "text": "Es hat nur die Kleider auf dem Leib und ein Stück Brot.",
+              "english": "She has only the clothes on her body and a piece of bread."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ein mitleidiges Herz hat ihr das Brot geschenkt.",
+              "english": "A compassionate heart gave her the bread."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann sagt ein Mann: Ich bin so hungerig.",
+              "english": "Then a man says: I am so hungry."
+            },
+            {
+              "speaker": "anna",
+              "text": "Hungerig ist ein altes Wort für hungrig.",
+              "english": "Hungerig is an old word for hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Ein Kind friert am Kopf und sucht etwas, womit es ihn bedecken kann.",
+              "english": "A child is cold on its head and looks for something with which it can cover it."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Mädchen gibt ihm die Mütze.",
+              "english": "The girl gives it her cap."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ein anderes Kind hat kein Leibchen. Da gibt das Mädchen ihm seins.",
+              "english": "Another child has no bodice. Then the girl gives it hers."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann bittet noch ein Kind um ein Röcklein, und auch das gibt sie hin.",
+              "english": "Then another child asks for a little skirt, and she gives that away too."
+            },
+            {
+              "speaker": "anna",
+              "text": "Endlich gelangt sie in einen Wald, und es wird dunkel.",
+              "english": "At last she reaches a forest, and it gets dark."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und dann fallen die Sterne vom Himmel, und es sind blanke Taler!",
+              "english": "And then the stars fall from the sky, and they are shining Taler!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, und ihr neues Hemd ist das allerfeinste Hemd, das man kennt.",
+              "english": "Yes, and her new shirt is the very finest shirt that one knows."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das Mädchen ist wirklich gut, Mama. Es gibt alles und bleibt doch froh.",
+              "english": "The girl is really good, Mama. She gives everything and still stays happy."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ja, und am Ende hat sie mehr als vorher. Jetzt schläfst du, Ben.",
+              "english": "Yes, and in the end she has more than before. Now you sleep, Ben."
+            },
+            {
+              "speaker": "ben",
+              "text": "Gute Nacht, Mama. Ich habe heute viel gelernt.",
+              "english": "Good night, Mama. I learned a lot today."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

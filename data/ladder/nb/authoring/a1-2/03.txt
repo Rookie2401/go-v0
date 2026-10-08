@@ -26,8 +26,7 @@ Butikken er ikke stor, men mange folk handler her. || The shop is not big, but m
 {ana} er hjemme. Hun er glad. || Anna is at home. She is happy.
 [ana] Har du mat, {luis}? || Do you have food, Lars?
 [luis] Ja, vi har brød, melk og ost. Vi har fisk også. || Yes, we have bread, milk and cheese. We have fish too.
-[ana] Har du egg? || Do you have eggs?
-[luis] Ja, vi har egg. Butikken er bra! || Yes, we have eggs. The shop is good!
+[luis] Vi har egg også. Butikken er bra! || We have eggs too. The shop is good!
 [ana] Bra! Jeg lager middag på søndag. Jeg trenger poteter. || Good! I am making dinner on Sunday. I need potatoes.
 [sam] Vi har poteter også. || We have potatoes too.
 [ana] Takk, {sam}! Du er snill. || Thanks, Sam! You are kind.
@@ -36,8 +35,8 @@ Butikken er ikke stor, men mange folk handler her. || The shop is not big, but m
 [luis] Unnskyld, hvor er butikken? || Excuse me, where is the shop?
 [sam] Gå rett fram og til høyre. Bussen stopper i sentrum. || Go straight ahead and to the right. The bus stops in the town centre.
 
-Uka er lang. På mandag, tirsdag og onsdag er {ana} trøtt. Hver uke ber {sam} om fred. || The week is long. On Monday, Tuesday and Wednesday Anna is tired. Every week Sam prays for peace.
+På mandag, tirsdag og onsdag er {ana} trøtt. Hver uke ber {sam} om fred. || On Monday, Tuesday and Wednesday Anna is tired. Every week Sam prays for peace.
 
 Telefonen til {luis} er borte. Han leter, og den ligger under bordet. || Lars's phone is gone. He looks, and it is under the table.
 
-{sam} besøker {marta} i dag. Det er et bra besøk. || Sam visits Marta today. It is a good visit.
+{sam} er hos {marta} i dag. Det er bra. || Sam is at Marta's today. That is good.

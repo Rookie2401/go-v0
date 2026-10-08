@@ -652,6 +652,83 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Del cuaderno de Karla: el pozo del gigante",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, en la oficina de la iglesia, Karla escribe en su cuaderno lo que piensa del cuento del pozo.",
+              "english": "That night, in the church office, Karla writes in her notebook what she thinks of the story of the well."
+            },
+            {
+              "text": "Marta fue valiente, pero no fue la primera en tener la idea de subir: antes que ella, el viejo Pedro ya hablaba del gigante.",
+              "english": "Marta was brave, but she was not the first to have the idea of going up: before her, old Pedro already spoke of the giant."
+            },
+            {
+              "text": "El pueblo tenía una necesidad muy simple, el agua, y también otra necesidad: alguien que no tuviera miedo.",
+              "english": "The village had a very simple need, water, and also another need: someone who was not afraid."
+            },
+            {
+              "text": "Los señoritos cometieron tres errores: llegaron con caballos, llegaron con prisa y llegaron sin preguntar nada.",
+              "english": "The young gentlemen made three mistakes: they arrived with horses, they arrived in a hurry and they arrived without asking anything."
+            },
+            {
+              "text": "El tercero fue el que más gritó al bajar de la montaña, y dejó los caballos detrás.",
+              "english": "The third one was the one who shouted the most when coming down the mountain, and he left the horses behind."
+            },
+            {
+              "text": "Marta, en cambio, llevaba un hacha y una bolsa de cuero, y su única arma era la calma.",
+              "english": "Marta, on the other hand, carried an axe and a leather bag, and her only weapon was calm."
+            },
+            {
+              "text": "Su papá tenía dudas, los vecinos tenían dudas, pero a ella le bastaba un poco de fe para empezar a subir.",
+              "english": "Her father had doubts, the neighbours had doubts, but a little faith was enough for her to start climbing."
+            },
+            {
+              "text": "En el monte, el sueño del roble fue una sorpresa: un árbol que habla, y detrás del árbol un camino.",
+              "english": "On the mountain, the dream of the oak was a surprise: a tree that speaks, and behind the tree a path."
+            },
+            {
+              "text": "El enigma de Mateo no era largo, y su respuesta era corta, pero nadie la había encontrado en cien años.",
+              "english": "Mateo's riddle was not long, and its answer was short, but nobody had found it in a hundred years."
+            },
+            {
+              "text": "Cuando el agua estuvo lista para bajar, los niños salieron a la calle y volvieron mojados y felices.",
+              "english": "When the water was ready to come down, the children went out into the street and came back wet and happy."
+            },
+            {
+              "text": "La llegada de Mateo al pueblo es la mejor escena del cuento: los vecinos, que primero tenían miedo, le dieron su apoyo.",
+              "english": "Mateo's arrival in the village is the best scene of the story: the neighbours, who at first were afraid, gave him their support."
+            },
+            {
+              "text": "El marqués era como un visitante que cree que la casa es suya.",
+              "english": "The marquis was like a visitor who thinks the house is his."
+            },
+            {
+              "text": "Al final, la esperanza no vino de un palacio, sino de una casa humilde, con techo de zinc como los de nuestra aldea.",
+              "english": "In the end, hope did not come from a palace, but from a humble house, with a zinc roof like those in our village."
+            },
+            {
+              "text": "En el cuento hace falta agua; en nuestra aldea, por suerte, hay agua, pero hacen falta otras cosas.",
+              "english": "In the story water is needed; in our village, luckily, there is water, but other things are needed."
+            },
+            {
+              "text": "Hace falta algo más difícil de ver, y eso no se compra en ninguna tienda.",
+              "english": "Something harder to see is needed, and that is not bought in any shop."
+            },
+            {
+              "text": "Karla mira los colores de las piedras que trajo del río y piensa en las piedras del pozo.",
+              "english": "Karla looks at the colors of the stones she brought from the river and thinks of the stones of the well."
+            },
+            {
+              "text": "Mañana le va a leer el cuento al misionero que visita la aldea esta semana.",
+              "english": "Tomorrow she is going to read the story to the missionary who is visiting the village this week."
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

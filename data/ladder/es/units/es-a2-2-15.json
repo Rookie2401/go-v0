@@ -708,6 +708,107 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Un cuento en la sala de espera",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mientras Karla escribe sus notas, unos niños esperan su turno en la sala de la clínica.",
+              "english": "While Karla writes her notes, some children wait their turn in the clinic waiting room."
+            },
+            {
+              "text": "Ana les cuenta un cuento, porque a los niños les gusta oír una historia antes de entrar.",
+              "english": "Ana tells them a story, because children like to hear a story before going in."
+            },
+            {
+              "text": "—Había una vez un zorro perezoso —empieza Ana—. No tenía oficio, y su obra de cada día era mirar a los demás.",
+              "english": "\"Once upon a time there was a lazy fox,\" Ana begins. \"He had no trade, and his work every day was to watch the others.\""
+            },
+            {
+              "text": "En el campo vivían un gallo, un pato, un conejo y un ratón.",
+              "english": "In the field lived a rooster, a duck, a rabbit and a mouse."
+            },
+            {
+              "text": "Eran muy trabajadores. Cuidaban el trigo y la cebada, y también la hierba para los animales.",
+              "english": "They were very hard-working. They looked after the wheat and the barley, and also the grass for the animals."
+            },
+            {
+              "text": "Los cuatro estaban alegres, porque en su casa no faltaba el maíz.",
+              "english": "The four were cheerful, because in their house there was no lack of corn."
+            },
+            {
+              "text": "Un día el zorro se acercó al gallo y le propuso un trato.",
+              "english": "One day the fox came up to the rooster and proposed a deal."
+            },
+            {
+              "text": "—Tu trigo es hermoso. Dame la mitad, y yo te doy mi compañía.",
+              "english": "\"Your wheat is beautiful. Give me half, and I will give you my company.\""
+            },
+            {
+              "text": "El gallo era cortés, y le contestó con calma:",
+              "english": "The rooster was polite, and answered calmly:"
+            },
+            {
+              "text": "—Gracias, zorro. Pero una compañía sin trabajo no vale nada.",
+              "english": "\"Thank you, fox. But company without work is worth nothing.\""
+            },
+            {
+              "text": "Entonces el zorro se sorprendió, porque nadie le había dicho eso.",
+              "english": "Then the fox was surprised, because nobody had ever told him that."
+            },
+            {
+              "text": "Pensó en las ganancias que no tenía y en las pérdidas de tantos días perdidos.",
+              "english": "He thought of the gains he did not have and of the losses of so many wasted days."
+            },
+            {
+              "text": "Al día siguiente buscó un puesto en el campo y empezó a trabajar con ellos.",
+              "english": "The next day he looked for a place in the field and began to work with them."
+            },
+            {
+              "text": "Al final el zorro aprendió que quien no trabaja no gana nada.",
+              "english": "In the end the fox learned that he who does not work earns nothing."
+            },
+            {
+              "text": "—Y la serpiente, Ana —pregunta un niño—, ¿también trabajó?",
+              "english": "\"And the snake, Ana,\" asks a boy, \"did she work too?\""
+            },
+            {
+              "text": "—La serpiente solo miraba desde la hierba —dice Ana, y todos se ríen.",
+              "english": "\"The snake only watched from the grass,\" says Ana, and everybody laughs."
+            },
+            {
+              "text": "Cuando los niños entran, Karla se queda con Ana.",
+              "english": "When the children go in, Karla stays with Ana."
+            },
+            {
+              "text": "—Es un cuento bonito, y creo que es cierto en la vida real —dice Karla.",
+              "english": "\"It is a nice story, and I think it is true in real life,\" says Karla."
+            },
+            {
+              "text": "—Los hechos son inventados, pero la idea es verdadera —dice Ana—. Un cuento es una copia pequeña de la vida.",
+              "english": "\"The facts are invented, but the idea is true,\" says Ana. \"A story is a small copy of life.\""
+            },
+            {
+              "text": "—Suponemos que los niños entienden la idea, aunque todavía no saben expresarla con palabras.",
+              "english": "\"We suppose the children understand the idea, even though they do not yet know how to express it in words.\""
+            },
+            {
+              "text": "—Yo lo oí de mi abuela, y ella lo oyó de la suya. Es un cuento anterior a todos nosotros.",
+              "english": "\"I heard it from my grandmother, and she heard it from hers. It is a story older than all of us.\""
+            },
+            {
+              "text": "Además, hay estudios que dicen que los niños aprenden más con un cuento que con una orden.",
+              "english": "Besides, there are studies that say children learn more from a story than from an order."
+            },
+            {
+              "text": "—Igual pasa con los grandes —dice Karla, y escribe esa frase en su cuaderno.",
+              "english": "\"The same happens with grown-ups,\" says Karla, and writes that sentence in her notebook."
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

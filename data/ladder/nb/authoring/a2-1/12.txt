@@ -27,6 +27,6 @@ Om kvelden ber {sam}: «Gud, takk for dette året. Takk for {ana}, {luis}, {mart
 Bilen er nesten ny. Bussen er ofte forsinket, men regnet fortsetter. || The car is almost new. The bus is often late, but the rain continues.
 
 {marta} sier: «Historien om samaritanen er bra. Han var nabo til mannen, og han ga ham hjelp. Han betalte for hotellet.» || Marta says: "The story about the Samaritan is good. He was the neighbour of the man, and he gave him help. He paid for the hotel."
-{nico} lytter til historien. Folk går ofte forbi, som presten gjorde. || Nils listens to the story. People often walk past, as the priest did.
+Røvere skadet mannen. {nico} lytter til historien, og {sam} lytter også. Folk går ofte forbi, som presten gjorde. || Robbers injured the man. Nils listens to the story, and Sam listens too. People often walk past, as the priest did.
 
 På fredagskveld spiste vi taco. Etter maten satt vi i sofaen og så en film. {nico} ville spille. || On Friday evening we ate tacos. After the meal we sat on the sofa and watched a film. Nils wanted to play.

@@ -1,0 +1,84 @@
+=== de-a1-1-08
+speakers: sam=Sam, thomas=Pastor Thomas, schmidt=Herr Schmidt, anna=Anna, lukas=Lukas, ben=Ben
+## Nach der Kirche
+Es ist Sonntag. || It is Sunday.
+Die Kirche ist aus. || Church is over.
+Alle sind in der Küche der Kirche. || Everyone is in the church kitchen.
+Es gibt Kaffee, Milch und Kuchen. || There is coffee, milk and cake.
+[thomas] Hallo, Sam! || Hello, Sam!
+[thomas] Ich bin Thomas. || I am Thomas.
+[thomas] Ich arbeite hier als Pastor. || I work here as a pastor.
+[sam] Guten Tag, Thomas! || Good day, Thomas!
+[sam] Wer ist das? || Who is that?
+[thomas] Das ist Herr Schmidt. || That is Herr Schmidt.
+[thomas] Er ist Bäcker. || He is a baker.
+[schmidt] Ja, ich bin Bäcker. || Yes, I am a baker.
+[schmidt] Und ich bin auch Chef. || And I am the boss too.
+[sam] Ihr Beruf ist schön, Herr Schmidt. || Your job is nice, Herr Schmidt.
+[schmidt] Danke. || Thank you.
+[schmidt] Und was machen Sie, Herr Miller? || And what do you do, Mr Miller?
+[sam] Ich bin Student. || I am a student.
+[sam] Ich lerne Deutsch. || I am learning German.
+[schmidt] Sehr gut! || Very good!
+[schmidt] Student ist ein guter Beruf. || Student is a good job.
+
+## Anna und Lukas
+Anna und Lukas kommen in die Küche. || Anna and Lukas come into the kitchen.
+[sam] Anna, was machst du? || Anna, what do you do?
+[anna] Ich arbeite als Krankenschwester in der Klinik. || I work as a nurse at the clinic.
+[anna] Mein Chef ist Michael. || My boss is Michael.
+[anna] Er arbeitet als Arzt. || He works as a doctor.
+[sam] Und du, Lukas? || And you, Lukas?
+[lukas] Ich bin Lehrer. || I am a teacher.
+[lukas] Ich arbeite in der Schule. || I work at the school.
+[lukas] Ich habe eine Klasse mit zwanzig Schülern. || I have a class with twenty pupils.
+[thomas] Und wir? || And us?
+[thomas] Wir arbeiten auch. || We work too.
+[anna] Du arbeitest in der Kirche, Thomas. || You work in the church, Thomas.
+[thomas] Ja, ein Pastor arbeitet am Sonntag. || Yes, a pastor works on Sunday.
+[lukas] Ihr arbeitet alle sehr viel. || You all work a great deal.
+[sam] Thomas ist Pastor, Anna ist Krankenschwester, Lukas ist Lehrer, und Herr Schmidt ist Bäcker. || Thomas is a pastor, Anna is a nurse, Lukas is a teacher, and Herr Schmidt is a baker.
+[sam] Meine Mutter ist auch Krankenschwester. || My mother is a nurse too.
+[schmidt] Krankenschwester ist ein guter Beruf. || Nurse is a good job.
+[schmidt] Ja, wir arbeiten gern. || Yes, we like working.
+
+## Wer ist das?
+[sam] Wer ist der Mann da? || Who is the man there?
+[anna] Das ist Michael. || That is Michael.
+[anna] Er ist Arzt, und er ist 50 Jahre alt. || He is a doctor, and he is 50 years old.
+[sam] Ein Arzt arbeitet sehr viel. || A doctor works a great deal.
+[sam] Er ist ein sehr guter Mann. || He is a very good man.
+[lukas] Der Mann ist auch in der Kirche. || The man is in the church too.
+[anna] Ja, das ist er. || Yes, he is.
+[sam] Wer kocht hier den Kaffee? || Who is making the coffee here?
+[thomas] Marta. || Marta.
+[thomas] Sie kocht den Kaffee und den Kuchen. || She makes the coffee and the cake.
+[thomas] Und Ben? || And Ben?
+[thomas] Wo ist er? || Where is he?
+[anna] Er ist bei Marta, in der Küche. || He is with Marta, in the kitchen.
+
+## Ein Tag von Herrn Schmidt
+[sam] Herr Schmidt, wie ist Ihr Tag? || Herr Schmidt, what is your day like?
+[schmidt] Ich stehe um vier Uhr auf. || I get up at four o'clock.
+[schmidt] Ich mache den ganzen Tag Brötchen, Brot und Kuchen. || I make rolls, bread and cake all day.
+[sam] Und der Preis für ein Brötchen? || And the price for a roll?
+[schmidt] Ein Euro. || One euro.
+[schmidt] Meine Tochter arbeitet auch in der Bäckerei. || My daughter works in the bakery too.
+[sam] Das ist eine gute Familie, Herr Schmidt. || That is a good family, Herr Schmidt.
+
+## Ben kommt
+Ben kommt in die Küche. || Ben comes into the kitchen.
+Er hat Hunger. || He is hungry.
+[ben] Was gibt es hier? || What is there here?
+[ben] Ich möchte ein Ei und Kartoffeln. || I would like an egg and potatoes.
+[anna] Ben, du bist ein Kind. || Ben, you are a child.
+[anna] Du kochst nicht. || You do not cook.
+[ben] Meine Mama ist Chef von der Küche! || My mama is the boss of the kitchen!
+[thomas] Die Küche ist groß, das ist gut. || The kitchen is big, that is good.
+[thomas] Wir möchten die Küche aufräumen. || We would like to tidy up the kitchen.
+[sam] Ich möchte heute auch mein Zimmer aufräumen. || I would like to tidy my room today too.
+[sam] Das Bett, der Stuhl, der Tisch, alles ist da. || The bed, the chair, the table, everything is there.
+[anna] Wir gehen nach Hause. || We are going home.
+[lukas] Sehr gut, Sam! || Very good, Sam!
+[lukas] Du bist ein guter Student. || You are a good student.
+

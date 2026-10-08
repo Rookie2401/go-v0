@@ -1,0 +1,35 @@
+=== nb-b1-bridge-16 | story | community | The Christmas bazaar | Basaren | church,community,dugnad,bazaar,organising,money
+speakers: solveig=Solveig, emma=Emma, mons=Mons
+note: The church's Christmas bazaar organised by dugnad. Passive with "bli" and in -s, relative clauses, and many recalled words from the housing and shop units. The sums are invented; nobody is named beyond the cast.
+## Spørsmålet
+En dag kom Solveig til bokhandelen. «Vi skal ha basar i kirka,» sa hun. «Kan du hjelpe oss, {sam}? Vi trenger noen som kan organisere. Noen må organisere lodd og plakater, og lodd og plakater er mye arbeid.» || One day Solveig came to the bookshop. "We are going to have a bazaar at the church," she said. "Can you help us, Sam? We need someone who can organise. Someone has to organise raffle tickets and posters, and raffle tickets and posters are a lot of work."
+[sam] Jeg har aldri vært med på en basar. Hva er det? || I have never taken part in a bazaar. What is it?
+[solveig] Det er en dag da kirka selger kaker og gaver som folk har laget selv. Vi samler penger til dem som trenger hjelp. Vi samler også gaver. Alle hjelper med dugnad. || It is a day when the church sells cakes and gifts that people have made themselves. We collect money for those who need help. We also collect presents. Everyone helps with dugnad.
+{sam} sa ja med en gang. Han husket hvor mange som hadde hjulpet ham da han flyttet, og nå ville han også hjelpe. || Sam said yes at once. He remembered how many had helped him when he moved, and now he wanted to help too.
+
+## Å organisere
+Hver kveld i to uker var {sam} i kirka. Emma var lederen, og hun organiserte alt. Hun hadde laget en liste over alt som måtte gjøres. || Every evening for two weeks Sam was at the church. Emma was the leader, and she organised everything. She had made a list of everything that had to be done.
+[emma] Det er mye å organisere, men vi har tid. Du tar plakatene og loddene, {sam}. || There is a lot to organise, but we have time. You take the posters and the raffle tickets, Sam.
+{sam} laget plakater på papir. Han skrev: «Basar i kirka på lørdag klokka elleve. Kaker, lodd, kaffe og gaver.» Så satte han plakatene i bokhandelen og i butikkene i byen. || Sam made posters on paper. He wrote: "Bazaar at the church on Saturday at eleven. Cakes, raffle tickets, coffee and gifts." Then he put the posters in the bookshop and in the shops in town.
+Sjefen i bokhandelen leste plakaten. «Jeg kan gi dere en kasse med gamle bøker,» sa han. «De kan selges på basaren.» || The manager of the bookshop read the poster. "I can give you a box of old books," he said. "They can be sold at the bazaar."
+Silje og Marta strikket gaver til basaren, og Solveig strikket også. Erik kom med to kasser kaffe. || Silje and Marta knitted gifts for the bazaar, and Solveig knitted too. Erik came with two boxes of coffee.
+[nico] Jeg kan ikke strikke med gips på armen. Men jeg kan lage hjerter av papir! || I cannot knit with a cast on my arm. But I can make hearts out of paper!
+
+## Basaren
+På lørdag var det mange folk i kirka. Bordene var tunge, og Mons fra huset kom for å bære dem. «Jeg er gammel, men jeg kan løfte,» sa han. || On Saturday there were many people in the church. The tables were heavy, and Mons from the house came to carry them. "I am old, but I can lift," he said.
+{marta} hadde bakt tretti brød, og de var allerede solgt klokka tolv. Kakene var allerede borte også. {marta} satt bak bordet med kaker. Sofie kom med barna sine, og de kjøpte hver sin kake. || Marta had baked thirty loaves, and they were already sold at twelve o'clock. The cakes were already gone too. Marta sat behind the table with cakes. Sofie came with her children, and they each bought a cake.
+{sam} satt bak et bord med lodd, og {nico} var hos ham. Alle fikk et nummer, og premien var en stor kake. || Sam sat behind a table with raffle tickets, and Nils was with him. Everyone got a number, and the prize was a big cake.
+[nico] Kjøp lodd! Det er bare tjue kroner! Premien er kake! || Buy a ticket! It is only twenty kroner! The prize is cake!
+[mons] Jeg kjøper to. Jeg trenger ikke mer kake, men jeg vil gjerne hjelpe. || I will buy two. I do not need more cake, but I would like to help.
+
+## Pengene
+Da basaren var slutt, satt {sam} og Emma og samlet pengene. De regnet to ganger. || When the bazaar was over, Sam and Emma sat collecting the money. They counted twice.
+[emma] Tjue tusen kroner! Så mange penger har vi aldri samlet før. Vi har allerede samlet mye, og nå kan vi gi mer. || Twenty thousand kroner! We have never collected so much money before. We have already collected a lot, and now we can give more.
+[sam] Folk var snille. Og dugnaden gikk bra, selv om det var mye som kunne gått feil. Jeg har allerede lært så mye av dere. || People were kind. And the dugnad went well, even though there was a lot that could have gone wrong. I have already learned so much from you.
+Før de gikk, ryddet alle etter seg. Papir kom i hver sin pose, plast i en annen, og glass i kassen. Ingen kastet noe feil, for alle husket reglene fra huset til {sam}. || Before they left, everyone tidied up after themselves. Paper went in a bag each, plastic in another, and glass in the box. Nobody threw anything wrong, because everyone remembered the rules from Sam's house.
+Den kvelden var {sam} veldig trøtt, men han var glad. Han hadde fått gi noe, og han hadde lært at det er godt å gi. || That evening Sam was very tired, but he was glad. He had been allowed to give something, and he had learned that it is good to give.
+
+{sam} sjekket plakaten en gang til: Var den riktig eller feil? Politikerne var invitert, men ingen kom. {nico} kom på sykkel, med hjelm på hodet. {ana} hadde vakt og kunne ikke komme, men hun hadde tatt ansvar for å måle temperaturen til de eldre i kirka. {sam} husket hyrden som lette etter sauen, og han ville lete også. || Sam checked the poster once more: was it right or wrong? The politicians were invited, but nobody came. Nils came on a bicycle, with a helmet on his head. Anna was on duty and could not come, but she had taken responsibility for measuring the temperature of the elderly in the church. Sam remembered the shepherd who looked for the sheep, and he wanted to look too.
+På en lapp hadde han skrevet hvem som hadde kjøpt lodd, og kvitteringen la han i kassen. {nico} satte sykkelen sin ved kirka. {sam} ba for dem som ikke var friske, og for omsorgen i byen. Lignelsen om sauen var mellom de beste tekstene han kjente. || On a note he had written who had bought raffle tickets, and the receipt he put in the box. Nils put his bicycle by the church. Sam prayed for those who were not well, and for the care in the town. The parable about the sheep was among the best texts he knew.
+Ingen falt på basaren, men {ana} hadde med medisin i veska, for det var mange eldre der. Lederen i gruppen takket alle. || Nobody fell at the bazaar, but Anna had medicine in her bag, because there were many elderly people there. The leader of the group thanked everyone.
+{sam} gledet seg over hver krone som kom inn. || Sam was glad about every krone that came in.

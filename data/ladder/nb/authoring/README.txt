@@ -1,8 +1,8 @@
 Authoring files of the Bokmål ladder (Team Norway package D).
 
-Layout: one text file per unit, in the folder of its stage: a1-1/01.txt ... a2-2/12.txt. node data/ladder/nb/authoring/build.mjs
+Layout: one text file per unit, in the folder of its stage: a1-1/01.txt ... b1-bridge/24.txt. node data/ladder/nb/authoring/build.mjs
 reads them in name order and writes data/ladder/nb/ladder.json and data/ladder/nb/units/<id>.json. The JSON is what the app and
-the gate read; these files are only the compact source. The b1-bridge has no files (see ../PLAN.md, section 5).
+the gate read; these files are only the compact source. The b1-bridge (level B1) lives in b1-bridge/01.txt ... 24.txt (see ../PLAN.md, section 7); non-cast speakers need a speakers: line, and other names are written plainly.
 
 Format of a unit file:
   === <unit id> | <contentType> | <domain> | <English title> | <Norwegian section title> | <topics, comma separated>

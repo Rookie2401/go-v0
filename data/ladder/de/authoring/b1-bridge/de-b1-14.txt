@@ -1,0 +1,102 @@
+=== de-b1-14 | dialogue | church-and-mission-life | The house group reads the Bible | Im Hauskreis | house group, Bible, sin, commandment, witness
+speakers: thomas=Thomas, ruth=Ruth, sam=Sam, jonas=Jonas, sabine=Sabine
+note: Prepares the vocabulary of the next texts (Luther 1912, 1. Johannes 5 and Johannes 17): zeugen, Sünde, Gebot, gleichwie, heiligen. The house group talks ABOUT these words in today's German; the Bible text itself follows as the next two units. No Bible quotation.
+## Der Hauskreis
+Am Mittwochabend trifft sich der Hauskreis bei Ruth und David. || On Wednesday evening the house group meets at Ruth and David's.
+Pastor Thomas ist auch da, und er hat seine alte Bibel mitgebracht. || Pastor Thomas is there too, and he has brought his old Bible.
+Die Bibel ist nach der Übersetzung von Martin Luther, und die Sprache ist nicht ganz einfach. || The Bible is according to the translation of Martin Luther, and the language is not entirely simple.
+[thomas] Heute lesen wir aus dem Brief des Johannes und aus einem Gebet von Jesus. || Today we read from the letter of John and from a prayer of Jesus.
+[sam] Ich verstehe nicht jedes Wort. || I do not understand every word.
+[thomas] Das ist normal. Wir sprechen zuerst über die schweren Wörter. || That is normal. First we talk about the difficult words.
+
+## Schwere Wörter
+[thomas] Das erste Wort ist Sünde. || The first word is sin.
+[sabine] Sünde ist, wenn man etwas tut, das Gott nicht will. || Sin is when one does something that God does not want.
+[thomas] Ja, aber Sünde ist auch, wenn man etwas nicht tut. || Yes, but sin is also when one does not do something.
+[jonas] Zum Beispiel, wenn ich einem Freund nicht helfe? || For example, if I do not help a friend?
+[thomas] Genau. Jeder Mensch hat Schuld, und jeder braucht Vergebung. || Exactly. Every person has guilt, and everyone needs forgiveness.
+[thomas] Die Sünde trennt uns von Gott, und Jesus bringt uns zurück. || Sin separates us from God, and Jesus brings us back.
+[ruth] Das zweite Wort ist Gebot. || The second word is commandment.
+[ruth] Ein Gebot ist eine Regel, die Gott gibt. || A commandment is a rule that God gives.
+[sam] Wie die Regeln in der Hausordnung? || Like the rules in the house rules?
+[thomas] Ein bisschen, aber Gottes Gebote sind keine Strafe. || A little, but God's commandments are not a punishment.
+[thomas] Sie zeigen uns, wie man gut mit anderen Menschen lebt. || They show us how to live well with other people.
+[thomas] Das wichtigste Gebot heißt: Liebe Gott und liebe deinen Nächsten. || The most important commandment is: love God and love your neighbour.
+
+## Zeugen und heiligen
+[sabine] Und was heißt zeugen? || And what does zeugen mean?
+[thomas] Hier heißt zeugen: etwas bezeugen, wie ein Zeuge. || Here zeugen means: to testify to something, like a witness.
+[thomas] Ein Zeuge sagt, was er gesehen hat. || A witness says what he has seen.
+[thomas] Vor Gericht zeugt ein Zeuge für die Wahrheit. || In court a witness testifies for the truth.
+[jonas] Und die Christen? || And the Christians?
+[thomas] Sie zeugen von Jesus. Sie sagen, was sie mit ihm erlebt haben. || They bear witness to Jesus. They say what they have experienced with him.
+[sam] Wie in unseren Zeugnissen im Hauskreis. || Like in our testimonies in the house group.
+[ruth] Das letzte Wort ist heiligen. || The last word is sanctify.
+[thomas] Heiligen heißt: etwas für Gott besonders machen. || To sanctify means: to make something special for God.
+[thomas] Jesus bittet Gott: Heilige die Menschen, die an mich glauben. || Jesus asks God: sanctify the people who believe in me.
+[sabine] Und gleichwie? Das steht auch im Text. || And gleichwie? That is in the text too.
+[thomas] Gleichwie ist ein altes Wort. Es heißt einfach: so wie. || Gleichwie is an old word. It simply means: just as.
+[ruth] Jetzt kann ich es lesen. || Now I can read it.
+[thomas] Dann lesen wir. Zuerst der Brief, dann das Gebet. || Then we read. First the letter, then the prayer.
+
+## Erinnerst du dich?
+Nach dem Gebet trinken alle Tee, und Sabine fragt Sam nach seiner Zeit in Deutschland. || After the prayer everyone drinks tea, and Sabine asks Sam about his time in Germany.
+[sabine] Sam, erinnerst du dich an die Fahrt nach Hameln? || Sam, do you remember the journey to Hameln?
+[sam] Oh ja! Die Stadtführerin hat uns die ganze Geschichte erzählt. || Oh yes! The city guide told us the whole story.
+[sam] Die Fahrt war lang, aber am Ende war ich froh. || The journey was long, but in the end I was glad.
+
+Ben hat auch das Märchen von Jakobs Haus gelesen, und Sam erzählt es jetzt der Gruppe. || Ben also read the tale of Jakob's house, and Sam now tells it to the group.
+[sam] Der Hund bellt laut, denn er will die Katze plagen. || The dog barks loudly, because he wants to tease the cat.
+[sam] Dann kommt die Kuh. Sie hat lange Hörner, und sie plagt den Hund mit ihren Hörnern. || Then the cow comes. She has long horns, and she teases the dog with her horns.
+[ruth] Lange Hörner? Das möchte ich nicht sehen! || Long horns? I would not like to see that!
+[sam] Später kommt ein Mädchen, und es molk die Kuh am Morgen. || Later a girl comes, and she milked the cow in the morning.
+[jonas] Ich kann nicht melken, aber ich mag die Tiere auf dem Land. || I cannot milk, but I like the animals in the country.
+[jonas] Er kräht früh am Morgen, und ich höre ihn gern. || He crows early in the morning, and I like to hear him.
+[sam] Im Märchen sagt der Mann am Ende: Es war gut, dass mein Hahn so laut krähte und mich weckte. || In the tale the man says at the end: It was good that my rooster crowed so loudly and woke me.
+[sam] Die Geschichte endet im Gotteshaus, und dort ist ein Mann. || The story ends in the church, and there is a man there.
+[sam] Er hat ein Gebetbuch in der Hand. || He has a prayer book in his hand.
+[thomas] O ja, ein Gebetbuch ist ein sehr altes Buch. || O yes, a prayer book is a very old book.
+
+Dann spricht Ruth vom süßen Brei, und sie lacht dabei. || Then Ruth speaks of the sweet porridge, and she laughs as she does.
+[ruth] Das arme Mädchen und seine Mutter leben in Armut. || The poor girl and her mother live in poverty.
+[ruth] Die Not ist groß, und der Jammer ist noch größer. || The need is great, and the misery is even greater.
+[ruth] Zum Glück bekommt das Mädchen einen Topf mit Hirsenbrei. || Luckily the girl gets a pot with millet porridge.
+[ruth] Bald ist der Topf ledig, und es bleibt nichts übrig. || Soon the pot is empty, and nothing is left over.
+[thomas] Ledig ist ein altes Wort. Es heißt hier: leer. || Ledig is an old word. Here it means: empty.
+
+## Erinnerst du dich daran?
+Nach dem Gebet trinken alle Tee, und Jonas fragt Sam nach den Geschichten, die er mit Ben liest. || After the prayer everyone drinks tea, and Jonas asks Sam about the stories he reads with Ben.
+[jonas] Sam, erzähl uns doch eine Geschichte vom Land. || Sam, tell us a story from the country.
+[sam] Gern. In Jakobs Haus sagt das Mädchen: Ich muss die Kuh melken. || Gladly. In Jakob's house the girl says: I must milk the cow.
+[sam] Es molk die Kuh am Morgen, denn Jakob wollte Milch haben. || She milked the cow in the morning, because Jakob wanted milk.
+[ruth] Ich habe als Kind einmal versucht, eine Kuh zu melken. || As a child I once tried to milk a cow.
+[ruth] Die Kuh stand mit ihren Hörnern direkt vor mir. || The cow stood right in front of me with her horns.
+[sabine] Wer eine Kuh melken will, muss früh aufstehen. || Whoever wants to milk a cow has to get up early.
+[thomas] Man muss jede Kuh am Morgen und am Abend melken. || One has to milk every cow in the morning and in the evening.
+[sam] Das Mädchen molk sie jeden Tag zweimal. || The girl milked her twice every day.
+[sam] Der Hund bellte laut, und die Katze sprang auf einen Baum. || The dog barked loudly, and the cat jumped onto a tree.
+[sam] Er bellte und bellte, aber die Katze blieb oben. || He barked and barked, but the cat stayed up there.
+[jonas] Unser Nachbar hat auch einen Hund, der jede Nacht bellt. || Our neighbour also has a dog that barks every night.
+[sam] Am Ende ging der Priester in das Gotteshaus. || In the end the priest went into the church.
+[thomas] Gotteshaus ist ein altes Wort für Kirche. || Gotteshaus is an old word for church.
+[sam] Er sagte: O, es war gut, dass mein Hahn so laut krähte! || He said: Oh, it was good that my rooster crowed so loudly!
+[jonas] Oh, das gefällt mir! || Oh, I like that!
+
+[sabine] Ich mag auch das Märchen vom Pfannkuchen. Eine Mutter hatte sieben Kinder. || I also like the tale of the pancake. A mother had seven children.
+[sabine] Das fünfte Kind rief: Mutter, ich habe Hunger! || The fifth child called: Mother, I am hungry!
+[sabine] Das sechste Kind rief auch, und das siebente und letzte Kind war ganz niedlich. || The sixth child called too, and the seventh and last child was very sweet.
+[sabine] Da sprang der Pfannkuchen auf den Boden. || Then the pancake jumped onto the floor.
+[sabine] Er rief: Ich muss schnell fortrollen, denn die Frau kommt! || He called: I must quickly roll away, because the woman is coming!
+[ruth] Die Mutter rief: Halt, Pfannkuchen, halt! || The mother called: Stop, pancake, stop!
+[sabine] Der Mann rief auch: Halt! Und die Henne rief: Halt, halt! || The man also called: Stop! And the hen called: Stop, stop!
+[sabine] Aber der Pfannkuchen rollte weiter. Dann begegnete er einem Gänserich. || But the pancake rolled on. Then he met a gander.
+[jonas] Was wollte der Gänserich? || What did the gander want?
+[sabine] Der Gänserich wollte ihn essen, aber der Pfannkuchen lief weg. || The gander wanted to eat him, but the pancake ran away.
+[sabine] Der Gänserich wollte ihn fangen, aber er war zu langsam. || The gander wanted to catch him, but he was too slow.
+[sabine] Am Ende war der Gänserich allein, und der Pfannkuchen war schon weit weg. || In the end the gander was alone, and the pancake was already far away.
+[sabine] Als er den Gänserich hörte, drehte er sich schnell um. || When he heard the gander, he turned around quickly.
+[sabine] Am Wasser wartete ein Schwein. Es war so fett, dass es gut schwimmen konnte. || A pig was waiting at the water. It was so fat that it could swim very well.
+[sabine] Es sagte: Springen Sie auf meinen Kopf. Bis hinüber ist es nicht weit. || It said: Jump on my head. It is not far to the other side.
+[sabine] Der Pfannkuchen dachte: Das ist ein guter Einfall! || The pancake thought: That is a good idea!
+[sabine] Aber dann hörte er etwas, fürchtete sich und drehte sich um. || But then he heard something, was afraid and turned around.
+[thomas] Das ist ein Märchen mit einem traurigen Ende. || That is a fairy tale with a sad ending.

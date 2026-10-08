@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-06",
+  "lang": "hi",
+  "title": "शर्मा अंकल का तोता",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-06",
+    "title": "\"शर्मा अंकल का तोता\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Third controlled unit of the b1 bridge. It prepares the words of the GDL story \"रीति और मिठु\" (hi-b1-07): जीव, पालतू, पिंजड़ा, तोता, अंकल, पंख, मचाना, ज़रूरी, ख़त्म, फैलाना, तेज़ी, and the parrot's greeting ह’लो (written as in the book), each used three times. It also brings back the rare words of hi-b1-05 (उपाय, इरादा, झटपट, महसूस, दुखी) and of hi-b1-01 (स्टूल, इशारा, ख़राब, भूरा). A neighbour asks Aman's household to keep his pet parrot while he is away; Seeta Nani does not like birds in cages. Machine-drafted; a Hindi reviewer should check the neighbour's register and the pet vocabulary. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "animals",
+    "pets",
+    "birds",
+    "neighbours"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "animals"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "शर्मा जी का तोता",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम और अमन के पड़ोस में शर्मा अंकल रहते हैं, और वे नानी के बहुत पुराने दोस्त हैं।",
+              "english": "Sharma uncle lives in the neighbourhood of Sam and Aman, and he is a very old friend of Nani."
+            },
+            {
+              "text": "एक शाम वे हाथ में पिंजड़ा लिए नानी के घर आए।",
+              "english": "One evening he came to Nani's house with a cage in his hand."
+            },
+            {
+              "text": "पिंजड़े में एक हरा तोता था।",
+              "english": "In the cage there was a green parrot."
+            },
+            {
+              "text": "शर्मा जी ने कहा, \"मैं दस दिन के लिए शहर से बाहर जा रहा हूँ। क्या आप मेरे तोते को रख लेंगे?\"",
+              "english": "Sharma ji said, \"I am going out of the city for ten days. Will you keep my parrot?\""
+            },
+            {
+              "text": "नानी ने कहा, \"मुझे किसी पक्षी को बंद रखना पसंद नहीं, शर्मा जी।\"",
+              "english": "Nani said, \"I do not like keeping any bird shut in, Sharma ji.\""
+            },
+            {
+              "text": "शर्मा जी बोले, \"वह पालतू है, और घर से बाहर उसे डर लगता है।\"",
+              "english": "Sharma ji said, \"He is a pet, and outside the house he is afraid.\""
+            },
+            {
+              "text": "अमन ने कहा, \"नानी, मैं रोज़ सुबह और शाम उसका पूरा ध्यान रखूँगा।\"",
+              "english": "Aman said, \"Nani, I will take full care of him every morning and evening.\""
+            },
+            {
+              "text": "नानी कुछ देर सोचती रहीं, और फिर उन्होंने हाँ कह दिया।",
+              "english": "Nani went on thinking for a while, and then she said yes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ह’लो!",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "तोते का नाम राजा है।",
+              "english": "The parrot's name is Raja."
+            },
+            {
+              "text": "अमन ने उसके पास जाकर कहा, \"ह’लो राजा!\"",
+              "english": "Aman went near him and said, \"H'llo, Raja!\""
+            },
+            {
+              "text": "राजा बोला, \"ह’लो!\"",
+              "english": "Raja said, \"H'llo!\""
+            },
+            {
+              "text": "सैम हँसा और बोला, \"यह तो बात भी करता है!\"",
+              "english": "Sam laughed and said, \"He even talks!\""
+            },
+            {
+              "text": "अमन ने उसे अपना नाम सिखाना चाहा, पर वह बस वही एक शब्द बोलता रहा।",
+              "english": "Aman wanted to teach him his name, but he kept saying just that one word."
+            },
+            {
+              "text": "नानी रसोई से बोलीं, \"आज तुम दोनों उसे कहानी सुनाओ, शायद वह कुछ नया सीख ले।\"",
+              "english": "Nani said from the kitchen, \"Today you two tell him a story, perhaps he will learn something new.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "रात का शोर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रात को राजा ने बहुत शोर मचाया।",
+              "english": "At night Raja made a lot of noise."
+            },
+            {
+              "text": "वह पंख फैलाता और तेज़ी से इधर उधर कूदता था।",
+              "english": "He used to spread his wings and hop about quickly."
+            },
+            {
+              "text": "सैम की नींद खुल गई, और उसने सोचा कि इसे शांत करने का कोई उपाय नहीं है।",
+              "english": "Sam woke up, and he thought that there was no way to quieten him."
+            },
+            {
+              "text": "अमन झटपट उठा और बोला, \"मेरा इरादा इसे दुखी करने का नहीं था।\"",
+              "english": "Aman got up in a flash and said, \"I did not intend to make him sad.\""
+            },
+            {
+              "text": "नानी आईं और बोलीं, \"हर जीव को हवा और धूप चाहिए।\"",
+              "english": "Nani came and said, \"Every living creature needs air and sunshine.\""
+            },
+            {
+              "text": "\"पालतू जीव भी जीव है, खिलौना नहीं।\"",
+              "english": "\"A pet creature is a creature too, not a toy.\""
+            },
+            {
+              "text": "सैम ने महसूस किया कि नानी की बात सही है।",
+              "english": "Sam felt that Nani's words were right."
+            },
+            {
+              "text": "\"किसी को बंद रखना ज़रूरी नहीं है,\" नानी ने कहा, \"पर उसका ध्यान रखना ज़रूरी है, और रोज़ उसे पानी देना भी ज़रूरी है।\"",
+              "english": "\"It is not necessary to keep anybody shut in,\" Nani said, \"but it is necessary to take care of him, and giving him water every day is necessary too.\""
+            },
+            {
+              "text": "सब लोग सो गए, पर राजा रात भर शोर मचाता रहा।",
+              "english": "Everybody went to sleep, but Raja went on making noise all night."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुबह अमन ने स्टूल पर चढ़कर पिंजड़े का दरवाज़ा खोला।",
+              "english": "In the morning Aman climbed on a stool and opened the door of the cage."
+            },
+            {
+              "text": "राजा ने इशारा समझ लिया, और वह बाहर आकर पेड़ पर बैठ गया।",
+              "english": "Raja understood the sign, and he came out and sat on the tree."
+            },
+            {
+              "text": "उसने अपने हरे पंख फैलाए, तो वे धूप में चमकने लगे।",
+              "english": "He spread his green wings, and they began to shine in the sun."
+            },
+            {
+              "text": "पास में भूरी गौरैया भी बैठी थी, और दोनों पक्षी एक दूसरे को देखते रहे।",
+              "english": "The brown sparrow was sitting nearby too, and the two birds went on looking at each other."
+            },
+            {
+              "text": "अमन ने कहा, \"अगर वह उड़ गया, तो शर्मा अंकल का मन ख़राब होगा।\"",
+              "english": "Aman said, \"If he flies away, Sharma uncle will feel bad.\""
+            },
+            {
+              "text": "नानी ने कहा, \"जो पक्षी तुम्हारे पास लौटता है, वही तुम्हारा दोस्त है।\"",
+              "english": "Nani said, \"The bird who comes back to you is your friend.\""
+            },
+            {
+              "text": "अमन तेज़ी से आँगन में आया और बोला, \"नानी, राजा बाहर है!\"",
+              "english": "Aman came quickly into the courtyard and said, \"Nani, Raja is outside!\""
+            },
+            {
+              "text": "सैम और अमन आँगन में बैठकर चाय पीते रहे, और नानी रोटी बनाती रहीं।",
+              "english": "Sam and Aman sat in the courtyard and went on drinking tea, and Nani went on making roti."
+            },
+            {
+              "text": "आँगन में सुबह की धूप थी, और सब कुछ बहुत शांत था।",
+              "english": "There was morning sunshine in the courtyard, and everything was very quiet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दस दिन बाद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दस दिन ख़त्म हुए, तो शर्मा अंकल का काम भी ख़त्म हुआ।",
+              "english": "The ten days came to an end, and Sharma uncle's work came to an end too."
+            },
+            {
+              "text": "राजा पंख फैलाकर तेज़ी से उड़ा और अपने आप पिंजड़े में लौट आया।",
+              "english": "Raja spread his wings, flew quickly and came back into the cage by himself."
+            },
+            {
+              "text": "अंकल ने तोते को देखा और कहा, \"ह’लो राजा!\"",
+              "english": "Uncle saw the parrot and said, \"H'llo, Raja!\""
+            },
+            {
+              "text": "तोते ने खुश होकर जवाब दिया, \"ह’लो!\"",
+              "english": "The parrot replied happily, \"H'llo!\""
+            },
+            {
+              "text": "बच्चों ने खुशी से शोर मचाया, और नानी हँस पड़ीं।",
+              "english": "The children made a joyful noise, and Nani burst out laughing."
+            },
+            {
+              "text": "छुट्टी ख़त्म हो गई थी, पर सबको लगा कि कुछ ज़रूर बदला है।",
+              "english": "The holiday was over, but everybody felt that something had certainly changed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "चाचा जी की दुकान पर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रात के शोर में पिंजड़े का एक कोना ख़राब हो गया था, इसलिए अगली सुबह अमन उसे चाचा जी की दुकान पर ले गया।",
+              "english": "In the noise of the night a corner of the cage had got spoiled, so the next morning Aman took it to Chacha ji's shop."
+            },
+            {
+              "text": "चाचा जी ने आरी से एक नई लकड़ी काटी और उसे पिंजड़े में लगाने के लिए कील ठोकी।",
+              "english": "Chacha ji cut a new piece of wood with a saw and drove a nail to fix it in the cage."
+            },
+            {
+              "text": "हथौड़ी से कील ठोकना आसान नहीं होता, पर चाचा जी के हाथ बहुत अच्छे चलते हैं।",
+              "english": "Driving a nail with a hammer is not easy, but Chacha ji's hands work very well."
+            },
+            {
+              "text": "फिर उन्होंने पिंजड़े के नीचे दो छोटे पहिए भी लगा दिए, ताकि वह आराम से चल सके।",
+              "english": "Then they also put two small wheels under the cage, so that it could go easily."
+            },
+            {
+              "text": "पशु और पक्षी की देखभाल की आवश्यकता अधिक होती है, इसलिए यह काम बहुत महत्त्वपूर्ण था।",
+              "english": "Animals and birds need more care, so this work was very important."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

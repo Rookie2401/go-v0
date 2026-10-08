@@ -9,8 +9,9 @@
  *      unconfirmed proper noun; Roman numerals are numbers; abbreviations (km, shek, etj, p.e.s …) are read; a capitalised
  *      cast name before a verb is the name (Drita, Mira, Luan); para with no noun phrase after it is the noun (money);
  *      the definite plural of a noun in -o is -ot.
+ *   9  the b1-bridge word list (about 160 entries: lexicon-ladder.ts, SQ_BRIDGE_*), names of the bridge cast as proper nouns.
  */
-export const SQ_VERSION = '8';
+export const SQ_VERSION = '9';
 export const SQ_ANALYZER = `adapter-sq@${SQ_VERSION}`;
 export const SQ_SOURCE_IDS = {
   hand: `${SQ_ANALYZER}:hand`,

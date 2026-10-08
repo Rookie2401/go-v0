@@ -43,6 +43,19 @@
     "travel"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "sections": [
     {
       "title": "Montag: die Ankunft",
@@ -641,19 +654,247 @@
           ]
         }
       ]
-    }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heute denke ich noch einmal an die Sitzung im Stadtrat.",
+              "english": "Today I think once more of the session in the city council."
+            },
+            {
+              "text": "Ich war damals müde, aber es war ein guter Abend.",
+              "english": "I was tired back then, but it was a good evening."
+            },
+            {
+              "text": "Frau Weber hatte gefragt, ob ich auch vorbeikommen möchte.",
+              "english": "Frau Weber had asked whether I would like to come by too."
+            },
+            {
+              "text": "Der Bürgermeister musste die Sitzung eröffnen, und ein Teil der Leute war noch nicht da.",
+              "english": "The mayor had to open the session, and a part of the people were not there yet."
+            },
+            {
+              "text": "Neben dem Spielplatz war ein neues Haus im Bau, und viele hatten Sorge.",
+              "english": "Next to the playground a new house was being built, and many were worried."
+            },
+            {
+              "text": "Die Lastwagen fuhren durch das Tor, und der Weg war für die Kinder gefährlich.",
+              "english": "The lorries drove through the gate, and the way was dangerous for the children."
+            },
+            {
+              "text": "Eine Frau sagte, das Telefon im Amt sei immer besetzt, und das war ein Grund zur Entschuldigung.",
+              "english": "A woman said the phone at the office was always busy, and that was a reason to apologise."
+            },
+            {
+              "text": "Ein Nachbar war vorher nicht freundlich gewesen, aber der alte Mann hatte ihm längst vergeben.",
+              "english": "A neighbour had not been friendly before, but the old man had long ago forgiven him."
+            },
+            {
+              "text": "Jemand wollte nur 30 Kilometer pro Stunde, und der Wunsch war verständlich.",
+              "english": "Someone wanted only 30 kilometres per hour, and the wish was understandable."
+            },
+            {
+              "text": "Die Mehrheit im Stadtrat entscheidet, aber der Bürgermeister sagte, dass er den Wunsch weitergibt.",
+              "english": "The majority in the city council decides, but the mayor said that he would pass the wish on."
+            },
+            {
+              "text": "Wir sind spät am Abend nach Hause gegangen, und ich habe viel gelernt.",
+              "english": "We went home late in the evening, and I learned a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann kam das Fest.",
+              "english": "Then came the festival."
+            },
+            {
+              "text": "Es war ein schöner Tag, und wir haben viel gelacht.",
+              "english": "It was a beautiful day, and we laughed a lot."
+            },
+            {
+              "text": "Die Kinder haben gespielt, und die Eltern haben mit uns gegessen.",
+              "english": "The children played, and the parents ate with us."
+            },
+            {
+              "text": "Wir wollten eine Spende sammeln, und jeder Euro zählt.",
+              "english": "We wanted to collect a donation, and every euro counts."
+            },
+            {
+              "text": "Das Fest ist für alle, nicht für wenige.",
+              "english": "The festival is for everyone, not for a few."
+            },
+            {
+              "text": "Ein kleiner Punkt blieb noch: Wer bringt die Getränke?",
+              "english": "One small point remained: who brings the drinks?"
+            },
+            {
+              "text": "Herr Schmidt hat Jonas ein Zimmer gegeben, und die Kaution waren zwei Monatsmieten.",
+              "english": "Herr Schmidt gave Jonas a room, and the deposit was two months' rent."
+            },
+            {
+              "text": "Jonas war sehr glücklich und hat gleich mit seiner Mutter gesprochen.",
+              "english": "Jonas was very happy and spoke straight away with his mother."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ich denke auch an die Zeitung aus dem Stadtteil.",
+              "english": "I also think of the newspaper from the district."
+            },
+            {
+              "text": "Jeden Morgen habe ich sie gelesen, und Frau Weber hat mir viel erklärt.",
+              "english": "Every morning I read it, and Frau Weber explained a lot to me."
+            },
+            {
+              "text": "Was ist damals in der Straße beim Spielplatz passiert?",
+              "english": "What happened back then in the street by the playground?"
+            },
+            {
+              "text": "Ein Fahrer ist sofort stehen geblieben, und wer etwas gesehen hat, soll sich beim Amt melden.",
+              "english": "A driver stopped at once, and whoever saw something should contact the office."
+            },
+            {
+              "text": "Eine Frau hat den Rauch gerochen, und alle sind rechtzeitig aus dem Haus gegangen.",
+              "english": "A woman smelled the smoke, and everyone went out of the house in time."
+            },
+            {
+              "text": "Die Eröffnung von Herrn Schmidts Café war ein Fest für den ganzen Stadtteil.",
+              "english": "The opening of Herr Schmidt's café was a festival for the whole district."
+            },
+            {
+              "text": "Er hat lange überlegt, ob sich das lohnt, aber der Kuchen ist jeden Tag frisch.",
+              "english": "He thought for a long time about whether it would pay off, but the cake is fresh every day."
+            },
+            {
+              "text": "Dann habe ich einen Kaffee getrunken und mit ihm gesprochen.",
+              "english": "Then I drank a coffee and talked with him."
+            },
+            {
+              "text": "Jemand wollte eine kleine Mauer vor dem Spielplatz bauen, aber das war keine gute Lösung.",
+              "english": "Someone wanted to build a small wall in front of the playground, but that was not a good solution."
+            },
+            {
+              "text": "Das war eine gute Zeit, und ich war sehr froh.",
+              "english": "That was a good time, and I was very glad."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auch der Flyer vom Jugendkreis ist mir geblieben.",
+              "english": "The flyer from the youth group has also stayed with me."
+            },
+            {
+              "text": "Wir haben ihn zusammen gemacht, und alle haben gut geholfen.",
+              "english": "We made it together, and everyone helped well."
+            },
+            {
+              "text": "Auf der Vorderseite war ein Foto vom Stadtteil.",
+              "english": "On the front there was a photo of the district."
+            },
+            {
+              "text": "David sagte: Wir müssen es versuchen, damit nichts schiefgeht.",
+              "english": "David said: we must try it, so that nothing goes wrong."
+            },
+            {
+              "text": "Das Evangelium ist eine Einladung, kein Zwang.",
+              "english": "The gospel is an invitation, not a compulsion."
+            },
+            {
+              "text": "Viele Leute haben gesagt, dass sie gern kommen.",
+              "english": "Many people said that they like to come."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Und ich denke an die Woche, in der Sam krank war.",
+              "english": "And I think of the week when Sam was ill."
+            },
+            {
+              "text": "Sein Mund war ganz trocken, und Anna sagte: Iss eine Banane.",
+              "english": "His mouth was quite dry, and Anna said: eat a banana."
+            },
+            {
+              "text": "Übrigens hustete Ben damals wie ein kleiner Löwe.",
+              "english": "By the way, Ben coughed like a little lion back then."
+            },
+            {
+              "text": "Am Abend ist er zu Hause geblieben, und wir haben leise gesprochen.",
+              "english": "In the evening he stayed at home, and we talked quietly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastor Thomas hat uns vom Samariter erzählt.",
+              "english": "Pastor Thomas told us about the Samaritan."
+            },
+            {
+              "text": "Ein frommer Mann ging vorbei, aber der Samariter half.",
+              "english": "A pious man walked past, but the Samaritan helped."
+            },
+            {
+              "text": "Sie waren Feinde, und trotzdem hob er den Mann auf seinen Esel.",
+              "english": "They were enemies, and still he lifted the man on to his donkey."
+            },
+            {
+              "text": "Er trug ihn die Treppe hinauf, und der Wirt nickte.",
+              "english": "He carried him up the stairs, and the innkeeper nodded."
+            },
+            {
+              "text": "Die Geschichte war einfach, aber sie war sehr gut.",
+              "english": "The story was simple, but it was very good."
+            },
+            {
+              "text": "Ich habe die Geschichte nie vergessen.",
+              "english": "I have never forgotten the story."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Ende denke ich an die Reise nach Thüringen.",
+              "english": "At the end I think of the trip to Thüringen."
+            },
+            {
+              "text": "Ich habe einige schöne Dörfer gesehen.",
+              "english": "I saw a few beautiful villages."
+            },
+            {
+              "text": "Wir sind viel zu Fuß gegangen, und das Wetter war gut.",
+              "english": "We walked a lot, and the weather was good."
+            },
+            {
+              "text": "Im Krieg war viel kaputt gegangen, aber man hat es wieder gebaut.",
+              "english": "In the war much had been broken, but it was built again."
+            },
+            {
+              "text": "Der Eintritt war nicht teuer, und die berühmteste Sehenswürdigkeit war die Burg.",
+              "english": "The admission was not expensive, and the most famous sight was the castle."
+            },
+            {
+              "text": "Dort habe ich ein Plakat gesehen, und wir haben im Restaurant gegessen.",
+              "english": "There I saw a poster, and we ate in the restaurant."
+            },
+            {
+              "text": "Es war ein langer Tag, aber ich war sehr froh.",
+              "english": "It was a long day, but I was very glad."
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }

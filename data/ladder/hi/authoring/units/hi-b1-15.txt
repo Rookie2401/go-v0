@@ -1,0 +1,46 @@
+id: hi-b1-15
+title: गली की सफ़ाई
+domain: contemporary-nonfiction
+topics: community, rubbish, cleanliness, notice
+notes: Seventh controlled unit of the b1 bridge. It prepares the words of the GDL story "कचरे का बादल" (hi-b1-16): छिलका, कूड़ेदान, कूड़ा, दुखी, मँडराना, थैली, मक्खी, बिस्कुट, प्लास्टिक, इस्तेमाल, आंटी, बेकार, each used three times, in a neighbourhood clean-up that Meera didi starts in Seeta Nani's lane; it ends with a short notice (the text type of hi-a2-2-09 "पानी और कचरा"). It also brings back a few rare words of the Bible reading hi-b1-14 (भय, आपस) and of hi-b1-12 / hi-b1-13. Machine-drafted; a Hindi reviewer should check the register of the notice and the words for rubbish.
+---
+## गली में कूड़ा
+सीता नानी की गली में कुछ दिनों से बहुत कूड़ा पड़ा था। || For some days a lot of rubbish had been lying in Seeta Nani's lane.
+केले के छिलके सड़क पर पड़े थे, और उन पर मक्खियाँ मँडरा रही थीं। || Banana peels were lying on the road, and flies were hovering over them.
+सैम ने मीरा दीदी से पूछा, "दीदी, यह गली इतनी गंदी क्यों है?" || Sam asked Meera didi, "Didi, why is this lane so dirty?"
+मीरा दीदी बोलीं, "क्योंकि लोग कूड़ा कूड़ेदान में नहीं डालते, सड़क पर फेंक देते हैं।" || Meera didi said, "Because people do not put the rubbish in the dustbin, they throw it on the road."
+"छिलके पड़े रहते हैं, तो बच्चे बीमार पड़ते हैं, और पूरी गली गंदी लगती है।" || "When peels lie around, children fall ill, and the whole lane looks dirty."
+सैम ने कहा, "तो हमें आपस में मिलकर कुछ करना चाहिए।" || Sam said, "Then we should do something together among ourselves."
+मीरा दीदी हँसीं और बोलीं, "ठीक है, कल रविवार है, कल से हम गली की सफ़ाई शुरू करेंगे।" || Meera didi laughed and said, "All right, tomorrow is Sunday, from tomorrow we will begin cleaning the lane."
+उस रात सैम को नींद देर से आई, क्योंकि वह अगले दिन के बारे में सोचता रहा। || That night sleep came late to Sam, because he kept thinking about the next day.
+
+## प्लास्टिक की थैली
+अगले दिन सैम और अमन गली में आगे बढ़े, तो उन्होंने देखा कि बिस्कुट के खाली लिफ़ाफ़े और प्लास्टिक की थैलियाँ हर जगह उड़ रही हैं। || The next day as Sam and Aman went further down the lane they saw that empty biscuit wrappers and plastic bags were blowing everywhere.
+रीमा आंटी अपनी दुकान के सामने खड़ी थीं, और उनके हाथ में भी वही था। || Reema aunty was standing in front of her shop, and she had the same thing in her hand.
+अमन ने नमस्ते करके कहा, "आंटी, यह कूड़ेदान में डाल दीजिए।" || Aman greeted her and said, "Aunty, please put this in the dustbin."
+उन्होंने कहा, "पर वह तो बहुत दूर है, बेटा।" || She said, "But that is very far, child."
+सैम ने कहा, "तो हम गली में एक और रख देंगे।" || Sam said, "Then we will put one more in the lane."
+वे थोड़ी दुखी हुईं और बोलीं, "मैं रोज़ इसी तरह फेंकती थी।" || She became a little sad and said, "I used to throw things like this every day."
+"आज से मैं अपने घर की हर चीज़ ठीक जगह डालूँगी।" || "From today I will put everything of my house in the right place."
+सब बच्चों ने ताली बजाई, और वे भी हँस पड़ीं। || All the children clapped, and she burst out laughing too.
+
+## बेकार चीज़ें
+मीरा दीदी ने सबको बुलाया और कहा, "प्लास्टिक का इस्तेमाल हम कम कर सकते हैं।" || Meera didi called everybody and said, "We can use less plastic."
+"कपड़े की थैली बार बार इस्तेमाल हो सकती है, पर प्लास्टिक की थैली जल्दी बेकार हो जाती है।" || "A cloth bag can be used again and again, but a plastic bag soon becomes useless."
+"बेकार चीज़ें सड़क पर फेंकने से हम सब दुखी होते हैं।" || "When useless things are thrown on the road, all of us become unhappy."
+बच्चों ने मिलकर छिलके उठाए, और बेकार चीज़ें बैग में भर दीं। || The children together picked up the peels, and filled the useless things into a bag.
+अमन ने हँसकर कहा, "जहाँ गंदगी होती है, वहीं मक्खियाँ मँडराती हैं।" || Aman said with a laugh, "Flies hover just where there is dirt."
+शाम तक गली साफ़ थी, और कूड़ेदान में सारे छिलके और थैलियाँ थीं। || By evening the lane was clean, and all the peels and bags were in the dustbin.
+रीमा आंटी ने सबको चाय दी, और नानी ने बच्चों के लिए बिस्कुट रखे। || Reema aunty gave everybody tea, and Nani put out biscuits for the children.
+अमन ने बिस्कुट खाया और कहा, "आज गली में मक्खियाँ नहीं हैं!" || Aman ate a biscuit and said, "Today there are no flies in the lane!"
+नानी बोलीं, "यह तुम सबकी मेहनत है, और अब बच्चे गली में खेल भी सकते हैं।" || Nani said, "This is the hard work of all of you, and now the children can play in the lane too."
+सैम ने सोचा, "यहाँ सब लोग एक दूसरे के साथ मिलकर काम करते हैं।" || Sam thought, "Here everybody works together with one another."
+
+## सूचना
+उसी शाम सैम ने गली की दीवार पर एक सूचना लगाई: || That same evening Sam put up a notice on the wall of the lane:
+सूचना: इस गली में हर रविवार सफ़ाई का दिन है। || Notice: In this lane every Sunday is the cleaning day.
+कृपया कूड़ा कूड़ेदान में डालिए, और थैलियों का इस्तेमाल कम कीजिए। || Please put rubbish in the dustbin, and use fewer bags.
+सब बच्चे और बड़े सफ़ाई में शामिल हों। || All children and elders should join the cleaning.
+मीरा दीदी ने पढ़कर कहा, "यह बहुत अच्छी सूचना है, सैम।" || Meera didi read it and said, "This is a very good notice, Sam."
+अमन ने जोड़ा, "और अगले रविवार को हम सब पहले की तरह खेलेंगे।" || Aman added, "And next Sunday we will all play as before."
+नानी ने सिर हिलाकर कहा, "हाँ, पर पहले गली साफ़ करो, फिर खेलो।" || Nani nodded her head and said, "Yes, but first clean the lane, then play."

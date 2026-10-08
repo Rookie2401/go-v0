@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-07",
+  "lang": "sq",
+  "title": "Nga je?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-07",
+    "title": "Albanian ladder, a1-1: Nga je? (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Nga je?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam është në kishë.",
+              "english": "Sam is at church."
+            },
+            {
+              "text": "Një burrë thotë: — Mirëdita! Nga je?",
+              "english": "A man says: \"Good afternoon! Where are you from?\""
+            },
+            {
+              "text": "— Mirëdita! Jam nga Amerika.",
+              "english": "\"Good afternoon! I am from America.\""
+            },
+            {
+              "text": "— A flet shqip?",
+              "english": "\"Do you speak Albanian?\""
+            },
+            {
+              "text": "— Flas pak. Mësoj shqip.",
+              "english": "\"I speak a little. I am learning Albanian.\""
+            },
+            {
+              "text": "— Shumë mirë! Unë quhem Dritan.",
+              "english": "\"Very good! My name is Dritan.\""
+            },
+            {
+              "text": "— Gëzohem, Dritan. Unë quhem Sam.",
+              "english": "\"Pleased to meet you, Dritan. My name is Sam.\""
+            },
+            {
+              "text": "— Ku jeton, Sam?",
+              "english": "\"Where do you live, Sam?\""
+            },
+            {
+              "text": "— Jetoj këtu, në një shtëpi të vogël.",
+              "english": "\"I live here, in a small house.\""
+            },
+            {
+              "text": "— Mirë. A je i lumtur këtu?",
+              "english": "\"Good. Are you happy here?\""
+            },
+            {
+              "text": "— Po, jam shumë i lumtur.",
+              "english": "\"Yes, I am very happy.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj Ana vjen në kishë.",
+              "english": "Then Ana comes to church."
+            },
+            {
+              "text": "— Ana, ky është Dritani.",
+              "english": "\"Ana, this is Dritan.\""
+            },
+            {
+              "text": "— Gëzohem që të njoh, Dritan!",
+              "english": "\"I am glad to meet you, Dritan!\""
+            },
+            {
+              "text": "— Edhe unë gëzohem. Nga je, Ana?",
+              "english": "\"I am glad too. Where are you from, Ana?\""
+            },
+            {
+              "text": "— Jam nga Tirana. Po ti?",
+              "english": "\"I am from Tirana. And you?\""
+            },
+            {
+              "text": "— Edhe unë.",
+              "english": "\"Me too.\""
+            },
+            {
+              "text": "— Sam flet pak shqip, por mëson shumë.",
+              "english": "\"Sam speaks a little Albanian, but he is learning a lot.\""
+            },
+            {
+              "text": "— Po, Sam flet mirë!",
+              "english": "\"Yes, Sam speaks well!\""
+            },
+            {
+              "text": "— Faleminderit! — thotë Sam.",
+              "english": "\"Thank you!\" says Sam."
+            },
+            {
+              "text": "Pastaj ata pinë kafe.",
+              "english": "Then they drink coffee."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam mëson shqip çdo ditë.",
+              "english": "Sam learns Albanian every day."
+            },
+            {
+              "text": "Ai lexon libra në shqip.",
+              "english": "He reads books in Albanian."
+            },
+            {
+              "text": "Luan është mësuesi i Samit.",
+              "english": "Luan is Sam's teacher."
+            },
+            {
+              "text": "Sam njeh shumë njerëz këtu.",
+              "english": "Sam knows many people here."
+            },
+            {
+              "text": "Ai njeh Anën, Luanin, Dritën dhe Ardin.",
+              "english": "He knows Ana, Luan, Drita and Ardi."
+            },
+            {
+              "text": "Dritani jeton në Tiranë.",
+              "english": "Dritan lives in Tirana."
+            },
+            {
+              "text": "Sam thotë: — Më pëlqen që jetoj këtu.",
+              "english": "Sam says: \"I like that I live here.\""
+            },
+            {
+              "text": "Në mëngjes Sam pi kafe.",
+              "english": "In the morning Sam drinks coffee."
+            },
+            {
+              "text": "Pastaj ai lexon dhe shkruan.",
+              "english": "Then he reads and writes."
+            },
+            {
+              "text": "Sam flet pak, por flet mirë.",
+              "english": "Sam speaks a little, but he speaks well."
+            },
+            {
+              "text": "Ai është i lumtur.",
+              "english": "He is happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj Mira vjen në kishë.",
+              "english": "Then Mira comes to church."
+            },
+            {
+              "text": "— Përshëndetje! Unë quhem Mira. Si quheni ju?",
+              "english": "\"Hello! My name is Mira. What is your name?\""
+            },
+            {
+              "text": "— Unë quhem Sam. Gëzohem.",
+              "english": "\"My name is Sam. Pleased to meet you.\""
+            },
+            {
+              "text": "— A flisni shqip?",
+              "english": "\"Do you speak Albanian?\""
+            },
+            {
+              "text": "— Flas pak. Po mësoj.",
+              "english": "\"I speak a little. I am learning.\""
+            },
+            {
+              "text": "— Flisni mirë!",
+              "english": "\"You speak well!\""
+            },
+            {
+              "text": "— Faleminderit.",
+              "english": "\"Thank you.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam flet shqip në kishë, dhe ai është shumë i lumtur.",
+              "english": "Sam speaks Albanian at church, and he is very happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nesër Sam zgjohet herët.",
+              "english": "Tomorrow Sam wakes up early."
+            },
+            {
+              "text": "Ai lahet dhe vishet.",
+              "english": "He washes and gets dressed."
+            },
+            {
+              "text": "Ai përgatit kafe.",
+              "english": "He makes coffee."
+            },
+            {
+              "text": "Është mëngjes i bukur.",
+              "english": "It is a beautiful morning."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

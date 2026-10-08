@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-19",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "เย็นวันหนึ่งในท้องนา",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-19",
+    "title": "เย็นวันหนึ่งในท้องนา — An evening in the rice fields (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Narrative with the longer, written-register sentences that the library texts use (ซึ่ง, อัน, ดังนั้น, ย่อม, เมื่อ ... ก็). For the reviewer: the northern village details (the rice, the hut, the evening) are plausible and invented; Grandmother's speech is rendered in Central Thai."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "village",
+    "rice fields",
+    "grandmother",
+    "evening"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "เดินไปที่นา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเย็นของวันที่สอง ยายพาแซมเดินไปที่นา ซึ่งอยู่ไกลจากบ้านเดินประมาณสิบนาที",
+              "english": "On the evening of the second day Grandmother took Sam walking to the rice field, which lay about ten minutes' walk from the house."
+            },
+            {
+              "text": "ท้องฟ้าเป็นสีส้ม และลมพัดเบาๆ",
+              "english": "The sky was orange and the wind blew softly."
+            },
+            {
+              "text": "ข้าวในนาเป็นสีเขียวอ่อน เพราะปลูกได้ไม่กี่สัปดาห์",
+              "english": "The rice in the field was pale green, because it had been planted only a few weeks."
+            },
+            {
+              "text": "แซมไม่เคยเห็นนาข้าวใกล้ๆ มาก่อน เขาจึงยืนมองอยู่นาน",
+              "english": "Sam had never seen a rice field from close up, so he stood looking for a long time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ยายเล่าเรื่องนา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ยายบอกว่า ชาวนาย่อมต้องตื่นก่อนไก่",
+              "english": "Grandmother said that a rice farmer must naturally wake before the cock."
+            },
+            {
+              "text": "ถ้าตื่นช้า น้ำในนาก็ย่อมเสียไป และข้าวก็จะไม่ดี",
+              "english": "If one wakes late, the water in the field is naturally wasted and the rice will not do well."
+            },
+            {
+              "text": "ยายทำนามาตั้งแต่อายุสิบห้าปี ซึ่งตอนนั้นทุกอย่างต้องทำด้วยมือ",
+              "english": "Grandmother had farmed since she was fifteen, when everything had to be done by hand."
+            },
+            {
+              "text": "ยายใช้ควายช่วยทำงาน และต้องตื่นตั้งแต่ตีสี่",
+              "english": "Grandmother used buffaloes to help with the work, and had to wake from four in the morning."
+            },
+            {
+              "text": "ดังนั้น เมื่อลูกๆ โตขึ้น ยายจึงอยากให้พวกเขาไปเรียน",
+              "english": "Therefore, when her children grew up, Grandmother wanted them to go and study."
+            },
+            {
+              "text": "ยายไม่อยากให้ลูกต้องลำบากเหมือนตน",
+              "english": "She did not want her children to hardship as she had."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "บ้านเล็กกลางนา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "กลางนามีบ้านเล็กๆ หลังหนึ่ง ซึ่งใช้พักเมื่อแดดร้อน",
+              "english": "In the middle of the field stood a small house, which was used for resting when the sun was hot."
+            },
+            {
+              "text": "แซมกับยายนั่งลงที่บ้านเล็กหลังนั้น",
+              "english": "Sam and Grandmother sat down at that little house."
+            },
+            {
+              "text": "ยายหยิบข้าวออกมาจากถุงผ้า และแบ่งให้แซม",
+              "english": "Grandmother took out some rice from her cloth bag and shared it with Sam."
+            },
+            {
+              "text": "แซมกินข้าวและมองนาไปด้วย",
+              "english": "Sam ate the rice and looked at the field as well."
+            },
+            {
+              "text": "เขารู้สึกว่า อาหารที่เขากินมาตลอดชีวิต มาจากมือของคนอย่างยาย",
+              "english": "He felt that the food he had eaten all his life came from the hands of people just like Grandmother."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำถามของแซม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมถามยายว่า ยายภูมิใจในนาของยายไหมครับ",
+              "english": "Sam asked Grandmother, \"Are you proud of your field?\""
+            },
+            {
+              "text": "ยายนิ่งไปสักพัก แล้วตอบด้วยเสียงเบา",
+              "english": "Grandmother was silent for a while, then answered in a soft voice."
+            },
+            {
+              "text": "ภูมิใจ แต่ที่ภูมิใจที่สุดคือลูกหลานของยาย ซึ่งไม่ต้องทำนาอีกแล้ว",
+              "english": "\"I am proud, but what I am proudest of is my children and grandchildren, who no longer have to farm.\""
+            },
+            {
+              "text": "มะลิซึ่งนั่งอยู่ข้างๆ ได้ยินแล้วก็ร้องไห้",
+              "english": "Mali, who was sitting beside them, heard this and wept."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "กลับบ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อฟ้าเริ่มมืด ทั้งสามคนก็เดินกลับบ้าน",
+              "english": "When the sky began to darken, the three of them walked home."
+            },
+            {
+              "text": "ลมเริ่มเย็น และท้องฟ้าก็มืดลง",
+              "english": "The wind grew cool, and the sky darkened."
+            },
+            {
+              "text": "แซมคิดว่า ชีวิตแบบนี้ย่อมธรรมดา แต่ก็มีความสุขในแบบของมัน",
+              "english": "Sam thought: a life like this is plain, but it has its own kind of happiness."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-23",
+  "lang": "sq",
+  "title": "Nëse qëndroj",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-23",
+    "title": "Albanian ladder, b1-bridge: Nëse qëndroj (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Nëse qëndroj",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën pas kishës Sami e pyeti Anën nëse mund të ecnin bashkë deri te liqeni i madh i parkut.",
+              "english": "On Sunday after church Sam asked Ana whether they could walk together to the big lake of the park."
+            },
+            {
+              "text": "Ishte një ditë e ftohtë, por e qartë, dhe liqeni shkëlqente si një pasqyrë e gjatë.",
+              "english": "It was a cold but clear day, and the lake shone like a long mirror."
+            },
+            {
+              "text": "Ata ecën për një kohë pa folur, pastaj Sami tha: — Kam vetëm tri ditë për të dhënë përgjigjen.",
+              "english": "They walked for a while without speaking, then Sam said: \"I have only three days to give the answer.\""
+            },
+            {
+              "text": "— E di, — tha Ana.",
+              "english": "\"I know,\" said Ana."
+            },
+            {
+              "text": "— Luani më ka thënë gjithçka, por jo atë që mendon ti.",
+              "english": "\"Luan has told me everything, but not what you think.\""
+            },
+            {
+              "text": "— Sepse ende nuk e di çfarë mendoj, — u përgjigj Sami.",
+              "english": "\"Because I do not yet know what I think,\" answered Sam."
+            },
+            {
+              "text": "— Po të ishte e lehtë, nuk do të të kisha pyetur.",
+              "english": "\"If it were easy, I would not have asked you.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ata u ulën në një stol pranë ujit.",
+              "english": "They sat down on a bench near the water."
+            },
+            {
+              "text": "Ishte shëtitja e parë e tyre vetëm të dy, dhe të dy e dinin këtë.",
+              "english": "It was their first walk alone together, and both of them knew it."
+            },
+            {
+              "text": "— Më thuaj një gjë, — filloi Ana.",
+              "english": "\"Tell me one thing,\" Ana began."
+            },
+            {
+              "text": "— Nëse nuk do të kishe këtë ofertë, çfarë do të bëje?",
+              "english": "\"If you did not have this offer, what would you do?\""
+            },
+            {
+              "text": "— Do të kthehesha në Amerikë në pranverë, do të gjeja një punë, dhe do të mbaja një ditar për një vit të bukur që kaloi.",
+              "english": "\"I would go back to America in the spring, I would find a job, and I would keep a diary of a beautiful year that passed.\""
+            },
+            {
+              "text": "— Dhe do të ishe i lumtur?",
+              "english": "\"And would you be happy?\""
+            },
+            {
+              "text": "— Do të isha mirë, — tha Sami.",
+              "english": "\"I would be fine,\" said Sam."
+            },
+            {
+              "text": "— Por nuk e di nëse do të isha i lumtur.",
+              "english": "\"But I do not know whether I would be happy.\""
+            },
+            {
+              "text": "— Kam frikë se do ta kujtoja gjithë jetën si ata që nuk e morën një derë që u hap.",
+              "english": "\"I am afraid I would remember it all my life, like those who did not take a door that opened.\""
+            },
+            {
+              "text": "Ana e shikoi me kujdes.",
+              "english": "Ana looked at him carefully."
+            },
+            {
+              "text": "— Atëherë ke dhënë tashmë një përgjigje, — tha ajo.",
+              "english": "\"Then you have already given an answer,\" she said."
+            },
+            {
+              "text": "— Frika nga ajo që do të humbasësh nëse largohesh është më e madhe se frika nga ajo që do të humbasësh nëse mbetesh.",
+              "english": "\"The fear of what you would lose if you left is greater than the fear of what you would lose if you stayed.\""
+            },
+            {
+              "text": "— Dhe nëse dështoj? — pyeti Sami.",
+              "english": "\"And what if I fail?\" asked Sam."
+            },
+            {
+              "text": "— Dështimi është vetëm një ditë, siç thotë Dritani, — tha Ana.",
+              "english": "\"Failure is only one day, as Dritan says,\" said Ana."
+            },
+            {
+              "text": "— Por nëna ime, — tha Sami.",
+              "english": "\"But my mother,\" said Sam."
+            },
+            {
+              "text": "— Ajo nuk është një arsye për të mos qëndruar.",
+              "english": "\"She is not a reason not to stay.\""
+            },
+            {
+              "text": "— Është një arsye për të shkuar çdo vit.",
+              "english": "\"She is a reason to go every year.\""
+            },
+            {
+              "text": "— Dhe leja e qëndrimit? — pyeti Ana.",
+              "english": "\"And the residence permit?\" asked Ana."
+            },
+            {
+              "text": "— Shkolla do ta rinovojë çdo vit, — tha Sami.",
+              "english": "\"The school will renew it every year,\" said Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sami mori telefonin dhe e hapi mesazhin e fundit të nënës.",
+              "english": "Sam took his phone and opened his mother's last message."
+            },
+            {
+              "text": "— Ajo më ka shkruar se babai ka thënë që duhet ta nënshkruaj, — tha ai.",
+              "english": "\"She wrote to me that Dad has said I should sign it,\" he said."
+            },
+            {
+              "text": "— Ka thënë gjithashtu se nuk do të më pyesë më, por do të më presë.",
+              "english": "\"He also said that he will not ask me anymore, but will wait for me.\""
+            },
+            {
+              "text": "— Prindërit që të presin janë një lloj i rrallë, — tha Ana.",
+              "english": "\"Parents who wait for you are a rare kind,\" said Ana."
+            },
+            {
+              "text": "— Kujdesu mirë për ta.",
+              "english": "\"Take good care of them.\""
+            },
+            {
+              "text": "— Si do të kujdesem për ta nga larg?",
+              "english": "\"How will I take care of them from far away?\""
+            },
+            {
+              "text": "— Duke u ngjitur në telefon çdo të shtunë në mbrëmje, siç bën tani, — qeshi Ana.",
+              "english": "\"By getting on the phone every Saturday evening, as you do now,\" Ana laughed."
+            },
+            {
+              "text": "— Dhe duke i ftuar në pranverë.",
+              "english": "\"And by inviting them in spring.\""
+            },
+            {
+              "text": "— Gjyshja Drita do të bëjë një byrek aq të madh, sa nëna jote nuk do të ketë dëshirë të kthehet në Amerikë.",
+              "english": "\"Grandmother Drita will make a byrek so big that your mother will not feel like going back to America.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ata qeshën bashkë.",
+              "english": "They laughed together."
+            },
+            {
+              "text": "Pastaj Sami heshti për një kohë të gjatë.",
+              "english": "Then Sam was silent for a long time."
+            },
+            {
+              "text": "Një burrë kalonte me një qen të vogël, dhe Sami e shikoi, dhe mendoi për Bardhin dhe për njoftimin e ngjitur në derën e shkollës.",
+              "english": "A man passed with a small dog, and Sam looked at him, and thought of Bardhi and the notice stuck to the school door."
+            },
+            {
+              "text": "— Ana, — tha ai ngadalë.",
+              "english": "\"Ana,\" he said slowly."
+            },
+            {
+              "text": "— Kur erdha këtu, mendova se kisha ardhur për të mësuar një gjuhë.",
+              "english": "\"When I came here, I thought I had come to learn a language.\""
+            },
+            {
+              "text": "— Tani e di që kisha ardhur për të mësuar të dëgjoj.",
+              "english": "\"Now I know that I had come to learn to listen.\""
+            },
+            {
+              "text": "— Dhe kjo ende nuk është mësuar mirë.",
+              "english": "\"And that is still not learned well.\""
+            },
+            {
+              "text": "— Atëherë, — tha Ana, — ke edhe një vit për ta mësuar.",
+              "english": "\"Then,\" said Ana, \"you have another year to learn it.\""
+            },
+            {
+              "text": "Sami nxori fletoren nga xhepi dhe e hapi në faqen e ndarë në dy.",
+              "english": "Sam took the notebook from his pocket and opened it at the page divided in two."
+            },
+            {
+              "text": "Nën pjesën e dytë, atë me gjërat që e shqetësonin, shkroi me laps të madh: «Do ta nënshkruaj.»",
+              "english": "Under the second part, the one with the things that worried him, he wrote in big pencil: \"I will sign it.\""
+            },
+            {
+              "text": "E nënvizoi dy herë.",
+              "english": "He underlined it twice."
+            },
+            {
+              "text": "Pastaj, nën të, shtoi me shkrim më të vogël: «Dhe do t'i telefonoj nënës sot.»",
+              "english": "Then, below it, he added in smaller writing: \"And I will phone Mother today.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Atë mbrëmje ai e thirri nënën, dhe këtë herë nuk filloi me «jam mirë».",
+              "english": "That evening he called his mother, and this time he did not begin with \"I am well.\""
+            },
+            {
+              "text": "— Nënë, kam një lajm, — tha.",
+              "english": "\"Mother, I have news,\" he said."
+            },
+            {
+              "text": "— Do të qëndroj edhe një vit.",
+              "english": "\"I will stay another year.\""
+            },
+            {
+              "text": "Në ekran nëna heshti për një çast të gjatë.",
+              "english": "On the screen his mother was silent for a long moment."
+            },
+            {
+              "text": "— E dija, — tha ajo më në fund, me zë të ulët.",
+              "english": "\"I knew it,\" she said at last, in a low voice."
+            },
+            {
+              "text": "— Babai e dinte që nga dita kur u largove.",
+              "english": "\"Dad knew it from the day you left.\""
+            },
+            {
+              "text": "— Ai tha se një njeri që shkruan një ditar për çdo ditë nuk është më vetëm i yti, por i vendit ku shkruan.",
+              "english": "\"He said that a person who writes a diary every day is no longer only yours, but belongs to the place where he writes.\""
+            },
+            {
+              "text": "— Mos qaj, nënë.",
+              "english": "\"Do not cry, Mother.\""
+            },
+            {
+              "text": "— Nuk po qaj, — tha ajo duke qeshur.",
+              "english": "\"I am not crying,\" she said, laughing."
+            },
+            {
+              "text": "— Po mendoj çfarë do të them te gjyshja Drita në pranverë.",
+              "english": "\"I am thinking what I will say to grandmother Drita in the spring.\""
+            },
+            {
+              "text": "— Mëso tri fjalë: «faleminderit», «ju lutem» dhe «edhe një».",
+              "english": "\"Learn three words: 'thank you,' 'please' and 'one more.'\""
+            },
+            {
+              "text": "— «Edhe një» është fjala më e mirë në shtëpinë e saj, — qeshi Sami.",
+              "english": "\"'One more' is the best word in her house,\" Sam laughed."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

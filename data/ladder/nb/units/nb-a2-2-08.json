@@ -190,8 +190,8 @@
         {
           "sentences": [
             {
-              "text": "Hvorfor skriver noen nynorsk eller bokmål? Det er to måter, og ingen skriver feil. Ordene er forskjellige, men slik er det.",
-              "english": "Why do some write Nynorsk or Bokmål? There are two ways, and nobody writes wrongly. The words are different, but that is how it is."
+              "text": "Noen skriver nynorsk, og noen skriver bokmål. Det er to måter, og begge er bra. Dialektene er forskjellige, men det er bra.",
+              "english": "Some write Nynorsk, and some write Bokmål. There are two ways, and both are good. The dialects are different, but that is fine."
             }
           ]
         },
@@ -200,6 +200,14 @@
             {
               "text": "Etter tilbudet fra sykehuset snakket Anna om valget. Hun ville ikke flytte nå, men kanskje senere. Sjefen svarte.",
               "english": "After the offer from the hospital Anna talked about the choice. She did not want to move now, but maybe later. The boss answered."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna hørte hva Lars sa om Oslo, men hun ville ikke flytte nå.",
+              "english": "Anna heard what Lars said about Oslo, but she did not want to move now."
             }
           ]
         }

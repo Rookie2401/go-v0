@@ -28,7 +28,7 @@ Ola selger epler. || Ola sells apples.
 [ola] Takk! Ha det bra, {sam}! || Thanks! Goodbye, Sam!
 
 ## Hjem
-{sam} har brød og mat. Han går hjem. || Sam has bread and food. He goes home.
+{sam} har brød og mat. Så er han hjemme. || Sam has bread and food. Then he is at home.
 {ana} er hjemme. Hun er trøtt i dag. || Anna is at home. She is tired today.
 [ana] Hei, {sam}! Hva har du? || Hi, Sam! What do you have?
 [sam] Jeg har brød og mat. || I have bread and food.
@@ -37,13 +37,15 @@ Ola selger epler. || Ola sells apples.
 [sam] Nå har jeg ikke penger. Men jeg har mat! || Now I have no money. But I have food!
 [ana] Bra! Jeg liker brød. Vil du ha te, {sam}? || Good! I like bread. Do you want tea, Sam?
 [sam] Ja, gjerne! Jeg er glad i dag. || Yes, please! I am happy today.
+[ana] Jeg vil ikke ha kaffe i dag. Jeg vil ha te med deg. || I do not want coffee today. I want tea with you.
+[sam] Bra! Vi spiser brød og drikker te. || Good! We eat bread and drink tea.
+[ana] Jeg er trøtt, men jeg er glad i dag. || I am tired, but I am happy today.
 [ana] Du kjøper mye, {sam}. Du er glad! || You buy a lot, Sam. You are happy!
 [sam] Ja, jeg liker markedet. Det er bra. || Yes, I like the market. It is good.
 
 ## Husker du?
 Fru Berg er også på markedet. Hun kommer fra kirka, og hun vil kjøpe brød. || Mrs Berg is also at the market. She comes from church, and she wants to buy bread.
 
-[marta] Hvem er læreren din, {nico}? || Who is your teacher, Nils?
-[nico] Det er {luis}. Han er læreren min på skolen. || It is Lars. He is my teacher at the school.
+[nico] {luis} er læreren min på skolen. || Lars is my teacher at the school.
 
-{marta} lager middag. Hun lager fisk og poteter, og hun lager suppe. || Marta makes dinner. She makes fish and potatoes, and she makes soup.
+{marta} lager middag. Hun lager fisk og poteter. || Marta makes dinner. She makes fish and potatoes.

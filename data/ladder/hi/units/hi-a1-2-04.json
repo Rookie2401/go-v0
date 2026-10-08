@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "A bridge narrative that prepares the in-place crow story (s0c-02) without retelling it: Aman prepares a school game with a water pot and pebbles, and Nani promises a story. Present tense with a few perfective forms (अमन ने घड़ा देखा; कंकड़ डाले). फिर is read correctly in running text (\"फिर वह ...\"). ढूँढ़ना is written with the nukta in the lemma; the adapter reads ढूँढता / ढूँढा as the same lemma. Words outside the plan (measured): none."
+    "notes": "A bridge narrative that prepares the in-place crow story (s0c-02) without retelling it: Aman prepares a school game with a water pot and pebbles, and Nani promises a story. Present tense with a few perfective forms (अमन ने घड़ा देखा; कंकड़ डाले). फिर is read correctly in running text (\"फिर वह ...\"). ढूँढ़ना is written with the nukta in the lemma; the adapter reads ढूँढता / ढूँढा as the same lemma. Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -250,6 +250,30 @@
             {
               "text": "फिर वह सो जाता है।",
               "english": "Then he falls asleep."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन घबराता है, क्योंकि उसके पास पानी नहीं है।",
+              "english": "Aman is flustered, because he has no water."
+            },
+            {
+              "text": "इसलिए वह रसोई के पास जाता है।",
+              "english": "So he goes near the kitchen."
+            },
+            {
+              "text": "सैम उसे देखता है और बोलता है, \"अमन, मैं पानी लाता हूँ।\"",
+              "english": "Sam sees him and says, \"Aman, I will bring water.\""
+            },
+            {
+              "text": "कभी कभी रात को सैम भी पानी पीता है।",
+              "english": "Sometimes at night Sam drinks water too."
+            },
+            {
+              "text": "घर के नीचे दुकान है, और वहाँ से सैम पानी लाता है।",
+              "english": "There is a shop below the house, and Sam brings water from there."
             }
           ]
         }

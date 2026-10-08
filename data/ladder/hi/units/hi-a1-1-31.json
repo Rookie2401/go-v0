@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Digits are used for the house number, lane number and phone numbers (they count as known). ने appears three times in the formula \"X ने कहा\" (the in-place drafts use it next). The plan's \"auto driver Deepak\" is simply दीपक with a गाड़ी, because ऑटो is not in the palette yet. बाग़ मोहल्ला is an invented locality name made from a known word; the reviewer may prefer a real-sounding one. \"के लिए\" appears once (\"आपके लिए\"). Words outside the plan (measured): none."
+    "notes": "Digits are used for the house number, lane number and phone numbers (they count as known). ने appears three times in the formula \"X ने कहा\" (the in-place drafts use it next). The plan's \"auto driver Deepak\" is simply दीपक with a गाड़ी, because ऑटो is not in the palette yet. बाग़ मोहल्ला is an invented locality name made from a known word; the reviewer may prefer a real-sounding one. \"के लिए\" appears once (\"आपके लिए\"). Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -303,6 +303,66 @@
             {
               "text": "नानी बोलती हैं, \"चाय लीजिए, सैम।\"",
               "english": "Nani says, \"Have some tea, Sam.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम फ़ोन पर बोलता है, \"हैलो!\"",
+              "english": "Sam says \"Hello!\" on the phone."
+            },
+            {
+              "text": "चाचा जी बोलते हैं, \"सैम, आप कैसे हैं?\"",
+              "english": "Chacha ji says, \"Sam, how are you?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं ठीक हूँ। आपका घर कैसा है?\"",
+              "english": "Sam says, \"I am fine. How is your house?\""
+            },
+            {
+              "text": "चाचा जी बोलते हैं, \"मुझे कुछ नहीं चाहिए, घर अच्छा है।\"",
+              "english": "Chacha ji says, \"I need nothing, the house is fine.\""
+            },
+            {
+              "text": "चाचा जी बोलते हैं, \"आप घर कब आते हैं?\"",
+              "english": "Chacha ji says, \"When do you come home?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं जल्दी आता हूँ।\"",
+              "english": "Sam says, \"I will come soon.\""
+            },
+            {
+              "text": "नदी के पास बड़ा खेत है।",
+              "english": "There is a big field near the river."
+            },
+            {
+              "text": "हम खेत में जाते हैं।",
+              "english": "We go to the field."
+            },
+            {
+              "text": "सैम दफ़्तर में बैग लाता है।",
+              "english": "Sam brings a bag to the office."
+            },
+            {
+              "text": "दफ़्तर के पास दुकान है।",
+              "english": "There is a shop near the office."
+            },
+            {
+              "text": "दुकान के पास सड़क है।",
+              "english": "There is a road near the shop."
+            },
+            {
+              "text": "सड़क पर गाड़ी है।",
+              "english": "There is a vehicle on the road."
+            },
+            {
+              "text": "दुकान में पानी है।",
+              "english": "There is water in the shop."
+            },
+            {
+              "text": "घर के नीचे दुकान है।",
+              "english": "Below the house there is a shop."
             }
           ]
         }

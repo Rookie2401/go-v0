@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-31",
+  "lang": "hi",
+  "title": "सैम की डायरी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-31",
+    "title": "\"सैम की डायरी\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Last controlled unit of the b1 bridge. Sam looks back, in his diary, on the months of the bridge. The unit teaches no new word; it brings back, in plain sentences and as ordinary words, the vocabulary of the earlier controlled units of the bridge that the gate needs to see again (the carpenter's shop, the guava tree, the parrot, the Bible class on the roof, the cleaning day, the clean-up of the lane, the story hour, the annual day, the baby, the night prayer, the mountain night, the experiment). Machine-drafted; a Hindi reviewer should check the diary register."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "diary",
+    "memories",
+    "year",
+    "friends"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "पन्ना एक",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज शाम मैंने अपनी पुरानी डायरी खोली, और पिछले महीनों की सारी बातें मुझे फिर याद आईं।",
+              "english": "This evening I opened my old diary, and all the things of the past months came back to me."
+            },
+            {
+              "text": "पहले मैं सिर्फ़ गिनता था कि मुझे कितने नए शब्द आते हैं, पर अब मैं गिनता हूँ कि मैंने कितने नए दोस्त बनाए।",
+              "english": "Earlier I only counted how many new words I knew, but now I count how many new friends I have made."
+            },
+            {
+              "text": "चाचा जी की दुकान सबसे पहले याद आई, जहाँ अमन ने हथौड़ी से कील ठोकी और आरी की आवाज़ से मोती भी डर गया था।",
+              "english": "Chacha ji's shop came to mind first, where Aman drove a nail with a hammer and even Moti was frightened by the sound of the saw."
+            },
+            {
+              "text": "वहाँ मैंने देखा कि लकड़ी से पहिए बनते हैं, और पहियों से गाड़ी चलती है।",
+              "english": "There I saw that wheels are made from wood, and a cart runs on wheels."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पन्ना दो",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी के आँगन का अमरूद का पेड़ भी याद आया, जहाँ गौरैया अपनी चोंच से पानी पीती थी।",
+              "english": "The guava tree in Nani's courtyard came to mind too, where the sparrow used to drink water with her beak."
+            },
+            {
+              "text": "उस दिन अमरूद कँटीली झाड़ी में गिर गया था, और हमने एक डंडे से उसे निकाला।",
+              "english": "That day the guava had fallen into the thorny bush, and we got it out with a stick."
+            },
+            {
+              "text": "उसी हफ़्ते शर्मा अंकल का तोता हमारे घर आया था, और वह पिंजड़े में बैठकर बस \"ह’लो\" कहता था।",
+              "english": "The same week Sharma uncle's parrot came to our house, and sitting in the cage he said just \"h'llo\"."
+            },
+            {
+              "text": "नानी ने तब कहा था कि हर जीव को खुली हवा चाहिए, और तोते ने भी पंख फैलाकर तेज़ी से उड़ान भरी।",
+              "english": "Nani had said then that every living creature needs open air, and the parrot too spread his wings and flew off quickly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पन्ना तीन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "गुरुवार की कक्षा में पास्टर अनिल ने छत की बेल दिखाई, और हमने सीखा कि जुड़ी हुई डाली ही फलती है।",
+              "english": "In the Thursday class Pastor Anil showed the vine on the roof, and we learnt that only the branch that stays joined bears fruit."
+            },
+            {
+              "text": "सूखी डाली को लोग आग में डालते हैं, पर बेल का स्वामी हर डाली की चिंता करता है।",
+              "english": "People put a dry branch in the fire, but the owner of the vine cares about every branch."
+            },
+            {
+              "text": "सफ़ाई के दिन अमन जासूस बना था, और उसने सोफ़े के कुशन के नीचे से पास्टर अनिल की ऐनक ढूँढ़ निकाली।",
+              "english": "On the cleaning day Aman became a detective, and he found Pastor Anil's spectacles from under the cushions of the sofa."
+            },
+            {
+              "text": "उस शाम बाथरूम से लेकर पार्क तक सबने ताली बजाई।",
+              "english": "That evening from the bathroom to the park everybody clapped."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पन्ना चार",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हमारी गली की सफ़ाई भी मुझे याद है, जब हमने छिलके, बिस्कुट के लिफ़ाफ़े और प्लास्टिक की थैलियाँ कूड़ेदान में डालीं।",
+              "english": "I remember the cleaning of our lane too, when we put the peels, the biscuit wrappers and the plastic bags into the dustbin."
+            },
+            {
+              "text": "रीमा आंटी थोड़ी दुखी हुई थीं, पर अब वे अपना कूड़ा ख़ुद कूड़ेदान में डालती हैं, और मक्खियाँ अब गली में नहीं मँडरातीं।",
+              "english": "Reema aunty had become a little sad, but now she puts her rubbish into the dustbin herself, and flies no longer hover in the lane."
+            },
+            {
+              "text": "स्कूल के कहानी के घंटे में टीचर ने गणित की किताब बंद करवाई थी, और मेयर साहब ने क्रिकेट छोड़कर मेरी कहानी सुनी।",
+              "english": "In the story hour at school the teacher had made the maths book be closed, and the mayor left cricket and listened to my story."
+            },
+            {
+              "text": "वार्षिकोत्सव में प्रिंसिपल मैडम ने अपने सहपाठियों की तरह हमें भी पिकनिक में बुलाया था।",
+              "english": "At the annual festival the principal madam invited us to the picnic as if we were classmates."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पन्ना पाँच",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "गीता मौसी की बिटिया को गोदी में लेकर मैंने समझा कि नन्हे बच्चों को सँभालना कितना मुश्किल है।",
+              "english": "Taking Geeta mausi's baby in my lap I understood how difficult it is to look after tiny children."
+            },
+            {
+              "text": "रात की प्रार्थना में आकाश, सूर्य की किरण, पृथ्वी और सृष्टि के बारे में पास्टर अनिल की बातें मैं नहीं भूलूँगा।",
+              "english": "In the night prayer I will not forget Pastor Anil's words about the sky, the ray of the sun, the earth and creation."
+            },
+            {
+              "text": "पहाड़ की उस रात देवदार के नीचे बर्फ़ थी, और गुफ़ा की ओर देखकर हमने बेचारे भालू के बारे में सोचा।",
+              "english": "On that mountain night there was snow under the deodar, and looking towards the cave we thought of the poor bear."
+            },
+            {
+              "text": "रवि सर के प्रयोग में टॉर्च की रोशनी अणुओं से बिखरी, और हमें समझ आया कि आकाश नीला क्यों है।",
+              "english": "In Ravi sir's experiment the torch's light was scattered by molecules, and we understood why the sky is blue."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पन्ना छह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि सर ने हमें भारतेंदु की \"अंधेर नगरी\" की कहानी भी सुनाई, जहाँ भाजी भी एक टके सेर थी और खाजा भी।",
+              "english": "Ravi sir also told us the story of Bharatendu's \"Andher Nagari\", where vegetables were one taka a ser and khaja too."
+            },
+            {
+              "text": "महंत ने अपने चेले से कहा था कि ऐसी जगह रुकना ठीक नहीं, पर चेला दरबार और कोतवाल की बातें सुनकर भी हँसता रहा।",
+              "english": "The mahant had told his disciple that it is not right to stay in such a place, but the disciple went on laughing even after hearing of the court and the kotwal."
+            },
+            {
+              "text": "फाँसी की बात सुनकर अमन ने कहा था, \"ऐसा न्याय तो अंधेर ही है!\"",
+              "english": "Hearing of the gallows Aman had said, \"Such justice is darkness indeed!\""
+            },
+            {
+              "text": "मुझे लगता है कि हर महंत को अपने चेलों की उतनी ही चिंता करनी चाहिए, जितनी पास्टर अनिल हमारी करते हैं।",
+              "english": "It seems to me that every mahant should care for his disciples as much as Pastor Anil cares for us."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आख़िर में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अब मैं लड्डू बनाना भी जानता हूँ, और अपनी हिंदी में छोटी छोटी कहानियाँ भी लिख लेता हूँ।",
+              "english": "Now I know how to make laddus too, and I can write small stories in my Hindi too."
+            },
+            {
+              "text": "मेरे लिए यह साल सिर्फ़ किताबों का नहीं, लोगों का साल रहा है।",
+              "english": "For me this year has not been a year of books only, but a year of people."
+            },
+            {
+              "text": "कल से एक नया साल शुरू होगा, और मैं उसे भी इसी तरह, नानी के आँगन में, अपने दोस्तों के साथ शुरू करूँगा।",
+              "english": "From tomorrow a new year will begin, and I will begin it too in the same way, in Nani's courtyard, with my friends."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,8 @@
-# Bokmål ladder: plan, style and the empty bridge (a1-1 ... a2-2, and the b1-bridge brief)
+# Bokmål ladder: plan, style and the b1-bridge (a1-1 ... a2-2, and 24 bridge units)
 
-Written 2026-10-07 by Team Norway package D for `data/ladder/nb/ladder.json` (contract: `docs/LADDER.md`). **Nothing here is reviewed by a native speaker or by any person.** Every unit is a machine draft (`pipeline.state: machine-draft`, by a tool), `review.status: unreviewed`, so no unit publishes: a ladder unit publishes only from `audio-ready`. The figures below are those printed by `npm run ladder:check -- nb` on 2026-10-07 with the real analyzer (`adapter-nb`); they will move when the analyzer or its lexicon changes, so re-run the gate rather than trusting a decimal.
+Written 2026-10-07 by Team Norway package D for `data/ladder/nb/ladder.json` (contract: `docs/LADDER.md`); the coverage, recurrence and recycling pass over the 48 early units and the 24 controlled `b1-bridge` units (section 7) were added on 2026-10-08. **Nothing here is reviewed by a native speaker or by any person.** Every unit is a machine draft (`pipeline.state: machine-draft`, by a tool), `review.status: unreviewed`, so no unit publishes: a ladder unit publishes only from `audio-ready`. The figures below are those printed by `npm run ladder:check -- nb` on 2026-10-08 with the real analyzer (`adapter-nb`); they will move when the analyzer or its lexicon changes, so re-run the gate rather than trusting a decimal.
+
+**State on 2026-10-08:** 72 controlled units, 25,594 running words after Stage 0, `ladder:check -- nb`: **0 errors, 0 warnings** (the 2026-10-07 figures in sections 1, 3 and 5 below are kept as history).
 
 ## 1. What exists
 
@@ -11,9 +13,9 @@ Written 2026-10-07 by Team Norway package D for `data/ladder/nb/ladder.json` (co
 | `a1-2` | 12 | 2,853 | 91.1 % | modals (`kan`, `må`, `skal`), the past tense (from unit 06), health, the phone, a birthday, a recap unit |
 | `a2-1` | 12 | 3,036 | 89.5 % | subordinate clauses (`da`, `når`, `hvis`, `at`, `fordi`), the perfect, a letter, a cabin, 17 May, opinions, a retold parable |
 | `a2-2` | 12 | 3,545 | 90.3 % | news, a train journey, an original tale, faith and doubt, Bokmål/Nynorsk/dialects, a process text, a job offer, fishing, a church letter, nature, a dog, a closing unit |
-| `b1-bridge` | **0** | 0 | - | **left empty on purpose, see section 5** |
+| `b1-bridge` | 0 on 2026-10-07; **24 on 2026-10-08 (12,992 words, mean coverage 93.5 %)** | 0 / 12,992 | - | empty on 2026-10-07 (section 5); filled on 2026-10-08 with 24 new controlled units (section 7) |
 
-Total: 48 controlled units, 12,293 running words, **0 errors**, 24 warnings (11 coverage between 84.6 and 87.8 %, 2 recycling, 11 recurrence, 0 orphan, 0 new-lemma density). All units are `controlled`; none is `adapted` or `authentic`.
+Total on 2026-10-07: 48 controlled units, 12,293 running words, **0 errors**, 24 warnings (11 coverage between 84.6 and 87.8 %, 2 recycling, 11 recurrence, 0 orphan, 0 new-lemma density). Total on 2026-10-08 after the pass of section 7: 72 controlled units, 25,594 running words (a1-1 2,934, a1-2 2,911, a2-1 3,056, a2-2 3,701, b1-bridge 12,992), 0 errors, 0 warnings. All units are `controlled`; none is `adapted` or `authentic`.
 
 The units are shorter than the German and Spanish ones (about 250 words on average, including the "Husker du?" paragraphs described in section 3). They were kept short because every new word must be met three times in its own unit and the first units sit on a very small Stage 0 (624 words, 93 lemmas, of which only about 60 were met three times). A reviewer should expect the ladder to need several times more text before `b1-bridge`.
 
@@ -93,7 +95,7 @@ Columns: unit, domain, running words, coverage (cov3) in %, number of new lemmas
 | nb-a2-2-11 | narrative | 243 | 88.9 | 5 | hund, eier, redde, lik, smakte |
 | nb-a2-2-12 | narrative | 415 | 94.9 | 4 | ung, le, hit, bjørn |$
 
-## 5. The b1-bridge stage is empty, and why
+## 5. Why the library part of the bridge is empty (the written bridge exists: see section 7)
 
 `docs/LADDER.md` says the bridge is where authentic or lightly adapted texts become dominant. For Norwegian that needs texts that **require the owner's approval to download** and a rights check by a person before anything is bundled (`docs/norway/SPEC.md` sections 8 and 10; `docs/norway/recon/corpus-rights-bible.md`). Nothing was downloaded and no rights state was changed, so the stage holds no unit and `ladder.json` has no `b1-bridge` entry. Writing "adapted" units from texts nobody has read would only be invention.
 
@@ -119,3 +121,69 @@ What the bridge still needs after those: **modern authentic reading**. Recon fou
 - The retelling of the good Samaritan (`nb-a2-1-09`) is in the course's own words, not a Bible translation; `nb-a2-2-03` (the troll on the bridge) is an original tale.
 - On 2026-10-07 the analyzer gave no reading for 31 forms in the Bokmål units (reported to package B, who is adding them and merging troll/trollet and bro/bru under one lemma): a form with no reading counts as its own lemma, which lowers coverage a little and breaks recycling for that word. Re-run the gate after B's change.
 - Units 1 and 2 are in the allowance band because Stage 0 secures only a few words. Two more short Stage 0 scenes using its weak lemmas (`bo`, `snakke`, `norsk`, `by`, `gjerne`, `men`, `te`, `drikke`, `han`) would lift them.
+
+## 7. The b1-bridge of 2026-10-08, and the pass over the early units
+
+Written by the Norwegian content package on 2026-10-08. Nothing in this section was read by a native speaker; everything is `machine-draft`. The source of truth is still `authoring/<stage>/NN.txt` plus `authoring/build.mjs` (the build now also reads `authoring/b1-bridge/NN.txt`, level `B1`); the JSON units are rebuilt from them.
+
+### 7.1 Why the bridge is written, not imported
+
+Section 5 stays true about the library (nothing authentic can be bundled before the owner approves downloads and a person verifies rights). The bridge is therefore **24 new controlled units**, written for the ladder from nothing but the ladder's own words and the course's characters; no library text, no dictionary, no download, and none of the rights-unverified heritage leads is used as text. One continuous story: Sam, now in his second year in Bergen, finds a job in a bookshop (units 1-4), is paid and moves into a flat of his own (5-10), meets his neighbours, watches the municipal election (11), handles a difficult customer (12), is with Nils at the emergency clinic and hears Anna explain her work (13-14), joins a church home group, helps at the Christmas bazaar and spends Christmas Eve with the family (15-17), learns about the price of electricity, goes to the cabin and meets fog (18-19), keeps Easter (20), writes a letter to his mother (21), travels north on the coastal ship to the midnight sun (22-23) and, two years after his arrival, receives his mother in Bergen (24). The domains are work, daily life, community, news, health, faith, family, nature, travel and narrative.
+
+B1 grammar met, each in situations that need it: the past perfect (`hadde bodd`, `hadde prøvd`), perfect and modal + perfect (`burde ha sagt`, `skulle ha tatt`), subordinate clauses with `at`, `før`, `mens`, `fordi`, `selv om`, embedded questions, passive with `bli` (`ble pyntet`) and in -s (`det stemmes`, `kontrakten skrives under`), relative `som`-clauses, comparison (`dyrere`, `billigst`), indirect speech in narration (`sjefen spurte om han hadde jobbet ...`), `hvis ... ville`, `kommer til å`, and the connectors `dessuten`, `likevel`, `uansett`, `enten ... eller`, `egentlig`, `allerede`. The gate reports `bli-passive` first met in unit 7.
+
+### 7.2 The units (figures from `npm run ladder:check -- nb`, 2026-10-08)
+
+| unit | title | domain | words | cov3 % | new lemmas | the new lemmas as the analyzer lemmatised them |
+|---|---|---|---:|---:|---:|---|
+| nb-b1-bridge-01 | A job in the paper | work | 501 | 91.6 | 10 | avis, annonse, bokhandel, stilling, aldri, søke, erfaring, søknad, kunde, mens |
+| nb-b1-bridge-02 | The call from the bookshop | work | 530 | 93.8 | 9 | ennå, burde, intervju, nervøs, øve, hvorfor, ærlig, råd, forberede |
+| nb-b1-bridge-03 | The interview | work | 509 | 95.3 | 7 | arbeid, deltid, annenhver, helg, lønn, kollega, tilby |
+| nb-b1-bridge-04 | The first day | work | 481 | 91.1 | 9 | vise, kasse, legge, hylle, navn, rolig, feil, pause, lunsj |
+| nb-b1-bridge-05 | The first pay | daily-life | 564 | 92.4 | 9 | konto, leie, egen, stolt, spare, bank, leilighet, sted, regning |
+| nb-b1-bridge-06 | Flats to rent | daily-life | 466 | 93.6 | 8 | kjøkken, baderom, etasje, balkong, husleie, ledig, sammenligne, nummer |
+| nb-b1-bridge-07 | The viewing | daily-life | 528 | 92.8 | 10 | utleier, visning, gulv, vegg, fuktig, flekk, male, skifte, dusj, viktig; first met: bli-passive |
+| nb-b1-bridge-08 | The contract | daily-life | 501 | 93.6 | 6 | dør, kontrakt, forklare, depositum, regel, skrive, under |
+| nb-b1-bridge-09 | Moving day | community | 503 | 95.2 | 7 | dugnad, bære, tung, trapp, løfte, pizza, heldig |
+| nb-b1-bridge-10 | The neighbours | community | 535 | 92.3 | 12 | lapp, søppel, støy, problem, kaste, glass, papir, plast, pose, barn, vaske, noe |
+| nb-b1-bridge-11 | The local election | news | 521 | 92.9 | 7 | kommune, stemme, parti, ordfører, mening, politiker, debatt |
+| nb-b1-bridge-12 | A difficult customer | work | 565 | 93.3 | 10 | sint, bestille, engelsk, klage, tilbake, kvittering, nok, sjekke, eller, levere |
+| nb-b1-bridge-13 | A fall from the bicycle | health | 551 | 91.8 | 11 | sykkel, sykle, hjelm, uten, fort, falle, hele, arm, brudd, legevakt, gips |
+| nb-b1-bridge-14 | What does a nurse do? | health | 563 | 94.8 | 9 | måle, temperatur, medisin, ganske, annen, vakt, frisk, ansvar, omsorg |
+| nb-b1-bridge-15 | The home group | faith | 509 | 92.1 | 12 | gruppe, tekst, leder, dele, glede, lignelse, hyrde, sau, over, mellom, bety, kjærlighet |
+| nb-b1-bridge-16 | The Christmas bazaar | community | 589 | 92.7 | 9 | basar, organisere, lodd, plakat, samle, strikke, allerede, bak, premie |
+| nb-b1-bridge-17 | Christmas Eve | family | 566 | 92.8 | 9 | jul, julaften, tre, pynte, stjerne, tradisjon, grøt, mandel, likevel |
+| nb-b1-bridge-18 | The electricity price | news | 528 | 94.7 | 6 | bruke, pris, øke, egentlig, tips, slå, av |
+| nb-b1-bridge-19 | Winter holiday at the cabin | nature | 593 | 94.4 | 8 | ferie, forsiktig, mot, løype, kakao, tåke, spor, følge |
+| nb-b1-bridge-20 | Easter | faith | 538 | 91.6 | 10 | påske, krim, enten, blant, kors, dø, grav, tom, sjokolade, frokost |
+| nb-b1-bridge-21 | A letter to Mum | family | 551 | 96.0 | 8 | ensom, faktisk, takknemlig, hverdag, forandre, vokse, drøm, hurtigrute |
+| nb-b1-bridge-22 | On board the coastal ship | travel | 558 | 91.9 | 10 | havn, skip, langs, kyst, lugar, dekk, rundt, vind, bølge, kaptein |
+| nb-b1-bridge-23 | The midnight sun | travel | 563 | 95.0 | 8 | uvanlig, øy, vakker, dessuten, himmel, midnattssol, forskjell, vandre |
+| nb-b1-bridge-24 | Two years in Norway | narrative | 595 | 98.0 | 6 | lufthavn, overraske, bagasje, klem, skål, både |
+
+Whole ladder after the pass: 72 units, 25,510 words, 0 errors, 0 warnings. The bridge averages about 93.5 % coverage after a2-2 (all 24 units are above 90 %, the minimum is 91.1 % in unit 4), and at most 12 new lemmas in a unit (2.4 per 100 words at the worst; the ceiling is 5). Unit 19 and unit 24 were trimmed to just under 600 words.
+
+### 7.3 Method
+
+1. The vocabulary was taken from the gate's own analysis (`inventory`), not from memory: for every candidate sentence the analyser reading of each token decides whether a word is "known" (met three times before). Sentences were written, run, and rewritten until the unit's new lemmas were few, useful and each one met again inside the unit.
+2. Recall of a2-2: every unit re-uses the lemmas of the last stage whose recurrence was weakest (the gate lists them as orphans or low-count lemmas), so the bridge is also the review of a2-2.
+3. English rescue on every line, as in the other stages. The recall sections are plain and machine-drafted.
+4. Names other than the five cast members are written plainly in the text (the builder only replaces `{ana} {luis} {marta} {nico} {sam} {city}`); non-cast speakers are declared with `speakers:` lines.
+5. Analyser traps met and worked around (not fixed in the engine, which belongs to another package): `men` read as `mene`; `bad` as `be`; `tenke etter`, `gå inn`, `leid ut`, `ta vare på` read as particle units; the imperative `bruk` read as a noun; `stolt` read as a form of `stole`; `lagde`/`laget` lemma split; `flere` needs a following noun. `får` (sheep or verb) was avoided by using `sau`.
+
+### 7.4 What else changed in the earlier stages
+
+- The 11 units under 88 % coverage were lifted above 88 % by adding recalls of already-met words and replacing singletons, without lowering any other unit.
+- The 11 recurrence warnings were structural (first two meetings too far apart). The introducing scenes' question-and-answer pairs were rewritten so a new word meets its second occurrence right after its first and its third later; the gate now reports 0 non-widening of 69 judged lemmas.
+- The 2 recycling warnings are gone (every unit with six followers has at most 25 % of its new lemmas unmet).
+- Units whose text changed are listed by `git diff` of `authoring/a1-1 ... a2-2`; the schedule in section 4 still describes the intended introduction order and was not rewritten line by line.
+
+### 7.5 Lexicon additions (all `machine-draft`)
+
+Appended only at the end of `lexicon-nouns-nb-4.ts` (62 noun rows), `lexicon-verbs-nb.ts` (13 verbs: forberede, sammenligne, løfte, levere, sjekke, klage, sykle, måle, strikke, organisere, pynte, øke, overraske) and `lexicon-adjectives-nb.ts` (nervøs, ærlig, fuktig, forsiktig, uvanlig). Duplicates of existing rows (59) were removed. Small in-place fixes to existing rows: `strøm` (m, strømmen/strømmer), `tre` and `drøm` plurals, `smake`, `stemme`, `leie` (-s, rent) and `tom` neuter/plural. `nb.ts` has no `version` field; the shared engine version in `norwegian/engine.ts` was not changed.
+
+### 7.6 Weak points of the bridge
+
+- The Norwegian is moderate contemporary Bokmål written by a machine and read by nobody; idiom, register (for example the job-advert and tenancy vocabulary) and the facts about Norway (hourly work in a bookshop, deposit and tenancy rules, the municipal election, emergency-clinic procedure, the coastal ship route and the midnight sun, Easter and Christmas customs, the electricity price) need a native reviewer.
+- The church scenes (units 15, 17, 20) use general Christian vocabulary and a parable in the course's own words, not a Bible translation.
+- Units 4 and 20 are the lowest in coverage (about 91 %); the new lemmas of the bridge are met in the bridge only 3 to 6 times, so the ladder after unit 24 should recall them.

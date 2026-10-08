@@ -43,6 +43,19 @@
     "work"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "speakers": {
     "I": "Interviewerin",
     "A": "Anna",
@@ -79,54 +92,54 @@
               "english": "She drinks a sip of water."
             },
             {
+              "speaker": "I",
               "text": "Guten Tag, Frau Anna.",
-              "english": "Good afternoon, Frau Anna.",
-              "speaker": "I"
+              "english": "Good afternoon, Frau Anna."
             },
             {
+              "speaker": "I",
               "text": "Schön, dass Sie da sind.",
-              "english": "Nice that you are here.",
-              "speaker": "I"
+              "english": "Nice that you are here."
             },
             {
+              "speaker": "A",
               "text": "Guten Tag.",
-              "english": "Good afternoon.",
-              "speaker": "A"
+              "english": "Good afternoon."
             },
             {
+              "speaker": "A",
               "text": "Danke für die Einladung.",
-              "english": "Thank you for the invitation.",
-              "speaker": "A"
+              "english": "Thank you for the invitation."
             },
             {
+              "speaker": "A",
               "text": "Es ist mein erstes Interview.",
-              "english": "It is my first interview.",
-              "speaker": "A"
+              "english": "It is my first interview."
             },
             {
+              "speaker": "I",
               "text": "Dann ist es für uns beide ein bisschen neu.",
-              "english": "Then it is a little new for both of us.",
-              "speaker": "I"
+              "english": "Then it is a little new for both of us."
             },
             {
+              "speaker": "I",
               "text": "Sie sind Krankenschwester, nicht wahr?",
-              "english": "You are a nurse, aren't you?",
-              "speaker": "I"
+              "english": "You are a nurse, aren't you?"
             },
             {
+              "speaker": "A",
               "text": "Ja, ich arbeite seit sieben Jahren im Krankenhaus.",
-              "english": "Yes, I have been working in the hospital for seven years.",
-              "speaker": "A"
+              "english": "Yes, I have been working in the hospital for seven years."
             },
             {
+              "speaker": "A",
               "text": "Ich bin auf der Station für innere Medizin.",
-              "english": "I am on the ward for internal medicine.",
-              "speaker": "A"
+              "english": "I am on the ward for internal medicine."
             },
             {
+              "speaker": "A",
               "text": "Meine Station liegt im dritten Stock.",
-              "english": "My ward is on the third floor.",
-              "speaker": "A"
+              "english": "My ward is on the third floor."
             }
           ]
         }
@@ -138,119 +151,119 @@
         {
           "sentences": [
             {
+              "speaker": "I",
               "text": "Erzählen Sie uns bitte von Ihrem Alltag.",
-              "english": "Please tell us about your everyday life.",
-              "speaker": "I"
+              "english": "Please tell us about your everyday life."
             },
             {
+              "speaker": "I",
               "text": "Wie sieht eine Schicht aus?",
-              "english": "What does a shift look like?",
-              "speaker": "I"
+              "english": "What does a shift look like?"
             },
             {
+              "speaker": "A",
               "text": "Es gibt drei Schichten: Früh, Spät und Nacht.",
-              "english": "There are three shifts: early, late and night.",
-              "speaker": "A"
+              "english": "There are three shifts: early, late and night."
             },
             {
+              "speaker": "A",
               "text": "Die Frühschicht beginnt um sechs Uhr.",
-              "english": "The early shift begins at six.",
-              "speaker": "A"
+              "english": "The early shift begins at six."
             },
             {
+              "speaker": "A",
               "text": "Zuerst machen wir eine Übergabe.",
-              "english": "First we do a handover.",
-              "speaker": "A"
+              "english": "First we do a handover."
             },
             {
+              "speaker": "A",
               "text": "Die Kollegin von der Nacht erzählt, was passiert ist.",
-              "english": "The colleague from the night tells what has happened.",
-              "speaker": "A"
+              "english": "The colleague from the night tells what has happened."
             },
             {
+              "speaker": "I",
               "text": "Und danach?",
-              "english": "And afterwards?",
-              "speaker": "I"
+              "english": "And afterwards?"
             },
             {
+              "speaker": "I",
               "text": "Was machen Sie dann auf der Station?",
-              "english": "What do you do then on the ward?",
-              "speaker": "I"
+              "english": "What do you do then on the ward?"
             },
             {
+              "speaker": "A",
               "text": "Ich gehe von Zimmer zu Zimmer.",
-              "english": "I go from room to room.",
-              "speaker": "A"
+              "english": "I go from room to room."
             },
             {
+              "speaker": "A",
               "text": "Ich messe bei jedem Patienten die Temperatur.",
-              "english": "I measure every patient's temperature.",
-              "speaker": "A"
+              "english": "I measure every patient's temperature."
             },
             {
+              "speaker": "A",
               "text": "Ich frage: Haben Sie gut geschlafen?",
-              "english": "I ask: did you sleep well?",
-              "speaker": "A"
+              "english": "I ask: did you sleep well?"
             },
             {
+              "speaker": "A",
               "text": "Haben Sie Durst?",
-              "english": "Are you thirsty?",
-              "speaker": "A"
+              "english": "Are you thirsty?"
             },
             {
+              "speaker": "A",
               "text": "Wie ist der Magen?",
-              "english": "How is the stomach?",
-              "speaker": "A"
+              "english": "How is the stomach?"
             },
             {
+              "speaker": "I",
               "text": "Das sind viele Fragen.",
-              "english": "That is a lot of questions.",
-              "speaker": "I"
+              "english": "That is a lot of questions."
             },
             {
+              "speaker": "I",
               "text": "Wie viele Patienten haben Sie pro Schicht?",
-              "english": "How many patients do you have per shift?",
-              "speaker": "I"
+              "english": "How many patients do you have per shift?"
             },
             {
+              "speaker": "A",
               "text": "Meistens zehn bis zwölf.",
-              "english": "Mostly ten to twelve.",
-              "speaker": "A"
+              "english": "Mostly ten to twelve."
             },
             {
+              "speaker": "A",
               "text": "Das ist viel, aber es ist normal.",
-              "english": "That is a lot, but it is normal.",
-              "speaker": "A"
+              "english": "That is a lot, but it is normal."
             },
             {
+              "speaker": "I",
               "text": "Zwölf Patienten, und jeder hat andere Probleme.",
-              "english": "Twelve patients, and each has different problems.",
-              "speaker": "I"
+              "english": "Twelve patients, and each has different problems."
             },
             {
+              "speaker": "I",
               "text": "Wie schaffen Sie das?",
-              "english": "How do you manage that?",
-              "speaker": "I"
+              "english": "How do you manage that?"
             },
             {
+              "speaker": "A",
               "text": "Es ist nicht leicht.",
-              "english": "It is not easy.",
-              "speaker": "A"
+              "english": "It is not easy."
             },
             {
+              "speaker": "A",
               "text": "Ich schaffe es nur, weil wir im Team arbeiten.",
-              "english": "I only manage it because we work as a team.",
-              "speaker": "A"
+              "english": "I only manage it because we work as a team."
             },
             {
+              "speaker": "A",
               "text": "Jeder hilft jedem.",
-              "english": "Everyone helps everyone.",
-              "speaker": "A"
+              "english": "Everyone helps everyone."
             },
             {
+              "speaker": "A",
               "text": "Wenn eine Kollegin Hilfe braucht, gehe ich hin.",
-              "english": "When a colleague needs help, I go there.",
-              "speaker": "A"
+              "english": "When a colleague needs help, I go there."
             }
           ]
         }
@@ -262,104 +275,104 @@
         {
           "sentences": [
             {
+              "speaker": "I",
               "text": "Sie arbeiten oft im Nachtdienst.",
-              "english": "You often work in the night service.",
-              "speaker": "I"
+              "english": "You often work in the night service."
             },
             {
+              "speaker": "I",
               "text": "Wie ist das?",
-              "english": "What is that like?",
-              "speaker": "I"
+              "english": "What is that like?"
             },
             {
+              "speaker": "A",
               "text": "Der Nachtdienst ist hart.",
-              "english": "The night service is hard.",
-              "speaker": "A"
+              "english": "The night service is hard."
             },
             {
+              "speaker": "A",
               "text": "Man schläft am Tag, und man ist nachts wach.",
-              "english": "You sleep in the day, and you are awake at night.",
-              "speaker": "A"
+              "english": "You sleep in the day, and you are awake at night."
             },
             {
+              "speaker": "A",
               "text": "Der Körper weiß nie, wann Tag und wann Nacht ist.",
-              "english": "The body never knows when it is day and when it is night.",
-              "speaker": "A"
+              "english": "The body never knows when it is day and when it is night."
             },
             {
+              "speaker": "A",
               "text": "Man ist ständig müde.",
-              "english": "You are constantly tired.",
-              "speaker": "A"
+              "english": "You are constantly tired."
             },
             {
+              "speaker": "I",
               "text": "Wie schaffen Sie es, wach zu bleiben?",
-              "english": "How do you manage to stay awake?",
-              "speaker": "I"
+              "english": "How do you manage to stay awake?"
             },
             {
+              "speaker": "A",
               "text": "Mit Kaffee und mit Humor.",
-              "english": "With coffee and with humour.",
-              "speaker": "A"
+              "english": "With coffee and with humour."
             },
             {
+              "speaker": "A",
               "text": "Und mit einem kurzen Spaziergang im Hof.",
-              "english": "And with a short walk in the yard.",
-              "speaker": "A"
+              "english": "And with a short walk in the yard."
             },
             {
+              "speaker": "A",
               "text": "Aber der Nachtdienst hat auch etwas Schönes.",
-              "english": "But the night service also has something nice about it.",
-              "speaker": "A"
+              "english": "But the night service also has something nice about it."
             },
             {
+              "speaker": "A",
               "text": "In der Nacht ist alles ruhiger.",
-              "english": "At night everything is quieter.",
-              "speaker": "A"
+              "english": "At night everything is quieter."
             },
             {
+              "speaker": "A",
               "text": "Die Menschen sprechen dann mehr.",
-              "english": "The people then talk more.",
-              "speaker": "A"
+              "english": "The people then talk more."
             },
             {
+              "speaker": "A",
               "text": "Manche erzählen mir ihr ganzes Leben.",
-              "english": "Some tell me their whole life.",
-              "speaker": "A"
+              "english": "Some tell me their whole life."
             },
             {
+              "speaker": "I",
               "text": "Das ist sicher auch schwer.",
-              "english": "That is surely hard too.",
-              "speaker": "I"
+              "english": "That is surely hard too."
             },
             {
+              "speaker": "I",
               "text": "Gibt es Nächte, die Sie nie vergessen?",
-              "english": "Are there nights that you never forget?",
-              "speaker": "I"
+              "english": "Are there nights that you never forget?"
             },
             {
+              "speaker": "A",
               "text": "Ja.",
-              "english": "Yes.",
-              "speaker": "A"
+              "english": "Yes."
             },
             {
+              "speaker": "A",
               "text": "Es gibt Nächte mit viel Stress.",
-              "english": "There are nights with a lot of stress.",
-              "speaker": "A"
+              "english": "There are nights with a lot of stress."
             },
             {
+              "speaker": "A",
               "text": "Dann kommen drei Notfälle auf einmal.",
-              "english": "Then three emergencies come at once.",
-              "speaker": "A"
+              "english": "Then three emergencies come at once."
             },
             {
+              "speaker": "A",
               "text": "Dann habe ich keine Zeit zum Nachdenken.",
-              "english": "Then I have no time to think.",
-              "speaker": "A"
+              "english": "Then I have no time to think."
             },
             {
+              "speaker": "A",
               "text": "Ich muss einfach handeln.",
-              "english": "I just have to act.",
-              "speaker": "A"
+              "english": "I just have to act."
             }
           ]
         }
@@ -371,104 +384,104 @@
         {
           "sentences": [
             {
+              "speaker": "I",
               "text": "Sie arbeiten mit kranken Menschen.",
-              "english": "You work with sick people.",
-              "speaker": "I"
+              "english": "You work with sick people."
             },
             {
+              "speaker": "I",
               "text": "Was ist das Schwerste daran?",
-              "english": "What is the hardest part?",
-              "speaker": "I"
+              "english": "What is the hardest part?"
             },
             {
+              "speaker": "A",
               "text": "Das Schwerste ist, wenn jemand ernst krank ist und Angst hat.",
-              "english": "The hardest part is when someone is seriously ill and afraid.",
-              "speaker": "A"
+              "english": "The hardest part is when someone is seriously ill and afraid."
             },
             {
+              "speaker": "A",
               "text": "Ich sehe dann die Symptome, aber ich sehe auch den Menschen dahinter.",
-              "english": "Then I see the symptoms, but I also see the person behind them.",
-              "speaker": "A"
+              "english": "Then I see the symptoms, but I also see the person behind them."
             },
             {
+              "speaker": "I",
               "text": "Haben Sie Ratschläge für Menschen, die krank sind?",
-              "english": "Do you have advice for people who are ill?",
-              "speaker": "I"
+              "english": "Do you have advice for people who are ill?"
             },
             {
+              "speaker": "A",
               "text": "Mein wichtigster Ratschlag ist: Ruhen Sie sich aus.",
-              "english": "My most important advice is: rest.",
-              "speaker": "A"
+              "english": "My most important advice is: rest."
             },
             {
+              "speaker": "A",
               "text": "Viele denken, sie müssen weiterarbeiten.",
-              "english": "Many think they have to keep working.",
-              "speaker": "A"
+              "english": "Many think they have to keep working."
             },
             {
+              "speaker": "A",
               "text": "Bei Grippe schwitzt man, man friert, und man hat Fieber.",
-              "english": "With flu you sweat, you shiver, and you have a fever.",
-              "speaker": "A"
+              "english": "With flu you sweat, you shiver, and you have a fever."
             },
             {
+              "speaker": "A",
               "text": "Dann hilft nur Ruhe.",
-              "english": "Then only rest helps.",
-              "speaker": "A"
+              "english": "Then only rest helps."
             },
             {
+              "speaker": "A",
               "text": "Man soll viel trinken und tief atmen.",
-              "english": "You should drink a lot and breathe deeply.",
-              "speaker": "A"
+              "english": "You should drink a lot and breathe deeply."
             },
             {
+              "speaker": "A",
               "text": "Bei Übelkeit oder Durchfall braucht man noch mehr Wasser.",
-              "english": "With nausea or diarrhoea you need even more water.",
-              "speaker": "A"
+              "english": "With nausea or diarrhoea you need even more water."
             },
             {
+              "speaker": "I",
               "text": "Und wann soll man zum Hausarzt oder in die Notaufnahme gehen?",
-              "english": "And when should one go to the family doctor or to the emergency room?",
-              "speaker": "I"
+              "english": "And when should one go to the family doctor or to the emergency room?"
             },
             {
+              "speaker": "A",
               "text": "Zum Hausarzt, wenn es nach drei Tagen nicht besser wird.",
-              "english": "To the family doctor if it does not get better after three days.",
-              "speaker": "A"
+              "english": "To the family doctor if it does not get better after three days."
             },
             {
+              "speaker": "A",
               "text": "In die Notaufnahme nur, wenn es ernst ist.",
-              "english": "To the emergency room only if it is serious.",
-              "speaker": "A"
+              "english": "To the emergency room only if it is serious."
             },
             {
+              "speaker": "A",
               "text": "Zum Beispiel bei Atemnot oder starken Schmerzen.",
-              "english": "For example with shortness of breath or strong pain.",
-              "speaker": "A"
+              "english": "For example with shortness of breath or strong pain."
             },
             {
+              "speaker": "A",
               "text": "Dann darf man nicht warten.",
-              "english": "Then one must not wait.",
-              "speaker": "A"
+              "english": "Then one must not wait."
             },
             {
+              "speaker": "I",
               "text": "Das ist ein guter Rat, danke.",
-              "english": "That is good advice, thank you.",
-              "speaker": "I"
+              "english": "That is good advice, thank you."
             },
             {
+              "speaker": "I",
               "text": "Wie viel Besserung sehen Sie bei Ihrer Arbeit?",
-              "english": "How much improvement do you see in your work?",
-              "speaker": "I"
+              "english": "How much improvement do you see in your work?"
             },
             {
+              "speaker": "A",
               "text": "Die meisten werden wieder gesund.",
-              "english": "Most of them get well again.",
-              "speaker": "A"
+              "english": "Most of them get well again."
             },
             {
+              "speaker": "A",
               "text": "Das ist der schönste Teil meiner Arbeit.",
-              "english": "That is the most beautiful part of my work.",
-              "speaker": "A"
+              "english": "That is the most beautiful part of my work."
             }
           ]
         }
@@ -480,49 +493,49 @@
         {
           "sentences": [
             {
+              "speaker": "I",
               "text": "Wie wird man eigentlich Krankenschwester?",
-              "english": "How does one actually become a nurse?",
-              "speaker": "I"
+              "english": "How does one actually become a nurse?"
             },
             {
+              "speaker": "A",
               "text": "Man macht eine Ausbildung.",
-              "english": "You do an apprenticeship.",
-              "speaker": "A"
+              "english": "You do an apprenticeship."
             },
             {
+              "speaker": "A",
               "text": "Sie dauert drei Jahre.",
-              "english": "It lasts three years.",
-              "speaker": "A"
+              "english": "It lasts three years."
             },
             {
+              "speaker": "A",
               "text": "Man lernt in der Schule und im Krankenhaus.",
-              "english": "You learn at school and in the hospital.",
-              "speaker": "A"
+              "english": "You learn at school and in the hospital."
             },
             {
+              "speaker": "A",
               "text": "Man lernt, wie man einen Verband macht und wie man mit Menschen spricht.",
-              "english": "You learn how to put on a bandage and how to talk to people.",
-              "speaker": "A"
+              "english": "You learn how to put on a bandage and how to talk to people."
             },
             {
+              "speaker": "I",
               "text": "Und was verdient man?",
-              "english": "And what does one earn?",
-              "speaker": "I"
+              "english": "And what does one earn?"
             },
             {
+              "speaker": "A",
               "text": "Nicht so viel, wie man verdienen sollte.",
-              "english": "Not as much as one should earn.",
-              "speaker": "A"
+              "english": "Not as much as one should earn."
             },
             {
+              "speaker": "A",
               "text": "Aber es reicht zum Leben.",
-              "english": "But it is enough to live on.",
-              "speaker": "A"
+              "english": "But it is enough to live on."
             },
             {
+              "speaker": "A",
               "text": "Man muss den Beruf aus Liebe machen, nicht nur für das Geld.",
-              "english": "You have to do the profession out of love, not only for the money.",
-              "speaker": "A"
+              "english": "You have to do the profession out of love, not only for the money."
             }
           ]
         }
@@ -534,134 +547,134 @@
         {
           "sentences": [
             {
+              "speaker": "I",
               "text": "Sie sprechen von dem Menschen hinter dem Symptom.",
-              "english": "You speak of the person behind the symptom.",
-              "speaker": "I"
+              "english": "You speak of the person behind the symptom."
             },
             {
+              "speaker": "I",
               "text": "Ist das auch eine Frage des Mitleids?",
-              "english": "Is that also a question of pity?",
-              "speaker": "I"
+              "english": "Is that also a question of pity?"
             },
             {
+              "speaker": "A",
               "text": "Ja, aber Mitleid allein reicht nicht.",
-              "english": "Yes, but pity alone is not enough.",
-              "speaker": "A"
+              "english": "Yes, but pity alone is not enough."
             },
             {
+              "speaker": "A",
               "text": "Man muss auch handeln und pflegen können.",
-              "english": "You must also be able to act and to care.",
-              "speaker": "A"
+              "english": "You must also be able to act and to care."
             },
             {
+              "speaker": "A",
               "text": "Pflege ist mehr als Waschen und Medikamente.",
-              "english": "Care is more than washing and medicine.",
-              "speaker": "A"
+              "english": "Care is more than washing and medicine."
             },
             {
+              "speaker": "A",
               "text": "Pflege heißt: Ich bin für dich da.",
-              "english": "Care means: I am here for you.",
-              "speaker": "A"
+              "english": "Care means: I am here for you."
             },
             {
+              "speaker": "I",
               "text": "Das klingt fast wie eine Geschichte aus der Bibel.",
-              "english": "That sounds almost like a story from the Bible.",
-              "speaker": "I"
+              "english": "That sounds almost like a story from the Bible."
             },
             {
+              "speaker": "A",
               "text": "Das stimmt.",
-              "english": "That is true.",
-              "speaker": "A"
+              "english": "That is true."
             },
             {
+              "speaker": "A",
               "text": "Ich denke oft an die Geschichte vom Samariter.",
-              "english": "I often think of the story of the Samaritan.",
-              "speaker": "A"
+              "english": "I often think of the story of the Samaritan."
             },
             {
+              "speaker": "A",
               "text": "Kennen Sie sie?",
-              "english": "Do you know it?",
-              "speaker": "A"
+              "english": "Do you know it?"
             },
             {
+              "speaker": "I",
               "text": "Ein Mann wurde überfallen und ausgeraubt, nicht wahr?",
-              "english": "A man was attacked and robbed, wasn't he?",
-              "speaker": "I"
+              "english": "A man was attacked and robbed, wasn't he?"
             },
             {
+              "speaker": "A",
               "text": "Genau.",
-              "english": "Exactly.",
-              "speaker": "A"
+              "english": "Exactly."
             },
             {
+              "speaker": "A",
               "text": "Ein Priester und ein Gesetzeslehrer gingen an ihm vorbei.",
-              "english": "A priest and a teacher of the law walked past him.",
-              "speaker": "A"
+              "english": "A priest and a teacher of the law walked past him."
             },
             {
+              "speaker": "A",
               "text": "Der Samariter blieb stehen.",
-              "english": "The Samaritan stopped.",
-              "speaker": "A"
+              "english": "The Samaritan stopped."
             },
             {
+              "speaker": "A",
               "text": "Er verband die Wunden und goss Wein darauf.",
-              "english": "He bandaged the wounds and poured wine on them.",
-              "speaker": "A"
+              "english": "He bandaged the wounds and poured wine on them."
             },
             {
+              "speaker": "A",
               "text": "Dann brachte er ihn auf seinem Esel zur Herberge.",
-              "english": "Then he took him on his donkey to the inn.",
-              "speaker": "A"
+              "english": "Then he took him on his donkey to the inn."
             },
             {
+              "speaker": "A",
               "text": "Dort bezahlte er den Wirt und sagte: Pflege ihn.",
-              "english": "There he paid the innkeeper and said: care for him.",
-              "speaker": "A"
+              "english": "There he paid the innkeeper and said: care for him."
             },
             {
+              "speaker": "A",
               "text": "Das ist für mich barmherzig sein.",
-              "english": "For me that is being merciful.",
-              "speaker": "A"
+              "english": "For me that is being merciful."
             },
             {
+              "speaker": "I",
               "text": "Und das tun Sie jeden Tag?",
-              "english": "And you do that every day?",
-              "speaker": "I"
+              "english": "And you do that every day?"
             },
             {
+              "speaker": "A",
               "text": "Ich versuche es.",
-              "english": "I try.",
-              "speaker": "A"
+              "english": "I try."
             },
             {
+              "speaker": "A",
               "text": "Aber ich bin auch nur ein Mensch.",
-              "english": "But I am only human too.",
-              "speaker": "A"
+              "english": "But I am only human too."
             },
             {
+              "speaker": "A",
               "text": "Manchmal gehe ich selbst an jemandem vorbei, weil ich müde bin.",
-              "english": "Sometimes I walk past somebody myself because I am tired.",
-              "speaker": "A"
+              "english": "Sometimes I walk past somebody myself because I am tired."
             },
             {
+              "speaker": "A",
               "text": "Im Gesetz steht: Liebe deinen Nächsten.",
-              "english": "In the law it says: love your neighbour.",
-              "speaker": "A"
+              "english": "In the law it says: love your neighbour."
             },
             {
+              "speaker": "A",
               "text": "Das ist für mich ein ewiges Wort.",
-              "english": "For me that is an eternal word.",
-              "speaker": "A"
+              "english": "For me that is an eternal word."
             },
             {
+              "speaker": "A",
               "text": "Die Räuber in der Geschichte sind nicht das Wichtigste.",
-              "english": "The robbers in the story are not the most important thing.",
-              "speaker": "A"
+              "english": "The robbers in the story are not the most important thing."
             },
             {
+              "speaker": "A",
               "text": "Das Wichtigste ist der Mann, der geholfen hat.",
-              "english": "The most important thing is the man who helped.",
-              "speaker": "A"
+              "english": "The most important thing is the man who helped."
             }
           ]
         }
@@ -673,104 +686,104 @@
         {
           "sentences": [
             {
+              "speaker": "I",
               "text": "Woher nehmen Sie die Kraft für diese Arbeit?",
-              "english": "Where do you get the strength for this work?",
-              "speaker": "I"
+              "english": "Where do you get the strength for this work?"
             },
             {
+              "speaker": "A",
               "text": "Aus verschiedenen Quellen.",
-              "english": "From various sources.",
-              "speaker": "A"
+              "english": "From various sources."
             },
             {
+              "speaker": "A",
               "text": "Aus der Familie, aus meiner Gemeinde und aus der Natur.",
-              "english": "From my family, from my church and from nature.",
-              "speaker": "A"
+              "english": "From my family, from my church and from nature."
             },
             {
+              "speaker": "A",
               "text": "Wenn ich frei habe, gehe ich gern spazieren.",
-              "english": "When I am off I like going for a walk.",
-              "speaker": "A"
+              "english": "When I am off I like going for a walk."
             },
             {
+              "speaker": "A",
               "text": "In Leipzig gibt es viele schöne Wege.",
-              "english": "In Leipzig there are many nice paths.",
-              "speaker": "A"
+              "english": "In Leipzig there are many nice paths."
             },
             {
+              "speaker": "A",
               "text": "Neulich war ich mit Freunden in Dresden.",
-              "english": "Recently I was in Dresden with friends.",
-              "speaker": "A"
+              "english": "Recently I was in Dresden with friends."
             },
             {
+              "speaker": "A",
               "text": "Wir haben die Altstadt gesehen und den Dom in Meißen.",
-              "english": "We saw the old town and the cathedral in Meißen.",
-              "speaker": "A"
+              "english": "We saw the old town and the cathedral in Meißen."
             },
             {
+              "speaker": "I",
               "text": "Das klingt nach einer schönen Reise.",
-              "english": "That sounds like a nice trip.",
-              "speaker": "I"
+              "english": "That sounds like a nice trip."
             },
             {
+              "speaker": "A",
               "text": "Es war eine Reise voller Sehenswürdigkeiten.",
-              "english": "It was a journey full of sights.",
-              "speaker": "A"
+              "english": "It was a journey full of sights."
             },
             {
+              "speaker": "A",
               "text": "Das Schönste war der Spaziergang durch den Nebel.",
-              "english": "The most beautiful thing was the walk through the fog.",
-              "speaker": "A"
+              "english": "The most beautiful thing was the walk through the fog."
             },
             {
+              "speaker": "A",
               "text": "Die Heimreise war lang, aber die Erinnerung ist schön.",
-              "english": "The journey home was long, but the memory is beautiful.",
-              "speaker": "A"
+              "english": "The journey home was long, but the memory is beautiful."
             },
             {
+              "speaker": "A",
               "text": "Das hat mich beeindruckt.",
-              "english": "That impressed me.",
-              "speaker": "A"
+              "english": "That impressed me."
             },
             {
+              "speaker": "I",
               "text": "Sie haben also nicht nur Stress, sondern auch Erlebnisse, die Ihnen Kraft geben.",
-              "english": "So you do not only have stress but also experiences that give you strength.",
-              "speaker": "I"
+              "english": "So you do not only have stress but also experiences that give you strength."
             },
             {
+              "speaker": "A",
               "text": "Genau.",
-              "english": "Exactly.",
-              "speaker": "A"
+              "english": "Exactly."
             },
             {
+              "speaker": "A",
               "text": "Man muss etwas erleben, sonst wird man leer.",
-              "english": "You have to experience something, otherwise you become empty.",
-              "speaker": "A"
+              "english": "You have to experience something, otherwise you become empty."
             },
             {
+              "speaker": "A",
               "text": "Und schließlich glaube ich, dass Gott mir die Kraft gibt, die ich brauche.",
-              "english": "And in the end I believe that God gives me the strength I need.",
-              "speaker": "A"
+              "english": "And in the end I believe that God gives me the strength I need."
             },
             {
+              "speaker": "A",
               "text": "Ich erlebe das jede Woche.",
-              "english": "I experience that every week.",
-              "speaker": "A"
+              "english": "I experience that every week."
             },
             {
+              "speaker": "A",
               "text": "Wenn ich nicht mehr kann, kommt meistens ein Mensch mit einem Lächeln.",
-              "english": "When I cannot go on, a person with a smile usually comes.",
-              "speaker": "A"
+              "english": "When I cannot go on, a person with a smile usually comes."
             },
             {
+              "speaker": "A",
               "text": "Dann kann ich weitermachen.",
-              "english": "Then I can carry on.",
-              "speaker": "A"
+              "english": "Then I can carry on."
             },
             {
+              "speaker": "A",
               "text": "Auch das gehört zur Pflege: Man wird selbst gepflegt.",
-              "english": "That too is part of care: you are cared for yourself.",
-              "speaker": "A"
+              "english": "That too is part of care: you are cared for yourself."
             }
           ]
         }
@@ -782,49 +795,49 @@
         {
           "sentences": [
             {
+              "speaker": "I",
               "text": "Eine letzte Frage: Würden Sie den Beruf wieder wählen?",
-              "english": "One last question: would you choose the profession again?",
-              "speaker": "I"
+              "english": "One last question: would you choose the profession again?"
             },
             {
+              "speaker": "A",
               "text": "Ja, sofort.",
-              "english": "Yes, at once.",
-              "speaker": "A"
+              "english": "Yes, at once."
             },
             {
+              "speaker": "A",
               "text": "Der Beruf ist hart, und der Stress ist groß.",
-              "english": "The profession is hard, and the stress is great.",
-              "speaker": "A"
+              "english": "The profession is hard, and the stress is great."
             },
             {
+              "speaker": "A",
               "text": "Es ist eine harte Zeit für alle im Krankenhaus.",
-              "english": "It is a hard time for everyone in the hospital.",
-              "speaker": "A"
+              "english": "It is a hard time for everyone in the hospital."
             },
             {
+              "speaker": "A",
               "text": "Aber ich habe nie bereut, dass ich ihn gewählt habe.",
-              "english": "But I have never regretted choosing it.",
-              "speaker": "A"
+              "english": "But I have never regretted choosing it."
             },
             {
+              "speaker": "I",
               "text": "Das ist ein schönes Schlusswort.",
-              "english": "That is a nice closing word.",
-              "speaker": "I"
+              "english": "That is a nice closing word."
             },
             {
+              "speaker": "I",
               "text": "Frau Anna, ich danke Ihnen für das Interview.",
-              "english": "Frau Anna, I thank you for the interview.",
-              "speaker": "I"
+              "english": "Frau Anna, I thank you for the interview."
             },
             {
+              "speaker": "A",
               "text": "Ich danke Ihnen.",
-              "english": "I thank you.",
-              "speaker": "A"
+              "english": "I thank you."
             },
             {
+              "speaker": "A",
               "text": "Und allen, die nachts arbeiten, sage ich: Sie sind nicht vergessen.",
-              "english": "And to all who work at night I say: you are not forgotten.",
-              "speaker": "A"
+              "english": "And to all who work at night I say: you are not forgotten."
             },
             {
               "text": "Das rote Licht geht aus.",
@@ -847,31 +860,263 @@
               "english": "He picked her up and heard everything."
             },
             {
+              "speaker": "S",
               "text": "Das war sehr gut, Anna.",
-              "english": "That was very good, Anna.",
-              "speaker": "S"
+              "english": "That was very good, Anna."
             },
             {
+              "speaker": "S",
               "text": "Ich bin stolz auf dich.",
-              "english": "I am proud of you.",
-              "speaker": "S"
+              "english": "I am proud of you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Gespräch sitzen Anna und Sam in einem kleinen Café.",
+              "english": "After the conversation Anna and Sam sit in a small café."
+            },
+            {
+              "text": "Anna ist müde, aber sie ist auch froh, denn alles ist gut gegangen.",
+              "english": "Anna is tired, but she is also happy, because everything went well."
+            },
+            {
+              "text": "Sam sagt: Weißt du noch? Im Winter war ich sehr krank.",
+              "english": "Sam says: Do you remember? In winter I was very ill."
+            },
+            {
+              "text": "Du hast mir damals ein Thermometer gebracht.",
+              "english": "You brought me a thermometer back then."
+            },
+            {
+              "text": "Mein Mund war ganz trocken, und ich hatte keine Kraft.",
+              "english": "My mouth was quite dry, and I had no strength."
+            },
+            {
+              "text": "Anna lacht und sagt: Ich habe auf meine Uhr geschaut und lange gewartet.",
+              "english": "Anna laughs and says: I looked at my watch and waited for a long time."
+            },
+            {
+              "text": "Nach einer Weile habe ich dir gesagt: Das ist normal.",
+              "english": "After a while I told you: that is normal."
+            },
+            {
+              "text": "Du musstest zwei Liter am Tag trinken, und du hast es nicht gern getan.",
+              "english": "You had to drink two litres a day, and you did not like doing it."
+            },
+            {
+              "text": "Der Körper braucht Zeit, habe ich gesagt, und du hast es geglaubt.",
+              "english": "The body needs time, I said, and you believed it."
+            },
+            {
+              "text": "Dann habe ich dir leichte Sachen gebracht: Suppe, Brot und eine Banane.",
+              "english": "Then I brought you light things: soup, bread and a banana."
+            },
+            {
+              "text": "Frau Weber hat sonst jeden Cent gespart, aber für dich hat sie eine Ausnahme gemacht.",
+              "english": "Frau Weber otherwise saved every cent, but for you she made an exception."
+            },
+            {
+              "text": "Sie hat dir sogar eine Decke gebracht.",
+              "english": "She even brought you a blanket."
+            },
+            {
+              "text": "Das ist typisch für Frau Weber, sagt Anna.",
+              "english": "That is typical of Frau Weber, says Anna."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ich habe dir gesagt: Atme tief, und dann atme langsam aus.",
+              "english": "I told you: breathe deeply, and then breathe out slowly."
+            },
+            {
+              "text": "Deine Lunge war zum Glück frei.",
+              "english": "Your lungs were clear, luckily."
+            },
+            {
+              "text": "Wenn man Schmerzen in der Brust hat, muss man sofort zum Arzt gehen.",
+              "english": "If you have pain in the chest you must go to the doctor at once."
+            },
+            {
+              "text": "Der Weg dorthin war damals nicht weit.",
+              "english": "The way there was not far back then."
+            },
+            {
+              "text": "Auch Ben war krank und hat wie ein kleiner Löwe gehustet.",
+              "english": "Ben was ill too and coughed like a little lion."
+            },
+            {
+              "text": "Du solltest keinen Alkohol trinken, das habe ich dir auch gesagt.",
+              "english": "You should not drink alcohol, I told you that too."
+            },
+            {
+              "text": "Die Grippe ist ansteckend, und darum musstest du zu Hause bleiben.",
+              "english": "The flu is infectious, and that is why you had to stay at home."
+            },
+            {
+              "text": "So etwas kommt im Winter oft vor.",
+              "english": "Something like that often happens in winter."
+            },
+            {
+              "text": "Für den Arzt brauchtest du die Krankenkassenkarte.",
+              "english": "For the doctor you needed the health insurance card."
+            },
+            {
+              "text": "Sam lacht: Ich habe sie lange nicht gefunden.",
+              "english": "Sam laughs: I did not find it for a long time."
+            },
+            {
+              "text": "Übrigens lag auf dem Tisch ein Zettel von dir: Gute Besserung.",
+              "english": "By the way, on the table there was a note from you: get well soon."
+            },
+            {
+              "text": "Frau Weber hat auch einen Zettel gemacht und im Hof aufgehängt.",
+              "english": "Frau Weber also made a note and hung it up in the yard."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann erzählt Sam von dem Abend im Haus der Gemeinde.",
+              "english": "Then Sam tells of the evening in the church building."
+            },
+            {
+              "text": "Es war ein Mittwochabend, und Pastor Thomas sprach vom Weg nach Jericho.",
+              "english": "It was a Wednesday evening, and Pastor Thomas spoke of the way to Jericho."
+            },
+            {
+              "text": "Der Weg war lang, einsam und gefährlich, und es gab einen kleinen Bach.",
+              "english": "The way was long, lonely and dangerous, and there was a small stream."
+            },
+            {
+              "text": "Räuber schlugen einen Mann und liefen weg.",
+              "english": "Robbers beat a man and ran away."
+            },
+            {
+              "text": "Der Mann lag am Rand des Weges, ganz allein.",
+              "english": "The man lay at the side of the road, all alone."
+            },
+            {
+              "text": "Sam sagt: Das war wirklich schrecklich.",
+              "english": "Sam says: That was really terrible."
+            },
+            {
+              "text": "Dann kam ein frommer Mann vorbei.",
+              "english": "Then a pious man came by."
+            },
+            {
+              "text": "Er wollte den Mann nicht berühren und ging weiter.",
+              "english": "He did not want to touch the man and went on."
+            },
+            {
+              "text": "Das hat niemand erwartet, denn er glaubte an Gott.",
+              "english": "Nobody expected that, because he believed in God."
+            },
+            {
+              "text": "Danach kam ein Fremder, der ritt auf einem Esel.",
+              "english": "After that came a stranger, who rode on a donkey."
+            },
+            {
+              "text": "Er stieg vom Esel, ging zu dem Mann und half ihm.",
+              "english": "He got off the donkey, went to the man and helped him."
+            },
+            {
+              "text": "Der Esel stand die Nacht im Stall.",
+              "english": "The donkey stood in the stable for the night."
+            },
+            {
+              "text": "Am Morgen musste der Fremde weiterreisen, aber er hat für den Mann bezahlt.",
+              "english": "In the morning the stranger had to travel on, but he paid for the man."
+            },
+            {
+              "text": "Am Ende sagt Jesus: Geh und handle ebenso.",
+              "english": "At the end Jesus says: go and do likewise."
+            },
+            {
+              "text": "Anna sagt: Das mache ich jeden Tag im Krankenhaus.",
+              "english": "Anna says: I do that every day in the hospital."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam erzählt weiter von seinem Blog.",
+              "english": "Sam goes on telling about his blog."
+            },
+            {
+              "text": "Der neue Eintrag ist über Dresden.",
+              "english": "The new entry is about Dresden."
+            },
+            {
+              "text": "Die Altstadt liegt direkt am Fluss, und alles liegt nah beieinander.",
+              "english": "The old town lies directly on the river, and everything lies close together."
+            },
+            {
+              "text": "Auf dem Markt hat er eine Wurst gegessen.",
+              "english": "At the market he ate a sausage."
+            },
+            {
+              "text": "Er ist zu Fuß viele Treppen hinaufgestiegen, bis zum Rathaus.",
+              "english": "He climbed many stairs on foot, up to the town hall."
+            },
+            {
+              "text": "Aber Vorsicht, schreibt er: Am Sonntag sind viele Läden zu.",
+              "english": "But be careful, he writes: on Sunday many shops are closed."
+            },
+            {
+              "text": "Anna sagt: Das lese ich gern.",
+              "english": "Anna says: I like reading that."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann sprechen sie von Lukas und dem Leben auf dem Land.",
+              "english": "Then they talk of Lukas and life in the country."
+            },
+            {
+              "text": "Im Dorf war die Stille nicht schlecht, hat er gesagt.",
+              "english": "In the village the silence was not bad, he said."
+            },
+            {
+              "text": "Der Erfolg war nicht groß, aber echt.",
+              "english": "The success was not big, but real."
+            },
+            {
+              "text": "Er muss den Führerschein machen, und das kostet viel Geld.",
+              "english": "He has to get the driving licence, and that costs a lot of money."
+            },
+            {
+              "text": "Sam lacht und sagt: In Leipzig muss man mit dem Müll sehr vorsichtig sein.",
+              "english": "Sam laughs and says: in Leipzig one must be very careful with rubbish."
+            },
+            {
+              "text": "Wer Abfall auf die Straße wirft, bekommt eine Strafe.",
+              "english": "Whoever throws rubbish on the street gets a fine."
+            },
+            {
+              "text": "Anna sagt: Das ist auch gut so.",
+              "english": "Anna says: that is a good thing too."
+            },
+            {
+              "text": "Dann gehen sie zusammen nach Hause.",
+              "english": "Then they go home together."
             }
           ]
         }
       ]
     }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
-        }
-      }
-    ]
-  }
+  ]
 }

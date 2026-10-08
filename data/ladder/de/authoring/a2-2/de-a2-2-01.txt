@@ -1,0 +1,166 @@
+=== de-a2-2-01
+speakers: S=Sam, A=Anna, L=Lukas
+## Donnerstagabend in der Küche
+Es ist Donnerstag, und es wird schon dunkel. || It is Thursday, and it is already getting dark.
+Sam, Anna und Lukas sitzen in Frau Webers Küche und trinken Tee. || Sam, Anna and Lukas are sitting in Frau Weber's kitchen drinking tea.
+Am Samstag haben alle drei frei, und Anna möchte den Tag planen. || On Saturday all three of them are free, and Anna wants to plan the day.
+
+[A] Ich habe einen Vorschlag für Samstag. || I have a suggestion for Saturday.
+[A] Aber ich weiß noch nicht, ob alles möglich ist. || But I do not know yet whether everything is possible.
+[L] Dann sag ihn uns doch. || Then tell us.
+[A] Am Morgen hat Jonas einen Termin. || In the morning Jonas has an appointment.
+[A] Er sucht ein Zimmer und möchte um zehn Uhr eins sehen. || He is looking for a room and wants to see one at ten o'clock.
+[A] Es ist möbliert, und es kostet monatlich 280 Euro. || It is furnished, and it costs 280 euros a month.
+[S] Ist das nicht wahrscheinlich ein sehr kleines Zimmer? || Isn't it probably a very small room?
+[A] Vielleicht. || Perhaps.
+[A] Aber es ist bestimmt schön. || But it is certainly nice.
+[A] Dazu kommt noch eine Kaution. || On top of that there is a deposit.
+[A] Jonas hat gefragt, ob du mitkommst, Sam. || Jonas asked whether you would come along, Sam.
+[S] Ich? || Me?
+[S] Warum braucht er mich? || Why does he need me?
+[A] Du hast bei Frau Weber alles über Miete und Kaution gelernt. || You learned everything about rent and deposit at Frau Weber's.
+[A] Ich denke, dass er deshalb gern einen Freund dabei hat. || I think that is why he would like to have a friend with him.
+[S] Das ist ein guter Grund. || That is a good reason.
+[S] Ich komme gern mit, wenn mein Deutsch gut genug ist. || I will gladly come along, if my German is good enough.
+[L] Dein Deutsch ist gut. || Your German is good.
+[L] Du sprichst viel besser als im Sommer. || You speak much better than in the summer.
+[S] Was meinst du, Anna? || What do you think, Anna?
+[S] Ist das wirklich eine gute Idee? || Is that really a good idea?
+[A] Das ist meine Meinung: Ja. || That is my opinion: yes.
+[L] Das ist auch meine Meinung. || That is my opinion too.
+[L] Das hilft Jonas. || That helps Jonas.
+[S] Dann ist das ein guter Vorschlag. || Then that is a good suggestion.
+[S] Ich muss kurz überlegen. || I need to think for a moment.
+[A] Hat der Vermieter ein Problem mit zwei Gästen? || Does the landlord have a problem with two guests?
+[A] Ich glaube es nicht. || I do not think so.
+[S] Gut. || Good.
+[S] Dann ist der Morgen geplant. || Then the morning is planned.
+
+## Der Mittag
+[A] Am Mittag möchte ich zur Post. || At noon I would like to go to the post office.
+[S] Ich auch! || Me too!
+[S] Ich will nämlich ein Päckchen schicken. || I want to send a parcel, you see.
+[S] Meine Mutter hat Geburtstag, und ich habe ihr einen Brief geschrieben. || My mother has a birthday, and I have written her a letter.
+[S] In das Päckchen kommt auch ein Gruß von Frau Weber. || A greeting from Frau Weber is also going into the parcel.
+[L] Wie lange ist die Post am Samstag offen? || How long is the post office open on Saturday?
+[A] Sie ist bis zwölf Uhr offen, glaube ich. || It is open until twelve, I believe.
+[A] Ich bin nicht sicher. || I am not sure.
+[A] Wir müssen eine Briefmarke kaufen, sonst kommt das Päckchen nicht an. || We have to buy a stamp, otherwise the parcel does not arrive.
+[S] Das ist wirklich ein Problem. || That really is a problem.
+[S] Wenn Jonas zu lange braucht, kommen wir zu spät. || If Jonas takes too long, we will be too late.
+[L] Dafür gibt es eine Lösung. || There is a solution for that.
+[L] Du gehst zuerst allein zur Post, und wir sehen uns später. || You go to the post office alone first, and we meet later.
+[S] Ist das möglich? || Is that possible?
+[S] Ich bin sicher nicht schnell genug. || I am surely not fast enough.
+[L] Es geht nicht um die Zeit, sondern um den Weg. || It is not about the time but about the way.
+[L] Aber du kennst den Weg. || But you know the way.
+[L] Du bist schnell genug. || You are fast enough.
+[L] Du hast ja noch zwei Stunden Zeit. || After all, you have two hours.
+[S] Das ist eigentlich die beste Lösung. || That is actually the best solution.
+[S] Ich wollte nämlich nicht, dass Jonas wartet. || You see, I did not want Jonas to wait.
+[L] Das ist keine Lösung für immer, nur für den Samstag. || That is not a solution forever, only for Saturday.
+[S] Ich vermisse meine Heimat nämlich nicht so sehr, aber meine Mutter vermisse ich. || You see, I do not miss my home country so much, but I do miss my mother.
+[A] Es kommt bestimmt an, und wenn es wirklich ankommt, freut sie sich. || It will certainly arrive, and if it really arrives, she will be glad.
+
+## Bens Spiel
+[A] Am Nachmittag spielt Ben in der Kinderkirche. || In the afternoon Ben is acting in the children's church.
+[A] Er spielt nicht den älteren, sondern den jüngeren Sohn. || He plays not the older but the younger son.
+[A] Das ist sein größter Wunsch. || That is his greatest wish.
+[S] Das ist auch mein Wunsch: Ben soll Spaß haben. || That is my wish too: Ben should have fun.
+[L] Kennst du die Geschichte, Sam? || Do you know the story, Sam?
+[S] Ich glaube schon. || I think so.
+[S] Der Sohn nimmt sein Erbe und geht weg. || The son takes his inheritance and goes away.
+[S] Er gibt alles Geld aus, und am Ende hütet er Schweine. || He spends all the money, and in the end he looks after pigs.
+[A] Er hat so viel Hunger, dass er das Futter der Schweine essen möchte. || He is so hungry that he would like to eat the pigs' food.
+[S] Dann kehrt er zurück und sagt, dass er seine Schuld bereut. || Then he returns and says that he regrets his guilt.
+[A] Sein Vater umarmt und küsst ihn. || His father hugs and kisses him.
+[A] Er gibt ihm einen Ring, und alle feiern ein Fest. || He gives him a ring, and everybody celebrates with a feast.
+[L] Der Vater sagt: „Mein Sohn war tot und ist wieder lebendig.“ || The father says: "My son was dead and is alive again."
+[S] Und der ältere Bruder ist wütend, oder? || And the older brother is angry, isn't he?
+[A] Ja. || Yes.
+[A] Er arbeitet auf dem Feld und bekommt jeden Tag seinen Lohn. || He works in the field and gets his wages every day.
+[A] Er denkt: Der Arbeiter bekommt wohl mehr Freude als ich. || He thinks: the workers probably get more joy than I do.
+[L] Darauf antwortet der Vater: „Alles, was ich habe, gehört auch dir.“ || To that the father answers: "Everything I have belongs to you too."
+[A] Der Vater ist reich, aber er liebt seine Söhne mehr als sein Geld. || The father is rich, but he loves his sons more than his money.
+[S] Ich freue mich schon auf Ben. || I am already looking forward to Ben.
+[A] Er übt schon zwei Wochen. || He has been practising for two weeks already.
+[A] Er hofft, dass alle kommen. || He hopes that everyone comes.
+[S] Ich hoffe es auch. || I hope so too.
+[S] Wir wollen uns vor dem Spiel verabreden. || Let us arrange to meet before the play.
+[A] Es kostet nichts, aber die Gemeinde bittet um eine kleine Spende. || It costs nothing, but the church asks for a small donation.
+[L] Wofür ist die Spende? || What is the donation for?
+[A] Für neue Kleider, denn die Kinder haben nichts Schönes zum Anziehen. || For new costumes, because the children have nothing nice to wear.
+
+## Der Abend
+[L] Und am Abend habe ich einen Wunsch. || And in the evening I have a wish.
+[L] Ich möchte bei mir ein Spiel über Deutschland machen. || I would like to hold a game about Germany at my place.
+[L] Alle Freunde kommen, und Sam kann viel lernen. || All our friends come, and Sam can learn a lot.
+[L] Das ist der Grund für den Abend. || That is the reason for the evening.
+[S] Ein Spiel über Deutschland? || A game about Germany?
+[S] Hast du Lust, mich zu prüfen? || Do you feel like testing me?
+[A] Du hast einen guten Grund zu lernen, Sam. || You have a good reason to learn, Sam.
+[L] Keine Angst. || Don't worry.
+[L] Wir nennen den Abend „Deutschland für Neue“. || We will call the evening "Germany for newcomers".
+[A] Was für Fragen hast du? || What kind of questions do you have?
+[L] Zum Beispiel: Wie heißt die Hauptstadt von Sachsen? || For example: what is the capital of Saxony called?
+[L] In welchem Bundesland leben wir? || In which federal state do we live?
+[L] Wie heißt der große Fluss in Dresden? || What is the big river in Dresden called?
+[L] Wie heißt das Meer im Norden? || What is the sea in the north called?
+[L] Und welche Insel liegt dort? || And which island is there?
+[L] Wie viele Kilometer hat die Küste? || How many kilometres long is the coast?
+[S] Das weiß ich nicht. || I don't know that.
+[S] Aber ich lerne gern. || But I like learning.
+[L] Dann lernst du etwas. || Then you learn something.
+[L] Noch eine Frage: Welche Währung hat Deutschland? || One more question: what currency does Germany have?
+[S] Den Euro! || The euro!
+[S] Das weiß ich. || I know that.
+[L] Wie viele Millionen Menschen leben in diesem Land? || How many millions of people live in this country?
+[L] Welche Länder liegen im Westen, im Osten und im Süden? || Which countries lie in the west, the east and the south?
+[L] Wie lang ist die Grenze zu Österreich? || How long is the border with Austria?
+[L] Wer wählt den Kanzler, und wann ist die nächste Wahl? || Who elects the chancellor, and when is the next election?
+[A] Das ist eine Frage für Bürger, nicht für Neue. || That is a question for citizens, not for newcomers.
+[L] Das ist richtig. || True.
+[L] Ich frage auch: Was macht die Regierung, und was macht der Staat? || I will also ask: what does the government do, and what does the state do?
+[S] Das sind viele Fragen über die Welt, in der ich jetzt lebe. || Those are many questions about the world in which I now live.
+[L] Eigentlich ist es keine Schule, sondern ein Spiel. || Really it is not school but a game.
+[L] Wer verliert, macht den Kaffee. || Whoever loses makes the coffee.
+[A] Ich bin nicht sicher, ob alle Freunde Lust haben. || I am not sure whether all our friends will feel like it.
+[L] Wir können es machen. || We can do it.
+[L] Ich überlege schon, wen ich einlade. || I am already thinking about whom to invite.
+[A] Daniel hat bestimmt Lust. || Daniel certainly feels like it.
+[A] Und Sabine auch. || And Sabine too.
+[S] Meinst du, dass Daniel Zeit hat? || Do you think that Daniel has time?
+[L] Ich denke schon. || I think so.
+[L] Es ist aber wahrscheinlich besser, wenn ich ihn zuerst frage. || But it is probably better if I ask him first.
+[L] Ich möchte mich auch mit Sabine verabreden. || I would also like to arrange a time with Sabine.
+[L] Sam, kannst du dich mit Daniel verabreden? || Sam, can you arrange a time with Daniel?
+[A] Was ist, wenn es regnet? || What if it rains?
+[A] Dann kommt vielleicht keiner. || Then perhaps nobody comes.
+[A] Es regnet am Samstag wahrscheinlich. || It will probably rain on Saturday.
+[L] Es ist ein Abend zu Hause, nicht im Park. || It is an evening at home, not in the park.
+[L] Der Regen ist kein Problem. || The rain is not a problem.
+[L] Was meint ihr? || What do you think?
+[L] Ist der Plan zu groß für einen Tag? || Is the plan too big for one day?
+[A] Eigentlich ist die Freundschaft wichtig, nicht das Spiel. || Really it is the friendship that matters, not the game.
+[L] Da hast du recht. || You are right there.
+[L] Ich schreibe auf dem Computer eine Liste. || I will write a list on the computer.
+[S] Ich hoffe, dass ich nicht verliere. || I hope I do not lose.
+
+## Das Ergebnis
+[A] Also, noch einmal von vorn. || So, once more from the beginning.
+[A] Ich plane gern, das wisst ihr. || I like planning, as you know.
+[A] Um zehn Uhr gehen Jonas und Sam zum Zimmer. || At ten o'clock Jonas and Sam go to see the room.
+[A] Danach geht Sam allein zur Post. || After that Sam goes to the post office alone.
+[A] Am Nachmittag sehen wir Bens Spiel, und am Abend kommen die Freunde. || In the afternoon we watch Ben's play, and in the evening the friends come.
+[A] Habt ihr noch einen Vorschlag? || Do you have another suggestion?
+[A] Ist alles möglich? || Is everything possible?
+[S] Das sind drei große Dinge für einen Tag. || That is three big things for one day.
+[S] Vielleicht ist das zu viel? || Perhaps that is too much?
+[L] Wenn es zu viel ist, lassen wir das Spiel ausfallen. || If it is too much, we will drop the game.
+[A] Nein, nein. || No, no.
+[A] Meiner Meinung nach haben wir alles gut überlegt. || In my opinion we have thought everything over well.
+[S] Dann sage ich ja. || Then I say yes.
+[S] Danke für alles. || Thank you for everything.
+[L] Gern geschehen. || You're welcome.
+[L] Und vergiss das Päckchen nicht! || And don't forget the parcel!
+

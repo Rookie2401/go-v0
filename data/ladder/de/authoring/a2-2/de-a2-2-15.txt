@@ -1,0 +1,229 @@
+=== de-a2-2-15
+speakers: I=Interviewerin, A=Anna, S=Sam
+## Vor dem Mikrofon
+Es ist Dienstagnachmittag. || It is Tuesday afternoon.
+In einem kleinen Studio sitzt Anna vor einem Mikrofon. || In a small studio Anna sits in front of a microphone.
+Der Lokalsender hat sie zu einem Interview eingeladen. || The local radio station has invited her to an interview.
+Das Thema ist: Menschen, die in der Nacht arbeiten. || The subject is: people who work at night.
+Anna ist ein bisschen nervös. || Anna is a little nervous.
+Sie trinkt einen Schluck Wasser. || She drinks a sip of water.
+[I] Guten Tag, Frau Anna. || Good afternoon, Frau Anna.
+[I] Schön, dass Sie da sind. || Nice that you are here.
+[A] Guten Tag. || Good afternoon.
+[A] Danke für die Einladung. || Thank you for the invitation.
+[A] Es ist mein erstes Interview. || It is my first interview.
+[I] Dann ist es für uns beide ein bisschen neu. || Then it is a little new for both of us.
+[I] Sie sind Krankenschwester, nicht wahr? || You are a nurse, aren't you?
+[A] Ja, ich arbeite seit sieben Jahren im Krankenhaus. || Yes, I have been working in the hospital for seven years.
+[A] Ich bin auf der Station für innere Medizin. || I am on the ward for internal medicine.
+[A] Meine Station liegt im dritten Stock. || My ward is on the third floor.
+
+## Die Station und die Schicht
+[I] Erzählen Sie uns bitte von Ihrem Alltag. || Please tell us about your everyday life.
+[I] Wie sieht eine Schicht aus? || What does a shift look like?
+[A] Es gibt drei Schichten: Früh, Spät und Nacht. || There are three shifts: early, late and night.
+[A] Die Frühschicht beginnt um sechs Uhr. || The early shift begins at six.
+[A] Zuerst machen wir eine Übergabe. || First we do a handover.
+[A] Die Kollegin von der Nacht erzählt, was passiert ist. || The colleague from the night tells what has happened.
+[I] Und danach? || And afterwards?
+[I] Was machen Sie dann auf der Station? || What do you do then on the ward?
+[A] Ich gehe von Zimmer zu Zimmer. || I go from room to room.
+[A] Ich messe bei jedem Patienten die Temperatur. || I measure every patient's temperature.
+[A] Ich frage: Haben Sie gut geschlafen? || I ask: did you sleep well?
+[A] Haben Sie Durst? || Are you thirsty?
+[A] Wie ist der Magen? || How is the stomach?
+[I] Das sind viele Fragen. || That is a lot of questions.
+[I] Wie viele Patienten haben Sie pro Schicht? || How many patients do you have per shift?
+[A] Meistens zehn bis zwölf. || Mostly ten to twelve.
+[A] Das ist viel, aber es ist normal. || That is a lot, but it is normal.
+[I] Zwölf Patienten, und jeder hat andere Probleme. || Twelve patients, and each has different problems.
+[I] Wie schaffen Sie das? || How do you manage that?
+[A] Es ist nicht leicht. || It is not easy.
+[A] Ich schaffe es nur, weil wir im Team arbeiten. || I only manage it because we work as a team.
+[A] Jeder hilft jedem. || Everyone helps everyone.
+[A] Wenn eine Kollegin Hilfe braucht, gehe ich hin. || When a colleague needs help, I go there.
+
+## Der Nachtdienst
+[I] Sie arbeiten oft im Nachtdienst. || You often work in the night service.
+[I] Wie ist das? || What is that like?
+[A] Der Nachtdienst ist hart. || The night service is hard.
+[A] Man schläft am Tag, und man ist nachts wach. || You sleep in the day, and you are awake at night.
+[A] Der Körper weiß nie, wann Tag und wann Nacht ist. || The body never knows when it is day and when it is night.
+[A] Man ist ständig müde. || You are constantly tired.
+[I] Wie schaffen Sie es, wach zu bleiben? || How do you manage to stay awake?
+[A] Mit Kaffee und mit Humor. || With coffee and with humour.
+[A] Und mit einem kurzen Spaziergang im Hof. || And with a short walk in the yard.
+[A] Aber der Nachtdienst hat auch etwas Schönes. || But the night service also has something nice about it.
+[A] In der Nacht ist alles ruhiger. || At night everything is quieter.
+[A] Die Menschen sprechen dann mehr. || The people then talk more.
+[A] Manche erzählen mir ihr ganzes Leben. || Some tell me their whole life.
+[I] Das ist sicher auch schwer. || That is surely hard too.
+[I] Gibt es Nächte, die Sie nie vergessen? || Are there nights that you never forget?
+[A] Ja. || Yes.
+[A] Es gibt Nächte mit viel Stress. || There are nights with a lot of stress.
+[A] Dann kommen drei Notfälle auf einmal. || Then three emergencies come at once.
+[A] Dann habe ich keine Zeit zum Nachdenken. || Then I have no time to think.
+[A] Ich muss einfach handeln. || I just have to act.
+
+## Die schweren Fälle
+[I] Sie arbeiten mit kranken Menschen. || You work with sick people.
+[I] Was ist das Schwerste daran? || What is the hardest part?
+[A] Das Schwerste ist, wenn jemand ernst krank ist und Angst hat. || The hardest part is when someone is seriously ill and afraid.
+[A] Ich sehe dann die Symptome, aber ich sehe auch den Menschen dahinter. || Then I see the symptoms, but I also see the person behind them.
+[I] Haben Sie Ratschläge für Menschen, die krank sind? || Do you have advice for people who are ill?
+[A] Mein wichtigster Ratschlag ist: Ruhen Sie sich aus. || My most important advice is: rest.
+[A] Viele denken, sie müssen weiterarbeiten. || Many think they have to keep working.
+[A] Bei Grippe schwitzt man, man friert, und man hat Fieber. || With flu you sweat, you shiver, and you have a fever.
+[A] Dann hilft nur Ruhe. || Then only rest helps.
+[A] Man soll viel trinken und tief atmen. || You should drink a lot and breathe deeply.
+[A] Bei Übelkeit oder Durchfall braucht man noch mehr Wasser. || With nausea or diarrhoea you need even more water.
+[I] Und wann soll man zum Hausarzt oder in die Notaufnahme gehen? || And when should one go to the family doctor or to the emergency room?
+[A] Zum Hausarzt, wenn es nach drei Tagen nicht besser wird. || To the family doctor if it does not get better after three days.
+[A] In die Notaufnahme nur, wenn es ernst ist. || To the emergency room only if it is serious.
+[A] Zum Beispiel bei Atemnot oder starken Schmerzen. || For example with shortness of breath or strong pain.
+[A] Dann darf man nicht warten. || Then one must not wait.
+[I] Das ist ein guter Rat, danke. || That is good advice, thank you.
+[I] Wie viel Besserung sehen Sie bei Ihrer Arbeit? || How much improvement do you see in your work?
+[A] Die meisten werden wieder gesund. || Most of them get well again.
+[A] Das ist der schönste Teil meiner Arbeit. || That is the most beautiful part of my work.
+
+## Die Ausbildung
+[I] Wie wird man eigentlich Krankenschwester? || How does one actually become a nurse?
+[A] Man macht eine Ausbildung. || You do an apprenticeship.
+[A] Sie dauert drei Jahre. || It lasts three years.
+[A] Man lernt in der Schule und im Krankenhaus. || You learn at school and in the hospital.
+[A] Man lernt, wie man einen Verband macht und wie man mit Menschen spricht. || You learn how to put on a bandage and how to talk to people.
+[I] Und was verdient man? || And what does one earn?
+[A] Nicht so viel, wie man verdienen sollte. || Not as much as one should earn.
+[A] Aber es reicht zum Leben. || But it is enough to live on.
+[A] Man muss den Beruf aus Liebe machen, nicht nur für das Geld. || You have to do the profession out of love, not only for the money.
+
+## Mitleid und Pflege
+[I] Sie sprechen von dem Menschen hinter dem Symptom. || You speak of the person behind the symptom.
+[I] Ist das auch eine Frage des Mitleids? || Is that also a question of pity?
+[A] Ja, aber Mitleid allein reicht nicht. || Yes, but pity alone is not enough.
+[A] Man muss auch handeln und pflegen können. || You must also be able to act and to care.
+[A] Pflege ist mehr als Waschen und Medikamente. || Care is more than washing and medicine.
+[A] Pflege heißt: Ich bin für dich da. || Care means: I am here for you.
+[I] Das klingt fast wie eine Geschichte aus der Bibel. || That sounds almost like a story from the Bible.
+[A] Das stimmt. || That is true.
+[A] Ich denke oft an die Geschichte vom Samariter. || I often think of the story of the Samaritan.
+[A] Kennen Sie sie? || Do you know it?
+[I] Ein Mann wurde überfallen und ausgeraubt, nicht wahr? || A man was attacked and robbed, wasn't he?
+[A] Genau. || Exactly.
+[A] Ein Priester und ein Gesetzeslehrer gingen an ihm vorbei. || A priest and a teacher of the law walked past him.
+[A] Der Samariter blieb stehen. || The Samaritan stopped.
+[A] Er verband die Wunden und goss Wein darauf. || He bandaged the wounds and poured wine on them.
+[A] Dann brachte er ihn auf seinem Esel zur Herberge. || Then he took him on his donkey to the inn.
+[A] Dort bezahlte er den Wirt und sagte: Pflege ihn. || There he paid the innkeeper and said: care for him.
+[A] Das ist für mich barmherzig sein. || For me that is being merciful.
+[I] Und das tun Sie jeden Tag? || And you do that every day?
+[A] Ich versuche es. || I try.
+[A] Aber ich bin auch nur ein Mensch. || But I am only human too.
+[A] Manchmal gehe ich selbst an jemandem vorbei, weil ich müde bin. || Sometimes I walk past somebody myself because I am tired.
+[A] Im Gesetz steht: Liebe deinen Nächsten. || In the law it says: love your neighbour.
+[A] Das ist für mich ein ewiges Wort. || For me that is an eternal word.
+[A] Die Räuber in der Geschichte sind nicht das Wichtigste. || The robbers in the story are not the most important thing.
+[A] Das Wichtigste ist der Mann, der geholfen hat. || The most important thing is the man who helped.
+
+## Was mir Kraft gibt
+[I] Woher nehmen Sie die Kraft für diese Arbeit? || Where do you get the strength for this work?
+[A] Aus verschiedenen Quellen. || From various sources.
+[A] Aus der Familie, aus meiner Gemeinde und aus der Natur. || From my family, from my church and from nature.
+[A] Wenn ich frei habe, gehe ich gern spazieren. || When I am off I like going for a walk.
+[A] In Leipzig gibt es viele schöne Wege. || In Leipzig there are many nice paths.
+[A] Neulich war ich mit Freunden in Dresden. || Recently I was in Dresden with friends.
+[A] Wir haben die Altstadt gesehen und den Dom in Meißen. || We saw the old town and the cathedral in Meißen.
+[I] Das klingt nach einer schönen Reise. || That sounds like a nice trip.
+[A] Es war eine Reise voller Sehenswürdigkeiten. || It was a journey full of sights.
+[A] Das Schönste war der Spaziergang durch den Nebel. || The most beautiful thing was the walk through the fog.
+[A] Die Heimreise war lang, aber die Erinnerung ist schön. || The journey home was long, but the memory is beautiful.
+[A] Das hat mich beeindruckt. || That impressed me.
+[I] Sie haben also nicht nur Stress, sondern auch Erlebnisse, die Ihnen Kraft geben. || So you do not only have stress but also experiences that give you strength.
+[A] Genau. || Exactly.
+[A] Man muss etwas erleben, sonst wird man leer. || You have to experience something, otherwise you become empty.
+[A] Und schließlich glaube ich, dass Gott mir die Kraft gibt, die ich brauche. || And in the end I believe that God gives me the strength I need.
+[A] Ich erlebe das jede Woche. || I experience that every week.
+[A] Wenn ich nicht mehr kann, kommt meistens ein Mensch mit einem Lächeln. || When I cannot go on, a person with a smile usually comes.
+[A] Dann kann ich weitermachen. || Then I can carry on.
+[A] Auch das gehört zur Pflege: Man wird selbst gepflegt. || That too is part of care: you are cared for yourself.
+
+## Zum Schluss
+[I] Eine letzte Frage: Würden Sie den Beruf wieder wählen? || One last question: would you choose the profession again?
+[A] Ja, sofort. || Yes, at once.
+[A] Der Beruf ist hart, und der Stress ist groß. || The profession is hard, and the stress is great.
+[A] Es ist eine harte Zeit für alle im Krankenhaus. || It is a hard time for everyone in the hospital.
+[A] Aber ich habe nie bereut, dass ich ihn gewählt habe. || But I have never regretted choosing it.
+[I] Das ist ein schönes Schlusswort. || That is a nice closing word.
+[I] Frau Anna, ich danke Ihnen für das Interview. || Frau Anna, I thank you for the interview.
+[A] Ich danke Ihnen. || I thank you.
+[A] Und allen, die nachts arbeiten, sage ich: Sie sind nicht vergessen. || And to all who work at night I say: you are not forgotten.
+Das rote Licht geht aus. || The red light goes off.
+Anna lächelt. || Anna smiles.
+Sie war sehr gut. || She was very good.
+Draußen im Gang wartet schon Sam. || Outside in the corridor Sam is already waiting.
+Er hat sie abgeholt und hat alles gehört. || He picked her up and heard everything.
+[S] Das war sehr gut, Anna. || That was very good, Anna.
+[S] Ich bin stolz auf dich. || I am proud of you.
+
+
+## Erinnerst du dich?
+Nach dem Gespräch sitzen Anna und Sam in einem kleinen Café. || After the conversation Anna and Sam sit in a small café.
+Anna ist müde, aber sie ist auch froh, denn alles ist gut gegangen. || Anna is tired, but she is also happy, because everything went well.
+Sam sagt: Weißt du noch? Im Winter war ich sehr krank. || Sam says: Do you remember? In winter I was very ill.
+Du hast mir damals ein Thermometer gebracht. || You brought me a thermometer back then.
+Mein Mund war ganz trocken, und ich hatte keine Kraft. || My mouth was quite dry, and I had no strength.
+Anna lacht und sagt: Ich habe auf meine Uhr geschaut und lange gewartet. || Anna laughs and says: I looked at my watch and waited for a long time.
+Nach einer Weile habe ich dir gesagt: Das ist normal. || After a while I told you: that is normal.
+Du musstest zwei Liter am Tag trinken, und du hast es nicht gern getan. || You had to drink two litres a day, and you did not like doing it.
+Der Körper braucht Zeit, habe ich gesagt, und du hast es geglaubt. || The body needs time, I said, and you believed it.
+Dann habe ich dir leichte Sachen gebracht: Suppe, Brot und eine Banane. || Then I brought you light things: soup, bread and a banana.
+Frau Weber hat sonst jeden Cent gespart, aber für dich hat sie eine Ausnahme gemacht. || Frau Weber otherwise saved every cent, but for you she made an exception.
+Sie hat dir sogar eine Decke gebracht. || She even brought you a blanket.
+Das ist typisch für Frau Weber, sagt Anna. || That is typical of Frau Weber, says Anna.
+
+Ich habe dir gesagt: Atme tief, und dann atme langsam aus. || I told you: breathe deeply, and then breathe out slowly.
+Deine Lunge war zum Glück frei. || Your lungs were clear, luckily.
+Wenn man Schmerzen in der Brust hat, muss man sofort zum Arzt gehen. || If you have pain in the chest you must go to the doctor at once.
+Der Weg dorthin war damals nicht weit. || The way there was not far back then.
+Auch Ben war krank und hat wie ein kleiner Löwe gehustet. || Ben was ill too and coughed like a little lion.
+Du solltest keinen Alkohol trinken, das habe ich dir auch gesagt. || You should not drink alcohol, I told you that too.
+Die Grippe ist ansteckend, und darum musstest du zu Hause bleiben. || The flu is infectious, and that is why you had to stay at home.
+So etwas kommt im Winter oft vor. || Something like that often happens in winter.
+Für den Arzt brauchtest du die Krankenkassenkarte. || For the doctor you needed the health insurance card.
+Sam lacht: Ich habe sie lange nicht gefunden. || Sam laughs: I did not find it for a long time.
+Übrigens lag auf dem Tisch ein Zettel von dir: Gute Besserung. || By the way, on the table there was a note from you: get well soon.
+Frau Weber hat auch einen Zettel gemacht und im Hof aufgehängt. || Frau Weber also made a note and hung it up in the yard.
+
+Dann erzählt Sam von dem Abend im Haus der Gemeinde. || Then Sam tells of the evening in the church building.
+Es war ein Mittwochabend, und Pastor Thomas sprach vom Weg nach Jericho. || It was a Wednesday evening, and Pastor Thomas spoke of the way to Jericho.
+Der Weg war lang, einsam und gefährlich, und es gab einen kleinen Bach. || The way was long, lonely and dangerous, and there was a small stream.
+Räuber schlugen einen Mann und liefen weg. || Robbers beat a man and ran away.
+Der Mann lag am Rand des Weges, ganz allein. || The man lay at the side of the road, all alone.
+Sam sagt: Das war wirklich schrecklich. || Sam says: That was really terrible.
+Dann kam ein frommer Mann vorbei. || Then a pious man came by.
+Er wollte den Mann nicht berühren und ging weiter. || He did not want to touch the man and went on.
+Das hat niemand erwartet, denn er glaubte an Gott. || Nobody expected that, because he believed in God.
+Danach kam ein Fremder, der ritt auf einem Esel. || After that came a stranger, who rode on a donkey.
+Er stieg vom Esel, ging zu dem Mann und half ihm. || He got off the donkey, went to the man and helped him.
+Der Esel stand die Nacht im Stall. || The donkey stood in the stable for the night.
+Am Morgen musste der Fremde weiterreisen, aber er hat für den Mann bezahlt. || In the morning the stranger had to travel on, but he paid for the man.
+Am Ende sagt Jesus: Geh und handle ebenso. || At the end Jesus says: go and do likewise.
+Anna sagt: Das mache ich jeden Tag im Krankenhaus. || Anna says: I do that every day in the hospital.
+
+Sam erzählt weiter von seinem Blog. || Sam goes on telling about his blog.
+Der neue Eintrag ist über Dresden. || The new entry is about Dresden.
+Die Altstadt liegt direkt am Fluss, und alles liegt nah beieinander. || The old town lies directly on the river, and everything lies close together.
+Auf dem Markt hat er eine Wurst gegessen. || At the market he ate a sausage.
+Er ist zu Fuß viele Treppen hinaufgestiegen, bis zum Rathaus. || He climbed many stairs on foot, up to the town hall.
+Aber Vorsicht, schreibt er: Am Sonntag sind viele Läden zu. || But be careful, he writes: on Sunday many shops are closed.
+Anna sagt: Das lese ich gern. || Anna says: I like reading that.
+
+Dann sprechen sie von Lukas und dem Leben auf dem Land. || Then they talk of Lukas and life in the country.
+Im Dorf war die Stille nicht schlecht, hat er gesagt. || In the village the silence was not bad, he said.
+Der Erfolg war nicht groß, aber echt. || The success was not big, but real.
+Er muss den Führerschein machen, und das kostet viel Geld. || He has to get the driving licence, and that costs a lot of money.
+Sam lacht und sagt: In Leipzig muss man mit dem Müll sehr vorsichtig sein. || Sam laughs and says: in Leipzig one must be very careful with rubbish.
+Wer Abfall auf die Straße wirft, bekommt eine Strafe. || Whoever throws rubbish on the street gets a fine.
+Anna sagt: Das ist auch gut so. || Anna says: that is a good thing too.
+Dann gehen sie zusammen nach Hause. || Then they go home together.

@@ -1,0 +1,88 @@
+=== de-a1-2-11
+speakers: sam=Sam, weber=Frau Weber
+## Frau Weber erzählt
+Es ist Sonntag, am Abend. || It is Sunday evening.
+Sam und Frau Weber sitzen in der Küche. || Sam and Mrs Weber are sitting in the kitchen.
+Frau Weber hat Tee gekocht. || Mrs Weber has made tea.
+[sam] Frau Weber, wo sind Sie geboren? || Mrs Weber, where were you born?
+[weber] Ich bin 1950 in Leipzig geboren. || I was born in Leipzig in 1950.
+[weber] Ich bin in Leipzig aufgewachsen. || I grew up in Leipzig.
+[sam] Wie war Ihre Kindheit? || What was your childhood like?
+[weber] Meine Kindheit war schön. || My childhood was lovely.
+[weber] Meine Eltern hatten kein Auto, nur ein Fahrrad. || My parents had no car, only a bicycle.
+[weber] Am Wochenende haben wir einen Ausflug gemacht. || At the weekend we made an excursion.
+[weber] Der See war nicht weit, und wir sind auch auf einen Berg gelaufen. || The lake was not far, and we also walked up a hill.
+[weber] Wir haben ein Picknick gemacht, wir sind geschwommen, und wir sind in den Wald gelaufen. || We had a picnic, we swam, and we walked into the forest.
+[weber] Mein Vater hat gern fotografiert. || My father liked taking photographs.
+[weber] Die anderen Kinder haben gespielt. || The other children played.
+[weber] Mein Bruder ist ins Wasser gesprungen. || My brother jumped into the water.
+[weber] Er hat den Ball geworfen, und ich habe ihn gefangen. || He threw the ball, and I caught it.
+[weber] Ja, meine Kindheit war sehr schön. || Yes, my childhood was very lovely.
+
+## Die Jugend
+[sam] Und Ihre Jugend? || And your youth?
+[weber] In meiner Jugend habe ich viel getanzt. || In my youth I danced a lot.
+[weber] Am Wochenende bin ich ins Café und zum Konzert gegangen. || At the weekend I went to the café and to the concert.
+[weber] Dort habe ich Hans getroffen. || There I met Hans.
+[weber] Wir haben Kaffee getrunken, und wir haben getanzt. || We drank coffee, and we danced.
+[weber] Hans ist mein Ehemann geworden. || Hans became my husband.
+[weber] Er war Lehrer. || He was a teacher.
+[weber] Die Eltern von Hans haben ein Geschäft gehabt. || Hans's parents had a shop.
+[weber] Meine Jugend war nicht lang, aber schön. || My youth was not long, but lovely.
+[weber] 1972 haben wir geheiratet. || In 1972 we got married.
+[weber] Ein Ehemann ist auch ein Freund. || A husband is also a friend.
+[sam] Wie war die Hochzeit? || What was the wedding like?
+[weber] Die Hochzeit war schön. || The wedding was lovely.
+[weber] Wir haben ein Fest gemacht. || We had a party.
+[weber] Die Hochzeit von Martin war auch schön. || Martin's wedding was lovely too.
+[weber] Alle haben uns etwas geschenkt. || Everyone gave us something.
+[weber] Dann sind wir mit dem Zug nach Dresden gefahren. || Then we went to Dresden by train.
+[weber] Die Reise war lang, denn der Zug war nicht schnell. || The journey was long, because the train was not fast.
+[weber] Wir hatten einen Platz, und mein Koffer war voll. || We had a seat, and my suitcase was full.
+[weber] Wir mussten umsteigen, und das Gleis war leer. || We had to change trains, and the platform was empty.
+[weber] In Dresden sind wir ausgestiegen und in den Bus eingestiegen. || In Dresden we got off and got on the bus.
+[weber] Der Bus hat gehalten, und da war das Hotel. || The bus stopped, and there was the hotel.
+[weber] Wir haben im Hotel übernachtet, und wir haben ein Museum besucht. || We stayed overnight at the hotel, and we visited a museum.
+
+## Die Arbeit
+[sam] Haben Sie gearbeitet? || Did you work?
+[weber] Ja, ich habe lange in der Fabrik gearbeitet. || Yes, I worked in the factory for a long time.
+[weber] Ich habe 35 Jahre in der Fabrik gearbeitet. || I worked in the factory for 35 years.
+[weber] Hans und ich haben lange in einer kleinen Wohnung gewohnt. || Hans and I lived in a small flat for a long time.
+[weber] Die Arbeit war schwer, und die Fabrik war groß. || The work was hard, and the factory was big.
+[weber] Ich habe die Fabrik nicht gern gehabt, aber ich habe gern gearbeitet. || I did not like the factory, but I liked working.
+
+## Die Familie
+[weber] Wir haben zwei Kinder: einen Sohn und eine Tochter. || We have two children: a son and a daughter.
+[weber] Mein Sohn heißt Martin. || My son is called Martin.
+[weber] Er ist 1975 geboren. || He was born in 1975.
+[weber] Er hat 2000 geheiratet. || He got married in 2000.
+[weber] Er wohnt in München. || He lives in Munich.
+[weber] Meine Kinder sind in Leipzig aufgewachsen. || My children grew up in Leipzig.
+[weber] Meine Enkel wachsen in München auf. || My grandchildren are growing up in Munich.
+[weber] Meine Tochter war ein kleines Mädchen, und sie hat viel gelacht. || My daughter was a little girl, and she laughed a lot.
+[weber] Mein Sohn hat zwei Kinder. || My son has two children.
+[weber] Das sind meine Enkel. || They are my grandchildren.
+[weber] Ich habe drei Enkel. || I have three grandchildren.
+[weber] Meine Enkel besuchen mich, und sie bekommen Kuchen. || My grandchildren visit me, and they get cake.
+
+## Heute
+[weber] Seit 2012 bin ich in Rente. || Since 2012 I have been retired.
+[weber] Die Rente ist nicht groß, aber ich habe genug. || The pension is not big, but I have enough.
+[weber] In der Rente habe ich Zeit. || In retirement I have time.
+[weber] 2015 ist Hans gestorben, im Winter. || In 2015 Hans died, in winter.
+[weber] Ich habe lange geweint. || I cried for a long time.
+[weber] Meine Eltern sind auch gestorben, und mein Bruder auch. || My parents have died too, and my brother too.
+[weber] Mein Ehemann war ein guter Mann. || My husband was a good man.
+[weber] Er ist im Winter gestorben. || He died in winter.
+[weber] Meine Tochter hat auch geheiratet. || My daughter got married too.
+[weber] Seit 2015 bin ich ohne Hans. || Since 2015 I have been without Hans.
+[sam] Und seit zwei Wochen bin ich bei Ihnen. || And for two weeks I have been with you.
+[weber] Ja, Herr Miller, das ist schön. || Yes, Mr Miller, that is lovely.
+[weber] Jetzt habe ich einen Garten. || Now I have a garden.
+[weber] Im Garten habe ich Tomaten und Äpfel. || In the garden I have tomatoes and apples.
+[weber] Ich möchte im Garten sitzen, wenn die Sonne scheint. || I like to sit in the garden when the sun shines.
+[weber] Ich kenne Leipzig sehr gut. || I know Leipzig very well.
+[sam] Ich möchte Leipzig auch kennen. || I would like to know Leipzig too.
+[weber] Gott hat mir ein langes Leben gegeben. || God has given me a long life.
+

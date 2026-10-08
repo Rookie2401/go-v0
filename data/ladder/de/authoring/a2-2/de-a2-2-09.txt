@@ -1,0 +1,222 @@
+=== de-a2-2-09
+speakers: SA=Sam, AN=Anna, FW=Frau Weber, PR=Praxis
+## Eine schlechte Nacht
+Sam ist krank. || Sam is ill.
+Er hat die ganze Nacht nicht geschlafen. || He has not slept the whole night.
+Sein Kopf tut weh, sein Hals tut weh, und er hat Fieber. || His head hurts, his throat hurts, and he has a fever.
+Am Morgen klopft Frau Weber an die Tür. || In the morning Frau Weber knocks on the door.
+Sie sieht sofort, dass er sehr krank ist. || She sees at once that he is very ill.
+[FW] Sie sehen schlecht aus, Herr Sam. || You look bad, Herr Sam.
+[FW] Ich rufe Anna an. || I will call Anna.
+[FW] Sie ist Krankenschwester. || She is a nurse.
+[FW] Sie weiß, was man tun muss. || She knows what has to be done.
+Nach einer Stunde sitzt Anna an seinem Bett. || After an hour Anna is sitting at his bed.
+Sie hat ihre Tasche mitgebracht. || She has brought her bag.
+[AN] Guten Morgen, Sam. || Good morning, Sam.
+[AN] Du hast bestimmt die Grippe. || You certainly have the flu.
+[AN] Wie lange geht das schon? || How long has this been going on?
+[SA] Seit gestern Abend. || Since yesterday evening.
+[SA] Ich war so müde, und dann kam das Fieber. || I was so tired, and then the fever came.
+[AN] Zuerst müssen wir die Temperatur messen. || First we have to measure the temperature.
+[AN] Hier ist ein Thermometer. || Here is a thermometer.
+[AN] Leg es bitte unter den Arm und warte zwei Minuten. || Put it under your arm please and wait two minutes.
+Sam wartet. || Sam waits.
+Anna schaut auf ihre Uhr. || Anna looks at her watch.
+[AN] 38,9 Grad. || 38.9 degrees.
+[AN] Die Temperatur ist hoch, aber das kommt oft vor. || The temperature is high, but that often happens.
+[SA] Muss ich ins Krankenhaus? || Do I have to go to the hospital?
+[AN] Nein, nicht sofort. || No, not at once.
+[AN] Fieber ist ein Symptom, nicht mehr. || Fever is a symptom, nothing more.
+[AN] Ich gebe dir erst einmal einen Ratschlag. || First I will give you some advice.
+
+## Der Ratschlag
+[AN] Du solltest im Bett bleiben und dich ausruhen. || You should stay in bed and rest.
+[AN] Ein Tag Ruhe ist wichtig. || A day of rest is important.
+[AN] Ruh dich aus, auch wenn du dich besser fühlst. || Rest, even when you feel better.
+[AN] Der Körper braucht Zeit. || The body needs time.
+[SA] Ich kann nicht lange im Bett liegen. || I cannot lie in bed for long.
+[SA] Ich habe viel zu tun. || I have a lot to do.
+[AN] Das ist ein typischer Fehler. || That is a typical mistake.
+[AN] Ein guter Ratschlag ist: Die Arbeit kann warten, die Gesundheit nicht. || Good advice is: work can wait, health cannot.
+[SA] Danke für den Ratschlag. || Thank you for the advice.
+[SA] Ich bleibe liegen. || I will stay lying down.
+[AN] Du hast sicher Durst. || You are surely thirsty.
+[AN] Du musst viel trinken, zwei Liter am Tag. || You must drink a lot, two litres a day.
+[SA] Ja, ich habe sehr großen Durst. || Yes, I am very thirsty.
+[SA] Mein Mund ist ganz trocken. || My mouth is quite dry.
+[AN] Bei Fieber hat man mehr Durst, als man denkt. || With a fever you are thirstier than you think.
+[AN] Trink Wasser und Tee. || Drink water and tea.
+[AN] Ich würde keinen Kaffee trinken, er ist nicht gut für den Magen. || I would not drink coffee, it is not good for the stomach.
+[SA] Mein Magen tut auch ein bisschen weh. || My stomach hurts a little too.
+[AN] Hast du Übelkeit? || Do you have nausea?
+[AN] Ist dir schlecht? || Do you feel sick?
+[SA] Ein wenig. || A little.
+[SA] Aber ich muss nicht brechen. || But I do not have to be sick.
+[AN] Übelkeit ist dabei normal. || Nausea is normal with it.
+[AN] Der Magen braucht jetzt Ruhe. || The stomach needs rest now.
+[AN] Und hast du Durchfall? || And do you have diarrhoea?
+[SA] Nein, zum Glück nicht. || No, luckily not.
+[AN] Gut. || Good.
+[AN] Bei Durchfall musst du noch mehr trinken. || With diarrhoea you have to drink even more.
+[AN] Aber das hast du nicht. || But you do not have that.
+[AN] Dann iss nur leichte Sachen: Suppe, Brot, vielleicht eine Banane. || Then eat only light things: soup, bread, maybe a banana.
+[FW] Bei Übelkeit hilft warmer Tee. || With nausea warm tea helps.
+[FW] Ich koche gleich einen. || I will make some right away.
+
+## Heiß und kalt
+[SA] Mir ist so kalt, und dann ist mir wieder heiß. || I feel so cold, and then hot again.
+[SA] Was ist das? || What is that?
+[AN] Das ist normal. || That is normal.
+[AN] Man friert, und danach schwitzt man. || You shiver, and afterwards you sweat.
+[SA] Ich friere schon wieder. || I am shivering again.
+[SA] Kann ich noch eine Decke haben? || Can I have another blanket?
+[AN] Wenn du frierst, nimm eine Decke. || When you are shivering take a blanket.
+[AN] Wenn du schwitzt, leg sie zur Seite. || When you are sweating put it aside.
+[SA] Und wenn ich schwitze? || And when I sweat?
+[SA] Muss ich das Fenster öffnen? || Do I have to open the window?
+[AN] Du solltest das Zimmer kurz lüften, aber nicht lange. || You should air the room briefly, but not for long.
+[AN] Der Zug ist nicht gut. || A draught is not good.
+[AN] Und stell die Heizung nicht zu hoch. || And do not turn the heating too high.
+[AN] Das ist wie in der Hausordnung. || It is like in the house rules.
+[FW] Das ist richtig. || That is right.
+[FW] Ich spare immer, aber bei einem kranken Mann mache ich eine Ausnahme. || I always save, but for a sick man I make an exception.
+[SA] Danke, Frau Weber. || Thank you, Frau Weber.
+[AN] Zeig mir, wie du atmest. || Show me how you breathe.
+[AN] Atme tief ein und aus. || Breathe deeply in and out.
+Sam atmet tief. || Sam breathes deeply.
+Er muss husten. || He has to cough.
+[AN] Das klingt nicht schlecht. || That does not sound bad.
+[AN] Deine Lunge ist frei, glaube ich. || Your lungs are clear, I think.
+[AN] Aber wenn du schwer atmen musst oder Schmerzen in der Brust hast, ist das ernst. || But if you have to breathe with difficulty or have pain in the chest, that is serious.
+[SA] Was soll ich dann tun? || What should I do then?
+[AN] Dann geh nicht erst zum Hausarzt, sondern gleich in die Notaufnahme. || Then do not go to the family doctor first, but straight to the emergency room.
+[AN] Auch wenn der Durchfall mehr als drei Tage dauert, ist das ernst. || Even if the diarrhoea lasts more than three days, that is serious.
+[AN] Nimm das nicht leicht. || Do not take that lightly.
+[AN] Ich habe übrigens eine Neuigkeit: Ben hat die Grippe auch. || By the way I have some news: Ben has the flu too.
+[AN] Er hat mir ein Video geschickt. || He sent me a video.
+[AN] Darin hustet er wie ein kleiner Löwe. || In it he coughs like a little lion.
+[AN] Lukas bringt ihn heute zum Arzt. || Lukas is taking him to the doctor today.
+
+## Wann zum Arzt?
+[SA] Wann muss ich zum Hausarzt gehen? || When do I have to go to the family doctor?
+[AN] Falls das Fieber nach drei Tagen noch da ist, solltest du den Hausarzt anrufen. || If the fever is still there after three days, you should call the family doctor.
+[AN] Falls es höher als 39,5 Grad wird, auch. || If it gets higher than 39.5 degrees too.
+[AN] Und falls du nicht mehr trinken kannst. || And if you can no longer drink.
+[AN] Dann ist es ernst, und du darfst nicht warten. || Then it is serious, and you must not wait.
+[SA] Und wie sage ich das am Telefon? || And how do I say that on the phone?
+[AN] Du sagst: Ich habe seit drei Tagen Fieber und Husten. || You say: I have had a fever and a cough for three days.
+[AN] Und du sagst, wie hoch die Temperatur ist. || And you say how high the temperature is.
+[AN] Husten ist auch ein Symptom, das der Arzt wissen muss. || A cough is also a symptom that the doctor needs to know.
+[FW] Wir können gleich anrufen. || We can call at once.
+[FW] Ich habe die Nummer der Praxis. || I have the number of the practice.
+[FW] Sie ist links neben der Apotheke. || It is to the left of the pharmacy.
+Frau Weber nimmt das Telefon. || Frau Weber takes the phone.
+Nach einer Weile spricht sie mit der Praxis. || After a while she speaks to the practice.
+[FW] Guten Tag. || Good day.
+[FW] Ich rufe für einen Patienten an. || I am calling for a patient.
+[FW] Die Verbindung ist schlecht, hören Sie mich? || The connection is bad, can you hear me?
+[PR] Ja, jetzt höre ich Sie besser. || Yes, now I can hear you better.
+[PR] Wie lange hat er dieses Symptom schon? || How long has he had this symptom?
+[FW] Seit gestern Abend. || Since yesterday evening.
+[FW] Es ist wahrscheinlich eine Grippe. || It is probably the flu.
+[PR] Wenn es nicht besser wird, soll er am Montag kommen. || If it does not get better, he should come on Monday.
+[PR] Er muss die Krankenkassenkarte mitbringen. || He must bring his health-insurance card.
+[FW] Danke. || Thank you.
+[FW] Und was machen wir, wenn es am Wochenende schlimmer wird? || And what do we do if it gets worse over the weekend?
+[PR] Dann kann er in die Notaufnahme im Krankenhaus gehen. || Then he can go to the emergency room at the hospital.
+[PR] Sie ist Tag und Nacht offen. || It is open day and night.
+[FW] Und wie komme ich dahin? || And how do I get there?
+[PR] Gehen Sie von der Praxis geradeaus bis zur Kreuzung. || From the practice go straight ahead to the crossing.
+[PR] Dort ist eine Ampel. || There is a traffic light there.
+[PR] Biegen Sie rechts ab, in Richtung Fluss. || Turn right, in the direction of the river.
+[PR] Überqueren Sie die Brücke, dann ist es nah, nur etwa 200 Meter. || Cross the bridge, then it is close, only about 200 metres.
+[PR] Das Krankenhaus ist ein großes Gebäude an der Ecke. || The hospital is a big building on the corner.
+[PR] Gegenüber ist ein Parkplatz. || Opposite is a car park.
+[PR] Der Eingang ist hinten. || The entrance is at the back.
+[PR] Der Weg dorthin ist leicht. || The way there is easy.
+[PR] Oben hängt ein Hinweis. || Up above there is a sign.
+[PR] Im Erdgeschoss ist die Notaufnahme. || The emergency room is on the ground floor.
+[PR] Unten finden Sie sie schnell. || Down there you find it quickly.
+[FW] Und wenn der Aufzug nicht geht? || And if the lift is not working?
+[PR] Dann nehmen Sie die Treppe. || Then take the stairs.
+[PR] Aber in den ersten Stock müssen Sie nicht. || But you do not have to go to the first floor.
+[FW] Und der Ausgang? || And the exit?
+[FW] Kann ich dort auch hinaus? || Can I go out there too?
+[PR] Ja, am Ausgang ist ein zweiter Parkplatz. || Yes, at the exit there is a second car park.
+[FW] Vielen Dank. || Thank you very much.
+[FW] Ich hoffe, wir müssen nicht kommen. || I hope we do not have to come.
+[PR] Gute Besserung an Ihren Patienten. || Get well soon to your patient.
+
+## Was man nicht tun sollte
+[AN] Ich möchte dir noch ein paar Dinge sagen. || I would like to tell you a few more things.
+[AN] Du solltest nicht rauchen, und du solltest keinen Alkohol trinken. || You should not smoke, and you should not drink alcohol.
+[AN] Eine Tablette gegen das Fieber ist erlaubt, aber nicht mehr als drei am Tag. || A tablet against the fever is allowed, but not more than three a day.
+[AN] Ich würde auch keine Besuche machen. || I would not pay visits either.
+[AN] Das ist ansteckend. || It is infectious.
+[SA] Dann kann ich am Sonntag nicht in die Gemeinde gehen. || Then I cannot go to church on Sunday.
+[AN] Das ist leider so. || That is how it is, unfortunately.
+[AN] Thomas versteht das bestimmt. || Thomas will certainly understand.
+[AN] Und miss am Abend noch einmal. || And measure again in the evening.
+[AN] Die Besserung kommt langsam. || The recovery comes slowly.
+[AN] Wir messen morgen früh wieder. || We will measure again tomorrow morning.
+[FW] Und ich werde Suppe kochen. || And I will cook soup.
+[FW] Ruhe und eine heiße Suppe helfen am meisten. || Rest and a hot soup help most.
+[FW] Meine Enkelin hatte letztes Jahr das Gleiche, und sie war nach einer Woche wieder gesund. || My granddaughter had the same last year, and she was well again after a week.
+
+## Der Brief vom Hausmeister
+[FW] Ach, fast hätte ich es vergessen. || Oh, I almost forgot.
+[FW] Der Hausmeister hat eine Mitteilung gebracht. || The caretaker has brought a notice.
+[FW] Alle Mieter sollen den Müll trennen und nichts im Flur oder im Treppenhaus abstellen. || All tenants are supposed to separate the rubbish and not leave anything in the hall or the stairwell.
+[FW] Sie soll bei der Mülltonne im Hof aufgehängt werden, damit niemand es vergisst. || It is to be hung up at the bin in the yard so that nobody forgets.
+[FW] Und vor dem Haus ist Parken verboten. || And parking in front of the house is forbidden.
+[FW] Das ist eine neue Regel. || That is a new rule.
+[SA] Das ist richtig. || That is right.
+[SA] Man muss Rücksicht nehmen. || One has to be considerate.
+[FW] Der Verein hat auch geschrieben. || The association has written too.
+[FW] Die Tagesordnung für nächste Woche ist schon da. || The agenda for next week is already here.
+[FW] Der Stadtteil möchte ein Fest organisieren. || The district would like to organise a festival.
+[FW] Ich bin nicht dagegen, aber ich bin auch nicht sicher. || I am not against it, but I am not sure either.
+[SA] Ich bin dafür. || I am for it.
+[SA] Aber erst wenn ich wieder gesund bin. || But only when I am well again.
+Am Abend ist das Fieber etwas niedriger. || In the evening the fever is somewhat lower.
+Sam schläft schon, als Frau Weber leise die Tür schließt. || Sam is already asleep as Frau Weber quietly closes the door.
+Auf dem Tisch liegt ein Zettel von Anna: „Gute Besserung! Ruf an, wenn es schlimmer wird.“ || On the table lies a note from Anna: "Get well soon! Call if it gets worse."
+
+## Erinnerst du dich?
+Sam liegt im Bett und denkt an seine ersten Wochen in Leipzig. || Sam lies in bed and thinks of his first weeks in Leipzig.
+Er wohnt bei einer netten Dame, die ihm ein Zimmer gegeben hat. || He lives with a nice lady who gave him a room.
+Damals hatte er große Angst vor Ärger mit den Papieren. || Back then he was very afraid of trouble with the papers.
+Sein Visum aus Amerika reichte in Deutschland nicht, das wusste er zuerst nicht. || His visa from America was not enough in Germany; he did not know that at first.
+Beim Amt musste er seinen Ausweis zeigen und seine Unterschrift daruntersetzen. || At the office he had to show his ID and put his signature underneath.
+Am Abend war er müde, aber im Sprachkurs hat er jeden Tag neue Wörter gelernt. || In the evening he was tired, but in the language course he learned new words every day.
+
+Am Donnerstagabend trifft sich das Team im Haus der Gemeinde. || On Thursday evening the team meets in the church house.
+Dort hat Sam zum ersten Mal gespürt, dass er nicht allein ist. || There Sam felt for the first time that he is not alone.
+Die Idee von Ruth und David klingt gut, und alle wollen helfen. || The idea of Ruth and David sounds good, and everyone wants to help.
+Die Heimatgemeinden der Mitarbeiter schicken Geld für die Arbeit in der Stadt. || The home churches of the workers send money for the work in the city.
+Der Jugendkreis ist begeistert und will jede Woche kommen. || The youth group is excited and wants to come every week.
+Das Team will aber niemandem etwas aufdrängen, und Ruth sagt: Das ist fair. || But the team does not want to force anything on anyone, and Ruth says: That is fair.
+Ach, sagt Sam, das ist wirklich verständlich, und alle lachen. || Oh, says Sam, that is really understandable, and everyone laughs.
+Das Essen nach dem Treffen war wunderbar. || The food after the meeting was wonderful.
+
+Auch in der Straße hilft man sich gern. || Also in the street people like to help each other.
+Eine Nachbarin hat in der Nacht etwas Schlimmes gesehen und sofort die Feuerwehr angerufen. || A neighbor saw something bad in the night and called the fire department right away.
+Alle Bewohner sind schnell aus dem Haus gekommen. || All the residents came out of the house quickly.
+Der Hauskreis aus der Nachbarstraße hilft der Familie jetzt mit Geld und Essen. || The house group from the next street now helps the family with money and food.
+Herr Schmidt hat nebenan ein kleines Café, und das war wirklich nötig. || Herr Schmidt has a small cafe next door, and that was really necessary.
+Dass alles so gut geht, ist kein Zufall, sagt der Bäcker. || That everything goes so well is no coincidence, says the baker.
+In der Zeitung steht eine Warnung der Polizei, die alle lesen sollen. || In the newspaper there is a warning from the police that everyone should read.
+Geben Sie nie Geld, Ausweis oder Schlüssel an Fremde. || Never give money, ID or keys to strangers.
+
+Im Hof steht eine Tonne für das Essen und eine für alles andere. || In the yard there is a bin for food and one for everything else.
+Sam gibt dem Hausmeister ein Stück Kuchen, und der Mann lacht. || Sam gives the caretaker a piece of cake, and the man laughs.
+Das große Tor an der Straße kann man nicht übersehen. || You cannot overlook the big gate on the street.
+Im Garten hängen noch viele Äpfel am Baum. || In the garden many apples are still hanging on the tree.
+Marta kommt bald zu uns, und bis dahin hat Sam viel zu tun. || Marta is coming to us soon, and until then Sam has a lot to do.
+Er hat ein paar Sorgen, aber nur wenige sind wirklich groß. || He has a few worries, but only a few are really big.
+Frau Weber sagt: Ich habe Ihnen längst vergeben. || Frau Weber says: I forgave you long ago.
+Dann ruft Sam bei Anna an und sagt: Ich muss jetzt auflegen, ich bin so müde. || Then Sam calls Anna and says: I have to hang up now, I am so tired.
+Sie sagt: Gute Besserung, und schlaf gut. || She says: Get well soon, and sleep well.
+Am Morgen scheint die Sonne, und Sam fühlt sich schon besser. || In the morning the sun shines, and Sam already feels better.
+Er trinkt einen Tee und isst ein Brot mit Käse. || He drinks a tea and eats a bread with cheese.
+Dann schreibt er seiner Familie in Amerika eine lange Nachricht. || Then he writes his family in America a long message.

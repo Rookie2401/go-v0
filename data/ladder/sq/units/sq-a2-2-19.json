@@ -72,8 +72,8 @@
         {
           "sentences": [
             {
-              "text": "Pjesa qendrore e qytetit është sheshi i madh, që e quajnë Sheshi Skënderbej, dhe zona qendrore ka shumë njerëz.",
-              "english": "The central part of the city is the big square, which is called Skanderbeg Square, and the central zone has many people."
+              "text": "Qendra e qytetit është sheshi i madh, që e quajnë Sheshi Skënderbej, dhe aty ka shumë njerëz.",
+              "english": "The centre of the city is the big square, which is called Skanderbeg Square, and there are many people there."
             },
             {
               "text": "Në mes të sheshit gjendet një burrë mbi një kalë të madh, dhe rreth tij shihen ndërtesa të vjetra dhe të reja.",
@@ -88,8 +88,8 @@
               "english": "Some of these buildings were built in the time of Ottoman rule, and the other buildings in the time of the rule of a king."
             },
             {
-              "text": "Në vitet tridhjetë inxhinierë dhe artistë nga Italia ndërtuan ndërtesat e shtetit dhe shumë pallate, që janë karakteristike për zonën qendrore të qytetit.",
-              "english": "In the thirties engineers and artists from Italy built the buildings of the state and many palaces, which are characteristic of the centre of the city."
+              "text": "Në vitet tridhjetë inxhinierë dhe artistë nga Italia ndërtuan ndërtesat e shtetit dhe shumë pallate, që janë të veçanta për qendrën e qytetit.",
+              "english": "In the thirties engineers and artists from Italy built the buildings of the state and many palaces, which are special to the centre of the city."
             },
             {
               "text": "Pallati i Kulturës është një nga pallatet më të njohura, dhe aty gjenden një teatër dhe një bibliotekë.",
@@ -100,16 +100,16 @@
               "english": "In this part there are also big churches, such as the Cathedral of the Resurrection."
             },
             {
-              "text": "Tirana është një qytet ku shumë fe jetojnë bashkë, dhe kjo është një gjë shumë e rëndësishme për nivelin e jetës.",
-              "english": "Tirana is a city where many faiths live together, and this is a very important thing for the level of life."
+              "text": "Tirana është një qytet ku shumë fe jetojnë bashkë, dhe kjo është një gjë shumë e rëndësishme për jetën e njerëzve.",
+              "english": "Tirana is a city where many faiths live together, and this is a very important thing for people's lives."
             }
           ]
         },
         {
           "sentences": [
             {
-              "text": "Në Tiranë sot ka mbi 100.000 studentë, dhe shumë prej tyre vijnë nga krahina të tjera.",
-              "english": "In Tirana today there are over 100,000 students, and many of them come from other regions."
+              "text": "Në Tiranë sot ka mbi 100.000 studentë, dhe shumë prej tyre vijnë nga qytete të tjera.",
+              "english": "In Tirana today there are over 100,000 students, and many of them come from other towns."
             },
             {
               "text": "Universiteti i Tiranës u hap në vitin 1957, dhe pas tij u hapën edhe shumë universitete të tjera.",
@@ -148,16 +148,16 @@
         {
           "sentences": [
             {
-              "text": "Transporti është një nga punët më të vështira të Tiranës.",
-              "english": "Transport is one of the hardest matters of Tirana."
+              "text": "Autobusi është një nga punët më të vështira të Tiranës.",
+              "english": "The bus is one of the hardest matters of Tirana."
             },
             {
               "text": "Në çdo mëngjes shumë makina dhe autobusë hyjnë në qendër, dhe rrugët bëhen të plota me njerëz.",
               "english": "Every morning many cars and buses enter the centre, and the streets become full of people."
             },
             {
-              "text": "Sistemi i transportit ka linja autobusi që e lidhin pjesën qendrore me lagjet e reja dhe me fshatrat afër.",
-              "english": "The system of transport has bus lines that link the central part with the new neighbourhoods and with the villages nearby."
+              "text": "Autobusët kanë linja që e lidhin qendrën me lagjet e reja dhe me fshatrat afër.",
+              "english": "The buses have lines that link the centre with the new neighbourhoods and with the villages nearby."
             },
             {
               "text": "Në një ditë si çdo ditë një udhëtar pret më shumë se dhjetë minuta në stacion, edhe pse autobusët janë të rinj.",
@@ -176,28 +176,28 @@
               "english": "The government and the municipality have created new roads for bicycles, and at present they are used every day."
             },
             {
-              "text": "Këtë sistem e zhvillon një grup inxhinierësh, që punon me kryetarin e bashkisë.",
-              "english": "This system is developed by a group of engineers, who work with the mayor."
+              "text": "Këtë plan e zhvillon një grup inxhinierësh, që punon me kryetarin e bashkisë.",
+              "english": "This plan is developed by a group of engineers, who work with the mayor."
             },
             {
-              "text": "Ata mendojnë se në dhjetë vite transporti do të jetë më i mirë.",
-              "english": "They think that in ten years transport will be better."
+              "text": "Ata mendojnë se në dhjetë vite autobusët do të jenë më të mirë.",
+              "english": "They think that in ten years the buses will be better."
             }
           ]
         },
         {
           "sentences": [
             {
-              "text": "Qyteti ka edhe një anë tjetër, që është ndërtimi.",
-              "english": "The city has another side too, which is construction."
+              "text": "Qyteti ka edhe një anë tjetër, që janë ndërtesat e reja.",
+              "english": "The city has another side too, which is the new buildings."
             },
             {
               "text": "Në vitet e fundit janë ndërtuar shumë pallate të reja, dhe qendra e qytetit ka ndryshuar shumë.",
               "english": "In recent years many new buildings have been built, and the centre of the city has changed a great deal."
             },
             {
-              "text": "Disa ndërtime janë shumë të larta, dhe nga ballkonet e tyre shihet gjithë qyteti dhe mali Dajti.",
-              "english": "Some constructions are very tall, and from their balconies the whole city and Mount Dajti can be seen."
+              "text": "Disa ndërtesa janë shumë të larta, dhe nga ballkonet e tyre shihet gjithë qyteti dhe mali Dajti.",
+              "english": "Some buildings are very tall, and from their balconies the whole city and Mount Dajti can be seen."
             },
             {
               "text": "Qiraja në qendër është më e lartë se në lagjet e tjera, dhe një apartament i ri kushton shumë.",
@@ -208,16 +208,16 @@
               "english": "In the old neighbourhoods people still live in low houses with small yards, where flowers and fruit trees grow."
             },
             {
-              "text": "Këto lagje janë karakteristike për qytetin, dhe vendasit i duan shumë.",
-              "english": "These neighbourhoods are characteristic of the city, and the locals love them a lot."
+              "text": "Këto lagje janë të veçanta për qytetin, dhe vendasit i duan shumë.",
+              "english": "These neighbourhoods are special to the city, and the locals love them a lot."
             },
             {
               "text": "Në Tiranë ka edhe vende të reja për ata që vijnë nga jashtë: kompani, banka dhe zyra që punojnë me botën.",
               "english": "In Tirana there are also new places for those who come from abroad: companies, banks and offices that work with the world."
             },
             {
-              "text": "Kjo është një ekonomi urbane, dhe në të punojnë njerëz që flasin disa gjuhë.",
-              "english": "This is an urban economy, and people who speak several languages work in it."
+              "text": "Kjo është një ekonomi e qytetit, dhe në të punojnë njerëz që flasin disa gjuhë.",
+              "english": "This is the economy of a city, and people who speak several languages work in it."
             }
           ]
         },
@@ -228,12 +228,12 @@
               "english": "Every city has a face, and the face of Tirana is very lively."
             },
             {
-              "text": "Në çdo lagje ka tregje lokale, ku fermerët shesin domate, fasule, mjaltë dhe djathë, dhe tregu lokal është një pjesë e jetës urbane.",
-              "english": "In every neighbourhood there are local markets, where farmers sell tomatoes, beans, honey and cheese, and the local market is a part of urban life."
+              "text": "Në çdo lagje ka tregje të vogla, ku fermerët shesin domate, fasule, mjaltë dhe djathë, dhe tregu është një pjesë e jetës së lagjes.",
+              "english": "In every neighbourhood there are small markets, where farmers sell tomatoes, beans, honey and cheese, and the market is a part of the life of the neighbourhood."
             },
             {
-              "text": "Produktet lokale janë më të lira dhe më të mira, dhe vendasit i blejnë çdo ditë.",
-              "english": "Local products are cheaper and better, and the locals buy them every day."
+              "text": "Produktet e vendit janë më të lira dhe më të mira, dhe vendasit i blejnë çdo ditë.",
+              "english": "The products of the country are cheaper and better, and the locals buy them every day."
             },
             {
               "text": "Pranë një tregu të vjetër ka edhe një park të madh me një liqen, ku njerëzit ecin në mbrëmje.",
@@ -244,12 +244,12 @@
               "english": "Many tourists come to the city and call it a new European place, even though the capital has a long history."
             },
             {
-              "text": "Tirana nuk është një qytet i madh botëror, por ajo ka një nivel të mirë jete dhe shumë gjëra për të treguar, edhe për njerëz që e njohin botën.",
-              "english": "Tirana is not a big world city, but it has a good standard of life and many things to show, even to people who know the world."
+              "text": "Tirana nuk është një qytet shumë i madh, por ajo ka një jetë të mirë dhe shumë gjëra për të treguar, edhe për njerëz që e njohin botën.",
+              "english": "Tirana is not a very big city, but it has a good life and many things to show, even to people who know the world."
             },
             {
-              "text": "Njerëzit e saj punojnë në tregti, në shërbime, në arsim dhe në ndërtim, dhe shumë prej tyre janë të rinj.",
-              "english": "Its people work in trade, in services, in education and in construction, and many of them are young."
+              "text": "Njerëzit e saj punojnë në tregti, në shërbime, në arsim dhe në ndërtesa, dhe shumë prej tyre janë të rinj.",
+              "english": "Its people work in trade, in services, in education and in buildings, and many of them are young."
             },
             {
               "text": "Një qytet i tillë ka nevojë për ligje të drejta dhe të qarta, dhe ato i bën kuvendi dhe qeveria.",
@@ -264,12 +264,12 @@
         {
           "sentences": [
             {
-              "text": "Krahinat e vendit e shikojnë Tiranën me dashuri dhe me frikë.",
-              "english": "The regions of the country look at Tirana with love and with fear."
+              "text": "Pjesët e vendit e shikojnë Tiranën me dashuri dhe me frikë.",
+              "english": "The parts of the country look at Tirana with love and with fear."
             },
             {
-              "text": "Çdo vit njerëz nga veriu dhe nga jugu, nga lindja dhe nga perëndimi, vijnë për të punuar këtu, dhe krahinat e largëta e ndjejnë këtë.",
-              "english": "Every year people from the north and the south, from the east and the west, come to work here."
+              "text": "Çdo vit njerëz nga veriu dhe nga jugu, nga lindja dhe nga perëndimi, vijnë për të punuar këtu, dhe pjesët e largëta të vendit e ndjejnë këtë.",
+              "english": "Every year people from the north and the south, from the east and the west, come to work here, and the faraway parts of the country feel this."
             },
             {
               "text": "Ata sjellin me vete gjuhën e tyre, ushqimin e tyre dhe këngët e tyre, dhe qyteti bëhet më i pasur.",
@@ -292,8 +292,8 @@
         {
           "sentences": [
             {
-              "text": "Rreth Tiranës territori ka edhe krahina të tjera me komuna të vogla, ku jeta është më e qetë.",
-              "english": "Around Tirana the territory has other regions with small communes, where life is calmer."
+              "text": "Rreth Tiranës territori ka edhe vende të tjera me komuna të vogla, ku jeta është më e qetë.",
+              "english": "Around Tirana the territory has other places with small communes, where life is calmer."
             },
             {
               "text": "Në lindje ngrihen malet dhe në veri ka male të ulëta, kurse në jug dhe në perëndim shtrihen fusha.",
@@ -304,8 +304,8 @@
               "english": "From the west a wide road links the city with the sea, and Durrës is a very near sea town, with a Mediterranean climate."
             },
             {
-              "text": "Durrësi ndodhet në gjirin e detit, dhe qyteti përhapet çdo vit, ndërsa vendbanimet e reja janë kufizuar nga deti.",
-              "english": "Durrës is located in the bay of the sea, and the town spreads every year, while the new settlements are bounded by the sea."
+              "text": "Durrësi ndodhet pranë detit, dhe qyteti rritet çdo vit, ndërsa lagjet e reja janë afër bregut.",
+              "english": "Durrës is located by the sea, and the town grows every year, while the new neighbourhoods are near the shore."
             },
             {
               "text": "Zonat bregdetare, ajo veriore dhe ajo jugore, janë më larg, por shumë njerëz nga Tirana shkojnë atje çdo verë.",
@@ -324,8 +324,8 @@
               "english": "The people who discovered this archaeological site found very old roads and walls."
             },
             {
-              "text": "Bashkia shpalli një ligj të ri, që i mbron këto vende nga ndërtimet pa kujdes.",
-              "english": "The municipality declared a new law, which protects these places from careless construction."
+              "text": "Bashkia shpalli një ligj të ri, që i mbron këto vende nga ndërtesat pa kujdes.",
+              "english": "The municipality declared a new law, which protects these places from careless buildings."
             },
             {
               "text": "Gazetarët e përmendin shpesh këtë ligj, dhe një udhëzues i mirë nuk të gënjen për të: ai tregon se ligji ende nuk e mbron çdo gjë.",
@@ -336,16 +336,16 @@
               "english": "Albanians, Greeks, Italians, Serbs, Germans and French live and work here, and in every café several languages are heard."
             },
             {
-              "text": "Në Tiranë ata gjejnë një jetë të gjallë, një sistem të ri transporti, një nivel të mirë shërbimesh, sektori administrativ me institucione të reja që punojnë përmes një sistemi të ri dhe që e respektojnë çdo njeri, një qytet urban dhe një qendër të vogël që e njohin të gjithë.",
-              "english": "In Tirana they find a lively life, a new system of transport, a good level of services, an administrative sector with new institutions that work through a new system and that respect every person, an urban city and a small centre that everybody knows."
+              "text": "Në Tiranë ata gjejnë një jetë të gjallë, autobusë të rinj, shërbime të mira, sektori administrativ me institucione të reja që punojnë me një mënyrë të re dhe që e respektojnë çdo njeri, një qytet të madh dhe një qendër të vogël që e njohin të gjithë.",
+              "english": "In Tirana they find a lively life, new buses, good services, an administrative sector with new institutions that work in a new way and that respect every person, a big city and a small centre that everybody knows."
             },
             {
-              "text": "Edhe nga jashtë shumë njerëz e njohin Tiranën si një qytet botëror të vogël, me një sistem të ri shkollash dhe me një nivel të mirë arsimi.",
-              "english": "Even from abroad many people know Tirana as a small world city, with a new system of schools and a good level of education."
+              "text": "Edhe nga jashtë shumë njerëz e njohin Tiranën si një qytet të vogël të botës, me shkolla të reja dhe me një arsim të mirë.",
+              "english": "Even from abroad many people know Tirana as a small city of the world, with new schools and a good education."
             },
             {
-              "text": "Njerëzit që vijnë nga bota thonë se këtu ka diçka karakteristike: një kafe të vogël, një rrugë të gjatë dhe një ndjenjë të ngrohtë botërore.",
-              "english": "People who come from the world say that here there is something characteristic: a small café, a long road and a warm world feeling."
+              "text": "Njerëzit që vijnë nga bota thonë se këtu ka diçka të veçantë: një kafe të vogël, një rrugë të gjatë dhe një ndjenjë të ngrohtë.",
+              "english": "People who come from the world say that here there is something special: a small café, a long road and a warm feeling."
             }
           ]
         }

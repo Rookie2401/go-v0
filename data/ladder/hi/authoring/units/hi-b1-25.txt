@@ -1,0 +1,49 @@
+id: hi-b1-25
+title: पहाड़ पर एक रात
+domain: travel
+topics: travel, mountains, night, storm
+notes: Twelfth controlled unit of the b1 bridge. It prepares the words of the GDL story "भबलू भालू की सैर" (hi-b1-26), a bear cub in the snowy Himalayas: देवदार, गुफ़ा, बर्फ़ीला, टहनी, कड़कना, चौंकना, छाती, सिलना, नज़र, बेचारा, मशहूर, झेलना, each used three times, in a night that Sam, Aman and Pastor Anil spend in a hill village during a short trip (the plot is not the plot of the GDL story; it recalls hi-a2-2-01, the diary of a trip to the hills). Machine-drafted; a Hindi reviewer should check the mountain vocabulary.
+---
+## पहाड़ की ओर
+छुट्टी में पास्टर अनिल सैम और अमन को लेकर पहाड़ के एक गाँव में गए। || In the holiday Pastor Anil took Sam and Aman to a village in the hills.
+वह गाँव अपने देवदार के पेड़ों के लिए मशहूर था। || That village was famous for its deodar trees.
+बस से उतरते ही सैम को ठंडी हवा लगी, और उसने कहा, "यहाँ तो बहुत ठंड है!" || As soon as he got down from the bus Sam felt the cold wind, and he said, "It is very cold here!"
+पास्टर अनिल बोले, "यह बर्फ़ीला इलाक़ा है, इसलिए गरम कपड़े पहन लो।" || Pastor Anil said, "This is a snowy region, so put on warm clothes."
+अमन ने अपनी टोपी सिर पर खींची और बोला, "मुझे तो ठंड में भी मज़ा आता है!" || Aman pulled his cap over his head and said, "I enjoy even the cold!"
+गाँव के रास्ते में एक बूढ़े आदमी ने उन्हें अपने घर में रुकने को कहा। || On the way to the village an old man asked them to stay in his house.
+सैम ने बूढ़े आदमी को धन्यवाद दिया, और तीनों उसके साथ चल पड़े। || Sam thanked the old man, and the three of them set off with him.
+
+## देवदार के नीचे
+शाम को चारों गाँव के पास एक देवदार के नीचे बैठ गए। || In the evening the four of them sat down under a deodar tree near the village.
+उस पर बर्फ़ जमी थी, और सैम ने एक टहनी को हाथ से छुआ। || Snow lay on it, and Sam touched a branch with his hand.
+अमन ने कहा, "इस पेड़ की हर टहनी बहुत भारी है।" || Aman said, "Every branch of this tree is very heavy."
+बूढ़े आदमी ने कहा, "इस पेड़ की छाया में कई पशु और पक्षी रात में रहते हैं।" || The old man said, "In the shade of this tree many animals and birds stay at night."
+"ऊपर पहाड़ पर एक गुफ़ा है, जहाँ बर्फ़ीली रातों में भालू भी रहते हैं।" || "Up on the mountain there is a cave where on snowy nights bears also live."
+सैम ने गुफ़ा की ओर नज़र डाली, पर उसे सिर्फ़ अँधेरा दिखा। || Sam cast a glance towards the cave, but he saw only darkness.
+पास्टर अनिल ने कहा, "डरो मत, भालू हमारे पास नहीं आएगा।" || Pastor Anil said, "Do not be afraid, the bear will not come near us."
+
+## रात का तूफ़ान
+रात को सब बूढ़े आदमी के घर में सो गए, पर आधी रात को बादल ज़ोर से कड़के। || At night everybody went to sleep in the old man's house, but in the middle of the night the clouds thundered loudly.
+सैम चौंककर उठ बैठा, और उसने अपनी छाती पर हाथ रखा। || Sam started up and sat up, and he put his hand on his chest.
+बिजली कड़कती, तो पूरी घाटी चमक उठती, और फिर दूर तक अँधेरा छा जाता। || When the lightning flashed the whole valley would shine, and then darkness would spread far.
+अमन ने कहा, "बेचारा भालू इस तूफ़ान में कहाँ होगा?" || Aman said, "Where will the poor bear be in this storm?"
+बूढ़े आदमी ने उन्हें गरम चाय दी और कहा, "चिंता मत करो, भालू अपनी गुफ़ा में ठीक रहेगा।" || The old man gave them hot tea and said, "Do not worry, the bear will be fine in his cave."
+कड़कती बिजली के बीच पास्टर अनिल ने धीरे से कहा, "हम सब परमेश्वर के हाथ में हैं।" || In the midst of the flashing lightning Pastor Anil said softly, "We are all in God's hand."
+यह सुनकर सैम को हिम्मत मिली, और वह फिर से सो गया। || Hearing this Sam took courage, and he went back to sleep.
+
+## सुबह
+सुबह आसमान साफ़ था, और देवदार पर बर्फ़ चमक रही थी। || In the morning the sky was clear, and the snow was shining on the deodar.
+अमन का स्वेटर रात के तूफ़ान में फट गया था, इसलिए बूढ़े आदमी की बेटी उसे सिलने बैठ गई। || Aman's sweater had torn in the night's storm, so the old man's daughter sat down to sew it.
+वह धीरे धीरे सिलती रही, और अमन उसकी ओर देखता रहा। || She went on sewing slowly, and Aman went on looking at her.
+उसने कहा, "भैया, पहाड़ की ठंड झेलना आसान नहीं है, पर यहाँ के लोग रोज़ इसे झेलते हैं।" || She said, "Brother, bearing the mountain's cold is not easy, but the people here bear it every day."
+सैम ने कहा, "आज रात की याद मैं कभी नहीं भूलूँगा, और उस बेचारे भालू की भी नहीं।" || Sam said, "I will never forget the memory of tonight, nor of that poor bear."
+
+## बर्फ़ पर चिह्न
+सुबह बाहर निकलते ही सैम की नज़र बर्फ़ पर पड़ी, और वह चौंक गया। || Coming out in the morning Sam's glance fell on the snow, and he was startled.
+बर्फ़ पर किसी बड़े जानवर के पैरों के चिह्न थे। || There were marks of a big animal's feet on the snow.
+अमन ने भी चौंककर कहा, "ये चिह्न तो भालू के हैं!" || Aman too, startled, said, "These marks are the bear's!"
+बूढ़े आदमी ने कहा, "रात को वह नीचे आया था, और ये चिह्न फिर गुफ़ा की तरफ़ जाते हैं।" || The old man said, "He had come down in the night, and these marks go back towards the cave."
+सैम ने अपनी छाती पर हाथ रखा और कहा, "अगर वह रात को मुझे दिखता, तो मेरी छाती फट जाती!" || Sam put his hand on his chest and said, "If I had seen him in the night, my chest would have burst!"
+पास्टर अनिल ने हँसकर कहा, "बेचारा भालू भी तुमसे डरकर लौट गया होगा।" || Pastor Anil said with a laugh, "The poor bear too must have gone back, afraid of you."
+इस गाँव में यह कहानी मशहूर है कि हर तूफ़ान के बाद भालू के चिह्न बर्फ़ पर मिलते हैं। || In this village the story is famous that after every storm the bear's marks are found on the snow.
+बर्फ़ीली हवा में खड़े होकर सबने गुफ़ा की ओर नज़र डाली, और बर्फ़ीले पहाड़ धूप में चमक रहे थे। || Standing in the icy wind everybody looked towards the cave, and the snowy mountains were shining in the sunshine.

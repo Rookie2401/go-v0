@@ -1,0 +1,248 @@
+
+> go-v0@0.1.0 ladder:check
+> vite-node scripts/ladder-check.mts hi
+
+
+=== hi: 132 units; Stage 0 head 20 texts, 570 words, 88 lemmas, 15 constructions ===
+unit                   stage     kind       domain          words  cov3 %  cov1 %  new  /100w  constructions first met
+hi-a1-1-01             a1-1      controlled narrative          66    93.9   100.0    0    0.0   [first-units band]
+hi-a1-1-02             a1-1      controlled family            250    92.0    94.0    5    2.0   [first-units band]
+hi-a1-1-03             a1-1      controlled family             79    93.7    93.7    1    1.3  
+hi-a1-1-04             a1-1      controlled family            112    97.3    97.3    1    0.9  
+hi-a1-1-05             a1-1      controlled narrative          79    88.6    92.4    2    2.5  
+hi-a1-1-06             a1-1      controlled daily-life        373    89.3    92.0   10    2.7  ko-definite-object
+hi-a1-1-07             a1-1      controlled narrative          94   100.0   100.0    0    0.0  
+hi-a1-1-08             a1-1      controlled daily-life        266    91.3    94.4    5    1.9  
+hi-a1-1-09             a1-1      controlled community         107    94.4    94.4    2    1.9  
+hi-a1-1-10             a1-1      controlled food              115   100.0   100.0    0    0.0  
+hi-a1-1-11             a1-1      controlled food              301    96.7    97.0    3    1.0  subjunctive
+hi-a1-1-12             a1-1      controlled food              143    97.2    97.2    1    0.7  
+hi-a1-1-13             a1-1      controlled daily-life        147    96.6    96.6    1    0.7  
+hi-a1-1-14             a1-1      controlled community         374    89.6    90.6   11    2.9  
+hi-a1-1-15             a1-1      controlled community         304    94.1    95.1    5    1.6  postposition
+hi-a1-1-16             a1-1      controlled narrative         144    93.8    93.8    3    2.1  question-kya
+hi-a1-1-17             a1-1      controlled narrative         139   100.0   100.0    0    0.0  
+hi-a1-1-18             a1-1      controlled conversation      134   100.0   100.0    0    0.0  
+hi-a1-1-19             a1-1      controlled community         314    96.5    97.1    3    1.0  
+hi-a1-1-20             a1-1      controlled conversation      197    93.9    94.4    6    3.0  comparison-se, existence-possession
+hi-a1-1-21             a1-1      controlled conversation      174    95.4    96.0    4    2.3  
+hi-a1-1-22             a1-1      controlled health            406    90.1    91.9   11    2.7  
+hi-a1-1-23             a1-1      controlled daily-life        277    93.1    93.5    6    2.2  
+hi-a1-1-24             a1-1      controlled daily-life        191    93.2    93.7    7    3.7  auxiliary-chain, progressive
+hi-a1-1-25             a1-1      controlled family            166    95.2    97.0    3    1.8  
+hi-a1-1-26             a1-1      controlled conversation      159    95.0    96.2    4    2.5  
+hi-a1-1-27             a1-1      controlled conversation      163    93.9    94.5    5    3.1  
+hi-a1-1-28             a1-1      controlled church-and-mission-life    498    89.4    92.8   13    2.6  compound-verb
+hi-a1-1-29             a1-1      controlled narrative         184    91.8    93.5    6    3.3  
+hi-a1-1-30             a1-1      controlled community         187    93.6    94.1    5    2.7  
+hi-a1-1-31             a1-1      controlled practical-communication    451    89.6    92.7   11    2.4  ergative-ne
+hi-a1-2-01             a1-2      controlled narrative         349    92.5    95.7    5    1.4  inceptive-lagna, oblique-infinitive
+hi-a1-2-02             a1-2      controlled narrative         307    91.5    92.2   22    7.2  conditional, jab-tab, ne-with-ko-object, obligation, pluperfect
+hi-a1-2-03             a1-2      controlled conversation      508    89.8    93.5   11    2.2  conjunctive-participle, future
+hi-a1-2-04             a1-2      controlled narrative         310    94.2    95.2    5    1.6  
+hi-a1-2-05             a1-2      controlled narrative         256    91.4    91.8   17    6.6  
+hi-a1-2-06             a1-2      controlled travel            558    90.1    93.5   12    2.1  ability-sakna, purpose-infinitive
+hi-a1-2-07             a1-2      controlled narrative         259    91.9    92.7   16    6.2  
+hi-a1-2-08             a1-2      controlled daily-life        560    89.6    93.4   13    2.3  wanting-chahna
+hi-a1-2-09             a1-2      controlled narrative         259    95.8    96.9    5    1.9  
+hi-a1-2-10             a1-2      controlled community         480    90.8    92.5   12    2.5  
+hi-a1-2-11             a1-2      controlled instructions      505    88.9    92.3   13    2.6  negative-command
+hi-a1-2-12             a1-2      controlled narrative         267    95.1    95.5   11    4.1  
+hi-a1-2-13             a1-2      controlled correspondence    466    88.6    92.3   12    2.6  complement-ki
+hi-a1-2-14             a1-2      controlled narrative         259    97.3    98.1    5    1.9  
+hi-a1-2-15             a1-2      controlled explanation       509    91.2    93.5   11    2.2  
+hi-a1-2-16             a1-2      controlled testimony         465    89.3    91.6   13    2.8  habitual-past
+hi-a1-2-17             a1-2      controlled testimony          83    96.4    96.4    2    2.4  
+hi-a1-2-18             a1-2      controlled conversation       60    93.3    98.3    1    1.7  
+hi-a1-2-19             a1-2      controlled health            455    90.5    91.4   13    2.9  
+hi-a1-2-20             a1-2      controlled church-and-mission-life    530    90.6    91.5   16    3.0  
+hi-a1-2-21             a1-2      controlled travel            505    89.5    91.1   15    3.0  
+hi-a1-2-22             a1-2      controlled family            518    90.3    91.5   15    2.9  
+hi-a1-2-23             a1-2      controlled community         488    91.4    91.4   14    2.9  managing-paana, superlative-sabse
+hi-a1-2-24             a1-2      controlled correspondence    466    88.8    90.1   17    3.6  
+hi-a1-2-25             a1-2      controlled work              463    89.4    90.3   15    3.2  vaala
+hi-a1-2-26             a1-2      controlled narrative         657    92.1    92.4   17    2.6  
+hi-a2-1-01             a2-1      controlled biography        1091    95.0    95.0   18    1.6  relative-correlative
+hi-a2-1-02             a2-1      controlled contemporary-nonfiction   1040    94.1    94.1   21    2.0  jahaan-vahaan, passive
+hi-a2-1-03             a2-1      authentic  narrative          79    93.7    93.7    5    6.3  
+hi-a2-1-04             a2-1      controlled correspondence   1063    94.2    95.1   18    1.7  
+hi-a2-1-05             a2-1      authentic  narrative          81    96.3    96.3    3    3.7  
+hi-a2-1-06             a2-1      controlled narrative        1123    93.8    94.4   22    2.0  about-to-vaala, contrary-to-fact
+hi-a2-1-07             a2-1      authentic  narrative         294    93.2    93.5   14    4.8  
+hi-a2-1-08             a2-1      controlled practical-communication   1169    92.0    94.3   23    2.0  
+hi-a2-1-09             a2-1      authentic  narrative         318    92.8    92.8   22    6.9  
+hi-a2-1-10             a2-1      authentic  narrative         171    93.6    93.6    7    4.1  
+hi-a2-1-11             a2-1      controlled instructions     1223    93.8    95.6   18    1.5  permissive-dena
+hi-a2-1-12             a2-1      authentic  narrative         265    92.8    93.2   16    6.0  
+hi-a2-1-13             a2-1      controlled testimony        1173    93.1    94.9   20    1.7  
+hi-a2-1-14             a2-1      controlled contemporary-nonfiction   1094    93.0    94.3   22    2.0  jitna-utna
+hi-a2-1-15             a2-1      controlled narrative         977    94.2    94.4   19    1.9  
+hi-a2-1-16             a2-1      controlled conversation      990    94.0    94.5   18    1.8  
+hi-a2-1-17             a2-1      controlled work              992    94.3    94.3   19    1.9  
+hi-a2-1-18             a2-1      controlled health           1120    95.7    95.7   16    1.4  
+hi-a2-1-19             a2-1      controlled narrative         918    96.1    96.1   12    1.3  
+hi-a2-1-20             a2-1      controlled church-and-mission-life    760    95.3    95.3   12    1.6  
+hi-a2-2-01             a2-2      controlled travel           1327    96.6    96.6   14    1.1  
+hi-a2-2-02             a2-2      authentic  narrative         212    96.2    96.7    6    2.8  
+hi-a2-2-03             a2-2      authentic  narrative         103    94.2    94.2    4    3.9  
+hi-a2-2-04             a2-2      controlled biography        1272    96.7    97.1   12    0.9  
+hi-a2-2-05             a2-2      authentic  scripture*        747    93.0    93.0   33    4.4  
+hi-a2-2-06             a2-2      authentic  narrative         313    95.2    95.2   12    3.8  
+hi-a2-2-07             a2-2      authentic  narrative         147    93.9    93.9    8    5.4  
+hi-a2-2-08             a2-2      controlled conversation     1153    93.5    96.2   14    1.2  jaisa-vaisa
+hi-a2-2-09             a2-2      controlled contemporary-nonfiction   1138    92.7    94.7   12    1.1  
+hi-a2-2-10             a2-2      authentic  narrative         432    93.1    94.0   25    5.8  
+hi-a2-2-11             a2-2      controlled community        1312    93.5    95.8   13    1.0  
+hi-a2-2-12             a2-2      controlled correspondence    934    95.2    95.5    9    1.0  
+hi-a2-2-13             a2-2      controlled narrative        1106    96.5    96.5   11    1.0  
+hi-a2-2-14             a2-2      controlled health            985    95.4    95.4   11    1.1  
+hi-a2-2-15             a2-2      controlled testimony        1144    95.9    96.2   13    1.1  
+hi-a2-2-16             a2-2      controlled work             1108    97.3    97.3    5    0.5  
+hi-a2-2-17             a2-2      controlled contemporary-nonfiction   1109    96.7    97.1    6    0.5  
+hi-a2-2-18             a2-2      controlled family           1137    94.9    94.9   15    1.3  
+hi-a2-2-19             a2-2      authentic  narrative         127    92.9    92.9    9    7.1  
+hi-a2-2-20             a2-2      controlled food             1186    97.0    97.5    5    0.4  
+hi-a2-2-21             a2-2      controlled church-and-mission-life   1195    96.4    96.4   12    1.0  
+hi-a2-2-22             a2-2      controlled scripture*       1300    97.5    97.5   10    0.8  
+hi-a2-2-23             a2-2      controlled testimony        1283    97.5    97.5   10    0.8  
+hi-a2-2-24             a2-2      authentic  narrative         151    92.0    93.4   10    6.6  
+hi-b1-01               b1-bridge authentic  narrative         315    94.6    95.6   12    3.8  
+hi-b1-02               b1-bridge controlled work              588    92.3    95.1    8    1.4  
+hi-b1-03               b1-bridge authentic  narrative         133   100.0   100.0    0    0.0  
+hi-b1-04               b1-bridge controlled nature            621    90.7    94.0   10    1.6  
+hi-b1-05               b1-bridge authentic  narrative         443    96.6    97.1   13    2.9  
+hi-b1-06               b1-bridge controlled animals           544    90.8    92.3   12    2.2  
+hi-b1-07               b1-bridge authentic  narrative        1326    95.3    95.8   54    4.1  
+hi-b1-08               b1-bridge controlled church-and-mission-life    521    91.4    93.3   12    2.3  
+hi-b1-09               b1-bridge authentic  scripture*        639    96.7    98.1   12    1.9  
+hi-b1-10               b1-bridge authentic  narrative         782    94.6    95.5   31    4.0  
+hi-b1-11               b1-bridge controlled daily-life        595    91.1    93.5   18    3.0  
+hi-b1-12               b1-bridge authentic  narrative         327    93.3    95.1   15    4.6  
+hi-b1-13               b1-bridge authentic  narrative         307    94.1    95.1   15    4.9  
+hi-b1-14               b1-bridge authentic  scripture*        571    95.1    95.3   18    3.1  
+hi-b1-15               b1-bridge controlled contemporary-nonfiction    434    90.8    92.9   10    2.3  
+hi-b1-16               b1-bridge authentic  narrative         845    93.4    94.8   38    4.5  
+hi-b1-17               b1-bridge controlled school            385    90.4    92.7   11    2.9  
+hi-b1-18               b1-bridge authentic  narrative        1209    93.7    95.0   58    4.8  
+hi-b1-19               b1-bridge controlled correspondence    420    90.5    91.0   16    3.8  
+hi-b1-20               b1-bridge authentic  correspondence   2112    93.0    94.4   94    4.5  
+hi-b1-21               b1-bridge controlled family            530    91.7    94.2   11    2.1  
+hi-b1-22               b1-bridge authentic  family            825    93.1    94.1   40    4.8  
+hi-b1-23               b1-bridge controlled church-and-mission-life    408    91.4    91.9   12    2.9  
+hi-b1-24               b1-bridge authentic  scripture*        654    97.7    98.5    8    1.2  
+hi-b1-25               b1-bridge controlled travel            572    92.1    93.4   12    2.1  
+hi-b1-26               b1-bridge authentic  narrative        1808    92.5    95.0   77    4.3  
+hi-b1-27               b1-bridge controlled explanation       464    89.4    92.2   12    2.6  
+hi-b1-28               b1-bridge authentic  explanation       990    94.7    96.4   30    3.0  
+hi-b1-29               b1-bridge adapted    narrative         416    90.4    91.6   15    3.6  
+hi-b1-30               b1-bridge controlled instructions      370    94.9    96.0    7    1.9  
+hi-b1-31               b1-bridge controlled biography         522    97.3    99.2    4    0.8  
+
+stage       units   words  scripture %  mean cov3 %   (* = Scripture)
+stage0         20     570         0.0            -
+a1-1           31    6594         0.0         93.2
+a1-2           26   10542         0.0         90.9
+a2-1           20   15941         0.0         94.0
+a2-2           24   20921         9.8         95.6
+b1-bridge      31   20676         9.0         93.3
+
+orphans    (advice): 494 of 1705 new lemmas in 123 judged units are never met again; 25 unit(s) over the threshold; worst: hi-b1-24 8/8, hi-a2-2-03 4/4, hi-b1-22 39/40, hi-b1-28 29/30, hi-b1-26 74/77
+recurrence (advice): 35 of 96 judged units have intervals that do not widen; worst: hi-a2-1-03 559->18, hi-a2-2-24 1038.5->36.5, hi-a2-2-05 998->53, hi-a1-2-14 531->35, hi-a2-1-09 1706->196
+
+warning hi hi-a1-1-14 [cliff] coverage 89.6 % is 7.3 points below the mean 96.8 % of the previous 3 units (warning above 6)
+warning hi hi-a1-2-02 [new-lemmas] 7.2 new lemmas per 100 words (22 in 307); warning above 5
+warning hi hi-a1-2-05 [new-lemmas] 6.6 new lemmas per 100 words (17 in 256); warning above 5
+warning hi hi-a1-2-07 [new-lemmas] 6.2 new lemmas per 100 words (16 in 259); warning above 5
+warning hi hi-a2-1-03 [new-lemmas] 6.3 new lemmas per 100 words (5 in 79); warning above 5
+warning hi hi-a2-1-09 [new-lemmas] 6.9 new lemmas per 100 words (22 in 318); warning above 5
+warning hi hi-a2-1-12 [new-lemmas] 6.0 new lemmas per 100 words (16 in 265); warning above 5
+warning hi hi-a2-2-07 [new-lemmas] 5.4 new lemmas per 100 words (8 in 147); warning above 5
+warning hi hi-a2-2-10 [new-lemmas] 5.8 new lemmas per 100 words (25 in 432); warning above 5
+warning hi hi-a2-2-19 [new-lemmas] 7.1 new lemmas per 100 words (9 in 127); warning above 5
+warning hi hi-a2-2-24 [new-lemmas] 6.6 new lemmas per 100 words (10 in 151); warning above 5
+warning hi hi-a2-1-12 [recycling] 11 of 16 new lemmas (68.8 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-a2-2-02 [recycling] 5 of 6 new lemmas (83.3 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-a2-2-03 [recycling] 4 of 4 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-a2-2-05 [recycling] 32 of 33 new lemmas (97.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-a2-2-06 [recycling] 9 of 12 new lemmas (75.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-a2-2-07 [recycling] 7 of 8 new lemmas (87.5 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-a2-2-10 [recycling] 19 of 25 new lemmas (76.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-a2-2-19 [recycling] 7 of 9 new lemmas (77.8 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-01 [recycling] 6 of 12 new lemmas (50.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-05 [recycling] 12 of 13 new lemmas (92.3 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-07 [recycling] 52 of 54 new lemmas (96.3 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-09 [recycling] 12 of 12 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-10 [recycling] 31 of 31 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-11 [recycling] 14 of 18 new lemmas (77.8 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-12 [recycling] 15 of 15 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-13 [recycling] 15 of 15 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-14 [recycling] 18 of 18 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-16 [recycling] 38 of 38 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-18 [recycling] 57 of 58 new lemmas (98.3 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-20 [recycling] 93 of 94 new lemmas (98.9 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-22 [recycling] 40 of 40 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-b1-24 [recycling] 8 of 8 new lemmas (100.0 %) do not come back 3+ times within the next 6 units; warning above 25.0 %
+warning hi hi-a1-1-08 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 12 words, median second gap 9 words (over 5 lemmas met 3+ times)
+warning hi hi-a1-1-14 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 78 words, median second gap 26 words (over 11 lemmas met 3+ times)
+warning hi hi-a1-1-24 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 311 words, median second gap 125 words (over 7 lemmas met 3+ times)
+warning hi hi-a1-1-27 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 896 words, median second gap 367 words (over 5 lemmas met 3+ times)
+warning hi hi-a1-1-29 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 165 words, median second gap 147 words (over 6 lemmas met 3+ times)
+warning hi hi-a1-1-31 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 64 words, median second gap 21 words (over 11 lemmas met 3+ times)
+warning hi hi-a1-2-02 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 665 words, median second gap 149 words (over 22 lemmas met 3+ times)
+warning hi hi-a1-2-05 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 657 words, median second gap 306 words (over 17 lemmas met 3+ times)
+warning hi hi-a1-2-07 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 1461 words, median second gap 210 words (over 16 lemmas met 3+ times)
+warning hi hi-a1-2-09 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 1083 words, median second gap 620 words (over 5 lemmas met 3+ times)
+warning hi hi-a1-2-12 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 675 words, median second gap 227 words (over 11 lemmas met 3+ times)
+warning hi hi-a1-2-13 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 33 words, median second gap 24 words (over 12 lemmas met 3+ times)
+warning hi hi-a1-2-14 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 531 words, median second gap 35 words (over 5 lemmas met 3+ times)
+warning hi hi-a1-2-22 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 149 words, median second gap 34 words (over 15 lemmas met 3+ times)
+warning hi hi-a1-2-24 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 36 words, median second gap 23 words (over 17 lemmas met 3+ times)
+warning hi hi-a1-2-26 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 21 words, median second gap 19 words (over 17 lemmas met 3+ times)
+warning hi hi-a2-1-03 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 559 words, median second gap 18 words (over 5 lemmas met 3+ times)
+warning hi hi-a2-1-04 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 95 words, median second gap 94 words (over 17 lemmas met 3+ times)
+warning hi hi-a2-1-07 [orphan] 3 of 14 new lemmas (21.4 %) are never met again in any later unit (परी, लड़ाइ, तसवीर); warning above 15.0 %
+warning hi hi-a2-1-07 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 434 words, median second gap 161 words (over 11 lemmas met 3+ times)
+warning hi hi-a2-1-08 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 209 words, median second gap 106 words (over 21 lemmas met 3+ times)
+warning hi hi-a2-1-09 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 1706 words, median second gap 196 words (over 19 lemmas met 3+ times)
+warning hi hi-a2-1-12 [orphan] 5 of 16 new lemmas (31.3 %) are never met again in any later unit (दरबान, राह, साँ, प, धम्म); warning above 15.0 %
+warning hi hi-a2-1-12 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 240 words, median second gap 203 words (over 8 lemmas met 3+ times)
+warning hi hi-a2-1-19 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 116 words, median second gap 41 words (over 12 lemmas met 3+ times)
+warning hi hi-a2-2-02 [orphan] 3 of 6 new lemmas (50.0 %) are never met again in any later unit (पैदल, अनजाना, क़दम); warning above 15.0 %
+warning hi hi-a2-2-03 [orphan] 4 of 4 new lemmas (100.0 %) are never met again in any later unit (अंधेरा, कया, कूना, किड़); warning above 15.0 %
+warning hi hi-a2-2-05 [orphan] 8 of 33 new lemmas (24.2 %) are never met again in any later unit (व्याकुल, मार्ग, थोमा, प्रभु, फिलिप्पुस, अनाथ, ...); warning above 15.0 %
+warning hi hi-a2-2-05 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 998 words, median second gap 53 words (over 27 lemmas met 3+ times)
+warning hi hi-a2-2-06 [orphan] 7 of 12 new lemmas (58.3 %) are never met again in any later unit (हमा, दादीजी, चिप्स, मिठाइ, चाचाजी, सूटकेस, ...); warning above 15.0 %
+warning hi hi-a2-2-06 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 666 words, median second gap 99 words (over 5 lemmas met 3+ times)
+warning hi hi-a2-2-07 [orphan] 4 of 8 new lemmas (50.0 %) are never met again in any later unit (दशहरा, फ़ैंसी, पीपल, ख्याल); warning above 15.0 %
+warning hi hi-a2-2-09 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 23 words, median second gap 22 words (over 12 lemmas met 3+ times)
+warning hi hi-a2-2-10 [orphan] 6 of 25 new lemmas (24.0 %) are never met again in any later unit (बिरंगा, बिरंगी, टेबल, गलीचा, हंसना, मौज); warning above 15.0 %
+warning hi hi-a2-2-10 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 476 words, median second gap 116 words (over 16 lemmas met 3+ times)
+warning hi hi-a2-2-12 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 83 words, median second gap 38 words (over 9 lemmas met 3+ times)
+warning hi hi-a2-2-19 [orphan] 6 of 9 new lemmas (66.7 %) are never met again in any later unit (खूँटी, चटाइ, मोटरसाइकिल, हेल्मेट, रसोईघर, रज़ाइ); warning above 15.0 %
+warning hi hi-a2-2-20 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 24 words, median second gap 14 words (over 5 lemmas met 3+ times)
+warning hi hi-a2-2-24 [orphan] 2 of 10 new lemmas (20.0 %) are never met again in any later unit (छमा, छम); warning above 15.0 %
+warning hi hi-a2-2-24 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 1039 words, median second gap 37 words (over 8 lemmas met 3+ times)
+warning hi hi-b1-01 [orphan] 6 of 12 new lemmas (50.0 %) are never met again in any later unit (पुस्तक, मझा, चीख़ा, मुरझाना, ज़िद्दी, गिराना); warning above 15.0 %
+warning hi hi-b1-05 [orphan] 6 of 13 new lemmas (46.2 %) are never met again in any later unit (फेर, करी, पिटाना, दबाना, खोपड़ी, खतम); warning above 15.0 %
+warning hi hi-b1-07 [orphan] 32 of 54 new lemmas (59.3 %) are never met again in any later unit (योगा, जल्द, चाहेंग, मी, री, ति, ...); warning above 15.0 %
+warning hi hi-b1-07 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 2401 words, median second gap 1446 words (over 15 lemmas met 3+ times)
+warning hi hi-b1-09 [orphan] 11 of 12 new lemmas (91.7 %) are never met again in any later unit (छाँटना, बटोरना, झोंक, प्राण, ठहराना, अपन, ...); warning above 15.0 %
+warning hi hi-b1-10 [orphan] 18 of 31 new lemmas (58.1 %) are never met again in any later unit (गिलहरी, फुदकना, अखरोट, निगाह, विभिन्न, चहक, ...); warning above 15.0 %
+warning hi hi-b1-10 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 3341 words, median second gap 2755 words (over 11 lemmas met 3+ times)
+warning hi hi-b1-12 [orphan] 14 of 15 new lemmas (93.3 %) are never met again in any later unit (ढूँढू, पूजा, सिवाय, वीणा, सास, गप्पी, ...); warning above 15.0 %
+warning hi hi-b1-13 [orphan] 12 of 15 new lemmas (80.0 %) are never met again in any later unit (दादीमाँ, लपक, धड़ाम, बहादुरी, छुप, मोड़ना, ...); warning above 15.0 %
+warning hi hi-b1-14 [orphan] 15 of 18 new lemmas (83.3 %) are never met again in any later unit (परखना, झूठा, विरोधी, चर्चा, बालक, जय, ...); warning above 15.0 %
+warning hi hi-b1-16 [orphan] 30 of 38 new lemmas (78.9 %) are never met again in any later unit (छीलन, मेढ़ी, बिरँगी, भिनभिनाना, छिल्का, छी, ...); warning above 15.0 %
+warning hi hi-b1-18 [orphan] 52 of 58 new lemmas (89.7 %) are never met again in any later unit (भाड़, घटाना, दुबली, हिचकिचा, सरसरा, मुलायम, ...); warning above 15.0 %
+warning hi hi-b1-18 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 2354 words, median second gap 1550 words (over 5 lemmas met 3+ times)
+warning hi hi-b1-20 [orphan] 82 of 94 new lemmas (87.2 %) are never met again in any later unit (टालना, मालूम, सौंपना, झूठ, आइं, जारी, ...); warning above 15.0 %
+warning hi hi-b1-20 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 156 words, median second gap 57 words (over 10 lemmas met 3+ times)
+warning hi hi-b1-22 [orphan] 39 of 40 new lemmas (97.5 %) are never met again in any later unit (जूना, ऊऊऊ, सुस्तूराम, ऊंऊंऊं, बुदबुदाना, चुटकी, ...); warning above 15.0 %
+warning hi hi-b1-24 [orphan] 8 of 8 new lemmas (100.0 %) are never met again in any later unit (एकमात्र, पहुँचाना, रेख, विनाश, नाश, पवित्रशास्त्र, ...); warning above 15.0 %
+warning hi hi-b1-25 [recurrence] the intervals between meetings of this unit's new lemmas do not widen: median first gap 101 words, median second gap 99 words (over 12 lemmas met 3+ times)
+warning hi hi-b1-26 [orphan] 74 of 77 new lemmas (96.1 %) are never met again in any later unit (शरारती, लाड़ला, रटना, बदमाशी, मस्त, मौला, ...); warning above 15.0 %
+warning hi hi-b1-28 [orphan] 29 of 30 new lemmas (96.7 %) are never met again in any later unit (हिचकोला, बिछाना, छेद, राज़, बुढ़िया, सुखाना, ...); warning above 15.0 %
+
+hi: 0 error(s), 93 warning(s)
+
+ladder:check ok

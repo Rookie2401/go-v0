@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "There is no word for \"park\" in the plan, so the children play in a मैदान (open field). Plural forms लड़के / लड़कियाँ are used once the singular is also in the text. Honorific plural for रवि सर and चाचा जी. Words outside the plan (measured): none."
+    "notes": "There is no word for \"park\" in the plan, so the children play in a मैदान (open field). Plural forms लड़के / लड़कियाँ are used once the singular is also in the text. Honorific plural for रवि सर and चाचा जी. Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -270,6 +270,18 @@
             {
               "text": "सैम बोलता है, \"चाचा जी, नमस्ते!\"",
               "english": "Sam says, \"Chacha ji, hello!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम रोज़ स्कूल जाता है।",
+              "english": "Sam goes to school every day."
+            },
+            {
+              "text": "अमन रोज़ बैग लेता है।",
+              "english": "Aman takes his bag every day."
             }
           ]
         }

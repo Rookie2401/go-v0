@@ -1,0 +1,108 @@
+=== de-b1-01 | dialogue | conversation | A year in Leipzig | Ein Jahr in Leipzig | memories, team, year
+speakers: david=David, ruth=Ruth, sam=Sam, anna=Anna, jonas=Jonas, sabine=Sabine
+note: Recall unit at the head of the bridge: the team remembers scenes of the last units (the radio interview, the loan, the rubbish, the key). Names from Stage 0 and the ladder. Teaches no new words of its own on purpose.
+## Der Abend im Team
+Es ist Freitagabend, und das Team sitzt bei David und Ruth am Tisch. || It is Friday evening, and the team is sitting at the table at David and Ruth's.
+Auf dem Tisch stehen Tee und ein Kuchen von Frau Weber. || On the table there are tea and a cake from Frau Weber.
+Heute vor einem Jahr ist Sam in Leipzig angekommen. || A year ago today Sam arrived in Leipzig.
+[david] Ein Jahr! Das müssen wir feiern. || One year! We have to celebrate that.
+[david] Jeder erzählt eine Erinnerung. || Everyone tells a memory.
+[ruth] Ich fange an. || I will begin.
+[ruth] Ich denke an das Interview im Studio. || I am thinking of the interview in the studio.
+[ruth] Anna hat vor dem Mikrofon gesessen, und sie war sehr nervös. || Anna sat in front of the microphone, and she was very nervous.
+[anna] Das Thema war mein Alltag im Krankenhaus. || The topic was my everyday life at the hospital.
+[anna] Ich habe von der Frühschicht erzählt und von der Übergabe am Morgen. || I told about the early shift and about the handover in the morning.
+[anna] Am Ende hat der Mann vom Lokalsender gelacht und gesagt: Das war sehr gut. || At the end the man from the local station laughed and said: that was very good.
+
+## Geld, Müll und ein Schlüssel
+[jonas] Meine Erinnerung ist ein Samstagabend im Café. || My memory is a Saturday evening in the café.
+[jonas] Ich hatte Angst, aber ich habe Herrn Schmidt höflich um Geld gebeten. || I was afraid, but I asked Herr Schmidt politely for money.
+[jonas] Er hat nicht lange gedacht und hat mir geholfen. || He did not think for long and helped me.
+[sam] Das war großzügig von ihm. || That was generous of him.
+[sabine] Meine Erinnerung ist der Müll. || My memory is the rubbish.
+[sabine] Ich habe im Hausflur lange vor den Behältern gestanden. || I stood in the hallway for a long time in front of the containers.
+[sabine] Wohin kommt das Glas, wohin kommt das Plastik, und was ist Restmüll? || Where does the glass go, where does the plastic go, and what is general waste?
+[ruth] Jetzt weißt du es, und du erklärst es allen Nachbarn. || Now you know, and you explain it to all the neighbours.
+[sabine] Ja, ich habe sogar ein Plakat gemalt. || Yes, I even painted a poster.
+[david] Und du, Sam? || And you, Sam?
+[sam] Ich denke an den Anhänger an meinem Schlüsselbund. || I am thinking of the pendant on my bunch of keys.
+[sam] Ich habe den Schlüssel verloren, und das Fundbüro hat ihn zurückgebracht. || I lost the key, and the lost-property office brought it back.
+[sam] Darum bin ich so dankbar für diese Stadt. || That is why I am so thankful for this city.
+
+## Der nächste Schritt
+[david] Ihr habt viel erlebt in einem Jahr. || You have experienced a lot in one year.
+[david] Und im Winter machen wir etwas Neues. || And in winter we will do something new.
+[ruth] Sabine hat eine Idee für die Kinder in der Gemeinde. || Sabine has an idea for the children in the church.
+[sabine] Ich möchte einen Märchenabend machen. || I would like to hold a fairy-tale evening.
+[sabine] Wir lesen Märchen vor, und die Kinder hören zu. || We read fairy tales aloud, and the children listen.
+[jonas] Ich helfe gern, aber ich lese nicht so gut vor. || I am glad to help, but I do not read aloud so well.
+[anna] Dann übst du mit Ben, er liest ganz gut. || Then you practise with Ben, he reads quite well.
+[david] Gut, wir sprechen am Sonntag darüber. || Good, we will talk about it on Sunday.
+[ruth] Jetzt essen wir erst einmal den Kuchen. || For now we first eat the cake.
+
+## Erinnerst du dich?
+Sam denkt noch einmal an den Dienstagnachmittag im Studio. || Sam thinks once more of the Tuesday afternoon in the studio.
+Anna hat vor dem Mikrofon lange nachgedacht, und sie war sehr nervös. || Anna thought for a long time in front of the microphone, and she was very nervous.
+Der Lokalsender wollte über ein Thema sprechen: ihren Alltag. || The local station wanted to talk about one topic: her everyday life.
+In der Frühschicht muss sie nach der Übergabe ständig weiterarbeiten. || In the early shift she has to keep working constantly after the handover.
+Sie arbeitet auf der Station für innere Medizin. || She works on the ward for internal medicine.
+Sie hat von einem Mann mit Atemnot erzählt und von seinem Verband. || She told about a man with shortness of breath and about his bandage.
+Man ist dort nachts wach, und ohne Humor geht es nicht. || You are awake there at night, and without humour it does not work.
+Im Interview hat sie einen Schluck Wasser getrunken. || In the interview she drank a sip of water.
+Sie hat die Geschichte vom Samariter erzählt, der Wein auf die Wunde goss. || She told the story of the Samaritan who poured wine on the wound.
+Sam wartete draußen im Gang, und neulich hat er das Schlusswort noch einmal gehört. || Sam waited outside in the corridor, and recently he heard the closing words again.
+Anna liebt die Natur, und sie sucht ihre Quellen der Ruhe im Park. || Anna loves nature, and she looks for her sources of calm in the park.
+
+Danach denken sie an Annas Weg vom Anfang bis heute. || After that they think of Anna's way from the beginning until today.
+[anna] Ich habe mich im vierten Jahr bei dem Krankenhaus beworben. || I applied to the hospital in the fourth year.
+[anna] Auf der Station lernte ich Lena kennen, und ich habe gut aufgepasst. || On the ward I got to know Lena, and I paid good attention.
+[anna] Ich war fleißig, aber es war anstrengend. || I was hardworking, but it was tiring.
+[anna] Ich habe die Schule gewechselt und viele Leute erreichen wollen. || I changed school and wanted to reach many people.
+[anna] Ich musste Medikamente sortieren und gleichzeitig mit den Familien sprechen. || I had to sort medicines and at the same time talk to the families.
+[anna] Ich bin damals viel gereist, aber meine Familie blieb in Leipzig. || I travelled a lot then, but my family stayed in Leipzig.
+[sabine] Ich habe es nicht gewagt, mich so zu bewerben, und Anna hat mich geprägt. || I did not dare apply like that, and Anna shaped me.
+[anna] Ich habe tatsächlich viel Wärme gefunden. || I really found a lot of warmth.
+
+Dann spricht Jonas über seinen Samstagabend im Café. || Then Jonas talks about his Saturday evening in the café.
+[jonas] Ich war höflich, aber ich habe mich nicht getraut. || I was polite, but I did not dare.
+[jonas] Ich habe meine Tasse gedreht und kein Wort gesagt. || I turned my cup and said not a word.
+[jonas] Herr Schmidt war großzügig und hat mir ein Argument gegeben. || Herr Schmidt was generous and gave me an argument.
+[jonas] Er sagte: Na, ihr zwei? Ich beiße nicht. || He said: Well, you two? I do not bite.
+[jonas] Ich war verlegen, aber er war nicht unhöflich zu mir. || I was embarrassed, but he was not rude to me.
+[jonas] Er kannte meine Lage, und er hat mich lange geführt. || He knew my situation, and he guided me for a long time.
+[jonas] Er hat alles wiedergegeben, was ich vorher gesagt hatte, und dann meinte er: Meinetwegen. || He repeated everything I had said before, and then he said: for my part, fine.
+[jonas] Bei der Beerdigung war ich auch in einem schweren Moment. || At the funeral I was also in a hard moment.
+[jonas] Irgendwann konnte ich selbstständig arbeiten, und das ist die Freiheit. || At some point I could work independently, and that is the freedom.
+[sam] Das war ein schöner Vergleich, aber der Schock war groß. || That was a nice comparison, but the shock was big.
+[jonas] Nur neun Prozent der Leute wollten etwas wiederholen. || Only nine per cent of the people wanted to repeat something.
+
+Sabine denkt an das Haus und an den Müll. || Sabine thinks of the house and the rubbish.
+[sabine] Ich muss Metall und Glas spülen und sortieren. || I have to rinse and sort metal and glass.
+[sabine] Drinnen im Haus gibt es ungefähr zehn Behälter. || Inside the house there are about ten containers.
+[sabine] Ich habe es gezeichnet, und es steht ohnehin auf dem Plakat. || I drew it, and it is on the poster anyway.
+[sabine] Die Kleidersammlung war an der Hauptstraße. || The clothes collection was on the main street.
+[sabine] Eine Frau ist hereingelaufen und hat einen Becher mitgebracht. || A woman came running in and brought a cup.
+
+Ruth liest den Wochenbericht aus dem Sommer vor. || Ruth reads out the weekly report from the summer.
+[ruth] In der vergangenen Woche war die Zusammenarbeit mit dem Verein gut. || In the past week the cooperation with the association was good.
+[ruth] Der Bedarf war groß, und wir hatten Kontakt zu vielen Jugendlichen. || The need was great, and we had contact with many young people.
+[ruth] Wir haben in drei Punkten gepunktet: Einheit, Wärme und Antrieb. || We scored in three points: unity, warmth and drive.
+[david] Die Gemeindekasse war leer, und die Bank hat uns abgelehnt. || The church fund was empty, and the bank turned us down.
+[david] Wir haben das Geld nebenbei gesammelt, und die finanzielle Lage blieb unverändert. || We collected the money on the side, and the financial situation remained unchanged.
+[ruth] Der Stil der Gottesdienste hat sich nicht geändert, aber der Wechsel im Team hat uns bewegt. || The style of the services did not change, but the change in the team moved us.
+
+Am Ende spricht Sam über seine eigene Geschichte. || At the end, Sam talks about his own story.
+[sam] Auf der Missionskonferenz war ich oft dumm und habe mich verlaufen. || At the missions conference I was often stupid and got lost.
+[sam] Wochenlang hatte ich eine Lücke in meiner Übung, aber ich habe täglich geübt. || For weeks I had a gap in my practice, but I practised daily.
+[sam] Ich habe mein Geld zurückbekommen, und jederzeit konnte ich fragen. || I got my money back, and I could ask at any time.
+[sam] Ich bin dankbar für einen besonderen Abend, denn ich weiß, wie die Menschen mit mir umgingen. || I am thankful for a special evening, because I know how the people dealt with me.
+[sam] Der Samariter hat Wein auf die Wunde getan, und das war eine gute Tat. || The Samaritan put wine on the wound, and that was a good deed.
+
+[david] Danke an alle für diesen Abend. || Thanks to everyone for this evening.
+[ruth] Ich finde, wir sollten das jedes Jahr machen. || I think we should do this every year.
+[sam] Ja, und ich bringe das nächste Mal den Kuchen mit. || Yes, and next time I will bring the cake.
+[anna] Aber bitte nicht selbst gebacken, Sam! || But please not baked yourself, Sam!
+[sam] Gut, dann kaufe ich ihn beim Bäcker. || Fine, then I will buy it at the baker's.
+[david] Und jetzt gehen wir alle nach Hause, es ist schon spät. || And now we all go home, it is already late.
+[jonas] Ich fahre mit dem Rad und bin gleich da. || I will go by bike and be there soon.
+[sabine] Gute Nacht, bis Sonntag in der Kirche! || Good night, see you on Sunday in church!

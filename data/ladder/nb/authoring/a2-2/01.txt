@@ -18,7 +18,7 @@ Læreren {luis} sier: «Det er bra at skolen blir ny. Vi trenger mer plass.» ||
 [luis] Ja, og jeg blir glad, når klassen min har mer plass. || Yes, and I will be happy when my class has more space.
 
 ## På markedet
-{marta} har også lest nyhetene. Hun snakker med {ola} om skolen. || Marta has also read the news. She talks with Ola about the school.
+{marta} har også lest nyhetene. Hun snakker med Ola om skolen. || Marta has also read the news. She talks with Ola about the school.
 [marta] Skolen min var liten og gammel. Jeg gikk lenge for å komme dit. || My school was small and old. I walked a long time to get there.
 [ola] Alle trenger en god skole. Jeg håper at den blir åpnet snart. || Everyone needs a good school. I hope it will be opened soon.
 [marta] Jeg håper det også. Da blir {nico} glad, og jeg blir glad. || I hope so too. Then Nils will be happy, and I will be happy.

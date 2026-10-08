@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-39",
+  "lang": "es",
+  "title": "Diario de Roatán",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-39",
+    "title": "Roatán diary (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honduran-register unit 6 of 6 (new, course-authored). The end-of-course trip of the workshop to Roatán (Bay Islands): the boat from La Ceiba, a swim over the reef (it follows es-b1-19, A day on the reef, in the ladder), a Garífuna afternoon with punta, machuca and pan de coco, letters home, and a night on the beach where Sam writes his diary. Voseo among the young people (mirá, contame, decime, vení, sabés) and usted to the guide Mildred, to doña Eulalia and to the professor. Points for the Honduran reviewer: the sequence of the trip (the boat from La Ceiba, West Bay), the Garífuna dishes and customs named (machuca, sopa de caracol, pan de coco, tambor, punta), how Roatán speakers would greet (\"Buenas\"), the guide's explanations, and the prices (none given). The unit also brings back, on purpose, words of es-b1-15, es-b1-17, es-b1-19 and es-b1-38 (the recycling pass of 2026-10-08)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "travel",
+    "nature",
+    "culture",
+    "honduran register"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "honduran-register"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition",
+    "honduras"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En el barco desde La Ceiba",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El viernes por la mañana, el grupo del taller salió de La Ceiba rumbo a Roatán, en un barco blanco y azul.",
+              "english": "On Friday morning, the workshop group left La Ceiba bound for Roatán, on a white and blue boat."
+            },
+            {
+              "text": "Eran doce: el profesor Wilmer, Karla, Sam, Nico, Yesenia y siete alumnos más.",
+              "english": "There were twelve: Professor Wilmer, Karla, Sam, Nico, Yesenia and seven more students."
+            },
+            {
+              "text": "La cooperativa de mujeres del mercado les había pagado una parte del viaje, y todos se lo agradecían con gratitud sincera.",
+              "english": "The women's cooperative of the market had paid part of the trip for them, and everybody thanked them with sincere gratitude."
+            },
+            {
+              "text": "—Estimadas señoras —había escrito Wilmer en su carta—, estos jóvenes van a ver el mar, y tal vez algunos lo vean por primera vez.",
+              "english": "\"Dear ladies,\" Wilmer had written in his letter, \"these young people are going to see the sea, and perhaps some will see it for the first time.\""
+            },
+            {
+              "text": "El mar estaba tranquilo, y desde la cubierta se veía la costa verde, con las montañas al fondo.",
+              "english": "The sea was calm, and from the deck one could see the green coast, with the mountains in the background."
+            },
+            {
+              "text": "—Mirá, Sam: ahí atrás está Pico Bonito —dijo Nico—. Y allá adelante, una raya azul: esa es la isla.",
+              "english": "\"Look, Sam: back there is Pico Bonito,\" said Nico. \"And over there ahead, a blue line: that is the island.\""
+            },
+            {
+              "text": "—Mirá qué distancia —dijo Sam—. Parece una isla de cuento.",
+              "english": "\"Look at that distance,\" said Sam. \"It looks like an island in a story.\""
+            },
+            {
+              "text": "Una hora y media después, entre el sol y el viento, llegaron al puerto de Roatán.",
+              "english": "An hour and a half later, between the sun and the wind, they arrived at the port of Roatán."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El arrecife",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A la mañana siguiente, una señora llamada Mildred los llevó en un bote hasta el arrecife.",
+              "english": "The next morning, a lady called Mildred took them in a boat to the reef."
+            },
+            {
+              "text": "—Buenas, muchachos —dijo—. Hoy hacemos buceo cerca de la orilla. No hace falta ser un experto: solo hay que respirar con calma.",
+              "english": "\"Hello, kids,\" she said. \"Today we are doing snorkeling near the shore. You don't need to be an expert: you only have to breathe calmly.\""
+            },
+            {
+              "text": "—Y recuerden que el arrecife es un ser vivo —añadió—. No toquen los corales, porque cualquier daño tarda años en curarse.",
+              "english": "\"And remember that the reef is a living being,\" she added. \"Do not touch the corals, because any damage takes years to heal.\""
+            },
+            {
+              "text": "Sam se puso las aletas, bajó al agua y, a los pocos segundos, olvidó cualquier miedo.",
+              "english": "Sam put on his fins, went down into the water and, within a few seconds, forgot all fear."
+            },
+            {
+              "text": "Debajo del bote, a través del agua clara, había un jardín de colores: corales amarillos, plantas marinas y anémonas con los brazos abiertos.",
+              "english": "Under the boat, through the clear water, there was a garden of colors: yellow corals, sea plants and anemones with their arms open."
+            },
+            {
+              "text": "Un pez payaso se escondía entre los brazos de una anémona, y los budiones, que comen pasto marino, pasaban en grupo por la sombra de una roca.",
+              "english": "A clown fish hid among the arms of an anemone, and the parrotfish, which eat sea grass, passed in a group through the shadow of a rock."
+            },
+            {
+              "text": "Más lejos, un pulpo caminaba por el fondo, y una tortuga carey se dejaba llevar por la corriente, con las aletas tendidas.",
+              "english": "Farther away, an octopus walked along the bottom, and a hawksbill turtle let itself be carried by the current, with its flippers stretched out."
+            },
+            {
+              "text": "—Tengan cuidado con esa criatura —dijo Mildred, desde el bote—. Es venenosa, aunque es semejante a otras que no lo son.",
+              "english": "\"Be careful with that creature,\" said Mildred, from the boat. \"It is poisonous, although it is similar to others that are not.\""
+            },
+            {
+              "text": "Un pez aguja, largo y plateado, pasó muy cerca de la espalda de Yesenia, y ella soltó un grito debajo del agua.",
+              "english": "A needlefish, long and silvery, passed very close to Yesenia's back, and she let out a cry under the water."
+            },
+            {
+              "text": "Cuando volvieron al bote, Mildred les explicó que los tiburones del arrecife casi nunca hacen daño, porque tienen bastante alimento.",
+              "english": "When they got back in the boat, Mildred explained to them that the reef sharks almost never do harm, because they have enough food."
+            },
+            {
+              "text": "—Todos comen plancton, o comen a los que comen plancton —dijo—. Si desaparece uno, desaparece también el arrecife.",
+              "english": "\"Everyone eats plankton, or eats those that eat plankton,\" she said. \"If one disappears, the reef disappears too.\""
+            },
+            {
+              "text": "Nico arrojó una cáscara de banana al agua, y Mildred lo miró sin decir nada. Él recogió la cáscara enseguida.",
+              "english": "Nico threw a banana peel into the water, and Mildred looked at him without saying anything. He picked the peel up right away."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una tarde garífuna",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde, el grupo visitó una aldea garífuna, donde los recibió una señora llamada doña Eulalia.",
+              "english": "In the afternoon, the group visited a Garífuna village, where they were welcomed by a lady called doña Eulalia."
+            },
+            {
+              "text": "—Los garífunas llegamos a esta costa hace más de doscientos años —les contó—. Traemos una lengua, una música y una comida que son nuestras.",
+              "english": "\"We Garífuna arrived on this coast more than two hundred years ago,\" she told them. \"We bring a language, a music and a food that are ours.\""
+            },
+            {
+              "text": "En una olla de barro había una sopa de caracol con leche de coco, y sobre el fogón de leña se cocinaba un pez entero.",
+              "english": "In a clay pot there was a conch soup with coconut milk, and on the wood stove a whole fish was cooking."
+            },
+            {
+              "text": "—Esto es machuca, mijo —dijo doña Eulalia, y le sirvió un plato a Sam—. Plátano con pez y leche de coco.",
+              "english": "\"This is machuca, my son,\" said doña Eulalia, and served Sam a plate. \"Plantain with fish and coconut milk.\""
+            },
+            {
+              "text": "Sam probó el primer plato, cerró los ojos, y contestó con una sola palabra: —Cheque.",
+              "english": "Sam tried the first plate, closed his eyes, and answered with a single word: \"Great.\""
+            },
+            {
+              "text": "Después, tres hombres sacaron los tambores, y las mujeres empezaron a bailar la punta, con los pies sin zapatos y las caderas rápidas.",
+              "english": "Afterwards, three men brought out the drums, and the women began to dance the punta, with bare feet and quick hips."
+            },
+            {
+              "text": "—No es solo un baile —dijo doña Eulalia—. Es una manera de recordar a los que ya no están.",
+              "english": "\"It is not just a dance,\" said doña Eulalia. \"It is a way of remembering those who are no longer here.\""
+            },
+            {
+              "text": "Karla y Yesenia aprendieron los pasos en pocos minutos. Sam, en cambio, seguía la música con la mirada fija en los pies de las demás.",
+              "english": "Karla and Yesenia learned the steps in a few minutes. Sam, on the other hand, followed the music with his gaze fixed on the others' feet."
+            },
+            {
+              "text": "—Hay que sentirlo, chele, no pensarlo —le gritó Nico.",
+              "english": "\"You have to feel it, chele, not think it,\" Nico shouted at him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cartas desde la isla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes de dormir, los alumnos escribieron unas cartas para mandar desde el puerto.",
+              "english": "Before sleeping, the students wrote some letters to send from the port."
+            },
+            {
+              "text": "Yesenia le escribió a su mamá: «Te escribo desde la isla. El curso terminó, y aprendí que una práctica vale más que un discurso. Mi primo y yo, ambos, soñamos con volver.»",
+              "english": "Yesenia wrote to her mother: \"I am writing to you from the island. The course ended, and I learned that a practice is worth more than a speech. My cousin and I, both of us, dream of returning.\""
+            },
+            {
+              "text": "«Hoy vi un tiburón, y no sentí miedo, sino una humildad rara, como si la conciencia me dijera que el mar no es mío. Simplemente lo miré con respeto.»",
+              "english": "\"Today I saw a shark, and I did not feel fear, but a strange humility, as if my conscience told me that the sea is not mine. I simply looked at it with respect.\""
+            },
+            {
+              "text": "Nico le mandó una carta a su abuela: «Abuela, aquí no hay velorio ni lluvia, pero extraño tus baleadas. Una científica de la isla dice que los corales son un ejemplo fantástico de paciencia.»",
+              "english": "Nico sent a letter to his grandmother: \"Grandmother, here there is no wake or rain, but I miss your baleadas. A scientist on the island says that corals are a fantastic example of patience.\""
+            },
+            {
+              "text": "«Estimadas hermanas de la iglesia: aquí hay un pan de coco tan rico que no lo muele ni la lengua más cansada. Esto es para ustedes.»",
+              "english": "\"Dear sisters of the church: here there is a coconut bread so good that not even the most tired tongue grinds it. This is for you.\""
+            },
+            {
+              "text": "Karla le escribió a una amiga: «Wilmer prefería no hacer discursos, pero esta noche dio uno corto sobre la vida de una monja que enseñaba a leer a los chicos de la isla.»",
+              "english": "Karla wrote to a friend: \"Wilmer preferred not to give speeches, but tonight he gave a short one about the life of a nun who taught the kids of the island to read.\""
+            },
+            {
+              "text": "«Contó que la monja ya estaba envejecida, pero que seguía recorriendo las casas con un libro breve, y que no quería honrarlo con palabras sino con trabajo. Su destino, decía ella, era enseñar.»",
+              "english": "\"He told that the nun was already old, but that she kept going through the houses with a short book, and that she did not want to honor it with words but with work. Her destiny, she said, was to teach.\""
+            },
+            {
+              "text": "Sam, por su parte, no escribió a nadie: leyó en voz baja lo que había anotado, mientras contemplaba el mar.",
+              "english": "Sam, for his part, wrote to nobody: he read in a low voice what he had written down, while he contemplated the sea."
+            },
+            {
+              "text": "«Un desahogo es lo que necesito», pensó. «Una comedia con final feliz, un epílogo corto y un café.»",
+              "english": "\"A release is what I need,\" he thought. \"A comedy with a happy ending, a short epilogue and a coffee.\""
+            },
+            {
+              "text": "Esa noche, mientras las velas ardían en la mesa, alguien recordó el velorio de don Chepe, con su sábana blanca y sus cuatro velas.",
+              "english": "That night, while the candles burned on the table, somebody remembered don Chepe's wake, with its white sheet and its four candles."
+            },
+            {
+              "text": "—Don Chepe era un hombre vencido por la pena —dijo Wilmer—. Pero repuso que la tristeza, mal que bien, también es una forma de amor.",
+              "english": "\"Don Chepe was a man defeated by grief,\" said Wilmer. \"But he replied that sadness, for better or worse, is also a form of love.\""
+            },
+            {
+              "text": "—Y que el diablo siempre dice que no hay consuelo —añadió Karla—, pero la gente está conforme con vivir un día más.",
+              "english": "\"And that the devil always says there is no comfort,\" added Karla, \"but people are content with living one more day.\""
+            },
+            {
+              "text": "—Eso es carácter —dijo Sam—. Hay quien se derrite por cualquier cosa, y hay quien sigue derritiéndose despacio, sin gritar.",
+              "english": "\"That is character,\" said Sam. \"There are those who melt over anything, and those who keep melting slowly, without screaming.\""
+            },
+            {
+              "text": "Mildred escuchaba desde la puerta. Era una mujer joven, de ánimo fuerte, que había enterrado a su padre en la isla.",
+              "english": "Mildred listened from the door. She was a young woman, of strong spirit, who had buried her father on the island."
+            },
+            {
+              "text": "—Yo pretendía no llorar —dijo, y su voz se hizo baja—. Pero cuando mi chico nació, entendí que la renta de la vida se paga con amor.",
+              "english": "\"I meant not to cry,\" she said, and her voice dropped. \"But when my boy was born, I understood that the rent of life is paid with love.\""
+            },
+            {
+              "text": "—¿Y cuál es su virtud, Mildred? —le preguntó Yesenia.",
+              "english": "\"And what is your virtue, Mildred?\" Yesenia asked her."
+            },
+            {
+              "text": "—La virtud de una isla es la soledad compartida —contestó ella—. Aquí nadie está solo, aunque uno se sienta vago o perdido.",
+              "english": "\"The virtue of an island is shared solitude,\" she answered. \"Here nobody is alone, even if one feels aimless or lost.\""
+            },
+            {
+              "text": "—Ese empeño es una hombrada —dijo Nico, y se hizo el seductor.",
+              "english": "\"That effort is a manly feat,\" said Nico, and played the seducer."
+            },
+            {
+              "text": "—Más bien es lo contrario —dijo Mildred—. Sobra decir que una madre no representaba un monólogo: vivía una vida entera.",
+              "english": "\"It's rather the contrary,\" said Mildred. \"Needless to say, a mother did not play out a monologue: she lived a whole life.\""
+            },
+            {
+              "text": "Todos se rieron, aunque nadie se atrevió a insinuar que ella estaba equivocada.",
+              "english": "Everybody laughed, though nobody dared to hint that she was mistaken."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Diario de Sam, en la playa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, cuando todos dormían, Sam salió a la playa con su cuaderno y una luz pequeña.",
+              "english": "That night, when everybody was asleep, Sam went out to the beach with his notebook and a small light."
+            },
+            {
+              "text": "«Querido diario: El mar de noche es húmedo y oscuro, pero también íntimo. Escribo con ánimo y con una intención sencilla: no olvidar esta semana.»",
+              "english": "\"Dear diary: The sea at night is damp and dark, but also intimate. I write in good spirits and with a simple intention: not to forget this week.\""
+            },
+            {
+              "text": "«Hace un año, la idea de llegar a una isla me parecía una fantasía. Hoy estoy aquí, con mi memoria llena de colores.»",
+              "english": "\"A year ago, the idea of reaching an island seemed a fantasy to me. Today I am here, with my memory full of colors.\""
+            },
+            {
+              "text": "«Procuraba no pensar en el pasado, pero precisamente aquí, frente al arrecife, entendí que todo tiene su término, y que ese término no es una frialdad: es una pausa.»",
+              "english": "\"I tried not to think of the past, but precisely here, in front of the reef, I understood that everything has its end, and that that end is not a coldness: it is a pause.\""
+            },
+            {
+              "text": "«En el taller aprendí que un filósofo, un soldado y un místico pueden ser la misma persona en una sola función. Eso no es un disparate: es el arte de ver desde varios lados.»",
+              "english": "\"In the workshop I learned that a philosopher, a soldier and a mystic can be the same person in a single show. That is not nonsense: it is the art of seeing from several sides.\""
+            },
+            {
+              "text": "«Hoy, delante de un pulpo, sentí lo mismo que Carmen Mejía frente a su rana: la hermosura de lo pequeño y el horror de perderlo.»",
+              "english": "\"Today, in front of an octopus, I felt the same as Carmen Mejía before her frog: the beauty of the small and the horror of losing it.\""
+            },
+            {
+              "text": "«Mi propósito para el año que viene es sencillo: emprender más, quejarme menos, y escuchar con atención a los que acuden a mí. En la corriente de los días, lo que vislumbraba de lejos ya se ve de cerca.»",
+              "english": "\"My purpose for next year is simple: to undertake more, complain less, and listen carefully to those who turn to me. In the current of the days, what I glimpsed from afar is now seen close up.\""
+            },
+            {
+              "text": "«Y quiero referir una cosa que dijo el profe: que el odio y el desprecio son vagos, pero la gratitud siempre llega a tiempo.»",
+              "english": "\"And I want to relate something the professor said: that hatred and contempt are drifters, but gratitude always arrives on time.\""
+            },
+            {
+              "text": "«Cierro el cuaderno. Detrás de mí, el mar sigue su corriente, y el cielo, lleno de estrellas, brilla como si no tuviera nada que explicar.»",
+              "english": "\"I close the notebook. Behind me, the sea follows its current, and the sky, full of stars, shines as if it had nothing to explain.\""
+            },
+            {
+              "text": "Al amanecer, Wilmer lo encontró dormido sobre la arena, con el cuaderno abierto en la mano.",
+              "english": "At dawn, Wilmer found him asleep on the sand, with the notebook open in his hand."
+            },
+            {
+              "text": "—Vení, Sam, que sale el barco —le dijo, sacudiéndole el hombro—. Y ahorita comemos una baleada en el puerto.",
+              "english": "\"Come on, Sam, the boat is leaving,\" he said, shaking his shoulder. \"And in a moment we'll have a baleada at the port.\""
+            },
+            {
+              "text": "En el puerto, un vago de la playa, sin oficio, vislumbraba el amanecer desde una banca.",
+              "english": "At the port, a beach drifter, without a trade, glimpsed the dawn from a bench."
+            },
+            {
+              "text": "En la fila del puerto, una señora pretende comprar un pez, y Nico lanzó una broma que hizo reír a Mildred.",
+              "english": "In the line at the port, a lady tries to buy a fish, and Nico threw out a joke that made Mildred laugh."
+            },
+            {
+              "text": "—Es la vaga idea que tiene Nico del dinero —dijo Karla. El sol brillaba sobre el mar, y era una rareza ver el cielo tan limpio.",
+              "english": "\"It is Nico's vague idea of money,\" said Karla. The sun shone on the sea, and it was a rarity to see the sky so clean."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Spanish package, Honduran-register strand)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+id: hi-b1-21
+title: गीता मौसी की बिटिया
+domain: family
+topics: family, baby, visit, sisters
+notes: Tenth controlled unit of the b1 bridge. It prepares the words of the GDL story "जुई मौसी की बेटी" (hi-b1-22), about a small girl and her new baby cousin: गुड़िया, गोदी, तंग, फ्रॉक, बिटिया, झूला, चड्डी, सँभालना, मचलना, बारीक, each used three times, in a visit of Sam and Aman to Geeta mausi's new baby (the plot is not the plot of the GDL story). Machine-drafted; a Hindi reviewer should check the baby words (some are very colloquial).
+---
+## नई बिटिया
+गीता मौसी के घर नई बिटिया आई थी, और नानी सुबह से सैम और अमन को वहाँ जाने के लिए तैयार कर रही थीं। || A new baby girl had come to Geeta mausi's house, and from morning Nani had been getting Sam and Aman ready to go there.
+अमन सबसे पहले तैयार हो गया, क्योंकि उसे उस नन्ही बच्ची को देखना था। || Aman got ready first of all, because he wanted to see that tiny child.
+रास्ते में उसने पूछा, "नानी, क्या छोटी बच्ची गुड़िया जैसी होती है?" || On the way he asked, "Nani, is a small child like a doll?"
+नानी हँसीं और बोलीं, "छोटी बच्ची को सब प्यार से गुड़िया कहते हैं, पर वह खिलौना नहीं होती।" || Nani laughed and said, "Everybody lovingly calls a small girl a doll, but she is not a toy."
+सैम ने कहा, "तो हमें उसे तंग नहीं करना चाहिए।" || Sam said, "Then we should not trouble her."
+"हाँ," नानी बोलीं, "किसी बच्चे को तंग करना ठीक नहीं, चाहे वह कितना भी छोटा हो।" || "Yes," Nani said, "it is not right to trouble a child, however small he may be."
+अमन ने सिर हिलाया, और तीनों जल्दी जल्दी चलने लगे। || Aman nodded his head, and the three of them began to walk quickly.
+
+## झूले में
+घर में पहुँचकर उन्होंने देखा कि नन्ही बिटिया झूले में सो रही है। || Reaching the house they saw that the tiny baby girl was sleeping in the cradle.
+गीता मौसी ने उँगली अपने मुँह पर रखकर कहा, "धीरे बोलो, गुड़िया सो रही है।" || Geeta mausi put a finger on her mouth and said, "Speak softly, the little one is asleep."
+अमन बहुत धीरे से झूले के पास गया और सोई हुई बच्ची को देखता रहा। || Aman went very softly near the cradle and went on looking at the sleeping child.
+उसकी छोटी सी फ्रॉक लाल रंग की थी, और उसके हाथ बहुत छोटे थे। || Her small frock was red, and her hands were very small.
+तभी बच्ची ने बारीक सी आवाज़ की, और सब हँस पड़े। || Just then the child made a thin little sound, and everybody burst out laughing.
+मौसी बोलीं, "लो, जाग गई।" || Mausi said, "There, she has woken up."
+
+## गोदी में
+अमन मचलकर बोला, "मौसी, मुझे भी इसे अपनी गोदी में लेना है!" || Aman said, begging, "Mausi, I want to take her in my lap too!"
+मौसी ने कहा, "अभी नहीं अमन, तुम इसे नहीं सँभाल पाओगे।" || Mausi said, "Not now, Aman, you will not be able to hold her."
+अमन थोड़ा मचला, और फिर बैठ गया। || Aman fussed a little, and then sat down.
+मौसी ने बच्ची को अपनी गोदी में उठाया और धीरे धीरे उसे सँभाला। || Mausi picked the child up into her lap and slowly held her carefully.
+बच्ची रोने लगी, क्योंकि उसकी चड्डी गीली हो गई थी। || The child began to cry, because her nappy had got wet.
+मौसी ने झट से उसकी चड्डी बदली, और वह फिर हँसने लगी। || Mausi quickly changed her nappy, and she began to laugh again.
+सैम को यह सब देखकर बहुत अच्छा लगा, और उसने कहा, "बच्चों को सँभालना बहुत मुश्किल काम है।" || Sam liked seeing all this very much, and he said, "Looking after children is very difficult work."
+
+## दीदी और भैया
+थोड़ी देर बाद मौसी ने अमन को पास बुलाया और बच्ची को उसकी बाँहों में दिया। || After a little while mausi called Aman near and put the child into his arms.
+अमन ने उसे बहुत सँभालकर पकड़ा, और उसके मुँह से निकला, "अरे, यह तो कितनी हल्की है!" || Aman held her very carefully, and from his mouth came, "Oh, how light she is!"
+बच्ची ने अपनी बारीक आवाज़ में कुछ कहा, और अमन हँस पड़ा। || The child said something in her thin voice, and Aman burst out laughing.
+मौसी ने कहा, "अब तुम इसके भैया हो, अमन, इसलिए इसे तंग मत करना।" || Mausi said, "Now you are her brother, Aman, so do not trouble her."
+अमन बोला, "नहीं मौसी, मैं तो इसे झूले में भी सुलाऊँगा।" || Aman said, "No, mausi, I will put her to sleep in the cradle too."
+सैम ने बच्ची की फ्रॉक को छूकर कहा, "ऐसी नन्ही सी फ्रॉक मैंने पहले कभी नहीं देखी।" || Sam touched the child's frock and said, "I have never seen such a tiny frock before."
+शाम को घर लौटते हुए अमन चुपचाप चल रहा था, और नानी ने पूछा, "क्या सोच रहे हो?" || Returning home in the evening Aman was walking quietly, and Nani asked, "What are you thinking?"
+अमन ने कहा, "मैं सोच रहा था कि एक दिन मैं भी किसी की बिटिया को गुड़िया की तरह सँभालूँगा।" || Aman said, "I was thinking that one day I too will look after somebody's baby girl like a doll."
+नानी मुस्कराईं और बोलीं, "तब तक तुम अपनी पढ़ाई सँभालो।" || Nani smiled and said, "Until then look after your studies."
+
+## पालना
+मौसी के घर का पालना लकड़ी का था, और उसे अमन के चाचा जी ने बनाया था। || The cradle in mausi's house was made of wood, and Aman's chacha ji had made it.
+नानी ने बताया कि पहले बच्चे पालने में ही सोते थे। || Nani told that earlier children used to sleep only in cradles.
+मौसी ने बच्ची को गोदी में लेकर पालने में रख दिया, और उसकी चड्डी भी बदल दी। || Mausi took the child in her lap, put her in the cradle, and changed her nappy too.
+बच्ची पालने में हिलती हुई फिर सो गई। || The child fell asleep again, swaying in the cradle.

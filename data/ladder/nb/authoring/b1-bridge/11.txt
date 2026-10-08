@@ -1,0 +1,43 @@
+=== nb-b1-bridge-11 | nonfiction | news | The local election | Kommunevalget | election,news,opinions,passive,indirect speech,conditionals
+speakers: erik=Erik
+note: A simple account of a municipal election, in the form of a newspaper article followed by family and workplace conversations. Passive in -s (det stemmes), indirect speech, and "hvis ... ville". The statements about voting rights and the voting procedure are general and unchecked; a Norwegian reviewer must check them. No real party is named.
+## Avisen
+Nyhet fra byen || News from the town
+Om en uke er det valg i kommunen. Da skal folk i byen stemme på partiene, og partiet som får mange stemmer, får ordføreren. || In a week there is an election in the municipality. Then people in the town will vote for the parties, and the party that gets many votes gets the mayor.
+Det stemmes på skolene. Mange snakker om skolen som kommunen skal bygge, om bussene og om hva det koster å bo i byen. || Voting takes place at the schools. Many people talk about the school that the municipality is to build, about the buses and about what it costs to live in town.
+Hvert parti har sin mening, og politikerne snakker høyt. I avisen er det debatt hver dag. || Every party has its opinion, and the politicians speak loudly. In the newspaper there is a debate every day.
+
+## Ved frokosten
+{luis} leste avisen høyt, og {sam} og {ana} lyttet. || Lars read the newspaper aloud, and Sam and Anna listened.
+[luis] Se her! Et parti vil ha mange busser, og et parti vil ha en ny skole. Jeg så debatten i går. || Look here! One party wants many buses, and one party wants a new school. I saw the debate yesterday.
+[ana] Debatten var lang. Politikerne snakket høyt, og ingen lyttet. || The debate was long. The politicians spoke loudly, and nobody listened.
+[sam] Hvem skal du stemme på, {luis}? || Whom will you vote for, Lars?
+[luis] Det sier jeg ikke. Men jeg skal tenke på elevene mine, for jeg er lærer. || I will not say. But I will think about my pupils, because I am a teacher.
+[ana] Jeg skal stemme på partiet som vil ha mange sykepleiere. Hvis det ble mange, ville jeg ikke vært så trøtt! || I will vote for the party that wants many nurses. If there were many, I would not be so tired!
+[sam] Jeg kan ikke stemme. Jeg har ikke bodd her lenge. || I cannot vote. I have not lived here for long.
+[luis] Nei. Jeg tror at du må ha bodd her i tre år. Men du kan lese og lytte, og du kan ha en mening. || No. I think that you must have lived here for three years. But you can read and listen, and you can have an opinion.
+
+## Hos {marta}
+På søndag var det middag hos {marta}, og alle snakket om valget. || On Sunday there was dinner at Marta's, and everyone talked about the election.
+[marta] Jeg har stemt hver gang fra jeg var liten. Jeg liker partiet som tenker på gamle folk. || I have voted every time from when I was small. I like the party that thinks about old people.
+[nico] Jeg skal stemme på kaken! Politikere spiser kake hver dag. || I will vote for the cake! Politicians eat cake every day.
+[luis] Du er for liten, {nico}. Men de kommer til skolen din, og du kan spørre dem om kake. || You are too small, Nils. But they are coming to your school, and you can ask them about cake.
+Alle lo. Så ble {marta} rolig. || Everyone laughed. Then Marta became calm.
+[marta] Det er viktig å stemme. Hvis vi ikke stemmer, bestemmer politikerne alene. Og alle har rett til å si sin mening. || It is important to vote. If we do not vote, the politicians decide alone. And everyone has the right to give their opinion.
+[sam] Jeg forstår. Hvis jeg kunne, ville jeg tenke lenge før jeg bestemte meg. || I understand. If I could, I would think for a long time before I decided.
+
+## I bokhandelen
+På fredag kom en kunde til bokhandelen. Han ville ha en bok om byen og valget, og han spurte {sam} hva han mente om det. || On Friday a customer came to the bookshop. He wanted a book about the town and the election, and he asked Sam what he thought about it.
+[sam] Jeg kan ikke stemme, så jeg kan ikke hjelpe deg med det. Men jeg skal gjerne finne en bok til deg. || I cannot vote, so I cannot help you with that. But I will gladly find a book for you.
+[erik] Vi selger ikke meninger, bare bøker! Men {sam} finner den beste boka. || We do not sell opinions, only books! But Sam will find the best book.
+{sam} gikk til hyllene og fant en bok om byen. Kunden takket, og han betalte ved kassen. || Sam went to the shelves and found a book about the town. The customer thanked him, and he paid at the till.
+
+## Valgdagen
+På lørdag gikk {ana} og {luis} til skolen, og de stemte. {sam} gikk med dem, og han så på mens folk ventet. || On Saturday Anna and Lars went to the school, and they voted. Sam went with them, and he watched while people waited.
+Om kvelden satt de i stua. Svaret kom sent. Ordføreren ble en dame som hadde jobbet mange år som lærer. || In the evening they sat in the living room. The answer came late. The mayor became a lady who had worked many years as a teacher.
+[luis] Hun kjenner skolene. Det er bra for byen og for elevene. || She knows the schools. That is good for the town and for the pupils.
+{sam} tenkte at det var godt å bo i en kommune der mange fikk si sin mening. Han ba for byen og for ordføreren. || Sam thought that it was good to live in a municipality where many people could give their opinion. He prayed for the town and for the mayor.
+
+Hjemme hadde {sam} en lapp på døra om støy i huset. Han sammenlignet valget med visningen: begge gangene var det viktig å se selv. Han sparte penger hver måned, og han ville kjøpe pizza til alle som hadde løftet sofaen hans. || At home Sam had a note on the door about noise in the house. He compared the election with the viewing: both times it was important to see for oneself. He saved money every month, and he wanted to buy pizza for everyone who had lifted his sofa.
+{sam} tenkte på flekken på veggen i den første leiligheten og på depositumet han hadde betalt. Hver uke kastet han søppel i riktig pose, og han vasket trappen når det var hans tur. || Sam thought of the patch on the wall in the first flat and of the deposit he had paid. Every week he threw rubbish in the right bag, and he washed the stairs when it was his turn.
+Kassen med bøker om valget var tung. Etterpå vasket {sam} gulvet i bokhandelen, for det var hans tur. || The box of books about the election was heavy. Afterwards Sam washed the floor in the bookshop, because it was his turn.

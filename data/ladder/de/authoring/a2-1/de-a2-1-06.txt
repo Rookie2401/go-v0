@@ -1,0 +1,147 @@
+=== de-a2-1-06
+speakers: S=Sam, W=Frau Weber, J=Jonas, B=Ben, L=Lena
+## Bens Ball
+Es ist Samstag, und die Sonne scheint. || It is Saturday, and the sun is shining.
+Sam geht mit Ben zum Spielplatz. || Sam goes to the playground with Ben.
+Ben rennt zum Baum. || Ben runs to the tree.
+Sein roter Ball liegt hoch im Baum. || His red ball is lying high up in the tree.
+[B] Mein Ball ist im Baum! || My ball is in the tree!
+[S] Er ist zu hoch. || It is too high.
+[S] Wir brauchen eine Leiter. || We need a ladder.
+[B] Hat Frau Weber eine? || Does Frau Weber have one?
+[S] Ich frage sie. || I will ask her.
+[S] Bleib hier. || Stay here.
+Lena kommt zu Ben. || Lena comes up to Ben.
+[L] Zeig mir deinen Ball! || Show me your ball!
+[B] Er ist nicht hier. || It is not here.
+[B] Er ist im Baum. || It is in the tree.
+[L] Ich habe auch einen Ball. || I have a ball too.
+[L] Tauschen wir? || Shall we swap?
+[B] Nein, ich möchte meinen Ball. || No, I want my ball.
+
+## Bei Frau Weber
+Sam geht zu Frau Weber. || Sam goes to Frau Weber.
+[S] Frau Weber, kann ich Sie etwas bitten? || Frau Weber, may I ask you something?
+[W] Ja, was ist denn, Sam? || Yes, what is it, Sam?
+[S] Bens Ball ist im Baum. || Ben's ball is in the tree.
+[S] Können Sie mir Ihre Leiter leihen? || Can you lend me your ladder?
+[W] Sie ist im Keller und gehört meinem Mann. || It is in the cellar and belongs to my husband.
+[W] Er hat sie damals von seinem Opa bekommen. || He got it from his grandfather back then.
+[W] Seine Großeltern hatten einen Bauernhof im Dorf. || His grandparents had a farm in the village.
+[W] Sie hat schon Kühe und Pferde gesehen. || It has already seen cows and horses.
+[S] Dann hat sie eine Geschichte! || Then it has a story!
+[W] Ja. || Yes.
+[W] Mein Mann hatte vier Geschwister, und sein Onkel und seine Tante haben sie oft geliehen. || My husband had four brothers and sisters, and his uncle and aunt often borrowed it.
+[W] Sie dürfen sie nehmen. || You may take it.
+[W] Ich brauche sie am Abend wieder. || I need it again in the evening.
+[S] Ich verspreche es. || I promise.
+[S] Ich will sie nicht vergessen. || I will not forget it.
+[W] Dann gehen Sie in den Keller. || Then go down to the cellar.
+[W] Die Tür ist offen. || The door is open.
+
+## Auf dem Spielplatz
+Sam trägt die Leiter zum Spielplatz. || Sam carries the ladder to the playground.
+Dort ist auch Jonas. || Jonas is there too.
+[J] Hallo! || Hello!
+[J] Was hast du da? || What have you got there?
+[S] Bens Ball ist im Baum. || Ben's ball is in the tree.
+[J] Ich halte sie, und du gehst zum Baum. || I will hold it, and you go to the tree.
+[S] Tauschen wir? || Shall we swap?
+[S] Du bist stärker, aber ich bin leichter. || You are stronger, but I am lighter.
+[J] Gut. || Good.
+[J] Dann gehe ich zum Baum. || Then I will go up.
+[J] Ich habe ihn! || I have it!
+[J] Ben, fang! || Ben, catch!
+[B] Danke, Jonas! || Thank you, Jonas!
+Ben rennt mit dem Ball zu Lena. || Ben runs to Lena with the ball.
+[B] Sieh, hier ist er! || Look, here it is!
+[B] Ich zeige ihn dir. || I will show it to you.
+[L] Der ist schön! || That is lovely!
+[L] Du darfst ihn mir bringen, wenn du fertig bist. || You may bring it to me when you are done.
+
+## Die kleine Bibliothek
+[J] Weißt du es schon? || Do you know it already?
+[J] Die Einwohner wollen hier eine kleine Bibliothek bauen. || The residents want to build a small library here.
+[J] Jeder kann ein Buch bringen, und jeder kann ein Buch nehmen. || Anyone can bring a book, and anyone can take a book.
+[J] Alle können Bücher tauschen. || Everybody can swap books.
+[J] Die Bücher gehören allen. || The books belong to everybody.
+[S] Das ist eine gute Veränderung! || That is a good change!
+[S] Der Spielplatz ist nicht sauber, und es gibt viel Lärm von der Straße. || The playground is not clean, and there is a lot of noise from the street.
+[J] Ja, der Verkehr ist zu laut. || Yes, the traffic is too loud.
+[J] Früher war in der Straße ein Schwimmbad. || There used to be a swimming pool in the street.
+[J] Heute baut die Stadt mehr Häuser, und die Straße hat mehr Einwohner. || Today the city is building more houses, and the street has more residents.
+[J] Aber die Kinder brauchen Platz, und sie wollen rennen und spielen. || But the children need room, and they want to run and play.
+[S] Wir reden mit Pastor Thomas. || We will talk to Pastor Thomas.
+[S] Ich rede morgen auch mit Frau Weber. || Tomorrow I will talk to Frau Weber too.
+[J] Hoffentlich hilft er uns. || Hopefully he will help us.
+[J] Ich schicke dir heute Abend ein Bild vom Haus. || I will send you a picture of the house this evening.
+[S] Und was machen wir in den Ferien? || And what shall we do in the holidays?
+[J] Dann arbeiten wir jeden Tag am Haus. || Then we will work on the house every day.
+
+## Das Werkzeug
+[S] Und das Werkzeug? || And the tools?
+[J] Mein Kollege hat in der Firma viel Werkzeug. || My colleague has a lot of tools at the company.
+[J] Er bringt uns den Hammer. || He is bringing us the hammer.
+[J] Als Mechaniker habe ich Erfahrung, aber der Hammer ist von ihm. || As a mechanic I have experience, but the hammer is his.
+[J] Ich habe die Stelle erst eine Woche, aber ich verdiene schon. || I have had the job for only a week, but I am already earning.
+[J] Meine Bewerbung hatte nur eine Seite, und mein Lebenslauf war kurz. || My application had only one page, and my CV was short.
+[J] Im Gespräch hat der Chef gefragt: „Haben Sie Werkzeug?“ || In the interview the boss asked, "Do you have tools?"
+[J] Dann habe ich den Vertrag unterschrieben. || Then I signed the contract.
+[J] Die Firma ist jetzt mein zweites Haus. || The company is now my second home.
+
+## Ohne Geld
+[J] Wir gehen jetzt in den Laden. || We are going to the shop now.
+[J] Wir brauchen noch einen Hammer. || We still need a hammer.
+[S] Ich habe mein Geld vergessen! || I have forgotten my money!
+[J] Das ist nicht schlimm. || That is not a problem.
+[J] Ich leihe dir Geld. || I will lend you money.
+[S] Ich verspreche es. || I promise.
+[S] Ich gebe dir das Geld morgen zurück. || I will give you the money back tomorrow.
+[J] Der Laden öffnet um neun und schließt um zwölf. || The shop opens at nine and closes at twelve.
+[J] Ich bitte dich: Sei pünktlich! || I am asking you: be on time!
+[S] Ja, ja. || Yes, yes.
+[J] Das letzte Treffen war um neun. || The last meeting was at nine.
+[J] Du warst nicht pünktlich. || You were not on time.
+[J] Das war schon das dritte Treffen. || That was already the third meeting.
+[S] Ich entschuldige mich noch einmal. || I apologise once more.
+
+## Am Abend
+Aber Sam ist wieder nicht pünktlich. || But Sam is not on time again.
+Er kommt erst um sieben Uhr zu Frau Weber. || He only gets to Frau Weber at seven o'clock.
+[S] Entschuldigen Sie bitte. || Please excuse me.
+[S] Ich bin zu spät. || I am late.
+[S] Es gab viel Verkehr und viel Lärm in der Stadt. || There was a lot of traffic and noise in town.
+[W] Das ist nicht schlimm. || That is not a problem.
+[W] Sie müssen sich nicht entschuldigen. || You do not have to apologise.
+[W] Ist der Ball wieder da? || Is the ball back?
+[S] Ja, Ben hat ihn. || Yes, Ben has it.
+[S] Ich muss sie zurückgeben. || I have to give it back.
+[S] Danke für Ihre Hilfe. || Thank you for your help.
+[W] Ich habe etwas für Sie. || I have something for you.
+[W] Dieses Buch gehört mir. || This book belongs to me.
+[W] Ich schenke es der kleinen Bibliothek. || I am giving it to the little library.
+[W] Gefällt Ihnen das? || Do you like that?
+[S] Ja, es gefällt mir sehr. || Yes, I like it very much.
+[S] Sonst noch etwas? || Anything else?
+[S] Es gefällt auch den Kindern. || The children like it too.
+[S] Ich schicke Ihnen ein Foto, wenn das Haus fertig ist. || I will send you a photo when the house is finished.
+[W] Zeigen Sie mir dann das Haus? || Will you show me the house then?
+[W] Hoffentlich regnet es nicht. || Hopefully it will not rain.
+[S] Ja, ich verspreche es. || Yes, I promise.
+[S] Am Samstag beginnen wir. || On Saturday we begin.
+[W] Ich bitte Sie nur um eins: Vergessen Sie nicht, mir das Foto zu schicken. || I only ask one thing of you: do not forget to send me the photo.
+[S] Hoffentlich nicht. || Hopefully not.
+[S] Aber wir reden ja nächste Woche noch einmal. || But we will talk again next week.
+
+## Eine Nachricht
+Am Abend schreibt Jonas eine Nachricht. || In the evening Jonas writes a message.
+[J] Hallo Sam! || Hello Sam!
+[J] Danke für deine Hilfe heute. || Thanks for your help today.
+[J] Pastor Thomas hat Ja gesagt. || Pastor Thomas said yes.
+[J] Wir dürfen auf dem Spielplatz bauen. || We may build on the playground.
+[J] Am Samstag um neun Uhr treffen wir uns. || On Saturday at nine we meet.
+[J] Kann Anna auch kommen? || Can Anna come too?
+[J] Frag sie bitte. || Please ask her.
+[S] Ja, ich frage sie noch heute Abend. || Yes, I will ask her this very evening.
+[J] Und noch etwas: Du kannst es mir am Montag geben. || And one more thing: you can give it to me on Monday.
+

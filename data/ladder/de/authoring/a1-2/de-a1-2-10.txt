@@ -1,0 +1,88 @@
+=== de-a1-2-10
+speakers: thomas=Pastor Thomas, sam=Sam, ben=Ben
+## Eine Geschichte von Jesus
+Am Sonntag sitzen die Kinder und die Freunde in der Gemeinde. || On Sunday the children and the friends are sitting in the church.
+Pastor Thomas spricht über Jesus. || Pastor Thomas speaks about Jesus.
+[thomas] Jesus hat über einen Hirten gesprochen. || Jesus spoke about a shepherd.
+[thomas] Der Hirte hat hundert Schafe. || The shepherd has a hundred sheep.
+[thomas] Er hat kein Auto und kein Fahrrad. || He has no car and no bicycle.
+[thomas] Er geht mit den Tieren auf dem Gras. || He goes with the animals on the grass.
+[thomas] Sie essen Gras, und er sitzt da. || They eat grass, and he sits there.
+
+## Ein Schaf ist nicht da
+[thomas] Am Abend sieht der Hirte seine Tiere. || In the evening the shepherd looks at his animals.
+[thomas] Er hat nicht hundert, er hat nur 99. || He does not have a hundred, he has only 99.
+[thomas] Eins ist leider nicht da. || One is not there, unfortunately.
+[thomas] Er fragt: "Wo ist es?" || He asks: "Where is it?"
+[thomas] Er lässt die 99 auf dem Gras. || He leaves the 99 on the grass.
+[thomas] Er geht und sucht das Schaf. || He goes and looks for the sheep.
+[thomas] Er hat keinen Bus, er geht zu Fuß. || He has no bus, he goes on foot.
+[thomas] Er läuft schnell, ohne Hilfe. || He runs fast, without help.
+[thomas] Die Reise ist lang, und die Nacht kommt. || The journey is long, and the night comes.
+[ben] Muss er umsteigen? || Does he have to change?
+[thomas] Nein, Ben! || No, Ben!
+[thomas] Er braucht kein Gleis und keinen Koffer. || He needs no platform and no suitcase.
+Alle lachen. || Everyone laughs.
+[thomas] Er hat kein Hotel. || He has no hotel.
+[thomas] Er übernachtet draußen, ohne Bett. || He stays outside overnight, without a bed.
+[thomas] Er ruft: "Wo bist du?" || He calls: "Where are you?"
+
+## Er findet es
+[thomas] Dort ist es! || There it is!
+[thomas] Es sitzt dort im Gras, und es hat Husten. || It is sitting there in the grass, and it has a cough.
+[thomas] Der Husten ist nicht gut, und das Schaf ist müde. || The cough is not good, and the sheep is tired.
+[thomas] Der Hirte ist froh. || The shepherd is glad.
+[thomas] Er lacht, und er weint. || He laughs, and he cries.
+[thomas] Er nimmt es auf die Schulter. || He puts it on his shoulder.
+[thomas] Er trägt es nach Hause. || He carries it home.
+[thomas] Es ist nicht leicht, aber er trägt es gern. || It is not light, but he gladly carries it.
+[thomas] Er hält es gut auf der Schulter. || He holds it well on his shoulder.
+[thomas] Der Himmel ist groß, und es ist Nacht. || The sky is big, and it is night.
+[thomas] Die anderen Tiere sind auf dem Gras. || The other animals are on the grass.
+[thomas] Er findet es dort, im Gras. || He finds it there, in the grass.
+[thomas] Am Morgen hat es keinen Husten. || In the morning it has no cough.
+[thomas] Die Schulter tut ihm weh, aber er ist glücklich. || His shoulder hurts, but he is happy.
+
+## Das Fest
+[thomas] Er ist zurück, und er ruft seine Freunde und Nachbarn. || He is back, and he calls his friends and neighbours.
+[thomas] Er sagt: "Kommt! Ich habe mein Schaf gefunden!" || He says: "Come! I have found my sheep!"
+[thomas] Er macht ein Fest. || He holds a feast.
+[thomas] Alle bekommen Brot und Fleisch, und alle tanzen. || Everyone gets bread and meat, and everyone dances.
+[thomas] Er schenkt dem Schaf Wasser. || He gives the sheep water.
+[thomas] Das Fest ist schön. || The feast is lovely.
+
+## Was Jesus sagt
+[thomas] Gott ist wie der Hirte. || God is like the shepherd.
+[thomas] Wir sind wie das Schaf. || We are like the sheep.
+[thomas] Ein Sünder ist weit von Gott. || A sinner is far from God.
+[thomas] Gott sucht den Sünder, und er findet ihn. || God looks for the sinner, and he finds him.
+[thomas] Gott trägt dich. || God carries you.
+[thomas] Wir sind ohne Gott wie das Schaf ohne den Hirten. || Without God we are like the sheep without the shepherd.
+[thomas] Wenn ein Sünder bei Gott ist, ist im Himmel ein Fest. || When a sinner is with God, there is a feast in heaven.
+[thomas] Im Himmel ist Freude. || In heaven there is joy.
+[thomas] Gott ruft dich, Ben. || God calls you, Ben.
+[sam] Früher war ich weit von Gott. || Before, I was far from God.
+[sam] Jetzt bin ich zurück. || Now I am back.
+[ben] Ich bin auch wie das Schaf! || I am like the sheep too!
+[ben] Ich verliere immer etwas. || I always lose something.
+[ben] Aber Gott findet mich. || But God finds me.
+[thomas] Ja, Ben, Gott findet dich. || Yes, Ben, God finds you.
+
+## Das Fest in der Gemeinde
+[thomas] Heute machen wir auch ein Fest. || Today we are having a feast too.
+[thomas] Viele Freunde sind mit dem Bus gekommen. || Many friends came by bus.
+[thomas] Sie sind eingestiegen, und hier sind sie ausgestiegen. || They got on, and here they got off.
+[thomas] Die Gemeinde ist voll, und wir haben nicht genug Platz. || The church is full, and we do not have enough room.
+[thomas] Alle haben gearbeitet. || Everyone has worked.
+[thomas] David hat vorgestern im Büro gearbeitet. || David worked in the office the day before yesterday.
+[thomas] Ruth hat gestern im Supermarkt Brot gekauft. || Ruth bought bread at the supermarket yesterday.
+[thomas] Anna hat die Küche geputzt. || Anna cleaned the kitchen.
+[thomas] Sam hat Ben besucht, und er hat Anna getroffen. || Sam visited Ben, and he met Anna.
+[thomas] Marta hat das Abendessen gekocht, und es ist fertig. || Marta has cooked dinner, and it is ready.
+Alle gehen in die Küche und essen. || Everyone goes into the kitchen and eats.
+[thomas] Wir wollen beten. || We want to pray.
+[thomas] Danke, Gott, du suchst uns, und du findest uns. || Thank you, God, you look for us, and you find us.
+Die Kinder trinken Tee und essen Brot und Kuchen. || The children drink tea and eat bread and cake.
+Sie sind froh, und der Tag ist schön. || They are glad, and the day is lovely.
+Dann gehen alle nach Hause. || Then everyone goes home.
+

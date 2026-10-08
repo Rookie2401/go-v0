@@ -73,8 +73,8 @@
         {
           "sentences": [
             {
-              "text": "Sam og Anna er på kafé. Det er morgen.",
-              "english": "Sam and Anna are at a café. It is morning."
+              "text": "Sam og Anna er på kafé. Kafeen er stor. Det er morgen.",
+              "english": "Sam and Anna are at a café. The café is big. It is morning."
             },
             {
               "text": "Sam er sulten. Anna er trøtt, men hun er glad.",
@@ -130,8 +130,8 @@
         {
           "sentences": [
             {
-              "text": "Anna spiser brød. Sam spiser brød med ost også.",
-              "english": "Anna eats bread. Sam eats bread with cheese too."
+              "text": "Anna spiser brød. Sam spiser brød også.",
+              "english": "Anna eats bread. Sam eats bread too."
             },
             {
               "text": "Anna drikker kaffe. Sam liker melk.",
@@ -153,8 +153,8 @@
               "speaker": "ana"
             },
             {
-              "text": "Jeg vil ha mer melk.",
-              "english": "I want more milk.",
+              "text": "Jeg vil ha mer te.",
+              "english": "I want more tea.",
               "speaker": "sam"
             },
             {
@@ -194,8 +194,8 @@
               "english": "Nils is at the school too. He does not like coffee."
             },
             {
-              "text": "Nils vil ha brød. Han er sulten.",
-              "english": "Nils wants bread. He is hungry."
+              "text": "Nils vil ha brød og melk. Han er sulten.",
+              "english": "Nils wants bread and milk. He is hungry."
             },
             {
               "text": "Hei, Nils! Hva vil du ha?",
@@ -203,8 +203,8 @@
               "speaker": "luis"
             },
             {
-              "text": "Jeg vil ha brød, takk!",
-              "english": "I want bread, please!",
+              "text": "Jeg vil ha brød med ost, takk!",
+              "english": "I want bread with cheese, please!",
               "speaker": "nico"
             },
             {

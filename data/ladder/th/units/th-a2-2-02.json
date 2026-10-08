@@ -82,8 +82,23 @@
               "speaker": "T"
             },
             {
+              "text": "ทุกคนมีสิทธิที่จะเล่า และมีสิทธิที่จะไม่เล่าครับ",
+              "english": "Everyone has the right to tell, and the right not to tell.",
+              "speaker": "T"
+            },
+            {
+              "text": "ที่โบสถ์ของเรา ทุกคนฟังกันและกัน และไม่มีใครต้องกลัวว่าจะพูดผิดครับ",
+              "english": "In our church everyone listens to one another, and nobody need be afraid of saying it wrong.",
+              "speaker": "T"
+            },
+            {
               "text": "ใครอยากเริ่มก่อนครับ",
               "english": "Who wants to start?",
+              "speaker": "T"
+            },
+            {
+              "text": "ครั้งแรกที่ผมเล่าเรื่องของผม ผมกลัวมากครับ",
+              "english": "The first time I told my own story, I was very afraid.",
               "speaker": "T"
             },
             {
@@ -208,6 +223,11 @@
               "speaker": "L"
             },
             {
+              "text": "ตอนแรกผมเช่ารถของคนอื่นขับ และต้องจ่ายมัดจำก่อนครับ",
+              "english": "At first I rented someone else's truck to drive, and had to pay a deposit first.",
+              "speaker": "L"
+            },
+            {
               "text": "เมื่อก่อนผมดื่มทุกคืน เงินทุกบาทหมดไปกับการดื่ม",
               "english": "In the past I drank every night, and every baht went on drinking.",
               "speaker": "L"
@@ -313,6 +333,11 @@
             {
               "text": "เขาอธิษฐานให้ฉัน และฉันรู้สึกว่ามีคนอยู่กับฉัน",
               "english": "He prayed for me, and I felt that someone was with me.",
+              "speaker": "W"
+            },
+            {
+              "text": "ฉันเขียนคำขอบคุณไว้บนกระดาษแผ่นเล็กๆ ค่ะ",
+              "english": "I wrote my thanks on a small sheet of paper.",
               "speaker": "W"
             },
             {

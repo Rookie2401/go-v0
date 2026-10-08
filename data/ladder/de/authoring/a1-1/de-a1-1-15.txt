@@ -1,0 +1,77 @@
+=== de-a1-1-15
+speakers: thomas=Thomas, sam=Sam, anna=Anna, marta=Marta, ben=Ben
+## Mittwoch in der Gemeinde
+Es ist Mittwoch, 19 Uhr. || It is Wednesday, 7 p.m.
+Die Gemeinde ist da, und alle singen ein Lied. || The congregation is there, and everyone sings a song.
+Dann beten alle. || Then everyone prays.
+[thomas] Heute will Sam etwas sagen. || Today Sam wants to say something.
+[thomas] Sam, du kannst sprechen. || Sam, you can speak.
+[sam] Danke, Thomas. || Thank you, Thomas.
+[sam] Mein Deutsch ist nicht gut. || My German is not good.
+[sam] Aber ich will sprechen. || But I want to speak.
+
+## Früher
+[sam] Ich heiße Sam. || My name is Sam.
+[sam] Ich komme aus den USA. || I come from the USA.
+[sam] Früher war ich nie froh. || Before, I was never happy.
+[sam] Ich hatte viel, aber nie Freude. || I had a lot, but never joy.
+[sam] Mein Herz war kalt, wie das Wetter. || My heart was cold, like the weather.
+[sam] Ich war nie in der Gemeinde. || I was never in a church.
+[sam] Früher war ich immer müde. || Before, I was always tired.
+[sam] Das Leben war nicht gut. || Life was not good.
+[sam] Früher glaubte ich nicht. || Before, I did not believe.
+
+## Jetzt
+[sam] Jetzt glaube ich an Gott. || Now I believe in God.
+[sam] Gott liebt mich. || God loves me.
+[sam] Ich liebe meine Freunde. || I love my friends.
+[sam] Jetzt bin ich froh. || Now I am happy.
+[sam] Ich habe Freude, und die Freude ist groß. || I have joy, and the joy is great.
+[sam] Die Liebe von Gott ist groß. || God's love is great.
+[sam] Ich bin ein Christ. || I am a Christian.
+[sam] Ein Christ glaubt und dankt. || A Christian believes and gives thanks.
+[sam] Ich danke Gott für das Leben. || I thank God for life.
+[sam] Das Leben ist jetzt gut. || Life is good now.
+[sam] Er ist da, in der Bibel, im Lied, in der Gemeinde. || He is there, in the Bible, in the song, in the church.
+
+## Mein Weg
+[sam] Die Liebe ist hier, in meinem Herzen. || Love is here, in my heart.
+[sam] Ich komme mit dem Zug in Leipzig an. || I arrive in Leipzig by train.
+[sam] Am Bahnhof kaufe ich eine Fahrkarte. || At the station I buy a ticket.
+[sam] Die Straßenbahn fährt in fünf Minuten ab. || The tram leaves in five minutes.
+[sam] Ich fahre bis zur Haltestelle in der Straße von Frau Weber. || I ride to the stop in Mrs Weber's street.
+[sam] Dann bin ich bei Frau Weber. || Then I am at Mrs Weber's.
+[sam] Am Sonntag gehe ich in die Gemeinde. || On Sunday I go to the church.
+[sam] Der Gottesdienst ist wieder so gut! || The service is so good again!
+[sam] Ich will beten, ich will singen, ich will helfen. || I want to pray, I want to sing, I want to help.
+[sam] Ich kann nicht gut singen, aber das Lied ist schön. || I cannot sing well, but the song is lovely.
+[sam] Ich muss lernen, und ich lerne gern. || I must learn, and I like learning.
+[sam] Im Park ist die Sonne warm, und mein Herz ist auch warm. || In the park the sun is warm, and my heart is warm too.
+
+## Danke
+Alle sagen: "Danke, Sam!" || Everyone says: "Thank you, Sam!"
+[thomas] Du sollst wieder sprechen, Sam. || You should speak again, Sam.
+[thomas] Du bist ein guter Christ. || You are a good Christian.
+[thomas] Wir danken Gott für Sam. || We thank God for Sam.
+[sam] Mein Deutsch ist nicht gut. || My German is not good.
+[anna] Doch, du sprichst gut! || Yes you do, you speak well!
+[anna] Gott liebt dich, Sam. || God loves you, Sam.
+[anna] Die Liebe ist für alle da. || Love is there for everyone.
+Alle singen wieder ein Lied. || Everyone sings a song again.
+
+## Nach dem Abend
+Dann gibt es Kaffee, Tee und Kuchen in der Küche. || Then there is coffee, tea and cake in the kitchen.
+[marta] Sam, das war sehr gut! || Sam, that was very good!
+[ben] Sam, ich bin wieder gesund, und ich habe Hunger! || Sam, I am well again, and I am hungry!
+[marta] Du hast immer Hunger, Ben. || You are always hungry, Ben.
+[marta] Nimm Kuchen. || Take some cake.
+[ben] Mein Papa sagt: "Sam spricht gern Deutsch." || My papa says: "Sam likes speaking German."
+[sam] Danke, Ben. || Thank you, Ben.
+[sam] Ich möchte Kaffee mit Milch. || I would like coffee with milk.
+[thomas] Hier, Sam. || Here, Sam.
+[thomas] Möchtest du auch Brot? || Would you like some bread too?
+[sam] Ja, gern. || Yes, gladly.
+[sam] Ich bin müde, aber ich bin sehr froh. || I am tired, but I am very happy.
+[anna] Wir gehen zusammen nach Hause, Sam. || We are going home together, Sam.
+Es ist spät, und der Abend ist gut. || It is late, and the evening is good.
+

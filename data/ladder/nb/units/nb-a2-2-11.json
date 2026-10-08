@@ -120,8 +120,8 @@
               "speaker": "nico"
             },
             {
-              "text": "Ja, vi må finne eieren. Men først må vi hjelpe den.",
-              "english": "Yes, we must find the owner. But first we must help it.",
+              "text": "Ja, vi må finne ham. Men først må vi hjelpe den.",
+              "english": "Yes, we must find him. But first we must help it.",
               "speaker": "marta"
             },
             {
@@ -174,8 +174,8 @@
               "speaker": "nico"
             },
             {
-              "text": "Den heter Bjørn. Jeg er glad i den, og jeg er glad i dere.",
-              "english": "Its name is Bjørn. I am fond of it, and I am fond of you.",
+              "text": "Den heter Bjørn. Bjørn er en bra hund. Jeg er glad i den, og jeg er glad i dere.",
+              "english": "Its name is Bjørn. Bjørn is a good dog. I am fond of it, and I am fond of you.",
               "speaker": "berg"
             },
             {
@@ -194,6 +194,14 @@
             {
               "text": "Etterpå bakte Sam selv: mel, salt, gjær og deig. Han satte brødet i ovnen, og det ble ferdig og lukter godt. Det smakte riktig.",
               "english": "Afterwards Sam baked himself: flour, salt, yeast and dough. He put the bread in the oven, and it became ready and smells good. It tasted right."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna fikk et tilbud fra et sykehus, og valget var vanskelig. Fiskerne drar ut og fanger fisk. Mange kommer til gudstjeneste på søndag. Strøm kommer fra elver og fjell.",
+              "english": "Anna got an offer from a hospital, and the choice was difficult. The fishermen go out and catch fish. Many come to the service on Sunday. Electricity comes from rivers and mountains."
             }
           ]
         }

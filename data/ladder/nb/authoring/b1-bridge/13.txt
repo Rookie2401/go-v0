@@ -1,0 +1,47 @@
+=== nb-b1-bridge-13 | story | health | A fall from the bicycle | Nils faller | health,accident,emergency,passive,past perfect,indirect speech
+speakers: lege=Legen
+note: An accident and a visit to the emergency clinic (legevakt). Past tense, past perfect, passive with "bli" (ble kjørt), conditionals (hvis ... hadde ... ville). The medical facts are general and simple; a Norwegian reviewer should check how natural the clinic talk sounds.
+## Veien til kirka
+På lørdag var {sam} ute med {nico}. De hadde hver sin sykkel, og de skulle sykle til kirka. {nico} hadde hjelm på hodet, for moren hans hadde sagt at han aldri måtte sykle uten hjelm. || On Saturday Sam was out with Nils. They each had a bicycle, and they were going to cycle to the church. Nils had a helmet on his head, because his mother had said that he must never cycle without a helmet.
+Veien var lang, og {nico} var glad. || The road was long, and Nils was happy.
+[sam] Ikke for fort, {nico}! Vent på meg! || Not too fast, Nils! Wait for me!
+Men {nico} hørte ikke. Han syklet fort, og så falt han. Sykkelen lå i veien, og {nico} lå på veien. || But Nils did not hear. He cycled fast, and then he fell. The bicycle lay in the road, and Nils lay on the road.
+{sam} kom til ham. {nico} gråt, og hele armen gjorde vondt. || Sam came to him. Nils cried, and his whole arm hurt.
+
+## Hjelp
+[nico] Armen min! Det gjør så vondt! Jeg falt! || My arm! It hurts so much! I fell!
+[sam] Ligg rolig. Ikke flytt armen. Jeg ringer til {ana}. || Lie calmly. Do not move your arm. I will call Anna.
+{sam} ringte med en gang. {ana} var hjemme, og det var godt. || Sam called at once. Anna was at home, and that was good.
+Hun snakket rolig med {nico}. «Uten hjelm hadde dette vært mye verre,» sa hun. || She spoke calmly with Nils. "Without a helmet this would have been much worse," she said.
+[ana] Det er nok et brudd. Vi må til legevakten. Du gjør det bra, {nico}. || It is probably a fracture. We must go to the emergency clinic. You are doing well, Nils.
+{nico} ble kjørt til legevakten, og {sam} satt hos ham hele veien. Han ba en bønn og tenkte på sykkelen. || Nils was driven to the emergency clinic, and Sam sat with him all the way. He said a prayer and thought of the bicycle.
+
+## På legevakten
+Det var mange folk på legevakten, og de måtte vente i to timer. Det gjorde mer og mer vondt. || There were many people at the emergency clinic, and they had to wait for two hours. It hurt more and more.
+[nico] Har du hatt gips, {sam}? || Have you had a cast, Sam?
+[sam] Ja. Da jeg var elleve år, falt jeg fra en hest. Jeg gråt like mye som deg. || Yes. When I was eleven, I fell from a horse. I cried just as much as you.
+Til slutt kom en lege og hilste på dem. || At last a doctor came and greeted them.
+[lege] Hei, {nico}. Fortell meg hva du gjorde. || Hi, Nils. Tell me what you did.
+[nico] Jeg falt. Jeg syklet for fort. || I fell. I cycled too fast.
+[lege] Hvor gjør det vondt? Kan du løfte armen? || Where does it hurt? Can you lift your arm?
+[nico] Nei. Det gjør for vondt. || No. It hurts too much.
+Legen kjente på armen og så på den lenge. Så sa han: || The doctor felt the arm and looked at it for a long time. Then he said:
+[lege] Det er et brudd, men det er et lite brudd. Du får gips, og den skal sitte på i seks uker. || It is a fracture, but it is a small fracture. You will get a cast, and it is to stay on for six weeks.
+[nico] Seks uker? Kan jeg ikke sykle da? || Six weeks? Can I not cycle then?
+[lege] Nei. Men uten hjelm hadde det vært verre. || No. But without a helmet it would have been worse.
+
+## Gipsen
+Da {marta} kom, hadde {nico} fått gips på hele armen. Hun gråt litt og ba en bønn. || When Marta came, Nils had got a cast on his whole arm. She cried a little and said a prayer.
+[marta] Gud være takket. Det kunne vært mye verre. Jeg vil at alle barn skal ha hjelm. || Thank God. It could have been much worse. I want all children to have a helmet.
+[nico] Se på gipsen min, bestemor! Alle skal skrive navnet sitt på den! || Look at my cast, grandmother! Everyone is going to write their name on it!
+[nico] Når kan jeg spille igjen, {sam}? || When can I play again, Sam?
+[sam] Om seks uker. Men så blir det bra igjen. || In six weeks. But then it will be good again.
+Alle lo, og det var godt å le etter en lang dag. {sam} var den første som skrev et navn: «Bli bra snart! Hilsen {sam}.» || Everyone laughed, and it was good to laugh after a long day. Sam was the first to write a name: "Get well soon! Greetings, Sam."
+På søndag ba presten for {nico} i kirka, og alle sang for ham. {nico} satt hos {marta}, og han var glad. || On Sunday the pastor prayed for Nils in the church, and everyone sang for him. Nils sat with Marta, and he was glad.
+[ana] Nå må du hvile, og du må høre på legen. || Now you must rest, and you must listen to the doctor.
+[nico] Jeg skal prøve, men det er vanskelig for meg å hvile. || I will try, but it is difficult for me to rest.
+Den kvelden gikk {sam} hjem til den nye leiligheten. Han var trøtt, men han tenkte på hvor fort en dag kan bli vanskelig, og han takket Gud fordi det gikk bra. || That evening Sam went home to the new flat. He was tired, but he thought about how fast a day can become difficult, and he thanked God because it went well.
+
+Om kvelden sjekket {sam} telefonen: Erik hadde skrevet at de måtte bestille nye bøker, og at en kunde hadde klaget igjen. {sam} tenkte på utleieren og depositumet, på den store sofaen og på plasten som ikke var et problem lenger. || In the evening Sam checked the phone: Erik had written that they had to order new books, and that a customer had complained again. Sam thought of the landlord and the deposit, of the big sofa and of the plastic that was no longer a problem.
+Den kvelden bestilte {luis} pizza til alle, og de kastet søppelet sammen. De snakket om valget: hvert parti hadde sin mening om sykehus og legevakter. {sam} sjekket om boka han hadde bestilt til {nico}, var kommet. Den var på engelsk! Han måtte levere den tilbake. || That evening Lars ordered pizza for everyone, and they threw the rubbish out together. They talked about the election: each party had its opinion about hospitals and emergency clinics. Sam checked whether the book he had ordered for Nils had come. It was in English! He had to hand it back.
+Han la glass i kassen, som Mons hadde sagt. Ordføreren hadde sendt en hilsen til legevakten. Den sinte kunden hadde ringt igjen, men nå var hun glad. || He put glass in the box, as Mons had said. The mayor had sent a greeting to the emergency clinic. The angry customer had called again, but now she was glad.

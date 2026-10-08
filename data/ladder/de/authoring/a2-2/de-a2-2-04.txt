@@ -1,0 +1,184 @@
+=== de-a2-2-04
+speakers: S=Sam, P=Passantin, M=Mitarbeiter, D=Daniel
+## Auf der Straße
+Sam steht an einer großen Kreuzung vor dem Bahnhof in Leipzig. || Sam is standing at a big crossing in front of the station in Leipzig.
+Er muss heute zum Amt für Ausländer, aber er kennt den Weg nicht. || Today he has to go to the office for foreigners, but he does not know the way.
+In der Tasche hat er seinen Antrag. || He has his application in his bag.
+Eine ältere Frau geht in Richtung Bahnhof. || An older woman is walking towards the station.
+[S] Hallo, können Sie mir bitte helfen? || Hello, can you help me, please?
+[S] Wie komme ich zum Amt für Ausländer? || How do I get to the office for foreigners?
+[S] Wo muss ich abbiegen? || Where do I have to turn off?
+[P] Das ist nicht weit. || It is not far.
+[P] Es sind nur etwa 800 Meter. || It is only about 800 metres.
+[P] Gehen Sie hier geradeaus, bis Sie zur nächsten Kreuzung kommen. || Go straight on here until you come to the next crossing.
+[P] An der Ampel biegen Sie links ab. || At the traffic light you turn left.
+[S] Links an der Ampel. || Left at the traffic light.
+[S] Und dann? || And then?
+[P] Dann gehen Sie die Straße entlang, immer in Richtung Fluss. || Then you walk along the street, always in the direction of the river.
+[P] Bald sehen Sie eine Brücke. || Soon you will see a bridge.
+[P] Überqueren Sie die Brücke, und gehen Sie den Fluss entlang. || Cross the bridge, and walk along the river.
+[P] Überqueren Sie dort bitte vorsichtig die Straße. || Please cross the street carefully there.
+[P] Da fahren viele Autos. || A lot of cars go there.
+[S] Und dann? || And then?
+[P] Gehen Sie noch etwas geradeaus, und nehmen Sie nicht die erste Straße. || Go a little further straight ahead, and do not take the first street.
+[P] Erst an der Ecke. || Only at the corner.
+[P] An der Ecke ist ein Café. || At the corner there is a café.
+[P] Dort ist rechts ein Parkplatz. || There on the right is a car park.
+[P] Gegenüber vom Parkplatz ist das Gebäude. || Opposite the car park is the building.
+[P] Es ist grau, und es ist groß. || It is grey, and it is big.
+[S] Also: geradeaus, links, die Brücke, dann rechts. || So: straight ahead, left, the bridge, then right.
+[S] Habe ich das richtig verstanden? || Did I understand that correctly?
+[P] Ja, genau. || Yes, exactly.
+[P] Sie können es nicht übersehen. || You cannot miss it.
+[S] Ist es nah? || Is it close?
+[P] Ja, es ist nah. || Yes, it is close.
+[P] Noch 300 Meter nach dem Fluss. || Another 300 metres after the river.
+[S] Danke schön. || Thank you.
+[S] Sie waren sehr freundlich. || You were very kind.
+[P] Gern geschehen. || You are welcome.
+[P] Viel Glück! || Good luck!
+
+## Im Gebäude
+Sam findet das Haus. || Sam finds the house.
+Gegenüber vom Eingang steht ein Auto. || Opposite the entrance stands a car.
+Am Eingang ist es hell und still. || At the entrance it is bright and quiet.
+Auf der Tür steht ein Hinweis: „Bitte ziehen Sie eine Nummer.“ || On the door there is a notice: "Please take a number."
+Hinter dem Eingang sind der Aufzug und die Treppe. || Behind the entrance are the lift and the stairs.
+Ein Mann zeigt nach oben und sagt etwas, das Sam nicht gleich versteht. || A man points upwards and says something that Sam does not understand at once.
+[S] Wo ist die Abteilung für Ausländer? || Where is the department for foreigners?
+[S] Im Erdgeschoss? || On the ground floor?
+[M] Nein, im zweiten Stock. || No, on the second floor.
+[M] Nehmen Sie den Aufzug, oder gehen Sie die Treppe hoch. || Take the lift, or walk up the stairs.
+[M] Unten ist nichts für Sie. || Down here there is nothing for you.
+[M] Die Büros sind alle oben. || The offices are all upstairs.
+[S] Und hinten? || And at the back?
+[S] Was ist dort? || What is there?
+[M] Hinten ist der Ausgang zum Hof. || At the back is the exit to the yard.
+[M] Dort dürfen Sie nicht durch. || You are not allowed through there.
+[M] Das ist nur für Mitarbeiter. || That is only for staff.
+[S] Danke. || Thank you.
+[S] Ich nehme die Treppe, nicht den Aufzug. || I will take the stairs, not the lift.
+Im zweiten Stock zieht Sam eine Nummer und setzt sich in den Raum, in dem man wartet. || On the second floor Sam takes a number and sits down in the room where people wait.
+Der Raum hat eine große Uhr und zwanzig Stühle. || The room has a big clock and twenty chairs.
+Nach einer halben Stunde ruft eine Stimme: „Nummer 47 bitte zum Schalter 3.“ || After half an hour a voice calls: "Number 47 please to counter 3."
+
+## Am Schalter
+[M] Guten Tag. || Good afternoon.
+[M] Was kann ich für Sie tun? || What can I do for you?
+[S] Ich möchte meinen Antrag abgeben. || I would like to hand in my application.
+[S] Ich brauche die Erlaubnis für den Aufenthalt. || I need the permit for my stay.
+[M] Haben Sie alle Papiere? || Do you have all the papers?
+[M] Ihren Ausweis, bitte. || Your identity card, please.
+[S] Hier, bitte. || Here you are.
+[S] Und hier ist die Bescheinigung für meinen Wohnsitz. || And here is the certificate for my place of residence.
+[M] Gut. || Good.
+[M] Dann brauche ich noch das Formular. || Then I still need the form.
+[M] Haben Sie es schon ausgefüllt? || Have you filled it in already?
+[S] Nicht ganz. || Not completely.
+[S] Ich habe nicht alles verstanden. || I did not understand everything.
+[M] Kein Problem. || No problem.
+[M] Ich erkläre es Ihnen. || I will explain it to you.
+[M] Setzen Sie sich bitte. || Please sit down.
+[M] Schreiben Sie bitte in großen Buchstaben. || Please write in capital letters.
+[M] Das ist ein wichtiger Hinweis. || That is an important piece of advice.
+[M] Vergessen Sie nicht, auf jeder Seite Ihren Namen zu schreiben. || Do not forget to write your name on every page.
+[M] Zuerst: Ihr Name. || First: your name.
+[M] Danach: Ihr Wohnsitz in Leipzig. || After that: your place of residence in Leipzig.
+[M] Wer ist Ihr Vermieter? || Who is your landlord?
+[S] Frau Weber. || Frau Weber.
+[S] Ich bezahle 280 Euro Miete, und die Nebenkosten sind dabei. || I pay 280 euros rent, and the extra costs are included.
+[M] Wie groß ist das Zimmer? || How big is the room?
+[M] Wie viele Quadratmeter? || How many square metres?
+[S] Vierzehn Quadratmeter. || Fourteen square metres.
+[S] Es ist sehr klein, aber es ist nicht teuer. || It is very small, but it is not expensive.
+[M] Dann: Warum sind Sie in Deutschland? || Then: why are you in Germany?
+[M] Schreiben Sie das bitte hier. || Please write that here.
+[S] Ich arbeite mit einem Ehepaar, das eine Gemeinde gründen will. || I work with a married couple who want to found a church.
+[S] Ich bin kein Missionar von Beruf, aber ich möchte der Mission helfen. || I am not a missionary by profession, but I would like to help the mission.
+[M] Haben Sie studiert? || Did you study?
+[M] Bitte schreiben Sie, wo. || Please write where.
+[S] Nein, ich nicht. || No, not me.
+[S] Aber mein Freund Daniel hat an einer Universität im Ausland Theologie studiert, und sein Studium war gut. || But my friend Daniel studied theology at a university abroad, and his studies were good.
+[M] Und wovon leben Sie? || And what do you live on?
+[S] Meine Freunde und meine Gemeinde unterstützen mich mit einer Spende jeden Monat. || My friends and my church support me with a donation every month.
+[M] Das schreiben Sie bitte auch. || Please write that too.
+[M] Dann kommt Ihre Unterschrift. || Then comes your signature.
+[M] Vergessen Sie nicht, unter den Strich zu schreiben, nicht daneben. || Do not forget to write under the line, not next to it.
+[S] Hier? || Here?
+[S] Ist das richtig? || Is that right?
+[M] Genau. || Exactly.
+[M] Jetzt die Gebühr: Sie kostet 100 Euro. || Now the fee: it costs 100 euros.
+[M] Bitte bezahlen Sie unten. || Please pay downstairs.
+[M] Der Automat ist im Erdgeschoss. || The machine is on the ground floor.
+[M] Gehen Sie nach unten, und kommen Sie dann wieder nach oben. || Go downstairs, and then come back up.
+[M] Gehen Sie auch kurz ins Erdgeschoss, wenn Sie Hilfe brauchen. || Also go briefly to the ground floor if you need help.
+[M] Dort sitzt jemand, der Ihnen hilft. || Someone sits there who will help you.
+[M] Ihre Nummer bleibt gültig. || Your number stays valid.
+[M] Sie müssen nicht neu warten. || You do not have to wait again.
+[S] Danke. || Thank you.
+[S] Das ist eine große Hilfe. || That is a great help.
+Am Ausgang bleibt Sam kurz stehen und liest den Hinweis auf der Tür: „Ausgang“. || At the exit Sam stops briefly and reads the notice on the door: "Exit".
+Er geht nach Hause, und er ist froh, dass es vorbei ist. || He goes home, and he is glad that it is over.
+
+## Ein Anruf bei Daniel
+Am Abend ruft Daniel an. || In the evening Daniel calls.
+Er muss auch bald zum Amt. || He too has to go to the office soon.
+[D] Wie war es? || How was it?
+[D] Hast du den Weg gefunden? || Did you find the way?
+[S] Ja, nach einer Frage. || Yes, after one question.
+[S] Es war nicht schwer, aber es war lang. || It was not hard, but it was long.
+[D] Dann erklär mir bitte den Weg. || Then please explain the way to me.
+[S] Steig am Bahnhof aus und geh bis zur Kreuzung. || Get off at the station and go to the crossing.
+[S] Dort ist eine Ampel. || There is a traffic light.
+[S] Dahinter kommst du an den Fluss. || Behind it you get to the river.
+[S] Geh am Fluss entlang. || Walk along the river.
+[S] Du musst eine Straße überqueren. || You have to cross a street.
+[S] Dort stehen viele Autos. || There are many cars there.
+[S] Nach 200 Meter nimmst du die zweite Straße rechts. || After 200 metres you take the second street on the right.
+[S] Um die Ecke ist ein Parkplatz gegenüber vom Café, und das Gebäude ist grau. || Around the corner is a car park opposite the café, and the building is grey.
+[D] Und wo ist das Amt im Gebäude? || And where is the office in the building?
+[S] Im zweiten Stock. || On the second floor.
+[S] Die Tür ist hinten, wenn du von der anderen Seite kommst. || The door is at the back if you come from the other side.
+[D] Und wenn ich in die falsche Richtung gehe? || And if I go in the wrong direction?
+[S] Dann fragst du jemanden. || Then you ask somebody.
+[S] Die Leute sind nett. || The people are nice.
+[S] Die Öffnungszeit ist nur bis zwölf, also komm früh. || The opening time is only until twelve, so come early.
+[S] Nimm dein Visum, deinen Ausweis und das Geld mit. || Take your visa, your identity card and the money.
+[D] Wunderbar. || Wonderful.
+[D] Ich schreibe alles. || I am writing it all down.
+[S] Und noch etwas: Der Antrag braucht Zeit. || And one more thing: the application takes time.
+[S] Der Mitarbeiter hat gesagt: Sie hören in vier bis sechs Wochen von uns. || The employee told me: you will hear from us in four to six weeks.
+[S] Die Behörde schickt einen Brief in den Briefkasten. || The authority will send a letter to the letterbox.
+[D] Dann bin ich beruhigt. || Then I am reassured.
+[D] Danke für den Rat. || Thank you for the advice.
+
+## Am Abend
+Später sitzt Sam in seinem Zimmer und denkt an den Tag. || Later Sam sits in his room and thinks about the day.
+Frau Weber nennt das Papierkram, und sie lacht darüber. || Frau Weber calls that paperwork, and she laughs about it.
+Er hat sich angemeldet, er hat den Antrag abgegeben, und er hat die Gebühr bezahlt. || He has registered, he has handed in the application, and he has paid the fee.
+Die Kultur ist ihm noch fremd, aber er gewöhnt sich langsam daran. || The culture is still strange to him, but he is slowly getting used to it.
+Manchmal hat er Heimweh, und dann denkt er an den Abschied von seiner Familie. || Sometimes he is homesick, and then he thinks of the farewell from his family.
+Er hatte eine Berufung gespürt, und die Entscheidung war nicht leicht. || He had felt a calling, and the decision was not easy.
+Er musste umziehen und alles neu lernen. || He had to move and learn everything anew.
+Aber er muss sich nicht mehr entscheiden. || But he does not have to decide any more.
+Am Samstag ist er endlich frei, und Freunde kommen zu Besuch. || On Saturday he is finally free, and friends come to visit.
+Vielleicht ist das die beste Freundschaft: Man hilft sich, wenn man nicht weiter weiß. || Perhaps that is the best kind of friendship: you help each other when you do not know how to go on.
+
+## Erinnerst du dich?
+Sam denkt an den Tag im Amt. || Sam thinks of the day at the office.
+Im Amt war viel los. || There was a lot going on at the office.
+Die Anmeldung war nicht leicht, sie war sogar kompliziert. || The registration was not easy, it was even complicated.
+Sam hat im Raum gewartet, bis man seine Nummer aufgerufen hat. || Sam waited in the room until his number was called.
+Ach, das war ein langer Tag, sagt er später zu Frau Weber. || "Oh, that was a long day," he says later to Frau Weber.
+Sie hat ihm ein Zimmer vermietet, und sie hat ihm sehr geholfen. || She rented him a room, and she helped him a lot.
+Als Sam danke sagt, sagt sie: Gern geschehen. || When Sam says thank you, she says: You are welcome.
+
+Sam denkt auch an den Abend bei Sabine. || Sam also thinks of the evening at Sabine's.
+Er saß auf dem Sofa und war still. || He sat on the sofa and was quiet.
+Daniel hat in den ersten Monaten viel erlebt. || Daniel experienced a lot in the first months.
+Er hat Heimweh gespürt und nachts nicht geschlafen. || He felt homesick and did not sleep at night.
+Sabines Bruder ist nach zehn Jahren heimgekehrt. || Sabine's brother came home after ten years.
+Am Ende hat Sabine Frieden gefunden. || In the end Sabine found peace.
+Das waren mutige Menschen, denkt Sam. || Those were brave people, Sam thinks.
+Sam ist jetzt gern in Leipzig, und er hat viele Freunde. || Sam is glad to be in Leipzig now, and he has many friends.
+Er möchte mit Anna und Lukas noch viel lernen. || He wants to learn much more with Anna and Lukas.

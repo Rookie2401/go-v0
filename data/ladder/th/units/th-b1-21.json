@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-21",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "คนตัดไม้กับขวานทอง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-21",
+    "title": "คนตัดไม้กับขวานทอง — The woodcutter and the golden axe (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 145238 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=145238",
+    "attribution": "Adapted retelling of \"เทพารักษ์กับคนตัดไม้\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 145238, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"เทพารักษ์กับคนตัดไม้\" (th-gap-recovery-aesop-30); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 145238) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the library fable has an เทพารักษ์ (the guardian of the stream); here the helper is a เทวดา (a spirit of the stream) and is described without worship or pressure; the story is a folk fable, not a religious text. The old-style small words (จึง, ครั้น, เถิด) are deliberate. The closing talk between Mali and Ball is an addition to the original."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "honesty",
+    "greed",
+    "kindness"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ขวานตกน้ำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ชายคนหนึ่งเป็นคนตัดไม้ เขาจนมาก",
+              "english": "A man was a woodcutter. He was very poor."
+            },
+            {
+              "text": "เขามีขวานอยู่เล่มเดียว และใช้ขวานเล่มนั้นหาเลี้ยงครอบครัว",
+              "english": "He had only one axe, and he used that axe to feed his family."
+            },
+            {
+              "text": "วันหนึ่ง เขาตัดไม้อยู่ริมลำธาร",
+              "english": "One day he was cutting wood beside a stream."
+            },
+            {
+              "text": "ขวานหลุดจากมือ และตกลงไปในน้ำ",
+              "english": "The axe slipped from his hand and fell into the water."
+            },
+            {
+              "text": "น้ำลึกมาก และชายคนนั้นว่ายน้ำไม่เป็น",
+              "english": "The water was deep, and the man could not swim."
+            },
+            {
+              "text": "เขานั่งลงริมน้ำ แล้วร้องไห้",
+              "english": "He sat down by the water and wept."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เทวดามาช่วย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เทวดาที่อยู่ในลำธารเห็นชายคนนั้นร้องไห้ ก็สงสาร",
+              "english": "The spirit who lived in the stream saw the man weeping and felt sorry for him."
+            },
+            {
+              "text": "เทวดาพูดปลอบว่า อย่าร้องไห้เลย ข้าจะช่วยเจ้า",
+              "english": "The spirit comforted him, saying, \"Do not weep. I will help you.\""
+            },
+            {
+              "text": "แล้วเทวดาก็ลงไปในน้ำ",
+              "english": "Then the spirit went down into the water."
+            },
+            {
+              "text": "ไม่นานนัก เทวดาก็ขึ้นมาพร้อมขวานทองเล่มหนึ่ง",
+              "english": "Before long the spirit came up with a golden axe."
+            },
+            {
+              "text": "เทวดาถามว่า นี่ใช่ขวานของเจ้าหรือไม่",
+              "english": "The spirit asked, \"Is this your axe?\""
+            },
+            {
+              "text": "ชายคนนั้นดูแล้วตอบว่า ไม่ใช่ครับ ขวานของข้าพเจ้าไม่ใช่เล่มนี้",
+              "english": "The man looked and answered, \"No, it is not. My axe is not this one.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ขวานเงินและขวานเหล็ก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เทวดาวางขวานทองลง และลงไปในน้ำอีกครั้ง",
+              "english": "The spirit put down the golden axe and went down into the water again."
+            },
+            {
+              "text": "คราวนี้ เทวดาขึ้นมาพร้อมขวานเงิน",
+              "english": "This time the spirit came up with a silver axe."
+            },
+            {
+              "text": "ชายคนนั้นก็ตอบว่า ไม่ใช่ครับ ขวานของข้าพเจ้าไม่ใช่เล่มนี้เหมือนกัน",
+              "english": "The man answered again, \"No, my axe is not this one either.\""
+            },
+            {
+              "text": "เทวดาลงไปอีก คราวนี้ได้ขวานเหล็กเก่าๆ ขึ้นมา",
+              "english": "The spirit went down once more and this time brought up an old iron axe."
+            },
+            {
+              "text": "ชายคนนั้นดีใจมาก เขาตอบว่า ใช่ครับ นี่คือขวานของข้าพเจ้า",
+              "english": "The man was overjoyed. He answered, \"Yes, this is my axe.\""
+            },
+            {
+              "text": "เทวดาเห็นว่าเขาซื่อสัตย์ จึงให้ขวานทองและขวานเงินแก่เขาด้วย",
+              "english": "Seeing that he was honest, the spirit gave him the golden and the silver axes too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เพื่อนของเขา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ชายคนนั้นกลับบ้านด้วยความสุข และเล่าเรื่องให้เพื่อนบ้านฟัง",
+              "english": "The man went home happy and told his neighbours the story."
+            },
+            {
+              "text": "เพื่อนคนหนึ่งฟังแล้วอยากได้ขวานทองบ้าง",
+              "english": "One friend listened and wanted a golden axe too."
+            },
+            {
+              "text": "เขาจึงไปที่ลำธารนั้น และทำทีเป็นตัดไม้",
+              "english": "So he went to that stream and pretended to cut wood."
+            },
+            {
+              "text": "แล้วเขาก็โยนขวานของตัวเองลงน้ำ",
+              "english": "Then he threw his own axe into the water."
+            },
+            {
+              "text": "เขานั่งลงริมน้ำ และแกล้งร้องไห้",
+              "english": "He sat down by the water and pretended to weep."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ขวานทองเล่มที่สอง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เทวดาก็มาปลอบเขา และลงไปในน้ำเหมือนครั้งก่อน",
+              "english": "The spirit came to comfort him and went into the water as before."
+            },
+            {
+              "text": "เมื่อขึ้นมา เทวดาถือขวานทอง ถามว่า นี่ใช่ขวานของเจ้าหรือไม่",
+              "english": "When it came up, the spirit held the golden axe and asked, \"Is this your axe?\""
+            },
+            {
+              "text": "ชายคนนั้นเห็นขวานทองก็ดีใจ รีบตอบว่า ใช่ครับ ใช่ขวานของข้าพเจ้า",
+              "english": "The man saw the golden axe, was delighted, and quickly answered, \"Yes, it is my axe!\""
+            },
+            {
+              "text": "เทวดาโกรธ และพูดว่า เจ้าโกหก",
+              "english": "The spirit was angry and said, \"You are lying.\""
+            },
+            {
+              "text": "เทวดาไม่ให้ขวานทองแก่เขา และไม่เอาขวานของเขาขึ้นมาให้ด้วย",
+              "english": "The spirit did not give him the golden axe, and did not bring up his own axe either."
+            },
+            {
+              "text": "ชายคนนั้นเสียทั้งขวานทองและขวานของตัวเอง",
+              "english": "The man lost both the golden axe and his own."
+            },
+            {
+              "text": "เรื่องนี้สอนว่า ความซื่อสัตย์ดีกว่าความโลภ",
+              "english": "This story teaches us: honesty is better than greed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "มะลิกับบอล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "บอลถามมะลิว่า อาครับ ถ้าผมเป็นชายคนแรก ผมก็คงไม่กล้าบอกความจริง",
+              "english": "Ball asked Mali, \"Auntie, if I were the first man, I probably would not dare to tell the truth.\""
+            },
+            {
+              "text": "มะลิตอบว่า ทำไมคะ",
+              "english": "Mali asked, \"Why?\""
+            },
+            {
+              "text": "บอลตอบว่า เพราะขวานทองสวยมากครับ",
+              "english": "Ball answered, \"Because the golden axe is so beautiful.\""
+            },
+            {
+              "text": "มะลิยิ้มและบอกว่า สวยค่ะ แต่ขวานเหล็กเล่มนั้นเป็นของเราจริงๆ",
+              "english": "Mali smiled and said, \"It is beautiful. But that iron axe was really ours.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

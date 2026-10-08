@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-37",
+  "lang": "es",
+  "title": "Un día de mercado y de adivinanzas",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-37",
+    "title": "A market day, with riddles (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honduran-register unit 4 of 6 (new, course-authored). A Saturday at the city market, reached by \"rapidito\" (the small shared bus of Honduran towns): pregones of the sellers, yuca con chicharrón, minutas, pan de coco, a thread-and-notions stall, a seller who speaks by signs, and an old man of the riddles (adivinanzas) - \"Oro parece, plata no es\" is the classic riddle of the plátano. Voseo between friends (¿te atrevés?, adiviná, mirá, decime, fijate, contá, vení) and usted to sellers and elders. Points for the Honduran reviewer: rapidito, minuta, yuca con chicharrón, pan de coco, regatear, the prices in lempiras (invented), \"ve\", \"mi reina\", \"cheque\", the riddles themselves (check which ones a Honduran child really knows). The unit also brings back, on purpose, words of es-b1-03, es-b1-04, es-b1-05 and es-b1-06 (the recycling pass of 2026-10-08) and a few words of Martí's Meñique (es-b1-07)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "conversation",
+    "market",
+    "riddles",
+    "honduran register"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "honduran-register"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition",
+    "honduras"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En el rapidito, con niebla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Aquel sábado había tanta niebla que el rapidito salió del pueblo despacio, con las luces encendidas.",
+              "english": "That Saturday there was so much fog that the little bus left the village slowly, with its lights on."
+            },
+            {
+              "text": "Doña Marta iba sentada adelante, con una bolsa en las piernas, y Karla y Sam iban atrás.",
+              "english": "Doña Marta was sitting at the front, with a bag on her lap, and Karla and Sam were at the back."
+            },
+            {
+              "text": "—Hoy vamos al mercado de la ciudad —le explicó Karla a Sam—. Mi abuela quiere comprar hilos, dulces para los cipotes y no sé cuántas cosas más.",
+              "english": "\"Today we are going to the city market,\" Karla explained to Sam. \"My grandmother wants to buy thread, sweets for the kids and I don't know how many other things.\""
+            },
+            {
+              "text": "—Vaya pues —dijo Sam—. Pero decime una cosa: ¿cómo se avisa que uno quiere bajar?",
+              "english": "\"All right, then,\" said Sam. \"But tell me one thing: how do you let them know you want to get off?\""
+            },
+            {
+              "text": "—Mirá, con señas —contestó ella, y golpeó el techo dos veces con la mano.",
+              "english": "\"Look, with signs,\" she answered, and hit the roof twice with her hand."
+            },
+            {
+              "text": "En una esquina subió un hombre con una caja grande y empezó a gritar su pregón: —¡Pan dulce, pan dulce, a diez lempiras!",
+              "english": "At a corner a man got on with a big box and began to shout his cry: \"Sweet bread, sweet bread, ten lempiras!\""
+            },
+            {
+              "text": "Sam compró dos panes, y el hombre le dijo: —Gracias, chele. Que le vaya bien.",
+              "english": "Sam bought two loaves, and the man said to him: \"Thanks, chele. Have a good day.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los pregones del mercado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El mercado empezaba en una calle grande y seguía por veredas y escondrijos, entre puestos azules.",
+              "english": "The market began on a big street and continued along paths and hidden corners, between blue stalls."
+            },
+            {
+              "text": "Cada puesto tenía su pregón: —¡Llévese la yuca con chicharrón! ¡Peces frescos del lago, mi reina!",
+              "english": "Every stall had its cry: \"Take the yuca with pork rinds! Fresh fish from the lake, dear!\""
+            },
+            {
+              "text": "—Mirá qué ruido —dijo Sam—. Parece que todos hablan al mismo tiempo.",
+              "english": "\"Just listen to that noise,\" said Sam. \"It seems everybody is talking at the same time.\""
+            },
+            {
+              "text": "—Así es —dijo Karla—. Y si querés comprar barato, tenés que hablar con paciencia, pero sin enojarte.",
+              "english": "\"That's right,\" said Karla. \"And if you want to buy cheaply, you have to speak patiently, but without getting angry.\""
+            },
+            {
+              "text": "En un puesto de hilos, doña Marta compró un hilo rojo, uno azul y una figura de madera para el cuarto de Nico.",
+              "english": "At a stall of threads, doña Marta bought a red thread, a blue one and a wooden figure for Nico's room."
+            },
+            {
+              "text": "La señora del puesto no hablaba: era sorda, pero entendía todo por señas.",
+              "english": "The lady of the stall did not speak: she was deaf, but she understood everything by signs."
+            },
+            {
+              "text": "Cuando doña Marta le mostró dos hilos, la señora le hizo una seña con el pecho levantado y una sonrisa dulce, como diciendo: «Este es el mejor».",
+              "english": "When doña Marta showed her two threads, the lady made a sign with her chest raised and a sweet smile, as if saying: \"This one is the best.\""
+            },
+            {
+              "text": "—¿De veras? —preguntó Sam—. ¿Y cómo sabe lo que usted quiere?",
+              "english": "\"Really?\" asked Sam. \"And how does she know what you want?\""
+            },
+            {
+              "text": "—Después de tantos años de mercado, hay un conocimiento que no está en los libros —replicó doña Marta—. Ella me conoce, y yo la conozco.",
+              "english": "\"After so many years of market, there is a knowledge that is not in books,\" replied doña Marta. \"She knows me, and I know her.\""
+            },
+            {
+              "text": "—Eh, mirá —añadió Karla—, una vez la señora tuvo una hija chiquilla, y la niña muerta ya tendría veinte años. Por mucho tiempo estuvo infeliz, pero ahora ayuda a todas las niñas del pueblo.",
+              "english": "\"Hey, look,\" Karla added, \"once the lady had a little girl, and the dead girl would be twenty by now. For a long time she was unhappy, but now she helps all the girls of the town.\""
+            },
+            {
+              "text": "—Mi mamá, que en paz descanse, solía decir que quien ayuda en la tristeza ya no está sola —dijo doña Marta.",
+              "english": "\"My mother, may she rest in peace, used to say that whoever helps in sadness is no longer alone,\" said doña Marta."
+            },
+            {
+              "text": "Cerca de ahí, una pareja joven miraba velas para su boda.",
+              "english": "Near there, a young couple was looking at candles for their wedding."
+            },
+            {
+              "text": "—Es mi novio —dijo ella, colorada—. Nos casamos en diciembre, si Dios quiere.",
+              "english": "\"He is my fiancé,\" she said, blushing. \"We are getting married in December, God willing.\""
+            },
+            {
+              "text": "—Estamos de acuerdo en todo menos en los colores —dijo él, y los dos se rieron.",
+              "english": "\"We agree on everything except the colors,\" he said, and the two laughed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El viejo de las adivinanzas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al fondo del mercado, sentado bajo un árbol, había un viejo con un sombrero blanco, y cerca de él había un grupo formado por niños.",
+              "english": "At the back of the market, sitting under a tree, there was an old man with a white hat, and near him there was a group formed by children."
+            },
+            {
+              "text": "—Es don Chepe, el de las adivinanzas —dijo Karla—. Según la gente, es el hombre más sabio del mercado, aunque no sabe leer.",
+              "english": "\"That is don Chepe, the one with the riddles,\" said Karla. \"According to people, he is the wisest man in the market, although he cannot read.\""
+            },
+            {
+              "text": "—Venga, joven —le dijo don Chepe a Sam—. ¿Se atreve a descifrar una?",
+              "english": "\"Come on, young man,\" don Chepe said to Sam. \"Do you dare to figure one out?\""
+            },
+            {
+              "text": "—Me atrevo, pero no tengo muchas entendederas —contestó Sam—. Y menos en español.",
+              "english": "\"I dare, but I don't have much understanding,\" answered Sam. \"And even less in Spanish.\""
+            },
+            {
+              "text": "—Quiero que adivines esta —dijo el viejo—: «Oro parece, plata no es».",
+              "english": "\"I want you to guess this one,\" said the old man: \"'It looks like gold, it is not silver.'\""
+            },
+            {
+              "text": "—Un momento —dijo Sam, y se puso colorado—. ¿Oro parece, plata no es? ¿Dinero?",
+              "english": "\"One moment,\" said Sam, and went red. \"It looks like gold, it is not silver? Money?\""
+            },
+            {
+              "text": "—No, chele —se rió un niño—. ¡Es el plátano!",
+              "english": "\"No, chele,\" a boy laughed. \"It's the plantain!\""
+            },
+            {
+              "text": "—Muy bien, mijo —dijo don Chepe—. Ahora otra, que es para vos, Karla: «Soy agua, pero no me mojo; caigo de lo alto y hago ruido».",
+              "english": "\"Very good, my son,\" said don Chepe. \"Now another, which is for you, Karla: 'I am water, but I do not get wet; I fall from on high and make noise.'\""
+            },
+            {
+              "text": "—Eso es fácil —dijo ella—. La cascada.",
+              "english": "\"That is easy,\" she said. \"The waterfall.\""
+            },
+            {
+              "text": "—Enseguida lo adivinaste —dijo el viejo—. Tenés buena cabeza.",
+              "english": "\"You guessed it right away,\" said the old man. \"You have a good head.\""
+            },
+            {
+              "text": "Una niña le preguntó a don Chepe si había una adivinanza para el rey y sus cortesanos.",
+              "english": "A girl asked don Chepe whether there was a riddle for the king and his courtiers."
+            },
+            {
+              "text": "—Siempre la hay —contestó él—. Pero un hombre noble no siempre es sabio, y nadie es indigno de un buen enigma.",
+              "english": "\"There always is,\" he answered. \"But a noble man is not always wise, and nobody is unworthy of a good riddle.\""
+            },
+            {
+              "text": "—Los fantasmas no vienen al mercado —dijo don Chepe—, pero sí vienen los poetas. Cada pregón es una poesía, si uno sabe escuchar.",
+              "english": "\"Ghosts do not come to the market,\" said don Chepe, \"but poets do. Every cry is a piece of poetry, if one knows how to listen.\""
+            },
+            {
+              "text": "Sam se rió, y sacó su cuaderno para escribir las adivinanzas.",
+              "english": "Sam laughed, and took out his notebook to write the riddles down."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La cooperativa de las vendedoras",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes de volver, doña Marta pasó por una oficina pequeña, donde se reúne una cooperativa de mujeres del mercado.",
+              "english": "Before going back, doña Marta passed by a small office, where a cooperative of women from the market meets."
+            },
+            {
+              "text": "—Afortunadamente, tenemos la oportunidad de colaborar entre todas —le explicó una señora—. Los integrantes de la cooperativa son cuarenta, casi todas mujeres.",
+              "english": "\"Fortunately, we have the opportunity to work together,\" a lady explained to her. \"The members of the cooperative are forty, almost all women.\""
+            },
+            {
+              "text": "—El trabajo requiere paciencia —añadió—, y cada una debe sentirse suficientemente cómoda para decir lo que piensa.",
+              "english": "\"The work requires patience,\" she added, \"and each one must feel comfortable enough to say what she thinks.\""
+            },
+            {
+              "text": "Hace poco, unos estudiantes de la capital pidieron que las señoras investigaran sus propios precios.",
+              "english": "A little while ago, some students from the capital asked the women to investigate their own prices."
+            },
+            {
+              "text": "—Querían datos personales, pero nadie quiso darlos —dijo la señora, y se rió—. Les contamos historias interesantes, y les dijimos que cada señora tiene muchas facetas.",
+              "english": "\"They wanted personal data, but nobody wanted to give it,\" said the lady, and laughed. \"We told them interesting stories, and told them that each woman has many facets.\""
+            },
+            {
+              "text": "—Algunas expresiones que usamos son idiomáticas, y los estudiantes no las entendían —añadió—. Por ejemplo, «estar hecho un mar de dudas».",
+              "english": "\"Some of the expressions we use are idiomatic, and the students did not understand them,\" she added. \"For example, 'to be a sea of doubts.'\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que se llevaron",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A las doce en punto, los tres tomaron otra vez el rapidito, ahora sin niebla y con el sol fuerte.",
+              "english": "At twelve o'clock sharp, the three took the little bus again, now without fog and with a strong sun."
+            },
+            {
+              "text": "Doña Marta llevaba hilo, dulces y una figura de madera; Karla, un poco de yuca con chicharrón; y Sam, dos adivinanzas escritas en su cuaderno.",
+              "english": "Doña Marta carried thread, sweets and a wooden figure; Karla, a little yuca with pork rinds; and Sam, two riddles written in his notebook."
+            },
+            {
+              "text": "—Contame otra vez la primera, vos —le dijo Karla.",
+              "english": "\"Tell me the first one again, you,\" Karla said to him."
+            },
+            {
+              "text": "—«Oro parece, plata no es» —repitió Sam—. Y la respuesta es el plátano.",
+              "english": "\"'It looks like gold, it is not silver,'\" repeated Sam. \"And the answer is the plantain.\""
+            },
+            {
+              "text": "—Ya casi hablás como un catracho —dijo ella.",
+              "english": "\"You almost talk like a catracho already,\" she said."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Spanish package, Honduran-register strand)"
+        }
+      }
+    ]
+  }
+}

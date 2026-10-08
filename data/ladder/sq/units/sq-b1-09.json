@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-09",
+  "lang": "sq",
+  "title": "Një qen në çantë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-09",
+    "title": "Albanian ladder, b1-bridge: Një qen në çantë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një qen në çantë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën tjetër, kur klubi mbaroi, Ardi mbeti pas fëmijëve të tjerë në oborrin e shkollës.",
+              "english": "The next Saturday, when the club ended, Ardi stayed behind the others in the school yard."
+            },
+            {
+              "text": "Kishte rënë shi gjithë natën, dhe në oborr kishte shumë ujë.",
+              "english": "It had rained all night, and in the yard there was a lot of water."
+            },
+            {
+              "text": "Pranë murit të shkollës ai dëgjoi një zë të vogël, si një kërkesë.",
+              "english": "By the wall of the school he heard a small sound, like a request."
+            },
+            {
+              "text": "Ardi u ul dhe pa një qen të vogël dhe shumë të dobët, që ishte shumë i ftohtë.",
+              "english": "Ardi sat down and saw a small and very thin dog, who was very cold."
+            },
+            {
+              "text": "Qeni kishte një rrip të kuq, por rripi ishte i thyer.",
+              "english": "The dog had a red collar, but the collar was broken."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Ku është pronari yt? — e pyeti Ardi me zë të ulët.",
+              "english": "\"Where is your owner?\" Ardi asked him in a low voice."
+            },
+            {
+              "text": "Qeni e shikoi dhe lëvizi bishtin pak, si të thoshte: «Nuk e di.»",
+              "english": "The dog looked at him and moved his tail a little, as if to say: \"I do not know.\""
+            },
+            {
+              "text": "Ardi e dinte që gjyshja nuk do ta pranonte një qen të tretë në shtëpi.",
+              "english": "Ardi knew that grandmother would not accept a third animal in the house."
+            },
+            {
+              "text": "Ajo kishte tashmë një qen të madh dhe një mace, që nuk e donte asnjë qen.",
+              "english": "She already had a big dog that barked a lot, and a cat that did not like any dog."
+            },
+            {
+              "text": "Por qeni i vogël ishte shumë i ftohtë, dhe Ardi nuk kishte zemër ta lërë në shi.",
+              "english": "But the little dog was very cold, and Ardi did not have the heart to leave him in the rain."
+            },
+            {
+              "text": "E vuri në çantë, mbi fletoret, dhe e mbylli çantën pak.",
+              "english": "He put him in his bag, on top of the notebooks, and closed the bag a little."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Rruga për në shtëpi ishte e gjatë.",
+              "english": "The way home was long."
+            },
+            {
+              "text": "Qeni lëvizte në çantë, dhe Ardi e mbante me të dy duart.",
+              "english": "The dog moved in the bag, and Ardi held it with both hands."
+            },
+            {
+              "text": "Një grua që kalonte e pyeti: — Çfarë ke aty, djalë?",
+              "english": "A woman who was passing asked him: \"What have you got there, boy?\""
+            },
+            {
+              "text": "— Libra, — tha Ardi.",
+              "english": "\"Books,\" said Ardi."
+            },
+            {
+              "text": "Në atë moment qeni bëri një zë të vogël.",
+              "english": "At that moment the dog made a small sound."
+            },
+            {
+              "text": "Gruaja qeshi dhe tha: — Libra që bërtasin, është një shkollë e mirë!",
+              "english": "The woman laughed and said: \"Books that bark, it is a good school!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në shtëpi gjyshja po përgatiste drekën.",
+              "english": "At home grandmother was preparing lunch."
+            },
+            {
+              "text": "— Ardi, pse ke një çantë që lëviz? — pyeti ajo pa u kthyer.",
+              "english": "\"Ardi, why do you have a bag that moves?\" she asked without turning round."
+            },
+            {
+              "text": "— Është ... një libër i gjallë, — tha Ardi.",
+              "english": "\"It is ... a living book,\" said Ardi."
+            },
+            {
+              "text": "— Një libër që ka bisht? — tha Drita, dhe tani u kthye.",
+              "english": "\"A book that has a tail?\" said Drita, and now she turned round."
+            },
+            {
+              "text": "Qeni e ngriti kokën nga çanta dhe e pa Dritën me sy të mëdhenj.",
+              "english": "The dog raised his head from the bag and looked at Drita with big eyes."
+            },
+            {
+              "text": "Drita heshti për disa sekonda.",
+              "english": "Drita was silent for a few seconds."
+            },
+            {
+              "text": "Pastaj tha: — Mos më thuaj se ke sjellë një qen të tretë në këtë shtëpi.",
+              "english": "Then she said: \"Do not tell me that you have brought a third animal into this house.\""
+            },
+            {
+              "text": "— Vetëm për sonte, gjyshe, — tha Ardi.",
+              "english": "\"Only for tonight, grandmother,\" said Ardi."
+            },
+            {
+              "text": "— Nëse e lë jashtë, ai do të vdesë nga ftohja.",
+              "english": "\"If I leave him outside, he will die of the cold.\""
+            },
+            {
+              "text": "— Çdo qen «vetëm për sonte» bëhet qen i shtëpisë, — tha gjyshja.",
+              "english": "\"Every dog 'only for tonight' becomes a dog of the house,\" said grandmother."
+            },
+            {
+              "text": "Por ajo mori një peshqir të vjetër dhe e fshiu qenin me kujdes.",
+              "english": "But she took an old towel and dried the dog carefully."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Atë natë qeni fjeti në dhomën e Ardit, mbi një batanije.",
+              "english": "That night the dog slept in Ardi's room, on a blanket."
+            },
+            {
+              "text": "Gjyshja e rregulloi batanijen e vjetër me duart e saj.",
+              "english": "Grandmother arranged the old blanket with her own hands."
+            },
+            {
+              "text": "Pas një ore ai filloi të qajë me një zë të hollë dhe të trishtuar.",
+              "english": "After an hour he began to cry in a thin and sad voice."
+            },
+            {
+              "text": "Gjyshja erdhi te dera me llambën në dorë.",
+              "english": "Grandmother came to the door with the lamp in her hand."
+            },
+            {
+              "text": "— Ai ka frikë, — pëshpëriti Ardi.",
+              "english": "\"He is afraid,\" whispered Ardi."
+            },
+            {
+              "text": "— Është i vetëm dhe nuk e di ku është.",
+              "english": "\"He is alone and does not know where he is.\""
+            },
+            {
+              "text": "Gjyshja nuk tha asgjë.",
+              "english": "Grandmother said nothing."
+            },
+            {
+              "text": "Ajo e pyeti përsëri nëse kishte ngrënë.",
+              "english": "She asked again whether he had eaten."
+            },
+            {
+              "text": "Ajo u ul pranë tyre, e preku qenin pas kokës, dhe qeni heshti pas pak.",
+              "english": "She sat down beside them, touched the dog on the head, and the dog fell silent after a little."
+            },
+            {
+              "text": "— Kështu bëhet, — tha ajo.",
+              "english": "\"That is how it is done,\" she said."
+            },
+            {
+              "text": "— Nuk i duhen fjalë, i duhet një dorë.",
+              "english": "\"He does not need words, he needs a hand.\""
+            },
+            {
+              "text": "— Gjyshe, a mund ta mbajmë? — pyeti Ardi.",
+              "english": "\"Grandmother, can we keep him?\" asked Ardi."
+            },
+            {
+              "text": "— Jo, — tha ajo me zë të ulët.",
+              "english": "'No,' she said in a low voice."
+            },
+            {
+              "text": "— Ai ka një pronar që ndoshta po e kërkon sonte në rrugë.",
+              "english": "\"He has an owner who is perhaps looking for him in the street tonight.\""
+            },
+            {
+              "text": "— Nëse e kemi marrë ne, duhet ta kthejmë atje ku i takon.",
+              "english": "\"If we have taken him, we must give him back where he belongs.\""
+            },
+            {
+              "text": "Të dielën në mëngjes Ardi e mori qenin dhe shkoi te Sami.",
+              "english": "On Sunday morning Ardi took the dog and went to Sam."
+            },
+            {
+              "text": "Ai kishte një ide, por nuk e dinte si ta fillonte.",
+              "english": "He had an idea, but he did not know how to begin."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

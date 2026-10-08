@@ -2,7 +2,7 @@
 note: "Fløyen" is a real mountain at Bergen; the story gives no facts about it beyond its name. "tre / trær" is a neuter noun with an irregular plural.
 ## Til fjellet
 Lørdag var det sol i {city}. {ana} og {luis} jobbet ikke. || On Saturday there was sun in Bergen. Anna and Lars did not work.
-De ville gå en tur. {sam} og {nico} ville gå også. || They wanted to go for a walk. Sam and Nils wanted to go too.
+De ville gå en tur. Det ble en lang tur, og {sam} og {nico} ville gå også. || They wanted to go for a walk. It became a long walk, and Sam and Nils wanted to go too.
 Fjellet heter Fløyen. || The mountain is called Fløyen.
 De tok bussen til sentrum. Så gikk de. || They took the bus to the town centre. Then they walked.
 
@@ -11,7 +11,7 @@ Veien var lang. Mange folk gikk her. || The road was long. Many people walked he
 [nico] Jeg er sulten! || I am hungry!
 [ana] Her er brød og ost. Her er melk. || Here is bread and cheese. Here is milk.
 {nico} spiste brød med ost. Han var glad. || Nils ate bread with cheese. He was happy.
-[nico] Veien er lang! Er fjellet høyt? || The road is long! Is the mountain high?
+[nico] Veien er lang! Er det høyt? || The road is long! Is it high?
 [luis] Ja, det er høyt. Gå, {nico}! Du kan gå! || Yes, it is high. Keep going, Nils! You can do it!
 {nico} gikk. Han var trøtt, men han gråt ikke. || Nils walked. He was tired, but he did not cry.
 

@@ -296,6 +296,16 @@
               "english": "My birthplace is a small town in America."
             },
             {
+              "text": "แล้วที่กำเนิดของแซมมีทะเลไหมคะ",
+              "english": "And does the place where you were born have a sea?",
+              "speaker": "lady"
+            },
+            {
+              "text": "ไม่มีครับ ที่กำเนิดของผมอยู่ไกลจากทะเลมากครับ",
+              "english": "No. Where I was born is very far from the sea.",
+              "speaker": "sam"
+            },
+            {
               "speaker": "lady",
               "text": "ครอบครัวของแซมเป็นอย่างไรคะ คิดถึงบิดาและแม่ไหมคะ",
               "english": "What is your family like? Do you miss your father and mother?"
@@ -341,9 +351,19 @@
               "english": "I met him at the church. He was once the child of a poor family."
             },
             {
+              "text": "เขาเป็นผู้นำโบสถ์ที่ดี และเขาเปลี่ยนแปลงชีวิตของคนหลายคนครับ",
+              "english": "He is a good leader of the church, and he has changed the lives of many people.",
+              "speaker": "sam"
+            },
+            {
               "speaker": "lady",
               "text": "ดีค่ะ ป้าชอบคนที่พูดจริง ป้าเองก็ไม่มีเงินมากค่ะ",
               "english": "Good. I like people who speak truthfully. I do not have much money myself either."
+            },
+            {
+              "text": "ในยุคนี้ เด็กๆ มักไม่ไปวัด แต่แซมไปโบสถ์ทุกอาทิตย์ค่ะ",
+              "english": "In this age children often do not go to the temple, but Sam goes to church every Sunday.",
+              "speaker": "lady"
             },
             {
               "speaker": "lady",
@@ -367,6 +387,10 @@
             {
               "text": "แซมยื่นหนังสือเดินทางและบัตรให้ป้า",
               "english": "Sam handed his passport and card to the landlady."
+            },
+            {
+              "text": "ป้าดูบัตรอยู่นาน แล้วยื่นให้แซมอีกครั้ง",
+              "english": "She looked at the card for a long time, then handed it to Sam again."
             },
             {
               "speaker": "lady",

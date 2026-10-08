@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Present and future narration with dialogue. \"रेलगाड़ी\" is in the plan's title but the text says ट्रेन (the word the plan teaches). Purpose with -ने के लिए (टिकट लेने के लिए), ability with सकना, future. The farmer is not named. प्लेटफ़ॉर्म is a loanword that the adapter now reads. Honorific plural for रवि सर and the farmer. Words outside the plan (measured, adapter lemmas x tokens): खेत×1 (under-met)."
+    "notes": "Present and future narration with dialogue. \"रेलगाड़ी\" is in the plan's title but the text says ट्रेन (the word the plan teaches). Purpose with -ने के लिए (टिकट लेने के लिए), ability with सकना, future. The farmer is not named. प्लेटफ़ॉर्म is a loanword that the adapter now reads. Honorific plural for रवि सर and the farmer. Words outside the plan (measured, adapter lemmas x tokens): खेत×1 (under-met). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -366,6 +366,54 @@
             {
               "text": "सैम बोलता है, \"यह सफ़र बहुत अच्छा था!\"",
               "english": "Sam says, \"This journey was very good!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज गाँव में बहुत गर्मी है।",
+              "english": "It is very hot in the village today."
+            },
+            {
+              "text": "सैम आसमान को देखता है, लेकिन पानी कहीं नहीं है।",
+              "english": "Sam looks at the sky, but there is no water anywhere."
+            },
+            {
+              "text": "गाँव के पास एक तालाब है।",
+              "english": "There is a pond near the village."
+            },
+            {
+              "text": "तालाब की तरफ़ एक छोटी सड़क जाती है।",
+              "english": "A small road goes towards the pond."
+            },
+            {
+              "text": "वहाँ एक कुत्ता रुकता है और भौंकता है।",
+              "english": "A dog stops there and barks."
+            },
+            {
+              "text": "तभी एक बच्चे की आवाज़ आती है।",
+              "english": "Just then the voice of a child comes."
+            },
+            {
+              "text": "कुत्ता घबराता है, इसलिए वह रुकता है, क्योंकि बच्चा उसका दोस्त है।",
+              "english": "The dog gets flustered, so he stops, because the child is his friend."
+            },
+            {
+              "text": "सैम हँसता है और बोलता है, \"यह बच्चा मोती का दोस्त है।\"",
+              "english": "Sam laughs and says, \"This child is Moti's friend.\""
+            },
+            {
+              "text": "बच्चे का घर इस गाँव में बसा है।",
+              "english": "The child's house is settled in this village."
+            },
+            {
+              "text": "सैम अपना बैग लेता है और सब लोग घर जाते हैं।",
+              "english": "Sam takes his bag and everybody goes home."
+            },
+            {
+              "text": "नानी रसोई में सब के लिए चाय बनाती हैं।",
+              "english": "Nani makes tea for everybody in the kitchen."
             }
           ]
         }

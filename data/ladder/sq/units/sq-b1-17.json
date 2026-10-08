@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-17",
+  "lang": "sq",
+  "title": "Pyetjet e Samit",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-17",
+    "title": "Albanian ladder, b1-bridge: Pyetjet e Samit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Pyetjet e Samit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të mërkurën në mbrëmje, pasi fëmijët u larguan nga klubi, Sami shkoi në kishën e vogël afër shkollës.",
+              "english": "On Wednesday evening, after the children had left the club, Sam went to the little church near the school."
+            },
+            {
+              "text": "Pastor Pjetri e kishte zakon të rrinte aty pas orës gjashtë, kur lagjja heshtte, dhe të lexonte ose të rregullonte karriget.",
+              "english": "Pastor Pjetër had the habit of staying there after six o'clock, when the neighbourhood was quiet, and reading or arranging the chairs."
+            },
+            {
+              "text": "Atë mbrëmje ai po rregullonte karriget e vjetra.",
+              "english": "That evening he was arranging the old chairs."
+            },
+            {
+              "text": "— Sam! — tha ai pa u kthyer.",
+              "english": "\"Sam!\" he said without turning round."
+            },
+            {
+              "text": "— Ke ardhur me një pyetje, apo me një libër?",
+              "english": "\"Have you come with a question, or with a book?\""
+            },
+            {
+              "text": "— Me një pyetje, — u përgjigj Sami.",
+              "english": "\"With a question,\" Sam answered."
+            },
+            {
+              "text": "— Dhe nuk e di si ta them.",
+              "english": "\"And I do not know how to say it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastori i la karriget dhe u ul.",
+              "english": "The pastor left the chairs and sat down."
+            },
+            {
+              "text": "— Fillo nga fundi, — tha ai.",
+              "english": "\"Begin at the end,\" he said."
+            },
+            {
+              "text": "— Zakonisht kështu është më e lehtë.",
+              "english": "\"Usually that is easier.\""
+            },
+            {
+              "text": "— Të shtunën një fëmijë më pyeti diçka që nuk dija ta përgjigjesha, — tha Sami.",
+              "english": "\"On Saturday a child asked me something that I did not know how to answer,\" said Sam."
+            },
+            {
+              "text": "— Ishte Ardi. Ai kishte gjetur një qen të humbur dhe e kishte mbajtur tri ditë.",
+              "english": "\"It was Ardi. He had found a lost dog and had kept it for three days.\""
+            },
+            {
+              "text": "— Kur qeni u kthye te vajza, ai më pyeti: «Pse e la Zoti Bardhin të humbet nëse e do atë vajzë?»",
+              "english": "\"When the dog went back to the girl, he asked me: 'Why did God let Bardhi get lost if he loves that girl?'\""
+            },
+            {
+              "text": "— Dhe ti çfarë the?",
+              "english": "\"And what did you say?\""
+            },
+            {
+              "text": "— Asgjë.",
+              "english": "\"Nothing.\""
+            },
+            {
+              "text": "— Thashë se do ta pyesja një njeri që e di më mirë.",
+              "english": "\"I said that I would ask a person who knows better.\""
+            },
+            {
+              "text": "Pastori buzëqeshi me kujdes.",
+              "english": "The pastor smiled carefully."
+            },
+            {
+              "text": "— Mendoj se është përgjigja më e mirë që mund t'i japësh një fëmije.",
+              "english": "'I think it is the best answer you can give a child.'"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Por unë nuk dua vetëm një përgjigje të qetë, — tha Sami.",
+              "english": "'But I do not want only a calm answer,' said Sam."
+            },
+            {
+              "text": "— Dua të kem edhe një përgjigje.",
+              "english": "\"I want to have an answer too.\""
+            },
+            {
+              "text": "— Po të kisha një përgjigje për çdo pyetje, do të isha një pastor i dobët, — tha Pjetri.",
+              "english": "\"If I had an answer to every question, I would be a poor pastor,\" said Pjetër."
+            },
+            {
+              "text": "— Njerëzit që kanë përgjigje për gjithçka zakonisht nuk kanë dëgjuar mirë.",
+              "english": "\"People who have an answer for everything usually have not listened well.\""
+            },
+            {
+              "text": "— Ti njeh Dritanin, — vazhdoi ai.",
+              "english": "\"You know Dritan,\" he went on."
+            },
+            {
+              "text": "— Kur humbi punën, ai nuk më pyeti «pse».",
+              "english": "\"When he lost his job, he did not ask me 'why.'\""
+            },
+            {
+              "text": "— Më pyeti: «Si mund ta mbaj këtë?»",
+              "english": "\"He asked me: 'How can I bear this?'\""
+            },
+            {
+              "text": "— Kjo është një pyetje tjetër, dhe ndoshta më e mirë.",
+              "english": "\"That is a different question, and perhaps a better one.\""
+            },
+            {
+              "text": "— Po nëse nuk ka asnjë arsye? — pyeti Sami.",
+              "english": "\"And if there is no reason?\" asked Sam."
+            },
+            {
+              "text": "— Nëse qeni humbi vetëm sepse ishte shi dhe ra një portë, pa asnjë plan?",
+              "english": "\"If the dog got lost only because it was raining and a gate fell, without any plan?\""
+            },
+            {
+              "text": "— Atëherë, — tha pastori, — ai humbi pa plan, por e gjetën me plan.",
+              "english": "\"Then,\" said the pastor, \"he got lost without a plan, but they found him with a plan.\""
+            },
+            {
+              "text": "— Dikush bëri një njoftim, dikush e pa, dikush erdhi me autobus.",
+              "english": "\"Someone made a notice, someone saw it, someone came by bus.\""
+            },
+            {
+              "text": "— Nëse e kërkon dorën e Zotit vetëm kur gjërat shkojnë keq, do ta humbasësh kur shkojnë mirë.",
+              "english": "\"If you look for God's hand only when things go badly, you will lose it when they go well.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sami heshti dhe e shikoi dyshemenë.",
+              "english": "Sam was silent and looked at the floor."
+            },
+            {
+              "text": "— Ndonjëherë mendoj, — tha ai më në fund, — se jam këtu për një arsye që ende nuk e di.",
+              "english": "\"Sometimes I think,\" he said at last, \"that I am here for a reason I do not yet know.\""
+            },
+            {
+              "text": "— Dhe ndonjëherë mendoj se jam vetëm një i huaj që ka qëndruar shumë.",
+              "english": "\"And sometimes I think I am only a stranger who has stayed too long.\""
+            },
+            {
+              "text": "— Të dy mendimet janë të vërteta, — tha Pjetri.",
+              "english": "\"Both thoughts are true,\" said Pjetër."
+            },
+            {
+              "text": "— Një njeri mund të jetë një i huaj dhe një i dërguar.",
+              "english": "\"A person can be a stranger and one who is sent.\""
+            },
+            {
+              "text": "— Mos e kërko arsyen në faqen e fundit të librit.",
+              "english": "\"Do not look for the reason on the last page of the book.\""
+            },
+            {
+              "text": "— Është shkruar ende.",
+              "english": "\"It is still being written.\""
+            },
+            {
+              "text": "— Lexo faqen që ke para syve, bëje mirë, dhe shiko se çfarë vjen pas saj.",
+              "english": "\"Read the page you have before your eyes, do it well, and see what comes after it.\""
+            },
+            {
+              "text": "— Të pyesësh kërkon guxim, dhe ti e ke, — shtoi pastori.",
+              "english": "'To ask takes courage, and you have it,' added the pastor."
+            },
+            {
+              "text": "Sami buzëqeshi, dhe për herë të parë atë javë iu bë zemra më e lehtë.",
+              "english": "Sam smiled, and for the first time that week his heart became lighter."
+            },
+            {
+              "text": "— Mund t'i them Ardit se kam pyetur një pastor? — pyeti.",
+              "english": "\"May I tell Ardi that I asked a pastor?\" he asked."
+            },
+            {
+              "text": "— Thuaji, — tha Pjetri.",
+              "english": "\"Tell him,\" said Pjetër."
+            },
+            {
+              "text": "— Dhe thuaji që pastori nuk di gjithçka, por e di se ku të shkojë për ta kërkuar.",
+              "english": "\"And tell him that the pastor does not know everything, but knows where to go to look for it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Para se të largohej, Sami e pyeti pastorin edhe për një gjë tjetër.",
+              "english": "Before leaving, Sam asked the pastor about one more thing."
+            },
+            {
+              "text": "— Luani më tha se shkolla mund të më japë një kontratë për një vit, nëse klubi shkon mirë.",
+              "english": "\"Luan told me that the school may give me a contract for a year, if the club goes well.\""
+            },
+            {
+              "text": "— Dhe ti çfarë dëshiron? — pyeti pastori.",
+              "english": "\"And what do you want?\" asked the pastor."
+            },
+            {
+              "text": "— Nuk e di.",
+              "english": "\"I do not know.\""
+            },
+            {
+              "text": "— Kur mendoj të qëndroj, më duket se po largohem nga nëna ime.",
+              "english": "'When I think of staying, it seems to me that I am going away from my mother.'"
+            },
+            {
+              "text": "— Kur mendoj të kthehem, më duket se po largohem nga shtëpia ime e re.",
+              "english": "'When I think of going back, it seems to me that I am going away from my new home.'"
+            },
+            {
+              "text": "— Atëherë mos vendos nga frika, — tha Pjetri.",
+              "english": "\"Then do not decide out of fear,\" said Pjetër."
+            },
+            {
+              "text": "— Vendos nga ajo që do të bëjë mirë për njerëzit dhe për ty, dhe mendo çfarë do të doje të kishe bërë pas pesë vitesh.",
+              "english": "\"Decide out of what will do good for people and for you, and think what you would like to have done after five years.\""
+            },
+            {
+              "text": "— Po të isha unë në vendin tënd, do të flisja me nënën tënde dhe me Luanin, dhe pastaj do të lutesha.",
+              "english": "'If I were in your place, I would speak with your mother and with Luan, and then I would pray.'"
+            },
+            {
+              "text": "— Ndonjëherë përgjigja nuk vjen si një zë, por si një paqe.",
+              "english": "'Sometimes the answer does not come as a voice, but as a peace.'"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Instructions in the तुम imperative (धोओ, काटो, डालो) to Aman and the आप imperative (सीखिए) to Sam; negative commands with मत; the conjunctive participle (धोकर, काटकर, उबालकर). Nani is honorific plural (बोलती हैं, बताती हैं). रखना is used once and is not in the plan's lists. The recycle list of the plan is woven into Sam's journey the next day (the food Nani packs) and the cooking lesson. Words outside the plan (measured): none."
+    "notes": "Instructions in the तुम imperative (धोओ, काटो, डालो) to Aman and the आप imperative (सीखिए) to Sam; negative commands with मत; the conjunctive participle (धोकर, काटकर, उबालकर). Nani is honorific plural (बोलती हैं, बताती हैं). रखना is used once and is not in the plan's lists. The recycle list of the plan is woven into Sam's journey the next day (the food Nani packs) and the cooking lesson. Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -342,6 +342,38 @@
             {
               "text": "सैम बोलता है, \"धन्यवाद, नानी!\"",
               "english": "Sam says, \"Thank you, Nani!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रसोई के बाहर बहुत भीड़ है, क्योंकि आज सब लोग नानी की दाल खाते हैं।",
+              "english": "There is a big crowd outside the kitchen, because today everybody eats Nani's dal."
+            },
+            {
+              "text": "सब अपनी खिड़की के पास खड़े होकर नानी की रसोई को देखते हैं।",
+              "english": "Everybody stands at their window and looks at Nani's kitchen."
+            },
+            {
+              "text": "अचानक अमन को डर लगता है, क्योंकि मोती अपनी पूँछ हिलाता है और रसोई में आता है।",
+              "english": "Suddenly Aman feels afraid, because Moti wags his tail and comes into the kitchen."
+            },
+            {
+              "text": "नानी बोलती हैं, \"अमन, मोती दाल नहीं खाता।\"",
+              "english": "Nani says, \"Aman, Moti does not eat dal.\""
+            },
+            {
+              "text": "चाची जी भी आती हैं, और वह नानी की पड़ोस की औरत हैं।",
+              "english": "Chachi ji comes too, and she is a woman from Nani's neighbourhood."
+            },
+            {
+              "text": "चाची जी बोलती हैं, \"मैं ध्यान से देखती हूँ, नानी।\"",
+              "english": "Chachi ji says, \"I am watching carefully, Nani.\""
+            },
+            {
+              "text": "रसोई में बहुत गर्मी है, और सैम दूसरा थैला लाता है, और चाची जी उसे आलू देती हैं।",
+              "english": "It is very hot in the kitchen, and Sam brings the other bag, and Chachi ji gives him potatoes."
             }
           ]
         }

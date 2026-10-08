@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: the children say आप to रवि सर and तुम to each other; रवि सर says तुम to the children; Aman says आप to Nani, who says तुम to him. Sam says तुम to Aman. The friends are दीपक and आरती (two names from the adapter name list), classmates of Aman; they are deliberately not प्रिया and रोहन, who run the phone shop in the neighbouring units. आरती is शर्मा जी की पोती, the old neighbour of the world facts. Outside word: सर (x4, always in \"रवि सर\", the name the cast uses; the adapter has no lemma for it). Please consider adding सर to a list. Contrary-to-fact: अगर मैंने ... पढ़ा होता तो ... नहीं लगता (Aman) and अगर मैंने ... पढ़ा होता तो ... पास होता (Deepak). Please check that the -ता ... -ता frames read naturally. Ravi sir's goat story is an original mini-fable (no source). मास्टर जी with a stick is told as the teacher's own school memory, not as something he does. The exam is a Hindi paper with multiple-choice parts (चार जवाबों में से सही जवाब चुनो), which is the reviewer's call."
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: the children say आप to रवि सर and तुम to each other; रवि सर says तुम to the children; Aman says आप to Nani, who says तुम to him. Sam says तुम to Aman. The friends are दीपक and आरती (two names from the adapter name list), classmates of Aman; they are deliberately not प्रिया and रोहन, who run the phone shop in the neighbouring units. आरती is शर्मा जी की पोती, the old neighbour of the world facts. Outside word: सर (x4, always in \"रवि सर\", the name the cast uses; the adapter has no lemma for it). Please consider adding सर to a list. Contrary-to-fact: अगर मैंने ... पढ़ा होता तो ... नहीं लगता (Aman) and अगर मैंने ... पढ़ा होता तो ... पास होता (Deepak). Please check that the -ता ... -ता frames read naturally. Ravi sir's goat story is an original mini-fable (no source). मास्टर जी with a stick is told as the teacher's own school memory, not as something he does. The exam is a Hindi paper with multiple-choice parts (चार जवाबों में से सही जवाब चुनो), which is the reviewer's call. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -494,6 +494,38 @@
             {
               "text": "नानी: मेहनत का फल परमेश्वर ज़रूर देता है।",
               "english": "God surely gives the fruit of hard work."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "परीक्षा के बाद अमन ने घर आकर अपनी मम्मी को बताया कि उसके नंबर अच्छे आए हैं।",
+              "english": "After the exam Aman came home and told his mummy that his marks were good."
+            },
+            {
+              "text": "मम्मी ने कहा, \"मुबारक हो, बेटा!\"",
+              "english": "Mummy said, \"Congratulations, son!\""
+            },
+            {
+              "text": "अज्जी और अज्जा ने भी फ़ोन पर कहा, \"मुबारक हो, अमन!\"",
+              "english": "Ajji and Ajja said on the phone too, \"Congratulations, Aman!\""
+            },
+            {
+              "text": "नानी ने सबके लिए लड्डू बनाए।",
+              "english": "Nani made laddus for everybody."
+            },
+            {
+              "text": "लड्डू खाकर अमन ने कहा कि अगली बार भी वह मेहनत करेगा।",
+              "english": "After eating the laddus Aman said that next time too he would work hard."
+            },
+            {
+              "text": "मम्मी हँस पड़ीं, और अज्जी ने फ़ोन पर ही अमन को आशीर्वाद दिया।",
+              "english": "Mummy burst out laughing, and Ajji blessed Aman over the phone."
+            },
+            {
+              "text": "अज्जा ने भी फ़ोन पर पूछा, \"परीक्षा कैसी रही?\"",
+              "english": "Ajja also asked on the phone, \"How did the exam go?\""
             }
           ]
         }

@@ -1,0 +1,53 @@
+id: hi-b1-06
+title: शर्मा अंकल का तोता
+domain: animals
+topics: animals, pets, birds, neighbours
+notes: Third controlled unit of the b1 bridge. It prepares the words of the GDL story "रीति और मिठु" (hi-b1-07): जीव, पालतू, पिंजड़ा, तोता, अंकल, पंख, मचाना, ज़रूरी, ख़त्म, फैलाना, तेज़ी, and the parrot's greeting ह’लो (written as in the book), each used three times. It also brings back the rare words of hi-b1-05 (उपाय, इरादा, झटपट, महसूस, दुखी) and of hi-b1-01 (स्टूल, इशारा, ख़राब, भूरा). A neighbour asks Aman's household to keep his pet parrot while he is away; Seeta Nani does not like birds in cages. Machine-drafted; a Hindi reviewer should check the neighbour's register and the pet vocabulary.
+---
+## शर्मा जी का तोता
+सैम और अमन के पड़ोस में शर्मा अंकल रहते हैं, और वे नानी के बहुत पुराने दोस्त हैं। || Sharma uncle lives in the neighbourhood of Sam and Aman, and he is a very old friend of Nani.
+एक शाम वे हाथ में पिंजड़ा लिए नानी के घर आए। || One evening he came to Nani's house with a cage in his hand.
+पिंजड़े में एक हरा तोता था। || In the cage there was a green parrot.
+शर्मा जी ने कहा, "मैं दस दिन के लिए शहर से बाहर जा रहा हूँ। क्या आप मेरे तोते को रख लेंगे?" || Sharma ji said, "I am going out of the city for ten days. Will you keep my parrot?"
+नानी ने कहा, "मुझे किसी पक्षी को बंद रखना पसंद नहीं, शर्मा जी।" || Nani said, "I do not like keeping any bird shut in, Sharma ji."
+शर्मा जी बोले, "वह पालतू है, और घर से बाहर उसे डर लगता है।" || Sharma ji said, "He is a pet, and outside the house he is afraid."
+अमन ने कहा, "नानी, मैं रोज़ सुबह और शाम उसका पूरा ध्यान रखूँगा।" || Aman said, "Nani, I will take full care of him every morning and evening."
+नानी कुछ देर सोचती रहीं, और फिर उन्होंने हाँ कह दिया। || Nani went on thinking for a while, and then she said yes.
+
+## ह’लो!
+तोते का नाम राजा है। || The parrot's name is Raja.
+अमन ने उसके पास जाकर कहा, "ह’लो राजा!" || Aman went near him and said, "H'llo, Raja!"
+राजा बोला, "ह’लो!" || Raja said, "H'llo!"
+सैम हँसा और बोला, "यह तो बात भी करता है!" || Sam laughed and said, "He even talks!"
+अमन ने उसे अपना नाम सिखाना चाहा, पर वह बस वही एक शब्द बोलता रहा। || Aman wanted to teach him his name, but he kept saying just that one word.
+नानी रसोई से बोलीं, "आज तुम दोनों उसे कहानी सुनाओ, शायद वह कुछ नया सीख ले।" || Nani said from the kitchen, "Today you two tell him a story, perhaps he will learn something new."
+
+## रात का शोर
+रात को राजा ने बहुत शोर मचाया। || At night Raja made a lot of noise.
+वह पंख फैलाता और तेज़ी से इधर उधर कूदता था। || He used to spread his wings and hop about quickly.
+सैम की नींद खुल गई, और उसने सोचा कि इसे शांत करने का कोई उपाय नहीं है। || Sam woke up, and he thought that there was no way to quieten him.
+अमन झटपट उठा और बोला, "मेरा इरादा इसे दुखी करने का नहीं था।" || Aman got up in a flash and said, "I did not intend to make him sad."
+नानी आईं और बोलीं, "हर जीव को हवा और धूप चाहिए।" || Nani came and said, "Every living creature needs air and sunshine."
+"पालतू जीव भी जीव है, खिलौना नहीं।" || "A pet creature is a creature too, not a toy."
+सैम ने महसूस किया कि नानी की बात सही है। || Sam felt that Nani's words were right.
+"किसी को बंद रखना ज़रूरी नहीं है," नानी ने कहा, "पर उसका ध्यान रखना ज़रूरी है, और रोज़ उसे पानी देना भी ज़रूरी है।" || "It is not necessary to keep anybody shut in," Nani said, "but it is necessary to take care of him, and giving him water every day is necessary too."
+सब लोग सो गए, पर राजा रात भर शोर मचाता रहा। || Everybody went to sleep, but Raja went on making noise all night.
+
+## सुबह
+सुबह अमन ने स्टूल पर चढ़कर पिंजड़े का दरवाज़ा खोला। || In the morning Aman climbed on a stool and opened the door of the cage.
+राजा ने इशारा समझ लिया, और वह बाहर आकर पेड़ पर बैठ गया। || Raja understood the sign, and he came out and sat on the tree.
+उसने अपने हरे पंख फैलाए, तो वे धूप में चमकने लगे। || He spread his green wings, and they began to shine in the sun.
+पास में भूरी गौरैया भी बैठी थी, और दोनों पक्षी एक दूसरे को देखते रहे। || The brown sparrow was sitting nearby too, and the two birds went on looking at each other.
+अमन ने कहा, "अगर वह उड़ गया, तो शर्मा अंकल का मन ख़राब होगा।" || Aman said, "If he flies away, Sharma uncle will feel bad."
+नानी ने कहा, "जो पक्षी तुम्हारे पास लौटता है, वही तुम्हारा दोस्त है।" || Nani said, "The bird who comes back to you is your friend."
+अमन तेज़ी से आँगन में आया और बोला, "नानी, राजा बाहर है!" || Aman came quickly into the courtyard and said, "Nani, Raja is outside!"
+सैम और अमन आँगन में बैठकर चाय पीते रहे, और नानी रोटी बनाती रहीं। || Sam and Aman sat in the courtyard and went on drinking tea, and Nani went on making roti.
+आँगन में सुबह की धूप थी, और सब कुछ बहुत शांत था। || There was morning sunshine in the courtyard, and everything was very quiet.
+
+## दस दिन बाद
+दस दिन ख़त्म हुए, तो शर्मा अंकल का काम भी ख़त्म हुआ। || The ten days came to an end, and Sharma uncle's work came to an end too.
+राजा पंख फैलाकर तेज़ी से उड़ा और अपने आप पिंजड़े में लौट आया। || Raja spread his wings, flew quickly and came back into the cage by himself.
+अंकल ने तोते को देखा और कहा, "ह’लो राजा!" || Uncle saw the parrot and said, "H'llo, Raja!"
+तोते ने खुश होकर जवाब दिया, "ह’लो!" || The parrot replied happily, "H'llo!"
+बच्चों ने खुशी से शोर मचाया, और नानी हँस पड़ीं। || The children made a joyful noise, and Nani burst out laughing.
+छुट्टी ख़त्म हो गई थी, पर सबको लगा कि कुछ ज़रूर बदला है। || The holiday was over, but everybody felt that something had certainly changed.

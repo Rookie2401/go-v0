@@ -43,6 +43,19 @@
     "contemporary-nonfiction"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "sections": [
     {
       "title": "Eine Frage von Besuchern",
@@ -514,19 +527,263 @@
           ]
         }
       ]
-    }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam denkt an das Treffen am Donnerstagabend.",
+              "english": "Sam thinks of the meeting on Thursday evening."
+            },
+            {
+              "text": "Das Team wollte beim Fest einen Stand aufbauen.",
+              "english": "The team wanted to set up a stand at the festival."
+            },
+            {
+              "text": "Das war eine große Chance, und alle waren bereit.",
+              "english": "That was a big chance, and everyone was ready."
+            },
+            {
+              "text": "Die Vorbereitung war wichtig, damit nichts schiefgeht.",
+              "english": "The preparation was important so that nothing goes wrong."
+            },
+            {
+              "text": "Sam wollte es versuchen, auch wenn er Angst hatte.",
+              "english": "Sam wanted to try, even though he was afraid."
+            },
+            {
+              "text": "Alle haben viel gearbeitet, und der Tag war schön.",
+              "english": "Everyone worked a lot, and the day was beautiful."
+            },
+            {
+              "text": "Am Abend waren sie müde, aber sie waren froh.",
+              "english": "In the evening they were tired, but they were happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ruth sagte: Wir wollen niemanden drängen.",
+              "english": "Ruth said: we do not want to push anyone."
+            },
+            {
+              "text": "Wir wollen auch nichts aufdrängen.",
+              "english": "We do not want to force anything on anyone either."
+            },
+            {
+              "text": "Das Evangelium ist kein Zwang und kein Druck, es ist ein Geschenk.",
+              "english": "The gospel is no compulsion and no pressure, it is a gift."
+            },
+            {
+              "text": "Wir wollen gute und faire Gastgeber sein.",
+              "english": "We want to be good and fair hosts."
+            },
+            {
+              "text": "Ruth kümmert sich um den Kaffee.",
+              "english": "Ruth takes care of the coffee."
+            },
+            {
+              "text": "Auch der Jugendkreis war begeistert.",
+              "english": "The youth group was enthusiastic too."
+            },
+            {
+              "text": "Zuhören ist das ganze Geheimnis.",
+              "english": "Listening is the whole secret."
+            },
+            {
+              "text": "Daran können wir anknüpfen.",
+              "english": "We can pick up on that."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "David schrieb den Text für den Flyer.",
+              "english": "David wrote the text for the flyer."
+            },
+            {
+              "text": "Auf der Vorderseite war ein Foto, und auf der anderen Seite standen die Zeit und der Ort.",
+              "english": "On the front was a photo, and on the other side were the time and the place."
+            },
+            {
+              "text": "Dafür hat er ein paar Tage gebraucht.",
+              "english": "He needed a few days for that."
+            },
+            {
+              "text": "Viele Leute haben davon schon gehört.",
+              "english": "Many people have already heard of it."
+            },
+            {
+              "text": "Darin steht alles über das Fest.",
+              "english": "Everything about the festival is in it."
+            },
+            {
+              "text": "Sam hat es allen Freunden gezeigt.",
+              "english": "Sam showed it to all his friends."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann denkt Sam an die schlechte Nacht in Leipzig.",
+              "english": "Then Sam thinks of the bad night in Leipzig."
+            },
+            {
+              "text": "Anna gab ihm ein Thermometer.",
+              "english": "Anna gave him a thermometer."
+            },
+            {
+              "text": "Sein Mund war ganz trocken.",
+              "english": "His mouth was quite dry."
+            },
+            {
+              "text": "Anna schaute auf ihre Uhr und sagte: Das ist normal.",
+              "english": "Anna looked at her watch and said: that is normal."
+            },
+            {
+              "text": "Nach einer Weile sagte sie: Der Körper braucht Zeit.",
+              "english": "After a while she said: the body needs time."
+            },
+            {
+              "text": "Du musst zwei Liter am Tag trinken.",
+              "english": "You must drink two litres a day."
+            },
+            {
+              "text": "Iss nur leichte Sachen, das ist ein typischer Rat bei Grippe.",
+              "english": "Eat only light things, that is typical advice for the flu."
+            },
+            {
+              "text": "Ihre Lunge ist frei, übrigens.",
+              "english": "Her lungs are clear, by the way."
+            },
+            {
+              "text": "Am Morgen zeigte sie ihm den Weg dorthin.",
+              "english": "In the morning she showed him the way there."
+            },
+            {
+              "text": "Sam hat viel geschlafen, und am Abend ging es ihm besser.",
+              "english": "Sam slept a lot, and in the evening he felt better."
+            },
+            {
+              "text": "Dann hat er Tee getrunken und Suppe gegessen.",
+              "english": "Then he drank tea and ate soup."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastor Thomas erzählte vom Weg nach Jericho.",
+              "english": "Pastor Thomas told of the way to Jericho."
+            },
+            {
+              "text": "Der Weg war lang und einsam.",
+              "english": "The way was long and lonely."
+            },
+            {
+              "text": "Der Mann lag am Rand des Weges.",
+              "english": "The man lay at the side of the road."
+            },
+            {
+              "text": "Der fromme Mann dachte an etwas Unreines.",
+              "english": "The pious man thought of something unclean."
+            },
+            {
+              "text": "Fremde waren damals Feinde.",
+              "english": "Strangers were enemies back then."
+            },
+            {
+              "text": "Der Fremde hob den Mann auf seinen Esel.",
+              "english": "The stranger lifted the man onto his donkey."
+            },
+            {
+              "text": "Er trug ihn die Treppe hinauf.",
+              "english": "He carried him up the stairs."
+            },
+            {
+              "text": "Der Wirt nickte.",
+              "english": "The innkeeper nodded."
+            },
+            {
+              "text": "Alle haben still zugehört.",
+              "english": "Everyone listened quietly."
+            },
+            {
+              "text": "Die Geschichte ist sehr alt, aber sie ist auch heute wichtig.",
+              "english": "The story is very old, but it is important today too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam schrieb auch in seinem Blog.",
+              "english": "Sam also wrote in his blog."
+            },
+            {
+              "text": "In Dresden sah er eine Kirche mit einem runden Dach.",
+              "english": "In Dresden he saw a church with a round roof."
+            },
+            {
+              "text": "Die Wege waren eng.",
+              "english": "The paths were narrow."
+            },
+            {
+              "text": "Deutsch war ihre einzige gemeinsame Sprache.",
+              "english": "German was their only common language."
+            },
+            {
+              "text": "Im Dom sah er ein Plakat.",
+              "english": "In the cathedral he saw a poster."
+            },
+            {
+              "text": "Anna hat eine Seite im Buch markiert.",
+              "english": "Anna marked a page in the book."
+            },
+            {
+              "text": "Sam hat viele Fotos gemacht.",
+              "english": "Sam took many photos."
+            },
+            {
+              "text": "Das Wetter war schön, und er war den ganzen Tag unterwegs.",
+              "english": "The weather was nice, and he was out all day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann war Sam im Dorf.",
+              "english": "Then Sam was in the village."
+            },
+            {
+              "text": "Die Unterkunft war einfach, aber gemütlich.",
+              "english": "The accommodation was simple but cosy."
+            },
+            {
+              "text": "Der Nebel machte alles weich.",
+              "english": "The fog made everything soft."
+            },
+            {
+              "text": "Der Wind hätte den Tisch fast umgeworfen.",
+              "english": "The wind almost knocked the table over."
+            },
+            {
+              "text": "Lukas sagt: Auf dem Land ist es genau umgekehrt.",
+              "english": "Lukas says: in the country it is exactly the opposite."
+            },
+            {
+              "text": "Die Leute waren nett, und Sam hat viel gelernt.",
+              "english": "The people were nice, and Sam learned a lot."
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }

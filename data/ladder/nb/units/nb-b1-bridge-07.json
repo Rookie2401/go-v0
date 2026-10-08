@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-07",
+  "lang": "nb",
+  "title": "The viewing",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-07",
+    "title": "The viewing (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Relative clauses with \"som\" (en dame som heter Solveig), the passive with \"bli\" (blir malt, ble skiftet), and indirect speech. Sam views the flat near the mountain and finds problems."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "housing",
+    "viewing",
+    "relative clauses",
+    "passive",
+    "indirect speech"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "utleier": "Utleieren",
+    "sam": "Sam",
+    "luis": "Lars",
+    "ana": "Anna",
+    "nico": "Nils",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "På onsdag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På onsdag gikk Sam rett fra bokhandelen til leiligheten nær fjellet. Det regnet, og veien var lang. Han kom tidlig og ventet ute.",
+              "english": "On Wednesday Sam went straight from the bookshop to the flat near the mountain. It was raining, and the road was long. He came early and waited outside."
+            },
+            {
+              "text": "Klokka fem kom en eldre mann med en nøkkel. Han het Dahl, og han var utleieren. Utleieren skulle ha visning. Visningen skulle begynne med en gang.",
+              "english": "At five o'clock an older man came with a key. His name was Dahl, and he was the landlord. The landlord was going to give a viewing. The viewing was to begin at once."
+            },
+            {
+              "text": "God dag! Du må være Sam. Kom inn, kom inn.",
+              "english": "Good day! You must be Sam. Come in, come in.",
+              "speaker": "utleier"
+            },
+            {
+              "text": "God dag. Takk for at jeg fikk komme.",
+              "english": "Good day. Thank you for letting me come.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "I leiligheten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Leiligheten lå i første etasje. Gulvet var gammelt, og veggene var mørke. Sam så på gulvet og på veggene. Det luktet litt fuktig, og han så en mørk flekk på veggen.",
+              "english": "The flat was on the first floor. The floor was old, and the walls were dark. Sam looked at the floor and at the walls. It smelled a little damp, and he saw a dark patch on the wall."
+            },
+            {
+              "text": "Veggene blir malt før du begynner å bo her. Jeg skal male dem selv.",
+              "english": "The walls will be painted before you begin to live here. I will paint them myself.",
+              "speaker": "utleier"
+            },
+            {
+              "text": "Og flekken? Kommer den tilbake?",
+              "english": "And the patch? Will it come back?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei, nei. Den kommer fra et gammelt vindu.",
+              "english": "No, no. It comes from an old window.",
+              "speaker": "utleier"
+            },
+            {
+              "text": "Når ble vinduet skiftet?",
+              "english": "When was the window replaced?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det ble skiftet i vinter, så alt er bra nå.",
+              "english": "It was replaced this winter, so everything is fine now.",
+              "speaker": "utleier"
+            },
+            {
+              "text": "Sam sa ingenting. Han husket at han hadde bestemt seg for å være ærlig.",
+              "english": "Sam said nothing. He remembered that he had decided to be honest."
+            },
+            {
+              "text": "Han så på kjøkkenet. Det var lite, men der var det et stort vindu. Så så han på baderommet. Der var det en dusj, men gulvet var vått.",
+              "english": "He looked at the kitchen. It was small, but there was a big window there. Then he looked at the bathroom. There was a shower there, but the floor was wet."
+            },
+            {
+              "text": "Er dusjen ny?",
+              "english": "Is the shower new?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, den er ny. Gulvet er ikke vått når det ikke regner. Og veggene er ikke fuktige, bare gamle.",
+              "english": "Yes, it is new. The floor is not wet when it does not rain. And the walls are not damp, only old.",
+              "speaker": "utleier"
+            },
+            {
+              "text": "Det var kaldt i leiligheten. Sam så på ovnen, og han spurte utleieren om den var ny.",
+              "english": "It was cold in the flat. Sam looked at the stove, and he asked the landlord whether it was new."
+            },
+            {
+              "text": "Nei, den er gammel, men den er varm.",
+              "english": "No, it is old, but it is warm.",
+              "speaker": "utleier"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Spørsmål",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hvem bor i huset?",
+              "english": "Who lives in the house?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det bor tre familier her, og en dame som heter Solveig. Hun går i kirka, tror jeg.",
+              "english": "Three families live here, and a lady called Solveig. She goes to church, I think.",
+              "speaker": "utleier"
+            },
+            {
+              "text": "Og hvor lenge har leiligheten vært ledig?",
+              "english": "And how long has the flat been available?",
+              "speaker": "sam"
+            },
+            {
+              "text": "I tre måneder. Folk som kommer for å se på den, vil ikke ha den. Jeg forstår ikke hvorfor.",
+              "english": "For three months. People who come to see it do not want it. I do not understand why.",
+              "speaker": "utleier"
+            },
+            {
+              "text": "Sam sa at han skulle tenke på det. Han takket for visningen og gikk ut i regnet.",
+              "english": "Sam said that he would think about it. He thanked him for the viewing and went out into the rain."
+            },
+            {
+              "text": "På veien hjem ba han: «Gud, vis meg det stedet som er riktig for meg.»",
+              "english": "On the way home he prayed: \"God, show me the place that is right for me.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme igjen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da Sam kom hjem, var han våt, men han var ikke lei seg. Han fortalte Anna og Lars hva han hadde sett.",
+              "english": "When Sam came home, he was wet, but he was not sad. He told Anna and Lars what he had seen."
+            },
+            {
+              "text": "Fuktige vegger og vått gulv? Og dusjen, var den ny?",
+              "english": "Damp walls and a wet floor? And the shower, was it new?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Nei. Utleieren sa at alt skulle bli malt, og at vinduet var skiftet. Men jeg tror ikke at flekken blir borte.",
+              "english": "No. The landlord said that everything would be painted, and that the window had been replaced. But I do not think that the patch will go away.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du har gjort riktig som ikke sa ja med en gang. Det er bedre å vente.",
+              "english": "You did right not to say yes at once. It is better to wait.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ikke bo der! Trollet bor i veggen!",
+              "english": "Do not live there! The troll lives in the wall!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Alle lo. Sam lo også, men han husket flekken lenge.",
+              "english": "Everyone laughed. Sam laughed too, but he remembered the patch for a long time."
+            },
+            {
+              "text": "Om kvelden ringte Marta. Hun hadde hørt om visningen fra Anna.",
+              "english": "In the evening Marta called. She had heard about the viewing from Anna."
+            },
+            {
+              "text": "En dame som heter Solveig bor i huset, sa du? Det er Solveig fra kirka, tror jeg! Hun har en venn som har en leilighet å leie.",
+              "english": "A lady called Solveig lives in the house, you said? That is Solveig from church, I think! She has a friend who has a flat to rent.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Er den ledig?",
+              "english": "Is it available?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det vet jeg ikke, men jeg skal spørre henne på søndag. Du skal ikke ta den første du ser.",
+              "english": "I do not know, but I will ask her on Sunday. You should not take the first one you see.",
+              "speaker": "marta"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam leste avisen på balkongen. Han hadde aldri trodd at han skulle bo så bra. Han hadde forberedt seg godt: regningene var betalt, han kunne navnene på alle naboene, og annenhver helg jobbet han i bokhandelen.",
+              "english": "Sam read the newspaper on the balcony. He had never believed that he would live so well. He had prepared well: the bills were paid, he knew the names of all the neighbours, and every other weekend he worked in the bookshop."
+            },
+            {
+              "text": "Etter arbeidet hadde Sam en pause før visningen. Han var stolt av lønnen sin, og han hadde sammenlignet leiligheten med annonsen to ganger.",
+              "english": "After work Sam had a break before the viewing. He was proud of his pay, and he had compared the flat with the advertisement twice."
+            },
+            {
+              "text": "Jeg vil gjerne ha en leilighet med balkong, men det viktigste er at den er tørr.",
+              "english": "I would like a flat with a balcony, but the most important thing is that it is dry.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

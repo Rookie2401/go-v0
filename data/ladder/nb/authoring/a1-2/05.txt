@@ -4,7 +4,7 @@ note: "stå opp" is a particle verb: the particle "opp" follows the verb. Times 
 {luis} står opp klokka seks. Han drikker kaffe før skolen. || Lars gets up at six. He drinks coffee before school.
 {ana} står opp klokka sju. Hun er ofte trøtt om morgenen. || Anna gets up at seven. She is often tired in the morning.
 {marta} står opp tidlig. Hun baker brød før klokka åtte. Så går hun til markedet. || Marta gets up early. She bakes bread before eight o'clock. Then she goes to the market.
-{nico} spiser brød før skolen. Skolen begynner klokka åtte. || Nils eats bread before school. School begins at eight.
+{nico} spiser brød, og så går han til skolen. Skolen begynner klokka åtte. || Nils eats bread, and then he goes to school. School begins at eight.
 {nico} vil ikke komme sent. || Nils does not want to be late.
 {sam} har ikke skole i dag. Han er hjemme. || Sam has no school today. He is at home.
 
@@ -12,7 +12,7 @@ note: "stå opp" is a particle verb: the particle "opp" follows the verb. Times 
 [ana] Hva gjør du i dag, {sam}? || What are you doing today, Sam?
 [sam] Jeg leser norsk. Jeg leser i bibelen. || I read Norwegian. I read in the Bible.
 [ana] Står du opp tidlig? || Do you get up early?
-[sam] Nei, ikke veldig tidlig. || No, not very early.
+[sam] Nei, ikke veldig. || No, not very.
 [ana] {marta} gjør mye. Hun er alltid glad. || Marta does a lot. She is always happy.
 [sam] Ja, og folk liker brødet. || Yes, and people like the bread.
 [ana] Jeg jobber til klokka fem. Så går jeg hjem. || I work until five o'clock. Then I go home.
@@ -21,11 +21,11 @@ note: "stå opp" is a particle verb: the particle "opp" follows the verb. Times 
 ## Om kvelden
 Om kvelden er alle trøtte. {ana} kommer hjem klokka fem. || In the evening everyone is tired. Anna comes home at five.
 {luis} og {ana} spiser middag. {sam} spiser med dem. || Lars and Anna eat dinner. Sam eats with them.
-[luis] Hva gjør du om kvelden, {sam}? || What do you do in the evening, Sam?
+[luis] Hva gjør du i kveld, {sam}? || What are you doing this evening, Sam?
 [sam] Jeg leser, og jeg ber. Så er jeg trøtt, og jeg sover. || I read, and I pray. Then I am tired, and I sleep.
 [ana] Det er bra. God natt, {sam}! || That is good. Good night, Sam!
 [sam] God natt, {ana}! God natt, {luis}! || Good night, Anna! Good night, Lars!
-Nå sover alle i huset. {marta} sover også. || Now everyone in the house is asleep. Marta is asleep too.
+Nå sover alle i huset. {marta} er også trøtt. || Now everyone in the house is asleep. Marta is tired too.
 
 ## Hos {marta}
 [nico] Jeg er ikke trøtt i kveld, bestemor! || I am not tired this evening, grandmother!

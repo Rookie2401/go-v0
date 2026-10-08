@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "A lesson scene. Ravi sir's example sentences recycle the train vocabulary. Obligation (सीखने पड़ेंगे, अभ्यास करना पड़ेगा), wanting (चाहता हूँ), ability (सकते हैं). लिखना (to write) is used three times and is not in the plan's lists for this unit (the plan has it only in the in-place text s0c-06). \"बाइबल\" is an under-met Stage 0 word. Honorific plural for रवि सर; he says आप to Sam and तुम to Aman. Words outside the plan (measured, adapter lemmas x tokens): लिखना×3 (to write; the plan has it only in the in-place text s0c-06), बाइबल×2, पहले×1 (under-met)."
+    "notes": "A lesson scene. Ravi sir's example sentences recycle the train vocabulary. Obligation (सीखने पड़ेंगे, अभ्यास करना पड़ेगा), wanting (चाहता हूँ), ability (सकते हैं). लिखना (to write) is used three times and is not in the plan's lists for this unit (the plan has it only in the in-place text s0c-06). \"बाइबल\" is an under-met Stage 0 word. Honorific plural for रवि सर; he says आप to Sam and तुम to Aman. Words outside the plan (measured, adapter lemmas x tokens): लिखना×3 (to write; the plan has it only in the in-place text s0c-06), बाइबल×2, पहले×1 (under-met). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -294,6 +294,50 @@
             {
               "text": "अमन बोलता है, \"सर, मैं सब समझ गया!\"",
               "english": "Aman says, \"Sir, I understood everything!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर सैम को एक कहानी सुनाते हैं।",
+              "english": "Ravi sir tells Sam a story."
+            },
+            {
+              "text": "कहानी में गर्मी का दिन है, और एक कौआ आसमान में उड़ता है।",
+              "english": "In the story it is a hot day, and a crow flies in the sky."
+            },
+            {
+              "text": "वह तालाब को ढूँढ़ता है, लेकिन कहीं पानी नहीं है।",
+              "english": "He looks for the pond, but there is no water anywhere."
+            },
+            {
+              "text": "वह सोचता है, \"मैं दूर तक उड़ता हूँ।\"",
+              "english": "He thinks, \"I fly far.\""
+            },
+            {
+              "text": "सैम बोलता है, \"सर, कौआ सोचता है और उड़ता है!\"",
+              "english": "Sam says, \"Sir, the crow thinks and flies!\""
+            },
+            {
+              "text": "गाँव की तरफ़ एक घर बसा है, और घर के पास एक घड़ा है।",
+              "english": "Towards the village a house is settled, and near the house there is a pot."
+            },
+            {
+              "text": "कौआ ज़ोर से बोलता है, और सारा गाँव उसे सुनता है।",
+              "english": "The crow calls loudly, and the whole village hears him."
+            },
+            {
+              "text": "तब कौआ घड़े के पास जाता है।",
+              "english": "Then the crow goes to the pot."
+            },
+            {
+              "text": "तभी एक बच्चे की आवाज़ आती है, और कौआ आसमान में उड़ता है।",
+              "english": "Just then a child's voice comes, and the crow flies into the sky."
+            },
+            {
+              "text": "वह एक छोटा सा गाँव है।",
+              "english": "It is a small village."
             }
           ]
         }

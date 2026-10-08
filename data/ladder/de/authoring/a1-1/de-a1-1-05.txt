@@ -1,0 +1,80 @@
+=== de-a1-1-05
+speakers: sam=Sam, anna=Anna, lukas=Lukas, ben=Ben, marta=Marta
+## Bei Marta
+Es ist Sonntag. || It is Sunday.
+Anna, Lukas, Ben und Sam sind bei Marta. || Anna, Lukas, Ben and Sam are at Marta's.
+[marta] Guten Tag! || Good day!
+[marta] Kommt, kommt! || Come in, come in!
+[marta] Das Mittagessen ist da! || Lunch is ready!
+[ben] Oma, ich habe Hunger! || Grandma, I am hungry!
+[marta] Ich weiß, Ben. || I know, Ben.
+[marta] Ich koche gern am Sonntag. || I like cooking on Sundays.
+[sam] Es ist sehr schön hier, Marta. || It is very nice here, Marta.
+[marta] Danke, Sam. || Thank you, Sam.
+[marta] Das Haus ist klein, aber so schön. || The house is small, but so nice.
+[anna] Was gibt es heute zum Mittagessen? || What is there for lunch today?
+[marta] Es gibt Suppe, Kartoffeln und Fleisch. || There is soup, potatoes and meat.
+[ben] Und Kuchen! || And cake!
+[marta] Ja! || Yes!
+
+## Am Tisch
+[marta] Nehmt Suppe! || Take some soup!
+[sam] Danke, Marta. || Thank you, Marta.
+[sam] Die Suppe ist so lecker! || The soup is so tasty!
+[lukas] Du kochst sehr gut, Marta. || You cook very well, Marta.
+[anna] Das Fleisch ist auch lecker. || The meat is tasty too.
+[ben] Ich esse Kartoffeln, aber ich esse kein Fleisch. || I eat potatoes, but I do not eat meat.
+[marta] Nimm Kartoffeln, Ben. || Take potatoes, Ben.
+[sam] Zum Frühstück esse ich ein Brötchen mit Butter. || For breakfast I eat a roll with butter.
+[sam] Das Mittagessen ist so lecker! || Lunch is so tasty!
+[anna] Und das Bett bei Frau Weber, Sam? || And the bed at Mrs Weber's, Sam?
+[anna] Ist es gut? || Is it good?
+[sam] Ja, es ist sehr gut. || Yes, it is very good.
+[anna] Sam spricht sehr gut Deutsch, Marta. || Sam speaks German very well, Marta.
+[marta] Ja, das ist gut. || Yes, that is good.
+[marta] Ben ist ein schöner Name, Sam. || Ben is a lovely name, Sam.
+[lukas] Wo ist das Bad, Marta? || Where is the bathroom, Marta?
+[marta] Da, bei der Küche. || There, by the kitchen.
+[marta] Das Bad ist klein. || The bathroom is small.
+
+## Ben und Mama und Papa
+[ben] Wo ist Mama? || Where is Mama?
+[marta] Mama arbeitet heute, Ben. || Mama is working today, Ben.
+[ben] Und Papa? || And Papa?
+[marta] Papa ist in Dresden. || Papa is in Dresden.
+[ben] Mama und Papa sind nicht hier. || Mama and Papa are not here.
+[marta] Ich weiß. || I know.
+[marta] Aber deine Mutter ist meine Tochter. || But your mother is my daughter.
+[marta] Ich bin alt, aber ich bin hier, Ben. || I am old, but I am here, Ben.
+[ben] Ja, Oma. || Yes, Grandma.
+[ben] Du bist sehr gut. || You are very good.
+[sam] Marta, ich habe ein Bild von meiner Familie. || Marta, I have a picture of my family.
+[marta] Wie schön! || How lovely!
+[marta] Das ist dein Vater? || That is your father?
+[sam] Ja. || Yes.
+[sam] Er kocht auch am Sonntag, wie du. || He cooks on Sundays too, like you.
+
+## Der Kuchen
+[marta] Möchtet ihr Kuchen? || Would you like cake?
+[ben] Ja, bitte! || Yes, please!
+[marta] Ben, du isst nichts? || Ben, you are eating nothing?
+[marta] Du hast keinen Hunger? || You are not hungry?
+[marta] Hier, Ben. || Here, Ben.
+[marta] Nimm! || Take some!
+[sam] Woher ist der Kuchen, Marta? || Where is the cake from, Marta?
+[marta] Aus der Bäckerei von Herrn Schmidt. || From Herr Schmidt's bakery.
+[sam] Danke, Marta. || Thank you, Marta.
+[sam] Ich bleibe gern hier. || I like staying here.
+[marta] Bleib, Sam! || Stay, Sam!
+[marta] Der Tag ist schön. || The day is lovely.
+[ben] Wir bleiben den ganzen Tag bei Oma! || We stay with Grandma all day!
+
+## Am Abend
+Der Tag ist schön, aber Anna ist müde. || The day is lovely, but Anna is tired.
+[anna] Morgen arbeite ich in der Klinik. || Tomorrow I am working at the clinic.
+[lukas] Und morgen gehe ich in die Schule. || And tomorrow I am going to school.
+[ben] Ich auch, aber ich möchte nicht! || Me too, but I do not want to!
+[marta] Du gehst gern in die Schule, Ben. || You like going to school, Ben.
+[ben] Nein, nein! || No, no!
+[sam] Morgen gehe ich in die Stadt. || Tomorrow I am going into the city.
+

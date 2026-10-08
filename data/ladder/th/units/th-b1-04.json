@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-04",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "จดหมายถึงผู้สนับสนุน",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-04",
+    "title": "จดหมายถึงผู้สนับสนุน — A letter to those who support us (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A newsletter-style prayer letter in the first person (Sam). For the reviewer: ผู้สนับสนุนที่รัก / ขอพระเจ้าอวยพร / ด้วยความรักในพระคริสต์ are conventional closings in Thai Christian letters; check the register for a letter to people at home (they are not Thai readers, so the letter itself is only a model of the genre). No pressure language for support is intended."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "prayer letter",
+    "thanks",
+    "Easter",
+    "mission"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ถึงผู้สนับสนุนที่รัก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เรียน ผู้สนับสนุนทุกท่าน",
+              "english": "Dear friends who support us,"
+            },
+            {
+              "text": "ผมขอขอบคุณมากที่ท่านนึกถึงพวกเราในคำอธิษฐาน",
+              "english": "I thank you very much for thinking of us in your prayers."
+            },
+            {
+              "text": "ปีนี้เป็นปีที่ผมได้เห็นพระเจ้าทำงานในหลายเรื่อง",
+              "english": "This year I have seen God at work in many things."
+            },
+            {
+              "text": "ผมอยากเล่าให้ท่านฟังสามเรื่อง",
+              "english": "I would like to tell you three things."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องที่หนึ่ง ความสงบ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่เชียงใหม่ ผมเรียนว่า ใจที่สงบมาจากพระเจ้า ไม่ใช่จากเงินหรือจากงาน",
+              "english": "In Chiang Mai I learned that a calm heart comes from God, not from money or from work."
+            },
+            {
+              "text": "เมื่อเมืองเต็มไปด้วยควัน ผมนั่งอธิษฐานอยู่ในห้อง",
+              "english": "When the city was full of smoke, I sat praying in my room."
+            },
+            {
+              "text": "ผมจำได้ว่า พระเยซูพูดกับสาวกว่า จงอย่ากลัว",
+              "english": "I remembered that Jesus said to his disciples, \"Do not be afraid.\""
+            },
+            {
+              "text": "ผมแค่อยากให้ท่านรู้ว่า ผมไม่ได้อยู่คนเดียว",
+              "english": "I only want you to know that I am not alone."
+            },
+            {
+              "text": "ใจของผมก็สงบลง",
+              "english": "My heart grew calm."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องที่สอง มิตรสหาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผมมีสหายใหม่หลายคน ทั้งที่โบสถ์และที่อื่น",
+              "english": "I have several new friends, both at the church and elsewhere."
+            },
+            {
+              "text": "เพื่อนบ้านคนหนึ่งไม่ใช่คริสเตียน แต่เขาเป็นมิตรที่ดีมาก",
+              "english": "One neighbour is not a Christian, but he is a very good friend."
+            },
+            {
+              "text": "เขามาช่วยผมซ่อมจักรยาน และเราดื่มชากันบ่อยๆ",
+              "english": "He came to help me mend my bicycle, and we often drink tea together."
+            },
+            {
+              "text": "เขาไม่ใช่ศัตรูของโบสถ์ และเราก็ไม่ใช่ศัตรูของเขา",
+              "english": "He is not an enemy of the church, and we are not an enemy of his."
+            },
+            {
+              "text": "ผมคิดถึงมิตรสหายที่อเมริกาด้วย และผมขอบคุณมิตรสหายทุกคนครับ",
+              "english": "I miss my friends in America too, and I thank all my friends."
+            },
+            {
+              "text": "ผมอยากให้ท่านอธิษฐานให้เขา",
+              "english": "I would like you to pray for him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องที่สาม วันอีสเตอร์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เดือนที่แล้ว โบสถ์ของเรามีวันฉลองพระเยซูฟื้นขึ้นมา",
+              "english": "Last month our church had a celebration of Jesus rising again."
+            },
+            {
+              "text": "เราร้องเพลงสรรเสริญพระเจ้าด้วยกัน",
+              "english": "We sang songs of praise to God together."
+            },
+            {
+              "text": "ผมเห็นกางเขนอันเล็กที่ผนังโบสถ์ และนึกถึงสาวกของพระเยซู",
+              "english": "I saw the small cross on the church wall and thought of the disciples of Jesus."
+            },
+            {
+              "text": "ต้นพูดว่า กางเขนทำให้เราเห็นความรักของพระเจ้า",
+              "english": "Ton said that the cross shows us God's love."
+            },
+            {
+              "text": "ป้าแดงร้องไห้เล็กน้อย เพราะนึกถึงสามีที่ตายไปแล้ว",
+              "english": "Auntie Daeng wept a little, because she was thinking of her late husband."
+            },
+            {
+              "text": "หลังจากนั้นไม่นาน ใจของป้าแดงก็ฟื้นขึ้นมาอีกครั้ง",
+              "english": "Not long afterwards Auntie Daeng's heart revived once more."
+            },
+            {
+              "text": "ผมอยากสรรเสริญพระเจ้าเสมอ",
+              "english": "I want to praise God always."
+            },
+            {
+              "text": "ผมรู้สึกว่า ความหวังนั้นเป็นของทุกคน ไม่ใช่ของคนบางกลุ่ม",
+              "english": "I felt that this hope belongs to everyone, not to certain groups."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ที่โบสถ์ เรานมัสการพระเจ้าด้วยกันทุกวันอาทิตย์",
+              "english": "At church we worship God together every Sunday."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ขอคำอธิษฐาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ขอท่านอธิษฐานให้ผม ให้ผมพูดภาษาไทยได้ดีขึ้น",
+              "english": "Please pray for me, that I may speak Thai better."
+            },
+            {
+              "text": "ขอท่านอธิษฐานให้มะลิ และคนไข้ในโรงพยาบาลของเธอ",
+              "english": "Please pray for Mali and for the patients in her hospital."
+            },
+            {
+              "text": "เดือนหน้า ผมจะไปหมู่บ้านของยายมะลิที่ใกล้ลำพูน",
+              "english": "Next month I will go to the village of Mali's grandmother near Lamphun."
+            },
+            {
+              "text": "ผมอยากเรียนรู้ชีวิตของชาวนา และอยากรู้จักคนที่นั่น",
+              "english": "I want to learn about the life of the rice farmers and to get to know the people there."
+            },
+            {
+              "text": "ขอพระเจ้าอยู่กับท่านและครอบครัว",
+              "english": "May God be with you and your families."
+            },
+            {
+              "text": "ด้วยความรัก",
+              "english": "With love,"
+            },
+            {
+              "text": "แซม",
+              "english": "Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

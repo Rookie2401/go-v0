@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-15",
+  "lang": "hi",
+  "title": "गली की सफ़ाई",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-15",
+    "title": "\"गली की सफ़ाई\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Seventh controlled unit of the b1 bridge. It prepares the words of the GDL story \"कचरे का बादल\" (hi-b1-16): छिलका, कूड़ेदान, कूड़ा, दुखी, मँडराना, थैली, मक्खी, बिस्कुट, प्लास्टिक, इस्तेमाल, आंटी, बेकार, each used three times, in a neighbourhood clean-up that Meera didi starts in Seeta Nani's lane; it ends with a short notice (the text type of hi-a2-2-09 \"पानी और कचरा\"). It also brings back a few rare words of the Bible reading hi-b1-14 (भय, आपस) and of hi-b1-12 / hi-b1-13. Machine-drafted; a Hindi reviewer should check the register of the notice and the words for rubbish."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "community",
+    "rubbish",
+    "cleanliness",
+    "notice"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "गली में कूड़ा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सीता नानी की गली में कुछ दिनों से बहुत कूड़ा पड़ा था।",
+              "english": "For some days a lot of rubbish had been lying in Seeta Nani's lane."
+            },
+            {
+              "text": "केले के छिलके सड़क पर पड़े थे, और उन पर मक्खियाँ मँडरा रही थीं।",
+              "english": "Banana peels were lying on the road, and flies were hovering over them."
+            },
+            {
+              "text": "सैम ने मीरा दीदी से पूछा, \"दीदी, यह गली इतनी गंदी क्यों है?\"",
+              "english": "Sam asked Meera didi, \"Didi, why is this lane so dirty?\""
+            },
+            {
+              "text": "मीरा दीदी बोलीं, \"क्योंकि लोग कूड़ा कूड़ेदान में नहीं डालते, सड़क पर फेंक देते हैं।\"",
+              "english": "Meera didi said, \"Because people do not put the rubbish in the dustbin, they throw it on the road.\""
+            },
+            {
+              "text": "\"छिलके पड़े रहते हैं, तो बच्चे बीमार पड़ते हैं, और पूरी गली गंदी लगती है।\"",
+              "english": "\"When peels lie around, children fall ill, and the whole lane looks dirty.\""
+            },
+            {
+              "text": "सैम ने कहा, \"तो हमें आपस में मिलकर कुछ करना चाहिए।\"",
+              "english": "Sam said, \"Then we should do something together among ourselves.\""
+            },
+            {
+              "text": "मीरा दीदी हँसीं और बोलीं, \"ठीक है, कल रविवार है, कल से हम गली की सफ़ाई शुरू करेंगे।\"",
+              "english": "Meera didi laughed and said, \"All right, tomorrow is Sunday, from tomorrow we will begin cleaning the lane.\""
+            },
+            {
+              "text": "उस रात सैम को नींद देर से आई, क्योंकि वह अगले दिन के बारे में सोचता रहा।",
+              "english": "That night sleep came late to Sam, because he kept thinking about the next day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "प्लास्टिक की थैली",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अगले दिन सैम और अमन गली में आगे बढ़े, तो उन्होंने देखा कि बिस्कुट के खाली लिफ़ाफ़े और प्लास्टिक की थैलियाँ हर जगह उड़ रही हैं।",
+              "english": "The next day as Sam and Aman went further down the lane they saw that empty biscuit wrappers and plastic bags were blowing everywhere."
+            },
+            {
+              "text": "रीमा आंटी अपनी दुकान के सामने खड़ी थीं, और उनके हाथ में भी वही था।",
+              "english": "Reema aunty was standing in front of her shop, and she had the same thing in her hand."
+            },
+            {
+              "text": "अमन ने नमस्ते करके कहा, \"आंटी, यह कूड़ेदान में डाल दीजिए।\"",
+              "english": "Aman greeted her and said, \"Aunty, please put this in the dustbin.\""
+            },
+            {
+              "text": "उन्होंने कहा, \"पर वह तो बहुत दूर है, बेटा।\"",
+              "english": "She said, \"But that is very far, child.\""
+            },
+            {
+              "text": "सैम ने कहा, \"तो हम गली में एक और रख देंगे।\"",
+              "english": "Sam said, \"Then we will put one more in the lane.\""
+            },
+            {
+              "text": "वे थोड़ी दुखी हुईं और बोलीं, \"मैं रोज़ इसी तरह फेंकती थी।\"",
+              "english": "She became a little sad and said, \"I used to throw things like this every day.\""
+            },
+            {
+              "text": "\"आज से मैं अपने घर की हर चीज़ ठीक जगह डालूँगी।\"",
+              "english": "\"From today I will put everything of my house in the right place.\""
+            },
+            {
+              "text": "सब बच्चों ने ताली बजाई, और वे भी हँस पड़ीं।",
+              "english": "All the children clapped, and she burst out laughing too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बेकार चीज़ें",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मीरा दीदी ने सबको बुलाया और कहा, \"प्लास्टिक का इस्तेमाल हम कम कर सकते हैं।\"",
+              "english": "Meera didi called everybody and said, \"We can use less plastic.\""
+            },
+            {
+              "text": "\"कपड़े की थैली बार बार इस्तेमाल हो सकती है, पर प्लास्टिक की थैली जल्दी बेकार हो जाती है।\"",
+              "english": "\"A cloth bag can be used again and again, but a plastic bag soon becomes useless.\""
+            },
+            {
+              "text": "\"बेकार चीज़ें सड़क पर फेंकने से हम सब दुखी होते हैं।\"",
+              "english": "\"When useless things are thrown on the road, all of us become unhappy.\""
+            },
+            {
+              "text": "बच्चों ने मिलकर छिलके उठाए, और बेकार चीज़ें बैग में भर दीं।",
+              "english": "The children together picked up the peels, and filled the useless things into a bag."
+            },
+            {
+              "text": "अमन ने हँसकर कहा, \"जहाँ गंदगी होती है, वहीं मक्खियाँ मँडराती हैं।\"",
+              "english": "Aman said with a laugh, \"Flies hover just where there is dirt.\""
+            },
+            {
+              "text": "शाम तक गली साफ़ थी, और कूड़ेदान में सारे छिलके और थैलियाँ थीं।",
+              "english": "By evening the lane was clean, and all the peels and bags were in the dustbin."
+            },
+            {
+              "text": "रीमा आंटी ने सबको चाय दी, और नानी ने बच्चों के लिए बिस्कुट रखे।",
+              "english": "Reema aunty gave everybody tea, and Nani put out biscuits for the children."
+            },
+            {
+              "text": "अमन ने बिस्कुट खाया और कहा, \"आज गली में मक्खियाँ नहीं हैं!\"",
+              "english": "Aman ate a biscuit and said, \"Today there are no flies in the lane!\""
+            },
+            {
+              "text": "नानी बोलीं, \"यह तुम सबकी मेहनत है, और अब बच्चे गली में खेल भी सकते हैं।\"",
+              "english": "Nani said, \"This is the hard work of all of you, and now the children can play in the lane too.\""
+            },
+            {
+              "text": "सैम ने सोचा, \"यहाँ सब लोग एक दूसरे के साथ मिलकर काम करते हैं।\"",
+              "english": "Sam thought, \"Here everybody works together with one another.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सूचना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उसी शाम सैम ने गली की दीवार पर एक सूचना लगाई:",
+              "english": "That same evening Sam put up a notice on the wall of the lane:"
+            },
+            {
+              "text": "सूचना: इस गली में हर रविवार सफ़ाई का दिन है।",
+              "english": "Notice: In this lane every Sunday is the cleaning day."
+            },
+            {
+              "text": "कृपया कूड़ा कूड़ेदान में डालिए, और थैलियों का इस्तेमाल कम कीजिए।",
+              "english": "Please put rubbish in the dustbin, and use fewer bags."
+            },
+            {
+              "text": "सब बच्चे और बड़े सफ़ाई में शामिल हों।",
+              "english": "All children and elders should join the cleaning."
+            },
+            {
+              "text": "मीरा दीदी ने पढ़कर कहा, \"यह बहुत अच्छी सूचना है, सैम।\"",
+              "english": "Meera didi read it and said, \"This is a very good notice, Sam.\""
+            },
+            {
+              "text": "अमन ने जोड़ा, \"और अगले रविवार को हम सब पहले की तरह खेलेंगे।\"",
+              "english": "Aman added, \"And next Sunday we will all play as before.\""
+            },
+            {
+              "text": "नानी ने सिर हिलाकर कहा, \"हाँ, पर पहले गली साफ़ करो, फिर खेलो।\"",
+              "english": "Nani nodded her head and said, \"Yes, but first clean the lane, then play.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

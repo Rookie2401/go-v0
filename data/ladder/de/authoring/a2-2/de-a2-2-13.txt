@@ -1,0 +1,224 @@
+=== de-a2-2-13
+speakers: L=Lukas, A=Anna, S=Sam
+## Eine Frage am Sonntag
+Es ist Sonntagnachmittag. || It is Sunday afternoon.
+Anna, Lukas und Sam sitzen in Annas Küche und trinken Kaffee. || Anna, Lukas and Sam are sitting in Anna's kitchen drinking coffee.
+Lukas ist heute ungewöhnlich still. || Lukas is unusually quiet today.
+Er schaut lange in seine Tasse. || He looks into his cup for a long time.
+[A] Was ist los, Lukas? || What is the matter, Lukas?
+[A] Du hast etwas auf dem Herzen. || You have something on your mind.
+[L] Ich habe ein Angebot bekommen. || I have received an offer.
+[L] Eine Schule auf dem Land sucht einen Lehrer. || A school in the country is looking for a teacher.
+[L] Es ist ein Dorf in Thüringen, nicht weit von dem Ort, wo Sam letzte Woche war. || It is a village in Thüringen, not far from the place where Sam was last week.
+[S] Wirklich? || Really?
+[S] Dort ist es sehr schön, aber auch sehr ruhig. || It is very beautiful there, but also very quiet.
+[L] Genau das ist die Frage. || That is exactly the question.
+[L] Soll ich in der Stadt bleiben oder aufs Land ziehen? || Should I stay in the city or move to the country?
+[L] Ich möchte eure Meinung hören. || I would like to hear your opinion.
+[L] Ich habe schon eine Liste gemacht: Vorteil links, Nachteil rechts. || I have already made a list: advantage on the left, disadvantage on the right.
+[A] Dann fang an. || Then begin.
+[A] Was ist der größte Vorteil? || What is the biggest advantage?
+[L] Der Wohnort ist günstig. || The place to live is cheap.
+[L] Die Miete ist nur halb so hoch wie hier. || The rent is only half as high as here.
+[L] Auch das Essen ist günstig. || The food is cheap too.
+[A] Das ist tatsächlich ein großer Vorteil. || That really is a big advantage.
+[A] Aber was ist der Nachteil? || But what is the disadvantage?
+[L] Ich kenne dort niemanden. || I do not know anybody there.
+[L] Ich wäre allein, und das ist der größte Nachteil. || I would be alone, and that is the biggest disadvantage.
+
+## Die Auswahl
+[S] Ich finde, der Unterschied zwischen Stadt und Dorf ist vor allem die Auswahl. || I think the difference between city and village is above all the choice.
+[S] In Leipzig gibt es zehn Bäckereien, im Dorf vielleicht eine. || In Leipzig there are ten bakeries, in the village perhaps one.
+[A] Das stimmt. || That is true.
+[A] Je größer die Stadt, desto größer ist die Auswahl. || The bigger the city, the bigger the choice.
+[A] Du hast in der Stadt viele Läden, viele Cafés und viele Ärzte. || In the city you have many shops, many cafés and many doctors.
+[L] Aber ist mehr Auswahl wirklich besser? || But is more choice really better?
+[L] Ich brauche nicht zehn Bäckereien. || I do not need ten bakeries.
+[L] Mir reicht eine, wenn das Brot gut ist. || One is enough for me if the bread is good.
+[L] Die Qualität ist wichtiger als die Menge. || Quality is more important than quantity.
+[S] Das ist auch meine Meinung. || That is my opinion too.
+[S] Allerdings ist die Qualität nicht überall gleich. || However, the quality is not the same everywhere.
+[S] Während ihr überlegt, hole ich noch Kaffee. || While you think, I will fetch more coffee.
+[S] Herr Schmidt zum Beispiel hat das beste Brot, und seine Bäckerei ist ganz klein. || Herr Schmidt for example has the best bread, and his bakery is quite small.
+[A] Ja, aber er ist ein Teil der Stadt, in der es viele andere Läden gibt. || Yes, but he is a part of the city in which there are many other shops.
+[A] Im Dorf ist man vom Laden abhängig. || In the village you depend on the shop.
+[A] Wenn er zumacht, ist alles weg. || If it closes, everything is gone.
+[L] Das ist schlecht, zugegeben. || That is bad, admittedly.
+[L] Dafür kennt man dort seinen Bäcker. || On the other hand you know your baker there.
+[S] Man kennt ihn hier auch, wenn man oft kommt. || You know him here too if you come often.
+[L] Jedoch spricht man im Dorf nicht nur über das Wetter. || However, in the village you do not only talk about the weather.
+[L] Man spricht über die Menschen. || You talk about the people.
+[A] Und die Qualität des Lebens? || And the quality of life?
+[A] Ist sie dort anders als hier? || Is it different there from here?
+[L] Ich glaube, ja. || I think so.
+[L] Es ist ein anderes Leben, ruhiger und langsamer. || It is a different life, calmer and slower.
+[L] Der größte Unterschied ist die Ruhe. || The biggest difference is the quiet.
+[S] Stadt und Dorf sind eben verschieden, wie zwei Sprachen. || City and village are simply different, like two languages.
+
+## Fahrrad, Auto und Bahn
+[A] Und wie willst du zur Arbeit kommen? || And how do you want to get to work?
+[A] Mit dem Auto? || By car?
+[L] Ich habe zwar kein Auto, aber ein gutes Fahrrad. || I have no car, to be sure, but a good bike.
+[L] Ich fahre lieber Fahrrad, das ist einfacher. || I prefer to ride a bike, that is simpler.
+[A] Auf dem Dorf ist das schwierig. || In a village that is difficult.
+[A] Die Wege sind lang, und es gibt kaum Busse. || The distances are long, and there are hardly any buses.
+[S] In Leipzig fährt die Straßenbahn alle zehn Minuten. || In Leipzig the tram runs every ten minutes.
+[S] Das ist sehr praktisch. || That is very practical.
+[A] Zwar ist das Auto bequemer, aber in der Stadt ist es teuer und langsam. || The car is more comfortable, to be sure, but in the city it is expensive and slow.
+[A] Man steht im Stau, man sucht einen Parkplatz, und man bezahlt viel dafür. || You stand in a traffic jam, you look for a parking space, and you pay a lot for it.
+[L] Auf dem Land ist es genau umgekehrt. || In the country it is exactly the opposite.
+[L] Dort braucht man ein Auto, aber es ist günstig. || There you need a car, but it is cheap.
+[L] Je weiter weg man wohnt, desto wichtiger ist das Auto. || The further away you live, the more important the car is.
+[S] Und im kleinen Dorf fahren weniger Busse. || And in a small village fewer buses run.
+[S] Dort wäre ein Fahrrad praktisch, aber nicht im Winter. || A bicycle would be practical there, but not in winter.
+[L] Das ist wahr. || That is true.
+[L] Außerdem muss ich den Führerschein machen, und das kostet viel. || Also I have to get a driving licence, and that costs a lot.
+[A] Dann ist die Rechnung einfach: Du sparst bei der Miete und gibst es beim Auto wieder aus. || Then the sum is simple: you save on the rent and spend it again on the car.
+[L] Das stimmt, aber ich habe wenigstens Ruhe. || That is true, but at least I have peace.
+[L] Das ist ein bequemes Leben. || That is a comfortable life.
+[A] Allerdings ist das Leben in der Stadt auch bequem und praktisch. || However, life in the city is comfortable and practical too.
+[A] Man hat alles nah. || You have everything close by.
+[A] Ich wohne lieber hier. || I would rather live here.
+[A] Aber der Unterschied beim Geld ist groß. || But the difference in money is big.
+
+## Schule und Gesundheit
+[A] Wie sieht es mit der Schule aus? || What about the school?
+[A] Ist sie gut? || Is it good?
+[L] Die Schule ist klein, aber sie hat einen guten Ruf. || The school is small, but it has a good reputation.
+[L] Die Klassen sind kleiner. || The classes are smaller.
+[L] In Leipzig habe ich dreißig Schüler in einer Klasse. || In Leipzig I have thirty pupils in a class.
+[L] Dort wären es zwölf. || There it would be twelve.
+[S] In kleinen Klassen hat man mehr Zeit für jedes Kind. || In small classes you have more time for every child.
+[S] Eine Schule ist überall ähnlich, nur kleiner. || A school is similar everywhere, only smaller.
+[L] Die Arbeit ist dort gleich, nur die Klasse ist kleiner. || The work is the same there, only the class is smaller.
+[A] Aber ich sehe auch ein Problem: Das Dorf ist sehr weit vom Krankenhaus. || But I also see a problem: the village is very far from the hospital.
+[A] Ich bin Krankenschwester, und ich weiß, was das heißt. || I am a nurse, and I know what that means.
+[A] Ich muss es dir sagen. || I have to tell you.
+[A] Ein Hausarzt ist dort vielleicht nur zweimal in der Woche da. || A family doctor is perhaps there only twice a week.
+[A] Wenn du ernst krank bist, brauchst du die Notaufnahme, und die ist weit weg. || If you are seriously ill you need the emergency room, and it is far away.
+[A] Wer schneller Hilfe bekommt, hat bessere Chancen. || Whoever gets help faster has better chances.
+[L] Ich verstehe das. || I understand that.
+[L] Aber ich bin gesund, und ich habe selten eine Grippe. || But I am healthy, and I seldom have the flu.
+[A] Das sagt jeder, bis die Temperatur auf 39 steigt. || Everybody says that until the temperature rises to 39.
+[A] Ich messe sie jeden Tag bei meinen Patienten. || I measure it every day with my patients.
+[A] Sie frieren, dann schwitzen sie, und sie haben Durst. || They shiver, then they sweat, and they are thirsty.
+[A] Manche können kaum atmen. || Some can hardly breathe.
+[A] Andere haben Probleme mit dem Magen, mit Übelkeit oder mit Durchfall. || Others have trouble with the stomach, with nausea or with diarrhoea.
+[A] Dann ist die Besserung oft langsam. || Then the recovery is often slow.
+[S] Anna hat recht. || Anna is right.
+[S] Aber wenn man ein Symptom hat, kann man auch anrufen. || But if you have a symptom you can phone too.
+[A] Zwar ja, jedoch nicht, wenn man bei Nebel auf dem Land steckt. || Yes, to be sure, but not if you are stuck in the fog in the country.
+[L] Es ist schwierig, alles richtig zu entscheiden. || It is difficult to decide everything correctly.
+[L] Beides hat gute Seiten, jedoch auch schlechte. || Both have good sides, but also bad ones.
+
+## Menschen und Gemeinde
+[S] Und die Gemeinde? || And the church?
+[S] Gibt es dort eine? || Is there one there?
+[L] Eine kleine Gemeinde, ja. || A small church, yes.
+[L] Sie ist anders als unsere. || It is different from ours.
+[L] Es kommen nur zwanzig Leute. || Only twenty people come.
+[L] Der Jugendkreis hat nur fünf Mitglieder, und sie sind verschieden von den jungen Leuten bei uns. || The youth group has only five members, and they are different from the young people with us.
+[L] Aber die Menschen sind herzlich. || But the people are warm.
+[L] Sie lesen das Evangelium, und sie haben Zeit zum Zuhören. || They read the gospel, and they have time to listen.
+[L] Die Lieder sind ähnlich wie bei uns. || The songs are similar to ours.
+[S] Ich glaube, dass die Menschen im Dorf neugierig sind. || I think the people in the village are curious.
+[S] In der Stadt hat jeder Eile. || In the city everyone is in a hurry.
+[S] Bei der Aktion im Dorf hatten wir einen guten Erfolg, weil sich jemand wirklich für uns interessiert hat. || In the campaign in the village we had good success because someone was really interested in us.
+[S] Man konnte Menschen ansprechen, und das Interesse war groß. || You could speak to people, and the interest was great.
+[A] In der Stadt ist es schwierig, das ist wahr. || In the city it is difficult, that is true.
+[A] Hier druckt man Flyer, man verteilt sie, und niemand liest sie. || Here you print flyers, you hand them out, and nobody reads them.
+[A] Die Vorbereitung ist dieselbe, aber das Ziel ist im Dorf leichter, weil jeder jeden kennt. || The preparation is the same, but the goal is easier in the village because everybody knows everybody.
+[L] Aber das ist auch schlecht: Jeder weiß alles über dich. || But that is bad too: everybody knows everything about you.
+[L] Man liest alles in der Zeitung. || You read everything in the newspaper.
+[L] Ein Bericht über einen Unfall, ein Feuer, eine Meldung der Polizei, und alle sprechen drei Tage davon. || A report about an accident, a fire, a notice from the police, and everyone talks about it for three days.
+[A] In der Stadt berichtet die Zeitung jeden Tag so etwas, und keiner liest es. || In the city the newspaper reports something like that every day, and nobody reads it.
+[A] Man hört auch öfter, dass jemand überfallen wurde. || You also hear more often that somebody has been attacked.
+[A] Man hat Mitleid, aber man geht weiter. || You have pity, but you walk on.
+[L] Im Dorf wäre man vielleicht barmherziger. || In the village people might be more merciful.
+[S] Das ist eine Aufgabe und eine Verantwortung. || That is a task and a responsibility.
+[S] Man muss Mut haben, auch zu helfen. || You have to have courage, also to help.
+[L] Und man hat einen Dienst, den man nicht aussuchen kann. || And you have a service that you cannot choose.
+
+## Die Entscheidung
+[A] Ich will dir einen Ratschlag geben, Lukas. || I want to give you some advice, Lukas.
+[A] Mach eine Liste, und trag alles ein. || Make a list and enter everything.
+[A] Schreib links das Gute und rechts das Schlechte. || Write the good on the left and the bad on the right.
+[L] Das habe ich schon getan. || I have already done that.
+[L] Es steht zwölf zu zehn. || It is twelve to ten.
+[L] Das ist ziemlich ähnlich. || That is fairly similar.
+[L] Die Menschen sind verschieden, aber die Liste ist gleich lang. || People are different, but the list is equally long.
+[A] Dann geh ein Wochenende hin, um dich auszuruhen und alles anzusehen. || Then go there for a weekend to rest and look at everything.
+[S] Und bring etwas Geduld mit. || And bring some patience with you.
+[S] Eine Entscheidung ist nicht einfach, sie braucht Zeit. || A decision is not simple, it takes time.
+[L] Allerdings ist die Stelle nur für ein Jahr. || However, the post is only for one year.
+[L] Danach sehen wir weiter. || After that we will see.
+[L] Ich werde es versuchen, damit ich keinen Fehler mache. || I will try so that I do not make a mistake.
+[L] Ich wollte nur euren Rat hören. || I only wanted to hear your advice.
+[L] Zum Teil möchte ich gehen, weil ich etwas Neues brauche. || In part I would like to go because I need something new.
+[L] Ein Teil von mir will bleiben. || A part of me wants to stay.
+[L] Außerdem ist die Luft dort besser. || Also the air is better there.
+[L] Und ich wohne lieber in einem eigenen Haus als ewig in einer Wohnung mit Nachbarn über mir. || And I would rather live in a house of my own than forever in a flat with neighbours above me.
+[A] Dann geh. || Then go.
+[A] Wichtig ist nur, dass du ehrlich bist. || The important thing is only that you are honest.
+[A] Aber falls du gehst: Vergiss uns nicht. || But if you go: do not forget us.
+[L] Das werde ich nicht. || I will not.
+[L] Ich bin ja nicht aus der Welt. || I am not leaving the world, after all.
+[L] Der Wohnort ist nicht alles. || Where you live is not everything.
+[L] Danke, ihr beiden. || Thank you, both of you.
+[L] Je mehr ich mit euch spreche, desto klarer wird mir alles. || The more I talk with you, the clearer everything becomes.
+[L] Anders gesagt: Ihr seid mein Wohnort, egal wo ich wohne. || In other words: you are my home, no matter where I live.
+[S] Das ist schön gesagt. || That is nicely said.
+[S] Aber ist es tatsächlich wahr? || But is it really true?
+[A] Ja, das ist tatsächlich wahr. || Yes, that is really true.
+[A] Die Freundschaft zählt. || Friendship counts.
+[A] Außerdem fährt ein Zug dorthin. || Besides, a train goes there.
+Nachdem Lukas gegangen ist, trinkt Sam seinen Kaffee aus. || After Lukas has gone, Sam finishes his coffee.
+Er denkt: Ich wohne in einer Stadt und mag es. || He thinks: I live in a city and like it.
+Aber ein Dorf hat auch seine Seele. || But a village has its soul too.
+
+## Erinnerst du dich?
+Sam sitzt noch am Tisch und denkt an die Zeitung aus dem Stadtteil. || Sam is still sitting at the table and thinks of the newspaper from the district.
+Dort stand eine Warnung der Polizei. || There was a warning from the police there.
+Die Täter riefen ältere Leute an, und die Polizei warnt davor, Fremden Geld zu geben. || The offenders phoned older people, and the police warn against giving money to strangers.
+Bei solchen Anrufen soll man sich beim Amt melden. || With such calls one should contact the office.
+Ein Anruf ist nicht gut, wenn man ganz allein ist. || A call is not good if one is quite alone.
+
+Er denkt auch an das Feuer in der Parkstraße. || He also thinks of the fire in Parkstraße.
+Eine Nachbarin hat in der Nacht den Rauch gerochen. || In the night a neighbour smelled the smoke.
+Es war ein Zufall, dass sie noch am Fenster stand. || It was a coincidence that she was still standing at the window.
+Ein Fahrer blieb vor dem Haus stehen und holte sofort Hilfe. || A driver stopped in front of the house and fetched help at once.
+Alle Bewohner sind rechtzeitig aus dem Haus gekommen. || All the residents came out of the house in time.
+Vielleicht war es ein Problem mit der Leitung, aber was ist dort wirklich passiert? || Perhaps it was a problem with the cable, but what really happened there?
+Der Hauskreis aus der Nachbarstraße hilft der Familie, und am Samstag soll ein Fest stattfinden. || The house group from the next street is helping the family, and on Saturday a festival is to take place.
+Wer etwas gesehen hat, soll es sagen, das ist klar. || Whoever has seen something should say it, that is clear.
+
+Dann denkt er an Herrn Schmidt. || Then he thinks of Herr Schmidt.
+Er hat nebenan ein kleines Café eröffnet, und zur Eröffnung kamen viele Gäste. || He opened a small café next door, and many guests came to the opening.
+Das Brot aus dem eigenen Ofen ist jeden Tag frisch. || The bread from his own oven is fresh every day.
+Herr Schmidt will, dass die Menschen miteinander sprechen, und das war nötig. || Herr Schmidt wants people to talk with each other, and that was necessary.
+Eine Leserin schreibt, dass sich das lohnt. || A reader writes that it pays off.
+Sie fährt jetzt mit der Straßenbahn zum Hauptbahnhof, und wer mitmachen will, kann zu ihr kommen. || She now goes by tram to the main station, and whoever wants to join in can come to her.
+
+Sam freut sich, denn er denkt an den Jugendkreis. || Sam is glad, because he thinks of the youth group.
+David war begeistert und hat den Text für den Flyer geschrieben. || David was enthusiastic and wrote the text for the flyer.
+Sie wollen nichts aufdrängen, denn sie möchten gute Gastgeber sein. || They do not want to impose anything, because they want to be good hosts.
+Ein Mann hat den Flyer genommen und eingesteckt. || A man took the flyer and put it in his pocket.
+Abends, bevor er einschläft, schreibt Sam gern noch in sein Tagebuch. || In the evening, before he falls asleep, Sam likes to write in his diary.
+
+Im Winter war Sam einmal krank. || In the winter Sam was once ill.
+Anna sagte: Iss nur leichte Sachen. || Anna said: eat only light things.
+Wenn du Schmerzen in der Brust hast, ist es ernst. || If you have pain in your chest, it is serious.
+Frau Weber macht sonst nie eine Ausnahme, aber für Sam hat sie Suppe gekocht. || Otherwise Frau Weber never makes an exception, but for Sam she cooked soup.
+
+Er erinnert sich auch an die Geschichte von Pastor Thomas. || He also remembers the story of Pastor Thomas.
+Ein Mann ging von Jerusalem nach Jericho, und Räuber schlugen ihn. || A man went from Jerusalem to Jericho, and robbers beat him.
+Ein frommer Mann dachte: Ich darf nichts Unreines berühren. || A pious man thought: I must not touch anything unclean.
+Der Samariter ritt auf einem Esel und verband den Mann mit einem Tuch. || The Samaritan rode on a donkey and bandaged the man with a cloth.
+Am Morgen musste er weiterreisen und gab dem Wirt zwei Münzen. || In the morning he had to travel on and gave the innkeeper two coins.
+
+Am Ende denkt Sam an seine Reise. || At the end Sam thinks of his trip.
+Er hatte ein günstiges Ticket gekauft, und im Zimmer waren andere Reisende. || He had bought a cheap ticket, and in the room there were other travellers.
+Im Krieg wurde viel zerstört, aber die Stadt ist wieder schön. || In the war much was destroyed, but the city is beautiful again.
+Er ist auf den Berg hinaufgestiegen, und oben war es sehr schön. || He climbed up the hill, and it was very beautiful up there.
+Am Rathaus hat er ein Plakat gesehen. || At the town hall he saw a poster.
+Vorsicht, am Sonntag sind viele Läden zu, sagte man ihm. || Be careful, many shops are closed on Sunday, he was told.

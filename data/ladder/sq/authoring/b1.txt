@@ -1,0 +1,1357 @@
+// The Albanian reading ladder, b1-bridge — authoring file (npm run sq:ladder-build turns it into data/ladder/sq/).
+// Machine-drafted contemporary Standard Albanian; NOT reviewed by a native speaker. 25 new controlled units written on
+// 2026-10-08 for the bridge between a2-2 and the open library (Albanian has no published library text to place and no
+// Scripture with provenance; the 37 Wikipedia texts are held for review and are not used here). Nothing is copied or
+// adapted from any other text: the sentences and the facts they state are the drafter's.
+// One story runs through the units, "Sam's second year" in Tirana, with the cast of the earlier stages: Sam, Ana (nurse),
+// Luan and Mira (teachers), Drita (grandmother), Ardi (11), Elira and Gjergj (Dritan and Mira's children), Dritan, Pastor Pjetër.
+// Grammar of the bridge: the past tenses side by side (aorist, imperfect, perfect, pluperfect), conditionals ("po të kisha …
+// do të bëja …"), reported speech ("tha se …", "pyeti nëse …"), relative clauses ("që", "i cili", "ku"), the subjunctive.
+// Church and testimony units carry no Scripture quotation and need a theological reviewer in addition to the linguistic one.
+// Rule of thumb that keeps the gate green: a new word is used about three times in its own unit and then again in the next
+// units; at most about 12 new words in a unit of 450 words; everything else is already met three times.
+
+# sq-b1-01 | b1-bridge | narrative | story | Pas një viti
+Të hënën në mëngjes Sam u zgjua herët. || On Monday morning Sam woke up early.
+Nuk kishte frikë, siç kishte pasur një vit më parë. || He was not afraid, as he had been a year earlier.
+Dje kishte mbaruar viti i parë, dhe sot fillonte viti i dytë. || Yesterday the first year had ended, and today the second year was beginning.
+Ai u ngrit, u la dhe u vesh. || He got up, washed and got dressed.
+Në kuzhinë përgatiti çaj dhe hëngri bukë me djathë. || In the kitchen he made tea and ate bread with cheese.
+Pastaj mori fletoren dhe shkroi një listë me gjërat që donte të bënte atë vit. || Then he took his notebook and wrote a list of the things he wanted to do that year.
+
+Në orën nëntë e thirri Luani. || At nine o'clock Luan called him.
+— Mirëmëngjes, Sam! A ke kohë sot? || "Good morning, Sam! Do you have time today?"
+— Po, kam. Çfarë ka ndodhur? || "Yes, I do. What has happened?"
+— Asgjë e keqe, — tha Luani. || "Nothing bad," said Luan.
+— Dje drejtori i shkollës më tha se fëmijët duan të mësojnë anglisht. || "Yesterday the head of the school told me that the children want to learn English."
+— Dhe ti mendove për mua? || "And you thought of me?"
+— Po. Ti je amerikan, dhe tani e flet shqip shumë mirë. || "Yes. You are an American, and now you speak Albanian very well."
+— Nëse pranon, çdo të shtunë do të kemi një klub të vogël. || "If you accept, we will have a small club every Saturday."
+
+Sam nuk u përgjigj shpejt. || Sam did not answer quickly.
+Mendoi për ditën kur ai vetë nuk e kuptonte asnjë njeri. || He thought of the day when he himself understood nobody.
+Tani do të ishte ai që do t'u shpjegonte gjërat fëmijëve. || Now he would be the one who explained things to the children.
+— Mirë, — tha ai më në fund. || "All right," he said at last.
+— Do të provoj. Por kam frikë se nuk do të di si t'i mësoj fëmijët. || "I will try. But I am afraid I will not know how to teach the children."
+— Ti ke mësuar shqip për një vit, — tha Luani. || "You have been learning Albanian for a year," said Luan.
+— Ti e di më mirë se shumë njerëz si ndihet një njeri që nuk kupton. || "You know better than anyone how a person who does not understand feels."
+Sam qeshi dhe tha se do të vinte në shkollë në orën njëmbëdhjetë. || Sam laughed and said he would come to the school at eleven.
+
+Para se të shkonte, ai kaloi te gjyshja Drita në treg. || Before going, he stopped by grandmother Drita at the market.
+Ajo po shiste bukë, dhe ai i tregoi çfarë i kishte thënë Luani. || She was selling bread, and he told her what Luan had said to him.
+— Shumë mirë! — tha gjyshja dhe i dha një bukë të ngrohtë. || "Very good!" said grandmother and gave him a warm loaf.
+— Por ki kujdes. Nëse fëmijët qeshin, qesh edhe ti. Kështu mësova edhe unë. || "But be careful. If the children laugh, laugh too. That is how I learned too."
+— Si e mësove ti? — pyeti Sami. || "How did you learn it?" asked Sam.
+— Nuk e mësova në shkollë, — tha ajo. || "I did not learn it at school," she said.
+— E mësova nga njerëzit, nga gabimet dhe nga buka që nuk e shita. || "I learned it from people, from mistakes, and from the bread I did not sell."
+
+Në shkollë Mira i tregoi dhomën ku do të ishte klubi. || At the school Mira showed him the room where the club would be.
+Ishte një dhomë e vogël me një dërrasë të zezë dhe me dhjetë karrige. || It was a small room with a blackboard and ten chairs.
+— Çfarë të duhet? — pyeti Mira. || "What do you need?" asked Mira.
+— Fletore, laps dhe disa figura, — u përgjigj Sami. || 'Notebooks, pencils and some pictures,' answered Sam.
+— Dhe pak kohë, — tha ajo duke buzëqeshur. || 'And a little time,' she said, smiling.
+
+Në mesditë Sam shkoi në klinikë për t'i treguar Anës lajmin. || At midday Sam went to the clinic to tell Ana the news.
+Ana ishte me një pacient, dhe ai priti pranë derës për dhjetë minuta. || Ana was with a patient, and he waited by the door for ten minutes.
+Kur doli, ajo e pyeti nëse kishte ngrënë diçka. || When she came out, she asked him whether he had eaten anything.
+— Jo, — tha Sami. — Por kam një lajm më të mirë se dreka. || "No," said Sam. "But I have news better than lunch."
+Ai i tregoi gjithçka, dhe Ana tha se do t'i sillte disa libra anglisht që kishte në shtëpi. || He told her everything, and Ana said she would bring him some English books that she had at home.
+— Mos ki frikë, — shtoi ajo. — Nëse bën një gabim, fëmijët do ta harrojnë shpejt. || "Do not be afraid," she added. "If you make a mistake, the children will forget it quickly."
+— Po nëse nuk e harrojnë? — pyeti Sami. || "And if they do not forget it?" asked Sam.
+— Atëherë do të të përgjigjen në anglisht, — qeshi Ana, — dhe kjo është ajo që do të mësosh ti. || "Then they will answer you in English," laughed Ana, "and that is what you will learn."
+
+Në mbrëmje ai e shkroi listën e re në fletore, dhe në fund shtoi: «Premtoj të mos kem frikë.» || In the evening he wrote the new list in his notebook, and at the end he added: "I promise not to be afraid."
+
+# sq-b1-02 | b1-bridge | narrative | story | Klubi i anglishtes
+Të shtunën Sam arriti në shkollë një orë para kohës. || On Saturday Sam arrived at the school an hour before time.
+Ai e pastroi dërrasën dhe shkroi mbi të emrin e tij. || He cleaned the blackboard and wrote his name on it.
+Pastaj i vendosi karriget në rreth, u ul dhe priti. || Then he put the chairs in a circle, sat down and waited.
+Kishte pak frikë, ashtu siç kishte pasur një vit më parë në treg. || He was a little afraid, just as he had been a year earlier at the market.
+
+Në orën dhjetë erdhën fëmijët. || At ten o'clock the children came.
+Ishin dymbëdhjetë, dhe tre prej tyre ishin Ardi, Elira dhe Gjergji. || There were twelve, and three of them were Ardi, Elira and Gjergj.
+Të gjithë u ulën në heshtje dhe e shikonin Samin me sy të mëdhenj. || They all sat down in silence and looked at Sam with big eyes.
+Sami tha «mirëmëngjes» në anglisht. || Sam said 'good morning' in English.
+— Mirëmëngjes! — u përgjigjën fëmijët me një zë, në shqip. || 'Good morning!' answered the children, in one voice, in Albanian.
+Pastaj të gjithë qeshën, edhe Sami. || Then they all laughed, Sam too.
+Dhe heshtja mbaroi. || And the silence was over.
+
+— Mësues, si thuhet «faleminderit» në anglisht? — pyeti Elira. || "Teacher, how do you say 'faleminderit' in English?" asked Elira.
+Sami e tha fjalën në anglisht, ngadalë, dhe fëmijët e thanë pas tij. || Sam said the word in English, slowly, and the children said it after him.
+Fëmijët e thanë të gjithë bashkë, por askush nuk e tha mirë. || The children said it all together, but nobody said it well.
+— Gjuha ime nuk ka vend për këtë fjalë, — tha Gjergji dhe e preku gjuhën me gisht. || "My tongue has no room for this word," said Gjergj, and touched his tongue with his finger.
+— Edhe gjuha ime nuk kishte vend për «dhjetë», — tha Sami. || "My tongue had no room for 'dhjetë' either," said Sam.
+— Dhe tani? — pyeti Ardi. || "And now?" asked Ardi.
+— Tani e them lehtë, — u përgjigj ai. || 'Now I say it easily,' he answered.
+— Kështu ndodh me çdo fjalë, pak nga pak. || "That is how it goes with every word, little by little."
+
+Pastaj Sami i mori figurat nga çanta. || Then Sam took the pictures out of his bag.
+Kishte një mollë, një mace, një qen dhe pak bukë. || There was an apple, a cat, a dog and some bread.
+Ai e ngriti figurën e maces dhe pyeti: — Kush e di si thuhet kjo në anglisht? || He held up the picture of the cat and asked: "Who knows how you say this in English?"
+Ardi ngriti dorën. || Ardi raised his hand.
+Ardi e tha fjalën në anglisht, pa gabim. || Ardi said the word in English, without a mistake.
+— Si e di? — pyeti Sami i habitur. || "How do you know?" asked Sam, surprised.
+— E kam parë në një film, — tha Ardi i gëzuar. || 'I have seen it in a film,' said Ardi, glad.
+— Në film ata flasin shumë shpejt, por unë e kuptova. || 'In the film they speak very fast, but I understood it.'
+Fëmijët e dëgjuan me gëzim, sepse nuk e prisnin këtë nga Ardi. || The children listened with joy, because they had not expected this from Ardi.
+
+Pastaj ata e luajtën një lojë të vogël. || Then they played a small game.
+Sami e ngriti një figurë, dhe fëmija që dinte fjalën duhej ta thoshte me zë të lartë. || Sam held up a picture, and the child who knew the word had to say it out loud.
+Kur ishte radha e qenit, askush nuk dinte asgjë, dhe të gjithë filluan të bërtasin si qen. || When it was the dog's turn, nobody knew anything, and they all began to shout like dogs.
+Mira, që po kalonte pranë derës, e hapi pak dhe u habit. || Mira, who was passing by the door, opened it a little and was surprised.
+— Çfarë ndodh këtu? — pyeti ajo. || "What is going on here?" she asked.
+— Mësojmë anglisht, — u përgjigj Elira me zë të qetë. || 'We are learning English,' Elira answered in a calm voice.
+
+Në fund të orës Sami bëri një gabim. || At the end of the hour Sam made a mistake.
+Ai donte të thoshte: «Ju jeni nxënës shumë të mirë», por tha: «Ju jeni nxënës shumë të ngrohtë.» || He wanted to say: "You are very good pupils," but he said: "You are very warm pupils."
+Elira qeshi dhe i tha: — Mësues, nxënësit nuk janë të ngrohtë, ata janë të mirë! || Elira laughed and said to him: 'Teacher, pupils are not warm, they are good!'
+— Faleminderit, Elira, — tha Sami. || "Thank you, Elira," said Sam.
+— Ti më mëson shqip, dhe unë të mësoj anglisht. || "You teach me Albanian, and I teach you English."
+— Kjo është e drejtë. || 'That is fair.'
+Pastaj ai u dha fëmijëve një detyrë. || Then he gave the children homework.
+Çdo fëmijë duhej të gjente në shtëpi tri fjalë anglisht dhe t'i sillte të shtunën tjetër. || Each child had to find three English words at home and bring them the next Saturday.
+— Po nëse nuk gjejmë asnjë? — pyeti një djalë. || "And if we find none?" asked a boy.
+— Atëherë do ta pyesim gjyshen, — tha Elira, — sepse ajo ka parë gjithçka. || "Then we will ask grandmother," said Elira, "because she has seen everything."
+Para se të largoheshin, Sami e shkroi në dërrasë një listë me tri fjalë të reja. || Before they left, Sam wrote on the blackboard a list of three new words.
+— Provoni t'i thoni në shtëpi, — u tha ai fëmijëve. || 'Try to say them at home,' he told the children.
+Elira e shkroi listën në fletore me shkrim të madh. || Elira wrote the list in her notebook in big letters.
+
+Kur fëmijët dolën, Luani erdhi te dera. || When the children went out, Luan came to the door.
+— Si shkoi? — pyeti ai. || "How did it go?" he asked.
+— Mendoj se unë mësova më shumë se ata, — tha Sami. || "I think I learned more than they did," said Sam.
+— Kështu ndodh gjithmonë në klasë, — buzëqeshi Luani. || "That is always how it goes in a class," Luan smiled.
+— Nëse mësuesi mëson, fëmijët mësojnë edhe më shumë. || "If the teacher learns, the children learn even more."
+
+# sq-b1-03 | b1-bridge | conversation | dialogue | Një telefonatë nga shtëpia
+Të shtunën në mbrëmje Sam e thirri nënën nga kompjuteri. || On Saturday evening Sam called his mother from the computer.
+Në Amerikë ishte e shtunë në mesditë, dhe nëna ishte në kuzhinë. || In America it was Saturday at midday, and his mother was in the kitchen.
+Kur e pa, ajo bërtiti nga gëzimi. || When she saw him, she cried out with joy.
+
+— Sam! Biri im! A po ha mirë? Më duket se je shumë i dobët! || "Sam! My son! Are you eating well? It seems to me you are very thin!"
+— Nënë, jam mirë. Ha shumë: bukë, djathë, byrek, dhe çdo të diel darkë te gjyshja Drita. || "Mother, I am well. I eat a lot: bread, cheese, byrek, and every Sunday dinner at grandmother Drita's."
+— Dhe flet shqip tani? || "And do you speak Albanian now?"
+— Po, flas, dhe sot kam filluar të mësoj fëmijët anglisht në shkollë. || "Yes, I do, and today I started to teach the children English at school."
+— Çfarë thua?! Ti, mësues? || "What are you saying?! You, a teacher?"
+— Po, mësues. Më kërkoi një shok, dhe unë pranova. || "Yes, a teacher. A friend asked me, and I accepted."
+— Babai yt nuk do ta besojë. Babai! Eja këtu! || "Your father will not believe it. Dad! Come here!"
+
+Babai erdhi me një gotë çaj në dorë dhe u ul pranë kompjuterit. || His father came with a glass of tea in his hand and sat down by the computer.
+— Ç'kemi, bir? || "How are things, son?"
+— Mirë, baba. || "Good, father."
+— Nëna thotë se ke një klub. A të paguajnë për të? || "Your mother says you have a club. Do they pay you for it?"
+— Jo, baba. Nuk është punë e vërtetë ende. Është vetëm një klub i vogël. || "No, father. It is not a real job yet. It is only a small club."
+— Por Luani më tha se nëse shkon mirë, mund të kem një punë në shkollë më vonë. || "But Luan told me that if it goes well, I may have a job at the school later."
+
+— Kur do të vish në shtëpi? — e pyeti nëna. || "When will you come home?" his mother asked.
+— Krishtlindja po vjen, dhe ne të gjithë po të presim. || "Christmas is coming, and we are all waiting for you."
+— Nuk e di, nënë, — tha Sami. || "I do not know, mother," said Sam.
+— Premtoj vetëm që do të të telefonoj çdo javë. || 'I only promise that I will phone you every week.'
+— Nëse gjej një punë këtu, do të qëndroj edhe një vit. Nëse nuk gjej, do të vij në pranverë. || "If I find a job here, I will stay another year. If I do not find one, I will come in the spring."
+— Po të ishe këtu, do të të gatuaja supën që të pëlqen, — tha nëna me zë të trishtuar. || "If you were here, I would cook you the soup you like," said his mother in a sad voice.
+— Po të ishit ju këtu, do të shkonim bashkë te Drita për një byrek, — u përgjigj ai. || "If you were here, we would go together to Drita for a byrek," he answered.
+— Dhe pastaj do të flisnit ju me të në shqip, — qeshi babai. || "And then you would speak with her in Albanian," his father laughed.
+— Nënë, ajo nuk do të të kuptonte, por do të të jepte bukë, dhe kjo është e njëjta gjë. || "Mother, she would not understand you, but she would give you bread, and that is the same thing."
+
+Babai u bë i qetë. || His father became calm.
+— Mos mendo shumë për punën, — tha ai. || 'Do not think too much about the job,' he said.
+— Kur u largove, thashë se Zoti të ka çuar atje për një arsye, dhe e mendoj ende. || "When you went away, I said that God had sent you there for a reason, and I still think so."
+— Edhe unë e mendoj kështu, — tha Sami. || "I think so too," said Sam.
+Ai provoi ta thoshte ngadalë, për të mos e humbur zërin: — Por nuk e di ende arsyen. || He tried to say it slowly, so as not to lose his voice: 'But I do not know the reason yet.'
+— Por ndonjëherë më duket se nuk e di ende cila është arsyeja. || "But sometimes it seems to me that I still do not know what the reason is."
+— Ajo vjen pak nga pak, — tha nëna. || "It comes little by little," said his mother.
+— Dhe nëse nuk vjen, ti eja në shtëpi dhe do ta gjejmë bashkë. || "And if it does not come, you come home and we will find it together."
+
+Pas një ore ata e mbyllën telefonatën. || After an hour they ended the call.
+Sami e mbylli kompjuterin dhe mbeti pak në heshtje. || Sam closed the computer and stayed a little in silence.
+Pastaj i telefonoi Anës dhe i tregoi gjithçka. || Then he phoned Ana and told her everything.
+I tha se nëna e kishte parë shumë të dobët, se babai kishte qeshur kur kishte dëgjuar për klubin, dhe se të dy donin që ai të vinte në pranverë. || He told her that his mother had found him very thin, that his father had laughed when he heard about the club, and that both wanted him to come in the spring.
+— Dhe ti çfarë the? — e pyeti Ana. || "And what did you say?" Ana asked him.
+— Thashë se nuk e di, — u përgjigj ai. || "I said that I do not know," he answered.
+— Por tani e di diçka tjetër: kur një njeri të pret në shtëpi, ti je i pasur, edhe nëse ke pak para. || "But now I know something else: when someone waits for you at home, you are rich, even if you have little money."
+
+# sq-b1-04 | b1-bridge | narrative | story | Një lajm i keq
+Prej tetë vitesh Dritani punonte në një kompani ndërtimi. || For eight years Dritan had been working in a construction company.
+Çdo mëngjes ngrihej në orën gjashtë dhe çdo mbrëmje kthehej i lodhur, por i lumtur. || Every morning he got up at six and every evening he came back tired, but happy.
+Kishte ndërtuar shtëpi, shkolla dhe një urë të vogël mbi një përrua. || He had built houses, schools and a small bridge over a stream.
+
+Të hënën Dritani u kthye nga puna në mesditë, dhe kjo nuk kishte ndodhur kurrë më parë. || On Monday Dritan came back from work at midday, and this had never happened before.
+Mira ishte në kuzhinë dhe po përgatiste drekën kur e dëgjoi derën. || Mira was in the kitchen preparing lunch when she heard the door.
+— Dritan, çfarë ka ndodhur? — e pyeti ajo. || "Dritan, what has happened?" she asked him.
+Ai nuk u përgjigj. || He did not answer.
+E la xhaketën mbi karrige, u ul në tavolinë dhe e vuri kokën në duar. || He left his jacket on a chair, sat down at the table and put his head in his hands.
+
+— Kompania humbi kontratën e madhe, — tha ai më në fund. || "The company lost the big contract," he said at last.
+— Shefi na tha se nuk ka më punë për të gjithë ne. || "The boss told us that there is no more work for all of us."
+— Sa punëtorë mbetën? — pyeti Mira. || "How many workers stayed?" asked Mira.
+— Njëzet vetë. Unë nuk jam mes tyre. || "Twenty people. I am not among them."
+Mira u ul pranë tij dhe nuk tha asgjë për një moment. || Mira sat down beside him and said nothing for a moment.
+Pastaj i vuri dorën mbi dorë. || Then she put her hand on his hand.
+
+— Dëgjo, — tha ajo. || "Listen," she said.
+— Ne kemi disa kursime, dhe unë kam pagën time si mësuese. || "We have some savings, and I have my pay as a teacher."
+— Nuk do të kemi gjithçka që kemi pasur, por do të kemi bukë. || "We will not have everything we have had, but we will have bread."
+— Po borxhi i makinës? — pyeti Dritani. || "And the debt for the car?" asked Dritan.
+— Nëse nuk gjen punë deri në pranverë, do ta shesim makinën, — tha Mira. || "If you do not find work by spring, we will sell the car," said Mira.
+— Është vetëm një makinë. || "It is only a car."
+— Ti thoshe gjithmonë se do të ishe njeriu që mban familjen, — tha ajo me zë të ulët. || 'You always said that you would be the man who supports the family,' she said in a low voice.
+— Por një familje nuk mbahet nga një njeri i vetëm. || "But a family is not supported by one person alone."
+
+Në atë kohë erdhën nga shkolla Gjergji dhe Elira. || At that moment Gjergj and Elira came home from school.
+— Baba, pse je në shtëpi? — pyeti Elira. || "Father, why are you at home?" asked Elira.
+Dritani e shikoi Mirën. || Dritan looked at Mira.
+— Sepse sot kisha një ditë të gjatë dhe të vështirë, — tha ai. || "Because today I had a long and difficult day," he said.
+Gjergji, që ishte njëmbëdhjetë vjeç, nuk e besoi. || Gjergj, who was eleven years old, did not believe him.
+Ai e ndjeu që prindërit e tij nuk i thoshin gjithçka, por nuk pyeti asgjë. || He felt that his parents were not telling them everything, but he did not ask anything.
+Në vend të kësaj, e mori Elirën për dore dhe e çoi në dhomë për të luajtur. || Instead, he took Elira by the hand and led her to the room to play.
+
+Atë natë Dritani nuk fjeti. || That night Dritan did not sleep.
+Ai qëndroi te dritarja dhe e shikoi qytetin. || He stayed by the window and looked at the city.
+Kujtoi ditët kur kishte menduar se çdo gjë që kishte vinte nga forca e tij. || He remembered the days when he had thought that everything he had came from his own strength.
+Tani e dinte se kishte gabuar. || Now he knew that he had been wrong.
+Atë natë ai bëri një listë me atë që kishin: kursimet, borxhin e makinës dhe pagën e Mirës. || That night he made a list of what they had: the savings, the debt for the car and Mira's pay.
+Mira erdhi pa folur dhe qëndroi pranë tij. || Mira came without speaking and stood beside him.
+— Do të lutemi bashkë? — pyeti ajo. || "Shall we pray together?" she asked.
+— Nuk e di se çfarë të them, — tha ai. || "I do not know what to say," he said.
+— Nuk duhet të thuash shumë, — u përgjigj Mira. || "You do not have to say much," Mira answered.
+— Thuaj vetëm që ke frikë. || 'Just say that you are afraid.'
+
+Të martën në mëngjes Sami erdhi te dera e tyre. || On Tuesday morning Sam came to their door.
+Mbante një çantë të madhe në dorë. || He had a big bag in his hand.
+— Gjyshja Drita dërgoi bukë, — tha ai. || "Grandmother Drita sent bread," he said.
+— Më tha se dëgjoi diçka në treg dhe se ju pret të dielën për darkë. || "She told me that she had heard something at the market and that she expects you on Sunday for dinner."
+Dritani e mori çantën dhe për herë të parë atë ditë buzëqeshi. || Dritan took the bag and for the first time that day he smiled.
+
+# sq-b1-05 | b1-bridge | conversation | dialogue | Darka e së dielës
+Të dielën në mbrëmje të gjithë u mblodhën në shtëpinë e gjyshes Drita. || On Sunday evening they all gathered at grandmother Drita's house.
+Kishte supë të nxehtë, byrek me spinaq dhe një bukë të madhe që Drita e kishte pjekur vetë. || There was hot soup, a spinach byrek and a big loaf that Drita had baked herself.
+Ardi, Elira dhe Gjergji hanin shpejt dhe flisnin shumë. || Ardi, Elira and Gjergj ate fast and talked a lot.
+Dritani rrinte i heshtur dhe e shikonte supën pa e prekur. || Dritan sat in silence and looked at the soup without touching it.
+
+Pasi fëmijët dolën në oborr, Drita e vuri dorën mbi tavolinë. || After the children went out into the yard, Drita put her hand on the table.
+— Dritan, — tha ajo. || "Dritan," she said.
+— Unë shes bukë prej tridhjetë vitesh dhe i njoh njerëzit nga mënyra se si e marrin bukën. || "I have been selling bread for thirty years and I know people by the way they take their bread."
+— Ti sot nuk e ke prekur supën. || 'Today you have not touched the soup.'
+— Çfarë ke? || 'What is the matter?'
+Dritani shikoi poshtë. || Dritan looked down.
+— Kompania më pushoi, — tha ai. || "The company dismissed me," he said.
+— Kemi pak kursime, — shtoi ai, — dhe një borxh për makinën. || 'We have a little savings,' he added, 'and a debt for the car.'
+— Prindërit e mi nuk e dinë ende që e humba punën. || 'My parents do not yet know that I lost my job.'
+— Kam gabuar që nuk kam kërkuar kurrë ndihmë. || 'I was wrong never to have asked for help.'
+— Kursimet na shkojnë për dy muaj, — tha Mira, — dhe borxhi është një borxh, jo një turp. || 'The savings will last us two months,' said Mira, 'and a debt is a debt, not a shame.'
+— Nuk doja ta thosha këtu, para fëmijëve. || "I did not want to say it here, in front of the children."
+
+Për një moment askush nuk foli. || For a moment nobody spoke.
+Pastaj Luani tha se shkolla kishte nevojë për një njeri që të rregullonte çatinë e vjetër. || Then Luan said that the school needed someone to repair the old roof.
+— Nuk është një punë për gjithë jetën, — tha ai. || 'It is not a job for a whole life,' he said.
+— Por është një punë, dhe pagesa nuk është e keqe. || "But it is a job, and the payment is not bad."
+Ana tha se një shoqe e saj nga klinika kishte një furgon dhe i duhej një shofer. || Ana said that a friend of hers from the clinic had a minibus and needed a driver.
+— Nëse do, mund t'i telefonoj sonte, — shtoi ajo. || "If you want, I can phone her tonight," she added.
+Sami buzëqeshi pak. || Sam smiled a little.
+— Unë nuk kam asnjë punë për të ofruar, — tha ai. || "I have no job to offer," he said.
+— Por kam kohë, dhe mund të të ndihmoj ta shkruajmë një CV të mirë. || "But I have time, and I can help you write a good CV."
+
+Dritani i dëgjoi të gjithë, por nuk u përgjigj. || Dritan listened to them all, but he did not answer.
+— Unë nuk jam mësuar të kërkoj ndihmë, — tha më në fund. || "I am not used to asking for help," he said at last.
+— Gjithmonë kam qenë unë ai që ndihmon. || "I have always been the one who helps."
+— E di, — tha Drita. || "I know," said Drita.
+— Po atëherë ti ke një gjë të re për të mësuar. || "Then you have something new to learn."
+— Kur shes bukë, e mbaj kokën lart. || "When I sell bread, I hold my head high."
+— Por kur kam nevojë, e pranoj ndihmën pa turp. || "But when I am in need, I accept help without shame."
+— Kjo nuk është turp, Dritan. || "This is not shame, Dritan."
+— Turp është të kesh nevojë dhe të mos e thuash. || "Shame is to be in need and not to say it."
+
+Mira e shikoi burrin e saj me dashuri. || Mira looked at her husband with love.
+— Të thashë, — pëshpëriti ajo. || "I told you," she whispered.
+— Ata janë familja jonë. || "They are our family."
+Dritani mori frymë thellë. || Dritan took a deep breath.
+— Mirë, — tha ai. || "All right," he said.
+— Të hënën do të shkoj në shkollë dhe do të provoj ta rregulloj çatinë. || "On Monday I will go to the school and try to fix the roof."
+— Ana, mund t'i telefonosh asaj shoqe, por unë do të flas vetë me të. || "Ana, you can phone your friend, but I will speak to her myself."
+— Dhe Sam, po, do të vij te ti të martën për CV-në. || "And Sam, yes, I will come to you on Tuesday for the CV."
+— Po të kisha një shok si ju më parë, — shtoi ai me zë të ulët, — nuk do të kisha pritur shumë. || 'If I had had a friend like you earlier,' he added in a low voice, 'I would not have waited so much.'
+
+Drita ngriti gotën me ujë. || Drita raised her glass of water.
+— Të pimë për punën që vjen, — tha ajo. || "Let us drink to the work that is coming," she said.
+— Dhe për miqtë që nuk e lënë njeriun vetëm. || "And for the friends who do not leave a person alone."
+Të gjithë ngritën gotat, dhe Dritani, për herë të parë atë javë, ngriti kokën. || They all raised their glasses, and Dritan, for the first time that week, lifted his head.
+
+# sq-b1-06 | b1-bridge | practical | story | Një letër për punë
+Të hënën Dritani shkoi në shkollë dhe e pa çatinë me sytë e tij. || On Monday Dritan went to the school and saw the roof with his own eyes.
+Ishte më keq nga sa kishte menduar Luani: uji kishte hyrë në dy klasa, dhe në një prej tyre mbi dërrasën kishte një vend pa dritë. || It was worse than Luan had thought: water had got into two classrooms, and in one of them above the blackboard there was a place without light.
+Drejtori i tha se mund të fillonte që të mërkurën, dhe se do ta paguanin çdo të premte. || The head told him that he could start on Wednesday, and that they would pay him every Friday.
+Dritani u ndje më i lehtë, por nuk e harroi se kishte premtuar edhe diçka tjetër. || Dritan felt lighter, but he did not forget that he had promised something else.
+Drejtori i shtoi se pagesa e parë do të vinte pas një jave, dhe Dritani mendoi për kursimet që po mbaronin dhe për borxhin e makinës. || The head added that the first payment would come after a week, and Dritan thought of the savings that were running out and of the debt for the car.
+Ai donte ta rregullonte çatinë mirë, jo vetëm shpejt, sepse e dinte që një punë e mirë hap një derë tjetër. || He wanted to fix the roof well, not only quickly, because he knew that a good job opens another door.
+Kishte humbur një punë, por jo shpresën. || He had lost a job, but not hope.
+Pagesa nuk ishte e madhe, por ishte e vërtetë. || The payment was not big, but it was real.
+
+Të martën në mëngjes ai erdhi te Sami me një fletore dhe me një kafe të ftohtë në dorë. || On Tuesday morning he came to Sam with a notebook and a cold coffee in his hand.
+— Ku e kemi filluar? — pyeti Sami, duke e ndezur kompjuterin. || "Where do we begin?" asked Sam, switching on the computer.
+— Nga emri, — tha Dritani. || "With the name," said Dritan.
+— Po pastaj? — Pastaj shkruaj punët që kam bërë. || "And then?" "Then you write the jobs I have done."
+— Tetë vite në ndërtim, dy vite në një fabrikë, një verë si shofer. || "Eight years in construction, two years in a factory, one summer as a driver."
+Sami i shkruante të gjitha në një listë, por Dritani nuk ishte i lumtur. || Sam wrote it all in a list, but Dritan was not happy.
+— Kjo është shumë pak, — tha ai. || "This is very little," he said.
+— Unë kam bërë shumë më tepër! || "I have done much more!"
+— Atëherë ta shtojmë, — tha Sami. || "Then let us add it," said Sam.
+— Çfarë di të bësh që nuk e ka shkruar askush? || "What can you do that nobody has written?"
+Dritani mendoi një moment. || Dritan thought for a moment.
+— Di të punoj me njerëz, di të mbaj një orar dhe di të thërras kur diçka nuk është mirë. || 'I know how to work with people, how to keep a schedule, and how to shout when something is not right.'
+— Këtë të fundit nuk e shkruajmë, — qeshi Sami. || "We will not write that last one," Sam laughed.
+— Por këto tri po, dhe i shtojmë edhe patentën. || 'But these three, yes, and we will add your licence too.'
+
+Pastaj u ulën bashkë dhe e shkruan një letër të shkurtër për shoqen e Anës. || Then they sat down together and wrote a short letter to Ana's friend.
+Sami e lexoi me zë të lartë dhe ngadalë atë që kishin shkruar: || Sam read aloud and slowly what they had written:
+«Të nderuar zonja, || "Dear Madam,
+quhem Dritan dhe jam shofer me përvojë. || my name is Dritan and I am an experienced driver.
+Kam patentë prej dhjetë vitesh dhe nuk kam bërë asnjë gabim në rrugë. || I have had a licence for ten years and I have not made a single mistake on the road.
+Jam gati të punoj çdo ditë, edhe të shtunën dhe të dielën, nëse duhet. || I am ready to work every day, even on Saturday and Sunday, if necessary.
+Do të më vinte mirë të flisja me ju. || I would be glad to speak with you.
+Me përshëndetje, Dritan.» || Best wishes, Dritan."
+
+— Mirë është, — tha Dritani. || "It is good," said Dritan.
+— Por mos e shkruaj «edhe të dielën». || 'But do not write "even on Sunday."'
+— Të dielën jam në kishë. || "On Sunday I am at church."
+— Atëherë e fshijmë, — tha Sami dhe e fshiu fjalinë. || 'Then we delete it,' said Sam, and deleted the sentence.
+— Dhe nëse nuk të pranojnë për këtë? || "And if they do not accept you for this?"
+— Atëherë nuk do të jetë punë për mua, — u përgjigj Dritani. || "Then it will not be a job for me," Dritan answered.
+— Më parë nuk do ta kisha thënë këtë. || "Before, I would not have said this."
+— Tani nuk kam frikë ta them. || "Now I am not afraid to say it."
+— Nuk më vjen turp të them që kam nevojë për punë, — shtoi Dritani. || 'I am not ashamed to say that I need work,' added Dritan.
+— Kam gabuar edhe unë në jetë, por kurrë në punë. || 'I have made mistakes in life too, but never at work.'
+
+Të mërkurën Dritani filloi punën në çati. || On Wednesday Dritan began work on the roof.
+E rregulloi çatinë pjesë-pjesë, dhe pagesën e parë e mori të premten. || He fixed the roof piece by piece, and received the first payment on Friday.
+E preku me dorë çatinë e vjetër dhe i shpjegoi Gjergjit pse duhej të ishte e thatë. || He touched the old roof with his hand and explained to Gjergj why it had to be dry.
+Prindërit e tij, kur e mësuan, i dërguan një mesazh të shkurtër. || His parents, when they found out, sent him a short message.
+I shkruanin se e duan dhe se e presin të dielën. || They wrote that they love him and expect him on Sunday.
+Ardi dhe Gjergji e shikonin nga oborri, dhe Ardi pyeti nëse mund të ngjitej edhe ai. || Ardi and Gjergj watched from the yard, and Ardi asked whether he could climb up too.
+— Jo, — tha Dritani, — çatia nuk është vend për nxënës. || "No," said Dritan, "a roof is not a place for pupils."
+— Por një ditë, kur të rritesh, mund ta ndërtosh vetë një çati. || "But one day, when you grow up, you can build a roof yourself."
+Në mesditë mësuesit i sollën çaj dhe byrek, dhe Mira i dërgoi një mesazh me dy fjalë: «Të duam shumë.» || At midday the teachers brought him tea and byrek, and Mira sent him a message of two words: "We love you."
+Dritani e lexoi mesazhin tri herë para se ta vinte në xhep. || Dritan read the message three times before putting the phone in his pocket.
+
+Atë mbrëmje Ana i telefonoi Samit. || That evening Ana phoned Sam.
+Tha se shoqja e saj e kishte lexuar letrën dhe se donte ta takonte Dritanin të enjten. || She said that her friend had read the letter and wanted to meet Dritan on Thursday.
+— Thuaji që të vijë me patentën, — shtoi Ana. || "Tell him to come with his licence," added Ana.
+— Dhe thuaji edhe diçka tjetër: letra është e mirë, por e mira ishte që ai e pranoi ndihmën. || "And tell him something else: the letter is good, but the good thing was that he accepted help."
+
+# sq-b1-07 | b1-bridge | health | story | Plaku nga fshati
+Të enjten në klinikë kishte shumë pacientë, dhe Ana nuk kishte pasur kohë të pinte çaj. || On Thursday there were many patients at the clinic, and Ana had not had time even to drink tea.
+Në orën njëmbëdhjetë ajo hapi derën e fundit dhe pa afër derës një plak të vogël me një kapelë të vjetër në dorë. || At eleven she opened the last door and saw near the door a small old man with an old hat in his hand.
+— Mirëdita, zonjë, — tha ai. || "Good morning, madam," he said.
+— Erdha nga fshati. Ecja tri orë, sepse autobusi nuk po shkonte. || "I came from the village. I walked three hours, because the bus was not running."
+— Tri orë? — u habit Ana. || "Three hours?" Ana was surprised.
+— Ulu, baba. Çfarë të dhemb? || "Sit down, father. What hurts?"
+— Më dhemb koka, dhe nuk fle natën, — tha plaku. || "My head hurts, and I do not sleep at night," said the old man.
+— Gruaja ime vdiq vitin e kaluar, dhe shtëpia është shumë e madhe tani. || "My wife died last year, and the house is very big now."
+
+Ana ia preku dorën: ishte e ftohtë dhe shumë e dobët. || Ana touched his hand: it was cold and very weak.
+Ai ishte më i lodhur dhe më i dobët nga sa duhej. || He was more tired and weaker than he should have been.
+Ajo e thirri Dr Arta, që punonte në dhomën pranë. || She called Dr Arta, who worked in the next room.
+Dr Arta erdhi, e pyeti plakun disa gjëra dhe shkroi një recetë. || Dr Arta came, asked the old man a few things and wrote a prescription.
+— Duhet ta pish këtë ilaç çdo mëngjes, — i tha ajo. || "You must take this medicine every morning," she told him.
+— Nëse e pi çdo mëngjes, koka nuk do të të dhembë më. || 'If you take it every morning, your head will not hurt any more.'
+Plaku e mori recetën, por nuk e vuri në xhep. || The old man took the prescription, but did not put it in his pocket.
+— Unë nuk kam besim te ilaçet, — tha ai me zë të ulët. || "I do not have faith in medicines," he said gently.
+— Unë kam besim te Zoti. Ai e ka thirrur gruan, dhe do ta thërrasë edhe mua kur të vijë koha. || "I have faith in God. He has called my wife, and He will call me too when the time comes."
+
+Dr Arta e shikoi Anën, dhe Ana e kuptoi se duhej të fliste ajo. || Dr Arta looked at Ana, and Ana understood that she had to speak.
+Dr Arta i pëshpëriti: — Fol ti, ai të beson. || Dr Arta whispered to her: 'You speak, he trusts you.'
+Ajo u ul pranë plakut dhe nuk e ngriti zërin. || She sat down beside the old man and did not raise her voice.
+— Edhe unë kam besim te Zoti, baba, — tha ajo. || "I have faith in God too, father," she said.
+— Por unë mendoj se Zoti na ka dhënë edhe mjekët, edhe ilaçet, edhe duart që ndihmojnë. || "But I think that God has given us doctors too, and medicines, and hands that help."
+— Nëse e do shumë gruan tënde, ti duhet të jetosh sa më gjatë, që ta kujtosh. || "If you love your wife so much, you must live as long as you can, in order to remember her."
+Plaku heshti për një kohë të gjatë. || The old man was silent for a long time.
+Pastaj tha: — Gruaja ime thoshte gjithmonë që ti duhet ta dëgjosh atë që të thonë ata që të duan. || Then he said: "My wife always used to say that you must listen to what those who love you tell you."
+— Atëherë më jep recetën përsëri. || "Then give me the prescription again."
+Ana qeshi me lot në sy dhe ia dha. || Ana laughed with tears in her eyes and gave it to him.
+
+Para se të largohej, Ana i solli një gotë çaj me mjaltë. || Before he left, Ana brought him a glass of tea with honey.
+Plaku e piu ngadalë, dhe në fund tha se çaji i kishte bërë mirë më shumë se ilaçi. || The old man drank it slowly, and in the end he said that the tea had done him more good than the medicine.
+— Nëse ke kohë të dielën, — shtoi ai, — eja në fshatin tim. || "If you have time on Sunday," he added, "come to my village."
+— Unë nuk kam asgjë për të të dhënë, vetëm një bukë të vjetër dhe një histori. || "I have nothing to give you, only an old loaf and a story."
+— Një histori është mjaft, — tha Ana. || "A story is enough," said Ana.
+— Do të vij, dhe do të sjell edhe një mik. || "I will come, and I will bring a friend."
+Atë mbrëmje, kur u kthye në shtëpi, ajo ia tregoi gjithçka Luanit, dhe ai i tha: — Ti nuk e ke shëruar vetëm kokën e tij. || That evening, when she came home, she told Luan everything, and he said to her: 'You did not cure only his head.'
+
+Të premten Ana i tregoi Samit për plakun, dhe për ilaçin, dhe për ftesën. || On Friday Ana told Sam about the old man, and about the medicine, and about the invitation.
+— Të dielën pas kishës do të shkoj në fshatin e tij, — tha ajo. || "On Sunday after church I will go to his village," she said.
+— A do të vish me mua? Do të kemi nevojë për një njeri që di të dëgjojë. || "Will you come with me? We will need someone who knows how to listen."
+— Do të vij me gëzim, — u përgjigj Sami. || "I will come with pleasure," Sam answered.
+— Tani jam mësues, dhe një mësues i mirë duhet të dëgjojë më shumë se sa flet. || "Now I am a teacher, and a good teacher must listen more than he speaks."
+— Ky është mendimi më i mirë që të kam dëgjuar të thuash, — qeshi Ana. || 'That is the best thing I have heard you say,' Ana laughed.
+— Mos e harro vetëm një gjë: në fshat njerëzit të pyesin gjithçka, edhe sa para merr në muaj. || 'Only do not forget one thing: in the village people ask you everything, even how much money you get a month.'
+— Atëherë do të them që marr pak, por jetoj mirë, — tha Sami. || 'Then I will say that I get little, but I live well,' said Sam.
+— Nëse gaboj në fshat, do të qeshin të gjithë fshatarët, — shtoi ai. || 'If I make a mistake in the village, all the villagers will laugh,' he added.
+
+# sq-b1-08 | b1-bridge | testimony | story | Në fshatin e plakut
+Të dielën pas shërbimit Ana dhe Sami u nisën me autobusin për në fshat. || On Sunday after the service Ana and Sam set off by bus for the village.
+Rruga ishte e gjatë dhe me shumë kthesa, dhe mali ngrihej para tyre me një mjegull të hollë. || The road was long and with many bends, and the mountain rose in front of them in a thin mist.
+Kur zbritën, plaku i priste pranë rrugës, me kapelën e vjetër në dorë. || When they got off, the old man was waiting for them by the road, with his old hat in his hand.
+— Erdhët! — thirri ai, dhe ky ishte rasti i parë që Ana e pa të buzëqeshte me të gjithë fytyrën. || "You came!" he called, and this was the first time Ana saw him smile with his whole face.
+
+Shtëpia e tij ishte prej guri, me një pemë të madhe përpara dhe me një furrë të vogël në oborr. || His house was made of stone, with a big tree in front and a small oven in the yard.
+Brenda ishte e pastër dhe e ftohtë, dhe mbi mur kishte një fotografi të vjetër me një grua me sy të mirë. || Inside it was clean and cold, and on the wall there was an old photograph of a woman with kind eyes.
+— Kjo është Mari, — tha plaku. || "This is Mari," said the old man.
+— Jetuam bashkë dyzet e tre vite. || "We lived together for forty-three years."
+Ai ndezi zjarrin, vuri ujin dhe bëri një çaj me lule nga mali. || He lit the fire, put on the water and made a tea with herbs from the mountain.
+Pastaj mori nga furra një bukë të nxehtë dhe e ndau në tri pjesë. || Then he took a hot loaf from the oven and divided it into three pieces.
+
+Ata hëngrën pa folur shumë, dhe Sami e ndjeu se heshtja nuk ishte e rëndë. || They ate without speaking much, and Sam felt that the silence was not heavy.
+— Po ti, bir, nuk je nga këtu, — i tha plaku Samit. || "And you, son, are not from here," the old man said to Sam.
+— Çfarë të bëri të vish aq larg? || "What made you come so far?"
+— Erdha për një vit, — u përgjigj Sami. || "I came for a year," Sam answered.
+— Doja të mësoja gjuhën, dhe mendova se pas një viti do të ktheheshim në shtëpi. || "I wanted to learn the language, and I thought that after a year I would go back home."
+— Por mbeta, sepse gjeta njerëz që më pritën si një djalë të tyre. || "But I stayed, because I found people who received me like a son of theirs."
+— Atëherë je i yni, — tha plaku dhe i dha edhe pak bukë. || "Then you are ours," said the old man, and gave him another piece of bread.
+— Këtu një i huaj është një mik që ende nuk e njohim. || "Here a stranger is a friend we do not yet know."
+
+Pas pak plaku tha: — Dua të flas me ju për diçka që nuk e kam thënë kurrë para njerëzve. || After a while the old man said: "I want to talk with you about something that I have never said in front of people."
+— Kur isha i vogël, kishat nuk ishin të hapura. || 'When I was small, the churches were not open.'
+— Prindërit e mi nuk flisnin për Perëndinë në shtëpi. || 'My parents did not speak about God at home.'
+— Në atë kohë njerëzit kishin frikë të thoshin edhe emrin e Perëndisë. || "In those days people were afraid even to say the name of God."
+— Gjyshja ime më mësoi një lutje natën, kur gjithë shtëpia flinte, që të mos e dinte askush. || "My grandmother taught me a prayer at night, when the whole house was asleep, so that nobody would know."
+— Më tha: «Mos e thuaj me zë të lartë, por mos e harro kurrë.» || "She said to me: 'Do not say it aloud, but never forget it.'"
+Ana e pyeti nëse e kishte harruar. || Ana asked him whether he had forgotten it.
+— Jo, — tha plaku. || "No," said the old man.
+— E thosha çdo natë, edhe kur nuk besoja asgjë. || "I said it every night, even when I believed in nothing."
+— Dhe kur u hapën kishat, shkova në një prej tyre dhe qava si fëmijë. || "And when the churches opened, I went to one of them and cried like a child."
+— Më vjen turp ta them, — shtoi ai. || 'I am ashamed to say it,' he added.
+— Nuk është turp të qash në kishë, baba, — tha Ana. || 'It is no shame to cry in church, father,' said Ana.
+
+— Po pse nuk shkon më? — pyeti Sami me kujdes. || "But why do you no longer go?" asked Sam carefully.
+— Sepse Mari vdiq, — u përgjigj plaku. || "Because Mari died," the old man answered.
+— Ajo ishte ajo që më merrte për dore dhe më çonte. || "She was the one who took me by the hand and led me."
+— Pa të, kisha frikë se do të flisja me një kishë bosh. || "Without her, I was afraid I would be speaking in an empty church."
+Ana e preku krahun e tij. || Ana touched his arm.
+Ana kishte lot në sy. || Ana had tears in her eyes.
+— Nuk është bosh, baba, — tha ajo. || "It is not empty, father," she said.
+— Nëse do, të dielën tjetër mund të vijmë të të marrim, dhe do të shkojmë bashkë. || "If you want, next Sunday we can come to get you, and we will go together."
+Plaku nuk u përgjigj shpejt. || The old man did not answer quickly.
+Pastaj tha me zë të ulët: — Nëse vini ju, do të vij edhe unë. || Then he said in a low voice: 'If you come, I will come too.'
+Ana e pyeti përsëri nëse e donte vërtet, dhe ai e tha përsëri po. || Ana asked him again whether he really wanted it, and he said yes again.
+
+Para se të niseshin, ai u dha një shishe me mjaltë. || Before they set off, he gave them a bottle of honey.
+— Është nga bletët e saj, — tha. || "It is from her bees," he said.
+— Ajo i kishte dashur më shumë se mua. || "She had loved them more than me."
+Në autobus, kur po ktheheshin në qytet, Sami mori fletoren. || On the bus, as they were going back to the city, Sam took out his notebook.
+Ai shkroi: «Sot mësova se ndonjëherë njeriu nuk ka nevojë për fjalë të mëdha, por për një njeri që e merr për dore.» || He wrote: "Today I learned that sometimes a person does not need big words, but someone who takes him by the hand."
+
+# sq-b1-09 | b1-bridge | narrative | story | Një qen në çantë
+Të shtunën tjetër, kur klubi mbaroi, Ardi mbeti pas fëmijëve të tjerë në oborrin e shkollës. || The next Saturday, when the club ended, Ardi stayed behind the others in the school yard.
+Kishte rënë shi gjithë natën, dhe në oborr kishte shumë ujë. || It had rained all night, and in the yard there was a lot of water.
+Pranë murit të shkollës ai dëgjoi një zë të vogël, si një kërkesë. || By the wall of the school he heard a small sound, like a request.
+Ardi u ul dhe pa një qen të vogël dhe shumë të dobët, që ishte shumë i ftohtë. || Ardi sat down and saw a small and very thin dog, who was very cold.
+Qeni kishte një rrip të kuq, por rripi ishte i thyer. || The dog had a red collar, but the collar was broken.
+
+— Ku është pronari yt? — e pyeti Ardi me zë të ulët. || "Where is your owner?" Ardi asked him in a low voice.
+Qeni e shikoi dhe lëvizi bishtin pak, si të thoshte: «Nuk e di.» || The dog looked at him and moved his tail a little, as if to say: "I do not know."
+Ardi e dinte që gjyshja nuk do ta pranonte një qen të tretë në shtëpi. || Ardi knew that grandmother would not accept a third animal in the house.
+Ajo kishte tashmë një qen të madh dhe një mace, që nuk e donte asnjë qen. || She already had a big dog that barked a lot, and a cat that did not like any dog.
+Por qeni i vogël ishte shumë i ftohtë, dhe Ardi nuk kishte zemër ta lërë në shi. || But the little dog was very cold, and Ardi did not have the heart to leave him in the rain.
+E vuri në çantë, mbi fletoret, dhe e mbylli çantën pak. || He put him in his bag, on top of the notebooks, and closed the bag a little.
+
+Rruga për në shtëpi ishte e gjatë. || The way home was long.
+Qeni lëvizte në çantë, dhe Ardi e mbante me të dy duart. || The dog moved in the bag, and Ardi held it with both hands.
+Një grua që kalonte e pyeti: — Çfarë ke aty, djalë? || A woman who was passing asked him: "What have you got there, boy?"
+— Libra, — tha Ardi. || "Books," said Ardi.
+Në atë moment qeni bëri një zë të vogël. || At that moment the dog made a small sound.
+Gruaja qeshi dhe tha: — Libra që bërtasin, është një shkollë e mirë! || The woman laughed and said: "Books that bark, it is a good school!"
+
+Në shtëpi gjyshja po përgatiste drekën. || At home grandmother was preparing lunch.
+— Ardi, pse ke një çantë që lëviz? — pyeti ajo pa u kthyer. || "Ardi, why do you have a bag that moves?" she asked without turning round.
+— Është ... një libër i gjallë, — tha Ardi. || "It is ... a living book," said Ardi.
+— Një libër që ka bisht? — tha Drita, dhe tani u kthye. || "A book that has a tail?" said Drita, and now she turned round.
+Qeni e ngriti kokën nga çanta dhe e pa Dritën me sy të mëdhenj. || The dog raised his head from the bag and looked at Drita with big eyes.
+Drita heshti për disa sekonda. || Drita was silent for a few seconds.
+Pastaj tha: — Mos më thuaj se ke sjellë një qen të tretë në këtë shtëpi. || Then she said: "Do not tell me that you have brought a third animal into this house."
+— Vetëm për sonte, gjyshe, — tha Ardi. || "Only for tonight, grandmother," said Ardi.
+— Nëse e lë jashtë, ai do të vdesë nga ftohja. || "If I leave him outside, he will die of the cold."
+— Çdo qen «vetëm për sonte» bëhet qen i shtëpisë, — tha gjyshja. || "Every dog 'only for tonight' becomes a dog of the house," said grandmother.
+Por ajo mori një peshqir të vjetër dhe e fshiu qenin me kujdes. || But she took an old towel and dried the dog carefully.
+
+Atë natë qeni fjeti në dhomën e Ardit, mbi një batanije. || That night the dog slept in Ardi's room, on a blanket.
+Gjyshja e rregulloi batanijen e vjetër me duart e saj. || Grandmother arranged the old blanket with her own hands.
+Pas një ore ai filloi të qajë me një zë të hollë dhe të trishtuar. || After an hour he began to cry in a thin and sad voice.
+Gjyshja erdhi te dera me llambën në dorë. || Grandmother came to the door with the lamp in her hand.
+— Ai ka frikë, — pëshpëriti Ardi. || "He is afraid," whispered Ardi.
+— Është i vetëm dhe nuk e di ku është. || "He is alone and does not know where he is."
+Gjyshja nuk tha asgjë. || Grandmother said nothing.
+Ajo e pyeti përsëri nëse kishte ngrënë. || She asked again whether he had eaten.
+Ajo u ul pranë tyre, e preku qenin pas kokës, dhe qeni heshti pas pak. || She sat down beside them, touched the dog on the head, and the dog fell silent after a little.
+— Kështu bëhet, — tha ajo. || "That is how it is done," she said.
+— Nuk i duhen fjalë, i duhet një dorë. || "He does not need words, he needs a hand."
+— Gjyshe, a mund ta mbajmë? — pyeti Ardi. || "Grandmother, can we keep him?" asked Ardi.
+— Jo, — tha ajo me zë të ulët. || 'No,' she said in a low voice.
+— Ai ka një pronar që ndoshta po e kërkon sonte në rrugë. || "He has an owner who is perhaps looking for him in the street tonight."
+— Nëse e kemi marrë ne, duhet ta kthejmë atje ku i takon. || "If we have taken him, we must give him back where he belongs."
+Të dielën në mëngjes Ardi e mori qenin dhe shkoi te Sami. || On Sunday morning Ardi took the dog and went to Sam.
+Ai kishte një ide, por nuk e dinte si ta fillonte. || He had an idea, but he did not know how to begin.
+
+# sq-b1-10 | b1-bridge | instructions | story | Njoftimi
+Të dielën në mëngjes Ardi erdhi te Sami me qenin në krah. || On Sunday morning Ardi came to Sam with the dog in his arms.
+Qeni kishte fjetur mirë, kishte ngrënë një pjatë me oriz dhe tani ecte pas tij si një hije. || The dog had slept well, had eaten a bowl of rice, and now followed him like a shadow.
+Rripi i tij i kuq ishte ende i thyer, dhe ai lëvizte bishtin sa herë që dëgjonte emrin e Ardit. || His red collar was still broken, and he wagged his tail every time he heard Ardi's name.
+Ardi e kishte sjellë me vete edhe batanijen e tij. || Ardi had brought his blanket with him too.
+— Gjyshja thotë se duhet ta kthejmë, — shpjegoi Ardi. || "Grandmother says we must give him back," Ardi explained.
+— Por nuk dimë kush është pronari i tij. || "But we do not know who his owner is."
+— Atëherë duhet ta gjejmë pronarin, — tha Sami. || "Then we must find the owner," said Sam.
+— Dhe për këtë na duhet një njoftim. || "And for that we need a notice."
+
+Sami e hapi kompjuterin dhe e thirri Luanin, që tha se do të ndihmonte. || Sam opened the computer and called Luan, who said he would help.
+Luani erdhi me një letër të bardhë në dorë. || Luan came with a white sheet of paper in his hand.
+— Një njoftim i mirë ka katër pjesë, — tha ai. || "A good notice has four parts," he said.
+— Në fillim një fjali e shkurtër dhe e madhe, që ta shohë njeriu nga larg. || 'At the start a short and big sentence, so that a person can see it from far away.'
+— Pastaj ngjyra, madhësia dhe çdo gjë e veçantë e qenit. || 'Then the colour, the size and every special thing about the dog.'
+— Pastaj vendi dhe koha kur e gjetëm. || 'Then the place and the time when we found him.'
+— Dhe në fund numri i telefonit. || 'And at the end the telephone number.'
+— Mos shkruaj shumë fjalë, — shtoi Luani. || "Do not write many words," added Luan.
+— Njeriu që kalon rrugës nuk ka kohë të lexojë një libër. || "A person passing along the street has no time to read a book."
+
+Ardi dhe Sami u vunë në punë. || Ardi and Sam set to work.
+Ardi e bëri një fotografi të qenit me telefonin e Samit, dhe qeni qëndroi i qetë, gjë që i bëri të gjithë të qeshin. || Ardi took a photograph of the dog with Sam's phone, and the dog stayed calm, which made everyone laugh.
+Pastaj shkruan në kompjuter: || Then they wrote on the computer:
+«NJË QEN I GJETUR || "A FOUND DOG
+E shtunë në mëngjes, në oborrin e shkollës së qytetit. || Saturday morning, in the yard of the city school.
+Është një qen i vogël, me ngjyrë kafe, me një rrip të kuq të thyer. || He is a small dog, brown, with a broken red collar.
+Është i qetë dhe shumë i uritur. || He is calm and very hungry.
+Nëse është qeni juaj, telefononi në numrin 069 123 456. || If he is your dog, phone this number: 069 123 456.
+Ai po ju pret.» || He is waiting for you."
+— Mund ta fshijmë fjalinë e fundit, — tha Luani, — por është e bukur, dhe e lëmë. || 'We could delete the last sentence,' said Luan, 'but it is beautiful, and we leave it.'
+
+Sami e shkroi njoftimin dhjetë herë në shkollë. || Sam wrote the notice ten times at the school.
+Pastaj të tre dolën në qytet me njoftimet në dorë dhe me një qen që nuk donte të largohej nga Ardi. || Then the three of them went out into the city with the notices in their hands and with a dog that did not want to leave Ardi.
+E ngjitën një njoftim në derën e shkollës, një tjetër te stacioni i autobusit dhe një të tretë në treg, ku gjyshja Drita e mori dhe e vuri pranë bukës. || They stuck one notice on the school door, another at the bus station and a third at the market, where grandmother Drita took it and put it beside the bread.
+Dy njoftime të tjera i dhanë një mjeku të kafshëve dhe një dyqani me ushqim për kafshë. || Two more notices they gave to an animal doctor and to a shop with food for animals.
+Mjeku i kafshëve e shikoi qenin, i preku kokën dhe tha se ishte mirë, vetëm i uritur dhe i lodhur. || The animal doctor looked at the dog, touched his head and said that he was fine, only hungry and tired.
+— Dhe nuk ka asnjë gjë me emrin e pronarit, — shtoi ai, — kështu që njoftimi është rruga e vetme. || 'And he has nothing with the owner's name,' he added, 'so the notice is the only way.'
+Ardi heshti pak. || Ardi was silent for a while.
+— Po nëse nuk vjen askush? — pyeti ai. || "And if nobody comes?" he asked.
+— Atëherë do të bëjmë një njoftim tjetër, — tha Sami. || "Then we will make another notice," said Sam.
+— Dhe pastaj një tjetër, deri sa ta gjejmë. || "And then another, until we find him."
+
+Në mbrëmje telefoni i Samit ra. || In the evening Sam's phone rang.
+Ishte një zë femre, që fliste shpejt dhe pothuajse qante. || It was a woman's voice, speaking fast and almost crying.
+— Përshëndetje, ju lutem, — tha zëri. || "Hello, please," said the voice.
+— A jeni ju që keni gjetur një qen të vogël me një rrip të kuq? || "Are you the one who found a small dog with a red collar?"
+— Po, jemi ne, — u përgjigj Sami. || "Yes, it is we," Sam answered.
+— Si quhet qeni juaj? || "What is your dog called?"
+— Quhet Bardhi, edhe pse nuk është i bardhë, — tha zëri. || "He is called Bardhi, although he is not white," said the voice.
+— Vajza ime e ka humbur para dy javësh, kur ishim në qytetin tjetër. || "My daughter lost him two weeks ago, when we were in the other city."
+— Ajo qan çdo natë. || "She cries every night."
+Sami buzëqeshi, dhe Ardi, që po dëgjonte pranë tij, ngriti dorën si të kishte marrë një dhuratë. || Sam smiled, and Ardi, who was listening beside him, raised his hand as if he had won a game.
+— Mund të vini nesër pas shkollës, — tha Sami. || "You can come tomorrow after school," said Sam.
+— Ne do të jemi te stacioni i autobusit, atje ku është njoftimi i dytë. || "We will be at the bus station, where the second notice is."
+
+# sq-b1-11 | b1-bridge | narrative | story | Pronari i qenit
+Të hënën pas shkollës Ardi dhe Sami e prisnin te stacioni i autobusit një grua dhe një vajzë. || On Monday after school Ardi and Sam were waiting at the bus station for a woman and a girl.
+Qeni ishte shtrirë te këmbët e Ardit dhe nuk lëvizte. || The dog lay at Ardi's feet and did not move at all.
+Autobusi i parë erdhi dhe u largua, pastaj erdhi një tjetër. || The first bus came and left, then another came.
+Ardi filloi të mendonte se askush nuk do të vinte. || Ardi began to think that nobody would come.
+
+Në autobusin e tretë zbriti një vajzë me një xhaketë të kuqe. || From the third bus a girl in a red jacket got off.
+Ajo ishte rreth tetë vjeç, me flokë të zeza dhe me sy të kuq nga lotët. || She was about eight years old, with black hair and eyes red from crying.
+Pas saj vinte një grua që mbante një çantë të madhe. || Behind her came a woman carrying a big bag.
+Vajza e pa qenin, dhe për një sekondë nuk lëvizi. || The girl saw the dog, and for a second she did not move.
+Pastaj bërtiti: — Bardhi! || Then she cried out: "Bardhi!"
+Qeni u hodh përpara me një zë të gëzuar, dhe të dy ranë në mes të rrugës. || The dog leaped forward with a joyful voice, and the two fell in the middle of the street.
+Vajza e mori në krahë, ndërsa qeni lëvizte bishtin pa pushim. || The girl took him in her arms, while the dog wagged his tail without stopping.
+Vajza i pëshpëriti diçka qenit. || The girl whispered something to the dog.
+Askush nuk foli. || Nobody spoke.
+Edhe Sami e ndjeu se i kishin dalë lotët. || Even Sam felt that tears had come to his eyes.
+
+Nëna e vajzës erdhi te Sami dhe Ardi. || The girl's mother came to Sam and Ardi.
+— Ju falënderoj nga zemra, — tha ajo. || "I thank you from my heart," she said.
+— Kisha dy javë që e kërkonim në çdo vend. || 'For two weeks we had been looking for him in every place.'
+— Kishim shkuar te mjekët e kafshëve, te shtëpitë, te tregu, dhe kishim pyetur çdo njeri që kalonte. || 'We had gone to the animal doctors, to the houses, to the market, and had asked every person who passed.'
+— Unë e kisha humbur çdo shpresë. || "I had lost all hope."
+— Por e shkrova numrin e telefonit në dorë, dhe e thirra kur mbërrita. || 'But I wrote the telephone number on my hand, and I called when I arrived.'
+— Kur pashë njoftimin në derën e një shkolle, mendova se ishte një lojë. || 'When I saw the notice on the door of a school, I thought it was a game.'
+— Por vajza ime tha: «Nëse e thotë që po më pret, atëherë po më pret.» || "But my daughter said: 'If it says that he is waiting for me, then he is waiting for me.'"
+Ardi e shikoi vajzën dhe nuk dinte çfarë të thoshte. || Ardi looked at the girl and did not know what to say.
+Qeni ishte i tij vetëm për tri ditë, por i kishte hyrë në zemër. || The dog had been his for only three days, but he had got into his heart.
+
+Vajza e kuptoi. || The girl understood.
+Ajo e ngriti kokën nga qeni dhe e pyeti: — Ti e ke mbajtur? || She raised her head from the dog and asked him: "Did you keep him?"
+— Po, — tha Ardi me zë të ulët. || "Yes," said Ardi in a low voice.
+— Kishte frikë natën, dhe i hodha një batanije. || "He was afraid at night, and I threw him a blanket."
+— Faleminderit, — tha vajza me zë të qetë. || 'Thank you,' said the girl in a calm voice.
+— Po të mos ishe ti, ai do të ishte ende në rrugë. || "If it had not been for you, he would still be in the street."
+— Nëse do, mund të vish ta shohësh kur të duash. || "If you want, you can come to see him whenever you like."
+— Ne jetojmë në lagjen tjetër, por nuk është larg. || "We live in the other neighbourhood, but it is not far."
+Ardi mori frymë thellë dhe buzëqeshi. || Ardi took a deep breath and smiled.
+— Do të vij të shtunën, — tha. || "I will come on Saturday," he said.
+
+Para se të ndaheshin, nëna e pyeti Samin: — Çfarë mund të bëj për ju? || Before they parted, the mother asked Sam: "What can I do for you?"
+— Asgjë, — tha Sami. || "Nothing," said Sam.
+— Njoftimi e bëri punën e tij. || "The notice did its work."
+— Atëherë do të bëj unë një njoftim, — qeshi ajo. || "Then I will make a notice myself," she laughed.
+— «Të shtunën byrek me mjaltë për të gjithë ata që gjejnë qen.» || ''On Saturday byrek with honey for all those who find dogs.''
+Të gjithë qeshën, dhe vajza e mori qenin për rripin e thyer dhe e çoi në autobus. || They all laughed, and the girl took the dog by the broken collar and led him to the bus.
+Qeni ktheu kokën vetëm një herë, e shikoi Ardin dhe lëvizi bishtin. || The dog turned his head only once, looked at Ardi and wagged his tail.
+
+Kur u kthye në shtëpi, gjyshja Drita e pyeti pa e shikuar: — Si shkoi? || When he came home, grandmother Drita asked him without looking: "How did it go?"
+— Ishte mirë, — tha Ardi. || 'It was fine,' said Ardi.
+— Ai e gjeti vajzën. || "He found the girl."
+Gjyshja e preku në kokë. || Grandmother touched him on the head.
+— Ti e ke mbajtur për tri ditë, — tha ajo. || "You kept him for three days," she said.
+— Kjo është mjaft kohë për të mësuar se si është të japësh. || "That is enough time to learn what it is like to give."
+— Kur jep diçka që e do, nuk e humbet, — tha Drita. || "When you give something you love, you do not lose it," said Drita.
+— E ke pasur më shumë, sepse tani e di sa e do. || "You have had it more, because now you know how much you love it."
+
+# sq-b1-12 | b1-bridge | conversation | dialogue | Plani për Korçën
+Dritani kishte filluar punën si shofer të hënën e kaluar. || Dritan had started work as a driver last Monday.
+Para se t'i jepte çelësat e furgonit, shoqja e Anës kishte kërkuar patentën e tij dhe e kishte parë me kujdes. || Before giving him the keys of the minibus, Ana's friend had asked for his licence and had looked at it carefully.
+Dritani e mbante patentën në xhep, edhe pse nuk e kontrollonte askush. || Dritan kept the licence in his pocket, even though nobody checked it.
+Ai thoshte se patenta ishte letra e vetme që e kishte gjithmonë me vete. || He said that the licence was the only paper he always had with him.
+Zonja që e kishte furgonin, shoqja e Anës, i kishte thënë se ishte një punë e mirë dhe se, nëse punonte mirë, kontrata do të vazhdonte. || The lady who owned the minibus, Ana's friend, had told him that it was a good job and that, if he worked well, the contract would continue.
+Ai ishte i lumtur, por këtë të enjte mbrëmje ishte edhe pak i lodhur. || He was happy, but this Thursday evening he was also a little tired.
+Mira i kishte thënë se motra e saj nga Korça i kishte telefonuar, dhe tani të gjithë ishin mbledhur në shtëpinë e tyre për të vendosur. || Mira had told him that her sister from Korça had phoned, and now they had all gathered at their house to decide.
+
+— Motra ime thotë se na pret për tri ditë, — tha Mira. || "My sister says she expects us for three days," said Mira.
+— Ka një dhomë për fëmijët dhe një shtrat për dy të rritur. || 'She has a room for the children and a bed for two adults.'
+— Do të marr edhe një batanije për fëmijët, — tha Mira. || 'I will take a blanket for the children too,' said Mira.
+— Dhe thotë se ky është viti më i bukur që ka pasur ndonjëherë qyteti. || 'And she says that this is the most beautiful year the city has ever had.'
+— Kush do të vijë? — pyeti Ana. || "Who will come?" asked Ana.
+— Ne të katër, dhe Sami, dhe ju, nëse mundeni, — u përgjigj Mira. || "The four of us, and Sam, and you, if you can," Mira answered.
+— Unë nuk mund, — tha Luani. || "I cannot," said Luan.
+— Kam provime të premten dhe të shtunën, dhe nëse nuk jam atje, nxënësit do të kenë një mësues që nuk e njohin. || 'I have exams on Friday and Saturday, and if I am not there the pupils will have a teacher they do not know.'
+— Po të kisha më shumë ditë, do të vija me gëzim. || 'If I had more days, I would come with joy.'
+— Edhe Ana duhet të pyesë Dr Artën, — shtoi Mira. || 'Ana too must ask Dr Arta,' added Mira.
+— E kam pyetur, — tha Ana. || "I have asked," said Ana.
+— Dr Arta tha se mund të largohem, por vetëm nëse kthehem të hënën në orën tetë. || "Dr Arta said that I can go away, but only if I come back on Monday at eight."
+— Atëherë duhet të nisemi të premten në mëngjes herët dhe të kthehemi të dielën në mbrëmje, — tha Dritani. || "Then we must set off early on Friday morning and come back on Sunday evening," said Dritan.
+
+Dritani e hapi një hartë të madhe mbi tavolinë. || Dritan opened a big map on the table.
+Sami e vuri telefonin pranë hartës për të parë ku ishte Pogradeci. || Sam put his phone beside the map to see where Pogradec was.
+Pastaj e vuri telefonin në xhep dhe e shikoi Dritanin. || Then he put the phone in his pocket and looked at Dritan.
+Dritani e fshiu me laps rrugën e vjetër dhe e shkroi një të re. || Dritan rubbed out the old road with a pencil and wrote a new one.
+— Rruga më e shkurtër kalon nga Elbasani, nëpër mal, — shpjegoi ai. || "The shortest road goes through Elbasan, over the mountain," he explained.
+— Është e bukur, por ka shumë kthesa. || "It is beautiful, but it has many bends."
+— Nëse jemi të lodhur, mund të pushojmë në Pogradec dhe të flemë atje. || "If we are tired, we can rest in Pogradec and sleep there."
+— Po furgoni? — pyeti Sami. || "And the minibus?" asked Sam.
+— A nuk është i shoqes së Anës? || 'Is it not Ana's friend's?'
+— Është i saj, por ajo më tha se nga e premtja në të hënë nuk i duhet, — tha Dritani. || "It is hers, but she told me that from Friday to Monday she does not need it," said Dritan.
+— Më tha: «Nëse e merr, ki kujdes me të, dhe mos ngas shpejt.» || "She said to me: 'If you take it, take care of it, and do not drive fast.'"
+— Unë gjithmonë ngas ngadalë, — tha ai. || "I always drive slowly," he said.
+— Po, — qeshi Mira, — kur nuk je vonë. || "Yes," Mira laughed, "when you are not late."
+
+— Sa do të kushtojë? — pyeti Sami. || "How much will it cost?" asked Sam.
+— Unë dua të paguaj për rrugën, ose një pjesë të saj. || 'I want to pay for the road, or a part of it.'
+— Mos mendo shumë, — tha Dritani. || 'Do not think too much,' said Dritan.
+— Rrugën e paguan ajo, sepse e quan pjesë të punës. || 'She pays for the road, because she counts it as part of the work.'
+— Ti paguaj një kafe në Pogradec. || "You pay for a coffee in Pogradec."
+— Mirë, — tha Sami. || 'Good,' said Sam.
+— Po klubi? Të shtunën kemi mësim. || "And the club? We have a lesson on Saturday."
+— Mund t'i çosh fëmijët në shtëpi të mi, — tha Luani. || "You can send the children to my house."
+— Jo, — tha Sami. || "No," said Sam.
+— Do të shkruaj një mesazh: këtë javë ata do të mësojnë vetë dhe do të sjellin diçka nga shtëpia. || "I will write a message: this week they will learn on their own and bring something from home."
+— Çfarë? || "What?"
+— Një histori në anglisht, ose tri fjalë të reja. || "A story in English, or three new words."
+
+Fëmijët, që po dëgjonin nga dhoma tjetër, dolën te dera. || The children, who were listening from the other room, came to the door.
+— Do të vijmë në Korçë? — pyeti Elira me sy të mëdhenj. || "Are we coming to Korça?" asked Elira with big eyes.
+— Po, — tha Dritani, — dhe do të pushojmë çdo dy orë që të mos ndihet keq askush. || "Yes," said Dritan, "and we will rest every two hours so that nobody feels sick."
+Gjergji u gëzua shumë, dhe Ardi ngriti dorën si në shkollë. || Gjergj was very glad, and Ardi raised his hand as in school.
+— A mund të sjell edhe unë një mik? — pyeti. || "May I bring a friend too?" he asked.
+— Cilin mik? — pyeti Mira. || "Which friend?" asked Mira.
+— Bardhin! || "Bardhi!"
+
+# sq-b1-13 | b1-bridge | narrative | story | Udhëtimi
+Të premten në orën gjashtë të mëngjesit furgoni ishte para shtëpisë së Dritanit. || On Friday at six in the morning the minibus was in front of Dritan's house.
+Ishte ende natë, dhe qyteti flinte. || It was still night, and the city was asleep.
+Dritani kontrolloi furgonin, i vuri valixhet brenda dhe e pa që të gjithë ishin aty: Mira, Gjergji, Elira, Ardi, Ana, Sami. || Dritan checked the minibus, put the suitcases inside and saw that everyone was there: Mira, Gjergj, Elira, Ardi, Ana, Sam.
+— Gjashtë me mua janë shtatë, — tha ai. || "Six with me makes seven," he said.
+— Është numri më i mirë. || "It is the best number."
+Pastaj u ul në vendin e shoferit, u nis. || Then he sat in the driver's seat, set off.
+
+Gjatë gjithë orës së parë fëmijët heshtën, sepse ende kishin gjumë. || During the whole first hour the children were silent, because they were still sleepy.
+Kur dielli u ngrit mbi male, ata u zgjuan të gjithë bashkë, si të kishte thirrur dikush. || When the sun rose over the mountains, they all woke up together, as if someone had called them.
+Retë ishin të ulëta, dhe në luginë mjegulla qëndronte si një lumë i bardhë. || The clouds were low, and in the valley the mist lay like a white river.
+— Shikoni! — thirri Elira. || "Look!" called Elira.
+— Mjegulla ka rënë në lumë dhe nuk dëshiron të dalë! || "The mist has fallen into the river and does not want to get out!"
+Ana qeshi. || Ana laughed.
+— Kjo është mënyra më e bukur për ta thënë, — tha ajo. || "That is the most beautiful way to say it," she said.
+
+Në Elbasan ata pushuan për një kafe te një dyqan i vogël pranë rrugës. || In Elbasan they stopped for a coffee at a small shop by the road.
+Gjergji, që kishte filluar të bëhej i bardhë në fytyrë, zbriti shpejt dhe u ul mbi një gur. || Gjergj, who had begun to turn white in the face, got down quickly and sat on a stone.
+— Kam një gjë në stomak, — pëshpëriti. || "I have something in my stomach," he whispered.
+— Është rruga, — tha Dritani. || "It is the road," said Dritan.
+— Ka pesëdhjetë kthesa nga këtu deri në mal. || "There are fifty bends from here up to the mountain."
+— Ulu përpara, shiko një pikë të largët dhe merr frymë ngadalë. || "Sit in front, look at a distant point and breathe slowly."
+Mira i dha pak bukë të thatë dhe një gotë çaj. || Mira gave him some dry bread and a glass of tea.
+Pas dhjetë minutash ngjyra iu kthye në fytyrë. || After ten minutes the colour came back to his face.
+
+Pasi u ndjenë më mirë, fëmijët filluan të këndonin. || When they felt better, the children began to sing.
+Elira e dinte një këngë të vjetër për një lumë dhe për një vajzë që priste një djalë në breg. || Elira knew an old song about a river and about a girl who waited for a boy on the bank.
+Sami e dëgjoi dy herë dhe pastaj provoi ta këndonte bashkë me ta, por i mbeti gjuha te fjala «lëndinë». || Sam heard it twice and then tried to sing it with them, but his tongue got stuck on the word "lëndinë."
+— Çfarë do të thotë «lëndinë»? — pyeti ai. || "What does 'lëndinë' mean?" he asked.
+— Është një vend i gjelbër, ku delet pushojnë në verë, — shpjegoi Mira. || "It is a green place where the sheep rest in summer," Mira explained.
+— Atëherë unë nuk kam parë kurrë një lëndinë në Tiranë! || "Then I have never seen a lëndinë in Tirana!"
+— Jo, — qeshi Mira, — atje ke vetëm pallate dhe makina. || "No," Mira laughed, "there you have only apartment blocks and cars."
+Sami e shkroi fjalën në fletore dhe e shkroi edhe një herë më poshtë. || Sam wrote the word in his notebook and wrote it once more below.
+
+Rruga filloi të ngjitej. || The road began to climb.
+Ata kaluan nëpër pyje, ku pemët kishin filluar të bëheshin kafe dhe të kuqe. || They passed through woods, where the trees had begun to turn brown and red.
+Herë pas here Dritani ecte ngadalë, sepse disa dele kalonin rrugën. || From time to time Dritan drove slowly, because some sheep were crossing the road.
+Një bari i vjetër ngriti kapelën për përshëndetje. || An old shepherd raised his hat in greeting.
+— Mirëdita! — thirri Sami me dritaren e hapur. || "Good day!" called Sam through the open window.
+— Mirëdita, bir! — u përgjigj plaku. || "Good day, son!" the old man answered.
+— Nga vini? || "Where are you coming from?"
+— Nga Tirana! || "From Tirana!"
+— Atëherë keni ende rrugë të gjatë, por keni kohë të mirë. || "Then you still have a long road, but you have good weather."
+Ardi, që e kishte dëgjuar, tha se ky ishte njeriu më i qetë që kishte parë ndonjëherë. || Ardi, who had heard him, said that this was the calmest man he had ever seen.
+
+Pas disa orësh rruga filloi të zbresë, dhe pastaj, pas një kthese të gjatë, para tyre u hap një shesh i madh uji. || After a few hours the road began to go down, and then, after a long bend, a big expanse of water opened before them.
+Ishte liqeni. || It was the lake.
+Askush nuk foli për një moment. || Nobody spoke for a moment.
+Uji ishte aq i qetë sa dukej si një pasqyrë, dhe në anën tjetër, mjaft larg, maleve u pa një vijë e hollë. || The water was so calm that it looked like a mirror, and on the other side, far away, a thin line of mountains could be seen.
+— Kjo është shumë më e madhe se sa e kisha menduar, — tha Sami. || "This is much bigger than I had thought," said Sam.
+— Nuk mund ta besoj, — shtoi ai. || "I cannot believe it," he added.
+— Është një nga liqenet më të vjetër në botë, — tha Dritani me gëzim, dhe tani ishte ai që fliste si mësues. || "It is one of the oldest lakes in the world," said Dritan with joy, and now it was he who spoke like a teacher.
+Në Pogradec ata hëngrën peshk të pjekur pranë ujit, dhe Sami pagoi për kafetë, siç kishte premtuar. || In Pogradec they ate grilled fish by the water, and Sam paid for the coffees, as he had promised.
+Në orën pesë të mbrëmjes, kur dielli ishte i ulët, furgoni hyri në Korçë. || At five in the evening, when the sun was low, the minibus entered Korça.
+
+# sq-b1-14 | b1-bridge | description | story | Një mëngjes në Korçë
+Të shtunën në mëngjes Samin e zgjoi zëri i një shitësi që fliste me zë të lartë nën dritare. || On Saturday morning Sam was woken by the voice of a seller speaking loudly under the window.
+Ai u ngrit, e hapi dritaren dhe mbeti pa fjalë. || He got up, opened the window and was left speechless.
+Korça ishte me shumë dritë, dhe në fund të rrugës, mbi çatitë e kuqe, ngrihej mali. || Korça was with much light, and at the end of the street, above the red roofs, the mountain rose.
+Ajri ishte i ftohtë dhe i pastër, me erë molle. || The air was cold and clean, with a smell of apples.
+
+Motra e Mirës e priti në kuzhinë me kafe dhe me një pjatë me byrek të ngrohtë. || Mira's sister received him in the kitchen with coffee and a plate of warm byrek.
+Quhej Teuta, dhe kishte po ato sy të mirë si Mira. || She was called Teuta, and had the same kind eyes as Mira.
+— Është hera e parë që vjen në Korçë? — e pyeti. || "Is it the first time you have come to Korça?" she asked him.
+— Po, — tha Sami. || "Yes," said Sam.
+— Dritani më tha se këtu është një nga qytetet më të bukura të vendit. || "Dritan told me that this is one of the most beautiful cities of the country."
+— Dritani është i dashur, por ka pak të drejtë, — qeshi Teuta. || "Dritan is kind, but he is only a little right," laughed Teuta.
+— Korça nuk është një nga qytetet më të bukura. || "Korça is not one of the most beautiful cities."
+— Është më e bukura. Por nuk po e them unë, e thonë të gjithë banorët e saj. || "It is the most beautiful. But I am not saying it, all its inhabitants say it."
+
+Pas mëngjesit ata dolën në rrugë të gjithë bashkë. || After breakfast they all went out into the street together.
+Qyteti shtrihej në një fushë të gjerë mes maleve, dhe rrugët e tij ishin të drejta, me pemë të larta në të dy krahët. || The city lay in a wide plain among the mountains, and its streets were straight, with tall trees on both sides.
+Shtëpitë e vjetra kishin ballkone të vjetra dhe porta me ngjyra, dhe shumë prej tyre kishin një oborr të vogël me lule. || The old houses had old balconies and coloured gates, and many of them had a small yard with flowers.
+— Në mbrëmje, dikur, djemtë këndonin nën dritaret e vajzave, — tregoi Teuta. || 'In the evening, once, the boys used to sing under the girls' windows,' Teuta told them.
+— Sot këtë e bëjnë më pak, por muzika është ende e dashur këtu. || "Today they do this less, but music is still loved here."
+— Edhe unë mund të këndoj nën dritaren e një vajze, — tha Gjergji me një buzëqeshje. || "I can sing under a girl's window too," said Gjergj with a smile.
+— Por do të më dëgjojë vetëm Ardi. || "But only Ardi will hear me."
+— Dhe Bardhi, nëse e sjell, — tha Ardi. || "And Bardhi, if you bring him," said Ardi.
+Të gjithë qeshën, edhe pse Bardhi ishte shumë larg, në një lagje tjetër të Tiranës. || They all laughed, although Bardhi was very far away, in another neighbourhood of Tirana.
+
+Ata hynë në tregun e vjetër, ku rrugët ishin të ngushta dhe me gurë të vegjël. || They entered the old bazaar, where the streets were narrow and had small stones.
+Dyqanet ishin të vogla, me tavolina para derës, dhe shitësit i pastronin tavolinat çdo mëngjes. || The shops were small, with tables in front of the door, and the sellers cleaned their tables every morning.
+Një plak shiste mjaltë dhe çaj mali, një tjetër libra të vjetër, një grua çorape të ngrohta për dimër. || One old man sold honey and mountain tea, another old books, a woman warm socks for winter.
+Elira pushoi para një dritareje të vogël, ku kishte një kukull. || Elira stopped in front of a small window where there was a doll.
+Mira e pa dhe nuk tha asgjë, por më vonë, kur Elira nuk e shihte, e bleu. || Mira saw it and said nothing, but later, when Elira was not looking, she bought it.
+— Mos ia thuaj, — i pëshpëriti ajo Anës. || "Do not tell her," she whispered to Ana.
+— Do ta marrë për ditëlindje. || "She will get it for her birthday."
+
+Në mesditë Teuta i çoi në një shkollë të vjetër në qendër të qytetit. || At midday Teuta took them to an old school in the centre of the city.
+Aty, tha ajo, shumë vite më parë njerëzit kishin filluar të mësonin shqip në shkollë, kur nuk kishin shumë të drejta. || There, she said, many years earlier people had begun to learn Albanian at school, when they did not have many rights.
+Sami e shikoi dërrasën e zezë, bankat e vogla dhe dritaret e larta, dhe e kujtoi klubin e tij të vogël. || Sam looked at the blackboard, the small desks and the tall windows, and recalled his little club.
+Përpara shkollës kishte një lëndinë të gjelbër, dhe Sami e kujtoi fjalën që e kishte mësuar në udhëtim. || In front of the school there was a green lawn, and Sam recalled the word he had learned on the journey.
+Në Tiranë ai nuk kishte parë asnjë lëndinë të tillë. || In Tirana he had not seen any lawn like it.
+Luani do ta kishte dashur këtë vend, mendoi ai. || Luan would have loved this place, he thought.
+Ai e mori telefonin dhe bëri disa fotografi për të. || He took his phone and took a few photographs for him.
+— Çdo mësues duhet ta shohë një herë këtë shkollë, — tha Teuta. || "Every teacher should see this school once," said Teuta.
+— Sepse këtu e kupton se një gjuhë nuk mësohet vetëm me fjalë, por me guxim. || "Because here you understand that a language is not learned only with words, but with courage."
+Sami e shkroi në fletore: «Guxim.» || Sam wrote in his notebook: "Courage."
+Pastaj e shkroi me shkronja të mëdha, siç bënte me çdo fjalë që dëshironte ta mbante në mendje. || Then he wrote it in big letters, as he did with every word he wanted to keep in mind.
+Guximi, mendoi ai, ndoshta është fjala që i duhet çdo gjuhe. || Courage, he thought, is perhaps the word that every language needs.
+
+
+— Mundem të them diçka? — pyeti Sami. || "Can I tell you something?" Sami asked.
+
+# sq-b1-15 | b1-bridge | conversation | dialogue | Darka te Teuta
+Të shtunën në mbrëmje shtëpia e Teutës ishte me shumë zëra dhe erëra të mira. || On Saturday evening Teuta's house was with many voices and good smells.
+Në tavolinë kishte supë me perime, një sallatë të madhe, dy lloje djathi dhe një byrek që kishte bërë vetë Teuta. || On the table there was vegetable soup, a big salad, two kinds of cheese and a byrek that Teuta had made herself.
+Burri i saj, që quhej Agim dhe punonte në një furrë buke, e priti Samin me të dy duart. || Her husband, who was called Agim and worked in a bakery, received Sam with both hands.
+— Ti je ai që mëson fëmijët anglisht? — pyeti. || "You are the one who teaches children English?" he asked.
+— Po, — tha Sami. || "Yes," said Sam.
+— Por nuk e di se kush mëson kë. || "But I do not know who teaches whom."
+
+Kur të gjithë u ulën, Agimi ngriti gotën me ujë. || When they all sat down, Agim raised his glass of water.
+— Për miqtë që vijnë nga larg, — tha ai. || "To the friends who come from far away," he said.
+— Dhe për rrugën që i sjell. || "And to the road that brings them."
+— Rruga ishte e gjatë, por e bukur, — tha Dritani. || "The road was long, but beautiful," said Dritan.
+— Gjergji ishte pak i sëmurë në Elbasan, por pas çajit u bë mirë. || "Gjergj was a little sick in Elbasan, but after the tea he got well."
+— Kjo ishte buka e Mirës, — qeshi Gjergji. || "That was Mira's bread," laughed Gjergj.
+— Çdo gjë që ajo jep ka një fuqi të vogël. || "Everything she gives has a small power."
+— Mos e lavdëro shumë, — tha Mira. || "Do not praise her too much," said Mira.
+— Do të mendojë se ka një mrekulli në çantë. || "She will think she has a miracle in her bag."
+
+Pas supës Agimi e pyeti Samin se si i dukej Shqipëria pas një viti. || After the soup Agim asked Sam how Albania seemed to him after a year.
+Sami mendoi një moment para se të përgjigjej. || Sam thought for a moment before answering.
+— Kur erdha, — tha ai, — një grua në treg më tha se gjuha jonë është e vështirë, por se njerëzit janë më të lehtë se gjuha. || "When I came," he said, "a woman at the market told me that our language is difficult, but that the people are easier than the language."
+— Atëherë nuk e besova. || "Then I did not believe it."
+— Tani e di që kishte të drejtë. || "Now I know she was right."
+— Në Amerikë njerëzit janë shumë të dashur, por rrallë të ftojnë në shtëpi pa e pyetur më parë. || "In America people are very kind, but they rarely invite you home without asking first."
+— Këtu një i huaj hyn në një shtëpi dhe brenda pesë minutash ka në dorë një gotë kafe. || "Here a stranger enters a house and within five minutes has a glass of coffee in his hand."
+— Kjo është për ne një ligj më i vjetër se çdo ligj i shkruar, — tha Agimi. || "For us this is a law older than any written law," said Agim.
+— Mikun e presim, edhe nëse nuk kemi asgjë. || "We receive the guest even if we have nothing."
+— Në fund e ndajmë atë që kemi. || "In the end we share what we have."
+
+Ardi, që po hante byrek me të dy duart, ngriti kokën. || Ardi, who was eating byrek with both hands, raised his head.
+Elira e mbante kukullën e re në dorë gjithë natën, dhe e mbante edhe kur hëngri. || Elira held the new doll in her hand all night, and held it even when she ate.
+Mira e pa dhe buzëqeshi, sepse kukulla ishte dhurata që e kishte blerë në treg. || Mira saw it and smiled, because the doll was the gift she had bought at the market.
+— Po nëse kemi shumë miq dhe pak byrek? — pyeti. || "And if we have many friends and little byrek?" he asked.
+— Atëherë çdo njeri ha një pjesë të vogël dhe të gjithë mbeten të lumtur, — tha Teuta. || "Then each person eats a small piece and everybody remains happy," said Teuta.
+— Kjo është një matematikë e re, — tha Gjergji. || 'That is a new kind of mathematics,' said Gjergj.
+Agimi i tregoi Ardit një lëndinë të madhe pas shkollës, ku fëmijët luanin çdo pasdite. || Agim showed Ardi a big lawn behind the school, where the children played every afternoon.
+— Të shkosh në një qytet tjetër kërkon pak guxim, — i tha ai Samit. || 'Going to another city takes a little courage,' he told Sam.
+— Por të mbetesh kërkon më shumë. || 'But staying takes more.'
+— Është matematika e zemrës, — u përgjigj Teuta. || "It is the mathematics of the heart," Teuta answered.
+
+Pas darkës prindërit u ulën pranë sobës, dhe fëmijët luajtën me një lojë me letra. || After dinner the parents sat by the stove, and the children played a card game.
+Dritani i tregoi Agimit për kompaninë, për çatinë e shkollës dhe për punën e re. || Dritan told Agim about the company, about the school roof and about the new job.
+Agimi e dëgjoi pa thënë asnjë fjalë. || Agim listened without saying a word.
+— Dhe nëse nuk do të kishe humbur punën, nuk do të ishe sot këtu, — tha ai në fund. || "And if you had not lost your job, you would not be here today," he said in the end.
+— Ndoshta çdo gjë ka një arsye. || "Perhaps everything has a reason."
+— Ndoshta, — tha Dritani. || "Perhaps," said Dritan.
+— Por nuk do ta zgjidhja vetë këtë mënyrë për ta mësuar. || "But I would not have chosen this way to learn it myself."
+Teuta u ngrit për të sjellë çajin, dhe Sami e ndihmoi të mblidhte pjatat. || Teuta got up to bring the tea, and Sam helped her to gather the plates.
+— Faleminderit që e solle Mirën, — pëshpëriti ajo. || "Thank you for bringing Mira," she whispered.
+— Ishte e trishtuar vitin e kaluar, dhe tani qesh përsëri. || "She was sad last year, and now she laughs again."
+
+Para se të flinin, Teuta e pyeti Mirën nëse do të vinin të dielën në kishë me ta. || Before they went to sleep, Teuta asked Mira whether they would come to church with them on Sunday.
+— Kisha jonë është e vogël dhe e vjetër, — tha ajo. || "Our church is small and old," she said.
+— Por njerëzit janë të ngrohtë, dhe pastori e njeh çdo fëmijë me emër. || "But the people are warm, and the pastor knows every child by name."
+— Do të vijmë, — u përgjigj Mira pa u menduar. || "We will come," Mira answered without thinking.
+— Kemi një dhuratë për ata që na presin: një bukë të Dritës dhe një shishe me mjaltë që na dhanë Ana dhe Sami. || "We have a gift for those who are waiting for us: a loaf from Drita and a bottle of honey that Ana and Sam gave us."
+Teuta qeshi dhe e mori në krah. || Teuta laughed and took her in her arms.
+— Ju sillni gjithë Shqipërinë në një çantë, — tha. || "You bring all of Albania in one bag," she said.
+Jashtë filloi të binte shi i hollë, dhe dritat e qytetit u ndezën një nga një. || Outside a fine rain began to fall, and the lights of the city came on one by one.
+
+
+Nëse mundeni, ejani të shtunën. || If you can, come on Saturday.
+
+# sq-b1-16 | b1-bridge | testimony | story | Dëshmia e Anës
+Të dielën në mëngjes kisha e Korçës ishte e vogël dhe plot njerëz. || On Sunday morning the church of Korça was small and full of people.
+Kishte rreth dyzet karrige të vjetra, një tavolinë të vogël dhe një dritare të gjatë, nga e cila hynte dielli i mëngjesit. || There were about forty old chairs, a small table and a tall window through which the morning sun came in.
+Teuta dhe Agimi i kishin ulur miqtë e tyre në karriget e mesit, dhe fëmijët ishin ulur në dysheme, pranë dritares, me letra dhe laps, dhe Elira me kukullën e saj. || Teuta and Agim had seated their friends on the middle chairs, and the children were sitting on the floor, by the window, with paper and a pencil, and Elira with her doll.
+Pastori, një burrë i hollë me flokë të bardha, mbaroi predikimin dhe pastaj tha: || The pastor, a thin man with white hair, finished the sermon and then said:
+— Kemi sot mysafirë nga Tirana, dhe më kanë thënë se njëri prej tyre ka diçka për të treguar. || "Today we have guests from Tirana, and I have been told that one of them has something to tell."
+Të gjithë u kthyen nga Ana. || Everyone turned to Ana.
+Ajo e shikoi Mirën, që i buzëqeshi, pastaj u ngrit ngadalë, me kujdes. || She looked at Mira, who smiled at her, then rose slowly, carefully.
+
+— Nuk jam mësuar të flas para njerëzve, — filloi Ana. || "I am not used to speaking in front of people," Ana began.
+— Dhe kjo kërkon guxim, më shumë se çdo natë në spital. || 'And this takes courage, more than any night in the hospital.'
+— Jam infermiere, dhe puna ime është të dëgjoj. || "I am a nurse, and my work is to listen."
+— Por sot do të flas për arsyen pse e zgjodha këtë punë. || "But today I will talk about the reason why I chose this work."
+— Kur isha dymbëdhjetë vjeç, nëna ime ishte në spital me një sëmundje të rëndë. || "When I was twelve, my mother was in hospital with a serious illness."
+— Ishim aty pesë javë, dhe unë flija në një karrige pranë shtratit të saj. || "We were there for five weeks, and I slept on a chair beside her bed."
+— Një natë, kur kisha shumë frikë, erdhi një infermiere e re. || "One night, when I was very afraid, a young nurse came."
+— Nuk më tha asgjë të madhe. || "She did not say anything big to me."
+— Më solli një batanije dhe një çaj, u ul pranë meje dhe më pyeti çfarë më pëlqen në shkollë. || "She brought me a blanket and a tea, sat down beside me and asked what I liked at school."
+— Atë natë vendosa që një ditë do të isha si ajo. || "That night I decided that one day I would be like her."
+
+Ana heshti një moment, dhe në dhomë nuk dëgjohej asgjë përveç shiut jashtë. || Ana was silent for a moment, and in the room nothing could be heard except the rain outside.
+— Nëna ime shpëtoi, — tha ajo. || "My mother recovered," she said.
+— Por vite më vonë, në universitet, pashë shumë njerëz që nuk shpëtuan. || "But years later, at university, I saw many people who did not recover."
+— Dhe fillova të pyes: ku është Zoti në këtë spital? || "And I began to ask: where is God in this hospital?"
+— Një ditë një grua e vjetër, që po vdiste, më tha diçka që nuk e harrova kurrë. || "One day an old woman, who was dying, told me something that I never forgot."
+— Më tha: «Zoti nuk është këtu për të na ruajtur nga vdekja, por për të na mbajtur për dore kur vdesim.» || "She said to me: 'God is not here to keep us from death, but to hold us by the hand when we die.'"
+— Atë ditë nuk e kuptova. || "That day I did not understand."
+— Mendova se ishte një fjalë që njerëzit e thonë kur nuk kanë tjetër. || "I thought it was a word people say when they have nothing else."
+
+— Kaluan vite, — vazhdoi Ana. || "Years passed," Ana went on.
+— Unë punova shumë, dhe nuk lutesha më. || "I worked a lot, and I no longer prayed."
+— Pastaj më ftoi Luani në kishën e tij, dhe unë shkova vetëm për ta mos e lënë të vetëm. || "Then Luan invited me to his church, and I went only so as not to leave him alone."
+— Dëgjova njerëz që nuk kishin përgjigje për çdo pyetje, por që nuk kishin frikë nga pyetjet. || "I heard people who did not have an answer for every question, but who were not afraid of the questions."
+— Dhe një ditë, në një natë të gjatë pune, më erdhi në mendje fjala e gruas së vjetër. || 'And one day, on a long night of work, the word of the old woman came to my mind.'
+— E kuptova. || "I understood it."
+— Zoti nuk më kishte premtuar që spitali do të ishte pa dhimbje. || "God had not promised me that the hospital would be without pain."
+— Më kishte premtuar që nuk do të isha vetëm në të. || "He had promised me that I would not be alone in it."
+
+Ana u ul pa shtuar asgjë. || Ana sat down without adding anything.
+Për një kohë të gjatë askush nuk lëvizi. || For a long time nobody moved.
+Pastori tha një lutje të shkurtër dhe të qetë, pa fjalë të mëdha. || The pastor said a short and calm prayer, without big words.
+Kur lutja mbaroi, një grua e vjetër u ngrit nga karriget e fundit, u ul pranë Anës dhe ia mbajti dorën me të dy duart. || When the prayer ended, an old woman got up from the last chairs, sat down beside Ana and held her hand with both hands.
+— Edhe unë kam qenë infermiere trembëdhjetë vite, — i pëshpëriti. || "I too was a nurse for thirteen years," she whispered to her.
+— Faleminderit që e the. || "Thank you for saying it."
+
+Pas shërbimit pastori i ftoi të gjithë në një dhomë të vogël pas kishës, ku kishte çaj, byrek dhe mjaltë. || After the service the pastor invited everyone to a small room behind the church, where there was tea, byrek and honey.
+Ardi e preku Anën në krah. || Ardi touched Ana on the arm.
+— Ana, a po qanin njerëzit sepse ishin të trishtuar? — pyeti ai me zë të ulët. || "Ana, were the people crying because they were sad?" he asked in a low voice.
+— Jo, Ardi, — tha ajo. || "No, Ardi," she said.
+— Ndonjëherë njeriu qan kur dikush thotë me zë të lartë diçka që ai e ndjen prej kohësh. || "Sometimes a person cries when someone says aloud something that he has felt for a long time."
+Sami, që qëndronte pranë, e shikoi Anën, por nuk tha asgjë. || Sam, who was standing nearby, looked at Ana, but said nothing.
+Më vonë, kur të gjithë po hanin byrek, ai erdhi pranë saj dhe e pyeti: — A mund ta shkruaj në fletore atë që the për gruan e vjetër? || Later, when everybody was eating byrek, he came up to her and asked: "May I write in my notebook what you said about the old woman?"
+— Shkruaje, — qeshi Ana me sy plot dashuri. || "Write it," laughed Ana with eyes full of love.
+— Por shkruaje me shkrim të madh, që ta lexosh edhe kur të kesh nevojë. || "But write it in big letters, so that you can read it even when you are in need."
+
+# sq-b1-17 | b1-bridge | conversation | dialogue | Pyetjet e Samit
+Të mërkurën në mbrëmje, pasi fëmijët u larguan nga klubi, Sami shkoi në kishën e vogël afër shkollës. || On Wednesday evening, after the children had left the club, Sam went to the little church near the school.
+Pastor Pjetri e kishte zakon të rrinte aty pas orës gjashtë, kur lagjja heshtte, dhe të lexonte ose të rregullonte karriget. || Pastor Pjetër had the habit of staying there after six o'clock, when the neighbourhood was quiet, and reading or arranging the chairs.
+Atë mbrëmje ai po rregullonte karriget e vjetra. || That evening he was arranging the old chairs.
+— Sam! — tha ai pa u kthyer. || "Sam!" he said without turning round.
+— Ke ardhur me një pyetje, apo me një libër? || "Have you come with a question, or with a book?"
+— Me një pyetje, — u përgjigj Sami. || "With a question," Sam answered.
+— Dhe nuk e di si ta them. || "And I do not know how to say it."
+
+Pastori i la karriget dhe u ul. || The pastor left the chairs and sat down.
+— Fillo nga fundi, — tha ai. || "Begin at the end," he said.
+— Zakonisht kështu është më e lehtë. || "Usually that is easier."
+— Të shtunën një fëmijë më pyeti diçka që nuk dija ta përgjigjesha, — tha Sami. || "On Saturday a child asked me something that I did not know how to answer," said Sam.
+— Ishte Ardi. Ai kishte gjetur një qen të humbur dhe e kishte mbajtur tri ditë. || "It was Ardi. He had found a lost dog and had kept it for three days."
+— Kur qeni u kthye te vajza, ai më pyeti: «Pse e la Zoti Bardhin të humbet nëse e do atë vajzë?» || "When the dog went back to the girl, he asked me: 'Why did God let Bardhi get lost if he loves that girl?'"
+— Dhe ti çfarë the? || "And what did you say?"
+— Asgjë. || "Nothing."
+— Thashë se do ta pyesja një njeri që e di më mirë. || "I said that I would ask a person who knows better."
+Pastori buzëqeshi me kujdes. || The pastor smiled carefully.
+— Mendoj se është përgjigja më e mirë që mund t'i japësh një fëmije. || 'I think it is the best answer you can give a child.'
+
+— Por unë nuk dua vetëm një përgjigje të qetë, — tha Sami. || 'But I do not want only a calm answer,' said Sam.
+— Dua të kem edhe një përgjigje. || "I want to have an answer too."
+— Po të kisha një përgjigje për çdo pyetje, do të isha një pastor i dobët, — tha Pjetri. || "If I had an answer to every question, I would be a poor pastor," said Pjetër.
+— Njerëzit që kanë përgjigje për gjithçka zakonisht nuk kanë dëgjuar mirë. || "People who have an answer for everything usually have not listened well."
+— Ti njeh Dritanin, — vazhdoi ai. || "You know Dritan," he went on.
+— Kur humbi punën, ai nuk më pyeti «pse». || "When he lost his job, he did not ask me 'why.'"
+— Më pyeti: «Si mund ta mbaj këtë?» || "He asked me: 'How can I bear this?'"
+— Kjo është një pyetje tjetër, dhe ndoshta më e mirë. || "That is a different question, and perhaps a better one."
+— Po nëse nuk ka asnjë arsye? — pyeti Sami. || "And if there is no reason?" asked Sam.
+— Nëse qeni humbi vetëm sepse ishte shi dhe ra një portë, pa asnjë plan? || "If the dog got lost only because it was raining and a gate fell, without any plan?"
+— Atëherë, — tha pastori, — ai humbi pa plan, por e gjetën me plan. || "Then," said the pastor, "he got lost without a plan, but they found him with a plan."
+— Dikush bëri një njoftim, dikush e pa, dikush erdhi me autobus. || "Someone made a notice, someone saw it, someone came by bus."
+— Nëse e kërkon dorën e Zotit vetëm kur gjërat shkojnë keq, do ta humbasësh kur shkojnë mirë. || "If you look for God's hand only when things go badly, you will lose it when they go well."
+
+Sami heshti dhe e shikoi dyshemenë. || Sam was silent and looked at the floor.
+— Ndonjëherë mendoj, — tha ai më në fund, — se jam këtu për një arsye që ende nuk e di. || "Sometimes I think," he said at last, "that I am here for a reason I do not yet know."
+— Dhe ndonjëherë mendoj se jam vetëm një i huaj që ka qëndruar shumë. || "And sometimes I think I am only a stranger who has stayed too long."
+— Të dy mendimet janë të vërteta, — tha Pjetri. || "Both thoughts are true," said Pjetër.
+— Një njeri mund të jetë një i huaj dhe një i dërguar. || "A person can be a stranger and one who is sent."
+— Mos e kërko arsyen në faqen e fundit të librit. || "Do not look for the reason on the last page of the book."
+— Është shkruar ende. || "It is still being written."
+— Lexo faqen që ke para syve, bëje mirë, dhe shiko se çfarë vjen pas saj. || "Read the page you have before your eyes, do it well, and see what comes after it."
+— Të pyesësh kërkon guxim, dhe ti e ke, — shtoi pastori. || 'To ask takes courage, and you have it,' added the pastor.
+Sami buzëqeshi, dhe për herë të parë atë javë iu bë zemra më e lehtë. || Sam smiled, and for the first time that week his heart became lighter.
+— Mund t'i them Ardit se kam pyetur një pastor? — pyeti. || "May I tell Ardi that I asked a pastor?" he asked.
+— Thuaji, — tha Pjetri. || "Tell him," said Pjetër.
+— Dhe thuaji që pastori nuk di gjithçka, por e di se ku të shkojë për ta kërkuar. || "And tell him that the pastor does not know everything, but knows where to go to look for it."
+
+Para se të largohej, Sami e pyeti pastorin edhe për një gjë tjetër. || Before leaving, Sam asked the pastor about one more thing.
+— Luani më tha se shkolla mund të më japë një kontratë për një vit, nëse klubi shkon mirë. || "Luan told me that the school may give me a contract for a year, if the club goes well."
+— Dhe ti çfarë dëshiron? — pyeti pastori. || "And what do you want?" asked the pastor.
+— Nuk e di. || "I do not know."
+— Kur mendoj të qëndroj, më duket se po largohem nga nëna ime. || 'When I think of staying, it seems to me that I am going away from my mother.'
+— Kur mendoj të kthehem, më duket se po largohem nga shtëpia ime e re. || 'When I think of going back, it seems to me that I am going away from my new home.'
+— Atëherë mos vendos nga frika, — tha Pjetri. || "Then do not decide out of fear," said Pjetër.
+— Vendos nga ajo që do të bëjë mirë për njerëzit dhe për ty, dhe mendo çfarë do të doje të kishe bërë pas pesë vitesh. || "Decide out of what will do good for people and for you, and think what you would like to have done after five years."
+— Po të isha unë në vendin tënd, do të flisja me nënën tënde dhe me Luanin, dhe pastaj do të lutesha. || 'If I were in your place, I would speak with your mother and with Luan, and then I would pray.'
+— Ndonjëherë përgjigja nuk vjen si një zë, por si një paqe. || 'Sometimes the answer does not come as a voice, but as a peace.'
+
+# sq-b1-18 | b1-bridge | church | story | Një e diel e veçantë
+Dy javë pas udhëtimit në Korçë, Ana dhe Sami u nisën herët në mëngjes për në fshatin e plakut. || Two weeks after the trip to Korça, Ana and Sam set off early in the morning for the old man's village.
+Kishin premtuar që do ta merrnin, dhe të dy ishin pak të shqetësuar, sepse nuk dinin nëse ai do të ndërronte mendje. || They had promised that they would fetch him, and both were a little worried, because they did not know whether he would change his mind.
+Autobusi ishte bosh, dhe rruga, që herën e kaluar kishte mjegull, tani ishte plot diell. || The bus was empty, and the road, which last time had had mist, was now full of sun.
+Kur zbritën, plaku ishte atje. || When they got off, the old man was there.
+Qëndronte para shtëpisë së tij me një xhaketë të vjetër, të pastruar me kujdes, dhe me kapelën në dorë. || He was standing in front of his house in an old jacket, carefully cleaned, with his hat in his hand.
+Ana nuk i tha asgjë për xhaketën. || Ana said nothing to him about the jacket.
+Vetëm i tha: — Duket se po shkoni në një festë, baba. || She only said: "It looks that you are going to a celebration, father."
+— Është xhaketa që kisha për dasmën time, — u përgjigj ai, dhe buzëqeshi pak. || 'It is the jacket I had for my wedding,' he answered, and smiled a little.
+— Mari ma kishte pastruar për çdo festë. || "Mari had cleaned it for me for every holiday."
+
+Në autobus ai nuk foli shumë. || On the bus he did not speak much.
+Mbante një shishe të vogël me mjaltë, dhe e shikonte nga dritarja malin që po largohej. || He held a small bottle of honey, and looked out of the window at the mountain moving away.
+— Nuk kam qenë në qytet prej katër vitesh, — tha ai pas pak. || "I have not been in the city for four years," he said after a while.
+— Kur vdiq Mari, mendova se qyteti ishte vetëm për ata që kanë ku të shkojnë. || "When Mari died I thought the city was only for those who have somewhere to go."
+— Sot kam ku të shkoj, — tha ai më pas, duke e shikuar Anën. || "Today I have somewhere to go," he said afterwards, looking at Ana.
+
+Kisha ishte plot njerëz, sepse atë të diel kishte një festë të vogël të shkollës së së dielës. || The church was full of people, because that Sunday there was a small celebration of the Sunday school.
+Fëmijët, mes tyre Ardi, Elira dhe Gjergji, kishin përgatitur një këngë, dhe Drita, e veshur me xhaketën e saj më të mirë, qëndronte në pjesën e parë me një çantë me bukë. || The children, among them Ardi, Elira and Gjergj, had prepared a song, and Drita, dressed in her best jacket, stood in the front with a bag of bread.
+Kur plaku hyri në derë, njerëzit nuk e njihnin, por Drita e pa që nga larg. || When the old man came in at the door, the people did not know him, but Drita saw him from afar.
+Ajo u ngrit dhe shkoi drejt tij me hapa të shpejtë, si ta njihte prej vitesh. || She got up and went straight to him with quick steps, as if she had known him for years.
+— Mirë se vini, baba, — tha. || "Welcome, father," she said.
+— Uluni këtu, pranë meje. || "Sit here, beside me."
+— Unë shes bukë, dhe nuk kam njohur kurrë njeri që ka ardhur me dorë bosh në këtë kishë. || "I sell bread, and I have never known anyone who came to this church with empty hands."
+— Ju jeni miku ynë. || "You are our friend."
+
+Plaku u ul dhe ia dha shishen me mjaltë pastorit, që e mori me të dy duart. || The old man sat down and gave the bottle of honey to the pastor, who took it with both hands.
+Shërbimi filloi me një këngë të vjetër, që njerëzit e dinin përmendësh. || The service began with an old song that the people knew by heart.
+Plaku nuk e dinte, por e lëvizte gojën, dhe në vargun e dytë filloi të këndonte ngadalë, me një zë të thyer. || The old man did not know it, but he moved his mouth, and in the second line he began to sing slowly, in a broken voice.
+Sami e shikoi Anën. || Sam looked at Ana.
+Ajo kishte lot në sy dhe buzëqeshte. || She had tears in her eyes and was smiling.
+Në fund të këngës plaku qëndroi i ngritur ndërsa të gjithë u ulën. || At the end of the song the old man remained standing while everyone sat down.
+— Pastor, — tha ai me zë të ulët, — mund të them diçka? || "Pastor," he said in a low voice, "may I say something?"
+— Sigurisht, baba, — tha pastori. || "Of course, father," said the pastor.
+Plaku mori frymë thellë dhe e tha me zë të lartë lutjen që e kishte mësuar nga gjyshja e tij, fjalë për fjalë, siç e kishte thënë natën për më shumë se gjashtëdhjetë vite. || The old man took a deep breath and said aloud the prayer he had learned from his grandmother, word for word, as he had said it at night for more than sixty years.
+Kisha heshti. || The church was silent.
+Kur mbaroi, nuk u dëgjua asgjë për një moment, pastaj dikush tha «po», dhe të gjithë e thanë bashkë. || When he finished, nothing was heard for a moment, then someone said 'yes,' and everyone said it together.
+
+Pastori nuk tha një predikim atë ditë. || The pastor did not give a sermon that day.
+U ngrit, e shikoi plakun dhe tha vetëm: — Faleminderit që na e dhe këtë dhuratë. || He stood up, looked at the old man and said only: "Thank you for giving us this gift."
+— Kjo lutje ka jetuar në një shtëpi dhe në një zemër shumë vite pa u dëgjuar nga askush. || "This prayer lived in one house and in one heart for many years without being heard by anyone."
+— Sot e ka dëgjuar gjithë kisha, dhe nuk është më e vetme. || 'Today the whole church has heard it, and it is no longer alone.'
+Fëmijët e kënduan këngën e tyre, dhe Elira, që ishte në mes të tyre, e shikonte plakun gjatë gjithë kohës. || The children sang their song, and Elira, who was among them, looked at the old man the whole time.
+Kur mbaruan, ajo erdhi pranë tij dhe i dha një lule të vogël prej letre që e kishte bërë vetë. || When they finished, she came to him and gave him a small flower of paper that she had made herself.
+— Për Mari, — tha. || "For Mari," she said.
+Plaku e mori lulen me dy gishta, si të ishte prej xhami. || The old man took the flower with two fingers, as if it were made of glass.
+— Mari do ta kishte vënë në dritare, — tha ai. || "Mari would have put it in the window," he said.
+— Do ta vë unë. || "I will put it there."
+Në rrugën për t'u kthyer autobusi ishte plot, por plaku nuk e ndjeu. || On the way to go back the bus was full, but the old man did not notice.
+Ndenji i qetë pranë dritares, me lulen e letrës në xhep, dhe herë pas here e prekte me gisht. || He sat quietly by the window, with the paper flower in his pocket, and now and then touched it with his finger.
+— Të dielën tjetër do të vij përsëri, — tha ai kur zbritën. || "Next Sunday I will come again," he said when they got off.
+— Por këtë herë do të vij vetë. || "But this time I will come by myself."
+Ana dhe Sami u kthyen në qytet pa folur, të dy të qetë dhe të gëzuar. || Ana and Sam went back to the city without speaking, both calm and glad.
+
+# sq-b1-19 | b1-bridge | correspondence | story | Një email për nënën
+Të premten në mbrëmje Sami u ul para kompjuterit dhe shkroi një mesazh të gjatë për nënën. || On Friday evening Sam sat down in front of the computer and wrote a long message to his mother.
+Ai e shkroi në anglisht, por këtu e lexojmë në shqip, siç e mendonte ai. || He wrote it in English, but here we read it in Albanian, as he was thinking it.
+
+«E dashur nënë, || "Dear Mother,
+Kjo është hera e dytë që të shkruaj nga Tirana pas një telefonate, dhe këtë herë dua të të them më shumë se «jam mirë». || This is the second time that I write to you from Tirana after a phone call, and this time I want to tell you more than "I am well."
+Kam mësuar shumë gjëra këtë muaj, dhe disa prej tyre nuk i kam mësuar në klasë. || I have learned many things this month, and some of them I did not learn in a class.
+Klubi im po shkon mirë. || My club is going well.
+Fëmijët kanë filluar të më pyesin pyetje që nuk i dija, dhe unë kam filluar t'u them: «Nuk e di, por do ta kërkoj.» || The children have started to ask me questions I did not know, and I have started to tell them: "I do not know, but I will look for it."
+Nuk e kisha menduar se kjo do të ishte fjala më e mirë e vitit. || I had not thought that this would be the best phrase of the year.
+Ke pyetur për Dritanin. || You asked about Dritan.
+Ai ka një punë të re si shofer dhe ndihet shumë më mirë, edhe pse në fillim ishte i trishtuar. || He has a new job as a driver and feels much better, although at first he was sad.
+Më ka thënë se humbja e punës i ka mësuar të pranojë ndihmën. || He has told me that losing his job has taught him to accept help.
+Unë mendoj se kjo është një nga gjërat më të vështira që mund të mësojë njeriu. || I think that this is one of the most difficult things a person can learn.
+Pastaj, ti e di që gjyshja Drita ka dy kafshë në shtëpi, por një ditë Ardi i solli edhe një qen të tretë në çantë. || Then, you know that grandmother Drita has two animals in the house, but one day Ardi brought a third dog in his bag.
+Pronarin e qenit e gjetëm, dhe unë kam parë një djalë dhjetë vjeç të mësojë të japë diçka që e do. || We found the dog's owner, and I have seen a ten-year-old boy learn to give away something he loves.
+Po të ishe këtu, do ta kishe parë dhe ti, dhe do të kishe qarë. || If you had been here, you would have seen it too, and you would have cried.
+Kam udhëtuar edhe në Korçë, një qytet të bukur pranë liqenit, dhe kam shkuar në një kishë të vogël. || I have also travelled to Korça, a beautiful city near the lake, and I have been to a small church.
+Atje Ana, infermierja që e di, tregoi pse e zgjodhi punën e saj. || There Ana, the nurse you know, told why she chose her work.
+Nuk e kisha dëgjuar kurrë një njeri ta tregonte kështu. || I had never heard a person tell it like that.
+Pas dy javësh kam shkuar me të në një fshat dhe kam takuar një plak që kishte mbajtur një lutje në zemër për gjashtëdhjetë vite. || After two weeks I went with her to a village and met an old man who had kept a prayer in his heart for sixty years.
+Kjo më ka ndryshuar më shumë se një libër. || This has changed me more than a book.
+Tani do të të them diçka tjetër, që të jesh i qetë. || Now I will tell you something else, so that you will be calm.
+Shkolla më ka ofruar një kontratë, për një vit më shumë. || The school has offered me a contract for one more year.
+Nuk e kam nënshkruar ende. || I have not signed it yet.
+Në këtë kohë jeta ime ka marrë një formë të vogël: çdo mëngjes pi kafe te gjyshja Drita, çdo ditë mësoj fëmijët, çdo mbrëmje lexoj një faqe nga një libër shqip. || In this time my life has taken a small shape: every morning I drink coffee at grandmother Drita's, every day I teach the children, every evening I read a page from an Albanian book.
+Më pëlqen shiu i qytetit, çaji me mjaltë dhe autobusët plot njerëz. || I like the rain of the city, tea with honey and the crowded buses.
+Edhe fjalët që nuk i dija më parë, tani më vijnë vetë në gjuhë, si një shtëpi që e njeh edhe natën. || Even the words I did not know before now come to my tongue by themselves, like a house you know even at night.
+Dua të flas me ty dhe me babain para se të vendos, sepse nuk dua të vendos vetëm nga frika, dhe jo nga dëshira për të mos u larguar. || I want to talk with you and with Dad before I decide, because I do not want to decide only out of fear, and not out of the wish not to go away.
+Të dua shumë, || I love you very much,
+Sam.» || Sam."
+
+Nëna iu përgjigj të shtunën në mëngjes, dhe përgjigjja ishte e shkurtër. || His mother answered on Saturday morning, and the answer was short.
+«Biri im, || "My son,
+e lexova mesazhin tre herë, dhe edhe një herë me babain. || I read the message three times, and once more with your father.
+Ai tha se, nëse e do këtë punë, duhet ta nënshkruash, sepse një njeri që nuk e ka nënshkruar kurrë asgjë nuk di ku qëndron. || He said that, if you like this work, you should sign it, because a person who has never signed anything does not know where he stands.
+Unë ende mendoj se do të të kujtoj çdo ditë. || I still think I will remember you every day.
+Por një nënë që e dërgon një djalë në botë nuk ka të drejtë të thotë që ai duhet të kthehet kur ai gjen një shtëpi. || But a mother who sends a son into the world has no right to say that he must come back when he finds a home.
+Ne do të vijmë të të shohim në pranverë, nëse na ftoni te gjyshja Drita për një byrek. || We will come to see you in the spring, if you invite us to grandmother Drita's for a byrek.
+Nënë.» || Mother."
+
+# sq-b1-20 | b1-bridge | narrative | story | Provimi i Gjergjit
+Gjergji kishte provim të hënën, dhe që nga e enjtja nuk fliste për asgjë tjetër. || Gjergj had an exam on Monday, and since Thursday he had spoken about nothing else.
+Ishte një provim i madh matematike, që do të vendoste nëse do të hynte në një shkollë të mirë në qendër të qytetit. || It was a big maths exam, which would decide whether he would get into a good school in the centre of the city.
+Mira i kishte thënë që nuk kishte nevojë të shqetësohej, por ai nuk e dëgjonte. || Mira had told him that he did not need to worry, but he did not listen.
+Të shtunën pas klubit ai mbeti në klasë dhe i tha Samit: — Mësues, mund të më ndihmosh? || On Saturday after the club he stayed in the classroom and said to Sam: "Teacher, can you help me?"
+
+— Unë mësoj anglisht, jo matematikë, — u përgjigj Sami. || "I teach English, not maths," answered Sam.
+— Në matematikë unë kam qenë gjithmonë një student mesatar. || "In maths I have always been an average student."
+— Por mund të ulem me ty, dhe të dëgjoj sa mirë i shpjegon gjërat vetë. || "But I can sit with you and listen to how well you explain things yourself."
+— Çdo njeri që e shpjegon një ushtrim me zë të lartë e kupton më mirë se ai që e lexon dhjetë herë. || "Every person who explains an exercise aloud understands it better than one who reads it ten times."
+
+Të dielën në mbrëmje Dritani e mori Gjergjin për shëtitje pranë lumit. || On Sunday evening Dritan took Gjergj for a walk by the river.
+Për një kohë ecën pa folur. || For a while they walked without speaking.
+— Kur isha në moshën tënde, — tha Dritani, — bëra një provim dhe dështova. || "When I was your age," said Dritan, "I took an exam and failed."
+— Mendova se jeta ime kishte mbaruar. || "I thought my life had ended."
+— Po tani? — pyeti Gjergji. || "And now?" asked Gjergj.
+— Tani e di që dështimi është vetëm një ditë, nëse e kupton ç'të mëson. || "Now I know that failure is only one day, if you understand what it teaches you."
+— Po nëse e kupton shumë vonë? || "And if you understand it too late?"
+— Atëherë mëson edhe këtë, — qeshi Dritani, — se vonesa është një mësues i mirë, por shumë i shtrenjtë. || "Then you learn this too," Dritan laughed, "that delay is a good teacher, but a very expensive one."
+
+Ata u ulën te dërrasa, dhe Gjergji filloi të zgjidhte ushtrim pas ushtrimi. || They sat down by the blackboard, and Gjergj began to solve exercise after exercise.
+Në fillim ai fliste shpejt dhe gabonte, sepse mendonte më shumë për frikën se për numrat. || At first he spoke fast and made mistakes, because he thought more about fear than about the numbers.
+Sami e preku në krah. || Sam touched him on the arm.
+— Merr frymë, — tha. || "Breathe," he said.
+— Dhe thuaj ngadalë: çfarë po kërkon këtu? || "And say slowly: what are you looking for here?"
+Gjergji e shikoi problemin. || Gjergj looked at the problem.
+— Dua të gjej sa duhet të paguajë dikush për pesë kilogramë mollë, nëse tre kilogramë kushtojnë 300 lekë. || "I want to find how much someone has to pay for five kilos of apples if three kilos cost 300 lek."
+— Atëherë filloje nga një, — tha Sami. || "Then start with one," said Sam.
+— Sa kushton një kilogram? || "How much does one kilo cost?"
+Gjergji mori laps dhe mendoi për një minutë. || Gjergj took a pencil and thought for a minute.
+— 100 lekë, — tha ai. || "100 lek," he said.
+— Dhe pesë kilogramë? || "And five kilos?"
+— 500 lekë, — tha ai, dhe buzëqeshi. || "500 lek," he said, and smiled.
+— Mësues, e kuptova! || "Teacher, I understood it!"
+
+Të hënën në mëngjes Gjergji u ngrit para gjithë familjes. || On Monday morning Gjergj got up before the whole family.
+Mira i bëri një mëngjes të madh, por ai e hëngri me gjysmë zemre. || Mira made him a big breakfast, but he ate it half-heartedly.
+Dritani e çoi me furgon deri te porta e shkollës dhe nuk tha asgjë shumë, vetëm: — Dua që të kujtohesh për një gjë. || Dritan took him in the minibus to the gate of the school and did not say much, only: "I want you to remember one thing."
+— Provimi nuk është për të treguar sa di. || "The exam is not to show how much you know."
+— Është për të treguar sa mirë mendon kur je i qetë. || "It is to show how well you think when you are calm."
+Gjergji e dëgjoi dhe hyri. || Gjergj listened to him and went in.
+
+Provimi mbaroi pas tri orësh. || The exam ended after three hours.
+Kur Gjergji doli, fytyra e tij nuk tregonte as gëzim, as frikë. || When Gjergj came out, his face showed neither joy nor fear.
+Ishte fytyra e një njeriu që ka bërë të gjitha që ka mundur. || It was the face of a person who has done all that he could.
+— Si shkoi? — e pyeti Mira. || "How did it go?" Mira asked him.
+— Një ushtrim nuk e bëra, — tha ai. || "One exercise I did not do," he said.
+— Por e di pse: nuk e kuptova pyetjen. || "But I know why: I did not understand the question."
+— Dhe nuk e shpjegova me zë të lartë. || "And I did not explain it aloud."
+— Do të kishte qenë më mirë nëse do ta kisha bërë. || "It would have been better if I had."
+Mira e përqafoi. || Mira hugged him.
+
+— Ti ke mësuar më shumë se matematikë këtë javë, — tha ajo. || "You have learned more than maths this week," she said.
+Rezultatet erdhën pas dy javësh, dhe Gjergji kishte marrë nëntë nga dhjetë. || The results came after two weeks, and Gjergj had received nine out of ten.
+Para se të festonin, ai e mori telefonin dhe i dërgoi Samit një mesazh: «Mësues, e bëra! Ndoshta të gjitha fjalët e mira ndihmojnë: edhe ato në anglisht, edhe ato në matematikë.» || Before they celebrated, he took the phone and sent Sam a message: "Teacher, I did it! Perhaps all good words help: those in English and those in maths."
+
+# sq-b1-21 | b1-bridge | nonfiction | nonfiction | Lajme nga lagjja
+Në dhjetor, pas Krishtlindjes, shkolla e lagjes nxori për herë të parë një gazetë të vogël me katër faqe. || In December, after Christmas, the neighbourhood school put out for the first time a small newspaper of four pages.
+Quhej «Zëri i lagjes», dhe e kishin shkruar mësuesit bashkë me nxënësit. || It was called "The Voice of the Neighbourhood," and the teachers had written it together with the pupils.
+Mira ishte redaktorja, Luani shkruante për shkollën, dhe Sami, me ndihmën e Elirës, korrigjonte gabimet. || Mira was the editor, Luan wrote about the school, and Sam, with Elira's help, corrected the mistakes.
+Ja disa nga lajmet e numrit të parë. || Here are some of the news items from the first issue.
+
+Çatia e shkollës u rregullua. || The school roof was repaired.
+Pas dy javësh pune, çatia e shkollës, që kishte lënë ujë në dy klasa, u rregullua plotësisht. || After two weeks of work, the school roof, which had let water into two classrooms, was fully repaired.
+Puna u bë nga tre punëtorë, të drejtuar nga Dritan Gjoni. || The work was done by three workers, led by Dritan Gjoni.
+Drejtori i shkollës tha se materialet kishin kushtuar më pak nga sa ishte planifikuar dhe se paratë që mbetën do të përdoren për libra. || The head of the school said that the materials had cost less than had been planned and that the money which was left would be used for books.
+— Kjo çati nuk është vetëm një çati e re, — tha ai. || "This roof is not only a new roof," he said.
+— Ka edhe vëmendjen e njerëzve që nuk kishin detyrë ta bënin. || "It also has the attention of people who had no duty to do it."
+
+Klubi ynë po rritet. || Our club is growing.
+Çdo të shtunë në orën dhjetë, në klasën e dytë, mblidhen mbi njëzet fëmijë për të mësuar anglisht. || Every Saturday at ten, in the second classroom, more than twenty children gather to learn English.
+Klubin e drejton Sam, një i ri nga Amerika, që jeton në Tiranë prej më shumë se një viti. || The club is run by Sam, a young man from America, who has lived in Tirana for more than a year.
+Sipas tij, fëmijët mësojnë më shpejt kur i bëjnë vetë pyetjet. || According to him, children learn faster when they ask the questions themselves.
+Prindërit që duan të regjistrojnë fëmijët e tyre mund të shkruajnë në adresën e shkollës ose të vijnë një të shtunë për të parë. || Parents who want to enrol their children can write to the school's address or come on a Saturday to see.
+
+Një qen u kthye në shtëpi. || A dog returned home.
+Në tetor, në oborrin e shkollës e gjetën një qen të humbur. || In October, in the school yard, they found a lost dog.
+Një njoftim i shtypur në shkollë dhe i ngjitur në stacionin e autobusit e ndihmoi të gjendej pronari brenda tri ditësh. || A notice printed at the school and stuck at the bus station helped the owner to be found within three days.
+Nxënësi Ardi Dërvishi, që e mbajti qenin për disa ditë, tha: «Mësova se një gjë bëhet jotja më shumë kur e jep.» || The pupil Ardi Dërvishi, who kept the dog for a few days, said: "I learned that a thing becomes more yours when you give it."
+Redaksia e njofton lexuesin se shkolla do të ketë një «Ditë të njoftimeve», ku çdo fëmijë mund të sjellë një gjë të gjetur dhe të provojë ta kthejë te pronari. || The editors inform the reader that the school will have a "Day of Notices," where every child may bring a found item and try to return it to its owner.
+
+Dita e supës. || Soup Day.
+Të shtunën e fundit të janarit, në oborrin e shkollës, do të bëhet një supë e madhe për të gjithë lagjen. || On the last Saturday of January, in the school yard, a big soup will be made for the whole neighbourhood.
+Çdo familje do të sjellë diçka: një perime, një copë mish, një bukë ose vetëm një buzëqeshje. || Every family will bring something: a vegetable, a piece of meat, a loaf of bread or only a smile.
+
+Gjyshja Drita, që shet bukë në treg prej tridhjetë vitesh, ka premtuar të sjellë dyzet bukë. || Grandmother Drita, who has sold bread at the market for thirty years, has promised to bring forty loaves.
+Kur e pyetën pse e bën këtë, ajo u përgjigj: — Sepse një lagje që ha bashkë nuk mund të jetë një lagje e huaj. || When they asked her why she does this, she answered: "Because a neighbourhood that eats together cannot be a foreign neighbourhood."
+Të gjithë janë të ftuar, edhe ata që nuk njohin asnjë njeri. || Everyone is invited, even those who do not know anyone.
+
+Numri tjetër i gazetës do të dalë në mars. || The next issue of the newspaper will come out in March.
+Nëse keni një lajm, një histori ose një pyetje, shkruani në adresën e shkollës. || If you have news, a story or a question, write to the school's address.
+
+
+Pyetja e muajit. || The question of the month.
+Një lexues, Elira S., e pyet Samin: «A është më e vështirë të mësosh shqip se anglisht?» || A reader, Elira S., asks Sam: "Is it harder to learn Albanian than English?"
+Sami përgjigjet se nuk e di, por se e di një gjë tjetër. || Sam answers that he does not know, but that he knows another thing.
+— Kur kam filluar të mësoj shqip, mendoja se fjalët ishin pjesa më e vështirë. || "When I began to learn Albanian, I thought that the words were the hardest part."
+— Pastaj kuptova se vështirësia e vërtetë ishte e vogël: ishte frika të flas keq. || "Then I understood that the real difficulty was small: it was the fear of speaking badly."
+— Tani kur bëj një gabim, njerëzit më korrigjojnë me një buzëqeshje dhe më japin një kafe. || "Now when I make a mistake, people correct me with a smile and give me a coffee."
+— Në Amerikë njerëzit më korrigjonin më rrallë, dhe unë mësoja më ngadalë. || "In America people corrected me more rarely, and I learned more slowly."
+— Kështu që përgjigjja ime është kjo: të mësosh shqip nuk është më e vështirë, por është më e ngrohtë. || "So my answer is this: learning Albanian is not harder, but it is warmer."
+
+# sq-b1-22 | b1-bridge | practical | story | Oferta e shkollës
+Në fillim të shkurtit Sami mori një zarf të bardhë nga posta. || At the beginning of February Sam received a white envelope from the post.
+Brenda ishte letra që e kishte pritur dhe e kishte pritur me frikë për shumë javë. || Inside was the letter that he had been waiting for with fear for many weeks.
+E mbajti në dorë një moment pa e hapur, pastaj shkoi te dritarja, ku drita ishte më e mirë, dhe e lexoi ngadalë. || He held it in his hand for a moment without opening it, then went to the window, where the light was better, and read it slowly.
+
+«I nderuar zoti Sam, || "Dear Mr Sam,
+Në emër të shkollës së lagjes, ju ofrojmë një kontratë pune për vitin që vjen. || On behalf of the neighbourhood school, we offer you a work contract for the coming year.
+Kontrata fillon më 1 shtator dhe mbaron më 30 qershor. || The contract begins on 1 September and ends on 30 June.
+Ju do të mësoni anglisht në katër klasa, gjashtëmbëdhjetë orë në javë. || You will teach English in four classes, sixteen hours a week.
+Paga është 45.000 lekë në muaj. || The pay is 45,000 lek a month.
+Nëse doni ta mbyllni kontratën, duhet ta njoftoni shkollën tridhjetë ditë më parë. || If you wish to close the contract, you must inform the school thirty days beforehand.
+Klubi i së shtunës është pjesë e punës juaj, por nuk ka pagë tjetër. || The Saturday club is part of your work, but there is no other pay.
+Shkolla do të ndihmojë edhe me lejen e qëndrimit, e cila duhet të rinovohet në prill. || The school will also help with the residence permit, which must be renewed in April.
+Ju lutemi ta dërgoni përgjigjen deri më 28 shkurt. || Please send your answer by 28 February.
+Drejtori i shkollës.» || The head of the school."
+
+Sami e lexoi dy herë. || Sam read it twice.
+Pastaj mori fletoren dhe e ndau faqen në dy anë. || Then he took his notebook and divided the page into two sides.
+Nga njëra anë shkroi atë që i pëlqente, nga ana tjetër atë që e shqetësonte. || On one side he wrote what he liked, on the other what worried him.
+Në anën e parë shkroi: «Klubi. Fëmijët. Një pagë e mirë. Një shtëpi.» || On the first side he wrote: "The club. The children. A good pay. A home."
+Në anën tjetër: «Nëna. Sa gjatë? Dhe nëse nuk jam i mirë?» || On the other side: "Mother. How long? And what if I am not good?"
+Shkroi edhe diçka në fund, që e nënvizoi dy herë: «Pyet para se të nënshkruash.» || He also wrote something at the end, which he underlined twice: "Ask before you sign."
+
+Të martën ai e çoi letrën te Luani. || On Tuesday he took the letter to Luan.
+Luani e lexoi me një laps në dorë, siç lexonte punët e nxënësve, dhe nënvizoi dy rreshta. || Luan read it with a pencil in his hand, as he read the pupils' work, and underlined two lines.
+— Këtu, — tha. || "Here," he said.
+— «Nuk ka pagë tjetër.» || "'There is no other pay.'"
+— Do të thotë që ora e shtunës është pa pagë. || "It means that the Saturday hour is without pay."
+— Nuk është e keqe, sepse e bën vetë, por duhet ta dish. || "It is not bad, because you do it yourself, but you must know it."
+— Dhe këtu: «e cila duhet të rinovohet në prill». || "And here: 'which must be renewed in April.'"
+— Pyete drejtorin kush e paguan këtë, ti apo shkolla. || "Ask the head who pays for this, you or the school."
+— Pyetje të vogla, — tha Sami. || "Small questions," said Sam.
+— Pyetjet e vogla janë shumë të mira, — u përgjigj Luani. || "Small questions are very good ones," answered Luan.
+— Njeriu që nënshkruan pa pyetur zakonisht e kupton pas gjashtë muajsh se duhej të kishte pyetur. || "A person who signs without asking usually understands after six months that he should have asked."
+
+Sami shkoi të mërkurën te drejtori. || Sam went to the head on Wednesday.
+Drejtori, një burrë i gjatë dhe i qetë që e dëgjonte çdo pyetje deri në fund, iu përgjigj me radhë. || The head, a tall and calm man who listened to every question to the end, answered them one by one.
+Këtë e paguan shkolla, tha. || The school pays for this, he said.
+Ora e shtunës nuk ka pagë, por shkolla i jep dy ditë pushim më shumë në vit. || The Saturday hour has no pay, but the school gives him two more days of holiday a year.
+Dhe nëse Sami dëshiron të largohet, ai mund ta bëjë, por duhet ta thotë në kohë. || And if Sam wants to leave, he may, but he must say it in time.
+— Pse po ma ofroni këtë punë? — pyeti Sami në fund. || "Why are you offering me this job?" Sam asked at the end.
+— Sepse nuk e kërkuat, — buzëqeshi drejtori. || "Because you did not ask for it," the head smiled.
+— Njeriu që e kërkon një punë shpesh e do vetëm pagën. || "A person who asks for a job often wants only the pay."
+— Ju e filluat nga fëmijët. || "You began with the children."
+Sami u kthye në shtëpi me letrën në xhep dhe me një ndjenjë të rëndë: nuk ishte frikë, as gëzim i plotë, por diçka mes tyre. || Sam went home with the letter in his pocket and with a heavy feeling: it was not fear, nor complete joy, but something between them.
+Atë mbrëmje, para se të flinte, ai e shkroi në fletore atë që i kishte thënë pastori: «Mos vendos nga frika.» || That evening, before sleeping, he wrote in his notebook what the pastor had said to him: "Do not decide out of fear."
+
+Të shtunën pas klubit Ardi mbeti përsëri pas fëmijëve të tjerë, siç kishte bërë një herë në tetor. || On Saturday after the club Ardi stayed behind the other children again, as he had done once in October.
+— Mësues, do të qëndrosh? — e pyeti pa u kthyer. || "Teacher, are you going to stay?" he asked him without turning round.
+— Si e di ti? — u habit Sami. || "How do you know?" Sam was surprised.
+— Gjyshja tha. || "Grandmother said."
+— Ajo i di të gjitha lajmet e tregut para se të dalin në gazetë. || "She knows all the news of the market before it comes out in the newspaper."
+— Nuk kam vendosur ende, — tha Sami. || "I have not decided yet," said Sam.
+— Nëse largohesh, kush do të na mësojë anglisht? — pyeti Ardi. || "If you go away, who will teach us English?" asked Ardi.
+— Ti e di tashmë, — qeshi Sami. || "You know it already," Sam laughed.
+— Po. Por nuk e them mirë, — tha Ardi, dhe për herë të parë ishte shumë i qetë. || "Yes. But I do not say it well," said Ardi, and for the first time he was very calm.
+— Dua të kem një mësues që të më korrigjojë deri sa ta them mirë. || "I want to have a teacher who corrects me until I say it well."
+
+# sq-b1-23 | b1-bridge | conversation | dialogue | Nëse qëndroj
+Të dielën pas kishës Sami e pyeti Anën nëse mund të ecnin bashkë deri te liqeni i madh i parkut. || On Sunday after church Sam asked Ana whether they could walk together to the big lake of the park.
+Ishte një ditë e ftohtë, por e qartë, dhe liqeni shkëlqente si një pasqyrë e gjatë. || It was a cold but clear day, and the lake shone like a long mirror.
+Ata ecën për një kohë pa folur, pastaj Sami tha: — Kam vetëm tri ditë për të dhënë përgjigjen. || They walked for a while without speaking, then Sam said: "I have only three days to give the answer."
+— E di, — tha Ana. || "I know," said Ana.
+— Luani më ka thënë gjithçka, por jo atë që mendon ti. || "Luan has told me everything, but not what you think."
+— Sepse ende nuk e di çfarë mendoj, — u përgjigj Sami. || "Because I do not yet know what I think," answered Sam.
+— Po të ishte e lehtë, nuk do të të kisha pyetur. || "If it were easy, I would not have asked you."
+
+Ata u ulën në një stol pranë ujit. || They sat down on a bench near the water.
+Ishte shëtitja e parë e tyre vetëm të dy, dhe të dy e dinin këtë. || It was their first walk alone together, and both of them knew it.
+— Më thuaj një gjë, — filloi Ana. || "Tell me one thing," Ana began.
+— Nëse nuk do të kishe këtë ofertë, çfarë do të bëje? || "If you did not have this offer, what would you do?"
+— Do të kthehesha në Amerikë në pranverë, do të gjeja një punë, dhe do të mbaja një ditar për një vit të bukur që kaloi. || "I would go back to America in the spring, I would find a job, and I would keep a diary of a beautiful year that passed."
+— Dhe do të ishe i lumtur? || "And would you be happy?"
+— Do të isha mirë, — tha Sami. || "I would be fine," said Sam.
+— Por nuk e di nëse do të isha i lumtur. || "But I do not know whether I would be happy."
+— Kam frikë se do ta kujtoja gjithë jetën si ata që nuk e morën një derë që u hap. || "I am afraid I would remember it all my life, like those who did not take a door that opened."
+Ana e shikoi me kujdes. || Ana looked at him carefully.
+— Atëherë ke dhënë tashmë një përgjigje, — tha ajo. || "Then you have already given an answer," she said.
+— Frika nga ajo që do të humbasësh nëse largohesh është më e madhe se frika nga ajo që do të humbasësh nëse mbetesh. || "The fear of what you would lose if you left is greater than the fear of what you would lose if you stayed."
+— Dhe nëse dështoj? — pyeti Sami. || "And what if I fail?" asked Sam.
+— Dështimi është vetëm një ditë, siç thotë Dritani, — tha Ana. || "Failure is only one day, as Dritan says," said Ana.
+— Por nëna ime, — tha Sami. || "But my mother," said Sam.
+— Ajo nuk është një arsye për të mos qëndruar. || "She is not a reason not to stay."
+— Është një arsye për të shkuar çdo vit. || "She is a reason to go every year."
+— Dhe leja e qëndrimit? — pyeti Ana. || "And the residence permit?" asked Ana.
+— Shkolla do ta rinovojë çdo vit, — tha Sami. || "The school will renew it every year," said Sam.
+
+Sami mori telefonin dhe e hapi mesazhin e fundit të nënës. || Sam took his phone and opened his mother's last message.
+— Ajo më ka shkruar se babai ka thënë që duhet ta nënshkruaj, — tha ai. || "She wrote to me that Dad has said I should sign it," he said.
+— Ka thënë gjithashtu se nuk do të më pyesë më, por do të më presë. || "He also said that he will not ask me anymore, but will wait for me."
+— Prindërit që të presin janë një lloj i rrallë, — tha Ana. || "Parents who wait for you are a rare kind," said Ana.
+— Kujdesu mirë për ta. || "Take good care of them."
+— Si do të kujdesem për ta nga larg? || "How will I take care of them from far away?"
+— Duke u ngjitur në telefon çdo të shtunë në mbrëmje, siç bën tani, — qeshi Ana. || "By getting on the phone every Saturday evening, as you do now," Ana laughed.
+— Dhe duke i ftuar në pranverë. || "And by inviting them in spring."
+— Gjyshja Drita do të bëjë një byrek aq të madh, sa nëna jote nuk do të ketë dëshirë të kthehet në Amerikë. || "Grandmother Drita will make a byrek so big that your mother will not feel like going back to America."
+
+Ata qeshën bashkë. || They laughed together.
+Pastaj Sami heshti për një kohë të gjatë. || Then Sam was silent for a long time.
+Një burrë kalonte me një qen të vogël, dhe Sami e shikoi, dhe mendoi për Bardhin dhe për njoftimin e ngjitur në derën e shkollës. || A man passed with a small dog, and Sam looked at him, and thought of Bardhi and the notice stuck to the school door.
+— Ana, — tha ai ngadalë. || "Ana," he said slowly.
+— Kur erdha këtu, mendova se kisha ardhur për të mësuar një gjuhë. || "When I came here, I thought I had come to learn a language."
+— Tani e di që kisha ardhur për të mësuar të dëgjoj. || "Now I know that I had come to learn to listen."
+— Dhe kjo ende nuk është mësuar mirë. || "And that is still not learned well."
+— Atëherë, — tha Ana, — ke edhe një vit për ta mësuar. || "Then," said Ana, "you have another year to learn it."
+Sami nxori fletoren nga xhepi dhe e hapi në faqen e ndarë në dy. || Sam took the notebook from his pocket and opened it at the page divided in two.
+Nën pjesën e dytë, atë me gjërat që e shqetësonin, shkroi me laps të madh: «Do ta nënshkruaj.» || Under the second part, the one with the things that worried him, he wrote in big pencil: "I will sign it."
+E nënvizoi dy herë. || He underlined it twice.
+Pastaj, nën të, shtoi me shkrim më të vogël: «Dhe do t'i telefonoj nënës sot.» || Then, below it, he added in smaller writing: "And I will phone Mother today."
+
+Atë mbrëmje ai e thirri nënën, dhe këtë herë nuk filloi me «jam mirë». || That evening he called his mother, and this time he did not begin with "I am well."
+— Nënë, kam një lajm, — tha. || "Mother, I have news," he said.
+— Do të qëndroj edhe një vit. || "I will stay another year."
+Në ekran nëna heshti për një çast të gjatë. || On the screen his mother was silent for a long moment.
+— E dija, — tha ajo më në fund, me zë të ulët. || "I knew it," she said at last, in a low voice.
+— Babai e dinte që nga dita kur u largove. || "Dad knew it from the day you left."
+— Ai tha se një njeri që shkruan një ditar për çdo ditë nuk është më vetëm i yti, por i vendit ku shkruan. || "He said that a person who writes a diary every day is no longer only yours, but belongs to the place where he writes."
+— Mos qaj, nënë. || "Do not cry, Mother."
+— Nuk po qaj, — tha ajo duke qeshur. || "I am not crying," she said, laughing.
+— Po mendoj çfarë do të them te gjyshja Drita në pranverë. || "I am thinking what I will say to grandmother Drita in the spring."
+— Mëso tri fjalë: «faleminderit», «ju lutem» dhe «edhe një». || "Learn three words: 'thank you,' 'please' and 'one more.'"
+— «Edhe një» është fjala më e mirë në shtëpinë e saj, — qeshi Sami. || "'One more' is the best word in her house," Sam laughed.
+
+# sq-b1-24 | b1-bridge | narrative | story | Një dasmë në fshat
+Në fund të prillit doktoresha Arta, shoqja e Anës nga klinika, u martua në fshatin e nënës së saj, dy orë larg Tiranës. || At the end of April Dr Arta, Ana's friend from the clinic, got married in her mother's village, two hours from Tirana.
+Ajo i kishte ftuar të gjithë miqtë e klinikës, edhe Anën, edhe Samin, dhe këta të dy u nisën të shtunën në mëngjes me një autobus plot njerëz dhe çanta. || She had invited all the friends of the clinic, Ana and Sam too, and these two set off on Saturday morning with a bus full of people and bags.
+Sami mbante në dorë një zarf të vogël me para, siç i kishte shpjeguar Ana, sepse në dasmat shqiptare mysafirët nuk sjellin gjithmonë dhurata të mëdha, por japin diçka për çiftin e ri. || Sam held in his hand a small envelope with money, as Ana had explained to him, because at Albanian weddings guests do not always bring big gifts, but give something for the young couple.
+— Sa duhet të vë brenda? — kishte pyetur ai. || "How much should I put inside?" he had asked.
+— Aq sa mendon se do të doje të merrje vetë, — kishte thënë Ana. || "As much as you think you would like to receive yourself," Ana had said.
+
+Fshati ishte plot njerëz që nga rruga. || The village was full of people from the road onwards.
+Para shtëpisë së nuses kishte një portë me degë dhe me shirita të kuq, dhe nga oborri vinte muzikë me daulle. || In front of the bride's house there was a gate with branches and red ribbons, and from the yard came music with drums.
+Gratë me shalle me ngjyra kalonin nga një shtëpi në një tjetër me tavolina me ëmbëlsira, dhe fëmijët vraponin mes këmbëve të njerëzve. || Women with coloured shawls passed from one house to another with trays of sweets, and the children ran between people's legs.
+Një plak me një kapelë të bardhë i priti miqtë e nuses me një gotë të vogël dhe me një fjalë të mirë. || An old man in a white hat received the bride's friends with a small glass and a kind word.
+— Mirë se vini, — tha. || "Welcome," he said.
+— Në këtë shtëpi pasi hyni, nuk ju quajmë më të huaj. || "In this house, once you enter, we no longer call you strangers."
+
+Dasma filloi me një ceremoni të vogël në oborr, ku Arta me një fustan të bardhë dhe dhëndri me një kostum të errët e premtuan dashurinë para dy familjeve dhe një pastori të ftuar. || The wedding began with a small ceremony in the yard, where Arta in a white dress and the groom in a dark suit promised their love before the two families and an invited pastor.
+Kur pastori i pyeti nëse duan të jenë bashkë, Arta tha «po» aq fort, sa gratë e rreshtit të parë u hodhën nga karriget. || When the pastor asked them whether they wanted to be together, Arta said "yes" so loudly that the women of the first row jumped off their chairs.
+Të gjithë qeshën, edhe dhëndri, i cili kishte qenë i bardhë në fytyrë gjithë mëngjesin. || Everyone laughed, even the groom, who had been white in the face all morning.
+
+Pastaj filloi darka, dhe me të filloi muzika. || Then the dinner began, and with it the music.
+Mbi tavolinat e gjata kishte mish, oriz, perime, byrek dhe një pjatë të madhe me ëmbëlsira me mjaltë. || On the long tables there was meat, rice, vegetables, byrek and a big plate of sweets with honey.
+Sami hëngri aq shumë, sa kur dolën vallet nuk mund të lëvizte. || Sam ate so much that when the dances began he could not move.
+Por një grua e vjetër e mori për dore dhe e çoi në rreth. || But an old woman took him by the hand and led him into the circle.
+— Do të mësosh ta vallëzosh, bir, — tha ajo. || "You will learn to dance it, son," she said.
+— Është më e lehtë se gjuha. || "It is easier than the language."
+Sami u përpoq. || Sam tried.
+Ai e mësoi hapin e parë, e humbi hapin e dytë, dhe në hapin e tretë ra mbi një djalë të vogël, që u përkul dhe e hoqi nga rruga si një gur. || He learned the first step, lost the second step, and at the third step fell onto a small boy, who bent down and moved him out of the way like a stone.
+Gratë qeshën aq shumë, sa dikush duhej t'u sillte ujë. || The women laughed so much that someone had to bring them water.
+
+Por në rrethin tjetër, pak më larg, Sami pa një fytyrë që e njihte. || But in the other circle, a little further away, Sam saw a face he knew.
+Ishte plaku nga fshati i Anës, me kostumin e dasmës dhe me një lule prej letre në xhep. || It was the old man from Ana's village, in his wedding suit and with a paper flower in his pocket.
+Ai kishte ardhur me nipin e tij, që ishte mik i dhëndrit. || He had come with his grandson, who was a friend of the groom.
+Plaku nuk vallëzonte, por rrinte në anë dhe shikonte, me fytyrën e një njeriu që është në vendin e tij. || The old man did not dance, but stood on the side and watched, with the face of a person who is in his own place.
+Kur e pa Samin, i bëri me dorë dhe i tha në heshtje, vetëm me buzët: «Ec, ec.» || When he saw Sam, he waved and said to him silently, only with his lips: "Go on, go on."
+Sami qeshi dhe vazhdoi, ngadalë, që të mos binte përsëri. || Sam laughed and went on, slowly, so as not to fall again.
+Në mbrëmje, kur autobusi po kthehej në qytet, ai e shkroi në fletore: «Sot kam mësuar të vallëzoj, pak. Dhe kam mësuar se një i huaj nuk është një njeri që nuk ka vend, por një njeri që ka vend në shumë shtëpi.» || In the evening, as the bus was going back to the city, he wrote in his notebook: "Today I have learned to dance, a little. And I have learned that a stranger is not a person who has no place, but a person who has a place in many houses."
+
+Në autobus Ana u ul pranë tij me një copë ëmbëlsirë të lidhur në një shami. || On the bus Ana sat down beside him with a piece of sweet tied in a cloth.
+— Ta kam sjellë për rrugën, — tha. || "I brought it for you for the road," she said.
+— Je i lodhur? || "Are you tired?"
+— Jam i lumtur, — u përgjigj Sami. || "I am happy," Sam answered.
+— Por kam dhimbje në këmbë, sepse një grua e vjetër më mësoi të vallëzoj me forcë. || "But my feet hurt, because an old woman taught me to dance with force."
+— Je një i huaj që e ka vallëzuar atë valle gjithë natën, — qeshi Ana. || "You are a stranger who has danced that dance the whole night," laughed Ana.
+— A të erdhën lotët? — e pyeti ai. || "Did tears come to you?" he asked her.
+— Pak. || "A little."
+— Artën e njoh prej katër vitesh, dhe e kam parë të flejë në spital të lodhur dhe të qajë për pacientët. || "I have known Arta for four years, and I have seen her sleep in the hospital tired and cry for her patients."
+— Sot e pashë të qeshë në fustan të bardhë. || "Today I saw her laugh in a white dress."
+— Është mirë të shohësh një njeri që ka bërë shumë për njerëzit të ketë diçka edhe për vete. || "It is good to see a person who has done much for people have something for himself too."
+Sami e shikoi nga dritarja fshatin që po largohej dhe tha: — Ndoshta nuk do të më ftojnë kurrë në dasmën time. || Sam looked out of the window at the village moving away and said: "Perhaps they will never invite me to my own wedding."
+— Je shumë i ri për të folur kështu, — tha Ana. || "You are too young to talk like that," said Ana.
+— Dhe pastaj, ti ke njerëz që do të të ftojnë nga gjithë lagjja. || "And besides, you have people who will invite you from the whole neighbourhood."
+
+# sq-b1-25 | b1-bridge | narrative | story | Viti i dytë mbaron
+Sami e nënshkroi kontratën të hënën në mëngjes, para se ta mendonte edhe një herë. || Sam signed the contract on Monday morning, before he could think about it once more.
+Drejtori e mori letrën, e shikoi faqen e fundit dhe tha vetëm: — Mirë se të gjetëm për një vit tjetër. || The head took the paper, looked at the last page and said only: "Welcome back for another year."
+Ndërsa Sami po dilte nga zyra, mësuesit e dhomës i buzëqeshën të gjithë, dhe ai nuk dinte ku t'i vinte duart. || As Sam was leaving the office, the teachers in the staff room all smiled at him, and he did not know where to put his hands.
+
+Muajt kaluan shpejt. || The months passed quickly.
+Mira, redaktorja e gazetës, i kërkoi Samit një tregim për lexuesit, dhe redaksia e vogël ishte plot me letra. || Mira, the editor of the paper, asked Sam for a story for the readers, and the small editorial office was full of letters.
+Pranvera erdhi me shira të hollë dhe me pemë të bardha, dhe në qershor, kur klasat ishin plot zhurmë dhe dritaret hapeshin gjithë ditën, klubi ynë bëri një ndryshim të vogël dhe të madh: tani kishte tridhjetë fëmijë. || Spring came with fine rains and white trees, and in June, when the classes were full of noise and the windows were open all day, our club made a small and big change: now it had thirty children.
+Nëna e Samit dhe babai i tij kishin ardhur në prill për dy javë, dhe gjyshja Drita i kishte pritur me një byrek aq të madh, sa nëna e Samit kishte qeshur dhe kishte qarë bashkë. || Sam's mother and father had come in April for two weeks, and grandmother Drita had received them with a byrek so big that Sam's mother had laughed and cried together.
+Babai e kishte shikuar klubin nga fundi i klasës, pa folur, dhe në mbrëmje i kishte thënë djalit: — Nuk të njoh. || His father had watched the club from the back of the classroom, without speaking, and in the evening had said to his son: "I do not recognise you."
+Ai e kishte ndjekur çdo fjalë me vëmendje. || He had followed every word with attention.
+— Je më i qetë, dhe fjalët të vijnë më ngadalë, por janë më të mira. || "You are calmer, and the words come to you more slowly, but they are better."
+
+Të shtunën e fundit të qershorit klubi bëri një shfaqje të vogël në oborrin e shkollës. || On the last Saturday of June the club gave a small show in the school yard.
+Mira kishte planifikuar çdo gjë plotësisht, dhe Luani, që drejtonte hyrjen, kishte materialet e shfaqjes në një çantë të madhe. || Mira had planned everything completely, and Luan, who was directing the entrance, had the materials for the show in a large bag.
+Kishte karrige në rreshta nën pemët e larta, një dërrasë të madhe me një vizatim të një qeni, dhe dyzet njerëz që prisnin me ndrojtje. || There were chairs in rows under the tall trees, a big board with a drawing of a dog, and forty people waiting shyly.
+Në rreshtin e parë ishin Drita me shallin e saj më të mirë, Dritani dhe Mira, pastori Pjetër, Agimi dhe Teuta, që kishin ardhur nga Korça me furgonin e Dritanit, dhe një plak me një kapelë të vjetër në dorë. || In the first row were Drita with her best shawl, Dritan and Mira, Pastor Pjetër, Agim and Teuta, who had come from Korça in Dritan's minibus, and an old man with an old hat in his hand.
+Plaku ishte kthyer çdo të diel në kishën e vogël, dhe tani e kishte mësuar këngën e fëmijëve përmendësh. || The old man had gone back every Sunday to the little church, and now he had learned the children's song by heart.
+Ana ishte ulur në fund, ende e lodhur nga turni, sepse kishte ardhur direkt nga puna. || Ana was sitting at the back, still tired from her shift, because she had come straight from work.
+Pranë saj qëndronte Luani, që kishte ndërruar tri herë këmishën, sepse nuk dinte cilën e donte. || Beside her was Luan, who had changed his shirt three times, because he did not know which one he wanted.
+
+Fëmijët hynë një nga një, me flokë të rregulluar dhe me sy që shkëlqenin. || The children came in one by one, with neat hair and eyes that shone.
+Elira e pyeti publikun në anglisht: — Good morning! || Elira asked the audience in English: "Good morning!"
+Dhe publiku, që kishte vendosur të mos përgjigjej, u përgjigj me një zë: — Mirëmëngjes! || And the audience, which had decided not to answer, answered with one voice: "Good morning!"
+Gjergji tregoi një histori të shkurtër për një qen që humbi dhe që e gjetën, e shkruar prej tij vetë, me gabime, por me një fund që i bëri disa nga të rriturit të fshinin sytë. || Gjergj told a short story about a dog that got lost and was found, written by himself, with mistakes, but with an ending that made some of the adults wipe their eyes.
+Ardi këndoi një këngë anglisht me një aksent shumë shqiptar dhe me një krenari shumë të madhe. || Ardi sang a song in English with a very Albanian accent and with very great pride.
+Problemi i vetëm ishte se askush nuk dinte ta mbyllte shfaqjen, por rezultati ishte më i mirë nga sa kishte menduar Luani. || The only problem was that nobody knew how to close the show, but the result was better than Luan had thought.
+Në fund Elira tha me zë të lartë: — Thank you, teacher! || At the end Elira said loudly: "Thank you, teacher!"
+Këtë herë të gjithë e shqiptuan mirë. || This time everyone pronounced it well.
+Drita kishte sjellë dhjetë kilogramë bukë, dhe nuk mbeti asnjë copë. || Drita had brought ten kilograms of bread, and not a piece was left.
+
+Pas shfaqjes Sami u ngrit të thoshte diçka. || After the show Sam stood up to say something.
+Kishte përgatitur një fjalim në fletore, por e mbylli fletoren dhe foli pa të. || He had prepared a speech in his notebook, but he closed the notebook and spoke without it.
+— Një vit e gjysmë më parë nuk dija të them «dua bukë», — filloi ai. || "A year and a half ago I did not know how to say 'I want bread,'" he began.
+— Sot jam këtu me ju, dhe nuk jam më një i huaj, edhe pse ende bëj gabime. || "Today I am here with you, and I am no longer a stranger, although I still make mistakes."
+— Vështirësia e vërtetë nuk ishte gjuha, por frika. || "The real difficulty was not the language, but fear."
+— Dua të falënderoj secilin prej jush, por nuk dua ta bëj me fjalë të mëdha. || "I want to thank each one of you, but I do not want to do it with big words."
+— Dua ta bëj me një gjë që e mësova prej jush: kur dikush ka nevojë, ia jep dorën. || "I want to do it with something I learned from you: when someone has need, you give him your hand."
+Pastaj shtoi, më ngadalë: — Dhe kur ju japin dorën, mos ia ktheni kokën. || Then he added, more slowly: "And when they give you a hand, do not turn your head away."
+Gjyshja Drita ishte e para që u ngrit dhe e përqafoi, me një bukë të ngrohtë në krah. || Grandmother Drita was the first to stand up and hug him, with a warm loaf under her arm.
+— Eja, bir, — tha. || "Come, son," she said.
+— Sot ke një vit e gjysmë, dhe këtu ke një shtëpi të madhe. || "Today you are a year and a half old, and here you have a big house."
+Atë mbrëmje Sami e hapi fletoren në faqen e parë të vitit të dytë dhe, nën fjalët «Të mos kem frikë», shkroi me shkrim të vogël: «Dhe të dëgjoj.» || That evening Sam opened the notebook at the first page of the second year and, under the words "Not to be afraid," wrote in small writing: "And to listen."
+

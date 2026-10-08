@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-10",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ใบนัดและคำแนะนำของหมอ",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-10",
+    "title": "ใบนัดและคำแนะนำของหมอ — The appointment slip and the doctor's instructions (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A practical document: the slip a hospital hands to a patient, with plain instructions, followed by Mali's explanation to Ball's grandmother. For the reviewer: the form of the slip (ชื่อผู้ป่วย, วันนัด, คำแนะนำ) is general; doses and times are invented and not medical advice."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "hospital",
+    "medicine",
+    "instructions",
+    "appointment"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ใบนัด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ใบนัดของโรงพยาบาลเชียงใหม่",
+              "english": "Chiang Mai Hospital appointment slip."
+            },
+            {
+              "text": "ชื่อผู้ป่วย บอล อายุสิบปี",
+              "english": "Patient's name: Ball, aged ten."
+            },
+            {
+              "text": "อาการ ปวดท้องและมีไข้สองวัน",
+              "english": "Symptoms: stomach ache and fever for two days."
+            },
+            {
+              "text": "หมอให้ยามาแล้ว",
+              "english": "The doctor has given medicine."
+            },
+            {
+              "text": "วันนัดครั้งต่อไป อีกสามวัน เวลาเก้าโมงเช้า",
+              "english": "Next appointment: in three days, at nine in the morning."
+            },
+            {
+              "text": "ถ้าไม่มาตามนัด กรุณาโทรบอกโรงพยาบาลก่อน",
+              "english": "If you cannot come as arranged, please phone the hospital first."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำแนะนำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หนึ่ง กินยาวันละสามครั้ง หลังอาหารเช้า กลางวัน และเย็น",
+              "english": "One: take the medicine three times a day, after breakfast, lunch and dinner."
+            },
+            {
+              "text": "สอง ดื่มน้ำมากๆ ไม่ดื่มน้ำเย็นจัด",
+              "english": "Two: drink a lot of water, but not icy water."
+            },
+            {
+              "text": "สาม กินข้าวต้มหรืออาหารอ่อน ไม่กินอาหารเผ็ด",
+              "english": "Three: eat rice porridge or soft food, and nothing spicy."
+            },
+            {
+              "text": "สี่ นอนพักมากๆ และไม่ไปโรงเรียนสามวัน",
+              "english": "Four: rest a lot in bed and do not go to school for three days."
+            },
+            {
+              "text": "ถ้าปวดท้องมาก หรือไข้ไม่ลด ให้รีบมาโรงพยาบาลทันที",
+              "english": "If the stomach ache is bad, or the fever does not go down, come to the hospital at once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "มะลิอธิบายให้ยาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ยายของบอลอ่านหนังสือไม่ค่อยออก แต่อยากรู้ว่าหมอพูดอะไร",
+              "english": "Ball's grandmother cannot read well, but she wants to know what the doctor said."
+            },
+            {
+              "text": "มะลิจึงอ่านใบนัดให้ยายฟังทีละคำ",
+              "english": "So Mali read the slip to her, word by word."
+            },
+            {
+              "text": "ยายถามว่า ยาต้องกินกี่ครั้งคะ",
+              "english": "Grandmother asked, \"How many times must he take the medicine?\""
+            },
+            {
+              "text": "มะลิตอบว่า วันละสามครั้งค่ะ หลังกินข้าวเสมอ",
+              "english": "Mali answered, \"Three times a day, always after he eats.\""
+            },
+            {
+              "text": "ยายถามว่า แล้วบอลกินข้าวได้ไหม เขาบอกว่าไม่หิว",
+              "english": "Grandmother asked, \"And can Ball eat? He says he is not hungry.\""
+            },
+            {
+              "text": "มะลิตอบว่า ให้กินข้าวต้มก่อนค่ะ แล้วค่อยกินยา",
+              "english": "Mali answered, \"Give him rice porridge first, and then the medicine.\""
+            },
+            {
+              "text": "ยายยิ้ม และจดเวลากินยาไว้บนกระดาษ",
+              "english": "Grandmother smiled and wrote the medicine times on a piece of paper."
+            },
+            {
+              "text": "ตัวหนังสือของเธอใหญ่ แต่สวยมาก",
+              "english": "Her handwriting was large, but very beautiful."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วันนัด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "สามวันต่อมา บอลมาที่โรงพยาบาลตามนัด",
+              "english": "Three days later Ball came to the hospital as arranged."
+            },
+            {
+              "text": "หมอพูดว่า ไข้หายแล้ว และบอลไปโรงเรียนได้",
+              "english": "The doctor said the fever was gone and Ball could go to school."
+            },
+            {
+              "text": "บอลดีใจมาก เพราะเขาเบื่อการนอนอยู่บ้าน",
+              "english": "Ball was delighted, because he was tired of lying around at home."
+            },
+            {
+              "text": "ตอนเย็น ยายทำข้าวต้มให้บอลอีกชามหนึ่ง",
+              "english": "That evening Grandmother made Ball another bowl of rice porridge."
+            },
+            {
+              "text": "บอลกินหมดชาม และบอกว่า ผมหิวแล้วครับ",
+              "english": "Ball finished the bowl and said, \"Now I am hungry.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

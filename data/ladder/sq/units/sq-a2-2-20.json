@@ -68,8 +68,8 @@
               "english": "\"About a year,\" said the pastor."
             },
             {
-              "text": "— Për atë që nuk mundeshe të thoshe dhe për atë që mund ta thuash tani.",
-              "english": "\"About what you could not say and about what you can say now.\""
+              "text": "— Për atë që nuk dije të thoshe dhe për atë që mund ta thuash tani.",
+              "english": "\"About what you did not know how to say and about what you can say now.\""
             },
             {
               "text": "Sami u ngrit pak i shqetësuar, por në radhën e parë ishin Ana dhe Luani, dhe ai buzëqeshi.",
@@ -96,8 +96,8 @@
               "english": "\"That day I knew only three words: 'hello', 'thank you' and 'I want bread'.\""
             },
             {
-              "text": "— Nuk mundem të them sa frikë kisha. Nuk e kuptoja asnjë njeri, dhe askush nuk më kuptonte mua.",
-              "english": "\"I cannot tell how afraid I was. I did not understand any person, and nobody understood me.\""
+              "text": "— Nuk di të them sa frikë kisha. Nuk e kuptoja asnjë njeri, dhe askush nuk më kuptonte mua.",
+              "english": "\"I do not know how to say how afraid I was. I did not understand any person, and nobody understood me.\""
             },
             {
               "text": "— Në fillim kisha një dhomë të vogël pranë kishës, dhe çdo ditë mësoja dhjetë fjalë të reja.",
@@ -112,12 +112,12 @@
               "english": "\"Ana taught me to say 'it hurts' when I was ill, and Ardi taught me the language of children.\""
             },
             {
-              "text": "— Sot mundem të flas me ju, edhe pse bëj ende gabime, dhe kjo më kënaq shumë.",
-              "english": "\"Today I can speak with you, even though I still make mistakes, and this pleases me a lot.\""
+              "text": "— Sot flas me ju, edhe pse bëj ende gabime, dhe jam shumë i lumtur për këtë.",
+              "english": "\"Today I speak with you, even though I still make mistakes, and I am very happy about this.\""
             },
             {
-              "text": "— Kënaqem kur dëgjoj një fjali të plotë, kënaqem kur dikush më kupton dhe kënaqem kur qesh me mua.",
-              "english": "\"I am glad when I hear a full sentence, I am glad when someone understands me and I am glad when he laughs with me.\""
+              "text": "— Jam i lumtur kur dëgjoj një fjali të plotë, jam i lumtur kur dikush më kupton dhe jam i lumtur kur qesh me mua.",
+              "english": "\"I am happy when I hear a full sentence, I am happy when someone understands me and I am happy when he laughs with me.\""
             }
           ]
         },
@@ -136,8 +136,8 @@
               "english": "\"I have been to the north, where the mountain is high and the air is clean, and to the south, where the sea is calm and warm.\""
             },
             {
-              "text": "— Kam parë vende arkeologjike, qytete bregdetare dhe krahina të largëta, dhe një komunë të vogël ku njerëzit më pritën në derë.",
-              "english": "\"I have seen archaeological sites, coastal towns and distant regions, and a small commune where people received me at the door.\""
+              "text": "— Kam parë vende arkeologjike, qytete bregdetare dhe vende të largëta, dhe një komunë të vogël ku njerëzit më pritën në derë.",
+              "english": "\"I have seen archaeological sites, coastal towns and distant places, and a small commune where people received me at the door.\""
             },
             {
               "text": "— Nga një pikë e hapur në mal pashë një pamje që nuk do ta harroj, dhe aty u përula dhe falënderova Perëndinë.",
@@ -192,19 +192,19 @@
               "english": "\"I have also met French, Americans and other Europeans, and we have talked about a life that is the same, similar and near to the life of every person.\""
             },
             {
-              "text": "— Në Durrës kam parë gjirin e detit, ku qyteti përhapet çdo vit dhe vendbanimet e reja janë kufizuar nga deti.",
-              "english": "\"In Durrës I have seen the bay of the sea, where the town spreads every year and the new settlements are bounded by the sea.\""
+              "text": "— Në Durrës kam parë detin, ku qyteti rritet çdo vit dhe lagjet e reja janë afër bregut.",
+              "english": "\"In Durrës I have seen the sea, where the town grows every year and the new neighbourhoods are near the shore.\""
             },
             {
-              "text": "— Kam udhëtuar edhe me transportin hekurudhor, dhe udhëtimi hekurudhor ishte i bukur.",
-              "english": "\"I have also travelled by railway transport, and the railway journey was beautiful.\""
+              "text": "— Kam udhëtuar edhe me tren, dhe udhëtimi me tren ishte i bukur.",
+              "english": "\"I have also travelled by train, and the train journey was beautiful.\""
             },
             {
-              "text": "— Akademia e Shkencave dhe instituti i bujqësisë janë dy vende ku kam lexuar vëllime të vjetra.",
-              "english": "\"The Academy of Sciences and the institute of agriculture are two places where I have read old volumes.\""
+              "text": "— Biblioteka kombëtare dhe shkolla e bujqësisë janë dy vende ku kam lexuar libra të vjetër.",
+              "english": "\"The national library and the agricultural school are two places where I have read old books.\""
             },
             {
-              "text": "— Kam parë pjesën qendrore të Tiranës, lagjet jugore dhe territorin e saj, një zonë turke me xhami të vjetra dhe një kala mesjetare, pjesën lindore dhe atë perëndimore, dhe kam parë se çdo rast, çdo formë jete dhe çdo zhvillim i vogël më ka mësuar diçka.",
+              "text": "— Kam parë qendrën e Tiranës, lagjet jugore dhe territorin e saj, një zonë turke me xhami të vjetra dhe një kala mesjetare, pjesën lindore dhe atë perëndimore, dhe kam parë se çdo rast, çdo formë jete dhe çdo zhvillim i vogël më ka mësuar diçka.",
               "english": "\"I have seen the centre of Tirana, the southern neighbourhoods and its territory, a Turkish zone with old mosques and a medieval castle, in the east and in the west, and I have seen that every occasion, every form of life and every small development has taught me something.\""
             },
             {
@@ -224,16 +224,16 @@
               "english": "\"I also learned about the economy: about farmers who sell their fruit, about tourism and about the service sector.\""
             },
             {
-              "text": "— Punoj tani në një shkollë, në një institucion të vjetër, dhe aty kam kolegë që e kanë zhvilluar sistemin e tyre me kohë.",
-              "english": "\"I now work in a school, in an old institution, and there I have colleagues who have developed their system with time.\""
+              "text": "— Punoj tani në një shkollë, në një institucion të vjetër, dhe aty kam kolegë që e kanë zhvilluar mënyrën e tyre me kohë.",
+              "english": "\"I now work in a school, in an old institution, and there I have colleagues who have developed their way with time.\""
             },
             {
-              "text": "— Kam parë transportin e Tiranës, ndërtimet e reja, lagjet urbane dhe tregjet lokale, dhe e di që ky qytet është i gjallë dhe karakteristik.",
-              "english": "\"I have seen the transport of Tirana, the new constructions, the urban neighbourhoods and the local markets, and I know that this city is lively and characteristic.\""
+              "text": "— Kam parë autobusët e Tiranës, ndërtesat e reja, lagjet e qytetit dhe tregjet e vogla, dhe e di që ky qytet është i gjallë dhe i veçantë.",
+              "english": "\"I have seen the buses of Tirana, the new buildings, the neighbourhoods of the city and the small markets, and I know that this city is lively and special.\""
             },
             {
-              "text": "— Ai nuk është një qytet botëror, por ka një nivel të mirë jete dhe një zemër të madhe.",
-              "english": "\"It is not a world city, but it has a good standard of life and a big heart.\""
+              "text": "— Ai nuk është një qytet shumë i madh, por ka një jetë të mirë dhe një zemër të madhe.",
+              "english": "\"It is not a very big city, but it has a good life and a big heart.\""
             }
           ]
         },
@@ -308,8 +308,8 @@
               "english": "\"In the year that comes I would like to learn to speak even better, and if I had time, I would learn to sing an Albanian song.\""
             },
             {
-              "text": "— Nuk e di sa kohë do të qëndroj këtu, por e di që këtu është shtëpia ime e dytë, dhe kjo më kënaq.",
-              "english": "\"I do not know how long I will stay here, but I know that this is my second home, and that pleases me.\""
+              "text": "— Nuk e di sa kohë do të qëndroj këtu, por e di që këtu është shtëpia ime e dytë, dhe jam i lumtur për këtë.",
+              "english": "\"I do not know how long I will stay here, but I know that this is my second home, and I am happy about this.\""
             },
             {
               "text": "— Ndoshta një ditë do të kthehem në vendin tim, por zemra ime do të jetë gjithmonë edhe në Shqipëri.",

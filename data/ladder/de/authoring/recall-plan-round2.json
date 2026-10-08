@@ -1,0 +1,1298 @@
+{
+ "de-b1-02": [
+  {
+   "lemma": "märchenabend",
+   "form": "märchenabend",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Ich möchte einen Märchenabend machen."
+  },
+  {
+   "lemma": "freitagabend",
+   "form": "freitagabend",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Es ist Freitagabend, und das Team sitzt bei David und Ruth am Tisch."
+  },
+  {
+   "lemma": "hausflur",
+   "form": "hausflur",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Ich habe im Hausflur lange vor den Behältern gestanden."
+  },
+  {
+   "lemma": "behältern",
+   "form": "behältern",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Ich habe im Hausflur lange vor den Behältern gestanden."
+  }
+ ],
+ "de-b1-04": [
+  {
+   "lemma": "märchenabend",
+   "form": "märchenabend",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Ich möchte einen Märchenabend machen."
+  },
+  {
+   "lemma": "freitagabend",
+   "form": "freitagabend",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Es ist Freitagabend, und das Team sitzt bei David und Ruth am Tisch."
+  },
+  {
+   "lemma": "hausflur",
+   "form": "hausflur",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Ich habe im Hausflur lange vor den Behältern gestanden."
+  },
+  {
+   "lemma": "behältern",
+   "form": "behältern",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Ich habe im Hausflur lange vor den Behältern gestanden."
+  },
+  {
+   "lemma": "folgenden",
+   "form": "folgenden",
+   "from": "de-b1-02",
+   "own": 1,
+   "ctx": "Im Folgenden schreibe ich Euch, woran ich mich besonders erinnere."
+  },
+  {
+   "lemma": "woran",
+   "form": "woran",
+   "from": "de-b1-02",
+   "own": 1,
+   "ctx": "Im Folgenden schreibe ich Euch, woran ich mich besonders erinnere."
+  }
+ ],
+ "de-b1-08": [
+  {
+   "lemma": "folgenden",
+   "form": "folgenden",
+   "from": "de-b1-02",
+   "own": 1,
+   "ctx": "Im Folgenden schreibe ich Euch, woran ich mich besonders erinnere."
+  },
+  {
+   "lemma": "woran",
+   "form": "woran",
+   "from": "de-b1-02",
+   "own": 1,
+   "ctx": "Im Folgenden schreibe ich Euch, woran ich mich besonders erinnere."
+  },
+  {
+   "lemma": "eh",
+   "form": "eh",
+   "from": "de-b1-04",
+   "own": 2,
+   "ctx": "Das kenne ich eh schon, du liest es jeden Sommer."
+  },
+  {
+   "lemma": "eher",
+   "form": "eher",
+   "from": "de-b1-04",
+   "own": 3,
+   "ctx": "Das ist eher schwer."
+  },
+  {
+   "lemma": "kreis",
+   "form": "kreis",
+   "from": "de-b1-04",
+   "own": 1,
+   "ctx": "Am Ende treten alle Kinder in einen Kreis, und wir lesen es zusammen."
+  },
+  {
+   "lemma": "nahe",
+   "form": "nahe",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "Die drei jungen Männer sind noch in der Höhle, nahe bei der Stadt Bonn."
+  },
+  {
+   "lemma": "wecken",
+   "form": "wecken",
+   "from": "de-b1-05",
+   "own": 3,
+   "ctx": "Dann sagte der Erste: »Mein Vater, meine Mutter, mein Bruder und meine Schwester wecken mich immer zu früh auf. Hier will ich nicht bleiben. Ich will fortgehen!«"
+  },
+  {
+   "lemma": "aufwecken",
+   "form": "wecken",
+   "from": "de-b1-05",
+   "own": 6,
+   "ctx": "Und der dritte junge Mann sagte auch: »Meine Eltern (Vater und Mutter) und meine Geschwister (Bruder und Schwester) wecken mich auch zu früh auf. Hier in Bonn will ich nicht bleiben. Ich will auch fortgehen.«"
+  },
+  {
+   "lemma": "ruhen",
+   "form": "ruhen",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "»Hier ist ein guter, stiller Platz. Hier können wir ruhen. Hier können wir ruhig schlafen, so lange wir wollen.«"
+  },
+  {
+   "lemma": "schlaf",
+   "form": "schlafe",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "»Hier ist es schön still. Hier können wir lange, lange schlafen. Hier kommen keine bösen Geschwister, um uns aus dem Schlafe zu wecken. Ich bin froh, daß wir diesen schönen stillen Platz gefunden haben. Sehr froh.«"
+  },
+  {
+   "lemma": "bilden",
+   "form": "bilden",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "Die Worte, die sie sagen, bilden eine Unterhaltung."
+  },
+  {
+   "lemma": "träg",
+   "form": "träge",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Diese drei Männer waren auch träge, sehr träge."
+  },
+  {
+   "lemma": "ochs",
+   "form": "ochs",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Er machte die Augen auf und sagte langsam, sehr langsam: »Nein, das war keine Kuh, das war ein Ochs.«"
+  },
+  {
+   "lemma": "unterhaltung",
+   "form": "unterhaltung",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Die Worte, die sie sagen, bilden eine Unterhaltung."
+  },
+  {
+   "lemma": "interessant",
+   "form": "interessant",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Und diese Unterhaltung ist nicht interessant, weil schläfrige junge Männer nichts Interessantes sagen können."
+  },
+  {
+   "lemma": "nied",
+   "form": "nieder",
+   "from": "de-b1-05",
+   "own": 3,
+   "ctx": "Die drei Männer legten sich in der Höhle nieder."
+  },
+  {
+   "lemma": "siebent",
+   "form": "siebente",
+   "from": "de-b1-05",
+   "own": 3,
+   "ctx": "Endlich (am Ende), als das siebente Jahr kam, hörte der erste Jüngling ein kleines Geräusch."
+  },
+  {
+   "lemma": "wärmen",
+   "form": "wärmen",
+   "from": "de-b1-06",
+   "own": 1,
+   "ctx": "Er setzte sich vor das Feuer, und da konnte er sich gut wärmen; und alles war gut, denn er hatte den uralten Hausvater gefunden."
+  },
+  {
+   "lemma": "palast",
+   "form": "palast",
+   "from": "de-b1-06",
+   "own": 1,
+   "ctx": "Endlich kam er zu einem schönen Hause, das so groß wie ein Palast war."
+  },
+  {
+   "lemma": "esszimmer",
+   "form": "eßzimmer",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Treten Sie in das Eßzimmer. Da werden Sie meinen Vater finden. Er sitzt an dem Tisch und ißt.«"
+  },
+  {
+   "lemma": "schlafzimmer",
+   "form": "schlafzimmer",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Da ist mein Vater. Er liegt da, im Schlafzimmer. Er liegt im Bette. Er wird Ihnen sagen, ob Sie hier übernachten können.«"
+  },
+  {
+   "lemma": "wand",
+   "form": "wand",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Ich bin nicht der Hausvater! Mein Vater hängt dort (da) an der Wand, in dem Trinkhorn. Er wird Ihnen sagen, ob Sie hier übernachten können,« sagte der uralte Mann, der kaum atmen konnte."
+  },
+  {
+   "lemma": "trinkhorn",
+   "form": "trinkhorn",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Ich bin nicht der Hausvater! Mein Vater hängt dort (da) an der Wand, in dem Trinkhorn. Er wird Ihnen sagen, ob Sie hier übernachten können,« sagte der uralte Mann, der kaum atmen konnte."
+  },
+  {
+   "lemma": "spalten",
+   "form": "spaltete",
+   "from": "de-b1-06",
+   "own": 3,
+   "ctx": "Der Mann arbeitete, er spaltete Holz."
+  },
+  {
+   "lemma": "anmachen",
+   "form": "machte",
+   "from": "de-b1-06",
+   "own": 3,
+   "ctx": "Der alte Mann machte Feuer an."
+  },
+  {
+   "lemma": "wiege",
+   "form": "wiege",
+   "from": "de-b1-06",
+   "own": 3,
+   "ctx": "»Aber da ist mein Vater. Da in der Wiege (das Bett eines sehr kleinen Kindes). Er wird Ihnen wohl sagen, ob Sie hier übernachten können.«"
+  },
+  {
+   "lemma": "bestimmen",
+   "form": "bestimmen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Ein König hatte drei Söhne, die waren ihm alle gleich lieb, und er wußte nicht welchen er zum König nach seinem Tode bestimmen sollte."
+  },
+  {
+   "lemma": "bedachen",
+   "form": "bedacht",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Als die Zeit kam, daß er sterben wollte, rief er sie vor sein Bett und sprach „liebe Kinder, ich habe etwas bei mir bedacht, das will ich euch eröffnen: welcher von euch der Faulste ist, der soll nach mir König werden.“"
+  },
+  {
+   "lemma": "tropfen",
+   "form": "tropfen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Da sprach der älteste „Vater, so gehört das Reich mir, denn ich bin so faul, wenn ich liege und will schlafen, und es fällt mir ein Tropfen in die Augen, so mag ich sie nicht zuthun, damit ich einschlafe.“"
+  },
+  {
+   "lemma": "zuthun",
+   "form": "zuthun",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Da sprach der älteste „Vater, so gehört das Reich mir, denn ich bin so faul, wenn ich liege und will schlafen, und es fällt mir ein Tropfen in die Augen, so mag ich sie nicht zuthun, damit ich einschlafe.“"
+  },
+  {
+   "lemma": "fersen",
+   "form": "fersen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der zweite sprach „Vater, das Reich gehört mir, denn ich bin so faul, wenn ich beim Feuer sitze mich zu wärmen, so ließ ich mir eher die Fersen verbrennen,"
+  },
+  {
+   "lemma": "scharf",
+   "form": "scharf",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  },
+  {
+   "lemma": "zerschneiden",
+   "form": "zerschneiden",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  },
+  {
+   "lemma": "erhüben",
+   "form": "erhübe",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  },
+  {
+   "lemma": "aufhenken",
+   "form": "aufgehenkt",
+   "from": "de-b1-07",
+   "own": 2,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  }
+ ],
+ "de-b1-11": [
+  {
+   "lemma": "höhle",
+   "form": "höhle",
+   "from": "de-b1-05",
+   "own": 8,
+   "ctx": "»Ach,« sagte der Zweite, »ich kenne einen guten, stillen Platz. Ich kenne eine Höhle. Ich kenne eine gute, stille Höhle, nicht sehr weit von hier. Nein, die Höhle ist nicht weit von Bonn, aber da können wir ruhig (still), so ruhig sein.«"
+  },
+  {
+   "lemma": "nahe",
+   "form": "nahe",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "Die drei jungen Männer sind noch in der Höhle, nahe bei der Stadt Bonn."
+  },
+  {
+   "lemma": "wecken",
+   "form": "wecken",
+   "from": "de-b1-05",
+   "own": 3,
+   "ctx": "Dann sagte der Erste: »Mein Vater, meine Mutter, mein Bruder und meine Schwester wecken mich immer zu früh auf. Hier will ich nicht bleiben. Ich will fortgehen!«"
+  },
+  {
+   "lemma": "aufwecken",
+   "form": "wecken",
+   "from": "de-b1-05",
+   "own": 6,
+   "ctx": "Und der dritte junge Mann sagte auch: »Meine Eltern (Vater und Mutter) und meine Geschwister (Bruder und Schwester) wecken mich auch zu früh auf. Hier in Bonn will ich nicht bleiben. Ich will auch fortgehen.«"
+  },
+  {
+   "lemma": "ruhen",
+   "form": "ruhen",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "»Hier ist ein guter, stiller Platz. Hier können wir ruhen. Hier können wir ruhig schlafen, so lange wir wollen.«"
+  },
+  {
+   "lemma": "schlaf",
+   "form": "schlafe",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "»Hier ist es schön still. Hier können wir lange, lange schlafen. Hier kommen keine bösen Geschwister, um uns aus dem Schlafe zu wecken. Ich bin froh, daß wir diesen schönen stillen Platz gefunden haben. Sehr froh.«"
+  },
+  {
+   "lemma": "bilden",
+   "form": "bilden",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "Die Worte, die sie sagen, bilden eine Unterhaltung."
+  },
+  {
+   "lemma": "träg",
+   "form": "träge",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Diese drei Männer waren auch träge, sehr träge."
+  },
+  {
+   "lemma": "ochs",
+   "form": "ochs",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Er machte die Augen auf und sagte langsam, sehr langsam: »Nein, das war keine Kuh, das war ein Ochs.«"
+  },
+  {
+   "lemma": "unterhaltung",
+   "form": "unterhaltung",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Die Worte, die sie sagen, bilden eine Unterhaltung."
+  },
+  {
+   "lemma": "interessant",
+   "form": "interessant",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Und diese Unterhaltung ist nicht interessant, weil schläfrige junge Männer nichts Interessantes sagen können."
+  },
+  {
+   "lemma": "nied",
+   "form": "nieder",
+   "from": "de-b1-05",
+   "own": 3,
+   "ctx": "Die drei Männer legten sich in der Höhle nieder."
+  },
+  {
+   "lemma": "siebent",
+   "form": "siebente",
+   "from": "de-b1-05",
+   "own": 3,
+   "ctx": "Endlich (am Ende), als das siebente Jahr kam, hörte der erste Jüngling ein kleines Geräusch."
+  },
+  {
+   "lemma": "aufmeinen",
+   "form": "meine",
+   "from": "de-b1-05",
+   "own": 4,
+   "ctx": "Dann sagte der Erste: »Mein Vater, meine Mutter, mein Bruder und meine Schwester wecken mich immer zu früh auf. Hier will ich nicht bleiben. Ich will fortgehen!«"
+  },
+  {
+   "lemma": "schläfrig",
+   "form": "schläfrig",
+   "from": "de-b1-05",
+   "own": 5,
+   "ctx": "»Ich bin so schläfrig, ich muß schlafen!«"
+  },
+  {
+   "lemma": "wärmen",
+   "form": "wärmen",
+   "from": "de-b1-06",
+   "own": 1,
+   "ctx": "Er setzte sich vor das Feuer, und da konnte er sich gut wärmen; und alles war gut, denn er hatte den uralten Hausvater gefunden."
+  },
+  {
+   "lemma": "palast",
+   "form": "palast",
+   "from": "de-b1-06",
+   "own": 1,
+   "ctx": "Endlich kam er zu einem schönen Hause, das so groß wie ein Palast war."
+  },
+  {
+   "lemma": "esszimmer",
+   "form": "eßzimmer",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Treten Sie in das Eßzimmer. Da werden Sie meinen Vater finden. Er sitzt an dem Tisch und ißt.«"
+  },
+  {
+   "lemma": "schlafzimmer",
+   "form": "schlafzimmer",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Da ist mein Vater. Er liegt da, im Schlafzimmer. Er liegt im Bette. Er wird Ihnen sagen, ob Sie hier übernachten können.«"
+  },
+  {
+   "lemma": "wand",
+   "form": "wand",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Ich bin nicht der Hausvater! Mein Vater hängt dort (da) an der Wand, in dem Trinkhorn. Er wird Ihnen sagen, ob Sie hier übernachten können,« sagte der uralte Mann, der kaum atmen konnte."
+  },
+  {
+   "lemma": "trinkhorn",
+   "form": "trinkhorn",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Ich bin nicht der Hausvater! Mein Vater hängt dort (da) an der Wand, in dem Trinkhorn. Er wird Ihnen sagen, ob Sie hier übernachten können,« sagte der uralte Mann, der kaum atmen konnte."
+  },
+  {
+   "lemma": "spalten",
+   "form": "spaltete",
+   "from": "de-b1-06",
+   "own": 3,
+   "ctx": "Der Mann arbeitete, er spaltete Holz."
+  },
+  {
+   "lemma": "anmachen",
+   "form": "machte",
+   "from": "de-b1-06",
+   "own": 3,
+   "ctx": "Der alte Mann machte Feuer an."
+  },
+  {
+   "lemma": "wiege",
+   "form": "wiege",
+   "from": "de-b1-06",
+   "own": 3,
+   "ctx": "»Aber da ist mein Vater. Da in der Wiege (das Bett eines sehr kleinen Kindes). Er wird Ihnen wohl sagen, ob Sie hier übernachten können.«"
+  },
+  {
+   "lemma": "uralt",
+   "form": "uralter",
+   "from": "de-b1-06",
+   "own": 5,
+   "ctx": "Da lag ein uralter (sehr alter) Mann."
+  },
+  {
+   "lemma": "hausvater",
+   "form": "hausvater",
+   "from": "de-b1-06",
+   "own": 7,
+   "ctx": "»Ich bin nicht der Hausvater!« antwortete der alte Mann im Hofe, der Holz spaltete."
+  },
+  {
+   "lemma": "bestimmen",
+   "form": "bestimmen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Ein König hatte drei Söhne, die waren ihm alle gleich lieb, und er wußte nicht welchen er zum König nach seinem Tode bestimmen sollte."
+  },
+  {
+   "lemma": "bedachen",
+   "form": "bedacht",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Als die Zeit kam, daß er sterben wollte, rief er sie vor sein Bett und sprach „liebe Kinder, ich habe etwas bei mir bedacht, das will ich euch eröffnen: welcher von euch der Faulste ist, der soll nach mir König werden.“"
+  },
+  {
+   "lemma": "tropfen",
+   "form": "tropfen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Da sprach der älteste „Vater, so gehört das Reich mir, denn ich bin so faul, wenn ich liege und will schlafen, und es fällt mir ein Tropfen in die Augen, so mag ich sie nicht zuthun, damit ich einschlafe.“"
+  },
+  {
+   "lemma": "zuthun",
+   "form": "zuthun",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Da sprach der älteste „Vater, so gehört das Reich mir, denn ich bin so faul, wenn ich liege und will schlafen, und es fällt mir ein Tropfen in die Augen, so mag ich sie nicht zuthun, damit ich einschlafe.“"
+  },
+  {
+   "lemma": "fersen",
+   "form": "fersen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der zweite sprach „Vater, das Reich gehört mir, denn ich bin so faul, wenn ich beim Feuer sitze mich zu wärmen, so ließ ich mir eher die Fersen verbrennen,"
+  },
+  {
+   "lemma": "scharf",
+   "form": "scharf",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  },
+  {
+   "lemma": "zerschneiden",
+   "form": "zerschneiden",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  },
+  {
+   "lemma": "erhüben",
+   "form": "erhübe",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  },
+  {
+   "lemma": "enden",
+   "form": "ende",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Der Priester ging auch in sein Haus und sagte: »Ende gut, alles gut!«"
+  },
+  {
+   "lemma": "oh",
+   "form": "oh",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "»Hier ist gutes Korn. Hier kann ich fressen, so viel ich will. Oh das ist gut, sehr gut!«"
+  },
+  {
+   "lemma": "hörner",
+   "form": "hörner",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Die Kuh hatte lange Hörner."
+  },
+  {
+   "lemma": "hörnern",
+   "form": "hörnern",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "»Ach!« sagte der arme, junge Mann, »da ist ein schönes Mädchen. Aber das Mädchen ist traurig, es muß weinen, viel weinen. Es hat weder Vater noch Mutter, weder Bruder noch Schwester, weder Freund noch Haus. Es muß die Kuh mit den langen Hörnern melken, die böse Kuh, die den Hund plagte. Der Hund hat die Katze geplagt, aber die Katze hat die Maus gefressen. Die Maus hat das Korn gefressen, das gute Korn, welches (das) Jakob gekauft hat und welches in seinem neuen Hause war.«"
+  },
+  {
+   "lemma": "gotteshaus",
+   "form": "gotteshaus",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Der Priester nahm sein kleines Buch, sein Gebetbuch, und ging in die Kirche (Gotteshaus)."
+  },
+  {
+   "lemma": "o",
+   "form": "o",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Dann sagte der Priester: »O, es war gut, sehr gut, daß mein Hahn so laut krähte und mich so früh aufweckte!«"
+  },
+  {
+   "lemma": "kräht",
+   "form": "krähte",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Dann sagte der Priester: »O, es war gut, sehr gut, daß mein Hahn so laut krähte und mich so früh aufweckte!«"
+  },
+  {
+   "lemma": "molk",
+   "form": "molk",
+   "from": "de-b1-10",
+   "own": 2,
+   "ctx": "Das Mädchen molk die Kuh."
+  },
+  {
+   "lemma": "bellen",
+   "form": "bellte",
+   "from": "de-b1-10",
+   "own": 3,
+   "ctx": "Die Katze sprang auf einen Baum, und der Hund stand am Fuße des Baumes und bellte."
+  },
+  {
+   "lemma": "melken",
+   "form": "melken",
+   "from": "de-b1-10",
+   "own": 4,
+   "ctx": "Das Mädchen sagte: »Wo ist meine Kuh, meine schöne, braune Kuh? Ich muß die Kuh melken. Jakob will Milch haben!«"
+  }
+ ],
+ "de-b1-14": [
+  {
+   "lemma": "fahrt",
+   "form": "fahrt",
+   "from": "de-b1-08",
+   "own": 1,
+   "ctx": "Die Fahrt dauert fast fünf Stunden, und Ben ist schon nach zwei Stunden müde."
+  },
+  {
+   "lemma": "stadtführerin",
+   "form": "stadtführerin",
+   "from": "de-b1-08",
+   "own": 1,
+   "ctx": "Das erzählt dir die Stadtführerin."
+  },
+  {
+   "lemma": "enden",
+   "form": "ende",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Der Priester ging auch in sein Haus und sagte: »Ende gut, alles gut!«"
+  },
+  {
+   "lemma": "oh",
+   "form": "oh",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "»Hier ist gutes Korn. Hier kann ich fressen, so viel ich will. Oh das ist gut, sehr gut!«"
+  },
+  {
+   "lemma": "hörner",
+   "form": "hörner",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Die Kuh hatte lange Hörner."
+  },
+  {
+   "lemma": "hörnern",
+   "form": "hörnern",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "»Ach!« sagte der arme, junge Mann, »da ist ein schönes Mädchen. Aber das Mädchen ist traurig, es muß weinen, viel weinen. Es hat weder Vater noch Mutter, weder Bruder noch Schwester, weder Freund noch Haus. Es muß die Kuh mit den langen Hörnern melken, die böse Kuh, die den Hund plagte. Der Hund hat die Katze geplagt, aber die Katze hat die Maus gefressen. Die Maus hat das Korn gefressen, das gute Korn, welches (das) Jakob gekauft hat und welches in seinem neuen Hause war.«"
+  },
+  {
+   "lemma": "gotteshaus",
+   "form": "gotteshaus",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Der Priester nahm sein kleines Buch, sein Gebetbuch, und ging in die Kirche (Gotteshaus)."
+  },
+  {
+   "lemma": "o",
+   "form": "o",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Dann sagte der Priester: »O, es war gut, sehr gut, daß mein Hahn so laut krähte und mich so früh aufweckte!«"
+  },
+  {
+   "lemma": "kräht",
+   "form": "krähte",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Dann sagte der Priester: »O, es war gut, sehr gut, daß mein Hahn so laut krähte und mich so früh aufweckte!«"
+  },
+  {
+   "lemma": "molk",
+   "form": "molk",
+   "from": "de-b1-10",
+   "own": 2,
+   "ctx": "Das Mädchen molk die Kuh."
+  },
+  {
+   "lemma": "bellen",
+   "form": "bellte",
+   "from": "de-b1-10",
+   "own": 3,
+   "ctx": "Die Katze sprang auf einen Baum, und der Hund stand am Fuße des Baumes und bellte."
+  },
+  {
+   "lemma": "melken",
+   "form": "melken",
+   "from": "de-b1-10",
+   "own": 4,
+   "ctx": "Das Mädchen sagte: »Wo ist meine Kuh, meine schöne, braune Kuh? Ich muß die Kuh melken. Jakob will Milch haben!«"
+  },
+  {
+   "lemma": "gebetbuch",
+   "form": "gebetbuch",
+   "from": "de-b1-10",
+   "own": 4,
+   "ctx": "Der Mann sagte: »Kommen Sie, liebes Mädchen, wir wollen zu dem Priester gehen. Der Priester ist gut, sehr gut. Der Priester hat ein Buch, ein kleines Buch. Es (das Buch) ist ein Gebetbuch, und der Priester wird uns bald, sehr bald trauen. Kommen Sie, liebes Mädchen, kommen Sie.«"
+  },
+  {
+   "lemma": "krähen",
+   "form": "krähte",
+   "from": "de-b1-10",
+   "own": 4,
+   "ctx": "Der Hahn war im Garten, und der Hahn krähte laut, sehr laut."
+  },
+  {
+   "lemma": "plagen",
+   "form": "plagen",
+   "from": "de-b1-10",
+   "own": 13,
+   "ctx": "»Ach!« sagte der Hund, »da ist eine Katze. Die Katze liegt in der warmen Sonne. Das ist gut! Ich will die Katze plagen!«"
+  },
+  {
+   "lemma": "jammer",
+   "form": "jammer",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "die wußte seinen Jammer schon und schenkte ihm ein Töpfchen, zu"
+  },
+  {
+   "lemma": "hirsenbrei",
+   "form": "hirsenbrei",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "Hirsenbrei, und wenn es sagte „Töpfchen steh,“ so hörte es wieder auf"
+  },
+  {
+   "lemma": "armut",
+   "form": "armuth",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "und nun waren sie ihrer Armuth und ihres Hungers ledig und"
+  },
+  {
+   "lemma": "ledig",
+   "form": "ledig",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "und nun waren sie ihrer Armuth und ihres Hungers ledig und"
+  },
+  {
+   "lemma": "not",
+   "form": "noth",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "die größte Noth, und kein Mensch weiß sich da zu helfen."
+  },
+  {
+   "lemma": "übrig",
+   "form": "übrig",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "wie nur noch ein einziges Haus übrig ist, da kommt das Kind heim,"
+  }
+ ],
+ "de-b1-17": [
+  {
+   "lemma": "heimbringen",
+   "form": "heimbringen",
+   "from": "de-b1-11",
+   "own": 2,
+   "ctx": "Du kannst es heimbringen, wenn du heimgehst."
+  },
+  {
+   "lemma": "zukochen",
+   "form": "kocht",
+   "from": "de-b1-11",
+   "own": 3,
+   "ctx": "Dann kocht er zu. Dann steigt er aus dem Topf heraus, und die Küche ist voll."
+  },
+  {
+   "lemma": "satt",
+   "form": "satt",
+   "from": "de-b1-11",
+   "own": 3,
+   "ctx": "Ich esse zwei Teller, bis ich satt bin."
+  },
+  {
+   "lemma": "heimkommen",
+   "form": "heimkommt",
+   "from": "de-b1-11",
+   "own": 4,
+   "ctx": "Mama kommt erst spät heim. Sie hat heute Nachtdienst."
+  },
+  {
+   "lemma": "fortkochen",
+   "form": "kocht",
+   "from": "de-b1-11",
+   "own": 4,
+   "ctx": "Wenn man zu lange wartet, kocht das Wasser fort, und der Brei wird dick."
+  },
+  {
+   "lemma": "heraussteigen",
+   "form": "steigt",
+   "from": "de-b1-11",
+   "own": 4,
+   "ctx": "Dann kocht er zu. Dann steigt er aus dem Topf heraus, und die Küche ist voll."
+  },
+  {
+   "lemma": "heimgehen",
+   "form": "heimgehst",
+   "from": "de-b1-11",
+   "own": 1,
+   "ctx": "Du kannst es heimbringen, wenn du heimgehst."
+  },
+  {
+   "lemma": "teig",
+   "form": "teig",
+   "from": "de-b1-11",
+   "own": 1,
+   "ctx": "Gib den Teig in die Pfanne und warte, bis er braun ist."
+  },
+  {
+   "lemma": "jammer",
+   "form": "jammer",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "die wußte seinen Jammer schon und schenkte ihm ein Töpfchen, zu"
+  },
+  {
+   "lemma": "hirsenbrei",
+   "form": "hirsenbrei",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "Hirsenbrei, und wenn es sagte „Töpfchen steh,“ so hörte es wieder auf"
+  },
+  {
+   "lemma": "armut",
+   "form": "armuth",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "und nun waren sie ihrer Armuth und ihres Hungers ledig und"
+  },
+  {
+   "lemma": "ledig",
+   "form": "ledig",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "und nun waren sie ihrer Armuth und ihres Hungers ledig und"
+  },
+  {
+   "lemma": "not",
+   "form": "noth",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "die größte Noth, und kein Mensch weiß sich da zu helfen."
+  },
+  {
+   "lemma": "übrig",
+   "form": "übrig",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "wie nur noch ein einziges Haus übrig ist, da kommt das Kind heim,"
+  },
+  {
+   "lemma": "durchessen",
+   "form": "durchessen",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "und wer wieder in die Stadt wollte, der mußte sich durchessen."
+  },
+  {
+   "lemma": "heilig",
+   "form": "heiligen",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Das letzte Wort ist heiligen."
+  },
+  {
+   "lemma": "übersetzung",
+   "form": "übersetzung",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Die Bibel ist nach der Übersetzung von Martin Luther, und die Sprache ist nicht ganz einfach."
+  },
+  {
+   "lemma": "bezeugen",
+   "form": "bezeugen",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Hier heißt zeugen: etwas bezeugen, wie ein Zeuge."
+  }
+ ],
+ "de-b1-19": [
+  {
+   "lemma": "gleichwie",
+   "form": "gleichwie",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Gleichwie ist ein altes Wort. Es heißt einfach: so wie."
+  },
+  {
+   "lemma": "heilig",
+   "form": "heiligen",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Das letzte Wort ist heiligen."
+  },
+  {
+   "lemma": "übersetzung",
+   "form": "übersetzung",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Die Bibel ist nach der Übersetzung von Martin Luther, und die Sprache ist nicht ganz einfach."
+  },
+  {
+   "lemma": "bezeugen",
+   "form": "bezeugen",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Hier heißt zeugen: etwas bezeugen, wie ein Zeuge."
+  },
+  {
+   "lemma": "zeuge",
+   "form": "zeuge",
+   "from": "de-b1-14",
+   "own": 3,
+   "ctx": "Hier heißt zeugen: etwas bezeugen, wie ein Zeuge."
+  },
+  {
+   "lemma": "stadtmagazin",
+   "form": "stadtmagazin",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Frau Weber liest das Stadtmagazin, und Ben sitzt neben ihr."
+  },
+  {
+   "lemma": "artikel",
+   "form": "artikel",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Auf Seite drei steht ein Artikel mit einem großen Foto."
+  },
+  {
+   "lemma": "schreien",
+   "form": "schreien",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Wer einem Fuchs begegnet, soll ruhig bleiben und nicht schreien."
+  },
+  {
+   "lemma": "sprichwort",
+   "form": "sprichwort",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Es gibt ein altes Sprichwort: Undank ist der Welt Lohn."
+  },
+  {
+   "lemma": "lesebuch",
+   "form": "lesebuch",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Sie ist sehr alt, und sie steht in einem Lesebuch aus dem Jahr neunzehnhundert."
+  }
+ ],
+ "de-b1-21": [
+  {
+   "lemma": "stadtmagazin",
+   "form": "stadtmagazin",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Frau Weber liest das Stadtmagazin, und Ben sitzt neben ihr."
+  },
+  {
+   "lemma": "artikel",
+   "form": "artikel",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Auf Seite drei steht ein Artikel mit einem großen Foto."
+  },
+  {
+   "lemma": "schreien",
+   "form": "schreien",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Wer einem Fuchs begegnet, soll ruhig bleiben und nicht schreien."
+  },
+  {
+   "lemma": "sprichwort",
+   "form": "sprichwort",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Es gibt ein altes Sprichwort: Undank ist der Welt Lohn."
+  },
+  {
+   "lemma": "lesebuch",
+   "form": "lesebuch",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Sie ist sehr alt, und sie steht in einem Lesebuch aus dem Jahr neunzehnhundert."
+  },
+  {
+   "lemma": "neunzehnhundern",
+   "form": "neunzehnhundert",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Sie ist sehr alt, und sie steht in einem Lesebuch aus dem Jahr neunzehnhundert."
+  },
+  {
+   "lemma": "bedeuten",
+   "form": "bedeutet",
+   "from": "de-b1-19",
+   "own": 1,
+   "ctx": "Und was bedeutet es, wenn ein Mädchen sein Hemdlein abtut?"
+  }
+ ],
+ "de-b1-23": [
+  {
+   "lemma": "stadtmagazin",
+   "form": "stadtmagazin",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Frau Weber liest das Stadtmagazin, und Ben sitzt neben ihr."
+  },
+  {
+   "lemma": "artikel",
+   "form": "artikel",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Auf Seite drei steht ein Artikel mit einem großen Foto."
+  },
+  {
+   "lemma": "schreien",
+   "form": "schreien",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Wer einem Fuchs begegnet, soll ruhig bleiben und nicht schreien."
+  },
+  {
+   "lemma": "sprichwort",
+   "form": "sprichwort",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Es gibt ein altes Sprichwort: Undank ist der Welt Lohn."
+  },
+  {
+   "lemma": "lesebuch",
+   "form": "lesebuch",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Sie ist sehr alt, und sie steht in einem Lesebuch aus dem Jahr neunzehnhundert."
+  },
+  {
+   "lemma": "magazin",
+   "form": "magazin",
+   "from": "de-b1-17",
+   "own": 1,
+   "ctx": "Dann bleiben wir ruhig, wie im Magazin."
+  },
+  {
+   "lemma": "aufhalten",
+   "form": "hält",
+   "from": "de-b1-19",
+   "own": 2,
+   "ctx": "Am Ende regnet es Sterne, und das Mädchen zieht ihr Hemd ab und hält es auf."
+  },
+  {
+   "lemma": "ausbleiben",
+   "form": "aus",
+   "from": "de-b1-21",
+   "own": 5,
+   "ctx": "Wenn er zu lange ausblieb, hat der Bauer gewartet und sich Sorgen gemacht."
+  },
+  {
+   "lemma": "treu",
+   "form": "treu",
+   "from": "de-b1-21",
+   "own": 3,
+   "ctx": "Ja, sehr klug. Er arbeitet seit vielen Jahren hier, und er ist immer treu geblieben."
+  },
+  {
+   "lemma": "deutschkurs",
+   "form": "deutschkurs",
+   "from": "de-b1-21",
+   "own": 1,
+   "ctx": "Das ist eine gute Regel, auch für mich im Deutschkurs."
+  }
+ ],
+ "de-b1-25": [
+  {
+   "lemma": "stückchen",
+   "form": "stückchen",
+   "from": "de-b1-19",
+   "own": 1,
+   "ctx": "Sie hat gar nichts, und sie gibt ihr Stückchen Brot einem hungrigen Mann hin."
+  },
+  {
+   "lemma": "hineinsammeln",
+   "form": "hineinsammeln",
+   "from": "de-b1-19",
+   "own": 1,
+   "ctx": "Sie kann die Taler hineinsammeln, weil sie alles hingegeben hat."
+  },
+  {
+   "lemma": "hemdlein",
+   "form": "hemdlein",
+   "from": "de-b1-19",
+   "own": 3,
+   "ctx": "Was ist ein Taler? Was ist ein Hemdlein?"
+  },
+  {
+   "lemma": "taler",
+   "form": "taler",
+   "from": "de-b1-19",
+   "own": 4,
+   "ctx": "Was ist ein Taler? Was ist ein Hemdlein?"
+  },
+  {
+   "lemma": "abtun",
+   "form": "abtut",
+   "from": "de-b1-19",
+   "own": 4,
+   "ctx": "Und was bedeutet es, wenn ein Mädchen sein Hemdlein abtut?"
+  },
+  {
+   "lemma": "abziehen",
+   "form": "zieht",
+   "from": "de-b1-19",
+   "own": 4,
+   "ctx": "Abtun heißt: ausziehen. Man tut das Hemd ab, und man zieht es ab."
+  },
+  {
+   "lemma": "ausschicken",
+   "form": "schickt",
+   "from": "de-b1-21",
+   "own": 5,
+   "ctx": "Der Bauer hat ihn jeden Morgen ausgeschickt, und er hat die Arbeit gemacht."
+  },
+  {
+   "lemma": "treu",
+   "form": "treu",
+   "from": "de-b1-21",
+   "own": 3,
+   "ctx": "Ja, sehr klug. Er arbeitet seit vielen Jahren hier, und er ist immer treu geblieben."
+  },
+  {
+   "lemma": "deutschkurs",
+   "form": "deutschkurs",
+   "from": "de-b1-21",
+   "own": 1,
+   "ctx": "Das ist eine gute Regel, auch für mich im Deutschkurs."
+  },
+  {
+   "lemma": "bauer",
+   "form": "bauer",
+   "from": "de-b1-21",
+   "own": 4,
+   "ctx": "Lukas kennt den Bauern, und die Kinder dürfen die Tiere sehen."
+  },
+  {
+   "lemma": "taub",
+   "form": "taub",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Er hört fast nichts mehr, denn er ist taub."
+  },
+  {
+   "lemma": "tischtuch",
+   "form": "tischtuch",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Seine Hände zittern, und ein bisschen Suppe fließt auf das Tischtuch."
+  },
+  {
+   "lemma": "knie",
+   "form": "knie",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Ich lege dir ein Tuch auf die Knie, Vater."
+  },
+  {
+   "lemma": "nass",
+   "form": "nass",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Draußen im Garten ist die Erde nass vom Regen."
+  },
+  {
+   "lemma": "trüb",
+   "form": "trüb",
+   "from": "de-b1-23",
+   "own": 2,
+   "ctx": "Seine Augen sind trüb, und sein Gesicht ist müde."
+  },
+  {
+   "lemma": "fließen",
+   "form": "fließt",
+   "from": "de-b1-23",
+   "own": 2,
+   "ctx": "Seine Hände zittern, und ein bisschen Suppe fließt auf das Tischtuch."
+  },
+  {
+   "lemma": "urgroßvater",
+   "form": "urgroßvater",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Ben nennt ihn Opa, aber er ist sein Urgroßvater."
+  }
+ ],
+ "de-b1-28": [
+  {
+   "lemma": "daraus",
+   "form": "daraus",
+   "from": "de-b1-23",
+   "own": 2,
+   "ctx": "Das liest du bald selbst, Ben. Ich sage nur: Der Enkel lernt daraus etwas."
+  },
+  {
+   "lemma": "taub",
+   "form": "taub",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Er hört fast nichts mehr, denn er ist taub."
+  },
+  {
+   "lemma": "tischtuch",
+   "form": "tischtuch",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Seine Hände zittern, und ein bisschen Suppe fließt auf das Tischtuch."
+  },
+  {
+   "lemma": "knie",
+   "form": "knie",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Ich lege dir ein Tuch auf die Knie, Vater."
+  },
+  {
+   "lemma": "nass",
+   "form": "nass",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Draußen im Garten ist die Erde nass vom Regen."
+  },
+  {
+   "lemma": "trüb",
+   "form": "trüb",
+   "from": "de-b1-23",
+   "own": 2,
+   "ctx": "Seine Augen sind trüb, und sein Gesicht ist müde."
+  },
+  {
+   "lemma": "fließen",
+   "form": "fließt",
+   "from": "de-b1-23",
+   "own": 2,
+   "ctx": "Seine Hände zittern, und ein bisschen Suppe fließt auf das Tischtuch."
+  },
+  {
+   "lemma": "urgroßvater",
+   "form": "urgroßvater",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Ben nennt ihn Opa, aber er ist sein Urgroßvater."
+  },
+  {
+   "lemma": "steinalen",
+   "form": "steinalt",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Der Großvater ist steinalt, und er sieht schlecht."
+  },
+  {
+   "lemma": "schüten",
+   "form": "schütte",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Ich schütte auch oft etwas auf den Tisch."
+  }
+ ]
+}

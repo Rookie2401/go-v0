@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-05",
+  "lang": "sq",
+  "title": "Darka e së dielës",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-05",
+    "title": "Albanian ladder, b1-bridge: Darka e së dielës (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Darka e së dielës",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën në mbrëmje të gjithë u mblodhën në shtëpinë e gjyshes Drita.",
+              "english": "On Sunday evening they all gathered at grandmother Drita's house."
+            },
+            {
+              "text": "Kishte supë të nxehtë, byrek me spinaq dhe një bukë të madhe që Drita e kishte pjekur vetë.",
+              "english": "There was hot soup, a spinach byrek and a big loaf that Drita had baked herself."
+            },
+            {
+              "text": "Ardi, Elira dhe Gjergji hanin shpejt dhe flisnin shumë.",
+              "english": "Ardi, Elira and Gjergj ate fast and talked a lot."
+            },
+            {
+              "text": "Dritani rrinte i heshtur dhe e shikonte supën pa e prekur.",
+              "english": "Dritan sat in silence and looked at the soup without touching it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pasi fëmijët dolën në oborr, Drita e vuri dorën mbi tavolinë.",
+              "english": "After the children went out into the yard, Drita put her hand on the table."
+            },
+            {
+              "text": "— Dritan, — tha ajo.",
+              "english": "\"Dritan,\" she said."
+            },
+            {
+              "text": "— Unë shes bukë prej tridhjetë vitesh dhe i njoh njerëzit nga mënyra se si e marrin bukën.",
+              "english": "\"I have been selling bread for thirty years and I know people by the way they take their bread.\""
+            },
+            {
+              "text": "— Ti sot nuk e ke prekur supën.",
+              "english": "'Today you have not touched the soup.'"
+            },
+            {
+              "text": "— Çfarë ke?",
+              "english": "'What is the matter?'"
+            },
+            {
+              "text": "Dritani shikoi poshtë.",
+              "english": "Dritan looked down."
+            },
+            {
+              "text": "— Kompania më pushoi, — tha ai.",
+              "english": "\"The company dismissed me,\" he said."
+            },
+            {
+              "text": "— Kemi pak kursime, — shtoi ai, — dhe një borxh për makinën.",
+              "english": "'We have a little savings,' he added, 'and a debt for the car.'"
+            },
+            {
+              "text": "— Prindërit e mi nuk e dinë ende që e humba punën.",
+              "english": "'My parents do not yet know that I lost my job.'"
+            },
+            {
+              "text": "— Kam gabuar që nuk kam kërkuar kurrë ndihmë.",
+              "english": "'I was wrong never to have asked for help.'"
+            },
+            {
+              "text": "— Kursimet na shkojnë për dy muaj, — tha Mira, — dhe borxhi është një borxh, jo një turp.",
+              "english": "'The savings will last us two months,' said Mira, 'and a debt is a debt, not a shame.'"
+            },
+            {
+              "text": "— Nuk doja ta thosha këtu, para fëmijëve.",
+              "english": "\"I did not want to say it here, in front of the children.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Për një moment askush nuk foli.",
+              "english": "For a moment nobody spoke."
+            },
+            {
+              "text": "Pastaj Luani tha se shkolla kishte nevojë për një njeri që të rregullonte çatinë e vjetër.",
+              "english": "Then Luan said that the school needed someone to repair the old roof."
+            },
+            {
+              "text": "— Nuk është një punë për gjithë jetën, — tha ai.",
+              "english": "'It is not a job for a whole life,' he said."
+            },
+            {
+              "text": "— Por është një punë, dhe pagesa nuk është e keqe.",
+              "english": "\"But it is a job, and the payment is not bad.\""
+            },
+            {
+              "text": "Ana tha se një shoqe e saj nga klinika kishte një furgon dhe i duhej një shofer.",
+              "english": "Ana said that a friend of hers from the clinic had a minibus and needed a driver."
+            },
+            {
+              "text": "— Nëse do, mund t'i telefonoj sonte, — shtoi ajo.",
+              "english": "\"If you want, I can phone her tonight,\" she added."
+            },
+            {
+              "text": "Sami buzëqeshi pak.",
+              "english": "Sam smiled a little."
+            },
+            {
+              "text": "— Unë nuk kam asnjë punë për të ofruar, — tha ai.",
+              "english": "\"I have no job to offer,\" he said."
+            },
+            {
+              "text": "— Por kam kohë, dhe mund të të ndihmoj ta shkruajmë një CV të mirë.",
+              "english": "\"But I have time, and I can help you write a good CV.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dritani i dëgjoi të gjithë, por nuk u përgjigj.",
+              "english": "Dritan listened to them all, but he did not answer."
+            },
+            {
+              "text": "— Unë nuk jam mësuar të kërkoj ndihmë, — tha më në fund.",
+              "english": "\"I am not used to asking for help,\" he said at last."
+            },
+            {
+              "text": "— Gjithmonë kam qenë unë ai që ndihmon.",
+              "english": "\"I have always been the one who helps.\""
+            },
+            {
+              "text": "— E di, — tha Drita.",
+              "english": "\"I know,\" said Drita."
+            },
+            {
+              "text": "— Po atëherë ti ke një gjë të re për të mësuar.",
+              "english": "\"Then you have something new to learn.\""
+            },
+            {
+              "text": "— Kur shes bukë, e mbaj kokën lart.",
+              "english": "\"When I sell bread, I hold my head high.\""
+            },
+            {
+              "text": "— Por kur kam nevojë, e pranoj ndihmën pa turp.",
+              "english": "\"But when I am in need, I accept help without shame.\""
+            },
+            {
+              "text": "— Kjo nuk është turp, Dritan.",
+              "english": "\"This is not shame, Dritan.\""
+            },
+            {
+              "text": "— Turp është të kesh nevojë dhe të mos e thuash.",
+              "english": "\"Shame is to be in need and not to say it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mira e shikoi burrin e saj me dashuri.",
+              "english": "Mira looked at her husband with love."
+            },
+            {
+              "text": "— Të thashë, — pëshpëriti ajo.",
+              "english": "\"I told you,\" she whispered."
+            },
+            {
+              "text": "— Ata janë familja jonë.",
+              "english": "\"They are our family.\""
+            },
+            {
+              "text": "Dritani mori frymë thellë.",
+              "english": "Dritan took a deep breath."
+            },
+            {
+              "text": "— Mirë, — tha ai.",
+              "english": "\"All right,\" he said."
+            },
+            {
+              "text": "— Të hënën do të shkoj në shkollë dhe do të provoj ta rregulloj çatinë.",
+              "english": "\"On Monday I will go to the school and try to fix the roof.\""
+            },
+            {
+              "text": "— Ana, mund t'i telefonosh asaj shoqe, por unë do të flas vetë me të.",
+              "english": "\"Ana, you can phone your friend, but I will speak to her myself.\""
+            },
+            {
+              "text": "— Dhe Sam, po, do të vij te ti të martën për CV-në.",
+              "english": "\"And Sam, yes, I will come to you on Tuesday for the CV.\""
+            },
+            {
+              "text": "— Po të kisha një shok si ju më parë, — shtoi ai me zë të ulët, — nuk do të kisha pritur shumë.",
+              "english": "'If I had had a friend like you earlier,' he added in a low voice, 'I would not have waited so much.'"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Drita ngriti gotën me ujë.",
+              "english": "Drita raised her glass of water."
+            },
+            {
+              "text": "— Të pimë për punën që vjen, — tha ajo.",
+              "english": "\"Let us drink to the work that is coming,\" she said."
+            },
+            {
+              "text": "— Dhe për miqtë që nuk e lënë njeriun vetëm.",
+              "english": "\"And for the friends who do not leave a person alone.\""
+            },
+            {
+              "text": "Të gjithë ngritën gotat, dhe Dritani, për herë të parë atë javë, ngriti kokën.",
+              "english": "They all raised their glasses, and Dritan, for the first time that week, lifted his head."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+=== de-a2-1-17
+## Eine Frage an Jonas
+Sam wohnt seit drei Monaten bei Frau Weber. || Sam has been living at Frau Weber's for three months.
+Aber er muss sich noch anmelden. || But he still has to register.
+Frau Weber sagt: „Das müssen Sie bald machen, Sam.“ || Frau Weber says, "You must do that soon, Sam."
+Sam fragt Jonas: „Wie geht das?“ || Sam asks Jonas, "How does that work?"
+„Ich zeige dir, wie es geht“, sagt Jonas. || "I will show you how it works," says Jonas.
+„Zuerst gehst du zum Amt. Es heißt Bürgeramt.“ || "First you go to the office. It is called the Bürgeramt."
+„Die Öffnungszeit steht im Internet. Sieh auf die Seite.“ || "The opening time is on the internet. Look at the page."
+„Du brauchst deinen Ausweis und eine Bescheinigung von Frau Weber.“ || "You need your ID and a certificate from Frau Weber."
+„Frau Weber schreibt, dass du bei ihr wohnst.“ || "Frau Weber writes that you live with her."
+„Das Formular bekommst du am Schalter.“ || "You get the form at the counter."
+„Du füllst es aus und schreibst deine Unterschrift auf die Seite.“ || "You fill it in and write your signature on the page."
+„Dann musst du alles abgeben.“ || "Then you have to hand everything in."
+„Das macht man in Deutschland so“, sagt Jonas. || "That is how it is done in Germany," says Jonas.
+„Ein Mitarbeiter prüft alles.“ || "An employee checks everything."
+„Es kostet keine Gebühr.“ || "It costs no fee."
+„Danach ist dein Wohnsitz in Leipzig.“ || "After that your place of residence is in Leipzig."
+„Ein Brief kommt dann in den Briefkasten.“ || "A letter then comes into the letterbox."
+
+## Der Weg zum Amt
+Am Dienstag fährt Sam mit der Straßenbahn. || On Tuesday Sam goes by tram.
+Der Fahrplan sagt: Die Bahn fährt um halb neun ab. || The timetable says: the tram leaves at half past eight.
+Aber die Bahn hat Verspätung. || But the tram is late.
+Auf dem Bahnsteig kommt eine Durchsage. || On the platform there is an announcement.
+Sam hat seinen Anschluss nicht mehr. || Sam no longer has his connection.
+Es gibt Ersatz: einen Bus. || There is a replacement: a bus.
+Aber auf der Straße ist Stau. || But there is a traffic jam on the road.
+Sam ärgert sich, denn er will pünktlich sein. || Sam is annoyed, because he wants to be on time.
+
+## Im Amt
+Sam geht in das Haus. || Sam goes into the building.
+Hinter der Tür ist die Auskunft. || Behind the door there is the information desk.
+„Wo muss ich mich anmelden?“, fragt Sam. || "Where do I have to register?" asks Sam.
+Ein Mann sagt: „Raum 204. Nehmen Sie eine Nummer.“ || A man says, "Room 204. Take a number."
+Sam zieht die Nummer 54. || Sam draws number 54.
+Im Raum 204 warten viele Menschen. || In room 204 many people are waiting.
+Hier heißen alle Kunden. || Here everybody is called a customer.
+Eine Frau hat ein Kind. || A woman has a child.
+Das Kind malt ein Bild und spielt mit einem Spielzeug. || The child is painting a picture and playing with a toy.
+Für Kinder gibt es hier auch ein Spiel. || For children there is a game here too.
+Die Frau küsst es und liest ihm ein Märchen vor. || The woman kisses it and reads it a fairy tale.
+Sie ist Erzieherin in einem Kindergarten. || She is a nursery teacher in a kindergarten.
+Ein Mann ist wütend: „Ich warte schon eine Stunde!“ || A man is angry: "I have been waiting for an hour already!"
+Er hat Futter für sein Tier in der Tasche. || He has food for his animal in his bag.
+Eine Durchsage ruft: „Nummer 52, bitte zum Schalter drei.“ || An announcement calls, "Number 52, please go to counter three."
+Sam wartet noch eine Stunde. || Sam waits another hour.
+Dann ruft die Durchsage: „Nummer 54!“ || Then the announcement calls, "Number 54!"
+
+## Beim Mitarbeiter
+Ein Mitarbeiter sitzt hinter dem Fenster. || An employee sits behind the window.
+„Guten Tag. Was kann ich für Sie tun?“ || "Good day. What can I do for you?"
+„Ich möchte mich anmelden“, sagt Sam. || "I would like to register," says Sam.
+„Zeigen Sie mir bitte Ihren Ausweis.“ || "Please show me your ID."
+Sam gibt ihm den Ausweis. || Sam gives him the ID.
+„Sie sind aus den USA. Das heißt: Sie sind Ausländer.“ || "You are from the USA. That means: you are a foreigner."
+„Ausländer brauchen eine Erlaubnis für den Aufenthalt.“ || "Foreigners need a permit for their stay."
+„Das macht eine andere Behörde.“ || "Another authority does that."
+„Sie müssen dort einen Antrag stellen.“ || "You have to submit an application there."
+„Wie lange bleiben Sie?“ || "How long are you staying?"
+„Mein Aufenthalt ist ein Jahr“, sagt Sam. || "My stay is one year," says Sam.
+„Haben Sie das Formular ausgefüllt?“ || "Have you filled in the form?"
+„Ja, hier ist es.“ || "Yes, here it is."
+„Ihre Unterschrift ist nicht da.“ || "Your signature is not there."
+Sam macht seine Unterschrift. || Sam makes his signature.
+„Und die Bescheinigung von Frau Weber?“ || "And the certificate from Frau Weber?"
+„Hier ist sie.“ || "Here it is."
+Der Mitarbeiter prüft alles und gibt Sam das Formular zurück. || The employee checks everything and gives Sam the form back.
+„Ich gebe es ab“, sagt Sam. || "I will hand it in," says Sam.
+„Dann ist alles gut. Also ist Leipzig jetzt Ihr Wohnsitz.“ || "Then everything is fine. So Leipzig is now your place of residence."
+„Was kostet das?“, fragt Sam. || "What does it cost?" asks Sam.
+„Es gibt keine Gebühr.“ || "There is no fee."
+„Also keine Gebühr? Das ist gut“, sagt Sam. || "So no fee? That is good," says Sam.
+„In einer Woche kommt ein Brief in den Briefkasten.“ || "In a week a letter will come into the letterbox."
+„Nehmen Sie ihn aus dem Briefkasten, und lesen Sie ihn gut.“ || "Take it out of the letterbox, and read it carefully."
+„Der Brief ist Ihre Bescheinigung.“ || "The letter is your certificate."
+„Und wenn ich einmal in die USA zurückkehre?“, fragt Sam. || "And if I ever go back to the USA?" asks Sam.
+„Dann sagen Sie es dem Amt.“ || "Then tell the office."
+„Die Öffnungszeit ist Montag bis Mittwoch, von acht bis zwölf.“ || "The opening time is Monday to Wednesday, from eight to twelve."
+„Die Öffnungszeiten stehen auch im Internet.“ || "The opening times are on the internet too."
+„Der Schalter schließt um zwölf Uhr.“ || "The counter closes at twelve o'clock."
+„Die Behörde für Ausländer ist in Raum 12 im Osten der Stadt.“ || "The authority for foreigners is in room 12 in the east of the city."
+„Dort bekommen Sie die Erlaubnis für den Aufenthalt.“ || "There you get the permit for your stay."
+„Für die Erlaubnis brauchen Sie auch ein Foto.“ || "For the permit you also need a photo."
+„Wie macht man das mit dem Antrag?“, fragt Sam. || "How do you do that with the application?" asks Sam.
+„Das fragt man bei der Behörde“, sagt er. || "You ask at the authority," he says.
+„Der Antrag kostet Geld, und Sie bringen ihn in zwei Wochen.“ || "The application costs money, and you bring it in two weeks."
+„Danke“, sagt Sam. || "Thank you," says Sam.
+„Tschüs!“ || "Bye!"
+
+## Nach dem Amt
+Jonas wartet vor dem Haus. || Jonas is waiting in front of the building.
+„Und? War alles gut?“, fragt er. || "Well? Was everything fine?" he asks.
+„Ja“, sagt Sam. || "Yes," says Sam.
+„Ich habe jetzt einen Wohnsitz in Leipzig.“ || "I now have a place of residence in Leipzig."
+„Also, komm, wir feiern!“, sagt Jonas. || "So, come on, let us celebrate!" says Jonas.
+„Heute habe ich früh Feierabend.“ || "Today I finish work early."
+„In der Werkstatt war viel Arbeit. Bei einem Auto war ein Reifen kaputt.“ || "There was a lot of work at the workshop. On one car a tyre was broken."
+„Wir haben ihn ausgetauscht, und der Kunde hat die Rechnung bezahlt.“ || "We replaced it, and the customer paid the invoice."
+„Ich bin tot müde, aber meine Ausbildung gefällt mir.“ || "I am dead tired, but I like my apprenticeship."
+„Mein Lohn ist klein, aber das ist nicht schlimm.“ || "My pay is small, but that is not a problem."
+„Danach repariere ich noch dein Fahrrad.“ || "Afterwards I will repair your bike too."
+„Darauf freue ich mich“, sagt Sam. || "I am looking forward to that," says Sam.
+„Schließ die Tür, es ist kalt“, sagt Jonas. || "Close the door, it is cold," says Jonas.
+Sie gehen zur Haltestelle. || They walk to the stop.
+Das Amt liegt im Westen der Stadt, und Frau Weber wohnt im Osten. || The office is in the west of the city, and Frau Weber lives in the east.
+Es sind fast vier Kilometer. || It is almost four kilometres.
+Die Straßenbahn fährt vom Norden in den Süden und vom Westen in den Osten. || The tram goes from the north to the south and from the west to the east.
+„In den USA ist alles weit“, sagt Sam. || "In the USA everything is far," says Sam.
+„Von Osten nach Westen sind es mehr als 4000 Kilometer.“ || "From east to west it is more than 4000 kilometres."
+„Hier sind es von Norden nach Süden nur 800 Kilometer“, sagt Jonas. || "Here it is only 800 kilometres from north to south," says Jonas.
+„Die Hauptstadt ist Berlin, und Leipzig liegt in Sachsen, einem Bundesland.“ || "The capital is Berlin, and Leipzig is in Saxony, a federal state."
+„Der Fluss in Leipzig ist klein, und das Meer ist weit.“ || "The river in Leipzig is small, and the sea is far away."
+„Mehr als zehn Millionen Menschen in Deutschland kommen aus einem anderen Land.“ || "More than ten million people in Germany come from another country."
+„Du bist über die Grenze gekommen, und deine Währung ist nicht der Euro.“ || "You came across the border, and your currency is not the euro."
+„Wählen darfst du hier nicht. Aber den Kanzler kennst du schon?“ || "You may not vote here. But do you know the chancellor already?"
+Sam lacht. || Sam laughs.
+„Nein, aber ich kenne Frau Weber. Das ist besser.“ || "No, but I know Frau Weber. That is better."
+

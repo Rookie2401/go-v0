@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-04",
+  "lang": "hi",
+  "title": "नानी के आँगन का अमरूद",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-04",
+    "title": "\"नानी के आँगन का अमरूद\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Second controlled unit of the b1 bridge. It prepares the words of the GDL story \"गौरैया और अमरूद\" (hi-b1-05): गौरैया, अमरूद, चींटी, कँटीली, झाड़ी, पीटना, चरना, चोंच, डंडा, इन्कार, each used three times or more. It also brings back words of the last units of a2-2 (the parable: अकाल, सूअर, जायदाद, तेरा; Sam's testimony: पराया, विदेश, परेशानी, उत्पन्न, आराधनालय, अशुद्ध, बल, झील, नगर; the rain poem hi-a2-2-24: पशु, पक्षी, आनंदित) and of hi-b1-01 / hi-b1-02 (स्टूल, इशारा, ख़राब, भूरा, संतरा, खींचना) in a quiet scene in Seeta Nani's courtyard. Machine-drafted; a Hindi reviewer should check the garden vocabulary. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "nature",
+    "garden",
+    "birds",
+    "animals",
+    "home"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nature"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "आँगन में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी के आँगन में अमरूद का एक बड़ा पेड़ है।",
+              "english": "In Nani's courtyard there is a big guava tree."
+            },
+            {
+              "text": "हर सुबह एक भूरी गौरैया उस पेड़ पर आकर बैठती है।",
+              "english": "Every morning a brown sparrow comes and sits on that tree."
+            },
+            {
+              "text": "उसकी चोंच छोटी है, पर बहुत तेज़ है।",
+              "english": "Her beak is small, but very sharp."
+            },
+            {
+              "text": "सुबह गौरैया अपनी चोंच से पानी पीती है, और उसकी चोंच पर पानी की एक बूँद चमकती है।",
+              "english": "In the morning the sparrow drinks water with her beak, and a drop of water shines on her beak."
+            },
+            {
+              "text": "अमन कहता है, \"यह गौरैया हमारी दोस्त है।\"",
+              "english": "Aman says, \"This sparrow is our friend.\""
+            },
+            {
+              "text": "नानी हँसकर बोलती हैं, \"पेड़ भी हमारा है, और फल भी हमारे हैं।\"",
+              "english": "Nani says with a laugh, \"The tree is ours, and the fruit is ours too.\""
+            },
+            {
+              "text": "सैम को यह घर अब पराया नहीं लगता।",
+              "english": "This house no longer seems strange to Sam."
+            },
+            {
+              "text": "वह कहता है, \"विदेश में इतने बड़े अमरूद नहीं मिलते।\"",
+              "english": "He says, \"In a foreign country you do not find such big guavas.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पक्षी और पशु",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आँगन के पास कँटीली झाड़ियाँ हैं, और उनके पीछे खाली खेत है।",
+              "english": "Near the courtyard there are thorny bushes, and behind them an empty field."
+            },
+            {
+              "text": "सुबह वहाँ बहुत से पक्षी आते हैं, और नानी की गाय खेत में चरती है।",
+              "english": "In the morning many birds come there, and Nani's cow grazes in the field."
+            },
+            {
+              "text": "कुछ पशु शाम को भी वहाँ चरते हैं, और चरने के बाद गाय आँगन में लौट आती है।",
+              "english": "Some animals graze there in the evening too, and after grazing the cow comes back to the courtyard."
+            },
+            {
+              "text": "नानी कहती हैं, \"गर्मी में पशु और पक्षी दोनों को ज़्यादा पानी चाहिए।\"",
+              "english": "Nani says, \"In the heat both animals and birds need more water.\""
+            },
+            {
+              "text": "इसलिए नानी रोज़ साफ़ पानी रखती हैं, अशुद्ध पानी नहीं।",
+              "english": "So Nani puts out clean water every day, not impure water."
+            },
+            {
+              "text": "पक्षी पानी पीते हैं, तो अमन आनंदित होता है।",
+              "english": "When the birds drink water, Aman is delighted."
+            },
+            {
+              "text": "एक दिन नानी ने कहा, \"बहुत साल पहले यहाँ अकाल पड़ा था, पर यह पेड़ फल देता रहा।\"",
+              "english": "One day Nani said, \"Many years ago a famine fell here, but this tree kept giving fruit.\""
+            },
+            {
+              "text": "\"यह पेड़ मेरी जायदाद का सबसे अच्छा हिस्सा है।\"",
+              "english": "\"This tree is the best part of my property.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अमरूद कहाँ गया?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक सुबह अमन ने एक फल हाथ में लिया, तो वह कँटीली झाड़ी में जा गिरा।",
+              "english": "One morning Aman took a fruit in his hand, and it fell into the thorny bush."
+            },
+            {
+              "text": "अमन ने कहा, \"यह तो बड़ी परेशानी है। अब मेरा फल कौन निकालेगा?\"",
+              "english": "Aman said, \"This is a big trouble. Now who will take my fruit out?\""
+            },
+            {
+              "text": "पास के घर का एक लड़का वहाँ खड़ा था।",
+              "english": "A boy from the house nearby was standing there."
+            },
+            {
+              "text": "अमन ने उससे कहा, \"भाई, मेरा फल निकाल दो।\"",
+              "english": "Aman said to him, \"Brother, take my fruit out.\""
+            },
+            {
+              "text": "लड़के ने इन्कार कर दिया और बोला, \"यह मेरा काम नहीं है।\"",
+              "english": "The boy refused and said, \"This is not my job.\""
+            },
+            {
+              "text": "इन्कार सुनकर अमन को ग़ुस्सा आया, और वह बोला, \"मैं तुझे पीटूँगा!\"",
+              "english": "Hearing the refusal Aman got angry, and he said, \"I will beat you!\""
+            },
+            {
+              "text": "नानी ने कहा, \"अमन, किसी को पीटना अच्छी बात नहीं है।\"",
+              "english": "Nani said, \"Aman, beating anyone is not a good thing.\""
+            },
+            {
+              "text": "\"पीटने से कोई हल नहीं निकलता।\"",
+              "english": "\"Beating does not bring out any solution.\""
+            },
+            {
+              "text": "सैम ने इन्कार नहीं किया। वह स्टूल पर चढ़ा, पर कँटीली झाड़ी में हाथ डालना ठीक नहीं था।",
+              "english": "Sam did not refuse. He climbed on the stool, but putting a hand into the thorny bush was not right."
+            },
+            {
+              "text": "फिर उसने एक डंडा उठाया और धीरे से झाड़ी को हिलाया।",
+              "english": "Then he picked up a stick and gently shook the bush."
+            },
+            {
+              "text": "इस काम में बल नहीं लगता, धीरे धीरे हाथ चलाना पड़ता है।",
+              "english": "This work needs no strength, you have to move your hand slowly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "चींटी की मदद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "तभी सैम ने देखा कि अमरूद पर बहुत सी चींटियाँ चढ़ रही हैं।",
+              "english": "Just then Sam saw that many ants were climbing on the guava."
+            },
+            {
+              "text": "अमन ने डंडे से एक चींटी को मारना चाहा, पर सैम ने इशारा किया, \"रुको!\"",
+              "english": "Aman wanted to hit an ant with the stick, but Sam made a sign, \"Wait!\""
+            },
+            {
+              "text": "\"चींटियाँ भी तो हमारी तरह जीती हैं।\"",
+              "english": "\"Ants too live like us.\""
+            },
+            {
+              "text": "अमन ने डंडा रख दिया, और दोनों ने मिलकर अमरूद को झाड़ी से खींचा।",
+              "english": "Aman put the stick down, and the two of them together pulled the guava out of the bush."
+            },
+            {
+              "text": "अमरूद थोड़ा ख़राब हो चुका था, पर संतरे की तरह मीठा था।",
+              "english": "The guava had spoiled a little, but it was sweet like an orange."
+            },
+            {
+              "text": "गौरैया पेड़ पर बैठी रही, और झील की तरफ़ से ठंडी हवा आई।",
+              "english": "The sparrow went on sitting on the tree, and a cool wind came from the direction of the lake."
+            },
+            {
+              "text": "नानी ने कहा, \"हर परेशानी का कोई हल होता है, और कभी कभी जो उसे उत्पन्न करता है, वही उसे ठीक भी कर देता है।\"",
+              "english": "Nani said, \"Every trouble has some solution, and sometimes the one who makes it arise is the one who also sets it right.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "माँ के नाम चिट्ठी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उस रात सैम ने अपनी माँ को चिट्ठी लिखी।",
+              "english": "That night Sam wrote a letter to his mother."
+            },
+            {
+              "text": "\"प्यारी माँ, मैं विदेश में हूँ, पर अब यह नगर मुझे पराया नहीं लगता।\"",
+              "english": "\"Dear mother, I am in a foreign country, but this city no longer seems strange to me.\""
+            },
+            {
+              "text": "\"जब कोई परेशानी उत्पन्न होती है, तो नानी का आँगन मुझे बल देता है।\"",
+              "english": "\"When some trouble arises, Nani's courtyard gives me strength.\""
+            },
+            {
+              "text": "\"मैं उस बेटे जैसा हूँ, जो परदेस गया था और अपने को पापी और दास कहता था।\"",
+              "english": "\"I am like that son who went to a foreign land and called himself a sinner and a servant.\""
+            },
+            {
+              "text": "\"यहाँ झील के पास एक आराधनालय भी है, और मैं रोज़ उसके सामने से निकलता हूँ।\"",
+              "english": "\"Here near the lake there is a synagogue too, and I pass in front of it every day.\""
+            },
+            {
+              "text": "\"जब पशु और पक्षी पानी पीते हैं, तो मैं आनंदित होता हूँ।\"",
+              "english": "\"When animals and birds drink water, I am delighted.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बारिश और पशु",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस हफ़्ते भी बारिश की झड़ी लगी, पर कुछ अंतराल के बाद धूप निकल आई।",
+              "english": "This week too a run of showers fell, but after some interval the sun came out."
+            },
+            {
+              "text": "गर्मी में पशुओं को पानी की आवश्यकता अधिक होती है, और बरसात में खाने की आवश्यकता अधिक होती है।",
+              "english": "In the heat animals need water more, and in the rainy season they need food more."
+            },
+            {
+              "text": "नानी के लिए यह काम बहुत महत्त्वपूर्ण है, क्योंकि पशु उन्हें प्यारे हैं।",
+              "english": "For Nani this work is very important, because the animals are dear to her."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "माँ को चिट्ठी में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम ने चिट्ठी में यह भी लिखा, \"मैं परदेस में हूँ, पर यहाँ कोई पापी या दास की तरह नहीं रहता।\"",
+              "english": "Sam wrote in the letter this too, \"I am in a foreign land, but here nobody lives like a sinner or a servant.\""
+            },
+            {
+              "text": "\"नानी की जायदाद में सबसे बड़ी बात यह है कि वे सबको आनंदित रखती हैं।\"",
+              "english": "\"In Nani's property the greatest thing is that she keeps everybody delighted.\""
+            },
+            {
+              "text": "नानी ने गौरैया से कहा, \"यह अमरूद तेरा है, और अकाल के दिनों में भी यह पेड़ तेरे लिए फल देता रहेगा।\"",
+              "english": "Nani said to the sparrow, \"This guava is yours, and even in the days of famine this tree will keep giving fruit for you.\""
+            },
+            {
+              "text": "गाँव का कोई सूअर इस आँगन में नहीं आता, इसलिए पक्षी यहाँ आराम से बैठते हैं।",
+              "english": "No pig of the village comes into this courtyard, so the birds sit here at ease."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

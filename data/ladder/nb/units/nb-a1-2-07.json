@@ -77,8 +77,8 @@
               "english": "On Saturday there was sun in Bergen. Anna and Lars did not work."
             },
             {
-              "text": "De ville gå en tur. Sam og Nils ville gå også.",
-              "english": "They wanted to go for a walk. Sam and Nils wanted to go too."
+              "text": "De ville gå en tur. Det ble en lang tur, og Sam og Nils ville gå også.",
+              "english": "They wanted to go for a walk. It became a long walk, and Sam and Nils wanted to go too."
             },
             {
               "text": "Fjellet heter Fløyen.",
@@ -116,8 +116,8 @@
               "english": "Nils ate bread with cheese. He was happy."
             },
             {
-              "text": "Veien er lang! Er fjellet høyt?",
-              "english": "The road is long! Is the mountain high?",
+              "text": "Veien er lang! Er det høyt?",
+              "english": "The road is long! Is it high?",
               "speaker": "nico"
             },
             {

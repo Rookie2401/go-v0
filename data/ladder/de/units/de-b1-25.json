@@ -1,0 +1,477 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-25",
+  "lang": "de",
+  "title": "A Saturday with the children's group",
+  "contentType": "narrative",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-25",
+    "title": "A Saturday with the children's group (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next two texts (Guerber, Die Prinzessin, die nicht lachen wollte and Der Riese und das Kind): Prinzessin, festhalten, golden, Fisch, streicheln, Riese, verstecken. Today's German."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "museum",
+    "park",
+    "hide and seek",
+    "outing"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sabine": "Sabine",
+    "ben": "Ben",
+    "sam": "Sam",
+    "lena": "Lena"
+  },
+  "sections": [
+    {
+      "title": "Im Museum",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstag macht Sabine mit den Kindern einen Ausflug in das Museum für Märchen.",
+              "english": "On Saturday Sabine goes on an outing with the children to the museum of fairy tales."
+            },
+            {
+              "text": "Sabine geht vorn, und Sam und Ben gehen hinter den Kindern.",
+              "english": "Sabine walks at the front, and Sam and Ben walk behind the children."
+            },
+            {
+              "text": "Im ersten Raum hängt ein großes Bild.",
+              "english": "In the first room a large painting hangs."
+            },
+            {
+              "text": "Auf dem Bild sieht man eine Prinzessin in einem goldenen Kleid.",
+              "english": "In the painting you see a princess in a golden dress."
+            },
+            {
+              "speaker": "lena",
+              "text": "Die Prinzessin ist traurig. Warum?",
+              "english": "The princess is sad. Why?"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Sie ist traurig, weil sie nie lacht.",
+              "english": "She is sad because she never laughs."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Der König möchte, dass sie wieder lacht.",
+              "english": "The king wants her to laugh again."
+            },
+            {
+              "speaker": "lena",
+              "text": "Ich kann sie zum Lachen bringen!",
+              "english": "I can make her laugh!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Du bist nur lustig, Lena.",
+              "english": "You are only being funny, Lena."
+            },
+            {
+              "text": "Sabine lacht, und alle Kinder lachen auch.",
+              "english": "Sabine laughs, and all the children laugh along."
+            },
+            {
+              "text": "Im zweiten Raum sind viele Tiere im Wasser.",
+              "english": "In the second room there are many animals in the water."
+            },
+            {
+              "speaker": "ben",
+              "text": "Schau, Sam, ein Fisch! Der ist ganz golden!",
+              "english": "Look, Sam, a fish! It is all golden!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, und dort ist noch ein Fisch, ein ganz kleiner.",
+              "english": "Yes, and there is another fish there, a very small one."
+            },
+            {
+              "speaker": "lena",
+              "text": "Darf ich den Fisch streicheln?",
+              "english": "May I pet the fish?"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Nein, Fische kann man nicht streicheln. Aber im Hof ist eine Katze.",
+              "english": "No, you cannot pet fish. But in the yard there is a cat."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann darf ich die Katze streicheln.",
+              "english": "Then I may pet the cat."
+            },
+            {
+              "speaker": "lena",
+              "text": "Und ich darf die Prinzessin streicheln, wenn sie lacht.",
+              "english": "And I may pet the princess when she laughs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der große Mann",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im dritten Raum steht ein Riese aus Holz.",
+              "english": "In the third room stands a giant made of wood."
+            },
+            {
+              "text": "Er ist drei Meter groß, und die Kinder bleiben still stehen.",
+              "english": "He is three metres tall, and the children stand still."
+            },
+            {
+              "speaker": "lena",
+              "text": "Ein Riese! Ich habe Angst.",
+              "english": "A giant! I am scared."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Du musst keine Angst haben. Er ist aus Holz.",
+              "english": "You do not need to be afraid. He is made of wood."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Komm, nimm meine Hand und halte dich fest.",
+              "english": "Come, take my hand and hold on tight."
+            },
+            {
+              "speaker": "lena",
+              "text": "Ich halte mich fest.",
+              "english": "I'm holding on tight."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich halte Ben fest, sonst läuft er dem Riesen noch zwischen die Beine.",
+              "english": "I'll hold Ben tight, otherwise he'll run between the giant's legs."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich laufe nicht weg. Aber ich möchte wissen, ob der Riese lebt.",
+              "english": "I will not run away. But I would like to know if the giant is alive."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Die Geschichte sagt: Ja. Aber das erzähle ich später.",
+              "english": "The story says: yes. But I will tell that later."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Im Park",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Museum gehen alle in den Park, und sie spielen Verstecken.",
+              "english": "After the museum everyone goes to the park, and they play hide and seek."
+            },
+            {
+              "text": "Ben zählt bis zwanzig, und die anderen verstecken sich.",
+              "english": "Ben counts to twenty, and the others hide."
+            },
+            {
+              "text": "Lena versteckt sich hinter einem Baum, und Sam versteckt sich hinter einer Bank.",
+              "english": "Lena hides behind a tree, and Sam hides behind a bench."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich komme! Wo seid ihr?",
+              "english": "I'm coming! Where are you?"
+            },
+            {
+              "text": "Ben findet zuerst Lena. Dann findet er Sam.",
+              "english": "First Ben finds Lena. Then he finds Sam."
+            },
+            {
+              "speaker": "lena",
+              "text": "Sam hat sich schlecht versteckt, er ist zu groß!",
+              "english": "Sam hid badly, he is too big!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Das stimmt. Ich bin einfach zu groß.",
+              "english": "That is true. I am simply too big."
+            },
+            {
+              "text": "Sabine lacht. Der Samstag war ein Erfolg.",
+              "english": "Sabine laughs. The Saturday was a success."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend sitzen Sam und Ben noch zusammen, und Sabine fragt nach dem Deutschkurs.",
+              "english": "In the evening Sam and Ben are still sitting together, and Sabine asks about the German course."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Sam, wie war dein Deutschkurs? Hast du etwas gelernt?",
+              "english": "Sam, how was your German course? Did you learn something?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, wir haben alte Märchen gelesen. Ben kennt sie schon alle.",
+              "english": "Yes, we read old tales. Ben already knows them all."
+            },
+            {
+              "speaker": "ben",
+              "text": "Weißt du noch? Das arme Mädchen hat nur ein Stückchen Brot.",
+              "english": "Do you remember? The poor girl has only a little piece of bread."
+            },
+            {
+              "speaker": "ben",
+              "text": "Sie tut ihr Hemdlein ab und zieht es aus.",
+              "english": "She takes off her little shirt and pulls it off."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dann regnet es Taler, und sie kann die Taler hineinsammeln.",
+              "english": "Then it rains Taler, and she can collect the Taler into it."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Sie zieht das Hemdlein ab und hält es auf.",
+              "english": "She takes the little shirt off and holds it open."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Im Märchen vom klugen Knecht kommt auch ein Bauer vor.",
+              "english": "In the tale of the clever servant there is also a farmer."
+            },
+            {
+              "speaker": "ben",
+              "text": "Er schickt den Knecht aus, und der Knecht ist ein treuer Mann.",
+              "english": "He sends the servant out, and the servant is a loyal man."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dann gefällt mir der alte Großvater noch mehr.",
+              "english": "Then I like the old grandfather even more."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er ist fast taub, und seine Augen sind trüb.",
+              "english": "He is almost deaf, and his eyes are dim."
+            },
+            {
+              "speaker": "ben",
+              "text": "Seine Knie tun weh, und die Suppe fließt auf das Tischtuch.",
+              "english": "His knees hurt, and the soup flows onto the tablecloth."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das Tischtuch ist nass, und alle schauen ihn böse an.",
+              "english": "The tablecloth is wet, and everyone looks at him angrily."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Er ist so alt wie ein Urgroßvater, und man muss gut zu ihm sein.",
+              "english": "He is as old as a great-grandfather, and one must be good to him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend nach dem Park sitzen die Kinder bei Sabine, und sie erzählt ihnen alte Märchen.",
+              "english": "In the evening after the park the children sit with Sabine, and she tells them old tales."
+            },
+            {
+              "speaker": "lena",
+              "text": "Erzähl uns das Märchen Die Sternthaler!",
+              "english": "Tell us the tale Die Sternthaler!"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ein armes Mädchen hat kein Kämmerchen und kein Bettchen mehr.",
+              "english": "A poor girl has no little room and no little bed any more."
+            },
+            {
+              "speaker": "ben",
+              "text": "Es hat nur die Kleider auf dem Leib. Ein mitleidiges Herz schenkt ihm ein Stück Brot.",
+              "english": "She has only the clothes on her body. A compassionate heart gives her a piece of bread."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ein Mann ist hungerig, und das Mädchen gibt ihm das Brot.",
+              "english": "A man is hungry, and the girl gives him the bread."
+            },
+            {
+              "speaker": "lena",
+              "text": "Ein Kind friert und sucht etwas, womit es den Kopf bedecken kann.",
+              "english": "A child is cold and looks for something with which it can cover its head."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ein anderes Kind hat kein Leibchen, und das Mädchen gibt ihm seins. Dann bekommt noch ein Kind ein Röcklein.",
+              "english": "Another child has no bodice, and the girl gives it hers. Then another child gets a little skirt."
+            },
+            {
+              "speaker": "ben",
+              "text": "Endlich gelangt das Mädchen in den Wald. Da fallen die Sterne, und es sind blanke Taler.",
+              "english": "At last the girl reaches the forest. Then the stars fall, and they are shining Taler."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Das Mädchen ist reich für sein Lebtag.",
+              "english": "The girl is rich for all her days."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Ich kenne auch ein Märchen von einem klugen Knecht.",
+              "english": "I also know a tale about a clever servant."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Knecht bleibt lange aus. Der Herr befürchtet, dass ihm etwas zugestoßen ist.",
+              "english": "The servant stays out a long time. The master fears that something has happened to him."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er macht sich auf, denn er will sich nach ihm umsehen.",
+              "english": "He sets off, because he wants to look around for him."
+            },
+            {
+              "speaker": "lena",
+              "text": "Endlich erblickt er den Knecht. Er läuft ihm nach, und er holt ihn ein.",
+              "english": "At last he catches sight of the servant. He runs after him, and he catches up with him."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Knecht hat drei Amseln gesucht. Eine sieht er, und die dritte jage ich, sagt er.",
+              "english": "The servant looked for three blackbirds. One he sees, and the third I chase, he says."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Der Herr lässt sich keine Mühe verdrießen, und er bekümmert sich um seinen Knecht.",
+              "english": "The master does not let any effort vex him, and he troubles himself about his servant."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Knecht bekümmert sich nicht um die Befehle und sagt: Fragt nicht euern Herrn.",
+              "english": "The servant does not trouble himself about the orders and says: Do not ask your master."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "lena",
+              "text": "Ich möchte noch das Märchen vom alten Großvater hören.",
+              "english": "I would still like to hear the tale of the old grandfather."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Sein Sohn und dessen Frau ekelten sich vor ihm.",
+              "english": "His son and the son's wife were disgusted by him."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Sie geben ihm sein Essen in ein irdenes Schüsselchen, und er sieht betrübt zum Tisch.",
+              "english": "They give him his food in an earthen bowl, and he looks sadly at the table."
+            },
+            {
+              "speaker": "ben",
+              "text": "Seine zitterigen Hände halten das Schüsselchen nicht fest, und es zerbrach.",
+              "english": "His trembling hands do not hold the bowl tight, and it broke."
+            },
+            {
+              "speaker": "lena",
+              "text": "Die junge Frau schalt, und der Großvater seufzte nur.",
+              "english": "The young woman scolded, and the grandfather only sighed."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Dann kaufen sie ihm ein hölzernes Schüsselchen.",
+              "english": "Then they buy him a wooden bowl."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der kleine Enkel trägt Brettlein zusammen, denn er macht ein Tröglein.",
+              "english": "The little grandson carries small boards together, because he is making a little trough."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist ein gutes Märchen. Der Enkel zeigt den Eltern, was sie tun.",
+              "english": "That is a good tale. The grandson shows his parents what they are doing."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ja, und jetzt gehen alle Kinder ins Bett. Gute Nacht!",
+              "english": "Yes, and now all the children go to bed. Good night!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

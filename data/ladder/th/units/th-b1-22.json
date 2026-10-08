@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-22",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ข้าวมาจากไหน",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-22",
+    "title": "ข้าวมาจากไหน — Where does rice come from? (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. An explanatory text in the written register (the genre of a school reader or a magazine box). For the reviewer: the order of the farming year is general for northern Thailand; the months and methods vary between villages and years and are only a model of the explanation genre."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "rice",
+    "farming",
+    "seasons",
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ข้าวหนึ่งเม็ด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมเขียนในสมุดของเขาว่า ข้าวหนึ่งจานที่เรากิน ต้องผ่านมือคนอย่างน้อยสิบคน",
+              "english": "Sam wrote in his notebook: \"A single plate of rice that we eat passes through the hands of at least ten people.\""
+            },
+            {
+              "text": "เขาถามยายหลายข้อ และจดคำตอบทุกข้อไว้",
+              "english": "He asked Grandmother many questions and wrote down all her answers."
+            },
+            {
+              "text": "นี่คือสิ่งที่เขาเรียนรู้",
+              "english": "This is what he learned."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ปีหนึ่งของชาวนา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ในช่วงเดือนพฤษภาคม ฝนเริ่มตก ชาวนาก็เตรียมที่นา",
+              "english": "In May the rain begins to fall, and the farmers prepare their fields."
+            },
+            {
+              "text": "ในสมัยก่อน พวกเขาใช้ควายช่วยทำนา แต่ตอนนี้ชาวนาหลายคนเลือกใช้เครื่องแทน",
+              "english": "In the past they used buffaloes to plough, but now many farmers choose to use machines instead."
+            },
+            {
+              "text": "เมื่อดินพร้อมแล้ว ก็ถึงเวลาปักดำ",
+              "english": "When the soil is ready, it is time to transplant the seedlings."
+            },
+            {
+              "text": "ต้นกล้าที่เตรียมไว้จะถูกย้ายมาปลูกในนาทีละต้น",
+              "english": "The seedlings prepared beforehand are moved into the field one by one."
+            },
+            {
+              "text": "งานนี้ต้องใช้หลังและมือมาก และต้องทำตอนที่ฝนตกอยู่",
+              "english": "This work takes a lot of back and hands, and must be done while it is raining."
+            },
+            {
+              "text": "เกษตรกรหลายคนจึงจ้างคนมาช่วยในช่วงนี้",
+              "english": "Many farmers therefore hire people to help in this period."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ระหว่างรอ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หลังจากปักดำ ชาวนาต้องรอสามถึงสี่เดือน",
+              "english": "After transplanting, the farmers must wait three to four months."
+            },
+            {
+              "text": "ในระหว่างนี้ พวกเขาต้องดูแลน้ำในนา",
+              "english": "During this time they have to look after the water in the field."
+            },
+            {
+              "text": "ถ้าน้ำน้อยเกินไป ต้นข้าวจะแห้ง ถ้าน้ำมากเกินไป ข้าวก็จะเสีย",
+              "english": "If there is too little water the rice dries up; if too much, it spoils."
+            },
+            {
+              "text": "บางปีฝนมาช้า บางปีฝนมามากเกินไป",
+              "english": "Some years the rain comes late, some years too much."
+            },
+            {
+              "text": "ผลผลิตจึงไม่เหมือนกันทุกปี",
+              "english": "So the harvest is not the same every year."
+            },
+            {
+              "text": "ชาวนาที่มีที่ดินน้อย ต้องไปรับจ้างแบกข้าวให้บ้านอื่นด้วย",
+              "english": "Farmers with little land must also go and carry rice for other households for pay."
+            },
+            {
+              "text": "ปีที่ฝนดี ข้าวมีเหลือเฟือ ชาวบ้านก็มีงานเลี้ยง มีดนตรี และเต้นรำกันที่วัด",
+              "english": "In a year of good rain there is rice in plenty; the villagers hold a feast, with music and dancing at the temple."
+            },
+            {
+              "text": "แต่ปีที่ฝนแล้ง ชาวนาขัดสน บางหมู่บ้านถึงกับกันดารอาหาร",
+              "english": "But in a dry year the farmers are in want, and some villages even run short of food."
+            },
+            {
+              "text": "ถึงตอนนั้น บางคนก็ต้องไปรับจ้างในเมือง",
+              "english": "Then some have to go and work for hire in the city."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เกี่ยวข้าว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ประมาณเดือนพฤศจิกายน ข้าวเปลี่ยนเป็นสีทอง",
+              "english": "Around November the rice turns golden."
+            },
+            {
+              "text": "ทั้งหมู่บ้านออกมาเกี่ยวข้าวด้วยกัน",
+              "english": "The whole village comes out to reap the rice together."
+            },
+            {
+              "text": "บ้านที่มีคนน้อยก็ได้รับความช่วยเหลือจากเพื่อนบ้าน",
+              "english": "Houses with few people receive help from the neighbours."
+            },
+            {
+              "text": "หลังเกี่ยวเสร็จ ชาวนาเอาเมล็ดออกจากต้นข้าว",
+              "english": "After reaping, the farmers take the grains off the stalks."
+            },
+            {
+              "text": "เมล็ดข้าวถูกตากแดดจนแห้ง แล้วเก็บใส่ถุง",
+              "english": "The grains are dried in the sun and then stored in bags."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ถึงจานของเรา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ข้าวบางส่วนชาวนาเก็บไว้กินเอง",
+              "english": "Some of the rice the farmers keep to eat themselves."
+            },
+            {
+              "text": "ส่วนที่เหลือถูกขายให้พ่อค้า และส่งไปโรงสี",
+              "english": "The rest is sold to merchants and sent to the mill."
+            },
+            {
+              "text": "ที่โรงสี คนเอาเปลือกออก และข้าวสารก็พร้อมขาย",
+              "english": "At the mill the husk is removed, and the milled rice is ready for sale."
+            },
+            {
+              "text": "ในที่สุด ข้าวก็มาถึงตลาด และมาถึงร้านของป้าแดง",
+              "english": "At last the rice reaches the market and reaches Auntie Daeng's shop."
+            },
+            {
+              "text": "แซมเขียนไว้ตอนจบว่า ครั้งต่อไปที่ผมกินข้าว ผมจะขอบคุณทุกคนที่อยู่ระหว่างทาง",
+              "english": "Sam wrote at the close: \"The next time I eat rice, I will thank everyone along the way.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

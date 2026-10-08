@@ -1,0 +1,46 @@
+=== nb-b1-bridge-07 | story | daily-life | The viewing | Visningen | housing,viewing,relative clauses,passive,indirect speech
+speakers: utleier=Utleieren
+note: Relative clauses with "som" (en dame som heter Solveig), the passive with "bli" (blir malt, ble skiftet), and indirect speech. Sam views the flat near the mountain and finds problems.
+## På onsdag
+På onsdag gikk {sam} rett fra bokhandelen til leiligheten nær fjellet. Det regnet, og veien var lang. Han kom tidlig og ventet ute. || On Wednesday Sam went straight from the bookshop to the flat near the mountain. It was raining, and the road was long. He came early and waited outside.
+Klokka fem kom en eldre mann med en nøkkel. Han het Dahl, og han var utleieren. Utleieren skulle ha visning. Visningen skulle begynne med en gang. || At five o'clock an older man came with a key. His name was Dahl, and he was the landlord. The landlord was going to give a viewing. The viewing was to begin at once.
+[utleier] God dag! Du må være {sam}. Kom inn, kom inn. || Good day! You must be Sam. Come in, come in.
+[sam] God dag. Takk for at jeg fikk komme. || Good day. Thank you for letting me come.
+
+## I leiligheten
+Leiligheten lå i første etasje. Gulvet var gammelt, og veggene var mørke. {sam} så på gulvet og på veggene. Det luktet litt fuktig, og han så en mørk flekk på veggen. || The flat was on the first floor. The floor was old, and the walls were dark. Sam looked at the floor and at the walls. It smelled a little damp, and he saw a dark patch on the wall.
+[utleier] Veggene blir malt før du begynner å bo her. Jeg skal male dem selv. || The walls will be painted before you begin to live here. I will paint them myself.
+[sam] Og flekken? Kommer den tilbake? || And the patch? Will it come back?
+[utleier] Nei, nei. Den kommer fra et gammelt vindu. || No, no. It comes from an old window.
+[sam] Når ble vinduet skiftet? || When was the window replaced?
+[utleier] Det ble skiftet i vinter, så alt er bra nå. || It was replaced this winter, so everything is fine now.
+{sam} sa ingenting. Han husket at han hadde bestemt seg for å være ærlig. || Sam said nothing. He remembered that he had decided to be honest.
+Han så på kjøkkenet. Det var lite, men der var det et stort vindu. Så så han på baderommet. Der var det en dusj, men gulvet var vått. || He looked at the kitchen. It was small, but there was a big window there. Then he looked at the bathroom. There was a shower there, but the floor was wet.
+[sam] Er dusjen ny? || Is the shower new?
+[utleier] Ja, den er ny. Gulvet er ikke vått når det ikke regner. Og veggene er ikke fuktige, bare gamle. || Yes, it is new. The floor is not wet when it does not rain. And the walls are not damp, only old.
+Det var kaldt i leiligheten. {sam} så på ovnen, og han spurte utleieren om den var ny. || It was cold in the flat. Sam looked at the stove, and he asked the landlord whether it was new.
+[utleier] Nei, den er gammel, men den er varm. || No, it is old, but it is warm.
+
+## Spørsmål
+[sam] Hvem bor i huset? || Who lives in the house?
+[utleier] Det bor tre familier her, og en dame som heter Solveig. Hun går i kirka, tror jeg. || Three families live here, and a lady called Solveig. She goes to church, I think.
+[sam] Og hvor lenge har leiligheten vært ledig? || And how long has the flat been available?
+[utleier] I tre måneder. Folk som kommer for å se på den, vil ikke ha den. Jeg forstår ikke hvorfor. || For three months. People who come to see it do not want it. I do not understand why.
+{sam} sa at han skulle tenke på det. Han takket for visningen og gikk ut i regnet. || Sam said that he would think about it. He thanked him for the viewing and went out into the rain.
+På veien hjem ba han: «Gud, vis meg det stedet som er riktig for meg.» || On the way home he prayed: "God, show me the place that is right for me."
+
+## Hjemme igjen
+Da {sam} kom hjem, var han våt, men han var ikke lei seg. Han fortalte {ana} og {luis} hva han hadde sett. || When Sam came home, he was wet, but he was not sad. He told Anna and Lars what he had seen.
+[luis] Fuktige vegger og vått gulv? Og dusjen, var den ny? || Damp walls and a wet floor? And the shower, was it new?
+[sam] Nei. Utleieren sa at alt skulle bli malt, og at vinduet var skiftet. Men jeg tror ikke at flekken blir borte. || No. The landlord said that everything would be painted, and that the window had been replaced. But I do not think that the patch will go away.
+[ana] Du har gjort riktig som ikke sa ja med en gang. Det er bedre å vente. || You did right not to say yes at once. It is better to wait.
+[nico] Ikke bo der! Trollet bor i veggen! || Do not live there! The troll lives in the wall!
+Alle lo. {sam} lo også, men han husket flekken lenge. || Everyone laughed. Sam laughed too, but he remembered the patch for a long time.
+Om kvelden ringte {marta}. Hun hadde hørt om visningen fra {ana}. || In the evening Marta called. She had heard about the viewing from Anna.
+[marta] En dame som heter Solveig bor i huset, sa du? Det er Solveig fra kirka, tror jeg! Hun har en venn som har en leilighet å leie. || A lady called Solveig lives in the house, you said? That is Solveig from church, I think! She has a friend who has a flat to rent.
+[sam] Er den ledig? || Is it available?
+[marta] Det vet jeg ikke, men jeg skal spørre henne på søndag. Du skal ikke ta den første du ser. || I do not know, but I will ask her on Sunday. You should not take the first one you see.
+
+{sam} leste avisen på balkongen. Han hadde aldri trodd at han skulle bo så bra. Han hadde forberedt seg godt: regningene var betalt, han kunne navnene på alle naboene, og annenhver helg jobbet han i bokhandelen. || Sam read the newspaper on the balcony. He had never believed that he would live so well. He had prepared well: the bills were paid, he knew the names of all the neighbours, and every other weekend he worked in the bookshop.
+Etter arbeidet hadde {sam} en pause før visningen. Han var stolt av lønnen sin, og han hadde sammenlignet leiligheten med annonsen to ganger. || After work Sam had a break before the viewing. He was proud of his pay, and he had compared the flat with the advertisement twice.
+[sam] Jeg vil gjerne ha en leilighet med balkong, men det viktigste er at den er tørr. || I would like a flat with a balcony, but the most important thing is that it is dry.

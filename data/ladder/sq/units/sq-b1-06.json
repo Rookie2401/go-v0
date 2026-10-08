@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-06",
+  "lang": "sq",
+  "title": "Një letër për punë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-06",
+    "title": "Albanian ladder, b1-bridge: Një letër për punë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një letër për punë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të hënën Dritani shkoi në shkollë dhe e pa çatinë me sytë e tij.",
+              "english": "On Monday Dritan went to the school and saw the roof with his own eyes."
+            },
+            {
+              "text": "Ishte më keq nga sa kishte menduar Luani: uji kishte hyrë në dy klasa, dhe në një prej tyre mbi dërrasën kishte një vend pa dritë.",
+              "english": "It was worse than Luan had thought: water had got into two classrooms, and in one of them above the blackboard there was a place without light."
+            },
+            {
+              "text": "Drejtori i tha se mund të fillonte që të mërkurën, dhe se do ta paguanin çdo të premte.",
+              "english": "The head told him that he could start on Wednesday, and that they would pay him every Friday."
+            },
+            {
+              "text": "Dritani u ndje më i lehtë, por nuk e harroi se kishte premtuar edhe diçka tjetër.",
+              "english": "Dritan felt lighter, but he did not forget that he had promised something else."
+            },
+            {
+              "text": "Drejtori i shtoi se pagesa e parë do të vinte pas një jave, dhe Dritani mendoi për kursimet që po mbaronin dhe për borxhin e makinës.",
+              "english": "The head added that the first payment would come after a week, and Dritan thought of the savings that were running out and of the debt for the car."
+            },
+            {
+              "text": "Ai donte ta rregullonte çatinë mirë, jo vetëm shpejt, sepse e dinte që një punë e mirë hap një derë tjetër.",
+              "english": "He wanted to fix the roof well, not only quickly, because he knew that a good job opens another door."
+            },
+            {
+              "text": "Kishte humbur një punë, por jo shpresën.",
+              "english": "He had lost a job, but not hope."
+            },
+            {
+              "text": "Pagesa nuk ishte e madhe, por ishte e vërtetë.",
+              "english": "The payment was not big, but it was real."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të martën në mëngjes ai erdhi te Sami me një fletore dhe me një kafe të ftohtë në dorë.",
+              "english": "On Tuesday morning he came to Sam with a notebook and a cold coffee in his hand."
+            },
+            {
+              "text": "— Ku e kemi filluar? — pyeti Sami, duke e ndezur kompjuterin.",
+              "english": "\"Where do we begin?\" asked Sam, switching on the computer."
+            },
+            {
+              "text": "— Nga emri, — tha Dritani.",
+              "english": "\"With the name,\" said Dritan."
+            },
+            {
+              "text": "— Po pastaj? — Pastaj shkruaj punët që kam bërë.",
+              "english": "\"And then?\" \"Then you write the jobs I have done.\""
+            },
+            {
+              "text": "— Tetë vite në ndërtim, dy vite në një fabrikë, një verë si shofer.",
+              "english": "\"Eight years in construction, two years in a factory, one summer as a driver.\""
+            },
+            {
+              "text": "Sami i shkruante të gjitha në një listë, por Dritani nuk ishte i lumtur.",
+              "english": "Sam wrote it all in a list, but Dritan was not happy."
+            },
+            {
+              "text": "— Kjo është shumë pak, — tha ai.",
+              "english": "\"This is very little,\" he said."
+            },
+            {
+              "text": "— Unë kam bërë shumë më tepër!",
+              "english": "\"I have done much more!\""
+            },
+            {
+              "text": "— Atëherë ta shtojmë, — tha Sami.",
+              "english": "\"Then let us add it,\" said Sam."
+            },
+            {
+              "text": "— Çfarë di të bësh që nuk e ka shkruar askush?",
+              "english": "\"What can you do that nobody has written?\""
+            },
+            {
+              "text": "Dritani mendoi një moment.",
+              "english": "Dritan thought for a moment."
+            },
+            {
+              "text": "— Di të punoj me njerëz, di të mbaj një orar dhe di të thërras kur diçka nuk është mirë.",
+              "english": "'I know how to work with people, how to keep a schedule, and how to shout when something is not right.'"
+            },
+            {
+              "text": "— Këtë të fundit nuk e shkruajmë, — qeshi Sami.",
+              "english": "\"We will not write that last one,\" Sam laughed."
+            },
+            {
+              "text": "— Por këto tri po, dhe i shtojmë edhe patentën.",
+              "english": "'But these three, yes, and we will add your licence too.'"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj u ulën bashkë dhe e shkruan një letër të shkurtër për shoqen e Anës.",
+              "english": "Then they sat down together and wrote a short letter to Ana's friend."
+            },
+            {
+              "text": "Sami e lexoi me zë të lartë dhe ngadalë atë që kishin shkruar:",
+              "english": "Sam read aloud and slowly what they had written:"
+            },
+            {
+              "text": "«Të nderuar zonja,",
+              "english": "\"Dear Madam,"
+            },
+            {
+              "text": "quhem Dritan dhe jam shofer me përvojë.",
+              "english": "my name is Dritan and I am an experienced driver."
+            },
+            {
+              "text": "Kam patentë prej dhjetë vitesh dhe nuk kam bërë asnjë gabim në rrugë.",
+              "english": "I have had a licence for ten years and I have not made a single mistake on the road."
+            },
+            {
+              "text": "Jam gati të punoj çdo ditë, edhe të shtunën dhe të dielën, nëse duhet.",
+              "english": "I am ready to work every day, even on Saturday and Sunday, if necessary."
+            },
+            {
+              "text": "Do të më vinte mirë të flisja me ju.",
+              "english": "I would be glad to speak with you."
+            },
+            {
+              "text": "Me përshëndetje, Dritan.»",
+              "english": "Best wishes, Dritan.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Mirë është, — tha Dritani.",
+              "english": "\"It is good,\" said Dritan."
+            },
+            {
+              "text": "— Por mos e shkruaj «edhe të dielën».",
+              "english": "'But do not write \"even on Sunday.\"'"
+            },
+            {
+              "text": "— Të dielën jam në kishë.",
+              "english": "\"On Sunday I am at church.\""
+            },
+            {
+              "text": "— Atëherë e fshijmë, — tha Sami dhe e fshiu fjalinë.",
+              "english": "'Then we delete it,' said Sam, and deleted the sentence."
+            },
+            {
+              "text": "— Dhe nëse nuk të pranojnë për këtë?",
+              "english": "\"And if they do not accept you for this?\""
+            },
+            {
+              "text": "— Atëherë nuk do të jetë punë për mua, — u përgjigj Dritani.",
+              "english": "\"Then it will not be a job for me,\" Dritan answered."
+            },
+            {
+              "text": "— Më parë nuk do ta kisha thënë këtë.",
+              "english": "\"Before, I would not have said this.\""
+            },
+            {
+              "text": "— Tani nuk kam frikë ta them.",
+              "english": "\"Now I am not afraid to say it.\""
+            },
+            {
+              "text": "— Nuk më vjen turp të them që kam nevojë për punë, — shtoi Dritani.",
+              "english": "'I am not ashamed to say that I need work,' added Dritan."
+            },
+            {
+              "text": "— Kam gabuar edhe unë në jetë, por kurrë në punë.",
+              "english": "'I have made mistakes in life too, but never at work.'"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të mërkurën Dritani filloi punën në çati.",
+              "english": "On Wednesday Dritan began work on the roof."
+            },
+            {
+              "text": "E rregulloi çatinë pjesë-pjesë, dhe pagesën e parë e mori të premten.",
+              "english": "He fixed the roof piece by piece, and received the first payment on Friday."
+            },
+            {
+              "text": "E preku me dorë çatinë e vjetër dhe i shpjegoi Gjergjit pse duhej të ishte e thatë.",
+              "english": "He touched the old roof with his hand and explained to Gjergj why it had to be dry."
+            },
+            {
+              "text": "Prindërit e tij, kur e mësuan, i dërguan një mesazh të shkurtër.",
+              "english": "His parents, when they found out, sent him a short message."
+            },
+            {
+              "text": "I shkruanin se e duan dhe se e presin të dielën.",
+              "english": "They wrote that they love him and expect him on Sunday."
+            },
+            {
+              "text": "Ardi dhe Gjergji e shikonin nga oborri, dhe Ardi pyeti nëse mund të ngjitej edhe ai.",
+              "english": "Ardi and Gjergj watched from the yard, and Ardi asked whether he could climb up too."
+            },
+            {
+              "text": "— Jo, — tha Dritani, — çatia nuk është vend për nxënës.",
+              "english": "\"No,\" said Dritan, \"a roof is not a place for pupils.\""
+            },
+            {
+              "text": "— Por një ditë, kur të rritesh, mund ta ndërtosh vetë një çati.",
+              "english": "\"But one day, when you grow up, you can build a roof yourself.\""
+            },
+            {
+              "text": "Në mesditë mësuesit i sollën çaj dhe byrek, dhe Mira i dërgoi një mesazh me dy fjalë: «Të duam shumë.»",
+              "english": "At midday the teachers brought him tea and byrek, and Mira sent him a message of two words: \"We love you.\""
+            },
+            {
+              "text": "Dritani e lexoi mesazhin tri herë para se ta vinte në xhep.",
+              "english": "Dritan read the message three times before putting the phone in his pocket."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Atë mbrëmje Ana i telefonoi Samit.",
+              "english": "That evening Ana phoned Sam."
+            },
+            {
+              "text": "Tha se shoqja e saj e kishte lexuar letrën dhe se donte ta takonte Dritanin të enjten.",
+              "english": "She said that her friend had read the letter and wanted to meet Dritan on Thursday."
+            },
+            {
+              "text": "— Thuaji që të vijë me patentën, — shtoi Ana.",
+              "english": "\"Tell him to come with his licence,\" added Ana."
+            },
+            {
+              "text": "— Dhe thuaji edhe diçka tjetër: letra është e mirë, por e mira ishte që ai e pranoi ndihmën.",
+              "english": "\"And tell him something else: the letter is good, but the good thing was that he accepted help.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

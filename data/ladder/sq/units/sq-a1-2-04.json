@@ -119,8 +119,8 @@
               "english": "\"Do you often read in the evening?\""
             },
             {
-              "text": "— Po, lexoj shpesh. Shkruaj një letër për nënën.",
-              "english": "\"Yes, I read often. I write a letter to my mother.\""
+              "text": "— Po, lexoj shpesh. Natën lexoj një histori. Shkruaj një letër për nënën.",
+              "english": "\"Yes, I read often. At night I read a story. I write a letter to my mother.\""
             }
           ]
         },
@@ -179,8 +179,8 @@
               "english": "\"When do you read most?\""
             },
             {
-              "text": "— Në mesditë lexoj dhjetë minuta. Pastaj shkoj në treg.",
-              "english": "\"At midday I read for ten minutes. Then I go to the market.\""
+              "text": "— Në mesditë lexoj dhjetë minuta, sepse nuk kam shumë kohë. Pastaj shkoj në treg.",
+              "english": "\"At midday I read for ten minutes, because I do not have much time. Then I go to the market.\""
             },
             {
               "text": "Luani i thotë gjyshes: — Si është shtëpia juaj? A është e madhe?",

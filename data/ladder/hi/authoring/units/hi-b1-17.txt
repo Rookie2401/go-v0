@@ -1,0 +1,41 @@
+id: hi-b1-17
+title: कहानी का घंटा
+domain: school
+topics: school, stories, shyness, city
+notes: Eighth controlled unit of the b1 bridge. It prepares the words of the GDL book "कहानियों का शहर" (hi-b1-18): टीचर, मेयर, क्रिकेट, फ़ुर्सत, शर्माना, हिचकिचाना, गणित, पतंग, भूत, राक्षस, कल्पना, सन्नाटा, each used three times, on a Saturday story hour at Aman's school where Sam, shy at first, tells a story and the city's mayor listens (the plot is not the plot of the GDL book). Machine-drafted; a Hindi reviewer should check the school register and the words of the children's story.
+---
+## स्कूल का रास्ता
+शनिवार को अमन के स्कूल में कहानी का घंटा था, और नानी ने सुबह ही दोनों बच्चों को जगा दिया। || On Saturday there was a story hour at Aman's school, and Nani woke both the boys early in the morning.
+सैम ने जल्दी से नाश्ता किया, और अमन ने अपना बैग उठाया। || Sam had his breakfast quickly, and Aman picked up his bag.
+रास्ते में अमन बोला, "आज हमारी टीचर ने कहा है कि गणित की किताबें बंद रहेंगी।" || On the way Aman said, "Today our teacher has said that the maths books will stay closed."
+सैम हँसा और बोला, "तो आज स्कूल में सिर्फ़ मज़ा है!" || Sam laughed and said, "So today there is only fun at school!"
+अमन ने कहा, "सिर्फ़ मज़ा नहीं, कहानी भी। तुम्हें भी एक कहानी सुनानी है।" || Aman said, "Not only fun, stories too. You have to tell a story as well."
+सैम के पैर वहीं रुक गए, और वह बोला, "मैं? सबके सामने?" || Sam's feet stopped right there, and he said, "I? In front of everybody?"
+
+## कक्षा में
+कक्षा में पहुँचकर सब बच्चे अपनी जगह बैठ गए। || Reaching the classroom all the children sat in their places.
+टीचर ने कहा, "आज हम कहानियाँ सुनेंगे, और गणित कल सीखेंगे।" || The teacher said, "Today we will listen to stories, and we will learn maths tomorrow."
+बच्चे ख़ुश होकर ताली बजाने लगे। || The children began to clap happily.
+टीचर बोलीं, "मेरे पास रोज़ फ़ुर्सत नहीं होती, पर आज कहानी के लिए मैंने फ़ुर्सत निकाली है।" || The teacher said, "I do not have free time every day, but today I have made free time for stories."
+तभी स्कूल में नगर के मेयर आए, और सब बच्चे खड़े हो गए। || Just then the mayor of the city came to the school, and all the children stood up.
+मेयर ने हँसकर कहा, "मैं रोज़ बहुत काम करता हूँ, पर आज मैं क्रिकेट छोड़कर आया हूँ।" || The mayor said with a laugh, "I do a lot of work every day, but today I have come leaving cricket."
+बच्चों ने पूछा, "आप भी क्रिकेट खेलते हैं?" || The children asked, "Do you play cricket too?"
+"हाँ," मेयर बोले, "जब मैं छोटा था, तब हर शाम क्रिकेट खेलता था।" || "Yes," the mayor said, "when I was small I used to play cricket every evening."
+सब हँस पड़े, और कक्षा में बहुत शोर हो गया। || Everybody burst out laughing, and there was a lot of noise in the classroom.
+
+## सैम की कहानी
+टीचर ने सैम को आगे बुलाया, पर वह खड़ा होने में हिचकिचाया। || The teacher called Sam forward, but he hesitated to stand up.
+अमन ने धीरे से कहा, "सैम, तुम शर्माओ मत, बस शुरू करो।" || Aman said softly, "Sam, don't be shy, just begin."
+सैम फिर भी थोड़ा शर्माया, पर उसने गहरी साँस ली और कहानी शुरू की। || Sam was still a little shy, but he took a deep breath and began the story.
+"एक बार एक छोटा सा भूत था, जिसे अँधेरे से बहुत डर लगता था।" || "Once there was a little ghost who was very much afraid of the dark."
+"एक रात वह एक राक्षस से मिला, जो पतंग उड़ाना चाहता था।" || "One night he met a demon who wanted to fly a kite."
+"भूत ने कहा, 'तुम बड़े हो, पर तुम्हारी पतंग बहुत सुंदर है।'" || "The ghost said, 'You are big, but your kite is very beautiful.'"
+"राक्षस हँसा और उसने भूत को अपनी पतंग दे दी।" || "The demon laughed and gave the ghost his kite."
+कक्षा में सन्नाटा था, और सब बच्चे आगे की कहानी सुनने को बैठे थे। || There was silence in the classroom, and all the children sat waiting to hear what came next.
+"भूत ने ऊपर देखा, और उसे समझ आया कि अँधेरे में भी पतंग उड़ सकती है।" || "The ghost looked up, and he understood that a kite can fly even in the dark."
+कहानी ख़त्म हुई, तो कुछ देर सन्नाटा रहा, और फिर पूरी कक्षा ने ताली बजाई। || When the story ended there was silence for a while, and then the whole class clapped.
+मेयर बोले, "वाह! तुम्हारी कल्पना तो बहुत अच्छी है।" || The mayor said, "Wow! Your imagination is very good."
+टीचर ने कहा, "कल्पना हो, तो गणित भी कहानी जैसा लगता है।" || The teacher said, "If there is imagination, even maths seems like a story."
+सैम अब शर्माया नहीं, वह मुस्कराया और बोला, "कल मैं एक और कहानी सुनाऊँगा।" || Sam was not shy now, he smiled and said, "Tomorrow I will tell one more story."
+अमन ने उसके कंधे पर हाथ रखा और कहा, "देखा, मैंने कहा था न!" || Aman put his hand on his shoulder and said, "See, I told you so!"
+घर आकर सैम ने नानी को सारी बात बताई, और नानी ने उसे गरम दूध दिया। || Coming home Sam told Nani the whole thing, and Nani gave him warm milk.

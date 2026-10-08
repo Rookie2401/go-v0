@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-22",
+  "lang": "es",
+  "title": "El culto del domingo",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-22",
+    "title": "Sunday worship (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honduran-register unit 2 of 6 (new, course-authored; the church strand of the Honduran register). A small evangelical congregation in a Honduran village: culto, alabanza, hermano / hermana, ofrenda, anuncios, escuela dominical, \"Pastor Mario\". Voseo between friends and in the children's speech (esperá, mirá, contame, ¿querés?), usted to the pastor and to the elders. The sermon is a plain retelling of Matthew 14:28-31 (Peter and the water); no verse is quoted. Points for the Honduran reviewer: whether \"culto\" and \"alabanza\" are the words this congregation would say (a Catholic parish would say misa); whether the first-Sunday announcements and the \"ofrenda\" read naturally; the village church of wood and zinc. The unit also brings back, on purpose, the words of es-a2-2-18, es-a2-2-19 and es-a2-2-20 (the recycling pass of 2026-10-08)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church",
+    "community",
+    "honduran register"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "honduran-register"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition",
+    "honduras"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Domingo por la mañana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es domingo, y desde temprano se oye la música en la iglesia de la aldea.",
+              "english": "It is Sunday, and since early the music can be heard in the village church."
+            },
+            {
+              "text": "Anoche llovió, y el camino está lleno de agua.",
+              "english": "Last night it rained, and the road is full of water."
+            },
+            {
+              "text": "Nico llega a la casa de doña Marta con los zapatos mojados y llenos de polvo.",
+              "english": "Nico arrives at doña Marta's house with wet shoes full of dust."
+            },
+            {
+              "text": "—Vení, cipote —dice la abuela—. Así no podés ir a la iglesia.",
+              "english": "\"Come here, kid,\" says the grandmother. \"You can't go to church like that.\""
+            },
+            {
+              "text": "Antes, doña Marta limpió los zapatos de Nico con un trapo y le puso su camisa blanca.",
+              "english": "Before, doña Marta cleaned Nico's shoes with a cloth and put his white shirt on him."
+            },
+            {
+              "text": "En el bolsillo, Nico lleva su ofrenda: dos lempiras.",
+              "english": "In his pocket, Nico carries his offering: two lempiras."
+            },
+            {
+              "text": "—¿Es mucho? —le pregunta a su abuela.",
+              "english": "\"Is it a lot?\" he asks his grandmother."
+            },
+            {
+              "text": "—Para Dios no importa la cantidad —contesta ella—. Importa el corazón.",
+              "english": "\"To God the amount does not matter,\" she answers. \"The heart matters.\""
+            },
+            {
+              "text": "Karla y Sam los esperan en la puerta, y los cuatro caminan juntos hasta la iglesia.",
+              "english": "Karla and Sam wait for them at the door, and the four walk together to the church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La alabanza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La iglesia es pequeña, de madera y zinc, con bancas largas y una ventana abierta.",
+              "english": "The church is small, of wood and zinc, with long benches and an open window."
+            },
+            {
+              "text": "Adentro hay unas cincuenta personas, y todos se saludan con un abrazo.",
+              "english": "Inside there are about fifty people, and everybody greets each other with a hug."
+            },
+            {
+              "text": "—Buenos días, hermano Sam. ¿Cómo amaneció? —pregunta una señora.",
+              "english": "\"Good morning, brother Sam. How did you wake up?\" asks a lady."
+            },
+            {
+              "text": "—Muy bien, hermana, gracias a Dios —contesta Sam.",
+              "english": "\"Very well, sister, thank God,\" answers Sam."
+            },
+            {
+              "text": "El hermano Wilmer toca la guitarra, y la hermana Rosa dirige el canto.",
+              "english": "Brother Wilmer plays the guitar, and sister Rosa leads the singing."
+            },
+            {
+              "text": "Un canto es corto y el otro es largo, pero todos cantan con alegría.",
+              "english": "One song is short and the other long, but everybody sings with joy."
+            },
+            {
+              "text": "Sam no conoce las palabras, así que escucha y trata de seguir la música.",
+              "english": "Sam does not know the words, so he listens and tries to follow the music."
+            },
+            {
+              "text": "—Cantá, Sam, cantá —le dice Nico—. Aquí nadie se ríe de vos.",
+              "english": "\"Sing, Sam, sing,\" Nico says to him. \"Here nobody laughs at you.\""
+            },
+            {
+              "text": "Cuando suena el último canto, la iglesia se queda callada.",
+              "english": "When the last song sounds, the church falls quiet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El mensaje",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pastor Mario abre su Biblia y lee la historia de Pedro y el agua.",
+              "english": "Pastor Mario opens his Bible and reads the story of Peter and the water."
+            },
+            {
+              "text": "—Pedro quiso caminar hacia Jesús —dice el pastor—. Dio un paso, y luego otro.",
+              "english": "\"Peter wanted to walk toward Jesus,\" says the pastor. \"He took a step, and then another.\""
+            },
+            {
+              "text": "Algunos hermanos piensan que Pedro era un loco, y otros dicen que era valiente.",
+              "english": "Some brothers think Peter was crazy, and others say he was brave."
+            },
+            {
+              "text": "—Pero después Pedro miró el viento, y empezó a tener dudas —sigue Pastor Mario.",
+              "english": "\"But then Peter looked at the wind, and began to have doubts,\" Pastor Mario goes on."
+            },
+            {
+              "text": "Su error no fue caminar; su error fue dejar de mirar a Jesús.",
+              "english": "His mistake was not walking; his mistake was to stop looking at Jesus."
+            },
+            {
+              "text": "Jesús no le dijo palabras duras. La respuesta de Jesús fue tomarle la mano.",
+              "english": "Jesus did not say hard words to him. Jesus's answer was to take his hand."
+            },
+            {
+              "text": "—Hermanos, a veces nos pasa lo mismo —dice el pastor—. Miramos el cielo y tenemos fe; miramos el viento y tenemos miedo.",
+              "english": "\"Brothers, sometimes the same happens to us,\" says the pastor. \"We look at the sky and have faith; we look at the wind and are afraid.\""
+            },
+            {
+              "text": "—Pero para empezar bastaba un poco de fe, y lo demás lo hace Dios.",
+              "english": "\"But to begin, a little faith was enough, and God does the rest.\""
+            },
+            {
+              "text": "Karla escribe una frase en su cuaderno, y Sam siente una pequeña sorpresa: no esperaba entender tanto.",
+              "english": "Karla writes a sentence in her notebook, and Sam feels a small surprise: he did not expect to understand so much."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los anuncios",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después del mensaje, la hermana Rosa lee los anuncios.",
+              "english": "After the message, sister Rosa reads the announcements."
+            },
+            {
+              "text": "—El primer jueves hay oración, el segundo hay grupo pequeño en casa de doña Marta, y el tercero hay visita a los enfermos.",
+              "english": "\"The first Thursday there is prayer, the second there is small group at doña Marta's house, and the third there is a visit to the sick.\""
+            },
+            {
+              "text": "—La oficina de la iglesia abre los martes, de dos a cuatro de la tarde.",
+              "english": "\"The church office opens on Tuesdays, from two to four in the afternoon.\""
+            },
+            {
+              "text": "La iglesia tiene gastos: la luz, el agua y el techo de zinc.",
+              "english": "The church has expenses: the electricity, the water and the zinc roof."
+            },
+            {
+              "text": "Además, la familia de don Pedro tiene una necesidad grande, porque la lluvia rompió el techo de su casa.",
+              "english": "Besides, don Pedro's family has a great need, because the rain broke the roof of their house."
+            },
+            {
+              "text": "—Pedimos su apoyo, hermanos —dice la hermana Rosa—. Y no pierdan la esperanza.",
+              "english": "\"We ask for your support, brothers,\" says sister Rosa. \"And do not lose hope.\""
+            },
+            {
+              "text": "Todo está listo para la ofrenda.",
+              "english": "Everything is ready for the offering."
+            },
+            {
+              "text": "Pasan dos hermanos con una bolsa, y Nico pone sus dos lempiras con una sonrisa.",
+              "english": "Two brothers pass with a bag, and Nico puts in his two lempiras with a smile."
+            },
+            {
+              "text": "Somos personas distintas, de edades distintas, pero esta mañana somos una sola familia.",
+              "english": "We are different people, of different ages, but this morning we are one single family."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El almuerzo de la iglesia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cada primer domingo del mes, las hermanas preparan un almuerzo para todos.",
+              "english": "Every first Sunday of the month, the sisters prepare a lunch for everybody."
+            },
+            {
+              "text": "Desde la madrugada, doña Marta y la hermana Rosa cocinan en el patio, con el fogón y el comal.",
+              "english": "Since before dawn, doña Marta and sister Rosa have been cooking in the yard, with the stove and the griddle."
+            },
+            {
+              "text": "Hay pollo con tajadas, frijoles, arroz, aguacate y cuajada, y para los niños hay baleadas con mantequilla.",
+              "english": "There is chicken with fried plantain, beans, rice, avocado and fresh cheese, and for the children there are baleadas with cream."
+            },
+            {
+              "text": "—¿Cómo amaneció, hermana? —pregunta un hermano que llega tarde.",
+              "english": "\"How did you wake up, sister?\" asks a brother who arrives late."
+            },
+            {
+              "text": "—Cheque, hermano, gracias a Dios. ¿Y usted cómo amaneció? —contesta doña Marta.",
+              "english": "\"Fine, brother, thank God. And how did you wake up?\" doña Marta answers."
+            },
+            {
+              "text": "Cada familia trae un poco de comida o un poco de pisto para los gastos del almuerzo.",
+              "english": "Each family brings a little food or a little money for the costs of the lunch."
+            },
+            {
+              "text": "Los niños llaman «el chele» a Sam, y le piden que les cuente cuentos de su país.",
+              "english": "The children call Sam \"the chele,\" and ask him to tell them stories from his country."
+            },
+            {
+              "text": "Una cipota de cinco años le pregunta: —¿Vos sos chele porque te quemó el sol?",
+              "english": "A five-year-old girl asks him: \"Are you a chele because the sun burned you?\""
+            },
+            {
+              "text": "—No —dice Sam, y se ríe—. Soy chele desde que nací.",
+              "english": "\"No,\" says Sam, and laughs. \"I have been a chele since I was born.\""
+            },
+            {
+              "text": "—Ahorita no quedan baleadas, pero ahorita mismo hago otra —dice doña Marta.",
+              "english": "\"There are no baleadas left right now, but I will make another one right away,\" says doña Marta."
+            },
+            {
+              "text": "Karla sirve cuajada con tajadas a un señor mayor, y él le da las gracias con la mano en el corazón.",
+              "english": "Karla serves fresh cheese with fried plantain to an elderly gentleman, and he thanks her with his hand on his heart."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después del culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Afuera, la gente se queda a hablar bajo el árbol grande.",
+              "english": "Outside, people stay to talk under the big tree."
+            },
+            {
+              "text": "Un misionero que visita la aldea llega con una maleta grande y una sorpresa para los niños.",
+              "english": "A missionary who is visiting the village arrives with a big suitcase and a surprise for the children."
+            },
+            {
+              "text": "—Esperá, cipote, no abras la maleta todavía —le dice Karla a Nico.",
+              "english": "\"Wait, kid, don't open the suitcase yet,\" Karla says to Nico."
+            },
+            {
+              "text": "Dentro de la maleta hay libros, lápices y unas camisetas de colores.",
+              "english": "Inside the suitcase there are books, pencils and some colored T-shirts."
+            },
+            {
+              "text": "—¿De quién son estas camisetas? —pregunta Nico.",
+              "english": "\"Whose are these T-shirts?\" asks Nico."
+            },
+            {
+              "text": "—Son para ustedes, los niños que vienen los domingos —contesta el misionero.",
+              "english": "\"They are for you, the children who come on Sundays,\" answers the missionary."
+            },
+            {
+              "text": "Sam mira la escena y piensa en su propia llegada a la aldea, hace unos meses.",
+              "english": "Sam watches the scene and thinks of his own arrival in the village, a few months ago."
+            },
+            {
+              "text": "—¿Qué estás pensando? —le pregunta Karla.",
+              "english": "\"What are you thinking?\" Karla asks him."
+            },
+            {
+              "text": "—Pienso que ya no soy un visitante, soy un hermano más —dice él.",
+              "english": "\"I think that I am no longer a visitor, I am one more brother,\" he says."
+            },
+            {
+              "text": "—Contame cuando sepás por qué —dice ella, y se ríe.",
+              "english": "\"Tell me when you know why,\" she says, and laughs."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Spanish package, Honduran-register strand)"
+        }
+      }
+    ]
+  }
+}

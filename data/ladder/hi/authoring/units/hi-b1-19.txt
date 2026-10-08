@@ -1,0 +1,41 @@
+id: hi-b1-19
+title: स्कूल का वार्षिकोत्सव
+domain: correspondence
+topics: school, annual day, picnic, classmates, letter
+notes: Ninth controlled unit of the b1 bridge. It prepares the words of the GDL story "थोड़ी सी मदद" (hi-b1-20), a boy's letters about a new girl in his school: प्रिंसिपल, मैडम, अध्यापिका, सहपाठी, छात्रा, वार्षिकोत्सव, पिकनिक, दौरान, जबकि, बढ़िया, भला, नक़ली, मिलाना, each used three times, in a letter that Sam writes to the sending church about the annual day and the picnic at Aman's school. Machine-drafted; a Hindi reviewer should check the school words and the letter's register.
+---
+## पत्र
+आदरणीय पास्टर जी और सब साथियो, || Respected Pastor and all friends,
+नमस्ते। आज मैं आपको अमन के स्कूल के वार्षिकोत्सव के बारे में लिख रहा हूँ। || Namaste. Today I am writing to you about the annual festival of Aman's school.
+कई हफ़्तों से सब बच्चे इस दिन की तैयारी कर रहे थे, और उनकी अध्यापिका रोज़ स्कूल में देर तक रुकती थीं। || For several weeks all the children had been preparing for this day, and their teacher stayed late at school every day.
+मैं भी शाम को अमन के साथ स्कूल जाता था, और बच्चों को गाते हुए देखता था। || I too used to go to school with Aman in the evenings, and watch the children sing.
+
+## प्रिंसिपल मैडम
+स्कूल की प्रिंसिपल मैडम पहली बार में बहुत सख़्त दिखती हैं, पर वे बच्चों से बहुत प्यार करती हैं। || The principal madam of the school looks very strict at first, but she loves the children very much.
+वार्षिकोत्सव के दौरान वे सबसे पहले आकर बैठती हैं, और सबके लिए ताली बजाती हैं। || During the annual festival she comes and sits before everybody, and claps for everybody.
+उन्होंने मुझसे कहा, "सैम जी, आप भी बच्चों के पास बैठिए, मेहमान को अकेले मत छोड़िए।" || She said to me, "Sam ji, you also sit near the children, do not leave the guest alone."
+अमन के सहपाठी मुझे अपने पास बैठाकर खुश हुए। || Aman's classmates were glad to make me sit near them.
+मैं हँसा, क्योंकि मैं उनका सहपाठी नहीं, उनका मेहमान था। || I laughed, because I was not their classmate, I was their guest.
+
+## नई छात्रा
+इस साल अमन की कक्षा में एक नई छात्रा आई है, जिसका नाम ऋचा है। || This year a new girl student has come into Aman's class, whose name is Richa.
+वह थोड़ी शर्मीली है, इसलिए अध्यापिका ने उसे सब बच्चों से मिलाया। || She is a little shy, so the teacher introduced her to all the children.
+अध्यापिका ने कहा, "ऋचा हमारी नई छात्रा है, और आज से वह तुम सबकी सहपाठी है।" || The teacher said, "Richa is our new student, and from today she is the classmate of you all."
+अमन ने मुझसे कहा, "सैम, मैं उसकी मदद करूँगा।" || Aman said to me, "Sam, I will help her."
+मैंने पूछा, "भला तुम उसकी क्या मदद करोगे?" || I asked, "Well, what help will you give her?"
+अमन बोला, "मैं उसे पूरा स्कूल दिखाऊँगा, जबकि बाक़ी बच्चे खेलेंगे।" || Aman said, "I will show her the whole school while the other children play."
+नानी को जब यह बात पता चली, तो उन्होंने कहा, "भला मदद से बड़ा कौन सा काम है?" || When Nani came to know of this, she said, "Well, what work is greater than helping?"
+
+## पिकनिक
+वार्षिकोत्सव के बाद सब बच्चे नदी के पास पिकनिक के लिए गए। || After the festival all the children went to the river for a picnic.
+पिकनिक के दौरान सबने बढ़िया खाना खाया, और नानी ने सबके लिए लड्डू भेजे थे। || During the picnic everybody ate good food, and Nani had sent laddus for everybody.
+प्रिंसिपल मैडम ने भी हमारे साथ बैठकर एक बढ़िया गीत गाया। || Principal madam also sat with us and sang a nice song.
+अमन ने नक़ली दाढ़ी लगाई और सबको हँसाया, जबकि मैंने उसकी तरह करने की कोशिश की। || Aman put on a false beard and made everybody laugh, while I tried to do like him.
+ऋचा भी हँसी, और उसने कहा, "यह नक़ली दाढ़ी तो बहुत बढ़िया है!" || Richa laughed too, and she said, "This false beard is really great!"
+उसने अमन के साथ दौड़कर खेल में हिस्सा लिया। || She ran and took part in the game with Aman.
+उस शाम पिकनिक के दौरान मैंने पहली बार अपने आप को उस स्कूल का हिस्सा महसूस किया। || That evening during the picnic I felt for the first time that I was a part of that school.
+
+## अंत में
+शाम को मैं नानी के घर लौटा, तो मुझे फ़ुर्सत मिली, और मैंने यह पत्र लिखा। || In the evening I returned to Nani's house, I got some free time, and I wrote this letter.
+मेरी प्रार्थना है कि आप भी अपने सहपाठियों और पड़ोसियों से इसी तरह मिलते रहें। || My prayer is that you too keep meeting your classmates and neighbours in the same way.
+आपका सैम || Yours, Sam

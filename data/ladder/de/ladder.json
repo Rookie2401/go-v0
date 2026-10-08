@@ -554,6 +554,246 @@
       "document": "units/de-a2-2-20.json",
       "domain": "testimony",
       "title": "Why I came to Germany"
+    },
+    {
+      "id": "de-b1-01",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-01.json",
+      "domain": "conversation",
+      "title": "A year in Leipzig"
+    },
+    {
+      "id": "de-b1-02",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-02.json",
+      "domain": "correspondence",
+      "title": "Sam's letter to his home church"
+    },
+    {
+      "id": "de-b1-03",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:bible-jhn-14",
+      "domain": "scripture",
+      "title": "Johannes 14 (Luther 1912)"
+    },
+    {
+      "id": "de-b1-04",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-04.json",
+      "domain": "conversation",
+      "title": "Planning the fairy-tale evening"
+    },
+    {
+      "id": "de-b1-05",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-02-ch01",
+      "domain": "narrative",
+      "title": "Die drei Schläfer (Guerber)"
+    },
+    {
+      "id": "de-b1-06",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-03-ch01",
+      "domain": "narrative",
+      "title": "Der Hausvater (Guerber)"
+    },
+    {
+      "id": "de-b1-07",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:grimm-khm-story-151",
+      "domain": "narrative",
+      "title": "Die drei Faulen (Grimm)"
+    },
+    {
+      "id": "de-b1-08",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-08.json",
+      "domain": "travel",
+      "title": "A day trip to Hameln"
+    },
+    {
+      "id": "de-b1-09",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-06-ch01",
+      "domain": "narrative",
+      "title": "Der Pfeifer von Hameln (Guerber)"
+    },
+    {
+      "id": "de-b1-10",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-01-ch01",
+      "domain": "narrative",
+      "title": "Jakobs Haus (Guerber)"
+    },
+    {
+      "id": "de-b1-11",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-11.json",
+      "domain": "instructions",
+      "title": "Marta cooks porridge and pancakes"
+    },
+    {
+      "id": "de-b1-12",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:grimm-khm-story-103",
+      "domain": "narrative",
+      "title": "Der süße Brei (Grimm)"
+    },
+    {
+      "id": "de-b1-13",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-04-ch01",
+      "domain": "narrative",
+      "title": "Der Pfannkuchen (Guerber)"
+    },
+    {
+      "id": "de-b1-14",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-14.json",
+      "domain": "church-and-mission-life",
+      "title": "The house group reads the Bible"
+    },
+    {
+      "id": "de-b1-15",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:bible-1john-5",
+      "domain": "scripture",
+      "title": "1. Johannes 5 (Luther 1912)"
+    },
+    {
+      "id": "de-b1-16",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:bible-jhn-17",
+      "domain": "scripture",
+      "title": "Johannes 17 (Luther 1912)"
+    },
+    {
+      "id": "de-b1-17",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-17.json",
+      "domain": "contemporary-nonfiction",
+      "title": "A fox in the city"
+    },
+    {
+      "id": "de-b1-18",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-07-ch01",
+      "domain": "narrative",
+      "title": "Undank ist der Welt Lohn (Guerber)"
+    },
+    {
+      "id": "de-b1-19",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-19.json",
+      "domain": "correspondence",
+      "title": "An invitation and a question about old words"
+    },
+    {
+      "id": "de-b1-20",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:grimm-khm-story-153",
+      "domain": "narrative",
+      "title": "Die Sternthaler (Grimm)"
+    },
+    {
+      "id": "de-b1-21",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-21.json",
+      "domain": "work",
+      "title": "A day on the farm"
+    },
+    {
+      "id": "de-b1-22",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:grimm-khm-story-162",
+      "domain": "narrative",
+      "title": "Der kluge Knecht (Grimm)"
+    },
+    {
+      "id": "de-b1-23",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-23.json",
+      "domain": "family",
+      "title": "Sunday at Grandfather's table"
+    },
+    {
+      "id": "de-b1-24",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:grimm-khm-story-078",
+      "domain": "narrative",
+      "title": "Der alte Großvater und der Enkel (Grimm)"
+    },
+    {
+      "id": "de-b1-25",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-25.json",
+      "domain": "narrative",
+      "title": "A Saturday with the children's group"
+    },
+    {
+      "id": "de-b1-26",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-08-ch01",
+      "domain": "narrative",
+      "title": "Die Prinzessin, die nicht lachen wollte (Guerber)"
+    },
+    {
+      "id": "de-b1-27",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-05-ch01",
+      "domain": "narrative",
+      "title": "Der Riese und das Kind (Guerber)"
+    },
+    {
+      "id": "de-b1-28",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/de-b1-28.json",
+      "domain": "daily-life",
+      "title": "Old trades in the school project"
+    },
+    {
+      "id": "de-b1-29",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:guerber-v1-story-15-ch01",
+      "domain": "narrative",
+      "title": "Die vier Brüder (Guerber)"
+    },
+    {
+      "id": "de-b1-30",
+      "stage": "b1-bridge",
+      "kind": "authentic",
+      "textId": "text:de:bible-jhn-16",
+      "domain": "scripture",
+      "title": "Johannes 16 (Luther 1912)"
     }
   ]
 }

@@ -1,0 +1,33 @@
+=== nb-b1-bridge-20 | story | faith | Easter | Påske | Easter,traditions,church,bookshop,indirect speech,relative clauses
+speakers: erik=Erik, solveig=Solveig
+note: Easter in Norway: the custom of Easter crime novels (krim), the Good Friday and Easter Sunday services and chocolate eggs. The Easter story is told in the course's own words, briefly and with respect; it is not a Bible translation. The customs are general and unchecked; a Norwegian reviewer should check them and the church language.
+## Krim i bokhandelen
+Før påske satte de et stort bord i bokhandelen. På bordet lå bare krim. || Before Easter they put a big table in the bookshop. On the table there was only crime fiction.
+[sam] Hvorfor selger vi bare disse bøkene nå? Jeg forstår det ikke. || Why are we selling only these books now? I do not understand it.
+[erik] Det er en tradisjon. I påsken leser mange disse bøkene. Krim er bøker med en gåte, og du vil vite svaret. || It is a tradition. At Easter many people read these books. Crime novels are books with a riddle, and you want to know the answer.
+[erik] Folk tar enten en bok om en gåte eller en bok om fjell med til hytta. Blant kundene våre er det mange som kommer bare nå. || People take either a book about a riddle or a book about mountains to the cabin. Among our customers there are many who come only now.
+{sam} hjalp mange kunder å finne en krim. Han syntes at det var en bra tradisjon, selv om han ikke likte gåter så godt. Silje tok med seg tre krim til fjellet. || Sam helped many customers to find a crime novel. He thought that it was a good tradition, even though he did not like riddles so much. Silje took three crime novels with her to the mountains.
+
+## Langfredag
+På fredag gikk {sam} til kirka. Det var en rolig gudstjeneste, og ingen sang høyt. I kirka var det et stort kors, og {sam} satt og så på korset. || On Friday Sam went to the church. It was a quiet service, and nobody sang loudly. In the church there was a big cross, and Sam sat and looked at the cross.
+Presten fortalte at Jesus døde på et kors. Han døde for alle. Vennene hans var redde, og de gikk hjem uten håp. Han ble lagt i en grav. Graven var kald og mørk. || The pastor told that Jesus died on a cross. He died for everyone. His friends were afraid, and they went home without hope. He was laid in a grave. The grave was cold and dark.
+Blant dem som satt i kirka, var små og gamle. De hadde enten tvil eller tro i hjertet, og mange hadde begge. || Among those who sat in the church were small and old. They had either doubt or faith in their hearts, and many had both.
+{sam} tenkte på hva det vil si å tilgi. Han ba rolig: «Takk, Gud, for at du døde for oss. Hjelp meg å tilgi dem som har gjort meg vondt.» || Sam thought about what it means to forgive. He prayed calmly: "Thank you, God, that you died for us. Help me to forgive those who have hurt me."
+
+## Påskemorgen
+På søndag var kirka lys, og mange hadde kommet. Presten sa med glad stemme: «Graven var tom! Ja, graven var tom! Han døde, men han lever!» || On Sunday the church was bright, and many had come. The pastor said in a glad voice: "The grave was empty! Yes, the grave was empty! He died, but he lives!"
+Alle sang gamle sanger om glede og håp. {sam} sang med, og han var glad. Han tenkte at en grav som er tom, er det største håpet vi har. || Everyone sang old songs about joy and hope. Sam sang along, and he was glad. He thought that a grave that is empty is the greatest hope we have.
+Etter gudstjenesten sa {marta}: «Jeg har gått i kirka i åtti år. Hver gang er graven like tom, og hver gang er jeg like glad.» || After the service Marta said: "I have gone to church for eighty years. Every time the grave is just as empty, and every time I am just as glad."
+
+## Eggene
+Etterpå gikk de til Solveig. Hun hadde lagt sjokolade i alle rom, egg av sjokolade, og barna skulle lete etter dem. || Afterwards they went to Solveig's. She had put chocolate in every room, eggs of chocolate, and the children were to look for them.
+Barna til Sofie og {nico} lette og lette. Blant sofaer og bøker fant de egg etter egg, og alle fikk sjokolade. || Sofie's children and Nils searched and searched. Among sofas and books they found egg after egg, and everyone got chocolate.
+[nico] Eggene er tomme! Jeg vil ha mer sjokolade! || The eggs are empty! I want more chocolate!
+[solveig] Du kan enten ta mer sjokolade eller lete etter mange egg, {nico}. Men ikke begge! || You can either take more chocolate or look for many eggs, Nils. But not both!
+Alle lo. {sam} satt og så på dem, og han tenkte at påsken er en rolig dag og en glad dag. || Everyone laughed. Sam sat and looked at them, and he thought that Easter is a quiet day and a glad day.
+Den kvelden ba {sam}: «Takk, Gud, for påsken. Takk for håpet. La meg aldri glemme at graven er tom.» || That evening Sam prayed: "Thank you, God, for Easter. Thank you for the hope. Let me never forget that the grave is empty."
+Etterpå gikk alle ut i sola, og {sam} sa at han aldri hadde sett så mange glade barn på en gang. || Afterwards everyone went out into the sun, and Sam said that he had never seen so many happy children at once.
+
+{ana} hadde vakt i påsken og målte temperaturen til mange. Det var ganske rolig. I kirka fortalte presten om hyrden og om Guds kjærlighet. Julen var allerede langt borte, men {nico} husket mandelen og treet, som de hadde pyntet. Silje spurte om prisen på bøkene, og Erik ga et tips: Samle bøkene med krim på ett bord. || Anna had been on duty at Easter and measured the temperature of many. It was quite calm. In the church the pastor told about the shepherd and about God's love. Christmas was already far away, but Nils remembered the almond and the tree, which they had decorated. Silje asked about the price of the books, and Erik gave a tip: collect the books with crime fiction on one table.
+I påsken var det ferie, og {sam} fulgte sporene etter ski i snøen, og de spiste grøt til frokost. {ana} hadde med medisin i veska, men ingen var syke. Silje laget en plakat om krim, og Erik brukte den i vinduet. || In the Easter holiday Sam followed the tracks of skis in the snow, and they ate porridge for breakfast. Anna had medicine in her bag, but nobody was ill. Silje made a poster about crime fiction, and Erik used it in the window.
+Erik var bak bordet med krim, og han sa at prisen på bøker hadde økt litt. || Erik was behind the table with crime fiction, and he said that the price of books had risen a little.

@@ -1,0 +1,40 @@
+=== nb-b1-bridge-06 | story | daily-life | Flats to rent | Leiligheter til leie | housing,advertisements,comparison,telephone,past tense
+speakers: mann=Mannen i telefonen
+note: Reading short advertisements for flats, comparing them (billigere, lysere, nærmere; billigst, dyrest) and phoning. The advertisements are invented and shortened.
+## Annonsene
+Hver dag den uka leste {sam} annonsene i avisen. Han ville finne en leilighet som var billig, men ikke for liten. || Every day that week Sam read the advertisements in the newspaper. He wanted to find a flat that was cheap, but not too small.
+På lørdag satt han ved bordet med {ana}, og de leste tre annonser sammen. || On Saturday he sat at the table with Anna, and they read three advertisements together.
+Den første annonsen sa: «Lys leilighet i sentrum. Stue, kjøkken og baderom. Etasje tre, balkong. Husleie åtte tusen fem hundre kroner.» || The first advertisement said: "Bright flat in the town centre. Living room, kitchen and bathroom. Floor three, balcony. Rent eight thousand five hundred kroner."
+Den neste sa: «Liten leilighet nær fjellet. Kjøkken og baderom. Første etasje. Husleie seks tusen kroner. Ledig fra neste måned.» || The next said: "Small flat near the mountain. Kitchen and bathroom. First floor. Rent six thousand kroner. Available from next month."
+Til slutt var det en annonse om en stor leilighet: «To rom, nytt kjøkken, nær bussen. Husleie ni tusen kroner.» || Finally there was an advertisement about a big flat: "Two rooms, new kitchen, near the bus. Rent nine thousand kroner."
+
+## Å sammenligne
+[ana] La oss sammenligne dem. Den første er lysere enn den neste, og den er nærmere bokhandelen. Den har også balkong. || Let us compare them. The first is brighter than the next, and it is closer to the bookshop. It also has a balcony.
+[sam] Men den er dyrere. Den neste er billigst, men den ligger langt fra sentrum. || But it is more expensive. The next is the cheapest, but it is far from the centre.
+[ana] Den store er størst, men den er dyrest, og du har ikke råd til den. || The big one is the biggest, but it is the most expensive, and you cannot afford it.
+[sam] Jeg vil se de to første. Jeg kan ikke bestemme meg før jeg har sett dem. || I want to see the first two. I cannot decide before I have seen them.
+[ana] Det er klokt. En annonse sier ikke alt. || That is wise. An advertisement does not say everything.
+{ana} sammenlignet alt en gang til. «Husleien er ikke alt,» sa hun. «Husk bussen og regningene.» || Anna compared everything once more. "The rent is not everything," she said. "Remember the bus and the bills."
+
+## Telefonen
+På mandag ringte {sam} fra bokhandelen i pausen. Først ringte han nummeret til den første annonsen. || On Monday Sam called from the bookshop during the break. First he rang the number from the first advertisement.
+[sam] God dag. Jeg ringer om leiligheten i sentrum. Er den ledig ennå? || Good day. I am calling about the flat in the town centre. Is it still available?
+[mann] Nei, den er ikke ledig lenger. Den gikk i går. || No, it is not available any more. It went yesterday.
+[sam] Det var synd. Takk for hjelpen. || That was a pity. Thanks for the help.
+Så ringte han den neste. En mann svarte. || Then he rang the next one. A man answered.
+[sam] God dag. Jeg ringer om leiligheten nær fjellet. Er den ledig? || Good day. I am calling about the flat near the mountain. Is it available?
+[mann] Ja, den er ledig fra neste måned. Den ligger i første etasje. Kan du se den på onsdag klokka fem? || Yes, it is available from next month. It is on the first floor. Can you see it on Wednesday at five o'clock?
+[sam] Ja, det kan jeg. Hva er husleien? || Yes, I can. What is the rent?
+[mann] Seks tusen kroner. Hva er nummeret ditt, så jeg kan ringe deg om leiligheten? || Six thousand kroner. What is your number, so that I can call you about the flat?
+{sam} sa nummeret sitt, og mannen skrev det. Så takket han og ringte av. || Sam said his number, and the man wrote it. Then he thanked him and hung up.
+
+## Om kvelden
+Om kvelden fortalte {sam} at han hadde ringt to ganger. Den første leiligheten var ikke ledig, men den neste var det, og han skulle se den på onsdag. || In the evening Sam told that he had phoned twice. The first flat was not available, but the next one was, and he was going to see it on Wednesday.
+[luis] Husk å se på kjøkkenet, baderommet og balkongen. Det er dyrt å få nytt. || Remember to look at the kitchen, the bathroom and the balcony. It is expensive to get new ones.
+[nico] Og se om det er plass til en seng og en hylle til bøkene! || And see whether there is room for a bed and a shelf for the books!
+[ana] Husk også å sammenligne den med alle leilighetene du ser, selv om du liker den. || Remember also to compare it with all the flats you see, even if you like it.
+[sam] Jeg skal huske alt. Rommet mitt her har vært bra, men jeg tror at jeg kan bo alene. || I will remember everything. My room here has been good, but I think that I can live alone.
+{ana} så på ham og sa: «Du har gjort mye i dag. Nå kan du hvile.» || Anna looked at him and said: "You have done a lot today. Now you can rest."
+
+På jobben var det mye å le av den uka. Silje, som var ung og aldri hadde mye på kontoen, sa at helga var den beste dagen, og at hun øvde seg på å bake brød. Hun ville spise lunsj med {sam} hver dag. || At work there was a lot to laugh at that week. Silje, who was young and never had much in her account, said that the weekend was the best day, and that she practised baking bread. She wanted to eat lunch with Sam every day.
+Arbeidet i bokhandelen var godt, og lønnen kom på kontoen i banken hver måned. || The work in the bookshop was good, and the pay came into the account at the bank every month.

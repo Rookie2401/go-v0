@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-19",
+  "lang": "nb",
+  "title": "Winter holiday at the cabin",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-19",
+    "title": "Winter holiday at the cabin (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A winter holiday at the family cabin. Past tense and past perfect, the modal perfect (burde ha, skulle ha), and a short adventure in fog. Safety advice is general; a Norwegian reviewer should check how natural the mountain talk sounds. No real place is named."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "nature",
+    "winter",
+    "skiing",
+    "cabin",
+    "fog",
+    "modal perfect",
+    "past perfect"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nature"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "marta": "Marta",
+    "sam": "Sam",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Ferie",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om vinteren hadde skolen ferie, og Lars spurte om Sam ville være med til hytta. Den lå i fjellet, to timer med tog og en time med buss fra Bergen.",
+              "english": "In winter the school had a holiday, and Lars asked whether Sam wanted to come to the cabin. It lay in the mountains, two hours by train and an hour by bus from Bergen."
+            },
+            {
+              "text": "Anna, Lars, Marta og Nils var med, og Sam hadde pakket i god tid. Han hadde aldri gått på ski, men han hadde skiene til Lars.",
+              "english": "Anna, Lars, Marta and Nils were coming, and Sam had packed in good time. He had never been on skis, but he had Lars's skis."
+            },
+            {
+              "text": "Hytta var liten, og i stua var det en peis.",
+              "english": "The cabin was small, and in the living room there was a fireplace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ski",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Den første dagen lærte Lars Sam å gå på ski. Det gikk dårlig. Sam falt tre ganger, og Nils lo så mye at han falt han også.",
+              "english": "The first day Lars taught Sam to go on skis. It went badly. Sam fell three times, and Nils laughed so much that he fell too."
+            },
+            {
+              "text": "Du må være forsiktig. Ikke gå for fort, og se mot der du vil gå.",
+              "english": "You must be careful. Do not go too fast, and look towards where you want to go.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Vær forsiktig, Sam! Jeg vil ikke ha deg på legevakten, som Nils.",
+              "english": "Be careful, Sam! I do not want you at the emergency clinic, like Nils.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Etter noen timer gikk det bedre. Sam fant løypa, og han gikk rolig bak Lars. Det var rolig i fjellet, og han kunne gå langt.",
+              "english": "After a few hours it went better. Sam found the trail, and he went calmly behind Lars. It was calm in the mountains, and he could go far."
+            },
+            {
+              "text": "Om kvelden satt de ved peisen og drakk varm kakao. Alle var trøtte, men Sam var stolt. Han hadde gått langt på ski!",
+              "english": "In the evening they sat by the fireplace and drank hot cocoa. Everyone was tired, but Sam was proud. He had gone far on skis!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tåken",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Den andre dagen var sola ute, og Sam ville gå alene. «Bare en liten tur,» sa han. Lars sa at han burde vente, men Sam hadde allerede skiene på.",
+              "english": "The second day the sun was out, and Sam wanted to go alone. \"Just a little trip,\" he said. Lars said that he ought to wait, but Sam already had his skis on."
+            },
+            {
+              "text": "Han gikk i løypa mot fjellet, og først var alt bra. Men etter en time kom tåken. Den kom fort, og snart kunne han ikke se langt.",
+              "english": "He went on the trail towards the mountain, and at first everything was fine. But after an hour the fog came. It came fast, and soon he could not see far."
+            },
+            {
+              "text": "Sam stoppet. Han var redd, og han tenkte: Jeg burde ha sagt hvor jeg skulle. Jeg skulle ha tatt med Nils eller Lars.",
+              "english": "Sam stopped. He was afraid, and he thought: I should have said where I was going. I should have taken Nils or Lars with me."
+            },
+            {
+              "text": "Så husket han det Lars hadde sagt: Når tåken kommer, må du være rolig og vente. Se på sporene dine i snøen, og følg dem tilbake.",
+              "english": "Then he remembered what Lars had said: When the fog comes, you must be calm and wait. Look at your tracks in the snow, and follow them back."
+            },
+            {
+              "text": "Han så på snøen, og der var sporene hans, ennå der. Han fulgte dem forsiktig, og han ba mens han gikk. Han hadde mistet løypa, men han hadde ikke mistet håpet.",
+              "english": "He looked at the snow, and there were his tracks, still there. He followed them carefully, and he prayed as he walked. He had lost the trail, but he had not lost hope."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme igjen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etter lang tid hørte han en stemme. Det var Lars, som hadde lett etter ham.",
+              "english": "After a long time he heard a voice. It was Lars, who had been looking for him."
+            },
+            {
+              "text": "Der er du! Jeg var redd. Neste gang sier du hvor du går!",
+              "english": "There you are! I was afraid. Next time you say where you are going!",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ja. Jeg burde ha sagt det. Jeg er lei for det, og jeg er veldig glad for at du kom.",
+              "english": "Yes. I should have said so. I am sorry, and I am very glad that you came.",
+              "speaker": "sam"
+            },
+            {
+              "text": "På kvelden satt alle ved peisen en gang til. Marta fortalte om fjellet i gamle dager, og Sam lyttet med varm kakao og tenkte at han aldri skulle glemme den dagen.",
+              "english": "In the evening everyone sat by the fireplace once more. Marta told about the mountain in the old days, and Sam listened with hot cocoa and thought that he would never forget that day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Siste dagen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dagen etter var sola ute, og alle gikk på ski sammen mot et lite vann. Sam gikk først, og han fulgte løypa uten å se seg tilbake.",
+              "english": "The day after the sun was out, and everyone went skiing together towards a little lake. Sam went first, and he followed the trail without looking back."
+            },
+            {
+              "text": "Ved vannet drakk de kakao og spiste brød med ost. Det var ingen tåke nå, bare sol og snø.",
+              "english": "By the lake they drank cocoa and ate bread with cheese. There was no fog now, only sun and snow."
+            },
+            {
+              "text": "Jeg vil gå på ski hver ferie! Nå går vi mot hytta!",
+              "english": "I want to go skiing every holiday! Now we are going towards the cabin!",
+              "speaker": "nico"
+            },
+            {
+              "text": "En ferie i fjellet er den beste ferien. Og tåken er snill, når den er over.",
+              "english": "A holiday in the mountains is the best holiday. And the fog is kind, when it is over.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Sam tenkte på tåken og på sporene i snøen. Han hadde lært at det er bra å si hvor du går. Han fulgte de andre mot hytta, og han var glad.",
+              "english": "Sam thought about the fog and the tracks in the snow. He had learned that it is good to say where you are going. He followed the others towards the cabin, and he was glad."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna hadde hatt vakt på julaften, og hun var ganske trøtt, men på hytta fikk hun hvile. Bak hytta var det mer snø enn ved døra, og om kvelden samlet de seg ved peisen. De pyntet hytta som på julaften, og de slo av lyset og satt med bare peisen. Prisen for turen var bra for alle.",
+              "english": "Anna had been on duty on Christmas Eve, and she was quite tired, but at the cabin she got to rest. Behind the cabin there was more snow than at the door, and in the evening they gathered by the fireplace. They decorated the cabin as on Christmas Eve, and they switched off the light and sat with only the fireplace. The price of the trip was good for everyone."
+            },
+            {
+              "text": "På hytta spiste de grøt om morgenen, og om natten kunne de se stjernene over fjellet. Marta fortalte en lignelse, og de hadde bare lyset fra peisen. De bruker ikke mye strøm på hytta.",
+              "english": "At the cabin they ate porridge in the morning, and at night they could see the stars over the mountain. Marta told a parable, and they had only the light from the fireplace. They do not use much electricity at the cabin."
+            },
+            {
+              "text": "Egentlig trengte de ikke å betale noe for hytta, selv om prisene hadde økt.",
+              "english": "Actually they did not need to pay anything for the cabin, even though prices had risen."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

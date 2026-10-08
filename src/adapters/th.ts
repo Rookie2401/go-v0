@@ -37,7 +37,7 @@ import {
 } from './thai/orthography';
 
 const LANG = 'th' as const;
-const VERSION = '4';
+const VERSION = '5';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */

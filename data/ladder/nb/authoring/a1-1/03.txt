@@ -1,12 +1,12 @@
 === nb-a1-1-03 | dialogue | family | Anna's family | Familien til {ana} | family,mother,father,age
 ## Familien
-{ana} snakker om familien. || Anna talks about her family.
+{ana} snakker om familien. Hun snakker om mora og faren. || Anna talks about her family. She talks about her mother and her father.
 
 [sam] Hvem er dette? || Who is this?
 [ana] Dette er mora mi. Hun heter Ingrid. || This is my mother. Her name is Ingrid.
 [ana] Og dette er faren min. Han heter Olav. || And this is my father. His name is Olav.
 [sam] Bor mora di og faren din her i byen? || Do your mother and your father live here in town?
-[ana] Nei, mora mi og faren min bor i Trondheim. || No, my mother and my father live in Trondheim.
+[ana] Nei, i Trondheim. || No, in Trondheim.
 [sam] Hvem er han? || Who is he?
 [ana] Det er {luis}. Han er broren min. || That is Lars. He is my brother.
 [ana] {luis} er tretti år. Jeg er tretti år også. || Lars is thirty years old. I am thirty years old too.
@@ -29,11 +29,14 @@
 [nico] Det går bra, takk. || I am fine, thank you.
 [marta] Går du til skolen i dag? || Are you going to school today?
 [nico] Ja, jeg går til skolen. Men jeg er trøtt. || Yes, I am going to school. But I am tired.
+[marta] Har du brød og vann? || Do you have bread and water?
+[nico] Ja, jeg har brød og vann. Jeg liker brød. || Yes, I have bread and water. I like bread.
+[marta] Bra! Spis brødet, {nico}. || Good! Eat the bread, Nils.
 [marta] Gå til skolen! Ha det bra, {nico}. || Go to school! Goodbye, Nils.
 [nico] Ha det bra, {marta}! || Goodbye, Marta!
 {nico} går til skolen. {luis} er på skolen også. || Nils goes to school. Lars is at school too.
-{luis} er læreren til {nico}. Han er glad i dag. || Lars is Nils's teacher. He is happy today.
+{luis} er læreren til {nico}. Læreren er glad i dag. || Lars is Nils's teacher. The teacher is happy today.
 
 ## Husker du?
 [ana] Hvordan er rommet ditt, {sam}? || How is your room, Sam?
-[sam] Det er lite, men jeg har ei seng og et vindu. || It is small, but I have a bed and a window.
+[sam] Det er lite, men jeg har et vindu. || It is small, but I have a window.

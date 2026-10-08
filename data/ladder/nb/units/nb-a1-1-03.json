@@ -72,8 +72,8 @@
         {
           "sentences": [
             {
-              "text": "Anna snakker om familien.",
-              "english": "Anna talks about her family."
+              "text": "Anna snakker om familien. Hun snakker om mora og faren.",
+              "english": "Anna talks about her family. She talks about her mother and her father."
             }
           ]
         },
@@ -100,8 +100,8 @@
               "speaker": "sam"
             },
             {
-              "text": "Nei, mora mi og faren min bor i Trondheim.",
-              "english": "No, my mother and my father live in Trondheim.",
+              "text": "Nei, i Trondheim.",
+              "english": "No, in Trondheim.",
               "speaker": "ana"
             },
             {
@@ -210,6 +210,21 @@
               "speaker": "nico"
             },
             {
+              "text": "Har du brød og vann?",
+              "english": "Do you have bread and water?",
+              "speaker": "marta"
+            },
+            {
+              "text": "Ja, jeg har brød og vann. Jeg liker brød.",
+              "english": "Yes, I have bread and water. I like bread.",
+              "speaker": "nico"
+            },
+            {
+              "text": "Bra! Spis brødet, Nils.",
+              "english": "Good! Eat the bread, Nils.",
+              "speaker": "marta"
+            },
+            {
               "text": "Gå til skolen! Ha det bra, Nils.",
               "english": "Go to school! Goodbye, Nils.",
               "speaker": "marta"
@@ -224,8 +239,8 @@
               "english": "Nils goes to school. Lars is at school too."
             },
             {
-              "text": "Lars er læreren til Nils. Han er glad i dag.",
-              "english": "Lars is Nils's teacher. He is happy today."
+              "text": "Lars er læreren til Nils. Læreren er glad i dag.",
+              "english": "Lars is Nils's teacher. The teacher is happy today."
             }
           ]
         }
@@ -242,8 +257,8 @@
               "speaker": "ana"
             },
             {
-              "text": "Det er lite, men jeg har ei seng og et vindu.",
-              "english": "It is small, but I have a bed and a window.",
+              "text": "Det er lite, men jeg har et vindu.",
+              "english": "It is small, but I have a window.",
               "speaker": "sam"
             }
           ]

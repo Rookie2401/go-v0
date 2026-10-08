@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-04",
+  "lang": "nb",
+  "title": "The first day",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-04",
+    "title": "The first day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Sam's first day in the bookshop. Past tense narration with the perfect in the closing conversation. Silje and Erik are invented colleagues. A Norwegian reviewer should check how natural the workplace talk sounds."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "work",
+    "colleagues",
+    "customers",
+    "mistakes",
+    "past tense"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "silje": "Silje",
+    "erik": "Erik",
+    "sjef": "Sjefen",
+    "sam": "Sam",
+    "ana": "Anna",
+    "luis": "Lars"
+  },
+  "sections": [
+    {
+      "title": "Møte med kollegaene",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På mandag kom Sam til bokhandelen klokka ni. Han var nervøs, men han hadde bestemt seg for å være ærlig.",
+              "english": "On Monday Sam came to the bookshop at nine o'clock. He was nervous, but he had decided to be honest."
+            },
+            {
+              "text": "Sjefen hilste på ham. «Velkommen,» sa han. «Nå skal du treffe kollegaene dine.»",
+              "english": "The manager greeted him. \"Welcome,\" he said. \"Now you will meet your colleagues.\""
+            },
+            {
+              "text": "De to kollegaene het Silje og Erik. Silje var ung, og Erik hadde jobbet i bokhandelen i tjue år.",
+              "english": "The two colleagues were called Silje and Erik. Silje was young, and Erik had worked in the bookshop for twenty years."
+            },
+            {
+              "text": "Hei, Sam! Vi har hørt mye om deg.",
+              "english": "Hi, Sam! We have heard a lot about you.",
+              "speaker": "silje"
+            },
+            {
+              "text": "Hvis du har spørsmål, kan du spørre meg. Jeg kan nesten alt om denne butikken.",
+              "english": "If you have questions, you can ask me. I know almost everything about this shop.",
+              "speaker": "erik"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kassene",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sjefen viste Sam et rom i butikken. Der var det mange kasser med nye bøker.",
+              "english": "The manager showed Sam a room in the shop. There were many boxes of new books there."
+            },
+            {
+              "text": "Du skal åpne kassene og legge bøkene på hyllene. Silje viser deg hvordan.",
+              "english": "You are to open the boxes and put the books on the shelves. Silje will show you how.",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Vi legger bøkene etter navn. A kommer først, og Å kommer til slutt.",
+              "english": "We put the books by name. A comes first, and Å comes last.",
+              "speaker": "silje"
+            },
+            {
+              "text": "Sam åpnet den første kassen. Han tok bøkene, leste navnene og gikk til hyllene.",
+              "english": "Sam opened the first box. He took the books, read the names and went to the shelves."
+            },
+            {
+              "text": "Han jobbet rolig, og etter en time hadde han åpnet fire kasser. Alle bøkene lå på riktig hylle.",
+              "english": "He worked calmly, and after an hour he had opened four boxes. All the books lay on the right shelf."
+            },
+            {
+              "text": "Men så gjorde han en feil. Han la en bok om fjell på en hylle der den ikke hørte hjemme. Ingen så det før en dame kom inn og spurte etter den.",
+              "english": "But then he made a mistake. He put a book about mountains on a shelf where it did not belong. Nobody saw it until a lady came in and asked for it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En feil",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg har ikke sett den, men jeg skal finne den.",
+              "english": "I have not seen it, but I will find it.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Sam husket rådet fra intervjuet og spurte Silje. Hun fant boka på feil hylle.",
+              "english": "Sam remembered the advice from the interview and asked Silje. She found the book on the wrong shelf."
+            },
+            {
+              "text": "Her er den, Sam. Den lå på feil hylle. Vær rolig, det går bra.",
+              "english": "Here it is, Sam. It was on the wrong shelf. Be calm, it is all right.",
+              "speaker": "silje"
+            },
+            {
+              "text": "Unnskyld. Jeg har gjort en feil.",
+              "english": "I am sorry. I have made a mistake.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er ikke vanskelig å gjøre feil. Alle gjør feil den første dagen. Jeg gjorde mange feil, og jeg lærte av dem.",
+              "english": "It is not difficult to make mistakes. Everyone makes mistakes on the first day. I made many mistakes, and I learned from them.",
+              "speaker": "erik"
+            },
+            {
+              "text": "Sam var glad for at de var snille. Han tenkte at det var godt å jobbe med kollegaer som var rolige.",
+              "english": "Sam was glad that they were kind. He thought that it was good to work with colleagues who were calm."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lunsj",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Klokka tolv hadde de pause, og de spiste lunsj sammen. Lunsjen var liten, men pausen var hyggelig.",
+              "english": "At twelve o'clock they had a break, and they ate lunch together. The lunch was small, but the break was pleasant."
+            },
+            {
+              "text": "Hvorfor kom du til Norge, Sam?",
+              "english": "Why did you come to Norway, Sam?",
+              "speaker": "erik"
+            },
+            {
+              "text": "Jeg ville lære norsk og treffe nye folk. Og jeg ville se fjellene og fjordene.",
+              "english": "I wanted to learn Norwegian and meet new people. And I wanted to see the mountains and the fjords.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Og nå selger du bøker på norsk!",
+              "english": "And now you are selling books in Norwegian!",
+              "speaker": "silje"
+            },
+            {
+              "text": "Ennå har jeg ikke solgt noen. Men jeg har hjulpet en dame, og jeg har lært navnene på alle bøkene på hylla.",
+              "english": "I have not sold any yet. But I have helped a lady, and I have learned the names of all the books on the shelf.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Etter lunsjen viste Erik ham hva han skulle gjøre med kassene som var igjen. Sam jobbet til klokka fem.",
+              "english": "After lunch Erik showed him what he should do with the boxes that were left. Sam worked until five o'clock."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemme igjen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da Sam kom hjem, satt Anna og Lars i stua. De ville høre alt.",
+              "english": "When Sam came home, Anna and Lars were sitting in the living room. They wanted to hear everything."
+            },
+            {
+              "text": "Hvordan gikk den første dagen? Var du nervøs?",
+              "english": "How did the first day go? Were you nervous?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Ja, først. Men kollegaene er snille. I pausen spiste vi lunsj sammen. Jeg har åpnet mange kasser, jeg har lært hva de heter, og jeg har gjort en feil.",
+              "english": "Yes, at first. But the colleagues are kind. In the break we ate lunch together. I have opened many boxes, I have learned what they are called, and I have made a mistake.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er bra. Den som gjør feil, lærer.",
+              "english": "That is good. Whoever makes mistakes, learns.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Sam tenkte på det sjefen hadde sagt på intervjuet. Nå visste han at det var riktig. Han var trøtt, men han var glad.",
+              "english": "Sam thought about what the manager had said at the interview. Now he knew that it was right. He was tired, but he was happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mens Sam gikk hjem, tenkte han på skogen og på strømmen i elva. Silje, som var ung, forberedte en tur til fjellet annenhver helg.",
+              "english": "While Sam walked home, he thought of the forest and of the current in the river. Silje, who was young, was preparing a trip to the mountains every other weekend."
+            },
+            {
+              "text": "Etter arbeidet øvde Sam seg på å lese høyt. Han tenkte på søknaden og på alle folk som kom inn i butikken.",
+              "english": "After work Sam practised reading aloud. He thought of the application and of all the people who came into the shop."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-18",
+  "lang": "nb",
+  "title": "The electricity price",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-18",
+    "title": "The electricity price (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A short newspaper article about the price of electricity in winter, followed by Sam's own experience and tips from the neighbours. Passive in -s (det brukes), comparison (dyrere, mer, mindre), and tips in the imperative. The claims are general and unchecked; a Norwegian reviewer must check them. No real company or party is named."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "news",
+    "electricity",
+    "winter",
+    "saving",
+    "comparison",
+    "passive",
+    "tips"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "news"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "solveig": "Solveig",
+    "mons": "Mons",
+    "sofie": "Sofie",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "I avisen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Strøm blir dyrere",
+              "english": "Electricity is getting more expensive"
+            },
+            {
+              "text": "I vinter var det kaldt i hele landet. Da brukes det mye strøm, og prisen øker. Mange fikk en regning som var mye høyere enn året før, og mange sier at prisen har økt for mye.",
+              "english": "This winter it was cold in the whole country. Then a lot of electricity is used, and the price rises. Many got a bill that was much higher than the year before, and many say that the price has risen too much."
+            },
+            {
+              "text": "Folk må tenke på hva de bruker. Egentlig er det ikke vanskelig å spare, men mange vet ikke hvor de skal begynne. Her er noen tips:",
+              "english": "People must think about what they use. Actually it is not difficult to save, but many do not know where to begin. Here are some tips:"
+            },
+            {
+              "text": "Slå av lyset når du går ut av rommet. Du bør ikke bruke ovnen når du er borte. Du kan bruke mindre varmt vann.",
+              "english": "Switch off the light when you leave the room. You should not use the heater when you are away. You can use less hot water."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Den uka var det veldig kaldt ute, og leiligheten til Sam var kald. Ovnen var gammel, og den tok mye strøm.",
+              "english": "That week it was very cold outside, and Sam's flat was cold. The heater was old, and it took a lot of electricity."
+            },
+            {
+              "text": "Da regningen kom, ble Sam redd. Den var mye større enn han hadde regnet med. Han satt lenge og så på den.",
+              "english": "When the bill came, Sam became afraid. It was much bigger than he had counted on. He sat for a long time looking at it."
+            },
+            {
+              "text": "Egentlig trodde jeg at strøm var billig. Prisen er for høy for meg. Hva skal jeg gjøre?",
+              "english": "Actually I thought that electricity was cheap. The price is too high for me. What shall I do?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Han gikk til Solveig, som alltid hadde et godt tips.",
+              "english": "He went to Solveig, who always had a good tip."
+            },
+            {
+              "text": "Slå av lyset når du ikke er i rommet, og ikke la ovnen være på når du er borte. Det sparer mye. Jeg har også en varm jakke i huset.",
+              "english": "Switch off the light when you are not in the room, and do not leave the heater on when you are away. That saves a lot. I also have a warm jacket in the house.",
+              "speaker": "solveig"
+            },
+            {
+              "text": "Er du sikker på at det hjelper?",
+              "english": "Are you sure that it helps?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, jeg er ganske sikker. Og i huset kan vi spare sammen. Prisen kan øke igjen, så vi må tenke på det. Jeg skal snakke med Mons om et møte.",
+              "english": "Yes, I am quite sure. And in the house we can save together. The price may rise again, so we must think about it. I will talk to Mons about a meeting.",
+              "speaker": "solveig"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Møtet i huset",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På torsdag var det møte i huset igjen, og denne gangen kom alle. Mons hadde skrevet en lapp som alle hadde fått.",
+              "english": "On Thursday there was a meeting in the house again, and this time everyone came. Mons had written a note that everyone had got."
+            },
+            {
+              "text": "Lyset i trappen brukes hele natten. Jeg er sikker på at det koster mye. Egentlig trenger vi ikke lyset hele natten. Hvis vi slår det av klokka elleve, sparer huset mye penger.",
+              "english": "The light in the stairwell is used all night. I am sure that it costs a lot. Actually we do not need the light all night. If we switch it off at eleven, the house saves a lot of money.",
+              "speaker": "mons"
+            },
+            {
+              "text": "Men barna er redde når det er mørkt. Kan vi ha et lite lys på, som bruker mindre strøm?",
+              "english": "But the children are afraid when it is dark. Can we have a little light on that uses less electricity?",
+              "speaker": "sofie"
+            },
+            {
+              "text": "Det er et godt tips. Vi kjøper et lite lys, og de store lysene skal være av.",
+              "english": "That is a good tip. We buy a little light, and the big lights are to be off.",
+              "speaker": "mons"
+            },
+            {
+              "text": "Alle var enige. Det var første gang på mange måneder at møtet tok mindre enn en time.",
+              "english": "Everyone agreed. It was the first time in many months that the meeting took less than an hour."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag fortalte Sam Marta om regningen. Hun lyttet og lo litt.",
+              "english": "On Sunday Sam told Marta about the bill. She listened and laughed a little."
+            },
+            {
+              "text": "Da jeg var liten, brukte vi ikke mye strøm, og vi var likevel glade. Vi hadde en peis, og hele familien satt ved den.",
+              "english": "When I was small, we did not use much electricity, and we were happy all the same. We had a fireplace, and the whole family sat by it.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Kanskje jeg også kan sitte ved peisen en kveld?",
+              "english": "Maybe I too can sit by the fireplace one evening?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kan komme til oss hver søndag. Her er det varmt, og her er det mat.",
+              "english": "You can come to us every Sunday. Here it is warm, and here there is food.",
+              "speaker": "marta"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Resultatet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Måneden etter kom en ny regning. Sam åpnet den, og den var mindre enn før. Han brukte ovnen mindre og lyset mindre.",
+              "english": "The month after, a new bill came. Sam opened it, and it was smaller than before. He used the heater less and the light less."
+            },
+            {
+              "text": "Han skrev en liste med tips og la den på bordet. Så takket han Gud for naboene som hjalp ham å spare.",
+              "english": "He wrote a list of tips and put it on the table. Then he thanked God for the neighbours who helped him save."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gruppen i kirka samlet penger til dem som hadde høye regninger. Basaren hadde gitt mye, og premien på basaren hadde vært en gave til en familie. På julaften hadde de spist grøt ved lys, og nå satt Sam og leste en engelsk avis om strøm. Han ba for dem som ikke var friske om vinteren.",
+              "english": "The group at the church collected money for those who had high bills. The bazaar had given a lot, and the prize at the bazaar had been a present for a family. On Christmas Eve they had eaten porridge by candlelight, and now Sam sat and read an English newspaper about electricity. He prayed for those who were not well in winter."
+            },
+            {
+              "text": "Lederen i gruppen hadde sendt en melding om at loddene fra basaren hadde gitt penger, og at treet ved kirka kunne få lys likevel.",
+              "english": "The leader of the group had sent a message that the raffle tickets from the bazaar had given money, and that the tree by the church could get lights all the same."
+            },
+            {
+              "text": "Julen hadde allerede vært, men tradisjonen med mandelen var ikke glemt.",
+              "english": "Christmas had already been, but the tradition with the almond was not forgotten."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+=== de-a1-1-12
+speakers: ben=Ben, marta=Marta, anna=Anna, lukas=Lukas, schmidt=Herr Schmidt
+## Am Morgen
+Es ist halb acht. || It is half past seven.
+Ben ist im Bett. || Ben is in bed.
+[marta] Ben, steh auf! || Ben, get up!
+[marta] Die Klasse fängt um acht Uhr an. || Class starts at eight o'clock.
+[ben] Oma, ich bin krank. || Grandma, I am ill.
+[marta] Du bist krank? || You are ill?
+[marta] Wo tut es weh? || Where does it hurt?
+[ben] Der Kopf tut weh. || My head hurts.
+[marta] Und der Bauch? || And your stomach?
+[ben] Der Bauch auch, und der Hals auch. || My stomach too, and my throat too.
+Marta sagt: "Ben, du hast Fieber." || Marta says: "Ben, you have a fever."
+[marta] Leg dich ins Bett! || Lie down in bed!
+Ben möchte sich nicht legen. || Ben does not want to lie down.
+Er legt sich ins Bett. || He lies down in bed.
+[ben] Mir ist kalt, Oma. || I am cold, Grandma.
+[marta] Das Wetter ist kalt. || The weather is cold.
+[marta] Du bleibst im Bett. || You are staying in bed.
+[marta] Du darfst heute nicht in die Schule. || You may not go to school today.
+[ben] Aber ich bin ein guter Schüler! || But I am a good pupil!
+[marta] Ja, aber du hast Fieber. || Yes, but you have a fever.
+[ben] Ich lerne gern, ich möchte in die Schule! || I like learning, I want to go to school!
+[marta] Ben braucht heute das Bett. || Ben needs his bed today.
+
+## Anna kommt
+Marta geht zu Anna. || Marta goes to Anna.
+Anna ist Krankenschwester. || Anna is a nurse.
+Anna kommt in einer Stunde zu Ben. || Anna comes to Ben in an hour.
+[marta] Krankenschwester ist ein guter Beruf. || Nurse is a good job.
+[anna] Hallo, Ben! || Hello, Ben!
+[anna] Wie geht es dir? || How are you?
+[ben] Ja, mir tut alles weh. || Yes, everything hurts.
+[anna] Du brauchst eine Tablette und Wasser. || You need a tablet and water.
+[anna] Nimm sie mit Wasser. || Take it with water.
+[ben] Ich möchte keine Tablette. || I do not want a tablet.
+[anna] Die Tablette ist gut für den Kopf und für den Bauch. || The tablet is good for the head and for the stomach.
+[anna] Du brauchst auch Tee. || You need tea too.
+[anna] Das ist gut für den Hals. || That is good for the throat.
+[anna] Ben ist krank, aber nicht sehr. || Ben is ill, but not very.
+[anna] Du hast Fieber. || You have a fever.
+[anna] Dann ist alles gut. || Then everything is fine.
+[ben] Ich möchte gesund sein! || I want to be well!
+[anna] Du bleibst im Bett, dann bist du in einer Woche gesund. || You stay in bed, then you will be well in a week.
+[ben] Eine Woche? || A week?
+[ben] Das ist viel! || That is a lot!
+
+## Besuch
+Lukas kommt nach der Schule. || Lukas comes after school.
+Er ist Lehrer. || He is a teacher.
+[lukas] Hallo, Ben! In der Pause sagen alle Schüler: "Wo ist Ben?" || Hello, Ben! In the break all the pupils say: "Where is Ben?"
+Herr Schmidt kommt auch, mit Brötchen und Kuchen. || Herr Schmidt comes too, with rolls and cake.
+[schmidt] Guten Tag, Ben! || Good day, Ben!
+[schmidt] Ich bin Bäcker, und ich habe Kuchen. || I am a baker, and I have cake.
+[schmidt] Als Chef darf ich Brötchen für Ben machen. || As the boss I may make rolls for Ben.
+Pastor Thomas kommt auch und betet für Ben. || Pastor Thomas comes too and prays for Ben.
+[marta] Ich kaufe Äpfel für Ben, ein Kilo. || I am buying apples for Ben, a kilo.
+[marta] Der Preis ist gut. || The price is good.
+[marta] Und Tomaten für die Suppe. || And tomatoes for the soup.
+Anna und Marta kochen zusammen Suppe. || Anna and Marta cook soup together.
+
+## Am Abend
+Es ist Abend. || It is evening.
+Ben hat kein Fieber. || Ben has no fever.
+Der Kopf ist gut. || His head is fine.
+Ben isst Suppe. || Ben eats soup.
+Sie ist lecker. || It is tasty.
+[ben] Oma, ich bin gesund! || Grandma, I am well!
+[marta] Nein, Ben, du brauchst Tee und das Bett. || No, Ben, you need tea and your bed.
+[marta] Der Tee ist gut für den Hals. || The tea is good for the throat.
+[ben] Dann stehe ich nicht auf. || Then I will not get up.
+[marta] Gut. || Good.
+[marta] Mama und Papa kommen am Abend. || Mama and Papa are coming in the evening.
+Ben legt sich ins Bett, und er ist müde. || Ben lies down in bed, and he is tired.
+

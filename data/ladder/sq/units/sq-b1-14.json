@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-14",
+  "lang": "sq",
+  "title": "Një mëngjes në Korçë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-14",
+    "title": "Albanian ladder, b1-bridge: Një mëngjes në Korçë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "description"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "description"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një mëngjes në Korçë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në mëngjes Samin e zgjoi zëri i një shitësi që fliste me zë të lartë nën dritare.",
+              "english": "On Saturday morning Sam was woken by the voice of a seller speaking loudly under the window."
+            },
+            {
+              "text": "Ai u ngrit, e hapi dritaren dhe mbeti pa fjalë.",
+              "english": "He got up, opened the window and was left speechless."
+            },
+            {
+              "text": "Korça ishte me shumë dritë, dhe në fund të rrugës, mbi çatitë e kuqe, ngrihej mali.",
+              "english": "Korça was with much light, and at the end of the street, above the red roofs, the mountain rose."
+            },
+            {
+              "text": "Ajri ishte i ftohtë dhe i pastër, me erë molle.",
+              "english": "The air was cold and clean, with a smell of apples."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Motra e Mirës e priti në kuzhinë me kafe dhe me një pjatë me byrek të ngrohtë.",
+              "english": "Mira's sister received him in the kitchen with coffee and a plate of warm byrek."
+            },
+            {
+              "text": "Quhej Teuta, dhe kishte po ato sy të mirë si Mira.",
+              "english": "She was called Teuta, and had the same kind eyes as Mira."
+            },
+            {
+              "text": "— Është hera e parë që vjen në Korçë? — e pyeti.",
+              "english": "\"Is it the first time you have come to Korça?\" she asked him."
+            },
+            {
+              "text": "— Po, — tha Sami.",
+              "english": "\"Yes,\" said Sam."
+            },
+            {
+              "text": "— Dritani më tha se këtu është një nga qytetet më të bukura të vendit.",
+              "english": "\"Dritan told me that this is one of the most beautiful cities of the country.\""
+            },
+            {
+              "text": "— Dritani është i dashur, por ka pak të drejtë, — qeshi Teuta.",
+              "english": "\"Dritan is kind, but he is only a little right,\" laughed Teuta."
+            },
+            {
+              "text": "— Korça nuk është një nga qytetet më të bukura.",
+              "english": "\"Korça is not one of the most beautiful cities.\""
+            },
+            {
+              "text": "— Është më e bukura. Por nuk po e them unë, e thonë të gjithë banorët e saj.",
+              "english": "\"It is the most beautiful. But I am not saying it, all its inhabitants say it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas mëngjesit ata dolën në rrugë të gjithë bashkë.",
+              "english": "After breakfast they all went out into the street together."
+            },
+            {
+              "text": "Qyteti shtrihej në një fushë të gjerë mes maleve, dhe rrugët e tij ishin të drejta, me pemë të larta në të dy krahët.",
+              "english": "The city lay in a wide plain among the mountains, and its streets were straight, with tall trees on both sides."
+            },
+            {
+              "text": "Shtëpitë e vjetra kishin ballkone të vjetra dhe porta me ngjyra, dhe shumë prej tyre kishin një oborr të vogël me lule.",
+              "english": "The old houses had old balconies and coloured gates, and many of them had a small yard with flowers."
+            },
+            {
+              "text": "— Në mbrëmje, dikur, djemtë këndonin nën dritaret e vajzave, — tregoi Teuta.",
+              "english": "'In the evening, once, the boys used to sing under the girls' windows,' Teuta told them."
+            },
+            {
+              "text": "— Sot këtë e bëjnë më pak, por muzika është ende e dashur këtu.",
+              "english": "\"Today they do this less, but music is still loved here.\""
+            },
+            {
+              "text": "— Edhe unë mund të këndoj nën dritaren e një vajze, — tha Gjergji me një buzëqeshje.",
+              "english": "\"I can sing under a girl's window too,\" said Gjergj with a smile."
+            },
+            {
+              "text": "— Por do të më dëgjojë vetëm Ardi.",
+              "english": "\"But only Ardi will hear me.\""
+            },
+            {
+              "text": "— Dhe Bardhi, nëse e sjell, — tha Ardi.",
+              "english": "\"And Bardhi, if you bring him,\" said Ardi."
+            },
+            {
+              "text": "Të gjithë qeshën, edhe pse Bardhi ishte shumë larg, në një lagje tjetër të Tiranës.",
+              "english": "They all laughed, although Bardhi was very far away, in another neighbourhood of Tirana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ata hynë në tregun e vjetër, ku rrugët ishin të ngushta dhe me gurë të vegjël.",
+              "english": "They entered the old bazaar, where the streets were narrow and had small stones."
+            },
+            {
+              "text": "Dyqanet ishin të vogla, me tavolina para derës, dhe shitësit i pastronin tavolinat çdo mëngjes.",
+              "english": "The shops were small, with tables in front of the door, and the sellers cleaned their tables every morning."
+            },
+            {
+              "text": "Një plak shiste mjaltë dhe çaj mali, një tjetër libra të vjetër, një grua çorape të ngrohta për dimër.",
+              "english": "One old man sold honey and mountain tea, another old books, a woman warm socks for winter."
+            },
+            {
+              "text": "Elira pushoi para një dritareje të vogël, ku kishte një kukull.",
+              "english": "Elira stopped in front of a small window where there was a doll."
+            },
+            {
+              "text": "Mira e pa dhe nuk tha asgjë, por më vonë, kur Elira nuk e shihte, e bleu.",
+              "english": "Mira saw it and said nothing, but later, when Elira was not looking, she bought it."
+            },
+            {
+              "text": "— Mos ia thuaj, — i pëshpëriti ajo Anës.",
+              "english": "\"Do not tell her,\" she whispered to Ana."
+            },
+            {
+              "text": "— Do ta marrë për ditëlindje.",
+              "english": "\"She will get it for her birthday.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mesditë Teuta i çoi në një shkollë të vjetër në qendër të qytetit.",
+              "english": "At midday Teuta took them to an old school in the centre of the city."
+            },
+            {
+              "text": "Aty, tha ajo, shumë vite më parë njerëzit kishin filluar të mësonin shqip në shkollë, kur nuk kishin shumë të drejta.",
+              "english": "There, she said, many years earlier people had begun to learn Albanian at school, when they did not have many rights."
+            },
+            {
+              "text": "Sami e shikoi dërrasën e zezë, bankat e vogla dhe dritaret e larta, dhe e kujtoi klubin e tij të vogël.",
+              "english": "Sam looked at the blackboard, the small desks and the tall windows, and recalled his little club."
+            },
+            {
+              "text": "Përpara shkollës kishte një lëndinë të gjelbër, dhe Sami e kujtoi fjalën që e kishte mësuar në udhëtim.",
+              "english": "In front of the school there was a green lawn, and Sam recalled the word he had learned on the journey."
+            },
+            {
+              "text": "Në Tiranë ai nuk kishte parë asnjë lëndinë të tillë.",
+              "english": "In Tirana he had not seen any lawn like it."
+            },
+            {
+              "text": "Luani do ta kishte dashur këtë vend, mendoi ai.",
+              "english": "Luan would have loved this place, he thought."
+            },
+            {
+              "text": "Ai e mori telefonin dhe bëri disa fotografi për të.",
+              "english": "He took his phone and took a few photographs for him."
+            },
+            {
+              "text": "— Çdo mësues duhet ta shohë një herë këtë shkollë, — tha Teuta.",
+              "english": "\"Every teacher should see this school once,\" said Teuta."
+            },
+            {
+              "text": "— Sepse këtu e kupton se një gjuhë nuk mësohet vetëm me fjalë, por me guxim.",
+              "english": "\"Because here you understand that a language is not learned only with words, but with courage.\""
+            },
+            {
+              "text": "Sami e shkroi në fletore: «Guxim.»",
+              "english": "Sam wrote in his notebook: \"Courage.\""
+            },
+            {
+              "text": "Pastaj e shkroi me shkronja të mëdha, siç bënte me çdo fjalë që dëshironte ta mbante në mendje.",
+              "english": "Then he wrote it in big letters, as he did with every word he wanted to keep in mind."
+            },
+            {
+              "text": "Guximi, mendoi ai, ndoshta është fjala që i duhet çdo gjuhe.",
+              "english": "Courage, he thought, is perhaps the word that every language needs."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Mundem të them diçka? — pyeti Sami.",
+              "english": "\"Can I tell you something?\" Sami asked."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-22",
+  "lang": "nb",
+  "title": "On board the coastal ship",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-22",
+    "title": "On board the coastal ship (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". The first part of the journey north on the coastal express ship, from Bergen to Trondheim. Descriptive past tense, passive (ble bygget), comparisons and relative clauses. Anna's parents (Ingrid and Olav) were named in an early unit; their meeting is invented. The ship and the route are described only in general terms; a Norwegian reviewer should check the details."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "travel",
+    "ship",
+    "coast",
+    "Trondheim",
+    "passive",
+    "past tense",
+    "description"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Nils",
+    "luis": "Lars",
+    "ana": "Anna",
+    "sam": "Sam",
+    "kaptein": "Kapteinen",
+    "ingrid": "Ingrid",
+    "olav": "Olav"
+  },
+  "sections": [
+    {
+      "title": "Om bord",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En dag om sommeren skulle de reise til nord. Anna, Lars, Nils og Sam var ved havna i Bergen, og der lå et stort skip. Det var mange som skulle være med.",
+              "english": "One day in the summer they were going to travel north. Anna, Lars, Nils and Sam were at the harbour in Bergen, and there lay a big ship. There were many who were going to be on it."
+            },
+            {
+              "text": "Er det her vi skal bo? Det er som et hus!",
+              "english": "Is it here we are going to live? It is like a house!",
+              "speaker": "nico"
+            },
+            {
+              "text": "I noen dager er det huset vårt. Skipet går langs kysten til nord, og langs kysten er det mange havner. Vi er med noen dager.",
+              "english": "For some days it is our house. The ship goes along the coast to the north, and along the coast there are many harbours. We are on it for some days.",
+              "speaker": "luis"
+            },
+            {
+              "text": "De fikk to lugarer. Lugaren til Sam og Nils var liten, men den hadde et lite vindu, og fra senga kunne Nils se vann og fjell.",
+              "english": "They got two cabins. The cabin for Sam and Nils was small, but it had a little window, and from the bed Nils could see water and mountains."
+            },
+            {
+              "text": "Jeg skal sove i lugaren hver natt! Jeg skal aldri sove hjemme igjen!",
+              "english": "I am going to sleep in the cabin every night! I am never going to sleep at home again!",
+              "speaker": "nico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "På dekk",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden gikk skipet ut fra havna. Alle var på dekk for å se. Byen ble mindre og mindre, og lysene lå som små stjerner rundt fjorden.",
+              "english": "In the evening the ship left the harbour. Everyone was on deck to watch. The town got smaller and smaller, and the lights lay like little stars around the fjord."
+            },
+            {
+              "text": "Sam var lenge på dekk. Han tenkte på dagen da han kom til Bergen, trøtt og litt redd, med ei veske og en nøkkel til et rom han aldri hadde sett. Det var to år før. Nå var han her med venner.",
+              "english": "Sam was on deck for a long time. He thought of the day when he came to Bergen, tired and a little afraid, with a bag and a key to a room he had never seen. That was two years before. Now he was here with friends."
+            },
+            {
+              "text": "Hva tenker du på, Sam?",
+              "english": "What are you thinking about, Sam?",
+              "speaker": "ana"
+            },
+            {
+              "text": "På hvor langt jeg har kommet. Ikke bare langs kysten.",
+              "english": "About how far I have come. Not only along the coast.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vinden ble kaldere, og bølgene var store. Bølgene var høye. Mange satt rundt dem og snakket, men Sam var ute i vinden. De gikk fra dekk og drakk kakao i lugaren til Lars og Anna.",
+              "english": "The wind got colder, and the waves were big. The waves were high. Many sat around them and talked, but Sam was out in the wind. They left the deck and drank cocoa in Lars and Anna's cabin."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kapteinen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Neste morgen ville kapteinen snakke med alle som var om bord. Kapteinen var en gammel mann med en stor stemme. De satt rundt et bord og lyttet.",
+              "english": "The next morning the captain wanted to talk to everyone who was on board. The captain was an old man with a big voice. They sat around a table and listened."
+            },
+            {
+              "text": "Skipet ble bygget da jeg var ung, men det går fortsatt hver dag langs hele kysten. Her i nord er været ofte dårlig, og vinden er kald, men vi er alltid i havn til slutt.",
+              "english": "The ship was built when I was young, but it still goes every day along the whole coast. Here in the north the weather is often bad, and the wind is cold, but we are always in harbour in the end.",
+              "speaker": "kaptein"
+            },
+            {
+              "text": "Er det store bølger her? Har du noen gang vært redd for bølgene, kaptein?",
+              "english": "Are there big waves here? Have you ever been afraid of the waves, captain?",
+              "speaker": "nico"
+            },
+            {
+              "text": "Mange ganger, min venn. Den som ikke er redd for havet, burde ikke være kaptein.",
+              "english": "Many times, my friend. Whoever is not afraid of the sea should not be a captain.",
+              "speaker": "kaptein"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hos Ingrid og Olav",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dagen etter var de i havn i Trondheim. Annas mor og far, Ingrid og Olav, ventet ved skipet.",
+              "english": "The day after they were in harbour in Trondheim. Anna's mother and father, Ingrid and Olav, were waiting by the ship."
+            },
+            {
+              "text": "Så er dere her! Vi har ventet hele dagen. Dette må være Sam, som vi har hørt så mye om.",
+              "english": "So you are here! We have waited the whole day. This must be Sam, whom we have heard so much about.",
+              "speaker": "ingrid"
+            },
+            {
+              "text": "Hyggelig å møte dere. Anna har fortalt mye om Trondheim, og om brødet dere baker.",
+              "english": "Nice to meet you. Anna has told a lot about Trondheim, and about the bread you bake.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Så du er fra USA? Da må du smake brødet vårt.",
+              "english": "So you are from the USA? Then you must taste our bread.",
+              "speaker": "olav"
+            },
+            {
+              "text": "Sam smakte på brødet. Det smakte nesten som brødet til Marta, og han sa det. Olav lo høyt og sa at det var det beste han noen gang hadde hørt om brød.",
+              "english": "Sam tasted the bread. It tasted almost like Marta's bread, and he said so. Olav laughed loudly and said that it was the best thing he had ever heard about bread."
+            },
+            {
+              "text": "De spiste middag sammen, og Sam tenkte at han hadde reist langt for å finne en ny familie. Om kvelden gikk de tilbake til skipet, og det gikk mot nord.",
+              "english": "They ate dinner together, and Sam thought that he had travelled far to find a new family. In the evening they went back to the ship, and it went towards the north."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mens skipet gikk til nord, tenkte Sam på året som hadde gått. Han tenkte på basaren, som Emma hadde organisert, og på premien, en stor kake. Han tenkte på jula og på tåken i fjellet, der han hadde vært så redd, og på påsken og den tomme graven. Egentlig hadde han ikke vært ensom på lenge, og han hadde forandret seg mye. Enten ville han sove, eller han ville se på kysten, og til slutt så han på kysten.",
+              "english": "While the ship went north, Sam thought of the year that had passed. He thought of the bazaar, which Emma had organised, and of the prize, a big cake. He thought of Christmas and of the fog in the mountains, where he had been so afraid, and of Easter and the empty grave. Actually he had not been lonely for a long time, and he had changed a lot. Either he would sleep, or he would look at the coast, and in the end he looked at the coast."
+            },
+            {
+              "text": "Han hadde skrevet plakater om basaren, og han hadde fått tips om strøm av naboene. Han husket korset i kirka, og han tenkte at han hadde vokst.",
+              "english": "He had written posters about the bazaar, and he had got tips about electricity from the neighbours. He remembered the cross in the church, and he thought that he had grown."
+            },
+            {
+              "text": "Han gikk forsiktig på dekk, for dekket var vått.",
+              "english": "He walked carefully on deck, because the deck was wet."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

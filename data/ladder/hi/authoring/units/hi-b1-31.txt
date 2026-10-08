@@ -1,0 +1,46 @@
+id: hi-b1-31
+title: सैम की डायरी
+domain: biography
+topics: diary, memories, year, friends
+notes: Last controlled unit of the b1 bridge. Sam looks back, in his diary, on the months of the bridge. The unit teaches no new word; it brings back, in plain sentences and as ordinary words, the vocabulary of the earlier controlled units of the bridge that the gate needs to see again (the carpenter's shop, the guava tree, the parrot, the Bible class on the roof, the cleaning day, the clean-up of the lane, the story hour, the annual day, the baby, the night prayer, the mountain night, the experiment). Machine-drafted; a Hindi reviewer should check the diary register.
+---
+## पन्ना एक
+आज शाम मैंने अपनी पुरानी डायरी खोली, और पिछले महीनों की सारी बातें मुझे फिर याद आईं। || This evening I opened my old diary, and all the things of the past months came back to me.
+पहले मैं सिर्फ़ गिनता था कि मुझे कितने नए शब्द आते हैं, पर अब मैं गिनता हूँ कि मैंने कितने नए दोस्त बनाए। || Earlier I only counted how many new words I knew, but now I count how many new friends I have made.
+चाचा जी की दुकान सबसे पहले याद आई, जहाँ अमन ने हथौड़ी से कील ठोकी और आरी की आवाज़ से मोती भी डर गया था। || Chacha ji's shop came to mind first, where Aman drove a nail with a hammer and even Moti was frightened by the sound of the saw.
+वहाँ मैंने देखा कि लकड़ी से पहिए बनते हैं, और पहियों से गाड़ी चलती है। || There I saw that wheels are made from wood, and a cart runs on wheels.
+
+## पन्ना दो
+नानी के आँगन का अमरूद का पेड़ भी याद आया, जहाँ गौरैया अपनी चोंच से पानी पीती थी। || The guava tree in Nani's courtyard came to mind too, where the sparrow used to drink water with her beak.
+उस दिन अमरूद कँटीली झाड़ी में गिर गया था, और हमने एक डंडे से उसे निकाला। || That day the guava had fallen into the thorny bush, and we got it out with a stick.
+उसी हफ़्ते शर्मा अंकल का तोता हमारे घर आया था, और वह पिंजड़े में बैठकर बस "ह’लो" कहता था। || The same week Sharma uncle's parrot came to our house, and sitting in the cage he said just "h'llo".
+नानी ने तब कहा था कि हर जीव को खुली हवा चाहिए, और तोते ने भी पंख फैलाकर तेज़ी से उड़ान भरी। || Nani had said then that every living creature needs open air, and the parrot too spread his wings and flew off quickly.
+
+## पन्ना तीन
+गुरुवार की कक्षा में पास्टर अनिल ने छत की बेल दिखाई, और हमने सीखा कि जुड़ी हुई डाली ही फलती है। || In the Thursday class Pastor Anil showed the vine on the roof, and we learnt that only the branch that stays joined bears fruit.
+सूखी डाली को लोग आग में डालते हैं, पर बेल का स्वामी हर डाली की चिंता करता है। || People put a dry branch in the fire, but the owner of the vine cares about every branch.
+सफ़ाई के दिन अमन जासूस बना था, और उसने सोफ़े के कुशन के नीचे से पास्टर अनिल की ऐनक ढूँढ़ निकाली। || On the cleaning day Aman became a detective, and he found Pastor Anil's spectacles from under the cushions of the sofa.
+उस शाम बाथरूम से लेकर पार्क तक सबने ताली बजाई। || That evening from the bathroom to the park everybody clapped.
+
+## पन्ना चार
+हमारी गली की सफ़ाई भी मुझे याद है, जब हमने छिलके, बिस्कुट के लिफ़ाफ़े और प्लास्टिक की थैलियाँ कूड़ेदान में डालीं। || I remember the cleaning of our lane too, when we put the peels, the biscuit wrappers and the plastic bags into the dustbin.
+रीमा आंटी थोड़ी दुखी हुई थीं, पर अब वे अपना कूड़ा ख़ुद कूड़ेदान में डालती हैं, और मक्खियाँ अब गली में नहीं मँडरातीं। || Reema aunty had become a little sad, but now she puts her rubbish into the dustbin herself, and flies no longer hover in the lane.
+स्कूल के कहानी के घंटे में टीचर ने गणित की किताब बंद करवाई थी, और मेयर साहब ने क्रिकेट छोड़कर मेरी कहानी सुनी। || In the story hour at school the teacher had made the maths book be closed, and the mayor left cricket and listened to my story.
+वार्षिकोत्सव में प्रिंसिपल मैडम ने अपने सहपाठियों की तरह हमें भी पिकनिक में बुलाया था। || At the annual festival the principal madam invited us to the picnic as if we were classmates.
+
+## पन्ना पाँच
+गीता मौसी की बिटिया को गोदी में लेकर मैंने समझा कि नन्हे बच्चों को सँभालना कितना मुश्किल है। || Taking Geeta mausi's baby in my lap I understood how difficult it is to look after tiny children.
+रात की प्रार्थना में आकाश, सूर्य की किरण, पृथ्वी और सृष्टि के बारे में पास्टर अनिल की बातें मैं नहीं भूलूँगा। || In the night prayer I will not forget Pastor Anil's words about the sky, the ray of the sun, the earth and creation.
+पहाड़ की उस रात देवदार के नीचे बर्फ़ थी, और गुफ़ा की ओर देखकर हमने बेचारे भालू के बारे में सोचा। || On that mountain night there was snow under the deodar, and looking towards the cave we thought of the poor bear.
+रवि सर के प्रयोग में टॉर्च की रोशनी अणुओं से बिखरी, और हमें समझ आया कि आकाश नीला क्यों है। || In Ravi sir's experiment the torch's light was scattered by molecules, and we understood why the sky is blue.
+
+## पन्ना छह
+रवि सर ने हमें भारतेंदु की "अंधेर नगरी" की कहानी भी सुनाई, जहाँ भाजी भी एक टके सेर थी और खाजा भी। || Ravi sir also told us the story of Bharatendu's "Andher Nagari", where vegetables were one taka a ser and khaja too.
+महंत ने अपने चेले से कहा था कि ऐसी जगह रुकना ठीक नहीं, पर चेला दरबार और कोतवाल की बातें सुनकर भी हँसता रहा। || The mahant had told his disciple that it is not right to stay in such a place, but the disciple went on laughing even after hearing of the court and the kotwal.
+फाँसी की बात सुनकर अमन ने कहा था, "ऐसा न्याय तो अंधेर ही है!" || Hearing of the gallows Aman had said, "Such justice is darkness indeed!"
+मुझे लगता है कि हर महंत को अपने चेलों की उतनी ही चिंता करनी चाहिए, जितनी पास्टर अनिल हमारी करते हैं। || It seems to me that every mahant should care for his disciples as much as Pastor Anil cares for us.
+
+## आख़िर में
+अब मैं लड्डू बनाना भी जानता हूँ, और अपनी हिंदी में छोटी छोटी कहानियाँ भी लिख लेता हूँ। || Now I know how to make laddus too, and I can write small stories in my Hindi too.
+मेरे लिए यह साल सिर्फ़ किताबों का नहीं, लोगों का साल रहा है। || For me this year has not been a year of books only, but a year of people.
+कल से एक नया साल शुरू होगा, और मैं उसे भी इसी तरह, नानी के आँगन में, अपने दोस्तों के साथ शुरू करूँगा। || From tomorrow a new year will begin, and I will begin it too in the same way, in Nani's courtyard, with my friends.

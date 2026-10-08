@@ -1,7 +1,7 @@
 === nb-a1-2-10 | dialogue | conversation | On the phone | På telefonen | phone,message,plans,meeting
 note: "Ring meg" (imperative) and "Jeg skal ringe deg" are both everyday. The message is written as direct speech.
 ## En melding
-{sam} sender en melding til {ana}. || Sam sends a message to Anna.
+{sam} sender en melding til {ana}. Meldingen er fra {sam}. || Sam sends a message to Anna. The message is from Sam.
 «Hei, {ana}! Har du tid i morgen? Jeg vil treffe deg på kafé.» || "Hi, Anna! Do you have time tomorrow? I want to meet you at a café."
 {ana} svarer ikke. Hun er på klinikken. Hun jobber mye. || Anna does not answer. She is at the clinic. She works a lot.
 {sam} ringer til {ana}. || Sam calls Anna.
@@ -9,29 +9,29 @@ note: "Ring meg" (imperative) and "Jeg skal ringe deg" are both everyday. The me
 ## Klokka fem
 [ana] Hallo, {sam}! Jeg har ikke tid nå. Jeg jobber. || Hello, Sam! I do not have time now. I am working.
 [ana] Jeg skal ringe deg klokka fem. || I will call you at five o'clock.
-[sam] Det er bra. Ring meg klokka fem. || That is good. Call me at five.
-Klokka fem ringer telefonen. || At five o'clock the phone rings.
-[ana] Hei, {sam}! Nå har jeg tid. Hva vil du? || Hi, Sam! Now I have time. What do you want?
+[sam] Det er bra. Jeg er hjemme klokka fem. || That is good. I am at home at five.
+Klokka er fem. {sam} tar telefonen. || It is five o'clock. Sam takes the phone.
+[ana] Hei, {sam}! Nå kan jeg snakke. Hva vil du? || Hi, Sam! Now I can talk. What do you want?
 [sam] Jeg vil treffe deg på kafé i morgen. Er det bra? || I want to meet you at a café tomorrow. Is that good?
 [ana] I morgen er det lørdag. Jeg har ikke planer. || Tomorrow is Saturday. I have no plans.
 [sam] Det er bra! Hva er planen din? || That is good! What is your plan?
 [ana] Jeg skal sove tidlig, og så kommer jeg. || I will sleep early, and then I will come.
 [sam] Bra! Klokka ti på kafeen? || Good! At ten at the café?
-[ana] Ja, klokka ti. Vil du svare på en melding fra {luis}? || Yes, at ten. Do you want to answer a message from Lars?
+[ana] Ja, klokka ti. Se, her er en melding fra {luis}. || Yes, at ten. Look, here is a message from Lars.
 [sam] Ja, gjerne. Hva sier meldingen? || Yes, please. What does the message say?
 [ana] {luis} sender: «Kan jeg komme også?» || Lars sends: "Can I come too?"
 [sam] Svar ja! Det er en bra plan. || Answer yes! That is a good plan.
 
 ## På lørdag
 På lørdag treffer {sam} {ana} og {luis} på kafeen. || On Saturday Sam meets Anna and Lars at the café.
-Klokka er ti. De drikker kaffe og te. || It is ten o'clock. They drink coffee and tea.
-[luis] Takk, {sam}! || Thanks, Sam!
+Klokka er ti. De har tid, og de drikker kaffe og te. || It is ten o'clock. They have time, and they drink coffee and tea.
+{luis} svarer: «Takk, {sam}!» || Lars answers: "Thanks, Sam!"
 [sam] Bare hyggelig. || You are welcome.
 [ana] Ja, vi er glade i dag. || Yes, we are happy today.
-{sam} er glad. Han liker kafeen, og han liker {ana} og {luis}. || Sam is happy. He likes the café, and he likes Anna and Lars.
+{sam} er glad. Han liker kafeen, og han liker {ana} og {luis}. Så ringer han til {marta} og sier takk. || Sam is happy. He likes the café, and he likes Anna and Lars. Then he calls Marta and says thank you.
 
 ## Husker du?
-Før turen står {sam} opp tidlig. Natten før sover han lite. Hva gjør han? Han ber. || Before the walk Sam gets up early. The night before he sleeps little. What does he do? He prays.
+Før turen står {sam} opp tidlig. Natten før sover han ikke mye. Hva gjør han? Han ber. || Before the walk Sam gets up early. The night before he does not sleep much. What does he do? He prays.
 
 På veien hjem snakker {sam} om turen. Veien er bra, og fjellet er høyt. || On the way home Sam talks about the walk. The road is good, and the mountain is high.
 

@@ -190,8 +190,8 @@
         {
           "sentences": [
             {
-              "text": "Utsikten fra toget var bra. Etter tunnelen var det lyst igjen. Sam kom tilbake fra Oslo, og han gikk ut på stasjonen.",
-              "english": "The view from the train was good. After the tunnel it was light again. Sam came back from Oslo, and he went out onto the station."
+              "text": "Utsikten fra toget var bra. Etter tunnelen var det lyst igjen. Sam kom tilbake fra Oslo igjen, og han gikk ut på stasjonen. Han skal komme tilbake til Oslo.",
+              "english": "The view from the train was good. After the tunnel it was light again. Sam came back from Oslo again, and he went out onto the station. He will come back to Oslo."
             }
           ]
         },
@@ -206,8 +206,8 @@
         {
           "sentences": [
             {
-              "text": "Folk skriver bokmål eller nynorsk, og ordene er forskjellige. Hvorfor? Det er to måter, og ingen er feil. Dialektene er også forskjellige.",
-              "english": "People write Bokmål or Nynorsk, and the words are different. Why? There are two ways, and neither is wrong. The dialects are also different."
+              "text": "Folk skriver bokmål og nynorsk, og noen skriver begge. Det er to måter, og begge er bra. Dialektene er også forskjellige.",
+              "english": "People write Bokmål and Nynorsk, and some write both. There are two ways, and both are good. The dialects are also different."
             }
           ]
         },
@@ -222,16 +222,16 @@
         {
           "sentences": [
             {
-              "text": "Først bygger de skolen, og så åpner de den. Sam går dit, og der er det plass.",
-              "english": "First they build the school, and then they open it. Sam goes there, and there is room there."
+              "text": "Først bygger de skolen, og så åpner de den. Nyheten er bra. Sam går dit, og der er det plass.",
+              "english": "First they build the school, and then they open it. The news is good. Sam goes there, and there is room there."
             }
           ]
         },
         {
           "sentences": [
             {
-              "text": "Langt fra stasjonen kjøpte Sam billett. En dame gikk ut av toget før ham.",
-              "english": "Far from the station Sam bought a ticket. A woman got off the train before him."
+              "text": "Langt fra stasjonen kjøpte Sam billett. Billetten var ikke dyr. En dame gikk ut av toget før ham. Toget gikk gjennom fjellet.",
+              "english": "Far from the station Sam bought a ticket. The ticket was not expensive. A woman got off the train before him. The train went through the mountain."
             }
           ]
         }

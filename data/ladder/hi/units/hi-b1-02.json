@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-02",
+  "lang": "hi",
+  "title": "चाचा जी की लकड़ी की दुकान",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-02",
+    "title": "\"चाचा जी की लकड़ी की दुकान\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "First controlled unit of the b1 bridge (after the GDL story hi-b1-01). It prepares the words of the GDL book \"सोना सयानी\" (hi-b1-03): लकड़ी, आरी, पहिया, कील, ठोकना, हथौड़ी, पेन्सिल, रील, each used three times or more. It also brings back words of the last units of a2-2 (the church feast, the weekly report, the parable, Sam's testimony) and of the story hi-b1-01 (भूरा, बक्सा, संतरा, स्टूल, इशारा, ख़राब, खींचना) in a plain scene about Aman's chacha, a carpenter whose work reaches the church, the fishermen and the sportsmen. Machine-drafted; a Hindi reviewer should check the carpenter's vocabulary and the tone of the church lines. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "work",
+    "wood",
+    "family",
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "दुकान में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज रविवार की छुट्टी थी, और अमन सैम को अपने चाचा जी की दुकान पर ले गया।",
+              "english": "Today was the Sunday holiday, and Aman took Sam to his chacha's shop."
+            },
+            {
+              "text": "चाचा जी लकड़ी का काम करते हैं, और उनकी दुकान नगर के पुराने हिस्से में है।",
+              "english": "Chacha ji works with wood, and his shop is in the old part of the city."
+            },
+            {
+              "text": "चाचा जी एक बड़ी लकड़ी को आरी से काट रहे थे, और उन्होंने हाथ से अपना माथा पोंछा।",
+              "english": "Chacha ji was cutting a big piece of wood with a saw, and he wiped his forehead with his hand."
+            },
+            {
+              "text": "सैम ने पूछा, \"चाचा जी, आप यह किसके लिए काट रहे हैं?\"",
+              "english": "Sam asked, \"Chacha ji, for whom are you cutting this?\""
+            },
+            {
+              "text": "चाचा जी ने हँसकर कहा, \"यह गिरजाघर की नई कुर्सियों के लिए है।\"",
+              "english": "Chacha ji said with a laugh, \"This is for the new chairs of the church.\""
+            },
+            {
+              "text": "\"पादरी जी चाहते हैं कि हर ईसाई को बैठने की जगह मिले।\"",
+              "english": "\"The padri ji wants every Christian to get a place to sit.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सब के लिए कुछ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "चाचा जी ने कहा, \"मेरी दुकान पर हर तरह के लोग आते हैं।\"",
+              "english": "Chacha ji said, \"All kinds of people come to my shop.\""
+            },
+            {
+              "text": "\"बरसात में मछुआरे अपनी नाव लेकर आते हैं, और मैं उनमें नई लकड़ी लगाता हूँ।\"",
+              "english": "\"In the rainy season the fishermen come with their boats, and I put new wood in them.\""
+            },
+            {
+              "text": "\"कभी कोई खिलाड़ी अपने बच्चों के लिए मुझसे खेल की गाड़ी माँगता है।\"",
+              "english": "\"Sometimes a sportsman asks me for a toy cart for his children.\""
+            },
+            {
+              "text": "सैम बोला, \"आप तो हर इंसान के काम आते हैं।\"",
+              "english": "Sam said, \"You are of use to every person.\""
+            },
+            {
+              "text": "\"हाँ,\" चाचा जी बोले, \"पर यह काम एक पल में नहीं होता।\"",
+              "english": "\"Yes,\" Chacha ji said, \"but this work is not done in a moment.\""
+            },
+            {
+              "text": "\"कई सदी से लोग इसी तरह लकड़ी से घर, नाव और कुर्सियाँ बनाते आए हैं।\"",
+              "english": "\"For many centuries people have been making houses, boats and chairs from wood in just this way.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अमन की गाड़ी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अमन ने कहा, \"चाचा जी, मुझे भी लकड़ी की एक गाड़ी चाहिए।\"",
+              "english": "Aman said, \"Chacha ji, I want a wooden cart too.\""
+            },
+            {
+              "text": "चाचा जी ने एक छोटी लकड़ी उठाई और उस पर पेन्सिल से अपना नाम लिख दिया।",
+              "english": "Chacha ji picked up a small piece of wood and wrote his name on it with a pencil."
+            },
+            {
+              "text": "फिर उन्होंने आरी चलाई और चार टुकड़े काट लिए।",
+              "english": "Then he worked the saw and cut four pieces."
+            },
+            {
+              "text": "सैम ने भी आरी को हाथ लगाया, पर वह बहुत भारी थी।",
+              "english": "Sam touched the saw too, but it was very heavy."
+            },
+            {
+              "text": "\"इनसे पहिए बनेंगे,\" चाचा जी ने कहा।",
+              "english": "\"The wheels will be made from these,\" Chacha ji said."
+            },
+            {
+              "text": "सब पहिए एक जैसे थे।",
+              "english": "All the wheels were alike."
+            },
+            {
+              "text": "अमन बोला, \"मैं भी कील ठोकूँगा!\"",
+              "english": "Aman said, \"I will drive in the nails too!\""
+            },
+            {
+              "text": "चाचा जी ने कहा, \"पहले ध्यान से देखो, फिर हथौड़ी लो।\"",
+              "english": "Chacha ji said, \"First watch carefully, then take the hammer.\""
+            },
+            {
+              "text": "हथौड़ी भारी थी, इसलिए अमन ने उसे दोनों हाथों से पकड़ा।",
+              "english": "The hammer was heavy, so Aman held it with both hands."
+            },
+            {
+              "text": "पहली कील ठीक नहीं लगी।",
+              "english": "The first nail did not go in properly."
+            },
+            {
+              "text": "चाचा जी ने कहा, \"कोई बात नहीं। कील ठोकना धीरे धीरे आता है।\"",
+              "english": "Chacha ji said, \"Never mind. Driving nails comes slowly.\""
+            },
+            {
+              "text": "सैम ने दूसरी कील ठोकी, और कुछ देर में पहिए लग गए।",
+              "english": "Sam drove in the second nail, and in a little while the wheels were on."
+            },
+            {
+              "text": "गाड़ी तैयार हो गई।",
+              "english": "The cart was ready."
+            },
+            {
+              "text": "अमन ने पेन्सिल से गाड़ी पर अपना नाम लिखा।",
+              "english": "Aman wrote his name on the cart with a pencil."
+            },
+            {
+              "text": "मेज़ पर धागे की एक रील रखी थी।",
+              "english": "A reel of thread was lying on the table."
+            },
+            {
+              "text": "अमन ने रील से लंबा धागा निकाला और गाड़ी में बाँध दिया।",
+              "english": "Aman took out a long thread from the reel and tied it to the cart."
+            },
+            {
+              "text": "सैम ने रील और हथौड़ी मेज़ पर रख दीं, और पेन्सिल अपने कान के पीछे लगा ली।",
+              "english": "Sam put the reel and the hammer back on the table, and tucked the pencil behind his ear."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "भूरा बक्सा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दुकान के ऊपर वाले हिस्से में एक भूरा बक्सा रखा था।",
+              "english": "In the upper part of the shop a brown box was kept."
+            },
+            {
+              "text": "अमन स्टूल पर चढ़कर उसे खींचना चाहता था।",
+              "english": "Aman wanted to climb on a stool and pull it down."
+            },
+            {
+              "text": "चाचा जी ने इशारा किया और कहा, \"बक्सा गिरेगा, तो संतरे ख़राब हो जाएँगे।\"",
+              "english": "Chacha ji made a sign and said, \"If the box falls, the oranges will spoil.\""
+            },
+            {
+              "text": "फिर उन्होंने सबको संतरे दिए।",
+              "english": "Then he gave everybody oranges."
+            },
+            {
+              "text": "अमन ने गाड़ी खींची, और सैम ने हँसकर कहा, \"आज पूरा दिन अच्छा बीता।\"",
+              "english": "Aman pulled the cart, and Sam said with a laugh, \"The whole day went well today.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सैम की बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रास्ते में चाचा जी ने सैम से कहा, \"तुम भी तो विदेश से आए हो। शुरू में हर चेहरा तुम्हें पराया लगा होगा।\"",
+              "english": "On the way Chacha ji said to Sam, \"You too have come from a foreign country. At first every face must have seemed strange to you.\""
+            },
+            {
+              "text": "\"कोई परेशानी उत्पन्न होती थी, तो तुम झील के किनारे जाकर बैठ जाते थे।\"",
+              "english": "\"When some trouble arose, you used to go and sit at the edge of the lake.\""
+            },
+            {
+              "text": "\"अब इस नगर के लोग तुम्हें बल देते हैं।\"",
+              "english": "\"Now the people of this city give you strength.\""
+            },
+            {
+              "text": "\"आराधनालय के पास से निकलते हुए भी अब तुम्हें डर नहीं लगता।\"",
+              "english": "\"Even when passing by the synagogue you are no longer afraid.\""
+            },
+            {
+              "text": "सैम ने कहा, \"हाँ, अब अशुद्ध पानी से भी बचता हूँ और अशुद्ध बातों से भी।\"",
+              "english": "Sam said, \"Yes, now I avoid impure water and impure talk as well.\""
+            },
+            {
+              "text": "चाचा जी बोले, \"कल पादरी जी ने उस बेटे की कहानी सुनाई, जिसने अपनी जायदाद छोड़ दी थी।\"",
+              "english": "Chacha ji said, \"Yesterday the padri ji told the story of that son who had left his property.\""
+            },
+            {
+              "text": "\"पिता नाराज़ नहीं हुए। उन्होंने कहा, 'यह घर तेरा है।'\"",
+              "english": "\"The father was not angry. He said, 'This house is yours.'\""
+            },
+            {
+              "text": "सैम ने कहा, \"इस कहानी में पिता का आनंद सबसे बड़ी बात है।\"",
+              "english": "Sam said, \"In this story the father's joy is the greatest thing.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बरसात में काम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "चाचा जी ने कहा, \"रविवार की दावत के लिए नानी पनीर बनाएँगी और दही भी बाँटेंगी।\"",
+              "english": "Chacha ji said, \"For the Sunday feast Nani will make paneer and share curd too.\""
+            },
+            {
+              "text": "इस बरसात में बारिश की झड़ी कई दिन तक लगी रही, और काम रुका रहा।",
+              "english": "In this rainy season a long run of showers kept falling for many days, and the work stood still."
+            },
+            {
+              "text": "कुछ अंतराल के बाद धूप निकली, तो चाचा जी की दुकान फिर चल पड़ी।",
+              "english": "After some interval the sun came out, and Chacha ji's shop started running again."
+            },
+            {
+              "text": "लकड़ी का काम धीरे धीरे होता है, इसलिए यह काम बहुत महत्त्वपूर्ण है।",
+              "english": "Wood-work is done slowly, so this work is very important."
+            },
+            {
+              "text": "झड़ी लगे या धूप निकले, बच्चे यह सब देखकर आनंदित होते हैं।",
+              "english": "Whether a run of showers falls or the sun comes out, the children are delighted to see all this."
+            },
+            {
+              "text": "उस दिन दुकान में अंतराल अंतराल पर लोग आते रहे, और काम की झड़ी लगी रही।",
+              "english": "That day people kept coming into the shop at intervals, and a shower of work kept falling."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

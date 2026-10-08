@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-05",
+  "lang": "nb",
+  "title": "The first pay",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-05",
+    "title": "The first pay (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Comparison (dyrere, billigere, nærmere), \"ha råd til\", \"burde\", \"komme til å\". Sam receives his first pay and decides to look for a flat of his own. Figures are invented."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "money",
+    "pay",
+    "bank",
+    "rent",
+    "comparison",
+    "decisions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "luis": "Lars",
+    "dame": "Damen i banken",
+    "marta": "Marta",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Lønningsdagen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etter fire uker i bokhandelen fikk Sam den første lønnen sin. Han satt ved bordet og så på kontoen i telefonen. Kontoen var ikke stor.",
+              "english": "After four weeks in the bookshop Sam got his first pay. He sat at the table and looked at the account in the phone. The account was not big."
+            },
+            {
+              "text": "Summen var mindre enn han hadde trodd. Det var fordi han bare jobbet deltid.",
+              "english": "The sum was smaller than he had thought. That was because he only worked part-time."
+            },
+            {
+              "text": "Er du lei deg?",
+              "english": "Are you sad?",
+              "speaker": "ana"
+            },
+            {
+              "text": "Nei, jeg er ikke lei meg. Jeg er glad. Det er min egen lønn, og jeg har jobbet for den selv.",
+              "english": "No, I am not sad. I am happy. It is my own pay, and I have worked for it myself.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det skal du være stolt av. Jeg er stolt av deg. Jeg husker min første lønn. Jeg kjøpte kake til alle.",
+              "english": "You should be proud of that. I am proud of you. I remember my first pay. I bought cake for everyone.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg tror jeg skal spare litt av pengene. Banken sier at jeg burde spare litt hver måned.",
+              "english": "I think I will save a little of the money. The bank says that I should save a little every month.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Et stort ønske",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Etter middagen satt Sam ved bordet. Han så på Anna og Lars, og han visste ikke hvordan han skulle begynne.",
+              "english": "After dinner Sam sat at the table. He looked at Anna and Lars, and he did not know how to begin."
+            },
+            {
+              "text": "Jeg må snakke med dere. Jeg har bodd hos dere i mer enn et år. Det har vært bra, og jeg er veldig glad for det.",
+              "english": "I must talk with you. I have lived with you for more than a year. It has been good, and I am very glad about it.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Men?",
+              "english": "But?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Men nå har jeg en jobb og en lønn. Jeg vil leie en leilighet, en leilighet for meg alene. Jeg vil ha mitt eget sted, et sted for meg selv.",
+              "english": "But now I have a job and pay. I want to rent a flat, a flat for myself alone. I want to have a place of my own, a place for myself.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Anna og Lars så på Sam. Så sa Anna:",
+              "english": "Anna and Lars looked at Sam. Then Anna said:"
+            },
+            {
+              "text": "Jeg visste det. Du har det beste hjertet jeg kjenner, og vi er glade i deg. Men du kommer til å savne oss.",
+              "english": "I knew it. You have the best heart I know, and we are fond of you. But you are going to miss us.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Det kommer jeg. Men jeg kommer til å besøke dere hver søndag.",
+              "english": "I will. But I will visit you every Sunday.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "I banken",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På fredag gikk Sam i banken. Han ville åpne en konto, en konto bare til å spare på.",
+              "english": "On Friday Sam went to the bank. He wanted to open an account, an account only for saving."
+            },
+            {
+              "text": "God dag. Jeg vil åpne en konto for å spare penger.",
+              "english": "Good day. I want to open an account to save money.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra! Hvor mye vil du spare hver måned?",
+              "english": "Good! How much do you want to save each month?",
+              "speaker": "dame"
+            },
+            {
+              "text": "To tusen kroner. Er det bra?",
+              "english": "Two thousand kroner. Is that all right?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, det er bra å begynne med. Mange sparer mindre. Du kan alltid spare mer neste år.",
+              "english": "Yes, it is good to begin with that. Many people save less. You can always save more next year.",
+              "speaker": "dame"
+            },
+            {
+              "text": "Sam åpnet kontoen. Han var glad, og han var stolt av seg selv.",
+              "english": "Sam opened the account. He was glad, and he was proud of himself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hva koster en leilighet?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hver kveld den uka satt de og regnet. Lars hadde funnet en liste i avisen, og Anna skrev hva alt kostet.",
+              "english": "Every evening that week they sat and calculated. Lars had found a list in the newspaper, and Anna wrote what everything cost."
+            },
+            {
+              "text": "En leilighet i sentrum er dyrere enn en leilighet langt fra sentrum. Men den er også nærmere bokhandelen.",
+              "english": "A flat in the town centre is more expensive than a flat far from the centre. But it is also closer to the bookshop.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Du må tenke på regningene også. Strøm og vann kommer hver måned.",
+              "english": "You must think about the bills too. Electricity and water come every month.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg har ikke råd til en stor leilighet. En liten er billigere, og den er bra for meg.",
+              "english": "I cannot afford a big flat. A small one is cheaper, and it is good for me.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Betal regningene først, og spar det som er igjen.",
+              "english": "Pay the bills first, and save what is left.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Du har råd til åtte tusen kroner i måneden, ikke mer. Det er ikke mye, men det går.",
+              "english": "You can afford eight thousand kroner a month, no more. That is not much, but it is possible.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Råd fra Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag fortalte Sam Marta om planen. Hun lyttet, og så sa hun:",
+              "english": "On Sunday Sam told Marta about the plan. She listened, and then she said:"
+            },
+            {
+              "text": "Da jeg var liten, hadde jeg ikke råd til en egen leilighet. Jeg bodde hos mora mi, og det var godt for meg.",
+              "english": "When I was small, I could not afford a flat of my own. I lived with my mother, and that was good for me.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Men du har jobbet, og du har spart. Jeg er stolt av deg. Det er riktig å begynne. Spar litt hver måned, og be om hjelp. Resten kommer.",
+              "english": "But you have worked, and you have saved. I am proud of you. It is right to begin. Save a little each month, and ask for help. The rest will come.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Jeg har åpnet en konto i banken, og jeg skal skrive regningene på en liste.",
+              "english": "I have opened an account at the bank, and I will write the bills on a list.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Sam ba den kvelden: «Gud, hjelp meg å finne et sted jeg har råd til, og et sted der jeg kan hvile.»",
+              "english": "Sam prayed that evening: \"God, help me find a place I can afford, and a place where I can rest.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Husker du hunden til fru Berg? Eieren sa at den var lik en bjørn, og at den ble reddet i regnet. Den lå på bordet mens vi forberedte listen.",
+              "english": "Do you remember Mrs Berg's dog? The owner said that it was like a bear, and that it was rescued in the rain. It lay on the table while we prepared the list.",
+              "speaker": "nico"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I dag var det bra på jobben. Vi spiste lunsj sammen, og jeg øvde meg på å si navnene på alle bøkene. Nils kom hit etter skolen og fortalte om hunden som ble reddet.",
+              "english": "Today it was good at work. We ate lunch together, and I practised saying the names of all the books. Nils came here after school and told about the dog that was rescued.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nils hjalp ham å legge bøkene på hylla.",
+              "english": "Nils helped him to put the books on the shelf."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -187,13 +187,8 @@
               "speaker": "luis"
             },
             {
-              "text": "Har du egg?",
-              "english": "Do you have eggs?",
-              "speaker": "ana"
-            },
-            {
-              "text": "Ja, vi har egg. Butikken er bra!",
-              "english": "Yes, we have eggs. The shop is good!",
+              "text": "Vi har egg også. Butikken er bra!",
+              "english": "We have eggs too. The shop is good!",
               "speaker": "luis"
             },
             {
@@ -235,8 +230,8 @@
         {
           "sentences": [
             {
-              "text": "Uka er lang. På mandag, tirsdag og onsdag er Anna trøtt. Hver uke ber Sam om fred.",
-              "english": "The week is long. On Monday, Tuesday and Wednesday Anna is tired. Every week Sam prays for peace."
+              "text": "På mandag, tirsdag og onsdag er Anna trøtt. Hver uke ber Sam om fred.",
+              "english": "On Monday, Tuesday and Wednesday Anna is tired. Every week Sam prays for peace."
             }
           ]
         },
@@ -251,8 +246,8 @@
         {
           "sentences": [
             {
-              "text": "Sam besøker Marta i dag. Det er et bra besøk.",
-              "english": "Sam visits Marta today. It is a good visit."
+              "text": "Sam er hos Marta i dag. Det er bra.",
+              "english": "Sam is at Marta's today. That is good."
             }
           ]
         }

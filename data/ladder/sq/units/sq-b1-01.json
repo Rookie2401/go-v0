@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-01",
+  "lang": "sq",
+  "title": "Pas një viti",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-01",
+    "title": "Albanian ladder, b1-bridge: Pas një viti (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Pas një viti",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të hënën në mëngjes Sam u zgjua herët.",
+              "english": "On Monday morning Sam woke up early."
+            },
+            {
+              "text": "Nuk kishte frikë, siç kishte pasur një vit më parë.",
+              "english": "He was not afraid, as he had been a year earlier."
+            },
+            {
+              "text": "Dje kishte mbaruar viti i parë, dhe sot fillonte viti i dytë.",
+              "english": "Yesterday the first year had ended, and today the second year was beginning."
+            },
+            {
+              "text": "Ai u ngrit, u la dhe u vesh.",
+              "english": "He got up, washed and got dressed."
+            },
+            {
+              "text": "Në kuzhinë përgatiti çaj dhe hëngri bukë me djathë.",
+              "english": "In the kitchen he made tea and ate bread with cheese."
+            },
+            {
+              "text": "Pastaj mori fletoren dhe shkroi një listë me gjërat që donte të bënte atë vit.",
+              "english": "Then he took his notebook and wrote a list of the things he wanted to do that year."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në orën nëntë e thirri Luani.",
+              "english": "At nine o'clock Luan called him."
+            },
+            {
+              "text": "— Mirëmëngjes, Sam! A ke kohë sot?",
+              "english": "\"Good morning, Sam! Do you have time today?\""
+            },
+            {
+              "text": "— Po, kam. Çfarë ka ndodhur?",
+              "english": "\"Yes, I do. What has happened?\""
+            },
+            {
+              "text": "— Asgjë e keqe, — tha Luani.",
+              "english": "\"Nothing bad,\" said Luan."
+            },
+            {
+              "text": "— Dje drejtori i shkollës më tha se fëmijët duan të mësojnë anglisht.",
+              "english": "\"Yesterday the head of the school told me that the children want to learn English.\""
+            },
+            {
+              "text": "— Dhe ti mendove për mua?",
+              "english": "\"And you thought of me?\""
+            },
+            {
+              "text": "— Po. Ti je amerikan, dhe tani e flet shqip shumë mirë.",
+              "english": "\"Yes. You are an American, and now you speak Albanian very well.\""
+            },
+            {
+              "text": "— Nëse pranon, çdo të shtunë do të kemi një klub të vogël.",
+              "english": "\"If you accept, we will have a small club every Saturday.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam nuk u përgjigj shpejt.",
+              "english": "Sam did not answer quickly."
+            },
+            {
+              "text": "Mendoi për ditën kur ai vetë nuk e kuptonte asnjë njeri.",
+              "english": "He thought of the day when he himself understood nobody."
+            },
+            {
+              "text": "Tani do të ishte ai që do t'u shpjegonte gjërat fëmijëve.",
+              "english": "Now he would be the one who explained things to the children."
+            },
+            {
+              "text": "— Mirë, — tha ai më në fund.",
+              "english": "\"All right,\" he said at last."
+            },
+            {
+              "text": "— Do të provoj. Por kam frikë se nuk do të di si t'i mësoj fëmijët.",
+              "english": "\"I will try. But I am afraid I will not know how to teach the children.\""
+            },
+            {
+              "text": "— Ti ke mësuar shqip për një vit, — tha Luani.",
+              "english": "\"You have been learning Albanian for a year,\" said Luan."
+            },
+            {
+              "text": "— Ti e di më mirë se shumë njerëz si ndihet një njeri që nuk kupton.",
+              "english": "\"You know better than anyone how a person who does not understand feels.\""
+            },
+            {
+              "text": "Sam qeshi dhe tha se do të vinte në shkollë në orën njëmbëdhjetë.",
+              "english": "Sam laughed and said he would come to the school at eleven."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Para se të shkonte, ai kaloi te gjyshja Drita në treg.",
+              "english": "Before going, he stopped by grandmother Drita at the market."
+            },
+            {
+              "text": "Ajo po shiste bukë, dhe ai i tregoi çfarë i kishte thënë Luani.",
+              "english": "She was selling bread, and he told her what Luan had said to him."
+            },
+            {
+              "text": "— Shumë mirë! — tha gjyshja dhe i dha një bukë të ngrohtë.",
+              "english": "\"Very good!\" said grandmother and gave him a warm loaf."
+            },
+            {
+              "text": "— Por ki kujdes. Nëse fëmijët qeshin, qesh edhe ti. Kështu mësova edhe unë.",
+              "english": "\"But be careful. If the children laugh, laugh too. That is how I learned too.\""
+            },
+            {
+              "text": "— Si e mësove ti? — pyeti Sami.",
+              "english": "\"How did you learn it?\" asked Sam."
+            },
+            {
+              "text": "— Nuk e mësova në shkollë, — tha ajo.",
+              "english": "\"I did not learn it at school,\" she said."
+            },
+            {
+              "text": "— E mësova nga njerëzit, nga gabimet dhe nga buka që nuk e shita.",
+              "english": "\"I learned it from people, from mistakes, and from the bread I did not sell.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në shkollë Mira i tregoi dhomën ku do të ishte klubi.",
+              "english": "At the school Mira showed him the room where the club would be."
+            },
+            {
+              "text": "Ishte një dhomë e vogël me një dërrasë të zezë dhe me dhjetë karrige.",
+              "english": "It was a small room with a blackboard and ten chairs."
+            },
+            {
+              "text": "— Çfarë të duhet? — pyeti Mira.",
+              "english": "\"What do you need?\" asked Mira."
+            },
+            {
+              "text": "— Fletore, laps dhe disa figura, — u përgjigj Sami.",
+              "english": "'Notebooks, pencils and some pictures,' answered Sam."
+            },
+            {
+              "text": "— Dhe pak kohë, — tha ajo duke buzëqeshur.",
+              "english": "'And a little time,' she said, smiling."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mesditë Sam shkoi në klinikë për t'i treguar Anës lajmin.",
+              "english": "At midday Sam went to the clinic to tell Ana the news."
+            },
+            {
+              "text": "Ana ishte me një pacient, dhe ai priti pranë derës për dhjetë minuta.",
+              "english": "Ana was with a patient, and he waited by the door for ten minutes."
+            },
+            {
+              "text": "Kur doli, ajo e pyeti nëse kishte ngrënë diçka.",
+              "english": "When she came out, she asked him whether he had eaten anything."
+            },
+            {
+              "text": "— Jo, — tha Sami. — Por kam një lajm më të mirë se dreka.",
+              "english": "\"No,\" said Sam. \"But I have news better than lunch.\""
+            },
+            {
+              "text": "Ai i tregoi gjithçka, dhe Ana tha se do t'i sillte disa libra anglisht që kishte në shtëpi.",
+              "english": "He told her everything, and Ana said she would bring him some English books that she had at home."
+            },
+            {
+              "text": "— Mos ki frikë, — shtoi ajo. — Nëse bën një gabim, fëmijët do ta harrojnë shpejt.",
+              "english": "\"Do not be afraid,\" she added. \"If you make a mistake, the children will forget it quickly.\""
+            },
+            {
+              "text": "— Po nëse nuk e harrojnë? — pyeti Sami.",
+              "english": "\"And if they do not forget it?\" asked Sam."
+            },
+            {
+              "text": "— Atëherë do të të përgjigjen në anglisht, — qeshi Ana, — dhe kjo është ajo që do të mësosh ti.",
+              "english": "\"Then they will answer you in English,\" laughed Ana, \"and that is what you will learn.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mbrëmje ai e shkroi listën e re në fletore, dhe në fund shtoi: «Premtoj të mos kem frikë.»",
+              "english": "In the evening he wrote the new list in his notebook, and at the end he added: \"I promise not to be afraid.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

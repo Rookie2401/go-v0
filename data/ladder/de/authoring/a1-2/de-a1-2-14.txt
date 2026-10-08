@@ -1,0 +1,80 @@
+=== de-a1-2-14
+speakers: thomas=Pastor Thomas, marta=Marta, sam=Sam, ben=Ben
+## Ich sitze in der Kirche
+Es ist Sonntag, und ich bin in der Gemeinde. || It is Sunday, and I am at the church.
+Ich sitze neben Oma. || I am sitting next to Grandma.
+Sie hat die Bibel in der Hand. || She has the Bible in her hand.
+Die Orgel spielt, und die Musik ist groß. || The organ plays, and the music is big.
+Die Orgel ist so groß! || The organ is so big!
+Mein Ohr tut weh. || My ear hurts.
+Auf dem Tisch sind Kerzen. || There are candles on the table.
+Eine Kerze ist groß, und die andere Kerze ist klein. || One candle is big, and the other candle is small.
+[marta] Sei still, Ben. || Be quiet, Ben.
+Ich bin ruhig. || I am calm.
+Es ist still in der Gemeinde. || It is quiet in the church.
+Neben mir sitzt der Nachbar, Herr Schmidt. || Next to me sits the neighbour, Herr Schmidt.
+Sam ist auch da. || Sam is here too.
+Er ist bei Frau Weber eingezogen. || He has moved in with Mrs Weber.
+
+## Die Predigt
+Dann kommt die Predigt. || Then comes the sermon.
+Thomas spricht langsam, und die Predigt ist lang. || Thomas speaks slowly, and the sermon is long.
+Sam spricht auch langsam, denn er ist neu. || Sam speaks slowly too, because he is new.
+Ich lese langsam. || I read slowly.
+Ich höre genau, aber ich verstehe nicht alle Wörter genau. || I listen carefully, but I do not understand all the words exactly.
+Ein Wort habe ich falsch gesagt, aber Oma sagt: "Das ist richtig!" || I said one word wrong, but Grandma says: "That is right!"
+Die Sprache der Bibel ist schwer. || The language of the Bible is hard.
+[thomas] Heute spreche ich über einen Hirten und ein Schaf. || Today I am talking about a shepherd and a sheep.
+Ich kenne den Hirten und das Schaf. || I know the shepherd and the sheep.
+[thomas] Der Hirte hat hundert Schafe: richtig oder falsch? || The shepherd has a hundred sheep: right or wrong?
+[ben] Richtig! || Right!
+[thomas] Eins ist nicht da. || One is not there.
+[thomas] Er hat nur 99. || He has only 99.
+[ben] Nein, falsch! || No, wrong!
+[ben] Er hat hundert! || He has a hundred!
+[thomas] Genau, Ben: Er hat hundert, aber eins ist nicht da. || Exactly, Ben: he has a hundred, but one is not there.
+Alle lachen. Oma sagt: "Still, Ben!" || Everyone laughs. Grandma says: "Quiet, Ben!"
+Es ist Nacht, und der Hirte ruft. || It is night, and the shepherd calls.
+Er findet das Schaf dort im Gras. || He finds the sheep there in the grass.
+Es hat Husten, und der Hirte trägt es auf der Schulter. || It has a cough, and the shepherd carries it on his shoulder.
+Ich sehe die Tiere auf dem Gras. || I see the animals on the grass.
+[thomas] Im Himmel ist ein Fest für einen Sünder. || In heaven there is a feast for a sinner.
+Ich frage Sam: "Was heißt Sünder?" || I ask Sam: "What does Sünder mean?"
+[sam] Thomas erklärt es. || Thomas will explain it.
+[sam] Es ist ein schweres Wort. || It is a hard word.
+[thomas] Lest auf Seite 15. || Read on page 15.
+Ich lese auf Seite 15. || I read on page 15.
+Die Seite ist dünn, und die Wörter sind klein. || The page is thin, and the words are small.
+Sam übt Deutsch im Kurs. || Sam practises German in the course.
+Er macht Fehler, und seine Lehrerin erklärt die Grammatik. || He makes mistakes, and his teacher explains the grammar.
+Für mich ist die Sprache leicht, für Sam ist sie schwer. || For me the language is easy, for Sam it is hard.
+
+## Die Kollekte
+Dann kommt die Kollekte. || Then comes the offering.
+Ein Mann geht in der Gemeinde, und alle geben etwas. || A man goes around the church, and everyone gives something.
+Oma gibt einen Euro, und ich gebe auch einen Euro. || Grandma gives a euro, and I give a euro too.
+Die Kollekte ist für die Kinder in Dresden. || The offering is for the children in Dresden.
+[marta] Die Kollekte ist für Hilfe. || The offering is for help.
+Nach dem Gottesdienst gibt es Kaffee. || After the service there is coffee.
+Oma bringt Kuchen mit. || Grandma brings cake.
+Ich soll den Kuchen auch mitbringen. || I am to bring the cake too.
+Ich sitze lange. || I sit for a long time.
+Mein Fuß tut weh, und meine Augen sind müde. || My foot hurts, and my eyes are tired.
+Ich fühle mich nicht gut. || I do not feel well.
+Ich habe eine Erkältung. || I have a cold.
+Gestern war ich in der Praxis bei der Ärztin. || Yesterday I was at the doctor's practice.
+Sie hat ein Rezept geschrieben. || She wrote a prescription.
+Oma war in der Apotheke, und das Medikament ist gut. || Grandma was at the pharmacy, and the medicine is good.
+Die Schmerzen sind nicht groß. || The pain is not big.
+Oma lässt mich nicht zu Hause, denn ich möchte in die Gemeinde. || Grandma does not leave me at home, because I want to go to church.
+
+## Der Segen
+Dann steht Thomas vor der Gemeinde. || Then Thomas stands in front of the church.
+[thomas] Wir bekommen den Segen von Gott. || We receive the blessing of God.
+Der Segen ist für alle. || The blessing is for everyone.
+Ich habe die Hand von Oma, und ich bin froh. || I have Grandma's hand, and I am happy.
+Ich sehe die Orgel und höre die Musik. || I see the organ and hear the music.
+Ich mag den Segen. || I like the blessing.
+Die Predigt war lang, aber der Gottesdienst war schön. || The sermon was long, but the service was lovely.
+Ich bin gern in der Gemeinde. || I like being in the church.
+

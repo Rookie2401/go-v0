@@ -1,0 +1,90 @@
+=== de-a1-2-06
+speakers: anna=Anna, sabine=Sabine
+## Die Reise
+Anna hat am Wochenende Berlin besucht. || Anna visited Berlin at the weekend.
+Die Sonne war schon warm, denn es war Frühling. || The sun was already warm, because it was spring.
+Anna ist am Freitag mit dem Zug gefahren. || Anna took the train on Friday.
+Sabine hat sie am Bahnhof getroffen. || Sabine met her at the station.
+[sabine] Hallo, Anna! || Hello, Anna!
+[sabine] Wie war die Reise? || How was the trip?
+[anna] Gut! || Good!
+[anna] Ich habe im Zug gelesen und geschlafen. || I read and slept on the train.
+[sabine] Das ist schön. || That is nice.
+[sabine] Ich freue mich! || I am so glad!
+
+## Das Hotel
+Anna hat im Hotel übernachtet. || Anna stayed overnight in a hotel.
+Das Hotel war nicht groß, aber das Bett war gut. || The hotel was not big, but the bed was good.
+Anna hat auch am Samstag im Hotel übernachtet. || Anna stayed at the hotel on Saturday night too.
+Jeder Tag hat ein Frühstück im Hotel. || Every day has a breakfast at the hotel.
+Anna hat mit Lukas telefoniert. || Anna phoned Lukas.
+[anna] Lukas, ich bin im Hotel! || Lukas, I am at the hotel!
+[anna] Berlin ist schön! || Berlin is lovely!
+[anna] Aber ich habe nur zwei Tage. || But I only have two days.
+
+## Das Museum
+Am Samstag haben Anna und Sabine ein Museum besucht. || On Saturday Anna and Sabine visited a museum.
+Sie sind viele Stunden gelaufen. || They walked for many hours.
+Das Museum war groß. || The museum was big.
+Anna ist gern gelaufen. || Anna liked walking.
+Sie haben viele Freunde von Sabine getroffen. || They met many friends of Sabine's.
+Anna hat auch den Pastor getroffen. || Anna also met the pastor.
+Im Museum haben sie viele Bilder gesehen. || In the museum they saw many pictures.
+[sabine] Jedes Bild ist schön, oder? || Every picture is lovely, is it not?
+[anna] Ja! || Yes!
+[anna] Da ist ein Bild mit einem Mädchen im Park. || There is a picture with a girl in the park.
+[sabine] Das Mädchen ist glücklich. || The girl is happy.
+
+## Das Café und das Geschäft
+Dann sind sie in die Stadt gelaufen. || Then they walked into the city.
+Dann sind sie in ein Café gegangen. || Then they went into a café.
+Das Café war klein. || The café was small.
+Sie haben Kaffee und Kuchen bekommen. || They got coffee and cake.
+Im Café hat ein Mädchen gesungen. || In the café a girl sang.
+Dann sind sie in ein Geschäft gegangen. || Then they went into a shop.
+Das Geschäft war groß. || The shop was big.
+[anna] Ich möchte etwas für Ben schenken. || I want to give something to Ben.
+Anna hat Ben ein Heft geschenkt. || Anna gave Ben an exercise book.
+Sabine hat Anna ein Buch geschenkt. || Sabine gave Anna a book.
+Anna hat im Geschäft noch ein Buch für Marta gekauft. || In the shop Anna also bought a book for Marta.
+Im Park haben Kinder gespielt, und das Wetter war nicht schlecht. || Children played in the park, and the weather was not bad.
+
+## Das Konzert
+Am Abend haben sie ein Konzert besucht. || In the evening they went to a concert.
+Das Konzert war schön, und die Musik war sehr gut. || The concert was lovely, and the music was very good.
+Es hat um acht Uhr angefangen. || It started at eight o'clock.
+Anna und Sabine haben getanzt. || Anna and Sabine danced.
+[sabine] Tanzt du gern? || Do you like dancing?
+[anna] Ja, ich tanze gern! || Yes, I like dancing!
+[anna] Ich höre auch gern Musik. || I like listening to music too.
+[anna] Ich war nie in Berlin, aber jetzt bin ich glücklich. || I had never been to Berlin, but now I am happy.
+Draußen hat es gerade geregnet, aber sie waren froh. || Outside it had just rained, but they were happy.
+
+## Der Sonntag
+Am Sonntag sind Anna und Sabine in die Gemeinde gegangen. || On Sunday Anna and Sabine went to the church.
+Sie haben gesungen und gebetet. || They sang and prayed.
+Der Pastor hat gesagt: "Gott liebt jeden von uns." || The pastor said: "God loves every one of us."
+Anna hat Gott gedankt. || Anna thanked God.
+[sabine] Du bist ein Christ, Anna. || You are a Christian, Anna.
+[anna] Ja. || Yes.
+[anna] Ich glaube, und ich habe Freude. || I believe, and I have joy.
+[anna] Das Leben ist gut, und die Liebe von Gott ist groß. || Life is good, and God's love is great.
+[anna] Mein Herz ist froh. || My heart is glad.
+[anna] Früher habe ich nur gearbeitet. || Before, I only worked.
+[anna] Jetzt habe ich Zeit für Gott. || Now I have time for God.
+
+## Das Wetter in Berlin
+[sabine] Berlin ist im Sommer heiß, 30 Grad. || Berlin is hot in summer, 30 degrees.
+[sabine] Im Herbst gibt es Regen, und im Winter gibt es Schnee und Wind. || In autumn there is rain, and in winter there is snow and wind.
+[anna] Im Frühling ist es schön, die Sonne scheint. || In spring it is lovely, the sun shines.
+[anna] Der Frühling ist meine Jahreszeit. || Spring is my season.
+
+## Die Rückreise
+Am Abend ist Anna wieder nach Leipzig gefahren. || In the evening Anna travelled back to Leipzig.
+[sabine] Besuchst du mich bald? || Will you visit me soon?
+[anna] Ja, ich habe bald Zeit. || Yes, I will have time soon.
+[sabine] Dann kommt Lukas mit! || Then Lukas can come along!
+[anna] Ja, gern! || Yes, gladly!
+[sabine] Tschüs, Anna! || Bye, Anna!
+[anna] Tschüs, Sabine! || Bye, Sabine!
+

@@ -1,0 +1,188 @@
+[
+ {
+  "id": "de-b1-01",
+  "kind": "controlled",
+  "domain": "conversation"
+ },
+ {
+  "id": "de-b1-02",
+  "kind": "controlled",
+  "domain": "correspondence"
+ },
+ {
+  "id": "de-b1-03",
+  "kind": "authentic",
+  "textId": "text:de:bible-jhn-14",
+  "domain": "scripture",
+  "title": "Johannes 14 (Luther 1912)"
+ },
+ {
+  "id": "de-b1-04",
+  "kind": "controlled",
+  "domain": "conversation"
+ },
+ {
+  "id": "de-b1-05",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-02-ch01",
+  "domain": "narrative",
+  "title": "Die drei Schläfer (Guerber)"
+ },
+ {
+  "id": "de-b1-06",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-03-ch01",
+  "domain": "narrative",
+  "title": "Der Hausvater (Guerber)"
+ },
+ {
+  "id": "de-b1-07",
+  "kind": "authentic",
+  "textId": "text:de:grimm-khm-story-151",
+  "domain": "narrative",
+  "title": "Die drei Faulen (Grimm)"
+ },
+ {
+  "id": "de-b1-08",
+  "kind": "controlled",
+  "domain": "travel"
+ },
+ {
+  "id": "de-b1-09",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-06-ch01",
+  "domain": "narrative",
+  "title": "Der Pfeifer von Hameln (Guerber)"
+ },
+ {
+  "id": "de-b1-10",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-01-ch01",
+  "domain": "narrative",
+  "title": "Jakobs Haus (Guerber)"
+ },
+ {
+  "id": "de-b1-11",
+  "kind": "controlled",
+  "domain": "instructions"
+ },
+ {
+  "id": "de-b1-12",
+  "kind": "authentic",
+  "textId": "text:de:grimm-khm-story-103",
+  "domain": "narrative",
+  "title": "Der süße Brei (Grimm)"
+ },
+ {
+  "id": "de-b1-13",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-04-ch01",
+  "domain": "narrative",
+  "title": "Der Pfannkuchen (Guerber)"
+ },
+ {
+  "id": "de-b1-14",
+  "kind": "controlled",
+  "domain": "church-and-mission-life"
+ },
+ {
+  "id": "de-b1-15",
+  "kind": "authentic",
+  "textId": "text:de:bible-1john-5",
+  "domain": "scripture",
+  "title": "1. Johannes 5 (Luther 1912)"
+ },
+ {
+  "id": "de-b1-16",
+  "kind": "authentic",
+  "textId": "text:de:bible-jhn-17",
+  "domain": "scripture",
+  "title": "Johannes 17 (Luther 1912)"
+ },
+ {
+  "id": "de-b1-17",
+  "kind": "controlled",
+  "domain": "contemporary-nonfiction"
+ },
+ {
+  "id": "de-b1-18",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-07-ch01",
+  "domain": "narrative",
+  "title": "Undank ist der Welt Lohn (Guerber)"
+ },
+ {
+  "id": "de-b1-19",
+  "kind": "controlled",
+  "domain": "correspondence"
+ },
+ {
+  "id": "de-b1-20",
+  "kind": "authentic",
+  "textId": "text:de:grimm-khm-story-153",
+  "domain": "narrative",
+  "title": "Die Sternthaler (Grimm)"
+ },
+ {
+  "id": "de-b1-21",
+  "kind": "controlled",
+  "domain": "work"
+ },
+ {
+  "id": "de-b1-22",
+  "kind": "authentic",
+  "textId": "text:de:grimm-khm-story-162",
+  "domain": "narrative",
+  "title": "Der kluge Knecht (Grimm)"
+ },
+ {
+  "id": "de-b1-23",
+  "kind": "controlled",
+  "domain": "family"
+ },
+ {
+  "id": "de-b1-24",
+  "kind": "authentic",
+  "textId": "text:de:grimm-khm-story-078",
+  "domain": "narrative",
+  "title": "Der alte Großvater und der Enkel (Grimm)"
+ },
+ {
+  "id": "de-b1-25",
+  "kind": "controlled",
+  "domain": "narrative"
+ },
+ {
+  "id": "de-b1-26",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-08-ch01",
+  "domain": "narrative",
+  "title": "Die Prinzessin, die nicht lachen wollte (Guerber)"
+ },
+ {
+  "id": "de-b1-27",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-05-ch01",
+  "domain": "narrative",
+  "title": "Der Riese und das Kind (Guerber)"
+ },
+ {
+  "id": "de-b1-28",
+  "kind": "controlled",
+  "domain": "daily-life"
+ },
+ {
+  "id": "de-b1-29",
+  "kind": "authentic",
+  "textId": "text:de:guerber-v1-story-15-ch01",
+  "domain": "narrative",
+  "title": "Die vier Brüder (Guerber)"
+ },
+ {
+  "id": "de-b1-30",
+  "kind": "authentic",
+  "textId": "text:de:bible-jhn-16",
+  "domain": "scripture",
+  "title": "Johannes 16 (Luther 1912)"
+ }
+]

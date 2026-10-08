@@ -180,8 +180,8 @@
               "speaker": "luis"
             },
             {
-              "text": "Du hjelper oss, og vi hjelper deg. Slik er det i en familie.",
-              "english": "You help us, and we help you. That is how it is in a family.",
+              "text": "Du hjelper oss, og vi hjelper deg. Det er en familie.",
+              "english": "You help us, and we help you. That is a family.",
               "speaker": "ana"
             },
             {
@@ -255,6 +255,18 @@
             {
               "text": "Sam husker invitasjonen til menigheten. Han var ikke alene.",
               "english": "Sam remembers the invitation to the congregation. He was not alone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sjefen på sykehuset sendte et tilbud, men Anna svarte senere. Fiskerne fanger fisk i havet. Menigheten inviterer alle til kirka. Det går en elv gjennom skogen.",
+              "english": "The manager at the hospital sent an offer, but Anna answered later. The fishermen catch fish in the sea. The congregation invites everyone to the church. A river runs through the forest."
+            },
+            {
+              "text": "Strøm fra elva gir lys til byen.",
+              "english": "Electricity from the river gives light to the town."
             }
           ]
         }

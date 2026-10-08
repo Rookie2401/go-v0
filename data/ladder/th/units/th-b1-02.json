@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-02",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "รายงานจากฝ่ายช่วยเด็ก",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-02",
+    "title": "รายงานจากฝ่ายช่วยเด็ก — The report from the children's-aid department (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Written as a church-newsletter report (formal-friendly register). For the reviewer: ทุนเรียน, ฝ่ายช่วยเด็ก, ขอเชิญทุกท่านมาร่วม are the usual newsletter phrasings; check that nothing sounds like an advertisement for the church."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "church newsletter",
+    "scholarships",
+    "report"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "รายงานเรื่องทุนเรียน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "จดหมายข่าวของโบสถ์เดือนนี้ มีรายงานเรื่องทุนเรียนของฝ่ายช่วยเด็ก",
+              "english": "This month's church newsletter has a report on the study scholarships of the children's-aid department."
+            },
+            {
+              "text": "แซมเป็นคนเขียนรายงานนี้ เขาถามหลายคนก่อนเขียน",
+              "english": "Sam wrote the report; he asked many people before writing it."
+            },
+            {
+              "text": "ปีนี้ ฝ่ายช่วยเด็กให้ทุนแก่เด็กหญิงเด็กชายสิบสองคน",
+              "english": "This year the department gave scholarships to twelve girls and boys."
+            },
+            {
+              "text": "เด็กส่วนมากมาจากหมู่บ้านที่อยู่ไกลจากเมือง",
+              "english": "Most of the children come from villages far from town."
+            },
+            {
+              "text": "สี่คนจะสอบเข้าวิทยาลัยปีหน้า",
+              "english": "Four of them will take college entrance exams next year."
+            },
+            {
+              "text": "อีกสองคนกำลังฝึกงานที่โรงพยาบาล",
+              "english": "Two more are doing their training at the hospital."
+            },
+            {
+              "text": "บางคนเรียนจนได้ปริญญา และกลับมาช่วยหมู่บ้านของตน",
+              "english": "Some study until they get a degree, and come back to help their own villages."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เงินมาจากไหน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เงินทุนมาจากน้ำใจของคนในโบสถ์",
+              "english": "The scholarship money comes from the generosity of the people in the church."
+            },
+            {
+              "text": "บางคนให้เหรียญสิบบาท บางคนให้เงินเดือนละพัน",
+              "english": "Some give ten-baht coins, some give a thousand a month."
+            },
+            {
+              "text": "ในกล่องหน้าโบสถ์ มีเหรียญหลายเหรียญ ทุกเหรียญก็มีค่า",
+              "english": "In the box in front of the church there are many coins, and every coin has its worth."
+            },
+            {
+              "text": "ไม่ว่าจะให้มากหรือน้อย ทุกคนมีส่วนช่วยสนับสนุนค่าเรียนของเด็ก",
+              "english": "Whether they give much or little, everyone has a share in supporting the children's fees."
+            },
+            {
+              "text": "นอกจากเงิน ยังมีคนให้เวลา และมาช่วยสอนเด็กด้วย",
+              "english": "Besides money, some people give their time and come to help teach the children."
+            },
+            {
+              "text": "ทุนนี้ไม่มีดอกเบี้ย และไม่ใช่หนี้",
+              "english": "This scholarship carries no interest and is not a debt."
+            },
+            {
+              "text": "เด็กไม่ต้องทำสัญญา และไม่ต้องจ่ายเงินคืน",
+              "english": "The children do not have to sign a contract or pay anything back."
+            },
+            {
+              "text": "ทุกคนแค่สัญญากับตัวเองว่าจะตั้งใจเรียน",
+              "english": "Everyone only promises himself that he will study hard."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เด็กชายที่ปฏิเสธ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เด็กชายคนหนึ่งเป็นลูกชายของชาวนา แม่ป่วยและพ่อไม่มีงาน",
+              "english": "One boy is a farmer's son; his mother is ill and his father has no work."
+            },
+            {
+              "text": "ครั้งแรก เขาขอร้องให้เราอย่าให้ทุนแก่เขา",
+              "english": "At first he begged us not to give him the scholarship."
+            },
+            {
+              "text": "เขาเกรงใจ และกลัวว่าจะเป็นหนี้",
+              "english": "He felt shy about it and was afraid of falling into debt."
+            },
+            {
+              "text": "ต้นปรึกษากับเขาอยู่นาน แล้วเขาก็รับทุน",
+              "english": "Ton talked it over with him for a long time, and then he accepted."
+            },
+            {
+              "text": "ตอนนี้เขาเรียนดีที่สุดในชั้น",
+              "english": "Now he is the best student in his class."
+            },
+            {
+              "text": "ครอบครัวของเขาไม่ลำบากเหมือนก่อน",
+              "english": "His family is no longer in hardship as before."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ขอเชิญ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เดือนหน้า ฝ่ายช่วยเด็กจะมีกิจกรรมที่โบสถ์",
+              "english": "Next month the department will hold an event at the church."
+            },
+            {
+              "text": "เราจะนั่งกินข้าวด้วยกัน และเด็กๆ จะแสดงให้ดู",
+              "english": "We will sit and eat together, and the children will perform."
+            },
+            {
+              "text": "ขอเชิญมิตรสหายทุกท่านมาร่วม เราจะร้องเพลงสรรเสริญพระเจ้าด้วยกัน",
+              "english": "Our friends, all of you, are invited to come; we will sing songs of praise to God together."
+            },
+            {
+              "text": "ใครอยากช่วย ขอให้บอกแซมหรือต้น",
+              "english": "Whoever wants to help, please tell Sam or Ton."
+            },
+            {
+              "text": "เราแค่อยากให้เด็กๆ ได้เรียนต่อจนจบ",
+              "english": "We only want the children to be able to study until they finish."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คำขอบคุณ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มะลิเขียนมาในรายงานด้วยว่า ดิฉันเคยเป็นเด็กที่ได้ทุนนี้",
+              "english": "Mali also wrote in to the report: \"I was once a child who received this scholarship.\""
+            },
+            {
+              "text": "ดิฉันขอขอบคุณน้ำใจและความสามัคคีของทุกคน",
+              "english": "I thank everyone for their generosity and their unity."
+            },
+            {
+              "text": "ตอนนี้ดิฉันติดตามเด็กทุกคน และอยากให้เขาเรียนจนจบ",
+              "english": "Now I follow all the children and want them to study until they finish."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

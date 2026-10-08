@@ -793,6 +793,99 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Los clientes del sábado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Don Carlos abre su tienda antes de las seis, y todo el día tiene la puerta abierta.",
+              "english": "Don Carlos opens his shop before six, and all day he keeps the door open."
+            },
+            {
+              "text": "Esa mañana hay mucha gente, pero él habla con calma: —Yo atiendo a todos, uno por uno. Cada quien espera su turno.",
+              "english": "That morning there are many people, but he speaks calmly: \"I serve everybody, one by one. Everyone waits their turn.\""
+            },
+            {
+              "text": "La primera es una vecina muy cansada, que se levantó en la madrugada para cocinar.",
+              "english": "The first is a very tired neighbour, who got up before dawn to cook."
+            },
+            {
+              "text": "—Deme un poco de azúcar, don Carlos —dice—. Y hábleme bajito, que hoy me duele la cabeza.",
+              "english": "\"Give me a little sugar, don Carlos,\" she says. \"And speak to me softly, because my head hurts today.\""
+            },
+            {
+              "text": "Después entra la maestra de la aldea con una profesora de la ciudad.",
+              "english": "Then the village teacher comes in with a professor from the city."
+            },
+            {
+              "text": "Compran cuadernos y lápices para los niños, y hablan de la escuela.",
+              "english": "They buy notebooks and pencils for the children, and talk about the school."
+            },
+            {
+              "text": "—Un profesor me dijo que los niños de hoy sueñan con ser pilotos —dice la profesora.",
+              "english": "\"A professor told me that the children of today dream of being pilots,\" says the professor."
+            },
+            {
+              "text": "—Los míos quieren ser músicos —contesta la maestra—. Esto no es un cuento: es un problema real, porque en la aldea no hay dónde estudiar música.",
+              "english": "\"Mine want to be musicians,\" answers the teacher. \"This is not a story: it is a real problem, because in the village there is nowhere to study music.\""
+            },
+            {
+              "text": "Los demás clientes esperan sentados y escuchan.",
+              "english": "The other customers wait sitting down and listen."
+            },
+            {
+              "text": "Un estudiante pide un cuaderno para sus notas, y don Carlos se lo da sin cobrarle.",
+              "english": "A student asks for a notebook for his notes, and don Carlos gives it to him without charging."
+            },
+            {
+              "text": "—Estudiá mucho, cipote —le dice—. Cuando seas grande, vas a mandar vos.",
+              "english": "\"Study hard, kid,\" he tells him. \"When you are grown up, you will be the one in charge.\""
+            },
+            {
+              "text": "De pronto llega un niño con las rodillas heridas: se cayó de la bicicleta de su prima.",
+              "english": "Suddenly a boy arrives with wounded knees: he fell off his cousin's bicycle."
+            },
+            {
+              "text": "—No llorés —dice don Carlos—. Mirá, tengo un trapo seco y un poco de agua.",
+              "english": "\"Don't cry,\" says don Carlos. \"Look, I have a dry cloth and a little water.\""
+            },
+            {
+              "text": "Afuera pasa un camión con sacos de maíz, y detrás viene un tractor lento.",
+              "english": "Outside a truck goes by with sacks of corn, and behind it comes a slow tractor."
+            },
+            {
+              "text": "—Ese tractor es de don Chico —dice la vecina—. Lo compró con el pisto de dos cosechas.",
+              "english": "\"That tractor is don Chico's,\" says the neighbour. \"He bought it with the money of two harvests.\""
+            },
+            {
+              "text": "Don Carlos vende de todo un poco: aguacates, mantequilla, cuajada y tajadas de plátano en bolsitas.",
+              "english": "Don Carlos sells a bit of everything: avocados, cream, fresh cheese and plantain slices in little bags."
+            },
+            {
+              "text": "—¿Cómo amaneció, doña? —le pregunta a cada cliente, porque así se saluda en la aldea.",
+              "english": "\"How did you wake up, ma'am?\" he asks every customer, because that is how people greet each other in the village."
+            },
+            {
+              "text": "—Cheque, ahorita se lo preparo —le contesta a una cipota que pide un jugo.",
+              "english": "\"All right, I'll prepare it for you right away,\" he answers a little girl who asks for a juice."
+            },
+            {
+              "text": "A las doce, don Carlos cierra un rato la puerta y se va a almorzar.",
+              "english": "At twelve, don Carlos closes the door for a while and goes to have lunch."
+            },
+            {
+              "text": "Su mamá le deja el almuerzo en la mesa, y su esposa le deja la cena en la olla.",
+              "english": "His mother leaves the lunch on the table for him, and his wife leaves dinner for him in the pot."
+            },
+            {
+              "text": "—De joven yo soñaba con tener una tienda —dice él—. Hoy la tengo, y no es poco.",
+              "english": "\"When I was young I dreamed of having a shop,\" he says. \"Today I have one, and that is not little.\""
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

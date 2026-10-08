@@ -1,0 +1,382 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-38",
+  "lang": "es",
+  "title": "La noche del velorio",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-38",
+    "title": "The night of the wake (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honduran-register unit 5 of 6 (new, course-authored; the church strand). A village wake (velorio) for doña Chavela, the wife of don Chepe: neighbours bring coffee and bread, the congregation sings, Pastor Mario reads John 11 (Lazarus; it follows es-b1-18, John 11, in the ladder) and the young people talk through the night about death, science and hope. The register is respectful and plain; voseo among the young people (decime, mirá, sabés, querés, hablá) and usted to Pastor Mario, don Chepe and the elders. Points for the Honduran reviewer: the customs of the velorio (coffee and bread through the night, hymns, the nine nights of prayer / novenario), how a congregation would word the condolences (\"mi sentido pésame\", \"que Dios la tenga en su gloria\", \"Dios les dé fortaleza\"), whether the pastor would read John 11 verbatim (here he only paraphrases it), and whether the unit is too heavy for this point of the ladder. The unit also brings back, on purpose, words of es-b1-13, es-b1-15 and es-b1-17 and a few from es-b1-16 and es-b1-18 (the recycling pass of 2026-10-08)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "church",
+    "death and hope",
+    "honduran register"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "honduran-register"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition",
+    "honduras"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "La noticia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una madrugada de octubre, don Chepe llegó a la casa de doña Marta con el sombrero en la mano.",
+              "english": "One October dawn, don Chepe arrived at doña Marta's house with his hat in his hand."
+            },
+            {
+              "text": "—Doña Marta, se me fue mi Chavela —dijo, con una voz que casi no se oía—. Anoche, en la cama, sin dolor.",
+              "english": "\"Doña Marta, my Chavela has left me,\" he said, with a voice that could hardly be heard. \"Last night, in bed, without pain.\""
+            },
+            {
+              "text": "Doña Marta no dijo nada. Lo abrazó un largo rato, y después le sirvió un café.",
+              "english": "Doña Marta said nothing. She hugged him for a long while, and then served him a coffee."
+            },
+            {
+              "text": "—Mi sentido pésame, don Chepe —dijo por fin—. Que Dios la tenga en su gloria.",
+              "english": "\"My deepest condolences, don Chepe,\" she said at last. \"May God keep her in his glory.\""
+            },
+            {
+              "text": "—Gracias. Ya estaba muy envejecida, pero uno nunca está listo —contestó él—. Se lo digo con toda la conciencia: no sé qué voy a hacer sin ella.",
+              "english": "\"Thank you. She was already very old, but one is never ready,\" he answered. \"I say it with all my conscience: I don't know what I am going to do without her.\""
+            },
+            {
+              "text": "A las ocho, Karla y Sam ya recorrían las casas de la aldea, para avisar a los vecinos.",
+              "english": "At eight, Karla and Sam were already going through the houses of the village, to let the neighbours know."
+            },
+            {
+              "text": "En Honduras, un velorio es de todos: nadie espera a que lo inviten.",
+              "english": "In Honduras, a wake belongs to everybody: nobody waits to be invited."
+            },
+            {
+              "text": "Cada familia lleva lo que puede: café, pan, azúcar, unas velas, o simplemente su compañía.",
+              "english": "Each family brings what it can: coffee, bread, sugar, some candles, or simply their company."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El velorio",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, la casa de don Chepe se llenó de gente.",
+              "english": "That night, the house of don Chepe filled with people."
+            },
+            {
+              "text": "La cama estaba en la sala, con una sábana blanca, y a los lados ardían cuatro velas.",
+              "english": "The bed was in the living room, with a white sheet, and on the sides four candles burned."
+            },
+            {
+              "text": "Las mujeres hacían café en el fogón del patio, y los hombres hablaban bajito, con el sombrero entre las manos.",
+              "english": "The women made coffee on the stove in the yard, and the men spoke softly, with their hats in their hands."
+            },
+            {
+              "text": "Unos niños se durmieron en el suelo, junto a las sillas, y nadie los despertó.",
+              "english": "Some children fell asleep on the floor, next to the chairs, and nobody woke them."
+            },
+            {
+              "text": "A las nueve, Pastor Mario abrió su Biblia y pidió silencio.",
+              "english": "At nine, Pastor Mario opened his Bible and asked for silence."
+            },
+            {
+              "text": "—Hermanos, esta noche no vamos a dar un sermón largo —dijo—. Don Chepe me pidió que leyéramos la historia de Lázaro.",
+              "english": "\"Brothers, tonight we are not going to give a long sermon,\" he said. \"Don Chepe asked me to read the story of Lazarus.\""
+            },
+            {
+              "text": "Pastor Mario contó que Lázaro era amigo de Jesús, que murió, y que su hermana Marta salió a recibir al Maestro con una pregunta que dolía.",
+              "english": "Pastor Mario told that Lazarus was a friend of Jesus, that he died, and that his sister Martha went out to meet the Master with a question that hurt."
+            },
+            {
+              "text": "—Si hubieras estado aquí, mi hermano no habría muerto —repitió el pastor, con la voz de ella.",
+              "english": "\"If you had been here, my brother would not have died,\" the pastor repeated, with her voice."
+            },
+            {
+              "text": "—Jesús no le dio una teoría —siguió—. Tampoco le dio un consejo para tener ánimo. Le dio una promesa: «Yo soy la resurrección y la vida».",
+              "english": "\"Jesus did not give her a theory,\" he went on. \"Nor did he give her advice to have courage. He gave her a promise: 'I am the resurrection and the life.'\""
+            },
+            {
+              "text": "—Y lloró —añadió—. El que podía resucitar a un muerto, lloró primero. Esa es la humanidad de nuestro Dios.",
+              "english": "\"And he wept,\" he added. \"The one who could raise a dead man wept first. That is the humanity of our God.\""
+            },
+            {
+              "text": "Recordó también que María, la hermana de Lázaro, ungió los pies del Señor con un ungüento caro, con la intención de honrarlo.",
+              "english": "He also remembered that Mary, the sister of Lazarus, anointed the feet of the Lord with an expensive ointment, with the intention of honoring him."
+            },
+            {
+              "text": "Y recordó al hombre nacido ciego, que mendigaba a la puerta de la sinagoga. Sus vecinos dudaban de su nacimiento, los temerosos permanecían callados, y los jefes lo ultrajaron.",
+              "english": "And he remembered the man born blind, who used to beg at the door of the synagogue. His neighbours doubted his birth, the fearful stayed silent, and the leaders insulted him."
+            },
+            {
+              "text": "—Pero el ciego, con el lodo todavía en los ojos, contestó con una maravillosa calma: «Antes no veía y ahora veo» —dijo el pastor—. No es un juicio de los hombres. Es Dios que quiere obrar y manifestarse, para que uno pueda oír.",
+              "english": "\"But the blind man, with the mud still on his eyes, answered with a marvelous calm: 'Before I did not see, and now I see,'\" said the pastor. \"It is not a judgment of men. It is God who wants to work and make himself manifest, so that one can hear.\""
+            },
+            {
+              "text": "Don Chepe apretó el sombrero con las dos manos, y alguien, en el fondo, empezó a cantar bajito.",
+              "english": "Don Chepe squeezed his hat with both hands, and somebody at the back began to sing softly."
+            },
+            {
+              "text": "Entonces cantaron todos, sin guitarra, sin tambor y sin prisa. Era una música de desahogo, y cada verso parecía un abrazo.",
+              "english": "Then they all sang, without guitar, without drum and without haste. It was a music of relief, and each verse seemed an embrace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Conversación a medianoche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A las doce, mientras los mayores rezaban, Sam, Karla y Wilmer salieron al patio con un vaso de café.",
+              "english": "At twelve, while the elders prayed, Sam, Karla and Wilmer went out to the yard with a cup of coffee."
+            },
+            {
+              "text": "La noche estaba húmeda, y el fogón todavía echaba un poco de humo.",
+              "english": "The night was damp, and the stove still gave off a little smoke."
+            },
+            {
+              "text": "—Decime algo, profe —dijo Sam—. ¿Hay remedio para esto?",
+              "english": "\"Tell me something, professor,\" said Sam. \"Is there a remedy for this?\""
+            },
+            {
+              "text": "—No lo hay, y precisamente por eso uno necesita la fe —contestó Wilmer—. La ciencia explica cómo se muere la gente, pero no sabe consolar.",
+              "english": "\"There is not, and precisely for that reason one needs faith,\" Wilmer answered. \"Science explains how people die, but it does not know how to console.\""
+            },
+            {
+              "text": "—Carmen Mejía fue una científica, y también una mujer de mucha fe —dijo Karla—. Pasaba noches enteras mirando el infinito y escribiendo en su cuaderno.",
+              "english": "\"Carmen Mejía was a scientist, and also a woman of great faith,\" said Karla. \"She spent whole nights looking at the infinite and writing in her notebook.\""
+            },
+            {
+              "text": "—Tenía una virtud rara: sabía contemplar sin pretender explicarlo todo. Eso es una forma de humildad, y una forma de gratitud.",
+              "english": "\"She had a rare virtue: she knew how to contemplate without pretending to explain everything. That is a form of humility, and a form of gratitude.\""
+            },
+            {
+              "text": "—A mí me da vergüenza reconocerlo —dijo Sam—, pero hoy sentí algo íntimo, como si la muerte fuera un tema para hablar en voz baja.",
+              "english": "\"I'm ashamed to admit it,\" said Sam, \"but today I felt something intimate, as if death were a subject to talk about in a low voice.\""
+            },
+            {
+              "text": "—No es una vergüenza —repuso Wilmer—. El carácter de una persona se ve en cómo acompaña a otra en su pena. Eso no se aprende en ningún curso.",
+              "english": "\"It is not a shame,\" Wilmer replied. \"A person's character is seen in how he accompanies another in his sorrow. That is not learned in any course.\""
+            },
+            {
+              "text": "—Don Chepe dijo que ya estaba harto de la soledad, hace unos meses —recordó Karla—. Ahora la va a sentir de verdad.",
+              "english": "\"Don Chepe said he was already fed up with loneliness, a few months ago,\" Karla recalled. \"Now he will really feel it.\""
+            },
+            {
+              "text": "—Por eso estamos aquí —dijo Sam—. No para dar un discurso. Para estar.",
+              "english": "\"That is why we are here,\" said Sam. \"Not to give a speech. To be.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los cuentos de la noche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En los velorios de Honduras se cuentan historias para que la noche pase más ligera, y esa noche también las hubo.",
+              "english": "At wakes in Honduras stories are told so that the night passes more lightly, and that night there were some too."
+            },
+            {
+              "text": "—Hagamos lo que le gustaba a doña Chavela —propuso Wilmer—. Que cada uno cuente un libro de este año.",
+              "english": "\"Let's do what doña Chavela liked,\" proposed Wilmer. \"Let each one tell a book from this year.\""
+            },
+            {
+              "text": "Karla contó la historia de Carmen Mejía.",
+              "english": "Karla told the story of Carmen Mejía."
+            },
+            {
+              "text": "—Era una mujer soltera, una mujer solitaria, y los vecinos consideraban que su costumbre de pasear tras la lluvia era una rareza.",
+              "english": "\"She was an unmarried woman, a solitary woman, and the neighbours considered that her habit of walking after the rain was an oddity.\""
+            },
+            {
+              "text": "—Ése fue el principio de su ciencia. Una rana saltó sobre su pie, y la mozuela soltó una carcajada.",
+              "english": "\"That was the beginning of her science. A frog jumped on her foot, and the young girl burst out laughing.\""
+            },
+            {
+              "text": "—Los perros ladraban y le enseñaban los dientes al paraguas, pero ella llevaba consigo su imaginación y un cuaderno, para no confundir lo que veía con lo que creía.",
+              "english": "\"The dogs barked and showed their teeth to the umbrella, but she carried her imagination and a notebook with her, so as not to confuse what she saw with what she believed.\""
+            },
+            {
+              "text": "Salía en las noches de invierno, entre árboles desnudos, y escribía todo lo que veía.",
+              "english": "She went out on winter nights, among bare trees, and wrote down everything she saw."
+            },
+            {
+              "text": "—Por azar, o por algo más, se enamoró de un ingeniero, y experimentaba una alegría nueva y un sentimiento sin nombre.",
+              "english": "\"By chance, or by something more, she fell in love with an engineer, and she experienced a new joy and a feeling without a name.\""
+            },
+            {
+              "text": "—Cuando él se fue, sintió el dolor en las entrañas, pero se lavó la cara y siguió. Los demás aseguraron que no sentía nada.",
+              "english": "\"When he left, she felt the pain in her gut, but she washed her face and carried on. The others assured that she felt nothing.\""
+            },
+            {
+              "text": "—Su libro produjo muchas preguntas, y su esperanto confundió a más de un crítico. La noticia de su muerte sacudió el pueblo.",
+              "english": "\"Her book produced many questions, and her Esperanto confused more than one critic. The news of her death shook the town.\""
+            },
+            {
+              "text": "—Esa fue la reseña —terminó Karla—. Una linda vida, sin cinismo y casi sin ruido.",
+              "english": "\"That was the review,\" Karla ended. \"A beautiful life, without cynicism and almost without noise.\""
+            },
+            {
+              "text": "Nico contó la función del molino, aunque la había visto con un solo ojo, de cansancio.",
+              "english": "Nico told about the show at the mill, although he had seen it with only one eye, out of tiredness."
+            },
+            {
+              "text": "—Fue un disparate muy hermoso. El propósito era enseñar el arte de las ideas, y la función empezó con un filósofo y un soldado que se despreciaban.",
+              "english": "\"It was a very beautiful piece of nonsense. The purpose was to teach the art of ideas, and the show began with a philosopher and a soldier who despised each other.\""
+            },
+            {
+              "text": "—Ambos eran vagos, pero uno insinuó una teoría y el otro lanzó un grito. Era el monólogo más fantástico que oí, con su odio, su horror y su fantasía.",
+              "english": "\"Both were idlers, but one insinuated a theory and the other let out a cry. It was the most fantastic monologue I heard, with its hatred, its horror and its fantasy.\""
+            },
+            {
+              "text": "—Mi primo, que estaba en la fila de atrás, decía que el seductor representaba a un místico y que ésa era una hombrada.",
+              "english": "\"My cousin, who was in the back row, said that the seducer represented a mystic and that this was a manly feat.\""
+            },
+            {
+              "text": "—Cada letra del cartón brillaba, y el empeño de todos vislumbraba una hermosura más grande. Yo pretendo emprender algo así algún día.",
+              "english": "\"Every letter of the cardboard shone, and everybody's effort glimpsed a greater beauty. I intend to undertake something like that someday.\""
+            },
+            {
+              "text": "—El molino ya no muele, pero la corriente del río sigue —dijo Nico—. Y me pareció una buena forma de referir la vida: con la mirada fija en lo que pasa.",
+              "english": "\"The mill no longer grinds, but the current of the river goes on,\" said Nico. \"And it seemed to me a good way of relating life: with the gaze fixed on what passes.\""
+            },
+            {
+              "text": "Sam contó las tres cartas, porque eran las más cortas.",
+              "english": "Sam told about the three letters, because they were the shortest."
+            },
+            {
+              "text": "—Hay una carta de familia, llena de memoria y de cariño, donde alguien procuraba no llorar. Otra va al vicario y habla de una monja que dirigía una escuela.",
+              "english": "\"There is a family letter, full of memory and affection, where someone tried not to cry. Another goes to the vicar and talks about a nun who ran a school.\""
+            },
+            {
+              "text": "—Una carta empieza con «Estimado vicario», y el vicario, con atención, entregó su respuesta en un papel breve. Sobra decir que ya estaba harto de las cartas largas.",
+              "english": "\"One letter begins with Dear Vicar, and the vicar, with attention, handed over his reply on a short paper. Needless to say, he was already fed up with long letters.\""
+            },
+            {
+              "text": "—La tercera carta habla de una renta y de una dueña de casa admirada, que no quería que el diablo se metiera en su comedia.",
+              "english": "\"The third letter speaks of a rent and a respected landlady, who did not want the devil to get into her comedy.\""
+            },
+            {
+              "text": "—Hay un epílogo con frialdad y destino, pero se va derritiendo, y al final el chico vencido acude a pedir perdón.",
+              "english": "\"There is an epilogue with coldness and destiny, but it gradually melts, and in the end the defeated boy comes to ask forgiveness.\""
+            },
+            {
+              "text": "—Me gustaron porque sus palabras eran estimadas y conformes con la verdad. Cuando ensayábamos, mi compañero decía que la práctica hace al maestro.",
+              "english": "\"I liked them because their words were esteemed and in accordance with the truth. When we rehearsed, my classmate used to say that practice makes the master.\""
+            },
+            {
+              "text": "Yesenia dijo que ella solo recordaba el sonido de la lluvia, un recio golpe sobre el zinc, y que prefería oír a don Chepe.",
+              "english": "Yesenia said that she only remembered the sound of the rain, a hard knock on the zinc, and that she preferred to hear don Chepe."
+            },
+            {
+              "text": "—Cuénteme un banano de su finca, don Chepe —dijo ella—. Una banana de las que usted vendía.",
+              "english": "\"Tell me about a banana from your farm, don Chepe,\" she said. \"One of the ones you used to sell.\""
+            },
+            {
+              "text": "—La banana es como la vida —contestó él, con los ojos húmedos—. Uno la ve verde, crece, madura, y se la lleva la deriva del tiempo. Pero de cada una queda una simiente.",
+              "english": "\"The banana is like life,\" he answered, with damp eyes. \"You see it green, it grows, it ripens, and the drift of time carries it away. But from each one a seed remains.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El café de la madrugada",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Poco antes de las cinco, la hermana Rosa sirvió el último café con pan.",
+              "english": "A little before five, sister Rosa served the last coffee with bread."
+            },
+            {
+              "text": "La casa estaba en silencio, y solo se oía el ruido de la lluvia sobre el zinc.",
+              "english": "The house was silent, and only the noise of the rain on the zinc could be heard."
+            },
+            {
+              "text": "Don Chepe se acercó a Sam y le tomó la mano.",
+              "english": "Don Chepe came up to Sam and took his hand."
+            },
+            {
+              "text": "—Gracias por quedarse, chele —le dijo—. Usted no es de aquí, pero esta noche fue de la familia.",
+              "english": "\"Thank you for staying, chele,\" he told him. \"You are not from here, but tonight you were part of the family.\""
+            },
+            {
+              "text": "—Gracias a usted, don Chepe —contestó Sam—. Su Chavela se va con mucha gente que la quiere.",
+              "english": "\"Thank you, don Chepe,\" answered Sam. \"Your Chavela leaves with many people who love her.\""
+            },
+            {
+              "text": "Por la mañana, cuatro hombres cargaron el cajón hasta el cementerio, y el pastor dijo unas últimas palabras junto a la tumba.",
+              "english": "In the morning, four men carried the coffin to the cemetery, and the pastor said a few last words beside the grave."
+            },
+            {
+              "text": "—No es un término, es una pausa —dijo—. Lo que hoy enterramos, Dios lo va a levantar.",
+              "english": "\"It is not an end, it is a pause,\" he said. \"What we bury today, God is going to raise.\""
+            },
+            {
+              "text": "Esa noche empezaron los nueve días de rezos, y cada noche había café, pan y gente en la casa de don Chepe.",
+              "english": "That night the nine days of prayers began, and every night there was coffee, bread and people at don Chepe's house."
+            },
+            {
+              "text": "Sam escribió en su cuaderno: «En Honduras aprendí que la compañía es la primera forma de la esperanza».",
+              "english": "Sam wrote in his notebook: \"In Honduras I learned that company is the first form of hope.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Spanish package, Honduran-register strand)"
+        }
+      }
+    ]
+  }
+}

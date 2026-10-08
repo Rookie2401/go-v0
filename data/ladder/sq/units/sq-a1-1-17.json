@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-17",
+  "lang": "sq",
+  "title": "Natën",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-17",
+    "title": "Albanian ladder, a1-1: Natën (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Natën",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot Sam mendon për ditën.",
+              "english": "Today Sam thinks about the day."
+            },
+            {
+              "text": "Ai zgjohet herët, lahet dhe vishet.",
+              "english": "He wakes up early, washes and gets dressed."
+            },
+            {
+              "text": "Pastaj ai shkon në treg dhe blen bukë dhe djathë.",
+              "english": "Then he goes to the market and buys bread and cheese."
+            },
+            {
+              "text": "Te Drita ai ha darkë.",
+              "english": "At Drita's he has dinner."
+            },
+            {
+              "text": "Pas darkës ai shkon në shtëpi.",
+              "english": "After dinner he goes home."
+            },
+            {
+              "text": "Dje Sam shkroi një letër.",
+              "english": "Yesterday Sam wrote a letter."
+            },
+            {
+              "text": "Sot ai lexon Biblën.",
+              "english": "Today he reads the Bible."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Është natë.",
+              "english": "It is night."
+            },
+            {
+              "text": "Ardi është i lodhur.",
+              "english": "Ardi is tired."
+            },
+            {
+              "text": "Ai lahet dhe shkon në dhomë.",
+              "english": "He washes and goes to his room."
+            },
+            {
+              "text": "Gjyshja i lexon një histori.",
+              "english": "Grandmother reads him a story."
+            },
+            {
+              "text": "Macja është në dhomë me Ardin.",
+              "english": "The cat is in the room with Ardi."
+            },
+            {
+              "text": "Pastaj gjyshja thotë: — Natën e mirë, Ardi!",
+              "english": "Then grandmother says: \"Good night, Ardi!\""
+            },
+            {
+              "text": "Ardi fle.",
+              "english": "Ardi sleeps."
+            },
+            {
+              "text": "Gjyshja pi çaj në kuzhinë.",
+              "english": "Grandmother drinks tea in the kitchen."
+            },
+            {
+              "text": "Ajo lexon pak dhe pastaj fle.",
+              "english": "She reads a little and then sleeps."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam lexon një histori në shqip.",
+              "english": "Sam reads a story in Albanian."
+            },
+            {
+              "text": "Historia është e bukur.",
+              "english": "The story is beautiful."
+            },
+            {
+              "text": "Pastaj Luan i thotë: — Sam, është koha për të fjetur.",
+              "english": "Then Luan says to him: \"Sam, it is time to sleep.\""
+            },
+            {
+              "text": "— Po. Natën e mirë, Luan!",
+              "english": "\"Yes. Good night, Luan!\""
+            },
+            {
+              "text": "Sam pi ujë dhe lahet.",
+              "english": "Sam drinks water and washes."
+            },
+            {
+              "text": "Sam fillon të lexojë Biblën.",
+              "english": "Sam begins to read the Bible."
+            },
+            {
+              "text": "Ai shikon nga dritarja dhe lutet.",
+              "english": "He looks out of the window and prays."
+            },
+            {
+              "text": "Ai beson te Perëndia.",
+              "english": "He believes in God."
+            },
+            {
+              "text": "Ai mendon për dashurinë e Perëndisë.",
+              "english": "He thinks about the love of God."
+            },
+            {
+              "text": "Ai mendon për Jezusin.",
+              "english": "He thinks about Jesus."
+            },
+            {
+              "text": "Jezusi vdiq për mëkatet tona dhe u ringjall.",
+              "english": "Jesus died for our sins and rose again."
+            },
+            {
+              "text": "Perëndia e do Birin e tij.",
+              "english": "God loves his Son."
+            },
+            {
+              "text": "Perëndia na do.",
+              "english": "God loves us."
+            },
+            {
+              "text": "Sam fle.",
+              "english": "Sam sleeps."
+            },
+            {
+              "text": "Nesër ai pyet Luanin diçka.",
+              "english": "Tomorrow he will ask Luan something."
+            },
+            {
+              "text": "Nesër ai lexon më shumë.",
+              "english": "Tomorrow he will read more."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Fëmijët janë të lodhur.",
+              "english": "The children are tired."
+            },
+            {
+              "text": "Nëna u thotë: — Është koha për të fjetur.",
+              "english": "The mother says to them: \"It is time to sleep.\""
+            },
+            {
+              "text": "Gjergji dhe Elira lahen dhe shkojnë në dhomë.",
+              "english": "Gjergj and Elira wash and go to their room."
+            },
+            {
+              "text": "Babai u lexon një histori.",
+              "english": "The father reads them a story."
+            },
+            {
+              "text": "Pastaj babai u thotë: — Natën e mirë!",
+              "english": "Then the father says to them: \"Good night!\""
+            },
+            {
+              "text": "Fëmijët flenë.",
+              "english": "The children sleep."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

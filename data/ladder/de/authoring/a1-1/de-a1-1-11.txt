@@ -1,0 +1,70 @@
+=== de-a1-1-11
+speakers: thomas=Pastor Thomas, david=David, ruth=Ruth, sam=Sam
+## Die Woche
+Es ist Abend in der Gemeinde. || It is evening at the church.
+Thomas, David, Ruth und Sam sind da. || Thomas, David, Ruth and Sam are there.
+[thomas] Guten Abend! || Good evening!
+[thomas] Wir sind in der Küche der Kirche. || We are in the church kitchen.
+[david] Hallo, Thomas! || Hello, Thomas!
+[david] Hallo, Sam! || Hello, Sam!
+[ruth] Guten Abend, Sam! || Good evening, Sam!
+[ruth] Du bist da, das ist gut! || You are here, that is good!
+[david] Was machen wir in der Woche? || What are we doing this week?
+[thomas] Am Sonntag ist der Gottesdienst. || On Sunday there is the service.
+[thomas] Der Gottesdienst fängt um zehn Uhr an. || The service starts at ten o'clock.
+[thomas] In der Gemeinde wollen wir Lieder singen. || In the church we want to sing songs.
+[ruth] Wer kann ein Lied singen? || Who can sing a song?
+[sam] Ich kann nicht gut singen, aber ich will lernen. || I cannot sing well, but I want to learn.
+[ruth] Das ist gut, Sam. || That is good, Sam.
+[ruth] Wir können zusammen lernen. || We can learn together.
+[thomas] Das Lied ist in der Bibel. || The song is in the Bible.
+[thomas] Hier ist die Bibel. || Here is the Bible.
+[david] Wir lernen in der Bibel. || We learn in the Bible.
+[thomas] Du kannst auch beten, Sam. || You can pray too, Sam.
+[sam] Ich bete gern, aber ich spreche nicht viel Deutsch. || I like praying, but I do not speak much German.
+[ruth] Sprich gern, auch nicht gut. || Speak freely, even if it is not good.
+[ruth] David ist mein Freund, und du bist auch ein Freund, Sam. || David is my friend, and you are a friend too, Sam.
+[sam] Danke, Ruth. || Thank you, Ruth.
+[sam] Das ist sehr schön. || That is very nice.
+
+## Das Mittagessen
+[thomas] Nach dem Gottesdienst ist das Mittagessen. || After the service there is lunch.
+[ruth] Wer soll kochen? || Who is to cook?
+[david] Marta kocht gern. || Marta likes cooking.
+[david] Sie macht Suppe und Fleisch. || She makes soup and meat.
+[ruth] Ich koche Kartoffeln. || I will cook potatoes.
+[thomas] Und wer macht Kuchen? || And who makes cake?
+[david] Marta macht auch Kuchen. || Marta makes cake too.
+[david] Er ist so lecker! || It is so tasty!
+[sam] Was soll ich machen? || What should I do?
+[ruth] Kannst du einkaufen? || Can you do the shopping?
+[sam] Ja, ich kann einkaufen. || Yes, I can do the shopping.
+[ruth] Du kaufst Tomaten und Äpfel, zwei Kilo. || You buy tomatoes and apples, two kilos.
+[sam] Wie ist der Preis? || What is the price?
+[david] Du darfst nicht zu viel kaufen. || You must not buy too much.
+[sam] Gut, ich kaufe zwei Kilo Tomaten und ein Kilo Äpfel. || Good, I will buy two kilos of tomatoes and one kilo of apples.
+[sam] Soll ich um zehn Uhr da sein? || Should I be there at ten o'clock?
+[thomas] Ja, Sam. || Yes, Sam.
+
+## Wir wollen helfen
+[thomas] Wir sind alle hier, wir wollen helfen. || We are all here, we want to help.
+[david] Ich helfe in der Küche. || I will help in the kitchen.
+[sam] Ich helfe auch. || I will help too.
+[thomas] Sam ist ein guter Freund von der Gemeinde. || Sam is a good friend of the church.
+[ruth] Das ist eine gute Woche! || That is a good week!
+Es ist halb neun. || It is half past eight.
+Sie haben eine Stunde. || They have one hour.
+Dann ist Pause mit Kaffee und Kuchen. || Then there is a break with coffee and cake.
+[thomas] Ben kommt mit Mama und Papa in die Kirche. || Ben is coming to church with Mama and Papa.
+[david] Das ist schön! || That is nice!
+[david] Ben ist immer so gut. || Ben is always so good.
+[sam] Am Sonntag fahre ich mit der Straßenbahn. || On Sunday I will take the tram.
+[sam] Die Straßenbahn fährt um neun Uhr ab. || The tram leaves at nine o'clock.
+[ruth] Gut. || Good.
+[ruth] Die Sonne ist am Sonntag warm, das ist immer schön. || The sun is warm on Sunday, that is always nice.
+[david] Auf der Straße ist es am Sonntag schön. || On the street it is nice on Sunday.
+Sie beten für die Woche. || They pray for the week.
+[thomas] Anna und Lukas kommen auch in die Kirche. || Anna and Lukas are coming to church too.
+[david] Anna ist müde, sie arbeitet viel in der Klinik. || Anna is tired, she works a lot at the clinic.
+[ruth] Lukas ist Lehrer, er hat Schule am Morgen. || Lukas is a teacher, he has school in the morning.
+

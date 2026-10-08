@@ -1,0 +1,45 @@
+=== nb-b1-bridge-02 | story | work | The call from the bookshop | Svar fra bokhandelen | work,interview,practice,indirect speech,modal verbs
+speakers: sjef=Sjefen i bokhandelen
+note: Indirect speech (sa at ..., spurte om ...), "burde", "hvorfor" and "fordi", a reflexive verb (forberede seg), "ennå". Sam waits for an answer, is invited to an interview and practises with Anna, Lars and Nils.
+## Å vente
+{sam} ventet i fem dager. Hver dag så han på telefonen, og hver kveld spurte {luis}: «Har de ringt?» || Sam waited for five days. Every day he looked at the phone, and every evening Lars asked: "Have they called?"
+[sam] Nei, ikke ennå. Kanskje de ikke vil ha meg. || No, not yet. Maybe they do not want me.
+[ana] Sjefen har ikke svart ennå, men han svarer snart. Du burde ikke tenke på det hver dag. || The manager has not answered yet, but he will probably answer soon. You should not think about it every day.
+Så en dag ringte telefonen mens {sam} satt og leste. Det var sjefen i bokhandelen. || Then one day the phone rang while Sam was sitting reading. It was the manager of the bookshop.
+[sjef] Hei, {sam}! Vi har lest søknaden din, og vi vil gjerne at du kommer på intervju. || Hi, Sam! We have read your application, and we would like you to come for an interview.
+[sam] Takk! Når kan jeg komme? || Thank you! When can I come?
+[sjef] På mandag klokka ti. Kan du det? || On Monday at ten o'clock. Can you do that?
+[sam] Ja, det kan jeg. Jeg kommer. || Yes, I can. I will come.
+{sam} var glad, men han var også nervøs. Han sa til {ana} og {luis} at sjefen hadde ringt, og at han skulle på intervju på mandag. || Sam was happy, but he was also nervous. He told Anna and Lars that the manager had called, and that he was going to an interview on Monday.
+{ana} ble glad. «Så bra!» sa hun. «Nå må vi øve.» || Anna was glad. "How good!" she said. "Now we must practise."
+
+## Å øve
+På lørdag kveld sa {luis}: «Vi øver nå. Jeg spiller sjefen, og du svarer på spørsmålene.» || On Saturday evening Lars said: "We practise now. I will play the manager, and you answer the questions."
+[luis] God dag. Hvorfor vil du jobbe i en bokhandel? || Good day. Why do you want to work in a bookshop?
+[sam] Fordi jeg liker bøker, og fordi jeg vil lære mer norsk. || Because I like books, and because I want to learn more Norwegian.
+[luis] Det er et bra svar. Hvorfor tror du at du er riktig for stillingen? || That is a good answer. Why do you think you are right for the position?
+[sam] Jeg vet ikke. Jeg har ingen erfaring. || I do not know. I have no experience.
+[ana] Nei, nei! Du må ikke si at du ikke vet. Du burde si hva du kan. || No, no! You must not say that you do not know. You should say what you can do.
+[sam] Da sier jeg at jeg er god til å lytte og god til å lære. || Then I will say that I am good at listening and good at learning.
+[ana] Det er bra. Si også at du kommer tidlig, og at du aldri glemmer ingenting. || That is good. Say also that you come early, and that you never forget anything.
+[luis] Og husk å være ærlig. Hvis du ikke forstår et spørsmål, kan du si det. Men si også at du vil lære. || And remember to be honest. If you do not understand a question, you can say so. But also say that you want to learn.
+[sam] Ærlig, ja. Det kan jeg. || Honest, yes. I can do that.
+{nico} kom inn og ville hjelpe. «Jeg har tre råd,» sa han. «Ikke glem veska. Vær glad. Og ikke spis taco før intervjuet!» || Nils came in and wanted to help. "I have three pieces of advice," he said. "Do not forget the bag. Be happy. And do not eat tacos before the interview!"
+Alle lo. «Det er gode råd, {nico},» sa {ana}. «Takk for rådene.» || Everyone laughed. "Those are good pieces of advice, Nils," said Anna. "Thanks for the advice."
+De øvde i en time. Til slutt kunne {sam} svare på alle spørsmålene. || They practised for an hour. In the end Sam could answer all the questions.
+
+## Kvelden før
+På søndag kveld forberedte {sam} seg godt. Han leste søknaden en gang til, og han svarte høyt på alle spørsmålene. || On Sunday evening Sam prepared himself well. He read the application once more, and he answered all the questions aloud.
+«Du har forberedt deg bra,» sa {ana}. «Nå burde du sove.» || "You have prepared well," said Anna. "Now you should sleep."
+Men klokka var elleve, og han hadde ikke sovet ennå. Han var nervøs, og han tenkte: «Hvorfor er jeg så redd? Hva om jeg ikke forstår spørsmålene?» || But it was eleven o'clock, and he had not slept yet. He was nervous, and he thought: "Why am I so afraid? What if I do not understand the questions?"
+Han tenkte på rådene til {nico} og på jenta på brua. Hun hadde vært klok, og hun hadde ikke vært redd for trollet. || He thought of Nils's advice and of the girl on the bridge. She had been clever, and she had not been afraid of the troll.
+Så ringte {marta}. || Then Marta called.
+[marta] {ana} sa at du skal på intervju. Jeg vil bare si at du ikke trenger å være redd. || Anna said that you are going to an interview. I just want to say that you do not need to be afraid.
+[marta] Da jeg skulle selge brød på markedet første gang, var jeg også nervøs. Men jeg var meg selv, og det gikk bra. Folk liker en som er ærlig. || When I was going to sell bread at the market for the first time, I was nervous too. But I was myself, and it went well. People like someone who is honest.
+[sam] Takk, {marta}. Jeg skal prøve å være meg selv. || Thank you, Marta. I will try to be myself.
+[marta] Du har forberedt deg godt. Jeg ber for deg i kveld, og nå burde du sove. || You have prepared yourself well. I will pray for you tonight, and now you should sleep.
+Etter telefonen ba {sam} selv: «Gud, hjelp meg i morgen.» Så sov han. || After the call Sam prayed himself: "God, help me tomorrow." Then he slept.
+
+[marta] I kirka ber flere venner for deg. {nico} har fortalt at fiskerne drar ut i båt og spiser tørr fisk før de skal begynne. || In church several are praying for you. Nils has told that the fishermen go out in a boat and eat dried fish before they begin.
+[marta] Kom hit etter gudstjenesten på søndag, så går vi en tur i naturen. || Come here after the service on Sunday, and we will go for a walk in nature.
+[luis] Mange søker jobber, men få får dem. Du har søkt, og du har forberedt deg godt. || Many apply for jobs, but few get them. You have applied, and you have prepared yourself well.

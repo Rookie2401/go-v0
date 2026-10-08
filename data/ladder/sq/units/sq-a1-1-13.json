@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-13",
+  "lang": "sq",
+  "title": "E diela në kishë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-13",
+    "title": "Albanian ladder, a1-1: E diela në kishë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Church or testimony content: needs a theological reviewer as well."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "E diela në kishë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën nuk bie shi.",
+              "english": "On Sunday it does not rain."
+            },
+            {
+              "text": "Drita shkon në kishë.",
+              "english": "Drita goes to church."
+            },
+            {
+              "text": "Ardi shkon me gjyshen.",
+              "english": "Ardi goes with his grandmother."
+            },
+            {
+              "text": "Njerëzit hyjnë në kishë.",
+              "english": "The people go into the church."
+            },
+            {
+              "text": "Në verë ka shumë njerëz në kishë.",
+              "english": "In summer there are many people at church."
+            },
+            {
+              "text": "Edhe Sam, Ana dhe Luan janë në kishë.",
+              "english": "Sam, Ana and Luan are at church too."
+            },
+            {
+              "text": "Fëmijët dhe njerëzit këndojnë për Perëndinë.",
+              "english": "The children and the people sing to God."
+            },
+            {
+              "text": "Ardit i pëlqen të këndojë.",
+              "english": "Ardi likes to sing."
+            },
+            {
+              "text": "Njerëzit ulen.",
+              "english": "The people sit down."
+            },
+            {
+              "text": "Pastaj një burrë flet.",
+              "english": "Then a man speaks."
+            },
+            {
+              "text": "Sam dëgjon.",
+              "english": "Sam listens."
+            },
+            {
+              "text": "Ai kupton pak.",
+              "english": "He understands a little."
+            },
+            {
+              "text": "Ana i thotë: — Shumë mirë, Sam!",
+              "english": "Ana says to him: \"Very good, Sam!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam ka një Bibël në shqip.",
+              "english": "Sam has a Bible in Albanian."
+            },
+            {
+              "text": "Ai e merr Biblën dhe e shikon.",
+              "english": "He takes the Bible and looks at it."
+            },
+            {
+              "text": "Ai lexon pak çdo ditë.",
+              "english": "He reads a little every day."
+            },
+            {
+              "text": "Sot ai do të lexojë me Luanin.",
+              "english": "Today he will read with Luan."
+            },
+            {
+              "text": "Luan thotë: — Kjo është fjala e Perëndisë.",
+              "english": "Luan says: \"This is the word of God.\""
+            },
+            {
+              "text": "Sam dëgjon dhe mëson.",
+              "english": "Sam listens and learns."
+            },
+            {
+              "text": "Ai mendon për dashurinë.",
+              "english": "He thinks about love."
+            },
+            {
+              "text": "Pastaj Sam dhe Luan pinë kafe.",
+              "english": "Then Sam and Luan drink coffee."
+            },
+            {
+              "text": "Luan ha bukë.",
+              "english": "Luan eats bread."
+            },
+            {
+              "text": "Sam ha një mollë të kuqe.",
+              "english": "Sam eats a red apple."
+            },
+            {
+              "text": "Sam është i lumtur.",
+              "english": "Sam is happy."
+            },
+            {
+              "text": "Ai mund të lexojë shumë tani.",
+              "english": "He can read a lot now."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas kishës njerëzit pinë kafe.",
+              "english": "After church the people drink coffee."
+            },
+            {
+              "text": "Gjyshja Drita sjell bukë për të gjithë.",
+              "english": "Grandmother Drita brings bread for everyone."
+            },
+            {
+              "text": "Ardi këndon me Elirën.",
+              "english": "Ardi sings with Elira."
+            },
+            {
+              "text": "Pastaj njerëzit dalin nga kisha.",
+              "english": "Then the people go out of the church."
+            },
+            {
+              "text": "Ardi dhe Elira luajnë në rrugë.",
+              "english": "Ardi and Elira play in the street."
+            },
+            {
+              "text": "Dritani flet me Samin.",
+              "english": "Dritan talks with Sam."
+            },
+            {
+              "text": "— Kisha juaj është shumë e bukur, — thotë Sam.",
+              "english": "\"Your church is very beautiful,\" says Sam."
+            },
+            {
+              "text": "— Sam, a e lexon Biblën?",
+              "english": "\"Sam, do you read the Bible?\""
+            },
+            {
+              "text": "— Po, pak çdo ditë.",
+              "english": "\"Yes, a little every day.\""
+            },
+            {
+              "text": "— Shumë mirë. Ajo flet për dashurinë e Perëndisë.",
+              "english": "\"Very good. It speaks of the love of God.\""
+            },
+            {
+              "text": "Gruaja e Dritanit pi kafe me Anën.",
+              "english": "Dritan's wife drinks coffee with Ana."
+            },
+            {
+              "text": "Pastaj Sam shkon në shtëpi.",
+              "english": "Then Sam goes home."
+            },
+            {
+              "text": "Ai lutet dhe lexon.",
+              "english": "He prays and reads."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas kishës Ardi pyet Samin:",
+              "english": "After church Ardi asks Sam:"
+            },
+            {
+              "text": "— Çfarë është Bibla?",
+              "english": "\"What is the Bible?\""
+            },
+            {
+              "text": "— Bibla është fjala e Perëndisë, — thotë Sam.",
+              "english": "\"The Bible is the word of God,\" says Sam."
+            },
+            {
+              "text": "— A mund ta lexoj?",
+              "english": "\"May I read it?\""
+            },
+            {
+              "text": "— Po. Unë të jap një Bibël.",
+              "english": "\"Yes. I will give you a Bible.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam është në kishë me Anën dhe Luanin.",
+              "english": "Sam is at church with Ana and Luan."
+            },
+            {
+              "text": "Ardi është në kishë me gjyshen.",
+              "english": "Ardi is at church with his grandmother."
+            },
+            {
+              "text": "Njerëzit pinë kafe dhe hanë bukë.",
+              "english": "The people drink coffee and eat bread."
+            },
+            {
+              "text": "Sam flet me Luanin dhe Anën dhe Ardin.",
+              "english": "Sam talks with Luan and Ana and Ardi."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

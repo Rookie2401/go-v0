@@ -1,0 +1,81 @@
+=== de-a1-1-04
+speakers: sam=Sam, anna=Anna, schmidt=Herr Schmidt, lukas=Lukas
+## In der Bäckerei
+Sam und Anna sind in der Bäckerei. || Sam and Anna are in the bakery.
+Es ist Morgen. || It is morning.
+Sam hat Hunger. || Sam is hungry.
+[anna] Guten Tag, Herr Schmidt! || Good day, Herr Schmidt!
+[schmidt] Guten Tag, Anna! || Good day, Anna!
+[schmidt] Und wie ist Ihr Name? || And what is your name?
+[sam] Ich bin Sam Miller. || I am Sam Miller.
+[schmidt] Herr Miller, Sie sprechen gut Deutsch! || Mr Miller, you speak good German!
+[sam] Nein, nein, ganz klein. || No, no, very little.
+[schmidt] Woher kommen Sie? || Where do you come from?
+[sam] Ich komme aus den USA. || I come from the USA.
+[schmidt] Das ist schön. || That is nice.
+[schmidt] Das ist meine Bäckerei. || This is my bakery.
+
+## Das Frühstück
+[schmidt] Was möchten Sie? || What would you like?
+[sam] Ich habe Hunger. || I am hungry.
+[sam] Ich möchte ein Frühstück. || I would like a breakfast.
+[schmidt] Gern. || Gladly.
+[schmidt] Das Frühstück kostet sieben Euro. || The breakfast costs seven euros.
+[schmidt] Es ist ein Brötchen mit Butter und Käse, ein Ei und Kaffee oder Tee. || It is a roll with butter and cheese, an egg, and coffee or tea.
+[sam] Das ist gut. || That is good.
+[sam] Ich nehme das Frühstück. || I will take the breakfast.
+[anna] Ich nehme ein Brötchen mit Butter und Käse. || I will take a roll with butter and cheese.
+[anna] Ich esse kein Ei. || I do not eat egg.
+[anna] Möchtest du Kaffee oder Tee, Sam? || Would you like coffee or tea, Sam?
+[anna] Ich nehme Kaffee mit Milch. || I will take coffee with milk.
+[sam] Und ich möchte Tee mit Milch, bitte. || And I would like tea with milk, please.
+[schmidt] Gern. Kommen Sie, da ist ein Tisch. || Come, there is a table.
+
+## Am Tisch
+Anna und Sam sind am Tisch. || Anna and Sam are at the table.
+[anna] Wie ist das Brötchen? || How is the roll?
+[sam] Es ist ganz gut! || It is quite good!
+[sam] Und der Käse ist sehr gut! || And the cheese is very good!
+[anna] Das Ei ist auch gut. || The egg is good too.
+[anna] Hier ist Butter, Sam. || Here is butter, Sam.
+[sam] Zu Hause esse ich in der Küche von Frau Weber. || At home I eat in Mrs Weber's kitchen.
+[sam] Die Küche ist klein, und in meinem Zimmer gibt es keinen Kaffee. || The kitchen is small, and in my room there is no coffee.
+[anna] Ich arbeite heute in der Klinik. || I am working at the clinic today.
+[anna] Und du, Sam? || And you, Sam?
+[anna] Gehst du in die Stadt? || Are you going into the city?
+[sam] Ja, ich gehe in die Stadt. || Yes, I am going into the city.
+Herr Schmidt kommt zum Tisch. || Herr Schmidt comes to the table.
+[schmidt] Hier, bitte. || Here you are.
+[schmidt] Da ist meine Tochter. || There is my daughter.
+[schmidt] Sie arbeitet auch hier. || She works here too.
+[schmidt] Und mein Vater ist 80 Jahre alt. || And my father is 80 years old.
+[sam] Ihre Familie ist hier, das ist schön! || Your family is here, that is lovely!
+[schmidt] Ja, ja. || Yes, yes.
+[schmidt] Ich trinke den ganzen Tag Kaffee mit Milch. || I drink coffee with milk all day.
+[anna] Das ist gut, Herr Schmidt. || That is good, Herr Schmidt.
+[schmidt] Danke, Anna! || Thank you, Anna!
+Lukas kommt in die Bäckerei. || Lukas comes into the bakery.
+[lukas] Guten Morgen, Anna! || Good morning, Anna!
+[lukas] Hallo, Sam! || Hello, Sam!
+[anna] Hallo, Lukas! || Hello, Lukas!
+[anna] Möchtest du Wasser oder Kaffee? || Would you like water or coffee?
+[lukas] Nein, danke. || No, thank you.
+[lukas] Ich gehe in die Schule. || I am going to school.
+Anna und Sam gehen. || Anna and Sam leave.
+[anna] Einen schönen Tag, Herr Schmidt! || Have a nice day, Herr Schmidt!
+[schmidt] Danke, Ihnen auch! || Thank you, you too!
+[sam] Danke, Herr Schmidt! || Thank you, Herr Schmidt!
+[sam] Auf Wiedersehen! || Goodbye!
+[anna] Ich gehe in die Klinik, ich arbeite heute. || I am going to the clinic, I am working today.
+[anna] Ich bin müde, aber ich arbeite gern. || I am tired, but I like working.
+[sam] Du bist sehr gut, Anna. || You are very good, Anna.
+[anna] Danke, Sam. || Thank you, Sam.
+[anna] Das ist schön. || That is nice.
+[sam] Ich gehe in die Stadt, zu Frau Weber. || I am going into the city, to Mrs Weber's.
+[sam] Es ist schön hier, Herr Schmidt. || It is lovely here, Herr Schmidt.
+[schmidt] Danke, Herr Miller. || Thank you, Mr Miller.
+[schmidt] Und Anna, du bist auch sehr gut. || And Anna, you are very good too.
+[anna] Danke, Herr Schmidt! || Thank you, Herr Schmidt!
+[anna] Der Kaffee ist gut. || The coffee is good.
+[sam] Es ist sehr schön hier, und ich bin gern in der Stadt. || It is very lovely here, and I like being in the city.
+

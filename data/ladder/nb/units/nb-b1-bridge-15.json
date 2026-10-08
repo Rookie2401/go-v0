@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-15",
+  "lang": "nb",
+  "title": "The home group",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-15",
+    "title": "The home group (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A weekly home group of the church reads a parable (the lost sheep) retold in the course's own words, not a Bible translation, and talks about it. Reflective Norwegian with \"som\" clauses, questions, and a retelling in the past tense. A Norwegian reviewer should check the church vocabulary and whether it matches what a congregation would say."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "church",
+    "faith",
+    "parable",
+    "discussion",
+    "sharing",
+    "prayer"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "faith"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "solveig": "Solveig",
+    "emma": "Emma"
+  },
+  "sections": [
+    {
+      "title": "Invitasjonen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag kom Solveig til Sam etter gudstjenesten. «Vi har en gruppe som er hjemme hos oss hver torsdag,» sa hun. «Vil du komme?»",
+              "english": "On Sunday Solveig came to Sam after the service. \"We have a group that is at our place every Thursday,\" she said. \"Will you come?\""
+            },
+            {
+              "text": "Hva gjør dere i gruppen?",
+              "english": "What do you do in the group?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vi leser en tekst, vi snakker om den, og vi ber sammen. Emma er lederen for gruppen. Vi deler kaffe og kake også, og vi gleder oss til å se deg.",
+              "english": "We read a text, we talk about it, and we pray together. Emma is the leader of the group. We share coffee and cake too, and we look forward to seeing you.",
+              "speaker": "solveig"
+            },
+            {
+              "text": "Sam tenkte lenge. Han hadde tenkt på tvil og tro mange ganger det året. Kanskje kunne gruppen hjelpe ham.",
+              "english": "Sam thought for a long time. He had thought about doubt and faith many times that year. Maybe the group could help him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gruppen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På torsdag kom Sam til Solveig. Der satt seks folk ved et bord med kaffe og kake. Lederen i gruppen het Emma.",
+              "english": "On Thursday Sam came to Solveig's. There six people sat at a table with coffee and cake. The leader of the group was called Emma."
+            },
+            {
+              "text": "Velkommen, Sam! Vi begynner alltid med kaffe. Så leser vi teksten, og til slutt ber vi.",
+              "english": "Welcome, Sam! We always begin with coffee. Then we read the text, and at the end we pray.",
+              "speaker": "emma"
+            },
+            {
+              "text": "Teksten den kvelden var en lignelse, en historie som Jesus fortalte. Emma leste den høyt.",
+              "english": "The text that evening was a parable, a story that Jesus told. Emma read it aloud."
+            },
+            {
+              "text": "En hyrde hadde hundre sauer. Ett av dem ble borte. Hyrden lette etter det over fjell, mellom fjellene og i skog, til han fant det. Da bar han det hjem, og han ba vennene sine være glade sammen med ham.",
+              "english": "A shepherd had a hundred sheep. One of them got lost. The shepherd searched for it over mountains, between the mountains and in forest, until he found it. Then he carried it home, and he asked his friends to be glad together with him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Samtalen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hva betyr denne lignelsen? Hva tenker dere? Hvem vil begynne?",
+              "english": "What does this parable mean? What do you think? Who wants to begin?",
+              "speaker": "emma"
+            },
+            {
+              "text": "For meg betyr den at ingen er borte for Gud. Han leter etter hver av oss, også når vi er borte.",
+              "english": "For me it means that nobody is lost to God. He looks for each of us, also when we are lost.",
+              "speaker": "solveig"
+            },
+            {
+              "text": "Jeg vil gjerne si noe, men jeg vet ikke hvordan jeg skal si det på norsk.",
+              "english": "I would like to say something, but I do not know how to say it in Norwegian.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Si det du kan. Vi lytter. Her er det ingen som tar feil.",
+              "english": "Say what you can. We listen. Here nobody makes mistakes.",
+              "speaker": "emma"
+            },
+            {
+              "text": "Da jeg kom til Norge, var jeg som en sau som var borte. Jeg kjente ingen, og jeg hadde mye tvil. Men noen lette etter meg: Marta, Anna og Lars. Jeg satt mellom Anna og Marta i kirka hver søndag.",
+              "english": "When I came to Norway, I was like a sheep that was lost. I knew nobody, and I had a lot of doubt. But someone looked for me: Marta, Anna and Lars. I sat between Anna and Marta in church every Sunday.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Alle ventet, og ingen sa noe. Så sa en gammel mann: «Takk for at du delte det.»",
+              "english": "Everyone waited, and nobody said anything. Then an old man said: \"Thank you for sharing that.\""
+            },
+            {
+              "text": "Det er kjærlighet, Sam. Hyrden gleder seg mer over sauen som han fant, enn over de nitti han hadde fra før. Det er Guds kjærlighet til oss.",
+              "english": "That is love, Sam. The shepherd is happier about the sheep that he found than about the ninety he had from before. That is God's love for us.",
+              "speaker": "emma"
+            },
+            {
+              "text": "Betyr det at Gud også leter etter meg?",
+              "english": "Does that mean that God also looks for me?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja. Lignelsen er liten, men den er stor. Det er bare en liten vei mellom tvil og tro.",
+              "english": "Yes. The parable is small, but it is big. It is only a short way between doubt and faith.",
+              "speaker": "emma"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bønn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Til slutt ba de sammen. Hver tok en bønn, og de ba om fred i byen. Sam ba også, i bønn: «Takk, Gud, for at du fant meg. Hjelp meg å lete etter dem som er borte.»",
+              "english": "At the end they prayed together. Each said a prayer, and they prayed for peace in the town. Sam prayed too, in prayer: \"Thank you, God, for finding me. Help me to look for those who are lost.\""
+            },
+            {
+              "text": "Da han gikk hjem, var han glad. Han tenkte at kjærlighet er å lete etter dem som er borte. En gruppe som deler tvil og tro, er et godt sted å være. Han gledet seg til neste torsdag.",
+              "english": "When he went home, he was glad. He thought that love is to look for those who are lost. A group that shares doubt and faith is a good place to be. He looked forward to next Thursday."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I gruppen snakket de om dugnad, og om at de skulle stemme om hvem som skulle ha omsorg for de eldre i kirka. Sam fortalte om Anna, som måler temperatur og har vakt om natten. «Hun har et stort ansvar,» sa han. Han fortalte også om hjelmen som reddet Nils, da han fikk bruddet.",
+              "english": "In the group they talked about dugnad, and about the fact that they would vote about who was to care for the elderly in the church. Sam told about Anna, who measures temperature and is on duty at night. \"She has a big responsibility,\" he said. He also told about the helmet that saved Nils when he got the fracture."
+            },
+            {
+              "text": "Skal vi levere kaker til dem eller kjøpe dem?",
+              "english": "Shall we deliver cakes to them or buy them?",
+              "speaker": "emma"
+            },
+            {
+              "text": "Et parti ville hjelpe kirka med penger. Nils syklet fort til gruppen, men med hjelm. Anna hadde gitt Marta medisin.",
+              "english": "A party wanted to help the church with money. Nils cycled fast to the group, but with a helmet. Anna had given Marta medicine."
+            },
+            {
+              "text": "Nils kunne løfte armen igjen, og han lo mye.",
+              "english": "Nils could lift his arm again, and he laughed a lot."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

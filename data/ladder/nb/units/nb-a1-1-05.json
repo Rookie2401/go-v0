@@ -82,7 +82,7 @@
               "english": "It is Sunday. After church Sam, Anna and Lars are at Marta's."
             },
             {
-              "text": "Nils er også hos bestemora si.",
+              "text": "Nils er også hos bestemora.",
               "english": "Nils is also at his grandmother's."
             },
             {
@@ -95,8 +95,8 @@
               "speaker": "marta"
             },
             {
-              "text": "Det er mye mat! Jeg er sulten.",
-              "english": "There is a lot of food! I am hungry.",
+              "text": "Det er mye! Jeg er sulten.",
+              "english": "There is a lot! I am hungry.",
               "speaker": "sam"
             },
             {
@@ -114,8 +114,8 @@
         {
           "sentences": [
             {
-              "text": "Vi spiser suppe. Etter suppen spiser vi fisk og poteter.",
-              "english": "We eat soup. After the soup we eat fish and potatoes."
+              "text": "Vi spiser. Etter suppen spiser vi mer.",
+              "english": "We eat. After the soup we eat more."
             },
             {
               "text": "Er maten bra, Sam?",
@@ -153,8 +153,8 @@
               "speaker": "marta"
             },
             {
-              "text": "Du er hos meg hver søndag, Sam.",
-              "english": "You are at my place every Sunday, Sam.",
+              "text": "Du er hos meg på søndag, Sam.",
+              "english": "You are at my place on Sunday, Sam.",
               "speaker": "marta"
             },
             {
@@ -201,8 +201,8 @@
               "speaker": "ana"
             },
             {
-              "text": "Etter kaffen går Lars og Anna hjem.",
-              "english": "After the coffee Lars and Anna go home."
+              "text": "Etter kaffen går Lars og Anna.",
+              "english": "After the coffee Lars and Anna leave."
             },
             {
               "text": "Nils bor hjemme, men i dag er han hos Marta.",
@@ -247,8 +247,8 @@
         {
           "sentences": [
             {
-              "text": "Etter middagen går Sam hjem til huset. Rommet er lite, men senga er stor.",
-              "english": "After dinner Sam goes home to the house. The room is small, but the bed is big."
+              "text": "Etter middagen er Sam i huset. Rommet er lite, men han er glad.",
+              "english": "After dinner Sam is in the house. The room is small, but he is happy."
             }
           ]
         },

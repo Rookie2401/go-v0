@@ -378,4 +378,56 @@ oh = oh
 eh = hey; eh
 amén = amen
 aleluya = hallelujah
+# PROPN
+// Names and places of the Honduran-register units of the ladder (es-a2-2-21, es-a2-2-22, es-b1-36 … es-b1-39): a name the list
+// lacked was read as an ordinary word at the start of a sentence, and counted as a lemma the learner had to meet three times.
+Wilmer = Wilmer (name)
+Yesenia = Yesenia (name)
+Chepe = Chepe (name; a short form of José)
+Idalia = Idalia (name)
+Mercedes = Mercedes (name)
+Comayagua = Comayagua (city and department of Honduras)
+Copán = Copán (department of Honduras; the Maya site Copán Ruinas)
+Roatán = Roatán (largest of the Bay Islands, Honduras)
+Yojoa = Yojoa (Lake Yojoa, Honduras)
+Choluteca = Choluteca (city, department and river of Honduras)
+Olancho = Olancho (department of Honduras)
+Picacho = Picacho (hill above Tegucigalpa)
+Morazán = Morazán (Francisco Morazán, Central American statesman)
+Siguatepeque = Siguatepeque (city of Honduras)
+Danlí = Danlí (city of Honduras)
+Trujillo = Trujillo (city of Honduras)
+Omoa = Omoa (town of Honduras)
+Intibucá = Intibucá (department of Honduras)
+Yoro = Yoro (department of Honduras)
+Garífuna = Garífuna (the Garífuna people of the Honduran coast)
+Cadejo = Cadejo (a spirit dog of Central American legend)
+Llorona = Llorona (the Weeping Woman of the legend)
+Sisimite = Sisimite (a hairy giant of the mountains in legend)
+Mildred = Mildred (name)
+Eulalia = Eulalia (name)
+Chavela = Chavela (name; a short form of Isabel)
+Marisol = Marisol (name)
+# NOUN
+// Honduran and Central American everyday words used by the Honduran-register units; each was certain, and the Honduran
+// reviewer is asked to confirm the regional tags (docs/ladder: the unit notes list them).
+yuca/f = yuca, cassava
+chicharrón/m = fried pork rind
+fogón/m = open hearth, wood stove
+comal/m = flat griddle for tortillas [es-CA]
+cuajada/f = fresh curd cheese [es-CA]
+aguacate/m = avocado
+leña/f = firewood
+aserrín/m = sawdust
+zinc/m = zinc; corrugated zinc roofing
+minuta/f = shaved ice with syrup [es-HN]
+rapidito/m = small shared minibus [es-HN colloquial]
+mijo/m = my son, dear (from mi hijo) [es-CA colloquial]
+mija/f = my daughter, dear (from mi hija) [es-CA colloquial]
+atol/m = atole, a warm corn drink [es-CA]
+nacatamal/m = large Christmas tamale [es-CA]
+guacamaya/f = macaw
+marimba/f = marimba
+velorio/m = wake, vigil for the dead [es-419]
+horchata/f = horchata, a sweet drink
 `;

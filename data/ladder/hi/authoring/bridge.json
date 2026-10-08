@@ -1,0 +1,188 @@
+[
+  {
+    "id": "hi-b1-01",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-98-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-02",
+    "kind": "controlled",
+    "domain": "work",
+    "title": "चाचा जी की लकड़ी की दुकान"
+  },
+  {
+    "id": "hi-b1-03",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-121-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-04",
+    "kind": "controlled",
+    "domain": "nature",
+    "title": "नानी के आँगन का अमरूद"
+  },
+  {
+    "id": "hi-b1-05",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-62-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-06",
+    "kind": "controlled",
+    "domain": "animals",
+    "title": "शर्मा अंकल का तोता"
+  },
+  {
+    "id": "hi-b1-07",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-108-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-08",
+    "kind": "controlled",
+    "domain": "church-and-mission-life",
+    "title": "छत की बेल पर बाइबल की कक्षा"
+  },
+  {
+    "id": "hi-b1-09",
+    "kind": "authentic",
+    "textId": "text:hi:bible-jhn-15",
+    "domain": "scripture"
+  },
+  {
+    "id": "hi-b1-10",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-69-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-11",
+    "kind": "controlled",
+    "domain": "daily-life",
+    "title": "सफ़ाई का दिन"
+  },
+  {
+    "id": "hi-b1-12",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-84-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-13",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-70-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-14",
+    "kind": "authentic",
+    "textId": "text:hi:bible-1john-4",
+    "domain": "scripture"
+  },
+  {
+    "id": "hi-b1-15",
+    "kind": "controlled",
+    "domain": "contemporary-nonfiction",
+    "title": "गली की सफ़ाई"
+  },
+  {
+    "id": "hi-b1-16",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-24-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-17",
+    "kind": "controlled",
+    "domain": "school",
+    "title": "कहानी का घंटा"
+  },
+  {
+    "id": "hi-b1-18",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-36-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-19",
+    "kind": "controlled",
+    "domain": "correspondence",
+    "title": "स्कूल का वार्षिकोत्सव"
+  },
+  {
+    "id": "hi-b1-20",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-77-ch01",
+    "domain": "correspondence"
+  },
+  {
+    "id": "hi-b1-21",
+    "kind": "controlled",
+    "domain": "family",
+    "title": "गीता मौसी की बिटिया"
+  },
+  {
+    "id": "hi-b1-22",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-74-ch01",
+    "domain": "family"
+  },
+  {
+    "id": "hi-b1-23",
+    "kind": "controlled",
+    "domain": "church-and-mission-life",
+    "title": "छत पर रात की प्रार्थना"
+  },
+  {
+    "id": "hi-b1-24",
+    "kind": "authentic",
+    "textId": "text:hi:bible-jhn-17",
+    "domain": "scripture"
+  },
+  {
+    "id": "hi-b1-25",
+    "kind": "controlled",
+    "domain": "travel",
+    "title": "पहाड़ पर एक रात"
+  },
+  {
+    "id": "hi-b1-26",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-94-ch01",
+    "domain": "narrative"
+  },
+  {
+    "id": "hi-b1-27",
+    "kind": "controlled",
+    "domain": "explanation",
+    "title": "रवि सर का प्रयोग"
+  },
+  {
+    "id": "hi-b1-28",
+    "kind": "authentic",
+    "textId": "text:hi:gdl-80-ch01",
+    "domain": "explanation"
+  },
+  {
+    "id": "hi-b1-29",
+    "kind": "adapted",
+    "domain": "narrative",
+    "title": "अंधेर नगरी (कहानी की तरह)"
+  },
+  {
+    "id": "hi-b1-30",
+    "kind": "controlled",
+    "domain": "instructions",
+    "title": "बेसन के लड्डू"
+  },
+  {
+    "id": "hi-b1-31",
+    "kind": "controlled",
+    "domain": "biography",
+    "title": "सैम की डायरी"
+  }
+]

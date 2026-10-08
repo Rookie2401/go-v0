@@ -394,6 +394,42 @@
       "kind": "pragmatics",
       "label": "Thai has no spaces between words: finding where each word begins",
       "prerequisites": []
+    },
+    {
+      "id": "th.practice.tone-marks",
+      "kind": "sound",
+      "label": "tone marks read in running text: the same mark gives a different tone on a different class (ที่, ก่อน, ด้วย)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.practice.finals",
+      "kind": "sound",
+      "label": "final consonants read in running text: ก ด บ said k, t, p; ม น ง said m, n, ng",
+      "prerequisites": []
+    },
+    {
+      "id": "th.practice.leading-ho",
+      "kind": "orth",
+      "label": "a silent leading ห read in running text (หมา, หมู, หนึ่ง)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.practice.clusters",
+      "kind": "orth",
+      "label": "two consonants together read in running text (กล, คร): กลับ, ไกล, ใกล้, ครับ",
+      "prerequisites": []
+    },
+    {
+      "id": "th.practice.dead-syllables",
+      "kind": "sound",
+      "label": "dead syllables read in running text: the tone from the class and the length (ปวด, ปาก, นก)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.practice.vowels-before",
+      "kind": "orth",
+      "label": "vowels written before the consonant read in running text (เอา, แม่, โต๊ะ, ไป)",
+      "prerequisites": []
     }
   ]
 }

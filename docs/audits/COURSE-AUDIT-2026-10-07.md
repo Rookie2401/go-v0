@@ -264,3 +264,29 @@ Reading it honestly:
 
 **Still for the owner**: the GitHub Pages repository (the built site is on the local `gh-pages` branch, 841e28c7);
 the people items in §4.1; the Spanish floor tuning above.
+
+## 8. Addendum, 2026-10-08: the content gaps bridged
+
+The per-course content work of §4.5 was done on 2026-10-08 by six language-scoped packages (one agent each, no shared
+files), then every gate was re-run by the lead. Nothing is reviewed, published, recorded or rights-verified by this
+work; every new or changed unit is a machine draft. Authentic units reference library texts whose rights the
+catalogue already records; adapted units exist only where the work's terms allow adaptation (Thai Aesop, CC BY-SA
+with attribution; *Andher Nagari*, Wikisource CC BY-SA); Gutenberg "may not modify" texts were not adapted; the held
+Thai fables, held Albanian Wikipedia texts and the unverified Norwegian heritage leads were not used.
+
+| course | before (§2) | after | what was built |
+|---|---|---|---|
+| Spanish | 104 units, 88 k words; recycling 40, orphans 763 of 2,217 (34 %) | 110 units, 104 k; **recycling 9** (all authentic), **orphans 314 of 2,467 (13 %)**; 0 errors, 83 warnings | recycling pass on the bridge's controlled units; six Honduran-register units (voseo, usted to elders, local life, a village church, a wake, Roatán) tagged `es-HN`; GoTell concept rows gained the missing vos forms, with a test that no tú form remains and the adapter reads vos as voseo; adapter-es@12 |
+| German | 69 units, 46 k; recycling 14, orphans 300 of 1,473 (20 %); no bridge | **99 units**, 79 k; old units recycling 0 and orphans 0; bridge of 30 (17 authentic at 92.7–96.2 %: Guerber reader stories, the shortest Grimm tales, John 14/16/17, 1 John 5; Scripture 10 %); 0 errors, 49 warnings | the bridge makes the school-reader stories and short tales readable; the novels stay out of reach (Biene Maja would need ~110 more lemmas); adapter-de@9 |
+| Hindi | 101 units, 52 k; recycling 33, orphans 93 of 1,018 (9 %); no bridge | **132 units**, 75 k; old units recycling 8 (all authentic books), orphans 62 of 1,046 (6 %); bridge of 31 (13 GDL books, John 15/17, 1 John 4, one *Andher Nagari* retelling, 14 new units; Scripture 9 %); 0 errors, 93 warnings | Premchand and the original *Andher Nagari* remain at 68–70 % coverage after the bridge: a second bridge of ~450 lemmas is needed before them; adapter-hi@6 |
+| Thai | 90 units, 44 k; recycling 15; Stage 0 16 scenes with 64 words met once | **115 units**, 52 k; recycling 6; bridge of 25 (9 adapted fables, Luke 15 and 3 John, 14 new units; Scripture 13 %); **Stage 0 22 scenes, 2 words met once**, exit coverage 100 %; 0 errors, 43 warnings | six decoding scenes (tone marks, finals, silent ห, clusters, vowels before the consonant, dead syllables); the first ladder unit rose from 85.7 to 87.7 %; adapter-th@5 |
+| Albanian | 135 units (72 of them 40-word "h" units), 50 k; coverage 18, cliffs 6, density 15, recycling 30 | **105 units**, 64 k; **0 coverage, 0 cliff, 0 density, 0 recycling, 0 orphan warnings**, 17 recurrence; bridge of 25 new units (450–680 words, a continuous story, B1 grammar) at 93.8–100 %; 0 errors | a1-1 rebuilt as 17 real units from the h-units' sentences; adapter-sq@9 |
+| Norwegian | 48 units, 12 k; 24 warnings | **72 units**, 25.5 k; **0 errors, 0 warnings**; bridge of 24 new units (Sam's second year in Bergen; B1 grammar) at 91.1–98.0 % | the library builder now accepts companion-language (Nynorsk) entries into the course's library with honest per-row language (tested; nothing built, the entries stay unverified); adapter-nb@2 |
+
+Every Stage 0 validator still reports 0 errors; every ladder gate 0 errors. The authentic reach floor was tuned to
+0.82 on measurement (§7). The adaptive reread, retrieval practice and prompts of §7 now have bridges to work on in
+all six courses.
+
+What this does not change: nothing publishes until a named native reviewer and a recording exist for each unit
+(§4.1); the recall paragraphs are plain by design and are the first thing a reviewer should read; the Thai fable
+adaptations, the Hindi retelling and the Honduran-register units need a native reader before any learner sees them.

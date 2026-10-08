@@ -1,0 +1,66 @@
+=== de-a1-1-14
+speakers: sam=Sam, thomas=Thomas, anna=Anna
+## Eine Nachricht von Thomas
+Es ist Abend. || It is evening.
+Sam hat sein Handy. || Sam has his phone.
+Er hat eine Nachricht von Thomas. || He has a message from Thomas.
+[thomas] Hallo Sam! || Hello Sam!
+[thomas] Am Samstag ist Frühstück in der Gemeinde. || On Saturday there is breakfast at the church.
+[thomas] Kommst du? || Are you coming?
+[thomas] Am Freitag koche ich Suppe. || On Friday I am cooking soup.
+[thomas] Kannst du helfen? || Can you help?
+[thomas] Ich bin Pastor, das ist mein Beruf. || I am a pastor, that is my job.
+[thomas] Herr Schmidt ist Bäcker, und er ist Chef. || Herr Schmidt is a baker, and he is the boss.
+[thomas] Er macht Brötchen für alle. || He makes rolls for everyone.
+[thomas] Das Wetter ist warm, dann essen wir im Park. || The weather is warm, then we eat in the park.
+Sam schreibt mit dem Handy. || Sam writes on his phone.
+[sam] Hallo Thomas! || Hello Thomas!
+[sam] Am Freitag habe ich einen Termin. || On Friday I have an appointment.
+[sam] Aber am Samstag komme ich gern. || But on Saturday I will gladly come.
+[thomas] Du kannst nicht kommen? || You cannot come?
+[sam] Doch, ich komme am Abend. || Yes I can, I will come in the evening.
+
+## Eine Nachricht von Anna
+Anna schreibt auch. || Anna writes too.
+Sie hat auch ein Handy. || She has a phone too.
+[anna] Hallo Sam! || Hello Sam!
+[anna] Hast du am Montag und am Dienstag Klasse? || Do you have class on Monday and Tuesday?
+[anna] Ich bin Krankenschwester, ich arbeite immer am Montag und am Dienstag. || I am a nurse, I always work on Monday and Tuesday.
+[anna] Am Mittwoch habe ich einen Termin beim Arzt. || On Wednesday I have an appointment with the doctor.
+[anna] Der Arzt ist ein guter Mann, ich bin gesund. || The doctor is a good man, I am well.
+[anna] Am Donnerstag ruf mich an! || Call me on Thursday!
+Sam schreibt wieder. || Sam writes again.
+[sam] Hallo Anna! || Hello Anna!
+[sam] Ich bin Student. || I am a student.
+[sam] Am Montag und am Dienstag habe ich Klasse. || On Monday and Tuesday I have class.
+[sam] Am Mittwoch habe ich einen Termin in der Schule. || On Wednesday I have an appointment at the school.
+[sam] Soll ich dich am Donnerstag anrufen? || Shall I call you on Thursday?
+[anna] Hast du keine Klasse? || Do you not have class?
+[sam] Doch, aber am Abend bin ich wieder zu Hause. || Yes I do, but in the evening I am at home again.
+
+## Daniel kommt
+Daniel ist ein Freund aus den USA. || Daniel is a friend from the USA.
+Er spricht nicht gut Deutsch, aber er lernt gern. || He does not speak German well, but he likes learning.
+Daniel kommt am Donnerstag mit dem Zug an. || Daniel is arriving by train on Thursday.
+Sam muss zum Bahnhof fahren. || Sam has to go to the station.
+Die Haltestelle ist in der Straße. || The stop is in the street.
+Die Straßenbahn kommt in fünf Minuten. || The tram comes in five minutes.
+Sam braucht eine Fahrkarte. || Sam needs a ticket.
+
+## An der Kirche
+Sam geht in die Stadt. || Sam goes into the city.
+An der Kirche ist eine Nachricht für die Gemeinde. || At the church there is a notice for the congregation.
+Sam sieht die Nachricht. || Sam sees the notice.
+Mittwoch, 19 Uhr: Bibel und Lieder. || Wednesday, 7 p.m.: Bible and songs.
+Freitag, 12 Uhr: Suppe und Brot. || Friday, 12 noon: soup and bread.
+Samstag, 9 Uhr: Frühstück im Park. || Saturday, 9 a.m.: breakfast in the park.
+Kommt alle! || Everyone come!
+Kommt doch! || Do come!
+[sam] Das ist gut. || That is good.
+[sam] Die Sonne ist warm, und es ist nicht kalt. || The sun is warm, and it is not cold.
+[sam] Dann sind wir wieder in der Gemeinde. || Then we are back in the church again.
+[thomas] Danke, Sam! || Thank you, Sam!
+[thomas] Du bist ein guter Freund. || You are a good friend.
+[sam] Ich helfe gern, Thomas. || I like helping, Thomas.
+[sam] Ich möchte immer helfen. || I always want to help.
+

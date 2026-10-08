@@ -518,7 +518,7 @@ describe('candidates carry their provenance', () => {
 
 describe('the adapter', () => {
   it('is wired: version 8, sources, varieties, honest support', () => {
-    expect(de.version).toBe('8');
+    expect(de.version).toBe('9');
     expect(Object.keys(de.sources ?? {}).sort()).toEqual(Object.values(DE_SOURCE_IDS).sort());
     expect(de.varieties?.['de-1901']?.kind).toBe('historical');
     expect(de.support.lemmatization).toBe('seed-only');

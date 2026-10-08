@@ -862,6 +862,128 @@
           ]
         }
       ]
+    },
+    {
+      "title": "El examen de Nico",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La tarde antes de su cumpleaños, Nico tiene examen de vocabulario, y su tía Ana lo repasa con él en una banca de la plaza.",
+              "english": "The afternoon before his birthday, Nico has a vocabulary exam, and his aunt Ana reviews it with him on a bench in the square."
+            },
+            {
+              "text": "—A ver, Nico: ¿qué es una donación? —Es lo que dan los voluntarios a los damnificados y a las víctimas.",
+              "english": "\"Let's see, Nico: what is a donation?\" \"It is what volunteers give to the victims and to those affected.\""
+            },
+            {
+              "text": "—¿Qué agua es potable? —La que lleva cloro. Hay que limpiar bien el criadero donde nacen los zancudos.",
+              "english": "\"Which water is drinkable?\" \"The one that has chlorine. You have to clean well the breeding place where mosquitoes are born.\""
+            },
+            {
+              "text": "—¿Y qué se hace inmediatamente? —Lo que no puede esperar. Un niño agitado, o inquieto, necesita calma inmediatamente.",
+              "english": "\"And what is done immediately?\" \"What cannot wait. A child who is agitated, or restless, needs calm immediately.\""
+            },
+            {
+              "text": "—¿Cómo describís un relámpago? —De repente, una luz que cae de una nube. Los relámpagos asustan, pero pasan.",
+              "english": "\"How do you describe lightning?\" \"Suddenly, a light that falls from a cloud. Flashes of lightning scare, but they pass.\""
+            },
+            {
+              "text": "—¿Qué hay en un mural de plástico? —Colores, una crónica del desastre y un pañuelo para limpiar el pincel.",
+              "english": "\"What is there in a plastic mural?\" \"Colors, a chronicle of the disaster and a handkerchief to clean the brush.\""
+            },
+            {
+              "text": "—¿Se necesita preparación para una campaña? —Sí, pasos concretos, y alguien que sepa justificar cada gasto. Con paciencia y más paciencia.",
+              "english": "\"Is preparation needed for a campaign?\" \"Yes, concrete steps, and somebody who knows how to justify each expense. With patience and more patience.\""
+            },
+            {
+              "text": "—¿Qué lleva una clínica en la puerta? —Una entrada, una salida y un cartel que dice «prohibido fumar».",
+              "english": "\"What does a clinic have at the door?\" \"An entrance, an exit and a sign that says 'no smoking'.\""
+            },
+            {
+              "text": "—¿Es gratuita la consulta? —Sí, es gratuita, pero hay que llenar una ficha con apellido, identidad y firma.",
+              "english": "\"Is the consultation free?\" \"Yes, it is free, but you have to fill out a card with surname, identity and signature.\""
+            },
+            {
+              "text": "—¿Y si es urgente? —Se hace formalmente después. La enfermera pone el suero, o la ambulancia llega enseguida.",
+              "english": "\"And if it is urgent?\" \"It is done formally afterwards. The nurse puts in the serum, or the ambulance arrives right away.\""
+            },
+            {
+              "text": "—¿Qué lleva un voluntario comprometido? —Guantes, un carné, una gota de cloro en cada litro y una cucharada de azúcar para el café.",
+              "english": "\"What does a committed volunteer carry?\" \"Gloves, an ID, a drop of chlorine in each liter and a spoonful of sugar for the coffee.\""
+            },
+            {
+              "text": "—¿Cómo trabaja un voluntario enterado? —Con rigor, con una dosis de buen humor y con la lista de cada día. Todo lo que no es habitual, lo avisa.",
+              "english": "\"How does an informed volunteer work?\" \"With rigor, with a dose of good humor and with the list of each day. Anything that is not usual, he reports.\""
+            },
+            {
+              "text": "—¿Dónde se sientan los espectadores? —En las butacas iluminadas. La sala es excelente, pero las latas de comida no se abren allí.",
+              "english": "\"Where do the spectators sit?\" \"In the lit seats. The room is excellent, but the cans of food are not opened there.\""
+            },
+            {
+              "text": "—¿Cómo está un cuarto sucio? —Sucio, no limpio. Y un cuarto iluminado es lo contrario de uno oscuro.",
+              "english": "\"How is a dirty room?\" \"Dirty, not clean. And a lit room is the opposite of a dark one.\""
+            },
+            {
+              "text": "—Muy bien. Ahora la parte de la montaña: ¿qué es un sendero? —Un camino pequeño en un terreno de cerros, entre la milpa y el corral.",
+              "english": "\"Very well. Now the mountain part: what is a path?\" \"A small road on hilly ground, between the cornfield and the corral.\""
+            },
+            {
+              "text": "—¿Quién es una viuda? —Una mujer cuyo marido ya murió. Y un solterón es un hombre que nunca se casó y que a veces es melancólico.",
+              "english": "\"Who is a widow?\" \"A woman whose husband has already died. And a confirmed bachelor is a man who never married and who is sometimes melancholy.\""
+            },
+            {
+              "text": "—¿Y un pretexto? —Una razón falsa. Un rumor puede ser un pretexto, y una tragedia puede ser una molestia o una grosería, según quién la cuente.",
+              "english": "\"And a pretext?\" \"A false reason. A rumor can be a pretext, and a tragedy can be a nuisance or a rudeness, depending on who tells it.\""
+            },
+            {
+              "text": "—¿Qué hace un sobrino? —Visita a su tío, y una vez lo complicó todo con una pregunta, pero la hizo con ritmo y con disposición.",
+              "english": "\"What does a nephew do?\" \"He visits his uncle, and once he complicated everything with a question, but he asked it with rhythm and with willingness.\""
+            },
+            {
+              "text": "—¿Puede ser interesante una autoridad? —Puede, si no estalla de ira: yo no la tolero cuando es una grosería, pero la tolero cuando es una voz justa.",
+              "english": "\"Can an authority be interesting?\" \"It can, if it does not burst with anger: I don't tolerate it when it is rudeness, but I tolerate it when it is a just voice.\""
+            },
+            {
+              "text": "—Y al final, ¿cómo se contuvieron los presos? —Se contuvieron sin destruir nada. Contuvieron el miedo, y después los trasladaron a la escuela.",
+              "english": "\"And in the end, how did the prisoners hold themselves back?\" \"They held themselves back without destroying anything. They held back their fear, and afterwards they were moved to the school.\""
+            },
+            {
+              "text": "—¿Qué dice un difunto cuando algo es evidente? —Nada. Pero los vivos nos enteramos de lo que es moral y de lo que es una profunda tristeza, en una casa amplia o pequeña.",
+              "english": "\"What does a deceased person say when something is evident?\" \"Nothing. But the living find out what is moral and what is a deep sadness, in a wide house or a small one.\""
+            },
+            {
+              "text": "Ana cerró el cuaderno y sonrió. —Mañana, en tu fiesta, solo vas a necesitar una piñata y un pastel.",
+              "english": "Ana closed the notebook and smiled. \"Tomorrow, at your party, you will only need a piñata and a cake.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Más preguntas de Ana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—¿Cómo se trata a los niños inquietos y a los niños agitados? —Con mucha paciencia, mija. Hay que vaciar los criaderos y vaciar también el miedo.",
+              "english": "\"How do you treat restless children and agitated children?\" \"With a lot of patience, dear. You have to empty the breeding places and empty the fear too.\""
+            },
+            {
+              "text": "—¿Qué exige el trabajo con un preso? —Respeto. No se pregunta por lo que había acontecido; se escucha, en una sala iluminada y tranquila.",
+              "english": "\"What does working with a prisoner demand?\" \"Respect. One does not ask about what had happened; one listens, in a lit and quiet room.\""
+            },
+            {
+              "text": "—¿Cómo estaba la señora alarmada? —Aterrada. Me enteré de que no había dormido, y de que completamente sola, en el interior de su casa, había rezado.",
+              "english": "\"How was the alarmed lady?\" \"Terrified. I found out that she had not slept, and that, completely alone, in the interior of her house, she had prayed.\""
+            },
+            {
+              "text": "—¿Qué se regala en una fiesta? —Un ramo de flores, un par de zapatos, o una chala de maíz con dulce, si la tía no tiene más.",
+              "english": "\"What is given at a party?\" \"A bouquet of flowers, a pair of shoes, or a corn husk with sweet, if the aunt has nothing else.\""
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

@@ -1,0 +1,66 @@
+=== de-a1-1-10
+speakers: sam=Sam, anna=Anna, david=David
+## An der Haltestelle
+Es ist halb neun, und der Tag ist schön. || It is half past eight, and the day is lovely.
+Sam und Anna sind an der Haltestelle. || Sam and Anna are at the stop.
+Es ist kalt an der Haltestelle, aber die Sonne ist warm. || It is cold at the stop, but the sun is warm.
+David kommt heute mit dem Zug aus Berlin. || David is coming today by train from Berlin.
+Sam und Anna möchten zum Bahnhof fahren. || Sam and Anna want to go to the station.
+[sam] Wie fahren wir zum Bahnhof? || How do we get to the station?
+[anna] Mit der Straßenbahn. || By tram.
+[anna] Hier ist die Haltestelle. || Here is the stop.
+[sam] Ich habe kein Frühstück. || I have not had breakfast.
+[sam] Darf ich ein Brötchen nehmen? || May I take a roll?
+[anna] Ja, hier ist ein Brötchen mit Butter und Käse. || Yes, here is a roll with butter and cheese.
+[anna] Und hier ist ein Ei und ein Apfel. || And here is an egg and an apple.
+[sam] Danke! || Thank you!
+[sam] Ich nehme auch einen Apfel. || I will take an apple too.
+
+## Die Fahrkarte
+[sam] Müssen wir eine Fahrkarte kaufen? || Do we have to buy a ticket?
+[anna] Ja, wir müssen eine Fahrkarte kaufen. || Yes, we have to buy a ticket.
+[anna] Eine Fahrkarte kostet drei Euro. || A ticket costs three euros.
+Die Straßenbahn kommt in drei Minuten. || The tram is coming in three minutes.
+[anna] Der Zug aus Berlin kommt um zehn Uhr an. || The train from Berlin arrives at ten o'clock.
+[anna] Wir müssen bis zehn Uhr ankommen. || We have to arrive by ten o'clock.
+
+## In der Straßenbahn
+Sam und Anna fahren mit der Straßenbahn. || Sam and Anna ride the tram.
+Es sind zehn Minuten bis zum Bahnhof. || It is ten minutes to the station.
+[sam] Das Wetter ist heute gut, Anna. || The weather is good today, Anna.
+[anna] Ja, und die Straße ist so schön in der Sonne. || Yes, and the street is so lovely in the sun.
+[sam] Was machst du heute, Anna? || What are you doing today, Anna?
+[anna] Um zwei Uhr gehe ich in die Klinik. || At two o'clock I am going to the clinic.
+[anna] Ich bin Krankenschwester, und Michael ist Arzt. || I am a nurse, and Michael is a doctor.
+[anna] Er ist ein sehr guter Mann. || He is a very good man.
+[sam] Ich habe um elf Uhr Klasse. || I have class at eleven o'clock.
+[sam] Die Klasse fängt um elf Uhr an. || The class starts at eleven o'clock.
+[sam] Ich bin Student, und ich lerne gern. || I am a student, and I like learning.
+[anna] Dann gehst du in die Klasse. || Then you go to your class.
+
+## Am Bahnhof
+Der Bahnhof ist ganz groß. || The station is very big.
+Der Zug nach Dresden muss in drei Minuten abfahren. || The train to Dresden has to leave in three minutes.
+Er fährt nach Dresden ab. || It leaves for Dresden.
+Und da ist der Zug aus Berlin. || And there is the train from Berlin.
+[david] Hallo, Sam! || Hello, Sam!
+[david] Hallo, Anna! || Hello, Anna!
+[sam] Hallo, David! || Hello, David!
+[sam] Wie geht's? || How are you?
+[david] Gut, danke. || Fine, thank you.
+[david] Ich bin müde, aber ich bin hier. || I am tired, but I am here.
+[anna] Du hast Hunger, David? || You are hungry, David?
+[david] Ja, ich habe großen Hunger. || Yes, I am very hungry.
+[sam] Möchtest du Kaffee mit Milch? || Would you like coffee with milk?
+[david] Ja, bitte. || Yes, please.
+[david] Und ein Brötchen. || And a roll.
+[anna] Zu Hause koche ich das Mittagessen. || At home I will cook lunch.
+[anna] Es gibt Suppe, Kartoffeln und Fleisch. || There is soup, potatoes and meat.
+[anna] Und es gibt Kuchen. || And there is cake.
+[david] Das ist sehr gut! || That is very good!
+Sam geht um elf Uhr in die Klasse. || Sam goes to class at eleven o clock.
+[sam] Bis morgen, David! || See you tomorrow, David!
+[sam] Danke, Anna! || Thank you, Anna!
+Anna und David gehen nach Hause. || Anna and David go home.
+Sam geht in die Klasse. || Sam goes to his class.
+

@@ -43,6 +43,19 @@
     "correspondence"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "sections": [
     {
       "title": "Anrede",
@@ -494,19 +507,223 @@
           ]
         }
       ]
-    }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Wochenbericht sitzt Sam noch am Tisch und denkt an die letzten Wochen.",
+              "english": "After the weekly report Sam is still sitting at the table and thinks of the last weeks."
+            },
+            {
+              "text": "Er trinkt seinen Kaffee aus und sagt: Das war ziemlich viel in kurzer Zeit.",
+              "english": "He drinks up his coffee and says: That was quite a lot in a short time."
+            },
+            {
+              "text": "Ruth fragt ihn: Was war dir am wichtigsten?",
+              "english": "Ruth asks him: What was most important to you?"
+            },
+            {
+              "text": "Sam antwortet: Die Gespräche zwischen den Menschen.",
+              "english": "Sam answers: The conversations between the people."
+            },
+            {
+              "text": "Wir begegnen jeden Tag neuen Menschen, und jeder hat eine Geschichte.",
+              "english": "We meet new people every day, and everyone has a story."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "An einem Sonntagnachmittag hat Lukas in Annas Küche von seinem Angebot erzählt.",
+              "english": "On a Sunday afternoon Lukas told about his offer in Anna's kitchen."
+            },
+            {
+              "text": "Er war ungewöhnlich still, und er hat lange nachgedacht.",
+              "english": "He was unusually quiet, and he thought for a long time."
+            },
+            {
+              "text": "Im Dorf gibt es nur selten einen Bus, und man ist vom Auto abhängig.",
+              "english": "In the village there is only rarely a bus, and one depends on the car."
+            },
+            {
+              "text": "Lukas muss erst den Führerschein machen, und das kostet viel Geld.",
+              "english": "Lukas first has to get his driving licence, and that costs a lot of money."
+            },
+            {
+              "text": "Wenn der Laden zumacht, ist die Auswahl noch kleiner.",
+              "english": "When the shop closes, the choice is smaller still."
+            },
+            {
+              "text": "Die Menge ist nicht wichtig, sagt er, aber die Qualität.",
+              "english": "The amount is not important, he says, but the quality."
+            },
+            {
+              "text": "Zugegeben, in der Stadt ist es eben bequemer, und auf dem Land ist es oft umgekehrt.",
+              "english": "Admittedly, in the city it is simply more comfortable, and in the country it is often the other way round."
+            },
+            {
+              "text": "Die Schule hat einen guten Ruf, und die Luft ist besser.",
+              "english": "The school has a good reputation, and the air is better."
+            },
+            {
+              "text": "Der Jugendkreis dort hat nur wenige Mitglieder, aber Lukas hat wenigstens Ruhe.",
+              "english": "The youth group there has only few members, but at least Lukas has peace."
+            },
+            {
+              "text": "Anna sagte: Geh doch ein Wochenende hin.",
+              "english": "Anna said: Just go there for a weekend."
+            },
+            {
+              "text": "In der Stadt hat jeder Eile, und einen Dienst kann man sich nicht aussuchen.",
+              "english": "In the city everyone is in a hurry, and a service one cannot choose."
+            },
+            {
+              "text": "Lukas sagt zum Schluss: Ihr seid mein Wohnort, egal wo ich wohne.",
+              "english": "Lukas says in the end: You are my home, no matter where I live."
+            },
+            {
+              "text": "Sam denkt, dass jedes Dorf und jede Stadt auch eine Seele hat.",
+              "english": "Sam thinks that every village and every city has a soul too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auch an den Müll in Leipzig denkt Sam gern.",
+              "english": "Sam also likes to think of the rubbish in Leipzig."
+            },
+            {
+              "text": "Das System funktioniert nur, wenn alle mitmachen.",
+              "english": "The system only works if everyone joins in."
+            },
+            {
+              "text": "Mehrere Mülltonnen stehen im Hof, und Frau Weber bringt ihre Tüten sorgfältig nach unten.",
+              "english": "Several bins stand in the yard, and Frau Weber carefully takes her bags downstairs."
+            },
+            {
+              "text": "Verpackungen kommen in die gelbe Tonne, und das Glas bringt man zu einem Behälter.",
+              "english": "Packaging goes into the yellow bin, and the glass is taken to a container."
+            },
+            {
+              "text": "In der gelben Mülltonne liegt oft Abfall, der nicht hineingehört.",
+              "english": "In the yellow bin there is often waste that does not belong in it."
+            },
+            {
+              "text": "Alles andere ist Restmüll, und aus dem Essen wird Erde.",
+              "english": "Everything else is general waste, and the food becomes soil."
+            },
+            {
+              "text": "Man darf nichts einfach wegwerfen, und die Mülltonnen werden manchmal kontrolliert.",
+              "english": "One may not simply throw anything away, and the bins are sometimes checked."
+            },
+            {
+              "text": "Wer es falsch macht, kann eine Strafe bekommen, aber es gibt selten Streit.",
+              "english": "Whoever does it wrong can get a fine, but there is rarely an argument."
+            },
+            {
+              "text": "Beim Kauf einer Flasche bezahlt man 25 Cent Pfand und bekommt es an der Kasse wieder.",
+              "english": "When buying a bottle one pays 25 cents deposit and gets it back at the till."
+            },
+            {
+              "text": "Dadurch verbrennt man weniger Müll, und das klingt vernünftig.",
+              "english": "Because of that one burns less rubbish, and that sounds sensible."
+            },
+            {
+              "text": "Aber manchmal weiß man nicht, wohin ein Stück gehört.",
+              "english": "But sometimes one does not know where a piece belongs."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Dienstagnachmittag war Anna im Radio.",
+              "english": "On Tuesday afternoon Anna was on the radio."
+            },
+            {
+              "text": "Sie trank einen Schluck Wasser und sagte: Ich arbeite auf der Station für innere Medizin.",
+              "english": "She drank a sip of water and said: I work on the ward for internal medicine."
+            },
+            {
+              "text": "Im Nachtdienst ist man ständig müde, und die Arbeit ist anstrengend.",
+              "english": "On night duty one is constantly tired, and the work is tiring."
+            },
+            {
+              "text": "Wir helfen uns mit Kaffee und mit Humor.",
+              "english": "We help ourselves with coffee and with humour."
+            },
+            {
+              "text": "Viele Kranke wollen weiterarbeiten, aber bei Atemnot muss man sofort zum Arzt.",
+              "english": "Many sick people want to keep working, but with shortness of breath one must see a doctor at once."
+            },
+            {
+              "text": "Anna lernt auch, wie man einen Verband macht.",
+              "english": "Anna also learns how to put on a bandage."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Im Café von Herrn Schmidt traute sich Jonas erst nicht zu fragen.",
+              "english": "In Herr Schmidt's cafe Jonas did not dare to ask at first."
+            },
+            {
+              "text": "Er sagte: Haben Sie einen Moment Zeit?",
+              "english": "He said: Do you have a moment?"
+            },
+            {
+              "text": "Herr Schmidt lachte und sagte: Ich beiße nicht.",
+              "english": "Herr Schmidt laughed and said: I do not bite."
+            },
+            {
+              "text": "Jonas möchte irgendwann eine Werkstatt aufmachen.",
+              "english": "Some day Jonas would like to open a workshop."
+            },
+            {
+              "text": "Sein Argument war: Die Bank gibt kein Geld, aber ein Freund vielleicht.",
+              "english": "His argument was: The bank gives no money, but a friend perhaps."
+            },
+            {
+              "text": "Der Vergleich mit der Bank war klar, und der Unterschied war riesig.",
+              "english": "The comparison with the bank was clear, and the difference was huge."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Zum Schluss denkt Sam an Martas Schlüsselbund.",
+              "english": "Finally Sam thinks of Marta's key ring."
+            },
+            {
+              "text": "Der Anhänger aus Holz war lange verloren, und niemand wusste ungefähr, wo er war.",
+              "english": "The wooden tag was lost for a long time, and nobody knew roughly where it was."
+            },
+            {
+              "text": "Im Fundbüro war es drinnen still, und Marta zeichnete den Anhänger für den Mann.",
+              "english": "In the lost property office it was quiet inside, and Marta drew the tag for the man."
+            },
+            {
+              "text": "Der Mantel kam aus einer Kleidersammlung, und die Fremde wollte ohnehin nach Leipzig fahren.",
+              "english": "The coat came from a clothing collection, and the stranger wanted to travel to Leipzig anyway."
+            },
+            {
+              "text": "Ein Bäcker sagte ihr: Marta wohnt in der Hauptstraße.",
+              "english": "A baker told her: Marta lives in the Hauptstrasse."
+            },
+            {
+              "text": "Am Abend ist Ben ins Haus hereingelaufen und hat laut gerufen: Oma, die Schlüssel sind da!",
+              "english": "In the evening Ben ran into the house and shouted loudly: Grandma, the keys are here!"
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }

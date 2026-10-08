@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Nani and to Suresh; Nani says तुम to the boys and आप to Suresh. Suresh is a farmer neighbour who came to the city from a village near the hills; his talk about seeds, flood, drought, harvest and the tax is plain village talk, nothing political. The temple appears only as a landmark. The prayer for healing is ordinary church language. Words used outside the plan: जलाना (to light a lamp), माचिस (matches). Please check \"दीया जलाना\", the oblique forms ताले, बाल्टियाँ and शादियाँ, and the about-to forms (आने वाली है, गिरने वाला था). The word कर (tax) is read as the noun only in the frames \"सरकार का कर\", \"कर की तारीख़\" and \"पिता कर देते थे\"; elsewhere the adapter reads it as करना."
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Nani and to Suresh; Nani says तुम to the boys and आप to Suresh. Suresh is a farmer neighbour who came to the city from a village near the hills; his talk about seeds, flood, drought, harvest and the tax is plain village talk, nothing political. The temple appears only as a landmark. The prayer for healing is ordinary church language. Words used outside the plan: जलाना (to light a lamp), माचिस (matches). Please check \"दीया जलाना\", the oblique forms ताले, बाल्टियाँ and शादियाँ, and the about-to forms (आने वाली है, गिरने वाला था). The word कर (tax) is read as the noun only in the frames \"सरकार का कर\", \"कर की तारीख़\" and \"पिता कर देते थे\"; elsewhere the adapter reads it as करना. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -577,6 +577,26 @@
             {
               "text": "आपका, सैम",
               "english": "Yours, Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अगली सुबह बारिश रुक गई थी, और गली में बहुत पानी था।",
+              "english": "The next morning the rain had stopped, and there was a lot of water in the lane."
+            },
+            {
+              "text": "अमन ने अपना पैर पानी में रखा और हँसकर बोला, \"मैं तो तैरना जानता हूँ।\"",
+              "english": "Aman put his foot in the water and said laughing, \"I know how to swim.\""
+            },
+            {
+              "text": "सैम ने कहा, \"ओह, यह पानी तो बहुत ठंडा है!\"",
+              "english": "Sam said, \"Oh, this water is very cold!\""
+            },
+            {
+              "text": "पास में एक नन्हा बच्चा खड़ा था, और उसने भी अपना पैर पानी में डाला।",
+              "english": "A tiny child was standing nearby, and he put his foot in the water too."
             }
           ]
         }

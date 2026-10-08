@@ -25,7 +25,7 @@ Han ber: «Takk, Gud, for dette året. Hjelp meg neste år også.» || He prays:
 
 ## Til slutt
 [luis] Vi er glade for at du blir, {sam}. Du er en god venn. || We are glad that you are staying, Sam. You are a good friend.
-[ana] Du hjelper oss, og vi hjelper deg. Slik er det i en familie. || You help us, and we help you. That is how it is in a family.
+[ana] Du hjelper oss, og vi hjelper deg. Det er en familie. || You help us, and we help you. That is a family.
 [marta] Kom hit på søndag. Jeg lager middag, og vi drikker kaffe etter kirka. || Come on Sunday. I will make dinner, and we will drink coffee after church.
 [sam] Ja, gjerne! Jeg kommer hver søndag, som jeg har gjort i et år. || Yes, gladly! I come every Sunday, as I have done for a year.
 [nico] Og jeg kommer også! Jeg skal ikke glemme veska mi denne gangen. || And I am coming too! I will not forget my bag this time.
@@ -44,3 +44,6 @@ I timen lærte vi om naturen, om elver og skog og strøm. Vi tok med mat. || In 
 Brødet er ferdig når det lukter riktig. {sam} setter deigen i ovnen selv. Etterpå smaker han. || The bread is done when it smells right. Sam puts the dough in the oven himself. Afterwards he tastes it.
 
 {sam} husker invitasjonen til menigheten. Han var ikke alene. || Sam remembers the invitation to the congregation. He was not alone.
+
+Sjefen på sykehuset sendte et tilbud, men {ana} svarte senere. Fiskerne fanger fisk i havet. Menigheten inviterer alle til kirka. Det går en elv gjennom skogen. || The manager at the hospital sent an offer, but Anna answered later. The fishermen catch fish in the sea. The congregation invites everyone to the church. A river runs through the forest.
+Strøm fra elva gir lys til byen. || Electricity from the river gives light to the town.

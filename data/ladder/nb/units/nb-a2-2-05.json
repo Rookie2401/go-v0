@@ -90,8 +90,8 @@
               "english": "When people speak, they often have a dialect. People in Bergen do not speak like people in Oslo."
             },
             {
-              "text": "Dialektene er forskjellige, men folk forstår hverandre.",
-              "english": "The dialects are different, but people understand each other."
+              "text": "Dialektene er forskjellige, men folk forstår dem.",
+              "english": "The dialects are different, but people understand them."
             }
           ]
         }
@@ -103,13 +103,13 @@
         {
           "sentences": [
             {
-              "text": "Jeg forstår ikke alltid hva folk sier. Hvorfor snakker de forskjellig?",
-              "english": "I do not always understand what people say. Why do they speak differently?",
+              "text": "Jeg forstår ikke alltid hva folk sier. Hvordan kan de snakke forskjellig?",
+              "english": "I do not always understand what people say. How can they speak differently?",
               "speaker": "sam"
             },
             {
-              "text": "Fordi de kommer fra forskjellige byer. Vi snakker dialekt, men vi skriver bokmål eller nynorsk.",
-              "english": "Because they come from different towns. We speak dialect, but we write Bokmål or Nynorsk.",
+              "text": "Fordi de kommer fra forskjellige byer. Vi snakker dialekt, men vi skriver bokmål, og noen skriver nynorsk.",
+              "english": "Because they come from different towns. We speak dialect, but we write Bokmål, and some write Nynorsk.",
               "speaker": "ana"
             },
             {
@@ -146,8 +146,8 @@
               "english": "Marta speaks an old dialect. Sam understands her almost always."
             },
             {
-              "text": "Jeg snakker slik jeg gjorde da jeg var liten. Det er dialekten min.",
-              "english": "I speak the way I did when I was small. It is my dialect.",
+              "text": "Jeg snakker som jeg gjorde da jeg var liten. Det er dialekten min.",
+              "english": "I speak as I did when I was small. It is my dialect.",
               "speaker": "marta"
             },
             {
@@ -156,13 +156,13 @@
               "speaker": "sam"
             },
             {
-              "text": "Det er en god måte å lære på! Du må ikke være redd for å ta feil.",
-              "english": "That is a good way to learn! You must not be afraid of making mistakes.",
+              "text": "Det er en god måte å lære på! Du må ikke være redd for å prøve.",
+              "english": "That is a good way to learn! You must not be afraid to try.",
               "speaker": "marta"
             },
             {
-              "text": "Nei, jeg er ikke redd. Jeg er glad for alle ordene.",
-              "english": "No, I am not afraid. I am glad for all the words.",
+              "text": "Nei, jeg er ikke redd. Jeg er glad for alt jeg lærer.",
+              "english": "No, I am not afraid. I am glad for everything I learn.",
               "speaker": "sam"
             },
             {
@@ -175,8 +175,8 @@
               "speaker": "marta"
             },
             {
-              "text": "Jeg vil heller spise kake. Kan jeg få litt?",
-              "english": "I would rather eat cake. Can I have some?",
+              "text": "Jeg vil spise kake nå. Kan jeg få litt?",
+              "english": "I want to eat cake now. Can I have some?",
               "speaker": "nico"
             },
             {

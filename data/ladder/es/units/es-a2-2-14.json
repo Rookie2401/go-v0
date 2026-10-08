@@ -651,6 +651,83 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Sam y don Chico comparan los inviernos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un día Sam habla con don Chico, un agricultor de la aldea.",
+              "english": "One day Sam talks with don Chico, a farmer of the village."
+            },
+            {
+              "text": "—Dígame, don Chico, ¿cómo fue el invierno anterior?",
+              "english": "\"Tell me, don Chico, how was the previous winter?\""
+            },
+            {
+              "text": "—Peor que este —dice don Chico—. Hubo demasiada lluvia, y el agua atravesó el camino.",
+              "english": "\"Worse than this one,\" says don Chico. \"There was too much rain, and the water crossed the road.\""
+            },
+            {
+              "text": "Además, el año pasado hubo un terremoto pequeño, y apareció una piedra grande en medio del camino.",
+              "english": "Besides, last year there was a small earthquake, and a big stone appeared in the middle of the road."
+            },
+            {
+              "text": "—¿Y este año?",
+              "english": "\"And this year?\""
+            },
+            {
+              "text": "—Este año hallamos buena hierba para las vacas, y el maíz salió más grande.",
+              "english": "\"This year we found good grass for the cows, and the corn came out bigger.\""
+            },
+            {
+              "text": "Mi hijo mayor dice que todo es moderno ahora, y que los viejos no sabemos nada.",
+              "english": "My older son says everything is modern now, and that we old people know nothing."
+            },
+            {
+              "text": "Mi hija menor dice lo mismo, pero ella es más amable.",
+              "english": "My younger daughter says the same, but she is kinder."
+            },
+            {
+              "text": "—Yo supongo que los jóvenes no quieren juzgar a nadie —dice Sam.",
+              "english": "\"I suppose the young people do not want to judge anyone,\" says Sam."
+            },
+            {
+              "text": "—Es cierto que el mundo cambia —dice don Chico—, pero la lluvia sigue igual.",
+              "english": "\"It is true that the world changes,\" says don Chico, \"but the rain stays the same.\""
+            },
+            {
+              "text": "Yo no niego que el celular es útil.",
+              "english": "I do not deny that the cell phone is useful."
+            },
+            {
+              "text": "Lo que niego es que sirva para hacer llover.",
+              "english": "What I deny is that it can make it rain."
+            },
+            {
+              "text": "—Un hombre falso dice que sabe cuándo va a llover —sigue—. Un hombre sincero dice: «Yo no sé».",
+              "english": "\"A false man says he knows when it will rain,\" he goes on. \"A sincere man says: 'I don't know'.\""
+            },
+            {
+              "text": "—Entonces la lluvia es verdadera —dice Sam—. No dice nada, sino que cae.",
+              "english": "\"Then the rain is truthful,\" says Sam. \"It says nothing, but simply falls.\""
+            },
+            {
+              "text": "Sam trata de expresar una idea más grande, pero le faltan palabras.",
+              "english": "Sam tries to express a bigger idea, but he is short of words."
+            },
+            {
+              "text": "—Quiero decir que es natural esperar —dice.",
+              "english": "\"I mean that it is natural to wait,\" he says."
+            },
+            {
+              "text": "—Así es —dice don Chico—. Y el próximo invierno, si Dios quiere, será largo y bueno.",
+              "english": "\"That's right,\" says don Chico. \"And next winter, God willing, will be long and good.\""
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

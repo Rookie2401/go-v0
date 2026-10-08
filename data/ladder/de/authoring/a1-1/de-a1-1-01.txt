@@ -1,0 +1,88 @@
+=== de-a1-1-01
+speakers: sam=Sam, weber=Frau Weber, anna=Anna, marta=Marta, ben=Ben
+## Auf der Straße
+Es ist Sonntag. || It is Sunday.
+Es ist Morgen in Leipzig. || It is morning in Leipzig.
+Sam ist in der Stadt. || Sam is in the city.
+
+[weber] Guten Morgen! || Good morning!
+[sam] Guten Morgen! || Good morning!
+[weber] Wie ist Ihr Name, bitte? || What is your name, please?
+[sam] Mein Name ist Sam Miller. || My name is Sam Miller.
+[sam] Und Sie? || And you?
+[sam] Wie heißen Sie? || What is your name?
+[weber] Mein Name ist Weber. || My name is Weber.
+[weber] Ich bin Frau Weber. || I am Mrs Weber.
+[sam] Freut mich, Frau Weber. || Nice to meet you, Mrs Weber.
+[weber] Freut mich auch, Herr Miller. || Nice to meet you too, Mr Miller.
+
+[weber] Sprechen Sie Deutsch? || Do you speak German?
+[sam] Ja, ich spreche Deutsch. || Yes, I speak German.
+[sam] Aber nicht gut. || But not well.
+[weber] Sehr gut, Herr Miller! || Very well, Mr Miller!
+[weber] Woher kommen Sie? || Where do you come from?
+[sam] Ich komme aus den USA. || I come from the USA.
+[sam] Und Sie? || And you?
+[sam] Wohnen Sie hier? || Do you live here?
+[weber] Ja, ich wohne hier in der Stadt. || Yes, I live here in the city.
+[weber] Ich bin aus Leipzig. || I am from Leipzig.
+[weber] Und Sie sind in der Stadt. || And you are in the city.
+[weber] Das ist gut. || That is good.
+
+## Anna ist auch hier
+Anna ist auch hier. || Anna is here too.
+[anna] Hallo, Sam! || Hello, Sam!
+[anna] Wie geht's? || How are you?
+[sam] Gut, danke. || Fine, thank you.
+[sam] Und dir? || And you?
+[anna] Auch gut, danke. || Also fine, thank you.
+[anna] Guten Morgen! || Good morning!
+[anna] Hallo! || Hello!
+[weber] Guten Morgen, Anna. || Good morning, Anna.
+[weber] Das ist Herr Miller. || This is Mr Miller.
+[anna] Heute ist Sonntag, Sam. || Today is Sunday, Sam.
+[anna] Ich gehe in die Kirche. || I am going to church.
+[anna] Gehst du mit? || Are you coming along?
+[sam] Ja, gern! || Yes, gladly!
+[sam] Gehen Sie auch mit? || Are you coming along too?
+[weber] Nein, ich bin heute müde. || No, I am tired today.
+[sam] Auf Wiedersehen, Frau Weber! || Goodbye, Mrs Weber!
+
+## Auf dem Weg
+[anna] Du sprichst gut Deutsch. || You speak good German.
+[sam] Nein, nein, nicht sehr gut. || No, no, not very well.
+[anna] Das ist schön, Sam! || That is lovely, Sam!
+[anna] Ich wohne bei Lukas. || I live with Lukas.
+[anna] Lukas ist mein Bruder. || Lukas is my brother.
+[sam] Woher kommt Lukas? || Where does Lukas come from?
+[anna] Er kommt aus Dresden. || He comes from Dresden.
+[anna] Er ist Lehrer in der Schule. || He is a teacher at the school.
+[anna] Heute ist er zu Hause. || Today he is at home.
+[anna] Das Haus ist hier. || The house is here.
+[sam] Ich habe Hunger. || I am hungry.
+[anna] Ich auch! || Me too!
+[anna] Hier ist Brot. || Here is bread.
+[anna] Möchtest du Kaffee? || Would you like coffee?
+[sam] Ja, bitte! || Yes, please!
+[sam] Ich trinke gern Kaffee. || I like drinking coffee.
+[anna] Bitte, hier ist Kaffee. || Here you are, here is coffee.
+[sam] Danke, Anna. || Thank you, Anna.
+[anna] Bitte, Sam. || You are welcome, Sam.
+
+## Bei der Kirche
+Marta und Ben sind auch hier. || Marta and Ben are here too.
+[marta] Guten Morgen, Anna! || Good morning, Anna!
+[marta] Hallo, Sam! || Hello, Sam!
+[sam] Guten Morgen, Marta! || Good morning, Marta!
+[sam] Hallo, Ben! || Hello, Ben!
+[ben] Hallo, Sam! || Hello, Sam!
+[ben] Gehst du mit in die Kirche? || Are you coming to church?
+[sam] Ja, ich gehe mit. || Yes, I am coming.
+[marta] Das ist sehr schön. || That is very nice.
+[ben] Ich bin müde und ich habe Hunger. || I am tired and I am hungry.
+[marta] Hier ist Brot, Ben. || Here is bread, Ben.
+[marta] Und Wasser. || And water.
+[ben] Danke, Oma. || Thank you, Grandma.
+[marta] Bitte. || You are welcome.
+[marta] Wir gehen in die Kirche. || We are going to church.
+

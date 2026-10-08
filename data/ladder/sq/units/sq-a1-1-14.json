@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-14",
+  "lang": "sq",
+  "title": "Letra",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-14",
+    "title": "Albanian ladder, a1-1: Letra (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Letra",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dje ishte e diel.",
+              "english": "Yesterday was Sunday."
+            },
+            {
+              "text": "Sam shkoi në kishë.",
+              "english": "Sam went to church."
+            },
+            {
+              "text": "Pastaj ai shkoi në shtëpinë e Dritës.",
+              "english": "Then he went to Drita's house."
+            },
+            {
+              "text": "Ai piu kafe me Dritën.",
+              "english": "He drank coffee with Drita."
+            },
+            {
+              "text": "Ardi lexoi një libër.",
+              "english": "Ardi read a book."
+            },
+            {
+              "text": "Sot bie shi.",
+              "english": "Today it is raining."
+            },
+            {
+              "text": "Sam nuk del nga shtëpia.",
+              "english": "Sam does not go out of the house."
+            },
+            {
+              "text": "Ai pi kafe në kuzhinë.",
+              "english": "He drinks coffee in the kitchen."
+            },
+            {
+              "text": "Pastaj ai fillon të shkruajë një letër.",
+              "english": "Then he begins to write a letter."
+            },
+            {
+              "text": "Sam është i lumtur.",
+              "english": "Sam is happy."
+            },
+            {
+              "text": "Ai mendon për Ardin dhe Dritën.",
+              "english": "He thinks about Ardi and Drita."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam i shkruan nënës:",
+              "english": "Sam writes to his mother:"
+            },
+            {
+              "text": "«E dashur nënë, jam mirë.",
+              "english": "\"Dear mother, I am well."
+            },
+            {
+              "text": "Jetoj në një shtëpi të vogël.",
+              "english": "I live in a small house."
+            },
+            {
+              "text": "Mësoj shqip çdo ditë.",
+              "english": "I learn Albanian every day."
+            },
+            {
+              "text": "Njoh shumë njerëz këtu.",
+              "english": "I know many people here."
+            },
+            {
+              "text": "Pi kafe me Luanin dhe Anën.",
+              "english": "I drink coffee with Luan and Ana."
+            },
+            {
+              "text": "Dje shkova në kishë.",
+              "english": "Yesterday I went to church."
+            },
+            {
+              "text": "Lexoj Biblën çdo ditë. Ajo flet për dashurinë e Perëndisë.",
+              "english": "I read the Bible every day. It speaks of the love of God."
+            },
+            {
+              "text": "Të dua shumë. Sam.»",
+              "english": "I love you very much. Sam.\""
+            },
+            {
+              "text": "Pastaj Sam e lexon letrën.",
+              "english": "Then Sam reads the letter."
+            },
+            {
+              "text": "Ai është i lumtur.",
+              "english": "He is happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ardi ka një letër nga gjyshi.",
+              "english": "Ardi has a letter from his grandfather."
+            },
+            {
+              "text": "Gjyshi shkruan: «I dashur Ardi, si je?",
+              "english": "The grandfather writes: \"Dear Ardi, how are you?"
+            },
+            {
+              "text": "Unë jam mirë në fshat.",
+              "english": "I am well in the village."
+            },
+            {
+              "text": "Të dua shumë. Gjyshi.»",
+              "english": "I love you very much. Grandfather.\""
+            },
+            {
+              "text": "Ardi e merr letrën dhe e shikon.",
+              "english": "Ardi takes the letter and looks at it."
+            },
+            {
+              "text": "Ai buzëqesh.",
+              "english": "He smiles."
+            },
+            {
+              "text": "Pastaj ai ia jep gjyshes.",
+              "english": "Then he gives it to his grandmother."
+            },
+            {
+              "text": "Gjyshja e lexon dhe buzëqesh.",
+              "english": "Grandmother reads it and smiles."
+            },
+            {
+              "text": "Ajo është shumë e lumtur.",
+              "english": "She is very happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Elira i shkroi një letër gjyshes.",
+              "english": "Elira wrote a letter to her grandmother."
+            },
+            {
+              "text": "Ajo shkroi:",
+              "english": "She wrote:"
+            },
+            {
+              "text": "«E dashur gjyshe, si je?",
+              "english": "\"Dear grandmother, how are you?"
+            },
+            {
+              "text": "Unë jam mirë.",
+              "english": "I am well."
+            },
+            {
+              "text": "Gjergji më dha një libër të ri.",
+              "english": "Gjergj gave me a new book."
+            },
+            {
+              "text": "Të dua shumë.",
+              "english": "I love you very much."
+            },
+            {
+              "text": "Elira.»",
+              "english": "Elira.\""
+            },
+            {
+              "text": "Elira ia dha letrën nënës.",
+              "english": "Elira gave the letter to the mother."
+            },
+            {
+              "text": "Nëna e lexoi dhe buzëqeshi.",
+              "english": "The mother read it and smiled."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

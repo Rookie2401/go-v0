@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-01",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "นิทานก่อนนอน",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-01",
+    "title": "นิทานก่อนนอน — Bedtime stories (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Recall unit: Mali retells fables the learner has already read (the crabs, the dog and his shadow, the herdsman) in everyday words, so that their words come back. For the reviewer: the child's register with an aunt (อา ... ครับ) and Mali's ค่ะ / คะ."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fables",
+    "family",
+    "rain",
+    "recall"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "B": "บอล",
+    "M": "มะลิ"
+  },
+  "sections": [
+    {
+      "title": "คืนที่ไฟดับ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนวันเสาร์ ฝนตกมาก ไฟที่ซอยดับหมด",
+              "english": "On Saturday night the rain fell heavily and the lights in the lane went out."
+            },
+            {
+              "text": "บอลนอนไม่หลับ และกระหายน้ำด้วย เขาจึงเดินไปหามะลิที่ห้องครัว",
+              "english": "Ball could not sleep, and he was thirsty too, so he went to find Mali in the kitchen."
+            },
+            {
+              "text": "อาครับ ผมนอนไม่หลับ อาช่วยเล่านิทานให้ผมฟังหน่อยได้ไหมครับ",
+              "english": "Auntie, I can't sleep. Could you tell me a story?",
+              "speaker": "B"
+            },
+            {
+              "text": "ได้ค่ะ แต่ดื่มน้ำก่อนนะคะ บอลกระหายน้ำใช่ไหมคะ",
+              "english": "Yes. But drink some water first. Are you thirsty?",
+              "speaker": "M"
+            },
+            {
+              "text": "ใช่ครับ ผมกระหายมากครับ",
+              "english": "Yes, I am very thirsty.",
+              "speaker": "B"
+            },
+            {
+              "text": "บอลนั่งลงที่มุมห้องครัว และดื่มน้ำหมดแก้ว",
+              "english": "Ball sat down in a corner of the kitchen and drank the glass of water."
+            },
+            {
+              "text": "บอลอยากฟังเรื่องอะไรคะ",
+              "english": "Which story would you like?",
+              "speaker": "M"
+            },
+            {
+              "text": "เรื่องปูที่เดินคดไปคดมาครับ",
+              "english": "The one about the crabs who walk crookedly.",
+              "speaker": "B"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แม่ปูกับลูกปู",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันหนึ่งเวลาน้ำลงงวด แม่ปูพาลูกปูไปหากินที่ชายเลนแห่งหนึ่ง",
+              "english": "One day at low tide, a mother crab took her child to look for food on a mud flat.",
+              "speaker": "M"
+            },
+            {
+              "text": "น้ำลงงวดคืออะไรครับ",
+              "english": "What is \"low tide\"?",
+              "speaker": "B"
+            },
+            {
+              "text": "น้ำลงงวด คือตอนที่น้ำลงไปไกลที่สุดค่ะ",
+              "english": "Low tide is when the water has gone down as far as it goes.",
+              "speaker": "M"
+            },
+            {
+              "text": "ลูกปูเดินคดไปคดมา เดินงุ่มง่าม แล้วก็เซไปเซมา",
+              "english": "The little crab walked crookedly, clumsily, and staggered from side to side.",
+              "speaker": "M"
+            },
+            {
+              "text": "งุ่มง่ามคืออะไรครับ",
+              "english": "What does \"clumsy\" mean?",
+              "speaker": "B"
+            },
+            {
+              "text": "งุ่มง่าม คือเดินไม่ตรง เหมือนบอลตอนยังเล็กๆ ค่ะ",
+              "english": "Clumsy means not walking steadily, like you when you were still little.",
+              "speaker": "M"
+            },
+            {
+              "text": "เซ คือเดินไม่ตรง เหมือนคนที่ง่วงมากค่ะ",
+              "english": "\"Stagger\" means walking not straight, like someone who is very sleepy.",
+              "speaker": "M"
+            },
+            {
+              "text": "แม่ปูบอกว่า เดินให้ตรงๆ สิ ทำไมเดินคดอย่างนั้น",
+              "english": "Mother Crab said, \"Walk straight! Why do you walk crooked like that?\"",
+              "speaker": "M"
+            },
+            {
+              "text": "ลูกปูถามกลับว่า แม่เดินให้ลูกดูก่อนได้ไหม",
+              "english": "The little crab asked back, \"Could you walk first, and show me?\"",
+              "speaker": "M"
+            },
+            {
+              "text": "แม่ปูลองเดิน แต่แม่ก็เดินคดเหมือนกัน เพราะปูทุกตัวเดินคดอยู่แล้ว",
+              "english": "Mother Crab tried, but she walked crookedly too, because every crab walks crookedly.",
+              "speaker": "M"
+            },
+            {
+              "text": "แม่ไม่รู้สึกตัวเลยว่าตัวเองก็เดินคด",
+              "english": "Mother had not noticed at all that she herself walked crooked.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมก็ไม่รู้สึกตัวเองเหมือนกันครับ ว่าผมเดินเซตอนง่วง",
+              "english": "I do not notice myself either, that I stagger when I am sleepy.",
+              "speaker": "B"
+            },
+            {
+              "text": "ใครๆ ก็เป็นค่ะ เราไม่รู้สึกตัวเอง จนมีคนบอก",
+              "english": "Everyone is like that. We do not notice ourselves until someone tells us.",
+              "speaker": "M"
+            },
+            {
+              "text": "เพราะถ้าน้ำขึ้นก่อน ปูก็ไปหากินไม่ได้ ตอนน้ำลงงวดจึงสำคัญสำหรับปูค่ะ",
+              "english": "Because if the water rises first, the crabs cannot look for food. So low tide is important for crabs.",
+              "speaker": "M"
+            },
+            {
+              "text": "ลูกปูเดินงุ่มง่าม แม่ปูก็เดินงุ่มง่ามเหมือนกัน แต่แม่ไม่รู้สึกตัวเองค่ะ",
+              "english": "The little crab walked clumsily, and Mother Crab walked just as clumsily, but she did not notice it herself.",
+              "speaker": "M"
+            },
+            {
+              "text": "แม่ปูสอนลูกได้อย่างไรครับ ในเมื่อตัวเองยังทำไม่ได้",
+              "english": "How can Mother Crab teach her child when she cannot do it herself?",
+              "speaker": "B"
+            },
+            {
+              "text": "ใช่ค่ะ ถ้าเราอยากสอนคนอื่น เราก็ต้องทำให้ได้ก่อนค่ะ",
+              "english": "Yes. If we want to teach other people, we must be able to do it first.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หมากับเงา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เรื่องที่สองครับ เรื่องหมาที่คาบเนื้อ",
+              "english": "The second story, please: the dog that carried meat.",
+              "speaker": "B"
+            },
+            {
+              "text": "หมาตัวหนึ่งคาบเนื้อข้ามสะพาน มันมองลงไปในน้ำ",
+              "english": "A dog carried a piece of meat over a bridge. It looked down into the water.",
+              "speaker": "M"
+            },
+            {
+              "text": "มันเห็นหมาอีกตัวหนึ่ง และเห็นเนื้อชิ้นใหญ่กว่าชิ้นของมัน",
+              "english": "It saw another dog, and a piece of meat bigger than its own.",
+              "speaker": "M"
+            },
+            {
+              "text": "ที่จริงนั่นคือเงาของมันเอง แต่หมาตัวนี้โลภ",
+              "english": "In fact that was its own shadow, but this dog was greedy.",
+              "speaker": "M"
+            },
+            {
+              "text": "มันเปิดปากจะแย่งเนื้อ เนื้อชิ้นนั้นก็ตกน้ำไป",
+              "english": "It opened its mouth to snatch the meat, and its own piece fell into the water.",
+              "speaker": "M"
+            },
+            {
+              "text": "ในที่สุดมันก็ไม่ได้อะไรเลย",
+              "english": "In the end it got nothing at all.",
+              "speaker": "M"
+            },
+            {
+              "text": "คนแก่บอกว่า โลภมาก ลาภหาย",
+              "english": "The old people say, \"Too much greed, and your gain is lost.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "ลาภคืออะไรครับ",
+              "english": "What is ลาภ?",
+              "speaker": "B"
+            },
+            {
+              "text": "ลาภคือสิ่งดีๆ ที่เราได้ เช่น เงิน หรืออาหาร",
+              "english": "ลาภ is the good things we get, such as money or food.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นอนได้แล้ว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ฝนยังไม่หยุดตก บอลฟังเรื่องที่สามไม่จบ เขาหลับไปก่อน",
+              "english": "The rain had not stopped. Ball did not finish the third story; he fell asleep first."
+            },
+            {
+              "text": "มะลิยิ้ม และพาเขากลับไปนอนที่ห้อง",
+              "english": "Mali smiled and took him back to his room to sleep."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

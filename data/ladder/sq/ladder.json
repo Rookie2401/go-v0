@@ -4,580 +4,140 @@
   "after": "stage0",
   "units": [
     {
-      "id": "sq-a1-1-h01",
+      "id": "sq-a1-1-01",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h01.json",
+      "document": "units/sq-a1-1-01.json",
       "domain": "practical",
-      "title": "Në treg"
+      "title": "Në treg dhe në shkollë"
     },
     {
-      "id": "sq-a1-1-h02",
+      "id": "sq-a1-1-02",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h02.json",
-      "domain": "narrative",
-      "title": "Ku është Ardi?"
-    },
-    {
-      "id": "sq-a1-1-h03",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h03.json",
-      "domain": "narrative",
-      "title": "Ana punon"
-    },
-    {
-      "id": "sq-a1-1-h04",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h04.json",
-      "domain": "narrative",
-      "title": "Në shkollë"
-    },
-    {
-      "id": "sq-a1-1-h05",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h05.json",
+      "document": "units/sq-a1-1-02.json",
       "domain": "narrative",
       "title": "Motër dhe vëlla"
     },
     {
-      "id": "sq-a1-1-h06",
+      "id": "sq-a1-1-03",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h06.json",
-      "domain": "narrative",
-      "title": "Djali dhe vajza"
-    },
-    {
-      "id": "sq-a1-1-h07",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h07.json",
-      "domain": "narrative",
-      "title": "Gjyshja e Ardit"
-    },
-    {
-      "id": "sq-a1-1-h08",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h08.json",
-      "domain": "narrative",
-      "title": "Në klinikë"
-    },
-    {
-      "id": "sq-a1-1-udha-0-01",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-0-01.json",
-      "domain": "narrative",
-      "title": "Kush është?"
-    },
-    {
-      "id": "sq-a1-1-h09",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h09.json",
+      "document": "units/sq-a1-1-03.json",
       "domain": "narrative",
       "title": "Libri i ri"
     },
     {
-      "id": "sq-a1-1-udha-0-02",
+      "id": "sq-a1-1-04",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "../../corpus/sq/udha-0-02.json",
-      "domain": "narrative",
-      "title": "Çfarë është kjo?"
-    },
-    {
-      "id": "sq-a1-1-h10",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h10.json",
-      "domain": "conversation",
-      "title": "Familja e Samit"
-    },
-    {
-      "id": "sq-a1-1-h11",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h11.json",
-      "domain": "narrative",
-      "title": "E diela"
-    },
-    {
-      "id": "sq-a1-1-udha-0-03",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-0-03.json",
-      "domain": "narrative",
-      "title": "Familja"
-    },
-    {
-      "id": "sq-a1-1-h12",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h12.json",
+      "document": "units/sq-a1-1-04.json",
       "domain": "description",
-      "title": "Dhoma e Samit"
+      "title": "Shtëpia dhe rruga"
     },
     {
-      "id": "sq-a1-1-h13",
+      "id": "sq-a1-1-05",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h13.json",
-      "domain": "narrative",
-      "title": "Rruga e shkollës"
-    },
-    {
-      "id": "sq-a1-1-udha-0-04",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-0-04.json",
-      "domain": "description",
-      "title": "Në shtëpi"
-    },
-    {
-      "id": "sq-a1-1-h14",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h14.json",
-      "domain": "description",
-      "title": "Xhaketa e re"
-    },
-    {
-      "id": "sq-a1-1-udha-0-05",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-0-05.json",
-      "domain": "description",
-      "title": "Rruga"
-    },
-    {
-      "id": "sq-a1-1-h15",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h15.json",
+      "document": "units/sq-a1-1-05.json",
       "domain": "narrative",
       "title": "Qeni dhe macja"
     },
     {
-      "id": "sq-a1-1-h16",
+      "id": "sq-a1-1-06",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h16.json",
-      "domain": "conversation",
-      "title": "Në shtëpinë e Dritës"
-    },
-    {
-      "id": "sq-a1-1-udha-0-06",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-0-06.json",
+      "document": "units/sq-a1-1-06.json",
       "domain": "narrative",
-      "title": "Uji dhe buka"
+      "title": "Mëngjes"
     },
     {
-      "id": "sq-a1-1-udha-0-07",
+      "id": "sq-a1-1-07",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "../../corpus/sq/udha-0-07.json",
-      "domain": "narrative",
-      "title": "Ku është Beni?"
-    },
-    {
-      "id": "sq-a1-1-udha-0-08",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-0-08.json",
-      "domain": "conversation",
-      "title": "Unë dhe ti"
-    },
-    {
-      "id": "sq-a1-1-h17",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h17.json",
-      "domain": "narrative",
-      "title": "Mëngjesi i Samit"
-    },
-    {
-      "id": "sq-a1-1-h18",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h18.json",
-      "domain": "narrative",
-      "title": "Mëngjesi i Anës"
-    },
-    {
-      "id": "sq-a1-1-h19",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h19.json",
-      "domain": "narrative",
-      "title": "Mëngjesi i Ardit"
-    },
-    {
-      "id": "sq-a1-1-udha-1-01",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-1-01.json",
-      "domain": "narrative",
-      "title": "Mëngjesi"
-    },
-    {
-      "id": "sq-a1-1-h20",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h20.json",
+      "document": "units/sq-a1-1-07.json",
       "domain": "conversation",
       "title": "Nga je?"
     },
     {
-      "id": "sq-a1-1-h21",
+      "id": "sq-a1-1-08",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h21.json",
-      "domain": "conversation",
-      "title": "Ana dhe Dritani"
-    },
-    {
-      "id": "sq-a1-1-h22",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h22.json",
-      "domain": "narrative",
-      "title": "Sam mëson shqip"
-    },
-    {
-      "id": "sq-a1-1-misioni-1-01",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/misioni-1-01.json",
-      "domain": "conversation",
-      "title": "Takimi"
-    },
-    {
-      "id": "sq-a1-1-h23",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h23.json",
+      "document": "units/sq-a1-1-08.json",
       "domain": "narrative",
       "title": "Ku është çelësi?"
     },
     {
-      "id": "sq-a1-1-h24",
+      "id": "sq-a1-1-09",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h24.json",
-      "domain": "narrative",
-      "title": "Libri i Samit"
-    },
-    {
-      "id": "sq-a1-1-udha-1-02",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-1-02.json",
-      "domain": "narrative",
-      "title": "Libri i Anës"
-    },
-    {
-      "id": "sq-a1-1-h25",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h25.json",
+      "document": "units/sq-a1-1-09.json",
       "domain": "narrative",
       "title": "Fshati i gjyshit"
     },
     {
-      "id": "sq-a1-1-h26",
+      "id": "sq-a1-1-10",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h26.json",
-      "domain": "narrative",
-      "title": "Në verë"
-    },
-    {
-      "id": "sq-a1-1-h27",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h27.json",
-      "domain": "conversation",
-      "title": "Sam dhe fshati"
-    },
-    {
-      "id": "sq-a1-1-udha-1-03",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-1-03.json",
-      "domain": "narrative",
-      "title": "Gjyshi dhe gjyshja"
-    },
-    {
-      "id": "sq-a1-1-h28",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h28.json",
+      "document": "units/sq-a1-1-10.json",
       "domain": "conversation",
       "title": "Mirë se vini!"
     },
     {
-      "id": "sq-a1-1-h29",
+      "id": "sq-a1-1-11",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h29.json",
-      "domain": "narrative",
-      "title": "Gruaja e Dritanit"
-    },
-    {
-      "id": "sq-a1-1-h30",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h30.json",
-      "domain": "conversation",
-      "title": "Te Ana"
-    },
-    {
-      "id": "sq-a1-1-misioni-1-02",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/misioni-1-02.json",
-      "domain": "conversation",
-      "title": "Një kafe"
-    },
-    {
-      "id": "sq-a1-1-h31",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h31.json",
-      "domain": "practical",
-      "title": "Drita në treg"
-    },
-    {
-      "id": "sq-a1-1-h32",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h32.json",
-      "domain": "practical",
-      "title": "Mollët"
-    },
-    {
-      "id": "sq-a1-1-h33",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h33.json",
-      "domain": "narrative",
-      "title": "Molla e kuqe"
-    },
-    {
-      "id": "sq-a1-1-udha-1-04",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-1-04.json",
+      "document": "units/sq-a1-1-11.json",
       "domain": "practical",
       "title": "Në treg"
     },
     {
-      "id": "sq-a1-1-h34",
+      "id": "sq-a1-1-12",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h34.json",
+      "document": "units/sq-a1-1-12.json",
       "domain": "narrative",
       "title": "Bie shi"
     },
     {
-      "id": "sq-a1-1-h35",
+      "id": "sq-a1-1-13",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h35.json",
-      "domain": "narrative",
-      "title": "Ardi do të luajë"
-    },
-    {
-      "id": "sq-a1-1-h36",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h36.json",
-      "domain": "narrative",
-      "title": "Pas shiut"
-    },
-    {
-      "id": "sq-a1-1-h37",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h37.json",
-      "domain": "narrative",
-      "title": "Sam mendon"
-    },
-    {
-      "id": "sq-a1-1-udha-1-05",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-1-05.json",
-      "domain": "narrative",
-      "title": "Shiu"
-    },
-    {
-      "id": "sq-a1-1-h38",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h38.json",
-      "domain": "narrative",
+      "document": "units/sq-a1-1-13.json",
+      "domain": "church",
       "title": "E diela në kishë"
     },
     {
-      "id": "sq-a1-1-h39",
+      "id": "sq-a1-1-14",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h39.json",
-      "domain": "narrative",
-      "title": "Bibla e Samit"
-    },
-    {
-      "id": "sq-a1-1-h40",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h40.json",
-      "domain": "narrative",
-      "title": "Pas kishës"
-    },
-    {
-      "id": "sq-a1-1-misioni-1-03",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/misioni-1-03.json",
-      "domain": "church",
-      "title": "Në kishë"
-    },
-    {
-      "id": "sq-a1-1-h41",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h41.json",
-      "domain": "narrative",
-      "title": "Dje"
-    },
-    {
-      "id": "sq-a1-1-h42",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h42.json",
-      "domain": "narrative",
-      "title": "Letra e Samit"
-    },
-    {
-      "id": "sq-a1-1-h43",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h43.json",
-      "domain": "narrative",
-      "title": "Letra e gjyshit"
-    },
-    {
-      "id": "sq-a1-1-udha-1-06",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-1-06.json",
+      "document": "units/sq-a1-1-14.json",
       "domain": "correspondence",
       "title": "Letra"
     },
     {
-      "id": "sq-a1-1-h44",
+      "id": "sq-a1-1-15",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h44.json",
-      "domain": "narrative",
-      "title": "Pas punës"
-    },
-    {
-      "id": "sq-a1-1-h45",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h45.json",
-      "domain": "narrative",
-      "title": "Darka te Drita"
-    },
-    {
-      "id": "sq-a1-1-udha-1-07",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-1-07.json",
+      "document": "units/sq-a1-1-15.json",
       "domain": "narrative",
       "title": "Darka"
     },
     {
-      "id": "sq-a1-1-h46",
+      "id": "sq-a1-1-16",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h46.json",
-      "domain": "conversation",
-      "title": "Çfarë beson?"
-    },
-    {
-      "id": "sq-a1-1-h47",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h47.json",
-      "domain": "narrative",
-      "title": "Dritani dhe biri"
-    },
-    {
-      "id": "sq-a1-1-h48",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h48.json",
-      "domain": "church",
-      "title": "Fjala e Perëndisë"
-    },
-    {
-      "id": "sq-a1-1-h49",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h49.json",
-      "domain": "church",
-      "title": "E diela në kishë"
-    },
-    {
-      "id": "sq-a1-1-h50",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h50.json",
-      "domain": "church",
-      "title": "Sam pyet"
-    },
-    {
-      "id": "sq-a1-1-misioni-1-04",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/misioni-1-04.json",
+      "document": "units/sq-a1-1-16.json",
       "domain": "church",
       "title": "Çfarë beson?"
     },
     {
-      "id": "sq-a1-1-h51",
+      "id": "sq-a1-1-17",
       "stage": "a1-1",
       "kind": "controlled",
-      "document": "units/sq-a1-1-h51.json",
+      "document": "units/sq-a1-1-17.json",
       "domain": "narrative",
       "title": "Natën"
-    },
-    {
-      "id": "sq-a1-1-h52",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "units/sq-a1-1-h52.json",
-      "domain": "narrative",
-      "title": "Koha për të fjetur"
-    },
-    {
-      "id": "sq-a1-1-udha-1-08",
-      "stage": "a1-1",
-      "kind": "controlled",
-      "document": "../../corpus/sq/udha-1-08.json",
-      "domain": "narrative",
-      "title": "Nata"
     },
     {
       "id": "sq-a1-2-01",
@@ -1082,6 +642,206 @@
       "document": "units/sq-a2-2-20.json",
       "domain": "testimony",
       "title": "Një vit në Shqipëri"
+    },
+    {
+      "id": "sq-b1-01",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-01.json",
+      "domain": "narrative",
+      "title": "Pas një viti"
+    },
+    {
+      "id": "sq-b1-02",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-02.json",
+      "domain": "narrative",
+      "title": "Klubi i anglishtes"
+    },
+    {
+      "id": "sq-b1-03",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-03.json",
+      "domain": "conversation",
+      "title": "Një telefonatë nga shtëpia"
+    },
+    {
+      "id": "sq-b1-04",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-04.json",
+      "domain": "narrative",
+      "title": "Një lajm i keq"
+    },
+    {
+      "id": "sq-b1-05",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-05.json",
+      "domain": "conversation",
+      "title": "Darka e së dielës"
+    },
+    {
+      "id": "sq-b1-06",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-06.json",
+      "domain": "practical",
+      "title": "Një letër për punë"
+    },
+    {
+      "id": "sq-b1-07",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-07.json",
+      "domain": "health",
+      "title": "Plaku nga fshati"
+    },
+    {
+      "id": "sq-b1-08",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-08.json",
+      "domain": "testimony",
+      "title": "Në fshatin e plakut"
+    },
+    {
+      "id": "sq-b1-09",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-09.json",
+      "domain": "narrative",
+      "title": "Një qen në çantë"
+    },
+    {
+      "id": "sq-b1-10",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-10.json",
+      "domain": "instructions",
+      "title": "Njoftimi"
+    },
+    {
+      "id": "sq-b1-11",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-11.json",
+      "domain": "narrative",
+      "title": "Pronari i qenit"
+    },
+    {
+      "id": "sq-b1-12",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-12.json",
+      "domain": "conversation",
+      "title": "Plani për Korçën"
+    },
+    {
+      "id": "sq-b1-13",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-13.json",
+      "domain": "narrative",
+      "title": "Udhëtimi"
+    },
+    {
+      "id": "sq-b1-14",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-14.json",
+      "domain": "description",
+      "title": "Një mëngjes në Korçë"
+    },
+    {
+      "id": "sq-b1-15",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-15.json",
+      "domain": "conversation",
+      "title": "Darka te Teuta"
+    },
+    {
+      "id": "sq-b1-16",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-16.json",
+      "domain": "testimony",
+      "title": "Dëshmia e Anës"
+    },
+    {
+      "id": "sq-b1-17",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-17.json",
+      "domain": "conversation",
+      "title": "Pyetjet e Samit"
+    },
+    {
+      "id": "sq-b1-18",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-18.json",
+      "domain": "church",
+      "title": "Një e diel e veçantë"
+    },
+    {
+      "id": "sq-b1-19",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-19.json",
+      "domain": "correspondence",
+      "title": "Një email për nënën"
+    },
+    {
+      "id": "sq-b1-20",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-20.json",
+      "domain": "narrative",
+      "title": "Provimi i Gjergjit"
+    },
+    {
+      "id": "sq-b1-21",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-21.json",
+      "domain": "nonfiction",
+      "title": "Lajme nga lagjja"
+    },
+    {
+      "id": "sq-b1-22",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-22.json",
+      "domain": "practical",
+      "title": "Oferta e shkollës"
+    },
+    {
+      "id": "sq-b1-23",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-23.json",
+      "domain": "conversation",
+      "title": "Nëse qëndroj"
+    },
+    {
+      "id": "sq-b1-24",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-24.json",
+      "domain": "narrative",
+      "title": "Një dasmë në fshat"
+    },
+    {
+      "id": "sq-b1-25",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/sq-b1-25.json",
+      "domain": "narrative",
+      "title": "Viti i dytë mbaron"
     }
   ]
 }

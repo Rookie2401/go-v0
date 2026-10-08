@@ -6,11 +6,11 @@ note: The railway is not named and no facts about the real line are given beyond
 {ana} kjørte ham til stasjonen. Mange folk var på stasjonen. || Anna drove him to the station. Many people were at the station.
 [ana] Har du billett, {sam}? || Do you have a ticket, Sam?
 [sam] Ja, her er billetten. Toget går klokka åtte. || Yes, here is the ticket. The train leaves at eight.
-[ana] Ha en god reise! Ring meg når du kommer til Oslo. || Have a good journey! Call me when you get to Oslo.
+[ana] Ha en god reise! Du må ringe meg når du kommer til Oslo. || Have a good journey! You must call me when you get to Oslo.
 [sam] Det skal jeg gjøre. Hils {luis}! || I will. Say hello to Lars!
 
 ## I toget
-{sam} fant plassen sin. Han satt og så ut av vinduet. || Sam found his seat. He sat and looked out of the window.
+{sam} fant plassen sin. Han satt og så på utsikten gjennom vinduet. || Sam found his seat. He sat and looked at the view through the window.
 Utsikten var bra. Toget gikk gjennom fjellet. Det ble mørkt i tunnelen, og så ble det lyst igjen. || The view was good. The train went through the mountain. It got dark in the tunnel, and then it got light again.
 Det var mange tunneler. Hver gang ble det mørkt, og så kom utsikten tilbake. || There were many tunnels. Each time it got dark, and then the view came back.
 En dame satt hos {sam}. Hun snakket til ham. || A woman sat with Sam. She spoke to him.

@@ -1,0 +1,37 @@
+=== nb-b1-bridge-14 | nonfiction | health | What does a nurse do? | Hva gjør en sykepleier? | work,health,explanation,relative clauses,comparison,questions
+speakers: elev=En elev
+note: Anna tells Lars's class about her work. Explanatory Norwegian with relative clauses (en som ..., en vakt som ...), superlatives (det vanskeligste, den beste) and questions. General and simplified; no real hospital is named. A Norwegian reviewer should check how natural the classroom talk sounds.
+## I klasserommet
+En dag spurte {luis} om {ana} ville komme til klassen hans. Elevene skulle lære om arbeid, og {luis} mente at ingen kunne fortelle bedre om en sykepleier enn {ana}. || One day Lars asked whether Anna would come to his class. The pupils were going to learn about work, and Lars thought that nobody could tell better about a nurse than Anna.
+{sam} var også med. Han satt og lyttet. {nico} satt med gipsen sin, og han var stolt av den. || Sam was there too. He sat and listened. Nils sat with his cast, and he was proud of it.
+[luis] Dette er {ana}, søsteren min. Hun er sykepleier. Nå skal dere få høre hva hun gjør. || This is Anna, my sister. She is a nurse. Now you will hear what she does.
+
+## Arbeidet
+[ana] Hei, alle sammen. En sykepleier er en som hjelper folk som er syke. Noen er syke i noen dager, og noen er syke i lang tid. || Hi, everyone. A nurse is someone who helps people who are ill. Some are ill for a few days, and some are ill for a long time.
+[ana] Jeg jobber på en klinikk. Hver dag treffer jeg mange pasienter. Jeg måler temperaturen til pasientene, og jeg gir dem medisin når legen har sagt det. || I work at a clinic. Every day I meet many patients. I measure the patients' temperature, and I give them medicine when the doctor has said so.
+[elev] Gjør det vondt å måle temperaturen? || Does it hurt to measure the temperature?
+[ana] Nei, det gjør ikke vondt. Det er ganske lett. || No, it does not hurt. It is quite easy.
+[ana] Men det vanskeligste er ikke å gi medisin. Det vanskeligste er å lytte. Mange pasienter er redde, og de trenger noen som har tid. || But the most difficult thing is not giving medicine. The most difficult thing is listening. Many patients are afraid, and they need someone who has time.
+[ana] En annen dag hadde jeg en pasient som var ganske gammel og veldig redd. Jeg satt hos ham i en time. Han trengte ikke medisin, han trengte bare noen. || One day I had a patient who was quite old and very afraid. I sat with him for an hour. He did not need medicine, he only needed someone.
+
+## Vakt
+[elev] Jobber du om natten også? || Do you work at night too?
+[ana] Ja, noen ganger. Da har jeg vakt hele natten. Jeg må måle temperaturen til alle pasientene, også om natten. Mens mange sover, er jeg på jobb. Det er en vakt som kan være lang, og jeg blir ganske trøtt. || Yes, sometimes. Then I am on duty all night. I must measure the temperature of all the patients, also at night. While many sleep, I am at work. It is a shift that can be long, and I get quite tired.
+[ana] En annen vakt var veldig rolig, og da fikk jeg lese i en bok. Men jeg liker arbeidet, fordi jeg får være med når noen blir frisk. Den dagen er den beste dagen. || Another shift was very quiet, and then I got to read in a book. But I like the work, because I get to be there when someone gets well. That day is the best day.
+[elev] Blir alle friske? || Does everyone get well?
+[ana] Nei, ikke alle. Men mange blir friske, og vi gjør det vi kan. || No, not everyone. But many get well, and we do what we can.
+[elev] Hva er det viktigste for en sykepleier? || What is the most important thing for a nurse?
+[ana] Ansvar og omsorg. Ansvar er å gjøre det du skal gjøre, hver dag. Omsorg er å være snill og lytte til folk du møter. Med ansvar og omsorg blir mange friske. || Responsibility and care. Responsibility is to do what you are to do, every day. Care is to be kind and to listen to the people you meet. With responsibility and care many get well.
+
+## Nils spør
+[nico] Jeg hadde en sykepleier da jeg fikk gips. Hun var nesten like snill som deg, {ana}! || I had a nurse when I got a cast. She was almost as kind as you, Anna!
+Alle lo, og {ana} var glad. «Takk, {nico}. Det var bra sagt. En annen gang skal jeg fortelle mer.» || Everyone laughed, and Anna was glad. "Thank you, Nils. That was well said. Another time I will tell more."
+Etterpå gikk elevene ut i pausen. {sam} var igjen med {luis} og {ana}. || Afterwards the pupils went out for the break. Sam stayed with Lars and Anna.
+[sam] Jeg har ikke tenkt så mye på hva du gjør. Nå forstår jeg hvorfor du er så trøtt etter vakten. || I had not thought so much about what you do. Now I understand why you are so tired after the shift.
+[ana] Jeg er trøtt, men jeg er også glad. Jeg tror at alle kan hjelpe noen, og at det er en måte å takke Gud på. || I am tired, but I am also glad. I think that everyone can help someone, and that it is a way of thanking God.
+
+På vei hjem tenkte {sam} på kontrakten og på hvordan {ana} hadde forklart den. Armen til {nico} var bra igjen, men han hadde fortsatt hjelm på hodet hver dag. Kommunen hadde kjøpt nye kasser til glass, og det var ikke et problem lenger. Kunden som var sint, hadde klaget, men hun hadde fått en ny kvittering. || On the way home Sam thought of the contract and of how Anna had explained it. Nils's arm was good again, but he still had a helmet on his head every day. The municipality had bought new boxes for glass, and it was no longer a problem. The customer who was angry had complained, but she had got a new receipt.
+{sam} kunne ikke løfte kassene med glass ennå, men han kunne sykle til jobben. Han leste en engelsk bok som han skulle levere tilbake. De snakket om partiene og hvilken mening de hadde, men han hadde ikke nok tid til å lese alt. || Sam could not lift the boxes of glass yet, but he could cycle to work. He read an English book that he was going to return. They talked about the parties and which opinion they had, but he did not have enough time to read everything.
+Det var støy fra naboene, og {sam} sa at han ville stemme for en ny regel på neste møte. Den sinte kunden hadde ringt igjen. {nico} ville aldri mer sykle uten hjelm etter bruddet. || There was noise from the neighbours, and Sam said that he would vote for a new rule at the next meeting. The angry customer had called again. Nils would never again cycle without a helmet after the fracture.
+Kunden skulle ikke klage mer, og {nico} falt ikke igjen. Hun hadde fått pengene tilbake. || The customer was not going to complain any more, and Nils did not fall again. She had got her money back.
+Bruddet i armen var nesten bra igjen. || The fracture in the arm was almost good again.

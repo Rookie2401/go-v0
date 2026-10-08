@@ -196,8 +196,8 @@
         {
           "sentences": [
             {
-              "text": "Først leste Sam bokmål, men så leste han nynorsk også. Han ville heller lære begge måter. Han forstår dialekter, og hvert ord er ikke feil.",
-              "english": "First Sam read Bokmål, but then he read Nynorsk too. He would rather learn both ways. He understands dialects, and no word is wrong."
+              "text": "Først leste Sam bokmål, men så leste han nynorsk også. Han ville lære begge måter. Han forstår dialekter, og alle er bra.",
+              "english": "First Sam read Bokmål, but then he read Nynorsk too. He wanted to learn both ways. He understands dialects, and all are good."
             }
           ]
         },
@@ -212,8 +212,8 @@
         {
           "sentences": [
             {
-              "text": "Hvorfor skriver vi slik? Bokmål eller nynorsk, vi forstår hverandre heller godt.",
-              "english": "Why do we write like this? Bokmål or Nynorsk, we understand each other rather well."
+              "text": "Vi skriver bokmål og nynorsk, og vi forstår begge godt.",
+              "english": "We write Bokmål and Nynorsk, and we understand both well."
             }
           ]
         },
@@ -222,6 +222,14 @@
             {
               "text": "Mel, salt og gjær: sett deigen riktig. Smak på brødet.",
               "english": "Flour, salt and yeast: put the dough right. Taste the bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna tenkte på sykehuset og på valget sitt. Nils vil bo nær havet og spise tørrfisk. Alle er velkomne i kirka.",
+              "english": "Anna thought of the hospital and of her choice. Nils wants to live near the sea and eat dried fish. Everyone is welcome in the church."
             }
           ]
         }

@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-06",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "สามฤดูของเชียงใหม่",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-06",
+    "title": "สามฤดูของเชียงใหม่ — The three seasons of Chiang Mai (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Explanatory text of the kind a newcomer might write for friends at home. For the reviewer: the facts are general (hot season, rainy season, cool season, the haze of the dry months); nothing depends on exact dates or air-quality figures."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "seasons",
+    "weather",
+    "haze",
+    "farming"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ฤดูที่หนึ่งถึงฤดูที่สาม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมเขียนถึงเพื่อนที่บ้านว่า ที่เชียงใหม่มีสามฤดู",
+              "english": "Sam wrote to his friends at home that Chiang Mai has three seasons."
+            },
+            {
+              "text": "ฤดูร้อนเริ่มประมาณเดือนมีนาคม และอากาศร้อนมาก",
+              "english": "The hot season begins around March, and the weather is very hot."
+            },
+            {
+              "text": "บางวันร้อนจนไม่มีใครอยากออกจากบ้าน",
+              "english": "Some days it is so hot that nobody wants to leave the house."
+            },
+            {
+              "text": "ฤดูฝนมาประมาณเดือนมิถุนายน ฝนตกบ่อยมาก",
+              "english": "The rainy season comes around June, and it rains very often."
+            },
+            {
+              "text": "ตอนฝนตก น้ำเต็มนา ชาวนาก็เริ่มทำนา",
+              "english": "When it rains the fields fill with water, and the farmers begin to plant rice."
+            },
+            {
+              "text": "ฤดูหนาวมาประมาณเดือนพฤศจิกายน อากาศเย็นสบาย",
+              "english": "The cool season comes around November, and the weather is cool and pleasant."
+            },
+            {
+              "text": "ตอนเช้าที่บนดอย หนาวจนต้องใส่เสื้อหลายตัว",
+              "english": "On the mountain in the morning it is so cold that one must wear several shirts."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เดือนที่มีหมอกควัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แต่ระหว่างฤดูร้อนกับฤดูฝน มีช่วงหนึ่งที่เมืองเต็มไปด้วยควัน",
+              "english": "But between the hot and the rainy season there is a time when the city fills with smoke."
+            },
+            {
+              "text": "คนในเมืองไม่ชอบช่วงนั้นเลย",
+              "english": "People in the city do not like that time at all."
+            },
+            {
+              "text": "ช่วงนั้นไม่ค่อยมีฝน อากาศแห้งมาก",
+              "english": "In that time there is hardly any rain, and the air is very dry."
+            },
+            {
+              "text": "ควันมาจากไฟในนา ซึ่งชาวนาทำเพื่อเตรียมนาสำหรับปีต่อไป",
+              "english": "The smoke comes from fires in the fields, which farmers make to prepare the field for the next year."
+            },
+            {
+              "text": "ควันจากนาและจากป่าลอยมาที่เมือง",
+              "english": "Smoke from the fields and from the forest drifts into the city."
+            },
+            {
+              "text": "ท้องฟ้าไม่ใส และเราไม่เห็นภูเขาเลย",
+              "english": "The sky is not clear, and we cannot see the mountains at all."
+            },
+            {
+              "text": "หลายคนไอ และตาของเขาแดงเพราะควัน",
+              "english": "Many people cough, and their eyes are red from the smoke."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "คนในเมืองทำอย่างไร",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มะลิเล่าว่า ที่โรงพยาบาล มีคนไข้มากขึ้นในช่วงนี้",
+              "english": "Mali said that at the hospital there are more patients in this period."
+            },
+            {
+              "text": "หมอพูดว่า ทุกคนควรอยู่ในบ้านเมื่ออากาศเสีย",
+              "english": "The doctors say everyone should stay indoors when the air is bad."
+            },
+            {
+              "text": "ถ้าต้องออกจากบ้าน ก็ควรรีบกลับ",
+              "english": "If one has to leave the house, one should hurry back."
+            },
+            {
+              "text": "โรงเรียนบางแห่งปิดสองสามวัน เพื่อให้เด็กๆ ปลอดภัย",
+              "english": "Some schools close for a few days to keep the children safe."
+            },
+            {
+              "text": "ต้นเล่าว่า ครูพานักเรียนปลูกต้นไม้ที่โรงเรียน",
+              "english": "Ton said the teachers take their students to plant trees at the school."
+            },
+            {
+              "text": "ต้นไม้ช่วยให้อากาศดีขึ้น และทำให้เมืองเย็นลงด้วย",
+              "english": "Trees help the air get better, and they cool the city too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ฝนแรก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมเขียนว่า วันที่ฝนแรกมา ทุกคนดีใจมาก",
+              "english": "Sam wrote that on the day the first rain came, everyone was very glad."
+            },
+            {
+              "text": "ฝนล้างควันออกจากฟ้า และท้องฟ้ากลับมาสวย",
+              "english": "The rain washed the smoke out of the sky, and the sky was beautiful again."
+            },
+            {
+              "text": "เด็กๆ วิ่งออกไปเล่นน้ำฝนหน้าบ้านป้าแดง",
+              "english": "The children ran out to play in the rain in front of Auntie Daeng's house."
+            },
+            {
+              "text": "ผมคิดว่า ผมเข้าใจแล้วว่า ทำไมคนที่นี่ชอบฤดูฝน",
+              "english": "\"I think I now understand why people here like the rainy season.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

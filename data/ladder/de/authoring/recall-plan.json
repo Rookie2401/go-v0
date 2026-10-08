@@ -1,0 +1,1396 @@
+{
+ "de-b1-02": [
+  {
+   "lemma": "freitagabend",
+   "form": "freitagabend",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Es ist Freitagabend, und das Team sitzt bei David und Ruth am Tisch."
+  },
+  {
+   "lemma": "behältern",
+   "form": "behältern",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Ich habe im Hausflur lange vor den Behältern gestanden."
+  }
+ ],
+ "de-b1-04": [
+  {
+   "lemma": "hausflur",
+   "form": "hausflur",
+   "from": "de-b1-01",
+   "own": 1,
+   "ctx": "Ich habe im Hausflur lange vor den Behältern gestanden."
+  },
+  {
+   "lemma": "woran",
+   "form": "woran",
+   "from": "de-b1-02",
+   "own": 1,
+   "ctx": "Im Folgenden schreibe ich Euch, woran ich mich besonders erinnere."
+  }
+ ],
+ "de-b1-08": [
+  {
+   "lemma": "folgenden",
+   "form": "folgenden",
+   "from": "de-b1-02",
+   "own": 1,
+   "ctx": "Im Folgenden schreibe ich Euch, woran ich mich besonders erinnere."
+  },
+  {
+   "lemma": "schlaf",
+   "form": "schlafe",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "»Hier ist es schön still. Hier können wir lange, lange schlafen. Hier kommen keine bösen Geschwister, um uns aus dem Schlafe zu wecken. Ich bin froh, daß wir diesen schönen stillen Platz gefunden haben. Sehr froh.«"
+  },
+  {
+   "lemma": "träg",
+   "form": "träge",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Diese drei Männer waren auch träge, sehr träge."
+  },
+  {
+   "lemma": "interessant",
+   "form": "interessant",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Und diese Unterhaltung ist nicht interessant, weil schläfrige junge Männer nichts Interessantes sagen können."
+  },
+  {
+   "lemma": "palast",
+   "form": "palast",
+   "from": "de-b1-06",
+   "own": 1,
+   "ctx": "Endlich kam er zu einem schönen Hause, das so groß wie ein Palast war."
+  },
+  {
+   "lemma": "schlafzimmer",
+   "form": "schlafzimmer",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Da ist mein Vater. Er liegt da, im Schlafzimmer. Er liegt im Bette. Er wird Ihnen sagen, ob Sie hier übernachten können.«"
+  },
+  {
+   "lemma": "trinkhorn",
+   "form": "trinkhorn",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Ich bin nicht der Hausvater! Mein Vater hängt dort (da) an der Wand, in dem Trinkhorn. Er wird Ihnen sagen, ob Sie hier übernachten können,« sagte der uralte Mann, der kaum atmen konnte."
+  },
+  {
+   "lemma": "wiege",
+   "form": "wiege",
+   "from": "de-b1-06",
+   "own": 3,
+   "ctx": "»Aber da ist mein Vater. Da in der Wiege (das Bett eines sehr kleinen Kindes). Er wird Ihnen wohl sagen, ob Sie hier übernachten können.«"
+  },
+  {
+   "lemma": "bedachen",
+   "form": "bedacht",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Als die Zeit kam, daß er sterben wollte, rief er sie vor sein Bett und sprach „liebe Kinder, ich habe etwas bei mir bedacht, das will ich euch eröffnen: welcher von euch der Faulste ist, der soll nach mir König werden.“"
+  },
+  {
+   "lemma": "zuthun",
+   "form": "zuthun",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Da sprach der älteste „Vater, so gehört das Reich mir, denn ich bin so faul, wenn ich liege und will schlafen, und es fällt mir ein Tropfen in die Augen, so mag ich sie nicht zuthun, damit ich einschlafe.“"
+  },
+  {
+   "lemma": "scharf",
+   "form": "scharf",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  },
+  {
+   "lemma": "erhüben",
+   "form": "erhübe",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  }
+ ],
+ "de-b1-11": [
+  {
+   "lemma": "ruhen",
+   "form": "ruhen",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "»Hier ist ein guter, stiller Platz. Hier können wir ruhen. Hier können wir ruhig schlafen, so lange wir wollen.«"
+  },
+  {
+   "lemma": "bilden",
+   "form": "bilden",
+   "from": "de-b1-05",
+   "own": 1,
+   "ctx": "Die Worte, die sie sagen, bilden eine Unterhaltung."
+  },
+  {
+   "lemma": "ochs",
+   "form": "ochs",
+   "from": "de-b1-05",
+   "own": 2,
+   "ctx": "Er machte die Augen auf und sagte langsam, sehr langsam: »Nein, das war keine Kuh, das war ein Ochs.«"
+  },
+  {
+   "lemma": "nied",
+   "form": "nieder",
+   "from": "de-b1-05",
+   "own": 3,
+   "ctx": "Die drei Männer legten sich in der Höhle nieder."
+  },
+  {
+   "lemma": "esszimmer",
+   "form": "eßzimmer",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Treten Sie in das Eßzimmer. Da werden Sie meinen Vater finden. Er sitzt an dem Tisch und ißt.«"
+  },
+  {
+   "lemma": "wand",
+   "form": "wand",
+   "from": "de-b1-06",
+   "own": 2,
+   "ctx": "»Ich bin nicht der Hausvater! Mein Vater hängt dort (da) an der Wand, in dem Trinkhorn. Er wird Ihnen sagen, ob Sie hier übernachten können,« sagte der uralte Mann, der kaum atmen konnte."
+  },
+  {
+   "lemma": "spalten",
+   "form": "spaltete",
+   "from": "de-b1-06",
+   "own": 3,
+   "ctx": "Der Mann arbeitete, er spaltete Holz."
+  },
+  {
+   "lemma": "bestimmen",
+   "form": "bestimmen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Ein König hatte drei Söhne, die waren ihm alle gleich lieb, und er wußte nicht welchen er zum König nach seinem Tode bestimmen sollte."
+  },
+  {
+   "lemma": "tropfen",
+   "form": "tropfen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Da sprach der älteste „Vater, so gehört das Reich mir, denn ich bin so faul, wenn ich liege und will schlafen, und es fällt mir ein Tropfen in die Augen, so mag ich sie nicht zuthun, damit ich einschlafe.“"
+  },
+  {
+   "lemma": "fersen",
+   "form": "fersen",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der zweite sprach „Vater, das Reich gehört mir, denn ich bin so faul, wenn ich beim Feuer sitze mich zu wärmen, so ließ ich mir eher die Fersen verbrennen,"
+  },
+  {
+   "lemma": "zerschneiden",
+   "form": "zerschneiden",
+   "from": "de-b1-07",
+   "own": 1,
+   "ctx": "Der dritte sprach „Vater, das Reich ist mein, denn ich bin so faul, sollt ich aufgehenkt werden, und hätte den Strick schon um den Hals, und einer gäbe mir ein scharf Messer in die Hand, damit ich den Strick zerschneiden dürfte, so ließ ich mich eher aufhenken, eh ich meine Hand erhübe zum Strick.“"
+  }
+ ],
+ "de-b1-14": [
+  {
+   "lemma": "oh",
+   "form": "oh",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "»Hier ist gutes Korn. Hier kann ich fressen, so viel ich will. Oh das ist gut, sehr gut!«"
+  },
+  {
+   "lemma": "hörnern",
+   "form": "hörnern",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "»Ach!« sagte der arme, junge Mann, »da ist ein schönes Mädchen. Aber das Mädchen ist traurig, es muß weinen, viel weinen. Es hat weder Vater noch Mutter, weder Bruder noch Schwester, weder Freund noch Haus. Es muß die Kuh mit den langen Hörnern melken, die böse Kuh, die den Hund plagte. Der Hund hat die Katze geplagt, aber die Katze hat die Maus gefressen. Die Maus hat das Korn gefressen, das gute Korn, welches (das) Jakob gekauft hat und welches in seinem neuen Hause war.«"
+  },
+  {
+   "lemma": "gotteshaus",
+   "form": "gotteshaus",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Der Priester nahm sein kleines Buch, sein Gebetbuch, und ging in die Kirche (Gotteshaus)."
+  },
+  {
+   "lemma": "o",
+   "form": "o",
+   "from": "de-b1-10",
+   "own": 1,
+   "ctx": "Dann sagte der Priester: »O, es war gut, sehr gut, daß mein Hahn so laut krähte und mich so früh aufweckte!«"
+  },
+  {
+   "lemma": "molk",
+   "form": "molk",
+   "from": "de-b1-10",
+   "own": 2,
+   "ctx": "Das Mädchen molk die Kuh."
+  },
+  {
+   "lemma": "bellen",
+   "form": "bellte",
+   "from": "de-b1-10",
+   "own": 3,
+   "ctx": "Die Katze sprang auf einen Baum, und der Hund stand am Fuße des Baumes und bellte."
+  },
+  {
+   "lemma": "melken",
+   "form": "melken",
+   "from": "de-b1-10",
+   "own": 4,
+   "ctx": "Das Mädchen sagte: »Wo ist meine Kuh, meine schöne, braune Kuh? Ich muß die Kuh melken. Jakob will Milch haben!«"
+  },
+  {
+   "lemma": "fünft",
+   "form": "fünfte",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Liebe, gute, süße, kleine Mutter,« rief (sagte laut) das fünfte Kind."
+  },
+  {
+   "lemma": "sechst",
+   "form": "sechste",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das sechste Kind rief: »Geschickte, gute, süße, liebe, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "siebenen",
+   "form": "siebente",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das siebente und letzte Kind rief: »Geschickte, gute, süße, liebe, niedliche, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "niedlich",
+   "form": "niedliche",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das siebente und letzte Kind rief: »Geschickte, gute, süße, liebe, niedliche, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "boden",
+   "form": "boden",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Er sprang auf den Boden und rollte schnell aus dem Hause."
+  },
+  {
+   "lemma": "fortrollen",
+   "form": "fortrollen",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Ich muß schnell fortrollen, denn die Frau mit den sieben hungrigen Kindern kommt, um mich zu essen!«"
+  },
+  {
+   "lemma": "einfall",
+   "form": "einfall",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Ach, ja, das ist ein guter Einfall!« rief der Pfannkuchen, und sie gingen zusammen."
+  },
+  {
+   "lemma": "feten",
+   "form": "fett",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Das Schwein war so fett, daß es sehr gut schwimmen konnte."
+  },
+  {
+   "lemma": "hinüber",
+   "form": "hinüber",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Es ist schade, daß Sie nicht schwimmen können. Aber springen Sie doch auf meinen Kopf, so werden Sie gut hinüber kommen.«"
+  },
+  {
+   "lemma": "umdrehen",
+   "form": "drehte",
+   "from": "de-b1-13",
+   "own": 2,
+   "ctx": "Als der Kuchen das hörte, fürchtete er sich sehr und drehte sich schnell um."
+  },
+  {
+   "lemma": "halt",
+   "form": "halt",
+   "from": "de-b1-13",
+   "own": 5,
+   "ctx": "»Halt, Pfannkuchen, halt!« rief die Mutter."
+  },
+  {
+   "lemma": "gänserich",
+   "form": "gänserich",
+   "from": "de-b1-13",
+   "own": 5,
+   "ctx": "Dann begegnete er einem Gänserich."
+  }
+ ],
+ "de-b1-17": [
+  {
+   "lemma": "jammer",
+   "form": "jammer",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "die wußte seinen Jammer schon und schenkte ihm ein Töpfchen, zu"
+  },
+  {
+   "lemma": "hirsenbrei",
+   "form": "hirsenbrei",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "Hirsenbrei, und wenn es sagte „Töpfchen steh,“ so hörte es wieder auf"
+  },
+  {
+   "lemma": "armut",
+   "form": "armuth",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "und nun waren sie ihrer Armuth und ihres Hungers ledig und"
+  },
+  {
+   "lemma": "not",
+   "form": "noth",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "die größte Noth, und kein Mensch weiß sich da zu helfen."
+  },
+  {
+   "lemma": "übrig",
+   "form": "übrig",
+   "from": "de-b1-12",
+   "own": 1,
+   "ctx": "wie nur noch ein einziges Haus übrig ist, da kommt das Kind heim,"
+  },
+  {
+   "lemma": "fünft",
+   "form": "fünfte",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Liebe, gute, süße, kleine Mutter,« rief (sagte laut) das fünfte Kind."
+  },
+  {
+   "lemma": "sechst",
+   "form": "sechste",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das sechste Kind rief: »Geschickte, gute, süße, liebe, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "siebenen",
+   "form": "siebente",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das siebente und letzte Kind rief: »Geschickte, gute, süße, liebe, niedliche, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "niedlich",
+   "form": "niedliche",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das siebente und letzte Kind rief: »Geschickte, gute, süße, liebe, niedliche, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "boden",
+   "form": "boden",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Er sprang auf den Boden und rollte schnell aus dem Hause."
+  },
+  {
+   "lemma": "fortrollen",
+   "form": "fortrollen",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Ich muß schnell fortrollen, denn die Frau mit den sieben hungrigen Kindern kommt, um mich zu essen!«"
+  },
+  {
+   "lemma": "einfall",
+   "form": "einfall",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Ach, ja, das ist ein guter Einfall!« rief der Pfannkuchen, und sie gingen zusammen."
+  },
+  {
+   "lemma": "feten",
+   "form": "fett",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Das Schwein war so fett, daß es sehr gut schwimmen konnte."
+  },
+  {
+   "lemma": "hinüber",
+   "form": "hinüber",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Es ist schade, daß Sie nicht schwimmen können. Aber springen Sie doch auf meinen Kopf, so werden Sie gut hinüber kommen.«"
+  },
+  {
+   "lemma": "umdrehen",
+   "form": "drehte",
+   "from": "de-b1-13",
+   "own": 2,
+   "ctx": "Als der Kuchen das hörte, fürchtete er sich sehr und drehte sich schnell um."
+  },
+  {
+   "lemma": "halt",
+   "form": "halt",
+   "from": "de-b1-13",
+   "own": 5,
+   "ctx": "»Halt, Pfannkuchen, halt!« rief die Mutter."
+  },
+  {
+   "lemma": "gänserich",
+   "form": "gänserich",
+   "from": "de-b1-13",
+   "own": 5,
+   "ctx": "Dann begegnete er einem Gänserich."
+  }
+ ],
+ "de-b1-19": [
+  {
+   "lemma": "fünft",
+   "form": "fünfte",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Liebe, gute, süße, kleine Mutter,« rief (sagte laut) das fünfte Kind."
+  },
+  {
+   "lemma": "sechst",
+   "form": "sechste",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das sechste Kind rief: »Geschickte, gute, süße, liebe, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "siebenen",
+   "form": "siebente",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das siebente und letzte Kind rief: »Geschickte, gute, süße, liebe, niedliche, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "niedlich",
+   "form": "niedliche",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Und das siebente und letzte Kind rief: »Geschickte, gute, süße, liebe, niedliche, kleine Mutter, laß mich auch ein Stück Pfannkuchen haben. Ich habe auch Hunger.«"
+  },
+  {
+   "lemma": "boden",
+   "form": "boden",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Er sprang auf den Boden und rollte schnell aus dem Hause."
+  },
+  {
+   "lemma": "fortrollen",
+   "form": "fortrollen",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Ich muß schnell fortrollen, denn die Frau mit den sieben hungrigen Kindern kommt, um mich zu essen!«"
+  },
+  {
+   "lemma": "einfall",
+   "form": "einfall",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Ach, ja, das ist ein guter Einfall!« rief der Pfannkuchen, und sie gingen zusammen."
+  },
+  {
+   "lemma": "feten",
+   "form": "fett",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "Das Schwein war so fett, daß es sehr gut schwimmen konnte."
+  },
+  {
+   "lemma": "hinüber",
+   "form": "hinüber",
+   "from": "de-b1-13",
+   "own": 1,
+   "ctx": "»Es ist schade, daß Sie nicht schwimmen können. Aber springen Sie doch auf meinen Kopf, so werden Sie gut hinüber kommen.«"
+  },
+  {
+   "lemma": "umdrehen",
+   "form": "drehte",
+   "from": "de-b1-13",
+   "own": 2,
+   "ctx": "Als der Kuchen das hörte, fürchtete er sich sehr und drehte sich schnell um."
+  },
+  {
+   "lemma": "halt",
+   "form": "halt",
+   "from": "de-b1-13",
+   "own": 5,
+   "ctx": "»Halt, Pfannkuchen, halt!« rief die Mutter."
+  },
+  {
+   "lemma": "gänserich",
+   "form": "gänserich",
+   "from": "de-b1-13",
+   "own": 5,
+   "ctx": "Dann begegnete er einem Gänserich."
+  },
+  {
+   "lemma": "ente",
+   "form": "ente",
+   "from": "de-b1-13",
+   "own": 7,
+   "ctx": "Dann begegnete der Pfannkuchen einer Ente."
+  },
+  {
+   "lemma": "übersetzung",
+   "form": "übersetzung",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Die Bibel ist nach der Übersetzung von Martin Luther, und die Sprache ist nicht ganz einfach."
+  },
+  {
+   "lemma": "bezeugen",
+   "form": "bezeugen",
+   "from": "de-b1-14",
+   "own": 1,
+   "ctx": "Hier heißt zeugen: etwas bezeugen, wie ein Zeuge."
+  },
+  {
+   "lemma": "zeuge",
+   "form": "zeuge",
+   "from": "de-b1-14",
+   "own": 3,
+   "ctx": "Hier heißt zeugen: etwas bezeugen, wie ein Zeuge."
+  },
+  {
+   "lemma": "stückchen",
+   "form": "Stückchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "stückchen",
+   "form": "Stückchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": ""
+  }
+ ],
+ "de-b1-21": [
+  {
+   "lemma": "sternthaler",
+   "form": "sternthaler",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "153.\nDie Sternthaler."
+  },
+  {
+   "lemma": "kämmerchen",
+   "form": "kämmerchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "bettchen",
+   "form": "bettchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "leib",
+   "form": "leib",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "mitleidig",
+   "form": "mitleidiges",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "hungerig",
+   "form": "hungerig",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da begegnete ihm ein armer Mann, der sprach „ach, gib mir etwas zu essen, ich bin so hungerig.“"
+  },
+  {
+   "lemma": "womit",
+   "form": "womit",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da kam ein Kind das jammerte und sprach „es friert mich so an meinem Kopfe, schenk mir etwas, womit ich ihn bedecken kann.“"
+  },
+  {
+   "lemma": "bedecken",
+   "form": "bedecken",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da kam ein Kind das jammerte und sprach „es friert mich so an meinem Kopfe, schenk mir etwas, womit ich ihn bedecken kann.“"
+  },
+  {
+   "lemma": "leibchen",
+   "form": "leibchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "seins",
+   "form": "seins",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "röcklein",
+   "form": "röcklein",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "gelangen",
+   "form": "gelangte",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Endlich gelangte es in einen Wald, und es war schon dunkel geworden, da kam noch eins und bat um ein Hemdlein, und das fromme Mädchen dachte „es ist dunkle Nacht, da sieht dich niemand, du kannst wohl dein Hemd weg geben,“ und zog das Hemd ab und gab es auch noch hin."
+  },
+  {
+   "lemma": "blank",
+   "form": "blanke",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen."
+  },
+  {
+   "lemma": "allerfeinst",
+   "form": "allerfeinsten",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen."
+  }
+ ],
+ "de-b1-23": [
+  {
+   "lemma": "sternthaler",
+   "form": "sternthaler",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "153.\nDie Sternthaler."
+  },
+  {
+   "lemma": "kämmerchen",
+   "form": "kämmerchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "bettchen",
+   "form": "bettchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "leib",
+   "form": "leib",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "mitleidig",
+   "form": "mitleidiges",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "hungerig",
+   "form": "hungerig",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da begegnete ihm ein armer Mann, der sprach „ach, gib mir etwas zu essen, ich bin so hungerig.“"
+  },
+  {
+   "lemma": "womit",
+   "form": "womit",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da kam ein Kind das jammerte und sprach „es friert mich so an meinem Kopfe, schenk mir etwas, womit ich ihn bedecken kann.“"
+  },
+  {
+   "lemma": "bedecken",
+   "form": "bedecken",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da kam ein Kind das jammerte und sprach „es friert mich so an meinem Kopfe, schenk mir etwas, womit ich ihn bedecken kann.“"
+  },
+  {
+   "lemma": "leibchen",
+   "form": "leibchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "seins",
+   "form": "seins",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "röcklein",
+   "form": "röcklein",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "gelangen",
+   "form": "gelangte",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Endlich gelangte es in einen Wald, und es war schon dunkel geworden, da kam noch eins und bat um ein Hemdlein, und das fromme Mädchen dachte „es ist dunkle Nacht, da sieht dich niemand, du kannst wohl dein Hemd weg geben,“ und zog das Hemd ab und gab es auch noch hin."
+  },
+  {
+   "lemma": "blank",
+   "form": "blanke",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen."
+  },
+  {
+   "lemma": "linnen",
+   "form": "linnen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen."
+  },
+  {
+   "lemma": "weise",
+   "form": "weise",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "verdrießen",
+   "form": "verdrießen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Er blieb lange aus, und der Herr dachte „der treue Hans, er läßt sich in seinem Dienste doch keine Mühe verdrießen.“"
+  },
+  {
+   "lemma": "befürchten",
+   "form": "befürchtete",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "zustoßen",
+   "form": "zugestoßen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "umsehen",
+   "form": "umsehen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "erblicken",
+   "form": "erblickte",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Er mußte lange suchen, endlich erblickte er den Knecht, der im weiten Feld auf und ab lief."
+  },
+  {
+   "lemma": "einholen",
+   "form": "eingeholt",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Nun lieber Hans,“ sagte der Herr, als er ihn eingeholt hatte, „hast du die Kuh gefunden, nach der ich dich ausgeschickt habe?“"
+  },
+  {
+   "lemma": "amseln",
+   "form": "amseln",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Drei Amseln“ antwortete der Knecht."
+  },
+  {
+   "lemma": "jagen",
+   "form": "jage",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Eine sehe ich, die andere höre ich und die dritte jage ich“ antwortete der kluge Knecht."
+  },
+  {
+   "lemma": "bekümmern",
+   "form": "bekümmert",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "euern",
+   "form": "euern",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "befehle",
+   "form": "befehle",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "steinalt",
+   "form": "steinalt",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "steinalt",
+   "form": "steinalt",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "trüb",
+   "form": "trüb",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "taub",
+   "form": "taub",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "taub",
+   "form": "taub",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "knie",
+   "form": "Knie",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "knie",
+   "form": "Knie",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "schütten",
+   "form": "schüttete",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "schütten",
+   "form": "schüttete",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "tischtuch",
+   "form": "Tischtuch",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "tischtuch",
+   "form": "Tischtuch",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "daraus",
+   "form": "daraus",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  },
+  {
+   "lemma": "fließen",
+   "form": "floß",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": ""
+  }
+ ],
+ "de-b1-25": [
+  {
+   "lemma": "sternthaler",
+   "form": "sternthaler",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "153.\nDie Sternthaler."
+  },
+  {
+   "lemma": "kämmerchen",
+   "form": "kämmerchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "bettchen",
+   "form": "bettchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "leib",
+   "form": "leib",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "mitleidig",
+   "form": "mitleidiges",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte."
+  },
+  {
+   "lemma": "hungerig",
+   "form": "hungerig",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da begegnete ihm ein armer Mann, der sprach „ach, gib mir etwas zu essen, ich bin so hungerig.“"
+  },
+  {
+   "lemma": "womit",
+   "form": "womit",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da kam ein Kind das jammerte und sprach „es friert mich so an meinem Kopfe, schenk mir etwas, womit ich ihn bedecken kann.“"
+  },
+  {
+   "lemma": "bedecken",
+   "form": "bedecken",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da kam ein Kind das jammerte und sprach „es friert mich so an meinem Kopfe, schenk mir etwas, womit ich ihn bedecken kann.“"
+  },
+  {
+   "lemma": "leibchen",
+   "form": "leibchen",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "seins",
+   "form": "seins",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "röcklein",
+   "form": "röcklein",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin."
+  },
+  {
+   "lemma": "gelangen",
+   "form": "gelangte",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Endlich gelangte es in einen Wald, und es war schon dunkel geworden, da kam noch eins und bat um ein Hemdlein, und das fromme Mädchen dachte „es ist dunkle Nacht, da sieht dich niemand, du kannst wohl dein Hemd weg geben,“ und zog das Hemd ab und gab es auch noch hin."
+  },
+  {
+   "lemma": "blank",
+   "form": "blanke",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen."
+  },
+  {
+   "lemma": "lebtag",
+   "form": "lebtag",
+   "from": "de-b1-20",
+   "own": 1,
+   "ctx": "Da sammelte es sich die Thaler hinein und war reich für sein Lebtag."
+  },
+  {
+   "lemma": "verdrießen",
+   "form": "verdrießen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Er blieb lange aus, und der Herr dachte „der treue Hans, er läßt sich in seinem Dienste doch keine Mühe verdrießen.“"
+  },
+  {
+   "lemma": "befürchten",
+   "form": "befürchtete",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "zustoßen",
+   "form": "zugestoßen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "umsehen",
+   "form": "umsehen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "erblicken",
+   "form": "erblickte",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Er mußte lange suchen, endlich erblickte er den Knecht, der im weiten Feld auf und ab lief."
+  },
+  {
+   "lemma": "einholen",
+   "form": "eingeholt",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Nun lieber Hans,“ sagte der Herr, als er ihn eingeholt hatte, „hast du die Kuh gefunden, nach der ich dich ausgeschickt habe?“"
+  },
+  {
+   "lemma": "amseln",
+   "form": "amseln",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Drei Amseln“ antwortete der Knecht."
+  },
+  {
+   "lemma": "jagen",
+   "form": "jage",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Eine sehe ich, die andere höre ich und die dritte jage ich“ antwortete der kluge Knecht."
+  },
+  {
+   "lemma": "bekümmern",
+   "form": "bekümmert",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "euern",
+   "form": "euern",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "befehle",
+   "form": "befehle",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "ekeln",
+   "form": "ekelten",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Sein Sohn und dessen Frau ekelten sich davor, und deswegen mußte sich der alte Großvater endlich hinter den Ofen in die Ecke setzen, und sie gaben ihm sein Essen in ein irdenes Schüsselchen und noch dazu nicht einmal satt; da sah er betrübt nach dem Tisch, und die Augen wurden ihm naß."
+  },
+  {
+   "lemma": "irden",
+   "form": "irdenes",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Sein Sohn und dessen Frau ekelten sich davor, und deswegen mußte sich der alte Großvater endlich hinter den Ofen in die Ecke setzen, und sie gaben ihm sein Essen in ein irdenes Schüsselchen und noch dazu nicht einmal satt; da sah er betrübt nach dem Tisch, und die Augen wurden ihm naß."
+  },
+  {
+   "lemma": "betrüben",
+   "form": "betrübt",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Sein Sohn und dessen Frau ekelten sich davor, und deswegen mußte sich der alte Großvater endlich hinter den Ofen in die Ecke setzen, und sie gaben ihm sein Essen in ein irdenes Schüsselchen und noch dazu nicht einmal satt; da sah er betrübt nach dem Tisch, und die Augen wurden ihm naß."
+  },
+  {
+   "lemma": "zitterig",
+   "form": "zitterigen",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Einmal auch konnten seine zitterigen Hände das Schüsselchen nicht fest halten, es fiel zur Erde und zerbrach."
+  },
+  {
+   "lemma": "zerbrechen",
+   "form": "zerbrach",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Einmal auch konnten seine zitterigen Hände das Schüsselchen nicht fest halten, es fiel zur Erde und zerbrach."
+  },
+  {
+   "lemma": "schalt",
+   "form": "schalt",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Die junge Frau schalt, er sagte aber nichts und seufzte nur."
+  },
+  {
+   "lemma": "seufzen",
+   "form": "seufzte",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Die junge Frau schalt, er sagte aber nichts und seufzte nur."
+  },
+  {
+   "lemma": "hölzern",
+   "form": "hölzernes",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Da kauften sie ihm ein hölzernes Schüsselchen für ein paar Heller, daraus mußte er nun essen."
+  },
+  {
+   "lemma": "brettlein",
+   "form": "brettlein",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Wie sie da so sitzen, so trägt der kleine Enkel von vier Jahren auf der Erde kleine Brettlein zusammen."
+  },
+  {
+   "lemma": "tröglein",
+   "form": "tröglein",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "„Ich mache ein Tröglein,“ antwortete das Kind, „daraus sollen Vater und Mutter essen, wenn ich groß bin.“"
+  }
+ ],
+ "de-b1-28": [
+  {
+   "lemma": "weise",
+   "form": "weise",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "verdrießen",
+   "form": "verdrießen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Er blieb lange aus, und der Herr dachte „der treue Hans, er läßt sich in seinem Dienste doch keine Mühe verdrießen.“"
+  },
+  {
+   "lemma": "befürchten",
+   "form": "befürchtete",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "zustoßen",
+   "form": "zugestoßen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "umsehen",
+   "form": "umsehen",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Als er aber gar nicht wiederkommen wollte, befürchtete der Herr es möchte ihm etwas zugestoßen sein, machte sich selbst auf und wollte sich nach ihm umsehen."
+  },
+  {
+   "lemma": "erblicken",
+   "form": "erblickte",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Er mußte lange suchen, endlich erblickte er den Knecht, der im weiten Feld auf und ab lief."
+  },
+  {
+   "lemma": "einholen",
+   "form": "eingeholt",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Nun lieber Hans,“ sagte der Herr, als er ihn eingeholt hatte, „hast du die Kuh gefunden, nach der ich dich ausgeschickt habe?“"
+  },
+  {
+   "lemma": "amseln",
+   "form": "amseln",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Drei Amseln“ antwortete der Knecht."
+  },
+  {
+   "lemma": "jagen",
+   "form": "jage",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "„Eine sehe ich, die andere höre ich und die dritte jage ich“ antwortete der kluge Knecht."
+  },
+  {
+   "lemma": "bekümmern",
+   "form": "bekümmert",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "euern",
+   "form": "euern",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "befehle",
+   "form": "befehle",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "einfallen",
+   "form": "einfällt",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "wozu",
+   "form": "wozu",
+   "from": "de-b1-22",
+   "own": 1,
+   "ctx": "Nehmt euch daran ein Beispiel, bekümmert euch nicht um euern Herrn und seine Befehle, thut lieber was euch einfällt und wozu ihr Lust habt, dann werdet ihr eben so weise handeln, wie der kluge Hans."
+  },
+  {
+   "lemma": "urgroßvater",
+   "form": "urgroßvater",
+   "from": "de-b1-23",
+   "own": 1,
+   "ctx": "Ben nennt ihn Opa, aber er ist sein Urgroßvater."
+  },
+  {
+   "lemma": "ekeln",
+   "form": "ekelten",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Sein Sohn und dessen Frau ekelten sich davor, und deswegen mußte sich der alte Großvater endlich hinter den Ofen in die Ecke setzen, und sie gaben ihm sein Essen in ein irdenes Schüsselchen und noch dazu nicht einmal satt; da sah er betrübt nach dem Tisch, und die Augen wurden ihm naß."
+  },
+  {
+   "lemma": "irden",
+   "form": "irdenes",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Sein Sohn und dessen Frau ekelten sich davor, und deswegen mußte sich der alte Großvater endlich hinter den Ofen in die Ecke setzen, und sie gaben ihm sein Essen in ein irdenes Schüsselchen und noch dazu nicht einmal satt; da sah er betrübt nach dem Tisch, und die Augen wurden ihm naß."
+  },
+  {
+   "lemma": "betrüben",
+   "form": "betrübt",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Sein Sohn und dessen Frau ekelten sich davor, und deswegen mußte sich der alte Großvater endlich hinter den Ofen in die Ecke setzen, und sie gaben ihm sein Essen in ein irdenes Schüsselchen und noch dazu nicht einmal satt; da sah er betrübt nach dem Tisch, und die Augen wurden ihm naß."
+  },
+  {
+   "lemma": "zitterig",
+   "form": "zitterigen",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Einmal auch konnten seine zitterigen Hände das Schüsselchen nicht fest halten, es fiel zur Erde und zerbrach."
+  },
+  {
+   "lemma": "zerbrechen",
+   "form": "zerbrach",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Einmal auch konnten seine zitterigen Hände das Schüsselchen nicht fest halten, es fiel zur Erde und zerbrach."
+  },
+  {
+   "lemma": "schalt",
+   "form": "schalt",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Die junge Frau schalt, er sagte aber nichts und seufzte nur."
+  },
+  {
+   "lemma": "seufzen",
+   "form": "seufzte",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Die junge Frau schalt, er sagte aber nichts und seufzte nur."
+  },
+  {
+   "lemma": "hölzern",
+   "form": "hölzernes",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Da kauften sie ihm ein hölzernes Schüsselchen für ein paar Heller, daraus mußte er nun essen."
+  },
+  {
+   "lemma": "brettlein",
+   "form": "brettlein",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Wie sie da so sitzen, so trägt der kleine Enkel von vier Jahren auf der Erde kleine Brettlein zusammen."
+  },
+  {
+   "lemma": "tröglein",
+   "form": "tröglein",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "„Ich mache ein Tröglein,“ antwortete das Kind, „daraus sollen Vater und Mutter essen, wenn ich groß bin.“"
+  },
+  {
+   "lemma": "alsoforen",
+   "form": "alsofort",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Da sahen sich Mann und Frau eine Weile an, fiengen endlich an zu weinen, holten alsofort den alten Großvater an den Tisch und ließen ihn von nun an immer mit essen, sagten auch nichts wenn er ein wenig verschüttete."
+  },
+  {
+   "lemma": "verschüttet",
+   "form": "verschüttete",
+   "from": "de-b1-24",
+   "own": 1,
+   "ctx": "Da sahen sich Mann und Frau eine Weile an, fiengen endlich an zu weinen, holten alsofort den alten Großvater an den Tisch und ließen ihn von nun an immer mit essen, sagten auch nichts wenn er ein wenig verschüttete."
+  }
+ ]
+}

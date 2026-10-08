@@ -271,8 +271,8 @@ describe('tokenizer, sentence splitter, normalization', () => {
     const b = run('nb', 'Jeg står opp klokka sju.');
     expect(JSON.stringify(a.analyses)).toBe(JSON.stringify(b.analyses));
     expect(nb.version).toMatch(/^\d+$/);
-    expect(a.analyses[0].analyzer).toBe('adapter-nb@1');
-    expect(run('nn', 'Eg står opp.').analyses[0].analyzer).toBe('adapter-nn@1');
+    expect(a.analyses[0].analyzer).toBe('adapter-nb@2');
+    expect(run('nn', 'Eg står opp.').analyses[0].analyzer).toBe('adapter-nn@2');
     expect(nn.lang).toBe('nn');
   });
 });

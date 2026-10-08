@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-18",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "วางแผนไปลำพูน",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-18",
+    "title": "วางแผนไปลำพูน — Planning the trip to Lamphun (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A planning conversation among Sam, Mali and Ton (spoken register; polite particles; ผม / ฉัน as the cast uses them). For the reviewer: bus times, the village scene and Mali's grandmother's words are invented; the northern place names are real but nothing depends on them."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "travel",
+    "plans",
+    "village",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "central-thai",
+  "speakers": {
+    "S": "แซม",
+    "M": "มะลิ",
+    "T": "ต้น"
+  },
+  "sections": [
+    {
+      "title": "ที่ร้านของป้าแดง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เย็นวันนี้ แซม มะลิ และต้นนั่งคุยกันที่ร้านของป้าแดง ก่อนวันสงกรานต์ไม่กี่วัน",
+              "english": "This evening Sam, Mali and Ton sat talking at Auntie Daeng's shop, a few days before Songkran."
+            },
+            {
+              "text": "พรุ่งนี้เรากี่โมงถึงลำพูนครับ",
+              "english": "What time will we get to Lamphun tomorrow?",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าออกจากเชียงใหม่ตอนเจ็ดโมงเช้า ก็ถึงประมาณเก้าโมงค่ะ",
+              "english": "If we leave Chiang Mai at seven in the morning, we will arrive around nine.",
+              "speaker": "M"
+            },
+            {
+              "text": "รถไปลำพูนมีทุกชั่วโมงครับ แต่ช่วงนี้คนไปกันมาก",
+              "english": "Buses to Lamphun run every hour, but there are a lot of people at this time.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมซื้อตั๋วไว้ให้แล้วครับ สามใบ",
+              "english": "I have already bought the tickets for us, three of them.",
+              "speaker": "T"
+            },
+            {
+              "text": "ขอบคุณครับ ผมต้องเอาอะไรไปบ้างครับ",
+              "english": "Thank you. What should I take?",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ของฝากและเสื้อผ้า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เอาของฝากสำหรับยายไปค่ะ ยายชอบขนมของป้าแดง",
+              "english": "Take a gift for Grandmother. She likes Auntie Daeng's sweets.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมซื้อผลไม้ไปด้วยดีไหมครับ",
+              "english": "Shall I buy fruit to take along too?",
+              "speaker": "S"
+            },
+            {
+              "text": "ดีค่ะ แต่อย่าซื้อมากเกินไปนะคะ เพราะที่หมู่บ้านมีผลไม้มาก",
+              "english": "Good, but don't buy too much, because the village has plenty of fruit.",
+              "speaker": "M"
+            },
+            {
+              "text": "เสื้อผ้าไม่ต้องเอาไปมาก ที่บ้านยายอากาศเย็นกว่าในเมืองครับ",
+              "english": "You don't need many clothes. At Grandmother's it is cooler than in the city.",
+              "speaker": "T"
+            },
+            {
+              "text": "เอาเสื้อตัวใหญ่ไปหนึ่งตัวก็พอครับ",
+              "english": "One big shirt is enough.",
+              "speaker": "T"
+            },
+            {
+              "text": "แล้วผมจะนอนที่ไหนครับ",
+              "english": "And where will I sleep?",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่บ้านยาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ยายมีห้องข้างๆ บ้าน เป็นห้องไม้เล็กๆ แต่สะอาดค่ะ",
+              "english": "Grandmother has a room beside the house, a small wooden room, but clean.",
+              "speaker": "M"
+            },
+            {
+              "text": "ตอนเช้า คุณจะได้ยินเสียงไก่ อย่าตกใจนะคะ",
+              "english": "In the morning you will hear the cock. Don't be startled.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมไม่เคยอยู่หมู่บ้านเลยครับ ผมอยากเห็นชีวิตของชาวนาด้วย",
+              "english": "I have never lived in a village. I would like to see the life of the farmers too.",
+              "speaker": "S"
+            },
+            {
+              "text": "ถ้าเรื่องนา ยายเล่าได้ทั้งวันครับ ยายทำนามาหกสิบปี",
+              "english": "As for the rice fields, Grandmother can tell you about them all day. She has farmed for sixty years.",
+              "speaker": "T"
+            },
+            {
+              "text": "แต่แซมต้องฟังให้ดีนะคะ ยายพูดภาษาเหนือด้วย",
+              "english": "But Sam must listen carefully. Grandmother speaks northern Thai too.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมจะพยายามฟังให้เข้าใจครับ",
+              "english": "I will try to listen so as to understand.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เรื่องที่ควรรู้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "อีกเรื่องหนึ่งครับ ที่หมู่บ้านคนไม่ค่อยพูดตรงๆ",
+              "english": "One more thing: in the village people don't often speak directly.",
+              "speaker": "T"
+            },
+            {
+              "text": "ถ้ายายถามว่าอิ่มหรือยัง ก็ต้องตอบว่าอิ่มแล้ว แม้ยังหิวอยู่",
+              "english": "If Grandmother asks whether you are full, you must say you are full, even if you are still hungry.",
+              "speaker": "T"
+            },
+            {
+              "text": "ผมไม่เข้าใจครับ ทำไมต้องพูดอย่างนั้น",
+              "english": "I don't understand. Why must one say that?",
+              "speaker": "S"
+            },
+            {
+              "text": "เพราะเกรงใจค่ะ แต่ยายจะให้คุณกินอีกอยู่แล้ว",
+              "english": "Because of consideration for others. But Grandmother will make you eat more anyway.",
+              "speaker": "M"
+            },
+            {
+              "text": "ยายจะรักคุณเหมือนหลานอีกคนหนึ่งค่ะ",
+              "english": "She will treat you as another grandchild.",
+              "speaker": "M"
+            },
+            {
+              "text": "ผมดีใจมากครับ ผมอยากไปตั้งแต่ตอนนี้เลย",
+              "english": "I am very glad. I want to go right now.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

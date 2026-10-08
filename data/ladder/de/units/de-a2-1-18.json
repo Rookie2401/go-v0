@@ -841,6 +841,27 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Damals war Sam im Amt.",
+              "english": "Back then Sam was at the office."
+            },
+            {
+              "text": "Das Amt heißt Bürgeramt, und es liegt im Westen der Stadt.",
+              "english": "The office is called Bürgeramt, and it lies in the west of the city."
+            },
+            {
+              "text": "Dort hat Frau Weber ihm sehr geholfen.",
+              "english": "There Frau Weber helped him a lot."
+            }
+          ]
+        }
+      ]
     }
   ]
 }

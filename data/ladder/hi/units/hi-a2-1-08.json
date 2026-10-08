@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Ravi is called रवि जी here, not रवि सर, on purpose: the adapter has no known lemma सर for the learner (24 unknown tokens in this unit), the same choice as hi-a2-1-04; the reviewer may restore रवि सर and the plan owner schedule सर. Ravi says तुम to Sam and आप to Ramesh, the old woman and the guard (Ramesh, a clerk and old friend, says आप to Sam); Sam says आप to everyone. The old woman is called अम्मा जी and calls Sam बेटा, as an elderly woman would a young stranger. The office is deliberately not named (visa or police registration); please check that \"ठहरने का आवेदन\" and \"ठहरने की सूचना\" are the right plain words for a guest's registration, and that a small fee paid at a bank, then a receipt, is plausible. The text says plainly that nobody should pay anything beyond the fee. The old woman says the church people once prayed for her son (चंगाई की प्रार्थना); respectful, no claim beyond her own words. सिपाही is glossed \"guard\". चित्र is used for the passport-size photo (a clerk's formal word). Passive uses: फ़ॉर्म भरा जाता है, फ़ीस दी जाती है, चित्र लगाया जाता है, आवेदन नहीं लिया जा सकता. \"सीधा जाइए\" (adverbial सीधा) and \"रसीद पर नीले रंग से तारीख़ लिखना\" please check. Words used outside the plan (kept): रसीद (the receipt, the unit's key object), पासपोर्ट, सरकारी, बदलना, मामला; the last two were avoided where possible."
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Ravi is called रवि जी here, not रवि सर, on purpose: the adapter has no known lemma सर for the learner (24 unknown tokens in this unit), the same choice as hi-a2-1-04; the reviewer may restore रवि सर and the plan owner schedule सर. Ravi says तुम to Sam and आप to Ramesh, the old woman and the guard (Ramesh, a clerk and old friend, says आप to Sam); Sam says आप to everyone. The old woman is called अम्मा जी and calls Sam बेटा, as an elderly woman would a young stranger. The office is deliberately not named (visa or police registration); please check that \"ठहरने का आवेदन\" and \"ठहरने की सूचना\" are the right plain words for a guest's registration, and that a small fee paid at a bank, then a receipt, is plausible. The text says plainly that nobody should pay anything beyond the fee. The old woman says the church people once prayed for her son (चंगाई की प्रार्थना); respectful, no claim beyond her own words. सिपाही is glossed \"guard\". चित्र is used for the passport-size photo (a clerk's formal word). Passive uses: फ़ॉर्म भरा जाता है, फ़ीस दी जाती है, चित्र लगाया जाता है, आवेदन नहीं लिया जा सकता. \"सीधा जाइए\" (adverbial सीधा) and \"रसीद पर नीले रंग से तारीख़ लिखना\" please check. Words used outside the plan (kept): रसीद (the receipt, the unit's key object), पासपोर्ट, सरकारी, बदलना, मामला; the last two were avoided where possible. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -682,6 +682,34 @@
               "speaker": "sam",
               "text": "आपका बेटा सैम",
               "english": "Your son Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दफ़्तर से निकलकर सैम ने कहा कि वह घर तक सैर करना चाहता है।",
+              "english": "Coming out of the office Sam said that he wanted to take a walk home."
+            },
+            {
+              "text": "रवि जी ने मुस्कराकर कहा, \"ठीक है, आख़िरकार काम पूरा हो गया।\"",
+              "english": "Ravi ji smiled and said, \"All right, in the end the work is done.\""
+            },
+            {
+              "text": "सैम ने तय किया कि वह कल फिर आएगा।",
+              "english": "Sam decided that he would come again tomorrow."
+            },
+            {
+              "text": "रास्ते में एक नन्हा लड़का दौड़ता हुआ आया, और उसके पीछे उसके दादाजी भी आ रहे थे।",
+              "english": "On the way a tiny boy came running, and his grandfather was coming behind him."
+            },
+            {
+              "text": "दादाजी ने मुस्कराकर सैम को नमस्ते कहा।",
+              "english": "The grandfather smiled and greeted Sam."
+            },
+            {
+              "text": "बच्चों की दौड़ देखकर सैम हँस पड़ा।",
+              "english": "Seeing the children's race Sam burst out laughing."
             }
           ]
         }

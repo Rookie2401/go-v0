@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-19",
+  "lang": "hi",
+  "title": "स्कूल का वार्षिकोत्सव",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-19",
+    "title": "\"स्कूल का वार्षिकोत्सव\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Ninth controlled unit of the b1 bridge. It prepares the words of the GDL story \"थोड़ी सी मदद\" (hi-b1-20), a boy's letters about a new girl in his school: प्रिंसिपल, मैडम, अध्यापिका, सहपाठी, छात्रा, वार्षिकोत्सव, पिकनिक, दौरान, जबकि, बढ़िया, भला, नक़ली, मिलाना, each used three times, in a letter that Sam writes to the sending church about the annual day and the picnic at Aman's school. Machine-drafted; a Hindi reviewer should check the school words and the letter's register. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "school",
+    "annual day",
+    "picnic",
+    "classmates",
+    "letter"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "पत्र",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आदरणीय पास्टर जी और सब साथियो,",
+              "english": "Respected Pastor and all friends,"
+            },
+            {
+              "text": "नमस्ते। आज मैं आपको अमन के स्कूल के वार्षिकोत्सव के बारे में लिख रहा हूँ।",
+              "english": "Namaste. Today I am writing to you about the annual festival of Aman's school."
+            },
+            {
+              "text": "कई हफ़्तों से सब बच्चे इस दिन की तैयारी कर रहे थे, और उनकी अध्यापिका रोज़ स्कूल में देर तक रुकती थीं।",
+              "english": "For several weeks all the children had been preparing for this day, and their teacher stayed late at school every day."
+            },
+            {
+              "text": "मैं भी शाम को अमन के साथ स्कूल जाता था, और बच्चों को गाते हुए देखता था।",
+              "english": "I too used to go to school with Aman in the evenings, and watch the children sing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "प्रिंसिपल मैडम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "स्कूल की प्रिंसिपल मैडम पहली बार में बहुत सख़्त दिखती हैं, पर वे बच्चों से बहुत प्यार करती हैं।",
+              "english": "The principal madam of the school looks very strict at first, but she loves the children very much."
+            },
+            {
+              "text": "वार्षिकोत्सव के दौरान वे सबसे पहले आकर बैठती हैं, और सबके लिए ताली बजाती हैं।",
+              "english": "During the annual festival she comes and sits before everybody, and claps for everybody."
+            },
+            {
+              "text": "उन्होंने मुझसे कहा, \"सैम जी, आप भी बच्चों के पास बैठिए, मेहमान को अकेले मत छोड़िए।\"",
+              "english": "She said to me, \"Sam ji, you also sit near the children, do not leave the guest alone.\""
+            },
+            {
+              "text": "अमन के सहपाठी मुझे अपने पास बैठाकर खुश हुए।",
+              "english": "Aman's classmates were glad to make me sit near them."
+            },
+            {
+              "text": "मैं हँसा, क्योंकि मैं उनका सहपाठी नहीं, उनका मेहमान था।",
+              "english": "I laughed, because I was not their classmate, I was their guest."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "नई छात्रा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस साल अमन की कक्षा में एक नई छात्रा आई है, जिसका नाम ऋचा है।",
+              "english": "This year a new girl student has come into Aman's class, whose name is Richa."
+            },
+            {
+              "text": "वह थोड़ी शर्मीली है, इसलिए अध्यापिका ने उसे सब बच्चों से मिलाया।",
+              "english": "She is a little shy, so the teacher introduced her to all the children."
+            },
+            {
+              "text": "अध्यापिका ने कहा, \"ऋचा हमारी नई छात्रा है, और आज से वह तुम सबकी सहपाठी है।\"",
+              "english": "The teacher said, \"Richa is our new student, and from today she is the classmate of you all.\""
+            },
+            {
+              "text": "अमन ने मुझसे कहा, \"सैम, मैं उसकी मदद करूँगा।\"",
+              "english": "Aman said to me, \"Sam, I will help her.\""
+            },
+            {
+              "text": "मैंने पूछा, \"भला तुम उसकी क्या मदद करोगे?\"",
+              "english": "I asked, \"Well, what help will you give her?\""
+            },
+            {
+              "text": "अमन बोला, \"मैं उसे पूरा स्कूल दिखाऊँगा, जबकि बाक़ी बच्चे खेलेंगे।\"",
+              "english": "Aman said, \"I will show her the whole school while the other children play.\""
+            },
+            {
+              "text": "नानी को जब यह बात पता चली, तो उन्होंने कहा, \"भला मदद से बड़ा कौन सा काम है?\"",
+              "english": "When Nani came to know of this, she said, \"Well, what work is greater than helping?\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पिकनिक",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "वार्षिकोत्सव के बाद सब बच्चे नदी के पास पिकनिक के लिए गए।",
+              "english": "After the festival all the children went to the river for a picnic."
+            },
+            {
+              "text": "पिकनिक के दौरान सबने बढ़िया खाना खाया, और नानी ने सबके लिए लड्डू भेजे थे।",
+              "english": "During the picnic everybody ate good food, and Nani had sent laddus for everybody."
+            },
+            {
+              "text": "प्रिंसिपल मैडम ने भी हमारे साथ बैठकर एक बढ़िया गीत गाया।",
+              "english": "Principal madam also sat with us and sang a nice song."
+            },
+            {
+              "text": "अमन ने नक़ली दाढ़ी लगाई और सबको हँसाया, जबकि मैंने उसकी तरह करने की कोशिश की।",
+              "english": "Aman put on a false beard and made everybody laugh, while I tried to do like him."
+            },
+            {
+              "text": "ऋचा भी हँसी, और उसने कहा, \"यह नक़ली दाढ़ी तो बहुत बढ़िया है!\"",
+              "english": "Richa laughed too, and she said, \"This false beard is really great!\""
+            },
+            {
+              "text": "उसने अमन के साथ दौड़कर खेल में हिस्सा लिया।",
+              "english": "She ran and took part in the game with Aman."
+            },
+            {
+              "text": "उस शाम पिकनिक के दौरान मैंने पहली बार अपने आप को उस स्कूल का हिस्सा महसूस किया।",
+              "english": "That evening during the picnic I felt for the first time that I was a part of that school."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अंत में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शाम को मैं नानी के घर लौटा, तो मुझे फ़ुर्सत मिली, और मैंने यह पत्र लिखा।",
+              "english": "In the evening I returned to Nani's house, I got some free time, and I wrote this letter."
+            },
+            {
+              "text": "मेरी प्रार्थना है कि आप भी अपने सहपाठियों और पड़ोसियों से इसी तरह मिलते रहें।",
+              "english": "My prayer is that you too keep meeting your classmates and neighbours in the same way."
+            },
+            {
+              "text": "आपका सैम",
+              "english": "Yours, Sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बच्चों का नाटक",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "वार्षिकोत्सव में बच्चों ने भूत और राक्षस का एक खेल किया, और उसमें एक पतंग भी थी।",
+              "english": "At the annual festival the children played a game of a ghost and a demon, and there was a kite in it too."
+            },
+            {
+              "text": "जब राक्षस सामने आया, तो कमरे में सन्नाटा छा गया।",
+              "english": "When the demon came forward, silence fell in the room."
+            },
+            {
+              "text": "इस खेल की कल्पना अमन की अध्यापिका ने की थी, जो उन्हें गणित भी पढ़ाती हैं।",
+              "english": "The idea of this game was thought up by Aman's teacher, who also teaches them maths."
+            },
+            {
+              "text": "वे कहती हैं कि गणित में भी कल्पना चाहिए, और रोज़ फ़ुर्सत न मिलने पर भी वे बच्चों के लिए फ़ुर्सत निकालती हैं।",
+              "english": "She says that even in maths imagination is needed, and even when she does not find free time every day she makes free time for the children."
+            },
+            {
+              "text": "ऋचा पहले शर्माती थी, पर खेल में वह खुलकर बोली।",
+              "english": "Richa used to be shy at first, but in the game she spoke out freely."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

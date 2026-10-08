@@ -1,0 +1,164 @@
+=== de-a2-1-18
+speakers: S=Sam, J=Jonas, V=Herr Schmidt, B=Sabine, M=Jonas's Mutter
+## Jonas will weggehen
+Jonas und Sam sitzen im Café. || Jonas and Sam are sitting in the café.
+[J] Ich suche ein Zimmer in Leipzig. || I am looking for a room in Leipzig.
+[S] Du wohnst doch bei deinen Eltern? || Don't you live with your parents?
+[J] Ja, auf dem Land. || Yes, in the country.
+[J] Meine Eltern haben einen Bauernhof. || My parents have a farm.
+[J] Sie haben Felder und Schweine, und zwei Arbeiter helfen ihnen. || They have fields and pigs, and two workers help them.
+[J] Mein Dorf liegt im Osten, nicht weit von der Grenze. || My village is in the east, not far from the border.
+[J] Mein Bruder bekommt einmal das Erbe. || My brother will get the inheritance one day.
+[J] Ich gehe weg, wie der Sohn in der Geschichte von Thomas. || I am going away, like the son in Thomas's story.
+[S] Aber du gibst kein Geld aus, das du nicht hast, oder? || But you do not spend money that you do not have, do you?
+[J] Nein. || No.
+[J] Ich bereue nichts. || I regret nothing.
+[S] Und deine Eltern? || And your parents?
+[J] Meine Mutter hat mich umarmt. || My mother embraced me.
+[J] Mein Vater sagt: „Es ist nicht deine Schuld.“ || My father says, "It is not your fault."
+[J] Er trägt noch den Ring von Opa. || He still wears Grandpa's ring.
+[J] Er ist ein guter Mann. || He is a good man.
+[S] Und was willst du in der Stadt? || And what do you want in the city?
+[J] Die Stadt ist lebendig, und das Dorf ist still. || The city is lively, and the village is quiet.
+[J] Meine Werkstatt ist in Leipzig, und ich brauche fast eine Stunde. || My workshop is in Leipzig, and I need almost an hour.
+
+## Im Internet
+[J] Im Internet habe ich ein Zimmer gefunden. || I found a room on the internet.
+[J] Es hat vierzehn Quadratmeter. || It has fourteen square metres.
+[J] Es ist möbliert: Es hat ein Bett, einen Tisch und einen Stuhl. || It is furnished: it has a bed, a table and a chair.
+[J] Die Miete ist 280 Euro monatlich. || The rent is 280 euros a month.
+[J] Und es gibt noch Nebenkosten. || And there are extra costs as well.
+[J] Das Zimmer ist im Dezember frei. || The room is free in December.
+[S] Wo ist es? || Where is it?
+[J] Im Norden der Stadt, vier Kilometer von der Werkstatt. || In the north of the city, four kilometres from the workshop.
+[J] Die Straßenbahn fährt vom Westen bis in den Norden. || The tram goes from the west to the north.
+[S] Und der Vermieter? || And the landlord?
+[J] Das ist Herr Schmidt, der Bäcker. || That is Herr Schmidt, the baker.
+
+## Beim Vermieter
+Am Samstag gehen Jonas und Sam zum Haus. || On Saturday Jonas and Sam go to the house.
+Der Vermieter wartet an der Tür. || The landlord is waiting at the door.
+[V] Guten Tag, Jonas. || Good day, Jonas.
+[V] Guten Tag, Sam. || Good day, Sam.
+[J] Guten Tag, Herr Schmidt. || Good day, Herr Schmidt.
+[J] Könnte ich das Zimmer sehen? || Could I see the room?
+[V] Ja, kommen Sie bitte. || Yes, please come in.
+Im Haus ist auch Sabine. || Sabine is in the house too.
+[S] Sabine! || Sabine!
+[S] Du wohnst hier? || You live here?
+[B] Ja, mit zwei Freunden. || Yes, with two friends.
+[B] Ich komme von der Küste, von einer Insel im Meer. || I come from the coast, from an island in the sea.
+[B] Ich bin Erzieherin im Kindergarten. || I am a nursery teacher at the kindergarten.
+[B] Die Kinder malen oft Bilder für mich. || The children often paint pictures for me.
+[B] Ein Spielzeug liegt noch im Zimmer. || A toy is still lying in the room.
+[B] Wir machen am Abend oft Spiele. || In the evening we often play games.
+[B] Und ich lese noch ein Märchen vor. || And I read a fairy tale aloud.
+[V] Das Zimmer hat vierzehn Quadratmeter, und es ist möbliert. || The room has fourteen square metres, and it is furnished.
+[J] Wie hoch ist die Miete? || How high is the rent?
+[V] 280 Euro monatlich. || 280 euros a month.
+[V] Es gibt auch Nebenkosten: Wasser, Strom und Internet. || There are extra costs too: water, electricity and internet.
+[J] Und die Kaution? || And the deposit?
+[V] Die Kaution ist 560 Euro. || The deposit is 560 euros.
+[J] Das ist viel Geld für mich. || That is a lot of money for me.
+[J] Mein Lohn ist klein. || My pay is small.
+[J] Meine Eltern unterstützen mich, aber ich muss mich noch entscheiden. || My parents support me, but I still have to decide.
+[V] Wo arbeiten Sie denn? || Where do you work, then?
+[J] Ich mache eine Ausbildung in einer Werkstatt. || I am doing an apprenticeship in a workshop.
+[J] Wir reparieren Autos. || We repair cars.
+[V] Eine Werkstatt? || A workshop?
+[V] Mein Auto hat einen kaputten Reifen! || My car has a broken tyre!
+[J] Ich kann ihn prüfen und austauschen. || I can check it and replace it.
+[J] Ich komme nach Feierabend. || I will come after work.
+[V] Und die Rechnung? || And the invoice?
+[J] Sie sind dann ein Kunde. || You are a customer then.
+[J] Sie müssen nichts bezahlen. || You do not have to pay anything.
+[V] Gut, das gefällt mir. || Good, I like that.
+
+## Das Zimmer ansehen
+Sabine zeigt Jonas das Zimmer. || Sabine shows Jonas the room.
+[B] Das wäre dein Zimmer. || This would be your room.
+Das Zimmer hat ein großes Fenster, ein Bett, einen Tisch und einen Stuhl. || The room has a big window, a bed, a table and a chair.
+[J] Es ist hell und ruhig. || It is bright and quiet.
+[B] Die Küche ist neben dem Bad. || The kitchen is next to the bathroom.
+[B] Wir kochen oft, und am Sonntag backen wir Kuchen. || We often cook, and on Sundays we bake a cake.
+[J] Könnte ich auch kochen? || Could I cook too?
+[J] Ich koche gern Suppe. || I like cooking soup.
+[B] Natürlich! || Of course!
+[B] Aber wir putzen alle, am Samstag. || But we all clean, on Saturday.
+[J] Das ist gut. || That is good.
+[J] Ich hätte gern ein Fahrrad im Keller. || I would like to keep a bike in the cellar.
+[J] Ist dort Platz? || Is there room?
+[V] Der Keller ist groß. || The cellar is big.
+[V] Dort ist Platz für drei Fahrräder. || There is room for three bikes there.
+[J] Würden Sie mir bitte noch das Bad zeigen? || Would you please show me the bathroom as well?
+[V] Gern. || Gladly.
+[V] Das Bad ist klein, aber sauber. || The bathroom is small, but clean.
+[S] Ich finde das Zimmer schön, Jonas. || I think the room is lovely, Jonas.
+[J] Ich auch. || Me too.
+[J] Ich möchte nur noch ein bisschen warten. || I just want to wait a little longer.
+
+## Die Wohnung und die Welt
+[V] Immer mehr Menschen ziehen nach Leipzig. || More and more people are moving to Leipzig.
+[V] Sachsen ist ein Bundesland, das nicht so teuer ist wie Berlin, die Hauptstadt. || Saxony is a federal state that is not as expensive as Berlin, the capital.
+[J] Millionen Menschen in Deutschland suchen ein Zimmer. || Millions of people in Germany are looking for a room.
+[V] Vor der Wahl sprechen alle über Wohnungen. || Before the election everyone talks about flats.
+[V] Die Regierung will bauen, und der Staat soll helfen. || The government wants to build, and the state should help.
+[J] Ich darf wählen, aber wen? || I may vote, but for whom?
+[J] Der Kanzler hilft mir nicht bei der Kaution. || The chancellor does not help me with the deposit.
+[V] Die Bürger reden viel, aber ein Zimmer finden sie nicht. || The citizens talk a lot, but they do not find a room.
+[S] In der ganzen Welt suchen Menschen eine Wohnung. || All over the world people are looking for a flat.
+[S] Auch in den USA, im Norden und im Süden. || In the USA too, in the north and in the south.
+[V] Dieses Zimmer ist noch frei. || This room is still free.
+[V] Als Vermieter sage ich: Entscheiden Sie sich schnell. || As a landlord I say: decide quickly.
+[J] Ich nehme es. || I will take it.
+[V] Gut. || Good.
+[V] Dann ist es im Dezember für Sie frei. || Then it is free for you in December.
+[V] Es ist möbliert, aber die Bilder bringen Sie mit. || It is furnished, but you bring the pictures yourself.
+[V] Vierzehn Quadratmeter sind nicht groß, aber es ist warm. || Fourteen square metres are not big, but it is warm.
+[V] Die Nebenkosten bezahlen Sie auch monatlich. || You also pay the extra costs monthly.
+[V] Der Fluss ist nah, und Sie können dort Fahrrad fahren. || The river is near, and you can ride a bike there.
+[V] In Deutschland bezahlen alle in einer Währung: in Euro. || In Germany everyone pays in one currency: in euros.
+[B] Willkommen im Haus, Jonas! || Welcome to the house, Jonas!
+[S] Jetzt wohnst du in der Stadt. || Now you live in the city.
+[J] Und ich bin froh. || And I am glad.
+[J] Ich habe ein Zimmer! || I have a room!
+
+## Auf dem Heimweg
+Sam und Jonas gehen zur Haltestelle. || Sam and Jonas walk to the stop.
+[S] Ziehst du im Dezember ein? || Are you moving in in December?
+[J] Ja, im Dezember. || Yes, in December.
+[J] Dann habe ich vier Wochen Zeit. || Then I have four weeks.
+[J] Ich muss noch viel machen. || I still have a lot to do.
+[J] Ich brauche Taschen und Koffer. || I need bags and suitcases.
+[S] Ich helfe dir. || I will help you.
+[S] Mein Rücken ist wieder gut. || My back is fine again.
+[S] Ich frage auch Daniel und David. || I will ask Daniel and David too.
+[J] Danke. || Thank you.
+[J] Das ist eine große Hilfe. || That is a great help.
+[S] Und wir feiern in deinem Zimmer. || And we will celebrate in your room.
+[J] Mit Kaffee und Kuchen! || With coffee and cake!
+
+## Ein Anruf
+Am Abend ruft Jonas seine Mutter an. || In the evening Jonas calls his mother.
+[M] Hallo, Jonas! || Hello, Jonas!
+[M] Wie geht es dir? || How are you?
+[J] Mama, ich habe ein Zimmer in Leipzig! || Mum, I have a room in Leipzig!
+[M] Das ist schön! || That is lovely!
+[M] Wie ist es? || What is it like?
+[J] Die Miete ist nicht hoch, und das Zimmer ist warm. || The rent is not high, and the room is warm.
+[M] Würdest du am Sonntag zum Essen kommen? || Would you come to dinner on Sunday?
+[J] Natürlich. || Of course.
+[J] Ich komme mit Sam. || I will come with Sam.
+[M] Dein Vater ist traurig, aber er sagt es nicht. || Your father is sad, but he does not say so.
+[J] Ich weiß. || I know.
+[J] Sag ihm, dass ich ihn gern habe. || Tell him I am fond of him.
+[M] Das sage ich ihm. || I will tell him.
+[M] Wir sind froh, dass du einen Platz hast. || We are glad that you have a place.
+[J] Gute Nacht, Mama. || Good night, Mum.
+[M] Gute Nacht, mein Sohn. || Good night, my son.
+[M] Gott ist mit dir. || God is with you.
+
+## Erinnerst du dich?
+Damals war Sam im Amt. || Back then Sam was at the office.
+Das Amt heißt Bürgeramt, und es liegt im Westen der Stadt. || The office is called Bürgeramt, and it lies in the west of the city.
+Dort hat Frau Weber ihm sehr geholfen. || There Frau Weber helped him a lot.

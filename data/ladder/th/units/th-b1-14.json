@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-14",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "กระต่ายป่ากับกบ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-14",
+    "title": "กระต่ายป่ากับกบ — The hares and the frogs (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 149794 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=149794",
+    "attribution": "Adapted retelling of \"กระต่ายป่ากับกบ\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 149794, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"กระต่ายป่ากับกบ\" (th-gap-recovery-aesop-41); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 149794) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the old hare, the leader, speaks to the others with เรา and พวกเรา; the old-style small words (จึง, เถิด, ครั้น) are deliberate. The closing scene between Ton and Ball is an addition to the original."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "animals",
+    "fear",
+    "courage"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "กระต่ายที่หวาดกลัว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ในป่าเล็กๆ แห่งหนึ่ง มีกระต่ายป่าอาศัยอยู่เป็นฝูง",
+              "english": "In a small wood there lived a colony of wild hares."
+            },
+            {
+              "text": "ทุกเช้าทุกเย็น พวกมันออกมากินหญ้าที่ข้างนา",
+              "english": "Every morning and evening they came out to eat grass beside the fields."
+            },
+            {
+              "text": "ถ้าเห็นวัวหรือคนเดินมาแต่ไกล พวกมันก็ตกใจ",
+              "english": "If they saw an ox or a person coming from far off, they were frightened."
+            },
+            {
+              "text": "กระต่ายทุกตัวรีบวิ่งเข้าไปซ่อนในหญ้า",
+              "english": "Every hare ran quickly to hide in the grass."
+            },
+            {
+              "text": "ตัวที่วิ่งเร็วก็วิ่งกลับเข้าป่า",
+              "english": "The fast ones ran back into the wood."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เบื่อความกลัว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "กระต่ายเป็นอย่างนี้ทุกวัน จนมันเบื่อ",
+              "english": "The hares lived like this every day, until they were tired of it."
+            },
+            {
+              "text": "มันไม่เคยได้กินหญ้าอย่างสบายใจเลย",
+              "english": "They never got to eat grass in peace."
+            },
+            {
+              "text": "วันหนึ่ง พวกมันมาปรึกษากันว่า ถ้าอยู่อย่างนี้ เราจะไม่มีความสุข",
+              "english": "One day they talked together: \"If we live like this, we will never be happy.\""
+            },
+            {
+              "text": "เราต้องตกใจทุกวัน ตายเสียดีกว่า",
+              "english": "\"We are frightened every day. It would be better to die.\""
+            },
+            {
+              "text": "กระต่ายทั้งฝูงเห็นด้วย พวกมันจึงตกลงกันว่า เราจะไปกระโดดน้ำตาย",
+              "english": "All the hares agreed, and they decided, \"We will go and jump into the water.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ที่ริมน้ำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้าวันรุ่งขึ้น ฝูงกระต่ายพากันวิ่งไปที่ลำธาร",
+              "english": "The next morning the whole colony of hares ran to the stream."
+            },
+            {
+              "text": "แต่เมื่อไปถึงริมน้ำ พวกมันเห็นอะไรบางอย่าง",
+              "english": "But when they reached the water's edge, they saw something."
+            },
+            {
+              "text": "กบฝูงหนึ่งนั่งอยู่ริมฝั่ง เมื่อเห็นกระต่ายมา กบก็ตกใจ",
+              "english": "A group of frogs was sitting on the bank. When they saw the hares coming, the frogs were frightened."
+            },
+            {
+              "text": "กบทุกตัวกระโดดลงน้ำ และดำหายไป",
+              "english": "Every frog jumped into the water and dived out of sight."
+            },
+            {
+              "text": "กระต่ายแก่ตัวที่เป็นหัวหน้าหยุดทันที",
+              "english": "The old hare, who was the leader, stopped at once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หัวหน้าพูด",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "กระต่ายแก่พูดว่า เพื่อนๆ ดูกบนั่นเถิด",
+              "english": "The old hare said, \"Friends, look at those frogs.\""
+            },
+            {
+              "text": "เรากลัวคนกับวัว แต่กบกลัวเรา",
+              "english": "\"We fear people and oxen, but the frogs fear us.\""
+            },
+            {
+              "text": "เราไม่ได้ตกใจง่ายอยู่พวกเดียว สัตว์อื่นก็กลัวเหมือนกัน",
+              "english": "\"We are not the only ones who are frightened easily. Other animals are afraid too.\""
+            },
+            {
+              "text": "ถ้าทุกตัวกลัว ทำไมเราต้องตาย",
+              "english": "\"If everyone is afraid, why must we die?\""
+            },
+            {
+              "text": "กระต่ายทุกตัวฟังแล้วก็นิ่งไป พวกมันกลับไปที่ป่าเล็กๆ",
+              "english": "All the hares listened and fell silent, and they went back to the little wood."
+            },
+            {
+              "text": "เรื่องนี้สอนว่า คนที่เห็นว่าตัวเองทุกข์ที่สุด ยังมีคนที่ทุกข์กว่า",
+              "english": "This story teaches us: the one who thinks he suffers most still has someone who suffers more."
+            },
+            {
+              "text": "ก่อนจะทำอะไรเพราะความทุกข์ ควรคิดให้ดีก่อน",
+              "english": "Before doing anything because of suffering, we should think carefully first."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้นกับบอล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "บอลถามต้นว่า กระต่ายกลัวอะไรมากที่สุดครับ",
+              "english": "Ball asked Ton, \"What were the hares most afraid of?\""
+            },
+            {
+              "text": "ต้นตอบว่า กลัวทุกอย่าง แต่ความกลัวไม่ได้ทำให้เราต้องยอมแพ้",
+              "english": "Ton answered, \"Of everything. But fear does not mean we must give up.\""
+            },
+            {
+              "text": "บอลพูดว่า ผมกลัวความมืดครับ",
+              "english": "Ball said, \"I am afraid of the dark.\""
+            },
+            {
+              "text": "ต้นยิ้ม และบอกว่า พ่อก็เคยกลัวเหมือนกัน แต่พ่ออธิษฐาน แล้วพ่อก็ไม่กลัว",
+              "english": "Ton smiled and said, \"I was afraid too. But I prayed, and then I wasn't afraid.\""
+            },
+            {
+              "text": "บอลบอกว่า สงกรานต์ปีหน้า ผมจะไม่กลัวน้ำครับ",
+              "english": "Ball said, \"Next Songkran I won't be afraid of the water.\""
+            },
+            {
+              "text": "ต้นนัดกับบอลว่า คืนนี้จะอ่านนิทานด้วยกัน และคืนพรุ่งนี้ด้วย",
+              "english": "Ton arranged with Ball: \"Tonight we will read a fable together, and tomorrow night too.\""
+            },
+            {
+              "text": "แล้วต้นก็ทำข้าวต้มให้บอลกินก่อนนอน",
+              "english": "Then Ton made rice porridge for Ball to eat before bed."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

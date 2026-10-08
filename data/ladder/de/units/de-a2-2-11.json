@@ -43,6 +43,19 @@
     "travel"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "sections": [
     {
       "title": "Hallo und willkommen",
@@ -542,19 +555,243 @@
           ]
         }
       ]
-    }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Nachmittag backt Frau Weber einen Apfelkuchen für Sam.",
+              "english": "In the afternoon Frau Weber bakes an apple cake for Sam."
+            },
+            {
+              "text": "Sie gibt Eier und Butter in eine Schüssel.",
+              "english": "She puts eggs and butter in a bowl."
+            },
+            {
+              "text": "Dann kommen die Äpfel in die Form, und alles geht in den Ofen.",
+              "english": "Then the apples go in the baking tin, and everything goes in the oven."
+            },
+            {
+              "text": "Der Kuchen bleibt vierzig Minuten dort, und man riecht ihn im ganzen Haus.",
+              "english": "The cake stays there forty minutes, and you can smell it in the whole house."
+            },
+            {
+              "text": "Sam isst ein Stück, und den Rest bringt er der Frau unten.",
+              "english": "Sam eats a piece, and he brings the rest to the woman downstairs."
+            },
+            {
+              "text": "Er klopft an ihre Tür, und sie freut sich sehr.",
+              "english": "He knocks on her door, and she is very happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Im Treppenhaus hängt ein großes Blatt mit der Hausordnung.",
+              "english": "In the stairwell hangs a big sheet with the house rules."
+            },
+            {
+              "text": "Dort steht: Abends bitte leise sein.",
+              "english": "It says there: In the evening please be quiet."
+            },
+            {
+              "text": "Sam sagt: Ab jetzt höre ich die Musik leiser, ich will niemanden stören.",
+              "english": "Sam says: From now on I will listen to the music more quietly, I do not want to disturb anyone."
+            },
+            {
+              "text": "Ein Mitarbeiter hat ein zweites Blatt dazugelegt, und Sam liest es noch einmal.",
+              "english": "A worker added a second sheet, and Sam reads it once more."
+            },
+            {
+              "text": "Die Tonne im Hof ist nur für den Rest, das Essen kommt in die andere.",
+              "english": "The bin in the yard is only for the rest, the food goes in the other one."
+            },
+            {
+              "text": "Der Pastor sagt: Das ist die Regel der Gemeinde, wir bitten, wir befehlen nicht.",
+              "english": "The pastor says: That is the rule of the church, we ask, we do not command."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Als Sam krank war, sagte Anna: Du musst viel trinken, zwei Liter am Tag.",
+              "english": "When Sam was sick, Anna said: You have to drink a lot, two liters a day."
+            },
+            {
+              "text": "Frau Weber spart sonst immer, aber bei einem kranken Mann macht sie eine Ausnahme.",
+              "english": "Frau Weber is otherwise always thrifty, but for a sick man she makes an exception."
+            },
+            {
+              "text": "Wenn du Schmerzen in der Brust hast, ist das ernst, sagte Anna.",
+              "english": "If you have pain in the chest, that is serious, said Anna."
+            },
+            {
+              "text": "Zum Glück ging es ihm bald besser.",
+              "english": "Luckily he was soon better."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auch in der Stadt ist viel passiert.",
+              "english": "A lot has happened in the city too."
+            },
+            {
+              "text": "Eine Nachbarin hat die Feuerwehr gerufen, und alle Bewohner sind gesund.",
+              "english": "A neighbor called the fire department, and all the residents are healthy."
+            },
+            {
+              "text": "Der Hauskreis aus der Nachbarstraße hilft der Familie.",
+              "english": "The house group from the next street helps the family."
+            },
+            {
+              "text": "Herr Schmidt hat nebenan ein Café, und das war nötig.",
+              "english": "Herr Schmidt has a cafe next door, and that was necessary."
+            },
+            {
+              "text": "Das war kein Zufall, sagt der Bäcker, wir haben lange davon gesprochen.",
+              "english": "That was no coincidence, says the baker, we talked about it for a long time."
+            },
+            {
+              "text": "In der Zeitung steht eine Warnung der Polizei, und viele Eltern haben Angst davor.",
+              "english": "In the newspaper there is a warning from the police, and many parents are afraid of it."
+            },
+            {
+              "text": "Man sieht, wie die Lastwagen vor dem Spielplatz halten.",
+              "english": "You can see how the trucks stop in front of the playground."
+            },
+            {
+              "text": "Ich war vorher nicht freundlich, sagt Herr Becker, und ich habe längst einen Fehler gemacht.",
+              "english": "I was not friendly before, says Herr Becker, and I made a mistake long ago."
+            },
+            {
+              "text": "Wenn Sie einen Fehler machen, wird er korrigiert.",
+              "english": "If you make a mistake, it is corrected."
+            },
+            {
+              "text": "Beim Fest zählt jeder Euro, auch zehn Euro.",
+              "english": "At the party every euro counts, even ten euros."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Donnerstagabend ist das Team zu Gast bei Ruth und David.",
+              "english": "On Thursday evening the team is a guest at Ruth and David's."
+            },
+            {
+              "text": "Wir wollen gute Gastgeber sein, sagt Ruth, und alles soll fair sein.",
+              "english": "We want to be good hosts, says Ruth, and everything should be fair."
+            },
+            {
+              "text": "Sam ist darin schon geübt, und er kocht gern.",
+              "english": "Sam is already practiced at it, and he likes to cook."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Mittwochabend sitzt der Jugendkreis im Haus der Gemeinde.",
+              "english": "On Wednesday evening the youth group sits in the church house."
+            },
+            {
+              "text": "Pastor Thomas erzählt die Geschichte vom Mann im Tal.",
+              "english": "Pastor Thomas tells the story of the man in the valley."
+            },
+            {
+              "text": "Er musste einen kleinen Bach überqueren, und es war schrecklich.",
+              "english": "He had to cross a small stream, and it was terrible."
+            },
+            {
+              "text": "Der Priester wollte den Mann nicht berühren und ging weiter.",
+              "english": "The priest did not want to touch the man and went on."
+            },
+            {
+              "text": "Der Samariter verband den Mann mit einem Tuch.",
+              "english": "The Samaritan bandaged the man with a cloth."
+            },
+            {
+              "text": "Hinten war der Stall mit dem Ausgang zum Hof, und vorn war der Eingang.",
+              "english": "At the back was the stable with the exit to the yard, and in front was the entrance."
+            },
+            {
+              "text": "Er gab dem Wirt zwei Münzen und sagte: Pflege ihn gut.",
+              "english": "He gave the innkeeper two coins and said: Take good care of him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Bis dahin müssen wir alle Geduld haben, sagt Frau Weber am Telefon.",
+              "english": "Until then we must all have patience, says Frau Weber on the phone."
+            },
+            {
+              "text": "Am Samstag will Sam im Garten mithelfen, denn dort gibt es viel Arbeit.",
+              "english": "On Saturday Sam wants to help in the garden, because there is a lot of work there."
+            },
+            {
+              "text": "Ben kommt nach der Schule und bringt seinen Freund mit.",
+              "english": "Ben comes after school and brings his friend along."
+            },
+            {
+              "text": "Die beiden Jungen gehen durch den Garten und holen die Äpfel vom Baum.",
+              "english": "The two boys go through the garden and get the apples from the tree."
+            },
+            {
+              "text": "Marta sitzt im Garten und lacht.",
+              "english": "Marta sits in the garden and laughs."
+            },
+            {
+              "text": "Sie sagt: Ihr arbeitet gut, und das gefällt mir sehr.",
+              "english": "She says: You work well, and I like that very much."
+            },
+            {
+              "text": "Am Abend essen alle zusammen in der Küche.",
+              "english": "In the evening everyone eats together in the kitchen."
+            },
+            {
+              "text": "Sam erzählt von seinem Tag, und alle hören ihm gern zu.",
+              "english": "Sam tells about his day, and everyone likes listening to him."
+            },
+            {
+              "text": "Später sagt Anna, dass sie sehr froh ist, dass er da ist.",
+              "english": "Later Anna says that she is very glad that he is here."
+            },
+            {
+              "text": "Sam lächelt und denkt: Hier bin ich zu Hause.",
+              "english": "Sam smiles and thinks: Here I am at home."
+            },
+            {
+              "text": "Nach dem Essen geht Sam mit Ben in die Küche.",
+              "english": "After the meal Sam goes to the kitchen with Ben."
+            },
+            {
+              "text": "Dort sprechen sie über die Schule und über den Sommer.",
+              "english": "There they talk about school and about the summer."
+            },
+            {
+              "text": "Dann fragt Ben: Kommst du am Sonntag wieder zu uns?",
+              "english": "Then Ben asks: Will you come to us again on Sunday?"
+            },
+            {
+              "text": "Natürlich komme ich, sagt Sam, ich habe es doch versprochen.",
+              "english": "Of course I will come, says Sam, I promised after all."
+            },
+            {
+              "text": "Draußen wird es dunkel, und im Haus ist es warm und still.",
+              "english": "Outside it gets dark, and in the house it is warm and quiet."
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }

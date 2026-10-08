@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-11",
+  "lang": "sq",
+  "title": "Pronari i qenit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-11",
+    "title": "Albanian ladder, b1-bridge: Pronari i qenit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Pronari i qenit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të hënën pas shkollës Ardi dhe Sami e prisnin te stacioni i autobusit një grua dhe një vajzë.",
+              "english": "On Monday after school Ardi and Sam were waiting at the bus station for a woman and a girl."
+            },
+            {
+              "text": "Qeni ishte shtrirë te këmbët e Ardit dhe nuk lëvizte.",
+              "english": "The dog lay at Ardi's feet and did not move at all."
+            },
+            {
+              "text": "Autobusi i parë erdhi dhe u largua, pastaj erdhi një tjetër.",
+              "english": "The first bus came and left, then another came."
+            },
+            {
+              "text": "Ardi filloi të mendonte se askush nuk do të vinte.",
+              "english": "Ardi began to think that nobody would come."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në autobusin e tretë zbriti një vajzë me një xhaketë të kuqe.",
+              "english": "From the third bus a girl in a red jacket got off."
+            },
+            {
+              "text": "Ajo ishte rreth tetë vjeç, me flokë të zeza dhe me sy të kuq nga lotët.",
+              "english": "She was about eight years old, with black hair and eyes red from crying."
+            },
+            {
+              "text": "Pas saj vinte një grua që mbante një çantë të madhe.",
+              "english": "Behind her came a woman carrying a big bag."
+            },
+            {
+              "text": "Vajza e pa qenin, dhe për një sekondë nuk lëvizi.",
+              "english": "The girl saw the dog, and for a second she did not move."
+            },
+            {
+              "text": "Pastaj bërtiti: — Bardhi!",
+              "english": "Then she cried out: \"Bardhi!\""
+            },
+            {
+              "text": "Qeni u hodh përpara me një zë të gëzuar, dhe të dy ranë në mes të rrugës.",
+              "english": "The dog leaped forward with a joyful voice, and the two fell in the middle of the street."
+            },
+            {
+              "text": "Vajza e mori në krahë, ndërsa qeni lëvizte bishtin pa pushim.",
+              "english": "The girl took him in her arms, while the dog wagged his tail without stopping."
+            },
+            {
+              "text": "Vajza i pëshpëriti diçka qenit.",
+              "english": "The girl whispered something to the dog."
+            },
+            {
+              "text": "Askush nuk foli.",
+              "english": "Nobody spoke."
+            },
+            {
+              "text": "Edhe Sami e ndjeu se i kishin dalë lotët.",
+              "english": "Even Sam felt that tears had come to his eyes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nëna e vajzës erdhi te Sami dhe Ardi.",
+              "english": "The girl's mother came to Sam and Ardi."
+            },
+            {
+              "text": "— Ju falënderoj nga zemra, — tha ajo.",
+              "english": "\"I thank you from my heart,\" she said."
+            },
+            {
+              "text": "— Kisha dy javë që e kërkonim në çdo vend.",
+              "english": "'For two weeks we had been looking for him in every place.'"
+            },
+            {
+              "text": "— Kishim shkuar te mjekët e kafshëve, te shtëpitë, te tregu, dhe kishim pyetur çdo njeri që kalonte.",
+              "english": "'We had gone to the animal doctors, to the houses, to the market, and had asked every person who passed.'"
+            },
+            {
+              "text": "— Unë e kisha humbur çdo shpresë.",
+              "english": "\"I had lost all hope.\""
+            },
+            {
+              "text": "— Por e shkrova numrin e telefonit në dorë, dhe e thirra kur mbërrita.",
+              "english": "'But I wrote the telephone number on my hand, and I called when I arrived.'"
+            },
+            {
+              "text": "— Kur pashë njoftimin në derën e një shkolle, mendova se ishte një lojë.",
+              "english": "'When I saw the notice on the door of a school, I thought it was a game.'"
+            },
+            {
+              "text": "— Por vajza ime tha: «Nëse e thotë që po më pret, atëherë po më pret.»",
+              "english": "\"But my daughter said: 'If it says that he is waiting for me, then he is waiting for me.'\""
+            },
+            {
+              "text": "Ardi e shikoi vajzën dhe nuk dinte çfarë të thoshte.",
+              "english": "Ardi looked at the girl and did not know what to say."
+            },
+            {
+              "text": "Qeni ishte i tij vetëm për tri ditë, por i kishte hyrë në zemër.",
+              "english": "The dog had been his for only three days, but he had got into his heart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Vajza e kuptoi.",
+              "english": "The girl understood."
+            },
+            {
+              "text": "Ajo e ngriti kokën nga qeni dhe e pyeti: — Ti e ke mbajtur?",
+              "english": "She raised her head from the dog and asked him: \"Did you keep him?\""
+            },
+            {
+              "text": "— Po, — tha Ardi me zë të ulët.",
+              "english": "\"Yes,\" said Ardi in a low voice."
+            },
+            {
+              "text": "— Kishte frikë natën, dhe i hodha një batanije.",
+              "english": "\"He was afraid at night, and I threw him a blanket.\""
+            },
+            {
+              "text": "— Faleminderit, — tha vajza me zë të qetë.",
+              "english": "'Thank you,' said the girl in a calm voice."
+            },
+            {
+              "text": "— Po të mos ishe ti, ai do të ishte ende në rrugë.",
+              "english": "\"If it had not been for you, he would still be in the street.\""
+            },
+            {
+              "text": "— Nëse do, mund të vish ta shohësh kur të duash.",
+              "english": "\"If you want, you can come to see him whenever you like.\""
+            },
+            {
+              "text": "— Ne jetojmë në lagjen tjetër, por nuk është larg.",
+              "english": "\"We live in the other neighbourhood, but it is not far.\""
+            },
+            {
+              "text": "Ardi mori frymë thellë dhe buzëqeshi.",
+              "english": "Ardi took a deep breath and smiled."
+            },
+            {
+              "text": "— Do të vij të shtunën, — tha.",
+              "english": "\"I will come on Saturday,\" he said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Para se të ndaheshin, nëna e pyeti Samin: — Çfarë mund të bëj për ju?",
+              "english": "Before they parted, the mother asked Sam: \"What can I do for you?\""
+            },
+            {
+              "text": "— Asgjë, — tha Sami.",
+              "english": "\"Nothing,\" said Sam."
+            },
+            {
+              "text": "— Njoftimi e bëri punën e tij.",
+              "english": "\"The notice did its work.\""
+            },
+            {
+              "text": "— Atëherë do të bëj unë një njoftim, — qeshi ajo.",
+              "english": "\"Then I will make a notice myself,\" she laughed."
+            },
+            {
+              "text": "— «Të shtunën byrek me mjaltë për të gjithë ata që gjejnë qen.»",
+              "english": "''On Saturday byrek with honey for all those who find dogs.''"
+            },
+            {
+              "text": "Të gjithë qeshën, dhe vajza e mori qenin për rripin e thyer dhe e çoi në autobus.",
+              "english": "They all laughed, and the girl took the dog by the broken collar and led him to the bus."
+            },
+            {
+              "text": "Qeni ktheu kokën vetëm një herë, e shikoi Ardin dhe lëvizi bishtin.",
+              "english": "The dog turned his head only once, looked at Ardi and wagged his tail."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kur u kthye në shtëpi, gjyshja Drita e pyeti pa e shikuar: — Si shkoi?",
+              "english": "When he came home, grandmother Drita asked him without looking: \"How did it go?\""
+            },
+            {
+              "text": "— Ishte mirë, — tha Ardi.",
+              "english": "'It was fine,' said Ardi."
+            },
+            {
+              "text": "— Ai e gjeti vajzën.",
+              "english": "\"He found the girl.\""
+            },
+            {
+              "text": "Gjyshja e preku në kokë.",
+              "english": "Grandmother touched him on the head."
+            },
+            {
+              "text": "— Ti e ke mbajtur për tri ditë, — tha ajo.",
+              "english": "\"You kept him for three days,\" she said."
+            },
+            {
+              "text": "— Kjo është mjaft kohë për të mësuar se si është të japësh.",
+              "english": "\"That is enough time to learn what it is like to give.\""
+            },
+            {
+              "text": "— Kur jep diçka që e do, nuk e humbet, — tha Drita.",
+              "english": "\"When you give something you love, you do not lose it,\" said Drita."
+            },
+            {
+              "text": "— E ke pasur më shumë, sepse tani e di sa e do.",
+              "english": "\"You have had it more, because now you know how much you love it.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

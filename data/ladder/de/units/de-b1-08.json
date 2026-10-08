@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-08",
+  "lang": "de",
+  "title": "A day trip to Hameln",
+  "contentType": "narrative",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-08",
+    "title": "A day trip to Hameln (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next texts (Guerber, Der Pfeifer von Hameln; Jakobs Haus): Maus, Pfeifer, Ratte, Katze, Korn, Hund. Each is used at least three times. The legend is told in the course's own words and is not a quotation."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "trip",
+    "town",
+    "legend",
+    "rats",
+    "animals"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ben": "Ben",
+    "lukas": "Lukas",
+    "sam": "Sam",
+    "guide": "Die Stadtführerin"
+  },
+  "sections": [
+    {
+      "title": "Die Fahrt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstag fahren Lukas, Sam und Ben mit dem Zug nach Hameln.",
+              "english": "On Saturday Lukas, Sam and Ben travel by train to Hameln."
+            },
+            {
+              "text": "Hameln ist eine kleine, alte Stadt im Norden.",
+              "english": "Hameln is a small, old town in the north."
+            },
+            {
+              "text": "Die Fahrt dauert fast fünf Stunden, und Ben ist schon nach zwei Stunden müde.",
+              "english": "The journey takes almost five hours, and Ben is tired after only two hours."
+            },
+            {
+              "speaker": "ben",
+              "text": "Warum fahren wir so weit?",
+              "english": "Why are we travelling so far?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wegen einer Geschichte.",
+              "english": "Because of a story."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Sie ist sehr alt, und alle Kinder in Deutschland kennen sie.",
+              "english": "It is very old, and all children in Germany know it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und was für eine Geschichte ist das?",
+              "english": "And what kind of story is it?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das erzählt dir die Stadtführerin.",
+              "english": "The guide will tell you that."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Auf dem Marktplatz",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Auf dem Marktplatz wartet eine Frau mit einem roten Schirm.",
+              "english": "On the market square a woman with a red umbrella is waiting."
+            },
+            {
+              "text": "Sie begrüßt die Gäste sehr freundlich.",
+              "english": "She greets the guests very kindly."
+            },
+            {
+              "text": "Neben ihr sitzt ein Hund und schaut Ben an.",
+              "english": "Next to her a dog is sitting and looking at Ben."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ist das Ihr Hund?",
+              "english": "Is that your dog?"
+            },
+            {
+              "speaker": "guide",
+              "text": "Ja, er heißt Max und kommt immer mit.",
+              "english": "Yes, he is called Max and always comes along."
+            },
+            {
+              "speaker": "guide",
+              "text": "Ein Hund ist gut für die Kinder, denn sie hören dann besser zu.",
+              "english": "A dog is good for the children, because they then listen better."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wo ist die Geschichte?",
+              "english": "Where is the story?"
+            },
+            {
+              "speaker": "guide",
+              "text": "Hier, in den Straßen.",
+              "english": "Here, in the streets."
+            },
+            {
+              "speaker": "guide",
+              "text": "Vor langer Zeit hatte die Stadt ein großes Problem.",
+              "english": "A long time ago the town had a big problem."
+            },
+            {
+              "speaker": "guide",
+              "text": "Es gab Ratten. Überall waren Ratten und Mäuse.",
+              "english": "There were rats. Everywhere there were rats and mice."
+            },
+            {
+              "speaker": "guide",
+              "text": "Sie waren in den Häusern, in den Küchen und in den Betten.",
+              "english": "They were in the houses, in the kitchens and in the beds."
+            },
+            {
+              "speaker": "guide",
+              "text": "Sie haben das Korn gefressen, und die Menschen hatten Hunger.",
+              "english": "They ate the grain, and the people were hungry."
+            },
+            {
+              "speaker": "guide",
+              "text": "Das Korn braucht man doch für das Brot!",
+              "english": "After all, you need the grain for the bread!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann gab es kein Brot beim Bäcker?",
+              "english": "So there was no bread at the baker's?"
+            },
+            {
+              "speaker": "guide",
+              "text": "Doch, aber nur wenig, und das Korn war sehr teuer.",
+              "english": "Yes, but only a little, and the grain was very expensive."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und die Katzen?",
+              "english": "And the cats?"
+            },
+            {
+              "speaker": "guide",
+              "text": "Es gab viele Katzen, aber es gab noch mehr Mäuse.",
+              "english": "There were many cats, but there were even more mice."
+            },
+            {
+              "speaker": "guide",
+              "text": "Die Katzen waren müde, und sie wollten den Mäusen nicht mehr nachlaufen.",
+              "english": "The cats were tired, and they no longer wanted to run after the mice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Der Pfeifer",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "guide",
+              "text": "Eines Tages kam ein Mann in die Stadt.",
+              "english": "One day a man came into the town."
+            },
+            {
+              "speaker": "guide",
+              "text": "Er trug einen langen Mantel und hatte eine Pfeife in der Hand.",
+              "english": "He wore a colourful coat and had a pipe in his hand."
+            },
+            {
+              "speaker": "guide",
+              "text": "Man nannte ihn den Pfeifer.",
+              "english": "He was called the piper."
+            },
+            {
+              "speaker": "guide",
+              "text": "Er sagte zum Bürgermeister: Ich helfe euch, aber ihr müsst mich bezahlen.",
+              "english": "He said to the mayor: I will help you, but you have to pay me."
+            },
+            {
+              "speaker": "guide",
+              "text": "Der Bürgermeister sagte ja, und der Pfeifer ging durch die Straßen und spielte.",
+              "english": "The mayor said yes, and the piper went through the streets and played."
+            },
+            {
+              "speaker": "guide",
+              "text": "Und da kamen die Ratten aus allen Häusern.",
+              "english": "And then the rats came out of all the houses."
+            },
+            {
+              "speaker": "guide",
+              "text": "Auch die Mäuse kamen, hundert und noch mehr, und sie liefen dem Pfeifer nach.",
+              "english": "The mice came too, hundreds and hundreds more, and they ran after the piper."
+            },
+            {
+              "speaker": "ben",
+              "text": "Wohin ist er mit ihnen gegangen?",
+              "english": "Where did he go with them?"
+            },
+            {
+              "speaker": "guide",
+              "text": "Das erzähle ich dir am Fluss. Komm!",
+              "english": "I will tell you that at the river. Come!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Sam, hast du Angst vor Mäusen?",
+              "english": "Sam, are you afraid of mice?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Nein, aber ich habe Angst vor Ratten.",
+              "english": "No, but I am afraid of rats."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Dann hör gut zu. Die Geschichte ist noch nicht zu Ende.",
+              "english": "Then listen carefully. The story is not over yet."
+            },
+            {
+              "text": "Der Hund geht zuerst, und alle gehen hinter ihm.",
+              "english": "The dog runs ahead, and everybody walks behind him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Auf der Rückfahrt sitzen Ben, Sam und Lukas wieder im Zug.",
+              "english": "On the way back Ben, Sam and Lukas are sitting in the train again."
+            },
+            {
+              "text": "Ben ist nicht mehr müde, denn er hat viele Fragen.",
+              "english": "Ben is no longer tired, because he has many questions."
+            },
+            {
+              "speaker": "ben",
+              "text": "Lukas, weißt du noch, woran wir gestern Abend gedacht haben?",
+              "english": "Lukas, do you remember what we were thinking of yesterday evening?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ja, an die alten Geschichten, die wir zusammen gelesen haben.",
+              "english": "Yes, of the old stories that we read together."
+            },
+            {
+              "speaker": "ben",
+              "text": "Im Folgenden erzähle ich euch alles noch einmal, und ihr hört gut zu.",
+              "english": "In what follows I will tell you everything again, and you listen carefully."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Zuerst die drei jungen Männer in Bonn. Sie waren so träge!",
+              "english": "First the three young men in Bonn. They were so lazy!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Sie wollten nur ruhen, und niemand sollte sie wecken.",
+              "english": "They only wanted to rest, and nobody was to wake them."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Höhle liegt nahe bei der Stadt, und sie legten sich nieder.",
+              "english": "The cave lies near the town, and they lay down."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann kam das siebente Jahr, und einer sprach von einem Ochs.",
+              "english": "Then came the seventh year, and one of them spoke about an ox."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ihre Unterhaltung war nicht sehr interessant, denn sie waren so müde.",
+              "english": "Their conversation was not very interesting, because they were so tired."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ein paar Worte bilden bei ihnen eine ganze Unterhaltung.",
+              "english": "A few words make up a whole conversation for them."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ich würde sie nicht aufwecken. Man soll niemanden aus dem Schlafe wecken.",
+              "english": "I would not wake them up. One should not wake anybody out of sleep."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Und der Reisende im Haus, das so groß wie ein Palast war!",
+              "english": "And the traveller in the house that was as big as a palace!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Im Hof spaltete ein Mann Holz, und in der Küche machte ein anderer das Feuer an.",
+              "english": "In the yard a man was splitting wood, and in the kitchen another lit the fire."
+            },
+            {
+              "speaker": "ben",
+              "text": "Im Esszimmer saß ein Mann am Tisch, und im Schlafzimmer lag ein noch älterer im Bett.",
+              "english": "In the dining room a man sat at the table, and in the bedroom an even older one lay in bed."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ein Mann lag in der Wiege, und der älteste hing an der Wand in einem Trinkhorn.",
+              "english": "One man lay in the cradle, and the oldest hung on the wall in a drinking horn."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Am Ende konnte sich der Reisende am Feuer wärmen und gut schlafen.",
+              "english": "In the end the traveller could warm himself at the fire and sleep well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Und die drei Faulen! Der König hat alles gut bedacht.",
+              "english": "And the three lazy ones! The king thought everything over well."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er wollte den faulsten Sohn zum König bestimmen.",
+              "english": "He wanted to name the laziest son as king."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dem ersten fällt ein Tropfen ins Auge, aber er will es nicht zuthun.",
+              "english": "A drop falls into the first one's eye, but he does not want to close it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der zweite sitzt am Feuer und lässt sich eher die Fersen verbrennen, eh er seine Beine bewegt.",
+              "english": "The second sits at the fire and would rather let his heels burn than move his legs."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der dritte hat einen Strick um den Hals, und man gibt ihm ein scharfes Messer.",
+              "english": "The third has a rope around his neck, and they give him a sharp knife."
+            },
+            {
+              "speaker": "sam",
+              "text": "Damit kann er den Strick zerschneiden, aber er will es nicht.",
+              "english": "With it he can cut through the rope, but he does not want to."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Alle drei wären lieber aufgehenkt worden, eh sie die Hände erhüben.",
+              "english": "All three would rather have been hanged than lift their hands."
+            },
+            {
+              "speaker": "sam",
+              "text": "Du wärst nicht so faul, Ben, oder?",
+              "english": "You would not be so lazy, Ben, would you?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, ich nicht! Am Sonntag sitzen die Kinder im Kreis, und ich erzähle ihnen alles.",
+              "english": "No, not me! On Sunday the children sit in a circle, and I tell them everything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend sitzen Ben und Sam bei Lukas in der Küche.",
+              "english": "In the evening Ben and Sam sit with Lukas in the kitchen."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Im Folgenden möchte ich hören, was du aus den alten Geschichten noch weißt.",
+              "english": "In what follows I would like to hear what you still know from the old stories."
+            },
+            {
+              "speaker": "ben",
+              "text": "Gern! Zuerst die drei Männer in der Höhle. Sie waren so träge.",
+              "english": "Gladly! First the three men in the cave. They were so lazy."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, sie waren träge, und niemand durfte sie aus dem Schlafe wecken.",
+              "english": "Yes, they were lazy, and nobody was allowed to wake them from their sleep."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ihre Unterhaltung war nicht interessant, denn sie sagten nur wenige Worte.",
+              "english": "Their conversation was not interesting, because they said only a few words."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich finde die Geschichte trotzdem interessant, denn sie ist lustig.",
+              "english": "I find the story interesting anyway, because it is funny."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Dann kam der Reisende zu einem Haus, das so groß war wie ein Palast.",
+              "english": "Then the traveller came to a house that was as big as a palace."
+            },
+            {
+              "speaker": "ben",
+              "text": "Er suchte den Hausvater, aber niemand wusste, wo er war.",
+              "english": "He looked for the master of the house, but nobody knew where he was."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ein Mann sagte: Er liegt im Schlafzimmer.",
+              "english": "A man said: He is lying in the bedroom."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Aber im Schlafzimmer fand der Reisende nur einen alten Mann im Bett.",
+              "english": "But in the bedroom the traveller found only an old man in a bed."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann sagte der Mann: Mein Vater hängt dort an der Wand, in dem Trinkhorn.",
+              "english": "Then the man said: My father hangs there on the wall, in the drinking horn."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ein Trinkhorn ist doch zum Trinken da, nicht für einen Vater!",
+              "english": "A drinking horn is for drinking, not for a father!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Am Ende lag der Vater in der Wiege.",
+              "english": "In the end the father lay in the cradle."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ein alter Mann in der Wiege? Das ist wirklich lustig.",
+              "english": "An old man in a cradle? That is really funny."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, die Wiege war für ein Kind, aber er lag in der Wiege wie ein kleines Kind.",
+              "english": "Yes, the cradle was for a child, but he lay in the cradle like a small child."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Und der König bei den drei Faulen hatte alles gut bedacht.",
+              "english": "And the king with the three lazy ones had thought everything over well."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der erste wollte die Augen nicht zuthun, weil er zu faul war.",
+              "english": "The first did not want to close his eyes, because he was too lazy."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der dritte hatte ein scharfes Messer, aber er wollte den Strick nicht zerschneiden.",
+              "english": "The third had a sharp knife, but he did not want to cut the rope."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Alle drei wären lieber gestorben, eh sie die Hände erhüben.",
+              "english": "All three would rather have died than lift their hands."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich bin nicht so faul. Ich lese jeden Tag in meinem Buch.",
+              "english": "I am not so lazy. I read in my book every day."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

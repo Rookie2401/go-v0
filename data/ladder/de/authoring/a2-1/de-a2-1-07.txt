@@ -1,0 +1,148 @@
+=== de-a2-1-07
+speakers: D=David, R=Ruth, S=Sam, N=Daniel
+## Montag
+Es ist Montag. || It is Monday.
+Die Gruppe heißt „Wir in Leipzig“. || The group is called "We in Leipzig".
+[D] Guten Morgen zusammen! || Good morning, everybody!
+[D] Ich habe eine Idee. || I have an idea.
+[D] Wir treffen uns diese Woche bei Pastor Thomas. || We are meeting at Pastor Thomas's this week.
+[D] Ich schlage Mittwoch um sieben vor. || I suggest Wednesday at seven.
+[R] Gute Idee, David! || Good idea, David!
+[R] Ich sage zu. || I accept.
+[S] Ich komme auch. || I am coming too.
+[S] Ich fahre mit dem Fahrrad. || I will cycle.
+[N] Leider muss ich absagen. || Unfortunately I have to decline.
+[N] Mein Kurs ist am Mittwoch. || My course is on Wednesday.
+[D] Das ist nicht schön, Daniel. || That is not nice, Daniel.
+[D] Kann ich Donnerstag vorschlagen? || May I suggest Thursday?
+[N] Donnerstag geht gut! || Thursday works well!
+[N] Ich bestätige das. || I confirm that.
+[R] Ich bestätige auch: Donnerstag, sieben Uhr. || I confirm too: Thursday, seven o'clock.
+[S] Donnerstag passt mir auch. || Thursday suits me too.
+[D] Dann ist alles gut. || Then everything is fine.
+[D] Bis dann! || See you!
+[R] Ich antworte Thomas und sage, wir kommen. || I will answer Thomas and say that we are coming.
+
+## Dienstag
+[S] Wer hat die Nummer von Pastor Thomas? || Who has Pastor Thomas's number?
+[R] Ich habe sie. || I have it.
+[R] Seine Nummer ist 0341 5551234. || His number is 0341 5551234.
+[S] Danke, Ruth! || Thanks, Ruth!
+[S] Und meine Nummer ist neu: 0151 5559876. || And my number is new: 0151 5559876.
+[D] Hier ist der Link zur Kirche. || Here is the link to the church.
+[N] Der Link öffnet nicht. || The link does not open.
+[S] Nimm mal den zweiten Link. || Just take the second link.
+[N] Jetzt ist er offen. || Now it is open.
+[N] Danke! || Thanks!
+[R] Nehmt die gelbe Straßenbahn bis zur Kirche. || Take the yellow tram to the church.
+[D] Am Abend gibt es kaum Verkehr. || In the evening there is hardly any traffic.
+[N] Ich bin oft zu spät. || I am often late.
+[N] Ich fahre eine Stunde früher. || I will leave an hour earlier.
+[S] Das ist gut, Daniel. || That is good, Daniel.
+[S] Ich schreibe dir morgen noch einmal. || I will write to you again tomorrow.
+
+## Mittwoch
+[D] Ich habe noch eine Idee für die Gruppe. || I have another idea for the group.
+[D] Am Samstag öffnen wir die kleine Bibliothek auf dem Spielplatz. || On Saturday we are opening the little library on the playground.
+[D] Jonas und Anna haben sie gebaut. || Jonas and Anna built it.
+[R] Sehr schön! || Lovely!
+[R] Ich bringe Kuchen mit. || I will bring cake.
+[S] Natürlich komme ich. || Of course I am coming.
+[S] Ich bringe Kaffee. || I will bring coffee.
+[N] Ich bringe einen Ball für die Kinder. || I will bring a ball for the children.
+[R] Auch die Einwohner der Straße kommen. || The residents of the street are coming too.
+[R] Das ist eine gute Veränderung. || That is a good change.
+[S] Der Spielplatz ist jetzt sauber, und es gibt kaum Lärm. || The playground is clean now, and there is hardly any noise.
+[D] Schlimm ist nur der Regen. || The only bad thing is the rain.
+[R] Beruhigt euch, das Wetter ist gut. || Calm down, the weather will be fine.
+[D] Meistens ist der Mai warm. || May is mostly warm.
+[D] Nur manchmal regnet es. || It only rains sometimes.
+[N] Natürlich kaufe ich den Kuchen im Laden. || Of course I buy the cake in the shop.
+[N] Aber der Laden schließt um sechs. || But the shop closes at six.
+[R] Dann kaufst du ihn heute. || Then buy it today.
+[R] Meistens ist es am Abend voll. || It is mostly crowded in the evening.
+
+## Nachts im Chat
+[N] Ich kann nicht schlafen. || I cannot sleep.
+[N] Der Mond ist hell, und ich sehe die Sterne. || The moon is bright, and I can see the stars.
+[N] Plötzlich höre ich ein Geräusch an der Tür. || Suddenly I hear a noise at the door.
+[N] Ich habe Angst! || I am afraid!
+[R] Erzähl keine Märchen, Daniel! || Don't tell fairy tales, Daniel!
+[N] Es ist kein Märchen! || It is not a fairy tale!
+[N] Das Licht geht nicht. || The light does not work.
+[N] Zuerst war es still. || First it was quiet.
+[N] Danach kam ein kleines Tier. || Then a little animal came.
+[D] Beruhige dich. || Calm down.
+[D] Es war nur der Nachbar. || It was only the neighbour.
+[N] Nun bin ich wieder ruhig. || Now I am calm again.
+[N] Damals in den Ferien war ich auf dem Bauernhof meiner Großeltern. || Back then in the holidays I was at my grandparents' farm.
+[N] Mein Opa hatte Kühe und Pferde. || My grandpa had cows and horses.
+[N] Mein Onkel und meine Tante wohnten im Dorf. || My uncle and aunt lived in the village.
+[N] Wir Geschwister sind mit dem Ball gerannt. || We brothers and sisters ran with the ball.
+[N] Unter dem Baum hat Opa eine Geschichte erzählt. || Under the tree Grandpa told a story.
+[N] Sonst haben wir nichts gemacht, sogar im Regen nicht. || Otherwise we did nothing, not even in the rain.
+[R] Das ist ein schönes Märchen, Daniel. || That is a lovely fairy tale, Daniel.
+[R] Gute Nacht! || Good night!
+[D] Jetzt beginnt die Nacht. || Now the night begins.
+[D] Schlaft gut! || Sleep well!
+
+## Donnerstag
+[D] Danke für das Treffen heute! || Thanks for the meeting today!
+[D] Hier ist, was wir gemacht haben: || Here is what we did:
+[D] Zuerst haben wir gebetet und ein Lied gesungen. || First we prayed and sang a song.
+[D] Danach hat Thomas über die Gemeinde gesprochen. || Then Thomas spoke about the congregation.
+[D] Nun wissen wir, wer am Sonntag hilft. || Now we know who is helping on Sunday.
+[R] Wer antwortet noch Pastor Thomas? || Who is still answering Pastor Thomas?
+[S] Ich antworte ihm heute Abend. || I will answer him this evening.
+[R] Schickt mir bitte die Bilder von Samstag. || Please send me the pictures from Saturday.
+[N] Sag mal, Sam, kommt Anna auch? || Tell me, Sam, is Anna coming too?
+[S] Natürlich. || Of course.
+[S] Sie hat mir schon zugesagt. || She has already said yes to me.
+[D] Dann sind wir viele. || Then there will be many of us.
+[D] Bis Samstag! || See you on Saturday!
+
+## Freitag
+[D] Und noch etwas: Wir treffen uns um neun Uhr. || And one more thing: we meet at nine.
+[D] Zuerst bringen wir die Bücher zum Spielplatz. || First we bring the books to the playground.
+[D] Danach öffnen wir die Tür. || Then we open the door.
+[D] Um elf Uhr gibt es Kaffee und Kuchen. || At eleven there is coffee and cake.
+[S] Das ist gut. || That is good.
+[S] Ich bestätige. || I confirm.
+[N] Ich sage leider ab. || Unfortunately I have to cancel.
+[N] Ich habe Kurs. || I have a course.
+[R] Das ist nicht schlimm, Daniel. || That is not a problem, Daniel.
+[R] Du kommst am Abend. || You come in the evening.
+[N] Gern. || Gladly.
+[N] Ich habe meistens am Abend Zeit. || I mostly have time in the evening.
+[R] Wer kann am Abend aufräumen? || Who can tidy up in the evening?
+[S] Das mache ich mit Jonas. || I will do that with Jonas.
+
+## Samstag
+[R] Seht mal, die Bibliothek ist offen! || Look, the library is open!
+[R] Alle aus der Gruppe sind da. || Everyone from the group is here.
+[R] Es kommen immer mehr Einwohner, und sie bringen Bücher. || More and more residents are coming, and they are bringing books.
+[D] Hier war früher ein Schwimmbad. || There used to be a swimming pool here.
+[D] Heute ist hier eine Bibliothek. || Today there is a library here.
+[R] Das ist eine große Veränderung, aber eine schöne. || That is a big change, but a lovely one.
+[S] Ich bin oft hier. || I am here often.
+[S] Das Licht in der Bibliothek ist am Abend sehr schön. || The light in the library is very lovely in the evening.
+[S] Hier ist ein Foto von Ben. || Here is a photo of Ben.
+[S] Er rennt mit dem Ball! || He is running with the ball!
+[D] Und hier ist Frau Weber. || And here is Frau Weber.
+[D] Sie hat ein Buch gebracht. || She has brought a book.
+[S] Sie hat gesagt: „Das gefällt mir sehr.“ || She said, "I like that very much."
+[N] Ich komme später. || I will come later.
+[N] Ich habe zwei Bälle, und ich renne gern! || I have two balls, and I like running!
+
+## Sonntag
+[R] Guten Morgen! || Good morning!
+[R] Gestern war ein schöner Tag. || Yesterday was a lovely day.
+[R] Die Kinder haben gelesen, und die Einwohner haben mit uns Kaffee getrunken. || The children read, and the residents drank coffee with us.
+[D] Wir haben jetzt viele neue Freunde. || We have lots of new friends now.
+[S] Frau Weber hat uns zum Essen eingeladen. || Frau Weber has invited us to dinner.
+[S] Sie kocht Suppe. || She is cooking soup.
+[N] Um wie viel Uhr? || At what time?
+[N] Ich bringe Brot mit. || I will bring bread.
+[S] Um zwölf Uhr. || At twelve o'clock.
+[S] Alle kommen! || Everyone is coming!
+

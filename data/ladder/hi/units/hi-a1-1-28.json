@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Church words are the ones Hindi churches use (प्रार्थना, भजन, आराधना, आशीर्वाद, आमीन; गिरजा beside चर्च); the reviewer should say which of गिरजा / चर्च / कलीसिया is natural for this community. \"सुनीता आंटी\": आंटी has no reading in the word list (it counts as an unknown word each time). गाना (to sing) is used twice and is not in the plan's lists for this unit. पास्टर अनिल is named only three times; after that \"वह\". The prayer for the sick brings back the clinic words. The adapter reads सोता as a noun (a spring), so सोना is used in progressive and other forms here. Honorific plurals for पास्टर, सुनीता आंटी, नानी. Words outside the plan (measured, adapter lemmas x tokens): गाना×2 (to sing; first use here), आंटी×1 (no reading in the word list; \"सुनीता आंटी\" once, then सुनीता जी)."
+    "notes": "Church words are the ones Hindi churches use (प्रार्थना, भजन, आराधना, आशीर्वाद, आमीन; गिरजा beside चर्च); the reviewer should say which of गिरजा / चर्च / कलीसिया is natural for this community. \"सुनीता आंटी\": आंटी has no reading in the word list (it counts as an unknown word each time). गाना (to sing) is used twice and is not in the plan's lists for this unit. पास्टर अनिल is named only three times; after that \"वह\". The prayer for the sick brings back the clinic words. The adapter reads सोता as a noun (a spring), so सोना is used in progressive and other forms here. Honorific plurals for पास्टर, सुनीता आंटी, नानी. Words outside the plan (measured, adapter lemmas x tokens): गाना×2 (to sing; first use here), आंटी×1 (no reading in the word list; \"सुनीता आंटी\" once, then सुनीता जी). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -338,6 +338,74 @@
             {
               "text": "सैम बोलता है, \"धन्यवाद, नानी!\"",
               "english": "Sam says, \"Thank you, Nani!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "चर्च से हम घर आते हैं।",
+              "english": "From church we come home."
+            },
+            {
+              "text": "दोपहर को घर में सब लोग हैं।",
+              "english": "At noon everybody is in the house."
+            },
+            {
+              "text": "घर दूर नहीं है।",
+              "english": "The house is not far."
+            },
+            {
+              "text": "नानी बच्चों को कहानी सुनाती हैं।",
+              "english": "Nani tells the children a story."
+            },
+            {
+              "text": "सैम भी कहानी सुनता है।",
+              "english": "Sam listens to the story too."
+            },
+            {
+              "text": "कहानी बहुत अच्छी है।",
+              "english": "The story is very good."
+            },
+            {
+              "text": "अमन बोलता है, \"नानी, एक और कहानी!\"",
+              "english": "Aman says, \"Nani, one more story!\""
+            },
+            {
+              "text": "नानी कहानी सुनाती हैं।",
+              "english": "Nani tells a story."
+            },
+            {
+              "text": "सैम और अमन कहानी सुनते हैं।",
+              "english": "Sam and Aman listen to the story."
+            },
+            {
+              "text": "नानी की कहानी में एक नदी है।",
+              "english": "There is a river in Nani's story."
+            },
+            {
+              "text": "नदी घर से दूर है।",
+              "english": "The river is far from the house."
+            },
+            {
+              "text": "नदी के पास खेत हैं।",
+              "english": "There are fields near the river."
+            },
+            {
+              "text": "खेत बहुत बड़े हैं।",
+              "english": "The fields are very big."
+            },
+            {
+              "text": "नानी की बात अच्छी है।",
+              "english": "Nani's word is good."
+            },
+            {
+              "text": "आज रविवार है और सब लोग घर में हैं।",
+              "english": "Today is Sunday and everybody is at home."
+            },
+            {
+              "text": "नानी रसोई में खाना बनाती हैं और सैम पानी लाता है।",
+              "english": "Nani makes food in the kitchen and Sam brings water."
             }
           ]
         }

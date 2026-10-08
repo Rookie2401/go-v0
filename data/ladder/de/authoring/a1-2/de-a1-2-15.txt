@@ -1,0 +1,110 @@
+=== de-a1-2-15
+speakers: thomas=Thomas, sam=Sam, anna=Anna, eva=Eva, weber=Frau Weber
+## Der Kalender
+Thomas hat einen Kalender in der Gemeinde. || Thomas has a calendar at the church.
+Im Kalender sind die Geburtstage der Freunde. || In the calendar are the friends' birthdays.
+Thomas und Sam sehen den Kalender. || Thomas and Sam look at the calendar.
+[thomas] Ein Jahr hat zwölf Monate. || A year has twelve months.
+[thomas] Im Januar habe ich Geburtstag. || In January I have my birthday.
+[thomas] Im Februar Ruth, im März Ben, im April David. || In February Ruth, in March Ben, in April David.
+[thomas] Im Mai Anna, im Juni Frau Weber, im Juli Eva. || In May Anna, in June Mrs Weber, in July Eva.
+[thomas] Im August Daniel, im September Lukas. || In August Daniel, in September Lukas.
+[thomas] Im Oktober hast du Geburtstag, Sam. || In October you have your birthday, Sam.
+[thomas] Im November Herr Schmidt, im Dezember Marta. || In November Herr Schmidt, in December Marta.
+[sam] Das sind zwölf Freunde! || That is twelve friends!
+[sam] Ich möchte alle einladen. || I would like to invite everyone.
+
+## Die Einladung
+Sam schreibt eine Einladung. || Sam writes an invitation.
+[sam] Hallo Anna, ich lade dich ein. || Hello Anna, I am inviting you.
+[sam] Am 9. Oktober habe ich Geburtstag. || On 9 October I have my birthday.
+[sam] Kommst du zu Frau Weber? || Are you coming to Mrs Weber's?
+[sam] Viele Grüße, Sam || Best wishes, Sam
+Dann schreibt er an Thomas. || Then he writes to Thomas.
+[sam] Hallo Thomas, ich möchte dich einladen. || Hello Thomas, I would like to invite you.
+[sam] Bring Ruth und David mit! || Bring Ruth and David along!
+[sam] Viele Grüße, Sam || Best wishes, Sam
+
+## Anna antwortet
+Anna schreibt eine Nachricht. || Anna writes a message.
+[anna] Hallo Sam! || Hello Sam!
+[anna] Danke für die Einladung! || Thank you for the invitation!
+[anna] Ich komme gern. || I will gladly come.
+[anna] Ich wünsche dir einen schönen Geburtstag. || I wish you a lovely birthday.
+[anna] Im Mai habe ich Geburtstag. || In May I have my birthday.
+[anna] Ich möchte dich auch einladen. || I would like to invite you too.
+[anna] Später habe ich Zeit, dann rufe ich an. || Later I will have time, then I will call.
+[anna] Viele Grüße, Anna || Best wishes, Anna
+Thomas schreibt auch: "Ich wünsche dir einen guten Tag und ein gutes Jahr!" || Thomas writes too: "I wish you a good day and a good year!"
+Sam wünscht Anna einen schönen Tag. || Sam wishes Anna a lovely day.
+Später kommt David. || Later David comes.
+
+## Das Jahr im Kurs
+Im Kurs lernen die Studenten die Monate. || In the course the students learn the months.
+[eva] Das Jahr hat zwölf Monate: Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember. || The year has twelve months: January, February, March, April, May, June, July, August, September, October, November, December.
+[eva] Im Frühling sind es März, April und Mai. || In spring they are March, April and May.
+[eva] Im Sommer sind es Juni, Juli und August. || In summer they are June, July and August.
+[eva] Im Herbst sind es September, Oktober und November. || In autumn they are September, October and November.
+[eva] Im Winter sind es Dezember, Januar und Februar. || In winter they are December, January and February.
+[eva] Später üben wir das noch einmal. || Later we practise it once more.
+
+## Die Feier planen
+[anna] Wer kommt zu deinem Fest, Sam? || Who is coming to your party, Sam?
+[sam] Thomas, Ruth und David kommen. || Thomas, Ruth and David are coming.
+[sam] Auch Marta und Ben. || Marta and Ben too.
+[anna] Und Lukas? || And Lukas?
+[anna] Er hat Schule, aber er kommt am Abend. || He has school, but he is coming in the evening.
+[sam] Ich koche Suppe mit Kartoffeln. || I am cooking soup with potatoes.
+[sam] Das Rezept ist von Marta. || The recipe is Marta's.
+[anna] Ich backe einen Kuchen und bringe ihn mit. || I am baking a cake and will bring it.
+[sam] Herr Schmidt bringt Brötchen mit. || Herr Schmidt brings rolls.
+[anna] Und was trinken wir? || And what do we drink?
+[sam] Wasser, Tee und Kaffee mit Milch. || Water, tea and coffee with milk.
+[anna] Wir sitzen draußen, wenn die Sonne scheint. || We sit outside when the sun shines.
+[sam] Und wenn es regnet, sitzen wir in der Küche. || And when it rains, we sit in the kitchen.
+[anna] Die Küche ist klein, aber das Zimmer von Frau Weber ist groß. || The kitchen is small, but Mrs Weber's room is big.
+[sam] Ja, sie hat einen Tisch und viele Stühle. || Yes, she has a table and many chairs.
+[anna] Um wie viel Uhr kommen wir? || At what time do we come?
+[sam] Um fünf Uhr. || At five o'clock.
+[sam] Die Straßenbahn fährt um halb fünf ab. || The tram leaves at half past four.
+[anna] Gut. || Good.
+[anna] Ich fahre mit der Straßenbahn. || I will take the tram.
+[sam] Ich bin an der Haltestelle. || I will be at the stop.
+[anna] Danke, Sam! || Thank you, Sam!
+[anna] Du bist ein guter Freund. || You are a good friend.
+[sam] Du auch, Anna. || You too, Anna.
+[sam] Das wird ein schönes Fest! || That will be a lovely party!
+
+## Ein Fest im Garten
+Frau Weber hat auch eine Einladung geschrieben. || Mrs Weber has also written an invitation.
+Es ist ein Fest im Garten, für den Geburtstag. || It is a party in the garden, for the birthday.
+Sam möchte etwas über Frau Weber sagen. || Sam would like to say something about Mrs Weber.
+[sam] Frau Weber ist 1950 geboren, und sie ist in Leipzig aufgewachsen. || Mrs Weber was born in 1950, and she grew up in Leipzig.
+[sam] Ihre Kindheit und ihre Jugend waren schön. || Her childhood and her youth were lovely.
+[sam] 1972 hat sie geheiratet. || In 1972 she got married.
+[sam] Die Hochzeit war ein Fest. || The wedding was a party.
+[sam] Ihr Ehemann Hans ist gestorben, und ihre Eltern auch. || Her husband Hans has died, and her parents too.
+[sam] Sie hat lange in der Fabrik gearbeitet, und jetzt ist sie in Rente. || She worked in the factory for a long time, and now she is retired.
+[sam] Ihr Sohn Martin und die Enkel kommen auch. || Her son Martin and the grandchildren are coming too.
+[sam] Im Garten ist es ruhig, und die Tomaten sind hoch. || In the garden it is quiet, and the tomatoes are tall.
+[sam] Dort sitzen wir im Gras, und Frau Weber hat keine Tiere. || We will sit there on the grass, and Mrs Weber has no animals.
+[weber] Herr Miller, helfen Sie mir im Garten? || Mr Miller, will you help me in the garden?
+[sam] Ja, gern. || Yes, gladly.
+[sam] Ich trage die Tische und die Stühle. || I will carry the tables and the chairs.
+[weber] Danke! || Thank you!
+[weber] Ich koche Tee und Kaffee. || I will make tea and coffee.
+
+## Noch mehr Feste
+Im Winter macht Thomas ein Fest für die Kinder. || In winter Thomas holds a party for the children.
+Er spricht über den Hirten und das Schaf in der Nacht. || He talks about the shepherd and the sheep in the night.
+Im Himmel ist ein Fest für den Sünder, sagt er. || In heaven there is a feast for the sinner, he says.
+Marta braucht Hilfe. || Marta needs help.
+Anna hilft Marta, und Lukas trägt Ben auf der Schulter. || Anna helps Marta, and Lukas carries Ben on his shoulder.
+Thomas ruft: "Kommt alle!" || Thomas calls: "Come, everyone!"
+Im Frühling soll Ben gesund sein. || In spring Ben should be well.
+Er fühlt sich gut. || He feels fine.
+Er braucht keine Praxis, kein Rezept, kein Medikament und keine Apotheke. || He needs no practice, no prescription, no medicine and no pharmacy.
+Er hat keine Erkältung, keinen Husten und keine Schmerzen. || He has no cold, no cough and no pain.
+Fuß, Hand, Auge und Ohr sind gut. || Foot, hand, eye and ear are fine.
+Die Ärztin lässt Ben kommen, und er lacht. || The doctor lets Ben come, and he laughs.
+

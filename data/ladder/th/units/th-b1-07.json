@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-07",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "มดกับนก",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-07",
+    "title": "มดกับนก — The ants and the bird (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132238 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132238",
+    "attribution": "Adapted retelling of \"มดง่ามกับจักจั่น\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132238, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"มดง่ามกับจักจั่น\" (th-gap-recovery-aesop-08); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132238) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the library fable has a cicada (จักจั่น); here the singer is a plain นก (bird), which the learner knows, and the plot and the moral are unchanged. The bird speaks politely and old-fashioned (ข้าพเจ้า, ท่าน, เถิด); the ant answers with เจ้า. The closing talk between Mali and Sam is an addition to the original."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "animals",
+    "work",
+    "saving"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "แดดออกในฤดูฝน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้าวันหนึ่งในฤดูฝน ฝนหยุดตก และแดดออกจัด",
+              "english": "One morning in the rainy season the rain stopped and the sun came out strong."
+            },
+            {
+              "text": "มดกลุ่มหนึ่งช่วยกันหยิบเมล็ดข้าวออกมาตากแดด",
+              "english": "A group of ants worked together to pick grains of rice out to dry in the sun."
+            },
+            {
+              "text": "เมล็ดข้าวเหล่านี้ พวกมดเก็บไว้ในฤดูร้อน",
+              "english": "The ants had stored these grains in the hot season."
+            },
+            {
+              "text": "พวกมดทำงานหนัก แต่ทุกตัวก็ดูมีความสุข",
+              "english": "The ants worked hard, but every one of them looked happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นกหิว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนนั้น นกตัวหนึ่งบินมาที่นั่น",
+              "english": "Just then a bird flew up."
+            },
+            {
+              "text": "มันหิวมาก และบินช้ามาก เหมือนไม่มีแรง",
+              "english": "It was very hungry and flew very slowly, as if it had no strength."
+            },
+            {
+              "text": "มันเห็นมดกำลังตากข้าว จึงบินลงมาหา",
+              "english": "It saw the ants drying their rice, so it came up to them."
+            },
+            {
+              "text": "นกพูดว่า ข้าพเจ้าไม่ได้กินอะไรมาหลายวันแล้ว",
+              "english": "The bird said, \"I have not eaten anything for many days.\""
+            },
+            {
+              "text": "ขอท่านให้ข้าวข้าพเจ้ากินสักเมล็ดสองเมล็ดเถิด ข้าพเจ้าหิวจนจะตายแล้ว",
+              "english": "\"Please give me a grain or two to eat. I am so hungry I am about to die.\""
+            },
+            {
+              "text": "มดตัวหนึ่งถามว่า ฤดูร้อนที่ผ่านมา เจ้าทำอะไรอยู่ ทำไมเจ้าไม่เก็บอาหารไว้",
+              "english": "One ant asked, \"What were you doing in the hot season just past? Why did you not store up food?\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เพลงของนก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นกตอบว่า ในฤดูร้อน ข้าพเจ้าไม่ว่าง ข้าพเจ้าต้องร้องเพลง",
+              "english": "The bird answered, \"In the hot season I was not free. I had to sing.\""
+            },
+            {
+              "text": "ข้าพเจ้าร้องเพลงทุกวัน ทุกเช้าทุกเย็น",
+              "english": "\"I sang every day, every morning and every evening.\""
+            },
+            {
+              "text": "พอถึงฤดูฝน ข้าวในนาก็หมดแล้ว ข้าพเจ้าไม่มีอะไรกินเลย",
+              "english": "\"When the rainy season came, the rice in the fields was all gone, and I had nothing to eat.\""
+            },
+            {
+              "text": "มดฟังแล้วก็หัวร่อ",
+              "english": "The ants listened and laughed."
+            },
+            {
+              "text": "มดตัวนั้นหัวร่อแล้วพูดว่า ถ้าเจ้าร้องเพลงในฤดูร้อนได้ ทำไมเจ้าไม่ร้องเพลงต่อไปในฤดูฝนเล่า",
+              "english": "That ant laughed and said, \"If you could sing in the hot season, why don't you go on singing in the rainy season?\""
+            },
+            {
+              "text": "นกไม่พูดอะไร มันบินจากไปช้าๆ",
+              "english": "The bird said nothing. It flew slowly away."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ใจดีหรือไม่",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "มดตัวเล็กตัวหนึ่งมองตามนกไป",
+              "english": "A small ant watched the bird go."
+            },
+            {
+              "text": "มันคิดว่า นกผิดจริง แต่มันหิวจริงด้วย",
+              "english": "It thought, \"The bird was wrong, but it is truly hungry too.\""
+            },
+            {
+              "text": "มดตัวนั้นเอาข้าวไปให้นกเมล็ดหนึ่ง",
+              "english": "That ant took one grain of rice to the bird."
+            },
+            {
+              "text": "เรื่องนี้สอนว่า เมื่อเรายังมีแรง เราควรทำงานและเก็บไว้ก่อน",
+              "english": "This story teaches us: while we still have strength, we should work and save beforehand."
+            },
+            {
+              "text": "เมื่อวันที่ลำบากมาถึง เราจะไม่ต้องขอใคร",
+              "english": "When the hard days come, we will not need to beg from anyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "มะลิกับแซม",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เย็นนั้น แซมถามมะลิว่า ใครถูกครับ มดหรือนก",
+              "english": "That evening Sam asked Mali, \"Who is right, the ants or the bird?\""
+            },
+            {
+              "text": "มะลิตอบว่า ทั้งสองมีส่วนถูก",
+              "english": "Mali answered, \"Both are partly right.\""
+            },
+            {
+              "text": "มดถูกที่เก็บข้าวไว้ ส่วนนกก็มีเพลงที่ดี",
+              "english": "\"The ants are right to have stored the rice, and the bird has a good song.\""
+            },
+            {
+              "text": "แต่ถ้าเราทำทั้งสองอย่างได้ ก็ดีที่สุดค่ะ",
+              "english": "\"But if we can do both, that is best.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

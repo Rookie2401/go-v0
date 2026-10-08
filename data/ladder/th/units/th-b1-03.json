@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-03",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "สามคนเล่าให้ฟัง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-03",
+    "title": "สามคนเล่าให้ฟัง — Three people tell their stories (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Three short invented testimonies (composite persons) told at a church evening; Sam writes them down. For the reviewer: the Christian vocabulary (ให้อภัย, พระองค์, ท่ามกลางความทุกข์) and the register of a testimony given aloud in church; nothing here is pressure or comparison with other faiths."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "testimony",
+    "forgiveness",
+    "grief",
+    "honesty"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "คืนวันเสาร์ที่โบสถ์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ทุกคืนวันเสาร์ โบสถ์จะมีเวลาให้คนเล่าเรื่องชีวิตของตน",
+              "english": "Every Saturday night the church sets aside a time for people to tell the story of their lives."
+            },
+            {
+              "text": "คืนนี้มีสามคนอยากเล่า และแซมนั่งจดไว้",
+              "english": "Tonight three people wanted to speak, and Sam sat taking notes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ป้าแดง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ป้าแดงลุกขึ้นก่อน เธอพูดช้าๆ",
+              "english": "Auntie Daeng stood first. She spoke slowly."
+            },
+            {
+              "text": "สามีของป้าตายเมื่อสิบปีก่อน ตอนนั้นป้าโกรธทุกคน และโกรธพระเจ้าด้วย",
+              "english": "\"My husband died ten years ago. At that time I was angry with everyone, and with God too.\""
+            },
+            {
+              "text": "ป้าไม่อยากไปโบสถ์ ป้านั่งร้องไห้อยู่ที่ร้านคนเดียว",
+              "english": "\"I did not want to go to church. I sat crying alone in my shop.\""
+            },
+            {
+              "text": "ป้านั่งอยู่ที่มุมร้าน ไม่พูดกับใคร",
+              "english": "\"I sat in a corner of the shop and spoke to nobody.\""
+            },
+            {
+              "text": "แต่ท่ามกลางความทุกข์นั้น ป้าได้ยินเสียงสงบๆ ข้างใน",
+              "english": "\"But in the midst of that grief, I heard a quiet voice in my heart.\""
+            },
+            {
+              "text": "ป้ารู้ว่า พระองค์ไม่ได้ทิ้งป้าไป",
+              "english": "\"I knew that he had not left me.\""
+            },
+            {
+              "text": "ใจของป้าก็ฟื้นขึ้นมาอีกครั้ง",
+              "english": "\"My heart revived once more.\""
+            },
+            {
+              "text": "ตอนนี้ป้ายังคิดถึงสามี แต่ใจป้าสงบแล้ว",
+              "english": "\"Now I still miss my husband, but my heart is at peace.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ต้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ต้นเล่าว่า เขาเคยมีศัตรูคนหนึ่งที่โรงเรียน",
+              "english": "Ton said he once had an enemy at school."
+            },
+            {
+              "text": "ครูคนนั้นพูดไม่จริงเรื่องต้น และต้นเกลียดเขามาก",
+              "english": "\"That teacher told untruths about me, and I hated him very much.\""
+            },
+            {
+              "text": "ต้นอยากให้เขาถูกลงโทษ แต่ก็ทำอะไรไม่ได้",
+              "english": "\"I wanted him to be punished, but I could do nothing.\""
+            },
+            {
+              "text": "เมื่อต้นอ่านเรื่องของพระเยซู เขาเห็นว่า พระเยซูให้อภัยศัตรูด้วย",
+              "english": "\"When I read about Jesus, I saw that Jesus forgave his enemies too.\""
+            },
+            {
+              "text": "ต้นจึงไปหาครูคนนั้น และขอคุยกับเขา",
+              "english": "\"So I went to that teacher and asked to talk with him.\""
+            },
+            {
+              "text": "ต้นอ่านเรื่องสาวกของพระเยซู และมองกางเขนบนผนังโบสถ์",
+              "english": "\"I read about the disciples of Jesus, and looked at the cross on the church wall.\""
+            },
+            {
+              "text": "ตอนนี้เราไม่ใช่ศัตรูกันแล้ว",
+              "english": "\"Now we are no longer enemies.\""
+            },
+            {
+              "text": "ต้นไม่เกลียดเขาแล้ว",
+              "english": "\"I no longer hate him.\""
+            },
+            {
+              "text": "ต้นสรรเสริญพระเจ้าที่ทำให้ต้นให้อภัยได้",
+              "english": "\"I praise God who made it possible for me to forgive.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ชายหนุ่มคนหนึ่ง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนที่สามเป็นชายหนุ่ม เขามาโบสถ์เป็นครั้งแรก",
+              "english": "The third was a young man; he was at the church for the first time."
+            },
+            {
+              "text": "เขาบอกว่า เมื่อก่อนเขาโกหกบ่อยมาก โกหกพ่อแม่และเพื่อน",
+              "english": "He said, \"In the past I lied very often, to my parents and my friends.\""
+            },
+            {
+              "text": "เขาไม่บอกว่าตัวเองผิด เพราะกลัวถูกทดสอบและถูกพิพากษา",
+              "english": "\"I would not say I was wrong, because I was afraid of being tested and judged.\""
+            },
+            {
+              "text": "แต่วันหนึ่งเขาแค่บอกความจริงกับพ่อ",
+              "english": "\"But one day I simply told my father the truth.\""
+            },
+            {
+              "text": "พ่อไม่โกรธ พ่อกอดเขา",
+              "english": "\"Father was not angry. He hugged me.\""
+            },
+            {
+              "text": "เขาพูดว่า ผมรู้สึกว่ามีอะไรบางอย่างหายไป ผมสามารถหายใจได้เต็มที่",
+              "english": "\"I felt that something had fallen away. I could breathe fully.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หลังจากนั้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมปิดสมุด และคิดอยู่นาน",
+              "english": "Sam closed his notebook and thought for a long time."
+            },
+            {
+              "text": "ปรากฏว่า คนสามคนนี้ไม่เหมือนกัน แต่ทุกคนเจออะไรบางอย่างที่เหมือนกัน",
+              "english": "It turned out that these three are not alike, but each found something the same."
+            },
+            {
+              "text": "ทุกคนรู้ว่าตัวเองไม่สมบูรณ์",
+              "english": "\"Each one knew that he or she is not perfect.\""
+            },
+            {
+              "text": "และทุกคนพบความสงบท่ามกลางความทุกข์",
+              "english": "\"And each found peace in the midst of trouble.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

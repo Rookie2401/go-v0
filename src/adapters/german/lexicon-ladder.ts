@@ -564,4 +564,96 @@ fünftens = fifthly
 
 # DET
 paar = a few; a couple of (ein paar)
+
+# NOUN
+// the b1-bridge and the recycling pass (2026-10-08): words of the new units and of the library texts placed in the bridge
+Ratte/f, -, -n = rat
+Handwerk/n, -s, -e = trade; craft
+Astrolog/m, -en, -en = astrologer [weak]
+Dieb/m, -es, -e = thief
+Rock/m, -es, ¨-e = skirt; coat
+Hase/m, -n, -n = hare [weak]
+Team/n, -s, -s = team
+Heimatgemeinde/f, -, -n = home church
+Gans/f, -, ¨-e = goose
+Hahn/m, -es, ¨-e = rooster; tap
+Jüngling/m, -s, -e = youth; young man [literary]
+Palast/m, -es, ¨-e = palace
+Stange/f, -, -n = pole; rod
+Schmied/m, -es, -e = smith
+Feder/f, -, -n = feather; pen
+Boot/n, -es, -e = boat
+Schwan/m, -es, ¨-e = swan
+Loch/n, -es, ¨-er = hole
+Wiege/f, -, -n = cradle
+Einfall/m, -s, ¨-e = idea; notion
+Fürst/m, -en, -en = prince; ruler [weak]
+Ochs/m, -en, -en = ox [weak]
+Tonne/f, -, -n = bin; barrel
+Gastgeber/m, -s, - = host
+Eintrag/m, -s, ¨-e = entry
+
+# VERB
+streicheln = to stroke; to pet
+rollen = to roll | sein
+wecken = to wake
+auf|wecken = to wake up
+nach|laufen = to run after | läuft, lief, gelaufen, sein
+heim|bringen = to take home | bringt, brachte, gebracht
+heim|kommen = to come home | kommt, kam, gekommen, sein
+heim|gehen = to go home | geht, ging, gegangen, sein
+fort|kochen = to boil away
+zu|kochen = to cook up thick
+heraus|steigen = to climb out | steigt, stieg, gestiegen, sein
+aus|schicken = to send out
+aus|bleiben = to stay out; to fail to come | bleibt, blieb, geblieben, sein
+ab|tun = to take off; to put aside | tut, tat, getan [irregular]
+ab|ziehen = to pull off; to take off | zieht, zog, gezogen
+hin|geben = to give up; to give away | gibt, gab, gegeben
+hinein|sammeln = to collect into
+fort|gehen = to go away | geht, ging, gegangen, sein
+los|laufen = to run off | läuft, lief, gelaufen, sein
+los|reißen = to tear loose | reißt, riss, gerissen
+plagen = to torment; to plague
+melken = to milk
+bellen = to bark
+krähen = to crow
+spalten = to split
+wärmen = to warm
+fischen = to fish
+verkündigen = to proclaim
+bezeugen = to testify to
+zeugen = to bear witness; to beget
+schütten = to pour; to spill
+schütteln = to shake
+nicken = to nod
+husten = to cough
+sortieren = to sort
+markieren = to mark
+
+# ADJ
+schlau = clever; cunning
+undankbar = ungrateful
+trüb = cloudy; dull
+taub = deaf; numb
+steinalt = very old
+uralt = ancient
+wunderschön = beautiful
+lahm = lame
+inbrünstig = fervent
+unhöflich = impolite
+höflich = polite
+träg = sluggish
+schläfrig = sleepy
+fromm = devout; pious | frommer, frömmst
+klug = clever; wise | klüger, klügst
+treu = loyal; faithful
+
+# ADV
+eher = rather; sooner
+eh = anyway; in any case
+augenblicklich = at once; immediately
+sogleich = at once; immediately
+bitterlich = bitterly
+gleichwie = just as [archaic]
 `;

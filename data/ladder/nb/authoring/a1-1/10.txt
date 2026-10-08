@@ -16,7 +16,7 @@ Bussen kommer. {sam} er glad. || The bus is coming. Sam is happy.
 Han liker kirka, skolen og markedet. Det regner litt. || He likes the church, the school and the market. It is raining a little.
 [sam] Stopper den her? || Does it stop here?
 [sjafor] Ja, den stopper her. || Yes, it stops here.
-Den stopper bare litt. Mange folk går ut. Alle går ut, og {sam} går ut også. || It stops only a little. Many people get out. Everyone gets out, and Sam gets out too.
+Den stopper bare litt. Mange folk går ut, og {sam} går ut også. || It stops only a little. Many people get out, and Sam gets out too.
 [sam] Mange takk! Ha det bra! || Thank you very much! Goodbye!
 [sjafor] Ha det bra! || Goodbye!
 
@@ -24,12 +24,12 @@ Den stopper bare litt. Mange folk går ut. Alle går ut, og {sam} går ut også.
 {sam} er i byen. Han vil til klinikken. {ana} jobber på klinikken. || Sam is in town. He wants to go to the clinic. Anna works at the clinic.
 [sam] Unnskyld, hvor er klinikken? || Excuse me, where is the clinic?
 [dame] Gå rett fram. Så går du til høyre. || Go straight ahead. Then you turn right.
-[sam] Rett fram og til høyre? || Straight ahead and to the right?
+[sam] Går jeg rett fram og til høyre? || Do I go straight ahead and to the right?
 [dame] Ja, det er bra. || Yes, that is right.
 [sam] Mange takk! || Thank you very much!
 [dame] Vær så god! || You are welcome!
 {sam} går rett fram. Så går han til høyre. || Sam goes straight ahead. Then he turns right.
-[sam] Unnskyld, er dette klinikken? || Excuse me, is this the clinic?
+[sam] Unnskyld, er det klinikken? || Excuse me, is that the clinic?
 [ana] Ja, hei, {sam}! Her er klinikken. || Yes, hi, Sam! Here is the clinic.
 
 ## {ana} og {sam}

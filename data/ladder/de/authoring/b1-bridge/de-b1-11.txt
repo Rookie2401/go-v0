@@ -1,0 +1,118 @@
+=== de-b1-11 | instructions | instructions | Marta cooks porridge and pancakes | Oma kocht Brei und Pfannkuchen | cooking, recipe, kitchen, family
+speakers: marta=Marta, ben=Ben, anna=Anna
+note: Prepares the vocabulary of the next texts (Grimm, Der süße Brei; Guerber, Der Pfannkuchen): Töpfchen, süß, Brei, heimbringen, heimkommen, satt, fortkochen, heraussteigen, zukochen, Pfannkuchen, rollen, Henne. Each is used about three times.
+## Bei Oma in der Küche
+Ben ist am Nachmittag bei Oma Marta, denn Anna arbeitet bis spät im Krankenhaus. || In the afternoon Ben is at Oma Marta's, because Anna is working late at the hospital.
+Seine Schule ist heute früh zu Ende, und er hat großen Hunger. || His school finished early today, and he is very hungry.
+Oma Marta hat eine Idee: Sie kocht Brei, und danach macht sie Pfannkuchen. || Oma Marta has an idea: she cooks porridge, and afterwards she makes pancakes.
+[ben] Brei? Ich bin doch kein Kind mehr! || Porridge? I am not a child any more!
+[marta] Das ist ein süßer Brei mit Milch und Butter. || That is a sweet porridge with milk and butter.
+[ben] Dann esse ich ihn gern. || Then I will gladly eat it.
+[marta] Du nimmst auch ein Töpfchen für Mama mit. || You also take a little pot along for Mama.
+[marta] Du kannst es heimbringen, wenn du heimgehst. || You can take it home when you go home.
+[ben] Mama kommt erst spät heim. Sie hat heute Nachtdienst. || Mama does not come home until late. She has night duty today.
+[ben] Dann bringe ich ihr das Töpfchen morgen früh. || Then I will bring her the little pot tomorrow morning.
+[marta] Nein, stell es heute Abend auf den Tisch. || No, put it on the table this evening.
+[marta] Dann hat sie morgen früh etwas zu essen, wenn sie heimkommt. || Then she will have something to eat tomorrow morning when she comes home.
+
+## Das Rezept
+[marta] Also, hör gut zu, denn so macht man es. || So, listen carefully, because this is how you do it.
+[marta] Gib Milch in einen Topf und einen Löffel Butter dazu. || Put milk in a pot and add a spoonful of butter.
+[marta] Stell den Topf aufs Feuer und warte. || Put the pot on the fire and wait.
+[marta] Wenn man zu lange wartet, kocht das Wasser fort, und der Brei wird dick. || If you wait too long, the water boils away, and the porridge gets thick.
+[marta] Und wenn man nicht schaut, kocht alles fort. || And if you do not look, everything boils away.
+[ben] Und wenn er zu dick wird? || And if it gets too thick?
+[marta] Dann kocht er zu. Dann steigt er aus dem Topf heraus, und die Küche ist voll. || Then it cooks up thick. Then it climbs out of the pot, and the kitchen is full.
+[ben] Das möchte ich sehen! || I would like to see that!
+[marta] Nein, das möchtest du nicht. Wenn er zukocht, nimm den Topf vom Feuer. || No, you would not. When it cooks up thick, take the pot off the fire.
+[marta] Am Ende kommt Zucker dazu, und dann ist er fertig. || At the end sugar is added, and then it is ready.
+[ben] Der Brei steigt schon heraus! || The porridge is already climbing out!
+[marta] Schnell, nimm ihn vom Feuer! Gut. || Quickly, take it off the fire! Good.
+[ben] Ich esse zwei Teller, bis ich satt bin. || I will eat two plates until I am full.
+[marta] Wer satt ist, hört auf. Das ist die Regel. || Whoever is full stops. That is the rule.
+
+## Die Pfannkuchen
+[marta] Jetzt machen wir die Pfannkuchen. || Now we make the pancakes.
+[marta] Ich brauche Eier, Milch und Mehl. Die Eier sind von der Henne von Frau Weber. || I need eggs, milk and flour. The eggs are from Frau Weber's hen.
+[ben] Frau Weber hat eine Henne? || Frau Weber has a hen?
+[marta] Ja, im Garten. Die Henne legt jeden Tag ein Ei. || Yes, in the garden. The hen lays an egg every day.
+[marta] Gib den Teig in die Pfanne und warte, bis er braun ist. || Put the batter in the pan and wait until it is brown.
+[marta] Dann kannst du ihn rollen, mit Zucker oder mit Apfel. || Then you can roll it, with sugar or with apple.
+[ben] Ich rolle meinen mit Apfel. || I will roll mine with apple.
+[ben] Oma, er rollt vom Tisch! || Oma, it is rolling off the table!
+[marta] Lauf ihm nicht nach, sondern iss ihn schnell. || Do not run after it, but eat it quickly.
+Als Anna am nächsten Morgen heimkommt, riecht es im ganzen Haus nach Pfannkuchen. || When Anna comes home the next morning, the whole house smells of pancakes.
+Auf dem Tisch steht das Töpfchen, und dort liegt ein Zettel von Ben. || On the table stands the little pot, and there lies a note from Ben.
+Auf dem Zettel steht: Liebe Mama, ich habe dir das Töpfchen heimgebracht. || On the note it says: Dear Mama, I brought the little pot home for you.
+Der Brei ist süß, und du musst ihn essen, bis du satt bist. || The porridge is sweet, and you must eat it until you are full.
+Und dann geh schlafen. Dein Ben. || And then go to sleep. Your Ben.
+Am Mittag ruft Anna ihren Sohn an. || At noon Anna calls her son.
+[anna] Danke, Ben! Der Brei war wunderbar, und ich habe gut geschlafen. || Thank you, Ben! The porridge was wonderful, and I slept well.
+[ben] Das freut mich. Heute Abend kocht Oma wieder. || I am glad. This evening Oma is cooking again.
+[anna] Dann komme ich mit, und wir essen alle zusammen. || Then I will come along, and we will all eat together.
+
+## Erinnerst du dich?
+Nach dem Essen sitzen Marta, Anna und Ben noch am Tisch. || After the meal Marta, Anna and Ben are still sitting at the table.
+Draußen ist es dunkel, und der Tee ist noch warm. || Outside it is dark, and the tea is still warm.
+[anna] Ben, früher hast du mir jeden Abend eine Geschichte erzählt. || Ben, in the past you told me a story every evening.
+[ben] Ja, Mama, ich weiß noch viele Geschichten aus dem Buch. || Yes, Mama, I still know many stories from the book.
+
+[ben] Zuerst Jakobs Haus. Die Maus fraß das Korn, und die Katze fraß die Maus. || First Jakob's house. The mouse ate the grain, and the cat ate the mouse.
+[ben] Der Hund bellte laut, und die Kuh hatte lange Hörner. || The dog barked loudly, and the cow had long horns.
+[marta] Der Hund hatte Angst vor ihren Hörnern. || The dog was afraid of her horns.
+[ben] Ein Mädchen musste die Kuh melken, und es molk sie am Morgen. || A girl had to milk the cow, and she milked her in the morning.
+[ben] Der Priester war froh, dass der Hahn so laut krähte und ihn früh aufweckte. || The priest was glad that the cock crowed so loudly and woke him early.
+[ben] Dann ging er in das Gotteshaus, und alles war gut. || Then he went into the church, and everything was fine.
+[anna] Oh, das war schön! Und wie endet die Geschichte? || Oh, that was beautiful! And how does the story end?
+[ben] Der Priester sagt: O, wie gut! Ende gut, alles gut! || The priest says: Oh, how good! All's well that ends well!
+
+[marta] Ich mag die drei jungen Männer in der Höhle am liebsten. || I like the three young men in the cave best.
+[ben] Sie waren so träge und schläfrig, und sie wollten nur ruhen. || They were so lazy and sleepy, and they only wanted to rest.
+[ben] Ihre Eltern wollten sie immer zu früh aufwecken. || Their parents always wanted to wake them too early.
+[ben] Der erste sagt: Meine Mutter, mein Bruder und meine Schwester wecken mich immer zu früh auf. || The first says: My mother, my brother and my sister always wake me up too early.
+[anna] Die Höhle liegt nahe bei der Stadt Bonn. || The cave lies near the town of Bonn.
+[ben] Sie legten sich nieder und schliefen bis zum siebenten Jahr. || They lay down and slept until the seventh year.
+[marta] Dann sprach einer ein paar Worte, und die Worte bilden eine Unterhaltung. || Then one of them spoke a few words, and the words make up a conversation.
+[ben] Die Unterhaltung ist nicht interessant, aber ich möchte sie nicht wecken. || The conversation is not interesting, but I would not like to wake them.
+[marta] Niemand darf sie aus dem Schlafe wecken. || Nobody may wake them from their sleep.
+[ben] Ich glaube, einer sagt: Das war ein Ochs, keine Kuh. || I think one of them says: That was an ox, not a cow.
+
+[anna] Und der Reisende im Haus? Es war so groß wie ein Palast. || And the traveller in the house? It was as big as a palace.
+[ben] Im Hof spaltete ein Mann Holz, und in der Küche machte ein Mann das Feuer an. || In the yard a man was splitting wood, and in the kitchen a man lit the fire.
+[ben] Im Esszimmer saß ein Mann am Tisch, und im Schlafzimmer lag ein Mann im Bett. || In the dining room a man sat at the table, and in the bedroom a man lay in bed.
+[marta] Der uralte Hausvater lag dann in der Wiege. || The ancient master of the house then lay in the cradle.
+[ben] Nein, Oma, er hing an der Wand in einem Trinkhorn! || No, Oma, he hung on the wall in a drinking horn!
+[anna] Am Ende konnte sich der Reisende am Feuer wärmen. || In the end the traveller could warm himself at the fire.
+
+[ben] Und die drei Faulen! Der König hatte alles bedacht. || And the three lazy ones! The king had thought everything over.
+[ben] Er wollte den faulsten Sohn zum König bestimmen. || He wanted to name the laziest son as king.
+[marta] Dem ersten fiel ein Tropfen ins Auge, aber er wollte es nicht zuthun. || A drop fell into the first one's eye, but he did not want to close it.
+[ben] Der zweite ließ sich die Fersen verbrennen. || The second let his heels burn.
+[ben] Der dritte bekam ein scharfes Messer, um den Strick zu zerschneiden. || The third received a sharp knife to cut through the rope.
+[marta] Die drei Brüder wollten lieber schlafen, eh sie die Hände erhüben. || The three brothers would rather sleep than lift their hands.
+[anna] Gute Geschichten sind wie guter Brei, man wird nie satt. || Good stories are like good porridge, you never get full.
+[ben] Morgen erzähle ich dir die nächste, Mama. || Tomorrow I will tell you the next one, Mama.
+
+## Erinnerst du dich daran?
+Am Sonntag sitzen Marta, Anna und Ben beim Tee in der Küche. || On Sunday Marta, Anna and Ben sit with tea in the kitchen.
+[marta] Ben, erzähl uns doch noch einmal die Geschichten aus dem Buch. || Ben, tell us once more the stories from the book.
+[ben] Gern, Oma! Die drei Männer in der Höhle wollten nur ruhen. || Gladly, Oma! The three men in the cave only wanted to rest.
+[ben] Sie legten sich nieder und schliefen sieben Jahre lang. || They lay down and slept for seven years.
+[anna] Und was sagten sie, als sie wach waren? || And what did they say when they were awake?
+[ben] Ihre Worte bilden keine lange Unterhaltung. Einer sagt: Das war keine Kuh, das war ein Ochs. || Their words make no long conversation. One says: That was not a cow, that was an ox.
+[marta] Ein Ochs oder eine Kuh, das ist ihnen ganz egal. || An ox or a cow, that is all the same to them.
+
+[ben] Dann kam der Reisende zu einem großen Haus. Im Hof spaltete ein Mann Holz. || Then the traveller came to a big house. In the yard a man was splitting wood.
+[marta] Der Mann spaltete Holz und sang dabei ein Lied. || The man split wood and sang a song as he did so.
+[ben] Auch der Mann, der Holz spaltete, wusste nicht, wo der Hausvater war. || Even the man who was splitting wood did not know where the master of the house was.
+[ben] Der Reisende setzte sich nieder und fragte noch einmal. || The traveller sat down and asked once more.
+[anna] Er legte sich nicht nieder, denn er wollte den Vater sehen. || He did not lie down, because he wanted to see the father.
+[ben] Man schickte ihn ins Esszimmer. Dort sagte ein Mann: Mein Vater hängt an der Wand. || They sent him to the dining room. There a man said: My father hangs on the wall.
+[anna] Im Esszimmer war der Vater also nicht. || So the father was not in the dining room.
+[ben] Nein, er hing dort an der Wand in einem Trinkhorn. || No, he hung there on the wall in a drinking horn.
+
+[ben] Und der König wollte den faulsten Sohn zum König bestimmen. || And the king wanted to name the laziest son as king.
+[marta] Dem ersten fiel ein Tropfen ins Auge, aber er blieb liegen. || A drop fell into the first one's eye, but he stayed lying down.
+[ben] Dem zweiten wurden die Fersen heiß, aber er blieb beim Feuer sitzen. || The second one's heels became hot, but he stayed sitting by the fire.
+[ben] Der dritte konnte den Strick zerschneiden, aber er wollte nicht. || The third one could cut the rope, but he did not want to.
+[marta] Faul zu sein ist nicht so schön, wie es aussieht. || Being lazy is not as nice as it looks.

@@ -553,3 +553,30 @@ The Martí tale after the bridge: ch01 91.4 %, ch03 92.7 %, ch04 92.0 %, ch05 92
 
 ---
 *Final md5 check of es-a2-2-16…20 and ladder.json at 21:16 on 2026-10-05: unchanged since the final measurement began (21:12) (md5 of es-a2-2-20: c888d805).*
+
+## Addendum, 2026-10-08: the recycling pass and the Honduran-register strand
+
+Why: the gate found 763 of 2,217 new lemmas of the Spanish ladder never met again (742 of 1,171 in the bridge) and 40 recycling warnings
+(docs/audits/COURSE-AUDIT-2026-10-07.md 4.3 item 12, 4.5). The authentic texts cannot be changed, so the recall comes from the
+course-authored units between them. Nothing in an authentic or adapted unit was touched.
+
+Six new controlled units (all machine drafts, variety es-HN, voseo among friends and family, usted to elders; each carries Honduran-reviewer
+points in its review notes):
+
+| unit | stage | placed after | what it is |
+|---|---|---|---|
+| es-a2-2-21 | a2-2 | es-a2-2-15 | Baleadas for breakfast (the Honduran breakfast table, the yard of doña Marta, Sam's notebook of local words) |
+| es-a2-2-22 | a2-2 | es-a2-2-20 | Sunday worship in a village church (culto, alabanza, the sermon on Peter and the water, announcements, the church lunch) |
+| es-b1-36 | b1-bridge | es-b1-05 | A night of legends (a power cut, the Cadejo, the Llorona, the Sisimite, a retelling of The red thread) |
+| es-b1-37 | b1-bridge | es-b1-07 | A market day, with riddles (rapidito, pregones, the seller who speaks by signs, don Chepe's adivinanzas, the women's cooperative) |
+| es-b1-38 | b1-bridge | es-b1-18 | The night of the wake (velorio, John 11, stories told through the night, the nine days of prayer) |
+| es-b1-39 | b1-bridge | es-b1-19 | Roatán diary (the boat from La Ceiba, the reef, a Garífuna afternoon, letters home, Sam's diary) |
+
+The ids follow the unit-id pattern the catalogue expects (`text:es:es-<stage>-<n>`); their ORDER is the order in ladder.json, not the number.
+
+Recall sections added to existing controlled units (a section appended after the unit's own text; the text of the unit is unchanged):
+es-a2-2-13 … es-a2-2-20, es-b1-02, es-b1-03, es-b1-05, es-b1-10, es-b1-11, es-b1-13, es-b1-15, es-b1-17, es-b1-21, es-b1-23, es-b1-26,
+es-b1-27, es-b1-29, es-b1-32, es-b1-33, es-b1-34. They are written as the course's own characters would write them (Karla's notebook,
+the workshop reviews, letters, notices, question-and-answer drills at the market) and bring back, in real sentences, the new lemmas of the
+previous sources (N+1 … N+5). Method: a window analysis with the real adapter (the gate's own rule: a lemma first met in a unit must come back
+three more times within the next six units), slot by slot, in ladder order; every added line has its English.

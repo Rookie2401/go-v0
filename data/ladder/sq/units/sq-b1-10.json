@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-10",
+  "lang": "sq",
+  "title": "Njoftimi",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-10",
+    "title": "Albanian ladder, b1-bridge: Njoftimi (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "instructions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Njoftimi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën në mëngjes Ardi erdhi te Sami me qenin në krah.",
+              "english": "On Sunday morning Ardi came to Sam with the dog in his arms."
+            },
+            {
+              "text": "Qeni kishte fjetur mirë, kishte ngrënë një pjatë me oriz dhe tani ecte pas tij si një hije.",
+              "english": "The dog had slept well, had eaten a bowl of rice, and now followed him like a shadow."
+            },
+            {
+              "text": "Rripi i tij i kuq ishte ende i thyer, dhe ai lëvizte bishtin sa herë që dëgjonte emrin e Ardit.",
+              "english": "His red collar was still broken, and he wagged his tail every time he heard Ardi's name."
+            },
+            {
+              "text": "Ardi e kishte sjellë me vete edhe batanijen e tij.",
+              "english": "Ardi had brought his blanket with him too."
+            },
+            {
+              "text": "— Gjyshja thotë se duhet ta kthejmë, — shpjegoi Ardi.",
+              "english": "\"Grandmother says we must give him back,\" Ardi explained."
+            },
+            {
+              "text": "— Por nuk dimë kush është pronari i tij.",
+              "english": "\"But we do not know who his owner is.\""
+            },
+            {
+              "text": "— Atëherë duhet ta gjejmë pronarin, — tha Sami.",
+              "english": "\"Then we must find the owner,\" said Sam."
+            },
+            {
+              "text": "— Dhe për këtë na duhet një njoftim.",
+              "english": "\"And for that we need a notice.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sami e hapi kompjuterin dhe e thirri Luanin, që tha se do të ndihmonte.",
+              "english": "Sam opened the computer and called Luan, who said he would help."
+            },
+            {
+              "text": "Luani erdhi me një letër të bardhë në dorë.",
+              "english": "Luan came with a white sheet of paper in his hand."
+            },
+            {
+              "text": "— Një njoftim i mirë ka katër pjesë, — tha ai.",
+              "english": "\"A good notice has four parts,\" he said."
+            },
+            {
+              "text": "— Në fillim një fjali e shkurtër dhe e madhe, që ta shohë njeriu nga larg.",
+              "english": "'At the start a short and big sentence, so that a person can see it from far away.'"
+            },
+            {
+              "text": "— Pastaj ngjyra, madhësia dhe çdo gjë e veçantë e qenit.",
+              "english": "'Then the colour, the size and every special thing about the dog.'"
+            },
+            {
+              "text": "— Pastaj vendi dhe koha kur e gjetëm.",
+              "english": "'Then the place and the time when we found him.'"
+            },
+            {
+              "text": "— Dhe në fund numri i telefonit.",
+              "english": "'And at the end the telephone number.'"
+            },
+            {
+              "text": "— Mos shkruaj shumë fjalë, — shtoi Luani.",
+              "english": "\"Do not write many words,\" added Luan."
+            },
+            {
+              "text": "— Njeriu që kalon rrugës nuk ka kohë të lexojë një libër.",
+              "english": "\"A person passing along the street has no time to read a book.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ardi dhe Sami u vunë në punë.",
+              "english": "Ardi and Sam set to work."
+            },
+            {
+              "text": "Ardi e bëri një fotografi të qenit me telefonin e Samit, dhe qeni qëndroi i qetë, gjë që i bëri të gjithë të qeshin.",
+              "english": "Ardi took a photograph of the dog with Sam's phone, and the dog stayed calm, which made everyone laugh."
+            },
+            {
+              "text": "Pastaj shkruan në kompjuter:",
+              "english": "Then they wrote on the computer:"
+            },
+            {
+              "text": "«NJË QEN I GJETUR",
+              "english": "\"A FOUND DOG"
+            },
+            {
+              "text": "E shtunë në mëngjes, në oborrin e shkollës së qytetit.",
+              "english": "Saturday morning, in the yard of the city school."
+            },
+            {
+              "text": "Është një qen i vogël, me ngjyrë kafe, me një rrip të kuq të thyer.",
+              "english": "He is a small dog, brown, with a broken red collar."
+            },
+            {
+              "text": "Është i qetë dhe shumë i uritur.",
+              "english": "He is calm and very hungry."
+            },
+            {
+              "text": "Nëse është qeni juaj, telefononi në numrin 069 123 456.",
+              "english": "If he is your dog, phone this number: 069 123 456."
+            },
+            {
+              "text": "Ai po ju pret.»",
+              "english": "He is waiting for you.\""
+            },
+            {
+              "text": "— Mund ta fshijmë fjalinë e fundit, — tha Luani, — por është e bukur, dhe e lëmë.",
+              "english": "'We could delete the last sentence,' said Luan, 'but it is beautiful, and we leave it.'"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sami e shkroi njoftimin dhjetë herë në shkollë.",
+              "english": "Sam wrote the notice ten times at the school."
+            },
+            {
+              "text": "Pastaj të tre dolën në qytet me njoftimet në dorë dhe me një qen që nuk donte të largohej nga Ardi.",
+              "english": "Then the three of them went out into the city with the notices in their hands and with a dog that did not want to leave Ardi."
+            },
+            {
+              "text": "E ngjitën një njoftim në derën e shkollës, një tjetër te stacioni i autobusit dhe një të tretë në treg, ku gjyshja Drita e mori dhe e vuri pranë bukës.",
+              "english": "They stuck one notice on the school door, another at the bus station and a third at the market, where grandmother Drita took it and put it beside the bread."
+            },
+            {
+              "text": "Dy njoftime të tjera i dhanë një mjeku të kafshëve dhe një dyqani me ushqim për kafshë.",
+              "english": "Two more notices they gave to an animal doctor and to a shop with food for animals."
+            },
+            {
+              "text": "Mjeku i kafshëve e shikoi qenin, i preku kokën dhe tha se ishte mirë, vetëm i uritur dhe i lodhur.",
+              "english": "The animal doctor looked at the dog, touched his head and said that he was fine, only hungry and tired."
+            },
+            {
+              "text": "— Dhe nuk ka asnjë gjë me emrin e pronarit, — shtoi ai, — kështu që njoftimi është rruga e vetme.",
+              "english": "'And he has nothing with the owner's name,' he added, 'so the notice is the only way.'"
+            },
+            {
+              "text": "Ardi heshti pak.",
+              "english": "Ardi was silent for a while."
+            },
+            {
+              "text": "— Po nëse nuk vjen askush? — pyeti ai.",
+              "english": "\"And if nobody comes?\" he asked."
+            },
+            {
+              "text": "— Atëherë do të bëjmë një njoftim tjetër, — tha Sami.",
+              "english": "\"Then we will make another notice,\" said Sam."
+            },
+            {
+              "text": "— Dhe pastaj një tjetër, deri sa ta gjejmë.",
+              "english": "\"And then another, until we find him.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mbrëmje telefoni i Samit ra.",
+              "english": "In the evening Sam's phone rang."
+            },
+            {
+              "text": "Ishte një zë femre, që fliste shpejt dhe pothuajse qante.",
+              "english": "It was a woman's voice, speaking fast and almost crying."
+            },
+            {
+              "text": "— Përshëndetje, ju lutem, — tha zëri.",
+              "english": "\"Hello, please,\" said the voice."
+            },
+            {
+              "text": "— A jeni ju që keni gjetur një qen të vogël me një rrip të kuq?",
+              "english": "\"Are you the one who found a small dog with a red collar?\""
+            },
+            {
+              "text": "— Po, jemi ne, — u përgjigj Sami.",
+              "english": "\"Yes, it is we,\" Sam answered."
+            },
+            {
+              "text": "— Si quhet qeni juaj?",
+              "english": "\"What is your dog called?\""
+            },
+            {
+              "text": "— Quhet Bardhi, edhe pse nuk është i bardhë, — tha zëri.",
+              "english": "\"He is called Bardhi, although he is not white,\" said the voice."
+            },
+            {
+              "text": "— Vajza ime e ka humbur para dy javësh, kur ishim në qytetin tjetër.",
+              "english": "\"My daughter lost him two weeks ago, when we were in the other city.\""
+            },
+            {
+              "text": "— Ajo qan çdo natë.",
+              "english": "\"She cries every night.\""
+            },
+            {
+              "text": "Sami buzëqeshi, dhe Ardi, që po dëgjonte pranë tij, ngriti dorën si të kishte marrë një dhuratë.",
+              "english": "Sam smiled, and Ardi, who was listening beside him, raised his hand as if he had won a game."
+            },
+            {
+              "text": "— Mund të vini nesër pas shkollës, — tha Sami.",
+              "english": "\"You can come tomorrow after school,\" said Sam."
+            },
+            {
+              "text": "— Ne do të jemi te stacioni i autobusit, atje ku është njoftimi i dytë.",
+              "english": "\"We will be at the bus station, where the second notice is.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

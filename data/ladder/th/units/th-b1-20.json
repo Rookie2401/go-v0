@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-20",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ยายสอนทำน้ำพริก",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-20",
+    "title": "ยายสอนทำน้ำพริก — Grandmother teaches how to make chilli dip (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. A recipe in the imperative with a short narrative frame. For the reviewer: น้ำพริกหนุ่ม is a northern dish; the amounts and the order of steps are invented and the dish is only a model of the instructions genre."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "recipe",
+    "instructions",
+    "food",
+    "village"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ที่ครัวของยาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เช้าวันที่สาม ยายเรียกแซมไปที่ครัว",
+              "english": "On the third morning Grandmother called Sam to the kitchen."
+            },
+            {
+              "text": "ยายจะสอนแซมทำน้ำพริกหนุ่ม ซึ่งเป็นอาหารที่คนเหนือกินกันทุกบ้าน",
+              "english": "She was going to teach Sam to make nam prik num, a dish that every northern home eats."
+            },
+            {
+              "text": "ยายบอกว่า ดูให้ดี แล้วทำตาม",
+              "english": "She said, \"Watch carefully, then do as I do.\""
+            },
+            {
+              "text": "แซมกลัวว่าเขาจะทำไม่ได้ แต่ยายยิ้มและบอกว่า ทุกคนเริ่มจากทำไม่เป็นทั้งนั้น มะลิก็เคยเป็นอย่างนั้นเหมือนกัน",
+              "english": "Sam was afraid he would not manage it, but Grandmother smiled and said, \"Everyone starts by not knowing how, Mali was like that too.\""
+            },
+            {
+              "text": "มะลิยืนอยู่ข้างๆ และช่วยแปลคำที่แซมไม่เข้าใจ",
+              "english": "Mali stood beside them and helped translate words Sam did not understand."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ของที่ต้องใช้",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ของที่ต้องใช้มีดังนี้",
+              "english": "The things you will need are these."
+            },
+            {
+              "text": "พริกห้าเม็ด หอมแดงสามหัว กระเทียมสองหัว",
+              "english": "Five chillies, three shallots, two heads of garlic."
+            },
+            {
+              "text": "เกลือหนึ่งช้อนเล็ก และน้ำปลาครึ่งช้อน",
+              "english": "One teaspoon of salt and half a spoon of fish sauce."
+            },
+            {
+              "text": "ถ้าไม่มีหอมแดง จะใช้หอมใหญ่ก็ได้",
+              "english": "If you have no shallots, you may use an onion."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "วิธีทำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หนึ่ง ล้างพริก หอมแดง และกระเทียมให้สะอาด",
+              "english": "One: wash the chillies, shallots and garlic clean."
+            },
+            {
+              "text": "สอง เอาพริกกับหอมแดงไปย่างบนไฟอ่อนๆ",
+              "english": "Two: roast the chillies and shallots over a gentle fire."
+            },
+            {
+              "text": "ย่างจนเปลือกดำ และมีกลิ่นหอม",
+              "english": "Roast until the skin is black and has a good smell."
+            },
+            {
+              "text": "สาม เอาเปลือกออก แล้วหั่นให้เล็ก",
+              "english": "Three: take off the skin and chop small."
+            },
+            {
+              "text": "สี่ เอาทุกอย่างใส่ในครก แล้วตำให้ละเอียด",
+              "english": "Four: put everything in the mortar and pound until fine."
+            },
+            {
+              "text": "ห้า ใส่เกลือและน้ำปลาลงไป",
+              "english": "Five: add the salt and fish sauce."
+            },
+            {
+              "text": "หก ชิมดู ถ้าเค็มไป ให้เติมพริก ถ้าเปรี้ยวไป ให้เติมเกลือ",
+              "english": "Six: taste it. If it is too salty, add chilli; if too sour, add salt."
+            },
+            {
+              "text": "ระวังอย่าใส่พริกมากเกินไป",
+              "english": "Take care not to put in too much chilli."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แซมลองทำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมทำตามที่ยายสอนทุกอย่าง",
+              "english": "Sam did everything as Grandmother taught."
+            },
+            {
+              "text": "แต่เขาใส่พริกมากเกินไป",
+              "english": "But he put in too much chilli."
+            },
+            {
+              "text": "เมื่อเขาชิม ตาของเขาแดงทันที และน้ำตาไหล",
+              "english": "When he tasted it, his eyes went red at once and tears ran down."
+            },
+            {
+              "text": "ยายหัวร่อ และรีบเอาน้ำให้เขาดื่ม",
+              "english": "Grandmother laughed and quickly brought him water to drink."
+            },
+            {
+              "text": "ยายพูดภาษาเหนือกับมะลิ",
+              "english": "Grandmother spoke northern Thai to Mali."
+            },
+            {
+              "text": "มะลิแปลให้แซมว่า ยายบอกว่า ครั้งแรกใครๆ ก็เผ็ดอย่างนี้",
+              "english": "Mali translated for Sam: \"Grandmother says everyone finds it this hot the first time.\""
+            },
+            {
+              "text": "แซมจดวิธีทำไว้ในสมุด และบอกว่า ผมจะทำใหม่อีกครั้ง",
+              "english": "Sam noted down the method in his notebook and said, \"I will make it again.\""
+            },
+            {
+              "text": "ยายพยักหน้า และให้แซมกินข้าวเหนียวกับน้ำพริกที่เธอทำเอง",
+              "english": "Grandmother nodded and had Sam eat sticky rice with the dip she had made herself."
+            },
+            {
+              "text": "ตอนเย็น แซมเล่าให้ต้นฟังว่า วันนี้เขาเรียนทำอาหารจากยาย และเขาจะไม่ลืมวิธีนี้เลย",
+              "english": "In the evening Sam told Ton that today he had learned to cook from Grandmother, and that he would never forget this method."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

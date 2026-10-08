@@ -1,0 +1,671 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-04",
+  "lang": "de",
+  "title": "Planning the fairy-tale evening",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-04",
+    "title": "Planning the fairy-tale evening (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next texts (Guerber, Die drei Schläfer / Der Hausvater; Grimm, Die drei Faulen): zumachen, Reisende, treten, faul, König, Strick, eher, eh. Each is used three times."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fairy tales",
+    "children",
+    "planning",
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sabine": "Sabine",
+    "ben": "Ben",
+    "anna": "Anna",
+    "lukas": "Lukas",
+    "sam": "Sam",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Im Gemeindehaus",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag nach dem Gottesdienst bleiben Sabine, Sam, Anna und Lukas im Gemeindehaus.",
+              "english": "On Sunday after the service Sabine, Sam, Anna and Lukas stay in the church house."
+            },
+            {
+              "text": "Ben ist auch da, denn er soll beim Märchenabend vorlesen.",
+              "english": "Ben is there too, because he is supposed to read aloud at the fairy-tale evening."
+            },
+            {
+              "text": "Sabine hat ein Buch mit Märchen auf den Tisch gelegt.",
+              "english": "Sabine has put a book of fairy tales on the table."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Wir brauchen drei Märchen, und sie müssen kurz sein.",
+              "english": "We need three fairy tales, and they have to be short."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Kinder können nicht lange still sitzen.",
+              "english": "Children cannot sit still for long."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das ist eher schwer.",
+              "english": "That is rather difficult."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ben, welches Märchen magst du am liebsten?",
+              "english": "Ben, which fairy tale do you like best?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich mag das Märchen vom faulen König.",
+              "english": "I like the fairy tale of the lazy king."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der König liegt den ganzen Tag im Bett und will nicht aufstehen.",
+              "english": "The king lies in bed all day and does not want to get up."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das kenne ich eh schon, du liest es jeden Sommer.",
+              "english": "I know that anyway, you read it every summer."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Gut, dann nehmen wir es.",
+              "english": "Good, then we will take it."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ein fauler König ist lustig, und die Kinder lachen.",
+              "english": "A lazy king is funny, and the children laugh."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Und ein Märchen von einem fleißigen König wäre eher traurig.",
+              "english": "And a fairy tale about a hard-working king would be rather sad."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, der faule König ist besser.",
+              "english": "Yes, the lazy king is better."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Was brauchen wir?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Brauchen wir auch etwas zum Spielen?",
+              "english": "Do we also need something to play with?"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ja, ich möchte ein Spiel mit einem Strick machen.",
+              "english": "Yes, I would like to do a game with a rope."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Zwei Kinder halten den Strick, und die anderen springen darüber.",
+              "english": "Two children hold the rope, and the others jump over it."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das ist laut, und die Eltern sind eher müde.",
+              "english": "That is loud, and the parents are rather tired."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Die Kinder sind am Abend eh laut, ob mit dem Strick oder ohne.",
+              "english": "The children are loud in the evening anyway, with the rope or without."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Dann machen wir das Fenster zu.",
+              "english": "Then we will close the window."
+            },
+            {
+              "speaker": "anna",
+              "text": "Und die Tür auch. Mach sie bitte zu, Ben.",
+              "english": "And the door too. Close it, please, Ben."
+            },
+            {
+              "speaker": "ben",
+              "text": "Aber im Raum ist es dann heiß.",
+              "english": "But then it is hot in the room."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich habe eine Idee.",
+              "english": "I have an idea."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir machen die Tür zu, wenn wir lesen, und wir machen sie auf, wenn wir spielen.",
+              "english": "We close the door when we read, and we open it when we play."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Das ist gut, danke, Sam.",
+              "english": "That is good, thank you, Sam."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Reisende und Märchen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta kommt mit Tee und Kuchen.",
+              "english": "Marta comes with tea and cake."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich habe auch ein Märchen für euch, aber es ist kein Märchen aus dem Buch.",
+              "english": "I have a fairy tale for you too, but it is not a fairy tale from the book."
+            },
+            {
+              "speaker": "marta",
+              "text": "Es ist ein Märchen von Reisenden, die in der Nacht an eine Tür kommen.",
+              "english": "It is a fairy tale of travellers who come to a door in the night."
+            },
+            {
+              "speaker": "marta",
+              "text": "Die Reisenden sind müde, und der Wirt will die Tür nicht aufmachen.",
+              "english": "The travellers are tired, and the innkeeper does not want to open the door."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und dann?",
+              "english": "And then?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Dann tritt der Wirt vor die Tür, und er sieht sie im Regen stehen.",
+              "english": "Then the innkeeper steps out in front of the door, and he sees them standing in the rain."
+            },
+            {
+              "speaker": "marta",
+              "text": "Er hat Mitleid, und die Reisenden dürfen im Haus schlafen.",
+              "english": "He takes pity, and the travellers may sleep in the house."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das ist ein schönes Märchen für die Gemeinde.",
+              "english": "That is a beautiful fairy tale for the church."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Am Ende treten alle Kinder in einen Kreis, und wir lesen es zusammen.",
+              "english": "At the end all the children step into a circle, and we read it together."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und ich lese die Reisenden mit müder Stimme.",
+              "english": "And I will read the travellers in a tired voice."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das wird ein guter Abend.",
+              "english": "That will be a good evening."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta legt ihren Schlüsselbund auf den Tisch.",
+              "english": "Marta puts her bunch of keys on the table."
+            },
+            {
+              "text": "Der Anhänger aus Holz ist ganz dunkel geworden.",
+              "english": "The wooden tag has become quite dark."
+            },
+            {
+              "speaker": "marta",
+              "text": "Zu Hause hängt der Schlüsselbund an einem Nagel neben der Tür.",
+              "english": "At home the bunch of keys hangs on a nail next to the door."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, weißt du noch, wie wir im Herbst zum Fundbüro gegangen sind?",
+              "english": "Oma, do you remember how we went to the lost-property office in autumn?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Drinnen war es still, und überall standen Regale mit Mützen und Taschen.",
+              "english": "Inside it was quiet, and everywhere there were shelves with caps and bags."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich habe den Anhänger auf ein Blatt gezeichnet.",
+              "english": "I drew the tag on a sheet of paper."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Mann sagte: Das tut mir leid, kommen Sie nächste Woche wieder.",
+              "english": "The man said: I am sorry, come back next week."
+            },
+            {
+              "speaker": "marta",
+              "text": "Die Wochen vergingen, aber es gab keine Spur.",
+              "english": "The weeks went by, but there was no trace."
+            },
+            {
+              "speaker": "anna",
+              "text": "Zum Glück hatte Frau Weber einen Ersatzschlüssel.",
+              "english": "Fortunately Frau Weber had a spare key."
+            },
+            {
+              "speaker": "marta",
+              "text": "Das neue Schloss sollte ungefähr 180 Euro kosten.",
+              "english": "The new lock was supposed to cost about 180 euros."
+            },
+            {
+              "speaker": "marta",
+              "text": "Frau Weber hat mir angeboten, das Geld zu leihen, aber ich habe den Kopf geschüttelt.",
+              "english": "Frau Weber offered to lend me the money, but I shook my head."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann kam die junge Frau aus Hamburg.",
+              "english": "Then came the young woman from Hamburg."
+            },
+            {
+              "text": "Marta hatte ihren alten Mantel verschenkt, und die Schlüssel waren noch drin.",
+              "english": "Marta had given away her old coat, and the keys were still in it."
+            },
+            {
+              "text": "Der Mantel kam aus der Kleidersammlung der Gemeinde.",
+              "english": "The coat came from the church's clothes collection."
+            },
+            {
+              "text": "In der Tasche entdeckte die Fremde den Schlüsselbund.",
+              "english": "In the pocket the stranger discovered the bunch of keys."
+            },
+            {
+              "text": "Auf dem Anhänger stand der Name von Martas Backstube.",
+              "english": "On the tag stood the name of Marta's bakery."
+            },
+            {
+              "text": "Sie fuhr ohnehin nach Leipzig, und sie wollte ihre Aufgabe erfüllen.",
+              "english": "She was travelling to Leipzig anyway, and she wanted to fulfil her task."
+            },
+            {
+              "text": "Ein Bäcker auf dem Markt erkannte den Anhänger sofort.",
+              "english": "A baker at the market recognised the tag at once."
+            },
+            {
+              "text": "Er sagte, dass Marta in der Hauptstraße wohnt.",
+              "english": "He said that Marta lives on the main street."
+            },
+            {
+              "text": "Am Abend fuhr die Fremde nach Hamburg zurück.",
+              "english": "In the evening the stranger drove back to Hamburg."
+            },
+            {
+              "text": "Marta nahm die Schlüssel aus dem Briefkasten heraus.",
+              "english": "Marta took the keys out of the letterbox."
+            },
+            {
+              "speaker": "marta",
+              "text": "Wie sind sie nur hierher gekommen?",
+              "english": "How on earth did they get here?"
+            },
+            {
+              "text": "Ben kam hereingelaufen, und Marta lachte und weinte zugleich.",
+              "english": "Ben came running in, and Marta laughed and cried at the same time."
+            },
+            {
+              "text": "Später erfuhr Anna, dass die Fremde die Stelle im Krankenhaus bekommen hatte.",
+              "english": "Later Anna learned that the stranger had got the job at the hospital."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das Rätsel wurde gelöst, denn die Fremde hat die Schlüssel zurückgebracht.",
+              "english": "The riddle was solved, because the stranger brought the keys back."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich habe meinen Schlüsselbund zurückbekommen, und das ist wie ein Märchen.",
+              "english": "I got my bunch of keys back, and that is like a fairy tale."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sabine fragt Sam nach dem Wochenbericht.",
+              "english": "Sabine asks Sam about the weekly report."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Sam, hast du den Wochenbericht schon verfasst?",
+              "english": "Sam, have you already written the weekly report?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich habe auch die Zahl der Teilnehmer aufgeschrieben.",
+              "english": "Yes, I also wrote down the number of participants."
+            },
+            {
+              "speaker": "sam",
+              "text": "In der vergangenen Woche haben wir die Zusammenarbeit mit anderen Teams erwähnt.",
+              "english": "Last week we mentioned the cooperation with other teams."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Die Zahlen sind gut, und die Entwicklung im Hauskreis ist deutlich.",
+              "english": "The numbers are good, and the development in the house group is clear."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Zahl der Teilnehmer ist gewachsen, das ist ein Fortschritt.",
+              "english": "The number of participants has grown, that is progress."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Bedarf des Teams ist unverändert, auch der finanzielle Bedarf.",
+              "english": "The team's need is unchanged, also the financial need."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ohne die Unterstützer und ihre Unterstützung wäre das nicht möglich.",
+              "english": "Without the supporters and their support that would not be possible."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Summe ist nicht klein, aber die Treue der Menschen ist unser Antrieb.",
+              "english": "The sum is not small, but the faithfulness of the people is our drive."
+            },
+            {
+              "speaker": "anna",
+              "text": "Das Ergebnis lässt sich in drei Punkten zusammenfassen.",
+              "english": "The result can be summarised in three points."
+            },
+            {
+              "speaker": "anna",
+              "text": "Die Jugendlichen haben das Pfand der Gemeindekasse gegeben.",
+              "english": "The young people gave the deposit money to the church treasury."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Für die Aktion brauchen wir auch Material, Papier und Becher.",
+              "english": "For the event we also need material, paper and cups."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Bank hatte Jonas' Bitte abgelehnt, aber Herr Schmidt hat ihm Geld geliehen.",
+              "english": "The bank had turned down Jonas's request, but Herr Schmidt lent him money."
+            },
+            {
+              "speaker": "sam",
+              "text": "Lukas denkt über den Wechsel aufs Land nach und sagt, was sich ändert.",
+              "english": "Lukas thinks about the move to the country and says what is changing."
+            },
+            {
+              "speaker": "anna",
+              "text": "Wir haben ihn im Gebet gesegnet.",
+              "english": "We blessed him in prayer."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Die Begegnungen mit den Menschen haben uns bewegt.",
+              "english": "The encounters with the people moved us."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wir haben Kontakt mit den Leipziger Gemeinden, und der Stil der Gottesdienste ist verschieden.",
+              "english": "We have contact with the Leipzig churches, and the style of the services is different."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Die Gaben der Menschen sind verschieden, aber die Einheit ist wichtig.",
+              "english": "The gifts of the people are different, but unity is important."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das erste Gebetsanliegen war die Gesundheit, denn Anna und David waren erkältet.",
+              "english": "The first prayer request was health, because Anna and David had colds."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ein Anliegen ist die Zukunft der Kinder, und zum Schluss beten wir für alle.",
+              "english": "One concern is the children's future, and in conclusion we pray for everyone."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das liegt alles lange zurück, aber ich lerne noch gern, und nebenbei lese ich viel.",
+              "english": "That all lies far back, but I still like learning, and on the side I read a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam erinnert sich an die Zeit vor Leipzig.",
+              "english": "Sam remembers the time before Leipzig."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mit zwanzig war ich auf einer Missionskonferenz.",
+              "english": "At twenty I was at a mission conference."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich dachte, der Gedanke sei dumm, aber er blieb wochenlang.",
+              "english": "I thought the idea was stupid, but it stayed for weeks."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Ende hat meine Gemeinde mich gesendet.",
+              "english": "In the end my church sent me."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mein Bruder sagte, dass eine Lücke bleibt, wenn ich gehe.",
+              "english": "My brother said that a gap remains when I go."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ohne meine Heimatgemeinde hätte ich es nicht gewagt.",
+              "english": "Without my home church I would not have dared it."
+            },
+            {
+              "speaker": "sam",
+              "text": "In Leipzig habe ich mich am Anfang oft verlaufen.",
+              "english": "In Leipzig I often got lost at the beginning."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aber ich habe viel Wärme gefunden.",
+              "english": "But I found a lot of warmth."
+            },
+            {
+              "speaker": "anna",
+              "text": "Du hast gesehen, wie die Schwestern mit den Patienten umgehen.",
+              "english": "You saw how the nurses deal with the patients."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das hat mich geprägt, und Anna ist ein Vorbild für mich.",
+              "english": "That shaped me, and Anna is a role model for me."
+            },
+            {
+              "speaker": "sam",
+              "text": "Jeden Tag ehrlich zu bleiben ist eine tägliche Herausforderung.",
+              "english": "Staying honest every day is a daily challenge."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Wochenbericht ist eine gute Übung, und ich war lange ein Mensch der Tat.",
+              "english": "The weekly report is a good exercise, and for a long time I was a man of action."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich würde jederzeit wieder gehen, denn ich spüre große Dankbarkeit.",
+              "english": "I would go again at any time, because I feel great gratitude."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es war ein besonderes Jahr, und es war Gnade.",
+              "english": "It was a special year, and it was grace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich noch?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend sitzen Sabine und Sam noch lange im Gemeindehaus.",
+              "english": "In the evening Sabine and Sam are still sitting in the church hall for a long time."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sabine, weißt du noch, woran du an einem Freitagabend gedacht hast?",
+              "english": "Sabine, do you remember what you were thinking of on that Friday evening?"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ja, ich wollte einen Märchenabend machen, aber ich hatte Angst.",
+              "english": "Yes, I wanted to hold a fairy-tale evening, but I was afraid."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ich habe lange im Hausflur vor den Behältern gestanden.",
+              "english": "I stood for a long time in the hallway in front of the containers."
+            },
+            {
+              "speaker": "sam",
+              "text": "Und dann hat das Team dir geholfen.",
+              "english": "And then the team helped you."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ja, ich schrieb einen Brief an alle, und im Folgenden stand, was wir brauchen.",
+              "english": "Yes, I wrote a letter to everyone, and in what follows it said what we need."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Heute sitzen wir hier, und die Kinder lesen mit uns.",
+              "english": "Today we are sitting here, and the children read with us."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das ist wirklich schön.",
+              "english": "That is really beautiful."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ben fragt Sam nach den ersten Wochen in Leipzig.",
+              "english": "Ben asks Sam about the first weeks in Leipzig."
+            },
+            {
+              "speaker": "ben",
+              "text": "Weißt du noch, woran du am Anfang nicht gedacht hast?",
+              "english": "Do you remember what you did not think of at the beginning?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Ja, ich habe den Schlüssel vergessen und stand lange im Hausflur.",
+              "english": "Yes, I forgot the key and stood in the hallway for a long time."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann kam Frau Weber und hat dir die Tür aufgemacht.",
+              "english": "Then Frau Weber came and opened the door for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Genau. Sie hat mir auch gesagt, woran ich denken muss.",
+              "english": "Exactly. She also told me what I have to think of."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich denke an so etwas auch immer zu spät.",
+              "english": "I always think of such things too late as well."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

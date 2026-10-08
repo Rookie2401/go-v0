@@ -14,16 +14,16 @@ note: "synes" (think, have an opinion) and "mene" (mean, think) are close; "kans
 ## Om maten
 [marta] Hva mener du om maten min, {sam}? || What do you think about my food, Sam?
 [sam] Maten din er veldig bra! Den er ikke dårlig. || Your food is very good! It is not bad.
-[nico] Jeg mener at fisk er dårlig. Jeg liker brød. || I think fish is bad. I like bread.
+[nico] Jeg synes at fisk ikke er bra. Jeg liker brød. || I think fish is not good. I like bread.
 [marta] Nei, {nico}! Fisk er bra mat. Er du enig, {sam}? || No, Nils! Fish is good food. Do you agree, Sam?
 [sam] Ja, jeg er enig med deg, {marta}. Jeg liker fisk og poteter. || Yes, I agree with you, Marta. I like fish and potatoes.
 [nico] Kanskje jeg liker fisk i morgen. || Maybe I will like fish tomorrow.
-[marta] Kanskje, ja! Du liker kake hver dag. || Maybe, yes! You like cake every day.
+[marta] Ja, det kan være! Du liker kake mer enn fisk, hver dag. || Yes, that may be! You like cake more than fish, every day.
 
 ## Om søndagen
 [ana] Hva synes du om søndagen i {city}, {sam}? || What do you think about Sundays in Bergen, Sam?
 [sam] Jeg synes at søndagen er den beste dagen. Vi går til kirka, og vi spiser middag hos {marta}. || I think Sunday is the best day. We go to church, and we have dinner at Marta's.
-[luis] Jeg er enig. Søndagen er en bra dag. Men jeg er ofte trøtt. || I agree. Sunday is a good day. But I am often tired.
+[luis] Jeg er enig. Jeg mener at søndagen er en bra dag. Men jeg er ofte trøtt. || I agree. I think Sunday is a good day. But I am often tired.
 [ana] Det er ikke dårlig å være trøtt på søndag! || It is not bad to be tired on Sunday!
 [sam] Vi er ikke alltid enige, men vi er alltid venner. || We do not always agree, but we are always friends.
 

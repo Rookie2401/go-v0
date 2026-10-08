@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-12",
+  "lang": "sq",
+  "title": "Bie shi",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-12",
+    "title": "Albanian ladder, a1-1: Bie shi (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Bie shi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot bie shi.",
+              "english": "Today it is raining."
+            },
+            {
+              "text": "Sam nuk del nga shtëpia.",
+              "english": "Sam does not go out of the house."
+            },
+            {
+              "text": "Ai është në dhomë.",
+              "english": "He is in the room."
+            },
+            {
+              "text": "Ai shikon nga dritarja.",
+              "english": "He looks out of the window."
+            },
+            {
+              "text": "Në rrugë nuk ka njerëz.",
+              "english": "There are no people in the street."
+            },
+            {
+              "text": "Sam nuk blen bukë sot.",
+              "english": "Sam does not buy bread today."
+            },
+            {
+              "text": "Ai ha bukë dhe djathë.",
+              "english": "He eats bread and cheese."
+            },
+            {
+              "text": "Sam mund të lexojë.",
+              "english": "Sam can read."
+            },
+            {
+              "text": "Ai pi kafe dhe lexon një libër.",
+              "english": "He drinks coffee and reads a book."
+            },
+            {
+              "text": "Libri është në shqip.",
+              "english": "The book is in Albanian."
+            },
+            {
+              "text": "Pastaj ai pi çaj.",
+              "english": "Then he drinks tea."
+            },
+            {
+              "text": "Ai është i lumtur në shtëpi.",
+              "english": "He is happy at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ardi nuk shkon në fshat sot.",
+              "english": "Ardi does not go to the village today."
+            },
+            {
+              "text": "Ardi do të luajë në rrugë.",
+              "english": "Ardi wants to play in the street."
+            },
+            {
+              "text": "Në verë ai luan në rrugë çdo ditë, por sot bie shi.",
+              "english": "In summer he plays in the street every day, but today it is raining."
+            },
+            {
+              "text": "— Gjyshe, a mund të dal? — pyet Ardi.",
+              "english": "\"Grandmother, may I go out?\" asks Ardi."
+            },
+            {
+              "text": "— Jo, Ardi. Sot jo.",
+              "english": "\"No, Ardi. Not today.\""
+            },
+            {
+              "text": "Ardi shikon nga dritarja.",
+              "english": "Ardi looks out of the window."
+            },
+            {
+              "text": "Ai është në dhomë me macen.",
+              "english": "He is in the room with the cat."
+            },
+            {
+              "text": "Ardi lexon me macen.",
+              "english": "Ardi reads with the cat."
+            },
+            {
+              "text": "Gjyshja i jep çaj dhe bukë.",
+              "english": "Grandmother gives him tea and bread."
+            },
+            {
+              "text": "Ardi pi çaj dhe ha bukë.",
+              "english": "Ardi drinks tea and eats bread."
+            },
+            {
+              "text": "Macja pi qumësht.",
+              "english": "The cat drinks milk."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tani nuk bie shi.",
+              "english": "Now it is not raining."
+            },
+            {
+              "text": "Ardi mendon: Mund të dal!",
+              "english": "Ardi thinks: I can go out!"
+            },
+            {
+              "text": "Ai e gjen çantën dhe e merr.",
+              "english": "He finds his bag and takes it."
+            },
+            {
+              "text": "Elira është në rrugë.",
+              "english": "Elira is in the street."
+            },
+            {
+              "text": "Ardi është në rrugë me Elirën.",
+              "english": "Ardi is in the street with Elira."
+            },
+            {
+              "text": "— Elira, a luajmë? — pyet Ardi.",
+              "english": "\"Elira, shall we play?\" asks Ardi."
+            },
+            {
+              "text": "— Po, Ardi!",
+              "english": "\"Yes, Ardi!\""
+            },
+            {
+              "text": "Ardi dhe Elira fillojnë të luajnë.",
+              "english": "Ardi and Elira begin to play."
+            },
+            {
+              "text": "Pastaj Ardi hyn në shtëpi.",
+              "english": "Then Ardi goes into the house."
+            },
+            {
+              "text": "Gjyshja i jep një mollë të kuqe.",
+              "english": "Grandmother gives him a red apple."
+            },
+            {
+              "text": "Ardi ha mollën.",
+              "english": "Ardi eats the apple."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam mendon për Shqipërinë.",
+              "english": "Sam thinks about Albania."
+            },
+            {
+              "text": "Ai jeton këtu dhe mëson shqip.",
+              "english": "He lives here and is learning Albanian."
+            },
+            {
+              "text": "Ai fillon të kuptojë shumë.",
+              "english": "He begins to understand a lot."
+            },
+            {
+              "text": "Ai pi kafe me Luanin dhe Anën.",
+              "english": "He drinks coffee with Luan and Ana."
+            },
+            {
+              "text": "Sam është i lumtur këtu.",
+              "english": "Sam is happy here."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sot Sam nuk del nga shtëpia.",
+              "english": "Today Sam does not go out of the house."
+            },
+            {
+              "text": "Në shtëpi ka bukë, kafe dhe çaj.",
+              "english": "At home there is bread, coffee and tea."
+            },
+            {
+              "text": "Sam ha bukë dhe pi kafe.",
+              "english": "Sam eats bread and drinks coffee."
+            },
+            {
+              "text": "Ardi ha bukë dhe pi çaj.",
+              "english": "Ardi eats bread and drinks tea."
+            },
+            {
+              "text": "Sam lexon një libër, dhe Ardi lexon një libër.",
+              "english": "Sam reads a book, and Ardi reads a book."
+            },
+            {
+              "text": "Sot nuk ka njerëz në rrugë, por Sam është i lumtur në shtëpi.",
+              "english": "Today there are no people in the street, but Sam is happy at home."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

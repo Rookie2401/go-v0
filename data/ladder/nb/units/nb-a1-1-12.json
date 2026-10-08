@@ -247,13 +247,13 @@
         {
           "sentences": [
             {
-              "text": "Unnskyld, hvor er busstoppet?",
-              "english": "Excuse me, where is the bus stop?",
+              "text": "Unnskyld, går bussen til sentrum?",
+              "english": "Excuse me, does the bus go to the town centre?",
               "speaker": "sam"
             },
             {
-              "text": "Gå rett fram og til høyre. Bussen stopper på busstoppet.",
-              "english": "Go straight ahead and to the right. The bus stops at the bus stop.",
+              "text": "Ja, den går til sentrum. Gå rett fram og til høyre.",
+              "english": "Yes, it goes to the town centre. Go straight ahead and to the right.",
               "speaker": "marta"
             }
           ]

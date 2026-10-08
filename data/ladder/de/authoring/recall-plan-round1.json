@@ -1,0 +1,7456 @@
+{
+ "de-a1-2-16": [
+  {
+   "lemma": "kalender",
+   "form": "kalender",
+   "from": "de-a1-2-15",
+   "own": 3,
+   "ctx": "Thomas hat einen Kalender in der Gemeinde."
+  }
+ ],
+ "de-a2-1-18": [
+  {
+   "lemma": "bürgeramt",
+   "form": "bürgeramt",
+   "from": "de-a2-1-17",
+   "own": 1,
+   "ctx": "„Zuerst gehst du zum Amt. Es heißt Bürgeramt.“"
+  }
+ ],
+ "de-a2-2-02": [
+  {
+   "lemma": "dazu",
+   "form": "dazu",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Dazu kommt noch eine Kaution."
+  },
+  {
+   "lemma": "deshalb",
+   "form": "deshalb",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Ich denke, dass er deshalb gern einen Freund dabei hat."
+  },
+  {
+   "lemma": "kinderkirche",
+   "form": "kinderkirche",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Am Nachmittag spielt Ben in der Kinderkirche."
+  },
+  {
+   "lemma": "beispiel",
+   "form": "beispiel",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Zum Beispiel: Wie heißt die Hauptstadt von Sachsen?"
+  }
+ ],
+ "de-a2-2-03": [
+  {
+   "lemma": "dabei",
+   "form": "dabei",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Ich denke, dass er deshalb gern einen Freund dabei hat."
+  },
+  {
+   "lemma": "kleid",
+   "form": "kleider",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Für neue Kleider, denn die Kinder haben nichts Schönes zum Anziehen."
+  },
+  {
+   "lemma": "vorn",
+   "form": "vorn",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Also, noch einmal von vorn."
+  },
+  {
+   "lemma": "selbst",
+   "form": "selbst",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Ein Zeugnis, hat Daniel ihm gesagt, ist keine Rede, sondern eine Geschichte, die man selbst erlebt hat."
+  },
+  {
+   "lemma": "zuhause",
+   "form": "zuhause",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Sam denkt an sein Zuhause und an die Menschen, die er vermisst."
+  }
+ ],
+ "de-a2-2-04": [
+  {
+   "lemma": "ende",
+   "form": "ende",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Er gibt alles Geld aus, und am Ende hütet er Schweine."
+  },
+  {
+   "lemma": "geschehen",
+   "form": "geschehen",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Gern geschehen."
+  },
+  {
+   "lemma": "erleben",
+   "form": "erlebt",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Ein Zeugnis, hat Daniel ihm gesagt, ist keine Rede, sondern eine Geschichte, die man selbst erlebt hat."
+  },
+  {
+   "lemma": "nachts",
+   "form": "nachts",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "In den ersten Monaten hatte ich so großes Heimweh, dass ich nachts nicht schlafen konnte."
+  },
+  {
+   "lemma": "sofa",
+   "form": "sofa",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Sam sitzt auf dem Sofa und hört zu."
+  },
+  {
+   "lemma": "spüren",
+   "form": "gespürt",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Nach dem Studium hat er eine Berufung gespürt und eine Entscheidung getroffen."
+  },
+  {
+   "lemma": "ach",
+   "form": "ach",
+   "from": "de-a2-2-03",
+   "own": 3,
+   "ctx": "Ach, meine Enkelin!"
+  },
+  {
+   "lemma": "los",
+   "form": "los",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "War viel los?"
+  },
+  {
+   "lemma": "kompliziert",
+   "form": "kompliziert",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das klingt kompliziert."
+  },
+  {
+   "lemma": "anmeldung",
+   "form": "anmeldung",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Für die Anmeldung nicht."
+  },
+  {
+   "lemma": "vermieten",
+   "form": "vermietet",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das ist die nette Dame, die ein Zimmer vermietet."
+  },
+  {
+   "lemma": "aufrufen",
+   "form": "aufgerufen",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Er hat sogar im Raum 12 gewartet, bis man ihn aufgerufen hat."
+  },
+  {
+   "lemma": "mutig",
+   "form": "mutige",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das sind mutige Leute."
+  },
+  {
+   "lemma": "heimkehren",
+   "form": "heimkehrt",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Ben spielt wohl den Sohn, der heimkehrt?"
+  }
+ ],
+ "de-a2-2-07": [
+  {
+   "lemma": "deshalb",
+   "form": "deshalb",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Ich denke, dass er deshalb gern einen Freund dabei hat."
+  },
+  {
+   "lemma": "kinderkirche",
+   "form": "kinderkirche",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Am Nachmittag spielt Ben in der Kinderkirche."
+  },
+  {
+   "lemma": "kleid",
+   "form": "kleider",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Für neue Kleider, denn die Kinder haben nichts Schönes zum Anziehen."
+  },
+  {
+   "lemma": "geschehen",
+   "form": "geschehen",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Gern geschehen."
+  },
+  {
+   "lemma": "rede",
+   "form": "rede",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Ein Zeugnis, hat Daniel ihm gesagt, ist keine Rede, sondern eine Geschichte, die man selbst erlebt hat."
+  },
+  {
+   "lemma": "nachmittags",
+   "form": "nachmittags",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Es ist Mittwoch, zwei Uhr nachmittags."
+  },
+  {
+   "lemma": "aufenthaltsraum",
+   "form": "aufenthaltsraum",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Sie sitzt allein im Aufenthaltsraum und trinkt Kaffee."
+  },
+  {
+   "lemma": "reichen",
+   "form": "reicht",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Ein Visum hatte er schon aus Amerika, aber das reicht hier nicht."
+  },
+  {
+   "lemma": "daruntersetzen",
+   "form": "daruntersetzen",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Dann musste er seinen Ausweis zeigen und seine Unterschrift daruntersetzen."
+  },
+  {
+   "lemma": "dame",
+   "form": "dame",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das ist die nette Dame, die ein Zimmer vermietet."
+  },
+  {
+   "lemma": "ärger",
+   "form": "ärger",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Wenn man seine Papiere nicht abgibt, gibt es doch bestimmt Ärger."
+  },
+  {
+   "lemma": "sprachkurs",
+   "form": "sprachkurs",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Er geht zum Sprachkurs, und am Abend sitzt er oft am Computer."
+  },
+  {
+   "lemma": "heimatgemeinde",
+   "form": "heimatgemeinden",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Ihre Heimatgemeinden schicken Spenden."
+  },
+  {
+   "lemma": "vorsichtig",
+   "form": "vorsichtig",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Überqueren Sie dort bitte vorsichtig die Straße."
+  },
+  {
+   "lemma": "riechen",
+   "form": "riecht",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Man riecht es im ganzen Haus."
+  },
+  {
+   "lemma": "ab",
+   "form": "ab",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Ab jetzt höre ich die Musik leiser."
+  },
+  {
+   "lemma": "tonne",
+   "form": "tonne",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Wir trennen das Essen, und wir nehmen die graue Tonne für den Rest."
+  },
+  {
+   "lemma": "eröffnen",
+   "form": "eröffne",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich eröffne die Sitzung."
+  },
+  {
+   "lemma": "pro",
+   "form": "pro",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich wünsche mir 30 Kilometer pro Stunde, nicht mehr."
+  },
+  {
+   "lemma": "tor",
+   "form": "tor",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Man geht die Straße entlang bis zum großen Tor."
+  },
+  {
+   "lemma": "lastwagen",
+   "form": "lastwagen",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Man sieht, wie die Lastwagen vor dem Spielplatz halten."
+  },
+  {
+   "lemma": "verständlich",
+   "form": "verständlich",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ihr Wunsch ist verständlich."
+  }
+ ],
+ "de-a2-2-06": [
+  {
+   "lemma": "beispiel",
+   "form": "beispiel",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Zum Beispiel: Wie heißt die Hauptstadt von Sachsen?"
+  },
+  {
+   "lemma": "vorn",
+   "form": "vorn",
+   "from": "de-a2-2-01",
+   "own": 1,
+   "ctx": "Also, noch einmal von vorn."
+  },
+  {
+   "lemma": "zuhause",
+   "form": "zuhause",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Sam denkt an sein Zuhause und an die Menschen, die er vermisst."
+  },
+  {
+   "lemma": "sofa",
+   "form": "sofa",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Sam sitzt auf dem Sofa und hört zu."
+  },
+  {
+   "lemma": "rede",
+   "form": "rede",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Ein Zeugnis, hat Daniel ihm gesagt, ist keine Rede, sondern eine Geschichte, die man selbst erlebt hat."
+  },
+  {
+   "lemma": "nachmittags",
+   "form": "nachmittags",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Es ist Mittwoch, zwei Uhr nachmittags."
+  },
+  {
+   "lemma": "aufenthaltsraum",
+   "form": "aufenthaltsraum",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Sie sitzt allein im Aufenthaltsraum und trinkt Kaffee."
+  },
+  {
+   "lemma": "los",
+   "form": "los",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "War viel los?"
+  },
+  {
+   "lemma": "kompliziert",
+   "form": "kompliziert",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das klingt kompliziert."
+  },
+  {
+   "lemma": "anmeldung",
+   "form": "anmeldung",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Für die Anmeldung nicht."
+  },
+  {
+   "lemma": "vermieten",
+   "form": "vermietet",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das ist die nette Dame, die ein Zimmer vermietet."
+  },
+  {
+   "lemma": "aufrufen",
+   "form": "aufgerufen",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Er hat sogar im Raum 12 gewartet, bis man ihn aufgerufen hat."
+  },
+  {
+   "lemma": "mutig",
+   "form": "mutige",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das sind mutige Leute."
+  },
+  {
+   "lemma": "mitgeben",
+   "form": "gebe",
+   "from": "de-a2-2-03",
+   "own": 2,
+   "ctx": "Ich gebe dir einen Korb mit, den kannst du Lukas bringen."
+  },
+  {
+   "lemma": "abteilung",
+   "form": "abteilung",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Wo ist die Abteilung für Ausländer?"
+  },
+  {
+   "lemma": "abends",
+   "form": "abends",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Und noch etwas: Ihre Musik ist abends manchmal zu laut."
+  },
+  {
+   "lemma": "ofen",
+   "form": "ofen",
+   "from": "de-a2-2-05",
+   "own": 3,
+   "ctx": "Den Ofen auf 180 Grad stellen."
+  }
+ ],
+ "de-a2-2-05": [
+  {
+   "lemma": "aufhören",
+   "form": "hör",
+   "from": "de-a2-2-02",
+   "own": 2,
+   "ctx": "Niemand hat mir gesagt: Hör auf zu weinen."
+  },
+  {
+   "lemma": "verlassen",
+   "form": "verlassen",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Die Entscheidung war trotzdem schwer, denn ich musste meine Eltern verlassen."
+  },
+  {
+   "lemma": "sofa",
+   "form": "sofa",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Sam sitzt auf dem Sofa und hört zu."
+  },
+  {
+   "lemma": "rede",
+   "form": "rede",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Ein Zeugnis, hat Daniel ihm gesagt, ist keine Rede, sondern eine Geschichte, die man selbst erlebt hat."
+  },
+  {
+   "lemma": "flughafen",
+   "form": "flughafen",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Der Abschied am Flughafen war schlimm."
+  },
+  {
+   "lemma": "vorbei",
+   "form": "vorbei",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Meine Pause ist gleich vorbei."
+  },
+  {
+   "lemma": "nachmittags",
+   "form": "nachmittags",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Es ist Mittwoch, zwei Uhr nachmittags."
+  },
+  {
+   "lemma": "reichen",
+   "form": "reicht",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Ein Visum hatte er schon aus Amerika, aber das reicht hier nicht."
+  },
+  {
+   "lemma": "daruntersetzen",
+   "form": "daruntersetzen",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Dann musste er seinen Ausweis zeigen und seine Unterschrift daruntersetzen."
+  },
+  {
+   "lemma": "dame",
+   "form": "dame",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das ist die nette Dame, die ein Zimmer vermietet."
+  },
+  {
+   "lemma": "ärger",
+   "form": "ärger",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Wenn man seine Papiere nicht abgibt, gibt es doch bestimmt Ärger."
+  },
+  {
+   "lemma": "sprachkurs",
+   "form": "sprachkurs",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Er geht zum Sprachkurs, und am Abend sitzt er oft am Computer."
+  },
+  {
+   "lemma": "heimatgemeinde",
+   "form": "heimatgemeinden",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Ihre Heimatgemeinden schicken Spenden."
+  },
+  {
+   "lemma": "korb",
+   "form": "korb",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Ich gebe dir einen Korb mit, den kannst du Lukas bringen."
+  },
+  {
+   "lemma": "übersehen",
+   "form": "übersehen",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Sie können es nicht übersehen."
+  }
+ ],
+ "de-a2-2-08": [
+  {
+   "lemma": "selbst",
+   "form": "selbst",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Ein Zeugnis, hat Daniel ihm gesagt, ist keine Rede, sondern eine Geschichte, die man selbst erlebt hat."
+  },
+  {
+   "lemma": "erleben",
+   "form": "erlebt",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Ein Zeugnis, hat Daniel ihm gesagt, ist keine Rede, sondern eine Geschichte, die man selbst erlebt hat."
+  },
+  {
+   "lemma": "verlassen",
+   "form": "verlassen",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Die Entscheidung war trotzdem schwer, denn ich musste meine Eltern verlassen."
+  },
+  {
+   "lemma": "nachts",
+   "form": "nachts",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "In den ersten Monaten hatte ich so großes Heimweh, dass ich nachts nicht schlafen konnte."
+  },
+  {
+   "lemma": "zurückkommen",
+   "form": "zurückkam",
+   "from": "de-a2-2-02",
+   "own": 1,
+   "ctx": "Dass er zurückkam, war ein Wunder."
+  },
+  {
+   "lemma": "vorbei",
+   "form": "vorbei",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Meine Pause ist gleich vorbei."
+  },
+  {
+   "lemma": "aufenthaltsraum",
+   "form": "aufenthaltsraum",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Sie sitzt allein im Aufenthaltsraum und trinkt Kaffee."
+  },
+  {
+   "lemma": "los",
+   "form": "los",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "War viel los?"
+  },
+  {
+   "lemma": "kompliziert",
+   "form": "kompliziert",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das klingt kompliziert."
+  },
+  {
+   "lemma": "anmeldung",
+   "form": "anmeldung",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Für die Anmeldung nicht."
+  },
+  {
+   "lemma": "vermieten",
+   "form": "vermietet",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das ist die nette Dame, die ein Zimmer vermietet."
+  },
+  {
+   "lemma": "aufrufen",
+   "form": "aufgerufen",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Er hat sogar im Raum 12 gewartet, bis man ihn aufgerufen hat."
+  },
+  {
+   "lemma": "mutig",
+   "form": "mutige",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das sind mutige Leute."
+  },
+  {
+   "lemma": "vorsichtig",
+   "form": "vorsichtig",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Überqueren Sie dort bitte vorsichtig die Straße."
+  },
+  {
+   "lemma": "abteilung",
+   "form": "abteilung",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Wo ist die Abteilung für Ausländer?"
+  },
+  {
+   "lemma": "form",
+   "form": "form",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Dann kommen die Äpfel in die Form."
+  },
+  {
+   "lemma": "mischen",
+   "form": "mischen",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Alles gut mischen."
+  },
+  {
+   "lemma": "teil",
+   "form": "teile",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Die Tagesordnung hat drei Teile."
+  },
+  {
+   "lemma": "sammeln",
+   "form": "sammeln",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Wir sammeln eine Spende, und wir legen etwas dazu."
+  },
+  {
+   "lemma": "bau",
+   "form": "bau",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Neben dem Spielplatz ist ein neues Haus im Bau."
+  },
+  {
+   "lemma": "entschuldigung",
+   "form": "entschuldigung",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Das ist ein Grund zur Entschuldigung."
+  },
+  {
+   "lemma": "stadtrat",
+   "form": "stadtrat",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Die Mehrheit im Stadtrat entscheidet."
+  },
+  {
+   "lemma": "eigen",
+   "form": "eigenen",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Es gibt Kaffee, Kuchen und Brot aus dem eigenen Ofen."
+  },
+  {
+   "lemma": "stattfinden",
+   "form": "stattfinden",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Hier steht, was im Stadtteil passiert ist und was bald stattfinden wird."
+  },
+  {
+   "lemma": "fahrer",
+   "form": "fahrer",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Fahrer ist sofort stehen geblieben und hat Hilfe geholt."
+  },
+  {
+   "lemma": "parkstraße",
+   "form": "parkstraße",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "In der Nacht zu Dienstag gab es ein Feuer in einem Haus in der Parkstraße."
+  },
+  {
+   "lemma": "rauch",
+   "form": "rauch",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Eine Nachbarin hat den Rauch gerochen und die Feuerwehr angerufen."
+  },
+  {
+   "lemma": "leitung",
+   "form": "leitung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Vielleicht war es ein Problem mit einer alten Leitung."
+  },
+  {
+   "lemma": "eröffnung",
+   "form": "eröffnung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Die Zeitung berichtet heute auch von einer Eröffnung."
+  },
+  {
+   "lemma": "miteinander",
+   "form": "miteinander",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "„Ich möchte, dass die Menschen hier miteinander sprechen.“"
+  }
+ ],
+ "de-a2-2-09": [
+  {
+   "lemma": "wunderbar",
+   "form": "wunderbar",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das ist wunderbar."
+  },
+  {
+   "lemma": "klingen",
+   "form": "klingt",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das klingt kompliziert."
+  },
+  {
+   "lemma": "team",
+   "form": "team",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Er gehört zu einem Team."
+  },
+  {
+   "lemma": "hängen",
+   "form": "hängen",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Im Garten hängen noch viele Äpfel am Baum."
+  },
+  {
+   "lemma": "auflegen",
+   "form": "auflegen",
+   "from": "de-a2-2-03",
+   "own": 3,
+   "ctx": "Ich muss jetzt auflegen."
+  },
+  {
+   "lemma": "spüren",
+   "form": "gespürt",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Nach dem Studium hat er eine Berufung gespürt und eine Entscheidung getroffen."
+  },
+  {
+   "lemma": "ach",
+   "form": "ach",
+   "from": "de-a2-2-03",
+   "own": 3,
+   "ctx": "Ach, meine Enkelin!"
+  },
+  {
+   "lemma": "reichen",
+   "form": "reicht",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Ein Visum hatte er schon aus Amerika, aber das reicht hier nicht."
+  },
+  {
+   "lemma": "daruntersetzen",
+   "form": "daruntersetzen",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Dann musste er seinen Ausweis zeigen und seine Unterschrift daruntersetzen."
+  },
+  {
+   "lemma": "dame",
+   "form": "dame",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Das ist die nette Dame, die ein Zimmer vermietet."
+  },
+  {
+   "lemma": "ärger",
+   "form": "ärger",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Wenn man seine Papiere nicht abgibt, gibt es doch bestimmt Ärger."
+  },
+  {
+   "lemma": "sprachkurs",
+   "form": "sprachkurs",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Er geht zum Sprachkurs, und am Abend sitzt er oft am Computer."
+  },
+  {
+   "lemma": "heimatgemeinde",
+   "form": "heimatgemeinden",
+   "from": "de-a2-2-03",
+   "own": 1,
+   "ctx": "Ihre Heimatgemeinden schicken Spenden."
+  },
+  {
+   "lemma": "übersehen",
+   "form": "übersehen",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Sie können es nicht übersehen."
+  },
+  {
+   "lemma": "dahin",
+   "form": "dahin",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Bis dahin brauchen wir alle Geduld."
+  },
+  {
+   "lemma": "stück",
+   "form": "stück",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Er sieht den Hausmeister im Hof und gibt ihm ein Stück Kuchen."
+  },
+  {
+   "lemma": "tonne",
+   "form": "tonne",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Wir trennen das Essen, und wir nehmen die graue Tonne für den Rest."
+  },
+  {
+   "lemma": "sorge",
+   "form": "sorge",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich verstehe Ihre Sorge."
+  },
+  {
+   "lemma": "wenige",
+   "form": "wenige",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Die Veranstaltung ist für alle, nicht für wenige."
+  },
+  {
+   "lemma": "tor",
+   "form": "tor",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Man geht die Straße entlang bis zum großen Tor."
+  },
+  {
+   "lemma": "längst",
+   "form": "längst",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich habe Ihnen längst vergeben."
+  },
+  {
+   "lemma": "verständlich",
+   "form": "verständlich",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ihr Wunsch ist verständlich."
+  },
+  {
+   "lemma": "fremde",
+   "form": "fremde",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Geben Sie nie Geld, Ausweis oder Schlüssel an Fremde."
+  },
+  {
+   "lemma": "warnung",
+   "form": "warnung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Außerdem steht eine Warnung der Polizei in der Zeitung."
+  },
+  {
+   "lemma": "zufall",
+   "form": "zufall",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Bäcker an der Ecke sagt: „Das ist kein Zufall. Wir haben es oft gesagt.“"
+  },
+  {
+   "lemma": "nachbarin",
+   "form": "nachbarin",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Eine Nachbarin hat den Rauch gerochen und die Feuerwehr angerufen."
+  },
+  {
+   "lemma": "bewohner",
+   "form": "bewohner",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Alle Bewohner konnten das Haus rechtzeitig verlassen."
+  },
+  {
+   "lemma": "nachbarstraße",
+   "form": "nachbarstraße",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Hauskreis aus der Nachbarstraße sammelt jetzt eine Spende für die Familie."
+  },
+  {
+   "lemma": "nebenan",
+   "form": "nebenan",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Herr Schmidt, der Bäcker an der Ecke, hat nebenan ein kleines Café eröffnet."
+  },
+  {
+   "lemma": "nötig",
+   "form": "nötig",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Ein Gast meint: „Das war nämlich nötig. Man hat im Stadtteil keinen Platz zum Sitzen gehabt.“"
+  },
+  {
+   "lemma": "paar",
+   "form": "paar",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Dafür brauche ich ein paar Tage."
+  },
+  {
+   "lemma": "donnerstagabend",
+   "form": "donnerstagabend",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Am Donnerstagabend trifft sich das Team im Haus der Gemeinde."
+  },
+  {
+   "lemma": "aufdringen",
+   "form": "aufdrängen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Aber wir wollen es nicht aufdrängen."
+  },
+  {
+   "lemma": "fair",
+   "form": "fair",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das ist fair."
+  },
+  {
+   "lemma": "begeistern",
+   "form": "begeistert",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Der Jugendkreis ist begeistert."
+  }
+ ],
+ "de-a2-2-10": [
+  {
+   "lemma": "glück",
+   "form": "glück",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Viel Glück!"
+  },
+  {
+   "lemma": "darüber",
+   "form": "darüber",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Frau Weber nennt das Papierkram, und sie lacht darüber."
+  },
+  {
+   "lemma": "daran",
+   "form": "daran",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Die Kultur ist ihm noch fremd, aber er gewöhnt sich langsam daran."
+  },
+  {
+   "lemma": "besuch",
+   "form": "besuch",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Am Samstag ist er endlich frei, und Freunde kommen zu Besuch."
+  },
+  {
+   "lemma": "weiter",
+   "form": "weiter",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Vielleicht ist das die beste Freundschaft: Man hilft sich, wenn man nicht weiter weiß."
+  },
+  {
+   "lemma": "vorsichtig",
+   "form": "vorsichtig",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Überqueren Sie dort bitte vorsichtig die Straße."
+  },
+  {
+   "lemma": "übersehen",
+   "form": "übersehen",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Sie können es nicht übersehen."
+  },
+  {
+   "lemma": "abteilung",
+   "form": "abteilung",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Wo ist die Abteilung für Ausländer?"
+  },
+  {
+   "lemma": "buchstabe",
+   "form": "buchstaben",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Schreiben Sie bitte in großen Buchstaben."
+  },
+  {
+   "lemma": "wovon",
+   "form": "wovon",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Und wovon leben Sie?"
+  },
+  {
+   "lemma": "strich",
+   "form": "strich",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Vergessen Sie nicht, unter den Strich zu schreiben, nicht daneben."
+  },
+  {
+   "lemma": "daneben",
+   "form": "daneben",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Vergessen Sie nicht, unter den Strich zu schreiben, nicht daneben."
+  },
+  {
+   "lemma": "gültig",
+   "form": "gültig",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Ihre Nummer bleibt gültig."
+  },
+  {
+   "lemma": "papierkram",
+   "form": "papierkram",
+   "from": "de-a2-2-04",
+   "own": 1,
+   "ctx": "Frau Weber nennt das Papierkram, und sie lacht darüber."
+  },
+  {
+   "lemma": "mithelfen",
+   "form": "mithelfen",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Und wir müssen alle mithelfen."
+  },
+  {
+   "lemma": "stören",
+   "form": "stören",
+   "from": "de-a2-2-05",
+   "own": 2,
+   "ctx": "Ich möchte niemanden stören."
+  },
+  {
+   "lemma": "abkürzung",
+   "form": "abkürzung",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Ein Rezept hat eine Ordnung: Man macht es langsam und nimmt keine Abkürzung."
+  },
+  {
+   "lemma": "besetzen",
+   "form": "besetzt",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Das Telefon im Amt ist oft besetzt."
+  },
+  {
+   "lemma": "punkt",
+   "form": "punkt",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Nach dem Fest kommt noch ein kleiner Punkt."
+  },
+  {
+   "lemma": "bau",
+   "form": "bau",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Neben dem Spielplatz ist ein neues Haus im Bau."
+  },
+  {
+   "lemma": "entschuldigung",
+   "form": "entschuldigung",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Das ist ein Grund zur Entschuldigung."
+  },
+  {
+   "lemma": "stadtrat",
+   "form": "stadtrat",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Die Mehrheit im Stadtrat entscheidet."
+  },
+  {
+   "lemma": "solcher",
+   "form": "solchen",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Wer einen solchen Anruf bekommen hat, soll es dem Amt sagen."
+  },
+  {
+   "lemma": "stattfinden",
+   "form": "stattfinden",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Hier steht, was im Stadtteil passiert ist und was bald stattfinden wird."
+  },
+  {
+   "lemma": "melden",
+   "form": "melden",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Wer das gesehen hat, kann sich beim Amt melden."
+  },
+  {
+   "lemma": "parkstraße",
+   "form": "parkstraße",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "In der Nacht zu Dienstag gab es ein Feuer in einem Haus in der Parkstraße."
+  },
+  {
+   "lemma": "rechtzeitig",
+   "form": "rechtzeitig",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Alle Bewohner konnten das Haus rechtzeitig verlassen."
+  },
+  {
+   "lemma": "leitung",
+   "form": "leitung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Vielleicht war es ein Problem mit einer alten Leitung."
+  },
+  {
+   "lemma": "frisch",
+   "form": "frisch",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Die Preise sind günstig, und die Kuchen sind jeden Tag frisch."
+  },
+  {
+   "lemma": "miteinander",
+   "form": "miteinander",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "„Ich möchte, dass die Menschen hier miteinander sprechen.“"
+  },
+  {
+   "lemma": "aufbauen",
+   "form": "aufbauen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Um zehn Uhr werden wir den Stand aufbauen."
+  },
+  {
+   "lemma": "schiefgehen",
+   "form": "schiefgeht",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Die Vorbereitung ist wichtig, damit nichts schiefgeht."
+  },
+  {
+   "lemma": "zwang",
+   "form": "zwang",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das Evangelium ist eine Einladung, kein Zwang."
+  },
+  {
+   "lemma": "vorderseite",
+   "form": "vorderseite",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Auf der Vorderseite ein Foto vom Stadtteil, auf der anderen Seite die Zeit und der Ort."
+  },
+  {
+   "lemma": "typisch",
+   "form": "typischer",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Das ist ein typischer Fehler."
+  },
+  {
+   "lemma": "banane",
+   "form": "banane",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Dann iss nur leichte Sachen: Suppe, Brot, vielleicht eine Banane."
+  },
+  {
+   "lemma": "lunge",
+   "form": "lunge",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Deine Lunge ist frei, glaube ich."
+  },
+  {
+   "lemma": "löwe",
+   "form": "löwe",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Darin hustet er wie ein kleiner Löwe."
+  }
+ ],
+ "de-a2-2-11": [
+  {
+   "lemma": "blatt",
+   "form": "blatt",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Im Treppenhaus ist ein großes Blatt: die Hausordnung."
+  },
+  {
+   "lemma": "dazulegen",
+   "form": "dazugelegt",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Ein Mitarbeiter hat auch eine Bescheinigung für seinen Wohnsitz dazugelegt."
+  },
+  {
+   "lemma": "klopfen",
+   "form": "klopft",
+   "from": "de-a2-2-05",
+   "own": 2,
+   "ctx": "Am Montag früh klopft es an Sams Tür."
+  },
+  {
+   "lemma": "riechen",
+   "form": "riecht",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Man riecht es im ganzen Haus."
+  },
+  {
+   "lemma": "dahin",
+   "form": "dahin",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Bis dahin brauchen wir alle Geduld."
+  },
+  {
+   "lemma": "mithelfen",
+   "form": "mithelfen",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Und wir müssen alle mithelfen."
+  },
+  {
+   "lemma": "abends",
+   "form": "abends",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Und noch etwas: Ihre Musik ist abends manchmal zu laut."
+  },
+  {
+   "lemma": "ab",
+   "form": "ab",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Ab jetzt höre ich die Musik leiser."
+  },
+  {
+   "lemma": "form",
+   "form": "form",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Dann kommen die Äpfel in die Form."
+  },
+  {
+   "lemma": "stück",
+   "form": "stück",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Er sieht den Hausmeister im Hof und gibt ihm ein Stück Kuchen."
+  },
+  {
+   "lemma": "stören",
+   "form": "stören",
+   "from": "de-a2-2-05",
+   "own": 2,
+   "ctx": "Ich möchte niemanden stören."
+  },
+  {
+   "lemma": "ofen",
+   "form": "ofen",
+   "from": "de-a2-2-05",
+   "own": 3,
+   "ctx": "Den Ofen auf 180 Grad stellen."
+  },
+  {
+   "lemma": "tonne",
+   "form": "tonne",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Wir trennen das Essen, und wir nehmen die graue Tonne für den Rest."
+  },
+  {
+   "lemma": "befehlen",
+   "form": "befehlen",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Das ist die Regel der Gemeinde: Wir bitten, wir befehlen nicht."
+  },
+  {
+   "lemma": "apfelkuchen",
+   "form": "apfelkuchen",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Am Nachmittag backt Frau Weber einen Apfelkuchen."
+  },
+  {
+   "lemma": "schüssel",
+   "form": "schüssel",
+   "from": "de-a2-2-05",
+   "own": 1,
+   "ctx": "Dann Mehl, Zucker, Butter und ein Ei in eine Schüssel geben."
+  },
+  {
+   "lemma": "rest",
+   "form": "rest",
+   "from": "de-a2-2-05",
+   "own": 2,
+   "ctx": "Wir trennen das Essen, und wir nehmen die graue Tonne für den Rest."
+  },
+  {
+   "lemma": "vorher",
+   "form": "vorher",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich war vorher nicht freundlich."
+  },
+  {
+   "lemma": "zählen",
+   "form": "zählt",
+   "from": "de-a2-2-06",
+   "own": 2,
+   "ctx": "Sam zählt 28 Hände."
+  },
+  {
+   "lemma": "lastwagen",
+   "form": "lastwagen",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Man sieht, wie die Lastwagen vor dem Spielplatz halten."
+  },
+  {
+   "lemma": "längst",
+   "form": "längst",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich habe Ihnen längst vergeben."
+  },
+  {
+   "lemma": "korrigieren",
+   "form": "korrigiert",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Wenn Sie einen Fehler machen, wird er korrigiert."
+  },
+  {
+   "lemma": "davor",
+   "form": "davor",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Viele Eltern haben Angst davor, und die Schüler auch."
+  },
+  {
+   "lemma": "warnung",
+   "form": "warnung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Außerdem steht eine Warnung der Polizei in der Zeitung."
+  },
+  {
+   "lemma": "zufall",
+   "form": "zufall",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Bäcker an der Ecke sagt: „Das ist kein Zufall. Wir haben es oft gesagt.“"
+  },
+  {
+   "lemma": "nachbarin",
+   "form": "nachbarin",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Eine Nachbarin hat den Rauch gerochen und die Feuerwehr angerufen."
+  },
+  {
+   "lemma": "bewohner",
+   "form": "bewohner",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Alle Bewohner konnten das Haus rechtzeitig verlassen."
+  },
+  {
+   "lemma": "nachbarstraße",
+   "form": "nachbarstraße",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Hauskreis aus der Nachbarstraße sammelt jetzt eine Spende für die Familie."
+  },
+  {
+   "lemma": "nebenan",
+   "form": "nebenan",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Herr Schmidt, der Bäcker an der Ecke, hat nebenan ein kleines Café eröffnet."
+  },
+  {
+   "lemma": "nötig",
+   "form": "nötig",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Ein Gast meint: „Das war nämlich nötig. Man hat im Stadtteil keinen Platz zum Sitzen gehabt.“"
+  },
+  {
+   "lemma": "darin",
+   "form": "darin",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Ich bin darin schon geübt."
+  },
+  {
+   "lemma": "donnerstagabend",
+   "form": "donnerstagabend",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Am Donnerstagabend trifft sich das Team im Haus der Gemeinde."
+  },
+  {
+   "lemma": "gastgeber",
+   "form": "gastgeber",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Aber wir können gute Gastgeber sein."
+  },
+  {
+   "lemma": "fair",
+   "form": "fair",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das ist fair."
+  },
+  {
+   "lemma": "liter",
+   "form": "liter",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Du musst viel trinken, zwei Liter am Tag."
+  },
+  {
+   "lemma": "ausnahme",
+   "form": "ausnahme",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Ich spare immer, aber bei einem kranken Mann mache ich eine Ausnahme."
+  },
+  {
+   "lemma": "brust",
+   "form": "brust",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Aber wenn du schwer atmen musst oder Schmerzen in der Brust hast, ist das ernst."
+  },
+  {
+   "lemma": "mittwochabend",
+   "form": "mittwochabend",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Am Mittwochabend sitzt der Jugendkreis im Haus der Gemeinde."
+  },
+  {
+   "lemma": "bach",
+   "form": "bach",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er musste einen kleinen Bach überqueren."
+  },
+  {
+   "lemma": "schrecklich",
+   "form": "schrecklich",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Das ist schrecklich."
+  },
+  {
+   "lemma": "berühren",
+   "form": "berühren",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Vielleicht dachte er: Ich darf nichts Unreines berühren."
+  },
+  {
+   "lemma": "tuch",
+   "form": "tuch",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Dann verband er sie mit einem Tuch."
+  },
+  {
+   "lemma": "stall",
+   "form": "stall",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Hinten war der Stall mit dem Ausgang zum Hof, und vorn war der Eingang."
+  },
+  {
+   "lemma": "münze",
+   "form": "münzen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Samariter gab ihm zwei Münzen."
+  }
+ ],
+ "de-a2-2-12": [
+  {
+   "lemma": "vorbeikommen",
+   "form": "kommen",
+   "from": "de-a2-2-06",
+   "own": 2,
+   "ctx": "Kommen Sie morgen vorbei."
+  },
+  {
+   "lemma": "eröffnen",
+   "form": "eröffne",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich eröffne die Sitzung."
+  },
+  {
+   "lemma": "teil",
+   "form": "teile",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Die Tagesordnung hat drei Teile."
+  },
+  {
+   "lemma": "sorge",
+   "form": "sorge",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich verstehe Ihre Sorge."
+  },
+  {
+   "lemma": "besetzen",
+   "form": "besetzt",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Das Telefon im Amt ist oft besetzt."
+  },
+  {
+   "lemma": "vorher",
+   "form": "vorher",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich war vorher nicht freundlich."
+  },
+  {
+   "lemma": "pro",
+   "form": "pro",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich wünsche mir 30 Kilometer pro Stunde, nicht mehr."
+  },
+  {
+   "lemma": "sammeln",
+   "form": "sammeln",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Wir sammeln eine Spende, und wir legen etwas dazu."
+  },
+  {
+   "lemma": "wenige",
+   "form": "wenige",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Die Veranstaltung ist für alle, nicht für wenige."
+  },
+  {
+   "lemma": "punkt",
+   "form": "punkt",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Nach dem Fest kommt noch ein kleiner Punkt."
+  },
+  {
+   "lemma": "zählen",
+   "form": "zählt",
+   "from": "de-a2-2-06",
+   "own": 2,
+   "ctx": "Sam zählt 28 Hände."
+  },
+  {
+   "lemma": "tor",
+   "form": "tor",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Man geht die Straße entlang bis zum großen Tor."
+  },
+  {
+   "lemma": "bau",
+   "form": "bau",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Neben dem Spielplatz ist ein neues Haus im Bau."
+  },
+  {
+   "lemma": "lastwagen",
+   "form": "lastwagen",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Man sieht, wie die Lastwagen vor dem Spielplatz halten."
+  },
+  {
+   "lemma": "entschuldigung",
+   "form": "entschuldigung",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Das ist ein Grund zur Entschuldigung."
+  },
+  {
+   "lemma": "längst",
+   "form": "längst",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich habe Ihnen längst vergeben."
+  },
+  {
+   "lemma": "verständlich",
+   "form": "verständlich",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ihr Wunsch ist verständlich."
+  },
+  {
+   "lemma": "stadtrat",
+   "form": "stadtrat",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Die Mehrheit im Stadtrat entscheidet."
+  },
+  {
+   "lemma": "weitergeben",
+   "form": "weitergebe",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Ich verspreche, dass ich ihn weitergebe."
+  },
+  {
+   "lemma": "getränk",
+   "form": "getränke",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Wer organisiert die Getränke?"
+  },
+  {
+   "lemma": "monatsmiete",
+   "form": "monatsmieten",
+   "from": "de-a2-2-06",
+   "own": 1,
+   "ctx": "Zwei Monatsmieten."
+  },
+  {
+   "lemma": "lohnen",
+   "form": "lohnt",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Er hat lange überlegt, ob sich das lohnt."
+  },
+  {
+   "lemma": "passieren",
+   "form": "passiert",
+   "from": "de-a2-2-07",
+   "own": 2,
+   "ctx": "Hier steht, was im Stadtteil passiert ist und was bald stattfinden wird."
+  },
+  {
+   "lemma": "fahrer",
+   "form": "fahrer",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Fahrer ist sofort stehen geblieben und hat Hilfe geholt."
+  },
+  {
+   "lemma": "melden",
+   "form": "melden",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Wer das gesehen hat, kann sich beim Amt melden."
+  },
+  {
+   "lemma": "rauch",
+   "form": "rauch",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Eine Nachbarin hat den Rauch gerochen und die Feuerwehr angerufen."
+  },
+  {
+   "lemma": "rechtzeitig",
+   "form": "rechtzeitig",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Alle Bewohner konnten das Haus rechtzeitig verlassen."
+  },
+  {
+   "lemma": "eröffnung",
+   "form": "eröffnung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Die Zeitung berichtet heute auch von einer Eröffnung."
+  },
+  {
+   "lemma": "frisch",
+   "form": "frisch",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Die Preise sind günstig, und die Kuchen sind jeden Tag frisch."
+  },
+  {
+   "lemma": "mauer",
+   "form": "mauer",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "„Wir brauchen eine Lösung. Mein Vorschlag ist eine kleine Mauer vor dem Spielplatz und eine zweite Ampel.“"
+  },
+  {
+   "lemma": "versuchen",
+   "form": "versuchen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Aber er weiß, dass er es versuchen will."
+  },
+  {
+   "lemma": "schiefgehen",
+   "form": "schiefgeht",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Die Vorbereitung ist wichtig, damit nichts schiefgeht."
+  },
+  {
+   "lemma": "zwang",
+   "form": "zwang",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das Evangelium ist eine Einladung, kein Zwang."
+  },
+  {
+   "lemma": "vorderseite",
+   "form": "vorderseite",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Auf der Vorderseite ein Foto vom Stadtteil, auf der anderen Seite die Zeit und der Ort."
+  },
+  {
+   "lemma": "mund",
+   "form": "mund",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Mein Mund ist ganz trocken."
+  },
+  {
+   "lemma": "banane",
+   "form": "banane",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Dann iss nur leichte Sachen: Suppe, Brot, vielleicht eine Banane."
+  },
+  {
+   "lemma": "übrigens",
+   "form": "übrigens",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Ich habe übrigens eine Neuigkeit: Ben hat die Grippe auch."
+  },
+  {
+   "lemma": "löwe",
+   "form": "löwe",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Darin hustet er wie ein kleiner Löwe."
+  },
+  {
+   "lemma": "gefährlich",
+   "form": "gefährlicher",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Es war ein gefährlicher Weg."
+  },
+  {
+   "lemma": "fromm",
+   "form": "frommer",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er war ein frommer Mann und kam vom Tempel."
+  },
+  {
+   "lemma": "feind",
+   "form": "feinde",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Sie waren Fremde und Feinde."
+  },
+  {
+   "lemma": "heben",
+   "form": "hob",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er hob den Mann auf seinen Esel und brachte ihn langsam zur nächsten Herberge."
+  },
+  {
+   "lemma": "hinauf",
+   "form": "hinauf",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er trug den Mann die Treppe hinauf und legte ihn in ein Bett."
+  },
+  {
+   "lemma": "nicken",
+   "form": "nickte",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Wirt nickte."
+  },
+  {
+   "lemma": "einige",
+   "form": "einigen",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich lebe seit einigen Monaten in Leipzig."
+  },
+  {
+   "lemma": "krieg",
+   "form": "krieg",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Krieg wurde sie zerstört, und man hat sie später wieder gebaut."
+  },
+  {
+   "lemma": "eintritt",
+   "form": "eintritt",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Der Eintritt war nicht teuer."
+  },
+  {
+   "lemma": "berühmt",
+   "form": "berühmteste",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die berühmteste Sehenswürdigkeit ist die Burg auf dem Berg."
+  },
+  {
+   "lemma": "plakat",
+   "form": "plakat",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Dort habe ich ein Plakat gesehen: „Versammlung am Donnerstag. Tagesordnung im Rathaus.“"
+  },
+  {
+   "lemma": "restaurant",
+   "form": "restaurant",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Das beste Essen gibt es nicht im Restaurant, sondern auf dem Markt."
+  }
+ ],
+ "de-a2-2-13": [
+  {
+   "lemma": "klar",
+   "form": "klar",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Die Abstimmung war klar."
+  },
+  {
+   "lemma": "lohnen",
+   "form": "lohnt",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Er hat lange überlegt, ob sich das lohnt."
+  },
+  {
+   "lemma": "eigen",
+   "form": "eigenen",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Es gibt Kaffee, Kuchen und Brot aus dem eigenen Ofen."
+  },
+  {
+   "lemma": "fremde",
+   "form": "fremde",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Geben Sie nie Geld, Ausweis oder Schlüssel an Fremde."
+  },
+  {
+   "lemma": "solcher",
+   "form": "solchen",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Wer einen solchen Anruf bekommen hat, soll es dem Amt sagen."
+  },
+  {
+   "lemma": "davor",
+   "form": "davor",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Viele Eltern haben Angst davor, und die Schüler auch."
+  },
+  {
+   "lemma": "passieren",
+   "form": "passiert",
+   "from": "de-a2-2-07",
+   "own": 2,
+   "ctx": "Hier steht, was im Stadtteil passiert ist und was bald stattfinden wird."
+  },
+  {
+   "lemma": "stattfinden",
+   "form": "stattfinden",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Hier steht, was im Stadtteil passiert ist und was bald stattfinden wird."
+  },
+  {
+   "lemma": "warnung",
+   "form": "warnung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Außerdem steht eine Warnung der Polizei in der Zeitung."
+  },
+  {
+   "lemma": "fahrer",
+   "form": "fahrer",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Fahrer ist sofort stehen geblieben und hat Hilfe geholt."
+  },
+  {
+   "lemma": "zufall",
+   "form": "zufall",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Bäcker an der Ecke sagt: „Das ist kein Zufall. Wir haben es oft gesagt.“"
+  },
+  {
+   "lemma": "melden",
+   "form": "melden",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Wer das gesehen hat, kann sich beim Amt melden."
+  },
+  {
+   "lemma": "parkstraße",
+   "form": "parkstraße",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "In der Nacht zu Dienstag gab es ein Feuer in einem Haus in der Parkstraße."
+  },
+  {
+   "lemma": "nachbarin",
+   "form": "nachbarin",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Eine Nachbarin hat den Rauch gerochen und die Feuerwehr angerufen."
+  },
+  {
+   "lemma": "rauch",
+   "form": "rauch",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Eine Nachbarin hat den Rauch gerochen und die Feuerwehr angerufen."
+  },
+  {
+   "lemma": "bewohner",
+   "form": "bewohner",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Alle Bewohner konnten das Haus rechtzeitig verlassen."
+  },
+  {
+   "lemma": "rechtzeitig",
+   "form": "rechtzeitig",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Alle Bewohner konnten das Haus rechtzeitig verlassen."
+  },
+  {
+   "lemma": "leitung",
+   "form": "leitung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Vielleicht war es ein Problem mit einer alten Leitung."
+  },
+  {
+   "lemma": "nachbarstraße",
+   "form": "nachbarstraße",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Der Hauskreis aus der Nachbarstraße sammelt jetzt eine Spende für die Familie."
+  },
+  {
+   "lemma": "eröffnung",
+   "form": "eröffnung",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Die Zeitung berichtet heute auch von einer Eröffnung."
+  },
+  {
+   "lemma": "nebenan",
+   "form": "nebenan",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Herr Schmidt, der Bäcker an der Ecke, hat nebenan ein kleines Café eröffnet."
+  },
+  {
+   "lemma": "frisch",
+   "form": "frisch",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Die Preise sind günstig, und die Kuchen sind jeden Tag frisch."
+  },
+  {
+   "lemma": "miteinander",
+   "form": "miteinander",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "„Ich möchte, dass die Menschen hier miteinander sprechen.“"
+  },
+  {
+   "lemma": "nötig",
+   "form": "nötig",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Ein Gast meint: „Das war nämlich nötig. Man hat im Stadtteil keinen Platz zum Sitzen gehabt.“"
+  },
+  {
+   "lemma": "warnen",
+   "form": "warnt",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Die Polizei warnt vor Anrufen am Telefon."
+  },
+  {
+   "lemma": "täter",
+   "form": "täter",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Wenn Sie nicht allein sind, ist es schwerer für die Täter."
+  },
+  {
+   "lemma": "mitmachen",
+   "form": "mitmachen",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Wer mitmachen möchte, kann sich vor dem Café mit ihm verabreden."
+  },
+  {
+   "lemma": "hauptbahnhof",
+   "form": "hauptbahnhof",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Eine kurze Meldung noch: In der Straßenbahn gibt es eine neue Verbindung zum Hauptbahnhof."
+  },
+  {
+   "lemma": "leserin",
+   "form": "leserin",
+   "from": "de-a2-2-07",
+   "own": 1,
+   "ctx": "Eine Leserin schreibt: „Ich habe den Bericht gelesen und möchte meine Meinung sagen.“"
+  },
+  {
+   "lemma": "anruf",
+   "form": "anruf",
+   "from": "de-a2-2-07",
+   "own": 4,
+   "ctx": "Die Polizei warnt vor Anrufen am Telefon."
+  },
+  {
+   "lemma": "text",
+   "form": "text",
+   "from": "de-a2-2-08",
+   "own": 3,
+   "ctx": "Meine Verantwortung ist der Text."
+  },
+  {
+   "lemma": "aufdringen",
+   "form": "aufdrängen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Aber wir wollen es nicht aufdrängen."
+  },
+  {
+   "lemma": "gastgeber",
+   "form": "gastgeber",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Aber wir können gute Gastgeber sein."
+  },
+  {
+   "lemma": "begeistern",
+   "form": "begeistert",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Der Jugendkreis ist begeistert."
+  },
+  {
+   "lemma": "sache",
+   "form": "sachen",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Dann iss nur leichte Sachen: Suppe, Brot, vielleicht eine Banane."
+  },
+  {
+   "lemma": "ausnahme",
+   "form": "ausnahme",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Ich spare immer, aber bei einem kranken Mann mache ich eine Ausnahme."
+  },
+  {
+   "lemma": "brust",
+   "form": "brust",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Aber wenn du schwer atmen musst oder Schmerzen in der Brust hast, ist das ernst."
+  },
+  {
+   "lemma": "jericho",
+   "form": "jericho",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Ein Mann ging von Jerusalem nach Jericho hinunter."
+  },
+  {
+   "lemma": "schlagen",
+   "form": "schlugen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Sie schlugen ihn und raubten ihn aus."
+  },
+  {
+   "lemma": "unreines",
+   "form": "unreines",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Vielleicht dachte er: Ich darf nichts Unreines berühren."
+  },
+  {
+   "lemma": "reiten",
+   "form": "ritt",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er ritt auf einem Esel und hatte Wein dabei."
+  },
+  {
+   "lemma": "tuch",
+   "form": "tuch",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Dann verband er sie mit einem Tuch."
+  },
+  {
+   "lemma": "weiterreisen",
+   "form": "weiterreisen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Am Morgen musste er weiterreisen."
+  },
+  {
+   "lemma": "münze",
+   "form": "münzen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Samariter gab ihm zwei Münzen."
+  },
+  {
+   "lemma": "ticket",
+   "form": "ticket",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich habe ein günstiges Ticket für das Wochenende gekauft, und ich habe einen Reiseführer mitgenommen."
+  },
+  {
+   "lemma": "zerstören",
+   "form": "zerstört",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Krieg wurde sie zerstört, und man hat sie später wieder gebaut."
+  },
+  {
+   "lemma": "reisende",
+   "form": "reisende",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Zimmer waren drei andere Reisende."
+  },
+  {
+   "lemma": "hinaufgestiegen",
+   "form": "hinaufgestiegen",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin zu Fuß hinaufgestiegen, über viele Treppen und durch enge Wege."
+  },
+  {
+   "lemma": "rathaus",
+   "form": "rathaus",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Dort habe ich ein Plakat gesehen: „Versammlung am Donnerstag. Tagesordnung im Rathaus.“"
+  },
+  {
+   "lemma": "vorsicht",
+   "form": "vorsicht",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Aber Vorsicht: Am Sonntag sind viele Läden zu."
+  },
+  {
+   "lemma": "einschlafen",
+   "form": "einschlafe",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Bevor ich einschlafe, schreibe ich noch schnell in mein Tagebuch."
+  },
+  {
+   "lemma": "einstecken",
+   "form": "eingesteckt",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Ich habe dem Mann einen Flyer gegeben, und er hat ihn eingesteckt."
+  }
+ ],
+ "de-a2-2-14": [
+  {
+   "lemma": "chance",
+   "form": "chance",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das ist eine große Chance."
+  },
+  {
+   "lemma": "davon",
+   "form": "davon",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Sagen wir davon auch etwas?"
+  },
+  {
+   "lemma": "geschenk",
+   "form": "geschenk",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das ist kein Druck, das ist ein Geschenk."
+  },
+  {
+   "lemma": "ort",
+   "form": "ort",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Auf der Vorderseite ein Foto vom Stadtteil, auf der anderen Seite die Zeit und der Ort."
+  },
+  {
+   "lemma": "stand",
+   "form": "stand",
+   "from": "de-a2-2-08",
+   "own": 4,
+   "ctx": "Wir wollen für das Fest im Juni einen Stand planen."
+  },
+  {
+   "lemma": "paar",
+   "form": "paar",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Dafür brauche ich ein paar Tage."
+  },
+  {
+   "lemma": "aufbauen",
+   "form": "aufbauen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Um zehn Uhr werden wir den Stand aufbauen."
+  },
+  {
+   "lemma": "darin",
+   "form": "darin",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Ich bin darin schon geübt."
+  },
+  {
+   "lemma": "versuchen",
+   "form": "versuchen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Aber er weiß, dass er es versuchen will."
+  },
+  {
+   "lemma": "text",
+   "form": "text",
+   "from": "de-a2-2-08",
+   "own": 3,
+   "ctx": "Meine Verantwortung ist der Text."
+  },
+  {
+   "lemma": "donnerstagabend",
+   "form": "donnerstagabend",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Am Donnerstagabend trifft sich das Team im Haus der Gemeinde."
+  },
+  {
+   "lemma": "schiefgehen",
+   "form": "schiefgeht",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Die Vorbereitung ist wichtig, damit nichts schiefgeht."
+  },
+  {
+   "lemma": "aufdringen",
+   "form": "aufdrängen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Aber wir wollen es nicht aufdrängen."
+  },
+  {
+   "lemma": "zwang",
+   "form": "zwang",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das Evangelium ist eine Einladung, kein Zwang."
+  },
+  {
+   "lemma": "gastgeber",
+   "form": "gastgeber",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Aber wir können gute Gastgeber sein."
+  },
+  {
+   "lemma": "fair",
+   "form": "fair",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das ist fair."
+  },
+  {
+   "lemma": "vorderseite",
+   "form": "vorderseite",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Auf der Vorderseite ein Foto vom Stadtteil, auf der anderen Seite die Zeit und der Ort."
+  },
+  {
+   "lemma": "begeistern",
+   "form": "begeistert",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Der Jugendkreis ist begeistert."
+  },
+  {
+   "lemma": "geheimnis",
+   "form": "geheimnis",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Das ist das ganze Geheimnis."
+  },
+  {
+   "lemma": "dringen",
+   "form": "drängen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Wir werden niemanden drängen."
+  },
+  {
+   "lemma": "anknüpfen",
+   "form": "anknüpfen",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Daran können wir anknüpfen."
+  },
+  {
+   "lemma": "bereit",
+   "form": "bereit",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Der Kaffee wird um elf bereit sein."
+  },
+  {
+   "lemma": "kümmern",
+   "form": "kümmert",
+   "from": "de-a2-2-08",
+   "own": 1,
+   "ctx": "Ruth organisiert den Kaffee, und Daniel kümmert sich um die Musik."
+  },
+  {
+   "lemma": "druck",
+   "form": "druck",
+   "from": "de-a2-2-08",
+   "own": 2,
+   "ctx": "Das ist kein Druck, das ist ein Geschenk."
+  },
+  {
+   "lemma": "thermometer",
+   "form": "thermometer",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Hier ist ein Thermometer."
+  },
+  {
+   "lemma": "schauen",
+   "form": "schaut",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Anna schaut auf ihre Uhr."
+  },
+  {
+   "lemma": "körper",
+   "form": "körper",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Der Körper braucht Zeit."
+  },
+  {
+   "lemma": "trocken",
+   "form": "trocken",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Mein Mund ist ganz trocken."
+  },
+  {
+   "lemma": "weile",
+   "form": "weile",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Nach einer Weile spricht sie mit der Praxis."
+  },
+  {
+   "lemma": "dorthin",
+   "form": "dorthin",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Der Weg dorthin ist leicht."
+  },
+  {
+   "lemma": "normal",
+   "form": "normal",
+   "from": "de-a2-2-09",
+   "own": 2,
+   "ctx": "Übelkeit ist dabei normal."
+  },
+  {
+   "lemma": "typisch",
+   "form": "typischer",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Das ist ein typischer Fehler."
+  },
+  {
+   "lemma": "liter",
+   "form": "liter",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Du musst viel trinken, zwei Liter am Tag."
+  },
+  {
+   "lemma": "mund",
+   "form": "mund",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Mein Mund ist ganz trocken."
+  },
+  {
+   "lemma": "sache",
+   "form": "sachen",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Dann iss nur leichte Sachen: Suppe, Brot, vielleicht eine Banane."
+  },
+  {
+   "lemma": "lunge",
+   "form": "lunge",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Deine Lunge ist frei, glaube ich."
+  },
+  {
+   "lemma": "übrigens",
+   "form": "übrigens",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Ich habe übrigens eine Neuigkeit: Ben hat die Grippe auch."
+  },
+  {
+   "lemma": "einsam",
+   "form": "einsam",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Weg war lang und einsam."
+  },
+  {
+   "lemma": "rand",
+   "form": "rand",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Mann, den die Räuber überfallen hatten, lag halb tot am Rand des Weges."
+  },
+  {
+   "lemma": "unreines",
+   "form": "unreines",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Vielleicht dachte er: Ich darf nichts Unreines berühren."
+  },
+  {
+   "lemma": "feind",
+   "form": "feinde",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Sie waren Fremde und Feinde."
+  },
+  {
+   "lemma": "heben",
+   "form": "hob",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er hob den Mann auf seinen Esel und brachte ihn langsam zur nächsten Herberge."
+  },
+  {
+   "lemma": "hinauf",
+   "form": "hinauf",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er trug den Mann die Treppe hinauf und legte ihn in ein Bett."
+  },
+  {
+   "lemma": "nicken",
+   "form": "nickte",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Wirt nickte."
+  },
+  {
+   "lemma": "markieren",
+   "form": "markiert",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Sie hat eine Seite markiert."
+  },
+  {
+   "lemma": "rund",
+   "form": "runden",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die erste Sehenswürdigkeit, die ich gesehen habe, war eine große Kirche mit einem runden Dach."
+  },
+  {
+   "lemma": "einzig",
+   "form": "einzige",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Wir haben bis spät am Abend gesprochen, auf Deutsch, weil das unsere einzige gemeinsame Sprache war."
+  },
+  {
+   "lemma": "eng",
+   "form": "enge",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin zu Fuß hinaufgestiegen, über viele Treppen und durch enge Wege."
+  },
+  {
+   "lemma": "plakat",
+   "form": "plakat",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Dort habe ich ein Plakat gesehen: „Versammlung am Donnerstag. Tagesordnung im Rathaus.“"
+  },
+  {
+   "lemma": "gemütlich",
+   "form": "gemütlich",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Die Unterkunft ist einfach, aber sehr gemütlich."
+  },
+  {
+   "lemma": "weichen",
+   "form": "weich",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Der Nebel hat alles weich gemacht, die Häuser, die Bäume und sogar die Geräusche."
+  },
+  {
+   "lemma": "umwerfen",
+   "form": "umgeworfen",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Unser Ziel war ein kleiner Stand, aber der Wind hat den Tisch fast umgeworfen."
+  },
+  {
+   "lemma": "umkehren",
+   "form": "umgekehrt",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Auf dem Land ist es genau umgekehrt."
+  }
+ ],
+ "de-a2-2-15": [
+  {
+   "lemma": "zettel",
+   "form": "zettel",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Auf dem Tisch liegt ein Zettel von Anna: „Gute Besserung! Ruf an, wenn es schlimmer wird.“"
+  },
+  {
+   "lemma": "tief",
+   "form": "tief",
+   "from": "de-a2-2-09",
+   "own": 2,
+   "ctx": "Atme tief ein und aus."
+  },
+  {
+   "lemma": "thermometer",
+   "form": "thermometer",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Hier ist ein Thermometer."
+  },
+  {
+   "lemma": "schauen",
+   "form": "schaut",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Anna schaut auf ihre Uhr."
+  },
+  {
+   "lemma": "körper",
+   "form": "körper",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Der Körper braucht Zeit."
+  },
+  {
+   "lemma": "trocken",
+   "form": "trocken",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Mein Mund ist ganz trocken."
+  },
+  {
+   "lemma": "weile",
+   "form": "weile",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Nach einer Weile spricht sie mit der Praxis."
+  },
+  {
+   "lemma": "dorthin",
+   "form": "dorthin",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Der Weg dorthin ist leicht."
+  },
+  {
+   "lemma": "normal",
+   "form": "normal",
+   "from": "de-a2-2-09",
+   "own": 2,
+   "ctx": "Übelkeit ist dabei normal."
+  },
+  {
+   "lemma": "typisch",
+   "form": "typischer",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Das ist ein typischer Fehler."
+  },
+  {
+   "lemma": "liter",
+   "form": "liter",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Du musst viel trinken, zwei Liter am Tag."
+  },
+  {
+   "lemma": "mund",
+   "form": "mund",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Mein Mund ist ganz trocken."
+  },
+  {
+   "lemma": "sache",
+   "form": "sachen",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Dann iss nur leichte Sachen: Suppe, Brot, vielleicht eine Banane."
+  },
+  {
+   "lemma": "banane",
+   "form": "banane",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Dann iss nur leichte Sachen: Suppe, Brot, vielleicht eine Banane."
+  },
+  {
+   "lemma": "ausnahme",
+   "form": "ausnahme",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Ich spare immer, aber bei einem kranken Mann mache ich eine Ausnahme."
+  },
+  {
+   "lemma": "lunge",
+   "form": "lunge",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Deine Lunge ist frei, glaube ich."
+  },
+  {
+   "lemma": "brust",
+   "form": "brust",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Aber wenn du schwer atmen musst oder Schmerzen in der Brust hast, ist das ernst."
+  },
+  {
+   "lemma": "übrigens",
+   "form": "übrigens",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Ich habe übrigens eine Neuigkeit: Ben hat die Grippe auch."
+  },
+  {
+   "lemma": "löwe",
+   "form": "löwe",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Darin hustet er wie ein kleiner Löwe."
+  },
+  {
+   "lemma": "krankenkassenkarte",
+   "form": "krankenkassenkarte",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Er muss die Krankenkassenkarte mitbringen."
+  },
+  {
+   "lemma": "alkohol",
+   "form": "alkohol",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Du solltest nicht rauchen, und du solltest keinen Alkohol trinken."
+  },
+  {
+   "lemma": "ansteckend",
+   "form": "ansteckend",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Das ist ansteckend."
+  },
+  {
+   "lemma": "aufhängen",
+   "form": "aufgehängt",
+   "from": "de-a2-2-09",
+   "own": 1,
+   "ctx": "Sie soll bei der Mülltonne im Hof aufgehängt werden, damit niemand es vergisst."
+  },
+  {
+   "lemma": "vorkommen",
+   "form": "kommt",
+   "from": "de-a2-2-09",
+   "own": 2,
+   "ctx": "Die Temperatur ist hoch, aber das kommt oft vor."
+  },
+  {
+   "lemma": "decke",
+   "form": "decke",
+   "from": "de-a2-2-09",
+   "own": 2,
+   "ctx": "Kann ich noch eine Decke haben?"
+  },
+  {
+   "lemma": "ausatmen",
+   "form": "atme",
+   "from": "de-a2-2-09",
+   "own": 2,
+   "ctx": "Atme tief ein und aus."
+  },
+  {
+   "lemma": "erwarten",
+   "form": "erwartet",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Aber es kamen nicht alle, die man erwartet hätte."
+  },
+  {
+   "lemma": "steigen",
+   "form": "stieg",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er stieg vom Esel und ging zu dem Mann."
+  },
+  {
+   "lemma": "ebenso",
+   "form": "ebenso",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Dann geh und handle ebenso."
+  },
+  {
+   "lemma": "darum",
+   "form": "darum",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Darum brauchen wir Mut."
+  },
+  {
+   "lemma": "mittwochabend",
+   "form": "mittwochabend",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Am Mittwochabend sitzt der Jugendkreis im Haus der Gemeinde."
+  },
+  {
+   "lemma": "jericho",
+   "form": "jericho",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Ein Mann ging von Jerusalem nach Jericho hinunter."
+  },
+  {
+   "lemma": "einsam",
+   "form": "einsam",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Weg war lang und einsam."
+  },
+  {
+   "lemma": "bach",
+   "form": "bach",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er musste einen kleinen Bach überqueren."
+  },
+  {
+   "lemma": "gefährlich",
+   "form": "gefährlicher",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Es war ein gefährlicher Weg."
+  },
+  {
+   "lemma": "schlagen",
+   "form": "schlugen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Sie schlugen ihn und raubten ihn aus."
+  },
+  {
+   "lemma": "rand",
+   "form": "rand",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Mann, den die Räuber überfallen hatten, lag halb tot am Rand des Weges."
+  },
+  {
+   "lemma": "schrecklich",
+   "form": "schrecklich",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Das ist schrecklich."
+  },
+  {
+   "lemma": "fromm",
+   "form": "frommer",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er war ein frommer Mann und kam vom Tempel."
+  },
+  {
+   "lemma": "berühren",
+   "form": "berühren",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Vielleicht dachte er: Ich darf nichts Unreines berühren."
+  },
+  {
+   "lemma": "reiten",
+   "form": "ritt",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er ritt auf einem Esel und hatte Wein dabei."
+  },
+  {
+   "lemma": "stall",
+   "form": "stall",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Hinten war der Stall mit dem Ausgang zum Hof, und vorn war der Eingang."
+  },
+  {
+   "lemma": "weiterreisen",
+   "form": "weiterreisen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Am Morgen musste er weiterreisen."
+  },
+  {
+   "lemma": "eintrag",
+   "form": "eintrag",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin Sam, und das ist mein erster Eintrag in meinem neuen Blog."
+  },
+  {
+   "lemma": "direkt",
+   "form": "direkt",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die Altstadt ist der schönste Teil der Stadt, und sie liegt direkt am Fluss."
+  },
+  {
+   "lemma": "wurst",
+   "form": "wurst",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ein Mann hat mir gezeigt, wie man eine Wurst richtig isst."
+  },
+  {
+   "lemma": "beieinander",
+   "form": "beieinander",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Es gibt dort viel zu sehen, und alles liegt nah beieinander."
+  },
+  {
+   "lemma": "hinaufgestiegen",
+   "form": "hinaufgestiegen",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin zu Fuß hinaufgestiegen, über viele Treppen und durch enge Wege."
+  },
+  {
+   "lemma": "rathaus",
+   "form": "rathaus",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Dort habe ich ein Plakat gesehen: „Versammlung am Donnerstag. Tagesordnung im Rathaus.“"
+  },
+  {
+   "lemma": "vorsicht",
+   "form": "vorsicht",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Aber Vorsicht: Am Sonntag sind viele Läden zu."
+  },
+  {
+   "lemma": "stille",
+   "form": "stille",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Die Stille war nicht schlecht, ich habe Ruhe gefunden."
+  },
+  {
+   "lemma": "echt",
+   "form": "echt",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Der Erfolg war nicht groß, aber echt."
+  },
+  {
+   "lemma": "führerschein",
+   "form": "führerschein",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Außerdem muss ich den Führerschein machen, und das kostet viel."
+  },
+  {
+   "lemma": "strafe",
+   "form": "strafe",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Wer Abfall auf die Straße wirft oder sich nicht daran hält, kann eine Strafe bekommen."
+  }
+ ],
+ "de-a2-2-16": [
+  {
+   "lemma": "überraschen",
+   "form": "überrascht",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Wirt war überrascht."
+  },
+  {
+   "lemma": "erwarten",
+   "form": "erwartet",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Aber es kamen nicht alle, die man erwartet hätte."
+  },
+  {
+   "lemma": "steigen",
+   "form": "stieg",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er stieg vom Esel und ging zu dem Mann."
+  },
+  {
+   "lemma": "ebenso",
+   "form": "ebenso",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Dann geh und handle ebenso."
+  },
+  {
+   "lemma": "darum",
+   "form": "darum",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Darum brauchen wir Mut."
+  },
+  {
+   "lemma": "mittwochabend",
+   "form": "mittwochabend",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Am Mittwochabend sitzt der Jugendkreis im Haus der Gemeinde."
+  },
+  {
+   "lemma": "jericho",
+   "form": "jericho",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Ein Mann ging von Jerusalem nach Jericho hinunter."
+  },
+  {
+   "lemma": "einsam",
+   "form": "einsam",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Weg war lang und einsam."
+  },
+  {
+   "lemma": "bach",
+   "form": "bach",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er musste einen kleinen Bach überqueren."
+  },
+  {
+   "lemma": "gefährlich",
+   "form": "gefährlicher",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Es war ein gefährlicher Weg."
+  },
+  {
+   "lemma": "schlagen",
+   "form": "schlugen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Sie schlugen ihn und raubten ihn aus."
+  },
+  {
+   "lemma": "rand",
+   "form": "rand",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Mann, den die Räuber überfallen hatten, lag halb tot am Rand des Weges."
+  },
+  {
+   "lemma": "schrecklich",
+   "form": "schrecklich",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Das ist schrecklich."
+  },
+  {
+   "lemma": "fromm",
+   "form": "frommer",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er war ein frommer Mann und kam vom Tempel."
+  },
+  {
+   "lemma": "unreines",
+   "form": "unreines",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Vielleicht dachte er: Ich darf nichts Unreines berühren."
+  },
+  {
+   "lemma": "berühren",
+   "form": "berühren",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Vielleicht dachte er: Ich darf nichts Unreines berühren."
+  },
+  {
+   "lemma": "feind",
+   "form": "feinde",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Sie waren Fremde und Feinde."
+  },
+  {
+   "lemma": "reiten",
+   "form": "ritt",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er ritt auf einem Esel und hatte Wein dabei."
+  },
+  {
+   "lemma": "tuch",
+   "form": "tuch",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Dann verband er sie mit einem Tuch."
+  },
+  {
+   "lemma": "heben",
+   "form": "hob",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er hob den Mann auf seinen Esel und brachte ihn langsam zur nächsten Herberge."
+  },
+  {
+   "lemma": "stall",
+   "form": "stall",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Hinten war der Stall mit dem Ausgang zum Hof, und vorn war der Eingang."
+  },
+  {
+   "lemma": "hinauf",
+   "form": "hinauf",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Er trug den Mann die Treppe hinauf und legte ihn in ein Bett."
+  },
+  {
+   "lemma": "weiterreisen",
+   "form": "weiterreisen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Am Morgen musste er weiterreisen."
+  },
+  {
+   "lemma": "münze",
+   "form": "münzen",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Samariter gab ihm zwei Münzen."
+  },
+  {
+   "lemma": "nicken",
+   "form": "nickte",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Der Wirt nickte."
+  },
+  {
+   "lemma": "schmutzig",
+   "form": "schmutzig",
+   "from": "de-a2-2-10",
+   "own": 1,
+   "ctx": "Wer die Wunde eines anderen verbinden will, muss sich selbst die Hände schmutzig machen."
+  },
+  {
+   "lemma": "zurückfragen",
+   "form": "fragte",
+   "from": "de-a2-2-10",
+   "own": 2,
+   "ctx": "Jesus fragte zurück: Was steht im Gesetz?"
+  },
+  {
+   "lemma": "hinuntergehen",
+   "form": "ging",
+   "from": "de-a2-2-10",
+   "own": 2,
+   "ctx": "Ein Mann ging von Jerusalem nach Jericho hinunter."
+  },
+  {
+   "lemma": "hervorkommen",
+   "form": "kamen",
+   "from": "de-a2-2-10",
+   "own": 2,
+   "ctx": "Plötzlich kamen Räuber hinter den Steinen hervor."
+  },
+  {
+   "lemma": "tempel",
+   "form": "tempel",
+   "from": "de-a2-2-10",
+   "own": 2,
+   "ctx": "Er war ein frommer Mann und kam vom Tempel."
+  },
+  {
+   "lemma": "brennen",
+   "form": "brannte",
+   "from": "de-a2-2-10",
+   "own": 2,
+   "ctx": "Der Wein brannte, aber er half."
+  },
+  {
+   "lemma": "gemeinsam",
+   "form": "gemeinsame",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Wir haben bis spät am Abend gesprochen, auf Deutsch, weil das unsere einzige gemeinsame Sprache war."
+  },
+  {
+   "lemma": "ansehen",
+   "form": "sieh",
+   "from": "de-a2-2-11",
+   "own": 2,
+   "ctx": "Und sieh dir in Meißen den Dom an."
+  },
+  {
+   "lemma": "eintrag",
+   "form": "eintrag",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin Sam, und das ist mein erster Eintrag in meinem neuen Blog."
+  },
+  {
+   "lemma": "einige",
+   "form": "einigen",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich lebe seit einigen Monaten in Leipzig."
+  },
+  {
+   "lemma": "ticket",
+   "form": "ticket",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich habe ein günstiges Ticket für das Wochenende gekauft, und ich habe einen Reiseführer mitgenommen."
+  },
+  {
+   "lemma": "markieren",
+   "form": "markiert",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Sie hat eine Seite markiert."
+  },
+  {
+   "lemma": "direkt",
+   "form": "direkt",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die Altstadt ist der schönste Teil der Stadt, und sie liegt direkt am Fluss."
+  },
+  {
+   "lemma": "krieg",
+   "form": "krieg",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Krieg wurde sie zerstört, und man hat sie später wieder gebaut."
+  },
+  {
+   "lemma": "zerstören",
+   "form": "zerstört",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Krieg wurde sie zerstört, und man hat sie später wieder gebaut."
+  },
+  {
+   "lemma": "rund",
+   "form": "runden",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die erste Sehenswürdigkeit, die ich gesehen habe, war eine große Kirche mit einem runden Dach."
+  },
+  {
+   "lemma": "wurst",
+   "form": "wurst",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ein Mann hat mir gezeigt, wie man eine Wurst richtig isst."
+  },
+  {
+   "lemma": "eintritt",
+   "form": "eintritt",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Der Eintritt war nicht teuer."
+  },
+  {
+   "lemma": "reisende",
+   "form": "reisende",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Zimmer waren drei andere Reisende."
+  },
+  {
+   "lemma": "einzig",
+   "form": "einzige",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Wir haben bis spät am Abend gesprochen, auf Deutsch, weil das unsere einzige gemeinsame Sprache war."
+  },
+  {
+   "lemma": "beieinander",
+   "form": "beieinander",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Es gibt dort viel zu sehen, und alles liegt nah beieinander."
+  },
+  {
+   "lemma": "berühmt",
+   "form": "berühmteste",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die berühmteste Sehenswürdigkeit ist die Burg auf dem Berg."
+  },
+  {
+   "lemma": "eng",
+   "form": "enge",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin zu Fuß hinaufgestiegen, über viele Treppen und durch enge Wege."
+  },
+  {
+   "lemma": "restaurant",
+   "form": "restaurant",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Das beste Essen gibt es nicht im Restaurant, sondern auf dem Markt."
+  },
+  {
+   "lemma": "dachboden",
+   "form": "dachboden",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Ich schlafe auf dem Dachboden."
+  },
+  {
+   "lemma": "amerikaner",
+   "form": "amerikaner",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Er hat gefragt: Sind Sie der Amerikaner?"
+  },
+  {
+   "lemma": "hungrig",
+   "form": "hungrig",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Er sagte: Wir haben nicht viel, aber wer zu uns kommt, soll nicht hungrig gehen."
+  },
+  {
+   "lemma": "sorgfältig",
+   "form": "sorgfältig",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Obwohl die meisten Menschen sorgfältig trennen, machen viele Fehler."
+  },
+  {
+   "lemma": "gießen",
+   "form": "goss",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Er verband die Wunden und goss Wein darauf."
+  }
+ ],
+ "de-a2-2-17": [
+  {
+   "lemma": "überall",
+   "form": "überall",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Es gab Stände mit Brot, Käse und Äpfeln, und man hat überall Musik gehört."
+  },
+  {
+   "lemma": "euer",
+   "form": "euer",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Bis bald, euer Sam."
+  },
+  {
+   "lemma": "mitnehmen",
+   "form": "nimm",
+   "from": "de-a2-2-11",
+   "own": 5,
+   "ctx": "Ich habe ein günstiges Ticket für das Wochenende gekauft, und ich habe einen Reiseführer mitgenommen."
+  },
+  {
+   "lemma": "gemeinsam",
+   "form": "gemeinsame",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Wir haben bis spät am Abend gesprochen, auf Deutsch, weil das unsere einzige gemeinsame Sprache war."
+  },
+  {
+   "lemma": "ansehen",
+   "form": "sieh",
+   "from": "de-a2-2-11",
+   "own": 2,
+   "ctx": "Und sieh dir in Meißen den Dom an."
+  },
+  {
+   "lemma": "eintrag",
+   "form": "eintrag",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin Sam, und das ist mein erster Eintrag in meinem neuen Blog."
+  },
+  {
+   "lemma": "einige",
+   "form": "einigen",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich lebe seit einigen Monaten in Leipzig."
+  },
+  {
+   "lemma": "ticket",
+   "form": "ticket",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich habe ein günstiges Ticket für das Wochenende gekauft, und ich habe einen Reiseführer mitgenommen."
+  },
+  {
+   "lemma": "markieren",
+   "form": "markiert",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Sie hat eine Seite markiert."
+  },
+  {
+   "lemma": "direkt",
+   "form": "direkt",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die Altstadt ist der schönste Teil der Stadt, und sie liegt direkt am Fluss."
+  },
+  {
+   "lemma": "krieg",
+   "form": "krieg",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Krieg wurde sie zerstört, und man hat sie später wieder gebaut."
+  },
+  {
+   "lemma": "zerstören",
+   "form": "zerstört",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Krieg wurde sie zerstört, und man hat sie später wieder gebaut."
+  },
+  {
+   "lemma": "rund",
+   "form": "runden",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die erste Sehenswürdigkeit, die ich gesehen habe, war eine große Kirche mit einem runden Dach."
+  },
+  {
+   "lemma": "wurst",
+   "form": "wurst",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ein Mann hat mir gezeigt, wie man eine Wurst richtig isst."
+  },
+  {
+   "lemma": "eintritt",
+   "form": "eintritt",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Der Eintritt war nicht teuer."
+  },
+  {
+   "lemma": "reisende",
+   "form": "reisende",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Im Zimmer waren drei andere Reisende."
+  },
+  {
+   "lemma": "einzig",
+   "form": "einzige",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Wir haben bis spät am Abend gesprochen, auf Deutsch, weil das unsere einzige gemeinsame Sprache war."
+  },
+  {
+   "lemma": "beieinander",
+   "form": "beieinander",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Es gibt dort viel zu sehen, und alles liegt nah beieinander."
+  },
+  {
+   "lemma": "berühmt",
+   "form": "berühmteste",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Die berühmteste Sehenswürdigkeit ist die Burg auf dem Berg."
+  },
+  {
+   "lemma": "hinaufgestiegen",
+   "form": "hinaufgestiegen",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin zu Fuß hinaufgestiegen, über viele Treppen und durch enge Wege."
+  },
+  {
+   "lemma": "eng",
+   "form": "enge",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Ich bin zu Fuß hinaufgestiegen, über viele Treppen und durch enge Wege."
+  },
+  {
+   "lemma": "plakat",
+   "form": "plakat",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Dort habe ich ein Plakat gesehen: „Versammlung am Donnerstag. Tagesordnung im Rathaus.“"
+  },
+  {
+   "lemma": "rathaus",
+   "form": "rathaus",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Dort habe ich ein Plakat gesehen: „Versammlung am Donnerstag. Tagesordnung im Rathaus.“"
+  },
+  {
+   "lemma": "restaurant",
+   "form": "restaurant",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Das beste Essen gibt es nicht im Restaurant, sondern auf dem Markt."
+  },
+  {
+   "lemma": "vorsicht",
+   "form": "vorsicht",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Aber Vorsicht: Am Sonntag sind viele Läden zu."
+  },
+  {
+   "lemma": "herausholen",
+   "form": "herausgeholt",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Auf der Rückfahrt habe ich mein Heft herausgeholt und eine Liste gemacht."
+  },
+  {
+   "lemma": "kommentaren",
+   "form": "kommentaren",
+   "from": "de-a2-2-11",
+   "own": 1,
+   "ctx": "Schreibt mir bitte in den Kommentaren zu meinem Blog."
+  },
+  {
+   "lemma": "losgehen",
+   "form": "geh",
+   "from": "de-a2-2-11",
+   "own": 2,
+   "ctx": "Sie hat gesagt: Lies erst den Reiseführer, und dann geh los."
+  },
+  {
+   "lemma": "hostel",
+   "form": "hostel",
+   "from": "de-a2-2-11",
+   "own": 2,
+   "ctx": "Am Abend bin ich zum Hostel gegangen."
+  },
+  {
+   "lemma": "losfahren",
+   "form": "losfahren",
+   "from": "de-a2-2-11",
+   "own": 3,
+   "ctx": "Wer nach Dresden fährt, sollte früh am Morgen losfahren."
+  },
+  {
+   "lemma": "dicht",
+   "form": "dichter",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Am Morgen lag dichter Nebel über dem Dorf."
+  },
+  {
+   "lemma": "verschwinden",
+   "form": "verschwunden",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Die Landschaft war verschwunden."
+  },
+  {
+   "lemma": "persönlich",
+   "form": "persönlich",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Der Bürgermeister hat uns persönlich begrüßt."
+  },
+  {
+   "lemma": "interessieren",
+   "form": "interessiert",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Das Evangelium hat mich nie interessiert, aber Sie schon."
+  },
+  {
+   "lemma": "gemütlich",
+   "form": "gemütlich",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Die Unterkunft ist einfach, aber sehr gemütlich."
+  },
+  {
+   "lemma": "dachboden",
+   "form": "dachboden",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Ich schlafe auf dem Dachboden."
+  },
+  {
+   "lemma": "einschlafen",
+   "form": "einschlafe",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Bevor ich einschlafe, schreibe ich noch schnell in mein Tagebuch."
+  },
+  {
+   "lemma": "weichen",
+   "form": "weich",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Der Nebel hat alles weich gemacht, die Häuser, die Bäume und sogar die Geräusche."
+  },
+  {
+   "lemma": "stille",
+   "form": "stille",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Die Stille war nicht schlecht, ich habe Ruhe gefunden."
+  },
+  {
+   "lemma": "amerikaner",
+   "form": "amerikaner",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Er hat gefragt: Sind Sie der Amerikaner?"
+  },
+  {
+   "lemma": "einstecken",
+   "form": "eingesteckt",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Ich habe dem Mann einen Flyer gegeben, und er hat ihn eingesteckt."
+  },
+  {
+   "lemma": "umwerfen",
+   "form": "umgeworfen",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Unser Ziel war ein kleiner Stand, aber der Wind hat den Tisch fast umgeworfen."
+  },
+  {
+   "lemma": "echt",
+   "form": "echt",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Der Erfolg war nicht groß, aber echt."
+  },
+  {
+   "lemma": "hungrig",
+   "form": "hungrig",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Er sagte: Wir haben nicht viel, aber wer zu uns kommt, soll nicht hungrig gehen."
+  },
+  {
+   "lemma": "sonntagnachmittag",
+   "form": "sonntagnachmittag",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Es ist Sonntagnachmittag."
+  },
+  {
+   "lemma": "ungewöhnlich",
+   "form": "ungewöhnlich",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Lukas ist heute ungewöhnlich still."
+  },
+  {
+   "lemma": "angebot",
+   "form": "angebot",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Ich habe ein Angebot bekommen."
+  },
+  {
+   "lemma": "menge",
+   "form": "menge",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Die Qualität ist wichtiger als die Menge."
+  },
+  {
+   "lemma": "abhängig",
+   "form": "abhängig",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Im Dorf ist man vom Laden abhängig."
+  },
+  {
+   "lemma": "zumachen",
+   "form": "zumacht",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Wenn er zumacht, ist alles weg."
+  },
+  {
+   "lemma": "zugeben",
+   "form": "zugegeben",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Das ist schlecht, zugegeben."
+  },
+  {
+   "lemma": "eben",
+   "form": "eben",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Stadt und Dorf sind eben verschieden, wie zwei Sprachen."
+  },
+  {
+   "lemma": "hineingehören",
+   "form": "hineingehört",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "In der gelben Mülltonne liegt oft Abfall, der nicht hineingehört."
+  },
+  {
+   "lemma": "sortieren",
+   "form": "sortiert",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Ich habe Flaschen sortiert und Plastik getrennt."
+  }
+ ],
+ "de-a2-2-18": [
+  {
+   "lemma": "holz",
+   "form": "holz",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Mein erster Eindruck von diesem Dorf: Es ist still, und es riecht nach Holz und Regen."
+  },
+  {
+   "lemma": "dicht",
+   "form": "dichter",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Am Morgen lag dichter Nebel über dem Dorf."
+  },
+  {
+   "lemma": "verschwinden",
+   "form": "verschwunden",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Die Landschaft war verschwunden."
+  },
+  {
+   "lemma": "persönlich",
+   "form": "persönlich",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Der Bürgermeister hat uns persönlich begrüßt."
+  },
+  {
+   "lemma": "interessieren",
+   "form": "interessiert",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Das Evangelium hat mich nie interessiert, aber Sie schon."
+  },
+  {
+   "lemma": "gemütlich",
+   "form": "gemütlich",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Die Unterkunft ist einfach, aber sehr gemütlich."
+  },
+  {
+   "lemma": "dachboden",
+   "form": "dachboden",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Ich schlafe auf dem Dachboden."
+  },
+  {
+   "lemma": "einschlafen",
+   "form": "einschlafe",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Bevor ich einschlafe, schreibe ich noch schnell in mein Tagebuch."
+  },
+  {
+   "lemma": "weichen",
+   "form": "weich",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Der Nebel hat alles weich gemacht, die Häuser, die Bäume und sogar die Geräusche."
+  },
+  {
+   "lemma": "stille",
+   "form": "stille",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Die Stille war nicht schlecht, ich habe Ruhe gefunden."
+  },
+  {
+   "lemma": "amerikaner",
+   "form": "amerikaner",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Er hat gefragt: Sind Sie der Amerikaner?"
+  },
+  {
+   "lemma": "einstecken",
+   "form": "eingesteckt",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Ich habe dem Mann einen Flyer gegeben, und er hat ihn eingesteckt."
+  },
+  {
+   "lemma": "umwerfen",
+   "form": "umgeworfen",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Unser Ziel war ein kleiner Stand, aber der Wind hat den Tisch fast umgeworfen."
+  },
+  {
+   "lemma": "echt",
+   "form": "echt",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Der Erfolg war nicht groß, aber echt."
+  },
+  {
+   "lemma": "hungrig",
+   "form": "hungrig",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Er sagte: Wir haben nicht viel, aber wer zu uns kommt, soll nicht hungrig gehen."
+  },
+  {
+   "lemma": "nachbarort",
+   "form": "nachbarorte",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Am Freitag waren wir unterwegs in die Nachbarorte."
+  },
+  {
+   "lemma": "hügel",
+   "form": "hügel",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Wir haben die Landschaft gesehen: Wälder, Hügel und kleine Wiesen."
+  },
+  {
+   "lemma": "wiese",
+   "form": "wiesen",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Wir haben die Landschaft gesehen: Wälder, Hügel und kleine Wiesen."
+  },
+  {
+   "lemma": "karte",
+   "form": "karte",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Mein Reiseführer hat sie auf der Karte gezeigt."
+  },
+  {
+   "lemma": "verwackeln",
+   "form": "verwackelt",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Es ist ein schönes Foto, aber es ist leider verwackelt."
+  },
+  {
+   "lemma": "bessern",
+   "form": "gebessert",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Inzwischen hatte sich das Wetter gebessert."
+  },
+  {
+   "lemma": "hinsetzen",
+   "form": "hingesetzt",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Nachdem wir angekommen waren, habe ich mich sofort hingesetzt."
+  },
+  {
+   "lemma": "zeilen",
+   "form": "zeilen",
+   "from": "de-a2-2-12",
+   "own": 1,
+   "ctx": "Ich habe mein Tagebuch geöffnet, und ich habe diese Zeilen geschrieben."
+  },
+  {
+   "lemma": "aufgehen",
+   "form": "ging",
+   "from": "de-a2-2-12",
+   "own": 2,
+   "ctx": "Die Tür ging auf, und eine Frau hat uns umarmt, obwohl sie uns nicht kannte."
+  },
+  {
+   "lemma": "herauskommen",
+   "form": "kam",
+   "from": "de-a2-2-12",
+   "own": 2,
+   "ctx": "Wir wollten Flyer verteilen, aber im Nebel kam kaum jemand heraus."
+  },
+  {
+   "lemma": "selten",
+   "form": "selten",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Aber ich bin gesund, und ich habe selten eine Grippe."
+  },
+  {
+   "lemma": "mitglied",
+   "form": "mitglieder",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Der Jugendkreis hat nur fünf Mitglieder, und sie sind verschieden von den jungen Leuten bei uns."
+  },
+  {
+   "lemma": "luft",
+   "form": "luft",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Außerdem ist die Luft dort besser."
+  },
+  {
+   "lemma": "sonntagnachmittag",
+   "form": "sonntagnachmittag",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Es ist Sonntagnachmittag."
+  },
+  {
+   "lemma": "ungewöhnlich",
+   "form": "ungewöhnlich",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Lukas ist heute ungewöhnlich still."
+  },
+  {
+   "lemma": "angebot",
+   "form": "angebot",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Ich habe ein Angebot bekommen."
+  },
+  {
+   "lemma": "menge",
+   "form": "menge",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Die Qualität ist wichtiger als die Menge."
+  },
+  {
+   "lemma": "abhängig",
+   "form": "abhängig",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Im Dorf ist man vom Laden abhängig."
+  },
+  {
+   "lemma": "zumachen",
+   "form": "zumacht",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Wenn er zumacht, ist alles weg."
+  },
+  {
+   "lemma": "zugeben",
+   "form": "zugegeben",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Das ist schlecht, zugegeben."
+  },
+  {
+   "lemma": "eben",
+   "form": "eben",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Stadt und Dorf sind eben verschieden, wie zwei Sprachen."
+  },
+  {
+   "lemma": "umkehren",
+   "form": "umgekehrt",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Auf dem Land ist es genau umgekehrt."
+  },
+  {
+   "lemma": "führerschein",
+   "form": "führerschein",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Außerdem muss ich den Führerschein machen, und das kostet viel."
+  },
+  {
+   "lemma": "tüten",
+   "form": "tüten",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Jeden Morgen hat er gesehen, wie Frau Weber ihre kleinen Tüten nach unten bringt."
+  },
+  {
+   "lemma": "mehrere",
+   "form": "mehrere",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "In den meisten deutschen Häusern gibt es mehrere Mülltonnen."
+  },
+  {
+   "lemma": "verpackungen",
+   "form": "verpackungen",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Dort sammelt man zum Beispiel Verpackungen."
+  },
+  {
+   "lemma": "behälter",
+   "form": "behälter",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Das Glas bringt man zu einem großen Behälter auf der Straße."
+  },
+  {
+   "lemma": "restmüll",
+   "form": "restmüll",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Alles andere ist Restmüll."
+  },
+  {
+   "lemma": "erde",
+   "form": "erde",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Dieser Abfall wird zu Erde gemacht oder zu Energie."
+  },
+  {
+   "lemma": "begegnen",
+   "form": "begegnet",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Beim Einkaufen begegnet man einem zweiten System, dem Pfand."
+  },
+  {
+   "lemma": "cent",
+   "form": "cent",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Bei Plastik sind es 25 Cent."
+  },
+  {
+   "lemma": "kauf",
+   "form": "kauf",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Man bezahlt es beim Kauf, und man bekommt das Pfand wieder, wenn man die leere Flasche bringt."
+  },
+  {
+   "lemma": "kasse",
+   "form": "kasse",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Mit dem Zettel geht man zur Kasse und bekommt sein Geld."
+  },
+  {
+   "lemma": "dadurch",
+   "form": "dadurch",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Außerdem schützt man dadurch die Umwelt."
+  },
+  {
+   "lemma": "verbrennen",
+   "form": "verbrennt",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Wenn man weniger verbrennt, kommt weniger schlechte Luft in die Welt."
+  },
+  {
+   "lemma": "vernünftig",
+   "form": "vernünftig",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Das klingt vernünftig, und trotzdem gibt es Menschen, die das System nicht mögen."
+  },
+  {
+   "lemma": "wohin",
+   "form": "wohin",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Sie sagen: Die Mülltrennung kostet Zeit, und man weiß nie genau, wohin ein Stück gehört."
+  },
+  {
+   "lemma": "kontrollieren",
+   "form": "kontrolliert",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Deshalb werden die Mülltonnen manchmal kontrolliert."
+  },
+  {
+   "lemma": "reisen",
+   "form": "reisen",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Nach dem Abitur wollte ich nicht gleich studieren, sondern ein Jahr lang reisen."
+  },
+  {
+   "lemma": "drehen",
+   "form": "dreht",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Sam hilft beim Aufräumen, und Jonas sitzt an einem Tisch und dreht seine Tasse in den Händen."
+  },
+  {
+   "lemma": "beerdigung",
+   "form": "beerdigung",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ihr sitzt da wie bei einer Beerdigung."
+  },
+  {
+   "lemma": "verlegen",
+   "form": "verlegen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte Sie nicht verlegen machen."
+  },
+  {
+   "lemma": "prozent",
+   "form": "prozent",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Neun Prozent."
+  },
+  {
+   "lemma": "wiederholen",
+   "form": "wiederholen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich würde die Prüfung im Herbst wiederholen."
+  },
+  {
+   "lemma": "metall",
+   "form": "metall",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich trenne auch den Müll: Metall, Plastik und Glas."
+  },
+  {
+   "lemma": "schock",
+   "form": "schock",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Meine Ankunft in der fremden Stadt war ein Schock."
+  },
+  {
+   "lemma": "meinetwegen",
+   "form": "meinetwegen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Meinetwegen."
+  }
+ ],
+ "de-a2-2-19": [
+  {
+   "lemma": "zwischen",
+   "form": "zwischen",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Ich finde, der Unterschied zwischen Stadt und Dorf ist vor allem die Auswahl."
+  },
+  {
+   "lemma": "hingehen",
+   "form": "geh",
+   "from": "de-a2-2-13",
+   "own": 2,
+   "ctx": "Dann geh ein Wochenende hin, um dich auszuruhen und alles anzusehen."
+  },
+  {
+   "lemma": "selten",
+   "form": "selten",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Aber ich bin gesund, und ich habe selten eine Grippe."
+  },
+  {
+   "lemma": "mitglied",
+   "form": "mitglieder",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Der Jugendkreis hat nur fünf Mitglieder, und sie sind verschieden von den jungen Leuten bei uns."
+  },
+  {
+   "lemma": "luft",
+   "form": "luft",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Außerdem ist die Luft dort besser."
+  },
+  {
+   "lemma": "sonntagnachmittag",
+   "form": "sonntagnachmittag",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Es ist Sonntagnachmittag."
+  },
+  {
+   "lemma": "ungewöhnlich",
+   "form": "ungewöhnlich",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Lukas ist heute ungewöhnlich still."
+  },
+  {
+   "lemma": "angebot",
+   "form": "angebot",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Ich habe ein Angebot bekommen."
+  },
+  {
+   "lemma": "menge",
+   "form": "menge",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Die Qualität ist wichtiger als die Menge."
+  },
+  {
+   "lemma": "abhängig",
+   "form": "abhängig",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Im Dorf ist man vom Laden abhängig."
+  },
+  {
+   "lemma": "zumachen",
+   "form": "zumacht",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Wenn er zumacht, ist alles weg."
+  },
+  {
+   "lemma": "zugeben",
+   "form": "zugegeben",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Das ist schlecht, zugegeben."
+  },
+  {
+   "lemma": "eben",
+   "form": "eben",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Stadt und Dorf sind eben verschieden, wie zwei Sprachen."
+  },
+  {
+   "lemma": "umkehren",
+   "form": "umgekehrt",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Auf dem Land ist es genau umgekehrt."
+  },
+  {
+   "lemma": "führerschein",
+   "form": "führerschein",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Außerdem muss ich den Führerschein machen, und das kostet viel."
+  },
+  {
+   "lemma": "wenigstens",
+   "form": "wenigstens",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Das stimmt, aber ich habe wenigstens Ruhe."
+  },
+  {
+   "lemma": "ruf",
+   "form": "ruf",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Die Schule ist klein, aber sie hat einen guten Ruf."
+  },
+  {
+   "lemma": "eile",
+   "form": "eile",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "In der Stadt hat jeder Eile."
+  },
+  {
+   "lemma": "aussuchen",
+   "form": "aussuchen",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Und man hat einen Dienst, den man nicht aussuchen kann."
+  },
+  {
+   "lemma": "ziemlich",
+   "form": "ziemlich",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Das ist ziemlich ähnlich."
+  },
+  {
+   "lemma": "egal",
+   "form": "egal",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Anders gesagt: Ihr seid mein Wohnort, egal wo ich wohne."
+  },
+  {
+   "lemma": "seele",
+   "form": "seele",
+   "from": "de-a2-2-13",
+   "own": 1,
+   "ctx": "Aber ein Dorf hat auch seine Seele."
+  },
+  {
+   "lemma": "austrinken",
+   "form": "trinkt",
+   "from": "de-a2-2-13",
+   "own": 2,
+   "ctx": "Nachdem Lukas gegangen ist, trinkt Sam seinen Kaffee aus."
+  },
+  {
+   "lemma": "funktionieren",
+   "form": "funktioniert",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Dieser Text erklärt, wie das System funktioniert und warum es wichtig ist."
+  },
+  {
+   "lemma": "wegwerfen",
+   "form": "weggeworfen",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Manche Menschen sammeln, was andere weggeworfen haben, und verdienen so etwas Geld."
+  },
+  {
+   "lemma": "streit",
+   "form": "streit",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Obwohl die Regeln streng sind, gibt es keinen großen Streit."
+  },
+  {
+   "lemma": "tüten",
+   "form": "tüten",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Jeden Morgen hat er gesehen, wie Frau Weber ihre kleinen Tüten nach unten bringt."
+  },
+  {
+   "lemma": "mehrere",
+   "form": "mehrere",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "In den meisten deutschen Häusern gibt es mehrere Mülltonnen."
+  },
+  {
+   "lemma": "verpackungen",
+   "form": "verpackungen",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Dort sammelt man zum Beispiel Verpackungen."
+  },
+  {
+   "lemma": "behälter",
+   "form": "behälter",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Das Glas bringt man zu einem großen Behälter auf der Straße."
+  },
+  {
+   "lemma": "restmüll",
+   "form": "restmüll",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Alles andere ist Restmüll."
+  },
+  {
+   "lemma": "erde",
+   "form": "erde",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Dieser Abfall wird zu Erde gemacht oder zu Energie."
+  },
+  {
+   "lemma": "begegnen",
+   "form": "begegnet",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Beim Einkaufen begegnet man einem zweiten System, dem Pfand."
+  },
+  {
+   "lemma": "cent",
+   "form": "cent",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Bei Plastik sind es 25 Cent."
+  },
+  {
+   "lemma": "kauf",
+   "form": "kauf",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Man bezahlt es beim Kauf, und man bekommt das Pfand wieder, wenn man die leere Flasche bringt."
+  },
+  {
+   "lemma": "kasse",
+   "form": "kasse",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Mit dem Zettel geht man zur Kasse und bekommt sein Geld."
+  },
+  {
+   "lemma": "dadurch",
+   "form": "dadurch",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Außerdem schützt man dadurch die Umwelt."
+  },
+  {
+   "lemma": "verbrennen",
+   "form": "verbrennt",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Wenn man weniger verbrennt, kommt weniger schlechte Luft in die Welt."
+  },
+  {
+   "lemma": "vernünftig",
+   "form": "vernünftig",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Das klingt vernünftig, und trotzdem gibt es Menschen, die das System nicht mögen."
+  },
+  {
+   "lemma": "wohin",
+   "form": "wohin",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Sie sagen: Die Mülltrennung kostet Zeit, und man weiß nie genau, wohin ein Stück gehört."
+  },
+  {
+   "lemma": "sorgfältig",
+   "form": "sorgfältig",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Obwohl die meisten Menschen sorgfältig trennen, machen viele Fehler."
+  },
+  {
+   "lemma": "hineingehören",
+   "form": "hineingehört",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "In der gelben Mülltonne liegt oft Abfall, der nicht hineingehört."
+  },
+  {
+   "lemma": "kontrollieren",
+   "form": "kontrolliert",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Deshalb werden die Mülltonnen manchmal kontrolliert."
+  },
+  {
+   "lemma": "strafe",
+   "form": "strafe",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Wer Abfall auf die Straße wirft oder sich nicht daran hält, kann eine Strafe bekommen."
+  },
+  {
+   "lemma": "dienstagnachmittag",
+   "form": "dienstagnachmittag",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Es ist Dienstagnachmittag."
+  },
+  {
+   "lemma": "schluck",
+   "form": "schluck",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Sie trinkt einen Schluck Wasser."
+  },
+  {
+   "lemma": "inner",
+   "form": "innere",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Ich bin auf der Station für innere Medizin."
+  },
+  {
+   "lemma": "medizin",
+   "form": "medizin",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Ich bin auf der Station für innere Medizin."
+  },
+  {
+   "lemma": "ständig",
+   "form": "ständig",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Man ist ständig müde."
+  },
+  {
+   "lemma": "humor",
+   "form": "humor",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Mit Kaffee und mit Humor."
+  },
+  {
+   "lemma": "weiterarbeiten",
+   "form": "weiterarbeiten",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Viele denken, sie müssen weiterarbeiten."
+  },
+  {
+   "lemma": "atemnot",
+   "form": "atemnot",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Zum Beispiel bei Atemnot oder starken Schmerzen."
+  },
+  {
+   "lemma": "verband",
+   "form": "verband",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Man lernt, wie man einen Verband macht und wie man mit Menschen spricht."
+  },
+  {
+   "lemma": "anstrengend",
+   "form": "anstrengend",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Außerdem war die Praxis anstrengend."
+  },
+  {
+   "lemma": "trauen",
+   "form": "traut",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Er möchte etwas sagen, aber er traut sich nicht."
+  },
+  {
+   "lemma": "moment",
+   "form": "moment",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Herr Schmidt, hätten Sie einen Moment Zeit?"
+  },
+  {
+   "lemma": "beißen",
+   "form": "beiße",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich beiße nicht."
+  },
+  {
+   "lemma": "irgendwann",
+   "form": "irgendwann",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte mich irgendwann selbstständig machen."
+  },
+  {
+   "lemma": "argument",
+   "form": "argument",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Das ist ein Argument."
+  },
+  {
+   "lemma": "vergleich",
+   "form": "vergleich",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Das ist ein schöner Vergleich."
+  },
+  {
+   "lemma": "riesig",
+   "form": "riesig",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Der Eindruck war riesig."
+  },
+  {
+   "lemma": "anhänger",
+   "form": "anhänger",
+   "from": "de-a2-2-18",
+   "own": 6,
+   "ctx": "Es sind drei alte Schlüssel mit einem kleinen Anhänger aus Holz."
+  },
+  {
+   "lemma": "drinnen",
+   "form": "drinnen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Drinnen war es still."
+  },
+  {
+   "lemma": "zeichnen",
+   "form": "zeichnete",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Marta sagte, was es war, und sie zeichnete den Anhänger."
+  },
+  {
+   "lemma": "ungefähr",
+   "form": "ungefähr",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Frau Weber antwortete: Ungefähr 180 Euro."
+  },
+  {
+   "lemma": "kleidersammlung",
+   "form": "kleidersammlung",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Er kam aus Leipzig, aus einer Kleidersammlung der Gemeinde."
+  },
+  {
+   "lemma": "ohnehin",
+   "form": "ohnehin",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie sah das als Zeichen, und sie sagte sich: Wenn ich ohnehin dorthin fahre, nehme ich die Schlüssel mit."
+  },
+  {
+   "lemma": "hauptstraße",
+   "form": "hauptstraße",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie wohnt in der Hauptstraße."
+  },
+  {
+   "lemma": "hereinlaufen",
+   "form": "hereingelaufen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Ben kam hereingelaufen."
+  }
+ ],
+ "de-a2-2-20": [
+  {
+   "lemma": "streng",
+   "form": "streng",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Obwohl die Regeln streng sind, gibt es keinen großen Streit."
+  },
+  {
+   "lemma": "zeichen",
+   "form": "zeichen",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Das ist keine Pflicht aus Angst, sondern ein Zeichen von Liebe."
+  },
+  {
+   "lemma": "funktionieren",
+   "form": "funktioniert",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Dieser Text erklärt, wie das System funktioniert und warum es wichtig ist."
+  },
+  {
+   "lemma": "wegwerfen",
+   "form": "weggeworfen",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Manche Menschen sammeln, was andere weggeworfen haben, und verdienen so etwas Geld."
+  },
+  {
+   "lemma": "streit",
+   "form": "streit",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Obwohl die Regeln streng sind, gibt es keinen großen Streit."
+  },
+  {
+   "lemma": "tüten",
+   "form": "tüten",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Jeden Morgen hat er gesehen, wie Frau Weber ihre kleinen Tüten nach unten bringt."
+  },
+  {
+   "lemma": "mehrere",
+   "form": "mehrere",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "In den meisten deutschen Häusern gibt es mehrere Mülltonnen."
+  },
+  {
+   "lemma": "verpackungen",
+   "form": "verpackungen",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Dort sammelt man zum Beispiel Verpackungen."
+  },
+  {
+   "lemma": "behälter",
+   "form": "behälter",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Das Glas bringt man zu einem großen Behälter auf der Straße."
+  },
+  {
+   "lemma": "restmüll",
+   "form": "restmüll",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Alles andere ist Restmüll."
+  },
+  {
+   "lemma": "erde",
+   "form": "erde",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Dieser Abfall wird zu Erde gemacht oder zu Energie."
+  },
+  {
+   "lemma": "begegnen",
+   "form": "begegnet",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Beim Einkaufen begegnet man einem zweiten System, dem Pfand."
+  },
+  {
+   "lemma": "cent",
+   "form": "cent",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Bei Plastik sind es 25 Cent."
+  },
+  {
+   "lemma": "kauf",
+   "form": "kauf",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Man bezahlt es beim Kauf, und man bekommt das Pfand wieder, wenn man die leere Flasche bringt."
+  },
+  {
+   "lemma": "kasse",
+   "form": "kasse",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Mit dem Zettel geht man zur Kasse und bekommt sein Geld."
+  },
+  {
+   "lemma": "dadurch",
+   "form": "dadurch",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Außerdem schützt man dadurch die Umwelt."
+  },
+  {
+   "lemma": "verbrennen",
+   "form": "verbrennt",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Wenn man weniger verbrennt, kommt weniger schlechte Luft in die Welt."
+  },
+  {
+   "lemma": "vernünftig",
+   "form": "vernünftig",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Das klingt vernünftig, und trotzdem gibt es Menschen, die das System nicht mögen."
+  },
+  {
+   "lemma": "wohin",
+   "form": "wohin",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Sie sagen: Die Mülltrennung kostet Zeit, und man weiß nie genau, wohin ein Stück gehört."
+  },
+  {
+   "lemma": "sorgfältig",
+   "form": "sorgfältig",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Obwohl die meisten Menschen sorgfältig trennen, machen viele Fehler."
+  },
+  {
+   "lemma": "hineingehören",
+   "form": "hineingehört",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "In der gelben Mülltonne liegt oft Abfall, der nicht hineingehört."
+  },
+  {
+   "lemma": "kontrollieren",
+   "form": "kontrolliert",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Deshalb werden die Mülltonnen manchmal kontrolliert."
+  },
+  {
+   "lemma": "strafe",
+   "form": "strafe",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Wer Abfall auf die Straße wirft oder sich nicht daran hält, kann eine Strafe bekommen."
+  },
+  {
+   "lemma": "last",
+   "form": "last",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Deswegen ist es keine Last, sondern eine Gewohnheit."
+  },
+  {
+   "lemma": "gewohnheit",
+   "form": "gewohnheit",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Deswegen ist es keine Last, sondern eine Gewohnheit."
+  },
+  {
+   "lemma": "fall",
+   "form": "fall",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Auch ein altes Thermometer ist ein Fall für sich."
+  },
+  {
+   "lemma": "benutzen",
+   "form": "benutzt",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Man benutzt es nicht mehr, um die Temperatur zu messen."
+  },
+  {
+   "lemma": "scherbe",
+   "form": "scherbe",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Wer sich dabei an einer Scherbe schneidet, soll die Wunde sauber halten."
+  },
+  {
+   "lemma": "schnitt",
+   "form": "schnitt",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Obwohl es nur ein kleiner Schnitt ist, soll man zum Hausarzt gehen."
+  },
+  {
+   "lemma": "kranke",
+   "form": "kranken",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Trotzdem soll man an einem Kranken nicht vorbeigehen."
+  },
+  {
+   "lemma": "spalte",
+   "form": "spalte",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "In der Zeitung der Gemeinde schreibt Pastor Thomas jeden Monat eine kurze Spalte."
+  },
+  {
+   "lemma": "verletzten",
+   "form": "verletzten",
+   "from": "de-a2-2-14",
+   "own": 1,
+   "ctx": "Er schreibt: Ein Priester und ein Gesetzeslehrer gingen an einem Verletzten vorbei."
+  },
+  {
+   "lemma": "studio",
+   "form": "studio",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "In einem kleinen Studio sitzt Anna vor einem Mikrofon."
+  },
+  {
+   "lemma": "mikrofon",
+   "form": "mikrofon",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "In einem kleinen Studio sitzt Anna vor einem Mikrofon."
+  },
+  {
+   "lemma": "lokalsender",
+   "form": "lokalsender",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Der Lokalsender hat sie zu einem Interview eingeladen."
+  },
+  {
+   "lemma": "thema",
+   "form": "thema",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Das Thema ist: Menschen, die in der Nacht arbeiten."
+  },
+  {
+   "lemma": "alltag",
+   "form": "alltag",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Erzählen Sie uns bitte von Ihrem Alltag."
+  },
+  {
+   "lemma": "frühschicht",
+   "form": "frühschicht",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Die Frühschicht beginnt um sechs Uhr."
+  },
+  {
+   "lemma": "übergabe",
+   "form": "übergabe",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Zuerst machen wir eine Übergabe."
+  },
+  {
+   "lemma": "dienstagnachmittag",
+   "form": "dienstagnachmittag",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Es ist Dienstagnachmittag."
+  },
+  {
+   "lemma": "schluck",
+   "form": "schluck",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Sie trinkt einen Schluck Wasser."
+  },
+  {
+   "lemma": "inner",
+   "form": "innere",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Ich bin auf der Station für innere Medizin."
+  },
+  {
+   "lemma": "medizin",
+   "form": "medizin",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Ich bin auf der Station für innere Medizin."
+  },
+  {
+   "lemma": "ständig",
+   "form": "ständig",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Man ist ständig müde."
+  },
+  {
+   "lemma": "humor",
+   "form": "humor",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Mit Kaffee und mit Humor."
+  },
+  {
+   "lemma": "weiterarbeiten",
+   "form": "weiterarbeiten",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Viele denken, sie müssen weiterarbeiten."
+  },
+  {
+   "lemma": "atemnot",
+   "form": "atemnot",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Zum Beispiel bei Atemnot oder starken Schmerzen."
+  },
+  {
+   "lemma": "verband",
+   "form": "verband",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Man lernt, wie man einen Verband macht und wie man mit Menschen spricht."
+  },
+  {
+   "lemma": "gießen",
+   "form": "goss",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Er verband die Wunden und goss Wein darauf."
+  },
+  {
+   "lemma": "aufpassen",
+   "form": "aufgepasst",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Meine Großmutter Marta, die bis heute auf dem Markt Brot verkauft, hat oft auf uns aufgepasst."
+  },
+  {
+   "lemma": "fleißig",
+   "form": "fleißig",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "In der Schule war ich nicht die Beste, aber ich war fleißig."
+  },
+  {
+   "lemma": "wechseln",
+   "form": "gewechselt",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Mit sechzehn habe ich die Schule gewechselt."
+  },
+  {
+   "lemma": "erreichen",
+   "form": "erreichen",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Sie hat gesagt: Nur wer träumt, kann auch etwas erreichen."
+  },
+  {
+   "lemma": "gleichzeitig",
+   "form": "gleichzeitig",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Die Kollegin war streng, und gleichzeitig war sie gütig."
+  },
+  {
+   "lemma": "na",
+   "form": "na",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Na, ihr zwei?"
+  },
+  {
+   "lemma": "unhöflich",
+   "form": "unhöfliche",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich weiß, dass es eine unhöfliche Frage ist."
+  },
+  {
+   "lemma": "spülen",
+   "form": "spülen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Sam hört auf zu spülen."
+  },
+  {
+   "lemma": "selbstständig",
+   "form": "selbstständig",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte mich irgendwann selbstständig machen."
+  },
+  {
+   "lemma": "freiheit",
+   "form": "freiheit",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Der Vorteil ist die Freiheit."
+  },
+  {
+   "lemma": "lage",
+   "form": "lage",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Weißt du, ich war einmal in deiner Lage."
+  },
+  {
+   "lemma": "riesig",
+   "form": "riesig",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Der Eindruck war riesig."
+  },
+  {
+   "lemma": "ersatzschlüssel",
+   "form": "ersatzschlüssel",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Zum Glück hatte Frau Weber, ihre alte Nachbarin, einen Ersatzschlüssel."
+  },
+  {
+   "lemma": "regal",
+   "form": "regale",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Neben ihm standen viele Regale, und darin lagen Mützen, Handys und Taschen."
+  },
+  {
+   "lemma": "vergehen",
+   "form": "vergingen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Während die Wochen vergingen, gab es von den Schlüsseln keine Spur."
+  },
+  {
+   "lemma": "schütteln",
+   "form": "schüttelte",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Marta schüttelte den Kopf und sagte: Du bist ein guter Junge, aber das ist nicht deine Sorge."
+  },
+  {
+   "lemma": "backstube",
+   "form": "backstube",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Auf dem Anhänger stand: „Brot aus Martas Backstube, Markt Leipzig“."
+  },
+  {
+   "lemma": "erfüllen",
+   "form": "erfüllen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie wollte ihre Aufgabe erfüllen, bevor die Abreise kam."
+  },
+  {
+   "lemma": "hierher",
+   "form": "hierher",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Wie ist er hierher gekommen?"
+  },
+  {
+   "lemma": "zugleich",
+   "form": "zugleich",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Beide lachten und weinten zugleich."
+  },
+  {
+   "lemma": "gebetsanliegen",
+   "form": "gebetsanliegen",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Wir möchten Ihnen von den Besuchern und Teilnehmern berichten, von den Ergebnissen der Woche und von unseren Gebetsanliegen."
+  },
+  {
+   "lemma": "fortschritt",
+   "form": "fortschritt",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Es gibt einen deutlichen Fortschritt."
+  },
+  {
+   "lemma": "unterstützer",
+   "form": "unterstützer",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Liebe Freunde und Unterstützer unserer Arbeit in Leipzig,"
+  },
+  {
+   "lemma": "verfassen",
+   "form": "verfasst",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir schreiben ihn gemeinsam: David hat die Zahlen gesammelt, und ich habe den Text verfasst."
+  },
+  {
+   "lemma": "kontakt",
+   "form": "kontakt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Davon waren 21 zum ersten Mal in Kontakt mit einer Gemeinde."
+  },
+  {
+   "lemma": "wachsen",
+   "form": "gewachsen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Erstens: Die Zusammenarbeit mit dem Verein und mit der Nachbarschaft ist gewachsen."
+  },
+  {
+   "lemma": "jugendliche",
+   "form": "jugendlichen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Die Jugendlichen haben Flaschen aus Glas und Plastik gesammelt, Papier getrennt und den Abfall im Park aufgeräumt."
+  },
+  {
+   "lemma": "gaben",
+   "form": "gaben",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Vorteil ist die Auswahl an Gaben und Menschen."
+  },
+  {
+   "lemma": "stil",
+   "form": "stil",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Unterschied liegt vor allem im Stil der Gottesdienste und im Wohnort der Mitglieder."
+  },
+  {
+   "lemma": "summe",
+   "form": "summe",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Er wird die Summe ehrlich zurückzahlen."
+  },
+  {
+   "lemma": "ablehnen",
+   "form": "abgelehnt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Die Bank hatte die Bitte abgelehnt."
+  },
+  {
+   "lemma": "erwähnen",
+   "form": "erwähnen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "wechsel",
+   "form": "wechsel",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "segnen",
+   "form": "gesegnet",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Am Ende der Woche haben wir ihn im Gebet gesegnet."
+  },
+  {
+   "lemma": "finanziell",
+   "form": "finanzielle",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der finanzielle Bedarf des Teams ist unverändert."
+  },
+  {
+   "lemma": "material",
+   "form": "material",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Bedarf an Material für die Aktion ist gestiegen."
+  },
+  {
+   "lemma": "becher",
+   "form": "becher",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir brauchen Flyer, Papier, Gläser und Becher."
+  },
+  {
+   "lemma": "treue",
+   "form": "treue",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Ihre Treue gibt uns Kraft."
+  },
+  {
+   "lemma": "einheit",
+   "form": "einheit",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das erste Gebetsanliegen ist die Einheit mit den anderen Gemeinden."
+  }
+ ],
+ "de-b1-01": [
+  {
+   "lemma": "nervös",
+   "form": "nervös",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Anna ist ein bisschen nervös."
+  },
+  {
+   "lemma": "nachdenken",
+   "form": "nachdenken",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Dann habe ich keine Zeit zum Nachdenken."
+  },
+  {
+   "lemma": "studio",
+   "form": "studio",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "In einem kleinen Studio sitzt Anna vor einem Mikrofon."
+  },
+  {
+   "lemma": "mikrofon",
+   "form": "mikrofon",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "In einem kleinen Studio sitzt Anna vor einem Mikrofon."
+  },
+  {
+   "lemma": "lokalsender",
+   "form": "lokalsender",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Der Lokalsender hat sie zu einem Interview eingeladen."
+  },
+  {
+   "lemma": "thema",
+   "form": "thema",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Das Thema ist: Menschen, die in der Nacht arbeiten."
+  },
+  {
+   "lemma": "alltag",
+   "form": "alltag",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Erzählen Sie uns bitte von Ihrem Alltag."
+  },
+  {
+   "lemma": "frühschicht",
+   "form": "frühschicht",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Die Frühschicht beginnt um sechs Uhr."
+  },
+  {
+   "lemma": "übergabe",
+   "form": "übergabe",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Zuerst machen wir eine Übergabe."
+  },
+  {
+   "lemma": "dienstagnachmittag",
+   "form": "dienstagnachmittag",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Es ist Dienstagnachmittag."
+  },
+  {
+   "lemma": "schluck",
+   "form": "schluck",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Sie trinkt einen Schluck Wasser."
+  },
+  {
+   "lemma": "inner",
+   "form": "innere",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Ich bin auf der Station für innere Medizin."
+  },
+  {
+   "lemma": "medizin",
+   "form": "medizin",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Ich bin auf der Station für innere Medizin."
+  },
+  {
+   "lemma": "ständig",
+   "form": "ständig",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Man ist ständig müde."
+  },
+  {
+   "lemma": "humor",
+   "form": "humor",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Mit Kaffee und mit Humor."
+  },
+  {
+   "lemma": "weiterarbeiten",
+   "form": "weiterarbeiten",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Viele denken, sie müssen weiterarbeiten."
+  },
+  {
+   "lemma": "atemnot",
+   "form": "atemnot",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Zum Beispiel bei Atemnot oder starken Schmerzen."
+  },
+  {
+   "lemma": "verband",
+   "form": "verband",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Man lernt, wie man einen Verband macht und wie man mit Menschen spricht."
+  },
+  {
+   "lemma": "gießen",
+   "form": "goss",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Er verband die Wunden und goss Wein darauf."
+  },
+  {
+   "lemma": "quellen",
+   "form": "quellen",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Aus verschiedenen Quellen."
+  },
+  {
+   "lemma": "natur",
+   "form": "natur",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Aus der Familie, aus meiner Gemeinde und aus der Natur."
+  },
+  {
+   "lemma": "neulich",
+   "form": "neulich",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Neulich war ich mit Freunden in Dresden."
+  },
+  {
+   "lemma": "schlusswort",
+   "form": "schlusswort",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Das ist ein schönes Schlusswort."
+  },
+  {
+   "lemma": "gang",
+   "form": "gang",
+   "from": "de-a2-2-15",
+   "own": 1,
+   "ctx": "Draußen im Gang wartet schon Sam."
+  },
+  {
+   "lemma": "wach",
+   "form": "wach",
+   "from": "de-a2-2-15",
+   "own": 2,
+   "ctx": "Man schläft am Tag, und man ist nachts wach."
+  },
+  {
+   "lemma": "bewerben",
+   "form": "beworben",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Deshalb habe ich mich für die Ausbildung beworben."
+  },
+  {
+   "lemma": "viert",
+   "form": "vierten",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Er hat viel geschlafen, aber am vierten Tag ist er aufgewacht und hat mir die Hand gedrückt."
+  },
+  {
+   "lemma": "kennenlernen",
+   "form": "lernte",
+   "from": "de-a2-2-16",
+   "own": 2,
+   "ctx": "Auf der ersten Station lernte ich meine Kollegin Lena kennen."
+  },
+  {
+   "lemma": "aufpassen",
+   "form": "aufgepasst",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Meine Großmutter Marta, die bis heute auf dem Markt Brot verkauft, hat oft auf uns aufgepasst."
+  },
+  {
+   "lemma": "fleißig",
+   "form": "fleißig",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "In der Schule war ich nicht die Beste, aber ich war fleißig."
+  },
+  {
+   "lemma": "wechseln",
+   "form": "gewechselt",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Mit sechzehn habe ich die Schule gewechselt."
+  },
+  {
+   "lemma": "erreichen",
+   "form": "erreichen",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Sie hat gesagt: Nur wer träumt, kann auch etwas erreichen."
+  },
+  {
+   "lemma": "sortieren",
+   "form": "sortiert",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Ich habe Flaschen sortiert und Plastik getrennt."
+  },
+  {
+   "lemma": "reisen",
+   "form": "reisen",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Nach dem Abitur wollte ich nicht gleich studieren, sondern ein Jahr lang reisen."
+  },
+  {
+   "lemma": "anstrengend",
+   "form": "anstrengend",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Außerdem war die Praxis anstrengend."
+  },
+  {
+   "lemma": "gleichzeitig",
+   "form": "gleichzeitig",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Die Kollegin war streng, und gleichzeitig war sie gütig."
+  },
+  {
+   "lemma": "samstagabend",
+   "form": "samstagabend",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Es ist Samstagabend, kurz nach sieben."
+  },
+  {
+   "lemma": "höflich",
+   "form": "höflich",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Sag es einfach höflich und ehrlich."
+  },
+  {
+   "lemma": "wiedergeben",
+   "form": "wiedergegeben",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Und haben Sie das Geld wiedergegeben?"
+  },
+  {
+   "lemma": "führen",
+   "form": "geführt",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich habe damals ein Tagebuch geführt."
+  },
+  {
+   "lemma": "großzügig",
+   "form": "großzügig",
+   "from": "de-a2-2-17",
+   "own": 2,
+   "ctx": "Ich hätte nie gedacht, dass Sie so großzügig sind."
+  },
+  {
+   "lemma": "drehen",
+   "form": "dreht",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Sam hilft beim Aufräumen, und Jonas sitzt an einem Tisch und dreht seine Tasse in den Händen."
+  },
+  {
+   "lemma": "trauen",
+   "form": "traut",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Er möchte etwas sagen, aber er traut sich nicht."
+  },
+  {
+   "lemma": "na",
+   "form": "na",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Na, ihr zwei?"
+  },
+  {
+   "lemma": "beerdigung",
+   "form": "beerdigung",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ihr sitzt da wie bei einer Beerdigung."
+  },
+  {
+   "lemma": "moment",
+   "form": "moment",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Herr Schmidt, hätten Sie einen Moment Zeit?"
+  },
+  {
+   "lemma": "unhöflich",
+   "form": "unhöfliche",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich weiß, dass es eine unhöfliche Frage ist."
+  },
+  {
+   "lemma": "verlegen",
+   "form": "verlegen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte Sie nicht verlegen machen."
+  },
+  {
+   "lemma": "beißen",
+   "form": "beiße",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich beiße nicht."
+  },
+  {
+   "lemma": "spülen",
+   "form": "spülen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Sam hört auf zu spülen."
+  },
+  {
+   "lemma": "prozent",
+   "form": "prozent",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Neun Prozent."
+  },
+  {
+   "lemma": "irgendwann",
+   "form": "irgendwann",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte mich irgendwann selbstständig machen."
+  },
+  {
+   "lemma": "selbstständig",
+   "form": "selbstständig",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte mich irgendwann selbstständig machen."
+  },
+  {
+   "lemma": "wiederholen",
+   "form": "wiederholen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich würde die Prüfung im Herbst wiederholen."
+  },
+  {
+   "lemma": "argument",
+   "form": "argument",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Das ist ein Argument."
+  },
+  {
+   "lemma": "freiheit",
+   "form": "freiheit",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Der Vorteil ist die Freiheit."
+  },
+  {
+   "lemma": "metall",
+   "form": "metall",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich trenne auch den Müll: Metall, Plastik und Glas."
+  },
+  {
+   "lemma": "vergleich",
+   "form": "vergleich",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Das ist ein schöner Vergleich."
+  },
+  {
+   "lemma": "lage",
+   "form": "lage",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Weißt du, ich war einmal in deiner Lage."
+  },
+  {
+   "lemma": "schock",
+   "form": "schock",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Meine Ankunft in der fremden Stadt war ein Schock."
+  },
+  {
+   "lemma": "meinetwegen",
+   "form": "meinetwegen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Meinetwegen."
+  },
+  {
+   "lemma": "drinnen",
+   "form": "drinnen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Drinnen war es still."
+  },
+  {
+   "lemma": "zeichnen",
+   "form": "zeichnete",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Marta sagte, was es war, und sie zeichnete den Anhänger."
+  },
+  {
+   "lemma": "ungefähr",
+   "form": "ungefähr",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Frau Weber antwortete: Ungefähr 180 Euro."
+  },
+  {
+   "lemma": "kleidersammlung",
+   "form": "kleidersammlung",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Er kam aus Leipzig, aus einer Kleidersammlung der Gemeinde."
+  },
+  {
+   "lemma": "ohnehin",
+   "form": "ohnehin",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie sah das als Zeichen, und sie sagte sich: Wenn ich ohnehin dorthin fahre, nehme ich die Schlüssel mit."
+  },
+  {
+   "lemma": "hauptstraße",
+   "form": "hauptstraße",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie wohnt in der Hauptstraße."
+  },
+  {
+   "lemma": "hereinlaufen",
+   "form": "hereingelaufen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Ben kam hereingelaufen."
+  },
+  {
+   "lemma": "wochenbericht",
+   "form": "wochenbericht",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "dies ist der Wochenbericht des Leipziger Teams für die vergangene Woche."
+  },
+  {
+   "lemma": "zusammenarbeit",
+   "form": "zusammenarbeit",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Erstens: Die Zusammenarbeit mit dem Verein und mit der Nachbarschaft ist gewachsen."
+  },
+  {
+   "lemma": "bedarf",
+   "form": "bedarf",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Der finanzielle Bedarf des Teams ist unverändert."
+  },
+  {
+   "lemma": "vergangen",
+   "form": "vergangene",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "dies ist der Wochenbericht des Leipziger Teams für die vergangene Woche."
+  },
+  {
+   "lemma": "kontakt",
+   "form": "kontakt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Davon waren 21 zum ersten Mal in Kontakt mit einer Gemeinde."
+  },
+  {
+   "lemma": "punkten",
+   "form": "punkten",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das Ergebnis der Woche lässt sich in drei Punkten zusammenfassen."
+  },
+  {
+   "lemma": "jugendliche",
+   "form": "jugendlichen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Die Jugendlichen haben Flaschen aus Glas und Plastik gesammelt, Papier getrennt und den Abfall im Park aufgeräumt."
+  },
+  {
+   "lemma": "gemeindekasse",
+   "form": "gemeindekasse",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das Pfand haben sie der Gemeindekasse gegeben."
+  },
+  {
+   "lemma": "stil",
+   "form": "stil",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Unterschied liegt vor allem im Stil der Gottesdienste und im Wohnort der Mitglieder."
+  },
+  {
+   "lemma": "bewegen",
+   "form": "bewegt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir möchten Ihnen auch von einigen Begegnungen berichten, die uns bewegt haben."
+  },
+  {
+   "lemma": "ablehnen",
+   "form": "abgelehnt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Die Bank hatte die Bitte abgelehnt."
+  },
+  {
+   "lemma": "nebenbei",
+   "form": "nebenbei",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "wechsel",
+   "form": "wechsel",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "ändern",
+   "form": "ändert",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Er will die Stadt nicht gleich verlassen, aber er beobachtet, was sich ändert."
+  },
+  {
+   "lemma": "finanziell",
+   "form": "finanzielle",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der finanzielle Bedarf des Teams ist unverändert."
+  },
+  {
+   "lemma": "unverändert",
+   "form": "unverändert",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der finanzielle Bedarf des Teams ist unverändert."
+  },
+  {
+   "lemma": "becher",
+   "form": "becher",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir brauchen Flyer, Papier, Gläser und Becher."
+  },
+  {
+   "lemma": "antrieb",
+   "form": "antrieb",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Ihr Dank ist unser Antrieb, und wir danken Ihnen sehr."
+  },
+  {
+   "lemma": "einheit",
+   "form": "einheit",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das erste Gebetsanliegen ist die Einheit mit den anderen Gemeinden."
+  },
+  {
+   "lemma": "besonder",
+   "form": "besonderen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich komme nicht aus einer besonderen Familie."
+  },
+  {
+   "lemma": "umgehen",
+   "form": "umgingen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Auf der Station habe ich beobachtet, wie die Schwestern und meine Kollegin mit den Menschen umgingen."
+  },
+  {
+   "lemma": "missionskonferenz",
+   "form": "missionskonferenz",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Mit zwanzig war ich zum ersten Mal auf einer Missionskonferenz."
+  },
+  {
+   "lemma": "dumm",
+   "form": "dummer",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe gedacht: Das ist ein Zufall, ein dummer Gedanke."
+  },
+  {
+   "lemma": "wochenlang",
+   "form": "wochenlang",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Wochenlang habe ich gebetet."
+  },
+  {
+   "lemma": "lücke",
+   "form": "lücke",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Mein Bruder hat gesagt: Wenn du gehst, bleibt eine Lücke."
+  },
+  {
+   "lemma": "wagen",
+   "form": "gewagt",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ohne diese Menschen hätte ich es nicht gewagt."
+  },
+  {
+   "lemma": "verlaufen",
+   "form": "verlaufen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe mich verlaufen, ich habe das Fundbüro gesucht und die Bank, und ich habe den falschen Zug genommen."
+  },
+  {
+   "lemma": "wärme",
+   "form": "wärme",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe tatsächlich viel Wärme gefunden."
+  },
+  {
+   "lemma": "zurückbekommen",
+   "form": "zurückbekommen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Zweitens: das Beispiel von Marta, die ihren Schlüssel verloren und von einer Fremden zurückbekommen hat."
+  },
+  {
+   "lemma": "übung",
+   "form": "übung",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Aber es ist eine gute Übung."
+  },
+  {
+   "lemma": "tat",
+   "form": "tat",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich bin lange ein Mensch der Tat gewesen, kein Mensch des Gebets."
+  },
+  {
+   "lemma": "täglich",
+   "form": "tägliche",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Das Leben hier ist eine tägliche Herausforderung, und das hat mich geprägt."
+  },
+  {
+   "lemma": "jederzeit",
+   "form": "jederzeit",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich würde jederzeit wieder gehen."
+  },
+  {
+   "lemma": "anfang",
+   "form": "anfang",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Mein Anfang war ganz normal: Schule, Arbeit, Kirche am Sonntag."
+  },
+  {
+   "lemma": "prägen",
+   "form": "geprägt",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Sie hatten viel Geduld, und das hat mich geprägt."
+  }
+ ],
+ "de-b1-02": [
+  {
+   "lemma": "aufnehmen",
+   "form": "aufgenommen",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Schließlich hat uns eine Gastfamilie aufgenommen."
+  },
+  {
+   "lemma": "bewerben",
+   "form": "beworben",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Deshalb habe ich mich für die Ausbildung beworben."
+  },
+  {
+   "lemma": "viert",
+   "form": "vierten",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Er hat viel geschlafen, aber am vierten Tag ist er aufgewacht und hat mir die Hand gedrückt."
+  },
+  {
+   "lemma": "kennenlernen",
+   "form": "lernte",
+   "from": "de-a2-2-16",
+   "own": 2,
+   "ctx": "Auf der ersten Station lernte ich meine Kollegin Lena kennen."
+  },
+  {
+   "lemma": "aufpassen",
+   "form": "aufgepasst",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Meine Großmutter Marta, die bis heute auf dem Markt Brot verkauft, hat oft auf uns aufgepasst."
+  },
+  {
+   "lemma": "fleißig",
+   "form": "fleißig",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "In der Schule war ich nicht die Beste, aber ich war fleißig."
+  },
+  {
+   "lemma": "wechseln",
+   "form": "gewechselt",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Mit sechzehn habe ich die Schule gewechselt."
+  },
+  {
+   "lemma": "erreichen",
+   "form": "erreichen",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Sie hat gesagt: Nur wer träumt, kann auch etwas erreichen."
+  },
+  {
+   "lemma": "sortieren",
+   "form": "sortiert",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Ich habe Flaschen sortiert und Plastik getrennt."
+  },
+  {
+   "lemma": "reisen",
+   "form": "reisen",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Nach dem Abitur wollte ich nicht gleich studieren, sondern ein Jahr lang reisen."
+  },
+  {
+   "lemma": "anstrengend",
+   "form": "anstrengend",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Außerdem war die Praxis anstrengend."
+  },
+  {
+   "lemma": "gleichzeitig",
+   "form": "gleichzeitig",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Die Kollegin war streng, und gleichzeitig war sie gütig."
+  },
+  {
+   "lemma": "gütig",
+   "form": "gütig",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Die Kollegin war streng, und gleichzeitig war sie gütig."
+  },
+  {
+   "lemma": "urlaub",
+   "form": "urlaub",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Nachdem ich zwei Wochen Urlaub genommen hatte, ging es wieder."
+  },
+  {
+   "lemma": "drücken",
+   "form": "gedrückt",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Er hat viel geschlafen, aber am vierten Tag ist er aufgewacht und hat mir die Hand gedrückt."
+  },
+  {
+   "lemma": "träne",
+   "form": "tränen",
+   "from": "de-a2-2-16",
+   "own": 1,
+   "ctx": "Mir liefen die Tränen über das Gesicht."
+  },
+  {
+   "lemma": "aufgeben",
+   "form": "aufgegeben",
+   "from": "de-a2-2-16",
+   "own": 3,
+   "ctx": "Am Ende des zweiten Jahres hatte ich fast aufgegeben."
+  },
+  {
+   "lemma": "bedanken",
+   "form": "bedankt",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Bevor ich weiterfuhr, habe ich mich bedankt."
+  },
+  {
+   "lemma": "erstens",
+   "form": "erstens",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Erstens: keine Zinsen."
+  },
+  {
+   "lemma": "zweitens",
+   "form": "zweitens",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Zweitens: Du zahlst monatlich hundert Euro zurück."
+  },
+  {
+   "lemma": "drittens",
+   "form": "drittens",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Drittens: Wir schreiben alles auf, mit Datum und Unterschrift."
+  },
+  {
+   "lemma": "gedanke",
+   "form": "gedanke",
+   "from": "de-a2-2-17",
+   "own": 2,
+   "ctx": "Mein Laden und deine Werkstatt sind verschieden, aber der Gedanke ist gleich: nichts wegwerfen."
+  },
+  {
+   "lemma": "samstagabend",
+   "form": "samstagabend",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Es ist Samstagabend, kurz nach sieben."
+  },
+  {
+   "lemma": "höflich",
+   "form": "höflich",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Sag es einfach höflich und ehrlich."
+  },
+  {
+   "lemma": "wiedergeben",
+   "form": "wiedergegeben",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Und haben Sie das Geld wiedergegeben?"
+  },
+  {
+   "lemma": "führen",
+   "form": "geführt",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich habe damals ein Tagebuch geführt."
+  },
+  {
+   "lemma": "großzügig",
+   "form": "großzügig",
+   "from": "de-a2-2-17",
+   "own": 2,
+   "ctx": "Ich hätte nie gedacht, dass Sie so großzügig sind."
+  },
+  {
+   "lemma": "drehen",
+   "form": "dreht",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Sam hilft beim Aufräumen, und Jonas sitzt an einem Tisch und dreht seine Tasse in den Händen."
+  },
+  {
+   "lemma": "trauen",
+   "form": "traut",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Er möchte etwas sagen, aber er traut sich nicht."
+  },
+  {
+   "lemma": "na",
+   "form": "na",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Na, ihr zwei?"
+  },
+  {
+   "lemma": "beerdigung",
+   "form": "beerdigung",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ihr sitzt da wie bei einer Beerdigung."
+  },
+  {
+   "lemma": "moment",
+   "form": "moment",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Herr Schmidt, hätten Sie einen Moment Zeit?"
+  },
+  {
+   "lemma": "unhöflich",
+   "form": "unhöfliche",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich weiß, dass es eine unhöfliche Frage ist."
+  },
+  {
+   "lemma": "verlegen",
+   "form": "verlegen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte Sie nicht verlegen machen."
+  },
+  {
+   "lemma": "beißen",
+   "form": "beiße",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich beiße nicht."
+  },
+  {
+   "lemma": "spülen",
+   "form": "spülen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Sam hört auf zu spülen."
+  },
+  {
+   "lemma": "prozent",
+   "form": "prozent",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Neun Prozent."
+  },
+  {
+   "lemma": "irgendwann",
+   "form": "irgendwann",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte mich irgendwann selbstständig machen."
+  },
+  {
+   "lemma": "selbstständig",
+   "form": "selbstständig",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich möchte mich irgendwann selbstständig machen."
+  },
+  {
+   "lemma": "wiederholen",
+   "form": "wiederholen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich würde die Prüfung im Herbst wiederholen."
+  },
+  {
+   "lemma": "argument",
+   "form": "argument",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Das ist ein Argument."
+  },
+  {
+   "lemma": "freiheit",
+   "form": "freiheit",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Der Vorteil ist die Freiheit."
+  },
+  {
+   "lemma": "metall",
+   "form": "metall",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich trenne auch den Müll: Metall, Plastik und Glas."
+  },
+  {
+   "lemma": "vergleich",
+   "form": "vergleich",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Das ist ein schöner Vergleich."
+  },
+  {
+   "lemma": "lage",
+   "form": "lage",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Weißt du, ich war einmal in deiner Lage."
+  },
+  {
+   "lemma": "schock",
+   "form": "schock",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Meine Ankunft in der fremden Stadt war ein Schock."
+  },
+  {
+   "lemma": "riesig",
+   "form": "riesig",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Der Eindruck war riesig."
+  },
+  {
+   "lemma": "meinetwegen",
+   "form": "meinetwegen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Meinetwegen."
+  },
+  {
+   "lemma": "sprachlos",
+   "form": "sprachlos",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Ich bin sprachlos."
+  },
+  {
+   "lemma": "rechnen",
+   "form": "rechnen",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Das ist leicht zu rechnen."
+  },
+  {
+   "lemma": "datum",
+   "form": "datum",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Drittens: Wir schreiben alles auf, mit Datum und Unterschrift."
+  },
+  {
+   "lemma": "viertens",
+   "form": "viertens",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Und viertens: Du legst das Geld auf ein eigenes Konto, damit man alles sieht."
+  },
+  {
+   "lemma": "ehre",
+   "form": "ehre",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Es wäre mir eine Ehre."
+  },
+  {
+   "lemma": "bargeld",
+   "form": "bargeld",
+   "from": "de-a2-2-17",
+   "own": 1,
+   "ctx": "Das Bargeld habe ich nicht im Laden."
+  },
+  {
+   "lemma": "vorhaben",
+   "form": "habe",
+   "from": "de-a2-2-17",
+   "own": 2,
+   "ctx": "Ich habe vor, in Leipzig zu bleiben."
+  },
+  {
+   "lemma": "weiterfahren",
+   "form": "weiterfahren",
+   "from": "de-a2-2-17",
+   "own": 2,
+   "ctx": "Bei einem Spaziergang durch die Altstadt hat er mir Geld geliehen, damit ich weiterfahren konnte."
+  },
+  {
+   "lemma": "bedingung",
+   "form": "bedingungen",
+   "from": "de-a2-2-17",
+   "own": 2,
+   "ctx": "Aber ich habe Bedingungen."
+  },
+  {
+   "lemma": "rad",
+   "form": "rad",
+   "from": "de-a2-2-17",
+   "own": 3,
+   "ctx": "Der Wohnort ist wichtig: Wer Rad fährt, repariert nah."
+  },
+  {
+   "lemma": "wiederkommen",
+   "form": "kommen",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Kommen Sie nächste Woche wieder."
+  },
+  {
+   "lemma": "lösen",
+   "form": "lösen",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Das ist ein Nachteil, aber er ist nicht schwer zu lösen."
+  },
+  {
+   "lemma": "zurückbringen",
+   "form": "brachte",
+   "from": "de-a2-2-18",
+   "own": 3,
+   "ctx": "Er sammelte nach der Schule leere Flaschen und brachte das Pfand zurück."
+  },
+  {
+   "lemma": "ersatzschlüssel",
+   "form": "ersatzschlüssel",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Zum Glück hatte Frau Weber, ihre alte Nachbarin, einen Ersatzschlüssel."
+  },
+  {
+   "lemma": "regal",
+   "form": "regale",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Neben ihm standen viele Regale, und darin lagen Mützen, Handys und Taschen."
+  },
+  {
+   "lemma": "vergehen",
+   "form": "vergingen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Während die Wochen vergingen, gab es von den Schlüsseln keine Spur."
+  },
+  {
+   "lemma": "schütteln",
+   "form": "schüttelte",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Marta schüttelte den Kopf und sagte: Du bist ein guter Junge, aber das ist nicht deine Sorge."
+  },
+  {
+   "lemma": "backstube",
+   "form": "backstube",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Auf dem Anhänger stand: „Brot aus Martas Backstube, Markt Leipzig“."
+  },
+  {
+   "lemma": "erfüllen",
+   "form": "erfüllen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie wollte ihre Aufgabe erfüllen, bevor die Abreise kam."
+  },
+  {
+   "lemma": "hierher",
+   "form": "hierher",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Wie ist er hierher gekommen?"
+  },
+  {
+   "lemma": "zugleich",
+   "form": "zugleich",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Beide lachten und weinten zugleich."
+  },
+  {
+   "lemma": "entwicklung",
+   "form": "entwicklung",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Drittens: Die Entwicklung im Hauskreis und im Jugendkreis ist gut."
+  },
+  {
+   "lemma": "unterstützer",
+   "form": "unterstützer",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Liebe Freunde und Unterstützer unserer Arbeit in Leipzig,"
+  },
+  {
+   "lemma": "vergangen",
+   "form": "vergangene",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "dies ist der Wochenbericht des Leipziger Teams für die vergangene Woche."
+  },
+  {
+   "lemma": "verfassen",
+   "form": "verfasst",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir schreiben ihn gemeinsam: David hat die Zahlen gesammelt, und ich habe den Text verfasst."
+  },
+  {
+   "lemma": "punkten",
+   "form": "punkten",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das Ergebnis der Woche lässt sich in drei Punkten zusammenfassen."
+  },
+  {
+   "lemma": "wachsen",
+   "form": "gewachsen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Erstens: Die Zusammenarbeit mit dem Verein und mit der Nachbarschaft ist gewachsen."
+  },
+  {
+   "lemma": "gemeindekasse",
+   "form": "gemeindekasse",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das Pfand haben sie der Gemeindekasse gegeben."
+  },
+  {
+   "lemma": "gaben",
+   "form": "gaben",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Vorteil ist die Auswahl an Gaben und Menschen."
+  },
+  {
+   "lemma": "bewegen",
+   "form": "bewegt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir möchten Ihnen auch von einigen Begegnungen berichten, die uns bewegt haben."
+  },
+  {
+   "lemma": "summe",
+   "form": "summe",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Er wird die Summe ehrlich zurückzahlen."
+  },
+  {
+   "lemma": "nebenbei",
+   "form": "nebenbei",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "erwähnen",
+   "form": "erwähnen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "ändern",
+   "form": "ändert",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Er will die Stadt nicht gleich verlassen, aber er beobachtet, was sich ändert."
+  },
+  {
+   "lemma": "segnen",
+   "form": "gesegnet",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Am Ende der Woche haben wir ihn im Gebet gesegnet."
+  },
+  {
+   "lemma": "unverändert",
+   "form": "unverändert",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der finanzielle Bedarf des Teams ist unverändert."
+  },
+  {
+   "lemma": "material",
+   "form": "material",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Bedarf an Material für die Aktion ist gestiegen."
+  },
+  {
+   "lemma": "antrieb",
+   "form": "antrieb",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Ihr Dank ist unser Antrieb, und wir danken Ihnen sehr."
+  },
+  {
+   "lemma": "treue",
+   "form": "treue",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Ihre Treue gibt uns Kraft."
+  },
+  {
+   "lemma": "besonder",
+   "form": "besonderen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich komme nicht aus einer besonderen Familie."
+  },
+  {
+   "lemma": "umgehen",
+   "form": "umgingen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Auf der Station habe ich beobachtet, wie die Schwestern und meine Kollegin mit den Menschen umgingen."
+  },
+  {
+   "lemma": "missionskonferenz",
+   "form": "missionskonferenz",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Mit zwanzig war ich zum ersten Mal auf einer Missionskonferenz."
+  },
+  {
+   "lemma": "dumm",
+   "form": "dummer",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe gedacht: Das ist ein Zufall, ein dummer Gedanke."
+  },
+  {
+   "lemma": "wochenlang",
+   "form": "wochenlang",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Wochenlang habe ich gebetet."
+  },
+  {
+   "lemma": "lücke",
+   "form": "lücke",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Mein Bruder hat gesagt: Wenn du gehst, bleibt eine Lücke."
+  },
+  {
+   "lemma": "wagen",
+   "form": "gewagt",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ohne diese Menschen hätte ich es nicht gewagt."
+  },
+  {
+   "lemma": "verlaufen",
+   "form": "verlaufen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe mich verlaufen, ich habe das Fundbüro gesucht und die Bank, und ich habe den falschen Zug genommen."
+  },
+  {
+   "lemma": "wärme",
+   "form": "wärme",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe tatsächlich viel Wärme gefunden."
+  },
+  {
+   "lemma": "zurückbekommen",
+   "form": "zurückbekommen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Zweitens: das Beispiel von Marta, die ihren Schlüssel verloren und von einer Fremden zurückbekommen hat."
+  },
+  {
+   "lemma": "übung",
+   "form": "übung",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Aber es ist eine gute Übung."
+  },
+  {
+   "lemma": "tat",
+   "form": "tat",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich bin lange ein Mensch der Tat gewesen, kein Mensch des Gebets."
+  },
+  {
+   "lemma": "täglich",
+   "form": "tägliche",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Das Leben hier ist eine tägliche Herausforderung, und das hat mich geprägt."
+  },
+  {
+   "lemma": "jederzeit",
+   "form": "jederzeit",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich würde jederzeit wieder gehen."
+  },
+  {
+   "lemma": "anfang",
+   "form": "anfang",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Mein Anfang war ganz normal: Schule, Arbeit, Kirche am Sonntag."
+  },
+  {
+   "lemma": "prägen",
+   "form": "geprägt",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Sie hatten viel Geduld, und das hat mich geprägt."
+  }
+ ],
+ "de-b1-04": [
+  {
+   "lemma": "erkennen",
+   "form": "erkannte",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Aber ein Bäcker, der nebenan stand, erkannte den Anhänger sofort."
+  },
+  {
+   "lemma": "entdecken",
+   "form": "entdeckte",
+   "from": "de-a2-2-18",
+   "own": 3,
+   "ctx": "Eines Tages entdeckte die junge Frau in einer Tasche etwas Hartes."
+  },
+  {
+   "lemma": "wiederkommen",
+   "form": "kommen",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Kommen Sie nächste Woche wieder."
+  },
+  {
+   "lemma": "lösen",
+   "form": "lösen",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Das ist ein Nachteil, aber er ist nicht schwer zu lösen."
+  },
+  {
+   "lemma": "zurückbringen",
+   "form": "brachte",
+   "from": "de-a2-2-18",
+   "own": 3,
+   "ctx": "Er sammelte nach der Schule leere Flaschen und brachte das Pfand zurück."
+  },
+  {
+   "lemma": "anhänger",
+   "form": "anhänger",
+   "from": "de-a2-2-18",
+   "own": 6,
+   "ctx": "Es sind drei alte Schlüssel mit einem kleinen Anhänger aus Holz."
+  },
+  {
+   "lemma": "ersatzschlüssel",
+   "form": "ersatzschlüssel",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Zum Glück hatte Frau Weber, ihre alte Nachbarin, einen Ersatzschlüssel."
+  },
+  {
+   "lemma": "drinnen",
+   "form": "drinnen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Drinnen war es still."
+  },
+  {
+   "lemma": "regal",
+   "form": "regale",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Neben ihm standen viele Regale, und darin lagen Mützen, Handys und Taschen."
+  },
+  {
+   "lemma": "zeichnen",
+   "form": "zeichnete",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Marta sagte, was es war, und sie zeichnete den Anhänger."
+  },
+  {
+   "lemma": "vergehen",
+   "form": "vergingen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Während die Wochen vergingen, gab es von den Schlüsseln keine Spur."
+  },
+  {
+   "lemma": "ungefähr",
+   "form": "ungefähr",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Frau Weber antwortete: Ungefähr 180 Euro."
+  },
+  {
+   "lemma": "schütteln",
+   "form": "schüttelte",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Marta schüttelte den Kopf und sagte: Du bist ein guter Junge, aber das ist nicht deine Sorge."
+  },
+  {
+   "lemma": "kleidersammlung",
+   "form": "kleidersammlung",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Er kam aus Leipzig, aus einer Kleidersammlung der Gemeinde."
+  },
+  {
+   "lemma": "backstube",
+   "form": "backstube",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Auf dem Anhänger stand: „Brot aus Martas Backstube, Markt Leipzig“."
+  },
+  {
+   "lemma": "ohnehin",
+   "form": "ohnehin",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie sah das als Zeichen, und sie sagte sich: Wenn ich ohnehin dorthin fahre, nehme ich die Schlüssel mit."
+  },
+  {
+   "lemma": "erfüllen",
+   "form": "erfüllen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie wollte ihre Aufgabe erfüllen, bevor die Abreise kam."
+  },
+  {
+   "lemma": "hauptstraße",
+   "form": "hauptstraße",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Sie wohnt in der Hauptstraße."
+  },
+  {
+   "lemma": "hierher",
+   "form": "hierher",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Wie ist er hierher gekommen?"
+  },
+  {
+   "lemma": "hereinlaufen",
+   "form": "hereingelaufen",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Ben kam hereingelaufen."
+  },
+  {
+   "lemma": "zugleich",
+   "form": "zugleich",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Beide lachten und weinten zugleich."
+  },
+  {
+   "lemma": "verschenken",
+   "form": "verschenkt",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Das Rätsel ist gelöst: Sie haben den Mantel verschenkt, und die Schlüssel waren noch drin."
+  },
+  {
+   "lemma": "drin",
+   "form": "drin",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Das Rätsel ist gelöst: Sie haben den Mantel verschenkt, und die Schlüssel waren noch drin."
+  },
+  {
+   "lemma": "erfahren",
+   "form": "erfuhr",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Eine Woche später erfuhr Anna, dass die junge Frau die Stelle bekommen hatte."
+  },
+  {
+   "lemma": "nagel",
+   "form": "nagel",
+   "from": "de-a2-2-18",
+   "own": 1,
+   "ctx": "Inzwischen hängen die Schlüssel an einem Nagel neben der Tür."
+  },
+  {
+   "lemma": "leidtun",
+   "form": "tut",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Das tut mir leid, sagte er."
+  },
+  {
+   "lemma": "anbieten",
+   "form": "bot",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Frau Weber bot ihr an, das Geld zu leihen."
+  },
+  {
+   "lemma": "zurückfahren",
+   "form": "fuhr",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Schließlich fuhr sie am Abend zurück."
+  },
+  {
+   "lemma": "herausnehmen",
+   "form": "nahm",
+   "from": "de-a2-2-18",
+   "own": 2,
+   "ctx": "Sie nahm es heraus und erkannte es sofort."
+  },
+  {
+   "lemma": "unterstützung",
+   "form": "unterstützung",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Ohne Ihre Unterstützung wäre das nicht möglich gewesen."
+  },
+  {
+   "lemma": "teilnehmer",
+   "form": "teilnehmer",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Wir möchten Ihnen von den Besuchern und Teilnehmern berichten, von den Ergebnissen der Woche und von unseren Gebetsanliegen."
+  },
+  {
+   "lemma": "wochenbericht",
+   "form": "wochenbericht",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "dies ist der Wochenbericht des Leipziger Teams für die vergangene Woche."
+  },
+  {
+   "lemma": "gebetsanliegen",
+   "form": "gebetsanliegen",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Wir möchten Ihnen von den Besuchern und Teilnehmern berichten, von den Ergebnissen der Woche und von unseren Gebetsanliegen."
+  },
+  {
+   "lemma": "zusammenarbeit",
+   "form": "zusammenarbeit",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Erstens: Die Zusammenarbeit mit dem Verein und mit der Nachbarschaft ist gewachsen."
+  },
+  {
+   "lemma": "entwicklung",
+   "form": "entwicklung",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Drittens: Die Entwicklung im Hauskreis und im Jugendkreis ist gut."
+  },
+  {
+   "lemma": "fortschritt",
+   "form": "fortschritt",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Es gibt einen deutlichen Fortschritt."
+  },
+  {
+   "lemma": "bedarf",
+   "form": "bedarf",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "Der finanzielle Bedarf des Teams ist unverändert."
+  },
+  {
+   "lemma": "unterstützer",
+   "form": "unterstützer",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Liebe Freunde und Unterstützer unserer Arbeit in Leipzig,"
+  },
+  {
+   "lemma": "vergangen",
+   "form": "vergangene",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "dies ist der Wochenbericht des Leipziger Teams für die vergangene Woche."
+  },
+  {
+   "lemma": "verfassen",
+   "form": "verfasst",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir schreiben ihn gemeinsam: David hat die Zahlen gesammelt, und ich habe den Text verfasst."
+  },
+  {
+   "lemma": "kontakt",
+   "form": "kontakt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Davon waren 21 zum ersten Mal in Kontakt mit einer Gemeinde."
+  },
+  {
+   "lemma": "punkten",
+   "form": "punkten",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das Ergebnis der Woche lässt sich in drei Punkten zusammenfassen."
+  },
+  {
+   "lemma": "wachsen",
+   "form": "gewachsen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Erstens: Die Zusammenarbeit mit dem Verein und mit der Nachbarschaft ist gewachsen."
+  },
+  {
+   "lemma": "jugendliche",
+   "form": "jugendlichen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Die Jugendlichen haben Flaschen aus Glas und Plastik gesammelt, Papier getrennt und den Abfall im Park aufgeräumt."
+  },
+  {
+   "lemma": "gemeindekasse",
+   "form": "gemeindekasse",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das Pfand haben sie der Gemeindekasse gegeben."
+  },
+  {
+   "lemma": "gaben",
+   "form": "gaben",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Vorteil ist die Auswahl an Gaben und Menschen."
+  },
+  {
+   "lemma": "stil",
+   "form": "stil",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Unterschied liegt vor allem im Stil der Gottesdienste und im Wohnort der Mitglieder."
+  },
+  {
+   "lemma": "bewegen",
+   "form": "bewegt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir möchten Ihnen auch von einigen Begegnungen berichten, die uns bewegt haben."
+  },
+  {
+   "lemma": "summe",
+   "form": "summe",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Er wird die Summe ehrlich zurückzahlen."
+  },
+  {
+   "lemma": "ablehnen",
+   "form": "abgelehnt",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Die Bank hatte die Bitte abgelehnt."
+  },
+  {
+   "lemma": "nebenbei",
+   "form": "nebenbei",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "erwähnen",
+   "form": "erwähnen",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "wechsel",
+   "form": "wechsel",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Nebenbei möchten wir erwähnen: Lukas, ein Lehrer aus unserer Gemeinde, denkt über den Wechsel auf das Land nach."
+  },
+  {
+   "lemma": "ändern",
+   "form": "ändert",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Er will die Stadt nicht gleich verlassen, aber er beobachtet, was sich ändert."
+  },
+  {
+   "lemma": "segnen",
+   "form": "gesegnet",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Am Ende der Woche haben wir ihn im Gebet gesegnet."
+  },
+  {
+   "lemma": "finanziell",
+   "form": "finanzielle",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der finanzielle Bedarf des Teams ist unverändert."
+  },
+  {
+   "lemma": "unverändert",
+   "form": "unverändert",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der finanzielle Bedarf des Teams ist unverändert."
+  },
+  {
+   "lemma": "material",
+   "form": "material",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Der Bedarf an Material für die Aktion ist gestiegen."
+  },
+  {
+   "lemma": "becher",
+   "form": "becher",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Wir brauchen Flyer, Papier, Gläser und Becher."
+  },
+  {
+   "lemma": "antrieb",
+   "form": "antrieb",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Ihr Dank ist unser Antrieb, und wir danken Ihnen sehr."
+  },
+  {
+   "lemma": "treue",
+   "form": "treue",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Ihre Treue gibt uns Kraft."
+  },
+  {
+   "lemma": "einheit",
+   "form": "einheit",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Das erste Gebetsanliegen ist die Einheit mit den anderen Gemeinden."
+  },
+  {
+   "lemma": "erkälten",
+   "form": "erkältet",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Anna und David waren in dieser Woche erkältet, und ich habe noch Husten."
+  },
+  {
+   "lemma": "schluss",
+   "form": "schluss",
+   "from": "de-a2-2-19",
+   "own": 1,
+   "ctx": "Zum Schluss: Wir danken Gott für jeden Fortschritt, auch für den kleinsten."
+  },
+  {
+   "lemma": "teams",
+   "form": "teams",
+   "from": "de-a2-2-19",
+   "own": 2,
+   "ctx": "dies ist der Wochenbericht des Leipziger Teams für die vergangene Woche."
+  },
+  {
+   "lemma": "zurückliegen",
+   "form": "liegt",
+   "from": "de-a2-2-19",
+   "own": 2,
+   "ctx": "Sein Abitur liegt Jahre zurück, aber er lernt noch heute gern."
+  },
+  {
+   "lemma": "anliegen",
+   "form": "anliegen",
+   "from": "de-a2-2-19",
+   "own": 2,
+   "ctx": "Das zweite Anliegen ist die Gesundheit."
+  },
+  {
+   "lemma": "leipziger",
+   "form": "leipziger",
+   "from": "de-a2-2-19",
+   "own": 3,
+   "ctx": "dies ist der Wochenbericht des Leipziger Teams für die vergangene Woche."
+  },
+  {
+   "lemma": "zahl",
+   "form": "zahlen",
+   "from": "de-a2-2-19",
+   "own": 4,
+   "ctx": "Wir schreiben ihn gemeinsam: David hat die Zahlen gesammelt, und ich habe den Text verfasst."
+  },
+  {
+   "lemma": "senden",
+   "form": "gesendet",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Aber am nächsten Morgen, als ich im Bus saß, kam ein Gedanke: Du wirst gesendet."
+  },
+  {
+   "lemma": "besonder",
+   "form": "besonderen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich komme nicht aus einer besonderen Familie."
+  },
+  {
+   "lemma": "umgehen",
+   "form": "umgingen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Auf der Station habe ich beobachtet, wie die Schwestern und meine Kollegin mit den Menschen umgingen."
+  },
+  {
+   "lemma": "missionskonferenz",
+   "form": "missionskonferenz",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Mit zwanzig war ich zum ersten Mal auf einer Missionskonferenz."
+  },
+  {
+   "lemma": "dumm",
+   "form": "dummer",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe gedacht: Das ist ein Zufall, ein dummer Gedanke."
+  },
+  {
+   "lemma": "wochenlang",
+   "form": "wochenlang",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Wochenlang habe ich gebetet."
+  },
+  {
+   "lemma": "lücke",
+   "form": "lücke",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Mein Bruder hat gesagt: Wenn du gehst, bleibt eine Lücke."
+  },
+  {
+   "lemma": "wagen",
+   "form": "gewagt",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ohne diese Menschen hätte ich es nicht gewagt."
+  },
+  {
+   "lemma": "verlaufen",
+   "form": "verlaufen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe mich verlaufen, ich habe das Fundbüro gesucht und die Bank, und ich habe den falschen Zug genommen."
+  },
+  {
+   "lemma": "wärme",
+   "form": "wärme",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich habe tatsächlich viel Wärme gefunden."
+  },
+  {
+   "lemma": "zurückbekommen",
+   "form": "zurückbekommen",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Zweitens: das Beispiel von Marta, die ihren Schlüssel verloren und von einer Fremden zurückbekommen hat."
+  },
+  {
+   "lemma": "übung",
+   "form": "übung",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Aber es ist eine gute Übung."
+  },
+  {
+   "lemma": "tat",
+   "form": "tat",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich bin lange ein Mensch der Tat gewesen, kein Mensch des Gebets."
+  },
+  {
+   "lemma": "täglich",
+   "form": "tägliche",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Das Leben hier ist eine tägliche Herausforderung, und das hat mich geprägt."
+  },
+  {
+   "lemma": "jederzeit",
+   "form": "jederzeit",
+   "from": "de-a2-2-20",
+   "own": 1,
+   "ctx": "Ich würde jederzeit wieder gehen."
+  },
+  {
+   "lemma": "anfang",
+   "form": "anfang",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Mein Anfang war ganz normal: Schule, Arbeit, Kirche am Sonntag."
+  },
+  {
+   "lemma": "prägen",
+   "form": "geprägt",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Sie hatten viel Geduld, und das hat mich geprägt."
+  },
+  {
+   "lemma": "dankbarkeit",
+   "form": "dankbarkeit",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Deshalb ist meine Dankbarkeit so groß, besonders gegenüber meiner Heimatgemeinde."
+  },
+  {
+   "lemma": "vorbild",
+   "form": "vorbild",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Sie ist besonders ein Vorbild für mich."
+  },
+  {
+   "lemma": "herausforderung",
+   "form": "herausforderung",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Drittens: die Herausforderung, jeden Tag ehrlich zu bleiben."
+  },
+  {
+   "lemma": "gnade",
+   "form": "gnade",
+   "from": "de-a2-2-20",
+   "own": 3,
+   "ctx": "Denn ich weiß: Es ist Gnade, wenn Gott einen Menschen sendet."
+  }
+ ]
+}

@@ -133,8 +133,8 @@
               "speaker": "sam"
             },
             {
-              "text": "Jeg mener at fisk er dårlig. Jeg liker brød.",
-              "english": "I think fish is bad. I like bread.",
+              "text": "Jeg synes at fisk ikke er bra. Jeg liker brød.",
+              "english": "I think fish is not good. I like bread.",
               "speaker": "nico"
             },
             {
@@ -153,8 +153,8 @@
               "speaker": "nico"
             },
             {
-              "text": "Kanskje, ja! Du liker kake hver dag.",
-              "english": "Maybe, yes! You like cake every day.",
+              "text": "Ja, det kan være! Du liker kake mer enn fisk, hver dag.",
+              "english": "Yes, that may be! You like cake more than fish, every day.",
               "speaker": "marta"
             }
           ]
@@ -177,8 +177,8 @@
               "speaker": "sam"
             },
             {
-              "text": "Jeg er enig. Søndagen er en bra dag. Men jeg er ofte trøtt.",
-              "english": "I agree. Sunday is a good day. But I am often tired.",
+              "text": "Jeg er enig. Jeg mener at søndagen er en bra dag. Men jeg er ofte trøtt.",
+              "english": "I agree. I think Sunday is a good day. But I am often tired.",
               "speaker": "luis"
             },
             {

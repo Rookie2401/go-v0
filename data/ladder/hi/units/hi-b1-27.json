@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-27",
+  "lang": "hi",
+  "title": "रवि सर का प्रयोग",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-27",
+    "title": "\"रवि सर का प्रयोग\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Thirteenth controlled unit of the b1 bridge. It prepares the words of the GDL poem \"दीदी, दीदी, आकाश का रंग नीला क्यों है?\" (hi-b1-28): टॉर्च, प्रयोग, तरंग, अणु, चादर, वायुमंडल, बिखरना, नारंगी, इंद्रधनुष, लंबाई, समझदार, फ़र्क, each used three times, in a simple experiment with a torch and a glass of water that Ravi sir shows Aman and Sam (an explanation text, the text type of hi-a2-1-14 and hi-a2-2-17). The explanations are simplified and are not a physics text; a Hindi reviewer and a science teacher should check the words. Machine-drafted. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "science",
+    "light",
+    "sky",
+    "school",
+    "experiment"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "सवाल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक दिन अमन ने रवि सर से पूछा, \"सर, आकाश का रंग नीला क्यों होता है?\"",
+              "english": "One day Aman asked Ravi sir, \"Sir, why is the colour of the sky blue?\""
+            },
+            {
+              "text": "रवि सर मुस्कराए और बोले, \"यह बहुत समझदार सवाल है, अमन।\"",
+              "english": "Ravi sir smiled and said, \"This is a very clever question, Aman.\""
+            },
+            {
+              "text": "\"आज हम इसका जवाब एक प्रयोग से ढूँढ़ेंगे।\"",
+              "english": "\"Today we will find its answer through an experiment.\""
+            },
+            {
+              "text": "सैम भी पास आकर बैठ गया, और उसने कहा, \"सर, मैं भी यह प्रयोग देखूँगा।\"",
+              "english": "Sam came and sat close too, and he said, \"Sir, I will watch this experiment too.\""
+            },
+            {
+              "text": "रवि सर ने मेज़ पर एक गिलास रखा और उसमें पानी भरा।",
+              "english": "Ravi sir put a glass on the table and filled it with water."
+            },
+            {
+              "text": "फिर उन्होंने पानी में दूध की दो बूँदें डालीं, और पानी हल्का सफ़ेद हो गया।",
+              "english": "Then he put two drops of milk in the water, and the water turned light white."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "टॉर्च का प्रयोग",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि सर ने कमरे का दरवाज़ा बंद किया और अपनी टॉर्च जलाई।",
+              "english": "Ravi sir shut the door of the room and switched on his torch."
+            },
+            {
+              "text": "उन्होंने टॉर्च की रोशनी गिलास के एक तरफ़ से डाली।",
+              "english": "He cast the light of the torch into the glass from one side."
+            },
+            {
+              "text": "अमन ने देखा कि पानी में रोशनी चारों तरफ़ बिखर गई।",
+              "english": "Aman saw that the light scattered in all directions in the water."
+            },
+            {
+              "text": "रवि सर बोले, \"जब रोशनी बहुत छोटे अणुओं से टकराती है, तो वह फैल जाती है।\"",
+              "english": "Ravi sir said, \"When light strikes very small molecules, it spreads out.\""
+            },
+            {
+              "text": "\"आकाश में भी हवा के अणु होते हैं, पर वे हमें दिखते नहीं।\"",
+              "english": "\"In the sky too there are molecules of the air, but we do not see them.\""
+            },
+            {
+              "text": "सैम ने पूछा, \"यानी हवा के अणु रोशनी को बिखेरते हैं?\"",
+              "english": "Sam asked, \"That is, the air's molecules scatter the light?\""
+            },
+            {
+              "text": "\"हाँ,\" रवि सर ने कहा, \"और जो रंग ज़्यादा फैलता है, वही हमें ज़्यादा दिखता है।\"",
+              "english": "\"Yes,\" Ravi sir said, \"and the colour that spreads more is the one we see more.\""
+            },
+            {
+              "text": "अमन ने फिर टॉर्च जलाई और बोला, \"सर, यह प्रयोग तो बहुत मज़ेदार है!\"",
+              "english": "Aman switched on the torch again and said, \"Sir, this experiment is really fun!\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "रंगों की चादर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि सर ने कहा, \"सूर्य की किरण में कई रंग होते हैं, जैसे इंद्रधनुष में।\"",
+              "english": "Ravi sir said, \"A ray of the sun has many colours, as in a rainbow.\""
+            },
+            {
+              "text": "\"लाल, नारंगी, पीला, हरा और नीला, ये सब एक किरण में छिपे रहते हैं।\"",
+              "english": "\"Red, orange, yellow, green and blue are all hidden in one ray.\""
+            },
+            {
+              "text": "सैम ने पूछा, \"इंद्रधनुष आकाश में कब बनता है?\"",
+              "english": "Sam asked, \"When does a rainbow form in the sky?\""
+            },
+            {
+              "text": "\"बारिश के बाद,\" रवि सर ने कहा, \"जब बूँदों से किरण निकलती है, तब इंद्रधनुष बनता है।\"",
+              "english": "\"After the rain,\" Ravi sir said, \"when the ray comes out of the drops, a rainbow forms.\""
+            },
+            {
+              "text": "\"हर रंग की लंबाई अलग होती है।\"",
+              "english": "\"The wave of every colour has a different length.\""
+            },
+            {
+              "text": "अमन ने पूछा, \"सर, तरंग यानी क्या?\"",
+              "english": "Aman asked, \"Sir, what does wave mean?\""
+            },
+            {
+              "text": "रवि सर बोले, \"जैसे तालाब में पत्थर डालने पर पानी में तरंग उठती है, वैसे ही रोशनी भी तरंग की तरह चलती है।\"",
+              "english": "Ravi sir said, \"As when you throw a stone in a pond a wave rises in the water, light too travels like a wave.\""
+            },
+            {
+              "text": "\"नीले रंग की तरंग की लंबाई छोटी होती है, इसलिए वह बहुत बिखरती है।\"",
+              "english": "\"The wave of the blue colour has a short length, so it scatters a lot.\""
+            },
+            {
+              "text": "\"नारंगी और लाल रंग की लंबाई ज़्यादा होती है, इसलिए वे कम फैलते हैं।\"",
+              "english": "\"The orange and red colours have a longer length, so they spread less.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "वायुमंडल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम ने कहा, \"तो आकाश नीला इसलिए है कि नीला रंग हवा में सबसे ज़्यादा बिखरता है?\"",
+              "english": "Sam said, \"So the sky is blue because the blue colour scatters the most in the air?\""
+            },
+            {
+              "text": "रवि सर बोले, \"बहुत बढ़िया! तुम भी अमन की तरह समझदार हो।\"",
+              "english": "Ravi sir said, \"Very good! You too are clever like Aman.\""
+            },
+            {
+              "text": "\"धरती के चारों तरफ़ हवा की एक मोटी चादर है, जिसे वायुमंडल कहते हैं।\"",
+              "english": "\"All around the earth there is a thick sheet of air, which is called the atmosphere.\""
+            },
+            {
+              "text": "\"सूर्य की किरण इसी वायुमंडल में आती है, और वायुमंडल की चादर में नीला रंग चारों तरफ़ फैल जाता है।\"",
+              "english": "\"The ray of the sun comes into this very atmosphere, and in the sheet of the atmosphere the blue colour spreads in every direction.\""
+            },
+            {
+              "text": "अमन ने कहा, \"तो सर, सुबह और शाम को आकाश लाल क्यों दिखता है?\"",
+              "english": "Aman said, \"Then, sir, why does the sky look red in the morning and evening?\""
+            },
+            {
+              "text": "रवि सर हँसे और बोले, \"यह तुम कल बताओ, अमन; कल मैं तुम्हें इसका फ़र्क दिखाऊँगा।\"",
+              "english": "Ravi sir laughed and said, \"You tell this tomorrow, Aman; tomorrow I will show you the difference.\""
+            },
+            {
+              "text": "सैम ने कहा, \"सर, दिन और रात के आकाश में भी बहुत फ़र्क है।\"",
+              "english": "Sam said, \"Sir, there is a great difference in the sky of day and night too.\""
+            },
+            {
+              "text": "घर लौटकर सैम ने नानी को सारा प्रयोग बताया, और नानी ने कहा, \"आज तुम सब सचमुच समझदार हो गए।\"",
+              "english": "Returning home Sam told Nani the whole experiment, and Nani said, \"Today all of you have really become clever.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "और एक प्रयोग",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अमन मचलकर बोला, \"सर, एक और प्रयोग दिखाइए!\"",
+              "english": "Aman said, begging, \"Sir, show one more experiment!\""
+            },
+            {
+              "text": "रवि सर ने गिलास सँभाला और कहा, \"धरती पर हर प्राणी इसी हवा की चादर में रहता है।\"",
+              "english": "Ravi sir held the glass carefully and said, \"Every living creature on the earth lives in this very sheet of air.\""
+            },
+            {
+              "text": "\"यह सृष्टि इतनी बड़ी है कि उसकी लंबाई अनन्त लगती है।\"",
+              "english": "\"This creation is so big that its length seems endless.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

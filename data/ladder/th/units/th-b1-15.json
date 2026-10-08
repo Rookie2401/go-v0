@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-15",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ข่าวน้ำท่วมในซอย",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-15",
+    "title": "ข่าวน้ำท่วมในซอย — News: a flood in the lane (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Written as a short local-news report (written register with quotations). For the reviewer: the news-report phrasings (ตามรายงาน, นักข่าว, เจ้าหน้าที่) and the quotations; the event is invented."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "news",
+    "flood",
+    "rain",
+    "neighbours",
+    "volunteers"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "news"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ข่าวด่วน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตามรายงานข่าวของเช้านี้ เมื่อคืนฝนตกมากในเมืองเชียงใหม่ประมาณสามชั่วโมง",
+              "english": "According to this morning's news report, heavy rain fell on Chiang Mai last night for about three hours."
+            },
+            {
+              "text": "น้ำท่วมถนนหลายแห่งใกล้ตลาด",
+              "english": "Water flooded several streets near the market."
+            },
+            {
+              "text": "ซอยที่มะลิกับแซมอาศัยอยู่ก็ถูกน้ำท่วมด้วย",
+              "english": "The lane where Mali and Sam live was flooded too."
+            },
+            {
+              "text": "น้ำสูงมาก และรถหลายคันไปไม่ได้",
+              "english": "The water was very high and many vehicles could not move."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "นักข่าวถามชาวบ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "นักข่าวนัดกับชาวบ้านว่าจะไปที่ซอยในเช้าวันรุ่งขึ้น และเขาก็ไปถามชาวบ้านหลายคน",
+              "english": "The reporter arranged to visit the lane the next morning, and he went and asked several residents."
+            },
+            {
+              "text": "ป้าแดงบอกว่า น้ำเข้าร้านตอนสี่ทุ่ม ป้าตกใจมาก",
+              "english": "Auntie Daeng said, \"The water came into my shop at ten o'clock. I was very frightened.\""
+            },
+            {
+              "text": "ขนมที่อยู่บนพื้นเปียกหมด แต่ป้าเก็บของบนโต๊ะได้ทัน",
+              "english": "The sweets on the floor were all soaked, but I managed to save the things on the table."
+            },
+            {
+              "text": "ลุงเล็กบอกว่า รถสองแถวของเขาจมน้ำครึ่งคัน",
+              "english": "Uncle Lek said that his songthaew was half under water."
+            },
+            {
+              "text": "เขากลัวว่ารถจะเสียหาย และเขาไม่มีเงินซ่อม",
+              "english": "He feared the truck would be damaged and that he had no money to repair it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ทุกคนช่วยกัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แม้ฝนจะหนัก ชาวบ้านก็ไม่ได้ยืนดูอย่างเดียว",
+              "english": "Although the rain was heavy, the residents did not just stand and watch."
+            },
+            {
+              "text": "ต้นกับแซมเอาถุงข้าวมาวางหน้าร้านของป้าแดง แล้วเอาเชือกผูกไว้ เพื่อไม่ให้น้ำพัดไป",
+              "english": "Ton and Sam brought bags of rice and put them in front of Auntie Daeng's shop, and tied them with rope so the water would not carry them off."
+            },
+            {
+              "text": "เด็กๆ ช่วยกันเก็บของขึ้นที่สูง",
+              "english": "The children helped carry things up to high places."
+            },
+            {
+              "text": "มะลิไปโรงพยาบาลด้วยรถของลุงเล็ก เพราะเธอต้องเข้าเวรตอนเช้า",
+              "english": "Mali went to the hospital in Uncle Lek's truck, because she had to go on shift in the morning."
+            },
+            {
+              "text": "ลุงเล็กขับรถอย่างช้าๆ และหยุดรับคนที่ยืนรอตามทาง",
+              "english": "Uncle Lek drove slowly, and stopped for people waiting along the road."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ผู้ใหญ่จากเมืองพูดว่า",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผู้ใหญ่จากเมืองมาดูที่ซอยตอนเช้า",
+              "english": "Officials from the city came to look at the lane in the morning."
+            },
+            {
+              "text": "พวกเขาบอกว่า ท่อน้ำในซอยเล็กเกินไป ปีหน้าจะซ่อมให้ใหม่",
+              "english": "They said the drain in the lane is too small and will be rebuilt next year."
+            },
+            {
+              "text": "ชาวบ้านบางคนไม่เชื่อ เพราะเคยได้ยินคำสัญญาแบบนี้มาก่อน",
+              "english": "Some residents did not believe it, because they had heard promises like this before."
+            },
+            {
+              "text": "นักข่าวรายงานว่า จะติดตามเรื่องนี้ต่อไป",
+              "english": "The reporter said he would go on following the matter."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เย็นวันนั้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ตอนเย็น น้ำลดลงจนเหลือแค่ข้อเท้า",
+              "english": "By evening the water had dropped to just the ankles."
+            },
+            {
+              "text": "ป้าแดงทำข้าวต้มหม้อใหญ่ และให้ทุกคนมากินด้วยกันที่ร้าน",
+              "english": "Auntie Daeng made a big pot of rice porridge and invited everyone to eat together at her shop."
+            },
+            {
+              "text": "แซมนึกว่า น้ำท่วมทำให้ทุกคนต้องช่วยกัน และทำให้คนในซอยรู้จักกันมากขึ้น",
+              "english": "Sam thought: the flood made everyone help each other, and made the people in the lane get to know one another better."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

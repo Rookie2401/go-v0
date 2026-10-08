@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Habitual present with honorific plurals for नानी, नाना जी, मीरा दीदी (बोलती हैं, जाती हैं). नाना जी (Nani's husband) is only mentioned as away from home; if the biography unit later says otherwise, change it. Words outside the plan (measured, adapter lemmas x tokens): दीदी×2, सुबह×1, थोड़ा×1, अस्पताल×1 (all under-met Stage 0 words)."
+    "notes": "Habitual present with honorific plurals for नानी, नाना जी, मीरा दीदी (बोलती हैं, जाती हैं). नाना जी (Nani's husband) is only mentioned as away from home; if the biography unit later says otherwise, change it. Words outside the plan (measured, adapter lemmas x tokens): दीदी×2, सुबह×1, थोड़ा×1, अस्पताल×1 (all under-met Stage 0 words). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -326,6 +326,30 @@
             {
               "text": "रविवार को हम चर्च जाते हैं।",
               "english": "On Sunday we go to church."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज घर में बहुत लोग हैं।",
+              "english": "There are a lot of people in the house today."
+            },
+            {
+              "text": "बाज़ार में भी बहुत लोग हैं।",
+              "english": "There are a lot of people in the market too."
+            },
+            {
+              "text": "सैम बोलता है, \"मेरी माँ अच्छी हैं।\"",
+              "english": "Sam says, \"My mother is well.\""
+            },
+            {
+              "text": "मोती नानी का कुत्ता है।",
+              "english": "Moti is Nani's dog."
+            },
+            {
+              "text": "वह सफ़ेद कुत्ता है।",
+              "english": "He is a white dog."
             }
           ]
         }

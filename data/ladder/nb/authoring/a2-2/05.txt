@@ -5,11 +5,11 @@ I Norge er det to måter å skrive på: bokmål og nynorsk. || In Norway there a
 Begge er norsk. Mange skriver bokmål, og noen skriver nynorsk. På skolen lærer elevene begge. || Both are Norwegian. Many write Bokmål, and some write Nynorsk. At school the pupils learn both.
 De er ikke like, men folk forstår dem. || They are not the same, but people understand them.
 Når folk snakker, har de ofte en dialekt. Folk i {city} snakker ikke som folk i Oslo. || When people speak, they often have a dialect. People in Bergen do not speak like people in Oslo.
-Dialektene er forskjellige, men folk forstår hverandre. || The dialects are different, but people understand each other.
+Dialektene er forskjellige, men folk forstår dem. || The dialects are different, but people understand them.
 
 ## Samtale
-[sam] Jeg forstår ikke alltid hva folk sier. Hvorfor snakker de forskjellig? || I do not always understand what people say. Why do they speak differently?
-[ana] Fordi de kommer fra forskjellige byer. Vi snakker dialekt, men vi skriver bokmål eller nynorsk. || Because they come from different towns. We speak dialect, but we write Bokmål or Nynorsk.
+[sam] Jeg forstår ikke alltid hva folk sier. Hvordan kan de snakke forskjellig? || I do not always understand what people say. How can they speak differently?
+[ana] Fordi de kommer fra forskjellige byer. Vi snakker dialekt, men vi skriver bokmål, og noen skriver nynorsk. || Because they come from different towns. We speak dialect, but we write Bokmål, and some write Nynorsk.
 [sam] Hva skriver du, {ana}? || What do you write, Anna?
 [ana] Jeg skriver som elevene. Men {luis} kan også skrive nynorsk. || I write like the pupils. But Lars can also write Nynorsk.
 [luis] Ja. Jeg lærte begge på skolen. Hvis du leser mye, forstår du dem. || Yes. I learned both at school. If you read a lot, you understand them.
@@ -17,13 +17,13 @@ Dialektene er forskjellige, men folk forstår hverandre. || The dialects are dif
 
 ## Hos {marta}
 {marta} snakker en gammel dialekt. {sam} forstår henne nesten alltid. || Marta speaks an old dialect. Sam understands her almost always.
-[marta] Jeg snakker slik jeg gjorde da jeg var liten. Det er dialekten min. || I speak the way I did when I was small. It is my dialect.
+[marta] Jeg snakker som jeg gjorde da jeg var liten. Det er dialekten min. || I speak as I did when I was small. It is my dialect.
 [sam] Jeg liker den. Jeg lærer norsk på to måter: jeg leser, og jeg snakker med deg. || I like it. I learn Norwegian in two ways: I read, and I talk with you.
-[marta] Det er en god måte å lære på! Du må ikke være redd for å ta feil. || That is a good way to learn! You must not be afraid of making mistakes.
-[sam] Nei, jeg er ikke redd. Jeg er glad for alle ordene. || No, I am not afraid. I am glad for all the words.
+[marta] Det er en god måte å lære på! Du må ikke være redd for å prøve. || That is a good way to learn! You must not be afraid to try.
+[sam] Nei, jeg er ikke redd. Jeg er glad for alt jeg lærer. || No, I am not afraid. I am glad for everything I learn.
 {nico} kommer inn. Han har lekse i dag, og han liker ikke å skrive. || Nils comes in. He has homework today, and he does not like to write.
 [marta] Du må skrive hver dag, {nico}. Da lærer du mer. || You must write every day, Nils. Then you learn more.
-[nico] Jeg vil heller spise kake. Kan jeg få litt? || I would rather eat cake. Can I have some?
+[nico] Jeg vil spise kake nå. Kan jeg få litt? || I want to eat cake now. Can I have some?
 [marta] Ja, men du må skrive først, og så får du kake. || Yes, but you must write first, and then you get cake.
 
 ## Husker du?

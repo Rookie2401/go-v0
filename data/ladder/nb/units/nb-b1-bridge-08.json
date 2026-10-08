@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-08",
+  "lang": "nb",
+  "title": "The contract",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-08",
+    "title": "The contract (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". The second flat comes through the church. Passive in -s (kontrakten skrives under, depositumet betales) and with \"bli\", explanations, \"viktig at ...\". Names Solveig and Magnus are invented; no real address."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "housing",
+    "contract",
+    "deposit",
+    "rules",
+    "passive",
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "solveig": "Solveig",
+    "sam": "Sam",
+    "magnus": "Magnus",
+    "luis": "Lars",
+    "ana": "Anna"
+  },
+  "sections": [
+    {
+      "title": "I kirka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag etter gudstjenesten kom Marta til Sam med en eldre dame.",
+              "english": "On Sunday after the service Marta came to Sam with an older lady."
+            },
+            {
+              "text": "Sam, dette er Solveig. Hun har snakket med vennen sin om leiligheten.",
+              "english": "Sam, this is Solveig. She has talked with her friend about the flat.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Hyggelig å treffe deg! Vennen min heter Magnus, og han skal flytte til Trondheim. Han vil leie leiligheten til noen som er ærlig.",
+              "english": "Nice to meet you! My friend is called Magnus, and he is going to move to Trondheim. He wants to rent the flat to someone who is honest.",
+              "speaker": "solveig"
+            },
+            {
+              "text": "Er den stor? Hva er husleien?",
+              "english": "Is it big? What is the rent?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Den har to rom, og husleien er syv tusen fem hundre kroner. Du kan se den på tirsdag.",
+              "english": "It has two rooms, and the rent is seven thousand five hundred kroner. You can see it on Tuesday.",
+              "speaker": "solveig"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Leiligheten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam kom til etasje tre, og Magnus ventet ved døren. Han åpnet døren og sa: «Velkommen!»",
+              "english": "Sam came to floor three, and Magnus waited at the door. He opened the door and said: \"Welcome!\""
+            },
+            {
+              "text": "Alt var lyst og bra. Gulvet var nytt, og det var ingen flekk på veggene. Dusjen var ny, og ingen skulle male veggene. Det var en liten balkong, og fra vinduet kunne Sam se kirka.",
+              "english": "Everything was bright and good. The floor was new, and there was no patch on the walls. The shower was new, and nobody was going to paint the walls. There was a small balcony, and from the window Sam could see the church."
+            },
+            {
+              "text": "Jeg har bodd her i tretti år. Nå er jeg gammel, og jeg vil bo nær familien min. Det viktigste er at du er ærlig, og det er du.",
+              "english": "I have lived here for thirty years. Now I am old, and I want to live near my family. The most important thing is that you are honest, and you are.",
+              "speaker": "magnus"
+            },
+            {
+              "text": "Leiligheten er veldig bra. Veggene er ikke fuktige, og gulvet er ikke vått. Jeg vil gjerne leie den.",
+              "english": "The flat is very good. The walls are not damp, and the floor is not wet. I would very much like to rent it.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra. Kontrakten er ferdig på fredag. Du kan lese den først.",
+              "english": "Good. The contract is ready on Friday. You can read it first.",
+              "speaker": "magnus"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kontrakten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På fredag leste Sam kontrakten hjemme hos Anna og Lars. Det var mye han ikke forsto.",
+              "english": "On Friday Sam read the contract at home at Anna and Lars's. There was a lot he did not understand."
+            },
+            {
+              "text": "Kan du forklare hva depositum er? Jeg forstår ikke.",
+              "english": "Can you explain what a deposit is? I do not understand.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg skal forklare det. Det er penger som du betaler før du flytter. Hvis alt går bra, får du dem igjen.",
+              "english": "I will explain it. It is money that you pay before you move. If everything goes well, you get it back.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Her sier kontrakten at depositumet er tre måneders husleie. Det er viktig at du har råd til det.",
+              "english": "Here the contract says that the deposit is three months' rent. It is important that you can afford it.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg har spart i to måneder. Jeg har nesten alt.",
+              "english": "I have saved for two months. I have almost everything.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du kan spørre Magnus om du kan betale litt senere. Det er ikke vanskelig å spørre.",
+              "english": "You can ask Magnus whether you can pay a little later. It is not difficult to ask.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Les reglene også. Her sier kontrakten at alle skal være rolige etter klokka ti.",
+              "english": "Read the rules too. Here the contract says that everyone is to be quiet after ten o'clock.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Anna forklarte alt som Sam ikke forsto, og Lars hjalp henne med reglene. Det tok to kvelder.",
+              "english": "Anna explained everything that Sam did not understand, and Lars helped her with the rules. It took two evenings."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Under kontrakten",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "De var i leiligheten på lørdag. Magnus sa at depositumet kunne betales senere.",
+              "english": "They were in the flat on Saturday. Magnus said that the deposit could be paid later."
+            },
+            {
+              "text": "Jeg har lest kontrakten og reglene, og jeg forstår dem nå.",
+              "english": "I have read the contract and the rules, and I understand them now.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra. Kontrakten skrives under her, og nøklene får du i dag.",
+              "english": "Good. The contract is signed here, and you get the keys today.",
+              "speaker": "magnus"
+            },
+            {
+              "text": "Sam leste kontrakten en gang til. Så skrev han under. Han var litt nervøs, men han var glad.",
+              "english": "Sam read the contract once more. Then he signed. He was a little nervous, but he was happy."
+            },
+            {
+              "text": "Magnus ga ham nøklene til døren. «Takk for at du vil bo her,» sa han. «Jeg vet at du kommer til å være glad i leiligheten.»",
+              "english": "Magnus gave him the keys to the door. \"Thank you for wanting to live here,\" he said. \"I know that you will be fond of the flat.\""
+            },
+            {
+              "text": "Sam åpnet døren selv og kom inn i sin egen leilighet for første gang. Han var glad.",
+              "english": "Sam opened the door himself and came into his own flat for the first time. He was happy."
+            },
+            {
+              "text": "Den kvelden, etter at han hadde skrevet under, ba Sam i den nye stua: «Takk, Gud. Du har hjulpet meg å finne et sted. Det viktigste er at jeg har fred. Hjelp meg å være en god nabo.»",
+              "english": "That evening, after he had signed, Sam prayed in the new living room: \"Thank you, God. You have helped me find a place. The most important thing is that I have peace. Help me to be a good neighbour.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Han tenkte på intervjuet, og på hvorfor han hadde fått jobben. Han burde være stolt. Deltid ga ham tid til å spare, og han kunne alle navnene i butikken.",
+              "english": "He thought of the interview, and of why he had got the job. He ought to be proud. Part-time gave him time to save, and he knew all the names in the shop."
+            },
+            {
+              "text": "Annenhver helg hadde han pause fra bokhandelen, og da kunne han tenke på leiligheten. Han var stolt av nummeret på døren. Baderommet var lyst, og ingenting måtte skiftes.",
+              "english": "Every other weekend he had a break from the bookshop, and then he could think about the flat. He was proud of the number on the door. The bathroom was bright, and nothing had to be replaced."
+            },
+            {
+              "text": "Dusjen i baderommet var ny, og vinduet var skiftet.",
+              "english": "The shower in the bathroom was new, and the window had been replaced."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

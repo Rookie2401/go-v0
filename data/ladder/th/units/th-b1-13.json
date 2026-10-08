@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-13",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ลูกแพะกับหมาป่าร้องเพลง",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-13",
+    "title": "ลูกแพะกับหมาป่าร้องเพลง — The kid and the singing wolf (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 145209 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=145209",
+    "attribution": "Adapted retelling of \"ลูกแพะกับหมาป่า\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 145209, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"ลูกแพะกับหมาป่า\" (th-gap-recovery-aesop-22); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 145209) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the library fable has the wolf play a pipe (ปี่); here the wolf sings, which the learner already knows how to say, and the plot and the moral are unchanged. The kid speaks politely (ท่าน, ข้าพเจ้า) to the wolf; the wolf says เจ้า. The old-style small words (จึง, ครั้น, เถิด, ทันใดนั้น) are deliberate. The closing exchange between Mali and Ball is an addition to the original."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "animals",
+    "danger",
+    "cleverness"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ลูกแพะตัวเดียว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เชือกที่ผูกลูกแพะตัวหนึ่งขาด มันจึงออกไปหากินในป่าตามลำพัง",
+              "english": "The rope that tied a young goat snapped, so it went out to look for food in the forest, all alone."
+            },
+            {
+              "text": "มันเดินไปไกลจากแม่ และไม่รู้ตัวเลย",
+              "english": "It walked far from its mother without realising."
+            },
+            {
+              "text": "กลางทาง มันเห็นหมาป่าตัวใหญ่ยืนอยู่",
+              "english": "Halfway along the path it saw a big wolf standing there."
+            },
+            {
+              "text": "หมาป่าเห็นลูกแพะ ก็วิ่งไล่ทันที",
+              "english": "The wolf saw the young goat and ran after it at once."
+            },
+            {
+              "text": "ลูกแพะวิ่งหนี แต่ไม่พ้น เพราะหมาป่าเร็วกว่า",
+              "english": "The goat ran, but could not escape, for the wolf was faster."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ขอฟังเพลง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อเห็นว่าหนีไม่ได้ ลูกแพะก็หยุดวิ่ง",
+              "english": "When it saw it could not get away, the young goat stopped running."
+            },
+            {
+              "text": "มันกลัวมาก แต่มันคิดอะไรบางอย่างออก",
+              "english": "It was very afraid, but it thought of something."
+            },
+            {
+              "text": "ลูกแพะพูดว่า ท่านหมาป่า ข้าพเจ้ารู้ว่าข้าพเจ้าหนีท่านไม่พ้นแล้ว",
+              "english": "The goat said, \"Wolf, I know that I cannot escape you now.\""
+            },
+            {
+              "text": "ข้าพเจ้าต้องเป็นอาหารของท่านแล้ว",
+              "english": "\"I must become your meal.\""
+            },
+            {
+              "text": "แต่ก่อนที่ข้าพเจ้าจะตาย ขอท่านร้องเพลงให้ข้าพเจ้าฟังสักเพลงเถิด",
+              "english": "\"But before I die, please sing me one song.\""
+            },
+            {
+              "text": "ข้าพเจ้าอยากกระโดดเล่นเป็นครั้งสุดท้าย",
+              "english": "\"I want to jump and play one last time.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "เสียงเพลง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หมาป่าฟังแล้วก็ยอม มันนึกว่า ไม่เสียอะไร",
+              "english": "The wolf listened and agreed. It thought, \"I lose nothing.\""
+            },
+            {
+              "text": "มันนั่งลงข้างก้อนหิน แล้วเริ่มร้องเพลงเสียงดัง",
+              "english": "It sat down beside a rock and began to sing loudly."
+            },
+            {
+              "text": "ลูกแพะกระโดดไปตามเสียงเพลง",
+              "english": "The young goat jumped about to the sound of the song."
+            },
+            {
+              "text": "เสียงเพลงดังไปไกลมาก",
+              "english": "The sound of the song carried very far."
+            },
+            {
+              "text": "ทันใดนั้น มีหมาหลายตัวที่อยู่ใกล้ๆ ได้ยินเสียง",
+              "english": "At that moment some dogs nearby heard the sound."
+            },
+            {
+              "text": "พวกมันวิ่งมาดู และเห็นหมาป่ากำลังร้องเพลง",
+              "english": "They ran to look and saw the wolf singing."
+            },
+            {
+              "text": "พวกหมาวิ่งไล่หมาป่าทันที",
+              "english": "The dogs chased the wolf at once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หมาป่าพูดกับตัวเอง",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หมาป่าวิ่งหนีให้เร็วที่สุด",
+              "english": "The wolf ran away as fast as it could."
+            },
+            {
+              "text": "ขณะที่มันวิ่ง มันพูดกับตัวเองว่า ข้าโง่จริงๆ",
+              "english": "As it ran, it said to itself, \"How foolish I am!\""
+            },
+            {
+              "text": "ข้าเกิดมาเพื่อกินเนื้อ ทำไมข้ามาร้องเพลง",
+              "english": "\"I was born to eat meat. Why was I singing?\""
+            },
+            {
+              "text": "ส่วนลูกแพะก็รีบวิ่งกลับไปหาแม่",
+              "english": "The young goat hurried back to its mother."
+            },
+            {
+              "text": "เรื่องนี้สอนว่า ทำสิ่งที่เป็นงานของเรา ไม่ใช่สิ่งที่ไม่ใช่งานของเรา",
+              "english": "This story teaches us: do our own work, and not what is not our work."
+            },
+            {
+              "text": "บางครั้ง คนที่ฉลาดช่วยตัวเองได้ด้วยความคิดเล็กๆ",
+              "english": "Sometimes a clever person can save himself with a small idea."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "มะลิกับบอล",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อมะลิเล่าจบ บอลถามว่า ถ้าเป็นผม ผมจะวิ่งหนีครับ",
+              "english": "When Mali finished telling the story, Ball asked, \"If it were me, I would run away.\""
+            },
+            {
+              "text": "มะลิตอบว่า ถ้าวิ่งไม่พ้น เราก็ต้องคิดให้ดีค่ะ",
+              "english": "Mali answered, \"If we cannot outrun it, we have to think hard.\""
+            },
+            {
+              "text": "บอลถามว่า ความคิดช่วยได้จริงหรือครับ",
+              "english": "Ball asked, \"Can an idea really help?\""
+            },
+            {
+              "text": "มะลิยิ้มและตอบว่า บางครั้งช่วยได้ดีกว่ากำลังค่ะ",
+              "english": "Mali smiled and answered, \"Sometimes it can help better than strength.\""
+            },
+            {
+              "text": "มะลิพูดเพิ่มว่า ดูมดสิคะ ตัวเล็ก แต่ช่วยกันคิดและช่วยกันทำงานได้ดีมาก",
+              "english": "Mali added, \"Look at the ants. They are small, but they think together and work together very well.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

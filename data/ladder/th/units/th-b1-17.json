@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-17",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ยายแก่กับหมอตา",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-17",
+    "title": "ยายแก่กับหมอตา — The old woman and the eye doctor (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 149798 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=149798",
+    "attribution": "Adapted retelling of \"ยายแก่กับหม้อ\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 149798, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"ยายแก่กับหม้อ\" (th-gap-recovery-aesop-35); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 149798) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the old woman calls herself อีฉัน in the library fable; here she says ฉัน, which the learner knows. The doctor is polite and smooth (ท่าน, ครับ) on purpose. The scene with the village headman is shortened from the original, and the closing exchange between Sam and Ton is an addition."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "greed",
+    "dishonesty",
+    "justice"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ยายตามัว",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่หมู่บ้านแห่งหนึ่ง มียายแก่คนหนึ่งตามัวมาก",
+              "english": "In a village there lived an old woman whose sight had grown very dim."
+            },
+            {
+              "text": "เธอมองอะไรไม่ค่อยเห็น จึงให้เด็กพาไปหาหมอตาที่อยู่ในหมู่บ้าน",
+              "english": "She could hardly see anything, so she had a child lead her to the eye doctor in the village."
+            },
+            {
+              "text": "ยายพูดกับหมอว่า ท่านหมอ ตาของฉันมืดไปหมดแล้ว",
+              "english": "She said to the doctor, \"Doctor, my eyes have gone completely dark.\""
+            },
+            {
+              "text": "ถ้าท่านรักษาให้ฉันมองเห็นได้ ฉันจะให้ค่ารักษาแก่ท่านอย่างดี",
+              "english": "\"If you can treat me so that I can see, I will pay you well.\""
+            },
+            {
+              "text": "หมอตรวจดูตา และเห็นว่ารักษาให้หายได้",
+              "english": "The doctor examined her eyes and saw that he could cure her."
+            },
+            {
+              "text": "เขาจึงรับรักษา",
+              "english": "So he agreed to treat her."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หมอใจร้าย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันรุ่งขึ้น หมอเอายามาที่บ้านของยาย",
+              "english": "The next day the doctor brought medicine to the old woman's house."
+            },
+            {
+              "text": "เขาเห็นว่าบ้านยายมีของมากมาย มีทั้งเงินและผ้าสวยๆ",
+              "english": "He saw that her house had many things, silver and fine cloth among them."
+            },
+            {
+              "text": "หมอคิดในใจว่า ถ้ายายมองไม่เห็น เราจะเอาอะไรไปก็ได้",
+              "english": "The doctor thought to himself, \"If she cannot see, I can take whatever I like.\""
+            },
+            {
+              "text": "เราอย่ารีบรักษาให้เธอหายเลย",
+              "english": "\"I had better not cure her quickly.\""
+            },
+            {
+              "text": "เขาให้ยายใช้ยาทุกเช้าทุกเย็น แต่ยานั้นไม่ใช่ยารักษาตา",
+              "english": "He had her put in drops every morning and evening, but that medicine was not for the eyes."
+            },
+            {
+              "text": "ทุกครั้งที่เขามา เขาเอาของของยายไปทีละชิ้น",
+              "english": "Each time he came, he took one of the old woman's things."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ตาหาย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เมื่อของในบ้านเหลือน้อย หมอจึงเอายาที่ถูกต้องมา",
+              "english": "When little was left in the house, the doctor brought the right medicine."
+            },
+            {
+              "text": "ไม่นาน ตาของยายก็หายดี ยายมองเห็นทุกอย่าง",
+              "english": "Before long the old woman's eyes were well, and she saw everything clearly."
+            },
+            {
+              "text": "หมอพูดว่า ตาของท่านหายแล้ว ขอค่ารักษาตามสัญญาเถิด",
+              "english": "The doctor said, \"Your eyes are cured. Please pay me as promised.\""
+            },
+            {
+              "text": "ยายมองไปทั่วบ้านแล้วพบว่า บ้านว่างเปล่า",
+              "english": "The old woman looked around the house and found it empty."
+            },
+            {
+              "text": "ยายพูดว่า ฉันไม่ให้",
+              "english": "She said, \"I will not pay.\""
+            },
+            {
+              "text": "ท่านหมอ ตอนตามัว ฉันเห็นของเต็มบ้าน",
+              "english": "\"Doctor, when my eyes were dim I could see a house full of things.\""
+            },
+            {
+              "text": "แต่ตอนนี้ตาฉันหายแล้ว ฉันกลับไม่เห็นอะไรเลย",
+              "english": "\"But now that my eyes are well, I see nothing at all.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ผู้ใหญ่บ้าน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หมอโกรธมาก เขาไปบอกผู้ใหญ่บ้านว่า ยายไม่จ่ายค่ารักษา",
+              "english": "The doctor was furious. He went to tell the village headman that the old woman would not pay."
+            },
+            {
+              "text": "ผู้ใหญ่บ้านเรียกยายมาถาม",
+              "english": "The headman called the old woman to ask her."
+            },
+            {
+              "text": "ยายเล่าเรื่องทุกอย่าง และชี้ให้ดูบ้านที่ว่างเปล่า",
+              "english": "She told the whole story and pointed to the empty house."
+            },
+            {
+              "text": "ผู้ใหญ่บ้านมองหน้าหมอ และรู้เลยว่าใครพูดจริง",
+              "english": "The headman looked at the doctor and knew at once who was telling the truth."
+            },
+            {
+              "text": "เขาให้หมอเอาของทุกอย่างมาคืนยาย",
+              "english": "He told the doctor to bring all the things back to the old woman."
+            },
+            {
+              "text": "เรื่องนี้สอนว่า คนที่โลภมาก มักจะเสียทุกอย่างในที่สุด",
+              "english": "This story teaches us: a person who is very greedy will often lose everything in the end."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แซมกับต้น",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "แซมถามต้นว่า ในเรื่องนี้ ใครผิดครับ หมอหรือยาย",
+              "english": "Sam asked Ton, \"In this story, who is at fault, the doctor or the old woman?\""
+            },
+            {
+              "text": "ต้นตอบว่า หมอผิด แต่ยายก็ผิดเหมือนกัน เพราะเธอเชื่อเขาเกินไป",
+              "english": "Ton answered, \"The doctor is, but the old woman was at fault too, because she believed him too much.\""
+            },
+            {
+              "text": "แซมพูดว่า แล้วเราจะรู้ได้อย่างไรครับ ว่าใครควรเชื่อ",
+              "english": "Sam said, \"Then how can we know whom to believe?\""
+            },
+            {
+              "text": "ต้นตอบว่า ดูว่าเขาทำอะไร ไม่ใช่ฟังว่าเขาพูดอะไร",
+              "english": "Ton answered, \"Watch what he does, not what he says.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

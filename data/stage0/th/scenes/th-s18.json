@@ -1,0 +1,278 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-08",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0 as a decoding-practice scene (words already met in the sound steps); needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "sound",
+      "title": "What a final letter sounds like",
+      "text": "The last letter of a syllable is said in a smaller set of sounds than it has when it starts a word. ม, น and ง stay m, n and ng (นม, อัน, สอง). But กบ ends in p, วัด and บาท end in t, and ปาก ends in k: ก, บ and ด are said k, p and t at the end, and so are the letters that sound like them. Read the end of each word as one of these six sounds and the spelling stops being a surprise.",
+      "explains": [
+        "th.practice.finals"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "How much is the milk? (Five baht.)",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "ห้าบาท"
+        },
+        {
+          "text": "ห้าบาทครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ห้าบาทค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "copy",
+      "prompt": "Write what Sam says when he pays: ผมจ่ายสิบบาทครับ",
+      "basedOn": [
+        "l9"
+      ],
+      "accept": [
+        {
+          "text": "ผมจ่ายสิบบาทครับ"
+        }
+      ]
+    }
+  ],
+  "id": "th-s18",
+  "title": {
+    "en": "New milk at the market",
+    "target": "นมใหม่ที่ตลาด"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "วันนี้ป้ามีนมใหม่ค่ะ",
+      "en": "Today I have fresh milk.",
+      "speaker": "marta",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "นมอยู่ที่ไหนครับ",
+      "en": "Where is the milk?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ในตู้มีนมสี่อันค่ะ",
+      "en": "There are four in the cupboard.",
+      "speaker": "marta",
+      "picture": "🗄️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "นมเท่าไรครับ",
+      "en": "How much is the milk?",
+      "speaker": "sam",
+      "picture": "💵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ห้าบาทค่ะ",
+      "en": "Five baht.",
+      "speaker": "marta",
+      "picture": "5️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "เอาสองอันครับ",
+      "en": "Two, please.",
+      "speaker": "sam",
+      "picture": "2️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "ป้ามีหมูกับปูด้วยค่ะ",
+      "en": "I have pork and crab too.",
+      "speaker": "marta",
+      "picture": "🐖🦀",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "ไม่เอาครับ",
+      "en": "No, thank you.",
+      "speaker": "sam",
+      "picture": "🙅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l9",
+      "text": "ผมจ่ายสิบบาทครับ",
+      "en": "I pay ten baht.",
+      "speaker": "sam",
+      "picture": "💵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l10",
+      "text": "ปิดตู้ด้วยค่ะ",
+      "en": "Close the cupboard too, please.",
+      "speaker": "marta",
+      "picture": "🚪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l11",
+      "text": "ป้าดีมากครับ",
+      "en": "You are very kind, auntie.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "กับ"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "th.practice.finals",
+    "th.practice.tone-marks",
+    "th.how-much",
+    "th.counting-ki",
+    "th.numbers",
+    "th.request-kho",
+    "th.address-pa",
+    "th.have-mi"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does the auntie have today?"
+      },
+      "options": [
+        {
+          "en": "Fresh milk"
+        },
+        {
+          "en": "New books"
+        },
+        {
+          "en": "Hot tea"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is one milk?"
+      },
+      "options": [
+        {
+          "en": "Five baht"
+        },
+        {
+          "en": "Ten baht"
+        },
+        {
+          "en": "Four baht"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6",
+        "l9"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam buy, and how much does he pay?"
+      },
+      "options": [
+        {
+          "en": "Two milks; ten baht"
+        },
+        {
+          "en": "Pork; five baht"
+        },
+        {
+          "en": "Four milks; ten baht"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

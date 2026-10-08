@@ -1,0 +1,74 @@
+=== de-a1-1-07
+speakers: lukas=Lukas, ben=Ben, marta=Marta, sam=Sam, anna=Anna, klasse=Die Klasse, schueler=Ein Schüler
+## Am Morgen
+Es ist sechs Uhr. || It is six o'clock.
+Lukas ist müde. || Lukas is tired.
+Er steht um halb sieben auf. || He gets up at half past six.
+Lukas geht in die Küche. || Lukas goes into the kitchen.
+Er nimmt Kaffee und ein Brötchen mit Käse. || He takes coffee and a roll with cheese.
+Das Fenster in der Küche ist groß. || The window in the kitchen is big.
+Das Frühstück ist so gut! || The breakfast is so good!
+Um sieben Uhr geht Lukas in die Schule. || At seven o'clock Lukas goes to school.
+
+## Ben
+Ben ist bei Oma. || Ben is at Grandma's.
+Er ist im Bett. || He is in bed.
+[marta] Ben, es ist spät! || Ben, it is late!
+[marta] Die Schule fängt um acht Uhr an. || School starts at eight o'clock.
+[ben] Ich bin müde, Oma. || I am tired, Grandma.
+Ben möchte nicht aufstehen. || Ben does not want to get up.
+Er ist ein Kind, und er ist spät. || He is a child, and he is late.
+[marta] Nimm ein Brötchen, Ben! || Take a roll, Ben!
+[ben] Papa sagt: "Gute Schüler lernen gern." || Papa says: "Good pupils like to learn."
+[marta] Ja, Papa ist gut. || Yes, Papa is good.
+[marta] Geh in die Schule! || Go to school!
+
+## In der Klasse
+Die Schule ist groß, und die Klasse von Lukas ist auch groß. || The school is big, and Lukas's class is big too.
+Im Zimmer gibt es zwanzig Stühle. || In the room there are twenty chairs.
+Die Schüler sind alle da. || The pupils are all there.
+Lukas möchte anfangen. || Lukas wants to start.
+[lukas] Guten Morgen, Klasse! || Good morning, class!
+[klasse] Guten Morgen! || Good morning!
+[lukas] Wir lernen heute Deutsch. || Today we are learning German.
+[lukas] Nehmt das Buch! || Take the book!
+Die Stunde ist ganz gut. || The lesson is quite good.
+Nach der Stunde ist Pause. || After the lesson there is a break.
+
+## Sam kommt
+Sam ist auch in der Schule. || Sam is at the school too.
+[sam] Guten Tag, Klasse! || Good day, class!
+[sam] Mein Name ist Sam. || My name is Sam.
+[sam] Ich spreche Deutsch, wie ihr. || I speak German, like you.
+[schueler] Woher kommen Sie? || Where do you come from?
+[sam] Ich komme aus den USA. || I come from the USA.
+Sam sagt: "Ich möchte gern lernen." || Sam says: "I would like to learn."
+Die Kinder sind sehr gut. || The children are very good.
+In der Pause sind Sam und Ben zusammen. || During the break Sam and Ben are together.
+[ben] Das Brötchen ist so lecker! || The roll is so tasty!
+Nach der Pause lernen die Schüler gern. || After the break the pupils like learning.
+Um halb eins ist die Schule aus. || At half past twelve school is over.
+
+## Nach der Schule
+Nach der Schule geht Ben nach Hause. || After school Ben goes home.
+Sam und Lukas haben zusammen Mittagessen. || Sam and Lukas have lunch together.
+Sie nehmen Suppe und Kartoffeln. || They have soup and potatoes.
+Anna arbeitet in der Klinik. || Anna works at the clinic.
+Sie ist müde, aber sie arbeitet gern. || She is tired, but she likes working.
+Anna kommt nach Hause. || Anna comes home.
+Lukas ist da. || Lukas is there.
+[anna] Hallo, Lukas! || Hello, Lukas!
+[anna] Wie ist die Schule? || How is school?
+[lukas] Sehr gut, die Klasse ist groß, aber sehr gut. || Very good, the class is big, but very good.
+[anna] Und Sam? || And Sam?
+[lukas] Sam kommt gern in die Schule. || Sam likes coming to the school.
+Lukas ist auch müde, und er geht in sein Zimmer. || Lukas is tired too, and he goes to his room.
+[sam] Am Abend gehe ich zu Frau Weber. || In the evening I go to Mrs Weber's.
+[sam] Am Abend habe ich eine Stunde Deutsch. || In the evening I have a German lesson.
+[sam] Frau Weber ist sehr gut. || Mrs Weber is very good.
+[sam] Wir sind in der Küche, am Tisch, mit Kaffee. || We are in the kitchen, at the table, with coffee.
+Es ist halb acht. || It is half past seven.
+Lukas trinkt Tee und sagt: "Das ist ein schöner Tag." || Lukas drinks tea and says: "That was a lovely day."
+Er geht ins Bett. || He goes to bed.
+Es war ein guter Tag in der Schule. || It was a good day at school.
+

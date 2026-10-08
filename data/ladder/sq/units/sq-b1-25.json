@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-25",
+  "lang": "sq",
+  "title": "Viti i dytë mbaron",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-25",
+    "title": "Albanian ladder, b1-bridge: Viti i dytë mbaron (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Viti i dytë mbaron",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sami e nënshkroi kontratën të hënën në mëngjes, para se ta mendonte edhe një herë.",
+              "english": "Sam signed the contract on Monday morning, before he could think about it once more."
+            },
+            {
+              "text": "Drejtori e mori letrën, e shikoi faqen e fundit dhe tha vetëm: — Mirë se të gjetëm për një vit tjetër.",
+              "english": "The head took the paper, looked at the last page and said only: \"Welcome back for another year.\""
+            },
+            {
+              "text": "Ndërsa Sami po dilte nga zyra, mësuesit e dhomës i buzëqeshën të gjithë, dhe ai nuk dinte ku t'i vinte duart.",
+              "english": "As Sam was leaving the office, the teachers in the staff room all smiled at him, and he did not know where to put his hands."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Muajt kaluan shpejt.",
+              "english": "The months passed quickly."
+            },
+            {
+              "text": "Mira, redaktorja e gazetës, i kërkoi Samit një tregim për lexuesit, dhe redaksia e vogël ishte plot me letra.",
+              "english": "Mira, the editor of the paper, asked Sam for a story for the readers, and the small editorial office was full of letters."
+            },
+            {
+              "text": "Pranvera erdhi me shira të hollë dhe me pemë të bardha, dhe në qershor, kur klasat ishin plot zhurmë dhe dritaret hapeshin gjithë ditën, klubi ynë bëri një ndryshim të vogël dhe të madh: tani kishte tridhjetë fëmijë.",
+              "english": "Spring came with fine rains and white trees, and in June, when the classes were full of noise and the windows were open all day, our club made a small and big change: now it had thirty children."
+            },
+            {
+              "text": "Nëna e Samit dhe babai i tij kishin ardhur në prill për dy javë, dhe gjyshja Drita i kishte pritur me një byrek aq të madh, sa nëna e Samit kishte qeshur dhe kishte qarë bashkë.",
+              "english": "Sam's mother and father had come in April for two weeks, and grandmother Drita had received them with a byrek so big that Sam's mother had laughed and cried together."
+            },
+            {
+              "text": "Babai e kishte shikuar klubin nga fundi i klasës, pa folur, dhe në mbrëmje i kishte thënë djalit: — Nuk të njoh.",
+              "english": "His father had watched the club from the back of the classroom, without speaking, and in the evening had said to his son: \"I do not recognise you.\""
+            },
+            {
+              "text": "Ai e kishte ndjekur çdo fjalë me vëmendje.",
+              "english": "He had followed every word with attention."
+            },
+            {
+              "text": "— Je më i qetë, dhe fjalët të vijnë më ngadalë, por janë më të mira.",
+              "english": "\"You are calmer, and the words come to you more slowly, but they are better.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën e fundit të qershorit klubi bëri një shfaqje të vogël në oborrin e shkollës.",
+              "english": "On the last Saturday of June the club gave a small show in the school yard."
+            },
+            {
+              "text": "Mira kishte planifikuar çdo gjë plotësisht, dhe Luani, që drejtonte hyrjen, kishte materialet e shfaqjes në një çantë të madhe.",
+              "english": "Mira had planned everything completely, and Luan, who was directing the entrance, had the materials for the show in a large bag."
+            },
+            {
+              "text": "Kishte karrige në rreshta nën pemët e larta, një dërrasë të madhe me një vizatim të një qeni, dhe dyzet njerëz që prisnin me ndrojtje.",
+              "english": "There were chairs in rows under the tall trees, a big board with a drawing of a dog, and forty people waiting shyly."
+            },
+            {
+              "text": "Në rreshtin e parë ishin Drita me shallin e saj më të mirë, Dritani dhe Mira, pastori Pjetër, Agimi dhe Teuta, që kishin ardhur nga Korça me furgonin e Dritanit, dhe një plak me një kapelë të vjetër në dorë.",
+              "english": "In the first row were Drita with her best shawl, Dritan and Mira, Pastor Pjetër, Agim and Teuta, who had come from Korça in Dritan's minibus, and an old man with an old hat in his hand."
+            },
+            {
+              "text": "Plaku ishte kthyer çdo të diel në kishën e vogël, dhe tani e kishte mësuar këngën e fëmijëve përmendësh.",
+              "english": "The old man had gone back every Sunday to the little church, and now he had learned the children's song by heart."
+            },
+            {
+              "text": "Ana ishte ulur në fund, ende e lodhur nga turni, sepse kishte ardhur direkt nga puna.",
+              "english": "Ana was sitting at the back, still tired from her shift, because she had come straight from work."
+            },
+            {
+              "text": "Pranë saj qëndronte Luani, që kishte ndërruar tri herë këmishën, sepse nuk dinte cilën e donte.",
+              "english": "Beside her was Luan, who had changed his shirt three times, because he did not know which one he wanted."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Fëmijët hynë një nga një, me flokë të rregulluar dhe me sy që shkëlqenin.",
+              "english": "The children came in one by one, with neat hair and eyes that shone."
+            },
+            {
+              "text": "Elira e pyeti publikun në anglisht: — Good morning!",
+              "english": "Elira asked the audience in English: \"Good morning!\""
+            },
+            {
+              "text": "Dhe publiku, që kishte vendosur të mos përgjigjej, u përgjigj me një zë: — Mirëmëngjes!",
+              "english": "And the audience, which had decided not to answer, answered with one voice: \"Good morning!\""
+            },
+            {
+              "text": "Gjergji tregoi një histori të shkurtër për një qen që humbi dhe që e gjetën, e shkruar prej tij vetë, me gabime, por me një fund që i bëri disa nga të rriturit të fshinin sytë.",
+              "english": "Gjergj told a short story about a dog that got lost and was found, written by himself, with mistakes, but with an ending that made some of the adults wipe their eyes."
+            },
+            {
+              "text": "Ardi këndoi një këngë anglisht me një aksent shumë shqiptar dhe me një krenari shumë të madhe.",
+              "english": "Ardi sang a song in English with a very Albanian accent and with very great pride."
+            },
+            {
+              "text": "Problemi i vetëm ishte se askush nuk dinte ta mbyllte shfaqjen, por rezultati ishte më i mirë nga sa kishte menduar Luani.",
+              "english": "The only problem was that nobody knew how to close the show, but the result was better than Luan had thought."
+            },
+            {
+              "text": "Në fund Elira tha me zë të lartë: — Thank you, teacher!",
+              "english": "At the end Elira said loudly: \"Thank you, teacher!\""
+            },
+            {
+              "text": "Këtë herë të gjithë e shqiptuan mirë.",
+              "english": "This time everyone pronounced it well."
+            },
+            {
+              "text": "Drita kishte sjellë dhjetë kilogramë bukë, dhe nuk mbeti asnjë copë.",
+              "english": "Drita had brought ten kilograms of bread, and not a piece was left."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas shfaqjes Sami u ngrit të thoshte diçka.",
+              "english": "After the show Sam stood up to say something."
+            },
+            {
+              "text": "Kishte përgatitur një fjalim në fletore, por e mbylli fletoren dhe foli pa të.",
+              "english": "He had prepared a speech in his notebook, but he closed the notebook and spoke without it."
+            },
+            {
+              "text": "— Një vit e gjysmë më parë nuk dija të them «dua bukë», — filloi ai.",
+              "english": "\"A year and a half ago I did not know how to say 'I want bread,'\" he began."
+            },
+            {
+              "text": "— Sot jam këtu me ju, dhe nuk jam më një i huaj, edhe pse ende bëj gabime.",
+              "english": "\"Today I am here with you, and I am no longer a stranger, although I still make mistakes.\""
+            },
+            {
+              "text": "— Vështirësia e vërtetë nuk ishte gjuha, por frika.",
+              "english": "\"The real difficulty was not the language, but fear.\""
+            },
+            {
+              "text": "— Dua të falënderoj secilin prej jush, por nuk dua ta bëj me fjalë të mëdha.",
+              "english": "\"I want to thank each one of you, but I do not want to do it with big words.\""
+            },
+            {
+              "text": "— Dua ta bëj me një gjë që e mësova prej jush: kur dikush ka nevojë, ia jep dorën.",
+              "english": "\"I want to do it with something I learned from you: when someone has need, you give him your hand.\""
+            },
+            {
+              "text": "Pastaj shtoi, më ngadalë: — Dhe kur ju japin dorën, mos ia ktheni kokën.",
+              "english": "Then he added, more slowly: \"And when they give you a hand, do not turn your head away.\""
+            },
+            {
+              "text": "Gjyshja Drita ishte e para që u ngrit dhe e përqafoi, me një bukë të ngrohtë në krah.",
+              "english": "Grandmother Drita was the first to stand up and hug him, with a warm loaf under her arm."
+            },
+            {
+              "text": "— Eja, bir, — tha.",
+              "english": "\"Come, son,\" she said."
+            },
+            {
+              "text": "— Sot ke një vit e gjysmë, dhe këtu ke një shtëpi të madhe.",
+              "english": "\"Today you are a year and a half old, and here you have a big house.\""
+            },
+            {
+              "text": "Atë mbrëmje Sami e hapi fletoren në faqen e parë të vitit të dytë dhe, nën fjalët «Të mos kem frikë», shkroi me shkrim të vogël: «Dhe të dëgjoj.»",
+              "english": "That evening Sam opened the notebook at the first page of the second year and, under the words \"Not to be afraid,\" wrote in small writing: \"And to listen.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

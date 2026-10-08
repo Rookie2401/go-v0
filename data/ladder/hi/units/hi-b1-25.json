@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-25",
+  "lang": "hi",
+  "title": "पहाड़ पर एक रात",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-25",
+    "title": "\"पहाड़ पर एक रात\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Twelfth controlled unit of the b1 bridge. It prepares the words of the GDL story \"भबलू भालू की सैर\" (hi-b1-26), a bear cub in the snowy Himalayas: देवदार, गुफ़ा, बर्फ़ीला, टहनी, कड़कना, चौंकना, छाती, सिलना, नज़र, बेचारा, मशहूर, झेलना, each used three times, in a night that Sam, Aman and Pastor Anil spend in a hill village during a short trip (the plot is not the plot of the GDL story; it recalls hi-a2-2-01, the diary of a trip to the hills). Machine-drafted; a Hindi reviewer should check the mountain vocabulary. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "travel",
+    "mountains",
+    "night",
+    "storm"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "पहाड़ की ओर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "छुट्टी में पास्टर अनिल सैम और अमन को लेकर पहाड़ के एक गाँव में गए।",
+              "english": "In the holiday Pastor Anil took Sam and Aman to a village in the hills."
+            },
+            {
+              "text": "वह गाँव अपने देवदार के पेड़ों के लिए मशहूर था।",
+              "english": "That village was famous for its deodar trees."
+            },
+            {
+              "text": "बस से उतरते ही सैम को ठंडी हवा लगी, और उसने कहा, \"यहाँ तो बहुत ठंड है!\"",
+              "english": "As soon as he got down from the bus Sam felt the cold wind, and he said, \"It is very cold here!\""
+            },
+            {
+              "text": "पास्टर अनिल बोले, \"यह बर्फ़ीला इलाक़ा है, इसलिए गरम कपड़े पहन लो।\"",
+              "english": "Pastor Anil said, \"This is a snowy region, so put on warm clothes.\""
+            },
+            {
+              "text": "अमन ने अपनी टोपी सिर पर खींची और बोला, \"मुझे तो ठंड में भी मज़ा आता है!\"",
+              "english": "Aman pulled his cap over his head and said, \"I enjoy even the cold!\""
+            },
+            {
+              "text": "गाँव के रास्ते में एक बूढ़े आदमी ने उन्हें अपने घर में रुकने को कहा।",
+              "english": "On the way to the village an old man asked them to stay in his house."
+            },
+            {
+              "text": "सैम ने बूढ़े आदमी को धन्यवाद दिया, और तीनों उसके साथ चल पड़े।",
+              "english": "Sam thanked the old man, and the three of them set off with him."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "देवदार के नीचे",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शाम को चारों गाँव के पास एक देवदार के नीचे बैठ गए।",
+              "english": "In the evening the four of them sat down under a deodar tree near the village."
+            },
+            {
+              "text": "उस पर बर्फ़ जमी थी, और सैम ने एक टहनी को हाथ से छुआ।",
+              "english": "Snow lay on it, and Sam touched a branch with his hand."
+            },
+            {
+              "text": "अमन ने कहा, \"इस पेड़ की हर टहनी बहुत भारी है।\"",
+              "english": "Aman said, \"Every branch of this tree is very heavy.\""
+            },
+            {
+              "text": "बूढ़े आदमी ने कहा, \"इस पेड़ की छाया में कई पशु और पक्षी रात में रहते हैं।\"",
+              "english": "The old man said, \"In the shade of this tree many animals and birds stay at night.\""
+            },
+            {
+              "text": "\"ऊपर पहाड़ पर एक गुफ़ा है, जहाँ बर्फ़ीली रातों में भालू भी रहते हैं।\"",
+              "english": "\"Up on the mountain there is a cave where on snowy nights bears also live.\""
+            },
+            {
+              "text": "सैम ने गुफ़ा की ओर नज़र डाली, पर उसे सिर्फ़ अँधेरा दिखा।",
+              "english": "Sam cast a glance towards the cave, but he saw only darkness."
+            },
+            {
+              "text": "पास्टर अनिल ने कहा, \"डरो मत, भालू हमारे पास नहीं आएगा।\"",
+              "english": "Pastor Anil said, \"Do not be afraid, the bear will not come near us.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "रात का तूफ़ान",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रात को सब बूढ़े आदमी के घर में सो गए, पर आधी रात को बादल ज़ोर से कड़के।",
+              "english": "At night everybody went to sleep in the old man's house, but in the middle of the night the clouds thundered loudly."
+            },
+            {
+              "text": "सैम चौंककर उठ बैठा, और उसने अपनी छाती पर हाथ रखा।",
+              "english": "Sam started up and sat up, and he put his hand on his chest."
+            },
+            {
+              "text": "बिजली कड़कती, तो पूरी घाटी चमक उठती, और फिर दूर तक अँधेरा छा जाता।",
+              "english": "When the lightning flashed the whole valley would shine, and then darkness would spread far."
+            },
+            {
+              "text": "अमन ने कहा, \"बेचारा भालू इस तूफ़ान में कहाँ होगा?\"",
+              "english": "Aman said, \"Where will the poor bear be in this storm?\""
+            },
+            {
+              "text": "बूढ़े आदमी ने उन्हें गरम चाय दी और कहा, \"चिंता मत करो, भालू अपनी गुफ़ा में ठीक रहेगा।\"",
+              "english": "The old man gave them hot tea and said, \"Do not worry, the bear will be fine in his cave.\""
+            },
+            {
+              "text": "कड़कती बिजली के बीच पास्टर अनिल ने धीरे से कहा, \"हम सब परमेश्वर के हाथ में हैं।\"",
+              "english": "In the midst of the flashing lightning Pastor Anil said softly, \"We are all in God's hand.\""
+            },
+            {
+              "text": "यह सुनकर सैम को हिम्मत मिली, और वह फिर से सो गया।",
+              "english": "Hearing this Sam took courage, and he went back to sleep."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुबह आसमान साफ़ था, और देवदार पर बर्फ़ चमक रही थी।",
+              "english": "In the morning the sky was clear, and the snow was shining on the deodar."
+            },
+            {
+              "text": "अमन का स्वेटर रात के तूफ़ान में फट गया था, इसलिए बूढ़े आदमी की बेटी उसे सिलने बैठ गई।",
+              "english": "Aman's sweater had torn in the night's storm, so the old man's daughter sat down to sew it."
+            },
+            {
+              "text": "वह धीरे धीरे सिलती रही, और अमन उसकी ओर देखता रहा।",
+              "english": "She went on sewing slowly, and Aman went on looking at her."
+            },
+            {
+              "text": "उसने कहा, \"भैया, पहाड़ की ठंड झेलना आसान नहीं है, पर यहाँ के लोग रोज़ इसे झेलते हैं।\"",
+              "english": "She said, \"Brother, bearing the mountain's cold is not easy, but the people here bear it every day.\""
+            },
+            {
+              "text": "सैम ने कहा, \"आज रात की याद मैं कभी नहीं भूलूँगा, और उस बेचारे भालू की भी नहीं।\"",
+              "english": "Sam said, \"I will never forget the memory of tonight, nor of that poor bear.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बर्फ़ पर चिह्न",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुबह बाहर निकलते ही सैम की नज़र बर्फ़ पर पड़ी, और वह चौंक गया।",
+              "english": "Coming out in the morning Sam's glance fell on the snow, and he was startled."
+            },
+            {
+              "text": "बर्फ़ पर किसी बड़े जानवर के पैरों के चिह्न थे।",
+              "english": "There were marks of a big animal's feet on the snow."
+            },
+            {
+              "text": "अमन ने भी चौंककर कहा, \"ये चिह्न तो भालू के हैं!\"",
+              "english": "Aman too, startled, said, \"These marks are the bear's!\""
+            },
+            {
+              "text": "बूढ़े आदमी ने कहा, \"रात को वह नीचे आया था, और ये चिह्न फिर गुफ़ा की तरफ़ जाते हैं।\"",
+              "english": "The old man said, \"He had come down in the night, and these marks go back towards the cave.\""
+            },
+            {
+              "text": "सैम ने अपनी छाती पर हाथ रखा और कहा, \"अगर वह रात को मुझे दिखता, तो मेरी छाती फट जाती!\"",
+              "english": "Sam put his hand on his chest and said, \"If I had seen him in the night, my chest would have burst!\""
+            },
+            {
+              "text": "पास्टर अनिल ने हँसकर कहा, \"बेचारा भालू भी तुमसे डरकर लौट गया होगा।\"",
+              "english": "Pastor Anil said with a laugh, \"The poor bear too must have gone back, afraid of you.\""
+            },
+            {
+              "text": "इस गाँव में यह कहानी मशहूर है कि हर तूफ़ान के बाद भालू के चिह्न बर्फ़ पर मिलते हैं।",
+              "english": "In this village the story is famous that after every storm the bear's marks are found on the snow."
+            },
+            {
+              "text": "बर्फ़ीली हवा में खड़े होकर सबने गुफ़ा की ओर नज़र डाली, और बर्फ़ीले पहाड़ धूप में चमक रहे थे।",
+              "english": "Standing in the icy wind everybody looked towards the cave, and the snowy mountains were shining in the sunshine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पास्टर अनिल की बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "देवदार के नीचे बैठकर पास्टर अनिल ने कहा, \"पहाड़ और घाटी, पृथ्वी की यह पूरी सृष्टि हर प्राणी की रक्षा करती है, भालू की भी।\"",
+              "english": "Sitting under the deodar Pastor Anil said, \"Mountain and valley, this whole creation of the earth protects every living creature, the bear too.\""
+            },
+            {
+              "text": "\"धरती पर जो भी जीता है, वह परमेश्वर की रक्षा में है।\"",
+              "english": "\"Whoever lives on the earth is in God's protection.\""
+            },
+            {
+              "text": "सैम ने कहा, \"आज रात पृथ्वी बहुत बड़ी लग रही है, और मेरी रक्षा करने वाला उससे भी बड़ा है।\"",
+              "english": "Sam said, \"Tonight the earth seems very big, and the one who protects me is even bigger.\""
+            },
+            {
+              "text": "उसने आसमान को देखा, फिर स्कूल की पिकनिक और गीता मौसी की बिटिया को याद किया, जिसे वह गोदी में सँभालना चाहता था।",
+              "english": "He looked at the sky, then remembered the school picnic and Geeta mausi's baby girl, whom he wanted to hold in his lap."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

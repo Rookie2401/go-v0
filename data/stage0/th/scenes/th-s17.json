@@ -1,0 +1,347 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-08",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0 as a decoding-practice scene (words already met in the sound steps); needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "sound",
+      "title": "The same mark, a different tone",
+      "text": "ที่, ค่ะ and ด้วย all sound falling, but not for the same reason, and ก่อน, ป่า and จ่าย are low although they carry the same ่ mark. The mark does not choose the tone alone: the class of the first letter decides what it gives. ่ on a low-class letter (ที่, ค่ะ) is falling; ่ on a mid-class letter (ก่อน, ป่า) is low; ้ on a mid-class letter (ด้วย, บ้าน) is falling. You met the table in the sound steps; here, read the line and listen to whether you hear it.",
+      "explains": [
+        "th.practice.tone-marks"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "How old is Ball? (Ten.)",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "สิบปี"
+        },
+        {
+          "text": "สิบปีครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "สิบปีค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "อายุสิบปี"
+        },
+        {
+          "text": "อายุสิบปีครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "อายุสิบปีค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "บอลอายุสิบปี"
+        },
+        {
+          "text": "บอลอายุสิบปีครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "บอลอายุสิบปีค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you have one child.",
+      "basedOn": [
+        "l2",
+        "th.have-mi"
+      ],
+      "accept": [
+        {
+          "text": "มีลูกหนึ่งคน"
+        },
+        {
+          "text": "มีลูกหนึ่งคนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "มีลูกหนึ่งคนค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "มีลูกหนึ่งคน"
+        },
+        {
+          "text": "มีลูกหนึ่งคนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "มีลูกหนึ่งคนค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมมีลูกหนึ่งคน",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันมีลูกหนึ่งคน",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมมีลูกหนึ่งคนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันมีลูกหนึ่งคนค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s17",
+  "title": {
+    "en": "Ball and Ton",
+    "target": "บอลกับต้น"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "luis",
+      "ana"
+    ],
+    "places": [
+      "school",
+      "home"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "ต้นมีลูกกี่คนครับ",
+      "en": "How many children do you have, Ton?",
+      "speaker": "sam",
+      "picture": "👨‍👦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ผมมีลูกหนึ่งคนครับ",
+      "en": "I have one child.",
+      "speaker": "luis",
+      "picture": "1️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ลูกชื่อบอลครับ",
+      "en": "My child is called Ball.",
+      "speaker": "luis",
+      "picture": "⚽",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "บอลอายุเท่าไรครับ",
+      "en": "How old is Ball?",
+      "speaker": "sam",
+      "picture": "🎂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "บอลอายุสิบปีครับ",
+      "en": "Ball is ten years old.",
+      "speaker": "luis",
+      "picture": "🔟",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "บอลเรียนที่โรงเรียนไหมครับ",
+      "en": "Does Ball study at school?",
+      "speaker": "sam",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "เรียนครับ",
+      "en": "Yes, he does.",
+      "speaker": "luis",
+      "picture": "✅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "ผมทำงานที่โรงเรียนด้วยครับ",
+      "en": "I work at the school too.",
+      "speaker": "luis",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l9",
+      "text": "ฉันเป็นอาของบอลค่ะ",
+      "en": "I am Ball's aunt.",
+      "speaker": "ana",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l10",
+      "text": "บอลเป็นเด็กดีค่ะ",
+      "en": "Ball is a good child.",
+      "speaker": "ana",
+      "picture": "👦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l11",
+      "text": "แม่ของคุณอยู่ที่บ้านไหมครับ",
+      "en": "Is your mother at home?",
+      "speaker": "sam",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l12",
+      "text": "อยู่ค่ะ",
+      "en": "Yes, she is.",
+      "speaker": "ana",
+      "picture": "👵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ของ",
+      "อายุ"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "th.practice.tone-marks",
+    "th.practice.vowels-before",
+    "th.have-mi",
+    "th.location-yu-thi",
+    "th.counting-ki",
+    "th.how-much",
+    "th.identity-pen",
+    "th.work-place"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1",
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How many children does Ton have?"
+      },
+      "options": [
+        {
+          "en": "One"
+        },
+        {
+          "en": "Two"
+        },
+        {
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How old is Ball?"
+      },
+      "options": [
+        {
+          "en": "Ten"
+        },
+        {
+          "en": "Five"
+        },
+        {
+          "en": "Two"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l9"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Mali to Ball?"
+      },
+      "options": [
+        {
+          "en": "His aunt"
+        },
+        {
+          "en": "His mother"
+        },
+        {
+          "en": "His teacher"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

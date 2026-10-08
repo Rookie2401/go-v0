@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-20",
+  "lang": "sq",
+  "title": "Provimi i Gjergjit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-20",
+    "title": "Albanian ladder, b1-bridge: Provimi i Gjergjit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Provimi i Gjergjit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Gjergji kishte provim të hënën, dhe që nga e enjtja nuk fliste për asgjë tjetër.",
+              "english": "Gjergj had an exam on Monday, and since Thursday he had spoken about nothing else."
+            },
+            {
+              "text": "Ishte një provim i madh matematike, që do të vendoste nëse do të hynte në një shkollë të mirë në qendër të qytetit.",
+              "english": "It was a big maths exam, which would decide whether he would get into a good school in the centre of the city."
+            },
+            {
+              "text": "Mira i kishte thënë që nuk kishte nevojë të shqetësohej, por ai nuk e dëgjonte.",
+              "english": "Mira had told him that he did not need to worry, but he did not listen."
+            },
+            {
+              "text": "Të shtunën pas klubit ai mbeti në klasë dhe i tha Samit: — Mësues, mund të më ndihmosh?",
+              "english": "On Saturday after the club he stayed in the classroom and said to Sam: \"Teacher, can you help me?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Unë mësoj anglisht, jo matematikë, — u përgjigj Sami.",
+              "english": "\"I teach English, not maths,\" answered Sam."
+            },
+            {
+              "text": "— Në matematikë unë kam qenë gjithmonë një student mesatar.",
+              "english": "\"In maths I have always been an average student.\""
+            },
+            {
+              "text": "— Por mund të ulem me ty, dhe të dëgjoj sa mirë i shpjegon gjërat vetë.",
+              "english": "\"But I can sit with you and listen to how well you explain things yourself.\""
+            },
+            {
+              "text": "— Çdo njeri që e shpjegon një ushtrim me zë të lartë e kupton më mirë se ai që e lexon dhjetë herë.",
+              "english": "\"Every person who explains an exercise aloud understands it better than one who reads it ten times.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të dielën në mbrëmje Dritani e mori Gjergjin për shëtitje pranë lumit.",
+              "english": "On Sunday evening Dritan took Gjergj for a walk by the river."
+            },
+            {
+              "text": "Për një kohë ecën pa folur.",
+              "english": "For a while they walked without speaking."
+            },
+            {
+              "text": "— Kur isha në moshën tënde, — tha Dritani, — bëra një provim dhe dështova.",
+              "english": "\"When I was your age,\" said Dritan, \"I took an exam and failed.\""
+            },
+            {
+              "text": "— Mendova se jeta ime kishte mbaruar.",
+              "english": "\"I thought my life had ended.\""
+            },
+            {
+              "text": "— Po tani? — pyeti Gjergji.",
+              "english": "\"And now?\" asked Gjergj."
+            },
+            {
+              "text": "— Tani e di që dështimi është vetëm një ditë, nëse e kupton ç'të mëson.",
+              "english": "\"Now I know that failure is only one day, if you understand what it teaches you.\""
+            },
+            {
+              "text": "— Po nëse e kupton shumë vonë?",
+              "english": "\"And if you understand it too late?\""
+            },
+            {
+              "text": "— Atëherë mëson edhe këtë, — qeshi Dritani, — se vonesa është një mësues i mirë, por shumë i shtrenjtë.",
+              "english": "\"Then you learn this too,\" Dritan laughed, \"that delay is a good teacher, but a very expensive one.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ata u ulën te dërrasa, dhe Gjergji filloi të zgjidhte ushtrim pas ushtrimi.",
+              "english": "They sat down by the blackboard, and Gjergj began to solve exercise after exercise."
+            },
+            {
+              "text": "Në fillim ai fliste shpejt dhe gabonte, sepse mendonte më shumë për frikën se për numrat.",
+              "english": "At first he spoke fast and made mistakes, because he thought more about fear than about the numbers."
+            },
+            {
+              "text": "Sami e preku në krah.",
+              "english": "Sam touched him on the arm."
+            },
+            {
+              "text": "— Merr frymë, — tha.",
+              "english": "\"Breathe,\" he said."
+            },
+            {
+              "text": "— Dhe thuaj ngadalë: çfarë po kërkon këtu?",
+              "english": "\"And say slowly: what are you looking for here?\""
+            },
+            {
+              "text": "Gjergji e shikoi problemin.",
+              "english": "Gjergj looked at the problem."
+            },
+            {
+              "text": "— Dua të gjej sa duhet të paguajë dikush për pesë kilogramë mollë, nëse tre kilogramë kushtojnë 300 lekë.",
+              "english": "\"I want to find how much someone has to pay for five kilos of apples if three kilos cost 300 lek.\""
+            },
+            {
+              "text": "— Atëherë filloje nga një, — tha Sami.",
+              "english": "\"Then start with one,\" said Sam."
+            },
+            {
+              "text": "— Sa kushton një kilogram?",
+              "english": "\"How much does one kilo cost?\""
+            },
+            {
+              "text": "Gjergji mori laps dhe mendoi për një minutë.",
+              "english": "Gjergj took a pencil and thought for a minute."
+            },
+            {
+              "text": "— 100 lekë, — tha ai.",
+              "english": "\"100 lek,\" he said."
+            },
+            {
+              "text": "— Dhe pesë kilogramë?",
+              "english": "\"And five kilos?\""
+            },
+            {
+              "text": "— 500 lekë, — tha ai, dhe buzëqeshi.",
+              "english": "\"500 lek,\" he said, and smiled."
+            },
+            {
+              "text": "— Mësues, e kuptova!",
+              "english": "\"Teacher, I understood it!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të hënën në mëngjes Gjergji u ngrit para gjithë familjes.",
+              "english": "On Monday morning Gjergj got up before the whole family."
+            },
+            {
+              "text": "Mira i bëri një mëngjes të madh, por ai e hëngri me gjysmë zemre.",
+              "english": "Mira made him a big breakfast, but he ate it half-heartedly."
+            },
+            {
+              "text": "Dritani e çoi me furgon deri te porta e shkollës dhe nuk tha asgjë shumë, vetëm: — Dua që të kujtohesh për një gjë.",
+              "english": "Dritan took him in the minibus to the gate of the school and did not say much, only: \"I want you to remember one thing.\""
+            },
+            {
+              "text": "— Provimi nuk është për të treguar sa di.",
+              "english": "\"The exam is not to show how much you know.\""
+            },
+            {
+              "text": "— Është për të treguar sa mirë mendon kur je i qetë.",
+              "english": "\"It is to show how well you think when you are calm.\""
+            },
+            {
+              "text": "Gjergji e dëgjoi dhe hyri.",
+              "english": "Gjergj listened to him and went in."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Provimi mbaroi pas tri orësh.",
+              "english": "The exam ended after three hours."
+            },
+            {
+              "text": "Kur Gjergji doli, fytyra e tij nuk tregonte as gëzim, as frikë.",
+              "english": "When Gjergj came out, his face showed neither joy nor fear."
+            },
+            {
+              "text": "Ishte fytyra e një njeriu që ka bërë të gjitha që ka mundur.",
+              "english": "It was the face of a person who has done all that he could."
+            },
+            {
+              "text": "— Si shkoi? — e pyeti Mira.",
+              "english": "\"How did it go?\" Mira asked him."
+            },
+            {
+              "text": "— Një ushtrim nuk e bëra, — tha ai.",
+              "english": "\"One exercise I did not do,\" he said."
+            },
+            {
+              "text": "— Por e di pse: nuk e kuptova pyetjen.",
+              "english": "\"But I know why: I did not understand the question.\""
+            },
+            {
+              "text": "— Dhe nuk e shpjegova me zë të lartë.",
+              "english": "\"And I did not explain it aloud.\""
+            },
+            {
+              "text": "— Do të kishte qenë më mirë nëse do ta kisha bërë.",
+              "english": "\"It would have been better if I had.\""
+            },
+            {
+              "text": "Mira e përqafoi.",
+              "english": "Mira hugged him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Ti ke mësuar më shumë se matematikë këtë javë, — tha ajo.",
+              "english": "\"You have learned more than maths this week,\" she said."
+            },
+            {
+              "text": "Rezultatet erdhën pas dy javësh, dhe Gjergji kishte marrë nëntë nga dhjetë.",
+              "english": "The results came after two weeks, and Gjergj had received nine out of ten."
+            },
+            {
+              "text": "Para se të festonin, ai e mori telefonin dhe i dërgoi Samit një mesazh: «Mësues, e bëra! Ndoshta të gjitha fjalët e mira ndihmojnë: edhe ato në anglisht, edhe ato në matematikë.»",
+              "english": "Before they celebrated, he took the phone and sent Sam a message: \"Teacher, I did it! Perhaps all good words help: those in English and those in maths.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

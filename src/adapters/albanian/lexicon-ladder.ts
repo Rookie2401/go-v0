@@ -12,6 +12,11 @@
  * The 22 verbs, the adjectives and the adverbs are here; the closed-class words of the plan (deri, mes, përmes,
  * përgjatë, përveç, mirëpo, siç, pasi, tilla) are in function-minor.ts and function-pronouns.ts. Entries are grouped by
  * the stage of the unit that first uses them; the order inside a group is the plan's.
+ *
+ * The second half (SQ_BRIDGE_*) is the word list of the b1-bridge, the 25 controlled units after a2-2 (data/ladder/sq/authoring/b1.txt): about 160
+ * nouns, adjectives, adverbs, verbs and names that the bridge texts use and the lists above did not have. Same status: machine-drafted from
+ * Wiktionary and general knowledge, unreviewed. A form the engine reads badly (t'ju / t'u clusters, vjet, ike) is not listed; the text avoids it.
+ * The plan's 262 words stay one array (SQ_LADDER_LEXEMES, pinned by test/adapters/albanian-ladder.test.ts); the bridge's are SQ_BRIDGE_LEXEMES.
  */
 import type { SqLexeme } from './types';
 import { A, N, V, W } from './types';
@@ -21,6 +26,8 @@ const I = (lemma: string, gloss: string, extra: Parameters<typeof A>[3] = {}): S
 /** An adjective without the linking article (kombëtar). Feminine and plural forms are stated when they are not the regular -e / -ë / -e. */
 const NA = (lemma: string, gloss: string, extra: Parameters<typeof A>[3] = {}): SqLexeme => A(lemma, false, gloss, extra);
 const ADV = (lemma: string, gloss: string): SqLexeme => W(lemma, 'ADV', gloss);
+/** A proper noun (a name): PN('Agim', 'm', 'Agimi', 'Agim (man's name)'). Names count as known words at the ladder gate. */
+const PN = (lemma: string, gender: 'm' | 'f', def: string, gloss: string): SqLexeme => ({ ...N(lemma, gender, def, undefined, gloss), pos: 'PROPN' });
 
 type VExtra = NonNullable<Parameters<typeof V>[5]>;
 const PERSON = ['1 sg', '2 sg', '3 sg', '1 pl', '2 pl', '3 pl'];
@@ -34,7 +41,7 @@ const oj = (lemma: string, gloss: string, extra: VExtra = {}): SqLexeme => {
   return V(lemma, 'oj', `${base}ova`, `${base}uar`, gloss, extra);
 };
 
-export const SQ_LADDER_NOUNS: SqLexeme[] = [
+const SQ_PLAN_NOUNS: SqLexeme[] = [
   // a1-2
   N('herë', 'f', 'hera', 'herë', 'time, occasion (një herë, dy herë)'),
   N('karrige', 'f', 'karrigia', 'karrige', 'chair', { forms: ['karrigen: acc sg def', 'karriges: gen dat abl sg def', 'karrigeje: gen dat abl sg indef'] }),
@@ -236,7 +243,7 @@ export const SQ_LADDER_NOUNS: SqLexeme[] = [
   N('rast', 'm', 'rasti', 'raste', 'case, occasion'),
 ];
 
-export const SQ_LADDER_ADJECTIVES: SqLexeme[] = [
+const SQ_PLAN_ADJECTIVES: SqLexeme[] = [
   // a1-2
   NA('vjeç', 'years old (after a number)', { fem: 'vjeçe' }),
   // a2-1
@@ -278,7 +285,7 @@ export const SQ_LADDER_ADJECTIVES: SqLexeme[] = [
   NA('karakteristik', 'characteristic', { fem: 'karakteristike', plM: 'karakteristikë', plF: 'karakteristike' }),
 ];
 
-export const SQ_LADDER_ADVERBS: SqLexeme[] = [
+const SQ_PLAN_ADVERBS: SqLexeme[] = [
   // a1-2
   ADV('zakonisht', 'usually'),
   ADV('djathtas', 'on the right'),
@@ -292,7 +299,7 @@ export const SQ_LADDER_ADVERBS: SqLexeme[] = [
   ADV('megjithatë', 'nevertheless, however'),
 ];
 
-export const SQ_LADDER_VERBS: SqLexeme[] = [
+const SQ_PLAN_VERBS: SqLexeme[] = [
   // a1-2
   V('zbres', 'cons', 'zbrita', 'zbritur', 'to go down, to get off', { pres23: 'zbret', forms: ['zbritni: 2 pl pres ind', 'zbrit: 2 sg imper'] }),
   // dhemb: only the third person is in everyday use (më dhemb koka); the first reading must not be the noun dhëmb (tooth)
@@ -333,5 +340,277 @@ export const SQ_LADDER_VERBS: SqLexeme[] = [
   oj('punësoj', 'to employ', { nonActive: true }),
 ];
 
-/** The additions as one array, in the order nouns, adjectives, adverbs, verbs (the order of the rest of the word list). */
-export const SQ_LADDER_LEXEMES: SqLexeme[] = [...SQ_LADDER_NOUNS, ...SQ_LADDER_ADJECTIVES, ...SQ_LADDER_ADVERBS, ...SQ_LADDER_VERBS];
+/** The 262 words of the plan as one array, in the order nouns, adjectives, adverbs, verbs (the order of the rest of the word list). */
+export const SQ_PLAN_LEXEMES: SqLexeme[] = [...SQ_PLAN_NOUNS, ...SQ_PLAN_ADJECTIVES, ...SQ_PLAN_ADVERBS, ...SQ_PLAN_VERBS];
+
+// ───────────────────────── the b1-bridge (data/ladder/sq/authoring/b1.txt, 2026-10-08) ─────────────────────────
+// Words that the 25 units of the b1-bridge teach and that the lists above did not have. Same status as all of the above:
+// machine-drafted, checked against English Wiktionary's Albanian entries where it has the word, no native speaker has looked.
+
+export const SQ_BRIDGE_NOUNS: SqLexeme[] = [  // b1-01
+  N('listë', 'f', 'lista', 'lista', 'list'),
+  N('shkumës', 'm', 'shkumësi', undefined, 'chalk'),
+  N('figurë', 'f', 'figura', 'figura', 'picture, figure'),
+  N('klub', 'm', 'klubi', 'klube', 'club'),
+  N('durim', 'm', 'durimi', undefined, 'patience'),
+  N('dërrasë', 'f', 'dërrasa', 'dërrasa', 'board; blackboard'),
+  // b1-02
+  N('copë', 'f', 'copa', 'copa', 'piece'),
+  N('krenari', 'f', 'krenaria', undefined, 'pride'),
+  N('kënaqësi', 'f', 'kënaqësia', undefined, 'pleasure'),
+  N('shkëmbim', 'm', 'shkëmbimi', 'shkëmbime', 'exchange'),
+  N('seriozitet', 'm', 'serioziteti', undefined, 'seriousness'),
+  // b1-03
+  N('ekran', 'm', 'ekrani', 'ekrane', 'screen'),
+  // b1-04
+  N('kursim', 'm', 'kursimi', 'kursime', 'saving (kursime: savings)'),
+  N('borxh', 'm', 'borxhi', 'borxhe', 'debt'),
+  N('çast', 'm', 'çasti', 'çaste', 'moment, instant'),
+  N('prind', 'm', 'prindi', 'prindër', 'parent'),
+  N('zhurmë', 'f', 'zhurma', 'zhurma', 'noise'),
+  N('zile', 'f', 'zilja', 'zile', 'bell, doorbell'),
+  // b1-05
+  N('tas', 'm', 'tasi', 'tasa', 'bowl'),
+  N('pagesë', 'f', 'pagesa', 'pagesa', 'payment'),
+  N('turp', 'm', 'turpi', undefined, 'shame'),
+  // b1-06
+  N('njollë', 'f', 'njolla', 'njolla', 'stain, spot'),
+  N('rregull', 'm', 'rregulli', 'rregulla', 'order; rule (në rregull: in order, all right)'),
+  N('patentë', 'f', 'patenta', 'patenta', 'licence (patentë shoferi: driving licence)'),
+  N('vozitje', 'f', 'vozitja', undefined, 'driving'),
+  N('aksident', 'm', 'aksidenti', 'aksidente', 'accident'),
+  N('respekt', 'm', 'respekti', undefined, 'respect'),
+  // b1-07
+  N('sallë', 'f', 'salla', 'salla', 'hall, large room (salla e pritjes: waiting room)'),
+  N('plak', 'm', 'plaku', 'pleq', 'old man'),
+  N('tension', 'm', 'tensioni', undefined, 'tension; blood pressure'),
+  N('puls', 'm', 'pulsi', undefined, 'pulse'),
+  N('doktoreshë', 'f', 'doktoresha', 'doktoresha', 'woman doctor'),
+  N('lot', 'm', 'loti', 'lot', 'tear'),
+  // b1-08
+  N('shtresë', 'f', 'shtresa', 'shtresa', 'layer'),
+  N('arrë', 'f', 'arra', 'arra', 'walnut', { forms: ['arre: gen dat abl sg indef'] }),
+  N('kavanoz', 'm', 'kavanozi', 'kavanozë', 'jar'),
+  // b1-09
+  N('pellg', 'm', 'pellgu', 'pellgje', 'puddle; basin'),
+  N('rrip', 'm', 'rripi', 'rripa', 'belt, strap, collar'),
+  N('qafë', 'f', 'qafa', 'qafa', 'neck'),
+  N('bisht', 'm', 'bishti', 'bishta', 'tail'),
+  N('gjysmë', 'f', 'gjysma', 'gjysma', 'half'),
+  N('batanije', 'f', 'batanija', 'batanije', 'blanket'),
+  // b1-10
+  N('fletë', 'f', 'fleta', 'fleta', 'sheet (of paper), leaf'),
+  N('titull', 'm', 'titulli', 'tituj', 'title'),
+  N('përshkrim', 'm', 'përshkrimi', 'përshkrime', 'description'),
+  N('shenjë', 'f', 'shenja', 'shenja', 'sign, mark'),
+  N('habi', 'f', 'habia', undefined, 'surprise, astonishment (për habi: to one\'s surprise)'),
+  N('shirit', 'm', 'shiriti', 'shirita', 'ribbon, tape'),
+  N('veterinar', 'm', 'veterinari', 'veterinarë', 'vet, veterinarian'),
+  N('kurriz', 'm', 'kurrizi', 'kurriza', 'back (of the body)'),
+  N('çip', 'm', 'çipi', 'çipa', 'chip'),
+  N('aparat', 'm', 'aparati', 'aparate', 'device, apparatus'),
+  // b1-11
+  N('pazar', 'm', 'pazari', 'pazare', 'bazaar, market'),
+  N('shaka', 'f', 'shakaja', 'shaka', 'joke'),
+  // b1-12
+  N('kek', 'm', 'keku', 'keqe', 'cake'),
+  N('benzinë', 'f', 'benzina', undefined, 'petrol'),
+  N('zëvendës', 'm', 'zëvendësi', 'zëvendës', 'substitute, deputy'),
+  N('divan', 'm', 'divani', 'divane', 'sofa, couch'),
+  N('shefe', 'f', 'shefja', 'shefe', 'woman boss, manager', { forms: ['shefen: acc sg def', 'shefes: gen dat abl sg def'] }),
+  // b1-13
+  N('gjeth', 'm', 'gjethi', 'gjethe', 'leaf'),
+  N('kafene', 'f', 'kafeneja', 'kafene', 'café'),
+  N('lëndinë', 'f', 'lëndina', 'lëndina', 'meadow, lawn'),
+  // b1-14
+  N('serenatë', 'f', 'serenata', 'serenata', 'serenade'),
+  N('hekur', 'm', 'hekuri', undefined, 'iron'),
+  N('rrugicë', 'f', 'rrugica', 'rrugica', 'alley, lane'),
+  N('kukull', 'f', 'kukulla', 'kukulla', 'doll'),
+  N('guxim', 'm', 'guximi', undefined, 'courage, daring'),
+  // b1-11, b1-14, b1-15: names
+  PN('Bardhi', 'm', 'Bardhi', 'Bardhi (a dog\'s name; also a man\'s name)'),
+  PN('Agim', 'm', 'Agimi', 'Agim (man\'s name; also "dawn")'),
+  PN('Teuta', 'f', 'Teuta', 'Teuta (woman\'s name)'),
+  // b1-16
+  N('shami', 'f', 'shamia', 'shami', 'cloth, kerchief'),
+  N('rresht', 'm', 'rreshti', 'rreshta', 'row, line'),
+  N('qoshe', 'f', 'qoshja', 'qoshe', 'corner'),
+  N('arsye', 'f', 'arsyeja', 'arsye', 'reason', { forms: ['arsyen: acc sg def', 'arsyes: gen dat abl sg def'] }),
+  N('turn', 'm', 'turni', 'turne', 'shift, turn'),
+  // b1-17
+  N('raft', 'm', 'rafti', 'rafte', 'shelf'),
+  N('pluhur', 'm', 'pluhuri', undefined, 'dust'),
+  N('leckë', 'f', 'lecka', 'lecka', 'rag, cloth'),
+  N('barrë', 'f', 'barra', 'barra', 'burden, load'),
+  N('shpatull', 'f', 'shpatulla', 'shpatulla', 'shoulder'),
+  N('qetësi', 'f', 'qetësia', undefined, 'calm, quiet'),
+  // b1-18
+  N('kostum', 'm', 'kostumi', 'kostume', 'suit'),
+  N('shall', 'm', 'shalli', 'shalle', 'shawl, scarf'),
+  N('shportë', 'f', 'shporta', 'shporta', 'basket'),
+  N('kthim', 'm', 'kthimi', 'kthime', 'return'),
+  // b1-19
+  N('errësirë', 'f', 'errësira', undefined, 'darkness'),
+  N('ritëm', 'm', 'ritmi', 'ritme', 'rhythm'),
+  // b1-20
+  N('kilogram', 'm', 'kilogrami', 'kilogramë', 'kilogram'),
+  N('rezultat', 'm', 'rezultati', 'rezultate', 'result'),
+  N('dështim', 'm', 'dështimi', 'dështime', 'failure'),
+  N('shëtitje', 'f', 'shëtitja', 'shëtitje', 'walk, stroll'),
+  // b1-21
+  N('redaktore', 'f', 'redaktorja', 'redaktore', 'woman editor', { forms: ['redaktoren: acc sg def', 'redaktores: gen dat abl sg def'] }),
+  N('redaksi', 'f', 'redaksia', 'redaksi', 'editorial office, the editors'),
+  N('lexues', 'm', 'lexuesi', 'lexues', 'reader'),
+  N('material', 'm', 'materiali', 'materiale', 'material'),
+  N('vëmendje', 'f', 'vëmendja', undefined, 'attention'),
+  N('vështirësi', 'f', 'vështirësia', 'vështirësi', 'difficulty'),
+  N('rend', 'm', 'rendi', 'rende', 'order, sequence'),
+  // b1-22
+  N('leje', 'f', 'leja', 'leje', 'permission; permit', { forms: ['lejen: acc sg def', 'lejes: gen dat abl sg def'] }),
+  N('qëndrim', 'm', 'qëndrimi', 'qëndrime', 'stay; attitude'),
+  N('sigurim', 'm', 'sigurimi', 'sigurime', 'insurance'),
+  N('provë', 'f', 'prova', 'prova', 'test, trial; proof'),
+  // b1-23
+  N('stol', 'm', 'stoli', 'stola', 'bench'),
+  N('ditar', 'm', 'ditari', 'ditarë', 'diary'),
+  // b1-24
+  N('degë', 'f', 'dega', 'degë', 'branch'),
+  N('daulle', 'f', 'daullja', 'daulle', 'drum'),
+  N('nuse', 'f', 'nusja', 'nuse', 'bride; daughter-in-law', { forms: ['nusen: acc sg def', 'nuses: gen dat abl sg def'] }),
+  N('dhëndër', 'm', 'dhëndri', 'dhëndurë', 'bridegroom; son-in-law'),
+  N('ceremoni', 'f', 'ceremonia', 'ceremoni', 'ceremony'),
+  // b1-25
+  N('shfaqje', 'f', 'shfaqja', 'shfaqje', 'show, performance', { forms: ['shfaqjen: acc sg def', 'shfaqjes: gen dat abl sg def'] }),
+  N('vizatim', 'm', 'vizatimi', 'vizatime', 'drawing'),
+  N('ndrojtje', 'f', 'ndrojtja', undefined, 'shyness'),
+  N('publik', 'm', 'publiku', undefined, 'audience, public'),
+  N('aksent', 'm', 'aksenti', 'aksente', 'accent'),
+  N('fjalim', 'm', 'fjalimi', 'fjalime', 'speech'),
+];
+
+export const SQ_BRIDGE_ADJECTIVES: SqLexeme[] = [
+  // b1-03
+  I('serioz', 'serious', { fem: 'serioze', plM: 'seriozë', plF: 'serioze' }),
+  // b1-04
+  I('krenar', 'proud', { fem: 'krenare', plM: 'krenarë', plF: 'krenare' }),
+  // b1-05
+  I('përhershëm', 'permanent', { fem: 'përhershme', plM: 'përhershëm', plF: 'përhershme' }),
+  // b1-06
+  I('nevojshëm', 'necessary', { fem: 'nevojshme', plM: 'nevojshëm', plF: 'nevojshme' }),
+  // b1-07
+  I('mençur', 'wise, sensible', { fem: 'mençur', plM: 'mençur', plF: 'mençura' }),
+  // b1-08
+  NA('plot', 'full (plot me: full of)'),
+  // b1-10
+  I('gatshëm', 'ready, willing', { fem: 'gatshme', plM: 'gatshëm', plF: 'gatshme' }),
+  NA('ngjitës', 'sticky, adhesive', { fem: 'ngjitëse', plM: 'ngjitës', plF: 'ngjitëse' }),
+  I('panjohur', 'unknown, unfamiliar', { fem: 'panjohur', plM: 'panjohur', plF: 'panjohura' }),
+  // b1-11
+  I('verdhë', 'yellow', { fem: 'verdhë', plM: 'verdhë', plF: 'verdhë' }),
+  // b1-15
+  I('çuditshëm', 'strange, odd', { fem: 'çuditshme', plM: 'çuditshëm', plF: 'çuditshme' }),
+  // b1-17
+  I('ndershëm', 'honest', { fem: 'ndershme', plM: 'ndershëm', plF: 'ndershme' }),
+  // b1-22
+  I('rëndësishëm', 'important', { fem: 'rëndësishme', plM: 'rëndësishëm', plF: 'rëndësishme' }),
+];
+
+export const SQ_BRIDGE_ADVERBS: SqLexeme[] = [  // b1-01
+  ADV('menjëherë', 'at once, immediately'),
+  W('gjithçka', 'PRON', 'everything'),
+  // b1-04
+  ADV('kurrë', 'never, ever'),
+  ADV('butë', 'gently, softly'),
+  // b1-05
+  ADV('as', 'not even; nor'),
+  ADV('kaq', 'so (much), that (much)'),
+  // b1-07
+  ADV('rregullisht', 'regularly'),
+  ADV('ngadalë', 'slowly'),
+  ADV('përsëri', 'again'),
+  ADV('mjaftueshëm', 'enough, sufficiently'),
+  // b1-11
+  ADV('kudo', 'everywhere'),
+  ADV('fort', 'strongly, hard, tightly'),
+  // b1-13
+  ADV('prapa', 'behind, at the back'),
+  // b1-17
+  W('sikur', 'SCONJ', 'as if; if only'),
+  // b1-18
+  W('amen', 'INTJ', 'amen'),
+  // b1-21
+  ADV('plotësisht', 'completely, fully'),
+  // b1-22
+  ADV('falas', 'free of charge'),
+  // b1-25
+  ADV('direkt', 'directly'),
+];
+
+export const SQ_BRIDGE_VERBS: SqLexeme[] = [  // b1-02
+  oj('shqiptoj', 'to pronounce', { nonActive: true }),
+  oj('korrigjoj', 'to correct', { nonActive: true }),
+  V('prek', 'cons', 'preka', 'prekur', 'to touch', { aorist3: 'preku', nonActive: true }),
+  V('përsëris', 'cons', 'përsërita', 'përsëritur', 'to repeat', { pres23: 'përsërit', forms: ['përsërisni: 2 pl pres ind', 'përsërit: 2 sg imper'] }),
+  V('leh', 'cons', 'leha', 'lehur', 'to bark', { aorist3: 'lehu' }),
+  // b1-03
+  oj('shqetësoj', 'to worry, to disturb (shqetësohem: to worry)', { nonActive: true }),
+  // b1-04
+  V('humb', 'cons', 'humba', 'humbur', 'to lose'),
+  oj('gaboj', 'to make a mistake, to be wrong', { nonActive: true }),
+  oj('frikësoj', 'to frighten (frikësohem: to be afraid)', { nonActive: true }),
+  // b1-05
+  oj('rrotulloj', 'to turn round, to stir', { nonActive: true }),
+  oj('rregulloj', 'to fix, to repair, to arrange', { nonActive: true }),
+  oj('turpëroj', 'to embarrass, to shame (turpërohem: to be embarrassed)', { nonActive: true }),
+  V('lag', 'cons', 'laga', 'lagur', 'to wet'),
+  V('pëshpëris', 'cons', 'pëshpërita', 'pëshpëritur', 'to whisper', { pres23: 'pëshpërit', forms: ['pëshpërisni: 2 pl pres ind', 'pëshpërit: 2 sg imper'] }),
+  // b1-06
+  oj('drejtoj', 'to lead, to direct, to steer', { nonActive: true }),
+  // b1-07
+  V('mat', 'cons', 'mata', 'matur', 'to measure', { nonActive: true }),
+  oj('fitoj', 'to earn, to win, to gain'),
+  // b1-08
+  oj('copëtoj', 'to break into pieces, to cut up', { nonActive: true }),
+  V('nxjerr', 'cons', 'nxora', 'nxjerrë', 'to take out, to draw out', { aorist3: 'nxori', pres23: 'nxjerr', forms: ['nxirni: 2 pl pres ind', 'nxirr: 2 sg imper'] }),
+  // b1-09
+  V('dridhem', 'cons', 'dridha', 'dridhur', 'to tremble, to shiver', { nonActive: 'only' }),
+  oj('qetësoj', 'to calm (qetësohem: to calm down)', { nonActive: true }),
+  V('përkul', 'cons', 'përkula', 'përkulur', 'to bend (përkulem: to bend down)', { nonActive: true }),
+  // b1-10
+  oj('printoj', 'to print'),
+  oj('trishtoj', 'to sadden (trishtohem: to become sad)', { nonActive: true }),
+  // b1-11
+  oj('përqafoj', 'to hug, to embrace', { nonActive: true }),
+  oj('mungoj', 'to be absent, to be missing'),
+  // b1-13
+  oj('nënvizoj', 'to underline'),
+  // b1-16
+  oj('peshoj', 'to weigh'),
+  // b1-17
+  oj('bisedoj', 'to talk, to converse'),
+  // b1-18
+  V('shkëlqej', 'oj', 'shkëlqeva', 'shkëlqyer', 'to shine, to sparkle'),
+  // b1-20
+  oj('dështoj', 'to fail'),
+  // b1-21
+  oj('njoftoj', 'to inform, to announce', { nonActive: true }),
+  oj('planifikoj', 'to plan'),
+  V('udhëheq', 'cons', 'udhëhoqa', 'udhëhequr', 'to lead, to guide'),
+  // b1-22
+  oj('rinovoj', 'to renew', { nonActive: true }),
+  oj('kopjoj', 'to copy'),
+  // b1-24
+  oj('vallëzoj', 'to dance (a folk dance)'),
+];
+
+export const SQ_BRIDGE_LEXEMES: SqLexeme[] = [...SQ_BRIDGE_NOUNS, ...SQ_BRIDGE_ADJECTIVES, ...SQ_BRIDGE_ADVERBS, ...SQ_BRIDGE_VERBS];
+
+// What morphology.ts reads: the plan's words, then the bridge's.
+export const SQ_LADDER_NOUNS: SqLexeme[] = [...SQ_PLAN_NOUNS, ...SQ_BRIDGE_NOUNS];
+export const SQ_LADDER_ADJECTIVES: SqLexeme[] = [...SQ_PLAN_ADJECTIVES, ...SQ_BRIDGE_ADJECTIVES];
+export const SQ_LADDER_ADVERBS: SqLexeme[] = [...SQ_PLAN_ADVERBS, ...SQ_BRIDGE_ADVERBS];
+export const SQ_LADDER_VERBS: SqLexeme[] = [...SQ_PLAN_VERBS, ...SQ_BRIDGE_VERBS];
+
+/** The plan's 262 words as one array (the bridge's are SQ_BRIDGE_LEXEMES). */
+export const SQ_LADDER_LEXEMES: SqLexeme[] = SQ_PLAN_LEXEMES;

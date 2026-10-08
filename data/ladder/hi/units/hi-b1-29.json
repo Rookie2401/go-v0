@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-29",
+  "lang": "hi",
+  "title": "अंधेर नगरी (कहानी की तरह)",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-29",
+    "title": "\"अंधेर नगरी (कहानी की तरह)\" (ladder unit, adapted and machine-drafted)",
+    "author": "Go course authors (drafted by an AI model), after भारतेंदु हरिश्चंद्र",
+    "edition": "भारतेंदु-नाटकावली, first edition VS 1992 / 1935 (Hindi Wikisource, parent revision 517232)",
+    "url": "https://hi.wikisource.org/wiki/भारतेंदु-नाटकावली",
+    "attribution": "Adapted from \"अंधेर नगरी\" by भारतेंदु हरिश्चंद्र (1881), Hindi Wikisource transcription of भारतेंदु-नाटकावली (https://hi.wikisource.org/wiki/भारतेंदु-नाटकावली, parent revision 517232 and six act-page revisions), CC BY-SA 4.0. This is a short retelling written for the course ladder; it is an adaptation, not the original text. Adapted and machine-drafted; not reviewed by a native speaker. Share-alike: CC BY-SA 4.0.",
+    "provenance": "Retold for learners in the vocabulary of the Hindi ladder from the library play text:hi:bharatendu-andher-nagari (the first plot of the play: the market where everything costs one taka a ser, the wall that fell, the king who hangs himself). The retelling is machine-drafted by an AI model, in plain narrative sentences instead of verse and dialogue, and leaves out the songs and most of the minor characters; not reviewed by a native speaker. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). The underlying 1881 play is recorded in the library as public domain in India and the United States (canModify true); the Wikisource transcription is under CC BY-SA 4.0, so this adaptation carries the attribution and the share-alike term. Changes: simplified and shortened retelling in prose, new sentences. Machine-drafted, not yet native-reviewed.",
+    "licence": "CC BY-SA 4.0, adapted (share-alike)",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Adapted unit (the contract's `adapted` kind): a short retelling in plain modern Hindi of the first plot of Bharatendu Harishchandra's play \"अंधेर नगरी\" (1881), the library work text:hi:bharatendu-andher-nagari (rights in the library: verified public domain in India and the United States, canModify true; the Wikisource transcription is CC BY-SA 4.0, so the attribution and the share-alike term are carried). The play itself (3,273 words, about 68 % known after the whole bridge, 598 new lemmas) stays library material; this retelling teaches the few words that the story turns on (टका, सेर, भाजी, खाजा, महंत, कोतवाल, दरबार, फाँसी, महाराज, कारीगर) and the two disciples' names, so that the play can be read next. The ending is the play's own (the foolish king is hanged by his own order); a Hindi reviewer and a Christian reader should check that it is told as a satire and not as a model. Machine-drafted."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "literature",
+    "play",
+    "satire",
+    "justice",
+    "retelling"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-literature"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "बाज़ार",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक महंत अपने दो चेलों के साथ यात्रा पर थे।",
+              "english": "A mahant was travelling with his two disciples."
+            },
+            {
+              "text": "बड़े चेले का नाम गोबरधनदास था, और छोटे का नाम नारायणदास।",
+              "english": "The elder disciple's name was Gobardhandas, and the younger's Narayandas."
+            },
+            {
+              "text": "चलते चलते वे एक बड़े नगर में पहुँचे, जिसका नाम अंधेर नगरी था।",
+              "english": "As they walked they reached a big city whose name was Andher Nagari."
+            },
+            {
+              "text": "गोबरधनदास बाज़ार गया, तो उसे बड़ा अजीब लगा।",
+              "english": "When Gobardhandas went to the market, it seemed very strange to him."
+            },
+            {
+              "text": "वहाँ भाजी एक टके सेर थी, और खाजा भी एक टके सेर।",
+              "english": "There vegetables were one taka a ser, and khaja sweets too were one taka a ser."
+            },
+            {
+              "text": "उसने सोचा, \"वाह! यहाँ सब कुछ कितना सस्ता है!\"",
+              "english": "He thought, \"Wow! How cheap everything is here!\""
+            },
+            {
+              "text": "वह दौड़कर गुरु के पास आया और बोला, \"चलिए, हम यहीं रहेंगे।\"",
+              "english": "He came running to his guru and said, \"Come, let us stay right here.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "महंत की बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उन्होंने बाज़ार देखा और कहा, \"यहाँ अच्छी और बुरी चीज़ का एक ही दाम है।\"",
+              "english": "He looked at the market and said, \"Here good and bad things have the same price.\""
+            },
+            {
+              "text": "\"जहाँ हर चीज़ एक टके सेर हो, वहाँ अच्छे और बुरे में कोई फ़र्क नहीं होता।\"",
+              "english": "\"Where everything is one taka a ser, there is no difference between good and bad.\""
+            },
+            {
+              "text": "\"ऐसी जगह न्याय भी नहीं होता, इसलिए यहाँ रहना ठीक नहीं।\"",
+              "english": "\"In such a place there is no justice either, so it is not right to stay here.\""
+            },
+            {
+              "text": "पर गोबरधनदास ने बात नहीं मानी, और उसने कहा, \"मैं तो यहीं रुकूँगा।\"",
+              "english": "But Gobardhandas did not listen, and he said, \"I will stay right here.\""
+            },
+            {
+              "text": "वे बोले, \"ठीक है, मैं नारायणदास को लेकर आगे जाता हूँ; पर जब परेशानी आए, तो मुझे बुलाना।\"",
+              "english": "He said, \"All right, I am going ahead taking Narayandas; but when trouble comes, call me.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दीवार गिर गई",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "गोबरधनदास रोज़ खाजा खाने लगा, और कुछ दिनों में वह बहुत मोटा हो गया।",
+              "english": "Gobardhandas began to eat khaja every day, and in a few days he became very fat."
+            },
+            {
+              "text": "उन्हीं दिनों नगर के एक कारीगर की बनाई हुई दीवार गिर गई।",
+              "english": "In those very days a wall made by a craftsman of the city fell down."
+            },
+            {
+              "text": "उसके नीचे एक आदमी की बकरी आ गई, और वह बच नहीं सकी।",
+              "english": "Under it a man's goat came, and she could not survive."
+            },
+            {
+              "text": "वह आदमी रोता हुआ दरबार पहुँचा और बोला, \"महाराज, न्याय कीजिए! मेरी बकरी चली गई है।\"",
+              "english": "The man reached the court weeping and said, \"Maharaj, do justice! My goat is gone.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "राजा का न्याय",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उस नगर का राजा बहुत सीधा था, और उसके दरबार में कोई बात सोच समझकर नहीं होती थी।",
+              "english": "The king of that city was very simple, and in his court nothing was done with thought."
+            },
+            {
+              "text": "राजा ने कहा, \"दीवार किसने बनाई थी? उसे बुलाओ।\"",
+              "english": "The king said, \"Who made the wall? Call him.\""
+            },
+            {
+              "text": "कारीगर आया, तो उसने कहा, \"महाराज, इसमें मेरी ग़लती नहीं, भिश्ती ने ज़्यादा पानी डाल दिया।\"",
+              "english": "When the craftsman came he said, \"Maharaj, it is not my fault, the water-carrier put in too much water.\""
+            },
+            {
+              "text": "इस तरह बात एक से दूसरे तक जाती रही, और आख़िर में कोतवाल से पूछा गया।",
+              "english": "In this way the matter went from one to another, and in the end the kotwal was asked."
+            },
+            {
+              "text": "कोतवाल ने कहा, \"उस समय एक मोटा आदमी सड़क से जा रहा था, उसी के कारण सब हुआ।\"",
+              "english": "The kotwal said, \"At that time a fat man was passing along the road, everything happened because of him.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "फाँसी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "राजा ने कहा, \"उसी मोटे आदमी को पकड़ लाओ, और उसे फाँसी दो!\"",
+              "english": "The king said, \"Bring that very fat man, and give him the gallows!\""
+            },
+            {
+              "text": "सिपाही बाज़ार गए और गोबरधनदास को पकड़ लाए, क्योंकि वहाँ वही सबसे मोटा था।",
+              "english": "The soldiers went to the market and brought Gobardhandas, because there he was the fattest."
+            },
+            {
+              "text": "गोबरधनदास रोया और चिल्लाया, \"गुरु! मुझे बचाओ!\"",
+              "english": "Gobardhandas wept and shouted, \"Guru! Save me!\""
+            },
+            {
+              "text": "तभी महंत आ गए, और उन्होंने चेले के कान में कुछ कहा।",
+              "english": "Just then the mahant came, and he said something in his disciple's ear."
+            },
+            {
+              "text": "गोबरधनदास अब हँसने लगा, और बोला, \"महाराज, मुझे जल्दी फाँसी दीजिए!\"",
+              "english": "Gobardhandas began to laugh now, and said, \"Maharaj, hang me quickly!\""
+            },
+            {
+              "text": "राजा चौंका और उसने पूछा, \"तुम इतने खुश क्यों हो?\"",
+              "english": "The king was startled and asked, \"Why are you so happy?\""
+            },
+            {
+              "text": "महंत ने कहा, \"इस समय जो फाँसी पर चढ़ेगा, वह सीधा स्वर्ग जाएगा।\"",
+              "english": "The mahant said, \"Whoever goes up on the gallows at this time will go straight to heaven.\""
+            },
+            {
+              "text": "राजा बोला, \"तो मैं ही चढ़ूँगा, क्योंकि स्वर्ग पर पहला अधिकार तो राजा का है!\"",
+              "english": "The king said, \"Then I myself will go up, because the first right to heaven is the king's!\""
+            },
+            {
+              "text": "और इस तरह राजा अपने ही न्याय से चढ़ गया, और अंधेर नगरी का अंधेर ख़त्म हुआ।",
+              "english": "And so the king went up by his own justice, and the darkness of Andher Nagari came to an end."
+            },
+            {
+              "text": "महंत अपने दोनों चेलों के साथ आगे चल दिए, और गोबरधनदास ने कहा, \"अब मैं समझा कि सब कुछ सस्ता होना अच्छी बात नहीं।\"",
+              "english": "The mahant went on with both his disciples, and Gobardhandas said, \"Now I understand that it is not a good thing for everything to be cheap.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

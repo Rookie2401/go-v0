@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "A village child (not named; the plan has no name for him) speaks in the first person in Ravi sir's class; Sam is visiting. बच्चो (vocative) and \"बच्चों को\" are the first plural forms. Honorific plural for रवि सर. Words outside the plan (measured): none."
+    "notes": "A village child (not named; the plan has no name for him) speaks in the first person in Ravi sir's class; Sam is visiting. बच्चो (vocative) and \"बच्चों को\" are the first plural forms. Honorific plural for रवि सर. Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -218,6 +218,34 @@
             {
               "text": "रवि सर बोलते हैं, \"बीमार को आराम चाहिए।\"",
               "english": "Ravi sir says, \"A sick person needs rest.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन के पास किताब है।",
+              "english": "Aman has a book."
+            },
+            {
+              "text": "उसका नाम किताब पर है।",
+              "english": "His name is on the book."
+            },
+            {
+              "text": "उसका बैग कुर्सी पर है।",
+              "english": "His bag is on the chair."
+            },
+            {
+              "text": "रवि सर अपना बैग लेते हैं।",
+              "english": "Ravi sir takes his own bag."
+            },
+            {
+              "text": "शाम को वह घर जाते हैं।",
+              "english": "In the evening he goes home."
+            },
+            {
+              "text": "पेड़ के पास फूल हैं।",
+              "english": "There are flowers near the tree."
             }
           ]
         }

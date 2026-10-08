@@ -1,0 +1,55 @@
+id: hi-b1-04
+title: नानी के आँगन का अमरूद
+domain: nature
+topics: nature, garden, birds, animals, home
+notes: Second controlled unit of the b1 bridge. It prepares the words of the GDL story "गौरैया और अमरूद" (hi-b1-05): गौरैया, अमरूद, चींटी, कँटीली, झाड़ी, पीटना, चरना, चोंच, डंडा, इन्कार, each used three times or more. It also brings back words of the last units of a2-2 (the parable: अकाल, सूअर, जायदाद, तेरा; Sam's testimony: पराया, विदेश, परेशानी, उत्पन्न, आराधनालय, अशुद्ध, बल, झील, नगर; the rain poem hi-a2-2-24: पशु, पक्षी, आनंदित) and of hi-b1-01 / hi-b1-02 (स्टूल, इशारा, ख़राब, भूरा, संतरा, खींचना) in a quiet scene in Seeta Nani's courtyard. Machine-drafted; a Hindi reviewer should check the garden vocabulary.
+---
+## आँगन में
+नानी के आँगन में अमरूद का एक बड़ा पेड़ है। || In Nani's courtyard there is a big guava tree.
+हर सुबह एक भूरी गौरैया उस पेड़ पर आकर बैठती है। || Every morning a brown sparrow comes and sits on that tree.
+उसकी चोंच छोटी है, पर बहुत तेज़ है। || Her beak is small, but very sharp.
+सुबह गौरैया अपनी चोंच से पानी पीती है, और उसकी चोंच पर पानी की एक बूँद चमकती है। || In the morning the sparrow drinks water with her beak, and a drop of water shines on her beak.
+अमन कहता है, "यह गौरैया हमारी दोस्त है।" || Aman says, "This sparrow is our friend."
+नानी हँसकर बोलती हैं, "पेड़ भी हमारा है, और फल भी हमारे हैं।" || Nani says with a laugh, "The tree is ours, and the fruit is ours too."
+सैम को यह घर अब पराया नहीं लगता। || This house no longer seems strange to Sam.
+वह कहता है, "विदेश में इतने बड़े अमरूद नहीं मिलते।" || He says, "In a foreign country you do not find such big guavas."
+
+## पक्षी और पशु
+आँगन के पास कँटीली झाड़ियाँ हैं, और उनके पीछे खाली खेत है। || Near the courtyard there are thorny bushes, and behind them an empty field.
+सुबह वहाँ बहुत से पक्षी आते हैं, और नानी की गाय खेत में चरती है। || In the morning many birds come there, and Nani's cow grazes in the field.
+कुछ पशु शाम को भी वहाँ चरते हैं, और चरने के बाद गाय आँगन में लौट आती है। || Some animals graze there in the evening too, and after grazing the cow comes back to the courtyard.
+नानी कहती हैं, "गर्मी में पशु और पक्षी दोनों को ज़्यादा पानी चाहिए।" || Nani says, "In the heat both animals and birds need more water."
+इसलिए नानी रोज़ साफ़ पानी रखती हैं, अशुद्ध पानी नहीं। || So Nani puts out clean water every day, not impure water.
+पक्षी पानी पीते हैं, तो अमन आनंदित होता है। || When the birds drink water, Aman is delighted.
+एक दिन नानी ने कहा, "बहुत साल पहले यहाँ अकाल पड़ा था, पर यह पेड़ फल देता रहा।" || One day Nani said, "Many years ago a famine fell here, but this tree kept giving fruit."
+"यह पेड़ मेरी जायदाद का सबसे अच्छा हिस्सा है।" || "This tree is the best part of my property."
+
+## अमरूद कहाँ गया?
+एक सुबह अमन ने एक फल हाथ में लिया, तो वह कँटीली झाड़ी में जा गिरा। || One morning Aman took a fruit in his hand, and it fell into the thorny bush.
+अमन ने कहा, "यह तो बड़ी परेशानी है। अब मेरा फल कौन निकालेगा?" || Aman said, "This is a big trouble. Now who will take my fruit out?"
+पास के घर का एक लड़का वहाँ खड़ा था। || A boy from the house nearby was standing there.
+अमन ने उससे कहा, "भाई, मेरा फल निकाल दो।" || Aman said to him, "Brother, take my fruit out."
+लड़के ने इन्कार कर दिया और बोला, "यह मेरा काम नहीं है।" || The boy refused and said, "This is not my job."
+इन्कार सुनकर अमन को ग़ुस्सा आया, और वह बोला, "मैं तुझे पीटूँगा!" || Hearing the refusal Aman got angry, and he said, "I will beat you!"
+नानी ने कहा, "अमन, किसी को पीटना अच्छी बात नहीं है।" || Nani said, "Aman, beating anyone is not a good thing."
+"पीटने से कोई हल नहीं निकलता।" || "Beating does not bring out any solution."
+सैम ने इन्कार नहीं किया। वह स्टूल पर चढ़ा, पर कँटीली झाड़ी में हाथ डालना ठीक नहीं था। || Sam did not refuse. He climbed on the stool, but putting a hand into the thorny bush was not right.
+फिर उसने एक डंडा उठाया और धीरे से झाड़ी को हिलाया। || Then he picked up a stick and gently shook the bush.
+इस काम में बल नहीं लगता, धीरे धीरे हाथ चलाना पड़ता है। || This work needs no strength, you have to move your hand slowly.
+
+## चींटी की मदद
+तभी सैम ने देखा कि अमरूद पर बहुत सी चींटियाँ चढ़ रही हैं। || Just then Sam saw that many ants were climbing on the guava.
+अमन ने डंडे से एक चींटी को मारना चाहा, पर सैम ने इशारा किया, "रुको!" || Aman wanted to hit an ant with the stick, but Sam made a sign, "Wait!"
+"चींटियाँ भी तो हमारी तरह जीती हैं।" || "Ants too live like us."
+अमन ने डंडा रख दिया, और दोनों ने मिलकर अमरूद को झाड़ी से खींचा। || Aman put the stick down, and the two of them together pulled the guava out of the bush.
+अमरूद थोड़ा ख़राब हो चुका था, पर संतरे की तरह मीठा था। || The guava had spoiled a little, but it was sweet like an orange.
+गौरैया पेड़ पर बैठी रही, और झील की तरफ़ से ठंडी हवा आई। || The sparrow went on sitting on the tree, and a cool wind came from the direction of the lake.
+नानी ने कहा, "हर परेशानी का कोई हल होता है, और कभी कभी जो उसे उत्पन्न करता है, वही उसे ठीक भी कर देता है।" || Nani said, "Every trouble has some solution, and sometimes the one who makes it arise is the one who also sets it right."
+
+## माँ के नाम चिट्ठी
+उस रात सैम ने अपनी माँ को चिट्ठी लिखी। || That night Sam wrote a letter to his mother.
+"प्यारी माँ, मैं विदेश में हूँ, पर अब यह नगर मुझे पराया नहीं लगता।" || "Dear mother, I am in a foreign country, but this city no longer seems strange to me."
+"जब कोई परेशानी उत्पन्न होती है, तो नानी का आँगन मुझे बल देता है।" || "When some trouble arises, Nani's courtyard gives me strength."
+"मैं उस बेटे जैसा हूँ, जो परदेस गया था और अपने को पापी और दास कहता था।" || "I am like that son who went to a foreign land and called himself a sinner and a servant."
+"यहाँ झील के पास एक आराधनालय भी है, और मैं रोज़ उसके सामने से निकलता हूँ।" || "Here near the lake there is a synagogue too, and I pass in front of it every day."
+"जब पशु और पक्षी पानी पीते हैं, तो मैं आनंदित होता हूँ।" || "When animals and birds drink water, I am delighted."

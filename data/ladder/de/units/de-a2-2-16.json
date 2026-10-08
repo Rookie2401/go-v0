@@ -43,6 +43,19 @@
     "biography"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "sections": [
     {
       "title": "Meine Kindheit und die Schule",
@@ -505,19 +518,327 @@
           ]
         }
       ]
-    }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Mittwochabend, und Anna und Sam sitzen zusammen in Annas Küche.",
+              "english": "It is Wednesday evening, and Anna and Sam are sitting together in Anna's kitchen."
+            },
+            {
+              "text": "Anna hat heute viel gearbeitet, und sie trinkt einen Tee.",
+              "english": "Anna has worked a lot today, and she is drinking a tea."
+            },
+            {
+              "text": "Sam sagt: Weißt du noch, was Pastor Thomas im Jugendkreis erzählt hat?",
+              "english": "Sam says: Do you still know what Pastor Thomas told in the youth group?"
+            },
+            {
+              "text": "Anna nickt, denn sie kennt die Geschichte sehr gut.",
+              "english": "Anna nods, because she knows the story very well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ein Mann ging allein von Jerusalem nach Jericho hinunter.",
+              "english": "A man went down alone from Jerusalem to Jericho."
+            },
+            {
+              "text": "Der Weg war lang und einsam, und er war gefährlicher, als der Mann dachte.",
+              "english": "The way was long and lonely, and it was more dangerous than the man thought."
+            },
+            {
+              "text": "Niemand war da, und kein Haus war zu sehen.",
+              "english": "Nobody was there, and no house was to be seen."
+            },
+            {
+              "text": "Hinter einem Bach kamen plötzlich Räuber hervor.",
+              "english": "Suddenly robbers came out from behind a stream."
+            },
+            {
+              "text": "Sie schlugen den Mann und nahmen sein Geld und seine Kleider.",
+              "english": "They beat the man and took his money and his clothes."
+            },
+            {
+              "text": "Er blieb am Rand des Weges liegen und konnte nicht mehr aufstehen.",
+              "english": "He stayed lying at the edge of the road and could not get up any more."
+            },
+            {
+              "text": "Anna sagt: Das ist schrecklich, und ich möchte so etwas nie sehen.",
+              "english": "Anna says: That is terrible, and I never want to see something like that."
+            },
+            {
+              "text": "Sam sagt: Aber es kamen zwei Männer, und sie haben ihm nicht geholfen.",
+              "english": "Sam says: But two men came, and they did not help him."
+            },
+            {
+              "text": "Der eine war ein frommer Priester, und er kam vom Tempel.",
+              "english": "One was a pious priest, and he came from the temple."
+            },
+            {
+              "text": "Er wollte nichts Unreines berühren, darum ging er schnell nach Hause.",
+              "english": "He did not want to touch anything unclean, so he went home quickly."
+            },
+            {
+              "text": "Man hatte von ihm Hilfe erwartet, aber er ging vorbei.",
+              "english": "One had expected help from him, but he went past."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann kam ein Samariter, und die Leute sahen ihn als Feind.",
+              "english": "Then a Samaritan came, and the people saw him as an enemy."
+            },
+            {
+              "text": "Er ritt auf einem Esel und hatte eine weite Reise vor sich.",
+              "english": "He rode on a donkey and had a long journey ahead of him."
+            },
+            {
+              "text": "Aber er stieg von seinem Esel und ging zu dem Mann.",
+              "english": "But he got down from his donkey and went to the man."
+            },
+            {
+              "text": "Die Kleider des Mannes waren schmutzig, und er hatte viele Wunden.",
+              "english": "The man's clothes were dirty, and he had many wounds."
+            },
+            {
+              "text": "Der Samariter goss Wein auf die Wunden, und der Wein brannte.",
+              "english": "The Samaritan poured wine on the wounds, and the wine stung."
+            },
+            {
+              "text": "Dann verband er sie mit einem Tuch und gab dem Mann Wasser.",
+              "english": "Then he bandaged them with a cloth and gave the man water."
+            },
+            {
+              "text": "Er hob ihn auf den Esel und brachte ihn zur Herberge.",
+              "english": "He lifted him on to the donkey and took him to the inn."
+            },
+            {
+              "text": "Im Stall standen die Tiere, und er trug den Mann die Treppe hinauf.",
+              "english": "The animals stood in the stable, and he carried the man up the stairs."
+            },
+            {
+              "text": "Die ganze Nacht blieb er bei ihm, und am Morgen musste er weiterreisen.",
+              "english": "He stayed with him all night, and in the morning he had to travel on."
+            },
+            {
+              "text": "Er gab dem Wirt zwei Münzen und sagte: Pflege ihn für mich.",
+              "english": "He gave the innkeeper two coins and said: care for him for me."
+            },
+            {
+              "text": "Der Wirt war überrascht, und er nickte.",
+              "english": "The innkeeper was surprised, and he nodded."
+            },
+            {
+              "text": "Er hatte so etwas noch nie erlebt.",
+              "english": "He had never experienced anything like it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna sagt: Jesus fragte den Gesetzeslehrer zurück, und er gab keine Regel als Antwort.",
+              "english": "Anna says: Jesus asked the teacher of the law back, and he gave no rule as an answer."
+            },
+            {
+              "text": "Sam sagt: Er sagte nur: Geh und handle ebenso.",
+              "english": "Sam says: He only said: Go and do likewise."
+            },
+            {
+              "text": "Ich denke oft an diese Geschichte, sagt Anna.",
+              "english": "I often think of this story, says Anna."
+            },
+            {
+              "text": "Du bist ja auch Krankenschwester und hilfst jeden Tag Menschen.",
+              "english": "You are a nurse, too, and you help people every day."
+            },
+            {
+              "text": "Sam fragt: Hast du im Krankenhaus auch solche Tage, an denen alles schwer ist?",
+              "english": "Sam asks: Do you also have days like that in the hospital, when everything is hard?"
+            },
+            {
+              "text": "Anna sagt: Ja, das kommt oft vor, besonders in der Nacht.",
+              "english": "Anna says: Yes, that happens often, especially at night."
+            },
+            {
+              "text": "Dann denke ich an den alten Mann, der damals auf unsere Station kam.",
+              "english": "Then I think of the old man who came to our ward back then."
+            },
+            {
+              "text": "Er hat mir seine Geschichte erzählt, und ich habe sie nie vergessen.",
+              "english": "He told me his story, and I have never forgotten it."
+            },
+            {
+              "text": "Sam sagt: Du hilfst den Menschen, auch wenn du müde bist.",
+              "english": "Sam says: You help people even when you are tired."
+            },
+            {
+              "text": "Anna sagt: Ich versuche es, aber manchmal habe ich keine Kraft mehr.",
+              "english": "Anna says: I try, but sometimes I have no strength left."
+            },
+            {
+              "text": "Dann hilft mir die Gemeinde, und dann hilft mir die Familie.",
+              "english": "Then the church helps me, and then the family helps me."
+            },
+            {
+              "text": "Heute Abend zum Beispiel hat meine Oma angerufen und gefragt, wie es mir geht.",
+              "english": "This evening, for example, my grandmother phoned and asked how I am."
+            },
+            {
+              "text": "Sam lächelt und sagt: Marta weiß immer, wann man einen Anruf braucht.",
+              "english": "Sam smiles and says: Marta always knows when one needs a call."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann erzählt Sam von seiner Reise nach Sachsen.",
+              "english": "Then Sam tells about his journey to Saxony."
+            },
+            {
+              "text": "Er hatte ein Ticket für das Wochenende und einen Reiseführer von Frau Weber.",
+              "english": "He had a ticket for the weekend and a travel guide from Frau Weber."
+            },
+            {
+              "text": "Sie hatte einige Seiten markiert, damit er alles Wichtige findet.",
+              "english": "She had marked a few pages so that he would find everything important."
+            },
+            {
+              "text": "Die Altstadt von Dresden liegt direkt am Fluss.",
+              "english": "The old town of Dresden lies directly on the river."
+            },
+            {
+              "text": "Im Krieg wurde sie zerstört, aber heute sieht sie wieder neu aus.",
+              "english": "In the war it was destroyed, but today it looks new again."
+            },
+            {
+              "text": "Die berühmte Kirche hat ein rundes Dach, und Sam hat lange vor der Kirche gestanden.",
+              "english": "The famous church has a round roof, and Sam stood in front of the church for a long time."
+            },
+            {
+              "text": "Auf dem Markt zeigte ihm ein Mann, wie man eine Wurst isst.",
+              "english": "At the market a man showed him how to eat a sausage."
+            },
+            {
+              "text": "Der Eintritt im Schloss war nicht teuer, und die Bilder waren schön.",
+              "english": "The entrance fee at the castle was not expensive, and the pictures were beautiful."
+            },
+            {
+              "text": "Im Hostel schliefen drei Reisende aus anderen Ländern.",
+              "english": "Three travellers from other countries slept in the hostel."
+            },
+            {
+              "text": "Ihre einzige gemeinsame Sprache war Deutsch, und sie haben bis spät gesprochen.",
+              "english": "Their only common language was German, and they talked until late."
+            },
+            {
+              "text": "In Meißen liegt alles beieinander, und die Wege sind eng.",
+              "english": "In Meißen everything lies close together, and the paths are narrow."
+            },
+            {
+              "text": "Sam ist viele Treppen hinaufgestiegen und hat sich den Dom angesehen.",
+              "english": "Sam climbed up many stairs and looked at the cathedral."
+            },
+            {
+              "text": "Das beste Essen gab es nicht im Restaurant, sondern auf dem Markt.",
+              "english": "The best food was not in the restaurant but at the market."
+            },
+            {
+              "text": "Am Abend hat er einen langen Eintrag in seinen Blog geschrieben.",
+              "english": "In the evening he wrote a long entry in his blog."
+            },
+            {
+              "text": "Anna lacht und sagt: Ich habe ihn gelesen, und er hat mir sehr gefallen.",
+              "english": "Anna laughs and says: I read it, and I liked it very much."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Ende erinnert sich Anna an das Dorf in Thüringen.",
+              "english": "At the end Anna remembers the village in Thuringia."
+            },
+            {
+              "text": "Sam hat dort auf dem Dachboden geschlafen, und es war sehr schön.",
+              "english": "Sam slept there in the attic, and it was very nice."
+            },
+            {
+              "text": "Ein alter Mann hat ihn auf dem Marktplatz gefragt: Sind Sie der Amerikaner?",
+              "english": "An old man asked him in the market square: Are you the American?"
+            },
+            {
+              "text": "Die Leute dort haben nicht viel Geld, aber sie sind sehr freundlich.",
+              "english": "The people there do not have much money, but they are very friendly."
+            },
+            {
+              "text": "Klaus hat gesagt: Bei uns soll niemand hungrig ins Bett gehen.",
+              "english": "Klaus said: With us nobody should go to bed hungry."
+            },
+            {
+              "text": "Maria hat den Kuchen sorgfältig gebacken, und alle haben ihn gern gegessen.",
+              "english": "Maria baked the cake carefully, and everybody gladly ate it."
+            },
+            {
+              "text": "Es ist spät geworden, und Anna und Sam sind müde, aber glücklich.",
+              "english": "It has become late, and Anna and Sam are tired but happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam steht auf und holt noch eine Tasse Tee für Anna.",
+              "english": "Sam gets up and fetches another cup of tea for Anna."
+            },
+            {
+              "text": "Er sagt: Am Samstag will ich Lukas besuchen und mit ihm sprechen.",
+              "english": "He says: On Saturday I want to visit Lukas and talk with him."
+            },
+            {
+              "text": "Er hat eine schwere Entscheidung vor sich, und er braucht gute Freunde.",
+              "english": "He has a hard decision ahead of him, and he needs good friends."
+            },
+            {
+              "text": "Anna sagt: Ich komme gern mit, denn ich habe am Wochenende frei.",
+              "english": "Anna says: I will gladly come along, because I am off at the weekend."
+            },
+            {
+              "text": "Wir bringen Kuchen mit und hören ihm in Ruhe zu.",
+              "english": "We will bring cake and listen to him in peace."
+            },
+            {
+              "text": "Sam sagt: Das ist ein guter Plan, und Lukas wird sich freuen.",
+              "english": "Sam says: That is a good plan, and Lukas will be glad."
+            },
+            {
+              "text": "Sie trinken ihren Tee und sprechen noch lange über ihre Familie und ihre Freunde.",
+              "english": "They drink their tea and talk for a long time about their family and their friends."
+            },
+            {
+              "text": "Draußen ist es dunkel, aber in der Küche ist es warm.",
+              "english": "Outside it is dark, but in the kitchen it is warm."
+            },
+            {
+              "text": "Anna sagt: Es war ein schöner Abend, und ich bin froh, dass du da warst.",
+              "english": "Anna says: It was a nice evening, and I am glad that you were here."
+            },
+            {
+              "text": "Sam geht nach Hause und denkt noch lange an die Geschichte vom Mann auf dem Weg.",
+              "english": "Sam goes home and still thinks for a long time about the story of the man on the road."
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }

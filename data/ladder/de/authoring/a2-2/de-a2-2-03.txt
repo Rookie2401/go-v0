@@ -1,0 +1,184 @@
+=== de-a2-2-03
+speakers: A=Anna, M=Marta
+## In der Pause
+Es ist Mittwoch, zwei Uhr nachmittags. || It is Wednesday, two o'clock in the afternoon.
+Anna hat im Krankenhaus eine halbe Stunde Pause. || Anna has a half hour break at the hospital.
+Sie sitzt allein im Aufenthaltsraum und trinkt Kaffee. || She is sitting alone in the staff room drinking coffee.
+Dann nimmt sie ihr Telefon und ruft ihre Großmutter an. || Then she takes her phone and calls her grandmother.
+Marta ist schon über achtzig und wohnt noch in ihrem Haus. || Marta is over eighty already and still lives in her house.
+
+[M] Hallo? || Hello?
+[M] Wer ist da? || Who is there?
+[A] Hallo, Oma, ich bin es, Anna. || Hello, Oma, it is me, Anna.
+[M] Ach, meine Enkelin! || Ah, my granddaughter!
+[M] Wie schön, dass du anrufst. || How nice that you are calling.
+[A] Wie geht es dir? || How are you?
+[A] Hörst du mich gut? || Can you hear me well?
+[M] Ich höre dich schlecht. || I can hear you badly.
+[M] Die Verbindung ist nicht gut. || The connection is not good.
+[A] Ich gehe ans Fenster. || I am going to the window.
+[A] Ist es jetzt besser? || Is it better now?
+[M] Ja, jetzt höre ich dich. || Yes, now I can hear you.
+[M] Mir geht es gut, Kind. || I am fine, child.
+[M] Ich war heute Morgen auf dem Markt, und ich habe alles Brot verkauft. || This morning I was at the market, and I sold all the bread.
+[A] Das ist wunderbar. || That is wonderful.
+[A] War viel los? || Was it busy?
+[M] Sehr viel. || Very.
+[M] Die Leute kaufen jetzt wieder gern Brot. || People like buying bread again now.
+[M] Aber sag mir, was gibt es bei euch Neues? || But tell me, what is new with you?
+[M] Hast du eine Neuigkeit für mich? || Do you have any news for me?
+[A] Ich habe sogar zwei, aber eine ist nicht von mir. || I have even two, but one is not from me.
+
+## Neuigkeiten von Sam
+[A] Die erste Neuigkeit ist von Sam: Er hat sich diese Woche angemeldet. || The first piece of news is about Sam: he registered this week.
+[M] Angemeldet? || Registered?
+[M] Wo denn? || Where?
+[A] Beim Amt. || At the office.
+[A] Jeder, der in Deutschland wohnt, muss das tun. || Everyone who lives in Germany has to do that.
+[M] Das ist ein Ausländer, nicht wahr? || He is a foreigner, isn't he?
+[M] Ich meine, er kommt nicht aus Deutschland. || I mean, he does not come from Germany.
+[A] Ja, Sam ist ein Ausländer. || Yes, Sam is a foreigner.
+[A] Er braucht deshalb auch eine Erlaubnis für den Aufenthalt. || So he also needs a permit for his stay.
+[A] Ein Visum hatte er schon aus Amerika, aber das reicht hier nicht. || He already had a visa from America, but that is not enough here.
+[M] Das klingt kompliziert. || That sounds complicated.
+[A] Es war nicht einfach. || It was not easy.
+[A] Er musste ein Formular ausfüllen. || He had to fill in a form.
+[A] Dann musste er seinen Ausweis zeigen und seine Unterschrift daruntersetzen. || Then he had to show his identity card and put his signature underneath.
+[M] Und das Geld? || And the money?
+[M] Gibt es eine Gebühr? || Is there a fee?
+[A] Für die Anmeldung nicht. || Not for the registration.
+[A] Für den Antrag auf die Erlaubnis schon. || For the application for the permit, yes.
+[A] Bei der Behörde hat ein Mitarbeiter am Schalter gewartet. || At the authority an employee was waiting at the counter.
+[A] Er war nett, aber die Öffnungszeit war kurz, nur bis zwölf Uhr. || He was nice, but the opening time was short, only until twelve.
+[M] Mein Gott, und dann? || Goodness, and then?
+[A] Dann hat Sam eine Bescheinigung bekommen. || Then Sam got a certificate.
+[A] Darauf steht sein Wohnsitz: Frau Webers Haus. || His place of residence is on it: Frau Weber's house.
+[M] Frau Weber! || Frau Weber!
+[M] Das ist die nette Dame, die ein Zimmer vermietet. || That is the nice lady who rents out a room.
+[A] Genau. || Exactly.
+[A] Die Post von der Behörde kommt jetzt in ihren Briefkasten. || The post from the authority now comes into her letterbox.
+[M] Wenn man seine Papiere nicht abgibt, gibt es doch bestimmt Ärger. || If you do not hand in your papers there is surely trouble.
+[A] Sam hat alles abgegeben. || Sam handed everything in.
+[A] Er hat sogar im Raum 12 gewartet, bis man ihn aufgerufen hat. || He even waited in room 12 until they called him.
+[M] Ein guter Junge. || A good boy.
+[M] Und wie geht es ihm sonst? || And how is he otherwise?
+
+## Sam und die Gemeinde
+[A] Er ist erst im Sommer nach Leipzig umgezogen. || He only moved to Leipzig in the summer.
+[A] Er lernt viel und gewöhnt sich langsam an alles. || He is learning a lot and slowly getting used to everything.
+[A] Die Kultur ist ihm noch ein bisschen fremd. || The culture is still a little strange to him.
+[A] Manchmal hat er noch Heimweh, und er vermisst seine Mutter und seine Heimat. || Sometimes he is still homesick, and he misses his mother and his home country.
+[A] Der Abschied von ihr war schwer. || The farewell from her was hard.
+[A] Er muss sich noch entscheiden, ob er ein zweites Jahr bleibt. || He still has to decide whether he will stay a second year.
+[A] Er hat ihr gestern ein Päckchen geschickt, mit einem Brief und einem Gruß von Frau Weber. || He sent her a parcel yesterday, with a letter and a greeting from Frau Weber.
+[M] Mit einer Briefmarke, hoffe ich. || With a stamp, I hope.
+[M] Sonst kommt es nicht an. || Otherwise it will not arrive.
+[A] Natürlich mit einer Briefmarke, Oma. || Of course with a stamp, Oma.
+[A] Wir sind doch in Deutschland. || We are in Germany, after all.
+[M] Und was macht er sonst den ganzen Tag? || And what does he do all day otherwise?
+[A] Er geht zum Sprachkurs, und am Abend sitzt er oft am Computer. || He goes to the language course, and in the evening he often sits at the computer.
+[A] Er schreibt seiner Familie Mails und sucht im Internet nach Wörtern. || He writes emails to his family and looks for words on the internet.
+[M] Früher hat man Briefe geschrieben und Post bekommen. || In the old days you wrote letters and received post.
+[A] Das macht er auch noch, Oma. || He still does that too, Oma.
+[A] Er liebt Briefe. || He loves letters.
+[M] Und warum ist er hier? || And why is he here?
+[M] Studiert er? || Is he studying?
+[A] Er lernt Deutsch, aber er ist nicht an der Universität. || He is learning German, but he is not at the university.
+[A] Er gehört zu einem Team. || He belongs to a team.
+[A] Die Leute dort kommen aus dem Ausland. || The people there come from abroad.
+[A] Sie wollen hier eine Gemeinde gründen. || They want to found a church here.
+[M] Ach, ein Missionar! || Ah, a missionary!
+[M] In meiner Kindheit gab es so etwas bei uns nicht. || When I was a child we had nothing like that.
+[A] David und Ruth sind ein Ehepaar. || David and Ruth are a married couple.
+[A] Sie sind schon lange in dieser Mission. || They have been in this mission for a long time.
+[A] Daniel hat Theologie studiert. || Daniel studied theology.
+[A] Nach dem Studium hat er eine Berufung gespürt und eine Entscheidung getroffen. || After his studies he felt a calling and made a decision.
+[M] Das sind mutige Leute. || Those are brave people.
+[M] Wer unterstützt sie? || Who supports them?
+[A] Ihre Heimatgemeinden schicken Spenden. || Their home churches send donations.
+[A] Und unsere Gemeinde hilft auch. || And our church helps too.
+[M] Dann gebe ich auch etwas. || Then I will give something too.
+[M] Ich nenne es meine Freundschaft in Euro. || I call it my friendship in euros.
+[A] Das ist lieb, Oma. || That is kind, Oma.
+[A] Du hast ein großes Herz. || You have a big heart.
+[M] Ich bin froh, dass ich eine Enkelin im Krankenhaus habe. || I am glad that I have a granddaughter in the hospital.
+[M] Da bin ich nie allein. || Then I am never alone.
+[A] Ich bin ja deine Enkelin, Oma. || I am your granddaughter, after all, Oma.
+[A] Ich denke jeden Tag an dich. || I think of you every day.
+[M] Ein bisschen Freundschaft kann nicht schaden. || A little friendship cannot hurt.
+
+## Das Video
+[A] Jetzt habe ich noch eine Neuigkeit, und die ist von Ben. || Now I have one more piece of news, and it is from Ben.
+[A] Er hat in der Kinderkirche gespielt. || He acted in the children's church.
+[A] Lukas hat ein Video gemacht. || Lukas made a video.
+[M] Ein Video? || A video?
+[M] Was ist denn das? || What is that?
+[A] Ein Film auf dem Telefon, Oma. || A film on the phone, Oma.
+[A] Ich schicke es dir heute Abend. || I will send it to you this evening.
+[M] Ich weiß nicht, ob ich es sehen kann. || I do not know if I can watch it.
+[M] Mein Telefon ist alt. || My phone is old.
+[A] Dann zeige ich es dir am Sonntag. || Then I will show you on Sunday.
+[A] Du kommst zu uns, ja? || You are coming to us, aren't you?
+[M] Sehr gern. || Gladly.
+[M] Ben spielt wohl den Sohn, der heimkehrt? || I suppose Ben plays the son who comes home?
+[A] Nein, den jüngeren Sohn, der weggeht. || No, the younger son, who goes away.
+[A] Er hat sich sehr gefreut. || He was very pleased.
+[M] Der Junge ist wie sein Vater: Er redet gern und viel. || The boy is like his father: he likes to talk, and a lot.
+[A] Ja, und er vergisst immer seine Tasche. || Yes, and he always forgets his bag.
+[M] Das war bei dir früher auch so. || That was the same with you in the past.
+[A] Oma! || Oma!
+[A] Das stimmt nicht! || That is not true!
+[M] Doch, doch. || Yes, yes.
+[M] Ich weiß alles über dich. || I know everything about you.
+
+## Garten und Wetter
+[M] Wie ist das Wetter bei euch in der Stadt? || What is the weather like with you in the city?
+[A] Es regnet seit zwei Tagen. || It has been raining for two days.
+[A] Ich habe keinen Schirm dabei. || I do not have an umbrella with me.
+[M] Hier scheint die Sonne. || Here the sun is shining.
+[M] Im Garten hängen noch viele Äpfel am Baum. || In the garden there are still many apples on the tree.
+[M] Ich gebe dir einen Korb mit, den kannst du Lukas bringen. || I will give you a basket that you can take to Lukas.
+[A] Sehr gern. || Gladly.
+[A] Lukas isst bestimmt zehn Äpfel auf einmal. || Lukas will certainly eat ten apples at once.
+[M] Und wie geht es ihm sonst? || And how is he otherwise?
+[M] Schläft er genug? || Does he sleep enough?
+[A] Er ist oft müde, weil er früh aufsteht und am Abend noch für die Schule arbeitet. || He is often tired because he gets up early and in the evening still works for school.
+[M] Er soll mehr schlafen. || He should sleep more.
+[M] Du auch, Anna. || You too, Anna.
+[A] Ich schlafe, wenn ich frei habe. || I will sleep when I am off.
+[A] Versprochen. || I promise.
+
+## Zum Schluss
+[A] Meine Pause ist gleich vorbei. || My break is nearly over.
+[A] Ich muss wieder auf die Station. || I have to go back to the ward.
+[M] Ach schade. || Oh, what a pity.
+[M] Ich habe noch so viele Fragen. || I still have so many questions.
+[A] Frag mich am Sonntag. || Ask me on Sunday.
+[A] Ich habe dann Zeit. || I will have time then.
+[M] Gut. || Good.
+[M] Soll ich einen Kuchen mitbringen? || Shall I bring a cake?
+[A] Ja, bitte. || Yes, please.
+[A] Und bring bitte auch Brot mit, wenn du noch welches hast. || And please bring some bread, too, if you still have any.
+[M] Ich habe immer Brot. || I always have bread.
+[M] Ich bin doch deine Oma. || I am your Oma, after all.
+[A] Ich muss jetzt auflegen. || I have to hang up now.
+[A] Bist du noch da? || Are you still there?
+[M] Ich bin noch da. || I am still here.
+[M] Die Verbindung ist jetzt wieder sehr gut. || The connection is very good again now.
+[A] Tschüs, Oma. || Bye, Oma.
+[A] Ich rufe dich morgen wieder an. || I will call you again tomorrow.
+[M] Tschüs, mein Kind. || Bye, my child.
+[M] Gott behüte dich. || God keep you.
+Anna legt auf, nimmt ihre Tasche und geht zurück zur Arbeit. || Anna hangs up, takes her bag and goes back to work.
+Am Abend wird sie ihrer Großmutter das Video schicken, auch wenn die Verbindung nicht gut ist. || In the evening she will send her grandmother the video, even if the connection is not good.
+
+## Erinnerst du dich?
+Anna denkt an das Gespräch mit Oma. || Anna thinks of the conversation with Oma.
+Marta ist gern zuhause in ihrem Haus. || Marta likes being at home in her house.
+Sie macht ihr Brot selbst, und viele Menschen kaufen es gern. || She makes her bread herself, and many people like to buy it.
+Am Sonntag kommt sie zu Anna und Lukas. || On Sunday she comes to Anna and Lukas.
+Dann sieht Oma Bens Spiel. || Then Oma watches Ben's play.
+Ben steht vorn bei den Kindern. || Ben stands at the front with the children.
+Die Kinder haben neue Kleider, und Lukas ist auch dabei. || The children have new clothes, and Lukas is there too.
+Oma ist froh, und Anna ist auch froh. || Oma is glad, and Anna is glad too.
+Anna und Lukas sind gern bei Oma, und Oma ist gern bei ihnen. || Anna and Lukas like being with Oma, and Oma likes being with them.

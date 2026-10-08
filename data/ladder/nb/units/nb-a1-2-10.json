@@ -61,8 +61,7 @@
   },
   "speakers": {
     "ana": "Anna",
-    "sam": "Sam",
-    "luis": "Lars"
+    "sam": "Sam"
   },
   "sections": [
     {
@@ -71,8 +70,8 @@
         {
           "sentences": [
             {
-              "text": "Sam sender en melding til Anna.",
-              "english": "Sam sends a message to Anna."
+              "text": "Sam sender en melding til Anna. Meldingen er fra Sam.",
+              "english": "Sam sends a message to Anna. The message is from Sam."
             },
             {
               "text": "«Hei, Anna! Har du tid i morgen? Jeg vil treffe deg på kafé.»",
@@ -106,17 +105,17 @@
               "speaker": "ana"
             },
             {
-              "text": "Det er bra. Ring meg klokka fem.",
-              "english": "That is good. Call me at five.",
+              "text": "Det er bra. Jeg er hjemme klokka fem.",
+              "english": "That is good. I am at home at five.",
               "speaker": "sam"
             },
             {
-              "text": "Klokka fem ringer telefonen.",
-              "english": "At five o'clock the phone rings."
+              "text": "Klokka er fem. Sam tar telefonen.",
+              "english": "It is five o'clock. Sam takes the phone."
             },
             {
-              "text": "Hei, Sam! Nå har jeg tid. Hva vil du?",
-              "english": "Hi, Sam! Now I have time. What do you want?",
+              "text": "Hei, Sam! Nå kan jeg snakke. Hva vil du?",
+              "english": "Hi, Sam! Now I can talk. What do you want?",
               "speaker": "ana"
             },
             {
@@ -145,8 +144,8 @@
               "speaker": "sam"
             },
             {
-              "text": "Ja, klokka ti. Vil du svare på en melding fra Lars?",
-              "english": "Yes, at ten. Do you want to answer a message from Lars?",
+              "text": "Ja, klokka ti. Se, her er en melding fra Lars.",
+              "english": "Yes, at ten. Look, here is a message from Lars.",
               "speaker": "ana"
             },
             {
@@ -178,13 +177,12 @@
               "english": "On Saturday Sam meets Anna and Lars at the café."
             },
             {
-              "text": "Klokka er ti. De drikker kaffe og te.",
-              "english": "It is ten o'clock. They drink coffee and tea."
+              "text": "Klokka er ti. De har tid, og de drikker kaffe og te.",
+              "english": "It is ten o'clock. They have time, and they drink coffee and tea."
             },
             {
-              "text": "Takk, Sam!",
-              "english": "Thanks, Sam!",
-              "speaker": "luis"
+              "text": "Lars svarer: «Takk, Sam!»",
+              "english": "Lars answers: \"Thanks, Sam!\""
             },
             {
               "text": "Bare hyggelig.",
@@ -197,8 +195,8 @@
               "speaker": "ana"
             },
             {
-              "text": "Sam er glad. Han liker kafeen, og han liker Anna og Lars.",
-              "english": "Sam is happy. He likes the café, and he likes Anna and Lars."
+              "text": "Sam er glad. Han liker kafeen, og han liker Anna og Lars. Så ringer han til Marta og sier takk.",
+              "english": "Sam is happy. He likes the café, and he likes Anna and Lars. Then he calls Marta and says thank you."
             }
           ]
         }
@@ -210,8 +208,8 @@
         {
           "sentences": [
             {
-              "text": "Før turen står Sam opp tidlig. Natten før sover han lite. Hva gjør han? Han ber.",
-              "english": "Before the walk Sam gets up early. The night before he sleeps little. What does he do? He prays."
+              "text": "Før turen står Sam opp tidlig. Natten før sover han ikke mye. Hva gjør han? Han ber.",
+              "english": "Before the walk Sam gets up early. The night before he does not sleep much. What does he do? He prays."
             }
           ]
         },

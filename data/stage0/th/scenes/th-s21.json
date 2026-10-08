@@ -1,0 +1,294 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-08",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0 as a decoding-practice scene (words already met in the sound steps); needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "sound",
+      "title": "Finding the words in a line with no spaces",
+      "text": "Read ผมอ่านหนังสือครับ from the end. ครับ closes a polite sentence, so it is a word of its own. A vowel written in front of a consonant (เ แ โ ไ ใ) starts a syllable, so the break comes just before it: ผม | อ่าน | หนังสือ | ครับ. Words you already know are the best guide: look for them first, and the rest is usually one new word.",
+      "explains": [
+        "th.script.no-spaces",
+        "th.practice.vowels-before"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Ball says about his work: งานยากมากครับ",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "งานยากมากครับ"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you want to read the news.",
+      "basedOn": [
+        "l8",
+        "th.want-yak"
+      ],
+      "accept": [
+        {
+          "text": "อยากอ่านข่าว"
+        },
+        {
+          "text": "อยากอ่านข่าวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "อยากอ่านข่าวค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "อยากอ่านข่าว"
+        },
+        {
+          "text": "อยากอ่านข่าวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "อยากอ่านข่าวค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมอยากอ่านข่าว",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันอยากอ่านข่าว",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมอยากอ่านข่าวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันอยากอ่านข่าวค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s21",
+  "title": {
+    "en": "Read, write, ask",
+    "target": "อ่านและเขียน"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "nico",
+      "sam"
+    ],
+    "places": [
+      "school"
+    ],
+    "things": [
+      "book"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "บอลนั่งที่โต๊ะก่อนครับ",
+      "en": "Ball, sit at the table first.",
+      "speaker": "luis",
+      "picture": "🪑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ผมนั่งแล้วครับ",
+      "en": "I am sitting already.",
+      "speaker": "nico",
+      "picture": "✅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "บอลทำอะไรครับ",
+      "en": "What are you doing, Ball?",
+      "speaker": "luis",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ผมอ่านหนังสือครับ",
+      "en": "I am reading a book.",
+      "speaker": "nico",
+      "picture": "📖",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "งานยากมากครับ",
+      "en": "The work is very hard.",
+      "speaker": "nico",
+      "picture": "😓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ถามผมก่อนครับ",
+      "en": "Ask me first.",
+      "speaker": "luis",
+      "picture": "🙋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "ผมเขียนด้วยมือครับ",
+      "en": "I write by hand.",
+      "speaker": "nico",
+      "picture": "✍️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "ผมอยากอ่านข่าวครับ",
+      "en": "I want to read the news.",
+      "speaker": "sam",
+      "picture": "📰",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l9",
+      "text": "ข่าวยากครับ",
+      "en": "The news is hard.",
+      "speaker": "luis",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l10",
+      "text": "ผมจะฟังก่อนครับ",
+      "en": "I will listen first.",
+      "speaker": "sam",
+      "picture": "👂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [],
+    "constructions": []
+  },
+  "represents": [
+    "th.script.no-spaces",
+    "th.practice.vowels-before",
+    "th.practice.dead-syllables",
+    "th.want-yak",
+    "th.degree-mak",
+    "th.negation-mai",
+    "th.done-laeo"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is Ball doing?"
+      },
+      "options": [
+        {
+          "en": "Reading a book"
+        },
+        {
+          "en": "Writing a letter"
+        },
+        {
+          "en": "Running"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Ball's work easy?"
+      },
+      "options": [
+        {
+          "en": "No, it is hard"
+        },
+        {
+          "en": "Yes, it is easy"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l8",
+        "l9",
+        "l10"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam decide?"
+      },
+      "options": [
+        {
+          "en": "To listen first"
+        },
+        {
+          "en": "To read the news now"
+        },
+        {
+          "en": "To go home"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

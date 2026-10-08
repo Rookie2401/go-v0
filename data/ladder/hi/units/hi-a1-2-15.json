@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Explanation with an anecdote; habitual present, progressive (बारिश हो रही है), जब ... तब. \"बिजली\" is used for lightning once and for electric power twice (बिजली चली गई है), the second use is a pun for the reviewer to check. The recycled words come back through a rainy-day message from Pastor Anil and a short kitchen scene. Words outside the plan (measured, adapter lemmas x tokens): ठंडा×1, खिड़की×1 (under-met), किरण×1."
+    "notes": "Explanation with an anecdote; habitual present, progressive (बारिश हो रही है), जब ... तब. \"बिजली\" is used for lightning once and for electric power twice (बिजली चली गई है), the second use is a pun for the reviewer to check. The recycled words come back through a rainy-day message from Pastor Anil and a short kitchen scene. Words outside the plan (measured, adapter lemmas x tokens): ठंडा×1, खिड़की×1 (under-met), किरण×1. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -358,6 +358,38 @@
             {
               "text": "सैम बोलता है, \"मैं धूप में बैठूँगा।\"",
               "english": "Sam says, \"I will sit in the sun.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बारिश के बाद मोती धीरे धीरे पेड़ की छाया में आता है।",
+              "english": "After the rain Moti comes slowly into the shade of the tree."
+            },
+            {
+              "text": "वह यहीं अपनी पूँछ हिलाता है, पर पानी ठंडा है।",
+              "english": "He wags his tail right here, but the water is cold."
+            },
+            {
+              "text": "चाची जी पड़ोस से आती हैं, और वह मोती को पकड़ती हैं।",
+              "english": "Chachi ji comes from the neighbourhood, and she catches Moti."
+            },
+            {
+              "text": "वह थैले से आम निकालती हैं।",
+              "english": "She takes mangoes out of the bag."
+            },
+            {
+              "text": "चाची जी की चिड़िया भी पेड़ पर है, और वही चिड़िया गीत गाती है।",
+              "english": "Chachi ji's bird is also on the tree, and that very bird sings a song."
+            },
+            {
+              "text": "अमन की पढ़ाई आज धीरे धीरे चलती है, क्योंकि बाहर बारिश है।",
+              "english": "Aman's studies go slowly today, because it is raining outside."
+            },
+            {
+              "text": "नानी बोलती हैं, \"पास की छाया में खेलो, पर खो मत जाना।\"",
+              "english": "Nani says, \"Play in the nearby shade, but do not get lost.\""
             }
           ]
         }

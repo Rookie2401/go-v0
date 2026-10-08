@@ -516,6 +516,14 @@
       "title": "Interview with a nurse"
     },
     {
+      "id": "es-a2-2-21",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/es-a2-2-21.json",
+      "domain": "conversation",
+      "title": "Stub"
+    },
+    {
       "id": "es-a2-2-16",
       "stage": "a2-2",
       "kind": "controlled",
@@ -554,6 +562,14 @@
       "document": "units/es-a2-2-20.json",
       "domain": "testimony",
       "title": "Why I came to Honduras"
+    },
+    {
+      "id": "es-a2-2-22",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/es-a2-2-22.json",
+      "domain": "church-and-mission-life",
+      "title": "Stub"
     },
     {
       "id": "es-b1-01",
@@ -596,6 +612,14 @@
       "title": "The red thread"
     },
     {
+      "id": "es-b1-36",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-36.json",
+      "domain": "conversation",
+      "title": "Stub"
+    },
+    {
       "id": "es-b1-06",
       "stage": "b1-bridge",
       "kind": "authentic",
@@ -610,6 +634,14 @@
       "textId": "text:es:marti-edad-de-oro-ch02",
       "domain": "narrative",
       "title": "The tale of Meñique (Martí, La Edad de Oro, ch. 2)"
+    },
+    {
+      "id": "es-b1-37",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-37.json",
+      "domain": "narrative",
+      "title": "Stub"
     },
     {
       "id": "es-b1-08",
@@ -700,12 +732,28 @@
       "title": "Lazarus (John 11)"
     },
     {
+      "id": "es-b1-38",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-38.json",
+      "domain": "church-and-mission-life",
+      "title": "Stub"
+    },
+    {
       "id": "es-b1-19",
       "stage": "b1-bridge",
       "kind": "adapted",
       "document": "units/es-b1-19.json",
       "domain": "explanation",
       "title": "A day on the reef"
+    },
+    {
+      "id": "es-b1-39",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/es-b1-39.json",
+      "domain": "contemporary-nonfiction",
+      "title": "Stub"
     },
     {
       "id": "es-b1-20",

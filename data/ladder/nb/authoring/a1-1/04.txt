@@ -2,7 +2,7 @@
 speakers: serv=Servitøren
 note: This unit orders with "Jeg vil ha …", the form Stage 0 uses. "Kan jeg få …?" comes later.
 ## På kafé
-{sam} og {ana} er på kafé. Det er morgen. || Sam and Anna are at a café. It is morning.
+{sam} og {ana} er på kafé. Kafeen er stor. Det er morgen. || Sam and Anna are at a café. The café is big. It is morning.
 {sam} er sulten. {ana} er trøtt, men hun er glad. || Sam is hungry. Anna is tired, but she is happy.
 [serv] God morgen! Hva vil du ha, {ana}? || Good morning! What would you like, Anna?
 [ana] Jeg vil ha kaffe og brød med ost. || I want coffee and bread with cheese.
@@ -14,12 +14,12 @@ note: This unit orders with "Jeg vil ha …", the form Stage 0 uses. "Kan jeg f�
 [sam] Takk! || Thank you!
 
 ## Frokost
-{ana} spiser brød. {sam} spiser brød med ost også. || Anna eats bread. Sam eats bread with cheese too.
+{ana} spiser brød. {sam} spiser brød også. || Anna eats bread. Sam eats bread too.
 {ana} drikker kaffe. {sam} liker melk. || Anna drinks coffee. Sam likes milk.
 [ana] Er du mett nå, {sam}? || Are you full now, Sam?
 [sam] Nei, nå er jeg ikke mett. Jeg vil ha mer brød. || No, now I am not full. I want more bread.
 [ana] Jeg er mett. Men jeg vil ha mer kaffe. || I am full. But I want more coffee.
-[sam] Jeg vil ha mer melk. || I want more milk.
+[sam] Jeg vil ha mer te. || I want more tea.
 [ana] Kafeen er bra! || The café is good!
 [sam] Ja, jeg liker kafeen. || Yes, I like the café.
 [ana] Nå går vi til kirka. || Now we are going to church.
@@ -28,9 +28,9 @@ note: This unit orders with "Jeg vil ha …", the form Stage 0 uses. "Kan jeg f�
 {luis} er ikke på kafé. Han er på skolen. || Lars is not at a café. He is at the school.
 Han er lærer, og han er trøtt i dag. Han vil ha kaffe. || He is a teacher, and he is tired today. He wants coffee.
 {nico} er også på skolen. Han liker ikke kaffe. || Nils is at the school too. He does not like coffee.
-{nico} vil ha brød. Han er sulten. || Nils wants bread. He is hungry.
+{nico} vil ha brød og melk. Han er sulten. || Nils wants bread and milk. He is hungry.
 [luis] Hei, {nico}! Hva vil du ha? || Hi, Nils! What do you want?
-[nico] Jeg vil ha brød, takk! || I want bread, please!
+[nico] Jeg vil ha brød med ost, takk! || I want bread with cheese, please!
 [luis] Vær så god. || Here you are.
 [nico] Takk, {luis}! Du er glad i dag. || Thanks, Lars! You are happy today.
 [luis] Ja, jeg er glad. Men jeg er trøtt. || Yes, I am happy. But I am tired.

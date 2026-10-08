@@ -1,0 +1,107 @@
+=== de-a1-2-09
+speakers: marta=Marta, ben=Ben, arztin=Die Ärztin, sam=Sam, apotheke=Die Frau in der Apotheke, weber=Frau Weber
+## Der Termin
+Am Wochenende hat Ben draußen gespielt. || At the weekend Ben played outside.
+Es hat geregnet, und er hatte keine Jacke. || It rained, and he had no jacket.
+Er hat auch den Regenschirm verloren. || He also lost the umbrella.
+Jetzt hat er Fieber, und das Ohr tut weh. || Now he has a fever, and his ear hurts.
+[marta] Ben, du bist krank. || Ben, you are ill.
+[marta] Ich rufe in der Praxis an. || I am calling the practice.
+[marta] Guten Tag! || Good day!
+[marta] Ich möchte einen Termin, bitte. || I would like an appointment, please.
+Die Praxis hat heute um zehn Uhr einen Termin. || The practice has an appointment today at ten o'clock.
+Lukas hat kein Auto. || Lukas has no car.
+Marta und Ben fahren mit dem Bus. || Marta and Ben take the bus.
+[ben] Oma, kommst du mit? || Grandma, are you coming along?
+[marta] Ja, ich komme mit, Ben. || Yes, I am coming along, Ben.
+Sie steigen in den Bus ein. || They get on the bus.
+Der Bus ist schnell. || The bus is fast.
+Sie müssen einmal umsteigen. || They have to change once.
+Im Bus bekommen sie einen Platz. || On the bus they get a seat.
+Marta hat keinen Koffer, nur eine Tasche. || Marta has no suitcase, only a bag.
+Die Reise ist nicht lang. || The trip is not long.
+Sie steigen aus, und die Praxis ist da. || They get off, and the practice is there.
+
+## In der Praxis
+Die Ärztin sitzt im Büro. || The doctor is sitting in the office.
+[marta] Guten Tag! || Good day!
+[marta] Ben ist krank. || Ben is ill.
+[marta] Er hat eine Erkältung, das ist nicht schön. || He has a cold, that is not nice.
+[arztin] Guten Tag, Ben! || Good day, Ben!
+[arztin] Du kannst hier sitzen. || You can sit here.
+[arztin] Wie fühlst du dich? || How do you feel?
+[ben] Ich fühle mich schlecht. || I feel bad.
+[ben] Mir tut das Ohr weh, und der Kopf auch. || My ear hurts, and my head too.
+[arztin] Lass mich dein Ohr sehen. || Let me see your ear.
+[arztin] Lass mich auch dein Auge sehen. || Let me see your eye too.
+[arztin] Das Auge ist gut. || The eye is fine.
+[arztin] Und die Hand? || And your hand?
+[arztin] Tut die Hand auch weh? || Does your hand hurt too?
+[arztin] Die Hand ist gut. || Your hand is fine.
+[ben] Nein, aber der Fuß tut weh, vom Fahrrad. || No, but my foot hurts, from the bicycle.
+[arztin] Der Fuß ist nicht schlecht. || Your foot is not bad.
+[arztin] Was hast du am Wochenende gemacht? || What did you do at the weekend?
+[ben] Ich war im Kino und habe Pizza gegessen. || I was at the cinema and ate pizza.
+[ben] Der Film war traurig. || The film was sad.
+[ben] Ich war glücklich, aber dann habe ich draußen gespielt. || I was happy, but then I played outside.
+[ben] Ich habe geweint, und leider war mir auch kalt. || I cried, and unfortunately I was cold too.
+[ben] Meine Jacke ist neu, aber ich habe sie verloren. || My jacket is new, but I lost it.
+[arztin] Das ist nur eine Erkältung. || That is only a cold.
+[arztin] Du hast Fieber, und du hast Schmerzen im Ohr. || You have a fever, and you have pain in your ear.
+[arztin] Das Medikament ist für die Schmerzen. || The medicine is for the pain.
+[arztin] Du sollst das Medikament am Morgen und am Abend nehmen. || You should take the medicine in the morning and in the evening.
+[arztin] Du musst im Bett bleiben und genug Wasser und Tee trinken. || You must stay in bed and drink enough water and tea.
+[arztin] Und du sollst nicht in die Schule gehen. || And you should not go to school.
+Die Ärztin schreibt das Rezept. || The doctor writes the prescription.
+[arztin] Hier ist das Rezept. || Here is the prescription.
+[arztin] Gehen Sie in die Apotheke. || Go to the pharmacy.
+[marta] Danke für die Hilfe! || Thank you for the help!
+
+## In der Apotheke
+Marta und Ben gehen in die Apotheke. || Marta and Ben go to the pharmacy.
+[apotheke] Guten Tag! || Good day!
+[apotheke] Haben Sie ein Rezept? || Do you have a prescription?
+[marta] Ja, hier ist das Rezept. || Yes, here is the prescription.
+[apotheke] Das Medikament kostet fünf Euro. || The medicine costs five euros.
+[marta] Danke. || Thank you.
+[marta] Brauchen wir noch etwas? || Do we need anything else?
+[apotheke] Nein, das ist genug. || No, that is enough.
+Zu Hause legt sich Ben ins Bett. || At home Ben lies down in bed.
+Marta kocht Suppe und Tee, und Ben lacht wieder. || Marta cooks soup and tea, and Ben laughs again.
+
+## Sam in der Praxis
+Am Dienstag ist auch Sam in der Praxis. || On Tuesday Sam is in the practice too.
+Er hat Fieber, und der Hals tut weh. || He has a fever, and his throat hurts.
+[sam] Guten Tag! || Good day!
+[sam] Mein Name ist Sam Miller. || My name is Sam Miller.
+[sam] Ich habe einen Termin. || I have an appointment.
+[arztin] Guten Tag, Herr Miller. || Good day, Mr Miller.
+[arztin] Wie fühlen Sie sich? || How do you feel?
+[sam] Ich fühle mich nicht gut. || I do not feel well.
+[sam] Der Hals tut weh, und ich habe Fieber. || My throat hurts, and I have a fever.
+[sam] Ich habe auch Schmerzen im Hals. || I also have pain in my throat.
+[sam] Mein Auge ist gut. || My eye is fine.
+[arztin] Waren Sie am Wochenende draußen? || Were you outside at the weekend?
+[sam] Ja, wir waren am See, und es hat geregnet. || Yes, we were at the lake, and it rained.
+[arztin] Haben Sie gearbeitet? || Have you been working?
+[sam] Ja, gestern habe ich im Büro von Thomas gearbeitet. || Yes, yesterday I worked in Thomas's office.
+[sam] Ich habe viel Arbeit gehabt. || I had a lot of work.
+[sam] Ich habe im Supermarkt eingekauft, die Wohnung geputzt, die Wäsche gemacht und geduscht. || I did the shopping at the supermarket, cleaned the flat, did the washing and showered.
+[sam] Das Abendessen war fertig, aber ich habe nichts gegessen. || Dinner was ready, but I ate nothing.
+[arztin] Und vorgestern? || And the day before yesterday?
+[sam] Vorgestern war ich noch gesund. || The day before yesterday I was still well.
+[arztin] Das ist eine Erkältung. || That is a cold.
+[arztin] Sie müssen im Bett bleiben. || You must stay in bed.
+[arztin] Sie sollen das Medikament nehmen. || You should take the medicine.
+[arztin] Hier ist das Rezept. || Here is the prescription.
+[sam] Ist die Apotheke weit? || Is the pharmacy far?
+[arztin] Nein, Sie können zu Fuß gehen. || No, you can walk.
+[sam] Danke für die Hilfe! || Thank you for the help!
+[sam] Die Ärztin ist sehr gut. || The doctor is very good.
+Sam ist zurück bei Frau Weber. || Sam is back at Mrs Weber's.
+[weber] Herr Miller, Sie sind krank! || Mr Miller, you are ill!
+[weber] Ich lasse Sie nicht gehen. || I will not let you go.
+[weber] Ich habe Tee gekocht. || I have made tea.
+[weber] Brauchen Sie Hilfe? || Do you need help?
+Frau Weber lässt Sam im Bett schlafen. || Mrs Weber lets Sam sleep in bed.
+

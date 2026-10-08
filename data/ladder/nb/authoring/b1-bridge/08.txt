@@ -1,0 +1,39 @@
+=== nb-b1-bridge-08 | story | daily-life | The contract | Kontrakten | housing,contract,deposit,rules,passive,church
+speakers: solveig=Solveig, magnus=Magnus
+note: The second flat comes through the church. Passive in -s (kontrakten skrives under, depositumet betales) and with "bli", explanations, "viktig at ...". Names Solveig and Magnus are invented; no real address.
+## I kirka
+På søndag etter gudstjenesten kom {marta} til {sam} med en eldre dame. || On Sunday after the service Marta came to Sam with an older lady.
+[marta] {sam}, dette er Solveig. Hun har snakket med vennen sin om leiligheten. || Sam, this is Solveig. She has talked with her friend about the flat.
+[solveig] Hyggelig å treffe deg! Vennen min heter Magnus, og han skal flytte til Trondheim. Han vil leie leiligheten til noen som er ærlig. || Nice to meet you! My friend is called Magnus, and he is going to move to Trondheim. He wants to rent the flat to someone who is honest.
+[sam] Er den stor? Hva er husleien? || Is it big? What is the rent?
+[solveig] Den har to rom, og husleien er syv tusen fem hundre kroner. Du kan se den på tirsdag. || It has two rooms, and the rent is seven thousand five hundred kroner. You can see it on Tuesday.
+
+## Leiligheten
+{sam} kom til etasje tre, og Magnus ventet ved døren. Han åpnet døren og sa: «Velkommen!» || Sam came to floor three, and Magnus waited at the door. He opened the door and said: "Welcome!"
+Alt var lyst og bra. Gulvet var nytt, og det var ingen flekk på veggene. Dusjen var ny, og ingen skulle male veggene. Det var en liten balkong, og fra vinduet kunne {sam} se kirka. || Everything was bright and good. The floor was new, and there was no patch on the walls. The shower was new, and nobody was going to paint the walls. There was a small balcony, and from the window Sam could see the church.
+[magnus] Jeg har bodd her i tretti år. Nå er jeg gammel, og jeg vil bo nær familien min. Det viktigste er at du er ærlig, og det er du. || I have lived here for thirty years. Now I am old, and I want to live near my family. The most important thing is that you are honest, and you are.
+[sam] Leiligheten er veldig bra. Veggene er ikke fuktige, og gulvet er ikke vått. Jeg vil gjerne leie den. || The flat is very good. The walls are not damp, and the floor is not wet. I would very much like to rent it.
+[magnus] Bra. Kontrakten er ferdig på fredag. Du kan lese den først. || Good. The contract is ready on Friday. You can read it first.
+
+## Kontrakten
+På fredag leste {sam} kontrakten hjemme hos {ana} og {luis}. Det var mye han ikke forsto. || On Friday Sam read the contract at home at Anna and Lars's. There was a lot he did not understand.
+[sam] Kan du forklare hva depositum er? Jeg forstår ikke. || Can you explain what a deposit is? I do not understand.
+[luis] Jeg skal forklare det. Det er penger som du betaler før du flytter. Hvis alt går bra, får du dem igjen. || I will explain it. It is money that you pay before you move. If everything goes well, you get it back.
+[ana] Her sier kontrakten at depositumet er tre måneders husleie. Det er viktig at du har råd til det. || Here the contract says that the deposit is three months' rent. It is important that you can afford it.
+[sam] Jeg har spart i to måneder. Jeg har nesten alt. || I have saved for two months. I have almost everything.
+[luis] Du kan spørre Magnus om du kan betale litt senere. Det er ikke vanskelig å spørre. || You can ask Magnus whether you can pay a little later. It is not difficult to ask.
+[ana] Les reglene også. Her sier kontrakten at alle skal være rolige etter klokka ti. || Read the rules too. Here the contract says that everyone is to be quiet after ten o'clock.
+{ana} forklarte alt som {sam} ikke forsto, og {luis} hjalp henne med reglene. Det tok to kvelder. || Anna explained everything that Sam did not understand, and Lars helped her with the rules. It took two evenings.
+
+## Under kontrakten
+De var i leiligheten på lørdag. Magnus sa at depositumet kunne betales senere. || They were in the flat on Saturday. Magnus said that the deposit could be paid later.
+[sam] Jeg har lest kontrakten og reglene, og jeg forstår dem nå. || I have read the contract and the rules, and I understand them now.
+[magnus] Bra. Kontrakten skrives under her, og nøklene får du i dag. || Good. The contract is signed here, and you get the keys today.
+{sam} leste kontrakten en gang til. Så skrev han under. Han var litt nervøs, men han var glad. || Sam read the contract once more. Then he signed. He was a little nervous, but he was happy.
+Magnus ga ham nøklene til døren. «Takk for at du vil bo her,» sa han. «Jeg vet at du kommer til å være glad i leiligheten.» || Magnus gave him the keys to the door. "Thank you for wanting to live here," he said. "I know that you will be fond of the flat."
+{sam} åpnet døren selv og kom inn i sin egen leilighet for første gang. Han var glad. || Sam opened the door himself and came into his own flat for the first time. He was happy.
+Den kvelden, etter at han hadde skrevet under, ba {sam} i den nye stua: «Takk, Gud. Du har hjulpet meg å finne et sted. Det viktigste er at jeg har fred. Hjelp meg å være en god nabo.» || That evening, after he had signed, Sam prayed in the new living room: "Thank you, God. You have helped me find a place. The most important thing is that I have peace. Help me to be a good neighbour."
+
+Han tenkte på intervjuet, og på hvorfor han hadde fått jobben. Han burde være stolt. Deltid ga ham tid til å spare, og han kunne alle navnene i butikken. || He thought of the interview, and of why he had got the job. He ought to be proud. Part-time gave him time to save, and he knew all the names in the shop.
+Annenhver helg hadde han pause fra bokhandelen, og da kunne han tenke på leiligheten. Han var stolt av nummeret på døren. Baderommet var lyst, og ingenting måtte skiftes. || Every other weekend he had a break from the bookshop, and then he could think about the flat. He was proud of the number on the door. The bathroom was bright, and nothing had to be replaced.
+Dusjen i baderommet var ny, og vinduet var skiftet. || The shower in the bathroom was new, and the window had been replaced.

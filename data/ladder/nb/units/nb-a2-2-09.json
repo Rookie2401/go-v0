@@ -80,8 +80,8 @@
               "english": "We invite you to the service in our church on Sunday at eleven o'clock."
             },
             {
-              "text": "Alle er velkomne, gamle og små.",
-              "english": "Everyone is welcome, old and small."
+              "text": "Alle er velkomne, gamle og små. Vi inviterer alle, og alle er velkomne.",
+              "english": "Everyone is welcome, old and small. We invite everyone, and everyone is welcome."
             },
             {
               "text": "Etter gudstjenesten drikker vi kaffe og spiser kake sammen. Der kan dere treffe folk i menigheten.",
@@ -113,8 +113,8 @@
               "english": "Sam has received the letter. He reads it to Anna and Lars."
             },
             {
-              "text": "Menigheten inviterer oss til gudstjeneste på søndag.",
-              "english": "The congregation invites us to the service on Sunday.",
+              "text": "Kirka inviterer oss til gudstjeneste på søndag.",
+              "english": "The church invites us to the service on Sunday.",
               "speaker": "sam"
             },
             {
@@ -189,16 +189,24 @@
         {
           "sentences": [
             {
-              "text": "I menigheten kjenner folk hverandre. De har tvil og spørsmål, men de er trygge. Svaret er ikke alltid lett.",
-              "english": "In the congregation people know each other. They have doubt and ask questions, but they feel safe. The answer is not always easy."
+              "text": "I menigheten kjenner alle folk. De har tvil og spørsmål, men de er trygge. Svaret er ikke alltid lett.",
+              "english": "In the congregation everyone knows people. They have doubt and ask questions, but they feel safe. The answer is not always easy."
             }
           ]
         },
         {
           "sentences": [
             {
-              "text": "Sam leser begge. Først leser han bokmål, og så leser han nynorsk. Han vil heller forstå dialekter, slik som Marta snakker.",
-              "english": "Sam reads both. First he reads Bokmål, and then he reads Nynorsk. He would rather understand dialects, the way Marta speaks."
+              "text": "Sam leser begge. Først leser han bokmål, og så leser han nynorsk. Han vil forstå dialekter, som Marta snakker.",
+              "english": "Sam reads both. First he reads Bokmål, and then he reads Nynorsk. He wants to understand dialects, like Marta speaks."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Folk hørte at Anna kanskje ville flytte til Oslo. Nils skrev om fiskere som bor nær havet og lager tørrfisk.",
+              "english": "People heard that Anna might want to move to Oslo. Nils wrote about fishermen who live near the sea and make dried fish."
             }
           ]
         }

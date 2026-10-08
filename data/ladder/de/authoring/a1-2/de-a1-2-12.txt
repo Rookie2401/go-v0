@@ -1,0 +1,86 @@
+=== de-a1-2-12
+speakers: marta=Marta, ben=Ben, sam=Sam
+## Die Zutaten
+Es ist Samstag. || It is Saturday.
+Marta, Ben und Sam sind in der Küche. || Marta, Ben and Sam are in the kitchen.
+[marta] Heute kochen wir Suppe mit Kartoffeln. || Today we are making soup with potatoes.
+[marta] Hier sind die Zutaten. || Here are the ingredients.
+[marta] Man braucht Kartoffeln, eine Zwiebel, Salz, Pfeffer, Öl und Wasser. || You need potatoes, an onion, salt, pepper, oil and water.
+[marta] Und ein Gemüse: Tomaten. || And a vegetable: tomatoes.
+[marta] Gemüse ist gut für Ben. || Vegetables are good for Ben.
+[sam] Ich verstehe das Wort "Zutat" nicht. || I do not understand the word "Zutat".
+[marta] Eine Zutat ist etwas für die Suppe. || An ingredient is something for the soup.
+[sam] Im Kurs hat Eva das erklärt, aber ich habe es nicht gut verstanden. || In the course Eva explained it, but I did not understand it well.
+[ben] Ich möchte helfen! || I want to help!
+
+## Topf, Pfanne, Messer
+[marta] Nimm den Topf, Ben. || Take the pot, Ben.
+[marta] Nimm auch die Pfanne. || Take the pan too.
+[marta] Das Messer ist für mich, nicht für Kinder. || The knife is for me, not for children.
+[marta] Nimm das Messer nicht, Ben! || Do not take the knife, Ben!
+[marta] Sam, hier ist ein Löffel. || Sam, here is a spoon.
+[marta] Und hier sind die Teller. || And here are the plates.
+
+## Das Rezept
+[marta] Schneide die Zwiebel. || Cut the onion.
+[marta] Gib ein bisschen Öl in die Pfanne. || Put a little oil in the pan.
+[marta] Gib die Zwiebel in die Pfanne. || Put the onion in the pan.
+[marta] Schneide die Kartoffeln. || Cut the potatoes.
+[marta] Gib die Kartoffeln in den Topf. || Put the potatoes in the pot.
+[marta] Gib Wasser in den Topf, und koche die Kartoffeln. || Put water in the pot, and cook the potatoes.
+[marta] Gib ein bisschen Salz und ein bisschen Pfeffer in die Suppe. || Put a little salt and a little pepper in the soup.
+[marta] Man kocht die Suppe 20 Minuten. || You cook the soup for 20 minutes.
+[ben] Hörst du? || Do you hear?
+[ben] Das Wasser kocht! || The water is boiling!
+[ben] Ich höre es mit dem Ohr. || I can hear it with my ear.
+[marta] Nimm einen Löffel, Sam, und koste die Suppe. || Take a spoon, Sam, and taste the soup.
+[sam] Sie ist sehr lecker! || It is very tasty!
+
+## Der Tisch
+[marta] Ihr könnt den Tisch machen: Nehmt die Teller und die Löffel. || You can set the table: take the plates and the spoons.
+[marta] Und jetzt, Herr Miller, nehmen Sie bitte den Salat. || And now, Mr Miller, please take the salad.
+[sam] Gern! || Gladly!
+[sam] Aber wo ist der Salat? || But where is the salad?
+[marta] Wir machen ihn jetzt. || We are making it now.
+[marta] Schneide die Tomaten, Sam. || Cut the tomatoes, Sam.
+[marta] Gib Salz und Öl in den Salat. || Put salt and oil in the salad.
+[marta] Hier ist auch der Pfeffer. || Here is the pepper too.
+[marta] Das Gemüse ist im Salat, und das Messer liegt neben dem Teller. || The vegetables are in the salad, and the knife is next to the plate.
+[sam] Und das Brot? || And the bread?
+[marta] Ich backe das Brot. || I bake the bread.
+[marta] Gestern habe ich Brot gebacken. || Yesterday I baked bread.
+[marta] Backen ist nicht leicht. || Baking is not easy.
+
+## Das Essen
+Die Suppe ist fertig. || The soup is ready.
+[ben] Die Suppe ist so lecker! || The soup is so tasty!
+[ben] Mein Teller ist voll, aber dein Teller ist leer, Sam. || My plate is full, but your plate is empty, Sam.
+[marta] Wir essen die Suppe heiß. || We eat the soup hot.
+[marta] Wir können sie auch beim Picknick am See essen, nach einem Ausflug in den Wald. || We can also eat it at a picnic at the lake, after an excursion in the forest.
+[marta] Ich koche sie, wenn Freunde mich besuchen. || I cook it when friends visit me.
+[marta] Der Nachbar kommt heute auch. || The neighbour is coming today too.
+[marta] Meine Ärztin sagt: Suppe ist gut, wenn man krank ist. || My doctor says: soup is good when you are ill.
+[ben] Ich fotografiere die Suppe! || I am photographing the soup!
+[marta] Nimm dein Foto, Ben, und iss die Suppe! || Take your photo, Ben, and eat the soup!
+
+## Am Tisch
+[marta] Ben, was hast du am Wochenende gemacht? || Ben, what did you do at the weekend?
+[ben] Ich bin im Wald gelaufen, und ich bin ins Wasser gesprungen. || I walked in the forest, and I jumped into the water.
+[ben] Ich habe den Ball geworfen, und Max hat ihn gefangen. || I threw the ball, and Max caught it.
+[ben] Wir sind auch geschwommen. || We also swam.
+[ben] Der Berg war weit, aber wir sind gelaufen. || The hill was far, but we walked.
+[ben] Ich habe ein Mädchen getroffen. || I met a girl.
+[marta] Das ist schön. || That is nice.
+[marta] Und was macht Papa? || And what is Papa doing?
+[ben] Papa hat in Dresden im Hotel übernachtet, und er hat ein Museum besucht. || Papa stayed in a hotel in Dresden, and he visited a museum.
+[marta] Ich habe im Geschäft am Bahnhof Salz gekauft. || I bought salt at the shop at the station.
+[marta] Und ich habe Frau Weber Tomaten geschenkt. || And I gave Mrs Weber tomatoes.
+[marta] Viele Freunde kommen, und jeder bringt etwas mit. || Many friends come, and everyone brings something.
+[marta] Ich war einmal im Café und im Museum, und nach dem Konzert hatte ich Hunger. || I was once in a café and in a museum, and after the concert I was hungry.
+[sam] Du bist ein guter Nachbar, Marta. || You are a good neighbour, Marta.
+[sam] Ich bin bei Frau Weber eingezogen. || I have moved in at Mrs Weber's.
+[sam] Im Kurs habe ich viele Fehler gemacht, aber die Lehrerin ist gut. || In the course I made many mistakes, but the teacher is good.
+[sam] Sie erklärt die Grammatik, und ich übe die Sprache jeden Tag. || She explains the grammar, and I practise the language every day.
+[marta] Du sprichst gut, Sam. || You speak well, Sam.
+[marta] Das ist ein guter Kurs. || That is a good course.
+

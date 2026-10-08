@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-12",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "สงกรานต์ที่เชียงใหม่",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-12",
+    "title": "สงกรานต์ที่เชียงใหม่ — Songkran in Chiang Mai (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Thai. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course against the Thai ladder (b1-bridge); not reviewed by a native speaker. It is controlled Thai written for learners and may contain unnatural phrasing, wrong polite particles or cultural oddities. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. An explanatory text for a newcomer about the Thai New Year festival, in a respectful, factual tone (the owner's rule for the neighbours' festivals: described by the neighbours, never praised or criticised). For the reviewer: please check the customs described (pouring water on the hands of elders, going to the temple, the dates) against how families in Chiang Mai actually keep them."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "Songkran",
+    "New Year",
+    "water",
+    "family",
+    "respect"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "วันปีใหม่ของคนไทย",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เดือนเมษายนเป็นเดือนที่ร้อนที่สุดของปี และเป็นเดือนของวันสงกรานต์",
+              "english": "April is the hottest month of the year, and it is the month of Songkran."
+            },
+            {
+              "text": "สงกรานต์คือวันปีใหม่แบบไทย ตรงกับวันที่สิบสามถึงสิบห้าเมษายน",
+              "english": "Songkran is the Thai New Year, on the thirteenth to fifteenth of April."
+            },
+            {
+              "text": "หลายคนหยุดงาน และกลับบ้านไปหาพ่อแม่",
+              "english": "Many people stop work and go home to see their parents."
+            },
+            {
+              "text": "ถนนในเมืองเงียบ เพราะคนส่วนมากไปอยู่กับครอบครัว",
+              "english": "The streets of the city are quiet, because most people go and stay with their families."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "น้ำกับความเคารพ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คนไทยใช้น้ำในวันนี้เพื่อบอกว่า ขอให้ปีใหม่เย็นสบาย",
+              "english": "Thai people use water on these days to say, \"May the new year be cool and good.\""
+            },
+            {
+              "text": "ตอนเช้า หลายครอบครัวไปที่วัด และทำบุญ",
+              "english": "In the morning many families go to the temple and make merit."
+            },
+            {
+              "text": "ตอนบ่าย เด็กๆ เอาน้ำเย็นไปให้ผู้ใหญ่ล้างมือ",
+              "english": "In the afternoon the children take cool water to the elders to wash their hands."
+            },
+            {
+              "text": "พวกเขาพูดว่า ขอให้คุณยายอายุยืน",
+              "english": "They say, \"May Grandmother live long.\""
+            },
+            {
+              "text": "ผู้ใหญ่ยิ้ม และพูดดีๆ กับเด็กๆ กลับมา",
+              "english": "The elders smile and say kind words to the children in return."
+            },
+            {
+              "text": "ในเมืองเชียงใหม่ คนยังเล่นน้ำกันตามถนนด้วย",
+              "english": "In the city of Chiang Mai people also play with water in the streets."
+            },
+            {
+              "text": "ใครเดินผ่านมา ก็อาจเปียกทั้งตัว",
+              "english": "Anyone who walks past may get wet all over."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "แซมอยู่ในเมืองวันสงกรานต์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ปีที่แล้ว แซมไม่รู้เรื่องนี้ เขาเดินไปตลาดตอนบ่าย",
+              "english": "Last year Sam did not know about this, and walked to the market in the afternoon."
+            },
+            {
+              "text": "เด็กๆ ที่ยืนอยู่ริมถนนเอาน้ำมาใส่ตัวเขาทันที",
+              "english": "Children standing at the roadside poured water over him at once."
+            },
+            {
+              "text": "แซมตกใจ แต่ป้าแดงหัวร่อ และบอกว่า วันนี้ใครก็เปียกค่ะ",
+              "english": "Sam was startled, but Auntie Daeng laughed and said, \"Today everyone gets wet.\""
+            },
+            {
+              "text": "เขาจึงยิ้ม และเอาน้ำไปใส่เด็กๆ กลับ",
+              "english": "So he smiled and poured water back over the children."
+            },
+            {
+              "text": "เย็นนั้น เขากลับบ้านโดยไม่เหลือเสื้อแห้งสักตัว",
+              "english": "That evening he went home without a dry shirt left."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ความคิดของคนในโบสถ์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ที่โบสถ์ บางคนไม่ไปเล่นน้ำ แต่ก็ไม่ปฏิเสธเพื่อนบ้าน",
+              "english": "At church some people do not go and play with water, but they do not refuse their neighbours."
+            },
+            {
+              "text": "พวกเขาอยู่กับครอบครัว และไปหาผู้ใหญ่ในหมู่บ้าน",
+              "english": "They stay with their families and visit the elders of the village."
+            },
+            {
+              "text": "ต้นบอกแซมว่า เราเคารพประเพณีของเพื่อนบ้านได้ โดยไม่ต้องลืมศรัทธาของเรา",
+              "english": "Ton told Sam, \"We can respect our neighbours' traditions without having to forget our own faith.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "รถเต็มทุกคัน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ก่อนสงกรานต์ รถที่ไปทางเหนือเต็มทุกคัน",
+              "english": "Before Songkran the buses going north are full."
+            },
+            {
+              "text": "คนต้องซื้อตั๋วก่อนหลายวัน",
+              "english": "People must buy tickets several days before."
+            },
+            {
+              "text": "มะลิซื้อตั๋วให้แม่และพี่ต้นแล้ว",
+              "english": "Mali has already bought tickets for her mother and for her brother Ton."
+            },
+            {
+              "text": "ปีนี้ ทั้งครอบครัวจะกลับไปหายายที่ลำพูน",
+              "english": "This year the whole family will go back to see Grandmother in Lamphun."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หลังเล่นน้ำ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "วันรุ่งขึ้น ต้นนัดเด็กๆ ในซอยให้มาเล่นน้ำที่หน้าร้านป้าแดง",
+              "english": "The next day Ton arranged for the children of the lane to come and play with water in front of Auntie Daeng's shop."
+            },
+            {
+              "text": "เมื่อเล่นเสร็จ ป้าแดงทำข้าวต้มให้เด็กๆ กิน",
+              "english": "When they had finished playing, Auntie Daeng made rice porridge for the children to eat."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

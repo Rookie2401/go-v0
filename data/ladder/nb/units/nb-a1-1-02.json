@@ -143,23 +143,28 @@
               "speaker": "ana"
             },
             {
-              "text": "Ja, jeg liker huset. Men jeg er trøtt i dag.",
-              "english": "Yes, I like the house. But I am tired today.",
+              "text": "Ja, jeg liker det. Men jeg er trøtt i dag.",
+              "english": "Yes, I like it. But I am tired today.",
               "speaker": "sam"
             },
             {
-              "text": "Har du ei seng?",
-              "english": "Do you have a bed?",
+              "text": "Er du hjemme i dag?",
+              "english": "Are you at home today?",
               "speaker": "ana"
             },
             {
-              "text": "Ja, jeg har ei seng.",
-              "english": "Yes, I have a bed.",
+              "text": "Ja, jeg er hjemme. Jeg vil gjerne ha te.",
+              "english": "Yes, I am at home. I would like some tea.",
               "speaker": "sam"
             },
             {
+              "text": "Her er te, Sam. Er rommet bra?",
+              "english": "Here is tea, Sam. Is the room good?",
+              "speaker": "ana"
+            },
+            {
               "text": "Ja, det er bra. Rommet er lite, men jeg er glad.",
-              "english": "Yes, that is good. The room is small, but I am happy.",
+              "english": "Yes, it is good. The room is small, but I am happy.",
               "speaker": "sam"
             },
             {
@@ -185,6 +190,16 @@
               "text": "Ja, takk!",
               "english": "Yes, please!",
               "speaker": "sam"
+            },
+            {
+              "text": "Jeg liker kaffe, men jeg liker te også.",
+              "english": "I like coffee, but I like tea too.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Jeg liker kaffe og brød. Jeg er glad i dag.",
+              "english": "I like coffee and bread. I am happy today.",
+              "speaker": "luis"
             }
           ]
         }

@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Written from the point of view of a respectful guest: Sam and Nani are invited to the neighbours' Diwali, Sam brings a gift and greets, nobody performs any rite and there is no comparison. गीता जी and सुरेश जी are the neighbours. The reviewer should check the greeting \"आपको त्योहार की बधाई\" (a Christian guest would say it this way) and the sentence about the lamps. तकिया as a gift and the sad child are the plan's words; the story ties them to a child whose friend is ill. The farmer relative recycles the train vocabulary. Trap: the adapter reads \"जी के\" (e.g. गीता जी के घर) as जीना + का, so the text avoids that frame. Words outside the plan (measured): none."
+    "notes": "Written from the point of view of a respectful guest: Sam and Nani are invited to the neighbours' Diwali, Sam brings a gift and greets, nobody performs any rite and there is no comparison. गीता जी and सुरेश जी are the neighbours. The reviewer should check the greeting \"आपको त्योहार की बधाई\" (a Christian guest would say it this way) and the sentence about the lamps. तकिया as a gift and the sad child are the plan's words; the story ties them to a child whose friend is ill. The farmer relative recycles the train vocabulary. Trap: the adapter reads \"जी के\" (e.g. गीता जी के घर) as जीना + का, so the text avoids that frame. Words outside the plan (measured): none. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -346,6 +346,34 @@
             {
               "text": "रवि सर बोलते हैं, \"अभ्यास कीजिए।\"",
               "english": "Ravi sir says, \"Practise.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "गली में बहुत भीड़ है, और सब लोग अपनी खिड़की के पास खड़े हैं।",
+              "english": "There is a big crowd in the lane, and everybody is standing near their window."
+            },
+            {
+              "text": "अचानक सैम की गेंद गली में आती है, और सब हँसते हैं।",
+              "english": "Suddenly Sam's ball falls in the lane, and everybody laughs."
+            },
+            {
+              "text": "मोती अपनी पूँछ हिलाता है, और अमन उसे देखकर हँसता है।",
+              "english": "Moti wags his tail, and Aman laughs seeing him."
+            },
+            {
+              "text": "आवाज़ सुनकर अमन को थोड़ा डर लगता है।",
+              "english": "Hearing the sound, Aman feels a little afraid."
+            },
+            {
+              "text": "वह ऊपर छत की तरफ़ देखता है, और नानी उसे आम देती हैं।",
+              "english": "He looks up towards the roof, and Nani gives him a mango."
+            },
+            {
+              "text": "सब लोग आम खाते हैं और अपने अपने घर जाते हैं।",
+              "english": "Everybody eats mangoes and goes to their own house."
             }
           ]
         }

@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-18",
+  "lang": "sq",
+  "title": "Një e diel e veçantë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-18",
+    "title": "Albanian ladder, b1-bridge: Një e diel e veçantë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Church or testimony content: needs a theological reviewer as well."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një e diel e veçantë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dy javë pas udhëtimit në Korçë, Ana dhe Sami u nisën herët në mëngjes për në fshatin e plakut.",
+              "english": "Two weeks after the trip to Korça, Ana and Sam set off early in the morning for the old man's village."
+            },
+            {
+              "text": "Kishin premtuar që do ta merrnin, dhe të dy ishin pak të shqetësuar, sepse nuk dinin nëse ai do të ndërronte mendje.",
+              "english": "They had promised that they would fetch him, and both were a little worried, because they did not know whether he would change his mind."
+            },
+            {
+              "text": "Autobusi ishte bosh, dhe rruga, që herën e kaluar kishte mjegull, tani ishte plot diell.",
+              "english": "The bus was empty, and the road, which last time had had mist, was now full of sun."
+            },
+            {
+              "text": "Kur zbritën, plaku ishte atje.",
+              "english": "When they got off, the old man was there."
+            },
+            {
+              "text": "Qëndronte para shtëpisë së tij me një xhaketë të vjetër, të pastruar me kujdes, dhe me kapelën në dorë.",
+              "english": "He was standing in front of his house in an old jacket, carefully cleaned, with his hat in his hand."
+            },
+            {
+              "text": "Ana nuk i tha asgjë për xhaketën.",
+              "english": "Ana said nothing to him about the jacket."
+            },
+            {
+              "text": "Vetëm i tha: — Duket se po shkoni në një festë, baba.",
+              "english": "She only said: \"It looks that you are going to a celebration, father.\""
+            },
+            {
+              "text": "— Është xhaketa që kisha për dasmën time, — u përgjigj ai, dhe buzëqeshi pak.",
+              "english": "'It is the jacket I had for my wedding,' he answered, and smiled a little."
+            },
+            {
+              "text": "— Mari ma kishte pastruar për çdo festë.",
+              "english": "\"Mari had cleaned it for me for every holiday.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në autobus ai nuk foli shumë.",
+              "english": "On the bus he did not speak much."
+            },
+            {
+              "text": "Mbante një shishe të vogël me mjaltë, dhe e shikonte nga dritarja malin që po largohej.",
+              "english": "He held a small bottle of honey, and looked out of the window at the mountain moving away."
+            },
+            {
+              "text": "— Nuk kam qenë në qytet prej katër vitesh, — tha ai pas pak.",
+              "english": "\"I have not been in the city for four years,\" he said after a while."
+            },
+            {
+              "text": "— Kur vdiq Mari, mendova se qyteti ishte vetëm për ata që kanë ku të shkojnë.",
+              "english": "\"When Mari died I thought the city was only for those who have somewhere to go.\""
+            },
+            {
+              "text": "— Sot kam ku të shkoj, — tha ai më pas, duke e shikuar Anën.",
+              "english": "\"Today I have somewhere to go,\" he said afterwards, looking at Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kisha ishte plot njerëz, sepse atë të diel kishte një festë të vogël të shkollës së së dielës.",
+              "english": "The church was full of people, because that Sunday there was a small celebration of the Sunday school."
+            },
+            {
+              "text": "Fëmijët, mes tyre Ardi, Elira dhe Gjergji, kishin përgatitur një këngë, dhe Drita, e veshur me xhaketën e saj më të mirë, qëndronte në pjesën e parë me një çantë me bukë.",
+              "english": "The children, among them Ardi, Elira and Gjergj, had prepared a song, and Drita, dressed in her best jacket, stood in the front with a bag of bread."
+            },
+            {
+              "text": "Kur plaku hyri në derë, njerëzit nuk e njihnin, por Drita e pa që nga larg.",
+              "english": "When the old man came in at the door, the people did not know him, but Drita saw him from afar."
+            },
+            {
+              "text": "Ajo u ngrit dhe shkoi drejt tij me hapa të shpejtë, si ta njihte prej vitesh.",
+              "english": "She got up and went straight to him with quick steps, as if she had known him for years."
+            },
+            {
+              "text": "— Mirë se vini, baba, — tha.",
+              "english": "\"Welcome, father,\" she said."
+            },
+            {
+              "text": "— Uluni këtu, pranë meje.",
+              "english": "\"Sit here, beside me.\""
+            },
+            {
+              "text": "— Unë shes bukë, dhe nuk kam njohur kurrë njeri që ka ardhur me dorë bosh në këtë kishë.",
+              "english": "\"I sell bread, and I have never known anyone who came to this church with empty hands.\""
+            },
+            {
+              "text": "— Ju jeni miku ynë.",
+              "english": "\"You are our friend.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Plaku u ul dhe ia dha shishen me mjaltë pastorit, që e mori me të dy duart.",
+              "english": "The old man sat down and gave the bottle of honey to the pastor, who took it with both hands."
+            },
+            {
+              "text": "Shërbimi filloi me një këngë të vjetër, që njerëzit e dinin përmendësh.",
+              "english": "The service began with an old song that the people knew by heart."
+            },
+            {
+              "text": "Plaku nuk e dinte, por e lëvizte gojën, dhe në vargun e dytë filloi të këndonte ngadalë, me një zë të thyer.",
+              "english": "The old man did not know it, but he moved his mouth, and in the second line he began to sing slowly, in a broken voice."
+            },
+            {
+              "text": "Sami e shikoi Anën.",
+              "english": "Sam looked at Ana."
+            },
+            {
+              "text": "Ajo kishte lot në sy dhe buzëqeshte.",
+              "english": "She had tears in her eyes and was smiling."
+            },
+            {
+              "text": "Në fund të këngës plaku qëndroi i ngritur ndërsa të gjithë u ulën.",
+              "english": "At the end of the song the old man remained standing while everyone sat down."
+            },
+            {
+              "text": "— Pastor, — tha ai me zë të ulët, — mund të them diçka?",
+              "english": "\"Pastor,\" he said in a low voice, \"may I say something?\""
+            },
+            {
+              "text": "— Sigurisht, baba, — tha pastori.",
+              "english": "\"Of course, father,\" said the pastor."
+            },
+            {
+              "text": "Plaku mori frymë thellë dhe e tha me zë të lartë lutjen që e kishte mësuar nga gjyshja e tij, fjalë për fjalë, siç e kishte thënë natën për më shumë se gjashtëdhjetë vite.",
+              "english": "The old man took a deep breath and said aloud the prayer he had learned from his grandmother, word for word, as he had said it at night for more than sixty years."
+            },
+            {
+              "text": "Kisha heshti.",
+              "english": "The church was silent."
+            },
+            {
+              "text": "Kur mbaroi, nuk u dëgjua asgjë për një moment, pastaj dikush tha «po», dhe të gjithë e thanë bashkë.",
+              "english": "When he finished, nothing was heard for a moment, then someone said 'yes,' and everyone said it together."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastori nuk tha një predikim atë ditë.",
+              "english": "The pastor did not give a sermon that day."
+            },
+            {
+              "text": "U ngrit, e shikoi plakun dhe tha vetëm: — Faleminderit që na e dhe këtë dhuratë.",
+              "english": "He stood up, looked at the old man and said only: \"Thank you for giving us this gift.\""
+            },
+            {
+              "text": "— Kjo lutje ka jetuar në një shtëpi dhe në një zemër shumë vite pa u dëgjuar nga askush.",
+              "english": "\"This prayer lived in one house and in one heart for many years without being heard by anyone.\""
+            },
+            {
+              "text": "— Sot e ka dëgjuar gjithë kisha, dhe nuk është më e vetme.",
+              "english": "'Today the whole church has heard it, and it is no longer alone.'"
+            },
+            {
+              "text": "Fëmijët e kënduan këngën e tyre, dhe Elira, që ishte në mes të tyre, e shikonte plakun gjatë gjithë kohës.",
+              "english": "The children sang their song, and Elira, who was among them, looked at the old man the whole time."
+            },
+            {
+              "text": "Kur mbaruan, ajo erdhi pranë tij dhe i dha një lule të vogël prej letre që e kishte bërë vetë.",
+              "english": "When they finished, she came to him and gave him a small flower of paper that she had made herself."
+            },
+            {
+              "text": "— Për Mari, — tha.",
+              "english": "\"For Mari,\" she said."
+            },
+            {
+              "text": "Plaku e mori lulen me dy gishta, si të ishte prej xhami.",
+              "english": "The old man took the flower with two fingers, as if it were made of glass."
+            },
+            {
+              "text": "— Mari do ta kishte vënë në dritare, — tha ai.",
+              "english": "\"Mari would have put it in the window,\" he said."
+            },
+            {
+              "text": "— Do ta vë unë.",
+              "english": "\"I will put it there.\""
+            },
+            {
+              "text": "Në rrugën për t'u kthyer autobusi ishte plot, por plaku nuk e ndjeu.",
+              "english": "On the way to go back the bus was full, but the old man did not notice."
+            },
+            {
+              "text": "Ndenji i qetë pranë dritares, me lulen e letrës në xhep, dhe herë pas here e prekte me gisht.",
+              "english": "He sat quietly by the window, with the paper flower in his pocket, and now and then touched it with his finger."
+            },
+            {
+              "text": "— Të dielën tjetër do të vij përsëri, — tha ai kur zbritën.",
+              "english": "\"Next Sunday I will come again,\" he said when they got off."
+            },
+            {
+              "text": "— Por këtë herë do të vij vetë.",
+              "english": "\"But this time I will come by myself.\""
+            },
+            {
+              "text": "Ana dhe Sami u kthyen në qytet pa folur, të dy të qetë dhe të gëzuar.",
+              "english": "Ana and Sam went back to the city without speaking, both calm and glad."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

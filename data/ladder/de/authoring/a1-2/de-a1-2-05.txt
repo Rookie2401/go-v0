@@ -1,0 +1,80 @@
+=== de-a1-2-05
+speakers: sam=Sam, anna=Anna
+## Anna fragt
+Es ist Sonntag, am Abend. || It is Sunday, in the evening.
+Sam ist wieder in Leipzig. || Sam is back in Leipzig.
+Anna ruft an. || Anna calls.
+[anna] Hallo, Sam! || Hello, Sam!
+[anna] Wie war die Reise? || How was the trip?
+[sam] Gut, aber sie war lang. || Good, but it was long.
+[anna] Seid ihr nach Dresden gefahren? || Did you go to Dresden?
+[sam] Ja, David und ich sind nach Dresden gefahren. || Yes, David and I went to Dresden.
+[anna] Mit dem Auto? || By car?
+[sam] Nein, wir haben kein Auto. || No, we do not have a car.
+[sam] Und das Fahrrad ist für die Reise nicht gut. || And the bicycle is not good for the trip.
+[anna] Und mit dem Bus? || And by bus?
+[sam] Der Bus fährt auch nach Dresden, aber der Zug ist schneller. || The bus goes to Dresden too, but the train is faster.
+
+## Am Bahnhof
+[sam] Vorgestern, am Freitag, haben wir die Fahrkarten bekommen. || The day before yesterday, on Friday, we got the tickets.
+[sam] Am Samstag sind wir um sieben Uhr zum Bahnhof gegangen. || On Saturday we went to the station at seven o'clock.
+[sam] Gleis sieben ist das Gleis für Dresden. || Platform seven is the platform for Dresden.
+[sam] Der Zug fährt von Gleis sieben ab. || The train leaves from platform seven.
+[sam] Er ist lang und schnell. || It is long and fast.
+[sam] Ein Mann hat gesagt: "Bitte einsteigen!" || A man said: "All aboard, please!"
+[sam] Wir wollten einsteigen. || We wanted to get on.
+[sam] Wir sind in den Zug eingestiegen. || We got on the train.
+[sam] Ich habe einen Platz am Fenster bekommen. || I got a seat by the window.
+[sam] David hat den Platz neben mir bekommen. || David got the seat next to me.
+[sam] David hat den Koffer auf den Platz gelegt. || David put the suitcase on the seat.
+[anna] Und dein Koffer? || And your suitcase?
+[sam] Ich habe keinen Koffer, nur den Rucksack. || I have no suitcase, only the school bag.
+[sam] Wir haben den Koffer nicht verloren! || We did not lose the suitcase!
+
+## Im Zug
+[sam] Die Reise war nur zwei Stunden lang. || The trip was only two hours long.
+[sam] Der Zug hält in Dresden um neun Uhr. || The train stops in Dresden at nine o'clock.
+[sam] Er hält nur zwei Minuten. || It stops only two minutes.
+[sam] Er hat gehalten, und wir wollten aussteigen. || It stopped, and we wanted to get off.
+[sam] Wir sind schnell ausgestiegen, in Dresden. || We got off quickly, in Dresden.
+[sam] David hat gelesen, und ich habe geschlafen. || David read, and I slept.
+[sam] Dann haben wir über Gott gesprochen. || Then we talked about God.
+[sam] Wir haben über das Leben gesprochen, und über die Liebe. || We talked about life, and about love.
+[sam] David hat gesagt: "Ich glaube, Gott liebt uns." || David said: "I believe God loves us."
+[sam] Ich habe gesagt: "Ich danke Gott. Früher war ich nie so froh." || I said: "I thank God. Before, I was never so happy."
+[sam] Jetzt habe ich Freude, und mein Herz ist froh. || Now I have joy, and my heart is glad.
+
+## In Dresden
+[sam] Vor dem Bahnhof steht ein Auto, und da ist auch ein Bus von der Gemeinde. || In front of the station there is a car, and there is also a bus from the church.
+[sam] Wir sind mit dem Bus zur Gemeinde gefahren. || We took the bus to the church.
+[sam] Der Pastor ist ein Christ wie wir. || The pastor is a Christian like us.
+[sam] Die Musik in der Gemeinde war schön. || The music at the church was lovely.
+[sam] Vor der Gemeinde sind die Kinder Fahrrad gefahren. || In front of the church the children rode bicycles.
+[sam] Ich habe zu Hause auch ein Fahrrad, aber in Leipzig fahre ich Straßenbahn. || I have a bicycle at home too, but in Leipzig I take the tram.
+[sam] In Dresden haben wir Kaffee und Kuchen bekommen. || In Dresden we got coffee and cake.
+[sam] Das Handy von David hat im Bus gelegen, und wir haben es gefunden. || David's phone was on the bus, and we found it.
+[sam] David hat mit Ruth telefoniert. || David phoned Ruth.
+[sam] Ich habe gerade eine Nachricht an Thomas geschrieben. || I have just written a message to Thomas.
+[sam] Wir haben mit den Kindern gespielt. || We played with the children.
+[sam] Draußen im Park haben wir Lieder gesungen. || Outside in the park we sang songs.
+[sam] Am Samstag war ich um sechs Uhr fertig. || On Saturday I was done by six o'clock.
+[sam] Am Sonntag sind wir um sechs Uhr gefahren. || On Sunday we left at six o'clock.
+[sam] Wir mussten nicht umsteigen. || We did not have to change trains.
+[sam] In Leipzig sind wir in die Straßenbahn umgestiegen. || In Leipzig we changed to the tram.
+[sam] Wir sind um acht Uhr angekommen. || We arrived at eight o'clock.
+
+## Anna möchte auch fahren
+[anna] Ich war nie in Dresden. || I have never been to Dresden.
+[anna] Muss ich in Dresden umsteigen? || Do I have to change trains in Dresden?
+[sam] Nein, du musst nicht umsteigen. || No, you do not have to change.
+[anna] Ich habe am Montag einen Termin. || I have an appointment on Monday.
+[anna] Am Dienstag und am Mittwoch arbeite ich. || On Tuesday and Wednesday I work.
+[anna] Am Donnerstag habe ich Zeit, und am Freitag auch. || On Thursday I have time, and on Friday too.
+[sam] Hast du am Samstag keine Zeit? || Do you not have time on Saturday?
+[anna] Doch! || Yes I do!
+[anna] Das geht. || That works.
+[sam] Gut, wir fahren nur zwei Stunden. || Good, we only travel two hours.
+[anna] Tschüs, Sam! || Bye, Sam!
+[anna] Bis bald! || See you soon!
+[sam] Tschüs, Anna! || Bye, Anna!
+

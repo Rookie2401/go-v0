@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप and \"सुरेश जी\" to the farmer; Suresh answers in the polite आप form (पूछिए, रुकिए, आइए) and uses the plain \"सैम\" with the mild imperative \"सावधान रहना\". Facts to check: in North India the monsoon arrives in late June or July and lasts until September; paddy and maize are sown with the rain, wheat and chickpea in winter; canal water is requested by an application, a form and a fee. The figures (200 rupees, 22 and 60 rupees a kilo, \"3 years ago\") are Suresh's own illustration, not statistics. Outside words kept on purpose, all ordinary words: जून ×1, सितंबर ×1 (month names, read as nouns). Homographs watched: गीला (road, soil, grain), उगना (maize grows, grass comes up, the sun rises), तारे (direct plural of तारा), जूते (जूता). सीता नानी is mentioned only as the woman who sells roti at the market."
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप and \"सुरेश जी\" to the farmer; Suresh answers in the polite आप form (पूछिए, रुकिए, आइए) and uses the plain \"सैम\" with the mild imperative \"सावधान रहना\". Facts to check: in North India the monsoon arrives in late June or July and lasts until September; paddy and maize are sown with the rain, wheat and chickpea in winter; canal water is requested by an application, a form and a fee. The figures (200 rupees, 22 and 60 rupees a kilo, \"3 years ago\") are Suresh's own illustration, not statistics. Outside words kept on purpose, all ordinary words: जून ×1, सितंबर ×1 (month names, read as nouns). Homographs watched: गीला (road, soil, grain), उगना (maize grows, grass comes up, the sun rises), तारे (direct plural of तारा), जूते (जूता). सीता नानी is mentioned only as the woman who sells roti at the market. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -512,6 +512,26 @@
             {
               "text": "उसने रिपोर्ट के नीचे लिखा: हर रोटी के पीछे खेती है, एक किसान है, और बारिश का इंतज़ार है।",
               "english": "Under his report he wrote: behind every roti there is farming, a farmer, and the wait for the rain."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "खेत के पास एक ट्रक आया, और उसके पीछे एक मोटर और एक स्कूटर भी था।",
+              "english": "A truck came by the field, and behind it there was also a motor car and a scooter."
+            },
+            {
+              "text": "सैम ने देखा कि सड़क के उस पार एक किसान चना बो रहा था।",
+              "english": "Sam saw that across the road a farmer was sowing chickpeas."
+            },
+            {
+              "text": "उधर एक नाई अपनी दुकान खोल रहा था।",
+              "english": "Over there a barber was opening his shop."
+            },
+            {
+              "text": "सुरेश ने कहा, \"वाह, आज तो बहुत सुबह से सब काम शुरू हो गया।\"",
+              "english": "Suresh said, \"Wow, today everything has begun so early in the morning.\""
             }
           ]
         }

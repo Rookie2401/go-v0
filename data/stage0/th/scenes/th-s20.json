@@ -1,0 +1,336 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-08",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0 as a decoding-practice scene (words already met in the sound steps); needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "sound",
+      "title": "Two consonants together",
+      "text": "กลับ, ไกล, ใกล้, กลัว and ครับ each begin with two consonants said together, with no vowel between them: กล is gl-, คร is khr-. Look at the pair ไกล and ใกล้: the spelling differs only in the vowel letter (ไ or ใ, both ai) and in the mark ้ on the second. ไกล (far) is a plain mid tone; ใกล้ (near) is falling because of ้.",
+      "explains": [
+        "th.practice.clusters"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Is the school far? (No, it is near.)",
+      "basedOn": [
+        "l2",
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "ไม่ไกล"
+        },
+        {
+          "text": "ไม่ไกลครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ไม่ไกลค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ใกล้"
+        },
+        {
+          "text": "ใกล้ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ใกล้ค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you are going home first.",
+      "basedOn": [
+        "l12"
+      ],
+      "accept": [
+        {
+          "text": "กลับบ้านก่อน"
+        },
+        {
+          "text": "กลับบ้านก่อนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "กลับบ้านก่อนค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "กลับบ้านก่อน"
+        },
+        {
+          "text": "กลับบ้านก่อนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "กลับบ้านก่อนค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมกลับบ้านก่อน",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันกลับบ้านก่อน",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมกลับบ้านก่อนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันกลับบ้านก่อนค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s20",
+  "title": {
+    "en": "Near and far",
+    "target": "ไกลและใกล้"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "luis",
+      "ana",
+      "nico"
+    ],
+    "places": [
+      "school",
+      "home",
+      "church",
+      "street"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "โรงเรียนไกลไหมครับ",
+      "en": "Is the school far?",
+      "speaker": "sam",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ไม่ไกลครับ",
+      "en": "No, it is not far.",
+      "speaker": "luis",
+      "picture": "🙅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "โรงเรียนอยู่ใกล้บ้านครับ",
+      "en": "The school is near the house.",
+      "speaker": "luis",
+      "picture": "🏠🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "วัดอยู่ใกล้โรงเรียนไหมครับ",
+      "en": "Is the temple near the school?",
+      "speaker": "sam",
+      "picture": "🛕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ผมขับรถไปโรงเรียนครับ",
+      "en": "I drive to school.",
+      "speaker": "luis",
+      "picture": "🚗",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "วันนี้ฉันไม่ขับรถค่ะ",
+      "en": "Today I am not driving.",
+      "speaker": "ana",
+      "picture": "🚫🚗",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "ฉันรอรถที่บ้านค่ะ",
+      "en": "I am waiting for the car at home.",
+      "speaker": "ana",
+      "picture": "⏳",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "รอก่อนครับ",
+      "en": "Wait a moment.",
+      "speaker": "luis",
+      "picture": "✋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l9",
+      "text": "วันนี้มีลมไหมครับ",
+      "en": "Is there a wind today?",
+      "speaker": "sam",
+      "picture": "🌬️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l10",
+      "text": "มีลมครับ ไม่ร้อนครับ",
+      "en": "There is a wind; it is not hot.",
+      "speaker": "luis",
+      "picture": "🍃",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l11",
+      "text": "ผมวิ่งไปโรงเรียนครับ",
+      "en": "I run to school.",
+      "speaker": "nico",
+      "picture": "🏃",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l12",
+      "text": "ผมกลับบ้านก่อนครับ",
+      "en": "I am going home first.",
+      "speaker": "sam",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [],
+    "constructions": []
+  },
+  "represents": [
+    "th.practice.clusters",
+    "th.practice.tone-marks",
+    "th.place-go",
+    "th.location-yu-thi",
+    "th.negation-mai",
+    "th.mai-question",
+    "th.time-today"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1",
+        "l2",
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is the school far from the house?"
+      },
+      "options": [
+        {
+          "en": "No, it is near"
+        },
+        {
+          "en": "Yes, it is far"
+        },
+        {
+          "en": "It is closed"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5",
+        "l11"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who drives to school, and who runs?"
+      },
+      "options": [
+        {
+          "en": "Ton drives; Ball runs"
+        },
+        {
+          "en": "Ball drives; Ton runs"
+        },
+        {
+          "en": "Both drive"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l12"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam do first?"
+      },
+      "options": [
+        {
+          "en": "Goes home"
+        },
+        {
+          "en": "Goes to school"
+        },
+        {
+          "en": "Goes to church"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

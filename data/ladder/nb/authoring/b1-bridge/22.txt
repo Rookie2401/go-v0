@@ -1,0 +1,34 @@
+=== nb-b1-bridge-22 | story | travel | On board the coastal ship | Om bord | travel,ship,coast,Trondheim,passive,past tense,description
+speakers: kaptein=Kapteinen, ingrid=Ingrid, olav=Olav
+note: The first part of the journey north on the coastal express ship, from Bergen to Trondheim. Descriptive past tense, passive (ble bygget), comparisons and relative clauses. Anna's parents (Ingrid and Olav) were named in an early unit; their meeting is invented. The ship and the route are described only in general terms; a Norwegian reviewer should check the details.
+## Om bord
+En dag om sommeren skulle de reise til nord. {ana}, {luis}, {nico} og {sam} var ved havna i {city}, og der lå et stort skip. Det var mange som skulle være med. || One day in the summer they were going to travel north. Anna, Lars, Nils and Sam were at the harbour in Bergen, and there lay a big ship. There were many who were going to be on it.
+[nico] Er det her vi skal bo? Det er som et hus! || Is it here we are going to live? It is like a house!
+[luis] I noen dager er det huset vårt. Skipet går langs kysten til nord, og langs kysten er det mange havner. Vi er med noen dager. || For some days it is our house. The ship goes along the coast to the north, and along the coast there are many harbours. We are on it for some days.
+De fikk to lugarer. Lugaren til {sam} og {nico} var liten, men den hadde et lite vindu, og fra senga kunne {nico} se vann og fjell. || They got two cabins. The cabin for Sam and Nils was small, but it had a little window, and from the bed Nils could see water and mountains.
+[nico] Jeg skal sove i lugaren hver natt! Jeg skal aldri sove hjemme igjen! || I am going to sleep in the cabin every night! I am never going to sleep at home again!
+
+## På dekk
+Om kvelden gikk skipet ut fra havna. Alle var på dekk for å se. Byen ble mindre og mindre, og lysene lå som små stjerner rundt fjorden. || In the evening the ship left the harbour. Everyone was on deck to watch. The town got smaller and smaller, and the lights lay like little stars around the fjord.
+{sam} var lenge på dekk. Han tenkte på dagen da han kom til {city}, trøtt og litt redd, med ei veske og en nøkkel til et rom han aldri hadde sett. Det var to år før. Nå var han her med venner. || Sam was on deck for a long time. He thought of the day when he came to Bergen, tired and a little afraid, with a bag and a key to a room he had never seen. That was two years before. Now he was here with friends.
+[ana] Hva tenker du på, {sam}? || What are you thinking about, Sam?
+[sam] På hvor langt jeg har kommet. Ikke bare langs kysten. || About how far I have come. Not only along the coast.
+Vinden ble kaldere, og bølgene var store. Bølgene var høye. Mange satt rundt dem og snakket, men {sam} var ute i vinden. De gikk fra dekk og drakk kakao i lugaren til {luis} og {ana}. || The wind got colder, and the waves were big. The waves were high. Many sat around them and talked, but Sam was out in the wind. They left the deck and drank cocoa in Lars and Anna's cabin.
+
+## Kapteinen
+Neste morgen ville kapteinen snakke med alle som var om bord. Kapteinen var en gammel mann med en stor stemme. De satt rundt et bord og lyttet. || The next morning the captain wanted to talk to everyone who was on board. The captain was an old man with a big voice. They sat around a table and listened.
+[kaptein] Skipet ble bygget da jeg var ung, men det går fortsatt hver dag langs hele kysten. Her i nord er været ofte dårlig, og vinden er kald, men vi er alltid i havn til slutt. || The ship was built when I was young, but it still goes every day along the whole coast. Here in the north the weather is often bad, and the wind is cold, but we are always in harbour in the end.
+[nico] Er det store bølger her? Har du noen gang vært redd for bølgene, kaptein? || Are there big waves here? Have you ever been afraid of the waves, captain?
+[kaptein] Mange ganger, min venn. Den som ikke er redd for havet, burde ikke være kaptein. || Many times, my friend. Whoever is not afraid of the sea should not be a captain.
+
+## Hos Ingrid og Olav
+Dagen etter var de i havn i Trondheim. {ana}s mor og far, Ingrid og Olav, ventet ved skipet. || The day after they were in harbour in Trondheim. Anna's mother and father, Ingrid and Olav, were waiting by the ship.
+[ingrid] Så er dere her! Vi har ventet hele dagen. Dette må være {sam}, som vi har hørt så mye om. || So you are here! We have waited the whole day. This must be Sam, whom we have heard so much about.
+[sam] Hyggelig å møte dere. {ana} har fortalt mye om Trondheim, og om brødet dere baker. || Nice to meet you. Anna has told a lot about Trondheim, and about the bread you bake.
+[olav] Så du er fra USA? Da må du smake brødet vårt. || So you are from the USA? Then you must taste our bread.
+{sam} smakte på brødet. Det smakte nesten som brødet til {marta}, og han sa det. Olav lo høyt og sa at det var det beste han noen gang hadde hørt om brød. || Sam tasted the bread. It tasted almost like Marta's bread, and he said so. Olav laughed loudly and said that it was the best thing he had ever heard about bread.
+De spiste middag sammen, og {sam} tenkte at han hadde reist langt for å finne en ny familie. Om kvelden gikk de tilbake til skipet, og det gikk mot nord. || They ate dinner together, and Sam thought that he had travelled far to find a new family. In the evening they went back to the ship, and it went towards the north.
+
+Mens skipet gikk til nord, tenkte {sam} på året som hadde gått. Han tenkte på basaren, som Emma hadde organisert, og på premien, en stor kake. Han tenkte på jula og på tåken i fjellet, der han hadde vært så redd, og på påsken og den tomme graven. Egentlig hadde han ikke vært ensom på lenge, og han hadde forandret seg mye. Enten ville han sove, eller han ville se på kysten, og til slutt så han på kysten. || While the ship went north, Sam thought of the year that had passed. He thought of the bazaar, which Emma had organised, and of the prize, a big cake. He thought of Christmas and of the fog in the mountains, where he had been so afraid, and of Easter and the empty grave. Actually he had not been lonely for a long time, and he had changed a lot. Either he would sleep, or he would look at the coast, and in the end he looked at the coast.
+Han hadde skrevet plakater om basaren, og han hadde fått tips om strøm av naboene. Han husket korset i kirka, og han tenkte at han hadde vokst. || He had written posters about the bazaar, and he had got tips about electricity from the neighbours. He remembered the cross in the church, and he thought that he had grown.
+Han gikk forsiktig på dekk, for dekket var vått. || He walked carefully on deck, because the deck was wet.

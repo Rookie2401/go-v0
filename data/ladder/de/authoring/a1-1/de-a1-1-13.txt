@@ -1,0 +1,73 @@
+=== de-a1-1-13
+speakers: ben=Ben, marta=Marta, lukas=Lukas, thomas=Pastor Thomas, sam=Sam, schmidt=Herr Schmidt, anna=Anna, michael=Michael, mann=Ein Mann
+## Wo ist der Rucksack?
+Es ist halb acht. || It is half past seven.
+Ben steht auf. || Ben gets up.
+Er hat kein Fieber, er ist gesund. || He has no fever, he is well.
+Heute geht Ben wieder in die Schule. || Today Ben goes back to school.
+Aber wo ist der Rucksack? || But where is the school bag?
+Ben sucht. || Ben looks for it.
+[ben] Oma, wo ist mein Rucksack? || Grandma, where is my school bag?
+[marta] Ich weiß nicht, Ben. || I do not know, Ben.
+[marta] Du verlierst immer etwas! || You are always losing something!
+Ben sucht unter dem Bett, neben dem Tisch und hinter dem Stuhl. || Ben looks under the bed, next to the table and behind the chair.
+[ben] Ich sehe ihn nicht! || I cannot see it!
+[marta] Dein Schlüssel liegt auf dem Tisch. || Your key is on the table.
+[marta] Dein Buch liegt unter dem Tisch, und deine Tasche ist neben dem Bett. || Your book is under the table, and your bag is next to the bed.
+[ben] Ich brauche ihn, nicht die Tasche! || I need it, not the bag!
+[ben] Ich finde ihn nicht! || I cannot find it!
+
+## In der Schule
+Es ist acht Uhr, und die Klasse fängt an. || It is eight o'clock, and the class begins.
+Ben hat kein Heft. || Ben has no exercise book.
+[lukas] Guten Morgen, Ben! || Good morning, Ben!
+[lukas] Wo ist es? || Where is it?
+[ben] Ich habe ihn verloren. || I have lost it.
+[lukas] Du bist ein guter Schüler, aber du verlierst immer etwas. || You are a good pupil, but you are always losing something.
+[lukas] Er liegt nicht in der Klasse. || It is not in the classroom.
+[lukas] Was machen wir? || What do we do?
+[lukas] Der Stuhl steht hinter dem Tisch. || The chair is behind the table.
+In der Pause sagt Ben: "Ich möchte ihn finden." || During the break Ben says: "I want to find it."
+[lukas] Nach der Schule suchen wir ihn. || After school we will look for it.
+
+## Wir suchen
+Nach der Schule gehen Ben, Lukas und Sam in die Stadt. || After school Ben, Lukas and Sam go into the city.
+Sam ist ein Freund von Ben. || Sam is a friend of Ben's.
+[sam] Ich bin Student, ich habe eine Stunde. || I am a student, I have an hour.
+[sam] Ich kann helfen. || I can help.
+Sie gehen zu Herrn Schmidt in die Bäckerei. || They go to Herr Schmidt at the bakery.
+[ben] Herr Schmidt, haben Sie ihn? || Herr Schmidt, do you have it?
+[schmidt] Nein, Ben. || No, Ben.
+[schmidt] Ich bin Bäcker und Chef von der Bäckerei, ich finde Brötchen. || I am a baker and the boss of the bakery, I find rolls.
+Dann gehen sie in die Klinik. || Then they go to the clinic.
+Anna ist Krankenschwester, und Michael ist Arzt. || Anna is a nurse, and Michael is a doctor.
+[anna] Ben, du bist gesund! || Ben, you are well!
+[anna] Das ist schön. || That is nice.
+[anna] Aber ich sehe ihn nicht. || But I cannot see it.
+[michael] Ich sehe hier keinen Rucksack. || I see no school bag here.
+[lukas] Ihr habt alle einen guten Beruf, aber ihr habt ihn nicht. || You all have a good job, but you do not have it.
+Im Park ist ein Mann. || There is a man in the park.
+[ben] Haben Sie ihn? || Do you have it?
+[mann] Nein, hier nicht. || No, not here.
+Es ist warm, und die Sonne ist da. || It is warm, and the sun is out.
+Ben ist müde. || Ben is tired.
+[sam] Ben, am Sonntag bist du in der Gemeinde. || Ben, on Sunday you are at the church.
+[sam] Ist er in der Gemeinde? || Is it at the church?
+[ben] Ja, das ist gut! || Yes, that is good!
+[ben] Wir gehen! || Let us go!
+
+## In der Gemeinde
+Pastor Thomas ist in der Gemeinde. || Pastor Thomas is at the church.
+[thomas] Hallo, Ben! || Hello, Ben!
+[thomas] Suchst du ihn? || Are you looking for it?
+[thomas] Er steht hinter dem Stuhl, unter dem Fenster. || It is behind the chair, under the window.
+Und da ist er! || And there it is!
+Ben findet den Rucksack. || Ben finds the school bag.
+Das Heft liegt neben dem Rucksack. || The exercise book is lying next to the school bag.
+[lukas] Leg das Heft in den Rucksack, Ben! || Put the exercise book in the school bag, Ben!
+[ben] Mein Heft ist auch da! || My exercise book is there too!
+[ben] Danke, Thomas! || Thank you, Thomas!
+[ben] Ich möchte ihn nicht verlieren. || I do not want to lose it.
+[lukas] Gut, Ben. || Good, Ben.
+[lukas] Und morgen lernen wir wieder. || And tomorrow we are learning again.
+

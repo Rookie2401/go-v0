@@ -29,7 +29,7 @@ A text can be excellent library material and still not be the next ladder text. 
 | `stage0` | pre-A1 | script and sounds where needed, the first few hundred words and constructions, tiny scenes: enough to make GoLearn usable. Owned by Stage 0 (`docs/STAGE0.md`, `data/stage0/<lang>/`) | as it is |
 | `a1-1`, `a1-2` | A1 | daily life, narrative, dialogue, simple description, questions, simple testimony language | 15–30 k words together |
 | `a2-1`, `a2-2` | A2 | longer stories, conversations, biography, explanations, more natural syntax, much less rescue | 30–60 k words together |
-| `b1-bridge` | B1 | authentic or lightly adapted texts increasingly dominant; ends where the library is comfortably readable | 30–60 k words (2026-10-06: only Spanish has one — 35 units, 39 k words; the other four ladders end at `a2-2`) |
+| `b1-bridge` | B1 | authentic or lightly adapted texts increasingly dominant; ends where the library is comfortably readable | 30–60 k words (2026-10-08: every ladder has one — Spanish 39 units, German 30, Hindi 31, Thai 25, Albanian 25, Norwegian 24) |
 
 Each stage mixes domains — conversation, narrative, explanation, practical communication, biography, instructions,
 correspondence, contemporary nonfiction — and **Scripture is one domain among them, not the ladder**. The audit's
@@ -123,18 +123,21 @@ Every controlled or adapted unit carries:
 Every course now has a ladder. `npm run ladder:check` passes for all five with 0 errors (running words are those of
 the units after Stage 0; the warnings are advice, mostly recycling, and no unit was padded to clear one):
 
-| course | units | running words | stages | kinds | warnings |
+| course | units | running words | stages | kinds | warnings (2026-10-08, incl. the orphan and recurrence advice) |
 |---|---:|---:|---|---|---:|
-| Spanish (`data/ladder/es`) | 104 | 88.5 k | a1-1 … a2-2, `b1-bridge` (35 units, 39.2 k words, Scripture share 17.4 %) | 85 controlled, 2 adapted, 17 authentic (the 17 authentic and 2 adapted are all in the bridge) | 49 |
-| German (`de`) | 69 | 46.1 k | a1-1 … a2-2 | 69 controlled | 16 |
-| Hindi (`hi`) | 101 | 52.0 k | a1-1 … a2-2; the 28 Stage 0A–0C drafts are placed in the ladder in place | 87 controlled, 14 authentic (13 Global Digital Library books and John 14) | 44 |
-| Thai (`th`) | 90 | 43.9 k | a1-1 … a2-2; 9 bridge drafts placed in place | 76 controlled, 8 adapted (Aesop fables, CC BY-SA 4.0, attributed, share-alike), 6 authentic (5 fables, 1 John 4) | 15 |
-| Albanian (`sq`) | 135 | 49.9 k | a1-1 (72) + a1-2 (25) + a2-1 (18) + a2-2 (20) | 135 controlled (the 20 Udha / Misioni drafts placed in place) | 69 |
+| Spanish (`data/ladder/es`) | 110 | 104 k | a1-1 … a2-2, `b1-bridge` (39 units, 55 k words); six Honduran-register units (`es-HN`) in a2-2 and the bridge | 91 controlled, 2 adapted, 17 authentic | 83 |
+| German (`de`) | 99 | 79 k | a1-1 … a2-2, `b1-bridge` (30 units, 25 k words: Guerber reader stories, short Grimm tales, John 14/16/17, 1 John 5; Scripture 10 %) | 81 controlled, 18 authentic | 49 |
+| Hindi (`hi`) | 132 | 75 k | a1-1 … a2-2 (the 28 Stage 0A–0C drafts placed in place), `b1-bridge` (31 units, 21 k words: 13 GDL books, John 15/17, 1 John 4, one *Andher Nagari* retelling; Scripture 9 %) | 101 controlled, 1 adapted, 30 authentic | 93 |
+| Thai (`th`) | 115 | 52 k | a1-1 … a2-2 (9 bridge drafts in place), `b1-bridge` (25 units, 8.6 k words: 9 adapted fables, Luke 15, 3 John; Scripture 13 %) | 90 controlled, 17 adapted (Aesop, CC BY-SA 4.0, attributed, share-alike), 8 authentic | 43 |
+| Albanian (`sq`) | 105 | 64 k | a1-1 (17) + a1-2 (25) + a2-1 (18) + a2-2 (20) + `b1-bridge` (25 new units, 13.5 k words) | 105 controlled | 17 (all recurrence advice) |
+| Norwegian (`nb`) | 72 | 25.5 k | a1-1 … a2-2 (12 each), `b1-bridge` (24 new units, 12.9 k words) | 72 controlled | 0 |
 
 - Plans: `data/ladder/<lang>/PLAN*.md` (a vocabulary schedule per unit; Spanish also `PLAN-B1.md`; the German, Hindi,
-  Thai and Albanian plans were measured with each real adapter on 2026-10-06). A word-list pass followed the plans so
-  the analyser knew the planned words (adapters now `adapter-es@11`, `adapter-de@8`, `adapter-hi@5`, `adapter-th@4`,
-  `adapter-sq@8`).
+  Thai and Albanian plans were measured with each real adapter on 2026-10-06; the bridges and recycling passes on
+  2026-10-08, see `docs/audits/COURSE-AUDIT-2026-10-07.md` §8). A word-list pass followed the plans so the analyser
+  knew the planned words (adapters now `adapter-es@12`, `adapter-de@9`, `adapter-hi@6`, `adapter-th@5`,
+  `adapter-sq@9`, `adapter-nb@2`). The authoring sources (text files and a build script) live under
+  `data/ladder/<lang>/authoring/` where a language has them (de, hi, nb, sq); edit those and rebuild, not the units.
 - **Every unit is a machine draft** (`pipeline.state: machine-draft`, by a tool), unreviewed and unpublished outside
   preview; Hindi's 28 Stage 0 drafts in place carry the Stage 0 provenance instead of a pipeline block. A ladder unit
   publishes only from `audio-ready`, and no recording exists in any course, so nothing on any ladder can publish yet.

@@ -1,0 +1,62 @@
+=== de-a1-1-09
+speakers: sam=Sam, weber=Frau Weber, marta=Marta, ben=Ben
+## Am Morgen
+Es ist Sonntag, und es ist Morgen. || It is Sunday, and it is morning.
+Die Straße ist klein und schön. || The street is small and nice.
+Das Wetter ist heute gut. || The weather is good today.
+Es ist kalt am Morgen. || It is cold in the morning.
+Aber die Sonne ist da, und sie ist warm. || But the sun is out, and it is warm.
+Sam geht auf der Straße. || Sam walks along the street.
+Er geht in den Park. || He goes into the park.
+Er sagt: "Das Wetter ist schön!" || He says: "The weather is lovely!"
+In Leipzig ist das Wetter nicht immer so. || In Leipzig the weather is not always like this.
+Der Park ist groß. || The park is big.
+
+## Im Park
+Eine Familie ist im Park. || A family is in the park.
+Da sind der Vater, die Mutter und ein Kind. || There are the father, the mother and a child.
+Die Tochter ist fünf Jahre alt. || The daughter is five years old.
+Die Familie hat ein Frühstück. || The family is having breakfast.
+Es gibt Brötchen mit Butter, Eier und Milch. || There are rolls with butter, eggs and milk.
+[sam] Guten Tag! || Good day!
+[sam] Das ist ein schöner Tag. || That is a lovely day.
+[sam] Darf ich ein Bild machen? || May I take a picture?
+Der Vater sagt: "Ja, gern!" || The father says: "Yes, gladly!"
+
+## Frau Weber
+Frau Weber ist auf der Straße. || Mrs Weber is on the street.
+[weber] Guten Tag, Herr Miller! || Good day, Mr Miller!
+[weber] Es ist heute so schön. || It is so lovely today.
+[sam] Ja, und die Sonne ist wieder warm. || Yes, and the sun is warm again.
+[weber] Ich bin am Sonntag immer hier. || I am always here on Sundays.
+[weber] Dann gehe ich in die Kirche. || Then I go to church.
+[sam] Haben Sie auch ein Frühstück? || Do you have breakfast too?
+[weber] Am Sonntag kaufe ich nichts. || On Sundays I do not buy anything.
+[weber] Aber ich habe Tomaten, ein Kilo vom Markt. || But I have tomatoes, a kilo from the market.
+[weber] Und ein Brötchen mit Butter und Ei. || And a roll with butter and egg.
+[sam] Das ist ein gutes Frühstück. || That is a good breakfast.
+
+## Marta und Ben
+Marta und Ben kommen auf die Straße. || Marta and Ben come onto the street.
+Ben hat wieder Hunger. || Ben is hungry again.
+[ben] Oma, ich habe wieder Hunger! || Grandma, I am hungry again!
+[marta] Du hast immer Hunger, Ben! || You are always hungry, Ben!
+[marta] Hier ist Milch und ein Ei. || Here is milk and an egg.
+[ben] Die Milch ist kalt, und das Ei ist auch kalt! || The milk is cold, and the egg is cold too!
+[ben] Ich möchte Fleisch. || I want meat.
+[marta] Dann nimm Brot, Ben. || Then take bread, Ben.
+[marta] Fleisch gibt es zum Mittagessen. || There is meat for lunch.
+[ben] Mama sagt: "Ben, du isst zu viel!" || Mama says: "Ben, you eat too much!"
+[marta] Mama ist heute nicht da. || Mama is not here today.
+[marta] Meine Tochter ist Bens Mama. || My daughter is Ben's mama.
+Ben ist zehn Jahre alt. || Ben is ten years old.
+Er ist ein Kind, aber er isst wie sein Papa. || He is a child, but he eats like his papa.
+[sam] Ben, darf ich ein Bild von dir machen? || Ben, may I take a picture of you?
+[ben] Ja, mit Oma! || Yes, with Grandma!
+Sam macht ein Bild von Marta und Ben. || Sam takes a picture of Marta and Ben.
+Die Sonne ist warm, und der Tag ist schön. || The sun is warm, and the day is lovely.
+Dann gehen alle in die Kirche. || Then everyone goes to church.
+[marta] Einen schönen Tag, Frau Weber! || Have a nice day, Mrs Weber!
+[weber] Danke, Marta! || Thank you, Marta!
+[weber] Ihnen auch! || You too!
+

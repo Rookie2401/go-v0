@@ -1,0 +1,39 @@
+=== nb-b1-bridge-24 | story | narrative | Two years in Norway | To år i Norge | closing,reflection,family,church,thanks,past perfect,indirect speech,future
+speakers: mamma=Mamma
+note: The closing unit of the Bokmål ladder. Sam's mother comes to Bergen when he has lived in Norway for two years. Reflection with the perfect and past perfect, indirect speech, "kommer til å", and a thank-you speech. It echoes the last unit of the A2 stage and recycles much of the bridge. No real airport or airline is named.
+## Lufthavnen
+{sam} hadde bodd i Norge i to år. På en lørdag var han i lufthavnen sammen med {ana} og {luis}, og han var mer nervøs enn han hadde vært på intervjuet. || Sam had lived in Norway for two years. On a Saturday he was at the airport together with Anna and Lars, and he was more nervous than he had been at the interview.
+[sam] Hva om hun ikke liker byen? Hva om hun ikke forstår hva jeg sier? || What if she does not like the town? What if she does not understand what I say?
+[ana] Hun er moren din. Hun kommer til å forstå deg, enten du snakker norsk eller engelsk. Du har overrasket oss alle, så hun blir også overrasket. || She is your mother. She will understand you, whether you speak Norwegian or English. You have surprised us all, so she will be surprised too.
+Så kom hun fra lufthavnen, med en stor bagasje, og hun gråt. {sam} kom mot henne, og de ble lenge i en stor klem. || Then she came from the airport, with a big suitcase, and she cried. Sam came towards her, and they stayed for a long time in a big hug.
+[mamma] Du er blitt stor! Og så glad! Jeg hadde ikke trodd at du kunne være så glad. Jeg er overrasket. || You have become big! And so happy! I had not thought that you could be so happy. I am surprised.
+[sam] Velkommen til Norge, mamma. Dette er {ana} og {luis}. || Welcome to Norway, Mum. These are Anna and Lars.
+
+## Byen
+I tre dager viste {sam} moren sin byen: bokhandelen, kirka, markedet og fjellet. || For three days Sam showed his mother the town: the bookshop, the church, the market and the mountain.
+Så gikk de til leiligheten. Bagasjen var tung, men {sam} bar den til etasje tre selv. Solveig møtte dem i døren med kaffe og kake. || Then they went to the flat. The luggage was heavy, but Sam carried it to the third floor himself. Solveig met them at the door with coffee and cake.
+[mamma] Dette er ditt eget hjem. Du har bøker på hyllene, og du har nøkkelen din. || This is your own home. You have books on the shelves, and you have your key.
+[sam] Ja. Og i dag skal du smake på brødet til {marta}. Det er det beste i Norge! || Yes. And today you shall taste Marta's bread. It is the best in Norway!
+{marta} ventet på dem med brød som hun hadde bakt. Hun og moren til {sam} kunne ikke snakke sammen, men de forstod hva de mente likevel. De lo, og de spiste. || Marta was waiting for them with bread that she had baked. She and Sam's mother could not talk together, but they understood what the other meant all the same. They laughed, and they ate.
+
+## På søndag
+På søndag var det gudstjeneste, og etterpå ble det kaffe i kirka. Alle som kjente {sam}, var der. || On Sunday there was a service, and afterwards there was coffee at the church. Everyone who knew Sam was there.
+Presten spurte om {sam} ville si noe. Han ble overrasket, men han sa ja, og han reiste seg. || The pastor asked whether Sam would say something. He was surprised, but he said yes, and he stood up.
+[sam] Jeg heter {sam}. Jeg har bodd i {city} i to år nå. Jeg kom hit alene, og nå er jeg hjemme. || My name is Sam. I have lived in Bergen for two years now. I came here alone, and now I am at home.
+[sam] Dere har lært meg norsk. Dere har hjulpet meg å flytte, å spare og å bake brød. Dere har vist meg veien til Gud da jeg hadde så mye tvil. Jeg er takknemlig, og jeg har en stor drøm: At jeg en dag kan hjelpe noen på den måten. || You have taught me Norwegian. You have helped me move, save and bake bread. You have shown me the way to God when I had so much doubt. I am grateful, and I have a big dream: that one day I can help someone in that way.
+Det ble rolig i rommet. Moren hans gråt, og {marta} så på ham. Så reiste {marta} seg og sa: «Skål for {sam}!» Alle løftet glassene sine, og alle var glade. || It became calm in the room. His mother cried, and Marta looked at him. Then Marta stood up and said: "Cheers to Sam!" Everyone lifted their glasses, and everyone was glad.
+
+## Kvelden
+Den kvelden spiste de alle sammen hos {sam}. Det var pizza og kake, og det var folk i alle rom. {nico} satt på gulvet og fortalte alle om Hurtigruta. || That evening they all ate together at Sam's. There was pizza and cake, and there were people in every room. Nils sat on the floor and told everyone about the coastal ship.
+Da alle hadde gått, satt {sam} og moren på balkongen og så på kirka. || When everyone had gone, Sam and his mother sat on the balcony and looked at the church.
+[mamma] Er du glad her, vennen min? || Are you happy here, my dear?
+[sam] Ja. Jeg er ikke ferdig med å lære. Jeg kommer til å gjøre mange feil ennå. Men jeg vil bli, og jeg har fred i hjertet. || Yes. I am not finished with learning. I will make many mistakes yet. But I want to stay, and I have peace in my heart.
+{sam} ba rolig: «Takk, Gud, for to år. Takk for alle som lette etter meg. Hjelp meg å være en god venn og en god nabo.» Så ble det rolig, bare natten og lyset fra kirka. || Sam prayed calmly: "Thank you, God, for two years. Thank you for all who looked for me. Help me to be a good friend and a good neighbour." Then it became calm, only the night and the light from the church.
+
+## Året i ord
+Mens de satt på balkongen, spurte moren om hva som hadde vært best i året. || While they sat on the balcony, his mother asked what had been best in the year.
+[mamma] Fortell meg om det beste du har sett, vennen min. || Tell me about the best thing you have seen, my dear.
+[sam] Midnattssolen var det uvanligste. Himmelen var lys hele natten, og øyene i nord var vakre. Dessuten snakket kapteinen med oss om bølgene, og vi vandret i fjellet om natten. Det var stor forskjell på nord og sør. || The midnight sun was the most unusual thing. The sky was light all night, and the islands in the north were beautiful. Besides, the captain talked with us about the waves, and we hiked in the mountains at night. There was a big difference between north and south.
+[mamma] Og her hjemme? || And here at home?
+[sam] Her har jeg lært å ikke bruke for mye strøm. Prisen økte, men naboene ga meg tips, og nå slår jeg av lyset når jeg går. Egentlig er det ikke vanskelig. Jeg har også vært forsiktig i fjellet etter at jeg mistet løypa i tåken. || Here I have learned not to use too much electricity. The price rose, but the neighbours gave me tips, and now I switch off the light when I leave. Actually it is not difficult. I have also been careful in the mountains, after I lost the trail in the fog.
+[mamma] Du har forandret deg. Du har vokst, både som venn og som nabo. || You have changed. You have grown, both as a friend and as a neighbour.

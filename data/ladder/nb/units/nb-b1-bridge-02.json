@@ -1,0 +1,269 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-02",
+  "lang": "nb",
+  "title": "The call from the bookshop",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-02",
+    "title": "The call from the bookshop (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Indirect speech (sa at ..., spurte om ...), \"burde\", \"hvorfor\" and \"fordi\", a reflexive verb (forberede seg), \"ennå\". Sam waits for an answer, is invited to an interview and practises with Anna, Lars and Nils."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "work",
+    "interview",
+    "practice",
+    "indirect speech",
+    "modal verbs"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ana": "Anna",
+    "sjef": "Sjefen i bokhandelen",
+    "luis": "Lars",
+    "marta": "Marta"
+  },
+  "sections": [
+    {
+      "title": "Å vente",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ventet i fem dager. Hver dag så han på telefonen, og hver kveld spurte Lars: «Har de ringt?»",
+              "english": "Sam waited for five days. Every day he looked at the phone, and every evening Lars asked: \"Have they called?\""
+            },
+            {
+              "text": "Nei, ikke ennå. Kanskje de ikke vil ha meg.",
+              "english": "No, not yet. Maybe they do not want me.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Sjefen har ikke svart ennå, men han svarer snart. Du burde ikke tenke på det hver dag.",
+              "english": "The manager has not answered yet, but he will probably answer soon. You should not think about it every day.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Så en dag ringte telefonen mens Sam satt og leste. Det var sjefen i bokhandelen.",
+              "english": "Then one day the phone rang while Sam was sitting reading. It was the manager of the bookshop."
+            },
+            {
+              "text": "Hei, Sam! Vi har lest søknaden din, og vi vil gjerne at du kommer på intervju.",
+              "english": "Hi, Sam! We have read your application, and we would like you to come for an interview.",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Takk! Når kan jeg komme?",
+              "english": "Thank you! When can I come?",
+              "speaker": "sam"
+            },
+            {
+              "text": "På mandag klokka ti. Kan du det?",
+              "english": "On Monday at ten o'clock. Can you do that?",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Ja, det kan jeg. Jeg kommer.",
+              "english": "Yes, I can. I will come.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Sam var glad, men han var også nervøs. Han sa til Anna og Lars at sjefen hadde ringt, og at han skulle på intervju på mandag.",
+              "english": "Sam was happy, but he was also nervous. He told Anna and Lars that the manager had called, and that he was going to an interview on Monday."
+            },
+            {
+              "text": "Anna ble glad. «Så bra!» sa hun. «Nå må vi øve.»",
+              "english": "Anna was glad. \"How good!\" she said. \"Now we must practise.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Å øve",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På lørdag kveld sa Lars: «Vi øver nå. Jeg spiller sjefen, og du svarer på spørsmålene.»",
+              "english": "On Saturday evening Lars said: \"We practise now. I will play the manager, and you answer the questions.\""
+            },
+            {
+              "text": "God dag. Hvorfor vil du jobbe i en bokhandel?",
+              "english": "Good day. Why do you want to work in a bookshop?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Fordi jeg liker bøker, og fordi jeg vil lære mer norsk.",
+              "english": "Because I like books, and because I want to learn more Norwegian.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er et bra svar. Hvorfor tror du at du er riktig for stillingen?",
+              "english": "That is a good answer. Why do you think you are right for the position?",
+              "speaker": "luis"
+            },
+            {
+              "text": "Jeg vet ikke. Jeg har ingen erfaring.",
+              "english": "I do not know. I have no experience.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei, nei! Du må ikke si at du ikke vet. Du burde si hva du kan.",
+              "english": "No, no! You must not say that you do not know. You should say what you can do.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Da sier jeg at jeg er god til å lytte og god til å lære.",
+              "english": "Then I will say that I am good at listening and good at learning.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er bra. Si også at du kommer tidlig, og at du aldri glemmer ingenting.",
+              "english": "That is good. Say also that you come early, and that you never forget anything.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Og husk å være ærlig. Hvis du ikke forstår et spørsmål, kan du si det. Men si også at du vil lære.",
+              "english": "And remember to be honest. If you do not understand a question, you can say so. But also say that you want to learn.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Ærlig, ja. Det kan jeg.",
+              "english": "Honest, yes. I can do that.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nils kom inn og ville hjelpe. «Jeg har tre råd,» sa han. «Ikke glem veska. Vær glad. Og ikke spis taco før intervjuet!»",
+              "english": "Nils came in and wanted to help. \"I have three pieces of advice,\" he said. \"Do not forget the bag. Be happy. And do not eat tacos before the interview!\""
+            },
+            {
+              "text": "Alle lo. «Det er gode råd, Nils,» sa Anna. «Takk for rådene.»",
+              "english": "Everyone laughed. \"Those are good pieces of advice, Nils,\" said Anna. \"Thanks for the advice.\""
+            },
+            {
+              "text": "De øvde i en time. Til slutt kunne Sam svare på alle spørsmålene.",
+              "english": "They practised for an hour. In the end Sam could answer all the questions."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kvelden før",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På søndag kveld forberedte Sam seg godt. Han leste søknaden en gang til, og han svarte høyt på alle spørsmålene.",
+              "english": "On Sunday evening Sam prepared himself well. He read the application once more, and he answered all the questions aloud."
+            },
+            {
+              "text": "«Du har forberedt deg bra,» sa Anna. «Nå burde du sove.»",
+              "english": "\"You have prepared well,\" said Anna. \"Now you should sleep.\""
+            },
+            {
+              "text": "Men klokka var elleve, og han hadde ikke sovet ennå. Han var nervøs, og han tenkte: «Hvorfor er jeg så redd? Hva om jeg ikke forstår spørsmålene?»",
+              "english": "But it was eleven o'clock, and he had not slept yet. He was nervous, and he thought: \"Why am I so afraid? What if I do not understand the questions?\""
+            },
+            {
+              "text": "Han tenkte på rådene til Nils og på jenta på brua. Hun hadde vært klok, og hun hadde ikke vært redd for trollet.",
+              "english": "He thought of Nils's advice and of the girl on the bridge. She had been clever, and she had not been afraid of the troll."
+            },
+            {
+              "text": "Så ringte Marta.",
+              "english": "Then Marta called."
+            },
+            {
+              "text": "Anna sa at du skal på intervju. Jeg vil bare si at du ikke trenger å være redd.",
+              "english": "Anna said that you are going to an interview. I just want to say that you do not need to be afraid.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Da jeg skulle selge brød på markedet første gang, var jeg også nervøs. Men jeg var meg selv, og det gikk bra. Folk liker en som er ærlig.",
+              "english": "When I was going to sell bread at the market for the first time, I was nervous too. But I was myself, and it went well. People like someone who is honest.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Takk, Marta. Jeg skal prøve å være meg selv.",
+              "english": "Thank you, Marta. I will try to be myself.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du har forberedt deg godt. Jeg ber for deg i kveld, og nå burde du sove.",
+              "english": "You have prepared yourself well. I will pray for you tonight, and now you should sleep.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Etter telefonen ba Sam selv: «Gud, hjelp meg i morgen.» Så sov han.",
+              "english": "After the call Sam prayed himself: \"God, help me tomorrow.\" Then he slept."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "I kirka ber flere venner for deg. Nils har fortalt at fiskerne drar ut i båt og spiser tørr fisk før de skal begynne.",
+              "english": "In church several are praying for you. Nils has told that the fishermen go out in a boat and eat dried fish before they begin.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Kom hit etter gudstjenesten på søndag, så går vi en tur i naturen.",
+              "english": "Come here after the service on Sunday, and we will go for a walk in nature.",
+              "speaker": "marta"
+            },
+            {
+              "text": "Mange søker jobber, men få får dem. Du har søkt, og du har forberedt deg godt.",
+              "english": "Many apply for jobs, but few get them. You have applied, and you have prepared yourself well.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

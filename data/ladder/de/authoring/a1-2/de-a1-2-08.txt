@@ -1,0 +1,87 @@
+=== de-a1-2-08
+speakers: sam=Sam, weber=Frau Weber, eva=Eva
+## Montag
+Sam ist am Montag bei Frau Weber eingezogen. || On Monday Sam moved in at Mrs Weber's.
+Er hat zwei Koffer und seinen Rucksack gehabt. || He had two suitcases and his school bag.
+[weber] Herr Miller, ich bin froh, dass Sie da sind. || Mr Miller, I am glad that you are here.
+Frau Weber hat die Wohnung geputzt. || Mrs Weber had cleaned the flat.
+Sie hat gesagt: "Hier ist Ihr Schlüssel." || She said: "Here is your key."
+Sam zieht heute ein, und er ist glücklich. || Sam is moving in today, and he is happy.
+Der Nachbar von Frau Weber ist Herr Schmidt, der Bäcker. || Mrs Weber's neighbour is Herr Schmidt, the baker.
+[weber] Die Nachbarn sind gut, Herr Miller. || The neighbours are good, Mr Miller.
+[weber] Deutsch ist eine schöne Sprache. || German is a lovely language.
+
+## Dienstag
+Am Dienstag hat der Kurs angefangen. || On Tuesday the course began.
+Die Lehrerin heißt Eva. || The teacher is called Eva.
+Dieser Kurs ist neu für Sam. || This course is new for Sam.
+[eva] Guten Morgen! || Good morning!
+[eva] Ich bin Eva, die Lehrerin. || I am Eva, the teacher.
+[sam] Eva ist eine gute Lehrerin. || Eva is a good teacher.
+[eva] Deutsch ist eine Sprache für alle. || German is a language for everyone.
+[eva] Eine neue Sprache ist nicht leicht, aber es geht. || A new language is not easy, but it works.
+[eva] Ich erkläre, und Sie üben. || I explain, and you practise.
+Im Kurs sind zwölf Studenten. || There are twelve students in the course.
+[sam] Ich verstehe nicht. || I do not understand.
+[eva] Das Wort "Haus" ist leicht. || The word "Haus" is easy.
+[eva] Das Wort "Straßenbahn" ist schwer! Und "Donnerstag" ist auch schwer. || The word "Straßenbahn" is hard! And "Donnerstag" is hard too.
+
+## Mittwoch
+Am Mittwoch haben sie Grammatik gelernt. || On Wednesday they learned grammar.
+Grammatik ist schwer für Sam. || Grammar is hard for Sam.
+[eva] Sie machen Fehler? || You make mistakes?
+[eva] Das ist gut! || That is good!
+[eva] Fehler sind nicht schlecht. || Mistakes are not bad.
+[eva] Ich mache auch Fehler. || I make mistakes too.
+Sam hat gefragt: "Was ist dieses Wort?" || Sam asked: "What is this word?"
+[sam] Ich verstehe es nicht. || I do not understand it.
+[eva] Ich erkläre es noch einmal. || I will explain it once more.
+Sam war traurig, aber dann hat er gelacht. || Sam was sad, but then he laughed.
+Am Abend erklärt Sam Frau Weber ein Wort. || In the evening Sam explains a word to Mrs Weber.
+Frau Weber übt mit Sam, und die Grammatik ist leicht für sie. || Mrs Weber practises with Sam, and the grammar is easy for her.
+[eva] Sie sprechen gut. || You speak well.
+[eva] Ich glaube, dass Sie bald alles verstehen. || I believe that you will soon understand everything.
+
+## Donnerstag
+Am Donnerstag hat Sam im Supermarkt eingekauft. || On Thursday Sam went shopping in the supermarket.
+Er kennt den Supermarkt nicht, und er fragt eine Frau. || He does not know the supermarket, and he asks a woman.
+[sam] Bitte, wo ist der Käse? || Please, where is the cheese?
+Die Frau hat gesagt: "Der Käse ist hinter dem Brot." || The woman said: "The cheese is behind the bread."
+[sam] Danke! || Thank you!
+[sam] Ich kenne diesen Supermarkt noch nicht. || I do not know this supermarket yet.
+Zu Hause hat er das Abendessen gekocht: Suppe mit Kartoffeln. || At home he cooked dinner: soup with potatoes.
+[weber] Sie kochen gut! || You cook well!
+[weber] Kennen Sie meinen Nachbarn? || Do you know my neighbour?
+[sam] Ja, er ist Bäcker. || Yes, he is a baker.
+
+## Freitag
+Am Freitag sind Sam und die anderen ins Kino gegangen. || On Friday Sam and the others went to the cinema.
+Sie haben einen neuen Film gesehen. || They saw a new film.
+Ein Mädchen in der Klasse hat geweint, aber die anderen haben gelacht. || A girl in the class cried, but the others laughed.
+Dann haben sie Pizza gegessen. || Then they ate pizza.
+Draußen hat es geregnet. || Outside it rained.
+Sie haben die Jacken und den Regenschirm genommen. || They took the jackets and the umbrella.
+Es war leider heiß im Kino, und der Film war lang. || Unfortunately it was hot in the cinema, and the film was long.
+Sam ist spät zurück gewesen. || Sam got back late.
+
+## Samstag und Sonntag
+Am Wochenende hat Sam Zeit. || At the weekend Sam has time.
+Am Samstag hat Sam sein Zimmer geputzt und die Wäsche gemacht. || On Saturday Sam cleaned his room and did the washing.
+Dann hat er geduscht. || Then he showered.
+Er hat im Büro von Thomas gearbeitet. || He worked in Thomas's office.
+Er hat genug Arbeit gehabt, aber er hat gern gearbeitet. || He had enough work, but he liked working.
+Am Abend hat er am Tisch gesessen und Deutsch geübt. || In the evening he sat at the table and practised German.
+Am Sonntag hat Anna gefragt: "Kommst du mit?" || On Sunday Anna asked: "Are you coming along?"
+Sam ist mitgekommen, und sie sind zum Konzert gelaufen. || Sam came along, and they walked to the concert.
+Die Musik war schön. || The music was lovely.
+
+## Das Wetter im Kurs
+[eva] Heute lernen wir die Jahreszeiten. || Today we are learning the seasons.
+[eva] Im Frühling scheint die Sonne. || In spring the sun shines.
+[eva] Im Sommer wird es heiß: 30 Grad. || In summer it gets hot: 30 degrees.
+[eva] Im Herbst gibt es Regen und Wind. || In autumn there is rain and wind.
+[eva] Im Winter gibt es Schnee. || In winter there is snow.
+[sam] Ich glaube, dass der Winter in Leipzig kalt ist. || I believe that winter in Leipzig is cold.
+[eva] Ja, Herr Miller. || Yes, Mr Miller.
+[eva] Gestern war es schon kalt. || Yesterday it was already cold.
+

@@ -1,0 +1,46 @@
+id: hi-b1-08
+title: छत की बेल पर बाइबल की कक्षा
+domain: church-and-mission-life
+topics: church, scripture, bible study, plants
+notes: Fourth controlled unit of the b1 bridge. It prepares the words of John 15 (hi-b1-09, IRV, CC BY-SA, placed as it is): दाखलता, फलना, चेला, स्वामी, सूखना, आग, जलना, जुड़ना, बैर, सताना, each used three times, in a Thursday Bible class with Pastor Anil on the church roof where a grapevine grows. The unit only talks about the vine and its branches in plain words; the verses themselves are left to hi-b1-09. It also brings back a few common words that the long GDL story hi-b1-07 met once (काफ़ी, सलाह, भोजन, शरीर, विचार). Machine-drafted; a Christian reader and a Hindi reader should check the tone and the Biblical terms.
+---
+## छत की बेल
+चर्च की छत पर अंगूर की एक बेल है, जिसे लोग दाखलता भी कहते हैं। || On the roof of the church there is a grape vine, which people also call a dakhlata.
+पास्टर अनिल हर गुरुवार को शाम की प्रार्थना के बाद बच्चों के साथ वहाँ बाइबल पढ़ते हैं। || Pastor Anil reads the Bible there with the children every Thursday after the evening prayer.
+आज उन्होंने यूहन्ना की किताब खोली, और सैम भी बच्चों के पास बैठ गया। || Today he opened the book of John, and Sam sat down near the children too.
+उन्होंने कहा, "यीशु ने अपने चेलों से कहा था, 'मैं दाखलता हूँ, और तुम डालियाँ हो।'" || He said, "Jesus told his disciples, 'I am the vine, and you are the branches.'"
+अमन ने पूछा, "चेला कौन होता है?" || Aman asked, "Who is a disciple?"
+पास्टर अनिल बोले, "जो किसी के पास रहकर उससे सीखता है, वह उसका चेला होता है।" || Pastor Anil said, "One who stays near someone and learns from him is his disciple."
+"अब आप सब इसे ध्यान से देखिए, और मुझे अपना विचार बताइए।" || "Now all of you look at it carefully, and tell me your thought."
+
+## सूखी डाली
+बेल की एक डाली सूख गई थी, और उस पर कोई फल नहीं था। || One branch of the vine had dried up, and there was no fruit on it.
+सैम ने कहा, "यह तो पूरी सूख गई है।" || Sam said, "This has dried up completely."
+पास्टर अनिल बोले, "जो डाली अलग हो जाती है, वह सूख जाती है।" || Pastor Anil said, "The branch that gets cut off dries up."
+"लोग सूखी डाली को आग में डाल देते हैं, और वह जल जाती है।" || "People put a dry branch in the fire, and it burns."
+"पर जो डाली बेल से जुड़ी रहती है, वह हरी रहती है और फलती है।" || "But the branch that stays joined to the vine stays green and bears fruit."
+अमन ने पूछा, "फलना यानी क्या?" || Aman asked, "What does 'phalna' mean?"
+"फलना यानी फल देना," पास्टर अनिल ने हँसकर कहा, "जैसे आम का पेड़ आम देता है।" || "Phalna means giving fruit," Pastor Anil said with a laugh, "as the mango tree gives mangoes."
+सैम ने कहा, "तो जो जुड़ा रहता है, वही फल देता है।" || Sam said, "So only the one who stays joined gives fruit."
+
+## बाग का स्वामी
+"इस बाग का स्वामी बेल का बहुत ध्यान रखता है," उन्होंने कहा। || "The owner of this garden takes great care of the vine," he said.
+"वह उसे पानी देता है, काफ़ी धूप देता है, और जो डाली कमज़ोर हो जाती है, उसे बचाने की सलाह भी देता है।" || "He gives it water, gives it plenty of sunshine, and gives advice on saving the branch that has become weak."
+सैम ने कहा, "तो स्वामी को हर डाली की चिंता है।" || Sam said, "So the owner cares about every branch."
+"हाँ," पास्टर अनिल ने कहा, "और जो डाली जुड़ी रहती है, उसका शरीर हरा रहता है।" || "Yes," Pastor Anil said, "and the branch that stays joined keeps its body green."
+एक बच्ची बोली, "इसका मतलब है कि हमें भी यीशु से जुड़े रहना है।" || A girl said, "That means we too have to stay joined to Jesus."
+"बिल्कुल," उन्होंने कहा, "और जो स्वामी की बात मानता है, वह फलता है।" || "Quite," he said, "and the one who obeys the owner bears fruit."
+
+## प्रेम और बैर
+फिर पास्टर अनिल ने कहा, "यीशु ने कहा था, 'एक दूसरे से प्रेम रखो।'" || Then Pastor Anil said, "Jesus said, 'Love one another.'"
+"जो प्रेम रखता है, वह बैर नहीं रखता, चाहे लोग उसे सताएँ।" || "The one who loves does not hold enmity, even if people trouble him."
+अमन ने पूछा, "बैर यानी क्या?" || Aman asked, "What does 'bair' mean?"
+"बैर यानी किसी को पसंद न करना," पास्टर अनिल ने कहा। || "Bair means not liking someone," Pastor Anil said.
+"लोग उन्हें सताएँगे, पर वे बैर का जवाब बैर से नहीं देंगे।" || "People will trouble them, but they will not answer enmity with enmity."
+सैम ने धीरे से कहा, "मैं यहाँ यही देखता हूँ कि लोग एक दूसरे को नहीं सताते।" || Sam said softly, "I see just this here, that people do not trouble one another."
+कक्षा के बाद सब बच्चों ने छत से नीचे आकर नानी का बनाया भोजन खाया। || After the class all the children came down from the roof and ate the meal Nani had made.
+अमन ने नानी से कहा, "आज की बेल हमें बहुत कुछ सिखाती है।" || Aman said to Nani, "Today's vine teaches us a great deal."
+नानी हँसीं और बोलीं, "तो कल सुबह उसे पानी देना भी याद रखना।" || Nani laughed and said, "Then remember to water it tomorrow morning too."
+अमन ने सिर हिलाया और बोला, "मैं सबसे पहले छत पर जाऊँगा।" || Aman nodded his head and said, "I will go to the roof first of all."
+सैम ने भी कहा, "मैं भी तुम्हारे साथ चलूँगा, और हम दोनों मिलकर उसे पानी देंगे।" || Sam said too, "I will come along with you, and the two of us will water it together."
+नानी ने दोनों के लिए दूध गरम किया और कहा, "अब जल्दी सो जाओ।" || Nani warmed milk for both of them and said, "Now go to sleep quickly."

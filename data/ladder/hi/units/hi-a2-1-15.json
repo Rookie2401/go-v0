@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Aman says आप to Nani; Nani says तुम to Aman. The tale is told by Nani in the narrative past, with the habitual past (-ता था) for what the animals and the farmer did every day. The mouse calls the cat बहन (sister) as a polite address between animals. बिल is used in the sense \"burrow, mouse-hole\" (the plan glosses it \"bill\"); the adapter has one lemma for both. Please check that the learner is not misled: the unit only uses the burrow sense. Because every planned word may occur exactly three times, the cat and the net are often named by a pronoun (उसने, उसे) after their introduction; the reviewer may find the pronouns slightly ambiguous in places. The tale is a generic folk tale, not a quotation from any one collection. The moral (who makes a trap for others falls into it himself) is spoken by the lion in the plain wording of the course. The closing remark about the सुसमाचार is Nani's: it separates a bedtime story from the good news she believes; no Scripture is quoted. \"धागों का ढेर\" stands for the thrown net after the first mention (to avoid a fourth use of जाल). सयानी (the wise goat) and \"फूल गई\" (swelled with pride) are idioms of the plan's recycle list."
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Aman says आप to Nani; Nani says तुम to Aman. The tale is told by Nani in the narrative past, with the habitual past (-ता था) for what the animals and the farmer did every day. The mouse calls the cat बहन (sister) as a polite address between animals. बिल is used in the sense \"burrow, mouse-hole\" (the plan glosses it \"bill\"); the adapter has one lemma for both. Please check that the learner is not misled: the unit only uses the burrow sense. Because every planned word may occur exactly three times, the cat and the net are often named by a pronoun (उसने, उसे) after their introduction; the reviewer may find the pronouns slightly ambiguous in places. The tale is a generic folk tale, not a quotation from any one collection. The moral (who makes a trap for others falls into it himself) is spoken by the lion in the plain wording of the course. The closing remark about the सुसमाचार is Nani's: it separates a bedtime story from the good news she believes; no Scripture is quoted. \"धागों का ढेर\" stands for the thrown net after the first mention (to avoid a fourth use of जाल). सयानी (the wise goat) and \"फूल गई\" (swelled with pride) are idioms of the plan's recycle list. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -462,6 +462,42 @@
             {
               "text": "नानी: अब आँखें बंद करो, बारिश भी धीरे-धीरे रुक रही है।",
               "english": "Now close your eyes, the rain is slowly stopping too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "चूहे ने एक चमकीला खिलौना देखा, तो वह बहुत ख़ुश हुआ।",
+              "english": "The mouse saw a shiny toy, and he was very happy."
+            },
+            {
+              "text": "माँ ने उसे डाँटा और कहा, \"सावधान रहो, बेटा!\"",
+              "english": "His mother scolded him and said, \"Be careful, son!\""
+            },
+            {
+              "text": "चूहे ने कहा, \"वाह, माँ, यह तो बहुत सुंदर है!\"",
+              "english": "The mouse said, \"Wow, mother, this is very beautiful!\""
+            },
+            {
+              "text": "उधर नाई की दुकान के पास एक ट्रक रुका, और स्कूटर वाला चना खरीदने उतरा।",
+              "english": "Over there a truck stopped near the barber's shop, and the scooter rider got down to buy chickpeas."
+            },
+            {
+              "text": "मोटर वाले ने सावधान होकर सबको रास्ता दिया।",
+              "english": "The car driver carefully gave everyone way."
+            },
+            {
+              "text": "चूहे को पार जाना था, पर बहुत सारी गाड़ियाँ थीं, इसलिए वह रुक गया।",
+              "english": "The mouse had to cross over, but there were a lot of vehicles, so he stopped."
+            },
+            {
+              "text": "इतने में गेट के पास से कोई बोला, \"रुको!\"",
+              "english": "Just then somebody near the gate said, \"Stop!\""
+            },
+            {
+              "text": "चूहा गेट के पास रुका, और फिर उसने पार जाने का फ़ैसला किया।",
+              "english": "The mouse stopped near the gate, and then he decided to go across."
             }
           ]
         }

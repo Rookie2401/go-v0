@@ -13,7 +13,7 @@ Hunden kom til {nico}. Han tok den med seg. || The dog came to Nils. He took it 
 {nico} gikk til {marta}. Han hadde hunden i jakka. || Nils went to Marta. He had the dog in his jacket.
 [marta] Hva har du, {nico}? || What have you got, Nils?
 [nico] Jeg fant en hund! Den er våt og kald. Vi må finne eieren. || I found a dog! It is wet and cold. We must find the owner.
-[marta] Ja, vi må finne eieren. Men først må vi hjelpe den. || Yes, we must find the owner. But first we must help it.
+[marta] Ja, vi må finne ham. Men først må vi hjelpe den. || Yes, we must find him. But first we must help it.
 {marta} tok brød og melk. Hunden spiste og drakk. Så sov den. || Marta took bread and milk. The dog ate and drank. Then it slept.
 [marta] Du reddet hunden, {nico}. Du er snill. || You rescued the dog, Nils. You are kind.
 
@@ -25,8 +25,10 @@ Mange sa nei. Til slutt kom de til et lite hus. Fru Berg bodde i huset. || Many 
 {nico} hadde hunden med seg. Eieren var fru Berg! || Nils had the dog with him. The owner was Mrs Berg!
 Fru Berg ble veldig glad. Hun sa: «Takk, {nico}! Takk, {sam}! Dere har reddet hunden min.» || Mrs Berg became very glad. She said: "Thank you, Nils! Thank you, Sam! You have rescued my dog."
 [nico] Hva heter den? || What is its name?
-[berg] Den heter Bjørn. Jeg er glad i den, og jeg er glad i dere. || Its name is Bjørn. I am fond of it, and I am fond of you.
+[berg] Den heter Bjørn. Bjørn er en bra hund. Jeg er glad i den, og jeg er glad i dere. || Its name is Bjørn. Bjørn is a good dog. I am fond of it, and I am fond of you.
 {sam} husket fru Berg fra første dagen i {city}. Hun var fortsatt like snill. || Sam remembered Mrs Berg from the first day in Bergen. She was still just as kind.
 
 ## Husker du?
 Etterpå bakte {sam} selv: mel, salt, gjær og deig. Han satte brødet i ovnen, og det ble ferdig og lukter godt. Det smakte riktig. || Afterwards Sam baked himself: flour, salt, yeast and dough. He put the bread in the oven, and it became ready and smells good. It tasted right.
+
+{ana} fikk et tilbud fra et sykehus, og valget var vanskelig. Fiskerne drar ut og fanger fisk. Mange kommer til gudstjeneste på søndag. Strøm kommer fra elver og fjell. || Anna got an offer from a hospital, and the choice was difficult. The fishermen go out and catch fish. Many come to the service on Sunday. Electricity comes from rivers and mountains.

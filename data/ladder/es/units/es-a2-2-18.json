@@ -521,6 +521,103 @@
           ]
         }
       ]
+    },
+    {
+      "title": "La casa vieja",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al día siguiente, doña Marta abre la puerta de la casa vieja con la llave de su papá.",
+              "english": "The next day, doña Marta opens the door of the old house with her father's key."
+            },
+            {
+              "text": "La casa está cerrada hace cuarenta años, pero adentro todo está seco.",
+              "english": "The house has been closed for forty years, but inside everything is dry."
+            },
+            {
+              "text": "Nico sube la escalera con cuidado, pero la escalera es mala y se rompe un escalón.",
+              "english": "Nico climbs the stairs carefully, but the stairs are bad and a step breaks."
+            },
+            {
+              "text": "—Cuidado —grita doña Marta—. Esa escalera no es rápida ni segura.",
+              "english": "\"Careful,\" shouts doña Marta. \"That staircase is neither quick nor safe.\""
+            },
+            {
+              "text": "Nico baja, y tiene heridas pequeñas en las manos.",
+              "english": "Nico comes down, and has small wounds on his hands."
+            },
+            {
+              "text": "Doña Marta busca un trapo seco y le limpia las manos, sin decir una palabra.",
+              "english": "Doña Marta looks for a dry cloth and cleans his hands, without saying a word."
+            },
+            {
+              "text": "En la puerta duerme el perro de la vecina, y nadie quiere molestarlo.",
+              "english": "At the door sleeps the neighbour's dog, and nobody wants to bother him."
+            },
+            {
+              "text": "Viene a ayudar una vecina muy cansada, que se levantó en la madrugada, pero trae café con azúcar para todos.",
+              "english": "A very tired neighbour comes to help, who got up before dawn, but she brings coffee with sugar for everybody."
+            },
+            {
+              "text": "Afuera llega un camión con sacos de maíz, y detrás viene el tractor de don Chico.",
+              "english": "Outside a truck arrives with sacks of corn, and behind it comes don Chico's tractor."
+            },
+            {
+              "text": "Un estudiante que pasa por el camino se queda a mirar.",
+              "english": "A student who passes along the road stays to watch."
+            },
+            {
+              "text": "Nico dibuja la casa con lápices de colores y se la regala a su abuela.",
+              "english": "Nico draws the house with colored pencils and gives it to his grandmother."
+            },
+            {
+              "text": "Don Carlos llega a mediodía. Está ocupado, pero deja la tienda con su prima, que sabe atender a los clientes.",
+              "english": "Don Carlos arrives at noon. He is busy, but he leaves the shop with his cousin, who knows how to serve the customers."
+            },
+            {
+              "text": "—Yo atiendo la tienda todo el día —dice—, pero hoy vine porque tengo una deuda con usted, doña Marta.",
+              "english": "\"I run the shop all day,\" he says, \"but today I came because I have a debt to you, doña Marta.\""
+            },
+            {
+              "text": "—¿Con mi papá? —pregunta ella, y habla bajito.",
+              "english": "\"With my father?\" she asks, speaking softly."
+            },
+            {
+              "text": "—Con su papá. Mi papá nunca quiso cobrarle, y su papá nunca pudo hacer el pago.",
+              "english": "\"With your father. My father never wanted to charge him, and your father never could make the payment.\""
+            },
+            {
+              "text": "—Entonces la deuda terminó con ellos —dice ella—. Mi papá soñaba con pagarla.",
+              "english": "\"Then the debt ended with them,\" she says. \"My father dreamed of paying it.\""
+            },
+            {
+              "text": "En la cocina todavía están el fogón y el comal, negros de humo.",
+              "english": "In the kitchen the stove and the griddle are still there, black with smoke."
+            },
+            {
+              "text": "—Aquí no hace falta pisto, hacen falta manos —dice doña Marta.",
+              "english": "\"Here we do not need money, we need hands,\" says doña Marta."
+            },
+            {
+              "text": "—Cheque —dice Nico—, yo traigo el agua.",
+              "english": "\"Fine,\" says Nico, \"I'll bring the water.\""
+            },
+            {
+              "text": "Los vecinos miran a Sam, el chele alto, que carga un saco con las dos manos.",
+              "english": "The neighbours look at Sam, the tall fair-skinned fellow, who carries a sack with both hands."
+            },
+            {
+              "text": "A mediodía comen el almuerzo en la casa vieja, todos juntos.",
+              "english": "At noon they eat lunch in the old house, all together."
+            },
+            {
+              "text": "Por la noche, en la cena, doña Marta dice que la espera de cuarenta años terminó.",
+              "english": "At night, at dinner, doña Marta says that the forty-year wait is over."
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

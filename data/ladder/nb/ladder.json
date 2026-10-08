@@ -386,6 +386,198 @@
       "document": "units/nb-a2-2-12.json",
       "domain": "narrative",
       "title": "Sam stays"
+    },
+    {
+      "id": "nb-b1-bridge-01",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-01.json",
+      "domain": "work",
+      "title": "A job in the paper"
+    },
+    {
+      "id": "nb-b1-bridge-02",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-02.json",
+      "domain": "work",
+      "title": "The call from the bookshop"
+    },
+    {
+      "id": "nb-b1-bridge-03",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-03.json",
+      "domain": "work",
+      "title": "The interview"
+    },
+    {
+      "id": "nb-b1-bridge-04",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-04.json",
+      "domain": "work",
+      "title": "The first day"
+    },
+    {
+      "id": "nb-b1-bridge-05",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-05.json",
+      "domain": "daily-life",
+      "title": "The first pay"
+    },
+    {
+      "id": "nb-b1-bridge-06",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-06.json",
+      "domain": "daily-life",
+      "title": "Flats to rent"
+    },
+    {
+      "id": "nb-b1-bridge-07",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-07.json",
+      "domain": "daily-life",
+      "title": "The viewing"
+    },
+    {
+      "id": "nb-b1-bridge-08",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-08.json",
+      "domain": "daily-life",
+      "title": "The contract"
+    },
+    {
+      "id": "nb-b1-bridge-09",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-09.json",
+      "domain": "community",
+      "title": "Moving day"
+    },
+    {
+      "id": "nb-b1-bridge-10",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-10.json",
+      "domain": "community",
+      "title": "The neighbours"
+    },
+    {
+      "id": "nb-b1-bridge-11",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-11.json",
+      "domain": "news",
+      "title": "The local election"
+    },
+    {
+      "id": "nb-b1-bridge-12",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-12.json",
+      "domain": "work",
+      "title": "A difficult customer"
+    },
+    {
+      "id": "nb-b1-bridge-13",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-13.json",
+      "domain": "health",
+      "title": "A fall from the bicycle"
+    },
+    {
+      "id": "nb-b1-bridge-14",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-14.json",
+      "domain": "health",
+      "title": "What does a nurse do?"
+    },
+    {
+      "id": "nb-b1-bridge-15",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-15.json",
+      "domain": "faith",
+      "title": "The home group"
+    },
+    {
+      "id": "nb-b1-bridge-16",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-16.json",
+      "domain": "community",
+      "title": "The Christmas bazaar"
+    },
+    {
+      "id": "nb-b1-bridge-17",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-17.json",
+      "domain": "family",
+      "title": "Christmas Eve"
+    },
+    {
+      "id": "nb-b1-bridge-18",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-18.json",
+      "domain": "news",
+      "title": "The electricity price"
+    },
+    {
+      "id": "nb-b1-bridge-19",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-19.json",
+      "domain": "nature",
+      "title": "Winter holiday at the cabin"
+    },
+    {
+      "id": "nb-b1-bridge-20",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-20.json",
+      "domain": "faith",
+      "title": "Easter"
+    },
+    {
+      "id": "nb-b1-bridge-21",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-21.json",
+      "domain": "family",
+      "title": "A letter to Mum"
+    },
+    {
+      "id": "nb-b1-bridge-22",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-22.json",
+      "domain": "travel",
+      "title": "On board the coastal ship"
+    },
+    {
+      "id": "nb-b1-bridge-23",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-23.json",
+      "domain": "travel",
+      "title": "The midnight sun"
+    },
+    {
+      "id": "nb-b1-bridge-24",
+      "stage": "b1-bridge",
+      "kind": "controlled",
+      "document": "units/nb-b1-bridge-24.json",
+      "domain": "narrative",
+      "title": "Two years in Norway"
     }
   ]
 }

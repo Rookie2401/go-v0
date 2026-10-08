@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-12",
+  "lang": "sq",
+  "title": "Plani për Korçën",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-12",
+    "title": "Albanian ladder, b1-bridge: Plani për Korçën (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Plani për Korçën",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dritani kishte filluar punën si shofer të hënën e kaluar.",
+              "english": "Dritan had started work as a driver last Monday."
+            },
+            {
+              "text": "Para se t'i jepte çelësat e furgonit, shoqja e Anës kishte kërkuar patentën e tij dhe e kishte parë me kujdes.",
+              "english": "Before giving him the keys of the minibus, Ana's friend had asked for his licence and had looked at it carefully."
+            },
+            {
+              "text": "Dritani e mbante patentën në xhep, edhe pse nuk e kontrollonte askush.",
+              "english": "Dritan kept the licence in his pocket, even though nobody checked it."
+            },
+            {
+              "text": "Ai thoshte se patenta ishte letra e vetme që e kishte gjithmonë me vete.",
+              "english": "He said that the licence was the only paper he always had with him."
+            },
+            {
+              "text": "Zonja që e kishte furgonin, shoqja e Anës, i kishte thënë se ishte një punë e mirë dhe se, nëse punonte mirë, kontrata do të vazhdonte.",
+              "english": "The lady who owned the minibus, Ana's friend, had told him that it was a good job and that, if he worked well, the contract would continue."
+            },
+            {
+              "text": "Ai ishte i lumtur, por këtë të enjte mbrëmje ishte edhe pak i lodhur.",
+              "english": "He was happy, but this Thursday evening he was also a little tired."
+            },
+            {
+              "text": "Mira i kishte thënë se motra e saj nga Korça i kishte telefonuar, dhe tani të gjithë ishin mbledhur në shtëpinë e tyre për të vendosur.",
+              "english": "Mira had told him that her sister from Korça had phoned, and now they had all gathered at their house to decide."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Motra ime thotë se na pret për tri ditë, — tha Mira.",
+              "english": "\"My sister says she expects us for three days,\" said Mira."
+            },
+            {
+              "text": "— Ka një dhomë për fëmijët dhe një shtrat për dy të rritur.",
+              "english": "'She has a room for the children and a bed for two adults.'"
+            },
+            {
+              "text": "— Do të marr edhe një batanije për fëmijët, — tha Mira.",
+              "english": "'I will take a blanket for the children too,' said Mira."
+            },
+            {
+              "text": "— Dhe thotë se ky është viti më i bukur që ka pasur ndonjëherë qyteti.",
+              "english": "'And she says that this is the most beautiful year the city has ever had.'"
+            },
+            {
+              "text": "— Kush do të vijë? — pyeti Ana.",
+              "english": "\"Who will come?\" asked Ana."
+            },
+            {
+              "text": "— Ne të katër, dhe Sami, dhe ju, nëse mundeni, — u përgjigj Mira.",
+              "english": "\"The four of us, and Sam, and you, if you can,\" Mira answered."
+            },
+            {
+              "text": "— Unë nuk mund, — tha Luani.",
+              "english": "\"I cannot,\" said Luan."
+            },
+            {
+              "text": "— Kam provime të premten dhe të shtunën, dhe nëse nuk jam atje, nxënësit do të kenë një mësues që nuk e njohin.",
+              "english": "'I have exams on Friday and Saturday, and if I am not there the pupils will have a teacher they do not know.'"
+            },
+            {
+              "text": "— Po të kisha më shumë ditë, do të vija me gëzim.",
+              "english": "'If I had more days, I would come with joy.'"
+            },
+            {
+              "text": "— Edhe Ana duhet të pyesë Dr Artën, — shtoi Mira.",
+              "english": "'Ana too must ask Dr Arta,' added Mira."
+            },
+            {
+              "text": "— E kam pyetur, — tha Ana.",
+              "english": "\"I have asked,\" said Ana."
+            },
+            {
+              "text": "— Dr Arta tha se mund të largohem, por vetëm nëse kthehem të hënën në orën tetë.",
+              "english": "\"Dr Arta said that I can go away, but only if I come back on Monday at eight.\""
+            },
+            {
+              "text": "— Atëherë duhet të nisemi të premten në mëngjes herët dhe të kthehemi të dielën në mbrëmje, — tha Dritani.",
+              "english": "\"Then we must set off early on Friday morning and come back on Sunday evening,\" said Dritan."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dritani e hapi një hartë të madhe mbi tavolinë.",
+              "english": "Dritan opened a big map on the table."
+            },
+            {
+              "text": "Sami e vuri telefonin pranë hartës për të parë ku ishte Pogradeci.",
+              "english": "Sam put his phone beside the map to see where Pogradec was."
+            },
+            {
+              "text": "Pastaj e vuri telefonin në xhep dhe e shikoi Dritanin.",
+              "english": "Then he put the phone in his pocket and looked at Dritan."
+            },
+            {
+              "text": "Dritani e fshiu me laps rrugën e vjetër dhe e shkroi një të re.",
+              "english": "Dritan rubbed out the old road with a pencil and wrote a new one."
+            },
+            {
+              "text": "— Rruga më e shkurtër kalon nga Elbasani, nëpër mal, — shpjegoi ai.",
+              "english": "\"The shortest road goes through Elbasan, over the mountain,\" he explained."
+            },
+            {
+              "text": "— Është e bukur, por ka shumë kthesa.",
+              "english": "\"It is beautiful, but it has many bends.\""
+            },
+            {
+              "text": "— Nëse jemi të lodhur, mund të pushojmë në Pogradec dhe të flemë atje.",
+              "english": "\"If we are tired, we can rest in Pogradec and sleep there.\""
+            },
+            {
+              "text": "— Po furgoni? — pyeti Sami.",
+              "english": "\"And the minibus?\" asked Sam."
+            },
+            {
+              "text": "— A nuk është i shoqes së Anës?",
+              "english": "'Is it not Ana's friend's?'"
+            },
+            {
+              "text": "— Është i saj, por ajo më tha se nga e premtja në të hënë nuk i duhet, — tha Dritani.",
+              "english": "\"It is hers, but she told me that from Friday to Monday she does not need it,\" said Dritan."
+            },
+            {
+              "text": "— Më tha: «Nëse e merr, ki kujdes me të, dhe mos ngas shpejt.»",
+              "english": "\"She said to me: 'If you take it, take care of it, and do not drive fast.'\""
+            },
+            {
+              "text": "— Unë gjithmonë ngas ngadalë, — tha ai.",
+              "english": "\"I always drive slowly,\" he said."
+            },
+            {
+              "text": "— Po, — qeshi Mira, — kur nuk je vonë.",
+              "english": "\"Yes,\" Mira laughed, \"when you are not late.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Sa do të kushtojë? — pyeti Sami.",
+              "english": "\"How much will it cost?\" asked Sam."
+            },
+            {
+              "text": "— Unë dua të paguaj për rrugën, ose një pjesë të saj.",
+              "english": "'I want to pay for the road, or a part of it.'"
+            },
+            {
+              "text": "— Mos mendo shumë, — tha Dritani.",
+              "english": "'Do not think too much,' said Dritan."
+            },
+            {
+              "text": "— Rrugën e paguan ajo, sepse e quan pjesë të punës.",
+              "english": "'She pays for the road, because she counts it as part of the work.'"
+            },
+            {
+              "text": "— Ti paguaj një kafe në Pogradec.",
+              "english": "\"You pay for a coffee in Pogradec.\""
+            },
+            {
+              "text": "— Mirë, — tha Sami.",
+              "english": "'Good,' said Sam."
+            },
+            {
+              "text": "— Po klubi? Të shtunën kemi mësim.",
+              "english": "\"And the club? We have a lesson on Saturday.\""
+            },
+            {
+              "text": "— Mund t'i çosh fëmijët në shtëpi të mi, — tha Luani.",
+              "english": "\"You can send the children to my house.\""
+            },
+            {
+              "text": "— Jo, — tha Sami.",
+              "english": "\"No,\" said Sam."
+            },
+            {
+              "text": "— Do të shkruaj një mesazh: këtë javë ata do të mësojnë vetë dhe do të sjellin diçka nga shtëpia.",
+              "english": "\"I will write a message: this week they will learn on their own and bring something from home.\""
+            },
+            {
+              "text": "— Çfarë?",
+              "english": "\"What?\""
+            },
+            {
+              "text": "— Një histori në anglisht, ose tri fjalë të reja.",
+              "english": "\"A story in English, or three new words.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Fëmijët, që po dëgjonin nga dhoma tjetër, dolën te dera.",
+              "english": "The children, who were listening from the other room, came to the door."
+            },
+            {
+              "text": "— Do të vijmë në Korçë? — pyeti Elira me sy të mëdhenj.",
+              "english": "\"Are we coming to Korça?\" asked Elira with big eyes."
+            },
+            {
+              "text": "— Po, — tha Dritani, — dhe do të pushojmë çdo dy orë që të mos ndihet keq askush.",
+              "english": "\"Yes,\" said Dritan, \"and we will rest every two hours so that nobody feels sick.\""
+            },
+            {
+              "text": "Gjergji u gëzua shumë, dhe Ardi ngriti dorën si në shkollë.",
+              "english": "Gjergj was very glad, and Ardi raised his hand as in school."
+            },
+            {
+              "text": "— A mund të sjell edhe unë një mik? — pyeti.",
+              "english": "\"May I bring a friend too?\" he asked."
+            },
+            {
+              "text": "— Cilin mik? — pyeti Mira.",
+              "english": "\"Which friend?\" asked Mira."
+            },
+            {
+              "text": "— Bardhin!",
+              "english": "\"Bardhi!\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

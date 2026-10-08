@@ -43,6 +43,19 @@
     "narrative"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "speakers": {
     "MA": "Marta",
     "BE": "Ben",
@@ -85,29 +98,29 @@
               "english": "In the evening, when they came home, the keys were gone."
             },
             {
+              "speaker": "MA",
               "text": "Wo ist mein Schlüsselbund?",
-              "english": "Where is my bunch of keys?",
-              "speaker": "MA"
+              "english": "Where is my bunch of keys?"
             },
             {
+              "speaker": "MA",
               "text": "Ich hatte ihn doch in der Tasche!",
-              "english": "I did have it in my pocket!",
-              "speaker": "MA"
+              "english": "I did have it in my pocket!"
             },
             {
+              "speaker": "BE",
               "text": "Hast du wirklich in der Tasche gesucht, Oma?",
-              "english": "Did you really look in your pocket, Oma?",
-              "speaker": "BE"
+              "english": "Did you really look in your pocket, Oma?"
             },
             {
+              "speaker": "MA",
               "text": "Ich habe in allen Taschen gesucht.",
-              "english": "I looked in all the pockets.",
-              "speaker": "MA"
+              "english": "I looked in all the pockets."
             },
             {
+              "speaker": "MA",
               "text": "Sie sind weg.",
-              "english": "They are gone.",
-              "speaker": "MA"
+              "english": "They are gone."
             },
             {
               "text": "Zum Glück hatte Frau Weber, ihre alte Nachbarin, einen Ersatzschlüssel.",
@@ -159,24 +172,24 @@
               "english": "It was a big selection of lost things."
             },
             {
+              "speaker": "BE",
               "text": "Oma, schau, so viele Sachen!",
-              "english": "Oma, look, so many things!",
-              "speaker": "BE"
+              "english": "Oma, look, so many things!"
             },
             {
+              "speaker": "BE",
               "text": "Gehört das alles jemandem?",
-              "english": "Does all of that belong to somebody?",
-              "speaker": "BE"
+              "english": "Does all of that belong to somebody?"
             },
             {
+              "speaker": "MA",
               "text": "Ja, Ben.",
-              "english": "Yes, Ben.",
-              "speaker": "MA"
+              "english": "Yes, Ben."
             },
             {
+              "speaker": "MA",
               "text": "Aber die Leute holen sie oft nicht ab.",
-              "english": "But people often do not collect them.",
-              "speaker": "MA"
+              "english": "But people often do not collect them."
             },
             {
               "text": "Der Mann fragte: Was haben Sie verloren?",
@@ -426,64 +439,64 @@
               "english": "Anna showed her the ward."
             },
             {
+              "speaker": "AN",
               "text": "Wie gefällt Ihnen Leipzig?",
-              "english": "How do you like Leipzig?",
-              "speaker": "AN"
+              "english": "How do you like Leipzig?"
             },
             {
+              "speaker": "AN",
               "text": "Ist es anders als Hamburg?",
-              "english": "Is it different from Hamburg?",
-              "speaker": "AN"
+              "english": "Is it different from Hamburg?"
             },
             {
+              "speaker": "FR",
               "text": "Ja, es ist ruhiger, aber es hat tatsächlich Vorteile.",
-              "english": "Yes, it is quieter, but it really has advantages.",
-              "speaker": "FR"
+              "english": "Yes, it is quieter, but it really has advantages."
             },
             {
+              "speaker": "FR",
               "text": "Das Leben ist günstiger, bequemer und einfacher.",
-              "english": "Life is cheaper, more comfortable and simpler.",
-              "speaker": "FR"
+              "english": "Life is cheaper, more comfortable and simpler."
             },
             {
+              "speaker": "FR",
               "text": "Außerdem ist die Qualität der Stadt gut.",
-              "english": "Besides, the quality of the city is good.",
-              "speaker": "FR"
+              "english": "Besides, the quality of the city is good."
             },
             {
+              "speaker": "FR",
               "text": "Es gibt viel Auswahl und praktische Wege.",
-              "english": "There is much choice and practical routes.",
-              "speaker": "FR"
+              "english": "There is much choice and practical routes."
             },
             {
+              "speaker": "FR",
               "text": "Jedoch kenne ich hier niemanden.",
-              "english": "However, I know nobody here.",
-              "speaker": "FR"
+              "english": "However, I know nobody here."
             },
             {
+              "speaker": "AN",
               "text": "Das ist ein Nachteil, aber er ist nicht schwer zu lösen.",
-              "english": "That is a disadvantage, but it is not hard to solve.",
-              "speaker": "AN"
+              "english": "That is a disadvantage, but it is not hard to solve."
             },
             {
+              "speaker": "AN",
               "text": "Wir haben eine Gemeinde, die gern neue Menschen aufnimmt.",
-              "english": "We have a church that gladly takes in new people.",
-              "speaker": "AN"
+              "english": "We have a church that gladly takes in new people."
             },
             {
+              "speaker": "FR",
               "text": "Allerdings ist der Wohnort wichtig.",
-              "english": "However the place where one lives is important.",
-              "speaker": "FR"
+              "english": "However the place where one lives is important."
             },
             {
+              "speaker": "FR",
               "text": "Ich glaube, ich wohne lieber hier.",
-              "english": "I think I would rather live here.",
-              "speaker": "FR"
+              "english": "I think I would rather live here."
             },
             {
+              "speaker": "FR",
               "text": "Je mehr ich sehe, desto besser gefällt es mir.",
-              "english": "The more I see, the more I like it.",
-              "speaker": "FR"
+              "english": "The more I see, the more I like it."
             },
             {
               "text": "Nach dem Gespräch ging die junge Frau auf den Markt.",
@@ -555,14 +568,14 @@
               "english": "Marta was surprised and could hardly speak."
             },
             {
+              "speaker": "MA",
               "text": "Mein Schlüsselbund!",
-              "english": "My bunch of keys!",
-              "speaker": "MA"
+              "english": "My bunch of keys!"
             },
             {
+              "speaker": "MA",
               "text": "Wie ist er hierher gekommen?",
-              "english": "How did it get here?",
-              "speaker": "MA"
+              "english": "How did it get here?"
             },
             {
               "text": "Nachdem sie den Zettel gelesen hatte, verstand sie noch nicht alles.",
@@ -581,14 +594,14 @@
               "english": "He had discovered the note and shouted: Oma, that is a miracle!"
             },
             {
+              "speaker": "MA",
               "text": "Es ist kein Wunder, Ben, es ist ein Zufall.",
-              "english": "It is no miracle, Ben, it is a coincidence.",
-              "speaker": "MA"
+              "english": "It is no miracle, Ben, it is a coincidence."
             },
             {
+              "speaker": "MA",
               "text": "Aber es ist ein gutes Rätsel.",
-              "english": "But it is a good puzzle.",
-              "speaker": "MA"
+              "english": "But it is a good puzzle."
             },
             {
               "text": "Am nächsten Tag erzählte Marta die Geschichte Frau Weber.",
@@ -599,33 +612,33 @@
               "english": "Both laughed and cried at the same time."
             },
             {
+              "speaker": "FW",
               "text": "Das Rätsel ist gelöst: Sie haben den Mantel verschenkt, und die Schlüssel waren noch drin.",
-              "english": "The puzzle is solved: you gave the coat away, and the keys were still in it.",
-              "speaker": "FW"
+              "english": "The puzzle is solved: you gave the coat away, and the keys were still in it."
             },
             {
+              "speaker": "MA",
               "text": "Und die Fremde hat sie gefunden, und sie hat sie zurückgebracht.",
-              "english": "And the stranger found them, and she brought them back.",
-              "speaker": "MA"
+              "english": "And the stranger found them, and she brought them back."
             },
             {
+              "speaker": "MA",
               "text": "Das ist wie ein Märchen.",
-              "english": "That is like a fairy tale.",
-              "speaker": "MA"
+              "english": "That is like a fairy tale."
             },
             {
               "text": "Eine Woche später erfuhr Anna, dass die junge Frau die Stelle bekommen hatte.",
               "english": "A week later Anna heard that the young woman had got the job."
             },
             {
+              "speaker": "AN",
               "text": "Die Fremde ist jetzt unsere Kollegin.",
-              "english": "The stranger is now our colleague.",
-              "speaker": "AN"
+              "english": "The stranger is now our colleague."
             },
             {
+              "speaker": "AN",
               "text": "Das hat mich sehr überrascht, und es war nicht schwierig, sie zu mögen.",
-              "english": "That surprised me very much, and it was not difficult to like her.",
-              "speaker": "AN"
+              "english": "That surprised me very much, and it was not difficult to like her."
             },
             {
               "text": "Marta lud sie zum Essen ein, damit sie sich persönlich bedanken konnte.",
@@ -658,19 +671,367 @@
           ]
         }
       ]
-    }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend erzählt Sam bei Marta von seiner Woche im Dorf in Thüringen.",
+              "english": "In the evening Sam tells Marta about his week in the village in Thuringia."
+            },
+            {
+              "text": "Ben sitzt neben ihr und möchte alles wissen.",
+              "english": "Ben sits next to her and wants to know everything."
+            },
+            {
+              "text": "Er hat damals auf dem Dachboden geschlafen, und das Zimmer war sehr gemütlich.",
+              "english": "Back then he slept in the attic, and the room was very cosy."
+            },
+            {
+              "text": "Das Bett war weich, und er konnte schnell einschlafen.",
+              "english": "The bed was soft, and he could fall asleep quickly."
+            },
+            {
+              "text": "Im Haus roch es nach Holz, und draußen war die Stille groß.",
+              "english": "In the house it smelled of wood, and outside the silence was great."
+            },
+            {
+              "text": "Am nächsten Morgen lag dichter Nebel über dem Dorf, und die Häuser waren fast verschwunden.",
+              "english": "The next morning dense fog lay over the village, and the houses had almost disappeared."
+            },
+            {
+              "text": "Ein alter Mann fragte ihn: Sind Sie der Amerikaner?",
+              "english": "An old man asked him: Are you the American?"
+            },
+            {
+              "text": "Er hat den Flyer sofort eingesteckt, und der Bürgermeister hat Sam persönlich begrüßt.",
+              "english": "He put the flyer away at once, and the mayor greeted Sam in person."
+            },
+            {
+              "text": "Der Wind hat den Tisch fast umgeworfen, und im Nebel kam kaum jemand heraus.",
+              "english": "The wind almost knocked the table over, and in the fog hardly anyone came out."
+            },
+            {
+              "text": "Als die Tür aufging, hat die Gastfamilie sie sofort umarmt.",
+              "english": "When the door opened, the host family hugged them at once."
+            },
+            {
+              "text": "Eine Frau hat sich für das Evangelium interessiert, und ihr Interesse war echt.",
+              "english": "A woman was interested in the gospel, and her interest was real."
+            },
+            {
+              "text": "Das war eine große Freude für Sam.",
+              "english": "That was a great joy for Sam."
+            },
+            {
+              "text": "Klaus sagte: Wer zu uns kommt, soll nicht hungrig gehen.",
+              "english": "Klaus said: Whoever comes to us should not go away hungry."
+            },
+            {
+              "text": "Marta sagt: Das klingt wie ein guter Ort für Menschen.",
+              "english": "Marta says: That sounds like a good place for people."
+            },
+            {
+              "text": "Sam sagt: Ja, und wir haben dort viele Freunde gefunden.",
+              "english": "Sam says: Yes, and we found many friends there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Freitag fuhren sie in die Nachbarorte.",
+              "english": "On Friday they drove to the neighbouring villages."
+            },
+            {
+              "text": "Sie sahen Hügel und Wiesen, und Sam suchte die Burg auf der Karte.",
+              "english": "They saw hills and meadows, and Sam looked for the castle on the map."
+            },
+            {
+              "text": "Das Foto ist leider verwackelt.",
+              "english": "The photo is unfortunately blurred."
+            },
+            {
+              "text": "Inzwischen hatte sich das Wetter gebessert.",
+              "english": "In the meantime the weather had improved."
+            },
+            {
+              "text": "Nach der Heimreise hat Sam sich hingesetzt und ein paar Zeilen geschrieben.",
+              "english": "After the journey home Sam sat down and wrote a few lines."
+            },
+            {
+              "text": "Er wollte nichts vergessen, und er hat es Ben gezeigt.",
+              "english": "He did not want to forget anything, and he showed it to Ben."
+            },
+            {
+              "text": "Ben hat gelacht, weil Sam so schlecht schreibt.",
+              "english": "Ben laughed because Sam writes so badly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ben fragt nach Lukas und nach dem Angebot aus dem Dorf.",
+              "english": "Ben asks about Lukas and about the offer from the village."
+            },
+            {
+              "text": "Sam erzählt ihm, was er an dem Tag gehört hat.",
+              "english": "Sam tells him what he heard that day."
+            },
+            {
+              "text": "An einem Sonntagnachmittag war Lukas in Annas Küche ungewöhnlich still.",
+              "english": "On a Sunday afternoon Lukas was unusually quiet in Anna's kitchen."
+            },
+            {
+              "text": "Auf dem Land ist vieles anders, und manches ist genau umgekehrt.",
+              "english": "In the country much is different, and some things are exactly the opposite."
+            },
+            {
+              "text": "Zugegeben, die Menge an Läden ist klein, und man ist vom Bäcker abhängig.",
+              "english": "Admittedly, the number of shops is small, and one depends on the baker."
+            },
+            {
+              "text": "Wenn der Laden zumacht, ist alles weg.",
+              "english": "When the shop closes, everything is gone."
+            },
+            {
+              "text": "Dort braucht man ein Auto, aber Lukas muss erst den Führerschein machen.",
+              "english": "There you need a car, but Lukas first has to get his driving licence."
+            },
+            {
+              "text": "Ein Arzt ist nur selten im Dorf, aber die Luft ist besser.",
+              "english": "A doctor is only rarely in the village, but the air is better."
+            },
+            {
+              "text": "Der Jugendkreis hat dort nur fünf Mitglieder.",
+              "english": "The youth group there has only five members."
+            },
+            {
+              "text": "Stadt und Dorf sind eben verschieden.",
+              "english": "City and village are simply different."
+            },
+            {
+              "text": "Lukas wollte nur eine gute Antwort finden, und Anna hat ihm geholfen.",
+              "english": "Lukas only wanted to find a good answer, and Anna helped him."
+            },
+            {
+              "text": "Am Ende hat er gesagt: Ihr seid meine Familie.",
+              "english": "In the end he said: You are my family."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam erinnert sich auch an seine erste Woche in Leipzig und an den Müll.",
+              "english": "Sam also remembers his first week in Leipzig and the rubbish."
+            },
+            {
+              "text": "Frau Weber brachte jeden Morgen ihre kleinen Tüten nach unten.",
+              "english": "Frau Weber took her small bags downstairs every morning."
+            },
+            {
+              "text": "Sie hat ihm nichts erklärt, aber er hat alles gesehen.",
+              "english": "She explained nothing to him, but he saw everything."
+            },
+            {
+              "text": "Es gibt mehrere Mülltonnen im Haus, und die Verpackungen kommen in die gelbe.",
+              "english": "There are several bins, and the packaging goes into the yellow one."
+            },
+            {
+              "text": "Das Glas bringt man zu einem großen Behälter auf der Straße.",
+              "english": "One takes the glass to a large container in the street."
+            },
+            {
+              "text": "Alles andere ist Restmüll, und aus dem Essen in der braunen Mülltonne wird Erde.",
+              "english": "Everything else is general waste, and the food in the brown bin becomes soil."
+            },
+            {
+              "text": "Beim Einkaufen begegnet man dem Pfand, zum Beispiel 25 Cent für eine Flasche.",
+              "english": "When shopping one meets the deposit, for example 25 cents for a bottle."
+            },
+            {
+              "text": "Beim Kauf bezahlt man es, und an der Kasse bekommt man das Geld wieder.",
+              "english": "One pays it at the purchase, and at the till one gets the money back."
+            },
+            {
+              "text": "Man verbrennt weniger Müll, und dadurch ist die Luft besser.",
+              "english": "One burns less rubbish, and because of that the air is better."
+            },
+            {
+              "text": "Das klingt vernünftig, aber manchmal weiß man nicht, wohin ein Stück gehört.",
+              "english": "That sounds sensible, but sometimes one does not know where a piece belongs."
+            },
+            {
+              "text": "Die Mülltonnen werden darum manchmal kontrolliert.",
+              "english": "That is why the bins are sometimes checked."
+            },
+            {
+              "text": "Marta lacht und sagt: Bei mir ist das alles einfach.",
+              "english": "Marta laughs and says: For me it is all simple."
+            },
+            {
+              "text": "Sie hat nämlich schon lange viele Flaschen gebracht, und Ben hilft ihr dabei.",
+              "english": "For she has been bringing many bottles for a long time, and Ben helps her with it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Ende denkt Sam an das Café von Herrn Schmidt.",
+              "english": "Finally Sam thinks of Herr Schmidt's cafe."
+            },
+            {
+              "text": "Am Samstag am Abend drehte Jonas seine Tasse in den Händen.",
+              "english": "On Saturday evening Jonas turned his cup in his hands."
+            },
+            {
+              "text": "Herr Schmidt sagte: Ihr sitzt da wie bei einer Beerdigung.",
+              "english": "Herr Schmidt said: You sit there like at a funeral."
+            },
+            {
+              "text": "Jonas wollte ihn nicht verlegen machen, aber er brauchte Geld.",
+              "english": "Jonas did not want to embarrass him, but he needed money."
+            },
+            {
+              "text": "Er hat lange nicht gewusst, wie er anfangen soll.",
+              "english": "He did not know for a long time how he should begin."
+            },
+            {
+              "text": "Die Bank wollte neun Prozent Zinsen.",
+              "english": "The bank wanted nine percent interest."
+            },
+            {
+              "text": "Für die Werkstatt braucht er Werkzeug, auch aus Metall.",
+              "english": "For the workshop he needs tools, also made of metal."
+            },
+            {
+              "text": "Er würde die Prüfung im Herbst wiederholen.",
+              "english": "He would repeat the exam in autumn."
+            },
+            {
+              "text": "Herr Schmidt erzählte von dem Schock bei seiner Ankunft in der fremden Stadt.",
+              "english": "Herr Schmidt told about the shock at his arrival in the foreign city."
+            },
+            {
+              "text": "Anna wollte nach dem Abitur ein Jahr lang reisen.",
+              "english": "After the Abitur Anna wanted to travel for a year."
+            },
+            {
+              "text": "Sie hat dort viele neue Menschen kennengelernt.",
+              "english": "She got to know many new people there."
+            },
+            {
+              "text": "Sam denkt, dass Gott in jeder Stadt und in jedem Dorf Menschen hat.",
+              "english": "Sam thinks that God has people in every city and in every village."
+            },
+            {
+              "text": "Am Ende sagte Herr Schmidt lächelnd: Meinetwegen, wir sprechen morgen darüber.",
+              "english": "In the end Herr Schmidt said with a smile: Fine by me, we will talk about it tomorrow."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Es ist schon spät, und Ben muss bald ins Bett gehen.",
+              "english": "It is already late, and Ben has to go to bed soon."
+            },
+            {
+              "text": "Marta sagt: Du hast viel gesehen, Sam, und du hast viel gelernt.",
+              "english": "Marta says: You have seen a lot, Sam, and you have learned a lot."
+            },
+            {
+              "text": "Sam antwortet: Ja, aber ich habe auch viel Hilfe von guten Menschen bekommen.",
+              "english": "Sam answers: Yes, but I also received a lot of help from good people."
+            },
+            {
+              "text": "Ben fragt: Kommst du am Sonntag wieder zu uns, und erzählst du mir noch mehr?",
+              "english": "Ben asks: Will you come to us again on Sunday, and will you tell me more?"
+            },
+            {
+              "text": "Sam sagt: Natürlich, ich komme gern wieder, und ich bringe dann auch die Bilder mit.",
+              "english": "Sam says: Of course, I will gladly come again, and then I will bring the pictures too."
+            },
+            {
+              "text": "Marta lacht und sagt: Dann koche ich für euch beide einen großen Kuchen.",
+              "english": "Marta laughs and says: Then I will cook a big cake for the two of you."
+            },
+            {
+              "text": "Ben ist glücklich, und er geht mit einem Lächeln ins Bett.",
+              "english": "Ben is happy, and he goes to bed with a smile."
+            },
+            {
+              "text": "Sam geht nach Hause und denkt an alles, was er gehört und gesehen hat.",
+              "english": "Sam goes home and thinks of everything he has heard and seen."
+            },
+            {
+              "text": "Die Straße ist dunkel und ruhig, aber er ist nicht allein.",
+              "english": "The street is dark and quiet, but he is not alone."
+            },
+            {
+              "text": "Er weiß, dass er in Leipzig Freunde hat, und das ist schön.",
+              "english": "He knows that he has friends in Leipzig, and that is nice."
+            },
+            {
+              "text": "Morgen will er wieder zur Arbeit gehen und mit dem Team sprechen.",
+              "english": "Tomorrow he wants to go to work again and talk with the team."
+            },
+            {
+              "text": "Dann erzählt er David und Ruth von dem Abend bei Marta.",
+              "english": "Then he will tell David and Ruth about the evening at Marta's."
+            },
+            {
+              "text": "Sie werden lachen und sagen, dass er viel zu viel redet.",
+              "english": "They will laugh and say that he talks far too much."
+            },
+            {
+              "text": "Aber er hat zwei gute Geschichten für sie, und er freut sich darauf.",
+              "english": "But he has two good stories for them, and he is looking forward to it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am nächsten Tag ruft Marta bei Anna an.",
+              "english": "The next day Marta calls Anna."
+            },
+            {
+              "text": "Sie sagt: Sam war gestern bei mir, und er hat viel erzählt.",
+              "english": "She says: Sam was with me yesterday, and he told me a lot."
+            },
+            {
+              "text": "Anna fragt: Hat er auch von Lukas gesprochen?",
+              "english": "Anna asks: Did he also speak of Lukas?"
+            },
+            {
+              "text": "Marta antwortet: Ja, und ich habe lange darüber nachgedacht.",
+              "english": "Marta answers: Yes, and I thought about it for a long time."
+            },
+            {
+              "text": "Ich glaube, dass er gehen soll, wenn er das will.",
+              "english": "I believe that he should go if he wants to."
+            },
+            {
+              "text": "Anna sagt: Ich glaube das auch, aber ich werde ihn vermissen.",
+              "english": "Anna says: I believe that too, but I will miss him."
+            },
+            {
+              "text": "Marta lacht und sagt: Du kannst ihn jede Woche anrufen, und er kann mit dem Zug zu uns kommen.",
+              "english": "Marta laughs and says: You can call him every week, and he can come to us by train."
+            },
+            {
+              "text": "Dann sind alle zufrieden, und niemand muss traurig sein.",
+              "english": "Then everyone is content, and nobody has to be sad."
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }

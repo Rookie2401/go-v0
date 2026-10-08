@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-14",
+  "lang": "de",
+  "title": "The house group reads the Bible",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-14",
+    "title": "The house group reads the Bible (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next texts (Luther 1912, 1. Johannes 5 and Johannes 17): zeugen, Sünde, Gebot, gleichwie, heiligen. The house group talks ABOUT these words in today's German; the Bible text itself follows as the next two units. No Bible quotation."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "house group",
+    "Bible",
+    "sin",
+    "commandment",
+    "witness"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "thomas": "Thomas",
+    "ruth": "Ruth",
+    "sam": "Sam",
+    "jonas": "Jonas",
+    "sabine": "Sabine"
+  },
+  "sections": [
+    {
+      "title": "Der Hauskreis",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Mittwochabend trifft sich der Hauskreis bei Ruth und David.",
+              "english": "On Wednesday evening the house group meets at Ruth and David's."
+            },
+            {
+              "text": "Pastor Thomas ist auch da, und er hat seine alte Bibel mitgebracht.",
+              "english": "Pastor Thomas is there too, and he has brought his old Bible."
+            },
+            {
+              "text": "Die Bibel ist nach der Übersetzung von Martin Luther, und die Sprache ist nicht ganz einfach.",
+              "english": "The Bible is according to the translation of Martin Luther, and the language is not entirely simple."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Heute lesen wir aus dem Brief des Johannes und aus einem Gebet von Jesus.",
+              "english": "Today we read from the letter of John and from a prayer of Jesus."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ich verstehe nicht jedes Wort.",
+              "english": "I do not understand every word."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Das ist normal. Wir sprechen zuerst über die schweren Wörter.",
+              "english": "That is normal. First we talk about the difficult words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Schwere Wörter",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "thomas",
+              "text": "Das erste Wort ist Sünde.",
+              "english": "The first word is sin."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Sünde ist, wenn man etwas tut, das Gott nicht will.",
+              "english": "Sin is when one does something that God does not want."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ja, aber Sünde ist auch, wenn man etwas nicht tut.",
+              "english": "Yes, but sin is also when one does not do something."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Zum Beispiel, wenn ich einem Freund nicht helfe?",
+              "english": "For example, if I do not help a friend?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Genau. Jeder Mensch hat Schuld, und jeder braucht Vergebung.",
+              "english": "Exactly. Every person has guilt, and everyone needs forgiveness."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Die Sünde trennt uns von Gott, und Jesus bringt uns zurück.",
+              "english": "Sin separates us from God, and Jesus brings us back."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Das zweite Wort ist Gebot.",
+              "english": "The second word is commandment."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Ein Gebot ist eine Regel, die Gott gibt.",
+              "english": "A commandment is a rule that God gives."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie die Regeln in der Hausordnung?",
+              "english": "Like the rules in the house rules?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ein bisschen, aber Gottes Gebote sind keine Strafe.",
+              "english": "A little, but God's commandments are not a punishment."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Sie zeigen uns, wie man gut mit anderen Menschen lebt.",
+              "english": "They show us how to live well with other people."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Das wichtigste Gebot heißt: Liebe Gott und liebe deinen Nächsten.",
+              "english": "The most important commandment is: love God and love your neighbour."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Zeugen und heiligen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sabine",
+              "text": "Und was heißt zeugen?",
+              "english": "And what does zeugen mean?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Hier heißt zeugen: etwas bezeugen, wie ein Zeuge.",
+              "english": "Here zeugen means: to testify to something, like a witness."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ein Zeuge sagt, was er gesehen hat.",
+              "english": "A witness says what he has seen."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Vor Gericht zeugt ein Zeuge für die Wahrheit.",
+              "english": "In court a witness testifies for the truth."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Und die Christen?",
+              "english": "And the Christians?"
+            },
+            {
+              "speaker": "thomas",
+              "text": "Sie zeugen von Jesus. Sie sagen, was sie mit ihm erlebt haben.",
+              "english": "They bear witness to Jesus. They say what they have experienced with him."
+            },
+            {
+              "speaker": "sam",
+              "text": "Wie in unseren Zeugnissen im Hauskreis.",
+              "english": "Like in our testimonies in the house group."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Das letzte Wort ist heiligen.",
+              "english": "The last word is sanctify."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Heiligen heißt: etwas für Gott besonders machen.",
+              "english": "To sanctify means: to make something special for God."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Jesus bittet Gott: Heilige die Menschen, die an mich glauben.",
+              "english": "Jesus asks God: sanctify the people who believe in me."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Und gleichwie? Das steht auch im Text.",
+              "english": "And gleichwie? That is in the text too."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Gleichwie ist ein altes Wort. Es heißt einfach: so wie.",
+              "english": "Gleichwie is an old word. It simply means: just as."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Jetzt kann ich es lesen.",
+              "english": "Now I can read it."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Dann lesen wir. Zuerst der Brief, dann das Gebet.",
+              "english": "Then we read. First the letter, then the prayer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Gebet trinken alle Tee, und Sabine fragt Sam nach seiner Zeit in Deutschland.",
+              "english": "After the prayer everyone drinks tea, and Sabine asks Sam about his time in Germany."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Sam, erinnerst du dich an die Fahrt nach Hameln?",
+              "english": "Sam, do you remember the journey to Hameln?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Oh ja! Die Stadtführerin hat uns die ganze Geschichte erzählt.",
+              "english": "Oh yes! The city guide told us the whole story."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Fahrt war lang, aber am Ende war ich froh.",
+              "english": "The journey was long, but in the end I was glad."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ben hat auch das Märchen von Jakobs Haus gelesen, und Sam erzählt es jetzt der Gruppe.",
+              "english": "Ben also read the tale of Jakob's house, and Sam now tells it to the group."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Hund bellt laut, denn er will die Katze plagen.",
+              "english": "The dog barks loudly, because he wants to tease the cat."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dann kommt die Kuh. Sie hat lange Hörner, und sie plagt den Hund mit ihren Hörnern.",
+              "english": "Then the cow comes. She has long horns, and she teases the dog with her horns."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Lange Hörner? Das möchte ich nicht sehen!",
+              "english": "Long horns? I would not like to see that!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Später kommt ein Mädchen, und es molk die Kuh am Morgen.",
+              "english": "Later a girl comes, and she milked the cow in the morning."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Ich kann nicht melken, aber ich mag die Tiere auf dem Land.",
+              "english": "I cannot milk, but I like the animals in the country."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Er kräht früh am Morgen, und ich höre ihn gern.",
+              "english": "He crows early in the morning, and I like to hear him."
+            },
+            {
+              "speaker": "sam",
+              "text": "Im Märchen sagt der Mann am Ende: Es war gut, dass mein Hahn so laut krähte und mich weckte.",
+              "english": "In the tale the man says at the end: It was good that my rooster crowed so loudly and woke me."
+            },
+            {
+              "speaker": "sam",
+              "text": "Die Geschichte endet im Gotteshaus, und dort ist ein Mann.",
+              "english": "The story ends in the church, and there is a man there."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er hat ein Gebetbuch in der Hand.",
+              "english": "He has a prayer book in his hand."
+            },
+            {
+              "speaker": "thomas",
+              "text": "O ja, ein Gebetbuch ist ein sehr altes Buch.",
+              "english": "O yes, a prayer book is a very old book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann spricht Ruth vom süßen Brei, und sie lacht dabei.",
+              "english": "Then Ruth speaks of the sweet porridge, and she laughs as she does."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Das arme Mädchen und seine Mutter leben in Armut.",
+              "english": "The poor girl and her mother live in poverty."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Die Not ist groß, und der Jammer ist noch größer.",
+              "english": "The need is great, and the misery is even greater."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Zum Glück bekommt das Mädchen einen Topf mit Hirsenbrei.",
+              "english": "Luckily the girl gets a pot with millet porridge."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Bald ist der Topf ledig, und es bleibt nichts übrig.",
+              "english": "Soon the pot is empty, and nothing is left over."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Ledig ist ein altes Wort. Es heißt hier: leer.",
+              "english": "Ledig is an old word. Here it means: empty."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Gebet trinken alle Tee, und Jonas fragt Sam nach den Geschichten, die er mit Ben liest.",
+              "english": "After the prayer everyone drinks tea, and Jonas asks Sam about the stories he reads with Ben."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Sam, erzähl uns doch eine Geschichte vom Land.",
+              "english": "Sam, tell us a story from the country."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gern. In Jakobs Haus sagt das Mädchen: Ich muss die Kuh melken.",
+              "english": "Gladly. In Jakob's house the girl says: I must milk the cow."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es molk die Kuh am Morgen, denn Jakob wollte Milch haben.",
+              "english": "She milked the cow in the morning, because Jakob wanted milk."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Ich habe als Kind einmal versucht, eine Kuh zu melken.",
+              "english": "As a child I once tried to milk a cow."
+            },
+            {
+              "speaker": "ruth",
+              "text": "Die Kuh stand mit ihren Hörnern direkt vor mir.",
+              "english": "The cow stood right in front of me with her horns."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Wer eine Kuh melken will, muss früh aufstehen.",
+              "english": "Whoever wants to milk a cow has to get up early."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Man muss jede Kuh am Morgen und am Abend melken.",
+              "english": "One has to milk every cow in the morning and in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "Das Mädchen molk sie jeden Tag zweimal.",
+              "english": "The girl milked her twice every day."
+            },
+            {
+              "speaker": "sam",
+              "text": "Der Hund bellte laut, und die Katze sprang auf einen Baum.",
+              "english": "The dog barked loudly, and the cat jumped onto a tree."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er bellte und bellte, aber die Katze blieb oben.",
+              "english": "He barked and barked, but the cat stayed up there."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Unser Nachbar hat auch einen Hund, der jede Nacht bellt.",
+              "english": "Our neighbour also has a dog that barks every night."
+            },
+            {
+              "speaker": "sam",
+              "text": "Am Ende ging der Priester in das Gotteshaus.",
+              "english": "In the end the priest went into the church."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Gotteshaus ist ein altes Wort für Kirche.",
+              "english": "Gotteshaus is an old word for church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Er sagte: O, es war gut, dass mein Hahn so laut krähte!",
+              "english": "He said: Oh, it was good that my rooster crowed so loudly!"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Oh, das gefällt mir!",
+              "english": "Oh, I like that!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sabine",
+              "text": "Ich mag auch das Märchen vom Pfannkuchen. Eine Mutter hatte sieben Kinder.",
+              "english": "I also like the tale of the pancake. A mother had seven children."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Das fünfte Kind rief: Mutter, ich habe Hunger!",
+              "english": "The fifth child called: Mother, I am hungry!"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Das sechste Kind rief auch, und das siebente und letzte Kind war ganz niedlich.",
+              "english": "The sixth child called too, and the seventh and last child was very sweet."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Da sprang der Pfannkuchen auf den Boden.",
+              "english": "Then the pancake jumped onto the floor."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Er rief: Ich muss schnell fortrollen, denn die Frau kommt!",
+              "english": "He called: I must quickly roll away, because the woman is coming!"
+            },
+            {
+              "speaker": "ruth",
+              "text": "Die Mutter rief: Halt, Pfannkuchen, halt!",
+              "english": "The mother called: Stop, pancake, stop!"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Der Mann rief auch: Halt! Und die Henne rief: Halt, halt!",
+              "english": "The man also called: Stop! And the hen called: Stop, stop!"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Aber der Pfannkuchen rollte weiter. Dann begegnete er einem Gänserich.",
+              "english": "But the pancake rolled on. Then he met a gander."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Was wollte der Gänserich?",
+              "english": "What did the gander want?"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Der Gänserich wollte ihn essen, aber der Pfannkuchen lief weg.",
+              "english": "The gander wanted to eat him, but the pancake ran away."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Der Gänserich wollte ihn fangen, aber er war zu langsam.",
+              "english": "The gander wanted to catch him, but he was too slow."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Am Ende war der Gänserich allein, und der Pfannkuchen war schon weit weg.",
+              "english": "In the end the gander was alone, and the pancake was already far away."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Als er den Gänserich hörte, drehte er sich schnell um.",
+              "english": "When he heard the gander, he turned around quickly."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Am Wasser wartete ein Schwein. Es war so fett, dass es gut schwimmen konnte.",
+              "english": "A pig was waiting at the water. It was so fat that it could swim very well."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Es sagte: Springen Sie auf meinen Kopf. Bis hinüber ist es nicht weit.",
+              "english": "It said: Jump on my head. It is not far to the other side."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Der Pfannkuchen dachte: Das ist ein guter Einfall!",
+              "english": "The pancake thought: That is a good idea!"
+            },
+            {
+              "speaker": "sabine",
+              "text": "Aber dann hörte er etwas, fürchtete sich und drehte sich um.",
+              "english": "But then he heard something, was afraid and turned around."
+            },
+            {
+              "speaker": "thomas",
+              "text": "Das ist ein Märchen mit einem traurigen Ende.",
+              "english": "That is a fairy tale with a sad ending."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

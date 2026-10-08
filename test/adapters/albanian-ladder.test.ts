@@ -179,6 +179,6 @@ describe('para, dhemb and the aorist of the non-active verbs', () => {
   });
 
   it('says in its version that the analyses changed', () => {
-    expect(sq.version).toBe('8');
+    expect(sq.version).toBe('9');
   });
 });

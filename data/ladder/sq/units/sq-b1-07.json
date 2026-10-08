@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-07",
+  "lang": "sq",
+  "title": "Plaku nga fshati",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-07",
+    "title": "Albanian ladder, b1-bridge: Plaku nga fshati (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "health"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Plaku nga fshati",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të enjten në klinikë kishte shumë pacientë, dhe Ana nuk kishte pasur kohë të pinte çaj.",
+              "english": "On Thursday there were many patients at the clinic, and Ana had not had time even to drink tea."
+            },
+            {
+              "text": "Në orën njëmbëdhjetë ajo hapi derën e fundit dhe pa afër derës një plak të vogël me një kapelë të vjetër në dorë.",
+              "english": "At eleven she opened the last door and saw near the door a small old man with an old hat in his hand."
+            },
+            {
+              "text": "— Mirëdita, zonjë, — tha ai.",
+              "english": "\"Good morning, madam,\" he said."
+            },
+            {
+              "text": "— Erdha nga fshati. Ecja tri orë, sepse autobusi nuk po shkonte.",
+              "english": "\"I came from the village. I walked three hours, because the bus was not running.\""
+            },
+            {
+              "text": "— Tri orë? — u habit Ana.",
+              "english": "\"Three hours?\" Ana was surprised."
+            },
+            {
+              "text": "— Ulu, baba. Çfarë të dhemb?",
+              "english": "\"Sit down, father. What hurts?\""
+            },
+            {
+              "text": "— Më dhemb koka, dhe nuk fle natën, — tha plaku.",
+              "english": "\"My head hurts, and I do not sleep at night,\" said the old man."
+            },
+            {
+              "text": "— Gruaja ime vdiq vitin e kaluar, dhe shtëpia është shumë e madhe tani.",
+              "english": "\"My wife died last year, and the house is very big now.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana ia preku dorën: ishte e ftohtë dhe shumë e dobët.",
+              "english": "Ana touched his hand: it was cold and very weak."
+            },
+            {
+              "text": "Ai ishte më i lodhur dhe më i dobët nga sa duhej.",
+              "english": "He was more tired and weaker than he should have been."
+            },
+            {
+              "text": "Ajo e thirri Dr Arta, që punonte në dhomën pranë.",
+              "english": "She called Dr Arta, who worked in the next room."
+            },
+            {
+              "text": "Dr Arta erdhi, e pyeti plakun disa gjëra dhe shkroi një recetë.",
+              "english": "Dr Arta came, asked the old man a few things and wrote a prescription."
+            },
+            {
+              "text": "— Duhet ta pish këtë ilaç çdo mëngjes, — i tha ajo.",
+              "english": "\"You must take this medicine every morning,\" she told him."
+            },
+            {
+              "text": "— Nëse e pi çdo mëngjes, koka nuk do të të dhembë më.",
+              "english": "'If you take it every morning, your head will not hurt any more.'"
+            },
+            {
+              "text": "Plaku e mori recetën, por nuk e vuri në xhep.",
+              "english": "The old man took the prescription, but did not put it in his pocket."
+            },
+            {
+              "text": "— Unë nuk kam besim te ilaçet, — tha ai me zë të ulët.",
+              "english": "\"I do not have faith in medicines,\" he said gently."
+            },
+            {
+              "text": "— Unë kam besim te Zoti. Ai e ka thirrur gruan, dhe do ta thërrasë edhe mua kur të vijë koha.",
+              "english": "\"I have faith in God. He has called my wife, and He will call me too when the time comes.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dr Arta e shikoi Anën, dhe Ana e kuptoi se duhej të fliste ajo.",
+              "english": "Dr Arta looked at Ana, and Ana understood that she had to speak."
+            },
+            {
+              "text": "Dr Arta i pëshpëriti: — Fol ti, ai të beson.",
+              "english": "Dr Arta whispered to her: 'You speak, he trusts you.'"
+            },
+            {
+              "text": "Ajo u ul pranë plakut dhe nuk e ngriti zërin.",
+              "english": "She sat down beside the old man and did not raise her voice."
+            },
+            {
+              "text": "— Edhe unë kam besim te Zoti, baba, — tha ajo.",
+              "english": "\"I have faith in God too, father,\" she said."
+            },
+            {
+              "text": "— Por unë mendoj se Zoti na ka dhënë edhe mjekët, edhe ilaçet, edhe duart që ndihmojnë.",
+              "english": "\"But I think that God has given us doctors too, and medicines, and hands that help.\""
+            },
+            {
+              "text": "— Nëse e do shumë gruan tënde, ti duhet të jetosh sa më gjatë, që ta kujtosh.",
+              "english": "\"If you love your wife so much, you must live as long as you can, in order to remember her.\""
+            },
+            {
+              "text": "Plaku heshti për një kohë të gjatë.",
+              "english": "The old man was silent for a long time."
+            },
+            {
+              "text": "Pastaj tha: — Gruaja ime thoshte gjithmonë që ti duhet ta dëgjosh atë që të thonë ata që të duan.",
+              "english": "Then he said: \"My wife always used to say that you must listen to what those who love you tell you.\""
+            },
+            {
+              "text": "— Atëherë më jep recetën përsëri.",
+              "english": "\"Then give me the prescription again.\""
+            },
+            {
+              "text": "Ana qeshi me lot në sy dhe ia dha.",
+              "english": "Ana laughed with tears in her eyes and gave it to him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Para se të largohej, Ana i solli një gotë çaj me mjaltë.",
+              "english": "Before he left, Ana brought him a glass of tea with honey."
+            },
+            {
+              "text": "Plaku e piu ngadalë, dhe në fund tha se çaji i kishte bërë mirë më shumë se ilaçi.",
+              "english": "The old man drank it slowly, and in the end he said that the tea had done him more good than the medicine."
+            },
+            {
+              "text": "— Nëse ke kohë të dielën, — shtoi ai, — eja në fshatin tim.",
+              "english": "\"If you have time on Sunday,\" he added, \"come to my village.\""
+            },
+            {
+              "text": "— Unë nuk kam asgjë për të të dhënë, vetëm një bukë të vjetër dhe një histori.",
+              "english": "\"I have nothing to give you, only an old loaf and a story.\""
+            },
+            {
+              "text": "— Një histori është mjaft, — tha Ana.",
+              "english": "\"A story is enough,\" said Ana."
+            },
+            {
+              "text": "— Do të vij, dhe do të sjell edhe një mik.",
+              "english": "\"I will come, and I will bring a friend.\""
+            },
+            {
+              "text": "Atë mbrëmje, kur u kthye në shtëpi, ajo ia tregoi gjithçka Luanit, dhe ai i tha: — Ti nuk e ke shëruar vetëm kokën e tij.",
+              "english": "That evening, when she came home, she told Luan everything, and he said to her: 'You did not cure only his head.'"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të premten Ana i tregoi Samit për plakun, dhe për ilaçin, dhe për ftesën.",
+              "english": "On Friday Ana told Sam about the old man, and about the medicine, and about the invitation."
+            },
+            {
+              "text": "— Të dielën pas kishës do të shkoj në fshatin e tij, — tha ajo.",
+              "english": "\"On Sunday after church I will go to his village,\" she said."
+            },
+            {
+              "text": "— A do të vish me mua? Do të kemi nevojë për një njeri që di të dëgjojë.",
+              "english": "\"Will you come with me? We will need someone who knows how to listen.\""
+            },
+            {
+              "text": "— Do të vij me gëzim, — u përgjigj Sami.",
+              "english": "\"I will come with pleasure,\" Sam answered."
+            },
+            {
+              "text": "— Tani jam mësues, dhe një mësues i mirë duhet të dëgjojë më shumë se sa flet.",
+              "english": "\"Now I am a teacher, and a good teacher must listen more than he speaks.\""
+            },
+            {
+              "text": "— Ky është mendimi më i mirë që të kam dëgjuar të thuash, — qeshi Ana.",
+              "english": "'That is the best thing I have heard you say,' Ana laughed."
+            },
+            {
+              "text": "— Mos e harro vetëm një gjë: në fshat njerëzit të pyesin gjithçka, edhe sa para merr në muaj.",
+              "english": "'Only do not forget one thing: in the village people ask you everything, even how much money you get a month.'"
+            },
+            {
+              "text": "— Atëherë do të them që marr pak, por jetoj mirë, — tha Sami.",
+              "english": "'Then I will say that I get little, but I live well,' said Sam."
+            },
+            {
+              "text": "— Nëse gaboj në fshat, do të qeshin të gjithë fshatarët, — shtoi ai.",
+              "english": "'If I make a mistake in the village, all the villagers will laugh,' he added."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

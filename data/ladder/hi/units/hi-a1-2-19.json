@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "A day at the hospital in the simple past with ने (मीरा दीदी ने कहा), obligation (देना पड़ेगा, आना पड़ेगा) and future. The nurse says आराम कीजिए, दवा लीजिए, कल फिर आइए. \"क्लिनिक\" is in the plan's title; the text says अस्पताल because क्लिनिक has no reading. The doctor is spoken of with the honorific plural; the child and the woman are not named. Weather and message words are brought back in the story. Words outside the plan (measured, adapter lemmas x tokens): ठंडा×1, थका×1, तभी×1 (under-met)."
+    "notes": "A day at the hospital in the simple past with ने (मीरा दीदी ने कहा), obligation (देना पड़ेगा, आना पड़ेगा) and future. The nurse says आराम कीजिए, दवा लीजिए, कल फिर आइए. \"क्लिनिक\" is in the plan's title; the text says अस्पताल because क्लिनिक has no reading. The doctor is spoken of with the honorific plural; the child and the woman are not named. Weather and message words are brought back in the story. Words outside the plan (measured, adapter lemmas x tokens): ठंडा×1, थका×1, तभी×1 (under-met). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -362,6 +362,22 @@
             {
               "text": "मीरा दीदी हँसीं, और चाय बनी।",
               "english": "Meera didi laughed, and tea was made."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज अस्पताल में सब लोग शांत बैठे हैं।",
+              "english": "Today everybody in the hospital is sitting quietly."
+            },
+            {
+              "text": "मीरा दीदी की पढ़ाई अच्छी थी, इसलिए सब उनसे बात पूछते हैं।",
+              "english": "Meera didi's studies were good, so everybody asks her things."
+            },
+            {
+              "text": "सैम बैठकर देखता है, और वह अपनी पढ़ाई करता है।",
+              "english": "Sam sits and watches, and he does his own studies."
             }
           ]
         }

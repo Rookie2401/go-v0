@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "The weekly report that Sam and Kiran write for Pastor Anil: patients, visits, the evening class, money, promises and prayer subjects. Report register: the present perfect (-ा है / -े हैं), the passive (रखी गई है) and कि-clauses carry the unit. Points for the reviewer: Kiran is written without gendered verbs on purpose (the plan does not fix Kiran's sex); \"पादरी\" is explained once as a word that many neighbours use for a pastor; \"ईसाई\" is used as an ordinary adjective and noun; the figures (patients, rupees) are invented and in digits. The report mentions prayer and testimony words (संगति, उपदेश, बपतिस्मा, ज्योति, अंधकार) as in earlier units. Adapter trap: the name किरण is first read as the common noun किरण (ray), not as a proper noun (the plan counted it as a name); it is known here only because earlier units use it three times. 'क्लिनिक' (used in hi-a1-1-22) is replaced by अस्पताल so that Meera didi's workplace has one name across this stage. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+    "notes": "The weekly report that Sam and Kiran write for Pastor Anil: patients, visits, the evening class, money, promises and prayer subjects. Report register: the present perfect (-ा है / -े हैं), the passive (रखी गई है) and कि-clauses carry the unit. Points for the reviewer: Kiran is written without gendered verbs on purpose (the plan does not fix Kiran's sex); \"पादरी\" is explained once as a word that many neighbours use for a pastor; \"ईसाई\" is used as an ordinary adjective and noun; the figures (patients, rupees) are invented and in digits. The report mentions prayer and testimony words (संगति, उपदेश, बपतिस्मा, ज्योति, अंधकार) as in earlier units. Adapter trap: the name किरण is first read as the common noun किरण (ray), not as a proper noun (the plan counted it as a name); it is known here only because earlier units use it three times. 'क्लिनिक' (used in hi-a1-1-22) is replaced by अस्पताल so that Meera didi's workplace has one name across this stage. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -398,6 +398,14 @@
             {
               "text": "सैम और किरण",
               "english": "Sam and Kiran"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "इस हफ़्ते चर्च की दावत में हमने पनीर बनाया, दही बाँटा और सबको खाना परोसा।",
+              "english": "This week at the church feast we made paneer, shared curd and served food to everybody."
             }
           ]
         }

@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-03",
+  "lang": "sq",
+  "title": "Një telefonatë nga shtëpia",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-03",
+    "title": "Albanian ladder, b1-bridge: Një telefonatë nga shtëpia (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një telefonatë nga shtëpia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në mbrëmje Sam e thirri nënën nga kompjuteri.",
+              "english": "On Saturday evening Sam called his mother from the computer."
+            },
+            {
+              "text": "Në Amerikë ishte e shtunë në mesditë, dhe nëna ishte në kuzhinë.",
+              "english": "In America it was Saturday at midday, and his mother was in the kitchen."
+            },
+            {
+              "text": "Kur e pa, ajo bërtiti nga gëzimi.",
+              "english": "When she saw him, she cried out with joy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Sam! Biri im! A po ha mirë? Më duket se je shumë i dobët!",
+              "english": "\"Sam! My son! Are you eating well? It seems to me you are very thin!\""
+            },
+            {
+              "text": "— Nënë, jam mirë. Ha shumë: bukë, djathë, byrek, dhe çdo të diel darkë te gjyshja Drita.",
+              "english": "\"Mother, I am well. I eat a lot: bread, cheese, byrek, and every Sunday dinner at grandmother Drita's.\""
+            },
+            {
+              "text": "— Dhe flet shqip tani?",
+              "english": "\"And do you speak Albanian now?\""
+            },
+            {
+              "text": "— Po, flas, dhe sot kam filluar të mësoj fëmijët anglisht në shkollë.",
+              "english": "\"Yes, I do, and today I started to teach the children English at school.\""
+            },
+            {
+              "text": "— Çfarë thua?! Ti, mësues?",
+              "english": "\"What are you saying?! You, a teacher?\""
+            },
+            {
+              "text": "— Po, mësues. Më kërkoi një shok, dhe unë pranova.",
+              "english": "\"Yes, a teacher. A friend asked me, and I accepted.\""
+            },
+            {
+              "text": "— Babai yt nuk do ta besojë. Babai! Eja këtu!",
+              "english": "\"Your father will not believe it. Dad! Come here!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Babai erdhi me një gotë çaj në dorë dhe u ul pranë kompjuterit.",
+              "english": "His father came with a glass of tea in his hand and sat down by the computer."
+            },
+            {
+              "text": "— Ç'kemi, bir?",
+              "english": "\"How are things, son?\""
+            },
+            {
+              "text": "— Mirë, baba.",
+              "english": "\"Good, father.\""
+            },
+            {
+              "text": "— Nëna thotë se ke një klub. A të paguajnë për të?",
+              "english": "\"Your mother says you have a club. Do they pay you for it?\""
+            },
+            {
+              "text": "— Jo, baba. Nuk është punë e vërtetë ende. Është vetëm një klub i vogël.",
+              "english": "\"No, father. It is not a real job yet. It is only a small club.\""
+            },
+            {
+              "text": "— Por Luani më tha se nëse shkon mirë, mund të kem një punë në shkollë më vonë.",
+              "english": "\"But Luan told me that if it goes well, I may have a job at the school later.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Kur do të vish në shtëpi? — e pyeti nëna.",
+              "english": "\"When will you come home?\" his mother asked."
+            },
+            {
+              "text": "— Krishtlindja po vjen, dhe ne të gjithë po të presim.",
+              "english": "\"Christmas is coming, and we are all waiting for you.\""
+            },
+            {
+              "text": "— Nuk e di, nënë, — tha Sami.",
+              "english": "\"I do not know, mother,\" said Sam."
+            },
+            {
+              "text": "— Premtoj vetëm që do të të telefonoj çdo javë.",
+              "english": "'I only promise that I will phone you every week.'"
+            },
+            {
+              "text": "— Nëse gjej një punë këtu, do të qëndroj edhe një vit. Nëse nuk gjej, do të vij në pranverë.",
+              "english": "\"If I find a job here, I will stay another year. If I do not find one, I will come in the spring.\""
+            },
+            {
+              "text": "— Po të ishe këtu, do të të gatuaja supën që të pëlqen, — tha nëna me zë të trishtuar.",
+              "english": "\"If you were here, I would cook you the soup you like,\" said his mother in a sad voice."
+            },
+            {
+              "text": "— Po të ishit ju këtu, do të shkonim bashkë te Drita për një byrek, — u përgjigj ai.",
+              "english": "\"If you were here, we would go together to Drita for a byrek,\" he answered."
+            },
+            {
+              "text": "— Dhe pastaj do të flisnit ju me të në shqip, — qeshi babai.",
+              "english": "\"And then you would speak with her in Albanian,\" his father laughed."
+            },
+            {
+              "text": "— Nënë, ajo nuk do të të kuptonte, por do të të jepte bukë, dhe kjo është e njëjta gjë.",
+              "english": "\"Mother, she would not understand you, but she would give you bread, and that is the same thing.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Babai u bë i qetë.",
+              "english": "His father became calm."
+            },
+            {
+              "text": "— Mos mendo shumë për punën, — tha ai.",
+              "english": "'Do not think too much about the job,' he said."
+            },
+            {
+              "text": "— Kur u largove, thashë se Zoti të ka çuar atje për një arsye, dhe e mendoj ende.",
+              "english": "\"When you went away, I said that God had sent you there for a reason, and I still think so.\""
+            },
+            {
+              "text": "— Edhe unë e mendoj kështu, — tha Sami.",
+              "english": "\"I think so too,\" said Sam."
+            },
+            {
+              "text": "Ai provoi ta thoshte ngadalë, për të mos e humbur zërin: — Por nuk e di ende arsyen.",
+              "english": "He tried to say it slowly, so as not to lose his voice: 'But I do not know the reason yet.'"
+            },
+            {
+              "text": "— Por ndonjëherë më duket se nuk e di ende cila është arsyeja.",
+              "english": "\"But sometimes it seems to me that I still do not know what the reason is.\""
+            },
+            {
+              "text": "— Ajo vjen pak nga pak, — tha nëna.",
+              "english": "\"It comes little by little,\" said his mother."
+            },
+            {
+              "text": "— Dhe nëse nuk vjen, ti eja në shtëpi dhe do ta gjejmë bashkë.",
+              "english": "\"And if it does not come, you come home and we will find it together.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas një ore ata e mbyllën telefonatën.",
+              "english": "After an hour they ended the call."
+            },
+            {
+              "text": "Sami e mbylli kompjuterin dhe mbeti pak në heshtje.",
+              "english": "Sam closed the computer and stayed a little in silence."
+            },
+            {
+              "text": "Pastaj i telefonoi Anës dhe i tregoi gjithçka.",
+              "english": "Then he phoned Ana and told her everything."
+            },
+            {
+              "text": "I tha se nëna e kishte parë shumë të dobët, se babai kishte qeshur kur kishte dëgjuar për klubin, dhe se të dy donin që ai të vinte në pranverë.",
+              "english": "He told her that his mother had found him very thin, that his father had laughed when he heard about the club, and that both wanted him to come in the spring."
+            },
+            {
+              "text": "— Dhe ti çfarë the? — e pyeti Ana.",
+              "english": "\"And what did you say?\" Ana asked him."
+            },
+            {
+              "text": "— Thashë se nuk e di, — u përgjigj ai.",
+              "english": "\"I said that I do not know,\" he answered."
+            },
+            {
+              "text": "— Por tani e di diçka tjetër: kur një njeri të pret në shtëpi, ti je i pasur, edhe nëse ke pak para.",
+              "english": "\"But now I know something else: when someone waits for you at home, you are rich, even if you have little money.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

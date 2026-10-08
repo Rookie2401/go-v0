@@ -1,0 +1,81 @@
+=== de-a1-2-04
+speakers: sam=Sam, anna=Anna
+## Der Anruf
+Es ist Abend, es ist Donnerstag. || It is evening, it is Thursday.
+Sam hat sein Handy. || Sam has his phone.
+Er ruft Anna an. || He calls Anna.
+[sam] Hallo, Anna! || Hello, Anna!
+[sam] Bist du schon zurück? || Are you back already?
+[anna] Ja, ich bin um sechs Uhr zurück. || Yes, I got back at six o'clock.
+[anna] Ich bin müde, aber ich bin froh. || I am tired, but I am happy.
+[sam] Wie war dein Tag? || How was your day?
+[sam] Und wie war gestern? || And how was yesterday?
+[anna] Gestern habe ich viel gearbeitet. || Yesterday I worked a lot.
+
+## Gestern
+[anna] Ich habe gestern im Büro von Michael gearbeitet. || Yesterday I worked in Michael's office.
+[anna] Das Büro von Michael ist klein. || Michael's office is small.
+[anna] Die Arbeit fängt um sieben Uhr an. || Work starts at seven o'clock.
+[anna] Die Arbeit ist gut. || The work is good.
+[anna] Nach der Arbeit habe ich im Supermarkt Brot und Milch gekauft. || After work I bought bread and milk at the supermarket.
+[anna] Ich habe auch Käse, Tomaten und Kartoffeln gekauft. || I also bought cheese, tomatoes and potatoes.
+[anna] Der Supermarkt ist groß, und der Preis ist gut. || The supermarket is big, and the price is good.
+[anna] Im Supermarkt gibt es auch Kuchen. || In the supermarket there is cake too.
+[anna] Leider habe ich meinen Schlüssel verloren! || Unfortunately I lost my key!
+[anna] Ich habe ihn gesucht, und ich habe ihn gefunden. || I looked for it, and I found it.
+[anna] Er hat im Büro gelegen. || It was lying in the office.
+[anna] Jetzt liegt er in meiner Tasche. || Now it is in my bag.
+
+## Die Wohnung
+[anna] Dann bin ich in die Wohnung gegangen. || Then I went to the flat.
+[anna] Die Wohnung ist nicht groß, aber ich habe sie geputzt. || The flat is not big, but I cleaned it.
+[anna] Putzen ist nicht schön, aber es ist gut. || Cleaning is not nice, but it is good.
+[anna] In der Wohnung ist auch Lukas. || Lukas is in the flat too.
+[anna] Ich habe die Wäsche gemacht. || I did the washing.
+[anna] Dann habe ich geduscht. || Then I had a shower.
+[sam] Und das Abendessen? || And dinner?
+[anna] Lukas hat das Abendessen gekocht. || Lukas cooked dinner.
+[anna] Wir haben zusammen gegessen: Suppe mit Kartoffeln. || We ate together: soup with potatoes.
+[anna] Leider war die Suppe kalt. || Unfortunately the soup was cold.
+[anna] Dann war ich fertig. || Then I was done.
+[anna] Jetzt sitze ich draußen und telefoniere mit dir. || Now I am sitting outside and phoning you.
+[anna] Draußen ist es warm, und die Wäsche ist auch fertig. || It is warm outside, and the washing is done too.
+
+## Vorgestern
+[sam] Und vorgestern? || And the day before yesterday?
+[sam] Das war Dienstag. || That was Tuesday.
+[anna] Vorgestern habe ich einen Termin gehabt, beim Arzt. || The day before yesterday I had an appointment, at the doctor's.
+[anna] Der Arzt hat gesagt: "Du bist gesund." || The doctor said: "You are well."
+[anna] Vorgestern habe ich leider nicht geduscht! || The day before yesterday I did not shower, unfortunately!
+[sam] Du hast viel gearbeitet. || You worked a lot.
+[sam] Ich habe gestern Deutsch gelernt. || Yesterday I learned German.
+[sam] Ich bin auch schon zurück. || I am back already too.
+[sam] Ich sitze am Tisch in der Küche. || I am sitting at the table in the kitchen.
+[sam] Ich habe auch geputzt: das Zimmer, das Bad und die Küche. || I cleaned too: the room, the bathroom and the kitchen.
+[sam] Meine Wäsche liegt auf dem Bett. || My washing is on the bed.
+[sam] Ich muss noch duschen. || I still have to shower.
+[sam] Frau Weber hat das Abendessen gekocht, und es ist fertig. || Mrs Weber cooked dinner, and it is ready.
+[sam] Draußen regnet es, aber wir sitzen in der Küche. || It is raining outside, but we are sitting in the kitchen.
+[sam] Ich habe in der Gemeinde geholfen. || I helped at the church.
+[sam] Ich habe eine Nachricht an Daniel geschrieben, und ich habe ihn angerufen. || I wrote a message to Daniel, and I called him.
+[sam] Wir haben Lieder gesungen und gebetet. || We sang songs and prayed.
+[sam] Ich habe Ben im Park gesehen. || I saw Ben in the park.
+[sam] Er hat wieder sein Heft verloren. || He has lost his exercise book again.
+[sam] Wir haben es gesucht und gefunden. || We looked for it and found it.
+[sam] Es hat neben dem Rucksack gelegen. || It was next to the school bag.
+[sam] Der Rucksack steht hinter dem Stuhl. || The school bag is behind the chair.
+
+## Gott und das Leben
+[sam] Ich glaube, Gott liebt dich, Anna. || I believe God loves you, Anna.
+[sam] Ich danke Gott für dich. || I thank God for you.
+[anna] Danke, Sam. || Thank you, Sam.
+[anna] Du bist ein guter Christ. || You are a good Christian.
+[sam] Früher hatte ich keine Freunde. || Before, I had no friends.
+[sam] Jetzt habe ich Freunde, und ich habe Freude. || Now I have friends, and I have joy.
+[anna] Das Leben ist schön, und Gott ist Liebe. || Life is lovely, and God is love.
+[anna] Mein Herz ist froh. || My heart is glad.
+[sam] Am Montag und am Mittwoch habe ich Klasse. || On Monday and Wednesday I have class.
+[sam] Am Freitag koche ich Suppe, und am Samstag ist das Frühstück in der Gemeinde. || On Friday I cook soup, and on Saturday there is breakfast at the church.
+[sam] Bist du nicht müde? || Are you not tired?
+[anna] Doch, sehr müde. || Yes I am, very tired.
+

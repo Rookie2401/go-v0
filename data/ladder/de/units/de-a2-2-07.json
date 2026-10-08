@@ -43,6 +43,19 @@
     "contemporary-nonfiction"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "sections": [
     {
       "title": "Die Zeitung für den Stadtteil",
@@ -499,19 +512,119 @@
           ]
         }
       ]
-    }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam denkt an Bens Spiel am Samstag.",
+              "english": "Sam thinks of Ben's play on Saturday."
+            },
+            {
+              "text": "Ben war in der Kinderkirche, und die Kinder hatten neue Kleider.",
+              "english": "Ben was in the children's church, and the children had new clothes."
+            },
+            {
+              "text": "Deshalb war die Spende so wichtig.",
+              "english": "That is why the donation was so important."
+            },
+            {
+              "text": "Daniel hat damals gesagt, dass ein Zeugnis keine Rede ist.",
+              "english": "Back then Daniel said that a testimony is not a speech."
+            },
+            {
+              "text": "Sam hat Lukas für alles gedankt, und Lukas hat gesagt: Gern geschehen.",
+              "english": "Sam thanked Lukas for everything, and Lukas said: You are welcome."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam denkt auch an die Anmeldung beim Amt.",
+              "english": "Sam also thinks of the registration at the office."
+            },
+            {
+              "text": "Das Visum aus Amerika hat nicht gereicht.",
+              "english": "The visa from America was not enough."
+            },
+            {
+              "text": "Er musste seine Unterschrift daruntersetzen, sonst gab es Ärger.",
+              "english": "He had to put his signature underneath, otherwise there was trouble."
+            },
+            {
+              "text": "Frau Weber ist eine nette Dame, und sie hat ihm sehr geholfen.",
+              "english": "Frau Weber is a nice lady, and she helped him a lot."
+            },
+            {
+              "text": "Er geht zum Sprachkurs, und seine Heimatgemeinde schickt eine Spende.",
+              "english": "He goes to the language course, and his home church sends a donation."
+            },
+            {
+              "text": "Anna sitzt nachmittags im Aufenthaltsraum und trinkt Kaffee.",
+              "english": "In the afternoon Anna sits in the lounge and drinks coffee."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auf der Straße muss man vorsichtig sein.",
+              "english": "On the street one has to be careful."
+            },
+            {
+              "text": "Im Haus von Frau Weber riecht es nach Kuchen.",
+              "english": "In Frau Weber's house it smells of cake."
+            },
+            {
+              "text": "Die graue Tonne steht im Hof.",
+              "english": "The gray bin stands in the yard."
+            },
+            {
+              "text": "Ab jetzt ist Sam leise, denn die Nachbarn schlafen früh.",
+              "english": "From now on Sam is quiet, because the neighbors go to bed early."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber hat die Sitzung eröffnet.",
+              "english": "Frau Weber opened the meeting."
+            },
+            {
+              "text": "Die Schule liegt hinter dem großen Tor.",
+              "english": "The school lies behind the big gate."
+            },
+            {
+              "text": "Die Lastwagen halten vor dem Spielplatz.",
+              "english": "The trucks stop in front of the playground."
+            },
+            {
+              "text": "Der Bäcker wünscht sich dreißig Kilometer pro Stunde.",
+              "english": "The baker wants thirty kilometers per hour."
+            },
+            {
+              "text": "Sein Wunsch ist verständlich, sagt der Bürgermeister.",
+              "english": "His wish is understandable, says the mayor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Der Abend war lang, aber alle waren froh.",
+              "english": "The evening was long, but everyone was glad."
+            },
+            {
+              "text": "Sam hat viel gelernt und viele Freunde gefunden.",
+              "english": "Sam learned a lot and found many friends."
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }

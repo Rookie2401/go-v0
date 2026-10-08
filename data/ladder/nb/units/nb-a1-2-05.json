@@ -85,8 +85,8 @@
               "english": "Marta gets up early. She bakes bread before eight o'clock. Then she goes to the market."
             },
             {
-              "text": "Nils spiser brød før skolen. Skolen begynner klokka åtte.",
-              "english": "Nils eats bread before school. School begins at eight."
+              "text": "Nils spiser brød, og så går han til skolen. Skolen begynner klokka åtte.",
+              "english": "Nils eats bread, and then he goes to school. School begins at eight."
             },
             {
               "text": "Nils vil ikke komme sent.",
@@ -121,8 +121,8 @@
               "speaker": "ana"
             },
             {
-              "text": "Nei, ikke veldig tidlig.",
-              "english": "No, not very early.",
+              "text": "Nei, ikke veldig.",
+              "english": "No, not very.",
               "speaker": "sam"
             },
             {
@@ -163,8 +163,8 @@
               "english": "Lars and Anna eat dinner. Sam eats with them."
             },
             {
-              "text": "Hva gjør du om kvelden, Sam?",
-              "english": "What do you do in the evening, Sam?",
+              "text": "Hva gjør du i kveld, Sam?",
+              "english": "What are you doing this evening, Sam?",
               "speaker": "luis"
             },
             {
@@ -183,8 +183,8 @@
               "speaker": "sam"
             },
             {
-              "text": "Nå sover alle i huset. Marta sover også.",
-              "english": "Now everyone in the house is asleep. Marta is asleep too."
+              "text": "Nå sover alle i huset. Marta er også trøtt.",
+              "english": "Now everyone in the house is asleep. Marta is tired too."
             }
           ]
         }

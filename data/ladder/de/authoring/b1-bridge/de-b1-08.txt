@@ -1,0 +1,102 @@
+=== de-b1-08 | narrative | travel | A day trip to Hameln | Ein Ausflug nach Hameln | trip, town, legend, rats, animals
+speakers: ben=Ben, lukas=Lukas, sam=Sam, guide=Die Stadtführerin
+note: Prepares the vocabulary of the next texts (Guerber, Der Pfeifer von Hameln; Jakobs Haus): Maus, Pfeifer, Ratte, Katze, Korn, Hund. Each is used at least three times. The legend is told in the course's own words and is not a quotation.
+## Die Fahrt
+Am Samstag fahren Lukas, Sam und Ben mit dem Zug nach Hameln. || On Saturday Lukas, Sam and Ben travel by train to Hameln.
+Hameln ist eine kleine, alte Stadt im Norden. || Hameln is a small, old town in the north.
+Die Fahrt dauert fast fünf Stunden, und Ben ist schon nach zwei Stunden müde. || The journey takes almost five hours, and Ben is tired after only two hours.
+[ben] Warum fahren wir so weit? || Why are we travelling so far?
+[lukas] Wegen einer Geschichte. || Because of a story.
+[lukas] Sie ist sehr alt, und alle Kinder in Deutschland kennen sie. || It is very old, and all children in Germany know it.
+[ben] Und was für eine Geschichte ist das? || And what kind of story is it?
+[lukas] Das erzählt dir die Stadtführerin. || The guide will tell you that.
+
+## Auf dem Marktplatz
+Auf dem Marktplatz wartet eine Frau mit einem roten Schirm. || On the market square a woman with a red umbrella is waiting.
+Sie begrüßt die Gäste sehr freundlich. || She greets the guests very kindly.
+Neben ihr sitzt ein Hund und schaut Ben an. || Next to her a dog is sitting and looking at Ben.
+[ben] Ist das Ihr Hund? || Is that your dog?
+[guide] Ja, er heißt Max und kommt immer mit. || Yes, he is called Max and always comes along.
+[guide] Ein Hund ist gut für die Kinder, denn sie hören dann besser zu. || A dog is good for the children, because they then listen better.
+[sam] Wo ist die Geschichte? || Where is the story?
+[guide] Hier, in den Straßen. || Here, in the streets.
+[guide] Vor langer Zeit hatte die Stadt ein großes Problem. || A long time ago the town had a big problem.
+[guide] Es gab Ratten. Überall waren Ratten und Mäuse. || There were rats. Everywhere there were rats and mice.
+[guide] Sie waren in den Häusern, in den Küchen und in den Betten. || They were in the houses, in the kitchens and in the beds.
+[guide] Sie haben das Korn gefressen, und die Menschen hatten Hunger. || They ate the grain, and the people were hungry.
+[guide] Das Korn braucht man doch für das Brot! || After all, you need the grain for the bread!
+[ben] Dann gab es kein Brot beim Bäcker? || So there was no bread at the baker's?
+[guide] Doch, aber nur wenig, und das Korn war sehr teuer. || Yes, but only a little, and the grain was very expensive.
+[ben] Und die Katzen? || And the cats?
+[guide] Es gab viele Katzen, aber es gab noch mehr Mäuse. || There were many cats, but there were even more mice.
+[guide] Die Katzen waren müde, und sie wollten den Mäusen nicht mehr nachlaufen. || The cats were tired, and they no longer wanted to run after the mice.
+
+## Der Pfeifer
+[guide] Eines Tages kam ein Mann in die Stadt. || One day a man came into the town.
+[guide] Er trug einen langen Mantel und hatte eine Pfeife in der Hand. || He wore a colourful coat and had a pipe in his hand.
+[guide] Man nannte ihn den Pfeifer. || He was called the piper.
+[guide] Er sagte zum Bürgermeister: Ich helfe euch, aber ihr müsst mich bezahlen. || He said to the mayor: I will help you, but you have to pay me.
+[guide] Der Bürgermeister sagte ja, und der Pfeifer ging durch die Straßen und spielte. || The mayor said yes, and the piper went through the streets and played.
+[guide] Und da kamen die Ratten aus allen Häusern. || And then the rats came out of all the houses.
+[guide] Auch die Mäuse kamen, hundert und noch mehr, und sie liefen dem Pfeifer nach. || The mice came too, hundreds and hundreds more, and they ran after the piper.
+[ben] Wohin ist er mit ihnen gegangen? || Where did he go with them?
+[guide] Das erzähle ich dir am Fluss. Komm! || I will tell you that at the river. Come!
+[ben] Sam, hast du Angst vor Mäusen? || Sam, are you afraid of mice?
+[sam] Nein, aber ich habe Angst vor Ratten. || No, but I am afraid of rats.
+[lukas] Dann hör gut zu. Die Geschichte ist noch nicht zu Ende. || Then listen carefully. The story is not over yet.
+Der Hund geht zuerst, und alle gehen hinter ihm. || The dog runs ahead, and everybody walks behind him.
+
+## Erinnerst du dich?
+Auf der Rückfahrt sitzen Ben, Sam und Lukas wieder im Zug. || On the way back Ben, Sam and Lukas are sitting in the train again.
+Ben ist nicht mehr müde, denn er hat viele Fragen. || Ben is no longer tired, because he has many questions.
+[ben] Lukas, weißt du noch, woran wir gestern Abend gedacht haben? || Lukas, do you remember what we were thinking of yesterday evening?
+[lukas] Ja, an die alten Geschichten, die wir zusammen gelesen haben. || Yes, of the old stories that we read together.
+[ben] Im Folgenden erzähle ich euch alles noch einmal, und ihr hört gut zu. || In what follows I will tell you everything again, and you listen carefully.
+
+[ben] Zuerst die drei jungen Männer in Bonn. Sie waren so träge! || First the three young men in Bonn. They were so lazy!
+[ben] Sie wollten nur ruhen, und niemand sollte sie wecken. || They only wanted to rest, and nobody was to wake them.
+[sam] Die Höhle liegt nahe bei der Stadt, und sie legten sich nieder. || The cave lies near the town, and they lay down.
+[ben] Dann kam das siebente Jahr, und einer sprach von einem Ochs. || Then came the seventh year, and one of them spoke about an ox.
+[sam] Ihre Unterhaltung war nicht sehr interessant, denn sie waren so müde. || Their conversation was not very interesting, because they were so tired.
+[ben] Ein paar Worte bilden bei ihnen eine ganze Unterhaltung. || A few words make up a whole conversation for them.
+[lukas] Ich würde sie nicht aufwecken. Man soll niemanden aus dem Schlafe wecken. || I would not wake them up. One should not wake anybody out of sleep.
+
+[ben] Und der Reisende im Haus, das so groß wie ein Palast war! || And the traveller in the house that was as big as a palace!
+[sam] Im Hof spaltete ein Mann Holz, und in der Küche machte ein anderer das Feuer an. || In the yard a man was splitting wood, and in the kitchen another lit the fire.
+[ben] Im Esszimmer saß ein Mann am Tisch, und im Schlafzimmer lag ein noch älterer im Bett. || In the dining room a man sat at the table, and in the bedroom an even older one lay in bed.
+[sam] Ein Mann lag in der Wiege, und der älteste hing an der Wand in einem Trinkhorn. || One man lay in the cradle, and the oldest hung on the wall in a drinking horn.
+[lukas] Am Ende konnte sich der Reisende am Feuer wärmen und gut schlafen. || In the end the traveller could warm himself at the fire and sleep well.
+
+[ben] Und die drei Faulen! Der König hat alles gut bedacht. || And the three lazy ones! The king thought everything over well.
+[sam] Er wollte den faulsten Sohn zum König bestimmen. || He wanted to name the laziest son as king.
+[ben] Dem ersten fällt ein Tropfen ins Auge, aber er will es nicht zuthun. || A drop falls into the first one's eye, but he does not want to close it.
+[ben] Der zweite sitzt am Feuer und lässt sich eher die Fersen verbrennen, eh er seine Beine bewegt. || The second sits at the fire and would rather let his heels burn than move his legs.
+[ben] Der dritte hat einen Strick um den Hals, und man gibt ihm ein scharfes Messer. || The third has a rope around his neck, and they give him a sharp knife.
+[sam] Damit kann er den Strick zerschneiden, aber er will es nicht. || With it he can cut through the rope, but he does not want to.
+[lukas] Alle drei wären lieber aufgehenkt worden, eh sie die Hände erhüben. || All three would rather have been hanged than lift their hands.
+[sam] Du wärst nicht so faul, Ben, oder? || You would not be so lazy, Ben, would you?
+[ben] Nein, ich nicht! Am Sonntag sitzen die Kinder im Kreis, und ich erzähle ihnen alles. || No, not me! On Sunday the children sit in a circle, and I tell them everything.
+
+## Erinnerst du dich daran?
+Am Abend sitzen Ben und Sam bei Lukas in der Küche. || In the evening Ben and Sam sit with Lukas in the kitchen.
+[lukas] Im Folgenden möchte ich hören, was du aus den alten Geschichten noch weißt. || In what follows I would like to hear what you still know from the old stories.
+[ben] Gern! Zuerst die drei Männer in der Höhle. Sie waren so träge. || Gladly! First the three men in the cave. They were so lazy.
+[sam] Ja, sie waren träge, und niemand durfte sie aus dem Schlafe wecken. || Yes, they were lazy, and nobody was allowed to wake them from their sleep.
+[ben] Ihre Unterhaltung war nicht interessant, denn sie sagten nur wenige Worte. || Their conversation was not interesting, because they said only a few words.
+[sam] Ich finde die Geschichte trotzdem interessant, denn sie ist lustig. || I find the story interesting anyway, because it is funny.
+
+[ben] Dann kam der Reisende zu einem Haus, das so groß war wie ein Palast. || Then the traveller came to a house that was as big as a palace.
+[ben] Er suchte den Hausvater, aber niemand wusste, wo er war. || He looked for the master of the house, but nobody knew where he was.
+[sam] Ein Mann sagte: Er liegt im Schlafzimmer. || A man said: He is lying in the bedroom.
+[lukas] Aber im Schlafzimmer fand der Reisende nur einen alten Mann im Bett. || But in the bedroom the traveller found only an old man in a bed.
+[ben] Dann sagte der Mann: Mein Vater hängt dort an der Wand, in dem Trinkhorn. || Then the man said: My father hangs there on the wall, in the drinking horn.
+[sam] Ein Trinkhorn ist doch zum Trinken da, nicht für einen Vater! || A drinking horn is for drinking, not for a father!
+[ben] Am Ende lag der Vater in der Wiege. || In the end the father lay in the cradle.
+[lukas] Ein alter Mann in der Wiege? Das ist wirklich lustig. || An old man in a cradle? That is really funny.
+[ben] Ja, die Wiege war für ein Kind, aber er lag in der Wiege wie ein kleines Kind. || Yes, the cradle was for a child, but he lay in the cradle like a small child.
+
+[ben] Und der König bei den drei Faulen hatte alles gut bedacht. || And the king with the three lazy ones had thought everything over well.
+[sam] Der erste wollte die Augen nicht zuthun, weil er zu faul war. || The first did not want to close his eyes, because he was too lazy.
+[ben] Der dritte hatte ein scharfes Messer, aber er wollte den Strick nicht zerschneiden. || The third had a sharp knife, but he did not want to cut the rope.
+[lukas] Alle drei wären lieber gestorben, eh sie die Hände erhüben. || All three would rather have died than lift their hands.
+[ben] Ich bin nicht so faul. Ich lese jeden Tag in meinem Buch. || I am not so lazy. I read in my book every day.

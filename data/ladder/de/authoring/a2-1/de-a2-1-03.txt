@@ -1,0 +1,90 @@
+=== de-a2-1-03
+## Ben kann nicht schlafen
+Es ist Nacht. || It is night.
+Der Mond scheint ins Zimmer. || The moon is shining into the room.
+Ben liegt im Bett, aber er schläft nicht. || Ben is lying in bed, but he is not sleeping.
+Plötzlich hört er ein Geräusch. || Suddenly he hears a noise.
+Es kommt von der Tür. || It comes from the door.
+Ben hat Angst. || Ben is afraid.
+„Oma!“, ruft er. || "Grandma!" he calls.
+Marta kommt ins Zimmer. || Marta comes into the room.
+Sie hat ein Licht in der Hand. || She has a light in her hand.
+„Es war nur der Wind“, sagt sie. || "It was only the wind," she says.
+„Alles ist ruhig, und ich bin bei dir.“ || "Everything is calm, and I am with you."
+Sie sitzt am Bett. || She sits by the bed.
+„Jeder hat manchmal Angst“, sagt sie. || "Everyone is afraid sometimes," she says.
+„Ich erzähle dir eine Geschichte aus meiner Kindheit.“ || "I will tell you a story from my childhood."
+„Ist das ein Märchen?“, fragt Ben. || "Is that a fairy tale?" asks Ben.
+„Nein, das ist kein Märchen“, sagt Marta. || "No, it is not a fairy tale," says Marta.
+„Es ist eine richtige Geschichte.“ || "It is a real story."
+„Bitte, Oma!“, sagt Ben. || "Please, Grandma!" says Ben.
+
+## Die Nacht im November
+„Zuerst muss ich dir sagen, wie alt ich war“, erzählt Marta. || "First I must tell you how old I was," Marta tells him.
+„Ich war zehn Jahre alt.“ || "I was ten years old."
+„Es war eine Nacht im November.“ || "It was a night in November."
+„Der Mond war hell, und am Himmel standen viele Sterne.“ || "The moon was bright, and many stars were in the sky."
+„Meine Eltern waren in der Kirche.“ || "My parents were at church."
+„Mein Vater hat die Orgel gespielt.“ || "My father played the organ."
+„Er war immer lange dort: die Predigt, die Kollekte, der Segen.“ || "He was always there for a long time: the sermon, the collection, the blessing."
+„Es war kalt, und im Haus war es ganz still.“ || "It was cold, and in the house it was completely quiet."
+„Ich war mit meinem Bruder zu Hause, und er schlief.“ || "I was at home with my brother, and he was asleep."
+„Ich lag im Bett, und ich habe die Sterne gesehen.“ || "I lay in bed, and I saw the stars."
+„Ich hatte Angst.“ || "I was afraid."
+
+## Das Geräusch an der Tür
+„Plötzlich hörte ich ein Geräusch“, sagt Marta. || "Suddenly I heard a noise," says Marta.
+„Es kam von der anderen Seite der Tür.“ || "It came from the other side of the door."
+„Zuerst hörte ich nichts mehr.“ || "At first I heard nothing more."
+„Dann sah ich unter der Tür ein Licht.“ || "Then I saw a light under the door."
+„Ich bin ganz still geblieben.“ || "I stayed completely still."
+Ben fragt: „Und das Licht?“ || Ben asks, "And the light?"
+„Es blieb stehen“, sagt Marta. || "It stopped," says Marta.
+„Ich habe zuerst geglaubt, es ist ein Tier.“ || "At first I thought it was an animal."
+„Das war falsch. Aber nun musste ich etwas tun.“ || "That was wrong. But now I had to do something."
+„Danach hörte ich meinen Namen: ‚Marta!‘“ || "Then I heard my name: 'Marta!'"
+„Es war mein Vater.“ || "It was my father."
+„Er hatte eine Kerze mitgebracht, denn die Straße war dunkel.“ || "He had brought a candle, because the street was dark."
+„Plötzlich war ich nicht mehr müde, und ich war sehr froh.“ || "Suddenly I was not tired any more, and I was very glad."
+Ben fragt: „Und danach? Was hast du gemacht?“ || Ben asks, "And after that? What did you do?"
+
+## Der Weg zur Kirche
+„Meine Mutter war noch in der Kirche“, erzählt Marta. || "My mother was still at church," Marta tells him.
+„Mein Bruder war müde, aber er wollte mitgehen.“ || "My brother was tired, but he wanted to come along."
+„Mein Bruder hat meine Hand genommen.“ || "My brother took my hand."
+„Mein Vater hat die Kerze genommen, und wir sind zur Kirche gegangen.“ || "My father took the candle, and we went to the church."
+„Der Mond stand hoch, und die Straße war still.“ || "The moon stood high, and the street was quiet."
+„Die Kirche war groß, und die Fenster waren hell.“ || "The church was big, and the windows were bright."
+„Meine Mutter hat noch gesungen, und sie hat uns gesehen.“ || "My mother was still singing, and she saw us."
+„Sie hat gelacht, und wir haben noch den Segen bekommen.“ || "She laughed, and we still received the blessing."
+„Danach sind wir alle nach Hause gegangen.“ || "After that we all went home."
+„Hat dein Vater die Kerze noch?“, fragt Ben. || "Does your father still have the candle?" asks Ben.
+„Ich weiß es nicht genau“, sagt Marta. || "I do not know exactly," says Marta.
+„Aber ich weiß: Die Nacht war schön, und mein Vater war nett.“ || "But I know the night was lovely, and my father was kind."
+
+## Wie sah dein Vater aus?
+„Wie sah dein Vater aus?“, fragt Ben. || "What did your father look like?" asks Ben.
+„Er war groß und stark, nicht dick und nicht dünn“, sagt Marta. || "He was tall and strong, not fat and not thin," says Marta.
+„Er hatte kurze, dunkle Haare, eine Brille und ein freundliches Gesicht.“ || "He had short, dark hair, glasses and a friendly face."
+„Er war ein ruhiger, netter Mensch, und er war auch lustig.“ || "He was a calm, nice person, and he was funny too."
+„War er noch jung?“, fragt Ben. || "Was he still young?" asks Ben.
+„Ja, er war dreißig“, sagt Marta. || "Yes, he was thirty," says Marta.
+„Habe ich das richtig verstanden? Dein Vater war das?“, fragt Ben. || "Did I understand that right? That was your father?" asks Ben.
+„Ja“, sagt Marta und lacht. || "Yes," says Marta, and laughs.
+„Das Geräusch war nur ein Mann mit einer Kerze.“ || "The noise was only a man with a candle."
+„Zu Hause haben wir zusammen Suppe gegessen.“ || "At home we ate soup together."
+
+## Die Monate
+„Nun gut“, sagt Ben. || "All right," says Ben.
+„Aber ich bin noch nicht müde.“ || "But I am not tired yet."
+„Dann sag die Monate“, sagt Marta, „und du schläfst.“ || "Then say the months," says Marta, "and you will sleep."
+Ben sagt langsam: „Januar, Februar, März, April, Mai, Juni.“ || Ben says slowly, "January, February, March, April, May, June."
+„Juli, August, September, Oktober, November, Dezember.“ || "July, August, September, October, November, December."
+Er sieht die Sterne am Fenster. || He sees the stars at the window.
+„Ich mag Märchen“, sagt er, „aber deine Geschichte ist besser.“ || "I like fairy tales," he says, "but your story is better."
+Marta lacht. || Marta laughs.
+„Morgen lade ich dich zum Frühstück ein“, sagt sie. || "Tomorrow I will invite you to breakfast," she says.
+„Das ist meine Einladung für einen müden Ben.“ || "That is my invitation for a tired Ben."
+Später ist es still im Zimmer. || Later it is quiet in the room.
+Nun schläft Ben. || Now Ben is asleep.
+

@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-03",
+  "lang": "nb",
+  "title": "The interview",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-03",
+    "title": "The interview (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Indirect speech in narration (spurte om han hadde ..., svarte at han ...), the perfect and past perfect, \"hvis\"-clauses. Sam goes to the interview and is offered the position."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "work",
+    "interview",
+    "indirect speech",
+    "perfect tense",
+    "offer"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sjef": "Sjefen i bokhandelen",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Mandag morgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På mandag stod Sam opp tidlig. Han spiste litt brød, men han var ikke sulten.",
+              "english": "On Monday Sam got up early. He ate a little bread, but he was not hungry."
+            },
+            {
+              "text": "Han var i sentrum en time for tidlig. Han gikk en tur i byen, og han ba en bønn: «Gud, hjelp meg å være ærlig.» Så gikk han til bokhandelen.",
+              "english": "He was in the town centre an hour too early. He went for a walk in the town, and he said a prayer: \"God, help me to be honest.\" Then he went to the bookshop."
+            },
+            {
+              "text": "Sjefen satt ved bordet og leste i en bok. «God dag,» sa han. «Du må være Sam. Kom inn.»",
+              "english": "The manager sat by the table and read in a book. \"Good day,\" he said. \"You must be Sam. Come in.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Intervjuet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "De satte seg i et lite rom i butikken. Sjefen spurte om Sam hadde jobbet i en bokhandel før.",
+              "english": "They sat down in a small room in the shop. The manager asked whether Sam had worked in a bookshop before."
+            },
+            {
+              "text": "Sam svarte at han ikke hadde det, men at han hadde lært mye norsk, og at han var glad i bøker. Han sa også at han ikke hadde noen erfaring, men at han ville lære.",
+              "english": "Sam answered that he had not, but that he had learned a lot of Norwegian, and that he was fond of books. He also said that he had no experience, but that he wanted to learn."
+            },
+            {
+              "text": "Sjefen sa at det var et ærlig svar. «Jeg liker det,» sa han.",
+              "english": "The manager said that it was an honest answer. \"I like that,\" he said."
+            },
+            {
+              "text": "Hva gjør du hvis en kunde spør om en bok som du ikke kjenner?",
+              "english": "What do you do if a customer asks about a book that you do not know?",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Jeg sier at jeg ikke kjenner den. Men jeg skal spørre noen som vet.",
+              "english": "I say that I do not know it. But I will ask someone who knows.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra. Og hvis du ikke forstår hva kunden sier?",
+              "english": "Good. And if you do not understand what the customer says?",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Da spør jeg en gang til. Det er ikke vanskelig å spørre.",
+              "english": "Then I ask once more. It is not difficult to ask.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er riktig. Den som spør, lærer.",
+              "english": "That is right. Whoever asks, learns.",
+              "speaker": "sjef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Arbeidet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Så fortalte sjefen om arbeidet. Det var ikke bare å selge bøker. De måtte også rydde bøkene og hjelpe kundene med å finne det de ville ha.",
+              "english": "Then the manager told about the work. It was not only selling books. They also had to tidy the books and help the customers find what they wanted."
+            },
+            {
+              "text": "Stillingen er på deltid. Du må jobbe tre dager i uka, og annenhver helg.",
+              "english": "The position is part-time. You must work three days a week, and every other weekend.",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Deltid er bra for meg. Jeg går på skolen to dager i uka. Og annenhver helg går bra også.",
+              "english": "Part-time is good for me. I go to school two days a week. And every other weekend is fine too.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Hva blir lønnen?",
+              "english": "What will the pay be?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Lønnen er ikke stor, men du får lære mye. Og du får gode kollegaer.",
+              "english": "The pay is not big, but you will learn a lot. And you will get good colleagues.",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Hvem er kollegaene mine?",
+              "english": "Who are my colleagues?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du treffer dem på mandag. De er snille, og de liker arbeidet sitt.",
+              "english": "You will meet them on Monday. They are kind, and they like their work.",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Sam tenkte at arbeidet var mer enn han hadde trodd. Men han likte det han hørte.",
+              "english": "Sam thought that the work was more than he had believed. But he liked what he heard."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tilbudet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg har snakket med alle som har søkt. Du hadde ikke så mye erfaring, men du var ærlig, og det liker jeg.",
+              "english": "I have spoken with everyone who has applied. You did not have so much experience, but you were honest, and I like that.",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Vi vil gjerne tilby deg stillingen. Kan du begynne neste mandag?",
+              "english": "We would like to offer you the position. Can you start next Monday?",
+              "speaker": "sjef"
+            },
+            {
+              "text": "Sam kunne nesten ikke tro det. «Ja,» sa han. «Takk for at dere tilbyr meg stillingen! Det vil jeg gjerne.»",
+              "english": "Sam could hardly believe it. \"Yes,\" he said. \"Thank you for offering me the position! I would like that very much.\""
+            },
+            {
+              "text": "Han gikk ut av bokhandelen og ringte til Anna. «Sjefen har tilbudt meg stillingen! Jeg skal jobbe tre dager i uka og annenhver helg.»",
+              "english": "He went out of the bookshop and called Anna. \"The manager has offered me the position! I will work three days a week and every other weekend.\""
+            },
+            {
+              "text": "«Gratulerer!» sa hun. «Det visste jeg! Deltid er riktig for deg. Hvem er kollegaene dine?» «Det vet jeg ikke ennå,» svarte han.",
+              "english": "\"Congratulations!\" she said. \"I knew it! Part-time is right for you. Who are your colleagues?\" \"I do not know yet,\" he answered."
+            },
+            {
+              "text": "Om kvelden spiste de taco, selv om det var mandag. Nils spurte om han fikk smake på bøkene, og alle lo.",
+              "english": "In the evening they ate tacos, even though it was Monday. Nils asked whether he could taste the books, and everyone laughed."
+            },
+            {
+              "text": "Før han sov, ba Sam: «Takk, Gud, for at jeg fikk tilbudet. Hjelp meg å gjøre arbeidet godt.»",
+              "english": "Before he slept, Sam prayed: \"Thank you, God, that I got the offer. Help me to do the work well.\""
+            },
+            {
+              "text": "Han hadde aldri vært så glad for en lønn han ikke hadde fått ennå.",
+              "english": "He had never been so glad about pay that he had not yet received."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta ringte og ville invitere Sam til middag. «Du burde komme hit etter jobben,» sa hun, «så kan vi gå en tur i naturen.»",
+              "english": "Marta called and wanted to invite Sam to dinner. \"You ought to come here after work,\" she said, \"and then we can go for a walk in nature.\""
+            },
+            {
+              "text": "Da han kom hjem, var han ikke alene: Anna og Lars ventet. Han hadde søkt, og nå hadde han en jobb.",
+              "english": "When he came home, he was not alone: Anna and Lars were waiting. He had applied, and now he had a job."
+            },
+            {
+              "text": "Nå hadde han flere venner enn før, og han kunne snakke med dem på norsk.",
+              "english": "Now he had more friends than before, and he could talk with them in Norwegian."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

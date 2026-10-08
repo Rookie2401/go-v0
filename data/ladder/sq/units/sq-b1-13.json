@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-13",
+  "lang": "sq",
+  "title": "Udhëtimi",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-13",
+    "title": "Albanian ladder, b1-bridge: Udhëtimi (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Udhëtimi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të premten në orën gjashtë të mëngjesit furgoni ishte para shtëpisë së Dritanit.",
+              "english": "On Friday at six in the morning the minibus was in front of Dritan's house."
+            },
+            {
+              "text": "Ishte ende natë, dhe qyteti flinte.",
+              "english": "It was still night, and the city was asleep."
+            },
+            {
+              "text": "Dritani kontrolloi furgonin, i vuri valixhet brenda dhe e pa që të gjithë ishin aty: Mira, Gjergji, Elira, Ardi, Ana, Sami.",
+              "english": "Dritan checked the minibus, put the suitcases inside and saw that everyone was there: Mira, Gjergj, Elira, Ardi, Ana, Sam."
+            },
+            {
+              "text": "— Gjashtë me mua janë shtatë, — tha ai.",
+              "english": "\"Six with me makes seven,\" he said."
+            },
+            {
+              "text": "— Është numri më i mirë.",
+              "english": "\"It is the best number.\""
+            },
+            {
+              "text": "Pastaj u ul në vendin e shoferit, u nis.",
+              "english": "Then he sat in the driver's seat, set off."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gjatë gjithë orës së parë fëmijët heshtën, sepse ende kishin gjumë.",
+              "english": "During the whole first hour the children were silent, because they were still sleepy."
+            },
+            {
+              "text": "Kur dielli u ngrit mbi male, ata u zgjuan të gjithë bashkë, si të kishte thirrur dikush.",
+              "english": "When the sun rose over the mountains, they all woke up together, as if someone had called them."
+            },
+            {
+              "text": "Retë ishin të ulëta, dhe në luginë mjegulla qëndronte si një lumë i bardhë.",
+              "english": "The clouds were low, and in the valley the mist lay like a white river."
+            },
+            {
+              "text": "— Shikoni! — thirri Elira.",
+              "english": "\"Look!\" called Elira."
+            },
+            {
+              "text": "— Mjegulla ka rënë në lumë dhe nuk dëshiron të dalë!",
+              "english": "\"The mist has fallen into the river and does not want to get out!\""
+            },
+            {
+              "text": "Ana qeshi.",
+              "english": "Ana laughed."
+            },
+            {
+              "text": "— Kjo është mënyra më e bukur për ta thënë, — tha ajo.",
+              "english": "\"That is the most beautiful way to say it,\" she said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në Elbasan ata pushuan për një kafe te një dyqan i vogël pranë rrugës.",
+              "english": "In Elbasan they stopped for a coffee at a small shop by the road."
+            },
+            {
+              "text": "Gjergji, që kishte filluar të bëhej i bardhë në fytyrë, zbriti shpejt dhe u ul mbi një gur.",
+              "english": "Gjergj, who had begun to turn white in the face, got down quickly and sat on a stone."
+            },
+            {
+              "text": "— Kam një gjë në stomak, — pëshpëriti.",
+              "english": "\"I have something in my stomach,\" he whispered."
+            },
+            {
+              "text": "— Është rruga, — tha Dritani.",
+              "english": "\"It is the road,\" said Dritan."
+            },
+            {
+              "text": "— Ka pesëdhjetë kthesa nga këtu deri në mal.",
+              "english": "\"There are fifty bends from here up to the mountain.\""
+            },
+            {
+              "text": "— Ulu përpara, shiko një pikë të largët dhe merr frymë ngadalë.",
+              "english": "\"Sit in front, look at a distant point and breathe slowly.\""
+            },
+            {
+              "text": "Mira i dha pak bukë të thatë dhe një gotë çaj.",
+              "english": "Mira gave him some dry bread and a glass of tea."
+            },
+            {
+              "text": "Pas dhjetë minutash ngjyra iu kthye në fytyrë.",
+              "english": "After ten minutes the colour came back to his face."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pasi u ndjenë më mirë, fëmijët filluan të këndonin.",
+              "english": "When they felt better, the children began to sing."
+            },
+            {
+              "text": "Elira e dinte një këngë të vjetër për një lumë dhe për një vajzë që priste një djalë në breg.",
+              "english": "Elira knew an old song about a river and about a girl who waited for a boy on the bank."
+            },
+            {
+              "text": "Sami e dëgjoi dy herë dhe pastaj provoi ta këndonte bashkë me ta, por i mbeti gjuha te fjala «lëndinë».",
+              "english": "Sam heard it twice and then tried to sing it with them, but his tongue got stuck on the word \"lëndinë.\""
+            },
+            {
+              "text": "— Çfarë do të thotë «lëndinë»? — pyeti ai.",
+              "english": "\"What does 'lëndinë' mean?\" he asked."
+            },
+            {
+              "text": "— Është një vend i gjelbër, ku delet pushojnë në verë, — shpjegoi Mira.",
+              "english": "\"It is a green place where the sheep rest in summer,\" Mira explained."
+            },
+            {
+              "text": "— Atëherë unë nuk kam parë kurrë një lëndinë në Tiranë!",
+              "english": "\"Then I have never seen a lëndinë in Tirana!\""
+            },
+            {
+              "text": "— Jo, — qeshi Mira, — atje ke vetëm pallate dhe makina.",
+              "english": "\"No,\" Mira laughed, \"there you have only apartment blocks and cars.\""
+            },
+            {
+              "text": "Sami e shkroi fjalën në fletore dhe e shkroi edhe një herë më poshtë.",
+              "english": "Sam wrote the word in his notebook and wrote it once more below."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Rruga filloi të ngjitej.",
+              "english": "The road began to climb."
+            },
+            {
+              "text": "Ata kaluan nëpër pyje, ku pemët kishin filluar të bëheshin kafe dhe të kuqe.",
+              "english": "They passed through woods, where the trees had begun to turn brown and red."
+            },
+            {
+              "text": "Herë pas here Dritani ecte ngadalë, sepse disa dele kalonin rrugën.",
+              "english": "From time to time Dritan drove slowly, because some sheep were crossing the road."
+            },
+            {
+              "text": "Një bari i vjetër ngriti kapelën për përshëndetje.",
+              "english": "An old shepherd raised his hat in greeting."
+            },
+            {
+              "text": "— Mirëdita! — thirri Sami me dritaren e hapur.",
+              "english": "\"Good day!\" called Sam through the open window."
+            },
+            {
+              "text": "— Mirëdita, bir! — u përgjigj plaku.",
+              "english": "\"Good day, son!\" the old man answered."
+            },
+            {
+              "text": "— Nga vini?",
+              "english": "\"Where are you coming from?\""
+            },
+            {
+              "text": "— Nga Tirana!",
+              "english": "\"From Tirana!\""
+            },
+            {
+              "text": "— Atëherë keni ende rrugë të gjatë, por keni kohë të mirë.",
+              "english": "\"Then you still have a long road, but you have good weather.\""
+            },
+            {
+              "text": "Ardi, që e kishte dëgjuar, tha se ky ishte njeriu më i qetë që kishte parë ndonjëherë.",
+              "english": "Ardi, who had heard him, said that this was the calmest man he had ever seen."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas disa orësh rruga filloi të zbresë, dhe pastaj, pas një kthese të gjatë, para tyre u hap një shesh i madh uji.",
+              "english": "After a few hours the road began to go down, and then, after a long bend, a big expanse of water opened before them."
+            },
+            {
+              "text": "Ishte liqeni.",
+              "english": "It was the lake."
+            },
+            {
+              "text": "Askush nuk foli për një moment.",
+              "english": "Nobody spoke for a moment."
+            },
+            {
+              "text": "Uji ishte aq i qetë sa dukej si një pasqyrë, dhe në anën tjetër, mjaft larg, maleve u pa një vijë e hollë.",
+              "english": "The water was so calm that it looked like a mirror, and on the other side, far away, a thin line of mountains could be seen."
+            },
+            {
+              "text": "— Kjo është shumë më e madhe se sa e kisha menduar, — tha Sami.",
+              "english": "\"This is much bigger than I had thought,\" said Sam."
+            },
+            {
+              "text": "— Nuk mund ta besoj, — shtoi ai.",
+              "english": "\"I cannot believe it,\" he added."
+            },
+            {
+              "text": "— Është një nga liqenet më të vjetër në botë, — tha Dritani me gëzim, dhe tani ishte ai që fliste si mësues.",
+              "english": "\"It is one of the oldest lakes in the world,\" said Dritan with joy, and now it was he who spoke like a teacher."
+            },
+            {
+              "text": "Në Pogradec ata hëngrën peshk të pjekur pranë ujit, dhe Sami pagoi për kafetë, siç kishte premtuar.",
+              "english": "In Pogradec they ate grilled fish by the water, and Sam paid for the coffees, as he had promised."
+            },
+            {
+              "text": "Në orën pesë të mbrëmjes, kur dielli ishte i ulët, furgoni hyri në Korçë.",
+              "english": "At five in the evening, when the sun was low, the minibus entered Korça."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

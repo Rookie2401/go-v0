@@ -563,6 +563,27 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Thomas und Sam sehen den Kalender in der Gemeinde.",
+              "english": "Thomas and Sam look at the calendar at the church."
+            },
+            {
+              "text": "Im Kalender sind die Geburtstage der Freunde.",
+              "english": "In the calendar are the friends' birthdays."
+            },
+            {
+              "text": "Heute sieht Sam wieder in den Kalender.",
+              "english": "Today Sam looks at the calendar again."
+            }
+          ]
+        }
+      ]
     }
   ]
 }

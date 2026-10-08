@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-b1-08",
+  "lang": "hi",
+  "title": "छत की बेल पर बाइबल की कक्षा",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-b1-08",
+    "title": "\"छत की बेल पर बाइबल की कक्षा\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners (everyday modern Hindi, the ladder's characters) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Fourth controlled unit of the b1 bridge. It prepares the words of John 15 (hi-b1-09, IRV, CC BY-SA, placed as it is): दाखलता, फलना, चेला, स्वामी, सूखना, आग, जलना, जुड़ना, बैर, सताना, each used three times, in a Thursday Bible class with Pastor Anil on the church roof where a grapevine grows. The unit only talks about the vine and its branches in plain words; the verses themselves are left to hi-b1-09. It also brings back a few common words that the long GDL story hi-b1-07 met once (काफ़ी, सलाह, भोजन, शरीर, विचार). Machine-drafted; a Christian reader and a Hindi reader should check the tone and the Biblical terms. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "church",
+    "scripture",
+    "bible study",
+    "plants"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "छत की बेल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "चर्च की छत पर अंगूर की एक बेल है, जिसे लोग दाखलता भी कहते हैं।",
+              "english": "On the roof of the church there is a grape vine, which people also call a dakhlata."
+            },
+            {
+              "text": "पास्टर अनिल हर गुरुवार को शाम की प्रार्थना के बाद बच्चों के साथ वहाँ बाइबल पढ़ते हैं।",
+              "english": "Pastor Anil reads the Bible there with the children every Thursday after the evening prayer."
+            },
+            {
+              "text": "आज उन्होंने यूहन्ना की किताब खोली, और सैम भी बच्चों के पास बैठ गया।",
+              "english": "Today he opened the book of John, and Sam sat down near the children too."
+            },
+            {
+              "text": "उन्होंने कहा, \"यीशु ने अपने चेलों से कहा था, 'मैं दाखलता हूँ, और तुम डालियाँ हो।'\"",
+              "english": "He said, \"Jesus told his disciples, 'I am the vine, and you are the branches.'\""
+            },
+            {
+              "text": "अमन ने पूछा, \"चेला कौन होता है?\"",
+              "english": "Aman asked, \"Who is a disciple?\""
+            },
+            {
+              "text": "पास्टर अनिल बोले, \"जो किसी के पास रहकर उससे सीखता है, वह उसका चेला होता है।\"",
+              "english": "Pastor Anil said, \"One who stays near someone and learns from him is his disciple.\""
+            },
+            {
+              "text": "\"अब आप सब इसे ध्यान से देखिए, और मुझे अपना विचार बताइए।\"",
+              "english": "\"Now all of you look at it carefully, and tell me your thought.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सूखी डाली",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "बेल की एक डाली सूख गई थी, और उस पर कोई फल नहीं था।",
+              "english": "One branch of the vine had dried up, and there was no fruit on it."
+            },
+            {
+              "text": "सैम ने कहा, \"यह तो पूरी सूख गई है।\"",
+              "english": "Sam said, \"This has dried up completely.\""
+            },
+            {
+              "text": "पास्टर अनिल बोले, \"जो डाली अलग हो जाती है, वह सूख जाती है।\"",
+              "english": "Pastor Anil said, \"The branch that gets cut off dries up.\""
+            },
+            {
+              "text": "\"लोग सूखी डाली को आग में डाल देते हैं, और वह जल जाती है।\"",
+              "english": "\"People put a dry branch in the fire, and it burns.\""
+            },
+            {
+              "text": "\"पर जो डाली बेल से जुड़ी रहती है, वह हरी रहती है और फलती है।\"",
+              "english": "\"But the branch that stays joined to the vine stays green and bears fruit.\""
+            },
+            {
+              "text": "अमन ने पूछा, \"फलना यानी क्या?\"",
+              "english": "Aman asked, \"What does 'phalna' mean?\""
+            },
+            {
+              "text": "\"फलना यानी फल देना,\" पास्टर अनिल ने हँसकर कहा, \"जैसे आम का पेड़ आम देता है।\"",
+              "english": "\"Phalna means giving fruit,\" Pastor Anil said with a laugh, \"as the mango tree gives mangoes.\""
+            },
+            {
+              "text": "सैम ने कहा, \"तो जो जुड़ा रहता है, वही फल देता है।\"",
+              "english": "Sam said, \"So only the one who stays joined gives fruit.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बाग का स्वामी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "\"इस बाग का स्वामी बेल का बहुत ध्यान रखता है,\" उन्होंने कहा।",
+              "english": "\"The owner of this garden takes great care of the vine,\" he said."
+            },
+            {
+              "text": "\"वह उसे पानी देता है, काफ़ी धूप देता है, और जो डाली कमज़ोर हो जाती है, उसे बचाने की सलाह भी देता है।\"",
+              "english": "\"He gives it water, gives it plenty of sunshine, and gives advice on saving the branch that has become weak.\""
+            },
+            {
+              "text": "सैम ने कहा, \"तो स्वामी को हर डाली की चिंता है।\"",
+              "english": "Sam said, \"So the owner cares about every branch.\""
+            },
+            {
+              "text": "\"हाँ,\" पास्टर अनिल ने कहा, \"और जो डाली जुड़ी रहती है, उसका शरीर हरा रहता है।\"",
+              "english": "\"Yes,\" Pastor Anil said, \"and the branch that stays joined keeps its body green.\""
+            },
+            {
+              "text": "एक बच्ची बोली, \"इसका मतलब है कि हमें भी यीशु से जुड़े रहना है।\"",
+              "english": "A girl said, \"That means we too have to stay joined to Jesus.\""
+            },
+            {
+              "text": "\"बिल्कुल,\" उन्होंने कहा, \"और जो स्वामी की बात मानता है, वह फलता है।\"",
+              "english": "\"Quite,\" he said, \"and the one who obeys the owner bears fruit.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "प्रेम और बैर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "फिर पास्टर अनिल ने कहा, \"यीशु ने कहा था, 'एक दूसरे से प्रेम रखो।'\"",
+              "english": "Then Pastor Anil said, \"Jesus said, 'Love one another.'\""
+            },
+            {
+              "text": "\"जो प्रेम रखता है, वह बैर नहीं रखता, चाहे लोग उसे सताएँ।\"",
+              "english": "\"The one who loves does not hold enmity, even if people trouble him.\""
+            },
+            {
+              "text": "अमन ने पूछा, \"बैर यानी क्या?\"",
+              "english": "Aman asked, \"What does 'bair' mean?\""
+            },
+            {
+              "text": "\"बैर यानी किसी को पसंद न करना,\" पास्टर अनिल ने कहा।",
+              "english": "\"Bair means not liking someone,\" Pastor Anil said."
+            },
+            {
+              "text": "\"लोग उन्हें सताएँगे, पर वे बैर का जवाब बैर से नहीं देंगे।\"",
+              "english": "\"People will trouble them, but they will not answer enmity with enmity.\""
+            },
+            {
+              "text": "सैम ने धीरे से कहा, \"मैं यहाँ यही देखता हूँ कि लोग एक दूसरे को नहीं सताते।\"",
+              "english": "Sam said softly, \"I see just this here, that people do not trouble one another.\""
+            },
+            {
+              "text": "कक्षा के बाद सब बच्चों ने छत से नीचे आकर नानी का बनाया भोजन खाया।",
+              "english": "After the class all the children came down from the roof and ate the meal Nani had made."
+            },
+            {
+              "text": "अमन ने नानी से कहा, \"आज की बेल हमें बहुत कुछ सिखाती है।\"",
+              "english": "Aman said to Nani, \"Today's vine teaches us a great deal.\""
+            },
+            {
+              "text": "नानी हँसीं और बोलीं, \"तो कल सुबह उसे पानी देना भी याद रखना।\"",
+              "english": "Nani laughed and said, \"Then remember to water it tomorrow morning too.\""
+            },
+            {
+              "text": "अमन ने सिर हिलाया और बोला, \"मैं सबसे पहले छत पर जाऊँगा।\"",
+              "english": "Aman nodded his head and said, \"I will go to the roof first of all.\""
+            },
+            {
+              "text": "सैम ने भी कहा, \"मैं भी तुम्हारे साथ चलूँगा, और हम दोनों मिलकर उसे पानी देंगे।\"",
+              "english": "Sam said too, \"I will come along with you, and the two of us will water it together.\""
+            },
+            {
+              "text": "नानी ने दोनों के लिए दूध गरम किया और कहा, \"अब जल्दी सो जाओ।\"",
+              "english": "Nani warmed milk for both of them and said, \"Now go to sleep quickly.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "चाचा जी की मदद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "कक्षा से पहले चाचा जी छत पर आए और बच्चों के लिए लकड़ी की एक कुर्सी बनाने लगे।",
+              "english": "Before the class Chacha ji came up to the roof and began to make a wooden chair for the children."
+            },
+            {
+              "text": "उन्होंने आरी से लकड़ी काटी, कील ठोकी और हथौड़ी से उसे ठीक किया।",
+              "english": "He cut the wood with a saw, drove nails and set it right with the hammer."
+            },
+            {
+              "text": "फिर उन्होंने कुर्सी के नीचे दो छोटे पहिए लगाए, ताकि बच्चे उसे धूप की तरफ़ ले जा सकें।",
+              "english": "Then he put two small wheels under the chair, so that it could be taken towards the sun."
+            },
+            {
+              "text": "अमन बोला, \"चाचा जी, आपका हर काम तेज़ी से हो जाता है!\"",
+              "english": "Aman said, \"Chacha ji, every work of yours gets done quickly!\""
+            },
+            {
+              "text": "सैम ने कहा, \"कील ठोकना भी तो आसान नहीं है, पर चाचा जी इसे बहुत अच्छी तरह कर लेते हैं।\"",
+              "english": "Sam said, \"Driving a nail is not easy either, but Chacha ji does it very well.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

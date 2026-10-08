@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "A notice and short text messages (Pastor Anil, Sam, Kiran, Ravi sir). Times and numbers are digits. कि-clauses (रवि सर ने कहा कि ...; मैंने सुना कि ...). Pastor Anil writes आप to Sam; Kiran writes तुम to Sam as a friend. The plan's polite word \"कृपया\" has no reading in the word list, so the polite requests use -इए forms (भेजिए, निकालिए). The potluck dal brings back the kitchen words; Sam's report brings back the lesson and Diwali words. Adapter trap: किरण is read as a noun (a ray), not as a name, so it is used only once in a sentence. Words outside the plan (measured, adapter lemmas x tokens): किरण×1 (the adapter reads किरण as a noun, not a name)."
+    "notes": "A notice and short text messages (Pastor Anil, Sam, Kiran, Ravi sir). Times and numbers are digits. कि-clauses (रवि सर ने कहा कि ...; मैंने सुना कि ...). Pastor Anil writes आप to Sam; Kiran writes तुम to Sam as a friend. The plan's polite word \"कृपया\" has no reading in the word list, so the polite requests use -इए forms (भेजिए, निकालिए). The potluck dal brings back the kitchen words; Sam's report brings back the lesson and Diwali words. Adapter trap: किरण is read as a noun (a ray), not as a name, so it is used only once in a sentence. Words outside the plan (measured, adapter lemmas x tokens): किरण×1 (the adapter reads किरण as a noun, not a name). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -396,6 +396,34 @@
             {
               "text": "रवि सर और मीरा दीदी भी मेहमान हैं।",
               "english": "Ravi sir and Meera didi are guests too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शनिवार को सभा में बहुत भीड़ है, और अचानक एक बच्चा मैदान में खो जाता है।",
+              "english": "On Saturday there is a big crowd at the gathering, and suddenly a child gets lost in the field."
+            },
+            {
+              "text": "सब लोग उसे ढूँढ़ते हैं, और चाची जी पड़ोस की गली में जाती हैं।",
+              "english": "Everybody looks for him, and Chachi ji goes into the neighbouring lane."
+            },
+            {
+              "text": "बच्चा यहीं बैठा है, छाया में, धीरे धीरे गाना गाता है।",
+              "english": "The child is sitting right here, in the shade, singing a song slowly."
+            },
+            {
+              "text": "अरे, यह तो चाची जी का बच्चा है!",
+              "english": "Oh, this is Chachi ji's child!"
+            },
+            {
+              "text": "चाची जी बोलती हैं, \"इसका नाम अमन नहीं, मोहन है।\"",
+              "english": "Chachi ji says, \"His name is not Aman, it is Mohan.\""
+            },
+            {
+              "text": "खिड़की के पास खड़े लोग हँसते हैं, और बच्चा हँसता है।",
+              "english": "The people standing near the window laugh, and the child laughs."
             }
           ]
         }

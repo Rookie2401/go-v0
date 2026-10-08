@@ -1,0 +1,38 @@
+=== nb-b1-bridge-17 | story | family | Christmas Eve | Julaften | Christmas,traditions,family,church,food,past perfect,passive
+speakers: mamma=Mamma
+note: Christmas Eve in Norway, told in the past tense with the past perfect and passive (ble pyntet, ble åpnet). The traditions mentioned (the tree, rice porridge with an almond, the church service, presents on the evening of the 24th) are general and unchecked; a Norwegian reviewer should check them. The Bible-related lines are in the course's own words.
+## Før jul
+Det var mørkt og kaldt, og snøen lå over byen. Lysene i vinduene gjorde det varmere. || It was dark and cold, and the snow lay over the town. The lights in the windows made it warmer.
+{sam} hadde gledet seg til jul, og jula var nå her, men han savnet familien sin. Han hadde aldri vært så langt fra dem på julaften. || Sam had looked forward to Christmas, and Christmas was here now, but he missed his family. He had never been so far from them on Christmas Eve.
+Tidlig på julaften ringte han til mora si. Det var morgen i Norge, men natt i USA, og hun var fortsatt trøtt. || Early on Christmas Eve he called his mother. It was morning in Norway, but night in the USA, and she was still tired.
+[sam] God jul, mamma! Jeg savner deg. || Merry Christmas, Mum! I miss you.
+[mamma] God jul, vennen min. Jeg savner deg også. Men jeg er glad for at du har en familie der. || Merry Christmas, my dear. I miss you too. But I am glad that you have a family there.
+[sam] Ja. Jeg skal være hos {ana} og {luis}. Og {marta} kommer med brød. || Yes. I am going to be at Anna and Lars's. And Marta is coming with bread.
+
+## Treet og maten
+Hjemme hos {ana} og {luis} hadde alle hjulpet. Treet ble pyntet med lys og med stjerner som {nico} hadde laget av papir, og gavene lå under det. || At Anna and Lars's everyone had helped. The tree was decorated with lights and with stars that Nils had made out of paper, and the presents lay under it.
+[nico] Jeg laget ti stjerner! || I made ten stars!
+[luis] Vi har en tradisjon. På julaften pynter vi treet sammen, og så spiser vi middag klokka fem. || We have a tradition. On Christmas Eve we decorate the tree together, and then we eat dinner at five o'clock.
+[marta] Det er en gammel tradisjon, {sam}. Har dere dette i USA også? || It is an old tradition, Sam. Do you have this in the USA too?
+[sam] Ja, men vi åpner gavene om morgenen. || Yes, but we open the presents in the morning.
+Til slutt var det grøt med ris. «Grøten er ferdig!» sa {marta}. I grøten hadde hun lagt en mandel. Den som fant mandelen, fikk en liten gave. || At the end there was porridge with rice. "The porridge is ready!" said Marta. In the porridge she had put an almond. Whoever found the almond got a little present.
+[nico] Jeg fant den aldri før, men i år skal jeg finne den! || I never found it before, but this year I will find it!
+Alle spiste og lette, og til slutt var det {sam} som fant mandelen. Han hadde ikke trodd at han ville være så heldig. || Everyone ate and searched, and in the end it was Sam who found the almond. He had not believed that he would be so lucky.
+[sam] Jeg har den! Jeg har mandelen! || I have it! I have the almond!
+Alle lo, og {nico} sa: «Det er ikke riktig!» Men han lo likevel. || Everyone laughed, and Nils said: "That is not right!" But he laughed anyway.
+
+## Kirka
+Etter middagen gikk de til kirka. Det var en gammel tradisjon å gå dit på julaften. Det var mørkt ute, men kirka hadde mange lys som stjerner, og mange sang. Presten sa at jula handler om et barn som kom for å gi fred og håp. || After dinner they went to the church. It was an old tradition to go there on Christmas Eve. It was dark outside, but the church had many lights like stars, and many sang. The pastor said that Christmas is about a child who came to give peace and hope.
+{sam} satt mellom {marta} og {ana}. Han tenkte på tvilen han hadde hatt det første året, og på alt som hadde vært det året. Han var fortsatt langt fra familien sin, men han var likevel ikke alene. || Sam sat between Marta and Anna. He thought about the doubt he had had the first year, and about everything that had been that year. He was still far from his family, but he was not alone all the same.
+
+## Gavene
+Hjemme igjen ble gavene åpnet. {sam} hadde gitt {nico} en bok om fjell, og {nico} hadde gitt ham et brev. || Back home the presents were opened. Sam had given Nils a book about mountains, and Nils had given him a letter.
+Brevet sa: «Du er den beste vennen min. Takk for at du var med meg på legevakten.» || The letter said: "You are my best friend. Thank you for being with me at the emergency clinic."
+[sam] Tusen takk, {nico}. Jeg skal lese brevet mange ganger. || Thank you very much, Nils. I will read the letter many times.
+Den kvelden ba {sam}: «Takk, Gud, for den første julen i Norge. Takk for familien jeg har fått her. Gi også fred til dem som er alene i kveld.» Han var trøtt, men han var likevel veldig glad. || That evening Sam prayed: "Thank you, God, for the first Christmas in Norway. Thank you for the family I have got here. Give also peace to those who are alone this evening." He was tired, but he was very glad all the same.
+
+Kommunen hadde lys på treet i sentrum. {ana} hadde vært på legevakten dagen før, men hun var frisk og glad nå. Hos {marta} var det omsorg for alle. Presten fortalte en lignelse om et lys, og de delte grøten i fred. Basaren hadde vært godt organisert, og plakaten og premien, en stor kake, ble snakket om på julaften. Til alle gavene fikk {nico} en kvittering, hvis de ikke var riktige. || The municipality had lights on the tree in the town centre. Anna had been at the emergency clinic the day before, but she was well and glad now. At Marta's there was care for everyone. The pastor told a parable about a light, and they shared the porridge in peace. The bazaar had been well organised, and the poster and the prize, a big cake, were talked about on Christmas Eve. With all the presents Nils got a receipt, if they were not right.
+Det var nok mat til alle på julaften. {luis} hadde ansvar for treet, og gruppen fra kirka sang for dem på døra. I år hadde ingen organisert lodd, men alle fikk en gave. || There was enough food for everyone on Christmas Eve. Lars had responsibility for the tree, and the group from the church sang for them at the door. This year nobody had organised raffle tickets, but everyone got a present.
+Julaften var en dag for å dele, og alle delte kake. Loddene fra basaren var borte, men ingen savnet dem. || Christmas Eve was a day for sharing, and everyone shared cake. The raffle tickets from the bazaar were gone, but nobody missed them.
+Bak treet lå gavene, og {nico} ville åpne dem alle med en gang. || Behind the tree lay the presents, and Nils wanted to open them all at once.
+Hjemme igjen pyntet {nico} treet med en stjerne til før han la seg. || Back home Nils decorated the tree with one more star before he went to bed.

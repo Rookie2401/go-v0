@@ -1,0 +1,43 @@
+=== nb-b1-bridge-04 | story | work | The first day | Første arbeidsdag | work,colleagues,customers,mistakes,past tense
+speakers: sjef=Sjefen, silje=Silje, erik=Erik
+note: Sam's first day in the bookshop. Past tense narration with the perfect in the closing conversation. Silje and Erik are invented colleagues. A Norwegian reviewer should check how natural the workplace talk sounds.
+## Møte med kollegaene
+På mandag kom {sam} til bokhandelen klokka ni. Han var nervøs, men han hadde bestemt seg for å være ærlig. || On Monday Sam came to the bookshop at nine o'clock. He was nervous, but he had decided to be honest.
+Sjefen hilste på ham. «Velkommen,» sa han. «Nå skal du treffe kollegaene dine.» || The manager greeted him. "Welcome," he said. "Now you will meet your colleagues."
+De to kollegaene het Silje og Erik. Silje var ung, og Erik hadde jobbet i bokhandelen i tjue år. || The two colleagues were called Silje and Erik. Silje was young, and Erik had worked in the bookshop for twenty years.
+[silje] Hei, {sam}! Vi har hørt mye om deg. || Hi, Sam! We have heard a lot about you.
+[erik] Hvis du har spørsmål, kan du spørre meg. Jeg kan nesten alt om denne butikken. || If you have questions, you can ask me. I know almost everything about this shop.
+
+## Kassene
+Sjefen viste {sam} et rom i butikken. Der var det mange kasser med nye bøker. || The manager showed Sam a room in the shop. There were many boxes of new books there.
+[sjef] Du skal åpne kassene og legge bøkene på hyllene. Silje viser deg hvordan. || You are to open the boxes and put the books on the shelves. Silje will show you how.
+[silje] Vi legger bøkene etter navn. A kommer først, og Å kommer til slutt. || We put the books by name. A comes first, and Å comes last.
+{sam} åpnet den første kassen. Han tok bøkene, leste navnene og gikk til hyllene. || Sam opened the first box. He took the books, read the names and went to the shelves.
+Han jobbet rolig, og etter en time hadde han åpnet fire kasser. Alle bøkene lå på riktig hylle. || He worked calmly, and after an hour he had opened four boxes. All the books lay on the right shelf.
+Men så gjorde han en feil. Han la en bok om fjell på en hylle der den ikke hørte hjemme. Ingen så det før en dame kom inn og spurte etter den. || But then he made a mistake. He put a book about mountains on a shelf where it did not belong. Nobody saw it until a lady came in and asked for it.
+
+## En feil
+[sam] Jeg har ikke sett den, men jeg skal finne den. || I have not seen it, but I will find it.
+{sam} husket rådet fra intervjuet og spurte Silje. Hun fant boka på feil hylle. || Sam remembered the advice from the interview and asked Silje. She found the book on the wrong shelf.
+[silje] Her er den, {sam}. Den lå på feil hylle. Vær rolig, det går bra. || Here it is, Sam. It was on the wrong shelf. Be calm, it is all right.
+[sam] Unnskyld. Jeg har gjort en feil. || I am sorry. I have made a mistake.
+[erik] Det er ikke vanskelig å gjøre feil. Alle gjør feil den første dagen. Jeg gjorde mange feil, og jeg lærte av dem. || It is not difficult to make mistakes. Everyone makes mistakes on the first day. I made many mistakes, and I learned from them.
+{sam} var glad for at de var snille. Han tenkte at det var godt å jobbe med kollegaer som var rolige. || Sam was glad that they were kind. He thought that it was good to work with colleagues who were calm.
+
+## Lunsj
+Klokka tolv hadde de pause, og de spiste lunsj sammen. Lunsjen var liten, men pausen var hyggelig. || At twelve o'clock they had a break, and they ate lunch together. The lunch was small, but the break was pleasant.
+[erik] Hvorfor kom du til Norge, {sam}? || Why did you come to Norway, Sam?
+[sam] Jeg ville lære norsk og treffe nye folk. Og jeg ville se fjellene og fjordene. || I wanted to learn Norwegian and meet new people. And I wanted to see the mountains and the fjords.
+[silje] Og nå selger du bøker på norsk! || And now you are selling books in Norwegian!
+[sam] Ennå har jeg ikke solgt noen. Men jeg har hjulpet en dame, og jeg har lært navnene på alle bøkene på hylla. || I have not sold any yet. But I have helped a lady, and I have learned the names of all the books on the shelf.
+Etter lunsjen viste Erik ham hva han skulle gjøre med kassene som var igjen. {sam} jobbet til klokka fem. || After lunch Erik showed him what he should do with the boxes that were left. Sam worked until five o'clock.
+
+## Hjemme igjen
+Da {sam} kom hjem, satt {ana} og {luis} i stua. De ville høre alt. || When Sam came home, Anna and Lars were sitting in the living room. They wanted to hear everything.
+[ana] Hvordan gikk den første dagen? Var du nervøs? || How did the first day go? Were you nervous?
+[sam] Ja, først. Men kollegaene er snille. I pausen spiste vi lunsj sammen. Jeg har åpnet mange kasser, jeg har lært hva de heter, og jeg har gjort en feil. || Yes, at first. But the colleagues are kind. In the break we ate lunch together. I have opened many boxes, I have learned what they are called, and I have made a mistake.
+[luis] Det er bra. Den som gjør feil, lærer. || That is good. Whoever makes mistakes, learns.
+{sam} tenkte på det sjefen hadde sagt på intervjuet. Nå visste han at det var riktig. Han var trøtt, men han var glad. || Sam thought about what the manager had said at the interview. Now he knew that it was right. He was tired, but he was happy.
+
+Mens {sam} gikk hjem, tenkte han på skogen og på strømmen i elva. Silje, som var ung, forberedte en tur til fjellet annenhver helg. || While Sam walked home, he thought of the forest and of the current in the river. Silje, who was young, was preparing a trip to the mountains every other weekend.
+Etter arbeidet øvde {sam} seg på å lese høyt. Han tenkte på søknaden og på alle folk som kom inn i butikken. || After work Sam practised reading aloud. He thought of the application and of all the people who came into the shop.

@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-21",
+  "lang": "sq",
+  "title": "Lajme nga lagjja",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-21",
+    "title": "Albanian ladder, b1-bridge: Lajme nga lagjja (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "nonfiction"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Lajme nga lagjja",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Në dhjetor, pas Krishtlindjes, shkolla e lagjes nxori për herë të parë një gazetë të vogël me katër faqe.",
+              "english": "In December, after Christmas, the neighbourhood school put out for the first time a small newspaper of four pages."
+            },
+            {
+              "text": "Quhej «Zëri i lagjes», dhe e kishin shkruar mësuesit bashkë me nxënësit.",
+              "english": "It was called \"The Voice of the Neighbourhood,\" and the teachers had written it together with the pupils."
+            },
+            {
+              "text": "Mira ishte redaktorja, Luani shkruante për shkollën, dhe Sami, me ndihmën e Elirës, korrigjonte gabimet.",
+              "english": "Mira was the editor, Luan wrote about the school, and Sam, with Elira's help, corrected the mistakes."
+            },
+            {
+              "text": "Ja disa nga lajmet e numrit të parë.",
+              "english": "Here are some of the news items from the first issue."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Çatia e shkollës u rregullua.",
+              "english": "The school roof was repaired."
+            },
+            {
+              "text": "Pas dy javësh pune, çatia e shkollës, që kishte lënë ujë në dy klasa, u rregullua plotësisht.",
+              "english": "After two weeks of work, the school roof, which had let water into two classrooms, was fully repaired."
+            },
+            {
+              "text": "Puna u bë nga tre punëtorë, të drejtuar nga Dritan Gjoni.",
+              "english": "The work was done by three workers, led by Dritan Gjoni."
+            },
+            {
+              "text": "Drejtori i shkollës tha se materialet kishin kushtuar më pak nga sa ishte planifikuar dhe se paratë që mbetën do të përdoren për libra.",
+              "english": "The head of the school said that the materials had cost less than had been planned and that the money which was left would be used for books."
+            },
+            {
+              "text": "— Kjo çati nuk është vetëm një çati e re, — tha ai.",
+              "english": "\"This roof is not only a new roof,\" he said."
+            },
+            {
+              "text": "— Ka edhe vëmendjen e njerëzve që nuk kishin detyrë ta bënin.",
+              "english": "\"It also has the attention of people who had no duty to do it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Klubi ynë po rritet.",
+              "english": "Our club is growing."
+            },
+            {
+              "text": "Çdo të shtunë në orën dhjetë, në klasën e dytë, mblidhen mbi njëzet fëmijë për të mësuar anglisht.",
+              "english": "Every Saturday at ten, in the second classroom, more than twenty children gather to learn English."
+            },
+            {
+              "text": "Klubin e drejton Sam, një i ri nga Amerika, që jeton në Tiranë prej më shumë se një viti.",
+              "english": "The club is run by Sam, a young man from America, who has lived in Tirana for more than a year."
+            },
+            {
+              "text": "Sipas tij, fëmijët mësojnë më shpejt kur i bëjnë vetë pyetjet.",
+              "english": "According to him, children learn faster when they ask the questions themselves."
+            },
+            {
+              "text": "Prindërit që duan të regjistrojnë fëmijët e tyre mund të shkruajnë në adresën e shkollës ose të vijnë një të shtunë për të parë.",
+              "english": "Parents who want to enrol their children can write to the school's address or come on a Saturday to see."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Një qen u kthye në shtëpi.",
+              "english": "A dog returned home."
+            },
+            {
+              "text": "Në tetor, në oborrin e shkollës e gjetën një qen të humbur.",
+              "english": "In October, in the school yard, they found a lost dog."
+            },
+            {
+              "text": "Një njoftim i shtypur në shkollë dhe i ngjitur në stacionin e autobusit e ndihmoi të gjendej pronari brenda tri ditësh.",
+              "english": "A notice printed at the school and stuck at the bus station helped the owner to be found within three days."
+            },
+            {
+              "text": "Nxënësi Ardi Dërvishi, që e mbajti qenin për disa ditë, tha: «Mësova se një gjë bëhet jotja më shumë kur e jep.»",
+              "english": "The pupil Ardi Dërvishi, who kept the dog for a few days, said: \"I learned that a thing becomes more yours when you give it.\""
+            },
+            {
+              "text": "Redaksia e njofton lexuesin se shkolla do të ketë një «Ditë të njoftimeve», ku çdo fëmijë mund të sjellë një gjë të gjetur dhe të provojë ta kthejë te pronari.",
+              "english": "The editors inform the reader that the school will have a \"Day of Notices,\" where every child may bring a found item and try to return it to its owner."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dita e supës.",
+              "english": "Soup Day."
+            },
+            {
+              "text": "Të shtunën e fundit të janarit, në oborrin e shkollës, do të bëhet një supë e madhe për të gjithë lagjen.",
+              "english": "On the last Saturday of January, in the school yard, a big soup will be made for the whole neighbourhood."
+            },
+            {
+              "text": "Çdo familje do të sjellë diçka: një perime, një copë mish, një bukë ose vetëm një buzëqeshje.",
+              "english": "Every family will bring something: a vegetable, a piece of meat, a loaf of bread or only a smile."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gjyshja Drita, që shet bukë në treg prej tridhjetë vitesh, ka premtuar të sjellë dyzet bukë.",
+              "english": "Grandmother Drita, who has sold bread at the market for thirty years, has promised to bring forty loaves."
+            },
+            {
+              "text": "Kur e pyetën pse e bën këtë, ajo u përgjigj: — Sepse një lagje që ha bashkë nuk mund të jetë një lagje e huaj.",
+              "english": "When they asked her why she does this, she answered: \"Because a neighbourhood that eats together cannot be a foreign neighbourhood.\""
+            },
+            {
+              "text": "Të gjithë janë të ftuar, edhe ata që nuk njohin asnjë njeri.",
+              "english": "Everyone is invited, even those who do not know anyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Numri tjetër i gazetës do të dalë në mars.",
+              "english": "The next issue of the newspaper will come out in March."
+            },
+            {
+              "text": "Nëse keni një lajm, një histori ose një pyetje, shkruani në adresën e shkollës.",
+              "english": "If you have news, a story or a question, write to the school's address."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pyetja e muajit.",
+              "english": "The question of the month."
+            },
+            {
+              "text": "Një lexues, Elira S., e pyet Samin: «A është më e vështirë të mësosh shqip se anglisht?»",
+              "english": "A reader, Elira S., asks Sam: \"Is it harder to learn Albanian than English?\""
+            },
+            {
+              "text": "Sami përgjigjet se nuk e di, por se e di një gjë tjetër.",
+              "english": "Sam answers that he does not know, but that he knows another thing."
+            },
+            {
+              "text": "— Kur kam filluar të mësoj shqip, mendoja se fjalët ishin pjesa më e vështirë.",
+              "english": "\"When I began to learn Albanian, I thought that the words were the hardest part.\""
+            },
+            {
+              "text": "— Pastaj kuptova se vështirësia e vërtetë ishte e vogël: ishte frika të flas keq.",
+              "english": "\"Then I understood that the real difficulty was small: it was the fear of speaking badly.\""
+            },
+            {
+              "text": "— Tani kur bëj një gabim, njerëzit më korrigjojnë me një buzëqeshje dhe më japin një kafe.",
+              "english": "\"Now when I make a mistake, people correct me with a smile and give me a coffee.\""
+            },
+            {
+              "text": "— Në Amerikë njerëzit më korrigjonin më rrallë, dhe unë mësoja më ngadalë.",
+              "english": "\"In America people corrected me more rarely, and I learned more slowly.\""
+            },
+            {
+              "text": "— Kështu që përgjigjja ime është kjo: të mësosh shqip nuk është më e vështirë, por është më e ngrohtë.",
+              "english": "\"So my answer is this: learning Albanian is not harder, but it is warmer.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

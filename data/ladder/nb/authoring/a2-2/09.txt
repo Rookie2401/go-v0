@@ -3,7 +3,7 @@ note: An invented invitation letter from a local congregation; no real church is
 ## Brevet
 Kjære venner, || Dear friends,
 Vi inviterer dere til gudstjeneste i kirka vår på søndag klokka elleve. || We invite you to the service in our church on Sunday at eleven o'clock.
-Alle er velkomne, gamle og små. || Everyone is welcome, old and small.
+Alle er velkomne, gamle og små. Vi inviterer alle, og alle er velkomne. || Everyone is welcome, old and small. We invite everyone, and everyone is welcome.
 Etter gudstjenesten drikker vi kaffe og spiser kake sammen. Der kan dere treffe folk i menigheten. || After the service we drink coffee and eat cake together. There you can meet the people of the congregation.
 Hvis dere har spørsmål, kan dere ringe til presten. Han heter Hansen. || If you have questions, you can call the pastor. His name is Hansen.
 Vi håper å se dere! || We hope to see you!
@@ -11,7 +11,7 @@ Hilsen menigheten || Greetings from the congregation
 
 ## Hjemme
 {sam} har fått brevet. Han leser det for {ana} og {luis}. || Sam has received the letter. He reads it to Anna and Lars.
-[sam] Menigheten inviterer oss til gudstjeneste på søndag. || The congregation invites us to the service on Sunday.
+[sam] Kirka inviterer oss til gudstjeneste på søndag. || The church invites us to the service on Sunday.
 [ana] Vi går i kirka hver søndag, men det er bra å få et brev. || We go to church every Sunday, but it is good to get a letter.
 [luis] Alle er velkomne, sier brevet. Det er en bra menighet. || Everyone is welcome, says the letter. It is a good congregation.
 [sam] Jeg vil gjerne treffe flere folk. Jeg har mange venner, men jeg vil ha flere. || I would like to meet more people. I have many friends, but I want more.
@@ -28,6 +28,8 @@ Han skrev et brev til menigheten og takket for invitasjonen. || He wrote a lette
 {marta} og {nico} var også i kirka. De satt hos {sam}, og de sang sammen. || Marta and Nils were also in the church. They sat with Sam, and they sang together.
 
 ## Husker du?
-I menigheten kjenner folk hverandre. De har tvil og spørsmål, men de er trygge. Svaret er ikke alltid lett. || In the congregation people know each other. They have doubt and ask questions, but they feel safe. The answer is not always easy.
+I menigheten kjenner alle folk. De har tvil og spørsmål, men de er trygge. Svaret er ikke alltid lett. || In the congregation everyone knows people. They have doubt and ask questions, but they feel safe. The answer is not always easy.
 
-{sam} leser begge. Først leser han bokmål, og så leser han nynorsk. Han vil heller forstå dialekter, slik som {marta} snakker. || Sam reads both. First he reads Bokmål, and then he reads Nynorsk. He would rather understand dialects, the way Marta speaks.
+{sam} leser begge. Først leser han bokmål, og så leser han nynorsk. Han vil forstå dialekter, som {marta} snakker. || Sam reads both. First he reads Bokmål, and then he reads Nynorsk. He wants to understand dialects, like Marta speaks.
+
+Folk hørte at {ana} kanskje ville flytte til Oslo. {nico} skrev om fiskere som bor nær havet og lager tørrfisk. || People heard that Anna might want to move to Oslo. Nils wrote about fishermen who live near the sea and make dried fish.

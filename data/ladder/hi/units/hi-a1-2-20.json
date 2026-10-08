@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "A small prayer meeting in Pastor Anil's house. The prayers use plain Christian Hindi (हे परमेश्वर, हमें आशीष दीजिए, हमें माफ़ कीजिए, आपका आभार, आपका धन्यवाद हो) in the polite imperative and subjunctive. \"सुनीता आंटी\" is written सुनीता जी because आंटी has no reading in the word list. \"हे\" and \"गुरुवार\" and \"परीक्षा\" are not in the plan's lists for this unit (हे is needed later for John 14). The reviewer should check the prayers for naturalness and doctrine. \"मोटा\" is used for the thick Bible (मोटी बाइबल). Honorific plural for पास्टर अनिल and सुनीता जी. Words outside the plan (measured, adapter lemmas x tokens): हे×4 (needed for John 14 later), किरण×4, गुरुवार×1, परीक्षा×1."
+    "notes": "A small prayer meeting in Pastor Anil's house. The prayers use plain Christian Hindi (हे परमेश्वर, हमें आशीष दीजिए, हमें माफ़ कीजिए, आपका आभार, आपका धन्यवाद हो) in the polite imperative and subjunctive. \"सुनीता आंटी\" is written सुनीता जी because आंटी has no reading in the word list. \"हे\" and \"गुरुवार\" and \"परीक्षा\" are not in the plan's lists for this unit (हे is needed later for John 14). The reviewer should check the prayers for naturalness and doctrine. \"मोटा\" is used for the thick Bible (मोटी बाइबल). Honorific plural for पास्टर अनिल and सुनीता जी. Words outside the plan (measured, adapter lemmas x tokens): हे×4 (needed for John 14 later), किरण×4, गुरुवार×1, परीक्षा×1. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -394,6 +394,18 @@
             {
               "text": "किरण बोलता है, \"मुझे सब कुछ सहना पड़ता है, लेकिन मैं ख़ुश हूँ।\"",
               "english": "Kiran says, \"I have to bear everything, but I am happy.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज प्रार्थना सभा में सब शांत बैठे हैं।",
+              "english": "Today everybody sits quietly at the prayer meeting."
+            },
+            {
+              "text": "पूरा गाँव सभा में आता है, और बच्चे भी आते हैं।",
+              "english": "The whole village comes to the meeting, and the children come too."
             }
           ]
         }

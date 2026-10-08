@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-21",
+  "lang": "nb",
+  "title": "A letter to Mum",
+  "contentType": "correspondence",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-21",
+    "title": "A letter to Mum (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". A long letter from Sam to his mother in the USA. Perfect and past perfect for looking back, \"kommer til å\" and \"skal\" for the future, indirect speech about her questions. It recycles much of the vocabulary of the bridge. The letter format (greeting, closing) is general; a Norwegian reviewer should check how natural it sounds."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "letter",
+    "looking back",
+    "perfect tense",
+    "past perfect",
+    "future",
+    "reflection"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Kjære mamma",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Kjære mamma,",
+              "english": "Dear Mum,"
+            },
+            {
+              "text": "Takk for brevet ditt og for pakken du sendte. Kakene kom i går, og de var gode, selv om Nils og jeg spiste dem alle på en kveld.",
+              "english": "Thank you for your letter and for the parcel you sent. The cakes came yesterday, and they were good, even though Nils and I ate them all in one evening."
+            },
+            {
+              "text": "Du spør hvordan jeg har det, og om jeg er ensom. Jeg skal prøve å svare ærlig, for jeg vet at du liker det. Faktisk har jeg ikke vært ensom på lenge. Det første året var jeg ensom, men nå har jeg venner.",
+              "english": "You ask how I am, and whether I am lonely. I will try to answer honestly, because I know that you like that. Actually I have not been lonely for a long time. The first year I was lonely, but now I have friends."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Arbeidet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg har jobbet i bokhandelen i mange måneder nå. Kollegaene mine, Silje og Erik, har lært meg mye. Jeg har gjort feil, og en gang fikk jeg en sint kunde, men jeg har lært å sjekke og å lytte.",
+              "english": "I have worked in the bookshop for many months now. My colleagues, Silje and Erik, have taught me a lot. I have made mistakes, and once I got an angry customer, but I have learned to check and to listen."
+            },
+            {
+              "text": "Lønnen er ikke stor, men jeg har spart litt hver måned på en konto i banken. Jeg har ikke hatt mye penger, men jeg har hatt nok. Jeg er takknemlig for jobben.",
+              "english": "The pay is not big, but I have saved a little every month in an account at the bank. I have not had much money, but I have had enough. I am grateful for the job."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hjemmet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Du husker at jeg bodde hos Anna og Lars. Nå har jeg min egen leilighet. Den ligger i etasje tre, nær kirka, og den har en liten balkong. Jeg leide den gjennom kirka, og det var mange som hjalp meg å flytte. Her heter det dugnad.",
+              "english": "You remember that I lived with Anna and Lars. Now I have my own flat. It is on the third floor, near the church, and it has a little balcony. I rented it through the church, and many people helped me move. Here it is called dugnad."
+            },
+            {
+              "text": "Naboene mine er snille. Solveig bor under meg, og hun har lært meg å spare strøm. Vi har møter i huset, og vi snakker om søppel, støy og regler. Det er ikke mye, men jeg liker det. Jeg er takknemlig for naboene.",
+              "english": "My neighbours are kind. Solveig lives below me, and she has taught me to save electricity. We have meetings in the house, and we talk about rubbish, noise and rules. It is not much, but I like it. I am grateful for the neighbours."
+            },
+            {
+              "text": "Hverdagen min er ganske rolig nå. Jeg står opp tidlig, jeg går til bokhandelen, og om kvelden leser jeg eller besøker noen. Faktisk har hverdagen forandret seg mye. Jeg er takknemlig for en rolig hverdag.",
+              "english": "My everyday life is quite calm now. I get up early, I go to the bookshop, and in the evening I read or visit someone. Actually my everyday life has changed a lot. I am grateful for a calm everyday life."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Troen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På torsdager går jeg i en gruppe i kirka. Vi leser en tekst, vi snakker om den, og vi ber sammen. Torsdag leste vi om hyrden som leter etter sauen sin. Jeg fortalte at jeg hadde vært som den sauen, og at noen hadde funnet meg.",
+              "english": "On Thursdays I go to a group at the church. We read a text, we talk about it, and we pray together. On Thursday we read about the shepherd who looks for his sheep. I told that I had been like that sheep, and that someone had found me."
+            },
+            {
+              "text": "Jeg tenker mye på kjærlighet og på å tilgi, og jeg tror at jeg har vokst. Troen min har vokst, og vi har vokst sammen. Jeg har forandret meg mer dette året enn i de ti årene før.",
+              "english": "I think a lot about love and about forgiving, and I believe that I have grown. My faith has grown, and we have grown together. I have changed more this year than in the ten years before."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Året som har gått",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg tenker ofte på året som har gått. Til jul hadde vi grøt, og jeg fant mandelen! På basaren skrev jeg plakater, og tekstene mine var ikke så dårlige. Blant alle gavene var brevet fra Nils den beste. Jeg har tvil og tro, og jeg er glad for begge. Da prisen på strøm økte, fikk jeg mange tips av naboene. I påsken fikk vi sjokolade, og jeg satt i kirka og så på korset.",
+              "english": "I often think of the year that has passed. At Christmas we had porridge, and I found the almond! At the bazaar I wrote posters, and my texts were not so bad. Among all the presents, the letter from Nils was the best. I have doubt and faith, and I am glad of both. When the price of electricity rose, I got many tips from the neighbours. At Easter we got chocolate, and I sat in the church and looked at the cross."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fremtiden",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Du spør om drømmen min. Faktisk har jeg en stor drøm, og den har tre deler. Jeg vil lese bøker på norsk uten å spørre noen om hjelp. Jeg vil hjelpe noen på den måten som Anna, Lars og Marta har hjulpet meg.",
+              "english": "You ask about my dream. Actually I have a big dream, and it has three parts. I want to read books in Norwegian without asking anyone for help. I want to help someone in the way that Anna, Lars and Marta have helped me."
+            },
+            {
+              "text": "Til slutt er drømmen min at du skal komme til meg. Jeg tror ikke at du har forandret deg, så jeg vet at du vil like byen, brødet og folk her. Når det blir sommer, skal jeg reise til nord med Hurtigruta sammen med Anna, Lars og Nils. Når jeg har bodd her i to år, vil jeg gjerne at du kommer. Jeg har spart penger til billetten din.",
+              "english": "Finally my dream is that you will come to me. I do not think that you have changed, so I know that you will like the town, the bread and the people here. When summer comes, I am going to travel north on the coastal ship together with Anna, Lars and Nils. When I have lived here for two years, I would very much like you to come. I have saved money for your ticket."
+            },
+            {
+              "text": "Si hei til far fra meg. Jeg ber for dere hver kveld.",
+              "english": "Say hello to Dad from me. I pray for you every evening."
+            },
+            {
+              "text": "Hilsen Sam",
+              "english": "Greetings, Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

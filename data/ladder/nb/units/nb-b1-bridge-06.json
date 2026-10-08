@@ -1,0 +1,244 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-06",
+  "lang": "nb",
+  "title": "Flats to rent",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-06",
+    "title": "Flats to rent (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Reading short advertisements for flats, comparing them (billigere, lysere, nærmere; billigst, dyrest) and phoning. The advertisements are invented and shortened."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "housing",
+    "advertisements",
+    "comparison",
+    "telephone",
+    "past tense"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ana": "Anna",
+    "sam": "Sam",
+    "mann": "Mannen i telefonen",
+    "luis": "Lars",
+    "nico": "Nils"
+  },
+  "sections": [
+    {
+      "title": "Annonsene",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hver dag den uka leste Sam annonsene i avisen. Han ville finne en leilighet som var billig, men ikke for liten.",
+              "english": "Every day that week Sam read the advertisements in the newspaper. He wanted to find a flat that was cheap, but not too small."
+            },
+            {
+              "text": "På lørdag satt han ved bordet med Anna, og de leste tre annonser sammen.",
+              "english": "On Saturday he sat at the table with Anna, and they read three advertisements together."
+            },
+            {
+              "text": "Den første annonsen sa: «Lys leilighet i sentrum. Stue, kjøkken og baderom. Etasje tre, balkong. Husleie åtte tusen fem hundre kroner.»",
+              "english": "The first advertisement said: \"Bright flat in the town centre. Living room, kitchen and bathroom. Floor three, balcony. Rent eight thousand five hundred kroner.\""
+            },
+            {
+              "text": "Den neste sa: «Liten leilighet nær fjellet. Kjøkken og baderom. Første etasje. Husleie seks tusen kroner. Ledig fra neste måned.»",
+              "english": "The next said: \"Small flat near the mountain. Kitchen and bathroom. First floor. Rent six thousand kroner. Available from next month.\""
+            },
+            {
+              "text": "Til slutt var det en annonse om en stor leilighet: «To rom, nytt kjøkken, nær bussen. Husleie ni tusen kroner.»",
+              "english": "Finally there was an advertisement about a big flat: \"Two rooms, new kitchen, near the bus. Rent nine thousand kroner.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Å sammenligne",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La oss sammenligne dem. Den første er lysere enn den neste, og den er nærmere bokhandelen. Den har også balkong.",
+              "english": "Let us compare them. The first is brighter than the next, and it is closer to the bookshop. It also has a balcony.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Men den er dyrere. Den neste er billigst, men den ligger langt fra sentrum.",
+              "english": "But it is more expensive. The next is the cheapest, but it is far from the centre.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Den store er størst, men den er dyrest, og du har ikke råd til den.",
+              "english": "The big one is the biggest, but it is the most expensive, and you cannot afford it.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg vil se de to første. Jeg kan ikke bestemme meg før jeg har sett dem.",
+              "english": "I want to see the first two. I cannot decide before I have seen them.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Det er klokt. En annonse sier ikke alt.",
+              "english": "That is wise. An advertisement does not say everything.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Anna sammenlignet alt en gang til. «Husleien er ikke alt,» sa hun. «Husk bussen og regningene.»",
+              "english": "Anna compared everything once more. \"The rent is not everything,\" she said. \"Remember the bus and the bills.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Telefonen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "På mandag ringte Sam fra bokhandelen i pausen. Først ringte han nummeret til den første annonsen.",
+              "english": "On Monday Sam called from the bookshop during the break. First he rang the number from the first advertisement."
+            },
+            {
+              "text": "God dag. Jeg ringer om leiligheten i sentrum. Er den ledig ennå?",
+              "english": "Good day. I am calling about the flat in the town centre. Is it still available?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Nei, den er ikke ledig lenger. Den gikk i går.",
+              "english": "No, it is not available any more. It went yesterday.",
+              "speaker": "mann"
+            },
+            {
+              "text": "Det var synd. Takk for hjelpen.",
+              "english": "That was a pity. Thanks for the help.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Så ringte han den neste. En mann svarte.",
+              "english": "Then he rang the next one. A man answered."
+            },
+            {
+              "text": "God dag. Jeg ringer om leiligheten nær fjellet. Er den ledig?",
+              "english": "Good day. I am calling about the flat near the mountain. Is it available?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, den er ledig fra neste måned. Den ligger i første etasje. Kan du se den på onsdag klokka fem?",
+              "english": "Yes, it is available from next month. It is on the first floor. Can you see it on Wednesday at five o'clock?",
+              "speaker": "mann"
+            },
+            {
+              "text": "Ja, det kan jeg. Hva er husleien?",
+              "english": "Yes, I can. What is the rent?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Seks tusen kroner. Hva er nummeret ditt, så jeg kan ringe deg om leiligheten?",
+              "english": "Six thousand kroner. What is your number, so that I can call you about the flat?",
+              "speaker": "mann"
+            },
+            {
+              "text": "Sam sa nummeret sitt, og mannen skrev det. Så takket han og ringte av.",
+              "english": "Sam said his number, and the man wrote it. Then he thanked him and hung up."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Om kvelden",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden fortalte Sam at han hadde ringt to ganger. Den første leiligheten var ikke ledig, men den neste var det, og han skulle se den på onsdag.",
+              "english": "In the evening Sam told that he had phoned twice. The first flat was not available, but the next one was, and he was going to see it on Wednesday."
+            },
+            {
+              "text": "Husk å se på kjøkkenet, baderommet og balkongen. Det er dyrt å få nytt.",
+              "english": "Remember to look at the kitchen, the bathroom and the balcony. It is expensive to get new ones.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Og se om det er plass til en seng og en hylle til bøkene!",
+              "english": "And see whether there is room for a bed and a shelf for the books!",
+              "speaker": "nico"
+            },
+            {
+              "text": "Husk også å sammenligne den med alle leilighetene du ser, selv om du liker den.",
+              "english": "Remember also to compare it with all the flats you see, even if you like it.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg skal huske alt. Rommet mitt her har vært bra, men jeg tror at jeg kan bo alene.",
+              "english": "I will remember everything. My room here has been good, but I think that I can live alone.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Anna så på ham og sa: «Du har gjort mye i dag. Nå kan du hvile.»",
+              "english": "Anna looked at him and said: \"You have done a lot today. Now you can rest.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "På jobben var det mye å le av den uka. Silje, som var ung og aldri hadde mye på kontoen, sa at helga var den beste dagen, og at hun øvde seg på å bake brød. Hun ville spise lunsj med Sam hver dag.",
+              "english": "At work there was a lot to laugh at that week. Silje, who was young and never had much in her account, said that the weekend was the best day, and that she practised baking bread. She wanted to eat lunch with Sam every day."
+            },
+            {
+              "text": "Arbeidet i bokhandelen var godt, og lønnen kom på kontoen i banken hver måned.",
+              "english": "The work in the bookshop was good, and the pay came into the account at the bank every month."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

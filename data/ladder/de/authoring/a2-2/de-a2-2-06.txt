@@ -1,0 +1,205 @@
+=== de-a2-2-06
+speakers: S=Sam, W=Frau Weber, J=Jonas, B=Bürgermeister, H=Herr Schmidt, N=Nachbarin
+## Die Einladung
+Im Briefkasten liegt ein Blatt: „Einladung zur Versammlung des Vereins ‚Unser Stadtteil‘“. || In the letterbox there is a sheet: "Invitation to the meeting of the association 'Our District'".
+Frau Weber hat Sam gefragt, ob er mitkommen möchte. || Frau Weber has asked Sam whether he would like to come along.
+[W] Es ist die letzte Versammlung vor dem Winter, und es gibt eine lange Tagesordnung. || It is the last meeting before winter, and there is a long agenda.
+[S] Was ist das, ein Verein, Frau Weber? || What is that, an association, Frau Weber?
+[W] Das ist eine Gruppe von Menschen, die etwas zusammen machen wollen. || That is a group of people who want to do something together.
+[W] Bei uns sind es Nachbarn, die etwas für den Stadtteil tun. || With us they are neighbours who do something for the district.
+[S] Und was machen die Nachbarn dort? || And what do the neighbours do there?
+[W] Sie reden, sie hören zu, und am Ende stimmen sie ab. || They talk, they listen, and at the end they vote.
+[S] Das klingt gut. || That sounds good.
+[S] Und was mache ich? || And what do I do?
+[W] Sie schreiben das Protokoll. || You write the minutes.
+[W] Der Mann, den wir sonst haben, ist krank. || The man we usually have is ill.
+[S] Ich? || Me?
+[S] Mein Deutsch ist eigentlich nicht gut genug. || My German is not really good enough.
+[W] Es ist ein Wunsch von mir, und ich habe Vertrauen zu Ihnen. || It is a wish of mine, and I have confidence in you.
+[W] Sie hören gut zu. || You listen well.
+[S] Gut. || Good.
+[S] Vielleicht kann Jonas mir helfen. || Perhaps Jonas can help me.
+[W] Ich sage Ihnen noch etwas: Mein Mann hat diesen Verein gegründet. || I will tell you something else: my husband founded this association.
+[W] Sein Tod war schwer für mich. || His death was hard for me.
+[W] Aber er war mein Trost, und er gibt mir Kraft. || But it was my comfort, and it gives me strength.
+
+## Die Sitzung beginnt
+Der Abend ist in der alten Schule. || The evening is in the old school.
+Man geht die Straße entlang bis zum großen Tor. || You walk along the street to the big gate.
+Es sind etwa dreißig Menschen da. || About thirty people are there.
+Frau Weber steht vorn und klopft auf den Tisch. || Frau Weber stands at the front and taps on the table.
+[W] Guten Abend, liebe Nachbarn. || Good evening, dear neighbours.
+[W] Ich eröffne die Sitzung. || I open the session.
+[W] Ich begrüße den Bürgermeister, der heute zu uns gekommen ist. || I welcome the mayor, who has come to us today.
+[W] Sam schreibt heute das Protokoll. || Sam is writing the minutes today.
+[W] Er ist der junge Mann, den ich in meinem Haus habe. || He is the young man whom I have in my house.
+[W] Die Tagesordnung hat drei Teile. || The agenda has three parts.
+[W] Das Erste ist die Baustelle neben dem Spielplatz. || The first is the building site next to the playground.
+[W] Das Zweite ist die Straße. || The second is the street.
+[W] Das Dritte ist das Fest im Juni. || The third is the festival in June.
+[W] Hat jemand eine Frage zur Tagesordnung? || Does anybody have a question about the agenda?
+[H] Ja. || Yes.
+[H] Ich habe noch einen Beitrag. || I have another contribution.
+[H] Er ist zu lang für das Dritte. || It is too long for the third.
+[W] Dann nehmen wir ihn nach dem Fest dazu. || Then we will add it after the festival.
+[W] Sam, schreiben Sie das? || Sam, will you write that?
+[S] Ja, Frau Weber. || Yes, Frau Weber.
+[S] Ich schreibe es. || I am writing it.
+
+## Die Baustelle
+[W] Das Erste ist die Baustelle. || The first is the building site.
+[W] Der Bürgermeister hat uns einen Brief geschrieben. || The mayor has written us a letter.
+[B] Danke, Frau Weber. || Thank you, Frau Weber.
+[B] Ich möchte alles erklären. || I would like to explain everything.
+[B] Neben dem Spielplatz ist ein neues Haus im Bau. || Next to the playground a new house is being built.
+[B] Es ist eine Baustelle für sechs Monate. || It is a building site for six months.
+[B] Wir wissen, dass der Lärm ein Problem ist. || We know that the noise is a problem.
+[B] Wir wollen eine Lösung finden. || We want to find a solution.
+[N] Das ist nicht in Ordnung. || That is not all right.
+[N] Meine Enkelin spielt jeden Tag dort. || My granddaughter plays there every day.
+[N] Mein Sohn kann nicht mehr lernen. || My son cannot study any more.
+[N] Das Zeugnis war schlecht, weil es so laut ist. || His report was bad because it is so loud.
+[N] Ich denke an die Kinder. || I think of the children.
+[N] Was meinen Sie, Herr Schmidt? || What do you think, Herr Schmidt?
+[B] Ich verstehe Ihre Sorge. || I understand your concern.
+[B] Wir sind der Meinung, dass der Spielplatz offen bleiben muss. || We are of the opinion that the playground has to stay open.
+[B] Wir haben einen Vorschlag: Die Firma arbeitet nur bis 16 Uhr. || We have a suggestion: the company works only until four o'clock.
+[J] Das ist möglich, aber was ist am Wochenende? || That is possible, but what about the weekend?
+[J] Ich bin nicht sicher. || I am not sure.
+[B] Am Wochenende wird nicht gearbeitet. || On the weekend no work is done.
+[B] Das ist eine Neuigkeit, die ich gern bringe. || That is news that I am glad to bring.
+[J] Ich habe ein Video gemacht. || I have made a video.
+[J] Man sieht, wie die Lastwagen vor dem Spielplatz halten. || You can see how the lorries stop in front of the playground.
+[B] Danke. || Thank you.
+[B] Ich möchte das Video gern sehen. || I would like to see the video.
+[B] Es ist eine wichtige Antwort auf unsere Frage. || It is an important answer to our question.
+[N] Ich habe bei der Stadt angerufen. || I called the city.
+[N] Ich habe am Telefon keine Antwort bekommen. || I did not get an answer on the phone.
+[B] Das Telefon im Amt ist oft besetzt. || The phone at the office is often busy.
+[B] Das ist ein Grund zur Entschuldigung. || That is a reason to apologise.
+[W] Dann müssen wir abstimmen. || Then we have to vote.
+[W] Wer ist dafür, dass der Spielplatz offen bleibt? || Who is in favour of the playground staying open?
+Die Hände gehen hoch. || Hands go up.
+Sam zählt 28 Hände. || Sam counts 28 hands.
+[W] Wer ist dagegen? || Who is against?
+[W] Niemand. || Nobody.
+[W] Die Abstimmung ist deutlich. || The vote is clear.
+[S] Dann schreibe ich: Die Mehrheit ist dafür. || Then I write: the majority is in favour.
+[S] Das ist ganz deutlich. || That is quite clear.
+[N] Ich war vorher nicht freundlich. || I was not friendly before.
+[N] Herr Schmidt, ich bitte um Vergebung. || Herr Schmidt, I ask for forgiveness.
+[H] Ich habe Ihnen längst vergeben. || I forgave you long ago.
+[H] Wir sind doch Nachbarn. || We are neighbours, after all.
+
+## Die Straße und das Fest
+[W] Das Zweite ist die Straße. || The second is the street.
+[W] Herr Schmidt, Sie haben das Wort. || Herr Schmidt, you have the floor.
+[H] Ich bin der Bäcker, dessen Laden an der Ecke liegt. || I am the baker whose shop is on the corner.
+[H] Ich sehe jeden Tag, wie schnell die Autos fahren. || Every day I see how fast the cars go.
+[H] Ich wünsche mir 30 Kilometer pro Stunde, nicht mehr. || I would like 30 kilometres per hour, not more.
+[H] Ich habe lange überlegt. || I have thought about it for a long time.
+[H] Ich habe Hoffnung, aber ich zweifle auch. || I have hope, but I also doubt.
+[H] Die Stadt hört nicht immer zu. || The city does not always listen.
+[B] Ihr Wunsch ist verständlich. || Your wish is understandable.
+[B] Aber wir können das nicht allein beschließen. || But we cannot decide that alone.
+[B] Die Mehrheit im Stadtrat entscheidet. || The majority in the city council decides.
+[B] Eine Entscheidung kommt wahrscheinlich erst im Frühling. || A decision will probably only come in spring.
+[H] Dann geben Sie bitte unseren Beitrag weiter. || Then please pass on our contribution.
+[H] Wir hoffen auf eine Antwort bis zum Winter. || We hope for an answer by winter.
+[B] Ich verspreche, dass ich ihn weitergebe. || I promise that I will pass it on.
+[B] Aber ich kann nichts versprechen. || But I cannot promise anything.
+[W] Gut. || Good.
+[W] Wer ist für den Brief an die Stadt? || Who is for the letter to the city?
+Fast alle sind dafür. || Almost everybody is for it.
+Nur zwei Nachbarn sind dagegen. || Only two neighbours are against.
+Ein alter Herr ruft: Ich bin dagegen! || An old gentleman calls out: I am against it!
+Briefe helfen nie. || Letters never help.
+[W] Die Mehrheit hat gesprochen. || The majority has spoken.
+[W] Das ist beschlossen. || That is decided.
+[W] Dann kommen wir zum Dritten, dem Fest. || Then we come to the third, the festival.
+[J] Ich möchte das Fest organisieren. || I would like to organise the festival.
+[J] Es soll ein Fest für den ganzen Stadtteil werden. || It should become a festival for the whole district.
+[J] Mit Musik, mit Essen, mit Spielen für die Kinder. || With music, with food, with games for the children.
+[J] Es ist eine Veranstaltung für alle. || It is an event for everybody.
+[W] Das ist eine schöne Idee. || That is a nice idea.
+[W] Wer organisiert die Getränke? || Who is organising the drinks?
+[W] Habt ihr Lust, mitzuhelfen? || Do you feel like helping?
+[S] Ich helfe gern. || I am glad to help.
+[S] Meine Gemeinde hat einen Hauskreis, der bestimmt Lust hat. || My church has a house group that certainly feels like it.
+[J] Das ist wunderbar. || That is wonderful.
+[J] Wir müssen die Veranstaltung gut organisieren, und wir brauchen Zeit. || We have to organise the event well, and we need time.
+[H] Ich bringe Brot und Kuchen mit. || I will bring bread and cake.
+[H] Das ist mein Beitrag. || That is my contribution.
+[N] Und wer bezahlt das alles? || And who pays for all that?
+[N] Ich frage nur. || I am only asking.
+[W] Jeder Euro zählt, auch zehn Euro. || Every euro counts, even ten euros.
+[W] Wir sammeln eine Spende, und wir legen etwas dazu. || We collect a donation, and we add something.
+[W] Die Veranstaltung ist für alle, nicht für wenige. || The event is for all, not for a few.
+[W] Wir verabreden uns nächste Woche noch einmal. || We will arrange to meet again next week.
+
+## Ein Zimmer für Jonas
+Nach dem Fest kommt noch ein kleiner Punkt. || After the festival there is still a small point.
+Jonas steht auf. || Jonas stands up.
+[J] Ich habe eine Bitte. || I have a request.
+[J] Ich suche ein Zimmer. || I am looking for a room.
+[J] Es soll möbliert sein und monatlich nicht mehr als 300 Euro kosten. || It should be furnished and cost no more than 300 euros a month.
+[H] Das Zimmer über meinem Laden ist frei. || The room above my shop is free.
+[H] Es hat 16 Quadratmeter. || It has 16 square metres.
+[H] Die Miete ist günstig, und die Nebenkosten sind klein. || The rent is cheap, and the extra costs are small.
+[H] Ich bin selbst der Vermieter. || I am the landlord myself.
+[J] Und die Kaution? || And the deposit?
+[H] Zwei Monatsmieten. || Two months' rent.
+[H] Aber darüber können wir reden. || But we can talk about that.
+[J] Ist das wirklich möglich? || Is that really possible?
+[J] Das ist die beste Neuigkeit des Abends. || That is the best piece of news of the evening.
+[H] Ich glaube, wir verstehen uns bestimmt. || I believe we will certainly get on.
+[H] Kommen Sie morgen vorbei. || Come by tomorrow.
+
+## Nach der Abstimmung
+Nach der letzten Abstimmung ist es spät. || After the last vote it is late.
+Draußen regnet es leise. || Outside it is raining softly.
+Die Sitzung hat zwei Stunden gedauert. || The meeting has lasted two hours.
+Der Bürgermeister kommt zu Sam und gibt ihm die Hand. || The mayor comes to Sam and shakes his hand.
+[B] Und was wurde beschlossen? || And what was decided?
+[B] Sie schreiben das ja alles auf, nicht wahr? || You are writing all of it down, aren't you?
+[S] Ja, ich schicke es morgen. || Yes, I will send it tomorrow.
+[S] Ich hoffe, dass ich nichts vergesse. || I hope that I forget nothing.
+[B] Wenn Sie einen Fehler machen, wird er korrigiert. || If you make a mistake it will be corrected.
+[B] Das ist kein Grund zur Angst. || That is no reason to be afraid.
+[S] Danke. || Thank you.
+[S] Ich hatte Zweifel, ob ich das kann. || I had doubts whether I could do it.
+[S] Ich habe gesehen, dass man mit Geduld wirklich etwas verändern kann. || I have seen that with patience one can really change something.
+[S] Ich glaube, dass das Sinn hat. || I think that makes sense.
+[S] Für mich ist das auch ein Stück Glaube. || For me that is also a piece of faith.
+[B] Vertrauen ist das Wichtigste. || Trust is the most important thing.
+[B] Wenn die Menschen einander vertrauen, kann man vieles retten. || When people trust each other, a lot can be saved.
+Frau Weber tritt dazu. || Frau Weber joins them.
+Sie lächelt. || She smiles.
+[W] Das war eine gute Sitzung. || That was a good meeting.
+[W] Es ist nämlich kein Wunder, dass wir hier Frieden haben. || It is no miracle, you see, that we have peace here.
+[W] Wir hören einander zu, und wir sagen die Wahrheit. || We listen to each other, and we tell the truth.
+Am Ende schreibt Sam in sein Heft: „Protokoll der Versammlung. Ergebnis der Abstimmung: Der Spielplatz bleibt offen. Der Brief geht an die Stadt. Das Fest ist geplant.“ || At the end Sam writes in his notebook: "Minutes of the meeting. Result of the vote: The playground stays open. The letter goes to the city. The festival is planned."
+
+## Erinnerst du dich?
+Sam denkt an den Tag im Amt. || Sam thinks of the day at the office.
+Die Abteilung für Ausländer war im zweiten Stock. || The department for foreigners was on the second floor.
+Die Anmeldung war kompliziert, und im Amt war viel los. || The registration was complicated, and there was a lot going on at the office.
+Sam musste warten, bis man ihn aufgerufen hat. || Sam had to wait until he was called.
+Frau Weber hat ihm ein Zimmer vermietet. || Frau Weber rented him a room.
+
+Frau Weber backt abends einen Kuchen. || Frau Weber bakes a cake in the evening.
+Der Kuchen bleibt vierzig Minuten im Ofen. || The cake stays in the oven for forty minutes.
+Zum Beispiel hat sie Sam das Rezept gezeigt. || For example, she showed Sam the recipe.
+
+Anna hat im Krankenhaus Pause und sitzt im Aufenthaltsraum. || Anna has a break at the hospital and sits in the lounge.
+Sie ruft nachmittags Oma an, und Oma ist zuhause. || In the afternoon she calls Oma, and Oma is at home.
+Oma möchte Anna etwas für Lukas mitgeben. || Oma wants to give Anna something to take along for Lukas.
+Sie sagt, Sam und seine Freunde sind mutige Menschen. || She says Sam and his friends are brave people.
+
+Sam denkt auch an den Hauskreis. || Sam also thinks of the house group.
+Daniel sagt, ein Zeugnis ist keine Rede. || Daniel says a testimony is not a speech.
+Sam saß damals still auf dem Sofa. || Back then Sam sat quietly on the sofa.
+Ben stand vorn bei den Kindern und hatte keine Angst. || Ben stood at the front with the children and was not afraid.
+Sam ist froh, dass er so gute Freunde hat. || Sam is glad that he has such good friends.
+Jeden Tag lernt er etwas Neues, und er spricht mehr Deutsch. || Every day he learns something new, and he speaks more German.
+Am Sonntag geht er mit Anna und Lukas in die Gemeinde. || On Sunday he goes to the church with Anna and Lukas.

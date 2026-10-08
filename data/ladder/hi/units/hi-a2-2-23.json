@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "The closing testimony of the stage: Sam explains to the sending church why he has decided to stay for another year. It gathers the people and events of the whole stage (the wedding, the feast, the school, the clinic, the parable) and carries the last planned words (विदेश, पराया, नगर, झील, नाव, उत्पन्न, आराधनालय, अशुद्ध, बल, परेशानी). It opens the b1 stage: the \"आराधनालय\" appears only as one of the places of worship of the city (church, temple, mosque, gurdwara and a small synagogue), mentioned with respect and without comparison; \"अशुद्ध\" is used for impure water and for Sam's own impure thoughts (pride, anger). The unit mentions the parable (hi-a2-2-22) as something Sam heard about himself. A Christian reader and a Hindi reader should check tone and facts. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+    "notes": "The closing testimony of the stage: Sam explains to the sending church why he has decided to stay for another year. It gathers the people and events of the whole stage (the wedding, the feast, the school, the clinic, the parable) and carries the last planned words (विदेश, पराया, नगर, झील, नाव, उत्पन्न, आराधनालय, अशुद्ध, बल, परेशानी). It opens the b1 stage: the \"आराधनालय\" appears only as one of the places of worship of the city (church, temple, mosque, gurdwara and a small synagogue), mentioned with respect and without comparison; \"अशुद्ध\" is used for impure water and for Sam's own impure thoughts (pride, anger). The unit mentions the parable (hi-a2-2-22) as something Sam heard about himself. A Christian reader and a Hindi reader should check tone and facts. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -395,6 +395,34 @@
             {
               "text": "आपका भाई, सैम",
               "english": "Your brother, Sam"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "हमारे गिरजाघर के पादरी जी हर ईसाई के लिए प्रार्थना करते हैं, चाहे वह मछुआरा हो या खिलाड़ी।",
+              "english": "The padri ji of our church building prays for every Christian, whether he is a fisherman or a sportsman."
+            },
+            {
+              "text": "बरसात के दिनों में भी वे हर इंसान के पास जाते हैं और हर पल उसकी बात ध्यान से सुनते हैं।",
+              "english": "Even in the rainy days he goes to every person and listens to what he says carefully every moment."
+            },
+            {
+              "text": "जब किसी बच्चे के बाल भीगते हैं, तो वे उन्हें पोंछ देते हैं, और यह बात कई सदी पुरानी है।",
+              "english": "When a child's hair gets wet, he wipes it, and this is many centuries old."
+            },
+            {
+              "text": "उस कहानी का छोटा बेटा अपनी जायदाद लेकर परदेस चला गया था, और जब वहाँ अकाल पड़ा, तो वह एक पापी की तरह बहुत अकेला रहा।",
+              "english": "The younger son of that story had gone to a foreign land with his property, and when a famine fell there, he stayed very alone like a sinner."
+            },
+            {
+              "text": "वह दास बनकर सूअर के पास रहा, पर जब वह लौटा, तो पिता नाराज़ नहीं हुए और उन्होंने उसे आनंद से बुलाया।",
+              "english": "He stayed by the pigs as a servant, but when he returned, his father was not angry and called him with joy."
+            },
+            {
+              "text": "पिता ने कहा, \"तेरा भाई आज लौटा है, इसलिए आज दावत होगी।\"",
+              "english": "The father said, \"Your brother has returned today, so there will be a feast today.\""
             }
           ]
         }

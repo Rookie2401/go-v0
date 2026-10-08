@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-01",
+  "lang": "nb",
+  "title": "A job in the paper",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-01",
+    "title": "A job in the paper (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". First unit of the bridge. B1 grammar met here: the past perfect (hadde bodd, hadde prøvd), the perfect with \"aldri\", relative clauses with \"som\", embedded \"at\", \"før\" and \"mens\" clauses. Sam looks for a job in a bookshop; an everyday situation."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "work",
+    "newspaper",
+    "job advert",
+    "past perfect",
+    "relative clauses"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "luis": "Lars",
+    "sam": "Sam",
+    "ana": "Anna",
+    "mann": "Mannen i bokhandelen"
+  },
+  "sections": [
+    {
+      "title": "Avisen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det var en lørdag tidlig på høsten. Sam satt i stua hos Anna og Lars, og de drakk kaffe.",
+              "english": "It was a Saturday early in the autumn. Sam was sitting in the living room at Anna and Lars's, and they were drinking coffee."
+            },
+            {
+              "text": "Lars leste avisen. Han leste alltid avisen om lørdagen, og han hadde ofte en historie å fortelle.",
+              "english": "Lars was reading the newspaper. He always read the newspaper on Saturdays, and he often had a story to tell."
+            },
+            {
+              "text": "Se her, Sam! Det er en annonse i avisen. Bokhandelen i sentrum trenger en som kan selge bøker.",
+              "english": "Look here, Sam! There is an advertisement in the paper. The bookshop in the town centre needs someone who can sell books.",
+              "speaker": "luis"
+            },
+            {
+              "text": "En stilling i en bokhandel? Jeg har aldri jobbet i en butikk.",
+              "english": "A position in a bookshop? I have never worked in a shop.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Men du liker bøker, og du har lært mye norsk i år.",
+              "english": "But you like books, and you have learned a lot of Norwegian this year.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Annonsen sier at de søker en som er glad i bøker og som liker å snakke med folk.",
+              "english": "The advertisement says that they are looking for someone who is fond of books and who likes talking to people.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Det er bra. Men jeg har ingen erfaring, og jeg snakker ikke så godt norsk.",
+              "english": "That is good. But I have no experience, and I do not speak Norwegian that well.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Et godt råd",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Du har erfaring med bøker, for du leser hver dag.",
+              "english": "You have experience with books, because you read every day.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Alle får erfaring når de begynner. Du kan ikke vite det før du har prøvd.",
+              "english": "Everyone gets experience when they begin. You cannot know it until you have tried.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Da jeg søkte på jobben på skolen, var jeg redd. Men jeg fikk den, fordi jeg hadde prøvd.",
+              "english": "When I applied for the job at the school, I was afraid. But I got it, because I had tried.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Hva må jeg gjøre?",
+              "english": "What must I do?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Du må skrive en søknad. Det er et brev som du sender til bokhandelen.",
+              "english": "You must write an application. It is a letter that you send to the bookshop.",
+              "speaker": "ana"
+            },
+            {
+              "text": "Jeg har skrevet brev til mora mi, men jeg har aldri skrevet en søknad.",
+              "english": "I have written letters to my mother, but I have never written an application.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Vi kan hjelpe deg. Du skriver, og jeg leser.",
+              "english": "We can help you. You write, and I read.",
+              "speaker": "luis"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Bokhandelen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Den dagen gikk Sam til sentrum. Han ville se bokhandelen før han skrev søknaden.",
+              "english": "That day Sam went to the town centre. He wanted to see the bookshop before he wrote the application."
+            },
+            {
+              "text": "Bokhandelen lå ikke langt fra kirka. Han hadde gått forbi den mange ganger, men han hadde aldri vært i den.",
+              "english": "The bookshop was not far from the church. He had walked past it many times, but he had never been in it."
+            },
+            {
+              "text": "Nå kom han inn. Det var varmt i butikken, og det luktet godt. En mann snakket med en kunde om en bok.",
+              "english": "Now he came in. It was warm in the shop, and it smelled good. A man was talking to a customer about a book."
+            },
+            {
+              "text": "Unnskyld, er det dere som har annonsen i avisen?",
+              "english": "Excuse me, is it you who have the advertisement in the paper?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Ja, det er det. Har du lest annonsen?",
+              "english": "Yes, it is. Have you read the advertisement?",
+              "speaker": "mann"
+            },
+            {
+              "text": "Ja. Jeg heter Sam, og jeg vil søke på stillingen.",
+              "english": "Yes. My name is Sam, and I want to apply for the position.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Bra. Skriv en søknad, så snakker vi sammen. Kundene våre liker å snakke om bøker, og vi trenger en som liker det også.",
+              "english": "Good. Write an application, and then we will talk. Our customers like to talk about books, and we need someone who likes that too.",
+              "speaker": "mann"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Søknaden",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden satt Sam lenge ved bordet mens Lars og Anna drakk te. Han hadde aldri skrevet en søknad før, men han ville gjøre det riktig.",
+              "english": "In the evening Sam sat at the table for a long time while Lars and Anna drank tea. He had never written an application before, but he wanted to do it right."
+            },
+            {
+              "text": "Han skrev om seg selv: at han kom fra USA, at han hadde bodd i Bergen i et år, og at han likte bøker.",
+              "english": "He wrote about himself: that he came from the USA, that he had lived in Bergen for a year, and that he liked books."
+            },
+            {
+              "text": "Lars leste søknaden mens Sam ventet. «Den er god,» sa han, «men du må skrive at du vil ha stillingen, og at du liker å snakke med kunder.»",
+              "english": "Lars read the application while Sam waited. \"It is good,\" he said, \"but you must write that you want the position, and that you like talking to customers.\""
+            },
+            {
+              "text": "Sam skrev det. Så sendte han søknaden, og så ventet han.",
+              "english": "Sam wrote it. Then he sent the application, and then he waited."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Husker du?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mens han ventet, tenkte Sam på året som hadde gått. Han hadde reist med tog til Oslo, han hadde bakt brød hos Marta, og han hadde sittet i kirka hver søndag.",
+              "english": "While he waited, Sam thought about the year that had passed. He had travelled by train to Oslo, he had baked bread at Marta's, and he had sat in church every Sunday."
+            },
+            {
+              "text": "Han hadde lært å snakke norsk, og han hadde fått mange venner.",
+              "english": "He had learned to speak Norwegian, and he had made many friends."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna fikk også et tilbud en gang, fra et sykehus. Sjefen der skrev til henne, og hun svarte senere.",
+              "english": "Anna also got an offer once, from a hospital. The manager there wrote to her, and she answered later.",
+              "speaker": "luis"
+            },
+            {
+              "text": "Han hadde også sittet i en båt på elva og spist tørr fisk sammen med Nils.",
+              "english": "He had also sat in a boat on the river and eaten dried fish together with Nils."
+            },
+            {
+              "text": "Han hadde vært velkommen i kirka fra første dag, og han husket hunden som ble reddet i regnet.",
+              "english": "He had been welcome in the church from the first day, and he remembered the dog that was rescued in the rain."
+            },
+            {
+              "text": "I kirka hadde flere venner spurt om han var alene, og han hadde svart nei.",
+              "english": "Several in the church had asked whether he was alone, and he had answered no."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

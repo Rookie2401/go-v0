@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-19",
+  "lang": "de",
+  "title": "An invitation and a question about old words",
+  "contentType": "letter",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-19",
+    "title": "An invitation and a question about old words (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next text (Grimm, Die Sternthaler): hingeben, gar, Stückchen, fromm, abtun, Hemdlein, abziehen, Taler, hineinsammeln. Two e-mails in today's German; the old words are explained, never quoted from the tale."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "e-mail",
+    "invitation",
+    "fairy tale",
+    "old words"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sabine": "Sabine",
+    "jonas": "Jonas"
+  },
+  "sections": [
+    {
+      "title": "Die Einladung",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Von: Sabine",
+              "english": "From: Sabine"
+            },
+            {
+              "text": "An: alle Eltern",
+              "english": "To: all parents"
+            },
+            {
+              "text": "Liebe Eltern,",
+              "english": "Dear parents,"
+            },
+            {
+              "text": "am Freitag um sechs Uhr laden wir Sie und Ihre Kinder herzlich zum Märchenabend ein.",
+              "english": "On Friday at six o'clock we warmly invite you and your children to the fairy-tale evening."
+            },
+            {
+              "text": "Wir lesen drei Märchen, und es gibt Tee, Brot und Kuchen.",
+              "english": "We will read three fairy tales, and there will be tea, bread and cake."
+            },
+            {
+              "text": "Es kostet nichts, aber wir sammeln eine Spende für die Gemeinde.",
+              "english": "It costs nothing, but we collect a donation for the church."
+            },
+            {
+              "text": "Jeder gibt, was er kann.",
+              "english": "Everyone gives what he can."
+            },
+            {
+              "text": "Bitte bringen Sie kein Geld mit, wenn es Ihnen schwer ist, denn das ist gar nicht wichtig.",
+              "english": "Please do not bring any money if it is hard for you, because that is not important at all."
+            },
+            {
+              "text": "Kommen Sie einfach, und bringen Sie Ihre Kinder und Ihre Freunde mit.",
+              "english": "Just come, and bring your children and your friends."
+            },
+            {
+              "text": "Viele Grüße",
+              "english": "Best wishes"
+            },
+            {
+              "text": "Sabine",
+              "english": "Sabine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Jonas hat eine Frage",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Von: Jonas",
+              "english": "From: Jonas"
+            },
+            {
+              "text": "An: Sabine",
+              "english": "To: Sabine"
+            },
+            {
+              "text": "Liebe Sabine,",
+              "english": "Dear Sabine,"
+            },
+            {
+              "text": "ich soll am Freitag ein Märchen vorlesen, das Märchen von den Sternen und dem armen Mädchen.",
+              "english": "I am supposed to read a fairy tale aloud on Friday, the tale of the stars and the poor girl."
+            },
+            {
+              "text": "Ich habe es zu Hause gelesen, aber es stehen alte Wörter darin.",
+              "english": "I read it at home, but there are old words in it."
+            },
+            {
+              "text": "Was ist ein Taler? Was ist ein Hemdlein?",
+              "english": "What is a Taler? What is a Hemdlein?"
+            },
+            {
+              "text": "Und was bedeutet es, wenn ein Mädchen sein Hemdlein abtut?",
+              "english": "And what does it mean when a girl takes off her Hemdlein?"
+            },
+            {
+              "text": "Ich verstehe es gar nicht.",
+              "english": "I do not understand it at all."
+            },
+            {
+              "text": "Wann hast du Zeit für mich? Ich komme gern bei dir vorbei.",
+              "english": "When do you have time for me? I am glad to drop by."
+            },
+            {
+              "text": "Viele Grüße, Jonas",
+              "english": "Best wishes, Jonas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sabines Antwort",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Von: Sabine",
+              "english": "From: Sabine"
+            },
+            {
+              "text": "An: Jonas",
+              "english": "To: Jonas"
+            },
+            {
+              "text": "Lieber Jonas,",
+              "english": "Dear Jonas,"
+            },
+            {
+              "text": "das sind gute Fragen, und ich antworte gern.",
+              "english": "Those are good questions, and I am glad to answer."
+            },
+            {
+              "text": "Ein Taler ist ein altes Geld. Früher haben die Menschen mit Talern bezahlt.",
+              "english": "A Taler is old money. In the past people paid with Taler."
+            },
+            {
+              "text": "Ein Hemdlein ist ein kleines Hemd.",
+              "english": "A Hemdlein is a little shirt."
+            },
+            {
+              "text": "Abtun heißt: ausziehen. Man tut das Hemd ab, und man zieht es ab.",
+              "english": "Abtun means: to take off. One takes off the shirt, and one pulls it off."
+            },
+            {
+              "text": "Das Mädchen im Märchen ist sehr arm und sehr fromm.",
+              "english": "The girl in the fairy tale is very poor and very devout."
+            },
+            {
+              "text": "Fromm heißt: Sie glaubt an Gott und vertraut ihm.",
+              "english": "Fromm means: she believes in God and trusts him."
+            },
+            {
+              "text": "Sie hat gar nichts, und sie gibt ihr Stückchen Brot einem hungrigen Mann hin.",
+              "english": "She has nothing at all, and she gives her little piece of bread to a hungry man."
+            },
+            {
+              "text": "Hingeben heißt: ganz geben. Man gibt etwas hin und behält es nicht.",
+              "english": "Hingeben means: to give completely. One gives something away and does not keep it."
+            },
+            {
+              "text": "Am Ende regnet es Sterne, und das Mädchen zieht ihr Hemd ab und hält es auf.",
+              "english": "In the end it rains stars, and the girl takes off her shirt and holds it open."
+            },
+            {
+              "text": "Sie kann die Taler hineinsammeln, weil sie alles hingegeben hat.",
+              "english": "She can collect the Taler into it, because she has given everything away."
+            },
+            {
+              "text": "Jetzt kannst du es lesen. Ich freue mich auf Freitag!",
+              "english": "Now you can read it. I am looking forward to Friday!"
+            },
+            {
+              "text": "Komm morgen nach der Arbeit, dann üben wir zusammen.",
+              "english": "Come tomorrow after work, then we will practise together."
+            },
+            {
+              "text": "Liebe Grüße, Sabine",
+              "english": "Best wishes, Sabine"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend schreibt Jonas noch eine kurze Mail an Sabine.",
+              "english": "In the evening Jonas writes another short e-mail to Sabine."
+            },
+            {
+              "text": "Liebe Sabine,",
+              "english": "Dear Sabine,"
+            },
+            {
+              "text": "ich habe heute im Stadtmagazin einen Artikel über Füchse gelesen.",
+              "english": "Today I read an article about foxes in the city magazine."
+            },
+            {
+              "text": "Darin steht ein altes Sprichwort, und ich möchte gern mit dir darüber sprechen.",
+              "english": "In it there is an old proverb, and I would like to discuss it with you."
+            },
+            {
+              "text": "Ein Fuchs kann nachts laut schreien, und viele Leute haben Angst.",
+              "english": "A fox can scream loudly at night, and many people are afraid."
+            },
+            {
+              "text": "Ben hat ein Lesebuch mit alten Märchen, und der Fuchs ist darin immer sehr schlau.",
+              "english": "Ben has a reader with old tales, and in it the fox is always very clever."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Beim Hauskreis hat uns Pastor Thomas auch ein altes Wort erklärt.",
+              "english": "At the house group Pastor Thomas also explained an old word to us."
+            },
+            {
+              "text": "Gleichwie heißt einfach: so wie.",
+              "english": "Gleichwie simply means: just as."
+            },
+            {
+              "text": "Er hat auch von der Übersetzung der Bibel gesprochen.",
+              "english": "He also spoke about the translation of the Bible."
+            },
+            {
+              "text": "Heilig ist ein wichtiges Wort darin, und ein Zeuge kann bezeugen, was er gesehen hat.",
+              "english": "Holy is an important word in it, and a witness can testify to what he has seen."
+            },
+            {
+              "text": "Bis Freitag!",
+              "english": "See you on Friday!"
+            },
+            {
+              "text": "Jonas",
+              "english": "Jonas"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Märchenabend sitzen Sabine und Jonas noch mit den Kindern am Tisch.",
+              "english": "After the fairy-tale evening Sabine and Jonas are still sitting at the table with the children."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Jonas, du hast heute drei Märchen gelesen. Welches war das beste?",
+              "english": "Jonas, you read three fairy tales today. Which one was the best?"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Das Märchen vom Pfannkuchen! Das fünfte Kind hat Hunger, das sechste auch, und das siebente und letzte Kind ist sehr niedlich.",
+              "english": "The tale of the pancake! The fifth child is hungry, the sixth too, and the seventh and last child is very cute."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Der Pfannkuchen springt auf den Boden und will fortrollen.",
+              "english": "The pancake jumps onto the floor and wants to roll away."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Das war ein guter Einfall von ihm!",
+              "english": "That was a good idea of his!"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Die Mutter und die Kinder rufen: Halt, halt!",
+              "english": "The mother and the children call: Stop, stop!"
+            },
+            {
+              "speaker": "jonas",
+              "text": "Aber er begegnet einem Gänserich und einer Ente und läuft weiter.",
+              "english": "But he meets a gander and a duck and runs on."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Das Schwein ist so fett, dass es gut schwimmen kann, und der Pfannkuchen will auf die andere Seite hinüber.",
+              "english": "The pig is so fat that it can swim well, and the pancake wants to get over to the other side."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Dann dreht sich der Pfannkuchen um und sieht die Kinder nicht mehr.",
+              "english": "Then the pancake turns around and no longer sees the children."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Märchen gibt es Tee und Kuchen, und jedes Kind bekommt ein Stückchen.",
+              "english": "After the tale there is tea and cake, and every child gets a little piece."
+            },
+            {
+              "text": "Auch Ben nimmt sich noch ein Stückchen Kuchen.",
+              "english": "Ben also takes another little piece of cake."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Pastor Thomas liest die Bibel in einer neuen Übersetzung.",
+              "english": "Pastor Thomas reads the Bible in a new translation."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Er sagt: Ein Zeuge sagt nur, was er selbst gesehen hat.",
+              "english": "He says: a witness says only what he has seen himself."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Ein guter Zeuge sagt immer die Wahrheit.",
+              "english": "A good witness always tells the truth."
+            },
+            {
+              "speaker": "jonas",
+              "text": "Jeder Christ darf bezeugen, was Gott für ihn getan hat.",
+              "english": "Every Christian may testify to what God has done for him."
+            },
+            {
+              "speaker": "sabine",
+              "text": "Die Jünger waren Zeugen, und sie haben es erzählt.",
+              "english": "The disciples were witnesses, and they told it."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

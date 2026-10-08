@@ -90,8 +90,8 @@
               "speaker": "sam"
             },
             {
-              "text": "Ha en god reise! Ring meg når du kommer til Oslo.",
-              "english": "Have a good journey! Call me when you get to Oslo.",
+              "text": "Ha en god reise! Du må ringe meg når du kommer til Oslo.",
+              "english": "Have a good journey! You must call me when you get to Oslo.",
               "speaker": "ana"
             },
             {
@@ -109,8 +109,8 @@
         {
           "sentences": [
             {
-              "text": "Sam fant plassen sin. Han satt og så ut av vinduet.",
-              "english": "Sam found his seat. He sat and looked out of the window."
+              "text": "Sam fant plassen sin. Han satt og så på utsikten gjennom vinduet.",
+              "english": "Sam found his seat. He sat and looked at the view through the window."
             },
             {
               "text": "Utsikten var bra. Toget gikk gjennom fjellet. Det ble mørkt i tunnelen, og så ble det lyst igjen.",

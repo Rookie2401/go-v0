@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 2,
+  "id": "th-b1-09",
+  "lang": "th",
+  "locale": "th-TH",
+  "title": "ราชสีห์กับหนู",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-th",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Thai"
+  },
+  "source": {
+    "id": "src:th:th-b1-09",
+    "title": "ราชสีห์กับหนู — The lion and the mouse (a fable retold) (adapted fable, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model); adapted from พระยาเมธาธิบดี (สาตร สุทธเสถียร), นิทานอีสป (2499)",
+    "edition": "Thai Wikisource revision 132230 (transcription)",
+    "url": "https://th.wikisource.org/w/index.php?oldid=132230",
+    "attribution": "Adapted retelling of \"ราชสีห์กับหนู\" (นิทานอีสป, translated by พระยาเมธาธิบดี, 2499; Thai Wikisource revision 132230, transcription CC BY-SA 4.0). Rewritten in simpler Thai by an AI model for the course ladder; machine-drafted, not reviewed by a native speaker. Share-alike (CC BY-SA 4.0) applies.",
+    "provenance": "ADAPTED, not original and not native text. The plot and the moral follow the library fable \"ราชสีห์กับหนู\" (th-gap-recovery-aesop-01); the sentences are the drafter's own retelling in the vocabulary of the ladder, with the fable register kept where the ladder teaches it. Machine-drafted on 2026-10-08; no native reviewer has read it. The English lines are the drafter's own.",
+    "rights": "licensed",
+    "licence": "CC BY-SA 4.0",
+    "licenseNote": "CC BY-SA 4.0, adapted (share-alike). Derived from a CC BY-SA 4.0 transcription (Thai Wikisource revision 132230) of a public-domain 1956 translation; the adapter's changes are stated; the derivative is released under the same licence. Machine-drafted, not yet native-reviewed.",
+    "modifications": "Retold in simpler written Thai with the ladder's vocabulary; shorter sentences; plot and moral kept.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Adapted fable (CC BY-SA 4.0, share-alike). For the reviewer: the lion says เอ็ง / เรา to the mouse, the mouse says ท่าน / ข้าพเจ้า (the fable register of the ladder, deliberate). The last scene between the grandmother and the child is an addition to the original."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fable",
+    "animals",
+    "kindness",
+    "help"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "adapted-fable",
+    "cc-by-sa-share-alike"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "central-thai",
+  "sections": [
+    {
+      "title": "ราชสีห์หลับ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ราชสีห์ตัวหนึ่งนอนหลับอยู่ใต้ต้นไม้ใหญ่",
+              "english": "A lion lay asleep under a big tree."
+            },
+            {
+              "text": "ในเวลานั้น หนูตัวหนึ่งวิ่งผ่านมา และวิ่งข้ามตัวราชสีห์ไป",
+              "english": "At that time a mouse ran past, and ran across the lion's body."
+            },
+            {
+              "text": "ราชสีห์ตื่นขึ้นทันที มันโกรธมาก",
+              "english": "The lion woke up at once. It was very angry."
+            },
+            {
+              "text": "มันจับหนูไว้ด้วยเท้า และบอกว่า เราจะกินเอ็งเสีย",
+              "english": "It held the mouse with its paw and said, \"I will eat you.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หนูขอชีวิต",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หนูกลัวมาก มันร้องว่า ท่านราชสีห์ ได้โปรดปล่อยข้าพเจ้าไปเถิด",
+              "english": "The mouse was very afraid. It cried, \"Lion, please let me go.\""
+            },
+            {
+              "text": "อย่าฆ่าข้าพเจ้าเลย ถ้าท่านปล่อยข้าพเจ้า ข้าพเจ้าจะไม่ลืมความดีของท่าน",
+              "english": "\"Do not kill me. If you let me go, I will never forget your kindness.\""
+            },
+            {
+              "text": "ราชสีห์ได้ยินแล้วก็หัวร่อ",
+              "english": "The lion heard this and laughed."
+            },
+            {
+              "text": "มันว่า ตัวเอ็งเล็กนิดเดียว เอ็งจะช่วยเราได้อย่างไร",
+              "english": "It said, \"You are only a tiny thing. How could you help me?\""
+            },
+            {
+              "text": "แต่ราชสีห์ก็คิดอีกครั้ง และปล่อยหนูไป",
+              "english": "But the lion thought again, and let the mouse go."
+            },
+            {
+              "text": "หนูวิ่งหนีไปอย่างเร็ว และขอบคุณราชสีห์หลายครั้ง",
+              "english": "The mouse ran away fast and thanked the lion many times."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ราชสีห์ติดเชือก",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ผ่านไปหลายวัน ราชสีห์ไปติดเชือกที่นายพรานทิ้งไว้ในป่า",
+              "english": "Some days passed. The lion was caught in a rope trap that a hunter had left in the forest."
+            },
+            {
+              "text": "ราชสีห์พยายามเท่าไรก็ออกไม่ได้",
+              "english": "However hard it tried, it could not get out."
+            },
+            {
+              "text": "มันร้องเสียงดังไปทั้งป่า แต่ไม่มีสัตว์ตัวไหนกล้าเข้ามาช่วย",
+              "english": "It roared so loudly that the whole forest heard, but no animal dared come to help."
+            },
+            {
+              "text": "หนูตัวนั้นได้ยินเสียงร้อง มันจำเสียงราชสีห์ได้",
+              "english": "That same mouse heard the cry. It recognised the lion's voice."
+            },
+            {
+              "text": "หนูรีบวิ่งมา และเห็นราชสีห์ติดเชือกอยู่",
+              "english": "The mouse hurried over and saw the lion caught in the rope trap."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "หนูช่วยราชสีห์",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "หนูพูดว่า ท่านราชสีห์ อย่ากลัวเลย ข้าพเจ้ามาช่วยท่านแล้ว",
+              "english": "The mouse said, \"Lion, do not be afraid. I have come to help you.\""
+            },
+            {
+              "text": "มันปีนขึ้นไปบนเชือก และใช้ฟันกัดเชือก",
+              "english": "It climbed up onto the rope and bit the cords with its teeth."
+            },
+            {
+              "text": "เชือกก็ขาดไปทีละชิ้น",
+              "english": "The cords snapped, one piece at a time."
+            },
+            {
+              "text": "ในที่สุด ราชสีห์ก็ออกมาจากเชือกได้",
+              "english": "At last the lion got out of the rope trap."
+            },
+            {
+              "text": "ราชสีห์พูดว่า เมื่อก่อนเราหัวร่อเอ็ง ตอนนี้เรารู้แล้วว่า ตัวเล็กก็ช่วยตัวใหญ่ได้",
+              "english": "The lion said, \"Before, I laughed at you. Now I know that the small can help the great.\""
+            },
+            {
+              "text": "หนูตอบว่า ข้าพเจ้าแค่ทำสิ่งที่ควรทำ",
+              "english": "The mouse answered, \"I have only done what I should.\""
+            },
+            {
+              "text": "เรื่องนี้สอนว่า อย่าดูถูกคนตัวเล็ก ถ้าเราทำดีกับเขา เขาก็อาจช่วยเราได้",
+              "english": "This story teaches us: do not look down on the small. If we do good to them, they may help us one day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ยายกับหลาน",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "คืนนั้น ยายของมะลิเล่าเรื่องนี้ให้หลานฟังที่ลำพูน",
+              "english": "That night Mali's grandmother told this story to her grandchild in Lamphun."
+            },
+            {
+              "text": "หลานถามว่า ยายครับ ถ้าผมตัวเล็ก ผมจะช่วยใครได้ครับ",
+              "english": "The grandchild asked, \"Grandma, if I am small, whom can I help?\""
+            },
+            {
+              "text": "ยายตอบว่า หลานช่วยได้ทุกคน เริ่มจากคนที่อยู่ใกล้หลานก่อน",
+              "english": "Grandma answered, \"You can help everyone. Start with the people closest to you.\""
+            },
+            {
+              "text": "ยายพูดอีกว่า มดตัวเล็กๆ ยังเก็บข้าวไว้ได้ทั้งฤดู เพราะมันช่วยกันทำงาน",
+              "english": "Grandma went on: \"Even tiny ants can store rice for a whole season, because they work together.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Thai ladder drafting agent (Claude), b1-bridge and recycling pass"
+        }
+      }
+    ]
+  }
+}

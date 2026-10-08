@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Nani and Nani says तुम to Sam. Nani speaks of the hills from one trip she once made; the tea-garden details (leaves picked by hand, weighing in the evening, wages paid into a bank, tax on a garden) are general and should be checked by a native reviewer. The recipe is the ordinary North Indian kitchen chai (water, ginger, cardamom, tea leaves, milk, sugar). Garlic and chilli are mentioned only to say that they do not go into tea. Hospitality is described without any religious comment; the church tea at the end is plain. Where a planned noun would have been repeated too often (पत्ती, पौधा, कप) the text uses pronouns and चाय itself. Nani's childhood mother appears once (scolding), as in unit 1."
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Nani and Nani says तुम to Sam. Nani speaks of the hills from one trip she once made; the tea-garden details (leaves picked by hand, weighing in the evening, wages paid into a bank, tax on a garden) are general and should be checked by a native reviewer. The recipe is the ordinary North Indian kitchen chai (water, ginger, cardamom, tea leaves, milk, sugar). Garlic and chilli are mentioned only to say that they do not go into tea. Hospitality is described without any religious comment; the church tea at the end is plain. Where a planned noun would have been repeated too often (पत्ती, पौधा, कप) the text uses pronouns and चाय itself. Nani's childhood mother appears once (scolding), as in unit 1. 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A2",
   "topics": [
@@ -518,6 +518,38 @@
             {
               "text": "नानी: अच्छा, पर पहले यह चाय ले लो।",
               "english": "Good, but first take this tea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "चाय पीने के बाद सैम और नानी देर तक बातें करते रहे।",
+              "english": "After drinking tea Sam and Nani went on talking for a long time."
+            },
+            {
+              "text": "नानी ने कहा कि समय कितना जल्दी बीत गया, और अब सैम हर जानवर और हर पेड़ को पहचान लेता है।",
+              "english": "Nani said how quickly time has passed, and now Sam recognises every animal and every tree."
+            },
+            {
+              "text": "गाँव में उनके दादाजी के पास गायों का ढेर था, और वे हर सुबह मुस्कराकर सबको दूध देते थे।",
+              "english": "In the village her grandfather had a heap of cows, and every morning he gave everyone milk with a smile."
+            },
+            {
+              "text": "सैम ने कहा, \"नानी, आपके दादाजी तो बहुत अच्छे थे।\"",
+              "english": "Sam said, \"Nani, your grandfather must have been very good.\""
+            },
+            {
+              "text": "नानी बोलीं, \"हाँ, मम्मी भी उनसे बहुत प्यार करती थीं।\"",
+              "english": "Nani said, \"Yes, mummy loved him very much too.\""
+            },
+            {
+              "text": "उधर आँगन में अमन अज्जी और अज्जा की बात करता हुआ आया।",
+              "english": "Over there Aman came into the courtyard talking about his Ajji and Ajja."
+            },
+            {
+              "text": "इस घर में बहुत साल बीत गए हैं, और नानी ने अब बहुत कुछ तय कर लिया है।",
+              "english": "Many years have passed in this house, and Nani has now decided a great deal."
             }
           ]
         }

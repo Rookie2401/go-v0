@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-22",
+  "lang": "sq",
+  "title": "Oferta e shkollës",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-22",
+    "title": "Albanian ladder, b1-bridge: Oferta e shkollës (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Oferta e shkollës",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Në fillim të shkurtit Sami mori një zarf të bardhë nga posta.",
+              "english": "At the beginning of February Sam received a white envelope from the post."
+            },
+            {
+              "text": "Brenda ishte letra që e kishte pritur dhe e kishte pritur me frikë për shumë javë.",
+              "english": "Inside was the letter that he had been waiting for with fear for many weeks."
+            },
+            {
+              "text": "E mbajti në dorë një moment pa e hapur, pastaj shkoi te dritarja, ku drita ishte më e mirë, dhe e lexoi ngadalë.",
+              "english": "He held it in his hand for a moment without opening it, then went to the window, where the light was better, and read it slowly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "«I nderuar zoti Sam,",
+              "english": "\"Dear Mr Sam,"
+            },
+            {
+              "text": "Në emër të shkollës së lagjes, ju ofrojmë një kontratë pune për vitin që vjen.",
+              "english": "On behalf of the neighbourhood school, we offer you a work contract for the coming year."
+            },
+            {
+              "text": "Kontrata fillon më 1 shtator dhe mbaron më 30 qershor.",
+              "english": "The contract begins on 1 September and ends on 30 June."
+            },
+            {
+              "text": "Ju do të mësoni anglisht në katër klasa, gjashtëmbëdhjetë orë në javë.",
+              "english": "You will teach English in four classes, sixteen hours a week."
+            },
+            {
+              "text": "Paga është 45.000 lekë në muaj.",
+              "english": "The pay is 45,000 lek a month."
+            },
+            {
+              "text": "Nëse doni ta mbyllni kontratën, duhet ta njoftoni shkollën tridhjetë ditë më parë.",
+              "english": "If you wish to close the contract, you must inform the school thirty days beforehand."
+            },
+            {
+              "text": "Klubi i së shtunës është pjesë e punës juaj, por nuk ka pagë tjetër.",
+              "english": "The Saturday club is part of your work, but there is no other pay."
+            },
+            {
+              "text": "Shkolla do të ndihmojë edhe me lejen e qëndrimit, e cila duhet të rinovohet në prill.",
+              "english": "The school will also help with the residence permit, which must be renewed in April."
+            },
+            {
+              "text": "Ju lutemi ta dërgoni përgjigjen deri më 28 shkurt.",
+              "english": "Please send your answer by 28 February."
+            },
+            {
+              "text": "Drejtori i shkollës.»",
+              "english": "The head of the school.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sami e lexoi dy herë.",
+              "english": "Sam read it twice."
+            },
+            {
+              "text": "Pastaj mori fletoren dhe e ndau faqen në dy anë.",
+              "english": "Then he took his notebook and divided the page into two sides."
+            },
+            {
+              "text": "Nga njëra anë shkroi atë që i pëlqente, nga ana tjetër atë që e shqetësonte.",
+              "english": "On one side he wrote what he liked, on the other what worried him."
+            },
+            {
+              "text": "Në anën e parë shkroi: «Klubi. Fëmijët. Një pagë e mirë. Një shtëpi.»",
+              "english": "On the first side he wrote: \"The club. The children. A good pay. A home.\""
+            },
+            {
+              "text": "Në anën tjetër: «Nëna. Sa gjatë? Dhe nëse nuk jam i mirë?»",
+              "english": "On the other side: \"Mother. How long? And what if I am not good?\""
+            },
+            {
+              "text": "Shkroi edhe diçka në fund, që e nënvizoi dy herë: «Pyet para se të nënshkruash.»",
+              "english": "He also wrote something at the end, which he underlined twice: \"Ask before you sign.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të martën ai e çoi letrën te Luani.",
+              "english": "On Tuesday he took the letter to Luan."
+            },
+            {
+              "text": "Luani e lexoi me një laps në dorë, siç lexonte punët e nxënësve, dhe nënvizoi dy rreshta.",
+              "english": "Luan read it with a pencil in his hand, as he read the pupils' work, and underlined two lines."
+            },
+            {
+              "text": "— Këtu, — tha.",
+              "english": "\"Here,\" he said."
+            },
+            {
+              "text": "— «Nuk ka pagë tjetër.»",
+              "english": "\"'There is no other pay.'\""
+            },
+            {
+              "text": "— Do të thotë që ora e shtunës është pa pagë.",
+              "english": "\"It means that the Saturday hour is without pay.\""
+            },
+            {
+              "text": "— Nuk është e keqe, sepse e bën vetë, por duhet ta dish.",
+              "english": "\"It is not bad, because you do it yourself, but you must know it.\""
+            },
+            {
+              "text": "— Dhe këtu: «e cila duhet të rinovohet në prill».",
+              "english": "\"And here: 'which must be renewed in April.'\""
+            },
+            {
+              "text": "— Pyete drejtorin kush e paguan këtë, ti apo shkolla.",
+              "english": "\"Ask the head who pays for this, you or the school.\""
+            },
+            {
+              "text": "— Pyetje të vogla, — tha Sami.",
+              "english": "\"Small questions,\" said Sam."
+            },
+            {
+              "text": "— Pyetjet e vogla janë shumë të mira, — u përgjigj Luani.",
+              "english": "\"Small questions are very good ones,\" answered Luan."
+            },
+            {
+              "text": "— Njeriu që nënshkruan pa pyetur zakonisht e kupton pas gjashtë muajsh se duhej të kishte pyetur.",
+              "english": "\"A person who signs without asking usually understands after six months that he should have asked.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sami shkoi të mërkurën te drejtori.",
+              "english": "Sam went to the head on Wednesday."
+            },
+            {
+              "text": "Drejtori, një burrë i gjatë dhe i qetë që e dëgjonte çdo pyetje deri në fund, iu përgjigj me radhë.",
+              "english": "The head, a tall and calm man who listened to every question to the end, answered them one by one."
+            },
+            {
+              "text": "Këtë e paguan shkolla, tha.",
+              "english": "The school pays for this, he said."
+            },
+            {
+              "text": "Ora e shtunës nuk ka pagë, por shkolla i jep dy ditë pushim më shumë në vit.",
+              "english": "The Saturday hour has no pay, but the school gives him two more days of holiday a year."
+            },
+            {
+              "text": "Dhe nëse Sami dëshiron të largohet, ai mund ta bëjë, por duhet ta thotë në kohë.",
+              "english": "And if Sam wants to leave, he may, but he must say it in time."
+            },
+            {
+              "text": "— Pse po ma ofroni këtë punë? — pyeti Sami në fund.",
+              "english": "\"Why are you offering me this job?\" Sam asked at the end."
+            },
+            {
+              "text": "— Sepse nuk e kërkuat, — buzëqeshi drejtori.",
+              "english": "\"Because you did not ask for it,\" the head smiled."
+            },
+            {
+              "text": "— Njeriu që e kërkon një punë shpesh e do vetëm pagën.",
+              "english": "\"A person who asks for a job often wants only the pay.\""
+            },
+            {
+              "text": "— Ju e filluat nga fëmijët.",
+              "english": "\"You began with the children.\""
+            },
+            {
+              "text": "Sami u kthye në shtëpi me letrën në xhep dhe me një ndjenjë të rëndë: nuk ishte frikë, as gëzim i plotë, por diçka mes tyre.",
+              "english": "Sam went home with the letter in his pocket and with a heavy feeling: it was not fear, nor complete joy, but something between them."
+            },
+            {
+              "text": "Atë mbrëmje, para se të flinte, ai e shkroi në fletore atë që i kishte thënë pastori: «Mos vendos nga frika.»",
+              "english": "That evening, before sleeping, he wrote in his notebook what the pastor had said to him: \"Do not decide out of fear.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën pas klubit Ardi mbeti përsëri pas fëmijëve të tjerë, siç kishte bërë një herë në tetor.",
+              "english": "On Saturday after the club Ardi stayed behind the other children again, as he had done once in October."
+            },
+            {
+              "text": "— Mësues, do të qëndrosh? — e pyeti pa u kthyer.",
+              "english": "\"Teacher, are you going to stay?\" he asked him without turning round."
+            },
+            {
+              "text": "— Si e di ti? — u habit Sami.",
+              "english": "\"How do you know?\" Sam was surprised."
+            },
+            {
+              "text": "— Gjyshja tha.",
+              "english": "\"Grandmother said.\""
+            },
+            {
+              "text": "— Ajo i di të gjitha lajmet e tregut para se të dalin në gazetë.",
+              "english": "\"She knows all the news of the market before it comes out in the newspaper.\""
+            },
+            {
+              "text": "— Nuk kam vendosur ende, — tha Sami.",
+              "english": "\"I have not decided yet,\" said Sam."
+            },
+            {
+              "text": "— Nëse largohesh, kush do të na mësojë anglisht? — pyeti Ardi.",
+              "english": "\"If you go away, who will teach us English?\" asked Ardi."
+            },
+            {
+              "text": "— Ti e di tashmë, — qeshi Sami.",
+              "english": "\"You know it already,\" Sam laughed."
+            },
+            {
+              "text": "— Po. Por nuk e them mirë, — tha Ardi, dhe për herë të parë ishte shumë i qetë.",
+              "english": "\"Yes. But I do not say it well,\" said Ardi, and for the first time he was very calm."
+            },
+            {
+              "text": "— Dua të kem një mësues që të më korrigjojë deri sa ta them mirë.",
+              "english": "\"I want to have a teacher who corrects me until I say it well.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

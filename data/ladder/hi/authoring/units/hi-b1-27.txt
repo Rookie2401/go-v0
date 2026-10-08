@@ -1,0 +1,44 @@
+id: hi-b1-27
+title: रवि सर का प्रयोग
+domain: explanation
+topics: science, light, sky, school, experiment
+notes: Thirteenth controlled unit of the b1 bridge. It prepares the words of the GDL poem "दीदी, दीदी, आकाश का रंग नीला क्यों है?" (hi-b1-28): टॉर्च, प्रयोग, तरंग, अणु, चादर, वायुमंडल, बिखरना, नारंगी, इंद्रधनुष, लंबाई, समझदार, फ़र्क, each used three times, in a simple experiment with a torch and a glass of water that Ravi sir shows Aman and Sam (an explanation text, the text type of hi-a2-1-14 and hi-a2-2-17). The explanations are simplified and are not a physics text; a Hindi reviewer and a science teacher should check the words. Machine-drafted.
+---
+## सवाल
+एक दिन अमन ने रवि सर से पूछा, "सर, आकाश का रंग नीला क्यों होता है?" || One day Aman asked Ravi sir, "Sir, why is the colour of the sky blue?"
+रवि सर मुस्कराए और बोले, "यह बहुत समझदार सवाल है, अमन।" || Ravi sir smiled and said, "This is a very clever question, Aman."
+"आज हम इसका जवाब एक प्रयोग से ढूँढ़ेंगे।" || "Today we will find its answer through an experiment."
+सैम भी पास आकर बैठ गया, और उसने कहा, "सर, मैं भी यह प्रयोग देखूँगा।" || Sam came and sat close too, and he said, "Sir, I will watch this experiment too."
+रवि सर ने मेज़ पर एक गिलास रखा और उसमें पानी भरा। || Ravi sir put a glass on the table and filled it with water.
+फिर उन्होंने पानी में दूध की दो बूँदें डालीं, और पानी हल्का सफ़ेद हो गया। || Then he put two drops of milk in the water, and the water turned light white.
+
+## टॉर्च का प्रयोग
+रवि सर ने कमरे का दरवाज़ा बंद किया और अपनी टॉर्च जलाई। || Ravi sir shut the door of the room and switched on his torch.
+उन्होंने टॉर्च की रोशनी गिलास के एक तरफ़ से डाली। || He cast the light of the torch into the glass from one side.
+अमन ने देखा कि पानी में रोशनी चारों तरफ़ बिखर गई। || Aman saw that the light scattered in all directions in the water.
+रवि सर बोले, "जब रोशनी बहुत छोटे अणुओं से टकराती है, तो वह फैल जाती है।" || Ravi sir said, "When light strikes very small molecules, it spreads out."
+"आकाश में भी हवा के अणु होते हैं, पर वे हमें दिखते नहीं।" || "In the sky too there are molecules of the air, but we do not see them."
+सैम ने पूछा, "यानी हवा के अणु रोशनी को बिखेरते हैं?" || Sam asked, "That is, the air's molecules scatter the light?"
+"हाँ," रवि सर ने कहा, "और जो रंग ज़्यादा फैलता है, वही हमें ज़्यादा दिखता है।" || "Yes," Ravi sir said, "and the colour that spreads more is the one we see more."
+अमन ने फिर टॉर्च जलाई और बोला, "सर, यह प्रयोग तो बहुत मज़ेदार है!" || Aman switched on the torch again and said, "Sir, this experiment is really fun!"
+
+## रंगों की चादर
+रवि सर ने कहा, "सूर्य की किरण में कई रंग होते हैं, जैसे इंद्रधनुष में।" || Ravi sir said, "A ray of the sun has many colours, as in a rainbow."
+"लाल, नारंगी, पीला, हरा और नीला, ये सब एक किरण में छिपे रहते हैं।" || "Red, orange, yellow, green and blue are all hidden in one ray."
+सैम ने पूछा, "इंद्रधनुष आकाश में कब बनता है?" || Sam asked, "When does a rainbow form in the sky?"
+"बारिश के बाद," रवि सर ने कहा, "जब बूँदों से किरण निकलती है, तब इंद्रधनुष बनता है।" || "After the rain," Ravi sir said, "when the ray comes out of the drops, a rainbow forms."
+"हर रंग की लंबाई अलग होती है।" || "The wave of every colour has a different length."
+अमन ने पूछा, "सर, तरंग यानी क्या?" || Aman asked, "Sir, what does wave mean?"
+रवि सर बोले, "जैसे तालाब में पत्थर डालने पर पानी में तरंग उठती है, वैसे ही रोशनी भी तरंग की तरह चलती है।" || Ravi sir said, "As when you throw a stone in a pond a wave rises in the water, light too travels like a wave."
+"नीले रंग की तरंग की लंबाई छोटी होती है, इसलिए वह बहुत बिखरती है।" || "The wave of the blue colour has a short length, so it scatters a lot."
+"नारंगी और लाल रंग की लंबाई ज़्यादा होती है, इसलिए वे कम फैलते हैं।" || "The orange and red colours have a longer length, so they spread less."
+
+## वायुमंडल
+सैम ने कहा, "तो आकाश नीला इसलिए है कि नीला रंग हवा में सबसे ज़्यादा बिखरता है?" || Sam said, "So the sky is blue because the blue colour scatters the most in the air?"
+रवि सर बोले, "बहुत बढ़िया! तुम भी अमन की तरह समझदार हो।" || Ravi sir said, "Very good! You too are clever like Aman."
+"धरती के चारों तरफ़ हवा की एक मोटी चादर है, जिसे वायुमंडल कहते हैं।" || "All around the earth there is a thick sheet of air, which is called the atmosphere."
+"सूर्य की किरण इसी वायुमंडल में आती है, और वायुमंडल की चादर में नीला रंग चारों तरफ़ फैल जाता है।" || "The ray of the sun comes into this very atmosphere, and in the sheet of the atmosphere the blue colour spreads in every direction."
+अमन ने कहा, "तो सर, सुबह और शाम को आकाश लाल क्यों दिखता है?" || Aman said, "Then, sir, why does the sky look red in the morning and evening?"
+रवि सर हँसे और बोले, "यह तुम कल बताओ, अमन; कल मैं तुम्हें इसका फ़र्क दिखाऊँगा।" || Ravi sir laughed and said, "You tell this tomorrow, Aman; tomorrow I will show you the difference."
+सैम ने कहा, "सर, दिन और रात के आकाश में भी बहुत फ़र्क है।" || Sam said, "Sir, there is a great difference in the sky of day and night too."
+घर लौटकर सैम ने नानी को सारा प्रयोग बताया, और नानी ने कहा, "आज तुम सब सचमुच समझदार हो गए।" || Returning home Sam told Nani the whole experiment, and Nani said, "Today all of you have really become clever."

@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-b1-04",
+  "lang": "sq",
+  "title": "Një lajm i keq",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-b1-04",
+    "title": "Albanian ladder, b1-bridge: Një lajm i keq (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the B1 bridge of the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. It is new text written for the bridge, not an adaptation of any library text; the facts it states about places are common knowledge and have not been checked by a person. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një lajm i keq",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Prej tetë vitesh Dritani punonte në një kompani ndërtimi.",
+              "english": "For eight years Dritan had been working in a construction company."
+            },
+            {
+              "text": "Çdo mëngjes ngrihej në orën gjashtë dhe çdo mbrëmje kthehej i lodhur, por i lumtur.",
+              "english": "Every morning he got up at six and every evening he came back tired, but happy."
+            },
+            {
+              "text": "Kishte ndërtuar shtëpi, shkolla dhe një urë të vogël mbi një përrua.",
+              "english": "He had built houses, schools and a small bridge over a stream."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të hënën Dritani u kthye nga puna në mesditë, dhe kjo nuk kishte ndodhur kurrë më parë.",
+              "english": "On Monday Dritan came back from work at midday, and this had never happened before."
+            },
+            {
+              "text": "Mira ishte në kuzhinë dhe po përgatiste drekën kur e dëgjoi derën.",
+              "english": "Mira was in the kitchen preparing lunch when she heard the door."
+            },
+            {
+              "text": "— Dritan, çfarë ka ndodhur? — e pyeti ajo.",
+              "english": "\"Dritan, what has happened?\" she asked him."
+            },
+            {
+              "text": "Ai nuk u përgjigj.",
+              "english": "He did not answer."
+            },
+            {
+              "text": "E la xhaketën mbi karrige, u ul në tavolinë dhe e vuri kokën në duar.",
+              "english": "He left his jacket on a chair, sat down at the table and put his head in his hands."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Kompania humbi kontratën e madhe, — tha ai më në fund.",
+              "english": "\"The company lost the big contract,\" he said at last."
+            },
+            {
+              "text": "— Shefi na tha se nuk ka më punë për të gjithë ne.",
+              "english": "\"The boss told us that there is no more work for all of us.\""
+            },
+            {
+              "text": "— Sa punëtorë mbetën? — pyeti Mira.",
+              "english": "\"How many workers stayed?\" asked Mira."
+            },
+            {
+              "text": "— Njëzet vetë. Unë nuk jam mes tyre.",
+              "english": "\"Twenty people. I am not among them.\""
+            },
+            {
+              "text": "Mira u ul pranë tij dhe nuk tha asgjë për një moment.",
+              "english": "Mira sat down beside him and said nothing for a moment."
+            },
+            {
+              "text": "Pastaj i vuri dorën mbi dorë.",
+              "english": "Then she put her hand on his hand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Dëgjo, — tha ajo.",
+              "english": "\"Listen,\" she said."
+            },
+            {
+              "text": "— Ne kemi disa kursime, dhe unë kam pagën time si mësuese.",
+              "english": "\"We have some savings, and I have my pay as a teacher.\""
+            },
+            {
+              "text": "— Nuk do të kemi gjithçka që kemi pasur, por do të kemi bukë.",
+              "english": "\"We will not have everything we have had, but we will have bread.\""
+            },
+            {
+              "text": "— Po borxhi i makinës? — pyeti Dritani.",
+              "english": "\"And the debt for the car?\" asked Dritan."
+            },
+            {
+              "text": "— Nëse nuk gjen punë deri në pranverë, do ta shesim makinën, — tha Mira.",
+              "english": "\"If you do not find work by spring, we will sell the car,\" said Mira."
+            },
+            {
+              "text": "— Është vetëm një makinë.",
+              "english": "\"It is only a car.\""
+            },
+            {
+              "text": "— Ti thoshe gjithmonë se do të ishe njeriu që mban familjen, — tha ajo me zë të ulët.",
+              "english": "'You always said that you would be the man who supports the family,' she said in a low voice."
+            },
+            {
+              "text": "— Por një familje nuk mbahet nga një njeri i vetëm.",
+              "english": "\"But a family is not supported by one person alone.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në atë kohë erdhën nga shkolla Gjergji dhe Elira.",
+              "english": "At that moment Gjergj and Elira came home from school."
+            },
+            {
+              "text": "— Baba, pse je në shtëpi? — pyeti Elira.",
+              "english": "\"Father, why are you at home?\" asked Elira."
+            },
+            {
+              "text": "Dritani e shikoi Mirën.",
+              "english": "Dritan looked at Mira."
+            },
+            {
+              "text": "— Sepse sot kisha një ditë të gjatë dhe të vështirë, — tha ai.",
+              "english": "\"Because today I had a long and difficult day,\" he said."
+            },
+            {
+              "text": "Gjergji, që ishte njëmbëdhjetë vjeç, nuk e besoi.",
+              "english": "Gjergj, who was eleven years old, did not believe him."
+            },
+            {
+              "text": "Ai e ndjeu që prindërit e tij nuk i thoshin gjithçka, por nuk pyeti asgjë.",
+              "english": "He felt that his parents were not telling them everything, but he did not ask anything."
+            },
+            {
+              "text": "Në vend të kësaj, e mori Elirën për dore dhe e çoi në dhomë për të luajtur.",
+              "english": "Instead, he took Elira by the hand and led her to the room to play."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Atë natë Dritani nuk fjeti.",
+              "english": "That night Dritan did not sleep."
+            },
+            {
+              "text": "Ai qëndroi te dritarja dhe e shikoi qytetin.",
+              "english": "He stayed by the window and looked at the city."
+            },
+            {
+              "text": "Kujtoi ditët kur kishte menduar se çdo gjë që kishte vinte nga forca e tij.",
+              "english": "He remembered the days when he had thought that everything he had came from his own strength."
+            },
+            {
+              "text": "Tani e dinte se kishte gabuar.",
+              "english": "Now he knew that he had been wrong."
+            },
+            {
+              "text": "Atë natë ai bëri një listë me atë që kishin: kursimet, borxhin e makinës dhe pagën e Mirës.",
+              "english": "That night he made a list of what they had: the savings, the debt for the car and Mira's pay."
+            },
+            {
+              "text": "Mira erdhi pa folur dhe qëndroi pranë tij.",
+              "english": "Mira came without speaking and stood beside him."
+            },
+            {
+              "text": "— Do të lutemi bashkë? — pyeti ajo.",
+              "english": "\"Shall we pray together?\" she asked."
+            },
+            {
+              "text": "— Nuk e di se çfarë të them, — tha ai.",
+              "english": "\"I do not know what to say,\" he said."
+            },
+            {
+              "text": "— Nuk duhet të thuash shumë, — u përgjigj Mira.",
+              "english": "\"You do not have to say much,\" Mira answered."
+            },
+            {
+              "text": "— Thuaj vetëm që ke frikë.",
+              "english": "'Just say that you are afraid.'"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të martën në mëngjes Sami erdhi te dera e tyre.",
+              "english": "On Tuesday morning Sam came to their door."
+            },
+            {
+              "text": "Mbante një çantë të madhe në dorë.",
+              "english": "He had a big bag in his hand."
+            },
+            {
+              "text": "— Gjyshja Drita dërgoi bukë, — tha ai.",
+              "english": "\"Grandmother Drita sent bread,\" he said."
+            },
+            {
+              "text": "— Më tha se dëgjoi diçka në treg dhe se ju pret të dielën për darkë.",
+              "english": "\"She told me that she had heard something at the market and that she expects you on Sunday for dinner.\""
+            },
+            {
+              "text": "Dritani e mori çantën dhe për herë të parë atë ditë buzëqeshi.",
+              "english": "Dritan took the bag and for the first time that day he smiled."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -30,4 +30,4 @@ Etter filmen vil {nico} spille. Han liker å spille. || After the film Nils want
 
 Nå er det høst. Etter høsten kommer vinteren, og så kommer våren og sommeren. || Now it is autumn. After the autumn comes the winter, and then come the spring and the summer.
 
-Røvere skadet mannen, men han fikk hjelp. {nico} lytter til historien. || Robbers injured the man, but he got help. Nils listens to the story.
+Vi gikk til kirka på søndag, og vi spiste middag hos {marta}. Det var bra. || We went to church on Sunday, and we had dinner at Marta's. It was good.

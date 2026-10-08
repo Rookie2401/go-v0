@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-17",
+  "lang": "de",
+  "title": "A fox in the city",
+  "contentType": "article",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-17",
+    "title": "A fox in the city (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next text (Guerber, Undank ist der Welt Lohn): Drache, Fuchs, Stein, schlau, fressen, undankbar, Undank, begegnen. A magazine article and a talk about a proverb, in today's German."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "animals",
+    "city",
+    "magazine",
+    "proverb"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "weber": "Frau Weber",
+    "ben": "Ben"
+  },
+  "sections": [
+    {
+      "title": "Ein Fuchs mitten in der Stadt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber liest das Stadtmagazin, und Ben sitzt neben ihr.",
+              "english": "Frau Weber is reading the city magazine, and Ben is sitting next to her."
+            },
+            {
+              "text": "Auf Seite drei steht ein Artikel mit einem großen Foto.",
+              "english": "On page three there is an article with a big photo."
+            },
+            {
+              "text": "Auf dem Foto sieht man einen Fuchs, und er sitzt auf einem Stein vor einem Haus.",
+              "english": "In the photo you see a fox, and it is sitting on a stone in front of a house."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ein Fuchs in der Stadt? Das gibt es doch nicht!",
+              "english": "A fox in the city? That cannot be!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Doch, in Leipzig leben viele Füchse.",
+              "english": "Yes, many foxes live in Leipzig."
+            },
+            {
+              "speaker": "weber",
+              "text": "Hör zu, ich lese vor.",
+              "english": "Listen, I will read it aloud."
+            },
+            {
+              "text": "Der Fuchs ist ein schlaues Tier. Er lebt gern in der Nähe der Menschen.",
+              "english": "The fox is a clever animal. It likes to live near people."
+            },
+            {
+              "text": "Nachts geht er durch die Gärten und sucht etwas zu fressen.",
+              "english": "At night it walks through the gardens and looks for something to eat."
+            },
+            {
+              "text": "Er frisst Mäuse, Äpfel und manchmal auch das Futter von Katzen und Hunden.",
+              "english": "It eats mice, apples and sometimes also the food of cats and dogs."
+            },
+            {
+              "text": "Wer einem Fuchs begegnet, soll ruhig bleiben und nicht schreien.",
+              "english": "Whoever meets a fox should stay calm and not scream."
+            },
+            {
+              "text": "Der Fuchs hat Angst vor Menschen, und er läuft meistens schnell weg.",
+              "english": "The fox is afraid of people, and it usually runs away quickly."
+            },
+            {
+              "text": "Man soll ihm nichts zu fressen geben, denn dann kommt er jeden Abend wieder.",
+              "english": "You should not give it anything to eat, because then it comes back every evening."
+            },
+            {
+              "speaker": "ben",
+              "text": "Aber die Tiere haben doch Hunger!",
+              "english": "But the animals are hungry!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Sie finden genug. Ein Fuchs ist schlau und kann sich selbst helfen.",
+              "english": "They find enough. A fox is clever and can help itself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ein altes Sprichwort",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Es gibt ein altes Sprichwort: Undank ist der Welt Lohn.",
+              "english": "There is an old proverb: ingratitude is the reward of the world."
+            },
+            {
+              "speaker": "ben",
+              "text": "Was heißt Undank?",
+              "english": "What does Undank mean?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Undank heißt: Man hilft jemandem, und er sagt nicht danke.",
+              "english": "Undank means: one helps someone, and he does not say thank you."
+            },
+            {
+              "speaker": "weber",
+              "text": "Er ist undankbar.",
+              "english": "He is ungrateful."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das ist nicht schön.",
+              "english": "That is not nice."
+            },
+            {
+              "speaker": "weber",
+              "text": "Nein, und manche Leute sagen: So ist die Welt.",
+              "english": "No, and some people say: that is how the world is."
+            },
+            {
+              "speaker": "weber",
+              "text": "Aber ich sage: Wer dankbar ist, macht die Welt ein bisschen besser.",
+              "english": "But I say: whoever is thankful makes the world a little better."
+            },
+            {
+              "speaker": "ben",
+              "text": "Gibt es auch ein Märchen darüber?",
+              "english": "Is there a fairy tale about it too?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ja, es ist eine Geschichte von einem Mann, einem Fuchs und einem Drachen.",
+              "english": "Yes, it is a story of a man, a fox and a dragon."
+            },
+            {
+              "speaker": "weber",
+              "text": "Sie ist sehr alt, und sie steht in einem Lesebuch aus dem Jahr neunzehnhundert.",
+              "english": "It is very old, and it is in a reader from the year nineteen hundred."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ein Drache! Ich liebe Drachen!",
+              "english": "A dragon! I love dragons!"
+            },
+            {
+              "speaker": "weber",
+              "text": "Dann zeige ich dir das Buch morgen.",
+              "english": "Then I will show you the book tomorrow."
+            },
+            {
+              "speaker": "ben",
+              "text": "Aber vorher möchte ich den Fuchs sehen.",
+              "english": "But first I would like to see the fox."
+            },
+            {
+              "speaker": "weber",
+              "text": "Dann gehen wir heute Abend in den Garten. Nimm den Stein als Platz zum Sitzen.",
+              "english": "Then we will go into the garden this evening. Take the stone as a place to sit."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und wenn der Fuchs uns begegnet?",
+              "english": "And if the fox meets us?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Dann bleiben wir ruhig, wie im Magazin.",
+              "english": "Then we stay calm, as in the magazine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Abend sitzt Ben bei Frau Weber in der Küche und erzählt von Oma Marta.",
+              "english": "In the evening Ben sits with Frau Weber in the kitchen and tells her about Oma Marta."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma hat heute Brei gekocht, und ich darf ihn für Mama heimbringen.",
+              "english": "Oma cooked porridge today, and I may bring it home for Mama."
+            },
+            {
+              "speaker": "weber",
+              "text": "Brei? Das erinnert mich an das Märchen vom Hirsenbrei.",
+              "english": "Porridge? That reminds me of the tale of the millet porridge."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja! Das Mädchen und seine Mutter leben in Armut.",
+              "english": "Yes! The girl and her mother live in poverty."
+            },
+            {
+              "speaker": "ben",
+              "text": "Die Not ist groß, und der Jammer ist noch größer.",
+              "english": "The need is great, and the misery is even greater."
+            },
+            {
+              "speaker": "weber",
+              "text": "Dann sagt das Mädchen ein Wort, und der Topf kocht und kocht.",
+              "english": "Then the girl says a word, and the pot cooks and cooks."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Brei kocht zu und steigt aus dem Topf heraus.",
+              "english": "The porridge cooks up thick and climbs out of the pot."
+            },
+            {
+              "speaker": "ben",
+              "text": "Am Ende muss man sich durch den Brei durchessen.",
+              "english": "In the end you have to eat your way through the porridge."
+            },
+            {
+              "speaker": "weber",
+              "text": "Das glaube ich! Aber danach sind alle satt.",
+              "english": "I believe that! But afterwards everyone is full."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und es bleibt noch viel übrig. Der Topf ist erst spät wieder ledig.",
+              "english": "And much is still left over. The pot is empty again only late."
+            },
+            {
+              "speaker": "weber",
+              "text": "Ledig ist ein altes Wort. Heute sagt man: leer.",
+              "english": "Ledig is an old word. Today we say: empty."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Wenn man nicht aufpasst, kocht das Wasser im Topf fort.",
+              "english": "If you do not pay attention, the water in the pot boils away."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma macht auch Teig für Pfannkuchen, und ich helfe ihr.",
+              "english": "Oma also makes dough for pancakes, and I help her."
+            },
+            {
+              "speaker": "ben",
+              "text": "Wenn ich heimgehe, bringe ich Mama den Brei. Wenn sie heimkommt, ist er noch warm.",
+              "english": "When I go home, I bring Mama the porridge. When she comes home, it is still warm."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber denkt an Pastor Thomas und seine alte Bibel.",
+              "english": "Frau Weber thinks of Pastor Thomas and his old Bible."
+            },
+            {
+              "speaker": "weber",
+              "text": "Pastor Thomas liest die Bibel in der Übersetzung von Martin Luther.",
+              "english": "Pastor Thomas reads the Bible in the translation of Martin Luther."
+            },
+            {
+              "speaker": "weber",
+              "text": "Er sagt: Ein Wort wie heilig ist alt, aber es ist wichtig.",
+              "english": "He says: a word like holy is old, but it is important."
+            },
+            {
+              "speaker": "weber",
+              "text": "Und ein Zeuge kann bezeugen, was er gesehen hat.",
+              "english": "And a witness can testify to what he has seen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am nächsten Morgen sitzt Ben wieder bei Frau Weber in der Küche.",
+              "english": "The next morning Ben is again sitting with Frau Weber in the kitchen."
+            },
+            {
+              "speaker": "ben",
+              "text": "Frau Weber, kennen Sie das Märchen vom Pfannkuchen?",
+              "english": "Frau Weber, do you know the tale of the pancake?"
+            },
+            {
+              "speaker": "weber",
+              "text": "Ja, eine Frau hat sieben hungrige Kinder, und sie backt einen großen Pfannkuchen.",
+              "english": "Yes, a woman has seven hungry children, and she bakes a big pancake."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das fünfte Kind ruft: Liebe Mutter, ich habe auch Hunger!",
+              "english": "The fifth child calls: Dear mother, I am hungry too!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Das sechste Kind ruft es auch, und das siebente und letzte Kind ist ganz klein und niedlich.",
+              "english": "The sixth child calls it too, and the seventh and last child is very small and cute."
+            },
+            {
+              "speaker": "weber",
+              "text": "Der Pfannkuchen springt auf den Boden und will fortrollen.",
+              "english": "The pancake jumps onto the floor and wants to roll away."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das ist ein guter Einfall, denn er will nicht gegessen werden.",
+              "english": "That is a good idea, because he does not want to be eaten."
+            },
+            {
+              "speaker": "weber",
+              "text": "Die Mutter ruft: Halt, Pfannkuchen, halt!",
+              "english": "The mother calls: Stop, pancake, stop!"
+            },
+            {
+              "speaker": "ben",
+              "text": "Aber er läuft schnell weiter und begegnet einem Gänserich.",
+              "english": "But he runs on quickly and meets a gander."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "weber",
+              "text": "Am Ende kommt der Pfannkuchen an einen Fluss, und ein Schwein hilft ihm.",
+              "english": "In the end the pancake comes to a river, and a pig helps him."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das Schwein ist so fett, dass es gut schwimmen kann.",
+              "english": "The pig is so fat that it can swim well."
+            },
+            {
+              "speaker": "ben",
+              "text": "Es bringt den Pfannkuchen hinüber auf die andere Seite.",
+              "english": "It takes the pancake across to the other side."
+            },
+            {
+              "speaker": "weber",
+              "text": "Dann dreht sich der Pfannkuchen um und sieht die Kinder nicht mehr.",
+              "english": "Then the pancake turns around and no longer sees the children."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Und beim Hirsenbrei? Da kocht der Topf, und das Mädchen ist nicht mehr arm.",
+              "english": "And in the millet porridge tale? There the pot cooks, and the girl is no longer poor."
+            },
+            {
+              "speaker": "weber",
+              "text": "Früher leben die Mutter und das Mädchen in Armut, und die Not ist groß.",
+              "english": "Before, the mother and the girl live in poverty, and the need is great."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Jammer ist auch groß, aber am Ende ist noch viel Brei übrig.",
+              "english": "The misery is great too, but in the end there is still much porridge left over."
+            },
+            {
+              "speaker": "weber",
+              "text": "Du kennst viele Märchen, Ben. Das ist schön.",
+              "english": "You know many tales, Ben. That is nice."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich erzähle sie gern, und Sie hören gut zu.",
+              "english": "I like to tell them, and you listen well."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

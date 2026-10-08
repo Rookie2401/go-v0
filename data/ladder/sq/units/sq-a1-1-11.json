@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-11",
+  "lang": "sq",
+  "title": "Në treg",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-11",
+    "title": "Albanian ladder, a1-1: Në treg (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Në treg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam zgjohet herët.",
+              "english": "Sam wakes up early."
+            },
+            {
+              "text": "Ai lahet dhe vishet.",
+              "english": "He washes and gets dressed."
+            },
+            {
+              "text": "Pastaj ai shkon në treg.",
+              "english": "Then he goes to the market."
+            },
+            {
+              "text": "Drita bën bukë çdo ditë.",
+              "english": "Drita makes bread every day."
+            },
+            {
+              "text": "Ajo shet bukë në treg.",
+              "english": "She sells bread at the market."
+            },
+            {
+              "text": "Në treg ka shumë njerëz.",
+              "english": "At the market there are many people."
+            },
+            {
+              "text": "Sam blen bukë te Drita.",
+              "english": "Sam buys bread from Drita."
+            },
+            {
+              "text": "— Sa kushton buka sot?",
+              "english": "\"How much does the bread cost today?\""
+            },
+            {
+              "text": "— Dhjetë lekë, Sam.",
+              "english": "\"Ten lek, Sam.\""
+            },
+            {
+              "text": "— Buka juaj është shumë e mirë.",
+              "english": "\"Your bread is very good.\""
+            },
+            {
+              "text": "Sam blen dy bukë.",
+              "english": "Sam buys two loaves."
+            },
+            {
+              "text": "Pastaj ai blen djathë.",
+              "english": "Then he buys cheese."
+            },
+            {
+              "text": "Djathi është i mirë.",
+              "english": "The cheese is good."
+            },
+            {
+              "text": "Sam shkon në shtëpi me bukë dhe djathë.",
+              "english": "Sam goes home with bread and cheese."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam e sheh Anën në treg.",
+              "english": "Sam sees Ana at the market."
+            },
+            {
+              "text": "— Mirë se vini! — thotë shitësi.",
+              "english": "\"Welcome!\" says the seller."
+            },
+            {
+              "text": "— Mirëdita! Sa kushtojnë mollët? — pyet Ana.",
+              "english": "\"Good afternoon! How much do the apples cost?\" asks Ana."
+            },
+            {
+              "text": "— Në verë nuk kushtojnë shumë.",
+              "english": "\"In summer they don't cost much.\""
+            },
+            {
+              "text": "— Mirë. Dua mollë, ju lutem.",
+              "english": "\"Good. I want apples, please.\""
+            },
+            {
+              "text": "Shitësi është burrë i vjetër.",
+              "english": "The seller is an old man."
+            },
+            {
+              "text": "Shitësi është gjyshi i Elirës.",
+              "english": "The seller is Elira's grandfather."
+            },
+            {
+              "text": "Ana dhe Sam janë të lumtur që janë në treg.",
+              "english": "Ana and Sam are happy to be at the market."
+            },
+            {
+              "text": "Sot është një ditë e bukur.",
+              "english": "Today is a beautiful day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sot nëna shkon në treg me Elirën.",
+              "english": "Today the mother goes to the market with Elira."
+            },
+            {
+              "text": "— Mirëmëngjes, gjysh! — thotë Elira.",
+              "english": "\"Good morning, grandfather!\" says Elira."
+            },
+            {
+              "text": "Gjyshi i jep një mollë.",
+              "english": "The grandfather gives her an apple."
+            },
+            {
+              "text": "— Faleminderit, gjysh!",
+              "english": "\"Thank you, grandfather!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ardi ha një mollë të kuqe.",
+              "english": "Ardi eats a red apple."
+            },
+            {
+              "text": "— A është e mirë? — pyet gjyshja.",
+              "english": "\"Is it good?\" asks grandmother."
+            },
+            {
+              "text": "— Po, gjyshe, është shumë e mirë!",
+              "english": "\"Yes, grandmother, it is very good!\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

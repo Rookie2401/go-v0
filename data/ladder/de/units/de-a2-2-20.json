@@ -43,6 +43,19 @@
     "testimony"
   ],
   "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
   "sections": [
     {
       "title": "Der Anfang",
@@ -529,19 +542,511 @@
           ]
         }
       ]
-    }
-  ],
-  "pipeline": {
-    "state": "machine-draft",
-    "history": [
-      {
-        "state": "machine-draft",
-        "at": "2026-10-06",
-        "by": {
-          "kind": "tool",
-          "name": "ladder drafting agent (Sonnet)"
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Ende denke ich noch einmal an meine erste Woche bei Frau Weber in Leipzig.",
+              "english": "In the end I think once more of my first week with Frau Weber in Leipzig."
+            },
+            {
+              "text": "Frau Weber ist streng, wenn es um den Müll geht, aber sie ist auch sehr freundlich.",
+              "english": "Frau Weber is strict when it comes to the rubbish, but she is also very friendly."
+            },
+            {
+              "text": "Jeden Morgen brachte sie ihre Tüten nach unten, und das war für mich ein Zeichen.",
+              "english": "Every morning she took her bags downstairs, and for me that was a sign."
+            },
+            {
+              "text": "Sie hat mir nichts gesagt, aber ich habe jeden Tag gesehen, wie das System funktioniert.",
+              "english": "She told me nothing, but every day I saw how the system works."
+            },
+            {
+              "text": "Man darf nichts einfach wegwerfen, das habe ich in dieser Woche gelernt.",
+              "english": "One must not simply throw anything away, I learned that in this week."
+            },
+            {
+              "text": "Im Haus gibt es mehrere Mülltonnen, und die Mieter haben nie Streit darüber.",
+              "english": "There are several bins in the house, and the tenants never have an argument about them."
+            },
+            {
+              "text": "Ich habe damals viel gelernt, und ich bin Frau Weber noch heute sehr dankbar.",
+              "english": "I learned a lot then, and I am still very grateful to Frau Weber today."
+            },
+            {
+              "text": "Wir haben oft zusammen gesessen und über das Leben in Deutschland gesprochen.",
+              "english": "We often sat together and talked about life in Germany."
+            },
+            {
+              "text": "Frau Weber hat mir auch oft Brot und Kaffee gegeben, wenn ich müde war.",
+              "english": "Frau Weber also often gave me bread and coffee when I was tired."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Alles hat seinen Platz, und nach einer Woche wusste ich das auch.",
+              "english": "Everything has its place, and after a week I knew that too."
+            },
+            {
+              "text": "Verpackungen kommen in die gelbe Mülltonne, und das Glas bringt man zu einem großen Behälter auf der Straße.",
+              "english": "Packaging goes into the yellow bin, and the glass is taken to a big container in the street."
+            },
+            {
+              "text": "Alles andere ist Restmüll, und er kommt in die graue Mülltonne.",
+              "english": "Everything else is general waste, and it goes into the grey bin."
+            },
+            {
+              "text": "Der Abfall aus der Küche wird später zu Erde gemacht.",
+              "english": "The waste from the kitchen is later made into soil."
+            },
+            {
+              "text": "Beim Einkaufen begegnet man auch dem Pfand, und das war für mich neu.",
+              "english": "When shopping one also meets the deposit, and that was new for me."
+            },
+            {
+              "text": "Bei Plastik sind es 25 Cent, die man beim Kauf bezahlt.",
+              "english": "For plastic it is 25 cents, which one pays at the purchase."
+            },
+            {
+              "text": "An der Kasse im Supermarkt bekommt man das Geld wieder, wenn man die Flasche bringt.",
+              "english": "At the till in the supermarket one gets the money back when one brings the bottle."
+            },
+            {
+              "text": "Dadurch wird weniger Müll gemacht, und das Klima wird geschützt.",
+              "english": "Because of that less rubbish is made, and the climate is protected."
+            },
+            {
+              "text": "Ben hat im Park Flaschen gesammelt, weil er dafür Geld bekommen hat.",
+              "english": "Ben collected bottles in the park because he got money for it."
+            },
+            {
+              "text": "Das Geld hat er seiner Oma gegeben, und sie hat sich sehr gefreut.",
+              "english": "He gave the money to his grandma, and she was very happy."
+            },
+            {
+              "text": "Wenn man weniger verbrennt, ist das vernünftig, und alle haben etwas davon.",
+              "english": "If one burns less, that is sensible, and everyone gains from it."
+            },
+            {
+              "text": "Mir hat das System gut gefallen, denn jeder tut etwas für die Stadt.",
+              "english": "I liked the system, because everyone does something for the city."
+            },
+            {
+              "text": "Am Samstag sind wir zusammen zum Markt gegangen und haben Brot gekauft.",
+              "english": "On Saturday we went to the market together and bought bread."
+            },
+            {
+              "text": "Auch der Jugendkreis hat im Park Papier und Glas gesammelt und getrennt.",
+              "english": "The youth group also collected and sorted paper and glass in the park."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Anfang wusste ich oft nicht, wohin eine Flasche oder ein Glas gehört.",
+              "english": "At the beginning I often did not know where a bottle or a glass belongs."
+            },
+            {
+              "text": "Dann habe ich Frau Weber gefragt, und sie hat mir alles gezeigt.",
+              "english": "Then I asked Frau Weber, and she showed me everything."
+            },
+            {
+              "text": "Ich habe mir gesagt, ich will es auch so gut machen wie sie.",
+              "english": "I told myself I want to do it as well as she does."
+            },
+            {
+              "text": "Ich habe verstanden, dass kleine Dinge im Leben auch sehr wichtig sind.",
+              "english": "I understood that small things in life are also very important."
+            },
+            {
+              "text": "Wer jeden Tag etwas Gutes tut, der verändert am Ende die Stadt.",
+              "english": "Whoever does something good every day changes the city in the end."
+            },
+            {
+              "text": "Sie trennt den Müll sorgfältig, und sie hat dafür viel Zeit.",
+              "english": "She sorts the rubbish carefully, and she has a lot of time for it."
+            },
+            {
+              "text": "In der gelben Mülltonne liegt oft Abfall, der nicht hineingehört.",
+              "english": "In the yellow bin there is often waste that does not belong in it."
+            },
+            {
+              "text": "Manchmal wird der Müll kontrolliert, und wer es falsch macht, bekommt eine Strafe.",
+              "english": "Sometimes the rubbish is checked, and whoever does it wrong gets a fine."
+            },
+            {
+              "text": "Für Frau Weber ist das keine Last, sondern eine gute Gewohnheit.",
+              "english": "For Frau Weber it is not a burden but a good habit."
+            },
+            {
+              "text": "Jeden Abend habe ich den Müll nach unten gebracht, und es war ganz leicht.",
+              "english": "Every evening I took the rubbish downstairs, and it was quite easy."
+            },
+            {
+              "text": "Sie sagt, jeder Mieter hat eine Pflicht, und sie tut ihre gern.",
+              "english": "She says every tenant has a duty, and she does hers gladly."
+            },
+            {
+              "text": "Ein altes Thermometer ist ein Fall für sich, denn es kommt nicht in die Mülltonne.",
+              "english": "An old thermometer is a case of its own, because it does not go into the bin."
+            },
+            {
+              "text": "Man benutzt es nicht mehr, und man bringt es zur Apotheke.",
+              "english": "One does not use it any more, and one takes it to the pharmacy."
+            },
+            {
+              "text": "Eine Scherbe kann einen tiefen Schnitt machen, und dann geht man zum Arzt.",
+              "english": "A shard can make a deep cut, and then one goes to the doctor."
+            },
+            {
+              "text": "Pastor Thomas schreibt in seiner Spalte von einem Verletzten am Weg.",
+              "english": "Pastor Thomas writes in his column about an injured man by the road."
+            },
+            {
+              "text": "Er sagt: Man soll an einem Kranken nicht vorbeigehen, sondern ihm helfen.",
+              "english": "He says: one should not walk past a sick person, but help him."
+            },
+            {
+              "text": "Er hat uns erzählt, dass man immer helfen soll, wenn jemand Hilfe braucht.",
+              "english": "He told us that one should always help when someone needs help."
+            },
+            {
+              "text": "Das ist ein guter Rat, und ich denke oft daran.",
+              "english": "That is good advice, and I often think of it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann denke ich an das Interview, das Anna gegeben hat.",
+              "english": "Then I think of the interview that Anna gave."
+            },
+            {
+              "text": "Anna saß in einem kleinen Studio vor dem Mikrofon, und sie war ein bisschen nervös.",
+              "english": "Anna sat in a small studio in front of the microphone, and she was a little nervous."
+            },
+            {
+              "text": "Der Lokalsender wollte über ihren Alltag sprechen, und das Thema war die Arbeit in der Nacht.",
+              "english": "The local station wanted to talk about her everyday life, and the topic was work at night."
+            },
+            {
+              "text": "Anna hat uns später erzählt, dass sie vor dem Interview nicht schlafen konnte.",
+              "english": "Anna told us later that she could not sleep before the interview."
+            },
+            {
+              "text": "Es war Dienstagnachmittag, und Anna trank zuerst einen Schluck Wasser.",
+              "english": "It was Tuesday afternoon, and Anna first drank a sip of water."
+            },
+            {
+              "text": "Aber dann war sie ganz ruhig und hat auf jede Frage ehrlich geantwortet.",
+              "english": "But then she was quite calm and answered every question honestly."
+            },
+            {
+              "text": "Die Frühschicht beginnt um sechs Uhr mit der Übergabe.",
+              "english": "The early shift begins at six o'clock with the handover."
+            },
+            {
+              "text": "Sie arbeitet auf der Station für innere Medizin im Krankenhaus.",
+              "english": "She works on the ward for internal medicine in the hospital."
+            },
+            {
+              "text": "Im Nachtdienst ist man ständig müde, und der Körper weiß nicht, wann Tag ist.",
+              "english": "On night duty one is constantly tired, and the body does not know when it is day."
+            },
+            {
+              "text": "Aber mit Humor kann man weiterarbeiten, sagt sie.",
+              "english": "But with humour one can keep on working, she says."
+            },
+            {
+              "text": "Sie hat gesagt, dass sie ihre Arbeit sehr gern macht, auch wenn sie schwer ist.",
+              "english": "She said she likes her work very much, even when it is hard."
+            },
+            {
+              "text": "Bei Atemnot muss man sofort in die Notaufnahme gehen.",
+              "english": "With shortness of breath one must go to the emergency room at once."
+            },
+            {
+              "text": "Sie lernt auch, wie man einen Verband macht und wie man mit Menschen spricht.",
+              "english": "She also learns how to put on a bandage and how to talk with people."
+            },
+            {
+              "text": "Der Fremde in der Geschichte goss Wein auf die Wunde und brachte den Mann zu einer Herberge.",
+              "english": "The stranger in the story poured wine on the wound and took the man to an inn."
+            },
+            {
+              "text": "Wir haben das Interview am Abend alle zusammen gehört.",
+              "english": "We all listened to the interview together in the evening."
+            },
+            {
+              "text": "Viele Menschen haben Anna nach dem Interview gedankt, und sie hat sich sehr gefreut.",
+              "english": "Many people thanked Anna after the interview, and she was very happy."
+            },
+            {
+              "text": "Ihre Kollegen haben gesagt, sie war ruhig und freundlich und hat gut gesprochen.",
+              "english": "Her colleagues said she was calm and friendly and spoke well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auch Annas Geschichte habe ich nicht vergessen.",
+              "english": "I have not forgotten Anna's story either."
+            },
+            {
+              "text": "Anna hat uns erzählt, dass sie als Kind oft im Krankenhaus war.",
+              "english": "Anna told us that as a child she was often in the hospital."
+            },
+            {
+              "text": "Als Kind hat Oma Marta oft auf sie aufgepasst, denn die Eltern waren bei der Arbeit.",
+              "english": "As a child, Grandma Marta often looked after her, because the parents were at work."
+            },
+            {
+              "text": "In der Schule war Anna nicht die Beste, aber sie war fleißig.",
+              "english": "At school Anna was not the best, but she was diligent."
+            },
+            {
+              "text": "Mit sechzehn hat sie die Schule gewechselt, weil sie das Abitur machen wollte.",
+              "english": "At sixteen she changed schools, because she wanted to do the school-leaving exam."
+            },
+            {
+              "text": "Mit dem Abitur kann man viel erreichen, hat ihr Vater gesagt.",
+              "english": "With the school-leaving exam one can achieve a lot, her father said."
+            },
+            {
+              "text": "Ihre Kollegin Lena war streng und gleichzeitig sehr freundlich.",
+              "english": "Her colleague Lena was strict and at the same time very friendly."
+            },
+            {
+              "text": "Sie wollte schon damals Menschen helfen, und das hat sie nie vergessen.",
+              "english": "Even then she wanted to help people, and she never forgot that."
+            },
+            {
+              "text": "Heute hilft sie jeden Tag vielen Menschen und ist dabei sehr freundlich.",
+              "english": "Today she helps many people every day and is very friendly about it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Und ich denke an den Abend im Café von Herrn Schmidt.",
+              "english": "And I think of the evening in the café of Herr Schmidt."
+            },
+            {
+              "text": "Jonas hatte eine Bitte, aber er hatte Angst, unhöflich zu sein.",
+              "english": "Jonas had a request, but he was afraid of being impolite."
+            },
+            {
+              "text": "Na, sagte Herr Schmidt, warum seid ihr zwei so still?",
+              "english": "Well, said Herr Schmidt, why are you two so quiet?"
+            },
+            {
+              "text": "Ich habe Jonas gesagt, er soll ehrlich sein und alles erklären.",
+              "english": "I told Jonas he should be honest and explain everything."
+            },
+            {
+              "text": "Ich half beim Spülen und habe alles gehört.",
+              "english": "I helped with the washing up and heard everything."
+            },
+            {
+              "text": "Jonas möchte sich selbstständig machen und eine kleine Werkstatt haben.",
+              "english": "Jonas wants to become self-employed and open a small workshop."
+            },
+            {
+              "text": "Er träumt von der Freiheit, sein eigener Chef zu sein.",
+              "english": "He dreams of the freedom of being his own boss."
+            },
+            {
+              "text": "In seiner Lage war das ein riesiger Schritt, und er hatte viel Sorge.",
+              "english": "In his situation that was a huge step, and he had a lot of worry."
+            },
+            {
+              "text": "Herr Schmidt hat lange nachgedacht und dann gesagt, er will ihm helfen.",
+              "english": "Herr Schmidt thought for a long time and then said he wants to help him."
+            },
+            {
+              "text": "Das war ein schöner Moment, und Jonas hat sich sehr gefreut.",
+              "english": "That was a lovely moment, and Jonas was very happy."
+            },
+            {
+              "text": "Er hat gesagt, er will das Geld ehrlich zurückzahlen.",
+              "english": "He said he wants to pay the money back honestly."
+            },
+            {
+              "text": "Ich habe in dieser Nacht lange an Jonas gedacht und für ihn gebetet.",
+              "english": "That night I thought of Jonas for a long time and prayed for him."
+            },
+            {
+              "text": "Ich hoffe, dass er die Prüfung im Sommer besteht.",
+              "english": "I hope that he passes the exam in the summer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Die Geschichte von Martas Schlüsseln mag ich sehr.",
+              "english": "I like the story of Marta's keys very much."
+            },
+            {
+              "text": "Frau Weber hatte einen Ersatzschlüssel, und so kam Marta ins Haus.",
+              "english": "Frau Weber had a spare key, and so Marta got into the house."
+            },
+            {
+              "text": "Ben war damals zehn Jahre alt und wollte seiner Oma helfen.",
+              "english": "Ben was ten years old then and wanted to help his grandma."
+            },
+            {
+              "text": "Im Fundbüro standen viele Regale mit verlorenen Sachen, aber die Schlüssel waren nicht dabei.",
+              "english": "In the lost property office many shelves with lost things stood, but the keys were not among them."
+            },
+            {
+              "text": "Die Wochen vergingen, und es gab keine Spur.",
+              "english": "The weeks passed, and there was no trace."
+            },
+            {
+              "text": "Marta hat im Fundbüro lange gewartet, aber der Mann hat nichts gefunden.",
+              "english": "Marta waited a long time at the lost property office, but the man found nothing."
+            },
+            {
+              "text": "Marta schüttelte den Kopf und war traurig.",
+              "english": "Marta shook her head and was sad."
+            },
+            {
+              "text": "Auf dem Anhänger stand der Name ihrer Backstube.",
+              "english": "On the tag stood the name of her bakery."
+            },
+            {
+              "text": "Die junge Frau aus Hamburg wollte ihre Aufgabe erfüllen.",
+              "english": "The young woman from Hamburg wanted to fulfil her task."
+            },
+            {
+              "text": "Sie kam hierher und war müde und zugleich glücklich.",
+              "english": "She came here and was tired and at the same time happy."
+            },
+            {
+              "text": "Die Schlüssel waren wieder bei Marta, und sie war sehr froh.",
+              "english": "The keys were with Marta again, and she was very glad."
+            },
+            {
+              "text": "Ben hat sich auch gefreut, und sie haben zusammen Brot gegessen.",
+              "english": "Ben was happy too, and they ate bread together."
+            },
+            {
+              "text": "Oma Marta hat die Schlüssel allen Freunden gezeigt und alles erzählt.",
+              "english": "Grandma Marta showed the keys to all her friends and told them everything."
+            },
+            {
+              "text": "Seit diesem Tag trägt sie die Schlüssel immer bei sich.",
+              "english": "Since that day she always carries the keys with her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann denke ich an den Wochenbericht von David und Ruth.",
+              "english": "Then I think of the weekly report of David and Ruth."
+            },
+            {
+              "text": "David hat die Zahlen gesammelt, und Ruth hat den Text verfasst.",
+              "english": "David collected the figures, and Ruth wrote the text."
+            },
+            {
+              "text": "Im Bericht stehen auch die Gebetsanliegen für die nächste Woche.",
+              "english": "In the report there are also the prayer requests for the next week."
+            },
+            {
+              "text": "Der Bericht war lang, aber alle haben ihn gern gelesen.",
+              "english": "The report was long, but everyone read it gladly."
+            },
+            {
+              "text": "Die Unterstützer lesen dort von dem Fortschritt in der Stadt.",
+              "english": "The supporters read there about the progress in the city."
+            },
+            {
+              "text": "Der Kontakt zu den Menschen in der Nachbarschaft ist gewachsen.",
+              "english": "The contact with the people in the neighbourhood has grown."
+            },
+            {
+              "text": "Auch die Jugendlichen waren dabei, mit Material und mit Kaffee.",
+              "english": "The young people were there too, with material and with coffee."
+            },
+            {
+              "text": "Jeder bekam einen Becher heißen Kaffee, und viele Menschen blieben stehen.",
+              "english": "Everyone got a cup of hot coffee, and many people stopped."
+            },
+            {
+              "text": "Sabine hat uns gesagt, dass auch die Kinder aus dem Kindergarten dabei waren.",
+              "english": "Sabine told us that the children from the kindergarten were there too."
+            },
+            {
+              "text": "Am Sonntag war die Gemeinde voll, und viele Menschen sind zum ersten Mal gekommen.",
+              "english": "On Sunday the church was full, and many people came for the first time."
+            },
+            {
+              "text": "Jeder bringt seine Gaben mit, und jede Gemeinde hat ihren eigenen Stil.",
+              "english": "Everyone brings his gifts, and every church has its own style."
+            },
+            {
+              "text": "Die Einheit der Gemeinden ist uns trotzdem wichtig.",
+              "english": "The unity of the churches is still important to us."
+            },
+            {
+              "text": "Die Bank hatte die Bitte von Jonas abgelehnt, denn die Summe war hoch.",
+              "english": "The bank had turned down Jonas's request, because the sum was high."
+            },
+            {
+              "text": "Herr Schmidt hat ihm dann finanziell geholfen.",
+              "english": "Herr Schmidt then helped him financially."
+            },
+            {
+              "text": "Pastor Thomas hat am Sonntag für alle gebetet, die Hilfe brauchen.",
+              "english": "On Sunday Pastor Thomas prayed for everyone who needs help."
+            },
+            {
+              "text": "Ich möchte noch erwähnen, dass Lukas über einen Wechsel nachdenkt.",
+              "english": "I would also like to mention that Lukas is thinking about a change."
+            },
+            {
+              "text": "Wir sind sehr gesegnet, und wir danken Ihnen für Ihre Treue.",
+              "english": "We are very blessed, and we thank you for your faithfulness."
+            },
+            {
+              "text": "Ich habe gedacht: Ich bin ein Teil von dieser Gemeinde.",
+              "english": "I thought: I am a part of this church."
+            },
+            {
+              "text": "Ich habe viele Freunde gefunden, und das ist mehr, als ich erwartet habe.",
+              "english": "I have found many friends, and that is more than I expected."
+            },
+            {
+              "text": "Lukas möchte lieber ein kleines Haus auf dem Land haben und dort eine kleine Schule.",
+              "english": "Lukas would rather have a small house in the country and a small school there."
+            },
+            {
+              "text": "Das alles habe ich in Leipzig gesehen und gehört.",
+              "english": "I saw and heard all of this in Leipzig."
+            },
+            {
+              "text": "Wenn ich an diese Menschen denke, bin ich froh und dankbar.",
+              "english": "When I think of these people, I am glad and grateful."
+            },
+            {
+              "text": "Ich bin froh, dass ich in Leipzig bin, und ich bleibe gern hier.",
+              "english": "I am glad that I am in Leipzig, and I like staying here."
+            }
+          ]
         }
-      }
-    ]
-  }
+      ]
+    }
+  ]
 }

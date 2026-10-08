@@ -1,0 +1,77 @@
+=== de-a1-1-03
+speakers: sam=Sam, anna=Anna, lukas=Lukas, ben=Ben, marta=Marta
+## Ein Bild von der Familie
+Sam ist bei Anna und Lukas im Haus. || Sam is at Anna and Lukas's house.
+Es ist Sonntag. || It is Sunday.
+[anna] Sam, komm! || Sam, come here!
+[anna] Hier ist ein Bild von meiner Familie. || Here is a picture of my family.
+[sam] Das ist ein schönes Bild! || That is a lovely picture!
+[sam] Das ist Lukas, dein Bruder? || That is Lukas, your brother?
+[anna] Ja, das ist Lukas. || Yes, that is Lukas.
+[anna] Das ist mein Vater und das ist meine Mutter. || That is my father and that is my mother.
+[sam] Wie heißen sie? || What are they called?
+[anna] Klaus und Maria. || Klaus and Maria.
+[sam] Wie alt ist dein Vater? || How old is your father?
+[anna] Er ist 62 Jahre alt. || He is 62 years old.
+[sam] Und deine Mutter? || And your mother?
+[anna] Sie ist 58 Jahre alt. || She is 58 years old.
+[anna] Ich bin die Tochter von Klaus und Maria. || I am the daughter of Klaus and Maria.
+[anna] Lukas und ich sind ihre Kinder. || Lukas and I are their children.
+[sam] Und du, Anna? || And you, Anna?
+[anna] Ich bin 30. || I am 30.
+[anna] Lukas ist 33. || Lukas is 33.
+
+## Sams Familie
+[anna] Und deine Familie, Sam? || And your family, Sam?
+[sam] Sie ist in den USA. || They are in the USA.
+[sam] Aber ich habe ein Bild in meiner Tasche. || But I have a picture in my bag.
+[sam] Mein Vater ist 60. || My father is 60.
+[sam] Er spricht kein Deutsch. || He does not speak German.
+[sam] Und das ist meine Schwester. || And that is my sister.
+[anna] Deine Schwester ist schön! || Your sister is lovely!
+[anna] Wie heißt sie? || What is she called?
+[sam] Sie heißt Lena. || She is called Lena.
+[sam] Sie ist 25. || She is 25.
+[anna] Wo wohnt deine Schwester? || Where does your sister live?
+[sam] In den USA, bei meiner Familie. || In the USA, with my family.
+[anna] Kommt sie auch nach Leipzig? || Is she coming to Leipzig too?
+[sam] Ja, sie kommt gern, aber nicht heute. || Yes, she would like to come, but not today.
+
+## Lukas und Ben
+Lukas kommt aus dem Bad. || Lukas comes out of the bathroom.
+Das Bad ist klein, und das Haus ist auch klein. || The bathroom is small, and the house is small too.
+[lukas] Hallo, Herr Miller! || Hello, Mr Miller!
+[sam] Nein, nein, ich bin Sam! || No, no, I am Sam!
+[lukas] Ja, Sam. || Yes, Sam.
+[lukas] Hallo! || Hello!
+Ben ist auch hier, beim Fenster. || Ben is here too, by the window.
+[ben] Hallo, Anna! || Hello, Anna!
+[ben] Hallo, Sam! || Hello, Sam!
+[sam] Hallo, Ben! || Hello, Ben!
+[sam] Du bist zehn Jahre alt? || You are ten years old?
+[sam] Du bist ein Kind! || You are a child!
+[ben] Nein, ich bin kein Kind! || No, I am not a child!
+[ben] Meine Mutter ist die Tochter von Oma. || My mother is Grandma's daughter.
+[ben] Meine Oma ist alt, aber sie ist sehr gut! || My grandma is old, but she is very good!
+[marta] Hallo, Ben! || Hello, Ben!
+[marta] Wo bist du? || Where are you?
+[ben] Hier, Oma! || Here, Grandma!
+[ben] Bei Anna und Sam. || With Anna and Sam.
+[marta] Guten Morgen, Anna! || Good morning, Anna!
+[marta] Guten Morgen, Sam! || Good morning, Sam!
+[marta] Ben, kommt deine Mutter auch? || Ben, is your mother coming too?
+[marta] Meine Tochter ist heute müde. || My daughter is tired today.
+[ben] Nein, sie ist müde. || No, she is tired.
+[marta] Möchtet ihr Kaffee? || Would you like coffee?
+[anna] Ja, gern, danke. || Yes, gladly, thank you.
+[anna] Gehen wir in die Küche! || Let us go into the kitchen!
+[ben] Oma, ich habe Hunger. || Grandma, I am hungry.
+[marta] Hier ist Brot, Ben. || Here is bread, Ben.
+[ben] Danke! || Thank you!
+[ben] Ich trinke gern Wasser. || I like drinking water.
+[sam] Ich trinke Kaffee. || I am drinking coffee.
+[sam] Danke, Marta! || Thank you, Marta!
+[marta] Bitte, Sam. || You are welcome, Sam.
+[lukas] Ich trinke auch gern Kaffee. || I like drinking coffee too.
+[anna] Es ist Sonntag, das ist gut. || It is Sunday, that is good.
+

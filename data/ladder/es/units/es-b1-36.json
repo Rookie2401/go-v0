@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 2,
+  "id": "es-b1-36",
+  "lang": "es",
+  "title": "Una noche de leyendas",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-b1-36",
+    "title": "A night of legends (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored Spanish for the B1 bridge. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is written for B1 learners (natural prose at the level of the bridge; its vocabulary is scheduled by the ladder) and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honduran-register unit 3 of 6 (new, course-authored). A power cut in a village kitchen on a rainy night, the grandmother and the young people telling Honduran legends in the voice of the countryside: el cadejo (white and black), la Llorona, el Sisimite; voseo between friends and family (contanos, mirá, sabés, seguí, guardalo, salí) and usted to the grandmother and to older neighbours. Points for the Honduran reviewer: that the legends are told the way a Honduran grandmother would tell them (the cadejo blanco / negro, the Sisimite with backwards feet, the Llorona at the river), \"se fue la luz\", \"ahorita\", \"cipotes\", \"mijo\", \"cheque\", \"vaya pues\". The unit also retells, in the children's words, the story of es-b1-05 (The red thread), on purpose: the recycling pass of 2026-10-08 brings back here the words of es-b1-02, es-b1-03, es-b1-04 and es-b1-05."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "narrative",
+    "folklore",
+    "honduran register"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "honduran-register"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition",
+    "honduras"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Se fue la luz",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Era una noche de julio, y llovía con tanta fuerza que el zinc del techo sonaba como un tambor.",
+              "english": "It was a July night, and it rained so hard that the zinc of the roof sounded like a drum."
+            },
+            {
+              "text": "De pronto se fue la luz, como pasa muchas veces en la aldea cuando llueve fuerte.",
+              "english": "Suddenly the light went out, as often happens in the village when it rains hard."
+            },
+            {
+              "text": "—¡Ay, otra vez! —dijo Nico—. Ahorita no hay ni luz ni juegos.",
+              "english": "\"Oh, again!\" said Nico. \"Now there is neither light nor games.\""
+            },
+            {
+              "text": "Doña Marta encendió dos velas y puso una olla de café sobre el fogón.",
+              "english": "Doña Marta lit two candles and put a pot of coffee on the stove."
+            },
+            {
+              "text": "Karla, Sam y tres cipotes de los vecinos se sentaron en el suelo de la cocina, cerca del fuego, porque el aire de la noche era frío.",
+              "english": "Karla, Sam and three kids from the neighbours sat on the floor of the kitchen, near the fire, because the night air was cold."
+            },
+            {
+              "text": "Cerca del fuego se hizo un grupo formado por los vecinos, los niños y las velas.",
+              "english": "Near the fire a group formed by the neighbours, the children and the candles took shape."
+            },
+            {
+              "text": "—Ahora sí, abuela —dijo Nico—. Contanos una leyenda.",
+              "english": "\"Now, grandmother,\" said Nico. \"Tell us a legend.\""
+            },
+            {
+              "text": "—Según los abuelos, las leyendas se cuentan con luz de vela y con lluvia afuera —contestó doña Marta—. Así que vaya pues.",
+              "english": "\"According to the grandparents, legends are told by candlelight and with rain outside,\" answered doña Marta. \"So all right, then.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El cadejo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Hace muchos años, cuando no había camino grande, la gente caminaba de noche entre los cerros —empezó ella—. Y a veces se encontraba con un perro muy grande, con ojos de fuego.",
+              "english": "\"Many years ago, when there was no big road, people walked at night among the hills,\" she began. \"And sometimes they met a very big dog with eyes of fire.\""
+            },
+            {
+              "text": "—Ese perro es el Cadejo —dijo Nico, con voz baja.",
+              "english": "\"That dog is the Cadejo,\" said Nico, in a low voice."
+            },
+            {
+              "text": "—Hay dos —siguió la abuela—. Como en todos los cuentos, hay personajes benévolos y personajes malévolos.",
+              "english": "\"There are two,\" the grandmother went on. \"As in all stories, there are benevolent characters and malevolent characters.\""
+            },
+            {
+              "text": "El Cadejo blanco camina delante de la gente que anda de noche y la cuida hasta que llega a su casa.",
+              "english": "The white Cadejo walks in front of people who walk at night and looks after them until they reach home."
+            },
+            {
+              "text": "El Cadejo negro tiene las orejas largas, y le tiene rabia a quien anda solo.",
+              "english": "The black Cadejo has long ears, and is angry with anyone who walks alone."
+            },
+            {
+              "text": "—¡Ah, entonces yo no salgo nunca de noche! —exclamó un cipote.",
+              "english": "\"Ah, then I never go out at night!\" exclaimed one of the kids."
+            },
+            {
+              "text": "—Tampoco hace falta, mijo —dijo doña Marta, y se rió—. Mi abuela decía que los fantasmas no mueren, y que nadie logró matar al Cadejo.",
+              "english": "\"There's no need to, my son,\" said doña Marta, and laughed. \"My grandmother used to say that ghosts do not die, and that nobody ever managed to kill the Cadejo.\""
+            },
+            {
+              "text": "—Cuanto más cuentan, más Cadejos hay —dijo Karla.",
+              "english": "\"The more they tell, the more Cadejos there are,\" said Karla."
+            },
+            {
+              "text": "—Antes, los señoritos de la ciudad no creían en el Cadejo —siguió la abuela—. Pero una noche se perdieron en el cerro, y el perro blanco los esperaba bajo un roble, entre las raíces.",
+              "english": "\"Before, the young gentlemen from the city did not believe in the Cadejo,\" the grandmother went on. \"But one night they got lost in the hills, and the white dog was waiting for them under an oak, among the roots.\""
+            },
+            {
+              "text": "—¿Acaso el Cadejo blanco es de los genios buenos? —preguntó Sam.",
+              "english": "\"Is the white Cadejo perhaps among the good spirits?\" asked Sam."
+            },
+            {
+              "text": "—Para algunos sí, para otros es un ángel con cuatro patas —contestó ella—. Cada quien lo cuenta a su manera, y esa es la gracia.",
+              "english": "\"For some yes, for others he is an angel with four legs,\" she answered. \"Each person tells it in his own way, and that is the beauty of it.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La Llorona y el Sisimite",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Y la Llorona —dijo otro cipote—. ¿Vos la has oído?",
+              "english": "\"And la Llorona,\" said another kid. \"Have you heard her?\""
+            },
+            {
+              "text": "—Dicen que llora junto al río, entre los peces y las piedras, buscando a sus hijos —contestó Karla—. Es una historia triste, y viene de la muerte.",
+              "english": "\"They say she weeps by the river, among the fish and the stones, looking for her children,\" answered Karla. \"It is a sad story, and it comes from death.\""
+            },
+            {
+              "text": "—Hay otra más fea —dijo doña Marta—. En el monte vive el Sisimite, un gigante que tiene los pies para atrás.",
+              "english": "\"There is another uglier one,\" said doña Marta. \"In the mountains lives the Sisimite, a giant who has his feet pointing backwards.\""
+            },
+            {
+              "text": "—¿Y cómo se escapa uno de él? —preguntó Sam.",
+              "english": "\"And how does one escape from him?\" asked Sam."
+            },
+            {
+              "text": "—Mirá: si seguís sus pasos, vas hacia atrás, y él te espera enfrente.",
+              "english": "\"Look: if you follow his steps, you go backwards, and he waits for you in front.\""
+            },
+            {
+              "text": "—Entonces no hay que seguirlas —dijo Nico—. Eso lo sabe cualquier cipote.",
+              "english": "\"Then you must not follow them,\" said Nico. \"Any kid knows that.\""
+            },
+            {
+              "text": "Afuera, la lluvia cayó sobre el zinc con más fuerza, y por un instante nadie habló.",
+              "english": "Outside, the rain fell on the zinc harder, and for an instant nobody spoke."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Karla cuenta el hilo rojo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Yo les cuento una que leímos en la escuela —dijo Karla, para romper el silencio—. Es de un duque y su hija.",
+              "english": "\"I'll tell you one we read at school,\" said Karla, to break the silence. \"It is about a duke and his daughter.\""
+            },
+            {
+              "text": "—Vivían en un valle con mucha niebla. El duque le decía «mi chiquilla» a su hija Laura, aunque ya tenía veinte años.",
+              "english": "\"They lived in a valley with a lot of fog. The duke called his daughter Laura 'my little girl,' although she was already twenty.\""
+            },
+            {
+              "text": "—La mamá de Laura estaba muerta, y en la casa nadie hablaba de ello.",
+              "english": "\"Laura's mother was dead, and in the house nobody spoke about it.\""
+            },
+            {
+              "text": "Había una criada, Juana, que solía tocar el piano por las tardes, y Laura la escuchaba desde el balcón.",
+              "english": "There was a maid, Juana, who used to play the piano in the afternoons, and Laura listened to her from the balcony."
+            },
+            {
+              "text": "De noche, Juana le cantaba un arrullo del campo, dulce y lento.",
+              "english": "At night, Juana sang her a lullaby from the countryside, sweet and slow."
+            },
+            {
+              "text": "—Una tarde llegó un caballero con una carta del rey y una figura de oro —siguió Karla—. El duque dijo: «Este es tu novio».",
+              "english": "\"One afternoon a knight arrived with a letter from the king and a golden figure,\" Karla went on. \"The duke said: 'This is your fiancé.'\""
+            },
+            {
+              "text": "—Pero Laura replicó que no tenía novio, y que el corazón no cabía en un cargo del rey.",
+              "english": "\"But Laura replied that she had no fiancé, and that the heart did not fit in an office of the king.\""
+            },
+            {
+              "text": "—En el fondo, ella quería a Diego, un pastor enamorado de ella. Le hacía señas desde el balcón, y un día le tiró un hilo rojo.",
+              "english": "\"Deep down, she loved Diego, a shepherd in love with her. She made signs to him from the balcony, and one day she threw him a red thread.\""
+            },
+            {
+              "text": "—«Guardalo, es tuyo —le dijo—. Y no me olvides.»",
+              "english": "\"'Keep it, it is yours,' she told him. 'And do not forget me.'\""
+            },
+            {
+              "text": "—Los celos le dolieron al caballero en el pecho, y salió en su caballo una noche de niebla.",
+              "english": "\"Jealousy hurt the knight in the chest, and he rode out on his horse one foggy night.\""
+            },
+            {
+              "text": "—Se perdió, y no veía ni su propio rostro. De pronto oyó el piano de Juana.",
+              "english": "\"He got lost, and could not see even his own face. Suddenly he heard Juana's piano.\""
+            },
+            {
+              "text": "—Laura salió detrás de él, puso una cuerda en la puerta y gritó: «¡Eh, seguí la cuerda!». Así lo salvó.",
+              "english": "\"Laura went out after him, put a rope on the door and shouted: 'Hey, follow the rope!' That is how she saved him.\""
+            },
+            {
+              "text": "—El caballero se dio cuenta de que ella era más valiente que él. Entonces le dio el hilo a Diego y se fue a pie, sin su caballo y sin sus celos.",
+              "english": "\"The knight realized that she was braver than he. Then he gave the thread to Diego and left on foot, without his horse and without his jealousy.\""
+            },
+            {
+              "text": "—Al final el duque dio su acuerdo —añadió Karla—. Y desde ese instante, Laura dejó de ser infeliz.",
+              "english": "\"In the end the duke gave his consent,\" Karla added. \"And from that moment, Laura stopped being unhappy.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam pregunta por Laura",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Esa historia es de veras bonita —dijo Sam—. ¿Cómo era Laura? ¿Cómo era su rostro?",
+              "english": "\"That story is really nice,\" said Sam. \"What was Laura like? What was her face like?\""
+            },
+            {
+              "text": "—Triste, como el de una chiquilla que ve a su mamá muerta en el techo —contestó Nico—. Pero cuando la criada tocaba el piano, el rostro le cambiaba.",
+              "english": "\"Sad, like that of a little girl who sees her dead mother on the ceiling,\" answered Nico. \"But when the maid played the piano, her face changed.\""
+            },
+            {
+              "text": "—¿De veras? —preguntó otro cipote—. ¿Y la criada qué hacía?",
+              "english": "\"Really?\" asked another kid. \"And what did the maid do?\""
+            },
+            {
+              "text": "—Juana solía cantar bajito, y después se sentaba en el balcón con un café dulce.",
+              "english": "\"Juana used to sing softly, and then she sat on the balcony with a sweet coffee.\""
+            },
+            {
+              "text": "—¿Y el caballero? —preguntó Sam—. ¿Cómo era?",
+              "english": "\"And the knight?\" asked Sam. \"What was he like?\""
+            },
+            {
+              "text": "—Un hombre de guerra, con una figura de oro y un pecho que le dolía de celos —replicó Karla—. Pero al final aprendió algo.",
+              "english": "\"A man of war, with a golden figure and a chest that ached with jealousy,\" replied Karla. \"But in the end he learned something.\""
+            },
+            {
+              "text": "—¿Y vos qué pensás de ello? —le preguntó Sam.",
+              "english": "\"And what do you think about it?\" Sam asked her."
+            },
+            {
+              "text": "—Que el amor no cabía en un cargo, ni en un acuerdo del rey —dijo Karla—. Y que el conocimiento de la gente humilde vale más.",
+              "english": "\"That love did not fit in an office, nor in an agreement of the king,\" said Karla. \"And that the knowledge of humble people is worth more.\""
+            },
+            {
+              "text": "—Eh, no hablemos de ello ahorita —dijo doña Marta—. Mirá cómo se quedaron los cipotes: dormidos en el suelo, con el hilo de la historia en la cabeza.",
+              "english": "\"Hey, let's not talk about it now,\" said doña Marta. \"Look how the kids ended up: asleep on the floor, with the thread of the story in their heads.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que dicen los libros",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—¿Por qué las historias populares se parecen tanto en todas partes? —preguntó Sam—. Siempre hay un brujo, o una maga que sana a los enfermos.",
+              "english": "\"Why do popular stories resemble each other so much everywhere?\" asked Sam. \"There is always a wizard, or a witch who heals the sick.\""
+            },
+            {
+              "text": "—Porque hablan de lo mismo: del amor, del miedo y de la muerte —contestó Karla—. Los grandes poetas añoran esas historias, y mucha gente dice que inspiraban a los amantes.",
+              "english": "\"Because they talk about the same things: love, fear and death,\" answered Karla. \"The great poets long for those stories, and many people say they inspired lovers.\""
+            },
+            {
+              "text": "—La señorita Elena empieza su clase a las siete en punto, y dice que cada cuento es una forma de conocimiento —añadió Nico.",
+              "english": "\"Miss Elena begins her class at seven o'clock sharp, and says that each story is a form of knowledge,\" Nico added."
+            },
+            {
+              "text": "—Afortunadamente, unos estudiantes de la universidad tuvieron la oportunidad de colaborar con la escuela —dijo Karla—. Los integrantes del grupo querían investigar las leyendas, y la señorita Elena les ayudó.",
+              "english": "\"Fortunately, some university students had the chance to work with the school,\" said Karla. \"The members of the group wanted to investigate the legends, and Miss Elena helped them.\""
+            },
+            {
+              "text": "—Escribieron muchos datos personales y expresiones que una abuela utiliza sin pensar. Algunas de esas expresiones son idiomáticas, y requiere cierta paciencia entenderlas.",
+              "english": "\"They wrote down many personal facts and expressions that a grandmother uses without thinking. Some of those expressions are idiomatic, and it takes some patience to understand them.\""
+            },
+            {
+              "text": "—A mí me parecen interesantes —dijo Sam—. Tienen muchas facetas, y uno se siente suficientemente cómodo para preguntar.",
+              "english": "\"They seem interesting to me,\" said Sam. \"They have many facets, and one feels comfortable enough to ask.\""
+            },
+            {
+              "text": "—Sus experiencias son invaluables —dijo la abuela—. No se compran, ni se encuentran en el fondo de una vasija. Se cogen con el tiempo, como el agua de lluvia.",
+              "english": "\"Their experiences are invaluable,\" said the grandmother. \"They are not bought, nor are they found at the bottom of a jar. They are gathered over time, like rain water.\""
+            },
+            {
+              "text": "—La sabiduría se revelaba en las noches como esta, cuando uno no tenía nada más que su familia —dijo ella—. Hoy hay luz y hay celulares, pero se perdió algo.",
+              "english": "\"Wisdom was revealed on nights like this, when one had nothing but his family,\" she said. \"Today there is light and there are cell phones, but something was lost.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cuando volvió la luz",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Poco antes de las diez, la luz volvió de golpe, y todos gritaron de alegría.",
+              "english": "Shortly before ten, the light came back suddenly, and everybody shouted with joy."
+            },
+            {
+              "text": "—Cheque —dijo Nico—. Ahora sí podemos ver si hay un Cadejo en el patio.",
+              "english": "\"All right,\" said Nico. \"Now we can see whether there is a Cadejo in the yard.\""
+            },
+            {
+              "text": "—Salí vos primero —dijo Karla, y los cipotes se rieron.",
+              "english": "\"You go out first,\" said Karla, and the kids laughed."
+            },
+            {
+              "text": "Sam miró el grupo formado por los cipotes dormidos y pensó que esa noche había aprendido más español que en tres semanas de clase.",
+              "english": "Sam looked at the group formed by the sleeping kids and thought that that night he had learned more Spanish than in three weeks of class."
+            },
+            {
+              "text": "Esa noche, antes de dormir, Sam escribió en su cuaderno: «En Honduras, las leyendas no están en los libros. Están en la cocina, con el café y la lluvia».",
+              "english": "That night, before sleeping, Sam wrote in his notebook: \"In Honduras, legends are not in books. They are in the kitchen, with the coffee and the rain.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Spanish package, Honduran-register strand)"
+        }
+      }
+    ]
+  }
+}

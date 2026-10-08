@@ -1,0 +1,440 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-28",
+  "lang": "de",
+  "title": "Old trades in the school project",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-28",
+    "title": "Old trades in the school project (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next text (Guerber, Die vier Brüder): Hase, Jäger, Schuster, Dieb, Astrolog, augenblicklich, Rock, Handwerk. Today's German; the tale itself is not told."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "jobs",
+    "trades",
+    "school project",
+    "interview"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "lukas": "Lukas",
+    "ben": "Ben",
+    "max": "Max",
+    "lena": "Lena",
+    "schuster": "Herr Peters"
+  },
+  "sections": [
+    {
+      "title": "Das Projekt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "In Lukas' Klasse gibt es ein Projekt: Berufe früher und heute.",
+              "english": "In Lukas' class there is a project: jobs in the past and today."
+            },
+            {
+              "text": "Ben kommt zu Besuch, denn er darf bei den Interviews helfen.",
+              "english": "Ben comes to visit, because he may help with the interviews."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wir sammeln alte Berufe, und wir sprechen mit Leuten, die so arbeiten.",
+              "english": "We are collecting old trades, and we talk to people who work like that."
+            },
+            {
+              "speaker": "max",
+              "text": "Mein Opa war Jäger. Er hat im Wald gearbeitet.",
+              "english": "My grandfather was a hunter. He worked in the forest."
+            },
+            {
+              "speaker": "lena",
+              "text": "Ein Jäger schießt Tiere, oder? Das finde ich nicht schön.",
+              "english": "A hunter shoots animals, right? I do not find that nice."
+            },
+            {
+              "speaker": "max",
+              "text": "Er hat auch Hasen gezählt und im Winter Futter gebracht.",
+              "english": "He also counted hares and brought food in winter."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Ein Jäger ist auch ein Beruf für Menschen, die die Tiere kennen.",
+              "english": "A hunter is also a job for people who know the animals."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich habe den Hasen im Park gesehen. Er war augenblicklich weg, als ich kam.",
+              "english": "I saw the hare in the park. He was gone at once when I came."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Hasen sind schnell. Sie laufen augenblicklich los.",
+              "english": "Hares are fast. They run off at once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Beim Schuster",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Nachmittag besuchen Lukas, Ben und die Klasse einen Schuster in der Altstadt.",
+              "english": "In the afternoon Lukas, Ben and the class visit a shoemaker in the old town."
+            },
+            {
+              "text": "Herr Peters sitzt in einer kleinen Werkstatt, und es riecht nach Leder.",
+              "english": "Herr Peters is sitting in a small workshop, and it smells of leather."
+            },
+            {
+              "speaker": "schuster",
+              "text": "Willkommen! Ich bin Schuster, und das ist mein Handwerk.",
+              "english": "Welcome! I am a shoemaker, and this is my trade."
+            },
+            {
+              "speaker": "ben",
+              "text": "Was ist ein Handwerk?",
+              "english": "What is a trade?"
+            },
+            {
+              "speaker": "schuster",
+              "text": "Ein Handwerk ist eine Arbeit mit den Händen. Ein Bäcker hat ein Handwerk, ein Mechaniker auch.",
+              "english": "A trade is work with the hands. A baker has a trade, a mechanic too."
+            },
+            {
+              "speaker": "schuster",
+              "text": "Ich mache Schuhe und repariere sie.",
+              "english": "I make shoes and repair them."
+            },
+            {
+              "speaker": "lena",
+              "text": "Kann man bei Ihnen auch einen Rock reparieren?",
+              "english": "Can one also have a skirt repaired at your place?"
+            },
+            {
+              "speaker": "schuster",
+              "text": "Nein, einen Rock macht ein Schneider. Ich mache nur Schuhe.",
+              "english": "No, a tailor makes a skirt. I only make shoes."
+            },
+            {
+              "speaker": "schuster",
+              "text": "Aber wenn der Schuh kaputt ist, helfe ich sogleich.",
+              "english": "But when the shoe is broken, I help at once."
+            },
+            {
+              "speaker": "ben",
+              "text": "Haben Sie schon einmal einen Dieb gesehen?",
+              "english": "Have you ever seen a thief?"
+            },
+            {
+              "speaker": "schuster",
+              "text": "Einmal ja. Ein Dieb hat Schuhe aus meinem Laden gestohlen.",
+              "english": "Once, yes. A thief stole shoes from my shop."
+            },
+            {
+              "speaker": "schuster",
+              "text": "Die Polizei hat ihn sofort gefunden.",
+              "english": "The police found him at once."
+            },
+            {
+              "speaker": "max",
+              "text": "Und was haben Sie gemacht?",
+              "english": "And what did you do?"
+            },
+            {
+              "speaker": "schuster",
+              "text": "Ich habe dem Dieb ein Paar Schuhe geschenkt. Seine waren kaputt.",
+              "english": "I gave the thief a pair of shoes. His were broken."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Sterne",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Auf dem Rückweg kommen sie an einem Museum vorbei.",
+              "english": "On the way back they pass a museum."
+            },
+            {
+              "text": "Im Fenster steht ein altes Bild von einem Mann mit einem Fernrohr.",
+              "english": "In the window there is an old picture of a man with a telescope."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das ist ein Astrolog, ein Mann, der die Sterne liest.",
+              "english": "That is an astrologer, a man who reads the stars."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und was macht er mit den Sternen?",
+              "english": "And what does he do with the stars?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Früher hat man gedacht, die Sterne zeigen die Zukunft.",
+              "english": "In the past people thought the stars show the future."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Der Astrolog hat den Menschen gesagt, was kommt.",
+              "english": "The astrologer told people what was coming."
+            },
+            {
+              "speaker": "lena",
+              "text": "Glauben Sie das auch?",
+              "english": "Do you believe that too?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Nein. Gott zeigt die Zukunft, nicht die Sterne, und ein Astrolog kennt sie nicht.",
+              "english": "No. God shows the future, not the stars, and an astrologer does not know it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann ist Astrolog kein richtiges Handwerk.",
+              "english": "Then astrologer is not a proper trade."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Richtig, Ben. Aber es ist ein alter Beruf, und er gehört zu unserem Projekt.",
+              "english": "Right, Ben. But it is an old job, and it belongs to our project."
+            },
+            {
+              "text": "Die Kinder schreiben alle Berufe auf, und das Projekt ist augenblicklich ein Erfolg.",
+              "english": "The children write down all the jobs, and the project is an instant success."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Interview sitzen die Kinder noch in der Schule, und Lukas fragt sie nach den alten Märchen.",
+              "english": "After the interview the children are still sitting at school, and Lukas asks them about the old tales."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Wer weiß noch etwas über den alten Großvater im Märchen?",
+              "english": "Who still knows something about the old grandfather in the tale?"
+            },
+            {
+              "speaker": "lena",
+              "text": "Er ist steinalt, fast taub, und seine Augen sind trüb.",
+              "english": "He is very old, almost deaf, and his eyes are dim."
+            },
+            {
+              "speaker": "max",
+              "text": "Seine Knie tun weh, und die Suppe fließt auf das Tischtuch.",
+              "english": "His knees hurt, and the soup flows onto the tablecloth."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das Tischtuch ist nass, und die Familie ist böse auf ihn.",
+              "english": "The tablecloth is wet, and the family is angry with him."
+            },
+            {
+              "speaker": "lena",
+              "text": "Ich schütte nie etwas auf den Tisch, denn ich habe Angst vor dem Großvater.",
+              "english": "I never spill anything on the table, because I am afraid of the grandfather."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Aber es gibt keinen Grund zur Angst! Der Enkel lernt daraus etwas.",
+              "english": "But there is no reason to be afraid! The grandson learns something from it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mein Urgroßvater war auch alt, und Oma erzählt oft von ihm.",
+              "english": "My great-grandfather was old too, and Oma often talks about him."
+            },
+            {
+              "speaker": "schuster",
+              "text": "Meine Großeltern hatten auch ein Handwerk. Daraus habe ich viel gelernt.",
+              "english": "My grandparents had a trade too. I learned a lot from that."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am nächsten Tag liest Lukas der Klasse noch zwei alte Märchen vor.",
+              "english": "The next day Lukas reads two more old tales to the class."
+            },
+            {
+              "speaker": "max",
+              "text": "Lukas, wozu lesen wir eigentlich alte Märchen?",
+              "english": "Lukas, what do we actually read old tales for?"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Aus ihnen lernt man etwas über das Leben, und die Wörter sind schön.",
+              "english": "One learns something about life from them, and the words are beautiful."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Das erste Märchen handelt von einem klugen Knecht.",
+              "english": "The first tale is about a clever servant."
+            },
+            {
+              "speaker": "lena",
+              "text": "Er bleibt lange aus, und der Herr befürchtet, dass ihm etwas zugestoßen ist.",
+              "english": "He stays out a long time, and the master fears that something has happened to him."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Herr will sich nach ihm umsehen und erblickt ihn endlich im Feld.",
+              "english": "The master wants to look around for him and at last catches sight of him in the field."
+            },
+            {
+              "speaker": "max",
+              "text": "Er holt den Knecht ein und fragt: Wo ist die Kuh?",
+              "english": "He catches up with the servant and asks: Where is the cow?"
+            },
+            {
+              "speaker": "lena",
+              "text": "Der Knecht sagt: Ich suche drei Amseln. Eine sehe ich, und die dritte jage ich.",
+              "english": "The servant says: I am looking for three blackbirds. One I see, and the third I chase."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Der Herr lässt sich keine Mühe verdrießen, aber der Knecht bekümmert sich nicht um seine Befehle.",
+              "english": "The master does not let any effort vex him, but the servant does not trouble himself about his orders."
+            },
+            {
+              "speaker": "ben",
+              "text": "Am Ende steht: Tut, was euch einfällt, dann handelt ihr weise. Aber so ist es nicht immer weise!",
+              "english": "At the end it says: Do what occurs to you, then you act wisely. But it is not always wise like that!"
+            },
+            {
+              "speaker": "lukas",
+              "text": "Da hast du recht, Ben. Man darf nicht nur tun, was man will.",
+              "english": "You are right there, Ben. One may not only do what one wants."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Euern Herrn fragen, steht da, aber ein guter Knecht fragt ihn doch.",
+              "english": "Ask your master, it says there, but a good servant does ask him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Das zweite Märchen handelt von einem steinalten Großvater.",
+              "english": "The second tale is about a stone-old grandfather."
+            },
+            {
+              "speaker": "max",
+              "text": "Mein Urgroßvater war auch sehr alt, und er hat oft geseufzt.",
+              "english": "My great-grandfather was also very old, and he often sighed."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Im Märchen ekeln sich der Sohn und seine Frau vor dem alten Mann.",
+              "english": "In the tale the son and his wife are disgusted by the old man."
+            },
+            {
+              "speaker": "lena",
+              "text": "Sie geben ihm sein Essen in ein irdenes Schüsselchen, und er ist betrübt.",
+              "english": "They give him his food in an earthen bowl, and he is sad."
+            },
+            {
+              "speaker": "ben",
+              "text": "Seine zitterigen Hände lassen es fallen, und es zerbrach.",
+              "english": "His trembling hands let it fall, and it broke."
+            },
+            {
+              "speaker": "max",
+              "text": "Die Frau schalt, und er seufzte nur.",
+              "english": "The woman scolded, and he only sighed."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Dann kaufen sie ihm ein hölzernes Schüsselchen.",
+              "english": "Then they buy him a wooden bowl."
+            },
+            {
+              "speaker": "lena",
+              "text": "Der kleine Enkel sammelt Brettlein und macht ein Tröglein.",
+              "english": "The little grandson collects small boards and makes a little trough."
+            },
+            {
+              "speaker": "ben",
+              "text": "Da holten die Eltern alsofort den Großvater an den Tisch.",
+              "english": "Then the parents at once fetched the grandfather to the table."
+            },
+            {
+              "speaker": "ben",
+              "text": "Sie sagten auch nichts zu der verschütteten Suppe.",
+              "english": "They did not say anything about the spilled soup either."
+            },
+            {
+              "speaker": "lukas",
+              "text": "Gut gemacht! Morgen schreiben wir alle diese Märchen in unser Projekt.",
+              "english": "Well done! Tomorrow we will write all these tales into our project."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

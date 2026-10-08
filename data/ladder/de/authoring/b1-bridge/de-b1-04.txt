@@ -1,0 +1,128 @@
+=== de-b1-04 | dialogue | conversation | Planning the fairy-tale evening | Wir planen den Märchenabend | fairy tales, children, planning, church
+speakers: sabine=Sabine, ben=Ben, anna=Anna, lukas=Lukas, sam=Sam, marta=Marta
+note: Prepares the vocabulary of the next texts (Guerber, Die drei Schläfer / Der Hausvater; Grimm, Die drei Faulen): zumachen, Reisende, treten, faul, König, Strick, eher, eh. Each is used three times.
+## Im Gemeindehaus
+Am Sonntag nach dem Gottesdienst bleiben Sabine, Sam, Anna und Lukas im Gemeindehaus. || On Sunday after the service Sabine, Sam, Anna and Lukas stay in the church house.
+Ben ist auch da, denn er soll beim Märchenabend vorlesen. || Ben is there too, because he is supposed to read aloud at the fairy-tale evening.
+Sabine hat ein Buch mit Märchen auf den Tisch gelegt. || Sabine has put a book of fairy tales on the table.
+[sabine] Wir brauchen drei Märchen, und sie müssen kurz sein. || We need three fairy tales, and they have to be short.
+[sabine] Kinder können nicht lange still sitzen. || Children cannot sit still for long.
+[lukas] Das ist eher schwer. || That is rather difficult.
+[lukas] Ben, welches Märchen magst du am liebsten? || Ben, which fairy tale do you like best?
+[ben] Ich mag das Märchen vom faulen König. || I like the fairy tale of the lazy king.
+[ben] Der König liegt den ganzen Tag im Bett und will nicht aufstehen. || The king lies in bed all day and does not want to get up.
+[anna] Das kenne ich eh schon, du liest es jeden Sommer. || I know that anyway, you read it every summer.
+[sabine] Gut, dann nehmen wir es. || Good, then we will take it.
+[sabine] Ein fauler König ist lustig, und die Kinder lachen. || A lazy king is funny, and the children laugh.
+[sabine] Und ein Märchen von einem fleißigen König wäre eher traurig. || And a fairy tale about a hard-working king would be rather sad.
+[ben] Ja, der faule König ist besser. || Yes, the lazy king is better.
+
+## Was brauchen wir?
+[sam] Brauchen wir auch etwas zum Spielen? || Do we also need something to play with?
+[sabine] Ja, ich möchte ein Spiel mit einem Strick machen. || Yes, I would like to do a game with a rope.
+[sabine] Zwei Kinder halten den Strick, und die anderen springen darüber. || Two children hold the rope, and the others jump over it.
+[lukas] Das ist laut, und die Eltern sind eher müde. || That is loud, and the parents are rather tired.
+[sabine] Die Kinder sind am Abend eh laut, ob mit dem Strick oder ohne. || The children are loud in the evening anyway, with the rope or without.
+[sabine] Dann machen wir das Fenster zu. || Then we will close the window.
+[anna] Und die Tür auch. Mach sie bitte zu, Ben. || And the door too. Close it, please, Ben.
+[ben] Aber im Raum ist es dann heiß. || But then it is hot in the room.
+[sam] Ich habe eine Idee. || I have an idea.
+[sam] Wir machen die Tür zu, wenn wir lesen, und wir machen sie auf, wenn wir spielen. || We close the door when we read, and we open it when we play.
+[sabine] Das ist gut, danke, Sam. || That is good, thank you, Sam.
+
+## Reisende und Märchen
+Marta kommt mit Tee und Kuchen. || Marta comes with tea and cake.
+[marta] Ich habe auch ein Märchen für euch, aber es ist kein Märchen aus dem Buch. || I have a fairy tale for you too, but it is not a fairy tale from the book.
+[marta] Es ist ein Märchen von Reisenden, die in der Nacht an eine Tür kommen. || It is a fairy tale of travellers who come to a door in the night.
+[marta] Die Reisenden sind müde, und der Wirt will die Tür nicht aufmachen. || The travellers are tired, and the innkeeper does not want to open the door.
+[sam] Und dann? || And then?
+[marta] Dann tritt der Wirt vor die Tür, und er sieht sie im Regen stehen. || Then the innkeeper steps out in front of the door, and he sees them standing in the rain.
+[marta] Er hat Mitleid, und die Reisenden dürfen im Haus schlafen. || He takes pity, and the travellers may sleep in the house.
+[lukas] Das ist ein schönes Märchen für die Gemeinde. || That is a beautiful fairy tale for the church.
+[sabine] Am Ende treten alle Kinder in einen Kreis, und wir lesen es zusammen. || At the end all the children step into a circle, and we read it together.
+[ben] Und ich lese die Reisenden mit müder Stimme. || And I will read the travellers in a tired voice.
+[anna] Das wird ein guter Abend. || That will be a good evening.
+
+## Erinnerst du dich?
+Marta legt ihren Schlüsselbund auf den Tisch. || Marta puts her bunch of keys on the table.
+Der Anhänger aus Holz ist ganz dunkel geworden. || The wooden tag has become quite dark.
+[marta] Zu Hause hängt der Schlüsselbund an einem Nagel neben der Tür. || At home the bunch of keys hangs on a nail next to the door.
+[ben] Oma, weißt du noch, wie wir im Herbst zum Fundbüro gegangen sind? || Oma, do you remember how we went to the lost-property office in autumn?
+[ben] Drinnen war es still, und überall standen Regale mit Mützen und Taschen. || Inside it was quiet, and everywhere there were shelves with caps and bags.
+[marta] Ich habe den Anhänger auf ein Blatt gezeichnet. || I drew the tag on a sheet of paper.
+[ben] Der Mann sagte: Das tut mir leid, kommen Sie nächste Woche wieder. || The man said: I am sorry, come back next week.
+[marta] Die Wochen vergingen, aber es gab keine Spur. || The weeks went by, but there was no trace.
+[anna] Zum Glück hatte Frau Weber einen Ersatzschlüssel. || Fortunately Frau Weber had a spare key.
+[marta] Das neue Schloss sollte ungefähr 180 Euro kosten. || The new lock was supposed to cost about 180 euros.
+[marta] Frau Weber hat mir angeboten, das Geld zu leihen, aber ich habe den Kopf geschüttelt. || Frau Weber offered to lend me the money, but I shook my head.
+
+Dann kam die junge Frau aus Hamburg. || Then came the young woman from Hamburg.
+Marta hatte ihren alten Mantel verschenkt, und die Schlüssel waren noch drin. || Marta had given away her old coat, and the keys were still in it.
+Der Mantel kam aus der Kleidersammlung der Gemeinde. || The coat came from the church's clothes collection.
+In der Tasche entdeckte die Fremde den Schlüsselbund. || In the pocket the stranger discovered the bunch of keys.
+Auf dem Anhänger stand der Name von Martas Backstube. || On the tag stood the name of Marta's bakery.
+Sie fuhr ohnehin nach Leipzig, und sie wollte ihre Aufgabe erfüllen. || She was travelling to Leipzig anyway, and she wanted to fulfil her task.
+Ein Bäcker auf dem Markt erkannte den Anhänger sofort. || A baker at the market recognised the tag at once.
+Er sagte, dass Marta in der Hauptstraße wohnt. || He said that Marta lives on the main street.
+Am Abend fuhr die Fremde nach Hamburg zurück. || In the evening the stranger drove back to Hamburg.
+Marta nahm die Schlüssel aus dem Briefkasten heraus. || Marta took the keys out of the letterbox.
+[marta] Wie sind sie nur hierher gekommen? || How on earth did they get here?
+Ben kam hereingelaufen, und Marta lachte und weinte zugleich. || Ben came running in, and Marta laughed and cried at the same time.
+Später erfuhr Anna, dass die Fremde die Stelle im Krankenhaus bekommen hatte. || Later Anna learned that the stranger had got the job at the hospital.
+[lukas] Das Rätsel wurde gelöst, denn die Fremde hat die Schlüssel zurückgebracht. || The riddle was solved, because the stranger brought the keys back.
+[marta] Ich habe meinen Schlüsselbund zurückbekommen, und das ist wie ein Märchen. || I got my bunch of keys back, and that is like a fairy tale.
+
+Sabine fragt Sam nach dem Wochenbericht. || Sabine asks Sam about the weekly report.
+[sabine] Sam, hast du den Wochenbericht schon verfasst? || Sam, have you already written the weekly report?
+[sam] Ja, ich habe auch die Zahl der Teilnehmer aufgeschrieben. || Yes, I also wrote down the number of participants.
+[sam] In der vergangenen Woche haben wir die Zusammenarbeit mit anderen Teams erwähnt. || Last week we mentioned the cooperation with other teams.
+[sabine] Die Zahlen sind gut, und die Entwicklung im Hauskreis ist deutlich. || The numbers are good, and the development in the house group is clear.
+[sam] Die Zahl der Teilnehmer ist gewachsen, das ist ein Fortschritt. || The number of participants has grown, that is progress.
+[sam] Der Bedarf des Teams ist unverändert, auch der finanzielle Bedarf. || The team's need is unchanged, also the financial need.
+[sabine] Ohne die Unterstützer und ihre Unterstützung wäre das nicht möglich. || Without the supporters and their support that would not be possible.
+[sam] Die Summe ist nicht klein, aber die Treue der Menschen ist unser Antrieb. || The sum is not small, but the faithfulness of the people is our drive.
+[anna] Das Ergebnis lässt sich in drei Punkten zusammenfassen. || The result can be summarised in three points.
+[anna] Die Jugendlichen haben das Pfand der Gemeindekasse gegeben. || The young people gave the deposit money to the church treasury.
+[sabine] Für die Aktion brauchen wir auch Material, Papier und Becher. || For the event we also need material, paper and cups.
+[sam] Die Bank hatte Jonas' Bitte abgelehnt, aber Herr Schmidt hat ihm Geld geliehen. || The bank had turned down Jonas's request, but Herr Schmidt lent him money.
+[sam] Lukas denkt über den Wechsel aufs Land nach und sagt, was sich ändert. || Lukas thinks about the move to the country and says what is changing.
+[anna] Wir haben ihn im Gebet gesegnet. || We blessed him in prayer.
+[sabine] Die Begegnungen mit den Menschen haben uns bewegt. || The encounters with the people moved us.
+[sam] Wir haben Kontakt mit den Leipziger Gemeinden, und der Stil der Gottesdienste ist verschieden. || We have contact with the Leipzig churches, and the style of the services is different.
+[sabine] Die Gaben der Menschen sind verschieden, aber die Einheit ist wichtig. || The gifts of the people are different, but unity is important.
+[sam] Das erste Gebetsanliegen war die Gesundheit, denn Anna und David waren erkältet. || The first prayer request was health, because Anna and David had colds.
+[sabine] Ein Anliegen ist die Zukunft der Kinder, und zum Schluss beten wir für alle. || One concern is the children's future, and in conclusion we pray for everyone.
+[lukas] Das liegt alles lange zurück, aber ich lerne noch gern, und nebenbei lese ich viel. || That all lies far back, but I still like learning, and on the side I read a lot.
+
+Sam erinnert sich an die Zeit vor Leipzig. || Sam remembers the time before Leipzig.
+[sam] Mit zwanzig war ich auf einer Missionskonferenz. || At twenty I was at a mission conference.
+[sam] Ich dachte, der Gedanke sei dumm, aber er blieb wochenlang. || I thought the idea was stupid, but it stayed for weeks.
+[sam] Am Ende hat meine Gemeinde mich gesendet. || In the end my church sent me.
+[sam] Mein Bruder sagte, dass eine Lücke bleibt, wenn ich gehe. || My brother said that a gap remains when I go.
+[sam] Ohne meine Heimatgemeinde hätte ich es nicht gewagt. || Without my home church I would not have dared it.
+[sam] In Leipzig habe ich mich am Anfang oft verlaufen. || In Leipzig I often got lost at the beginning.
+[sam] Aber ich habe viel Wärme gefunden. || But I found a lot of warmth.
+[anna] Du hast gesehen, wie die Schwestern mit den Patienten umgehen. || You saw how the nurses deal with the patients.
+[sam] Das hat mich geprägt, und Anna ist ein Vorbild für mich. || That shaped me, and Anna is a role model for me.
+[sam] Jeden Tag ehrlich zu bleiben ist eine tägliche Herausforderung. || Staying honest every day is a daily challenge.
+[sam] Der Wochenbericht ist eine gute Übung, und ich war lange ein Mensch der Tat. || The weekly report is a good exercise, and for a long time I was a man of action.
+[sam] Ich würde jederzeit wieder gehen, denn ich spüre große Dankbarkeit. || I would go again at any time, because I feel great gratitude.
+[sam] Es war ein besonderes Jahr, und es war Gnade. || It was a special year, and it was grace.
+
+## Erinnerst du dich noch?
+Am Abend sitzen Sabine und Sam noch lange im Gemeindehaus. || In the evening Sabine and Sam are still sitting in the church hall for a long time.
+[sam] Sabine, weißt du noch, woran du an einem Freitagabend gedacht hast? || Sabine, do you remember what you were thinking of on that Friday evening?
+[sabine] Ja, ich wollte einen Märchenabend machen, aber ich hatte Angst. || Yes, I wanted to hold a fairy-tale evening, but I was afraid.
+[sabine] Ich habe lange im Hausflur vor den Behältern gestanden. || I stood for a long time in the hallway in front of the containers.
+[sam] Und dann hat das Team dir geholfen. || And then the team helped you.
+[sabine] Ja, ich schrieb einen Brief an alle, und im Folgenden stand, was wir brauchen. || Yes, I wrote a letter to everyone, and in what follows it said what we need.
+[sabine] Heute sitzen wir hier, und die Kinder lesen mit uns. || Today we are sitting here, and the children read with us.
+[sam] Das ist wirklich schön. || That is really beautiful.
+
+## Erinnerst du dich daran?
+Ben fragt Sam nach den ersten Wochen in Leipzig. || Ben asks Sam about the first weeks in Leipzig.
+[ben] Weißt du noch, woran du am Anfang nicht gedacht hast? || Do you remember what you did not think of at the beginning?
+[sam] Ja, ich habe den Schlüssel vergessen und stand lange im Hausflur. || Yes, I forgot the key and stood in the hallway for a long time.
+[ben] Dann kam Frau Weber und hat dir die Tür aufgemacht. || Then Frau Weber came and opened the door for you.
+[sam] Genau. Sie hat mir auch gesagt, woran ich denken muss. || Exactly. She also told me what I have to think of.
+[ben] Ich denke an so etwas auch immer zu spät. || I always think of such things too late as well.

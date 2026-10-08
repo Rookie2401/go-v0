@@ -21,7 +21,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "notes": "A short present-tense narrative with the first past forms as chunks (उसने देखी, उठा, भागा). The plan has the crow wake the neighbours; here it sits on the wall of the house and wakes Nani. \"देर हो गई!\" is the title phrase of the next in-place story. Honorific plural for नानी and पास्टर अनिल. Words outside the plan (measured, adapter lemmas x tokens): गाना×1 (to sing)."
+    "notes": "A short present-tense narrative with the first past forms as chunks (उसने देखी, उठा, भागा). The plan has the crow wake the neighbours; here it sits on the wall of the house and wakes Nani. \"देर हो गई!\" is the title phrase of the next in-place story. Honorific plural for नानी and पास्टर अनिल. Words outside the plan (measured, adapter lemmas x tokens): गाना×1 (to sing). 2026-10-08: recycling paragraph(s) added by the Hindi content package so that this unit brings back the new words of earlier units (they are recall sentences, not new vocabulary)."
   },
   "difficulty": "A1",
   "topics": [
@@ -242,6 +242,62 @@
             {
               "text": "सैम बोलता है, \"आज देर हो गई, लेकिन हम यहाँ हैं।\"",
               "english": "Sam says, \"Today we were late, but we are here.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "चाचा जी का दफ़्तर सड़क के पास है।",
+              "english": "Chacha ji's office is near the road."
+            },
+            {
+              "text": "दफ़्तर के नीचे एक दुकान है।",
+              "english": "Below the office there is a shop."
+            },
+            {
+              "text": "दुकान में पानी और दूध है।",
+              "english": "In the shop there is water and milk."
+            },
+            {
+              "text": "सड़क पर गाड़ी है।",
+              "english": "There is a vehicle on the road."
+            },
+            {
+              "text": "सैम चाचा जी से बोलता है, \"हैलो! आपकी गाड़ी कैसी है?\"",
+              "english": "Sam says to Chacha ji, \"Hello! How is your car?\""
+            },
+            {
+              "text": "चाचा जी बोलते हैं, \"मैं ठीक हूँ। आप कब आते हैं?\"",
+              "english": "Chacha ji says, \"I am fine. When do you come?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं जल्दी आता हूँ।\"",
+              "english": "Sam says, \"I will come soon.\""
+            },
+            {
+              "text": "रात को सब घर में हैं।",
+              "english": "At night everybody is at home."
+            },
+            {
+              "text": "कभी कभी सैम सड़क पर जाता है।",
+              "english": "Sometimes Sam goes onto the road."
+            },
+            {
+              "text": "नानी फ़ोन लाती हैं।",
+              "english": "Nani brings the phone."
+            },
+            {
+              "text": "आज रविवार है और सैम और अमन नानी के घर में हैं।",
+              "english": "Today is Sunday and Sam and Aman are at Nani's house."
+            },
+            {
+              "text": "नानी रसोई में रोटी और दाल बनाती हैं।",
+              "english": "Nani makes roti and dal in the kitchen."
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, खाना बहुत अच्छा है!\"",
+              "english": "Sam says, \"Nani, the food is very good!\""
             }
           ]
         }

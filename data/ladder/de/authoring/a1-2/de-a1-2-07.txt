@@ -1,0 +1,90 @@
+=== de-a1-2-07
+speakers: sam=Sam, ben=Ben, lukas=Lukas, david=David, ruth=Ruth, anna=Anna
+## Der Ausflug
+Am Samstag hat die Gemeinde einen Ausflug gemacht. || On Saturday the church made an excursion.
+Sam, Ben, Lukas, David, Ruth und Max sind mit dem Bus zum See gefahren. || Sam, Ben, Lukas, David, Ruth and Max took the bus to the lake.
+Es war Sommer, und es war heiß, 28 Grad. || It was summer, and it was hot, 28 degrees.
+Der Bus war voll, und alle haben gelacht. || The bus was full, and everyone laughed.
+Im Bus hat Ruth gesungen. || On the bus Ruth sang.
+[ben] Ich habe schon Hunger! || I am hungry already!
+[ruth] Nur noch zehn Minuten, Ben! || Only ten more minutes, Ben!
+[david] Es ist nicht weit. || It is not far.
+Der Ausflug war schön, und das Wochenende war gut. || The excursion was lovely, and the weekend was good.
+Im Bus hat David Musik gespielt. || On the bus David played music.
+Ruth und David waren beide müde. || Ruth and David were both tired.
+Ben und Max sind beide zehn Jahre alt. || Ben and Max are both ten years old.
+
+## Am See
+Am See ist ein Wald, und hinter dem Wald ist ein Berg. || At the lake there is a forest, and behind the forest there is a hill.
+Lukas ist im See geschwommen. || Lukas swam in the lake.
+[sam] Ich kann nicht gut schwimmen. || I cannot swim well.
+Max ist ins Wasser gesprungen. || Max jumped into the water.
+Ben ist auch gesprungen. || Ben jumped too.
+Max hat den Ball geworfen, und Ben hat ihn gefangen. || Max threw the ball, and Ben caught it.
+[ben] Wirf den Ball weit! || Throw the ball far!
+Lukas hat ihn gefangen und weit geworfen. || Lukas caught it and threw it far.
+Max ist gesprungen und hat ihn gefangen. || Max jumped and caught it.
+Beide haben gelacht. || Both laughed.
+Die anderen Kinder haben auch gespielt. || The other children played too.
+Die anderen sind in den Wald gelaufen. || The others walked into the forest.
+
+## Das Picknick
+Dann haben sie ein Picknick gemacht. || Then they had a picnic.
+Der Rucksack von Sam war voll: Brot, Käse, Tomaten und Äpfel. || Sam's school bag was full: bread, cheese, tomatoes and apples.
+Die Tasche von Ruth war auch voll. || Ruth's bag was full too.
+Ruth hat Kuchen gehabt, und David hat Kaffee und Tee gehabt. || Ruth had cake, and David had coffee and tea.
+Max hat Pizza gehabt. || Max had pizza.
+Sie war kalt, aber lecker. || It was cold, but tasty.
+Das Picknick war schön. || The picnic was lovely.
+Es hat um zwölf Uhr angefangen. || It began at twelve o'clock.
+[ruth] Haben wir genug? || Do we have enough?
+[sam] Ja, wir haben genug Brot und genug Käse. || Yes, we have enough bread and enough cheese.
+Dann war der Rucksack leer. || Then the school bag was empty.
+Am Abend war der Bus am Bahnhof auch leer. || In the evening the bus at the station was empty too.
+[ben] Ich habe noch Hunger! || I am still hungry!
+[lukas] Nein, Ben, das ist genug. || No, Ben, that is enough.
+[lukas] Der Rucksack ist leer. || The school bag is empty.
+
+## Fotos
+[david] Ich möchte ein Foto machen. || I would like to take a photo.
+David hat den See fotografiert. || David photographed the lake.
+Ruth hat auch fotografiert. || Ruth took photos too.
+[ruth] Das Foto von dem Berg ist schön. || The photo of the hill is lovely.
+[david] Darf ich euch fotografieren? || May I photograph you?
+Sam hat die Fotos auf dem Handy gesehen. || Sam looked at the photos on his phone.
+[lukas] Im Winter liegt Schnee auf dem Berg. || In winter there is snow on the hill.
+[lukas] Im Herbst ist der Wald schön, und im Frühling auch. || In autumn the forest is lovely, and in spring too.
+[lukas] Jede Jahreszeit ist hier schön. || Every season is lovely here.
+
+## Regen
+Dann ist der Wind gekommen, und es hat geregnet. || Then the wind came, and it rained.
+Der Regen war kalt. || The rain was cold.
+Ben hört den Regen und sagt: "Ich möchte nach Hause!" || Ben hears the rain and says: "I want to go home!"
+Sie haben die Jacken und den Regenschirm genommen. || They took the jackets and the umbrella.
+[ben] Ich bin nicht traurig! || I am not sad!
+[ben] Ich bin glücklich! || I am happy!
+Aber Max hat geweint, denn er hat den Ball verloren. || But Max cried, because he lost the ball.
+Max war traurig, und dann war er wieder froh. || Max was sad, and then he was happy again.
+Das Wetter ist bald gut geworden, und die Sonne hat wieder geschienen. || The weather soon got better, and the sun shone again.
+
+## Zurück
+Am Abend sind alle in den Bus eingestiegen. || In the evening everyone got on the bus.
+Der Bus hat noch einmal gehalten. || The bus stopped once more.
+Sie haben in einem Café Kaffee getrunken. || They drank coffee in a café.
+Im Geschäft haben sie Brot gekauft. || In the shop they bought bread.
+Im Bus haben alle geschlafen, nur Ben nicht. || On the bus everyone slept, only Ben did not.
+[sam] Wir haben jetzt neue Freunde, Max und die anderen! || We have new friends now, Max and the others!
+[ben] Ich habe im Kino einen Film gesehen, aber das war neu für mich. || I saw a film at the cinema, but this was new to me.
+[lukas] Wir gehen bald wieder, im Herbst. || We will go again soon, in autumn.
+Zu Hause hat Sam geduscht und die Wäsche gemacht. || At home Sam showered and did the washing.
+In der Wohnung war es ruhig. || In the flat it was quiet.
+Am Montag hat die Arbeit wieder angefangen. || On Monday work began again.
+Am Abend hat Anna Sam angerufen. || In the evening Anna called Sam.
+Sam hat gerade gelesen. || Sam was just reading.
+[anna] Hast du Zeit? || Do you have time?
+[anna] Wie war der Ausflug? || How was the excursion?
+[sam] Schön! Ich habe geschwommen, und ich habe viel gelacht. || Lovely! I swam, and I laughed a lot.
+[anna] Das ist gut. || That is good.
+[anna] Tschüs, Sam! || Bye, Sam!
+[sam] Tschüs, Anna! || Bye, Anna!
+

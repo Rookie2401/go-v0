@@ -18,15 +18,18 @@ Vinduet er her. {sam} liker vinduet. || The window is here. Sam likes the window
 [ana] Hei, {sam}! Hvordan går det? || Hi, Sam! How are you?
 [sam] Det går bra, takk. Jeg er glad. || I am fine, thank you. I am happy.
 [ana] Liker du huset? || Do you like the house?
-[sam] Ja, jeg liker huset. Men jeg er trøtt i dag. || Yes, I like the house. But I am tired today.
-[ana] Har du ei seng? || Do you have a bed?
-[sam] Ja, jeg har ei seng. || Yes, I have a bed.
-[sam] Ja, det er bra. Rommet er lite, men jeg er glad. || Yes, that is good. The room is small, but I am happy.
+[sam] Ja, jeg liker det. Men jeg er trøtt i dag. || Yes, I like it. But I am tired today.
+[ana] Er du hjemme i dag? || Are you at home today?
+[sam] Ja, jeg er hjemme. Jeg vil gjerne ha te. || Yes, I am at home. I would like some tea.
+[ana] Her er te, {sam}. Er rommet bra? || Here is tea, Sam. Is the room good?
+[sam] Ja, det er bra. Rommet er lite, men jeg er glad. || Yes, it is good. The room is small, but I am happy.
 {luis} er hjemme. Han er trøtt. || Lars is at home. He is tired.
 [luis] Hei, {sam}! Kommer du til kirka i dag? || Hi, Sam! Are you coming to church today?
 [sam] Ja, gjerne! || Yes, gladly!
 [luis] Bra! Vil du ha kaffe? || Good! Do you want coffee?
 [sam] Ja, takk! || Yes, please!
+[sam] Jeg liker kaffe, men jeg liker te også. || I like coffee, but I like tea too.
+[luis] Jeg liker kaffe og brød. Jeg er glad i dag. || I like coffee and bread. I am happy today.
 
 ## Husker du?
 Fru Berg bor ikke i huset. Hun kommer fra byen, og hun er glad i {sam}. || Mrs Berg does not live in the house. She comes from town, and she is fond of Sam.

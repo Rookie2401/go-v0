@@ -1,0 +1,626 @@
+{
+  "schemaVersion": 2,
+  "id": "de-b1-11",
+  "lang": "de",
+  "title": "Marta cooks porridge and pancakes",
+  "contentType": "instructions",
+  "corpus": {
+    "id": "ladder-de",
+    "kind": "comprehensible-input",
+    "title": "Ladder — German"
+  },
+  "source": {
+    "id": "src:de:de-b1-11",
+    "title": "Marta cooks porridge and pancakes (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model (ladder drafting agent); awaiting native-speaker review. Standard German (Germany); Sie for Frau Weber, Herr Schmidt, officials, doctors and strangers; du in the team, the Gemeinde and among friends. Prepares the vocabulary of the next texts (Grimm, Der süße Brei; Guerber, Der Pfannkuchen): Töpfchen, süß, Brei, heimbringen, heimkommen, satt, fortkochen, heraussteigen, zukochen, Pfannkuchen, rollen, Henne. Each is used about three times."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "cooking",
+    "recipe",
+    "kitchen",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "de-DE",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Marta",
+    "ben": "Ben",
+    "anna": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Bei Oma in der Küche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ben ist am Nachmittag bei Oma Marta, denn Anna arbeitet bis spät im Krankenhaus.",
+              "english": "In the afternoon Ben is at Oma Marta's, because Anna is working late at the hospital."
+            },
+            {
+              "text": "Seine Schule ist heute früh zu Ende, und er hat großen Hunger.",
+              "english": "His school finished early today, and he is very hungry."
+            },
+            {
+              "text": "Oma Marta hat eine Idee: Sie kocht Brei, und danach macht sie Pfannkuchen.",
+              "english": "Oma Marta has an idea: she cooks porridge, and afterwards she makes pancakes."
+            },
+            {
+              "speaker": "ben",
+              "text": "Brei? Ich bin doch kein Kind mehr!",
+              "english": "Porridge? I am not a child any more!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Das ist ein süßer Brei mit Milch und Butter.",
+              "english": "That is a sweet porridge with milk and butter."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann esse ich ihn gern.",
+              "english": "Then I will gladly eat it."
+            },
+            {
+              "speaker": "marta",
+              "text": "Du nimmst auch ein Töpfchen für Mama mit.",
+              "english": "You also take a little pot along for Mama."
+            },
+            {
+              "speaker": "marta",
+              "text": "Du kannst es heimbringen, wenn du heimgehst.",
+              "english": "You can take it home when you go home."
+            },
+            {
+              "speaker": "ben",
+              "text": "Mama kommt erst spät heim. Sie hat heute Nachtdienst.",
+              "english": "Mama does not come home until late. She has night duty today."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann bringe ich ihr das Töpfchen morgen früh.",
+              "english": "Then I will bring her the little pot tomorrow morning."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nein, stell es heute Abend auf den Tisch.",
+              "english": "No, put it on the table this evening."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dann hat sie morgen früh etwas zu essen, wenn sie heimkommt.",
+              "english": "Then she will have something to eat tomorrow morning when she comes home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Das Rezept",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Also, hör gut zu, denn so macht man es.",
+              "english": "So, listen carefully, because this is how you do it."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gib Milch in einen Topf und einen Löffel Butter dazu.",
+              "english": "Put milk in a pot and add a spoonful of butter."
+            },
+            {
+              "speaker": "marta",
+              "text": "Stell den Topf aufs Feuer und warte.",
+              "english": "Put the pot on the fire and wait."
+            },
+            {
+              "speaker": "marta",
+              "text": "Wenn man zu lange wartet, kocht das Wasser fort, und der Brei wird dick.",
+              "english": "If you wait too long, the water boils away, and the porridge gets thick."
+            },
+            {
+              "speaker": "marta",
+              "text": "Und wenn man nicht schaut, kocht alles fort.",
+              "english": "And if you do not look, everything boils away."
+            },
+            {
+              "speaker": "ben",
+              "text": "Und wenn er zu dick wird?",
+              "english": "And if it gets too thick?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Dann kocht er zu. Dann steigt er aus dem Topf heraus, und die Küche ist voll.",
+              "english": "Then it cooks up thick. Then it climbs out of the pot, and the kitchen is full."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das möchte ich sehen!",
+              "english": "I would like to see that!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Nein, das möchtest du nicht. Wenn er zukocht, nimm den Topf vom Feuer.",
+              "english": "No, you would not. When it cooks up thick, take the pot off the fire."
+            },
+            {
+              "speaker": "marta",
+              "text": "Am Ende kommt Zucker dazu, und dann ist er fertig.",
+              "english": "At the end sugar is added, and then it is ready."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Brei steigt schon heraus!",
+              "english": "The porridge is already climbing out!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Schnell, nimm ihn vom Feuer! Gut.",
+              "english": "Quickly, take it off the fire! Good."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich esse zwei Teller, bis ich satt bin.",
+              "english": "I will eat two plates until I am full."
+            },
+            {
+              "speaker": "marta",
+              "text": "Wer satt ist, hört auf. Das ist die Regel.",
+              "english": "Whoever is full stops. That is the rule."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Die Pfannkuchen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Jetzt machen wir die Pfannkuchen.",
+              "english": "Now we make the pancakes."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ich brauche Eier, Milch und Mehl. Die Eier sind von der Henne von Frau Weber.",
+              "english": "I need eggs, milk and flour. The eggs are from Frau Weber's hen."
+            },
+            {
+              "speaker": "ben",
+              "text": "Frau Weber hat eine Henne?",
+              "english": "Frau Weber has a hen?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Ja, im Garten. Die Henne legt jeden Tag ein Ei.",
+              "english": "Yes, in the garden. The hen lays an egg every day."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gib den Teig in die Pfanne und warte, bis er braun ist.",
+              "english": "Put the batter in the pan and wait until it is brown."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dann kannst du ihn rollen, mit Zucker oder mit Apfel.",
+              "english": "Then you can roll it, with sugar or with apple."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich rolle meinen mit Apfel.",
+              "english": "I will roll mine with apple."
+            },
+            {
+              "speaker": "ben",
+              "text": "Oma, er rollt vom Tisch!",
+              "english": "Oma, it is rolling off the table!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Lauf ihm nicht nach, sondern iss ihn schnell.",
+              "english": "Do not run after it, but eat it quickly."
+            },
+            {
+              "text": "Als Anna am nächsten Morgen heimkommt, riecht es im ganzen Haus nach Pfannkuchen.",
+              "english": "When Anna comes home the next morning, the whole house smells of pancakes."
+            },
+            {
+              "text": "Auf dem Tisch steht das Töpfchen, und dort liegt ein Zettel von Ben.",
+              "english": "On the table stands the little pot, and there lies a note from Ben."
+            },
+            {
+              "text": "Auf dem Zettel steht: Liebe Mama, ich habe dir das Töpfchen heimgebracht.",
+              "english": "On the note it says: Dear Mama, I brought the little pot home for you."
+            },
+            {
+              "text": "Der Brei ist süß, und du musst ihn essen, bis du satt bist.",
+              "english": "The porridge is sweet, and you must eat it until you are full."
+            },
+            {
+              "text": "Und dann geh schlafen. Dein Ben.",
+              "english": "And then go to sleep. Your Ben."
+            },
+            {
+              "text": "Am Mittag ruft Anna ihren Sohn an.",
+              "english": "At noon Anna calls her son."
+            },
+            {
+              "speaker": "anna",
+              "text": "Danke, Ben! Der Brei war wunderbar, und ich habe gut geschlafen.",
+              "english": "Thank you, Ben! The porridge was wonderful, and I slept well."
+            },
+            {
+              "speaker": "ben",
+              "text": "Das freut mich. Heute Abend kocht Oma wieder.",
+              "english": "I am glad. This evening Oma is cooking again."
+            },
+            {
+              "speaker": "anna",
+              "text": "Dann komme ich mit, und wir essen alle zusammen.",
+              "english": "Then I will come along, and we will all eat together."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Essen sitzen Marta, Anna und Ben noch am Tisch.",
+              "english": "After the meal Marta, Anna and Ben are still sitting at the table."
+            },
+            {
+              "text": "Draußen ist es dunkel, und der Tee ist noch warm.",
+              "english": "Outside it is dark, and the tea is still warm."
+            },
+            {
+              "speaker": "anna",
+              "text": "Ben, früher hast du mir jeden Abend eine Geschichte erzählt.",
+              "english": "Ben, in the past you told me a story every evening."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ja, Mama, ich weiß noch viele Geschichten aus dem Buch.",
+              "english": "Yes, Mama, I still know many stories from the book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Zuerst Jakobs Haus. Die Maus fraß das Korn, und die Katze fraß die Maus.",
+              "english": "First Jakob's house. The mouse ate the grain, and the cat ate the mouse."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Hund bellte laut, und die Kuh hatte lange Hörner.",
+              "english": "The dog barked loudly, and the cow had long horns."
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Hund hatte Angst vor ihren Hörnern.",
+              "english": "The dog was afraid of her horns."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ein Mädchen musste die Kuh melken, und es molk sie am Morgen.",
+              "english": "A girl had to milk the cow, and she milked her in the morning."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Priester war froh, dass der Hahn so laut krähte und ihn früh aufweckte.",
+              "english": "The priest was glad that the cock crowed so loudly and woke him early."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dann ging er in das Gotteshaus, und alles war gut.",
+              "english": "Then he went into the church, and everything was fine."
+            },
+            {
+              "speaker": "anna",
+              "text": "Oh, das war schön! Und wie endet die Geschichte?",
+              "english": "Oh, that was beautiful! And how does the story end?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Priester sagt: O, wie gut! Ende gut, alles gut!",
+              "english": "The priest says: Oh, how good! All's well that ends well!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Ich mag die drei jungen Männer in der Höhle am liebsten.",
+              "english": "I like the three young men in the cave best."
+            },
+            {
+              "speaker": "ben",
+              "text": "Sie waren so träge und schläfrig, und sie wollten nur ruhen.",
+              "english": "They were so lazy and sleepy, and they only wanted to rest."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ihre Eltern wollten sie immer zu früh aufwecken.",
+              "english": "Their parents always wanted to wake them too early."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der erste sagt: Meine Mutter, mein Bruder und meine Schwester wecken mich immer zu früh auf.",
+              "english": "The first says: My mother, my brother and my sister always wake me up too early."
+            },
+            {
+              "speaker": "anna",
+              "text": "Die Höhle liegt nahe bei der Stadt Bonn.",
+              "english": "The cave lies near the town of Bonn."
+            },
+            {
+              "speaker": "ben",
+              "text": "Sie legten sich nieder und schliefen bis zum siebenten Jahr.",
+              "english": "They lay down and slept until the seventh year."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dann sprach einer ein paar Worte, und die Worte bilden eine Unterhaltung.",
+              "english": "Then one of them spoke a few words, and the words make up a conversation."
+            },
+            {
+              "speaker": "ben",
+              "text": "Die Unterhaltung ist nicht interessant, aber ich möchte sie nicht wecken.",
+              "english": "The conversation is not interesting, but I would not like to wake them."
+            },
+            {
+              "speaker": "marta",
+              "text": "Niemand darf sie aus dem Schlafe wecken.",
+              "english": "Nobody may wake them from their sleep."
+            },
+            {
+              "speaker": "ben",
+              "text": "Ich glaube, einer sagt: Das war ein Ochs, keine Kuh.",
+              "english": "I think one of them says: That was an ox, not a cow."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "anna",
+              "text": "Und der Reisende im Haus? Es war so groß wie ein Palast.",
+              "english": "And the traveller in the house? It was as big as a palace."
+            },
+            {
+              "speaker": "ben",
+              "text": "Im Hof spaltete ein Mann Holz, und in der Küche machte ein Mann das Feuer an.",
+              "english": "In the yard a man was splitting wood, and in the kitchen a man lit the fire."
+            },
+            {
+              "speaker": "ben",
+              "text": "Im Esszimmer saß ein Mann am Tisch, und im Schlafzimmer lag ein Mann im Bett.",
+              "english": "In the dining room a man sat at the table, and in the bedroom a man lay in bed."
+            },
+            {
+              "speaker": "marta",
+              "text": "Der uralte Hausvater lag dann in der Wiege.",
+              "english": "The ancient master of the house then lay in the cradle."
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, Oma, er hing an der Wand in einem Trinkhorn!",
+              "english": "No, Oma, he hung on the wall in a drinking horn!"
+            },
+            {
+              "speaker": "anna",
+              "text": "Am Ende konnte sich der Reisende am Feuer wärmen.",
+              "english": "In the end the traveller could warm himself at the fire."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Und die drei Faulen! Der König hatte alles bedacht.",
+              "english": "And the three lazy ones! The king had thought everything over."
+            },
+            {
+              "speaker": "ben",
+              "text": "Er wollte den faulsten Sohn zum König bestimmen.",
+              "english": "He wanted to name the laziest son as king."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dem ersten fiel ein Tropfen ins Auge, aber er wollte es nicht zuthun.",
+              "english": "A drop fell into the first one's eye, but he did not want to close it."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der zweite ließ sich die Fersen verbrennen.",
+              "english": "The second let his heels burn."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der dritte bekam ein scharfes Messer, um den Strick zu zerschneiden.",
+              "english": "The third received a sharp knife to cut through the rope."
+            },
+            {
+              "speaker": "marta",
+              "text": "Die drei Brüder wollten lieber schlafen, eh sie die Hände erhüben.",
+              "english": "The three brothers would rather sleep than lift their hands."
+            },
+            {
+              "speaker": "anna",
+              "text": "Gute Geschichten sind wie guter Brei, man wird nie satt.",
+              "english": "Good stories are like good porridge, you never get full."
+            },
+            {
+              "speaker": "ben",
+              "text": "Morgen erzähle ich dir die nächste, Mama.",
+              "english": "Tomorrow I will tell you the next one, Mama."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Erinnerst du dich daran?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag sitzen Marta, Anna und Ben beim Tee in der Küche.",
+              "english": "On Sunday Marta, Anna and Ben sit with tea in the kitchen."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ben, erzähl uns doch noch einmal die Geschichten aus dem Buch.",
+              "english": "Ben, tell us once more the stories from the book."
+            },
+            {
+              "speaker": "ben",
+              "text": "Gern, Oma! Die drei Männer in der Höhle wollten nur ruhen.",
+              "english": "Gladly, Oma! The three men in the cave only wanted to rest."
+            },
+            {
+              "speaker": "ben",
+              "text": "Sie legten sich nieder und schliefen sieben Jahre lang.",
+              "english": "They lay down and slept for seven years."
+            },
+            {
+              "speaker": "anna",
+              "text": "Und was sagten sie, als sie wach waren?",
+              "english": "And what did they say when they were awake?"
+            },
+            {
+              "speaker": "ben",
+              "text": "Ihre Worte bilden keine lange Unterhaltung. Einer sagt: Das war keine Kuh, das war ein Ochs.",
+              "english": "Their words make no long conversation. One says: That was not a cow, that was an ox."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ein Ochs oder eine Kuh, das ist ihnen ganz egal.",
+              "english": "An ox or a cow, that is all the same to them."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Dann kam der Reisende zu einem großen Haus. Im Hof spaltete ein Mann Holz.",
+              "english": "Then the traveller came to a big house. In the yard a man was splitting wood."
+            },
+            {
+              "speaker": "marta",
+              "text": "Der Mann spaltete Holz und sang dabei ein Lied.",
+              "english": "The man split wood and sang a song as he did so."
+            },
+            {
+              "speaker": "ben",
+              "text": "Auch der Mann, der Holz spaltete, wusste nicht, wo der Hausvater war.",
+              "english": "Even the man who was splitting wood did not know where the master of the house was."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der Reisende setzte sich nieder und fragte noch einmal.",
+              "english": "The traveller sat down and asked once more."
+            },
+            {
+              "speaker": "anna",
+              "text": "Er legte sich nicht nieder, denn er wollte den Vater sehen.",
+              "english": "He did not lie down, because he wanted to see the father."
+            },
+            {
+              "speaker": "ben",
+              "text": "Man schickte ihn ins Esszimmer. Dort sagte ein Mann: Mein Vater hängt an der Wand.",
+              "english": "They sent him to the dining room. There a man said: My father hangs on the wall."
+            },
+            {
+              "speaker": "anna",
+              "text": "Im Esszimmer war der Vater also nicht.",
+              "english": "So the father was not in the dining room."
+            },
+            {
+              "speaker": "ben",
+              "text": "Nein, er hing dort an der Wand in einem Trinkhorn.",
+              "english": "No, he hung there on the wall in a drinking horn."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ben",
+              "text": "Und der König wollte den faulsten Sohn zum König bestimmen.",
+              "english": "And the king wanted to name the laziest son as king."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dem ersten fiel ein Tropfen ins Auge, aber er blieb liegen.",
+              "english": "A drop fell into the first one's eye, but he stayed lying down."
+            },
+            {
+              "speaker": "ben",
+              "text": "Dem zweiten wurden die Fersen heiß, aber er blieb beim Feuer sitzen.",
+              "english": "The second one's heels became hot, but he stayed sitting by the fire."
+            },
+            {
+              "speaker": "ben",
+              "text": "Der dritte konnte den Strick zerschneiden, aber er wollte nicht.",
+              "english": "The third one could cut the rope, but he did not want to."
+            },
+            {
+              "speaker": "marta",
+              "text": "Faul zu sein ist nicht so schön, wie es aussieht.",
+              "english": "Being lazy is not as nice as it looks."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -456,6 +456,95 @@
           ]
         }
       ]
+    },
+    {
+      "title": "Los niños cuentan el pozo del gigante",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un viernes, la señorita Elena les pide a sus alumnos que cuenten otra vez el cuento del pozo.",
+              "english": "One Friday, Miss Elena asks her pupils to tell the story of the well once more."
+            },
+            {
+              "text": "La escuela es de bloques, con techo de zinc, y cuando llueve nadie oye nada; pero hoy hace sol y la escena es tranquila.",
+              "english": "The school is made of blocks, with a zinc roof, and when it rains nobody hears anything; but today it is sunny and the scene is calm."
+            },
+            {
+              "text": "Wilmer es el primero en levantar la mano.",
+              "english": "Wilmer is the first to raise his hand."
+            },
+            {
+              "text": "—Había un pueblo sin agua —empieza—. Y arriba, en el monte, vivía un gigante con brazos como troncos y orejas como mantas.",
+              "english": "\"There was a village without water,\" he begins. \"And up on the mountain lived a giant with arms like tree trunks and ears like blankets.\""
+            },
+            {
+              "text": "—¡Ah, pero no era malo! —grita una niña.",
+              "english": "\"Ah, but he was not bad!\" shouts a girl."
+            },
+            {
+              "text": "—Esperá, Yesenia, vos todavía no tenés el turno —dice Wilmer—. El marqués puso un cartel en la puerta de la iglesia.",
+              "english": "\"Wait, Yesenia, it is not your turn yet,\" says Wilmer. \"The marquis put up a notice on the church door.\""
+            },
+            {
+              "text": "El cartel decía que quien matara al gigante recibiría cien mil lempiras.",
+              "english": "The notice said that whoever killed the giant would receive a hundred thousand lempiras."
+            },
+            {
+              "text": "—Y subieron tres señoritos de la ciudad, y uno de ellos estaba enamorado de la princesa —sigue otro niño.",
+              "english": "\"And three young gentlemen from the city went up, and one of them was in love with the princess,\" another boy goes on."
+            },
+            {
+              "text": "—Pero bajaron corriendo y exclamaron que el gigante era terrible. Se quedaron abajo, en el pueblo, tristes e inútiles.",
+              "english": "\"But they came down running and exclaimed that the giant was terrible. They stayed down in the village, sad and useless.\""
+            },
+            {
+              "text": "—Entonces subió Marta, y se sentó a descansar en el tronco de un roble, entre las raíces y las ramas —dice Yesenia, que ya tiene su turno—. Allí soñó con el gigante.",
+              "english": "\"Then Marta went up, and sat to rest on the trunk of an oak, among the roots and the branches,\" says Yesenia, who now has her turn. \"There she dreamed of the giant.\""
+            },
+            {
+              "text": "—¿Y cómo supo la respuesta? —pregunta la señorita Elena.",
+              "english": "\"And how did she know the answer?\" asks Miss Elena."
+            },
+            {
+              "text": "—Tuvo que adivinar el enigma. Pensó con calma, y cuanto más pensaba, más cerca estaba de la respuesta.",
+              "english": "\"She had to guess the riddle. She thought calmly, and the more she thought, the closer she was to the answer.\""
+            },
+            {
+              "text": "—¿Acaso era fácil? —pregunta la maestra.",
+              "english": "\"Was it perhaps easy?\" asks the teacher."
+            },
+            {
+              "text": "—No, pero tampoco era imposible —contesta Wilmer.",
+              "english": "\"No, but it was not impossible either,\" answers Wilmer."
+            },
+            {
+              "text": "—Cuando el agua bajó, el marqués estaba en su palacio, rojo de rabia, pero la princesa tuvo la última palabra.",
+              "english": "\"When the water came down, the marquis was in his palace, red with rage, but the princess had the last word.\""
+            },
+            {
+              "text": "—Muy bien —dice la señorita Elena—. Ahora cada uno va a dibujar la escena que más le gusta, con muchos colores.",
+              "english": "\"Very good,\" says Miss Elena. \"Now each of you is going to draw the scene you like best, with lots of colors.\""
+            },
+            {
+              "text": "Wilmer dibuja la llegada del agua al pueblo, y Yesenia dibuja a Marta con su hacha.",
+              "english": "Wilmer draws the arrival of the water in the village, and Yesenia draws Marta with her axe."
+            },
+            {
+              "text": "Un visitante que pasa por la escuela, un señor de la oficina del municipio, se queda mirando los dibujos.",
+              "english": "A visitor who passes by the school, a man from the municipal office, stops to look at the drawings."
+            },
+            {
+              "text": "—Estas historias son valiosas —dice—. Qué lástima que sean tan cortas en el papel.",
+              "english": "\"These stories are valuable,\" he says. \"What a pity they are so short on paper.\""
+            },
+            {
+              "text": "—Corta o larga, la historia es de ellos —contesta la maestra.",
+              "english": "\"Short or long, the story is theirs,\" answers the teacher."
+            }
+          ]
+        }
+      ]
     }
   ],
   "pipeline": {

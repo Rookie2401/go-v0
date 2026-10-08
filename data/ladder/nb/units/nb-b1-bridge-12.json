@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 2,
+  "id": "nb-b1-bridge-12",
+  "lang": "nb",
+  "title": "A difficult customer",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-nb",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Norwegian (Bokmål)"
+  },
+  "source": {
+    "id": "src:nb:nb-b1-bridge-12",
+    "title": "A difficult customer (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Norwegian (Bokmål). Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder in contemporary Bokmål (2005 norm); not reviewed by a native speaker. It is controlled, deliberately repetitive Norwegian written for learners and may contain unnatural phrasing. Facts about Norway and Bergen are general knowledge and unchecked. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. House style: moderate Bokmål with three genders (ei/-a for feminine nouns, en/-en masculine, et/-et neuter), weak past in -et, neuter definite plural in -ene, sju and tjue, \"ble\", \"ga\". Passive with \"bli\" and in -s (ble bestilt, bestilles, sendes), \"hvis ... kan\", indirect speech, \"eller\", \"noe\", \"nok\". Sam handles a complaint alone for the first time. A realistic shop situation; no real shop or publisher is named."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "work",
+    "customers",
+    "complaint",
+    "passive",
+    "conditionals",
+    "indirect speech"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "nb",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-07",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Claude)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "kunde": "Kunden",
+    "sam": "Sam",
+    "erik": "Erik"
+  },
+  "sections": [
+    {
+      "title": "En sint kunde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Det var en lørdag i bokhandelen. Erik var syk, og Silje var på pause, så Sam var alene ved kassen.",
+              "english": "It was a Saturday in the bookshop. Erik was ill, and Silje was on a break, so Sam was alone at the till."
+            },
+            {
+              "text": "Da kom en dame inn. Hun hadde en bok med seg, og hun var veldig sint.",
+              "english": "Then a lady came in. She had a book with her, and she was very angry."
+            },
+            {
+              "text": "Jeg bestilte en bok til barn her, og jeg betalte for den. Den skulle være på norsk, men denne er på engelsk!",
+              "english": "I ordered a book for children here, and I paid for it. It was supposed to be in Norwegian, but this one is in English!",
+              "speaker": "kunde"
+            },
+            {
+              "text": "Jenta mi har bursdag i morgen, og nå har jeg ingen gave. Jeg vil klage, og jeg vil ha pengene tilbake!",
+              "english": "My girl has a birthday tomorrow, and now I have no present. I want to complain, and I want my money back!",
+              "speaker": "kunde"
+            },
+            {
+              "text": "Sam var nervøs, men han husket hva sjefen hadde sagt: Vær ærlig, og spør hvis du ikke vet.",
+              "english": "Sam was nervous, but he remembered what the manager had said: Be honest, and ask if you do not know."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Å lytte",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jeg er lei for det. Kan jeg få se kvitteringen din?",
+              "english": "I am sorry about that. May I see your receipt?",
+              "speaker": "sam"
+            },
+            {
+              "text": "Damen var sint, men hun viste ham kvitteringen. Sam leste den to ganger. Kvitteringen sa at boka var bestilt på norsk.",
+              "english": "The lady was angry, but she showed him the receipt. Sam read it twice. The receipt said that the book had been ordered in Norwegian."
+            },
+            {
+              "text": "Jeg ser at du har rett. Boka ble bestilt på norsk, men noe var feil, og du fikk den engelske. Det er vår feil.",
+              "english": "I see that you are right. The book was ordered in Norwegian, but something was wrong, and you got the English one. It is our mistake.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Er det alt du har å si? Det er ikke nok! Jeg trenger boka i morgen!",
+              "english": "Is that all you have to say? That is not enough! I need the book tomorrow!",
+              "speaker": "kunde"
+            },
+            {
+              "text": "Nei. Er det noe mer jeg kan gjøre? Jeg skal sjekke om vi har den norske boka her. Vent litt, vær så snill.",
+              "english": "No. Is there anything more I can do? I will check whether we have the Norwegian book here. Wait a moment, please.",
+              "speaker": "sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Å finne en løsning",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam gikk til hyllene og leste navnene. Han lette lenge, men boka var der ikke.",
+              "english": "Sam went to the shelves and read the names. He searched for a long time, but the book was not there."
+            },
+            {
+              "text": "Så ringte han til en bokhandel til og spurte om de hadde den. De sa at de hadde to, og at boka kunne kjøpes i dag.",
+              "english": "Then he rang one more bookshop and asked whether they had it. They said that they had two, and that the book could be bought today."
+            },
+            {
+              "text": "Jeg har gode nyheter. Boka er i en bokhandel til, og du kan kjøpe den i dag. Eller du kan levere den engelske boka tilbake og få pengene tilbake. Du har rett til å klage.",
+              "english": "I have good news. The book is in one more bookshop, and you can buy it today. Or you can return the English book and get your money back. You have the right to complain.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Har dere nok bøker til at jeg kan få begge?",
+              "english": "Do you have enough books for me to get both?",
+              "speaker": "kunde"
+            },
+            {
+              "text": "Nei, ikke begge. Vil du ha boka eller pengene? Hvis du vil ha boka, skal den bestilles og sendes til deg. Hvis du vil ha pengene, må du levere kvitteringen.",
+              "english": "No, not both. Do you want the book or the money? If you want the book, it will be ordered and sent to you. If you want the money, you must hand in the receipt.",
+              "speaker": "sam"
+            },
+            {
+              "text": "Damen så lenge på ham. Så sa hun rolig: «Du er den første som har lyttet i dag.»",
+              "english": "The lady looked at him for a long time. Then she said calmly: \"You are the first who has listened today.\""
+            },
+            {
+              "text": "Hun ville ha boka. Den ble sendt til henne på mandag, og hun fikk også en ny kvittering. Hun var ikke sint lenger.",
+              "english": "She wanted the book. It was sent to her on Monday, and she also got a new receipt. She was not angry any more."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Etterpå",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Da Erik kom tilbake på mandag, fortalte Sam alt. Han var redd for at han hadde gjort feil.",
+              "english": "When Erik came back on Monday, Sam told everything. He was afraid that he had made a mistake."
+            },
+            {
+              "text": "Du har ikke gjort noe feil. Du var ærlig, du sjekket, og du fant en måte. Sjekk alltid kvitteringen først, og si det rolig eller høyt, bare du er ærlig. Det er nok. En kunde som klager, hjelper oss å bli bedre. Vi må levere det vi sier.",
+              "english": "You have not done anything wrong. You were honest, you checked, and you found a way. Always check the receipt first, and say it calmly or loudly, as long as you are honest. That is enough. A customer who complains helps us become better. We must deliver what we say.",
+              "speaker": "erik"
+            },
+            {
+              "text": "Sam var glad. Han var ikke redd for damen lenger, bare for å gjøre feil. Nå visste han at vi lærer av feil.",
+              "english": "Sam was glad. He was not afraid of the lady any more, only of making mistakes. Now he knew that we learn from mistakes."
+            },
+            {
+              "text": "Den kvelden takket han Gud for kollegaene og for sjefen, som hadde lært ham å være ærlig.",
+              "english": "That evening he thanked God for his colleagues and for the manager, who had taught him to be honest."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Om kvelden bar Sam en pose fra butikken hjem til kjøkkenet sitt og bakte pizza. Utleieren hadde sagt at leiligheten var ledig, og nå var det mye støy fra naboene. I avisen sa ordføreren i kommunen at politikerne ville bygge flere skoler.",
+              "english": "In the evening Sam carried a bag from the shop home to his kitchen and baked pizza. The landlord had said that the flat was available, and now there was a lot of noise from the neighbours. In the newspaper the mayor of the municipality said that the politicians wanted to build more schools."
+            },
+            {
+              "text": "Her var veggene ikke fuktige, og depositumet var betalt. Det var en lapp på døra om plast, men det var ikke noe problem. Politikerne i avisen hadde hver sin mening.",
+              "english": "Here the walls were not damp, and the deposit was paid. There was a note on the door about plastic, but it was not a problem. The politicians in the newspaper each had their own opinion."
+            },
+            {
+              "text": "Kassen med bøker var tung, så Silje hjalp ham. De kastet søppelet sammen. Valget var slutt, og alle som hadde stemt, var glade.",
+              "english": "The box of books was heavy, so Silje helped him. They threw the rubbish out together. The election was finished, and everyone who had voted was glad."
+            },
+            {
+              "text": "Sam vasket gulvet på kjøkkenet og tenkte på den nye ordføreren, som hadde vært lærer.",
+              "english": "Sam washed the floor in the kitchen and thought of the new mayor, who had been a teacher."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-04",
+  "lang": "sq",
+  "title": "Shtëpia dhe rruga",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-04",
+    "title": "Albanian ladder, a1-1: Shtëpia dhe rruga (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "description"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "description"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Shtëpia dhe rruga",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Kjo është familja e Elirës.",
+              "english": "This is Elira's family."
+            },
+            {
+              "text": "Babai i Elirës është Dritani.",
+              "english": "Elira's father is Dritan."
+            },
+            {
+              "text": "Nëna e Elirës është Mira.",
+              "english": "Elira's mother is Mira."
+            },
+            {
+              "text": "Elira ka një vëlla.",
+              "english": "Elira has a brother."
+            },
+            {
+              "text": "Vëllai i Elirës është Gjergji.",
+              "english": "Elira's brother is Gjergj."
+            },
+            {
+              "text": "Gjergji ka një motër.",
+              "english": "Gjergj has a sister."
+            },
+            {
+              "text": "Motra e Gjergjit është Elira.",
+              "english": "Gjergj's sister is Elira."
+            },
+            {
+              "text": "Familja është në shtëpi.",
+              "english": "The family is at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam jeton në një shtëpi të vogël.",
+              "english": "Sam lives in a small house."
+            },
+            {
+              "text": "Shtëpia ka një dhomë dhe një kuzhinë.",
+              "english": "The house has a room and a kitchen."
+            },
+            {
+              "text": "Në dhomë ka një tavolinë.",
+              "english": "In the room there is a table."
+            },
+            {
+              "text": "Mbi tavolinë ka një libër dhe një llambë.",
+              "english": "On the table there are a book and a lamp."
+            },
+            {
+              "text": "Dhoma ka një dritare.",
+              "english": "The room has a window."
+            },
+            {
+              "text": "Sam pi kafe në kuzhinë.",
+              "english": "Sam drinks coffee in the kitchen."
+            },
+            {
+              "text": "Pastaj ai lexon në dhomë.",
+              "english": "Then he reads in the room."
+            },
+            {
+              "text": "Libri është në shqip.",
+              "english": "The book is in Albanian."
+            },
+            {
+              "text": "Sam lexon pak.",
+              "english": "Sam reads a little."
+            },
+            {
+              "text": "Ai është i lodhur.",
+              "english": "He is tired."
+            },
+            {
+              "text": "Dhoma e Samit është e vogël, por është e mirë.",
+              "english": "Sam's room is small, but it is good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ardi shkon në shkollë me gjyshin.",
+              "english": "Ardi goes to school with his grandfather."
+            },
+            {
+              "text": "Rruga e shkollës është e gjatë.",
+              "english": "The road to the school is long."
+            },
+            {
+              "text": "Ardi ka një çantë të madhe.",
+              "english": "Ardi has a big bag."
+            },
+            {
+              "text": "Në çantë ka libra dhe bukë.",
+              "english": "In the bag there are books and bread."
+            },
+            {
+              "text": "Ardi nuk është i lodhur.",
+              "english": "Ardi is not tired."
+            },
+            {
+              "text": "Ai është i lumtur, sepse sot ka shkollë.",
+              "english": "He is happy, because today there is school."
+            },
+            {
+              "text": "Luan është në shkollë.",
+              "english": "Luan is at the school."
+            },
+            {
+              "text": "— Mirëmëngjes, Ardi!",
+              "english": "\"Good morning, Ardi!\""
+            },
+            {
+              "text": "— Mirëmëngjes, mësues!",
+              "english": "\"Good morning, teacher!\""
+            },
+            {
+              "text": "Ardi shkon në shkollë.",
+              "english": "Ardi goes into the school."
+            },
+            {
+              "text": "Pastaj gjyshi shkon në treg.",
+              "english": "Then the grandfather goes to the market."
+            },
+            {
+              "text": "Në treg ai pi kafe me Samin.",
+              "english": "At the market he drinks coffee with Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana ka një xhaketë të re.",
+              "english": "Ana has a new jacket."
+            },
+            {
+              "text": "Ajo shkon në klinikë.",
+              "english": "She goes to the clinic."
+            },
+            {
+              "text": "Në rrugë është gjyshi i Ardit.",
+              "english": "In the street is Ardi's grandfather."
+            },
+            {
+              "text": "— Mirëmëngjes, Ana! Si je?",
+              "english": "\"Good morning, Ana! How are you?\""
+            },
+            {
+              "text": "— Jam mirë, faleminderit.",
+              "english": "\"I am well, thank you.\""
+            },
+            {
+              "text": "— Xhaketa jote është e bukur!",
+              "english": "\"Your jacket is beautiful!\""
+            },
+            {
+              "text": "— Faleminderit!",
+              "english": "\"Thank you!\""
+            },
+            {
+              "text": "Ai ka një çantë me bukë.",
+              "english": "He has a bag with bread."
+            },
+            {
+              "text": "Ai shkon në shtëpi.",
+              "english": "He goes home."
+            },
+            {
+              "text": "Ana shkon në klinikë.",
+              "english": "Ana goes to the clinic."
+            },
+            {
+              "text": "Sot ajo punon shumë, por nuk është e lodhur.",
+              "english": "Today she works a lot, but she is not tired."
+            },
+            {
+              "text": "Rruga e klinikës nuk është e gjatë.",
+              "english": "The road to the clinic is not long."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam nuk ka familje këtu.",
+              "english": "Sam does not have a family here."
+            },
+            {
+              "text": "Por ai ka shumë shokë.",
+              "english": "But he has many friends."
+            },
+            {
+              "text": "Ardi, Elira, Ana dhe Luan janë shokët e Samit.",
+              "english": "Ardi, Elira, Ana and Luan are Sam's friends."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

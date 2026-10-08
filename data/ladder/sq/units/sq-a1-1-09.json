@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-09",
+  "lang": "sq",
+  "title": "Fshati i gjyshit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-09",
+    "title": "Albanian ladder, a1-1: Fshati i gjyshit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Fshati i gjyshit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Gjyshi i Ardit ka një shtëpi në fshat.",
+              "english": "Ardi's grandfather has a house in a village."
+            },
+            {
+              "text": "Shtëpia është e vjetër.",
+              "english": "The house is old."
+            },
+            {
+              "text": "Ardi shkon në fshat me gjyshin.",
+              "english": "Ardi goes to the village with his grandfather."
+            },
+            {
+              "text": "Rruga është e gjatë.",
+              "english": "The road is long."
+            },
+            {
+              "text": "Në shtëpi ka një kuzhinë të madhe.",
+              "english": "In the house there is a big kitchen."
+            },
+            {
+              "text": "Gjyshi bën kafe.",
+              "english": "The grandfather makes coffee."
+            },
+            {
+              "text": "Ardi pi ujë.",
+              "english": "Ardi drinks water."
+            },
+            {
+              "text": "Pastaj Ardi lexon një libër.",
+              "english": "Then Ardi reads a book."
+            },
+            {
+              "text": "Ai është i lumtur që është me gjyshin.",
+              "english": "He is happy to be with his grandfather."
+            },
+            {
+              "text": "Gjyshi ka një qen të madh.",
+              "english": "The grandfather has a big dog."
+            },
+            {
+              "text": "Gjyshi është i lodhur.",
+              "english": "The grandfather is tired."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në verë Ardi nuk shkon në shkollë.",
+              "english": "In summer Ardi does not go to school."
+            },
+            {
+              "text": "Ai shkon te gjyshi çdo mëngjes.",
+              "english": "He goes to his grandfather every morning."
+            },
+            {
+              "text": "Gjyshi i jep Ardit bukë dhe çaj.",
+              "english": "The grandfather gives Ardi bread and tea."
+            },
+            {
+              "text": "Ardi ha bukë dhe pi çaj.",
+              "english": "Ardi eats bread and drinks tea."
+            },
+            {
+              "text": "Gjyshi pi kafe dhe lexon.",
+              "english": "The grandfather drinks coffee and reads."
+            },
+            {
+              "text": "Në shtëpi ka shumë libra.",
+              "english": "In the house there are many books."
+            },
+            {
+              "text": "Ardit i pëlqen vera shumë.",
+              "english": "Ardi likes the summer very much."
+            },
+            {
+              "text": "Ai është shumë i lumtur.",
+              "english": "He is very happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në shtëpi Ardi gjen një libër të vjetër.",
+              "english": "In the house Ardi finds an old book."
+            },
+            {
+              "text": "Ai pyet gjyshin: — Çfarë është ky libër?",
+              "english": "He asks his grandfather: \"What is this book?\""
+            },
+            {
+              "text": "Gjyshi e sheh librin dhe thotë: — Është libri i gjyshes.",
+              "english": "The grandfather sees the book and says: \"It is grandmother's book.\""
+            },
+            {
+              "text": "Gjyshi është burrë i mirë.",
+              "english": "The grandfather is a good man."
+            },
+            {
+              "text": "Ai njeh shumë njerëz këtu.",
+              "english": "He knows many people here."
+            },
+            {
+              "text": "Ai shkruan dhe lexon çdo ditë.",
+              "english": "He writes and reads every day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Sam, a do të shkosh në fshat? — pyet Luan.",
+              "english": "\"Sam, do you want to go to the village?\" asks Luan."
+            },
+            {
+              "text": "— Po! Ku është fshati?",
+              "english": "\"Yes! Where is the village?\""
+            },
+            {
+              "text": "— Nuk është në Tiranë. Rruga është e gjatë.",
+              "english": "\"It is not in Tirana. The road is long.\""
+            },
+            {
+              "text": "— Çfarë bëjmë?",
+              "english": "\"What do we do?\""
+            },
+            {
+              "text": "— Pimë kafe me gjyshin e Ardit.",
+              "english": "\"We drink coffee with Ardi's grandfather.\""
+            },
+            {
+              "text": "— A ka shtëpi të vjetra?",
+              "english": "\"Are there old houses?\""
+            },
+            {
+              "text": "— Po, ka shumë shtëpi të vjetra.",
+              "english": "\"Yes, there are many old houses.\""
+            },
+            {
+              "text": "— Shumë mirë. Më pëlqen!",
+              "english": "\"Very good. I like it!\""
+            },
+            {
+              "text": "Në verë Sam dhe Luan shkojnë me Ardin.",
+              "english": "In summer Sam and Luan go with Ardi."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-08",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

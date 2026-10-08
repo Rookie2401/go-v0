@@ -82,8 +82,8 @@ dictionary data, never against a native reviewer:
 **Scope change — GoListen was deferred to V2** (course owner, 2026-10-01) and switched off by one flag
 (`FEATURES.listen` in `src/core/config.ts`). **Superseded 2026-10-03 (commit `62e16dc`) and restated 2026-10-06: the
 flag is `true`.** The app has its listening player, the lawful-recording import and listening evidence
-(`docs/GOLISTEN.md`), and shows its listening statements; but **no recording exists in any course** (Home says "No
-recordings in <language> yet"), the **speech proxy is still off** (`LISTEN` in `vite.config.ts` is `false`: no
+(`docs/GOLISTEN.md`), and shows its listening statements; but **no recording exists in any course** (the Reader offers only the
+computer voice, and Settings → Content → Recordings is empty), the **speech proxy is still off** (`LISTEN` in `vite.config.ts` is `false`: no
 `/api/speech/*` endpoint, so the app makes no speech request unless a deployment configures one), and synthetic
 speech is practice, never listening evidence. The package, its tests and `npm run speech:check` stay green. What
 the 2026-10-01 text said of the off state (no audio interface, no listening recommendation, no statement about
@@ -209,7 +209,7 @@ dictionary and on Project Gutenberg catalogue entries that another agent added t
 
 ## Readiness by language
 
-| | Ingestion | Progress tracking | Linguistic analysis | Scripture | Audio (GoListen: on since 2026-10-03; no recordings) |
+| | Ingestion | Progress tracking | Linguistic analysis | Scripture | Listening layer (GoLearn's; on since 2026-10-03; no recordings) |
 |---|---|---|---|---|---|
 | **Spanish** | Verified (proof + browser importer; a learner's own `.txt` / `.epub` imports chapter by chapter) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; a word list of 1,766 lemmas (1,701 on 2026-10-01; `adapter-es@11`; **machine-drafted, not native-reviewed**) plus rule morphology for any verb, noun or adjective form (an inferred lemma is marked as such, 0.6 at most, no gloss); **dictionary installed** (Wiktionary via kaikki.org, separate layer) and used when a learner's own book is imported; readings ordered by neighbouring words — held-out on dictionary example sentences: first reading right for 92.65 %, 82.1 % of ambiguous words; nothing measured on a book (see "Spanish course") | **Published**: Reina-Valera 1909 — 3 verses byte-verified against eBible.org (2026-10-01), and, since then, the whole translation (1,189 chapters) in the library | **Not verified** — no credentials; nothing synthesized; no recordings |
 | **German** | Verified (a learner's own `.txt` imports chapter by chapter; German chapter headings recognised; checked in a browser sandbox) | Verified (engine; one vocabulary entry across a story and Scripture checked in a browser sandbox) | Rule morphology and a word list of 1,454 nouns, 856 verbs, 346 adjectives (1,287 / 824 / 312 on 2026-10-01; `adapter-de@8`; **machine-drafted, not native-reviewed**); a sentence layer (agreement, the subject wherever it stands, separated verbs as one unit, compounds, contractions, older spelling related never rewritten); 38 constructions. Measured on the coordinator's own judgements only (an AI model): on 21 unseen sentences of native prose, **13 fully right, 377 of 393 stated facts**; confident errors exist; no independent evaluation (see "German course") | **Published**: Lutherbibel 1912 — 71 verses (Genesis 1, Psalm 1, Psalm 23, Matthew 1, three single verses) byte-verified against eBible.org (2026-10-01), and, since then, the whole text (1,189 chapters) in the library; the rights basis for Germany / EU is recorded with its evidence and awaits the owner's confirmation | Not verified; no recordings |

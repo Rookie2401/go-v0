@@ -16,8 +16,7 @@ import { Home } from './pages/Home';
 import { PathPage } from './ladder/PathPage';
 import { Stage0Home } from './stage0/Stage0Home';
 import { StepPage as Stage0StepPage } from './stage0/StepPage';
-import { ListenHome } from './listen/ListenHome';
-import { ListenPage } from './listen/ListenPage';
+import { ListenIndexRedirect, ListenTextRedirect } from './listen/ListenRedirect';
 import { Settings, VocabularyPage } from './pages/Settings';
 import { TextPage } from './pages/TextPage';
 import { PreviewBanner } from './PreviewBanner';
@@ -48,8 +47,9 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/read" element={<ReadPage />} />
       <Route path="/read/:textId" element={<TextPage mode="corpus" />} />
-      <Route path="/listen" element={<ListenHome />} />
-      <Route path="/listen/:textId" element={<ListenPage />} />
+      {/* Old listening links: GoListen has no doorway of its own (it is GoLearn's listening layer, shown in the Reader). */}
+      <Route path="/listen" element={<ListenIndexRedirect />} />
+      <Route path="/listen/:textId" element={<ListenTextRedirect />} />
       <Route path="/course" element={<CoursePage />} />
       <Route path="/path" element={<PathPage />} />
       <Route path="/start" element={<Stage0Home />} />

@@ -270,7 +270,10 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
       try { return (await golisten.audioStatus(textId)).evidenceEligible; } catch { return false; }
     },
   };
-  const golearn = createGoLearn(learnDeps);
+  // GoListen is GoLearn's listening subsystem: reached as `golearn.listening` (the same object as the deprecated `golisten` alias in the
+  // services below). Nothing about it moves: it still exists as an inert object with listening off, and its events fold into GoLearn's
+  // own listening modality exactly as before.
+  const golearn = Object.assign(createGoLearn(learnDeps), { listening: golisten });
   golearn.attach();
   // What counts as listening can change when a recording is imported, rights are revoked or a voice review changes: GoLearn's
   // listening-derived state is then rebuilt from the event log (never inside a GoLearn fold: this runs after the change).
@@ -444,7 +447,8 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   };
 
   const services: AppServices = {
-    store, bus, adapters, golearn, golisten, gotell, stage0,
+    store, bus, adapters, golearn, gotell, stage0,
+    golisten, // deprecated alias of golearn.listening, kept for existing callers
     ingest: createIngestApi(store, adapters, clock, lexicon),
     catalog, lexicon, library,
     content: { ensureCourse },

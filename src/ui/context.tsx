@@ -1,6 +1,6 @@
 /**
  * React context exposing the app's services to every component:
- *   { store, bus, adapters, golearn, golisten, gotell, userId, session }
+ *   { store, bus, adapters, golearn (with golearn.listening = GoListen), gotell, userId, session }   (`golisten` is a deprecated alias)
  * plus the active user/course (so components know the target language) and switchers.
  *
  * Components never import engines directly; tests render them inside <AppProvider> with fakes.
@@ -103,11 +103,20 @@ export interface StartupInfo {
   warnings?: string[];
 }
 
+/**
+ * GoLearn as the app holds it. GoListen is GoLearn's listening subsystem: it runs alongside GoLearn's parsing of every text,
+ * its events fold into GoLearn's own listening modality, and it has no doorway of its own. `listening` is the same object as the
+ * deprecated `AppServices.golisten`. Optional in the type so a test double of GoLearn need not carry it; the UI reaches it
+ * through `useListening()`, which falls back to the alias.
+ */
+export type GoLearnService = GoLearn & { readonly listening?: GoListen };
+
 export interface AppServices {
   store: AppStore;
   bus: EventBus;
   adapters: AdapterRegistry;
-  golearn: GoLearn;
+  golearn: GoLearnService;
+  /** @deprecated GoListen is GoLearn's subsystem: use `golearn.listening` (UI code: `useListening()`). The same object, kept so existing callers and tests keep working. */
   golisten: GoListen;
   gotell: GoTell;
   /** Stage 0, the zero-to-language bootstrap (src/stage0). Optional: a harness without it shows no Stage 0. */
@@ -244,4 +253,10 @@ export function useApp(): AppContextValue {
   const v = useContext(AppContext);
   if (!v) throw new Error('useApp() outside <AppProvider>');
   return v;
+}
+
+/** GoListen, reached as GoLearn's listening subsystem (`golearn.listening`; the deprecated `golisten` alias when a double lacks it). */
+export function useListening(): GoListen {
+  const { golearn, golisten } = useApp();
+  return golearn.listening ?? golisten;
 }

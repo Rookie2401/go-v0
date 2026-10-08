@@ -1,7 +1,8 @@
 /**
  * "Next for you" on the Reading page: the first few of `golearn.recommend` — the ladder's next unit while the path lasts, then
  * the whole library ranked for this learner (src/golearn/candidates.ts, rank.ts, recommend.ts). Each with its one-line reason.
- * Listening-only and testimony suggestions belong to their own pages and are left out here. When nothing can be offered the
+ * A `listen-to-read-text` suggestion (a text already read, with a reviewed recording) opens that text in the Reader with its ListenBar in
+ * Listen first (`?listen=1`): listening is GoLearn's own layer, not a page of its own. Testimony suggestions belong to their own page and are left out here. When nothing can be offered the
  * section is not shown: the shelves below are always there.
  */
 import { useEffect, useState } from 'react';
@@ -51,7 +52,7 @@ export function NextForYou() {
       const out: Pick[] = [];
       for (const rec of recs) {
         if (out.length === SHOWN) break;
-        if (!rec.textId || rec.reason === 'listen-to-read-text' || out.some((p) => p.textId === rec.textId)) continue;
+        if (!rec.textId || out.some((p) => p.textId === rec.textId)) continue;
         const text = await store.texts.get(rec.textId);
         const row = text ? undefined : await store.catalog.get(rec.textId);
         const title = text?.title ?? row?.title;
@@ -67,7 +68,8 @@ export function NextForYou() {
     setError(null);
     void (async () => {
       const resident = await store.texts.get(p.textId);
-      navigate(textPath(resident ?? await library.open(p.textId)));
+      const path = textPath(resident ?? await library.open(p.textId));
+      navigate(p.rec.reason === 'listen-to-read-text' ? `${path}?listen=1` : path);
     })().catch((e: unknown) => setError(e instanceof Error ? e.message : 'Could not open this reading.'));
   };
 

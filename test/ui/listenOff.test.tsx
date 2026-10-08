@@ -8,7 +8,7 @@ import { AppRoutes, Shell } from '../../src/ui/App';
 import { TextProgress } from '../../src/ui/coverage';
 import { setPref } from '../../src/ui/prefs';
 import { Testimony } from '../../src/ui/testimony/Testimony';
-import { button, byLabel, click, makeHarness, q, qa, type as typeInto } from './harness';
+import { button, byLabel, click, flush, makeHarness, q, qa, type as typeInto } from './harness';
 import type { Mounted } from './harness';
 import { STORY_ID, seedStory } from './fixtures';
 
@@ -84,14 +84,16 @@ describe('listening off: banners, Home, progress', () => {
     expect(mounted.container.textContent).not.toMatch(AUDIO_WORDS);
   });
 
-  it('direct GoListen routes show an unavailable state without loading audio or materializing content', async () => {
+  it('old listening links just lead to reading: no audio is loaded and no content is materialized', async () => {
     const h = await makeHarness(off);
     const story = await seedStory(h.store);
     await h.store.texts.put({ ...story, published: true });
     const manifestsAll = vi.spyOn(h.store.manifests, 'all');
 
     mounted = await h.mount(app(), { router: '/listen' });
-    expect(mounted.container.textContent).toContain('GoListen is not available in this version');
+    await flush();
+    expect(q(mounted.container, 'article.reader')).toBeNull(); // the Reading page, not a text
+    expect(mounted.container.textContent).not.toMatch(AUDIO_WORDS);
     expect(mounted.container.querySelector('input[aria-label="Recording manifest"]')).toBeNull();
     expect(manifestsAll).not.toHaveBeenCalled();
     expect(h.library.open).not.toHaveBeenCalled();
@@ -99,9 +101,11 @@ describe('listening off: banners, Home, progress', () => {
 
     await mounted.unmount(); mounted = undefined;
     mounted = await h.mount(app(), { router: `/listen/${encodeURIComponent(STORY_ID)}` });
-    expect(mounted.container.textContent).toContain('GoListen is not available in this version');
-    expect(mounted.container.textContent).not.toContain(story.title);
-    expect(qa<HTMLAnchorElement>(mounted.container, 'a').some((a) => a.getAttribute('href') === '/read')).toBe(true);
+    await flush();
+    // the text itself, in the Reader, with no listening bar and no player
+    expect(q(mounted.container, 'article.reader')).not.toBeNull();
+    expect(q(mounted.container, '[data-testid="listen-bar"]')).toBeNull();
+    expect(q(mounted.container, '.player')).toBeNull();
     expect(h.listen.audioStatus).not.toHaveBeenCalled();
   });
 

@@ -1,35 +1,44 @@
 // @vitest-environment jsdom
+/**
+ * Listening inside the Reader. GoListen is GoLearn's listening subsystem: it runs alongside GoLearn's parsing of every text and has
+ * no doorway of its own. A text with a recording shows the ListenBar in the Reader (Listen only / Read + listen / Listen first,
+ * speed, replay, seeking, checkpoints, the same crediting); a text with none shows the computer-voice practice bar; the old
+ * `/listen` routes redirect into reading. The evidence semantics are pinned in test/golisten; this file pins the learner surface.
+ */
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { act } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { TextPage } from '../../src/ui/pages/TextPage';
-import { ListenPage } from '../../src/ui/listen/ListenPage';
-import { ListenHome } from '../../src/ui/listen/ListenHome';
+import { useLocation } from 'react-router-dom';
+import { AppRoutes, Shell } from '../../src/ui/App';
 import { ids, buildFixtureText } from '../../src/core';
 import type { AudioStatus, ListeningPositionSaved } from '../../src/core';
 import { canonicalTextSha256, releaseIdOf } from '../../src/golisten/rights';
-import { button, catalogText, choose, click, flush, installMediaStubs, makeHarness, pickFiles, qa, seedAudio } from './harness';
+import { button, catalogText, click, flush, installMediaStubs, makeHarness, qa, seedAudio } from './harness';
 import type { Harness, Mounted } from './harness';
-import { STORY_ID, seedStory } from './fixtures';
+import { JOHN_ID, STORY_ID, seedJohn, seedStory } from './fixtures';
 
 let mounted: Mounted | undefined;
 afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 
+/** Where the router is, readable from the DOM. */
+function Where() { const l = useLocation(); return <output data-testid="where">{l.pathname + l.search}</output>; }
+
 async function open(h: Harness, route: string) {
-  mounted = await h.mount(<Routes>
-    <Route path="/listen/:textId" element={<ListenPage />} />
-    <Route path="/listen" element={<ListenHome />} />
-    <Route path="/read/:textId" element={<TextPage mode="corpus" />} />
-    <Route path="/scripture/:textId" element={<TextPage mode="scripture" />} />
-  </Routes>, { router: route });
+  mounted = await h.mount(<><Shell><AppRoutes /></Shell><Where /></>, { router: route });
+  await flush();
   return mounted;
 }
+
+const where = (c: HTMLElement) => c.querySelector('[data-testid="where"]')!.textContent;
+const bar = (c: HTMLElement) => c.querySelector<HTMLElement>('[data-testid="listen-bar"]');
+const sentences = (c: HTMLElement) => qa(c, '.reader-body .sent');
+const concealedCount = (c: HTMLElement) => qa(c, '.reader-body .sent.is-concealed').length;
+const modeButtons = (c: HTMLElement) => qa<HTMLButtonElement>(c, '[aria-label="Listening mode"] button');
 
 async function seedReviewedRecording(h: Harness, textId: string, sentenceIds: string[]) {
   const manifest = await seedAudio(h.store, h.voice, textId, sentenceIds);
   const text = (await h.store.texts.get(textId))!;
-  const sentences = (await h.store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
-  const textSha256 = await canonicalTextSha256(textId, text.contentVersion, sentences);
+  const rows = (await h.store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+  const textSha256 = await canonicalTextSha256(textId, text.contentVersion, rows);
   for (const id of manifest.segmentIds) {
     const segment = (await h.store.audioSegments.get(id))!;
     const asset = (await h.store.audioAssets.get(segment.assetId!))!;
@@ -43,64 +52,96 @@ async function seedReviewedRecording(h: Harness, textId: string, sentenceIds: st
   return manifest;
 }
 
-describe('GoListen learner surface', () => {
-  it('starts in Listen Only without flashing transcript or creating reading exposure', async () => {
-    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
-    await seedStory(h.store);
-    await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
-    const view = await open(h, `/listen/${STORY_ID}`);
+const storyIds = () => [0, 1, 2].map((i) => ids.sentence(STORY_ID, i));
+const REVIEWED = { providerId: 'azure', approved: true } as const;
 
-    expect(view.container.querySelector('[data-testid="golisten-session"]')?.getAttribute('data-listen-mode')).toBe('only');
-    expect(view.container.textContent).not.toContain('Yo creo en Dios.');
-    expect(view.container.querySelector('.transcript p[lang]')).toBeNull();
-    expect(view.container.querySelector('.reader')).toBeNull();
-    expect(await h.events('TextViewed')).toHaveLength(0);
-    expect(await h.events('SentenceViewed')).toHaveLength(0);
-    expect(view.container.querySelector('[aria-label="Audio player"]')).toBeTruthy();
-  });
-
-  it('Read + Listen reveals only the current sentence and still waits for explicit Reader handoff', async () => {
-    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
-    await seedStory(h.store);
-    await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
-    const view = await open(h, `/listen/${STORY_ID}`);
-
-    await click(button(view.container, 'Read + listen'));
-    expect(view.container.textContent).toContain('Yo creo en Dios.');
-    expect(view.container.textContent).not.toContain('Dios me perdonó.');
-    expect(view.container.querySelector('.reader')).toBeNull();
-    expect(await h.events('TextViewed')).toHaveLength(0);
-  });
-
-  it('opens GoLearn only after recording transcript reveal first', async () => {
+describe('the ListenBar in the Reader (a reviewed recording)', () => {
+  it('offers the three modes and the Player beside the text, opens in Read + listen, and hides the computer voice', async () => {
     installMediaStubs();
-    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
+    const h = await makeHarness({ listen: REVIEWED });
     await seedStory(h.store);
-    await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
-    const view = await open(h, `/listen/${STORY_ID}`);
+    await seedReviewedRecording(h, STORY_ID, storyIds());
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}`);
+    const c = view.container;
 
-    await click(button(view.container, 'Play'));
-    await act(async () => { const audio = view.container.querySelector('audio')!; audio.currentTime = 0.4; audio.dispatchEvent(new Event('timeupdate')); });
-    await click(button(view.container, 'Open text and word support'));
-    expect(view.container.querySelector('.reader')).toBeTruthy();
+    expect((await h.listen.audioStatus(STORY_ID)).evidenceEligible).toBe(true);
+    expect(modeButtons(c).map((b) => b.textContent)).toEqual(['Listen only', 'Read + listen', 'Listen first']);
+    expect(bar(c)!.getAttribute('data-listen-mode')).toBe('read-listen');
+    expect(bar(c)!.getAttribute('data-evidence')).toBe('yes');
+    expect(modeButtons(c)[1].getAttribute('aria-pressed')).toBe('true');
+    expect(c.querySelector('.reader__main > section.player')).toBeTruthy(); // a direct child: the stylesheet pins it
+    expect(c.querySelector('[data-testid="listen-practice"]')).toBeNull(); // a reviewed recording wins over the computer voice
+    expect(concealedCount(c)).toBe(0);
+    expect(c.textContent).toContain('Yo creo en Dios.');
+  });
+
+  it('Listen first hides the text until it has been heard; it is what ?listen=1 opens', async () => {
+    installMediaStubs();
+    const h = await makeHarness({ listen: REVIEWED });
+    await seedStory(h.store);
+    await seedReviewedRecording(h, STORY_ID, storyIds());
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}?listen=1`);
+    const c = view.container;
+
+    expect(bar(c)!.getAttribute('data-listen-mode')).toBe('listen-first');
+    expect(modeButtons(c)[2].getAttribute('aria-pressed')).toBe('true');
+    expect(sentences(c)).toHaveLength(3);
+    expect(concealedCount(c)).toBe(3);
+    expect(await h.events('TranscriptRevealed')).toHaveLength(0);
+    // Nothing is counted as read while the text is hidden
+    expect(await h.events('SentenceViewed')).toHaveLength(0);
+  });
+
+  it('Listen only keeps the text hidden, and the modes switch without recording anything', async () => {
+    installMediaStubs();
+    const h = await makeHarness({ listen: REVIEWED });
+    await seedStory(h.store);
+    await seedReviewedRecording(h, STORY_ID, storyIds());
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}`);
+    const c = view.container;
+
+    await click(button(c, 'Listen only'));
+    expect(bar(c)!.getAttribute('data-listen-mode')).toBe('only');
+    expect(concealedCount(c)).toBe(3);
+    await click(button(c, 'Listen first'));
+    expect(bar(c)!.getAttribute('data-listen-mode')).toBe('listen-first');
+    expect(await h.events('TranscriptRevealed')).toHaveLength(0);
+    expect(await h.events('AudioSegmentCompleted')).toHaveLength(0);
+  });
+
+  it('showing the text from Listen first saves the position, then records the transcript rescue, then shows it', async () => {
+    installMediaStubs();
+    const h = await makeHarness({ listen: REVIEWED });
+    await seedStory(h.store);
+    await seedReviewedRecording(h, STORY_ID, storyIds());
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}?listen=1`);
+    const c = view.container;
+
+    await click(button(c, 'Play'));
+    await act(async () => { const audio = c.querySelector('audio')!; audio.currentTime = 0.4; audio.dispatchEvent(new Event('timeupdate')); });
+    await click(button(c, 'Read + listen'));
+    await flush();
+
+    expect(bar(c)!.getAttribute('data-listen-mode')).toBe('read-listen');
+    expect(concealedCount(c)).toBe(0);
     const events = await h.events();
     const transcriptAt = events.findIndex((e) => e.type === 'TranscriptRevealed');
-    const viewedAt = events.findIndex((e) => e.type === 'TextViewed');
     const checkpointAt = events.findIndex((e) => e.type === 'ListeningPositionSaved');
     expect((events[checkpointAt] as ListeningPositionSaved).positionMs).toBe(400);
-    expect(transcriptAt).toBeGreaterThan(checkpointAt);
     expect(transcriptAt).toBeGreaterThanOrEqual(0);
-    expect(viewedAt).toBeGreaterThan(transcriptAt);
+    expect(transcriptAt).toBeGreaterThan(checkpointAt);
+    expect(events.filter((e) => e.type === 'TranscriptRevealed')).toHaveLength(1);
   });
 
-  it('keeps the listening session open and offers a retry when saving the handoff checkpoint fails', async () => {
+  it('keeps Listen first and offers a retry when saving the listening position fails', async () => {
     installMediaStubs();
-    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
+    const h = await makeHarness({ listen: REVIEWED });
     await seedStory(h.store);
-    await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
-    const view = await open(h, `/listen/${STORY_ID}`);
-    await click(button(view.container, 'Play'));
-    await act(async () => { const audio = view.container.querySelector('audio')!; audio.currentTime = 0.4; audio.dispatchEvent(new Event('timeupdate')); });
+    await seedReviewedRecording(h, STORY_ID, storyIds());
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}?listen=1`);
+    const c = view.container;
+    await click(button(c, 'Play'));
+    await act(async () => { const audio = c.querySelector('audio')!; audio.currentTime = 0.4; audio.dispatchEvent(new Event('timeupdate')); });
     const originalEmit = h.bus.emit.bind(h.bus);
     const emit = vi.spyOn(h.bus, 'emit');
     let rejectedCheckpoint = false;
@@ -112,19 +153,127 @@ describe('GoListen learner surface', () => {
       return originalEmit(input);
     });
 
-    await click(button(view.container, 'Open text and word support'));
-    expect(view.container.querySelector('[data-testid="listen-handoff-error"]')?.textContent).toBe('Could not save your listening position.');
-    expect(view.container.querySelector('.reader')).toBeNull();
-    expect(view.container.querySelector('audio')).toBeTruthy();
-    expect(await h.events('TextViewed')).toHaveLength(0);
+    await click(button(c, 'Read + listen'));
+    expect(c.querySelector('[data-testid="listen-handoff-error"]')?.textContent).toBe('Could not save your listening position.');
+    expect(bar(c)!.getAttribute('data-listen-mode')).toBe('listen-first');
+    expect(concealedCount(c)).toBe(3);
+    expect(c.querySelector('audio')).toBeTruthy();
+    expect(await h.events('TranscriptRevealed')).toHaveLength(0);
 
-    await click(button(view.container, 'Open text and word support'));
-    expect(view.container.querySelector('.reader')).toBeTruthy();
-    expect(view.container.querySelector('[data-testid="listen-handoff-error"]')).toBeNull();
+    await click(button(c, 'Read + listen'));
+    await flush();
+    expect(c.querySelector('[data-testid="listen-handoff-error"]')).toBeNull();
+    expect(bar(c)!.getAttribute('data-listen-mode')).toBe('read-listen');
+    expect(concealedCount(c)).toBe(0);
     expect((await h.events('ListeningPositionSaved')).length).toBeGreaterThan(0);
     expect(await h.events('TranscriptRevealed')).toHaveLength(1);
-    expect(await h.events('TextViewed')).toHaveLength(1);
     emit.mockRestore();
+  });
+
+  it('credits a heard sentence only after observed coverage, from inside the Reader, and never from a position tick', async () => {
+    installMediaStubs();
+    const h = await makeHarness({ listen: REVIEWED });
+    await seedStory(h.store);
+    await seedReviewedRecording(h, STORY_ID, storyIds());
+    h.listen.audioStatus.mockResolvedValue({
+      textId: STORY_ID, state: 'ready', isSpeech: true, textContentVersion: 1, audioContentVersion: 1,
+      readySegments: 3, totalSegments: 3, failedSegments: 0, evidenceEligible: true, playAllowed: true,
+      sourceType: 'human-recording', qualityState: 'human_reviewed',
+    } satisfies AudioStatus);
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}?listen=1`);
+    const c = view.container;
+    const audio = c.querySelector('audio')!;
+    expect(c.querySelector('[data-testid="listen-progress"]')?.textContent).toContain('Heard: 0 of 3 sentences');
+
+    await click(button(c, 'Play'));
+    await act(async () => { audio.currentTime = 0.8; audio.dispatchEvent(new Event('timeupdate')); });
+    await flush();
+    expect(c.querySelector('[data-testid="listen-progress"]')?.textContent).toContain('Heard: 0 of 3 sentences');
+    expect(await h.events('AudioSegmentCompleted')).toHaveLength(0);
+    for (let i = 0; i < 3; i++) {
+      if (i > 0) await act(async () => { audio.currentTime = 0.8; audio.dispatchEvent(new Event('timeupdate')); });
+      await act(async () => { audio.dispatchEvent(new Event('ended')); });
+      await flush();
+    }
+    expect(await h.events('AudioSegmentCompleted')).toHaveLength(3);
+    expect(c.querySelector('[data-testid="listen-progress"]')?.textContent).toContain('Heard: 3 of 3 sentences');
+    // Listen first kept the text out of reading exposure
+    expect(await h.events('SentenceViewed')).toHaveLength(0);
+  });
+
+  it('is replayable from the Reader, with the recording still available', async () => {
+    installMediaStubs();
+    const h = await makeHarness({ listen: REVIEWED });
+    await seedStory(h.store);
+    await seedReviewedRecording(h, STORY_ID, storyIds());
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}`);
+    const c = view.container;
+    expect(c.querySelector('section.player')?.getAttribute('data-audio-state')).toBe('ready');
+    await click(button(c, 'Play'));
+    expect(c.querySelector<HTMLAudioElement>('audio')?.src).toContain('blob:test/asset:0');
+  });
+});
+
+describe('the ListenBar with audio that is not evidence', () => {
+  it('unreviewed audio plays in the same Player with its own "not counted" label, beside the computer-voice practice', async () => {
+    installMediaStubs();
+    const h = await makeHarness(); // fixture voice: preview-only
+    await seedStory(h.store);
+    await seedAudio(h.store, h.voice, STORY_ID, storyIds());
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}`);
+    const c = view.container;
+
+    expect((await h.listen.audioStatus(STORY_ID)).state).toBe('preview-only');
+    expect(bar(c)!.getAttribute('data-evidence')).toBe('no');
+    expect(c.querySelector('[data-testid="preview-audio-note"]')?.textContent).toMatch(/does not count|not counted|not passed/i);
+    expect(c.querySelector('[data-testid="preview-audio-badge"]')).toBeTruthy();
+    expect(c.querySelector('[data-testid="listen-practice"]')).toBeTruthy();
+  });
+
+  it('with no recording at all the computer-voice practice bar is the whole bar, and GoListen is asked for nothing more', async () => {
+    const h = await makeHarness({ listen: { unavailable: true } });
+    await seedStory(h.store);
+    const view = await open(h, `/read/${encodeURIComponent(STORY_ID)}`);
+    const c = view.container;
+
+    expect(bar(c)).toBeNull();
+    expect(c.querySelector('section.player')).toBeNull();
+    expect(c.querySelector('[data-testid="listen-practice"]')).toBeTruthy();
+    expect(h.listen.ensureAudio).not.toHaveBeenCalled();
+    expect(h.listen.runJobs).not.toHaveBeenCalled();
+  });
+});
+
+describe('the old listening links lead into reading', () => {
+  it('/listen is the Reading page', async () => {
+    const h = await makeHarness();
+    await seedStory(h.store);
+    const view = await open(h, '/listen');
+    expect(where(view.container)).toBe('/read');
+    expect(view.container.querySelector('[data-testid="golisten-home"]')).toBeNull();
+  });
+
+  it('/listen/:textId opens that text in the Reader with the bar in Listen first', async () => {
+    installMediaStubs();
+    const h = await makeHarness({ listen: REVIEWED });
+    await seedStory(h.store);
+    await seedReviewedRecording(h, STORY_ID, storyIds());
+    const view = await open(h, `/listen/${encodeURIComponent(STORY_ID)}`);
+    expect(where(view.container)).toBe(`/read/${encodeURIComponent(STORY_ID)}?listen=1`);
+    expect(view.container.querySelector('article.reader')).toBeTruthy();
+    expect(bar(view.container)!.getAttribute('data-listen-mode')).toBe('listen-first');
+    expect(concealedCount(view.container)).toBe(3);
+  });
+
+  it('a scripture text redirects to its Scripture route, and an unknown id to the library route', async () => {
+    const h = await makeHarness();
+    await seedJohn(h.store);
+    const john = await open(h, `/listen/${encodeURIComponent(JOHN_ID)}`);
+    expect(where(john.container)).toBe(`/scripture/${encodeURIComponent(JOHN_ID)}?listen=1`);
+    await john.unmount(); mounted = undefined;
+    const unknown = await open(h, '/listen/text:es:nothing-here');
+    expect(where(unknown.container)).toBe(`/read/${encodeURIComponent('text:es:nothing-here')}?listen=1`);
+    expect(unknown.container.textContent).toContain('not in your library');
   });
 
   it('keeps private and unpublished text behind the same canonical gates', async () => {
@@ -133,181 +282,38 @@ describe('GoListen learner surface', () => {
     const privateText = await buildFixtureText(h.store, { lang: 'es', slug: 'private', corpusId: 'private-testimony', kind: 'testimony', title: 'A private testimony', sentences: [{ text: 'Yo creo.', tokens: [{ surface: 'Yo', isWord: true }] }] });
     const unpublished = await buildFixtureText(h.store, { lang: 'es', slug: 'unpublished', published: false, title: 'Secret passage', sentences: [{ text: 'No mostrar.', tokens: [{ surface: 'No', isWord: true }] }] });
 
-    const privateView = await open(h, `/listen/${privateText.id}`);
-    expect(privateView.container.textContent).toContain('not available for listening');
+    const privateView = await open(h, `/listen/${encodeURIComponent(privateText.id)}`);
+    expect(privateView.container.textContent).toContain('not in your library');
     expect(privateView.container.textContent).not.toContain('A private testimony');
-    expect(privateView.container.querySelector('[aria-label="Audio player"]')).toBeNull();
+    expect(privateView.container.querySelector('section.player')).toBeNull();
     await privateView.unmount(); mounted = undefined;
 
-    const unpublishedView = await open(h, `/listen/${unpublished.id}`);
-    expect(unpublishedView.container.querySelector('[data-testid="listen-unpublished"]')).toBeTruthy();
-    expect(unpublishedView.container.textContent).not.toContain('Secret passage');
+    const unpublishedView = await open(h, `/listen/${encodeURIComponent(unpublished.id)}`);
+    expect(unpublishedView.container.querySelector('[data-testid="unpublished-gate"]')).toBeTruthy();
     expect(unpublishedView.container.textContent).not.toContain('No mostrar.');
   });
 
-  it('keeps protected listening-assessment text out of direct reader and listening routes', async () => {
+  it('keeps protected listening-assessment text out of the direct routes', async () => {
     const h = await makeHarness();
     await seedStory(h.store);
     const text = (await h.store.texts.get(STORY_ID))!;
     await h.store.texts.put({ ...text, listeningAssessmentId: 'protected-check' });
 
-    const listen = await open(h, `/listen/${STORY_ID}`);
-    expect(listen.container.textContent).not.toContain(text.title);
+    const listen = await open(h, `/listen/${encodeURIComponent(STORY_ID)}`);
     expect(listen.container.textContent).not.toContain('Yo creo en Dios.');
+    expect(listen.container.querySelector('article.reader')).toBeNull();
     await listen.unmount(); mounted = undefined;
 
-    const read = await open(h, `/read/${STORY_ID}`);
-    expect(read.container.textContent).not.toContain(text.title);
+    const read = await open(h, `/read/${encodeURIComponent(STORY_ID)}`);
     expect(read.container.textContent).not.toContain('Yo creo en Dios.');
   });
 
-  it('shows a real GoListen home and an honest empty state without trying synthesis', async () => {
+  it('does not open or generate anything to answer a listening link for a text already on the device', async () => {
     const h = await makeHarness({ listen: { unavailable: true } });
-    await seedStory(h.store);
-    const view = await open(h, '/listen');
-    expect(view.container.querySelector('[data-testid="golisten-home"]')).toBeTruthy();
-    expect(view.container.textContent).toContain('No approved listening audio is ready');
-    expect(view.container.textContent).toContain('GoLearn reading');
+    const story = await seedStory(h.store);
+    h.library.items.push(catalogText({ id: story.id, title: story.title, stream: 'library' }));
+    await open(h, `/listen/${encodeURIComponent(STORY_ID)}`);
+    expect(h.library.opened).toEqual([]);
     expect(h.listen.ensureAudio).not.toHaveBeenCalled();
-  });
-
-  it('materializes a published lazy catalogue text only when a saved audio manifest points to it', async () => {
-    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
-    const story = await seedStory(h.store);
-    await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
-    await h.store.texts.delete(STORY_ID);
-    h.library.items.push(catalogText({ id: STORY_ID, title: story.title, stream: 'library' }));
-
-    const view = await open(h, '/listen');
-    expect(h.library.opened).toContain(STORY_ID);
-    expect(view.container.querySelector(`a[href="/listen/${encodeURIComponent(STORY_ID)}"]`)).toBeTruthy();
-    expect(h.listen.ensureAudio).not.toHaveBeenCalled();
-  });
-
-  it('puts a valid saved position at the top of the GoListen home as Continue listening', async () => {
-    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
-    await seedStory(h.store);
-    const manifest = await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
-    await h.bus.emit<ListeningPositionSaved>({
-      type: 'ListeningPositionSaved', userId: 'u1', lang: 'es', surface: 'listen', session: 'ses-test', dedupeKey: 'resume:story',
-      textId: STORY_ID, manifestId: manifest.id, segmentId: manifest.segmentIds[1], positionMs: 240, at: '2026-10-03T10:00:00.000Z',
-    });
-    const view = await open(h, '/listen');
-    const resume = qa<HTMLAnchorElement>(view.container, 'a').find((a) => a.textContent?.includes('Continue listening'));
-    expect(resume?.getAttribute('href')).toBe(`/listen/${encodeURIComponent(STORY_ID)}`);
-    expect(resume?.textContent).toContain('Continue where you paused');
-  });
-
-  it('keeps a fully heard lawful recording available for replay without opening a reading session', async () => {
-    installMediaStubs();
-    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
-    await seedStory(h.store);
-    await seedReviewedRecording(h, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
-    h.listen.audioStatus.mockResolvedValue({
-      textId: STORY_ID, state: 'ready', isSpeech: true, textContentVersion: 1, audioContentVersion: 1,
-      readySegments: 3, totalSegments: 3, failedSegments: 0, evidenceEligible: true, playAllowed: true,
-      sourceType: 'human-recording', qualityState: 'human_reviewed',
-    } satisfies AudioStatus);
-
-    const session = await open(h, `/listen/${STORY_ID}`);
-    const audio = session.container.querySelector('audio')!;
-    for (let i = 0; i < 3; i++) {
-      if (i === 0) await click(button(session.container, 'Play'));
-      await act(async () => { audio.currentTime = 0.8; audio.dispatchEvent(new Event('timeupdate')); });
-      await act(async () => { audio.dispatchEvent(new Event('ended')); });
-      await flush();
-    }
-    expect(await h.events('AudioSegmentCompleted')).toHaveLength(3);
-    expect(await h.events('TextViewed')).toHaveLength(0);
-    expect(await h.events('SentenceViewed')).toHaveLength(0);
-    await session.unmount(); mounted = undefined;
-
-    const home = await open(h, '/listen');
-    expect(home.container.textContent).toContain('No unfinished listening passages');
-    const replay = home.container.querySelector<HTMLAnchorElement>(`[data-testid="listen-available-recordings"] a[href="/listen/${encodeURIComponent(STORY_ID)}"]`);
-    expect(replay?.textContent).toContain('Open recording');
-    await click(replay!);
-    await flush();
-    expect(home.container.querySelector('section.player')?.getAttribute('data-audio-state')).toBe('ready');
-    await click(button(home.container, 'Play'));
-    expect(home.container.querySelector<HTMLAudioElement>('audio')?.src).toContain('blob:test/asset:0');
-  });
-
-  it('the upload form says plainly that an uploaded recording is not a review, and always imports as a learner import', async () => {
-    const h = await makeHarness({ listen: { unavailable: true } });
-    const story = await seedStory(h.store);
-    const importRecording = vi.fn(async () => ({ manifest: {}, asset: {}, imported: 1, reused: false }));
-    (h.listen as unknown as Record<string, unknown>).importRecording = importRecording;
-    const home = await open(h, '/listen');
-    const warning = home.container.querySelector('[data-testid="import-warning"]')!;
-    expect(warning.textContent).toMatch(/plays on this device/);
-    expect(warning.textContent).toMatch(/counts toward listening progress only after a named reviewer approves it for the course/);
-    expect(warning.textContent).toMatch(/rights stated in the manifest are your own statement/);
-
-    await choose(home.container.querySelector<HTMLSelectElement>('select[aria-label="Text release"]')!, story.id);
-    // the manifest claims everything; none of it may travel as a review
-    const manifest = JSON.stringify({ textId: story.id, kind: 'human', qualityState: 'approved', rights: { status: 'approved' } });
-    // (jsdom's File has no text()/arrayBuffer(): give these two the reads the form uses)
-    const manifestFile = Object.assign(new File([manifest], 'm.json', { type: 'application/json' }), { text: async () => manifest });
-    const audioFile = Object.assign(new File([new Uint8Array([1, 2, 3])], 'a.wav', { type: 'audio/wav' }), { arrayBuffer: async () => new Uint8Array([1, 2, 3]).buffer });
-    await pickFiles(home.container.querySelector<HTMLInputElement>('input[aria-label="Recording manifest"]')!, [manifestFile]);
-    await pickFiles(home.container.querySelector<HTMLInputElement>('input[aria-label="Audio file"]')!, [audioFile]);
-    await click(button(home.container, 'Check and add recording'));
-    expect(importRecording).toHaveBeenCalledTimes(1);
-    expect((importRecording.mock.calls[0] as unknown[])[0]).toMatchObject({ origin: 'learner' });
-    expect(((importRecording.mock.calls[0] as unknown[])[0] as { reviewer?: string }).reviewer).toBeUndefined();
-    expect(home.container.textContent).toMatch(/only after a named reviewer approves it/);
-  });
-
-  it('imports a recording for an exact lazy published text named by the manifest', async () => {
-    const h = await makeHarness({ listen: { unavailable: true } });
-    const lazyId = 'text:es:brand-new-lazy-release';
-    h.library.items.push(catalogText({ id: lazyId, title: 'A newly added story', lang: 'es', published: true }));
-    const importRecording = vi.fn(async () => ({ manifest: {}, asset: {}, imported: 1, reused: false }));
-    (h.listen as unknown as Record<string, unknown>).importRecording = importRecording;
-    const home = await open(h, '/listen');
-    expect(await h.store.texts.get(lazyId)).toBeUndefined();
-
-    await choose(home.container.querySelector<HTMLSelectElement>('select[aria-label="Text release"]')!, '__manifest__');
-    const manifest = JSON.stringify({ textId: lazyId, kind: 'human', qualityState: 'approved', rights: { status: 'approved' } });
-    const manifestFile = Object.assign(new File([manifest], 'm.json', { type: 'application/json' }), { text: async () => manifest });
-    const audioFile = Object.assign(new File([new Uint8Array([1, 2, 3])], 'a.wav', { type: 'audio/wav' }), { arrayBuffer: async () => new Uint8Array([1, 2, 3]).buffer });
-    await pickFiles(home.container.querySelector<HTMLInputElement>('input[aria-label="Recording manifest"]')!, [manifestFile]);
-    await pickFiles(home.container.querySelector<HTMLInputElement>('input[aria-label="Audio file"]')!, [audioFile]);
-    await click(button(home.container, 'Check and add recording'));
-
-    expect(h.library.opened).toEqual([lazyId]);
-    expect((await h.store.texts.get(lazyId))?.published).toBe(true);
-    expect(importRecording).toHaveBeenCalledTimes(1);
-    expect((importRecording.mock.calls[0] as unknown[])[0]).toMatchObject({ manifest: { textId: lazyId }, origin: 'learner' });
-  });
-
-  it('disambiguates identical release titles in the recording import selector', async () => {
-    const h = await makeHarness({ listen: { unavailable: true } });
-    const story = await seedStory(h.store);
-    await buildFixtureText(h.store, { lang: 'es', slug: 'same-title-other-release', title: story.title, sentences: [{ text: 'Hola.', tokens: [{ surface: 'Hola', isWord: true }] }] });
-    const home = await open(h, '/listen');
-    const options = qa<HTMLOptionElement>(home.container, 'select[aria-label="Text release"] option').map((option) => option.textContent);
-    expect(options.some((label) => label?.includes(`${story.title} · v${story.contentVersion} · ${story.id}`))).toBe(true);
-    expect(options.some((label) => label?.includes('same-title-other-release'))).toBe(true);
-  });
-
-  it('updates the listening progress when playback completes without counting a position tick', async () => {
-    installMediaStubs();
-    const h = await makeHarness({ listen: { providerId: 'azure', approved: true } });
-    await seedStory(h.store);
-    await seedAudio(h.store, h.voice, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
-    const view = await open(h, `/listen/${STORY_ID}`);
-    expect(view.container.querySelector('[data-testid="listen-progress"]')?.textContent).toContain('Heard: 0 of 3 sentences');
-
-    const audio = view.container.querySelector('audio')!;
-    await click(button(view.container, 'Play'));
-    await act(async () => { audio.currentTime = 0.8; audio.dispatchEvent(new Event('timeupdate')); });
-    await flush();
-    expect(view.container.querySelector('[data-testid="listen-progress"]')?.textContent).toContain('Heard: 0 of 3 sentences');
-    await act(async () => { audio.dispatchEvent(new Event('ended')); });
-    await flush();
-    expect(view.container.querySelector('[data-testid="listen-progress"]')?.textContent).toContain('Heard: 1 of 3 sentences');
-    expect(view.container.querySelector('[data-testid="listen-progress"]')?.textContent).toContain('not been reviewed for listening evidence');
   });
 });

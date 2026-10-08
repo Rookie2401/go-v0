@@ -68,7 +68,8 @@ import { dictionaryView } from '../../ingest';
 import type { DictionaryView } from './assistance';
 import { useAssistance } from './useAssistance';
 import { useListenEnabled } from './useListen';
-import { ListenPractice } from './ListenPractice';
+import { ListenBar } from './ListenBar';
+import type { PlayerChange } from '../player/Player';
 import './thai.css';
 
 export interface ReaderProps {
@@ -76,11 +77,11 @@ export interface ReaderProps {
   mode: 'corpus' | 'scripture';
   /** Injectable for tests; default is IntersectionObserver-based, null ⇒ manual "mark as seen" buttons. */
   createDetector?: ViewDetectorFactory;
-  /** Sentence currently playing (Player), highlighted and scrolled into view. */
+  /** Sentence currently playing, highlighted and scrolled into view. Default: the ListenBar's own Player reports it; a host may override. */
   activeSentenceId?: string;
-  /** Sentences whose text is hidden (listening-first transcript modes). */
+  /** Sentences whose text is hidden (Listen only / Listen first). Default: the ListenBar's own Player reports it; a host may override. */
   concealed?: (sentenceId: string) => boolean;
-  /** A bar that stays pinned under the header (the Player). */
+  /** Another bar that stays pinned under the header, after the ListenBar. */
   bar?: ReactNode;
   /** Content above the text that scrolls with it (passage preparation). */
   before?: ReactNode;
@@ -193,7 +194,7 @@ interface CardState {
   detailDone: boolean;
 }
 
-function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, concealed, bar, before }: ReaderProps & { data: TextData; profile: AssistanceProfile }) {
+function ReaderBody({ data, profile, mode, createDetector, activeSentenceId: activeOverride, concealed: concealedOverride, bar, before }: ReaderProps & { data: TextData; profile: AssistanceProfile }) {
   const { bus, golearn, adapters, lexicon, course, userId, currentSession } = useApp() as ReturnType<typeof useApp> & { lexicon?: unknown };
   const preview = usePreview();
   const { text } = data;
@@ -230,6 +231,11 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   const [auto, setAuto] = useState<boolean | null>(null);
   const [finishedHere, setFinishedHere] = useState(false);
   const listen = useListenEnabled();
+  // The ListenBar's Player reports which sentence is playing and which are hidden (Listen first / Listen only); the Reader marks them.
+  const [listenInfo, setListenInfo] = useState<PlayerChange | undefined>();
+  const onListenChange = useCallback((i: PlayerChange) => setListenInfo(i), []);
+  const activeSentenceId = activeOverride ?? (listen && listenInfo?.state.playing ? listenInfo.segment?.sentenceIds[0] : undefined);
+  const concealed = concealedOverride ?? (listen ? listenInfo?.concealed : undefined);
   const stored = useReadingProgress(useMemo(() => [text.id], [text.id])).get(text.id);
   // With listening off the reading details say nothing about listening, whatever an older record holds.
   const record = useMemo(() => (stored && !listen && stored.listenedSentences ? { ...stored, listenedSentences: 0 } : stored), [stored, listen]);
@@ -241,6 +247,13 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
       detectorRef.current?.setPaused(overlays.current.size > 0);
     },
   }), []);
+  // While the listening mode hides any of the text (Listen only, Listen first) it is not in front of the learner: nothing is counted
+  // as read, like any other overlay that pauses sentence-view detection. When the text is shown the dwell starts again from zero.
+  const anyConcealed = !!concealed && data.sentences.some((s) => concealed(s.id));
+  useEffect(() => {
+    gate.setOverlay('listen-hidden', anyConcealed);
+    return () => gate.setOverlay('listen-hidden', false);
+  }, [gate, anyConcealed]);
   const [understood, setUnderstood] = useState<ReadonlySet<string>>(new Set());
   const [textDegree, setTextDegree] = useState<ComprehensionReported['degree'] | null>(null);
 
@@ -857,6 +870,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           )}
         </header>
 
+        <ListenBar textId={text.id} lang={text.lang} sentences={data.sentences} onChange={onListenChange} />
         {bar}
 
         <div className={`reader__prose${marks}`}>
@@ -875,8 +889,6 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
 
           {/* Credits precede the text at every assistance level, including publishers requiring top-of-story attribution. */}
           <SourceLine text={text} />
-
-          <ListenPractice textId={text.id} lang={text.lang} sentences={data.sentences} />
 
           <div className="reader-body">{sectionBlocks}</div>
 

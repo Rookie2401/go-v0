@@ -9,21 +9,32 @@ Thailand→Thai, India→Hindi, Germany→German).
               ┌────────────────────── learner-facing surfaces ──────────────────────┐
               │  Read (Comprehensible Input)  │  Scripture (Bible)  │  My Testimony  │
               │            └──── shared Reader ────┘                │   Editor       │
-              └───────────────┬───────────────────────┬─────────────────┬───────────┘
-                              │ events                │ events          │ events
-              ┌───────────────▼───────────────────────▼─────────────────▼───────────┐
-              │                         EventBus (append-only log)                    │
-              └───────────────┬───────────────────────┬─────────────────┬───────────┘
-              │   GoLearn     │      GoListen         │      GoTell     │
-              │ learner state │ audio pipeline+player │ constrained     │
-              │ coverage/rec. │ listening events      │ production      │
-              └───────────────┴───────────────────────┴─────────────────┘
+              └───────────────────────────────┬────────────────────────┬─────────┘
+                                              │ events                 │ events
+              ┌───────────────────────────────▼────────────────────────▼─────────┐
+              │                     EventBus (append-only log)                    │
+              └───────────────────────────────┬────────────────────────┬─────────┘
+              ┌───────────────────────────────▼──────────────────┐ ┌───▼─────────┐
+              │ GoLearn                                          │ │   GoTell    │
+              │  learner state · coverage / recommendation       │ │ constrained │
+              │  ┌─ reading layer ─┐  ┌─ listening layer ──────┐ │ │ production  │
+              │  │ Reader, sentence│  │ GoListen: audio        │ │ │             │
+              │  │ views, help,    │  │ pipeline + player,     │ │ │             │
+              │  │ rescue          │  │ listening events       │ │ │             │
+              │  └─────────────────┘  └────────────────────────┘ │ │             │
+              └──────────────────────────────────────────────────┘ └─────────────┘
                               AppStore (one shared model)  ·  LanguageAdapters
 ```
 
-Surfaces are *places*; engines are *cross-cutting*. All three engines read and write the **same**
+Surfaces are *places*; engines are *cross-cutting*. GoLearn and GoTell (and GoListen inside GoLearn) read and write the **same**
 `AppStore` tables (`src/core/store.ts`) and communicate through **domain events** (`src/core/events.ts`).
 No engine holds its own vocabulary or mastery model.
+
+**GoListen runs alongside GoLearn's parsing of every text: a text's listening layer is prepared with the text, credited through GoLearn's listening modality, and shown in the Reader; it has no doorway of its own.**
+In the app it is `golearn.listening` (the old `golisten` service is a deprecated alias of the same object). The Reader's `ListenBar` offers
+Listen only / Read + listen / Listen first where a recording exists (the computer-voice practice bar where none does); `/listen` and
+`/listen/:textId` redirect to Reading (`?listen=1` opens the bar in Listen first); recordings are added and reviewed in Settings → Content →
+Recordings. The evidence model is unchanged (`evidence@8`, `src/golearn/eligibility.ts`, `docs/GOLISTEN.md`).
 
 ## 2. Retained architecture
 
@@ -104,7 +115,7 @@ level, `EnglishRescueRevealed` with scope. Navigation: Home · Read · Scripture
 - `GoLearn` (`golearn.ts`): `handle(event)`, `rebuild(user)`, `queryItem(s)`, `listKnown`,
   `resolveAnalysis`/`overrideAnalysis`, `sentenceSupport`/`tokenSupport`, `coverage`,
   `scriptureReadiness`, `recommend`; `EvidencePolicy` centralizes assistance discounts.
-- `GoListen` (`golisten.ts`): `TtsProvider` abstraction, `resolveVoice`, `ensureAudio` (idempotent,
+- `GoListen` (`golisten.ts`; GoLearn's listening subsystem, reached as `golearn.listening`): `TtsProvider` abstraction, `resolveVoice`, `ensureAudio` (idempotent,
   cache-keyed), `ensureSentenceAudio` (testimony), `runJobs`, manifests/segments/assets/alignments,
   `diagnostics`; `PlayerState` for the UI player.
 - `GoTell` (`gotell.ts`): testimony + revisions, `submitDraft` → `ProductionAnalysis`,

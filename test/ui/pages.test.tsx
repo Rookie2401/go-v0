@@ -87,7 +87,7 @@ describe('Library and routes', () => {
     const h = await makeHarness();
     mounted = await h.mount(app(), { router: '/' });
     expect(qa(mounted.container, 'a[href^="/read/"]')).toHaveLength(0);
-    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Reading', 'Your path', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Reading', 'Your path', 'Scripture', 'Testimony', 'Team Texts']);
   });
 /*
     const recs: Recommendation[] = [
@@ -111,26 +111,28 @@ describe('Library and routes', () => {
   }); */
 });
 
-describe('Home — GoListen entry', () => {
-  const listenSub = (root: HTMLElement) => q(root, 'a.home__entry[href="/listen"] .home__entry-sub')!.textContent;
+describe('Home — listening is part of Reading, not a doorway', () => {
+  const readingSub = (root: HTMLElement) => q(root, 'a.home__entry[href="/read"] .home__entry-sub')!.textContent;
 
-  it('says plainly that there are no recordings in the language when none is stored, and keeps the entry and its route', async () => {
+  it('has no GoListen entry, and the Reading entry says where listening is', async () => {
     const h = await makeHarness();
     mounted = await h.mount(app(), { router: '/' });
-    expect(q(mounted.container, 'a.home__entry[href="/listen"]')).not.toBeNull();
-    expect(listenSub(mounted.container)).toBe('No recordings in Spanish yet');
+    expect(q(mounted.container, 'a.home__entry[href="/listen"]')).toBeNull();
+    expect(mounted.container.textContent).not.toContain('GoListen');
+    expect(readingSub(mounted.container)).toBe('Stories, dialogues and Scripture — with listening where a recording exists');
   });
 
-  it('keeps its promise when a recording of the language is stored (a recording in another language is not counted)', async () => {
+  it('is the same with a recording stored, and says nothing of recordings when listening is off', async () => {
     const h = await makeHarness();
     await seedStory(h.store);
     await seedAudio(h.store, h.voice, STORY_ID, [ids.sentence(STORY_ID, 0)]);
     mounted = await h.mount(app(), { router: '/' });
-    expect(listenSub(mounted.container)).toBe('Understand stories and Scripture by listening');
+    expect(q(mounted.container, 'a.home__entry[href="/listen"]')).toBeNull();
+    expect(readingSub(mounted.container)).toMatch(/with listening where a recording exists/);
     await mounted.unmount();
-    const other = await makeHarness({ courseId: 'thailand-th' });
-    mounted = await other.mount(app(), { router: '/' });
-    expect(listenSub(mounted.container)).toBe('No recordings in Thai yet');
+    const off = await makeHarness({ features: { listen: false } });
+    mounted = await off.mount(app(), { router: '/' });
+    expect(readingSub(mounted.container)).toBe('Stories, dialogues and Scripture');
   });
 });
 

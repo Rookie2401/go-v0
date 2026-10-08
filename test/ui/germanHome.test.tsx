@@ -26,7 +26,7 @@ describe('German Home directory', () => {
     mounted = await h.mount(app());
     await flush(8);
     // "Your path" is the ladder entry, shown because the German course has a ladder (hasLadder): a primary surface, not a door
-    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((x) => x.textContent)).toEqual(['Reading', 'Your path', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((x) => x.textContent)).toEqual(['Reading', 'Your path', 'Scripture', 'Testimony', 'Team Texts']);
     expect(qa(mounted.container, 'a.door')).toHaveLength(0);
   });
 });

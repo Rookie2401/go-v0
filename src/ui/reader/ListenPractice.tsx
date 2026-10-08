@@ -8,40 +8,32 @@
  *    With listening switched off the reader never asks GoListen anything, so the control is simply there.
  *  - A device with no voice for the language gets disabled buttons and one plain note, as Stage 0 does.
  *
- * One mount in the reader. The per-sentence "Hear it" buttons are portalled into each sentence's own action span.
+ * It is the no-recording branch of the reader's ListenBar (src/ui/reader/ListenBar.tsx), which asks GoListen and passes the answer
+ * in as `hidden`. The per-sentence "Hear it" buttons are portalled into each sentence's own action span.
  */
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { ReactElement } from 'react';
 import { createPortal } from 'react-dom';
 import type { LanguageCode } from '../../core';
 import { stage0Config } from '../../stage0/lang';
-import { useApp } from '../context';
-import { PRACTICE_LABEL, PRACTICE_RATES, speakable, useDevicePractice, useListenEnabled } from './useListen';
+import { PRACTICE_LABEL, PRACTICE_RATES, speakable, useDevicePractice } from './useListen';
 
 export interface ListenPracticeSentence { id: string; index: number; text: string }
-export interface ListenPracticeProps { textId: string; lang: LanguageCode; sentences: readonly ListenPracticeSentence[] }
+export interface ListenPracticeProps {
+  lang: LanguageCode;
+  sentences: readonly ListenPracticeSentence[];
+  /**
+   * The ListenBar's decision: true while GoListen has not yet answered, and when a reviewed recording exists (the recording wins).
+   * This component asks GoListen nothing itself; it is the bar's no-recording branch.
+   */
+  hidden: boolean;
+}
 
-export function ListenPractice({ textId, lang, sentences }: ListenPracticeProps): ReactElement | null {
-  const { golisten } = useApp();
-  const listenOn = useListenEnabled();
+export function ListenPractice({ lang, sentences, hidden }: ListenPracticeProps): ReactElement | null {
   const practice = useDevicePractice(lang);
   const barRef = useRef<HTMLDivElement>(null);
   const [hosts, setHosts] = useState<ReadonlyMap<string, HTMLElement>>(new Map());
-  // With listening on, wait for GoListen's answer before showing anything: a reviewed recording hides this control altogether.
-  const [recorded, setRecorded] = useState<boolean | null>(listenOn ? null : false);
 
-  useEffect(() => {
-    if (!listenOn) { setRecorded(false); return; }
-    let live = true;
-    setRecorded(null);
-    void Promise.resolve()
-      .then(() => golisten.audioStatus(textId))
-      .then((st) => st?.state === 'ready' && st.evidenceEligible === true, () => false)
-      .then((yes) => { if (live) setRecorded(yes); });
-    return () => { live = false; };
-  }, [listenOn, golisten, textId]);
-
-  const hidden = recorded !== false;
   const sentenceKey = sentences.map((s) => s.id).join('|');
   const { stop } = practice;
   useEffect(() => { if (hidden) stop(); }, [hidden, stop]);

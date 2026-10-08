@@ -104,7 +104,7 @@ describe('Home is a stable doorway; reading continuation belongs to GoLearn', ()
     h = await makeHarness();
     h.learn.recommend.mockImplementation(async () => [rec({ reason: 'next-input', explanation: `No Spanish text is published yet: 1 imported text is waiting (${RAW_REASON}).` })]);
     mounted = await h.mount(app());
-    expect(qa(mounted.container, 'a.home__entry').map((a) => a.getAttribute('href'))).toEqual(['/read', '/path', '/listen', '/scripture', '/testimony', '/team-texts']);
+    expect(qa(mounted.container, 'a.home__entry').map((a) => a.getAttribute('href'))).toEqual(['/read', '/path', '/scripture', '/testimony', '/team-texts']);
     expect(mounted.container.textContent).not.toContain('No Spanish text is published yet');
     expect(mounted.container.textContent).not.toContain('set review.status');
     expect(h.learn.recommend).not.toHaveBeenCalled();

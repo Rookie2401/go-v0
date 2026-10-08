@@ -643,7 +643,8 @@ export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: Fak
   const services: AppServices = {
     store, bus, catalog, library, lexicon: (lang) => ({ ...createMemoryLexiconSource(lang, []), info: async () => undefined }),
     adapters: { get: () => { throw new Error('adapters are not used by the UI tests'); }, all: () => [] },
-    golearn: learn, golisten: listen, gotell: tell,
+    // GoListen is GoLearn's listening subsystem (`golearn.listening`); `golisten` stays as the deprecated alias of the same object.
+    golearn: Object.assign(learn, { listening: listen }), golisten: listen, gotell: tell,
     ingest: controls.ingest, backup: controls.backup, speech: controls.speech,
     features: { listen: true, ...opts.features }, // the dormant GoListen UI keeps its tests: new tests pass { listen: false }
   };

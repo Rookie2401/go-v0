@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
 /**
- * Listening is switched off by one flag (PLAN8): with `features.listen === false` the reader has no player, no audio
+ * Listening is switched off by one flag (PLAN8): with `features.listen === false` the reader has no listening bar, no player, no audio
  * banner, no "Prepare audio", no transcript or speed controls, no listening wording, and never touches `golisten`.
  * With it on, everything is as before. The off state is passed through the harness's `features` option; `golisten` is
  * replaced by a spy that records every property the UI touches.
  */
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import type { GoListen, ReadingProgress } from '../../src/core';
 import { ids } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
@@ -18,10 +18,10 @@ import { STORY_ID, seedStory } from './fixtures';
 let mounted: Mounted | undefined;
 afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 
-/** A GoListen that fails the test if anything at all is read from it. */
-function spyListen(): { golisten: GoListen; touched: string[] } {
+/** A GoListen that records every property read from it. Listening off: nothing may be read. Listening on: it answers as the harness's own GoListen. */
+function spyListen(real: GoListen): { golisten: GoListen; touched: string[] } {
   const touched: string[] = [];
-  const golisten = new Proxy({}, { get: (_t, prop) => { touched.push(String(prop)); return vi.fn(async () => undefined); } }) as GoListen;
+  const golisten = new Proxy(real, { get: (target, prop) => { touched.push(String(prop)); return Reflect.get(target, prop); } }) as GoListen;
   return { golisten, touched };
 }
 
@@ -33,8 +33,9 @@ async function setup(listen: boolean): Promise<{ h: Harness; touched: string[] }
   h.learn.readingProgressMany.mockImplementation(async (userId: string, textIds: string[]) => new Map(textIds.map((id) => [id, {
     userId, lang: 'es', textId: id, contentVersion: 1, sentencesTotal: 3, sentencesSeen: 1, sentencesUnderstood: 0, sittings: 1, listenedSentences: 3,
   } as ReadingProgress])));
-  const { golisten, touched } = spyListen();
-  Object.assign(h.services, { golisten });
+  const { golisten, touched } = spyListen(h.services.golisten);
+  // GoListen is reached as GoLearn's listening subsystem; the deprecated alias is replaced with it
+  Object.assign(h.services, { golisten, golearn: Object.assign(h.learn, { listening: golisten }) });
   return { h, touched };
 }
 

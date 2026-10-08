@@ -19,7 +19,7 @@ describe('Your path on Home', () => {
     expect(hasLadder('es')).toBe(true);
     const h = await makeHarness();
     mounted = await h.mount(app(), { router: '/' });
-    expect(homeNames(mounted)).toEqual(['Reading', 'Your path', 'GoListen', 'Scripture', 'Testimony', 'Team Texts']);
+    expect(homeNames(mounted)).toEqual(['Reading', 'Your path', 'Scripture', 'Testimony', 'Team Texts']);
     expect(qa(mounted.container, 'nav[aria-label="Start here"] a').map((a) => a.getAttribute('href'))).toContain('/path');
   });
 

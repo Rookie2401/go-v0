@@ -590,4 +590,9 @@ tr.is-current { background: color-mix(in srgb, var(--accent) 7%, transparent); }
 .sent[data-practice='on'] { background: color-mix(in srgb, var(--accent) 7%, transparent); border-radius: 4px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
 .listen-practice { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; margin: 0.5rem 0; }
 .listen-practice .note { margin: 0; font-size: 0.85em; flex-basis: 100%; }
+/* The reader's ListenBar: the three listening modes above the pinned Player, and the heard-progress note. */
+.reader__main > .listenbar { width: calc(100% - 2rem); max-width: var(--measure); margin: 0.6rem auto 0; }
+.listenbar .segmented { flex-wrap: wrap; }
+.listenbar .card__note { margin: 0.4rem 0 0; }
+@media (max-width: 640px) { .reader__main > .listenbar { width: calc(100% - 1.25rem); } }
 .sent__hear { font: inherit; font-size: 0.8em; background: none; border: 0; padding: 0 0.3em; cursor: pointer; color: var(--accent); }

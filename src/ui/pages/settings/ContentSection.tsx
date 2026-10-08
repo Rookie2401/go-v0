@@ -1,5 +1,6 @@
 /**
- * Settings → Content: preview mode stays visible (the importers moved to Team Texts on the Home page); the long list of texts (review status, publication state, plain reasons, content-version history from
+ * Settings → Content: preview mode stays visible (the importers moved to Team Texts on the Home page); Recordings (the list of texts that have a
+ * recording, and the form that adds one: recordings are curation, not a destination);  the long list of texts (review status, publication state, plain reasons, content-version history from
  * `ingest.history`, bound to `contentHistory` in src/ingest; without it the current version is all that is shown) sits in a
  * collapsed disclosure whose summary carries the count: "Texts on this device (16)".
  */
@@ -8,6 +9,7 @@ import type { Corpus, Text } from '../../../core';
 import { useApp } from '../../context';
 import { Disclosure } from '../../ui';
 import { ImportReport } from './ImportReport';
+import { RecordingsBlock } from './RecordingsSection';
 import { REVIEW_LABEL, formatDate, isTestimonyText, nameOfLang, plainReasons } from '../../format';
 import { usePref } from '../../prefs';
 
@@ -127,6 +129,7 @@ export function ContentSection() {
         </div>
       )}
       {(startup?.warnings ?? []).length > 0 && <ul className="reasons">{startup!.warnings!.map((w) => <li key={w}>{w}</li>)}</ul>}
+      {features.listen && <RecordingsBlock />}
       <TextList refreshKey={null} />
     </section>
   );

@@ -9,7 +9,7 @@
 import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { COURSES, LEVEL_ORDER } from '../../core';
 import type { Course, GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemState, LearnerLevel, User } from '../../core';
-import { useApp } from '../context';
+import { useApp, useListening } from '../context';
 import { itemSurface, languageName } from '../format';
 import { TeamSelect } from '../Onboarding';
 import { PractiseButton } from './Practice';
@@ -359,7 +359,8 @@ function AdvancedSection({ onSpeechChanged }: { onSpeechChanged(): void }) {
 }
 
 function DiagnosticsSection() {
-  const { golisten, store } = useApp();
+  const { store } = useApp();
+  const golisten = useListening(); // GoLearn's listening subsystem (golearn.listening)
   const [diag, setDiag] = useState<GoListenDiagnostics | null>(null);
   const [failed, setFailed] = useState<Array<{ textTitle: string; sentences: FailedSentenceView[] }>>([]);
   const [message, setMessage] = useState<string | null>(null);

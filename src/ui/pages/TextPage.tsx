@@ -1,11 +1,12 @@
 /**
- * /read/:textId and /scripture/:textId — the shared Reader with the Player (and, for scripture, preparation).
+ * /read/:textId and /scripture/:textId — the shared Reader (and, for scripture, preparation). Listening is the Reader's own ListenBar:
+ * GoListen runs alongside GoLearn's parsing of every text and has no page of its own.
  *
  * Gatekeeping happens here so a deep link cannot bypass the library: private testimony texts never open; a text
  * of another language than the learner's current course does not open (progress is kept per language); an
  * unpublished text opens only in preview mode.
  */
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { LanguageCode, ScriptureReadiness, Text, TextViewed } from '../../core';
 import { courseReads } from '../../core';
@@ -13,12 +14,9 @@ import { useApp } from '../context';
 import { ProgressLine, VocabularyLine, useCoverage, useReadingProgress } from '../coverage';
 import { useEmitter } from '../events';
 import { BAND_LABEL, isTestimonyText, nameOfLang, plainReasons, textPath } from '../format';
-import { Player } from '../player/Player';
-import type { PlayerChange } from '../player/Player';
 import { usePreview } from '../prefs';
 import { DifficultyPreview } from '../reader/DifficultyPreview';
 import { useReadingOverlay } from '../reader/readingGate';
-import { useListenEnabled } from '../reader/useListen';
 import { Reader } from '../reader/Reader';
 import { BackLink, Topbar } from '../ui';
 
@@ -26,13 +24,10 @@ type Gate = { state: 'loading' } | { state: 'ok' } | { state: 'missing' } | { st
 
 export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
   const { textId = '' } = useParams();
-  const [info, setInfo] = useState<PlayerChange | undefined>();
-  const onChange = useCallback((i: PlayerChange) => setInfo(i), []);
   const back = mode === 'scripture' ? '/scripture' : '/read';
   const backLabel = mode === 'scripture' ? 'Scripture' : 'Library';
   const { store, lang, library, course } = useApp();
   const readsLangs = course?.readsLangs;
-  const listen = useListenEnabled();
   const preview = usePreview();
   const [gate, setGate] = useState<Gate>({ state: 'loading' });
   useEffect(() => {
@@ -85,10 +80,7 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
       key={`reader:${textId}`}
       textId={textId}
       mode={mode}
-      activeSentenceId={listen && info?.state.playing ? info.segment?.sentenceIds[0] : undefined}
-      concealed={listen ? info?.concealed : undefined}
       before={<>{mode === 'scripture' && <PreparePanel textId={textId} />}<DifficultyPreview textId={textId} /></>}
-      bar={listen ? <Player key={`player:${textId}`} textId={textId} onChange={onChange} allowSynthesis={false} /> : undefined}
     />
   );
 }

@@ -1,6 +1,8 @@
 # GoListen recording integration
 
-GoListen uses the existing canonical texts, sentence IDs, asset store, audio manifests, append-only event bus, and independent GoLearn modality folds. The `/listen` library and `/listen/:textId` session routes do not mount Reader. Opening text support explicitly records transcript rescue before navigating into GoLearn.
+GoListen is GoLearn's listening subsystem. It runs alongside GoLearn's parsing of every text: a text's listening layer is prepared with the text, credited through GoLearn's listening modality, and shown in the Reader; it has no doorway of its own. It uses the existing canonical texts, sentence IDs, asset store, audio manifests, append-only event bus, and independent GoLearn modality folds, and the app reaches it as `golearn.listening` (`golisten` is a deprecated alias of the same object).
+
+Where a text has a recording, the Reader's `ListenBar` offers Listen only, Read + listen and Listen first, with speed, replay, seeking and event-backed resume. Listen first hides the text until it has been heard; showing it saves the position and then records the transcript rescue (sentence-level help). A text with only unreviewed audio plays it as practice, labelled "not counted"; a text with no recording shows the computer-voice practice bar. `/listen` redirects to Reading, and `/listen/:textId` to `/read/:textId?listen=1` (the bar in Listen first); recordings are added in Settings → Content → Recordings.
 
 ## The rules, in short
 
@@ -12,7 +14,7 @@ GoListen uses the existing canonical texts, sentence IDs, asset store, audio man
 
 ## Importing a recording
 
-Import the text through the existing canonical ingestion path first. Then select that exact text in GoListen and supply a PCM WAV and an `AudioImportManifest` JSON file. `test/fixtures/golisten/de-guten-tag.audio.json` is a complete technical example, paired with its canonical text document and real recording.
+Import the text through the existing canonical ingestion path first. Then select that exact text in Settings → Content → Recordings and supply a PCM WAV and an `AudioImportManifest` JSON file. `test/fixtures/golisten/de-guten-tag.audio.json` is a complete technical example, paired with its canonical text document and real recording.
 
 The manifest identifies the canonical text ID, content version, release ID, SHA-256, Scripture edition when applicable, language, locale, narrator, variety, human/synthetic source, recording and performance permissions, permitted uses, quality state, and sentence coverage. SHA-256 binds the complete ordered current sentence ID/text payload, not a normalized transcript or an excerpt. The release format is `textId@contentVersion`. Import refuses a different release, exact text, language, edition, invalid WAV, invalid or overlapping coverage, and uncleared playback permission. THSV11 is prohibited.
 
@@ -20,7 +22,7 @@ The manifest identifies the canonical text ID, content version, release ID, SHA-
 
 `importRecording({ manifest, bytes, origin, reviewer? })` takes a mandatory trust argument.
 
-- **`origin: 'learner'`** is the upload form on `/listen` (the UI always passes it). Everything in the manifest is the uploader's statement. The recording plays on this device, but its quality state is capped at `machine_checked` whatever the manifest says, its voice stays `unreviewed` (a separate `learner-import:` voice and its own segments), no `reviewedAt` is stamped, and the recording and performance text in the rights record is prefixed "Stated by the uploader, not verified". It can never be listening evidence. A `reviewer` argument is refused. Re-importing identical bytes never changes an existing asset or its review.
+- **`origin: 'learner'`** is the upload form in Settings → Content → Recordings (the UI always passes it). Everything in the manifest is the uploader's statement. The recording plays on this device, but its quality state is capped at `machine_checked` whatever the manifest says, its voice stays `unreviewed` (a separate `learner-import:` voice and its own segments), no `reviewedAt` is stamped, and the recording and performance text in the rights record is prefixed "Stated by the uploader, not verified". It can never be listening evidence. A `reviewer` argument is refused. Re-importing identical bytes never changes an existing asset or its review.
 - **`origin: 'curated'`** is for scripts and course authoring and is not reachable from the UI. `human_reviewed` or `approved` requires a non-empty `reviewer` (a person's name); the review time is stamped on the rights record, the voice becomes `reviewed`, and the reviewer is recorded. A curated import may raise an unreviewed or machine-checked asset (same bytes, same rights) to reviewed; it cannot change anything else about stored bytes.
 
 What the importer declared (`kind`, `qualityState`, rights status) is kept next to what was established, in the `meta` row `golisten-import:<assetId>` (`ImportRecord`: origin, declared values, reviewer, review time). `kind: 'human'` is a declaration; a learner's `human` and `approved` claims are recorded as declared and nothing more. A manifest cannot carry its own rights id or review stamp.

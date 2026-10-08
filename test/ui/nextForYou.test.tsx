@@ -4,9 +4,10 @@
  * is unfinished) (the "Your path" entry on Home: yourPathEntry.test.tsx).
  */
 import { afterEach, describe, expect, it } from 'vitest';
+import { useLocation } from 'react-router-dom';
 import type { Recommendation } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
-import { flush, makeHarness, q, qa } from './harness';
+import { click, flush, makeHarness, q, qa } from './harness';
 import type { Mounted } from './harness';
 import { STORY_ID, seedStory } from './fixtures';
 
@@ -18,13 +19,15 @@ async function waitFor(check: () => void, tries = 40): Promise<void> {
 }
 
 const app = () => <Shell><AppRoutes /></Shell>;
+/** Where the router is, readable from the DOM. */
+function Where() { const l = useLocation(); return <output data-testid="where">{l.pathname + l.search}</output>; }
+const appWhere = () => <><Shell><AppRoutes /></Shell><Where /></>;
 let mounted: Mounted | undefined;
 afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 
 describe('Next for you on the Reading page', () => {
-  it('lists the texts the engine recommends with their reasons, leaves out listening-only and testimony suggestions, and links Your path', async () => {
+  it('lists the texts the engine recommends with their reasons, leaves out testimony suggestions, and links Your path', async () => {
     const recs: Recommendation[] = [
-      { reason: 'listen-to-read-text', textId: STORY_ID, reinforces: [], score: 0.95, explanation: 'Listen to it.' },
       { reason: 'next-input', textId: STORY_ID, reinforces: [], score: 0.9, explanation: 'Next on your path: a short story at your level.' },
       { reason: 'rehearse-testimony', testimonyId: 'tst:u1:es', reinforces: [], score: 0.5, explanation: 'Read your latest version aloud.' },
     ];
@@ -38,6 +41,22 @@ describe('Next for you on the Reading page', () => {
     expect(row.textContent).toContain('Story 1');
     expect(row.textContent).toContain('Next on your path: a short story at your level.');
     expect(qa<HTMLAnchorElement>(m.container, '[data-testid="next-for-you"] a').map((a) => a.getAttribute('href'))).toContain('/path');
+  });
+
+  it('offers a listen-to-read-text suggestion as part of reading: it opens the text in the Reader with listening on, in Listen first', async () => {
+    const recs: Recommendation[] = [
+      { reason: 'listen-to-read-text', textId: STORY_ID, reinforces: [], score: 0.95, explanation: 'Listen to it.' },
+    ];
+    const h = await makeHarness({ learn: { recommendations: recs } });
+    await seedStory(h.store);
+    mounted = await h.mount(appWhere(), { router: '/read' });
+    const m = mounted;
+    await waitFor(() => expect(qa(m.container, '[data-testid="next-for-you"] li')).toHaveLength(1));
+    const row = q(m.container, '[data-testid="next-for-you"] li')!;
+    expect(row.getAttribute('data-reason')).toBe('listen-to-read-text');
+    expect(row.textContent).toContain('Listen to it.');
+    await click(row.querySelector('button')!);
+    await waitFor(() => expect(q(m.container, '[data-testid="where"]')!.textContent).toBe(`/read/${encodeURIComponent(STORY_ID)}?listen=1`));
   });
 
   it('says what the engine says when it has no text to offer', async () => {

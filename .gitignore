@@ -25,3 +25,6 @@ data/goread/
 # the keeper's Cloudflare config (holds the D1 database id): docs/goread/DEPLOY.md
 wrangler.toml
 .wrangler/
+
+# Go Repository service data (sqlite + smoke runs)
+data/repository/

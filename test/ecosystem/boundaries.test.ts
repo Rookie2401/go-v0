@@ -27,19 +27,56 @@ const RETIRED = ['src/course', 'src/ladder', 'src/stage0', 'src/library', '/cour
 describe('package boundaries', () => {
   const files = list(ROOT);
 
-  it('the contract imports nothing', () => {
+  it('the contract imports nothing outside itself', () => {
     for (const f of files.filter((f) => pkgOf(f) === 'repository-contract')) {
-      expect(imports(f).filter((i) => !i.startsWith('node:')), f).toEqual([]);
+      expect(imports(f).filter((i) => !i.startsWith('node:') && !/^\.\/[\w-]+$/.test(i)), f).toEqual([]);
     }
   });
 
-  it('application packages import only the contract, never each other or the engine/store', () => {
+  it('repository packages never import application packages, the UI, or each other except through the contract and their declared dependencies', () => {
+    const allowed: Record<string, string[]> = {
+      'repository-linguistics': ['repository-contract'],
+      'repository-store': ['repository-contract'],
+      'repository-engine': ['repository-contract'],
+      'repository-sync': ['repository-contract'],
+      'repository-service': ['repository-contract', 'repository-store', 'repository-engine', 'repository-linguistics', 'repository-sync'],
+    };
+    for (const f of files.filter((f) => pkgOf(f) in allowed)) {
+      for (const i of imports(f)) {
+        if (i.startsWith('.') && !i.includes('..')) continue;
+        if (i.startsWith('node:')) continue;
+        const target = i.includes('packages/') ? i.split('packages/')[1].split('/')[0] : i.startsWith('@go/') ? i.slice(4).split('/')[0] : undefined;
+        if (target) expect(allowed[pkgOf(f)], `${f} imports ${i}`).toContain(target);
+        expect(/\/src\/(ui|golearn|gotell|goread|app)\//.test(i), `${f} imports ${i}`).toBe(false);
+      }
+    }
+  });
+
+  it('application packages import only the contract and the shared subsystems, never each other or the engine/store', () => {
     const apps = new Set(['golearn-app', 'golearn-extension', 'goreview', 'gotell']);
+    // shared subsystems an application may use: the contract, GoListen, the language packs, the device-side sync
+    // client and the typed API client of the service (never the service handler, store or engine)
+    const shared = new Set(['repository-contract', 'golisten', 'language-packs', 'repository-sync']);
     for (const f of files.filter((f) => apps.has(pkgOf(f)))) {
       for (const i of imports(f)) {
         if (i.startsWith('.') && !i.includes('..')) continue; // inside its own package
+        if (i.startsWith('..') && !i.includes('packages/') && !i.includes('/src/')) continue; // inside its own package (deeper relative)
         const target = i.includes('packages/') ? i.split('packages/')[1].split('/')[0] : i.startsWith('@go/') ? i.slice(4).split('/')[0] : undefined;
-        if (target) expect(target, `${f} imports ${i}`).toBe('repository-contract');
+        if (!target) continue;
+        if (target === 'repository-service') { expect(/repository-service\/src\/api$/.test(i), `${f} may import only the api client of the service: ${i}`).toBe(true); continue; }
+        if (target === pkgOf(f)) continue;
+        expect(shared.has(target), `${f} imports ${i}`).toBe(true);
+      }
+    }
+  });
+
+  it('GoListen and the language packs never import an application, the service, the store or the engine', () => {
+    const forbidden = ['golearn-extension', 'golearn-app', 'goreview', 'gotell', 'repository-service', 'repository-store', 'repository-engine'];
+    for (const f of files.filter((f) => pkgOf(f) === 'golisten' || pkgOf(f) === 'language-packs')) {
+      for (const i of imports(f)) {
+        const target = i.includes('packages/') ? i.split('packages/')[1].split('/')[0] : undefined;
+        if (target) expect(forbidden.includes(target), `${f} imports ${i}`).toBe(false);
+        expect(/\/src\/(ui|golearn|gotell|goread|app|course|ladder|stage0|library)\//.test(i), `${f} imports ${i}`).toBe(false);
       }
     }
   });
@@ -53,7 +90,8 @@ describe('the event contract', () => {
   const good = {
     id: 'e1', v: CONTRACT_VERSION, learnerId: 'L', enrolmentId: 'E', languageId: 'sq', at: '2026-10-08T10:00:00.000Z',
     producer: { app: 'golearn-ext', version: '0.0.1', deviceId: 'd1' }, kind: 'SelectionLookedUp',
-    subject: { itemIds: ['lemma:sq:shtëpi:NOUN'], sentenceKey: 'ab12', sourceRef: { kind: 'demo' } }, payload: { surface: 'shtëpinë' },
+    subject: { itemIds: ['lemma:sq:shtëpi:NOUN'], sentenceKey: 'ab12', sourceRef: { kind: 'demo' } },
+    payload: { surface: 'shtëpinë', tokenCount: 1, contextKind: 'sentence', contextConfidence: 0.9, readerId: 'demo', helpShown: ['lemma'] },
   };
   it('accepts a well-formed event and knows its family', () => {
     expect(validateEvent(good)).toEqual([]);

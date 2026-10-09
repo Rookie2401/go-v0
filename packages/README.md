@@ -1,21 +1,33 @@
-# packages/ — the Go ecosystem package boundaries (scaffolding, 2026-10-08)
+# packages/ — the Go ecosystem package boundaries
 
-Proposed module tree for the two-application product (see `docs/ecosystem/`). Only `repository-contract` holds code
-in this phase; the others are boundary markers so the import rules can be tested before anything is moved.
+Module tree for the two-application product (see `docs/ecosystem/`). Updated 2026-10-08 for Prompt 3 (the Go
+Repository). PROTOTYPE packages are marked in their own READMEs.
 
 ```
 packages/
-  repository-contract/   events, validation, query and writer interfaces     ← apps import ONLY this
-  repository-engine/     (phase 2) 2GoLearn core + priorities, writing projections, tombstones
-  repository-store/      (phase 2) dexie / memory bindings, export, deletion
-  repository-sync/       (phase 3) the sync contract and client
-  language-packs/        (phase 2) the six adapters as versioned packs
-  golearn-app/           (phase 2) setup, onboarding, settings, the demonstration reader
-  golearn-extension/     (phase 2) reader adapters, context parser, card UI
-  goreview/              (phase 2) GoPractice workspace: deck + assessments
-  gotell/                (phase 2) GoPractice workspace: writing (adapted from src/gotell)
+  repository-contract/     events, payload validators, linguistic units, learner state, identity, ports   ← apps import ONLY this
+  repository-linguistics/  Layer A: the Albanian resolver over src/adapters/sq, unit/relation/analysis service, packs, aliases
+  repository-store/        memory and SQLite (node:sqlite) implementations of the RepositoryStore port; export; deletion
+  repository-engine/       Layer C: evidence rules, projection fold, preferences, eligibility, review candidates, suitability
+  repository-service/      authenticated HTTP service (web-API handler + node:http bridge), typed client, in-process API
+  repository-sync/         the device-side queue, sync client, document conflict rules
+  golearn-extension/       PROTOTYPE reader extension (contract/, parser card model and web-generic adapter are candidates)
+  controlled-reader/       PROTOTYPE local EPUB reader with the epub-local adapter
+  (planned) language-packs/, golearn-app/, goreview/, gotell/
 ```
 
-Rules (enforced by `test/ecosystem/boundaries.test.ts`): `repository-contract` imports nothing from `src/` or from
-other packages; `goreview` and `gotell` never import each other; application packages never import engine or store
-packages directly; nothing under `packages/` imports from `src/course`, `src/ladder`, `src/stage0`, `src/library`.
+Rules (enforced by `test/ecosystem/boundaries.test.ts`):
+
+- `repository-contract` imports nothing outside itself.
+- Application packages (`golearn-app`, `golearn-extension`, `goreview`, `gotell`) import only `repository-contract`
+  and never each other; `goreview` and `gotell` never import each other.
+- `repository-linguistics`, `repository-store`, `repository-engine`, `repository-sync` import only the contract (and
+  `node:*`); `repository-linguistics` may also import `src/adapters/*` and `src/core` types (the language analyser).
+- `repository-service` may import the contract and the four repository packages; nothing imports the service except
+  tests and `main.ts`.
+- Nothing under `packages/` imports the retired `src/course`, `src/ladder`, `src/stage0`, `src/library`, nor
+  `src/ui`, `src/golearn`, `src/gotell`, `src/goread`, `src/app`.
+- `controlled-reader` imports the reader contract from `golearn-extension/src/contract` until that contract moves to
+  its own package (decision in `docs/ecosystem/READER-ARCHITECTURE-DECISION.md` §3).
+
+Tests live under `test/repository/<package>/`, `test/extension/`, `test/controlled-reader/`, `test/ecosystem/`.

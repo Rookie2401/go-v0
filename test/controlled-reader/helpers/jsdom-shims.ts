@@ -20,6 +20,14 @@ export function shimWindow(win: Window & typeof globalThis): void {
     if (!range.getClientRects) range.getClientRects = () => ({ length: 0, item: () => null, [Symbol.iterator]: function* () { /* empty */ } });
   }
   win.scrollTo = (() => undefined) as typeof win.scrollTo;
+  // epub.js's resize listener calls requestAnimationFrame from a timer, sometimes after the test environment is
+  // gone; a timer-backed shim keeps that from surfacing as an unhandled ReferenceError (seen in the full-suite run).
+  const w = win as unknown as { requestAnimationFrame?: (cb: (t: number) => void) => number; cancelAnimationFrame?: (h: number) => void };
+  if (typeof w.requestAnimationFrame !== 'function') w.requestAnimationFrame = (cb) => setTimeout(() => cb(Date.now()), 16) as unknown as number;
+  if (typeof w.cancelAnimationFrame !== 'function') w.cancelAnimationFrame = (h) => clearTimeout(h as unknown as ReturnType<typeof setTimeout>);
+  const g = globalThis as unknown as { requestAnimationFrame?: unknown; cancelAnimationFrame?: unknown };
+  if (typeof g.requestAnimationFrame !== 'function') g.requestAnimationFrame = w.requestAnimationFrame;
+  if (typeof g.cancelAnimationFrame !== 'function') g.cancelAnimationFrame = w.cancelAnimationFrame;
 }
 
 /**

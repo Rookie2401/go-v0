@@ -18,6 +18,9 @@ import { flushAfterAll, row } from './a11y.support';
 import {
   dueCard, destroyRigs, ids, key, makeRig, reopen, seed, startWith, type as typeIn, until, FakeService,
 } from '../gopractice/helpers';
+import { registerAllAnalysers } from '../support/analysers';
+
+registerAllAnalysers(); // the parser carries Albanian; the other analysers are chunks the content script loads on demand
 
 flushAfterAll('a11y.unicode', 'ACCESSIBILITY lane 4 (Unicode)');
 

@@ -11,6 +11,7 @@
 import { CONTRACT_VERSION, type GoEvent } from '../../repository-contract/src';
 import type { PopupAnchor } from '../src/contract/readerAdapter';
 import { parseSelection, type CardModel } from '../src/parser';
+import { ensureAnalyser } from './analysers';
 import { createCardUI, type CardUI } from '../src/popup/card';
 import { buildSelectionEvent } from '../src/store';
 import type { AppContext, RecordResult } from './context';
@@ -84,6 +85,8 @@ export function createTutorialLookup(opts: TutorialLookupOptions): TutorialLooku
     const selEnd = selStart + surface.length;
 
     const my = ++seq;
+    try { await ensureAnalyser(opts.languageId); } catch { opts.onMessage?.('The analyser for this language could not be loaded, so nothing was looked up.'); return undefined; }
+    if (my !== seq) return undefined;
     const card = parseSelection({
       surface,
       languageId: opts.languageId,

@@ -79,8 +79,8 @@ describe('createPackRuntime (Albanian)', () => {
 });
 
 describe('a pack without an analyser', () => {
-  it('falls back to a tokenizer that says it analyses nothing', () => {
-    const rt = createPackRuntime(PACKS.de, { fetch: diskFetch(), baseUrl: BASE });
+  it('falls back to a tokenizer that says it analyses nothing (Norwegian: planned, no analyser bundled)', () => {
+    const rt = createPackRuntime(PACKS.nb, { fetch: diskFetch(), baseUrl: BASE });
     const a = rt.analyzer();
     expect(a.kind).toBe('tokenize-only');
     expect(a.limitation).toMatch(/no lemma, no morphology and no gloss/);
@@ -92,15 +92,15 @@ describe('a pack without an analyser', () => {
   });
 
   it('can still be given an analyser by the caller', async () => {
-    const { sqAdapter } = await import('../../src/adapters/sq');
-    const rt = createPackRuntime(PACKS.de, { fetch: diskFetch(), baseUrl: BASE, adapter: sqAdapter });
+    const { nbAdapter } = await import('../../src/adapters/nb');
+    const rt = createPackRuntime(PACKS.nb, { fetch: diskFetch(), baseUrl: BASE, adapter: nbAdapter });
     expect(rt.analyzer().kind).toBe('adapter');
   });
 });
 
 describe('installPack', () => {
-  it('refuses a planned pack', async () => {
-    for (const lang of ['de', 'hi', 'th', 'nb', 'nn']) {
+  it('refuses a planned pack (Norwegian); German, Hindi and Thai are experimental and installable, see test/reader-languages/experimental-packs.test.ts', async () => {
+    for (const lang of ['nb', 'nn']) {
       const storage = memoryStorage();
       const r = await installPack(PACKS[lang], { fetch: diskFetch(), baseUrl: BASE, storage });
       expect(r, lang).toMatchObject({ ok: false, reason: 'planned' });

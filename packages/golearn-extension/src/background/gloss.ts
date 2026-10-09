@@ -113,12 +113,13 @@ export function createGlossService(opts: GlossServiceOptions) {
     const lemma = cleanText(r.lemma, 80);
     if (!lemma || !isLanguageId(r.languageId)) return { ok: false, found: false, senses: [], reason: 'error', message: 'Not a valid gloss request.' };
     const pos = typeof r.pos === 'string' && /^[A-Za-z]{1,8}$/.test(r.pos) ? r.pos : undefined;
+    const forms = Array.isArray(r.forms) ? r.forms.map((f) => cleanText(f, 80)).filter((f): f is string => !!f).slice(0, 8) : [];
     const { rt, reason } = await runtimeFor(r.languageId);
     if (!rt) return { ok: true, found: false, senses: [], reason, message: reason === 'no-pack' ? `No pack with a dictionary is installed for ${r.languageId}.` : 'No dictionary location is configured. Open GoLearn setup.' };
     const counter = [...shardFetches.entries()].find(([k]) => runtimes.get(k) === rt)?.[1];
     const failuresBefore = counter?.failures ?? 0;
     try {
-      const g = await rt.gloss(lemma, pos);
+      const g = await rt.gloss(lemma, pos, forms);
       if (!g || !Array.isArray(g.senses) || !g.senses.length) {
         // the runtime swallowed a failed shard fetch: say "offline" (try again) rather than "not in the dictionary"
         if (counter && counter.failures > failuresBefore) return { ok: true, found: false, senses: [], reason: 'offline', message: 'The dictionary could not be reached.' };

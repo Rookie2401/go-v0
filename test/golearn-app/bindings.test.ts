@@ -20,7 +20,7 @@ const BASE = 'http://app.test/';
 describe('the pack bindings', () => {
   const b = createPackBindings();
 
-  it('lists every pack with its status; Albanian and (at a minimal level) Spanish are installable, the rest say so', () => {
+  it('lists every pack with its status and level; Albanian and (at a minimal level) Spanish are installable, German, Hindi and Thai are experimental, only the two Norwegian packs are planned', () => {
     const packs = b.packs();
     expect(packs.map((p) => p.languageId).sort()).toEqual(['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th']);
     const sq = b.packFor('sq')!;
@@ -29,7 +29,9 @@ describe('the pack bindings', () => {
     expect(sq.licences.length).toBeGreaterThan(0);
     expect(sq.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard']);
     expect(sq.remoteVoiceProvider).toBeTruthy();
-    for (const p of packs.filter((x) => x.languageId !== 'sq' && x.languageId !== 'es')) expect(p.status, p.packId).toBe('planned');
+    for (const p of packs.filter((x) => ['nb', 'nn'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'planned', level: 'planned', levelLabel: 'planned, not installable' });
+    for (const p of packs.filter((x) => ['de', 'hi', 'th'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, seed-only lemmatisation, unreviewed' });
+    expect(sq).toMatchObject({ level: 'installable', levelLabel: 'installable' });
     expect(b.packFor('es')).toMatchObject({ packId: 'pack:es', status: 'installable', reviewStatus: 'machine-drafted' });
     expect(b.packFor('xx')).toBeUndefined();
     expect(b.packFor('constructor')).toBeUndefined();
@@ -83,7 +85,7 @@ describe('the pack bindings', () => {
   });
 
   it('a planned pack is refused by the installer itself, with its own reason', async () => {
-    const r = await b.install(b.packFor('de')!, { fetch: diskFetch, baseUrl: BASE, storage: createMemoryStorageArea() });
+    const r = await b.install(b.packFor('nb')!, { fetch: diskFetch, baseUrl: BASE, storage: createMemoryStorageArea() });
     expect(r.ok).toBe(false);
     expect(r.message).toMatch(/planned/);
   });

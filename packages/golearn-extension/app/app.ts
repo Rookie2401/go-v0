@@ -12,6 +12,7 @@ import * as homeScreen from './screens/home';
 import * as packScreen from './screens/pack';
 import * as privacyScreen from './screens/privacy';
 import * as readerScreen from './screens/reader';
+import * as shareScreen from './screens/share';
 import * as syncScreen from './screens/sync';
 import * as teamScreen from './screens/team';
 import * as tutorialScreen from './screens/tutorial';
@@ -41,7 +42,9 @@ export const SCREENS: readonly ScreenDef[] = [
   { id: 'diagnostics', title: 'Diagnostics and updates', group: 'settings', render: diagnosticsScreen.render },
 ];
 export const HOME: ScreenDef = { id: 'home', title: 'Status', group: 'status', render: homeScreen.render };
-export const ROUTE_IDS = [HOME.id, ...SCREENS.map((s) => s.id)];
+/** Reached from the web share target, a deep link or the status page; not part of setup, so it has no place in the navigation or the pager. */
+export const SHARE: ScreenDef = { id: 'share', title: 'Look up shared text', group: 'status', render: shareScreen.render };
+export const ROUTE_IDS = [HOME.id, ...SCREENS.map((s) => s.id), SHARE.id];
 
 export interface AppHandle {
   ctx: AppContext;
@@ -105,7 +108,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     for (const d of disposers) { try { d(); } catch { /* a screen’s cleanup must not stop the next screen */ } }
     disposers = [];
     route = id;
-    const def = id === HOME.id ? HOME : SCREENS.find((s) => s.id === id)!;
+    const def = id === HOME.id ? HOME : id === SHARE.id ? SHARE : SCREENS.find((s) => s.id === id)!;
     deps.doc.title = `GoLearn — ${def.title}`;
     clear(main);
     const body = h('div', { class: 'body' });
@@ -125,6 +128,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   }
 
   function pager(def: ScreenDef): HTMLElement {
+    if (def.id === SHARE.id) return h('footer', {}, h('div', { class: 'pager' }, h('a', { class: 'btn', href: '#/home' }, '← Status')));
     const order = [HOME, ...SCREENS];
     const i = order.findIndex((s) => s.id === def.id);
     const prev = i > 0 ? order[i - 1] : undefined;
@@ -158,7 +162,9 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
 
   renderDone = (async () => {
     const initial = parse() || await defaultRoute();
-    if (win.location.hash !== `#/${initial}`) win.location.hash = `#/${initial}`;
+    // a query after the route (#/share?text=…) is the share screen's to read: keep it
+    const h = win.location.hash;
+    if (h !== `#/${initial}` && !h.startsWith(`#/${initial}?`)) win.location.hash = `#/${initial}`;
     await show(initial);
   })();
 

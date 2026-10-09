@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- Owner-authored test fixture (not copied from any site). Models the DOCUMENTED YouVersion chapter markup: verse
+     wrappers span[data-usfm="JHN.3.16"] with a label span and a content span. On 2026-10-09 the live chapter reader
+     showed the site's own client error, so this structure is UNVERIFIED against the real page; the URL scheme
+     (/bible/<versionId>/<BOOK>.<chapter>[.<verse>].<ABBR>) was confirmed. Sentences are made up for tests. -->
+<html lang="en" data-fixture-url="https://www.bible.com/bible/111/JHN.3.NIV">
+<head>
+<meta charset="utf-8">
+<meta property="og:locale" content="en_US">
+<title>John 3 NIV - Bible (fixture)</title>
+<style>
+  body { font: 18px/1.7 Georgia, serif; margin: 0; }
+  header { background: #222; color: #fff; padding: 8px 16px; }
+  .chapter { max-width: 620px; margin: 24px auto; }
+  [class*="ChapterContent_label"] { font-size: 0.7em; vertical-align: super; margin-right: 4px; color: #777; }
+  [class*="ChapterContent_note"] { font-size: 0.8em; color: #777; }
+  .actionbar { position: fixed; bottom: 0; left: 0; right: 0; background: #eee; padding: 6px; }
+</style>
+</head>
+<body>
+<header><button type="button">Version</button> <span>Chapter</span></header>
+<div class="chapter" id="chapter">
+  <div class="p">
+    <span class="ChapterContent_verse__a" data-usfm="JHN.3.16"><span class="ChapterContent_label__b">16</span><span class="ChapterContent_content__c">The traveller stopped at the gate and listened to the wind.</span></span>
+    <span class="ChapterContent_verse__a" data-usfm="JHN.3.17"><span class="ChapterContent_label__b">17</span><span class="ChapterContent_content__c">Nothing moved in the field, so she walked on slowly.</span><span class="ChapterContent_note__d">a fixture note</span></span>
+  </div>
+</div>
+<div class="actionbar" role="toolbar" aria-label="Verse actions"><button type="button">Copy</button><button type="button">Share</button></div>
+</body>
+</html>

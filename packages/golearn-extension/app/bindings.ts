@@ -3,10 +3,11 @@
  * Nothing else in the application knows the shape of a manifest, the pack registry or the installer’s results.
  */
 import {
-  PACKS, TEAMS, SQ_TUTORIAL, ES_TUTORIAL, createPackRuntime, installPack, packFor as registryPackFor, runCase, verifyInstalled,
+  LEVEL_LABEL, PACKS, TEAMS, SQ_TUTORIAL, ES_TUTORIAL, createPackRuntime, installPack, levelOf, packFor as registryPackFor, runCase, verifyInstalled,
 } from '../../language-packs/src';
 import type { InstallResult, InstalledRecord, PackManifest, PackStorage, Tutorial } from '../../language-packs/src';
 import type { StorageArea } from '../src/platform';
+import { ensureAnalyser } from './analysers';
 import type { InstallOptions, PackBindings, PackView, TeamView, TutorialView, VerifyCheck, VerifyView } from './ports';
 
 /** Pack records are kept under the extension’s own `golearn:` prefix, in whichever storage area the app uses. */
@@ -23,7 +24,7 @@ export function packView(m: PackManifest): PackView {
   const dict = m.lexical.dictionary;
   return {
     packId: m.packId, languageId: m.languageId, version: m.version, name: m.identity.name, nativeName: m.identity.nativeName,
-    status: m.status, defaultVarietyId: m.varietyId, scriptId: m.scriptId,
+    status: m.status, level: levelOf(m), levelLabel: LEVEL_LABEL[levelOf(m)], defaultVarietyId: m.varietyId, scriptId: m.scriptId,
     varieties: m.varieties.map((v) => ({ varietyId: v.varietyId, label: v.label, analysed: v.analysed, ...(v.writtenStandard ? { writtenStandard: v.writtenStandard } : {}) })),
     licences: m.rights.licences.map((l) => ({ ...l })),
     attribution: dict ? [dict.attribution] : [],
@@ -75,6 +76,8 @@ export function createPackBindings(): PackBindings {
     },
     async install(pack: PackView, o: InstallOptions): Promise<VerifyView> {
       const m = pack.manifest as PackManifest;
+      // the analyser the validation cases run through is loaded first (it is a separate chunk); if it cannot be, installPack says there is no analyser
+      try { await ensureAnalyser(m.languageId); } catch { /* installPack reports the missing analyser */ }
       const r = await installPack(m, {
         fetch: o.fetch, baseUrl: o.baseUrl, storage: packStorage(o.storage),
         onProgress: (p) => o.onProgress?.(p.index, p.total, p.message),
@@ -85,6 +88,7 @@ export function createPackBindings(): PackBindings {
       const m = pack.manifest as PackManifest;
       const r = await verifyInstalled(m, packStorage(storage));
       if (!r.installed) return { ok: false, checks: [], message: r.detail };
+      try { await ensureAnalyser(m.languageId); } catch { /* the record of the last install is used instead */ }
       // re-run every case through the analyser this build actually bundles, not only the record of the last install
       const adapter = createPackRuntime(m, { fetch: globalThis.fetch.bind(globalThis), baseUrl: './' }).analyzer().adapter;
       const cases = adapter ? m.validation.map((c) => runCase(adapter, c)) : r.record.verified.validation;

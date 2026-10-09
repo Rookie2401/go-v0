@@ -73,6 +73,8 @@ export interface ContentChromeApi {
     onMessage: ChromeEvent<MessageListener>;
     sendMessage(message: unknown): Promise<unknown>;
     getManifest?(): { version?: string };
+    /** The address of a file the extension packages (a web accessible resource such as an analyser chunk). */
+    getURL?(path: string): string;
   };
 }
 

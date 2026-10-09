@@ -58,7 +58,8 @@ describe('package boundaries', () => {
     const hosts: Record<string, string[]> = { gopractice: ['goreview', 'gotell'] };
     // shared subsystems an application may use: the contract, GoListen, the language packs, the device-side sync
     // client and the typed API client of the service (never the service handler, store or engine)
-    const shared = new Set(['repository-contract', 'golisten', 'language-packs', 'repository-sync']);
+    // golearn-share (the mobile share contract) is a shared library that imports only the contract
+    const shared = new Set(['repository-contract', 'golisten', 'language-packs', 'repository-sync', 'golearn-share']);
     for (const f of files.filter((f) => apps.has(pkgOf(f)))) {
       for (const i of imports(f)) {
         if (i.startsWith('.') && !i.includes('..')) continue; // inside its own package
@@ -69,6 +70,17 @@ describe('package boundaries', () => {
         if (target === pkgOf(f)) continue;
         if (hosts[pkgOf(f)]?.includes(target)) continue;
         expect(shared.has(target), `${f} imports ${i}`).toBe(true);
+      }
+    }
+  });
+
+  it('the mobile share contract imports only the Repository contract and its own files: no application, no service client, no pack, no store', () => {
+    const own = files.filter((f) => pkgOf(f) === 'golearn-share');
+    expect(own.length).toBeGreaterThan(3);
+    for (const f of own) {
+      for (const i of imports(f)) {
+        if (/^\.\/[\w-]+$/.test(i)) continue;
+        expect(/^\.\.\/\.\.\/repository-contract\/src$/.test(i), `${f} imports ${i}`).toBe(true);
       }
     }
   });

@@ -14,7 +14,9 @@ src/manifest.ts       PackManifest, validateManifest, toPackInfo (the Repository
 src/analysis.ts       readSelection / runCase / statusOf: read a selected word, run a validation case
 src/packs/sq.ts       the Albanian manifest (installable) and its 14 validation cases
 src/packs/es.ts       the Spanish manifest (installable at a MINIMAL level, machine-drafted, NOT production-ready) and its 17 validation cases
-src/packs/{de,hi,th,nb,nn}.ts + planned.ts   planned manifests (never installable)
+src/packs/{de,hi,th}.ts  the EXPERIMENTAL manifests (installable, seed-only, unreviewed; built by packs/experimental.ts) and their validation cases
+src/packs/{nb,nn}.ts + planned.ts   planned manifests (never installable)
+src/capabilities.ts   packCapabilities(languageId): what a pack really supports (see docs/ecosystem/reader/LANGUAGE-PACK-CAPABILITIES.md)
 src/tutorial/         TutorialStep types; sq.ts is the Albanian orientation as data, es.ts a minimal Spanish one
 src/runtime.ts        createPackRuntime, installPack, verifyInstalled
 src/registry.ts       PACKS, packFor, TEAMS
@@ -38,6 +40,7 @@ src/registry.ts       PACKS, packFor, TEAMS
 | `rights` | `provenance` statements, `licences`, `reviewStatus` (never higher than the hand lexicon's) |
 | `validation` | real selections: `{ id, surface, sentence?, expect: { lemma?, pos?, features?, status?, readings? } }` |
 | `status` | `installable` or `planned` |
+| `level` | optional: `installable`, `experimental` or `planned`. An experimental pack (German, Hindi, Thai) has `status: 'installable'` and `level: 'experimental'`, shown as "experimental, seed-only lemmatisation, unreviewed" (`LEVEL_LABEL`); absent = the level the status implies (`levelOf`). `validateManifest` refuses `planned` with an installable status and an experimental pack that claims review |
 
 `validateManifest` refuses, among others: a CC BY-SA dictionary without `Wiktionary, via kaikki.org — CC BY-SA 4.0`;
 an absolute dictionary path; a remote voice that does not require consent and a key; a tutorial that cannot be
@@ -101,10 +104,9 @@ is read by the analyser with confidence of at least 0.5); that is a coverage che
 | dictionary `kaikki-sq@2026-09-28` | CC BY-SA 4.0 (Wiktionary contributors, via kaikki.org); every surface that shows a gloss shows "Wiktionary, via kaikki.org — CC BY-SA 4.0" |
 | orientation and demonstration passage | owner-authored, AI-drafted |
 
-The `es`, `de`, `hi`, `th`, `nb` and `nn` manifests are **planned**: they name the existing adapter (version constants
-checked against the adapter by `test/language-packs/registry.test.ts`) and say plainly that grammar tables beyond a
-few entries, validation cases, tutorial, pronunciation notes and review do not exist yet. Norway is two packs, and the
-`norway` team requires the learner to choose a written standard; neither is a default and neither is credited for the other.
+The `nb` and `nn` manifests are **planned**: they name the existing adapter (version constants checked against the adapter by `test/language-packs/registry.test.ts`) and say plainly that grammar tables beyond a few entries, validation cases, tutorial, pronunciation notes and review do not exist yet; the runtime bundles no analyser for them. Norway is two packs, and the `norway` team requires the learner to choose a written standard; neither is a default and neither is credited for the other.
+
+The `de`, `hi` and `th` manifests are **experimental** (see "German, Hindi and Thai" below). The `es` pack is installable at a minimal level (see "Spanish").
 
 ## Teams
 
@@ -124,4 +126,22 @@ at a minimal level and says `reviewStatus: 'machine-drafted'`; no native speaker
   detected by the adapter but not taught;
 - no recordings; GoListen has no per-letter Spanish phonetic rule set (the adapter's own short pronunciation notes are
   shown); device voices are accepted only for es-HN, es-419, es-MX and es-ES, remote Azure voices only with consent and a key;
-- `installPack` needs the Spanish adapter passed as `deps.adapter` (the runtime bundles only the Albanian one).
+- the runtime bundles the analysers for sq, es, de, hi and th (`builtInAdapter`); `deps.adapter` is for a language it does not bundle (Norwegian, when it becomes installable).
+
+## German, Hindi and Thai (`pack:de`, `pack:hi`, `pack:th`): experimental
+
+Wired the way Spanish was, at an even more honest level. Each is installable (`status: 'installable'`, `level: 'experimental'`):
+the runtime bundles its analyser (`adapter-de@9`, `adapter-hi@6`, `adapter-th@5`), `installPack` checks its kaikki dictionary on disk
+and runs its 14 validation cases through the real analyser, and the extension parser reads selections with it. What is thin, and
+said in each manifest's provenance (`Thin: ...`) and on every card (`limits`):
+
+- lemmatisation is seed-only (German about 2,900 entries, Hindi about 1,500 lemmas, Thai a hand lexicon of about 600 entries); other words get a marked guess or nothing;
+- nothing has been reviewed by a native speaker; the validation cases are single words in short sentences, written as the analyser really reads them;
+- there is **no orientation tutorial** (`tutorial/de|hi|th` does not exist; the manifest's length is an estimate);
+- the grammar tables explain only a few features and constructions; the pack does not declare production checking (so nothing the learner writes is checked), although the adapters have limited rules for it;
+- no recordings; GoListen holds one two-word demonstration clip for German and nothing for Hindi and Thai; remote voices need the learner's consent and key;
+- Thai word segmentation is limited (ICU plus a short compound list) and unmeasured on prose; Hindi and Thai have different scripts, and the parser says so when a selection is in another script.
+
+`packCapabilities('de')` (and the other languages) reports all of this as data; the matrix, the per-language tables and the measured tests
+are in `docs/ecosystem/reader/LANGUAGE-PACK-CAPABILITIES.md`. Language resolution (which pack reads a selection) is in
+`docs/ecosystem/reader/LANGUAGE-RESOLUTION.md`.

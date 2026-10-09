@@ -96,3 +96,49 @@ defined (`AudioStimulus`, `AssessmentSource`, scoring metadata that maps onto `L
 No course, shelves, bundled library or Scripture corpus; no automatic logging of visible words; no snippet retention
 (switch shown disabled with the reason); no machine translation; no claim of Kindle support (copy/paste only); no
 claim of pronunciation quality for Albanian.
+
+## 8. Bundle layout
+
+Five languages are usable, but only Albanian is in the scripts that run on every page. German, Hindi, Thai and Spanish are
+**analyser chunks** — ES modules, one per language — that the content script imports the first time a lookup resolves to that language.
+
+| file | what it holds | loaded |
+|---|---|---|
+| `content.js` | the controller, the reader adapters, the card, the language resolver, the parser and the **Albanian** analyser | injected on a gesture |
+| `background.js` | the service worker: session, sync, recorder, dictionary glosses through the pack runtime, with **Albanian** as its only analyser | the browser starts it |
+| `analysers/{sq,es,de,hi,th}.js` (+ one small shared chunk) | the adapter of that language, exported as `adapter` | by `import()`, on demand; listed in the manifest's `web_accessible_resources` (`analysers/*.js`, `<all_urls>`) because the content script runs on any reading site |
+| `action/popup.js` | the toolbar popup | when opened |
+| `app/app.js` | the setup page: screens, pack installer, orientation; Albanian linked in, the other analysers imported by URL from `analysers/` | when the options page opens |
+| `dist-web/assets/*.js` | the hosted setup page; Vite splits the analysers into chunks (`src/analysers/loaders.ts`, one dynamic import per language) | on demand |
+
+Sizes (minified, `npm run ext:build` and the options build; `test/extension/bundle.test.ts` asserts the ceilings and prints every file):
+
+| file | before (all five inline) | now | ceiling |
+|---|---|---|---|
+| `content.js` | 1,406,237 B | 337,233 B (329 KB) | 520 KB |
+| `background.js` | 1,420,284 B | 340,699 B (333 KB) | 520 KB |
+| `app/app.js` | 1,526,494 B | about 449,000 B (438 KB) | 650 KB |
+| `analysers/sq.js` / `es.js` / `de.js` / `hi.js` / `th.js` | — | 197 / 163 / 322 / 396 / 169 KB | — |
+
+How it fits together:
+
+- **The registry.** `src/parser/registry.ts` holds the loaded adapters. `parseSelection` is synchronous and reads from it. The parser registers
+  Albanian itself; a chunk's loader registers the others (`registerAnalyser`).
+- **Loading.** After the language of a selection is resolved the controller asks `loadAnalyser(languageId)` if `hasAnalyser` is false: it shows
+  "Loading the <language> analyser…", the content script imports `chrome.runtime.getURL('analysers/<id>.js')` (on a harness page without
+  `chrome.runtime`: `/dist/analysers/<id>.js` of the page's origin), registers the adapter and the card follows. The time is recorded as
+  `analyserLoadMs` in that lookup's metrics row (absent when nothing was loaded). A failed load is a message — "GoLearn could not load the
+  <language> analyser, so it will not guess" — a failed metrics row and no event; the next lookup tries again. A page that declares no
+  language is decided by comparing the selection with the installed packs' word lists; the lists that are not loaded are loaded and the
+  resolver is asked once more.
+- **The worker cannot `import()`** (dynamic import is disallowed in service workers), so it does not carry the analysers at all. It needs
+  an analyser only to spell a lemma the way the dictionary does before a lookup. For Albanian it has one; for another language the content script,
+  which has the analyser loaded, sends the dictionary spellings with the gloss request (`GlossRequest.forms`: the normalised lemma and the analyser's
+  variants), and the pack runtime's own analyser there is the tokenize-only fallback, which says so in `coverageNotes()`. The pack runtime takes its analysers from
+  `packages/language-packs/src/builtins.ts` (all five, for GoPractice, servers and tests); the extension's builds swap that module for
+  `src/analysers/builtins.ts` (Albanian plus whatever the parser registry holds) with the `golearn-lean-builtins` plugin of `vite.config.ts`.
+- **Build.** `npm run ext:build` = `--mode content`, `--mode background`, `--mode action`, `--mode analysers` (`vite.config.ts`). The setup page
+  is built separately (`app/vite.config.ts`): the options build is a classic script and imports the extension's chunks by URL
+  (`__GOLEARN_ANALYSERS__ = 'url'`, `app/analysers.ts`); the web build splits chunks.
+- **Rights and conformance.** The chunks are entries of the import-graph audit (`test/audit/conformance.imports.test.ts`) and part of the
+  `dist/` scan (`test/audit/rights.dist.test.ts`). They contain no network call and no dynamic code (`bundle.test.ts`).

@@ -13,7 +13,7 @@
     "build": "tsc -b && vite-node --config scripts/vite.config.ts scripts/rights-gate.mts && vite-node --config scripts/vite.config.ts scripts/check-course-libraries.mts --require hi,de,es,th,sq && node scripts/verify-scripture-canon.mjs && vite-node --config scripts/vite.config.ts scripts/library-audit.mts all && vite-node --config scripts/vite.config.ts scripts/dict-status.mts --require hi,de,es,th,sq && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b",
-    "ext:build": "vite build -c packages/golearn-extension/vite.config.ts --mode content && vite build -c packages/golearn-extension/vite.config.ts --mode background && vite build -c packages/golearn-extension/vite.config.ts --mode action",
+    "ext:build": "vite build -c packages/golearn-extension/vite.config.ts --mode content && vite build -c packages/golearn-extension/vite.config.ts --mode background && vite build -c packages/golearn-extension/vite.config.ts --mode action && vite build -c packages/golearn-extension/vite.config.ts --mode analysers",
     "test": "vitest run",
     "gate": "tsc -b && vitest run",
     "corpus:validate": "vite-node --config scripts/vite.config.ts scripts/corpus-validate.mts",

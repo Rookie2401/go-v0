@@ -13,7 +13,8 @@
  * card or write a record; older ones are superseded. It listens for layout changes only while a card is open. It holds
  * no token and no learner id: events carry a placeholder identity and the background replaces it.
  */
-import type { LayoutChange, PopupAnchor, ReaderAdapter, ReaderContext, ReaderSelection, SelectionFailure } from '../contract/readerAdapter';
+import type { LayoutChange, PopupAnchor, ReaderAdapter, ReaderContext, ReaderSelection, ScriptureSourceReference, SelectionFailure, SourceReference } from '../contract/readerAdapter';
+import { WORD_LIST_MISSING, type LanguageEvidence, type LanguageResolution, type ResolveLanguage, type SegmentFor } from '../contract/language';
 import { describePage } from '../adapters';
 import { chooseAdapter } from '../adapters';
 import type { CardModel } from '../parser/cardModel';
@@ -26,7 +27,7 @@ import {
   type Identity, type InteractionContext,
 } from '../store';
 import type { LookupTrigger } from '../platform';
-import { languageNameOf, type ProfileReply, type PublicStatus } from '../protocol';
+import { languageNameOf as knownLanguageName, type ProfileReply, type PublicStatus } from '../protocol';
 import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
@@ -55,18 +56,64 @@ export interface ControllerDeps {
   moduleLoadMs?: number;
   /** Resolves on the next paint (or soon after); tests pass an immediate promise. */
   nextFrame?: () => Promise<void>;
+  /** Decides the language of a selection from evidence (src/language implements it; content/index.ts injects it). Absent: `defaultResolveLanguage`, which trusts declared metadata only. */
+  resolveLanguage?: ResolveLanguage;
+  /**
+   * Brings a language's analyser into memory (content/index.ts imports `analysers/<id>.js`). Absent = every analyser is already
+   * linked in (tests, a harness without chunks). Must be idempotent; a rejection is shown to the learner as a failed load.
+   */
+  loadAnalyser?: (languageId: string) => Promise<void>;
+  /** True when the language's analyser is already in memory (no load, no "loading" message). Absent with a `loadAnalyser` = not loaded. */
+  hasAnalyser?: (languageId: string) => boolean;
+  /** The dictionary spellings of a lemma in a loaded language (normalised, with the analyser's variants), sent with the gloss request because the worker does not carry that analyser. */
+  glossForms?: (lemma: string, pos: string | undefined, languageId: string) => string[];
+  /** The sentence cutter of a language (its pack's). Absent or undefined for a language = the adapter's own default. */
+  segmenterFor?: SegmentFor;
 }
+
+/** What the controller knows about how the language of a lookup was decided. Metadata only. */
+export interface LanguageInfo {
+  languageId?: string;
+  varietyId?: string;
+  basis: LanguageResolution['basis'];
+  confidence: number;
+  reasons: string[];
+  /** Only when the language is undetermined: the installed languages the learner may choose from. */
+  languageChoice?: Array<{ languageId: string; name: string }>;
+}
+
+/** The card model plus how its language was decided. */
+export type LookupCard = CardModel & { language?: LanguageInfo };
+
+/**
+ * The fallback resolver, used only when none is injected (content/index.ts injects `src/language`'s real one). It trusts
+ * declared metadata only: the learner's override, then what the book declares, then what the page declares near the
+ * selection, then the enrolment's language; with none of those it says `undetermined` rather than guess.
+ */
+export const defaultResolveLanguage: ResolveLanguage = (e: LanguageEvidence): LanguageResolution => {
+  if (e.override) return { languageId: e.override, confidence: 1, basis: 'override', reasons: ['chosen by the learner'] };
+  if (e.bookLanguage && e.bookLanguage.confidence >= 0.5) {
+    return { languageId: e.bookLanguage.languageId, confidence: e.bookLanguage.confidence, basis: 'book-metadata', reasons: [`the book declares it (${e.bookLanguage.source})`] };
+  }
+  if (e.documentLanguage && e.documentLanguage.confidence >= 0.5) {
+    return { languageId: e.documentLanguage.languageId, confidence: e.documentLanguage.confidence, basis: 'document-metadata', reasons: [`the page declares it (${e.documentLanguage.source})`] };
+  }
+  if (e.teamDefault) return { languageId: e.teamDefault, confidence: 0.4, basis: 'team-default', reasons: ['nothing declares the language; the enrolment language was used'] };
+  return { confidence: 0, basis: 'undetermined', reasons: ['nothing declares the language and no default is set'] };
+};
 
 export interface LookupRequest {
   trigger: LookupTrigger;
   /** The browser's own copy of the selected text (context-menu lookups), used only when the page's selection cannot be read. */
   selectionText?: string;
   focus?: boolean;
+  /** The learner's explicit language for this lookup (wins over every other evidence). */
+  languageOverride?: string;
 }
 
 export type LookupOutcome =
-  | { status: 'shown'; card: CardModel; recorded: 'recorded' | 'duplicate' | 'failed'; settled: Promise<void> }
-  | { status: 'message'; reason: string; message: string }
+  | { status: 'shown'; card: LookupCard; recorded: 'recorded' | 'duplicate' | 'failed'; settled: Promise<void> }
+  | { status: 'message'; reason: string; message: string; language?: LanguageInfo; languageChoice?: Array<{ languageId: string; name: string }> }
   | { status: 'silent'; reason: string }
   | { status: 'superseded' };
 
@@ -86,10 +133,14 @@ export class LookupController {
   private listeners: Array<() => void> = [];
   private disposed = false;
   private currentDepth: 'label' | 'brief' | 'explanatory' = 'brief';
+  private languageOverride: string | undefined;
 
   constructor(private readonly d: ControllerDeps) {}
 
   get isEnabled(): boolean { return this.enabled; }
+
+  /** The learner chose a language for what they read here ("this is Albanian"): used by every later lookup until cleared with `undefined`. */
+  setLanguageOverride(languageId: string | undefined): void { this.languageOverride = languageId; }
 
   // ─────────────────────────── activation ───────────────────────────
 
@@ -170,38 +221,74 @@ export class LookupController {
       }
       timer.mark('selectionObtained');
 
+      // the language of THIS selection: the learner's choice, what the book or the page declares, the enrolment's language
+      const status = await statusP;
+      if (!live()) return { status: 'superseded' };
+      const analysers = this.d.analysers ?? ['sq'];
+      const installed = status?.installedLanguages ? analysers.filter((l) => status.installedLanguages!.includes(l) || l === status.languageId) : analysers;
+      const resolution = await this.resolveLanguageOf(adapter, sel, status, installed, req.languageOverride);
+      if (!live()) return { status: 'superseded' };
+      const language: LanguageInfo = { languageId: resolution.languageId, varietyId: resolution.varietyId, basis: resolution.basis, confidence: resolution.confidence, reasons: resolution.reasons };
+      if (resolution.basis === 'undetermined' || !resolution.languageId) {
+        return await this.undetermined({ language, analysers: installed, adapter, timer, anchor: usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed, my });
+      }
+      const languageId = resolution.languageId;
+      const langMetric = { languageId, languageBasis: resolution.basis, languageConfidence: resolution.confidence };
+
+      // the analyser: Albanian is linked in; any other language is loaded now (once per page), and the learner is told while it loads
+      let analyserLoadMs: number | undefined;
+      if (analysers.includes(languageId) && this.d.loadAnalyser && !(this.d.hasAnalyser?.(languageId) ?? false)) {
+        const name = languageNameOf(languageId);
+        const at = usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed;
+        this.closeCard('replaced');
+        this.d.ui.showMessage(`Loading the ${name} analyser…`, at, 'info');
+        const clock = this.d.perf ?? performance;
+        const t0 = clock.now();
+        let loadError = false;
+        try { await this.d.loadAnalyser(languageId); } catch { loadError = true; }
+        if (!live()) return { status: 'superseded' };
+        analyserLoadMs = Math.round((clock.now() - t0) * 100) / 100;
+        if (loadError || !(this.d.hasAnalyser?.(languageId) ?? true)) {
+          const message = `GoLearn could not load the ${name} analyser, so it will not guess. Check your connection to the extension (reload the page) and select again.`;
+          this.closeCard('replaced');
+          this.d.ui.showMessage(message, at, 'info');
+          this.stampLanguage(language);
+          void this.pushMetric(timer, { readerId: adapter.id, contextKind: 'n/a', tokenCount: 0, contextChars: 0, outcome: 'failed', failure: 'analyser-load-failed', analyserLoadMs, ...langMetric });
+          return { status: 'message', reason: 'analyser-load-failed', message, language };
+        }
+      }
+
       // context: only as much as the adapter's declaration allows, and never more than it claims
       const capsNow = safe(() => adapter.capabilities()) ?? caps;
       let ctx: ReaderContext = { kind: 'none', confidence: 0, reason: 'the reader does not provide sentence context' };
       if (!usedFallbackText && capsNow.sentenceContext !== 'none') {
-        const got = await safeAsync(() => adapter.context(sel.range));
+        const segmenter = safe(() => this.d.segmenterFor?.(languageId));
+        const got = await safeAsync(() => adapter.context(sel.range, { languageId, ...(segmenter ? { segmenter } : {}) }));
         if (!live()) return { status: 'superseded' };
         ctx = got ? this.reconcile(got, capsNow.sentenceContext, capsNow.contextConfidence) : { kind: 'none', confidence: 0, reason: 'context extraction failed' };
       } else if (usedFallbackText) ctx = { kind: 'none', confidence: 0, reason: 'the selection is inside a frame this script cannot read' };
       timer.mark('contextExtracted');
 
-      // the language of the enrolment decides whether there is anything to analyse with; with no answer the default (Albanian) stands
-      const status = await statusP;
-      if (!live()) return { status: 'superseded' };
-      const languageId = status?.languageId ?? 'sq';
-      const analysers = this.d.analysers ?? ['sq'];
       if (!analysers.includes(languageId)) {
-        return await this.noAnalysis({ languageId, packAvailable: status?.packAvailable === true, adapter, sel, timer, anchor: usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed, my });
+        return await this.noAnalysis({ languageId, packAvailable: status?.packAvailable === true, adapter, sel, timer, anchor: usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed, my, langMetric });
       }
 
       const parseCtx: ParseContext = {
         kind: ctx.kind, confidence: ctx.confidence, reason: ctx.reason, sentence: ctx.sentence, selStart: ctx.selStart, selEnd: ctx.selEnd,
         direction: sel.direction, pageLanguage: sel.pageLanguage,
       };
-      let card: CardModel;
+      let card: LookupCard;
       try { card = this.d.parse({ surface: sel.surface, context: parseCtx, languageId }); } catch { return say('parser-error', MESSAGES.parserFailed); }
+      card.language = language;
       timer.mark('parsed');
       if (!live()) return { status: 'superseded' };
 
       // the source of the selection is read before the card is built so that every interaction can name it
       const sourceP = safeAsync(() => adapter.sourceRef());
+      let scripture: ScriptureSourceReference | undefined;
+      const append = (ev: GoEvent) => this.d.store.append(scripture ? withScripture(ev, scripture) : ev);
       const services = this.d.services;
-      const languageName = status?.languageName ?? languageNameOf(languageId);
+      const languageName = status && status.languageId === languageId ? status.languageName : languageNameOf(languageId);
       const askGloss = !!services && !!card.lemma && !card.unconfirmed && card.tokenCount === 1;
       const view: Partial<CardView> = {
         languageName,
@@ -214,7 +301,7 @@ export class LookupController {
       const holder: { ictx?: InteractionContext } = {};
       const record = async (build: (c: InteractionContext) => GoEvent): Promise<boolean> => {
         if (!holder.ictx || this.disposed) return false;
-        const res = await this.d.store.append(build({ ...holder.ictx, now: this.now() }));
+        const res = await append(build({ ...holder.ictx, now: this.now() }));
         return res.ok;
       };
       const layerOf = (l: LayerName) => (c: InteractionContext) => buildAssistanceEvent(c, l, this.currentDepth);
@@ -235,11 +322,12 @@ export class LookupController {
       this.closeCard('new-lookup');
       this.currentRange = usedFallbackText ? undefined : sel.range;
       this.d.ui.show(card, anchor, { focus: req.focus, view: { ...initialView(languageName), ...view }, actions });
+      this.stampLanguage(language);
       timer.mark('popupPositioned');
       if (this.currentRange) this.watchLayout(adapter, my);
 
       // ── beside the card, never blocking it ──
-      const metricRef: { row?: MetricsRow; base?: Pick<MetricsRow, 'readerId' | 'contextKind' | 'tokenCount' | 'contextChars' | 'outcome'> } = {};
+      const metricRef: { row?: MetricsRow; base?: Pick<MetricsRow, 'readerId' | 'contextKind' | 'tokenCount' | 'contextChars' | 'outcome'> & { analyserLoadMs?: number } & LanguageMetric } = {};
       const arrived = (phase: 'profileArrived' | 'glossArrived'): void => {
         timer.mark(phase);
         if (metricRef.row) void this.updateMetric(timer, metricRef.row); // the row is already written: add the late mark
@@ -255,9 +343,10 @@ export class LookupController {
             arrived('profileArrived');
           }).catch(() => { if (live()) this.d.ui.update({ profile: { state: 'unavailable', weak: [] } }); }),
         );
+        const forms = askGloss ? safe(() => this.d.glossForms?.(card.lemma!, card.pos, languageId)) ?? [] : [];
         if (askGloss) {
           pending.push(
-            services.gloss({ lemma: card.lemma!, pos: card.pos, languageId }).then((reply) => {
+            services.gloss({ lemma: card.lemma!, pos: card.pos, languageId, ...(forms.length ? { forms } : {}) }).then((reply) => {
               if (!live()) return;
               const gloss: CardView['gloss'] = reply?.found
                 ? { state: 'ready', senses: reply.senses, attribution: reply.attribution }
@@ -281,7 +370,9 @@ export class LookupController {
       // first information on screen = next paint; the events are written in parallel
       const frame = (this.d.nextFrame ?? defaultFrame(this.d.doc))().then(() => { timer.mark('firstInfoShown'); });
       try { await this.d.ready; } catch { /* the identity keeps its placeholder */ }
-      const source = await sourceP;
+      const gotSource = await sourceP;
+      scripture = gotSource?.kind === 'scripture' ? gotSource : undefined;
+      const source: SourceReference | undefined = gotSource?.kind === 'scripture' ? { kind: 'web' } : gotSource;
       if (!live()) { await frame; return { status: 'superseded' }; }
       const base: InteractionContext = {
         card, source, readerId: adapter.id, identity: this.d.identity, version: this.d.version, sessionId: this.d.sessionId,
@@ -289,14 +380,14 @@ export class LookupController {
       };
       const event = buildSelectionEvent(base);
       holder.ictx = { ...base, selectionEventId: event.id };
-      const res = await this.d.store.append(event);
+      const res = await append(event);
       // layer 1 was shown: the second event of every card
-      await this.d.store.append(buildAnalysisShownEvent({ ...holder.ictx, now: this.now() }, ['identification']));
+      await append(buildAnalysisShownEvent({ ...holder.ictx, now: this.now() }, ['identification']));
       timer.mark('eventQueued');
       await frame;
       const recorded = res.ok ? (res.duplicate ? 'duplicate' : 'recorded') : 'failed';
       if (live()) this.d.ui.setRecorded(recorded);
-      metricRef.base = { readerId: adapter.id, contextKind: card.context.kind, tokenCount: card.tokenCount, contextChars: card.context.sentenceChars ?? card.surface.length, outcome: 'shown' };
+      metricRef.base = { readerId: adapter.id, contextKind: card.context.kind, tokenCount: card.tokenCount, contextChars: card.context.sentenceChars ?? card.surface.length, outcome: 'shown', ...(analyserLoadMs !== undefined ? { analyserLoadMs } : {}), ...langMetric };
       metricRef.row = await this.pushMetric(timer, metricRef.base, (row) => { metricRef.row = row; });
       if (Object.keys(timer.t).length > Object.keys(metricRef.row.t).length) await this.updateMetric(timer, metricRef.row);
       return { status: 'shown', card, recorded, settled };
@@ -350,7 +441,7 @@ export class LookupController {
   }
 
   /** The enrolment's language has no analyser or pack in this build: say so, and record only the lookup. */
-  private async noAnalysis(p: { languageId: string; packAvailable: boolean; sel: ReaderSelection; adapter: ReaderAdapter; timer: LookupTimer; anchor: PopupAnchor; my: number }): Promise<LookupOutcome> {
+  private async noAnalysis(p: { languageId: string; packAvailable: boolean; sel: ReaderSelection; adapter: ReaderAdapter; timer: LookupTimer; anchor: PopupAnchor; my: number; langMetric?: LanguageMetric }): Promise<LookupOutcome> {
     const name = languageNameOf(p.languageId);
     const reason = p.packAvailable ? 'no-analyser' : 'no-pack';
     const message = p.packAvailable
@@ -358,13 +449,61 @@ export class LookupController {
       : `There is no GoLearn pack for ${name} yet, so there is no analysis to show. The lookup was counted; nothing else was recorded.`;
     this.closeCard('replaced');
     this.d.ui.showMessage(message, p.anchor, 'info');
-    const source = await safeAsync(() => p.adapter.sourceRef());
+    this.stampLanguage({ languageId: p.languageId, basis: p.langMetric?.languageBasis ?? 'team-default', confidence: p.langMetric?.languageConfidence ?? 0, reasons: [] });
+    const got = await safeAsync(() => p.adapter.sourceRef());
     if (p.my !== this.seq) return { status: 'superseded' };
+    const scripture = got?.kind === 'scripture' ? got : undefined;
+    const source: SourceReference | undefined = got?.kind === 'scripture' ? { kind: 'web' } : got;
     const ev = buildNoPackEvent({ surface: p.sel.surface, languageId: p.languageId, readerId: p.adapter.id, identity: this.d.identity, version: this.d.version, sessionId: this.d.sessionId, now: this.now(), source, direction: p.sel.direction, reason });
-    await this.d.store.append(ev);
+    await this.d.store.append(scripture ? withScripture(ev, scripture) : ev);
     p.timer.mark('eventQueued');
-    await this.pushMetric(p.timer, { readerId: p.adapter.id, contextKind: 'n/a', tokenCount: 0, contextChars: p.sel.surface.length, outcome: 'failed', failure: reason });
-    return { status: 'message', reason, message };
+    await this.pushMetric(p.timer, { readerId: p.adapter.id, contextKind: 'n/a', tokenCount: 0, contextChars: p.sel.surface.length, outcome: 'failed', failure: reason, ...p.langMetric });
+    return { status: 'message', reason, message, language: p.langMetric ? { languageId: p.langMetric.languageId, basis: p.langMetric.languageBasis, confidence: p.langMetric.languageConfidence, reasons: [] } : undefined };
+  }
+
+  /** Ask the resolver which language the selection is in, from the page's and the book's declarations plus the enrolment's language. */
+  private async resolveLanguageOf(adapter: ReaderAdapter, sel: ReaderSelection, status: PublicStatus | undefined, installed: string[], requestOverride: string | undefined): Promise<LanguageResolution> {
+    const declared = safe(() => adapter.languageEvidence?.()) ?? {};
+    const override = requestOverride ?? this.languageOverride;
+    const evidence: LanguageEvidence = {
+      ...declared,
+      ...(override ? { override } : {}),
+      sample: sel.surface,
+      teamDefault: status?.languageId ?? 'sq',
+      installed: [...installed],
+    };
+    const resolve = this.d.resolveLanguage ?? defaultResolveLanguage;
+    let out = safe(() => resolve(evidence));
+    // detection compares the sample with the word lists of the installed packs; a list that is not loaded yet is loaded and the resolver asked again
+    if (out && out.basis !== 'override' && out.reasons.some((r) => WORD_LIST_MISSING.test(r)) && this.d.loadAnalyser) {
+      const missing = installed.filter((l) => !(this.d.hasAnalyser?.(l) ?? true));
+      if (missing.length) {
+        await Promise.allSettled(missing.map((l) => this.d.loadAnalyser!(l)));
+        out = safe(() => resolve(evidence)) ?? out;
+      }
+    }
+    return out ?? { basis: 'undetermined', confidence: 0, reasons: ['the language resolver failed'] };
+  }
+
+  /** Say how the language was decided on the card's host element, for the popup layer and for tests; nothing else of the page is touched. */
+  private stampLanguage(info: LanguageInfo): void {
+    const h = this.d.ui.host();
+    if (!h) return;
+    h.setAttribute('data-language-basis', info.basis);
+    if (info.languageId) h.setAttribute('data-language-id', info.languageId); else h.removeAttribute('data-language-id');
+  }
+
+  /** Nothing declared the language and there is no default: say so honestly and offer the installed languages. Never guess. */
+  private async undetermined(p: { language: LanguageInfo; analysers: string[]; adapter: ReaderAdapter; timer: LookupTimer; anchor: PopupAnchor; my: number }): Promise<LookupOutcome> {
+    const languageChoice = p.analysers.map((id) => ({ languageId: id, name: languageNameOf(id) }));
+    const names = languageChoice.map((c) => c.name).join(', ');
+    const message = `GoLearn cannot tell which language this is, and will not guess. Choose one${names ? ` (${names})` : ''} and select again.`;
+    this.closeCard('replaced');
+    this.d.ui.showMessage(message, p.anchor, 'info');
+    this.stampLanguage(p.language);
+    await this.pushMetric(p.timer, { readerId: p.adapter.id, contextKind: 'n/a', tokenCount: 0, contextChars: 0, outcome: 'failed', failure: 'language-undetermined', languageBasis: 'undetermined', languageConfidence: p.language.confidence });
+    if (p.my !== this.seq) return { status: 'superseded' };
+    return { status: 'message', reason: 'language-undetermined', message, language: { ...p.language, languageChoice }, languageChoice };
   }
 
   /** "This analysis is wrong": the correction event first (durable, works offline), then the proposal to the shared word list through the background. */
@@ -391,7 +530,7 @@ export class LookupController {
     if (this.d.ui.isOpen()) this.d.ui.dismiss(reason);
   }
 
-  private async pushMetric(timer: LookupTimer, part: Pick<MetricsRow, 'readerId' | 'contextKind' | 'tokenCount' | 'contextChars' | 'outcome'> & { failure?: string }, onRow?: (row: MetricsRow) => void): Promise<MetricsRow> {
+  private async pushMetric(timer: LookupTimer, part: Pick<MetricsRow, 'readerId' | 'contextKind' | 'tokenCount' | 'contextChars' | 'outcome'> & { failure?: string; analyserLoadMs?: number } & Partial<LanguageMetric>, onRow?: (row: MetricsRow) => void): Promise<MetricsRow> {
     const first = this.lookupsDone === 0;
     this.lookupsDone++;
     const row: MetricsRow = {
@@ -414,6 +553,23 @@ export class LookupController {
     row.t = timer.t;
     try { await this.d.metrics.append(row); } catch { /* metrics are best effort */ }
   }
+}
+
+/** The language fields a metrics row carries beside MetricsRow's own: how the language was decided, never the text. */
+export interface LanguageMetric { languageId: string; languageBasis: LanguageResolution['basis']; languageConfidence: number }
+
+/** A copy of the event whose source reference is the Scripture reference (translation, book, chapter, verse): metadata, never the verse text. */
+function withScripture(ev: GoEvent, ref: ScriptureSourceReference): GoEvent {
+  const { kind, translationId, book, chapter, verse, languageHint } = ref;
+  const sourceRef = { kind, translationId, book, chapter, ...(verse !== undefined ? { verse } : {}), ...(languageHint ? { languageHint } : {}) };
+  return { ...ev, subject: { ...ev.subject, sourceRef: sourceRef as unknown as NonNullable<GoEvent['subject']['sourceRef']> } };
+}
+
+/** The protocol's name for a language, else the browser's English name for it (`en` -> English), else the id. */
+function languageNameOf(id: string): string {
+  const known = knownLanguageName(id);
+  if (known !== id) return known;
+  try { return new Intl.DisplayNames(['en'], { type: 'language' }).of(id) ?? id; } catch { return id; }
 }
 
 function safe<T>(fn: () => T): T | undefined { try { return fn(); } catch { return undefined; } }

@@ -7,10 +7,11 @@
  * Repository, the dictionary or a stored setting is a message to the background worker (services.ts).
  */
 import { bootStart } from '../boot';
-import { sqAdapter } from '../../../../src/adapters/sq';
-import { WebGenericAdapter, UnsupportedAdapter } from '../adapters';
+import { createAnalyserLoader } from '../analysers/urlLoader';
+import { createAdapters } from '../adapters';
+import { resolveLanguage } from '../language/resolve';
 import { createMemoryMetricsStore } from '../metrics';
-import { PARSER_LANGUAGES, parseSelection } from '../parser';
+import { PARSER_LANGUAGES, getAnalyser, hasAnalyser, parseSelection } from '../parser';
 import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from '../platform';
 import { createCardUI } from '../popup/card';
 import type { Pronouncer } from '../popup/view';
@@ -20,6 +21,12 @@ import { createBridge } from './services';
 import { createDevicePronouncer } from './voice';
 
 const GLOBAL_KEY = '__goLearnExtension';
+
+/** The sentence cutter of a loaded language (its own analyser's); a language that is not loaded is cut by the adapter's default. */
+const segmenterOf = (languageId: string): ((t: string) => Array<{ start: number; end: number; text: string }>) | undefined => {
+  const a = getAnalyser(languageId);
+  return a ? (t) => a.segmentSentences(t) : undefined;
+};
 
 interface InstalledMarker { controller: LookupController }
 
@@ -47,7 +54,17 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   const fallbackEvents = bridge ? undefined : createMemoryEncounterStore();
   const controller = new LookupController({
     doc,
-    adapters: [new WebGenericAdapter({ doc, segmentSentences: (t) => sqAdapter.segmentSentences(t) }), new UnsupportedAdapter()],
+    adapters: createAdapters(doc),
+    // each language's own sentence cutter; a language without one (yet) is cut by the adapter's Intl.Segmenter default
+    segmenterFor: segmenterOf,
+    resolveLanguage,
+    glossForms: (lemma, pos, languageId) => {
+      const a = getAnalyser(languageId);
+      if (!a || languageId === 'sq') return []; // the worker carries Albanian
+      return [...new Set([a.normalize(lemma), ...(a.lemmaVariants?.(lemma, pos as Parameters<NonNullable<typeof a.lemmaVariants>>[1]) ?? []).map((v) => a.normalize(v))])].slice(0, 8);
+    },
+    loadAnalyser: createAnalyserLoader(chromeApi),
+    hasAnalyser,
     parse: parseSelection,
     ui,
     store: bridge?.events ?? fallbackEvents!,

@@ -1,34 +1,46 @@
 /**
- * Parser - applies the Albanian language adapter (the real one, bundled) to a selection and its permitted context and
+ * Parser - applies a language adapter (the real one, taken from the analyser registry) to a selection and its permitted context and
  * returns a card model. Nothing here guesses: a word the pack does not know is reported as unknown, an unconfirmed
  * reading says so, the context kind is passed through, and confidence is the analyzer's own number.
  *
  * The sentence is tokenized whole (the adapter needs the neighbours: linking articles, short pronouns, particles);
  * the selected tokens are found by offsets. With no context the selection alone is tokenized and the card says so.
  */
-import { esAdapter } from '../../../../src/adapters/es';
 import { sqAdapter } from '../../../../src/adapters/sq';
 import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidate, PhraseCandidate, RawToken } from '../../../../src/core';
 import { unitIds } from '../../../repository-contract/src';
-import { hasLatinLetter, sentenceKeyOf, fnv1a64 } from '../text';
+import { sentenceKeyOf, fnv1a64 } from '../text';
 import type { Alternative, CardModel, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
+import { AnalyserNotLoaded, LANGUAGE_META, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta } from './registry';
 
 export * from './cardModel';
+export { AnalyserNotLoaded, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta };
 
 /** The language the parser reads when no `languageId` is given (the original, Albanian-only behaviour). */
 export const PARSER_LANGUAGE = 'sq';
 export const PACK_ID = `pack:sq:${sqAdapter.version}`;
 
-/** A language the parser can read: its adapter, its name in plain words, its pack id and the page-language tags that mean it. */
-interface Lang { lang: string; name: string; adapter: LanguageAdapter; packId: string; pageTag: RegExp }
+// Albanian is the one analyser the parser carries itself: the reference language is never loaded, so its first lookup pays no load.
+registerAnalyser('sq', sqAdapter);
 
-/** The small adapter registry of the extension: a language is parsed only if it is listed here (the content script's `analysers` agrees). */
-const LANGS: Readonly<Record<string, Lang>> = {
-  sq: { lang: 'sq', name: 'Albanian', adapter: sqAdapter, packId: PACK_ID, pageTag: /^(sq|als|aln)(-|$)/ },
-  es: { lang: 'es', name: 'Spanish', adapter: esAdapter, packId: `pack:es:${esAdapter.version}`, pageTag: /^es(-|$)/ },
+/** A language the parser reads: its metadata, the loaded adapter and the pack id that adapter makes (`pack:<lang>:<adapter version>`). */
+interface Lang extends LanguageMeta { adapter: LanguageAdapter; packId: string }
+
+const langOf = (languageId: string): Lang => {
+  const meta = languageMeta(languageId);
+  if (!meta) throw new RangeError(`No parser for language "${languageId}".`);
+  const adapter = getAnalyser(languageId);
+  if (!adapter) throw new AnalyserNotLoaded(languageId);
+  return { ...meta, adapter, packId: `pack:${meta.lang}:${adapter.version}` };
 };
-export const PARSER_LANGUAGES: readonly string[] = Object.keys(LANGS);
-export const PACK_IDS: Readonly<Record<string, string>> = Object.fromEntries(Object.values(LANGS).map((l) => [l.lang, l.packId]));
+
+/** The adapter the parser reads a language with, when it is loaded (the language resolver scores a sample against the same word lists); undefined for an unknown or not-yet-loaded language. */
+export const parserAdapter = (languageId: string): LanguageAdapter | undefined => getAnalyser(languageId);
+/** The pack id of each language whose analyser is loaded (`pack:<lang>:<version>`); a language not loaded yet reads as undefined. */
+export const PACK_IDS: Readonly<Record<string, string>> = Object.defineProperties({}, Object.fromEntries(Object.keys(LANGUAGE_META).map((lang) => [lang, {
+  enumerable: true,
+  get: (): string | undefined => { const a = getAnalyser(lang); return a ? `pack:${lang}:${a.version}` : undefined; },
+}]))) as Record<string, string>;
 /** Same threshold the engine uses to credit a lemma (src/golearn/policy.ts LEMMA_MIN_CONFIDENCE): below it, a form id. */
 export const LEMMA_MIN_CONFIDENCE = 0.5;
 const MAX_WORD_LINES = 12;
@@ -46,7 +58,7 @@ export interface ParseContext {
   pageLanguage?: string;
 }
 
-/** `languageId` is the language of the learner's enrolment; absent = Albanian (PARSER_LANGUAGE). An unlisted language throws (the caller checks the analyser list first). */
+/** `languageId` is the language of the learner's enrolment; absent = Albanian (PARSER_LANGUAGE). An unlisted language throws a RangeError; a listed language whose analyser has not been loaded throws `AnalyserNotLoaded` (the caller loads it first: see registry.ts). */
 export interface ParseInput { surface: string; context: ParseContext; languageId?: string }
 
 const LABELS: Record<LabelledField, EvidenceLabel> = {
@@ -65,8 +77,7 @@ const LIMITS = [
 ];
 
 export function parseSelection(input: ParseInput): CardModel {
-  const L = Object.prototype.hasOwnProperty.call(LANGS, input.languageId ?? PARSER_LANGUAGE) ? LANGS[input.languageId ?? PARSER_LANGUAGE] : undefined;
-  if (!L) throw new RangeError(`No parser for language "${input.languageId}".`);
+  const L = langOf(input.languageId ?? PARSER_LANGUAGE);
   const surface = input.surface.normalize('NFC').trim();
   const ctx = input.context;
 
@@ -101,9 +112,10 @@ export function parseSelection(input: ParseInput): CardModel {
   const notes: string[] = [];
   if (kind === 'none') notes.push('No sentence context: the word was read alone, so neighbouring words could not help choose a reading.');
   else if (kind === 'fragment') notes.push('Only a fragment around the word was available, not a verified sentence: readings that depend on neighbours are less certain.');
-  if (!hasLatinLetter(surface)) notes.push(`This selection is not in Latin script: the ${L.name} word list does not apply to it.`);
+  const inScript = hasScriptLetter(L, surface);
+  if (!inScript) notes.push(`This selection is not in ${scriptName(L)} script: the ${L.name} word list does not apply to it.`);
   const pl = ctx.pageLanguage?.toLowerCase();
-  if (pl && !L.pageTag.test(pl) && hasLatinLetter(surface)) {
+  if (pl && !L.pageTag.test(pl) && inScript) {
     notes.push(L.lang === 'sq'
       ? `The page declares its language as "${ctx.pageLanguage}"; the Albanian word list is applied only because it is the one pack in this prototype.`
       : `The page declares its language as "${ctx.pageLanguage}"; the ${L.name} word list is applied because ${L.name} is the language you are studying.`);
@@ -112,7 +124,7 @@ export function parseSelection(input: ParseInput): CardModel {
   const base = {
     languageId: L.lang, packId: L.packId, analyzerId: analyzerIdOf(L, analyses),
     surface, phrases: [] as PhraseNote[], words: [] as WordLine[], alternatives: [] as Alternative[], basis: [] as string[],
-    pronunciation: [] as string[], unconfirmed: false, labels: LABELS, limits: LIMITS, context, tokenCount: selected.length,
+    pronunciation: [] as string[], unconfirmed: false, labels: LABELS, limits: L.experimental ? [...LIMITS, L.experimental] : LIMITS, context, tokenCount: selected.length,
     features: [] as FeatureItem[], constructions: [] as ConstructionNote[], syntaxNotes: [] as string[], sentenceWords: [] as SentenceWord[], unitIds: [] as string[],
   };
 
@@ -213,6 +225,15 @@ export function parseSelection(input: ParseInput): CardModel {
 }
 
 // ───────────────────────────── internals ─────────────────────────────
+
+/** The letters that belong to a language's script: the adapter states the script; Latin is the default. */
+const SCRIPT_TEST: Record<string, { name: string; re: RegExp }> = {
+  Latn: { name: 'Latin', re: /\p{Script=Latin}/u },
+  Deva: { name: 'Devanagari', re: /\p{Script=Devanagari}/u },
+  Thai: { name: 'Thai', re: /\p{Script=Thai}/u },
+};
+const scriptName = (L: Lang): string => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).name;
+const hasScriptLetter = (L: Lang, s: string): boolean => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).re.test(s);
 
 const clamp01 = (n: number): number => (Number.isFinite(n) ? Math.max(0, Math.min(1, n)) : 0);
 const same = (a: string, b: string): boolean => a.replace(/\s+/gu, ' ').trim() === b.replace(/\s+/gu, ' ').trim();

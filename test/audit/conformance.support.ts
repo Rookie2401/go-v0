@@ -247,6 +247,22 @@ export const EBOOK_PATTERNS: ReadonlyArray<{ name: string; re: RegExp }> = [
   { name: 'ebook-provider SDK', re: /@(?:amzn|kobo|overdrive|bookshout|readium)\b|overdrive|bookshout/i },
 ];
 
+/**
+ * What identifies a commercial ebook provider in a word list: its HOSTS and PATHS, not the English word. A salvaged word list
+ * (src/adapters/<language>/lexicon-*.ts) is data in which "kindle" is a headword or gloss ("to kindle a fire"); it is not provider
+ * code. The same list is still scanned for the provider hosts, paths and SDK names.
+ */
+export const EBOOK_HOST_PATTERNS: ReadonlyArray<{ name: string; re: RegExp }> = [
+  { name: 'read.amazon', re: /read\.amazon/i },
+  { name: 'kindle.amazon', re: /kindle\.amazon/i },
+  { name: 'read.kobo', re: /read\.kobo/i },
+  { name: 'play.google.com/books', re: /play\.google\.com\/books/i },
+  { name: 'ebook-provider SDK', re: /@(?:amzn|kobo|overdrive|bookshout|readium)\b|overdrive|bookshout/i },
+];
+
+/** The patterns to apply to one source file: package code (the extension, the apps) gets the strict word patterns; a legacy word list (src/adapters/) gets the host and path patterns. */
+export const ebookPatternsFor = (file: string): ReadonlyArray<{ name: string; re: RegExp }> => (file.startsWith('src/adapters/') ? EBOOK_HOST_PATTERNS : EBOOK_PATTERNS);
+
 export const readText = (file: string): string => fs.readFileSync(abs(file), 'utf8');
 export const exists = (file: string): boolean => fs.existsSync(abs(file));
 

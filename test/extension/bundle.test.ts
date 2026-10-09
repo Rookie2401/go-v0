@@ -20,7 +20,46 @@ const dist = path.resolve(__dirname, '../../packages/golearn-extension/dist');
 const have = fs.existsSync(path.join(dist, 'content.js')) && fs.existsSync(path.join(dist, 'background.js'));
 const read = (f: string): string => fs.readFileSync(path.join(dist, f), 'utf8');
 
+const KB = 1024;
+/** Every file under a folder, relative, with its size. */
+const sizesIn = (dir: string, rel = ''): Array<{ file: string; bytes: number }> =>
+  fs.readdirSync(path.join(dir, rel), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? sizesIn(dir, path.posix.join(rel, e.name)) : [{ file: path.posix.join(rel, e.name), bytes: fs.statSync(path.join(dir, rel, e.name)).size }]));
+
 describe.skipIf(!have)('the built extension', () => {
+  it('stays small: the content script and the worker carry Albanian only, and every other analyser is its own chunk', () => {
+    const sizes = new Map(sizesIn(dist).filter((f) => /\.js$/.test(f.file)).map((f) => [f.file, f.bytes]));
+    const table = [...sizes].map(([f, b]) => `  ${f.padEnd(34)} ${(b / KB).toFixed(1).padStart(8)} KB`).join('\n');
+    // eslint-disable-next-line no-console
+    console.info(`[bundle] dist/ JavaScript, minified:\n${table}`);
+    expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(520 * KB);
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(520 * KB);
+    if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(650 * KB);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
+  });
+
+  it('each analyser chunk is an ES module that exports the adapter, and the manifest makes the chunks readable from the page', () => {
+    for (const id of ['sq', 'es', 'de', 'hi', 'th']) {
+      const code = read(`analysers/${id}.js`);
+      expect(code, id).toMatch(/\bexport\s*\{[^}]*\bas adapter\b[^}]*\}|\bexport\s*\{\s*adapter\b/);
+      expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts/);
+      expect(code, id).not.toMatch(/\beval\s*\(|new Function\s*\(/);
+    }
+    const m = JSON.parse(read('manifest.json'));
+    expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js'], matches: ['<all_urls>'] }]);
+    // every shared chunk the analysers import sits in analysers/ too, so the one pattern covers it
+    for (const id of ['sq', 'es', 'de', 'hi', 'th']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
+  });
+
+  it('the worker and the content script do not carry the German, Hindi or Thai analysers', () => {
+    for (const f of ['content.js', 'background.js']) {
+      const code = read(f);
+      expect(code, f).not.toContain('adapter-de@');
+      expect(code, f).not.toContain('adapter-hi@');
+      expect(code, f).not.toContain('adapter-th@');
+    }
+    expect(read('analysers/de.js')).toContain('adapter-de@');
+  });
+
   it('has the files the manifest names, and the manifest copied is the source manifest', () => {
     const m = JSON.parse(read('manifest.json'));
     expect(m.permissions).toEqual(['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms']);

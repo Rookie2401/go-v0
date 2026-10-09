@@ -20,6 +20,10 @@ export interface PackView {
   nativeName: string;
   /** 'planned' packs are listed honestly and can neither be enrolled in nor installed. */
   status: 'installable' | 'planned';
+  /** How far the pack is built: an experimental pack is installable but seed-only and unreviewed, and is never shown as plainly installable. */
+  level: 'installable' | 'experimental' | 'planned';
+  /** The words the learner sees for `level` ("installable", "experimental, seed-only lemmatisation, unreviewed", "planned, not installable"). */
+  levelLabel: string;
   defaultVarietyId: string;
   scriptId: string;
   varieties: PackVarietyView[];

@@ -27,7 +27,12 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
     const code = read('dist/app/app.js');
     expect(code).not.toMatch(/^\s*(import|export)\s/m);
     expect(code).not.toMatch(/\beval\s*\(|new Function\s*\(/);
-    expect(code).not.toMatch(/\bimport\s*\(/);
+    // the one dynamic import is the analyser loader's: German, Hindi, Thai and Spanish are the extension's own analysers/<id>.js, read on demand
+    // (a web accessible resource), not linked into this script
+    expect(code.match(/\bimport\s*\(/g) ?? []).toHaveLength(1);
+    expect(code).toContain('analysers/');
+    expect(code).not.toContain('adapter-de@');
+    expect(code.length).toBeLessThan(650 * 1024);
   });
 
   it('carries the dictionary the installer fetches, and nothing of a planned language', () => {

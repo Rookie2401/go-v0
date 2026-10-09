@@ -412,8 +412,8 @@ describe('Prompt 5 §21 — GoReview over the real Repository, pack, scheduler, 
   });
 
   it('unsupported language features: a planned language has no pack facts, so nothing is built and nothing is claimed', async () => {
-    expect(factsFor('de', a.api)).toBeUndefined();
-    const e = ok<{ enrolment: { enrolmentId: string } }>(await a.api.enrol({ languageId: 'de', packId: 'pack:de', packVersion: '9', goals: [{ kind: 'reading' }] }));
+    expect(factsFor('nb', a.api)).toBeUndefined();
+    const e = ok<{ enrolment: { enrolmentId: string } }>(await a.api.enrol({ languageId: 'nb', packId: 'pack:nb', packVersion: '2', goals: [{ kind: 'reading' }] }));
     const c = ok<{ candidates: unknown[] }>(await a.api.candidates(e.enrolment.enrolmentId, 10)).candidates;
     expect(Array.isArray(c)).toBe(true);
   });

@@ -97,7 +97,18 @@ frame this script cannot read", "context extraction failed"). The card model lab
 through the Albanian analyser returns `provenance: 'none'`, `confidence: 0` — honest, not a guess (measured, see
 `EXTENSION-PROTOTYPE-TESTS.md` §3).
 
-## 6. What the three adapters declare (as measured 2026-10-08)
+## 6. What the adapters declare (the table is the first three, as measured 2026-10-08; the registry that replaced the decline literal)
+
+**The registry (2026-10-09).** The adapters the content script uses are no longer a hard-coded trio with a decline list in
+`webGeneric.ts`. They are built from `READER_REGISTRY` (`packages/golearn-extension/src/adapters/registry.ts`; rules in
+`reader/ADAPTER-REGISTRY.md`): one data entry per reading environment — its hosts and path prefixes, its `status` (`verified` …
+`blocked`), whether a person has reviewed its terms (the type admits only `reviewed: false`), the capabilities it declares, the
+fallback offered when it cannot read, and, for a refusal, the one line shown. `createAdapters` returns one `SiteAdapter` per `site`
+entry, then `web-generic`, then `unsupported`. An entry that is `blocked`, `permission-required` or `unsupported`, or `enabled: false`,
+refuses and says why; it is never "just tried". The decline list of the generic adapter (`DEFAULT_DECLINED_HOSTS`) is *derived* from the
+refusing entries (`declinedHostsFromRegistry()`). A site adapter reports the page's declared language as evidence (`languageEvidence()`,
+metadata only, the region kept: `es-HN`) and the language resolver (`src/language/resolve.ts`) decides; the lookup is then parsed in
+that language by the analyser the content script has loaded for it (below). The table that follows is the original three.
 
 | | `web-generic` (top document) | `web-generic` (cross-origin frame) | `epub-local` (controlled reader) | `unsupported` |
 |---|---|---|---|---|
@@ -112,7 +123,7 @@ through the Albanian analyser returns `provenance: 'none'`, `confidence: 0` — 
 | contentAccessRestrictions | "does not read form fields, editable regions or cross-origin frames" | the frame | "DRM-free files only; protected EPUBs refused" | the reason |
 | requiredPermissions | [] (activeTab after the gesture) | [] | [] | [] |
 
-## 7. Open points for production
+## 7. Open points for production (closed ones marked)
 
 - Same-origin **frames** are read by `epub-local` (it owns the frame) but the generic adapter, injected into the top
   document only, reports `no-selection` for a selection inside a same-origin `<iframe>` (measured). An installed
@@ -121,7 +132,14 @@ through the Albanian analyser returns `provenance: 'none'`, `confidence: 0` — 
   text-quote/position locator (W3C Web Annotation selectors) without storing text, or must declare `none`.
 - `persistentAnnotation.termsReviewed` is a type-level promise; the review itself must be recorded (who, when, what
   terms) in the pack or adapter manifest.
-- The decline list in `webGeneric.ts` must become data (a reviewed registry with dates), not a code literal.
+- ~~The decline list in `webGeneric.ts` must become data (a reviewed registry with dates), not a code literal.~~ **Closed
+  2026-10-09:** it is derived from `READER_REGISTRY` (§6). The "dates" half is still open: a `termsReview` records a note, not yet a
+  reviewer and a date, because no person has reviewed any environment (every entry is `reviewed: false`).
+- ~~The parser has no way to know which analyser a language needs.~~ **Closed 2026-10-09:** `parseSelection` stays synchronous and reads a
+  language with the adapter registered for it (`registerAnalyser`, `hasAnalyser`, `PARSER_LANGUAGES` = the languages that can be
+  loaded). It throws `AnalyserNotLoaded` for a known language whose analyser is not in memory and a `RangeError` for an unknown one.
+  Albanian is registered by the parser itself; German, Hindi, Thai and Spanish are separate chunks the controller loads after the
+  language is resolved and before it parses (`ControllerDeps.loadAnalyser`; bundle layout: GOLEARN-ARCHITECTURE.md §8).
 - Import rule: the controlled reader imports this contract from the extension package; `packages/README.md` allows
   only `repository-contract` today. Either move `contract/` to its own package (`reader-contract`) or widen the rule.
   Recommended: its own package, since GoPractice never needs it and the controlled reader does.

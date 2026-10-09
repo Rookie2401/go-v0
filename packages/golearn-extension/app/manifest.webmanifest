@@ -1,0 +1,19 @@
+{
+  "name": "GoLearn",
+  "short_name": "GoLearn",
+  "description": "Look up words from your reading with the GoLearn card. Install it as an app to share text to it from other apps on Android.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f2e8",
+  "theme_color": "#f7f2e8",
+  "icons": [
+    { "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "share_target": {
+    "action": "#/share",
+    "method": "GET",
+    "params": { "text": "text", "url": "url", "title": "title" }
+  }
+}

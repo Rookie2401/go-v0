@@ -8,6 +8,8 @@
  *   vite build -c packages/golearn-extension/app/vite.config.ts --mode web
  *       -> packages/golearn-extension/dist-web/   a static site with relative URLs (base './'), any host or sub-path
  *
+   The setup page imports the analysers it needs (German, Hindi, Thai, Spanish) from the extension's own `analysers/<id>.js`; the web build splits them into chunks.
+ *
  * Language-pack files (the dictionary shards the installer fetches) are copied from public/dict/<lang>/ for the
  * languages in GOLEARN_APP_DICT (default "sq", the only installable pack; set it empty to leave them out).
  * `vite -c packages/golearn-extension/app/vite.config.ts` serves the app for development with the repository’s public/.
@@ -15,7 +17,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { defineConfig, type Plugin } from 'vite';
+import { defineConfig, type BuildEnvironmentOptions, type Plugin } from 'vite';
+import { leanBuiltins } from '../vite.config.ts';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const extensionRoot = path.resolve(here, '..');
@@ -62,9 +65,24 @@ function staticFiles(outDir: string, classic: boolean): Plugin {
       if (classic) {
         // a classic script, not a module: the page loads ./app.js with defer
         const html = fs.readFileSync(path.join(here, 'index.html'), 'utf8')
-          .replace(/<script type="module" src="\.\/main\.ts"><\/script>/, '<script src="./app.js" defer></script>');
+          .replace(/<script type="module" src="\.\/main\.ts"><\/script>/, '<script src="./app.js" defer></script>')
+          // the extension's options page is not an installable web app: no manifest link, no manifest file
+          .replace(/<link rel="manifest"[^>]*>\r?\n?/, '');
         fs.writeFileSync(path.join(outDir, 'index.html'), html);
         fs.copyFileSync(path.join(here, 'styles.css'), path.join(outDir, 'styles.css'));
+      } else {
+        // the hosted web app: the web app manifest (with the share target) and its icon, beside index.html, so relative URLs resolve from any sub-path
+        fs.copyFileSync(path.join(here, 'manifest.webmanifest'), path.join(outDir, 'manifest.webmanifest'));
+        // Vite hashes a linked manifest into assets/, where its relative start_url, scope and icon would resolve wrongly: point the link back at the copy beside index.html
+        const page = path.join(outDir, 'index.html');
+        const built = fs.readFileSync(page, 'utf8');
+        const hashed = /href="\.\/assets\/(manifest-[^"]*\.webmanifest)"/.exec(built);
+        if (hashed) {
+          fs.writeFileSync(page, built.replace(hashed[0], 'href="./manifest.webmanifest"'));
+          fs.rmSync(path.join(outDir, 'assets', hashed[1]), { force: true });
+        }
+        const icon = path.join(repoRoot, 'public', 'favicon.svg');
+        if (fs.existsSync(icon)) fs.copyFileSync(icon, path.join(outDir, 'favicon.svg'));
       }
       for (const lang of dictLanguages()) {
         const from = path.join(repoRoot, 'public', 'dict', lang);
@@ -82,6 +100,9 @@ function staticFiles(outDir: string, classic: boolean): Plugin {
   };
 }
 
+/** The extension analysers are imported by URL from a classic script; Vite's preload helper mentions import.meta, which an IIFE replaces with {} (see ../vite.config.ts). */
+const quietImportMeta: NonNullable<NonNullable<BuildEnvironmentOptions['rollupOptions']>['onwarn']> = (warning, handler) => { if (warning.code !== 'EMPTY_IMPORT_META') handler(warning); };
+
 export default defineConfig(({ mode, command }) => {
   if (command === 'serve') {
     return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts()], server: { port: 5197, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
@@ -94,8 +115,9 @@ export default defineConfig(({ mode, command }) => {
     base: './',
     publicDir: false,
     logLevel: 'warn',
-    define: { 'process.env.NODE_ENV': '"production"' },
-    plugins: [staticFiles(outDir, options)],
+    // the pack runtime's analysers: Albanian linked in, the others loaded on demand (see ../vite.config.ts leanBuiltins and analysers.ts)
+    define: { 'process.env.NODE_ENV': '"production"', __GOLEARN_ANALYSERS__: options ? '"url"' : '"chunks"' },
+    plugins: [leanBuiltins(), staticFiles(outDir, options)],
     build: {
       outDir,
       emptyOutDir: true,
@@ -105,7 +127,7 @@ export default defineConfig(({ mode, command }) => {
       target: options ? 'chrome110' : 'es2022',
       cssCodeSplit: false,
       ...(options
-        ? { rollupOptions: { input: path.join(here, 'main.ts'), output: { format: 'iife' as const, name: 'GoLearnApp', entryFileNames: 'app.js' } } }
+        ? { rollupOptions: { input: path.join(here, 'main.ts'), onwarn: quietImportMeta, output: { format: 'iife' as const, name: 'GoLearnApp', entryFileNames: 'app.js' } } }
         : { chunkSizeWarningLimit: 2000 }),
     },
   };

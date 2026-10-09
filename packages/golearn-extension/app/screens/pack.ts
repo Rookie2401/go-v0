@@ -72,11 +72,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 }
 
 function packCard(pack: PackView, ctx: AppContext, record: { version: string; ok: boolean; verifiedAt: string } | undefined, isActive: boolean, view: View): HTMLElement {
-  const card = h('section', { class: 'card pack', 'data-pack': pack.packId, 'data-status': pack.status, 'aria-labelledby': `h-${pack.languageId}` });
+  const card = h('section', { class: 'card pack', 'data-pack': pack.packId, 'data-status': pack.status, 'data-level': pack.level, 'aria-labelledby': `h-${pack.languageId}` });
   const installable = pack.status === 'installable';
   card.append(
     h('h2', { id: `h-${pack.languageId}` }, `${pack.name}`, pack.nativeName && pack.nativeName !== pack.name ? h('span', { class: 'native', lang: pack.languageId }, ` ${pack.nativeName}`) : null),
-    h('p', { class: 'muted' }, `${pack.packId} · version ${pack.version} · ${installable ? 'installable' : 'planned, not installable'} · review status: ${pack.reviewStatus}${isActive ? ' · your active language' : ''}`),
+    h('p', { class: 'muted' }, `${pack.packId} · version ${pack.version} · ${pack.levelLabel} · review status: ${pack.reviewStatus}${isActive ? ' · your active language' : ''}`),
   );
 
   const results = h('div', { class: 'results' });

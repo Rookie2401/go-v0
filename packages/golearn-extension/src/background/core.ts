@@ -18,6 +18,8 @@ import {
 import { METRIC_KEY_PREFIX, } from '../metrics';
 import { EVENT_KEY_PREFIX, getDeviceId } from '../store';
 import { createGlossService, defaultPacks, type PackProvider } from './gloss';
+import { levelOf } from '../../../language-packs/src/manifest';
+import { PACKS } from '../../../language-packs/src/registry';
 import { createProfileService } from './profile';
 import { createRecorder } from './recorder';
 import { createSessionManager } from './session';
@@ -189,6 +191,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       languageId,
       languageName: languageNameOf(languageId),
       packAvailable: gloss.packAvailable(languageId),
+      installedLanguages: Object.keys(PACKS).filter((l) => { const m = packs.manifest(l); return !!m && levelOf(m) !== 'planned'; }),
     };
   }
 

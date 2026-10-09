@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- Owner-authored test fixture (sentences written for tests; not copied from any site). Mirrors what was probed on
+     2026-10-09 on a Hindi story page: html lang=hi, og:locale hi_IN, an [lang=hi] ancestor, paragraph blocks in
+     .book-content, a paywalled .superfan-text block, a login popup element, and a next-part LINK (navigation, not in-page
+     loading). The registry entry for this site is permission-required and DISABLED: the adapter must refuse and say why. -->
+<html lang="hi" data-fixture-url="https://hindi.pratilipi.com/read/fixture-story-0000">
+<head>
+<meta charset="utf-8">
+<meta property="og:locale" content="hi_IN">
+<title>कहानी का पहला भाग (fixture)</title>
+<style>
+  body { font: 18px/1.7 sans-serif; margin: 0; }
+  .book-content { max-width: 620px; margin: 16px auto; }
+  .login-popup { position: fixed; bottom: 8px; right: 8px; background: #fff; border: 1px solid #aaa; padding: 8px; }
+</style>
+</head>
+<body>
+<div lang="hi" class="reader">
+  <div class="book-content" id="book">
+    <p id="h1">आज मौसम बहुत अच्छा है। मैं बाज़ार जा रहा हूँ।</p>
+    <p id="h2">वह रोज़ किताबें पढ़ती है। हम सब पार्क में खेलेंगे।</p>
+    <p id="h3">क्षत्रिय ज्ञान की खोज में निकला। उसने कहा, &quot;मैं कल आऊँगा।&quot;</p>
+    <p class="superfan-text" id="h4">यह भाग केवल सदस्यों के लिए है।</p>
+  </div>
+  <a id="next" href="#next-part">अगला भाग पढ़ें</a>
+  <div class="login-popup" role="dialog" aria-label="Login"><button type="button">लॉग इन</button></div>
+</div>
+</body>
+</html>

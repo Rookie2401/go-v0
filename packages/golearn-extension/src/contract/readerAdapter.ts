@@ -7,6 +7,8 @@
  * as `none` — the parser then works from the selected word alone and says so.
  */
 import type { ReaderCapabilities } from './readerCapabilities';
+import type { AdapterLanguageEvidence } from './language';
+import type { Span } from '../text';
 
 /** Where a page is, without its content. */
 export interface PageDescriptor {
@@ -70,6 +72,25 @@ export interface SourceReference {
   locator?: string;
 }
 
+/**
+ * A Scripture reference: metadata about WHERE in a translation a selection is, never the verse text. Parsed only from
+ * documented page facts (the URL, a verse wrapper's data attribute); `book` is a USFM code (`JHN`).
+ */
+export interface ScriptureSourceReference {
+  kind: 'scripture';
+  /** The translation as the site names it in the URL (`NIV`, `ESV`); `unknown` when the page does not say. */
+  translationId: string;
+  /** USFM book code (`GEN`, `JHN`, `1JN`). */
+  book: string;
+  chapter: number;
+  verse?: number;
+  /** Primary language of the translation when a documented fact gives it (a locale in the path, a known version code). */
+  languageHint?: string;
+}
+
+/** What `sourceRef()` may return: an ordinary source, or a Scripture reference. */
+export type AnySourceReference = SourceReference | ScriptureSourceReference;
+
 export interface Rect { top: number; left: number; right: number; bottom: number; width: number; height: number }
 
 /** Where to show the card without disturbing the page. */
@@ -86,6 +107,10 @@ export interface LayoutChange { reason: 'resize' | 'scroll' | 'mutation' | 'font
 export interface ContextOptions {
   /** Also return the sentence before and after. Off by default (data minimisation). */
   adjacent?: boolean;
+  /** The language the selection was resolved to; lets the adapter pick that language's sentence cutter. */
+  languageId?: string;
+  /** The sentence cutter of that language (the language pack's). Absent = the adapter's own default (Intl.Segmenter). */
+  segmenter?: (text: string) => Span[];
 }
 
 type MaybePromise<T> = T | Promise<T>;
@@ -98,7 +123,9 @@ export interface ReaderAdapter {
   selection(): MaybePromise<SelectionResult>;
   context(range: Range, options?: ContextOptions): MaybePromise<ReaderContext>;
   /** Kind, title and locator of what is being read — never its text. */
-  sourceRef(): MaybePromise<SourceReference | undefined>;
+  sourceRef(): MaybePromise<AnySourceReference | undefined>;
+  /** What the page or the reader declares about the language near the current selection. Metadata only; optional. */
+  languageEvidence?(): AdapterLanguageEvidence;
   anchor(range: Range | undefined): PopupAnchor;
   /** Call back when the layout moved under a shown card. Returns the unsubscribe function. */
   onLayoutChange(cb: (change: LayoutChange) => void): () => void;

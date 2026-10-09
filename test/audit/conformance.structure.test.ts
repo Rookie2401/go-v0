@@ -34,7 +34,7 @@ describe('(c) exactly two application entry groups', () => {
   });
 
   it('GoReview, GoTell and the shared libraries have no page, manifest or main.ts of their own; the service has no page', () => {
-    for (const p of ['goreview', 'gotell', 'golisten', 'language-packs', 'repository-contract', 'repository-sync', 'repository-store', 'repository-engine', 'repository-linguistics']) {
+    for (const p of ['goreview', 'gotell', 'golisten', 'golearn-share', 'language-packs', 'repository-contract', 'repository-sync', 'repository-store', 'repository-engine', 'repository-linguistics']) {
       expect(listFiles(`packages/${p}`, /(^|\/)(manifest\.json|index\.html|popup\.html|main\.ts)$/), p).toEqual([]);
     }
     // the service's main.ts is the Node bridge, a service entry and not an application
@@ -61,7 +61,7 @@ describe('what each entry may reach (exact package sets)', () => {
     'golearn-background': ['golearn-extension', 'language-packs', 'repository-contract', 'repository-service', 'repository-sync'],
     'golearn-content': ['golearn-extension', 'golisten', 'repository-contract'],
     'golearn-popup': ['golearn-extension', 'repository-contract'],
-    'golearn-app': ['golearn-extension', 'language-packs', 'repository-contract', 'repository-service'],
+    'golearn-app': ['golearn-extension', 'golearn-share', 'language-packs', 'repository-contract', 'repository-service'],
     gopractice: ['gopractice', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-contract', 'repository-service', 'repository-sync'],
     'repository-service': ['repository-contract', 'repository-engine', 'repository-linguistics', 'repository-service', 'repository-store'],
   };
@@ -102,6 +102,7 @@ describe('shared packages never reach an application, the service, the store or 
   const ALLOWED: Record<string, string[]> = {
     'repository-contract': ['repository-contract'],
     golisten: ['golisten', 'repository-contract'],
+    'golearn-share': ['golearn-share', 'repository-contract'],
     'language-packs': ['language-packs', 'repository-contract'],
     'repository-sync': ['repository-sync', 'repository-contract'],
   };

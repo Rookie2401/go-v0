@@ -16,5 +16,8 @@
       "suggested_key": { "default": "Alt+Shift+G" },
       "description": "Look up the current selection with GoLearn"
     }
-  }
+  },
+  "web_accessible_resources": [
+    { "resources": ["analysers/*.js"], "matches": ["<all_urls>"] }
+  ]
 }

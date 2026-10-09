@@ -1,0 +1,26 @@
+<!doctype html>
+<!-- Owner-authored test fixture (Albanian sentences reuse the existing harness text). Models what was probed on a public
+     sample story on 2026-10-09: the chapter inside a SAME-ORIGIN sandboxed iframe, paragraphs in a multi-column paginated
+     body, previous/next buttons in the top document (a click REPLACES the frame's content), the frame's lang following
+     the story, and the language named in the URL (langId, langName). The top document's own selection sees nothing. -->
+<html lang="sq" data-fixture-url="https://kanah.app/stories/0/chapters/1/text?langId=2&amp;langName=sq">
+<head>
+<meta charset="utf-8">
+<title>Kapitulli 1 (fixture)</title>
+<style>
+  body { margin: 0; font: 16px sans-serif; }
+  .bar { background: #632; color: #fff; padding: 8px; display: flex; justify-content: space-between; }
+  iframe#chapter { width: 100%; height: 420px; border: 0; }
+</style>
+</head>
+<body>
+<div class="bar"><button type="button" id="prev">&lsaquo;</button><span>1</span><button type="button" id="next">&rsaquo;</button></div>
+<iframe id="chapter" sandbox="allow-same-origin allow-scripts" title="Kapitulli" srcdoc="<!doctype html><html lang='sq'><body style='column-width:805px'><p id='k1'>Unë po lexoj një libër të bukur në shtëpinë time. Çdo mëngjes pi një çaj.</p><p id='k2'>Pastaj shkoj në punë.</p></body></html>"></iframe>
+<template id="chapter-2"><!doctype html><html lang="sq"><body style="column-width:805px"><p id="k3">Nëna është në kuzhinë. Ajo përgatit mëngjesin.</p></body></html></template>
+<script>
+  document.getElementById('next').addEventListener('click', function () {
+    document.getElementById('chapter').srcdoc = document.getElementById('chapter-2').innerHTML;
+  });
+</script>
+</body>
+</html>

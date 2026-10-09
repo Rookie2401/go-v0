@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- Owner-authored test fixture (sentences written for tests, mixed Thai and English; not copied from any site).
+     Models what was probed on 2026-10-09: html lang=th; paragraph spans inside a container (div.loadedContent) that the
+     site's script fills AFTER load; Thai runs without spaces; and the site's own copy protection, user-select: none on the
+     paragraphs with the context menu blocked. GoLearn does not override that protection, so the registry entry for this
+     site is `blocked`. A chat-style block (div.chat, one line per div) is included for the mixed-block case. The content
+     lives in <template>s so a test can load it exactly as the page's script would. -->
+<html lang="th" data-fixture-url="https://www.readawrite.com/c/00000000000000000000000000000000">
+<head>
+<meta charset="utf-8">
+<title>บทที่ 1 (fixture)</title>
+<style>
+  body { font: 18px/1.7 sans-serif; margin: 0; }
+  header { background: #335; color: #fff; padding: 8px 16px; }
+  .loadedContent { max-width: 640px; margin: 16px auto; }
+  span.highlight.cursorPointer { display: block; user-select: none; -webkit-user-select: none; cursor: pointer; }
+  .chat > div { margin: 2px 0; padding: 2px 8px; background: #eef; border-radius: 6px; }
+</style>
+</head>
+<body oncontextmenu="return false">
+<header><button type="button">เมนู</button></header>
+<div class="loadedContent" id="loaded"></div>
+<template id="chapter-1">
+  <span class="highlight cursorPointer" id="t1">วันนี้อากาศดีมาก ฉันไปตลาดกับเพื่อน แล้วก็กลับบ้าน</span>
+  <span class="highlight cursorPointer" id="t2">เธออ่านหนังสือทุกวัน เราคุยกันทาง LINE ทุกคืน</span>
+  <div class="chat" id="chat">
+    <div id="c1">สวัสดีครับ วันนี้ไปไหน</div>
+    <div id="c2">ไปห้องสมุดค่ะ See you later</div>
+  </div>
+</template>
+<script>
+  // what the real page does (as probed): the paragraphs arrive after load
+  setTimeout(function () {
+    document.getElementById('loaded').appendChild(document.getElementById('chapter-1').content.cloneNode(true));
+  }, 400);
+</script>
+</body>
+</html>

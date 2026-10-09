@@ -1,0 +1,36 @@
+<!doctype html>
+<!-- Owner-authored test fixture (not copied from any site). Models the structure probed on a public BibleGateway-style
+     passage page on 2026-10-09: top-document text under main.page-content, verse numbers in sup.versenum, cross-reference
+     and footnote markers in sup, html lang=en with a content-language meta, the version and reference ONLY in the URL
+     (data-fixture-url below), and cross-origin ad frames that are not the text. The sentences are made up for tests. -->
+<html lang="en" data-fixture-url="https://www.biblegateway.com/passage/?search=John%203%3A16-17&amp;version=NIV">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="content-language" content="en">
+<title>John 3:16-17 NIV - A small lamp stood on the table - Bible Gateway (fixture)</title>
+<style>
+  body { font: 18px/1.6 Georgia, serif; margin: 0; }
+  nav { background: #234; color: #fff; padding: 8px 16px; }
+  main { max-width: 640px; margin: 24px auto; }
+  sup { font-size: 0.7em; }
+  .passage-display-version { color: #666; font-size: 0.85em; }
+  .copyright { color: #666; font-size: 0.8em; }
+  iframe.ad { width: 300px; height: 60px; border: 1px dashed #aaa; }
+</style>
+</head>
+<body>
+<nav aria-label="Site"><button type="button">Menu</button> <a href="#">Search</a></nav>
+<main class="page-content">
+  <div class="passage-display-version">New Test Version (fixture)</div>
+  <div class="passage-text">
+    <div class="passage-content">
+      <h3>The lamp</h3>
+      <p id="p1"><span class="text John-3-16"><sup class="versenum">16&nbsp;</sup>A small lamp stood on the table, and its light reached the far wall.<sup class="crossreference" data-cr="#cr-a" aria-label="Cross reference A">(A)</sup></span> <span class="text John-3-17"><sup class="versenum">17&nbsp;</sup>Nobody had asked for the lamp, yet everyone was glad of it.<sup class="footnote" data-fn="#fn-a" aria-label="Footnote a">[a]</sup> Later they carried it outside.</span></p>
+      <div class="footnotes"><p>[a] A note written for this fixture.</p></div>
+    </div>
+  </div>
+  <p class="copyright" id="copyright">Fixture text. Not a real translation.</p>
+  <iframe class="ad" title="advertisement" sandbox></iframe>
+</main>
+</body>
+</html>

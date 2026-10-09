@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- Owner-authored test fixture (Albanian sentences reuse the existing harness text). Models a plain article with chapter
+     navigation buttons that REPLACE the content (the real site's reading view is behind a purchase and unmeasured; the
+     public book pages have html lang=sq and og:type=book). -->
+<html lang="sq" data-fixture-url="https://libroteka.al/liber/fixture/0">
+<head>
+<meta charset="utf-8">
+<meta property="og:type" content="book">
+<title>Libri im (fixture)</title>
+<style>
+  body { font: 18px/1.6 Georgia, serif; margin: 0; }
+  article { max-width: 620px; margin: 24px auto; }
+  .chapter-nav { display: flex; justify-content: space-between; max-width: 620px; margin: 0 auto; }
+</style>
+</head>
+<body>
+<div class="chapter-nav"><button type="button" id="prev">Mbrapa</button><button type="button" id="next">Para</button></div>
+<article id="text">
+  <h1>Kapitulli 1</h1>
+  <p id="l1">Unë po lexoj një libër të bukur në shtëpinë time. Çdo mëngjes pi një çaj.</p>
+  <p id="l2">Pastaj shkoj në punë.</p>
+</article>
+<template id="chapter-2">
+  <h1>Kapitulli 2</h1>
+  <p id="l3">Nëna është në kuzhinë. Ajo përgatit mëngjesin.</p>
+</template>
+<script>
+  document.getElementById('next').addEventListener('click', function () {
+    var a = document.getElementById('text');
+    a.replaceChildren(document.getElementById('chapter-2').content.cloneNode(true));
+  });
+</script>
+</body>
+</html>

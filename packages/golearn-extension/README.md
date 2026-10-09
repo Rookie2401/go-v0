@@ -2,7 +2,7 @@
 
 The GoLearn reader extension (Manifest V3, Chrome). The learner selects a word on an ordinary web page; the extension shows a **layered card** (what the word is here, its form, its phrase and syntax, why the form appears, a word-by-word rescue), plays a pronunciation, consults the learner model, and records what happened as Repository events that sync to the learner's account. The page never sees any of that: all of the Repository connection lives in the background worker.
 
-Status: built and unit-tested against the real service handler and fakes (`test/extension/`, 19 files). **Not yet loaded as an installed extension in a real browser** since the 2026-10-08 harness run (`docs/ecosystem/EXTENSION-PROTOTYPE-TESTS.md`); the manual procedure there still applies, plus: sign in from the setup page, look a word up, open each layer, check the account's events.
+Status: built and unit-tested against the real service handler and fakes (`test/extension/`, 22 files). **Not yet loaded as an installed extension in a real browser** since the 2026-10-08 harness run (`docs/ecosystem/EXTENSION-PROTOTYPE-TESTS.md`); the manual procedure there still applies, plus: sign in from the setup page, look a word up, open each layer, check the account's events.
 
 Design sources: `docs/ecosystem/READER-ARCHITECTURE-DECISION.md`, `GOLEARN-EXTENSION-STRATEGY.md`, `RIGHTS-AND-PRIVACY-BOUNDARIES.md`, the Repository design (`GO-REPOSITORY-DESIGN.md`).
 
@@ -38,12 +38,22 @@ src/content/services.ts     the message bridge (status, profile, gloss, explain,
 src/content/voice.ts        GoListen device provider as the card's pronouncer
 src/popup/card.ts|view.ts   the layered Shadow-DOM card and its later-arrival state
 src/parser/                 card model + parser over src/adapters/sq.ts (features, constructions, syntax notes, sentence words)
-src/adapters/ src/contract/ web-generic reader adapter + the ReaderAdapter contract (unchanged)
+src/adapters/ src/contract/ the reader registry (registry.ts), the configurable site adapter, web-generic, unsupported; the ReaderAdapter contract + language-resolution types
+harness/sites/              nine owner-authored fixture pages, one per modelled reader (see docs/ecosystem/reader/ADAPTER-REGISTRY.md)
 src/store/index.ts          encounter log (GoEvent rows) and the builders of every event the card produces
 src/metrics.ts              performance.now() marks (five core + eventQueued / profileArrived / glossArrived)
 ```
 
 Import rules (`test/ecosystem/boundaries.test.ts`): this package may import `repository-contract`, `repository-sync`, `golisten`, `language-packs`, and only `repository-service/src/api` of the service; plus `src/adapters/sq.ts` and the core types. The background build replaces the service's request handler (which `api.ts` imports for its in-process client) with an empty stub, so the worker does not carry the server.
+
+## Reader adapters (the registry)
+
+`src/adapters/registry.ts` is the one place that says which reading environments exist, which hosts an adapter answers for, how far each is verified (`verified | partially-verified | selection-only | unverified | permission-required | blocked | unsupported`), whether a person has reviewed its terms (`termsReview.reviewed`, a literal `false` in the type), what the adapter declares, and what the learner is offered when it cannot read (`selection-only | controlled-reader | share-bridge | none`). The content script builds its adapters from it (`createAdapters`): a `SiteAdapter` per site entry, then `web-generic`, then `unsupported`.
+
+* **`SiteAdapter`** = `web-generic` + the entry's options: reading-area selectors (a selection outside is refused with `unsupported` and a message), elements to ignore (reader chrome, footnote markers, the site's own lookup popup), a frame policy (`top-only | same-origin-frames | declare-cross-origin`), a `dynamicContent` flag (chapters replaced by script: the live range is re-checked, nothing is prefetched), `languageEvidence()` (nearest `lang`, `html[lang]`, `meta` language, `og:locale`, a locale in the URL, a Scripture translation's language) and a `sourceRef()` built from documented page facts only. Scripture sites give `{ kind: 'scripture', translationId, book, chapter, verse?, languageHint? }` from the URL (never verse text, never the page title), carried on the event's `subject.sourceRef`.
+* **Refusing entries** (`blocked`, `permission-required`, `unsupported`, or `enabled: false`) read nothing and say why; a site's own copy protection is never overridden.
+* **Language resolution** is injected: `resolveLanguage(evidence)` (types in `src/contract/language.ts`). The controller passes the resolved language to the parser and to the sentence cutter (`segmenterFor(languageId)`, falling back to a locale-aware `Intl.Segmenter`), records `basis` and `confidence` on the card model (`card.language`), on the card host (`data-language-basis`) and in the metrics row, and, when the language is `undetermined`, says so and offers the installed languages instead of guessing. The built-in default resolver is a placeholder until `src/language` lands.
+* Adding a site, the rules for changing a status, and what each fixture models: `docs/ecosystem/reader/ADAPTER-REGISTRY.md`.
 
 ## The pipeline (per lookup)
 
@@ -149,6 +159,7 @@ Sizes (minified): see the report of the build in the commit / test log; `content
 * Remote or recorded voices are not played inside web pages by this version; only the device's own voice (practice only).
 * The learner-model line is an estimate from the Repository's projection, labelled `inference`; it is never shown to anyone else.
 * The extension keeps `golearn:event:*` as the learner's own copy even after events are synced; "Delete all rows" removes it, the unsent queue and the caches, not the account's copy at the service.
-* `web-generic` declines `read.amazon.com`, `kindle.amazon.com` and `read.kobo.com` until their terms have been reviewed; it does not read form fields, editable regions or cross-origin frames.
+* `web-generic` declines every host of a refusing registry entry (today `read.amazon.com`, `kindle.amazon.com`, `read.kobo.com`, `mebmarket.com`, `readawrite.com`, `pratilipi.com`); it does not read form fields, editable regions or cross-origin frames.
+* No registry entry is verified as an installed extension on a live site; every new site starts `unverified` and no terms review is recorded.
 * Corrections are proposals: the service stores them as the learner's, provisional; nothing becomes a fact without a reviewer.
 * Syncing scans `chrome.storage.local` for queue keys (the sync package's area adapter lists keys that way); with a large dictionary cache that is a full read per round.

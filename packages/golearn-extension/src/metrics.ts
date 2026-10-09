@@ -34,6 +34,8 @@ export interface MetricsRow {
   memory: MemorySample | null;
   /** performance.now() at the end of the content script's module evaluation (load cost), first row only. */
   moduleLoadMs?: number;
+  /** Milliseconds the language's analyser took to load (import of its chunk) in this lookup; absent when it was already in memory (Albanian always is). */
+  analyserLoadMs?: number;
   outcome: 'shown' | 'failed';
   failure?: string;
 }

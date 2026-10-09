@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- Owner-authored test fixture (German sentences written for tests; not copied from any site). Models a web reader whose
+     book text lives inside a SAME-ORIGIN iframe, with a toolbar overlay in the top document (a vendor claim for this
+     reader; unverified). The frame's document is in the srcdoc attribute so the page works offline. -->
+<html lang="de" data-fixture-url="https://webreader.mytolino.com/library/index.html">
+<head>
+<meta charset="utf-8">
+<title>Lesen (fixture)</title>
+<style>
+  body { margin: 0; font: 16px sans-serif; }
+  .reader-toolbar { position: fixed; top: 0; left: 0; right: 0; background: #333; color: #fff; padding: 8px; z-index: 5; }
+  iframe#reader { position: absolute; top: 44px; left: 0; width: 100%; height: 480px; border: 0; }
+</style>
+</head>
+<body>
+<div class="reader-toolbar" role="toolbar" aria-label="Reader"><button type="button">Inhalt</button> <button type="button">Aa</button></div>
+<iframe id="reader" title="Buchseite" srcdoc="<!doctype html><html lang='de'><body><p id='de1'>Der Hund läuft durch den Garten. Am Abend lesen wir ein Buch.</p><p id='de2'>Die Straßenbahn kommt pünktlich. Morgen fahren wir nach Österreich.</p></body></html>"></iframe>
+</body>
+</html>

@@ -194,7 +194,45 @@ function loadFingerprints(): void {
  * shipped build shares with the retired curriculum's owner-authored material; a new overlap fails the test until it is
  * examined and either removed or added here with the reason.
  */
+/** The German analyser (a lazily loaded chunk, analysers/de.js; also linked into the hosted setup page) holds the twelve month names in calendar order, as the word list does; the owner's German lesson plan lists them in the same order. */
+const MONTHS = 'the twelve German month names in calendar order (März … Dezember): a word list entry of the German analyser (src/adapters/german/lexicon-nouns.ts) and a line of the owner\'s lesson plan; generic vocabulary, no running text';
 const EXAMINED_OVERLAPS: ReadonlyArray<{ window: string; origin: string; why: string }> = [
+  {
+    window: 'märzaprilmaijunijuliaugustseptemberoktob',
+    origin: 'ladder:data/ladder/de/PLAN.md',
+    why: MONTHS,
+  },
+  {
+    window: 'aprilmaijunijuliaugustseptemberoktoberno',
+    origin: 'ladder:data/ladder/de/authoring/baseline.json',
+    why: MONTHS,
+  },
+  {
+    window: 'aijunijuliaugustseptemberoktobernovember',
+    origin: 'ladder:data/ladder/de/authoring/a1-2/de-a1-2-15.txt',
+    why: MONTHS,
+  },
+  {
+    window: 'nijuliaugustseptemberoktobernovemberdeze',
+    origin: 'ladder:data/ladder/de/PLAN.md',
+    why: MONTHS,
+  },
+  {
+    window: 'juliaugustseptemberoktobernovemberdezemb',
+    origin: 'ladder:data/ladder/de/authoring/a2-1/de-a2-1-03.txt',
+    why: MONTHS,
+  },
+  {
+    window: 'uliaugustseptemberoktobernovemberdezembe',
+    origin: 'ladder:data/ladder/de/units/de-a1-2-15.json',
+    why: MONTHS,
+  },
+  {
+    window: 'liaugustseptemberoktobernovemberdezember',
+    origin: 'ladder:data/ladder/de/units/de-a1-2-15.json',
+    why: MONTHS,
+  },
+
   {
     window: 'aleminderitisfaleminderitandtwovowelswri',
     origin: 'stage0:data/stage0/sq/sounds/sq-snd1.json',

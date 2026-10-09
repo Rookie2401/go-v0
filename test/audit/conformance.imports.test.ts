@@ -13,11 +13,18 @@ import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import {
-  EBOOK_PATTERNS, ENTRIES, GOREVIEW_ROOT, GOTELL_ENTRY, LEGACY_FORBIDDEN, RETIRED_DATA, ROOT, SALVAGE_ALLOW_LIST,
+  EBOOK_PATTERNS, ENTRIES, GOREVIEW_ROOT, ebookPatternsFor, GOTELL_ENTRY, LEGACY_FORBIDDEN, RETIRED_DATA, ROOT, SALVAGE_ALLOW_LIST,
   allowListed, boundaryEdges, chainTo, codeStrings, exists, infoOf, isForbiddenLegacy, listFiles, packageOf, reach, readText, underPrefix, unionOf,
 } from './conformance.support';
 
-const ALL_ENTRIES: ReadonlyArray<{ id: string; file: string }> = [...ENTRIES, { id: 'gotell (hosted workspace package index)', file: GOTELL_ENTRY }];
+/**
+ * The analyser chunks the extension ships beside the content script (dist/analysers/<id>.js, vite.config.ts --mode analysers). They are
+ * loaded by URL, so no import edge leads to them from an entry; each is an entry of its own, and every rule below applies to it.
+ */
+const ANALYSER_ENTRIES = ['sq', 'es', 'de', 'hi', 'th'].map((id) => ({ id: 'golearn-analyser-' + id, file: 'packages/golearn-extension/src/analysers/' + id + '.ts' }));
+const ALL_ENTRIES: ReadonlyArray<{ id: string; file: string }> = [...ENTRIES, ...ANALYSER_ENTRIES, { id: 'gotell (hosted workspace package index)', file: GOTELL_ENTRY }];
+/** The one non-literal dynamic import in the reached code: the extension imports its own analyser chunk by URL (a web accessible resource), which no static graph can follow; the chunks are entries above. */
+const URL_IMPORTS = ['packages/golearn-extension/src/analysers/urlLoader.ts'];
 const print = process.env.AUDIT_PRINT === '1';
 /** The resolved targets of a file's relative edges (repo-relative). */
 const infoEdges = (file: string): string[] => infoOf(file).edges.filter((e) => e.to).map((e) => e.to!);
@@ -43,7 +50,7 @@ describe('entry points exist', () => {
   it('the graph resolves every relative import it follows', () => {
     for (const e of ALL_ENTRIES) {
       const r = reach(e.file);
-      expect(r.unresolved, `${e.id}: unresolved specifiers`).toEqual([]);
+      expect(r.unresolved.filter(([file, spec]) => !(URL_IMPORTS.includes(file) && spec === '<non-literal dynamic import>')), `${e.id}: unresolved specifiers`).toEqual([]);
       expect(r.files.size, e.id).toBeGreaterThan(5);
     }
   });
@@ -60,9 +67,11 @@ describe('the detector is live (negative controls)', () => {
   });
   it('the identifier scan sees a refusal list as code and does not see comments', () => {
     expect(codeStrings('packages/golearn-extension/app/surfaces.ts')).toContain('Kindle');
-    expect(codeStrings('packages/golearn-extension/src/adapters/webGeneric.ts')).toContain('read.amazon.com');
-    // a phrase that occurs only in a comment of webGeneric.ts is not returned
-    expect(codeStrings('packages/golearn-extension/src/adapters/webGeneric.ts')).not.toContain('Hosts whose reading terms are not reviewed');
+    // the decline list is registry data (the reader registry); webGeneric.ts only derives from it
+    expect(codeStrings('packages/golearn-extension/src/adapters/registry.ts')).toContain('read.amazon.com');
+    expect(codeStrings('packages/golearn-extension/src/adapters/webGeneric.ts')).not.toContain('read.amazon.com');
+    // a phrase that occurs only in a comment of registry.ts is not returned
+    expect(codeStrings('packages/golearn-extension/src/adapters/registry.ts')).not.toContain('Host patterns are exact hosts');
   });
 });
 
@@ -157,9 +166,9 @@ describe('(b) the salvage allow-list covers every legacy module that is reached'
     const wired = SALVAGE_ALLOW_LIST.filter((a) => [...u].some((f) => underPrefix(f, a.prefix))).map((a) => a.prefix);
     const unwired = SALVAGE_ALLOW_LIST.filter((a) => !wired.includes(a.prefix)).map((a) => a.prefix);
     if (print) console.info(`[allow-list] wired: ${wired.join(', ')}\n[allow-list] allowed but not reached: ${unwired.join(', ')}`);
-    // Albanian and Spanish are the two installable packs; the other analysers are planned packs and are not wired
-    for (const p of ['src/adapters/sq.ts', 'src/adapters/albanian/', 'src/adapters/es.ts', 'src/adapters/spanish/', 'src/adapters/shared.ts', 'src/core/', 'src/dict/']) expect(wired, p).toContain(p);
-    for (const p of ['src/adapters/de.ts', 'src/adapters/hi.ts', 'src/adapters/th.ts', 'src/adapters/nb.ts', 'src/adapters/nn.ts']) expect(unwired, `${p} became reachable: update LEGACY-SALVAGE.md`).toContain(p);
+    // Albanian and Spanish are the two installable packs; German, Hindi and Thai are wired as experimental packs (analyser chunks); the Norwegian analysers are planned packs and are not wired
+    for (const p of ['src/adapters/sq.ts', 'src/adapters/albanian/', 'src/adapters/es.ts', 'src/adapters/spanish/', 'src/adapters/de.ts', 'src/adapters/german/', 'src/adapters/hi.ts', 'src/adapters/hindi/', 'src/adapters/th.ts', 'src/adapters/thai/', 'src/adapters/shared.ts', 'src/core/', 'src/dict/']) expect(wired, p).toContain(p);
+    for (const p of ['src/adapters/nb.ts', 'src/adapters/nn.ts', 'src/adapters/norwegian/']) expect(unwired, `${p} became reachable: update LEGACY-SALVAGE.md`).toContain(p);
   });
 });
 
@@ -203,7 +212,8 @@ describe('(e) no entry carries commercial ebook-provider code', () => {
    * hosts, and the setup page's compatibility table says Kindle and Kobo are NOT supported.
    */
   const REFUSAL_SITES: Record<string, RegExp> = {
-    'packages/golearn-extension/src/adapters/webGeneric.ts': /^(read\.amazon\.com|kindle\.amazon\.com|read\.kobo\.com)$/,
+    // the reader registry: the entries that name a commercial reader are refusals (blocked / permission-required), see the test below
+    'packages/golearn-extension/src/adapters/registry.ts': /^(read\.amazon\.com|kindle\.amazon\.com|read\.kobo\.com|kindle-web|kobo-web|Kindle for Web|Kobo web reader)$/,
     'packages/golearn-extension/app/surfaces.ts': /^(kindle|Kindle|Other ebook readers \(Kobo, Play Books, …\)|Not supported\. Kindle shows pages as images.*|Not supported yet\. Each needs its own terms review.*)$/,
   };
 
@@ -211,7 +221,7 @@ describe('(e) no entry carries commercial ebook-provider code', () => {
     const hits: string[] = [];
     for (const f of sources) {
       for (const s of codeStrings(f)) {
-        for (const p of EBOOK_PATTERNS) {
+        for (const p of ebookPatternsFor(f)) {
           if (!p.re.test(s)) continue;
           const allowed = REFUSAL_SITES[f];
           if (allowed && allowed.test(s)) continue;
@@ -224,9 +234,17 @@ describe('(e) no entry carries commercial ebook-provider code', () => {
 
   it('the two refusal sites really are refusals', () => {
     const web = readText('packages/golearn-extension/src/adapters/webGeneric.ts');
-    expect(web).toMatch(/DEFAULT_DECLINED_HOSTS\s*=\s*\[/);
+    // the list is derived from the registry's refusing entries, not written in the adapter
+    expect(web).toMatch(/DEFAULT_DECLINED_HOSTS[^=]*=\s*\[\.\.\.declinedHostsFromRegistry\(\)\]/);
     expect(web).toMatch(/declinedHosts:\s*options\.declinedHosts \?\? DEFAULT_DECLINED_HOSTS/);
     expect(web).toMatch(/declin/i);
+    const reg = readText('packages/golearn-extension/src/adapters/registry.ts');
+    const entryOf = (id: string): string => { const at = reg.indexOf(`readerId: '${id}'`); return reg.slice(at, reg.indexOf('\n  },', at)); };
+    expect(entryOf('kindle-web')).toContain("status: 'blocked'");
+    expect(entryOf('kindle-web')).toContain('enabled: false');
+    expect(entryOf('kobo-web')).toContain("status: 'permission-required'");
+    expect(entryOf('kobo-web')).toContain('enabled: false');
+    expect(reg).not.toMatch(/reviewed:\s*true/);
     const surfaces = readText('packages/golearn-extension/app/surfaces.ts');
     const kindle = surfaces.slice(surfaces.indexOf("id: 'kindle'"), surfaces.indexOf("id: 'other-ebook'"));
     expect(kindle).toContain("status: 'not-supported'");
@@ -236,7 +254,7 @@ describe('(e) no entry carries commercial ebook-provider code', () => {
 
   it('the reached code matches the ebook patterns only in those two files, and in no other reached file by any spelling', () => {
     const files = new Set<string>();
-    for (const f of sources) if (codeStrings(f).some((s) => EBOOK_PATTERNS.some((p) => p.re.test(s)))) files.add(f);
+    for (const f of sources) if (codeStrings(f).some((s) => ebookPatternsFor(f).some((p) => p.re.test(s)))) files.add(f);
     expect([...files].sort()).toEqual(Object.keys(REFUSAL_SITES).sort());
   });
 
@@ -304,15 +322,26 @@ describe('no entry names an external language-model provider', () => {
 });
 
 describe('in between: reached modules whose names point at the retired course', () => {
-  const FLAGGED = ['src/adapters/albanian/lexicon-ladder.ts', 'src/adapters/spanish/lexicon-course.ts'];
-  it('exactly two compiled-in modules are named after the ladder or the course; both are pure word lists inside their adapter directory', () => {
+  // the salvaged word lists whose FILE names still say ladder or course (defect C-03; docs/ecosystem/audit/LEGACY-SALVAGE.md, "salvaged and wired")
+  const FLAGGED = [
+    'src/adapters/albanian/lexicon-ladder.ts',
+    'src/adapters/german/lexicon-course.ts',
+    'src/adapters/german/lexicon-ladder.ts',
+    'src/adapters/hindi/ladder-context.ts',
+    'src/adapters/hindi/lexicon-course.ts',
+    'src/adapters/hindi/lexicon-ladder-fixes.ts',
+    'src/adapters/spanish/lexicon-course.ts',
+    'src/adapters/thai/lexicon-ladder.ts',
+  ];
+  it('exactly the eight salvaged word lists are named after the ladder or the course (none of src/core); each is a pure word list inside its adapter directory', () => {
     const rt = new Set<string>();
     for (const e of ALL_ENTRIES) reach(e.file).runtime.forEach((f) => rt.add(f));
     const named = [...rt].filter((f) => f.startsWith('src/') && /(ladder|course|stage|curriculum|library|corpus|lesson|scripture)/i.test(f.split('/').pop()!) && !f.startsWith('src/course/') && !isForbiddenLegacy(f));
     expect(named.sort()).toEqual(FLAGGED);
     for (const f of FLAGGED) {
       const dir = f.slice(0, f.lastIndexOf('/') + 1);
-      expect(infoEdges(f).filter((to) => !to.startsWith(dir)), f + ' imports outside its adapter directory').toEqual([]);
+      // a word list may name the adapter contract's types (an erased import type from src/core); it imports no other module outside its directory
+      expect(infoOf(f).edges.filter((e) => e.to && !e.to.startsWith(dir) && !(e.typeOnly && e.to.startsWith('src/core/'))).map((e) => e.to), f + ' imports outside its adapter directory').toEqual([]);
       expect(infoOf(f).externals, f).toEqual([]);
     }
   });

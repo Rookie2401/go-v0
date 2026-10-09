@@ -326,21 +326,21 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
     expect((await store.list({ learnerId: session.learnerId, kinds: ['AssessmentAnswered'] })).length).toBe(0);
   });
 
-  it('language switching: an enrolment in a planned language is honest about the missing pack', async () => {
+  it('language switching: an enrolment in a planned language (Norwegian) is honest about the missing pack', async () => {
     const api = createRepositoryApi({ baseUrl: 'http://127.0.0.1:8790', fetch: serviceFetch, token: ((await area.get('golearn:session'))['golearn:session'] as { token: string }).token });
-    const e = await api.enrol({ languageId: 'de', packId: 'pack:de', packVersion: '9', goals: [{ kind: 'reading' }] });
+    const e = await api.enrol({ languageId: 'nb', packId: 'pack:nb', packVersion: '2', goals: [{ kind: 'reading' }] });
     expect(e.ok).toBe(true);
     if (!e.ok) return;
     await page({ type: MSG.refreshSession });
     const selected = await page({ type: MSG.selectEnrolment, enrolmentId: e.data.enrolment.enrolmentId });
     const st = await page({ type: MSG.status });
     expect(JSON.stringify(selected)).not.toMatch(/"ok":false/);
-    expect(st.languageId).toBe('de');
+    expect(st.languageId).toBe('nb');
     expect(st.packAvailable).toBe(false);
     const r = reader();
     selectText(q('#passage'), 'librin');
     const out = await r.c.lookup({ trigger: 'command' });
     expect(['shown', 'message']).toContain(out.status);
-    expect(r.text()).toMatch(/pack|German|not (yet )?available/i);
+    expect(r.text()).toMatch(/pack|Norwegian|not (yet )?available/i);
   });
 });

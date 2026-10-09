@@ -29,7 +29,8 @@ Per directory (A wired / B type level / C prototype / D allowed-unwired / E reti
 |---|---|---|---|
 | `src/adapters/sq.ts`, `src/adapters/albanian/` (36 of 37 files) | KEEP (salvage audit §3.A) | the Albanian pack: `packages/language-packs/src/{runtime,packs/sq}.ts`; GoLearn content script (`packages/golearn-extension/src/parser/index.ts`, `content/index.ts`), background, setup app; GoPractice (GoReview facts, GoTell analyser) through the pack runtime; the Repository linguistics resolver (`packages/repository-linguistics/src/{resolver,packs}.ts`) | `test/adapters/albanian-*.test.ts` + `sq.test.ts`: 909 tests; `test/language-packs`: 77; `test/repository/linguistics`, `test/extension/parser.test.ts` exercise it through the packages |
 | `src/adapters/es.ts`, `src/adapters/spanish/` (22 files) | KEEP | the Spanish pack (installable at a MINIMAL level, machine-drafted, not production-ready): same chain as Albanian | `test/adapters/spanish-*.test.ts` + `es.test.ts`: 409 tests |
-| `src/adapters/shared.ts` | KEEP | tokenizer, lexicon helpers, phrase matcher used by both analysers | `shared.test.ts`, `registry.test.ts`, `offsets.test.ts`: 30 tests |
+| `src/adapters/{de,hi,th}.ts`, `src/adapters/german/` (42 files), `src/adapters/hindi/` (48), `src/adapters/thai/` (14) | KEEP | **salvaged and wired (2026-10-09), as EXPERIMENTAL packs**: seed-only lemmatisation from machine-drafted word lists, unreviewed (`level: 'experimental'`, `packs/{de,hi,th}.ts`). Compiled into the extension as three lazily loaded analyser chunks, `dist/analysers/{de,hi,th}.js` (entries `packages/golearn-extension/src/analysers/{de,hi,th}.ts`; the content script imports them on demand, the setup app loads them the same way), and into the pack runtime for GoPractice. They are NOT in `content.js` or `background.js` (bundle layout: GOLEARN-ARCHITECTURE.md §8) | `test/reader-languages/{de,hi,th}.test.ts`, `experimental-packs.test.ts`; the analysers' own suites: de 1,358, hi 1,282, th 503 |
+| `src/adapters/shared.ts` | KEEP | tokenizer, lexicon helpers, phrase matcher used by all five analysers | `shared.test.ts`, `registry.test.ts`, `offsets.test.ts`: 30 tests |
 | `src/dict/{index,build,format,frequency,map,sharded}.ts` | KEEP | dictionary format and the sharded loader: `packages/language-packs/src/runtime.ts`; reads the kaikki shards shipped in `dict/sq` | `test/dict`: 232 tests (the whole directory, including the unreached tooling) |
 | `src/core/**` (20 files, types) | ADAPT (audit §3.A: "extract `language-pack-types`") | the adapter contract and token/analysis types behind every pack: `language-packs/src/{analysis,runtime}.ts`, `golearn-extension/src/parser`, `goreview/src/facts/provider.ts`, `repository-linguistics/src/resolver.ts` | `test/core`: 13 tests; compile-checked by `tsc -b` |
 | `src/gotell/{concepts,coverage,diff,meaning,provider,text,productive/interpret}.ts` | ADAPT | **copied, not imported**: `packages/gotell/src/salvage/*` (8 modules, each headed "adapted from src/gotell/..." dated 2026-10-09), used by the GoTell analyser, assistance ladder and meaning-change guard | `test/gotell-engine/{salvage,coverage,boundary}.test.ts`: 30 tests; the 34-file legacy suite `test/gotell` (491 tests) still passes against the originals |
@@ -45,23 +46,29 @@ only the Albanian and Spanish ones cover wired code.
    `src/course/curriculumPolicy.ts`; 12 course modules, 4 course `*-works.json` and `data/sources/course-library/nb.json`
    become part of the type graph of every package that imports a language adapter. Not compiled into any bundle. Cure:
    move `CurriculumMetadata` and `StageContract` into `src/core` (or a `language-pack-types` module). Open.
-2. **Ladder- and course-named word lists compiled into the analysers.** `src/adapters/albanian/lexicon-ladder.ts` (the word
-   list of the Albanian ladder plan plus the b1-bridge, machine-drafted, compared with Wiktionary; rights question Q1) and
-   `src/adapters/spanish/lexicon-course.ts` (words found missing from the course texts). Pure data inside their adapter
-   directories. Kept because removing them lowers the analysers' coverage of ordinary words; the audit class is KEEP with the
+2. **Ladder- and course-named word lists compiled into the analysers (C-03: the file NAMES still say ladder or course; the
+   content is word-list data).** Eight modules, all pure data inside their adapter directory (they import only erased types of
+   the adapter contract in `src/core`), allow-listed by name in `test/audit/conformance.imports.test.ts`:
+   `src/adapters/albanian/lexicon-ladder.ts` (the word list of the Albanian ladder plan plus the b1-bridge, machine-drafted,
+   compared with Wiktionary; rights question Q1), `src/adapters/spanish/lexicon-course.ts` (words found missing from the course
+   texts), and, salvaged with the German, Hindi and Thai analysers, `src/adapters/german/lexicon-{course,ladder}.ts`,
+   `src/adapters/hindi/{ladder-context,lexicon-course,lexicon-ladder-fixes}.ts` (the first is neighbour-ordering rules, not a
+   word list) and `src/adapters/thai/lexicon-ladder.ts`. A month-name run in `german/lexicon-nouns.ts` also appears in the
+   owner's German lesson plan; it is generic vocabulary and is recorded as an examined overlap in `test/audit/rights.dist.test.ts`. Kept because removing them lowers the analysers' coverage of ordinary words; the audit class is KEEP with the
    Q1 reservation, and the salvage audit's remark that cast names in `lexicon-course` give false proper-noun readings in
    general text (§3.A) still applies to `spanish/lexicon-course.ts`.
 3. **Contract files named for retired features, types only:** `src/core/course.ts`, `src/core/contracts/{course,library,stage0}.ts`
-   (plus `golearn`, `golisten`, `gotell`, `gotell-practice`, `lexicon`). Reached as erased types; the unused ones are candidates
+   (plus `golearn`, `golisten`, `gotell`, `gotell-practice`, `lexicon`). Reached as erased types (`src/adapters/th.ts` imports
+   `decodeFor` from `../core/adapters`, not the `../core` barrel, so `src/core/course.ts` is not compiled in); the unused ones are candidates
    for removal when the type slice is extracted.
 4. **The personal-copy EPUB importer** (`src/ingest/{epub,plaintext,headings,quality}.ts`; audit §3.C KEEP): reachable only
    from `packages/controlled-reader`, a README-labelled PROTOTYPE that no entry reaches. Test coverage: `test/controlled-reader`
    (56) and `test/ingest` (661 for the whole importer, mostly the retired corpus pipeline).
-5. **Allowed but not wired (planned packs).** German, Hindi, Thai, Norwegian (Bokmal, Nynorsk) analysers and rule directories
-   (`src/adapters/{de,hi,th,nb,nn}.ts`, `german/` 42 files, `hindi/` 48, `thai/` 14, `norwegian/` 29) are on the allow-list
-   and covered by tests (de 1,358; hi 1,282; th 503; nb/nn 129; all green), but no entry reaches them: the language-pack
-   manifests for these languages are "planned" and never installable. The conformance test fails the day one becomes reachable,
-   so this table is updated deliberately. Also unreached: `src/adapters/index.ts` (the registry that names all seven) and
+5. **Allowed but not wired (planned packs).** The Norwegian (Bokmal, Nynorsk) analysers and rule directories
+   (`src/adapters/{nb,nn}.ts`, `norwegian/` 29 files; 129 tests, all green) are on the allow-list, but no entry reaches them: the
+   Norwegian pack manifests are "planned" and never installable. (German, Hindi and Thai were in this item until 2026-10-09; they
+   are now wired as experimental packs, §2.) The conformance test fails the day one becomes reachable, so this table is updated
+   deliberately. Also unreached: `src/adapters/index.ts` (the registry that names all seven) and
    `src/adapters/albanian/overrides.ts`; dictionary build/compare tooling in `src/dict` (`build-node, compare*, frequency-node,
    file`), used by `npm run dict:build` and friends.
 

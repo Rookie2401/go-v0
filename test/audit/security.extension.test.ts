@@ -247,7 +247,7 @@ describe('what the tab-facing replies contain', () => {
       for (const secret of secrets) if (!(secret === x.token && String(m.lemma) === x.token)) expect(text, `${m.type} leaked ${secret.slice(0, 6)}`).not.toContain(secret);
     }
     // the redacted status is exactly these keys
-    expect(Object.keys(await x.rig.content({ type: MSG.status })).sort()).toEqual(['connected', 'languageId', 'languageName', 'needsSignIn', 'ok', 'packAvailable']);
+    expect(Object.keys(await x.rig.content({ type: MSG.status })).sort()).toEqual(['connected', 'installedLanguages', 'languageId', 'languageName', 'needsSignIn', 'ok', 'packAvailable']);
   });
 
   it('the setup page gets the email and address but still no token, no learner id, no password', async () => {

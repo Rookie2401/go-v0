@@ -10,6 +10,18 @@
 import type { LanguagePackInfo, ValidationIssue } from '../../repository-contract/src';
 
 export type ReviewStatus = 'machine-drafted' | 'partly-reviewed' | 'reviewed';
+
+/**
+ * How far a pack is built, in the words the setup page shows.
+ *   installable   an analyser, a dictionary, validation cases and an orientation exist (Albanian; Spanish at a minimal level)
+ *   experimental  wired and installable, but only at a deliberately minimal level: seed-only lemmatisation, an unreviewed
+ *                 word list, validation cases and no orientation tutorial; shown as "experimental, seed-only
+ *                 lemmatisation, unreviewed" (German, Hindi, Thai)
+ *   planned       described honestly and never installable (Norwegian)
+ * `status` keeps its two values ('installable' | 'planned'): an experimental pack has status 'installable' (the installer
+ * and the parser accept it) and `level: 'experimental'`. A manifest without `level` has the level its status implies.
+ */
+export type PackLevel = 'installable' | 'experimental' | 'planned';
 const REVIEW_RANK: Record<ReviewStatus, number> = { 'machine-drafted': 0, 'partly-reviewed': 1, reviewed: 2 };
 
 export interface GrammarFeature {
@@ -90,7 +102,21 @@ export interface PackManifest {
   };
   validation: ValidationCase[];
   status: 'installable' | 'planned';
+  /** How far the pack is built (see PackLevel). Absent = derived from `status`; an experimental pack must say so here. */
+  level?: PackLevel;
 }
+
+/** The level of a pack: its stated level, else the one its status implies. */
+export function levelOf(m: Pick<PackManifest, 'status' | 'level'>): PackLevel {
+  return m.level ?? (m.status === 'installable' ? 'installable' : 'planned');
+}
+
+/** The learner-facing label of a level; an experimental pack is never shown as plainly installable. */
+export const LEVEL_LABEL: Readonly<Record<PackLevel, string>> = Object.freeze({
+  installable: 'installable',
+  experimental: 'experimental, seed-only lemmatisation, unreviewed',
+  planned: 'planned, not installable',
+});
 
 /** An installable pack proves itself with at least this many real selections. */
 export const MIN_VALIDATION_CASES = 12;
@@ -111,6 +137,11 @@ export function validateManifest(m: unknown): ValidationIssue[] {
   if (isStr(x.packId) && !/^pack:[a-z]{2,3}$/u.test(x.packId)) bad('packId', 'must look like pack:<language code>');
   if (isStr(x.packId) && isStr(x.languageId) && x.packId !== `pack:${x.languageId}`) bad('packId', 'must be pack:<languageId>');
   if (x.status !== 'installable' && x.status !== 'planned') bad('status', "'installable' or 'planned'");
+  if (x.level !== undefined) {
+    if (x.level !== 'installable' && x.level !== 'experimental' && x.level !== 'planned') bad('level', "'installable', 'experimental' or 'planned'");
+    else if ((x.level === 'planned') !== (x.status === 'planned')) bad('level', "'planned' goes with status 'planned' and no other level does");
+    else if (x.level === 'experimental' && isObj(x.rights) && x.rights.reviewStatus !== 'machine-drafted') bad('level', 'an experimental pack is unreviewed (machine-drafted)');
+  }
 
   const comp = x.compatibility;
   if (!isObj(comp) || !Number.isInteger(comp.contractVersion) || !isStr(comp.extensionMin)) bad('compatibility', 'contractVersion (integer) and extensionMin required');

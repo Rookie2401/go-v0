@@ -14,6 +14,7 @@ packages/
   golisten/                GoListen: pronunciation contracts, voice registry, device/remote/recorded providers, assessment interface
   language-packs/          the pack manifest framework, the Albanian pack (runtime, installer, validation, tutorial), planned packs
   golearn-extension/       GoLearn: the MV3 reader extension (src/, action/) and the setup/onboarding app (app/: options page + web build)
+  golearn-share/           the mobile share contract: normalise a shared passage, pick the word, record the same SelectionLookedUp (imports only the contract)
   controlled-reader/       PROTOTYPE local EPUB reader with the epub-local adapter
   goreview/                the GoReview workspace modules (intake, FSRS scheduler, exercise builders, grading, planner, runner)
   gotell/                  the GoTell writing workspace modules (engine, prompts, profile, documents, evidence, privacy)

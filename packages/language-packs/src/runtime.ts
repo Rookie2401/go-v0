@@ -9,12 +9,11 @@
  * Nothing here throws on a missing dictionary or a bad network: an absent gloss is `undefined`, a failed install is
  * `{ ok: false, reason, detail }`.
  */
-import { sqAdapter } from '../../../src/adapters/sq';
-import { esAdapter } from '../../../src/adapters/es';
 import type { AnalyzedToken, LanguageAdapter, RawToken, Span } from '../../../src/core';
 import { createFetchLexiconSource } from '../../../src/dict';
 import type { ShardCacheOptions } from '../../../src/dict';
 import { runCase, type CaseResult } from './analysis';
+import { builtInAdapter } from './builtins';
 import { validateManifest, type PackManifest } from './manifest';
 
 // ───────────────────────────── analyser ─────────────────────────────
@@ -63,11 +62,8 @@ function adapterAnalyzer(adapter: LanguageAdapter): PackAnalyzer {
   };
 }
 
-/** The adapters this build can run without any import from an application. Others are supplied through `deps.adapter`. */
-/** The analysers bundled with the runtime: the two installable packs (Albanian, and Spanish at a minimal level). */
-function builtInAdapter(languageId: string): LanguageAdapter | undefined {
-  return languageId === 'sq' ? sqAdapter : languageId === 'es' ? esAdapter : undefined;
-}
+// The analysers a runtime uses without being handed one come from ./builtins (the extension builds swap that module for a lean one).
+export { builtInAdapter };
 
 // ───────────────────────────── helpers ─────────────────────────────
 
@@ -104,7 +100,7 @@ export interface PackRuntime {
   readonly manifest: PackManifest;
   analyzer(): PackAnalyzer;
   /** Dictionary senses of a lemma; `pos` is a preference (matching senses first), not a filter. Never throws. */
-  gloss(lemma: string, pos?: string): Promise<GlossResult | undefined>;
+  gloss(lemma: string, pos?: string, forms?: readonly string[]): Promise<GlossResult | undefined>;
   explainFeature(key: string, value: string): string | undefined;
   explainConstruction(id: string): string | undefined;
   coverageNotes(): string[];
@@ -141,13 +137,14 @@ export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps)
     manifest,
     analyzer,
 
-    async gloss(lemma, pos) {
+    async gloss(lemma, pos, given) {
       try {
         const src = source();
         if (!src || !lemma) return undefined;
         const adapter = analyzer().adapter;
         const norm = (s: string): string => (adapter ? adapter.normalize(s) : s.normalize('NFC').toLowerCase());
-        const forms = [...new Set([norm(lemma), ...(adapter?.lemmaVariants?.(lemma) ?? []).map(norm)])];
+        // `given`: the dictionary forms a caller that holds the analyser already worked out (the extension worker has no German, Hindi, Thai or Spanish analyser of its own)
+        const forms = given?.length ? [...new Set(given.map(norm))] : [...new Set([norm(lemma), ...(adapter?.lemmaVariants?.(lemma) ?? []).map(norm)])];
         const found = await src.lookup(forms);
         const senses: GlossSense[] = [];
         let rank: number | undefined;

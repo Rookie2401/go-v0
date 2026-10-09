@@ -29,6 +29,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       row('Reader', ctx.inExtension ? `extension installed, version ${extVersion ?? 'unknown'}` : 'extension not detected (a web page cannot check)', 'reader', completion.reader),
       row('Orientation', progress.tutorial === 'done' ? 'finished' : progress.tutorial === 'skipped' ? 'skipped' : 'not done', 'tutorial', completion.tutorial)),
     p(`Works on: ${SURFACES.filter((s) => s.status !== 'not-supported').map((s) => s.name).join('; ')}.`, 'muted'),
-    h('p', {}, h('a', { class: 'btn', href: '#/tutorial' }, 'Repeat orientation'), ' ', h('a', { class: 'btn', href: '#/sync' }, 'Sync'), ' ', h('a', { class: 'btn', href: '#/privacy' }, 'Privacy'), ' ', h('a', { class: 'btn', href: '#/diagnostics' }, 'Diagnostics')),
+    h('p', {}, h('a', { class: 'btn', href: '#/tutorial' }, 'Repeat orientation'), ' ', h('a', { class: 'btn', href: '#/sync' }, 'Sync'), ' ', h('a', { class: 'btn', href: '#/privacy' }, 'Privacy'), ' ', h('a', { class: 'btn', href: '#/diagnostics' }, 'Diagnostics'), ' ', h('a', { class: 'btn', href: '#/share' }, 'Look up shared text')),
   ]);
 }

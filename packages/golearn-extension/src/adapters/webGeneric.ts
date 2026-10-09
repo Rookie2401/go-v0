@@ -14,13 +14,21 @@ import { noCapabilities, type ReaderCapabilities, type SentenceContextLevel } fr
 import {
   GOLEARN_HOST_ATTR,
   type ContextOptions, type LayoutChange, type PageDescriptor, type PopupAnchor, type ReaderAdapter, type ReaderContext,
-  type ReaderSelection, type SelectionFailure, type SelectionResult, type SourceReference, type TextDirection, type Rect,
+  type ReaderSelection, type SelectionFailure, type SelectionResult, type AnySourceReference, type TextDirection, type Rect,
 } from '../contract/readerAdapter';
 import { collapseWhitespace, nfcOffset, safeCutAfter, safeCutBefore, snapToGraphemes, textDirection, wordCount, type Span } from '../text';
+import { declinedHostsFromRegistry } from './registry';
+import { documentLanguageOf } from './languageMeta';
+import type { AdapterLanguageEvidence } from '../contract/language';
 
 export interface WebGenericOptions {
   doc?: Document;
-  /** The language pack's sentence segmenter (spans are slices of the text). Falls back to Intl.Segmenter('sentence'). */
+  /** The adapter's identity; site adapters built from the registry pass their own. Default `web-generic`. */
+  readerId?: string;
+  /**
+   * A fixed sentence segmenter for every language (spans are slices of the text). Normally absent: the controller hands
+   * the resolved language's cutter in `context(range, { segmenter })`, and without one this falls back to a locale-aware Intl.Segmenter.
+   */
   segmentSentences?: (text: string) => Span[];
   /** Hosts whose reading terms are not reviewed: this adapter declines them (docs/ecosystem strategy §8). */
   declinedHosts?: string[];
@@ -31,8 +39,11 @@ export interface WebGenericOptions {
   windowChars?: number;
 }
 
-/** Reader web apps whose terms have not been reviewed; the strategy requires a per-environment review first. */
-export const DEFAULT_DECLINED_HOSTS = ['read.amazon.com', 'kindle.amazon.com', 'read.kobo.com'];
+/**
+ * Reader web apps this adapter does not read (blocked, permission-required or unsupported in the registry). Derived from
+ * the registry, which is the one place these hosts and their reasons are written down (`registry.ts`).
+ */
+export const DEFAULT_DECLINED_HOSTS: string[] = [...declinedHostsFromRegistry()];
 
 const TEXT_BLOCKS = new Set(['P', 'LI', 'DD', 'DT', 'BLOCKQUOTE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'FIGCAPTION', 'CAPTION']);
 const OTHER_BLOCKS = new Set(['DIV', 'SECTION', 'ARTICLE', 'ASIDE', 'MAIN', 'HEADER', 'FOOTER', 'NAV', 'TD', 'TH', 'PRE', 'UL', 'OL', 'DL', 'TABLE', 'TR', 'TBODY', 'THEAD', 'FORM', 'FIELDSET', 'DETAILS', 'SUMMARY', 'BODY', 'HTML', 'ADDRESS', 'HR', 'FIGURE']);
@@ -41,7 +52,7 @@ const SKIPPED_TEXT = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEMPLATE', 'TEXTAR
 
 const hostAttrSelector = `[${GOLEARN_HOST_ATTR}]`;
 
-interface Located {
+export interface Located {
   range: Range;
   block: Element;
   blockKind: 'text' | 'container';
@@ -57,19 +68,20 @@ interface Located {
   frameEl: Element | null;
 }
 
-type Frame = { doc: Document; frameEl: Element | null; crossOrigin: boolean };
+export type Frame = { doc: Document; frameEl: Element | null; crossOrigin: boolean };
 
 export class WebGenericAdapter implements ReaderAdapter {
-  readonly id = 'web-generic';
-  private readonly doc: Document;
-  private readonly opts: Required<Omit<WebGenericOptions, 'doc' | 'segmentSentences'>> & { segment: (t: string) => Span[] };
-  private located: Located | undefined;
-  private lastFrameState: 'top' | 'same-origin-frame' | 'cross-origin-frame' = 'top';
-  private lastConfidence = 0.7;
+  readonly id: string;
+  protected readonly doc: Document;
+  protected readonly opts: Required<Omit<WebGenericOptions, 'doc' | 'segmentSentences' | 'readerId'>> & { segment: ((t: string) => Span[]) | undefined };
+  protected located: Located | undefined;
+  protected lastFrameState: 'top' | 'same-origin-frame' | 'cross-origin-frame' = 'top';
+  protected lastConfidence = 0.7;
   private cleanups = new Set<() => void>();
-  private defaultSegmenter: Intl.Segmenter | undefined;
+  private fallbackSegmenters = new Map<string, Intl.Segmenter>();
 
   constructor(options: WebGenericOptions = {}) {
+    this.id = options.readerId ?? 'web-generic';
     this.doc = options.doc ?? document;
     this.opts = {
       declinedHosts: options.declinedHosts ?? DEFAULT_DECLINED_HOSTS,
@@ -77,7 +89,7 @@ export class WebGenericAdapter implements ReaderAdapter {
       maxSelectionChars: options.maxSelectionChars ?? 1200,
       maxBlockChars: options.maxBlockChars ?? 6000,
       windowChars: options.windowChars ?? 240,
-      segment: options.segmentSentences ?? ((t) => this.fallbackSegment(t)),
+      segment: options.segmentSentences,
     };
   }
 
@@ -158,7 +170,7 @@ export class WebGenericAdapter implements ReaderAdapter {
     return out;
   }
 
-  private activeFrame(): Frame {
+  protected activeFrame(): Frame {
     let doc = this.doc;
     let frameEl: Element | null = null;
     for (let depth = 0; depth < 4; depth++) {
@@ -178,7 +190,7 @@ export class WebGenericAdapter implements ReaderAdapter {
     return !!el?.closest?.('[contenteditable]:not([contenteditable="false"]), input, textarea');
   }
 
-  private pageLanguage(block: Element): string | undefined {
+  protected pageLanguage(block: Element): string | undefined {
     const withLang = block.closest('[lang]');
     const v = withLang?.getAttribute('lang') ?? this.doc.documentElement?.getAttribute('lang');
     return v ? v.trim() || undefined : undefined;
@@ -195,7 +207,11 @@ export class WebGenericAdapter implements ReaderAdapter {
 
   private isBlock(el: Element): boolean {
     if (TEXT_BLOCKS.has(el.tagName) || OTHER_BLOCKS.has(el.tagName)) return true;
-    if (INLINE.has(el.tagName)) return false;
+    // a span styled display:block is a paragraph in all but name (some reader sites build their paragraphs that way)
+    if (INLINE.has(el.tagName)) {
+      if (el.tagName !== 'SPAN') return false;
+      try { const d = el.ownerDocument.defaultView?.getComputedStyle(el).display ?? ''; return d === 'block' || d === 'flex' || d === 'list-item' || d === 'flow-root'; } catch { return false; }
+    }
     try {
       const view = el.ownerDocument.defaultView;
       const d = view?.getComputedStyle(el).display ?? 'inline';
@@ -209,7 +225,7 @@ export class WebGenericAdapter implements ReaderAdapter {
     return el ?? node.ownerDocument?.documentElement ?? null;
   }
 
-  private isSkipped(el: Element): boolean {
+  protected isSkipped(el: Element): boolean {
     if (SKIPPED_TEXT.has(el.tagName.toUpperCase()) || el.hasAttribute(GOLEARN_HOST_ATTR)) return true;
     if ((el as HTMLElement).hidden) return true;
     const st = (el as HTMLElement).style;
@@ -331,7 +347,7 @@ export class WebGenericAdapter implements ReaderAdapter {
     if (!loc) return this.fragmentFromCache(cached, 'the page changed before the context was read');
 
     let spans: Span[];
-    try { spans = splitAtScriptTerminators(loc.flat, this.opts.segment(loc.flat).filter((x) => x.end > x.start)); } catch { return this.fragmentAround(loc, 'sentence segmentation failed'); }
+    try { spans = splitAtScriptTerminators(loc.flat, (options.segmenter ?? this.opts.segment ?? ((t: string) => this.fallbackSegment(t, options.languageId)))(loc.flat).filter((x) => x.end > x.start)); } catch { return this.fragmentAround(loc, 'sentence segmentation failed'); }
     if (!spans.length) return this.fragmentAround(loc, 'no sentence found');
 
     if (loc.flat.length > this.opts.maxBlockChars) return this.fragmentAround(loc, 'block too long: a window around the selection was used', 0.4);
@@ -386,7 +402,7 @@ export class WebGenericAdapter implements ReaderAdapter {
 
   // ─────────────────────────────── source, anchor, layout ───────────────────────────────
 
-  sourceRef(): SourceReference {
+  sourceRef(): AnySourceReference | undefined {
     const title = (this.doc.title ?? '').trim().slice(0, 120);
     const loc = this.doc.defaultView?.location;
     return { kind: 'web', title: title || undefined, locator: loc?.pathname || undefined };
@@ -473,10 +489,23 @@ export class WebGenericAdapter implements ReaderAdapter {
     this.located = undefined;
   }
 
-  private fallbackSegment(text: string): Span[] {
-    this.defaultSegmenter ??= new Intl.Segmenter(undefined, { granularity: 'sentence' });
+  /** The page's declared language near the selection, as metadata evidence for the language resolver (never page text). */
+  languageEvidence(): AdapterLanguageEvidence {
+    const doc = this.located?.frameDoc ?? this.doc;
+    const el = this.located?.block ?? null;
+    return { documentLanguage: documentLanguageOf(doc, el) };
+  }
+
+  /** Intl.Segmenter for the language when it is a valid locale tag, else for the browser default; one per language. */
+  private fallbackSegment(text: string, languageId?: string): Span[] {
+    const key = languageId ?? '';
+    let seg = this.fallbackSegmenters.get(key);
+    if (!seg) {
+      try { seg = new Intl.Segmenter(languageId || undefined, { granularity: 'sentence' }); } catch { seg = new Intl.Segmenter(undefined, { granularity: 'sentence' }); }
+      this.fallbackSegmenters.set(key, seg);
+    }
     const out: Span[] = [];
-    for (const s of this.defaultSegmenter.segment(text)) {
+    for (const s of seg.segment(text)) {
       const raw = s.segment;
       const lead = raw.length - raw.trimStart().length;
       const t = raw.trim();

@@ -4,7 +4,7 @@
  * not produce: a deleted negation, a replacement that adds a noun, a checker that throws).
  */
 import { sqAdapter } from '../../src/adapters/sq';
-import { albanianManifest, createPackRuntime, germanManifest } from '../../packages/language-packs/src';
+import { albanianManifest, bokmalManifest, createPackRuntime, germanManifest } from '../../packages/language-packs/src';
 import type { PackManifest, PackRuntime } from '../../packages/language-packs/src';
 import { createAnalyzer } from '../../packages/gotell/src/engine';
 import type { Analyzer } from '../../packages/gotell/src/engine';
@@ -32,7 +32,14 @@ export function withChecker(check: (real: CheckFn, ...args: Parameters<CheckFn>)
   return { ...sqAdapter, checkProduction: (tokens, analyses, sentence) => check(real, tokens, analyses, sentence) } as SqAdapter;
 }
 
-/** An analyser for a language whose pack has no real analyser: words and sentences by the browser's segmenter only. */
+/** An analyser for a language whose pack has no real analyser (Norwegian Bokmål is planned): words and sentences by the browser's segmenter only. */
+export function norwegianAnalyzer(): Analyzer {
+  const manifest = bokmalManifest();
+  const runtime = createPackRuntime(manifest, { fetch: noNetwork, baseUrl: '/' });
+  return createAnalyzer({ languageId: 'nb', runtime, manifest, now: () => NOW });
+}
+
+/** German is an experimental pack with a real (seed-only) analyser since 2026-10-09: see norwegianAnalyzer for the no-analyser case. */
 export function germanAnalyzer(): Analyzer {
   const manifest = germanManifest();
   const runtime = createPackRuntime(manifest, { fetch: noNetwork, baseUrl: '/' });

@@ -228,3 +228,15 @@ Scripts used for the rows that need a fresh process or a large log (kept in the 
 | first-lookup cost in a page | cold-1…cold-4 as they appear in Chrome DevTools "Performance" on a throttled CPU (4× and 6×) | node on a 24-core PC is not a phone |
 | memory | JS heap after 100 lookups; service worker memory with a 10k-event queue | not instrumented |
 | network | the same rows with a remote service and 50–150 ms round trips (PF-02 scales with it) | loopback only |
+
+## Prompt 2 additions (2026-10-09, Chromium pane, final content script, N = 1–2 per cell; see reader/BROWSER-TEST-REPORT.md §2)
+
+| measurement | value |
+|---|---|
+| content.js / background.js after the on-demand analyser split | 337,892 B / 340,814 B (was 1,406,237 / 1,420,284 with five analysers inline; 466,713 / 499,455 before the five-language wiring) |
+| analyser chunks (minified) | sq 201,680 · es 167,110 · de 329,984 · hi 405,574 · th 172,906 · shared 8,244 B |
+| on-demand analyser load, first use on a page | de 470 ms · es 72 ms · hi 127 ms · th 36 ms (localhost, warm pane) |
+| first lookup incl. load and parse | de 827 ms · es 110 ms · hi 208 ms · th 54 ms · sq (inline) 109 ms |
+| warm lookups | 6–39 ms |
+| setup app `app/app.js` | 449,046 B (was 1,526,494 B with analysers inline) |
+| GoPractice bundle | 1.77 MB (up from 847 KB: it links all five analysers through the pack runtime; not yet split) |

@@ -75,7 +75,7 @@ describe('what a content script can learn', () => {
     }
     // the redacted status still says what the card needs
     expect(replies[0]).toMatchObject({ ok: true, connected: true, languageId: 'sq', languageName: 'Albanian', packAvailable: true });
-    expect(Object.keys(replies[0]).sort()).toEqual(['connected', 'languageId', 'languageName', 'needsSignIn', 'ok', 'packAvailable']);
+    expect(Object.keys(replies[0]).sort()).toEqual(['connected', 'installedLanguages', 'languageId', 'languageName', 'needsSignIn', 'ok', 'packAvailable']);
   });
 
   it('the setup page gets the email and the address, still no token and no learner id', async () => {

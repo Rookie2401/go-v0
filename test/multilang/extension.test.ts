@@ -17,9 +17,15 @@ import { createCardUI } from '../../packages/golearn-extension/src/popup/card';
 import type { PublicStatus } from '../../packages/golearn-extension/src/protocol';
 import { createMemoryEncounterStore } from '../../packages/golearn-extension/src/store';
 import { validateEvent } from '../../packages/repository-contract/src';
+import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
+import { hiAdapter } from '../../src/adapters/hi';
 import { sqAdapter } from '../../src/adapters/sq';
+import { thAdapter } from '../../src/adapters/th';
 import { selectText, setBody, stubLayout } from '../extension/dom';
+import { registerAllAnalysers } from '../support/analysers';
+
+registerAllAnalysers(); // the parser carries Albanian; the other analysers are chunks the content script loads on demand
 
 const ES = 'Los niños leen los libros.';
 const SQ = 'Fëmijët lexojnë librin.';
@@ -30,11 +36,11 @@ function parse(word: string, sentence: string, languageId?: string): CardModel {
 }
 
 describe('parseSelection chooses the adapter by languageId', () => {
-  it('the registry lists Albanian and Spanish, and the default is still Albanian', () => {
-    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es']);
+  it('the registry lists Albanian, Spanish and the experimental German, Hindi and Thai, and the default is still Albanian', () => {
+    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th']);
     expect(PARSER_LANGUAGE).toBe('sq');
     expect(PACK_ID).toBe(`pack:sq:${sqAdapter.version}`);
-    expect(PACK_IDS).toEqual({ sq: `pack:sq:${sqAdapter.version}`, es: `pack:es:${esAdapter.version}` });
+    expect(PACK_IDS).toEqual({ sq: `pack:sq:${sqAdapter.version}`, es: `pack:es:${esAdapter.version}`, de: `pack:de:${deAdapter.version}`, hi: `pack:hi:${hiAdapter.version}`, th: `pack:th:${thAdapter.version}` });
   });
 
   it('a Spanish sentence yields a Spanish card: lemma, part of speech, morphology line, features, unit ids, pronunciation notes', () => {
@@ -82,7 +88,7 @@ describe('parseSelection chooses the adapter by languageId', () => {
   });
 
   it('an unlisted language throws (the controller turns that into the "parser-error" message) rather than reading it with another adapter', () => {
-    expect(() => parse('Haus', 'Das Haus ist alt.', 'de')).toThrow(/No parser for language "de"/);
+    expect(() => parse('hus', 'Det er et hus.', 'nb')).toThrow(/No parser for language "nb"/);
     expect(() => parse('x', 'x', 'constructor')).toThrow(RangeError);
   });
 
@@ -164,7 +170,8 @@ describe('the content controller with a Spanish enrolment', () => {
     expect(JSON.stringify(all)).not.toMatch(/:sq:|pack:sq/);
   });
 
-  it('the same page with an Albanian enrolment gives the Albanian card for an Albanian word and parses with sq', async () => {
+  it('an Albanian enrolment gives the Albanian card for an Albanian word and parses with sq (the page declares no language of its own: a declared Spanish page would win, see test/reader-languages/resolve.test.ts)', async () => {
+    setBody('<div id="content"><p id="p">Pastaj shkoj.</p></div>');
     const r = rig(status());
     selectText(document.getElementById('p')!, 'shkoj');
     const out = await r.controller.lookup({ trigger: 'command' });
@@ -177,7 +184,8 @@ describe('the content controller with a Spanish enrolment', () => {
   });
 
   it('a language with no analyser in the build is still turned away, not read with another language’s adapter', async () => {
-    const r = rig(status({ languageId: 'de', languageName: 'German', packAvailable: false }));
+    setBody('<div id="content"><p id="p">Los niños leen los libros.</p></div>'); // no declared language: the enrolment’s decides
+    const r = rig(status({ languageId: 'nb', languageName: 'Norwegian (Bokmål)', packAvailable: false }));
     selectText(document.getElementById('p')!, 'libros');
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out).toMatchObject({ status: 'message', reason: 'no-pack' });
@@ -188,8 +196,10 @@ describe('the content controller with a Spanish enrolment', () => {
 describe('the content script’s analyser list', () => {
   it('is built from the parser registry, so the two cannot drift', () => {
     const src = fs.readFileSync(path.resolve(__dirname, '../../packages/golearn-extension/src/content/index.ts'), 'utf8');
-    expect(src).toMatch(/import \{ PARSER_LANGUAGES, parseSelection \} from '\.\.\/parser'/);
+    expect(src).toMatch(/import \{ PARSER_LANGUAGES, getAnalyser, hasAnalyser, parseSelection \} from '\.\.\/parser'/);
     expect(src).toMatch(/analysers: \[\.\.\.PARSER_LANGUAGES\]/);
+    expect(src).toMatch(/loadAnalyser: createAnalyserLoader\(chromeApi\)/); // every language but Albanian is loaded on demand
+    expect(src).not.toMatch(/adapters\/(es|de|hi|th)'/); // none of them is linked into the content script
     expect(src).not.toMatch(/analysers: \['sq'\]/);
   });
 });

@@ -32,10 +32,14 @@ describe('manifest (source)', () => {
   });
 
   it('declares no automatic injection, no external connections, no page-visible resources, no weakened CSP, no remote update', () => {
-    for (const key of ['content_scripts', 'externally_connectable', 'web_accessible_resources', 'content_security_policy', 'update_url', 'key', 'sandbox', 'declarative_net_request', 'devtools_page', 'chrome_url_overrides', 'incognito', 'oauth2', 'omnibox', 'nacl_modules', 'storage', 'file_browser_handlers', 'browser_specific_settings']) {
+    for (const key of ['content_scripts', 'externally_connectable', 'content_security_policy', 'update_url', 'key', 'sandbox', 'declarative_net_request', 'devtools_page', 'chrome_url_overrides', 'incognito', 'oauth2', 'omnibox', 'nacl_modules', 'storage', 'file_browser_handlers', 'browser_specific_settings']) {
       expect(manifest[key], key).toBeUndefined();
     }
-    expect(JSON.stringify(manifest)).not.toMatch(/unsafe-eval|unsafe-inline|<all_urls>|\*:\/\//);
+    // the one page-visible resource: the analyser chunks the content script imports on demand (German, Hindi, Thai, Spanish). They are code with no
+    // network call (bundle.test.ts), readable by any page because the script is injected, per gesture, on any reading site. Nothing else is exposed.
+    expect(manifest.web_accessible_resources).toEqual([{ resources: ['analysers/*.js'], matches: ['<all_urls>'] }]);
+    const { web_accessible_resources: _exposed, ...rest } = manifest;
+    expect(JSON.stringify(rest)).not.toMatch(/unsafe-eval|unsafe-inline|<all_urls>|\*:\/\//);
   });
 
   it('is a service-worker extension (no persistent background page) whose only commands and menus are user gestures', () => {

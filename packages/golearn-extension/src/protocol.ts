@@ -48,6 +48,8 @@ export interface PublicStatus {
   languageName: string;
   /** The background found an installable language pack for `languageId`. */
   packAvailable: boolean;
+  /** The languages the worker has a pack for that the reader may read with (installable or experimental; never a planned one). The resolver compares a sample only against these. */
+  installedLanguages?: string[];
 }
 
 /** What an extension page (popup, setup page) may know in addition. Still no token and no learner id. */
@@ -77,7 +79,11 @@ export interface ProfileReply {
   error?: string;
 }
 
-export interface GlossRequest { lemma: string; pos?: string; languageId: string }
+export interface GlossRequest {
+  lemma: string; pos?: string; languageId: string;
+  /** The dictionary spellings of the lemma (normalised, with the analyser's variants), worked out where the analyser is loaded: the worker carries Albanian only. At most 8. */
+  forms?: string[];
+}
 export interface GlossReply {
   ok: boolean;
   found: boolean;

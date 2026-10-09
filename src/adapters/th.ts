@@ -16,7 +16,7 @@ import type {
   AdapterSupport, AnalysisCandidate, AnalysisSourceInfo, AnalyzedToken, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport,
   RawToken, SyllableAnalysis,
 } from '../core';
-import { decodeFor } from '../core';
+import { decodeFor } from '../core/adapters';
 import { E, Lexicon, hasPos, lexiconAnalyze, matchPhraseRules, speechNormalizeGeneric } from './shared';
 import { annotationKey, mergeAnnotations } from './thai/entries';
 import { CORE_ANNOTATIONS, CORE_ENTRIES } from './thai/lexicon-core';

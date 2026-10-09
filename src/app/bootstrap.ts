@@ -289,15 +289,18 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // One lazy source per language: createFetchLexiconSource makes no request until it is first asked something.
   const catalog = createCourseCatalog({ store, golearn });
   const sources = new Map<LanguageCode, LexiconSource>();
+  // The built site may live under a sub-path (GitHub Pages: /go-v0/): the dictionary and library shards sit beside index.html, so
+  // their base follows Vite's base ('./' in production → relative; '/' in tests → the old absolute paths).
+  const assetBase = ((import.meta.env?.BASE_URL as string | undefined) ?? '/').replace(/\/+$/, '');
   const lexicon: AppServices['lexicon'] = (lang) => {
     let s = sources.get(lang);
-    if (!s) { s = createFetchLexiconSource(lang); sources.set(lang, s); }
+    if (!s) { s = createFetchLexiconSource(lang, { baseUrl: `${assetBase}/dict` }); sources.set(lang, s); }
     return s;
   };
 
   // The library (index, profiles, open-on-demand). Built inside a guard: if it cannot be, the app starts with an empty one.
   let library: Library;
-  try { library = createLibrary({ store, adapters, clock, lexicon }); } catch {
+  try { library = createLibrary({ store, adapters, clock, lexicon, baseUrl: `${assetBase}/library` }); } catch {
     library = emptyLibrary(); // the catalogue pages then say there is nothing in the library yet
   }
   // GoLearn recommends from the WHOLE library (src/golearn/candidates.ts), not only from texts already on this device: its

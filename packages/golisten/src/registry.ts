@@ -69,17 +69,17 @@ export function deviceRegistry(languageId: string, langTags: string[], languageN
   };
 }
 
-function azureEntry(providerVoice: string, who: string, gender: string): VoiceEntry {
+function azureEntry(providerVoice: string, who: string, gender: string, lang = { languageId: 'sq', locale: 'sq-AL', name: 'Albanian' }): VoiceEntry {
   return {
-    voiceId: `${AZURE_PROVIDER_ID}:${providerVoice}`, languageId: 'sq', varietyId: 'sq-AL', provider: 'remote', execution: 'remote',
+    voiceId: `${AZURE_PROVIDER_ID}:${providerVoice}`, languageId: lang.languageId, varietyId: lang.locale, provider: 'remote', execution: 'remote',
     synthetic: true, licence: AZURE_LICENCE, qualityVerification: 'unverified',
     knownLimitations: [
       ...SYNTHETIC_LIMITATIONS,
       'The text is sent to a speech service: it plays only with the learner\'s consent and a key configured on the server.',
       'The voice has never been called against the live service from this repository (proxy tested against a mock only).',
     ],
-    supports: [...ALL_KINDS], suitableForAssessment: false, label: `Azure Neural ${who} (Albanian, ${gender}), synthetic`,
-    source: { kind: 'remote', providerId: AZURE_PROVIDER_ID, providerVoice, locale: 'sq-AL' },
+    supports: [...ALL_KINDS], suitableForAssessment: false, label: `Azure Neural ${who} (${lang.name}, ${gender}), synthetic`,
+    source: { kind: 'remote', providerId: AZURE_PROVIDER_ID, providerVoice, locale: lang.locale },
   };
 }
 
@@ -126,8 +126,37 @@ export function demoGermanRegistry(opts: { url?: string } = {}): VoiceRegistry {
   };
 }
 
+/** The device-voice language tags accepted for Spanish: Honduras (the course's target), Latin America (general), Mexico, Spain. */
+export const SPANISH_DEVICE_TAGS = ['es-HN', 'es-419', 'es-MX', 'es-ES'] as const;
+
+/**
+ * Spanish (es), the second language to go through the same shared interfaces as Albanian (prompt 6, section 25).
+ *   recorded  none.
+ *   device    whatever the device offers tagged es-HN, es-419, es-MX or es-ES (strict: a bare "es" or es-AR is not accepted).
+ *   remote    Azure Neural es-HN and es-MX voices through the same proxy; synthetic, unverified, consent and a key required.
+ */
+export function spanishRegistry(): VoiceRegistry {
+  const hn = { languageId: 'es', locale: 'es-HN', name: 'Spanish, Honduras' };
+  const mx = { languageId: 'es', locale: 'es-MX', name: 'Spanish, Mexico' };
+  return {
+    languageId: 'es',
+    entries: [
+      deviceEntry('es', [...SPANISH_DEVICE_TAGS], 'Spanish'),
+      azureEntry('es-HN-CarlosNeural', 'Carlos', 'male', hn),
+      azureEntry('es-HN-KarlaNeural', 'Karla', 'female', hn),
+      azureEntry('es-MX-DaliaNeural', 'Dalia', 'female', mx),
+    ],
+    gaps: [
+      'No Spanish recordings exist; nothing is claimed.',
+      'No native-reviewed Spanish audio exists, so there is no Spanish listening evidence.',
+      'A device voice appears only if the device offers one tagged es-HN, es-419, es-MX or es-ES; a voice for another Spanish variety (es-AR, es-CO …) or a bare "es" is not substituted.',
+      'There is no Spanish phonetic-notes rule set in GoListen yet (Albanian has one), so a Spanish card shows no per-letter pronunciation notes from GoListen.',
+    ],
+  };
+}
+
 export function defaultRegistries(opts: { demoUrl?: string } = {}): VoiceRegistry[] {
-  return [albanianRegistry(), demoGermanRegistry({ url: opts.demoUrl })];
+  return [albanianRegistry(), demoGermanRegistry({ url: opts.demoUrl }), spanishRegistry()];
 }
 
 /** Merges registries of the same language (entries and gaps concatenate; the first `phonetics` wins). */

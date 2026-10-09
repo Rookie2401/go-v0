@@ -331,7 +331,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     // meaning: the lexicon gloss at once, else the dictionary's, else "looking up…" while it is on its way
     const dict = v.gloss;
     if (m.gloss) rows.push(row('meaning', 'meaning', m.gloss, l.gloss));
-    else if (dict.state === 'ready' && dict.senses.length) rows.push(row('meaning', 'meaning', dict.senses.slice(0, 3).join('; '), l.gloss));
+    // a dictionary-only meaning carries its attribution on the row itself (CC BY-SA: the notice goes wherever the entry is shown)
+    else if (dict.state === 'ready' && dict.senses.length) rows.push(row('meaning', 'meaning', `${dict.senses.slice(0, 3).join('; ')}${dict.attribution ? ` (${dict.attribution})` : ''}`, l.gloss));
     else if (dict.state === 'loading') rows.push(row('meaning', 'meaning', 'looking up…', l.gloss, true));
     else rows.push(row('meaning', 'meaning', m.provenance === 'none' ? 'Not in the word list.' : 'No meaning given.', l.gloss, true));
     if (m.gloss && dict.state === 'ready' && dict.senses.length) {

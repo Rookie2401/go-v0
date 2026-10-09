@@ -10,7 +10,7 @@ import { bootStart } from '../boot';
 import { sqAdapter } from '../../../../src/adapters/sq';
 import { WebGenericAdapter, UnsupportedAdapter } from '../adapters';
 import { createMemoryMetricsStore } from '../metrics';
-import { parseSelection } from '../parser';
+import { PARSER_LANGUAGES, parseSelection } from '../parser';
 import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from '../platform';
 import { createCardUI } from '../popup/card';
 import type { Pronouncer } from '../popup/view';
@@ -53,7 +53,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     store: bridge?.events ?? fallbackEvents!,
     metrics: bridge?.metrics ?? createMemoryMetricsStore(),
     services: bridge,
-    analysers: ['sq'],
+    analysers: [...PARSER_LANGUAGES],
     identity,
     version: chromeApi?.runtime.getManifest?.().version ?? '0.0.0',
     sessionId: `s${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`,

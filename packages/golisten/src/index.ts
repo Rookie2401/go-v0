@@ -9,7 +9,7 @@ export type { GoListen, GoListenOptions } from './golisten';
 export { listVoices, languageAvailability } from './listing';
 export type { LanguageAvailability, ListedVoice } from './listing';
 export {
-  albanianRegistry, deviceRegistry, deviceEntry, demoGermanRegistry, defaultRegistries, indexRegistries, descriptorOf,
+  albanianRegistry, spanishRegistry, SPANISH_DEVICE_TAGS, deviceRegistry, deviceEntry, demoGermanRegistry, defaultRegistries, indexRegistries, descriptorOf,
   DEFAULT_DEMO_URL, DEMO_RECORDING_TEXT, ALBANIAN_DEVICE_TAGS, AZURE_LICENCE, AZURE_PROVIDER_ID, DEVICE_LICENCE,
 } from './registry';
 export type { RecordedClip, VoiceEntry, VoiceRegistry, VoiceSource } from './registry';

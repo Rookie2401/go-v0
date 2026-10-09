@@ -1,12 +1,13 @@
 /**
- * GoTell — the writing workspace, independent of GoReview (docs/ecosystem/GOPRACTICE-DESIGN.md §3). In this phase it is a
- * BOUNDARY: it initialises with no deck, no session and no review event; it reads what the Repository knows about the
- * learner's production ("words you can use": item knowledge where productive retrieval or contextual production has
- * evidence), lists the learner's private drafts, and saves a draft as a `PrivateDocument` with revisions. The real writing
- * engine (sentence-by-sentence checking, correction events, the practice ladder) is Prompt 6.
+ * GoTell — the writing workspace, independent of GoReview (docs/ecosystem/GOPRACTICE-DESIGN.md §3). It initialises with no
+ * review schedule, no session and no review event. `createGoTellWorkspace` (below) is the small boundary: it reads what the
+ * Repository knows about the learner's production ("words you can use"), lists the learner's private drafts and saves a
+ * draft as a `PrivateDocument` with revisions. The writing engine proper (sentence-by-sentence checking, the assistance
+ * ladder, versions with authorship, evidence without text, privacy) is exported from the modules listed at the end; the
+ * screens reach all of it through the `TellEngine` port in ./workspace.
  *
- * Imports: the Repository contract and the typed API client only. Never GoReview: the two workspaces are siblings.
- * The module has no DOM; the GoPractice shell renders it.
+ * Imports: the Repository contract, the typed API client, the sync package and (for guidance and the checker) the language
+ * packs. Never GoReview: the two workspaces are siblings. The module has no DOM; the GoPractice shell renders it.
  */
 import type { PrivateDocument, UnitKnowledge } from '../../repository-contract/src';
 import type { ApiResult, DocumentMeta, RepositoryApi } from '../../repository-service/src/api';
@@ -164,3 +165,15 @@ export function createGoTellWorkspace(deps: GoTellDeps): GoTellWorkspace {
     revisionOf: (docId) => revisions.get(docId) ?? 0,
   };
 }
+
+// ───────────────────────────── the rest of GoTell (Prompt 6) ─────────────────────────────
+// types: ./types · checking and the assistance ladder: ./engine · prompts and guidance: ./prompts · the learner as a writer: ./profile
+// drafts and versions: ./documents · evidence (no text, ever): ./evidence · privacy and consent: ./privacy · the screens' port: ./workspace
+export * from './types';
+export * from './engine';
+export * from './prompts';
+export * from './profile';
+export * from './documents';
+export * from './evidence';
+export * from './privacy';
+export * from './workspace';

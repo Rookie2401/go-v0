@@ -118,7 +118,7 @@ describe('later arrivals never block the card', () => {
     expect(await events(r.store)).toHaveLength(2); // the card was recorded without waiting for it
     g.resolve(glossReply({ senses: ['house', 'home', 'household'] }));
     await out.settled;
-    expect(rowTexts(r).meaning).toBe('house; home; household');
+    expect(rowTexts(r).meaning).toBe(`house; home; household (${ATTRIBUTION})`);
   });
 
   it('when the word list already has a meaning it stays, and the dictionary\'s senses arrive as a separate, attributed line', async () => {
@@ -138,7 +138,7 @@ describe('later arrivals never block the card', () => {
     const r = makeRig({ services: fakeServices({ gloss: async () => glossReply({ senses: [evil] }) }), parse: (i) => ({ ...parseSelection(i), gloss: undefined }) });
     const out = await lookup(r);
     await out.settled;
-    expect(rowTexts(r).meaning).toBe(evil);
+    expect(rowTexts(r).meaning).toBe(`${evil} (${ATTRIBUTION})`);
     expect(root(r).querySelector('img')).toBeNull();
     expect((window as unknown as { __pwned?: number }).__pwned).toBeUndefined();
   });
@@ -195,7 +195,7 @@ describe('later arrivals never block the card', () => {
     g.resolve(glossReply({ senses: ['book'] }));
     await flush(10);
     expect(rowTexts(r).lemma).toBe('libër (NOUN)');
-    expect(rowTexts(r).meaning).toBe('book'); // the live card got the reply that belongs to it
+    expect(rowTexts(r).meaning).toBe(`book (${ATTRIBUTION})`); // the live card got the reply that belongs to it
     expect(document.querySelectorAll('[data-golearn-host]')).toHaveLength(1);
   });
 });
@@ -620,7 +620,7 @@ describe('a language without a pack', () => {
     selectText(document.getElementById('p')!, 'libër');
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out).toMatchObject({ status: 'message', reason: 'no-analyser' });
-    expect(root(r).textContent).toContain('The Spanish pack exists, but this version of the reader bundles only the Albanian analyser');
+    expect(root(r).textContent).toContain('The Spanish pack exists, but this version of the reader does not bundle its analyser');
     expect((await r.store.list()).map((e) => e.kind)).toEqual(['SelectionLookedUp']);
   });
 

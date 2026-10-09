@@ -6,16 +6,29 @@
  * The sentence is tokenized whole (the adapter needs the neighbours: linking articles, short pronouns, particles);
  * the selected tokens are found by offsets. With no context the selection alone is tokenized and the card says so.
  */
+import { esAdapter } from '../../../../src/adapters/es';
 import { sqAdapter } from '../../../../src/adapters/sq';
-import type { AnalysisCandidate, AnalyzedToken, PatternCandidate, PhraseCandidate, RawToken } from '../../../../src/core';
+import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidate, PhraseCandidate, RawToken } from '../../../../src/core';
 import { unitIds } from '../../../repository-contract/src';
 import { hasLatinLetter, sentenceKeyOf, fnv1a64 } from '../text';
 import type { Alternative, CardModel, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
 
 export * from './cardModel';
 
+/** The language the parser reads when no `languageId` is given (the original, Albanian-only behaviour). */
 export const PARSER_LANGUAGE = 'sq';
 export const PACK_ID = `pack:sq:${sqAdapter.version}`;
+
+/** A language the parser can read: its adapter, its name in plain words, its pack id and the page-language tags that mean it. */
+interface Lang { lang: string; name: string; adapter: LanguageAdapter; packId: string; pageTag: RegExp }
+
+/** The small adapter registry of the extension: a language is parsed only if it is listed here (the content script's `analysers` agrees). */
+const LANGS: Readonly<Record<string, Lang>> = {
+  sq: { lang: 'sq', name: 'Albanian', adapter: sqAdapter, packId: PACK_ID, pageTag: /^(sq|als|aln)(-|$)/ },
+  es: { lang: 'es', name: 'Spanish', adapter: esAdapter, packId: `pack:es:${esAdapter.version}`, pageTag: /^es(-|$)/ },
+};
+export const PARSER_LANGUAGES: readonly string[] = Object.keys(LANGS);
+export const PACK_IDS: Readonly<Record<string, string>> = Object.fromEntries(Object.values(LANGS).map((l) => [l.lang, l.packId]));
 /** Same threshold the engine uses to credit a lemma (src/golearn/policy.ts LEMMA_MIN_CONFIDENCE): below it, a form id. */
 export const LEMMA_MIN_CONFIDENCE = 0.5;
 const MAX_WORD_LINES = 12;
@@ -33,7 +46,8 @@ export interface ParseContext {
   pageLanguage?: string;
 }
 
-export interface ParseInput { surface: string; context: ParseContext }
+/** `languageId` is the language of the learner's enrolment; absent = Albanian (PARSER_LANGUAGE). An unlisted language throws (the caller checks the analyser list first). */
+export interface ParseInput { surface: string; context: ParseContext; languageId?: string }
 
 const LABELS: Record<LabelledField, EvidenceLabel> = {
   surface: 'fact', context: 'fact',
@@ -51,6 +65,8 @@ const LIMITS = [
 ];
 
 export function parseSelection(input: ParseInput): CardModel {
+  const L = Object.prototype.hasOwnProperty.call(LANGS, input.languageId ?? PARSER_LANGUAGE) ? LANGS[input.languageId ?? PARSER_LANGUAGE] : undefined;
+  if (!L) throw new RangeError(`No parser for language "${input.languageId}".`);
   const surface = input.surface.normalize('NFC').trim();
   const ctx = input.context;
 
@@ -72,8 +88,8 @@ export function parseSelection(input: ParseInput): CardModel {
     }
   } else if (kind !== 'none') { kind = 'none'; reason ??= 'no context text was given'; }
 
-  const tokens = surface ? sqAdapter.tokenize(text) : [];
-  const analyses = surface ? sqAdapter.analyze(tokens) : [];
+  const tokens = surface ? L.adapter.tokenize(text) : [];
+  const analyses = surface ? L.adapter.analyze(tokens) : [];
   const selected: number[] = [];
   tokens.forEach((t, i) => { if (t.isWord && t.start < selEnd && t.end > selStart) selected.push(i); });
 
@@ -85,12 +101,16 @@ export function parseSelection(input: ParseInput): CardModel {
   const notes: string[] = [];
   if (kind === 'none') notes.push('No sentence context: the word was read alone, so neighbouring words could not help choose a reading.');
   else if (kind === 'fragment') notes.push('Only a fragment around the word was available, not a verified sentence: readings that depend on neighbours are less certain.');
-  if (!hasLatinLetter(surface)) notes.push('This selection is not in Latin script: the Albanian word list does not apply to it.');
+  if (!hasLatinLetter(surface)) notes.push(`This selection is not in Latin script: the ${L.name} word list does not apply to it.`);
   const pl = ctx.pageLanguage?.toLowerCase();
-  if (pl && !/^(sq|als|aln)(-|$)/.test(pl) && hasLatinLetter(surface)) notes.push(`The page declares its language as "${ctx.pageLanguage}"; the Albanian word list is applied only because it is the one pack in this prototype.`);
+  if (pl && !L.pageTag.test(pl) && hasLatinLetter(surface)) {
+    notes.push(L.lang === 'sq'
+      ? `The page declares its language as "${ctx.pageLanguage}"; the Albanian word list is applied only because it is the one pack in this prototype.`
+      : `The page declares its language as "${ctx.pageLanguage}"; the ${L.name} word list is applied because ${L.name} is the language you are studying.`);
+  }
 
   const base = {
-    languageId: PARSER_LANGUAGE, packId: PACK_ID, analyzerId: analyzerIdOf(analyses),
+    languageId: L.lang, packId: L.packId, analyzerId: analyzerIdOf(L, analyses),
     surface, phrases: [] as PhraseNote[], words: [] as WordLine[], alternatives: [] as Alternative[], basis: [] as string[],
     pronunciation: [] as string[], unconfirmed: false, labels: LABELS, limits: LIMITS, context, tokenCount: selected.length,
     features: [] as FeatureItem[], constructions: [] as ConstructionNote[], syntaxNotes: [] as string[], sentenceWords: [] as SentenceWord[], unitIds: [] as string[],
@@ -98,16 +118,16 @@ export function parseSelection(input: ParseInput): CardModel {
 
   if (!selected.length) {
     notes.push(surface ? 'No word was found in the selection (only punctuation or numerals).' : 'Nothing was selected.');
-    return { ...base, confidence: 0, provenance: 'none', notes, itemIds: surface ? [formId(surface)] : [] };
+    return { ...base, confidence: 0, provenance: 'none', notes, itemIds: surface ? [formId(L, surface)] : [] };
   }
 
   // 3. per-word best readings
   const best = selected.map((i) => pick(analyses[i]));
   const lines: WordLine[] = selected.map((i, k) => lineOf(tokens[i], best[k]));
-  const phrases = phrasesFor(tokens, analyses, selected);
+  const phrases = phrasesFor(L, tokens, analyses, selected);
 
   const sourceOf = (c: AnalysisCandidate | undefined) => {
-    const src = c?.sourceId ? sqAdapter.sources?.[c.sourceId] : undefined;
+    const src = c?.sourceId ? L.adapter.sources?.[c.sourceId] : undefined;
     return src ? { id: src.id, label: src.label, reviewStatus: src.reviewStatus } : undefined;
   };
 
@@ -116,18 +136,18 @@ export function parseSelection(input: ParseInput): CardModel {
   let confidence = 0; let provenance: CardProvenance = 'none'; let source; let unconfirmed = false;
   const basis: string[] = []; let pronunciation: string[] = []; const alternatives: Alternative[] = [];
   let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = [];
-  const constructions: ConstructionNote[] = patternsFor(tokens, analyses, selected).map((p) => ({
-    id: p.key, unitId: unitIds.syntactic(PARSER_LANGUAGE, p.key), title: p.title, explanation: p.explanation, confidence: clamp01(p.confidence), source: 'pattern' as const,
+  const constructions: ConstructionNote[] = patternsFor(L, tokens, analyses, selected).map((p) => ({
+    id: p.key, unitId: unitIds.syntactic(L.lang, p.key), title: p.title, explanation: p.explanation, confidence: clamp01(p.confidence), source: 'pattern' as const,
   }));
 
   if (selected.length === 1) {
     const i = selected[0];
     const c = best[0];
-    pronunciation = sqAdapter.pronunciation(tokens[i], analyses[i]).notes ?? [];
+    pronunciation = L.adapter.pronunciation(tokens[i], analyses[i]).notes ?? [];
     if (selStart > tokens[i].start || selEnd < tokens[i].end) notes.push(`The selection is part of the word "${tokens[i].surface}"; the reading is for the whole word.`);
     if (c) {
       lemma = c.lemma; pos = c.pos; gloss = c.unconfirmed ? undefined : c.gloss;
-      morphology = describe(c);
+      morphology = describe(L, c);
       confidence = clamp01(c.confidence);
       provenance = provenanceOf(c);
       unconfirmed = !!c.unconfirmed;
@@ -136,7 +156,7 @@ export function parseSelection(input: ParseInput): CardModel {
       role = typeof c.role === 'string' && c.role ? c.role : undefined;
       if (c.unit && c.unit.pieces.length > 1) syntaxNotes.push(`Part of the unit “${c.unit.display}” (${c.unit.role}).`);
       for (const part of c.parts ?? []) syntaxNotes.push(`${part.text}: ${[part.lemma && part.lemma !== part.text ? `from ${part.lemma}` : '', part.role ?? part.pos ?? ''].filter(Boolean).join(', ') || 'part of the word'}`);
-      for (const f of formConstructions(c)) if (!constructions.some((x) => x.id === f.id)) constructions.push(f);
+      for (const f of formConstructions(L, c)) if (!constructions.some((x) => x.id === f.id)) constructions.push(f);
       for (const key of ['rule', 'context'] as const) { const v = c.notes?.[key]; if (typeof v === 'string' && v) basis.push(v); }
       if (c.unconfirmed) notes.push('Not in the word list: the lemma is a guess from the ending and no meaning is given.');
       if (typeof c.notes?.disputed === 'string') notes.push(`Sources disagree: ${c.notes.disputed}`);
@@ -153,7 +173,7 @@ export function parseSelection(input: ParseInput): CardModel {
         notes.push(`${alternatives.length} ${what}${alternatives.length > 1 ? 's' : ''} possible${kind === 'sentence' ? ' even with the sentence' : ''}; the one shown has the highest confidence.`);
       }
     } else {
-      notes.push('Not an entry of the Albanian word list, and the rules found no reading: the word is unknown to this pack.');
+      notes.push(`Not an entry of the ${L.name} word list, and the rules found no reading: the word is unknown to this pack.`);
     }
   } else {
     // several words: a phrase entry that covers the whole selection, else the weakest word sets the card
@@ -170,9 +190,9 @@ export function parseSelection(input: ParseInput): CardModel {
     if (selected.length > MAX_WORD_LINES) notes.push(`Showing the first ${MAX_WORD_LINES} of ${selected.length} words.`);
   }
 
-  const itemIds = itemIdsFor(selected, tokens, best, phrases, selected.length === 1);
+  const itemIds = itemIdsFor(L, selected, tokens, best, phrases, selected.length === 1);
   const single = selected.length === 1;
-  const formUnit = single ? formId(tokens[selected[0]].surface) : undefined;
+  const formUnit = single ? formId(L, tokens[selected[0]].surface) : undefined;
   const unitIdsToAsk = [...new Set([...itemIds, ...(formUnit ? [formUnit] : []), ...constructions.map((x) => x.unitId)])].slice(0, 24);
   const sentenceWords: SentenceWord[] = [];
   if (kind !== 'none') {
@@ -196,9 +216,9 @@ export function parseSelection(input: ParseInput): CardModel {
 
 const clamp01 = (n: number): number => (Number.isFinite(n) ? Math.max(0, Math.min(1, n)) : 0);
 const same = (a: string, b: string): boolean => a.replace(/\s+/gu, ' ').trim() === b.replace(/\s+/gu, ' ').trim();
-const formId = (surface: string): string => `form:${PARSER_LANGUAGE}:${sqAdapter.normalize(surface)}`;
+const formId = (L: Lang, surface: string): string => `form:${L.lang}:${L.adapter.normalize(surface)}`;
 
-function analyzerIdOf(a: AnalyzedToken[]): string { return a[0]?.analyzer ?? `adapter-sq@${sqAdapter.version}`; }
+function analyzerIdOf(L: Lang, a: AnalyzedToken[]): string { return a[0]?.analyzer ?? `adapter-${L.lang}@${L.adapter.version}`; }
 
 /** The reading with the highest confidence; ties keep the adapter's order (it already ordered by neighbours). */
 function pick(a: AnalyzedToken | undefined): AnalysisCandidate | undefined {
@@ -212,9 +232,9 @@ function provenanceOf(c: AnalysisCandidate): CardProvenance {
   return 'lexicon';
 }
 
-function describe(c: AnalysisCandidate): string | undefined {
+function describe(L: Lang, c: AnalysisCandidate): string | undefined {
   try {
-    const line = sqAdapter.describeMorph?.(c.morph, c.pos);
+    const line = L.adapter.describeMorph?.(c.morph, c.pos);
     return line ? line : undefined;
   } catch { return undefined; }
 }
@@ -227,10 +247,10 @@ function lineOf(t: RawToken, c: AnalysisCandidate | undefined): WordLine {
 }
 
 /** The analyser's patterns (constructions) that cover at least one selected word. */
-function patternsFor(tokens: RawToken[], analyses: AnalyzedToken[], selected: number[]): PatternCandidate[] {
+function patternsFor(L: Lang, tokens: RawToken[], analyses: AnalyzedToken[], selected: number[]): PatternCandidate[] {
   try {
     const set = new Set(selected);
-    return sqAdapter.detectPatterns(tokens, analyses).filter((p) => p.tokenIndexes.some((i) => set.has(i)));
+    return L.adapter.detectPatterns(tokens, analyses).filter((p) => p.tokenIndexes.some((i) => set.has(i)));
   } catch { return []; }
 }
 
@@ -257,36 +277,36 @@ function flatFeatures(morph: Record<string, unknown> | undefined): Record<string
  * resolver stores and GoPractice's grammar assessments name, so the learner model's grammar estimate for this
  * construction reaches the card. The pack-level `id` (e.g. `definite-accusative-singular`) only selects an explanation.
  */
-function formConstructions(c: AnalysisCandidate): ConstructionNote[] {
+function formConstructions(L: Lang, c: AnalysisCandidate): ConstructionNote[] {
   if (!c.pos || c.unconfirmed) return [];
   const feats = flatFeatures(c.morph as Record<string, unknown> | undefined);
   if (!Object.keys(feats).length) return [];
-  const unitId = unitIds.morph(PARSER_LANGUAGE, c.pos, unitIds.featureKey(feats));
-  const explained = c.pos === 'NOUN' && feats.Definite === 'Def'
+  const unitId = unitIds.morph(L.lang, c.pos, unitIds.featureKey(feats));
+  const explained = L.lang === 'sq' && c.pos === 'NOUN' && feats.Definite === 'Def'
     ? (feats.Number === 'Plur' ? 'definite-plural' : feats.Number === 'Sing' && feats.Case === 'Acc' ? 'definite-accusative-singular' : feats.Number === 'Sing' && feats.Case === 'Nom' ? 'definite-nominative-singular' : undefined)
     : undefined;
   if (explained) {
     const t = FORM_CONSTRUCTIONS[explained];
     return [{ id: explained, unitId, title: t.title, explanation: t.explanation, confidence: clamp01(c.confidence), source: 'form' }];
   }
-  const title = describe(c) ?? unitIds.featureKey(feats);
+  const title = describe(L, c) ?? unitIds.featureKey(feats);
   return [{ id: `form:${unitIds.featureKey(feats)}`, unitId, title, explanation: 'The form shows these features; the pack has no separate explanation for this combination.', confidence: clamp01(c.confidence), source: 'form' }];
 }
 
-function phrasesFor(tokens: RawToken[], analyses: AnalyzedToken[], selected: number[]): PhraseCandidate[] {
+function phrasesFor(L: Lang, tokens: RawToken[], analyses: AnalyzedToken[], selected: number[]): PhraseCandidate[] {
   try {
     const set = new Set(selected);
-    return sqAdapter.detectPhrases(tokens, analyses).filter((p) => p.tokenIndexes.some((i) => set.has(i)));
+    return L.adapter.detectPhrases(tokens, analyses).filter((p) => p.tokenIndexes.some((i) => set.has(i)));
   } catch { return []; }
 }
 
-function itemIdsFor(selected: number[], tokens: RawToken[], best: Array<AnalysisCandidate | undefined>, phrases: PhraseCandidate[], single: boolean): string[] {
+function itemIdsFor(L: Lang, selected: number[], tokens: RawToken[], best: Array<AnalysisCandidate | undefined>, phrases: PhraseCandidate[], single: boolean): string[] {
   const ids: string[] = [];
   selected.slice(0, MAX_ITEM_IDS).forEach((i, k) => {
     const c = best[k];
     const creditable = c?.lemma && !c.unconfirmed && c.confidence >= LEMMA_MIN_CONFIDENCE;
-    ids.push(creditable ? `lemma:${PARSER_LANGUAGE}:${c!.lemma}${c!.pos ? ':' + c!.pos : ''}` : formId(tokens[i].surface));
+    ids.push(creditable ? `lemma:${L.lang}:${c!.lemma}${c!.pos ? ':' + c!.pos : ''}` : formId(L, tokens[i].surface));
   });
-  if (!single) for (const p of phrases) if (p.pattern?.length) ids.push(`phrase:${PARSER_LANGUAGE}:${p.pattern.join('_')}`);
+  if (!single) for (const p of phrases) if (p.pattern?.length) ids.push(`phrase:${L.lang}:${p.pattern.join('_')}`);
   return [...new Set(ids)];
 }

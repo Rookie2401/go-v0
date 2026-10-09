@@ -13,8 +13,9 @@ Imports allowed here: `packages/repository-contract/src`, `src/adapters/*`, `src
 src/manifest.ts       PackManifest, validateManifest, toPackInfo (the Repository's LanguagePackInfo)
 src/analysis.ts       readSelection / runCase / statusOf: read a selected word, run a validation case
 src/packs/sq.ts       the Albanian manifest (installable) and its 14 validation cases
-src/packs/{es,de,hi,th,nb,nn}.ts + planned.ts   planned manifests (never installable)
-src/tutorial/         TutorialStep types; sq.ts is the Albanian orientation as data
+src/packs/es.ts       the Spanish manifest (installable at a MINIMAL level, machine-drafted, NOT production-ready) and its 17 validation cases
+src/packs/{de,hi,th,nb,nn}.ts + planned.ts   planned manifests (never installable)
+src/tutorial/         TutorialStep types; sq.ts is the Albanian orientation as data, es.ts a minimal Spanish one
 src/runtime.ts        createPackRuntime, installPack, verifyInstalled
 src/registry.ts       PACKS, packFor, TEAMS
 ```
@@ -109,3 +110,18 @@ few entries, validation cases, tutorial, pronunciation notes and review do not e
 
 `TEAMS` lists six teams (albania, honduras, germany, india, thailand, norway). A team lists the languages its members
 may study; it is not a language and no identifier joins a team to a learner's language. A learner may study several.
+
+## Spanish (`pack:es`): the second language, and what is thin
+
+Spanish goes through the same manifest, installer, runtime and tutorial as Albanian (test/multilang). It is installable
+at a minimal level and says `reviewStatus: 'machine-drafted'`; no native speaker has checked any of it. What is thin:
+
+- lemmatization is seed-only (about 1,500 hand-listed lemmas plus the closed classes); other words get a rule reading
+  marked as inferred, or none; every rule reading stays `provisional`;
+- morphology is rule-based and has not been measured on running prose; ambiguity is kept, not resolved;
+- 17 validation cases (the minimum is 12), single words in short sentences; the tutorial is a short orientation
+  (writing system, ten words, two patterns, a five-sentence passage, four concept cards), not a course; voseo is
+  detected by the adapter but not taught;
+- no recordings; GoListen has no per-letter Spanish phonetic rule set (the adapter's own short pronunciation notes are
+  shown); device voices are accepted only for es-HN, es-419, es-MX and es-ES, remote Azure voices only with consent and a key;
+- `installPack` needs the Spanish adapter passed as `deps.adapter` (the runtime bundles only the Albanian one).

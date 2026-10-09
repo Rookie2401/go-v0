@@ -20,7 +20,7 @@ const BASE = 'http://app.test/';
 describe('the pack bindings', () => {
   const b = createPackBindings();
 
-  it('lists every pack with its status; only Albanian is installable, the rest say so', () => {
+  it('lists every pack with its status; Albanian and (at a minimal level) Spanish are installable, the rest say so', () => {
     const packs = b.packs();
     expect(packs.map((p) => p.languageId).sort()).toEqual(['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th']);
     const sq = b.packFor('sq')!;
@@ -29,7 +29,8 @@ describe('the pack bindings', () => {
     expect(sq.licences.length).toBeGreaterThan(0);
     expect(sq.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard']);
     expect(sq.remoteVoiceProvider).toBeTruthy();
-    for (const p of packs.filter((x) => x.languageId !== 'sq')) expect(p.status, p.packId).toBe('planned');
+    for (const p of packs.filter((x) => x.languageId !== 'sq' && x.languageId !== 'es')) expect(p.status, p.packId).toBe('planned');
+    expect(b.packFor('es')).toMatchObject({ packId: 'pack:es', status: 'installable', reviewStatus: 'machine-drafted' });
     expect(b.packFor('xx')).toBeUndefined();
     expect(b.packFor('constructor')).toBeUndefined();
   });
@@ -82,7 +83,7 @@ describe('the pack bindings', () => {
   });
 
   it('a planned pack is refused by the installer itself, with its own reason', async () => {
-    const r = await b.install(b.packFor('es')!, { fetch: diskFetch, baseUrl: BASE, storage: createMemoryStorageArea() });
+    const r = await b.install(b.packFor('de')!, { fetch: diskFetch, baseUrl: BASE, storage: createMemoryStorageArea() });
     expect(r.ok).toBe(false);
     expect(r.message).toMatch(/planned/);
   });
@@ -101,7 +102,8 @@ describe('the pack bindings', () => {
   });
 
   it('the Albanian orientation: every practice target is a word of its sentence, and the real parser reads it as that word', () => {
-    expect(b.tutorial('es')).toBeUndefined();
+    expect(b.tutorial('es')?.languageId).toBe('es'); // the Spanish orientation exists at a minimal, unreviewed level
+    expect(b.tutorial('de')).toBeUndefined();
     const t = b.tutorial('sq')!;
     expect(t.steps.length).toBeGreaterThanOrEqual(8);
     expect(t.notice).toMatch(/native speaker/i);

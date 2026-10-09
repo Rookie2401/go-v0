@@ -80,7 +80,7 @@ describe('createPackRuntime (Albanian)', () => {
 
 describe('a pack without an analyser', () => {
   it('falls back to a tokenizer that says it analyses nothing', () => {
-    const rt = createPackRuntime(PACKS.es, { fetch: diskFetch(), baseUrl: BASE });
+    const rt = createPackRuntime(PACKS.de, { fetch: diskFetch(), baseUrl: BASE });
     const a = rt.analyzer();
     expect(a.kind).toBe('tokenize-only');
     expect(a.limitation).toMatch(/no lemma, no morphology and no gloss/);
@@ -93,14 +93,14 @@ describe('a pack without an analyser', () => {
 
   it('can still be given an analyser by the caller', async () => {
     const { sqAdapter } = await import('../../src/adapters/sq');
-    const rt = createPackRuntime(PACKS.es, { fetch: diskFetch(), baseUrl: BASE, adapter: sqAdapter });
+    const rt = createPackRuntime(PACKS.de, { fetch: diskFetch(), baseUrl: BASE, adapter: sqAdapter });
     expect(rt.analyzer().kind).toBe('adapter');
   });
 });
 
 describe('installPack', () => {
   it('refuses a planned pack', async () => {
-    for (const lang of ['es', 'de', 'hi', 'th', 'nb', 'nn']) {
+    for (const lang of ['de', 'hi', 'th', 'nb', 'nn']) {
       const storage = memoryStorage();
       const r = await installPack(PACKS[lang], { fetch: diskFetch(), baseUrl: BASE, storage });
       expect(r, lang).toMatchObject({ ok: false, reason: 'planned' });

@@ -3,15 +3,18 @@
  * FormAnalysis that keeps every reading. Pure: it reads the adapter and writes nothing. Ids come from the contract's
  * `unitIds`, so the extension and the engine agree on them.
  *
- * Albanian only. Any other language, or a surface with no Latin letter, gets a single provisional `form` unit.
+ * Languages with an adapter in the registry below (Albanian, Spanish) are resolved by the SAME code with the same unit-id
+ * derivation (`unitIds.lexeme/form/morph …` carry the language code, so the two languages' units never collide). Any
+ * other language, or a surface with no Latin letter, gets a single provisional `form` unit.
  */
+import { esAdapter } from '../../../src/adapters/es';
 import { sqAdapter } from '../../../src/adapters/sq';
-import type { AnalysisCandidate as AdapterCandidate, AnalyzedToken, PhraseCandidate, RawToken } from '../../../src/core';
+import type { AnalysisCandidate as AdapterCandidate, AnalyzedToken, LanguageAdapter, PhraseCandidate, RawToken } from '../../../src/core';
 import { unitIds } from '../../repository-contract/src';
 import type {
-  AnalysisCandidate, AnalysisStatus, FormAnalysis, LinguisticUnit, ProvenanceSource, UnitKind, UnitProvenance, UnitRelation,
+  AnalysisCandidate, AnalysisStatus, FormAnalysis, LanguagePackInfo, LinguisticUnit, ProvenanceSource, UnitKind, UnitProvenance, UnitRelation,
 } from '../../repository-contract/src';
-import { albanianPack, ALBANIAN_PACK_ID, genericPack } from './packs';
+import { albanianPack, genericPack } from './packs';
 
 export interface ResolveInput {
   languageId: string;
@@ -36,6 +39,44 @@ export const CLOSE = 0.15;
 /** The confidence from which a hand-lexicon / dictionary reading is `high-confidence`. */
 export const HIGH_CONFIDENCE = 0.85;
 export const SQ_VARIETY = 'sq-standard';
+export const ES_VARIETY = 'es-HN';
+
+/** What the resolver needs to know about a language beyond its adapter. */
+interface LanguageEntry {
+  adapter: LanguageAdapter;
+  /** The language in the plain words of a note ("the Albanian word list does not apply"). */
+  name: string;
+  /** The variety named by a pronunciation unit. */
+  varietyId: string;
+  pack: () => LanguagePackInfo;
+}
+
+function spanishPack(): LanguagePackInfo {
+  return {
+    packId: 'pack:es',
+    languageId: 'es',
+    version: String(esAdapter.version),
+    analyzerId: `adapter-es@${esAdapter.version}`,
+    coverage: {
+      notes: [
+        'Seed list of about 1,500 hand-drafted lemmas plus the closed classes, with a rule-based morphology engine for other verbs, nouns and adjectives; a form only the rules infer carries a lower confidence and says so.',
+        'The word list, the word-form rules, the phrase list and the construction rules are machine-drafted; no native speaker has checked them.',
+        'Ambiguity is kept: every reading the sentence does not decide stays as a candidate of the analysis.',
+      ],
+    },
+    licences: [{ resource: 'Spanish course word list, word-form rules, phrase list and construction rules (adapter-es)', licence: 'Owner-authored, machine-drafted; not yet reviewed by a native speaker' }],
+    reviewStatus: 'machine-drafted',
+  };
+}
+
+/** The adapter registry, keyed by languageId. A language added here is resolved with the same code as Albanian. */
+const LANGUAGES: Readonly<Record<string, LanguageEntry>> = {
+  sq: { adapter: sqAdapter, name: 'Albanian', varietyId: SQ_VARIETY, pack: albanianPack },
+  es: { adapter: esAdapter, name: 'Spanish', varietyId: ES_VARIETY, pack: spanishPack },
+};
+
+const entryFor = (languageId: string): LanguageEntry | undefined =>
+  Object.prototype.hasOwnProperty.call(LANGUAGES, languageId) ? LANGUAGES[languageId] : undefined;
 
 // ───────────────────────────── status ─────────────────────────────
 
@@ -103,9 +144,9 @@ function genericResolution(input: ResolveInput, note: string): Resolution {
   return { formId, units: [unit], relations: [], analysis, coverage: { known: false, notes: [note] } };
 }
 
-function provenanceOf(c: AdapterCandidate): { source: ProvenanceSource; ref: string; reviewed: boolean } {
-  const info = c.sourceId ? sqAdapter.sources?.[c.sourceId] : undefined;
-  const ref = c.sourceId ?? `adapter-sq@${sqAdapter.version}`;
+function provenanceOf(c: AdapterCandidate, adapter: LanguageAdapter): { source: ProvenanceSource; ref: string; reviewed: boolean } {
+  const info = c.sourceId ? adapter.sources?.[c.sourceId] : undefined;
+  const ref = c.sourceId ?? `adapter-${adapter.lang}@${adapter.version}`;
   const reviewed = info?.reviewStatus === 'native-reviewed';
   let source: ProvenanceSource;
   if (c.unconfirmed || c.origin === 'rule' || (!c.origin && c.notes?.source === 'rule')) source = 'rule';
@@ -127,8 +168,8 @@ function flatFeatures(morph: Record<string, string> | undefined): Record<string,
   return out;
 }
 
-function describe(c: AdapterCandidate): string | undefined {
-  try { return sqAdapter.describeMorph?.(c.morph, c.pos) || undefined; } catch { return undefined; }
+function describe(c: AdapterCandidate, adapter: LanguageAdapter): string | undefined {
+  try { return adapter.describeMorph?.(c.morph, c.pos) || undefined; } catch { return undefined; }
 }
 
 interface Located { text: string; selStart: number; selEnd: number; inContext: boolean; note?: string }
@@ -177,24 +218,27 @@ class RelationBag {
 export function resolveSelection(input: ResolveInput): Resolution {
   try {
     const surface = (input.surface ?? '').normalize('NFC').trim();
-    if (input.languageId !== 'sq') return genericResolution(input, `No analyzer for language "${input.languageId}" in the Repository: only the form is recorded.`);
-    if (!hasLatinLetter(surface)) return genericResolution(input, 'This selection has no Latin letters: the Albanian word list does not apply to it.');
-    return resolveAlbanian(input, surface);
+    const entry = entryFor(input.languageId);
+    if (!entry) return genericResolution(input, `No analyzer for language "${input.languageId}" in the Repository: only the form is recorded.`);
+    if (!hasLatinLetter(surface)) return genericResolution(input, `This selection has no Latin letters: the ${entry.name} word list does not apply to it.`);
+    return resolveWith(input, surface, entry);
   } catch (e) {
     return genericResolution(input, `The analyzer failed (${e instanceof Error ? e.message : String(e)}); only the form is recorded.`);
   }
 }
 
-function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
-  const pack = albanianPack();
-  const packId = ALBANIAN_PACK_ID;
+function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry): Resolution {
+  const { adapter, varietyId } = entry;
+  const lang = adapter.lang as string;
+  const pack = entry.pack();
+  const packId = pack.packId;
   const packVersion = pack.version;
   const notes: string[] = [];
 
   const where = locate(surface, input.sentence, input.selStart, input.selEnd);
   if (where.note) notes.push(where.note);
-  const tokens: RawToken[] = sqAdapter.tokenize(where.text);
-  const analyzed: AnalyzedToken[] = sqAdapter.analyze(tokens);
+  const tokens: RawToken[] = adapter.tokenize(where.text);
+  const analyzed: AnalyzedToken[] = adapter.analyze(tokens);
   const selected: number[] = [];
   tokens.forEach((t, i) => { if (t.isWord && t.start < where.selEnd && t.end > where.selStart) selected.push(i); });
 
@@ -206,17 +250,17 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
   const phrases: PhraseCandidate[] = (() => {
     try {
       const set = new Set(selected);
-      return sqAdapter.detectPhrases(tokens, analyzed).filter((p) => p.tokenIndexes.some((i) => set.has(i)));
+      return adapter.detectPhrases(tokens, analyzed).filter((p) => p.tokenIndexes.some((i) => set.has(i)));
     } catch { return []; }
   })();
 
   const single = selected.length === 1;
   const formNorm = single ? tokens[selected[0]].normalized : selected.map((i) => tokens[i].normalized).join(' ');
-  const formId = unitIds.form('sq', formNorm);
+  const formId = unitIds.form(lang, formNorm);
   const formLabel = single ? tokens[selected[0]].surface : surface;
   const units = new UnitBag();
   const rels = new RelationBag();
-  const analyzerId = analyzed[selected[0]]?.analyzer ?? `adapter-sq@${sqAdapter.version}`;
+  const analyzerId = analyzed[selected[0]]?.analyzer ?? `adapter-${lang}@${adapter.version}`;
 
   // ── the candidates of the analysis ──
   const candidates: AnalysisCandidate[] = [];
@@ -226,8 +270,8 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
 
   if (single) {
     const draft: AnalysisCandidate[] = adapterCands.map((c) => {
-      const p = provenanceOf(c);
-      const lexemeId = c.lemma ? unitIds.lexeme('sq', c.lemma, c.pos) : undefined;
+      const p = provenanceOf(c, adapter);
+      const lexemeId = c.lemma ? unitIds.lexeme(lang, c.lemma, c.pos) : undefined;
       const features = flatFeatures(c.morph);
       return {
         ...(lexemeId ? { lexemeId } : {}),
@@ -250,11 +294,11 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
         cand.senseId = unitIds.sense(lex, n + 1);
       }
       const feats = cand.features ?? {};
-      if (c.pos && Object.keys(feats).length) cand.constructionIds = [unitIds.morph('sq', c.pos, unitIds.featureKey(feats))];
+      if (c.pos && Object.keys(feats).length) cand.constructionIds = [unitIds.morph(lang, c.pos, unitIds.featureKey(feats))];
     });
     draft.forEach((cand, i) => {
       const c = adapterCands[i];
-      const p = provenanceOf(c);
+      const p = provenanceOf(c, adapter);
       candidates.push(cand);
       statuses.push(statusFor(cand, draft, { reviewedByPerson: p.reviewed, unconfirmed: !!c.unconfirmed }));
       prov.push(cand.provenance);
@@ -263,9 +307,9 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
     const whole = phrases.find((p) => selected.every((i) => p.tokenIndexes.includes(i)));
     if (whole) {
       const cand: AnalysisCandidate = {
-        constructionIds: [unitIds.phrase('sq', whole.pattern)],
+        constructionIds: [unitIds.phrase(lang, whole.pattern)],
         confidence: clamp01(whole.confidence),
-        provenance: { source: 'hand-lexicon', ref: `adapter-sq@${sqAdapter.version}:phrases`, confidence: clamp01(whole.confidence) },
+        provenance: { source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}:phrases`, confidence: clamp01(whole.confidence) },
       };
       candidates.push(cand);
       statuses.push(statusFor(cand, [cand]));
@@ -287,7 +331,7 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
     return b;
   };
   const stamp = (kind: UnitKind, unitId: string, label: string, i: number, extra: Partial<LinguisticUnit> = {}): LinguisticUnit => ({
-    unitId, kind, languageId: 'sq', label, packId, packVersion, provenance: prov[i], status: statuses[i], createdAt: input.now, ...extra,
+    unitId, kind, languageId: lang, label, packId, packVersion, provenance: prov[i], status: statuses[i], createdAt: input.now, ...extra,
   });
 
   // the form
@@ -296,8 +340,8 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
   const chosenAdapter = single && formIdx !== undefined ? adapterCands[formIdx] : undefined;
   const formUnit: LinguisticUnit = formIdx === undefined
     ? {
-      unitId: formId, kind: 'form', languageId: 'sq', label: formLabel, packId, packVersion, createdAt: input.now,
-      provenance: { source: 'parser', ref: `adapter-sq@${sqAdapter.version}`, confidence: 0 }, status: 'provisional',
+      unitId: formId, kind: 'form', languageId: lang, label: formLabel, packId, packVersion, createdAt: input.now,
+      provenance: { source: 'parser', ref: `adapter-${lang}@${adapter.version}`, confidence: 0 }, status: 'provisional',
     }
     : stamp('form', formId, formLabel, formIdx, {
       scriptId: 'Latn',
@@ -325,7 +369,7 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
       const cid = cand.constructionIds?.[0];
       if (cid && c.pos) {
         const mBest = bestFor((x) => !!x.constructionIds?.includes(cid))!;
-        units.add(stamp('morph-construction', cid, describe(c) ?? unitIds.featureKey(cand.features ?? {}), mBest, { pos: c.pos, features: cand.features }));
+        units.add(stamp('morph-construction', cid, describe(c, adapter) ?? unitIds.featureKey(cand.features ?? {}), mBest, { pos: c.pos, features: cand.features }));
         rels.add({ fromId: formId, relation: 'realizes', toId: cid, confidence: cand.confidence, provenance: cand.provenance, status: statuses[i] });
       }
       if (c.unconfirmed) notes.push('Not in the word list: the lemma is a guess from the ending and no meaning is given.');
@@ -335,14 +379,14 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
 
   // multiword expressions covering the selection
   for (const p of phrases) {
-    const pid = unitIds.phrase('sq', p.pattern);
+    const pid = unitIds.phrase(lang, p.pattern);
     const pc: AnalysisCandidate = {
       confidence: clamp01(p.confidence),
-      provenance: { source: 'hand-lexicon', ref: `adapter-sq@${sqAdapter.version}:phrases`, confidence: clamp01(p.confidence) },
+      provenance: { source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}:phrases`, confidence: clamp01(p.confidence) },
     };
     const pStatus = statusFor(pc, [pc]);
     units.add({
-      unitId: pid, kind: 'multiword', languageId: 'sq', label: p.display, features: { kind: p.kind }, packId, packVersion,
+      unitId: pid, kind: 'multiword', languageId: lang, label: p.display, features: { kind: p.kind }, packId, packVersion,
       provenance: pc.provenance, status: pStatus, createdAt: input.now,
     });
     rels.add({ fromId: pid, relation: 'contains', toId: formId, confidence: pc.confidence, provenance: pc.provenance, status: pStatus });
@@ -352,7 +396,7 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
     if (p.gloss) {
       const sid = unitIds.sense(pid, 1);
       units.add({
-        unitId: sid, kind: 'sense', languageId: 'sq', label: p.gloss, packId, packVersion, provenance: pc.provenance, status: pStatus, createdAt: input.now,
+        unitId: sid, kind: 'sense', languageId: lang, label: p.gloss, packId, packVersion, provenance: pc.provenance, status: pStatus, createdAt: input.now,
       });
       rels.add({ fromId: pid, relation: 'idiomatic-meaning', toId: sid, confidence: pc.confidence, provenance: pc.provenance, status: pStatus });
     }
@@ -361,31 +405,31 @@ function resolveAlbanian(input: ResolveInput, surface: string): Resolution {
   // pronunciation, only when the adapter has something to say
   if (single) {
     let pron: string[] = [];
-    try { pron = sqAdapter.pronunciation(tokens[selected[0]], analyzed[selected[0]]).notes ?? []; } catch { pron = []; }
+    try { pron = adapter.pronunciation(tokens[selected[0]], analyzed[selected[0]]).notes ?? []; } catch { pron = []; }
     for (const note of pron) {
       const letters = note.split(':')[0].trim() || 'note';
-      const uid = unitIds.pronunciation('sq', SQ_VARIETY, letters);
-      const pp: AnalysisCandidate = { confidence: 0.8, provenance: { source: 'hand-lexicon', ref: `adapter-sq@${sqAdapter.version}`, confidence: 0.8 } };
+      const uid = unitIds.pronunciation(lang, varietyId, letters);
+      const pp: AnalysisCandidate = { confidence: 0.8, provenance: { source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}`, confidence: 0.8 } };
       const st = statusFor(pp, [pp]);
       units.add({
-        unitId: uid, kind: 'pronunciation-pattern', languageId: 'sq', varietyId: SQ_VARIETY, scriptId: 'Latn', label: note, packId, packVersion,
+        unitId: uid, kind: 'pronunciation-pattern', languageId: lang, varietyId: varietyId, scriptId: 'Latn', label: note, packId, packVersion,
         provenance: pp.provenance, status: st, createdAt: input.now,
       });
-      rels.add({ fromId: formId, relation: 'pronounced-as', toId: uid, confidence: pp.confidence, provenance: pp.provenance, status: st, varietyId: SQ_VARIETY });
+      rels.add({ fromId: formId, relation: 'pronounced-as', toId: uid, confidence: pp.confidence, provenance: pp.provenance, status: st, varietyId: varietyId });
     }
   }
 
   // ── analysis + coverage ──
   const analysisStatus: AnalysisStatus = chosen === undefined ? 'provisional' : statuses[chosen];
   const analysis: FormAnalysis = {
-    analysisId: analysisIdOf(formId, sentenceKey, analyzerId), formId, languageId: 'sq',
+    analysisId: analysisIdOf(formId, sentenceKey, analyzerId), formId, languageId: lang,
     ...(sentenceKey ? { sentenceKey } : {}),
     candidates, ...(chosen === undefined ? {} : { chosen }), status: analysisStatus,
     analyzerId, packId, packVersion, createdAt: input.now,
   };
 
   const known = single && adapterCands.some((c) => !c.unconfirmed && !!c.lemma);
-  if (single && !adapterCands.length) notes.push('Not an entry of the Albanian word list and the rules found no reading: the word is unknown to this pack.');
+  if (single && !adapterCands.length) notes.push(`Not an entry of the ${entry.name} word list and the rules found no reading: the word is unknown to this pack.`);
   if (candidates.length > 1) {
     const distinct = new Set(candidates.map((c) => c.lexemeId ?? '')).size;
     notes.push(`${candidates.length} readings kept (${distinct} lexeme${distinct === 1 ? '' : 's'}); the chosen one has the highest confidence.`);

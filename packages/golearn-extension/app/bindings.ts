@@ -3,7 +3,7 @@
  * Nothing else in the application knows the shape of a manifest, the pack registry or the installer’s results.
  */
 import {
-  PACKS, TEAMS, SQ_TUTORIAL, createPackRuntime, installPack, packFor as registryPackFor, runCase, verifyInstalled,
+  PACKS, TEAMS, SQ_TUTORIAL, ES_TUTORIAL, createPackRuntime, installPack, packFor as registryPackFor, runCase, verifyInstalled,
 } from '../../language-packs/src';
 import type { InstallResult, InstalledRecord, PackManifest, PackStorage, Tutorial } from '../../language-packs/src';
 import type { StorageArea } from '../src/platform';
@@ -96,7 +96,7 @@ export function createPackBindings(): PackBindings {
       };
     },
     tutorial(languageId): TutorialView | undefined {
-      const t: Tutorial | undefined = languageId === 'sq' ? SQ_TUTORIAL : undefined;
+      const t: Tutorial | undefined = languageId === 'sq' ? SQ_TUTORIAL : languageId === 'es' ? ES_TUTORIAL : undefined;
       if (!t) return undefined;
       return {
         languageId: t.languageId, notice: t.notice, estimatedMinutes: t.estimatedMinutes,

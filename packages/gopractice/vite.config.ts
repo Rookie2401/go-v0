@@ -28,8 +28,11 @@ function staticFiles(outDir: string): Plugin {
       fs.copyFileSync(path.join(here, 'config.json'), path.join(outDir, 'config.json'));
       for (const lang of dictLanguages()) {
         const from = path.join(repoRoot, 'public', 'dict', lang);
-        if (fs.existsSync(from)) fs.cpSync(from, path.join(outDir, 'dict', lang), { recursive: true });
+        // the frequency sidecar was counted from the retired library and is quarantined (RIGHTS-AND-PRIVACY-BOUNDARIES §2): never shipped
+        if (fs.existsSync(from)) fs.cpSync(from, path.join(outDir, 'dict', lang), { recursive: true, filter: (src) => path.basename(src) !== 'frequency.json' });
       }
+      const notices = path.join(repoRoot, 'THIRD-PARTY-NOTICES.md');
+      if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(outDir, 'THIRD-PARTY-NOTICES.md'));
     },
   };
 }

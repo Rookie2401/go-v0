@@ -17,15 +17,16 @@ const files = (dir: string): string[] => fs.readdirSync(dir, { withFileTypes: tr
 const importsOf = (file: string): string[] => [...fs.readFileSync(file, 'utf8').matchAll(/(?:from|import)\s*\(?\s*['"]([^'"]+)['"]/g)].map((m) => m[1]);
 
 describe('imports', () => {
-  it('imports nothing from GoReview, the shell, GoListen or any other application — only the contract and the API client', () => {
+  it('imports nothing from GoReview, the shell, GoLearn or GoListen — only the contract, the language packs, the sync client and the API client', () => {
     const all = files(SRC);
     expect(all.length).toBeGreaterThan(0);
     for (const f of all) {
       for (const i of importsOf(f)) {
         if (i.startsWith('node:')) continue;
-        if (i.startsWith('./') && !i.includes('..')) continue;
-        expect(/goreview|gopractice|golearn|golisten|language-packs/.test(i), `${f} imports ${i}`).toBe(false);
-        expect(/repository-contract\/src$|repository-sync\/src|repository-service\/src\/api$/.test(i), `${f} imports ${i}`).toBe(true);
+        // inside the package: './x' or '../x' that stays under packages/gotell
+        if (i.startsWith('.') && !i.includes('packages/') && path.resolve(path.dirname(f), i).startsWith(SRC)) continue;
+        expect(/goreview|gopractice|golearn|golisten/.test(i), `${f} imports ${i}`).toBe(false);
+        expect(/repository-contract\/src(\/[\w-]+)?$|repository-sync\/src(\/[\w-]+)?$|repository-service\/src\/api$|language-packs\/src(\/[\w/-]+)?$/.test(i), `${f} imports ${i}`).toBe(true);
       }
     }
   });

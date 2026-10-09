@@ -10,6 +10,7 @@
  * `{ ok: false, reason, detail }`.
  */
 import { sqAdapter } from '../../../src/adapters/sq';
+import { esAdapter } from '../../../src/adapters/es';
 import type { AnalyzedToken, LanguageAdapter, RawToken, Span } from '../../../src/core';
 import { createFetchLexiconSource } from '../../../src/dict';
 import type { ShardCacheOptions } from '../../../src/dict';
@@ -63,8 +64,9 @@ function adapterAnalyzer(adapter: LanguageAdapter): PackAnalyzer {
 }
 
 /** The adapters this build can run without any import from an application. Others are supplied through `deps.adapter`. */
+/** The analysers bundled with the runtime: the two installable packs (Albanian, and Spanish at a minimal level). */
 function builtInAdapter(languageId: string): LanguageAdapter | undefined {
-  return languageId === 'sq' ? sqAdapter : undefined;
+  return languageId === 'sq' ? sqAdapter : languageId === 'es' ? esAdapter : undefined;
 }
 
 // ───────────────────────────── helpers ─────────────────────────────

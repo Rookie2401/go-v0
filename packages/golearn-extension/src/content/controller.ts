@@ -194,7 +194,7 @@ export class LookupController {
         direction: sel.direction, pageLanguage: sel.pageLanguage,
       };
       let card: CardModel;
-      try { card = this.d.parse({ surface: sel.surface, context: parseCtx }); } catch { return say('parser-error', MESSAGES.parserFailed); }
+      try { card = this.d.parse({ surface: sel.surface, context: parseCtx, languageId }); } catch { return say('parser-error', MESSAGES.parserFailed); }
       timer.mark('parsed');
       if (!live()) return { status: 'superseded' };
 
@@ -354,7 +354,7 @@ export class LookupController {
     const name = languageNameOf(p.languageId);
     const reason = p.packAvailable ? 'no-analyser' : 'no-pack';
     const message = p.packAvailable
-      ? `The ${name} pack exists, but this version of the reader bundles only the Albanian analyser, so there is no analysis to show. The lookup was counted; nothing else was recorded.`
+      ? `The ${name} pack exists, but this version of the reader does not bundle its analyser, so there is no analysis to show. The lookup was counted; nothing else was recorded.`
       : `There is no GoLearn pack for ${name} yet, so there is no analysis to show. The lookup was counted; nothing else was recorded.`;
     this.closeCard('replaced');
     this.d.ui.showMessage(message, p.anchor, 'info');

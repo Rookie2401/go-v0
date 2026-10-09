@@ -9,13 +9,13 @@ import { PACKS, TEAMS, installablePacks, languagesOf, packFor, teamList, validat
 import type { TeamId } from '../../packages/language-packs/src';
 
 describe('PACKS and packFor', () => {
-  it('lists seven packs and only Albanian is installable', () => {
+  it('lists seven packs; Albanian and Spanish are installable, the rest planned', () => {
     expect(Object.keys(PACKS).sort()).toEqual(['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th']);
-    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq']);
+    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es']);
     for (const [lang, m] of Object.entries(PACKS)) {
       expect(m.languageId).toBe(lang);
       expect(m.packId).toBe(`pack:${lang}`);
-      expect(m.status).toBe(lang === 'sq' ? 'installable' : 'planned');
+      expect(m.status).toBe(lang === 'sq' || lang === 'es' ? 'installable' : 'planned');
     }
   });
 
@@ -49,8 +49,8 @@ describe('planned packs', () => {
     }
   });
 
-  it('say honestly what exists: no validation, no tutorial, no review, no recordings', () => {
-    for (const lang of Object.keys(adapters)) {
+  it('say honestly what exists: no validation, no tutorial, no review, no recordings (Spanish is installable now and is covered by test/multilang)', () => {
+    for (const lang of Object.keys(adapters).filter((l) => l !== 'es')) {
       const m = PACKS[lang];
       expect(m.validation, lang).toEqual([]);
       expect(m.rights.reviewStatus, lang).toBe('machine-drafted');

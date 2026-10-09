@@ -11,13 +11,14 @@ export { readSelection, runCase, statusOf, CLOSE, HIGH_CONFIDENCE } from './anal
 export type { CaseResult, ReadingStatus, SelectionReading } from './analysis';
 export { albanianManifest, SQ_PACK_ID, SQ_VALIDATION } from './packs/sq';
 export { plannedManifest } from './packs/planned';
-export { spanishManifest } from './packs/es';
+export { spanishManifest, ES_PACK_ID, ES_VERSION, ES_VALIDATION } from './packs/es';
 export { germanManifest } from './packs/de';
 export { hindiManifest } from './packs/hi';
 export { thaiManifest } from './packs/th';
 export { bokmalManifest } from './packs/nb';
 export { nynorskManifest } from './packs/nn';
 export { SQ_TUTORIAL, SQ_TUTORIAL_STEPS, SQ_PASSAGE } from './tutorial/sq';
+export { ES_TUTORIAL, ES_TUTORIAL_STEPS, ES_PASSAGE } from './tutorial/es';
 export type {
   Tutorial, TutorialAuthorship, TutorialExample, TutorialPassage, TutorialPractice, TutorialStep, TutorialStepKind,
 } from './tutorial/types';

@@ -86,6 +86,7 @@ export function createTutorialLookup(opts: TutorialLookupOptions): TutorialLooku
     const my = ++seq;
     const card = parseSelection({
       surface,
+      languageId: opts.languageId,
       context: { kind: 'sentence', confidence: 1, reason: 'the demonstration passage is shown whole', sentence, selStart, selEnd, direction: 'ltr', pageLanguage: opts.languageId },
     });
     ui.show(card, anchorFor(range));

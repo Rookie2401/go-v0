@@ -96,7 +96,7 @@ describe('the German demonstration recording', () => {
     expect(text.provenance.source).toBe('device-tts'); // the recording cannot say it; the device voice is the practice fallback
   });
 
-  it('the default registries carry sq and the de demonstration', () => {
-    expect(defaultRegistries().map((r) => r.languageId)).toEqual(['sq', 'de']);
+  it('the default registries carry sq, the de demonstration and es', () => {
+    expect(defaultRegistries().map((r) => r.languageId)).toEqual(['sq', 'de', 'es']);
   });
 });

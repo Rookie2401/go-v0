@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scripts — harness page (prototype measurement; sentences written for this test)</title>
+<style>
+  body { margin: 0; padding: 24px; font: 18px/1.7 "Noto Serif", "Segoe UI", serif; max-width: 820px; }
+  p { margin: 0 0 1em; }
+  [dir=rtl] { text-align: right; }
+  .th { font-family: "Leelawadee UI", "Noto Sans Thai", sans-serif; }
+  .hi { font-family: "Nirmala UI", "Noto Sans Devanagari", sans-serif; }
+  .small { font-size: 12px; } .big { font-size: 30px; }
+</style>
+</head>
+<body>
+<h1>Harness: scripts and edge cases</h1>
+<p id="status"></p>
+<p id="sq" lang="sq">Përshëndetje! Beni zgjohet herët dhe shkon në shkollë. Ai e do librin e ri.</p>
+<p id="de" lang="de">Die Straßenbahnhaltestelle liegt gegenüber dem Rathaus; über die Brücke führt ein schöner Weg.</p>
+<p id="es" lang="es">¿Por qué no viniste ayer? ¡Qué lástima! El niño comió el pingüino de chocolate.</p>
+<p id="hi" lang="hi" class="hi">क्षत्रिय ज्ञान की खोज में निकला। उसने कहा, "मैं कल आऊँगा।"</p>
+<p id="th" lang="th" class="th">วันนี้อากาศดีมาก ฉันไปตลาดกับเพื่อน แล้วก็กลับบ้าน</p>
+<p id="he" lang="he" dir="rtl">הילד הלך לבית הספר. אחר כך הוא חזר הביתה.</p>
+<p id="ar" lang="ar" dir="rtl">ذهب الولد إلى المدرسة. ثم عاد إلى البيت.</p>
+<p id="abbr" lang="en">Dr. Smith arrived at 5 p.m. and said, e.g., "Wait…" — then left. Mr. Jones (b. 1950) agreed.</p>
+<p id="quotes" lang="sq">«Mirëmëngjes», tha Ana. "A do çaj?" pyeti nëna… "Po!"</p>
+<p id="long" lang="sq">Është mëngjes dhe Beni zgjohet herët, lahet, vishet dhe shkon në kuzhinë ku nëna përgatit mëngjesin me çaj dhe bukë, pastaj ai merr çantën, del nga shtëpia, ecën në rrugë, takon Anën, flet me të për librin e ri dhe së bashku shkojnë në shkollë ku mësuesja i pret me buzëqeshje.</p>
+<p id="small" class="small" lang="sq">Tekst i vogël: Libri është i bukur.</p>
+<p id="big" class="big" lang="sq">Tekst i madh: Ana e do librin.</p>
+<div id="bottom" style="height: 1200px"></div>
+<p id="end" lang="sq">Fjalia e fundit në fund të faqes: Pastaj shkon në shkollë.</p>
+<script src="/dist/content.js"></script>
+<script>
+  (function () {
+    const status = document.getElementById('status');
+    const ext = () => window.__goLearnExtension;
+    const tryEnable = () => { const e = ext(); if (e) { e.controller.enable(); status.textContent = 'GoLearn on'; } else setTimeout(tryEnable, 50); };
+    tryEnable();
+    window.__harness = { async metrics() { return ext().controller.d.metrics.list(); } };
+  })();
+</script>
+</body>
+</html>

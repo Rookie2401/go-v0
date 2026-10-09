@@ -1,0 +1,114 @@
+{
+ "note": "ground truth for tests: the course corpus sentence entries (owner-authored, machine-drafted) per paragraph per chapter",
+ "chapters": [
+  [
+   [
+    "Është mëngjes.",
+    "Beni zgjohet herët.",
+    "Ai lahet dhe vishet."
+   ],
+   [
+    "Nëna është në kuzhinë.",
+    "Ajo përgatit mëngjesin."
+   ],
+   [
+    "— Mirëmëngjes, nënë! — thotë Beni.",
+    "— Mirëmëngjes, Beni! A do çaj?",
+    "— Po, dua çaj dhe bukë."
+   ],
+   [
+    "Nëna i jep çajin.",
+    "Beni e pi çajin dhe ha bukën.",
+    "Pastaj shkon në shkollë."
+   ],
+   [
+    "Ana ka një libër të ri.",
+    "Libri është i bukur.",
+    "Ana e do librin.",
+    "Ajo e lexon librin çdo ditë."
+   ],
+   [
+    "Sot Ana nuk e gjen librin.",
+    "— Ku është libri im? — pyet Ana.",
+    "Beni nuk e di."
+   ],
+   [
+    "Nëna e sheh librin mbi tavolinë.",
+    "— Ja libri yt! — thotë nëna.",
+    "Ajo ia jep librin Anës.",
+    "Ana është e lumtur."
+   ]
+  ],
+  [
+   [
+    "Gjyshi dhe gjyshja jetojnë në fshat.",
+    "Shtëpia e gjyshit është e vjetër, por e bukur."
+   ],
+   [
+    "Gjyshi ka një qen të madh.",
+    "Qeni e do gjyshin."
+   ],
+   [
+    "Gjyshja bën bukë çdo ditë.",
+    "Buka e gjyshes është shumë e mirë."
+   ],
+   [
+    "Beni dhe Ana shkojnë në fshat çdo verë.",
+    "Ata i duan gjyshin dhe gjyshen."
+   ],
+   [
+    "Sot nëna shkon në treg.",
+    "Ana shkon me nënën.",
+    "Në treg ka shumë njerëz."
+   ],
+   [
+    "Nëna blen bukë, djathë dhe mollë.",
+    "— Sa kushton djathi? — pyet nëna.",
+    "— Nuk kushton shumë, — thotë shitësi.",
+    "Nëna e blen djathin."
+   ],
+   [
+    "Ana do një mollë.",
+    "Nëna i blen një mollë të kuqe.",
+    "— Faleminderit, nënë! — thotë Ana."
+   ]
+  ],
+  [
+   [
+    "Sot bie shi.",
+    "Beni nuk mund të dalë.",
+    "Ai është në dhomë dhe shikon nga dritarja."
+   ],
+   [
+    "— Dua të luaj në rrugë, — thotë Beni.",
+    "— Nuk mund të luash sot, — thotë babai.",
+    "— Bie shi."
+   ],
+   [
+    "— Çfarë mund të bëj?",
+    "— Mund të lexosh një libër."
+   ],
+   [
+    "Beni merr një libër dhe fillon të lexojë.",
+    "Libri është i mirë.",
+    "Beni nuk mendon më për shiun."
+   ],
+   [
+    "Dje Ana i shkroi një letër gjyshes.",
+    "Ajo shkroi:"
+   ],
+   [
+    "«E dashur gjyshe, si je?",
+    "Unë jam mirë.",
+    "Dje shkova në shkollë dhe mësova shumë.",
+    "Beni më dha një libër të ri.",
+    "Të dua shumë.",
+    "Ana.»"
+   ],
+   [
+    "Ana ia dha letrën nënës.",
+    "Nëna e lexoi letrën dhe buzëqeshi."
+   ]
+  ]
+ ]
+}

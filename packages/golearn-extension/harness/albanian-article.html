@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Udha — harness article (prototype measurement page)</title>
+<style>
+  :root { --fs: 17px; }
+  body { margin: 0; font: var(--fs)/1.55 Georgia, serif; color: #222; background: #fafafa; }
+  header { background: #2c3e50; color: #fff; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; }
+  header input { width: 220px; }
+  .wrap { display: grid; grid-template-columns: 220px 1fr 260px; gap: 24px; max-width: 1200px; margin: 0 auto; padding: 24px; }
+  nav ul { list-style: none; padding: 0; margin: 0; } nav li { padding: 4px 0; }
+  article h1 { font-size: 1.8em; margin-top: 0; } article h2 { font-size: 1.25em; margin-top: 1.4em; }
+  aside { font-size: 0.92em; border-left: 1px solid #ddd; padding-left: 16px; }
+  .ticker { background: #fff3cd; padding: 8px; margin: 12px 0; border: 1px solid #ffe69c; }
+  .controls { position: sticky; top: 0; background: #fff; padding: 8px; border: 1px solid #ddd; z-index: 5; }
+  iframe { width: 100%; height: 120px; border: 1px solid #ccc; }
+  sup { font-size: 0.7em; }
+  @media (max-width: 800px) { .wrap { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header><strong>Udha</strong><input type="search" placeholder="Kërko…" aria-label="search"></header>
+<div class="wrap">
+  <nav aria-label="Përmbajtja"><ul><li><a href="#p0">Pjesa 1</a></li><li><a href="#p5">Pjesa 2</a></li><li><a href="#p10">Pjesa 3</a></li><li><a href="#p15">Pjesa 4</a></li><li><a href="#p20">Pjesa 5</a></li></ul></nav>
+  <article>
+    <div class="controls">
+      <label>Madhësia e shkronjave <input id="fs" type="range" min="12" max="28" value="17"></label>
+      <button id="replace">Replace the article (page change)</button>
+      <button id="reload-section">Re-render section 2 (dynamic content)</button>
+      <span id="status"></span>
+    </div>
+    <h1>Udha — kapitulli i parë</h1>
+    <div class="ticker" id="ticker">Lajme: teksti ndryshon çdo 2 sekonda. <span id="tick">0</span></div>
+    <section id="s1"><p id="p0">Është mëngjes. Beni <em>zgjohet</em> herët. Ai lahet <a href="#n0">dhe</a><sup>[0]</sup> vishet.</p>
+<p id="p1">Nëna është në kuzhinë. Ajo <em>përgatit</em> mëngjesin.</p>
+<p id="p2">— Mirëmëngjes, nënë! — thotë Beni. — <em>Mirëmëngjes,</em> Beni! A do çaj? — Po, dua çaj <a href="#n2">dhe</a><sup>[2]</sup> bukë.</p>
+<p id="p3">Nëna i jep çajin. Beni <em>e</em> pi çajin dhe ha bukën. Pastaj shkon <a href="#n3">në</a><sup>[3]</sup> shkollë.</p>
+<p id="p4">Ana ka një libër të ri. Libri <em>është</em> i bukur. Ana e <a href="#n4">do</a><sup>[4]</sup> librin. Ajo e lexon librin çdo ditë.</p>
+<p id="p5">Sot Ana nuk e gjen librin. — <em>Ku</em> është libri im? — pyet Ana. Beni nuk <a href="#n5">e</a><sup>[5]</sup> di.</p>
+<p id="p6">Nëna e sheh librin mbi tavolinë. — <em>Ja</em> libri yt! — thotë nëna. Ajo ia jep <a href="#n6">librin</a><sup>[6]</sup> Anës. Ana është e lumtur.</p>
+<p id="p7">Gjyshi dhe gjyshja jetojnë në fshat. Shtëpia <em>e</em> gjyshit është e vjetër, por e bukur.</p>
+<p id="p8">Gjyshi ka një qen të madh. Qeni <em>e</em> do gjyshin.</p>
+<p id="p9">Gjyshja bën bukë çdo ditë. Buka <em>e</em> gjyshes është shumë e mirë.</p></section>
+    <h2>Pjesa e dytë</h2>
+    <section id="s2"><p id="p10">Beni dhe Ana shkojnë në fshat çdo verë. Ata <em>i</em> duan gjyshin dhe gjyshen.</p>
+<p id="p11">Sot nëna shkon në treg. Ana <em>shkon</em> me nënën. Në treg ka <a href="#n11">shumë</a><sup>[11]</sup> njerëz.</p>
+<p id="p12">Nëna blen bukë, djathë dhe mollë. — <em>Sa</em> kushton djathi? — pyet nëna. — Nuk kushton shumë, — <a href="#n12">thotë</a><sup>[12]</sup> shitësi. Nëna e blen djathin.</p>
+<p id="p13">Ana do një mollë. Nëna <em>i</em> blen një mollë të kuqe. — Faleminderit, nënë! — <a href="#n13">thotë</a><sup>[13]</sup> Ana.</p>
+<p id="p14">Sot bie shi. Beni <em>nuk</em> mund të dalë. Ai është në dhomë dhe shikon <a href="#n14">nga</a><sup>[14]</sup> dritarja.</p>
+<p id="p15">— Dua të luaj në rrugë, — thotë Beni. — <em>Nuk</em> mund të luash sot, — thotë babai. — Bie shi.</p>
+<p id="p16">— Çfarë mund të bëj? — <em>Mund</em> të lexosh një libër.</p>
+<p id="p17">Beni merr një libër dhe fillon të lexojë. Libri <em>është</em> i mirë. Beni nuk mendon më <a href="#n17">për</a><sup>[17]</sup> shiun.</p>
+<p id="p18">Dje Ana i shkroi një letër gjyshes. Ajo shkroi:</p>
+<p id="p19">«E dashur gjyshe, si je? Unë <em>jam</em> mirë. Dje shkova në shkollë dhe <a href="#n19">mësova</a><sup>[19]</sup> shumë. Beni më dha një libër të ri. Të <em>dua</em> shumë. Ana.» </p></section>
+    <h2>Pjesa e tretë</h2>
+    <section id="s3"><p id="p20">Ana ia dha letrën nënës. Nëna <em>e</em> lexoi letrën dhe buzëqeshi.</p></section>
+    <h2>Same-origin frame</h2>
+    <iframe id="frame" srcdoc="<p style='font-family:Georgia;font-size:17px'>Beni zgjohet herët. Ai lahet dhe vishet. Nëna është në kuzhinë.</p>"></iframe>
+  </article>
+  <aside>
+    <h3>Rreth tekstit</h3>
+    <p>Fjali të shkruara nga pronari për Go V0 (<em>owner-authored, machine-drafted, unreviewed</em>). Faqe matjeje për prototipin; nuk është pjesë e produktit.</p>
+    <p lang="de">Deutsch: Die Straßenbahnhaltestelle liegt gegenüber dem Rathaus.</p>
+    <p lang="es">Español: ¿Por qué no viniste ayer? ¡Qué lástima!</p>
+  </aside>
+</div>
+<script src="/dist/content.js"></script>
+<script>
+  // harness glue (not part of the extension): enable the controller, expose metrics, drive layout changes
+  (function () {
+    const status = document.getElementById('status');
+    const ext = () => window.__goLearnExtension;
+    const tryEnable = () => { const e = ext(); if (e) { e.controller.enable(); status.textContent = 'GoLearn on'; } else setTimeout(tryEnable, 50); };
+    tryEnable();
+    window.__harness = {
+      async metrics() { const c = ext().controller; return c.d.metrics.list(); },
+      async encounters() { const c = ext().controller; const all = await c.d.store.list?.(); return all; },
+      enabledAt: performance.now(),
+    };
+    document.getElementById('fs').addEventListener('input', (e) => { document.documentElement.style.setProperty('--fs', e.target.value + 'px'); });
+    document.getElementById('replace').addEventListener('click', () => { const a = document.querySelector('article'); a.innerHTML = '<h1>Faqe e re</h1><p id="fresh">Libri është i bukur. Ana e do librin.</p>'; });
+    document.getElementById('reload-section').addEventListener('click', () => { const s = document.getElementById('s2'); s.innerHTML = s.innerHTML; });
+    let n = 0; setInterval(() => { n++; const t = document.getElementById('tick'); if (t) t.textContent = String(n); }, 2000);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "GoLearn reader (prototype)",
+  "version": "0.0.1",
+  "description": "Prototype: look up a selected Albanian word on an ordinary web page. Word list only. Nothing leaves the device.",
+  "minimum_chrome_version": "110",
+  "permissions": ["activeTab", "scripting", "storage", "contextMenus"],
+  "background": { "service_worker": "background.js" },
+  "action": {
+    "default_title": "GoLearn",
+    "default_popup": "action/popup.html"
+  },
+  "commands": {
+    "lookup-selection": {
+      "suggested_key": { "default": "Alt+Shift+G" },
+      "description": "Look up the current selection with GoLearn"
+    }
+  }
+}

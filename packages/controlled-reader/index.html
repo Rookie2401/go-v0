@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="go-reader" content="epub-local" />
+<title>Go controlled reader (prototype)</title>
+<style>
+  :root { color-scheme: light dark; --bg: #fbfaf7; --fg: #1d1c1a; --muted: #6a675f; --line: #d9d5c9; --accent: #1f5f8b; --card: #fff; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #17171a; --fg: #ecebe6; --muted: #a09d94; --line: #34343a; --accent: #7fb8e0; --card: #202025; } }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.4 system-ui, sans-serif; }
+  header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 16px; border-bottom: 1px solid var(--line); }
+  header .grow { flex: 1 1 160px; }
+  button, select, input[type=file] { font: inherit; color: inherit; background: transparent; border: 1px solid var(--line); border-radius: 6px; padding: 4px 10px; }
+  button { cursor: pointer; }
+  button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  #status { padding: 4px 16px; color: var(--muted); font-size: 14px; min-height: 1.4em; }
+  #status.refused { color: #b3261e; font-weight: 600; }
+  #viewer { height: calc(100vh - 150px); min-height: 280px; max-width: 760px; margin: 0 auto; padding: 0 16px; box-sizing: border-box; }
+  #viewer article { max-width: 36em; margin: 0 auto; }
+  #card { position: fixed; z-index: 10; max-width: 320px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; box-shadow: 0 4px 16px rgba(0,0,0,.18); font-size: 14px; }
+  #card[hidden] { display: none; }
+  #card .surface { font-size: 18px; font-weight: 600; }
+  #card .sentence { margin-top: 6px; color: var(--muted); }
+  #card mark { background: color-mix(in srgb, var(--accent) 30%, transparent); color: inherit; }
+  #card code { font-size: 12px; word-break: break-all; }
+</style>
+</head>
+<body>
+<header>
+  <label>Open an EPUB or .txt file <input id="file" type="file" accept=".epub,.txt,application/epub+zip,text/plain" /></label>
+  <button id="prev" type="button" disabled>Previous</button>
+  <button id="next" type="button" disabled>Next</button>
+  <select id="chapters" aria-label="Chapters" disabled></select>
+  <span class="grow"></span>
+  <button id="smaller" type="button" aria-label="Smaller text" disabled>A&minus;</button>
+  <span id="size" aria-live="polite">100%</span>
+  <button id="bigger" type="button" aria-label="Larger text" disabled>A+</button>
+</header>
+<div id="status" role="status" aria-live="polite">Choose a DRM-free EPUB. Protected files are refused.</div>
+<main id="viewer" aria-label="Book"></main>
+<aside id="card" hidden aria-live="polite"></aside>
+<script type="module" src="./src/reader.ts"></script>
+</body>
+</html>

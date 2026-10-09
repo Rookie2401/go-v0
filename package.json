@@ -13,6 +13,7 @@
     "build": "tsc -b && vite-node --config scripts/vite.config.ts scripts/rights-gate.mts && vite-node --config scripts/vite.config.ts scripts/check-course-libraries.mts --require hi,de,es,th,sq && node scripts/verify-scripture-canon.mjs && vite-node --config scripts/vite.config.ts scripts/library-audit.mts all && vite-node --config scripts/vite.config.ts scripts/dict-status.mts --require hi,de,es,th,sq && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b",
+    "ext:build": "vite build -c packages/golearn-extension/vite.config.ts --mode content && vite build -c packages/golearn-extension/vite.config.ts --mode background && vite build -c packages/golearn-extension/vite.config.ts --mode action",
     "test": "vitest run",
     "gate": "tsc -b && vitest run",
     "corpus:validate": "vite-node --config scripts/vite.config.ts scripts/corpus-validate.mts",
@@ -63,7 +64,9 @@
     "library:sync-catalogue": "vite-node --config scripts/vite.config.ts scripts/sync-library-catalogue.mts",
     "review:packet": "vite-node scripts/review-packet.mts",
     "review:apply": "vite-node scripts/review-apply.mts",
-    "norway:audit": "vite-node --config scripts/vite.config.ts scripts/norway-audit.mts"
+    "norway:audit": "vite-node --config scripts/vite.config.ts scripts/norway-audit.mts",
+    "reader:fixture": "vite-node --config scripts/vite.config.ts packages/controlled-reader/scripts/make-fixture.mts",
+    "reader:build": "vite build --config packages/controlled-reader/vite.config.ts --mode prototype"
   },
   "dependencies": {
     "dexie": "^4",
@@ -76,6 +79,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@vitejs/plugin-react": "^6.1.0",
+    "epubjs": "^0.3.93",
     "fake-indexeddb": "^6",
     "jsdom": "^26",
     "typescript": "~6.0.2",

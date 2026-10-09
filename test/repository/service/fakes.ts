@@ -49,6 +49,7 @@ export interface FakeStore extends RepositoryStore {
   dump(): string;
   state: State;
   appendCalls: number;
+  applyTombstone(t: Tombstone): Promise<{ events: number; knowledge: number; documents: number }>;
 }
 
 export function createFakeStore(clock: () => string): FakeStore {
@@ -148,6 +149,8 @@ export function createFakeStore(clock: () => string): FakeStore {
     // tombstones
     async listTombstones(l) { return s.tombstones.filter((t) => t.learnerId === l); },
     async putTombstone(t) { s.tombstones.push(t); },
+    /** The service tests do not exercise deletion itself (the store suites and the privacy audit do): the fake records the instruction. */
+    async applyTombstone(t) { s.tombstones.push(t); return { events: 0, knowledge: 0, documents: 0 }; },
 
     async transaction(fn) {
       const before = structuredClone(s);
@@ -324,13 +327,13 @@ export function makeEvent(who: { learnerId: string; enrolmentId?: string; device
   };
 }
 
-export const lookupEvent = (who: { learnerId: string; enrolmentId?: string }, over: Partial<GoEvent> = {}): GoEvent => makeEvent(who, {
-  kind: 'SelectionLookedUp', producer: { app: 'golearn-ext', version: '1', deviceId: 'dev-1' }, subject: { itemIds: ['form:sq:shtëpinë'], sentenceKey: 'ab12' },
+export const lookupEvent = (who: { learnerId: string; enrolmentId?: string; deviceId?: string }, over: Partial<GoEvent> = {}): GoEvent => makeEvent(who, {
+  kind: 'SelectionLookedUp', producer: { app: 'golearn-ext', version: '1', deviceId: who.deviceId ?? 'dev-1' }, subject: { itemIds: ['form:sq:shtëpinë'], sentenceKey: 'ab12' },
   payload: { surface: 'shtëpinë', tokenCount: 1, contextKind: 'sentence', contextConfidence: 0.9, readerId: 'demo', helpShown: ['lemma'] }, ...over,
 });
 
-export const productionEvent = (who: { learnerId: string; enrolmentId?: string }, over: Partial<GoEvent> = {}): GoEvent => makeEvent(who, {
-  kind: 'ProductionRecorded', producer: { app: 'gopractice-tell', version: '1', deviceId: 'dev-1' }, subject: { itemIds: ['lemma:sq:libër:NOUN'], draftId: 'd1' },
+export const productionEvent = (who: { learnerId: string; enrolmentId?: string; deviceId?: string }, over: Partial<GoEvent> = {}): GoEvent => makeEvent(who, {
+  kind: 'ProductionRecorded', producer: { app: 'gopractice-tell', version: '1', deviceId: who.deviceId ?? 'dev-1' }, subject: { itemIds: ['lemma:sq:libër:NOUN'], draftId: 'd1' },
   payload: { mode: 'free', assisted: false, assistance: [], usedCorrectly: 'unjudged', draftId: 'd1', wordCount: 4 }, ...over,
 });
 

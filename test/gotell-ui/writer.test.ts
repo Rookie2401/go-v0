@@ -248,7 +248,51 @@ describe('the assistance ladder', () => {
   });
 });
 
+describe('per-sentence authorship at Save', () => {
+  it('a hint on sentence 0 does not make the rewritten sentence 1 "after hint"; each step records its sentence', async () => {
+    const rig = await makeTellRig();
+    const id = await analysed(rig, 'Unë kam gabim. Unë jam mirë.');
+    await ladderTo(rig, 'i-0-g', 2);
+    // the learner fixes sentence 0 and rewrites sentence 1 entirely
+    typeInto(text(rig), 'Unë kam saktë. Unë jam shumë mirë sot.');
+    expect(rig.engine.localDocs.get(id)!.record.assistance.every((s) => s.sentenceIndex === 0 && typeof s.sentenceHash === 'string')).toBe(true);
+    click(rig.q('#writer-save'));
+    await until(() => rig.engine.remoteSaves === 1, 'the save');
+    const saved = rig.engine.remoteDocs.get(id)!.record;
+    expect(saved.versions[0].sentences.map((s) => s.authorship)).toEqual(['after-hint', 'independent']);
+    expect(saved.versions[0].sentences.map((s) => s.assistance)).toEqual([[1, 2], []]);
+  });
+
+  it('a hint on sentence 1 leaves an edited sentence 0 independent', async () => {
+    const rig = await makeTellRig();
+    const id = await analysed(rig, 'Unë jam mirë. Unë kam gabim.');
+    await ladderTo(rig, 'i-1-g', 1);
+    typeInto(text(rig), 'Unë jam shumë mirë. Unë kam saktë.');
+    click(rig.q('#writer-save'));
+    await until(() => rig.engine.remoteSaves === 1, 'the save');
+    expect(rig.engine.remoteDocs.get(id)!.record.versions[0].sentences.map((s) => s.authorship)).toEqual(['independent', 'after-hint']);
+  });
+});
+
 describe('accept and reject', () => {
+  it('says, before the learner can click Accept, that an accepted correction counts as copied and earns no production credit', async () => {
+    const rig = await makeTellRig();
+    await analysed(rig, 'Unë kam gabim. Kjo është mirë.');
+    await ladderTo(rig, 'i-0-g', 3);
+    expect(rig.root.querySelector('[data-accept-notice]')).toBeNull(); // no correction yet, no notice yet
+    click(rig.q('[data-issue-card="i-0-g"] button[data-level="4"]'));
+    await until(() => !!rig.root.querySelector('.tell-correction'), 'the correction');
+    const notice = rig.q('[data-accept-notice="c-0-g"]');
+    expect(notice.textContent).toMatch(/counts as copied from the model/);
+    expect(notice.textContent).toMatch(/no production credit/);
+    expect(notice.textContent).toMatch(/Rewrite the sentence yourself/);
+    // it comes BEFORE the Accept button in the page
+    const accept = rig.q('[data-accept="c-0-g"]');
+    expect(notice.compareDocumentPosition(accept) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    // and the text has not been touched by showing it
+    expect(text(rig).value).toBe('Unë kam gabim. Kjo është mirë.');
+  });
+
   it('accept replaces exactly that sentence, keeps the earlier text in the versions and records CorrectionAccepted', async () => {
     const rig = await makeTellRig();
     const body = 'Unë kam gabim. Kjo është mirë.';

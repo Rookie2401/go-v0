@@ -15,7 +15,8 @@ packages/
   language-packs/          the pack manifest framework, the Albanian pack (runtime, installer, validation, tutorial), planned packs
   golearn-extension/       GoLearn: the MV3 reader extension (src/, action/) and the setup/onboarding app (app/: options page + web build)
   controlled-reader/       PROTOTYPE local EPUB reader with the epub-local adapter
-  (planned) goreview/, gotell/
+  goreview/                the GoReview workspace modules (intake, FSRS scheduler, exercise builders, grading, planner, runner)
+  gotell/                  the GoTell writing workspace modules (engine, prompts, profile, documents, evidence, privacy)
 ```
 
 Rules (enforced by `test/ecosystem/boundaries.test.ts`):

@@ -237,6 +237,8 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
 
   it('16. GoPractice records a wrong answer on the construction through the Repository', async () => {
     const api = createRepositoryApi({ baseUrl: 'http://127.0.0.1:8790', fetch: serviceFetch, token });
+    // GoPractice is its own device of the account (a device id an event names must be registered to the learner)
+    await store.putDevice({ deviceId: 'practice-dev', learnerId, registeredAt: clock(), platform: 'test' });
     const ev: GoEvent = {
       id: 'ref:grammar:1', v: CONTRACT_VERSION, learnerId, enrolmentId, languageId: 'sq', at: clock(),
       producer: { app: 'gopractice-review', version: 'ref', deviceId: 'practice-dev' }, kind: 'AssessmentAnswered',

@@ -86,41 +86,44 @@ const CSS = `
 :host { all: initial; }
 * { box-sizing: border-box; }
 .card {
-  position: fixed; width: min(${CARD_WIDTH}px, calc(100vw - ${MARGIN * 2}px)); max-height: min(70vh, 520px); overflow: auto;
-  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1b1b1f; background: #fffdf8;
+  position: fixed; width: min(24.3em, calc(100vw - ${MARGIN * 2}px)); max-height: min(70vh, 520px); overflow: auto;
+  font: 0.875em/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1b1b1f; background: #fffdf8;
   border: 1px solid #c9c2b4; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,0,0,.22); padding: 10px 12px; text-align: start;
 }
 .card:focus { outline: none; }
-@media (prefers-color-scheme: dark) { .card { color: #ececf1; background: #25262b; border-color: #4a4b54; } .tag { background: #3a3b44; color: #cfd0d8; } button, input { color: #ececf1; background: #34353d; border-color: #5a5b66; } }
+@media (prefers-color-scheme: dark) { .card { color: #ececf1; background: #25262b; border-color: #4a4b54; } .tag { background: #3a3b44; color: #cfd0d8; } button, input { color: #ececf1; background: #34353d; border-color: #8a8b96; } button:focus-visible, input:focus-visible { outline: 2px solid #8ec5f5; } }
 .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
-.brand { font-size: 11px; letter-spacing: .04em; text-transform: uppercase; opacity: .7; }
-.word { font-size: 20px; font-weight: 650; margin: 2px 0 6px; overflow-wrap: anywhere; }
+.brand { font-size: 0.857em; letter-spacing: .04em; text-transform: uppercase; opacity: .7; }
+.word { font-size: 1.43em; font-weight: 650; margin: 2px 0 6px; overflow-wrap: anywhere; }
 .row { display: flex; gap: 8px; align-items: baseline; margin: 3px 0; }
-.k { min-width: 5.2em; font-size: 12px; opacity: .65; }
+.k { min-width: 5.2em; font-size: 0.857em; opacity: .65; }
 .v { flex: 1; overflow-wrap: anywhere; }
-.tag { font-size: 10px; padding: 0 6px; border-radius: 8px; background: #ece7da; color: #5a5446; white-space: nowrap; }
+.tag { font-size: 0.857em; padding: 0 6px; border-radius: 8px; background: #ece7da; color: #5a5446; white-space: nowrap; }
 .muted { opacity: .72; }
 .actions { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
-button, input { font: inherit; font-size: 13px; padding: 3px 10px; border-radius: 6px; border: 1px solid #b9b2a3; background: #f2eee3; color: #1b1b1f; }
+button, input { font: inherit; font-size: 0.929em; padding: 0.214em 0.714em; border-radius: 6px; border: 1px solid #857e6e; background: #f2eee3; color: #1b1b1f; }
 button { cursor: pointer; }
 button:disabled { opacity: .5; cursor: not-allowed; }
 button:focus-visible, input:focus-visible { outline: 2px solid #2b6cb0; outline-offset: 2px; }
 button[aria-expanded="true"] { border-color: #2b6cb0; }
-.close { padding: 0 8px; font-size: 16px; line-height: 1.3; }
-.more { margin-top: 8px; border-top: 1px solid #ddd6c6; padding-top: 6px; font-size: 13px; }
+.close { padding: 0 0.5em; font-size: 1.143em; line-height: 1.3; }
+.more { margin-top: 8px; border-top: 1px solid #ddd6c6; padding-top: 6px; font-size: 0.929em; }
 .more[hidden] { display: none; }
-.more h4 { margin: 8px 0 2px; font-size: 12px; opacity: .7; font-weight: 600; }
+.more h4 { margin: 8px 0 2px; font-size: 0.923em; opacity: .7; font-weight: 600; }
 .more ul { margin: 0; padding-inline-start: 18px; }
 .more table { border-collapse: collapse; width: 100%; }
-.more th, .more td { text-align: start; vertical-align: top; padding: 2px 6px 2px 0; font-size: 13px; }
+.more th, .more td { text-align: start; vertical-align: top; padding: 2px 6px 2px 0; }
+.more .tag, .more .note { font-size: 0.923em; }
 .more th { font-weight: 600; white-space: nowrap; }
 .sel { font-weight: 650; }
-.status { margin-top: 8px; font-size: 12px; opacity: .8; min-height: 1.2em; }
-.feedback { font-size: 12px; opacity: .85; min-height: 1.2em; }
-.note { font-size: 12px; margin-top: 4px; opacity: .8; }
+.status { margin-top: 8px; font-size: 0.857em; opacity: .8; min-height: 1.2em; }
+.feedback { font-size: 0.857em; opacity: .85; min-height: 1.2em; }
+.note { font-size: 0.857em; margin-top: 4px; opacity: .8; }
 .msg { margin: 4px 0; }
 .err { color: #9b1c1c; }
-form.fix { margin-top: 8px; border-top: 1px solid #ddd6c6; padding-top: 6px; font-size: 13px; }
+form.fix { margin-top: 8px; border-top: 1px solid #ddd6c6; padding-top: 6px; font-size: 0.929em; }
+form.fix fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+form.fix legend { padding: 0; margin: 0 0 2px; }
 form.fix[hidden] { display: none; }
 form.fix label { display: block; margin: 2px 0; }
 form.fix input[type="text"] { width: 12em; }
@@ -278,15 +281,15 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   }
 
   function closeButton(): HTMLElement {
-    const b = h('button', { class: 'close', type: 'button', 'aria-label': 'Close GoLearn card' }, '×');
+    const b = h('button', { class: 'close', type: 'button', 'aria-label': 'Close GoLearn card', title: 'Close (Esc)', 'aria-keyshortcuts': 'Escape' }, '×');
     b.addEventListener('click', () => dismiss('close'));
     return b;
   }
 
   function tag(label: EvidenceLabel): HTMLElement { return h('span', { class: 'tag', title: LABEL_HELP[label] }, label); }
 
-  function row(rowId: string, key: string, value: string, label: EvidenceLabel, muted = false): HTMLElement {
-    return h('div', { class: 'row', 'data-row': rowId }, h('span', { class: 'k' }, key), h('span', { class: muted ? 'v muted' : 'v' }, value), tag(label));
+  function row(rowId: string, key: string, value: string, label: EvidenceLabel, muted = false, lang?: string): HTMLElement {
+    return h('div', { class: 'row', 'data-row': rowId }, h('span', { class: 'k' }, key), h('span', { class: muted ? 'v muted' : 'v', ...(lang ? { lang } : {}) }, value), tag(label));
   }
 
   // ───────────── layer 1 ─────────────
@@ -322,7 +325,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const m = model; const v = view; const l = m.labels;
     const rows: HTMLElement[] = [];
     const lemmaText = m.lemma ? (m.pos ? `${m.lemma} (${m.pos})` : m.lemma) : '';
-    if (m.lemma) rows.push(row('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', lemmaText, l.lemma));
+    if (m.lemma) rows.push(row('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', lemmaText, l.lemma, false, m.languageId));
 
     const hint = grammarHint(m, v);
     const hintRow = hint ? row('grammar', 'grammar', hint.text, l.constructions, !hint.weak) : undefined;
@@ -347,7 +350,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const pl = profileLine(v);
     if (pl) rows.push(row('learner', 'you', pl.text, pl.label, pl.label !== 'inference'));
     if (m.words.length > 1) {
-      const ul = h('ul', {}, ...m.words.map((w) => h('li', {}, `${w.surface}: ${w.lemma ?? 'unknown'}${w.gloss ? ` – ${w.gloss}` : ''} (${w.confidence.toFixed(2)})`)));
+      const ul = h('ul', {}, ...m.words.map((w) => h('li', {}, h('span', { lang: m.languageId }, w.surface), ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', `${w.gloss ? ` – ${w.gloss}` : ''} (${w.confidence.toFixed(2)})`)));
       rows.push(h('div', { class: 'more-inline' }, ul));
     }
     parts.rows.replaceChildren(...rows);
@@ -458,8 +461,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (!m.sentenceWords.length) { panel.append(h('div', { class: 'note' }, 'There is no sentence context, so there is nothing to list.')); return; }
     const ul = h('ul', {});
     for (const w of m.sentenceWords) {
-      const what = w.lemma ? `${w.lemma}${w.pos ? ` (${w.pos})` : ''}${w.gloss ? ` – ${w.gloss}` : ''}` : 'unknown';
-      ul.append(h('li', w.selected ? { class: 'sel' } : {}, `${w.surface}: ${what}`));
+      const rest = `${w.pos ? ` (${w.pos})` : ''}${w.gloss ? ` – ${w.gloss}` : ''}`;
+      ul.append(h('li', w.selected ? { class: 'sel' } : {}, h('span', { lang: m.languageId }, w.surface), ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', w.lemma ? rest : ''));
     }
     panel.append(ul);
   }
@@ -500,17 +503,19 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   }
 
   function buildCorrectionForm(m: CardModel): HTMLFormElement {
-    const form = h('form', { class: 'fix', hidden: '', 'aria-label': 'Correct this analysis' }) as HTMLFormElement;
-    form.append(h('div', { class: 'note' }, 'Which reading is right? Your correction is kept with your own record and sent to the shared word list as a proposal, not as a fact.'));
+    const form = h('form', { class: 'fix', id: 'panel-fix', hidden: '', 'aria-label': 'Correct this analysis' }) as HTMLFormElement;
+    form.append(h('div', { class: 'note' }, 'Your correction is kept with your own record and sent to the shared word list as a proposal, not as a fact.'));
+    const group = h('fieldset', {}, h('legend', {}, 'Which reading is right?'));
+    form.append(group);
     const alts = m.alternatives.filter((a) => a.lemma);
     alts.forEach((a, i) => {
       const id = `alt-${i}`;
       const input = h('input', { type: 'radio', name: 'reading', id, value: String(i) });
-      form.append(h('label', { for: id }, input, ` ${a.lemma}${a.pos ? ` (${a.pos})` : ''}${a.gloss ? ` – ${a.gloss}` : ''}`));
+      group.append(h('label', { for: id }, input, ' ', h('span', { lang: m.languageId }, a.lemma ?? ''), `${a.pos ? ` (${a.pos})` : ''}${a.gloss ? ` – ${a.gloss}` : ''}`));
     });
     const typed = h('input', { type: 'radio', name: 'reading', id: 'alt-typed', value: 'typed' });
     const text = h('input', { type: 'text', name: 'lemma', id: 'typed-lemma', 'aria-label': 'The correct lemma', maxlength: '60', autocomplete: 'off' });
-    form.append(h('label', { for: 'alt-typed' }, typed, ' Another lemma: ', text));
+    group.append(h('label', { for: 'alt-typed' }, typed, ' Another lemma: ', text));
     const send = h('button', { type: 'submit', class: 'sendFix' }, 'Send correction');
     const cancel = h('button', { type: 'button', class: 'cancelFix' }, 'Cancel');
     form.append(h('div', { class: 'actions' }, send, cancel));
@@ -538,20 +543,21 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     view = { ...initialView(opts.view?.languageName ?? ''), ...opts.view };
     actions = opts.actions ?? {};
     const top = h('div', { class: 'top' }, h('span', { class: 'brand' }, `GoLearn${view.languageName ? ` · ${view.languageName}` : ''}`), closeButton());
-    const word = h('div', { class: 'word', dir: m.context.direction === 'rtl' ? 'rtl' : 'auto' }, m.surface);
+    const word = h('div', { class: 'word', lang: m.languageId, dir: m.context.direction === 'rtl' ? 'rtl' : 'auto' }, m.surface);
     const rows = h('div', { class: 'rows' });
 
     const say = h('button', { type: 'button', class: 'say', 'aria-label': 'Pronounce (practice only)' }, 'Pronounce (practice)') as HTMLButtonElement;
     say.disabled = true;
     say.addEventListener('click', onPronounceClick);
-    const pronNote = h('div', { class: 'note pron' }, pron.note);
+    const pronNote = h('div', { class: 'note pron', role: 'status', 'aria-live': 'polite' }, pron.note);
 
     const layerBtn = (name: LayerName, cls: string): HTMLButtonElement => h('button', { type: 'button', class: cls, 'aria-expanded': 'false' }, LAYER_TITLES[name]) as HTMLButtonElement;
     const layers = {} as Record<LayerName, { btn: HTMLButtonElement; panel: HTMLElement }>;
     const classes: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5' };
     for (const name of Object.keys(LAYER_TITLES) as LayerName[]) {
       const btn = layerBtn(name, `layerBtn ${classes[name]}`);
-      const panel = h('div', { class: `more layer ${classes[name]}`, hidden: '', 'data-layer': name });
+      const panel = h('div', { class: `more layer ${classes[name]}`, hidden: '', 'data-layer': name, id: `panel-${classes[name]}` });
+      btn.setAttribute('aria-controls', panel.id);
       btn.addEventListener('click', () => toggleLayer(name));
       layers[name] = { btn, panel };
     }
@@ -559,7 +565,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
     const save = h('button', { type: 'button', class: 'saveBtn' }, 'Review this') as HTMLButtonElement;
     save.addEventListener('click', () => { if (view.saved) return; try { actions.onSave?.(); } catch { /* reporting never blocks */ } });
-    const wrong = h('button', { type: 'button', class: 'wrongBtn', 'aria-expanded': 'false' }, 'This analysis is wrong') as HTMLButtonElement;
+    const wrong = h('button', { type: 'button', class: 'wrongBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-fix' }, 'This analysis is wrong') as HTMLButtonElement;
     const fix = buildCorrectionForm(m);
     if (m.tokenCount !== 1 || !m.itemIds.length) { wrong.disabled = true; wrong.title = 'Corrections are for a single word.'; }
     wrong.addEventListener('click', () => {
@@ -569,8 +575,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       if (lastAnchor) place(lastAnchor);
     });
 
-    const moreBtn = h('button', { type: 'button', class: 'moreBtn', 'aria-expanded': 'false' }, 'More') as HTMLButtonElement;
-    const more = h('div', { class: 'more', hidden: '' });
+    const moreBtn = h('button', { type: 'button', class: 'moreBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-more' }, 'More') as HTMLButtonElement;
+    const more = h('div', { class: 'more', id: 'panel-more', hidden: '' });
     fillMore(more, m);
     moreBtn.addEventListener('click', () => {
       const openNow = more.hasAttribute('hidden');
@@ -599,6 +605,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const p = place(anchor);
     if (opts.focus) {
       prevFocus = doc.activeElement;
+      card!.setAttribute('aria-modal', 'true'); // it traps Tab while focus is inside; a card opened by selection takes no focus and is not modal
       const target = root!.querySelector<HTMLElement>('.say:not([disabled]), .layerBtn, .close') ?? card!;
       target.focus();
       movedFocus = true;

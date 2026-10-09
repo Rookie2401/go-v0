@@ -29,6 +29,9 @@ export const DEFAULT_CANDIDATE_LIMIT = 40;
 const toRecord = (k: Record<string, UnitKnowledge> | UnitKnowledge[]): Record<string, UnitKnowledge> =>
   Array.isArray(k) ? Object.fromEntries(k.map((r) => [r.unitId, r])) : k;
 
+/** A facts provider that can fetch the Repository's units for many candidates at once (`createFactsProvider` does, over a client with `units`). */
+export type PrimableFacts = FactsProvider & { prime?(unitIds: string[]): Promise<void> };
+
 export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[]> {
   const { preferences, deck, saved, now } = deps;
   const candidates = await deps.api.candidates(deps.enrolmentId, deps.limit ?? DEFAULT_CANDIDATE_LIMIT);
@@ -39,10 +42,17 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
     audio = { available: false, eligibleForEvidence: false, reason: `audio availability could not be determined (${e instanceof Error ? e.message : String(e)})` };
   }
 
-  const out: IntakeOutcome[] = [];
-  for (const candidate of candidates) {
+  // First pass without facts, for every candidate; only the ones it would test need the Repository's unit view and the pack's facts.
+  const passes = candidates.map((candidate) => {
     const base = { candidate, knowledge: knowledge[candidate.unitId], existing: deck, audio, saved, preferences, now };
-    const first = decideIntake(base);
+    return { candidate, base, first: decideIntake(base) };
+  });
+  const testable = passes.filter((p) => p.first.decision === 'test-now' || p.first.decision === 'test-later').map((p) => p.candidate.unitId);
+  // One batched read of those units (chunks of 50) instead of one request each; a provider that cannot batch just answers one by one.
+  try { await (deps.facts as PrimableFacts).prime?.([...new Set(testable)]); } catch { /* factsFor still works one by one */ }
+
+  const out: IntakeOutcome[] = [];
+  for (const { candidate, base, first } of passes) {
     if (first.decision !== 'test-now' && first.decision !== 'test-later') { out.push(first); continue; }
     try {
       const facts = await deps.facts.factsFor(candidate.unitId, preferences.languageId);

@@ -87,7 +87,9 @@ All bodies and responses are JSON. Errors: `{ error, message }` plus route-speci
 | `POST /sync/push` | `SyncPushRequest` | `{ outcomes, documents: [{ docId, ok, current? }], serverTime, clockSkewMs, head }`. `deviceId` must be the session's (403 `not-your-device`). `clockSkewMs = clientTime − serverTime`. Events keep the client's `at`. Events are validated as one batch (422 whole); events and documents are applied in one transaction; document conflicts are reported per document, not as an error; then `engine.project`; the device's `lastSyncAt` is stamped. At most 500 events and 50 documents |
 | `POST /sync/pull` | `SyncPullRequest` | `{ events, documents, head, serverTime }`: events after `afterSeq` (limit clamped to 1000), documents with `updatedAt` after `documentsSince` (deleted documents included, body gone) |
 | `GET /export` | | `{ format: 'go-repository-export@1', contractVersion, exportedAt, learner, account, devices, enrolments, events, knowledge, preferences, documents, tombstones }` assembled from the store ports, or `deps.exporter(learnerId)` when given. Never a password hash or a token |
-| `POST /tombstones` | `{ scope, reason? }` | `201 { tombstone }`. `scope` is `{kind:'learner'}`, `{kind:'source',sourceRef}`, `{kind:'range',from,to}` or `{kind:'event',id}`. It records the instruction; it deletes nothing by itself (`DELETE /me` erases) |
+| `POST /tombstones` | `{ scope, reason? }` | `201 { tombstone, applied: { events, knowledge } }`. `scope` is `{kind:'learner'}`, `{kind:'source',sourceRef}`, `{kind:'range',from,to}` or `{kind:'event',id}`. `event`, `source` and `range` are applied through the store's `applyTombstone` and the projection is refolded (P-02, 2026-10-09); `learner` is record-only (`DELETE /me` erases); a store that cannot delete answers 501 |
+| `POST /units/batch` | `{ ids }` (1–50) | `{ units: [...], missing: [...] }`: what `GET /units/:id` returns, for several ids in one call (PF-02) |
+| `POST /enrolments/:id/end` | | sets `endedAt`, appends `EnrolmentChanged` (`change: 'ended'`); idempotent; 404 for another learner's enrolment (P-06) |
 
 Other statuses: `400 invalid-json`, `404 not-found`, `405 method-not-allowed`, `413 too-large`, `422 invalid-input` /
 `invalid-query` / `id-mismatch`, `500 server-error` (never a cause). `OPTIONS` answers 204 with permissive CORS
@@ -114,6 +116,6 @@ One line per request: `METHOD /path status ms` (path only: never the query strin
 
 * The throttle is per process (above). No rate limit on `POST /accounts` or on other routes.
 * `GET /me` lists one device because `IdentityStore` has no `listDevices`; consents are read from the first 1000 consent events.
-* `POST /tombstones` for `source`/`range`/`event` records the instruction; honouring it in the log or the projection is the store's/engine's concern.
+* `POST /tombstones` for `source`/`range`/`event` is applied by the store (`applyTombstone`) and the projection is refolded; backups, replicas and the shared linguistic tables are not covered (see REPOSITORY-API-AND-OPERATIONS.md).
 * A learner correction goes to the shared linguistic store (Layer A) as the linguistic service decides (`provisional`, confidence 0.6).
-* Event `enrolmentId`s are not checked against the learner's enrolments at ingestion (an event for an unknown enrolment is stored; the engine decides what to do with it).
+* Event `enrolmentId`s are checked against the learner's enrolments at ingestion (S-06), and the event's `languageId` must match the enrolment's (P-07): otherwise 422.

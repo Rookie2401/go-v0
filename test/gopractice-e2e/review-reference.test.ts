@@ -395,12 +395,13 @@ describe('Prompt 5 §21 — GoReview over the real Repository, pack, scheduler, 
     });
     const t1 = new Date(clockMs + 60 * MIN).toISOString();
     const t2 = new Date(clockMs + 61 * MIN).toISOString();
+    await store.putDevice({ deviceId: 'dev-B', learnerId: a.learnerId, registeredAt: nowIso(), platform: 'test' }); // the second device is registered to the account
     const e1 = mk('dev-A', t1, 3);
     const e2 = mk('dev-B', t2, 1);
     // device B's batch arrives first, device A's later: the fold orders by time, not arrival
+    tick(62 * MIN); // the clock passes both timestamps first: the service refuses events dated ahead of its own clock
     ok(await a.api.appendEvents([e2]));
     ok(await a.api.appendEvents([e1]));
-    tick(62 * MIN);
     const folded = (await deckOf(a)).find((d) => d.itemId === item.itemId)!;
     const tail = folded.history.slice(-2);
     expect(tail.map((h) => h.deviceId)).toEqual(['dev-A', 'dev-B']);

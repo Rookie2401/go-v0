@@ -19,10 +19,10 @@ import type { AnalysisStatus } from '../../../repository-contract/src';
 import { statusOf } from '../../../language-packs/src';
 import type { PackManifest, PackRuntime } from '../../../language-packs/src';
 import {
-  FUNCTION_POS, addsContent, checkerCoverage, introducedIndexes, isFunctionAt, meaningChanges, planRepairs, related, wordIndexes,
+  FUNCTION_POS, addsContent, checkerCoverageParts, coverageText, introducedIndexes, isFunctionAt, meaningChanges, planRepairs, related, wordIndexes,
 } from '../salvage';
 import type { ErrorCandidate, LanguageAdapter, Parsed, PartOfSpeech } from '../salvage';
-import type { Correction, DraftAnalysis, Issue, IssueClass, SentenceAnalysis, TextSpan, WriterProfile } from '../types';
+import type { CoverageParts, Correction, DraftAnalysis, Issue, IssueClass, SentenceAnalysis, TextSpan, WriterProfile } from '../types';
 import { hashText, isoOf, leadSentences, unique } from './text';
 
 // ───────────────────────────── classes ─────────────────────────────
@@ -348,14 +348,15 @@ export function createAnalyzer(deps: AnalyzerDeps): Analyzer {
   };
 
   // ── analysis of a draft ──
-  const coverageLine = (nothingFound: boolean, failure?: string): string => {
+  const coveragePartsOf = (nothingFound: boolean, failure?: string): CoverageParts => {
     if (!adapter) {
-      return `${pack.limitation ?? 'No analyser for this language is installed.'} Nothing in this sentence was checked.`;
+      return { headline: `${pack.limitation ?? 'No analyser for this language is installed.'} Nothing in this sentence was checked.`, limits: [], checked: false };
     }
-    const base = checkerCoverage(adapter);
-    if (failure !== undefined) return `The ${adapter.name} checker stopped on this sentence (${failure}), so nothing in it was checked. ${base}`;
-    return nothingFound ? `The checker found nothing in this sentence; that does not show the sentence is correct. ${base}` : base;
+    const base = checkerCoverageParts(adapter);
+    if (failure !== undefined) return { ...base, headline: `The ${adapter.name} checker stopped on this sentence (${failure}), so nothing in it was checked. ${base.headline}`, checked: false };
+    return nothingFound ? { ...base, headline: `The checker found nothing in this sentence; that does not show the sentence is correct. ${base.headline}` } : base;
   };
+  const coverageLine = (nothingFound: boolean, failure?: string): string => coverageText(coveragePartsOf(nothingFound, failure));
 
   function statusOfSentence(p: Parsed): AnalysisStatus | 'none' {
     const readings = wordIndexes(p).map((i) => p.analyses[i]?.candidates ?? []).filter((c) => c.length > 0);
@@ -444,6 +445,7 @@ export function createAnalyzer(deps: AnalyzerDeps): Analyzer {
       issues,
       corrections,
       checkerCoverage: coverageLine(found.length === 0, failure),
+      coverageParts: coveragePartsOf(found.length === 0, failure),
       analysisStatus: statusOfSentence(p),
     };
   }

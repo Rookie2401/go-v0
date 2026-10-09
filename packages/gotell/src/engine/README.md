@@ -81,9 +81,17 @@ is the documents module's: it uses `isReproducedLater(current, earlierVersions)`
 before?"; the caller has established that no help was shown this time). `history.previous` is accepted for the caller's convenience and does
 not change a judgement.
 
+**Per sentence.** Every `AssistanceStep` records the sentence it was shown for: `sentenceIndex` (0-based, in the analysed text) and
+`sentenceHash` (`sentenceScopeHash`: the hash of the sentence's comparison form). `judgeAuthorship(text, steps, { sentenceIndex })` and
+`judgeFromAssistance` (documents) count only the steps that touched THIS sentence (`stepsForSentence`: same index, or same sentence hash if
+sentences were inserted above it). A sentence no step touched stays `independent`, however much help its neighbour had. A step with neither
+field (a legacy record, a hand-made step) is taken to touch every sentence (the old whole-round rule: it never over-credits). Copying is
+judged across all steps: text equal to a shown correction or model is `copied-from-model` wherever it lands. Known limit: if the learner
+deletes a hinted sentence and a different one moves into its position, that one is judged by position (after-hint), not independent.
+
 ## What the checker cannot see
 
-Stated on every sentence (`checkerCoverage`), from the adapter's own `support` record. For Albanian (adapter-sq@9): production checks are
+Stated on every sentence (`checkerCoverage`, and the same statement in parts as `coverageParts`: a headline and one entry per limit the adapter declares), from the adapter's own `support` record. The screens do not print the whole list: `summariseCoverage` (`coverage.ts`) turns it into one line ("Checked: definiteness, case, agreement, conjugation, particles. Not checked: 8 other areas — see details.") and the full headline and limits go in a collapsed "details" element. The checked areas are a short hand-kept table (`CHECKED_AREAS`, one list per language, each entry pinned by a test against the real checker); a language not in the table says the list is not recorded. For Albanian (adapter-sq@9): production checks are
 "limited": rules for the commonest learner errors, each firing only on its own unambiguous shape. Measured misses (2026-10-09, pinned in the engine tests): *Unë lexoj librin dhe ti lexoj librin* (a subject pronoun after *dhe* is not checked against its verb), *Ana është e mirë dhe Mira është i mirë* (predicate agreement), *Unë lexoj libri* (an object in the nominative without a preposition), *Unë dua një libri* (a definite noun after *një*). No idiomaticity,
 tense/mood choice, genitive chains or old spelling. A language whose pack has only the browser's segmenter gets sentences and tokens, no
 issues, and "Nothing in this sentence was checked". A checker that throws yields no issues and says the sentence was not checked. **No
@@ -91,7 +99,7 @@ issue is ever invented; "nothing detected" is never "correct".**
 
 ## The remote port
 
-`RemoteAssistant` is a type. **Nothing is wired.** Level 6 reaches it only when the learner has consented (`ConsentGate.remoteAssistance()`),
+`RemoteAssistant` is a type. **Nothing is wired.** Level 6 reaches it only when the learner has consented (`ConsentGate.remoteAssistance()` returning the boolean `true` — a truthy string, number, object or Promise is not consent; the gate in `privacy/` holds to the same rule),
 a provider is passed in, and no learner/pack model exists. What is sent: `{ languageId, sentence, intendedMeaning? }` — the learner's
 sentence, only after consent. What is shown: only a proposal that passes shape validation (`salvage/remote.ts`, from the legacy interpreter
 validator), the checker and the never-add-content rule; labelled `source: 'remote-assistant'`, `review: 'unreviewed'`. A provider that fails

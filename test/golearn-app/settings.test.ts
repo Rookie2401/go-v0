@@ -5,7 +5,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { CONTRACT_VERSION } from '../../packages/repository-contract/src';
 import { KEYS, createStateStore, createWebStorageArea } from '../../packages/golearn-extension/app/state';
 import { PERMISSIONS, SURFACES } from '../../packages/golearn-extension/app/surfaces';
-import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
+import { createMemoryStorageArea, createStorageEncounterStore } from '../../packages/golearn-extension/src/store';
 import { destroyRigs, fakeBackground, flush, makeRig, readBlob, signIn, type, until, choose, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
@@ -165,6 +165,63 @@ describe('Privacy', () => {
     await until(() => bg.settings.explanationDepth === undefined);
     expect(bg.messages.filter((m) => m.type === 'golearn:settings').at(-1)).toMatchObject({ patch: { explanationDepth: null } });
     expect(bg.settings).toMatchObject({ remoteSpeechConsent: true, keepSnippets: false });
+  });
+
+  describe('the remote-speech switch is a recorded consent (P-09)', () => {
+    it('in the extension: ConsentGiven is recorded through the worker BEFORE the switch is written; turning it off writes the switch, then ConsentWithdrawn', async () => {
+      const rig = await makeRig({ extension: true });
+      const bg = fakeBackground(rig);
+      await rig.go('privacy');
+      const box = rig.q<HTMLInputElement>('#remote-speech');
+      box.checked = true; box.dispatchEvent(new Event('change', { bubbles: true }));
+      await until(() => bg.settings.remoteSpeechConsent === true);
+      const order = bg.messages.filter((m) => m.type === 'golearn:record' || m.type === 'golearn:settings').map((m) => m.type);
+      expect(order).toEqual(['golearn:record', 'golearn:settings']);
+      expect(bg.recorded).toHaveLength(1);
+      expect(bg.recorded[0]).toMatchObject({ kind: 'ConsentGiven', payload: { consent: 'remote-speech', scope: 'remote-speech' }, producer: { app: 'golearn-ext' }, subject: {} });
+      expect(typeof bg.recorded[0].id).toBe('string');
+      box.checked = false; box.dispatchEvent(new Event('change', { bubbles: true }));
+      await until(() => bg.recorded.length === 2);
+      expect(bg.recorded[1]).toMatchObject({ kind: 'ConsentWithdrawn', payload: { scope: 'remote-speech' } });
+      expect(bg.settings.remoteSpeechConsent).toBe(false);
+      expect(bg.messages.filter((m) => m.type === 'golearn:record' || m.type === 'golearn:settings').map((m) => m.type)).toEqual(['golearn:record', 'golearn:settings', 'golearn:settings', 'golearn:record']);
+    });
+
+    it('in the web app the events go to the shared event log', async () => {
+      const rig = await makeRig();
+      await rig.go('privacy');
+      const box = rig.q<HTMLInputElement>('#remote-speech');
+      box.checked = true; box.dispatchEvent(new Event('change', { bubbles: true }));
+      await flush(40);
+      expect((await settingsOf(rig)).remoteSpeechConsent).toBe(true);
+      const rows = JSON.parse(await createStorageEncounterStore(rig.area as never).exportRows()) as Array<{ kind: string; payload: { scope?: string } }>;
+      expect(rows.filter((r) => r.kind === 'ConsentGiven').map((r) => r.payload.scope)).toEqual(['remote-speech']);
+    });
+
+    it('when the record cannot be made the switch snaps back to off and says so', async () => {
+      const rig = await makeRig({ extension: true });
+      const bg = fakeBackground(rig, ['settings']);               // the worker answers settings but refuses to record
+      rig.chrome!.events.onMessage.addListener((m, _s, respond) => {
+        if ((m as { type?: string }).type !== 'golearn:record') return undefined;
+        respond({ ok: false, error: 'invalid:payload refused for the test' });
+        return true;
+      });
+      await rig.go('privacy');
+      const box = rig.q<HTMLInputElement>('#remote-speech');
+      box.checked = true; box.dispatchEvent(new Event('change', { bubbles: true }));
+      await until(() => !box.checked);
+      expect(bg.settings.remoteSpeechConsent).toBeUndefined();
+      expect(rig.text()).toContain('could not be recorded, so remote speech stays off');
+    });
+  });
+
+  it('A-20 the repeated "Change" links on the home screen name what they change', async () => {
+    const rig = await makeRig();
+    await rig.go('home');
+    const labels = [...rig.root.querySelectorAll('#status-list a')].map((a) => a.getAttribute('aria-label'));
+    expect(labels.length).toBe(5);
+    expect(new Set(labels).size).toBe(labels.length);
+    for (const l of labels) expect(l).toMatch(/^Change: /);
   });
 
   it('shows what the extension holds: a consent stored elsewhere is displayed as it is, never silently reset', async () => {

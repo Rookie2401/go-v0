@@ -33,22 +33,28 @@ export const defaultPacks: PackProvider = {
 
 interface ShardRow { text: string; at: number; url: string; attribution?: string }
 
+/** A shard `fetch` that also counts the fetches that failed for reasons of connection (a thrown error, a 5xx): the pack runtime swallows them, so this is how a gloss learns it was offline (audit O-07). */
+export type ShardFetch = typeof fetch & { failures: number };
+
 /** A `fetch` that reads a dictionary file from storage first, and stores what it fetches. Only URLs under `base` are served. */
-export function createShardFetch(area: StorageArea, base: string, doFetch: typeof fetch, now: () => number = Date.now): typeof fetch {
+export function createShardFetch(area: StorageArea, base: string, doFetch: typeof fetch, now: () => number = Date.now): ShardFetch {
   const root = base.replace(/\/+$/, '') + '/';
-  return (async (input: RequestInfo | URL): Promise<Response> => {
+  const shardFetch = (async (input: RequestInfo | URL): Promise<Response> => {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     if (!url.startsWith(root)) throw new Error('refusing to fetch outside the dictionary location');
     const id = url.slice(root.length).replace(/\.json$/i, '');
     const key = SHARD_PREFIX + id;
     const hit = (await area.get(key))[key] as ShardRow | undefined;
     if (hit && typeof hit.text === 'string') return new Response(hit.text, { status: 200, headers: { 'content-type': 'application/json' } });
-    const res = await doFetch(url);
-    if (!res.ok) return res;
+    let res: Response;
+    try { res = await doFetch(url); } catch (e) { shardFetch.failures += 1; throw e; }
+    if (!res.ok) { if (res.status >= 500) shardFetch.failures += 1; return res; }
     const text = await res.text();
     if (text.length <= MAX_SHARD_CHARS) { try { await area.set({ [key]: { text, at: now(), url } satisfies ShardRow }); } catch { /* storage full: the shard is used this once */ } }
     return new Response(text, { status: 200, headers: { 'content-type': 'application/json' } });
-  }) as typeof fetch;
+  }) as ShardFetch;
+  shardFetch.failures = 0;
+  return shardFetch;
 }
 
 const firstSentence = (s: string): string => { const m = /^(.+?[.!?])(\s|$)/u.exec(s); return (m ? m[1] : s).trim(); };
@@ -64,6 +70,7 @@ export interface GlossServiceOptions {
 export function createGlossService(opts: GlossServiceOptions) {
   const packs = opts.packs ?? defaultPacks;
   const runtimes = new Map<string, PackRuntimeLike>();
+  const shardFetches = new Map<string, ShardFetch>();
 
   /** The asset base: the configured one, else the service address. Without either, nothing can be fetched. */
   async function assetBase(): Promise<string | undefined> {
@@ -79,8 +86,10 @@ export function createGlossService(opts: GlossServiceOptions) {
     const cacheKey = `${languageId}@${base}`;
     let rt = runtimes.get(cacheKey);
     if (!rt) {
-      rt = packs.runtime(languageId, { fetch: createShardFetch(opts.area, base, opts.fetch, opts.now), baseUrl: base });
+      const shardFetch = createShardFetch(opts.area, base, opts.fetch, opts.now);
+      rt = packs.runtime(languageId, { fetch: shardFetch, baseUrl: base });
       if (!rt) return { reason: 'no-pack' };
+      shardFetches.set(cacheKey, shardFetch);
       runtimes.set(cacheKey, rt);
     }
     return { rt };
@@ -106,9 +115,15 @@ export function createGlossService(opts: GlossServiceOptions) {
     const pos = typeof r.pos === 'string' && /^[A-Za-z]{1,8}$/.test(r.pos) ? r.pos : undefined;
     const { rt, reason } = await runtimeFor(r.languageId);
     if (!rt) return { ok: true, found: false, senses: [], reason, message: reason === 'no-pack' ? `No pack with a dictionary is installed for ${r.languageId}.` : 'No dictionary location is configured. Open GoLearn setup.' };
+    const counter = [...shardFetches.entries()].find(([k]) => runtimes.get(k) === rt)?.[1];
+    const failuresBefore = counter?.failures ?? 0;
     try {
       const g = await rt.gloss(lemma, pos);
-      if (!g || !Array.isArray(g.senses) || !g.senses.length) return { ok: true, found: false, senses: [], reason: 'not-found' };
+      if (!g || !Array.isArray(g.senses) || !g.senses.length) {
+        // the runtime swallowed a failed shard fetch: say "offline" (try again) rather than "not in the dictionary"
+        if (counter && counter.failures > failuresBefore) return { ok: true, found: false, senses: [], reason: 'offline', message: 'The dictionary could not be reached.' };
+        return { ok: true, found: false, senses: [], reason: 'not-found' };
+      }
       const senses = [...new Set(g.senses.map((s) => cleanText(s.gloss, 160)).filter((s): s is string => !!s))].slice(0, 6);
       const attribution = cleanText(g.attribution, 200);
       if (attribution) void stampAttribution(r.languageId, attribution);

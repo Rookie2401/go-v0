@@ -18,7 +18,7 @@ packages/goreview/        the review domain, three responsibilities kept apart:
   src/session/            the runner: build → answer → grade → rate → evidence → record BEFORE advancing; recovery
   src/listening/          GoListen assessment mode wiring and the §10 metadata
   src/history/ transfer/  per-item history; research measures (never conclusions)
-packages/gotell/          the independent GoTell boundary (initialises with no deck, no session; writing engine: Prompt 6)
+packages/gotell/          the independent GoTell workspace (initialises with no deck, no session; engine built in Prompt 6, see GOTELL-ARCHITECTURE.md)
 ```
 
 Boundaries (tested): `gopractice` imports `goreview`, `gotell` and the shared packages; `goreview` and `gotell`
@@ -70,7 +70,7 @@ No card per clicked word; no mastery from the scheduler; no falsified history wh
 listening evidence from synthetic speech or from an item whose transcript was shown; no sentence from a commercial
 book; no AI-invented intervals (FSRS parameters untouched); no direct edits to the deck (events only).
 
-## 6. GoTell boundary (Prompt 6 builds the engine)
+## 6. GoTell boundary (as of Prompt 5; the engine was built in Prompt 6 — see `GOTELL-ARCHITECTURE.md`)
 
 `packages/gotell` initialises from the Repository alone: "words you can use" from productive evidence, private drafts
 through the document store with revisions, no import of GoReview. The page says the writing engine is not there yet.

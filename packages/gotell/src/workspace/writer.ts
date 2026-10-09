@@ -12,6 +12,9 @@
  *  - an analysis is valid for the exact text it was made from; once the text differs it is shown as out of date.
  */
 import { validateEvent } from '../../../repository-contract/src';
+import { summariseCoverage } from '../engine/coverage';
+import type { CoverageSummary } from '../engine/coverage';
+import { sentenceScopeHash } from '../engine/text';
 import type {
   AssistanceLevel, AssistanceStep, Correction, DraftAnalysis, DraftRecord, DraftVersion, Issue, ProfileSource, SentenceAnalysis, WriterProfile, WritingEvidence,
 } from '../types';
@@ -58,8 +61,10 @@ export interface WriterView {
   analysisError?: string;
   /** The analysis was made from different text than the one in the editor. */
   stale: boolean;
-  /** Distinct checker-coverage lines of the analysed sentences. */
+  /** Distinct checker-coverage lines of the analysed sentences (the whole statements). */
   coverage: string[];
+  /** The same statement as one line plus its details (what the screen shows). */
+  coverageSummary?: CoverageSummary;
   issues: IssueView[];
   accepted: Array<{ correctionId: string; sentenceIndex: number }>;
   lastEvidence?: WritingEvidence;
@@ -192,6 +197,7 @@ export function createWriterSession(deps: WriterDeps): WriterSession {
         loaded, notFound, record, text, title, dirty, saveState,
         ...(analysis ? { analysis } : {}), analysing, ...(analysisError ? { analysisError } : {}), stale: stale(),
         coverage: analysis ? [...new Set(analysis.sentences.map((s) => s.checkerCoverage).filter(Boolean))] : [],
+        ...(analysis ? { coverageSummary: summariseCoverage(analysis.sentences, analysis.languageId) } : {}),
         issues: issueViews(), accepted: [...accepted], ...(lastEvidence ? { lastEvidence } : {}),
         versions: record.versions, status, ...(conflict ? { conflict } : {}),
       };
@@ -364,8 +370,10 @@ export function createWriterSession(deps: WriterDeps): WriterSession {
         emit();
         return { ok: false as const, message: reason };
       }
-      shown.set(issueId, [...prior, outcome.step]);
-      record = { ...record, assistance: [...record.assistance, outcome.step] };
+      // each step is tied to the sentence it was shown for, so authorship is judged per sentence
+      const step = forSentence(outcome.step, found.sentence);
+      shown.set(issueId, [...prior, step]);
+      record = { ...record, assistance: [...record.assistance, step] };
       dirty = true;
       say('', 'info');
       emit();
@@ -384,9 +392,11 @@ export function createWriterSession(deps: WriterDeps): WriterSession {
         say(`No model was given: ${reason}`, 'info'); emit();
         return { ok: false as const, message: reason };
       }
-      record = { ...record, assistance: [...record.assistance, outcome.step] };
+      const sentence = analysis.sentences.find((s) => s.index === sentenceIndex);
+      const step = sentence ? forSentence(outcome.step, sentence) : outcome.step;
+      record = { ...record, assistance: [...record.assistance, step] };
       dirty = true; emit();
-      return { ok: true as const, step: outcome.step };
+      return { ok: true as const, step };
     }),
 
     accept: (correctionId, opts) => serial(async () => {
@@ -481,6 +491,10 @@ export function createWriterSession(deps: WriterDeps): WriterSession {
 
   // ───────────── helpers ─────────────
 
+  /** The step, tied to the sentence it was shown for (an engine that already did so keeps its own values). */
+  function forSentence(step: AssistanceStep, sentence: SentenceAnalysis): AssistanceStep {
+    return { ...step, sentenceIndex: step.sentenceIndex ?? sentence.index, sentenceHash: step.sentenceHash ?? sentenceScopeHash(sentence.text) };
+  }
   function findIssue(issueId: string): { issue: Issue; sentence: SentenceAnalysis } | undefined {
     for (const s of analysis?.sentences ?? []) { const issue = s.issues.find((i) => i.issueId === issueId); if (issue) return { issue, sentence: s }; }
     return undefined;

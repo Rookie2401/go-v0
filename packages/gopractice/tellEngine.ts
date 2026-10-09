@@ -5,10 +5,11 @@
  *
  * Storage: the learner's own area (`u:<learner>:` prefix, the same one the shell's queue and event log live in) holds the
  * device copies of drafts (`doc:*`, kept by the sync package's dirty-tracked local documents) and two GoTell keys:
- *   gotell:remote-consent     boolean            the remote-assistance switch (off by default; no provider is wired)
+ *   gotell:remote-consent     boolean            the remote-assistance switch (off by default; no provider is wired); each change also writes a
+ *                                                ConsentGiven / ConsentWithdrawn event, scope gotell:remote-assistance
  *   gotell:save-requested     string[]           draft ids the learner saved while the account could not be reached
  */
-import { createAnalyzer, createAssistance, judgeAuthorship } from '../gotell/src/engine';
+import { createAnalyzer, createAssistance, judgeAuthorship, stepsForSentence } from '../gotell/src/engine';
 import type { Analyzer } from '../gotell/src/engine';
 import {
   createDraftStore, createLocalDraftStore, createSyncingDraftStore, diffVersions, exportDraft, exportFileName, newVersion, restoreVersion, splitSentences,
@@ -17,9 +18,9 @@ import type { SentenceJudge } from '../gotell/src/documents';
 import { correctionAccepted, correctionRejected, sentenceKeyOf, writingEvidence } from '../gotell/src/evidence';
 import { buildWriterProfile } from '../gotell/src/profile';
 import { PROMPTS, guidanceFor, guidancePackFor, promptById, promptsFor, selectPrompt } from '../gotell/src/prompts';
-import { deleteDraft, exportLearnerWriting, forgetDevice, privacyStatement } from '../gotell/src/privacy';
+import { createRemoteConsent, deleteDraft, exportLearnerWriting, forgetDevice, privacyStatement } from '../gotell/src/privacy';
 import type { DiffLine, DraftExportFormat, FileOut, PromptGuidance, TellEngine } from '../gotell/src/workspace/port';
-import type { AssistanceStep, DraftVersion, Identity as TellIdentity, SentenceVersion } from '../gotell/src/types';
+import type { AssistanceLevel, AssistanceStep, DraftVersion, Identity as TellIdentity, SentenceVersion } from '../gotell/src/types';
 import { createPackRuntime, packFor } from '../language-packs/src';
 import type { AppContext } from './context';
 import type { Identity } from './ports';
@@ -78,18 +79,25 @@ export async function createTellEngine(ctx: AppContext, id: Identity): Promise<T
     analyzer = createAnalyzer({ languageId: id.languageId, runtime, manifest, now });
     if (!analyzer.hasChecker) { analysisUnavailableReason = `The ${manifest.identity.name} pack has no checker yet, so nothing can be checked. You can still write and save.`; analyzer = undefined; }
   }
-  let consent = (await area.get(CONSENT_KEY))[CONSENT_KEY] === true;
-  const assistance = analyzer ? createAssistance({ analyzer, consent: { remoteAssistance: () => consent }, now }) : undefined;
+  // the remote-assistance switch: off unless the stored value is the boolean true; switching writes ConsentGiven / ConsentWithdrawn
+  // (scope gotell:remote-assistance) through the shell's event queue, and the ladder reads the gate on every call
+  const remoteConsent = createRemoteConsent({
+    identity, appVersion: ctx.deps.appVersion, initial: (await area.get(CONSENT_KEY))[CONSENT_KEY],
+    persist: (on) => area.set({ [CONSENT_KEY]: on }), record: (events) => ctx.record(events), now, newId: () => ctx.deps.newId(),
+  });
+  const assistance = analyzer ? createAssistance({ analyzer, consent: remoteConsent.gate, now }) : undefined;
 
   const pack = guidancePackFor(id.languageId);
   const labelOf = (unitId: string): string => unitId.split(':')[2] ?? unitId;
 
-  // authorship: per sentence, from the steps shown; a sentence carried over unchanged keeps what it had
-  const judgeFor = (steps: readonly AssistanceStep[]): SentenceJudge => (sentence, prior: SentenceVersion | undefined) => {
-    const levels = [...new Set(steps.map((s) => s.level))].sort((a, b) => a - b);
-    const authorship = judgeAuthorship(sentence, steps, prior ? { previous: prior.text } : {});
+  // authorship: per sentence, from the steps shown FOR THAT SENTENCE; a sentence carried over unchanged keeps what it had
+  const judgeFor = (steps: readonly AssistanceStep[]): SentenceJudge => (sentence, prior: SentenceVersion | undefined, index) => {
+    const levelsOf = (xs: readonly AssistanceStep[]): AssistanceLevel[] => [...new Set(xs.map((s) => s.level))].sort((a, b) => a - b);
+    const authorship = judgeAuthorship(sentence, steps, { sentenceIndex: index, ...(prior ? { previous: prior.text } : {}) });
     if (prior && prior.text.normalize('NFC').trim() === sentence.normalize('NFC').trim() && authorship === 'independent') return { authorship: prior.authorship, assistance: [...prior.assistance] };
-    return { authorship, assistance: authorship === 'independent' ? [] : levels };
+    if (authorship === 'independent') return { authorship, assistance: [] };
+    const mine = levelsOf(stepsForSentence(steps, sentence, index));
+    return { authorship, assistance: mine.length ? mine : levelsOf(steps) };
   };
 
   const toLines = (before: DraftVersion, text: string): DiffLine[] => {
@@ -195,8 +203,8 @@ export async function createTellEngine(ctx: AppContext, id: Identity): Promise<T
       },
       remote: {
         providerName: () => undefined, // no remote assistant is wired in this build
-        consent: () => consent,
-        async setConsent(on) { consent = on; await area.set({ [CONSENT_KEY]: on }); },
+        consent: () => remoteConsent.value(),
+        setConsent: (on) => remoteConsent.set(on),
       },
     },
     async flushPending() {

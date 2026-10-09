@@ -144,7 +144,7 @@ Sizes (minified): see the report of the build in the commit / test log; `content
 
 ## Honest limits
 
-* One analyser (Albanian) is bundled; any other enrolment language gets a message and a counted lookup, never a guess. A pack with a dictionary but no bundled analyser says that instead.
+* Two analysers (Albanian, and Spanish at a minimal unreviewed level) are bundled; any other enrolment language gets a message and a counted lookup, never a guess. A pack with a dictionary but no bundled analyser says that instead.
 * Dictionary glosses need the dictionary host (`dict/<lang>/`) to be configured and reachable once per shard; the card says "looking up…" then shows what the word list had.
 * Remote or recorded voices are not played inside web pages by this version; only the device's own voice (practice only).
 * The learner-model line is an estimate from the Repository's projection, labelled `inference`; it is never shown to anyone else.

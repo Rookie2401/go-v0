@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 /** The workspace over GoTell's real modules (documents, evidence, privacy, prompts, the Albanian checker), through the shell. */
 import { afterEach, describe, expect, it } from 'vitest';
+import { validateEvent } from '../../packages/repository-contract/src';
 import { tellOverrides } from '../../packages/gopractice/screens/tell/overrides';
 import { decodeBody } from '../../packages/gotell/src/documents';
 import { defaultService, destroyRigs, makeRig, queued, until, type Rig } from '../gopractice/helpers';
@@ -65,6 +66,15 @@ describe('the real engine in the shell', () => {
     expect(rig.q<HTMLTextAreaElement>('#writer-text').value).toBe(body);
     expect(rig.root.querySelector('#writer-analysis-error')?.textContent ?? '').toBe('');
     expect(rig.q('#writer-coverage').textContent ?? '').not.toBe('');
+    // the coverage is ONE line, with the adapter's whole list behind a closed disclosure
+    const line = rig.q('#writer-coverage-line').textContent ?? '';
+    expect(line).toMatch(/^Checked: definiteness, case, agreement, conjugation, particles\. Not checked: \d+ other areas — see details\.$/);
+    expect(line.length).toBeLessThan(200);
+    const details = rig.q<HTMLDetailsElement>('#writer-coverage-details');
+    expect(details.tagName).toBe('DETAILS');
+    expect(details.open).toBe(false);
+    expect(details.textContent ?? '').toMatch(/idiomaticity/);
+    expect((details.textContent ?? '').length).toBeGreaterThan(1000); // nothing was dropped, only folded away
   });
 
   it('lists real prompts for Albanian, suggests one with a reason and shows machine-drafted prompts as unreviewed', async () => {
@@ -99,6 +109,34 @@ describe('the real engine in the shell', () => {
     click(rig.q('#tell-clean-go'));
     await until(() => (rig.q('#tell-privacy-device .status').textContent ?? '').includes('removed from this device'), 'the cleanup');
     expect(rig.service.docs.get('L1')!.size).toBe(1); // the account copy is untouched
+  });
+});
+
+describe('the remote-assistance switch in the shell', () => {
+  it('writes ConsentGiven then ConsentWithdrawn (scope gotell:remote-assistance) through the shell queue, and the stored switch follows', async () => {
+    const { rig } = await realRig();
+    await rig.go('tell/privacy');
+    await until(() => !!rig.root.querySelector('#tell-remote-consent'), 'the privacy page');
+    const box = rig.q<HTMLInputElement>('#tell-remote-consent');
+    expect(box.checked).toBe(false);
+    expect((await queued(rig)).filter((e) => e.kind.startsWith('Consent'))).toEqual([]); // nothing written until the learner acts
+    box.checked = true;
+    box.dispatchEvent(new Event('change', { bubbles: true }));
+    await until(async () => (await queued(rig)).some((e) => e.kind === 'ConsentGiven'), 'the ConsentGiven event');
+    await until(() => (rig.q('#tell-privacy-remote .status').textContent ?? '').includes('Remote help is allowed'), 'the status');
+    expect((await (await rig.app.ctx.data())!.area.get('gotell:remote-consent'))['gotell:remote-consent']).toBe(true);
+    box.checked = false;
+    box.dispatchEvent(new Event('change', { bubbles: true }));
+    await until(async () => (await queued(rig)).some((e) => e.kind === 'ConsentWithdrawn'), 'the ConsentWithdrawn event');
+    await until(() => (rig.q('#tell-privacy-remote .status').textContent ?? '').includes('Remote help is off'), 'the status');
+    expect((await (await rig.app.ctx.data())!.area.get('gotell:remote-consent'))['gotell:remote-consent']).toBe(false);
+    const events = (await queued(rig)).filter((e) => e.kind.startsWith('Consent'));
+    expect(events.map((e) => e.kind)).toEqual(['ConsentGiven', 'ConsentWithdrawn']);
+    for (const e of events) {
+      expect(validateEvent(e)).toEqual([]);
+      expect(e.payload).toMatchObject({ consent: 'gotell:remote-assistance', scope: 'gotell:remote-assistance' });
+      expect(e.producer.app).toBe('gopractice-tell');
+    }
   });
 });
 

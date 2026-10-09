@@ -194,9 +194,14 @@ export function planSession(input: PlanInput): SessionPlan {
   // tier 3: new — the deck's own never-reviewed items, then the intake's test-now outcomes
   const deckIds = new Set(deck.map((i) => i.itemId));
   const fresh: Cand[] = [];
+  const admitted = new Set<string>(); // an outcome list that names the same unit twice must not ask (or review) it twice
   for (const o of intake) {
     if (o.decision !== 'test-now' || !o.proposed) continue;
     const itemId = itemIdFor(o.unitId, o.proposed.dimension);
+    const key = `${o.unitId}|${o.proposed.family}`;
+    if (admitted.has(key) || admitted.has(itemId)) continue; // duplicate outcome: the first one stands
+    admitted.add(key);
+    admitted.add(itemId);
     if (deckIds.has(itemId)) continue; // the deck already has it in some state; intake never re-adds
     if (isAudioFamily(o.proposed.family) && !listeningOk) {
       skipped.push({ itemId, why: `listening item not added: ${!preferences.includeListening ? 'listening is switched off' : `no suitable audio (${audio.reason})`}` });

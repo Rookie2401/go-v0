@@ -87,7 +87,7 @@ surface? }, kind, subject { itemIds?, sentenceKey?, sourceRef?, cardId?, draftId
 { quality, assisted?, sourceReliability? }?, provenance { packId, analyzerId, confidence?, status?, analysisId? }?,
 processing { parserVersion?, packVersion? }?, correctionOf?`.
 
-Seven families, 27 kinds, twelve payload shapes validated at the write boundary (`validatePayload`): encounter,
+Seven families, 26 kinds, twelve payload shapes validated at the write boundary (`validatePayload`): encounter,
 lookup, assistance, playback, understood, item-mark, listening-assessment (must state `answerShownBefore: false`),
 written-review, grammar-assessment, writing-observation (`assisted` must be true when any assistance is listed),
 user-correction, review-invalidation, preference-change (always explicit), plus the profile and card shapes. Any

@@ -10,7 +10,7 @@ to append. `test/golisten/pronounce-boundary.test.ts` enforces the boundary, no 
 
 ```ts
 const golisten = createGoListen({
-  registries: defaultRegistries(),                 // sq (device + Azure) and the de demonstration recording
+  registries: defaultRegistries(),                 // sq, es (device + Azure), the de demonstration recording, and hi/th/nb/nn with no voice (honest capability reporting only)
   consent: () => ({ remoteSpeech: learner.allowsRemoteSpeech }),
   // speech, audio, fetch, objectUrl, utterance, now: defaults to the browser's; tests inject fakes
   // speechProxyBase: '/api/speech'                // the same-origin proxy of server/speechHandler.ts

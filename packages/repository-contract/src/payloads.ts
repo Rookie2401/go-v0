@@ -109,8 +109,65 @@ const surfaceOk = (p: Record<string, unknown>): ValidationIssue[] => {
   if (s.length > MAX_SURFACE_CHARS || s.trim().split(/\s+/u).length > MAX_SURFACE_WORDS) return [{ path: 'payload.surface', message: `a surface is at most ${MAX_SURFACE_WORDS} words; passages are never stored` }];
   return [];
 };
-const noText = (p: Record<string, unknown>): ValidationIssue[] =>
-  ['text', 'sentence', 'sentenceText', 'passage', 'content', 'body'].filter((k) => k in p).map((k) => ({ path: `payload.${k}`, message: 'event payloads never carry text; use a hash or a document reference' }));
+/** Key names (compared in lower case with everything but letters removed) that mean "a passage lives here". */
+const TEXT_KEYS: ReadonlySet<string> = new Set(['text', 'sentence', 'sentencetext', 'passage', 'content', 'body']);
+/**
+ * Keys that legitimately hold a few words of free text (a learner's correction reason, a goal's label, a typed answer, a
+ * voice's name), each bounded by MAX_FREE_TEXT_CHARS. Every other string anywhere in a payload obeys the surface rule:
+ * at most MAX_SURFACE_WORDS words.
+ */
+const FREE_TEXT_KEYS: ReadonlySet<string> = new Set(['reason', 'label', 'answer', 'expected', 'voiceid', 'message']);
+export const MAX_FREE_TEXT_CHARS = 1000;
+/** The longest a string without a free-text key may be, whatever its word count (identifiers, hashes, enum values). */
+export const MAX_PLAIN_STRING_CHARS = 300;
+/** Payloads and subjects are small records: anything nested deeper than this is refused (and never walked further). */
+export const MAX_NESTING = 8;
+
+export const wordCount = (s: string): number => s.trim().split(/\s+/u).filter(Boolean).length;
+const keyForm = (k: string): string => k.toLowerCase().replace(/[^a-z]/gu, '');
+
+/**
+ * The text guard. Walks `value` (objects and arrays, to MAX_NESTING levels) and reports: a text-like key at ANY depth; a
+ * string of more than MAX_SURFACE_WORDS words (or MAX_PLAIN_STRING_CHARS characters) under a key that is not a free-text
+ * key; a free-text string over MAX_FREE_TEXT_CHARS; nesting deeper than MAX_NESTING (never walked further, so a hostile
+ * structure costs a bounded walk). `base` is the path prefix (`payload`, `subject`); `freeKeys` adds key names that may
+ * hold prose-free identifiers or a few words in that record (the subject's unit ids, source title and locator); the caller bounds
+ * the length of those.
+ */
+export function scanForText(value: unknown, base: string, freeKeys: readonly string[] = []): ValidationIssue[] {
+  const issues: ValidationIssue[] = [];
+  const free = new Set([...FREE_TEXT_KEYS, ...freeKeys.map(keyForm)]);
+  const exempt = new Set(freeKeys.map(keyForm)); // named by the caller, who bounds their length itself
+  const walk = (v: unknown, path: string, key: string | undefined, depth: number): void => {
+    if (issues.length >= 20) return;
+    if (typeof v === 'string') {
+      if (key !== undefined && free.has(keyForm(key))) {
+        if (v.length > MAX_FREE_TEXT_CHARS && !exempt.has(keyForm(key))) issues.push({ path, message: `at most ${MAX_FREE_TEXT_CHARS} characters` });
+      } else if (v.length > MAX_PLAIN_STRING_CHARS || wordCount(v) > MAX_SURFACE_WORDS) {
+        issues.push({ path, message: `a string here is at most ${MAX_SURFACE_WORDS} words; passages are never stored` });
+      }
+      return;
+    }
+    if (v === null || typeof v !== 'object') return;
+    if (depth > MAX_NESTING) { issues.push({ path, message: `nested more than ${MAX_NESTING} levels deep` }); return; }
+    if (Array.isArray(v)) {
+      for (let i = 0; i < v.length && i < 500; i++) walk(v[i], `${path}[${i}]`, key, depth + 1);
+      return;
+    }
+    for (const k of Object.keys(v)) {
+      if (TEXT_KEYS.has(keyForm(k))) { issues.push({ path: `${path}.${k}`, message: 'event payloads never carry text; use a hash or a document reference' }); continue; }
+      walk((v as Record<string, unknown>)[k], `${path}.${k}`, k, depth + 1);
+    }
+  };
+  walk(value, base, undefined, 0);
+  return issues;
+}
+
+/** One issue per path: the first one reported wins (the text guard runs before the per-kind checks). */
+export const uniqueByPath = (issues: ValidationIssue[]): ValidationIssue[] => {
+  const seen = new Set<string>();
+  return issues.filter((i) => (seen.has(i.path) ? false : (seen.add(i.path), true)));
+};
 
 const CHECKS: Record<string, Check> = {
   encounter: (p) => [...oneOf(p, 'contextKind', ['sentence', 'fragment', 'none']), ...surfaceOk(p)],
@@ -143,9 +200,9 @@ const CHECKS: Record<string, Check> = {
 };
 
 export function validatePayload(kind: string, payload: unknown): ValidationIssue[] {
-  if (!payload || typeof payload !== 'object') return [{ path: 'payload', message: 'required object' }];
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return [{ path: 'payload', message: 'required object' }];
   const p = payload as Record<string, unknown>;
   const shape = (PAYLOAD_KINDS as Record<string, string>)[kind];
   if (!shape) return [{ path: 'kind', message: 'unknown event kind' }];
-  return [...noText(p), ...CHECKS[shape](p)];
+  return uniqueByPath([...scanForText(p, 'payload'), ...CHECKS[shape](p)]);
 }

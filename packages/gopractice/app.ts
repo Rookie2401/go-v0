@@ -157,6 +157,9 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     }
     if (!view.alive()) return;
     await refreshHeader();
+    // a screen that put focus on a control of its own (the answer box of a session's first item) keeps it; otherwise the screen itself takes focus
+    const held = deps.doc.activeElement;
+    if (held && held !== main && main.contains(held)) return;
     try { main.focus({ preventScroll: true }); } catch { /* focus is a convenience */ }
   }
 

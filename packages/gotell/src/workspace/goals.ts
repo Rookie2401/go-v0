@@ -1,6 +1,7 @@
 /**
  * The learner's writing goals, kept as preference events: `PreferenceChanged { key: 'gotell:goal', value: WritingGoal }`.
- * A goal is the learner's own sentence; marking it done is a later event with the same `goalId`. The profile builder reads
+ * A goal is the learner's own sentence (kept under `label`, which the contract allows as free text; older events used `text` and are
+ * still read); marking it done is a later event with the same `goalId`. The profile builder reads
  * the same convention, so this file and that one must agree on the key and the value shape.
  */
 import { CONTRACT_VERSION, type GoEvent } from '../../../repository-contract/src';
@@ -19,7 +20,8 @@ export interface GoalEventInput {
 
 export function goalEvent(input: GoalEventInput): GoEvent {
   const { identity: id, goal } = input;
-  const value: WritingGoal = { goalId: goal.goalId, text: goal.text, createdAt: goal.createdAt, ...(goal.done ? { done: true } : {}) };
+  // the words go under `label`: the contract refuses a `text` key in any payload, and allows a few words of free text under `label`
+  const value = { goalId: goal.goalId, label: goal.text, createdAt: goal.createdAt, ...(goal.done ? { done: true as const } : {}) };
   return {
     id: input.eventId, v: CONTRACT_VERSION, learnerId: id.learnerId, enrolmentId: id.enrolmentId, languageId: id.languageId,
     ...(id.varietyId ? { varietyId: id.varietyId } : {}),
@@ -38,11 +40,12 @@ export function foldGoals(events: readonly GoEvent[]): WritingGoal[] {
     if (e.kind !== 'PreferenceChanged') continue;
     const p = e.payload as { key?: unknown; value?: unknown };
     if (p.key !== GOAL_KEY || !p.value || typeof p.value !== 'object') continue;
-    const v = p.value as Partial<WritingGoal>;
-    if (typeof v.goalId !== 'string' || typeof v.text !== 'string' || typeof v.createdAt !== 'string') continue;
+    const v = p.value as Partial<WritingGoal> & { label?: unknown };
+    const words = typeof v.label === 'string' ? v.label : v.text; // events written before the contract refused `text` carry it there
+    if (typeof v.goalId !== 'string' || typeof words !== 'string' || typeof v.createdAt !== 'string') continue;
     const prev = latest.get(v.goalId);
     if (prev && prev.at > e.at) continue;
-    latest.set(v.goalId, { at: e.at, goal: { goalId: v.goalId, text: v.text, createdAt: v.createdAt, ...(v.done === true ? { done: true } : {}) } });
+    latest.set(v.goalId, { at: e.at, goal: { goalId: v.goalId, text: words, createdAt: v.createdAt, ...(v.done === true ? { done: true } : {}) } });
   }
   return [...latest.values()].map((x) => x.goal).sort((a, b) => a.createdAt.localeCompare(b.createdAt) || a.goalId.localeCompare(b.goalId));
 }

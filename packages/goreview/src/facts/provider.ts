@@ -72,9 +72,27 @@ export interface FactsProviderDeps {
   maxDictionarySenses?: number;
 }
 
-/** Adapts the typed Repository client (`RepositoryApi.unit`) to the `unit` dependency. */
-export function repositoryLookup(api: { unit(unitId: string): Promise<{ ok: true; data: RepositoryUnit } | { ok: false }> }): FactsProviderDeps['unit'] {
-  return async (unitId) => {
+/** A `unit` dependency that can be told which units are about to be asked for, so they come in a few calls instead of one each (audit PF-02). */
+export type UnitLookup = FactsProviderDeps['unit'] & { prime?(unitIds: string[]): Promise<void> };
+
+/** The ids per `POST /units/batch` call (the service's limit). */
+export const UNIT_BATCH_SIZE = 50;
+/** A primed answer is used within this long of being fetched (a unit the facts never asked for must not be read later, stale). */
+const PRIMED_TTL_MS = 30_000;
+
+/**
+ * Adapts the typed Repository client (`RepositoryApi.unit`) to the `unit` dependency. When the client also has `units` (several in one call),
+ * the returned lookup has `prime(ids)`: it fetches the ids in chunks of 50 and the following lookups of those ids are answered from that
+ * answer, each ONCE (the entry is consumed, so a later session never reads a stale unit). Any failure of the batch leaves the single-unit route to answer.
+ */
+export function repositoryLookup(api: {
+  unit(unitId: string): Promise<{ ok: true; data: RepositoryUnit } | { ok: false }>;
+  units?(unitIds: string[]): Promise<{ ok: true; data: { units: Record<string, RepositoryUnit>; missing: string[] } } | { ok: false }>;
+}): UnitLookup {
+  const primed = new Map<string, { at: number; unit: RepositoryUnit | undefined }>();
+  const lookup: UnitLookup = async (unitId) => {
+    const hit = primed.get(unitId);
+    if (hit) { primed.delete(unitId); if (Date.now() - hit.at < PRIMED_TTL_MS) return hit.unit; }
     try {
       const r = await api.unit(unitId);
       return r.ok ? r.data : undefined;
@@ -82,6 +100,21 @@ export function repositoryLookup(api: { unit(unitId: string): Promise<{ ok: true
       return undefined;
     }
   };
+  const many = api.units;
+  if (many) {
+    lookup.prime = async (unitIds) => {
+      const wanted = [...new Set(unitIds)];
+      for (let i = 0; i < wanted.length; i += UNIT_BATCH_SIZE) {
+        const chunk = wanted.slice(i, i + UNIT_BATCH_SIZE);
+        try {
+          const r = await many.call(api, chunk);
+          if (!r.ok) continue;
+          for (const id of chunk) primed.set(id, { at: Date.now(), unit: r.data.units[id] });   // an id the service does not know is answered as unknown, without a second call
+        } catch { /* the single-unit route answers instead */ }
+      }
+    };
+  }
+  return lookup;
 }
 
 // ───────────────────────────── small helpers ─────────────────────────────
@@ -141,7 +174,7 @@ interface Sent { text: string; source: ExampleSentence['source']; occs: Occ[]; p
 
 // ───────────────────────────── the provider ─────────────────────────────
 
-export function createFactsProvider(deps: FactsProviderDeps): FactsProvider {
+export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { prime(unitIds: string[]): Promise<void> } {
   const { adapter, pack } = deps;
   const manifest = pack.manifest;
   const lang = manifest.languageId;
@@ -538,6 +571,8 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider {
   }
 
   return {
+    /** Asks the Repository for these units in a few calls; the `factsFor` calls that follow use that answer. A no-op when the lookup cannot batch. */
+    async prime(unitIds) { try { await (deps.unit as UnitLookup).prime?.(unitIds); } catch { /* factsFor asks one by one */ } },
     async factsFor(unitId, languageId) {
       try {
         if (languageId !== lang || typeof unitId !== 'string') return undefined;

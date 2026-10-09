@@ -167,7 +167,8 @@ describe('goals', () => {
     expect(events).toHaveLength(1);
     const e = events[0];
     expect(validateEvent(e)).toEqual([]);
-    expect(e.payload).toMatchObject({ key: GOAL_KEY, origin: 'explicit', value: { text: 'Introduce myself to a host family' } });
+    expect(e.payload).toMatchObject({ key: GOAL_KEY, origin: 'explicit', value: { label: 'Introduce myself to a host family' } });
+    expect(JSON.stringify(e.payload)).not.toMatch(/"text"/);
     expect(e.producer.app).toBe('gopractice-tell');
     const value = (e.payload as { value: { goalId: string; createdAt: string; done?: boolean } }).value;
     expect(value.goalId).toMatch(/^goal-/);
@@ -210,6 +211,15 @@ describe('the privacy page', () => {
     click(rig.q('#tell-export-all'));
     await until(() => rig.downloads.length === 1, 'the export');
     expect(rig.downloads[0].filename).toBe('gotell-writing.json');
+  });
+
+  it('links to the licences and attribution in Settings', async () => {
+    const rig = await makeTellRig();
+    await rig.open('tell/privacy', '#tell-privacy-licences');
+    const link = rig.q<HTMLAnchorElement>('#tell-licences-link');
+    expect(link.getAttribute('href')).toBe('#/settings');
+    expect(rig.q('#tell-privacy-licences h2').textContent).toBe('Licences and attribution');
+    expect(rig.q('#tell-privacy-licences').textContent).toContain('Settings');
   });
 
   it('cleans the device only after a confirmation', async () => {

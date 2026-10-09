@@ -20,7 +20,7 @@ import type {
 } from '../../repository-contract/src';
 import { createLock, getOne, type KeyValueArea } from './area';
 import { mergeDocument, type DocumentMerge, type LocalDocuments } from './documents';
-import type { LocalQueue } from './queue';
+import { CORRUPT_PREFIX, type LocalQueue } from './queue';
 
 /** The only way the client reaches the server. Throw on any transport failure, including a timeout. */
 export interface Transport {
@@ -47,8 +47,12 @@ export interface SyncStatus {
   pending: number;
   /** Events the server refused (kept; see `rejected()`). */
   rejected: number;
-  /** Pulled events that failed local validation (kept under `quarantine:`; the cursor moved past them). */
+  /** Pulled events that failed local validation, and queue rows set aside as unreadable (kept under `quarantine:`; the cursor moved past the events). */
   quarantined: number;
+  /** Of `quarantined`: queue rows that could not be read as events (`quarantine:corrupt:`). */
+  corrupt: number;
+  /** What the client repaired by itself since it started (a damaged cursor, unreadable rows), for the diagnostics screen. */
+  notes: string[];
   /** Documents edited here and not yet accepted by the server. */
   dirtyDocuments: number;
   /** Epoch ms (the client's `now`) of the last successful push / pull. */
@@ -70,7 +74,11 @@ export interface SyncStatus {
 }
 
 export interface PushResult { ok: boolean; skipped?: 'offline'; sent: number; acked: number; duplicates: number; rejected: number; failed: number; error?: string }
-export interface DocumentPushResult { ok: boolean; skipped?: 'offline' | 'no-documents'; sent: number; accepted: number; conflicts: Array<{ docId: string; copyId?: string }>; failed: number; error?: string }
+export interface DocumentPushResult {
+  ok: boolean; skipped?: 'offline' | 'no-documents'; sent: number; accepted: number; conflicts: Array<{ docId: string; copyId?: string }>; failed: number; error?: string;
+  /** Documents the server refused one by one without a current copy to merge (they stay dirty and are tried again next round; they never fail the batch). */
+  refused?: Array<{ docId: string; reason: string }>;
+}
 export interface PullResult { ok: boolean; skipped?: 'offline'; received: number; appended: number; duplicates: number; quarantined: number; documents: number; cursor: number; error?: string }
 export interface SyncResult { skipped?: 'offline' | 'backoff'; push?: PushResult; documents?: DocumentPushResult; pull?: PullResult; ok: boolean }
 
@@ -153,15 +161,34 @@ export function createSyncClient(opts: SyncClientOptions): SyncClient {
     else { const t = Date.parse(r.serverTime); if (!Number.isNaN(t)) skewMs = now() - t; }
   };
 
-  const getCursor = async (): Promise<number> => (await getOne<number>(area, CURSOR_KEY)) ?? 0;
+  const notes: string[] = [];
+  const note = (m: string) => { if (!notes.includes(m)) notes.push(m); };
+  /** The pull cursor, repaired: anything but a non-negative whole number is a damaged value, and a re-pull from 0 is idempotent (local append dedupes on id). */
+  const getCursor = async (): Promise<number> => {
+    const v = await getOne<unknown>(area, CURSOR_KEY);
+    if (v === undefined) return 0;
+    if (typeof v === 'number' && Number.isInteger(v) && v >= 0) return v;
+    note('the sync cursor was damaged and was reset to 0: the history is read again from the start (nothing is duplicated)');
+    try { await area.set({ [CURSOR_KEY]: 0 }); } catch { /* the next round repairs it again */ }
+    return 0;
+  };
+  /** The documents cursor, repaired the same way (an ISO time or nothing). */
+  const getDocsSince = async (): Promise<string | undefined> => {
+    const v = await getOne<unknown>(area, DOCS_SINCE_KEY);
+    if (v === undefined) return undefined;
+    if (typeof v === 'string' && !Number.isNaN(Date.parse(v))) return v;
+    note('the documents cursor was damaged and was reset: every document is read again (revisions decide what changes)');
+    try { await area.remove(DOCS_SINCE_KEY); } catch { /* */ }
+    return undefined;
+  };
 
   async function status(): Promise<SyncStatus> {
-    const [pending, rejected, quarantined, dirty, cursor] = await Promise.all([
-      queue.size(), queue.rejected().then((r) => r.length), area.list(QUARANTINE_PREFIX).then((k) => k.length),
+    const [pending, rejected, quarantined, corrupt, dirty, cursor] = await Promise.all([
+      queue.size(), queue.rejected().then((r) => r.length), area.list(QUARANTINE_PREFIX).then((k) => k.length), area.list(CORRUPT_PREFIX).then((k) => k.length),
       docs ? docs.dirty().then((d) => d.length) : Promise.resolve(0), getCursor(),
     ]);
     return {
-      pending, rejected, quarantined, dirtyDocuments: dirty, lastPushAt, lastPullAt,
+      pending, rejected, quarantined, corrupt, notes: [...notes], dirtyDocuments: dirty, lastPushAt, lastPullAt,
       lastError: channels.push.error ?? channels.docs.error ?? channels.pull.error, nextRetryAt: nextRetryAt(),
       skewMs, serverTime, head, cursor, online, conflictCopies: [...conflictCopies],
     };
@@ -176,6 +203,11 @@ export function createSyncClient(opts: SyncClientOptions): SyncClient {
   async function pushImpl(): Promise<PushResult> {
     const res: PushResult = { ok: true, sent: 0, acked: 0, duplicates: 0, rejected: 0, failed: 0 };
     if (!online) return { ...res, skipped: 'offline' };
+    // A row that is not a queue row must not stand in front of the good ones: set it aside (with a diagnostic) and carry on.
+    try {
+      const aside = await queue.setAsideUnreadable();
+      if (aside.length) note(`${aside.length} unreadable queue row(s) were set aside under quarantine:corrupt: and are not waiting to be sent`);
+    } catch { /* the rows are skipped by pending() either way */ }
     const rows = await queue.pending();
     if (!rows.length) succeed(channels.push); // whatever failed earlier is no longer waiting to be retried
     for (let i = 0; i < rows.length; i += PUSH_BATCH) {
@@ -271,7 +303,15 @@ export function createSyncClient(opts: SyncClientOptions): SyncClient {
           const copyId = await reconcileDocument(r.current);
           if (copyId) { res.conflicts.push({ docId: r.docId, copyId }); conflicted = true; }
           else if ((await docs.get(r.docId))?.dirty) { res.failed += 1; res.ok = false; res.error = `document ${r.docId} was refused at revision ${r.current.revision}`; }
-        } else { res.failed += 1; res.ok = false; res.error = `document ${r.docId} was refused and the server sent no current copy`; }
+        } else if (r.reason === 'no-such-document' && docs.rebase && (await docs.rebase(r.docId))) {
+          // the server holds no document at the revision this device built on (it lost it, or never had it): the local text is the only copy,
+          // so it goes up as a NEW document (expectedRevision 0), in the next round of this call. Nothing is discarded.
+          conflicted = true;
+        } else {
+          // refused with no copy to merge: that document's failure alone. The other documents, the events and the pull go on; it is tried again next round.
+          res.failed += 1;
+          (res.refused ??= []).push({ docId: r.docId, reason: r.reason ?? 'refused' });
+        }
       }
       if (!conflicted) break;
     }
@@ -286,7 +326,7 @@ export function createSyncClient(opts: SyncClientOptions): SyncClient {
     const res: PullResult = { ok: true, received: 0, appended: 0, duplicates: 0, quarantined: 0, documents: 0, cursor: await getCursor() };
     if (!online) return { ...res, skipped: 'offline' };
     try {
-      let docsSince = docs ? await getOne<string>(area, DOCS_SINCE_KEY) : undefined;
+      let docsSince = docs ? await getDocsSince() : undefined;
       let newestDoc = docsSince;
       for (let page = 0; page < 10_000; page++) {
         const req: SyncPullRequest = { deviceId, afterSeq: res.cursor, limit: pullLimit, ...(page === 0 && docsSince ? { documentsSince: docsSince } : {}) };

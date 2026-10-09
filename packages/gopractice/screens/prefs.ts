@@ -1,9 +1,14 @@
-/** The session controls (ReviewPreferences), shared by the GoReview workspace and Settings. Saved on every change. */
+/**
+ * The session controls (ReviewPreferences), shared by the GoReview workspace and Settings. Saved on every change.
+ * `track` is handed each save as it starts, so a caller that acts on the saved values (Start a session) can wait for them.
+ * The two interface switches at the end (one-key shortcuts, the clock) are kept per device, not per learner (./uiprefs).
+ */
 import type { ReviewPreferences } from '../../goreview/src/types';
 import type { AppContext } from '../context';
 import { append, field, h, p, setStatus, statusLine } from '../dom';
+import { getUiPrefs, patchUiPrefs } from './uiprefs';
 
-export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPreferences, onSaved?: (p: ReviewPreferences) => void): HTMLElement {
+export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPreferences, onSaved?: (p: ReviewPreferences) => void, track?: (saving: Promise<unknown>) => void): HTMLElement {
   let current = initial;
   const status = statusLine();
   const num = (id: string, value: number, min: number, max: number, step: number): HTMLInputElement =>
@@ -29,7 +34,14 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
     setStatus(status, 'Saved on this device.', 'ok');
     onSaved?.(next);
   }
-  for (const c of [minutes, maxNew, retention, grammar, listening, saved]) c.addEventListener('change', () => { void save(); });
+  for (const c of [minutes, maxNew, retention, grammar, listening, saved]) c.addEventListener('change', () => { const saving = save(); track?.(saving); void saving; });
+
+  // interface switches of this device (WCAG 2.1.4 and 2.2.2): defaults are on; read when the form is built
+  const shortcuts = h('input', { type: 'checkbox', id: 'pref-shortcuts', name: 'pref-shortcuts', checked: true }) as HTMLInputElement;
+  const clock = h('input', { type: 'checkbox', id: 'pref-clock', name: 'pref-clock', checked: true }) as HTMLInputElement;
+  void getUiPrefs(ctx).then((ui) => { shortcuts.checked = ui.shortcuts; clock.checked = ui.showClock; });
+  shortcuts.addEventListener('change', () => { const saving = patchUiPrefs(ctx, { shortcuts: shortcuts.checked }).then(() => setStatus(status, 'Saved on this device.', 'ok')); track?.(saving); });
+  clock.addEventListener('change', () => { const saving = patchUiPrefs(ctx, { showClock: clock.checked }).then(() => setStatus(status, 'Saved on this device.', 'ok')); track?.(saving); });
 
   const toggle = (box: HTMLInputElement, label: string, help: string): HTMLElement =>
     h('label', { class: 'toggle' }, box, h('span', {}, label, h('span', { class: 'help' }, ` ${help}`)));
@@ -42,6 +54,8 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
     field('Share of grammar items (%)', grammar, 'Approximate; due items are never dropped to reach it.'),
     toggle(listening, 'Include listening practice', 'Needs audio. Synthetic speech is practice only and is never recorded as listening evidence.'),
     toggle(saved, 'Prioritise items I saved', 'Items you marked as saved are proposed first.'),
+    toggle(shortcuts, 'Keyboard shortcuts in a session', 'The keys 1 to 4 answer or grade and Space plays the audio. Turn them off if speech input or a switch device triggers them by accident; every action stays a button, and Enter and Esc still work.'),
+    toggle(clock, 'Show the clock in a session', 'The elapsed time, counted up. Turn it off if a ticking number is distracting.'),
     p('Kept on this device.', 'muted'),
     status,
   ]);

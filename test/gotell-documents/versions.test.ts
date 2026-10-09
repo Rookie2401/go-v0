@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
-  diffVersions, exportDraft, exportFileName, isUnchanged, judgeFromAssistance, newVersion, restoreVersion, splitSentences,
+  decodeBody, diffVersions, encodeRecord, exportDraft, exportFileName, isUnchanged, judgeFromAssistance, newVersion, restoreVersion, splitSentences,
 } from '../../packages/gotell/src/documents';
 import type { SentenceJudge } from '../../packages/gotell/src/documents';
+import { sentenceScopeHash } from '../../packages/gotell/src/engine';
 import type { AssistanceStep, DraftRecord } from '../../packages/gotell/src/types';
 import { blankRecord } from './world';
 
@@ -89,6 +90,39 @@ describe('judgeFromAssistance (the conservative default)', () => {
   it('assumes a changed sentence in a helped round was helped: hint levels → after-hint, level 4+ → revised-after-feedback', () => {
     expect(j([step(1, 'x'), step(2, 'y')])('Diçka e re.', undefined, 0)).toEqual({ authorship: 'after-hint', assistance: [1, 2] });
     expect(j([step(2, 'y'), step(4, 'Fjali tjetër.')])('Diçka e re.', undefined, 0)).toEqual({ authorship: 'revised-after-feedback', assistance: [2, 4] });
+  });
+});
+
+describe('judgeFromAssistance, per sentence', () => {
+  const forSentence = (i: number, text: string, level: AssistanceStep['level'], content: string): AssistanceStep => step(level, content, { source: 'adapter-checker', sentenceIndex: i, sentenceHash: sentenceScopeHash(text) });
+  const steps = [forSentence(0, 'Unë shkoj te libër.', 1, 'x'), forSentence(0, 'Unë shkoj te libër.', 2, 'y')];
+
+  it('a hint on sentence 0 leaves an edited sentence 1 independent', () => {
+    const j = judgeFromAssistance(steps);
+    expect(j('Unë shkoj te libri.', undefined, 0)).toEqual({ authorship: 'after-hint', assistance: [1, 2] });
+    expect(j('Unë lexoj gazetën.', undefined, 1)).toEqual({ authorship: 'independent', assistance: [] });
+  });
+
+  it('through newVersion: two sentences, hint on sentence 0 only, both rewritten', () => {
+    let rec = newVersion(blankRecord(), 'Unë shkoj te libër. Unë lexoj librin.', independent, 'dev-1', T(1));
+    rec = { ...rec, assistance: steps };
+    rec = newVersion(rec, 'Unë shkoj te libri. Unë lexoj gazetën.', judgeFromAssistance(rec.assistance), 'dev-1', T(2));
+    expect(rec.versions[1].sentences.map((s) => s.authorship)).toEqual(['after-hint', 'independent']);
+    expect(rec.versions[1].sentences.map((s) => s.assistance)).toEqual([[1, 2], []]);
+  });
+
+  it('steps with no sentence reference (legacy) still mark every changed sentence of the round', () => {
+    const j = judgeFromAssistance([step(2, 'y')]);
+    expect(j('Diçka e re.', undefined, 0).authorship).toBe('after-hint');
+    expect(j('Diçka tjetër.', undefined, 1).authorship).toBe('after-hint');
+  });
+
+  it('the sentence reference survives the JSON round trip of the record', () => {
+    let rec = blankRecord({ assistance: steps });
+    rec = newVersion(rec, 'Unë shkoj te libri.', judgeFromAssistance(steps), 'dev-1', T(1));
+    rec = { ...rec, assistance: steps };
+    const back = decodeBody({ docId: rec.draftId, languageId: 'sq', kind: 'draft', title: '', updatedAt: T(1), body: encodeRecord(rec) });
+    expect(back.assistance[0]).toMatchObject({ sentenceIndex: 0, sentenceHash: sentenceScopeHash('Unë shkoj te libër.') });
   });
 });
 

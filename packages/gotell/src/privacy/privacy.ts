@@ -3,12 +3,14 @@
  * device wipe, and the gate that keeps a remote assistant switched off until the learner has consented.
  * Rules: docs/ecosystem/RIGHTS-AND-PRIVACY-BOUNDARIES.md §3.
  */
+import { CONTRACT_VERSION } from '../../../repository-contract/src';
+import type { GoEvent } from '../../../repository-contract/src';
 import type { RepositoryApi } from '../../../repository-service/src/api';
 import { DOC_PREFIX, QUEUE_PREFIX, REJECTED_PREFIX, QUARANTINE_PREFIX, CURSOR_KEY, DOCS_SINCE_KEY, type KeyValueArea } from '../../../repository-sync/src';
 import { decodeBody } from '../documents/codec';
 import { toIso, type TimeSource } from '../documents/time';
 import { exportDraft } from '../documents/versions';
-import type { ConsentGate, DraftRecord, DraftStore, RemoteAssistant } from '../types';
+import type { ConsentGate, DraftRecord, DraftStore, Identity, RemoteAssistant } from '../types';
 
 // ───────────────────────────── the statement ─────────────────────────────
 
@@ -150,7 +152,8 @@ export class RemoteAssistantGate implements RemoteAssistant {
   get providerId(): string { return this.inner.providerId; }
 
   async propose(input: Parameters<RemoteAssistant['propose']>[0]): ReturnType<RemoteAssistant['propose']> {
-    if (!this.consent.remoteAssistance()) {
+    // only the boolean true is consent: a truthy string, a number, an object or a Promise from an async store is not
+    if (this.consent.remoteAssistance() !== true) {
       this.log?.(`remote-assistant ${this.inner.providerId}: refused (no consent); sent nothing`);
       throw new RemoteAssistanceNotConsented();
     }
@@ -167,3 +170,72 @@ export class RemoteAssistantGate implements RemoteAssistant {
 }
 
 export const gateRemoteAssistant = (inner: RemoteAssistant, consent: ConsentGate, log?: (line: string) => void): RemoteAssistant => new RemoteAssistantGate(inner, consent, log);
+
+// ───────────────────────────── the remote-assistance switch ─────────────────────────────
+
+/** The consent key written into ConsentGiven / ConsentWithdrawn payloads (the service reads `consent`, then `scope`, then `key`). */
+export const REMOTE_ASSISTANCE_SCOPE = 'gotell:remote-assistance';
+
+export interface RemoteConsentEventInput { identity: Identity; appVersion: string; at: string; eventId: string; on: boolean }
+
+/** A ConsentGiven (on) or ConsentWithdrawn (off) event for remote assistance. It names the scope and nothing else: no text, no provider. */
+export function remoteConsentEvent(input: RemoteConsentEventInput): GoEvent {
+  const { identity: id } = input;
+  return {
+    id: input.eventId, v: CONTRACT_VERSION, learnerId: id.learnerId, enrolmentId: id.enrolmentId, languageId: id.languageId,
+    ...(id.varietyId ? { varietyId: id.varietyId } : {}),
+    at: input.at,
+    producer: { app: 'gopractice-tell', version: input.appVersion, deviceId: id.deviceId, surface: 'tell-privacy' },
+    kind: input.on ? 'ConsentGiven' : 'ConsentWithdrawn', subject: {},
+    payload: { consent: REMOTE_ASSISTANCE_SCOPE, scope: REMOTE_ASSISTANCE_SCOPE },
+    dedupeKey: `${REMOTE_ASSISTANCE_SCOPE}:${input.on ? 'given' : 'withdrawn'}:${input.eventId}`,
+  };
+}
+
+export interface RemoteConsentDeps {
+  identity: Identity;
+  appVersion: string;
+  /** The stored switch; only the boolean true counts as on. */
+  initial: unknown;
+  /** Keeps the switch on this device. */
+  persist(on: boolean): Promise<void>;
+  /** The existing event submission path (the shell's queue). */
+  record(events: GoEvent[]): Promise<{ refused: Array<{ id: string; issues: string[] }> }>;
+  now(): Date | string;
+  newId(): string;
+}
+
+export interface RemoteConsent {
+  /** What the assistance ladder asks, on every call. Always a boolean. */
+  readonly gate: ConsentGate;
+  value(): boolean;
+  /**
+   * Turning ON records ConsentGiven first and only then switches on, so consent is never on without its record (if the record is
+   * refused this throws and the switch stays off; offline, the shell's queue keeps it and it is sent later). Turning OFF switches
+   * off at once, so no further call can be made, and then records ConsentWithdrawn; the switch is authoritative even if that
+   * record fails.
+   */
+  set(on: boolean): Promise<void>;
+}
+
+export function createRemoteConsent(deps: RemoteConsentDeps): RemoteConsent {
+  let current = deps.initial === true;
+  const eventFor = (on: boolean): GoEvent => remoteConsentEvent({ identity: deps.identity, appVersion: deps.appVersion, at: toIso(deps.now()), eventId: `consent-${deps.newId()}`, on });
+  return {
+    gate: { remoteAssistance: () => current === true },
+    value: () => current,
+    async set(on) {
+      if (on === current) return;
+      if (on) {
+        const r = await deps.record([eventFor(true)]);
+        if (r.refused.length) throw new Error(`consent could not be recorded (${r.refused[0].issues.join('; ') || 'refused'}), so remote help stays off`);
+        current = true;
+        await deps.persist(true);
+        return;
+      }
+      current = false;
+      await deps.persist(false);
+      try { await deps.record([eventFor(false)]); } catch { /* the switch is off; the withdrawal event is best effort */ }
+    },
+  };
+}

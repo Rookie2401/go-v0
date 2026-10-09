@@ -55,7 +55,7 @@ An observation is `{unitId, dimension, outcome, weight, assisted, difficulty?, s
 | ItemMarked `known` | readingRecognition positive | 0.2 | 0.3 (self-assertion) |
 | ItemMarked `learning` | readingRecognition negative | 0.2 | 0.3 |
 | ItemMarked `saved`, `ignore` | nothing (a bookmark is not evidence) | | |
-| ListeningAssessed (`answerShownBefore: false`, else nothing) | listeningRecognition +/- by `correct`; `hinted` goes to assistedRecognition | 0.8 recorded voice, 0.6 synthetic, x (1 - 0.3 if hinted) | 0.5 if `responseMode: 'self-report'`, else 1 |
+| ListeningAssessed (`answerShownBefore: false`, else nothing) | listeningRecognition +/- by `correct`; `hinted` goes to assistedRecognition | 0.8 recorded voice, 0 for synthetic or unverified voices (never listening evidence; D8), x (1 - 0.3 if hinted) | 0.5 if `responseMode: 'self-report'`, else 1 |
 | CardReviewed recognition | readingRecognition +/- by `correct` | 0.7 x grade factor | 1 |
 | CardReviewed recall, cloze | productiveRetrieval +/- by `correct` | 0.8 x grade factor | 1 |
 | CardReviewed hinted or `answerShownBefore` | assistedRecognition +/- | 0.4 x grade factor | 1 |

@@ -9,7 +9,7 @@
  *  - this package imports nothing from src/ or from any other package;
  *  - application packages import this package and never each other.
  */
-import { validatePayload } from './payloads';
+import { scanForText, validatePayload } from './payloads';
 import type { ValidationIssue } from './units';
 
 export * from './units';
@@ -107,28 +107,80 @@ const ALL_KINDS = new Set<string>(Object.values(EVENT_KINDS).flat());
 const ISO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
 const QUALITIES = ['none', 'weak', 'moderate', 'strong'];
 
+/** The longest an identifier (enrolment, language, variety, producer version and device, sentence key, reader, card, draft) may be. */
+export const MAX_ID_CHARS = 200;
+/** The longest a unit id (`lemma:sq:shtëpi:NOUN`, `form:sq:…`) may be, and how many an event may list. */
+export const MAX_UNIT_ID_CHARS = 300;
+export const MAX_ITEM_IDS = 200;
+export const MAX_TITLE_CHARS = 300;
+export const MAX_LOCATOR_CHARS = 2048;
+/** How far ahead of the checker's clock an event's `at` may be (device clocks drift; a day or a year ahead is not drift). */
+export const MAX_FUTURE_SKEW_MS = 5 * 60_000;
+
+export interface ValidateEventOptions {
+  /** The clock to hold `at` against (epoch ms). Without it the time is only shape-checked: only a server or a worker knows what time it is. */
+  nowMs?: number;
+  /** Skew allowed ahead of `nowMs`; default MAX_FUTURE_SKEW_MS. */
+  futureSkewMs?: number;
+}
+
+const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
+
 /** Runtime validation at the write boundary: the Repository refuses what the types alone cannot refuse. */
-export function validateEvent(e: unknown): ValidationIssue[] {
+export function validateEvent(e: unknown, opts: ValidateEventOptions = {}): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
   if (!e || typeof e !== 'object') return [{ path: '', message: 'not an object' }];
   const x = e as Record<string, unknown>;
   const str = (k: string) => { if (typeof x[k] !== 'string' || !(x[k] as string).length) issues.push({ path: k, message: 'required string' }); };
+  const cap = (path: string, v: unknown, max: number) => { if (typeof v === 'string' && v.length > max) issues.push({ path, message: `at most ${max} characters` }); };
   for (const k of ['id', 'learnerId', 'enrolmentId', 'languageId', 'at']) str(k);
   if (typeof x.id === 'string' && x.id.length > 200) issues.push({ path: 'id', message: 'at most 200 characters' });
+  cap('enrolmentId', x.enrolmentId, MAX_ID_CHARS); cap('languageId', x.languageId, MAX_ID_CHARS); cap('varietyId', x.varietyId, MAX_ID_CHARS);
+  if (x.varietyId !== undefined && typeof x.varietyId !== 'string') issues.push({ path: 'varietyId', message: 'string' });
   if (!ACCEPTED_VERSIONS.includes(x.v as number)) issues.push({ path: 'v', message: `contract version ${ACCEPTED_VERSIONS.join(' or ')} required` });
   if (typeof x.at === 'string' && !ISO.test(x.at)) issues.push({ path: 'at', message: 'ISO 8601 timestamp required' });
+  else if (typeof x.at === 'string' && opts.nowMs !== undefined) {
+    const t = Date.parse(x.at);
+    const limit = opts.nowMs + (opts.futureSkewMs ?? MAX_FUTURE_SKEW_MS);
+    if (!Number.isNaN(t) && t > limit) {
+      issues.push({ path: 'at', message: `at-in-future: later than ${new Date(limit).toISOString()}, the latest time accepted; fix the device clock` });
+    }
+  }
   if (x.recordedAt !== undefined && (typeof x.recordedAt !== 'string' || !ISO.test(x.recordedAt))) issues.push({ path: 'recordedAt', message: 'ISO 8601 timestamp' });
   if (!ALL_KINDS.has(String(x.kind))) issues.push({ path: 'kind', message: 'unknown event kind' });
   const p = x.producer as Record<string, unknown> | undefined;
-  if (!p || !PRODUCERS.includes(p.app as Producer) || typeof p.version !== 'string' || typeof p.deviceId !== 'string') issues.push({ path: 'producer', message: 'app, version and deviceId required' });
-  if (!x.subject || typeof x.subject !== 'object') issues.push({ path: 'subject', message: 'required object' });
+  if (!isRecord(p) || !PRODUCERS.includes(p.app as Producer) || typeof p.version !== 'string' || typeof p.deviceId !== 'string') issues.push({ path: 'producer', message: 'app, version and deviceId required' });
   else {
-    const s = x.subject as Record<string, unknown>;
+    cap('producer.version', p.version, MAX_ID_CHARS); cap('producer.deviceId', p.deviceId, MAX_ID_CHARS);
+    if (p.surface !== undefined && typeof p.surface !== 'string') issues.push({ path: 'producer.surface', message: 'string' });
+    cap('producer.surface', p.surface, MAX_ID_CHARS);
+  }
+  if (!isRecord(x.subject)) issues.push({ path: 'subject', message: 'required object' });
+  else {
+    const s = x.subject;
     if (s.sentenceText !== undefined || s.text !== undefined) issues.push({ path: 'subject', message: 'a subject identifies a context; it never carries its text' });
     if (s.itemIds !== undefined && (!Array.isArray(s.itemIds) || s.itemIds.some((i) => typeof i !== 'string'))) issues.push({ path: 'subject.itemIds', message: 'array of unit ids' });
+    else if (Array.isArray(s.itemIds)) {
+      if (s.itemIds.length > MAX_ITEM_IDS) issues.push({ path: 'subject.itemIds', message: `at most ${MAX_ITEM_IDS} unit ids` });
+      else s.itemIds.forEach((i, n) => cap(`subject.itemIds[${n}]`, i, MAX_UNIT_ID_CHARS));
+    }
+    for (const k of ['sentenceKey', 'cardId', 'draftId'] as const) { if (s[k] !== undefined && typeof s[k] !== 'string') issues.push({ path: `subject.${k}`, message: 'string' }); cap(`subject.${k}`, s[k], MAX_ID_CHARS); }
+    if (s.sourceRef !== undefined) {
+      if (!isRecord(s.sourceRef)) issues.push({ path: 'subject.sourceRef', message: 'object' });
+      else {
+        for (const k of ['title', 'locator'] as const) if (s.sourceRef[k] !== undefined && typeof s.sourceRef[k] !== 'string') issues.push({ path: `subject.sourceRef.${k}`, message: 'string' });
+        cap('subject.sourceRef.title', s.sourceRef.title, MAX_TITLE_CHARS); cap('subject.sourceRef.locator', s.sourceRef.locator, MAX_LOCATOR_CHARS);
+      }
+    }
+    // Text-like keys at any depth, and passages hiding under any key the subject does not define. The subject's own fields (unit ids, the
+    // sentence hash, the card and draft ids, the source's title and locator) are identifiers whose length is capped above, not prose.
+    issues.push(...scanForText(s, 'subject', ['itemIds', 'sentenceKey', 'cardId', 'draftId', 'title', 'locator']));
   }
-  if (!x.payload || typeof x.payload !== 'object') issues.push({ path: 'payload', message: 'required object' });
-  else if (ALL_KINDS.has(String(x.kind))) issues.push(...validatePayload(String(x.kind), x.payload));
+  if (!isRecord(x.payload)) issues.push({ path: 'payload', message: 'required object' });
+  else if (ALL_KINDS.has(String(x.kind))) {
+    issues.push(...validatePayload(String(x.kind), x.payload));
+    cap('payload.readerId', x.payload.readerId, MAX_ID_CHARS);
+  }
   if (x.correctionOf !== undefined && typeof x.correctionOf !== 'string') issues.push({ path: 'correctionOf', message: 'event id' });
   if (x.dedupeKey !== undefined && (typeof x.dedupeKey !== 'string' || !x.dedupeKey.length || x.dedupeKey.length > 300)) issues.push({ path: 'dedupeKey', message: 'non-empty string up to 300 characters' });
   if (x.evidence !== undefined) {

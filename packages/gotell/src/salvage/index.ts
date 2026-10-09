@@ -3,7 +3,7 @@ export { diffSentences } from './diff';
 export type { DiffEntry } from './diff';
 export { CHRONOLOGY, CONCEPTS, CONCEPT_IDS, NEGATORS, SUBJECT_PRONOUNS, conceptMatches, conceptsForToken, englishConcepts, lexemesFor } from './concepts';
 export type { ConceptId, ConceptMeta } from './concepts';
-export { checkerCoverage } from './coverage';
+export { checkerCoverage, checkerCoverageParts, coverageText } from './coverage';
 export { chronologyChange, chronologyIn, isNegator, keyTermChange, meaningChanges, negationChange, negatorsIn, tenseChange } from './meaning';
 export { planRepairs } from './repairs';
 export type { PlannedRepair } from './repairs';

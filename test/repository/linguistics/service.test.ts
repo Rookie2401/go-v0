@@ -140,9 +140,12 @@ describe('correct', () => {
     expect(old.reason).toMatch(/reviewer.*it is the verb here/);
     expect(old.supersededBy).toBe(out.analysis.analysisId);
     expect(store.analyses.get(out.analysis.analysisId)!.status).toBe('verified');
-    // the construction it names exists; the existing lexeme is untouched
+    // the construction it names exists; the reviewer's verdict supersedes the earlier lower status of the lexeme and of the form (audit D4)
     expect(store.units.get('morph:sq:VERB:Mood=Ind|Tense=Pres')?.kind).toBe('morph-construction');
-    expect(store.units.get('lemma:sq:jam:VERB')!.provenance.source).not.toBe('reviewer');
+    expect(store.units.get('lemma:sq:jam:VERB')).toMatchObject({ status: 'verified', provenance: { source: 'reviewer' } });
+    expect(store.units.get('form:sq:jetë')).toMatchObject({ status: 'verified', provenance: { source: 'reviewer' } });
+    // the other lexeme the form could have been is not touched by the correction
+    expect(store.units.get('lemma:sq:jetë:NOUN')!.status).not.toBe('verified');
   });
 
   it('a learner correction is provisional at 0.6', async () => {

@@ -155,8 +155,33 @@ export function spanishRegistry(): VoiceRegistry {
   };
 }
 
+/**
+ * A registry that holds NO voice for a language: capability reporting only. It exists so that `availability(languageId)`
+ * and the pack's `registryRef` (`golisten:<lang>`) resolve for every language of the product, answering "cannot speak"
+ * with the reasons, instead of "No voices are registered" (which is indistinguishable from a typo). It declares no
+ * recording, no device template and no remote voice: nothing is claimed, no voice is validated, nothing can be heard or
+ * assessed through it. A language moves out of this state by getting a real registry, not by editing this one.
+ */
+export function noAudioRegistry(languageId: string, languageName: string, extraGaps: string[] = []): VoiceRegistry {
+  return {
+    languageId,
+    entries: [],
+    gaps: [
+      `GoListen has no ${languageName} voice registered: no recording, no device-voice template and no remote voice; nothing is claimed.`,
+      `No ${languageName} audio exists in this repository, so there is no ${languageName} listening evidence.`,
+      ...extraGaps,
+    ],
+  };
+}
+
 export function defaultRegistries(opts: { demoUrl?: string } = {}): VoiceRegistry[] {
-  return [albanianRegistry(), demoGermanRegistry({ url: opts.demoUrl }), spanishRegistry()];
+  return [
+    albanianRegistry(), demoGermanRegistry({ url: opts.demoUrl }), spanishRegistry(),
+    noAudioRegistry('hi', 'Hindi', ['The Hindi pack names Azure voices it expects to offer; they are not registered here.']),
+    noAudioRegistry('th', 'Thai', ['The Thai pack names Azure voices it expects to offer; they are not registered here.']),
+    noAudioRegistry('nb', 'Norwegian Bokmål', ['The Bokmål pack names Azure voices it expects to offer; they are not registered here. A Nynorsk (nn) voice is never substituted.']),
+    noAudioRegistry('nn', 'Norwegian Nynorsk', ['A Bokmål (nb) or generic Norwegian voice is never substituted for Nynorsk.']),
+  ];
 }
 
 /** Merges registries of the same language (entries and gaps concatenate; the first `phonetics` wins). */

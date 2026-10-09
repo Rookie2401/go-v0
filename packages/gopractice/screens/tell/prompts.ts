@@ -35,7 +35,7 @@ export async function render(env: TellEnv, params: string[]): Promise<void> {
   }
 
   const writeButton = (prompt: WritingPrompt): HTMLElement =>
-    h('div', { class: 'row' }, button('Write with this prompt', () => { void writeWith(prompt); }, { class: 'btn small primary', 'data-write': prompt.promptId }));
+    h('div', { class: 'row' }, button('Write with this prompt', () => { void writeWith(prompt); }, { class: 'btn small primary', 'data-write': prompt.promptId, 'aria-label': `Write with this prompt: ${prompt.goal}` }));
 
   function paintTabs(): void {
     clear(tabs);

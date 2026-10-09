@@ -22,7 +22,7 @@ localhost); the learner can override it at sign-in or in Settings.
 | `#/review/session` | one exercise at a time, feedback, challenge, analysis-error report, per-item tools, summary |
 | `#/review/history/<item>` | the item's review history (the scheduler numbers are labelled bookkeeping) |
 | `#/review/transfer` | transfer measures — "research measures, not conclusions" — with their basis and what they cannot show |
-| `#/tell` | GoTell boundary: words you can use (read-only), your drafts, a placeholder editor saving a `PrivateDocument` with revisions. The writing engine is a later phase and the page says so |
+| `#/tell` | GoTell: the writing workspace (modes, prompts, writer with analysis and the six-level assistance ladder, versions, goals, privacy); see `docs/ecosystem/GOTELL-ARCHITECTURE.md` |
 | `#/settings` | review preferences, remote-speech switch, account (sign out / sign out and remove this device's data), service address, sync, diagnostics (versions, FSRS algorithm string, counts) |
 
 ## Keyboard (session)

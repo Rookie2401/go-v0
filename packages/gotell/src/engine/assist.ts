@@ -18,7 +18,7 @@
 import { planRepairs, validateProposalShape } from '../salvage';
 import type { AssistanceLevel, AssistanceRequest, AssistanceStep, ConsentGate, Correction, DraftAnalysis, Issue, IssueClass, RemoteAssistant, SentenceAnalysis } from '../types';
 import type { Analyzer } from './analyze';
-import { isoOf, unique } from './text';
+import { isoOf, sentenceScopeHash, unique } from './text';
 
 export interface AssistanceDeps {
   analyzer: Analyzer;
@@ -144,7 +144,8 @@ export function createAssistance(deps: AssistanceDeps): Assistance {
   // ── level 6 ──
   async function remoteModel(sentence: SentenceAnalysis, ctx: AssistanceContext, when: string): Promise<AssistanceStep | Refusal> {
     const { remote } = deps;
-    if (!consent.remoteAssistance() || !remote) return { refused: true, reason: NO_MODEL_WITHOUT_REMOTE };
+    // only the boolean true is consent (a truthy string, a number, an object or a Promise is not)
+    if (consent.remoteAssistance() !== true || !remote) return { refused: true, reason: NO_MODEL_WITHOUT_REMOTE };
     let raw: unknown;
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
@@ -233,9 +234,11 @@ export function createAssistance(deps: AssistanceDeps): Assistance {
 
     // accumulate what was revealed at or below each level, over the prior steps and the steps of this request
     const seen: AssistanceStep[] = [...prior];
+    const sentenceHash = sentenceScopeHash(sentence.text);
     const steps = out.map((s) => {
       const revealed = unique([...seen.filter((p) => p.level <= s.level).flatMap((p) => p.revealedUnitIds), ...s.revealedUnitIds]);
-      const withAll: AssistanceStep = { ...s, revealedUnitIds: revealed };
+      // every step records the sentence it was shown for, so authorship is judged per sentence
+      const withAll: AssistanceStep = { ...s, revealedUnitIds: revealed, sentenceIndex: sentence.index, sentenceHash };
       seen.push(withAll);
       return withAll;
     });

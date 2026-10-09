@@ -114,6 +114,15 @@ export interface Correction {
   provenance: Issue['provenance'];
 }
 
+export interface CoverageParts {
+  /** The statement about this sentence and this checker (found nothing / stopped / how broad), without the list of limits. */
+  headline: string;
+  /** One entry per limit the adapter declares. */
+  limits: string[];
+  /** False when nothing in the sentence was checked (no analyser, the checker stopped, or the language has no production checks). */
+  checked: boolean;
+}
+
 export interface SentenceAnalysis {
   index: number;
   text: string;
@@ -125,6 +134,8 @@ export interface SentenceAnalysis {
   corrections: Correction[];
   /** What the checker cannot see for this language (honesty line). */
   checkerCoverage: string;
+  /** The same statement in parts (a headline and the adapter's limits, one entry each); the screen shows it as one line with a disclosure. */
+  coverageParts?: CoverageParts;
   analysisStatus: AnalysisStatus | 'none';
 }
 
@@ -154,6 +165,13 @@ export interface AssistanceStep {
   source: 'adapter-checker' | 'pack-grammar' | 'pack-sentence' | 'learner-own-sentence' | 'remote-assistant' | 'none';
   /** For a model (6): where the wording comes from and its review state. */
   review?: 'unreviewed' | 'reviewed' | 'learner-own';
+  /**
+   * The sentence this step was shown for: its 0-based index in the analysed text, and a hash of that sentence (so the step still
+   * finds its sentence if sentences are inserted or removed before it). Both are absent on legacy records and on a hand-made
+   * step; authorship then falls back to the whole-round rule (such a step is taken to touch every changed sentence).
+   */
+  sentenceIndex?: number;
+  sentenceHash?: string;
   at: string;
 }
 

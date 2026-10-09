@@ -24,6 +24,7 @@ import {
   mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, sortPacks, zeroErase,
 } from './rules';
 import type { ConcreteStore, EraseCounts, StoreOptions } from './rules';
+import { applyTombstone as applyDeletion } from './deletion';
 
 export interface SqliteOptions extends StoreOptions {
   /** A different migrations directory (tests of the runner); defaults to the package's own. */
@@ -50,6 +51,8 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
   try {
     db.exec('PRAGMA foreign_keys = ON');
     db.exec('PRAGMA busy_timeout = 5000');
+    // Physical erasure (audit P-11): a deleted cell and a freed page are overwritten with zeros instead of left in the file.
+    db.exec('PRAGMA secure_delete = ON');
     if (path !== ':memory:') { db.exec('PRAGMA journal_mode = WAL'); db.exec('PRAGMA synchronous = NORMAL'); }
     applyMigrations(db, opts.migrationsDir, now);
   } catch (e) {
@@ -103,6 +106,18 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
     }
   }
   const gate = async (): Promise<void> => { while (open && !inside.getStore()) await open; };
+
+  /**
+   * Erasure leaves the learner's plaintext in the write-ahead log (the frames that wrote it) until a checkpoint folds the log into the file.
+   * `secure_delete` zeroes the main file's pages; this empties the log. It runs after the outermost write of a deletion has committed (a
+   * checkpoint cannot run inside a transaction), and is best effort: a reader holding the log open makes it a no-op that the next call retries.
+   */
+  let scrubWanted = false;
+  const checkpoint = (): void => {
+    if (path === ':memory:' || closed) return;
+    try { db.prepare('PRAGMA wal_checkpoint(TRUNCATE)').get(); } catch { /* busy: the next deletion or compact() retries */ }
+  };
+  const scrubIfNeeded = (): void => { if (scrubWanted && depth === 0) { scrubWanted = false; checkpoint(); } };
 
   const tombstonedEvent = (learnerId: string, id: string): boolean =>
     get("SELECT 1 AS x FROM tombstones WHERE learner_id = ? AND scope_kind = 'event' AND event_id = ?", learnerId, id) !== undefined;
@@ -203,7 +218,10 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       return r ? Number(r.head) : 0;
     },
     async deleteEvents(learnerId, ids) {
-      return atomic(() => ids.reduce((n, id) => n + run('DELETE FROM events WHERE learner_id = ? AND id = ?', learnerId, id), 0));
+      scrubWanted = true;
+      const n = atomic(() => ids.reduce((count, id) => count + run('DELETE FROM events WHERE learner_id = ? AND id = ?', learnerId, id), 0));
+      scrubIfNeeded();
+      return n;
     },
 
     // ───────────────────────────── layer A ─────────────────────────────
@@ -389,10 +407,12 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       });
     },
     async deleteDocument(learnerId, docId) {
+      scrubWanted = true;
       atomic(() => {
         const cur = get('SELECT * FROM documents WHERE learner_id = ? AND doc_id = ?', learnerId, docId);
         if (cur) putDocumentRow(deletedDocument(documentOfRow(cur), now()));
       });
+      scrubIfNeeded();
     },
 
     // ───────────────────────────── identity ─────────────────────────────
@@ -506,7 +526,8 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
 
     // ───────────────────────────── whole-store ─────────────────────────────
     async eraseLearner(learnerId): Promise<EraseCounts> {
-      return atomic(() => {
+      scrubWanted = true;
+      const counts = atomic(() => {
         const c = zeroErase();
         c.events = run('DELETE FROM events WHERE learner_id = ?', learnerId); // event_units follow by cascade
         run('DELETE FROM event_heads WHERE learner_id = ?', learnerId);
@@ -523,6 +544,18 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
         c.learners = run('DELETE FROM learners WHERE learner_id = ?', learnerId);
         return c;
       });
+      scrubIfNeeded();
+      return counts;
+    },
+    async applyTombstone(t) {
+      return applyDeletion(store, t);
+    },
+    /** Operator maintenance: empty the log and rebuild the file without its free pages (VACUUM can take a while on a large store). */
+    async compact() {
+      if (path === ':memory:') return;
+      checkpoint();
+      db.exec('VACUUM');
+      checkpoint();
     },
   };
 
@@ -531,7 +564,7 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
     Object.entries(impl).map(([name, fn]) => [name, async (...args: unknown[]) => { await gate(); return (fn as (...a: unknown[]) => unknown)(...args); }]),
   ) as unknown as Omit<ConcreteStore, 'transaction' | 'close'>;
 
-  return {
+  const store: ConcreteStore = {
     ...gated,
     async transaction<T>(fn: () => Promise<T>): Promise<T> {
       if (inside.getStore()) {
@@ -564,6 +597,7 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
           depth = 0;
         }
       } finally {
+        scrubIfNeeded();
         open = undefined;
         release();
       }
@@ -575,4 +609,5 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       db.close();
     },
   };
+  return store;
 }

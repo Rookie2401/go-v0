@@ -22,8 +22,9 @@ import { createProfileService } from './profile';
 import { createRecorder } from './recorder';
 import { createSessionManager } from './session';
 import { createSettings } from './settings';
+import { restrictStorageToTrustedContexts } from './storageAccess';
 import { createSyncService } from './sync';
-import { QUEUE_PREFIX, REJECTED_PREFIX } from '../../../repository-sync/src';
+import { QUARANTINE_PREFIX, QUEUE_PREFIX, REJECTED_PREFIX } from '../../../repository-sync/src';
 
 export const CONTEXT_MENU_ID = 'golearn-lookup';
 export const COMMAND_ID = 'lookup-selection';
@@ -58,6 +59,8 @@ const withTimeout = (f: typeof fetch, ms: number): typeof fetch => ((input: Requ
 }) as typeof fetch;
 
 export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) {
+  // before anything is stored: the token must not be readable from a content script's context
+  restrictStorageToTrustedContexts(chrome);
   const local = chrome.storage.local;
   const cache = chrome.storage.session ?? chrome.storage.local;
   const stateArea = chrome.storage.session ?? chrome.storage.local;
@@ -91,7 +94,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now });
   const profile = createProfileService({ area: cache, session, settings: settings.get, now });
   const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, onSynced: async () => { await profile.refreshAfterSync(); } });
-  const recorder = createRecorder({ area: local, queue: sync.queue, session, deviceId, version, onQueued: () => sync.schedule() });
+  const recorder = createRecorder({ area: local, queue: sync.queue, session, deviceId, version, now: Date.now, onQueued: () => sync.schedule() });
   holder.recorder = recorder; holder.sync = sync; holder.profile = profile;
 
   // ───────────── per-tab state, injection ─────────────
@@ -191,11 +194,14 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
 
   async function pageStatus(): Promise<PageStatus> {
     const [pub, s, st, sy] = await Promise.all([publicStatus(), session.status(), settings.get(), sync.status()]);
-    return {
+    // `revocationPending`: the last sign-out could not reach the service (audit P-08); the setup page may say so
+    const out: PageStatus & { revocationPending?: boolean } = {
       ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment, settings: st,
       needsSignIn: pub.needsSignIn || sy.needsSignIn,
       sync: { pending: sy.pending, localOnly: sy.localOnly, rejected: sy.rejected, lastPushAt: sy.lastPushAt, lastError: sy.lastError, online: sy.online, needsSignIn: sy.needsSignIn || (s.connected && s.expired) },
+      ...(s.revocationPending ? { revocationPending: true } : {}),
     };
+    return out;
   }
 
   // ───────────── content-facing handlers (inputs are validated again here) ─────────────
@@ -242,7 +248,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     const keys = Object.keys(all);
     const events = keys.filter((k) => k.startsWith(EVENT_KEY_PREFIX));
     const metrics = keys.filter((k) => k.startsWith(METRIC_KEY_PREFIX));
-    const queued = keys.filter((k) => k.startsWith(QUEUE_PREFIX) || k.startsWith(REJECTED_PREFIX));
+    const queued = keys.filter((k) => k.startsWith(QUEUE_PREFIX) || k.startsWith(REJECTED_PREFIX) || k.startsWith(QUARANTINE_PREFIX));
     const drop = [...events, ...metrics, ...queued];
     if (drop.length) await local.remove(drop);
     await profile.clear();

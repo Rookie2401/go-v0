@@ -106,6 +106,19 @@ describe('writer profile', () => {
     ]);
   });
 
+  it('reads a goal whose words are under `label` (what GoTell writes now) as well as the older `text`', async () => {
+    const events = [
+      goalEvent({ goalId: 'n1', label: 'Pray in Albanian', createdAt: '2026-10-01T08:00:00.000Z' }, '2026-10-01T08:00:00.000Z'),
+      goalEvent({ goalId: 'o1', text: 'An older goal', createdAt: '2026-10-02T08:00:00.000Z' }, '2026-10-02T08:00:00.000Z'),
+      goalEvent({ goalId: 'n1', label: 'Pray in Albanian', createdAt: '2026-10-01T08:00:00.000Z', done: true }, '2026-10-06T08:00:00.000Z'),
+    ];
+    const p = await buildWriterProfile(source([], events), id, NOW);
+    expect(p.goals).toEqual([
+      { goalId: 'n1', text: 'Pray in Albanian', createdAt: '2026-10-01T08:00:00.000Z', done: true },
+      { goalId: 'o1', text: 'An older goal', createdAt: '2026-10-02T08:00:00.000Z' },
+    ]);
+  });
+
   it('derives the band from the productive count and names its basis', async () => {
     const many = (n: number) => Array.from({ length: n }, (_, i) => row(`lemma:sq:w${i}:NOUN`, { contextualProduction: { weight: 1 } }));
     const at = async (n: number) => buildWriterProfile(source(many(n)), id, NOW);

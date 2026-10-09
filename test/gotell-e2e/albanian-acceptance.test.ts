@@ -20,7 +20,7 @@ import type { ServiceDeps } from '../../packages/repository-service/src/deps';
 import { createPackRuntime, packFor } from '../../packages/language-packs/src';
 import {
   createAnalyzer, createAssistance, createDraftStore, createGoTellWorkspace, createLocalDraftStore, createSyncingDraftStore, deleteDraft, exportDraft,
-  exportLearnerWriting, guidanceFor, guidancePackFor, judgeAuthorship, newVersion, promptsFor, selectPrompt, writingEvidence, buildWriterProfile,
+  exportLearnerWriting, guidanceFor, guidancePackFor, judgeAuthorship, judgeFromAssistance, newVersion, promptsFor, selectPrompt, writingEvidence, buildWriterProfile,
   RemoteAssistantGate, correctionRejected,
   type AssistanceStep, type DraftRecord, type RemoteAssistant, type WriterProfile,
 } from '../../packages/gotell/src';
@@ -157,8 +157,10 @@ describe('Prompt 6 §12 — GoTell for an Albanian learner, end to end', () => {
   it('8. the learner revises independently after the hint; the analysis of the revision is clean', () => {
     const analysis = analyzer.analyzeDraft(draftId, REVISED, profile);
     expect(analysis.sentences[0].issues).toEqual([]);
-    expect(judgeAuthorship(analysis.sentences[0].text, stepsShown)).toBe('after-hint');
-    expect(judgeAuthorship(analysis.sentences[1].text, [])).toBe('independent');
+    // the hint was shown for sentence 0 (every step records its sentence), so sentence 1 is independent BECAUSE no step touched it
+    expect(stepsShown.every((s) => s.sentenceIndex === 0 && typeof s.sentenceHash === 'string')).toBe(true);
+    expect(judgeAuthorship(analysis.sentences[0].text, stepsShown, { sentenceIndex: 0 })).toBe('after-hint');
+    expect(judgeAuthorship(analysis.sentences[1].text, stepsShown, { sentenceIndex: 1 })).toBe('independent');
     record = { ...record, text: REVISED, updatedAt: nowIso() };
   });
 
@@ -181,7 +183,7 @@ describe('Prompt 6 §12 — GoTell for an Albanian learner, end to end', () => {
     let rec = newVersion(blankRecord(draftId, record.mode, record.title, record.promptId), ATTEMPT, () => ({ authorship: 'independent', assistance: [] }), a.deviceId, nowIso, 'first attempt');
     tick();
     rec = { ...rec, assistance: stepsShown };
-    rec = newVersion(rec, REVISED, (text, _prior, idx) => (idx === 0 ? { authorship: judgeAuthorship(text, stepsShown), assistance: [1, 2] } : { authorship: 'independent', assistance: [] }), a.deviceId, nowIso, 'after the hint');
+    rec = newVersion(rec, REVISED, (text, _prior, idx) => { const authorship = judgeAuthorship(text, stepsShown, { sentenceIndex: idx }); return { authorship, assistance: authorship === 'independent' ? [] : [1, 2] }; }, a.deviceId, nowIso, 'after the hint');
     expect(rec.versions).toHaveLength(2);
     expect(rec.versions[0].text).toBe(ATTEMPT);                 // the original is preserved
     expect(rec.versions[1].sentences[0].authorship).toBe('after-hint');
@@ -267,6 +269,22 @@ describe('a learner with no GoReview history', () => {
 });
 
 describe('edge cases', () => {
+  it('per-sentence authorship: a hint on sentence 0 only, sentence 1 edited → sentence 1 is independent, sentence 0 after-hint (real engine, real judge)', async () => {
+    const analysis = analyzer.analyzeDraft('ps-1', 'Unë shkoj te libër. Unë lexoj librin.');
+    const assistance = createAssistance({ analyzer, consent: refusingConsent, now: nowIso });
+    const r = await assistance.through(analysis, { draftId: 'ps-1', sentenceIndex: 0, issueId: analysis.sentences[0].issues[0].issueId, level: 2, at: nowIso() }, []);
+    if ('refused' in r) throw new Error(r.reason);
+    let rec = newVersion(blankRecord('ps-1', 'free', 'Dy fjali'), 'Unë shkoj te libër. Unë lexoj librin.', judgeFromAssistance([]), a.deviceId, nowIso);
+    rec = { ...rec, assistance: r.steps };
+    rec = newVersion(rec, 'Unë shkoj te libri. Unë lexoj gazetën.', judgeFromAssistance(rec.assistance), a.deviceId, nowIso, 'hint on sentence 0, sentence 1 rewritten');
+    expect(rec.versions[1].sentences.map((s) => s.authorship)).toEqual(['after-hint', 'independent']);
+    expect(rec.versions[1].sentences[1].assistance).toEqual([]);
+    const ev = writingEvidence(rec, rec.versions[1], identityOf(a), nowIso, { analysis });
+    const prods = ev.events.filter((e) => e.kind === 'ProductionRecorded').map((e) => (e.payload as { authorship: string; assisted: boolean }));
+    expect(prods.map((x) => x.authorship)).toEqual(['after-hint', 'independent']);
+    expect(prods.map((x) => x.assisted)).toEqual([true, false]);
+  });
+
   it('a wrong remote correction is rejected by validation; a learner can reject feedback; an unclear sentence is marked uncertain', async () => {
     const consent = { remoteAssistance: () => true };
     const analysis = analyzer.analyzeDraft('r-1', ATTEMPT, undefined);

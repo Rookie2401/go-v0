@@ -71,11 +71,16 @@ export async function prepareListening(deps: ListeningDeps, target: ReviewTarget
   };
 }
 
-/** What the UI may hold before the response: the metadata without the intended expression. */
+/**
+ * What the UI may hold before the response: the metadata without the intended expression, and a stimulus whose `itemIds`
+ * are opaque positional handles. The real ids are content-derived (`form:sq:shkollë`): for an auditory-transcription item
+ * the written form IS the answer, so they must not travel with the stimulus (audit D9). The producer keeps the real ids in
+ * the prepared item (`ListeningPrepared.stimulus`, the target) and builds events from those, never from the public view.
+ */
 export function publicView(p: ListeningPrepared): { stimulus: AudioStimulus; metadata: Omit<ListeningMetadata, 'intendedExpression'> } {
   const { intendedExpression: _hidden, ...rest } = p.metadata;
   void _hidden;
-  return { stimulus: p.stimulus, metadata: rest };
+  return { stimulus: { ...p.stimulus, itemIds: p.stimulus.itemIds.map((_id, i) => `item:${i + 1}`) }, metadata: rest };
 }
 
 /** Whether a voice's output may be held against the learner at all; unreliable voices produce practice, never evidence. */

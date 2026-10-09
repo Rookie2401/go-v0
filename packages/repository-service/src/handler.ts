@@ -9,7 +9,7 @@
  * Team membership grants nothing; no route exists that reads another learner.
  */
 import {
-  CONTRACT_VERSION, EVENT_KINDS, MAX_SURFACE_CHARS, familyOf, validateEvent,
+  CONTRACT_VERSION, EVENT_KINDS, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, validateEvent,
 } from '../../repository-contract/src';
 import type {
   Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFamily, EventKind, GoEvent, Learner,
@@ -27,7 +27,16 @@ export const MIN_PASSWORD_CHARS = 10;
 export const MAX_EVENTS_PER_BATCH = 500;
 export const MAX_DOCUMENTS_PER_PUSH = 50;
 export const MAX_PAGE = 1000;
+/** The most units one `POST /units/batch` returns. */
+export const MAX_UNITS_PER_BATCH = 50;
+/** The skew a sync-pushing device may have (its clock is reported, not applied); a direct POST /events allows MAX_FUTURE_SKEW_MS. */
+export const MAX_SYNC_SKEW_MS = 24 * 3600 * 1000;
+/** A request body nested deeper than this is refused with 400 before any field is read (no real request is anywhere near it). */
+export const MAX_BODY_DEPTH = 24;
 export const EXPORT_FORMAT = 'go-repository-export@1';
+
+/** What the two concrete stores add to the port: record a tombstone, then physically remove what it names (repository-store `applyTombstone`). Declared here so the handler imports no store code. */
+interface TombstoneApplier { applyTombstone(t: Tombstone): Promise<{ events: number; knowledge: number }> }
 
 const MESSAGES = {
   unauthorized: 'Sign in again: this session is missing, unknown, expired or ended.',
@@ -53,8 +62,20 @@ const CORS: Record<string, string> = {
   'Access-Control-Max-Age': '600',
 };
 
+/**
+ * Sent on every response. The service answers JSON only, some of it user-controlled (document bodies, titles), so a browser
+ * must never sniff it into something else (nosniff), never frame it, never leak the address of the page that fetched it
+ * (a path can hold an id), and has no business running anything from it (an empty CSP).
+ */
+const SECURITY_HEADERS: Record<string, string> = {
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'no-referrer',
+  'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'",
+  'X-Frame-Options': 'DENY',
+};
+
 function respond(status: number, body?: unknown, extraHeaders: Record<string, string> = {}): Response {
-  const headers: Record<string, string> = { ...CORS, 'Cache-Control': 'no-store', ...extraHeaders };
+  const headers: Record<string, string> = { ...CORS, ...SECURITY_HEADERS, 'Cache-Control': 'no-store', ...extraHeaders };
   if (body === undefined || status === 204) return new Response(null, { status, headers });
   headers['Content-Type'] = 'application/json; charset=utf-8';
   return new Response(JSON.stringify(body), { status, headers });
@@ -72,6 +93,20 @@ const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object
 const isStr = (v: unknown): v is string => typeof v === 'string' && v.length > 0;
 const isIso = (v: unknown): v is string => typeof v === 'string' && !Number.isNaN(Date.parse(v));
 const uuid = (): string => crypto.randomUUID();
+
+/** Whether `root` has objects or arrays nested more than `max` levels deep. Iterative and stops at the first excess, so a hostile body costs little and cannot overflow the stack. */
+function nestedDeeperThan(root: unknown, max: number): boolean {
+  const stack: Array<[unknown, number]> = [[root, 1]];
+  let visited = 0;
+  while (stack.length) {
+    const [v, depth] = stack.pop()!;
+    if (v === null || typeof v !== 'object') continue;
+    if (depth > max) return true;
+    if (++visited > 200_000) return false; // a wide body is bounded by the 1 MB limit; this only bounds the walk
+    for (const child of Array.isArray(v) ? v : Object.values(v)) if (child !== null && typeof child === 'object') stack.push([child, depth + 1]);
+  }
+  return false;
+}
 
 /** Read the body as text, refusing at the size limit; the limit is on the stream, not only on the header. */
 async function readText(request: Request): Promise<string> {
@@ -188,10 +223,11 @@ function parseGoals(raw: unknown): LearningGoal[] {
   });
 }
 
-interface DocumentInput { doc: PrivateDocument; expectedRevision: number }
+/** `deleted`: the client marked the document deleted (`doc.deletedAt`, as the sync client's `LocalDocuments.remove` does); the server deletes it, with the same revision rule, and keeps no word of it. */
+interface DocumentInput { doc: PrivateDocument; expectedRevision: number; deleted: boolean }
 
 /** The server decides learner, device, time and revision; the client supplies the content and the revision it last saw. */
-function parseDocument(ctx: Ctx, raw: unknown, where: string, idFromPath?: string): DocumentInput {
+function parseDocument(ctx: Ctx, raw: unknown, where: string, idFromPath?: string, allowDeletion = false): DocumentInput {
   if (!isObj(raw) || !isObj(raw.doc)) throw invalid(`${where} needs a "doc".`);
   const d = raw.doc;
   assertSelf(ctx, d.learnerId);
@@ -214,8 +250,11 @@ function parseDocument(ctx: Ctx, raw: unknown, where: string, idFromPath?: strin
     deviceId: ctx.session.deviceId,
     updatedAt: ctx.now(),
   };
-  if (typeof d.title === 'string') doc.title = d.title;
-  return { doc, expectedRevision };
+  // Only the sync protocol carries a deletion this way (`LocalDocuments.remove` pushes the document with `deletedAt`); on PUT and /writing a client-sent `deletedAt` is ignored like any other server-owned field.
+  const deleted = allowDeletion && typeof d.deletedAt === 'string' && d.deletedAt.length > 0;
+  if (typeof d.title === 'string' && !deleted) doc.title = d.title;
+  if (deleted) doc.body = '';
+  return { doc, expectedRevision, deleted };
 }
 
 const meta = (d: PrivateDocument): Omit<PrivateDocument, 'body'> => {
@@ -226,20 +265,48 @@ const meta = (d: PrivateDocument): Omit<PrivateDocument, 'body'> => {
 /**
  * Validates events as one batch: learner first (403, nothing else is looked at), then the contract (422 for the whole
  * batch with issues per index). Server-owned fields (`recordedAt`, `seq`) are dropped; the store stamps them.
+ *
+ * Beyond the contract, because only the service knows who the caller is and what time it is:
+ *  - `at` may be at most MAX_FUTURE_SKEW_MS (5 minutes) ahead of the SERVER's clock (`at-in-future`; a sync push is allowed the
+ *    skew it declares, to a day);
+ *  - `producer.app` is never `repository` for a NEW event: that name is the service's own (it writes those events itself, not through
+ *    here); a client may only replay one the service already stored for it, which is a duplicate by id;
+ *  - `producer.deviceId` is the session's device, or a device registered to this learner (S-05: a device id an event names
+ *    must be one this learner signed in from; an invented or foreign one is refused);
+ *  - `enrolmentId` is one of the learner's own enrolments, and the event's `languageId` is that enrolment's language (one lookup per batch).
  */
-function prepareEvents(ctx: Ctx, raw: unknown, where: string, restrict?: { families: EventFamily[] }): GoEvent[] {
+async function prepareEvents(ctx: Ctx, raw: unknown, where: string, restrict?: { families: EventFamily[] }, clientTimeMs?: number): Promise<GoEvent[]> {
   if (!Array.isArray(raw) || raw.length === 0) throw invalid(`${where} needs a non-empty "events" list.`);
   if (raw.length > MAX_EVENTS_PER_BATCH) throw invalid(`${where}: at most ${MAX_EVENTS_PER_BATCH} events per request.`);
   for (const e of raw) if (isObj(e)) assertSelf(ctx, e.learnerId);
+  const nowMs = Date.parse(ctx.now());
+  // The latest `at` accepted. A sync push declares its device's clock (`clientTime`), which is measured and reported as skew rather than
+  // corrected, so an honest device up to a day off keeps its own timeline: its events may run up to 5 minutes past ITS stated time.
+  const latestAt = clientTimeMs === undefined || Number.isNaN(clientTimeMs)
+    ? nowMs + MAX_FUTURE_SKEW_MS
+    : Math.max(nowMs + MAX_FUTURE_SKEW_MS, Math.min(clientTimeMs + MAX_FUTURE_SKEW_MS, nowMs + MAX_SYNC_SKEW_MS));
   const bad: Array<{ index: number; id?: string; issues: ValidationIssue[] }> = [];
-  raw.forEach((e, index) => {
-    const issues = validateEvent(e);
-    if (restrict && issues.length === 0) {
-      const kind = (e as GoEvent).kind;
-      if (!restrict.families.includes(familyOf(kind))) issues.push({ path: 'kind', message: `${where} accepts only ${restrict.families.join(' and ')} events` });
+  const { store } = ctx.deps;
+  const learnerId = ctx.session.learnerId;
+  let enrolmentLanguages: Map<string, string> | undefined;
+  const knownDevices = new Map<string, boolean>([[ctx.session.deviceId, true]]);
+  for (const [index, e] of raw.entries()) {
+    const issues = validateEvent(e, { nowMs: latestAt, futureSkewMs: 0 });
+    if (issues.length === 0) {
+      const ev = e as GoEvent;
+      if (restrict && !restrict.families.includes(familyOf(ev.kind))) issues.push({ path: 'kind', message: `${where} accepts only ${restrict.families.join(' and ')} events` });
+      // The name is the service's own. A client may REPLAY one of those events the service already holds for it (a whole-history resend is deduped by id), never introduce one.
+      if (ev.producer.app === 'repository' && !(await store.get(learnerId, ev.id))) issues.push({ path: 'producer.app', message: 'the producer "repository" is the service itself; a client names its own application' });
+      if (!knownDevices.has(ev.producer.deviceId)) knownDevices.set(ev.producer.deviceId, !!(await store.getDevice(learnerId, ev.producer.deviceId)));
+      if (!knownDevices.get(ev.producer.deviceId)) issues.push({ path: 'producer.deviceId', message: 'not a device of this session or of this learner; sign in from the device to register it' });
+      enrolmentLanguages ??= new Map((await store.listEnrolments(learnerId)).map((n) => [n.enrolmentId, n.languageId] as const));
+      const enrolledIn = enrolmentLanguages.get(ev.enrolmentId);
+      if (enrolledIn === undefined) issues.push({ path: 'enrolmentId', message: "not one of this learner's enrolments" });
+      // P-07: the two languages' histories stay separate on the server too, however a client labels an event.
+      else if (ev.languageId !== enrolledIn) issues.push({ path: 'languageId', message: `the event is in "${ev.languageId}" but its enrolment is for "${enrolledIn}"` });
     }
-    if (issues.length) bad.push({ index, ...(isObj(e) && typeof e.id === 'string' ? { id: e.id } : {}), issues });
-  });
+    if (issues.length) bad.push({ index, ...(isObj(e) && typeof e.id === 'string' ? { id: e.id.slice(0, 200) } : {}), issues });
+  }
   if (bad.length) throw new Refusal(422, 'invalid-events', `${bad.length} of ${raw.length} events are invalid; nothing was stored. Fix them and send the whole batch again.`, { issues: bad });
   return raw.map((e) => {
     const { recordedAt: _r, seq: _s, ...rest } = e as GoEvent & { seq?: number };
@@ -250,6 +317,28 @@ function prepareEvents(ctx: Ctx, raw: unknown, where: string, restrict?: { famil
 /** Folds new events into the learner's knowledge. A failure here never loses the events: they are already stored. */
 async function project(ctx: Ctx): Promise<boolean> {
   try { await ctx.deps.engine.project(ctx.session.learnerId); return true; } catch { return false; }
+}
+
+/**
+ * Layer A follows the reader (§14 certification finding): a `SelectionLookedUp` event names the surface the learner
+ * met, so the Repository resolves and stores its analysis (lexeme, form and morph units) exactly as `/lookup` would.
+ * Without this the unit stays unknown to the linguistic store and GoReview's intake can only answer "needs
+ * validation". Only the surface (already in the event, at most 4 words) and the sentence hash are used; a failure never
+ * affects ingestion, which has already succeeded.
+ */
+async function registerSurfaces(ctx: Ctx, events: GoEvent[]): Promise<void> {
+  const seen = new Set<string>();
+  for (const e of events) {
+    if (e.kind !== 'SelectionLookedUp') continue;
+    const surface = (e.payload as { surface?: unknown }).surface;
+    if (typeof surface !== 'string' || !surface.trim() || surface.length > MAX_SURFACE_CHARS) continue;
+    const key = `${e.languageId} ${surface}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    try {
+      await ctx.deps.linguistics.resolveAndStore({ languageId: e.languageId, surface, ...(e.subject.sentenceKey ? { sentenceKey: e.subject.sentenceKey } : {}) });
+    } catch { /* the analysis can be registered by a later lookup */ }
+  }
 }
 
 const accountView = (a: Account): Pick<Account, 'accountId' | 'email' | 'createdAt'> => ({ accountId: a.accountId, email: a.email, createdAt: a.createdAt });
@@ -342,6 +431,9 @@ route('GET', '/me', true, async (ctx) => {
   for (const e of consentEvents) {
     const p = e.payload as Record<string, unknown>;
     const key = [p.consent, p.scope, p.key].find((v) => typeof v === 'string') as string | undefined ?? 'general';
+    // The latest decision BY TIME, whatever order the events arrived in (a lagging device's older grant must not undo a newer withdrawal); a tie goes to the later arrival.
+    const earlier = consents.get(key);
+    if (earlier && Date.parse(e.at) < Date.parse(earlier.at)) continue;
     consents.set(key, { key, given: e.kind === 'ConsentGiven', at: e.at });
   }
   return respond(200, {
@@ -409,6 +501,29 @@ route('POST', '/enrolments', true, async (ctx) => {
   return respond(201, { enrolment });
 });
 
+// A learner ends one of their own enrolments (audit P-06): it keeps its history and its team label as a record, the apps stop recording against it
+// (`pickEnrolment` skips an ended one), and an `EnrolmentChanged {change:'ended'}` event says so. Ending twice is the same answer.
+route('POST', '/enrolments/:id/end', true, async (ctx) => {
+  const { store } = ctx.deps;
+  const learnerId = ctx.session.learnerId;
+  // listed per learner: another learner's enrolment is indistinguishable from a missing one
+  const found = (await store.listEnrolments(learnerId)).find((e) => e.enrolmentId === ctx.params.id);
+  if (!found) throw new Refusal(404, 'no-such-enrolment', 'You have no enrolment with that id.');
+  if (found.endedAt) return respond(200, { enrolment: found });
+  const at = ctx.now();
+  const enrolment: Enrolment = { ...found, endedAt: at };
+  const event: GoEvent = {
+    id: uuid(), v: CONTRACT_VERSION, learnerId, enrolmentId: enrolment.enrolmentId, languageId: enrolment.languageId,
+    ...(enrolment.varietyId ? { varietyId: enrolment.varietyId } : {}), at,
+    producer: { app: 'repository', version: String(SERVICE_VERSION), deviceId: ctx.session.deviceId },
+    kind: 'EnrolmentChanged', subject: {}, payload: { change: 'ended', packId: enrolment.packId, packVersion: enrolment.packVersion },
+    dedupeKey: `enrolment:${enrolment.enrolmentId}:ended`,
+  };
+  await store.transaction(async () => { await store.putEnrolment(enrolment); await store.append(learnerId, [event]); });
+  await project(ctx);
+  return respond(200, { enrolment });
+});
+
 route('GET', '/packs', true, async (ctx) => {
   const languageId = ctx.query.get('languageId') ?? undefined;
   return respond(200, { packs: await ctx.deps.store.listPacks(languageId || undefined) });
@@ -420,6 +535,22 @@ route('GET', '/units/:id', true, async (ctx) => {
   const view = await ctx.deps.linguistics.lookup(id);
   if (!view) throw new Refusal(404, 'no-such-unit', 'There is no unit with that id.');
   return respond(200, { unit: view.unit, relations: view.relations, analyses: view.analyses });
+});
+
+// Several units in one call (audit PF-02): GoReview's intake needs the unit, relations and analyses of every testable candidate; one request per
+// candidate made 201 round trips for 200 candidates. Same view as `GET /units/:id`; an unknown id is listed in `missing`, never an error.
+route('POST', '/units/batch', true, async (ctx) => {
+  const b = await ctx.body();
+  if (!Array.isArray(b.ids) || b.ids.length === 0 || b.ids.length > MAX_UNITS_PER_BATCH || b.ids.some((i) => !isStr(i) || i.length > 300)) {
+    throw invalid(`"ids" must be a list of 1 to ${MAX_UNITS_PER_BATCH} unit ids.`);
+  }
+  const units: Record<string, { unit: unknown; relations: unknown; analyses: unknown }> = {};
+  const missing: string[] = [];
+  for (const id of [...new Set(b.ids as string[])]) {
+    const view = await ctx.deps.linguistics.lookup(id);
+    if (view) units[id] = { unit: view.unit, relations: view.relations, analyses: view.analyses }; else missing.push(id);
+  }
+  return respond(200, { units, missing });
 });
 
 route('POST', '/lookup', true, async (ctx) => {
@@ -446,9 +577,10 @@ route('POST', '/lookup', true, async (ctx) => {
 route('POST', '/events', true, async (ctx) => {
   const b = await ctx.body();
   assertSelf(ctx, b.learnerId);
-  const events = prepareEvents(ctx, b.events, 'POST /events');
+  const events = await prepareEvents(ctx, b.events, 'POST /events');
   const { store } = ctx.deps;
   const outcomes = await store.append(ctx.session.learnerId, events);
+  await registerSurfaces(ctx, events);
   const projected = await project(ctx);
   return respond(200, { outcomes, ...tally(outcomes), head: await store.head(ctx.session.learnerId), projected });
 });
@@ -501,7 +633,7 @@ route('GET', '/preferences', true, async (ctx) => {
 route('POST', '/reviews', true, async (ctx) => {
   const b = await ctx.body();
   assertSelf(ctx, b.learnerId);
-  const events = prepareEvents(ctx, b.events, 'POST /reviews', { families: ['review', 'listening'] });
+  const events = await prepareEvents(ctx, b.events, 'POST /reviews', { families: ['review', 'listening'] });
   const outcomes = await ctx.deps.store.append(ctx.session.learnerId, events);
   const projected = await project(ctx);
   return respond(200, { outcomes, ...tally(outcomes), head: await ctx.deps.store.head(ctx.session.learnerId), projected });
@@ -509,9 +641,39 @@ route('POST', '/reviews', true, async (ctx) => {
 
 // ── writing and private documents ──
 
+type PutOutcome = { ok: true } | { ok: false; current?: PrivateDocument; missing: boolean };
+
+/**
+ * The store's revision rule, with one case answered here instead of thrown: a revision above 0 names a document that does
+ * not exist (a guess at someone's revision number, a server that lost the document). The store throws for that; it must
+ * never become a 500, and in a sync push never fail the other items of the request.
+ */
+async function putUnderRevision(ctx: Ctx, doc: PrivateDocument, expectedRevision: number, deleted = false): Promise<PutOutcome> {
+  const { store } = ctx.deps;
+  const absent = async (): Promise<boolean> => !(await store.getDocument(doc.learnerId, doc.docId));
+  if (deleted) {
+    // A deletion made on a device (audit P-04): the same revision rule, then the store's own deletion (body and title gone, `deletedAt` set, revision + 1).
+    const cur = await store.getDocument(doc.learnerId, doc.docId);
+    if (!cur) return expectedRevision > 0 ? { ok: false, missing: true } : { ok: true };
+    if (cur.deletedAt) return { ok: true };
+    if (cur.revision !== expectedRevision) return { ok: false, current: cur, missing: false };
+    await store.deleteDocument(doc.learnerId, doc.docId);
+    return { ok: true };
+  }
+  if (expectedRevision > 0 && (await absent())) return { ok: false, missing: true };
+  try {
+    const r = await store.putDocument(doc, expectedRevision);
+    return r.ok ? { ok: true } : { ok: false, current: r.current, missing: false };
+  } catch (e) {
+    if (expectedRevision > 0 && (await absent())) return { ok: false, missing: true };
+    throw e;
+  }
+}
+
 /** Puts the document under the revision rule; a mismatch throws the 409 (inside a transaction, that rolls back). */
 async function saveDocument(ctx: Ctx, input: DocumentInput): Promise<PrivateDocument> {
-  const r = await ctx.deps.store.putDocument(input.doc, input.expectedRevision);
+  const r = await putUnderRevision(ctx, input.doc, input.expectedRevision, input.deleted);
+  if (!r.ok && r.missing) throw new Refusal(409, 'conflict', 'There is no such document at that revision. Save it as a new document (expectedRevision 0).', { reason: 'no-such-document' });
   if (!r.ok) throw new Refusal(409, 'conflict', 'The document changed since you last read it. Merge your changes into the current version and save again.', { current: r.current });
   return input.doc;
 }
@@ -520,7 +682,7 @@ route('POST', '/writing', true, async (ctx) => {
   const b = await ctx.body();
   assertSelf(ctx, b.learnerId);
   if (!isObj(b.observation)) throw invalid('"observation" (a ProductionRecorded event) is required.');
-  const [event] = prepareEvents(ctx, [b.observation], 'POST /writing');
+  const [event] = await prepareEvents(ctx, [b.observation], 'POST /writing');
   if (event.kind !== 'ProductionRecorded') throw new Refusal(422, 'invalid-events', 'POST /writing takes a ProductionRecorded observation.', { issues: [{ index: 0, issues: [{ path: 'kind', message: 'ProductionRecorded required' }] }] });
   const input = b.document === undefined ? undefined : parseDocument(ctx, b.document, 'POST /writing document');
   const { store } = ctx.deps;
@@ -612,21 +774,27 @@ route('POST', '/sync/push', true, async (ctx) => {
   if (!isStr(b.deviceId)) throw invalid('"deviceId" is required.');
   if (b.deviceId !== ctx.session.deviceId) throw new Refusal(403, 'not-your-device', 'This session belongs to a different device.');
   if (!isIso(b.clientTime)) throw invalid('"clientTime" must be an ISO date and time.');
-  const events = b.events === undefined || (Array.isArray(b.events) && b.events.length === 0) ? [] : prepareEvents(ctx, b.events, 'POST /sync/push');
+  const events = b.events === undefined || (Array.isArray(b.events) && b.events.length === 0) ? [] : await prepareEvents(ctx, b.events, 'POST /sync/push', undefined, Date.parse(b.clientTime as string));
   let docs: DocumentInput[] = [];
   if (b.documents !== undefined) {
     if (!Array.isArray(b.documents) || b.documents.length > MAX_DOCUMENTS_PER_PUSH) throw invalid(`"documents" must be a list of at most ${MAX_DOCUMENTS_PER_PUSH}.`);
-    docs = b.documents.map((d, i) => parseDocument(ctx, d, `documents[${i}]`));
+    docs = b.documents.map((d, i) => parseDocument(ctx, d, `documents[${i}]`, undefined, true));
   }
   const { store } = ctx.deps;
   const learnerId = ctx.session.learnerId;
   const serverTime = ctx.now();
   const result = await store.transaction(async () => {
     const outcomes = events.length ? await store.append(learnerId, events) : [];
+    await registerSurfaces(ctx, events);
     const documents: SyncPushResponse['documents'] = [];
+    // One impossible document is that document's failure, not the request's: the events and the other documents still go through.
     for (const d of docs) {
-      const r = await store.putDocument(d.doc, d.expectedRevision);
-      documents.push(r.ok ? { docId: d.doc.docId, ok: true } : { docId: d.doc.docId, ok: false, current: r.current });
+      try {
+        const r = await putUnderRevision(ctx, d.doc, d.expectedRevision, d.deleted);
+        documents.push(r.ok ? { docId: d.doc.docId, ok: true } : r.missing ? { docId: d.doc.docId, ok: false, reason: 'no-such-document' } : { docId: d.doc.docId, ok: false, current: r.current });
+      } catch {
+        documents.push({ docId: d.doc.docId, ok: false, reason: 'refused' });
+      }
     }
     const device = await store.getDevice(learnerId, ctx.session.deviceId);
     await store.putDevice({ ...(device ?? { deviceId: ctx.session.deviceId, learnerId, registeredAt: serverTime }), lastSyncAt: serverTime });
@@ -653,7 +821,9 @@ route('POST', '/sync/pull', true, async (ctx) => {
   const events: StoredEvent[] = await store.list({ learnerId, afterSeq: b.afterSeq, limit: Math.min(b.limit ?? MAX_PAGE, MAX_PAGE) });
   const since = typeof b.documentsSince === 'string' ? Date.parse(b.documentsSince) : undefined;
   // Deleted documents travel too (body gone, `deletedAt` set), so the other devices can drop them.
-  const documents = (await store.listDocuments(learnerId)).filter((d) => since === undefined || Date.parse(d.updatedAt) > since);
+  // `>=`: a document written in the same millisecond as the device's cursor, after it pulled, must still arrive (audit P-05). The client keeps
+  // the newest revision per document, so a document it already holds is delivered again harmlessly.
+  const documents = (await store.listDocuments(learnerId)).filter((d) => since === undefined || Date.parse(d.updatedAt) >= since);
   const response: SyncPullResponse = { events, documents, head: await store.head(learnerId), serverTime: ctx.now() };
   return respond(200, response);
 });
@@ -680,7 +850,9 @@ async function buildExport(ctx: Ctx): Promise<unknown> {
     if (p && !preferences.some((q) => q.languageId === p.languageId)) preferences.push(p);
   }
   return {
-    format: EXPORT_FORMAT, contractVersion: CONTRACT_VERSION, exportedAt: ctx.now(),
+    // The store package's export shape (`exportLearner`) plus the account and the contract version, so `importLearner` accepts this file as it is (audit P-01).
+    // `devices` keeps the full device objects (a superset of the store's list of ids; the importer does not read it).
+    format: EXPORT_FORMAT, contractVersion: CONTRACT_VERSION, exportedAt: ctx.now(), learnerId,
     learner, account: accountView(account), devices: device ? [device] : [],
     enrolments, events, knowledge, preferences, documents, tombstones,
   };
@@ -717,8 +889,19 @@ route('POST', '/tombstones', true, async (ctx) => {
   const scope = parseScope(b.scope);
   if (b.reason !== undefined && (typeof b.reason !== 'string' || b.reason.length > 1000)) throw invalid('"reason" must be a string of at most 1000 characters.');
   const tombstone: Tombstone = { tombstoneId: uuid(), learnerId: ctx.session.learnerId, scope, createdAt: ctx.now(), ...(typeof b.reason === 'string' ? { reason: b.reason } : {}) };
-  await ctx.deps.store.putTombstone(tombstone);
-  return respond(201, { tombstone });
+  const { store } = ctx.deps;
+  // A learner-scope tombstone is a recorded request only: erasing a whole account is `DELETE /me`, which asks for the email first.
+  if (scope.kind === 'learner') {
+    await store.putTombstone(tombstone);
+    return respond(201, { tombstone, applied: { events: 0, knowledge: 0 } });
+  }
+  // event / source / range: record the instruction, then physically remove what it names (one transaction), then refold the projection.
+  const applier = (store as Partial<TombstoneApplier>).applyTombstone;
+  if (typeof applier !== 'function') throw new Refusal(501, 'deletion-unsupported', 'This Repository cannot delete events, so the instruction was not recorded.');
+  let result: { events: number; knowledge: number };
+  try { result = await applier.call(store, tombstone); } catch { throw invalid('That deletion could not be applied (a range needs "from" no later than "to").'); }
+  await project(ctx);
+  return respond(201, { tombstone, applied: { events: result.events, knowledge: result.knowledge } });
 });
 
 // ───────────────────────────── dispatch ─────────────────────────────
@@ -783,6 +966,7 @@ async function dispatch(request: Request, deps: ServiceDeps): Promise<Response> 
       let parsed: unknown;
       try { parsed = raw.trim() === '' ? {} : JSON.parse(raw); } catch { throw new Refusal(400, 'invalid-json', MESSAGES.invalidJson); }
       if (!isObj(parsed)) throw new Refusal(422, 'invalid-input', 'The request body must be a JSON object.');
+      if (nestedDeeperThan(parsed, MAX_BODY_DEPTH)) throw new Refusal(400, 'too-deeply-nested', `The request body is nested more than ${MAX_BODY_DEPTH} levels deep.`);
       cached = parsed;
       return parsed;
     },

@@ -11,7 +11,12 @@
 
 export type NormalizeMode = 'exact' | 'loose';
 
-const SURROUNDING = /^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu;
+/**
+ * Punctuation and symbols at either end are not part of an answer. Combining marks (\p{M}: Latin accents,
+ * Devanagari signs, Thai vowel signs and tone marks) ARE: a final vowel sign is the last thing a learner types in
+ * हिन्दी or สวัสดี, and stripping it would let हिन्दू pass for हिन्दी. They are never stripped (audit A-17).
+ */
+const SURROUNDING = /^[^\p{L}\p{M}\p{N}]+|[^\p{L}\p{M}\p{N}]+$/gu;
 const APOSTROPHES = /[’‘ʼ`´]/gu;
 
 /** Articles an answer may leave out: the Albanian linking article of an adjective lemma, the English article / infinitive marker of a gloss. */

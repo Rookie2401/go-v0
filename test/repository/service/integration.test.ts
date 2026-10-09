@@ -41,7 +41,7 @@ describe('the whole service with real crypto, over a plain fetch', () => {
     const enrol = await phone.enrol({ languageId: 'sq', packId: 'pack:sq', packVersion: '1', goals: [{ kind: 'reading' }] });
     if (!created.ok || !enrol.ok) throw new Error('setup failed');
     const who = { learnerId: created.data.learnerId, enrolmentId: enrol.data.enrolment.enrolmentId };
-    expect((await phone.syncPush({ deviceId: 'phone', clientTime: h.clock.now(), events: [makeEvent(who)] })).ok).toBe(true);
+    expect((await phone.syncPush({ deviceId: 'phone', clientTime: h.clock.now(), events: [makeEvent({ ...who, deviceId: 'phone' })] })).ok).toBe(true); // events carry the session's device
 
     const laptop = createRepositoryApi({ baseUrl: 'https://repo.example', fetch: fetchLike });
     expect((await laptop.createSession({ email: 'ana@example.com', password: 'a long enough password', deviceId: 'laptop' })).ok).toBe(true);

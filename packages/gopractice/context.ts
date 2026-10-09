@@ -10,7 +10,7 @@
 import type { Enrolment, GoEvent, EventLog } from '../repository-contract/src';
 import type { RepositoryApi, ApiResult } from '../repository-service/src/api';
 import {
-  createLocalQueue, createSyncClient, type LocalQueue, type SyncClient, type SyncResult, type SyncStatus, type Transport,
+  createLocalQueue, createSyncClient, pushIsolatingRefusals, type LocalQueue, type SyncClient, type SyncResult, type SyncStatus, type Transport,
 } from '../repository-sync/src';
 import { explainFailure, resolveServiceUrl, validateServiceUrl } from './config';
 import type { ActiveRun, AudioDeps, Deps, EventContext, Identity, ReviewEngine } from './ports';
@@ -80,7 +80,8 @@ const throwFailure = (r: Extract<ApiResult<unknown>, { ok: false }>): never => {
 
 export function defaultTransport(api: RepositoryApi): Transport {
   return {
-    async push(req) { const r = await api.syncPush(req); return r.ok ? r.data : throwFailure(r); },
+    // one event the service refuses (422 invalid-events) is set aside by the sync client and the rest goes in the same round (audit O-06)
+    async push(req) { const r = await pushIsolatingRefusals((q) => api.syncPush(q), req); return r.ok ? r.data : throwFailure(r as Extract<ApiResult<unknown>, { ok: false }>); },
     async pull(req) { const r = await api.syncPull(req); return r.ok ? r.data : throwFailure(r); },
   };
 }

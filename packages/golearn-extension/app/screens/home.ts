@@ -18,7 +18,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const row = (label: string, value: string, route: string, ok: boolean): HTMLElement =>
     h('li', { 'data-route': route, 'data-ok': String(ok) },
       h('span', { class: ok ? 'mark done' : 'mark todo', 'aria-hidden': 'true' }, ok ? '✓' : '○'),
-      h('strong', {}, label), ' ', h('span', {}, value), ' ', h('a', { href: `#/${route}` }, 'Change'));
+      h('strong', {}, label), ' ', h('span', {}, value), ' ', h('a', { href: `#/${route}`, 'aria-label': `Change: ${label}` }, 'Change'));
 
   append(el, [
     setupComplete(completion) ? p('GoLearn is set up. Open the page you want to read, press the GoLearn button in the toolbar and select a word.') : p('Setup is not finished. The items marked ○ still need you.'),

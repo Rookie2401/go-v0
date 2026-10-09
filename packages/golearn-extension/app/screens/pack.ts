@@ -114,14 +114,14 @@ function packCard(pack: PackView, ctx: AppContext, record: { version: string; ok
       } finally {
         progress.hidden = true; install.disabled = false; verify.disabled = false;
       }
-    }, { class: 'btn primary', 'data-action': 'install' });
+    }, { class: 'btn primary', 'data-action': 'install', 'aria-label': `${record ? 'Reinstall' : 'Install'} ${pack.name}` });
     const verify = button('Re-verify', async () => {
       verify.disabled = true;
       setStatus(status, 'Checking…', 'info');
       try { await finish(await ctx.deps.packs.verify(pack, ctx.deps.area), 'Verified'); }
       catch (e) { setStatus(status, `The check did not complete: ${e instanceof Error ? e.message : String(e)}`, 'error'); }
       finally { verify.disabled = false; }
-    }, { 'data-action': 'verify' });
+    }, { 'data-action': 'verify', 'aria-label': `Re-verify ${pack.name}` });
     card.append(h('div', { class: 'row' }, install, verify), progress, status, results);
   }
 

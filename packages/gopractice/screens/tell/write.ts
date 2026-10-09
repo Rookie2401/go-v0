@@ -23,6 +23,9 @@ const REVIEW_LABEL: Record<NonNullable<AssistanceStep['review']>, string> = {
   'learner-own': 'your own words',
 };
 
+/** Shown before "Accept correction": the sentence will count as copied from the model. */
+export const ACCEPT_NOTICE = 'If you accept this correction it counts as copied from the model, and it earns no production credit. Rewrite the sentence yourself if you want it to count as yours.';
+
 export async function render(env: TellEnv, params: string[]): Promise<void> {
   const { el, ctx, host, engine, view, tag } = env;
   const draftId = decodeURIComponent(params[0] ?? '');
@@ -141,12 +144,25 @@ export async function render(env: TellEnv, params: string[]): Promise<void> {
     return `${MODE_INFO[v.record.mode].label} · ${where} · ${n} version(s)${v.dirty ? ' · autosaves to this device' : ''}`;
   }
 
+  /** Help text in English that quotes the writer's words (“…”): the quoted words are target-language text (WCAG 3.1.2). */
+  function quotedTarget(text: string): Array<string | HTMLElement> {
+    const out: Array<string | HTMLElement> = [];
+    let last = 0;
+    for (const m of text.matchAll(/“([^”]+)”/gu)) {
+      const at = m.index ?? 0;
+      out.push(text.slice(last, at) + '“', h('span', langProps(tag), m[1]), '”');
+      last = at + m[0].length;
+    }
+    out.push(text.slice(last));
+    return out;
+  }
+
   function stepNode(s: AssistanceStep): HTMLElement {
     const lvl = LADDER.find((l) => l.level === s.level);
     const src = SOURCE_LABEL[s.source];
     const rev = s.review ? REVIEW_LABEL[s.review] : '';
     return h('div', { class: 'tell-step', 'data-level': String(s.level), 'data-source': s.source, ...(s.review ? { 'data-review': s.review } : {}) },
-      h('strong', {}, `${s.level}. ${lvl?.label ?? 'Help'}: `), h('span', { class: s.level >= 4 ? 'target-text' : '', ...(s.level >= 4 ? langProps(tag) : {}) }, s.content),
+      h('strong', {}, `${s.level}. ${lvl?.label ?? 'Help'}: `), h('span', s.level >= 4 ? langProps(tag) : {}, ...(s.level >= 4 ? [s.content] : quotedTarget(s.content))),
       s.revealedUnitIds.length ? h('span', { class: 'src' }, ` (shows ${s.revealedUnitIds.length} word(s) you did not have to produce)`) : null,
       src || rev ? h('div', { class: 'src' }, [src, rev].filter(Boolean).join(' · ')) : null);
   }
@@ -213,6 +229,9 @@ export async function render(env: TellEnv, params: string[]): Promise<void> {
         ? h('p', { class: 'muted' }, 'The checker finds nothing wrong in the suggestion, and it changes only the marked place. That is not a guarantee that it is right.')
         : h('p', { class: 'muted', 'data-validation': 'partial' }, `Not fully checked: ${c.validation.issues.join('; ') || 'the suggestion changes more than the marked place or the checker still sees something'}`));
     if (c.meaningChange) box.append(h('div', { class: 'tell-warning', 'data-meaning-warning': c.correctionId }, `This changes the meaning: ${c.meaningChange}`));
+    // said before the click, not after: accepting is copying, and copying earns no credit for producing the sentence
+    box.append(h('p', { class: 'muted', id: `accept-notice-${c.correctionId}`, 'data-accept-notice': c.correctionId },
+      ACCEPT_NOTICE));
     if (pendingMeaning.has(c.correctionId)) {
       box.append(h('div', { class: 'tell-warning', 'data-meaning-confirm': c.correctionId },
         `This changes the meaning: ${c.meaningChange ?? ''}. Accept anyway?`, ' ',
@@ -238,8 +257,14 @@ export async function render(env: TellEnv, params: string[]): Promise<void> {
     analysisBox.append(h('h2', {}, 'Check results'),
       h('p', { id: 'writer-analysis-summary' }, total ? `${total} place(s) to look at in ${a.sentences.length} sentence(s). Your text has not been changed.` : `Nothing found in ${a.sentences.length} sentence(s). That means the checker saw nothing, not that the text is correct.`));
     if (v.stale) analysisBox.append(h('p', { class: 'tell-warning', id: 'writer-stale' }, 'You changed the text after this check, so the markers may be out of date. Analyse again to refresh them.'));
-    if (v.coverage.length) {
-      analysisBox.append(h('div', { id: 'writer-coverage', class: 'muted' }, h('strong', {}, 'What this checker cannot see: '), v.coverage.join(' ')));
+    const cov = v.coverageSummary;
+    if (cov && cov.line) {
+      // one line, then the full statement behind a disclosure: nothing is dropped, it is just not in the way
+      analysisBox.append(h('div', { id: 'writer-coverage', class: 'muted' },
+        h('p', { id: 'writer-coverage-line' }, cov.line),
+        cov.details.length
+          ? h('details', { id: 'writer-coverage-details' }, h('summary', {}, 'Details: what this checker does not see'), h('ul', {}, ...cov.details.map((d) => h('li', {}, d))))
+          : null));
     }
     for (const s of a.sentences) {
       const mine = v.issues.filter((i) => i.sentenceIndex === s.index);

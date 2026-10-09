@@ -105,13 +105,17 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
   $('export-events').addEventListener('click', async () => print(await events.exportRows()));
   $('export-metrics').addEventListener('click', async () => print(await exportMetrics(metrics)));
   const del = $<HTMLButtonElement>('delete-all');
+  const deleteNote = $('delete-note');
   let armed = false;
+  // the first click only arms the button; leaving it (focus moves elsewhere) disarms it, so a later click is never a surprise
+  del.addEventListener('blur', () => { if (armed) { armed = false; del.textContent = 'Delete all rows'; deleteNote.textContent = 'Nothing was deleted.'; } });
   del.addEventListener('click', async () => {
-    if (!armed) { armed = true; del.textContent = 'Click again to delete'; return; }
-    armed = false; del.textContent = 'Delete all rows';
+    if (!armed) { armed = true; del.textContent = 'Click again to delete'; deleteNote.textContent = 'Click Delete all rows again to delete every encounter and metric stored on this device. Move on to cancel.'; return; }
+    armed = false; del.textContent = 'Delete all rows'; deleteNote.textContent = '';
     await events.clear(); await metrics.clear();
     try { await chrome.runtime.sendMessage({ type: MSG.clearLocal }); } catch { /* the rows above are gone; the queue is cleared by the worker when it answers */ }
     out.hidden = true; out.value = '';
+    deleteNote.textContent = 'All rows on this device were deleted.';
     await refresh();
   });
 

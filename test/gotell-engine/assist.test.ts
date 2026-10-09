@@ -4,7 +4,7 @@
  * is sent, and what is shown of what it returns, is tested against that fake.
  */
 import { describe, expect, it } from 'vitest';
-import { NO_MODEL_WITHOUT_REMOTE, createAssistance, hashText } from '../../packages/gotell/src/engine';
+import { NO_MODEL_WITHOUT_REMOTE, createAssistance, hashText, sentenceScopeHash } from '../../packages/gotell/src/engine';
 import type { Refusal } from '../../packages/gotell/src/engine';
 import type { AssistanceLevel, AssistanceRequest, AssistanceStep, DraftAnalysis, RemoteAssistant } from '../../packages/gotell/src/types';
 import { NOW, deepFreeze, realAnalyzer } from './helpers';
@@ -130,6 +130,22 @@ describe('the ladder is monotone: asking for a level reveals the ones below, and
   it('a later, lower request does not reveal more than it asks', async () => {
     const r = asStep(await a.step(analysis, req(0, 2), []));
     expect(r.revealedUnitIds).toEqual([]);
+  });
+});
+
+describe('every step records the sentence it was shown for', () => {
+  const a = assist();
+  it('carries the 0-based sentence index and a hash of that sentence, on every level including a model', async () => {
+    const r = await a.through(analysis, req(S.negation, 4), []);
+    if (isRefusal(r)) throw new Error(r.reason);
+    expect(r.steps.length).toBeGreaterThan(0);
+    for (const s of r.steps) expect(s).toMatchObject({ sentenceIndex: S.negation, sentenceHash: sentenceScopeHash(analysis.sentences[S.negation].text) });
+    const m = asStep(await a.step(analysis, req(S.clean, 6), []));
+    expect(m).toMatchObject({ level: 6, sentenceIndex: S.clean });
+  });
+  it('the hash ignores case, spacing and end punctuation, so it identifies the same sentence after a light edit', () => {
+    expect(sentenceScopeHash('Unë shkoj te libër.')).toBe(sentenceScopeHash('  unë  shkoj te LIBËR '));
+    expect(sentenceScopeHash('Unë shkoj te libër.')).not.toBe(sentenceScopeHash('Unë shkoj te libri.'));
   });
 });
 

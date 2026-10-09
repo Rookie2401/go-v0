@@ -17,7 +17,7 @@ npx vitest run test/extension test/golearn-app test/golisten test/language-packs
 | `test/golisten` (new files `pronounce-*`) | 7 | 82 | strict voice language match (no English for Albanian), device playback lifecycle and replay count, remote provider needs consent and never sends text before it, recorded demo asset, `pronounce` never throws, evidence-direction rule, `PronunciationPlayed` payload validates, assessment stimuli hide the answer and report eligibility, registry availability states |
 | `test/language-packs` | 5 | 77 | manifest validation, the 14 Albanian validation cases against the real adapter (statuses as the Repository decides them), tutorial passage fully analysable and marked unreviewed, dictionary gloss with CC BY-SA attribution from the real shards, install happy and failure paths, planned packs refused, six teams with Norway's required choice |
 | `test/golearn-e2e/albanian-reference.test.ts` | 1 | 12 | the §17 reference run over the real pieces (§2) |
-| `test/ecosystem/boundaries.test.ts` | 1 | 8 | package import rules incl. GoListen and the packs |
+| `test/ecosystem/boundaries.test.ts` | 1 | 7 | package import rules incl. GoListen and the packs |
 
 Run 2026-10-08 20:09–20:20 local: all green (with the Repository, reader and remaining suites: 91 files, 1,523 tests
 before the reference test; the reference test adds 12).

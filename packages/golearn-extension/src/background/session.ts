@@ -14,6 +14,8 @@ import type { StorageArea } from '../platform';
 
 export const SERVICE_KEY = 'golearn:service';
 export const SESSION_KEY = 'golearn:session';
+/** A sign-out that could not tell the service keeps ONLY the token it must still revoke, here, until the revocation succeeds (audit P-08). */
+export const PENDING_REVOKE_KEY = 'golearn:pending-revoke';
 
 export interface ServiceConfig {
   /** The Repository service. */
@@ -40,6 +42,8 @@ export interface SessionStatus {
   email?: string;
   languageId?: string;
   hasEnrolment: boolean;
+  /** The last sign-out could not reach the service: its session is still alive there and is revoked at the next connection. */
+  revocationPending?: boolean;
   expiresAt?: string;
   baseUrl?: string;
   assetBase?: string;
@@ -133,8 +137,9 @@ export function createSessionManager(opts: SessionManagerOptions) {
   const apiFor = (baseUrl: string, token?: string): RepositoryApi => createRepositoryApi({ baseUrl, fetch: opts.fetch, token });
 
   async function status(): Promise<SessionStatus> {
-    const [svc, s] = await Promise.all([readService(), readSession()]);
+    const [svc, s, pending] = await Promise.all([readService(), readSession(), area.get(PENDING_REVOKE_KEY)]);
     return {
+      ...(pending[PENDING_REVOKE_KEY] ? { revocationPending: true } : {}),
       connected: !!s, expired: s ? isExpired(s) : false, email: s?.email, languageId: s?.languageId, hasEnrolment: !!s?.enrolmentId,
       expiresAt: s?.expiresAt, baseUrl: svc?.baseUrl, assetBase: svc?.assetBase,
     };
@@ -196,9 +201,24 @@ export function createSessionManager(opts: SessionManagerOptions) {
     if (svc && s) {
       try { const r = await apiFor(svc.baseUrl, s.token).deleteSession(); remoteRevoked = r.ok || r.status === 401; } catch { remoteRevoked = false; }
     }
+    // The service could not be told (or refused): keep the one thing needed to tell it later, apart from the session, and say so in the status.
+    if (svc && s && !remoteRevoked) await area.set({ [PENDING_REVOKE_KEY]: { token: s.token, baseUrl: svc.baseUrl, at: new Date(now()).toISOString() } });
     await area.remove(SESSION_KEY); // local sign-out happens whether or not the service could be told
     await opts.onDisconnect?.();
     return { ok: true, remoteRevoked };
+  }
+
+  /** Retries a revocation a sign-out could not make; true when nothing is pending any more. Called at the start of every sync round and when the network returns. */
+  async function retryRevocation(): Promise<boolean> {
+    const p = (await area.get(PENDING_REVOKE_KEY))[PENDING_REVOKE_KEY] as { token?: unknown; baseUrl?: unknown } | undefined;
+    if (!p) return true;
+    const base = validateBaseUrl(p.baseUrl);
+    if (typeof p.token !== 'string' || !base.ok) { await area.remove(PENDING_REVOKE_KEY); return true; }
+    try {
+      const r = await apiFor(base.url, p.token).deleteSession();
+      if (r.ok || r.status === 401) { await area.remove(PENDING_REVOKE_KEY); return true; }
+    } catch { /* still offline: the slot stays */ }
+    return false;
   }
 
   /** The authenticated client, or undefined when there is no usable session. A 401 from it is the caller's to report with `markUnauthorized`. */
@@ -249,7 +269,7 @@ export function createSessionManager(opts: SessionManagerOptions) {
     return updateEnrolment(found);
   }
 
-  return { status, getService: readService, setService, current: readSession, authenticated, connect, createAccount, disconnect, refresh, enrol, selectEnrolment, isExpired };
+  return { status, getService: readService, setService, current: readSession, authenticated, connect, createAccount, disconnect, retryRevocation, refresh, enrol, selectEnrolment, isExpired };
 }
 
 export type SessionManager = ReturnType<typeof createSessionManager>;

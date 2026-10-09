@@ -72,5 +72,11 @@ export async function render(env: TellEnv): Promise<void> {
     h('div', { class: 'row' }, button('Clean up this device', () => { confirmRow.hidden = false; }, { id: 'tell-clean', class: 'btn' })),
     confirmRow, cleanStatus);
 
-  append(el, [tellNav('privacy'), statement, exportBox, remoteBox, cleanBox]);
+  // ── licences
+  const licencesBox = h('section', { class: 'card', id: 'tell-privacy-licences', 'aria-labelledby': 'tell-licences-h' },
+    h('h2', { id: 'tell-licences-h' }, 'Licences and attribution'),
+    p("The dictionary meanings and the review scheduler are other people's work, used under their licences.", 'muted'),
+    h('p', {}, h('a', { href: '#/settings', id: 'tell-licences-link' }, 'Read the licences and attribution'), ' (in Settings, under "Licences and attribution").'));
+
+  append(el, [tellNav('privacy'), statement, exportBox, remoteBox, cleanBox, licencesBox]);
 }

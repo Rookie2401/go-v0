@@ -11,18 +11,21 @@
  * items, the transcript), and the voice's descriptor, which may name a source file. The audio object is never rendered.
  *
  * Keys: Enter submits (and moves on after feedback), 1-4 are the self-grades Again/Hard/Good/Easy (or the first four
- * choices in a choice question), Space plays and replays the audio, Esc skips the item.
+ * choices in a choice question), Space plays and replays the audio, Esc skips the item. The character keys (1-4, Space) can
+ * be turned off in the session controls (WCAG 2.1.4); Enter and Esc are not character keys and stay. The elapsed-time clock
+ * can be hidden from the header (WCAG 2.2.2); nothing is announced every second either way.
  */
 import type { Grading, Response } from '../../goreview/src/types';
 import type { PlaybackHandle } from '../../golisten/src/contracts';
 import type { AppContext } from '../context';
 import { explainFailure } from '../config';
-import { append, button, clear, field, h, langProps, p, setStatus, statusLine } from '../dom';
+import { append, button, clear, embedTarget, field, h, langProps, p, setStatus, statusLine } from '../dom';
 import {
   answerInTarget, DIMENSION_LABEL, duration, FAMILY_LABEL, forecastRecording, isAudioExercise, itemLabel, OUTCOME_LABEL, RATING_LABEL, unitLabel, withheldReason,
 } from '../format';
 import type { ActiveRun, ItemControl, Presented } from '../ports';
 import { fillItemHistory } from './history';
+import { DEFAULT_UI, getUiPrefs, patchUiPrefs, type UiPrefs } from './uiprefs';
 import type { View } from './view';
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
@@ -53,6 +56,8 @@ class Controller {
   private readonly tag: string;
   private busy = false;
   private readonly doc: Document;
+  /** Interface switches of this device, read when the session screen opens. */
+  private ui: UiPrefs = { ...DEFAULT_UI };
 
   constructor(private root: HTMLElement, private ctx: AppContext, private run: ActiveRun, view: View) {
     this.doc = ctx.deps.doc;
@@ -69,6 +74,7 @@ class Controller {
   }
 
   async start(): Promise<void> {
+    this.ui = await getUiPrefs(this.ctx);
     this.tick();
     await this.showCurrent();
   }
@@ -191,6 +197,7 @@ class Controller {
       if (ev.key === 'Escape') { ev.preventDefault(); await this.skip(); return; }
       if (typing) return;
       const mode = this.presented.exercise.responseMode;
+      if (!this.ui.shortcuts && (ev.key === ' ' || /^[1-4]$/.test(ev.key))) return; // one-key shortcuts are off: the buttons do the same
       if (/^[1-4]$/.test(ev.key)) {
         ev.preventDefault();
         const n = Number(ev.key) - 1;
@@ -227,9 +234,10 @@ class Controller {
   private header(pr: Presented, withSkip: boolean): HTMLElement {
     return h('div', { class: 'progress row', id: 'session-header' },
       h('span', { id: 'session-progress' }, `Item ${pr.index + 1} of ${pr.total}`),
-      h('span', { id: 'session-clock', class: 'muted' }, duration(this.ctx.deps.now().getTime() - this.run.startedAt)),
+      h('span', { id: 'session-clock', class: 'muted', ...(this.ui.showClock ? {} : { hidden: true }) }, duration(this.ctx.deps.now().getTime() - this.run.startedAt)),
       h('span', { class: 'tag' }, FAMILY_LABEL[pr.exercise.family]),
       withSkip ? button('Skip (Esc)', () => void this.skip(), { id: 'skip', class: 'btn small' }) : null,
+      button(this.ui.showClock ? 'Hide clock' : 'Show clock', () => void this.toggleClock(), { id: 'toggle-clock', class: 'btn small' }),
       button('Finish early', () => void this.finish('early'), { id: 'finish-early', class: 'btn small' }));
   }
 
@@ -264,7 +272,7 @@ class Controller {
     if (mode === 'choice') {
       const optsInTarget = exercise.family === 'grammar-application' || exercise.family === 'sentence-completion';
       area.append(h('div', { class: 'choices', role: 'group', 'aria-label': 'Choices' }, ...options.map((o, i) =>
-        button(`${i + 1}  ${o}`, () => void this.submit(this.base({ choice: o })), { class: 'choice btn', 'data-choice': o, 'data-index': i + 1, ...(optsInTarget ? { lang: this.tag, dir: String(langProps(this.tag).dir) } : {}) }))));
+        button(this.ui.shortcuts ? `${i + 1}  ${o}` : o, () => void this.submit(this.base({ choice: o })), { class: 'choice btn', 'data-choice': o, 'data-index': i + 1, ...(optsInTarget ? { lang: this.tag, dir: String(langProps(this.tag).dir) } : {}) }))));
     }
     if (mode === 'typed' || mode === 'typed-or-self') {
       const input = h('input', {
@@ -303,7 +311,7 @@ class Controller {
     append(area, [
       h('p', { class: 'reference' }, 'Answer: ', h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ref)),
       h('p', { class: 'muted' }, 'How well did you know it?'),
-      h('div', { class: 'row grades' }, ...GRADES.map((g, i) => button(`${i + 1}  ${RATING_LABEL[i + 1]}`, () => void this.submit(this.base({ selfGrade: g })), { class: 'grade btn', 'data-grade': g }))),
+      h('div', { class: 'row grades' }, ...GRADES.map((g, i) => button(this.ui.shortcuts ? `${i + 1}  ${RATING_LABEL[i + 1]}` : RATING_LABEL[i + 1], () => void this.submit(this.base({ selfGrade: g })), { class: 'grade btn', 'data-grade': g }))),
     ]);
     try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
   }
@@ -313,8 +321,8 @@ class Controller {
   private audioBlock(replaysAllowed: number): HTMLElement {
     const box = h('div', { class: 'audio', id: 'audio', role: 'group', 'aria-label': 'Audio question' });
     const count = h('span', { id: 'audio-count', class: 'muted', 'aria-live': 'polite' }, `Not played yet · ${replaysAllowed} replay(s) allowed`);
-    const play = button('Play (Space)', () => this.playOrReplay(), { id: 'audio-play', class: 'btn primary' });
-    const replay = button('Replay (Space)', () => this.playOrReplay(), { id: 'audio-replay', class: 'btn', hidden: true });
+    const play = button(this.ui.shortcuts ? 'Play (Space)' : 'Play', () => this.playOrReplay(), { id: 'audio-play', class: 'btn primary' });
+    const replay = button(this.ui.shortcuts ? 'Replay (Space)' : 'Replay', () => this.playOrReplay(), { id: 'audio-replay', class: 'btn', hidden: true });
     const failed = button('I could not hear it', () => void this.submit(this.base({ audioFailed: true })), { id: 'audio-failed', class: 'btn' });
     box.append(h('div', { class: 'row' }, play, replay, count, failed));
     return box;
@@ -363,7 +371,7 @@ class Controller {
       const also = exercise.answerKey.accepted.slice(1);
       fb.append(h('p', {}, 'Answer: ', h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'reference' }, ref), also.length ? h('span', { class: 'muted' }, ` (also accepted: ${also.join(', ')})`) : null));
     }
-    fb.append(h('p', { id: 'explanation' }, grading.explanation));
+    fb.append(h('p', { id: 'explanation' }, ...embedTarget(grading.explanation, this.targetWords(pr), this.tag)));
     const deeper = grading.deeper ?? exercise.answerKey.deeper;
     if (deeper) fb.append(h('details', { id: 'more' }, h('summary', {}, 'More'), h('p', {}, deeper)));
     if (isAudioExercise(exercise)) fb.append(this.revealAudio(pr));
@@ -427,8 +435,8 @@ class Controller {
     const item = pr.planned.item;
     const histBox = h('div', { id: 'item-history', class: 'item-history' });
     return h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
-      concealed ? null : h('p', { class: 'muted' }, `${unitLabel(item.unitId)} · ${DIMENSION_LABEL[item.dimension]}`),
-      !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, w))) : null,
+      concealed ? null : h('p', { class: 'muted' }, h('span', langProps(this.tag), unitLabel(item.unitId)), ` · ${DIMENSION_LABEL[item.dimension]}`),
+      !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, ...embedTarget(w, this.targetWords(pr), this.tag)))) : null,
       h('div', { class: 'row' },
         button('Snooze a day', () => void this.control({ kind: 'snooze', until: until(1) }), { id: 'snooze-day', class: 'btn small' }),
         button('Snooze a week', () => void this.control({ kind: 'snooze', until: until(7) }), { id: 'snooze-week', class: 'btn small' }),
@@ -438,13 +446,26 @@ class Controller {
       histBox);
   }
 
+  /** Target-language words an interface sentence about this item may quote: its label, and the accepted answers when those are in the target language. */
+  private targetWords(pr: Presented): string[] {
+    return [unitLabel(pr.planned.item.unitId), ...(answerInTarget(pr.exercise.family) ? pr.exercise.answerKey.accepted : [])];
+  }
+
   // ───────────── clock ─────────────
+
+  private async toggleClock(): Promise<void> {
+    this.ui = await patchUiPrefs(this.ctx, { showClock: !this.ui.showClock });
+    const clock = this.root.querySelector<HTMLElement>('#session-clock');
+    const btn = this.root.querySelector<HTMLButtonElement>('#toggle-clock');
+    if (clock) { clock.hidden = !this.ui.showClock; if (this.ui.showClock) clock.textContent = duration(this.ctx.deps.now().getTime() - this.run.startedAt); }
+    if (btn) btn.textContent = this.ui.showClock ? 'Hide clock' : 'Show clock';
+  }
 
   private tick(): void {
     const timers = this.ctx.deps.timers ?? { set: (fn: () => void, ms: number) => setTimeout(fn, ms), clear: (x: unknown) => clearTimeout(x as ReturnType<typeof setTimeout>) };
     const loop = (): void => {
       const c = this.root.querySelector<HTMLElement>('#session-clock');
-      if (c) c.textContent = duration(this.ctx.deps.now().getTime() - this.run.startedAt);
+      if (c && this.ui.showClock) c.textContent = duration(this.ctx.deps.now().getTime() - this.run.startedAt);
       this.clockHandle = timers.set(loop, 1000);
     };
     this.clockHandle = timers.set(loop, 1000);
@@ -474,6 +495,7 @@ export function parseCorrection(text: string): { lexemeId: string } | { features
 // ───────────────────────────── summary ─────────────────────────────
 
 export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun): Promise<void> {
+  const tag = run.ctx.varietyId ?? run.ctx.languageId;
   const results = run.results;
   const planned = run.plan.items.length;
   const answered = results.length;
@@ -506,7 +528,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
         h('dt', {}, 'Answered'), h('dd', { id: 'sum-answered' }, `${answered} of ${planned} planned, ${correct} correct`),
         h('dt', {}, 'Time'), h('dd', {}, duration(elapsed)),
         h('dt', {}, 'Skipped'), h('dd', { id: 'sum-skipped' }, String(run.skipped.length)),
-        h('dt', {}, 'Set aside'), h('dd', { id: 'sum-controls' }, run.controls.length ? run.controls.map((c) => `${unitLabel(c.unitId)} (${c.control})`).join(', ') : 'none'),
+        h('dt', {}, 'Set aside'), h('dd', { id: 'sum-controls' }, ...(run.controls.length ? run.controls.flatMap((c, i) => [i ? ', ' : '', h('span', langProps(tag), unitLabel(c.unitId)), ` (${c.control})`]) : ['none'])),
         h('dt', {}, 'Still due'), h('dd', { id: 'sum-left' }, `${left + run.skipped.length} item(s) were not answered; nothing was written for them, so they stay due.`)),
       h('h3', {}, 'Results by dimension'),
       answered ? h('table', { class: 'plain', id: 'sum-dimensions' },
@@ -518,8 +540,8 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
         ? `${recorded.length} event(s) were written to your record (${[...kinds].map(([k, n]) => `${n} ${k}`).join(', ')}); ${counting.length} count as evidence.${run.addedCount ? ` Up to ${run.addedCount} new item(s) joined your deck as they were answered.` : ''}`
         : 'Nothing was written as evidence.'),
       h('h3', {}, 'What was withheld, and why'),
-      run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, `${unitLabel(w.unitId)} (${w.family}): ${w.reason}.`))) : p('Nothing was withheld.', 'muted'),
-      unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, `Could not be asked: ${unbuildable.map((u) => `${itemLabel(u.itemId)} (${u.reason})`).join('; ')}.`) : null,
+      run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, h('span', langProps(tag), unitLabel(w.unitId)), ` (${w.family}): `, ...embedTarget(`${w.reason}.`, [unitLabel(w.unitId)], tag)))) : p('Nothing was withheld.', 'muted'),
+      unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
       p(`${view.status?.pending ?? 0} event(s) wait to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'),
       h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/review', id: 'back-to-review' }, 'Back to GoReview'))),
   ]);

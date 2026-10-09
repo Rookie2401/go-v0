@@ -31,7 +31,8 @@ function canonVersion(v: DraftVersion): DraftVersion {
 }
 
 function canonStep(a: AssistanceStep): AssistanceStep {
-  return { level: a.level, content: a.content, revealedUnitIds: [...a.revealedUnitIds], source: a.source, ...(a.review !== undefined ? { review: a.review } : {}), at: a.at };
+  return { level: a.level, content: a.content, revealedUnitIds: [...a.revealedUnitIds], source: a.source, ...(a.review !== undefined ? { review: a.review } : {}),
+    ...(a.sentenceIndex !== undefined ? { sentenceIndex: a.sentenceIndex } : {}), ...(a.sentenceHash !== undefined ? { sentenceHash: a.sentenceHash } : {}), at: a.at };
 }
 
 /** A copy of the record with its keys in the canonical order. */
@@ -67,7 +68,9 @@ function readStep(v: unknown): AssistanceStep | undefined {
   return {
     level: v.level as AssistanceLevel, content: str(v.content), revealedUnitIds: Array.isArray(v.revealedUnitIds) ? v.revealedUnitIds.filter((x): x is string => typeof x === 'string') : [],
     source: (['adapter-checker', 'pack-grammar', 'pack-sentence', 'learner-own-sentence', 'remote-assistant', 'none'] as const).find((s) => s === v.source) ?? 'none',
-    ...(v.review === 'unreviewed' || v.review === 'reviewed' || v.review === 'learner-own' ? { review: v.review } : {}), at: str(v.at),
+    ...(v.review === 'unreviewed' || v.review === 'reviewed' || v.review === 'learner-own' ? { review: v.review } : {}),
+    ...(typeof v.sentenceIndex === 'number' && Number.isInteger(v.sentenceIndex) && v.sentenceIndex >= 0 ? { sentenceIndex: v.sentenceIndex } : {}),
+    ...(typeof v.sentenceHash === 'string' ? { sentenceHash: v.sentenceHash } : {}), at: str(v.at),
   };
 }
 

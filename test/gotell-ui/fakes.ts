@@ -5,8 +5,9 @@
 import { CONTRACT_VERSION } from '../../packages/repository-contract/src';
 import type { GoEvent } from '../../packages/repository-contract/src';
 import type {
-  AssistanceStep, DraftAnalysis, DraftRecord, DraftStore, DraftVersion, Identity, Issue, PromptCategory, SentenceAnalysis, WriterProfile, WritingMode, WritingPrompt,
+  AssistanceLevel, AssistanceStep, DraftAnalysis, DraftRecord, DraftStore, DraftVersion, Identity, Issue, PromptCategory, SentenceAnalysis, WriterProfile, WritingMode, WritingPrompt,
 } from '../../packages/gotell/src/types';
+import { stepsForSentence } from '../../packages/gotell/src/engine';
 import type { AssistOutcome, DiffLine, FileOut, TellEngine } from '../../packages/gotell/src/workspace/port';
 
 export const sentencesOf = (text: string): string[] => (text.match(/[^.!?]+[.!?]*/g) ?? []).map((s) => s.trim()).filter(Boolean);
@@ -201,11 +202,15 @@ export function fakeEngine(identity: Identity, opts: FakeEngineOptions = {}): Fa
     stores: { local, synced },
     newVersion({ record, text, at, deviceId, note }) {
       e.calls.push('newVersion');
-      const top = Math.max(0, ...record.assistance.map((a) => a.level));
-      const authorship = top === 0 ? 'independent' : top >= 4 ? 'revised-after-feedback' : 'after-hint';
+      // per sentence: only the steps recorded for THAT sentence count
+      const judged = (t: string, i: number): { authorship: DraftVersion['sentences'][number]['authorship']; assistance: AssistanceLevel[] } => {
+        const mine = stepsForSentence(record.assistance, t, i);
+        const top = Math.max(0, ...mine.map((a) => a.level));
+        return { authorship: top === 0 ? 'independent' : top >= 4 ? 'revised-after-feedback' : 'after-hint', assistance: mine.map((a) => a.level) };
+      };
       const version: DraftVersion = {
         versionId: `v${record.versions.length + 1}`, at, text, textHash: String(text.length), deviceId,
-        sentences: sentencesOf(text).map((t) => ({ text: t, authorship, assistance: record.assistance.map((a) => a.level), at })), ...(note ? { note } : {}),
+        sentences: sentencesOf(text).map((t, i) => ({ text: t, ...judged(t, i), at })), ...(note ? { note } : {}),
       };
       return { ...record, text, versions: [...record.versions, version], assistance: [], updatedAt: at };
     },

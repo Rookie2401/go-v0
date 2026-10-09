@@ -53,16 +53,22 @@ export interface EvidenceOptions {
   /** The analysis of the saved text. Used only for sentences whose text it matches exactly; a stale analysis is ignored. */
   analysis?: DraftAnalysis;
   /**
-   * Whether the checker really looked at what this sentence needed. Default: the analysis status is verified or
-   * high-confidence and the sentence's `checkerCoverage` honesty line is empty. A caller that knows better says so here.
+   * Whether the checker really looked at what this sentence needed. Default: `coverageParts.checked` and an analysis
+   * that is not invalidated, conflicted or absent. A caller that knows better says so here.
    */
   checkerCovers?: (s: SentenceAnalysis) => boolean;
   /** The pack id for `provenance` (the analysis names an analyzer and a pack version, not a pack id). */
   packId?: string;
 }
 
+/**
+ * Default: the checker really ran on the sentence (`coverageParts.checked`; the coverage line itself is never empty, it
+ * always names the areas not checked) and the analysis it rests on is not invalidated, conflicted or absent. Found by the
+ * §14 certification: the earlier default demanded an empty coverage line, so no sentence written through the app was
+ * ever judged `usedCorrectly: true` and GoTell never contributed contextual-production evidence.
+ */
 const defaultCovers = (s: SentenceAnalysis): boolean =>
-  (s.analysisStatus === 'verified' || s.analysisStatus === 'high-confidence') && s.checkerCoverage.trim() === '';
+  s.coverageParts?.checked === true && s.analysisStatus !== 'invalidated' && s.analysisStatus !== 'conflicted' && s.analysisStatus !== 'none';
 
 function base(identity: Identity, now: TimeSource, kind: GoEvent['kind'], subject: GoEvent['subject'], payload: Record<string, unknown>): GoEvent {
   const at = toDate(now);

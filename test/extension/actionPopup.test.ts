@@ -88,4 +88,30 @@ describe('action popup page', () => {
     expect($('count').textContent).toBe('0');
     expect(out.hidden).toBe(true);
   });
+
+  it('A-21 the two-step delete says what the first click did in a live region, and leaving the button cancels it', async () => {
+    await addEvent('zog');
+    await initPopup(document, fake as never);
+    const del = $<HTMLButtonElement>('delete-all');
+    const note = $('delete-note');
+    expect(note.getAttribute('role')).toBe('status');
+    del.focus(); del.click(); await flush(10);
+    expect(del.textContent).toBe('Click again to delete');
+    expect(note.textContent).toMatch(/Click Delete all rows again to delete/);
+    // moving on cancels: nothing is deleted, the button is back to its label, and the note says so
+    del.blur(); await flush(5);
+    expect(del.textContent).toBe('Delete all rows');
+    expect(note.textContent).toBe('Nothing was deleted.');
+    expect($('count').textContent).toBe('1');
+    // a full two-click delete is announced too
+    del.click(); del.click(); await flush(20);
+    expect($('count').textContent).toBe('0');
+    expect(note.textContent).toBe('All rows on this device were deleted.');
+  });
+
+  it('A-02 / A-05 the popup sizes its text in rem and has a dark-theme colour for error and warning text', () => {
+    const style = /<style>([\s\S]*?)<\/style>/.exec(html)![1];
+    expect(style).not.toMatch(/font(-size)?:[^;}]*\d+px/);
+    expect(style).toMatch(/prefers-color-scheme: dark\) \{ \.err, \.status-line\.warn \{ color: #ff9a9a; \}/);
+  });
 });

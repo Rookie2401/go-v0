@@ -82,9 +82,12 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     return { unit, relations: { out, in: inn }, analyses };
   }
 
-  /** The ids the candidates of an analysis pointed at: lexemes and constructions, for finding the review items they touch. */
+  /**
+   * Every id the candidates of an analysis pointed at: lexemes, senses and morph constructions, sorted. Same set as the
+   * engine's `affectedByInvalidation` (kept in step by test/audit/model.analysis), so a deck item on a sense unit is named too.
+   */
   const pointedAt = (a: FormAnalysis): string[] =>
-    uniq(a.candidates.flatMap((c) => [...(c.lexemeId ? [c.lexemeId] : []), ...(c.constructionIds ?? [])]));
+    uniq(a.candidates.flatMap((c) => [...(c.lexemeId ? [c.lexemeId] : []), ...(c.senseId ? [c.senseId] : []), ...(c.constructionIds ?? [])])).sort();
 
   async function invalidate(analysisId: string, reason: string, replacement?: FormAnalysis): Promise<{ affectedUnitIds: string[] }> {
     const old = await store.getAnalysis(analysisId);
@@ -134,9 +137,15 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     const base = { languageId, packId: pack.packId, packVersion: pack.version, provenance, status, createdAt: now };
     if (correction.lexemeId) wanted.push({ ...base, unitId: correction.lexemeId, kind: 'lexeme', label: correction.lexemeId.split(':')[2] ?? correction.lexemeId, ...(pos ? { pos } : {}) });
     if (constructionId && pos) wanted.push({ ...base, unitId: constructionId, kind: 'morph-construction', label: unitIds.featureKey(features!), pos, features });
-    const have = new Set((await store.getUnits(wanted.map((u) => u.unitId))).map((u) => u.unitId));
-    const fresh = wanted.filter((u) => !have.has(u.unitId));
-    if (fresh.length) await store.putUnits(fresh);
+    const haveRows = new Map((await store.getUnits(wanted.map((u) => u.unitId))).map((u) => [u.unitId, u]));
+    const fresh = wanted.filter((u) => !haveRows.has(u.unitId));
+    // A REVIEWER's correction supersedes an earlier lower status (conflicted, provisional ...) on the units it names; the
+    // store only ever raises a rank, so this cannot lower anything. A learner's correction never raises an existing unit.
+    const raised: LinguisticUnit[] = learner ? [] : wanted.flatMap((u) => {
+      const old = haveRows.get(u.unitId);
+      return old && !old.supersededBy && STATUS_RANK[old.status] < STATUS_RANK[status] ? [{ ...old, status, provenance }] : [];
+    });
+    if (fresh.length || raised.length) await store.putUnits([...fresh, ...raised]);
     const rels: UnitRelation[] = [];
     if (correction.lexemeId) rels.push({ fromId: formId, relation: 'form-of', toId: correction.lexemeId, confidence, provenance, status });
     if (constructionId) rels.push({ fromId: formId, relation: 'realizes', toId: constructionId, confidence, provenance, status });
@@ -148,6 +157,15 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     for (const a of previous) {
       await store.invalidateAnalysis(a.analysisId, reason, analysis.analysisId);
       invalidated.push({ ...a, status: 'invalidated', reason, supersededBy: analysis.analysisId });
+    }
+    // The form's own row follows a reviewer's verdict once no other live analysis of it is left to disagree (a correction
+    // limited to one sentence leaves the out-of-context readings, so the form keeps its status then).
+    if (!learner) {
+      const [formUnit] = await store.getUnits([formId]);
+      const others = (await store.analysesOfForm(formId)).filter((a) => a.analysisId !== analysis.analysisId && a.status !== 'invalidated' && !a.supersededBy);
+      if (formUnit && !formUnit.supersededBy && others.length === 0 && STATUS_RANK[formUnit.status] < STATUS_RANK[status]) {
+        await store.putUnits([{ ...formUnit, status, provenance }]);
+      }
     }
     return { analysis, invalidated };
   }

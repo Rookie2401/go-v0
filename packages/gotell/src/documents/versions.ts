@@ -4,6 +4,7 @@
  * the caller supplies (it knows which help was shown for which sentence); `judgeFromAssistance` is a conservative default.
  */
 import { deviceShortHash } from '../../../repository-sync/src';
+import { stepsForSentence } from '../engine/authorship';
 import type { AssistanceLevel, AssistanceStep, Authorship, DraftRecord, DraftVersion, SentenceVersion } from '../types';
 import { normalizeSentence, splitSentences, textHash } from './text';
 import { toIso, type TimeSource } from './time';
@@ -59,22 +60,24 @@ const stripEnd = (s: string): string => normalizeSentence(s).replace(/[\s.!?…�
 /**
  * A conservative default judge. A sentence equal to what a step showed is attributed to that step (level 6/5 → copied-from-
  * model; level 4 → revised-after-feedback; a remote assistant's wording → ai-generated; the learner's own earlier sentence →
- * reproduced-later). A sentence carried over unchanged keeps its earlier authorship. Any other new or changed sentence in a
- * round where help was shown is assumed helped (level 4+ shown → revised-after-feedback, else after-hint), because the steps
- * do not say which sentence they were for; with no help shown it is independent. Callers that track help per sentence
- * should pass their own judge.
+ * reproduced-later). A sentence carried over unchanged keeps its earlier authorship. Any other new or changed sentence is judged
+ * from the steps that touched it: a step records the sentence it was shown for (`sentenceIndex` / `sentenceHash`), so a sentence no
+ * step touched is independent even when help was shown for its neighbour. A step with no sentence reference (a legacy record)
+ * is assumed to touch every sentence of the round (level 4+ → revised-after-feedback, else after-hint).
  */
 export function judgeFromAssistance(steps: readonly AssistanceStep[]): SentenceJudge {
   const lines = (s: AssistanceStep): string[] => [s.content, ...s.content.split(/\r?\n/u)].map(stripEnd).filter(Boolean);
-  const all = LEVEL_ORDER([...steps]);
-  return (sentence, prior, _index) => {
+  const everything = LEVEL_ORDER([...steps]);
+  return (sentence, prior, index) => {
+    const all = LEVEL_ORDER(stepsForSentence(steps, sentence, index));
+    const levelsShown = all.length ? all : everything;
     const key = stripEnd(sentence);
     const shown = steps.filter((s) => s.level >= 4 && lines(s).includes(key));
     if (shown.length) {
       const top = shown.reduce((m, s) => (s.level > m.level ? s : m));
-      if (shown.some((s) => s.source === 'remote-assistant')) return { authorship: 'ai-generated', assistance: all };
-      if (shown.every((s) => s.source === 'learner-own-sentence' || s.review === 'learner-own')) return { authorship: 'reproduced-later', assistance: all };
-      return { authorship: top.level >= 5 ? 'copied-from-model' : 'revised-after-feedback', assistance: all };
+      if (shown.some((s) => s.source === 'remote-assistant')) return { authorship: 'ai-generated', assistance: levelsShown };
+      if (shown.every((s) => s.source === 'learner-own-sentence' || s.review === 'learner-own')) return { authorship: 'reproduced-later', assistance: levelsShown };
+      return { authorship: top.level >= 5 ? 'copied-from-model' : 'revised-after-feedback', assistance: levelsShown };
     }
     if (prior && same(prior.text, sentence)) return { authorship: prior.authorship, assistance: [] };
     if (!all.length) return { authorship: 'independent', assistance: [] };

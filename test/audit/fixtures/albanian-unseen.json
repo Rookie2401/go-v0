@@ -1,0 +1,6473 @@
+{
+ "about": "Fresh Albanian sentences written by a language MODEL (not a native speaker) on 2026-10-09 for the linguistic accuracy audit. Expectations were written BEFORE the adapter was run on these sentences. conf: c = confident, u = unsure. Not copyrighted text.",
+ "sentences": [
+  {
+   "id": "u01",
+   "category": "definiteness",
+   "text": "Kam një libër.",
+   "tokens": [
+    "Kam",
+    "një",
+    "libër",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Kam",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "libër",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u02",
+   "category": "definiteness",
+   "text": "Libri është në tavolinë.",
+   "tokens": [
+    "Libri",
+    "është",
+    "në",
+    "tavolinë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Libri",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "tavolinë",
+     "lemma": [
+      "tavolinë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "definite-noun-ending"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u03",
+   "category": "definiteness",
+   "text": "Shoku im lexon librin.",
+   "tokens": [
+    "Shoku",
+    "im",
+    "lexon",
+    "librin",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Shoku",
+     "lemma": [
+      "shok"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "im",
+     "lemma": [
+      "im"
+     ],
+     "pos": [
+      "DET",
+      "PRON",
+      "ADJ"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "lexon",
+     "lemma": [
+      "lexoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "librin",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "definite-noun-ending",
+    "possessive-after-noun"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u04",
+   "category": "definiteness",
+   "text": "Vajza pi qumësht.",
+   "tokens": [
+    "Vajza",
+    "pi",
+    "qumësht",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Vajza",
+     "lemma": [
+      "vajzë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "pi",
+     "lemma": [
+      "pi"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "qumësht",
+     "lemma": [
+      "qumësht"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "definite-noun-ending"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u05",
+   "category": "case",
+   "text": "Shoh djalin në rrugë.",
+   "tokens": [
+    "Shoh",
+    "djalin",
+    "në",
+    "rrugë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Shoh",
+     "lemma": [
+      "shoh"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "djalin",
+     "lemma": [
+      "djalë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "rrugë",
+     "lemma": [
+      "rrugë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "definite-noun-ending"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u06",
+   "category": "genitive",
+   "text": "Libri i mësuesit është i ri.",
+   "tokens": [
+    "Libri",
+    "i",
+    "mësuesit",
+    "është",
+    "i",
+    "ri",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Libri",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "mësuesit",
+     "lemma": [
+      "mësues"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Gen",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "ri",
+     "lemma": [
+      "i ri",
+      "ri"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "genitive-linking-article",
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u07",
+   "category": "genitive",
+   "text": "Çanta e vajzës është e kuqe.",
+   "tokens": [
+    "Çanta",
+    "e",
+    "vajzës",
+    "është",
+    "e",
+    "kuqe",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Çanta",
+     "lemma": [
+      "çantë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "vajzës",
+     "lemma": [
+      "vajzë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Gen",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "kuqe",
+     "lemma": [
+      "i kuq",
+      "kuq"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "genitive-linking-article",
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u08",
+   "category": "dative",
+   "text": "Ai i jep librin mikut.",
+   "tokens": [
+    "Ai",
+    "i",
+    "jep",
+    "librin",
+    "mikut",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Dat",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "jep",
+     "lemma": [
+      "jap"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "librin",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "mikut",
+     "lemma": [
+      "mik"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Dat",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "clitic-doubling",
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u09",
+   "category": "ablative",
+   "text": "Shkolla e vogël është afër shtëpisë.",
+   "tokens": [
+    "Shkolla",
+    "e",
+    "vogël",
+    "është",
+    "afër",
+    "shtëpisë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Shkolla",
+     "lemma": [
+      "shkollë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "vogël",
+     "lemma": [
+      "i vogël",
+      "vogël"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "afër",
+     "lemma": [
+      "afër"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shtëpisë",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Abl",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "ablative-after-preposition",
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u10",
+   "category": "plural",
+   "text": "Fëmijët luajnë në park.",
+   "tokens": [
+    "Fëmijët",
+    "luajnë",
+    "në",
+    "park",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Fëmijët",
+     "lemma": [
+      "fëmijë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Plur",
+      "Gender": "Masc"
+     },
+     "conf": "u"
+    },
+    {
+     "form": "luajnë",
+     "lemma": [
+      "luaj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "park",
+     "lemma": [
+      "park"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "definite-noun-ending"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u11",
+   "category": "clitic",
+   "text": "Burrat e shohin djalin.",
+   "tokens": [
+    "Burrat",
+    "e",
+    "shohin",
+    "djalin",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Burrat",
+     "lemma": [
+      "burrë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Plur",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "shohin",
+     "lemma": [
+      "shoh"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "djalin",
+     "lemma": [
+      "djalë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "clitic-doubling",
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u12",
+   "category": "plural",
+   "text": "Gruaja ka dy fëmijë.",
+   "tokens": [
+    "Gruaja",
+    "ka",
+    "dy",
+    "fëmijë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Gruaja",
+     "lemma": [
+      "grua"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "ka",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "dy",
+     "lemma": [
+      "dy"
+     ],
+     "pos": [
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "fëmijë",
+     "lemma": [
+      "fëmijë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Plur",
+      "Gender": "Masc"
+     },
+     "conf": "u"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u13",
+   "category": "plural-adjective",
+   "text": "Shtëpitë e mëdha janë të vjetra.",
+   "tokens": [
+    "Shtëpitë",
+    "e",
+    "mëdha",
+    "janë",
+    "të",
+    "vjetra",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Shtëpitë",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Plur",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "mëdha",
+     "lemma": [
+      "i madh",
+      "madh"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Fem",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "janë",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "vjetra",
+     "lemma": [
+      "i vjetër",
+      "vjetër"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Fem",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u14",
+   "category": "plural-adjective",
+   "text": "Shoh shtëpitë e bukura.",
+   "tokens": [
+    "Shoh",
+    "shtëpitë",
+    "e",
+    "bukura",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Shoh",
+     "lemma": [
+      "shoh"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "shtëpitë",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Plur",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "bukura",
+     "lemma": [
+      "i bukur",
+      "bukur"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Gender": "Fem",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u15",
+   "category": "adjective",
+   "text": "Ai është një njeri i mirë.",
+   "tokens": [
+    "Ai",
+    "është",
+    "një",
+    "njeri",
+    "i",
+    "mirë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "njeri",
+     "lemma": [
+      "njeri"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "mirë",
+     "lemma": [
+      "i mirë",
+      "mirë"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u16",
+   "category": "adjective",
+   "text": "Ajo është një grua e mirë.",
+   "tokens": [
+    "Ajo",
+    "është",
+    "një",
+    "grua",
+    "e",
+    "mirë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ajo",
+     "lemma": [
+      "ajo",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "grua",
+     "lemma": [
+      "grua"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "mirë",
+     "lemma": [
+      "i mirë",
+      "mirë"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u17",
+   "category": "adjective",
+   "text": "Kam një mik të mirë.",
+   "tokens": [
+    "Kam",
+    "një",
+    "mik",
+    "të",
+    "mirë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Kam",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "mik",
+     "lemma": [
+      "mik"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "mirë",
+     "lemma": [
+      "i mirë",
+      "mirë"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u18",
+   "category": "adjective",
+   "text": "Libri i ri është i shtrenjtë.",
+   "tokens": [
+    "Libri",
+    "i",
+    "ri",
+    "është",
+    "i",
+    "shtrenjtë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Libri",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "ri",
+     "lemma": [
+      "i ri",
+      "ri"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "shtrenjtë",
+     "lemma": [
+      "i shtrenjtë",
+      "shtrenjtë"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u19",
+   "category": "adjective",
+   "text": "Vajza e re ka një çantë të kuqe.",
+   "tokens": [
+    "Vajza",
+    "e",
+    "re",
+    "ka",
+    "një",
+    "çantë",
+    "të",
+    "kuqe",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Vajza",
+     "lemma": [
+      "vajzë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "re",
+     "lemma": [
+      "i ri",
+      "ri",
+      "re"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "ka",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "çantë",
+     "lemma": [
+      "çantë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "kuqe",
+     "lemma": [
+      "i kuq",
+      "kuq"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u20",
+   "category": "adjective",
+   "text": "Çaji është i nxehtë.",
+   "tokens": [
+    "Çaji",
+    "është",
+    "i",
+    "nxehtë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Çaji",
+     "lemma": [
+      "çaj"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "nxehtë",
+     "lemma": [
+      "i nxehtë",
+      "nxehtë"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u21",
+   "category": "adjective",
+   "text": "Dita është e bukur.",
+   "tokens": [
+    "Dita",
+    "është",
+    "e",
+    "bukur",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Dita",
+     "lemma": [
+      "ditë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "bukur",
+     "lemma": [
+      "i bukur",
+      "bukur"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u22",
+   "category": "adjective",
+   "text": "Kemi një shtëpi të vogël.",
+   "tokens": [
+    "Kemi",
+    "një",
+    "shtëpi",
+    "të",
+    "vogël",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Kemi",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shtëpi",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "vogël",
+     "lemma": [
+      "i vogël",
+      "vogël"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u23",
+   "category": "clitic",
+   "text": "Nëna e do vajzën.",
+   "tokens": [
+    "Nëna",
+    "e",
+    "do",
+    "vajzën",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Nëna",
+     "lemma": [
+      "nënë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "do",
+     "lemma": [
+      "dua"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "vajzën",
+     "lemma": [
+      "vajzë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "clitic-doubling",
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u24",
+   "category": "clitic",
+   "text": "Unë të shoh.",
+   "tokens": [
+    "Unë",
+    "të",
+    "shoh",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Unë",
+     "lemma": [
+      "unë"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të",
+      "ti"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "2",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "shoh",
+     "lemma": [
+      "shoh"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u25",
+   "category": "clitic",
+   "text": "Ti më ndihmon shpesh.",
+   "tokens": [
+    "Ti",
+    "më",
+    "ndihmon",
+    "shpesh",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ti",
+     "lemma": [
+      "ti"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "më",
+     "lemma": [
+      "më",
+      "unë"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "1",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "ndihmon",
+     "lemma": [
+      "ndihmoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "shpesh",
+     "lemma": [
+      "shpesh"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u26",
+   "category": "clitic",
+   "text": "Ai na takon në qytet.",
+   "tokens": [
+    "Ai",
+    "na",
+    "takon",
+    "në",
+    "qytet",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "na",
+     "lemma": [
+      "na",
+      "ne"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "1",
+      "Number": "Plur",
+      "Clitic": "Yes"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "takon",
+     "lemma": [
+      "takoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "qytet",
+     "lemma": [
+      "qytet"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u27",
+   "category": "clitic",
+   "text": "Ju ftoj në darkë.",
+   "tokens": [
+    "Ju",
+    "ftoj",
+    "në",
+    "darkë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ju",
+     "lemma": [
+      "ju"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "2",
+      "Number": "Plur",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "ftoj",
+     "lemma": [
+      "ftoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "darkë",
+     "lemma": [
+      "darkë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u28",
+   "category": "clitic",
+   "text": "Ata u dhanë një libër.",
+   "tokens": [
+    "Ata",
+    "u",
+    "dhanë",
+    "një",
+    "libër",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ata",
+     "lemma": [
+      "ata",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "u",
+     "lemma": [
+      "u",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Dat",
+      "Person": "3",
+      "Number": "Plur",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "dhanë",
+     "lemma": [
+      "jap"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur",
+      "Tense": "Past"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "libër",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u29",
+   "category": "clitic",
+   "text": "Ia jap librin Anës.",
+   "tokens": [
+    "Ia",
+    "jap",
+    "librin",
+    "Anës",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ia",
+     "lemma": [
+      "ia",
+      "i"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Clitic": "Yes"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "jap",
+     "lemma": [
+      "jap"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "librin",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "Anës",
+     "lemma": [
+      "Ana"
+     ],
+     "pos": [
+      "PROPN"
+     ],
+     "feats": {
+      "Case": "Dat"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "clitic-cluster"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u30",
+   "category": "ambiguity",
+   "text": "Ana e pa filmin dje.",
+   "tokens": [
+    "Ana",
+    "e",
+    "pa",
+    "filmin",
+    "dje",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ana",
+     "lemma": [
+      "Ana"
+     ],
+     "pos": [
+      "PROPN"
+     ],
+     "feats": {
+      "Case": "Nom"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "pa",
+     "lemma": [
+      "shoh"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Past"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "filmin",
+     "lemma": [
+      "film"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "dje",
+     "lemma": [
+      "dje"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "clitic-doubling",
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u31",
+   "category": "clitic",
+   "text": "Nuk e kam parë.",
+   "tokens": [
+    "Nuk",
+    "e",
+    "kam",
+    "parë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Nuk",
+     "lemma": [
+      "nuk"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "kam",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "parë",
+     "lemma": [
+      "shoh"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "VerbForm": "Part"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "negation-nuk",
+    "perfect",
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u32",
+   "category": "clitic",
+   "text": "Më jep një kafe, të lutem.",
+   "tokens": [
+    "Më",
+    "jep",
+    "një",
+    "kafe",
+    ",",
+    "të",
+    "lutem",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Më",
+     "lemma": [
+      "më",
+      "unë"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Dat",
+      "Person": "1",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "jep",
+     "lemma": [
+      "jap"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing",
+      "Mood": "Imp"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "kafe",
+     "lemma": [
+      "kafe"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "u"
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të",
+      "ti"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "lutem",
+     "lemma": [
+      "lutem"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Voice": "Mid"
+     },
+     "conf": "u"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "të lutem",
+     "conf": "c"
+    }
+   ],
+   "patterns": [
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u33",
+   "category": "clitic",
+   "text": "Ai i flet mësuesit shqip.",
+   "tokens": [
+    "Ai",
+    "i",
+    "flet",
+    "mësuesit",
+    "shqip",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Dat",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "flet",
+     "lemma": [
+      "flas"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "mësuesit",
+     "lemma": [
+      "mësues"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Dat",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "shqip",
+     "lemma": [
+      "shqip"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "clitic-doubling",
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u34",
+   "category": "present",
+   "text": "Unë punoj çdo ditë.",
+   "tokens": [
+    "Unë",
+    "punoj",
+    "çdo",
+    "ditë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Unë",
+     "lemma": [
+      "unë"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "punoj",
+     "lemma": [
+      "punoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "çdo",
+     "lemma": [
+      "çdo"
+     ],
+     "pos": [
+      "DET"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "ditë",
+     "lemma": [
+      "ditë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "çdo ditë",
+     "conf": "c"
+    }
+   ],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u35",
+   "category": "present",
+   "text": "Ti lexon një libër.",
+   "tokens": [
+    "Ti",
+    "lexon",
+    "një",
+    "libër",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ti",
+     "lemma": [
+      "ti"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "lexon",
+     "lemma": [
+      "lexoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "libër",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u36",
+   "category": "present",
+   "text": "Ne punojmë në shkollë.",
+   "tokens": [
+    "Ne",
+    "punojmë",
+    "në",
+    "shkollë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ne",
+     "lemma": [
+      "ne"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "punojmë",
+     "lemma": [
+      "punoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shkollë",
+     "lemma": [
+      "shkollë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u37",
+   "category": "present",
+   "text": "Ju flisni shqip.",
+   "tokens": [
+    "Ju",
+    "flisni",
+    "shqip",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ju",
+     "lemma": [
+      "ju"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Plur"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "flisni",
+     "lemma": [
+      "flas"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "shqip",
+     "lemma": [
+      "shqip"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u38",
+   "category": "present",
+   "text": "Ata shkojnë në treg.",
+   "tokens": [
+    "Ata",
+    "shkojnë",
+    "në",
+    "treg",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ata",
+     "lemma": [
+      "ata",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "shkojnë",
+     "lemma": [
+      "shkoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "treg",
+     "lemma": [
+      "treg"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u39",
+   "category": "imperfect",
+   "text": "Kur isha i vogël, luaja çdo ditë.",
+   "tokens": [
+    "Kur",
+    "isha",
+    "i",
+    "vogël",
+    ",",
+    "luaja",
+    "çdo",
+    "ditë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Kur",
+     "lemma": [
+      "Kur"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "isha",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Imp"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "vogël",
+     "lemma": [
+      "i vogël",
+      "vogël"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "luaja",
+     "lemma": [
+      "luaj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Imp"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "çdo",
+     "lemma": [
+      "çdo"
+     ],
+     "pos": [
+      "DET"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "ditë",
+     "lemma": [
+      "ditë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "çdo ditë",
+     "conf": "c"
+    }
+   ],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u40",
+   "category": "imperfect",
+   "text": "Ai punonte në bankë.",
+   "tokens": [
+    "Ai",
+    "punonte",
+    "në",
+    "bankë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "punonte",
+     "lemma": [
+      "punoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Imp"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "bankë",
+     "lemma": [
+      "bankë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u41",
+   "category": "aorist",
+   "text": "Dje shkova në treg.",
+   "tokens": [
+    "Dje",
+    "shkova",
+    "në",
+    "treg",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Dje",
+     "lemma": [
+      "Dje"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shkova",
+     "lemma": [
+      "shkoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Past"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "treg",
+     "lemma": [
+      "treg"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u42",
+   "category": "aorist",
+   "text": "Ajo hapi derën dhe hyri.",
+   "tokens": [
+    "Ajo",
+    "hapi",
+    "derën",
+    "dhe",
+    "hyri",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ajo",
+     "lemma": [
+      "ajo",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "hapi",
+     "lemma": [
+      "hap"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Past"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "derën",
+     "lemma": [
+      "derë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "dhe",
+     "lemma": [
+      "dhe"
+     ],
+     "pos": [
+      "CCONJ"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "hyri",
+     "lemma": [
+      "hyj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Past"
+     },
+     "conf": "u"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u43",
+   "category": "imperfect",
+   "text": "Ne ishim në shtëpi.",
+   "tokens": [
+    "Ne",
+    "ishim",
+    "në",
+    "shtëpi",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ne",
+     "lemma": [
+      "ne"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "ishim",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Plur",
+      "Tense": "Imp"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shtëpi",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "në shtëpi",
+     "conf": "c"
+    }
+   ],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u44",
+   "category": "aorist-irregular",
+   "text": "Ata erdhën vonë.",
+   "tokens": [
+    "Ata",
+    "erdhën",
+    "vonë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ata",
+     "lemma": [
+      "ata",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "erdhën",
+     "lemma": [
+      "vij"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur",
+      "Tense": "Past"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "vonë",
+     "lemma": [
+      "vonë"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u45",
+   "category": "aorist-irregular",
+   "text": "Unë pashë një film.",
+   "tokens": [
+    "Unë",
+    "pashë",
+    "një",
+    "film",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Unë",
+     "lemma": [
+      "unë"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "pashë",
+     "lemma": [
+      "shoh"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Past"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "film",
+     "lemma": [
+      "film"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u46",
+   "category": "aorist-irregular",
+   "text": "Ajo tha një fjalë.",
+   "tokens": [
+    "Ajo",
+    "tha",
+    "një",
+    "fjalë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ajo",
+     "lemma": [
+      "ajo",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "tha",
+     "lemma": [
+      "them"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Past"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "fjalë",
+     "lemma": [
+      "fjalë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u47",
+   "category": "future",
+   "text": "Nesër do të shkoj në Tiranë.",
+   "tokens": [
+    "Nesër",
+    "do",
+    "të",
+    "shkoj",
+    "në",
+    "Tiranë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Nesër",
+     "lemma": [
+      "Nesër"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "do",
+     "lemma": [
+      "do",
+      "dua"
+     ],
+     "pos": [
+      "PART",
+      "AUX"
+     ],
+     "feats": {},
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "shkoj",
+     "lemma": [
+      "shkoj"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Mood": "Sub"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "Tiranë",
+     "lemma": [
+      "Tiranë"
+     ],
+     "pos": [
+      "PROPN"
+     ],
+     "feats": {
+      "Case": "Acc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "future"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u48",
+   "category": "future",
+   "text": "Ajo do të lexojë librin.",
+   "tokens": [
+    "Ajo",
+    "do",
+    "të",
+    "lexojë",
+    "librin",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ajo",
+     "lemma": [
+      "ajo",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "do",
+     "lemma": [
+      "do",
+      "dua"
+     ],
+     "pos": [
+      "PART",
+      "AUX"
+     ],
+     "feats": {},
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "lexojë",
+     "lemma": [
+      "lexoj"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Mood": "Sub"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "librin",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "future"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u49",
+   "category": "subjunctive",
+   "text": "Dua të flas me ty.",
+   "tokens": [
+    "Dua",
+    "të",
+    "flas",
+    "me",
+    "ty",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Dua",
+     "lemma": [
+      "dua"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "flas",
+     "lemma": [
+      "flas"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Mood": "Sub"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "me",
+     "lemma": [
+      "me"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "ty",
+     "lemma": [
+      "ty",
+      "ti"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "subjunctive-te"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u50",
+   "category": "subjunctive",
+   "text": "Ai nuk dëshiron të shkojë.",
+   "tokens": [
+    "Ai",
+    "nuk",
+    "dëshiron",
+    "të",
+    "shkojë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "nuk",
+     "lemma": [
+      "nuk"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "dëshiron",
+     "lemma": [
+      "dëshiroj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "shkojë",
+     "lemma": [
+      "shkoj"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Mood": "Sub"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "negation-nuk",
+    "subjunctive-te"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u51",
+   "category": "negation",
+   "text": "S'kam kohë sot.",
+   "tokens": [
+    "S'kam",
+    "kohë",
+    "sot",
+    "."
+   ],
+   "words": [
+    {
+     "form": "S'kam",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "u"
+    },
+    {
+     "form": "kohë",
+     "lemma": [
+      "kohë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "sot",
+     "lemma": [
+      "sot"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "negation-nuk"
+   ],
+   "sentences": 1,
+   "note": "gold treats s'kam as one written token (the adapter's documented contract); linguistically s' + kam"
+  },
+  {
+   "id": "u52",
+   "category": "negation",
+   "text": "Nuk jam i sigurt.",
+   "tokens": [
+    "Nuk",
+    "jam",
+    "i",
+    "sigurt",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Nuk",
+     "lemma": [
+      "nuk"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "jam",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "sigurt",
+     "lemma": [
+      "i sigurt",
+      "sigurt"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "negation-nuk",
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u53",
+   "category": "negation",
+   "text": "Mos shko atje!",
+   "tokens": [
+    "Mos",
+    "shko",
+    "atje",
+    "!"
+   ],
+   "words": [
+    {
+     "form": "Mos",
+     "lemma": [
+      "mos"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shko",
+     "lemma": [
+      "shkoj"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing",
+      "Mood": "Imp"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "atje",
+     "lemma": [
+      "atje"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "negation-mos"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u54",
+   "category": "ambiguity",
+   "text": "Ajo ka një jetë të mirë.",
+   "tokens": [
+    "Ajo",
+    "ka",
+    "një",
+    "jetë",
+    "të",
+    "mirë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ajo",
+     "lemma": [
+      "ajo",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "ka",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "jetë",
+     "lemma": [
+      "jetë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "të",
+     "lemma": [
+      "të"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "mirë",
+     "lemma": [
+      "i mirë",
+      "mirë"
+     ],
+     "pos": [
+      "ADJ"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Gender": "Fem",
+      "Number": "Sing"
+     },
+     "conf": "c",
+     "amb": true
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "linking-article-adjective"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u55",
+   "category": "ambiguity",
+   "text": "Unë e shoh dhe e dua.",
+   "tokens": [
+    "Unë",
+    "e",
+    "shoh",
+    "dhe",
+    "e",
+    "dua",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Unë",
+     "lemma": [
+      "unë"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "shoh",
+     "lemma": [
+      "shoh"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "dhe",
+     "lemma": [
+      "dhe"
+     ],
+     "pos": [
+      "CCONJ"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "dua",
+     "lemma": [
+      "dua"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u56",
+   "category": "ambiguity",
+   "text": "Ai e lexon librin e tij.",
+   "tokens": [
+    "Ai",
+    "e",
+    "lexon",
+    "librin",
+    "e",
+    "tij",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "lexon",
+     "lemma": [
+      "lexoj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "librin",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "tij",
+     "lemma": [
+      "tij",
+      "i tij",
+      "ai"
+     ],
+     "pos": [
+      "PRON",
+      "DET"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "u"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "clitic-doubling",
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u57",
+   "category": "ambiguity",
+   "text": "Të gjithë janë këtu.",
+   "tokens": [
+    "Të",
+    "gjithë",
+    "janë",
+    "këtu",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Të",
+     "lemma": [
+      "të",
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART",
+      "PRON"
+     ],
+     "feats": {},
+     "conf": "u",
+     "amb": true
+    },
+    {
+     "form": "gjithë",
+     "lemma": [
+      "gjithë",
+      "i gjithë"
+     ],
+     "pos": [
+      "DET",
+      "PRON",
+      "ADJ"
+     ],
+     "feats": {},
+     "conf": "u"
+    },
+    {
+     "form": "janë",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "këtu",
+     "lemma": [
+      "këtu"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u58",
+   "category": "genitive",
+   "text": "Ky është libri i Anës.",
+   "tokens": [
+    "Ky",
+    "është",
+    "libri",
+    "i",
+    "Anës",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ky",
+     "lemma": [
+      "ky"
+     ],
+     "pos": [
+      "DET",
+      "PRON"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "libri",
+     "lemma": [
+      "libër"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "i",
+     "lemma": [
+      "i"
+     ],
+     "pos": [
+      "DET",
+      "PART"
+     ],
+     "feats": {
+      "Gender": "Masc",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "Anës",
+     "lemma": [
+      "Ana"
+     ],
+     "pos": [
+      "PROPN"
+     ],
+     "feats": {
+      "Case": "Gen"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "genitive-linking-article"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u59",
+   "category": "ambiguity",
+   "text": "Është vonë.",
+   "tokens": [
+    "Është",
+    "vonë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Është",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "vonë",
+     "lemma": [
+      "vonë"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u60",
+   "category": "orthography",
+   "text": "Ai eshte ne shtepi.",
+   "tokens": [
+    "Ai",
+    "eshte",
+    "ne",
+    "shtepi",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "eshte",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "ne",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "shtepi",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "ne shtepi",
+     "conf": "u"
+    }
+   ],
+   "patterns": [],
+   "sentences": 1,
+   "note": "typed without ë: the intended word is në (ADP), not ne (we)"
+  },
+  {
+   "id": "u61",
+   "category": "mwu",
+   "text": "Faleminderit shumë!",
+   "tokens": [
+    "Faleminderit",
+    "shumë",
+    "!"
+   ],
+   "words": [
+    {
+     "form": "Faleminderit",
+     "lemma": [
+      "faleminderit"
+     ],
+     "pos": [
+      "INTJ"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shumë",
+     "lemma": [
+      "shumë"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u62",
+   "category": "mwu",
+   "text": "Mirë se vini në shtëpinë tonë!",
+   "tokens": [
+    "Mirë",
+    "se",
+    "vini",
+    "në",
+    "shtëpinë",
+    "tonë",
+    "!"
+   ],
+   "words": [
+    {
+     "form": "Mirë",
+     "lemma": [
+      "Mirë"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "se",
+     "lemma": [
+      "se"
+     ],
+     "pos": [
+      "SCONJ",
+      "PART",
+      "ADV",
+      "CCONJ"
+     ],
+     "feats": {},
+     "conf": "u"
+    },
+    {
+     "form": "vini",
+     "lemma": [
+      "vij"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Plur",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shtëpinë",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Def",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "tonë",
+     "lemma": [
+      "ynë",
+      "tonë",
+      "jonë"
+     ],
+     "pos": [
+      "DET",
+      "PRON",
+      "ADJ"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Plur"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "Mirë se vini",
+     "conf": "c"
+    }
+   ],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u63",
+   "category": "mwu",
+   "text": "Më vjen keq, nuk e di.",
+   "tokens": [
+    "Më",
+    "vjen",
+    "keq",
+    ",",
+    "nuk",
+    "e",
+    "di",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Më",
+     "lemma": [
+      "më",
+      "unë"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Dat",
+      "Person": "1",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "vjen",
+     "lemma": [
+      "vij"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "keq",
+     "lemma": [
+      "keq"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "nuk",
+     "lemma": [
+      "nuk"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "e",
+     "lemma": [
+      "e",
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "3",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "di",
+     "lemma": [
+      "di"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "Më vjen keq",
+     "conf": "c"
+    }
+   ],
+   "patterns": [
+    "negation-nuk",
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u64",
+   "category": "mwu",
+   "text": "Ka një mace në shtëpi.",
+   "tokens": [
+    "Ka",
+    "një",
+    "mace",
+    "në",
+    "shtëpi",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ka",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "një",
+     "lemma": [
+      "një"
+     ],
+     "pos": [
+      "DET",
+      "NUM"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "mace",
+     "lemma": [
+      "mace"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shtëpi",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "në shtëpi",
+     "conf": "c"
+    },
+    {
+     "text": "Ka një",
+     "conf": "u"
+    }
+   ],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u65",
+   "category": "mwu",
+   "text": "Si je? Jam mirë, faleminderit.",
+   "tokens": [
+    "Si",
+    "je",
+    "?",
+    "Jam",
+    "mirë",
+    ",",
+    "faleminderit",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Si",
+     "lemma": [
+      "si"
+     ],
+     "pos": [
+      "ADV",
+      "PRON",
+      "SCONJ"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "je",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "Jam",
+     "lemma": [
+      "jam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "mirë",
+     "lemma": [
+      "mirë"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "faleminderit",
+     "lemma": [
+      "faleminderit"
+     ],
+     "pos": [
+      "INTJ"
+     ],
+     "feats": {},
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "Si je",
+     "conf": "c"
+    }
+   ],
+   "patterns": [],
+   "sentences": 2
+  },
+  {
+   "id": "u66",
+   "category": "mwu",
+   "text": "Kam uri dhe kam etje.",
+   "tokens": [
+    "Kam",
+    "uri",
+    "dhe",
+    "kam",
+    "etje",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Kam",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "uri",
+     "lemma": [
+      "uri"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "dhe",
+     "lemma": [
+      "dhe"
+     ],
+     "pos": [
+      "CCONJ"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "kam",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "etje",
+     "lemma": [
+      "etje"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "Kam uri",
+     "conf": "c"
+    },
+    {
+     "text": "kam etje",
+     "conf": "c"
+    }
+   ],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u67",
+   "category": "mwu",
+   "text": "Ju lutem, më ndihmoni.",
+   "tokens": [
+    "Ju",
+    "lutem",
+    ",",
+    "më",
+    "ndihmoni",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ju",
+     "lemma": [
+      "ju"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "2",
+      "Number": "Plur",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "lutem",
+     "lemma": [
+      "lutem"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Voice": "Mid"
+     },
+     "conf": "u"
+    },
+    {
+     "form": "më",
+     "lemma": [
+      "më",
+      "unë"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Person": "1",
+      "Number": "Sing",
+      "Clitic": "Yes"
+     },
+     "conf": "c",
+     "amb": true
+    },
+    {
+     "form": "ndihmoni",
+     "lemma": [
+      "ndihmoj"
+     ],
+     "pos": [
+      "VERB"
+     ],
+     "feats": {
+      "Person": "2",
+      "Number": "Plur",
+      "Mood": "Imp"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "Ju lutem",
+     "conf": "c"
+    }
+   ],
+   "patterns": [
+    "object-pronoun-before-verb"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u68",
+   "category": "mwu",
+   "text": "Sot bie shi, prandaj qëndroj në shtëpi.",
+   "tokens": [
+    "Sot",
+    "bie",
+    "shi",
+    ",",
+    "prandaj",
+    "qëndroj",
+    "në",
+    "shtëpi",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Sot",
+     "lemma": [
+      "Sot"
+     ],
+     "pos": [
+      "ADV"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "bie",
+     "lemma": [
+      "bie"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "shi",
+     "lemma": [
+      "shi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Nom",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "u"
+    },
+    {
+     "form": "prandaj",
+     "lemma": [
+      "prandaj"
+     ],
+     "pos": [
+      "CCONJ",
+      "ADV",
+      "SCONJ"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "qëndroj",
+     "lemma": [
+      "qëndroj"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "në",
+     "lemma": [
+      "në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "shtëpi",
+     "lemma": [
+      "shtëpi"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "bie shi",
+     "conf": "c"
+    },
+    {
+     "text": "në shtëpi",
+     "conf": "c"
+    }
+   ],
+   "patterns": [],
+   "sentences": 1
+  },
+  {
+   "id": "u69",
+   "category": "mwu",
+   "text": "Në fakt, nuk kam kohë.",
+   "tokens": [
+    "Në",
+    "fakt",
+    ",",
+    "nuk",
+    "kam",
+    "kohë",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Në",
+     "lemma": [
+      "Në"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "fakt",
+     "lemma": [
+      "fakt"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "nuk",
+     "lemma": [
+      "nuk"
+     ],
+     "pos": [
+      "PART"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "kam",
+     "lemma": [
+      "kam"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "1",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "kohë",
+     "lemma": [
+      "kohë"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Acc",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Fem"
+     },
+     "conf": "c"
+    }
+   ],
+   "phrases": [
+    {
+     "text": "Në fakt",
+     "conf": "c"
+    }
+   ],
+   "patterns": [
+    "negation-nuk"
+   ],
+   "sentences": 1
+  },
+  {
+   "id": "u70",
+   "category": "ablative",
+   "text": "Ai vjen prej qyteti.",
+   "tokens": [
+    "Ai",
+    "vjen",
+    "prej",
+    "qyteti",
+    "."
+   ],
+   "words": [
+    {
+     "form": "Ai",
+     "lemma": [
+      "ai"
+     ],
+     "pos": [
+      "PRON"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "vjen",
+     "lemma": [
+      "vij"
+     ],
+     "pos": [
+      "VERB",
+      "AUX"
+     ],
+     "feats": {
+      "Person": "3",
+      "Number": "Sing",
+      "Tense": "Pres"
+     },
+     "conf": "c"
+    },
+    {
+     "form": "prej",
+     "lemma": [
+      "prej"
+     ],
+     "pos": [
+      "ADP"
+     ],
+     "feats": {},
+     "conf": "c"
+    },
+    {
+     "form": "qyteti",
+     "lemma": [
+      "qytet"
+     ],
+     "pos": [
+      "NOUN"
+     ],
+     "feats": {
+      "Case": "Abl",
+      "Definite": "Ind",
+      "Number": "Sing",
+      "Gender": "Masc"
+     },
+     "conf": "u"
+    }
+   ],
+   "phrases": [],
+   "patterns": [
+    "ablative-after-preposition"
+   ],
+   "sentences": 1
+  }
+ ],
+ "gheg": [
+  {
+   "id": "g01",
+   "text": "Unë due me shkue n'shpi.",
+   "note": "Gheg: due=dua, me shkue=të shkoj (infinitive), n'shpi=në shtëpi",
+   "expectLemmas": {
+    "due": "dua",
+    "shkue": "shkoj",
+    "n'shpi": "shtëpi"
+   },
+   "conf": "u"
+  },
+  {
+   "id": "g02",
+   "text": "Ai ka me ardhë nesër.",
+   "note": "Gheg future: ka me ardhë = do të vijë; ardhë = vij",
+   "expectLemmas": {
+    "ardhë": "vij"
+   },
+   "conf": "u"
+  },
+  {
+   "id": "g03",
+   "text": "Çka po bën ti?",
+   "note": "Gheg: çka = çfarë",
+   "expectLemmas": {
+    "çka": "çfarë",
+    "bën": "bëj"
+   },
+   "conf": "u"
+  }
+ ],
+ "production": {
+  "errors": [
+   {
+    "id": "e01",
+    "category": "definiteness",
+    "text": "Shkoj te mësues.",
+    "fix": "Shkoj te mësuesi.",
+    "fixOk": [
+     "mësuesi"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e02",
+    "category": "definiteness",
+    "text": "Ky është shok im.",
+    "fix": "Ky është shoku im.",
+    "fixOk": [
+     "shoku"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e03",
+    "category": "definiteness",
+    "text": "Ajo vjen nga shkollë.",
+    "fix": "Ajo vjen nga shkolla.",
+    "fixOk": [
+     "shkolla"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e04",
+    "category": "definiteness",
+    "text": "Kjo është nënë ime.",
+    "fix": "Kjo është nëna ime.",
+    "fixOk": [
+     "nëna"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e05",
+    "category": "case",
+    "text": "Ana punon në shtëpisë.",
+    "fix": "Ana punon në shtëpi.",
+    "fixOk": [
+     "shtëpi",
+     "shtëpinë"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e06",
+    "category": "case",
+    "text": "Unë jetoj në qytetit.",
+    "fix": "Unë jetoj në qytet.",
+    "fixOk": [
+     "qytet",
+     "qytetin"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e07",
+    "category": "case",
+    "text": "Libri është për vajzës.",
+    "fix": "Libri është për vajzën.",
+    "fixOk": [
+     "vajzën",
+     "vajzë"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e08",
+    "category": "case",
+    "text": "Shtëpia është afër shkollën.",
+    "fix": "Shtëpia është afër shkollës.",
+    "fixOk": [
+     "shkollës"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e09",
+    "category": "case",
+    "text": "Fëmijët luajnë në parku.",
+    "fix": "Fëmijët luajnë në park.",
+    "fixOk": [
+     "park",
+     "parkun"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e10",
+    "category": "agreement-article",
+    "text": "Ajo është një grua i mirë.",
+    "fix": "Ajo është një grua e mirë.",
+    "fixOk": [
+     "e"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e11",
+    "category": "agreement-article",
+    "text": "Ai është një njeri e mirë.",
+    "fix": "Ai është një njeri i mirë.",
+    "fixOk": [
+     "i"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e12",
+    "category": "agreement-article",
+    "text": "Vajza i vogël ka një libër.",
+    "fix": "Vajza e vogël ka një libër.",
+    "fixOk": [
+     "e"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e13",
+    "category": "agreement-adjective",
+    "text": "Kam një shtëpi të madh.",
+    "fix": "Kam një shtëpi të madhe.",
+    "fixOk": [
+     "madhe"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e14",
+    "category": "agreement-adjective",
+    "text": "Ana ka një çantë të kuq.",
+    "fix": "Ana ka një çantë të kuqe.",
+    "fixOk": [
+     "kuqe"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e15",
+    "category": "clitic",
+    "text": "Nëna i do vajzën.",
+    "fix": "Nëna e do vajzën.",
+    "fixOk": [
+     "e"
+    ],
+    "detectable": false
+   },
+   {
+    "id": "e16",
+    "category": "clitic",
+    "text": "Unë e shoh librat.",
+    "fix": "Unë i shoh librat.",
+    "fixOk": [
+     "i"
+    ],
+    "detectable": false
+   },
+   {
+    "id": "e17",
+    "category": "clitic",
+    "text": "Ana pa e filmin dje.",
+    "fix": "Ana e pa filmin dje.",
+    "fixOk": [
+     "e pa"
+    ],
+    "detectable": false
+   },
+   {
+    "id": "e18",
+    "category": "negation",
+    "text": "Nuk shko në shkollë!",
+    "fix": "Mos shko në shkollë!",
+    "fixOk": [
+     "Mos"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e19",
+    "category": "negation",
+    "text": "Dua të nuk shkoj.",
+    "fix": "Dua të mos shkoj.",
+    "fixOk": [
+     "mos"
+    ],
+    "detectable": true
+   },
+   {
+    "id": "e20",
+    "category": "negation",
+    "text": "Ai lexon nuk librin.",
+    "fix": "Ai nuk lexon librin.",
+    "fixOk": [
+     "nuk"
+    ],
+    "detectable": false
+   }
+  ],
+  "correct": [
+   "Shkoj te mësuesi.",
+   "Ky është shoku im.",
+   "Ajo vjen nga shkolla.",
+   "Ana punon në shtëpi.",
+   "Ajo është një grua e mirë.",
+   "Kam një shtëpi të madhe.",
+   "Nëna e do vajzën.",
+   "Unë i shoh librat.",
+   "Mos shko në shkollë!",
+   "Dua të mos shkoj."
+  ]
+ }
+}

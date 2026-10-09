@@ -11,6 +11,9 @@
  *                        payload { rating: 1..4 | null, outcome?, exerciseId?, family?, correct? }
  *                        a rating advances the schedule and appends a history entry; no rating (null or absent) changes nothing
  *                        and is only counted in `unscored` (invalid question, failed audio, challenged answer, ...).
+ *   ReviewItemInvalidated payload { reason: 'analysis-invalidated', cardId }   the answer key (the analysis it was built on) was
+ *                        reported wrong: the item is SUSPENDED with `suspendedReason`, so no exercise is built on it until a
+ *                        later CardAdded (someone who can fix the pack re-adds it) re-activates it.
  */
 import type { EventKind, GoEvent } from '../../../repository-contract/src';
 import { validateEvent } from '../../../repository-contract/src';
@@ -117,6 +120,7 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
         // Re-activation: the schedule and history survive; the preferred family and the reasons are brought up to date.
         existing.status = 'active';
         delete existing.snoozedUntil;
+        delete existing.suspendedReason;
         existing.family = payload.family;
         if (reason && !existing.reasons.includes(reason)) existing.reasons.push(reason);
       }
@@ -130,11 +134,21 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
       if (why === 'dismissed' || why === 'suspended') {
         item.status = why;
         delete item.snoozedUntil;
+        delete item.suspendedReason;
       } else if (why === 'snoozed') {
         if (!validInstant(payload.until)) { ignore(e, 'a snooze needs a valid `until`'); continue; }
         item.status = 'snoozed';
         item.snoozedUntil = payload.until;
       } else ignore(e, 'CardRemoved reason must be dismissed, suspended or snoozed');
+      continue;
+    }
+
+    if (e.kind === 'ReviewItemInvalidated') {
+      const item = nonEmpty(itemId) ? items.get(itemId) : undefined;
+      if (!item) { ignore(e, 'ReviewItemInvalidated for an item that is not in the deck'); continue; }
+      item.status = 'suspended';
+      delete item.snoozedUntil;
+      item.suspendedReason = nonEmpty(payload.reason) ? payload.reason : 'analysis-invalidated';
       continue;
     }
 

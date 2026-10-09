@@ -45,8 +45,10 @@ export function statusLine(): HTMLElement {
   return h('p', { class: 'status', role: 'status', 'aria-live': 'polite' });
 }
 
-export function setStatus(el: HTMLElement, text: string, kind: 'info' | 'ok' | 'error' = 'info'): void {
-  el.textContent = text;
+/** `text` may be a list of children, so a status sentence can carry a target-language word in its own `lang` span (see `embedTarget`). */
+export function setStatus(el: HTMLElement, text: string | readonly Child[], kind: 'info' | 'ok' | 'error' = 'info'): void {
+  if (typeof text === 'string') el.textContent = text;
+  else { clear(el); append(el, [...text]); }
   el.setAttribute('data-kind', kind);
 }
 
@@ -80,3 +82,28 @@ export const directionOf = (languageId: string): 'ltr' | 'rtl' => (RTL.has(langu
 /** `lang` and `dir` attributes for target-language text. */
 export const langProps = (languageTag: string | undefined): Props =>
   languageTag ? { lang: languageTag, dir: directionOf(languageTag), class: 'target-text' } : {};
+
+const escapeRe = (w: string): string => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * A sentence in the interface language that quotes target-language words: each occurrence of one of `words` becomes
+ * `<span lang dir class="target-text">`, the rest stays text, so a screen reader switches voice for the word and back
+ * (WCAG 3.1.2). A word matches whole (not inside a longer word) and case-insensitively; `words` that are empty are ignored.
+ * Without a language tag, or without a match, the text is returned as one string.
+ */
+export function embedTarget(text: string, words: ReadonlyArray<string | undefined>, languageTag: string | undefined): Child[] {
+  const list = [...new Set(words.filter((w): w is string => !!w && w.length > 0))].sort((a, b) => b.length - a.length);
+  if (!languageTag || !list.length || !text) return [text];
+  const re = new RegExp(`(?<![\\p{L}\\p{M}\\p{N}])(${list.map(escapeRe).join('|')})(?![\\p{L}\\p{M}\\p{N}])`, 'giu');
+  const out: Child[] = [];
+  let last = 0;
+  for (const m of text.matchAll(re)) {
+    const at = m.index ?? 0;
+    if (at > last) out.push(text.slice(last, at));
+    out.push(h('span', langProps(languageTag), m[0]));
+    last = at + m[0].length;
+  }
+  if (!out.length) return [text];
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}

@@ -18,7 +18,7 @@ npx vitest run test/goreview test/gopractice test/gotell/boundary.test.ts test/g
 | `test/gopractice` | 7 | 71 | shell routes, sign-in and switch, language switch re-folds the deck, due summary, intake list with reasons, session flow with record-before-next, audio transcript absent from the DOM before the answer and present after, keys 1–4, skip, finish early, challenge, analysis-error report, snooze/suspend/dismiss events, offline session continues and the queue grows, preferences persist, GoTell renders with no deck; one run on the real registry, evidence builder, runner and pack facts |
 | `test/gotell/boundary.test.ts` | 1 | 6 | `gotell` imports nothing from `goreview`; initialises with an empty log and no deck |
 | `test/gopractice-e2e/review-reference.test.ts` | 1 | 13 | the §21 scenario over the real pieces (§3) |
-| `test/ecosystem/boundaries.test.ts` | 1 | 8 | import rules incl. `gopractice` hosting both workspaces |
+| `test/ecosystem/boundaries.test.ts` | 1 | 7 | import rules incl. `gopractice` hosting both workspaces |
 
 Total: 26 files, 384 tests, 0 failed (2026-10-09 08:10–08:35 local). The older `test/gotell/*` suites (the retired
 `src/gotell` engine, 156 tests) still pass and are untouched.

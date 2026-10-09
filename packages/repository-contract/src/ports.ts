@@ -161,7 +161,8 @@ export interface ProjectionEngine {
 export interface SyncPushRequest { deviceId: string; events: GoEvent[]; documents?: Array<{ doc: PrivateDocument; expectedRevision: number }>; clientTime: string }
 export interface SyncPushResponse {
   outcomes: AppendOutcome[];
-  documents: Array<{ docId: string; ok: boolean; current?: PrivateDocument }>;
+  /** Per document: accepted, or refused with the server's current copy (a revision conflict), or refused with a `reason` and no copy (`no-such-document`: the server has no document at that revision; `refused`: any other per-item failure). */
+  documents: Array<{ docId: string; ok: boolean; current?: PrivateDocument; reason?: 'no-such-document' | 'refused' }>;
   serverTime: string;
   /** Milliseconds the client's clock is ahead of the server's (negative when behind). */
   clockSkewMs: number;

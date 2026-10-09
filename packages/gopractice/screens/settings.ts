@@ -1,8 +1,10 @@
-/** #/settings — preferences, account, service address, synchronisation and diagnostics. */
+/** #/settings — preferences, account, service address, synchronisation, diagnostics, licences and attribution. */
 import { CONTRACT_VERSION } from '../../repository-contract/src';
 import type { AppContext } from '../context';
 import { validateServiceUrl } from '../config';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
+import { setRemoteSpeechConsent } from './consent';
+import { licencesSection } from './licences';
 import { prefsForm } from './prefs';
 import type { View } from './view';
 
@@ -14,7 +16,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const serviceBox = h('section', { class: 'card', id: 'settings-service', 'aria-labelledby': 'svc-h' }, h('h2', { id: 'svc-h' }, 'Service address'));
   const syncBox = h('section', { class: 'card', id: 'settings-sync', 'aria-labelledby': 'sync-h' }, h('h2', { id: 'sync-h' }, 'Synchronisation'));
   const diagBox = h('section', { class: 'card', id: 'settings-diagnostics', 'aria-labelledby': 'diag-h' }, h('h2', { id: 'diag-h' }, 'Diagnostics'));
-  el.append(prefsBox, accountBox, serviceBox, syncBox, diagBox);
+  el.append(prefsBox, accountBox, serviceBox, syncBox, diagBox, licencesSection(ctx));
 
   // ── preferences
   if (id) {
@@ -25,7 +27,15 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const consent = h('input', { type: 'checkbox', id: 'consent-remote-speech', name: 'remote-speech' }) as HTMLInputElement;
   consent.checked = settings.remoteSpeechConsent;
   const consentStatus = statusLine();
-  consent.addEventListener('change', () => { void ctx.setSettings({ remoteSpeechConsent: consent.checked }).then(() => setStatus(consentStatus, consent.checked ? 'Remote speech is allowed on this device.' : 'Remote speech is off.', 'ok')); });
+  // the switch records ConsentGiven / ConsentWithdrawn through the event queue (screens/consent.ts); when the record cannot be made it stays off
+  consent.addEventListener('change', () => {
+    const wanted = consent.checked;
+    void setRemoteSpeechConsent(ctx, wanted).then((r) => {
+      consent.checked = r.settings.remoteSpeechConsent;
+      if (!r.ok) setStatus(consentStatus, r.message, 'error');
+      else setStatus(consentStatus, wanted ? 'Remote speech is allowed on this device. Your consent is recorded.' : r.recorded ? 'Remote speech is off. Your withdrawal is recorded.' : 'Remote speech is off.', 'ok');
+    }, () => { consent.checked = !wanted; setStatus(consentStatus, 'The switch could not be changed.', 'error'); });
+  });
   prefsBox.append(h('label', { class: 'toggle' }, consent, h('span', {}, 'Allow my text to be sent to a remote speech service ', h('span', { class: 'help' }, '(only for listening practice; off by default; the browser\'s own voices do not need this)'))), consentStatus);
 
   // ── account
@@ -71,7 +81,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const s = v.status;
     clear(syncBox);
     append(syncBox, [
-      h('h2', {}, 'Synchronisation'),
+      h('h2', { id: 'sync-h' }, 'Synchronisation'),
       h('dl', { class: 'facts', id: 'sync-facts' },
         h('dt', {}, 'Connection'), h('dd', {}, s ? (s.online ? 'online' : 'offline') : 'not started'),
         h('dt', {}, 'Waiting to send'), h('dd', { id: 'sync-pending' }, String(s?.pending ?? 0)),
@@ -105,7 +115,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       ['Fetch cursor / server head', `${s?.cursor ?? 0} / ${s?.head ?? '–'}`],
       ['Clock skew (device minus server)', s?.skewMs === undefined ? '–' : `${Math.round(s.skewMs)} ms`],
     ];
-    append(diagBox, [h('h2', {}, 'Diagnostics'), h('dl', { class: 'facts', id: 'diagnostics' }, ...rows.flatMap(([k, val]) => [h('dt', {}, k), h('dd', {}, val)]))]);
+    append(diagBox, [h('h2', { id: 'diag-h' }, 'Diagnostics'), h('dl', { class: 'facts', id: 'diagnostics' }, ...rows.flatMap(([k, val]) => [h('dt', {}, k), h('dd', {}, val)]))]);
   }
   await paintSync();
   view.onDispose(ctx.onSync(() => { void paintSync(); }));

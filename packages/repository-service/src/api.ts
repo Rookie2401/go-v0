@@ -42,8 +42,12 @@ export interface RepositoryApi {
   deleteMe(confirmEmail: string): Promise<ApiResult<null>>;
   listEnrolments(): Promise<ApiResult<{ enrolments: Enrolment[] }>>;
   enrol(input: EnrolInput): Promise<ApiResult<{ enrolment: Enrolment }>>;
+  /** Ends one of the learner's enrolments (`endedAt`); its events stay. */
+  endEnrolment(enrolmentId: string): Promise<ApiResult<{ enrolment: Enrolment }>>;
   packs(languageId?: string): Promise<ApiResult<{ packs: LanguagePackInfo[] }>>;
   unit(unitId: string): Promise<ApiResult<{ unit: LinguisticUnit; relations: UnitRelation[]; analyses: FormAnalysis[] }>>;
+  /** Several units in one call (1 to 50 ids): the same view as `unit`, by id; unknown ids are in `missing`. */
+  units(unitIds: string[]): Promise<ApiResult<{ units: Record<string, { unit: LinguisticUnit; relations: UnitRelation[]; analyses: FormAnalysis[] }>; missing: string[] }>>;
   lookup(input: LookupRequest): Promise<ApiResult<{ formId: string; units: LinguisticUnit[]; relations: UnitRelation[]; analysis: FormAnalysis | null; sentenceKey: string | null }>>;
   appendEvents(events: GoEvent[]): Promise<ApiResult<EventsResponse>>;
   listEvents(q?: EventsQuery): Promise<ApiResult<{ events: StoredEvent[]; head: number }>>;
@@ -60,7 +64,7 @@ export interface RepositoryApi {
   syncPush(req: SyncPushRequest): Promise<ApiResult<SyncPushResponse>>;
   syncPull(req: SyncPullRequest): Promise<ApiResult<SyncPullResponse>>;
   exportAll(): Promise<ApiResult<Record<string, unknown>>>;
-  putTombstone(scope: Tombstone['scope'], reason?: string): Promise<ApiResult<{ tombstone: Tombstone }>>;
+  putTombstone(scope: Tombstone['scope'], reason?: string): Promise<ApiResult<{ tombstone: Tombstone; applied?: { events: number; knowledge: number } }>>;
 }
 
 export interface ApiOptions { baseUrl: string; fetch: typeof fetch; token?: string }
@@ -103,8 +107,10 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
     deleteMe: (confirmEmail) => call('DELETE', '/me', { confirmEmail }),
     listEnrolments: () => call('GET', '/enrolments'),
     enrol: (input) => call('POST', '/enrolments', input),
+    endEnrolment: (enrolmentId) => call('POST', `/enrolments/${encodeURIComponent(enrolmentId)}/end`, {}),
     packs: (languageId) => call('GET', '/packs', undefined, { languageId }),
     unit: (unitId) => call('GET', `/units/${enc(unitId)}`),
+    units: (unitIds) => call('POST', '/units/batch', { ids: unitIds }),
     lookup: (input) => call('POST', '/lookup', input),
     appendEvents: (events) => call('POST', '/events', { events }),
     listEvents: (q = {}) => call('GET', '/events', undefined, { afterSeq: q.afterSeq, kinds: q.kinds?.join(','), unitId: q.unitId, languageId: q.languageId, since: q.since, limit: q.limit }),

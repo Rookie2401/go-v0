@@ -5,7 +5,8 @@
  * productiveRetrieval carries evidence weight; a unit met only in reading is `recognisedOnly`.
  *
  * Goal-event convention (the learner's own writing goals, free text): a `PreferenceChanged` event whose payload is
- *   { key: 'gotell:goal', origin: 'explicit', value: { goalId: string, text: string, createdAt: string, done?: boolean } }
+ *   { key: 'gotell:goal', origin: 'explicit', value: { goalId: string, label: string, createdAt: string, done?: boolean } }
+ * (`label`, because the contract refuses a `text` key in a payload; older events with `text` are still read)
  * (`origin: 'explicit'` is required by the contract for every PreferenceChanged). The latest event per goalId wins, so a goal
  * is marked done by a new event with `done: true`; a goal is withdrawn by `value: { goalId, removed: true }`.
  *
@@ -63,8 +64,10 @@ export function goalsFrom(events: readonly GoEvent[], learnerId: string, languag
     const prev = latest.get(v.goalId);
     if (prev && (prev.at > e.at || (prev.at === e.at && prev.seq > seq))) return;
     if (v.removed === true) { latest.set(v.goalId, { at: e.at, seq, goal: null }); return; }
-    if (typeof v.text !== 'string' || !v.text.trim()) return;
-    const goal: WritingGoal = { goalId: v.goalId, text: v.text, createdAt: typeof v.createdAt === 'string' ? v.createdAt : e.at };
+    // the goal's words are under `label` (a free-text key the contract allows); events written before that used `text`
+    const words = typeof v.label === 'string' ? v.label : v.text;
+    if (typeof words !== 'string' || !words.trim()) return;
+    const goal: WritingGoal = { goalId: v.goalId, text: words, createdAt: typeof v.createdAt === 'string' ? v.createdAt : e.at };
     if (v.done === true) goal.done = true;
     latest.set(v.goalId, { at: e.at, seq, goal });
   });

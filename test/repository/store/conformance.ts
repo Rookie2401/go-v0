@@ -346,7 +346,7 @@ export function storeConformance(name: string, open: () => Promise<RepositorySto
       const d = (await s.getDocument(L1, 'd1'))!;
       expect(d.body).toBe('');
       expect(d.deletedAt).toBeTruthy();
-      expect(d.title).toBe('A draft');
+      expect(d.title).toBeUndefined(); // the title is the learner's words too (audit P-03)
       expect((await s.listDocuments(L1)).map((x) => x.docId)).toEqual(['d1']);
       const stale = await s.putDocument(doc(L1, 'd1', 'secret words, edited offline'), 1);
       expect(stale.ok).toBe(false);

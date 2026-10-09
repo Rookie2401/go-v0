@@ -44,7 +44,8 @@ export function switchable(api: RepositoryApi): { api: RepositoryApi; offline: {
 }
 
 export async function makeWorld(email = 'learner@example.test'): Promise<World> {
-  const clock = createClock();
+  // the service refuses an event dated later than its own clock allows, so the world's clock sits after the fixtures' dates
+  const clock = createClock('2026-10-09T10:00:00.000Z');
   const store = createMemoryStore({ now: clock.now });
   const deps: ServiceDeps = {
     store, engine: createProjectionEngine({ store, now: clock.now }), linguistics: createFakeLinguistics(store, clock.now),

@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { createLocalDraftStore, createDraftStore, createSyncingDraftStore, newVersion } from '../../packages/gotell/src/documents';
+import { validateEvent } from '../../packages/repository-contract/src';
+import type { GoEvent } from '../../packages/repository-contract/src';
+import { createAssistance } from '../../packages/gotell/src/engine';
+import type { AssistanceRequest, DraftAnalysis, Identity } from '../../packages/gotell/src/types';
+import { NOW, realAnalyzer } from '../gotell-engine/helpers';
 import {
-  RemoteAssistantGate, RemoteAssistanceNotConsented, deleteDraft, exportLearnerWriting, forgetDevice, gateRemoteAssistant, privacyStatement, redact,
+  REMOTE_ASSISTANCE_SCOPE, RemoteAssistantGate, RemoteAssistanceNotConsented, createRemoteConsent, remoteConsentEvent, deleteDraft, exportLearnerWriting, forgetDevice, gateRemoteAssistant, privacyStatement, redact,
 } from '../../packages/gotell/src/privacy';
 import type { ConsentGate, RemoteAssistant } from '../../packages/gotell/src/types';
 import { correctionAccepted } from '../../packages/gotell/src/evidence';
@@ -171,5 +176,121 @@ describe('redact', () => {
     expect(redact('')).toBe('[text withheld: 0 characters, 0 words]');
     expect(redact(undefined)).toBe('[no text]');
     expect(redact(SECRET_SENTENCE)).not.toContain('Zoti');
+  });
+});
+
+describe('the remote-assistance switch writes ConsentGiven / ConsentWithdrawn', () => {
+  const identity: Identity = { learnerId: 'L1', enrolmentId: 'L1-e1', deviceId: 'dev-1', languageId: 'sq', varietyId: 'sq-AL' };
+  function setup(opts: { initial?: unknown; refuse?: boolean; recordThrows?: boolean } = {}) {
+    const recorded: GoEvent[] = [];
+    const persisted: boolean[] = [];
+    let n = 0;
+    const consent = createRemoteConsent({
+      identity, appVersion: 'test', initial: opts.initial,
+      persist: async (on) => { persisted.push(on); },
+      record: async (events) => {
+        if (opts.recordThrows) throw new Error('queue down');
+        if (opts.refuse) return { refused: events.map((e) => ({ id: e.id, issues: ['payload: nope'] })) };
+        recorded.push(...events);
+        return { refused: [] };
+      },
+      now: () => NOW, newId: () => `id${++n}`,
+    });
+    return { consent, recorded, persisted };
+  }
+
+  it('the events are valid, name the scope gotell:remote-assistance and carry nothing else', () => {
+    for (const on of [true, false]) {
+      const e = remoteConsentEvent({ identity, appVersion: 'test', at: NOW, eventId: 'consent-1', on });
+      expect(validateEvent(e)).toEqual([]);
+      expect(e.kind).toBe(on ? 'ConsentGiven' : 'ConsentWithdrawn');
+      expect(e.payload).toEqual({ consent: 'gotell:remote-assistance', scope: 'gotell:remote-assistance' });
+      expect(REMOTE_ASSISTANCE_SCOPE).toBe('gotell:remote-assistance');
+      expect(e.producer.app).toBe('gopractice-tell');
+      expect(e.dedupeKey).toContain(on ? 'given' : 'withdrawn');
+    }
+  });
+
+  it('is off by default and only the stored boolean true turns it on at start', () => {
+    expect(setup().consent.value()).toBe(false);
+    for (const odd of ['true', 1, {}, 'yes', null]) expect(setup({ initial: odd }).consent.gate.remoteAssistance(), String(odd)).toBe(false);
+    expect(setup({ initial: true }).consent.gate.remoteAssistance()).toBe(true);
+  });
+
+  it('switching on records ConsentGiven then turns on; switching off turns off then records ConsentWithdrawn; no change records nothing', async () => {
+    const { consent, recorded, persisted } = setup();
+    await consent.set(false);
+    expect(recorded).toEqual([]);
+    await consent.set(true);
+    expect(consent.value()).toBe(true);
+    expect(recorded.map((e) => e.kind)).toEqual(['ConsentGiven']);
+    await consent.set(true);
+    expect(recorded).toHaveLength(1);
+    await consent.set(false);
+    expect(consent.value()).toBe(false);
+    expect(recorded.map((e) => e.kind)).toEqual(['ConsentGiven', 'ConsentWithdrawn']);
+    expect(persisted).toEqual([true, false]);
+    expect(new Set(recorded.map((e) => e.id)).size).toBe(2);
+    for (const e of recorded) expect(validateEvent(e)).toEqual([]);
+  });
+
+  it('consent is never on without its record: a refused ConsentGiven throws and the switch stays off', async () => {
+    const { consent, persisted } = setup({ refuse: true });
+    await expect(consent.set(true)).rejects.toThrow(/stays off/);
+    expect(consent.value()).toBe(false);
+    expect(persisted).toEqual([]);
+  });
+
+  it('withdrawing is effective at once even if the record of it cannot be written', async () => {
+    const { consent } = setup({ initial: true, recordThrows: true });
+    await consent.set(false);
+    expect(consent.value()).toBe(false);
+  });
+
+  describe('through the assistance ladder', () => {
+    const analyzer = realAnalyzer();
+    const analysis: DraftAnalysis = analyzer.analyzeDraft('d1', 'Unë shkoj me shoku.');
+    const level6: AssistanceRequest = { draftId: 'd1', sentenceIndex: 0, level: 6, at: NOW };
+    const spy = (): RemoteAssistant & { calls: unknown[] } => {
+      const calls: unknown[] = [];
+      return { providerId: 'spy@0', calls, async propose(input) { calls.push(input); return []; } };
+    };
+
+    it('no remote call before consent; one after; none again once consent is withdrawn', async () => {
+      const remote = spy();
+      const { consent } = setup();
+      const a = createAssistance({ analyzer, remote, consent: consent.gate, now: () => NOW });
+      await a.step(analysis, level6, []);
+      expect(remote.calls).toHaveLength(0);          // consent never given
+      await consent.set(true);
+      await a.step(analysis, level6, []);
+      expect(remote.calls).toHaveLength(1);          // given: the one call
+      await consent.set(false);
+      await a.step(analysis, level6, []);
+      await a.step(analysis, level6, []);
+      expect(remote.calls).toHaveLength(1);          // withdrawn: nothing further
+    });
+
+    it('the gate in front of a provider follows the same switch', async () => {
+      const inner = spy();
+      const { consent } = setup();
+      const gate = new RemoteAssistantGate(inner, consent.gate);
+      await expect(gate.propose({ languageId: 'sq', sentence: SECRET_SENTENCE })).rejects.toBeInstanceOf(RemoteAssistanceNotConsented);
+      await consent.set(true);
+      await gate.propose({ languageId: 'sq', sentence: SECRET_SENTENCE });
+      await consent.set(false);
+      await expect(gate.propose({ languageId: 'sq', sentence: SECRET_SENTENCE })).rejects.toBeInstanceOf(RemoteAssistanceNotConsented);
+      expect(inner.calls).toHaveLength(1);
+    });
+
+    it('a consent store that answers with anything but the boolean true counts as no consent', async () => {
+      const remote = spy();
+      for (const bogus of ['true', 1, {}, Promise.resolve(true)]) {
+        const a = createAssistance({ analyzer, remote, consent: { remoteAssistance: (() => bogus) as unknown as () => boolean }, now: () => NOW });
+        await a.step(analysis, level6, []);
+        await new RemoteAssistantGate(remote, { remoteAssistance: (() => bogus) as unknown as () => boolean }).propose({ languageId: 'sq', sentence: 'x' }).catch(() => undefined);
+      }
+      expect(remote.calls).toEqual([]);
+    });
   });
 });

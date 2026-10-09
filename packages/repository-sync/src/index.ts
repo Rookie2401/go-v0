@@ -8,3 +8,4 @@ export * from './ids';
 export * from './queue';
 export * from './documents';
 export * from './client';
+export * from './transport';

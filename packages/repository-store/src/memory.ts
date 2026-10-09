@@ -11,6 +11,7 @@ import {
   mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, relationKey, sortPacks, tombstonedEventIds, zeroErase,
 } from './rules';
 import type { ConcreteStore, EraseCounts, StoreOptions } from './rules';
+import { applyTombstone as applyDeletion } from './deletion';
 
 const copy = <T>(v: T): T => structuredClone(v);
 const k2 = (a: string, b: string): string => `${a}\u0000${b}`;
@@ -344,6 +345,9 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
       c.accounts = sweep(accounts, (a) => a.learnerId === learnerId);
       c.learners = sweep(learners, (l) => l.learnerId === learnerId);
       return c;
+    },
+    async applyTombstone(t) {
+      return applyDeletion(store, t);
     },
     async close() {
       // nothing to release

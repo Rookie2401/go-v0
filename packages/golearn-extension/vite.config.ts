@@ -38,6 +38,8 @@ function copyStatic(): Plugin {
       fs.mkdirSync(path.join(dist, 'action'), { recursive: true });
       fs.copyFileSync(path.join(here, 'manifest.json'), path.join(dist, 'manifest.json'));
       fs.copyFileSync(path.join(here, 'action/popup.html'), path.join(dist, 'action/popup.html'));
+      const notices = path.join(here, '..', '..', 'THIRD-PARTY-NOTICES.md');
+      if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(dist, 'THIRD-PARTY-NOTICES.md'));
     },
   };
 }

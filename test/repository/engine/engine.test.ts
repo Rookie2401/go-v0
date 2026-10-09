@@ -440,7 +440,7 @@ describe('observation table spot checks', () => {
     expect(w(lookup(['x'])).weight).toBe(0.3);
     expect(w(ev('UnderstoodMarked', ['x'], { scope: 'sentence', helpUsed: false })).weight).toBeCloseTo(0.16);
     expect(w(ev('ItemMarked', ['x'], { mark: 'known' })).weight).toBeCloseTo(0.06);
-    expect(w(listening(['x'], true, { voice: 'synthetic' })).weight).toBeCloseTo(0.6);
+    expect(observationsOf(listening(['x'], true, { voice: 'synthetic' }))).toEqual([]); // synthetic speech is never listening evidence (audit D8)
     expect(w(listening(['x'], true, { hinted: true })).dimension).toBe('assistedRecognition');
     expect(w(listening(['x'], true, { hinted: true })).weight).toBeCloseTo(0.56);
     expect(w(card(['x'], 'recall', true, { grade: 'easy' })).weight).toBeCloseTo(0.8);

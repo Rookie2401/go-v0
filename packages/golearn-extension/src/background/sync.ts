@@ -13,7 +13,7 @@
  * learner signs in again: it is never retried forever.
  */
 import type { EventLog, GoEvent, SyncPullRequest, SyncPullResponse, SyncPushRequest, SyncPushResponse } from '../../../repository-contract/src';
-import { adaptStorageArea, createLocalQueue, createSyncClient, type LocalQueue, type SyncClient, type Transport } from '../../../repository-sync/src';
+import { adaptStorageArea, createLocalQueue, createSyncClient, pushIsolatingRefusals, type LocalQueue, type SyncClient, type Transport } from '../../../repository-sync/src';
 import type { ChromeApi, StorageArea } from '../platform';
 import type { SyncView } from '../protocol';
 import { isLocalLearner } from './recorder';
@@ -75,9 +75,12 @@ export function createSyncService(opts: SyncServiceOptions) {
     async push(req: SyncPushRequest): Promise<SyncPushResponse> {
       const a = await opts.session.authenticated();
       if (!a) { sawUnauthorized = true; throw new UnauthorizedError(); }
-      const r = await a.api.syncPush(req);
+      // The service refuses a whole batch when any event in it is invalid (422 with the bad indexes). One bad event must not wedge the
+      // good ones behind it: the rest is sent again, and each bad one is reported as refused so the client sets it aside as a rejected row.
+      const r = await pushIsolatingRefusals((q) => a.api.syncPush(q), req);
       if (r.ok) return r.data;
-      if (r.status === 401) { sawUnauthorized = true; throw new UnauthorizedError(); }
+      // 403 not-your-device: the session is bound to another device id (this one was lost or damaged) -> sign in again, which re-registers it (audit O-03)
+      if (r.status === 401 || (r.status === 403 && r.error === 'not-your-device')) { sawUnauthorized = true; throw new UnauthorizedError(); }
       throw new Error(`sync push refused: ${r.error}${r.message ? ` (${r.message})` : ''}`);
     },
     async pull(req: SyncPullRequest): Promise<SyncPullResponse> {
@@ -85,7 +88,7 @@ export function createSyncService(opts: SyncServiceOptions) {
       if (!a) { sawUnauthorized = true; throw new UnauthorizedError(); }
       const r = await a.api.syncPull(req);
       if (r.ok) return r.data;
-      if (r.status === 401) { sawUnauthorized = true; throw new UnauthorizedError(); }
+      if (r.status === 401 || (r.status === 403 && r.error === 'not-your-device')) { sawUnauthorized = true; throw new UnauthorizedError(); }
       throw new Error(`sync pull refused: ${r.error}${r.message ? ` (${r.message})` : ''}`);
     },
   };
@@ -122,6 +125,8 @@ export function createSyncService(opts: SyncServiceOptions) {
   /** One round: push, then pull. Resolves with the outcome; never throws. */
   async function syncOnce(o: { force?: boolean } = {}): Promise<{ ok: boolean; skipped?: 'not-connected' | 'needs-sign-in' | 'offline' | 'backoff' }> {
     try {
+      // a sign-out that could not reach the service left a session alive there: end it as soon as a round can run (audit P-08)
+      if (online) { try { await opts.session.retryRevocation(); } catch { /* the slot stays for the next round */ } }
       const s = await opts.session.status();
       if (!s.connected) return { ok: true, skipped: 'not-connected' };
       const p = await load();

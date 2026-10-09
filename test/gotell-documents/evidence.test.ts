@@ -110,7 +110,7 @@ describe('writingEvidence', () => {
   it('usedCorrectly is true only for a clean, covered, non-corrected sentence; never from an accepted correction', () => {
     const { record } = build();
     const analysis = analysisFor(record.draftId, Object.values(S), { units: ['lemma:sq:shtëpi:NOUN', 'lemma:sq:madh:ADJ'] });
-    // default coverage rule: the checker's honesty line must be empty and the status verified/high-confidence
+    // default coverage rule: the checker must have run on the sentence (coverageParts.checked) with a live analysis; the honesty line is never empty
     const strict = writingEvidence(record, record.versions[0], identity, NOW, { analysis });
     expect(produced(strict.events).every((e) => e.payload.usedCorrectly === 'unjudged')).toBe(true);
 
@@ -228,7 +228,7 @@ function analysisFor(draftId: string, sentences: string[], o: { units: string[];
   const sa = (text: string, index: number): SentenceAnalysis => ({
     index, text, tokens: text.split(' '), unitIds: o.units, familiarity: 0.9,
     issues: o.issueOn === text ? [{ issueId: 'i1', sentenceIndex: index, span: { start: 0, end: 2 }, surface: 'Unë', category: 'agreement', class: 'grammatically-wrong', confidence: 0.9, provenance: { source: 'adapter-checker', ref: 'x' }, hint: 'check', unitIds: [], affectsMeaning: false }] : [],
-    corrections: [], checkerCoverage: o.covered ? '' : 'The checker does not see word order.', analysisStatus: o.covered ? 'verified' : 'provisional',
+    corrections: [], checkerCoverage: o.covered ? 'Checked: definiteness. Not checked: 8 other areas.' : 'The checker did not run on this sentence.', coverageParts: { headline: o.covered ? 'checked' : 'not checked', limits: [], checked: !!o.covered }, analysisStatus: o.covered ? 'verified' : 'provisional',
   });
   return { draftId, languageId: 'sq', textHash: 'x', sentences: sentences.map(sa), analyzerId: 'adapter-sq@1', packVersion: '1', at: NOW };
 }

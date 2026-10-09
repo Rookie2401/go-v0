@@ -7,6 +7,7 @@
 import type { AppContext } from '../context';
 import { append, button, h, p, setStatus, statusLine } from '../dom';
 import { createStorageEncounterStore } from '../../src/store';
+import { setRemoteSpeechConsent } from '../consent';
 import { DEPTHS, type ExplanationDepth } from '../state';
 import type { View } from './view';
 
@@ -26,10 +27,18 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const provider = pack?.remoteVoiceProvider ?? 'no provider is named';
   const saved = statusLine();
 
-  const toggle = (id: string, label: string, checked: boolean, onChange: (v: boolean) => Promise<void>, disabled = false): HTMLElement => {
+  /** `onChange` returns the value now in force (so a refused switch snaps back) and may say why in a message. */
+  const toggle = (id: string, label: string, checked: boolean, onChange: (v: boolean) => Promise<boolean | { value: boolean; message?: string }>, disabled = false): HTMLElement => {
     const box = h('input', { type: 'checkbox', id, name: id, ...(disabled ? { disabled: true } : {}) }) as HTMLInputElement;
     box.checked = checked;
-    box.addEventListener('change', () => { void onChange(box.checked).then(() => setStatus(saved, 'Saved.', 'ok')); });
+    box.addEventListener('change', () => {
+      const wanted = box.checked;
+      void onChange(wanted).then((r) => {
+        const out = typeof r === 'boolean' ? { value: r } : r;
+        box.checked = out.value;
+        if (out.message) setStatus(saved, out.message, 'error'); else setStatus(saved, 'Saved.', 'ok');
+      }, () => { box.checked = !wanted; setStatus(saved, 'The switch could not be changed.', 'error'); });
+    });
     return h('label', { class: 'toggle' }, box, h('span', {}, label));
   };
 
@@ -43,15 +52,19 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     p('Everything below starts off. GoLearn keeps what you looked up as hashes and short word lists, never the pages you read.'),
     h('section', { class: 'card', 'aria-labelledby': 'priv-snip' },
       h('h2', { id: 'priv-snip' }, 'Keep snippets'),
-      toggle('keep-snippets', 'Keep one sentence with each lookup, so I can see where I met a word', false, async () => undefined, true),
+      toggle('keep-snippets', 'Keep one sentence with each lookup, so I can see where I met a word', false, async () => false, true),
       p('Off, and it cannot be switched on in this version. A lookup is recorded as a hash of its sentence, the page title and the page path, never the sentence itself; nothing in the extension can keep a sentence yet. When keeping a sentence becomes possible it will be a separate switch here, off until you turn it on.', 'muted')),
     h('section', { class: 'card', 'aria-labelledby': 'priv-speech' },
       h('h2', { id: 'priv-speech' }, 'Remote speech'),
-      toggle('remote-speech', `Allow a remote speech provider (${provider}) to say words for me`, settings.remoteSpeechConsent, async (v) => { await ctx.setSettings({ remoteSpeechConsent: v }); }),
+      toggle('remote-speech', `Allow a remote speech provider (${provider}) to say words for me`, settings.remoteSpeechConsent, async (v) => {
+        // recorded as a ConsentGiven / ConsentWithdrawn event (scope remote-speech); switched on only once the record is made
+        const r = await setRemoteSpeechConsent(ctx, v, session?.languageId || pack?.languageId);
+        return r.ok ? r.settings.remoteSpeechConsent : { value: r.settings.remoteSpeechConsent, message: r.message };
+      }),
       p(`What would be sent: only the word or phrase you ask to hear and its language, to ${provider}, when you press “Pronounce” and a speech key has been set up by you; never the page, the surrounding sentence or your name. Nothing is sent otherwise. This build’s card plays only voices that are already on your device, so nothing is sent today; the switch records your consent for when a remote voice is offered.`, 'muted')),
     h('section', { class: 'card', 'aria-labelledby': 'priv-ext' },
       h('h2', { id: 'priv-ext' }, 'External processing'),
-      toggle('external-processing', 'Allow my passages to be analysed by an outside AI service', settings.externalProcessingConsent, async () => undefined, true),
+      toggle('external-processing', 'Allow my passages to be analysed by an outside AI service', settings.externalProcessingConsent, async () => settings.externalProcessingConsent, true),
       p('Off, and it cannot be switched on here: nothing in GoLearn sends text to an outside AI provider, and nothing will without a separate, informed switch.', 'muted')),
     h('section', { class: 'card', 'aria-labelledby': 'priv-depth' },
       h('h2', { id: 'priv-depth' }, 'How much explanation'),

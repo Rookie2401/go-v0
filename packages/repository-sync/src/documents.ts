@@ -115,6 +115,8 @@ export interface LocalDocuments {
   putConflictCopy(copy: PrivateDocument): Promise<void>;
   /** The server accepted `doc`. If the document was edited again while the push was in flight it stays dirty on top of it. */
   markPushed(doc: PrivateDocument): Promise<void>;
+  /** The server has no document at the revision this device built on: make the dirty local document a new one (base revision 0, revision 1). False when there is nothing dirty to rebase. Optional so older hosts keep working. */
+  rebase?(docId: string): Promise<boolean>;
 }
 
 export function createLocalDocuments(area: KeyValueArea, opts: { deviceId: string; now?: () => number }): LocalDocuments {
@@ -143,12 +145,20 @@ export function createLocalDocuments(area: KeyValueArea, opts: { deviceId: strin
       const cur = await read(docId);
       if (!cur) return undefined;
       const base = cur.dirty ? cur.baseRevision : cur.doc.revision;
-      const doc: PrivateDocument = { ...cur.doc, body: '', revision: base + 1, deviceId: opts.deviceId, updatedAt: iso(), deletedAt: iso() };
+      // the title goes with the body: it is the learner's own words (audit P-03)
+      const { title: _title, ...kept } = cur.doc;
+      const doc: PrivateDocument = { ...kept, body: '', revision: base + 1, deviceId: opts.deviceId, updatedAt: iso(), deletedAt: iso() };
       await put({ doc, baseRevision: base, dirty: true });
       return doc;
     }),
     acceptRemote: (doc) => lock.run(() => put({ doc, baseRevision: doc.revision, dirty: false })),
     putConflictCopy: (copy) => lock.run(() => put({ doc: copy, baseRevision: 0, dirty: true })),
+    rebase: (docId) => lock.run(async () => {
+      const cur = await read(docId);
+      if (!cur || !cur.dirty || cur.baseRevision === 0) return false;
+      await put({ doc: { ...cur.doc, revision: 1 }, baseRevision: 0, dirty: true });
+      return true;
+    }),
     markPushed: (doc) => lock.run(async () => {
       const cur = await read(doc.docId);
       if (cur && cur.dirty && !sameContent(cur.doc, doc)) {

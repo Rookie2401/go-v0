@@ -103,13 +103,22 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
   if (facts && (facts.status === 'conflicted' || facts.status === 'invalidated')) {
     return decide(candidate, 'too-uncertain', [`the pack facts for this unit are ${facts.status}; nothing sound can be asked yet`]);
   }
+  // The unit row's status is never lowered by the store (a unit can only be superseded), so an invalidated ANALYSIS is
+  // visible only in `facts.analyses`: a candidate computed before a reviewer withdrew every analysis is refused here.
+  if (facts && facts.analyses.length > 0 && facts.analyses.every((a) => a.status === 'invalidated')) {
+    return decide(candidate, 'needs-validation', ['every analysis of this unit has been invalidated; it is not asked until a reviewer supplies a verified one']);
+  }
 
   // 3 ── same unit, same dimension already in the deck ───────────────────────────────────────────────────────────
   const mine = existing.filter((i) => i.unitId === candidate.unitId && sameDimension(i, d));
   const live = mine.find((i) => i.status === 'active' || i.status === 'snoozed');
   if (live) return decide(candidate, 'already-covered', [`already in the deck as ${live.family} (${live.status})`]);
   const suspended = mine.find((i) => i.status === 'suspended');
-  if (suspended) return decide(candidate, 'already-covered', [`in the deck but suspended by the learner (${suspended.family}); resume it instead of adding another`]);
+  if (suspended) {
+    return decide(candidate, 'already-covered', [suspended.suspendedReason
+      ? `in the deck but suspended (${suspended.family}): ${suspended.suspendedReason}; it stays out until the pack is fixed`
+      : `in the deck but suspended by the learner (${suspended.family}); resume it instead of adding another`]);
+  }
   if (mine.some((i) => i.status === 'dismissed')) {
     return decide(candidate, 'low-priority', ['the learner removed this item from the deck; it is not proposed again unprompted']);
   }

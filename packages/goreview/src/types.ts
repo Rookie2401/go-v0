@@ -261,6 +261,8 @@ export interface DeckItem {
   history: ReviewLogEntry[];
   status: ItemStatus;
   snoozedUntil?: string;
+  /** Set when a `ReviewItemInvalidated` event suspended the item (e.g. 'analysis-invalidated'); absent for a learner's own suspension. */
+  suspendedReason?: string;
 }
 
 export interface Scheduler {

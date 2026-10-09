@@ -4,7 +4,9 @@
  * The table below is DATA (every number is documented in README.md); the branches in `observationsOf` only choose a
  * row of it. Principles encoded here (and tested as named invariants):
  *  (a) a lookup / click is exposure, never understanding;
- *  (b) playing audio is exposure, never listening recognition;
+ *  (b) playing audio is exposure, never listening recognition; and synthetic speech is never listening evidence either:
+ *      a ListeningAssessed whose voice is not a recording credits nothing, whatever evidence note the producer attached
+ *      (GoListen's own rule, docs/GOLISTEN.md; audit D8);
  *  (c) accepting a correction is not independent production (CorrectionAccepted / Rejected produce nothing);
  *  (d) assisted observations feed `assistedRecognition`, never the independent dimensions;
  *  (e) a producer's declared `evidence.quality` / `evidence.sourceReliability` can lower a weight, never raise it;
@@ -43,7 +45,7 @@ export const RULES = {
   exposure: { encounter: 0.2, lookup: 0.3, assistance: 0.3, playback: 0.2, unjudgedProduction: 0.3 },
   understood: { weight: 0.4, reliability: 0.4 },
   itemMark: { weight: 0.2, reliability: 0.3 },
-  listening: { recorded: 0.8, synthetic: 0.6, hintedDiscount: 0.3, selfReportReliability: 0.5 },
+  listening: { recorded: 0.8, synthetic: 0, hintedDiscount: 0.3, selfReportReliability: 0.5 },
   card: { recognition: 0.7, recall: 0.8, cloze: 0.8, grade: { again: 1.0, hard: 0.6, good: 0.8, easy: 1.0 } },
   grammar: { weight: 0.8 },
   production: { contextualPositive: 0.9, contextualNegative: 0.7, retrieval: 0.8 },

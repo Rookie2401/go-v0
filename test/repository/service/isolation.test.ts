@@ -137,7 +137,7 @@ describe('teams grant nothing', () => {
     await h.store.putTeam({ teamId: 'team-sq', name: 'Albania', createdAt: h.clock.now() });
     await h.store.putTeamMember('team-sq', leader.learnerId, 'leader', h.clock.now());
     await h.store.putTeamMember('team-sq', member.learnerId, 'member', h.clock.now());
-    expect((await member.api.appendEvents([lookupEvent({ learnerId: member.learnerId, enrolmentId: member.enrolmentId }, { id: 'member-event' })])).ok).toBe(true);
+    expect((await member.api.appendEvents([lookupEvent({ learnerId: member.learnerId, enrolmentId: member.enrolmentId, deviceId: member.deviceId }, { id: 'member-event' })])).ok).toBe(true);
     expect((await member.api.putDocument('m-doc', { languageId: 'sq', kind: 'testimony', body: 'MEMBER TESTIMONY' }, 0)).ok).toBe(true);
     return { leader, member };
   }

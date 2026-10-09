@@ -35,6 +35,9 @@ export const sameSentence = (a: string, b: string): boolean => {
   return x !== '' && x === normaliseForCompare(b);
 };
 
+/** Identifies a sentence for authorship: the hash of its comparison form, so case, spacing and end punctuation do not matter. */
+export const sentenceScopeHash = (sentence: string): string => hashText(normaliseForCompare(sentence));
+
 /** The first sentence of a longer explanation (split where a full stop is followed by a capital letter or an opening quote). */
 export function firstSentence(text: string): string {
   const t = text.trim().replace(/\s+/gu, ' ');

@@ -9,6 +9,7 @@ import type { Dimension, UnitKnowledge } from '../../../repository-contract/src'
 import type { StorageArea } from '../platform';
 import { isDepth, isLanguageId, isUnitId, type DimView, type ExplanationDepth, type KnowledgeView, type PrivacySettings, type ProfileReply } from '../protocol';
 import type { SessionManager } from './session';
+import { limitWordIds } from './wordids';
 
 export const KNOWLEDGE_PREFIX = 'golearn:know:';
 export const KNOWLEDGE_INDEX = 'golearn:know-index';
@@ -51,7 +52,9 @@ export function createProfileService(opts: ProfileServiceOptions) {
     const at = now();
     const items: Record<string, unknown> = {};
     for (const id of ids) items[KNOWLEDGE_PREFIX + id] = { at, row: rows.get(id) ?? null } satisfies CachedRow;
-    const prev = ((await area.get(KNOWLEDGE_INDEX))[KNOWLEDGE_INDEX] as string[] | undefined) ?? [];
+    // a damaged index (anything but a list of strings) is ignored and rebuilt from this call (audit O-04); the rows the service answered are kept
+    const stored = (await area.get(KNOWLEDGE_INDEX))[KNOWLEDGE_INDEX];
+    const prev = Array.isArray(stored) ? stored.filter((x): x is string => typeof x === 'string') : [];
     items[KNOWLEDGE_INDEX] = [...ids, ...prev.filter((p) => !ids.includes(p))].slice(0, MAX_INDEX);
     await area.set(items);
   }
@@ -91,7 +94,8 @@ export function createProfileService(opts: ProfileServiceOptions) {
   }
 
   async function knowledgeFor(unitIds: unknown, languageId: string): Promise<ProfileReply> {
-    const ids = [...new Set(Array.isArray(unitIds) ? unitIds.filter(isUnitId) : [])].slice(0, MAX_IDS_PER_REQUEST);
+    // A request that names more than four words comes from a long selection: it asks for lemma ids only, never the page's raw words (./wordids).
+    const ids = limitWordIds([...new Set(Array.isArray(unitIds) ? unitIds.filter(isUnitId) : [])]).ids.slice(0, MAX_IDS_PER_REQUEST);
     const st = await opts.session.status();
     const d = await depthFor(languageId);
     const base = { depth: d.depth, depthOrigin: d.origin } as const;
@@ -124,7 +128,8 @@ export function createProfileService(opts: ProfileServiceOptions) {
   async function refreshAfterSync(): Promise<number> {
     const a = await opts.session.authenticated();
     if (!a) return 0;
-    const ids = ((await area.get(KNOWLEDGE_INDEX))[KNOWLEDGE_INDEX] as string[] | undefined)?.filter(isUnitId) ?? [];
+    const index = (await area.get(KNOWLEDGE_INDEX))[KNOWLEDGE_INDEX];
+    const ids = Array.isArray(index) ? index.filter((x): x is string => typeof x === 'string' && isUnitId(x)) : [];
     const all = await area.get(null);
     const prefKeys = Object.keys(all).filter((k) => k.startsWith(PREFS_PREFIX));
     if (prefKeys.length) await area.remove(prefKeys);

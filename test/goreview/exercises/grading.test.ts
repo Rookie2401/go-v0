@@ -34,6 +34,38 @@ describe('normalizeAnswer', () => {
     expect(normalizeAnswer('né', 'loose')).toBe('né'); // only ë and ç are Albanian letters being folded
   });
 
+  it('never strips a combining mark: a final Devanagari vowel sign or Thai vowel sign / tone mark is part of the answer (A-17)', () => {
+    const cp = (...c: number[]) => String.fromCodePoint(...c);
+    const hindi = cp(0x939, 0x93F, 0x928, 0x94D, 0x926, 0x940); // हिन्दी
+    const hindu = cp(0x939, 0x93F, 0x928, 0x94D, 0x926, 0x942); // हिन्दू
+    const thai = cp(0xE2A, 0xE27, 0xE31, 0xE2A, 0xE14, 0xE35); // สวัสดี
+    expect(normalizeAnswer(hindi)).toBe(hindi);
+    expect(normalizeAnswer(`${hindi}।`)).toBe(hindi); // the danda is punctuation and is stripped
+    expect(normalizeAnswer(`  ${hindi}! `)).toBe(hindi);
+    expect(normalizeAnswer(thai)).toBe(thai);
+    expect(normalizeAnswer(`“${thai}”`)).toBe(thai);
+    expect(normalizeAnswer(thai, 'loose')).toBe(thai);
+    expect(normalizeAnswer(hindi)).not.toBe(normalizeAnswer(hindu));
+    // a combining acute at the end of a Latin word survives too (NFC composes it into the letter)
+    expect(normalizeAnswer('café')).toBe('café');
+    // a precomposed and a decomposed nukta are the same answer
+    expect(normalizeAnswer('ज़')).toBe(normalizeAnswer('ज़'));
+  });
+
+  it('a Hindi or Thai answer that differs only in its last sign is incorrect', () => {
+    const cp = (...c: number[]) => String.fromCodePoint(...c);
+    const key = (w: string): GradingKey => ({ accepted: [w], normalization: 'exact', explanation: 'x' });
+    const hindi = cp(0x939, 0x93F, 0x928, 0x94D, 0x926, 0x940);
+    const hindu = cp(0x939, 0x93F, 0x928, 0x94D, 0x926, 0x942);
+    const thai = cp(0xE2A, 0xE27, 0xE31, 0xE2A, 0xE14, 0xE35); // สวัสดี
+    const thaiNoTone = cp(0xE2A, 0xE27, 0xE31, 0xE2A, 0xE14); // สวัสด
+    expect(gradeTyped(key(hindi), resp({ typed: hindi })).outcome).toBe('correct');
+    expect(gradeTyped(key(hindi), resp({ typed: `${hindi}.` })).outcome).toBe('correct');
+    expect(gradeTyped(key(hindi), resp({ typed: hindu })).outcome).toBe('incorrect');
+    expect(gradeTyped(key(thai), resp({ typed: thai })).outcome).toBe('correct');
+    expect(gradeTyped(key(thai), resp({ typed: thaiNoTone })).outcome).toBe('incorrect');
+  });
+
   it('helpers: hasLetter, stripArticle, glossParts', () => {
     expect(hasLetter('3')).toBe(false);
     expect(hasLetter('a3')).toBe(true);

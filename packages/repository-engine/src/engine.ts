@@ -98,7 +98,9 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
    * of the learner's log per call that has new events (O(N)) plus a fold of the touched units only. This is the price
    * of correctness under alias re-targeting, where a unit's events may sit under several ids; a store-side unit index
    * and a reverse alias lookup would remove the scan.
-   * Not detected (call `rebuild()`): a new alias or a new tombstone affecting events older than the cursor.
+   * A `certain` alias added after rows exist is detected (rows still keyed by an id that now resolves elsewhere) and answered
+   * with a rebuild, so live == rebuild (see `rekeyIfAliased`). Not detected (call `rebuild()`): a new tombstone affecting
+   * events older than the cursor.
    */
   async function project(learnerId: string): Promise<{ folded: number; cursor: number }> {
     const cursor = await store.getProjectionCursor(learnerId);
@@ -106,6 +108,8 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
       const r = await rebuildRows(learnerId);
       return { folded: r.read, cursor: r.seq };
     }
+    const rekeyed = await rekeyIfAliased(learnerId);
+    if (rekeyed) return { folded: rekeyed.read, cursor: rekeyed.seq };
     const fresh = await readEvents(learnerId, cursor.seq);
     if (!fresh.length) return { folded: 0, cursor: cursor.seq };
     const seq = fresh.reduce((m, e) => Math.max(m, e.seq), cursor.seq);
@@ -122,10 +126,32 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     return { folded: fresh.length, cursor: seq };
   }
 
-  /** Read paths are self-healing: they fold anything newer than the cursor (and rebuild on a model-version change) first. */
+  /**
+   * D2 (audit): an alias that becomes `certain` AFTER evidence was projected leaves the learner's row under the old key,
+   * while every read resolves the old id to the new one and finds nothing. A row whose own id now resolves elsewhere
+   * is therefore stale: the projection is rebuilt (clear + fold with the aliases applied), which re-keys or merges it.
+   * The signature of each stale set is remembered per learner, so a cyclic alias set (whose resolution flips between two
+   * ids) is rebuilt at most once per distinct state and cannot loop.
+   */
+  const rekeyed = new Map<string, Set<string>>();
+  async function rekeyIfAliased(learnerId: string): Promise<{ read: number; seq: number } | undefined> {
+    const rows = await store.getKnowledge(learnerId);
+    if (!rows.length) return undefined;
+    const resolve = await resolverFor(rows.map((r) => r.unitId));
+    const stale = rows.filter((r) => resolve(r.unitId) !== r.unitId).map((r) => r.unitId).sort();
+    if (!stale.length) return undefined;
+    const signature = stale.join('|');
+    const done = rekeyed.get(learnerId) ?? rekeyed.set(learnerId, new Set()).get(learnerId)!;
+    if (done.has(signature)) return undefined;
+    done.add(signature);
+    return rebuildRows(learnerId);
+  }
+
+  /** Read paths are self-healing: they fold anything newer than the cursor (and rebuild on a model-version change or a newly certain alias) first. */
   async function ensureCurrent(learnerId: string): Promise<void> {
     const cursor = await store.getProjectionCursor(learnerId);
     if (!cursor || cursor.modelVersion !== modelVersion || cursor.seq < (await store.head(learnerId))) await project(learnerId);
+    else await rekeyIfAliased(learnerId);
   }
 
   async function knowledge(learnerId: string, unitIds?: string[]): Promise<UnitKnowledge[]> {

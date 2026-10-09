@@ -107,6 +107,48 @@ describe('judgeAuthorship', () => {
   });
 });
 
+describe('judgeAuthorship, per sentence', () => {
+  const hintOn0 = async (): Promise<AssistanceStep[]> => stepsThrough(2, 0);
+
+  it('a sentence no step touched stays independent, however much help was shown for its neighbour', async () => {
+    const steps = await hintOn0();
+    expect(steps.every((s) => s.sentenceIndex === 0)).toBe(true);
+    expect(judgeAuthorship('Unë shkoj te libri.', steps, { sentenceIndex: 0 })).toBe('after-hint');
+    expect(judgeAuthorship('Unë lexoj gazetën.', steps, { sentenceIndex: 1 })).toBe('independent');
+    expect(judgeAuthorship('Unë shkoj me shokun.', steps, { sentenceIndex: 1 })).toBe('independent');
+  });
+
+  it('a sentence that received steps (by index) gets the level of THOSE steps only', async () => {
+    const onZero = await stepsThrough(2, 0);
+    const onOne = await stepsThrough(4, 1);
+    const all = [...onZero, ...onOne];
+    expect(judgeAuthorship('Unë shkoj tek libri.', all, { sentenceIndex: 0 })).toBe('after-hint');
+    expect(judgeAuthorship('Unë shkoj me shokët.', all, { sentenceIndex: 1 })).toBe('revised-after-feedback');
+    expect(judgeAuthorship('Diçka tjetër krejt.', all, { sentenceIndex: 2 })).toBe('independent');
+  });
+
+  it('finds the sentence by its hash when sentences were inserted before it and the index no longer matches', async () => {
+    const steps = await hintOn0();
+    // the learner inserted a sentence above, and kept the hinted sentence unchanged: it now sits at index 1
+    expect(judgeAuthorship(SENTENCE, steps, { sentenceIndex: 1 })).toBe('after-hint');
+    expect(judgeAuthorship('Një fjali e re.', steps, { sentenceIndex: 0 })).toBe('after-hint'); // by index: a changed sentence at the hinted position
+    expect(judgeAuthorship('Një fjali e re.', steps, { sentenceIndex: 2 })).toBe('independent');
+  });
+
+  it('a step with no sentence reference (a legacy record) falls back to the whole-round rule: every sentence is taken as helped', () => {
+    const legacy: AssistanceStep = { level: 2, content: 'x', revealedUnitIds: [], source: 'adapter-checker', at: NOW };
+    expect(judgeAuthorship('Çdo fjali.', [legacy], { sentenceIndex: 3 })).toBe('after-hint');
+    expect(judgeAuthorship('Çdo fjali.', [legacy])).toBe('after-hint');
+    const legacy4: AssistanceStep = { ...legacy, level: 4 };
+    expect(judgeAuthorship('Çdo fjali.', [legacy, legacy4], { sentenceIndex: 0 })).toBe('revised-after-feedback');
+  });
+
+  it('copying a shown correction is still copied-from-model wherever the text lands', async () => {
+    const steps = await stepsThrough(4, 0);
+    expect(judgeAuthorship('Unë shkoj te libri.', steps, { sentenceIndex: 1 })).toBe('copied-from-model');
+  });
+});
+
 describe('isReproducedLater', () => {
   const earlier = [
     { text: 'Unë shkoj te libri.', authorship: 'copied-from-model' as const },

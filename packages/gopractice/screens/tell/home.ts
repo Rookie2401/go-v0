@@ -45,19 +45,22 @@ export async function render(env: TellEnv): Promise<void> {
 
   function rowView(r: DraftRow): HTMLElement {
     const actions = h('span', { class: 'tell-draft-actions' });
-    const confirmBox = h('span', { class: 'tell-draft-confirm', hidden: true });
+    const confirmBox = h('span', { class: 'tell-draft-confirm', role: 'group', 'aria-label': `Delete ${r.title || 'this draft'}?`, hidden: true });
     const exportSel = h('select', { 'aria-label': `Export format for ${r.title || 'this draft'}`, 'data-export-format': r.draftId },
       ...DRAFT_EXPORT_FORMATS.map((f) => h('option', { value: f }, f))) as HTMLSelectElement;
+    // the button that was pressed is hidden with its row of actions: focus goes to the safe answer of the question, and back on "Keep it"
+    const deleteBtn = button('Delete', () => { confirmBox.hidden = false; actions.hidden = true; keepBtn.focus(); }, { class: 'btn small', 'data-delete': r.draftId });
+    const keepBtn = button('Keep it', () => { confirmBox.hidden = true; actions.hidden = false; deleteBtn.focus(); }, { class: 'btn small', 'data-delete-cancel': r.draftId });
     actions.append(
       h('a', { class: 'btn small', href: `#/tell/write/${encodeURIComponent(r.draftId)}`, 'data-open': r.draftId }, 'Open'),
       exportSel,
       button('Export', () => { void exportRow(r, exportSel.value as (typeof DRAFT_EXPORT_FORMATS)[number]); }, { class: 'btn small', 'data-export': r.draftId }),
-      button('Delete', () => { confirmBox.hidden = false; actions.hidden = true; }, { class: 'btn small', 'data-delete': r.draftId }),
+      deleteBtn,
     );
     confirmBox.append(
       `Delete "${r.title || 'Untitled draft'}" and all its versions? `,
       button('Delete for good', () => { void remove(r); }, { class: 'btn small', 'data-delete-confirm': r.draftId }),
-      button('Keep it', () => { confirmBox.hidden = true; actions.hidden = false; }, { class: 'btn small', 'data-delete-cancel': r.draftId }),
+      keepBtn,
     );
     return h('li', { 'data-doc': r.draftId },
       h('strong', {}, r.title || 'Untitled draft'),
@@ -79,13 +82,15 @@ export async function render(env: TellEnv): Promise<void> {
       setStatus(status, `The draft could not be deleted: ${e instanceof Error ? e.message : String(e)}`, 'error');
     }
     await paintDrafts();
+    // the row that held focus is gone: focus goes to the list's heading so the keyboard user is not dropped at the top of the page
+    if (view.alive()) draftsBox.querySelector<HTMLElement>('#tell-drafts-h')?.focus();
   }
 
   async function paintDrafts(): Promise<void> {
     const { rows, note } = await listDrafts(engine);
     if (!view.alive()) return;
     clear(draftsBox);
-    append(draftsBox, [h('h2', { id: 'tell-drafts-h' }, 'Your drafts')]);
+    append(draftsBox, [h('h2', { id: 'tell-drafts-h', tabindex: '-1' }, 'Your drafts')]);
     if (note) draftsBox.append(p(note, 'notice'));
     if (!rows.length) { draftsBox.append(p('No drafts yet.', 'muted')); return; }
     draftsBox.append(h('ul', { class: 'drafts' }, ...rows.map(rowView)));

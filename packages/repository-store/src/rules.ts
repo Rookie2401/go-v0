@@ -153,11 +153,13 @@ export function decidePutDocument(stored: PrivateDocument | undefined, doc: Priv
 }
 
 /**
- * `deleteDocument`: the body is blanked and `deletedAt` set. The revision moves on, so a device that still holds the old
+ * `deleteDocument`: the body and the title are blanked and `deletedAt` set. The revision moves on, so a device that still holds the old
  * text cannot overwrite the deletion with a stale `putDocument`.
  */
 export function deletedDocument(d: PrivateDocument, at: string): PrivateDocument {
-  return { ...d, body: '', deletedAt: at, updatedAt: at, revision: d.revision + 1 };
+  // The title is the learner's own words as much as the body is (audit P-03): the receipt keeps the id, kind, language and device, never a word.
+  const { title: _title, ...rest } = d;
+  return { ...rest, body: '', deletedAt: at, updatedAt: at, revision: d.revision + 1 };
 }
 
 /** Summary counts of an erasure; the first three are the port's, the rest say what else went. */
@@ -178,6 +180,10 @@ export interface EraseCounts {
 /** What `createMemoryStore` and `openSqliteStore` return: the port, plus event removal and the full erasure counts. */
 export interface ConcreteStore extends RepositoryStore, EventRemover {
   eraseLearner(learnerId: string): Promise<EraseCounts>;
+  /** Records a tombstone, then physically removes what its scope names (event / source / range) and drops the projection so the engine refolds. See ./deletion. */
+  applyTombstone(t: Tombstone): Promise<{ events: number; knowledge: number; documents: number }>;
+  /** Operator maintenance (SQLite): empties the write-ahead log and rebuilds the file without its free pages. A no-op where there is nothing to compact. */
+  compact?(): Promise<void>;
 }
 
 export const zeroErase =(): EraseCounts => ({ events: 0, documents: 0, knowledge: 0, preferences: 0, sessions: 0, devices: 0, enrolments: 0, tombstones: 0, teamMemberships: 0, accounts: 0, learners: 0 });

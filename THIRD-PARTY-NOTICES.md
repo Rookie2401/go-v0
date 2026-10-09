@@ -9,7 +9,16 @@ others, with the licence each requires us to state. The full inventory and the o
 - **Albanian dictionary** — Wiktionary, via kaikki.org (`kaikki-sq@2026-09-28`, 91,271 entries, sharded).
   Licence: Creative Commons Attribution-ShareAlike 4.0 (https://creativecommons.org/licenses/by-sa/4.0/).
   Contributors: the Wiktionary contributors (https://en.wiktionary.org). Processing: kaikki.org (Tatu Ylonen, "Wiktextract").
-  The shards are a reformatting of the kaikki JSONL into per-prefix JSON files; no entry text was changed.
+  Source: https://kaikki.org/dictionary/Albanian/kaikki.org-dictionary-Albanian.jsonl.gz (the address recorded in the
+  dictionary's manifest). The file actually used is the kaikki "+tables" variant, `kaikki.org-dictionary-Albanian+tables.jsonl`
+  (128,809 lines); its exact download address is not recorded.
+  Edition: `kaikki-sq@2026-09-28`. The file's last-modified date is 2026-09-28, it was retrieved on 2026-10-01 and the
+  shards were built on 2026-10-01 (SHA-256 of the file: `f63836cd29026f1c070c0702d926dc31e3427abb289e3fd9048ca382acf7c014`).
+  The Wiktionary revision the extract was taken from is not recorded.
+  Changes: the shards are an adaptation of the kaikki file. It was reformatted into per-prefix JSON files, each entry keeps
+  at most six glosses (spelling-variant senses are left out), entries that repeat are merged, and example sentences are not
+  shipped (only a count of them). The shards are offered under the same
+  licence, CC BY-SA 4.0.
   Shown in the product as "Wiktionary, via kaikki.org — CC BY-SA 4.0" wherever a dictionary meaning appears.
 
 ## Code bundled into the applications

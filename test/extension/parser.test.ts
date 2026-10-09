@@ -43,19 +43,20 @@ describe('parser: the card model on ten Albanian sentences', () => {
       else { expect(card.confidence).toBeGreaterThan(0); if (card.tokenCount === 1) expect(card.source?.reviewStatus).toBeTruthy(); }
       // arrays are arrays, notes are strings
       for (const k of ['phrases', 'words', 'notes', 'basis', 'pronunciation', 'alternatives', 'itemIds', 'limits'] as const) expect(Array.isArray(card[k])).toBe(true);
-      // every field carries a label, and no field claims to be a learner-state inference in this prototype
+      // every analyser-made field carries a label, and none of them claims to be a learner-state inference: only the learner-model line (filled in by the card from the background) is labelled inference
       for (const f of FIELDS) expect(['fact', 'analysis']).toContain(card.labels[f]);
       expect(card.labels.surface).toBe('fact');
       expect(card.labels.lemma).toBe('analysis');
-      expect(Object.values(card.labels)).not.toContain('inference');
+      expect(Object.entries(card.labels).filter(([, v]) => v === 'inference').map(([k]) => k)).toEqual(['learner']);
       // the context is reported as it was given and as a hash, never as text
       expect(card.context.kind).toBe('sentence');
       expect(card.context.sentenceKey).toMatch(/^[0-9a-f]{12}$/);
       expect(card.context.sentenceKey).toBe(ids.sentenceKey(sentence));
       expect(JSON.stringify(card.context)).not.toContain(sentence);
       expect(card.context.selectionLocated).toBe(true);
-      // the prototype says what it lacks
-      expect(card.limits.join(' ')).toMatch(/Word list only/);
+      // the card says what it lacks
+      expect(card.limits.join(' ')).toMatch(/machine-drafted/);
+      expect(card.limits.join(' ')).toMatch(/no machine translation/);
       // the encounter has at least one item, as a lemma id only when the reading is creditable
       expect(card.itemIds.length).toBeGreaterThan(0);
       for (const id of card.itemIds) expect(id).toMatch(/^(lemma|form|phrase):sq:/);

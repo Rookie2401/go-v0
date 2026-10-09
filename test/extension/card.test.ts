@@ -91,8 +91,8 @@ describe('the card in the page', () => {
     ui.show(cardFor(), anchor());
     const tags = [...ui.root()!.querySelectorAll('.tag')].map((x) => x.textContent);
     expect(tags).toContain('analysis');
-    const more = ui.root()!.querySelector('.more') as HTMLElement;
-    expect(more.textContent).toMatch(/Word list only/);
+    const more = ui.root()!.querySelector('.more:not(.layer)') as HTMLElement;
+    expect(more.textContent).toMatch(/machine-drafted/);
     expect(more.textContent).toMatch(/fact: what you selected/);
     expect(more.textContent).toMatch(/Context/);
   });
@@ -190,10 +190,10 @@ describe('dismissal', () => {
 });
 
 describe('keyboard and tab order', () => {
-  it('with no voice: the controls are Close, More; the pronounce button is disabled and says why', () => {
+  it('with no voice: the controls are Close, the four layers, Review, Wrong and More; the pronounce button is disabled and says why', () => {
     ui.show(cardFor(), anchor());
-    const names = [...ui.root()!.querySelectorAll('button:not([disabled])')].map((b) => b.getAttribute('aria-label') ?? b.textContent);
-    expect(names).toEqual(['Close GoLearn card', 'More']);
+    const names = [...ui.root()!.querySelectorAll('button:not([disabled])')].filter((b) => !b.closest('[hidden]')).map((b) => b.getAttribute('aria-label') ?? b.textContent);
+    expect(names).toEqual(['Close GoLearn card', 'Form', 'Phrase & syntax', 'Grammar', 'English rescue', 'Review this', 'This analysis is wrong', 'More']);
     const say = ui.root()!.querySelector('.say') as HTMLButtonElement;
     expect(say.disabled).toBe(true);
     expect(text(ui.root())).toMatch(/Speech is not available/);
@@ -225,7 +225,7 @@ describe('keyboard and tab order', () => {
   });
   it('the more panel is a disclosure: hidden by default, aria-expanded follows', () => {
     ui.show(cardFor(), anchor());
-    const more = ui.root()!.querySelector('.more') as HTMLElement;
+    const more = ui.root()!.querySelector('.more:not(.layer)') as HTMLElement;
     const btn = ui.root()!.querySelector('.moreBtn') as HTMLButtonElement;
     expect(more.hasAttribute('hidden')).toBe(true);
     expect(btn.getAttribute('aria-expanded')).toBe('false');

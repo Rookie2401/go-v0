@@ -3,7 +3,10 @@
  * Events are plain emitters; storage areas are Map-backed; scripting.executeScript can be told to throw.
  */
 import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
-import type { ChromeApi, ChromeEvent, MessageListener, ScriptInjection, StorageArea, TabInfo } from '../../packages/golearn-extension/src/platform';
+import type { AlarmInfo, ChromeApi, ChromeEvent, ContentChromeApi, MessageListener, MessageSender, ScriptInjection, StorageArea, TabInfo } from '../../packages/golearn-extension/src/platform';
+
+export const EXT_ID = 'test-ext-id';
+export const PAGE_SENDER: MessageSender = { id: EXT_ID, url: `chrome-extension://${EXT_ID}/action/popup.html` };
 
 export function emitter<F extends (...args: never[]) => unknown>() {
   const fns = new Set<F>();
@@ -37,6 +40,13 @@ export interface ChromeFake extends ChromeApi {
     command: ReturnType<typeof emitter<(command: string, tab?: TabInfo) => void>>;
   };
   activeTabId: number;
+  alarmsCreated: Array<{ name: string; periodInMinutes?: number }>;
+  alarmEvent: ReturnType<typeof emitter<(a: AlarmInfo) => void>>;
+  /** Send a message to the background listeners as a given sender; resolves with the response. */
+  dispatch(message: unknown, sender: MessageSender): Promise<unknown>;
+  /** What a content script in tab `tabId` gets: messaging only; its sends reach the background with a tab sender. */
+  contentChrome(tabId?: number): ContentChromeApi;
+  options: { opened: number };
 }
 
 export function createChromeFake(): ChromeFake {
@@ -48,28 +58,37 @@ export function createChromeFake(): ChromeFake {
   const onUpdated = emitter<(tabId: number, changeInfo: { status?: string }) => void>();
   const menuClicked = emitter<(info: { menuItemId: string | number; selectionText?: string; frameId?: number }, tab?: TabInfo) => void>();
   const command = emitter<(command: string, tab?: TabInfo) => void>();
+  const alarmEvent = emitter<(a: AlarmInfo) => void>();
   let failure: Error | undefined;
+  const dispatch = (message: unknown, sender: MessageSender): Promise<unknown> => new Promise((resolve) => {
+    let answered = false;
+    for (const f of onMessage.listeners) {
+      const r = f(message, sender, (resp) => { answered = true; resolve(resp); });
+      if (r === true) return;
+    }
+    if (!answered) resolve(undefined);
+  });
   const fake: ChromeFake = {
     local, sessionArea,
-    injected: [], messagesToTabs: [], badges: [], titles: [], menus: [],
+    injected: [], messagesToTabs: [], badges: [], titles: [], menus: [], alarmsCreated: [], alarmEvent, options: { opened: 0 }, dispatch,
+    contentChrome(tabId = 7) {
+      const tabEvents = emitter<MessageListener>();
+      fake.tabListeners = tabEvents.listeners;
+      return { runtime: { id: EXT_ID, onMessage: tabEvents, sendMessage: (m) => dispatch(m, { id: EXT_ID, tab: { id: tabId }, url: 'https://example.test/page' }), getManifest: () => ({ version: '0.1.0' }) } };
+    },
     tabListeners: new Set(),
     activeTabId: 7,
     failInjection(e) { failure = e; },
     events: { onMessage, onInstalled, onRemoved, onUpdated, menuClicked, command },
     storage: { local: local as StorageArea, session: sessionArea as StorageArea },
     runtime: {
+      id: EXT_ID,
       onMessage,
       onInstalled,
       // a message from the popup goes to the background listeners, which answer through sendResponse
-      sendMessage: (message) => new Promise((resolve) => {
-        let answered = false;
-        for (const f of onMessage.listeners) {
-          const r = f(message, {}, (resp) => { answered = true; resolve(resp); });
-          if (r === true) return;
-        }
-        if (!answered) resolve(undefined);
-      }),
-      getManifest: () => ({ version: '0.0.1' }),
+      sendMessage: (message) => dispatch(message, PAGE_SENDER),
+      getManifest: () => ({ version: '0.1.0' }),
+      openOptionsPage: async () => { fake.options.opened++; },
     },
     tabs: {
       query: async () => [{ id: fake.activeTabId }],
@@ -77,7 +96,7 @@ export function createChromeFake(): ChromeFake {
         fake.messagesToTabs.push({ tabId, message });
         if (!fake.tabListeners.size) { reject(new Error('Could not establish connection. Receiving end does not exist.')); return; }
         for (const f of fake.tabListeners) {
-          const r = f(message, { tab: { id: tabId } }, resolve);
+          const r = f(message, { id: EXT_ID }, resolve);
           if (r !== true) { resolve(undefined); return; }
         }
       }),
@@ -97,6 +116,7 @@ export function createChromeFake(): ChromeFake {
       onClicked: menuClicked,
     },
     commands: { onCommand: command },
+    alarms: { create: (name, info) => { fake.alarmsCreated.push({ name, periodInMinutes: info.periodInMinutes }); }, get: async (name) => fake.alarmsCreated.find((a) => a.name === name), onAlarm: alarmEvent },
     action: {
       setBadgeText: async (d) => { fake.badges.push(d); },
       setTitle: async (d) => { fake.titles.push(d); },

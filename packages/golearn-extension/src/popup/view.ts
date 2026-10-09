@@ -1,0 +1,89 @@
+/**
+ * What the card shows besides the parsed `CardModel`: the pieces that arrive LATER and never block the card (the
+ * dictionary gloss, the learner-model consultation, the pack's explanations, the pronunciation state), and the
+ * callbacks through which the card reports what the learner did. Pure data and types; no DOM.
+ */
+import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation } from '../protocol';
+
+export type LayerName = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence';
+
+export interface GlossView {
+  /** idle: nothing asked (no dictionary service); loading: asked, not answered; ready: senses arrived; none: asked, nothing found; error: could not ask. */
+  state: 'idle' | 'loading' | 'ready' | 'none' | 'error';
+  senses: string[];
+  attribution?: string;
+  message?: string;
+}
+
+export type RecognitionLevel = 'low' | 'medium' | 'high';
+
+export interface ProfileView {
+  state: 'idle' | 'loading' | 'ready' | 'not-connected' | 'unavailable';
+  /** How many times the learner has met the word (the exposure observations of the unit). */
+  met?: number;
+  /** Reading recognition of the word: a level with the estimate's confidence, or not assessed. */
+  recognition?: { level: RecognitionLevel; confidence: number } | 'not-assessed';
+  /** Ids of constructions the form realizes where the learner's grammatical understanding is weak (negative > positive). */
+  weak: string[];
+  stale?: boolean;
+  /** Why the model could not be consulted (state 'unavailable'). */
+  reason?: 'needs-sign-in' | 'offline' | 'error';
+}
+
+export interface ExplainView {
+  state: 'idle' | 'loading' | 'ready' | 'none';
+  features: FeatureExplanation[];
+  constructions: ConstructionExplanation[];
+}
+
+export type CorrectionState = { state: 'idle' } | { state: 'sending' } | { state: 'sent' | 'saved-locally' | 'error'; message: string };
+
+export interface CardView {
+  /** Language of the enrolment, as a learner-facing name ("Albanian"). */
+  languageName: string;
+  depth: ExplanationDepth;
+  depthOrigin?: string;
+  gloss: GlossView;
+  profile: ProfileView;
+  explain: ExplainView;
+  saved: boolean;
+  correction: CorrectionState;
+}
+
+export const initialView = (languageName: string): CardView => ({
+  languageName, depth: 'brief',
+  gloss: { state: 'idle', senses: [] },
+  profile: { state: 'idle', weak: [] },
+  explain: { state: 'idle', features: [], constructions: [] },
+  saved: false,
+  correction: { state: 'idle' },
+});
+
+export interface PlayOutcome { ok: true; voice: 'synthetic' | 'recorded'; voiceId?: string; repeated: boolean }
+export interface CorrectionInput { lemma: string; pos?: string; fromAlternative: boolean }
+
+/** What the card reports. Every callback may be omitted (a card with no callbacks just displays). */
+export interface CardActions {
+  /** A layer was opened (each opening; the recorder decides what counts as a repeat). */
+  onLayer?(layer: LayerName): void;
+  /** A pronunciation was played. */
+  onPronounced?(p: PlayOutcome): void;
+  /** "Review this". */
+  onSave?(): void;
+  /** "This analysis is wrong": the learner chose an alternative reading or typed a lemma. */
+  onCorrect?(c: CorrectionInput): void;
+}
+
+// ───────────────────────────── pronunciation port ─────────────────────────────
+
+export interface PronounceAvailability { available: boolean; note: string }
+export type PlayResult = { ok: true; voice: 'synthetic' | 'recorded'; voiceId?: string } | { ok: false; message: string };
+
+/** How the card pronounces. The real one wraps GoListen's device provider (content/voice.ts); tests pass fakes. */
+export interface Pronouncer {
+  availability(languageId: string): PronounceAvailability | Promise<PronounceAvailability>;
+  play(text: string, languageId: string): PlayResult | Promise<PlayResult>;
+  stop?(): void;
+  /** Voices may arrive after the page loaded (Chrome fills its list lazily). */
+  onChange?(cb: () => void): () => void;
+}

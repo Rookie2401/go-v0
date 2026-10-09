@@ -39,7 +39,35 @@ export interface Alternative { lemma?: string; pos?: string; gloss?: string; con
 
 export type LabelledField =
   | 'surface' | 'lemma' | 'pos' | 'morphology' | 'gloss' | 'confidence' | 'provenance'
-  | 'phrases' | 'words' | 'notes' | 'basis' | 'pronunciation' | 'context';
+  | 'phrases' | 'words' | 'notes' | 'basis' | 'pronunciation' | 'context'
+  | 'features' | 'constructions' | 'syntax' | 'sentenceWords' | 'learner';
+
+/** One morphological feature of the reading shown (only features the analyser gave). */
+export interface FeatureItem { key: string; value: string }
+
+/** A construction the form realizes or takes part in, as the analyser or the form's own features show it. */
+export interface ConstructionNote {
+  /** The id the language pack explains (`negation-nuk`, `definite-accusative-singular`). */
+  id: string;
+  /** The Repository unit id the learner model knows it by (`syntax:<lang>:<id>`). */
+  unitId: string;
+  title: string;
+  /** The analyser's own explanation, used when the pack has none. */
+  explanation: string;
+  confidence: number;
+  source: 'pattern' | 'form';
+}
+
+/** One word of the sentence, for the word-by-word list (Layer 5). */
+export interface SentenceWord { surface: string; lemma?: string; pos?: string; gloss?: string; confidence: number; selected: boolean }
+
+/** The plain-words line about the context the card was made from. */
+export function contextLine(c: ContextReport): string {
+  if (c.kind === 'sentence') return 'Context: full sentence';
+  if (c.kind === 'fragment') return 'Context: a fragment, not a verified sentence';
+  const r = c.reason;
+  return `Context: only the selected word (${!r || /does not provide sentence context|no sentence/i.test(r) ? 'this reader gives no sentence' : r})`;
+}
 
 export interface CardModel {
   languageId: string;
@@ -71,6 +99,20 @@ export interface CardModel {
   context: ContextReport;
   /** Item ids for the encounter: lemma ids when creditable, otherwise form ids. */
   itemIds: string[];
+  /** The features of the reading shown (single word only); empty when the analyser gave none. */
+  features: FeatureItem[];
+  /** Constructions that cover the selection (the analyser's patterns) or that the form's own features show. */
+  constructions: ConstructionNote[];
+  /** The syntactic role the analyser gave the word, when it gave one. Most analysers give none. */
+  role?: string;
+  /** Unit membership and parts the analyser reports (a verb with attached pronouns, a particle of a unit). */
+  syntaxNotes: string[];
+  /** Every word of the sentence with its best reading, when there is sentence context (first 60 words). */
+  sentenceWords: SentenceWord[];
+  /** The Repository unit ids to ask the learner model about: the form, the lemma, the constructions. */
+  unitIds: string[];
+  /** The form unit id of a single-word selection (what a correction refers to). */
+  formId?: string;
   tokenCount: number;
   labels: Record<LabelledField, EvidenceLabel>;
   limits: string[];

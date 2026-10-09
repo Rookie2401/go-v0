@@ -11,9 +11,11 @@ packages/
   repository-engine/       Layer C: evidence rules, projection fold, preferences, eligibility, review candidates, suitability
   repository-service/      authenticated HTTP service (web-API handler + node:http bridge), typed client, in-process API
   repository-sync/         the device-side queue, sync client, document conflict rules
-  golearn-extension/       PROTOTYPE reader extension (contract/, parser card model and web-generic adapter are candidates)
+  golisten/                GoListen: pronunciation contracts, voice registry, device/remote/recorded providers, assessment interface
+  language-packs/          the pack manifest framework, the Albanian pack (runtime, installer, validation, tutorial), planned packs
+  golearn-extension/       GoLearn: the MV3 reader extension (src/, action/) and the setup/onboarding app (app/: options page + web build)
   controlled-reader/       PROTOTYPE local EPUB reader with the epub-local adapter
-  (planned) language-packs/, golearn-app/, goreview/, gotell/
+  (planned) goreview/, gotell/
 ```
 
 Rules (enforced by `test/ecosystem/boundaries.test.ts`):

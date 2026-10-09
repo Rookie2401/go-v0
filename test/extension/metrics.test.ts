@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { LookupTimer, PHASES, createMemoryMetricsStore, exportMetrics, percentile, summarize, type MetricsRow } from '../../packages/golearn-extension/src/metrics';
+import { ASYNC_PHASES, LookupTimer, PHASES, createMemoryMetricsStore, exportMetrics, percentile, summarize, type MetricsRow } from '../../packages/golearn-extension/src/metrics';
 
 const row = (i: number, over: Partial<MetricsRow> = {}): MetricsRow => ({
   id: `m${i}`, at: `2026-10-08T10:00:${String(i).padStart(2, '0')}.000Z`, readerId: 'web-generic', contextKind: 'sentence', tokenCount: 1, contextChars: 40,
@@ -75,7 +75,7 @@ describe('metrics store and export', () => {
     const parsed = JSON.parse(await exportMetrics(store));
     expect(parsed.rows).toHaveLength(3);
     expect(parsed.summary.count).toBe(3);
-    expect(Object.keys(parsed.summary.cumulative)).toEqual([...PHASES]);
+    expect(Object.keys(parsed.summary.cumulative)).toEqual([...PHASES, ...ASYNC_PHASES]);
     expect(await store.clear()).toBe(3);
     expect(JSON.parse(await exportMetrics(store)).summary.count).toBe(0);
   });

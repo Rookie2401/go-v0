@@ -9,7 +9,10 @@ import { createMemoryStorageArea } from './store';
 export const METRIC_KEY_PREFIX = 'golearn:metric:';
 
 export const PHASES = ['selectionObtained', 'contextExtracted', 'parsed', 'popupPositioned', 'firstInfoShown'] as const;
-export type Phase = (typeof PHASES)[number];
+export type CorePhase = (typeof PHASES)[number];
+/** Marks of work that runs beside the card and never delays it: the event reaching the queue, the learner model, the dictionary. */
+export const ASYNC_PHASES = ['eventQueued', 'profileArrived', 'glossArrived'] as const;
+export type Phase = CorePhase | (typeof ASYNC_PHASES)[number];
 
 export interface MemorySample { usedJSHeapSize: number; totalJSHeapSize: number; jsHeapSizeLimit: number }
 
@@ -26,7 +29,7 @@ export interface MetricsRow {
   /** Milliseconds from the trigger to each mark. Absent for a phase the lookup never reached. */
   t: Partial<Record<Phase, number>>;
   /** Milliseconds each phase took (difference from the previous mark that exists). */
-  dt: Partial<Record<Phase, number>>;
+  dt: Partial<Record<CorePhase, number>>;
   /** Heap at the end of the lookup when the browser exposes performance.memory (Chrome); otherwise null. */
   memory: MemorySample | null;
   /** performance.now() at the end of the content script's module evaluation (load cost), first row only. */
@@ -47,8 +50,8 @@ export class LookupTimer {
     return v;
   }
   get t(): Partial<Record<Phase, number>> { return { ...this.marks }; }
-  get dt(): Partial<Record<Phase, number>> {
-    const out: Partial<Record<Phase, number>> = {};
+  get dt(): Partial<Record<CorePhase, number>> {
+    const out: Partial<Record<CorePhase, number>> = {};
     let prev = 0;
     for (const p of PHASES) {
       const v = this.marks[p];
@@ -99,7 +102,7 @@ export interface MetricsSummary {
   /** Cumulative time from the trigger to each mark. */
   cumulative: Record<Phase, PhaseStat>;
   /** Time spent in each phase. */
-  perPhase: Record<Phase, PhaseStat>;
+  perPhase: Record<CorePhase, PhaseStat>;
   heap: { n: number; p50: number | null; p95: number | null };
 }
 
@@ -115,11 +118,12 @@ const stat = (values: number[]): PhaseStat => ({ n: values.length, p50: percenti
 
 export function summarize(rows: MetricsRow[]): MetricsSummary {
   const cumulative = {} as Record<Phase, PhaseStat>;
-  const perPhase = {} as Record<Phase, PhaseStat>;
+  const perPhase = {} as Record<CorePhase, PhaseStat>;
   for (const p of PHASES) {
     cumulative[p] = stat(rows.map((r) => r.t[p]).filter((v): v is number => typeof v === 'number'));
     perPhase[p] = stat(rows.map((r) => r.dt[p]).filter((v): v is number => typeof v === 'number'));
   }
+  for (const p of ASYNC_PHASES) cumulative[p] = stat(rows.map((r) => r.t[p]).filter((v): v is number => typeof v === 'number'));
   const heap = rows.map((r) => r.memory?.usedJSHeapSize).filter((v): v is number => typeof v === 'number');
   return {
     count: rows.length,

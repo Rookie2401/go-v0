@@ -34,7 +34,7 @@ export type DocumentMeta = Omit<PrivateDocument, 'body'>;
 export interface RepositoryApi {
   /** The bearer token in use (set by `createSession`, or given at creation). */
   token: string | undefined;
-  health(): Promise<ApiResult<{ ok: true; service: string; version: number }>>;
+  health(): Promise<ApiResult<{ ok: true; service: string; version: number; contractVersion?: number }>>;
   createAccount(input: { email: string; password: string; displayName?: string }): Promise<ApiResult<{ learnerId: string; accountId: string }>>;
   createSession(input: { email: string; password: string; deviceId: string; platform?: string }): Promise<ApiResult<{ token: string; learnerId: string; expiresAt: string }>>;
   deleteSession(): Promise<ApiResult<null>>;

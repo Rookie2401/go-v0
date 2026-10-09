@@ -265,7 +265,7 @@ async function currentAccount(ctx: Ctx): Promise<Account> {
 const routes: Route[] = [];
 const route = (method: string, path: string, auth: boolean, run: Handler): void => { routes.push({ method, path: path.split('/').filter(Boolean), auth, run }); };
 
-route('GET', '/health', false, async () => respond(200, { ok: true, service: 'repository', version: SERVICE_VERSION }));
+route('GET', '/health', false, async () => respond(200, { ok: true, service: 'repository', version: SERVICE_VERSION, contractVersion: CONTRACT_VERSION }));
 
 // ── accounts and sessions ──
 

@@ -6,27 +6,37 @@
 <title>GoLearn</title>
 <style>
   :root { color-scheme: light dark; }
-  body { margin: 0; width: 320px; font: 13px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  body { margin: 0; width: 340px; font: 13px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
   main { padding: 12px 14px; }
   h1 { font-size: 15px; margin: 0 0 2px; }
   .sub { opacity: .7; font-size: 12px; margin-bottom: 10px; }
   .row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
   .row label { flex: 1; }
+  .row .grow { flex: 1; }
   select, button { font: inherit; }
   button { padding: 3px 9px; }
   .count { font-variant-numeric: tabular-nums; font-weight: 600; }
   .err { color: #b42318; margin: 6px 0; min-height: 1.2em; }
   .hint { opacity: .75; font-size: 12px; margin: 6px 0; }
+  .status-line { margin: 4px 0; }
+  .status-line.warn { color: #b42318; }
+  .muted { opacity: .75; font-size: 12px; }
   textarea { width: 100%; height: 130px; margin-top: 8px; font: 11px/1.3 ui-monospace, Consolas, monospace; box-sizing: border-box; }
   textarea[hidden] { display: none; }
   .btns { display: flex; flex-wrap: wrap; gap: 6px; }
   .proto { margin-top: 10px; font-size: 11px; opacity: .65; }
+  hr { border: 0; border-top: 1px solid rgba(128,128,128,.35); margin: 10px 0; }
 </style>
 </head>
 <body>
 <main id="golearn-popup">
   <h1>GoLearn</h1>
-  <div class="sub">Reader extension prototype</div>
+  <div class="sub">Reading acquisition</div>
+
+  <div class="row">
+    <span class="grow status-line" id="connection" role="status" aria-live="polite">Checking the connection…</span>
+    <button type="button" id="open-setup">Open GoLearn setup</button>
+  </div>
 
   <div class="row">
     <label for="enabled">GoLearn on for this tab</label>
@@ -34,19 +44,13 @@
   </div>
   <div class="err" id="error" role="status" aria-live="polite"></div>
 
-  <div class="row">
-    <label for="language">Language</label>
-    <select id="language">
-      <option value="sq" selected>Albanian</option>
-      <option value="de" disabled>German - not in this prototype</option>
-      <option value="es" disabled>Spanish - not in this prototype</option>
-      <option value="hi" disabled>Hindi - not in this prototype</option>
-      <option value="th" disabled>Thai - not in this prototype</option>
-      <option value="nb" disabled>Norwegian - not in this prototype</option>
-    </select>
-  </div>
+  <div class="row"><span>Language</span><span class="grow" id="language">Albanian</span></div>
 
-  <div class="row"><span>Encounters recorded</span><span class="count" id="count">0</span></div>
+  <div class="status-line" id="sync" role="status" aria-live="polite"></div>
+  <div class="row"><button type="button" id="sync-now">Sync now</button><span class="muted" id="sync-detail"></span></div>
+
+  <hr>
+  <div class="row"><span>Encounters on this device</span><span class="count" id="count">0</span></div>
   <div class="hint">Select a word, then press Alt+Shift+G, or use the right-click item "Look up with GoLearn". With GoLearn on, selecting a word looks it up.</div>
 
   <div class="btns">
@@ -55,7 +59,7 @@
     <button type="button" id="delete-all">Delete all rows</button>
   </div>
   <textarea id="output" hidden readonly aria-label="Exported rows"></textarea>
-  <div class="proto">Prototype. Word list only; nothing leaves this device. The stored rows hold hashes and item ids, not page text.</div>
+  <div class="proto">The stored rows hold hashes and item ids, not page text. Signed in, they are sent to your GoLearn service by the extension's background worker; the web page never sees them.</div>
 </main>
 <script src="popup.js"></script>
 </body>

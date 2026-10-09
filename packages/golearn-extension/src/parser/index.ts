@@ -7,9 +7,10 @@
  * the selected tokens are found by offsets. With no context the selection alone is tokenized and the card says so.
  */
 import { sqAdapter } from '../../../../src/adapters/sq';
-import type { AnalysisCandidate, AnalyzedToken, PhraseCandidate, RawToken } from '../../../../src/core';
+import type { AnalysisCandidate, AnalyzedToken, PatternCandidate, PhraseCandidate, RawToken } from '../../../../src/core';
+import { unitIds } from '../../../repository-contract/src';
 import { hasLatinLetter, sentenceKeyOf, fnv1a64 } from '../text';
-import type { Alternative, CardModel, CardProvenance, ContextReport, EvidenceLabel, LabelledField, PhraseNote, WordLine } from './cardModel';
+import type { Alternative, CardModel, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
 
 export * from './cardModel';
 
@@ -19,6 +20,7 @@ export const PACK_ID = `pack:sq:${sqAdapter.version}`;
 export const LEMMA_MIN_CONFIDENCE = 0.5;
 const MAX_WORD_LINES = 12;
 const MAX_ITEM_IDS = 12;
+const MAX_SENTENCE_WORDS = 60;
 
 export interface ParseContext {
   kind: 'sentence' | 'fragment' | 'none';
@@ -37,13 +39,15 @@ const LABELS: Record<LabelledField, EvidenceLabel> = {
   surface: 'fact', context: 'fact',
   lemma: 'analysis', pos: 'analysis', morphology: 'analysis', gloss: 'analysis', confidence: 'analysis', provenance: 'analysis',
   phrases: 'analysis', words: 'analysis', notes: 'analysis', basis: 'analysis', pronunciation: 'analysis',
+  features: 'analysis', constructions: 'analysis', syntax: 'analysis', sentenceWords: 'analysis', learner: 'inference',
 };
 
 const RANK: Record<CardProvenance, number> = { none: 0, rule: 1, lexicon: 2 };
 
 const LIMITS = [
-  'Word list only: there is no dictionary in this prototype.',
+  'Meanings come from the word list and, when the dictionary pack can be reached, from its Wiktionary-derived dictionary. Neither has been checked by a native speaker.',
   'The word list and the rules are machine-drafted; no native speaker has checked them.',
+  'There is no machine translation: the sentence list is word by word, from the word list.',
 ];
 
 export function parseSelection(input: ParseInput): CardModel {
@@ -89,6 +93,7 @@ export function parseSelection(input: ParseInput): CardModel {
     languageId: PARSER_LANGUAGE, packId: PACK_ID, analyzerId: analyzerIdOf(analyses),
     surface, phrases: [] as PhraseNote[], words: [] as WordLine[], alternatives: [] as Alternative[], basis: [] as string[],
     pronunciation: [] as string[], unconfirmed: false, labels: LABELS, limits: LIMITS, context, tokenCount: selected.length,
+    features: [] as FeatureItem[], constructions: [] as ConstructionNote[], syntaxNotes: [] as string[], sentenceWords: [] as SentenceWord[], unitIds: [] as string[],
   };
 
   if (!selected.length) {
@@ -110,6 +115,10 @@ export function parseSelection(input: ParseInput): CardModel {
   let lemma: string | undefined; let pos: string | undefined; let gloss: string | undefined; let morphology: string | undefined;
   let confidence = 0; let provenance: CardProvenance = 'none'; let source; let unconfirmed = false;
   const basis: string[] = []; let pronunciation: string[] = []; const alternatives: Alternative[] = [];
+  let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = [];
+  const constructions: ConstructionNote[] = patternsFor(tokens, analyses, selected).map((p) => ({
+    id: p.key, unitId: unitIds.syntactic(PARSER_LANGUAGE, p.key), title: p.title, explanation: p.explanation, confidence: clamp01(p.confidence), source: 'pattern' as const,
+  }));
 
   if (selected.length === 1) {
     const i = selected[0];
@@ -123,6 +132,11 @@ export function parseSelection(input: ParseInput): CardModel {
       provenance = provenanceOf(c);
       unconfirmed = !!c.unconfirmed;
       source = sourceOf(c);
+      features = Object.entries(c.morph ?? {}).filter(([, v]) => typeof v === 'string' && v).map(([key, value]) => ({ key, value }));
+      role = typeof c.role === 'string' && c.role ? c.role : undefined;
+      if (c.unit && c.unit.pieces.length > 1) syntaxNotes.push(`Part of the unit “${c.unit.display}” (${c.unit.role}).`);
+      for (const part of c.parts ?? []) syntaxNotes.push(`${part.text}: ${[part.lemma && part.lemma !== part.text ? `from ${part.lemma}` : '', part.role ?? part.pos ?? ''].filter(Boolean).join(', ') || 'part of the word'}`);
+      for (const f of formConstructions(c)) if (!constructions.some((x) => x.id === f.id)) constructions.push(f);
       for (const key of ['rule', 'context'] as const) { const v = c.notes?.[key]; if (typeof v === 'string' && v) basis.push(v); }
       if (c.unconfirmed) notes.push('Not in the word list: the lemma is a guess from the ending and no meaning is given.');
       if (typeof c.notes?.disputed === 'string') notes.push(`Sources disagree: ${c.notes.disputed}`);
@@ -157,12 +171,24 @@ export function parseSelection(input: ParseInput): CardModel {
   }
 
   const itemIds = itemIdsFor(selected, tokens, best, phrases, selected.length === 1);
+  const single = selected.length === 1;
+  const formUnit = single ? formId(tokens[selected[0]].surface) : undefined;
+  const unitIdsToAsk = [...new Set([...itemIds, ...(formUnit ? [formUnit] : []), ...constructions.map((x) => x.unitId)])].slice(0, 24);
+  const sentenceWords: SentenceWord[] = [];
+  if (kind !== 'none') {
+    tokens.forEach((t, i) => {
+      if (!t.isWord || sentenceWords.length >= MAX_SENTENCE_WORDS) return;
+      const l = i === selected[0] || selected.includes(i) ? lines[selected.indexOf(i)] : lineOf(t, pick(analyses[i]));
+      sentenceWords.push({ surface: t.surface, lemma: l.lemma, pos: l.pos, gloss: l.gloss, confidence: l.confidence, selected: selected.includes(i) });
+    });
+  }
 
   return {
     ...base, lemma, pos, morphology, gloss, confidence, provenance, source, unconfirmed,
     phrases: phrases.map((p) => ({ display: p.display, kind: p.kind, gloss: p.gloss, confidence: clamp01(p.confidence) })),
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
     alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, itemIds,
+    features, constructions, role, syntaxNotes, sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
   };
 }
 
@@ -198,6 +224,53 @@ function lineOf(t: RawToken, c: AnalysisCandidate | undefined): WordLine {
     surface: t.surface, lemma: c?.lemma, pos: c?.pos, gloss: c && !c.unconfirmed ? c.gloss : undefined,
     confidence: c ? clamp01(c.confidence) : 0, provenance: c ? provenanceOf(c) : 'none',
   };
+}
+
+/** The analyser's patterns (constructions) that cover at least one selected word. */
+function patternsFor(tokens: RawToken[], analyses: AnalyzedToken[], selected: number[]): PatternCandidate[] {
+  try {
+    const set = new Set(selected);
+    return sqAdapter.detectPatterns(tokens, analyses).filter((p) => p.tokenIndexes.some((i) => set.has(i)));
+  } catch { return []; }
+}
+
+const FORM_CONSTRUCTIONS: Record<string, { title: string; explanation: string }> = {
+  'definite-accusative-singular': { title: 'Definite accusative singular', explanation: 'The ending marks a definite noun as the direct object.' },
+  'definite-nominative-singular': { title: 'Definite nominative singular', explanation: 'The ending marks a definite noun as the subject.' },
+  'definite-plural': { title: 'Definite plural', explanation: 'The plural form with “the” added at the end.' },
+};
+
+/** The feature structure as the Repository's resolver flattens it (same keys, same values, sorted), so ids agree. */
+function flatFeatures(morph: Record<string, unknown> | undefined): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const k of Object.keys(morph ?? {}).sort()) {
+    const v = (morph as Record<string, unknown>)[k];
+    if (typeof v === 'string' && v) out[k] = v;
+    else if (typeof v === 'number' || typeof v === 'boolean') out[k] = String(v);
+  }
+  return out;
+}
+
+/**
+ * Constructions the form's own features show. Only what the features state, nothing inferred. The unit id is the
+ * Repository's morphological-construction id (`morph:<lang>:<pos>:<feature key>`), the same id the linguistics
+ * resolver stores and GoPractice's grammar assessments name, so the learner model's grammar estimate for this
+ * construction reaches the card. The pack-level `id` (e.g. `definite-accusative-singular`) only selects an explanation.
+ */
+function formConstructions(c: AnalysisCandidate): ConstructionNote[] {
+  if (!c.pos || c.unconfirmed) return [];
+  const feats = flatFeatures(c.morph as Record<string, unknown> | undefined);
+  if (!Object.keys(feats).length) return [];
+  const unitId = unitIds.morph(PARSER_LANGUAGE, c.pos, unitIds.featureKey(feats));
+  const explained = c.pos === 'NOUN' && feats.Definite === 'Def'
+    ? (feats.Number === 'Plur' ? 'definite-plural' : feats.Number === 'Sing' && feats.Case === 'Acc' ? 'definite-accusative-singular' : feats.Number === 'Sing' && feats.Case === 'Nom' ? 'definite-nominative-singular' : undefined)
+    : undefined;
+  if (explained) {
+    const t = FORM_CONSTRUCTIONS[explained];
+    return [{ id: explained, unitId, title: t.title, explanation: t.explanation, confidence: clamp01(c.confidence), source: 'form' }];
+  }
+  const title = describe(c) ?? unitIds.featureKey(feats);
+  return [{ id: `form:${unitIds.featureKey(feats)}`, unitId, title, explanation: 'The form shows these features; the pack has no separate explanation for this combination.', confidence: clamp01(c.confidence), source: 'form' }];
 }
 
 function phrasesFor(tokens: RawToken[], analyses: AnalyzedToken[], selected: number[]): PhraseCandidate[] {

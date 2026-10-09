@@ -451,10 +451,15 @@ export class WebGenericAdapter implements ReaderAdapter {
       ro.observe(this.doc.documentElement);
     }
     const off = () => {
-      view.removeEventListener('resize', onResize);
-      view.removeEventListener('scroll', onScroll, { capture: true } as EventListenerOptions);
-      mo?.disconnect();
-      ro?.disconnect();
+      // a window being torn down (page unload, a test environment closing) may no longer be an EventTarget
+      try {
+        if (typeof view.removeEventListener === 'function') {
+          view.removeEventListener('resize', onResize);
+          view.removeEventListener('scroll', onScroll, { capture: true } as EventListenerOptions);
+        }
+      } catch { /* nothing left to unsubscribe from */ }
+      try { mo?.disconnect(); } catch { /* already gone */ }
+      try { ro?.disconnect(); } catch { /* already gone */ }
       if (timer !== undefined) { try { view.cancelAnimationFrame?.(timer); } catch { /* */ } clearTimeout(timer); timer = undefined; }
       this.cleanups.delete(off);
     };

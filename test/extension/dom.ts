@@ -9,6 +9,7 @@ import { createMemoryMetricsStore } from '../../packages/golearn-extension/src/m
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { sqAdapter } from '../../src/adapters/sq';
 import type { ReaderAdapter } from '../../packages/golearn-extension/src/contract/readerAdapter';
+import type { GoEvent } from '../../packages/repository-contract/src';
 
 export function setBody(html: string): void {
   document.body.innerHTML = html;
@@ -124,3 +125,6 @@ export function makeRig(over: Partial<ControllerDeps> & { adapters?: ReaderAdapt
 }
 
 export const flush = (ms = 0): Promise<void> => new Promise((r) => setTimeout(r, ms));
+
+/** The stored events of one kind (a lookup writes SelectionLookedUp and AnalysisShown; most tests count the lookups). */
+export const rowsOf = async (store: { list(): Promise<GoEvent[]> }, kind: string = 'SelectionLookedUp'): Promise<GoEvent[]> => (await store.list()).filter((e) => e.kind === kind);

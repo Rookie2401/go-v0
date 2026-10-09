@@ -25,10 +25,8 @@ const addEvent = async (word: string) => {
 };
 
 describe('action popup page', () => {
-  it('offers Albanian only; the other languages are listed as not in this prototype', () => {
-    const opts = [...document.querySelectorAll<HTMLOptionElement>('#language option')];
-    expect(opts.filter((o) => !o.disabled).map((o) => o.value)).toEqual(['sq']);
-    for (const o of opts.filter((x) => x.disabled)) expect(o.textContent).toMatch(/not in this prototype/);
+  it('is a page with a script and no inline script; the language is read from the enrolment, not chosen here', () => {
+    expect(document.querySelector('#language select, select#language')).toBeNull();
     expect(html).toContain('<script src="popup.js"></script>');
     expect(html).not.toMatch(/<script>[^<]/); // no inline script (extension pages forbid it)
   });

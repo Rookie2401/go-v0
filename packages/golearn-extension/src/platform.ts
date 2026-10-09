@@ -13,7 +13,10 @@ export interface ChromeEvent<F extends (...args: never[]) => unknown> {
   removeListener(cb: F): void;
 }
 
-export type MessageListener = (message: unknown, sender: { tab?: { id?: number }; frameId?: number }, sendResponse: (response?: unknown) => void) => boolean | void;
+/** What the browser tells a message listener about the sender. `id` is the sending extension; `url` the sending document. */
+export interface MessageSender { id?: string; url?: string; tab?: { id?: number }; frameId?: number }
+
+export type MessageListener = (message: unknown, sender: MessageSender, sendResponse: (response?: unknown) => void) => boolean | void;
 
 export interface TabInfo { id?: number; url?: string; title?: string }
 
@@ -22,14 +25,19 @@ export interface ScriptInjection {
   files?: string[];
 }
 
+export interface AlarmInfo { name: string; scheduledTime?: number; periodInMinutes?: number }
+
 export interface ChromeApi {
   storage: { local: StorageArea; session?: StorageArea };
   runtime: {
+    id?: string;
     lastError?: unknown;
     onMessage: ChromeEvent<MessageListener>;
     onInstalled?: ChromeEvent<() => void>;
+    onStartup?: ChromeEvent<() => void>;
     sendMessage(message: unknown): Promise<unknown>;
     getManifest?(): { version?: string };
+    openOptionsPage?(): Promise<void>;
   };
   tabs?: {
     query(q: { active?: boolean; currentWindow?: boolean }): Promise<TabInfo[]>;
@@ -49,6 +57,23 @@ export interface ChromeApi {
     setTitle(d: { tabId?: number; title: string }): Promise<void>;
     setBadgeBackgroundColor?(d: { tabId?: number; color: string }): Promise<void>;
   };
+  /** Only used by the background worker, and only if the manifest declares the "alarms" permission. */
+  alarms?: {
+    create(name: string, info: { periodInMinutes?: number; delayInMinutes?: number }): void | Promise<void>;
+    get?(name: string): Promise<AlarmInfo | undefined>;
+    clear?(name: string): Promise<boolean>;
+    onAlarm: ChromeEvent<(alarm: AlarmInfo) => void>;
+  };
+}
+
+/** The slice a content script gets: messaging only. A content script holds no storage, no token and no network. */
+export interface ContentChromeApi {
+  runtime: {
+    id?: string;
+    onMessage: ChromeEvent<MessageListener>;
+    sendMessage(message: unknown): Promise<unknown>;
+    getManifest?(): { version?: string };
+  };
 }
 
 /**
@@ -61,15 +86,45 @@ export function getChrome(): ChromeApi | undefined {
   return c && c.storage?.local && c.runtime?.onMessage ? (c as ChromeApi) : undefined;
 }
 
-/** Messages between the action popup, the background worker and the content script. */
+/** The messaging API for a content script, only when it is really there (same page-chrome rule as `getChrome`). */
+export function getContentChrome(): ContentChromeApi | undefined {
+  const c = (globalThis as { chrome?: Partial<ChromeApi> }).chrome;
+  return c && c.runtime?.onMessage && typeof c.runtime.sendMessage === 'function' ? ({ runtime: c.runtime } as ContentChromeApi) : undefined;
+}
+
+/** Messages between the action popup / setup page, the background worker and the content script. */
 export const MSG = {
+  // popup <-> background (the per-tab switch)
   setEnabled: 'golearn:set-enabled',
   getState: 'golearn:get-state',
+  // background -> content
   enable: 'golearn:enable',
   disable: 'golearn:disable',
   lookup: 'golearn:lookup',
   ping: 'golearn:ping',
+  // content -> background (also answered for extension pages where noted in background/router.ts)
+  record: 'golearn:record',
+  profile: 'golearn:profile',
+  gloss: 'golearn:gloss',
+  explain: 'golearn:explain',
+  pronounceInfo: 'golearn:pronounce-info',
+  correct: 'golearn:correct',
+  metrics: 'golearn:metrics',
+  status: 'golearn:status',
+  settings: 'golearn:settings',
+  // extension pages only (popup, setup page): the connection and its upkeep
+  serviceConfig: 'golearn:service-config',
+  connect: 'golearn:connect',
+  createAccount: 'golearn:create-account',
+  disconnect: 'golearn:disconnect',
+  syncNow: 'golearn:sync-now',
+  enrol: 'golearn:enrol',
+  refreshSession: 'golearn:session-refresh',
+  selectEnrolment: 'golearn:select-enrolment',
+  clearLocal: 'golearn:clear-local',
 } as const;
+
+export type MessageType = (typeof MSG)[keyof typeof MSG];
 
 export type LookupTrigger = 'selection' | 'command' | 'menu';
 

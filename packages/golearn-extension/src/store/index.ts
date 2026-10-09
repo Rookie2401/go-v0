@@ -143,6 +143,88 @@ export function buildSelectionEvent(b: BuildContext): GoEvent {
   };
 }
 
+// ───────────────────────────── the other events of a card ─────────────────────────────
+
+/** What every follow-up event of a card needs: the lookup context plus the id of the selection event it belongs to. */
+export interface InteractionContext extends BuildContext { selectionEventId?: string }
+
+function followUp<K extends GoEvent['kind']>(b: InteractionContext, kind: K, payload: Record<string, unknown>, dedupe?: string, extra: Partial<GoEvent> = {}): GoEvent {
+  const { card } = b;
+  const ctx = card.context;
+  const subject: GoEvent['subject'] = { itemIds: card.itemIds };
+  if (ctx.kind === 'sentence' && ctx.sentenceKey) subject.sentenceKey = ctx.sentenceKey;
+  if (b.source) subject.sourceRef = { kind: b.source.kind, title: b.source.title?.slice(0, 120), locator: b.source.locator };
+  return {
+    id: newEventId(b.now), v: CONTRACT_VERSION,
+    learnerId: b.identity.learnerId, enrolmentId: b.identity.enrolmentId, languageId: card.languageId, at: b.now.toISOString(),
+    producer: { app: 'golearn-ext', version: b.version, deviceId: b.identity.deviceId, surface: 'reading-card' },
+    kind, subject, payload,
+    ...(dedupe ? { dedupeKey: dedupe } : {}),
+    provenance: { packId: card.packId, analyzerId: card.analyzerId, confidence: card.confidence },
+    ...extra,
+  };
+}
+
+const contextKey = (card: CardModel): string => card.context.sentenceKey ?? card.context.fragmentKey ?? 'none';
+const itemKey = (card: CardModel): string => card.itemIds.join(',');
+
+/** Layer 1 was shown: the layers that were on the card when it opened. */
+export function buildAnalysisShownEvent(b: InteractionContext, layers: string[]): GoEvent {
+  return followUp(b, 'AnalysisShown', { layers }, `shown:${b.sessionId}:${itemKey(b.card)}:${contextKey(b.card)}`);
+}
+
+export type ExpandedLayer = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence';
+
+/** The assistance each layer stands for. Layer 2 explains the form (morphology), layer 3 shows the word in its phrases and relations (example), layer 4 explains the grammar, layer 5 is the English rescue (translation). */
+export const LAYER_ASSISTANCE: Record<ExpandedLayer, 'morphology' | 'example' | 'grammar' | 'translation'> = {
+  morphology: 'morphology', 'phrase-syntax': 'example', grammar: 'grammar', sentence: 'translation',
+};
+
+/** The learner opened a deeper layer. A second opening of the same layer on the same card is the same event (same dedupe key). */
+export function buildAssistanceEvent(b: InteractionContext, layer: ExpandedLayer, depth?: 'label' | 'brief' | 'explanatory'): GoEvent {
+  const assistance = LAYER_ASSISTANCE[layer];
+  const payload: Record<string, unknown> = { assistance, layer, ...(layer === 'grammar' && depth ? { depth } : {}) };
+  return followUp(b, 'AssistanceRequested', payload, `assist:${b.sessionId}:${assistance}:${layer}:${itemKey(b.card)}:${contextKey(b.card)}`);
+}
+
+/** A pronunciation was played: exposure to sound, never recognition. Every play is its own event. */
+export function buildPronunciationEvent(b: InteractionContext, p: { voice: 'synthetic' | 'recorded'; voiceId?: string; repeated: boolean }): GoEvent {
+  return followUp(b, 'PronunciationPlayed', { voice: p.voice, ...(p.voiceId ? { voiceId: p.voiceId } : {}), repeated: p.repeated }, undefined, { evidence: { quality: 'none', assisted: false } });
+}
+
+/** "Review this". */
+export function buildSavedEvent(b: InteractionContext): GoEvent {
+  return followUp(b, 'ItemMarked', { mark: 'saved' }, `mark:${b.sessionId}:saved:${itemKey(b.card)}`);
+}
+
+/** "This analysis is wrong": the correction references the selection event it corrects. The lemma id is a proposal. */
+export function buildCorrectionEvent(b: InteractionContext, c: { formId: string; correctedLexemeId?: string; reason?: string }): GoEvent {
+  const payload: Record<string, unknown> = { formId: c.formId, by: 'learner', ...(c.correctedLexemeId ? { correctedLexemeId: c.correctedLexemeId } : {}), ...(c.reason ? { reason: c.reason } : {}) };
+  return followUp(b, 'AnalysisCorrected', payload, undefined, b.selectionEventId ? { correctionOf: b.selectionEventId } : {});
+}
+
+/** A lookup in a language the reader has no analyser or pack for: only the lookup is recorded, with the surface when it is short. */
+export function buildNoPackEvent(b: { surface: string; languageId: string; readerId: string; identity: Identity; version: string; sessionId: string; now: Date; source?: SourceReference; direction?: string; reason: 'no-pack' | 'no-analyser' }): GoEvent {
+  const surface = b.surface.normalize('NFC').trim();
+  const short = wordCount(surface) <= MAX_STORED_SURFACE_WORDS && surface.length > 0;
+  const subject: GoEvent['subject'] = { itemIds: short ? [`form:${b.languageId}:${surface.toLowerCase()}`] : [] };
+  if (b.source) subject.sourceRef = { kind: b.source.kind, title: b.source.title?.slice(0, 120), locator: b.source.locator };
+  const payload: Record<string, unknown> = {
+    tokenCount: 0, contextKind: 'none', contextConfidence: 0, readerId: b.readerId, direction: b.direction ?? 'unknown',
+    helpShown: ['surface'], mode: b.reason,
+  };
+  if (short) payload.surface = surface; else payload.surfaceOmitted = true;
+  return {
+    id: newEventId(b.now), v: CONTRACT_VERSION, learnerId: b.identity.learnerId, enrolmentId: b.identity.enrolmentId, languageId: b.languageId, at: b.now.toISOString(),
+    producer: { app: 'golearn-ext', version: b.version, deviceId: b.identity.deviceId },
+    kind: 'SelectionLookedUp', subject, payload,
+    dedupeKey: `sel:${b.sessionId}:${b.reason}:${surface.toLowerCase()}`,
+  };
+}
+
+/** The placeholder identity a content script puts in its events; the background replaces it with the session's (or a local pseudonym). */
+export const PENDING_IDENTITY: Identity = { learnerId: 'pending', enrolmentId: 'pending', deviceId: 'pending' };
+
 /** The device id: random, created once, kept in storage. Falls back to a session-only id when storage fails. */
 export async function getDeviceId(area: StorageArea): Promise<string> {
   try {

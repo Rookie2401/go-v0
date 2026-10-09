@@ -8,7 +8,7 @@ import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { sqAdapter } from '../../src/adapters/sq';
 import { ids } from '../../src/core/ids';
 import { validateEvent } from '../../packages/repository-contract/src';
-import { flush, makeRig, selectAcross, selectText, setBody, stubLayout, textNodes, type Rig } from './dom';
+import { flush, makeRig, rowsOf, selectAcross, selectText, setBody, stubLayout, textNodes, type Rig } from './dom';
 
 const SENTENCE = 'Unë po lexoj një libër të bukur në shtëpinë time.';
 const PAGE = `<div id="content"><p id="p">${SENTENCE} Pastaj shkoj në punë.</p><p id="q">Tjetri fle.</p></div>`;
@@ -43,7 +43,7 @@ describe('the lookup flow', () => {
     expect(shown(rig)).toContain('shtëpi (NOUN)');
     expect(shown(rig)).toContain('Encounter recorded.');
 
-    const rows = await rig.store.list();
+    const rows = await rowsOf(rig.store);
     expect(rows).toHaveLength(1);
     expect(validateEvent(rows[0])).toEqual([]);
     expect(rows[0].subject.itemIds).toEqual(['lemma:sq:shtëpi:NOUN']);
@@ -74,7 +74,7 @@ describe('the lookup flow', () => {
     await rig.controller.lookup({ trigger: 'command' });
     const again = await rig.controller.lookup({ trigger: 'command' });
     expect(again).toMatchObject({ status: 'shown', recorded: 'duplicate' });
-    expect(await rig.store.count()).toBe(1);
+    expect((await rowsOf(rig.store)).length).toBe(1);
     expect(shown(rig)).toContain('already recorded');
   });
 
@@ -98,7 +98,7 @@ describe('failure paths: a one-line message, never an exception', () => {
     const quiet = await rig.controller.lookup({ trigger: 'selection' });
     expect(quiet).toMatchObject({ status: 'silent', reason: 'no-selection' });
     expect(hosts()).toHaveLength(0);
-    expect(await rig.store.count()).toBe(0);
+    expect((await rowsOf(rig.store)).length).toBe(0);
   });
 
   it('whitespace-only selection', async () => {
@@ -107,14 +107,14 @@ describe('failure paths: a one-line message, never an exception', () => {
     document.getSelection()!.addRange(r);
     const out = await rig.controller.lookup({ trigger: 'menu' });
     expect(out).toMatchObject({ status: 'message', reason: 'empty' });
-    expect(await rig.store.count()).toBe(0);
+    expect((await rowsOf(rig.store)).length).toBe(0);
   });
 
   it('a selection across paragraphs', async () => {
     selectAcross(textNodes(document.getElementById('p')!)[0], 3, textNodes(document.getElementById('q')!)[0], 4);
     expect(await rig.controller.lookup({ trigger: 'command' })).toMatchObject({ status: 'message', reason: 'multi-block', message: 'Select a word or phrase inside one paragraph.' });
     expect(await rig.controller.lookup({ trigger: 'selection' })).toMatchObject({ status: 'silent', reason: 'multi-block' });
-    expect(await rig.store.count()).toBe(0);
+    expect((await rowsOf(rig.store)).length).toBe(0);
   });
 
   it('too long a selection', async () => {
@@ -131,7 +131,7 @@ describe('failure paths: a one-line message, never an exception', () => {
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out).toMatchObject({ status: 'message', reason: 'unsupported' });
     expect(shown(r)).toMatch(/does not support this reader yet/);
-    expect(await r.store.count()).toBe(0);
+    expect((await rowsOf(r.store)).length).toBe(0);
     expect(await r.metrics.list()).toHaveLength(1);
     expect((await r.metrics.list())[0]).toMatchObject({ outcome: 'failed', failure: 'unsupported' });
     r.controller.dispose();
@@ -148,7 +148,7 @@ describe('failure paths: a one-line message, never an exception', () => {
     expect(out.card.context).toMatchObject({ kind: 'none', confidence: 0 });
     expect(out.card.context.reason).toMatch(/context extraction failed/);
     expect(out.card.notes.join(' ')).toMatch(/No sentence context/);
-    const row = (await r.store.list())[0];
+    const row = (await rowsOf(r.store))[0];
     expect(row.subject.sentenceKey).toBeUndefined();
     expect(row.payload.contextKind).toBe('none');
     r.controller.dispose();
@@ -167,7 +167,7 @@ describe('failure paths: a one-line message, never an exception', () => {
     expect(out.card.context.sentenceKey).toBeUndefined();
     expect(out.card.lemma).toBe('libër');
     expect(out.card.notes.join(' ')).toMatch(/fragment/);
-    const row = (await r.store.list())[0];
+    const row = (await rowsOf(r.store))[0];
     expect(row.payload.contextKind).toBe('fragment');
     expect(row.subject.sentenceKey).toBeUndefined();
     r.controller.dispose();
@@ -215,7 +215,7 @@ describe('failure paths: a one-line message, never an exception', () => {
     selectText(document.getElementById('p')!, 'libër');
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out).toMatchObject({ status: 'message', reason: 'parser-error', message: 'GoLearn could not analyse that selection.' });
-    expect(await r.store.count()).toBe(0);
+    expect((await rowsOf(r.store)).length).toBe(0);
     r.controller.dispose();
 
     const bad = makeRig({ ui: { ...makeRig().ui, show: () => { throw new Error('ui exploded'); } } });
@@ -243,7 +243,7 @@ describe('rapid selections', () => {
     expect(outcomes.filter((o) => o.status === 'shown')).toHaveLength(1);
     expect(outcomes.filter((o) => o.status === 'superseded')).toHaveLength(9);
     expect(hosts()).toHaveLength(1);
-    expect(await rig.store.count()).toBe(1);
+    expect((await rowsOf(rig.store)).length).toBe(1);
     expect(await rig.metrics.list()).toHaveLength(1);
     expect(shown(rig)).toContain('po');
   });
@@ -263,8 +263,8 @@ describe('rapid selections', () => {
     await flush(20);
     expect(lookup).toHaveBeenCalledTimes(1);
     expect(hosts()).toHaveLength(1);
-    expect(await rig.store.count()).toBe(1);
-    expect((await rig.store.list())[0].payload.surface).toBe('po');
+    expect((await rowsOf(rig.store)).length).toBe(1);
+    expect((await rowsOf(rig.store))[0].payload.surface).toBe('po');
   });
 
   it('leaves no listener behind after disable and dispose, even after many lookups', async () => {
@@ -368,7 +368,7 @@ describe('"GoLearn on" for a tab', () => {
     vi.useRealTimers();
     await flush(20);
     expect(hosts()).toHaveLength(1);
-    expect(await rig.store.count()).toBe(1);
+    expect((await rowsOf(rig.store)).length).toBe(1);
   });
 
   it('a mouse-up inside the card does not trigger another lookup', async () => {

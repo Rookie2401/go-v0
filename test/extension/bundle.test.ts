@@ -1,59 +1,104 @@
 // @vitest-environment jsdom
 /**
- * Smoke test of the BUILT files (run `npm run ext:build` first; skipped when dist/ is absent). The content script is
- * evaluated as a classic script in jsdom, the way chrome.scripting.executeScript runs it, and made to do a real lookup.
+ * Smoke test of the BUILT files (run `npm run ext:build` first; skipped when dist/ is absent). The scripts are
+ * evaluated as classic scripts in jsdom, the way the browser runs them: the background worker first, then the content
+ * script, which is made to do a real lookup whose events the background records.
+ *
+ * The security properties of the bundles are checked on the text of the files:
+ *   content.js    no network call of any kind, no storage, no token key, no service address
+ *   popup.js      no network call
+ *   background.js the only file with a network call (the API client and the dictionary fetch), no eval, no URL
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { createChromeFake, emitter } from './chromeFake';
+import { createChromeFake } from './chromeFake';
 import { flush, selectText, setBody, stubLayout } from './dom';
-import { MSG, type MessageListener } from '../../packages/golearn-extension/src/platform';
+import { MSG } from '../../packages/golearn-extension/src/platform';
 
 const dist = path.resolve(__dirname, '../../packages/golearn-extension/dist');
-const have = fs.existsSync(path.join(dist, 'content.js'));
+const have = fs.existsSync(path.join(dist, 'content.js')) && fs.existsSync(path.join(dist, 'background.js'));
 const read = (f: string): string => fs.readFileSync(path.join(dist, f), 'utf8');
 
 describe.skipIf(!have)('the built extension', () => {
   it('has the files the manifest names, and the manifest copied is the source manifest', () => {
     const m = JSON.parse(read('manifest.json'));
-    expect(m.permissions).toEqual(['activeTab', 'scripting', 'storage', 'contextMenus']);
+    expect(m.permissions).toEqual(['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms']);
+    expect(m.host_permissions).toBeUndefined();
+    expect(m.options_page).toBe('app/index.html');
     expect(fs.existsSync(path.join(dist, m.background.service_worker))).toBe(true);
     expect(fs.existsSync(path.join(dist, m.action.default_popup))).toBe(true);
     expect(fs.existsSync(path.join(dist, 'content.js'))).toBe(true);
     expect(fs.existsSync(path.join(dist, 'action/popup.js'))).toBe(true);
+    expect(JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../packages/golearn-extension/manifest.json'), 'utf8'))).toEqual(m);
+    // the setup page is built by its own config (packages/golearn-extension/app); when it has been built it is where the manifest says
+    if (fs.existsSync(path.join(dist, 'app'))) expect(fs.existsSync(path.join(dist, m.options_page))).toBe(true);
   });
 
-  it('the scripts are self-contained classic scripts: no module syntax, no eval, nothing that can send data off the device', () => {
+  it('the scripts are self-contained classic scripts: no module syntax, no eval, no hard-wired URL', () => {
     for (const f of ['content.js', 'background.js', 'action/popup.js']) {
       const code = read(f);
       expect(code, f).not.toMatch(/^\s*(import|export)\s/m);
       expect(code, f).not.toMatch(/\beval\s*\(|new Function\s*\(/);
-      expect(code, f).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts|navigator\.connection/);
-      expect(code, f).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i); // no URL the code could call
+      expect(code, f).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i); // no address the code could call: the service is configured by the learner
     }
   });
 
-  it('the content script, evaluated as the browser would, installs once and performs a lookup end to end', async () => {
+  it('the content script and the popup contain no network call at all', () => {
+    for (const f of ['content.js', 'action/popup.js']) {
+      const code = read(f);
+      expect(code, f).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts|navigator\.connection/);
+    }
+  });
+
+  it('the content script holds no token key, no storage and no service address', () => {
+    const code = read('content.js');
+    expect(code).not.toMatch(/`golearn:(session|service)`|Authorization|Bearer|\bapiKey\b|\.password\b/);
+    expect(code).not.toMatch(/storage\.(local|session|sync)|chrome\.storage|\.storage\b/);
+    expect(code).not.toMatch(/createSession|syncPush|syncPull|deleteSession|\/sessions|\/sync\//);
+  });
+
+  it('the background is the only bundle that can reach a network, and it does so through one fetch', () => {
+    const code = read('background.js');
+    expect(code).not.toMatch(/XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts/);
+    expect(code).toMatch(/\bfetch\s*\(/);
+    expect(code).not.toMatch(/not-your-data|invalid-json|too-many-attempts/); // the service's request handler is not in the worker (replaced by a stub at build time)
+  });
+
+  it('background and content script, evaluated as the browser would, perform a lookup end to end: the background records it', async () => {
     const restore = stubLayout();
     setBody('<p id="p">Unë po lexoj një libër të bukur në shtëpinë time.</p>');
     const fake = createChromeFake();
-    const tabEvents = emitter<MessageListener>();
-    fake.tabListeners = tabEvents.listeners;
-    (globalThis as { chrome?: unknown }).chrome = { ...fake, runtime: { ...fake.runtime, onMessage: tabEvents } };
+    const g = globalThis as { chrome?: unknown };
+    g.chrome = fake; // the worker's global
+    (0, eval)(read('background.js'));
+    await flush(10);
+    expect(fake.events.onMessage.listeners.size).toBe(1);
+    expect(fake.alarmsCreated.map((a) => a.name)).toContain('golearn-sync');
+
+    const content = fake.contentChrome();
+    g.chrome = content; // the page's global: messaging only
     delete (globalThis as Record<string, unknown>).__goLearnExtension;
     (0, eval)(read('content.js'));
     await flush(20);
-    expect(tabEvents.listeners.size).toBe(1);
+    expect(fake.tabListeners.size).toBe(1);
     selectText(document.getElementById('p')!, 'shtëpinë');
     const reply = await fake.tabs!.sendMessage(7, { type: MSG.lookup, trigger: 'command' });
     expect(reply).toEqual({ ok: true, status: 'shown' });
     expect(document.querySelectorAll('[data-golearn-host]')).toHaveLength(1);
-    const rows = Object.keys(await fake.local.get(null)).filter((k) => k.startsWith('golearn:event:'));
-    expect(rows).toHaveLength(1);
+    const stored = await fake.local.get(null);
+    const kinds = Object.entries(stored).filter(([k]) => k.startsWith('golearn:event:')).map(([, v]) => (v as { kind: string }).kind).sort();
+    expect(kinds).toEqual(['AnalysisShown', 'SelectionLookedUp']);
+    expect(Object.keys(stored).filter((k) => k.startsWith('golearn:metric:'))).toHaveLength(1);
+    // not signed in: the events carry a local pseudonymous learner, never a placeholder and never an account
+    const sel = Object.values(stored).find((v) => (v as { kind?: string })?.kind === 'SelectionLookedUp') as { learnerId: string; enrolmentId: string };
+    expect(sel.learnerId).toMatch(/^local:dev-/);
+    expect(sel.enrolmentId).toBe('local-enrolment:sq');
+    expect(Object.keys(stored)).not.toContain('golearn:session');
+
     (0, eval)(read('content.js')); // a second injection
-    expect(tabEvents.listeners.size).toBe(1);
-    (globalThis as { chrome?: unknown }).chrome = undefined;
+    expect(fake.tabListeners.size).toBe(1);
+    g.chrome = undefined;
     document.querySelector('[data-golearn-host]')?.remove();
     restore();
   });

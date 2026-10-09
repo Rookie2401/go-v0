@@ -72,7 +72,8 @@
     "dexie": "^4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.3"
+    "react-router-dom": "^7.18.3",
+    "ts-fsrs": "^5.4.2"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",

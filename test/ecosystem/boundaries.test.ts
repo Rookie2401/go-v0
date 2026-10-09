@@ -53,7 +53,9 @@ describe('package boundaries', () => {
   });
 
   it('application packages import only the contract and the shared subsystems, never each other or the engine/store', () => {
-    const apps = new Set(['golearn-app', 'golearn-extension', 'goreview', 'gotell']);
+    const apps = new Set(['golearn-app', 'golearn-extension', 'goreview', 'gotell', 'gopractice']);
+    // the GoPractice shell hosts both workspaces; the workspaces never import each other
+    const hosts: Record<string, string[]> = { gopractice: ['goreview', 'gotell'] };
     // shared subsystems an application may use: the contract, GoListen, the language packs, the device-side sync
     // client and the typed API client of the service (never the service handler, store or engine)
     const shared = new Set(['repository-contract', 'golisten', 'language-packs', 'repository-sync']);
@@ -65,6 +67,7 @@ describe('package boundaries', () => {
         if (!target) continue;
         if (target === 'repository-service') { expect(/repository-service\/src\/api$/.test(i), `${f} may import only the api client of the service: ${i}`).toBe(true); continue; }
         if (target === pkgOf(f)) continue;
+        if (hosts[pkgOf(f)]?.includes(target)) continue;
         expect(shared.has(target), `${f} imports ${i}`).toBe(true);
       }
     }

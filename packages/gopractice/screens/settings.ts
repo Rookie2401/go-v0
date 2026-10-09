@@ -1,0 +1,112 @@
+/** #/settings — preferences, account, service address, synchronisation and diagnostics. */
+import { CONTRACT_VERSION } from '../../repository-contract/src';
+import type { AppContext } from '../context';
+import { validateServiceUrl } from '../config';
+import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
+import { prefsForm } from './prefs';
+import type { View } from './view';
+
+export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
+  const session = await ctx.state.getSession();
+  const id = await ctx.identity();
+  const prefsBox = h('section', { class: 'card', id: 'settings-prefs', 'aria-labelledby': 'prefs-h' }, h('h2', { id: 'prefs-h' }, 'Review preferences'));
+  const accountBox = h('section', { class: 'card', id: 'settings-account', 'aria-labelledby': 'acct-h' }, h('h2', { id: 'acct-h' }, 'Account'));
+  const serviceBox = h('section', { class: 'card', id: 'settings-service', 'aria-labelledby': 'svc-h' }, h('h2', { id: 'svc-h' }, 'Service address'));
+  const syncBox = h('section', { class: 'card', id: 'settings-sync', 'aria-labelledby': 'sync-h' }, h('h2', { id: 'sync-h' }, 'Synchronisation'));
+  const diagBox = h('section', { class: 'card', id: 'settings-diagnostics', 'aria-labelledby': 'diag-h' }, h('h2', { id: 'diag-h' }, 'Diagnostics'));
+  el.append(prefsBox, accountBox, serviceBox, syncBox, diagBox);
+
+  // ── preferences
+  if (id) {
+    const prefs = await ctx.state.getPrefs(id.learnerId, id.languageId);
+    prefsBox.append(p(`These apply to ${id.languageId}${id.varietyId ? ` (${id.varietyId})` : ''}, the active language.`, 'muted'), prefsForm(ctx, id.learnerId, prefs));
+  } else prefsBox.append(p('Sign in and choose a language to set preferences.', 'muted'));
+  const settings = await ctx.state.getSettings();
+  const consent = h('input', { type: 'checkbox', id: 'consent-remote-speech', name: 'remote-speech' }) as HTMLInputElement;
+  consent.checked = settings.remoteSpeechConsent;
+  const consentStatus = statusLine();
+  consent.addEventListener('change', () => { void ctx.setSettings({ remoteSpeechConsent: consent.checked }).then(() => setStatus(consentStatus, consent.checked ? 'Remote speech is allowed on this device.' : 'Remote speech is off.', 'ok')); });
+  prefsBox.append(h('label', { class: 'toggle' }, consent, h('span', {}, 'Allow my text to be sent to a remote speech service ', h('span', { class: 'help' }, '(only for listening practice; off by default; the browser\'s own voices do not need this)'))), consentStatus);
+
+  // ── account
+  const out = statusLine();
+  if (session) {
+    append(accountBox, [
+      h('p', { id: 'settings-email' }, `Signed in as ${session.email}`),
+      h('p', { class: 'muted' }, `Learner ${session.learnerId} · session until ${shortDate(session.expiresAt)}`),
+      h('div', { class: 'row' },
+        button('Sign out', () => void signOut(false), { id: 'sign-out', class: 'btn' }),
+        button('Sign out and remove this device\'s data', () => void signOut(true), { id: 'sign-out-forget', class: 'btn' })),
+      p('Signing out sends what is waiting when it can. Removing this device\'s data also deletes the local copy of your events and any events that could not be sent.', 'muted'),
+      out,
+    ]);
+  } else accountBox.append(p('Not signed in.', 'muted'), h('a', { class: 'btn primary', href: '#/signin' }, 'Sign in'));
+  async function signOut(forget: boolean): Promise<void> {
+    const r = await ctx.signOut({ forget });
+    if (r.pendingLeft && !forget) setStatus(out, `${r.pendingLeft} event(s) could not be sent and stay on this device under your account.`, 'info');
+    ctx.go('signin');
+  }
+
+  // ── service address
+  const url = h('input', { type: 'url', id: 'settings-svc-url', name: 'svc-url', autocomplete: 'off', spellcheck: 'false', value: await ctx.serviceUrl() }) as HTMLInputElement;
+  const svcStatus = statusLine();
+  append(serviceBox, [
+    field('Go Repository service', url, 'https, or http on localhost for development. Leave empty to use the default.'),
+    h('div', { class: 'row' }, button('Use this address', () => {
+      void (async () => {
+        const raw = url.value.trim();
+        if (raw) { const c = validateServiceUrl(raw); if (!c.ok) { setStatus(svcStatus, c.message, 'error'); return; } }
+        const r = await ctx.saveService(raw || undefined);
+        if (!r.ok) { setStatus(svcStatus, r.message, 'error'); return; }
+        url.value = await ctx.serviceUrl();
+        setStatus(svcStatus, `Service address set to ${url.value}. Sign in again if you changed service.`, 'ok');
+      })();
+    }, { id: 'settings-svc-save', class: 'btn' })), svcStatus,
+  ]);
+
+  // ── sync + diagnostics
+  async function paintSync(): Promise<void> {
+    const v = await ctx.syncView();
+    if (!view.alive()) return;
+    const s = v.status;
+    clear(syncBox);
+    append(syncBox, [
+      h('h2', {}, 'Synchronisation'),
+      h('dl', { class: 'facts', id: 'sync-facts' },
+        h('dt', {}, 'Connection'), h('dd', {}, s ? (s.online ? 'online' : 'offline') : 'not started'),
+        h('dt', {}, 'Waiting to send'), h('dd', { id: 'sync-pending' }, String(s?.pending ?? 0)),
+        h('dt', {}, 'Refused by the service'), h('dd', {}, String(s?.rejected ?? 0)),
+        h('dt', {}, 'Last send'), h('dd', {}, s?.lastPushAt ? shortDate(new Date(s.lastPushAt).toISOString()) : 'never'),
+        h('dt', {}, 'Last fetch'), h('dd', {}, s?.lastPullAt ? shortDate(new Date(s.lastPullAt).toISOString()) : 'never'),
+        h('dt', {}, 'Last error'), h('dd', { id: 'sync-error' }, s?.lastError ?? (v.authExpired ? 'sign-in expired' : 'none'))),
+      h('div', { class: 'row' }, button('Sync now', () => { void (async () => { await ctx.syncNow({ force: true }); await paintSync(); })(); }, { id: 'sync-now', class: 'btn' })),
+    ]);
+    clear(diagBox);
+    const d = await ctx.data();
+    const events = id ? await ctx.events(id.languageId) : [];
+    const prefs = id ? await ctx.state.getPrefs(id.learnerId, id.languageId) : undefined;
+    const scheduler = prefs ? ctx.engine.scheduler(prefs) : undefined;
+    const deck = id && prefs ? ctx.engine.foldDeck(events, id.languageId, prefs, ctx.deps.now().toISOString()) : [];
+    const rejected = d ? (await d.queue.rejected()).length : 0;
+    const rows: Array<[string, string]> = [
+      ['GoPractice', ctx.deps.appVersion],
+      ['Event contract', String(CONTRACT_VERSION)],
+      ['Scheduler', scheduler ? scheduler.algorithm : 'sign in to see'],
+      ['Scheduler parameters', scheduler ? scheduler.parametersVersion : 'sign in to see'],
+      ['Desired retention', prefs ? `${Math.round(prefs.desiredRetention * 100)}%` : '–'],
+      ['Device', d?.deviceId ?? '–'],
+      ['Learner', session?.learnerId ?? '–'],
+      ['Language', id ? `${id.languageId}${id.varietyId ? ` (${id.varietyId})` : ''}` : '–'],
+      ['Events in the local log', String(events.length)],
+      ['Deck items', String(deck.length)],
+      ['Waiting in the queue', String(s?.pending ?? 0)],
+      ['Refused rows kept', String(rejected)],
+      ['Quarantined pulled events', String(s?.quarantined ?? 0)],
+      ['Fetch cursor / server head', `${s?.cursor ?? 0} / ${s?.head ?? '–'}`],
+      ['Clock skew (device minus server)', s?.skewMs === undefined ? '–' : `${Math.round(s.skewMs)} ms`],
+    ];
+    append(diagBox, [h('h2', {}, 'Diagnostics'), h('dl', { class: 'facts', id: 'diagnostics' }, ...rows.flatMap(([k, val]) => [h('dt', {}, k), h('dd', {}, val)]))]);
+  }
+  await paintSync();
+  view.onDispose(ctx.onSync(() => { void paintSync(); }));
+}

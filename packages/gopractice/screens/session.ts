@@ -1,0 +1,526 @@
+/**
+ * The session interface: one exercise at a time, the answer, the feedback, and the summary.
+ *
+ * What is written, and when. An answer is graded at once for the feedback (`driver.preview`, which writes nothing) and
+ * COMMITTED (`driver.answer`: grade, rate, record through the device queue, then advance) only when the learner moves on,
+ * finishes, sets the item aside or leaves the screen. That is what lets "Challenge this answer" and "Report an analysis
+ * error" take effect before anything is claimed: events are never edited, so the claim is made once. A skipped item writes
+ * nothing. Finishing early writes nothing for the rest. If the queue refuses the event, the item stays on screen.
+ *
+ * What is never on screen before the response: every prompt field the exercise lists in `hiddenBeforeAnswer` (for audio
+ * items, the transcript), and the voice's descriptor, which may name a source file. The audio object is never rendered.
+ *
+ * Keys: Enter submits (and moves on after feedback), 1-4 are the self-grades Again/Hard/Good/Easy (or the first four
+ * choices in a choice question), Space plays and replays the audio, Esc skips the item.
+ */
+import type { Grading, Response } from '../../goreview/src/types';
+import type { PlaybackHandle } from '../../golisten/src/contracts';
+import type { AppContext } from '../context';
+import { explainFailure } from '../config';
+import { append, button, clear, field, h, langProps, p, setStatus, statusLine } from '../dom';
+import {
+  answerInTarget, DIMENSION_LABEL, duration, FAMILY_LABEL, forecastRecording, isAudioExercise, itemLabel, OUTCOME_LABEL, RATING_LABEL, unitLabel, withheldReason,
+} from '../format';
+import type { ActiveRun, ItemControl, Presented } from '../ports';
+import { fillItemHistory } from './history';
+import type { View } from './view';
+
+const GRADES = ['again', 'hard', 'good', 'easy'] as const;
+
+export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
+  const run = ctx.run.active;
+  if (!run) {
+    append(el, [p('No session is running.'), h('a', { class: 'btn primary', href: '#/review' }, 'Back to GoReview')]);
+    return;
+  }
+  const root = h('div', { id: 'session', class: 'session' });
+  el.append(root);
+  if (run.finish) { await renderSummary(root, ctx, run); return; }
+  await new Controller(root, ctx, run, view).start();
+}
+
+type Stage = 'loading' | 'prompt' | 'feedback' | 'summary';
+
+class Controller {
+  private stage: Stage = 'loading';
+  private presented: Presented | undefined;
+  /** The answer given and its preview, waiting to be committed. */
+  private given: { response: Response; grading: Grading; challenged: boolean } | undefined;
+  private playback: PlaybackHandle | undefined;
+  private hearings = 0;
+  private revealed = false;
+  private clockHandle: unknown;
+  private readonly tag: string;
+  private busy = false;
+  private readonly doc: Document;
+
+  constructor(private root: HTMLElement, private ctx: AppContext, private run: ActiveRun, view: View) {
+    this.doc = ctx.deps.doc;
+    this.tag = run.ctx.varietyId ?? run.ctx.languageId;
+    const onKey = (ev: KeyboardEvent): void => { void this.key(ev); };
+    this.doc.addEventListener('keydown', onKey);
+    view.onDispose(() => {
+      this.doc.removeEventListener('keydown', onKey);
+      this.stopClock();
+      this.disposeAudio();
+      // leaving the screen: an answered item is committed, the rest of the plan stays due
+      if (this.stage !== 'summary') void this.leave();
+    });
+  }
+
+  async start(): Promise<void> {
+    this.tick();
+    await this.showCurrent();
+  }
+
+  // ───────────── flow ─────────────
+
+  private async leave(): Promise<void> {
+    try { await this.commit(); } catch { /* the answer could not be recorded; it is not claimed */ }
+    if (!this.run.finish) {
+      await this.run.driver.finish().catch(() => undefined);
+      this.run.finish = 'early';
+      this.run.endedAt = this.ctx.deps.now().getTime();
+    }
+  }
+
+  private async showCurrent(): Promise<void> {
+    this.disposeAudio();
+    this.presented = await this.run.driver.current();
+    if (!this.presented) { await this.conclude('complete'); return; }
+    this.given = undefined;
+    this.revealed = false;
+    this.hearings = 0;
+    this.stage = 'prompt';
+    this.paintPrompt(this.presented);
+  }
+
+  private async finish(kind: 'complete' | 'early'): Promise<void> {
+    if (this.busy) return;
+    this.busy = true;
+    try { await this.conclude(kind); } finally { this.busy = false; }
+  }
+
+  /** Commits what was answered, ends the session and shows the summary. */
+  private async conclude(kind: 'complete' | 'early'): Promise<void> {
+    try { await this.commit(); } catch (e) { this.say(`That answer could not be recorded (${e instanceof Error ? e.message : String(e)}). It stays on screen; try again.`, 'error'); return; }
+    await this.run.driver.finish();
+    this.run.finish = kind;
+    this.run.endedAt = this.ctx.deps.now().getTime();
+    this.stage = 'summary';
+    this.stopClock();
+    this.disposeAudio();
+    clear(this.root);
+    await renderSummary(this.root, this.ctx, this.run);
+  }
+
+  /** Records the answered item (if any) through the driver. Throws when the queue refuses; nothing advanced then. */
+  private async commit(): Promise<void> {
+    const g = this.given;
+    const pr = this.presented;
+    if (!g || !pr) return;
+    const response: Response = g.challenged ? { ...g.response, challenged: true } : g.response;
+    const result = await this.run.driver.answer(response);
+    this.given = undefined;
+    this.run.results.push(result);
+    const why = withheldReason(result, pr.exercise);
+    if (why) this.run.withheld.push({ itemId: result.itemId, unitId: result.target.unitId, family: FAMILY_LABEL[result.family], reason: why });
+  }
+
+  private async next(): Promise<void> {
+    if (this.busy) return;
+    this.busy = true;
+    try {
+      try { await this.commit(); } catch (e) { this.say(`That answer could not be recorded (${e instanceof Error ? e.message : String(e)}). It stays on screen; try again.`, 'error'); return; }
+      await this.showCurrent();
+    } finally { this.busy = false; }
+  }
+
+  private async skip(): Promise<void> {
+    if (this.busy || this.stage !== 'prompt' || !this.presented) return;
+    this.busy = true;
+    try {
+      this.run.skipped.push(this.presented.planned.item.itemId);
+      await this.run.driver.skip('skipped by the learner');
+      await this.showCurrent();
+    } finally { this.busy = false; }
+  }
+
+  private async control(c: ItemControl): Promise<void> {
+    if (this.busy || !this.presented) return;
+    this.busy = true;
+    try {
+      const item = this.presented.planned.item;
+      try { await this.commit(); } catch (e) { this.say(`That answer could not be recorded (${e instanceof Error ? e.message : String(e)}).`, 'error'); return; }
+      const ectx = await this.ctx.eventContext();
+      const ev = ectx ? this.ctx.engine.controlEvent(ectx, item, c) : undefined;
+      if (ev) {
+        await this.ctx.record([ev]);
+        this.run.controls.push({ itemId: item.itemId, unitId: item.unitId, control: c.kind });
+      }
+      // the answered item (if any) already advanced the session; an unanswered one is passed over without a write
+      if (this.stage === 'prompt') await this.run.driver.skip(`set aside: ${c.kind}`);
+      await this.showCurrent();
+    } finally { this.busy = false; }
+  }
+
+  private async submit(response: Response): Promise<void> {
+    if (this.stage !== 'prompt' || !this.presented || this.busy) return;
+    this.busy = true;
+    try {
+      let grading: Grading;
+      try { grading = await this.run.driver.preview(response); } catch (e) {
+        this.say(`That answer could not be graded: ${e instanceof Error ? e.message : String(e)}`, 'error');
+        return;
+      }
+      this.given = { response, grading, challenged: false };
+      this.stage = 'feedback';
+      this.paintFeedback(this.presented);
+    } finally { this.busy = false; }
+  }
+
+  // ───────────── keyboard ─────────────
+
+  private async key(ev: KeyboardEvent): Promise<void> {
+    if (ev.defaultPrevented || ev.ctrlKey || ev.metaKey || ev.altKey) return;
+    const t = ev.target as HTMLElement | null;
+    const tag = t?.tagName ?? '';
+    const typing = tag === 'TEXTAREA' || tag === 'SELECT' || (tag === 'INPUT' && (t as HTMLInputElement).type !== 'checkbox' && (t as HTMLInputElement).type !== 'button') || !!t?.isContentEditable;
+    const onControl = tag === 'BUTTON' || tag === 'A' || tag === 'SUMMARY';
+    if (this.stage === 'prompt' && this.presented) {
+      if (ev.key === 'Escape') { ev.preventDefault(); await this.skip(); return; }
+      if (typing) return;
+      const mode = this.presented.exercise.responseMode;
+      if (/^[1-4]$/.test(ev.key)) {
+        ev.preventDefault();
+        const n = Number(ev.key) - 1;
+        if ((mode === 'self-graded' || mode === 'typed-or-self') && this.revealed) await this.submit(this.base({ selfGrade: GRADES[n] }));
+        else if (mode === 'self-graded' || mode === 'typed-or-self') this.say('Show the answer first (Enter), then grade yourself with 1 to 4.', 'info');
+        else if (mode === 'choice') { const o = this.presented.exercise.prompt.options?.[n]; if (o !== undefined) await this.submit(this.base({ choice: o })); }
+      } else if (ev.key === ' ' && this.presented.exercise.prompt.audio && !onControl) {
+        ev.preventDefault();
+        this.playOrReplay();
+      } else if (ev.key === 'Enter' && !onControl && mode === 'self-graded' && !this.revealed) {
+        ev.preventDefault();
+        this.reveal();
+      }
+      return;
+    }
+    if (this.stage === 'feedback' && ev.key === 'Enter' && !typing && !onControl) { ev.preventDefault(); await this.next(); }
+  }
+
+  // ───────────── prompt ─────────────
+
+  private say(text: string, kind: 'info' | 'ok' | 'error' = 'info'): void {
+    const s = this.root.querySelector<HTMLElement>('#session-status');
+    if (s) setStatus(s, text, kind);
+  }
+
+  private base(extra: Partial<Response>): Response {
+    const audio = !!this.presented?.exercise.prompt.audio;
+    return {
+      hinted: false, assistance: [], ...extra,
+      ...(audio ? { audioPlayed: this.hearings > 0, replays: Math.max(this.playback?.replays ?? 0, Math.max(0, this.hearings - 1)), transcriptShownBefore: false } : {}),
+    };
+  }
+
+  private header(pr: Presented, withSkip: boolean): HTMLElement {
+    return h('div', { class: 'progress row', id: 'session-header' },
+      h('span', { id: 'session-progress' }, `Item ${pr.index + 1} of ${pr.total}`),
+      h('span', { id: 'session-clock', class: 'muted' }, duration(this.ctx.deps.now().getTime() - this.run.startedAt)),
+      h('span', { class: 'tag' }, FAMILY_LABEL[pr.exercise.family]),
+      withSkip ? button('Skip (Esc)', () => void this.skip(), { id: 'skip', class: 'btn small' }) : null,
+      button('Finish early', () => void this.finish('early'), { id: 'finish-early', class: 'btn small' }));
+  }
+
+  private paintPrompt(pr: Presented): void {
+    const { exercise } = pr;
+    const hidden = new Set<string>(exercise.hiddenBeforeAnswer);
+    clear(this.root);
+    const concealed = exercise.hiddenBeforeAnswer.length > 0 || isAudioExercise(exercise);
+    const card = h('article', { class: 'exercise', 'data-family': exercise.family, 'data-mode': exercise.responseMode, ...(concealed ? {} : { 'data-item': pr.planned.item.itemId }) });
+    append(card, [h('p', { class: 'instruction strong', id: 'instruction' }, exercise.prompt.instruction)]);
+    const pp = exercise.prompt;
+    if (pp.stimulusText && !hidden.has('stimulusText')) card.append(h('p', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, pp.stimulusText));
+    if (pp.sentenceWithGap && !hidden.has('sentenceWithGap')) card.append(h('p', { ...langProps(this.tag), id: 'sentence-gap', class: 'target-text stimulus' }, pp.sentenceWithGap));
+    if (pp.meaning && !hidden.has('meaning')) card.append(h('p', { id: 'meaning', class: 'meaning' }, pp.meaning));
+    if (pp.audio) card.append(this.audioBlock(pp.audio.replaysAllowed));
+    card.append(this.responseArea(pr));
+    append(this.root, [this.header(pr, true), card, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
+    this.focusFirst();
+  }
+
+  private focusFirst(): void {
+    const target = this.root.querySelector<HTMLElement>('#answer-input, .choice, #reveal');
+    try { target?.focus({ preventScroll: true }); } catch { /* focus is a convenience */ }
+  }
+
+  private responseArea(pr: Presented): HTMLElement {
+    const { exercise } = pr;
+    const area = h('div', { class: 'response', id: 'response' });
+    const mode = exercise.responseMode;
+    const options = exercise.prompt.options ?? [];
+    const target = answerInTarget(exercise.family);
+    if (mode === 'choice') {
+      const optsInTarget = exercise.family === 'grammar-application' || exercise.family === 'sentence-completion';
+      area.append(h('div', { class: 'choices', role: 'group', 'aria-label': 'Choices' }, ...options.map((o, i) =>
+        button(`${i + 1}  ${o}`, () => void this.submit(this.base({ choice: o })), { class: 'choice btn', 'data-choice': o, 'data-index': i + 1, ...(optsInTarget ? { lang: this.tag, dir: String(langProps(this.tag).dir) } : {}) }))));
+    }
+    if (mode === 'typed' || mode === 'typed-or-self') {
+      const input = h('input', {
+        type: 'text', id: 'answer-input', name: 'answer', autocomplete: 'off', autocapitalize: 'off', spellcheck: 'false', 'aria-label': 'Your answer',
+        ...(target ? { lang: this.tag, dir: String(langProps(this.tag).dir) } : {}),
+      }) as HTMLInputElement;
+      input.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' && !ev.isComposing) { ev.preventDefault(); void this.submitTyped(input); }
+      });
+      area.append(field('Your answer', input), h('div', { class: 'row' },
+        button('Check (Enter)', () => void this.submitTyped(input), { id: 'answer-check', class: 'btn primary' }),
+        mode === 'typed-or-self' ? button('Show the answer instead', () => this.reveal(), { id: 'reveal', class: 'btn' }) : null));
+    }
+    if (mode === 'self-graded') {
+      area.append(h('div', { class: 'row' }, button('Show the answer (Enter)', () => this.reveal(), { id: 'reveal', class: 'btn primary' })));
+    }
+    if (mode === 'self-graded' || mode === 'typed-or-self') area.append(h('div', { id: 'self-grade', class: 'self-grade', hidden: true }));
+    return area;
+  }
+
+  private async submitTyped(input: HTMLInputElement): Promise<void> {
+    const typed = input.value.trim();
+    if (!typed) { this.say('Type an answer, or press Esc to skip.', 'info'); return; }
+    await this.submit(this.base({ typed }));
+  }
+
+  /** Self-graded items: the reference answer appears, then the four grades. */
+  private reveal(): void {
+    if (this.stage !== 'prompt' || !this.presented || this.revealed) return;
+    this.revealed = true;
+    const { exercise } = this.presented;
+    const area = this.root.querySelector<HTMLElement>('#self-grade');
+    if (!area) return;
+    area.removeAttribute('hidden');
+    const ref = exercise.answerKey.accepted[0] ?? '';
+    append(area, [
+      h('p', { class: 'reference' }, 'Answer: ', h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ref)),
+      h('p', { class: 'muted' }, 'How well did you know it?'),
+      h('div', { class: 'row grades' }, ...GRADES.map((g, i) => button(`${i + 1}  ${RATING_LABEL[i + 1]}`, () => void this.submit(this.base({ selfGrade: g })), { class: 'grade btn', 'data-grade': g }))),
+    ]);
+    try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
+  }
+
+  // ───────────── audio ─────────────
+
+  private audioBlock(replaysAllowed: number): HTMLElement {
+    const box = h('div', { class: 'audio', id: 'audio', role: 'group', 'aria-label': 'Audio question' });
+    const count = h('span', { id: 'audio-count', class: 'muted', 'aria-live': 'polite' }, `Not played yet · ${replaysAllowed} replay(s) allowed`);
+    const play = button('Play (Space)', () => this.playOrReplay(), { id: 'audio-play', class: 'btn primary' });
+    const replay = button('Replay (Space)', () => this.playOrReplay(), { id: 'audio-replay', class: 'btn', hidden: true });
+    const failed = button('I could not hear it', () => void this.submit(this.base({ audioFailed: true })), { id: 'audio-failed', class: 'btn' });
+    box.append(h('div', { class: 'row' }, play, replay, count, failed));
+    return box;
+  }
+
+  /** First press plays, every later press replays. The playback handle is opened on the first press. */
+  private playOrReplay(): void {
+    const stimulus = this.presented?.exercise.prompt.audio;
+    if (!stimulus || this.stage !== 'prompt') return;
+    void (async () => {
+      const audio = await this.ctx.audio();
+      if (this.stage !== 'prompt') return;
+      try {
+        if (!this.playback) this.playback = audio?.playbackOf(stimulus);
+        if (!this.playback) throw new Error('no audio');
+        if (this.hearings === 0) this.playback.play(); else this.playback.replay();
+      } catch { this.say('Audio is not available here. You can choose "I could not hear it".', 'error'); return; }
+      this.hearings += 1;
+      const used = this.hearings - 1;
+      const c = this.root.querySelector<HTMLElement>('#audio-count');
+      if (c) c.textContent = `Played ${this.hearings} time${this.hearings === 1 ? '' : 's'} · replays ${used} of ${stimulus.replaysAllowed}${used > stimulus.replaysAllowed ? ' (extra replays are recorded as help)' : ''}`;
+      this.root.querySelector<HTMLElement>('#audio-replay')?.removeAttribute('hidden');
+      this.root.querySelector<HTMLElement>('#audio-play')?.setAttribute('hidden', '');
+    })();
+  }
+
+  private disposeAudio(): void {
+    try { this.playback?.dispose(); } catch { /* */ }
+    this.playback = undefined;
+  }
+
+  // ───────────── feedback ─────────────
+
+  private paintFeedback(pr: Presented): void {
+    const g = this.given!;
+    const { exercise } = pr;
+    const { response, grading } = g;
+    clear(this.root);
+    this.disposeAudio();
+    const fb = h('section', { id: 'feedback', class: 'feedback', 'data-outcome': grading.outcome, 'aria-live': 'polite' });
+    fb.append(h('h2', { id: 'outcome' }, response.audioFailed ? 'Not heard: nothing is claimed' : OUTCOME_LABEL[grading.outcome]));
+    const gaveText = response.typed ?? response.choice ?? (response.selfGrade ? `self-graded: ${response.selfGrade}` : undefined);
+    if (gaveText !== undefined) fb.append(h('p', {}, 'You: ', h('span', { ...(response.selfGrade || !answerInTarget(exercise.family) ? {} : langProps(this.tag)), id: 'given' }, gaveText)));
+    const ref = exercise.answerKey.accepted[0];
+    if (ref) {
+      const also = exercise.answerKey.accepted.slice(1);
+      fb.append(h('p', {}, 'Answer: ', h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'reference' }, ref), also.length ? h('span', { class: 'muted' }, ` (also accepted: ${also.join(', ')})`) : null));
+    }
+    fb.append(h('p', { id: 'explanation' }, grading.explanation));
+    const deeper = grading.deeper ?? exercise.answerKey.deeper;
+    if (deeper) fb.append(h('details', { id: 'more' }, h('summary', {}, 'More'), h('p', {}, deeper)));
+    if (isAudioExercise(exercise)) fb.append(this.revealAudio(pr));
+    fb.append(h('p', { id: 'recording', class: 'muted' }, forecastRecording(grading, g.challenged ? { ...response, challenged: true } : response, exercise)));
+    fb.append(h('div', { class: 'row' },
+      button('Next (Enter)', () => void this.next(), { id: 'next', class: 'btn primary' }),
+      button('Challenge this answer', () => this.challenge(), { id: 'challenge', class: 'btn' })), this.reportForm(pr));
+    append(this.root, [this.header(pr, false), fb, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, false)]);
+    try { this.root.querySelector<HTMLElement>('#next')?.focus({ preventScroll: true }); } catch { /* */ }
+  }
+
+  private revealAudio(pr: Presented): HTMLElement {
+    const { exercise } = pr;
+    const a = exercise.prompt.audio;
+    const box = h('div', { id: 'audio-reveal', class: 'audio-reveal' });
+    if (exercise.prompt.stimulusText) box.append(h('p', {}, 'What was said: ', h('span', { ...langProps(this.tag), id: 'transcript' }, exercise.prompt.stimulusText)));
+    if (a) box.append(h('p', { class: 'muted' }, `Voice: ${a.voice.label} (${a.voice.synthetic ? 'synthetic' : 'recorded'}). ${a.validity.eligibleForEvidence ? 'A reviewed recording: this counts as listening evidence.' : a.validity.reason}`));
+    return box;
+  }
+
+  /** Before the answer counts: the learner disputes the key. The result is kept, scheduled nowhere, and counts as no evidence. */
+  private challenge(): void {
+    const g = this.given;
+    if (!g || g.challenged || !this.presented) return;
+    g.challenged = true;
+    const rec = this.root.querySelector<HTMLElement>('#recording');
+    if (rec) rec.textContent = forecastRecording(g.grading, { ...g.response, challenged: true }, this.presented.exercise);
+    const btn = this.root.querySelector<HTMLButtonElement>('#challenge');
+    if (btn) btn.disabled = true;
+    this.say('Challenged. The answer stays in your history and is not counted as evidence or used to schedule the item.', 'ok');
+  }
+
+  private reportForm(pr: Presented): HTMLElement {
+    const reason = h('textarea', { id: 'report-reason', rows: 2, 'aria-label': 'What is wrong with the analysis?' }) as HTMLTextAreaElement;
+    const fix = h('input', { type: 'text', id: 'report-correction', autocomplete: 'off', spellcheck: 'false', placeholder: 'lemma:… or case=gen, number=pl' }) as HTMLInputElement;
+    const out = statusLine();
+    const send = button('Send the report', () => {
+      void (async () => {
+        const parsed = parseCorrection(fix.value);
+        if (!parsed) { setStatus(out, 'Say what the analysis should be: a lemma id (lemma:…) or features such as case=gen.', 'error'); return; }
+        const { api } = await this.ctx.api();
+        const formId = pr.exercise.builtFrom.facts.find((f) => f.startsWith('form:')) ?? pr.exercise.target.unitId;
+        try {
+          const r = await api.correct({ formId, ...parsed, ...(reason.value.trim() ? { reason: reason.value.trim() } : {}), enrolmentId: this.run.ctx.enrolmentId, languageId: this.run.ctx.languageId });
+          if (!r.ok) { setStatus(out, explainFailure(r), 'error'); return; }
+          setStatus(out, 'Reported. The correction is recorded and the analysis may be replaced; this answer will not count as evidence.', 'ok');
+          this.challenge();
+        } catch { setStatus(out, 'The service could not be reached. Try again when you are online.', 'error'); }
+      })();
+    }, { id: 'report-send', class: 'btn' });
+    return h('details', { id: 'report-error' }, h('summary', {}, 'Report an analysis error'),
+      p('If the word was analysed wrongly (a wrong lemma or wrong grammar), tell the Repository. It records a correction you made; it does not change your answer.'),
+      field('What is wrong?', reason), field('What it should be', fix, 'A lemma id (lemma:…) or features such as case=gen.'), h('div', { class: 'row' }, send), out);
+  }
+
+  // ───────────── per-item tools ─────────────
+
+  /** `concealed`: nothing that could name the item (its label, id, reasons) is rendered; used for audio items before the response. */
+  private itemTools(pr: Presented, concealed: boolean): HTMLElement {
+    const until = (days: number): string => new Date(this.ctx.deps.now().getTime() + days * 24 * 3600_000).toISOString();
+    const item = pr.planned.item;
+    const histBox = h('div', { id: 'item-history', class: 'item-history' });
+    return h('details', { id: 'item-tools', class: 'item-tools' }, h('summary', {}, 'This item'),
+      concealed ? null : h('p', { class: 'muted' }, `${unitLabel(item.unitId)} · ${DIMENSION_LABEL[item.dimension]}`),
+      !concealed && pr.planned.why.length ? h('ul', { class: 'reasons' }, ...pr.planned.why.map((w) => h('li', {}, w))) : null,
+      h('div', { class: 'row' },
+        button('Snooze a day', () => void this.control({ kind: 'snooze', until: until(1) }), { id: 'snooze-day', class: 'btn small' }),
+        button('Snooze a week', () => void this.control({ kind: 'snooze', until: until(7) }), { id: 'snooze-week', class: 'btn small' }),
+        button('Suspend', () => void this.control({ kind: 'suspend' }), { id: 'suspend', class: 'btn small' }),
+        button('Dismiss', () => void this.control({ kind: 'dismiss' }), { id: 'dismiss', class: 'btn small' }),
+        concealed ? null : button('Show history', () => { void fillItemHistory(this.ctx, histBox, item.itemId, this.tag); }, { id: 'show-history', class: 'btn small' })),
+      histBox);
+  }
+
+  // ───────────── clock ─────────────
+
+  private tick(): void {
+    const timers = this.ctx.deps.timers ?? { set: (fn: () => void, ms: number) => setTimeout(fn, ms), clear: (x: unknown) => clearTimeout(x as ReturnType<typeof setTimeout>) };
+    const loop = (): void => {
+      const c = this.root.querySelector<HTMLElement>('#session-clock');
+      if (c) c.textContent = duration(this.ctx.deps.now().getTime() - this.run.startedAt);
+      this.clockHandle = timers.set(loop, 1000);
+    };
+    this.clockHandle = timers.set(loop, 1000);
+  }
+
+  private stopClock(): void {
+    const timers = this.ctx.deps.timers ?? { clear: (x: unknown) => clearTimeout(x as ReturnType<typeof setTimeout>) };
+    if (this.clockHandle !== undefined) timers.clear(this.clockHandle);
+    this.clockHandle = undefined;
+  }
+}
+
+/** "lemma:sq:shtëpi:NOUN" or "case=gen, number=pl" → the fields of the correction route; undefined when neither is given. */
+export function parseCorrection(text: string): { lexemeId: string } | { features: Record<string, string> } | undefined {
+  const t = text.trim();
+  if (!t) return undefined;
+  if (t.startsWith('lemma:')) return { lexemeId: t };
+  const features: Record<string, string> = {};
+  for (const part of t.split(/[\s,;]+/).filter(Boolean)) {
+    const m = /^([A-Za-z][\w-]*)=(.+)$/.exec(part);
+    if (!m) return undefined;
+    features[m[1]] = m[2];
+  }
+  return Object.keys(features).length ? { features } : undefined;
+}
+
+// ───────────────────────────── summary ─────────────────────────────
+
+export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun): Promise<void> {
+  const results = run.results;
+  const planned = run.plan.items.length;
+  const answered = results.length;
+  const correct = results.filter((r) => r.grading.outcome === 'correct').length;
+  const unbuildable = run.driver.skips().filter((s) => s.kind === 'build-failed');
+  const left = Math.max(0, planned - answered - run.skipped.length - run.controls.length - unbuildable.length);
+  const elapsed = (run.endedAt ?? ctx.deps.now().getTime()) - run.startedAt;
+  const recorded = results.filter((r) => r.evidence);
+  const counting = recorded.filter((r) => (r.evidence?.evidence?.quality ?? 'none') !== 'none');
+
+  const byDim = new Map<string, { answered: number; correct: number; partial: number; incorrect: number; other: number }>();
+  for (const r of results) {
+    const key = DIMENSION_LABEL[r.target.dimension] ?? r.target.dimension;
+    const d = byDim.get(key) ?? { answered: 0, correct: 0, partial: 0, incorrect: 0, other: 0 };
+    d.answered += 1;
+    if (r.grading.outcome === 'correct') d.correct += 1;
+    else if (r.grading.outcome === 'partial') d.partial += 1;
+    else if (r.grading.outcome === 'incorrect') d.incorrect += 1;
+    else d.other += 1;
+    byDim.set(key, d);
+  }
+  const kinds = new Map<string, number>();
+  for (const r of recorded) kinds.set(r.evidence!.kind, (kinds.get(r.evidence!.kind) ?? 0) + 1);
+  const view = await ctx.syncView();
+
+  append(root, [
+    h('section', { id: 'summary', class: 'card summary' },
+      h('h2', {}, run.finish === 'early' ? 'Session ended early' : 'Session complete'),
+      h('dl', { class: 'facts' },
+        h('dt', {}, 'Answered'), h('dd', { id: 'sum-answered' }, `${answered} of ${planned} planned, ${correct} correct`),
+        h('dt', {}, 'Time'), h('dd', {}, duration(elapsed)),
+        h('dt', {}, 'Skipped'), h('dd', { id: 'sum-skipped' }, String(run.skipped.length)),
+        h('dt', {}, 'Set aside'), h('dd', { id: 'sum-controls' }, run.controls.length ? run.controls.map((c) => `${unitLabel(c.unitId)} (${c.control})`).join(', ') : 'none'),
+        h('dt', {}, 'Still due'), h('dd', { id: 'sum-left' }, `${left + run.skipped.length} item(s) were not answered; nothing was written for them, so they stay due.`)),
+      h('h3', {}, 'Results by dimension'),
+      answered ? h('table', { class: 'plain', id: 'sum-dimensions' },
+        h('thead', {}, h('tr', {}, h('th', {}, 'Dimension'), h('th', {}, 'Answered'), h('th', {}, 'Correct'), h('th', {}, 'Partly'), h('th', {}, 'Not quite'), h('th', {}, 'Not judged'))),
+        h('tbody', {}, ...[...byDim].map(([k, d]) => h('tr', {}, h('th', { scope: 'row' }, k), h('td', {}, String(d.answered)), h('td', {}, String(d.correct)), h('td', {}, String(d.partial)), h('td', {}, String(d.incorrect)), h('td', {}, String(d.other)))))) : p('No answers.', 'muted'),
+      p('Dimensions are kept apart: a pass in one says nothing about another.', 'muted'),
+      h('h3', {}, 'What was recorded'),
+      h('p', { id: 'sum-recorded' }, recorded.length
+        ? `${recorded.length} event(s) were written to your record (${[...kinds].map(([k, n]) => `${n} ${k}`).join(', ')}); ${counting.length} count as evidence.${run.addedCount ? ` Up to ${run.addedCount} new item(s) joined your deck as they were answered.` : ''}`
+        : 'Nothing was written as evidence.'),
+      h('h3', {}, 'What was withheld, and why'),
+      run.withheld.length ? h('ul', { id: 'sum-withheld' }, ...run.withheld.map((w) => h('li', {}, `${unitLabel(w.unitId)} (${w.family}): ${w.reason}.`))) : p('Nothing was withheld.', 'muted'),
+      unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, `Could not be asked: ${unbuildable.map((u) => `${itemLabel(u.itemId)} (${u.reason})`).join('; ')}.`) : null,
+      p(`${view.status?.pending ?? 0} event(s) wait to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'),
+      h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/review', id: 'back-to-review' }, 'Back to GoReview'))),
+  ]);
+}

@@ -1,0 +1,202 @@
+/**
+ * The GoPractice shell: sign-in, the one active language, the three workspaces (GoReview | GoTell | Settings), the sync
+ * indicator and the hash router. The shell holds no review or writing logic: GoReview and GoTell are separate packages
+ * rendered into the same main area. No streaks, no points, no badges.
+ *
+ * Routes:  #/review[/session | /history/<item> | /transfer]   #/tell   #/settings   #/signin
+ */
+import { append, clear, h, p } from './dom';
+import { createContext, type AppContext, type SyncView } from './context';
+import type { Deps } from './ports';
+import * as reviewScreen from './screens/review';
+import * as settingsScreen from './screens/settings';
+import * as signinScreen from './screens/signin';
+import * as tellScreen from './screens/tell';
+import type { View } from './screens/view';
+import { shortDate } from './dom';
+
+export interface RouteDef {
+  id: 'review' | 'tell' | 'settings' | 'signin';
+  title: string;
+  render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): void | Promise<void>;
+}
+
+export const ROUTES: readonly RouteDef[] = [
+  { id: 'review', title: 'GoReview', render: reviewScreen.render },
+  { id: 'tell', title: 'GoTell', render: tellScreen.render },
+  { id: 'settings', title: 'Settings', render: settingsScreen.render },
+  { id: 'signin', title: 'Sign in', render: signinScreen.render },
+];
+export const NAV = ROUTES.filter((r) => r.id !== 'signin');
+
+export interface ParsedRoute { id: RouteDef['id']; params: string[]; path: string }
+
+/** `#/review/history/card%3Ax` → { id: 'review', params: ['history', 'card%3Ax'] }; undefined for an unknown route. */
+export function parseHash(hash: string): ParsedRoute | undefined {
+  const m = /^#\/?([a-z-]*)(?:\/(.*))?$/.exec(hash);
+  if (!m) return undefined;
+  const def = ROUTES.find((r) => r.id === m[1]);
+  if (!def) return undefined;
+  const params = m[2] ? m[2].split('/').filter(Boolean) : [];
+  return { id: def.id, params, path: [def.id, ...params].join('/') };
+}
+
+export interface AppHandle {
+  ctx: AppContext;
+  /** The route currently shown, e.g. `review/session`. */
+  current(): string;
+  go(route: string): Promise<void>;
+  /** Resolves when the current screen has finished rendering. */
+  ready(): Promise<void>;
+  destroy(): void;
+}
+
+export function createApp(root: HTMLElement, deps: Deps): AppHandle {
+  const win = deps.win;
+  let seq = 0;
+  let route = '';
+  let renderDone: Promise<void> = Promise.resolve();
+  let disposers: Array<() => void> = [];
+  let destroyed = false;
+
+  const navEl = h('nav', { class: 'topnav', 'aria-label': 'GoPractice' });
+  const langWrap = h('div', { class: 'language' });
+  const syncEl = h('p', { id: 'sync-indicator', class: 'sync', role: 'status', 'aria-live': 'polite' });
+  const header = h('header', { class: 'topbar' }, h('span', { class: 'brand' }, 'GoPractice'), navEl, langWrap, syncEl);
+  const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
+  clear(root);
+  root.append(h('div', { class: 'shell' }, header, main));
+
+  const ctx = createContext(deps, { go: (r) => { void go(r); }, changed: () => { void refreshHeader(); } });
+
+  // ───────────── header ─────────────
+
+  function syncText(v: SyncView, signedIn: boolean): { text: string; kind: 'ok' | 'info' | 'error' } {
+    if (!signedIn) return { text: 'Not signed in', kind: 'info' };
+    if (v.authExpired) return { text: 'Sign in again to sync. Nothing on this device was lost.', kind: 'error' };
+    const s = v.status;
+    if (!s) return { text: 'Sync not started', kind: 'info' };
+    const waiting = s.pending ? `${s.pending} waiting` : 'nothing waiting';
+    if (!s.online) return { text: `Offline · ${waiting} on this device`, kind: 'info' };
+    if (s.lastError) return { text: `Sync problem: ${s.lastError} · ${waiting} · will retry`, kind: 'error' };
+    if (v.syncing) return { text: `Syncing · ${waiting}`, kind: 'info' };
+    const last = s.lastPullAt ?? s.lastPushAt;
+    return { text: `Online · ${waiting} · ${last ? `last sync ${shortDate(new Date(last).toISOString())}` : 'not synced yet'}`, kind: 'ok' };
+  }
+
+  function paintSync(v: SyncView, signedIn: boolean): void {
+    const t = syncText(v, signedIn);
+    syncEl.textContent = t.text;
+    syncEl.setAttribute('data-kind', t.kind);
+  }
+
+  async function refreshHeader(): Promise<void> {
+    if (destroyed) return;
+    const session = await ctx.state.getSession();
+    if (destroyed) return;
+    clear(navEl);
+    for (const r of NAV) {
+      const active = route === r.id || route.startsWith(`${r.id}/`);
+      navEl.append(h('a', { href: `#/${r.id}`, 'data-route': r.id, ...(active ? { 'aria-current': 'page' } : {}) }, r.title));
+    }
+    navEl.hidden = !session;
+    clear(langWrap);
+    if (session) {
+      const list = await ctx.enrolments();
+      const id = await ctx.identity();
+      if (destroyed) return;
+      if (list.length) {
+        const select = h('select', { id: 'language-select', name: 'language', 'aria-label': 'Language' },
+          ...list.map((e) => h('option', { value: e.enrolmentId, ...(id?.enrolmentId === e.enrolmentId ? { selected: true } : {}) }, `${e.languageId}${e.varietyId ? ` (${e.varietyId})` : ''}${e.teamId ? ` · ${e.teamId}` : ''}`))) as HTMLSelectElement;
+        select.value = id?.enrolmentId ?? list[0].enrolmentId;
+        select.addEventListener('change', () => { void switchLanguage(select.value); });
+        langWrap.append(h('label', { class: 'language-label' }, h('span', { class: 'sr' }, 'Language '), select));
+      }
+    }
+    paintSync(await ctx.syncView(), !!session);
+  }
+
+  async function switchLanguage(enrolmentId: string): Promise<void> {
+    const ok = await ctx.setLanguage(enrolmentId);
+    if (!ok) return;
+    // the deck of the other language is folded afresh from the same local log
+    const top = route.split('/')[0];
+    if (top === 'review' || top === 'tell') {
+      if (win.location.hash !== `#/${top}`) win.location.hash = `#/${top}`;
+      renderDone = show(top, []);
+      await renderDone;
+    } else await refreshHeader();
+  }
+
+  const offSync = ctx.onSync((v) => { void ctx.state.getSession().then((s) => { if (!destroyed) paintSync(v, !!s); }); });
+
+  // ───────────── routing ─────────────
+
+  async function show(id: RouteDef['id'], params: string[]): Promise<void> {
+    const my = ++seq;
+    for (const d of disposers) { try { d(); } catch { /* a screen's cleanup must not stop the next screen */ } }
+    disposers = [];
+    const session = await ctx.state.getSession();
+    let target: RouteDef['id'] = id;
+    let subs = params;
+    if (!session && target !== 'signin') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
+    if (my !== seq) return;
+    const def = ROUTES.find((r) => r.id === target)!;
+    route = [def.id, ...subs].join('/');
+    deps.doc.title = `GoPractice — ${def.title}`;
+    clear(main);
+    main.setAttribute('data-route', route);
+    const idn = await ctx.identity();
+    if (my !== seq) return;
+    if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
+    const body = h('div', { class: 'body' });
+    main.append(h('h1', {}, def.title), body);
+    const view: View = { alive: () => my === seq && !destroyed, onDispose: (fn) => { disposers.push(fn); } };
+    try { await def.render(body, ctx, view, subs); } catch (e) {
+      if (view.alive()) { clear(body); append(body, [p(`This screen could not be shown: ${e instanceof Error ? e.message : String(e)}`, 'error')]); }
+    }
+    if (!view.alive()) return;
+    await refreshHeader();
+    try { main.focus({ preventScroll: true }); } catch { /* focus is a convenience */ }
+  }
+
+  async function go(next: string): Promise<void> {
+    const parsed = parseHash(`#/${next.replace(/^#?\/?/, '')}`);
+    const target = parsed ?? { id: 'review' as const, params: [], path: 'review' };
+    const wanted = `#/${target.path}`;
+    if (win.location.hash !== wanted) win.location.hash = wanted;
+    if (route === target.path) return;
+    renderDone = show(target.id, target.params);
+    await renderDone;
+  }
+
+  const onHash = (): void => {
+    const r = parseHash(win.location.hash);
+    if (r && r.path !== route) renderDone = show(r.id, r.params);
+  };
+  win.addEventListener('hashchange', onHash);
+
+  renderDone = (async () => {
+    const initial = parseHash(win.location.hash);
+    const session = await ctx.state.getSession();
+    const first = initial ?? { id: (session ? 'review' : 'signin') as RouteDef['id'], params: [], path: session ? 'review' : 'signin' };
+    if (win.location.hash !== `#/${first.path}` && !initial) win.location.hash = `#/${first.path}`;
+    await show(first.id, first.params);
+  })();
+
+  return {
+    ctx,
+    current: () => route,
+    go,
+    ready: () => renderDone,
+    destroy() {
+      destroyed = true;
+      win.removeEventListener('hashchange', onHash);
+      offSync();
+      for (const d of disposers) { try { d(); } catch { /* */ } }
+      disposers = [];
+      ctx.destroy();
+      clear(root);
+    },
+  };
+}

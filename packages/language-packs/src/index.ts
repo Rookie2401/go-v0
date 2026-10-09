@@ -3,7 +3,7 @@
  * Imports: the repository contract, src/adapters/* (the analysers), src/dict/* (the sharded dictionary reader) and
  * src/core types. Never an application package. See README.md.
  */
-export { validateManifest, toPackInfo, levelOf, LEVEL_LABEL, KAIKKI_ATTRIBUTION, MIN_VALIDATION_CASES } from './manifest';
+export { validateManifest, toPackInfo, levelOf, validationOf, LEVEL_LABEL, KAIKKI_ATTRIBUTION, MIN_VALIDATION_CASES } from './manifest';
 export type {
   GrammarConstruction, GrammarFeature, PackLevel, PackManifest, PackVariety, ReviewStatus, ValidationCase,
 } from './manifest';

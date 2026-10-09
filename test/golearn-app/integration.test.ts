@@ -133,14 +133,20 @@ describe('the setup application with the real worker and the real service', () =
     para.dispatchEvent(new MouseEvent('dblclick', { bubbles: true }));
     await until(() => /recorded as a tutorial encounter/.test(q('#tutorial-feedback').textContent ?? ''), 8000);
     expect(document.querySelector('[data-golearn-host]')).toBeTruthy();
-    const logged = Object.entries(await area.get(null)).filter(([k]) => k.startsWith('golearn:event:')).map(([, v]) => v as { learnerId: string; enrolmentId: string; producer: Record<string, string>; kind: string });
+    const all = Object.entries(await area.get(null)).filter(([k]) => k.startsWith('golearn:event:')).map(([, v]) => v as { learnerId: string; enrolmentId: string; producer: Record<string, string>; kind: string; payload: Record<string, unknown> });
+    // the install earlier wrote a PackInstalled (the pack's level and how far it is validated); the orientation wrote one lookup
+    const installed = all.filter((e) => e.kind === 'PackInstalled');
+    expect(installed).toHaveLength(1);
+    expect(installed[0].payload).toMatchObject({ packId: 'pack:sq', level: 'installable', validation: 'unreviewed' });
+    expect(installed[0].producer).toMatchObject({ app: 'golearn-ext', surface: 'pack' });
+    const logged = all.filter((e) => e.kind === 'SelectionLookedUp');
     expect(logged).toHaveLength(1);
     expect(logged[0]).toMatchObject({ kind: 'SelectionLookedUp', learnerId: session.learnerId, enrolmentId: enrolment.enrolmentId });
     expect(logged[0].producer).toMatchObject({ app: 'golearn-ext', surface: 'tutorial' });
 
     // ── sync: the worker pushes it to the service
     await go('sync');
-    expect(q('#sync-facts').textContent).toMatch(/Waiting to send1/);
+    expect(q('#sync-facts').textContent).toMatch(/Waiting to send2/); // the PackInstalled and the orientation's lookup
     q('#sync-now').click();
     await until(() => /Synchronised|Sent|Nothing/.test(q('.screen .body > .status').textContent ?? ''), 10_000);
     const stored = await store.list({ learnerId: session.learnerId, kinds: ['SelectionLookedUp'] });

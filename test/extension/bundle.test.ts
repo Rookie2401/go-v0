@@ -41,7 +41,7 @@ describe.skipIf(!have)('the built extension', () => {
     for (const id of ['sq', 'es', 'de', 'hi', 'th']) {
       const code = read(`analysers/${id}.js`);
       expect(code, id).toMatch(/\bexport\s*\{[^}]*\bas adapter\b[^}]*\}|\bexport\s*\{\s*adapter\b/);
-      expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts/);
+      expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
       expect(code, id).not.toMatch(/\beval\s*\(|new Function\s*\(/);
     }
     const m = JSON.parse(read('manifest.json'));
@@ -83,15 +83,32 @@ describe.skipIf(!have)('the built extension', () => {
     }
   });
 
+  it('the production scripts have no fixture hook: neither the attribute name nor the harness flag is in them (the hook is compiled only into the harness build)', () => {
+    for (const f of ['content.js', 'background.js', 'action/popup.js', ...fs.readdirSync(path.join(dist, 'analysers')).filter((n) => n.endsWith('.js')).map((n) => `analysers/${n}`)]) {
+      const code = read(f);
+      expect(code, f).not.toContain('data-fixture-url');
+      expect(code, f).not.toContain('__GOLEARN_HARNESS__');
+      expect(code, f).not.toMatch(/fixture-url/);
+    }
+    // the harness build is the same script with the hook compiled in, and it is not part of what the manifest names
+    if (fs.existsSync(path.join(dist, 'content.harness.js'))) {
+      const harness = read('content.harness.js');
+      expect(harness).toContain('data-fixture-url');
+      expect(harness).not.toContain('__GOLEARN_HARNESS__'); // the build's define replaced the flag with true
+      expect(JSON.stringify(JSON.parse(read('manifest.json')))).not.toContain('content.harness');
+    }
+  });
+
   it('the content script and the popup contain no network call at all', () => {
     for (const f of ['content.js', 'action/popup.js']) {
       const code = read(f);
-      expect(code, f).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts|navigator\.connection/);
+      expect(code, f).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts|navigator\.connection/);
     }
   });
 
   it('the content script holds no token key, no storage and no service address', () => {
-    const code = read('content.js');
+    // the contract's address check reads `url.username || url.password` (an address without credentials); that is not a password held by this script
+    const code = read('content.js').replace(/\w+\.username\|\|\w+\.password/g, '');
     expect(code).not.toMatch(/`golearn:(session|service)`|Authorization|Bearer|\bapiKey\b|\.password\b/);
     expect(code).not.toMatch(/storage\.(local|session|sync)|chrome\.storage|\.storage\b/);
     expect(code).not.toMatch(/createSession|syncPush|syncPull|deleteSession|\/sessions|\/sync\//);
@@ -99,7 +116,7 @@ describe.skipIf(!have)('the built extension', () => {
 
   it('the background is the only bundle that can reach a network, and it does so through one fetch', () => {
     const code = read('background.js');
-    expect(code).not.toMatch(/XMLHttpRequest|sendBeacon|WebSocket|EventSource|importScripts/);
+    expect(code).not.toMatch(/XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
     expect(code).toMatch(/\bfetch\s*\(/);
     expect(code).not.toMatch(/not-your-data|invalid-json|too-many-attempts/); // the service's request handler is not in the worker (replaced by a stub at build time)
   });

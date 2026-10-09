@@ -72,7 +72,7 @@ export function estimateSuitability(inp: SuitabilityInputs): SuitabilityEstimate
   for (const id of all) {
     const u = inp.units.get(id);
     if (!u) coverageGaps.push(`${id}: not in the linguistic store`);
-    else if (u.status === 'provisional' || u.status === 'conflicted' || u.status === 'invalidated') coverageGaps.push(`${id}: ${u.status} analysis`);
+    else if (u.status === 'provisional' || u.status === 'requires-review' || u.status === 'conflicted' || u.status === 'invalidated') coverageGaps.push(`${id}: ${u.status} analysis`);
   }
   const packCoverage = all.length ? 1 - coverageGaps.length / all.length : 0;
   const evidenceDensity = wordTokens ? evidenced / wordTokens : 0;

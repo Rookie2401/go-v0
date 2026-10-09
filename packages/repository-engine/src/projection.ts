@@ -270,9 +270,13 @@ export function foldEvents(events: GoEvent[], opts: { modelVersion: string; tomb
 }
 
 /** Counts of the exposure kinds behind a unit's exposure estimate (the contract row stores only positive/negative). */
-export interface ExposureCounters { encounters: number; lookups: number; assistance: number; playbacks: number }
+export interface ExposureCounters {
+  encounters: number; lookups: number; assistance: number; playbacks: number;
+  /** projection@2: encounter and lookup exposures by how their language was settled (`missing` = a v2 event with no language block). `undetermined` observes nothing and is not counted. */
+  byLanguageBasis: Record<string, number>;
+}
 export function countersOf(observations: Observation[], unitId: string): ExposureCounters {
-  const c: ExposureCounters = { encounters: 0, lookups: 0, assistance: 0, playbacks: 0 };
+  const c: ExposureCounters = { encounters: 0, lookups: 0, assistance: 0, playbacks: 0, byLanguageBasis: {} };
   const seen = new Set<string>();
   for (const o of observations) {
     if (o.unitId !== unitId || o.dimension !== 'exposure') continue;
@@ -283,6 +287,7 @@ export function countersOf(observations: Observation[], unitId: string): Exposur
     else if (o.counter === 'assistance') c.assistance++;
     else if (o.counter === 'playback') c.playbacks++;
     else c.encounters++;
+    if (o.languageBasis !== undefined) c.byLanguageBasis[o.languageBasis] = (c.byLanguageBasis[o.languageBasis] ?? 0) + 1;
   }
   return c;
 }

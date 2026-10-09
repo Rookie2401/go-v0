@@ -5,7 +5,7 @@
  * evidence, the popup anchor, chapter replacement, reader chrome and error recovery. Sentences are owner-authored test text.
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { describePage, parseScriptureUrl, type SiteAdapter } from '../../packages/golearn-extension/src/adapters';
+import { describePage, parseScriptureUrl, registryEntry, type SiteAdapter } from '../../packages/golearn-extension/src/adapters';
 import { validateCapabilities } from '../../packages/golearn-extension/src/contract/readerCapabilities';
 import type { ReaderContext } from '../../packages/golearn-extension/src/contract/readerAdapter';
 import { deAdapter } from '../../src/adapters/de';
@@ -77,11 +77,15 @@ describe('BibleGateway-like passage', () => {
     const { p } = setup();
     selectTop(p, 'lamp');
     ok(adapter!.selection());
-    expect(adapter!.sourceRef()).toEqual({ kind: 'scripture', translationId: 'NIV', book: 'JHN', chapter: 3, verse: 16, languageHint: 'en' });
+    // URL and verse marker agree: confidence 0.9; the address is the passage address only; the restrictions are the registry entry's
+    const BG = { ...registryEntry('biblegateway')!.restrictions };
+    const ADDRESS = 'https://www.biblegateway.com/passage/?search=John%203%3A16-17&version=NIV';
+    expect(adapter!.sourceRef()).toEqual({ kind: 'scripture', translationId: 'NIV', book: 'JHN', chapter: 3, verse: 16, languageHint: 'en', confidence: 0.9, url: ADDRESS, restrictions: BG });
     selectTop(p, 'Nobody');
     ok(adapter!.selection());
-    expect(adapter!.sourceRef()).toEqual({ kind: 'scripture', translationId: 'NIV', book: 'JHN', chapter: 3, verse: 17, languageHint: 'en' });
-    const json = JSON.stringify(adapter!.sourceRef());
+    expect(adapter!.sourceRef()).toEqual({ kind: 'scripture', translationId: 'NIV', book: 'JHN', chapter: 3, verse: 17, languageHint: 'en', confidence: 0.9, url: ADDRESS, restrictions: BG });
+    // the address names the site (its host), so the text check is on everything but the address
+    const json = JSON.stringify({ ...adapter!.sourceRef(), url: undefined });
     expect(json).not.toMatch(/lamp|Nobody|small|Gateway|fixture/i);
   });
 
@@ -92,7 +96,7 @@ describe('BibleGateway-like passage', () => {
     selectTop(p, 'lamp');
     ok(adapter!.selection());
     const ref = adapter!.sourceRef();
-    expect(ref).toEqual({ kind: 'web', locator: '/passage/' });
+    expect(ref).toEqual({ kind: 'web', locator: '/passage/', restrictions: { ...registryEntry('biblegateway')!.restrictions } });
     expect(JSON.stringify(ref)).not.toMatch(/lamp/);
   });
 
@@ -198,7 +202,7 @@ describe('YouVersion-like chapter', () => {
     selectTop(ch, 'traveller');
     const s = ok(adapter!.selection());
     expect(s.surface).toBe('traveller');
-    expect(adapter!.sourceRef()).toEqual({ kind: 'scripture', translationId: 'NIV', book: 'JHN', chapter: 3, verse: 16, languageHint: 'en' });
+    expect(adapter!.sourceRef()).toEqual({ kind: 'scripture', translationId: 'NIV', book: 'JHN', chapter: 3, verse: 16, languageHint: 'en', confidence: 0.9, url: 'https://www.bible.com/bible/111/JHN.3.NIV', restrictions: { ...registryEntry('youversion')!.restrictions } });
     const c = ctxOf(adapter!, s.range, { languageId: 'en' });
     expect(c.sentence).toBe('The traveller stopped at the gate and listened to the wind.');
     expect(c.sentence).not.toMatch(/16/);
@@ -431,7 +435,7 @@ describe('Tolino-like and Vivlio-like readers: text in a same-origin iframe, a t
     const c = ctxOf(adapter, s.range, { languageId: 'de', segmenter: (t) => deAdapter.segmentSentences(t) });
     expect(c.sentence).toBe('Die Straßenbahn kommt pünktlich.');
     expect(c.sentence!.slice(c.selStart, c.selEnd)).toBe('Straßenbahn');
-    expect(adapter.sourceRef()).toEqual({ kind: 'web', title: 'Lesen (fixture)', locator: '/library/index.html' });
+    expect(adapter.sourceRef()).toEqual({ kind: 'web', title: 'Lesen (fixture)', locator: '/library/index.html', restrictions: { ...registryEntry('tolino-webreader')!.restrictions } });
     expect(adapter.languageEvidence().documentLanguage).toEqual({ languageId: 'de', source: 'html-lang', confidence: 0.8 });
     expect(adapter.capabilities().contextConfidence).toBeLessThanOrEqual(0.8);
     // the toolbar overlay lives in the top document and is not text to look up
@@ -580,7 +584,7 @@ describe('Libroteka-like reader: an article whose chapter buttons replace the co
     expect(s.surface).toBe('shtëpinë');
     const c = ctxOf(adapter, s.range, { languageId: 'sq', segmenter: (t) => sqAdapter.segmentSentences(t) });
     expect(c.sentence).toBe('Unë po lexoj një libër të bukur në shtëpinë time.');
-    expect(adapter.sourceRef()).toEqual({ kind: 'web', title: 'Libri im (fixture)', locator: '/liber/fixture/0' });
+    expect(adapter.sourceRef()).toEqual({ kind: 'web', title: 'Libri im (fixture)', locator: '/liber/fixture/0', restrictions: { ...registryEntry('libroteka')!.restrictions } });
     expect(adapter.languageEvidence().documentLanguage).toMatchObject({ languageId: 'sq', source: 'html-lang' });
     selectTop(document.body, 'Mbrapa');
     expect(adapter.selection()).toMatchObject({ ok: false, reason: 'unsupported' });

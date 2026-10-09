@@ -26,15 +26,22 @@ import type { View } from './view';
 
 export const DEFAULT_SHARE_LANGUAGE = 'sq';
 export const SHARE_SURFACE = 'share';
+/** The learner's own choice is certain; the enrolment's language is a default, not evidence (the resolver's TEAM_DEFAULT_CONFIDENCE). */
+export const SHARE_OVERRIDE_CONFIDENCE = 1;
+export const SHARE_DEFAULT_CONFIDENCE = 0.3;
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const { win, doc } = ctx.deps;
   const session = await ctx.state.getSession();
   if (!view.alive()) return;
-  const languageId = session?.languageId || DEFAULT_SHARE_LANGUAGE;
-  const pack = ctx.deps.packs.packFor(languageId);
-  const languageName = pack?.name ?? languageId;
-  const analysed = PARSER_LANGUAGES.includes(languageId);
+  // The language is the enrolment's (or the default) until the learner chooses another on this screen: the first is a
+  // `team-default` (nothing in a shared passage declares its language), the second an `override`, and the event says which.
+  const enrolmentLanguage = session?.languageId || DEFAULT_SHARE_LANGUAGE;
+  const nameOf = (id: string): string => ctx.deps.packs.packFor(id)?.name ?? id;
+  let languageId = enrolmentLanguage;
+  let chosen = false;
+  let languageName = nameOf(languageId);
+  let analysed = PARSER_LANGUAGES.includes(languageId);
   const sessionId = `share-${ctx.deps.now().getTime().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
   const ui: CardUI = createCardUI({ doc, speech: ctx.deps.speech });
   view.onDispose(() => ui.destroy());
@@ -69,6 +76,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const base = encounterFromShare({
       card, passage, identity: { learnerId: id.learnerId, enrolmentId: id.enrolmentId, deviceId: id.deviceId },
       version: ctx.deps.appVersion, sessionId, now: ctx.deps.now(), direction: context.direction,
+      language: chosen ? { basis: 'override', confidence: SHARE_OVERRIDE_CONFIDENCE } : { basis: 'team-default', confidence: SHARE_DEFAULT_CONFIDENCE },
       // the extension’s recorder admits only its own producer (and replaces the identity and device); the web app is its own
       producerApp: ctx.inExtension ? 'golearn-ext' : 'golearn-app', surface: SHARE_SURFACE,
     });
@@ -124,6 +132,23 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
 
   // ── page
+  // the languages this build can look up in (a pack that is not planned and an analyser that is bundled)
+  const choices = ctx.deps.packs.packs().filter((k) => k.level !== 'planned' && PARSER_LANGUAGES.includes(k.languageId));
+  const languageLine = h('p', { id: 'share-language', class: 'muted' });
+  const unanalysed = p('', 'error');
+  unanalysed.id = 'share-unanalysed';
+  const describeLanguage = (): void => {
+    languageLine.textContent = chosen ? `Looking up in ${languageName}, the language you chose.`
+      : session?.languageId ? `Looking up in ${languageName}, your active enrolment.` : `No enrolment yet: looking up in ${languageName}.`;
+    unanalysed.textContent = `GoLearn has no analyser for ${languageName} yet; a lookup here will say so and record nothing.`;
+    unanalysed.hidden = analysed;
+  };
+  const select = h('select', { id: 'share-language-select', name: 'share-language' }) as HTMLSelectElement;
+  for (const k of choices) select.append(h('option', { value: k.languageId, ...(k.languageId === languageId ? { selected: true } : {}) }, k.name));
+  select.addEventListener('change', () => {
+    languageId = select.value; chosen = true; languageName = nameOf(languageId); analysed = PARSER_LANGUAGES.includes(languageId);
+    describeLanguage();
+  });
   const textarea = h('textarea', { id: 'share-paste', rows: 4, spellcheck: false, autocomplete: 'off', placeholder: 'Paste a word, a sentence or a short passage' }) as HTMLTextAreaElement;
   const form = h('form', { id: 'share-paste-form', novalidate: true },
     field('Paste what you copied', textarea, 'GoLearn never reads your clipboard by itself: you paste here. Up to 80 words.'),
@@ -135,14 +160,17 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   append(el, [
     p('Share a word, a sentence or a short passage from another app to GoLearn, or paste it below. The text is looked up once with the same card as on a web page, and only the word you look up is recorded, with where it came from. The text itself is not kept.'),
-    h('p', { id: 'share-language', class: 'muted' }, session?.languageId ? `Looking up in ${languageName}, your active enrolment.` : `No enrolment yet: looking up in ${languageName}.`),
-    !analysed ? p(`GoLearn has no analyser for ${languageName} yet; a lookup here will say so and record nothing.`, 'error') : null,
+    languageLine,
+    choices.length > 1 ? field('Language of what you share', select, 'Only needed when it is not your active language. Your choice is recorded with the lookup.') : null,
+    unanalysed,
     incoming,
     h('section', { class: 'card', id: 'share-paste-card' }, h('h2', {}, 'Paste text'), form),
     status,
     result,
     p('Sharing from other apps to this page works only when GoLearn is installed as an app from Chrome on Android. Until you have done that, paste.', 'muted'),
   ]);
+
+  describeLanguage();
 
   // ── a passage that arrived through the web share target or a deep link
   const params = readShareParams(win.location.search, win.location.hash);

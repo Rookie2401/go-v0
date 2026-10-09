@@ -9,13 +9,13 @@
  * Team membership grants nothing; no route exists that reads another learner.
  */
 import {
-  CONTRACT_VERSION, EVENT_KINDS, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, validateEvent,
+  CONTRACT_VERSION, EVENT_KINDS, MAX_CORRECTIONS, UNKNOWN_RESTRICTIONS, capRestrictions, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, provenanceOf, validateCorrection, validateEvent, validationForPack,
 } from '../../repository-contract/src';
 import type {
   Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFamily, EventKind, GoEvent, Learner,
-  LearningGoal, PrivateDocument, Session, StoredEvent, SyncPullResponse, SyncPushResponse, Tombstone, ValidationIssue,
+  LearningGoal, LinguisticUnit, PrivateDocument, RestrictionsInput, Session, SourceRef, SourceRestrictions, StoredEvent, SyncPullResponse, SyncPushResponse, Tombstone, UnitCorrection, ValidationIssue, ValidationLevel,
 } from '../../repository-contract/src';
-import type { ServiceDeps } from './deps';
+import type { CorrectionResult, LookupResult, ServiceDeps } from './deps';
 
 export const SERVICE_VERSION = 1;
 /** The largest request body accepted (bytes), counted on the stream; over it is 413. */
@@ -310,8 +310,42 @@ async function prepareEvents(ctx: Ctx, raw: unknown, where: string, restrict?: {
   if (bad.length) throw new Refusal(422, 'invalid-events', `${bad.length} of ${raw.length} events are invalid; nothing was stored. Fix them and send the whole batch again.`, { issues: bad });
   return raw.map((e) => {
     const { recordedAt: _r, seq: _s, ...rest } = e as GoEvent & { seq?: number };
+    // A source's restrictions are the client's claim: the stored value is that claim capped by the reader's policy (sourcePolicy.ts), so
+    // metadata a page controls cannot grant a permission. A typed (v3) reference is also rebuilt from its known fields.
+    const ref = rest.subject.sourceRef as unknown;
+    if (isObj(ref)) {
+      const policy = ctx.deps.sourcePolicy?.((rest.payload as { readerId?: unknown }).readerId) ?? UNKNOWN_RESTRICTIONS;
+      rest.subject = { ...rest.subject, sourceRef: storedSourceRef(ref, policy, rest.v >= 3) as unknown as SourceRef };
+    }
     return rest as GoEvent;
   });
+}
+
+/** Known fields of each member of the typed source-reference union: a v3 reference is stored rebuilt from these alone. */
+const SOURCE_FIELDS: Record<SourceRef['kind'], readonly string[]> = {
+  web: ['title', 'locator'], ebook: ['title', 'locator'], file: ['title', 'locator'], demo: ['title', 'locator'], practice: ['title', 'locator'], writing: ['title', 'locator'],
+  scripture: ['provider', 'translationId', 'languageId', 'book', 'chapter', 'verse', 'verseEnd', 'url', 'confidence'],
+  share: ['mechanism', 'sourceApp', 'title', 'locator'],
+  media: ['provider', 'mediaId', 'timestampMs', 'captionLanguage', 'audioLanguage', 'captionProvenance'],
+};
+
+/**
+ * The source reference as the service stores it (contract v3). `restrictions` is the client's claim: it is written only when the client sent some,
+ * as the cap of that claim by `policy` (the most permissive value the service will store for the event's reader; see sourcePolicy.ts). A client
+ * may tighten and never loosen, so metadata a page controls cannot grant a permission. A typed (v3) reference keeps its known fields only; a
+ * v1/v2 reference keeps every field it had.
+ */
+export function storedSourceRef(ref: Record<string, unknown>, policy: Readonly<SourceRestrictions>, typed: boolean): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  const known = SOURCE_FIELDS[ref.kind as SourceRef['kind']];
+  if (typed && known) {
+    out.kind = ref.kind;
+    for (const k of known) if (ref[k] !== undefined) out[k] = ref[k];
+  } else {
+    for (const [k, v] of Object.entries(ref)) if (k !== 'restrictions') out[k] = v;
+  }
+  if (ref.restrictions !== undefined) out.restrictions = capRestrictions(ref.restrictions as RestrictionsInput, policy);
+  return out;
 }
 
 /** Folds new events into the learner's knowledge. A failure here never loses the events: they are already stored. */
@@ -336,9 +370,67 @@ async function registerSurfaces(ctx: Ctx, events: GoEvent[]): Promise<void> {
     if (seen.has(key)) continue;
     seen.add(key);
     try {
-      await ctx.deps.linguistics.resolveAndStore({ languageId: e.languageId, surface, ...(e.subject.sentenceKey ? { sentenceKey: e.subject.sentenceKey } : {}) });
+      const result = // out-of-context registration on purpose: a sentence hash is one learner's reading context and must not land in the shared rows (privacy export audit)
+      await ctx.deps.linguistics.resolveAndStore({ languageId: e.languageId, surface });
+      await stampLookup(ctx, result);
     } catch { /* the analysis can be registered by a later lookup */ }
   }
+}
+
+/**
+ * Provenance for rows a lookup registered (audit P-12). The shared linguistic tables hold no learner data, so a stamp says HOW the row came to
+ * exist, never WHO looked it up: `origin: 'learner-lookup'`, `validation` from the pack's level (`validationForPack`: an installable pack
+ * reads as production-validated only if its manifest says so, an experimental one as experimental, anything unknown as unreviewed), and the
+ * pack version. Only stored rows that carry no `origin` yet are stamped, so it happens once per row and a producer's own origin is never replaced.
+ * A failure never affects the lookup or the ingestion.
+ */
+async function stampLookup(ctx: Ctx, result: LookupResult): Promise<void> {
+  try {
+    const { store } = ctx.deps;
+    const validations = new Map<string, ValidationLevel>();
+    const validationOf = async (packId: string, packVersion: string): Promise<ValidationLevel> => {
+      const key = `${packId}\u0000${packVersion}`;
+      let v = validations.get(key);
+      if (v === undefined) { v = validationForPack(await store.getPack(packId, packVersion)); validations.set(key, v); }
+      return v;
+    };
+    const unitValidation = new Map<string, ValidationLevel>();
+    const storedUnits = await store.getUnits(result.units.map((u) => u.unitId));
+    const unitsToStamp: LinguisticUnit[] = [];
+    for (const u of storedUnits) {
+      const validation = u.provenance.validation ?? await validationOf(u.packId, u.packVersion);
+      unitValidation.set(u.unitId, validation);
+      if (u.provenance.origin === undefined) {
+        unitsToStamp.push({ ...u, provenance: { ...u.provenance, origin: 'learner-lookup', validation, packVersion: u.provenance.packVersion ?? u.packVersion } });
+      }
+    }
+    if (unitsToStamp.length) await store.putUnits(unitsToStamp);
+    const fallback = unitValidation.values().next().value ?? 'unreviewed';
+
+    const relationsToStamp = [];
+    for (const rel of result.relations) {
+      const stored = (await store.relationsOf(rel.fromId, 'out')).find((r) => r.relation === rel.relation && r.toId === rel.toId);
+      if (stored && stored.provenance.origin === undefined) {
+        relationsToStamp.push({ ...stored, provenance: { ...stored.provenance, origin: 'learner-lookup' as const, validation: stored.provenance.validation ?? unitValidation.get(stored.fromId) ?? fallback } });
+      }
+    }
+    if (relationsToStamp.length) await store.putRelations(relationsToStamp);
+
+    if (result.analysis) {
+      const stored = await store.getAnalysis(result.analysis.analysisId);
+      const candidate = stored?.candidates[stored.chosen ?? 0]?.provenance;
+      if (stored && stored.provenance === undefined && candidate?.origin === undefined) {
+        const validation = candidate?.validation ?? await validationOf(stored.packId, stored.packVersion);
+        await store.putAnalyses([{
+          ...stored,
+          provenance: {
+            source: candidate?.source ?? 'parser', ref: candidate?.ref ?? stored.analyzerId, confidence: candidate?.confidence ?? 0,
+            origin: 'learner-lookup', validation, packVersion: stored.packVersion,
+          },
+        }]);
+      }
+    }
+  } catch { /* provenance is best effort; the rows themselves are already stored */ }
 }
 
 const accountView = (a: Account): Pick<Account, 'accountId' | 'email' | 'createdAt'> => ({ accountId: a.accountId, email: a.email, createdAt: a.createdAt });
@@ -534,7 +626,65 @@ route('GET', '/units/:id', true, async (ctx) => {
   if (id.length > 300) throw new Refusal(404, 'no-such-unit', 'There is no unit with that id.');
   const view = await ctx.deps.linguistics.lookup(id);
   if (!view) throw new Refusal(404, 'no-such-unit', 'There is no unit with that id.');
-  return respond(200, { unit: view.unit, relations: view.relations, analyses: view.analyses });
+  // `provenance` is the unit's own, with the v3 defaults filled in (a v2 row reads as origin "import", validation "unreviewed").
+  return respond(200, { unit: view.unit, relations: view.relations, analyses: view.analyses, provenance: provenanceOf(view.unit.provenance) });
+});
+
+/**
+ * A learner's (or, later, a reviewer's) challenge to a unit (contract v3, P-12). The correction is APPENDED to the unit's `provenance.corrections`
+ * with a role and a bounded reason and no learner id. For a form unit given a `lexemeId` or `features`, the linguistics port's `correct()` also
+ * writes the superseding analysis (the same path as `POST /corrections`); otherwise the unit is moved to `requires-review`, but only from
+ * `provisional`: one learner cannot lower a high-confidence or verified unit for everyone, the correction waits there for a reviewer.
+ */
+route('POST', '/units/:id/corrections', true, async (ctx) => {
+  const b = await ctx.body();
+  assertSelf(ctx, b.learnerId);
+  const id = ctx.params.id;
+  if (id.length > 300) throw new Refusal(404, 'no-such-unit', 'There is no unit with that id.');
+  if (b.by !== undefined && b.by !== 'learner') throw new Refusal(403, 'learner-only', 'This route takes a learner correction ("by": "learner"). A reviewer’s verdict is made by the operator through the store.');
+  if (b.lexemeId !== undefined && !isStr(b.lexemeId)) throw invalid('"lexemeId" must be a unit id.');
+  if (b.sentenceKey !== undefined && (typeof b.sentenceKey !== 'string' || b.sentenceKey.length > 200)) throw invalid('"sentenceKey" must be a string of at most 200 characters.');
+  if (b.features !== undefined && (!isObj(b.features) || Object.values(b.features).some((v) => typeof v !== 'string'))) throw invalid('"features" must map feature names to strings.');
+  const at = ctx.now();
+  const correction: UnitCorrection = {
+    at, by: 'learner', reason: b.reason as string,
+    ...(b.from !== undefined ? { from: b.from as string } : {}), ...(b.to !== undefined ? { to: b.to as string } : {}),
+  };
+  const issues = validateCorrection(correction);
+  if (issues.length) throw invalid('That correction is not valid.', issues);
+  const { store, linguistics } = ctx.deps;
+  const [unit] = await store.getUnits([id]);
+  if (!unit) throw new Refusal(404, 'no-such-unit', 'There is no unit with that id.');
+  if ((unit.provenance.corrections?.length ?? 0) >= MAX_CORRECTIONS) {
+    throw new Refusal(409, 'corrections-full', `This unit already has ${MAX_CORRECTIONS} corrections waiting for a reviewer.`);
+  }
+  let result: CorrectionResult | undefined;
+  if (unit.kind === 'form' && (b.lexemeId !== undefined || b.features !== undefined) && typeof linguistics.correct === 'function') {
+    result = await linguistics.correct(id, {
+      by: 'learner', learnerId: ctx.session.learnerId,
+      ...(typeof b.lexemeId === 'string' ? { lexemeId: b.lexemeId } : {}),
+      ...(b.features ? { features: b.features as Record<string, string> } : {}),
+      reason: correction.reason,
+      ...(typeof b.sentenceKey === 'string' ? { sentenceKey: b.sentenceKey } : {}),
+    }, at);
+  }
+  const flag = result === undefined;
+  let recorded: { unit: LinguisticUnit; statusChanged: boolean } | undefined;
+  if (typeof store.recordUnitCorrection === 'function') recorded = await store.recordUnitCorrection(id, correction, flag);
+  else {
+    // A store without the v3 method can append but cannot lower a status.
+    const fresh = (await store.getUnits([id]))[0];
+    if (fresh) {
+      const next = { ...fresh, provenance: { ...fresh.provenance, corrections: [...(fresh.provenance.corrections ?? []), correction] } };
+      await store.putUnits([next]);
+      recorded = { unit: next, statusChanged: false };
+    }
+  }
+  if (!recorded) throw new Refusal(404, 'no-such-unit', 'There is no unit with that id.');
+  return respond(200, {
+    unit: recorded.unit, provenance: provenanceOf(recorded.unit.provenance), statusChanged: recorded.statusChanged,
+    ...(result ? { result } : {}),
+  });
 });
 
 // Several units in one call (audit PF-02): GoReview's intake needs the unit, relations and analyses of every testable candidate; one request per
@@ -544,11 +694,11 @@ route('POST', '/units/batch', true, async (ctx) => {
   if (!Array.isArray(b.ids) || b.ids.length === 0 || b.ids.length > MAX_UNITS_PER_BATCH || b.ids.some((i) => !isStr(i) || i.length > 300)) {
     throw invalid(`"ids" must be a list of 1 to ${MAX_UNITS_PER_BATCH} unit ids.`);
   }
-  const units: Record<string, { unit: unknown; relations: unknown; analyses: unknown }> = {};
+  const units: Record<string, { unit: unknown; relations: unknown; analyses: unknown; provenance: unknown }> = {};
   const missing: string[] = [];
   for (const id of [...new Set(b.ids as string[])]) {
     const view = await ctx.deps.linguistics.lookup(id);
-    if (view) units[id] = { unit: view.unit, relations: view.relations, analyses: view.analyses }; else missing.push(id);
+    if (view) units[id] = { unit: view.unit, relations: view.relations, analyses: view.analyses, provenance: provenanceOf(view.unit.provenance) }; else missing.push(id);
   }
   return respond(200, { units, missing });
 });
@@ -569,6 +719,7 @@ route('POST', '/lookup', true, async (ctx) => {
     ...(sentence !== undefined ? { sentence } : {}), ...(sentenceKey !== undefined ? { sentenceKey } : {}),
     ...(typeof b.selStart === 'number' ? { selStart: b.selStart } : {}), ...(typeof b.selEnd === 'number' ? { selEnd: b.selEnd } : {}),
   });
+  await stampLookup(ctx, result);
   return respond(200, { formId: result.formId, units: result.units, relations: result.relations, analysis: result.analysis ?? null, sentenceKey: sentenceKey ?? null });
 });
 
@@ -849,12 +1000,22 @@ async function buildExport(ctx: Ctx): Promise<unknown> {
     const p = await store.getPreferences(learnerId, lang);
     if (p && !preferences.some((q) => q.languageId === p.languageId)) preferences.push(p);
   }
+  // Provenance of the shared-layer units the learner's events refer to (contract v3, P-12): the learner's copy of "why does the app say this".
+  // The linguistic tables themselves are not the learner's data, are not erased by DELETE /me and are not restored by an import.
+  const unitIds = [...new Set(events.flatMap((e) => e.subject.itemIds ?? []))].sort();
+  const unitProvenance = [];
+  for (let i = 0; i < unitIds.length; i += 500) {
+    for (const u of await store.getUnits(unitIds.slice(i, i + 500))) {
+      unitProvenance.push({ unitId: u.unitId, kind: u.kind, languageId: u.languageId, label: u.label, status: u.status, provenance: provenanceOf(u.provenance) });
+    }
+  }
+  unitProvenance.sort((a, b) => (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0));
   return {
     // The store package's export shape (`exportLearner`) plus the account and the contract version, so `importLearner` accepts this file as it is (audit P-01).
     // `devices` keeps the full device objects (a superset of the store's list of ids; the importer does not read it).
     format: EXPORT_FORMAT, contractVersion: CONTRACT_VERSION, exportedAt: ctx.now(), learnerId,
     learner, account: accountView(account), devices: device ? [device] : [],
-    enrolments, events, knowledge, preferences, documents, tombstones,
+    enrolments, events, knowledge, preferences, documents, tombstones, unitProvenance,
   };
 }
 

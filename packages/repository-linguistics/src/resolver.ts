@@ -12,9 +12,9 @@ import { sqAdapter } from '../../../src/adapters/sq';
 import type { AnalysisCandidate as AdapterCandidate, AnalyzedToken, LanguageAdapter, PhraseCandidate, RawToken } from '../../../src/core';
 import { unitIds } from '../../repository-contract/src';
 import type {
-  AnalysisCandidate, AnalysisStatus, FormAnalysis, LanguagePackInfo, LinguisticUnit, ProvenanceSource, UnitKind, UnitProvenance, UnitRelation,
+  AnalysisCandidate, AnalysisStatus, FormAnalysis, LanguagePackInfo, LinguisticUnit, ProvenanceSource, UnitKind, UnitProvenance, UnitRelation, ValidationLevel,
 } from '../../repository-contract/src';
-import { albanianPack, genericPack } from './packs';
+import { albanianPack, genericPack, genericValidation, packValidation, withValidation } from './packs';
 
 export interface ResolveInput {
   languageId: string;
@@ -23,6 +23,11 @@ export interface ResolveInput {
   sentenceKey?: string;
   selStart?: number;
   selEnd?: number;
+  /**
+   * The validation level the pack's manifest states for this language (`validationForPack`). Absent: the level the capability table gives it
+   * (`packValidation`), which for the machine-drafted installable packs is `unreviewed`.
+   */
+  validation?: ValidationLevel;
   now: string;
 }
 
@@ -131,7 +136,7 @@ function genericResolution(input: ResolveInput, note: string): Resolution {
   const surface = (input.surface ?? '').normalize('NFC').trim();
   const pack = genericPack(lang);
   const formId = unitIds.form(lang, surface.toLowerCase() || '(empty)');
-  const provenance: UnitProvenance = { source: 'parser', ref: 'generic', confidence: 0.1 };
+  const provenance: UnitProvenance = withValidation({ source: 'parser', ref: 'generic', confidence: 0.1 }, input.validation ?? genericValidation(lang));
   const unit: LinguisticUnit = {
     unitId: formId, kind: 'form', languageId: lang, label: surface || '(empty)', packId: pack.packId, packVersion: pack.version,
     provenance, status: 'provisional', createdAt: input.now,
@@ -233,6 +238,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
   const pack = entry.pack();
   const packId = pack.packId;
   const packVersion = pack.version;
+  const packLevel: ValidationLevel = input.validation ?? packValidation(lang);
   const notes: string[] = [];
 
   const where = locate(surface, input.sentence, input.selStart, input.selEnd);
@@ -278,7 +284,8 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
         features,
         ...(c.role ? { role: c.role } : {}),
         confidence: clamp01(c.confidence),
-        provenance: { source: p.source, ref: p.ref, confidence: clamp01(c.confidence) },
+        // validation: a person's review wins; a guess from an ending is unreviewed whatever the pack; otherwise the pack's own level
+        provenance: withValidation({ source: p.source, ref: p.ref, confidence: clamp01(c.confidence) }, p.reviewed ? 'production-validated' : c.unconfirmed ? 'unreviewed' : packLevel),
       };
     });
     // senses and constructions need the ids, so they are attached in a second pass
@@ -309,7 +316,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
       const cand: AnalysisCandidate = {
         constructionIds: [unitIds.phrase(lang, whole.pattern)],
         confidence: clamp01(whole.confidence),
-        provenance: { source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}:phrases`, confidence: clamp01(whole.confidence) },
+        provenance: withValidation({ source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}:phrases`, confidence: clamp01(whole.confidence) }, packLevel),
       };
       candidates.push(cand);
       statuses.push(statusFor(cand, [cand]));
@@ -341,7 +348,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
   const formUnit: LinguisticUnit = formIdx === undefined
     ? {
       unitId: formId, kind: 'form', languageId: lang, label: formLabel, packId, packVersion, createdAt: input.now,
-      provenance: { source: 'parser', ref: `adapter-${lang}@${adapter.version}`, confidence: 0 }, status: 'provisional',
+      provenance: withValidation({ source: 'parser', ref: `adapter-${lang}@${adapter.version}`, confidence: 0 }, 'incomplete'), status: 'provisional',
     }
     : stamp('form', formId, formLabel, formIdx, {
       scriptId: 'Latn',
@@ -382,7 +389,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
     const pid = unitIds.phrase(lang, p.pattern);
     const pc: AnalysisCandidate = {
       confidence: clamp01(p.confidence),
-      provenance: { source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}:phrases`, confidence: clamp01(p.confidence) },
+      provenance: withValidation({ source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}:phrases`, confidence: clamp01(p.confidence) }, packLevel),
     };
     const pStatus = statusFor(pc, [pc]);
     units.add({
@@ -409,7 +416,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
     for (const note of pron) {
       const letters = note.split(':')[0].trim() || 'note';
       const uid = unitIds.pronunciation(lang, varietyId, letters);
-      const pp: AnalysisCandidate = { confidence: 0.8, provenance: { source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}`, confidence: 0.8 } };
+      const pp: AnalysisCandidate = { confidence: 0.8, provenance: withValidation({ source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}`, confidence: 0.8 }, packLevel) };
       const st = statusFor(pp, [pp]);
       units.add({
         unitId: uid, kind: 'pronunciation-pattern', languageId: lang, varietyId: varietyId, scriptId: 'Latn', label: note, packId, packVersion,

@@ -74,7 +74,11 @@ export class FakeStore implements EngineStore {
     return [...this.analyses.values()].filter((a) => a.formId === formId && (sentenceKey === undefined || a.sentenceKey === sentenceKey));
   }
   async putAnalyses(as: FormAnalysis[]): Promise<void> { this.lingWrites++; for (const a of as) this.analyses.set(a.analysisId, a); }
-  async invalidateAnalysis(): Promise<void> { this.lingWrites++; }
+  async invalidateAnalysis(id?: string, reason?: string, supersededBy?: string): Promise<void> {
+    this.lingWrites++;
+    const a = id === undefined ? undefined : this.analyses.get(id);
+    if (a && id !== undefined) this.analyses.set(id, { ...a, status: 'invalidated', ...(reason ? { reason } : {}), ...(supersededBy ? { supersededBy } : {}) });
+  }
   async aliasesFor(ids: string[]): Promise<UnitAlias[]> { return this.aliases.filter((a) => ids.includes(a.oldId)); }
   async putAliases(a: UnitAlias[]): Promise<void> { this.lingWrites++; this.aliases.push(...a); }
   async getPack(packId: string) { return this.packs.find((p) => p.packId === packId); }

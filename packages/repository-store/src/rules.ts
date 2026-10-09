@@ -2,9 +2,10 @@
  * The rules both stores share, written once so memory and SQLite cannot drift apart. Pure functions only: no I/O, no
  * clock beyond the injected one, nothing that knows which backend calls it.
  */
-import { STATUS_RANK, validateEvent } from '../../repository-contract/src';
+import { MAX_CORRECTIONS, STATUS_RANK, sourceLocator, validateEvent } from '../../repository-contract/src';
 import type {
-  AnalysisStatus, EventFilter, FormAnalysis, GoEvent, LanguagePackInfo, PrivateDocument, RepositoryStore, SourceRef, StoredEvent, Tombstone,
+  AnalysisStatus, EventFilter, FormAnalysis, GoEvent, LanguagePackInfo, LinguisticUnit, PrivateDocument, RepositoryStore, SourceRef, StoredEvent, Tombstone,
+  ProvenanceOrigin, UnitCorrection, UnitProvenance, ValidationLevel,
 } from '../../repository-contract/src';
 
 /** Options both stores accept. */
@@ -76,7 +77,8 @@ export function matchesFilter(e: StoredEvent, f: EventFilter): boolean {
 export function sourceMatches(ref: SourceRef | undefined, want: { kind: string; title?: string; locator?: string }): boolean {
   if (!ref || ref.kind !== want.kind) return false;
   if (want.title !== undefined && ref.title !== want.title) return false;
-  if (want.locator !== undefined && ref.locator !== want.locator) return false;
+  // `sourceLocator` is the stored locator, or for a scripture reference `BOOK.chapter[.verse]` and for media `provider:mediaId` (contract v3).
+  if (want.locator !== undefined && sourceLocator(ref) !== want.locator) return false;
   return true;
 }
 
@@ -94,7 +96,50 @@ export function tombstonedEventIds(ts: Tombstone[]): Set<string> {
 /** Whether an incoming unit/relation row may replace the stored one: never when it would lower the status rank. */
 export function mayReplaceByRank(existing: AnalysisStatus | undefined, incoming: AnalysisStatus): boolean {
   if (existing === undefined) return true;
+  // `requires-review` is sticky: a re-resolution that comes back `provisional` is the very row somebody challenged, so it must not wipe the
+  // flag. Only a person's verdict (`high-confidence` or `verified`), or the same flag again, replaces it.
+  if (existing === 'requires-review' && incoming === 'provisional') return false;
   return STATUS_RANK[incoming] >= STATUS_RANK[existing];
+}
+
+/**
+ * The provenance to store when a row is rewritten. What the incoming row states wins; what it does not state is carried over from the
+ * stored row, so a re-resolution by a producer that knows nothing of contract v3 (no `origin`, no `validation`) cannot erase the origin a
+ * lookup was stamped with or the corrections people recorded. Corrections are never dropped.
+ */
+export function carryProvenance(existing: UnitProvenance | undefined, incoming: UnitProvenance): UnitProvenance {
+  if (!existing) return incoming;
+  const out: UnitProvenance = { ...incoming };
+  for (const k of ['origin', 'validation', 'licenceId', 'packVersion', 'analyzerVersion', 'alternatives'] as const) {
+    if (out[k] === undefined && existing[k] !== undefined) (out as unknown as Record<string, unknown>)[k] = existing[k];
+  }
+  if (existing.corrections?.length) {
+    const have = new Set((incoming.corrections ?? []).map((c) => `${c.at}\u0000${c.by}\u0000${c.reason}`));
+    out.corrections = [...existing.corrections.filter((c) => !have.has(`${c.at}\u0000${c.by}\u0000${c.reason}`)), ...(incoming.corrections ?? [])].slice(-MAX_CORRECTIONS);
+  }
+  return out;
+}
+
+/** A unit or relation as it is stored over `existing`: same row, provenance carried. */
+export function carried<T extends { provenance: UnitProvenance }>(existing: T | undefined, incoming: T): T {
+  return existing ? { ...incoming, provenance: carryProvenance(existing.provenance, incoming.provenance) } : incoming;
+}
+
+/** An analysis as stored over `existing`: the analysis' own provenance (when it has one) is carried the same way. */
+export function carriedAnalysis(existing: FormAnalysis | undefined, incoming: FormAnalysis): FormAnalysis {
+  if (!existing?.provenance) return incoming;
+  return { ...incoming, provenance: incoming.provenance ? carryProvenance(existing.provenance, incoming.provenance) : existing.provenance };
+}
+
+/**
+ * `recordUnitCorrection` for one unit: appends the correction and, if `flag`, moves `provisional` (or, for a reviewer, any live status other than
+ * conflicted) to `requires-review`. Pure; both stores call it. `invalidated`, `conflicted` and `requires-review` are never changed.
+ */
+export function withCorrection(unit: LinguisticUnit, correction: UnitCorrection, flag: boolean): { unit: LinguisticUnit; statusChanged: boolean } {
+  const corrections = [...(unit.provenance.corrections ?? []), correction].slice(-MAX_CORRECTIONS);
+  const movable = unit.status === 'provisional' || (correction.by === 'reviewer' && (unit.status === 'high-confidence' || unit.status === 'verified'));
+  const statusChanged = flag && movable;
+  return { unit: { ...unit, status: statusChanged ? 'requires-review' : unit.status, provenance: { ...unit.provenance, corrections } }, statusChanged };
 }
 
 /** An invalidated analysis is terminal; any other row follows the same no-downgrade rank rule as units. */
@@ -177,11 +222,15 @@ export interface EraseCounts {
   learners: number;
 }
 
+export interface ProvenanceCount { table: 'units' | 'relations' | 'analyses'; origin: ProvenanceOrigin; validation: ValidationLevel; count: number }
+
 /** What `createMemoryStore` and `openSqliteStore` return: the port, plus event removal and the full erasure counts. */
 export interface ConcreteStore extends RepositoryStore, EventRemover {
   eraseLearner(learnerId: string): Promise<EraseCounts>;
   /** Records a tombstone, then physically removes what its scope names (event / source / range) and drops the projection so the engine refolds. See ./deletion. */
   applyTombstone(t: Tombstone): Promise<{ events: number; knowledge: number; documents: number }>;
+  /** Rows of the shared linguistic tables counted by how they came to exist (contract v3 `origin` and `validation`; v2 rows are `import` / `unreviewed`). Sorted by table, origin, validation. */
+  provenanceStats(): Promise<ProvenanceCount[]>;
   /** Operator maintenance (SQLite): empties the write-ahead log and rebuilds the file without its free pages. A no-op where there is nothing to compact. */
   compact?(): Promise<void>;
 }

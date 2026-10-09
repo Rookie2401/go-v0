@@ -1,26 +1,33 @@
 /**
  * @go/repository-contract — the only module GoLearn (app + extension), GoReview and GoTell may import from the
- * Repository. Contract version 2 (2026-10-08, Prompt 3): the event envelope and families (Layer B), the linguistic
- * knowledge units (Layer A, ./units), the derived learner state and identity (Layer C, ./learner), the typed payloads
- * with runtime validators (./payloads) and the ports the store, engine and service implement (./ports).
- * See docs/ecosystem/GO-REPOSITORY-DESIGN.md and docs/ecosystem/REPOSITORY-*.md.
+ * Repository. Contract version 3 (2026-10-09; v2 was Prompt 3, 2026-10-08): the event envelope and families (Layer B),
+ * the linguistic knowledge units (Layer A, ./units), the derived learner state and identity (Layer C, ./learner), the
+ * typed payloads with runtime validators (./payloads), the typed source-reference union (./sources) and the ports the
+ * store, engine and service implement (./ports).
+ * See docs/ecosystem/GO-REPOSITORY-DESIGN.md and docs/ecosystem/REPOSITORY-*.md (the v2 to v3 table is in REPOSITORY-DATA-MODEL.md).
  *
  * Boundary rules (enforced by test/ecosystem/boundaries.test.ts):
  *  - this package imports nothing from src/ or from any other package;
  *  - application packages import this package and never each other.
  */
 import { scanForText, validatePayload } from './payloads';
+import { validateLegacySourceRef, validateSourceRef } from './sources';
+import type { SourceRef } from './sources';
 import type { ValidationIssue } from './units';
 
 export * from './units';
 export * from './learner';
 export * from './payloads';
+export * from './sources';
 export * from './ports';
 export type { ValidationIssue };
 
-export const CONTRACT_VERSION = 2 as const;
-/** Envelopes of these versions are accepted at the write boundary; v1 rows (the extension prototype) lack the optional v2 fields only. */
-export const ACCEPTED_VERSIONS: readonly number[] = [1, 2];
+export const CONTRACT_VERSION = 3 as const;
+/**
+ * Envelopes of these versions are accepted at the write boundary. v1 rows (the extension prototype) lack the optional v2 fields only; a v2
+ * event stays valid and ingestible as it was written; v3 adds optional fields and validates `subject.sourceRef` as the typed union.
+ */
+export const ACCEPTED_VERSIONS: readonly number[] = [1, 2, 3];
 
 export type Producer = 'golearn-ext' | 'golearn-app' | 'gopractice-review' | 'gopractice-tell' | 'repository' | 'import';
 
@@ -42,16 +49,10 @@ export type EventKind = (typeof EVENT_KINDS)[EventFamily][number];
 export const familyOf = (kind: EventKind): EventFamily =>
   (Object.keys(EVENT_KINDS) as EventFamily[]).find((f) => (EVENT_KINDS[f] as readonly string[]).includes(kind))!;
 
-/** A context is identified, never copied: a hash of the sentence and where it came from. */
-export interface SourceRef {
-  kind: 'web' | 'ebook' | 'file' | 'demo' | 'practice' | 'writing';
-  title?: string;
-  locator?: string;
-}
-
 export interface EventSubject {
   itemIds?: string[];
   sentenceKey?: string; // hash of the exact sentence text, never the text
+  /** A context is identified, never copied: where it came from, as the typed union in ./sources (v2 events carry the plain members only). */
   sourceRef?: SourceRef;
   cardId?: string;
   draftId?: string;
@@ -112,8 +113,6 @@ export const MAX_ID_CHARS = 200;
 /** The longest a unit id (`lemma:sq:shtëpi:NOUN`, `form:sq:…`) may be, and how many an event may list. */
 export const MAX_UNIT_ID_CHARS = 300;
 export const MAX_ITEM_IDS = 200;
-export const MAX_TITLE_CHARS = 300;
-export const MAX_LOCATOR_CHARS = 2048;
 /** How far ahead of the checker's clock an event's `at` may be (device clocks drift; a day or a year ahead is not drift). */
 export const MAX_FUTURE_SKEW_MS = 5 * 60_000;
 
@@ -165,16 +164,13 @@ export function validateEvent(e: unknown, opts: ValidateEventOptions = {}): Vali
       else s.itemIds.forEach((i, n) => cap(`subject.itemIds[${n}]`, i, MAX_UNIT_ID_CHARS));
     }
     for (const k of ['sentenceKey', 'cardId', 'draftId'] as const) { if (s[k] !== undefined && typeof s[k] !== 'string') issues.push({ path: `subject.${k}`, message: 'string' }); cap(`subject.${k}`, s[k], MAX_ID_CHARS); }
-    if (s.sourceRef !== undefined) {
-      if (!isRecord(s.sourceRef)) issues.push({ path: 'subject.sourceRef', message: 'object' });
-      else {
-        for (const k of ['title', 'locator'] as const) if (s.sourceRef[k] !== undefined && typeof s.sourceRef[k] !== 'string') issues.push({ path: `subject.sourceRef.${k}`, message: 'string' });
-        cap('subject.sourceRef.title', s.sourceRef.title, MAX_TITLE_CHARS); cap('subject.sourceRef.locator', s.sourceRef.locator, MAX_LOCATOR_CHARS);
-      }
-    }
+    // v3: the typed union (each member has exactly its own fields, bounded). v2 and v1: the old rule (title and locator, bounded; any kind).
+    const typed = typeof x.v === 'number' && x.v >= 3;
+    if (s.sourceRef !== undefined) issues.push(...(typed ? validateSourceRef(s.sourceRef) : validateLegacySourceRef(s.sourceRef, 'subject.sourceRef')));
     // Text-like keys at any depth, and passages hiding under any key the subject does not define. The subject's own fields (unit ids, the
-    // sentence hash, the card and draft ids, the source's title and locator) are identifiers whose length is capped above, not prose.
-    issues.push(...scanForText(s, 'subject', ['itemIds', 'sentenceKey', 'cardId', 'draftId', 'title', 'locator']));
+    // sentence hash, the card and draft ids, the source's title and locator) are identifiers whose length is capped above, not prose;
+    // a v3 reference's address, app name and media id are bounded by the union's own checks.
+    issues.push(...scanForText(s, 'subject', ['itemIds', 'sentenceKey', 'cardId', 'draftId', 'title', 'locator', ...(typed ? ['url', 'sourceApp', 'mediaId'] : [])]));
   }
   if (!isRecord(x.payload)) issues.push({ path: 'payload', message: 'required object' });
   else if (ALL_KINDS.has(String(x.kind))) {

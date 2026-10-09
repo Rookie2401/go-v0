@@ -17,7 +17,7 @@ import {
   type ReaderSelection, type SelectionFailure, type SelectionResult, type AnySourceReference, type TextDirection, type Rect,
 } from '../contract/readerAdapter';
 import { collapseWhitespace, nfcOffset, safeCutAfter, safeCutBefore, snapToGraphemes, textDirection, wordCount, type Span } from '../text';
-import { declinedHostsFromRegistry } from './registry';
+import { DEFAULT_ENTRY, declinedHostsFromRegistry } from './registry';
 import { documentLanguageOf } from './languageMeta';
 import type { AdapterLanguageEvidence } from '../contract/language';
 
@@ -405,7 +405,7 @@ export class WebGenericAdapter implements ReaderAdapter {
   sourceRef(): AnySourceReference | undefined {
     const title = (this.doc.title ?? '').trim().slice(0, 120);
     const loc = this.doc.defaultView?.location;
-    return { kind: 'web', title: title || undefined, locator: loc?.pathname || undefined };
+    return { kind: 'web', title: title || undefined, locator: loc?.pathname || undefined, restrictions: { ...DEFAULT_ENTRY.restrictions } };
   }
 
   anchor(range: Range | undefined): PopupAnchor {

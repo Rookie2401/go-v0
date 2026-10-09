@@ -62,7 +62,7 @@ describe('Settings', () => {
     await until(() => !!rig.root.querySelector('#diagnostics dt'), 'the diagnostics');
     const text = rig.q('#diagnostics').textContent!;
     expect(text).toContain('fsrs@v5.4.2 using FSRS-6.0');
-    expect(text).toContain('Event contract2');
+    expect(text).toContain('Event contract3');
     expect(text).toContain('Events in the local log3');
     expect(text).toContain('Deck items2');
     expect(text).toContain('Desired retention90%');

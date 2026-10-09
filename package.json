@@ -66,7 +66,11 @@
     "review:apply": "vite-node scripts/review-apply.mts",
     "norway:audit": "vite-node --config scripts/vite.config.ts scripts/norway-audit.mts",
     "reader:fixture": "vite-node --config scripts/vite.config.ts packages/controlled-reader/scripts/make-fixture.mts",
-    "reader:build": "vite build --config packages/controlled-reader/vite.config.ts --mode prototype"
+    "reader:build": "vite build --config packages/controlled-reader/vite.config.ts --mode prototype",
+    "ext:build:harness": "vite build -c packages/golearn-extension/vite.config.ts --mode content-harness",
+    "local:build": "npm run ext:build && vite build -c packages/golearn-extension/app/vite.config.ts --mode options && vite build -c packages/golearn-extension/app/vite.config.ts --mode web && vite build -c packages/gopractice/vite.config.ts",
+    "local:seed": "vite-node scripts/local/seed-teams.ts",
+    "local:service": "vite-node packages/repository-service/src/main.ts --port 8790 --data data/local-repository --host 127.0.0.1"
   },
   "dependencies": {
     "dexie": "^4",

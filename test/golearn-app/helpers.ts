@@ -103,6 +103,7 @@ export class FakeService {
 
 export const SQ_FAKE: PackView = {
   packId: 'pack:sq', languageId: 'sq', version: '9', name: 'Albanian', nativeName: 'Shqip', status: 'installable', level: 'installable', levelLabel: 'installable',
+  analyzerId: 'adapter-sq@9', analyzerVersion: '9', validation: 'unreviewed',
   defaultVarietyId: 'sq-standard', scriptId: 'Latn',
   varieties: [{ varietyId: 'sq-standard', label: 'Standard Albanian', analysed: true }, { varietyId: 'sq-gheg', label: 'Gheg', analysed: false }],
   licences: [{ resource: 'Dictionary kaikki-sq', licence: 'CC BY-SA 4.0', notice: 'Wiktionary, via kaikki.org — CC BY-SA 4.0' }],
@@ -111,11 +112,13 @@ export const SQ_FAKE: PackView = {
 };
 export const ES_FAKE: PackView = {
   packId: 'pack:es', languageId: 'es', version: '3', name: 'Spanish', nativeName: 'Español', status: 'planned', level: 'planned', levelLabel: 'planned, not installable',
+  analyzerId: 'adapter-es@3', analyzerVersion: '3', validation: 'unsupported',
   defaultVarietyId: 'es-HN', scriptId: 'Latn', varieties: [{ varietyId: 'es-HN', label: 'Honduras', analysed: true }],
   licences: [], attribution: [], reviewStatus: 'machine-drafted', provenance: ['Planned, not installable.'], manifest: { fake: 'es' },
 };
 export const NB_FAKE: PackView = {
   packId: 'pack:nb', languageId: 'nb', version: '2', name: 'Norwegian (Bokmål)', nativeName: 'Bokmål', status: 'installable', level: 'installable', levelLabel: 'installable',
+  analyzerId: 'adapter-nb@2', analyzerVersion: '2', validation: 'unreviewed',
   defaultVarietyId: 'nb', scriptId: 'Latn', varieties: [{ varietyId: 'nb', label: 'Bokmål', writtenStandard: 'nb', analysed: true }],
   licences: [], attribution: [], reviewStatus: 'machine-drafted', provenance: [], manifest: { fake: 'nb' },
 };

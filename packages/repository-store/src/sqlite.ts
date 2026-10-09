@@ -14,16 +14,17 @@ import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import type { StatementSync } from 'node:sqlite';
+import { provenanceColumns } from '../../repository-contract/src';
 import type {
   Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFilter, FormAnalysis, LanguagePackInfo, Learner, LinguisticUnit,
   PrivateDocument, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
 } from '../../repository-contract/src';
 import { applyMigrations } from './migrate';
 import {
-  appendIssues, assertSameOwner, atMs, byKey, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack,
-  mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, sortPacks, zeroErase,
+  appendIssues, assertSameOwner, atMs, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack,
+  mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, sortPacks, withCorrection, zeroErase,
 } from './rules';
-import type { ConcreteStore, EraseCounts, StoreOptions } from './rules';
+import type { ConcreteStore, EraseCounts, ProvenanceCount, StoreOptions } from './rules';
 import { applyTombstone as applyDeletion } from './deletion';
 
 export interface SqliteOptions extends StoreOptions {
@@ -237,14 +238,26 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
     async putUnits(rows) {
       atomic(() => {
         for (const u of rows) {
-          const cur = get('SELECT status FROM units WHERE unit_id = ?', u.unitId);
+          const cur = get('SELECT status, json FROM units WHERE unit_id = ?', u.unitId);
           if (!mayReplaceByRank(cur?.status as LinguisticUnit['status'] | undefined, u.status)) continue;
+          const row = carried(cur ? parse<LinguisticUnit>(cur) : undefined, u);
+          const { origin, validation } = provenanceColumns(row);
           run(
-            `INSERT INTO units (unit_id, kind, language_id, label, status, json) VALUES (?, ?, ?, ?, ?, ?)
-             ON CONFLICT (unit_id) DO UPDATE SET kind = excluded.kind, language_id = excluded.language_id, label = excluded.label, status = excluded.status, json = excluded.json`,
-            u.unitId, u.kind, u.languageId, u.label, u.status, text(u),
+            `INSERT INTO units (unit_id, kind, language_id, label, status, json, origin, validation) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+             ON CONFLICT (unit_id) DO UPDATE SET kind = excluded.kind, language_id = excluded.language_id, label = excluded.label, status = excluded.status, json = excluded.json,
+               origin = excluded.origin, validation = excluded.validation`,
+            row.unitId, row.kind, row.languageId, row.label, row.status, text(row), origin, validation,
           );
         }
+      });
+    },
+    async recordUnitCorrection(unitId, correction, flag) {
+      return atomic(() => {
+        const cur = get('SELECT json FROM units WHERE unit_id = ?', unitId);
+        if (!cur) return undefined;
+        const r = withCorrection(parse<LinguisticUnit>(cur), correction, flag);
+        run('UPDATE units SET status = ?, json = ? WHERE unit_id = ?', r.unit.status, text(r.unit), unitId);
+        return r;
       });
     },
     async findUnits(q) {
@@ -263,12 +276,14 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
     async putRelations(rows) {
       atomic(() => {
         for (const r of rows) {
-          const cur = get('SELECT status FROM relations WHERE from_id = ? AND relation = ? AND to_id = ?', r.fromId, r.relation, r.toId);
+          const cur = get('SELECT status, json FROM relations WHERE from_id = ? AND relation = ? AND to_id = ?', r.fromId, r.relation, r.toId);
           if (!mayReplaceByRank(cur?.status as UnitRelation['status'] | undefined, r.status)) continue;
+          const row = carried(cur ? parse<UnitRelation>(cur) : undefined, r);
+          const { origin, validation } = provenanceColumns(row);
           run(
-            `INSERT INTO relations (from_id, relation, to_id, status, json) VALUES (?, ?, ?, ?, ?)
-             ON CONFLICT (from_id, relation, to_id) DO UPDATE SET status = excluded.status, json = excluded.json`,
-            r.fromId, r.relation, r.toId, r.status, text(r),
+            `INSERT INTO relations (from_id, relation, to_id, status, json, origin, validation) VALUES (?, ?, ?, ?, ?, ?, ?)
+             ON CONFLICT (from_id, relation, to_id) DO UPDATE SET status = excluded.status, json = excluded.json, origin = excluded.origin, validation = excluded.validation`,
+            row.fromId, row.relation, row.toId, row.status, text(row), origin, validation,
           );
         }
       });
@@ -287,11 +302,15 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       atomic(() => {
         for (const a of rows) {
           const cur = get('SELECT json FROM analyses WHERE analysis_id = ?', a.analysisId);
-          if (!mayReplaceAnalysis(cur ? parse<FormAnalysis>(cur) : undefined, a)) continue;
+          const existing = cur ? parse<FormAnalysis>(cur) : undefined;
+          if (!mayReplaceAnalysis(existing, a)) continue;
+          const row = carriedAnalysis(existing, a);
+          const { origin, validation } = provenanceColumns(row);
           run(
-            `INSERT INTO analyses (analysis_id, form_id, sentence_key, status, json) VALUES (?, ?, ?, ?, ?)
-             ON CONFLICT (analysis_id) DO UPDATE SET form_id = excluded.form_id, sentence_key = excluded.sentence_key, status = excluded.status, json = excluded.json`,
-            a.analysisId, a.formId, a.sentenceKey ?? null, a.status, text(a),
+            `INSERT INTO analyses (analysis_id, form_id, sentence_key, status, json, origin, validation) VALUES (?, ?, ?, ?, ?, ?, ?)
+             ON CONFLICT (analysis_id) DO UPDATE SET form_id = excluded.form_id, sentence_key = excluded.sentence_key, status = excluded.status, json = excluded.json,
+               origin = excluded.origin, validation = excluded.validation`,
+            row.analysisId, row.formId, row.sentenceKey ?? null, row.status, text(row), origin, validation,
           );
         }
       });
@@ -549,6 +568,15 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
     },
     async applyTombstone(t) {
       return applyDeletion(store, t);
+    },
+    async provenanceStats() {
+      const out: ProvenanceCount[] = [];
+      for (const table of ['analyses', 'relations', 'units'] as const) {
+        for (const r of all(`SELECT origin, validation, COUNT(*) AS n FROM ${table} GROUP BY origin, validation`)) {
+          out.push({ table, origin: r.origin as ProvenanceCount['origin'], validation: r.validation as ProvenanceCount['validation'], count: Number(r.n) });
+        }
+      }
+      return out.sort(byKey((c) => [c.table, c.origin, c.validation]));
     },
     /** Operator maintenance: empty the log and rebuild the file without its free pages (VACUUM can take a while on a large store). */
     async compact() {

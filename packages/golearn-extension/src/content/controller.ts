@@ -13,10 +13,10 @@
  * card or write a record; older ones are superseded. It listens for layout changes only while a card is open. It holds
  * no token and no learner id: events carry a placeholder identity and the background replaces it.
  */
-import type { LayoutChange, PopupAnchor, ReaderAdapter, ReaderContext, ReaderSelection, ScriptureSourceReference, SelectionFailure, SourceReference } from '../contract/readerAdapter';
+import type { AnySourceReference, LayoutChange, PopupAnchor, ReaderAdapter, ReaderContext, ReaderSelection, SelectionFailure } from '../contract/readerAdapter';
 import { WORD_LIST_MISSING, type LanguageEvidence, type LanguageResolution, type ResolveLanguage, type SegmentFor } from '../contract/language';
 import { describePage } from '../adapters';
-import { chooseAdapter } from '../adapters';
+import { chooseAdapter, registryEntry } from '../adapters';
 import type { CardModel } from '../parser/cardModel';
 import type { ParseContext, ParseInput } from '../parser';
 import type { CardUI, DismissReason } from '../popup/card';
@@ -24,7 +24,7 @@ import { initialView, type CardActions, type CardView, type CorrectionInput, typ
 import { LookupTimer, type MetricsRow, type PerfLike } from '../metrics';
 import {
   buildAnalysisShownEvent, buildAssistanceEvent, buildCorrectionEvent, buildNoPackEvent, buildPronunciationEvent, buildSavedEvent, buildSelectionEvent,
-  type Identity, type InteractionContext,
+  type StoredSourceRef, type Identity, type InteractionContext,
 } from '../store';
 import type { LookupTrigger } from '../platform';
 import { languageNameOf as knownLanguageName, type ProfileReply, type PublicStatus } from '../protocol';
@@ -78,6 +78,8 @@ export interface LanguageInfo {
   basis: LanguageResolution['basis'];
   confidence: number;
   reasons: string[];
+  /** Which declaration decided it (`html-lang`, `opf` ...), when the basis is a declaration. Recorded as `payload.language.source`. */
+  source?: string;
   /** Only when the language is undetermined: the installed languages the learner may choose from. */
   languageChoice?: Array<{ languageId: string; name: string }>;
 }
@@ -228,7 +230,7 @@ export class LookupController {
       const installed = status?.installedLanguages ? analysers.filter((l) => status.installedLanguages!.includes(l) || l === status.languageId) : analysers;
       const resolution = await this.resolveLanguageOf(adapter, sel, status, installed, req.languageOverride);
       if (!live()) return { status: 'superseded' };
-      const language: LanguageInfo = { languageId: resolution.languageId, varietyId: resolution.varietyId, basis: resolution.basis, confidence: resolution.confidence, reasons: resolution.reasons };
+      const language: LanguageInfo = { languageId: resolution.languageId, varietyId: resolution.varietyId, basis: resolution.basis, confidence: resolution.confidence, reasons: resolution.reasons, ...(resolution.source ? { source: resolution.source } : {}) };
       if (resolution.basis === 'undetermined' || !resolution.languageId) {
         return await this.undetermined({ language, analysers: installed, adapter, timer, anchor: usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed, my });
       }
@@ -270,7 +272,7 @@ export class LookupController {
       timer.mark('contextExtracted');
 
       if (!analysers.includes(languageId)) {
-        return await this.noAnalysis({ languageId, packAvailable: status?.packAvailable === true, adapter, sel, timer, anchor: usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed, my, langMetric });
+        return await this.noAnalysis({ languageId, language, packAvailable: status?.packAvailable === true, adapter, sel, timer, anchor: usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed, my, langMetric });
       }
 
       const parseCtx: ParseContext = {
@@ -285,8 +287,7 @@ export class LookupController {
 
       // the source of the selection is read before the card is built so that every interaction can name it
       const sourceP = safeAsync(() => adapter.sourceRef());
-      let scripture: ScriptureSourceReference | undefined;
-      const append = (ev: GoEvent) => this.d.store.append(scripture ? withScripture(ev, scripture) : ev);
+      const append = (ev: GoEvent) => this.d.store.append(ev);
       const services = this.d.services;
       const languageName = status && status.languageId === languageId ? status.languageName : languageNameOf(languageId);
       const askGloss = !!services && !!card.lemma && !card.unconfirmed && card.tokenCount === 1;
@@ -371,12 +372,11 @@ export class LookupController {
       const frame = (this.d.nextFrame ?? defaultFrame(this.d.doc))().then(() => { timer.mark('firstInfoShown'); });
       try { await this.d.ready; } catch { /* the identity keeps its placeholder */ }
       const gotSource = await sourceP;
-      scripture = gotSource?.kind === 'scripture' ? gotSource : undefined;
-      const source: SourceReference | undefined = gotSource?.kind === 'scripture' ? { kind: 'web' } : gotSource;
+      const source = sourceRefForEvent(gotSource, adapter.id);
       if (!live()) { await frame; return { status: 'superseded' }; }
       const base: InteractionContext = {
         card, source, readerId: adapter.id, identity: this.d.identity, version: this.d.version, sessionId: this.d.sessionId,
-        now: this.now(), direction: sel.direction,
+        now: this.now(), direction: sel.direction, language,
       };
       const event = buildSelectionEvent(base);
       holder.ictx = { ...base, selectionEventId: event.id };
@@ -441,7 +441,7 @@ export class LookupController {
   }
 
   /** The enrolment's language has no analyser or pack in this build: say so, and record only the lookup. */
-  private async noAnalysis(p: { languageId: string; packAvailable: boolean; sel: ReaderSelection; adapter: ReaderAdapter; timer: LookupTimer; anchor: PopupAnchor; my: number; langMetric?: LanguageMetric }): Promise<LookupOutcome> {
+  private async noAnalysis(p: { languageId: string; language: LanguageInfo; packAvailable: boolean; sel: ReaderSelection; adapter: ReaderAdapter; timer: LookupTimer; anchor: PopupAnchor; my: number; langMetric?: LanguageMetric }): Promise<LookupOutcome> {
     const name = languageNameOf(p.languageId);
     const reason = p.packAvailable ? 'no-analyser' : 'no-pack';
     const message = p.packAvailable
@@ -449,13 +449,11 @@ export class LookupController {
       : `There is no GoLearn pack for ${name} yet, so there is no analysis to show. The lookup was counted; nothing else was recorded.`;
     this.closeCard('replaced');
     this.d.ui.showMessage(message, p.anchor, 'info');
-    this.stampLanguage({ languageId: p.languageId, basis: p.langMetric?.languageBasis ?? 'team-default', confidence: p.langMetric?.languageConfidence ?? 0, reasons: [] });
+    this.stampLanguage(p.language);
     const got = await safeAsync(() => p.adapter.sourceRef());
     if (p.my !== this.seq) return { status: 'superseded' };
-    const scripture = got?.kind === 'scripture' ? got : undefined;
-    const source: SourceReference | undefined = got?.kind === 'scripture' ? { kind: 'web' } : got;
-    const ev = buildNoPackEvent({ surface: p.sel.surface, languageId: p.languageId, readerId: p.adapter.id, identity: this.d.identity, version: this.d.version, sessionId: this.d.sessionId, now: this.now(), source, direction: p.sel.direction, reason });
-    await this.d.store.append(scripture ? withScripture(ev, scripture) : ev);
+    const ev = buildNoPackEvent({ surface: p.sel.surface, languageId: p.languageId, readerId: p.adapter.id, identity: this.d.identity, version: this.d.version, sessionId: this.d.sessionId, now: this.now(), source: sourceRefForEvent(got, p.adapter.id), direction: p.sel.direction, reason, language: p.language });
+    await this.d.store.append(ev);
     p.timer.mark('eventQueued');
     await this.pushMetric(p.timer, { readerId: p.adapter.id, contextKind: 'n/a', tokenCount: 0, contextChars: p.sel.surface.length, outcome: 'failed', failure: reason, ...p.langMetric });
     return { status: 'message', reason, message, language: p.langMetric ? { languageId: p.langMetric.languageId, basis: p.langMetric.languageBasis, confidence: p.langMetric.languageConfidence, reasons: [] } : undefined };
@@ -482,7 +480,10 @@ export class LookupController {
         out = safe(() => resolve(evidence)) ?? out;
       }
     }
-    return out ?? { basis: 'undetermined', confidence: 0, reasons: ['the language resolver failed'] };
+    const result: LanguageResolution = out ?? { basis: 'undetermined', confidence: 0, reasons: ['the language resolver failed'] };
+    // which declaration decided it, when one did: the evidence's own label (never page text)
+    const source = result.source ?? (result.basis === 'book-metadata' ? evidence.bookLanguage?.source : result.basis === 'document-metadata' ? evidence.documentLanguage?.source : undefined);
+    return source ? { ...result, source } : result;
   }
 
   /** Say how the language was decided on the card's host element, for the popup layer and for tests; nothing else of the page is touched. */
@@ -558,11 +559,32 @@ export class LookupController {
 /** The language fields a metrics row carries beside MetricsRow's own: how the language was decided, never the text. */
 export interface LanguageMetric { languageId: string; languageBasis: LanguageResolution['basis']; languageConfidence: number }
 
-/** A copy of the event whose source reference is the Scripture reference (translation, book, chapter, verse): metadata, never the verse text. */
-function withScripture(ev: GoEvent, ref: ScriptureSourceReference): GoEvent {
-  const { kind, translationId, book, chapter, verse, languageHint } = ref;
-  const sourceRef = { kind, translationId, book, chapter, ...(verse !== undefined ? { verse } : {}), ...(languageHint ? { languageHint } : {}) };
-  return { ...ev, subject: { ...ev.subject, sourceRef: sourceRef as unknown as NonNullable<GoEvent['subject']['sourceRef']> } };
+/**
+ * What the adapter says about the source, as the source an event carries. A Scripture reference becomes the `scripture` member:
+ * `provider` from the registry id of the adapter, `languageId` from the translation's language hint, `url` (path and passage query,
+ * Scripture sites only) and `confidence` from the adapter (0.9 when the URL and the verse markup agreed, 0.6 otherwise). Every member
+ * carries the registry entry's `restrictions` (the adapter's, else the entry's by adapter id): trusted configuration, never the page's.
+ * Metadata only, never the verse text.
+ */
+export function sourceRefForEvent(got: AnySourceReference | undefined, adapterId: string): StoredSourceRef | undefined {
+  if (!got) return undefined;
+  const entryRestrictions = registryEntry(adapterId)?.restrictions;
+  if (got.kind === 'scripture') {
+    const restrictions = got.restrictions ?? entryRestrictions;
+    return {
+      kind: 'scripture',
+      provider: adapterId === 'biblegateway' || adapterId === 'youversion' ? adapterId : 'other',
+      translationId: got.translationId,
+      ...(got.languageHint ? { languageId: got.languageHint } : {}),
+      book: got.book, chapter: got.chapter,
+      ...(got.verse !== undefined ? { verse: got.verse } : {}),
+      ...(got.url ? { url: got.url } : {}),
+      confidence: got.confidence ?? 0.6,
+      ...(restrictions ? { restrictions: { ...restrictions } } : {}),
+    };
+  }
+  if (got.restrictions || !entryRestrictions) return got;
+  return { ...got, restrictions: { ...entryRestrictions } };
 }
 
 /** The protocol's name for a language, else the browser's English name for it (`en` -> English), else the id. */

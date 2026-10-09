@@ -1,6 +1,6 @@
 # Go Repository — API, synchronization, privacy controls, development and deployment
 
-Status: implemented 2026-10-08 (Prompt 3). The route-by-route reference with every status code is
+Status: implemented 2026-10-08 (Prompt 3); contract version 3 (source policy, unit corrections, provenance) added 2026-10-09, section 7. The route-by-route reference with every status code is
 `packages/repository-service/README.md`; the sync client's rules are `packages/repository-sync/README.md`. This document
 is the overview an application developer needs, plus how to run the service.
 
@@ -35,7 +35,8 @@ per request `METHOD /path status ms` and never a body, query string or token.
 | account identity | `POST /accounts`, `POST /sessions`, `DELETE /sessions/current`, `GET /me`, `DELETE /me` (requires `confirmEmail`; erases every row of the learner and revokes all sessions) |
 | team / language enrolment | `GET /enrolments`, `POST /enrolments` (teamId requires membership; appends `EnrolmentChanged`), `POST /enrolments/:id/end` (sets `endedAt`, appends `EnrolmentChanged {change:'ended'}`; idempotent; history is kept) |
 | language-pack metadata | `GET /packs?languageId=` |
-| linguistic knowledge lookup | `GET /units/:id` (unit, relations, analyses), `POST /units/batch` (`{ ids }`, 1 to 50: `{ units: { <id>: { unit, relations, analyses } }, missing: [ids] }`, the same view as the single route, for GoReview's intake), `POST /lookup` (surface + optional sentence → units, relations, analysis; the sentence is analysed and not stored) |
+| unit correction (v3) | `POST /units/:id/corrections` (a learner's challenge to a unit: appended to its `provenance.corrections`; a `provisional` unit becomes `requires-review`; for a form with a `lexemeId` or `features` the linguistics port's `correct()` also supersedes the analysis; section 7.3) |
+| linguistic knowledge lookup | `GET /units/:id` (unit, relations, analyses, and `provenance` with the v3 defaults filled in), `POST /units/batch` (`{ ids }`, 1 to 50: `{ units: { <id>: { unit, relations, analyses } }, missing: [ids] }`, the same view as the single route, for GoReview's intake), `POST /lookup` (surface + optional sentence → units, relations, analysis; the sentence is analysed and not stored) |
 | learning-event ingestion | `POST /events` (1–500 per batch; a batch with any invalid event is rejected whole with per-index issues; retries are idempotent on `id` and `dedupeKey`; projection runs after the append) |
 | learner-state queries | `GET /knowledge?unitIds=`, `GET /preferences?languageId=`, `GET /events?afterSeq=&kinds=&unitId=&since=&limit=` |
 | review candidate retrieval | `GET /candidates?enrolmentId=&limit=` (explainable scores with reasons and eligibility) |
@@ -44,7 +45,7 @@ per request `METHOD /path status ms` and never a body, query string or token.
 | private documents | `GET /documents` (metadata), `GET/PUT/DELETE /documents/:id` (optimistic `expectedRevision`; 409 with `current`) |
 | corrections | `POST /corrections` (learner correction of an analysis → new analysis, old invalidated, `AnalysisCorrected` event) |
 | synchronization | `POST /sync/push`, `POST /sync/pull` |
-| export | `GET /export` → `go-repository-export@1` (events, enrolments, knowledge, preferences, documents with bodies, tombstones; never a hash or token). The file has the store export's shape (top-level `learnerId`, `events`, `enrolments`, `documents`, `preferences`, `tombstones`) plus `account`, `contractVersion` and full `devices` objects, so `importLearner` (repository-store) restores it as downloaded; knowledge is derived and rebuilt by the engine |
+| export | `GET /export` → `go-repository-export@1` (events, enrolments, knowledge, preferences, documents with bodies, tombstones, and since v3 `unitProvenance`: the provenance of the units the learner's events refer to; never a hash or token). The file has the store export's shape (top-level `learnerId`, `events`, `enrolments`, `documents`, `preferences`, `tombstones`) plus `account`, `contractVersion` and full `devices` objects, so `importLearner` (repository-store) restores it as downloaded; knowledge is derived and rebuilt by the engine |
 | deletion | `POST /tombstones` (`event`, `source` and `range` scopes are recorded and then applied physically, the projection is refolded, the answer says `applied: { events, knowledge }`; `learner` scope is only recorded), `DELETE /me` (erasure) |
 | health | `GET /health` |
 
@@ -74,7 +75,7 @@ One event the service refuses (`422 invalid-events`, with indexes) no longer hol
 - Export is complete and readable (`GET /export`); deletion is per learner (`DELETE /me`), and per source, range or
   event through tombstones that the store applies physically (`applyTombstone`, reached through `POST /tombstones`) after recording the instruction; the
   projection is rebuilt afterwards. A deleted document keeps neither body nor title.
-- Physical erasure (SQLite). The store sets `PRAGMA secure_delete = ON` and, after `DELETE /me`, a document deletion or an event tombstone, runs `wal_checkpoint(TRUNCATE)`, so the learner's email, titles, bodies and event keys are zeroed in the database file and gone from the write-ahead log (proved at byte level by `test/audit/privacy.deletion.test.ts`). The checkpoint is best effort: a process holding a read on the database at that moment turns it into a no-op until the next deletion. **`VACUUM` is the operator's step, not run per delete** (it rewrites the whole file and can take long on a large store): call `store.compact()` (checkpoint, `VACUUM`, checkpoint) from a maintenance window to shrink the file after large erasures; `secure_delete` makes it unnecessary for confidentiality of rows deleted from now on; a database that was already in use before this setting existed may hold older deleted data in free pages, and one `compact()` removes that. **Not covered:** backups, replicas, snapshots and any copy of the file made before an erasure keep what they kept, and the shared linguistic tables (`units`, `analyses`) keep the surface of a word a learner looked up, without any learner id (audit P-12).
+- Physical erasure (SQLite). The store sets `PRAGMA secure_delete = ON` and, after `DELETE /me`, a document deletion or an event tombstone, runs `wal_checkpoint(TRUNCATE)`, so the learner's email, titles, bodies and event keys are zeroed in the database file and gone from the write-ahead log (proved at byte level by `test/audit/privacy.deletion.test.ts`). The checkpoint is best effort: a process holding a read on the database at that moment turns it into a no-op until the next deletion. **`VACUUM` is the operator's step, not run per delete** (it rewrites the whole file and can take long on a large store): call `store.compact()` (checkpoint, `VACUUM`, checkpoint) from a maintenance window to shrink the file after large erasures; `secure_delete` makes it unnecessary for confidentiality of rows deleted from now on; a database that was already in use before this setting existed may hold older deleted data in free pages, and one `compact()` removes that. **Not covered:** backups, replicas, snapshots and any copy of the file made before an erasure keep what they kept, and the shared linguistic tables (`units`, `relations`, `analyses`) keep the surface of a word a learner looked up, without any learner id, device or time. Since contract v3 each such row says how it came to exist (`provenance.origin` `learner-lookup`, `validation` from the pack's level; audit P-12), and `DELETE /me` leaves these rows by design; the export lists the provenance of the units the learner's events refer to (section 7.4).
 - No third-party processing exists in the service; consents are events (`ConsentGiven/Withdrawn`) reported by `GET /me`.
 - Logging never includes bodies, queries or tokens; a 500 leaks no cause.
 - Reading telemetry is minimal by construction: the only reading events are the learner's own lookups with hashes.
@@ -82,7 +83,7 @@ One event the service refuses (`422 invalid-events`, with indexes) no longer hol
 ## 6. Development and deployment
 
 ```
-npx vitest run test/repository test/ecosystem            # the Repository suites (466 tests incl. the integration scenario)
+npx vitest run test/repository test/contract test/ecosystem   # the Repository suites (737 tests in test/repository, test/contract and test/sync on 2026-10-09, 178 of them for contract v3, incl. the integration scenario)
 npx vite-node packages/repository-service/src/main.ts --port 8790 --data data/repository
 ```
 `--data` (default `data/repository`, git-ignored) holds `repository.sqlite`; migrations run on open. Needs Node 24
@@ -95,3 +96,74 @@ Deployment (owner's decision, not done): the handler is web-API only, so the Clo
 deploys and holds every secret; nothing in this repository contains one. Encryption in transit is the host's TLS.
 Stored-data protection beyond file permissions (at-rest encryption, backups) is the host's responsibility and is
 listed as a limitation in the test report.
+
+## 7. Contract version 3 in the service (2026-10-09)
+
+The service speaks contract v3 and still accepts v1 and v2 events (data model, section 7, has the v2 to v3 table). `GET /health` reports
+`contractVersion: 3`.
+
+### 7.1 Source policy: what a reader's source may be used for
+
+An event's `subject.sourceRef.restrictions` is a **claim by the client**. At ingestion (`POST /events`, `POST /sync/push`, `POST /reviews`,
+`POST /writing`) the service stores that claim **capped by its own table**, keyed by the event's `payload.readerId`: per field the more
+restrictive of the two, in the order `forbidden` < `unknown` < `allowed`. A client may tighten and never loosen, and an absent field counts as
+`unknown`, so page-controlled metadata can never grant a permission. A reader the table does not know gets all `unknown`. The table is
+`packages/repository-service/src/source-policy.json` (data, read by `sourcePolicy.ts` and wired into the service by `main.ts` as `ServiceDeps.sourcePolicy`; a service started without one caps every claim to all `unknown`, which fails closed); it is the most permissive value the service will store, not a finding that the terms allow
+it: every registry entry still has `termsReview.reviewed: false`, so each row changes only with a person's review of the terms, recorded in the
+reader registry and here together. `readerId` is asserted by the application (the extension sets it from its own registry), not by the page.
+
+| readerId | textRetention | remoteProcessing | audioRetention | export | sharing | reviewExamples | why |
+|---|---|---|---|---|---|---|---|
+| `web-generic` | unknown | unknown | unknown | unknown | unknown | unknown | any page; its terms are not known to us |
+| `epub-local` | unknown | unknown | unknown | **allowed** | forbidden | unknown | the learner's own DRM-free file: exporting what they looked up is theirs to do; what the book's text may be kept, sent away or shared for is a property of the book, and sharing stays forbidden |
+| `play-books`, `libroteka`, `kanah`, `tolino-webreader`, `vivlio-casadellibro` | forbidden | forbidden | forbidden | unknown | forbidden | forbidden | store or subscription readers, terms unreviewed |
+| `kobo-web`, `kindle-web`, `readawrite`, `mebmarket`, `pratilipi` | forbidden | forbidden | forbidden | forbidden | forbidden | forbidden | blocked, permission-required or unsupported |
+| `biblegateway`, `youversion` | forbidden | forbidden | forbidden | unknown | forbidden | forbidden | licensed translations: the verses stay on the provider's page and no derivative (audio, example, share) is made from them |
+| `share-android`, `share-ios`, `share-web`, `clipboard` | unknown | unknown | unknown | unknown | unknown | unknown | the learner moved a passage in; where it came from is not established |
+| anything else | unknown | unknown | unknown | unknown | unknown | unknown | the floor |
+
+Only `epub-local.export` is `allowed`; a test pins that. Restrictions are written onto the stored reference only when the client sent some (a
+reference that claims nothing is stored without, and reads as `unknown`; the policy is still what a consumer should apply for `readerId`).
+A typed (v3) reference is stored rebuilt from its known fields, so `GET /events` and `/sync/pull` return the stored (capped, rebuilt) reference, which can differ from the one a device queued; the server's copy is the one anything downstream should read. Tests: `test/repository/service/v3.test.ts` (a forged `allowed` is stored as
+the policy's value for every row; a tightened value is kept; the table covers every id in `reader/ADAPTER-REGISTRY.md`).
+
+### 7.2 Provenance of looked-up rows
+
+Ingesting a `SelectionLookedUp` (and `POST /lookup`) stamps the shared rows it registered with `origin: 'learner-lookup'`, `packVersion` and
+`validation` from the stored pack row: `installable` is `production-validated` only if the pack manifest says so (else `unreviewed`),
+`experimental` is `experimental`, `planned` is `unsupported`, no pack row is `unreviewed`. **No learner id, device or time is stored with
+it.** Stamping is best effort and happens once per row.
+
+### 7.3 Corrections to a unit
+
+`POST /units/:id/corrections` `{ reason, from?, to?, lexemeId?, features?, sentenceKey? }` (a learner session; `reason` 1 to 300
+characters) answers `{ unit, provenance, statusChanged, result? }`:
+
+- the correction is appended to the unit's `provenance.corrections` as `{ at, by: 'learner', from?, to?, reason }`, with no learner id;
+- a form unit given a `lexemeId` or `features` is passed to the linguistics port's `correct()` (superseding analysis, the old one
+  invalidated; `result` carries it) and is not flagged;
+- otherwise a `provisional` unit becomes `requires-review`; a `verified` or `high-confidence` unit keeps its status (one learner cannot
+  lower a reviewed unit for everyone; the correction waits for a reviewer), `statusChanged: false`;
+- 404 `no-such-unit`, 422 for a missing or too long `reason`, 403 `learner-only` for `"by": "reviewer"` (a reviewer's verdict is the
+  operator's, through the store's `recordUnitCorrection`), 403 for another learner's id, 409 `corrections-full` at 50 per unit.
+
+This route is the unit-level challenge. The learner's own evidence trail (an `AnalysisCorrected` event against an enrolment) stays
+`POST /corrections`.
+
+### 7.4 Export and deletion
+
+`GET /export` adds `unitProvenance`: for every unit the learner's events refer to, `{ unitId, kind, languageId, label, status, provenance }`
+with the v2 defaults filled in (corrections included, which name a role and never a person). The format string is unchanged
+(`go-repository-export@1`); the field is ignored by `importLearner` (the linguistic layer is shared, not restored). **`DELETE /me` leaves the
+shared linguistic rows** (`units`, `relations`, `analyses`) as they are, including their stamps and corrections: they hold no learner id,
+device, email or session. The one free-text field in them is a correction's `reason`; it carries no author and cannot be found by the
+learner's id, so erasure does not remove it. The privacy text for learners should say so.
+
+### 7.5 Operating notes
+
+- Migration `002-provenance.sql` runs on first open of an existing database (a few `ALTER TABLE ... ADD COLUMN` and `UPDATE` statements over
+  `units`, `relations`, `analyses`); take the usual file copy first. A build that only knows 001 refuses the migrated database ("newer than the
+  code"), by design.
+- `store.provenanceStats()` counts the shared rows by table, origin and validation (for an operator: how much of the linguistic layer is
+  `learner-lookup` and still `unreviewed`). The same is `SELECT origin, validation, COUNT(*) FROM units GROUP BY 1, 2`.
+- The clock-skew rule is in the data model, section 7.6: `clockSkewMs` on a sync push response is reported, never applied.

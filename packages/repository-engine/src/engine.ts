@@ -15,15 +15,28 @@ import { compareAt, countersOf, dedupeEvents, foldObservations, isTombstoned, ma
 import type { ExposureCounters, UnitResolver } from './projection';
 import { estimateSuitability } from './suitability';
 
-export const MODEL_VERSION = 'projection@1';
+/** projection@2: the eighth dimension (phraseComprehension) and language-basis weighting of exposure; a stored cursor at another version is rebuilt on the next read. */
+export const MODEL_VERSION = 'projection@2';
 const PAGE = 500;
 
 export type EngineStore = EventLog & ProjectionStore & LinguisticStore & TombstoneStore & Pick<IdentityStore, 'listEnrolments'>;
 export interface EngineDeps { store: EngineStore; now?: () => string; modelVersion?: string }
+export interface CandidateOptions {
+  limit?: number;
+  now?: string;
+  /** List units that already have a card too (with the existingCoverage penalty); by default they are not proposed again. */
+  includeCovered?: boolean;
+  /** Receives notes about rules that could not run (for example a pack with no mission word list). */
+  notes?: string[];
+}
 export interface ProjectionEngineX extends ProjectionEngine {
+  candidates(learnerId: string, enrolmentId: string, opts?: CandidateOptions): Promise<ReviewCandidate[]>;
   /** Exposure kinds behind a unit's exposure estimate (the contract row keeps only positive/negative; see README "exposure encoding"). */
   counters(learnerId: string, unitId: string): Promise<ExposureCounters>;
 }
+
+/** Judged dimensions whose negative observation counts as "struggled with it" for the construction rule. */
+const STRUGGLE_DIMENSIONS: ReadonlySet<string> = new Set(['readingRecognition', 'listeningRecognition', 'assistedRecognition', 'phraseComprehension']);
 
 const byUnitId = (a: { unitId: string }, b: { unitId: string }): number => (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0);
 
@@ -171,7 +184,7 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     return prefs;
   }
 
-  async function candidates(learnerId: string, enrolmentId: string, opts?: { limit?: number; now?: string }): Promise<ReviewCandidate[]> {
+  async function candidates(learnerId: string, enrolmentId: string, opts?: CandidateOptions): Promise<ReviewCandidate[]> {
     const at = opts?.now ?? now();
     const enrolment = (await store.listEnrolments(learnerId)).find((e) => e.enrolmentId === enrolmentId);
     if (!enrolment) return [];
@@ -198,12 +211,21 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     }
     for (const [id, m] of marks) cards.set(id, { ...(cards.get(id) ?? { covered: false }), covered: m.covered });
 
-    // Constructions realised by forms the learner has failed on (the evidence for grammaticalLeverage).
+    // When the learner struggled (lookup, assistance request, failed recognition) with each unit: the construction rule's window reads these.
+    const struggles = new Map<string, string[]>();
+    for (const o of observationsFromEvents(events, tombstones, resolve)) {
+      const struggle = o.dimension === 'exposure'
+        ? o.counter === 'lookup' || o.counter === 'assistance'
+        : o.outcome === 'negative' && STRUGGLE_DIMENSIONS.has(o.dimension);
+      if (struggle) (struggles.get(o.unitId) ?? struggles.set(o.unitId, []).get(o.unitId)!).push(o.at);
+    }
+
+    // Constructions realised by forms the learner is in difficulty with (the evidence for grammaticalLeverage).
     const realizedBy = new Map<string, string[]>();
     for (const r of rows) {
-      if (!Object.entries(r.dimensions).some(([d, e]) => d !== 'exposure' && e.negative > 0)) continue;
+      if (!Object.entries(r.dimensions).some(([, e]) => e.negative > 0)) continue;
       for (const rel of await store.relationsOf(r.unitId, 'out')) {
-        if (rel.relation !== 'realizes' || rel.status === 'invalidated' || rel.status === 'conflicted') continue;
+        if (rel.relation !== 'realizes' || rel.status === 'invalidated' || rel.status === 'conflicted' || rel.status === 'requires-review') continue;
         (realizedBy.get(rel.toId) ?? realizedBy.set(rel.toId, []).get(rel.toId)!).push(r.unitId);
       }
     }
@@ -213,7 +235,15 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     const analyses = new Map<string, FormAnalysis[]>();
     for (const u of units.values()) if (u.kind === 'form') analyses.set(u.unitId, await store.analysesOfForm(u.unitId));
 
-    return rankCandidates({ rows, units, analyses, realizedBy, cards, goals: enrolment.goals, now: at, limit: opts?.limit ?? 20 });
+    // The pack's mission word list, if its facts expose one (`missionUnitIds`); none today, so the rule is skipped and says so in `opts.notes`.
+    const pack = await store.getPack(enrolment.packId);
+    const mission = (pack as { missionUnitIds?: unknown } | undefined)?.missionUnitIds;
+    const missionUnits = Array.isArray(mission) ? new Set(mission.filter((m): m is string => typeof m === 'string')) : undefined;
+
+    return rankCandidates({
+      rows, units, analyses, realizedBy, cards, goals: enrolment.goals, now: at, limit: opts?.limit ?? 20, struggles,
+      ...(missionUnits ? { missionUnits } : {}), ...(opts?.includeCovered ? { includeCovered: true } : {}), ...(opts?.notes ? { notes: opts.notes } : {}),
+    });
   }
 
   async function suitability(learnerId: string, languageId: string, sample: { unitIds: string[]; tokenCount: number; constructionIds?: string[] }): Promise<SuitabilityEstimate> {

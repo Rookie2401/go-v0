@@ -1,0 +1,24 @@
+{
+  "format": "go-source-policy@1",
+  "about": "The most permissive source restrictions the Repository service will store for each reader (key: the reader id in docs/ecosystem/reader/ADAPTER-REGISTRY.md, plus the share and clipboard mechanisms). A client's claim is capped by these values: per field the more restrictive of the two wins, forbidden < unknown < allowed. These are caps, not findings that any terms allow anything: every registry entry still has termsReview.reviewed false, so a row is loosened only with a person's review of the terms, recorded in the registry and in REPOSITORY-API-AND-OPERATIONS.md section 7.1 together. A reader that is not listed gets all unknown. Read by sourcePolicy.ts (data, not code, so that the application bundles never reach it).",
+  "readers": {
+    "web-generic":         { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "unknown",   "sharing": "unknown",   "reviewExamples": "unknown" },
+    "epub-local":          { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "allowed",   "sharing": "forbidden", "reviewExamples": "unknown" },
+    "play-books":          { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "libroteka":           { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "kanah":               { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "tolino-webreader":    { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "vivlio-casadellibro": { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "kobo-web":            { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "forbidden", "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "kindle-web":          { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "forbidden", "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "readawrite":          { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "forbidden", "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "mebmarket":           { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "forbidden", "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "pratilipi":           { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "forbidden", "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "biblegateway":        { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "youversion":          { "textRetention": "forbidden", "remoteProcessing": "forbidden", "audioRetention": "forbidden", "export": "unknown",   "sharing": "forbidden", "reviewExamples": "forbidden" },
+    "share-android":       { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "unknown",   "sharing": "unknown",   "reviewExamples": "unknown" },
+    "share-ios":           { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "unknown",   "sharing": "unknown",   "reviewExamples": "unknown" },
+    "share-web":           { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "unknown",   "sharing": "unknown",   "reviewExamples": "unknown" },
+    "clipboard":           { "textRetention": "unknown",   "remoteProcessing": "unknown",   "audioRetention": "unknown",   "export": "unknown",   "sharing": "unknown",   "reviewExamples": "unknown" }
+  }
+}

@@ -30,6 +30,21 @@ export interface LanguageResolution {
   basis: 'override' | 'book-metadata' | 'document-metadata' | 'detection' | 'team-default' | 'undetermined';
   /** Plain-words reasons, shown to the learner or logged; no page text. */
   reasons: string[];
+  /** Which declaration decided it, when the basis is a declaration (`html-lang`, `opf`, `scripture-translation` …). Set by the controller from the evidence, not by the resolver. */
+  source?: string;
+}
+
+/**
+ * The language of a lookup as the Repository records it (`SelectionLookedUp.payload.language`, contract v3). Built from the one
+ * `LanguageInfo` the controller resolved; `override` is true exactly when `basis` is `override`.
+ */
+export interface EventLanguage {
+  languageId: string;
+  varietyId?: string;
+  basis: LanguageResolution['basis'];
+  confidence: number;
+  source?: string;
+  override: boolean;
 }
 
 export type ResolveLanguage = (evidence: LanguageEvidence) => LanguageResolution;

@@ -4,11 +4,27 @@
  * Credentials (password hash, session token hashes) are never exported; devices are listed by id only.
  */
 import { MAX_LIST_LIMIT } from './rules';
+import { provenanceOf } from '../../repository-contract/src';
 import type {
-  AssistancePreferences, Enrolment, Learner, PrivateDocument, RepositoryStore, StoredEvent, Tombstone, UnitKnowledge,
+  AnalysisStatus, AssistancePreferences, Enrolment, Learner, PrivateDocument, ProvenanceOrigin, RepositoryStore, StoredEvent, Tombstone, UnitKind,
+  UnitKnowledge, UnitProvenance, ValidationLevel,
 } from '../../repository-contract/src';
 
 export const EXPORT_FORMAT = 'go-repository-export@1' as const;
+
+/**
+ * Where a unit the learner's events refer to came from (contract v3, P-12). The shared linguistic layer is not the learner's data and is not
+ * restored by `importLearner`; this is the learner's copy of its provenance, so "why does the app say this?" has an answer on paper.
+ * Corrections in it name a role, never a person. v2 rows read with `origin: 'import'`, `validation: 'unreviewed'`.
+ */
+export interface ExportedUnitProvenance {
+  unitId: string;
+  kind: UnitKind;
+  languageId: string;
+  label: string;
+  status: AnalysisStatus;
+  provenance: UnitProvenance & { origin: ProvenanceOrigin; validation: ValidationLevel };
+}
 
 export interface LearnerExport {
   format: typeof EXPORT_FORMAT;
@@ -25,9 +41,23 @@ export interface LearnerExport {
   /** Full bodies: it is the learner's own text. Deleted documents appear with an empty body and `deletedAt`. */
   documents: PrivateDocument[];
   tombstones: Tombstone[];
+  /** Provenance of the units the events reference (contract v3); not restored on import. */
+  unitProvenance?: ExportedUnitProvenance[];
 }
 
 export interface ExportOptions { now?: () => string }
+
+/** The provenance of every unit named in `events`' `subject.itemIds`, sorted by id; ids the linguistic store does not hold are skipped. */
+export async function unitProvenanceFor(store: RepositoryStore, events: Array<{ subject: { itemIds?: string[] } }>): Promise<ExportedUnitProvenance[]> {
+  const ids = [...new Set(events.flatMap((e) => e.subject.itemIds ?? []))].sort();
+  const out: ExportedUnitProvenance[] = [];
+  for (let i = 0; i < ids.length; i += 500) {
+    for (const u of await store.getUnits(ids.slice(i, i + 500))) {
+      out.push({ unitId: u.unitId, kind: u.kind, languageId: u.languageId, label: u.label, status: u.status, provenance: provenanceOf(u.provenance) });
+    }
+  }
+  return out.sort((a, b) => (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0));
+}
 
 export async function exportLearner(store: RepositoryStore, learnerId: string, opts: ExportOptions = {}): Promise<LearnerExport> {
   const events: StoredEvent[] = [];
@@ -67,6 +97,7 @@ export async function exportLearner(store: RepositoryStore, learnerId: string, o
     learnerId,
     enrolments, devices, events, knowledge, preferences, documents,
     tombstones: await store.listTombstones(learnerId),
+    unitProvenance: await unitProvenanceFor(store, events),
   };
   if (learner) out.learner = learner;
   return out;

@@ -14,7 +14,9 @@ const KINDS = ['memory', 'sqlite'] as const;
 
 async function fixture(kind: (typeof KINDS)[number]): Promise<World> {
   const w = await makeWorld(kind);
-  await resolve(w, 'shkollë', SENT_SHKOLLE);
+  // a pack whose manifest claims production-validated (none does today: the machine-drafted packs read as unreviewed), so that a high-confidence
+  // reading really can support a grammar item; with the default level the same reading is provisional at best (see the eligibility gate)
+  await resolve(w, 'shkollë', SENT_SHKOLLE, 'production-validated');
   return w;
 }
 

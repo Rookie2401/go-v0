@@ -45,7 +45,7 @@ async function struggle(w: World, unitId: string, kind: 'recognition' | 'grammar
 }
 
 const candidateOf = async (w: World, unitId: string): Promise<ReviewCandidate> => {
-  const c = (await w.engine.candidates(LEARNER, ENROL, { now: NOW })).find((x) => x.unitId === unitId);
+  const c = (await w.engine.candidates(LEARNER, ENROL, { now: NOW, includeCovered: true })).find((x) => x.unitId === unitId);
   if (!c) throw new Error(`${unitId} is not a candidate`);
   return c;
 };
@@ -234,9 +234,9 @@ describe('§17 intake refuses a candidate whose analysis is conflicted, invalida
     note('B4', '§17', 'provisional (rule-derived) analysis: grammar vs recognition target', 'grammar target refused (needs-validation); recognition target allowed with a provisional caveat', `grammar → ${refused.decision}; recognition → ${allowed.decision} (${allowed.reasons.find((x) => /caveat/.test(x))?.slice(0, 70)}…)`);
   });
 
-  it('control: a high-confidence analysis IS allowed through, so the refusals above are about status and not a blanket refusal', async () => {
+  it('control: a high-confidence, production-validated analysis IS allowed through, so the refusals above are about status and validation and not a blanket refusal', async () => {
     const w = await makeWorld('memory');
-    await resolve(w, 'shkollë', SENT_SHKOLLE);
+    await resolve(w, 'shkollë', SENT_SHKOLLE, 'production-validated');
     await struggle(w, CONSTR, 'grammar');
     await struggle(w, CONSTR, 'grammar');
     const c = await candidateOf(w, CONSTR);

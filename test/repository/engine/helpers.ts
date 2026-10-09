@@ -43,7 +43,7 @@ export const production = (ids: string[], payload: Record<string, unknown>, o?: 
 export function unit(unitId: string, kind: UnitKind, status: AnalysisStatus = 'verified', extra: Partial<LinguisticUnit> = {}): LinguisticUnit {
   return {
     unitId, kind, languageId: 'sq', label: unitId.split(':').slice(2).join(':') || unitId, packId: 'pack:sq', packVersion: '1',
-    provenance: { source: 'dictionary', ref: 'test', confidence: 0.9 }, status, createdAt: '2026-01-01T00:00:00.000Z', ...extra,
+    provenance: { source: 'dictionary', ref: 'test', confidence: 0.9, validation: 'production-validated' }, status, createdAt: '2026-01-01T00:00:00.000Z', ...extra,
   };
 }
 
@@ -53,7 +53,7 @@ export function realizes(fromId: string, toId: string, status: AnalysisStatus = 
 
 export function analysis(formId: string, status: AnalysisStatus, extra: Partial<FormAnalysis> = {}): FormAnalysis {
   return {
-    analysisId: `an:${formId}:${status}`, formId, languageId: 'sq', candidates: [{ confidence: 0.9, provenance: { source: 'rule', ref: 'test', confidence: 0.9 } }],
+    analysisId: `an:${formId}:${status}`, formId, languageId: 'sq', candidates: [{ confidence: 0.9, provenance: { source: 'rule', ref: 'test', confidence: 0.9, validation: 'production-validated' } }],
     status, analyzerId: 'test', packId: 'pack:sq', packVersion: '1', createdAt: '2026-01-01T00:00:00.000Z', ...extra,
   };
 }

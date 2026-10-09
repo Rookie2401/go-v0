@@ -19,8 +19,10 @@ Kindle is the sign-in landing page. Terms of readAwrite and Kobo were read in th
 
 Build: `npm run ext:build` (content 337,772 B; background 340,814 B; analysers sq 201,680 / es 167,110 / de 329,984 /
 hi 405,574 / th 172,906 B + a shared 8,244 B chunk; `web_accessible_resources: analysers/*.js`). The fixture pages carry
-`<html data-fixture-url>` naming the site they model; the registry honours that attribute **only on loopback hosts**,
-so the site adapter is exercised without touching a real site. Selections were made with real DOM Ranges; frames were
+`<html data-fixture-url>` naming the site they model; since Prompt 3 that hook exists only in the harness build
+(`npm run ext:build:harness` → `dist/content.harness.js`, compiled under `__GOLEARN_HARNESS__`), and even there only on
+loopback hosts; the production `content.js` contains no such branch (bundle test). The pass below used the hook as it
+was on 2026-10-09 (loopback-only, in the production script), which is why the harness build was introduced. Selections were made with real DOM Ranges; frames were
 focused as a double-click would focus them; results read from the controller's return value and metrics.
 
 | fixture (models) | adapter chosen | result |

@@ -11,20 +11,35 @@ describe('the source reference of a share', () => {
     expect(urlLocator(undefined)).toBeUndefined();
   });
 
-  it('a link makes a web source with the title; an app or title alone makes a reading-app source; nothing makes none', () => {
-    expect(sharedSourceRef({ text: 'x', url: 'https://a.example/p/1?z=1', title: 'Chapter 1' })).toEqual({ kind: 'web', title: 'Chapter 1', locator: '/p/1' });
-    expect(sharedSourceRef({ text: 'x', sourceApp: 'com.example.reader', title: 'Novel' })).toEqual({ kind: 'ebook', title: 'Novel', locator: 'app:com.example.reader' });
-    expect(sharedSourceRef({ text: 'x', title: 'Novel' })).toEqual({ kind: 'ebook', title: 'Novel' });
-    expect(sharedSourceRef({ text: 'x' })).toBeUndefined();
-    expect(sharedSourceRef({ text: 'x', title: '   ', sourceApp: ' ' })).toBeUndefined();
+  const UNKNOWN = { textRetention: 'unknown', remoteProcessing: 'unknown', audioRetention: 'unknown', export: 'unknown', sharing: 'unknown', reviewExamples: 'unknown' };
+
+  it('a share is always a `share` source: the mechanism, then the app, the title and the link’s path when there are any; the restrictions are all unknown', () => {
+    expect(sharedSourceRef({ text: 'x', mechanism: 'web-share-target', url: 'https://a.example/p/1?z=1', title: 'Chapter 1' })).toEqual({ kind: 'share', mechanism: 'web-share-target', title: 'Chapter 1', locator: '/p/1', restrictions: UNKNOWN });
+    expect(sharedSourceRef({ text: 'x', mechanism: 'android-send', sourceApp: 'com.example.reader', title: 'Novel' })).toEqual({ kind: 'share', mechanism: 'android-send', sourceApp: 'com.example.reader', title: 'Novel', restrictions: UNKNOWN });
+    expect(sharedSourceRef({ text: 'x', mechanism: 'ios-share-extension', title: 'Novel' })).toEqual({ kind: 'share', mechanism: 'ios-share-extension', title: 'Novel', restrictions: UNKNOWN });
+    // no link, app or title: the mechanism alone is still a source (the learner can delete "everything shared by clipboard")
+    expect(sharedSourceRef({ text: 'x', mechanism: 'clipboard-import' })).toEqual({ kind: 'share', mechanism: 'clipboard-import', restrictions: UNKNOWN });
+    expect(sharedSourceRef({ text: 'x', mechanism: 'deep-link', title: '   ', sourceApp: ' ' })).toEqual({ kind: 'share', mechanism: 'deep-link', restrictions: UNKNOWN });
+  });
+
+  it('a sender cannot grant a permission: nothing it sends reaches the restrictions', () => {
+    const ref = sharedSourceRef({ text: 'x', mechanism: 'web-share-target', title: 'restrictions allowed', sourceApp: '{"export":"allowed"}', url: 'https://a.example/p?export=allowed' });
+    expect(ref.restrictions).toEqual(UNKNOWN);
+  });
+
+  it('the restrictions object is a copy: changing one reference does not change the next', () => {
+    const a = sharedSourceRef({ text: 'x', mechanism: 'clipboard-import' });
+    (a.restrictions as Record<string, string>).export = 'allowed';
+    expect(sharedSourceRef({ text: 'x', mechanism: 'clipboard-import' }).restrictions).toEqual(UNKNOWN);
   });
 
   it('is never built from the text: a title that repeats or contains the text is dropped, and long titles are cut', () => {
     const text = 'Unë po lexoj një libër të bukur.';
-    expect(sharedSourceRef({ text, title: text })).toBeUndefined();
-    expect(sharedSourceRef({ text, title: `“${text}” — Kapitulli 1` , sourceApp: 'Reader' })).toEqual({ kind: 'ebook', locator: 'app:Reader' });
-    expect(sharedSourceRef({ text: 'x', title: 'T'.repeat(500), url: 'https://a.example/b' })!.title).toHaveLength(120);
-    expect(JSON.stringify(sharedSourceRef({ text, url: `https://a.example/read?q=${encodeURIComponent(text)}` }))).not.toContain('libër');
+    const m = 'web-share-target' as const;
+    expect(sharedSourceRef({ text, mechanism: m, title: text })).toEqual({ kind: 'share', mechanism: m, restrictions: UNKNOWN });
+    expect(sharedSourceRef({ text, mechanism: m, title: `“${text}” — Kapitulli 1` , sourceApp: 'Reader' })).toEqual({ kind: 'share', mechanism: m, sourceApp: 'Reader', restrictions: UNKNOWN });
+    expect(sharedSourceRef({ text: 'x', mechanism: m, title: 'T'.repeat(500), url: 'https://a.example/b' }).title).toHaveLength(120);
+    expect(JSON.stringify(sharedSourceRef({ text, mechanism: m, url: `https://a.example/read?q=${encodeURIComponent(text)}` }))).not.toContain('libër');
   });
 });
 

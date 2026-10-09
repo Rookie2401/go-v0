@@ -3,7 +3,7 @@
  * only, so the real packages (repository-store, -engine, -linguistics) and the test fakes plug in the same way.
  */
 import type {
-  FormAnalysis, LinguisticUnit, ProjectionEngine, RepositoryStore, UnitRelation,
+  FormAnalysis, LinguisticUnit, ProjectionEngine, RepositoryStore, SourceRestrictions, UnitRelation,
 } from '../../repository-contract/src';
 
 /** What the learner selected. The sentence (when given) is used to analyse and is never stored by the service. */
@@ -72,6 +72,11 @@ export interface ServiceDeps {
   now?: () => string;
   /** One line per request: `METHOD /path status ms`. Never a body, a query string or a token. */
   log?: (line: string) => void;
+  /**
+   * The most permissive source restrictions the service will store for an event's `payload.readerId` (contract v3; `sourcePolicy.ts`'s `policyFor`,
+   * wired by `main.ts`). A client's claim is capped by it. Absent, every claim is capped to all `unknown`.
+   */
+  sourcePolicy?: (readerId: unknown) => Readonly<SourceRestrictions>;
   /** Replaces the default export assembled from the store ports. */
   exporter?: (learnerId: string) => Promise<unknown>;
 }

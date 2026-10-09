@@ -65,11 +65,31 @@ export interface ReaderContext {
   reason?: string;
 }
 
+/** What the terms of a reading environment allow, per use. `unknown` is what nobody has reviewed; consumers treat it as `forbidden`. */
+export type Permission = 'allowed' | 'forbidden' | 'unknown';
+
+/**
+ * The restrictions a source carries, from TRUSTED CONFIGURATION only (the reader registry's entry for the environment), never from
+ * the page's own metadata: a page cannot grant itself a permission.
+ */
+export interface SourceRestrictions {
+  textRetention: Permission;
+  remoteProcessing: Permission;
+  audioRetention: Permission;
+  export: Permission;
+  sharing: Permission;
+  reviewExamples: Permission;
+}
+
+export const PERMISSION_KEYS = ['textRetention', 'remoteProcessing', 'audioRetention', 'export', 'sharing', 'reviewExamples'] as const;
+
 export interface SourceReference {
   kind: 'web' | 'ebook' | 'file' | 'demo';
   title?: string;
   /** For the web: the URL path only. Never the query, the fragment, or any text. */
   locator?: string;
+  /** From the registry entry of the environment that produced the reference (the site adapter attaches it); absent when the adapter has no entry. */
+  restrictions?: SourceRestrictions;
 }
 
 /**
@@ -86,6 +106,15 @@ export interface ScriptureSourceReference {
   verse?: number;
   /** Primary language of the translation when a documented fact gives it (a locale in the path, a known version code). */
   languageHint?: string;
+  /**
+   * How sure the reference is: 0.9 when the URL and the page's verse markup both gave it and agree, 0.6 when only the URL gave it (or
+   * the markup disagrees with it). Absent on a bare URL parse (`parseScriptureUrl`); the site adapter sets it.
+   */
+  confidence?: number;
+  /** The page address as far as it names the passage: origin, path and the `search`/`version` query only (an http(s) address, as the contract asks), never anything else of the query, nor the fragment. */
+  url?: string;
+  /** From the registry entry (see SourceReference.restrictions). */
+  restrictions?: SourceRestrictions;
 }
 
 /** What `sourceRef()` may return: an ordinary source, or a Scripture reference. */

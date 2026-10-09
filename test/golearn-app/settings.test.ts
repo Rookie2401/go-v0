@@ -342,8 +342,9 @@ describe('Diagnostics and updates', () => {
     const rig = await makeRig();
     await rig.app.ctx.state.recordPack('pack:sq', { version: '8', ok: true, verifiedAt: '2026-10-01T00:00:00Z' });
     await rig.app.ctx.state.recordPack('pack:nb', { version: '2', ok: true, verifiedAt: '2026-10-01T00:00:00Z' });
-    // the service's own version (3) is not the contract version; the page compares the contract version it reports
-    rig.service.health = { ok: true, status: 200, data: { ok: true, service: 'go-repository', version: 3, contractVersion: 3 } };
+    // the service's own version (3) is not the contract version; the page compares the contract version it reports (an older one here)
+    const older = CONTRACT_VERSION - 1;
+    rig.service.health = { ok: true, status: 200, data: { ok: true, service: 'go-repository', version: 3, contractVersion: older } };
     await rig.go('diagnostics');
     await until(() => /speaks/.test(rig.q('#updates').textContent ?? ''));
     const state = (id: string): string | null => rig.q(`#updates tr[data-pack="${id}"]`).getAttribute('data-state');
@@ -352,7 +353,7 @@ describe('Diagnostics and updates', () => {
     expect(state('pack:nn')).toBe('not-installed');
     expect(state('pack:es')).toBe('planned');
     expect(rig.q('#updates tr[data-pack="pack:sq"]').textContent).toContain('8');
-    expect(rig.q('#updates').textContent).toMatch(/speaking contract version 3, but this app speaks 2/i);
+    expect(rig.q('#updates').textContent).toContain(`speaking contract version ${older}, but this app speaks ${CONTRACT_VERSION}`);
     expect(rig.q('#updates').textContent).toContain('There are no automatic updates in this build');
   });
 
@@ -365,7 +366,7 @@ describe('Diagnostics and updates', () => {
     await until(() => /Service reachable/.test(rig.q('#health').textContent ?? ''));
     const report = (rig.q('#report') as HTMLTextAreaElement).value;
     expect(report).toContain('local rows on this device: 2');
-    expect(report).toContain('repository contract: version 2');
+    expect(report).toContain(`repository contract: version ${CONTRACT_VERSION}`);
     expect(report).toContain('signed in: yes');
     expect(report).toContain('automatic updates: none in this build');
     expect(report).not.toContain(token);

@@ -81,10 +81,11 @@ async function wire(dataDir: string): Promise<{ deps: ServiceDeps; close: () => 
   const { openSqliteStore } = await import('../../repository-store/src');
   const { createProjectionEngine } = await import('../../repository-engine/src');
   const { createLinguisticService } = await import('../../repository-linguistics/src');
+  const { policyFor } = await import('./sourcePolicy');
   const store = openSqliteStore(join(dataDir, 'repository.sqlite'), { now });
   const engine = createProjectionEngine({ store, now });
   const linguistics = adaptLinguistics(createLinguisticService(store, { now }));
-  return { deps: { store, engine, linguistics, crypto: nodeCrypto, now, log: (line) => console.log(line) }, close: () => store.close() };
+  return { deps: { store, engine, linguistics, crypto: nodeCrypto, sourcePolicy: policyFor, now, log: (line) => console.log(line) }, close: () => store.close() };
 }
 
 async function main(): Promise<void> {

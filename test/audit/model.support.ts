@@ -10,7 +10,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { afterAll } from 'vitest';
 import { CONTRACT_VERSION, DIMENSIONS } from '../../packages/repository-contract/src';
-import type { Dimension, Enrolment, EventKind, GoEvent, UnitKnowledge } from '../../packages/repository-contract/src';
+import type { Dimension, Enrolment, EventKind, GoEvent, UnitKnowledge, ValidationLevel } from '../../packages/repository-contract/src';
 import { createProjectionEngine } from '../../packages/repository-engine/src';
 import { createLinguisticService } from '../../packages/repository-linguistics/src';
 import { createMemoryStore, openSqliteStore } from '../../packages/repository-store/src';
@@ -162,8 +162,8 @@ export const SENSE = 'sense:sq:shkollë:NOUN:1';
 export const CONSTR = 'morph:sq:NOUN:Case=Acc|Definite=Ind|Gender=Fem|Number=Sing';
 
 /** Stores the REAL resolver's units / relations / analysis for a form of the Albanian adapter. */
-export async function resolve(w: World, surface: string, sentence?: string) {
-  const r = await w.linguistics.resolveAndStore({ languageId: 'sq', surface, ...(sentence ? { sentence } : {}) });
+export async function resolve(w: World, surface: string, sentence?: string, validation?: ValidationLevel) {
+  const r = await w.linguistics.resolveAndStore({ languageId: 'sq', surface, ...(sentence ? { sentence } : {}), ...(validation ? { validation } : {}) });
   if (!r.coverage.known) throw new Error(`the Albanian analyser did not read ${surface}: ${r.coverage.notes.join(' | ')}`);
   return r;
 }

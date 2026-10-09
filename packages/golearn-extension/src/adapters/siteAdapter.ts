@@ -16,7 +16,7 @@
 import { describePage } from './page';
 import type { AdapterLanguageEvidence } from '../contract/language';
 import type {
-  AnySourceReference, ContextOptions, PageDescriptor, ReaderContext, SelectionResult, SourceReference,
+  AnySourceReference, ContextOptions, PageDescriptor, ReaderContext, ScriptureSourceReference, SelectionResult, SourceReference, SourceRestrictions,
 } from '../contract/readerAdapter';
 import { noCapabilities, type ReaderCapabilities } from '../contract/readerCapabilities';
 import { documentLanguageOf } from './languageMeta';
@@ -31,6 +31,25 @@ export interface SiteAdapterOptions extends Omit<WebGenericOptions, 'readerId' |
 }
 
 const NO_SITE: SiteOptions = { containers: [], ignore: [], frames: 'same-origin-frames', dynamicContent: false, nativeLookupCoexistence: 'None known.' };
+
+/** The query parameters that name a passage (BibleGateway's `search` and `version`); everything else of a query (a tracker, a session) is dropped. */
+const PASSAGE_PARAMS: ReadonlySet<string> = new Set(['search', 'version']);
+const MAX_ADDRESS = 200;
+
+/**
+ * The address as far as it names the passage: origin and path plus the passage parameters of the query as written, never the fragment,
+ * credentials or any other parameter. Contract v3 asks for an http(s) address (not a bare path); the origin is the Scripture site's own.
+ */
+function passageAddress(url: URL): string | undefined {
+  const kept = url.search.replace(/^\?/, '').split('&').filter((pair) => {
+    const key = pair.split('=')[0] ?? '';
+    let decoded = key;
+    try { decoded = decodeURIComponent(key.replace(/\+/g, ' ')); } catch { /* an undecodable key is not a passage parameter */ }
+    return PASSAGE_PARAMS.has(decoded.toLowerCase());
+  });
+  const address = `${url.origin}${url.pathname}${kept.length ? `?${kept.join('&')}` : ''}`;
+  return /^https?:\/\//.test(address) && url.pathname.length > 1 ? address.slice(0, MAX_ADDRESS) : undefined;
+}
 
 const elementOf = (n: Node): Element | null => (n.nodeType === 1 ? (n as Element) : n.parentElement);
 
@@ -141,40 +160,56 @@ export class SiteAdapter extends WebGenericAdapter {
 
   // ─────────────────────────────── source and language ───────────────────────────────
 
+  /**
+   * What is being read, never its text. Every reference carries the entry's `restrictions` (trusted configuration: the registry
+   * object, copied, never anything the page says about itself).
+   */
   sourceRef(): AnySourceReference | undefined {
     if (this.refuses) return undefined;
+    const restrictions: SourceRestrictions = { ...this.entry.restrictions };
     let url: URL | undefined;
     try { url = new URL(this.pageUrl()); } catch { url = undefined; }
     if (this.site.scripture) {
-      const ref = this.scriptureRef(url);
+      const ref = this.scriptureRef(url, restrictions);
       // the page title of a Scripture page may quote the verse: it is never used here
-      return ref ?? { kind: 'web', locator: url?.pathname || undefined };
+      return ref ?? { kind: 'web', locator: url?.pathname || undefined, restrictions };
     }
     const title = (this.doc.title ?? '').trim().slice(0, 120);
-    const out: SourceReference = { kind: 'web', title: title || undefined, locator: url?.pathname || undefined };
+    const out: SourceReference = { kind: 'web', title: title || undefined, locator: url?.pathname || undefined, restrictions };
     return out;
   }
 
-  private scriptureRef(url: URL | undefined) {
+  /**
+   * The Scripture reference of the selection. `confidence` is 0.9 only when the URL and the page's own verse markup both gave a
+   * reference and agree (same book and chapter; for BibleGateway also a verse at or after the URL's), else 0.6: the URL alone, or
+   * the markup against the URL (the markup's numbers are then used, as the page's own label of what is on screen).
+   */
+  private scriptureRef(url: URL | undefined, restrictions: SourceRestrictions): ScriptureSourceReference | undefined {
     const kind = this.site.scripture;
     if (!kind) return undefined;
     const fromUrl = url ? parseScriptureUrl(kind, url.href) : undefined;
     const start = this.located ? elementOf(this.located.range.startContainer) : null;
+    let ref: ScriptureSourceReference | undefined = fromUrl;
+    let confidence = 0.6;
     if (kind === 'youversion') {
       const wrapper = start?.closest('[data-usfm]')?.getAttribute('data-usfm');
       const w = wrapper ? parseUsfmRef(wrapper) : undefined;
       if (w) {
         const t = fromUrl?.translationId ?? 'unknown';
         const hint = fromUrl?.languageHint ?? versionLanguage(t);
-        return { kind: 'scripture' as const, translationId: t, book: w.book, chapter: w.chapter, ...(w.verse !== undefined ? { verse: w.verse } : fromUrl?.verse !== undefined && fromUrl.book === w.book && fromUrl.chapter === w.chapter ? { verse: fromUrl.verse } : {}), ...(hint ? { languageHint: hint } : {}) };
+        ref = { kind: 'scripture', translationId: t, book: w.book, chapter: w.chapter, ...(w.verse !== undefined ? { verse: w.verse } : fromUrl?.verse !== undefined && fromUrl.book === w.book && fromUrl.chapter === w.chapter ? { verse: fromUrl.verse } : {}), ...(hint ? { languageHint: hint } : {}) };
+        if (fromUrl && fromUrl.book === w.book && fromUrl.chapter === w.chapter) confidence = 0.9;
       }
-      return fromUrl;
-    }
-    if (fromUrl && this.located) {
+    } else if (fromUrl && this.located) {
       const n = this.verseMarkerBefore(this.located.range);
-      if (n) return { ...fromUrl, chapter: n.chapter ?? fromUrl.chapter, verse: n.verse };
+      if (n) {
+        ref = { ...fromUrl, chapter: n.chapter ?? fromUrl.chapter, verse: n.verse };
+        if ((n.chapter ?? fromUrl.chapter) === fromUrl.chapter && (fromUrl.verse === undefined || n.verse >= fromUrl.verse)) confidence = 0.9;
+      }
     }
-    return fromUrl;
+    if (!ref) return undefined;
+    const address = url ? passageAddress(url) : undefined;
+    return { ...ref, confidence, ...(address ? { url: address } : {}), restrictions };
   }
 
   /** The nearest verse-number marker (`sup.versenum`, or `sup.chapternum` = verse 1) before the selection: a number, never text. */

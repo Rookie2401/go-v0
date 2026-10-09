@@ -2,15 +2,16 @@
  * The in-memory Repository store: tests, the demo app, a development server. Same port, same rules (./rules) as the
  * SQLite store; nothing persists. Everything handed in or out is copied, so a caller can never mutate a stored row.
  */
+import { provenanceColumns } from '../../repository-contract/src';
 import type {
   Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFilter, FormAnalysis, LanguagePackInfo, Learner,
   LinguisticUnit, PrivateDocument, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
 } from '../../repository-contract/src';
 import {
-  appendIssues, assertSameOwner, byKey, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack, matchesFilter,
-  mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, relationKey, sortPacks, tombstonedEventIds, zeroErase,
+  appendIssues, assertSameOwner, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated,
+  latestPack, matchesFilter, mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, relationKey, sortPacks, tombstonedEventIds, withCorrection, zeroErase,
 } from './rules';
-import type { ConcreteStore, EraseCounts, StoreOptions } from './rules';
+import type { ConcreteStore, EraseCounts, ProvenanceCount, StoreOptions } from './rules';
 import { applyTombstone as applyDeletion } from './deletion';
 
 const copy = <T>(v: T): T => structuredClone(v);
@@ -128,7 +129,17 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
       return out;
     },
     async putUnits(rows) {
-      for (const u of rows) if (mayReplaceByRank(units.get(u.unitId)?.status, u.status)) units.set(u.unitId, copy(u));
+      for (const u of rows) {
+        const cur = units.get(u.unitId);
+        if (mayReplaceByRank(cur?.status, u.status)) units.set(u.unitId, copy(carried(cur, u)));
+      }
+    },
+    async recordUnitCorrection(unitId, correction, flag) {
+      const cur = units.get(unitId);
+      if (!cur) return undefined;
+      const r = withCorrection(cur, correction, flag);
+      units.set(unitId, copy(r.unit));
+      return copy(r);
     },
     async findUnits(q) {
       const limit = clampLimit(q.limit);
@@ -145,7 +156,10 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
         .map(copy);
     },
     async putRelations(rows) {
-      for (const r of rows) if (mayReplaceByRank(relations.get(relationKey(r))?.status, r.status)) relations.set(relationKey(r), copy(r));
+      for (const r of rows) {
+        const cur = relations.get(relationKey(r));
+        if (mayReplaceByRank(cur?.status, r.status)) relations.set(relationKey(r), copy(carried(cur, r)));
+      }
     },
     async getAnalysis(analysisId) {
       const a = analyses.get(analysisId);
@@ -158,7 +172,10 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
         .map(copy);
     },
     async putAnalyses(rows) {
-      for (const a of rows) if (mayReplaceAnalysis(analyses.get(a.analysisId), a)) analyses.set(a.analysisId, copy(a));
+      for (const a of rows) {
+        const cur = analyses.get(a.analysisId);
+        if (mayReplaceAnalysis(cur, a)) analyses.set(a.analysisId, copy(carriedAnalysis(cur, a)));
+      }
     },
     async invalidateAnalysis(analysisId, reason, supersededBy) {
       const a = analyses.get(analysisId);
@@ -348,6 +365,19 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
     },
     async applyTombstone(t) {
       return applyDeletion(store, t);
+    },
+    async provenanceStats() {
+      const tally = new Map<string, ProvenanceCount>();
+      const add = (table: ProvenanceCount['table'], row: Parameters<typeof provenanceColumns>[0]): void => {
+        const { origin, validation } = provenanceColumns(row);
+        const key = `${table}\u0000${origin}\u0000${validation}`;
+        const c = tally.get(key);
+        if (c) c.count++; else tally.set(key, { table, origin, validation, count: 1 });
+      };
+      for (const u of units.values()) add('units', u);
+      for (const r of relations.values()) add('relations', r);
+      for (const a of analyses.values()) add('analyses', a);
+      return [...tally.values()].sort(byKey((c) => [c.table, c.origin, c.validation]));
     },
     async close() {
       // nothing to release

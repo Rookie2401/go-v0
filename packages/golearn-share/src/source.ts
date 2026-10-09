@@ -1,4 +1,4 @@
-import type { SourceRef } from '../../repository-contract/src';
+import { UNKNOWN_RESTRICTIONS, type ShareSourceRef } from '../../repository-contract/src';
 import type { SharedPassage } from './mechanism';
 import { cleanText } from './text';
 
@@ -31,15 +31,18 @@ const appOf = (p: Pick<SharedPassage, 'sourceApp'>): string | undefined => {
 };
 
 /**
- * Where a share came from, built from the link, the title and the sending app only — never from the text. A link makes it a
- * web source (path only); otherwise a named app or a title makes it a reading-app source (`ebook`, unverified: the platform
- * does not say what kind of app it is); with none of the three there is no source.
+ * Where a share came from (contract v3 `share` source): the mechanism it arrived by, the sending app and the title when there are
+ * any, and the link's path (never the query, the fragment or the text). The mechanism is always known, so a share always has a
+ * source. Its `restrictions` are all `unknown`: nobody reviewed the terms of whatever the sender copied from, and a sender cannot
+ * grant a permission by what it sends.
  */
-export function sharedSourceRef(p: Pick<SharedPassage, 'url' | 'title' | 'sourceApp' | 'text'>): SourceRef | undefined {
+export function sharedSourceRef(p: Pick<SharedPassage, 'mechanism' | 'url' | 'title' | 'sourceApp' | 'text'>): ShareSourceRef {
   const title = titleOf(p);
   const locator = urlLocator(p.url);
-  if (locator) return { kind: 'web', ...(title ? { title } : {}), locator };
   const app = appOf(p);
-  if (app || title) return { kind: 'ebook', ...(title ? { title } : {}), ...(app ? { locator: `app:${app}` } : {}) };
-  return undefined;
+  return {
+    kind: 'share', mechanism: p.mechanism,
+    ...(app ? { sourceApp: app } : {}), ...(title ? { title } : {}), ...(locator ? { locator } : {}),
+    restrictions: { ...UNKNOWN_RESTRICTIONS },
+  };
 }

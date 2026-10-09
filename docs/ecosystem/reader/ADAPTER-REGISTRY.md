@@ -14,7 +14,9 @@ last resort. The decline list that used to be a literal in `webGeneric.ts` is no
 
 An entry holds: `readerId`, `title`, `adapter` (`web-generic` / `site` / `controlled`), `hosts` (exact host, `*.suffix`, or
 `*.name.*`, each with an optional `pathPrefix`), `status`, `enabled`, `experimental?`, `termsReview`, `capabilities` (what the
-adapter declares), `fallback`, `notes`, `refusal?` (the one line shown when it refuses) and `site?` (selectors and policies).
+adapter declares), `fallback`, `restrictions` (what the environment's terms allow, per use: see 2a), `notes`, `refusal?` (the one line shown when it refuses) and
+`site?` (selectors and policies). The registry is **deeply frozen** (`Object.freeze` all the way down): nothing at run time, a fixture address
+included, can change an entry's `enabled`, `status`, `termsReview` or `restrictions`.
 
 Closed sets: **status** `verified | partially-verified | selection-only | unverified | permission-required | blocked |
 unsupported`; **fallback** `selection-only | controlled-reader | share-bridge | none`; **frames** `top-only |
@@ -41,6 +43,38 @@ same-origin-frames | declare-cross-origin`.
 
 `termsReview.reviewed` is `false` on every entry. The type admits only `false`.
 
+### 2a. Restrictions (contract v3, 2026-10-09)
+
+`restrictions` is trusted configuration: the site adapter copies the ENTRY's object onto every source reference it returns
+(`sourceRef().restrictions`, a copy), and the controller writes it into `subject.sourceRef.restrictions` of every event of the card. It is never
+read from the page: a `<meta>`, a JSON-LD licence, a `data-*` attribute or a "public domain" banner cannot loosen it
+(`test/extension/restrictions.test.ts` taints a page in all of those places and compares). The Repository additionally caps what a client
+claims by its own per-reader policy, so a modified client cannot grant a permission either. `unknown` is what nobody has reviewed; consumers
+treat it as `forbidden`.
+
+Fields: `textRetention` (keep the source's words beyond their hash), `remoteProcessing` (send them to a service off the device),
+`audioRetention` (keep audio made from them), `export` (include them in the learner's export), `sharing` (pass them to a team or another
+learner), `reviewExamples` (use them as example sentences in review).
+
+| readerId | textRetention | remoteProcessing | audioRetention | export | sharing | reviewExamples | why |
+|---|---|---|---|---|---|---|---|
+| `web-generic` | unknown | unknown | unknown | unknown | unknown | unknown | any page; nobody has read its terms |
+| `epub-local` | unknown | unknown | unknown | **allowed** | unknown | unknown | the owner's own DRM-free files; the owner may export what they own; the rest awaits the owner's confirmation |
+| `play-books` | unknown | unknown | unknown | unknown | unknown | unknown | commercial reader, terms unreviewed |
+| `kobo-web` | forbidden | forbidden | forbidden | forbidden | forbidden | forbidden | refuses; the Terms of Sale restrict reproduction |
+| `kindle-web` | forbidden | forbidden | forbidden | forbidden | forbidden | forbidden | refuses; pages are drawn as bitmaps, no text may be taken |
+| `libroteka` | unknown | unknown | unknown | unknown | unknown | unknown | commercial reader, terms unreviewed |
+| `kanah` | unknown | unknown | unknown | unknown | unknown | unknown | reading app, terms unreviewed |
+| `tolino-webreader` | unknown | unknown | unknown | unknown | unknown | unknown | commercial reader, terms unreviewed |
+| `vivlio-casadellibro` | unknown | unknown | unknown | unknown | unknown | unknown | commercial reader, terms unreviewed |
+| `readawrite` | forbidden | forbidden | forbidden | forbidden | forbidden | forbidden | refuses; the site blocks selection of its text |
+| `mebmarket` | unknown | unknown | unknown | unknown | unknown | unknown | refuses (native reader only); terms unreviewed |
+| `pratilipi` | forbidden | forbidden | forbidden | forbidden | forbidden | forbidden | refuses until a person reviews the site's and the authors' terms |
+| `biblegateway` | forbidden | forbidden | unknown | unknown | unknown | forbidden | licensed Scripture: the verse is never kept, sent off the device or turned into a review example |
+| `youversion` | forbidden | forbidden | unknown | unknown | unknown | forbidden | same |
+
+Changing a cell is a reviewed change with the evidence in the commit (a person's reading of the terms), like `termsReview`.
+Contract: `packages/repository-contract/src/sources.ts`.
 ## 3. Rules for changing the registry
 
 1. **`status` and `termsReview` change only with evidence or a person's review.** A status moves up (e.g. `unverified` →
@@ -64,7 +98,7 @@ same-origin-frames | declare-cross-origin`.
 
 ## 4. How a site is added
 
-1. Add an entry to `READER_REGISTRY` (`status: 'unverified'`, `enabled: true` unless it must refuse, `reviewed: false`, a note
+1. Add an entry to `READER_REGISTRY` (`status: 'unverified'`, `enabled: true` unless it must refuse, `reviewed: false`, `restrictions` all `unknown` (all `forbidden` for a site that refuses on rights grounds), a note
    with what was probed and on which date). Choose `fallback` honestly; give `refusal` if it refuses.
 2. Give it `site` options: `containers` (the reading area, or `[]`), `ignore` (reader chrome, footnote markers, the site's own
    lookup popup), `frames`, `dynamicContent`, `nativeLookupCoexistence`, and, for a Scripture site, `scripture` (the URL
@@ -75,6 +109,24 @@ same-origin-frames | declare-cross-origin`.
    models) and cases in `test/extension/sites.fixtures.test.ts`: surface, context, source reference, language evidence,
    anchor, chrome ignored, replacement, recovery. Add the URL to the selection-by-URL table in `sites.registry.test.ts`.
 5. Run `npx vitest run test/extension test/ecosystem`. Do not raise the status.
+
+## 4a. The harness build (the fixture hook)
+
+The fixtures under `harness/sites/` model other sites' pages: `<html data-fixture-url="https://…">` names the address the page models, so a
+browser pass can exercise the site adapter from `localhost`. That hook (`describePage` in `src/adapters/page.ts`) is **compiled only into a
+harness build**:
+
+* `npm run ext:build` (the shipped extension) defines `__GOLEARN_HARNESS__` as `false`; the branch is removed by the minifier, so the
+  production `dist/content.js` (and every other shipped script) contains neither `data-fixture-url` nor `__GOLEARN_HARNESS__`
+  (`test/extension/bundle.test.ts` greps them).
+* `vite build -c packages/golearn-extension/vite.config.ts --mode content-harness` (run after `ext:build`; it does not clean `dist/`) writes
+  `dist/content.harness.js` with the flag `true`. `harness/albanian-article.html`, `harness/scripts.html` and every page under
+  `harness/sites/` load `/dist/content.harness.js`. It is never named by the manifest and is not part of a packaged extension.
+* In the harness build the hook still honours **loopback hosts only** (`localhost`, `127.0.0.1`, `[::1]`).
+* The fixture address decides which entry **matches** and nothing else. Refusal does not depend on matching (a `blocked`,
+  `permission-required` or `unsupported` status, or `enabled: false`, refuses whatever named the page), and the frozen registry is the only
+  source of `enabled`, `status`, `termsReview` and `restrictions` (`test/extension/harness.hook.test.ts`).
+* Under Vitest nothing defines the flag; the code reads it from the global at call time (`globalThis.__GOLEARN_HARNESS__ = true` in a test).
 
 ## 5. Lifecycle (what the controller calls, in order)
 
@@ -97,7 +149,11 @@ open → `dispose()`.
   (`languageId`, `languageBasis`, `languageConfidence`).
 * **Scripture references** are metadata kept apart from the text: `{ kind: 'scripture', translationId, book (USFM), chapter,
   verse?, languageHint? }` from the URL (BibleGateway `search`/`version`; YouVersion `/bible/<id>/<BOOK>.<ch>[.<v>].<ABBR>`), refined by
-  the nearest verse-number marker (BibleGateway) or the verse wrapper's `data-usfm` (YouVersion). The page title is never used
+  the nearest verse-number marker (BibleGateway) or the verse wrapper's `data-usfm` (YouVersion). The adapter adds `confidence` (**0.9** when the URL
+  and the verse markup both gave a reference and agree, **0.6** when only the URL did or the markup disagrees), `url` (origin, path and the
+  `search`/`version` query only, as the contract asks for an http(s) address; no tracker, no fragment) and `restrictions` (the entry's). The controller
+  maps it to the contract-v3 `scripture` member: `provider` (`biblegateway` / `youversion` / `other` from the registry id), `languageId` (the
+  translation's language), `translationId`, `book`, `chapter`, `verse?`, `url?`, `confidence`, `restrictions`; no title, no locator, no text. The page title is never used
   (it may quote a verse). The controller writes it as the event's `subject.sourceRef`; the sentence stays a hash.
 
 ## 6. What each fixture models

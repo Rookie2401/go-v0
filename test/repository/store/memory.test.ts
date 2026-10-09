@@ -2,9 +2,11 @@
 import { describe, expect, it } from 'vitest';
 import { createMemoryStore } from '../../../packages/repository-store/src';
 import { storeConformance } from './conformance';
+import { storeProvenanceConformance } from './provenance';
 import { L1, doc, ev } from './fixtures';
 
 storeConformance('memory store', async () => createMemoryStore());
+storeProvenanceConformance('memory store', async () => createMemoryStore());
 
 describe('memory store specifics', () => {
   it('stamps recordedAt from the injected clock, once per event', async () => {

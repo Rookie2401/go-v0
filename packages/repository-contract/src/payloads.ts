@@ -3,7 +3,8 @@
  * the envelope validator in index.ts calls `validatePayload`. Book content is untrusted input: payloads carry
  * surfaces of a few words at most, hashes for sentences, and never a passage.
  */
-import type { ValidationIssue } from './units';
+import type { ValidationIssue, ValidationLevel } from './units';
+import { VALIDATION_LEVELS } from './units';
 
 export const MAX_SURFACE_CHARS = 120;
 export const MAX_SURFACE_WORDS = 4;
@@ -14,15 +15,52 @@ export type EvidenceQuality = (typeof EVIDENCE_QUALITIES)[number];
 
 export type AssistanceKind = 'gloss' | 'translation' | 'morphology' | 'grammar' | 'hint' | 'example' | 'pronunciation' | 'transliteration' | 'correction';
 
+/**
+ * How the language of a selection was decided (contract v3). `override`: the learner chose it for this selection;
+ * `book-metadata` / `document-metadata`: the book or the page declared it; `detection`: guessed from the text; `team-default`: the
+ * enrolment's language, nothing else known; `undetermined`: nothing decided. A DETECTED language is not a user-confirmed one: the
+ * engine weights evidence by `basis` (an override or a declaration outweighs a detection). Optional on v2 events.
+ */
+export const LANGUAGE_BASES = ['override', 'book-metadata', 'document-metadata', 'detection', 'team-default', 'undetermined'] as const;
+export type LanguageBasis = (typeof LANGUAGE_BASES)[number];
+export interface LanguageEvidence {
+  languageId: string;
+  varietyId?: string;
+  basis: LanguageBasis;
+  /** 0..1, the resolver's own number. */
+  confidence: number;
+  /** What the basis rested on, a few words (`html-lang`, `og:locale`, `url-locale`); never page text. */
+  source?: string;
+  /** True exactly when `basis` is `override`. */
+  override: boolean;
+}
+
 /** Exposure only: the learner read or had on screen a sentence containing these units (no help requested). */
-export interface EncounterPayload { surface?: string; tokenCount?: number; contextKind: 'sentence' | 'fragment' | 'none'; readerId?: string }
+export interface EncounterPayload { surface?: string; tokenCount?: number; contextKind: 'sentence' | 'fragment' | 'none'; readerId?: string; language?: LanguageEvidence }
 /** The learner selected a word or phrase and was shown a card. */
 export interface LookupPayload {
   surface?: string; surfaceOmitted?: boolean; tokenCount: number;
   contextKind: 'sentence' | 'fragment' | 'none'; contextConfidence: number;
   readerId: string; direction?: string; provenance?: 'lexicon' | 'rule' | 'none'; unconfirmed?: boolean;
   helpShown: string[]; mode?: string; fragmentKey?: string;
+  /** Contract v3: how the language was resolved. */
+  language?: LanguageEvidence;
 }
+
+/** What a language pack's manifest says about itself (`level`) and what its validation actually reached (`validation`). */
+export const PACK_LEVELS = ['installable', 'experimental', 'planned'] as const;
+export type PackLevel = (typeof PACK_LEVELS)[number];
+/**
+ * A pack was installed on a device (contract v3). `level` and `validation` let the projection caveat evidence that rests on an
+ * experimental or unreviewed analyser; both are optional on v2 events (and on a v3 producer that does not know), and an absent
+ * `validation` reads as `unreviewed` (`packValidationOf`).
+ */
+export interface PackInstalledPayload {
+  packId: string; packVersion: string; analyzerId?: string; analyzerVersion?: string; level?: PackLevel; validation?: ValidationLevel;
+}
+/** The validation a PackInstalled payload states, `unreviewed` when it states none (every v2 event). */
+export const packValidationOf = (payload: { validation?: unknown }): ValidationLevel =>
+  (VALIDATION_LEVELS as readonly string[]).includes(String(payload.validation)) ? (payload.validation as ValidationLevel) : 'unreviewed';
 /** The learner asked for a deeper layer (explanation, example, grammar) after the card. */
 export interface AssistancePayload { assistance: AssistanceKind; layer?: string; depth?: 'label' | 'brief' | 'explanatory' }
 /** Audio playback: exposure to sound; never recognition. */
@@ -91,11 +129,42 @@ export const PAYLOAD_KINDS = {
   ReviewItemInvalidated: 'review-invalidation',
   PreferenceChanged: 'preference-change',
   EnrolmentChanged: 'profile',
-  PackInstalled: 'profile',
+  PackInstalled: 'pack-installed',
   PrivacySettingChanged: 'profile',
   ConsentGiven: 'profile',
   ConsentWithdrawn: 'profile',
 } as const;
+
+/** Language-resolution evidence (`payload.language`): optional; when present, a closed basis, a confidence in 0..1 and `override === (basis === 'override')`. */
+export function validateLanguageEvidence(l: unknown, path = 'payload.language'): ValidationIssue[] {
+  if (l === undefined) return [];
+  if (!l || typeof l !== 'object' || Array.isArray(l)) return [{ path, message: 'object' }];
+  const x = l as Record<string, unknown>;
+  const out: ValidationIssue[] = [];
+  if (typeof x.languageId !== 'string' || !x.languageId.length || x.languageId.length > 200) out.push({ path: `${path}.languageId`, message: 'required string of at most 200 characters' });
+  if (x.varietyId !== undefined && (typeof x.varietyId !== 'string' || x.varietyId.length > 200)) out.push({ path: `${path}.varietyId`, message: 'string of at most 200 characters' });
+  if (!(LANGUAGE_BASES as readonly string[]).includes(String(x.basis))) out.push({ path: `${path}.basis`, message: `one of ${LANGUAGE_BASES.join(', ')}` });
+  if (typeof x.confidence !== 'number' || !(x.confidence >= 0 && x.confidence <= 1)) out.push({ path: `${path}.confidence`, message: 'number within 0..1' });
+  if (x.source !== undefined && (typeof x.source !== 'string' || x.source.length > 100)) out.push({ path: `${path}.source`, message: 'string of at most 100 characters' });
+  if (typeof x.override !== 'boolean') out.push({ path: `${path}.override`, message: 'required boolean' });
+  else if (x.override !== (x.basis === 'override')) out.push({ path: `${path}.override`, message: 'override must be true exactly when basis is "override"' });
+  return out;
+}
+
+const languageOk = (p: Record<string, unknown>): ValidationIssue[] => validateLanguageEvidence(p.language);
+
+const idField = (p: Record<string, unknown>, k: string, required: boolean): ValidationIssue[] => {
+  const v = p[k];
+  if (v === undefined) return required ? [{ path: `payload.${k}`, message: 'required string' }] : [];
+  return typeof v === 'string' && v.length > 0 && v.length <= 200 ? [] : [{ path: `payload.${k}`, message: 'string of 1 to 200 characters' }];
+};
+
+/** PackInstalled: every field is checked when present; none is required, so a v2 event (`{ packId }` or less) stays valid. */
+const packInstalledOk = (p: Record<string, unknown>): ValidationIssue[] => [
+  ...idField(p, 'packId', false), ...idField(p, 'packVersion', false), ...idField(p, 'analyzerId', false), ...idField(p, 'analyzerVersion', false),
+  ...(p.level === undefined || (PACK_LEVELS as readonly string[]).includes(String(p.level)) ? [] : [{ path: 'payload.level', message: `one of ${PACK_LEVELS.join(', ')}` }]),
+  ...(p.validation === undefined || (VALIDATION_LEVELS as readonly string[]).includes(String(p.validation)) ? [] : [{ path: 'payload.validation', message: `one of ${VALIDATION_LEVELS.join(', ')}` }]),
+];
 
 type Check = (p: Record<string, unknown>) => ValidationIssue[];
 const need = (p: Record<string, unknown>, k: string, t: 'string' | 'number' | 'boolean', path = 'payload'): ValidationIssue[] =>
@@ -110,7 +179,7 @@ const surfaceOk = (p: Record<string, unknown>): ValidationIssue[] => {
   return [];
 };
 /** Key names (compared in lower case with everything but letters removed) that mean "a passage lives here". */
-const TEXT_KEYS: ReadonlySet<string> = new Set(['text', 'sentence', 'sentencetext', 'passage', 'content', 'body']);
+const TEXT_KEYS: ReadonlySet<string> = new Set(['text', 'sentence', 'sentencetext', 'passage', 'content', 'body', 'versetext']);
 /**
  * Keys that legitimately hold a few words of free text (a learner's correction reason, a goal's label, a typed answer, a
  * voice's name), each bounded by MAX_FREE_TEXT_CHARS. Every other string anywhere in a payload obeys the surface rule:
@@ -170,8 +239,8 @@ export const uniqueByPath = (issues: ValidationIssue[]): ValidationIssue[] => {
 };
 
 const CHECKS: Record<string, Check> = {
-  encounter: (p) => [...oneOf(p, 'contextKind', ['sentence', 'fragment', 'none']), ...surfaceOk(p)],
-  lookup: (p) => [...need(p, 'tokenCount', 'number'), ...oneOf(p, 'contextKind', ['sentence', 'fragment', 'none']), ...need(p, 'contextConfidence', 'number'), ...need(p, 'readerId', 'string'), ...(Array.isArray(p.helpShown) ? [] : [{ path: 'payload.helpShown', message: 'array of layer names' }]), ...surfaceOk(p)],
+  encounter: (p) => [...oneOf(p, 'contextKind', ['sentence', 'fragment', 'none']), ...surfaceOk(p), ...languageOk(p)],
+  lookup: (p) => [...need(p, 'tokenCount', 'number'), ...oneOf(p, 'contextKind', ['sentence', 'fragment', 'none']), ...need(p, 'contextConfidence', 'number'), ...need(p, 'readerId', 'string'), ...(Array.isArray(p.helpShown) ? [] : [{ path: 'payload.helpShown', message: 'array of layer names' }]), ...surfaceOk(p), ...languageOk(p)],
   'lookup-layer': (p) => (Array.isArray(p.layers) ? [] : [{ path: 'payload.layers', message: 'array of layer names' }]),
   assistance: (p) => need(p, 'assistance', 'string'),
   playback: (p) => oneOf(p, 'voice', ['synthetic', 'recorded']),
@@ -197,6 +266,7 @@ const CHECKS: Record<string, Check> = {
   'review-invalidation': (p) => oneOf(p, 'reason', ['analysis-invalidated', 'learner-removed', 'pack-superseded']),
   'preference-change': (p) => [...need(p, 'key', 'string'), ...(p.origin === 'explicit' ? [] : [{ path: 'payload.origin', message: 'a PreferenceChanged event is always explicit; inferred preferences are projections, not events' }])],
   profile: () => [],
+  'pack-installed': packInstalledOk,
 };
 
 export function validatePayload(kind: string, payload: unknown): ValidationIssue[] {

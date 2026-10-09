@@ -10,7 +10,10 @@
  *  (c) accepting a correction is not independent production (CorrectionAccepted / Rejected produce nothing);
  *  (d) assisted observations feed `assistedRecognition`, never the independent dimensions;
  *  (e) a producer's declared `evidence.quality` / `evidence.sourceReliability` can lower a weight, never raise it;
- *  (j) a positive observation exists only when the payload itself says correct / usedCorrectly / understood.
+ *  (j) a positive observation exists only when the payload itself says correct / usedCorrectly / understood;
+ *  (k) projection@2: a phrase is understood as a whole (`phraseComprehension`), never inferred from its words, and never from
+ *      a request for help; and an encounter whose language was only detected or defaulted weighs less than a stated one
+ *      (`LANGUAGE_BASIS_FACTOR`), while one whose language is undetermined (nothing was parsed) produces no observation.
  */
 import type { Dimension, GoEvent } from '../../repository-contract/src';
 
@@ -35,6 +38,8 @@ export interface Observation {
   sentenceKey?: string;
   eventId: string;
   counter?: ExposureCounter;
+  /** How the language of an exposure was settled (`override`, `detection`, ... or `missing` for a v2 event); exposure observations of encounters and lookups only. */
+  languageBasis?: string;
 }
 
 /** Multiplier applied to a weight by the producer's declared evidence quality. All <= 1: the engine never raises. */
@@ -50,15 +55,55 @@ export const RULES = {
   grammar: { weight: 0.8 },
   production: { contextualPositive: 0.9, contextualNegative: 0.7, retrieval: 0.8 },
   assisted: { weight: 0.4 },
+  /** projection@2. A phrase (`phrase:` id) is a multiword unit whose meaning is not the sum of its words. */
+  phrase: {
+    /** AssistanceRequested for a phrase or sentence: the learner needed help to read it (negative assistedRecognition, never phraseComprehension). */
+    needed: 0.15,
+    /** A recognition card or an assessment on a phrase, unhinted. */
+    review: 0.7,
+    /** A recall / cloze card on a phrase also shows the phrase was understood, at a lower weight than its productive-retrieval credit. */
+    recallComprehension: 0.4,
+    /** A correct unassisted ProductionRecorded on a phrase: the small comprehension credit beside contextualProduction. */
+    productionPositive: 0.3,
+    /** UnderstoodMarked (no help) on a phrase: a self-report. */
+    selfReport: 0.3,
+  },
 } as const;
+
+/**
+ * Exposure weight factor by how the language of the encounter was settled (projection@2). Only ever lowers (principle (e)).
+ * `undetermined` is 0: nothing was parsed, so there is nothing to observe. `missing` is a v2 event with no `language` block: counted in full.
+ */
+export const LANGUAGE_BASIS_FACTOR = {
+  override: 1, 'book-metadata': 1, 'document-metadata': 1, detection: 0.7, 'team-default': 0.5, undetermined: 0, missing: 1,
+} as const;
+/** A basis string this table does not know (a newer producer): treated as the weakest known stated basis, never as certain. */
+export const UNRECOGNISED_BASIS_FACTOR = 0.5;
 
 /** Dimensions that only unassisted evidence may reach. */
 const INDEPENDENT: ReadonlySet<Dimension> = new Set<Dimension>([
-  'readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding',
+  'readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding', 'phraseComprehension',
 ]);
 
 /** A construction id (morphological or syntactic); AssessmentAnswered evidence is attributed to these. */
 export const isConstructionId = (id: string): boolean => /^(morph|syntax):/u.test(id);
+/** A phrase / multiword unit id (`unitIds.phrase`). */
+export const isPhraseId = (id: string): boolean => id.startsWith('phrase:');
+
+/** Authorship values that mean the sentence was NOT the learner's own unaided work (GoTell's `Authorship`). */
+const INDEPENDENT_AUTHORSHIP: ReadonlySet<string> = new Set(['independent', 'reproduced-later']);
+/** Authorship values that earn nothing at all: the words are a model's. */
+const NO_CREDIT_AUTHORSHIP: ReadonlySet<string> = new Set(['copied-from-model', 'ai-generated']);
+
+/** `{factor, basis}` of an event's `payload.language` block (projection@2). A missing block is a v2 event: factor 1, basis `missing`. */
+export function languageWeighting(payload: Record<string, unknown>): { factor: number; basis: string } {
+  const lang = payload.language;
+  if (!lang || typeof lang !== 'object') return { factor: LANGUAGE_BASIS_FACTOR.missing, basis: 'missing' };
+  const basis = (lang as { basis?: unknown }).basis;
+  if (typeof basis !== 'string') return { factor: LANGUAGE_BASIS_FACTOR.missing, basis: 'missing' };
+  if (Object.prototype.hasOwnProperty.call(LANGUAGE_BASIS_FACTOR, basis)) return { factor: LANGUAGE_BASIS_FACTOR[basis as keyof typeof LANGUAGE_BASIS_FACTOR], basis };
+  return { factor: UNRECOGNISED_BASIS_FACTOR, basis };
+}
 
 const round9 = (x: number): number => Math.round(x * 1e9) / 1e9;
 const clamp01 = (x: number): number => Math.min(1, Math.max(0, x));
@@ -74,10 +119,14 @@ interface Draft {
   assisted?: boolean;
   reliability?: number;
   counter?: ExposureCounter;
+  /** Factor from the event's language basis (exposure of encounters and lookups only); absent = 1. */
+  languageFactor?: number;
+  languageBasis?: string;
 }
 
 /**
- * Observations of one event, at most one per (event, unit): a unit named twice in one event is observed once.
+ * Observations of one event, at most one per (event, unit, dimension): a unit named twice in one event is observed once
+ * per dimension (projection@2: a phrase can receive both a contextualProduction and a phraseComprehension credit).
  * Events with an unparseable `at`, or with `evidence.quality: 'none'`, produce nothing.
  */
 export function observationsOf(event: GoEvent): Observation[] {
@@ -96,11 +145,13 @@ export function observationsOf(event: GoEvent): Observation[] {
     const dimension: Dimension = assisted && INDEPENDENT.has(d.dimension) ? 'assistedRecognition' : d.dimension;
     const reliability = Math.min(d.reliability ?? 1, declared);
     // (e): the kind's ceiling is `base`; quality (<= 1) and reliability (<= 1) can only lower it.
-    const weight = round9(Math.min(d.base, d.base * q) * reliability);
+    // (k): the language factor is <= 1 too. It scales the weight, not the reliability (the judgement's source is unchanged).
+    const weight = round9(Math.min(d.base, d.base * q) * reliability * (d.languageFactor ?? 1));
     if (weight <= 0) continue;
     for (const unitId of d.unitIds) {
-      if (seen.has(unitId)) continue;
-      seen.add(unitId);
+      const key = `${unitId}\u0000${dimension}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
       const o: Observation = {
         learnerId: event.learnerId, languageId: event.languageId, unitId, dimension, outcome: d.outcome, weight, assisted,
         sourceReliability: reliability, at: event.at, eventId: event.id,
@@ -108,6 +159,7 @@ export function observationsOf(event: GoEvent): Observation[] {
       if (difficulty !== undefined) o.difficulty = difficulty;
       if (sentenceKey) o.sentenceKey = sentenceKey;
       if (d.counter) o.counter = d.counter;
+      if (d.languageBasis !== undefined) o.languageBasis = d.languageBasis;
       out.push(o);
     }
   }
@@ -118,22 +170,38 @@ function draftsOf(e: GoEvent): Draft[] {
   const ids = [...new Set((e.subject?.itemIds ?? []).filter((i): i is string => typeof i === 'string' && i.length > 0))];
   const p = (e.payload ?? {}) as P;
   const R = RULES;
+  const phrases = ids.filter(isPhraseId);
   const one = (d: Omit<Draft, 'unitIds'>, unitIds: string[] = ids): Draft[] => (unitIds.length ? [{ ...d, unitIds }] : []);
+  /** An encounter or lookup exposure, weighted by how its language was settled; `undetermined` parsed nothing, so it observes nothing. */
+  const languageExposure = (counter: ExposureCounter, base: number): Draft[] => {
+    const { factor, basis } = languageWeighting(p);
+    return factor <= 0 ? [] : one({ dimension: 'exposure', outcome: 'exposure', base, counter, languageFactor: factor, languageBasis: basis });
+  };
   switch (e.kind) {
     case 'EncounterRecorded':
-      return one({ dimension: 'exposure', outcome: 'exposure', base: R.exposure.encounter, counter: 'encounter' });
+      return languageExposure('encounter', R.exposure.encounter);
     case 'SelectionLookedUp':
-      return one({ dimension: 'exposure', outcome: 'exposure', base: R.exposure.lookup, counter: 'lookup' });
+      return languageExposure('lookup', R.exposure.lookup);
     case 'AnalysisShown':
-    case 'AssistanceRequested':
       return one({ dimension: 'exposure', outcome: 'exposure', base: R.exposure.assistance, counter: 'assistance' });
+    case 'AssistanceRequested': {
+      const exposure = one({ dimension: 'exposure', outcome: 'exposure', base: R.exposure.assistance, counter: 'assistance' });
+      // projection@2: asking for a phrase or sentence gloss means the learner needed help to read it. That is assisted recognition
+      // (negative: help was needed), never phraseComprehension, which only an unassisted judgement can raise.
+      if (p.assistance === 'phrase' || p.assistance === 'sentence') {
+        return [...exposure, ...one({ dimension: 'assistedRecognition', outcome: 'negative', base: R.phrase.needed, assisted: true }, phrases)];
+      }
+      return exposure;
+    }
     case 'PronunciationPlayed':
     case 'ListeningCompleted':
       // (b): audio is exposure; the unit is not thereby recognised by ear.
       return one({ dimension: 'exposure', outcome: 'exposure', base: R.exposure.playback, counter: 'playback' });
     case 'UnderstoodMarked': {
       const help = p.helpUsed === true;
-      return one({ dimension: help ? 'assistedRecognition' : 'readingRecognition', outcome: 'positive', base: R.understood.weight, assisted: help, reliability: R.understood.reliability });
+      const general = one({ dimension: help ? 'assistedRecognition' : 'readingRecognition', outcome: 'positive', base: R.understood.weight, assisted: help, reliability: R.understood.reliability });
+      // projection@2: a self-reported "understood" on a phrase is a weak phraseComprehension credit (never when help was used).
+      return help ? general : [...general, ...one({ dimension: 'phraseComprehension', outcome: 'positive', base: R.phrase.selfReport, reliability: R.understood.reliability }, phrases)];
     }
     case 'ItemMarked': {
       if (p.mark === 'known') return one({ dimension: 'readingRecognition', outcome: 'positive', base: R.itemMark.weight, reliability: R.itemMark.reliability });
@@ -156,27 +224,44 @@ function draftsOf(e: GoEvent): Draft[] {
       // A shown answer (answerShownBefore) is help exactly as a hint is.
       const assisted = p.hinted === true || p.answerShownBefore === true;
       const dim: Dimension = cardKind === 'recognition' ? 'readingRecognition' : 'productiveRetrieval';
-      return one({
-        dimension: assisted ? 'assistedRecognition' : dim, outcome: p.correct ? 'positive' : 'negative',
-        base: round9((assisted ? R.assisted.weight : R.card[cardKind]) * gradeF), assisted,
-      });
+      const outcome: ObservationOutcome = p.correct ? 'positive' : 'negative';
+      if (assisted) return one({ dimension: 'assistedRecognition', outcome, base: round9(R.assisted.weight * gradeF), assisted });
+      // projection@2: a phrase is judged as a whole. A recognition card on it is phraseComprehension (instead of readingRecognition);
+      // a recall / cloze card keeps its productiveRetrieval credit and adds a smaller phraseComprehension one.
+      const plain = ids.filter((i) => !isPhraseId(i));
+      return [
+        ...one({ dimension: dim, outcome, base: round9(R.card[cardKind] * gradeF) }, cardKind === 'recognition' ? plain : ids),
+        ...one({ dimension: 'phraseComprehension', outcome, base: round9((cardKind === 'recognition' ? R.phrase.review : R.phrase.recallComprehension) * gradeF) }, phrases),
+      ];
     }
     case 'AssessmentAnswered': {
       if (typeof p.correct !== 'boolean') return [];
       const targets = [...new Set([...(typeof p.constructionId === 'string' && p.constructionId ? [p.constructionId] : []), ...ids.filter(isConstructionId)])];
       const hinted = p.hinted === true;
-      return one({
-        dimension: hinted ? 'assistedRecognition' : 'grammaticalUnderstanding', outcome: p.correct ? 'positive' : 'negative',
-        base: hinted ? R.assisted.weight : R.grammar.weight, assisted: hinted,
-      }, targets);
+      const outcome: ObservationOutcome = p.correct ? 'positive' : 'negative';
+      // A phrase named in the subject is judged as a whole (phraseComprehension); hinted answers go to assistedRecognition on both.
+      return [
+        ...one({ dimension: hinted ? 'assistedRecognition' : 'grammaticalUnderstanding', outcome, base: hinted ? R.assisted.weight : R.grammar.weight, assisted: hinted }, targets),
+        ...one({ dimension: hinted ? 'assistedRecognition' : 'phraseComprehension', outcome, base: hinted ? R.assisted.weight : R.phrase.review, assisted: hinted }, phrases),
+      ];
     }
     case 'ProductionRecorded': {
-      const assisted = p.assisted === true;
+      const authorship = typeof p.authorship === 'string' ? p.authorship : undefined;
+      // The payload's own authorship overrides a producer that forgot to set `assisted`: a sentence copied from a model or written by an AI
+      // is the model's work, not the learner's (no judged observation at all), and any other non-independent authorship is assisted.
+      if (authorship !== undefined && NO_CREDIT_AUTHORSHIP.has(authorship)) return [];
+      const assisted = p.assisted === true || (authorship !== undefined && !INDEPENDENT_AUTHORSHIP.has(authorship)) || (Array.isArray(p.assistance) && p.assistance.length > 0);
       const retrieval = p.mode === 'retrieval';
       if (p.usedCorrectly === 'unjudged') return one({ dimension: 'exposure', outcome: 'exposure', base: R.exposure.unjudgedProduction, counter: 'encounter' });
       if (typeof p.usedCorrectly !== 'boolean') return [];
       if (assisted) return one({ dimension: 'assistedRecognition', outcome: p.usedCorrectly ? 'positive' : 'negative', base: R.assisted.weight, assisted: true });
-      if (p.usedCorrectly) return one({ dimension: retrieval ? 'productiveRetrieval' : 'contextualProduction', outcome: 'positive', base: retrieval ? R.production.retrieval : R.production.contextualPositive });
+      if (p.usedCorrectly) {
+        return [
+          ...one({ dimension: retrieval ? 'productiveRetrieval' : 'contextualProduction', outcome: 'positive', base: retrieval ? R.production.retrieval : R.production.contextualPositive }),
+          // projection@2: using a phrase correctly also shows it was understood (a small credit; an error says nothing about comprehension).
+          ...one({ dimension: 'phraseComprehension', outcome: 'positive', base: R.phrase.productionPositive }, phrases),
+        ];
+      }
       return one({ dimension: retrieval ? 'productiveRetrieval' : 'contextualProduction', outcome: 'negative', base: retrieval ? R.production.retrieval : R.production.contextualNegative });
     }
     // CorrectionAccepted / CorrectionRejected / DraftSaved / SentenceSubmitted: accepting a correction is copying, not independent
@@ -200,7 +285,7 @@ export function isPositiveTraceable(event: GoEvent, o: Pick<Observation, 'dimens
   switch (event.kind) {
     case 'ListeningAssessed': case 'CardReviewed': case 'AssessmentAnswered': return p.correct === true;
     case 'ProductionRecorded': return p.usedCorrectly === true;
-    case 'UnderstoodMarked': return o.dimension === 'readingRecognition' ? p.helpUsed === false : p.helpUsed === true || event.evidence?.assisted === true;
+    case 'UnderstoodMarked': return o.dimension === 'readingRecognition' || o.dimension === 'phraseComprehension' ? p.helpUsed === false : p.helpUsed === true || event.evidence?.assisted === true;
     case 'ItemMarked': return p.mark === 'known';
     default: return false;
   }

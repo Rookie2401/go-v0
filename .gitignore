@@ -29,3 +29,4 @@ wrangler.toml
 # Go Repository service data (sqlite + smoke runs)
 data/repository/
 packages/golearn-extension/dist-web/
+data/local-repository/

@@ -4,7 +4,7 @@
  * consumed through this contract only. All methods are async so a remote binding can satisfy them.
  */
 import type { GoEvent } from './index';
-import type { FormAnalysis, LanguagePackInfo, LinguisticUnit, UnitAlias, UnitRelation } from './units';
+import type { FormAnalysis, LanguagePackInfo, LinguisticUnit, UnitAlias, UnitCorrection, UnitRelation } from './units';
 import type { AssistancePreferences, Device, Enrolment, Learner, ReviewCandidate, SuitabilityEstimate, Team, UnitKnowledge } from './learner';
 
 // ───────────────────────────── events (Layer B) ─────────────────────────────
@@ -49,6 +49,14 @@ export interface LinguisticStore {
   invalidateAnalysis(analysisId: string, reason: string, supersededBy?: string): Promise<void>;
   aliasesFor(ids: string[]): Promise<UnitAlias[]>;
   putAliases(a: UnitAlias[]): Promise<void>;
+  /**
+   * Contract v3. Appends `correction` to the unit's `provenance.corrections` (oldest first; the unit's other fields are untouched) and,
+   * when `flag` is set, moves the unit to `requires-review` where the rule allows it: only from `provisional`, or from any live status when the
+   * correction is by a `reviewer`; `invalidated`, `conflicted` and `requires-review` are never changed. This is the one way a status goes DOWN
+   * (a normal `putUnits` never lowers it). Returns the stored unit and whether its status changed, or undefined when there is no such unit.
+   * Optional so a store written before v3 still satisfies the port.
+   */
+  recordUnitCorrection?(unitId: string, correction: UnitCorrection, flag: boolean): Promise<{ unit: LinguisticUnit; statusChanged: boolean } | undefined>;
   getPack(packId: string, version?: string): Promise<LanguagePackInfo | undefined>;
   putPack(p: LanguagePackInfo): Promise<void>;
   listPacks(languageId?: string): Promise<LanguagePackInfo[]>;

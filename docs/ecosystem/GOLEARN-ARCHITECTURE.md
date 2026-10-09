@@ -97,6 +97,30 @@ No course, shelves, bundled library or Scripture corpus; no automatic logging of
 (switch shown disabled with the reason); no machine translation; no claim of Kindle support (copy/paste only); no
 claim of pronunciation quality for Albanian.
 
+## 7a. What a lookup event says (contract v3, 2026-10-09)
+
+`SelectionLookedUp` carries, besides the word, hashes and counts, two more facts about HOW the lookup was decided and WHERE it came from. Both are
+metadata; neither holds page text.
+
+* `payload.language = { languageId, varietyId?, basis, confidence, source?, override }` — the one resolution the controller made
+  (`buildSelectionEvent` takes the controller's `LanguageInfo`): `basis` is `override | book-metadata | document-metadata | detection |
+  team-default` (an `undetermined` language parses nothing and records nothing), `source` the declaration's own label (`html-lang`,
+  `scripture-translation` …), and `override === (basis === 'override')`. The card model (`card.language`), the card host
+  (`data-language-basis`, `data-language-id`), the metrics row and the event are the same decision. The no-pack event carries it too. On the
+  setup page's share screen the learner's own choice of language is an `override` (confidence 1); the enrolment's language is a
+  `team-default` (0.3), which is also what the orientation records. `golearn-share`'s `encounterFromShare` mirrors `languagePayload`; the
+  equality test (`test/golearn-share/event.test.ts`) keeps the share event and the browser event identical.
+* `subject.sourceRef` is the contract's typed union: `web | ebook | file | demo` (`title`, `locator`), `scripture` (`provider`,
+  `translationId`, `languageId?`, `book`, `chapter`, `verse?`, `url?`, `confidence`) and `share` (`mechanism`, `sourceApp?`, `title?`,
+  `locator?`; built by `golearn-share`, always present because the mechanism is known). Every member may carry `restrictions` — what the
+  environment's terms allow — which come from the registry ENTRY (docs/ecosystem/reader/ADAPTER-REGISTRY.md §2a), never from page metadata; a
+  share's are all `unknown`.
+* `PackInstalled.payload = { packId, packVersion, analyzerId?, analyzerVersion?, level, validation }`, written by the setup page's installer
+  when an install completes: `level` from `levelOf(manifest)` (`installable | experimental | planned`), `validation` from `validationOf(manifest)`
+  (installable + machine-drafted = `unreviewed`, partly reviewed = `incomplete`, reviewed = `production-validated`, experimental =
+  `experimental`, planned = `unsupported`), lowered to `incomplete` when a validation case did not match at install. The Repository uses
+  `level` and `validation` to caveat evidence that rests on an experimental or unreviewed analyser.
+
 ## 8. Bundle layout
 
 Five languages are usable, but only Albanian is in the scripts that run on every page. German, Hindi, Thai and Spanish are
@@ -108,6 +132,7 @@ Five languages are usable, but only Albanian is in the scripts that run on every
 | `background.js` | the service worker: session, sync, recorder, dictionary glosses through the pack runtime, with **Albanian** as its only analyser | the browser starts it |
 | `analysers/{sq,es,de,hi,th}.js` (+ one small shared chunk) | the adapter of that language, exported as `adapter` | by `import()`, on demand; listed in the manifest's `web_accessible_resources` (`analysers/*.js`, `<all_urls>`) because the content script runs on any reading site |
 | `action/popup.js` | the toolbar popup | when opened |
+| `content.harness.js` | the same content script with the fixture hook (`<html data-fixture-url>` on loopback hosts) compiled in; **harness pages only**, built by `--mode content-harness` after `ext:build`, never named by the manifest, never shipped | by `harness/*.html` and `harness/sites/*.html` |
 | `app/app.js` | the setup page: screens, pack installer, orientation; Albanian linked in, the other analysers imported by URL from `analysers/` | when the options page opens |
 | `dist-web/assets/*.js` | the hosted setup page; Vite splits the analysers into chunks (`src/analysers/loaders.ts`, one dynamic import per language) | on demand |
 
@@ -115,8 +140,8 @@ Sizes (minified, `npm run ext:build` and the options build; `test/extension/bund
 
 | file | before (all five inline) | now | ceiling |
 |---|---|---|---|
-| `content.js` | 1,406,237 B | 337,233 B (329 KB) | 520 KB |
-| `background.js` | 1,420,284 B | 340,699 B (333 KB) | 520 KB |
+| `content.js` | 1,406,237 B | 346,627 B (339 KB) | 520 KB |
+| `background.js` | 1,420,284 B | 347,363 B (339 KB) | 520 KB |
 | `app/app.js` | 1,526,494 B | about 449,000 B (438 KB) | 650 KB |
 | `analysers/sq.js` / `es.js` / `de.js` / `hi.js` / `th.js` | — | 197 / 163 / 322 / 396 / 169 KB | — |
 

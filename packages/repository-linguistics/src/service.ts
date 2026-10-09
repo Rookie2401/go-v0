@@ -7,7 +7,7 @@ import { STATUS_RANK, unitIds } from '../../repository-contract/src';
 import type {
   AnalysisCandidate, AnalysisStatus, FormAnalysis, LinguisticStore, LinguisticUnit, UnitAlias, UnitProvenance, UnitRelation,
 } from '../../repository-contract/src';
-import { packFor } from './packs';
+import { packFor, withValidation } from './packs';
 import { resolveSelection } from './resolver';
 import type { ResolveInput, Resolution } from './resolver';
 
@@ -18,6 +18,26 @@ export interface Correction {
   reason?: string;
   /** Limits the correction (and the analyses it invalidates) to one sentence; absent = the out-of-context analysis. */
   sentenceKey?: string;
+  /**
+   * Whether the ids the superseded analyses pointed at are re-keyed to the corrected ones (an alias row, so the learner's evidence follows).
+   * Default (absent): only when the superseded reading was a single committed one (a wrong answer, not an ambiguity resolved) and no other live
+   * analysis still points at the old id. `true` forces the re-key, `false` forbids it.
+   */
+  rekey?: boolean;
+}
+
+/** What a correction did beyond the new analysis (projection and deck follow these). */
+export interface CorrectionResult {
+  analysis: FormAnalysis;
+  invalidated: FormAnalysis[];
+  /** Every unit id the superseded analyses or the corrected one pointed at. */
+  affectedUnitIds: string[];
+  /** Ids the superseded analyses pointed at and the corrected one does not: candidates and review items on these must be withdrawn. */
+  withdrawUnitIds: string[];
+  /** Identity re-keys written: `certain` (a reviewer) lets the projection move the learner's evidence to the new id, `uncertain` (a learner) leaves it and says so. */
+  aliases: UnitAlias[];
+  /** Old units marked `supersededBy` (certain re-keys only); their eligibility reads `invalidated`. */
+  superseded: string[];
 }
 
 export interface MigrationChange { oldId: string; newId?: string; reason: string; confidence: number }
@@ -89,15 +109,16 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
   const pointedAt = (a: FormAnalysis): string[] =>
     uniq(a.candidates.flatMap((c) => [...(c.lexemeId ? [c.lexemeId] : []), ...(c.senseId ? [c.senseId] : []), ...(c.constructionIds ?? [])])).sort();
 
-  async function invalidate(analysisId: string, reason: string, replacement?: FormAnalysis): Promise<{ affectedUnitIds: string[] }> {
+  async function invalidate(analysisId: string, reason: string, replacement?: FormAnalysis): Promise<{ affectedUnitIds: string[]; withdrawUnitIds: string[] }> {
     const old = await store.getAnalysis(analysisId);
-    if (!old) return { affectedUnitIds: [] };
+    if (!old) return { affectedUnitIds: [], withdrawUnitIds: [] };
     if (replacement) await store.putAnalyses([replacement]);
     await store.invalidateAnalysis(analysisId, reason, replacement?.analysisId);
-    return { affectedUnitIds: pointedAt(old) };
+    const kept = new Set(replacement ? pointedAt(replacement) : []);
+    return { affectedUnitIds: pointedAt(old), withdrawUnitIds: pointedAt(old).filter((i) => !kept.has(i)) };
   }
 
-  async function correct(formId: string, correction: Correction, now: string = opts.now()): Promise<{ analysis: FormAnalysis; invalidated: FormAnalysis[] }> {
+  async function correct(formId: string, correction: Correction, now: string = opts.now()): Promise<CorrectionResult> {
     if (!correction.lexemeId && !(correction.features && Object.keys(correction.features).length)) {
       throw new RangeError('A correction needs a lexemeId or features.');
     }
@@ -105,10 +126,11 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     const learner = correction.by === 'learner';
     const confidence = learner ? LEARNER_CORRECTION_CONFIDENCE : REVIEWER_CORRECTION_CONFIDENCE;
     const status: AnalysisStatus = learner ? 'provisional' : 'verified';
-    const provenance: UnitProvenance = {
+    // A reviewer's correction is validated for the item it names; a learner's is not (it stays provisional and unreviewed).
+    const provenance: UnitProvenance = withValidation({
       source: correction.by, ref: `correction:${correction.by}`, confidence,
       ...(learner ? {} : { validatedBy: 'reviewer', validatedAt: now }),
-    };
+    }, learner ? 'unreviewed' : 'production-validated');
 
     const previous = (await store.analysesOfForm(formId, correction.sentenceKey))
       .filter((a) => a.status !== 'invalidated' && !a.supersededBy)
@@ -158,6 +180,42 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
       await store.invalidateAnalysis(a.analysisId, reason, analysis.analysisId);
       invalidated.push({ ...a, status: 'invalidated', reason, supersededBy: analysis.analysisId });
     }
+    // Re-key (b), withdraw (c): the ids the superseded analyses pointed at and the corrected one does not.
+    const nextIds = new Set(pointedAt(analysis));
+    const before = uniq(previous.flatMap(pointedAt)).sort();
+    const withdrawUnitIds = before.filter((i) => !nextIds.has(i));
+    const aliases: UnitAlias[] = [];
+    const superseded: string[] = [];
+    if (correction.rekey !== false) {
+      const target = (oldId: string): string | undefined => {
+        if (oldId.startsWith('lemma:') && correction.lexemeId && correction.lexemeId !== oldId) return correction.lexemeId;
+        // a construction follows only within its part of speech (morph:<lang>:<POS>:<features>)
+        if (oldId.startsWith('morph:') && constructionId && constructionId !== oldId && oldId.split(':')[2] === constructionId.split(':')[2]) return constructionId;
+        return undefined;
+      };
+      for (const oldId of withdrawUnitIds) {
+        const newId = target(oldId);
+        if (!newId) continue;
+        if (correction.rekey !== true) {
+          // a committed single reading that was wrong, and nothing else still relies on the old id
+          const committed = previous.filter((a) => pointedAt(a).includes(oldId)).every((a) => a.candidates.length === 1);
+          if (!committed) continue;
+          const support = (await lookup(oldId)).analyses.filter((a) => a.status !== 'invalidated' && !a.supersededBy && a.analysisId !== analysis.analysisId && pointedAt(a).includes(oldId));
+          if (support.length) continue;
+        }
+        aliases.push({
+          oldId, newId, packVersion: pack.version, reason: `correction of ${formId} by ${correction.by}${correction.reason ? `: ${correction.reason}` : ''}`,
+          confidence, createdAt: now, mapping: confidence >= CERTAIN_MIGRATION ? 'certain' : 'uncertain',
+        });
+      }
+      if (aliases.length) {
+        await store.putAliases(aliases);
+        const certain = new Map(aliases.filter((a) => a.mapping === 'certain').map((a) => [a.oldId, a.newId]));
+        const olds = (await store.getUnits([...certain.keys()])).filter((u) => !u.supersededBy);
+        if (olds.length) await store.putUnits(olds.map((u) => ({ ...u, supersededBy: certain.get(u.unitId)! })));
+        superseded.push(...olds.map((u) => u.unitId));
+      }
+    }
     // The form's own row follows a reviewer's verdict once no other live analysis of it is left to disagree (a correction
     // limited to one sentence leaves the out-of-context readings, so the form keeps its status then).
     if (!learner) {
@@ -167,7 +225,7 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
         await store.putUnits([{ ...formUnit, status, provenance }]);
       }
     }
-    return { analysis, invalidated };
+    return { analysis, invalidated, affectedUnitIds: uniq([...before, ...nextIds]).sort(), withdrawUnitIds, aliases, superseded };
   }
 
   /**
@@ -204,7 +262,7 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     for (const id of wanted) {
       const u = have.get(id);
       if (!u) notes.push(`${id}: no stored linguistic unit for ${languageId}`);
-      else if (u.status === 'provisional' || u.status === 'conflicted') notes.push(`${id}: status ${u.status}`);
+      else if (u.status === 'provisional' || u.status === 'requires-review' || u.status === 'conflicted') notes.push(`${id}: status ${u.status}`);
     }
     return notes;
   }

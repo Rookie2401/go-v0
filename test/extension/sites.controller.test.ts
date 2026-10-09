@@ -83,7 +83,12 @@ describe('the registry picks the adapter and the lookup records which', () => {
 });
 
 describe('Scripture references ride on the encounter event, apart from the text', () => {
-  const REF = { kind: 'scripture', translationId: 'NIV', book: 'JHN', chapter: 3, verse: 16, languageHint: 'en' };
+  const SCRIPTURE_RESTRICTIONS = { textRetention: 'forbidden', remoteProcessing: 'forbidden', audioRetention: 'unknown', export: 'unknown', sharing: 'unknown', reviewExamples: 'forbidden' };
+  /** The contract-v3 `scripture` member: provider from the registry id, the translation's language, the passage address, the adapter's confidence, the entry's restrictions. */
+  const REF = {
+    kind: 'scripture', provider: 'biblegateway', translationId: 'NIV', languageId: 'en', book: 'JHN', chapter: 3, verse: 16,
+    url: 'https://www.biblegateway.com/passage/?search=John%203%3A16-17&version=NIV', confidence: 0.9, restrictions: SCRIPTURE_RESTRICTIONS,
+  };
 
   it('every event of the card carries the reference; none carries the verse text; the contract accepts them', async () => {
     mount('biblegateway-passage.html');
@@ -126,7 +131,7 @@ describe('Scripture references ride on the encounter event, apart from the text'
     selectTop(byId('chapter'), 'slowly');
     await r.controller.lookup({ trigger: 'command' });
     const rows = await rowsOf(r.store);
-    expect(rows[0].subject.sourceRef).toEqual({ kind: 'scripture', translationId: 'NIV', book: 'JHN', chapter: 3, verse: 17, languageHint: 'en' });
+    expect(rows[0].subject.sourceRef).toEqual({ kind: 'scripture', provider: 'youversion', translationId: 'NIV', languageId: 'en', book: 'JHN', chapter: 3, verse: 17, url: 'https://www.bible.com/bible/111/JHN.3.NIV', confidence: 0.9, restrictions: SCRIPTURE_RESTRICTIONS });
   });
 });
 

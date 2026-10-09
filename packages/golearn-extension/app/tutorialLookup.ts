@@ -99,6 +99,8 @@ export function createTutorialLookup(opts: TutorialLookupOptions): TutorialLooku
       card, source: { kind: 'demo', title: 'GoLearn orientation', locator: '#/tutorial' }, readerId: TUTORIAL_READER_ID,
       identity: { learnerId: id.learnerId, enrolmentId: id.enrolmentId, deviceId: id.deviceId },
       version: ctx.deps.appVersion, sessionId, now: ctx.deps.now(), direction: 'ltr',
+      // the orientation is in the language of the pack being learned: the enrolment's, not a declaration of the passage
+      language: { languageId: opts.languageId, basis: 'team-default', confidence: 0.3 },
     });
     const event: GoEvent = {
       ...base,

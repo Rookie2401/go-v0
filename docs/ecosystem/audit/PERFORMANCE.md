@@ -74,7 +74,7 @@ Of PF-M07 the parse is 0.27 ms and the card build 1.33 ms (medians). The card ne
 
 A batch of 100 over HTTP costs 1.6× to 1.7× one event, so batching makes an event ~64× cheaper over HTTP (15.1 ms vs 0.235 ms each) and ~7× cheaper in-process (0.653 ms vs 0.095 ms each). The service's own share of an HTTP write is the difference to the floor, which is within noise.
 
-### 1.4 Projection (`projection@1`)
+### 1.4 Projection (`projection@1` at the time of measurement; now `projection@2`, eight dimensions, re-measured in `test/audit/perf.engine.test.ts`)
 
 Events are mixed `SelectionLookedUp` (60 %) and `CardReviewed` (40 %) over 300 lemma units. "Rebuild" = `engine.rebuild()`: read the log, resolve aliases, fold, write the rows and the cursor. "Pure fold" = `observationsFromEvents` + `foldObservations` on events already in memory. "Incremental" = `engine.project()` after **one** new event.
 

@@ -4,14 +4,14 @@ import { validateEvent, type GoEvent } from '../../packages/repository-contract/
 import { KEYS } from '../../packages/golearn-extension/app/state';
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { EVENT_KEY_PREFIX, buildSelectionEvent } from '../../packages/golearn-extension/src/store';
-import type { SourceReference } from '../../packages/golearn-extension/src/contract/readerAdapter';
 import { stubLayout } from './domtools';
-import { destroyRigs, fakeBackground, flush, makeRig, type, until, type Rig, type RigOptions } from './helpers';
+import { ES_FAKE, SQ_FAKE, choose, destroyRigs, fakeBackground, fakePacks, flush, makeRig, type, until, type Rig, type RigOptions } from './helpers';
 
 let restore: () => void;
 beforeEach(() => { restore = stubLayout(); });
 afterEach(() => { destroyRigs(); restore(); document.body.innerHTML = ''; window.history.replaceState(null, '', '/'); vi.restoreAllMocks(); });
 
+const UNKNOWN = { textRetention: 'unknown', remoteProcessing: 'unknown', audioRetention: 'unknown', export: 'unknown', sharing: 'unknown', reviewExamples: 'unknown' } as const;
 const SENTENCE = 'Unë po lexoj një libër të bukur në shtëpinë time.';
 const FRAGMENT = `${SENTENCE} Ai është këtu. Ne flasim shqip.`;
 
@@ -63,14 +63,14 @@ describe('the share screen: a passage arriving through the web share target', ()
     expect(ev.kind).toBe('SelectionLookedUp');
     expect(ev.producer).toMatchObject({ app: 'golearn-app', surface: 'share', version: '0.1.0-test' });
     expect(ev.payload).toMatchObject({ readerId: 'share-web', surface: 'shtëpinë', contextKind: 'sentence', contextConfidence: 0.6 });
-    expect(ev.subject.sourceRef).toEqual({ kind: 'web', title: 'Një libër', locator: '/books/ch3' });
+    expect(ev.subject.sourceRef).toEqual({ kind: 'share', mechanism: 'web-share-target', title: 'Një libër', locator: '/books/ch3', restrictions: UNKNOWN });
 
     // the same card and source, recorded by the browser path, differ only in the id, the producer and the reader id
     const card = parseSelection({ surface: 'shtëpinë', languageId: 'sq', context: { kind: 'sentence', confidence: 0.6, sentence: SENTENCE, selStart: SENTENCE.indexOf('shtëpinë'), selEnd: SENTENCE.indexOf('shtëpinë') + 'shtëpinë'.length, direction: 'ltr', pageLanguage: 'sq' } });
     const browser = buildSelectionEvent({
-      card, source: { kind: 'web', title: 'Një libër', locator: '/books/ch3' } as SourceReference, readerId: 'share-web',
+      card, source: { kind: 'share', mechanism: 'web-share-target', title: 'Një libër', locator: '/books/ch3', restrictions: { ...UNKNOWN } }, readerId: 'share-web',
       identity: { learnerId: ev.learnerId, enrolmentId: ev.enrolmentId, deviceId: ev.producer.deviceId },
-      version: '0.1.0-test', sessionId: ev.dedupeKey!.split(':')[1], now: new Date(ev.at), direction: 'ltr',
+      version: '0.1.0-test', sessionId: ev.dedupeKey!.split(':')[1], now: new Date(ev.at), direction: 'ltr', language: { basis: 'team-default', confidence: 0.3 },
     });
     expect({ ...ev, id: '', producer: { ...ev.producer, app: '', surface: undefined } }).toEqual({ ...browser, id: '', producer: { ...browser.producer, app: '', surface: undefined } });
   });
@@ -94,7 +94,7 @@ describe('the share screen: a passage arriving through the web share target', ()
     expect(words(rig)).toEqual([]);
     const [ev] = await rows(rig);
     expect(ev.payload).toMatchObject({ readerId: 'share-web', surface: 'shtëpinë', contextKind: 'none', contextConfidence: 0 });
-    expect(ev.subject.sourceRef).toBeUndefined();
+    expect(ev.subject.sourceRef).toEqual({ kind: 'share', mechanism: 'web-share-target', restrictions: UNKNOWN });
     expect(hostPresent()).toBe(true);
   });
 
@@ -104,7 +104,7 @@ describe('the share screen: a passage arriving through the web share target', ()
     await until(() => rig.root.querySelector('#share-result[data-recorded]'));
     const [ev] = await rows(rig);
     expect(ev.payload).toMatchObject({ surface: 'shtëpinë', readerId: 'share-web' });
-    expect(ev.subject.sourceRef).toEqual({ kind: 'ebook', title: 'Libri', locator: undefined });
+    expect(ev.subject.sourceRef).toEqual({ kind: 'share', mechanism: 'web-share-target', title: 'Libri', restrictions: UNKNOWN });
   });
 
   it('records nothing for text that is refused, a link with no text, or an empty share', async () => {
@@ -189,7 +189,7 @@ describe('the share screen: pasted text', () => {
     const all = await rows(rig);
     expect(all).toHaveLength(1);
     expect(all[0].payload).toMatchObject({ readerId: 'clipboard', surface: 'libër', contextKind: 'sentence' });
-    expect(all[0].subject.sourceRef).toBeUndefined();
+    expect(all[0].subject.sourceRef).toEqual({ kind: 'share', mechanism: 'clipboard-import', restrictions: UNKNOWN });
     expect(rig.q('#share-result').getAttribute('data-reader')).toBe('clipboard');
     // choosing the same word again in the same visit is the same lookup
     wordButton(rig, 'libër').click();
@@ -241,5 +241,58 @@ describe('the share screen in the extension and in the app', () => {
     rig.q<HTMLFormElement>('#share-paste-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
     await until(() => bg.recorded.length > 0);
     expect(bg.recorded[0]).toMatchObject({ kind: 'SelectionLookedUp', producer: { app: 'golearn-ext', surface: 'share' }, payload: { readerId: 'clipboard', surface: 'shtëpinë' } });
+  });
+});
+
+describe('the share screen: the language of a lookup is recorded as decided', () => {
+  const twoLanguages = (): ReturnType<typeof fakePacks> => {
+    const packs = fakePacks();
+    const all = [SQ_FAKE, { ...ES_FAKE, status: 'installable' as const, level: 'experimental' as const, validation: 'experimental' as const }];
+    packs.packs = () => all;
+    packs.packFor = (id) => all.find((p) => p.languageId === id);
+    return packs;
+  };
+  const language = (ev: GoEvent): Record<string, unknown> => (ev.payload as { language: Record<string, unknown> }).language;
+
+  it('the enrolment’s language (or the default) is a team-default: nothing in a shared passage declares its language', async () => {
+    const rig = await openShared({ text: 'shtëpinë' }, { packs: twoLanguages() });
+    await until(() => rig.root.querySelector('#share-result[data-recorded]'));
+    const [ev] = await rows(rig);
+    expect(language(ev)).toEqual({ languageId: 'sq', basis: 'team-default', confidence: 0.3, override: false });
+    expect(validateEvent(ev)).toEqual([]);
+  });
+
+  it('a language the learner chooses on this screen is an override, and the lookup uses it', async () => {
+    window.history.replaceState(null, '', '/');
+    const rig = await makeRig({ startRoute: 'share', packs: twoLanguages() });
+    const select = rig.q<HTMLSelectElement>('#share-language-select');
+    expect([...select.options].map((o) => o.value)).toEqual(['sq', 'es']);
+    expect(select.value).toBe('sq');
+    choose(select, 'es');
+    expect(rig.q('#share-language').textContent).toContain('the language you chose');
+    type(rig.q<HTMLTextAreaElement>('#share-paste'), 'Yo leo un libro muy bonito en mi casa.');
+    rig.q<HTMLFormElement>('#share-paste-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    await until(() => words(rig).length > 0);
+    wordButton(rig, 'casa').click();
+    await until(() => rig.root.querySelector('#share-result[data-recorded]'));
+    const [ev] = await rows(rig);
+    expect(ev.languageId).toBe('es');
+    expect(language(ev)).toEqual({ languageId: 'es', basis: 'override', confidence: 1, override: true });
+    expect(ev.subject.sourceRef).toMatchObject({ kind: 'share', mechanism: 'clipboard-import' });
+    expect(validateEvent(ev)).toEqual([]);
+  });
+
+  it('the active enrolment’s language, not chosen here, is still a team-default', async () => {
+    window.history.replaceState(null, '', '/');
+    const rig = await makeRig({ startRoute: 'share', packs: twoLanguages() });
+    await setLanguage(rig, 'es');
+    await rig.go('home');
+    await rig.go('share');
+    expect(rig.q<HTMLSelectElement>('#share-language-select').value).toBe('es');
+    type(rig.q<HTMLTextAreaElement>('#share-paste'), 'casa');
+    rig.q<HTMLFormElement>('#share-paste-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+    await until(() => rig.root.querySelector('#share-result[data-recorded]'));
+    const [ev] = await rows(rig);
+    expect(language(ev)).toEqual({ languageId: 'es', basis: 'team-default', confidence: 0.3, override: false });
   });
 });

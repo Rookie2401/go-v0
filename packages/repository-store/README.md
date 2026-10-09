@@ -11,7 +11,7 @@ tombstones, `transaction`, `eraseLearner`, `close`). Imports the contract and `n
 | `src/memory.ts` | `createMemoryStore(opts?)` |
 | `src/sqlite.ts` | `openSqliteStore(path \| ':memory:', opts?)` |
 | `src/migrate.ts` | the migration runner (`applyMigrations`, `readMigrations`) |
-| `src/export.ts` | `exportLearner`, `importLearner` |
+| `src/export.ts` | `exportLearner`, `importLearner`, `unitProvenanceFor` |
 | `src/deletion.ts` | `applyTombstone` |
 | `migrations/NNN-*.sql` | the schema, one file per change |
 | `schema.sql` | the current schema in one file (documentation and a test oracle; not what the runner applies) |
@@ -45,6 +45,7 @@ takes `{ migrationsDir? }` (tests of the runner).
 - `putUnits` / `putRelations` upsert (relation key `fromId|relation|toId`) but **never lower the status rank**
   (`STATUS_RANK`): a `verified` row is not replaced by a `provisional` one; an equal or higher rank replaces. (Consequence: a
   unit cannot be demoted to `invalidated` through `putUnits`; units are superseded by `supersededBy` / aliases.)
+- Contract v3 (P-12). A rewrite keeps what the incoming row does not state: `origin`, `validation`, `licenceId`, `packVersion`, `analyzerVersion`, `alternatives` and **every stored correction** are carried over (`carryProvenance`), so a producer that knows nothing of v3 cannot erase a lookup's stamp. `requires-review` is **sticky**: a `provisional` or `conflicted` rewrite does not clear it; `high-confidence` or `verified` does. `recordUnitCorrection(unitId, correction, flag)` (optional on the port, implemented by both stores) is the only way a status goes down: it appends the correction and, if `flag`, moves a `provisional` unit (or, for a `reviewer`, a `high-confidence`/`verified` one) to `requires-review`; `conflicted` and `invalidated` never change. At most 50 corrections are kept (the newest). `provenanceStats()` (both concrete stores) counts rows by table, `origin`, `validation`.
 - `putAnalyses` follows the same rank rule, and an `invalidated` analysis is terminal. `invalidateAnalysis` sets
   `status: 'invalidated'`, `reason`, `supersededBy` and keeps the row; an unknown id is a no-op.
 - `getPack(packId)` without a version returns the highest version (compared numerically: `2.10` after `2.9`).
@@ -95,7 +96,8 @@ it); calls made inside `fn` (also through `await`) run in it. A transaction insi
 2. An applied file whose checksum no longer matches is refused (`migration 001-initial.sql was edited after it was applied`),
    and a database that has a migration this build does not know is refused (`the database is newer than the code`).
 3. A migration that fails rolls back completely and the open fails.
-4. After adding a migration, update `schema.sql` to the new end state (`test/repository/store/sqlite.test.ts` compares it with a
+4. `002-provenance.sql` (contract v3) adds `origin` and `validation` (with an index) to `units`, `relations` and `analyses` and back-fills them from the row's JSON (`provenance.origin` / `provenance.validation`, for an analysis its own provenance or its chosen candidate's; absent = `import` / `unreviewed`). A database that only 001 has seen is migrated on open; its rows read back unchanged.
+5. After adding a migration, update `schema.sql` to the new end state (`test/repository/store/sqlite.test.ts` compares it with a
    migrated database).
 
 SQLite is `STRICT`; types are `TEXT`, `INTEGER` only.
@@ -117,6 +119,7 @@ interface LearnerExport {
   preferences: AssistancePreferences[];   // learner-wide row first, then per language
   documents: PrivateDocument[];  // FULL bodies (the learner's own text); deleted ones have body '' and deletedAt
   tombstones: Tombstone[];       // the deletion receipts
+  unitProvenance?: ExportedUnitProvenance[];   // v3: provenance of the units the events refer to (not restored by importLearner)
 }
 ```
 
@@ -159,6 +162,6 @@ cover it. `deleteDocument` is the per-document deletion (body blanked, row kept 
 ## Tests
 
 `npx vitest run test/repository/store` runs `conformance.ts` (`storeConformance(name, open)`) against memory, SQLite
-`:memory:` and SQLite on a temporary file, plus SQLite-specific tests (migrations idempotent and checksummed, persistence
+`:memory:` and SQLite on a temporary file, then `provenance.ts` (`storeProvenanceConformance`: contract v3 provenance, `requires-review`, corrections, counts, the new reference kinds, the export) against the same three, plus SQLite-specific tests (migrations idempotent and checksummed, persistence
 across reopen, `schema.sql` equals the migrated schema, transaction rollback, nested savepoints, waiting for an open
 transaction, foreign-key cascade, schema-level uniqueness).

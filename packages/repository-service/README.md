@@ -12,6 +12,7 @@ stored. It depends on the contract's ports (`RepositoryStore`, `ProjectionEngine
 | file | what |
 |---|---|
 | `src/handler.ts` | `handle(request, deps)`: every route, validation, authorization, limits, logging |
+| `src/sourcePolicy.ts`, `src/source-policy.json` | contract v3: the service's own table of what each reader's source may be used for, as data (`source-policy.json`, read and checked by `sourcePolicy.ts`: `SOURCE_POLICY`, `policyFor`). `main.ts` wires it as `ServiceDeps.sourcePolicy`; the handler caps a client's source restrictions by it (`storedSourceRef`) and imports neither file, because the applications reach the handler. Section 7.1 of REPOSITORY-API-AND-OPERATIONS.md has the table |
 | `src/deps.ts` | `ServiceDeps`: `store`, `engine`, `linguistics` (`resolveAndStore`, `lookup`, `correct`), `crypto`, `now?`, `log?`, `exporter?` |
 | `src/crypto-node.ts` | `nodeCrypto`: scrypt (N=16384, r=8, p=1, random 16-byte salt, `scrypt$<salt b64url>$<hash b64url>`), `timingSafeEqual`, `randomBytes(32)` base64url, sha256 hex |
 | `src/linguistics-adapter.ts` | `adaptLinguistics(createLinguisticService(...))` → `LinguisticsPort` (flattens relations, maps `invalidated` to ids) |
@@ -70,7 +71,8 @@ All bodies and responses are JSON. Errors: `{ error, message }` plus route-speci
 | `GET /enrolments` | | `{ enrolments }` |
 | `POST /enrolments` | `{ teamId?, languageId, varietyId?, scriptId?, packId, packVersion, goals }` | `201 { enrolment }`; also appends an `EnrolmentChanged` event (producer `repository`, dedupeKey `enrolment:<id>:started`) |
 | `GET /packs?languageId=` | | `{ packs }` |
-| `GET /units/:id` | | `{ unit, relations, analyses }` via `linguistics.lookup`; 404 `no-such-unit` |
+| `GET /units/:id` | | `{ unit, relations, analyses, provenance }` via `linguistics.lookup`; `provenance` is the unit's with the v3 defaults filled in (a v2 row reads as `origin: 'import'`, `validation: 'unreviewed'`); 404 `no-such-unit` |
+| `POST /units/:id/corrections` | `{ reason, from?, to?, lexemeId?, features?, sentenceKey? }` | contract v3. Appends a correction (role `learner`, no learner id; reason 1 to 300 characters) to the unit's `provenance.corrections`. A form given a `lexemeId` or `features` goes through `linguistics.correct()` (superseding analysis, in `result`) and is not flagged; otherwise a `provisional` unit becomes `requires-review`, while `verified` and `high-confidence` units keep their status. `{ unit, provenance, statusChanged, result? }`; 404 `no-such-unit`, 422, 403 `learner-only` for `by: "reviewer"` or another learner, 409 `corrections-full` at 50 |
 | `POST /lookup` | `{ languageId, surface, sentence?, sentenceKey?, selStart?, selEnd? }` | `linguistics.resolveAndStore`; `{ formId, units, relations, analysis, sentenceKey }`. The sentence goes to the analyser and nowhere else; when only `sentence` is given the service passes `sha256(sentence)` as `sentenceKey`. Surface at most 120 characters, sentence at most 5000 |
 | `POST /events` | `{ events: GoEvent[] }` (1–500) | `{ outcomes, stored, duplicates, head, projected }`. `validateEvent` on each, learner check, `store.append`, then `engine.project`. **A batch with any invalid event is rejected whole**: `422 invalid-events` with `issues: [{ index, id?, issues: [{ path, message }] }]` and nothing stored. Client `recordedAt`/`seq` are dropped. Retries are idempotent (`id` and `dedupeKey`): outcomes say `duplicateOf`. A failing projection leaves the events stored and reports `projected: false` |
 | `GET /events?afterSeq=&kinds=a,b&unitId=&languageId=&since=&limit=` | | `{ events, head }`; limit default 200, clamped to 1000 |
@@ -86,9 +88,9 @@ All bodies and responses are JSON. Errors: `{ error, message }` plus route-speci
 | `POST /corrections` | `{ formId, lexemeId?, features?, reason?, sentenceKey?, enrolmentId?, languageId? }` | `linguistics.correct(formId, { by: 'learner', … }, now)` then an `AnalysisCorrected` event against the learner's enrolment in the form's language (422 `no-enrolment` if none) |
 | `POST /sync/push` | `SyncPushRequest` | `{ outcomes, documents: [{ docId, ok, current? }], serverTime, clockSkewMs, head }`. `deviceId` must be the session's (403 `not-your-device`). `clockSkewMs = clientTime − serverTime`. Events keep the client's `at`. Events are validated as one batch (422 whole); events and documents are applied in one transaction; document conflicts are reported per document, not as an error; then `engine.project`; the device's `lastSyncAt` is stamped. At most 500 events and 50 documents |
 | `POST /sync/pull` | `SyncPullRequest` | `{ events, documents, head, serverTime }`: events after `afterSeq` (limit clamped to 1000), documents with `updatedAt` after `documentsSince` (deleted documents included, body gone) |
-| `GET /export` | | `{ format: 'go-repository-export@1', contractVersion, exportedAt, learner, account, devices, enrolments, events, knowledge, preferences, documents, tombstones }` assembled from the store ports, or `deps.exporter(learnerId)` when given. Never a password hash or a token |
+| `GET /export` | | `{ format: 'go-repository-export@1', contractVersion, exportedAt, learner, account, devices, enrolments, events, knowledge, preferences, documents, tombstones, unitProvenance }` (v3: the provenance of the units the learner's events refer to) assembled from the store ports, or `deps.exporter(learnerId)` when given. Never a password hash or a token |
 | `POST /tombstones` | `{ scope, reason? }` | `201 { tombstone, applied: { events, knowledge } }`. `scope` is `{kind:'learner'}`, `{kind:'source',sourceRef}`, `{kind:'range',from,to}` or `{kind:'event',id}`. `event`, `source` and `range` are applied through the store's `applyTombstone` and the projection is refolded (P-02, 2026-10-09); `learner` is record-only (`DELETE /me` erases); a store that cannot delete answers 501 |
-| `POST /units/batch` | `{ ids }` (1–50) | `{ units: [...], missing: [...] }`: what `GET /units/:id` returns, for several ids in one call (PF-02) |
+| `POST /units/batch` | `{ ids }` (1–50) | `{ units: [...], missing: [...] }`: what `GET /units/:id` returns (provenance included), for several ids in one call (PF-02) |
 | `POST /enrolments/:id/end` | | sets `endedAt`, appends `EnrolmentChanged` (`change: 'ended'`); idempotent; 404 for another learner's enrolment (P-06) |
 
 Other statuses: `400 invalid-json`, `404 not-found`, `405 method-not-allowed`, `413 too-large`, `422 invalid-input` /
@@ -110,6 +112,7 @@ One line per request: `METHOD /path status ms` (path only: never the query strin
 
 * **Plaintext passwords**: only the scrypt string. Never in a response, a log, or an export.
 * **Tokens**: only `sha256(token)`; the token is shown once.
+* **A learner in a shared row** (v3): rows stamped at a lookup (`origin: 'learner-lookup'`) and unit corrections hold no learner id, device, email or time, and `DELETE /me` leaves them. A correction's `reason` is free text without an author.
 * **Page text**: `/lookup`'s `sentence` is used to analyse and dropped; only its hash (`sentenceKey`) is kept. Events carry hashes and ids, never passages (`validateEvent`). The learner's own writing lives only in the document store, and is exported and deleted with the learner.
 
 ## Known limits and gaps
@@ -117,5 +120,6 @@ One line per request: `METHOD /path status ms` (path only: never the query strin
 * The throttle is per process (above). No rate limit on `POST /accounts` or on other routes.
 * `GET /me` lists one device because `IdentityStore` has no `listDevices`; consents are read from the first 1000 consent events.
 * `POST /tombstones` for `source`/`range`/`event` is applied by the store (`applyTombstone`) and the projection is refolded; backups, replicas and the shared linguistic tables are not covered (see REPOSITORY-API-AND-OPERATIONS.md).
+* Source restrictions are capped by the wired `sourcePolicy` at ingestion (none wired: all `unknown`) (a client may tighten, never loosen); a reference that claims none is stored without and reads as `unknown`. `POST /events`, `/sync/push`, `/reviews` and `/writing` all do it.
 * A learner correction goes to the shared linguistic store (Layer A) as the linguistic service decides (`provisional`, confidence 0.6).
 * Event `enrolmentId`s are checked against the learner's enrolments at ingestion (S-06), and the event's `languageId` must match the enrolment's (P-07): otherwise 422.

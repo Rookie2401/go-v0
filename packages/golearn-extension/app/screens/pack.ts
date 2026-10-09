@@ -5,6 +5,7 @@
 import type { AppContext } from '../context';
 import { validateServiceUrl } from '../config';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
+import { recordPackInstalled } from '../packEvent';
 import type { PackView, VerifyView } from '../ports';
 import type { View } from './view';
 
@@ -108,6 +109,8 @@ function packCard(pack: PackView, ctx: AppContext, record: { version: string; ok
           fetch: ctx.deps.fetch, baseUrl: await installBase(ctx), storage: ctx.deps.area,
           onProgress: (done, total, label) => { progress.value = total > 0 ? Math.min(1, done / total) : 0; if (label) status.textContent = `Installing… ${label}`; },
         });
+        // the install completed (the pack is on this device, even when a validation case did not match): record it with its level and validation
+        if (r.version !== undefined) await recordPackInstalled(ctx, pack, !r.ok);
         await finish(r, 'Installed');
       } catch (e) {
         setStatus(status, `The install did not complete: ${e instanceof Error ? e.message : String(e)}`, 'error');

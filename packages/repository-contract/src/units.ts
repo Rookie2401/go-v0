@@ -22,11 +22,39 @@ export const UNIT_KINDS = [
 export type UnitKind = (typeof UNIT_KINDS)[number];
 
 /** The validation status of an analysis or a unit; Prompt 3 §11. Names are stable identifiers. */
-export const ANALYSIS_STATUSES = ['verified', 'high-confidence', 'provisional', 'conflicted', 'invalidated'] as const;
+export const ANALYSIS_STATUSES = ['verified', 'high-confidence', 'provisional', 'requires-review', 'conflicted', 'invalidated'] as const;
 export type AnalysisStatus = (typeof ANALYSIS_STATUSES)[number];
 
 export const PROVENANCE_SOURCES = ['hand-lexicon', 'dictionary', 'rule', 'parser', 'reviewer', 'learner', 'import'] as const;
 export type ProvenanceSource = (typeof PROVENANCE_SOURCES)[number];
+
+/**
+ * How a row came to exist (contract v3, audit P-12). `source` says what kind of producer made it; `origin` says through which
+ * path it entered the shared layer: a pack's own lexicon, a dictionary import, a rule, a learner's lookup (never with a learner
+ * id), a reviewer, or an import.
+ */
+export const PROVENANCE_ORIGINS = ['pack-lexicon', 'dictionary', 'rule-derived', 'learner-lookup', 'reviewer', 'import'] as const;
+export type ProvenanceOrigin = (typeof PROVENANCE_ORIGINS)[number];
+
+/** How far a pack (and so anything derived from it) has been validated; also the `validation` of a row. Names are stable identifiers. */
+export const VALIDATION_LEVELS = ['production-validated', 'experimental', 'seed-only', 'unreviewed', 'incomplete', 'unsupported'] as const;
+export type ValidationLevel = (typeof VALIDATION_LEVELS)[number];
+
+/** What an unreviewed v2 row reads as. */
+export const DEFAULT_ORIGIN: ProvenanceOrigin = 'import';
+export const DEFAULT_VALIDATION: ValidationLevel = 'unreviewed';
+
+/** A correction recorded against a row: appended, never edited. It names no learner (`by` is a role) and holds a bounded reason. */
+export interface UnitCorrection {
+  at: string; // ISO
+  by: 'reviewer' | 'learner' | 'system';
+  from?: string;
+  to?: string;
+  reason: string;
+}
+export const MAX_CORRECTIONS = 50;
+export const MAX_ALTERNATIVES = 50;
+export const MAX_CORRECTION_REASON_CHARS = 300;
 
 export interface UnitProvenance {
   source: ProvenanceSource;
@@ -36,6 +64,30 @@ export interface UnitProvenance {
   /** Who or what validated it to its current status (a reviewer id, a test id), when known. */
   validatedBy?: string;
   validatedAt?: string;
+  // ── contract v3 (P-12). Optional so a v2 row stays valid; read through `provenanceOf`, which fills the defaults. ──
+  /** The path the row entered through. Absent on a v2 row, which reads as `import`. */
+  origin?: ProvenanceOrigin;
+  /** The licence entry (`LanguagePackInfo.licences`) the content rests on, when it rests on one. */
+  licenceId?: string;
+  packVersion?: string;
+  analyzerVersion?: string;
+  /** The validation level of the pack/analyzer behind the row. Absent on a v2 row, which reads as `unreviewed`. */
+  validation?: ValidationLevel;
+  /** Other unit ids that were considered for the same thing and not chosen. */
+  alternatives?: string[];
+  /** Corrections recorded against this row, oldest first. */
+  corrections?: UnitCorrection[];
+}
+
+/** A provenance with the v3 defaults filled in: what every reader of a row should use, so a v2 row and a v3 row read alike. */
+export const provenanceOf = (p: UnitProvenance): UnitProvenance & { origin: ProvenanceOrigin; validation: ValidationLevel } => ({
+  ...p, origin: p.origin ?? DEFAULT_ORIGIN, validation: p.validation ?? DEFAULT_VALIDATION,
+});
+
+/** The two indexed columns a store keeps beside a row's JSON (`origin`, `validation`). A form analysis: its own provenance, else its chosen (or first) candidate's. */
+export function provenanceColumns(row: { provenance?: UnitProvenance; candidates?: Array<{ provenance?: UnitProvenance }>; chosen?: number }): { origin: ProvenanceOrigin; validation: ValidationLevel } {
+  const p = row.provenance ?? row.candidates?.[row.chosen ?? 0]?.provenance;
+  return { origin: p?.origin ?? DEFAULT_ORIGIN, validation: p?.validation ?? DEFAULT_VALIDATION };
 }
 
 export interface LinguisticUnit {
@@ -120,6 +172,8 @@ export interface FormAnalysis {
   /** When invalidated or superseded: the analysis that replaced it and why. */
   supersededBy?: string;
   reason?: string;
+  /** Contract v3: how the analysis as a whole came to exist; without it a store reads the chosen candidate's provenance. */
+  provenance?: UnitProvenance;
 }
 
 /** Identity migration between pack versions (Prompt 3 §17): never silent, always carries confidence. */
@@ -143,6 +197,25 @@ export interface LanguagePackInfo {
   coverage: { lexemes?: number; forms?: number; constructions?: number; notes: string[] };
   licences: Array<{ resource: string; licence: string; notice?: string }>;
   reviewStatus: 'machine-drafted' | 'partly-reviewed' | 'reviewed';
+  /** Contract v3: the manifest's own `level` (installable, experimental, planned). Absent on a v2 row. */
+  level?: 'installable' | 'experimental' | 'planned';
+  /** Contract v3: the validation level the pack's MANIFEST claims. Only `production-validated` here lets an installable pack's rows read as production-validated. */
+  validation?: ValidationLevel;
+}
+
+/**
+ * The `validation` a row made from this pack carries. `installable` reads as `production-validated` ONLY when the manifest says so
+ * (`validation: 'production-validated'`); otherwise as what the manifest does say (`seed-only`, `incomplete`), else `unreviewed`.
+ * `experimental` is always `experimental`; `planned` has no analyser behind it, `unsupported`. No level, or no pack, is `unreviewed`.
+ */
+export function validationForPack(pack: Pick<LanguagePackInfo, 'level' | 'validation'> | undefined): ValidationLevel {
+  if (!pack) return 'unreviewed';
+  if (pack.level === 'experimental') return 'experimental';
+  if (pack.level === 'planned') return 'unsupported';
+  if (pack.level === 'installable') {
+    return pack.validation === 'production-validated' || pack.validation === 'seed-only' || pack.validation === 'incomplete' ? pack.validation : 'unreviewed';
+  }
+  return 'unreviewed';
 }
 
 export interface ValidationIssue { path: string; message: string }
@@ -157,6 +230,29 @@ export function validateProvenance(p: unknown, path = 'provenance'): ValidationI
   if (!(PROVENANCE_SOURCES as readonly string[]).includes(String(x.source))) out.push({ path: `${path}.source`, message: 'unknown provenance source' });
   if (!isStr(x.ref)) out.push({ path: `${path}.ref`, message: 'required string' });
   if (!in01(x.confidence)) out.push({ path: `${path}.confidence`, message: 'number within 0..1' });
+  if (x.origin !== undefined && !(PROVENANCE_ORIGINS as readonly string[]).includes(String(x.origin))) out.push({ path: `${path}.origin`, message: `one of ${PROVENANCE_ORIGINS.join(', ')}` });
+  if (x.validation !== undefined && !(VALIDATION_LEVELS as readonly string[]).includes(String(x.validation))) out.push({ path: `${path}.validation`, message: `one of ${VALIDATION_LEVELS.join(', ')}` });
+  for (const k of ['licenceId', 'packVersion', 'analyzerVersion', 'validatedBy', 'validatedAt'] as const) {
+    if (x[k] !== undefined && (typeof x[k] !== 'string' || (x[k] as string).length > 300)) out.push({ path: `${path}.${k}`, message: 'string of at most 300 characters' });
+  }
+  if (x.alternatives !== undefined) {
+    if (!Array.isArray(x.alternatives) || x.alternatives.length > MAX_ALTERNATIVES || x.alternatives.some((a) => typeof a !== 'string' || a.length > 300)) out.push({ path: `${path}.alternatives`, message: `list of at most ${MAX_ALTERNATIVES} unit ids` });
+  }
+  if (x.corrections !== undefined) {
+    if (!Array.isArray(x.corrections) || x.corrections.length > MAX_CORRECTIONS) out.push({ path: `${path}.corrections`, message: `list of at most ${MAX_CORRECTIONS} corrections` });
+    else x.corrections.forEach((c, i) => out.push(...validateCorrection(c, `${path}.corrections[${i}]`)));
+  }
+  return out;
+}
+
+export function validateCorrection(c: unknown, path = 'correction'): ValidationIssue[] {
+  if (!c || typeof c !== 'object' || Array.isArray(c)) return [{ path, message: 'object' }];
+  const x = c as Record<string, unknown>;
+  const out: ValidationIssue[] = [];
+  if (typeof x.at !== 'string' || Number.isNaN(Date.parse(x.at))) out.push({ path: `${path}.at`, message: 'ISO 8601 timestamp required' });
+  if (!['reviewer', 'learner', 'system'].includes(String(x.by))) out.push({ path: `${path}.by`, message: 'one of reviewer, learner, system' });
+  for (const k of ['from', 'to'] as const) if (x[k] !== undefined && (typeof x[k] !== 'string' || (x[k] as string).length > 300)) out.push({ path: `${path}.${k}`, message: 'string of at most 300 characters' });
+  if (!isStr(x.reason) || x.reason.length > MAX_CORRECTION_REASON_CHARS) out.push({ path: `${path}.reason`, message: `required string of at most ${MAX_CORRECTION_REASON_CHARS} characters` });
   return out;
 }
 
@@ -190,6 +286,7 @@ export function validateAnalysis(a: unknown): ValidationIssue[] {
   const x = a as Record<string, unknown>;
   for (const k of ['analysisId', 'formId', 'languageId', 'analyzerId', 'packId', 'packVersion', 'createdAt']) if (!isStr(x[k])) out.push({ path: k, message: 'required string' });
   if (!(ANALYSIS_STATUSES as readonly string[]).includes(String(x.status))) out.push({ path: 'status', message: 'unknown status' });
+  if (x.provenance !== undefined) out.push(...validateProvenance(x.provenance));
   if (!Array.isArray(x.candidates)) out.push({ path: 'candidates', message: 'array required' });
   else {
     x.candidates.forEach((c, i) => {
@@ -203,8 +300,11 @@ export function validateAnalysis(a: unknown): ValidationIssue[] {
   return out;
 }
 
-/** Status ordering used by eligibility policies: higher is more trustworthy. `invalidated` is never eligible. */
-export const STATUS_RANK: Record<AnalysisStatus, number> = { invalidated: 0, conflicted: 1, provisional: 2, 'high-confidence': 3, verified: 4 };
+/**
+ * Status ordering used by eligibility policies: higher is more trustworthy. `invalidated` is never eligible. `requires-review` (v3) is a
+ * row someone challenged with a correction that a reviewer has not settled: it ranks below `provisional` and above `conflicted`.
+ */
+export const STATUS_RANK: Record<AnalysisStatus, number> = { invalidated: 0, conflicted: 1, 'requires-review': 2, provisional: 3, 'high-confidence': 4, verified: 5 };
 
 /** Id helpers shared by packs, the extension and the engine so one unit has one id everywhere. */
 export const unitIds = {

@@ -47,7 +47,7 @@ describe('writingEvidence', () => {
     for (const e of events) {
       expect(validateEvent(e)).toEqual([]);
       expect(e.producer).toMatchObject({ app: 'gopractice-tell', deviceId: 'dev-1' });
-      expect(e).toMatchObject({ learnerId: 'learner-1', enrolmentId: 'enrol-1', languageId: 'sq', at: NOW, v: 2 });
+      expect(e).toMatchObject({ learnerId: 'learner-1', enrolmentId: 'enrol-1', languageId: 'sq', at: NOW, v: 3 });
       expect(e.dedupeKey).toBeTruthy();
     }
     expect(new Set(events.map((e) => e.id)).size).toBe(events.length);

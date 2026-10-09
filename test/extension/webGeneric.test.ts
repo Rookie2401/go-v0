@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { WebGenericAdapter } from '../../packages/golearn-extension/src/adapters';
+import { WebGenericAdapter, registryEntry } from '../../packages/golearn-extension/src/adapters';
 import { validateCapabilities } from '../../packages/golearn-extension/src/contract/readerCapabilities';
 import { GOLEARN_HOST_ATTR, type ReaderSelection } from '../../packages/golearn-extension/src/contract/readerAdapter';
 import { sqAdapter } from '../../src/adapters/sq';
@@ -318,7 +318,7 @@ describe('web-generic: source reference, anchor and layout changes', () => {
     selectText(document.getElementById('p')!, 'libër');
     sel(adapter);
     const ref = adapter.sourceRef();
-    expect(ref).toEqual({ kind: 'web', title: 'A page about libra', locator: '/reader/chapter-1' });
+    expect(ref).toEqual({ kind: 'web', title: 'A page about libra', locator: '/reader/chapter-1', restrictions: { ...registryEntry('web-generic')!.restrictions } });
     expect(JSON.stringify(ref)).not.toMatch(/secret|frag|lexon/);
     history.replaceState({}, '', '/');
   });

@@ -10,7 +10,7 @@
  * words, as in the browser), a hash of the sentence or fragment, counts and the reader id. Not the passage, not the
  * sender's title beyond the source reference, not the link beyond its path.
  */
-import { CONTRACT_VERSION, type GoEvent, type SourceRef } from '../../repository-contract/src';
+import { CONTRACT_VERSION, type GoEvent, type LanguageEvidence, type SourceRef } from '../../repository-contract/src';
 import { sharedSourceRef } from './source';
 import { shareReaderId, type SharedPassage } from './mechanism';
 import { wordCount } from './text';
@@ -43,11 +43,37 @@ export interface ShareCardView {
   };
 }
 
+/**
+ * How the language of a share was decided: the learner chose it on the share screen (`override`), or it is the enrolment's language
+ * (`team-default`; nothing in a shared passage declares its language). Mirrors the browser's `LanguageInfo` fields an event records.
+ */
+export interface ShareLanguage {
+  basis: LanguageEvidence['basis'];
+  confidence: number;
+  languageId?: string;
+  varietyId?: string;
+  source?: string;
+}
+
+/** `payload.language` (contract v3), built exactly as the extension's `languagePayload` builds it; `override` is true only for the basis `override`. */
+export function shareLanguagePayload(l: ShareLanguage | undefined, languageId: string): LanguageEvidence | undefined {
+  if (!l || l.basis === 'undetermined') return undefined;
+  return {
+    languageId: l.languageId ?? languageId,
+    ...(l.varietyId ? { varietyId: l.varietyId } : {}),
+    basis: l.basis,
+    confidence: l.confidence,
+    ...(l.source ? { source: l.source } : {}),
+    override: l.basis === 'override',
+  };
+}
+
 export interface ShareEventInput {
   card: ShareCardView;
+  /** How the language was decided; recorded as `payload.language`. */
+  language?: ShareLanguage;
   /** The shared passage's metadata. Its `text` is read only to decide whether the title is the text; it is not stored. */
-  passage: Pick<SharedPassage, 'mechanism' | 'url' | 'title' | 'sourceApp' | 'text'>;
-  identity: { learnerId: string; enrolmentId: string; deviceId: string };
+  passage: Pick<SharedPassage, 'mechanism' | 'url' | 'title' | 'sourceApp' | 'text'>;  identity: { learnerId: string; enrolmentId: string; deviceId: string };
   version: string;
   sessionId: string;
   now: Date;
@@ -72,7 +98,7 @@ export function encounterFromShare(b: ShareEventInput): GoEvent {
   const { card } = b;
   const ctx = card.context;
   const readerId = shareReaderId(b.passage.mechanism);
-  const source: SourceRef | undefined = sharedSourceRef(b.passage);
+  const source: SourceRef = sharedSourceRef(b.passage);
 
   const helpShown = ['surface'];
   if (card.lemma) helpShown.push('lemma');
@@ -83,7 +109,7 @@ export function encounterFromShare(b: ShareEventInput): GoEvent {
   const short = wordCount(card.surface) <= MAX_STORED_SURFACE_WORDS;
   const subject: GoEvent['subject'] = { itemIds: [...card.itemIds] };
   if (ctx.kind === 'sentence' && ctx.sentenceKey) subject.sentenceKey = ctx.sentenceKey;
-  if (source) subject.sourceRef = { kind: source.kind, title: source.title?.slice(0, 120), locator: source.locator };
+  subject.sourceRef = source;
   const payload: Record<string, unknown> = {
     tokenCount: card.tokenCount,
     contextKind: ctx.kind,
@@ -97,6 +123,8 @@ export function encounterFromShare(b: ShareEventInput): GoEvent {
   };
   if (short) payload.surface = card.surface; else payload.surfaceOmitted = true;
   if (ctx.kind === 'fragment' && ctx.fragmentKey) payload.fragmentKey = ctx.fragmentKey;
+  const language = shareLanguagePayload(b.language, card.languageId);
+  if (language) payload.language = language;
   const itemKey = card.itemIds.join(',');
   return {
     id: b.id ?? newEventId(b.now),

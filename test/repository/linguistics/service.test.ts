@@ -120,7 +120,7 @@ describe('invalidate', () => {
 
   it('an unknown analysis affects nothing', async () => {
     const { svc } = make();
-    expect(await svc.invalidate('analysis:nope', 'x')).toEqual({ affectedUnitIds: [] });
+    expect(await svc.invalidate('analysis:nope', 'x')).toEqual({ affectedUnitIds: [], withdrawUnitIds: [] });
   });
 });
 

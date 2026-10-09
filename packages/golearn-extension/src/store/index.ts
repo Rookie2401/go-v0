@@ -5,7 +5,8 @@
  */
 import { CONTRACT_VERSION, validateEvent, type GoEvent, type ValidationIssue } from '../../../repository-contract/src';
 import type { CardModel } from '../parser/cardModel';
-import type { SourceReference } from '../contract/readerAdapter';
+import type { EventLanguage, LanguageResolution } from '../contract/language';
+import type { SourceReference, SourceRestrictions } from '../contract/readerAdapter';
 import { fnv1a64, wordCount } from '../text';
 import type { StorageArea } from '../platform';
 
@@ -77,10 +78,94 @@ export const createMemoryEncounterStore = (): EncounterStore => createStorageEnc
 
 // ───────────────────────────── building the event ─────────────────────────────
 
+// ───────────────────────────── what an event says about the source and the language ─────────────────────────────
+
+/**
+ * A Scripture source reference as the event carries it (contract v3): METADATA about where in a translation the selection is,
+ * never the verse text. `provider` is the registry id of the site; `url` is the passage address (path and passage query only).
+ */
+export interface ScriptureEventSource {
+  kind: 'scripture';
+  provider: 'biblegateway' | 'youversion' | 'other';
+  translationId: string;
+  languageId?: string;
+  /** USFM book code. */
+  book: string;
+  chapter: number;
+  verse?: number;
+  verseEnd?: number;
+  url?: string;
+  confidence: number;
+  restrictions?: SourceRestrictions;
+}
+
+/** A passage that reached GoLearn by a platform share or a clipboard import (golearn-share builds the same member; the equality test keeps them identical). */
+export interface ShareEventSource {
+  kind: 'share';
+  mechanism: 'android-process-text' | 'android-send' | 'ios-share-extension' | 'ios-safari-extension' | 'web-share-target' | 'clipboard-import' | 'deep-link';
+  sourceApp?: string;
+  title?: string;
+  locator?: string;
+  restrictions?: SourceRestrictions;
+}
+
+/** What a builder needs of a source: an ordinary source reference, a Scripture one, or a share. */
+export type StoredSourceRef = SourceReference | ScriptureEventSource | ShareEventSource;
+
+const restrictionsOf = (r: SourceRestrictions | undefined): { restrictions: SourceRestrictions } | Record<string, never> =>
+  r ? { restrictions: { textRetention: r.textRetention, remoteProcessing: r.remoteProcessing, audioRetention: r.audioRetention, export: r.export, sharing: r.sharing, reviewExamples: r.reviewExamples } } : {};
+
+/** The `subject.sourceRef` an event carries. Fields are listed one by one: nothing else of the source object travels. */
+export function sourceRefOf(s: StoredSourceRef): NonNullable<GoEvent['subject']['sourceRef']> {
+  if (s.kind === 'scripture') {
+    return {
+      kind: 'scripture', provider: s.provider, translationId: s.translationId,
+      ...(s.languageId ? { languageId: s.languageId } : {}),
+      book: s.book, chapter: s.chapter,
+      ...(s.verse !== undefined ? { verse: s.verse } : {}), ...(s.verseEnd !== undefined ? { verseEnd: s.verseEnd } : {}),
+      ...(s.url ? { url: s.url } : {}), confidence: s.confidence, ...restrictionsOf(s.restrictions),
+    } as unknown as NonNullable<GoEvent['subject']['sourceRef']>;
+  }
+  if (s.kind === 'share') {
+    return {
+      kind: 'share', mechanism: s.mechanism, ...(s.sourceApp ? { sourceApp: s.sourceApp } : {}),
+      ...(s.title ? { title: s.title.slice(0, 120) } : {}), ...(s.locator ? { locator: s.locator } : {}), ...restrictionsOf(s.restrictions),
+    } as NonNullable<GoEvent['subject']['sourceRef']>;
+  }
+  return {
+    kind: s.kind, ...(s.title ? { title: s.title.slice(0, 120) } : {}), ...(s.locator ? { locator: s.locator } : {}), ...restrictionsOf(s.restrictions),
+  } as NonNullable<GoEvent['subject']['sourceRef']>;
+}
+
+/** The part of the controller's `LanguageInfo` an event records. */
+export interface LanguageEvidenceInfo {
+  languageId?: string;
+  varietyId?: string;
+  basis: LanguageResolution['basis'];
+  confidence: number;
+  source?: string;
+}
+
+/**
+ * `payload.language` of a SelectionLookedUp (contract v3), from the one resolution the controller made. `override` is true exactly
+ * when the basis is `override`. An undetermined language never reaches an event (nothing is looked up), so it records nothing.
+ */
+export function languagePayload(info: LanguageEvidenceInfo | undefined, languageId: string): EventLanguage | undefined {
+  if (!info || info.basis === 'undetermined') return undefined;
+  return {
+    languageId: info.languageId ?? languageId,
+    ...(info.varietyId ? { varietyId: info.varietyId } : {}),
+    basis: info.basis,
+    confidence: info.confidence,
+    ...(info.source ? { source: info.source } : {}),
+    override: info.basis === 'override',
+  };
+}
+
 export interface Identity { learnerId: string; enrolmentId: string; deviceId: string }
 export interface BuildContext {
   card: CardModel;
-  source?: SourceReference;
+  source?: StoredSourceRef;
   readerId: string;
   identity: Identity;
   version: string;
@@ -88,6 +173,8 @@ export interface BuildContext {
   now: Date;
   /** Only the reader that produced the selection can say; 'ltr'/'rtl' as recorded by the adapter. */
   direction?: string;
+  /** How the language of the lookup was decided (the controller's resolution); recorded as `payload.language`. */
+  language?: LanguageEvidenceInfo;
 }
 
 let counter = 0;
@@ -112,7 +199,7 @@ export function buildSelectionEvent(b: BuildContext): GoEvent {
   const short = wordCount(card.surface) <= MAX_STORED_SURFACE_WORDS;
   const subject: GoEvent['subject'] = { itemIds: card.itemIds };
   if (ctx.kind === 'sentence' && ctx.sentenceKey) subject.sentenceKey = ctx.sentenceKey;
-  if (b.source) subject.sourceRef = { kind: b.source.kind, title: b.source.title?.slice(0, 120), locator: b.source.locator };
+  if (b.source) subject.sourceRef = sourceRefOf(b.source);
   const payload: Record<string, unknown> = {
     tokenCount: card.tokenCount,
     contextKind: ctx.kind,
@@ -126,6 +213,8 @@ export function buildSelectionEvent(b: BuildContext): GoEvent {
   };
   if (short) payload.surface = card.surface; else payload.surfaceOmitted = true; // a long selection is page text, not an item
   if (ctx.kind === 'fragment' && ctx.fragmentKey) payload.fragmentKey = ctx.fragmentKey;
+  const language = languagePayload(b.language, card.languageId);
+  if (language) payload.language = language;
   const itemKey = card.itemIds.join(',');
   return {
     id: newEventId(b.now),
@@ -153,7 +242,7 @@ function followUp<K extends GoEvent['kind']>(b: InteractionContext, kind: K, pay
   const ctx = card.context;
   const subject: GoEvent['subject'] = { itemIds: card.itemIds };
   if (ctx.kind === 'sentence' && ctx.sentenceKey) subject.sentenceKey = ctx.sentenceKey;
-  if (b.source) subject.sourceRef = { kind: b.source.kind, title: b.source.title?.slice(0, 120), locator: b.source.locator };
+  if (b.source) subject.sourceRef = sourceRefOf(b.source);
   return {
     id: newEventId(b.now), v: CONTRACT_VERSION,
     learnerId: b.identity.learnerId, enrolmentId: b.identity.enrolmentId, languageId: card.languageId, at: b.now.toISOString(),
@@ -204,16 +293,18 @@ export function buildCorrectionEvent(b: InteractionContext, c: { formId: string;
 }
 
 /** A lookup in a language the reader has no analyser or pack for: only the lookup is recorded, with the surface when it is short. */
-export function buildNoPackEvent(b: { surface: string; languageId: string; readerId: string; identity: Identity; version: string; sessionId: string; now: Date; source?: SourceReference; direction?: string; reason: 'no-pack' | 'no-analyser' }): GoEvent {
+export function buildNoPackEvent(b: { surface: string; languageId: string; readerId: string; identity: Identity; version: string; sessionId: string; now: Date; source?: StoredSourceRef; direction?: string; reason: 'no-pack' | 'no-analyser'; language?: LanguageEvidenceInfo }): GoEvent {
   const surface = b.surface.normalize('NFC').trim();
   const short = wordCount(surface) <= MAX_STORED_SURFACE_WORDS && surface.length > 0;
   const subject: GoEvent['subject'] = { itemIds: short ? [`form:${b.languageId}:${surface.toLowerCase()}`] : [] };
-  if (b.source) subject.sourceRef = { kind: b.source.kind, title: b.source.title?.slice(0, 120), locator: b.source.locator };
+  if (b.source) subject.sourceRef = sourceRefOf(b.source);
   const payload: Record<string, unknown> = {
     tokenCount: 0, contextKind: 'none', contextConfidence: 0, readerId: b.readerId, direction: b.direction ?? 'unknown',
     helpShown: ['surface'], mode: b.reason,
   };
   if (short) payload.surface = surface; else payload.surfaceOmitted = true;
+  const language = languagePayload(b.language, b.languageId);
+  if (language) payload.language = language;
   return {
     id: newEventId(b.now), v: CONTRACT_VERSION, learnerId: b.identity.learnerId, enrolmentId: b.identity.enrolmentId, languageId: b.languageId, at: b.now.toISOString(),
     producer: { app: 'golearn-ext', version: b.version, deviceId: b.identity.deviceId },

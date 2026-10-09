@@ -7,7 +7,7 @@
  * CC BY-SA carries the attribution line; a remote voice is never offered without consent and a key; the review status
  * of the pack is never higher than that of its own hand lexicon; a Norwegian pack states its written standard.
  */
-import type { LanguagePackInfo, ValidationIssue } from '../../repository-contract/src';
+import type { LanguagePackInfo, ValidationIssue, ValidationLevel } from '../../repository-contract/src';
 
 export type ReviewStatus = 'machine-drafted' | 'partly-reviewed' | 'reviewed';
 
@@ -109,6 +109,26 @@ export interface PackManifest {
 /** The level of a pack: its stated level, else the one its status implies. */
 export function levelOf(m: Pick<PackManifest, 'status' | 'level'>): PackLevel {
   return m.level ?? (m.status === 'installable' ? 'installable' : 'planned');
+}
+
+/**
+ * How far the pack's analysis has been validated, in the Repository's words (`PackInstalled.payload.validation`), from its level and
+ * its review status alone; nothing is claimed beyond what the manifest says a person has checked.
+ *   planned                               unsupported   (nothing can be analysed)
+ *   experimental                          experimental  (seed-only lemmatisation, an unreviewed word list)
+ *   installable, machine-drafted          unreviewed    (wired and tested against its own cases; no person has reviewed it)
+ *   installable, partly reviewed          incomplete    (a person reviewed part of it)
+ *   installable, reviewed                 production-validated
+ */
+export function validationOf(m: Pick<PackManifest, 'status' | 'level'> & { rights: Pick<PackManifest['rights'], 'reviewStatus'> }): ValidationLevel {
+  const level = levelOf(m);
+  if (level === 'planned') return 'unsupported';
+  if (level === 'experimental') return 'experimental';
+  switch (m.rights.reviewStatus) {
+    case 'reviewed': return 'production-validated';
+    case 'partly-reviewed': return 'incomplete';
+    default: return 'unreviewed';
+  }
 }
 
 /** The learner-facing label of a level; an experimental pack is never shown as plainly installable. */

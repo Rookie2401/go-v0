@@ -6,7 +6,8 @@ import { DatabaseSync } from 'node:sqlite';
 import { afterAll, describe, expect, it } from 'vitest';
 import { applyMigrations, exportLearner, openSqliteStore, readMigrations } from '../../../packages/repository-store/src';
 import { storeConformance } from './conformance';
-import { L1, L2, doc, encounter, ev, unit } from './fixtures';
+import { storeProvenanceConformance } from './provenance';
+import { L1, L2, analysis, doc, encounter, ev, relation, unit } from './fixtures';
 
 const tmp = mkdtempSync(join(tmpdir(), 'repo-store-'));
 afterAll(() => rmSync(tmp, { recursive: true, force: true }));
@@ -16,6 +17,8 @@ const MIGRATIONS = new URL('../../../packages/repository-store/migrations/', imp
 
 storeConformance('sqlite store (:memory:)', async () => openSqliteStore(':memory:'));
 storeConformance('sqlite store (file)', async () => openSqliteStore(fresh()));
+storeProvenanceConformance('sqlite store (:memory:)', async () => openSqliteStore(':memory:'));
+storeProvenanceConformance('sqlite store (file)', async () => openSqliteStore(fresh()));
 
 describe('sqlite store: schema and migrations', () => {
   it('applies 001-initial on first open and nothing on a reopen; data persists', async () => {
@@ -29,7 +32,7 @@ describe('sqlite store: schema and migrations', () => {
     const raw1 = new DatabaseSync(path);
     const versions1 = raw1.prepare('SELECT version, name FROM schema_version').all();
     raw1.close();
-    expect(versions1).toEqual([{ version: 1, name: '001-initial.sql' }]);
+    expect(versions1).toEqual([{ version: 1, name: '001-initial.sql' }, { version: 2, name: '002-provenance.sql' }]);
 
     const b = openSqliteStore(path);
     expect((await b.list({ learnerId: L1 })).map((e) => [e.id, e.seq])).toEqual([['e1', 1], ['e2', 2]]);
@@ -41,13 +44,13 @@ describe('sqlite store: schema and migrations', () => {
     await b.close();
 
     const raw2 = new DatabaseSync(path);
-    expect(raw2.prepare('SELECT COUNT(*) AS n FROM schema_version').get()).toEqual({ n: 1 });
+    expect(raw2.prepare('SELECT COUNT(*) AS n FROM schema_version').get()).toEqual({ n: 2 });
     raw2.close();
   });
 
   it('the migration runner reports what it applied and is idempotent', () => {
     const db = new DatabaseSync(':memory:');
-    expect(applyMigrations(db)).toEqual(['001-initial.sql']);
+    expect(applyMigrations(db)).toEqual(['001-initial.sql', '002-provenance.sql']);
     expect(applyMigrations(db)).toEqual([]);
     db.close();
   });
@@ -82,6 +85,60 @@ describe('sqlite store: schema and migrations', () => {
     db.close();
   });
 
+  it('migration 002 back-fills origin and validation from the JSON of rows written under 001, and v2 rows read back unchanged', async () => {
+    // a database as the v2 code left it: only 001 applied, rows whose JSON knows nothing of contract v3
+    const dir = join(tmp, 'only-001');
+    mkdirSync(dir, { recursive: true });
+    copyFileSync(new URL('001-initial.sql', MIGRATIONS), join(dir, '001-initial.sql'));
+    const path = fresh();
+    mkdirSync(join(path, '..'), { recursive: true });
+    const raw = new DatabaseSync(path);
+    applyMigrations(raw, dir);
+    const prov = (extra: object) => ({ source: 'rule', ref: 'x', confidence: 0.5, ...extra });
+    const oldUnit = unit('lemma:sq:old:NOUN', 'provisional');
+    raw.prepare("INSERT INTO units (unit_id, kind, language_id, label, status, json) VALUES (?, 'lexeme', 'sq', 'old', 'provisional', ?)").run(oldUnit.unitId, JSON.stringify(oldUnit));
+    const oldRel = relation('form:sq:old', 'lemma:sq:old:NOUN');
+    raw.prepare("INSERT INTO relations (from_id, relation, to_id, status, json) VALUES (?, ?, ?, 'provisional', ?)").run(oldRel.fromId, oldRel.relation, oldRel.toId, JSON.stringify(oldRel));
+    const oldAnalysis = analysis('an-old');
+    raw.prepare("INSERT INTO analyses (analysis_id, form_id, sentence_key, status, json) VALUES (?, ?, ?, 'provisional', ?)").run(oldAnalysis.analysisId, oldAnalysis.formId, oldAnalysis.sentenceKey ?? null, JSON.stringify(oldAnalysis));
+    // rows a v3 writer would have stamped but a 001-only database could only have been given by hand (JSON is free-form): the back-fill reads them
+    const putUnit = raw.prepare("INSERT INTO units (unit_id, kind, language_id, label, status, json) VALUES (?, 'lexeme', 'sq', ?, 'provisional', ?)");
+    putUnit.run('lemma:sq:stamped:NOUN', 'stamped', JSON.stringify({ unitId: 'lemma:sq:stamped:NOUN', provenance: prov({ origin: 'learner-lookup', validation: 'experimental' }) }));
+    putUnit.run('lemma:sq:half:NOUN', 'half', JSON.stringify({ unitId: 'lemma:sq:half:NOUN', provenance: prov({ origin: 'reviewer' }) }));
+    raw.prepare("INSERT INTO relations (from_id, relation, to_id, status, json) VALUES ('form:sq:s', 'form-of', 'lemma:sq:s:NOUN', 'provisional', ?)")
+      .run(JSON.stringify({ provenance: prov({ origin: 'dictionary', validation: 'seed-only' }) }));
+    const putAnalysis = raw.prepare("INSERT INTO analyses (analysis_id, form_id, sentence_key, status, json) VALUES (?, 'form:sq:s', NULL, 'provisional', ?)");
+    putAnalysis.run('an-own', JSON.stringify({ provenance: prov({ origin: 'learner-lookup', validation: 'experimental' }), candidates: [{ provenance: prov({ origin: 'dictionary' }) }], chosen: 0 }));
+    putAnalysis.run('an-chosen', JSON.stringify({ candidates: [{ provenance: prov({ origin: 'dictionary' }) }, { provenance: prov({ origin: 'rule-derived', validation: 'seed-only' }) }], chosen: 1 }));
+    putAnalysis.run('an-first', JSON.stringify({ candidates: [{ provenance: prov({ origin: 'dictionary' }) }, { provenance: prov({ origin: 'rule-derived' }) }] }));
+    putAnalysis.run('an-ownbare', JSON.stringify({ provenance: prov({}), candidates: [{ provenance: prov({ origin: 'dictionary' }) }], chosen: 0 }));
+    raw.close();
+
+    const s = openSqliteStore(path); // applies 002 to the existing rows
+    expect(await s.provenanceStats()).toEqual([
+      { table: 'analyses', origin: 'dictionary', validation: 'unreviewed', count: 1 },
+      { table: 'analyses', origin: 'import', validation: 'unreviewed', count: 2 }, // an-old and an-ownbare (own provenance without an origin)
+      { table: 'analyses', origin: 'learner-lookup', validation: 'experimental', count: 1 },
+      { table: 'analyses', origin: 'rule-derived', validation: 'seed-only', count: 1 },
+      { table: 'relations', origin: 'dictionary', validation: 'seed-only', count: 1 },
+      { table: 'relations', origin: 'import', validation: 'unreviewed', count: 1 },
+      { table: 'units', origin: 'import', validation: 'unreviewed', count: 1 },
+      { table: 'units', origin: 'learner-lookup', validation: 'experimental', count: 1 },
+      { table: 'units', origin: 'reviewer', validation: 'unreviewed', count: 1 },
+    ]);
+    // the old rows still read as they were written: nothing was added to their JSON
+    expect((await s.getUnits(['lemma:sq:old:NOUN']))[0].provenance).toEqual({ source: 'dictionary', ref: 'pack:sq:1', confidence: 0.9 });
+    expect((await s.getAnalysis('an-old'))!.provenance).toBeUndefined();
+    // and the migrated database accepts v3 writes into the same columns
+    await s.putUnits([unit('lemma:sq:new:NOUN', 'provisional', { provenance: prov({ origin: 'learner-lookup', validation: 'unreviewed' }) as never })]);
+    expect((await s.provenanceStats()).find((c) => c.table === 'units' && c.origin === 'learner-lookup' && c.validation === 'unreviewed')?.count).toBe(1);
+    await s.close();
+    const check = new DatabaseSync(path);
+    expect(check.prepare("SELECT name FROM sqlite_master WHERE type = 'index' AND name IN ('units_origin', 'relations_origin', 'analyses_origin') ORDER BY name").all())
+      .toEqual([{ name: 'analyses_origin' }, { name: 'relations_origin' }, { name: 'units_origin' }]);
+    check.close();
+  });
+
   it('refuses an applied migration that was edited afterwards', () => {
     const dir = join(tmp, 'edited-migrations');
     mkdirSync(dir, { recursive: true });
@@ -96,15 +153,16 @@ describe('sqlite store: schema and migrations', () => {
     const dir = join(tmp, 'two-migrations');
     mkdirSync(dir, { recursive: true });
     copyFileSync(new URL('001-initial.sql', MIGRATIONS), join(dir, '001-initial.sql'));
+    copyFileSync(new URL('002-provenance.sql', MIGRATIONS), join(dir, '002-provenance.sql'));
     const path = fresh();
     openSqliteStore(path, { migrationsDir: dir }).close();
-    writeFileSync(join(dir, '002-extra.sql'), 'CREATE TABLE extra (id TEXT PRIMARY KEY) STRICT;');
+    writeFileSync(join(dir, '003-extra.sql'), 'CREATE TABLE extra (id TEXT PRIMARY KEY) STRICT;');
     openSqliteStore(path, { migrationsDir: dir }).close();
     openSqliteStore(path, { migrationsDir: dir }).close(); // third open: nothing to do
     const raw = new DatabaseSync(path);
-    expect(raw.prepare('SELECT version FROM schema_version ORDER BY version').all()).toEqual([{ version: 1 }, { version: 2 }]);
+    expect(raw.prepare('SELECT version FROM schema_version ORDER BY version').all()).toEqual([{ version: 1 }, { version: 2 }, { version: 3 }]);
     raw.close();
-    // the original code (only 001) must not open a database that has 002
+    // the shipped code (001 and 002) must not open a database that has 003
     expect(() => openSqliteStore(path)).toThrow(/newer than the code/);
   });
 
@@ -120,7 +178,7 @@ describe('sqlite store: schema and migrations', () => {
   });
 
   it('reads migrations in order and ignores other files', () => {
-    expect(readMigrations().map((m) => m.name)).toEqual(['001-initial.sql']);
+    expect(readMigrations().map((m) => m.name)).toEqual(['001-initial.sql', '002-provenance.sql']);
   });
 
   it('opens file databases in WAL mode with foreign keys on', async () => {

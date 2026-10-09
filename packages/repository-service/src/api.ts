@@ -9,7 +9,7 @@
 import type {
   AssistancePreferences, Enrolment, GoEvent, LearningGoal, LinguisticUnit, Learner, PrivateDocument, ReviewCandidate,
   StoredEvent, SyncPullRequest, SyncPullResponse, SyncPushRequest, SyncPushResponse, Tombstone, UnitKnowledge,
-  UnitRelation, FormAnalysis, LanguagePackInfo, AppendOutcome,
+  UnitRelation, FormAnalysis, LanguagePackInfo, AppendOutcome, UnitProvenance, ProvenanceOrigin, ValidationLevel,
 } from '../../repository-contract/src';
 import type { CorrectionResult, ServiceDeps } from './deps';
 import { handle } from './handler';
@@ -30,6 +30,10 @@ export interface EnrolInput { teamId?: string; languageId: string; varietyId?: s
 export interface LookupRequest { languageId: string; surface: string; sentence?: string; sentenceKey?: string; selStart?: number; selEnd?: number }
 export interface EventsQuery { afterSeq?: number; kinds?: string[]; unitId?: string; languageId?: string; since?: string; limit?: number }
 export type DocumentMeta = Omit<PrivateDocument, 'body'>;
+/** A unit's provenance as the service reports it: the v3 defaults are filled in (a v2 row reads as origin "import", validation "unreviewed"). */
+export type ReportedProvenance = UnitProvenance & { origin: ProvenanceOrigin; validation: ValidationLevel };
+export interface UnitReport { unit: LinguisticUnit; relations: UnitRelation[]; analyses: FormAnalysis[]; provenance: ReportedProvenance }
+export interface UnitCorrectionInput { reason: string; from?: string; to?: string; lexemeId?: string; features?: Record<string, string>; sentenceKey?: string }
 
 export interface RepositoryApi {
   /** The bearer token in use (set by `createSession`, or given at creation). */
@@ -45,9 +49,11 @@ export interface RepositoryApi {
   /** Ends one of the learner's enrolments (`endedAt`); its events stay. */
   endEnrolment(enrolmentId: string): Promise<ApiResult<{ enrolment: Enrolment }>>;
   packs(languageId?: string): Promise<ApiResult<{ packs: LanguagePackInfo[] }>>;
-  unit(unitId: string): Promise<ApiResult<{ unit: LinguisticUnit; relations: UnitRelation[]; analyses: FormAnalysis[] }>>;
+  unit(unitId: string): Promise<ApiResult<UnitReport>>;
+  /** A learner's challenge to a unit: appended to its provenance, and (from `provisional` only) the unit becomes `requires-review`; for a form given a lexeme or features, a superseding analysis as well. */
+  correctUnit(unitId: string, input: UnitCorrectionInput): Promise<ApiResult<{ unit: LinguisticUnit; provenance: ReportedProvenance; statusChanged: boolean; result?: CorrectionResult }>>;
   /** Several units in one call (1 to 50 ids): the same view as `unit`, by id; unknown ids are in `missing`. */
-  units(unitIds: string[]): Promise<ApiResult<{ units: Record<string, { unit: LinguisticUnit; relations: UnitRelation[]; analyses: FormAnalysis[] }>; missing: string[] }>>;
+  units(unitIds: string[]): Promise<ApiResult<{ units: Record<string, UnitReport>; missing: string[] }>>;
   lookup(input: LookupRequest): Promise<ApiResult<{ formId: string; units: LinguisticUnit[]; relations: UnitRelation[]; analysis: FormAnalysis | null; sentenceKey: string | null }>>;
   appendEvents(events: GoEvent[]): Promise<ApiResult<EventsResponse>>;
   listEvents(q?: EventsQuery): Promise<ApiResult<{ events: StoredEvent[]; head: number }>>;
@@ -110,6 +116,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
     endEnrolment: (enrolmentId) => call('POST', `/enrolments/${encodeURIComponent(enrolmentId)}/end`, {}),
     packs: (languageId) => call('GET', '/packs', undefined, { languageId }),
     unit: (unitId) => call('GET', `/units/${enc(unitId)}`),
+    correctUnit: (unitId, input) => call('POST', `/units/${enc(unitId)}/corrections`, input),
     units: (unitIds) => call('POST', '/units/batch', { ids: unitIds }),
     lookup: (input) => call('POST', '/lookup', input),
     appendEvents: (events) => call('POST', '/events', { events }),

@@ -1,5 +1,5 @@
 /** Builders for the store tests: valid events and rows of every table. */
-import { CONTRACT_VERSION } from '../../../packages/repository-contract/src';
+import { CONTRACT_VERSION, DIMENSIONS } from '../../../packages/repository-contract/src';
 import type {
   Account, AssistancePreferences, Device, Enrolment, FormAnalysis, GoEvent, LanguagePackInfo, LinguisticUnit, PrivateDocument, Session, Tombstone,
   UnitAlias, UnitKnowledge, UnitRelation,
@@ -44,9 +44,7 @@ export const pack = (packId: string, version: string, languageId = 'sq'): Langua
 const est = { score: 0.5, confidence: 0.5, observations: 2, positive: 1, negative: 1, weight: 1.5, contexts: 1 };
 export const knowledgeRow = (learnerId: string, unitId: string, modelVersion = 'm1'): UnitKnowledge => ({
   learnerId, unitId, languageId: 'sq',
-  dimensions: {
-    exposure: est, assistedRecognition: est, readingRecognition: est, listeningRecognition: est, productiveRetrieval: est, contextualProduction: est, grammaticalUnderstanding: est,
-  },
+  dimensions: Object.fromEntries(DIMENSIONS.map((d) => [d, est])) as UnitKnowledge['dimensions'],
   retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'readingRecognition' }, uncertainty: 0.5, modelVersion, basis: { events: 2, lastEventId: 'e2' },
 });
 

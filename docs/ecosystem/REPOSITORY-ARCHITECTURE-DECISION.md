@@ -56,7 +56,7 @@ arrival order cannot change the result, duplicates cannot (the store refuses the
 equal the live rows. The exact rules and numbers are in `packages/repository-engine/README.md` and are hypotheses.
 
 **R6. 2GoLearn's role (D1 narrowed).** The Repository's projection is its own module in this repository rather than
-2GoLearn's fold, because the required model (seven dimensions, assistance kept apart, provenance and validation
+2GoLearn's fold, because the required model (seven dimensions, eight since projection@2, assistance kept apart, provenance and validation
 status on every analysis, eligibility states, tombstones, aliases) is not the four-modality single-policy model
 2GoLearn implements, and bending that fold would obscure the invariants this prompt requires tests for. 2GoLearn
 remains the candidate for GoReview's deck and schedulers (scheduling is explicitly not the Repository's job) and its
@@ -80,6 +80,17 @@ server `seq` is the pull cursor. Two devices editing one draft produce a conflic
 `analyzerId` on units, analyses and events, `modelVersion` on every projection row and on the cursor (a version
 change triggers a full rebuild), `schema_version` in SQLite migrations, eligibility policy version in the engine
 README. Corrections never edit: a new analysis supersedes and the old one is marked invalidated with a reason.
+
+**R9a. projection@2 (learner intelligence and eligibility, 2026-10-09).** `MODEL_VERSION` is `projection@2`; the next read of any
+store holding `projection@1` cursors rebuilds once (the first seven dimensions of every row come out unchanged, `phraseComprehension` is added). What changed:
+(1) an eighth dimension, `phraseComprehension`, judged on `phrase:` units only by unassisted evidence (a recognition card or assessment on the phrase, a small credit for
+correct unassisted production, a weak self-report), never from a request for help; (2) an encounter or lookup is weighted by how its language was settled
+(override and metadata 1.0, detection 0.7, team-default 0.5, undetermined: no observation, a v2 event without the block 1.0); (3) eligibility reads the analysis status
+together with the validation level of the resource behind it: experimental, seed-only and unreviewed are provisional at best and recognition-only whatever the confidence,
+incomplete and unsupported require review, and `requires-review` is a first-class status ranked between provisional and conflicted; (4) the candidate rules propose a
+construction when three or more of its forms give trouble, penalise unvalidated resources, and do not propose a unit that already has a card; (5) a correction returns the units to
+withdraw, writes aliases for a wrong single-reading analysis (certain for a reviewer, uncertain for a learner) and supersedes the old answer key, leaving every event untouched.
+Rule tables: packages/repository-engine/README.md.
 
 **R10. Not built in this phase (by instruction).** GoLearn and GoPractice interfaces; the Cloudflare D1 twin of the
 store (the SQL is written to make it a port, as goread's was); PostgreSQL; email delivery, password reset; any

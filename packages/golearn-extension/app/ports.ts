@@ -24,6 +24,11 @@ export interface PackView {
   level: 'installable' | 'experimental' | 'planned';
   /** The words the learner sees for `level` ("installable", "experimental, seed-only lemmatisation, unreviewed", "planned, not installable"). */
   levelLabel: string;
+  /** The analyser the pack names (`adapter-sq@8`) and its version; recorded with an install. */
+  analyzerId: string;
+  analyzerVersion: string;
+  /** How far the pack's analysis has been validated, in the Repository's words (language-packs `validationOf`); recorded with an install. */
+  validation: 'production-validated' | 'experimental' | 'seed-only' | 'unreviewed' | 'incomplete' | 'unsupported';
   defaultVarietyId: string;
   scriptId: string;
   varieties: PackVarietyView[];

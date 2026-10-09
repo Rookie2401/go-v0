@@ -3,7 +3,28 @@
  * The Albanian pack is described from the real adapter; every other language gets a generic, form-only pack.
  */
 import { sqAdapter } from '../../../src/adapters/sq';
-import type { LanguagePackInfo } from '../../repository-contract/src';
+import { validationForPack } from '../../repository-contract/src';
+import type { LanguagePackInfo, ProvenanceOrigin, ProvenanceSource, UnitProvenance, ValidationLevel } from '../../repository-contract/src';
+
+/** Where a row entered the shared layer, from the kind of producer that made it (contract v3 `origin`). */
+const ORIGIN_OF: Readonly<Record<ProvenanceSource, ProvenanceOrigin>> = {
+  'hand-lexicon': 'pack-lexicon', dictionary: 'dictionary', rule: 'rule-derived', parser: 'rule-derived', reviewer: 'reviewer', learner: 'learner-lookup', import: 'import',
+};
+
+/** Stamps a provenance with its validation level, and its origin when it has none. */
+export const withValidation = (p: UnitProvenance, validation: ValidationLevel): UnitProvenance => ({ ...p, origin: p.origin ?? ORIGIN_OF[p.source], validation });
+
+/**
+ * The validation level of what the resolver reads from a language's adapter. The level of each pack is the one in
+ * docs/ecosystem/reader/LANGUAGE-PACK-CAPABILITIES.md (Albanian and Spanish installable, German / Hindi / Thai experimental, Norwegian planned) and the
+ * mapping is the contract's own `validationForPack`: an installable pack reads as `production-validated` only when its manifest says so, and no pack's manifest
+ * does today (the word lists are machine-drafted and no native speaker has checked them), so Albanian and Spanish read as `unreviewed`.
+ */
+const PACK_LEVEL: Readonly<Record<string, 'installable' | 'experimental' | 'planned'>> = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'planned', nn: 'planned' };
+export const packValidation = (languageId: string): ValidationLevel =>
+  validationForPack(Object.prototype.hasOwnProperty.call(PACK_LEVEL, languageId) ? { level: PACK_LEVEL[languageId] } : undefined);
+/** A bare surface form recorded with no analysis: experimental and unsupported languages keep their level, every other reads `unreviewed`. */
+export const genericValidation = (languageId: string): ValidationLevel => packValidation(languageId);
 
 export const ALBANIAN_PACK_ID = 'pack:sq';
 

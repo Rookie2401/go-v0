@@ -3,7 +3,7 @@
  * Nothing else in the application knows the shape of a manifest, the pack registry or the installer’s results.
  */
 import {
-  LEVEL_LABEL, PACKS, TEAMS, SQ_TUTORIAL, ES_TUTORIAL, createPackRuntime, installPack, levelOf, packFor as registryPackFor, runCase, verifyInstalled,
+  LEVEL_LABEL, PACKS, TEAMS, SQ_TUTORIAL, ES_TUTORIAL, createPackRuntime, installPack, levelOf, validationOf, packFor as registryPackFor, runCase, verifyInstalled,
 } from '../../language-packs/src';
 import type { InstallResult, InstalledRecord, PackManifest, PackStorage, Tutorial } from '../../language-packs/src';
 import type { StorageArea } from '../src/platform';
@@ -24,7 +24,7 @@ export function packView(m: PackManifest): PackView {
   const dict = m.lexical.dictionary;
   return {
     packId: m.packId, languageId: m.languageId, version: m.version, name: m.identity.name, nativeName: m.identity.nativeName,
-    status: m.status, level: levelOf(m), levelLabel: LEVEL_LABEL[levelOf(m)], defaultVarietyId: m.varietyId, scriptId: m.scriptId,
+    status: m.status, level: levelOf(m), levelLabel: LEVEL_LABEL[levelOf(m)], analyzerId: m.analyzer.id, analyzerVersion: m.analyzer.version, validation: validationOf(m), defaultVarietyId: m.varietyId, scriptId: m.scriptId,
     varieties: m.varieties.map((v) => ({ varietyId: v.varietyId, label: v.label, analysed: v.analysed, ...(v.writtenStandard ? { writtenStandard: v.writtenStandard } : {}) })),
     licences: m.rights.licences.map((l) => ({ ...l })),
     attribution: dict ? [dict.attribution] : [],

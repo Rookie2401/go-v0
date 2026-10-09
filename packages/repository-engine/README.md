@@ -2,7 +2,7 @@
 
 Turns learner events into multidimensional knowledge estimates, assistance preferences, review candidates, review
 eligibility and reading suitability. Imports only `../../repository-contract/src`. Implements `ProjectionEngine`
-(`createProjectionEngine`, `modelVersion = 'projection@1'`); consumes `EventLog`, `ProjectionStore`, `LinguisticStore`
+(`createProjectionEngine`, `modelVersion = 'projection@2'`); consumes `EventLog`, `ProjectionStore`, `LinguisticStore`
 (read only), `TombstoneStore` and `IdentityStore.listEnrolments`.
 
 **These estimates are hypotheses until calibrated against independent assessments.** Every number below is a first
@@ -27,11 +27,15 @@ guess chosen to be explainable, not a fitted value. Nothing here says a learner 
 - (c) accepting a correction is not independent production
 - (d) assisted observations feed `assistedRecognition`, never the independent dimensions
 - (e) a producer's declared `evidence.quality` / `sourceReliability` can lower a weight, never raise it
-- (f) no single known/unknown boolean, no single mastery number: a row is seven dimension estimates
+- (f) no single known/unknown boolean, no single mastery number: a row is eight dimension estimates (projection@2 appended `phraseComprehension`; the first seven keep their order and values)
 - (g) the fold is deterministic, order-independent and idempotent (same multiset of events, same rows; duplicate ids change nothing)
 - (h) rebuilding from the log equals the incrementally projected state
 - (i) the engine never writes a linguistic row
 - (j) a projection never invents a success: every positive observation traces to a payload that says `correct: true`, `usedCorrectly: true`, an "understood" mark or a "known" mark
+- (k) a phrase is understood as a whole (`phraseComprehension`), never inferred from its words and never from a request for help; an exposure whose language was only detected or defaulted weighs less; an exposure whose language is undetermined is not an observation at all
+- (l) confidence never raises a status: eligibility reads the status together with the validation level of the resource behind it (see "Eligibility")
+
+Separation proofs (`test/repository/engine/separation.test.ts`): an encounter raises no demonstrated dimension; playback raises only exposure; a correct written review raises reading or productive retrieval, not listening; an AI-assisted or copied writing correction raises nothing in contextualProduction; a failed review never lowers exposure; a parser correction never erases exposure.
 
 ## Observation rules (`evidence.ts`)
 
@@ -40,35 +44,48 @@ An observation is `{unitId, dimension, outcome, weight, assisted, difficulty?, s
 
 - Quality factor from `evidence.quality`: none 0 (the observation is dropped), weak 0.5, moderate 0.8, strong 1. No `evidence` note means 1.
 - `reliability = min(kind reliability, evidence.sourceReliability ?? 1)`.
-- At most one observation per (event, unit). An unparseable `at` yields nothing. `payload.difficulty` (0..1) passes through.
+- At most one observation per (event, unit, dimension) (projection@2: a phrase can earn both `contextualProduction` and `phraseComprehension` from one production). An unparseable `at` yields nothing. `payload.difficulty` (0..1) passes through. `weight = min(base, base x qualityFactor) x reliability x languageFactor` (the language factor, below, applies to encounter and lookup exposure only).
 - `assisted` is true when the kind's payload says so (hinted, help used, answer shown, `assisted: true`) **or** `evidence.assisted` is true. An assisted observation aimed at an independent dimension is re-routed to `assistedRecognition`.
 - Units are `subject.itemIds` unless stated; `sentenceKey` is `subject.sentenceKey` (or the payload's).
 
 | Event | Dimension and outcome | Base weight | Reliability |
 |---|---|---|---|
-| EncounterRecorded | exposure (counter `encounter`), each `itemIds` | 0.2 | 1 |
-| SelectionLookedUp | exposure (counter `lookup`) | 0.3 | 1 |
+| EncounterRecorded | exposure (counter `encounter`), each `itemIds`; x language factor | 0.2 | 1 |
+| SelectionLookedUp | exposure (counter `lookup`); x language factor | 0.3 | 1 |
 | AnalysisShown, AssistanceRequested | exposure (counter `assistance`) | 0.3 | 1 |
+| AssistanceRequested `assistance: 'phrase'` or `'sentence'` | **plus** assistedRecognition **negative** on the `phrase:` units of the subject (help was needed); never phraseComprehension | 0.15 | 1 |
 | PronunciationPlayed, ListeningCompleted | exposure (counter `playback`); **never** listeningRecognition | 0.2 | 1 |
 | UnderstoodMarked `helpUsed: false` | readingRecognition positive | 0.4 | 0.4 (self-report) |
 | UnderstoodMarked `helpUsed: true` | assistedRecognition positive | 0.4 | 0.4 |
+| UnderstoodMarked `helpUsed: false` on a `phrase:` unit | **plus** phraseComprehension positive (self-report) | 0.3 | 0.4 |
 | ItemMarked `known` | readingRecognition positive | 0.2 | 0.3 (self-assertion) |
 | ItemMarked `learning` | readingRecognition negative | 0.2 | 0.3 |
 | ItemMarked `saved`, `ignore` | nothing (a bookmark is not evidence) | | |
 | ListeningAssessed (`answerShownBefore: false`, else nothing) | listeningRecognition +/- by `correct`; `hinted` goes to assistedRecognition | 0.8 recorded voice, 0 for synthetic or unverified voices (never listening evidence; D8), x (1 - 0.3 if hinted) | 0.5 if `responseMode: 'self-report'`, else 1 |
-| CardReviewed recognition | readingRecognition +/- by `correct` | 0.7 x grade factor | 1 |
-| CardReviewed recall, cloze | productiveRetrieval +/- by `correct` | 0.8 x grade factor | 1 |
+| CardReviewed recognition | readingRecognition +/- by `correct`; **on a `phrase:` unit phraseComprehension +/- instead** | 0.7 x grade factor | 1 |
+| CardReviewed recall, cloze | productiveRetrieval +/- by `correct`; **on a `phrase:` unit also phraseComprehension +/-** | 0.8 x grade factor (phrase comprehension 0.4 x grade factor) | 1 |
 | CardReviewed hinted or `answerShownBefore` | assistedRecognition +/- | 0.4 x grade factor | 1 |
 | AssessmentAnswered | grammaticalUnderstanding +/- on `payload.constructionId` and on `itemIds` that are constructions (`morph:` / `syntax:` ids); forms and lexemes in the subject are not credited | 0.8 | 1 |
 | AssessmentAnswered hinted | assistedRecognition +/- on the same units | 0.4 | 1 |
-| ProductionRecorded unassisted, `usedCorrectly: true` | contextualProduction positive (`mode: 'retrieval'` -> productiveRetrieval) | 0.9 (retrieval 0.8) | 1 |
+| AssessmentAnswered naming a `phrase:` unit in the subject, unhinted | phraseComprehension +/- on that phrase (hinted: assistedRecognition) | 0.7 | 1 |
+| ProductionRecorded unassisted, `usedCorrectly: true` | contextualProduction positive (`mode: 'retrieval'` -> productiveRetrieval); **on a `phrase:` unit also phraseComprehension positive** | 0.9 (retrieval 0.8; phrase 0.3) | 1 |
 | ProductionRecorded unassisted, `usedCorrectly: false` | contextualProduction negative (retrieval -> productiveRetrieval) | 0.7 (retrieval 0.8) | 1 |
 | ProductionRecorded `usedCorrectly: 'unjudged'` | exposure (counter `encounter`) | 0.3 | 1 |
-| ProductionRecorded `assisted: true` | assistedRecognition +/- by `usedCorrectly` | 0.4 | 1 |
+| ProductionRecorded `assisted: true`, or `authorship` other than `independent` / `reproduced-later`, or a non-empty `assistance` list | assistedRecognition +/- by `usedCorrectly` | 0.4 | 1 |
+| ProductionRecorded `authorship: 'copied-from-model'` or `'ai-generated'` | nothing: the words are a model's | | |
 | CorrectionAccepted, CorrectionRejected | nothing: accepting a correction is copying, not independent production (c) | | |
 | DraftSaved, SentenceSubmitted | nothing: an artefact; its judgement arrives as ProductionRecorded | | |
 | AnalysisCorrected, ReviewItemInvalidated, CardAdded, CardRemoved | nothing (linguistic or scheduling state; the candidate rules read the card events) | | |
 | profile family (enrolment, pack, privacy, consent, preferences) | nothing | | |
+
+**Language basis (projection@2).** An encounter or lookup whose `payload.language.basis` says how the language was settled is weighted by that basis (the factors only lower, principle (e)):
+
+| `language.basis` | override, book-metadata, document-metadata | detection | team-default | undetermined | no `language` block (a v2 event) | unrecognised string |
+|---|---|---|---|---|---|---|
+| factor on the exposure weight | 1.0 | 0.7 | 0.5 | 0 (nothing was parsed: **no observation**) | 1.0 (counted in full; recorded under `missing`) | 0.5 |
+
+`engine.counters(learnerId, unitId)` returns the usual four counts plus `byLanguageBasis` (encounter and lookup exposures by basis, `missing` for a v2 event). It is on the counters, not on the row,
+because the contract's `basis` has no such field; `undetermined` observes nothing and is therefore not counted.
 
 Grade factors for CardReviewed: again 1.0, hard 0.6, good 0.8, easy 1.0. `correct` decides the outcome (grade only modulates the weight).
 
@@ -102,7 +119,7 @@ Per unit and dimension, using only commutative accumulations:
 
 ## The engine (`engine.ts`)
 
-- `project(learnerId)`: reads the cursor. No cursor, or a different `modelVersion`: full rebuild. Otherwise reads the events after the cursor seq,
+- `project(learnerId)`: reads the cursor. No cursor, or a different `modelVersion` (every `projection@1` store, once): full rebuild; the first seven dimensions of every row come out identical and `phraseComprehension` is added (tested). Otherwise reads the events after the cursor seq,
   finds the touched units (after tombstones and aliases), and **recomputes each touched unit from all of its events** so `contexts`, `difficulty` and
   `basis.events` are exact and the result equals a rebuild. Cost: one scan of the learner's log per call that has new events (O(N)) plus a fold of the touched units only;
   the scan is what keeps alias re-targeting correct (a unit's events may sit under several ids and the store has no reverse alias lookup). Returns `{folded: new events read, cursor: highest seq}`.
@@ -124,15 +141,30 @@ Defaults: explanationDepth `brief`, terminology `plain`, transliteration `on-req
 
 ## Eligibility (`eligibility.ts`)
 
-`eligibilityFor(unit, analyses, target)`: effective status = the lowest of the unit's status and the best live (non-invalidated) analysis; a form whose analyses are all invalidated is `invalidated`.
-`verified` and `high-confidence`: eligible (caveat if a live analysis has several readings and none chosen). `provisional`: eligible for readingRecognition, listeningRecognition and assistedRecognition with caveat
-`provisional analysis; shown with caveats`; **not** for grammaticalUnderstanding or the productive dimensions. `conflicted`, `invalidated`, unknown unit: not eligible, with a reason.
+Two inputs decide together: the analysis **status** (how sure the producer is) and the **validation** level of the unit and its best live analysis
+(how far the resource behind it has been checked). The validation is the lowest of the unit's `provenance.validation`, the analysis's own `provenance.validation` (if any) and the
+chosen candidate's `provenance.validation`. A row that states none is a v2 row and reads as `unreviewed`, exactly as the contract's `provenanceOf` says; an unrecognised string reads as `unreviewed` too.
+**Confidence is never an input**: a 0.99-confidence experimental analysis is exactly as provisional as a 0.1 one (tested).
+
+Status rank (first-class, higher is more trustworthy): verified > high-confidence > provisional > requires-review > conflicted > invalidated.
+The effective status is the lowest of the unit's status and its best live (non-invalidated) analysis; a form whose analyses are all invalidated is `invalidated`; a unit with `supersededBy` is `invalidated` ("superseded by X").
+
+| validation | status reached | eligible for | otherwise |
+|---|---|---|---|
+| `production-validated` | as stated | verified, high-confidence: every dimension (caveat if several readings and none chosen). provisional: readingRecognition, listeningRecognition, assistedRecognition, caveat `provisional analysis; shown with caveats` | provisional + grammaticalUnderstanding, productiveRetrieval, contextualProduction, phraseComprehension: not eligible, reason `provisional analysis cannot support <dimension>` |
+| `experimental`, `seed-only`, `unreviewed` | **capped at `provisional`**, never `verified` | the three recognition dimensions only, with caveats `provisional analysis; shown with caveats` and `<level> resource: provisional at best, whatever the confidence` | grammatical, productive, contextual and phrase items: not eligible, reason `<level> analysis cannot support <dimension>: provisional at best, recognition only` |
+| `incomplete`, `unsupported` | `requires-review` | nothing | reason `<level> analysis: a person must review it before it can support an item (confidence does not change this)` |
+
+`conflicted`, `invalidated`, `requires-review` (as a stated status) and an unknown unit are never eligible, each with a reason in `eligibility.reason`; the reasoning of an eligible one is in `eligibility.caveats`.
+`STATUS_ORDER` is the engine's rank table (it carries `requires-review`; a test checks it agrees with the contract's `STATUS_RANK` on every status the contract knows).
 `affectedByInvalidation(analysis)`: sorted unique `lexemeId`, `senseId` and `constructionIds` of its candidates (not the form id itself).
+`affectedByCorrection(superseded, corrected)`: `{ affected, withdraw }`, everything either pointed at, and what the corrected one dropped (the linguistic service returns the same lists from `correct()`).
 
 ## Review candidates (`candidates.ts`)
 
 A candidate exists only for a unit with a row (or a construction promoted by leverage) that has a lookup / assistance request (`exposure.negative > 0`), a demonstrated error (any judged dimension with `negative > 0`),
-leverage, or a frequency rank <= 2000. Exposure alone excludes it. Score = sum of reason weights, clamped to 0..1; ties by unit id. `targetDimension` = the weakest dimension with errors (constructions: grammaticalUnderstanding; default readingRecognition).
+leverage, or a frequency rank <= 2000. Exposure alone excludes it. **A unit whose latest deck event (CardAdded / CardRemoved / ReviewItemInvalidated) is CardAdded is not proposed again**
+(`candidates(..., { includeCovered: true })` lists it with the penalty below). Score = sum of reason weights, clamped to 0..1; ties by unit id. `targetDimension` = the weakest dimension with errors (constructions: grammaticalUnderstanding; default readingRecognition).
 
 | Rule | Weight | Condition |
 |---|---|---|
@@ -140,17 +172,21 @@ leverage, or a frequency rank <= 2000. Exposure alone excludes it. Score = sum o
 | repeatedLookups | +0.2 | `exposure.negative >= 2` |
 | demonstratedError | +0.25 | any judged dimension `negative > 0` |
 | weakButSeen | +0.2 | readingRecognition weight > 0 and score < 0.5 |
-| grammaticalLeverage | +0.3 | a construction realized (`realizes` relations, status not conflicted / invalidated) by >= 3 forms that have errors; `explains` lists those forms |
-| explained-by-construction | x0.5 | applied to those forms' scores (recorded as a negative reason of half their score) |
-| frequency | +0.1 | `unit.frequency.rank <= 2000` |
+| grammaticalLeverage | +0.3 | a construction realized (`realizes` relations, status not conflicted / invalidated) by >= 3 **distinct forms in difficulty**: an error ever, or a lookup, assistance request or failed recognition (reading, listening, assisted, phrase) within 30 days of `now`. Detail: `repeated difficulty across N forms of <construction label>`; `explains` lists the forms. The construction is proposed, not each form |
+| explained-by-construction | x0.5 | applied to those forms' scores (a negative reason of half their score), **only when the construction candidate is itself eligible** |
+| wordFrequency | +0.15 / +0.1 | the unit's `frequency.rank` <= 500 / <= 2000 (a unit is a candidate on frequency alone up to 2000); no rank, no reason |
 | goalMatch | +0.05 | unit kind serves a goal (`GOAL_UNIT_KINDS`; `custom` serves none) |
-| existingCoverage | -0.3 | latest of CardAdded / CardRemoved / ReviewItemInvalidated for the unit is CardAdded ("already covered") |
+| missionRelevance | +0.1 | the unit is in the pack's mission word list **if the pack facts expose one** (`LanguagePackInfo.missionUnitIds`, none today). Otherwise the rule is skipped and `candidates(..., { notes })` receives `MISSION_SKIPPED_NOTE` |
+| existingCoverage | -0.3 | only with `includeCovered`: the unit already has a card ("already covered"). By default such a unit is dropped |
 | priorReview | -0.15 | a CardReviewed within 2 days |
 | expectedBenefit | +0.1 | confidence on the target dimension between 0.2 and 0.7 |
-| analysisConfidence | -(score) | not eligible: score becomes 0 and the candidate is kept only after all eligible ones, at most 5, with `eligibility.eligible = false` |
+| benefitVsBurden | +0.05 / -0.05 | benefit = sum of the positive reasons so far, burden = `cost`: ratio >= 2 gains 0.05 (cheap for what it offers), ratio < 0.5 loses 0.05 (costly); the detail prints both numbers; silent in between |
+| analysisConfidence (validation) | -0.3 | eligible but the validation level is `experimental`, `seed-only` or `unreviewed`: strong negative, detail names the level |
+| analysisConfidence (not eligible) | -(score) | not eligible: score becomes 0 and the candidate is kept only after all eligible ones, at most 5, with `eligibility.eligible = false` and the reason in the detail |
 
 `cost = min(1, 0.2 + 0.1 x label words)`. `limit` defaults to 20 and covers eligible and ineligible together.
-Deviation from "the construction's failed forms have >= 3 negative observations": the contract row stores weighted sums, not counts, so the rule counts **distinct forms with errors** (one form failing three times does not indict a construction).
+The construction rule's window is read from the learner's events (not from the row, which stores weighted sums, not instants): the engine passes, per unit, the instants of its lookups, assistance requests and failed recognitions.
+One form failing or being asked about many times does not indict a construction: forms are counted once.
 
 ## Suitability (`suitability.ts`)
 

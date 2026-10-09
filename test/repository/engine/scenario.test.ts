@@ -34,7 +34,7 @@ describe('the "librin" scenario', () => {
 
     expect(f.dimensions.exposure.weight).toBeGreaterThan(0);
     expect(f.dimensions.exposure.observations).toBe(3);
-    expect(await engine.counters(L, FORM)).toEqual({ encounters: 0, lookups: 1, assistance: 1, playbacks: 1 });
+    expect(await engine.counters(L, FORM)).toEqual({ encounters: 0, lookups: 1, assistance: 1, playbacks: 1, byLanguageBasis: { missing: 1 } });
     expect(f.dimensions.exposure.negative).toBe(2); // lookup + assistance request
     expect(f.dimensions.exposure.positive).toBe(1); // the playback
 

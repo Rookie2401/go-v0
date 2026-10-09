@@ -6,7 +6,7 @@
  */
 import type { AnalysisStatus } from './units';
 
-/** The seven distinguishable kinds of knowledge estimate (§5). Order is fixed; never merged into one number. */
+/** The eight distinguishable kinds of knowledge estimate (§5). Order is fixed; never merged into one number. */
 export const DIMENSIONS = [
   'exposure',                  // the learner met the form; weak evidence of anything
   'assistedRecognition',       // understood with a gloss / explanation / hint shown
@@ -15,6 +15,7 @@ export const DIMENSIONS = [
   'productiveRetrieval',       // produced the target from a prompt
   'contextualProduction',      // used it correctly in meaningful original language
   'grammaticalUnderstanding',  // interpreted or applied a grammatical relationship
+  'phraseComprehension',       // understood a multiword unit as a whole (projection@2; appended last so the first seven keep their order)
 ] as const;
 export type Dimension = (typeof DIMENSIONS)[number];
 

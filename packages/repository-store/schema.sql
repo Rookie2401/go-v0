@@ -1,4 +1,4 @@
--- The Go Repository store schema as it stands after every migration (migrations/001-...). This file is documentation and a
+-- The Go Repository store schema as it stands after every migration (migrations/001-... and 002-provenance.sql). This file is documentation and a
 -- test oracle (test/repository/store/sqlite.test.ts compares it with a migrated database); the runner applies migrations/,
 -- never this file. When you add migrations/NNN-*.sql, update this file to match.
 
@@ -107,9 +107,12 @@ CREATE TABLE units (
   language_id TEXT NOT NULL,
   label       TEXT NOT NULL,
   status      TEXT NOT NULL,
-  json        TEXT NOT NULL
+  json        TEXT NOT NULL,
+  origin     TEXT NOT NULL DEFAULT 'import',            -- migration 002: provenance.origin copied out of json (v2 rows: 'import')
+  validation TEXT NOT NULL DEFAULT 'unreviewed'         -- migration 002: provenance.validation (v2 rows: 'unreviewed')
 ) STRICT;
 CREATE INDEX units_find ON units (language_id, kind, label);
+CREATE INDEX units_origin ON units (origin, validation);
 
 CREATE TABLE relations (
   from_id  TEXT NOT NULL,
@@ -117,18 +120,24 @@ CREATE TABLE relations (
   to_id    TEXT NOT NULL,
   status   TEXT NOT NULL,
   json     TEXT NOT NULL,
+  origin     TEXT NOT NULL DEFAULT 'import',
+  validation TEXT NOT NULL DEFAULT 'unreviewed',
   PRIMARY KEY (from_id, relation, to_id)
 ) STRICT;
 CREATE INDEX relations_to ON relations (to_id);
+CREATE INDEX relations_origin ON relations (origin, validation);
 
 CREATE TABLE analyses (
   analysis_id  TEXT PRIMARY KEY,
   form_id      TEXT NOT NULL,
   sentence_key TEXT,
   status       TEXT NOT NULL,
-  json         TEXT NOT NULL
+  json         TEXT NOT NULL,
+  origin     TEXT NOT NULL DEFAULT 'import',            -- migration 002: provenance.origin copied out of json (v2 rows: 'import')
+  validation TEXT NOT NULL DEFAULT 'unreviewed'         -- migration 002: provenance.validation (v2 rows: 'unreviewed')
 ) STRICT;
 CREATE INDEX analyses_form ON analyses (form_id, sentence_key);
+CREATE INDEX analyses_origin ON analyses (origin, validation);
 
 CREATE TABLE aliases (
   old_id       TEXT NOT NULL,

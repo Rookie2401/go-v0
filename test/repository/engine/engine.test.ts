@@ -316,16 +316,18 @@ describe('review candidates', () => {
     expect(f1.score).toBeGreaterThan(list.find((c) => c.unitId === 'form:sq:f2')!.score);
   });
 
-  it('a unit already covered by a card scores 0.3 lower; a removed card lifts the penalty; a review in the last two days costs 0.15', async () => {
+  it('a unit already covered by a card is not proposed again (with includeCovered it scores 0.3 lower); a removed card lifts it; a review in the last two days costs 0.15', async () => {
     const base = [wrong('form:sq:f1')];
     const score = async (extra: GoEvent[]) => {
       const { engine } = await make([...base, ...extra], setupWorld(false));
-      return (await engine.candidates(L, E, { now: NOW })).find((c) => c.unitId === 'form:sq:f1')!;
+      return (await engine.candidates(L, E, { now: NOW, includeCovered: true })).find((c) => c.unitId === 'form:sq:f1')!;
     };
     const plain = await score([]);
     const covered = await score([ev('CardAdded', ['form:sq:f1'], {}, { at: '2026-10-07T11:00:00.000Z' })]);
     const removed = await score([ev('CardAdded', ['form:sq:f1'], {}, { at: '2026-10-07T11:00:00.000Z' }), ev('CardRemoved', ['form:sq:f1'], {}, { at: '2026-10-07T12:00:00.000Z' })]);
     expect(covered.score).toBeCloseTo(plain.score - 0.3);
+    const { engine: defaultEngine } = await make([...base, ev('CardAdded', ['form:sq:f1'], {}, { at: '2026-10-07T11:00:00.000Z' })], setupWorld(false));
+    expect((await defaultEngine.candidates(L, E, { now: NOW })).find((c) => c.unitId === 'form:sq:f1')).toBeUndefined(); // already carded: not proposed again
     expect(covered.reasons.find((r) => r.rule === 'existingCoverage')).toMatchObject({ weight: -0.3, detail: expect.stringMatching(/already covered/) });
     expect(removed.score).toBeCloseTo(plain.score);
     expect(plain.reasons.map((r) => r.rule)).not.toContain('priorReview');
@@ -369,7 +371,7 @@ describe('review candidates', () => {
     });
     const list = await engine.candidates(L, E, { now: NOW });
     expect(list.map((c) => c.unitId)).toEqual(['form:sq:f2']);
-    expect(list[0].reasons.map((r) => r.rule)).toContain('frequency');
+    expect(list[0].reasons.map((r) => r.rule)).toContain('wordFrequency');
   });
 
   it('honours the limit, other enrolments\' languages, and an unknown enrolment', async () => {
@@ -406,7 +408,7 @@ describe('suitability', () => {
 
   it('counts recognised, uncertain and unknown tokens and lists the difficulties', async () => {
     const { est } = await run();
-    expect(est).toMatchObject({ languageId: 'sq', tokens: 9, wordTokens: 6, recognized: 2, uncertain: 2, unknown: 2, modelVersion: 'projection@1' });
+    expect(est).toMatchObject({ languageId: 'sq', tokens: 9, wordTokens: 6, recognized: 2, uncertain: 2, unknown: 2, modelVersion: 'projection@2' });
     expect(est.recognized + est.uncertain + est.unknown).toBe(est.wordTokens);
     expect(est.familiarUnits).toEqual(['form:sq:u1']);
     expect(est.difficultUnits.map((d) => d.unitId)).toEqual(['form:sq:u4']);

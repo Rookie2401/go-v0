@@ -7,9 +7,14 @@
  *   vite build -c packages/golearn-extension/vite.config.ts --mode background   -> dist/background.js
  *   vite build -c packages/golearn-extension/vite.config.ts --mode action       -> dist/action/popup.js
  *   vite build -c packages/golearn-extension/vite.config.ts --mode analysers    -> dist/analysers/{sq,es,de,hi,th}.js (+ shared chunks)
+ *   vite build -c packages/golearn-extension/vite.config.ts --mode content-harness -> dist/content.harness.js (NOT part of ext:build; run it after)
  *
- * `npm run ext:build` runs the four in order. Albanian (the reference language) is bundled into content.js and
- * background.js; the other analysers are separate chunks that the content script imports on demand (the manifest lists
+ * `npm run ext:build` runs the four in order. `content-harness` is the same content script compiled with `__GOLEARN_HARNESS__` true, which
+ * switches on the fixture hook of src/adapters/page.ts (`<html data-fixture-url>` on a loopback host); every other mode defines it false, so
+ * the production `content.js` has no such branch (test/extension/bundle.test.ts). The harness pages under harness/ load `/dist/content.harness.js`.
+ * The harness build never cleans `dist/` and is not copied into a packaged extension.
+ *
+ * Albanian (the reference language) is bundled into content.js and background.js; the other analysers are separate chunks that the content script imports on demand (the manifest lists
  * `analysers/*.js` under `web_accessible_resources`). The worker cannot `import()` at all, so it never carries them: see
  * `leanBuiltins` below. The sizes are asserted by test/extension/bundle.test.ts.
  *
@@ -31,6 +36,8 @@ const ENTRIES = {
   content: { input: path.join(here, 'src/content/index.ts'), file: 'content.js', name: 'GoLearnContent' },
   background: { input: path.join(here, 'src/background/index.ts'), file: 'background.js', name: 'GoLearnBackground' },
   action: { input: path.join(here, 'action/popup.ts'), file: 'action/popup.js', name: 'GoLearnPopup' },
+  /** The content script with the harness fixture hook compiled in (the harness pages only; never shipped). */
+  'content-harness': { input: path.join(here, 'src/content/index.ts'), file: 'content.harness.js', name: 'GoLearnContentHarness' },
 } as const;
 
 /** The analysers: one entry per language (`src/analysers/<id>.ts` exports the adapter as `adapter`). */
@@ -114,7 +121,7 @@ export default defineConfig(({ mode }) => {
       base: './',
       publicDir: false,
       logLevel: 'warn',
-      define: { 'process.env.NODE_ENV': '"production"' },
+      define: { 'process.env.NODE_ENV': '"production"', __GOLEARN_HARNESS__: 'false' },
       plugins: [cleanAnalysers()],
       build: {
         outDir: path.join(here, 'dist'),
@@ -138,7 +145,8 @@ export default defineConfig(({ mode }) => {
     base: './',
     publicDir: false,
     logLevel: 'warn',
-    define: { 'process.env.NODE_ENV': '"production"' },
+    // only the harness build has the fixture hook (src/adapters/page.ts); everywhere else the flag is the literal false and the branch is removed
+    define: { 'process.env.NODE_ENV': '"production"', __GOLEARN_HARNESS__: mode === 'content-harness' ? 'true' : 'false' },
     plugins: [stubServiceHandler(), leanBuiltins(), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
     build: {
       outDir: path.join(here, 'dist'),

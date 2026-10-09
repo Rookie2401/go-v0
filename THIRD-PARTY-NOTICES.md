@@ -30,6 +30,17 @@ others, with the licence each requires us to state. The full inventory and the o
 
 Build tooling (Vite, esbuild, TypeScript, Vitest, jsdom and their dependencies) is not distributed in the builds.
 
+## Typefaces
+
+- **EB Garamond** (Latin subset, regular, italic and semibold) — SIL Open Font License, Version 1.1.
+  Copyright 2017 The EB Garamond Project Authors (https://github.com/octaviopardo/EBGaramond12).
+  Licence text: `EB-Garamond-OFL.txt` (shipped beside this file in every build, and in `fonts/`); also at https://scripts.sil.org/OFL.
+  Source: the `@fontsource/eb-garamond` distribution of the Google Fonts release (https://fonts.google.com/specimen/EB+Garamond).
+  Files: `eb-garamond-latin-400.woff2`, `eb-garamond-latin-400-italic.woff2`, `eb-garamond-latin-600.woff2`
+  (kept in `packages/shared-fonts/`; copied into the builds as `fonts/` beside the stylesheet: `assets/fonts/` in the GoPractice and hosted
+  setup builds, `app/fonts/` in the extension). Used unmodified, as web fonts, for GoPractice, the GoLearn setup page and the action popup;
+  the lookup card names it first in its serif stack but cannot load it. The fonts are not sold by themselves.
+
 ## Audio
 
 - No third-party audio is shipped. The German demonstration clip referenced by GoListen's registry

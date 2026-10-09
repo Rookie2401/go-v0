@@ -45,6 +45,8 @@ const DISTS: Dist[] = [
 
 const KAIKKI_ATTRIBUTION = 'Wiktionary, via kaikki.org — CC BY-SA 4.0';
 const TEXT_EXT = /\.(js|mjs|css|html|json|md|txt|xml|svg|webmanifest)$/i;
+/** The one binary kind of a web build: the EB Garamond web fonts (SIL OFL 1.1, packages/shared-fonts). */
+const FONT_EXT = /\.woff2$/i;
 
 const listAll = (dir: string): string[] => {
   const out: string[] = [];
@@ -282,7 +284,22 @@ describe.each(DISTS)('$id', (dist) => {
     const dirs = new Set(files.flatMap((f) => f.split('/').slice(0, -1)));
     expect([...dirs].filter((d) => /^(library|corpus|sources|ladder|stage0|scripture|bible|bibles|audio|recordings|texts|books)$/i.test(d))).toEqual([]);
     // every file is one of the build's known kinds
-    expect(files.filter((f) => !TEXT_EXT.test(f))).toEqual([]);
+    expect(files.filter((f) => !TEXT_EXT.test(f) && !FONT_EXT.test(f))).toEqual([]);
+  });
+
+  it('ships exactly the font files its stylesheet names (woff2 only) and the EB Garamond SIL OFL text beside the notices', (ctx) => {
+    guard(ctx);
+    const sheets = files.filter((f) => /\.css$/i.test(f));
+    const named = sheets.flatMap((c) => [...fs.readFileSync(path.join(abs(dist.dir), c), 'utf8').matchAll(/url\(\s*['"]?(\.\/fonts\/[^'")]+\.woff2)['"]?\s*\)/g)].map((m) => path.posix.join(path.posix.dirname(c), m[1])));
+    expect([...new Set(named)].sort(), 'the stylesheet names the three EB Garamond files').toHaveLength(3);
+    const shipped = files.filter((f) => FONT_EXT.test(f));
+    expect(shipped.filter((f) => !named.includes(f)), 'a font file nothing names').toEqual([]);
+    expect(named.filter((f) => !shipped.includes(f)), 'a named font file that is missing').toEqual([]);
+    const beside = dist.notices.filter((n) => files.includes(n)).map((n) => path.posix.join(path.posix.dirname(n), 'EB-Garamond-OFL.txt')).filter((o) => files.includes(o));
+    expect(beside.length, 'EB-Garamond-OFL.txt beside a notice file').toBeGreaterThan(0);
+    const licence = fs.readFileSync(path.join(abs(dist.dir), beside[0]), 'utf8');
+    expect(licence).toMatch(/SIL OPEN FONT LICENSE Version 1\.1/);
+    expect(licence).toMatch(/Copyright 2017 The EB Garamond Project Authors \(https:\/\/github\.com\/octaviopardo\/EBGaramond12\)/);
   });
 
   it('ships the Albanian dictionary only (no other language, no non-installable pack data)', (ctx) => {

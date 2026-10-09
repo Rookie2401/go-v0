@@ -11,7 +11,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
-  AA_LARGE_OR_UI, AA_TEXT, contrast, evalColor, flushAfterAll, fontSizes, parseCss, parseColor, row, tokensOf, withOpacity, over,
+  AA_LARGE_OR_UI, AA_TEXT, contrast, evalColor, flushAfterAll, fontSizes, parseCss, row, tokensOf, withOpacity, over,
   type CssRule, type Rgba,
 } from './a11y.support';
 
@@ -273,27 +273,35 @@ describe('contrast of the colour pairs actually used (WCAG 2.x, AA)', () => {
     expect(rs.length).toBe(28);
   });
 
-  it('A-K04 action popup: its two literal colours on the system Canvas (light #ffffff, dark #121212 in Chrome)', () => {
+  it('A-K04 action popup: its colour pairs on its own paper (the tokens of its :root, light and dark)', () => {
     const s = by('action');
-    const err = val(s, '.err', 'color');
-    const warn = val(s, '.status-line.warn', 'color');
-    const sub = num(val(s, '.sub', 'opacity'));
-    const hint = num(val(s, '.hint', 'opacity'));
-    const proto = num(val(s, '.proto', 'opacity'));
+    const white: Rgba = { r: 255, g: 255, b: 255, a: 1 };
+    const text: Array<[string, string, string]> = [
+      ['body', 'body text (body)', 'body'], ['err', 'error text (.err)', '.err'], ['warn', 'warning status (.status-line.warn)', '.status-line.warn'],
+      ['sub', 'sub-title (.sub)', '.sub'], ['hint', 'hint (.hint)', '.hint'], ['proto', 'protocol note (.proto)', '.proto'], ['muted', 'muted detail (.muted)', '.muted'], ['title', 'popup title (h1)', 'h1'],
+    ];
     const rs: Result[] = [];
     for (const scheme of ['light', 'dark'] as const) {
-      const canvas = scheme === 'light' ? parseColor('#ffffff') : parseColor('#121212');
-      const text = scheme === 'light' ? parseColor('#000000') : parseColor('#ffffff');
-      const mk = (id: string, what: string, f: Rgba, extra: Partial<Pair> = {}): Result => {
-        const ratio = contrast(f, canvas);
-        return { id, sheet: 'action', what, fg: rgbHex(f), bg: rgbHex(canvas), kind: 'text', scheme, ratio, need: AA_TEXT, pass: ratio >= AA_TEXT, ...extra };
+      const dark = scheme === 'dark';
+      const tokens = tokensOf(s.rules, scheme);
+      const paper = evalColor('var(--paper)', tokens, white);
+      const one = (id: string, what: string, fgExpr: string, kind: 'text' | 'ui', opacity?: number): Result => {
+        let fg = evalColor(fgExpr, tokens, paper);
+        if (opacity !== undefined) fg = withOpacity(fg, paper, opacity);
+        const ratio = contrast(fg, paper);
+        const need = kind === 'ui' ? AA_LARGE_OR_UI : AA_TEXT;
+        return { id, sheet: 'action', what, fg: rgbHex(fg), bg: rgbHex(paper), kind, scheme, ratio, need, pass: ratio >= need };
       };
-      const errC = scheme === 'dark' ? val(s, '.err', 'color', true) : err; const warnC = scheme === 'dark' ? val(s, '.status-line.warn', 'color', true) : warn;
-      rs.push(mk('err', 'error text (.err)', parseColor(errC)), mk('warn', 'warning status (.status-line.warn)', parseColor(warnC)),
-        mk('sub', 'sub-title (.sub, opacity .7)', withOpacity(text, canvas, sub)), mk('hint', 'hint (.hint, opacity .75)', withOpacity(text, canvas, hint)), mk('proto', 'protocol note (.proto, 11px, opacity .65)', withOpacity(text, canvas, proto)));
+      for (const [id, what, sel] of text) {
+        let opacity: number | undefined;
+        try { opacity = num(val(s, sel, 'opacity', dark)); } catch { opacity = undefined; }
+        rs.push(one(id, what, val(s, sel, 'color', dark), 'text', opacity));
+      }
+      // the boundaries of the controls
+      rs.push(one('border-button', 'button border (--control-line) on the paper', 'var(--control-line)', 'ui'), one('border-field', 'text-area border (--control-line) on the paper', 'var(--control-line)', 'ui'));
     }
     fmtRows(rs);
-    expect(rs.length).toBe(10);
+    expect(rs.length).toBe(20);
   });
 
   // ── the verdicts

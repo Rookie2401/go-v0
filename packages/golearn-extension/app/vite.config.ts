@@ -23,6 +23,34 @@ const repoRoot = path.resolve(here, '../../..');
 
 const dictLanguages = (): string[] => (process.env.GOLEARN_APP_DICT ?? 'sq').split(',').map((s) => s.trim()).filter(Boolean);
 
+const fontsSource = path.join(repoRoot, 'packages', 'shared-fonts');
+
+/** The EB Garamond files (SIL OFL 1.1) and their licence text: copied into the build beside the stylesheet's fonts/ folder, and served in development. */
+function copyFonts(fontsOut: string, licenceOut: string): void {
+  if (!fs.existsSync(fontsSource)) return;
+  fs.mkdirSync(fontsOut, { recursive: true });
+  for (const f of fs.readdirSync(fontsSource)) if (f.endsWith('.woff2')) fs.copyFileSync(path.join(fontsSource, f), path.join(fontsOut, f));
+  const licence = path.join(fontsSource, 'EB-Garamond-OFL.txt');
+  if (fs.existsSync(licence)) { fs.copyFileSync(licence, path.join(fontsOut, 'EB-Garamond-OFL.txt')); fs.copyFileSync(licence, licenceOut); }
+}
+
+/** Development only: serve /fonts/<file>.woff2 from packages/shared-fonts. */
+function devFonts(): Plugin {
+  return {
+    name: 'fonts-dev',
+    apply: 'serve',
+    configureServer(server) {
+      server.middlewares.use('/fonts', (req, res, next) => {
+        const name = path.basename((req.url ?? '').split('?')[0]);
+        const file = path.join(fontsSource, name);
+        if (!name.endsWith('.woff2') || !fs.existsSync(file)) return next();
+        res.setHeader('Content-Type', 'font/woff2');
+        res.end(fs.readFileSync(file));
+      });
+    },
+  };
+}
+
 /** Files Vite does not process: config.json, the dictionaries, and (options mode) the classic-script page. */
 function staticFiles(outDir: string, classic: boolean): Plugin {
   return {
@@ -48,13 +76,15 @@ function staticFiles(outDir: string, classic: boolean): Plugin {
       }
       const notices = path.join(repoRoot, 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(outDir, 'THIRD-PARTY-NOTICES.md'));
+      // options build: styles.css is copied as it is, so ./fonts/ sits beside it; web build: the stylesheet is bundled into assets/
+      copyFonts(path.join(outDir, classic ? 'fonts' : path.join('assets', 'fonts')), path.join(outDir, 'EB-Garamond-OFL.txt'));
     },
   };
 }
 
 export default defineConfig(({ mode, command }) => {
   if (command === 'serve') {
-    return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), server: { port: 5197, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
+    return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts()], server: { port: 5197, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
   }
   if (mode !== 'options' && mode !== 'web') throw new Error('mode must be "options" or "web"');
   const options = mode === 'options';

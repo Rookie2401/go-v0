@@ -9,9 +9,9 @@
  * Nothing here throws on a missing dictionary or a bad network: an absent gloss is `undefined`, a failed install is
  * `{ ok: false, reason, detail }`.
  */
-import type { AnalyzedToken, LanguageAdapter, RawToken, Span } from '../../../src/core';
-import { createFetchLexiconSource } from '../../../src/dict';
-import type { ShardCacheOptions } from '../../../src/dict';
+import type { AnalyzedToken, DictionaryEntry, LanguageAdapter, RawToken, Span } from '../../../src/core';
+import { createFetchLexiconSource, createFullRecordSource } from '../../../src/dict';
+import type { FullRecord, ShardCacheOptions } from '../../../src/dict';
 import { runCase, type CaseResult } from './analysis';
 import { builtInAdapter } from './builtins';
 import { validateManifest, type PackManifest } from './manifest';
@@ -89,11 +89,23 @@ export interface PackRuntimeDeps {
 }
 
 export interface GlossSense { gloss: string; pos: string; tags?: string[] }
+/** The dictionary form that was looked up is an inflected form of this headword (one hop); `labels` are the dictionary's own labels for the relation, verbatim ('form-of', 'first-person' ...). */
+export interface FormOfVia { form: string; lemma: string; labels: string[] }
 export interface GlossResult {
   senses: GlossSense[];
   /** Must be shown wherever a gloss is shown. */
   attribution: string;
   frequencyRank?: number;
+  /** Present when the senses are the headword's, reached through an inflected-form entry ("form of X"). */
+  via?: FormOfVia;
+}
+export interface EntryResult {
+  /** The full lexical records of the word (forms table, etymology, IPA, audio, related words ...), the preferred part of speech first. */
+  records: FullRecord[];
+  /** Must be shown wherever the records are shown. */
+  attribution: string;
+  /** Present when the records are the headword's, reached through an inflected-form entry. */
+  via?: FormOfVia;
 }
 
 export interface PackRuntime {
@@ -101,6 +113,8 @@ export interface PackRuntime {
   analyzer(): PackAnalyzer;
   /** Dictionary senses of a lemma; `pos` is a preference (matching senses first), not a filter. Never throws. */
   gloss(lemma: string, pos?: string, forms?: readonly string[]): Promise<GlossResult | undefined>;
+  /** The full lexical records of a lemma (Level 2: forms table, etymology, IPA, audio, related words); `pos` is a preference, not a filter. Never throws. */
+  entry(lemma: string, pos?: string, forms?: readonly string[]): Promise<EntryResult | undefined>;
   explainFeature(key: string, value: string): string | undefined;
   explainConstruction(id: string): string | undefined;
   coverageNotes(): string[];
@@ -118,17 +132,71 @@ export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps)
     return analyzerCache;
   };
 
+  type LangCode = Parameters<typeof createFetchLexiconSource>[0];
+  const dictBase = (): string | undefined => {
+    const root = dictionaryRoot(manifest);
+    if (root === undefined) return undefined;
+    return root ? joinUrl(deps.baseUrl, root) : deps.baseUrl.replace(/\/+$/u, '');
+  };
   let lexicon: ReturnType<typeof createFetchLexiconSource> | undefined;
   const source = (): ReturnType<typeof createFetchLexiconSource> | undefined => {
     if (lexicon) return lexicon;
-    const root = dictionaryRoot(manifest);
-    if (root === undefined) return undefined;
-    lexicon = createFetchLexiconSource(manifest.languageId as Parameters<typeof createFetchLexiconSource>[0], {
-      baseUrl: root ? joinUrl(deps.baseUrl, root) : deps.baseUrl.replace(/\/+$/u, ''),
-      fetch: deps.fetch,
-      ...(deps.cache ? { cache: deps.cache } : {}),
-    });
+    const baseUrl = dictBase();
+    if (baseUrl === undefined) return undefined;
+    lexicon = createFetchLexiconSource(manifest.languageId as LangCode, { baseUrl, fetch: deps.fetch, ...(deps.cache ? { cache: deps.cache } : {}) });
     return lexicon;
+  };
+  let fullRecords: ReturnType<typeof createFullRecordSource> | undefined;
+  const fullSource = (): ReturnType<typeof createFullRecordSource> | undefined => {
+    if (fullRecords) return fullRecords;
+    const baseUrl = dictBase();
+    if (baseUrl === undefined) return undefined;
+    fullRecords = createFullRecordSource(manifest.languageId as LangCode, { baseUrl, fetch: deps.fetch, ...(deps.cache ? { cache: deps.cache } : {}) });
+    return fullRecords;
+  };
+
+  /** The dictionary forms to ask for: the given ones (an analyser worked them out elsewhere), else the lemma and its variants. */
+  const formsFor = (lemma: string, given: readonly string[] | undefined): string[] => {
+    const adapter = analyzer().adapter;
+    const norm = (x: string): string => (adapter ? adapter.normalize(x) : x.normalize('NFC').toLowerCase());
+    return given?.length ? [...new Set(given.map(norm))] : [...new Set([norm(lemma), ...(adapter?.lemmaVariants?.(lemma) ?? []).map(norm)])];
+  };
+
+  /** An entry with senses of its own (an inflected form that is also a word keeps them); a form-only entry has none. */
+  const hasOwnSenses = (e: DictionaryEntry): boolean => !!(e.senses?.length || e.glosses.length);
+  const byPos = <T extends { pos?: string }>(list: T[], pos: string | undefined): T[] => (pos ? [...list.filter((e) => e.pos === pos), ...list.filter((e) => e.pos !== pos)] : list);
+
+  /** The senses (and best frequency rank) of the first of `keys` whose entries have any. */
+  const sensesFrom = (keys: readonly string[], found: Map<string, DictionaryEntry[]>, pos: string | undefined): { senses: GlossSense[]; rank?: number } => {
+    const senses: GlossSense[] = [];
+    let rank: number | undefined;
+    for (const form of keys) {
+      for (const e of byPos((found.get(form) ?? []).filter(hasOwnSenses), pos)) {
+        if (e.frequencyRank !== undefined) rank = rank === undefined ? e.frequencyRank : Math.min(rank, e.frequencyRank);
+        const list = e.senses?.length ? e.senses : e.glosses.map((gloss) => ({ gloss }));
+        for (const s of list) {
+          if (!s.gloss || senses.some((x) => x.gloss === s.gloss && x.pos === (e.pos ?? 'X'))) continue;
+          const tags = 'tags' in s && Array.isArray(s.tags) && s.tags.length ? [...s.tags] : undefined;
+          senses.push({ gloss: s.gloss, pos: e.pos ?? 'X', ...(tags ? { tags } : {}) });
+        }
+      }
+      if (senses.length) break; // the lemma's own headword wins over a variant spelling
+    }
+    return { senses, ...(rank !== undefined ? { rank } : {}) };
+  };
+
+  const MAX_HOP_LEMMAS = 6;
+  /** One hop: the headwords that the looked-up forms are inflected forms of (their form-of relations), relations of the preferred part of speech first. */
+  const formOfCandidates = (keys: readonly string[], found: Map<string, DictionaryEntry[]>, pos: string | undefined): FormOfVia[] => {
+    const out: FormOfVia[] = [];
+    for (const form of keys) {
+      for (const e of byPos(found.get(form) ?? [], pos)) {
+        for (const r of e.formOf ?? []) {
+          if (r.lemma && r.lemma !== form && !out.some((c) => c.lemma === r.lemma)) out.push({ form, lemma: r.lemma, labels: [...r.tags] });
+        }
+      }
+    }
+    return out.slice(0, MAX_HOP_LEMMAS);
   };
 
   const featureOf = (key: string) => manifest.grammar.features.find((f) => f.key === key);
@@ -141,33 +209,57 @@ export function createPackRuntime(manifest: PackManifest, deps: PackRuntimeDeps)
       try {
         const src = source();
         if (!src || !lemma) return undefined;
-        const adapter = analyzer().adapter;
-        const norm = (s: string): string => (adapter ? adapter.normalize(s) : s.normalize('NFC').toLowerCase());
         // `given`: the dictionary forms a caller that holds the analyser already worked out (the extension worker has no German, Hindi, Thai or Spanish analyser of its own)
-        const forms = given?.length ? [...new Set(given.map(norm))] : [...new Set([norm(lemma), ...(adapter?.lemmaVariants?.(lemma) ?? []).map(norm)])];
+        const forms = formsFor(lemma, given);
         const found = await src.lookup(forms);
-        const senses: GlossSense[] = [];
-        let rank: number | undefined;
-        for (const form of forms) {
-          // an entry that is only an inflected form of another word is not a gloss of this lemma
-          const entries = (found.get(form) ?? []).filter((e) => !e.formOf?.length);
-          const ordered = pos ? [...entries.filter((e) => e.pos === pos), ...entries.filter((e) => e.pos !== pos)] : entries;
-          for (const e of ordered) {
-            if (e.frequencyRank !== undefined) rank = rank === undefined ? e.frequencyRank : Math.min(rank, e.frequencyRank);
-            const list = e.senses?.length ? e.senses : e.glosses.map((gloss) => ({ gloss }));
-            for (const s of list) {
-              if (!s.gloss || senses.some((x) => x.gloss === s.gloss && x.pos === (e.pos ?? 'X'))) continue;
-              const tags = 'tags' in s && Array.isArray(s.tags) && s.tags.length ? [...s.tags] : undefined;
-              senses.push({ gloss: s.gloss, pos: e.pos ?? 'X', ...(tags ? { tags } : {}) });
+        let { senses, rank } = sensesFrom(forms, found, pos);
+        let via: FormOfVia | undefined;
+        if (!senses.length) {
+          // the forms hit only inflected-form entries (or nothing): follow the form-of relation one hop to the headword
+          const candidates = formOfCandidates(forms, found, pos);
+          if (candidates.length) {
+            const headwords = await src.lookup(candidates.map((c) => c.lemma));
+            for (const c of candidates) {
+              const hit = sensesFrom([c.lemma], headwords, pos);
+              if (hit.senses.length) { senses = hit.senses; rank = hit.rank; via = c; break; }
             }
           }
-          if (senses.length) break; // the lemma's own headword wins over a variant spelling
         }
         if (!senses.length) return undefined;
         const info = await src.info();
         if (!info) return undefined;
-        try { const f = await src.frequency?.(lemma); if (f) rank = f.rank; } catch { /* no frequency: the rank above, if any, stands */ }
-        return { senses: senses.slice(0, MAX_SENSES), attribution: info.attribution || manifest.lexical.dictionary?.attribution || '', ...(rank !== undefined ? { frequencyRank: rank } : {}) };
+        try { const f = await src.frequency?.(via ? via.lemma : lemma); if (f) rank = f.rank; } catch { /* no frequency: the rank above, if any, stands */ }
+        return {
+          senses: senses.slice(0, MAX_SENSES), attribution: info.attribution || manifest.lexical.dictionary?.attribution || '',
+          ...(rank !== undefined ? { frequencyRank: rank } : {}), ...(via ? { via } : {}),
+        };
+      } catch {
+        return undefined;
+      }
+    },
+
+    async entry(lemma, pos, given) {
+      try {
+        const full = fullSource();
+        if (!full || !lemma) return undefined;
+        const forms = formsFor(lemma, given);
+        let records: FullRecord[] = [];
+        let via: FormOfVia | undefined;
+        for (const k of forms) { records = await full.lookup(k, pos); if (records.length) break; }
+        if (!records.length) {
+          // an inflected form has no record of its own: follow the Level-1 form-of relation one hop and read the headword's record
+          const src = source();
+          if (src) {
+            for (const c of formOfCandidates(forms, await src.lookup(forms), pos)) {
+              records = await full.lookup(c.lemma, pos);
+              if (records.length) { via = c; break; }
+            }
+          }
+        }
+        if (!records.length) return undefined;
+        const info = await full.info();
+        if (!info) return undefined;
+        return { records, attribution: info.source.attribution || manifest.lexical.dictionary?.attribution || '', ...(via ? { via } : {}) };
       } catch {
         return undefined;
       }

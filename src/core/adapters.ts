@@ -12,7 +12,7 @@
 import type { AnalysisOrigin, AnalysisSourceInfo, ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord, WordPart, OrthographyRelation } from './model';
 import type { Variety } from './variety';
 import type { RegisterTag, SyllableAnalysis } from './course';
-import type { GeneratedParadigm } from './paradigm';
+import type { GeneratedParadigm, Paradigm, ParadigmCell, SegmentationAlternatives } from './paradigm';
 
 export interface Span { start: number; end: number; text: string }
 
@@ -216,9 +216,21 @@ export interface LanguageAdapter {
   /**
    * Map the dictionary's inflection-table tags for one form ("accusative", "definite", "singular"; "first-person",
    * "present", "subjunctive") to this adapter's feature keys, for the dictionary half of a paradigm. Unknown tags are
-   * ignored; a row whose tags name no feature maps to undefined (it is not placed in the table).
+   * ignored; a row whose tags name no feature maps to undefined (it is not placed in the table). `form` is the row's
+   * written form, for a language whose tags alone cannot tell two rows apart (Hindi: the simple future and a construction).
    */
-  featuresFromTableTags?(tags: readonly string[], pos: PartOfSpeech): Record<string, string> | undefined;
+  featuresFromTableTags?(tags: readonly string[], pos: PartOfSpeech, form?: string): Record<string, string> | undefined;
+  /**
+   * The cells of a paradigm that the selected reading occupies: the adapter projects an analysed reading (whose values
+   * may be unions such as "Fem,Masc", or lack a key the cells carry, or carry a variety) onto its own cell bundles.
+   * Optional: without it the card splits union values itself (`cellsForSelection`) and falls back to matching the form.
+   */
+  cellsFor?(paradigm: Pick<Paradigm, 'cells' | 'kind' | 'pos'>, features: Record<string, string>, surface?: string): ParadigmCell[];
+  /**
+   * Alternative ways of cutting a selection into words, for a script without word spaces (Thai): the chosen cut first,
+   * then the others the word list allows, each with its confidence share and basis. Optional.
+   */
+  segmentations?(text: string, context?: { before?: string; after?: string }): SegmentationAlternatives | undefined;
   /**
    * Order the readings of each token by its neighbours again, after the importer replaced the readings of some tokens
    * with a dictionary's. The importer calls it once per sentence; the replaced lists arrive as the dictionary gives them

@@ -15,7 +15,7 @@
  * a construction the form realizes is weak, its hint is moved above the gloss; otherwise the gloss comes first.
  */
 import { GOLEARN_HOST_ATTR, type PopupAnchor } from '../contract/readerAdapter';
-import { cellOf, cellsWithForm, featureKey, type ParadigmCell } from '../../../../src/core/paradigm';
+import { cellOf, cellsWithForm, featureKey, type ParadigmCell, type SegmentationCut } from '../../../../src/core/paradigm';
 import { contextLine, type CardModel, type EvidenceLabel } from '../parser/cardModel';
 import { languageNameOf, type SelfMark } from '../protocol';
 import {
@@ -164,7 +164,7 @@ const DEEPER_LAYERS: readonly LayerName[] = ['forms', 'meaning', 'origin', 'soun
 const STATUS_MARK: Record<string, string> = { verified: '✓', supported: '◌', generated: '~', conflicted: '‼' };
 const STATUS_LABEL: Record<string, string> = { verified: 'both the rules and the dictionary', supported: 'the dictionary only', generated: 'the rules only (unverified)', conflicted: 'the two disagree' };
 /** A feature bundle in plain key-value words (`Case Acc, Definite Def, Number Sing`); the pack's labels replace these where the Morphology layer has them. */
-const describeFeatures = (f: Record<string, string>): string => Object.keys(f).sort().map((k) => `${k} ${f[k]}`).join(', ');
+const describeFeatures = (f: Record<string, string>): string => Object.keys(f).sort().map((k) => `${k} ${f[k].split(',').join(' / ')}`).join(', ');
 
 // ───────────────────────────── the built-in local pronouncer ─────────────────────────────
 
@@ -521,6 +521,14 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function fillForms(panel: HTMLElement, m: CardModel, v: CardView): void {
     if (!enrichNote(panel, v)) return;
+    const seg = v.enrichment.segmentations;
+    if (seg && (seg.alternatives.length || m.tokenCount > 1)) {
+      const line = (c: SegmentationCut): string => `${c.words.map((w) => `${w.text}${w.known ? '' : '?'}${w.gloss ? ` (${w.gloss})` : ''}`).join(' | ')} — ${Math.round(c.confidence * 100)}% (${c.basis})`;
+      section(panel, 'How this selection cuts into words', [line(seg.chosen), ...seg.alternatives.map(line)]);
+      panel.append(h('div', { class: 'note' }, seg.alternatives.length
+        ? 'This script writes no spaces between words, so the cut is a reading of its own. Other cuts the word list allows are listed; a ? marks a piece the word list does not hold.'
+        : seg.reason ?? 'Only one cut is plausible here.'));
+    }
     const p = v.enrichment.paradigm;
     if (!p) { panel.append(h('div', { class: 'note' }, m.tokenCount > 1 ? 'Select one word to see its forms.' : 'No paradigm: the analyser has no rules for this word and the dictionary has no table for it.')); return; }
     if (p.kind === 'none') {
@@ -533,9 +541,15 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const parts = (Object.keys(counts) as Array<keyof typeof counts>).filter((k) => counts[k]).map((k) => `${counts[k]} ${STATUS_LABEL[k]}`);
     panel.append(h('div', { class: 'note' }, `${p.cells.length} form${p.cells.length === 1 ? '' : 's'}${p.template ? ` · ${p.template}` : ''}: ${parts.join('; ')}.`));
     const selected = new Set<ParadigmCell>();
-    const feats = Object.fromEntries(m.features.map((f) => [f.key, f.value]));
-    const byFeatures = Object.keys(feats).length ? cellOf(p, feats) : undefined;
-    if (byFeatures) selected.add(byFeatures); else for (const c of cellsWithForm(p, m.surface)) selected.add(c);
+    if (v.enrichment.selected?.length) {
+      // the adapter's own projection of the reading onto its cells (union readings, varieties), computed page-side
+      const want = new Set(v.enrichment.selected);
+      for (const c of p.cells) if (want.has(featureKey(c.features))) selected.add(c);
+    } else {
+      const feats = Object.fromEntries(m.features.map((f) => [f.key, f.value]));
+      const byFeatures = Object.keys(feats).length ? cellOf(p, feats) : undefined;
+      if (byFeatures) selected.add(byFeatures); else for (const c of cellsWithForm(p, m.surface)) selected.add(c);
+    }
     const cellNode = (c: ParadigmCell | undefined): HTMLElement => {
       if (!c) return h('td', { class: 'pcell none' }, '—');
       const text = c.status === 'conflicted' && c.alternatives?.length ? `${c.form} / ${c.alternatives.join(' / ')}` : c.form;
@@ -544,6 +558,12 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const L = p.layout;
     if (L) {
       const sectionKeys = L.sections ?? [];
+      // a slot of the layout is named by its section, row and column values; a cell may carry more (a noun's Gender), which does not unplace it
+      const layoutKeys = [...sectionKeys, L.rows.key, L.columns.key];
+      const cellAt = (want: Record<string, string>): ParadigmCell | undefined => {
+        const hits = p.cells.filter((c) => layoutKeys.every((k) => c.features[k] === want[k]));
+        return hits.length <= 1 ? hits[0] : (hits.find((c) => featureKey(c.features) === featureKey(want)) ?? hits[0]);
+      };
       const combos: Array<Record<string, string>> = [];
       const seen = new Set<string>();
       for (const c of p.cells) {
@@ -559,14 +579,14 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
         table.append(h('tr', {}, h('th', {}, ''), ...L.columns.values.map(([, label]) => h('th', {}, label))));
         for (const [rv, rlabel] of L.rows.values) {
           const row = h('tr', {}, h('th', {}, rlabel));
-          for (const [cv] of L.columns.values) row.append(cellNode(cellOf(p, { ...combo, [L.rows.key]: rv, [L.columns.key]: cv })));
+          for (const [cv] of L.columns.values) row.append(cellNode(cellAt({ ...combo, [L.rows.key]: rv, [L.columns.key]: cv })));
           table.append(row);
         }
         panel.append(table);
       }
       // cells the layout does not place (an extra feature the layout has no axis for) are listed below the tables
       const placed = new Set<string>();
-      for (const combo of combos) for (const [rv] of L.rows.values) for (const [cv] of L.columns.values) placed.add(featureKey({ ...combo, [L.rows.key]: rv, [L.columns.key]: cv }));
+      for (const combo of combos) for (const [rv] of L.rows.values) for (const [cv] of L.columns.values) { const c = cellAt({ ...combo, [L.rows.key]: rv, [L.columns.key]: cv }); if (c) placed.add(featureKey(c.features)); }
       const rest = p.cells.filter((c) => !placed.has(featureKey(c.features)));
       if (rest.length) section(panel, 'Other forms', rest.map((c) => `${c.form} — ${describeFeatures(c.features)} ${STATUS_MARK[c.status]}`));
     } else {

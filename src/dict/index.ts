@@ -23,6 +23,14 @@ export {
   buildDictionary, createDictionaryBuilder, mergeEntries, chooseBuckets, TARGET_SHARD_BYTES, DROP_FORM_PRONUNCIATIONS, KAIKKI_ATTRIBUTION, KAIKKI_LICENCE,
 } from './build';
 export type { BuildOutput, BuildStats, BuilderOptions, DictionaryBuilder } from './build';
+export { createFullRecordSource } from './full';
+export type { FullRecordSource, FullRecordSourceOptions } from './full';
+export {
+  FULL_SCHEMA, FULL_CAPS, ETYMOLOGY_TEMPLATES, bucketOf as fullBucketOf, fullShardName, mapFullLine, parseFullManifest, parseFullShard, readFullRecord, chooseFullBuckets,
+} from './full-format';
+export type {
+  FullAudio, FullCounts, FullEtymology, FullEtymologyTemplate, FullForm, FullIpa, FullManifest, FullMapping, FullRecord, FullRelated, FullSense, FullSkip, FullSource,
+} from './full-format';
 export { createShardedSource, newShardCacheProbe, DEFAULT_MAX_PARSED_SHARDS, DEFAULT_SHARD_CONCURRENCY } from './sharded';
 export type { ReadDictFile, ShardCacheOptions, ShardCacheProbe } from './sharded';
 

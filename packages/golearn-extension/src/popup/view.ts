@@ -3,7 +3,7 @@
  * dictionary gloss, the learner-model consultation, the pack's explanations, the pronunciation state), and the
  * callbacks through which the card reports what the learner did. Pure data and types; no DOM.
  */
-import type { Paradigm } from '../../../../src/core/paradigm';
+import type { Paradigm, SegmentationAlternatives } from '../../../../src/core/paradigm';
 import type { EtymologyView, PronunciationView, RelationsView } from '../content/enrich';
 import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, SelfMark } from '../protocol';
 
@@ -15,6 +15,10 @@ export interface EnrichmentView {
   /** idle: not asked (no dictionary service); loading: asked; ready: answered (fields may still be unknown); unavailable: could not be asked, with why. */
   state: 'idle' | 'loading' | 'ready' | 'unavailable';
   paradigm?: Paradigm;
+  /** Feature keys (`featureKey`) of the cells the selected form occupies, as the adapter projects the reading; the card marks them. */
+  selected?: string[];
+  /** Alternative cuts of the selection into words (a script without word spaces). */
+  segmentations?: SegmentationAlternatives;
   etymology?: EtymologyView;
   pronunciation?: PronunciationView;
   relations?: RelationsView;

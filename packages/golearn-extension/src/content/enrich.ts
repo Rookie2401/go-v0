@@ -9,7 +9,7 @@
  * the dictionary's IPA, the analyser's rule, or a recording. Pure: no DOM, no network.
  */
 import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
-import { mergeParadigm, type Paradigm } from '../../../../src/core/paradigm';
+import { cellsForSelection, featureKey, mergeParadigm, type Paradigm, type SegmentationAlternatives } from '../../../../src/core/paradigm';
 
 /** The dictionary's full record as the worker hands it to the page (the `full-1` keys; every field optional and untrusted). */
 export interface LexicalRecord {
@@ -79,11 +79,12 @@ export function buildParadigm(adapter: LanguageAdapter | undefined, languageId: 
     for (const row of record.f) {
       const form = str(row.f, 80);
       if (!form || !Array.isArray(row.t)) continue;
-      const features = safe(() => adapter.featuresFromTableTags!(row.t, pos));
+      const features = safe(() => adapter.featuresFromTableTags!(row.t, pos, form));
       if (features && Object.keys(features).length) table.push({ features, form });
     }
   }
   if (!generated && !table.length) return undefined;
+  const aligned = alignTable(generated?.cells, table);
   if (generated?.kind === 'none') {
     return { languageId, lemma, pos, kind: 'none', cells: [], notes: generated.notes, sources: [{ id: `${adapter!.lang}@${adapter!.version}`, label: `${adapter!.name} analyser` }], status: 'none', constructions: generated.constructions };
   }
@@ -94,7 +95,37 @@ export function buildParadigm(adapter: LanguageAdapter | undefined, languageId: 
   const notes = [...(generated?.notes ?? [])];
   if (!generated && table.length) notes.push('The analyser has no rules for this word; every form here is the dictionary\'s table, unverified by the rules.');
   if (generated && !table.length) notes.push('The dictionary has no table for this word; every form here comes from the analyser\'s rules and is unverified by a second source.');
-  return mergeParadigm({ languageId, lemma, pos, kind, layout: generated?.layout, template: generated?.template ?? record?.tpl?.[0], notes, sources, constructions: generated?.constructions }, generated?.cells ?? [], table);
+  return mergeParadigm({ languageId, lemma, pos, kind, layout: generated?.layout, template: generated?.template ?? record?.tpl?.[0], notes, sources, constructions: generated?.constructions }, generated?.cells ?? [], aligned);
+}
+
+/**
+ * Put the dictionary's rows on the generated cells' keys where the two sides describe the same cell in different words:
+ * (1) a feature every generated cell carries with one value (a noun's Gender) is added to a row that lacks it, since the
+ * table is the table of that one lexeme; (2) a row whose single value falls inside a generated cell's union value
+ * ("Dat" inside "Gen,Dat") takes that cell's features when exactly one cell fits; (3) a row that names fewer features than
+ * every generated cell does (the headline "plural" / "definite" forms above a table) is dropped, because it is not a cell.
+ * Without generated cells the rows are kept as they are. Nothing is invented: a value is only ever copied from the one
+ * generated side or narrowed to the one cell it already fits.
+ */
+export function alignTable<R extends { features: Record<string, string>; form: string }>(generated: ReadonlyArray<{ features: Record<string, string> }> | undefined, table: R[]): R[] {
+  if (!generated?.length) return table;
+  const required = new Set(Object.keys(generated[0].features));
+  for (const c of generated) for (const k of [...required]) if (c.features[k] === undefined) required.delete(k);
+  const constant: Record<string, string> = {};
+  for (const k of required) { const vals = new Set(generated.map((c) => c.features[k])); if (vals.size === 1) constant[k] = [...vals][0]; }
+  const keys = new Set(generated.map((c) => featureKey(c.features)));
+  const out: R[] = [];
+  for (const row of table) {
+    const f: Record<string, string> = { ...row.features };
+    for (const [k, v] of Object.entries(constant)) if (f[k] === undefined) f[k] = v;
+    if ([...required].some((k) => f[k] === undefined)) continue; // a headline form, not a cell
+    if (!keys.has(featureKey(f))) {
+      const fits = generated.filter((c) => { const ck = Object.keys(c.features); return ck.length === Object.keys(f).length && ck.every((k) => f[k] !== undefined && c.features[k].split(',').includes(f[k])); });
+      if (fits.length === 1) { out.push({ ...row, features: { ...fits[0].features } }); continue; }
+    }
+    out.push({ ...row, features: f });
+  }
+  return out;
 }
 
 /** The etymology, from the dictionary only. Never generated: no record, no text → `unknown` with nothing to show. */
@@ -135,6 +166,25 @@ export function relationsOf(record: LexicalRecord | undefined): RelationsView {
 /** Senses beyond the first: the dictionary's list with tags and up to two examples each (the card's Meaning section). */
 export function sensesOf(record: LexicalRecord | undefined): Array<{ gloss: string; tags: string[]; examples: string[] }> {
   return (record?.s ?? []).map((s) => ({ gloss: str(s?.g, 300) ?? '', tags: strs(s?.t, 8), examples: strs(s?.x, 2).map((x) => x.slice(0, 200)) })).filter((s) => s.gloss).slice(0, 12);
+}
+
+/**
+ * The feature keys of the cells the selected form occupies: the adapter's own projection when it has one (Albanian,
+ * Spanish, Norwegian: union readings, varieties), else the generic split of union values, else the cells whose form is
+ * the surface. Empty for a language without inflection or when nothing matches (the card then marks nothing).
+ */
+export function selectedCellKeys(adapter: LanguageAdapter | undefined, paradigm: Paradigm | undefined, features: Record<string, string>, surface?: string): string[] {
+  if (!paradigm || paradigm.kind === 'none' || !paradigm.cells.length) return [];
+  const own = adapter?.cellsFor ? safe(() => adapter.cellsFor!(paradigm, features, surface)) : undefined;
+  const cells = own?.length ? own : cellsForSelection(paradigm, features, surface);
+  return [...new Set(cells.map((c) => featureKey(c.features)))];
+}
+
+/** The adapter's alternative cuts of the selection into words (Thai), or undefined for a language that writes spaces. */
+export function segmentationsOf(adapter: LanguageAdapter | undefined, text: string, context?: { before?: string; after?: string }): SegmentationAlternatives | undefined {
+  if (!adapter?.segmentations || !text.trim()) return undefined;
+  const s = safe(() => adapter.segmentations!(text, context));
+  return s && s.chosen && Array.isArray(s.alternatives) ? s : undefined;
 }
 
 function safe<T>(fn: () => T): T | undefined { try { return fn(); } catch { return undefined; } }

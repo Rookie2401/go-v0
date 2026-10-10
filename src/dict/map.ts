@@ -32,8 +32,14 @@ const UNIT_ROLES: Record<string, string> = {
 /** How the source continues a form-of target that describes a verb with attached pronouns, after the verb itself. */
 const COMBINED_WITH = ' combined with';
 
+/** The part of speech a Wiktionary heading maps to (units that are not single words are X); undefined when the heading is not listed. */
+export function partOfSpeechOf(heading: string): PartOfSpeech | undefined {
+  const h = heading.trim().toLowerCase();
+  return UNIT_ROLES[h] ? 'X' : POS_MAP[h];
+}
+
 /** Headings that are not words at all (a letter, a symbol, punctuation): kept out of word analysis, but counted. */
-const NON_WORD_POS = new Set(['character', 'symbol', 'punct']);
+export const NON_WORD_POS: ReadonlySet<string> = new Set(['character', 'symbol', 'punct']);
 
 /**
  * Sense tags that map onto a register tag (compared lower-case). Vague or unmapped labels (dialectal, dated, humble,

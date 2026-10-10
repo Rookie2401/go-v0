@@ -29,7 +29,7 @@ export type {
 } from './tutorial/types';
 export { createPackRuntime, installPack, verifyInstalled, intlAnalyzer, installedKey, joinUrl } from './runtime';
 export type {
-  GlossResult, GlossSense, InstallDeps, InstallFailure, InstallProgress, InstallResult, InstallVerified, InstalledRecord,
+  EntryResult, FormOfVia, GlossResult, GlossSense, InstallDeps, InstallFailure, InstallProgress, InstallResult, InstallVerified, InstalledRecord,
   PackAnalyzer, PackRuntime, PackRuntimeDeps, PackStorage, VerifyResult,
 } from './runtime';
 export { packCapabilities, allPackCapabilities, capabilitiesOf } from './capabilities';

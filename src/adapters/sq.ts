@@ -25,6 +25,8 @@ import { SQ_ANALYZER, SQ_SOURCE_IDS, SQ_VERSION, sqAnalyze, sqCandidates } from 
 import { detectSqConstructions } from './albanian/constructions';
 import { describeSqMorph } from './albanian/describe';
 import { SQ_LEXEMES, analyzeSqForm } from './albanian/morphology';
+import { sqCellsFor, sqParadigm } from './albanian/paradigm';
+import { sqFeaturesFromTableTags } from './albanian/table-tags';
 import { SQ_LETTERS, sqLetters, sqNormalize, sqSearchNormalize } from './albanian/orthography';
 import { SQ_PHRASE_RULES } from './albanian/phrases';
 import { checkSqProduction } from './albanian/production';
@@ -164,6 +166,12 @@ export const sqAdapter: LanguageAdapter = {
   morphFromTags: sqMorphFromTags,
   varietiesFromTags: sqVarietiesFromTags,
   describeMorph: (morph, pos) => describeSqMorph(morph, pos),
+
+  /** Generation (Linguistic Engine V2, Stage 3): the forms of a word of the list, from the same rules as `analyze`; see albanian/paradigm.ts. */
+  paradigm: sqParadigm,
+  /** The dictionary table's tags for one form → this adapter's feature keys (albanian/table-tags.ts). */
+  featuresFromTableTags: sqFeaturesFromTableTags,
+  cellsFor: (p, features, surface) => sqCellsFor(p, features, surface),
 };
 
 // ── numbers 0–999 999 ──

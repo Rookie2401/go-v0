@@ -30,6 +30,8 @@ import { GERMAN_PHRASE_RULES, detectGermanConstructions, segmentGermanSentences 
 import { checkGermanProduction } from './german/production';
 import { deMorphFromTags, deVarietiesFromTags } from './german/tags';
 import { LISTED_GROUPS } from './german/historical';
+import { deCellsFor, germanParadigm } from './german/paradigm';
+import { tableRow } from './german/table-tags';
 
 const LANG = 'de' as const;
 const VERSION = DE_ANALYZER_VERSION;
@@ -199,6 +201,14 @@ export const deAdapter: LanguageAdapter = {
   morphFromTags: deMorphFromTags,
   varietiesFromTags: deVarietiesFromTags,
   describeMorph: (morph, pos) => describeGermanMorph(morph, pos),
+
+  /** Linguistic Engine V2, Stage 3: the generated paradigm (german/paradigm.ts) and the dictionary's table tags in this adapter's feature keys (german/table-tags.ts). */
+  paradigm: germanParadigm,
+  cellsFor: (paradigm, features, surface) => deCellsFor(paradigm, features, surface),
+  featuresFromTableTags: (tags, pos) => {
+    const r = tableRow(tags, pos);
+    return 'features' in r ? r.features : undefined;
+  },
 };
 
 // ── numbers 0–999 999 ──

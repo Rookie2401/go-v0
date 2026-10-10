@@ -32,7 +32,9 @@ describe.skipIf(!have)('the built extension', () => {
     // eslint-disable-next-line no-console
     console.info(`[bundle] dist/ JavaScript, minified:\n${table}`);
     expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(520 * KB);
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(520 * KB);
+    // 560 since Linguistic Engine V2 (2026-10-10): the Albanian generation (paradigm.ts, table-tags.ts) and the full-record
+    // format travel with the Albanian adapter the worker carries; no other analyser is in it (checked below)
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(560 * KB);
     if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(650 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });

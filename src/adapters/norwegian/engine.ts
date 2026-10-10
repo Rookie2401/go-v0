@@ -26,8 +26,11 @@ import { detectNorwegianConstructions, detectNorwegianPhrases } from './construc
 import { familyOf } from './families';
 import { olderSpellings, spellingRelation } from './historical';
 import { lexiconFor } from './lexicon';
+import { cellOf, type Paradigm, type ParadigmCell } from '../../core/paradigm';
+import { norwegianCellFeatures, norwegianParadigm } from './paradigm';
 import { checkNorwegianProduction } from './production';
 import { transcribe } from './pronunciation';
+import { norwegianFeaturesFromTableTags } from './table-tags';
 import { NB_UNITS, NN_UNITS } from './units';
 import { NB_VARIETIES, NN_VARIETIES } from './varieties';
 import { normalizeNo, segmentSentencesNo, tokenizeNo } from './text';
@@ -272,5 +275,12 @@ export function makeNorwegianAdapter(std: NoStandard): LanguageAdapter {
   };
 
   // concept families (the optional `family` method of the adapter contract, added to core by the registration package)
-  return Object.assign(adapter, { family: (lemma: string, pos?: PartOfSpeech) => familyOf(std, lemma, pos) });
+  // Linguistic Engine V2: the generated table (paradigm.ts) and the dictionary table's tag map (table-tags.ts)
+  return Object.assign(adapter, {
+    family: (lemma: string, pos?: PartOfSpeech) => familyOf(std, lemma, pos),
+    paradigm: (lemma: string, pos: PartOfSpeech) => norwegianParadigm(std, lemma, pos),
+    featuresFromTableTags: (tags: readonly string[], pos: PartOfSpeech) => norwegianFeaturesFromTableTags(tags, pos),
+    // the union reading (Gender "Fem,Masc", Mood "Imp,Ind") taken apart into the cell bundles it covers
+    cellsFor: (p: Pick<Paradigm, 'cells' | 'kind' | 'pos'>, features: Record<string, string>) => { const out: ParadigmCell[] = []; for (const f of norwegianCellFeatures(p.pos, features)) { const c = cellOf(p, f); if (c && !out.includes(c)) out.push(c); } return out; },
+  });
 }

@@ -61,6 +61,11 @@ function dedupe<T extends { lemma: string }>(list: T[], key: (x: T) => string, m
   return [...seen.values()];
 }
 
+/** Two valid 2005 spellings of one noun (bro / bru): the variant forms of the canonical lemma, exported so that paradigm.ts lists the same cells. */
+export const NB_NOUN_VARIANTS: Readonly<Record<string, { indef: string[]; defSg: string[]; pl: string[]; defPl: string[] }>> = {
+  bro: { indef: ['bru'], defSg: ['brua', 'bruen'], pl: ['bruer'], defPl: ['bruene'] },
+};
+
 const GENDER_NAME = { m: 'Masc', f: 'Fem', n: 'Neut' } as const;
 
 function build(std: NoStandard): NoLexicon {
@@ -153,9 +158,7 @@ function build(std: NoStandard): NoLexicon {
 
   // two valid 2005 spellings of one noun: bro and bru are ONE lemma (canonical: bro); the bru forms are variants of it
   if (std === 'nb') {
-    const variants: Record<string, { indef: string[]; defSg: string[]; pl: string[]; defPl: string[] }> = {
-      bro: { indef: ['bru'], defSg: ['brua', 'bruen'], pl: ['bruer'], defPl: ['bruene'] },
-    };
+    const variants = NB_NOUN_VARIANTS;
     for (const [lemma, v] of Object.entries(variants)) {
       const n = nounByLemmaEarly(lemma);
       if (!n) continue;

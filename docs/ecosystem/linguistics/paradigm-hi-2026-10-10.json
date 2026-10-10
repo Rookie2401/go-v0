@@ -1,0 +1,1947 @@
+{
+ "probe": "paradigm-hi",
+ "date": "2026-10-10",
+ "source": "kaikki.org Hindi (Wiktionary)",
+ "limit": 100000,
+ "stats": {
+  "NOUN": {
+   "entries": 19061,
+   "withTables": 13207,
+   "multiword": 713,
+   "lemmasWithConflict": 65,
+   "lemmasAllVerified": 1549,
+   "generated": 1619,
+   "generatedAndTable": 1619,
+   "tableOnly": 11588,
+   "generatedOnly": 0,
+   "cells": {
+    "verified": 7980,
+    "supported": 70789,
+    "generated": 14,
+    "conflicted": 101
+   },
+   "rowsSeen": 81337,
+   "rowsPlaced": 81337,
+   "skipped": {}
+  },
+  "ADJ": {
+   "entries": 4667,
+   "withTables": 532,
+   "multiword": 14,
+   "lemmasWithConflict": 0,
+   "lemmasAllVerified": 109,
+   "generated": 111,
+   "generatedAndTable": 111,
+   "tableOnly": 396,
+   "generatedOnly": 0,
+   "cells": {
+    "verified": 654,
+    "supported": 3402,
+    "generated": 2,
+    "conflicted": 0
+   },
+   "rowsSeen": 6377,
+   "rowsPlaced": 6227,
+   "skipped": {
+    "not-a-form": 150
+   }
+  },
+  "VERB": {
+   "entries": 10470,
+   "withTables": 1659,
+   "multiword": 545,
+   "lemmasWithConflict": 6,
+   "lemmasAllVerified": 1099,
+   "generated": 1112,
+   "generatedAndTable": 1105,
+   "tableOnly": 0,
+   "generatedOnly": 7,
+   "cells": {
+    "verified": 43007,
+    "supported": 5525,
+    "generated": 284,
+    "conflicted": 88
+   },
+   "rowsSeen": 409473,
+   "rowsPlaced": 68403,
+   "skipped": {
+    "not-modelled": 14076,
+    "construction": 326964,
+    "not-a-form": 30
+   }
+  },
+  "PRON": {
+   "entries": 165,
+   "withTables": 33,
+   "multiword": 0,
+   "lemmasWithConflict": 2,
+   "lemmasAllVerified": 0,
+   "generated": 9,
+   "generatedAndTable": 9,
+   "tableOnly": 24,
+   "generatedOnly": 0,
+   "cells": {
+    "verified": 52,
+    "supported": 239,
+    "generated": 15,
+    "conflicted": 5
+   },
+   "rowsSeen": 439,
+   "rowsPlaced": 395,
+   "skipped": {
+    "error": 44
+   }
+  },
+  "PROPN": {
+   "entries": 3317,
+   "withTables": 2342,
+   "multiword": 255,
+   "lemmasWithConflict": 12,
+   "lemmasAllVerified": 14,
+   "generated": 67,
+   "generatedAndTable": 67,
+   "tableOnly": 2275,
+   "generatedOnly": 0,
+   "cells": {
+    "verified": 165,
+    "supported": 8020,
+    "generated": 141,
+    "conflicted": 29
+   },
+   "rowsSeen": 8953,
+   "rowsPlaced": 8953,
+   "skipped": {}
+  }
+ },
+ "unknownTags": [],
+ "conflictShapes": [
+  [
+   "NOUN:Case=Dir|Number=Plur",
+   59
+  ],
+  [
+   "NOUN:Case=Voc|Number=Plur",
+   17
+  ],
+  [
+   "NOUN:Case=Obl|Number=Plur",
+   15
+  ],
+  [
+   "PROPN:Case=Obl|Number=Sing",
+   11
+  ],
+  [
+   "VERB:Gender|Mood=Ind|Number=Sing|Person=1|Tense=Fut|VerbForm=Fin",
+   10
+  ],
+  [
+   "NOUN:Case=Obl|Number=Sing",
+   9
+  ],
+  [
+   "VERB:Mood=Sub|Person=2|Polite=Fam|VerbForm=Fin",
+   6
+  ],
+  [
+   "PROPN:Case=Dir|Number=Plur",
+   6
+  ],
+  [
+   "PROPN:Case=Obl|Number=Plur",
+   6
+  ],
+  [
+   "PROPN:Case=Voc|Number=Plur",
+   6
+  ],
+  [
+   "VERB:Gender|Mood=Ind|Number=Plur|Person=1|Tense=Fut|VerbForm=Fin",
+   6
+  ],
+  [
+   "VERB:Gender|Mood=Ind|Number=Sing|Person=3|Tense=Fut|VerbForm=Fin",
+   6
+  ],
+  [
+   "VERB:Gender|Mood=Ind|Number=Plur|Person=3|Tense=Fut|VerbForm=Fin",
+   6
+  ],
+  [
+   "VERB:Gender|Mood=Ind|Number=Sing|Person=2|Polite=Infm|Tense=Fut|VerbForm=Fin",
+   6
+  ],
+  [
+   "VERB:Gender|Mood=Ind|Number=Plur|Person=2|Polite=Form|Tense=Fut|VerbForm=Fin",
+   6
+  ],
+  [
+   "VERB:Mood=Sub|Number=Sing|Person=1|VerbForm=Fin",
+   5
+  ],
+  [
+   "VERB:Mood=Imp|Person=2|Polite=Form|VerbForm=Fin",
+   4
+  ],
+  [
+   "VERB:Mood=Imp|Person=2|Polite=Form|Tense=Fut|VerbForm=Fin",
+   4
+  ],
+  [
+   "VERB:Aspect=Perf|Gender|Number=Sing|VerbForm=Part",
+   4
+  ],
+  [
+   "VERB:Aspect=Perf|Gender|Number=Plur|VerbForm=Part",
+   4
+  ]
+ ],
+ "supportedShapes": [
+  [
+   "VERB:Gender|Number=Plur|VerbForm=Inf",
+   2210
+  ],
+  [
+   "NOUN:Case=Voc|Number=Sing",
+   1618
+  ],
+  [
+   "VERB:Aspect=Perf|Case=Obl|Gender|Number=Sing|VerbForm=Part",
+   1105
+  ],
+  [
+   "VERB:Mood=Imp|Person=2|Polite=Infm|Tense=Fut|VerbForm=Fin",
+   1105
+  ],
+  [
+   "VERB:Mood=Imp|Person=2|Polite=Fam|Tense=Fut|VerbForm=Fin",
+   1105
+  ],
+  [
+   "ADJ:Case=Voc|Gender|Number=Sing",
+   111
+  ],
+  [
+   "ADJ:Case=Voc|Gender|Number=Plur",
+   111
+  ],
+  [
+   "PROPN:Case=Voc|Number=Sing",
+   67
+  ],
+  [
+   "PRON:Adp|Case=Obl",
+   6
+  ],
+  [
+   "PRON:Adp|Case=Obl|Number=Sing",
+   5
+  ],
+  [
+   "PRON:Adp|Case=Obl|Number=Plur",
+   5
+  ],
+  [
+   "PRON:Case=Obl",
+   4
+  ],
+  [
+   "PRON:Case=Dir|Number=Sing",
+   3
+  ],
+  [
+   "PRON:Case=Dir|Number=Plur",
+   3
+  ],
+  [
+   "PRON:Case=Gen|Number=Plur",
+   3
+  ],
+  [
+   "PRON:Case=Gen",
+   3
+  ],
+  [
+   "ADJ:Case=Dir|Gender|Number=Sing",
+   2
+  ],
+  [
+   "ADJ:Case=Dir|Gender|Number=Plur",
+   2
+  ],
+  [
+   "ADJ:Gender|Number=Sing",
+   2
+  ],
+  [
+   "ADJ:Gender|Number=Plur",
+   2
+  ]
+ ],
+ "generatedOnlyShapesInEntriesWithTables": [
+  [
+   "PROPN:Case=Dir|Number=Plur",
+   47
+  ],
+  [
+   "PROPN:Case=Obl|Number=Plur",
+   47
+  ],
+  [
+   "PROPN:Case=Voc|Number=Plur",
+   47
+  ],
+  [
+   "PRON:Adp|Case=Obl",
+   6
+  ],
+  [
+   "NOUN:Case=Dir|Number=Plur",
+   4
+  ],
+  [
+   "NOUN:Case=Obl|Number=Plur",
+   4
+  ],
+  [
+   "NOUN:Case=Voc|Number=Plur",
+   4
+  ],
+  [
+   "PRON:Case=Dir",
+   3
+  ],
+  [
+   "PRON:Adp|Case=Obl|Number=Sing",
+   2
+  ],
+  [
+   "PRON:Adp|Case=Obl|Number=Plur",
+   2
+  ],
+  [
+   "PRON:Case=Gen|Number=Sing",
+   2
+  ],
+  [
+   "VERB:Gender|Mood=Ind|Number=Sing|Tense=Past|VerbForm=Fin",
+   2
+  ],
+  [
+   "VERB:Gender|Mood=Ind|Number=Plur|Tense=Past|VerbForm=Fin",
+   2
+  ],
+  [
+   "ADJ:",
+   2
+  ],
+  [
+   "NOUN:Case=Dir|Number=Sing",
+   1
+  ],
+  [
+   "NOUN:Case=Obl|Number=Sing",
+   1
+  ],
+  [
+   "VERB:Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+   1
+  ],
+  [
+   "VERB:Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin",
+   1
+  ],
+  [
+   "VERB:Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+   1
+  ],
+  [
+   "VERB:Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+   1
+  ]
+ ],
+ "topConflicts": [
+  {
+   "lemma": "कोलकाता",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "कोलकाता",
+   "generated": [
+    "कोलकाते"
+   ]
+  },
+  {
+   "lemma": "हिंदी",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "हिंदी",
+   "generated": [
+    "हिंदियाँ",
+    "हिंदियां"
+   ]
+  },
+  {
+   "lemma": "हिन्दी",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "हिन्दी",
+   "generated": [
+    "हिन्दियाँ",
+    "हिन्दियां"
+   ]
+  },
+  {
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "dictionary": "पियूँ",
+   "generated": [
+    "पिऊँ",
+    "पिऊं",
+    "पीऊँ"
+   ]
+  },
+  {
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "2",
+    "Polite": "Fam"
+   },
+   "dictionary": "पियो",
+   "generated": [
+    "पिओ"
+   ]
+  },
+  {
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Number": "Sing",
+    "Gender": "Masc"
+   },
+   "dictionary": "पियूँगा",
+   "generated": [
+    "पिऊँगा",
+    "पिऊंगा",
+    "पीऊँगा"
+   ]
+  },
+  {
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Number": "Sing",
+    "Gender": "Fem"
+   },
+   "dictionary": "पियूँगी",
+   "generated": [
+    "पिऊँगी",
+    "पिऊंगी",
+    "पीऊँगी"
+   ]
+  },
+  {
+   "lemma": "ढोलक",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "ढोलक",
+   "generated": [
+    "ढोलकें"
+   ]
+  },
+  {
+   "lemma": "कौन",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Number": "Plur"
+   },
+   "dictionary": "किनहोंने",
+   "generated": [
+    "किन्होंने"
+   ]
+  },
+  {
+   "lemma": "मक्का",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "मक्के",
+   "generated": [
+    "मक्का"
+   ]
+  },
+  {
+   "lemma": "मक्का",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "मक्के",
+   "generated": [
+    "मक्काएँ",
+    "मक्कायेँ",
+    "मक्कायें",
+    "मक्काएं"
+   ]
+  },
+  {
+   "lemma": "मक्का",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "मक्कों",
+   "generated": [
+    "मक्काओं"
+   ]
+  },
+  {
+   "lemma": "मक्का",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "मक्को",
+   "generated": [
+    "मक्काओ"
+   ]
+  },
+  {
+   "lemma": "चीज़",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "चीज़",
+   "generated": [
+    "चीज़ें"
+   ]
+  },
+  {
+   "lemma": "अफ़्रीका",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "अफ़्रीका",
+   "generated": [
+    "अफ़्रीके"
+   ]
+  },
+  {
+   "lemma": "एशिया",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "एशिया",
+   "generated": [
+    "एशिये"
+   ]
+  },
+  {
+   "lemma": "अमेरिका",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "अमेरिका",
+   "generated": [
+    "अमेरिके"
+   ]
+  },
+  {
+   "lemma": "अमेरिका",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "अमेरिका",
+   "generated": [
+    "अमेरिके"
+   ]
+  },
+  {
+   "lemma": "अमेरिका",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "अमेरिकाओं",
+   "generated": [
+    "अमेरिकों"
+   ]
+  },
+  {
+   "lemma": "अमेरिका",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "अमेरिकाओ",
+   "generated": [
+    "अमेरिको"
+   ]
+  }
+ ],
+ "conflictSample": [
+  {
+   "lemma": "मई",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "मइयाँ",
+   "generated": [
+    "मई",
+    "मयी"
+   ]
+  },
+  {
+   "lemma": "रेडियो",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "रेडियों",
+   "generated": [
+    "रेडियोओं"
+   ]
+  },
+  {
+   "lemma": "रेडियो",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "रेडियो",
+   "generated": [
+    "रेडियोओ"
+   ]
+  },
+  {
+   "lemma": "टीका",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "टीका",
+   "generated": [
+    "टीके"
+   ]
+  },
+  {
+   "lemma": "टीका",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "टीकाएँ",
+   "generated": [
+    "टीके"
+   ]
+  },
+  {
+   "lemma": "टीका",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "टीकाओं",
+   "generated": [
+    "टीकों"
+   ]
+  },
+  {
+   "lemma": "टीका",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "टीकाओ",
+   "generated": [
+    "टीको"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "dictionary": "होएँ",
+   "generated": [
+    "हों"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "dictionary": "होए",
+   "generated": [
+    "हो"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "dictionary": "होएँ",
+   "generated": [
+    "हों"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "2",
+    "Number": "Sing",
+    "Polite": "Infm"
+   },
+   "dictionary": "होए",
+   "generated": [
+    "हो"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "2",
+    "Polite": "Fam"
+   },
+   "dictionary": "होओ",
+   "generated": [
+    "हो"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "2",
+    "Number": "Plur",
+    "Polite": "Form"
+   },
+   "dictionary": "होएँ",
+   "generated": [
+    "हों"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Masc",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "dictionary": "होएँगे",
+   "generated": [
+    "होंगे"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Masc",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "dictionary": "होएगा",
+   "generated": [
+    "होगा"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Masc",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "dictionary": "होएँगे",
+   "generated": [
+    "होंगे"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Masc",
+    "Person": "2",
+    "Number": "Sing",
+    "Polite": "Infm"
+   },
+   "dictionary": "होएगा",
+   "generated": [
+    "होगा"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Masc",
+    "Person": "2",
+    "Number": "Plur",
+    "Polite": "Form"
+   },
+   "dictionary": "होएँगे",
+   "generated": [
+    "होंगे"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Fem",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "dictionary": "होएँगी",
+   "generated": [
+    "होंगी"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Fem",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "dictionary": "होएगी",
+   "generated": [
+    "होगी"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Fem",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "dictionary": "होएँगी",
+   "generated": [
+    "होंगी"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Fem",
+    "Person": "2",
+    "Number": "Sing",
+    "Polite": "Infm"
+   },
+   "dictionary": "होएगी",
+   "generated": [
+    "होगी"
+   ]
+  },
+  {
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Gender": "Fem",
+    "Person": "2",
+    "Number": "Plur",
+    "Polite": "Form"
+   },
+   "dictionary": "होएँगी",
+   "generated": [
+    "होंगी"
+   ]
+  },
+  {
+   "lemma": "क्रिया",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "क्रियाएँ",
+   "generated": [
+    "क्रियाँ",
+    "क्रियां"
+   ]
+  },
+  {
+   "lemma": "क्रिया",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "क्रियाओं",
+   "generated": [
+    "क्रियों"
+   ]
+  },
+  {
+   "lemma": "क्रिया",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "क्रियाओ",
+   "generated": [
+    "क्रियो"
+   ]
+  },
+  {
+   "lemma": "अदरक",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "अदरकें",
+   "generated": [
+    "अदरक"
+   ]
+  },
+  {
+   "lemma": "गाल",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "गालें",
+   "generated": [
+    "गाल"
+   ]
+  },
+  {
+   "lemma": "गेंद",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "गेंद",
+   "generated": [
+    "गेंदें"
+   ]
+  },
+  {
+   "lemma": "साल",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "सालें",
+   "generated": [
+    "साल"
+   ]
+  },
+  {
+   "lemma": "ख़ुदा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "ख़ुदा",
+   "generated": [
+    "ख़ुदे"
+   ]
+  },
+  {
+   "lemma": "ख़ुदा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "ख़ुदा",
+   "generated": [
+    "ख़ुदे"
+   ]
+  },
+  {
+   "lemma": "ख़ुदा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "ख़ुदाओं",
+   "generated": [
+    "ख़ुदों"
+   ]
+  },
+  {
+   "lemma": "ख़ुदा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "ख़ुदाओ",
+   "generated": [
+    "ख़ुदो"
+   ]
+  },
+  {
+   "lemma": "कार",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "कार",
+   "generated": [
+    "कारें"
+   ]
+  },
+  {
+   "lemma": "कार",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "कार",
+   "generated": [
+    "कारें"
+   ]
+  },
+  {
+   "lemma": "यहूदा",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "यहूदा",
+   "generated": [
+    "यहूदे"
+   ]
+  },
+  {
+   "lemma": "यहूदा",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "यहूदा",
+   "generated": [
+    "यहूदे"
+   ]
+  },
+  {
+   "lemma": "यहूदा",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "यहूदाओं",
+   "generated": [
+    "यहूदों"
+   ]
+  },
+  {
+   "lemma": "यहूदा",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "यहूदाओ",
+   "generated": [
+    "यहूदो"
+   ]
+  },
+  {
+   "lemma": "मटर",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "मटरें",
+   "generated": [
+    "मटर"
+   ]
+  },
+  {
+   "lemma": "नाक",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "नाक",
+   "generated": [
+    "नाकें"
+   ]
+  },
+  {
+   "lemma": "सेना",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "सेने",
+   "generated": [
+    "सेना"
+   ]
+  },
+  {
+   "lemma": "सेना",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "सेने",
+   "generated": [
+    "सेनाएँ",
+    "सेनायेँ",
+    "सेनायें",
+    "सेनाएं"
+   ]
+  },
+  {
+   "lemma": "सेना",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "सेनों",
+   "generated": [
+    "सेनाओं"
+   ]
+  },
+  {
+   "lemma": "सेना",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "सेनो",
+   "generated": [
+    "सेनाओ"
+   ]
+  },
+  {
+   "lemma": "स्थान",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "स्थानें",
+   "generated": [
+    "स्थान"
+   ]
+  },
+  {
+   "lemma": "कोई",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg"
+   },
+   "dictionary": "किसी ने",
+   "generated": [
+    "किसीने"
+   ]
+  },
+  {
+   "lemma": "कोई",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dat"
+   },
+   "dictionary": "किसी को",
+   "generated": [
+    "किसीको"
+   ]
+  },
+  {
+   "lemma": "कोई",
+   "pos": "PRON",
+   "features": {
+    "Case": "Obl",
+    "Adp": "में"
+   },
+   "dictionary": "किसी में",
+   "generated": [
+    "किसीमें"
+   ]
+  },
+  {
+   "lemma": "कोई",
+   "pos": "PRON",
+   "features": {
+    "Case": "Obl",
+    "Adp": "पर"
+   },
+   "dictionary": "किसी पे",
+   "generated": [
+    "किसीपर",
+    "किसी पर"
+   ]
+  },
+  {
+   "lemma": "जेल",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "जेल",
+   "generated": [
+    "जेलें"
+   ]
+  },
+  {
+   "lemma": "जेल",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "जेल",
+   "generated": [
+    "जेलें"
+   ]
+  },
+  {
+   "lemma": "वेदी",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "वेदी",
+   "generated": [
+    "वेदियाँ",
+    "वेदियां"
+   ]
+  },
+  {
+   "lemma": "रेत",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "रेत",
+   "generated": [
+    "रेतें"
+   ]
+  },
+  {
+   "lemma": "साइकिल",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "साइकिल",
+   "generated": [
+    "साइकिलें"
+   ]
+  },
+  {
+   "lemma": "बलि",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "बलि",
+   "generated": [
+    "बलियाँ",
+    "बलियां"
+   ]
+  },
+  {
+   "lemma": "पीठ",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "पीठ",
+   "generated": [
+    "पीठें"
+   ]
+  },
+  {
+   "lemma": "धुआँ",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "धुओं",
+   "generated": [
+    "धुओ"
+   ]
+  },
+  {
+   "lemma": "कलीसिया",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "कलीसियाएँ",
+   "generated": [
+    "कलीसियाँ",
+    "कलीसियां"
+   ]
+  },
+  {
+   "lemma": "कलीसिया",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "कलीसियाओं",
+   "generated": [
+    "कलीसियों"
+   ]
+  },
+  {
+   "lemma": "कलीसिया",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "कलीसियाओ",
+   "generated": [
+    "कलीसियो"
+   ]
+  },
+  {
+   "lemma": "मूसा",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "मूसा",
+   "generated": [
+    "मूसे"
+   ]
+  },
+  {
+   "lemma": "बार",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "बार",
+   "generated": [
+    "बारें"
+   ]
+  },
+  {
+   "lemma": "दफ़ा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "दफ़े",
+   "generated": [
+    "दफ़ा"
+   ]
+  },
+  {
+   "lemma": "दफ़ा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "दफ़े",
+   "generated": [
+    "दफ़ाएँ",
+    "दफ़ायेँ",
+    "दफ़ायें",
+    "दफ़ाएं"
+   ]
+  },
+  {
+   "lemma": "दफ़ा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "दफ़ों",
+   "generated": [
+    "दफ़ाओं"
+   ]
+  },
+  {
+   "lemma": "दफ़ा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "दफ़ो",
+   "generated": [
+    "दफ़ाओ"
+   ]
+  },
+  {
+   "lemma": "जीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "dictionary": "जियूँ",
+   "generated": [
+    "जिऊँ",
+    "जिऊं"
+   ]
+  },
+  {
+   "lemma": "जीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "2",
+    "Polite": "Fam"
+   },
+   "dictionary": "जियो",
+   "generated": [
+    "जिओ"
+   ]
+  },
+  {
+   "lemma": "जीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Number": "Sing",
+    "Gender": "Masc"
+   },
+   "dictionary": "जियूँगा",
+   "generated": [
+    "जिऊँगा",
+    "जिऊंगा"
+   ]
+  },
+  {
+   "lemma": "जीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Number": "Sing",
+    "Gender": "Fem"
+   },
+   "dictionary": "जियूँगी",
+   "generated": [
+    "जिऊँगी",
+    "जिऊंगी"
+   ]
+  },
+  {
+   "lemma": "जीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "dictionary": "जीइये",
+   "generated": [
+    "जीजिए",
+    "जीजिये"
+   ]
+  },
+  {
+   "lemma": "जीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form",
+    "Tense": "Fut"
+   },
+   "dictionary": "जीइयेगा",
+   "generated": [
+    "जीजिएगा",
+    "जीजियेगा"
+   ]
+  },
+  {
+   "lemma": "सीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "dictionary": "सियूँ",
+   "generated": [
+    "सिऊँ",
+    "सिऊं"
+   ]
+  },
+  {
+   "lemma": "सीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Person": "2",
+    "Polite": "Fam"
+   },
+   "dictionary": "सियो",
+   "generated": [
+    "सिओ"
+   ]
+  },
+  {
+   "lemma": "सीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Number": "Sing",
+    "Gender": "Masc"
+   },
+   "dictionary": "सियूँगा",
+   "generated": [
+    "सिऊँगा",
+    "सिऊंगा"
+   ]
+  },
+  {
+   "lemma": "सीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Number": "Sing",
+    "Gender": "Fem"
+   },
+   "dictionary": "सियूँगी",
+   "generated": [
+    "सिऊँगी",
+    "सिऊंगी"
+   ]
+  },
+  {
+   "lemma": "सीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "dictionary": "सीइये",
+   "generated": [
+    "सीजिए",
+    "सीजिये"
+   ]
+  },
+  {
+   "lemma": "सीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form",
+    "Tense": "Fut"
+   },
+   "dictionary": "सीइयेगा",
+   "generated": [
+    "सीजिएगा",
+    "सीजियेगा"
+   ]
+  },
+  {
+   "lemma": "उदासी",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "उदासी",
+   "generated": [
+    "उदासियाँ",
+    "उदासियां"
+   ]
+  },
+  {
+   "lemma": "शाम",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "शाम",
+   "generated": [
+    "शामें"
+   ]
+  },
+  {
+   "lemma": "प्रिया",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "प्रियाएँ",
+   "generated": [
+    "प्रियाँ",
+    "प्रियां"
+   ]
+  },
+  {
+   "lemma": "प्रिया",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "प्रियाओं",
+   "generated": [
+    "प्रियों"
+   ]
+  },
+  {
+   "lemma": "प्रिया",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "प्रियाओ",
+   "generated": [
+    "प्रियो"
+   ]
+  },
+  {
+   "lemma": "धूप",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "धूप",
+   "generated": [
+    "धूपें"
+   ]
+  },
+  {
+   "lemma": "गुप्ता",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "गुप्ता",
+   "generated": [
+    "गुप्ते"
+   ]
+  },
+  {
+   "lemma": "गुप्ता",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "गुप्ता",
+   "generated": [
+    "गुप्ते"
+   ]
+  },
+  {
+   "lemma": "गुप्ता",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "गुप्ताओं",
+   "generated": [
+    "गुप्तों"
+   ]
+  },
+  {
+   "lemma": "गुप्ता",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Voc",
+    "Number": "Plur"
+   },
+   "dictionary": "गुप्ताओ",
+   "generated": [
+    "गुप्तो"
+   ]
+  },
+  {
+   "lemma": "बस",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "बस",
+   "generated": [
+    "बसें"
+   ]
+  },
+  {
+   "lemma": "प्लेट",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "प्लेट",
+   "generated": [
+    "प्लेटें"
+   ]
+  },
+  {
+   "lemma": "बंदरगाह",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "बंदरगाहें",
+   "generated": [
+    "बंदरगाह"
+   ]
+  },
+  {
+   "lemma": "हार",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "हार",
+   "generated": [
+    "हारें"
+   ]
+  },
+  {
+   "lemma": "शक्ल",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "शक्ल",
+   "generated": [
+    "शक्लें"
+   ]
+  },
+  {
+   "lemma": "झाड़ू",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "झाड़ू",
+   "generated": [
+    "झाड़ुएँ",
+    "झाड़ुयेँ",
+    "झाड़ुयें",
+    "झाड़ुएं"
+   ]
+  },
+  {
+   "lemma": "क़िस्म",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "क़िस्म",
+   "generated": [
+    "क़िस्में"
+   ]
+  },
+  {
+   "lemma": "राजमा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "dictionary": "राजमा",
+   "generated": [
+    "राजमे"
+   ]
+  },
+  {
+   "lemma": "राजमा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dir",
+    "Number": "Plur"
+   },
+   "dictionary": "राजमाएँ",
+   "generated": [
+    "राजमे"
+   ]
+  },
+  {
+   "lemma": "राजमा",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Obl",
+    "Number": "Plur"
+   },
+   "dictionary": "राजमाओं",
+   "generated": [
+    "राजमों"
+   ]
+  }
+ ]
+}

@@ -32,7 +32,7 @@ import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
 import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
-import { buildParadigm, etymologyOf, pickRecord, pronunciationOf, relationsOf, sensesOf, type LexicalRecord } from './enrich';
+import { buildParadigm, etymologyOf, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, type LexicalRecord } from './enrich';
 
 export interface ControllerDeps {
   doc: Document;
@@ -400,8 +400,9 @@ export class LookupController {
           );
         }
         // Level 2 (Linguistic Engine V2): the dictionary's full record, merged with the analyser's generation into the deeper sections; never blocks the card
+        const segmentations = segmentationsOf(this.d.analyserOf?.(languageId), card.surface, parseCtx.sentence && parseCtx.selStart !== undefined && parseCtx.selEnd !== undefined ? { before: parseCtx.sentence.slice(0, parseCtx.selStart), after: parseCtx.sentence.slice(parseCtx.selEnd) } : undefined);
         if (services.entry && card.tokenCount === 1) {
-          this.d.ui.update({ enrichment: { state: 'loading' } });
+          this.d.ui.update({ enrichment: { state: 'loading', ...(segmentations ? { segmentations } : {}) } });
           pending.push(
             services.entry({ lemma: card.lemma && !card.unconfirmed ? card.lemma : card.surface.trim(), pos: card.pos, languageId, ...(forms.length ? { forms } : {}) }).then((reply) => {
               if (!live()) return;
@@ -410,12 +411,16 @@ export class LookupController {
               const record = pickRecord(reply.found ? (reply.records as LexicalRecord[]) : [], card.pos);
               const hint = { features: Object.fromEntries(card.features.map((f) => [f.key, f.value])), surface: card.surface };
               const paradigm = card.lemma && card.pos ? buildParadigm(adapter, languageId, card.lemma, card.pos as PartOfSpeech, record, hint) : undefined;
+              const selected = selectedCellKeys(adapter, paradigm, hint.features, card.surface);
               this.d.ui.update({ enrichment: {
-                state: 'ready', paradigm, etymology: etymologyOf(record), pronunciation: pronunciationOf(record, card.pronunciation), relations: relationsOf(record), senses: sensesOf(record),
+                state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), pronunciation: pronunciationOf(record, card.pronunciation), relations: relationsOf(record), senses: sensesOf(record),
                 ...(reply.attribution ? { attribution: reply.attribution } : {}), ...(reply.reason && !reply.found ? { message: reply.message ?? reply.reason } : {}),
               } });
             }).catch(() => { if (live()) this.d.ui.update({ enrichment: { state: 'unavailable', message: 'The dictionary could not be asked for the full entry.' } }); }),
           );
+        } else if (segmentations) {
+          // several words selected in a script without spaces: the cuts are still worth showing, without a dictionary entry
+          this.d.ui.update({ enrichment: { state: 'ready', segmentations, ...(card.tokenCount > 1 ? { message: 'Select one word for its full entry.' } : {}) } });
         }
         if (view.explain?.state === 'loading') {
           pending.push(

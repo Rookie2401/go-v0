@@ -1,0 +1,1893 @@
+{
+ "generatedAt": "2026-10-10T16:29:49.611Z",
+ "adapter": "adapter-es@12",
+ "file": "data/dictionaries/kaikki.org-dictionary-Spanish.jsonl",
+ "linesRead": 811049,
+ "limit": null,
+ "entriesParsed": 113912,
+ "lemmasWithTables": 102236,
+ "lemmasGenerated": 93175,
+ "lemmasNotGenerated": 9061,
+ "cells": {
+  "verified": 785951,
+  "supported": 13269,
+  "generated": 1467,
+  "conflicted": 5093
+ },
+ "byPos": {
+  "NOUN": {
+   "lemmas": 68788,
+   "generated": 60319,
+   "cells": {
+    "verified": 119117,
+    "supported": 12735,
+    "generated": 319,
+    "conflicted": 708
+   }
+  },
+  "ADJ": {
+   "lemmas": 24552,
+   "generated": 24150,
+   "cells": {
+    "verified": 79777,
+    "supported": 471,
+    "generated": 568,
+    "conflicted": 82
+   }
+  },
+  "VERB": {
+   "lemmas": 8896,
+   "generated": 8706,
+   "cells": {
+    "verified": 587057,
+    "supported": 63,
+    "generated": 580,
+    "conflicted": 4303
+   }
+  }
+ },
+ "byKind": {
+  "NOUN:noun": {
+   "lemmas": 60236,
+   "cells": {
+    "verified": 118893,
+    "supported": 12735,
+    "generated": 211,
+    "conflicted": 708
+   }
+  },
+  "ADJ:adjective, one form for both genders": {
+   "lemmas": 8033,
+   "cells": {
+    "verified": 15791,
+    "supported": 259,
+    "generated": 135,
+    "conflicted": 33
+   }
+  },
+  "VERB:regular": {
+   "lemmas": 8304,
+   "cells": {
+    "verified": 559918,
+    "supported": 52,
+    "generated": 565,
+    "conflicted": 4137
+   }
+  },
+  "VERB:stem-change": {
+   "lemmas": 265,
+   "cells": {
+    "verified": 17903,
+    "supported": 0,
+    "generated": 0,
+    "conflicted": 117
+   }
+  },
+  "ADJ:adjective in -o/-a (or -or/-ora …)": {
+   "lemmas": 16117,
+   "cells": {
+    "verified": 63986,
+    "supported": 212,
+    "generated": 433,
+    "conflicted": 49
+   }
+  },
+  "VERB:irregular": {
+   "lemmas": 137,
+   "cells": {
+    "verified": 9236,
+    "supported": 11,
+    "generated": 15,
+    "conflicted": 49
+   }
+  },
+  "NOUN:noun with a feminine counterpart": {
+   "lemmas": 83,
+   "cells": {
+    "verified": 224,
+    "supported": 0,
+    "generated": 108,
+    "conflicted": 0
+   }
+  }
+ },
+ "rowOutcomes": {
+  "placed": 728030,
+  "not placed: not-a-cell": 843990,
+  "phrase form (contains a space)": 32349,
+  "missing form (\"-\")": 111566,
+  "not placed: no-features": 18,
+  "row with raw tags (a restricted use)": 5
+ },
+ "lemmasWithConflict": 1053,
+ "courseWordList": {
+  "lemmas": 1422,
+  "generated": 1422,
+  "lemmasWithConflict": 5,
+  "cells": {
+   "verified": 26904,
+   "supported": 211,
+   "generated": 26,
+   "conflicted": 8
+  }
+ },
+ "topConflictingLemmas": [
+  {
+   "lemma": "facer",
+   "pos": "VERB",
+   "n": 52,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "facer",
+     "pos": "VERB",
+     "cell": "Gender=Masc|Number=Sing|VerbForm=Part",
+     "dictionary": "fecho",
+     "generated": [
+      "facido"
+     ]
+    },
+    {
+     "lemma": "facer",
+     "pos": "VERB",
+     "cell": "Gender=Fem|Number=Sing|VerbForm=Part",
+     "dictionary": "fecha",
+     "generated": [
+      "facida"
+     ]
+    },
+    {
+     "lemma": "facer",
+     "pos": "VERB",
+     "cell": "Gender=Masc|Number=Plur|VerbForm=Part",
+     "dictionary": "fechos",
+     "generated": [
+      "facidos"
+     ]
+    },
+    {
+     "lemma": "facer",
+     "pos": "VERB",
+     "cell": "Gender=Fem|Number=Plur|VerbForm=Part",
+     "dictionary": "fechas",
+     "generated": [
+      "facidas"
+     ]
+    },
+    {
+     "lemma": "facer",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "fago",
+     "generated": [
+      "fazco"
+     ]
+    },
+    {
+     "lemma": "facer",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin",
+     "dictionary": "fice",
+     "generated": [
+      "fací"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "jacer",
+   "pos": "VERB",
+   "n": 52,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "jacer",
+     "pos": "VERB",
+     "cell": "Gender=Masc|Number=Sing|VerbForm=Part",
+     "dictionary": "jecho",
+     "generated": [
+      "jacido"
+     ]
+    },
+    {
+     "lemma": "jacer",
+     "pos": "VERB",
+     "cell": "Gender=Fem|Number=Sing|VerbForm=Part",
+     "dictionary": "jecha",
+     "generated": [
+      "jacida"
+     ]
+    },
+    {
+     "lemma": "jacer",
+     "pos": "VERB",
+     "cell": "Gender=Masc|Number=Plur|VerbForm=Part",
+     "dictionary": "jechos",
+     "generated": [
+      "jacidos"
+     ]
+    },
+    {
+     "lemma": "jacer",
+     "pos": "VERB",
+     "cell": "Gender=Fem|Number=Plur|VerbForm=Part",
+     "dictionary": "jechas",
+     "generated": [
+      "jacidas"
+     ]
+    },
+    {
+     "lemma": "jacer",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "jago",
+     "generated": [
+      "jazco"
+     ]
+    },
+    {
+     "lemma": "jacer",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin",
+     "dictionary": "jice",
+     "generated": [
+      "jací"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "resaber",
+   "pos": "VERB",
+   "n": 47,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "resaber",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "resé",
+     "generated": [
+      "resabo"
+     ]
+    },
+    {
+     "lemma": "resaber",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin",
+     "dictionary": "resupe",
+     "generated": [
+      "resabí"
+     ]
+    },
+    {
+     "lemma": "resaber",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Past|VerbForm=Fin",
+     "dictionary": "resupimos",
+     "generated": [
+      "resabimos"
+     ]
+    },
+    {
+     "lemma": "resaber",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Past|VerbForm=Fin",
+     "dictionary": "resupiste",
+     "generated": [
+      "resabiste"
+     ]
+    },
+    {
+     "lemma": "resaber",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Past|VerbForm=Fin",
+     "dictionary": "resupisteis",
+     "generated": [
+      "resabisteis"
+     ]
+    },
+    {
+     "lemma": "resaber",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "resupo",
+     "generated": [
+      "resabió"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "premorir",
+   "pos": "VERB",
+   "n": 40,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "premorir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "premuriendo",
+     "generated": [
+      "premoriendo"
+     ]
+    },
+    {
+     "lemma": "premorir",
+     "pos": "VERB",
+     "cell": "Gender=Masc|Number=Sing|VerbForm=Part",
+     "dictionary": "premuerto",
+     "generated": [
+      "premorido"
+     ]
+    },
+    {
+     "lemma": "premorir",
+     "pos": "VERB",
+     "cell": "Gender=Fem|Number=Sing|VerbForm=Part",
+     "dictionary": "premuerta",
+     "generated": [
+      "premorida"
+     ]
+    },
+    {
+     "lemma": "premorir",
+     "pos": "VERB",
+     "cell": "Gender=Masc|Number=Plur|VerbForm=Part",
+     "dictionary": "premuertos",
+     "generated": [
+      "premoridos"
+     ]
+    },
+    {
+     "lemma": "premorir",
+     "pos": "VERB",
+     "cell": "Gender=Fem|Number=Plur|VerbForm=Part",
+     "dictionary": "premuertas",
+     "generated": [
+      "premoridas"
+     ]
+    },
+    {
+     "lemma": "premorir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "premuero",
+     "generated": [
+      "premoro"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "entremorir",
+   "pos": "VERB",
+   "n": 40,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "entremorir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "entremuriendo",
+     "generated": [
+      "entremoriendo"
+     ]
+    },
+    {
+     "lemma": "entremorir",
+     "pos": "VERB",
+     "cell": "Gender=Masc|Number=Sing|VerbForm=Part",
+     "dictionary": "entremuerto",
+     "generated": [
+      "entremorido"
+     ]
+    },
+    {
+     "lemma": "entremorir",
+     "pos": "VERB",
+     "cell": "Gender=Fem|Number=Sing|VerbForm=Part",
+     "dictionary": "entremuerta",
+     "generated": [
+      "entremorida"
+     ]
+    },
+    {
+     "lemma": "entremorir",
+     "pos": "VERB",
+     "cell": "Gender=Masc|Number=Plur|VerbForm=Part",
+     "dictionary": "entremuertos",
+     "generated": [
+      "entremoridos"
+     ]
+    },
+    {
+     "lemma": "entremorir",
+     "pos": "VERB",
+     "cell": "Gender=Fem|Number=Plur|VerbForm=Part",
+     "dictionary": "entremuertas",
+     "generated": [
+      "entremoridas"
+     ]
+    },
+    {
+     "lemma": "entremorir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "entremuero",
+     "generated": [
+      "entremoro"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "reírse",
+   "pos": "VERB",
+   "n": 37,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "reyéndose",
+     "generated": [
+      "riéndose"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "reo",
+     "generated": [
+      "río"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "rees",
+     "generated": [
+      "ríes"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "ree",
+     "generated": [
+      "ríe"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "reen",
+     "generated": [
+      "ríen"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "reyó",
+     "generated": [
+      "rio"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "engreír",
+   "pos": "VERB",
+   "n": 37,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "engreír",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "engriendo",
+     "generated": [
+      "engreyendo"
+     ]
+    },
+    {
+     "lemma": "engreír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "engrío",
+     "generated": [
+      "engreo"
+     ]
+    },
+    {
+     "lemma": "engreír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "engríes",
+     "generated": [
+      "engrees"
+     ]
+    },
+    {
+     "lemma": "engreír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "engríe",
+     "generated": [
+      "engree"
+     ]
+    },
+    {
+     "lemma": "engreír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "engríen",
+     "generated": [
+      "engreen"
+     ]
+    },
+    {
+     "lemma": "engreír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "engrió",
+     "generated": [
+      "engreyó"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "desleír",
+   "pos": "VERB",
+   "n": 37,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "desleír",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "desliendo",
+     "generated": [
+      "desleyendo"
+     ]
+    },
+    {
+     "lemma": "desleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "deslío",
+     "generated": [
+      "desleo"
+     ]
+    },
+    {
+     "lemma": "desleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "deslíes",
+     "generated": [
+      "deslees"
+     ]
+    },
+    {
+     "lemma": "desleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "deslíe",
+     "generated": [
+      "deslee"
+     ]
+    },
+    {
+     "lemma": "desleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "deslíen",
+     "generated": [
+      "desleen"
+     ]
+    },
+    {
+     "lemma": "desleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "deslió",
+     "generated": [
+      "desleyó"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "esleír",
+   "pos": "VERB",
+   "n": 37,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "esleír",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "esliendo",
+     "generated": [
+      "esleyendo"
+     ]
+    },
+    {
+     "lemma": "esleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "eslío",
+     "generated": [
+      "esleo"
+     ]
+    },
+    {
+     "lemma": "esleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "eslíes",
+     "generated": [
+      "eslees"
+     ]
+    },
+    {
+     "lemma": "esleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "eslíe",
+     "generated": [
+      "eslee"
+     ]
+    },
+    {
+     "lemma": "esleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "eslíen",
+     "generated": [
+      "esleen"
+     ]
+    },
+    {
+     "lemma": "esleír",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "eslió",
+     "generated": [
+      "esleyó"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "zaherir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "zaherir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "zahiriendo",
+     "generated": [
+      "zaheriendo"
+     ]
+    },
+    {
+     "lemma": "zaherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "zahiero",
+     "generated": [
+      "zahero"
+     ]
+    },
+    {
+     "lemma": "zaherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "zahieres",
+     "generated": [
+      "zaheres"
+     ]
+    },
+    {
+     "lemma": "zaherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "zahiere",
+     "generated": [
+      "zahere"
+     ]
+    },
+    {
+     "lemma": "zaherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "zahieren",
+     "generated": [
+      "zaheren"
+     ]
+    },
+    {
+     "lemma": "zaherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "zahirió",
+     "generated": [
+      "zaherió"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "erguir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "erguir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "irguiendo",
+     "generated": [
+      "erguiendo"
+     ]
+    },
+    {
+     "lemma": "erguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "irgo",
+     "generated": [
+      "ergo",
+      "yergo"
+     ]
+    },
+    {
+     "lemma": "erguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "irgues",
+     "generated": [
+      "ergues",
+      "yergues"
+     ]
+    },
+    {
+     "lemma": "erguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "irgue",
+     "generated": [
+      "ergue",
+      "yergue"
+     ]
+    },
+    {
+     "lemma": "erguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "irguen",
+     "generated": [
+      "erguen",
+      "yerguen"
+     ]
+    },
+    {
+     "lemma": "erguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "irguió",
+     "generated": [
+      "erguió"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "interferir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "interferir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "interfiriendo",
+     "generated": [
+      "interferiendo"
+     ]
+    },
+    {
+     "lemma": "interferir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "interfiero",
+     "generated": [
+      "interfero"
+     ]
+    },
+    {
+     "lemma": "interferir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "interfieres",
+     "generated": [
+      "interferes"
+     ]
+    },
+    {
+     "lemma": "interferir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "interfiere",
+     "generated": [
+      "interfere"
+     ]
+    },
+    {
+     "lemma": "interferir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "interfieren",
+     "generated": [
+      "interferen"
+     ]
+    },
+    {
+     "lemma": "interferir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "interfirió",
+     "generated": [
+      "interferió"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "asentir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "asentir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "asintiendo",
+     "generated": [
+      "asentiendo"
+     ]
+    },
+    {
+     "lemma": "asentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "asiento",
+     "generated": [
+      "asento"
+     ]
+    },
+    {
+     "lemma": "asentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "asientes",
+     "generated": [
+      "asentes"
+     ]
+    },
+    {
+     "lemma": "asentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "asiente",
+     "generated": [
+      "asente"
+     ]
+    },
+    {
+     "lemma": "asentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "asienten",
+     "generated": [
+      "asenten"
+     ]
+    },
+    {
+     "lemma": "asentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "asintió",
+     "generated": [
+      "asentió"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "disentir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "disentir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "disintiendo",
+     "generated": [
+      "disentiendo"
+     ]
+    },
+    {
+     "lemma": "disentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "disiento",
+     "generated": [
+      "disento"
+     ]
+    },
+    {
+     "lemma": "disentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "disientes",
+     "generated": [
+      "disentes"
+     ]
+    },
+    {
+     "lemma": "disentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "disiente",
+     "generated": [
+      "disente"
+     ]
+    },
+    {
+     "lemma": "disentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "disienten",
+     "generated": [
+      "disenten"
+     ]
+    },
+    {
+     "lemma": "disentir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "disintió",
+     "generated": [
+      "disentió"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "malherir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "malherir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "malhiriendo",
+     "generated": [
+      "malheriendo"
+     ]
+    },
+    {
+     "lemma": "malherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "malhiero",
+     "generated": [
+      "malhero"
+     ]
+    },
+    {
+     "lemma": "malherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "malhieres",
+     "generated": [
+      "malheres"
+     ]
+    },
+    {
+     "lemma": "malherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "malhiere",
+     "generated": [
+      "malhere"
+     ]
+    },
+    {
+     "lemma": "malherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "malhieren",
+     "generated": [
+      "malheren"
+     ]
+    },
+    {
+     "lemma": "malherir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "malhirió",
+     "generated": [
+      "malherió"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "estreñir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "estreñir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "estriñendo",
+     "generated": [
+      "estreñendo"
+     ]
+    },
+    {
+     "lemma": "estreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "estriño",
+     "generated": [
+      "estreño"
+     ]
+    },
+    {
+     "lemma": "estreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "estriñes",
+     "generated": [
+      "estreñes"
+     ]
+    },
+    {
+     "lemma": "estreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "estriñe",
+     "generated": [
+      "estreñe"
+     ]
+    },
+    {
+     "lemma": "estreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "estriñen",
+     "generated": [
+      "estreñen"
+     ]
+    },
+    {
+     "lemma": "estreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "estriñó",
+     "generated": [
+      "estreñó"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "subseguir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "subseguir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "subsiguiendo",
+     "generated": [
+      "subseguiendo"
+     ]
+    },
+    {
+     "lemma": "subseguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "subsigo",
+     "generated": [
+      "subsego"
+     ]
+    },
+    {
+     "lemma": "subseguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "subsigues",
+     "generated": [
+      "subsegues"
+     ]
+    },
+    {
+     "lemma": "subseguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "subsigue",
+     "generated": [
+      "subsegue"
+     ]
+    },
+    {
+     "lemma": "subseguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "subsiguen",
+     "generated": [
+      "subseguen"
+     ]
+    },
+    {
+     "lemma": "subseguir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "subsiguió",
+     "generated": [
+      "subseguió"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "astreñir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "astreñir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "astriñendo",
+     "generated": [
+      "astreñendo"
+     ]
+    },
+    {
+     "lemma": "astreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "astriño",
+     "generated": [
+      "astreño"
+     ]
+    },
+    {
+     "lemma": "astreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "astriñes",
+     "generated": [
+      "astreñes"
+     ]
+    },
+    {
+     "lemma": "astreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "astriñe",
+     "generated": [
+      "astreñe"
+     ]
+    },
+    {
+     "lemma": "astreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "astriñen",
+     "generated": [
+      "astreñen"
+     ]
+    },
+    {
+     "lemma": "astreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "astriñó",
+     "generated": [
+      "astreñó"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "constreñir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "constreñir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "constriñendo",
+     "generated": [
+      "constreñendo"
+     ]
+    },
+    {
+     "lemma": "constreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "constriño",
+     "generated": [
+      "constreño"
+     ]
+    },
+    {
+     "lemma": "constreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "constriñes",
+     "generated": [
+      "constreñes"
+     ]
+    },
+    {
+     "lemma": "constreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "constriñe",
+     "generated": [
+      "constreñe"
+     ]
+    },
+    {
+     "lemma": "constreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "constriñen",
+     "generated": [
+      "constreñen"
+     ]
+    },
+    {
+     "lemma": "constreñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "constriñó",
+     "generated": [
+      "constreñó"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "heñir",
+   "pos": "VERB",
+   "n": 36,
+   "kind": "regular",
+   "examples": [
+    {
+     "lemma": "heñir",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "hiñendo",
+     "generated": [
+      "heñendo"
+     ]
+    },
+    {
+     "lemma": "heñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "hiño",
+     "generated": [
+      "heño"
+     ]
+    },
+    {
+     "lemma": "heñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "hiñes",
+     "generated": [
+      "heñes"
+     ]
+    },
+    {
+     "lemma": "heñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "hiñe",
+     "generated": [
+      "heñe"
+     ]
+    },
+    {
+     "lemma": "heñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "hiñen",
+     "generated": [
+      "heñen"
+     ]
+    },
+    {
+     "lemma": "heñir",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "hiñó",
+     "generated": [
+      "heñó"
+     ]
+    }
+   ]
+  }
+ ],
+ "irregularVerbsMostConflicts": [
+  {
+   "lemma": "reírse",
+   "pos": "VERB",
+   "n": 37,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "VerbForm=Ger",
+     "dictionary": "reyéndose",
+     "generated": [
+      "riéndose"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+     "dictionary": "reo",
+     "generated": [
+      "río"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+     "dictionary": "rees",
+     "generated": [
+      "ríes"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "ree",
+     "generated": [
+      "ríe"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin",
+     "dictionary": "reen",
+     "generated": [
+      "ríen"
+     ]
+    },
+    {
+     "lemma": "reírse",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "reyó",
+     "generated": [
+      "rio"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "rehacer",
+   "pos": "VERB",
+   "n": 2,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "rehacer",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin",
+     "dictionary": "rehíce",
+     "generated": [
+      "rehice"
+     ]
+    },
+    {
+     "lemma": "rehacer",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "rehízo",
+     "generated": [
+      "rehizo"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "contrahacer",
+   "pos": "VERB",
+   "n": 2,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "contrahacer",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin",
+     "dictionary": "contrahíce",
+     "generated": [
+      "contrahice"
+     ]
+    },
+    {
+     "lemma": "contrahacer",
+     "pos": "VERB",
+     "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin",
+     "dictionary": "contrahízo",
+     "generated": [
+      "contrahizo"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "reír",
+   "pos": "VERB",
+   "n": 1,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "reír",
+     "pos": "VERB",
+     "cell": "Mood=Imp|Number=Sing|Person=2|Variety=Voseo|VerbForm=Fin",
+     "dictionary": "reí",
+     "generated": [
+      "réí",
+      "rei"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "freír",
+   "pos": "VERB",
+   "n": 1,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "freír",
+     "pos": "VERB",
+     "cell": "Mood=Imp|Number=Sing|Person=2|Variety=Voseo|VerbForm=Fin",
+     "dictionary": "freí",
+     "generated": [
+      "fréí",
+      "frei"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "sonreír",
+   "pos": "VERB",
+   "n": 1,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "sonreír",
+     "pos": "VERB",
+     "cell": "Mood=Imp|Number=Sing|Person=2|Variety=Voseo|VerbForm=Fin",
+     "dictionary": "sonreí",
+     "generated": [
+      "sonréi"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "refreír",
+   "pos": "VERB",
+   "n": 1,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "refreír",
+     "pos": "VERB",
+     "cell": "Mood=Imp|Number=Sing|Person=2|Variety=Voseo|VerbForm=Fin",
+     "dictionary": "refreí",
+     "generated": [
+      "refréi"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "sofreír",
+   "pos": "VERB",
+   "n": 1,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "sofreír",
+     "pos": "VERB",
+     "cell": "Mood=Imp|Number=Sing|Person=2|Variety=Voseo|VerbForm=Fin",
+     "dictionary": "sofreí",
+     "generated": [
+      "sofréi"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "desoír",
+   "pos": "VERB",
+   "n": 1,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "desoír",
+     "pos": "VERB",
+     "cell": "Mood=Imp|Number=Sing|Person=2|Variety=Voseo|VerbForm=Fin",
+     "dictionary": "desoí",
+     "generated": [
+      "desoye"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "entreoír",
+   "pos": "VERB",
+   "n": 1,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "entreoír",
+     "pos": "VERB",
+     "cell": "Mood=Imp|Number=Sing|Person=2|Variety=Voseo|VerbForm=Fin",
+     "dictionary": "entreoí",
+     "generated": [
+      "entreoye"
+     ]
+    }
+   ]
+  },
+  {
+   "lemma": "entredecir",
+   "pos": "VERB",
+   "n": 1,
+   "kind": "irregular",
+   "examples": [
+    {
+     "lemma": "entredecir",
+     "pos": "VERB",
+     "cell": "Mood=Imp|Number=Sing|Person=2|VerbForm=Fin",
+     "dictionary": "entredí",
+     "generated": [
+      "entredice"
+     ]
+    }
+   ]
+  }
+ ],
+ "conflictsByCell": [
+  [
+   "",
+   790
+  ],
+  [
+   "Mood=Sub|Person=3|Tense=Pres|VerbForm=Fin",
+   522
+  ],
+  [
+   "Mood=Imp|Person=3|Polite=Form|VerbForm=Fin",
+   520
+  ],
+  [
+   "Mood=Ind|Person=3|Tense=Pres|VerbForm=Fin",
+   500
+  ],
+  [
+   "Mood=Sub|Person=1|Tense=Pres|VerbForm=Fin",
+   319
+  ],
+  [
+   "Mood=Sub|Person=2|Tense=Pres|VerbForm=Fin",
+   319
+  ],
+  [
+   "Mood=Ind|Person=1|Tense=Pres|VerbForm=Fin",
+   260
+  ],
+  [
+   "Mood=Ind|Person=2|Tense=Pres|VerbForm=Fin",
+   254
+  ],
+  [
+   "Mood=Imp|Person=2|VerbForm=Fin",
+   252
+  ],
+  [
+   "Mood=Ind|Person=3|Tense=Past|VerbForm=Fin",
+   106
+  ],
+  [
+   "Mood=Sub|Person=1|Tense=Imp|Variant=Ra|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=2|Tense=Imp|Variant=Ra|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=3|Tense=Imp|Variant=Ra|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=1|Tense=Imp|Variant=Se|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=2|Tense=Imp|Variant=Se|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=3|Tense=Imp|Variant=Se|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=1|Tense=Fut|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=2|Tense=Fut|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=3|Tense=Fut|VerbForm=Fin",
+   104
+  ],
+  [
+   "Mood=Sub|Person=2|Tense=Pres|Variety=Voseo|VerbForm=Fin",
+   64
+  ],
+  [
+   "Mood=Imp|Person=1|VerbForm=Fin",
+   59
+  ],
+  [
+   "VerbForm=Part",
+   48
+  ],
+  [
+   "VerbForm=Ger",
+   47
+  ],
+  [
+   "Mood=Imp|Person=2|Variety=Voseo|VerbForm=Fin",
+   20
+  ],
+  [
+   "Mood=Ind|Person=1|Tense=Past|VerbForm=Fin",
+   18
+  ]
+ ],
+ "unknownTags": [
+  [
+   "internet",
+   32
+  ],
+  [
+   "standard",
+   31
+  ],
+  [
+   "proscribed",
+   26
+  ],
+  [
+   "adjective",
+   10
+  ],
+  [
+   "early",
+   6
+  ],
+  [
+   "modern",
+   6
+  ],
+  [
+   "spanish",
+   6
+  ],
+  [
+   "positive",
+   6
+  ],
+  [
+   "clipping",
+   4
+  ],
+  [
+   "initialism",
+   3
+  ],
+  [
+   "capitalized",
+   2
+  ],
+  [
+   "error-exponential-tagsets",
+   2
+  ],
+  [
+   "gender-neutral",
+   2
+  ],
+  [
+   "euphemistic",
+   2
+  ],
+  [
+   "south-america",
+   2
+  ],
+  [
+   "noun",
+   2
+  ],
+  [
+   "adverb",
+   1
+  ],
+  [
+   "hypercorrect",
+   1
+  ],
+  [
+   "in-compounds",
+   1
+  ],
+  [
+   "interrogative",
+   1
+  ],
+  [
+   "contraction",
+   1
+  ],
+  [
+   "slang",
+   1
+  ],
+  [
+   "asturias",
+   1
+  ],
+  [
+   "valencia",
+   1
+  ],
+  [
+   "southern",
+   1
+  ],
+  [
+   "north-america",
+   1
+  ],
+  [
+   "plural-normally",
+   1
+  ],
+  [
+   "demonym",
+   1
+  ]
+ ],
+ "notGeneratedSample": [
+  "quid pro quo (NOUN)",
+  "RAM (NOUN)",
+  "DVD (NOUN)",
+  "IME (NOUN)",
+  "SMS (NOUN)",
+  "DNA (NOUN)",
+  "her (VERB)",
+  "cachaça (NOUN)",
+  "WA (NOUN)",
+  "PA (NOUN)",
+  "CI (NOUN)",
+  "ML (NOUN)",
+  "CA (NOUN)",
+  "IA (NOUN)",
+  "OK (ADJ)",
+  "corrida de toros (NOUN)",
+  "dar a luz (VERB)",
+  "hombre de letras (NOUN)",
+  "hombre del mundo (NOUN)",
+  "hombre de guerra (NOUN)",
+  "hombre de negocios (NOUN)",
+  "hombre de Dios (NOUN)",
+  "cosido a sus faldas (ADJ)",
+  "fórmula química (NOUN)",
+  "ida y vuelta (NOUN)",
+  "far (VERB)",
+  "CEO (NOUN)",
+  "PS (NOUN)",
+  "ABC (NOUN)",
+  "CD (NOUN)",
+  "PET (NOUN)",
+  "CFC (NOUN)",
+  "ECG (NOUN)",
+  "talón de Aquiles (NOUN)",
+  "SM (NOUN)",
+  "PC (NOUN)",
+  "LCD (NOUN)",
+  "field trip (NOUN)",
+  "ADSL (NOUN)",
+  "PIN (NOUN)"
+ ],
+ "seconds": 10
+}

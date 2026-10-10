@@ -1,0 +1,1540 @@
+{
+  "generatedAt": "2026-10-10",
+  "source": {
+    "dump": "kaikki.org-dictionary-Albanian.jsonl.gz",
+    "entriesInDump": 24262,
+    "licence": "CC BY-SA 4.0 (Wiktionary)"
+  },
+  "lemmasWithTables": 7097,
+  "homographEntries": 65,
+  "tablesCountedOnly": {
+    "prep": 1,
+    "pron": 30,
+    "det": 7,
+    "suffix": 6
+  },
+  "byPos": {
+    "NOUN": {
+      "lemmasWithTables": 4536,
+      "lemmasGenerated": 534,
+      "lemmasNotGenerated": 4002,
+      "cells": {
+        "verified": 7369,
+        "supported": 58308,
+        "generated": 230,
+        "conflicted": 223
+      },
+      "cellsOfGenerable": {
+        "verified": 7369,
+        "supported": 424,
+        "generated": 230,
+        "conflicted": 223
+      },
+      "lemmasFullyVerified": 384,
+      "lemmasWithConflict": 42
+    },
+    "PROPN": {
+      "lemmasWithTables": 1256,
+      "lemmasGenerated": 50,
+      "lemmasNotGenerated": 1206,
+      "cells": {
+        "verified": 208,
+        "supported": 5108,
+        "generated": 306,
+        "conflicted": 2
+      },
+      "cellsOfGenerable": {
+        "verified": 208,
+        "supported": 26,
+        "generated": 306,
+        "conflicted": 2
+      },
+      "lemmasFullyVerified": 0,
+      "lemmasWithConflict": 1
+    },
+    "VERB": {
+      "lemmasWithTables": 1299,
+      "lemmasGenerated": 670,
+      "lemmasNotGenerated": 629,
+      "cells": {
+        "verified": 19390,
+        "supported": 52686,
+        "generated": 1507,
+        "conflicted": 345
+      },
+      "cellsOfGenerable": {
+        "verified": 19390,
+        "supported": 17764,
+        "generated": 1507,
+        "conflicted": 345
+      },
+      "lemmasFullyVerified": 0,
+      "lemmasWithConflict": 33
+    },
+    "ADJ": {
+      "lemmasWithTables": 6,
+      "lemmasGenerated": 1,
+      "lemmasNotGenerated": 5,
+      "cells": {
+        "verified": 4,
+        "supported": 4,
+        "generated": 0,
+        "conflicted": 0
+      },
+      "cellsOfGenerable": {
+        "verified": 4,
+        "supported": 0,
+        "generated": 0,
+        "conflicted": 0
+      },
+      "lemmasFullyVerified": 1,
+      "lemmasWithConflict": 0
+    }
+  },
+  "rows": {
+    "NOUN": {
+      "rows": 70083,
+      "placed": 67221
+    },
+    "PROPN": {
+      "rows": 7966,
+      "placed": 5370
+    },
+    "VERB": {
+      "rows": 176653,
+      "placed": 76084
+    },
+    "ADJ": {
+      "rows": 183,
+      "placed": 8
+    }
+  },
+  "rowsNotPlaced": {
+    "NOUN": {
+      "error": 1140,
+      "wrong-table": 1708,
+      "construction": 14
+    },
+    "PROPN": {
+      "error": 2456,
+      "not-a-form": 140
+    },
+    "VERB": {
+      "construction": 92483,
+      "error": 8070,
+      "wrong-table": 16
+    },
+    "ADJ": {
+      "not-modelled": 40,
+      "error": 12,
+      "wrong-table": 122,
+      "construction": 1
+    }
+  },
+  "topConflictingLemmas": [
+    {
+      "lemma": "numëroj",
+      "pos": "VERB",
+      "conflictedCells": 40,
+      "cells": [
+        {
+          "lemma": "numëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "numeroj",
+          "rules": "numëroj",
+          "alternatives": [
+            "numëroj"
+          ]
+        },
+        {
+          "lemma": "numëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "numeron",
+          "rules": "numëron",
+          "alternatives": [
+            "numëron"
+          ]
+        },
+        {
+          "lemma": "numëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "numeron",
+          "rules": "numëron",
+          "alternatives": [
+            "numëron"
+          ]
+        },
+        {
+          "lemma": "numëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "numerojmë",
+          "rules": "numërojmë",
+          "alternatives": [
+            "numërojmë"
+          ]
+        },
+        {
+          "lemma": "numëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "numeroni",
+          "rules": "numëroni",
+          "alternatives": [
+            "numëroni"
+          ]
+        },
+        {
+          "lemma": "numëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "numerojnë",
+          "rules": "numërojnë",
+          "alternatives": [
+            "numërojnë"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "rregulloj",
+      "pos": "VERB",
+      "conflictedCells": 40,
+      "cells": [
+        {
+          "lemma": "rregulloj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "regulloj",
+          "rules": "rregulloj",
+          "alternatives": [
+            "rregulloj"
+          ]
+        },
+        {
+          "lemma": "rregulloj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "regullon",
+          "rules": "rregullon",
+          "alternatives": [
+            "rregullon"
+          ]
+        },
+        {
+          "lemma": "rregulloj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "regullon",
+          "rules": "rregullon",
+          "alternatives": [
+            "rregullon"
+          ]
+        },
+        {
+          "lemma": "rregulloj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "regullojmë",
+          "rules": "rregullojmë",
+          "alternatives": [
+            "rregullojmë"
+          ]
+        },
+        {
+          "lemma": "rregulloj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "regulloni",
+          "rules": "rregulloni",
+          "alternatives": [
+            "rregulloni"
+          ]
+        },
+        {
+          "lemma": "rregulloj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "regullojnë",
+          "rules": "rregullojnë",
+          "alternatives": [
+            "rregullojnë"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "përfundoj",
+      "pos": "VERB",
+      "conflictedCells": 37,
+      "cells": [
+        {
+          "lemma": "përfundoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "përfundoj",
+          "rules": "përfundon",
+          "alternatives": [
+            "përfundon"
+          ]
+        },
+        {
+          "lemma": "përfundoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "përfundoj",
+          "rules": "përfundon",
+          "alternatives": [
+            "përfundon"
+          ]
+        },
+        {
+          "lemma": "përfundoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "përfundojim",
+          "rules": "përfundojmë",
+          "alternatives": [
+            "përfundojmë"
+          ]
+        },
+        {
+          "lemma": "përfundoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "përfundojni",
+          "rules": "përfundoni",
+          "alternatives": [
+            "përfundoni"
+          ]
+        },
+        {
+          "lemma": "përfundoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "përfundojin",
+          "rules": "përfundojnë",
+          "alternatives": [
+            "përfundojnë"
+          ]
+        },
+        {
+          "lemma": "përfundoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "përfundojja",
+          "rules": "përfundoja",
+          "alternatives": [
+            "përfundoja"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "proshmoj",
+      "pos": "VERB",
+      "conflictedCells": 28,
+      "cells": [
+        {
+          "lemma": "proshmoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "proshëmoj",
+          "rules": "proshmoj",
+          "alternatives": [
+            "proshmoj"
+          ]
+        },
+        {
+          "lemma": "proshmoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "proshëmon",
+          "rules": "proshmon",
+          "alternatives": [
+            "proshmon"
+          ]
+        },
+        {
+          "lemma": "proshmoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "proshëmon",
+          "rules": "proshmon",
+          "alternatives": [
+            "proshmon"
+          ]
+        },
+        {
+          "lemma": "proshmoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "proshëmojmë",
+          "rules": "proshmojmë",
+          "alternatives": [
+            "proshmojmë"
+          ]
+        },
+        {
+          "lemma": "proshmoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "proshëmoni",
+          "rules": "proshmoni",
+          "alternatives": [
+            "proshmoni"
+          ]
+        },
+        {
+          "lemma": "proshmoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "proshëmojnë",
+          "rules": "proshmojnë",
+          "alternatives": [
+            "proshmojnë"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "aprovoj",
+      "pos": "VERB",
+      "conflictedCells": 28,
+      "cells": [
+        {
+          "lemma": "aprovoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "aprooj",
+          "rules": "aprovoj",
+          "alternatives": [
+            "aprovoj"
+          ]
+        },
+        {
+          "lemma": "aprovoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "aproon",
+          "rules": "aprovon",
+          "alternatives": [
+            "aprovon"
+          ]
+        },
+        {
+          "lemma": "aprovoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "aproon",
+          "rules": "aprovon",
+          "alternatives": [
+            "aprovon"
+          ]
+        },
+        {
+          "lemma": "aprovoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "aproojmë",
+          "rules": "aprovojmë",
+          "alternatives": [
+            "aprovojmë"
+          ]
+        },
+        {
+          "lemma": "aprovoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "aprooni",
+          "rules": "aprovoni",
+          "alternatives": [
+            "aprovoni"
+          ]
+        },
+        {
+          "lemma": "aprovoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "aproojnë",
+          "rules": "aprovojnë",
+          "alternatives": [
+            "aprovojnë"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "mbizotëroj",
+      "pos": "VERB",
+      "conflictedCells": 28,
+      "cells": [
+        {
+          "lemma": "mbizotëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "mbizoteroj",
+          "rules": "mbizotëroj",
+          "alternatives": [
+            "mbizotëroj"
+          ]
+        },
+        {
+          "lemma": "mbizotëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "mbizoteron",
+          "rules": "mbizotëron",
+          "alternatives": [
+            "mbizotëron"
+          ]
+        },
+        {
+          "lemma": "mbizotëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "mbizoteron",
+          "rules": "mbizotëron",
+          "alternatives": [
+            "mbizotëron"
+          ]
+        },
+        {
+          "lemma": "mbizotëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "mbizoterojmë",
+          "rules": "mbizotërojmë",
+          "alternatives": [
+            "mbizotërojmë"
+          ]
+        },
+        {
+          "lemma": "mbizotëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "mbizoteroni",
+          "rules": "mbizotëroni",
+          "alternatives": [
+            "mbizotëroni"
+          ]
+        },
+        {
+          "lemma": "mbizotëroj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "mbizoterojnë",
+          "rules": "mbizotërojnë",
+          "alternatives": [
+            "mbizotërojnë"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "irnoj",
+      "pos": "VERB",
+      "conflictedCells": 25,
+      "cells": [
+        {
+          "lemma": "irnoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "irnoj",
+          "rules": "irnon",
+          "alternatives": [
+            "irnon"
+          ]
+        },
+        {
+          "lemma": "irnoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "irnoj",
+          "rules": "irnon",
+          "alternatives": [
+            "irnon"
+          ]
+        },
+        {
+          "lemma": "irnoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "irnojim",
+          "rules": "irnojmë",
+          "alternatives": [
+            "irnojmë"
+          ]
+        },
+        {
+          "lemma": "irnoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "irnojni",
+          "rules": "irnoni",
+          "alternatives": [
+            "irnoni"
+          ]
+        },
+        {
+          "lemma": "irnoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "irnojin",
+          "rules": "irnojnë",
+          "alternatives": [
+            "irnojnë"
+          ]
+        },
+        {
+          "lemma": "irnoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "irnojja",
+          "rules": "irnoja",
+          "alternatives": [
+            "irnoja"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "shajtoj",
+      "pos": "VERB",
+      "conflictedCells": 25,
+      "cells": [
+        {
+          "lemma": "shajtoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "shajtoj",
+          "rules": "shajton",
+          "alternatives": [
+            "shajton"
+          ]
+        },
+        {
+          "lemma": "shajtoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "shajtoj",
+          "rules": "shajton",
+          "alternatives": [
+            "shajton"
+          ]
+        },
+        {
+          "lemma": "shajtoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "shajtojim",
+          "rules": "shajtojmë",
+          "alternatives": [
+            "shajtojmë"
+          ]
+        },
+        {
+          "lemma": "shajtoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "shajtojni",
+          "rules": "shajtoni",
+          "alternatives": [
+            "shajtoni"
+          ]
+        },
+        {
+          "lemma": "shajtoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "shajtojin",
+          "rules": "shajtojnë",
+          "alternatives": [
+            "shajtojnë"
+          ]
+        },
+        {
+          "lemma": "shajtoj",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "shajtojja",
+          "rules": "shajtoja",
+          "alternatives": [
+            "shajtoja"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "zgjedh",
+      "pos": "VERB",
+      "conflictedCells": 16,
+      "cells": [
+        {
+          "lemma": "zgjedh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "zgidhni",
+          "rules": "zgjidhni",
+          "alternatives": [
+            "zgjidhni"
+          ]
+        },
+        {
+          "lemma": "zgjedh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "zgidhja",
+          "rules": "zgjidhja",
+          "alternatives": [
+            "zgjidhja"
+          ]
+        },
+        {
+          "lemma": "zgjedh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "zgidhje",
+          "rules": "zgjidhje",
+          "alternatives": [
+            "zgjidhje"
+          ]
+        },
+        {
+          "lemma": "zgjedh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "zgidhte",
+          "rules": "zgjidhte",
+          "alternatives": [
+            "zgjidhte"
+          ]
+        },
+        {
+          "lemma": "zgjedh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "zgidhnim",
+          "rules": "zgjidhnim",
+          "alternatives": [
+            "zgjidhnim"
+          ]
+        },
+        {
+          "lemma": "zgjedh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "zgidhnit",
+          "rules": "zgjidhnit",
+          "alternatives": [
+            "zgjidhnit"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "vesh",
+      "pos": "VERB",
+      "conflictedCells": 10,
+      "cells": [
+        {
+          "lemma": "vesh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "veshni",
+          "rules": "vishni",
+          "alternatives": [
+            "vishni"
+          ]
+        },
+        {
+          "lemma": "vesh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "veshja",
+          "rules": "vishja",
+          "alternatives": [
+            "vishja"
+          ]
+        },
+        {
+          "lemma": "vesh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "veshje",
+          "rules": "vishje",
+          "alternatives": [
+            "vishje"
+          ]
+        },
+        {
+          "lemma": "vesh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "veshte",
+          "rules": "vishte",
+          "alternatives": [
+            "vishte"
+          ]
+        },
+        {
+          "lemma": "vesh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "veshnim",
+          "rules": "vishnim",
+          "alternatives": [
+            "vishnim"
+          ]
+        },
+        {
+          "lemma": "vesh",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "veshnit",
+          "rules": "vishnit",
+          "alternatives": [
+            "vishnit"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "udhëheq",
+      "pos": "VERB",
+      "conflictedCells": 10,
+      "cells": [
+        {
+          "lemma": "udhëheq",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "udhëhiqni",
+          "rules": "udhëheqni",
+          "alternatives": [
+            "udhëheqni"
+          ]
+        },
+        {
+          "lemma": "udhëheq",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "udhëhiqja",
+          "rules": "udhëheqja",
+          "alternatives": [
+            "udhëheqja"
+          ]
+        },
+        {
+          "lemma": "udhëheq",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "udhëhiqje",
+          "rules": "udhëheqje",
+          "alternatives": [
+            "udhëheqje"
+          ]
+        },
+        {
+          "lemma": "udhëheq",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "udhëhiqte",
+          "rules": "udhëheqte",
+          "alternatives": [
+            "udhëheqte"
+          ]
+        },
+        {
+          "lemma": "udhëheq",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "udhëhiqnim",
+          "rules": "udhëheqnim",
+          "alternatives": [
+            "udhëheqnim"
+          ]
+        },
+        {
+          "lemma": "udhëheq",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "udhëhiqnit",
+          "rules": "udhëheqnit",
+          "alternatives": [
+            "udhëheqnit"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "lot",
+      "pos": "NOUN",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "lot",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "lotë",
+          "rules": "lot",
+          "alternatives": [
+            "lot"
+          ]
+        },
+        {
+          "lemma": "lot",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "lotë",
+          "rules": "lot",
+          "alternatives": [
+            "lot"
+          ]
+        },
+        {
+          "lemma": "lot",
+          "pos": "NOUN",
+          "cell": "Case=Gen,Dat|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "lotëve",
+          "rules": "lotve",
+          "alternatives": [
+            "lotve"
+          ]
+        },
+        {
+          "lemma": "lot",
+          "pos": "NOUN",
+          "cell": "Case=Abl|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "lotësh",
+          "rules": "lotsh",
+          "alternatives": [
+            "lotsh"
+          ]
+        },
+        {
+          "lemma": "lot",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Def|Gender=Masc|Number=Plur",
+          "dictionary": "lotët",
+          "rules": "lottë",
+          "alternatives": [
+            "lottë"
+          ]
+        },
+        {
+          "lemma": "lot",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Def|Gender=Masc|Number=Plur",
+          "dictionary": "lotët",
+          "rules": "lottë",
+          "alternatives": [
+            "lottë"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "gjysh",
+      "pos": "NOUN",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "gjysh",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "gjysha",
+          "rules": "gjyshër",
+          "alternatives": [
+            "gjyshër"
+          ]
+        },
+        {
+          "lemma": "gjysh",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "gjysha",
+          "rules": "gjyshër",
+          "alternatives": [
+            "gjyshër"
+          ]
+        },
+        {
+          "lemma": "gjysh",
+          "pos": "NOUN",
+          "cell": "Case=Gen,Dat|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "gjyshave",
+          "rules": "gjyshërve",
+          "alternatives": [
+            "gjyshërve"
+          ]
+        },
+        {
+          "lemma": "gjysh",
+          "pos": "NOUN",
+          "cell": "Case=Abl|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "gjyshash",
+          "rules": "gjyshërish",
+          "alternatives": [
+            "gjyshërish"
+          ]
+        },
+        {
+          "lemma": "gjysh",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Def|Gender=Masc|Number=Plur",
+          "dictionary": "gjyshat",
+          "rules": "gjyshërit",
+          "alternatives": [
+            "gjyshërit"
+          ]
+        },
+        {
+          "lemma": "gjysh",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Def|Gender=Masc|Number=Plur",
+          "dictionary": "gjyshat",
+          "rules": "gjyshërit",
+          "alternatives": [
+            "gjyshërit"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "spital",
+      "pos": "NOUN",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "spital",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "spitala",
+          "rules": "spitale",
+          "alternatives": [
+            "spitale"
+          ]
+        },
+        {
+          "lemma": "spital",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "spitala",
+          "rules": "spitale",
+          "alternatives": [
+            "spitale"
+          ]
+        },
+        {
+          "lemma": "spital",
+          "pos": "NOUN",
+          "cell": "Case=Gen,Dat|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "spitalave",
+          "rules": "spitaleve",
+          "alternatives": [
+            "spitaleve"
+          ]
+        },
+        {
+          "lemma": "spital",
+          "pos": "NOUN",
+          "cell": "Case=Abl|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "spitalash",
+          "rules": "spitalesh",
+          "alternatives": [
+            "spitalesh"
+          ]
+        },
+        {
+          "lemma": "spital",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Def|Gender=Masc|Number=Plur",
+          "dictionary": "spitalat",
+          "rules": "spitalet",
+          "alternatives": [
+            "spitalet"
+          ]
+        },
+        {
+          "lemma": "spital",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Def|Gender=Masc|Number=Plur",
+          "dictionary": "spitalat",
+          "rules": "spitalet",
+          "alternatives": [
+            "spitalet"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "hundë",
+      "pos": "NOUN",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "hundë",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "hundë",
+          "rules": "hunda",
+          "alternatives": [
+            "hunda"
+          ]
+        },
+        {
+          "lemma": "hundë",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "hundë",
+          "rules": "hunda",
+          "alternatives": [
+            "hunda"
+          ]
+        },
+        {
+          "lemma": "hundë",
+          "pos": "NOUN",
+          "cell": "Case=Gen,Dat|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "hundëve",
+          "rules": "hundave",
+          "alternatives": [
+            "hundave"
+          ]
+        },
+        {
+          "lemma": "hundë",
+          "pos": "NOUN",
+          "cell": "Case=Abl|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "hundësh",
+          "rules": "hundash",
+          "alternatives": [
+            "hundash"
+          ]
+        },
+        {
+          "lemma": "hundë",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Def|Gender=Fem|Number=Plur",
+          "dictionary": "hundët",
+          "rules": "hundat",
+          "alternatives": [
+            "hundat"
+          ]
+        },
+        {
+          "lemma": "hundë",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Def|Gender=Fem|Number=Plur",
+          "dictionary": "hundët",
+          "rules": "hundat",
+          "alternatives": [
+            "hundat"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "luftë",
+      "pos": "NOUN",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "luftë",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "luftëra",
+          "rules": "lufta",
+          "alternatives": [
+            "lufta"
+          ]
+        },
+        {
+          "lemma": "luftë",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "luftëra",
+          "rules": "lufta",
+          "alternatives": [
+            "lufta"
+          ]
+        },
+        {
+          "lemma": "luftë",
+          "pos": "NOUN",
+          "cell": "Case=Gen,Dat|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "luftërave",
+          "rules": "luftave",
+          "alternatives": [
+            "luftave"
+          ]
+        },
+        {
+          "lemma": "luftë",
+          "pos": "NOUN",
+          "cell": "Case=Abl|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "luftërash",
+          "rules": "luftash",
+          "alternatives": [
+            "luftash"
+          ]
+        },
+        {
+          "lemma": "luftë",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Def|Gender=Fem|Number=Plur",
+          "dictionary": "luftërat",
+          "rules": "luftat",
+          "alternatives": [
+            "luftat"
+          ]
+        },
+        {
+          "lemma": "luftë",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Def|Gender=Fem|Number=Plur",
+          "dictionary": "luftërat",
+          "rules": "luftat",
+          "alternatives": [
+            "luftat"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "kompjuter",
+      "pos": "NOUN",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "kompjuter",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "kompjutera",
+          "rules": "kompjuterë",
+          "alternatives": [
+            "kompjuterë"
+          ]
+        },
+        {
+          "lemma": "kompjuter",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "kompjutera",
+          "rules": "kompjuterë",
+          "alternatives": [
+            "kompjuterë"
+          ]
+        },
+        {
+          "lemma": "kompjuter",
+          "pos": "NOUN",
+          "cell": "Case=Gen,Dat|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "kompjuterave",
+          "rules": "kompjuterëve",
+          "alternatives": [
+            "kompjuterëve"
+          ]
+        },
+        {
+          "lemma": "kompjuter",
+          "pos": "NOUN",
+          "cell": "Case=Abl|Definite=Ind|Gender=Masc|Number=Plur",
+          "dictionary": "kompjuterash",
+          "rules": "kompjuterësh",
+          "alternatives": [
+            "kompjuterësh"
+          ]
+        },
+        {
+          "lemma": "kompjuter",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Def|Gender=Masc|Number=Plur",
+          "dictionary": "kompjuterat",
+          "rules": "kompjuterët",
+          "alternatives": [
+            "kompjuterët"
+          ]
+        },
+        {
+          "lemma": "kompjuter",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Def|Gender=Masc|Number=Plur",
+          "dictionary": "kompjuterat",
+          "rules": "kompjuterët",
+          "alternatives": [
+            "kompjuterët"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "vras",
+      "pos": "VERB",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "vras",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act",
+          "dictionary": "vritni",
+          "rules": "vrisni",
+          "alternatives": [
+            "vrisni"
+          ]
+        },
+        {
+          "lemma": "vras",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "vritja",
+          "rules": "vrisja",
+          "alternatives": [
+            "vrisja"
+          ]
+        },
+        {
+          "lemma": "vras",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "vritje",
+          "rules": "vrisje",
+          "alternatives": [
+            "vrisje"
+          ]
+        },
+        {
+          "lemma": "vras",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "vritnim",
+          "rules": "vrisnim",
+          "alternatives": [
+            "vrisnim"
+          ]
+        },
+        {
+          "lemma": "vras",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=2|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "vritnit",
+          "rules": "vrisnit",
+          "alternatives": [
+            "vrisnit"
+          ]
+        },
+        {
+          "lemma": "vras",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=3|Tense=Imp|VerbForm=Fin|Voice=Act",
+          "dictionary": "vritnin",
+          "rules": "vrisnin",
+          "alternatives": [
+            "vrisnin"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "lëkurë",
+      "pos": "NOUN",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "lëkurë",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "lëkurë",
+          "rules": "lëkura",
+          "alternatives": [
+            "lëkura"
+          ]
+        },
+        {
+          "lemma": "lëkurë",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "lëkurë",
+          "rules": "lëkura",
+          "alternatives": [
+            "lëkura"
+          ]
+        },
+        {
+          "lemma": "lëkurë",
+          "pos": "NOUN",
+          "cell": "Case=Gen,Dat|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "lëkurëve",
+          "rules": "lëkurave",
+          "alternatives": [
+            "lëkurave"
+          ]
+        },
+        {
+          "lemma": "lëkurë",
+          "pos": "NOUN",
+          "cell": "Case=Abl|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "lëkurësh",
+          "rules": "lëkurash",
+          "alternatives": [
+            "lëkurash"
+          ]
+        },
+        {
+          "lemma": "lëkurë",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Def|Gender=Fem|Number=Plur",
+          "dictionary": "lëkurët",
+          "rules": "lëkurat",
+          "alternatives": [
+            "lëkurat"
+          ]
+        },
+        {
+          "lemma": "lëkurë",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Def|Gender=Fem|Number=Plur",
+          "dictionary": "lëkurët",
+          "rules": "lëkurat",
+          "alternatives": [
+            "lëkurat"
+          ]
+        }
+      ]
+    },
+    {
+      "lemma": "anë",
+      "pos": "NOUN",
+      "conflictedCells": 8,
+      "cells": [
+        {
+          "lemma": "anë",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "anë",
+          "rules": "ana",
+          "alternatives": [
+            "ana"
+          ]
+        },
+        {
+          "lemma": "anë",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "anë",
+          "rules": "ana",
+          "alternatives": [
+            "ana"
+          ]
+        },
+        {
+          "lemma": "anë",
+          "pos": "NOUN",
+          "cell": "Case=Gen,Dat|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "anëve",
+          "rules": "anave",
+          "alternatives": [
+            "anave"
+          ]
+        },
+        {
+          "lemma": "anë",
+          "pos": "NOUN",
+          "cell": "Case=Abl|Definite=Ind|Gender=Fem|Number=Plur",
+          "dictionary": "anësh",
+          "rules": "anash",
+          "alternatives": [
+            "anash"
+          ]
+        },
+        {
+          "lemma": "anë",
+          "pos": "NOUN",
+          "cell": "Case=Nom|Definite=Def|Gender=Fem|Number=Plur",
+          "dictionary": "anët",
+          "rules": "anat",
+          "alternatives": [
+            "anat"
+          ]
+        },
+        {
+          "lemma": "anë",
+          "pos": "NOUN",
+          "cell": "Case=Acc|Definite=Def|Gender=Fem|Number=Plur",
+          "dictionary": "anët",
+          "rules": "anat",
+          "alternatives": [
+            "anat"
+          ]
+        }
+      ]
+    }
+  ],
+  "topConflictKinds": [
+    {
+      "kind": "VERB: ",
+      "n": 20
+    },
+    {
+      "kind": "VERB: Act Ind Pres 2Plur",
+      "n": 18
+    },
+    {
+      "kind": "VERB: Act Sub Pres 2Plur",
+      "n": 18
+    },
+    {
+      "kind": "NOUN: Ind Abl Plur Masc",
+      "n": 17
+    },
+    {
+      "kind": "VERB: Act Imp 2Plur",
+      "n": 16
+    },
+    {
+      "kind": "VERB: Act Ind Past 3Sing",
+      "n": 15
+    },
+    {
+      "kind": "VERB: Act Imp 2Sing",
+      "n": 14
+    },
+    {
+      "kind": "VERB: Act Ind Imp 3Sing",
+      "n": 14
+    },
+    {
+      "kind": "NOUN: Ind Abl Plur Fem",
+      "n": 14
+    },
+    {
+      "kind": "NOUN: Ind Nom Plur Fem",
+      "n": 13
+    },
+    {
+      "kind": "NOUN: Ind Acc Plur Fem",
+      "n": 13
+    },
+    {
+      "kind": "NOUN: Ind Gen,Dat Plur Fem",
+      "n": 13
+    },
+    {
+      "kind": "NOUN: Def Gen,Dat Plur Fem",
+      "n": 13
+    },
+    {
+      "kind": "NOUN: Def Abl Plur Fem",
+      "n": 13
+    },
+    {
+      "kind": "VERB: Act Ind Past 1Plur",
+      "n": 12
+    }
+  ],
+  "unknownTags": {},
+  "allConflicts": 570
+}

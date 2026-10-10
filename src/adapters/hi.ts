@@ -52,6 +52,8 @@ import { detectHindiConstructions } from './hindi/constructions';
 import { disambiguateHindi } from './hindi/disambiguate';
 import { segmentHindiSentences } from './hindi/sentences';
 import { checkHindiProduction } from './hindi/production';
+import { hiParadigm, hindiCellsFor, type HiParadigmContext } from './hindi/paradigm';
+import { hiFeaturesFromTableTags } from './hindi/table-tags';
 
 const LANG = 'hi' as const;
 // '3': the fix batches after '2' changed what is stored (persons and cells as separate readings, causatives, the
@@ -562,6 +564,15 @@ const SUPPORT: AdapterSupport = {
   ],
 };
 
+/** What the paradigm needs from the word list: the entry (in its listed spelling) with the forms its row lists by hand. */
+export const HI_PARADIGM_CONTEXT: HiParadigmContext = {
+  listed(lemma, pos) {
+    const r = resolveLemma(lemma, pos);
+    const e = r ? hiLexicon.find(r, pos) : undefined;
+    return e ? { lemma: e.lemma, info: hiLemmaInfo(e.lemma, pos), forms: e.forms } : undefined;
+  },
+};
+
 export const hiAdapter: LanguageAdapter = {
   lang: LANG,
   name: 'Hindi',
@@ -654,6 +665,13 @@ export const hiAdapter: LanguageAdapter = {
   orthFeatures: hindiOrthFeatures,
   describeOrthFeature: describeHindiOrthFeature,
   describeMorph: (morph, pos) => describeHindiMorph(morph, pos),
+
+  /** Generation (Linguistic Engine V2, Stage 3): the forms of a word of the list, from the same rules as `analyze`; see hindi/paradigm.ts. */
+  paradigm: (lemma, pos, hint) => hiParadigm(lemma, pos, hint, HI_PARADIGM_CONTEXT),
+  /** The dictionary table's tags -> this adapter's cell features (hindi/table-tags.ts). The optional `form` tells a simple tense from its construction. */
+  /** The cells an analysed reading occupies: the reading is normalised like a cell and matched where both state a feature (hindi/paradigm.ts `hindiCellsFor`). */
+  cellsFor: (p, features, surface) => hindiCellsFor(p, p.pos, features, surface),
+  featuresFromTableTags: (tags, pos, form?: string) => hiFeaturesFromTableTags(tags, pos, form),
 };
 
 const HI_UNITS = ['शून्य', 'एक', 'दो', 'तीन', 'चार', 'पाँच', 'छह', 'सात', 'आठ', 'नौ', 'दस', 'ग्यारह', 'बारह', 'तेरह', 'चौदह', 'पंद्रह', 'सोलह', 'सत्रह', 'अठारह', 'उन्नीस', 'बीस'];

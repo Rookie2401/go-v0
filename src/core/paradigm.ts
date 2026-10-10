@@ -80,16 +80,52 @@ export function featureKey(features: Record<string, string>): string {
 }
 
 /** The cell whose features equal the given bundle (the selected form's), if any. */
-export function cellOf(p: Paradigm, features: Record<string, string>): ParadigmCell | undefined {
+export function cellOf(p: Pick<Paradigm, 'cells'>, features: Record<string, string>): ParadigmCell | undefined {
   const key = featureKey(features);
   return p.cells.find((c) => featureKey(c.features) === key);
 }
 
 /** The cells whose form equals the given surface (lower-cased, NFC): how the card highlights the selected form when the features are not known. */
-export function cellsWithForm(p: Paradigm, surface: string): ParadigmCell[] {
+export function cellsWithForm(p: Pick<Paradigm, 'cells'>, surface: string): ParadigmCell[] {
   const s = surface.normalize('NFC').toLowerCase();
   return p.cells.filter((c) => c.form.normalize('NFC').toLowerCase() === s || (c.alternatives ?? []).some((a) => a.normalize('NFC').toLowerCase() === s));
 }
+
+/**
+ * The cells the selected reading occupies, when the adapter has no projection of its own: union values ("Fem,Masc",
+ * "Imp,Ind") are split into every combination, keys no cell carries are dropped, and a cell that carries every selected
+ * feature (and more) counts when no exact cell exists. Falls back to the cells whose form is the surface. Never guesses
+ * beyond the features given.
+ */
+export function cellsForSelection(p: Pick<Paradigm, 'cells'>, features: Record<string, string>, surface?: string): ParadigmCell[] {
+  const keysInCells = new Set<string>();
+  for (const c of p.cells) for (const k of Object.keys(c.features)) keysInCells.add(k);
+  const entries = Object.entries(features).filter(([k, v]) => keysInCells.has(k) && typeof v === 'string' && v.trim());
+  let combos: Array<Record<string, string>> = [{}];
+  for (const [k, v] of entries) {
+    const vals = v.split(',').map((x) => x.trim()).filter(Boolean);
+    combos = combos.flatMap((c) => vals.map((x) => ({ ...c, [k]: x })));
+    if (combos.length > 64) break;
+  }
+  let out: ParadigmCell[] = [];
+  if (entries.length) {
+    const wanted = new Set(combos.map(featureKey));
+    out = p.cells.filter((c) => wanted.has(featureKey(c.features)));
+    if (!out.length) out = p.cells.filter((c) => combos.some((combo) => Object.entries(combo).every(([k, v]) => c.features[k] === v)));
+    if (out.length > 1 && surface) {
+      const s = surface.normalize('NFC').toLowerCase();
+      const narrowed = out.filter((c) => c.form.normalize('NFC').toLowerCase() === s || (c.alternatives ?? []).some((a) => a.normalize('NFC').toLowerCase() === s));
+      if (narrowed.length) out = narrowed;
+    }
+  }
+  if (!out.length && surface) out = cellsWithForm(p, surface);
+  return out;
+}
+
+/** Alternative cuts of a selection into words, for a script without word spaces (Thai): the adapter's chosen cut and the others the word list allows. */
+export interface SegmentationWord { text: string; known: boolean; lemma?: string; pos?: string; gloss?: string }
+export interface SegmentationCut { words: SegmentationWord[]; /** Share of the plausibility among the cuts considered (not a probability). */ confidence: number; basis: string }
+export interface SegmentationAlternatives { text: string; chosen: SegmentationCut; alternatives: SegmentationCut[]; /** Present when there are no alternatives: why only the chosen cut is plausible. */ reason?: string }
 
 const RANK: Record<CellStatus, number> = { verified: 0, supported: 1, generated: 2, conflicted: 3 };
 

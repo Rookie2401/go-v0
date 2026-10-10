@@ -1,0 +1,1249 @@
+{
+  "generatedAt": "2026-10-10",
+  "source": {
+    "dump": "kaikki.org-dictionary-German.jsonl",
+    "linesRead": 371261,
+    "limit": null,
+    "licence": "CC BY-SA 4.0 (Wiktionary)"
+  },
+  "lemmasWithTables": 87681,
+  "homographEntries": 1032,
+  "nameTablesNotMerged": 3344,
+  "byPos": {
+    "ADJ": {
+      "lemmasWithTables": 14498,
+      "lemmasGenerated": 318,
+      "lemmasNotGenerated": 14180,
+      "cells": {
+        "verified": 40839,
+        "supported": 1231764,
+        "generated": 4410,
+        "conflicted": 606
+      },
+      "cellsOfGenerable": {
+        "verified": 40839,
+        "supported": 499,
+        "generated": 4410,
+        "conflicted": 606
+      },
+      "lemmasFullyVerified": 260,
+      "lemmasWithConflict": 13,
+      "listed": {
+        "lemmas": 318,
+        "cells": {
+          "verified": 40839,
+          "supported": 499,
+          "generated": 4410,
+          "conflicted": 606
+        }
+      },
+      "guessed": {
+        "lemmas": 0,
+        "cells": {
+          "verified": 0,
+          "supported": 0,
+          "generated": 0,
+          "conflicted": 0
+        }
+      }
+    },
+    "NOUN": {
+      "lemmasWithTables": 62448,
+      "lemmasGenerated": 1434,
+      "lemmasNotGenerated": 61014,
+      "cells": {
+        "verified": 11130,
+        "supported": 462084,
+        "generated": 4,
+        "conflicted": 14
+      },
+      "cellsOfGenerable": {
+        "verified": 11130,
+        "supported": 336,
+        "generated": 4,
+        "conflicted": 14
+      },
+      "lemmasFullyVerified": 1344,
+      "lemmasWithConflict": 9,
+      "listed": {
+        "lemmas": 1434,
+        "cells": {
+          "verified": 11130,
+          "supported": 336,
+          "generated": 4,
+          "conflicted": 14
+        }
+      },
+      "guessed": {
+        "lemmas": 0,
+        "cells": {
+          "verified": 0,
+          "supported": 0,
+          "generated": 0,
+          "conflicted": 0
+        }
+      }
+    },
+    "VERB": {
+      "lemmasWithTables": 10705,
+      "lemmasGenerated": 7569,
+      "lemmasNotGenerated": 3136,
+      "cells": {
+        "verified": 239392,
+        "supported": 150686,
+        "generated": 7733,
+        "conflicted": 18804
+      },
+      "cellsOfGenerable": {
+        "verified": 239392,
+        "supported": 11847,
+        "generated": 7733,
+        "conflicted": 18804
+      },
+      "lemmasFullyVerified": 1552,
+      "lemmasWithConflict": 1000,
+      "listed": {
+        "lemmas": 843,
+        "cells": {
+          "verified": 30803,
+          "supported": 30,
+          "generated": 632,
+          "conflicted": 77
+        }
+      },
+      "guessed": {
+        "lemmas": 6726,
+        "cells": {
+          "verified": 208589,
+          "supported": 11817,
+          "generated": 7101,
+          "conflicted": 18727
+        }
+      }
+    },
+    "DET": {
+      "lemmasWithTables": 30,
+      "lemmasGenerated": 12,
+      "lemmasNotGenerated": 18,
+      "cells": {
+        "verified": 164,
+        "supported": 260,
+        "generated": 0,
+        "conflicted": 16
+      },
+      "cellsOfGenerable": {
+        "verified": 164,
+        "supported": 0,
+        "generated": 0,
+        "conflicted": 16
+      },
+      "lemmasFullyVerified": 11,
+      "lemmasWithConflict": 1,
+      "listed": {
+        "lemmas": 12,
+        "cells": {
+          "verified": 164,
+          "supported": 0,
+          "generated": 0,
+          "conflicted": 16
+        }
+      },
+      "guessed": {
+        "lemmas": 0,
+        "cells": {
+          "verified": 0,
+          "supported": 0,
+          "generated": 0,
+          "conflicted": 0
+        }
+      }
+    }
+  },
+  "rows": {
+    "ADJ": {
+      "rows": 1504746,
+      "placed": 1475688
+    },
+    "NOUN": {
+      "rows": 638949,
+      "placed": 510369
+    },
+    "VERB": {
+      "rows": 1196081,
+      "placed": 450729
+    },
+    "DET": {
+      "rows": 755,
+      "placed": 619
+    }
+  },
+  "rowsNotPlaced": {
+    "ADJ": {
+      "not-a-cell": 29042,
+      "no-features": 16
+    },
+    "NOUN": {
+      "not-a-cell": 126795,
+      "no-features": 1785
+    },
+    "VERB": {
+      "not-a-cell": 743785,
+      "no-features": 1539,
+      "ambiguous": 28
+    },
+    "DET": {
+      "not-a-cell": 62,
+      "no-features": 64,
+      "ambiguous": 10
+    }
+  },
+  "topConflictingLemmas": [
+    {
+      "lemma": "herüberkönnen",
+      "pos": "VERB",
+      "conflictedCells": 51,
+      "cells": [
+        {
+          "lemma": "herüberkönnen",
+          "pos": "VERB",
+          "cell": "VerbForm=Inf",
+          "dictionary": "hinüberkönnen",
+          "rules": "herüberkönnen"
+        },
+        {
+          "lemma": "herüberkönnen",
+          "pos": "VERB",
+          "cell": "Variant=Zu|VerbForm=Inf",
+          "dictionary": "hinüberzukönnen",
+          "rules": "herüberzukönnen"
+        },
+        {
+          "lemma": "herüberkönnen",
+          "pos": "VERB",
+          "cell": "Tense=Past|VerbForm=Part",
+          "dictionary": "hinübergekonnt",
+          "rules": "herübergekonnt / hinüberkönnen"
+        },
+        {
+          "lemma": "herüberkönnen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "kann hinüber",
+          "rules": "kann herüber"
+        },
+        {
+          "lemma": "herüberkönnen",
+          "pos": "VERB",
+          "cell": "Clause=Sub|Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "hinüberkann",
+          "rules": "herüberkann"
+        },
+        {
+          "lemma": "herüberkönnen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "kannst hinüber",
+          "rules": "kannst herüber"
+        }
+      ]
+    },
+    {
+      "lemma": "ansteckend",
+      "pos": "ADJ",
+      "conflictedCells": 49,
+      "cells": [
+        {
+          "lemma": "ansteckend",
+          "pos": "ADJ",
+          "cell": "Degree=Sup|Position=Pred",
+          "dictionary": "am ansteckendsten",
+          "rules": "am ansteckendesten"
+        },
+        {
+          "lemma": "ansteckend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Masc|Number=Sing",
+          "dictionary": "ansteckendster",
+          "rules": "ansteckendester"
+        },
+        {
+          "lemma": "ansteckend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Fem|Number=Sing",
+          "dictionary": "ansteckendste",
+          "rules": "ansteckendeste"
+        },
+        {
+          "lemma": "ansteckend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Neut|Number=Sing",
+          "dictionary": "ansteckendstes",
+          "rules": "ansteckendestes"
+        },
+        {
+          "lemma": "ansteckend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Number=Plur",
+          "dictionary": "ansteckendste",
+          "rules": "ansteckendeste"
+        },
+        {
+          "lemma": "ansteckend",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Degree=Sup|Gender=Masc|Number=Sing",
+          "dictionary": "ansteckendsten",
+          "rules": "ansteckendesten"
+        }
+      ]
+    },
+    {
+      "lemma": "spannend",
+      "pos": "ADJ",
+      "conflictedCells": 49,
+      "cells": [
+        {
+          "lemma": "spannend",
+          "pos": "ADJ",
+          "cell": "Degree=Sup|Position=Pred",
+          "dictionary": "am spannendsten",
+          "rules": "am spannendesten"
+        },
+        {
+          "lemma": "spannend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Masc|Number=Sing",
+          "dictionary": "spannendster",
+          "rules": "spannendester"
+        },
+        {
+          "lemma": "spannend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Fem|Number=Sing",
+          "dictionary": "spannendste",
+          "rules": "spannendeste"
+        },
+        {
+          "lemma": "spannend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Neut|Number=Sing",
+          "dictionary": "spannendstes",
+          "rules": "spannendestes"
+        },
+        {
+          "lemma": "spannend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Number=Plur",
+          "dictionary": "spannendste",
+          "rules": "spannendeste"
+        },
+        {
+          "lemma": "spannend",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Degree=Sup|Gender=Masc|Number=Sing",
+          "dictionary": "spannendsten",
+          "rules": "spannendesten"
+        }
+      ]
+    },
+    {
+      "lemma": "wütend",
+      "pos": "ADJ",
+      "conflictedCells": 49,
+      "cells": [
+        {
+          "lemma": "wütend",
+          "pos": "ADJ",
+          "cell": "Degree=Sup|Position=Pred",
+          "dictionary": "am wütendsten",
+          "rules": "am wütendesten"
+        },
+        {
+          "lemma": "wütend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Masc|Number=Sing",
+          "dictionary": "wütendster",
+          "rules": "wütendester"
+        },
+        {
+          "lemma": "wütend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Fem|Number=Sing",
+          "dictionary": "wütendste",
+          "rules": "wütendeste"
+        },
+        {
+          "lemma": "wütend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Neut|Number=Sing",
+          "dictionary": "wütendstes",
+          "rules": "wütendestes"
+        },
+        {
+          "lemma": "wütend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Number=Plur",
+          "dictionary": "wütendste",
+          "rules": "wütendeste"
+        },
+        {
+          "lemma": "wütend",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Degree=Sup|Gender=Masc|Number=Sing",
+          "dictionary": "wütendsten",
+          "rules": "wütendesten"
+        }
+      ]
+    },
+    {
+      "lemma": "anstrengend",
+      "pos": "ADJ",
+      "conflictedCells": 49,
+      "cells": [
+        {
+          "lemma": "anstrengend",
+          "pos": "ADJ",
+          "cell": "Degree=Sup|Position=Pred",
+          "dictionary": "am anstrengendsten",
+          "rules": "am anstrengendesten"
+        },
+        {
+          "lemma": "anstrengend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Masc|Number=Sing",
+          "dictionary": "anstrengendster",
+          "rules": "anstrengendester"
+        },
+        {
+          "lemma": "anstrengend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Fem|Number=Sing",
+          "dictionary": "anstrengendste",
+          "rules": "anstrengendeste"
+        },
+        {
+          "lemma": "anstrengend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Gender=Neut|Number=Sing",
+          "dictionary": "anstrengendstes",
+          "rules": "anstrengendestes"
+        },
+        {
+          "lemma": "anstrengend",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Degree=Sup|Number=Plur",
+          "dictionary": "anstrengendste",
+          "rules": "anstrengendeste"
+        },
+        {
+          "lemma": "anstrengend",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Degree=Sup|Gender=Masc|Number=Sing",
+          "dictionary": "anstrengendsten",
+          "rules": "anstrengendesten"
+        }
+      ]
+    },
+    {
+      "lemma": "pink",
+      "pos": "ADJ",
+      "conflictedCells": 48,
+      "cells": [
+        {
+          "lemma": "pink",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "pinker",
+          "rules": "pink"
+        },
+        {
+          "lemma": "pink",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "pinke",
+          "rules": "pink"
+        },
+        {
+          "lemma": "pink",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "pinkes",
+          "rules": "pink"
+        },
+        {
+          "lemma": "pink",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Number=Plur",
+          "dictionary": "pinke",
+          "rules": "pink"
+        },
+        {
+          "lemma": "pink",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "pinken",
+          "rules": "pink"
+        },
+        {
+          "lemma": "pink",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "pinker",
+          "rules": "pink"
+        }
+      ]
+    },
+    {
+      "lemma": "rosa",
+      "pos": "ADJ",
+      "conflictedCells": 48,
+      "cells": [
+        {
+          "lemma": "rosa",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "rosaner",
+          "rules": "rosa / rosaer"
+        },
+        {
+          "lemma": "rosa",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "rosane",
+          "rules": "rosa / rosae"
+        },
+        {
+          "lemma": "rosa",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "rosanes",
+          "rules": "rosa / rosaes"
+        },
+        {
+          "lemma": "rosa",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Number=Plur",
+          "dictionary": "rosane",
+          "rules": "rosa / rosae"
+        },
+        {
+          "lemma": "rosa",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "rosanen",
+          "rules": "rosa / rosaen"
+        },
+        {
+          "lemma": "rosa",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "rosaner",
+          "rules": "rosa / rosaer"
+        }
+      ]
+    },
+    {
+      "lemma": "super",
+      "pos": "ADJ",
+      "conflictedCells": 48,
+      "cells": [
+        {
+          "lemma": "super",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "superer",
+          "rules": "super"
+        },
+        {
+          "lemma": "super",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "supere",
+          "rules": "super"
+        },
+        {
+          "lemma": "super",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "superes",
+          "rules": "super"
+        },
+        {
+          "lemma": "super",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Number=Plur",
+          "dictionary": "supere",
+          "rules": "super"
+        },
+        {
+          "lemma": "super",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "superen",
+          "rules": "super"
+        },
+        {
+          "lemma": "super",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "superer",
+          "rules": "super"
+        }
+      ]
+    },
+    {
+      "lemma": "leid",
+      "pos": "ADJ",
+      "conflictedCells": 48,
+      "cells": [
+        {
+          "lemma": "leid",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "leider",
+          "rules": "leid"
+        },
+        {
+          "lemma": "leid",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "leide",
+          "rules": "leid"
+        },
+        {
+          "lemma": "leid",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "leides",
+          "rules": "leid"
+        },
+        {
+          "lemma": "leid",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Number=Plur",
+          "dictionary": "leide",
+          "rules": "leid"
+        },
+        {
+          "lemma": "leid",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "leiden",
+          "rules": "leid"
+        },
+        {
+          "lemma": "leid",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "leider",
+          "rules": "leid"
+        }
+      ]
+    },
+    {
+      "lemma": "weh",
+      "pos": "ADJ",
+      "conflictedCells": 48,
+      "cells": [
+        {
+          "lemma": "weh",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "weher",
+          "rules": "weh"
+        },
+        {
+          "lemma": "weh",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "wehe",
+          "rules": "weh"
+        },
+        {
+          "lemma": "weh",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "wehes",
+          "rules": "weh"
+        },
+        {
+          "lemma": "weh",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Number=Plur",
+          "dictionary": "wehe",
+          "rules": "weh"
+        },
+        {
+          "lemma": "weh",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "wehen",
+          "rules": "weh"
+        },
+        {
+          "lemma": "weh",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "weher",
+          "rules": "weh"
+        }
+      ]
+    },
+    {
+      "lemma": "lila",
+      "pos": "ADJ",
+      "conflictedCells": 48,
+      "cells": [
+        {
+          "lemma": "lila",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "lilaner",
+          "rules": "lila / lilaer"
+        },
+        {
+          "lemma": "lila",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "lilane",
+          "rules": "lila / lilae"
+        },
+        {
+          "lemma": "lila",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "lilanes",
+          "rules": "lila / lilaes"
+        },
+        {
+          "lemma": "lila",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Number=Plur",
+          "dictionary": "lilane",
+          "rules": "lila / lilae"
+        },
+        {
+          "lemma": "lila",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "lilanen",
+          "rules": "lila / lilaen"
+        },
+        {
+          "lemma": "lila",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "lilaner",
+          "rules": "lila / lilaer"
+        }
+      ]
+    },
+    {
+      "lemma": "untertan",
+      "pos": "ADJ",
+      "conflictedCells": 48,
+      "cells": [
+        {
+          "lemma": "untertan",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "untertaner",
+          "rules": "untertan"
+        },
+        {
+          "lemma": "untertan",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "untertane",
+          "rules": "untertan"
+        },
+        {
+          "lemma": "untertan",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "untertanes",
+          "rules": "untertan"
+        },
+        {
+          "lemma": "untertan",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Number=Plur",
+          "dictionary": "untertane",
+          "rules": "untertan"
+        },
+        {
+          "lemma": "untertan",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "untertanen",
+          "rules": "untertan"
+        },
+        {
+          "lemma": "untertan",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "untertaner",
+          "rules": "untertan"
+        }
+      ]
+    },
+    {
+      "lemma": "orange",
+      "pos": "ADJ",
+      "conflictedCells": 37,
+      "cells": [
+        {
+          "lemma": "orange",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "oranger",
+          "rules": "orange / orangener"
+        },
+        {
+          "lemma": "orange",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "oranges",
+          "rules": "orange / orangenes"
+        },
+        {
+          "lemma": "orange",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "orangen",
+          "rules": "orange / orangenen"
+        },
+        {
+          "lemma": "orange",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "oranger",
+          "rules": "orange / orangener"
+        },
+        {
+          "lemma": "orange",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "orangen",
+          "rules": "orange / orangenen"
+        },
+        {
+          "lemma": "orange",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Number=Plur",
+          "dictionary": "oranger",
+          "rules": "orange / orangener"
+        }
+      ]
+    },
+    {
+      "lemma": "beige",
+      "pos": "ADJ",
+      "conflictedCells": 37,
+      "cells": [
+        {
+          "lemma": "beige",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "beiger",
+          "rules": "beige"
+        },
+        {
+          "lemma": "beige",
+          "pos": "ADJ",
+          "cell": "Case=Nom|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "beiges",
+          "rules": "beige"
+        },
+        {
+          "lemma": "beige",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Masc|Number=Sing",
+          "dictionary": "beigen",
+          "rules": "beige"
+        },
+        {
+          "lemma": "beige",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Fem|Number=Sing",
+          "dictionary": "beiger",
+          "rules": "beige"
+        },
+        {
+          "lemma": "beige",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Gender=Neut|Number=Sing",
+          "dictionary": "beigen",
+          "rules": "beige"
+        },
+        {
+          "lemma": "beige",
+          "pos": "ADJ",
+          "cell": "Case=Gen|Decl=Strong|Number=Plur",
+          "dictionary": "beiger",
+          "rules": "beige"
+        }
+      ]
+    },
+    {
+      "lemma": "darunterhalten",
+      "pos": "VERB",
+      "conflictedCells": 34,
+      "cells": [
+        {
+          "lemma": "darunterhalten",
+          "pos": "VERB",
+          "cell": "Variant=Zu|VerbForm=Inf",
+          "dictionary": "darunterzuhalten",
+          "rules": "darzuunterhalten"
+        },
+        {
+          "lemma": "darunterhalten",
+          "pos": "VERB",
+          "cell": "Tense=Past|VerbForm=Part",
+          "dictionary": "daruntergehalten",
+          "rules": "darunterhalten"
+        },
+        {
+          "lemma": "darunterhalten",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "halte darunter",
+          "rules": "unterhalte dar"
+        },
+        {
+          "lemma": "darunterhalten",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "hältst darunter",
+          "rules": "unterhältst dar"
+        },
+        {
+          "lemma": "darunterhalten",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dictionary": "hält darunter",
+          "rules": "unterhält dar"
+        },
+        {
+          "lemma": "darunterhalten",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "halten darunter",
+          "rules": "unterhalten dar"
+        }
+      ]
+    },
+    {
+      "lemma": "anlesen",
+      "pos": "VERB",
+      "conflictedCells": 30,
+      "cells": [
+        {
+          "lemma": "anlesen",
+          "pos": "VERB",
+          "cell": "Tense=Past|VerbForm=Part",
+          "dictionary": "angelest",
+          "rules": "angelesen"
+        },
+        {
+          "lemma": "anlesen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "lest an",
+          "rules": "liest an"
+        },
+        {
+          "lemma": "anlesen",
+          "pos": "VERB",
+          "cell": "Clause=Sub|Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "anlest",
+          "rules": "anliest"
+        },
+        {
+          "lemma": "anlesen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dictionary": "lest an",
+          "rules": "liest an"
+        },
+        {
+          "lemma": "anlesen",
+          "pos": "VERB",
+          "cell": "Clause=Sub|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dictionary": "anlest",
+          "rules": "anliest"
+        },
+        {
+          "lemma": "anlesen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin",
+          "dictionary": "leste an",
+          "rules": "las an"
+        }
+      ]
+    },
+    {
+      "lemma": "aufwaschen",
+      "pos": "VERB",
+      "conflictedCells": 29,
+      "cells": [
+        {
+          "lemma": "aufwaschen",
+          "pos": "VERB",
+          "cell": "Tense=Past|VerbForm=Part",
+          "dictionary": "aufgewascht",
+          "rules": "aufgewaschen"
+        },
+        {
+          "lemma": "aufwaschen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "waschst auf",
+          "rules": "wäschst auf / wascht auf"
+        },
+        {
+          "lemma": "aufwaschen",
+          "pos": "VERB",
+          "cell": "Clause=Sub|Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "aufwaschst",
+          "rules": "aufwäschst / aufwascht"
+        },
+        {
+          "lemma": "aufwaschen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dictionary": "wascht auf",
+          "rules": "wäscht auf"
+        },
+        {
+          "lemma": "aufwaschen",
+          "pos": "VERB",
+          "cell": "Clause=Sub|Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dictionary": "aufwascht",
+          "rules": "aufwäscht"
+        },
+        {
+          "lemma": "aufwaschen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Past|VerbForm=Fin",
+          "dictionary": "waschte auf",
+          "rules": "wusch auf"
+        }
+      ]
+    },
+    {
+      "lemma": "rumkümmeln",
+      "pos": "VERB",
+      "conflictedCells": 28,
+      "cells": [
+        {
+          "lemma": "rumkümmeln",
+          "pos": "VERB",
+          "cell": "Variant=Zu|VerbForm=Inf",
+          "dictionary": "rumzukümmeln",
+          "rules": "zu rumkümmeln"
+        },
+        {
+          "lemma": "rumkümmeln",
+          "pos": "VERB",
+          "cell": "Tense=Past|VerbForm=Part",
+          "dictionary": "rumgekümmelt",
+          "rules": "gerumkümmelt"
+        },
+        {
+          "lemma": "rumkümmeln",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "kümmle rum",
+          "rules": "rumkümmle / kümmele rum / kümmel rum"
+        },
+        {
+          "lemma": "rumkümmeln",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "kümmelst rum",
+          "rules": "rumkümmelst"
+        },
+        {
+          "lemma": "rumkümmeln",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dictionary": "kümmelt rum",
+          "rules": "rumkümmelt"
+        },
+        {
+          "lemma": "rumkümmeln",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "kümmeln rum",
+          "rules": "rumkümmeln"
+        }
+      ]
+    },
+    {
+      "lemma": "radfahren",
+      "pos": "VERB",
+      "conflictedCells": 28,
+      "cells": [
+        {
+          "lemma": "radfahren",
+          "pos": "VERB",
+          "cell": "Variant=Zu|VerbForm=Inf",
+          "dictionary": "radzufahren",
+          "rules": "zu radfahren"
+        },
+        {
+          "lemma": "radfahren",
+          "pos": "VERB",
+          "cell": "Tense=Past|VerbForm=Part",
+          "dictionary": "radgefahren",
+          "rules": "geradfahrt"
+        },
+        {
+          "lemma": "radfahren",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "fahre Rad",
+          "rules": "radfahre"
+        },
+        {
+          "lemma": "radfahren",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "fährst Rad",
+          "rules": "radfahrst"
+        },
+        {
+          "lemma": "radfahren",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dictionary": "fährt Rad",
+          "rules": "radfahrt"
+        },
+        {
+          "lemma": "radfahren",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "fahren Rad",
+          "rules": "radfahren"
+        }
+      ]
+    },
+    {
+      "lemma": "fehlbesetzen",
+      "pos": "VERB",
+      "conflictedCells": 28,
+      "cells": [
+        {
+          "lemma": "fehlbesetzen",
+          "pos": "VERB",
+          "cell": "Variant=Zu|VerbForm=Inf",
+          "dictionary": "fehlzubesetzen",
+          "rules": "zu fehlbesetzen"
+        },
+        {
+          "lemma": "fehlbesetzen",
+          "pos": "VERB",
+          "cell": "Tense=Past|VerbForm=Part",
+          "dictionary": "fehlbesetzt",
+          "rules": "gefehlbesetzt"
+        },
+        {
+          "lemma": "fehlbesetzen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "besetze fehl",
+          "rules": "fehlbesetze"
+        },
+        {
+          "lemma": "fehlbesetzen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin",
+          "dictionary": "besetzt fehl",
+          "rules": "fehlbesetzt"
+        },
+        {
+          "lemma": "fehlbesetzen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin",
+          "dictionary": "besetzt fehl",
+          "rules": "fehlbesetzt"
+        },
+        {
+          "lemma": "fehlbesetzen",
+          "pos": "VERB",
+          "cell": "Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin",
+          "dictionary": "besetzen fehl",
+          "rules": "fehlbesetzen"
+        }
+      ]
+    }
+  ],
+  "topConflictKinds": [
+    {
+      "kind": "VERB: Part Past",
+      "n": 971
+    },
+    {
+      "kind": "VERB: Fin Sub Past 3Sing",
+      "n": 841
+    },
+    {
+      "kind": "VERB: Fin Sub Past 3Plur",
+      "n": 841
+    },
+    {
+      "kind": "VERB: Fin Ind Past 3Sing",
+      "n": 838
+    },
+    {
+      "kind": "VERB: Fin Ind Past 3Plur",
+      "n": 838
+    },
+    {
+      "kind": "VERB: Fin Sub Past 1Sing",
+      "n": 833
+    },
+    {
+      "kind": "VERB: Fin Sub Past 2Sing",
+      "n": 833
+    },
+    {
+      "kind": "VERB: Fin Sub Past 1Plur",
+      "n": 833
+    },
+    {
+      "kind": "VERB: Fin Sub Past 2Plur",
+      "n": 833
+    },
+    {
+      "kind": "VERB: Fin Ind Past 1Sing",
+      "n": 830
+    },
+    {
+      "kind": "VERB: Fin Ind Past 2Sing",
+      "n": 830
+    },
+    {
+      "kind": "VERB: Fin Ind Past 1Plur",
+      "n": 830
+    },
+    {
+      "kind": "VERB: Fin Ind Past 2Plur",
+      "n": 830
+    },
+    {
+      "kind": "VERB: Fin Ind Pres 3Sing",
+      "n": 607
+    },
+    {
+      "kind": "VERB: Fin Ind Pres 2Sing",
+      "n": 603
+    }
+  ],
+  "unknownTags": {
+    "DET:error-unrecognized-form": 70,
+    "DET:possessive": 70
+  },
+  "allConflicts": 19440
+}

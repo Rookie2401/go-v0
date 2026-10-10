@@ -28,6 +28,10 @@ import { LADDER_ANNOTATIONS, LADDER_ENTRIES } from './thai/lexicon-ladder';
 import { CAST_NAMES, readsAsName } from './thai/names';
 import { buildPhraseRules } from './thai/phrases';
 import { detectThaiConstructions } from './thai/constructions';
+import { makeThaiParadigm } from './thai/paradigm';
+import { createThaiSegmentations, type ThaiSegmentation } from './thai/segmentations';
+import type { SegmentationCut } from '../core/paradigm';
+import { thFeaturesFromTableTags } from './thai/table-tags';
 import { segmentThaiProse } from './thai/prose';
 import {
   SENTENCE_FINAL_PARTICLES, THAI_COMPOUNDS, isChunkToken, makeThaiTokenizer, normalizeThai, segmentThaiSentences,
@@ -403,6 +407,17 @@ export const thAdapter: LanguageAdapter = {
   orthFeatures: (syllables) => thaiOrthFeatures(syllables),
   describeOrthFeature: (feature) => describeThaiOrthFeature(feature),
 
+  /** Thai does not inflect: `kind: 'none'` with the constructions to show instead of a table (thai/paradigm.ts). */
+  paradigm: (lemma, pos) => thParadigm(lemma, pos),
+  /** Thai has no inflection tables to map (thai/table-tags.ts). */
+  featuresFromTableTags: thFeaturesFromTableTags,
+  // Linguistic Engine V2: the cuts of a selection into words (Thai writes no spaces), chosen first, in the core's shape
+  segmentations: (text, context) => {
+    const s = thSegmentations(text, { context });
+    const cut = (c: ThaiSegmentation): SegmentationCut => ({ words: c.words.map((w) => ({ text: w.text, known: w.known, ...(w.readings[0] ? { lemma: w.readings[0].lemma, pos: w.readings[0].pos, ...(w.readings[0].gloss ? { gloss: w.readings[0].gloss } : {}) } : {}) })), confidence: c.confidence, basis: c.basis });
+    return { text: s.text, chosen: cut(s.chosen), alternatives: s.alternatives.map(cut), ...(s.reason ? { reason: s.reason } : {}) };
+  },
+
   pronunciation(token, analysis): PronunciationSupport {
     // ๆ (mai yamok) has no sound of its own: it is read by saying the word before it again
     if (token.surface === 'ๆ') {
@@ -493,6 +508,39 @@ export const thAdapter: LanguageAdapter = {
     return 'none';
   },
 };
+
+const thParadigm = makeThaiParadigm({
+  glossOf: (lemma, pos) => thLexicon.find(lemma, pos)?.gloss,
+  isUnit: (lemma) => thLexicon.entries.some((e) => e.lemma === lemma && e.notes?.unit === 'yes'),
+  classifiers: () => thClassifiers(),
+});
+
+let classifierList: Array<{ lemma: string; counts: string }> | undefined;
+/** The word list's classifiers with what each counts (from the annotation table), in word-list order. */
+function thClassifiers(): Array<{ lemma: string; counts: string }> {
+  if (!classifierList) {
+    classifierList = [];
+    for (const e of thLexicon.entries) {
+      if (e.pos !== 'CLF') continue;
+      const counts = ANNOTATIONS.get(annotationKey(e.lemma, 'CLF'))?.counts;
+      if (counts && !classifierList.some((c) => c.lemma === e.lemma)) classifierList.push({ lemma: e.lemma, counts });
+    }
+  }
+  return classifierList;
+}
+
+/**
+ * The cut of a selected Thai string the tokenizer chose and the plausible alternatives (cuts into words of the word list),
+ * each word with its readings. NOT a `LanguageAdapter` method (the contract has none): the card lane calls this named
+ * export. See thai/segmentations.ts and docs/ecosystem/linguistics/PARADIGMS-th.md.
+ */
+export const thSegmentations = createThaiSegmentations({
+  tokenize: tokenizeThai,
+  analyze: (tokens) => thAdapter.analyze(tokens),
+  isWord: (w) => thLexicon.has(w) || THAI_COMPOUNDS.includes(w),
+});
+export type { ThaiSegmentation, ThaiSegmentations, ThaiSegmentWord, ThaiSegmentationOptions } from './thai/segmentations';
+export { THAI_CONSTRUCTION_IDS } from './thai/paradigm';
 
 // ── numbers 0–999 999 ──
 const DIGIT = ['ศูนย์', 'หนึ่ง', 'สอง', 'สาม', 'สี่', 'ห้า', 'หก', 'เจ็ด', 'แปด', 'เก้า'];

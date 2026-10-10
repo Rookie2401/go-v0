@@ -35,6 +35,9 @@ import { VERB_SLOT_PATTERNS, buildPhraseRules } from './spanish/phrases';
 import { detectSpanishConstructions } from './spanish/constructions';
 import { segmentSpanishSentences } from './spanish/sentences';
 import { capitalInside, disambiguateSpanish } from './spanish/disambiguate';
+import { spanishCellFeatureSets, spanishParadigm } from './spanish/paradigm';
+import { cellOf, type ParadigmCell } from '../core/paradigm';
+import { spanishFeaturesFromTableTags } from './spanish/table-tags';
 
 const LANG = 'es' as const;
 const VERSION = '12';
@@ -784,6 +787,11 @@ export const esAdapter: LanguageAdapter = {
 
   morphFromTags,
   varietiesFromTags,
+  /** Linguistic Engine V2: the generated table of a verb, noun or adjective (spanish/paradigm.ts) and the dictionary table's tag map (spanish/table-tags.ts). */
+  paradigm: (lemma, pos) => spanishParadigm(lemma, pos, { known: (l, p) => knownLemma(l, p), genderOf: (l, p) => esLexicon.find(l, p)?.forms.map((f) => f.morph.Gender).find((g) => g !== undefined) }),
+  featuresFromTableTags: (tags, pos) => spanishFeaturesFromTableTags(tags, pos),
+  // the analysed reading projected onto the cells (comma lists split, Variant kept); empty when nothing matches, so the card falls back
+  cellsFor: (p, features) => { const out: ParadigmCell[] = []; for (const f of spanishCellFeatureSets(p.pos, features)) { const c = cellOf(p, f); if (c && !out.includes(c)) out.push(c); } return out; },
   describeMorph: (morph) => describeSpanishMorph(morph),
 };
 

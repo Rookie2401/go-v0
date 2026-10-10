@@ -1,12 +1,15 @@
 /**
- * The GoPractice shell: sign-in, the one active language, the three workspaces (GoReview | GoTell | Settings), the sync
+ * The GoPractice shell: the one active language, the three workspaces (GoReview | GoTell | Settings), the sync
  * indicator and the hash router. The shell holds no review or writing logic: GoReview and GoTell are separate packages
  * rendered into the same main area. No streaks, no points, no badges.
+ *
+ * An account is optional where the app runs inside the GoLearn extension: it then works on the device (the on-device Repository) and offers
+ * the account any time (#/signin). The hosted copy has no such repository and shows #/signin first, explaining that.
  *
  * Routes:  #/review[/session | /history/<item> | /transfer]   #/tell   #/settings   #/signin
  */
 import { append, clear, h, p } from './dom';
-import { createContext, type AppContext, type SyncView } from './context';
+import { createContext, type AppContext, type Mode, type SyncView } from './context';
 import type { Deps } from './ports';
 import * as reviewScreen from './screens/review';
 import * as settingsScreen from './screens/settings';
@@ -62,7 +65,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const navEl = h('nav', { class: 'topnav', 'aria-label': 'GoPractice' });
   const langWrap = h('div', { class: 'language' });
   const syncEl = h('p', { id: 'sync-indicator', class: 'sync', role: 'status', 'aria-live': 'polite' });
-  const header = h('header', { class: 'topbar' }, h('span', { class: 'brand' }, 'GoPractice'), navEl, langWrap, syncEl);
+  const acctEl = h('p', { class: 'account', id: 'account' });
+  const header = h('header', { class: 'topbar' }, h('span', { class: 'brand' }, 'GoPractice'), navEl, langWrap, syncEl, acctEl);
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   clear(root);
   root.append(h('div', { class: 'shell' }, header, main));
@@ -71,8 +75,9 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
 
   // ───────────── header ─────────────
 
-  function syncText(v: SyncView, signedIn: boolean): { text: string; kind: 'ok' | 'info' | 'error' } {
-    if (!signedIn) return { text: 'Not signed in', kind: 'info' };
+  function syncText(v: SyncView, mode: Mode): { text: string; kind: 'ok' | 'info' | 'error' } {
+    if (mode === 'none') return { text: 'Not signed in', kind: 'info' };
+    if (mode === 'device') return { text: 'On this device only', kind: 'info' };
     if (v.authExpired) return { text: 'Sign in again to sync. Nothing on this device was lost.', kind: 'error' };
     const s = v.status;
     if (!s) return { text: 'Sync not started', kind: 'info' };
@@ -84,36 +89,40 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     return { text: `Online · ${waiting} · ${last ? `last sync ${shortDate(new Date(last).toISOString())}` : 'not synced yet'}`, kind: 'ok' };
   }
 
-  function paintSync(v: SyncView, signedIn: boolean): void {
-    const t = syncText(v, signedIn);
+  function paintSync(v: SyncView, mode: Mode): void {
+    const t = syncText(v, mode);
     syncEl.textContent = t.text;
     syncEl.setAttribute('data-kind', t.kind);
   }
 
   async function refreshHeader(): Promise<void> {
     if (destroyed) return;
-    const session = await ctx.state.getSession();
+    const mode = await ctx.mode();
     if (destroyed) return;
     clear(navEl);
     for (const r of NAV) {
       const active = route === r.id || route.startsWith(`${r.id}/`);
       navEl.append(h('a', { href: `#/${r.id}`, 'data-route': r.id, ...(active ? { 'aria-current': 'page' } : {}) }, r.title));
     }
-    navEl.hidden = !session;
+    navEl.hidden = mode === 'none';
     clear(langWrap);
-    if (session) {
+    if (mode !== 'none') {
       const list = await ctx.enrolments();
       const id = await ctx.identity();
       if (destroyed) return;
       if (list.length) {
         const select = h('select', { id: 'language-select', name: 'language', 'aria-label': 'Language' },
-          ...list.map((e) => h('option', { value: e.enrolmentId, ...(id?.enrolmentId === e.enrolmentId ? { selected: true } : {}) }, `${e.languageId}${e.varietyId ? ` (${e.varietyId})` : ''}${e.teamId ? ` · ${e.teamId}` : ''}`))) as HTMLSelectElement;
+          ...list.map((e) => h('option', { value: e.enrolmentId, ...(id?.enrolmentId === e.enrolmentId ? { selected: true } : {}) }, `${e.languageId}${e.varietyId ? ` (${e.varietyId})` : ''}`))) as HTMLSelectElement;
         select.value = id?.enrolmentId ?? list[0].enrolmentId;
         select.addEventListener('change', () => { void switchLanguage(select.value); });
         langWrap.append(h('label', { class: 'language-label' }, h('span', { class: 'sr' }, 'Language '), select));
       }
     }
-    paintSync(await ctx.syncView(), !!session);
+    paintSync(await ctx.syncView(), mode);
+    // the account is offered any time, never required
+    clear(acctEl);
+    if (mode === 'device') acctEl.append(h('a', { href: '#/signin', id: 'account-link', class: 'account-link' }, 'Keep your progress across devices (optional)'));
+    else if (mode === 'account') acctEl.append(h('span', { id: 'account-state', class: 'account-state' }, 'Synced to your account'));
   }
 
   async function switchLanguage(enrolmentId: string): Promise<void> {
@@ -128,7 +137,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     } else await refreshHeader();
   }
 
-  const offSync = ctx.onSync((v) => { void ctx.state.getSession().then((s) => { if (!destroyed) paintSync(v, !!s); }); });
+  const offSync = ctx.onSync((v) => { void ctx.mode().then((m) => { if (!destroyed) paintSync(v, m); }); });
 
   // ───────────── routing ─────────────
 
@@ -136,10 +145,11 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const my = ++seq;
     for (const d of disposers) { try { d(); } catch { /* a screen's cleanup must not stop the next screen */ } }
     disposers = [];
-    const session = await ctx.state.getSession();
+    const mode = await ctx.mode();
     let target: RouteDef['id'] = id;
     let subs = params;
-    if (!session && target !== 'signin') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
+    // the hosted copy needs an account for anything but the sign-in page; inside the extension nothing is behind it
+    if (mode === 'none' && target !== 'signin') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
     if (my !== seq) return;
     const def = ROUTES.find((r) => r.id === target)!;
     route = [def.id, ...subs].join('/');
@@ -181,8 +191,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
 
   renderDone = (async () => {
     const initial = parseHash(win.location.hash);
-    const session = await ctx.state.getSession();
-    const first = initial ?? { id: (session ? 'review' : 'signin') as RouteDef['id'], params: [], path: session ? 'review' : 'signin' };
+    const open = (await ctx.mode()) !== 'none';
+    const first = initial ?? { id: (open ? 'review' : 'signin') as RouteDef['id'], params: [], path: open ? 'review' : 'signin' };
     if (win.location.hash !== `#/${first.path}` && !initial) win.location.hash = `#/${first.path}`;
     await show(first.id, first.params);
   })();

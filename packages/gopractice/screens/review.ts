@@ -35,9 +35,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     saving = [];
     clear(root);
     if (!model) {
-      const enrolments = await ctx.enrolments();
+      const [enrolments, mode] = await Promise.all([ctx.enrolments(), ctx.mode()]);
+      const setup = ctx.deps.links?.setup;
       append(root, [enrolments.length ? p('Choose a language above.') : h('div', { class: 'notice', id: 'no-enrolment' },
-        p('You have no language yet. GoPractice reviews what you met while reading, so set up a language in GoLearn first; it will appear here after the next sync.'),
+        p(mode === 'device'
+          ? 'You have no language yet. GoPractice reviews what you met while reading, so choose your language in GoLearn setup first; it appears here at once, and no account is needed.'
+          : 'You have no language yet. GoPractice reviews what you met while reading, so set up a language in GoLearn first; it will appear here after the next sync.'),
+        setup ? h('p', {}, h('a', { class: 'btn', id: 'link-setup', href: setup }, 'Choose your language')) : null,
         button('Check again', () => { void (async () => { await ctx.refreshProfile(); await paint(); })(); }, { id: 'recheck' }))]);
       return;
     }

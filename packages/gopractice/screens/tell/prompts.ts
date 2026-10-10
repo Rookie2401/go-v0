@@ -1,4 +1,4 @@
-/** #/tell/prompts[/<mode>] — the prompt picker: category tabs, the prompts of this language and team, "Suggest one for me". */
+/** #/tell/prompts[/<mode>] — the prompt picker: category tabs, the prompts of this language, "Suggest one for me". */
 import { CATEGORY_LABEL, createDraft, defaultCategory, isMode, MODE_INFO } from '../../../gotell/src/workspace/drafts';
 import { PROMPT_CATEGORIES, type PromptCategory, type WriterProfile, type WritingMode, type WritingPrompt } from '../../../gotell/src/types';
 import { profileSourceFor } from '../../../gotell/src/workspace/profileSource';
@@ -20,7 +20,6 @@ export async function render(env: TellEnv, params: string[]): Promise<void> {
   const { el, ctx, host, engine, view } = env;
   const mode: WritingMode = isMode(params[0]) ? params[0] : 'guided';
   let category: PromptCategory | 'all' = defaultCategory(mode);
-  const teamId = host.identity.teamId;
   const status = statusLine();
   const tabs = h('div', { class: 'tell-tabs', role: 'tablist', 'aria-label': 'Prompt categories', id: 'tell-categories' });
   const list = h('ul', { class: 'tell-prompts', id: 'tell-prompt-list' });
@@ -52,7 +51,7 @@ export async function render(env: TellEnv, params: string[]): Promise<void> {
   function paintList(): void {
     clear(list);
     testimonyNote.hidden = !(mode === 'testimony' || category === 'testimony');
-    const prompts = engine.prompts({ mode, ...(category === 'all' ? {} : { category }), ...(teamId ? { teamId } : {}) });
+    const prompts = engine.prompts({ mode, ...(category === 'all' ? {} : { category }) });
     if (!prompts.length) { list.append(h('li', { class: 'muted', id: 'tell-no-prompts' }, 'There are no prompts in this category for this mode and language yet. Try another tab, or write freely instead.')); return; }
     for (const pr of prompts) list.append(promptCard(pr, writeButton(pr)));
   }
@@ -66,7 +65,7 @@ export async function render(env: TellEnv, params: string[]): Promise<void> {
     }
     if (!view.alive()) return;
     if (!profile) { suggestion.append(p('A suggestion needs your profile, which could not be built right now. Pick a prompt from the list.', 'notice')); return; }
-    const pick = engine.suggestPrompt(profile, { mode, ...(category === 'all' ? {} : { category }), ...(teamId ? { teamId } : {}) });
+    const pick = engine.suggestPrompt(profile, { mode, ...(category === 'all' ? {} : { category }) });
     if (!pick) { suggestion.append(p('Nothing to suggest in this category. Try another tab.', 'notice')); return; }
     suggestion.append(h('div', { class: 'tell-suggest' },
       h('p', { class: 'strong' }, 'Suggested for you'),

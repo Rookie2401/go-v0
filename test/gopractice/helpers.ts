@@ -16,6 +16,7 @@ import type { ApiResult, RepositoryApi } from '../../packages/repository-service
 import { createMemoryArea } from '../../packages/repository-sync/src';
 import type { Transport } from '../../packages/repository-sync/src';
 import { createApp, type AppHandle } from '../../packages/gopractice/app';
+import type { LocalRepo } from '../../packages/gopractice/localRepo';
 import { createReviewEngine } from '../../packages/gopractice/engine';
 import type { AudioDeps, Deps } from '../../packages/gopractice/ports';
 
@@ -101,6 +102,26 @@ export class FakeService {
         return ok({ knowledge: unitIds ? all.filter((k) => unitIds.includes(k.unitId)) : all });
       },
       async unit(unitId: string) { net(false); return ok({ unit: { unitId } as never, relations: [], analyses: [] }); },
+      async appendEvents(events: GoEvent[]) {
+        net(false); const l = learner(); if (!l) return fail(401);
+        self.calls.push('appendEvents');
+        const list = self.events.get(l) ?? [];
+        const outcomes = events.map((e) => {
+          const issues = validateEvent(e);
+          if (issues.length) return { id: e.id, stored: false, issues };
+          if (list.some((x) => x.id === e.id)) return { id: e.id, stored: false, duplicateOf: e.id };
+          list.push({ ...e, seq: list.length + 1, recordedAt: e.at });
+          return { id: e.id, stored: true };
+        });
+        self.events.set(l, list);
+        return ok({ outcomes, stored: outcomes.filter((o) => o.stored).length, duplicates: outcomes.filter((o) => 'duplicateOf' in o).length, head: list.length, projected: true });
+      },
+      async listEvents(q: { afterSeq?: number; limit?: number } = {}) {
+        net(false); const l = learner(); if (!l) return fail(401);
+        self.calls.push('listEvents');
+        const list = self.events.get(l) ?? [];
+        return ok({ events: list.filter((e) => e.seq > (q.afterSeq ?? 0)).slice(0, q.limit ?? 500), head: list.length });
+      },
       async syncPush(req: SyncPushRequest) {
         net(true); const l = learner(); if (!l) return fail(401, 'expired');
         self.calls.push('syncPush');
@@ -152,6 +173,61 @@ export class FakeService {
     };
     return api as unknown as RepositoryApi;
   }
+}
+
+// ───────────────────────────── the on-device Repository ─────────────────────────────
+
+export interface FakeLocalRepo extends LocalRepo {
+  learnerId: string;
+  uploads: RepositoryApi[];
+  pulls: RepositoryApi[];
+  cleared: number;
+  closed: number;
+  /** The worker-style account calls (the extension's copy): who the worker was signed in as. */
+  connects: Array<{ email: string }>;
+  disconnects: number;
+  uploadFails: boolean;
+}
+
+export const LOCAL_LEARNER = 'LOC';
+
+/**
+ * The device's own Repository, backed by one more learner of the fake service (the service speaks the same routes). `uploadTo` models the
+ * real one: the device's events go to the account the remote api belongs to, under that account's learner and enrolment, same ids.
+ */
+export function fakeLocalRepo(service: FakeService, opts: { enrolments?: Array<Partial<Enrolment> & { languageId: string }>; worker?: boolean; activeLanguageId?: string } = {}): FakeLocalRepo {
+  const learnerId = LOCAL_LEARNER;
+  service.addAccount('local@device', '!', learnerId, (opts.enrolments ?? [{ languageId: 'sq', varietyId: 'sq-AL' }]).map((e) => ({ goals: [{ kind: 'reading' as const }], ...e })));
+  service.tokens.set('local-token', learnerId);
+  const repo: FakeLocalRepo = {
+    learnerId, uploads: [], pulls: [], cleared: 0, closed: 0, connects: [], disconnects: 0, uploadFails: false,
+    api: service.api('local-token'),
+    identity: async () => ({ learnerId, deviceId: 'dev-local' }),
+    async uploadTo(remote) {
+      if (repo.uploadFails) throw new Error('upload refused');
+      repo.uploads.push(remote);
+      const to = service.tokens.get(remote.token ?? '');
+      if (!to) throw new Error('not signed in');
+      const target = service.enrolments.get(to)?.[0];
+      const mine = service.storedEvents(learnerId);
+      for (const e of mine) if (!service.storedEvents(to).some((x) => x.id === e.id)) service.inject(to, { ...e, learnerId: to, enrolmentId: target?.enrolmentId ?? e.enrolmentId } as GoEvent);
+      return { sent: mine.length, duplicates: 0, failed: 0 };
+    },
+    async pullFrom(remote) { repo.pulls.push(remote); return { added: 0 }; },
+    async clear() { repo.cleared += 1; service.events.set(learnerId, []); },
+    close: () => { repo.closed += 1; },
+    ...(opts.activeLanguageId ? { activeLanguageId: async () => opts.activeLanguageId } : {}),
+  };
+  if (opts.worker) {
+    repo.connectAccount = async ({ email, password }) => {
+      const a = service.accounts.get(email);
+      if (!a || a.password !== password) return { ok: false, message: 'The email or password was not accepted.' };
+      repo.connects.push({ email });
+      return { ok: true };
+    };
+    repo.disconnectAccount = async () => { repo.disconnects += 1; };
+  }
+  return repo;
 }
 
 // ───────────────────────────── fake exercises ─────────────────────────────
@@ -276,6 +352,8 @@ export interface Rig {
   root: HTMLElement;
   app: AppHandle;
   service: FakeService;
+  /** The on-device Repository, when the rig runs as the extension's copy. */
+  local: FakeLocalRepo | undefined;
   area: ReturnType<typeof createMemoryArea>;
   audio: FakeAudio | null;
   clock: Clock;
@@ -292,6 +370,9 @@ export interface RigOptions {
   audio?: FakeAudio | null;
   config?: Deps['config'];
   transport?: (api: RepositoryApi) => Transport;
+  /** Run as the extension's copy of GoPractice: the device's own Repository answers, and no account is needed. `true` makes a default one. */
+  local?: FakeLocalRepo | boolean | { worker?: boolean; activeLanguageId?: string };
+  links?: Deps['links'];
   /** Sign in as the default account before returning. */
   signedIn?: boolean;
   builders?: ExerciseBuilder[];
@@ -334,7 +415,12 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const engine = createReviewEngine({
     builders: opts.builders ?? FAKE_BUILDERS, evidenceFor: fakeEvidenceFor, ratingFor, factsFor: () => fakeFacts, now, random: () => 0.5,
   });
+  const local: FakeLocalRepo | undefined = !opts.local ? undefined
+    : typeof opts.local === 'object' && 'uploads' in opts.local ? opts.local
+      : fakeLocalRepo(service, typeof opts.local === 'object' ? opts.local : {});
   const deps: Deps = {
+    ...(local ? { local: async () => local } : {}),
+    ...(opts.links ? { links: opts.links } : {}),
     win: window, doc: document, fetch: (() => { throw new Error('no network in tests'); }) as unknown as typeof fetch, area, config: opts.config ?? { serviceUrl: 'https://repository.example.org' },
     createApi: (_url, token) => service.api(token),
     ...(opts.transport ? { createTransport: opts.transport } : {}),
@@ -344,7 +430,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const app = createApp(root, deps);
   await app.ready();
   const rig: Rig = {
-    root, app, service, area, audio, clock, deps,
+    root, app, service, local, area, audio, clock, deps,
     q<T extends HTMLElement>(sel: string): T { const e = root.querySelector<T>(sel); if (!e) throw new Error(`no element matches ${sel}`); return e; },
     qa<T extends HTMLElement>(sel: string): T[] { return [...root.querySelectorAll<T>(sel)]; },
     async go(route) { await app.go(route); await app.ready(); await flush(3); },

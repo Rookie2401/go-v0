@@ -7,7 +7,7 @@ import type { GoEvent } from '../../../repository-contract/src';
 import type { MetricsRow } from '../metrics';
 import { MSG, type ContentChromeApi } from '../platform';
 import type {
-  CorrectReply, CorrectRequest, ExplainReply, ExplainRequest, GlossReply, GlossRequest, PronounceInfoReply, ProfileReply, ProfileRequest, PublicStatus, RecordReply,
+  ActiveReply, CorrectReply, CorrectRequest, ExplainReply, ExplainRequest, GlossReply, GlossRequest, PronounceInfoReply, ProfileReply, ProfileRequest, PublicStatus, RecordReply,
 } from '../protocol';
 import type { WriteResult } from '../store';
 
@@ -22,6 +22,8 @@ export interface ContentServices {
   explain(req: ExplainRequest): Promise<ExplainReply | undefined>;
   correct(req: CorrectRequest): Promise<CorrectReply | undefined>;
   pronounceInfo(languageId: string): Promise<PronounceInfoReply | undefined>;
+  /** The GoLearn Active switches (read only: a content script cannot set them). Optional: test fakes without it mean "never asked". */
+  active?(): Promise<ActiveReply | undefined>;
 }
 
 export interface Bridge extends ContentServices { events: EventSink; metrics: MetricSink }
@@ -50,6 +52,7 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     explain: (req) => call<ExplainReply>(MSG.explain, { ...req }),
     correct: (req) => call<CorrectReply>(MSG.correct, { ...req }),
     pronounceInfo: (languageId) => call<PronounceInfoReply>(MSG.pronounceInfo, { languageId }),
+    active: () => call<ActiveReply>(MSG.active, { op: 'get' }),
     events: {
       async append(event): Promise<WriteResult> {
         const r = await call<RecordReply>(MSG.record, { event });

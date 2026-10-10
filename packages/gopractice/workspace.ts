@@ -89,15 +89,15 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   let audio: AudioAvailability = NO_AUDIO;
   if (audioDeps) { try { audio = await audioDeps.availability(identity.languageId); } catch { audio = { ...NO_AUDIO, reason: 'audio availability could not be determined' }; } }
 
-  // candidates: live when the service answers, else the last list it sent
+  // candidates: live when the service (or, with no account, the device's own Repository) answers, else the last list it sent
   let candidates: ReviewCandidate[] = [];
   let knowledge: UnitKnowledge[] = [];
   let candidateSource: ReviewModel['candidateSource'] = 'none';
   let candidateNote: string | undefined;
   const cacheKey = candidatesKey(identity.learnerId, identity.enrolmentId);
   try {
-    const { api, session } = await ctx.api();
-    if (!session) throw new Error('not signed in');
+    const { api } = await ctx.api();
+    if ((await ctx.mode()) === 'none') throw new Error('not signed in');
     const c = await api.candidates(identity.enrolmentId, 40);
     if (!c.ok) throw new Error(c.message || `the service answered ${c.status}`);
     candidates = c.data.candidates;

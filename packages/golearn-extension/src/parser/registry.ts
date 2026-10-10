@@ -27,6 +27,9 @@ export const LANGUAGE_META: Readonly<Record<string, LanguageMeta>> = {
   de: { lang: 'de', name: 'German', pageTag: /^de(-|$)/, experimental: 'The German pack is experimental: lemmatisation is seed-only (a machine-drafted word list), morphology is limited, and nothing has been reviewed by a native speaker.' },
   hi: { lang: 'hi', name: 'Hindi', pageTag: /^hi(-|$)/, experimental: 'The Hindi pack is experimental: lemmatisation is seed-only (a machine-drafted word list), morphology is limited, and nothing has been reviewed by a native speaker.' },
   th: { lang: 'th', name: 'Thai', pageTag: /^th(-|$)/, experimental: 'The Thai pack is experimental: lemmatisation is seed-only (a machine-drafted word list of about 600 entries), word segmentation is limited, and nothing has been reviewed by a native speaker.' },
+  // A page that declares plain "no" is not noted for either Norwegian pack: "no" does not say which written standard, and the learner's pack decides.
+  nb: { lang: 'nb', name: 'Norwegian (Bokmål)', pageTag: /^(nb|no)(-|$)/, experimental: 'The Norwegian (Bokmål) pack is experimental: lemmatisation is seed-only (a machine-drafted word list), morphology and rules are limited, and nothing has been reviewed by a native speaker. Nynorsk words are never credited to it.' },
+  nn: { lang: 'nn', name: 'Norwegian (Nynorsk)', pageTag: /^(nn|no)(-|$)/, experimental: 'The Norwegian (Nynorsk) pack is experimental: lemmatisation is seed-only (a machine-drafted word list, smaller than the Bokmål one), morphology and rules are limited, and nothing has been reviewed by a native speaker. Bokmål words are never credited to it.' },
 };
 
 /** The languages the parser CAN read (an analyser exists for them, loaded or not). */

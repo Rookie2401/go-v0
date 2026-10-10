@@ -89,7 +89,7 @@ describe('who may send which message', () => {
     ];
     for (const sender of senders) {
       for (const type of types) {
-        if (([MSG.enable, MSG.disable, MSG.lookup, MSG.ping] as string[]).includes(type)) continue; // messages TO a tab are not for the worker
+        if (([MSG.enable, MSG.disable, MSG.lookup, MSG.ping, MSG.activate, MSG.deactivate] as string[]).includes(type)) continue; // messages TO a tab are not for the worker
         const r = await x.rig.fake.dispatch({ type, event: pendingEvent(), baseUrl: 'https://evil.example', tabId: 7, op: 'set', patch: { remoteSpeechConsent: true } }, sender);
         expect(r, `${type} ${JSON.stringify(sender)}`).toEqual(FORBIDDEN);
       }
@@ -115,9 +115,9 @@ describe('who may send which message', () => {
     expect(x.rig.sent.filter((s) => s.origin !== SERVICE)).toEqual([]);
   });
 
-  it('messages that GoLearn sends TO a tab (enable, disable, lookup, ping) are not handled by the worker, so a page or another sender cannot use them to reach it', async () => {
+  it('messages that GoLearn sends TO a tab (enable, disable, lookup, ping, activate, deactivate) are not handled by the worker, so a page or another sender cannot use them to reach it', async () => {
     const x = await readyRig();
-    for (const type of [MSG.enable, MSG.disable, MSG.lookup, MSG.ping]) {
+    for (const type of [MSG.enable, MSG.disable, MSG.lookup, MSG.ping, MSG.activate, MSG.deactivate]) {
       expect(await x.rig.fake.dispatch({ type }, TAB)).toBeUndefined();
       expect(await x.rig.fake.dispatch({ type }, PAGE)).toBeUndefined();
     }

@@ -155,3 +155,11 @@ table.examples th { font-weight: 600; font-size: 1.15rem; white-space: nowrap; }
   .steps a, .enrolments li, .status-list li { transition: padding-left .15s, background-color .15s; }
   .screen > h1, .screen > .body { animation: screen-in .22s ease-out both; }
 }
+
+/* the language screen: six cards in one quiet column; the card the learner picked is marked by its rule, not by colour alone */
+.lang .native { font-weight: 400; font-style: italic; color: var(--muted); text-transform: none; letter-spacing: 0; }
+.lang h3 { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin: .9rem 0 .2rem; }
+.lang ul { margin: .2rem 0 .4rem; padding-inline-start: 1.2rem; }
+.lang.chosen { border-color: var(--accent); border-inline-start-width: 4px; }
+.status-note { font-weight: 600; margin: .4rem 0 1rem; }
+.status-note[data-state="synced"]::before { content: '✓ '; color: var(--ok); }

@@ -58,7 +58,9 @@ describe('page -> bridge -> background -> service', () => {
     await out.settled;
     expect(out.recorded).toBe('recorded');
     expect(text(ui)).toContain('shtëpi (NOUN)');
-    expect(text(ui)).toContain('Not connected: your history with this word is not shown.');
+    // no account, but the device's own Repository answers: the history line is the learner's local one, never "not connected"
+    expect(text(ui)).toMatch(/You have (not met this word before|met this word \d+ time)/);
+    expect(text(ui)).not.toContain('Not connected');
     expect(rig.log).toEqual([]);
     const local = Object.values(await rig.fake.local.get(null)).filter((v) => (v as { learnerId?: string })?.learnerId?.startsWith('local:'));
     expect(local).toHaveLength(2);

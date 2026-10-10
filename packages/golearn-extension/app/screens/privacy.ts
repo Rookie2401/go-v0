@@ -21,9 +21,9 @@ export const DEPTH_LABEL: Record<ExplanationDepth | 'auto', string> = {
 export const exportFilename = (now: Date): string => `golearn-export-${now.toISOString().slice(0, 10)}.json`;
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
-  const [settings, session] = await Promise.all([ctx.state.getSettings(), ctx.state.getSession()]);
+  const [settings, active, session] = await Promise.all([ctx.state.getSettings(), ctx.activeLanguage(), ctx.state.getSession()]);
   if (!view.alive()) return;
-  const pack = session?.languageId ? ctx.deps.packs.packFor(session.languageId) : ctx.deps.packs.packs().find((x) => x.status === 'installable');
+  const pack = active?.languageId ? ctx.deps.packs.packFor(active.languageId) : ctx.deps.packs.packs().find((x) => x.status === 'installable');
   const provider = pack?.remoteVoiceProvider ?? 'no provider is named';
   const saved = statusLine();
 
@@ -58,7 +58,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       h('h2', { id: 'priv-speech' }, 'Remote speech'),
       toggle('remote-speech', `Allow a remote speech provider (${provider}) to say words for me`, settings.remoteSpeechConsent, async (v) => {
         // recorded as a ConsentGiven / ConsentWithdrawn event (scope remote-speech); switched on only once the record is made
-        const r = await setRemoteSpeechConsent(ctx, v, session?.languageId || pack?.languageId);
+        const r = await setRemoteSpeechConsent(ctx, v, active?.languageId || pack?.languageId);
         return r.ok ? r.settings.remoteSpeechConsent : { value: r.settings.remoteSpeechConsent, message: r.message };
       }),
       p(`What would be sent: only the word or phrase you ask to hear and its language, to ${provider}, when you press “Pronounce” and a speech key has been set up by you; never the page, the surrounding sentence or your name. Nothing is sent otherwise. This build’s card plays only voices that are already on your device, so nothing is sent today; the switch records your consent for when a remote voice is offered.`, 'muted')),
@@ -96,6 +96,29 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         setStatus(exportOut, 'Device rows exported.', 'ok');
       }, { id: 'export-local' })),
     exportOut)]);
+
+  // ── clear local data (explicit: signing out never does this)
+  const clearOut = statusLine();
+  let armed = false;
+  const clearBtn = button('Clear local data', () => {
+    void (async () => {
+      if (!armed) {
+        armed = true;
+        clearBtn.textContent = 'Click again to clear';
+        setStatus(clearOut, 'This removes the lookups, the waiting queue and the on-device record kept on this device. An account, if you have one, is not touched. Move on to cancel.', 'info');
+        return;
+      }
+      armed = false;
+      clearBtn.textContent = 'Clear local data';
+      const n = await ctx.clearLocal();
+      setStatus(clearOut, `Cleared the local data on this device (${n} row${n === 1 ? '' : 's'}).`, 'ok');
+    })();
+  }, { id: 'clear-local', class: 'btn danger' });
+  clearBtn.addEventListener('blur', () => { if (armed) { armed = false; clearBtn.textContent = 'Clear local data'; setStatus(clearOut, 'Nothing was cleared.', 'info'); } });
+  append(el, [h('section', { class: 'card', 'aria-labelledby': 'priv-clear' },
+    h('h2', { id: 'priv-clear' }, 'Local data on this device'),
+    p('Your lookups and the record GoLearn keeps for you are stored on this device first. Signing out leaves them here; clearing them is a separate, deliberate step.'),
+    h('div', { class: 'row' }, clearBtn), clearOut)]);
 
   // ── delete
   const deleteOut = statusLine();

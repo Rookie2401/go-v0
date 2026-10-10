@@ -137,7 +137,7 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
   let token = '';
   let constructionId = '';
 
-  it('1–5. launch GoLearn, create the account, choose Team Albania, install the Albanian pack, skip the orientation', async () => {
+  it('1–5. launch GoLearn, create the account, choose Albanian (no team: any learner picks any language), install the Albanian pack, skip the orientation', async () => {
     document.body.innerHTML = '<div id="app"></div>';
     window.location.hash = '';
     const deps: Deps = {
@@ -159,16 +159,16 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
     learnerId = session.learnerId; token = session.token;
     expect(JSON.stringify(await area.get(null))).not.toContain(PASSWORD);
 
-    await store.putTeam({ teamId: 'albania', name: 'Albania', createdAt: clock() });
-    await store.putTeamMember('albania', learnerId, 'member', clock());
-    await go('team');
-    choose(q('#team'), 'albania');
-    expect(q<HTMLSelectElement>('#language').value).toBe('sq');
+    // since 2026-10-09 there are no teams in the apps: the language screen offers every language, and the enrolment names none
+    await go('language');
+    expect(document.querySelector('#team')).toBeNull();
+    choose(q('#language'), 'sq');
     submit(q<HTMLFormElement>('#enrol-form'));
-    await until(() => /Enrolled:/.test(q('#enrol-form .status').textContent ?? ''), 8000);
+    await until(() => /Chosen:/.test(q('#enrol-form .status').textContent ?? ''), 8000);
     const enrolment = (await store.listEnrolments(learnerId))[0];
     enrolmentId = enrolment.enrolmentId;
-    expect(enrolment).toMatchObject({ teamId: 'albania', languageId: 'sq', packId: 'pack:sq' });
+    expect(enrolment).toMatchObject({ languageId: 'sq', packId: 'pack:sq' });
+    expect(enrolment.teamId).toBeUndefined();
     await flush(30);
 
     await go('pack');
@@ -326,21 +326,21 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
     expect((await store.list({ learnerId: session.learnerId, kinds: ['AssessmentAnswered'] })).length).toBe(0);
   });
 
-  it('language switching: an enrolment in a planned language (Norwegian) is honest about the missing pack', async () => {
+  it('language switching: an enrolment in a language with no pack (Norwegian became installable on 2026-10-09, so a placeholder id is used) is honest about the missing pack', async () => {
     const api = createRepositoryApi({ baseUrl: 'http://127.0.0.1:8790', fetch: serviceFetch, token: ((await area.get('golearn:session'))['golearn:session'] as { token: string }).token });
-    const e = await api.enrol({ languageId: 'nb', packId: 'pack:nb', packVersion: '2', goals: [{ kind: 'reading' }] });
+    const e = await api.enrol({ languageId: 'xx', packId: 'pack:xx', packVersion: '2', goals: [{ kind: 'reading' }] });
     expect(e.ok).toBe(true);
     if (!e.ok) return;
     await page({ type: MSG.refreshSession });
     const selected = await page({ type: MSG.selectEnrolment, enrolmentId: e.data.enrolment.enrolmentId });
     const st = await page({ type: MSG.status });
     expect(JSON.stringify(selected)).not.toMatch(/"ok":false/);
-    expect(st.languageId).toBe('nb');
+    expect(st.languageId).toBe('xx');
     expect(st.packAvailable).toBe(false);
     const r = reader();
     selectText(q('#passage'), 'librin');
     const out = await r.c.lookup({ trigger: 'command' });
     expect(['shown', 'message']).toContain(out.status);
-    expect(r.text()).toMatch(/pack|Norwegian|not (yet )?available/i);
+    expect(r.text()).toMatch(/pack|not (yet )?available/i);
   });
 });

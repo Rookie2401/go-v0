@@ -7,11 +7,12 @@ import { describe, expect, it } from 'vitest';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
 import {
-  BOOK_MIN_CONFIDENCE, DOCUMENT_MIN_CONFIDENCE, MIN_TOKENS, PACK_VARIETIES, TEAM_DEFAULT_CONFIDENCE,
+  BOOK_MIN_CONFIDENCE, DOCUMENT_MIN_CONFIDENCE, MIN_TOKENS, NORWEGIAN_UNSPECIFIED_CONFIDENCE, PACK_VARIETIES, TEAM_DEFAULT_CONFIDENCE, isUnspecifiedNorwegian,
   createLanguageResolver, mapLanguageTag, resolveLanguage,
 } from '../../packages/golearn-extension/src/language/resolve';
 import type { LanguageEvidence } from '../../packages/golearn-extension/src/language/resolve';
 import { PACKS } from '../../packages/language-packs/src';
+import { clearAnalysers } from '../../packages/golearn-extension/src/parser';
 import { registerAllAnalysers } from '../support/analysers';
 
 registerAllAnalysers(); // the parser carries Albanian; the other analysers are chunks the content script loads on demand
@@ -158,6 +159,31 @@ describe('BCP-47 tags map to pack languages', () => {
     expect(resolveLanguage({ documentLanguage: doc('nn', 'html-lang', 0.8), installed: ['nb', 'nn'] })).toMatchObject({ languageId: 'nn' });
   });
 
+  it('a bare "no" is settled by the learner’s own installed pack only when exactly one Norwegian pack is installed, and then at a lowered confidence that says so', () => {
+    expect(['no', 'no-NO', 'nor', 'NO_no'].map(isUnspecifiedNorwegian)).toEqual([true, true, true, true]);
+    expect(['nb', 'nn', 'nb-NO', 'de', 'norsk'].map(isUnspecifiedNorwegian)).toEqual([false, false, false, false, false]);
+    const onlyNb = resolveLanguage({ documentLanguage: doc('no', 'html-lang', 0.8), installed: ['nb', 'de'] });
+    expect(onlyNb).toMatchObject({ languageId: 'nb', basis: 'document-metadata', confidence: NORWEGIAN_UNSPECIFIED_CONFIDENCE });
+    expect(onlyNb.reasons.join(' ')).toMatch(/"no", which is Norwegian without a written standard; Bokmål \(nb\) is the only Norwegian pack installed, so the learner's own choice of pack decides it/);
+    const onlyNn = resolveLanguage({ documentLanguage: doc('no-NO', 'html-lang', 0.9), installed: ['nn'] });
+    expect(onlyNn).toMatchObject({ languageId: 'nn', basis: 'document-metadata', confidence: NORWEGIAN_UNSPECIFIED_CONFIDENCE });
+    expect(resolveLanguage({ override: 'no', installed: ['nn'] })).toMatchObject({ languageId: 'nn', basis: 'override', confidence: NORWEGIAN_UNSPECIFIED_CONFIDENCE });
+    expect(resolveLanguage({ bookLanguage: { languageId: 'no', source: 'opf', confidence: 0.95 }, installed: ['nb'] })).toMatchObject({ languageId: 'nb', basis: 'book-metadata' });
+    // both installed, or neither: "no" decides nothing
+    expect(resolveLanguage({ documentLanguage: doc('no', 'html-lang', 0.8), installed: ['nb', 'nn'] })).toMatchObject({ basis: 'undetermined' });
+    const neither = resolveLanguage({ documentLanguage: doc('no', 'html-lang', 0.8), installed: ['de', 'sq'] });
+    expect(neither.languageId).toBeUndefined();
+    expect(neither.reasons.join(' ')).toMatch(/Bokmål \(nb\) and Nynorsk \(nn\)/);
+  });
+
+  it('a page declaring nb or nn resolves directly to that pack when it is installed, and is undetermined (not read with the other standard) when it is not', () => {
+    expect(resolveLanguage({ documentLanguage: doc('nb', 'html-lang', 0.8), installed: ['nb'] })).toMatchObject({ languageId: 'nb', basis: 'document-metadata', confidence: 0.8 });
+    expect(resolveLanguage({ documentLanguage: doc('nn-NO', 'html-lang', 0.8), installed: ['nn'] })).toMatchObject({ languageId: 'nn' });
+    const wrongStandard = resolveLanguage({ documentLanguage: doc('nn', 'html-lang', 0.8), installed: ['nb'], teamDefault: 'nb' });
+    expect(wrongStandard).toMatchObject({ basis: 'undetermined' });
+    expect(wrongStandard.reasons.join(' ')).toMatch(/names nn, but the nn pack is not installed/);
+  });
+
   it('a Norwegian page that says only "no" is settled by an explicit enrolment in Bokmål, not guessed', () => {
     const r = resolveLanguage({ documentLanguage: doc('no', 'html-lang', 0.8), installed: ['nb', 'nn'], teamDefault: 'nb' });
     expect(r).toMatchObject({ languageId: 'nb', basis: 'team-default', confidence: TEAM_DEFAULT_CONFIDENCE });
@@ -254,16 +280,29 @@ describe('rung 4: detection from the sample (script, then the installed packs’
     expect(close.reasons.join(' ')).toMatch(/too close to call/);
   });
 
-  it('without the Norwegian word lists injected, an installed nb/nn is named as not compared, and German is still found', () => {
+  it('the default resolver compares Norwegian too (the parser holds the nb and nn word lists), so German is found with a table that includes them', () => {
     const r = resolveLanguage({ installed: ['de', 'nb', 'nn'], sample: 'Ich lese das Buch.' });
     expect(r).toMatchObject({ languageId: 'de', basis: 'detection' });
-    expect(r.reasons.join(' ')).toMatch(/not compared: nb \(no word list available\), nn \(no word list available\)/);
+    expect(r.reasons.join(' ')).toMatch(/\(de 4\/4, nb \d\/4, nn \d\/4\)/);
+    expect(r.reasons.join(' ')).not.toMatch(/not compared/);
+    expect(resolveLanguage({ installed: ['nb', 'nn', 'de'], sample: 'Jeg leser boken i dag.' })).toMatchObject({ languageId: 'nb', basis: 'detection' });
+    expect(resolveLanguage({ installed: ['nb', 'nn', 'de'], sample: 'Han er ikkje heime no.' })).toMatchObject({ languageId: 'nn', basis: 'detection' });
+  });
+
+  it('where an analyser chunk has not been loaded, an installed nb/nn is named as not compared, and German is still found', () => {
+    clearAnalysers(['sq', 'es', 'de', 'hi', 'th']);
+    try {
+      const r = resolveLanguage({ installed: ['de', 'nb', 'nn'], sample: 'Ich lese das Buch.' });
+      expect(r).toMatchObject({ languageId: 'de', basis: 'detection' });
+      expect(r.reasons.join(' ')).toMatch(/not compared: nb \(no word list available\), nn \(no word list available\)/);
+    } finally { registerAllAnalysers(); }
   });
 });
 
 describe('the ambiguity rule: nothing is ever guessed from one word', () => {
-  it('"die" alone with German and Norwegian installed is undetermined, with the reason', () => {
-    const r = withNorwegian({ installed: ['de', 'nb'], sample: 'die' });
+  it('"die" alone with German and Norwegian installed is undetermined, with the reason (the default resolver and one handed the lists explicitly agree)', () => {
+    expect(resolveLanguage({ installed: ['de', 'nb'], sample: 'die' })).toEqual(withNorwegian({ installed: ['de', 'nb'], sample: 'die' }));
+    const r = resolveLanguage({ installed: ['de', 'nb'], sample: 'die' });
     expect(r).toMatchObject({ basis: 'undetermined', confidence: 0 });
     expect(r.languageId).toBeUndefined();
     expect(r.reasons.join(' ')).toMatch(/the sample has 1 word; fewer than 3 is never enough to detect a language/);

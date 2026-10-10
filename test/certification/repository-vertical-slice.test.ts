@@ -164,11 +164,10 @@ describe('§XVII steps 1–3: identity, Team Albania, the Albanian pack', () => 
     learnerId = session.learnerId; token = session.token;
     deviceId = ((await area.get('golearn:deviceId'))['golearn:deviceId'] as string | undefined) ?? session.deviceId ?? 'slice-device';
     api = createRepositoryApi({ baseUrl: BASE, fetch: realFetch, token });
-    await fileStore.putTeam({ teamId: 'albania', name: 'Albania', createdAt: nowIso() });          // a leader adds the member; no public route grants membership
-    await fileStore.putTeamMember('albania', learnerId, 'member', nowIso());
-    const e = ok<{ enrolment: { enrolmentId: string; teamId?: string } }>(await api.enrol({ teamId: 'albania', languageId: 'sq', packId: 'pack:sq', packVersion: '9', goals: [{ kind: 'reading' }] }));
+    // any learner picks any language freely: the enrolment names no team (there are none in the apps since 2026-10-09)
+    const e = ok<{ enrolment: { enrolmentId: string; teamId?: string } }>(await api.enrol({ languageId: 'sq', packId: 'pack:sq', packVersion: '9', goals: [{ kind: 'reading' }] }));
     enrolmentId = e.enrolment.enrolmentId;
-    expect(e.enrolment.teamId).toBe('albania');
+    expect(e.enrolment.teamId).toBeUndefined();
     await page({ type: MSG.refreshSession });
     const st = await page({ type: MSG.status });
     expect(st).toMatchObject({ connected: true, languageId: 'sq', packAvailable: true });

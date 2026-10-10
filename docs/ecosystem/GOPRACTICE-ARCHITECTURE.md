@@ -74,3 +74,33 @@ book; no AI-invented intervals (FSRS parameters untouched); no direct edits to t
 
 `packages/gotell` initialises from the Repository alone: "words you can use" from productive evidence, private drafts
 through the document store with revisions, no import of GoReview. The page says the writing engine is not there yet.
+
+## 7. With no account: the extension's copy (2026-10-09)
+
+GoPractice has two homes. The **hosted copy** (a static site) keeps its data on an account, so it needs one. The **extension's copy**
+(`vite build -c packages/gopractice/vite.config.ts --mode extension` → `packages/golearn-extension/dist/practice/`, served as
+`chrome-extension://<id>/practice/index.html`, opened by the popup's **Practise** button or the setup page's Status screen) works on the
+device with no account. It is the same code; the difference is `Deps.local`.
+
+- **Detection.** `main.ts` asks `getExtension()` (`localBinding.ts`): the page must have `chrome.runtime.id` and be served from
+  `chrome-extension:`. Only then is `Deps.local` set. An ordinary tab with a `chrome` object is not an extension page.
+- **The device's Repository.** The extension keeps ONE on-device Repository (`packages/repository-local`) in its background worker, which also records
+  every GoLearn lookup into it. This page reaches it with `connectLocalRepository` over `MSG.localRepo`; it opens none of its own, because two copies
+  over one storage area would overwrite each other's rows. `LocalRepo` (`localRepo.ts`) is the shape the shell relies on (`api`, `identity`,
+  `uploadTo`, `pullFrom`, `clear`, and the extension-only `connectAccount` / `disconnectAccount` / `activeLanguageId`).
+- **Modes.** `ctx.mode()` is `account` (signed in), `device` (no account, a local Repository answers) or `none` (hosted copy, signed out).
+  `ctx.api()` returns the account's HTTP client, the local Repository's client, or the unauthenticated one, accordingly. The router no longer forces
+  `#/signin`: only `none` is sent there, and there the page says what the hosted copy is (`#hosted-copy`) and where the copy that needs no account lives
+  (a link from `config.json` → `extensionUrl`, else a sentence pointing at the toolbar button's **Practise**).
+- **Data.** In `device` mode the learner is the device's own anonymous one (`u:<local learner>:` in the page's storage: queue, log, preferences). The
+  sync client is the same one; its transport (`localTransport`) moves the queue into the Repository with `appendEvents` and brings everything the
+  Repository holds (GoLearn's lookups included) back with `listEvents`. GoReview's candidates and knowledge, and GoTell's drafts (`/documents`),
+  come from the local client. The enrolment label is the language and its variety (`sq (sq-AL)`); no team is shown, kept or sent.
+- **The account step.** Signing in (`#/signin`, offered any time from the header, never required) first signs the worker in to the same account
+  (`connectAccount`), then opens the page's own session as before, then `uploadTo` sends the device's history once; the page says how many events and the
+  header changes from "On this device only" to "Synced to your account". Signing out brings the account's history down first (`pullFrom`), signs the
+  worker out, and returns to `device` mode; nothing is removed. **Clear local data** (Settings) is the explicit removal: the Repository, the learner's
+  queue, log and preferences.
+- **Known limits.** The device copy and the account copy of this page are separate sessions (signing out of GoLearn's setup page does not sign GoPractice
+  out, and the other way round). `npm run ext:build` empties `dist/practice/`; build it again afterwards. The Repository answers `appendEvents` /
+  `listEvents` but not the sync routes through the worker's `api` channel, which is why the transport above exists.

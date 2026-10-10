@@ -1,7 +1,8 @@
 @echo off
-rem Starts everything needed to test the Go ecosystem on this PC:
+rem Starts what the OPTIONAL account step and the hosted copies need. The extension works without any of this: it keeps your lookups, reviews and
+rem drafts on the device, GoPractice runs as one of its pages (the Practise button), and no account or seeding is required.
 rem   - the Go Repository service on http://127.0.0.1:8790 (SQLite file under data\local-repository)
-rem   - GoPractice on http://localhost:5199
+rem   - the hosted GoPractice (it needs an account, and says so) on http://localhost:5199
 rem   - the GoLearn setup page (hosted copy, with the share screen) on http://localhost:5198
 rem Each runs in its own window; close the windows (or run scripts\local\stop.cmd) to stop.
 setlocal
@@ -19,6 +20,8 @@ echo  Repository service   http://127.0.0.1:8790/health
 echo  GoPractice           http://localhost:5199/
 echo  GoLearn setup page   http://localhost:5198/
 echo  Extension to load    %cd%\packages\golearn-extension\dist
+echo  GoPractice, no account: the Practise button in the extension popup (build it with
+echo    npx vite build -c packages/gopractice/vite.config.ts --mode extension, after npm run local:build)
 echo.
 echo  See docs\TEST-ON-THIS-PC.md for the Brave steps.
 endlocal

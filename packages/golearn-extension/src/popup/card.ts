@@ -56,6 +56,8 @@ export interface CardUI {
   setRecorded(status: RecordStatus): void;
   /** A one-line note about something the learner just did ("Saved for review."). */
   setFeedback(text: string): void;
+  /** Speak the open card's word once through its pronouncer, as the Pronounce button would; nothing when no voice exists (GoLearn Active). */
+  pronounce(): void;
   dismiss(reason: DismissReason): void;
   isOpen(): boolean;
   host(): HTMLElement | undefined;
@@ -201,7 +203,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let view: CardView = initialView('');
   let actions: CardActions = {};
   let parts: { rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement; layers: Record<LayerName, { btn: HTMLButtonElement; panel: HTMLElement }>; fix: HTMLFormElement; save: HTMLButtonElement; wrong: HTMLButtonElement } | undefined;
-  let pron: { available: boolean; note: string; playing: boolean; plays: number; off?: () => void } = { available: false, note: '', playing: false, plays: 0 };
+  // `autoPlay`: the render token of a card that should speak once as soon as its voice is known to be available (GoLearn Active's "Speak on click")
+  let pron: { available: boolean; note: string; playing: boolean; plays: number; off?: () => void; autoPlay?: number } = { available: false, note: '', playing: false, plays: 0 };
   let renderToken = 0;
 
   const h = (tag: string, props: Record<string, string> = {}, ...children: Child[]): HTMLElement => {
@@ -379,10 +382,17 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       pron.available = !!a?.available;
       pron.note = a ? a.note : 'Pronunciation is not available right now.';
       renderPron();
+      if (pron.autoPlay === token) { pron.autoPlay = undefined; if (pron.available) onPronounceClick(); }
     };
     let got: PronounceAvailability | Promise<PronounceAvailability>;
     try { got = pronouncer.availability(model.languageId); } catch { apply(undefined); return; }
     if (got instanceof Promise) void got.then(apply, () => apply(undefined)); else apply(got);
+  }
+
+  /** Speak the open card's word once, as the Pronounce button would (now, or as soon as the voice check says a voice exists; nothing when none does). */
+  function pronounce(): void {
+    if (!model || !open) return;
+    if (pron.available) onPronounceClick(); else pron.autoPlay = renderToken;
   }
 
   function onPronounceClick(): void {
@@ -665,7 +675,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   }
 
   return {
-    show, update, showMessage, reposition, setRecorded, setFeedback, dismiss,
+    show, update, showMessage, reposition, setRecorded, setFeedback, dismiss, pronounce,
     isOpen: () => open,
     host: () => host,
     root: () => root,

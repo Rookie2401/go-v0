@@ -9,6 +9,8 @@ export const DEFAULT_SERVICE_URL = 'http://127.0.0.1:8790';
 export interface AppConfig {
   /** Default service address (from config.json next to the app); the learner may override it in Settings or at sign-in. */
   serviceUrl?: string;
+  /** The extension's GoPractice page, for the hosted copy to point at (it cannot know the extension's id by itself). */
+  extensionUrl?: string;
   /** Where audio files for recorded stimuli are served from; relative to the app page, or absolute. */
   assetBaseUrl?: string;
 }
@@ -42,6 +44,7 @@ export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): 
     const out: AppConfig = {};
     if (typeof j.serviceUrl === 'string') { const c = validateServiceUrl(j.serviceUrl); if (c.ok) out.serviceUrl = c.url; }
     if (typeof j.assetBaseUrl === 'string' && j.assetBaseUrl) out.assetBaseUrl = j.assetBaseUrl;
+    if (typeof j.extensionUrl === 'string' && /^(https:|chrome-extension:)/.test(j.extensionUrl)) out.extensionUrl = j.extensionUrl;
     return out;
   } catch { return {}; }
 }

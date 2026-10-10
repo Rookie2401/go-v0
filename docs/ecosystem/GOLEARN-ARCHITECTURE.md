@@ -121,6 +121,25 @@ metadata; neither holds page text.
   `experimental`, planned = `unsupported`), lowered to `incomplete` when a validation case did not match at install. The Repository uses
   `level` and `validation` to caveat evidence that rests on an experimental or unreviewed analyser.
 
+## 7b. Local Repository (2026-10-09): GoLearn without an account
+
+An account is optional: a learner can use GoLearn on one device with none, and an account only keeps progress across devices. The background worker holds
+a **device-local Repository** (`packages/repository-local`, full description in `REPOSITORY-LOCAL.md`): the server's own store rules, projection engine,
+linguistic layer and request handler, run in-process over `chrome.storage.local` (rows under `golearn:repo:`), with a session made on the device and no
+password. It is opened when the worker registers.
+
+- **Recording.** Every event the recorder accepts goes to the local log and the sync queue as before, and is also appended to the local Repository (same id).
+  A lookup in a language with no local enrolment gets an automatic one; the learner's own choice (`MSG.localRepo` `enrol`, from the setup page) is the
+  active language when there is no session.
+- **The card.** With no session the learner-model lines come from the device (`ProfileReply.source = 'device'`, `connected: false`); with a session from the
+  account, and from the device for the units the cache lacks when the account cannot be reached.
+- **Signing in** uploads the device's history once (idempotent, 100 per request, to `/events`, `/reviews` or `/writing`), then pulls the account's; a second
+  sign-in sends nothing. Signing out keeps the history; "clear local data" removes the Repository's rows too.
+- **Pages** reach it with `MSG.localRepo` (`status`, `knowledge`, `candidates`, `export`, `enrol`, `select`, `upload`, `clear`, `api`...) or with the
+  `connectLocalRepository` proxy; a content script cannot. The worker is the only holder: a page never opens a second copy over the same storage.
+- **Boundaries.** The background now reaches `repository-local` and, through it, the store (memory only), the engine, the linguistic layer and the service's
+  client and handler; no other application reaches them (`conformance.structure.test.ts`). The worker's one network call is still its `fetch`.
+
 ## 8. Bundle layout
 
 Five languages are usable, but only Albanian is in the scripts that run on every page. German, Hindi, Thai and Spanish are
@@ -129,7 +148,7 @@ Five languages are usable, but only Albanian is in the scripts that run on every
 | file | what it holds | loaded |
 |---|---|---|
 | `content.js` | the controller, the reader adapters, the card, the language resolver, the parser and the **Albanian** analyser | injected on a gesture |
-| `background.js` | the service worker: session, sync, recorder, dictionary glosses through the pack runtime, with **Albanian** as its only analyser | the browser starts it |
+| `background.js` | the service worker: session, sync, recorder, dictionary glosses through the pack runtime, the device-local Repository (§7b), with **Albanian** as its only analyser | the browser starts it |
 | `analysers/{sq,es,de,hi,th}.js` (+ one small shared chunk) | the adapter of that language, exported as `adapter` | by `import()`, on demand; listed in the manifest's `web_accessible_resources` (`analysers/*.js`, `<all_urls>`) because the content script runs on any reading site |
 | `action/popup.js` | the toolbar popup | when opened |
 | `content.harness.js` | the same content script with the fixture hook (`<html data-fixture-url>` on loopback hosts) compiled in; **harness pages only**, built by `--mode content-harness` after `ext:build`, never named by the manifest, never shipped | by `harness/*.html` and `harness/sites/*.html` |
@@ -141,7 +160,7 @@ Sizes (minified, `npm run ext:build` and the options build; `test/extension/bund
 | file | before (all five inline) | now | ceiling |
 |---|---|---|---|
 | `content.js` | 1,406,237 B | 346,627 B (339 KB) | 520 KB |
-| `background.js` | 1,420,284 B | 347,363 B (339 KB) | 520 KB |
+| `background.js` | 1,420,284 B | 505,047 B (493 KB) — 347,363 B before the device-local Repository (§7b) | 520 KB |
 | `app/app.js` | 1,526,494 B | about 449,000 B (438 KB) | 650 KB |
 | `analysers/sq.js` / `es.js` / `de.js` / `hi.js` / `th.js` | — | 197 / 163 / 322 / 396 / 169 KB | — |
 

@@ -1,16 +1,19 @@
 // @vitest-environment node
 /**
- * German, Hindi and Thai go through the same manifest, installer, runtime and parser as Spanish did, at an honest
- * "experimental" level: installable, seed-only, unreviewed. These tests prove the wiring and keep the honesty notes.
+ * German, Hindi, Thai and Norwegian (Bokmål and Nynorsk) go through the same manifest, installer, runtime and parser as Spanish did,
+ * at an honest "experimental" level: installable, seed-only, unreviewed. These tests prove the wiring and keep the honesty notes.
+ * Norwegian has no dictionary in the repository, so its block is the same wiring without the dictionary checks.
  */
 import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
 import { hiAdapter } from '../../src/adapters/hi';
+import { nbAdapter } from '../../src/adapters/nb';
+import { nnAdapter } from '../../src/adapters/nn';
 import { thAdapter } from '../../src/adapters/th';
 import type { LanguageAdapter } from '../../src/core';
 import { PACK_IDS, PARSER_LANGUAGES, parseSelection, parserAdapter } from '../../packages/golearn-extension/src/parser';
 import {
-  DE_VALIDATION, HI_VALIDATION, KAIKKI_ATTRIBUTION, LEVEL_LABEL, MIN_VALIDATION_CASES, PACKS, TH_VALIDATION, createPackRuntime, installPack, installablePacks,
+  DE_VALIDATION, HI_VALIDATION, KAIKKI_ATTRIBUTION, LEVEL_LABEL, MIN_VALIDATION_CASES, NB_VALIDATION, NN_VALIDATION, PACKS, TH_VALIDATION, createPackRuntime, installPack, installablePacks,
   levelOf, packFor, readSelection, runCase, statusOf, validateManifest, verifyInstalled,
 } from '../../packages/language-packs/src';
 import type { ValidationCase } from '../../packages/language-packs/src';
@@ -141,15 +144,155 @@ describe.each(Object.keys(CASES))('the experimental %s pack', (lang) => {
   });
 });
 
-describe('German, Hindi and Thai in the extension parser', () => {
+const NORWEGIAN: Record<string, { adapter: LanguageAdapter; cases: ValidationCase[]; sentence: string }> = {
+  nb: { adapter: nbAdapter, cases: NB_VALIDATION, sentence: 'Jeg leser boken hver dag.' },
+  nn: { adapter: nnAdapter, cases: NN_VALIDATION, sentence: 'Eg les boka kvar dag.' },
+};
+
+describe.each(Object.keys(NORWEGIAN))('the experimental %s pack (no dictionary)', (lang) => {
+  const { adapter, cases } = NORWEGIAN[lang];
+  const m = () => packFor(lang)!;
+  const standard = lang === 'nb' ? 'Bokmål' : 'Nynorsk';
+
+  it('validates, is installable at the experimental level, is in the registry, and states its written standard on every variety', () => {
+    expect(validateManifest(m())).toEqual([]);
+    expect(m().status).toBe('installable');
+    expect(m().level).toBe('experimental');
+    expect(LEVEL_LABEL[levelOf(m())]).toBe('experimental, seed-only lemmatisation, unreviewed');
+    expect(installablePacks().map((p) => p.packId)).toContain(`pack:${lang}`);
+    expect(m().varieties.every((v) => v.writtenStandard === lang)).toBe(true);
+    expect(m().varieties[0].label).toContain(standard);
+  });
+
+  it('names the real adapter, its version and script, and declares no dictionary (none is built for Norwegian)', () => {
+    expect(m().version).toBe(String(adapter.version));
+    expect(m().analyzer.id).toBe(`adapter-${lang}@${adapter.version}`);
+    expect(m().scriptId).toBe(adapter.script);
+    expect(m().lexical.dictionary).toBeUndefined();
+    expect(m().rights.licences.some((l) => /CC BY-SA/.test(l.licence))).toBe(false);
+    expect(m().rights.provenance.join('\n')).toMatch(/no dictionary for this language in the repository/);
+  });
+
+  it('does not claim production readiness: machine-drafted everywhere, no recordings, the thin parts stated, a written standard that never credits the other', () => {
+    expect(m().rights.reviewStatus).toBe('machine-drafted');
+    expect(m().lexical.handLexicon.reviewStatus).toBe('machine-drafted');
+    const text = m().rights.provenance.join('\n');
+    expect(text).toMatch(/^Experimental, installable at a deliberately minimal level and not production-ready/);
+    expect(text).toMatch(/Thin:/);
+    expect(text).toMatch(/seed-only/);
+    expect(text).toMatch(/Nothing in this pack has been reviewed by a native speaker/);
+    expect(text).toMatch(/Norwegian has two written standards/);
+    expect(text).toMatch(lang === 'nb' ? /never credits Nynorsk words to it/ : /Nynorsk \(writtenStandard "nn"\)/);
+    expect(m().pronunciation.recordings).toBe('none');
+    expect(m().pronunciation.remoteVoice.requiresConsentAndKey).toBe(true);
+    const notes = createPackRuntime(m(), { fetch: diskFetch(), baseUrl: BASE }).coverageNotes().join('\n');
+    expect(notes).toMatch(/lemmatization seed-only/);
+    expect(notes).toMatch(/no native speaker has checked/);
+    expect(notes).toMatch(/No dictionary is declared for this pack/);
+    expect(notes).not.toMatch(/planned and cannot be installed/);
+  });
+
+  it('has 14 validation cases, with unique ids and sentences that contain their word; they are the ones the manifest declares', () => {
+    expect(cases).toHaveLength(14);
+    expect(cases.length).toBeGreaterThanOrEqual(MIN_VALIDATION_CASES);
+    expect(new Set(cases.map((c) => c.id)).size).toBe(cases.length);
+    expect(m().validation).toEqual(cases);
+    for (const c of cases) expect(c.sentence?.includes(c.surface), c.id).toBe(true);
+  });
+
+  it('every case passes on the real adapter, and says what the adapter really returns when it does not', () => {
+    for (const c of cases) expect(runCase(adapter, c), c.id).toEqual({ id: c.id, pass: true });
+    const wrong = runCase(adapter, { ...cases[0], expect: { lemma: 'zzz-not-a-lemma' } });
+    expect(wrong.pass).toBe(false);
+    expect(wrong.got).toMatch(/differs: lemma/);
+  });
+
+  it('the pack’s status rule and the Repository resolver’s agree on every case', () => {
+    const toRepo = (c: ReturnType<typeof readSelection>['candidates'][number]) => ({
+      confidence: c.confidence, features: c.morph ?? {}, lexemeId: c.lemma ? `lemma:${lang}:${c.lemma}:${c.pos ?? ''}` : undefined,
+      provenance: { source: (c.unconfirmed || c.origin === 'rule' ? 'rule' : 'hand-lexicon') as 'rule' | 'hand-lexicon', ref: 'x', confidence: c.confidence },
+    });
+    for (const c of cases) {
+      const r = readSelection(adapter, c.surface, c.sentence);
+      if (!r.top) continue;
+      const all = r.candidates.map(toRepo);
+      expect(statusFor(all[0], all, { unconfirmed: !!r.top.unconfirmed }), c.id).toBe(statusOf(r.top, r.candidates));
+    }
+  });
+
+  it('every construction id the pack explains is one the adapter really detects', () => {
+    const SENTENCES: Record<string, string[]> = {
+      nb: ['Han har ikke kjøpt bilen ennå.', 'Vi skal reise til Bergen i morgen.', 'Hun står opp klokka sju.'],
+      nn: ['Han har ikkje kjøpt bilen enno.', 'Vi skal reise til Bergen i morgon.', 'Ho står opp klokka sju.'],
+    };
+    const keys = new Set<string>();
+    for (const s of SENTENCES[lang]) {
+      const toks = adapter.tokenize(s);
+      for (const p of adapter.detectPatterns(toks, adapter.analyze(toks))) keys.add(p.key);
+    }
+    expect(m().grammar.constructions.map((c) => c.id)).toEqual(['perfect-har', 'modal-bare-infinitive', 'particle-verb']);
+    for (const c of m().grammar.constructions) expect(keys.has(c.id), c.id).toBe(true);
+  });
+
+  it('the runtime bundles the analyser (no deps.adapter needed)', () => {
+    const a = createPackRuntime(m(), { fetch: diskFetch(), baseUrl: BASE }).analyzer();
+    expect(a.kind).toBe('adapter');
+    expect(a.id).toBe(m().analyzer.id);
+    expect(a.adapter).toBe(adapter);
+  });
+
+  it('installs without fetching anything: the dictionary checks are recorded as not declared, every case runs, the record is read back', async () => {
+    const storage = memoryStorage();
+    const f = diskFetch();
+    const r = await installPack(m(), { fetch: f, baseUrl: BASE, storage, now: () => '2026-10-09T08:00:00.000Z' });
+    if (!r.ok) throw new Error(`${r.reason}: ${r.detail}`);
+    expect(f.calls).toEqual([]);
+    expect(r).toMatchObject({ ok: true, validationFailures: 0 });
+    expect(r.verified).toMatchObject({ dictionaryManifest: false, sampleShard: false, dictionary: 'none-declared' });
+    expect(r.verified.validation).toHaveLength(14);
+    expect(await verifyInstalled(m(), storage)).toMatchObject({ installed: true, current: true, validationFailures: 0 });
+  });
+
+  it('a gloss is honestly absent: the runtime has no dictionary to ask', async () => {
+    const rt = createPackRuntime(m(), { fetch: diskFetch(), baseUrl: BASE });
+    expect(await rt.gloss(NORWEGIAN[lang].cases[0].expect.lemma!)).toBeUndefined();
+  });
+});
+
+describe('German, Hindi, Thai and Norwegian in the extension parser', () => {
   it('the parser registry lists them, with pack ids that carry the adapter version, and exposes their adapters to the resolver', () => {
-    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th']);
-    expect(PACK_IDS).toMatchObject({ de: `pack:de:${deAdapter.version}`, hi: `pack:hi:${hiAdapter.version}`, th: `pack:th:${thAdapter.version}` });
+    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']);
+    expect(PACK_IDS).toMatchObject({ de: `pack:de:${deAdapter.version}`, hi: `pack:hi:${hiAdapter.version}`, th: `pack:th:${thAdapter.version}`, nb: `pack:nb:${nbAdapter.version}`, nn: `pack:nn:${nnAdapter.version}` });
     expect(parserAdapter('de')).toBe(deAdapter);
     expect(parserAdapter('hi')).toBe(hiAdapter);
     expect(parserAdapter('th')).toBe(thAdapter);
-    expect(parserAdapter('nb')).toBeUndefined();
+    expect(parserAdapter('nb')).toBe(nbAdapter);
+    expect(parserAdapter('nn')).toBe(nnAdapter);
+    expect(parserAdapter('sv')).toBeUndefined();
     expect(parserAdapter('constructor')).toBeUndefined();
+  });
+
+  it('a Bokmål card and a Nynorsk card carry their own language, pack id, analyser id and experimental limit, and never the other standard’s ids', () => {
+    const nb = parseSelection({ surface: 'boken', languageId: 'nb', context: { kind: 'sentence', confidence: 0.9, sentence: 'Jeg leser boken hver dag.', selStart: 10, selEnd: 15 } });
+    const nn = parseSelection({ surface: 'boka', languageId: 'nn', context: { kind: 'sentence', confidence: 0.9, sentence: 'Eg les boka kvar dag.', selStart: 7, selEnd: 11 } });
+    for (const [c, lang] of [[nb, 'nb'], [nn, 'nn']] as const) {
+      expect(c, lang).toMatchObject({ languageId: lang, packId: PACK_IDS[lang], analyzerId: `adapter-${lang}@2`, lemma: 'bok', pos: 'NOUN', gloss: 'book' });
+      expect(c.limits.join(' '), lang).toMatch(/pack is experimental: lemmatisation is seed-only/);
+      expect(c.itemIds, lang).toContain(`lemma:${lang}:bok:NOUN`);
+      expect(JSON.stringify(c), lang).not.toMatch(lang === 'nb' ? /:nn:|pack:nn/ : /:nb:|pack:nb/);
+    }
+    expect(nb.limits.join(' ')).toMatch(/Nynorsk words are never credited to it/);
+    expect(nn.limits.join(' ')).toMatch(/Bokmål words are never credited to it/);
+  });
+
+  it('a page that says only "no" is not noted as another language for either Norwegian pack; a page in English is', () => {
+    const on = (lang: string, pageLanguage: string) => parseSelection({ surface: 'bok', languageId: lang, context: { kind: 'none', confidence: 0, pageLanguage } }).notes.join(' ');
+    expect(on('nb', 'no')).not.toMatch(/page declares/);
+    expect(on('nb', 'nb-NO')).not.toMatch(/page declares/);
+    expect(on('nn', 'no-NO')).not.toMatch(/page declares/);
+    expect(on('nn', 'nn')).not.toMatch(/page declares/);
+    expect(on('nn', 'nb')).toMatch(/The page declares its language as "nb"; the Norwegian \(Nynorsk\) word list is applied because Norwegian \(Nynorsk\) is the language you are studying/);
+    expect(on('nb', 'en')).toMatch(/page declares its language as "en"/);
   });
 
   it('a card in each of the three carries its language, pack id, analyser id and the experimental limit, and no other language’s ids', () => {
@@ -187,14 +330,9 @@ describe('German, Hindi and Thai in the extension parser', () => {
   });
 });
 
-describe('Norwegian stays planned', () => {
-  it('nb and nn are not installable, not wired into the parser, and the runtime bundles no analyser for them', () => {
-    for (const lang of ['nb', 'nn']) {
-      expect(PACKS[lang].status, lang).toBe('planned');
-      expect(levelOf(PACKS[lang]), lang).toBe('planned');
-      expect(PARSER_LANGUAGES, lang).not.toContain(lang);
-      expect(createPackRuntime(PACKS[lang], { fetch: diskFetch(), baseUrl: BASE }).analyzer().kind, lang).toBe('tokenize-only');
-      expect(() => parseSelection({ surface: 'hus', languageId: lang, context: { kind: 'none', confidence: 0 } }), lang).toThrow(RangeError);
-    }
+describe('a language outside the seven', () => {
+  it('is still not read: the parser refuses it rather than reading it with another adapter', () => {
+    expect(PACKS.sv).toBeUndefined();
+    expect(() => parseSelection({ surface: 'hus', languageId: 'sv', context: { kind: 'none', confidence: 0 } })).toThrow(RangeError);
   });
 });

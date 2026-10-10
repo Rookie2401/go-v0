@@ -13,13 +13,13 @@ import type { View } from './view';
 export const DEFAULT_TUTORIAL_LANGUAGE = 'sq';
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
-  const session = await ctx.state.getSession();
-  const languageId = session?.languageId || DEFAULT_TUTORIAL_LANGUAGE;
+  const active = await ctx.activeLanguage();
+  const languageId = active?.languageId || DEFAULT_TUTORIAL_LANGUAGE;
   const tutorial = ctx.deps.packs.tutorial(languageId);
   if (!view.alive()) return;
   if (!tutorial) {
     const pack = ctx.deps.packs.packFor(languageId);
-    append(el, [p(`There is no orientation for ${pack?.name ?? languageId} yet. The card works the same way on any page once the extension is installed.`), h('p', {}, h('a', { class: 'btn', href: '#/sync' }, 'Continue →'))]);
+    append(el, [p(`There is no orientation for ${pack?.name ?? languageId} yet. The card works the same way on any page once the extension is installed.`), h('p', {}, h('a', { class: 'btn', href: '#/reader' }, 'Continue →'))]);
     return;
   }
   const holder = h('div', { class: 'tutorial', id: 'tutorial-root' });
@@ -60,7 +60,7 @@ class TutorialController {
           this.step = 0;
           this.paintStep();
         }, { id: 'tutorial-repeat', class: 'btn primary' }),
-        h('a', { class: 'btn', href: '#/sync' }, 'Continue →')),
+        h('a', { class: 'btn', href: '#/reader' }, 'Continue →')),
     ]);
   }
 

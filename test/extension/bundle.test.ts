@@ -34,11 +34,11 @@ describe.skipIf(!have)('the built extension', () => {
     expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(520 * KB);
     expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(520 * KB);
     if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(650 * KB);
-    for (const id of ['sq', 'es', 'de', 'hi', 'th']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
 
   it('each analyser chunk is an ES module that exports the adapter, and the manifest makes the chunks readable from the page', () => {
-    for (const id of ['sq', 'es', 'de', 'hi', 'th']) {
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) {
       const code = read(`analysers/${id}.js`);
       expect(code, id).toMatch(/\bexport\s*\{[^}]*\bas adapter\b[^}]*\}|\bexport\s*\{\s*adapter\b/);
       expect(code, id).not.toMatch(/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
@@ -47,17 +47,22 @@ describe.skipIf(!have)('the built extension', () => {
     const m = JSON.parse(read('manifest.json'));
     expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js'], matches: ['<all_urls>'] }]);
     // every shared chunk the analysers import sits in analysers/ too, so the one pattern covers it
-    for (const id of ['sq', 'es', 'de', 'hi', 'th']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
+    for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
   });
 
-  it('the worker and the content script do not carry the German, Hindi or Thai analysers', () => {
+  it('the worker and the content script do not carry the German, Hindi, Thai or Norwegian analysers', () => {
     for (const f of ['content.js', 'background.js']) {
       const code = read(f);
       expect(code, f).not.toContain('adapter-de@');
       expect(code, f).not.toContain('adapter-hi@');
       expect(code, f).not.toContain('adapter-th@');
+      expect(code, f).not.toContain('Reference realisation of East Norwegian speech'); // the Norwegian engine (its ids are built at run time, so a literal from its text is checked)
     }
     expect(read('analysers/de.js')).toContain('adapter-de@');
+    // Bokmål and Nynorsk share one engine, so the chunk that holds it (imported by both nb.js and nn.js) is the only place its text appears
+    const shared = fs.readdirSync(path.join(dist, 'analysers')).filter((n) => /^shared-.*\.js$/.test(n)).map((n) => read(`analysers/${n}`)).join('\n');
+    expect(shared).toContain('Reference realisation of East Norwegian speech');
+    expect(read('analysers/nb.js').length + read('analysers/nn.js').length, 'nb.js and nn.js are thin entries over the shared engine').toBeLessThan(2048);
   });
 
   it('has the files the manifest names, and the manifest copied is the source manifest', () => {
@@ -118,7 +123,9 @@ describe.skipIf(!have)('the built extension', () => {
     const code = read('background.js');
     expect(code).not.toMatch(/XMLHttpRequest|sendBeacon|WebSocket|StoredSourceRef|importScripts/);
     expect(code).toMatch(/\bfetch\s*\(/);
-    expect(code).not.toMatch(/not-your-data|invalid-json|too-many-attempts/); // the service's request handler is not in the worker (replaced by a stub at build time)
+    // the service's request handler IS in the worker since the device-local Repository (packages/repository-local) runs it in-process; the other scripts have the stub
+    expect(code).toMatch(/not-your-data/);
+    for (const f of ['content.js', 'action/popup.js']) expect(read(f), f).not.toMatch(/not-your-data|invalid-json|too-many-attempts/);
   });
 
   it('background and content script, evaluated as the browser would, perform a lookup end to end: the background records it', async () => {

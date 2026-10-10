@@ -6,6 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
+import * as LP from '../../packages/language-packs/src';
 import { createPackBindings, packStorage } from '../../packages/golearn-extension/app/bindings';
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
@@ -20,7 +21,7 @@ const BASE = 'http://app.test/';
 describe('the pack bindings', () => {
   const b = createPackBindings();
 
-  it('lists every pack with its status and level; Albanian and (at a minimal level) Spanish are installable, German, Hindi and Thai are experimental, only the two Norwegian packs are planned', () => {
+  it('lists every pack with its status and level; Albanian and (at a minimal level) Spanish are installable, German, Hindi, Thai and the two Norwegian packs are experimental', () => {
     const packs = b.packs();
     expect(packs.map((p) => p.languageId).sort()).toEqual(['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th']);
     const sq = b.packFor('sq')!;
@@ -29,24 +30,36 @@ describe('the pack bindings', () => {
     expect(sq.licences.length).toBeGreaterThan(0);
     expect(sq.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard']);
     expect(sq.remoteVoiceProvider).toBeTruthy();
-    for (const p of packs.filter((x) => ['nb', 'nn'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'planned', level: 'planned', levelLabel: 'planned, not installable' });
-    for (const p of packs.filter((x) => ['de', 'hi', 'th'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, seed-only lemmatisation, unreviewed' });
+    for (const p of packs.filter((x) => ['de', 'hi', 'th', 'nb', 'nn'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, seed-only lemmatisation, unreviewed' });
     expect(sq).toMatchObject({ level: 'installable', levelLabel: 'installable' });
     expect(b.packFor('es')).toMatchObject({ packId: 'pack:es', status: 'installable', reviewStatus: 'machine-drafted' });
     expect(b.packFor('xx')).toBeUndefined();
     expect(b.packFor('constructor')).toBeUndefined();
   });
 
-  it('teams: a team is not a language, and Norway’s two written standards are a required choice', () => {
-    const teams = b.teams();
-    expect(teams.map((t) => t.teamId).sort()).toEqual(['albania', 'germany', 'honduras', 'india', 'norway', 'thailand']);
-    const norway = teams.find((t) => t.teamId === 'norway')!;
-    expect(norway.languages.map((l) => l.languageId)).toEqual(['nb', 'nn']);
-    expect(norway.languages.every((l) => l.requiredChoice)).toBe(true);
-    const albania = teams.find((t) => t.teamId === 'albania')!;
-    expect(albania.teamId).not.toBe(albania.languages[0].languageId);
-    expect(albania.languages[0]).toMatchObject({ languageId: 'sq', varietyId: 'sq-standard' });
-    for (const t of teams) for (const l of t.languages) expect(b.packFor(l.languageId), `${t.teamId}/${l.languageId}`).toBeDefined();
+  it('languages: six, in the catalogue’s order; Norwegian asks for its written standard, Spanish offers a regional preference, and every choice names a pack that exists', () => {
+    const languages = b.languages();
+    expect(languages).toHaveLength(6);
+    expect(languages.map((l) => l.languageId)).toEqual(LP.LANGUAGE_CATALOGUE.map((e) => e.languageId));
+    expect(languages.map((l) => l.name.split(' ')[0])).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish']);
+    for (const l of languages) {
+      expect(l.nativeName, l.name).toBeTruthy();
+      expect(l.scriptId, l.name).toBeTruthy();
+      expect(l.level, l.name).toBeTruthy();
+      expect(l.whatWorks.length, l.name).toBeGreaterThan(0);
+      expect(l.whatDoesNot.length, l.name).toBeGreaterThan(0);
+      expect(l.audio, l.name).toBeTruthy();
+    }
+    const norwegian = languages[0];
+    expect(norwegian.choice).toMatchObject({ kind: 'standard', required: true });
+    expect(norwegian.choice!.options.map((o) => o.id)).toEqual(['nb', 'nn']);
+    const spanish = languages.find((l) => l.name.startsWith('Spanish'))!;
+    expect(spanish.choice).toMatchObject({ kind: 'variety', required: false });
+    expect(spanish.choice!.options.map((o) => o.varietyId)).toContain('es-HN');
+    for (const l of languages) for (const o of l.choice?.options ?? []) expect(b.packFor(o.languageId), `${l.name}/${o.id}`).toBeDefined();
+    expect(b.packFor(languages.find((l) => l.name.startsWith('Albanian'))!.languageId)).toBeDefined();
+    // the words the old team screen used are not the bindings’ any more
+    expect((b as unknown as Record<string, unknown>).teams).toBeUndefined();
   });
 
   it('installs Albanian from the real dictionary files: dictionary description, a shard, and every validation case', async () => {
@@ -85,7 +98,10 @@ describe('the pack bindings', () => {
   });
 
   it('a planned pack is refused by the installer itself, with its own reason', async () => {
-    const r = await b.install(b.packFor('nb')!, { fetch: diskFetch, baseUrl: BASE, storage: createMemoryStorageArea() });
+    const nb = b.packFor('nb')!;
+    // no pack is planned any more: make one by saying so in the manifest the installer is handed
+    const planned = { ...nb, status: 'planned' as const, level: 'planned' as const, manifest: { ...(nb.manifest as object), status: 'planned', level: 'planned' } };
+    const r = await b.install(planned, { fetch: diskFetch, baseUrl: BASE, storage: createMemoryStorageArea() });
     expect(r.ok).toBe(false);
     expect(r.message).toMatch(/planned/);
   });
@@ -105,7 +121,7 @@ describe('the pack bindings', () => {
 
   it('the Albanian orientation: every practice target is a word of its sentence, and the real parser reads it as that word', () => {
     expect(b.tutorial('es')?.languageId).toBe('es'); // the Spanish orientation exists at a minimal, unreviewed level
-    expect(b.tutorial('de')).toBeUndefined();
+    expect(b.tutorial('xx')).toBeUndefined();
     const t = b.tutorial('sq')!;
     expect(t.steps.length).toBeGreaterThanOrEqual(8);
     expect(t.notice).toMatch(/native speaker/i);

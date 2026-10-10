@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  PACKS, albanianManifest, createPackRuntime, installPack, installedKey, verifyInstalled,
+  PACKS, albanianManifest, createPackRuntime, installPack, installedKey, plannedManifest, verifyInstalled,
 } from '../../packages/language-packs/src';
 import type { InstallProgress, PackManifest } from '../../packages/language-packs/src';
 import { BASE, diskFetch, memoryStorage } from './helpers';
@@ -78,9 +78,16 @@ describe('createPackRuntime (Albanian)', () => {
   });
 });
 
+/** A hypothetical planned pack for a language no analyser is bundled for (no pack is planned only any more; the level and the fallback stay). */
+const swedishPlanned = (): PackManifest => plannedManifest({
+  languageId: 'sv', version: '1', varietyId: 'sv', scriptId: 'Latn', name: 'Swedish', nativeName: 'svenska',
+  varieties: [{ varietyId: 'sv', label: 'Swedish', analysed: false }],
+  adapterSummary: 'none yet', capabilities: ['tokenization'], features: [], constructions: [], voices: [], segmentation: { method: 'intl', notes: 'Intl.Segmenter' },
+});
+
 describe('a pack without an analyser', () => {
-  it('falls back to a tokenizer that says it analyses nothing (Norwegian: planned, no analyser bundled)', () => {
-    const rt = createPackRuntime(PACKS.nb, { fetch: diskFetch(), baseUrl: BASE });
+  it('falls back to a tokenizer that says it analyses nothing (a planned pack with no analyser bundled)', () => {
+    const rt = createPackRuntime(swedishPlanned(), { fetch: diskFetch(), baseUrl: BASE });
     const a = rt.analyzer();
     expect(a.kind).toBe('tokenize-only');
     expect(a.limitation).toMatch(/no lemma, no morphology and no gloss/);
@@ -93,18 +100,40 @@ describe('a pack without an analyser', () => {
 
   it('can still be given an analyser by the caller', async () => {
     const { nbAdapter } = await import('../../src/adapters/nb');
-    const rt = createPackRuntime(PACKS.nb, { fetch: diskFetch(), baseUrl: BASE, adapter: nbAdapter });
+    const rt = createPackRuntime(swedishPlanned(), { fetch: diskFetch(), baseUrl: BASE, adapter: nbAdapter });
     expect(rt.analyzer().kind).toBe('adapter');
+  });
+
+  it('Norwegian Bokmål and Nynorsk are bundled: the runtime reads them with their own adapter', () => {
+    for (const lang of ['nb', 'nn']) {
+      const a = createPackRuntime(PACKS[lang], { fetch: diskFetch(), baseUrl: BASE }).analyzer();
+      expect(a.kind, lang).toBe('adapter');
+      expect(a.id, lang).toBe(PACKS[lang].analyzer.id);
+    }
   });
 });
 
 describe('installPack', () => {
-  it('refuses a planned pack (Norwegian); German, Hindi and Thai are experimental and installable, see test/reader-languages/experimental-packs.test.ts', async () => {
+  it('refuses a planned pack; German, Hindi, Thai and Norwegian are experimental and installable, see test/reader-languages/experimental-packs.test.ts', async () => {
+    const storage = memoryStorage();
+    const r = await installPack(swedishPlanned(), { fetch: diskFetch(), baseUrl: BASE, storage });
+    expect(r).toMatchObject({ ok: false, reason: 'planned' });
+    expect(storage.map.size).toBe(0);
+  });
+
+  it('installs a pack that declares no dictionary (Norwegian): nothing is fetched, the dictionary checks are recorded as not declared, every validation case runs', async () => {
     for (const lang of ['nb', 'nn']) {
       const storage = memoryStorage();
-      const r = await installPack(PACKS[lang], { fetch: diskFetch(), baseUrl: BASE, storage });
-      expect(r, lang).toMatchObject({ ok: false, reason: 'planned' });
-      expect(storage.map.size).toBe(0);
+      const fetchSpy = diskFetch();
+      const progress: string[] = [];
+      const r = await installPack(PACKS[lang], { fetch: fetchSpy, baseUrl: BASE, storage, now: () => '2026-10-09T08:00:00.000Z', onProgress: (p) => progress.push(p.step) });
+      if (!r.ok) throw new Error(`${lang}: ${r.reason}: ${r.detail}`);
+      expect(fetchSpy.calls, lang).toEqual([]);
+      expect(r.verified, lang).toMatchObject({ dictionaryManifest: false, sampleShard: false, dictionary: 'none-declared' });
+      expect(r.verified.validation, lang).toHaveLength(14);
+      expect(r.validationFailures, lang).toBe(0);
+      expect(progress, lang).toEqual(['check', 'dictionary-manifest', 'sample-shard', 'validation', 'record']);
+      expect(await verifyInstalled(PACKS[lang], storage), lang).toMatchObject({ installed: true, current: true, validationFailures: 0 });
     }
   });
 

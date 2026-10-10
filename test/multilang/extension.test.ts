@@ -20,6 +20,8 @@ import { validateEvent } from '../../packages/repository-contract/src';
 import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
 import { hiAdapter } from '../../src/adapters/hi';
+import { nbAdapter } from '../../src/adapters/nb';
+import { nnAdapter } from '../../src/adapters/nn';
 import { sqAdapter } from '../../src/adapters/sq';
 import { thAdapter } from '../../src/adapters/th';
 import { selectText, setBody, stubLayout } from '../extension/dom';
@@ -36,11 +38,11 @@ function parse(word: string, sentence: string, languageId?: string): CardModel {
 }
 
 describe('parseSelection chooses the adapter by languageId', () => {
-  it('the registry lists Albanian, Spanish and the experimental German, Hindi and Thai, and the default is still Albanian', () => {
-    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th']);
+  it('the registry lists Albanian, Spanish and the experimental German, Hindi, Thai and Norwegian (both standards), and the default is still Albanian', () => {
+    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']);
     expect(PARSER_LANGUAGE).toBe('sq');
     expect(PACK_ID).toBe(`pack:sq:${sqAdapter.version}`);
-    expect(PACK_IDS).toEqual({ sq: `pack:sq:${sqAdapter.version}`, es: `pack:es:${esAdapter.version}`, de: `pack:de:${deAdapter.version}`, hi: `pack:hi:${hiAdapter.version}`, th: `pack:th:${thAdapter.version}` });
+    expect(PACK_IDS).toEqual({ sq: `pack:sq:${sqAdapter.version}`, es: `pack:es:${esAdapter.version}`, de: `pack:de:${deAdapter.version}`, hi: `pack:hi:${hiAdapter.version}`, th: `pack:th:${thAdapter.version}`, nb: `pack:nb:${nbAdapter.version}`, nn: `pack:nn:${nnAdapter.version}` });
   });
 
   it('a Spanish sentence yields a Spanish card: lemma, part of speech, morphology line, features, unit ids, pronunciation notes', () => {
@@ -88,7 +90,7 @@ describe('parseSelection chooses the adapter by languageId', () => {
   });
 
   it('an unlisted language throws (the controller turns that into the "parser-error" message) rather than reading it with another adapter', () => {
-    expect(() => parse('hus', 'Det er et hus.', 'nb')).toThrow(/No parser for language "nb"/);
+    expect(() => parse('hus', 'Det är ett hus.', 'sv')).toThrow(/No parser for language "sv"/);
     expect(() => parse('x', 'x', 'constructor')).toThrow(RangeError);
   });
 
@@ -185,7 +187,7 @@ describe('the content controller with a Spanish enrolment', () => {
 
   it('a language with no analyser in the build is still turned away, not read with another language’s adapter', async () => {
     setBody('<div id="content"><p id="p">Los niños leen los libros.</p></div>'); // no declared language: the enrolment’s decides
-    const r = rig(status({ languageId: 'nb', languageName: 'Norwegian (Bokmål)', packAvailable: false }));
+    const r = rig(status({ languageId: 'sv', languageName: 'Swedish', packAvailable: false }));
     selectText(document.getElementById('p')!, 'libros');
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out).toMatchObject({ status: 'message', reason: 'no-pack' });
@@ -198,7 +200,8 @@ describe('the content script’s analyser list', () => {
     const src = fs.readFileSync(path.resolve(__dirname, '../../packages/golearn-extension/src/content/index.ts'), 'utf8');
     expect(src).toMatch(/import \{ PARSER_LANGUAGES, getAnalyser, hasAnalyser, parseSelection \} from '\.\.\/parser'/);
     expect(src).toMatch(/analysers: \[\.\.\.PARSER_LANGUAGES\]/);
-    expect(src).toMatch(/loadAnalyser: createAnalyserLoader\(chromeApi\)/); // every language but Albanian is loaded on demand
+    expect(src).toMatch(/const loadAnalyser = createAnalyserLoader\(chromeApi\)/); // every language but Albanian is loaded on demand (the loader is shared with GoLearn Active)
+    expect(src).toMatch(/\n\s+loadAnalyser,\n/);
     expect(src).not.toMatch(/adapters\/(es|de|hi|th)'/); // none of them is linked into the content script
     expect(src).not.toMatch(/analysers: \['sq'\]/);
   });

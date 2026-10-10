@@ -48,10 +48,14 @@ GoLearn  (one application, one package: packages/golearn-extension)
                   (no sync, no service, no packs runtime: it only sends messages to the background)
   popup       ──► golearn-extension (9) · repository-contract (5)         (no legacy src/, no GoListen)
   setup app   ──► golearn-extension (34) · language-packs (16) · repository-service api client (3) · repository-contract (5) · src/ (103)
+                  · since 2026-10-09 (no account needed): repository-local, which brings repository-store, -engine and -linguistics with it;
+                    inside the extension the app only connects to the worker's device-local Repository (connectLocalRepository), and the
+                    hosted copy opens one of its own through a lazy chunk the options build leaves out
 
 GoPractice  (one application: packages/gopractice, the shell)
   main.ts     ──► gopractice (33) · goreview (41) · gotell (38) · golisten (16) · language-packs (16) · repository-sync (6)
                   · repository-service api client (3) · repository-contract (5) · ts-fsrs (external) · legacy src/ (103)
+                  · since 2026-10-09: repository-local (and through it store, engine, linguistics) for the extension page's device mode
                   GoReview and GoTell meet only in the shell.
 
 Shared infrastructure (not applications)

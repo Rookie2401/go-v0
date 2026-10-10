@@ -4,15 +4,16 @@ import type { AppContext } from '../context';
 import { append, h, p } from '../dom';
 import type { View } from './view';
 import { SURFACES } from '../surfaces';
+import { languageLabel } from './language';
+
+/** Where GoPractice lives, relative to this page, when this page is the extension's own (the build writes it to dist/practice/). */
+export const PRACTICE_HREF = '../practice/index.html';
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
-  const [session, progress, completion] = await Promise.all([ctx.state.getSession(), ctx.state.getProgress(), computeCompletion(ctx)]);
+  const [session, progress, completion, active] = await Promise.all([ctx.state.getSession(), ctx.state.getProgress(), computeCompletion(ctx), ctx.activeLanguage()]);
   if (!view.alive()) return;
-  const pack = session?.languageId ? ctx.deps.packs.packFor(session.languageId) : undefined;
+  const pack = active?.languageId ? ctx.deps.packs.packFor(active.languageId) : undefined;
   const rec = pack ? progress.packs[pack.packId] : undefined;
-  const profile = await ctx.state.getProfile();
-  const enrolment = profile?.enrolments.find((e) => e.enrolmentId === session?.enrolmentId);
-  const team = enrolment?.teamId ? ctx.deps.packs.teams().find((t) => t.teamId === enrolment.teamId)?.name ?? enrolment.teamId : undefined;
   const extVersion = ctx.deps.chrome?.runtime.getManifest?.().version;
 
   const row = (label: string, value: string, route: string, ok: boolean): HTMLElement =>
@@ -22,12 +23,19 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   append(el, [
     setupComplete(completion) ? p('GoLearn is set up. Open the page you want to read, press the GoLearn button in the toolbar and select a word.') : p('Setup is not finished. The items marked ○ still need you.'),
+    h('p', { id: 'progress-mode', 'data-state': session ? 'synced' : 'device' },
+      h('strong', {}, session ? 'Synced to your account' : 'On this device only'),
+      session ? ` as ${session.email}.` : '. ',
+      session ? null : h('a', { href: '#/account', id: 'keep-progress' }, 'Keep your progress across devices (optional)')),
     h('ul', { class: 'status-list', id: 'status-list' },
-      row('Account', session ? `signed in as ${session.email}` : 'not signed in', 'account', completion.account),
-      row('Team and language', session?.enrolmentId ? `${team ? team + ' → ' : ''}${pack?.name ?? session.languageId}` : 'no enrolment', 'team', completion.team),
+      row('Language', active ? languageLabel(ctx, active.languageId, active.varietyId) : 'none chosen yet', 'language', completion.language),
       row('Language pack', pack ? (rec ? `${pack.name} ${rec.version}, ${rec.ok ? 'verified' : 'did not verify'}` : `${pack.name} ${pack.version} not installed`) : 'none chosen', 'pack', completion.pack),
-      row('Reader', ctx.inExtension ? `extension installed, version ${extVersion ?? 'unknown'}` : 'extension not detected (a web page cannot check)', 'reader', completion.reader),
-      row('Orientation', progress.tutorial === 'done' ? 'finished' : progress.tutorial === 'skipped' ? 'skipped' : 'not done', 'tutorial', completion.tutorial)),
+      row('Orientation', progress.tutorial === 'done' ? 'finished' : progress.tutorial === 'skipped' ? 'skipped' : 'not done', 'tutorial', completion.tutorial),
+      row('Reader', ctx.inExtension ? `extension installed, version ${extVersion ?? 'unknown'}` : 'extension not detected (a web page cannot check)', 'reader', completion.reader)),
+    h('p', {}, ctx.inExtension
+      ? h('a', { class: 'btn primary', id: 'practise', href: PRACTICE_HREF }, 'Practise')
+      : h('span', { class: 'muted', id: 'practise-note' }, 'Practice (GoPractice) runs in the extension, on this device.'),
+    ctx.inExtension ? ' ' : null, ctx.inExtension ? h('span', { class: 'muted' }, 'Review what you met and write in the language, without an account.') : null),
     p(`Works on: ${SURFACES.filter((s) => s.status !== 'not-supported').map((s) => s.name).join('; ')}.`, 'muted'),
     h('p', {}, h('a', { class: 'btn', href: '#/tutorial' }, 'Repeat orientation'), ' ', h('a', { class: 'btn', href: '#/sync' }, 'Sync'), ' ', h('a', { class: 'btn', href: '#/privacy' }, 'Privacy'), ' ', h('a', { class: 'btn', href: '#/diagnostics' }, 'Diagnostics'), ' ', h('a', { class: 'btn', href: '#/share' }, 'Look up shared text')),
   ]);

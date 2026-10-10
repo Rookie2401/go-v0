@@ -40,6 +40,8 @@ describe('package boundaries', () => {
       'repository-engine': ['repository-contract'],
       'repository-sync': ['repository-contract'],
       'repository-service': ['repository-contract', 'repository-store', 'repository-engine', 'repository-linguistics', 'repository-sync'],
+      // the device-local Repository assembles the service's own parts in one process
+      'repository-local': ['repository-contract', 'repository-store', 'repository-engine', 'repository-linguistics', 'repository-sync', 'repository-service'],
     };
     for (const f of files.filter((f) => pkgOf(f) in allowed)) {
       for (const i of imports(f)) {
@@ -59,7 +61,8 @@ describe('package boundaries', () => {
     // shared subsystems an application may use: the contract, GoListen, the language packs, the device-side sync
     // client and the typed API client of the service (never the service handler, store or engine)
     // golearn-share (the mobile share contract) is a shared library that imports only the contract
-    const shared = new Set(['repository-contract', 'golisten', 'language-packs', 'repository-sync', 'golearn-share']);
+    // repository-local is the device-local Repository (no account needed): a shared library an application opens, or reaches by message
+    const shared = new Set(['repository-contract', 'golisten', 'language-packs', 'repository-sync', 'golearn-share', 'repository-local']);
     for (const f of files.filter((f) => apps.has(pkgOf(f)))) {
       for (const i of imports(f)) {
         if (i.startsWith('.') && !i.includes('..')) continue; // inside its own package

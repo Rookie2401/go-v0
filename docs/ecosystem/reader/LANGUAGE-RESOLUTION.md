@@ -1,7 +1,7 @@
 # Language resolution
 
 Status: 2026-10-09 (Prompt 2, language lane). Code: `packages/golearn-extension/src/language/resolve.ts`. Types:
-`packages/golearn-extension/src/contract/language.ts`. Tests: `test/reader-languages/resolve.test.ts` (59 tests).
+`packages/golearn-extension/src/contract/language.ts`. Tests: `test/reader-languages/resolve.test.ts` (62 tests).
 
 The reader meets text in many languages. Before a selection is analysed, the content script asks ONE question, "which
 language is this in?", and gets one answer with its basis and its reasons. The resolver implements that answer. It is a pure
@@ -15,7 +15,7 @@ interface LanguageEvidence {
   bookLanguage?: { languageId; source; confidence };   // an OPF dc:language ...
   documentLanguage?: { languageId; source: 'html-lang' | 'meta' | 'og-locale' | 'element-lang' | 'url'; confidence };
   sample?: string;                                     // the SELECTED surface, never the context sentence
-  teamDefault?: string;                                // the language of the learner's enrolment
+  teamDefault?: string;                                // the language the learner picked (the field keeps its old name; there are no teams in the apps)
   installed: string[];                                 // the languages this build can analyse
 }
 interface LanguageResolution {
@@ -37,7 +37,7 @@ The first rung that decides ends the ladder.
 | 2 | `book-metadata` | the book declares a pack language with confidence of at least **0.8** | the book's own |
 | 3 | `document-metadata` | the page declares a pack language with confidence of at least **0.6** and the source is not `url` | the page's own, at most 0.95 |
 | 4 | `detection` | at least **3 words** in the sample, then script or word-list evidence (below) | 0.35 – 0.9, computed |
-| 5 | `team-default` | nothing above decided and the enrolment has a language | **0.3** (a default, not evidence) |
+| 5 | `team-default` | nothing above decided and the learner has a picked language | **0.3** (a default, not evidence) |
 | - | `undetermined` | none of the above | 0 |
 
 Weak declarations (an `og:locale` at 0.55, a book at 0.79) and a locale found in the URL are listed in `reasons` and decide
@@ -64,8 +64,8 @@ answer keeps the declared language, drops its confidence to **0.55** and adds "t
 | `es-419`, `es-MX`, `es-AR`, `es-CO` ... | `es`, variety `es-419` (the reasons say the pack has no variety of its own for the country) |
 | `th`, `th-TH` | `th` |
 | `hi`, `hi-IN` | `hi` |
-| `nb`, `nn` | `nb`, `nn` (their packs are planned: installed only if a build has them) |
-| `no`, `nor` | **ambiguous**: Bokmål (nb) or Nynorsk (nn); neither is assumed. An explicit enrolment in one of them (`teamDefault: 'nb'`) settles it with basis `team-default` |
+| `nb`, `nb-NO`, `nn`, `nn-NO` | `nb`, `nn`: resolved directly when that pack is installed (both are experimental packs the learner installs); a page that declares `nn` is **never** read with the Bokmål pack when only `nb` is installed (undetermined: "the nn pack is not installed") |
+| `no`, `no-NO`, `nor` | **ambiguous** between Bokmål (nb) and Nynorsk (nn); neither is assumed. See "Norwegian" below |
 | `hi-Latn`, `th-Latn` (any script that is not the pack's) | **ambiguous**: Hindi in Latin script is a language no pack analyses |
 | `gsw`, `bar`, `nds`, `ast`, `gl`, `ca`, `mr`, `ne`, `sa`, `awa`, `bra` | **ambiguous**: close to a pack language but not it |
 | anything else (`en`, `fr`, `ja`, rubbish) | no pack |
@@ -109,17 +109,43 @@ Examples (measured by `test/reader-languages/resolve.test.ts`):
 | `Haus`, `casa`, `shtëpi`, `ข้าว`, `किताब` | all | undetermined (one word each) |
 | `Ich lese das Buch.` | es sq | undetermined (es 1/4, sq 0/4): German is not installed, so it is not called Spanish |
 | `The children read the books at school.` | any | undetermined |
-| `Jeg leser boken i dag.` | nb nn de (word lists injected) | `nb` (nb 5/5, nn 2/5) |
+| `Jeg leser boken i dag.` | nb nn de | `nb`, detection, 0.85 (nb 5/5, nn 2/5, de 0/5) |
+| `Han er ikkje heime no.` | nb nn de | `nn`, detection, 0.85 (nn 5/5, nb 2/5, de 1/5) |
 | `Eg les boka i dag.` | nb nn | undetermined: too close to call (nb 4/5, nn 5/5) |
+| `Ich lese das Buch.` | de nb nn | `de` (de 4/4, nb 1/4, nn 1/4): Norwegian is compared too, and loses |
 | `die` | de, team default `de` | `de`, **team-default**, 0.3, "a default, not evidence about this text" |
 
-In the content bundle the word lists are the parser's (sq, es, de, hi, th). A build that installs Norwegian can inject its
-word lists (`createLanguageResolver({ adapters })`); until then an installed `nb` / `nn` is named in the reasons as "not compared".
+The word lists are the parser's: every analyser whose chunk has been loaded into its registry (sq, es, de, hi, th, nb, nn). Norwegian is
+in the default table like any other language. Where an installed language's chunk has not been loaded yet, the resolver names it in the
+reasons as "not compared (no word list available)" and the controller loads the analysers detection needs and asks again; a caller that
+holds a word list the parser does not can still pass it (`createLanguageResolver({ adapters })`).
+
+## Norwegian
+
+Norwegian is written in two standards, Bokmål (`nb`) and Nynorsk (`nn`), and each is its own experimental pack. The resolver never
+treats one as the other and never credits one for the other.
+
+- **A page or book that declares `nb` or `nn`** (also `nb-NO`, `nn-NO`, `nob`, `nno`) resolves to that pack directly, at the usual
+  confidence for its basis, when the pack is installed. If only the other standard is installed the answer is `undetermined` ("the nn
+  pack is not installed"); the Bokmål pack is not used to read Nynorsk, because it would read `les` as the verb `le` in the s-passive
+  and `Eg` as a name.
+- **A bare `no`** (`no`, `no-NO`, `nor`) does not say which standard. It decides nothing between them:
+  - with **both** packs installed, or **neither**, it is skipped with the reason "Norwegian is written in two standards ... neither is
+    assumed", and the ladder goes on to the sample (a clear lead of a quarter of the words separates the two) or to the language the
+    learner picked;
+  - with **exactly one** of the two installed, the learner's own choice of pack decides it: the answer is that pack, with the basis of
+    the declaration (override, book or document metadata) and the **lowered confidence 0.6** (`NORWEGIAN_UNSPECIFIED_CONFIDENCE`), and
+    the reasons say that this was settled by the only installed Norwegian pack. This is the one exception to "an ambiguous tag
+    decides nothing".
+- **Detection** compares nb and nn like any two packs: they share most words, so only a lead of 25% of the words decides
+  (`Jeg leser boken i dag.` is nb, `Han er ikkje heime no.` is nn, `Eg les boka i dag.` is too close to call).
+- **One word is never enough**: `die` alone with German and Norwegian installed is undetermined.
 
 ## What detection cannot do
 
 - **Short text.** Under three words it says nothing, however clear the word looks.
-- **Closely related languages.** Bokmål against Nynorsk share most words; only a lead of a quarter of the sample decides. Hindi
+- **Closely related languages.** Bokmål against Nynorsk share most words; only a lead of a quarter of the sample decides, and a text in
+  Nynorsk with Bokmål installed alone is read by nothing but the declared tag. Hindi
   against Urdu in Devanagari, or Hindi against Marathi, rests on a seed word list of about 1,500 lemmas: real Hindi with many
   unlisted words can fall below 50% and be reported undetermined (the safe failure).
 - **Seed-only word lists.** A hit means "the pack's list knows this word". German, Hindi and Thai lists are small and

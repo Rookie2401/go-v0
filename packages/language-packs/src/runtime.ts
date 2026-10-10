@@ -225,7 +225,13 @@ export interface InstallDeps {
   now?: () => string;
 }
 
-export interface InstallVerified { dictionaryManifest: boolean; sampleShard: boolean; validation: CaseResult[] }
+export interface InstallVerified {
+  dictionaryManifest: boolean;
+  sampleShard: boolean;
+  validation: CaseResult[];
+  /** 'none-declared' when the pack declares no dictionary (an experimental Norwegian pack): the two dictionary checks above are false because there was nothing to check, not because one failed. Absent otherwise. */
+  dictionary?: 'none-declared';
+}
 
 export type InstallFailure =
   | 'planned' | 'invalid-manifest' | 'no-analyser' | 'dictionary-unreachable' | 'dictionary-invalid' | 'dictionary-mismatch' | 'shard-unreachable' | 'storage-failed';
@@ -258,34 +264,42 @@ export async function installPack(manifest: PackManifest, deps: InstallDeps): Pr
   if (issues.length) return { ok: false, reason: 'invalid-manifest', detail: issues.map((i) => `${i.path}: ${i.message}`).join('; ') };
   const adapter = deps.adapter ?? builtInAdapter(manifest.languageId);
   if (!adapter) return { ok: false, reason: 'no-analyser', detail: `no analyser for ${manifest.languageId} is available to this build` };
-  const dict = manifest.lexical.dictionary!;
-  const root = dictionaryRoot(manifest);
-  if (root === undefined) return { ok: false, reason: 'invalid-manifest', detail: 'lexical.dictionary.baseUrl does not end with the language code' };
-  const dictBase = joinUrl(deps.baseUrl, `${root ? `${root}/` : ''}${manifest.languageId}`);
+  const dict = manifest.lexical.dictionary;
+  let hasDictionary = false;
+  if (dict) {
+    const root = dictionaryRoot(manifest);
+    if (root === undefined) return { ok: false, reason: 'invalid-manifest', detail: 'lexical.dictionary.baseUrl does not end with the language code' };
+    const dictBase = joinUrl(deps.baseUrl, `${root ? `${root}/` : ''}${manifest.languageId}`);
 
-  // 1. the dictionary's own manifest
-  say('dictionary-manifest', 1, 'Reading the dictionary description');
-  const mres = await fetchText(deps.fetch, `${dictBase}/manifest.json`);
-  if (!mres.ok) return { ok: false, reason: 'dictionary-unreachable', detail: mres.detail };
-  let dm: Record<string, unknown>;
-  try { dm = JSON.parse(mres.text) as Record<string, unknown>; } catch { return { ok: false, reason: 'dictionary-invalid', detail: 'the dictionary manifest is not JSON' }; }
-  if (!dm || typeof dm !== 'object') return { ok: false, reason: 'dictionary-invalid', detail: 'the dictionary manifest is not an object' };
-  if (dm.lang !== manifest.languageId) return { ok: false, reason: 'dictionary-mismatch', detail: `the dictionary is for ${String(dm.lang)}, not ${manifest.languageId}` };
-  if (typeof dm.entries !== 'number' || !(dm.entries > 0)) return { ok: false, reason: 'dictionary-invalid', detail: 'the dictionary manifest states no entries' };
-  if (dm.entries !== dict.entries || dm.id !== dict.id) return { ok: false, reason: 'dictionary-mismatch', detail: `the pack expects ${dict.id} with ${dict.entries} entries; the device has ${String(dm.id)} with ${dm.entries}` };
+    // 1. the dictionary's own manifest
+    say('dictionary-manifest', 1, 'Reading the dictionary description');
+    const mres = await fetchText(deps.fetch, `${dictBase}/manifest.json`);
+    if (!mres.ok) return { ok: false, reason: 'dictionary-unreachable', detail: mres.detail };
+    let dm: Record<string, unknown>;
+    try { dm = JSON.parse(mres.text) as Record<string, unknown>; } catch { return { ok: false, reason: 'dictionary-invalid', detail: 'the dictionary manifest is not JSON' }; }
+    if (!dm || typeof dm !== 'object') return { ok: false, reason: 'dictionary-invalid', detail: 'the dictionary manifest is not an object' };
+    if (dm.lang !== manifest.languageId) return { ok: false, reason: 'dictionary-mismatch', detail: `the dictionary is for ${String(dm.lang)}, not ${manifest.languageId}` };
+    if (typeof dm.entries !== 'number' || !(dm.entries > 0)) return { ok: false, reason: 'dictionary-invalid', detail: 'the dictionary manifest states no entries' };
+    if (dm.entries !== dict.entries || dm.id !== dict.id) return { ok: false, reason: 'dictionary-mismatch', detail: `the pack expects ${dict.id} with ${dict.entries} entries; the device has ${String(dm.id)} with ${dm.entries}` };
 
-  // 2. one shard, to prove the files are reachable and readable
-  say('sample-shard', 2, 'Fetching one dictionary shard');
-  const shardFiles = Array.isArray(dm.shardFiles) ? (dm.shardFiles as unknown[]).filter((f): f is string => typeof f === 'string') : [];
-  const shardName = shardFiles[0] ?? 's-00.json';
-  const sres = await fetchText(deps.fetch, `${dictBase}/${shardName}`);
-  if (!sres.ok) return { ok: false, reason: 'shard-unreachable', detail: sres.detail };
-  try { JSON.parse(sres.text); } catch { return { ok: false, reason: 'shard-unreachable', detail: `${shardName} is not readable JSON` }; }
+    // 2. one shard, to prove the files are reachable and readable
+    say('sample-shard', 2, 'Fetching one dictionary shard');
+    const shardFiles = Array.isArray(dm.shardFiles) ? (dm.shardFiles as unknown[]).filter((f): f is string => typeof f === 'string') : [];
+    const shardName = shardFiles[0] ?? 's-00.json';
+    const sres = await fetchText(deps.fetch, `${dictBase}/${shardName}`);
+    if (!sres.ok) return { ok: false, reason: 'shard-unreachable', detail: sres.detail };
+    try { JSON.parse(sres.text); } catch { return { ok: false, reason: 'shard-unreachable', detail: `${shardName} is not readable JSON` }; }
+    hasDictionary = true;
+  } else {
+    // A pack with no declared dictionary (experimental Norwegian): there is nothing to fetch, and the record says so rather than claiming a check.
+    say('dictionary-manifest', 1, 'This pack declares no dictionary: nothing to read');
+    say('sample-shard', 2, 'This pack declares no dictionary: no shard to fetch');
+  }
 
   // 3. every validation case through the real analyser; a failing case is reported, never hidden
   say('validation', 3, `Running ${manifest.validation.length} validation cases`);
   const validation = manifest.validation.map((c) => runCase(adapter, c));
-  const verified: InstallVerified = { dictionaryManifest: true, sampleShard: true, validation };
+  const verified: InstallVerified = { dictionaryManifest: hasDictionary, sampleShard: hasDictionary, validation, ...(hasDictionary ? {} : { dictionary: 'none-declared' as const }) };
 
   // 4. the record
   say('record', 4, 'Recording the installation');

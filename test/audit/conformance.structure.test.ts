@@ -9,7 +9,7 @@
 import { describe, expect, it } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
-import { ENTRIES, GOTELL_ENTRY, ROOT, listFiles, packageOf, reach, readText, unionOf } from './conformance.support';
+import { ENTRIES, GOTELL_ENTRY, ROOT, chainTo, listFiles, packageOf, reach, readText, unionOf } from './conformance.support';
 
 const PACKAGES = fs.readdirSync(path.join(ROOT, 'packages'), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name).sort();
 const pkgSet = (files: Iterable<string>): string[] => [...new Set([...files].filter((f) => f.startsWith('packages/')).map(packageOf))].sort();
@@ -58,22 +58,29 @@ describe('(c) exactly two application entry groups', () => {
 
 describe('what each entry may reach (exact package sets)', () => {
   const EXPECT: Record<string, string[]> = {
-    'golearn-background': ['golearn-extension', 'language-packs', 'repository-contract', 'repository-service', 'repository-sync'],
+    // the background worker hosts the device-local Repository (packages/repository-local), which brings the service's store, engine and linguistic layer with it
+    'golearn-background': ['golearn-extension', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
     'golearn-content': ['golearn-extension', 'golisten', 'repository-contract'],
     'golearn-popup': ['golearn-extension', 'repository-contract'],
-    'golearn-app': ['golearn-extension', 'golearn-share', 'language-packs', 'repository-contract', 'repository-service'],
-    gopractice: ['gopractice', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-contract', 'repository-service', 'repository-sync'],
+    // the setup app and GoPractice work with no account: inside the extension they connect to the worker's device-local Repository, and the hosted
+    // setup app opens one of its own (a lazy chunk); repository-local brings the store, engine and linguistic layer with it (reached only through it, below)
+    'golearn-app': ['golearn-extension', 'golearn-share', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
+    gopractice: ['gopractice', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
     'repository-service': ['repository-contract', 'repository-engine', 'repository-linguistics', 'repository-service', 'repository-store'],
   };
   it.each(ENTRIES.map((e) => [e.id, e.file]))('%s reaches exactly the packages listed in the doc', (id, file) => {
     expect(pkgSet(reach(file).files)).toEqual([...EXPECT[id]].sort());
   });
 
-  it('no application reaches the store, the engine or the linguistic service; of the service it reaches only the typed client, its dependency types and the handler module the client names', () => {
+  it('no application reaches the store, the engine or the linguistic service except through repository-local (the device-local Repository); of the service it reaches only the typed client, its dependency types and the handler module the client names', () => {
     for (const e of ENTRIES.filter((x) => x.group !== 'service')) {
       const r = reach(e.file);
-      const pk = pkgSet(r.files);
-      for (const banned of ['repository-store', 'repository-engine', 'repository-linguistics']) expect(pk, `${e.id} reaches ${banned}`).not.toContain(banned);
+      for (const banned of ['repository-store', 'repository-engine', 'repository-linguistics']) {
+        // a package that is reached must be reached through repository-local: every chain from the entry to one of its files passes a repository-local file
+        for (const f of [...r.files].filter((x) => x.startsWith(`packages/${banned}/`))) {
+          expect(chainTo(r, f).some((x) => x.startsWith('packages/repository-local/')), `${e.id} reaches ${banned} (${f}) other than through repository-local`).toBe(true);
+        }
+      }
       const service = [...r.files].filter((f) => f.startsWith('packages/repository-service/')).sort();
       const ALLOWED_SERVICE = ['packages/repository-service/src/api.ts', 'packages/repository-service/src/deps.ts', 'packages/repository-service/src/handler.ts'];
       expect(service.filter((f) => !ALLOWED_SERVICE.includes(f)), e.id).toEqual([]);
@@ -114,6 +121,18 @@ describe('shared packages never reach an application, the service, the store or 
     expect(pkgSet(reached).filter((x) => !ALLOWED[p].includes(x)), `${p} reaches`).toEqual([]);
     // and, in the legacy tree, nothing outside pure language analysis (src/course is the type-only C-01 coupling, asserted in conformance.imports)
     expect([...reached].filter((f) => /^src\/(ui|ladder|stage0|library|golearn|gotell|goread|golisten|ingest|sim|authoring|app|db|backup)\//.test(f)), p).toEqual([]);
+  });
+
+  it('repository-local reaches the contract, the store (memory), the engine, the linguistic layer, the sync area and the service client and handler, and nothing else', () => {
+    const reached = new Set<string>();
+    for (const root of listFiles('packages/repository-local')) for (const f of reach(root).files) reached.add(f);
+    expect(pkgSet(reached).filter((x) => !['repository-local', 'repository-contract', 'repository-store', 'repository-engine', 'repository-linguistics', 'repository-sync', 'repository-service'].includes(x))).toEqual([]);
+    // of the service: the client, its dependency types, the handler, and nothing else (no Node bridge, no Node crypto, no source-policy file reader)
+    expect([...reached].filter((f) => f.startsWith('packages/repository-service/')).sort()).toEqual(['packages/repository-service/src/api.ts', 'packages/repository-service/src/deps.ts', 'packages/repository-service/src/handler.ts']);
+    // of the store: the memory implementation and its rules; never the SQLite one (node:sqlite) or the export module
+    expect([...reached].filter((f) => f.startsWith('packages/repository-store/')).sort()).toEqual(['packages/repository-store/src/deletion.ts', 'packages/repository-store/src/memory.ts', 'packages/repository-store/src/rules.ts']);
+    // and no Node-only import anywhere in what it reaches
+    for (const f of [...reached].filter((x) => x.startsWith('packages/'))) expect(readText(f), f).not.toMatch(/froms+['"]node:/);
   });
 
   it('the Repository packages below the service reach only the contract (linguistics also reaches the language analyser in src/)', () => {

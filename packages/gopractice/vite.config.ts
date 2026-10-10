@@ -6,6 +6,11 @@
  *          index.html, assets/*.js, styles.css, config.json, and dict/<lang>/ for the languages in GOPRACTICE_DICT
  *          (default "sq", the only installable pack; set it empty to leave the dictionaries out). Review exercises read
  *          glosses from there, lazily, shard by shard.
+ *   vite build -c packages/gopractice/vite.config.ts --mode extension
+ *       -> packages/golearn-extension/dist/practice/   the same app as a page of the GoLearn extension (chrome-extension://<id>/practice/index.html).
+ *          Relative asset paths, the same config.json, dictionaries and fonts as the web build. Served from the extension, GoPractice works on the
+ *          device with no account (src/localBinding.ts reaches the extension's on-device Repository); the extension's popup and setup page link to it.
+ *          Run it AFTER `npm run ext:build`: that build empties dist/ (keeping only dist/app/), so dist/practice/ has to be rebuilt after it.
  *   vite -c packages/gopractice/vite.config.ts   serves the app for development with the repository's public/.
  */
 import fs from 'node:fs';
@@ -70,11 +75,13 @@ function staticFiles(outDir: string): Plugin {
   };
 }
 
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
   }
-  const outDir = path.join(here, 'dist');
+  if (mode !== 'production' && mode !== 'extension') throw new Error('mode must be "extension" (or left out for the web build)');
+  const extension = mode === 'extension';
+  const outDir = extension ? path.resolve(here, '..', 'golearn-extension', 'dist', 'practice') : path.join(here, 'dist');
   return {
     root: here,
     base: './',
@@ -82,6 +89,6 @@ export default defineConfig(({ command }) => {
     logLevel: 'warn',
     define: { 'process.env.NODE_ENV': '"production"' },
     plugins: [staticFiles(outDir)],
-    build: { outDir, emptyOutDir: true, copyPublicDir: false, sourcemap: false, minify: true, target: 'es2022', cssCodeSplit: false, chunkSizeWarningLimit: 2500 },
+    build: { outDir, emptyOutDir: true, copyPublicDir: false, sourcemap: false, minify: true, target: extension ? 'chrome110' : 'es2022', cssCodeSplit: false, chunkSizeWarningLimit: 2500 },
   };
 });

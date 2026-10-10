@@ -1,4 +1,5 @@
 import { experimentalManifest } from './experimental';
+import { DE_TUTORIAL } from '../tutorial/de';
 import type { PackManifest, ValidationCase } from '../manifest';
 
 /** Experimental: German. Adapter version 9 (checked against src/adapters/de.ts by test/language-packs/registry.test.ts). */
@@ -49,6 +50,7 @@ export function germanManifest(): PackManifest {
     segmentation: { method: 'adapter', notes: 'Intl.Segmenter for German; a compound stays one token and its parts are reported separately.' },
     validation: DE_VALIDATION,
     pronunciationNotes: true,
+    tutorial: { ref: DE_TUTORIAL.ref, estimatedMinutes: DE_TUTORIAL.estimatedMinutes },
     thin: [
       'lemmatization is seed-only (a word outside the list gets an inferred, unconfirmed reading or none);',
       'there is no parser, so a case the neighbours do not decide stays a union (Nom,Acc) rather than a guess;',

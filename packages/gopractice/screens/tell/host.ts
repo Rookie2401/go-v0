@@ -19,7 +19,7 @@ export async function makeHost(ctx: AppContext, id: Identity): Promise<TellHost>
   return {
     identity: {
       learnerId: id.learnerId, enrolmentId: id.enrolmentId, deviceId: id.deviceId, languageId: id.languageId,
-      ...(id.varietyId ? { varietyId: id.varietyId } : {}), ...(id.enrolment.teamId ? { teamId: id.enrolment.teamId } : {}), email: id.email,
+      ...(id.varietyId ? { varietyId: id.varietyId } : {}), email: id.email,
     },
     appVersion: ctx.deps.appVersion,
     now: () => ctx.deps.now(),
@@ -46,6 +46,8 @@ export async function makeHost(ctx: AppContext, id: Identity): Promise<TellHost>
       return all.filter((e) => WRITING_KINDS.has(e.kind));
     },
     async syncLine() {
+      // no account: the drafts are kept on this device, and there is nothing to be offline from
+      if ((await ctx.mode()) === 'device') return { text: 'On this device only. Drafts are saved here.', online: true };
       const v = await ctx.syncView();
       const s = v.status;
       const online = s ? s.online : true;

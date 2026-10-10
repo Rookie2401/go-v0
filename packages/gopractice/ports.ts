@@ -13,6 +13,7 @@ import type { ItemHistory } from '../goreview/src/history/history';
 import type { Measure } from '../goreview/src/transfer/measures';
 import type { AppConfig } from './config';
 import type { KeyValueArea, Transport } from '../repository-sync/src';
+import type { LocalRepo } from './localRepo';
 
 // ───────────────────────────── the GoReview engine port ─────────────────────────────
 
@@ -156,6 +157,13 @@ export interface Deps {
   newId(): string;
   random(): number;
   appVersion: string;
+  /**
+   * The on-device Repository: present when this copy runs inside the GoLearn extension (a page served from chrome-extension://…/practice/),
+   * where GoPractice works on the device with no account. Absent in the hosted copy, which needs an account.
+   */
+  local?: () => Promise<LocalRepo>;
+  /** Where the neighbouring pages are, when this copy knows them (relative links inside the extension; the extension page for the hosted copy, from config.json). */
+  links?: { setup?: string; extension?: string };
   /** Run the sync client's own timer (the real app) or only on demand (tests). */
   autoSync: boolean;
   /** Timer functions for the session clock; tests may freeze them. */

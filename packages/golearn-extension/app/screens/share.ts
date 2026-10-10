@@ -26,17 +26,18 @@ import type { View } from './view';
 
 export const DEFAULT_SHARE_LANGUAGE = 'sq';
 export const SHARE_SURFACE = 'share';
-/** The learner's own choice is certain; the enrolment's language is a default, not evidence (the resolver's TEAM_DEFAULT_CONFIDENCE). */
+/** The learner's own choice here is certain; the chosen language is a default, not evidence (the resolver's default-language confidence). */
 export const SHARE_OVERRIDE_CONFIDENCE = 1;
 export const SHARE_DEFAULT_CONFIDENCE = 0.3;
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const { win, doc } = ctx.deps;
-  const session = await ctx.state.getSession();
+  const active = await ctx.activeLanguage();
   if (!view.alive()) return;
-  // The language is the enrolment's (or the default) until the learner chooses another on this screen: the first is a
-  // `team-default` (nothing in a shared passage declares its language), the second an `override`, and the event says which.
-  const enrolmentLanguage = session?.languageId || DEFAULT_SHARE_LANGUAGE;
+  // The language is the learner's choice (or the default) until another is picked on this screen: the first is recorded with the
+  // contract's `team-default` basis (nothing in a shared passage declares its language; the value is the contract's word for a
+  // default, not a team), the second as an `override`, and the event says which.
+  const enrolmentLanguage = active?.languageId || DEFAULT_SHARE_LANGUAGE;
   const nameOf = (id: string): string => ctx.deps.packs.packFor(id)?.name ?? id;
   let languageId = enrolmentLanguage;
   let chosen = false;
@@ -139,7 +140,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   unanalysed.id = 'share-unanalysed';
   const describeLanguage = (): void => {
     languageLine.textContent = chosen ? `Looking up in ${languageName}, the language you chose.`
-      : session?.languageId ? `Looking up in ${languageName}, your active enrolment.` : `No enrolment yet: looking up in ${languageName}.`;
+      : active?.languageId ? `Looking up in ${languageName}, the language you are reading.` : `No language chosen yet: looking up in ${languageName}.`;
     unanalysed.textContent = `GoLearn has no analyser for ${languageName} yet; a lookup here will say so and record nothing.`;
     unanalysed.hidden = analysed;
   };

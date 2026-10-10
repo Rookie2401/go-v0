@@ -70,7 +70,10 @@ export interface KnowledgeView { unitId: string; dimensions: Partial<Record<Dime
 export interface ProfileRequest { unitIds: string[]; languageId: string }
 export interface ProfileReply {
   ok: boolean;
+  /** Signed in to an account (not "a model is available": see `source`). */
   connected: boolean;
+  /** Where the rows come from when they are not (only) the account's: `device` = this device's own Repository (no sign-in needed, or the account could not be reached). */
+  source?: 'device';
   /** The rows are from the cache and the Repository could not be reached to refresh them. */
   stale?: boolean;
   rows: Record<string, KnowledgeView>;
@@ -151,6 +154,31 @@ export function stringRecord(v: unknown, maxEntries = 24, maxLen = 80): Record<s
   return out;
 }
 
+// ───────────────────────────── GoLearn Active ─────────────────────────────
+
+/** The learner's two switches for GoLearn Active (golearn:active). Off by default; Speak on click defaults to on once Active is on. */
+export interface ActiveSettings { active: boolean; speakOnClick: boolean }
+export const DEFAULT_ACTIVE: ActiveSettings = { active: false, speakOnClick: true };
+/** The optional host permission Active needs (manifest `optional_host_permissions`); nothing is granted until the learner says yes to the browser's prompt. */
+export const ACTIVE_ORIGINS: readonly string[] = ['https://*/*', 'http://*/*'];
+
+export interface ActiveRequest { op: 'get' | 'set'; patch?: Partial<ActiveSettings> }
+export interface ActiveReply {
+  ok: boolean;
+  settings: ActiveSettings;
+  /** The browser has granted the host permission. */
+  granted: boolean;
+  /** The dynamic content script is registered (Active is really on for pages opened from now on). */
+  registered: boolean;
+  /** How many refusing readers the registration excludes. */
+  excluded: number;
+  error?: 'permission' | 'unsupported' | 'register-failed' | 'forbidden' | 'storage';
+  message?: string;
+}
+
+/** Background -> content: start (or update) Active on this page. */
+export interface ActivateMessage { type: 'golearn:activate'; speak: boolean }
+
 /** Text from a remote or page source: a string, bounded, control characters removed. Rendering is always as text. */
 export function cleanText(v: unknown, max = 400): string | undefined {
   if (typeof v !== 'string') return undefined;
@@ -166,3 +194,68 @@ const LANGUAGE_NAMES: Record<string, string> = {
 };
 /** A learner-facing name for a language id; the id itself when the name is not known. */
 export const languageNameOf = (id: string): string => LANGUAGE_NAMES[id] ?? id;
+
+// ───────────────────────────── the device-local Repository (no account) ─────────────────────────────
+
+/** One enrolment of the device-local learner. `explicit` = the learner chose the language (setup page); otherwise the Repository made it to be able to record a lookup. */
+export interface LocalEnrolmentView { enrolmentId: string; languageId: string; packId: string; packVersion: string; startedAt: string; endedAt?: string; explicit: boolean; active: boolean }
+
+/**
+ * What an extension page asks of the device-local Repository (`MSG.localRepo`; extension pages only, never a content script). Every reply has
+ * `ok`; a refusal is `{ ok: false, error }`.
+ *   status      counts, enrolments, storage, the last upload             -> LocalRepoStatus
+ *   knowledge   the learner-model rows of some units (or all)            -> { ok, knowledge: UnitKnowledge[] }
+ *   candidates  review candidates for a language's enrolment             -> { ok, candidates: ReviewCandidate[] }
+ *   export      every event recorded on this device, with the enrolments -> { ok, format, events, enrolments }
+ *   enrolments  the open enrolments                                       -> { ok, enrolments: LocalEnrolmentView[] }
+ *   enrol       choose a language (idempotent per language); it becomes the active one -> { ok, enrolment }
+ *   select      make an open enrolment the active one                    -> { ok, enrolment }
+ *   end         end an enrolment (its events stay)                       -> { ok }
+ *   identity    this device's local learner and device ids               -> { ok, learnerId, deviceId }
+ *   upload      send the history to the signed-in account now, then pull -> { ok, upload?: { sent, duplicates, failed, waiting }, pulled?, skipped? }
+ *               (`waiting`: events held back because the account has no open enrolment in their language; they go when it has one)
+ *   rebuild     refold the knowledge projection from the events         -> { ok }
+ *   clear       erase the device-local Repository (a new anonymous learner starts) -> { ok }
+ *   api         call one method of the Repository API client (see LOCAL_API_METHODS) -> { ok, result: ApiResult }
+ */
+export type LocalRepoRequest =
+  | { op: 'status' }
+  | { op: 'knowledge'; unitIds?: string[]; languageId?: string }
+  | { op: 'candidates'; languageId?: string; limit?: number }
+  | { op: 'export' }
+  | { op: 'enrolments' }
+  | { op: 'enrol'; languageId: string; packId?: string; packVersion?: string; goals?: Array<{ kind: string; label?: string; priority?: number }>; varietyId?: string; scriptId?: string }
+  | { op: 'select'; enrolmentId: string }
+  | { op: 'end'; enrolmentId: string }
+  | { op: 'identity' }
+  | { op: 'upload' }
+  | { op: 'rebuild' }
+  | { op: 'clear' }
+  | { op: 'api'; method: string; args?: unknown[] };
+
+/** The methods of the Repository API client that `{ op: 'api' }` forwards. Accounts and sessions are not among them: there is no password on this device. */
+export const LOCAL_API_METHODS: readonly string[] = [
+  'health', 'me', 'listEnrolments', 'enrol', 'endEnrolment', 'packs', 'unit', 'units', 'lookup', 'correctUnit', 'correct', 'appendEvents', 'listEvents',
+  'knowledge', 'candidates', 'preferences', 'submitReviews', 'submitWriting', 'listDocuments', 'getDocument', 'putDocument', 'deleteDocument', 'exportAll', 'putTombstone',
+];
+
+export interface LocalRepoStatus {
+  ok: true;
+  /** The Repository opened (false: storage was unreadable; nothing is being recorded on the device). */
+  available: boolean;
+  events: number;
+  /** Events recorded here and not yet sent to an account. */
+  pendingUpload: number;
+  uploaded: number;
+  /** Events received from the account (other devices). */
+  fromAccount: number;
+  enrolments: LocalEnrolmentView[];
+  /** The active language: the selected open enrolment of an explicit choice; absent until the learner has chosen one. */
+  languageId?: string;
+  /** Characters of the rows kept in `chrome.storage.local` (a lower bound of the bytes; the browser allows about 10 MB for the whole extension). */
+  storedChars: number;
+  /** Writes the browser refused (storage full): the data is kept for this session only. */
+  writeFailures: number;
+  lastWriteError?: string;
+  lastUpload?: { at: number; sent: number; duplicates: number; failed: number; waiting?: number; pulled: number; error?: string };
+}

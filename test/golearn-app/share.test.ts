@@ -31,7 +31,8 @@ async function openShared(params: Record<string, string>, opts: RigOptions = {})
   return makeRig({ ...opts, startRoute: 'share' });
 }
 async function setLanguage(rig: Rig, languageId: string): Promise<void> {
-  await rig.area.set({ [KEYS.session]: { token: 't', learnerId: 'learner-9', enrolmentId: 'enr-9', languageId, expiresAt: '2027-01-01T00:00:00.000Z', email: 'ana@example.org' } });
+  // the language chosen on this device (an account is not needed for it)
+  await rig.area.set({ [KEYS.choice]: { enrolmentId: 'loc-9', languageId } });
 }
 
 describe('the share screen: a passage arriving through the web share target', () => {
@@ -144,10 +145,10 @@ describe('the share screen: a passage arriving through the web share target', ()
     destroyRigs();
 
     const nb = await makeRig({ startRoute: 'share' });
-    await setLanguage(nb, 'nb');
+    await setLanguage(nb, 'xx'); // a language with no analyser (Norwegian has one now)
     await nb.go('home');
     await nb.go('share');
-    expect(nb.q('#share-paste-card').parentElement!.textContent).toContain('no analyser for Norwegian');
+    expect(nb.q('#share-paste-card').parentElement!.textContent).toContain('no analyser for xx');
     type(nb.q<HTMLTextAreaElement>('#share-paste'), 'hus');
     nb.q<HTMLFormElement>('#share-paste-form').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
     await until(() => nb.q('#share-status').getAttribute('data-kind') === 'error');
@@ -169,7 +170,7 @@ describe('the share screen: pasted text', () => {
     const rig = await makeRig({ startRoute: 'share' });
     expect(rig.q('#share-paste-card').textContent).toContain('Paste what you copied');
     expect(rig.q('#share-paste-card').textContent).toContain('never reads your clipboard by itself');
-    expect(rig.q('label.field').textContent).toContain('Paste what you copied');
+    expect(rig.q('#share-paste-card label.field').textContent).toContain('Paste what you copied');
     await flush(20);
     expect(readText).not.toHaveBeenCalled();
     expect(await rows(rig)).toEqual([]);

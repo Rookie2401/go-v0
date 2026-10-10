@@ -7,6 +7,7 @@ import { createRepositoryApi } from '../repository-service/src/api';
 import { createMemoryArea } from '../repository-sync/src';
 import { createApp } from './app';
 import { createAudioDeps } from './audio';
+import { getExtension, localRepoFor } from './localBinding';
 import { loadConfig } from './config';
 import { createReviewEngine } from './engine';
 import { packFactsFor } from './packFacts';
@@ -36,8 +37,12 @@ export async function createRealDeps(): Promise<Deps> {
     builders: registry, evidenceFor, ratingFor,
     factsFor: packFactsFor({ fetch: doFetch, baseUrl: config.assetBaseUrl ?? './' }),
   });
+  // Inside the GoLearn extension (this page is served from chrome-extension://…/practice/) GoPractice works on the device with no account: the
+  // on-device Repository is reached through the extension's worker. Anywhere else (the hosted copy) there is none, and an account is needed.
+  const ext = getExtension();
   return {
     win: window, doc: document, fetch: doFetch, area: storageArea(), config,
+    ...(ext ? { local: async () => localRepoFor(ext), links: { setup: '../app/index.html#/language' } } : config.extensionUrl ? { links: { extension: config.extensionUrl } } : {}),
     createApi: (baseUrl, token) => createRepositoryApi({ baseUrl, fetch: doFetch, token }),
     engine,
     audio: (consent) => createAudioDeps({ consent }),

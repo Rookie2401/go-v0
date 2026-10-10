@@ -4,10 +4,15 @@
  * cannot read it) with a 10-minute lifetime. After each successful sync the cached units are re-fetched, so what
  * GoPractice changed reaches the reader on the next lookup. Rows are shaped for the content script: the seven
  * dimensions, never a learner id.
+ *
+ * With no account (no session) the rows come from the device's own Repository (`local`), and the reply says so (`source: 'device'`, `connected: false`).
+ * With an account, the service answers as before; when it cannot be reached (offline, signed out, refused) the units the cache does not hold are read from the
+ * device's Repository instead, so the card still has its learner-model lines.
  */
 import type { Dimension, UnitKnowledge } from '../../../repository-contract/src';
 import type { StorageArea } from '../platform';
 import { isDepth, isLanguageId, isUnitId, type DimView, type ExplanationDepth, type KnowledgeView, type PrivacySettings, type ProfileReply } from '../protocol';
+import type { LocalKnowledge } from './localRepo';
 import type { SessionManager } from './session';
 import { limitWordIds } from './wordids';
 
@@ -29,6 +34,8 @@ export interface ProfileServiceOptions {
   settings: () => Promise<PrivacySettings>;
   now?: () => number;
   ttlMs?: number;
+  /** The device's own Repository (absent: the card's model lines need an account, as before). */
+  local?: LocalKnowledge;
 }
 
 /** UnitKnowledge -> the compact row a content script may hold. */
@@ -78,7 +85,11 @@ export function createProfileService(opts: ProfileServiceOptions) {
     const cached = (await area.get(key))[key] as CachedPrefs | undefined;
     if (cached && now() - cached.at < ttl && isDepth(cached.depth)) return { depth: cached.depth, origin: cached.origin };
     const a = await opts.session.authenticated();
-    if (!a) return cached && isDepth(cached.depth) ? { depth: cached.depth, origin: cached.origin, stale: true } : { depth: 'brief', origin: 'default' };
+    if (!a) {
+      const mine = await localDepth(languageId);
+      if (mine) return mine;
+      return cached && isDepth(cached.depth) ? { depth: cached.depth, origin: cached.origin, stale: true } : { depth: 'brief', origin: 'default' };
+    }
     try {
       const r = await a.api.preferences(languageId);
       if (r.ok) {
@@ -90,7 +101,33 @@ export function createProfileService(opts: ProfileServiceOptions) {
         }
       }
     } catch { /* fall through to the cached or default value */ }
-    return cached && isDepth(cached.depth) ? { depth: cached.depth, origin: cached.origin, stale: true } : { depth: 'brief', origin: 'default' };
+    if (cached && isDepth(cached.depth)) return { depth: cached.depth, origin: cached.origin, stale: true };
+    return (await localDepth(languageId)) ?? { depth: 'brief', origin: 'default' };
+  }
+
+  /** The explanation depth the device's own Repository infers (or the learner set) for a language. */
+  async function localDepth(languageId: string): Promise<{ depth: ExplanationDepth; origin: ProfileReply['depthOrigin'] } | undefined> {
+    const p = (await opts.local?.preferences(languageId))?.explanationDepth;
+    if (!p || !isDepth(p.value)) return undefined;
+    return { depth: p.value, origin: p.origin === 'explicit' || p.origin === 'inferred' ? p.origin : 'default' };
+  }
+
+  /** The compact rows of the device's own Repository for these units; undefined when there is none. */
+  async function deviceRows(ids: string[]): Promise<Record<string, KnowledgeView> | undefined> {
+    if (!opts.local) return undefined;
+    const k = await opts.local.knowledge(ids);
+    if (!k) return undefined;
+    const out: Record<string, KnowledgeView> = {};
+    for (const row of k) if (row && isUnitId(row.unitId)) out[row.unitId] = compactKnowledge(row);
+    return out;
+  }
+
+  /** The service could not answer: what the cache holds, and for the units it does not hold, what this device knows. */
+  async function unreached(ids: string[], held: Record<string, KnowledgeView>, error: string, base: { depth: ExplanationDepth; depthOrigin: ProfileReply['depthOrigin'] }): Promise<ProfileReply> {
+    const missing = ids.filter((i) => !held[i]);
+    const mine = missing.length ? await deviceRows(missing) : undefined;
+    const rows = { ...(mine ?? {}), ...held };
+    return { ok: true, connected: true, stale: true, rows, error, ...(mine && Object.keys(mine).length ? { source: 'device' as const } : {}), ...base };
   }
 
   async function knowledgeFor(unitIds: unknown, languageId: string): Promise<ProfileReply> {
@@ -99,7 +136,10 @@ export function createProfileService(opts: ProfileServiceOptions) {
     const st = await opts.session.status();
     const d = await depthFor(languageId);
     const base = { depth: d.depth, depthOrigin: d.origin } as const;
-    if (!st.connected) return { ok: true, connected: false, rows: {}, ...base };
+    if (!st.connected) {
+      const rows = await deviceRows(ids);
+      return rows ? { ok: true, connected: false, source: 'device', rows, ...base } : { ok: true, connected: false, rows: {}, ...base };
+    }
     const keys = ids.map((i) => KNOWLEDGE_PREFIX + i);
     const cache = keys.length ? await area.get(keys) : {};
     const out: Record<string, KnowledgeView> = {};
@@ -112,15 +152,15 @@ export function createProfileService(opts: ProfileServiceOptions) {
     }
     if (!missing.length) return { ok: true, connected: true, rows: out, ...base };
     const a = await opts.session.authenticated();
-    if (!a) return { ok: true, connected: true, stale: true, rows: { ...out, ...staleRows }, error: 'needs-sign-in', ...base };
+    if (!a) return unreached(ids, { ...out, ...staleRows }, 'needs-sign-in', base);
     try {
       const got = await fetchRows(a.api, missing);
-      if (!got.ok) return { ok: true, connected: true, stale: true, rows: { ...out, ...staleRows }, error: got.status === 401 ? 'needs-sign-in' : got.error, ...base };
+      if (!got.ok) return unreached(ids, { ...out, ...staleRows }, got.status === 401 ? 'needs-sign-in' : got.error, base);
       await remember(missing, got.rows);
       for (const id of missing) { const r = got.rows.get(id); if (r) out[id] = r; }
       return { ok: true, connected: true, rows: out, ...base };
     } catch {
-      return { ok: true, connected: true, stale: true, rows: { ...out, ...staleRows }, error: 'offline', ...base };
+      return unreached(ids, { ...out, ...staleRows }, 'offline', base);
     }
   }
 

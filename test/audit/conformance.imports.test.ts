@@ -166,9 +166,8 @@ describe('(b) the salvage allow-list covers every legacy module that is reached'
     const wired = SALVAGE_ALLOW_LIST.filter((a) => [...u].some((f) => underPrefix(f, a.prefix))).map((a) => a.prefix);
     const unwired = SALVAGE_ALLOW_LIST.filter((a) => !wired.includes(a.prefix)).map((a) => a.prefix);
     if (print) console.info(`[allow-list] wired: ${wired.join(', ')}\n[allow-list] allowed but not reached: ${unwired.join(', ')}`);
-    // Albanian and Spanish are the two installable packs; German, Hindi and Thai are wired as experimental packs (analyser chunks); the Norwegian analysers are planned packs and are not wired
-    for (const p of ['src/adapters/sq.ts', 'src/adapters/albanian/', 'src/adapters/es.ts', 'src/adapters/spanish/', 'src/adapters/de.ts', 'src/adapters/german/', 'src/adapters/hi.ts', 'src/adapters/hindi/', 'src/adapters/th.ts', 'src/adapters/thai/', 'src/adapters/shared.ts', 'src/core/', 'src/dict/']) expect(wired, p).toContain(p);
-    for (const p of ['src/adapters/nb.ts', 'src/adapters/nn.ts', 'src/adapters/norwegian/']) expect(unwired, `${p} became reachable: update LEGACY-SALVAGE.md`).toContain(p);
+    // Albanian and Spanish are the two installable packs; German, Hindi, Thai and Norwegian (Bokmål, Nynorsk) are wired as experimental packs (analyser chunks)
+    for (const p of ['src/adapters/sq.ts', 'src/adapters/albanian/', 'src/adapters/es.ts', 'src/adapters/spanish/', 'src/adapters/de.ts', 'src/adapters/german/', 'src/adapters/hi.ts', 'src/adapters/hindi/', 'src/adapters/th.ts', 'src/adapters/thai/', 'src/adapters/nb.ts', 'src/adapters/nn.ts', 'src/adapters/norwegian/', 'src/adapters/shared.ts', 'src/core/', 'src/dict/']) expect(wired, p).toContain(p);
   });
 });
 
@@ -258,11 +257,11 @@ describe('(e) no entry carries commercial ebook-provider code', () => {
     expect([...files].sort()).toEqual(Object.keys(REFUSAL_SITES).sort());
   });
 
-  it('the manifest grants no host access and declares no content script, so no reader site is touched without a gesture', () => {
+  it('the manifest grants no host access by default and declares no content script, so no reader site is touched without a gesture (GoLearn Active asks the learner for an optional host permission and excludes every refusing reader)', () => {
     const m = JSON.parse(readText('packages/golearn-extension/manifest.json'));
     expect(m.host_permissions).toBeUndefined();
     expect(m.content_scripts).toBeUndefined();
-    expect(m.optional_host_permissions).toBeUndefined();
+    expect(m.optional_host_permissions).toEqual(['https://*/*', 'http://*/*']); // granted only through the popup's switch (test/extension/active.background.test.ts)
     expect(JSON.stringify(m)).not.toMatch(/amazon|kindle|kobo/i);
   });
 

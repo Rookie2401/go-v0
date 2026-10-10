@@ -59,12 +59,12 @@ export function renderChecks(result: VerifyView): HTMLElement {
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const { packs } = ctx.deps;
-  const [session, progress] = await Promise.all([ctx.state.getSession(), ctx.state.getProgress()]);
+  const [choice, progress] = await Promise.all([ctx.activeLanguage(), ctx.state.getProgress()]);
   if (!view.alive()) return;
-  const active = session?.languageId ? packs.packFor(session.languageId) : undefined;
+  const active = choice?.languageId ? packs.packFor(choice.languageId) : undefined;
   append(el, [
     p('A language pack is the versioned bundle GoLearn reads a language with: its analyser, word list, dictionary and pronunciation notes. It is installed on this device and checked against its own validation cases.'),
-    active ? p(`Your active language is ${active.name}.`, 'muted') : p('Choose a team and language first (or look at what exists below).', 'muted'),
+    active ? p(`Your active language is ${active.name}.`, 'muted') : h('p', { class: 'muted' }, h('a', { href: '#/language' }, 'Choose your language'), ' first, or look at what exists below.'),
   ]);
   el.append(dictionaryCard(ctx, (await ctx.state.getService())?.assetBase));
   const all = packs.packs();

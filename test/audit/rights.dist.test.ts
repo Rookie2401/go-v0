@@ -196,6 +196,8 @@ function loadFingerprints(): void {
  */
 /** The German analyser (a lazily loaded chunk, analysers/de.js; also linked into the hosted setup page) holds the twelve month names in calendar order, as the word list does; the owner's German lesson plan lists them in the same order. */
 const MONTHS = 'the twelve German month names in calendar order (März … Dezember): a word list entry of the German analyser (src/adapters/german/lexicon-nouns.ts) and a line of the owner\'s lesson plan; generic vocabulary, no running text';
+/** The Norwegian analysers (lazily loaded chunk analysers/{nb,nn}.js, shared engine) hold the seven weekday names in week order, as the word list does; a line of the owner's Bokmål ladder lists them in the same order. */
+const WEEKDAYS = 'the seven Norwegian weekday names in week order (mandag … søndag): a word list entry of the Norwegian analysers (src/adapters/norwegian/lexicon-nouns-nb-2.ts) and a line of the owner\'s Bokmål ladder text; generic vocabulary, no running text';
 const EXAMINED_OVERLAPS: ReadonlyArray<{ window: string; origin: string; why: string }> = [
   {
     window: 'märzaprilmaijunijuliaugustseptemberoktob',
@@ -242,6 +244,11 @@ const EXAMINED_OVERLAPS: ReadonlyArray<{ window: string; origin: string; why: st
     window: 'efinitenominativesingularandindefiniteno',
     origin: 'ladder:data/ladder/sq/PLAN-A1-2-A2.md',
     why: 'a grammar-label phrase ("definite nominative singular and indefinite nominative plural") that a Wiktionary dictionary shard (s-94.json) and an owner planning note both contain; generic terminology, no running text',
+  },
+  {
+    window: 'mandagtirsdagonsdagtorsdagfredaglørdagsø',
+    origin: 'ladder:data/ladder/nb/authoring/a1-1/12.txt',
+    why: WEEKDAYS,
   },
 ];
 const explained = (hit: string): string | undefined => {
@@ -329,7 +336,8 @@ describe.each(DISTS)('$id', (dist) => {
     guard(ctx);
     const sheets = files.filter((f) => /\.css$/i.test(f));
     const named = sheets.flatMap((c) => [...fs.readFileSync(path.join(abs(dist.dir), c), 'utf8').matchAll(/url\(\s*['"]?(\.\/fonts\/[^'")]+\.woff2)['"]?\s*\)/g)].map((m) => path.posix.join(path.posix.dirname(c), m[1])));
-    expect([...new Set(named)].sort(), 'the stylesheet names the three EB Garamond files').toHaveLength(3);
+    // the extension dist carries two stylesheets that name them (the setup app's and GoPractice's page under practice/), each beside its own fonts/ copy
+    expect([...new Set(named.map((f) => path.posix.basename(f)))].sort(), 'the stylesheets name the three EB Garamond files').toHaveLength(3);
     const shipped = files.filter((f) => FONT_EXT.test(f));
     expect(shipped.filter((f) => !named.includes(f)), 'a font file nothing names').toEqual([]);
     expect(named.filter((f) => !shipped.includes(f)), 'a named font file that is missing').toEqual([]);
@@ -358,7 +366,7 @@ describe.each(DISTS)('$id', (dist) => {
     }
     const unexplained = hits.filter((h) => !explained(h));
     console.info(`[dist] ${dist.dir}: ${scanned} text files compared against ${fp.windows.size} windows and ${names.titles.size} titles/authors; raw hits: ${hits.length}, examined overlaps: ${hits.length - unexplained.length}, unexplained: ${unexplained.length}`);
-    expect(unexplained.slice(0, 20)).toEqual([]);
+    expect(unexplained.slice(0, 20), unexplained.slice(0, 20).join(' | ')).toEqual([]);
     // the examined overlaps involve the owner-authored curriculum only: none touches the library, the sources, a Bible or a catalogued title
     expect(hits.filter((h) => /with (library|sources|scripture|corpus):|contains (title|author)/.test(h))).toEqual([]);
   }, 120_000);

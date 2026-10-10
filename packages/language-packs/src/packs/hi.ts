@@ -1,4 +1,5 @@
 import { experimentalManifest } from './experimental';
+import { HI_TUTORIAL } from '../tutorial/hi';
 import type { PackManifest, ValidationCase } from '../manifest';
 
 /** Experimental: Hindi (Devanagari). Adapter version 6 (checked against src/adapters/hi.ts by test/language-packs/registry.test.ts). */
@@ -48,6 +49,7 @@ export function hindiManifest(): PackManifest {
     segmentation: { method: 'adapter', notes: 'Intl.Segmenter for Hindi; matras, nukta and virama stay inside a token.' },
     validation: HI_VALIDATION,
     pronunciationNotes: true,
+    tutorial: { ref: HI_TUTORIAL.ref, estimatedMinutes: HI_TUTORIAL.estimatedMinutes },
     thin: [
       'lemmatization is seed-only (a word outside the list gets an inferred reading marked as a guess, or none);',
       'words written alike in two ways (पर, की, खाना) keep every reading and are not resolved by a parser;',

@@ -9,12 +9,12 @@ import type { Deps } from './ports';
 import * as accountScreen from './screens/account';
 import * as diagnosticsScreen from './screens/diagnostics';
 import * as homeScreen from './screens/home';
+import * as languageScreen from './screens/language';
 import * as packScreen from './screens/pack';
 import * as privacyScreen from './screens/privacy';
 import * as readerScreen from './screens/reader';
 import * as shareScreen from './screens/share';
 import * as syncScreen from './screens/sync';
-import * as teamScreen from './screens/team';
 import * as tutorialScreen from './screens/tutorial';
 import * as welcomeScreen from './screens/welcome';
 import type { View } from './screens/view';
@@ -32,11 +32,12 @@ export interface ScreenDef {
 
 export const SCREENS: readonly ScreenDef[] = [
   { id: 'welcome', title: 'Welcome', group: 'setup', render: welcomeScreen.render },
-  { id: 'account', title: 'Account', group: 'setup', render: accountScreen.render },
-  { id: 'team', title: 'Team and language', group: 'setup', render: teamScreen.render },
-  { id: 'pack', title: 'Language pack', group: 'setup', render: packScreen.render },
-  { id: 'reader', title: 'Reader integration', group: 'setup', render: readerScreen.render },
+  { id: 'language', title: 'Choose your language', group: 'setup', render: languageScreen.render },
+  { id: 'pack', title: 'Install the pack', group: 'setup', render: packScreen.render },
   { id: 'tutorial', title: 'Orientation', group: 'setup', render: tutorialScreen.render },
+  { id: 'reader', title: 'Reader integration', group: 'setup', render: readerScreen.render },
+  // optional and last: an account only keeps progress across devices
+  { id: 'account', title: 'Keep your progress (optional)', group: 'setup', render: accountScreen.render },
   { id: 'sync', title: 'Sync', group: 'settings', render: syncScreen.render },
   { id: 'privacy', title: 'Privacy', group: 'settings', render: privacyScreen.render },
   { id: 'diagnostics', title: 'Diagnostics and updates', group: 'settings', render: diagnosticsScreen.render },
@@ -75,6 +76,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
 
   const parse = (): string => {
     const m = /^#\/?([a-z-]+)/.exec(win.location.hash);
+    // an old link to the screen that used to ask for a team goes to the language screen
+    if (m && m[1] === 'team') return 'language';
     return m && ROUTE_IDS.includes(m[1]) ? m[1] : '';
   };
 
@@ -173,6 +176,6 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     current: () => route,
     go,
     ready: () => renderDone,
-    destroy() { destroyed = true; win.removeEventListener('hashchange', onHash); for (const d of disposers) { try { d(); } catch { /* */ } } disposers = []; clear(root); },
+    destroy() { destroyed = true; win.removeEventListener('hashchange', onHash); for (const d of disposers) { try { d(); } catch { /* */ } } disposers = []; ctx.destroy(); clear(root); },
   };
 }

@@ -6,6 +6,11 @@
  * One learner's data (queue, rejected rows, sync cursor, local event log) lives under the area prefix `u:<learnerId>:`.
  * Signing in as another account therefore never exposes the previous learner's rows and never destroys events that
  * were waiting to be sent; what an account switch clears is the cache: profile, active language, candidate lists.
+ *
+ * An account is optional where there is an on-device Repository (the extension's copy). Then, signed out, the "service" is that
+ * repository: `api()` returns its typed client, the sync client moves the queue and the local log through its append / list routes
+ * (localTransport), and the learner is the device's own anonymous one. Signing in uploads the device's history once and switches to
+ * the account; signing out returns to the device without removing anything. The hosted copy has no such repository and needs an account.
  */
 import type { Enrolment, GoEvent, EventLog } from '../repository-contract/src';
 import type { RepositoryApi, ApiResult } from '../repository-service/src/api';
@@ -13,6 +18,7 @@ import {
   createLocalQueue, createSyncClient, pushIsolatingRefusals, type LocalQueue, type SyncClient, type SyncResult, type SyncStatus, type Transport,
 } from '../repository-sync/src';
 import { explainFailure, resolveServiceUrl, validateServiceUrl } from './config';
+import { localTransport, uploadedCount, type LocalRepo } from './localRepo';
 import type { ActiveRun, AudioDeps, Deps, EventContext, Identity, ReviewEngine } from './ports';
 import {
   KEYS, createLocalEventLog, createScopedArea, createStateStore, learnerPrefix, removeByPrefix, type Profile, type Session, type Settings, type StateStore,
@@ -28,7 +34,11 @@ export interface DataHandle {
   sync: SyncClient;
 }
 
-export type SignInResult = { ok: true; email: string; switched: boolean } | { ok: false; message: string };
+/** `uploaded`: how many of this device's events the account holds after the one-time upload (absent when there was nothing to upload it from, or it failed). */
+export type SignInResult = { ok: true; email: string; switched: boolean; uploaded?: number } | { ok: false; message: string };
+
+/** 'account': signed in. 'device': no account, the on-device Repository answers. 'none': the hosted copy before sign-in. */
+export type Mode = 'account' | 'device' | 'none';
 export interface RecordResult { queued: number; duplicates: number; refused: Array<{ id: string; issues: string[] }> }
 
 export interface SyncView { status: SyncStatus | undefined; authExpired: boolean; syncing: boolean }
@@ -39,6 +49,10 @@ export interface AppContext {
   engine: ReviewEngine;
   /** The session in progress, or the one that just ended (its summary). */
   run: { active?: ActiveRun };
+  /** Whether this copy works on the device (the extension), with an account (signed in), or can do nothing until one signs in (the hosted copy). */
+  mode(): Promise<Mode>;
+  /** The on-device Repository, when this copy has one. */
+  local(): Promise<LocalRepo | undefined>;
   serviceUrl(): Promise<string>;
   saveService(baseUrl: string | undefined): Promise<{ ok: true } | { ok: false; message: string }>;
   api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }>;
@@ -52,6 +66,8 @@ export interface AppContext {
   setLanguage(enrolmentId: string): Promise<boolean>;
   signIn(input: { email: string; password: string }): Promise<SignInResult>;
   signOut(opts?: { forget?: boolean }): Promise<{ pendingLeft: number }>;
+  /** Deliberately removes this device's own data: the on-device Repository and the learner's local queue, log and preferences. Never a side effect of signing out. */
+  clearLocalData(): Promise<number>;
   data(): Promise<DataHandle | undefined>;
   eventContext(): Promise<EventContext | undefined>;
   /** The learner's events in the local log (own + pulled), optionally of one language. */
@@ -91,6 +107,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   const run: { active?: ActiveRun } = {};
   let handle: DataHandle | undefined;
   let handleKey = '';
+  let localOpen: Promise<LocalRepo | undefined> | undefined;
   let inflight: Promise<unknown> = Promise.resolve();
   let syncing = false;
   let authExpired = false;
@@ -119,8 +136,23 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     return id;
   }
 
+  function openLocal(): Promise<LocalRepo | undefined> {
+    localOpen ??= (async () => {
+      if (!deps.local) return undefined;
+      try { return await deps.local(); } catch { return undefined; }
+    })();
+    return localOpen;
+  }
+
+  async function mode(): Promise<Mode> {
+    if (await state.getSession()) return 'account';
+    return (await openLocal()) ? 'device' : 'none';
+  }
+
+  /** The Repository client: the account's over HTTP when signed in, else the device's own where there is one, else the service without a token. */
   async function api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }> {
     const [baseUrl, session] = await Promise.all([serviceUrl(), state.getSession()]);
+    if (!session) { const l = await openLocal(); if (l) return { api: l.api, session: undefined, baseUrl: '' }; }
     return { api: deps.createApi(baseUrl, session?.token), session, baseUrl };
   }
 
@@ -130,9 +162,35 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     lastStatus = undefined; syncing = false;
   }
 
+  /** The learner's data on the device alone: the local learner's own queue and log, synchronised with the on-device Repository. */
+  async function localData(l: LocalRepo): Promise<DataHandle> {
+    const id = await l.identity();
+    const key = `device|${id.learnerId}`;
+    if (handle && handleKey === key) return handle;
+    dropHandle();
+    const device = id.deviceId || await deviceId();
+    const area = createScopedArea(deps.area, learnerPrefix(id.learnerId));
+    const queue = createLocalQueue(area, { now: () => deps.now().getTime() });
+    const log = createLocalEventLog(area, { now: () => deps.now().toISOString() });
+    const sync = createSyncClient({
+      queue, local: log, transport: localTransport(l.api, () => deps.now().toISOString()), deviceId: device, now: () => deps.now().getTime(), area,
+      backoff: { baseMs: 2_000, maxMs: 120_000 },
+      onStatus: (s) => { lastStatus = s; notify(); },
+    });
+    sync.setOnline(true); // the repository is on this device: there is no network to be offline from
+    handle = { learnerId: id.learnerId, deviceId: device, area, queue, log, sync };
+    handleKey = key;
+    if (deps.autoSync) sync.start(30_000); else void syncNow();
+    return handle;
+  }
+
   async function data(): Promise<DataHandle | undefined> {
     const { api: client, session, baseUrl } = await api();
-    if (!session) { dropHandle(); return undefined; }
+    if (!session) {
+      const l = await openLocal();
+      if (!l) { dropHandle(); return undefined; }
+      return localData(l);
+    }
     const key = `${session.learnerId}|${session.token}|${baseUrl}`;
     if (handle && handleKey === key) return handle;
     dropHandle();
@@ -175,7 +233,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   }
 
   const onOnline = (): void => { if (handle) { handle.sync.setOnline(true); void syncNow({ force: true }); } };
-  const onOffline = (): void => { if (handle) handle.sync.setOnline(false); };
+  const onOffline = (): void => { if (handle && !handleKey.startsWith('device|')) handle.sync.setOnline(false); };
   deps.win.addEventListener('online', onOnline);
   deps.win.addEventListener('offline', onOffline);
   disposers.push(() => { deps.win.removeEventListener('online', onOnline); deps.win.removeEventListener('offline', onOffline); });
@@ -195,9 +253,20 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     return cached && cached.learnerId === session.learnerId ? 'cached' : 'none';
   }
 
+  /** The device's open enrolments, the ones the learner chose in GoLearn setup first, newest first. */
+  async function localEnrolments(l: LocalRepo): Promise<Enrolment[]> {
+    try {
+      const r = await l.api.listEnrolments();
+      if (!r.ok) return [];
+      const open = r.data.enrolments.filter((e) => !e.endedAt);
+      const chosen = (e: Enrolment): number => (e.goals.length > 0 ? 1 : 0);
+      return open.sort((a, b) => chosen(b) - chosen(a) || b.startedAt.localeCompare(a.startedAt));
+    } catch { return []; }
+  }
+
   async function enrolments(): Promise<Enrolment[]> {
     const session = await state.getSession();
-    if (!session) return [];
+    if (!session) { const l = await openLocal(); return l ? localEnrolments(l) : []; }
     let profile = await state.getProfile();
     if (!profile || profile.learnerId !== session.learnerId) { await refreshProfile(); profile = await state.getProfile(); }
     if (!profile || profile.learnerId !== session.learnerId) return [];
@@ -206,7 +275,20 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
 
   async function identity(): Promise<Identity | undefined> {
     const session = await state.getSession();
-    if (!session) return undefined;
+    if (!session) {
+      const l = await openLocal();
+      if (!l) return undefined;
+      const list = await localEnrolments(l);
+      if (!list.length) return undefined;
+      const who = await l.identity();
+      const wanted = await state.getActive(who.learnerId);
+      const chosenInSetup = l.activeLanguageId ? await l.activeLanguageId().catch(() => undefined) : undefined;
+      const active = list.find((e) => e.enrolmentId === wanted) ?? (chosenInSetup ? list.find((e) => e.languageId === chosenInSetup) : undefined) ?? list[0];
+      return {
+        learnerId: who.learnerId, enrolmentId: active.enrolmentId, languageId: active.languageId,
+        ...(active.varietyId ? { varietyId: active.varietyId } : {}), deviceId: who.deviceId || await deviceId(), email: '', enrolment: active,
+      };
+    }
     const list = await enrolments();
     if (!list.length) return undefined;
     const wanted = await state.getActive(session.learnerId);
@@ -228,7 +310,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
 
   const ctx: AppContext = {
     deps, state, engine: deps.engine, run,
-    serviceUrl,
+    serviceUrl, mode, local: openLocal,
     async saveService(baseUrl) {
       if (baseUrl === undefined || baseUrl.trim() === '') { await state.setService(undefined); return { ok: true }; }
       const check = validateServiceUrl(baseUrl);
@@ -241,10 +323,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     enrolments, refreshProfile, identity,
     async setLanguage(enrolmentId) {
       const session = await state.getSession();
-      if (!session) return false;
+      const learnerId = session ? session.learnerId : (await (await openLocal())?.identity())?.learnerId;
+      if (!learnerId) return false;
       const target = (await enrolments()).find((e) => e.enrolmentId === enrolmentId);
       if (!target) return false;
-      await state.setActive(session.learnerId, enrolmentId);
+      await state.setActive(learnerId, enrolmentId);
       hooks.changed();
       return true;
     },
@@ -254,6 +337,12 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       if (!check.ok) return { ok: false, message: check.message };
       const email = input.email.trim();
       const device = await deviceId();
+      // inside the extension the worker is signed in to the same account first, so that its upload and pull (the device's history) use it
+      const l = await openLocal();
+      if (l?.connectAccount) {
+        const worker = await l.connectAccount({ baseUrl: check.url, email, password: input.password });
+        if (!worker.ok) return { ok: false, message: worker.message };
+      }
       let result: ApiResult<{ token: string; learnerId: string; expiresAt: string }>;
       try {
         result = await deps.createApi(check.url).createSession({ email, password: input.password, deviceId: device, platform: 'web' });
@@ -272,8 +361,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       authExpired = false;
       await refreshProfile();
       await data();
+      // the one-time upload of the device's own history to the account just signed into; a failure never undoes the sign-in
+      let uploaded: number | undefined;
+      if (l) { try { uploaded = uploadedCount(await l.uploadTo(deps.createApi(check.url, result.data.token))); } catch { uploaded = undefined; } }
       hooks.changed();
-      return { ok: true, email, switched };
+      return { ok: true, email, switched, ...(uploaded !== undefined ? { uploaded } : {}) };
     },
     async signOut(opts) {
       const session = await state.getSession();
@@ -284,7 +376,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
           try { await d.sync.syncOnce({ force: true }); } catch { /* offline: the rows stay */ }
           pendingLeft = await d.queue.size();
         }
+        // back to the device alone: what the account holds comes down first, so nothing done while signed in is missing afterwards
+        const l = await openLocal();
+        if (l?.pullFrom) { try { const { api: remote } = await api(); await l.pullFrom(remote); } catch { /* the account's rows stay on the account */ } }
         try { const { api: client } = await api(); await client.deleteSession(); } catch { /* the token expires on its own */ }
+        if (l?.disconnectAccount) await l.disconnectAccount();
         await state.clearSession();
         await state.clearCaches(session.learnerId);
         if (opts?.forget) await removeByPrefix(deps.area, [learnerPrefix(session.learnerId), `gopractice:prefs:${session.learnerId}:`, `gopractice:choices:${session.learnerId}`]);
@@ -296,6 +392,18 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       return { pendingLeft };
     },
     data,
+    async clearLocalData() {
+      const l = await openLocal();
+      if (!l) return 0;
+      const who = await Promise.resolve(l.identity()).catch(() => undefined);
+      try { await l.clear(); } catch { /* the rows below are still removed */ }
+      let n = 0;
+      if (who) n += await removeByPrefix(deps.area, [learnerPrefix(who.learnerId), `gopractice:prefs:${who.learnerId}:`, `gopractice:choices:${who.learnerId}`]);
+      n += await state.clearCaches(who?.learnerId);
+      dropHandle();
+      hooks.changed();
+      return n;
+    },
     eventContext,
     async events(languageId) {
       const d = await data();
@@ -339,7 +447,12 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     },
     go: hooks.go,
     changed: hooks.changed,
-    destroy() { for (const d of disposers) { try { d(); } catch { /* */ } } dropHandle(); listeners.clear(); },
+    destroy() {
+      for (const d of disposers) { try { d(); } catch { /* */ } }
+      dropHandle(); listeners.clear();
+      const o = localOpen; localOpen = undefined;
+      if (o) void o.then((l) => { try { return l?.close(); } catch { return undefined; } }, () => undefined);
+    },
   };
   return ctx;
 }

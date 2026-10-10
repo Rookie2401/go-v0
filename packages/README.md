@@ -11,6 +11,7 @@ packages/
   repository-engine/       Layer C: evidence rules, projection fold, preferences, eligibility, review candidates, suitability
   repository-service/      authenticated HTTP service (web-API handler + node:http bridge), typed client, in-process API
   repository-sync/         the device-side queue, sync client, document conflict rules
+  repository-local/        the Repository on one device, no account: memory store + engine + linguistics + service handler over a key-value area; upload/pull when signed in
   golisten/                GoListen: pronunciation contracts, voice registry, device/remote/recorded providers, assessment interface
   language-packs/          the pack manifest framework, the Albanian pack (runtime, installer, validation, tutorial), planned packs
   golearn-extension/       GoLearn: the MV3 reader extension (src/, action/) and the setup/onboarding app (app/: options page + web build)

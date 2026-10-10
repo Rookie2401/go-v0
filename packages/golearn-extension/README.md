@@ -22,8 +22,11 @@ Design sources: `docs/ecosystem/READER-ARCHITECTURE-DECISION.md`, `GOLEARN-EXTEN
 ## Layout
 
 ```
-manifest.json               MV3; options_page app/index.html; permissions below; no host permissions; Alt+Shift+G
-action/popup.html|ts        connection, per-tab switch, language, sync, export / delete
+manifest.json               MV3; options_page app/index.html; permissions below; no host permission by default (optional for GoLearn Active); Alt+Shift+G
+action/popup.html|ts        connection, Practise, per-tab switch, GoLearn Active (switch, Speak on click, legend, withdraw), language, sync, export / delete
+src/active/*.ts             GoLearn Active: levels and legend, the exclude list from the registry, CSS highlights, the page scan
+src/content/active.ts       GoLearn Active on the page: language, scan, learner-model batches, click to look up, speak, stop
+src/background/active.ts    GoLearn Active in the worker: the switches, the permission check, the dynamic content script, broadcast
 src/protocol.ts             message payloads and validators shared by both sides (no runtime dependency)
 src/platform.ts             the slice of chrome.* used (ChromeApi for the worker and pages, ContentChromeApi for the page script); MSG names
 src/background/core.ts      injection on a gesture, the message router + sender checks, status
@@ -126,7 +129,9 @@ Storage (`chrome.storage.local` unless noted): `golearn:service { baseUrl, asset
 | `contextMenus` | "Look up with GoLearn" |
 | `alarms` | the 5-minute sync round (the only use) |
 
-No host permissions, no `content_scripts`, no `web_accessible_resources`, no `externally_connectable`. The worker's `fetch` to the Repository service and to the dictionary host relies on those hosts answering CORS (the service sends permissive CORS headers; GitHub Pages sends `Access-Control-Allow-Origin: *`); if a host does not, an optional host permission would be the way to add it, requested at sign-in.
+No host permissions by default, no `content_scripts`, no `externally_connectable` (`web_accessible_resources` names the analyser chunks only). The worker's `fetch` to the Repository service and to the dictionary host relies on those hosts answering CORS (the service sends permissive CORS headers; GitHub Pages sends `Access-Control-Allow-Origin: *`); if a host does not, an optional host permission would be the way to add it, requested at sign-in.
+
+**GoLearn Active** (2026-10-09; `docs/ecosystem/GOLEARN-ACTIVE-DESIGN.md`) is the one feature that reads a page before a gesture: it needs the optional host permission `optional_host_permissions: ["https://*/*", "http://*/*"]`, which the popup asks the browser for inside the learner's click on the switch and which the learner can withdraw in the popup. With it granted the worker registers `content.js` as a dynamic content script (`document_idle`, all frames, every refusing reader excluded by host, `src/active/exclude.ts`); the page half (`src/content/active.ts`) scans the visible text with the page's resolved language pack, asks the worker for the learner model of the words (unit ids only, batches of 60), underlines the met words through the CSS Custom Highlight API in four levels (`src/active/levels.ts`, the same table the popup's legend shows), and turns a single click on a word into the ordinary lookup, speaking it when "Speak on click" is on and a device voice exists. A scan records no event and changes no DOM node; the switch off unregisters the script and clears every page.
 
 ## Security
 
@@ -142,9 +147,12 @@ No host permissions, no `content_scripts`, no `web_accessible_resources`, no `ex
 ```
 npm run ext:build        # -> dist/content.js, dist/background.js, dist/action/popup.{html,js}, dist/manifest.json
 # then the setup page's own build (packages/golearn-extension/app), which writes dist/app/
+npx vite build -c packages/gopractice/vite.config.ts --mode extension   # GoPractice as a page of the extension -> dist/practice/ (the popup's "Practise" button opens it)
 ```
 
-Load `dist/` with chrome://extensions → Developer mode → Load unpacked. Open **GoLearn setup** (popup button), enter the service address and sign in or create an account, enrol in a language, then select a word and press Alt+Shift+G / right-click "Look up with GoLearn" / turn "GoLearn on for this tab". Without the setup page built, Chrome refuses to load the extension (the manifest names `app/index.html`).
+`npm run ext:build` empties `dist/` except `dist/app/`, so `dist/practice/` has to be built after it, every time.
+
+Load `dist/` with chrome://extensions → Developer mode → Load unpacked. Open **GoLearn setup** (popup button), **choose your language** (Norwegian, German, Albanian, Hindi, Thai or Spanish; no team and no account are needed), install its pack, take the orientation, then select a word and press Alt+Shift+G / right-click "Look up with GoLearn" / turn "GoLearn on for this tab". The popup's **Practise** button opens GoPractice, which also works with no account. An account is optional and comes last (setup → "Keep your progress (optional)"): it uploads what is on the device once and then keeps your progress across devices. Without the setup page built, Chrome refuses to load the extension (the manifest names `app/index.html`).
 
 Sizes (minified): see the report of the build in the commit / test log; `content.js` carries the Albanian analyser and the card, `background.js` the API client, the sync client and the language-pack runtime (which bundles the analyser again for glosses).
 

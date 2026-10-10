@@ -144,6 +144,27 @@ export class LookupController {
   /** The learner chose a language for what they read here ("this is Albanian"): used by every later lookup until cleared with `undefined`. */
   setLanguageOverride(languageId: string | undefined): void { this.languageOverride = languageId; }
 
+  /** GoLearn Active: a selection lookup still waiting in the debounce is dropped (a click lookup of the same word is about to run). */
+  cancelPendingLookup(): void { clearTimeout(this.debounce); }
+
+  /**
+   * GoLearn Active: the language of the page, decided exactly as a lookup decides it (the learner's override, the book's or the
+   * page's declaration, detection against the installed packs, never a guess) from a short sample of its visible text. The sample
+   * is evidence for the resolver only; it is not kept and not sent. A language this build cannot analyse is reported as undetermined.
+   */
+  async resolvePageLanguage(sample: string): Promise<LanguageResolution> {
+    const adapter = this.pickAdapter();
+    if (adapter.id === 'unsupported') return { basis: 'undetermined', confidence: 0, reasons: ['the reader is not supported'] };
+    const status: PublicStatus | undefined = this.d.services ? await this.d.services.status().catch(() => undefined) : undefined;
+    const analysers = this.d.analysers ?? ['sq'];
+    const installed = status?.installedLanguages ? analysers.filter((l) => status.installedLanguages!.includes(l) || l === status.languageId) : analysers;
+    const surface = sample.normalize('NFC').replace(/\s+/gu, ' ').trim();
+    const sel: ReaderSelection = { ok: true, surface, range: this.doc().createRange(), direction: 'unknown', directionSource: 'none', snapped: false, frame: 'top' };
+    const res = await this.resolveLanguageOf(adapter, sel, status, installed, undefined);
+    if (res.languageId && !analysers.includes(res.languageId)) return { ...res, languageId: undefined, varietyId: undefined, basis: 'undetermined', reasons: [...res.reasons, `this build has no analyser for ${res.languageId}`] };
+    return res;
+  }
+
   // ─────────────────────────── activation ───────────────────────────
 
   /** "GoLearn on" for this tab: user-made selections are looked up. Nothing is read until the learner selects. */
@@ -612,7 +633,8 @@ function defaultFrame(doc: Document): () => Promise<void> {
 /** The learner-model line and the weak constructions, from the background's reply. */
 export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined): CardView['profile'] {
   if (!reply || !reply.ok) return { state: 'unavailable', weak: [] };
-  if (!reply.connected) return { state: 'not-connected', weak: [] };
+  // no account: the device's own Repository answered (`source: 'device'`); its rows count exactly as the account's would
+  if (!reply.connected && reply.source !== 'device') return { state: 'not-connected', weak: [] };
   const rows = reply.rows ?? {};
   const primary = card.itemIds.find((i) => i.startsWith('lemma:')) ?? card.formId ?? card.itemIds[0];
   const row = (primary ? rows[primary] : undefined) ?? (card.formId ? rows[card.formId] : undefined);

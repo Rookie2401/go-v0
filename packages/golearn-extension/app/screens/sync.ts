@@ -41,8 +41,8 @@ export async function readStatus(ctx: AppContext): Promise<{ answered: boolean; 
 }
 
 const SKIPPED: Record<string, string> = {
-  'not-connected': 'You are not signed in, so there is nothing to send.',
-  'needs-sign-in': 'The service no longer accepts your sign-in. Sign in again on the Account screen.',
+  'not-connected': 'Your progress is on this device only, so there is nothing to send.',
+  'needs-sign-in': 'The service no longer accepts your sign-in. Sign in again on the account step.',
   offline: 'The browser is offline; events wait on this device.',
   backoff: 'A recent attempt failed; the extension is waiting before trying again.',
 };
@@ -69,7 +69,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     }
     const s = reply.status;
     const rows: Array<[string, string]> = [
-      ['Account', session ? `connected as ${session.email}${s?.needsSignIn ? ' (the service asks you to sign in again)' : ''}` : 'not connected — nothing is sent anywhere'],
+      ['Progress', session ? `synced to your account (${session.email})${s?.needsSignIn ? ' — the service asks you to sign in again' : ''}` : 'on this device only — nothing is sent anywhere'],
       ['Connection', (s?.online ?? online) ? 'online' : 'offline (events wait on this device and are sent later)'],
       ['Rows stored on this device', String(local)],
     ];

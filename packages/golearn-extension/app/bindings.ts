@@ -3,12 +3,13 @@
  * Nothing else in the application knows the shape of a manifest, the pack registry or the installer’s results.
  */
 import {
-  LEVEL_LABEL, PACKS, TEAMS, SQ_TUTORIAL, ES_TUTORIAL, createPackRuntime, installPack, levelOf, validationOf, packFor as registryPackFor, runCase, verifyInstalled,
+  LEVEL_LABEL, PACKS, createPackRuntime, installPack, levelOf, validationOf, packFor as registryPackFor, runCase, verifyInstalled,
 } from '../../language-packs/src';
 import type { InstallResult, InstalledRecord, PackManifest, PackStorage, Tutorial } from '../../language-packs/src';
+import { languagesOf, tutorialOf } from './languages';
 import type { StorageArea } from '../src/platform';
 import { ensureAnalyser } from './analysers';
-import type { InstallOptions, PackBindings, PackView, TeamView, TutorialView, VerifyCheck, VerifyView } from './ports';
+import type { InstallOptions, PackBindings, PackView, TutorialView, VerifyCheck, VerifyView } from './ports';
 
 /** Pack records are kept under the extension’s own `golearn:` prefix, in whichever storage area the app uses. */
 const PACK_PREFIX = 'golearn:';
@@ -68,12 +69,7 @@ export function createPackBindings(): PackBindings {
   return {
     packs: all,
     packFor(languageId) { const m = registryPackFor(languageId); return m ? packView(m) : undefined; },
-    teams(): TeamView[] {
-      return Object.values(TEAMS).map((t) => ({
-        teamId: t.teamId, name: t.name,
-        languages: t.languages.map((l) => ({ languageId: l.languageId, label: l.label, ...(l.varietyId ? { varietyId: l.varietyId } : {}), ...(l.requiredChoice ? { requiredChoice: true } : {}) })),
-      }));
-    },
+    languages: () => languagesOf(),
     async install(pack: PackView, o: InstallOptions): Promise<VerifyView> {
       const m = pack.manifest as PackManifest;
       // the analyser the validation cases run through is loaded first (it is a separate chunk); if it cannot be, installPack says there is no analyser
@@ -100,7 +96,7 @@ export function createPackBindings(): PackBindings {
       };
     },
     tutorial(languageId): TutorialView | undefined {
-      const t: Tutorial | undefined = languageId === 'sq' ? SQ_TUTORIAL : languageId === 'es' ? ES_TUTORIAL : undefined;
+      const t: Tutorial | undefined = tutorialOf(languageId);
       if (!t) return undefined;
       return {
         languageId: t.languageId, notice: t.notice, estimatedMinutes: t.estimatedMinutes,

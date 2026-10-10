@@ -6,7 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { classOfCategory, createAnalyzer, hashText } from '../../packages/gotell/src/engine';
 import { ISSUE_CLASSES } from '../../packages/gotell/src/types';
 import type { DraftAnalysis, SentenceAnalysis } from '../../packages/gotell/src/types';
-import { NOW, deepFreeze, norwegianAnalyzer, profile, realAnalyzer, realRuntime, withChecker } from './helpers';
+import { NOW, deepFreeze, noAnalyserAnalyzer, profile, realAnalyzer, realRuntime, withChecker } from './helpers';
 
 const analyzer = realAnalyzer();
 const one = (text: string, draftId = 'd1'): SentenceAnalysis => analyzer.analyzeDraft(draftId, text).sentences[0];
@@ -224,16 +224,16 @@ describe('hints and explanations come from the pack, and say so when it has noth
 
 describe('a language whose pack has no analyser', () => {
   it('splits and tokenises, finds nothing, and says nothing was checked', () => {
-    const nb = norwegianAnalyzer();
-    expect(nb.hasChecker).toBe(false);
-    const a: DraftAnalysis = nb.analyzeDraft('d', 'Jeg leser en bok. Du leser.');
+    const xx = noAnalyserAnalyzer();
+    expect(xx.hasChecker).toBe(false);
+    const a: DraftAnalysis = xx.analyzeDraft('d', 'Jeg leser en bok. Du leser.');
     expect(a.sentences.map((s) => s.text)).toEqual(['Jeg leser en bok.', 'Du leser.']);
     for (const s of a.sentences) {
       expect(s.issues).toEqual([]);
       expect(s.corrections).toEqual([]);
       expect(s.analysisStatus).toBe('none');
       expect(s.checkerCoverage).toMatch(/Nothing in this sentence was checked/);
-      expect(s.unitIds.every((u) => u.startsWith('form:nb:'))).toBe(true);
+      expect(s.unitIds.every((u) => u.startsWith('form:xx:'))).toBe(true);
     }
     expect(a.analyzerId).toBe('intl-tokenize@1');
   });

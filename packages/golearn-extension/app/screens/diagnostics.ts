@@ -31,8 +31,8 @@ const STATE_TEXT: Record<PackUpdate['state'], string> = {
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const { deps } = ctx;
-  const [progress, session, profile, rows, baseUrl, settings] = await Promise.all([
-    ctx.state.getProgress(), ctx.state.getSession(), ctx.state.getProfile(),
+  const [progress, session, profile, active, rows, baseUrl, settings] = await Promise.all([
+    ctx.state.getProgress(), ctx.state.getSession(), ctx.state.getProfile(), ctx.activeLanguage(),
     createStorageEncounterStore(deps.area).count().catch(() => 0), ctx.serviceUrl(), ctx.state.getSettings(),
   ]);
   if (!view.alive()) return;
@@ -57,7 +57,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       `service address: ${baseUrl}`,
       healthLine,
       `signed in: ${session ? 'yes' : 'no'}`,
-      `active language: ${session?.languageId || 'none'}`,
+      `active language: ${active?.languageId || 'none'}`,
+      `progress kept: ${session ? 'synced to an account' : 'on this device only'}`,
       `enrolments cached: ${profile ? profile.enrolments.length : 'not loaded'}`,
       `local rows on this device: ${rows}`,
       `explanation depth: ${settings.explanationDepth ?? 'automatic'}`,

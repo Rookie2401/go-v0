@@ -10,10 +10,11 @@ import type { View } from './view';
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const session = await ctx.state.getSession();
+  const mode = await ctx.mode();
   const id = await ctx.identity();
   const prefsBox = h('section', { class: 'card', id: 'settings-prefs', 'aria-labelledby': 'prefs-h' }, h('h2', { id: 'prefs-h' }, 'Review preferences'));
   const accountBox = h('section', { class: 'card', id: 'settings-account', 'aria-labelledby': 'acct-h' }, h('h2', { id: 'acct-h' }, 'Account'));
-  const serviceBox = h('section', { class: 'card', id: 'settings-service', 'aria-labelledby': 'svc-h' }, h('h2', { id: 'svc-h' }, 'Service address'));
+  const serviceBox = h('section', { class: 'card', id: 'settings-service', 'aria-labelledby': 'svc-h' }, h('h2', { id: 'svc-h' }, 'Service address (only used if you sign in)'));
   const syncBox = h('section', { class: 'card', id: 'settings-sync', 'aria-labelledby': 'sync-h' }, h('h2', { id: 'sync-h' }, 'Synchronisation'));
   const diagBox = h('section', { class: 'card', id: 'settings-diagnostics', 'aria-labelledby': 'diag-h' }, h('h2', { id: 'diag-h' }, 'Diagnostics'));
   el.append(prefsBox, accountBox, serviceBox, syncBox, diagBox, licencesSection(ctx));
@@ -22,7 +23,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   if (id) {
     const prefs = await ctx.state.getPrefs(id.learnerId, id.languageId);
     prefsBox.append(p(`These apply to ${id.languageId}${id.varietyId ? ` (${id.varietyId})` : ''}, the active language.`, 'muted'), prefsForm(ctx, id.learnerId, prefs));
-  } else prefsBox.append(p('Sign in and choose a language to set preferences.', 'muted'));
+  } else prefsBox.append(p(mode === 'device' ? 'Choose a language in GoLearn setup to set preferences.' : 'Sign in and choose a language to set preferences.', 'muted'));
   const settings = await ctx.state.getSettings();
   const consent = h('input', { type: 'checkbox', id: 'consent-remote-speech', name: 'remote-speech' }) as HTMLInputElement;
   consent.checked = settings.remoteSpeechConsent;
@@ -50,11 +51,37 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       p('Signing out sends what is waiting when it can. Removing this device\'s data also deletes the local copy of your events and any events that could not be sent.', 'muted'),
       out,
     ]);
+  } else if (mode === 'device') {
+    // no account: the data is on this device. The account is offered, and clearing the device is its own deliberate step
+    const clearOut = statusLine();
+    let armed = false;
+    const clearBtn = button('Clear local data', () => {
+      void (async () => {
+        if (!armed) {
+          armed = true;
+          clearBtn.textContent = 'Click again to clear';
+          setStatus(clearOut, 'This removes your reviews, drafts, preferences and the on-device record kept on this device. An account, if you have one, is not touched. Move on to cancel.', 'info');
+          return;
+        }
+        armed = false;
+        clearBtn.textContent = 'Clear local data';
+        const n = await ctx.clearLocalData();
+        setStatus(clearOut, `Cleared the local data on this device (${n} row${n === 1 ? '' : 's'}).`, 'ok');
+      })();
+    }, { id: 'clear-local', class: 'btn' });
+    clearBtn.addEventListener('blur', () => { if (armed) { armed = false; clearBtn.textContent = 'Clear local data'; setStatus(clearOut, 'Nothing was cleared.', 'info'); } });
+    append(accountBox, [
+      h('p', { id: 'settings-device-only' }, 'On this device only.'),
+      p('Your reviews and drafts are kept on this device, and nothing is sent anywhere. An account is optional; it only keeps your progress across devices.', 'muted'),
+      h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/signin', id: 'settings-keep-progress' }, 'Keep your progress across devices (optional)'), clearBtn),
+      clearOut,
+    ]);
   } else accountBox.append(p('Not signed in.', 'muted'), h('a', { class: 'btn primary', href: '#/signin' }, 'Sign in'));
   async function signOut(forget: boolean): Promise<void> {
     const r = await ctx.signOut({ forget });
     if (r.pendingLeft && !forget) setStatus(out, `${r.pendingLeft} event(s) could not be sent and stay on this device under your account.`, 'info');
-    ctx.go('signin');
+    // back to the device alone where there is one (nothing was removed); the hosted copy has nothing to show without an account
+    ctx.go((await ctx.mode()) === 'device' ? 'review' : 'signin');
   }
 
   // ── service address
@@ -101,11 +128,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const rows: Array<[string, string]> = [
       ['GoPractice', ctx.deps.appVersion],
       ['Event contract', String(CONTRACT_VERSION)],
-      ['Scheduler', scheduler ? scheduler.algorithm : 'sign in to see'],
-      ['Scheduler parameters', scheduler ? scheduler.parametersVersion : 'sign in to see'],
+      ['Scheduler', scheduler ? scheduler.algorithm : 'choose a language to see'],
+      ['Scheduler parameters', scheduler ? scheduler.parametersVersion : 'choose a language to see'],
       ['Desired retention', prefs ? `${Math.round(prefs.desiredRetention * 100)}%` : '–'],
       ['Device', d?.deviceId ?? '–'],
-      ['Learner', session?.learnerId ?? '–'],
+      ['Learner', session?.learnerId ?? (mode === 'device' ? 'this device' : '–')],
+      ['Progress', mode === 'account' ? 'synced to your account' : mode === 'device' ? 'on this device only' : '–'],
       ['Language', id ? `${id.languageId}${id.varietyId ? ` (${id.varietyId})` : ''}` : '–'],
       ['Events in the local log', String(events.length)],
       ['Deck items', String(deck.length)],

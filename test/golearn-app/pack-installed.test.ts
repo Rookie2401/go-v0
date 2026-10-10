@@ -78,11 +78,10 @@ describe('level and validation come from the manifest', () => {
     }
   });
 
-  it('the documented mapping: installable + machine-drafted = unreviewed, experimental = experimental, planned = unsupported', () => {
+  it('the documented mapping: installable + machine-drafted = unreviewed, experimental = experimental (planned = unsupported is the event builder’s case below)', () => {
     const view = (lang: string) => createPackBindings().packFor(lang)!;
     expect(view('sq')).toMatchObject({ level: 'installable', validation: 'unreviewed' });
-    for (const lang of ['de', 'hi', 'th']) expect(view(lang), lang).toMatchObject({ level: 'experimental', validation: 'experimental' });
-    for (const lang of ['nb', 'nn']) expect(view(lang), lang).toMatchObject({ level: 'planned', validation: 'unsupported' });
+    for (const lang of ['de', 'hi', 'th', 'nb', 'nn']) expect(view(lang), lang).toMatchObject({ level: 'experimental', validation: 'experimental' });
   });
 
   it('the event builder: experimental and planned packs keep their own word; a failed case only ever lowers an installable one', () => {

@@ -27,6 +27,19 @@ export interface ScriptInjection {
 
 export interface AlarmInfo { name: string; scheduledTime?: number; periodInMinutes?: number }
 
+export interface PermissionsDescriptor { origins?: string[]; permissions?: string[] }
+
+/** A dynamically registered content script (chrome.scripting.registerContentScripts). */
+export interface RegisteredScript {
+  id: string;
+  js: string[];
+  matches: string[];
+  excludeMatches?: string[];
+  runAt?: 'document_start' | 'document_end' | 'document_idle';
+  allFrames?: boolean;
+  persistAcrossSessions?: boolean;
+}
+
 export interface ChromeApi {
   storage: { local: StorageArea; session?: StorageArea };
   runtime: {
@@ -45,7 +58,20 @@ export interface ChromeApi {
     onRemoved?: ChromeEvent<(tabId: number) => void>;
     onUpdated?: ChromeEvent<(tabId: number, changeInfo: { status?: string }) => void>;
   };
-  scripting?: { executeScript(injection: ScriptInjection): Promise<unknown[]> };
+  scripting?: {
+    executeScript(injection: ScriptInjection): Promise<unknown[]>;
+    /** Dynamic content scripts (GoLearn Active): present in MV3 engines; absent in the fake unless a test adds them. */
+    registerContentScripts?(scripts: RegisteredScript[]): Promise<void>;
+    unregisterContentScripts?(filter?: { ids?: string[] }): Promise<void>;
+    getRegisteredContentScripts?(filter?: { ids?: string[] }): Promise<RegisteredScript[]>;
+  };
+  /** Optional host permissions (GoLearn Active asks for them from the popup, inside the learner's click). */
+  permissions?: {
+    request(p: PermissionsDescriptor): Promise<boolean>;
+    remove(p: PermissionsDescriptor): Promise<boolean>;
+    contains(p: PermissionsDescriptor): Promise<boolean>;
+    onRemoved?: ChromeEvent<(p: PermissionsDescriptor) => void>;
+  };
   contextMenus?: {
     create(props: { id: string; title: string; contexts: string[] }): void | Promise<void>;
     removeAll?(): Promise<void>;
@@ -124,11 +150,19 @@ export const MSG = {
   refreshSession: 'golearn:session-refresh',
   selectEnrolment: 'golearn:select-enrolment',
   clearLocal: 'golearn:clear-local',
+  /** The device-local Repository (no account needed): see `LocalRepoRequest` in protocol.ts. Extension pages only. */
+  localRepo: 'golearn:local-repo',
+  /** GoLearn Active (read the page before the learner): the popup sets it, a content script may read it. See `ActiveRequest` in protocol.ts. */
+  active: 'golearn:active',
+  // background -> content (GoLearn Active)
+  activate: 'golearn:activate',
+  deactivate: 'golearn:deactivate',
 } as const;
 
 export type MessageType = (typeof MSG)[keyof typeof MSG];
 
-export type LookupTrigger = 'selection' | 'command' | 'menu';
+/** `click` = GoLearn Active's single click on a word (no selection made by the learner). */
+export type LookupTrigger = 'selection' | 'command' | 'menu' | 'click';
 
 export interface LookupMessage { type: typeof MSG.lookup; trigger: LookupTrigger; selectionText?: string; focus?: boolean }
 export interface TabState { enabled: boolean; error?: string }

@@ -1,14 +1,15 @@
 /**
  * What the application needs from its environment, as one injectable object (`Deps`), plus the views of the language
- * packs, teams and tutorial it renders. `bindings.ts` is the only file that imports the sibling packages and adapts
+ * packs, languages and tutorial it renders. `bindings.ts` is the only file that imports the sibling packages and adapts
  * them to these views; tests pass fakes.
  */
 import type { RepositoryApi } from '../../repository-service/src/api';
 import type { ChromeApi, StorageArea } from '../src/platform';
 import type { SpeechLike } from '../src/popup/card';
 import type { AppConfig } from './config';
+import type { LocalRepo } from './localRepo';
 
-// ───────────────────────────── language packs, teams, tutorial ─────────────────────────────
+// ───────────────────────────── language packs, languages, tutorial ─────────────────────────────
 
 export interface PackVarietyView { varietyId: string; label: string; writtenStandard?: 'nb' | 'nn'; /** false: the pack only relates forms to this variety; it cannot be chosen as one’s own. */ analysed: boolean }
 
@@ -43,20 +44,40 @@ export interface PackView {
   manifest: unknown;
 }
 
-export interface TeamLanguageView {
-  languageId: string;
+/** One choice a language asks the learner to make: the written standard (Norwegian) or a regional preference (Spanish). */
+export interface LanguageOptionView {
+  /** The value of the choice (`nb`, `nn`, `es-HN`). */
+  id: string;
   label: string;
-  /** The variety this team’s language stands for (Honduras: es-HN). */
+  /** The pack language this choice enrols in (`nb` / `nn` for Norwegian; the language itself otherwise). */
+  languageId: string;
+  /** The variety recorded on the enrolment, when the choice names one. */
   varietyId?: string;
-  /** The learner must choose this explicitly (Norwegian: the written standard); nothing is preselected. */
-  requiredChoice?: boolean;
 }
-export interface TeamView {
-  teamId: string;
+export interface LanguageChoiceView {
+  kind: 'standard' | 'variety';
+  /** Required: nothing is preselected and nothing is guessed (Norwegian). Otherwise the first option is the default and the choice may be left. */
+  required: boolean;
+  label: string;
+  options: LanguageOptionView[];
+}
+/** One of the languages GoLearn serves, as the language screen shows it (from `LANGUAGE_CATALOGUE`, in its order). */
+export interface LanguageView {
+  /** The catalogue id; the value of the `#language` field. */
+  languageId: string;
   name: string;
-  languages: TeamLanguageView[];
-  /** Why a choice is forced for this team, when it is (Norway: the written standard). */
-  note?: string;
+  nativeName: string;
+  scriptId: string;
+  choice?: LanguageChoiceView;
+  packIds: string[];
+  /** The words the learner sees for how far the language is built (“reference pack, machine-drafted, unreviewed”, “experimental, seed-only”). */
+  level: string;
+  validation: string;
+  tutorialAvailable: boolean;
+  /** One plain sentence about the audio. */
+  audio: string;
+  whatWorks: string[];
+  whatDoesNot: string[];
 }
 
 export interface VerifyCheck { id: string; label: string; ok: boolean; detail?: string }
@@ -100,7 +121,8 @@ export interface TutorialView {
 
 export interface PackBindings {
   packs(): PackView[];
-  teams(): TeamView[];
+  /** The six languages, in the catalogue's order. */
+  languages(): LanguageView[];
   packFor(languageId: string): PackView | undefined;
   install(pack: PackView, options: InstallOptions): Promise<VerifyView>;
   verify(pack: PackView, storage: StorageArea): Promise<VerifyView>;
@@ -119,6 +141,8 @@ export interface Deps {
   area: StorageArea;
   packs: PackBindings;
   config: AppConfig;
+  /** Opens the on-device Repository on the given storage area (see localBinding.ts). Absent: the language choice is kept without an enrolment record. */
+  openLocal?(env: { area: StorageArea; chrome: ChromeApi | undefined }): Promise<LocalRepo>;
   createApi(baseUrl: string, token?: string): RepositoryApi;
   /** Offers a file to the learner (a Blob link click). */
   download(filename: string, blob: Blob): void;

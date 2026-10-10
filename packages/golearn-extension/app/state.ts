@@ -9,6 +9,7 @@
  *   golearn:settings  { keepSnippets, remoteSpeechConsent, externalProcessingConsent, explanationDepth? }  — the learner’s privacy switches
  *   golearn:app       { visited[], tutorial, tutorialStep, packs{}, readerAck } — progress of this application only
  *   golearn:profile   { fetchedAt, email, learnerId, enrolments[] } — enrolments cached by this application; cleared at every account switch
+ *   golearn:choice    { enrolmentId, languageId, varietyId?, packId?, standard? } — the language this device reads, with or without an account
  *   golearn:deviceId  the random device id (created once; the extension’s own key)
  *   golearn:event:*   encounter rows (the extension’s store; the tutorial writes here in the web context)
  *   golearn:pack:installed:<packId>  the pack installer’s record (language-packs installPack, under this prefix)
@@ -23,6 +24,7 @@ export const KEYS = {
   settings: 'golearn:settings',
   app: 'golearn:app',
   profile: 'golearn:profile',
+  choice: 'golearn:choice',
   device: DEVICE_KEY,
 } as const;
 
@@ -66,6 +68,16 @@ export interface Progress {
 }
 
 export const DEFAULT_PROGRESS: Progress = { visited: [], tutorial: 'pending', tutorialStep: 0, packs: {}, readerAck: false };
+
+/** The language the learner chose on this device: an account is not needed for it. `enrolmentId` names the enrolment records are made against. */
+export interface ActiveChoice {
+  enrolmentId: string;
+  languageId: string;
+  varietyId?: string;
+  packId?: string;
+  /** Norwegian: the written standard the learner chose. */
+  standard?: 'nb' | 'nn';
+}
 
 export interface Profile { fetchedAt: string; email: string; learnerId: string; enrolments: Enrolment[] }
 
@@ -112,6 +124,9 @@ export interface StateStore {
   patchProgress(p: Partial<Progress>): Promise<Progress>;
   markVisited(route: string): Promise<void>;
   recordPack(packId: string, rec: PackRecord): Promise<void>;
+  getChoice(): Promise<ActiveChoice | undefined>;
+  setChoice(c: ActiveChoice): Promise<void>;
+  clearChoice(): Promise<void>;
   getProfile(): Promise<Profile | undefined>;
   setProfile(p: Profile): Promise<void>;
   clearProfile(): Promise<void>;
@@ -172,6 +187,17 @@ export function createStateStore(area: StorageArea): StateStore {
     patchProgress: (p) => changeProgress((cur) => ({ ...cur, ...p })),
     async markVisited(route) { await changeProgress((cur) => (cur.visited.includes(route) ? cur : { ...cur, visited: [...cur.visited, route] })); },
     async recordPack(packId, rec) { await changeProgress((cur) => ({ ...cur, packs: { ...cur.packs, [packId]: rec } })); },
+    async getChoice() {
+      const v = await read<Partial<ActiveChoice>>(KEYS.choice);
+      if (!v || !str(v.enrolmentId) || !v.enrolmentId || !str(v.languageId) || !v.languageId) return undefined;
+      return {
+        enrolmentId: v.enrolmentId, languageId: v.languageId,
+        ...(str(v.varietyId) && v.varietyId ? { varietyId: v.varietyId } : {}), ...(str(v.packId) && v.packId ? { packId: v.packId } : {}),
+        ...(v.standard === 'nb' || v.standard === 'nn' ? { standard: v.standard } : {}),
+      };
+    },
+    async setChoice(c) { await area.set({ [KEYS.choice]: c }); },
+    async clearChoice() { await area.remove(KEYS.choice); },
     async getProfile() {
       const v = await read<Profile>(KEYS.profile);
       return v && typeof v === 'object' && Array.isArray(v.enrolments) ? v : undefined;

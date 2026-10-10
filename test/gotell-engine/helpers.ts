@@ -32,14 +32,18 @@ export function withChecker(check: (real: CheckFn, ...args: Parameters<CheckFn>)
   return { ...sqAdapter, checkProduction: (tokens, analyses, sentence) => check(real, tokens, analyses, sentence) } as SqAdapter;
 }
 
-/** An analyser for a language whose pack has no real analyser (Norwegian Bokmål is planned): words and sentences by the browser's segmenter only. */
-export function norwegianAnalyzer(): Analyzer {
-  const manifest = bokmalManifest();
+/**
+ * An analyser for a language whose pack has no real analyser: words and sentences by the browser's segmenter only. Norwegian Bokmål
+ * played this part until 2026-10-09, when it got an analyser; the case now uses the Bokmål manifest relabelled as a language id
+ * (`xx`) no built-in adapter answers for, so the runtime falls back to Intl segmentation.
+ */
+export function noAnalyserAnalyzer(): Analyzer {
+  const manifest = { ...bokmalManifest(), languageId: 'xx' } as PackManifest;
   const runtime = createPackRuntime(manifest, { fetch: noNetwork, baseUrl: '/' });
-  return createAnalyzer({ languageId: 'nb', runtime, manifest, now: () => NOW });
+  return createAnalyzer({ languageId: 'xx', runtime, manifest, now: () => NOW });
 }
 
-/** German is an experimental pack with a real (seed-only) analyser since 2026-10-09: see norwegianAnalyzer for the no-analyser case. */
+/** German is an experimental pack with a real (seed-only) analyser since 2026-10-09: see noAnalyserAnalyzer for the no-analyser case. */
 export function germanAnalyzer(): Analyzer {
   const manifest = germanManifest();
   const runtime = createPackRuntime(manifest, { fetch: noNetwork, baseUrl: '/' });

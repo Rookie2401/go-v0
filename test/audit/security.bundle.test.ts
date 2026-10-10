@@ -28,7 +28,10 @@ describe('manifest (source)', () => {
     expect(manifest.manifest_version).toBe(3);
     expect(manifest.permissions).toEqual(['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms']);
     for (const p of FORBIDDEN_PERMISSIONS) expect(manifest.permissions ?? [], p).not.toContain(p);
-    for (const key of ['host_permissions', 'optional_permissions', 'optional_host_permissions']) expect(manifest[key], key).toBeUndefined();
+    for (const key of ['host_permissions', 'optional_permissions']) expect(manifest[key], key).toBeUndefined();
+    // GoLearn Active (2026-10-09): the one optional host permission, never granted at install; the popup asks the browser inside the learner's click
+    // and the learner can withdraw it (test/extension/active.background.test.ts, active.popup.test.ts)
+    expect(manifest.optional_host_permissions).toEqual(['https://*/*', 'http://*/*']);
   });
 
   it('declares no automatic injection, no external connections, no page-visible resources, no weakened CSP, no remote update', () => {
@@ -84,7 +87,8 @@ describe.skipIf(!have)('the built extension', () => {
     expect(code).not.toMatch(WEB_STORAGE);
     expect(code).not.toMatch(/console\./);
     expect(code).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
-    expect(code).not.toMatch(/not-your-data|invalid-json|too-many-attempts/); // the service's handler is not in the worker
+    expect(code).toMatch(/not-your-data/); // the service's handler runs in the worker for the device-local Repository (no network; see REPOSITORY-LOCAL.md); the other scripts have the stub
+    for (const f of ['content.js', 'action/popup.js']) expect(read(f), f).not.toMatch(/not-your-data|invalid-json|too-many-attempts/);
   });
 
   it('the setup page (an extension page, trusted) has no dynamic code and no XHR/beacon/socket/eval', () => {

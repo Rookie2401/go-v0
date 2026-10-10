@@ -52,8 +52,8 @@ const explainReply = (over: Partial<ExplainReply> = {}): ExplainReply => ({
 interface Fake extends ContentServices { calls: Record<string, number> }
 function fakeServices(over: Partial<ContentServices> = {}): Fake {
   const calls: Record<string, number> = {};
-  const wrap = <K extends keyof ContentServices>(k: K, dflt: ContentServices[K]): ContentServices[K] =>
-    ((...a: unknown[]) => { calls[k] = (calls[k] ?? 0) + 1; return (over[k] ?? dflt)(...(a as [never])); }) as ContentServices[K];
+  const wrap = <K extends keyof ContentServices>(k: K, dflt: NonNullable<ContentServices[K]>): ContentServices[K] =>
+    ((...a: unknown[]) => { calls[k] = (calls[k] ?? 0) + 1; return ((over[k] ?? dflt) as (...x: unknown[]) => unknown)(...a); }) as ContentServices[K];
   return {
     calls,
     status: wrap('status', async () => status()),

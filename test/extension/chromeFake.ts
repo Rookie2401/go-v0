@@ -3,7 +3,7 @@
  * Events are plain emitters; storage areas are Map-backed; scripting.executeScript can be told to throw.
  */
 import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
-import type { AlarmInfo, ChromeApi, ChromeEvent, ContentChromeApi, MessageListener, MessageSender, ScriptInjection, StorageArea, TabInfo } from '../../packages/golearn-extension/src/platform';
+import type { AlarmInfo, ChromeApi, ChromeEvent, ContentChromeApi, MessageListener, MessageSender, PermissionsDescriptor, RegisteredScript, ScriptInjection, StorageArea, TabInfo } from '../../packages/golearn-extension/src/platform';
 
 export const EXT_ID = 'test-ext-id';
 export const PAGE_SENDER: MessageSender = { id: EXT_ID, url: `chrome-extension://${EXT_ID}/action/popup.html` };
@@ -40,6 +40,15 @@ export interface ChromeFake extends ChromeApi {
     command: ReturnType<typeof emitter<(command: string, tab?: TabInfo) => void>>;
   };
   activeTabId: number;
+  /** GoLearn Active: the dynamic content scripts registered, the origins the "browser" has granted, and what the prompt answers. */
+  registeredScripts: RegisteredScript[];
+  grantedOrigins: string[];
+  permissionRequests: PermissionsDescriptor[];
+  /** What the browser's permission prompt answers when `permissions.request` is called (the learner's choice). */
+  promptAnswer: boolean;
+  permissionsRemoved: ReturnType<typeof emitter<(p: PermissionsDescriptor) => void>>;
+  /** Grant origins as if the learner had already said yes. */
+  grantOrigins(origins: readonly string[]): void;
   alarmsCreated: Array<{ name: string; periodInMinutes?: number }>;
   alarmEvent: ReturnType<typeof emitter<(a: AlarmInfo) => void>>;
   /** Send a message to the background listeners as a given sender; resolves with the response. */
@@ -59,6 +68,7 @@ export function createChromeFake(): ChromeFake {
   const menuClicked = emitter<(info: { menuItemId: string | number; selectionText?: string; frameId?: number }, tab?: TabInfo) => void>();
   const command = emitter<(command: string, tab?: TabInfo) => void>();
   const alarmEvent = emitter<(a: AlarmInfo) => void>();
+  const permissionsRemoved = emitter<(p: PermissionsDescriptor) => void>();
   let failure: Error | undefined;
   const dispatch = (message: unknown, sender: MessageSender): Promise<unknown> => new Promise((resolve) => {
     let answered = false;
@@ -71,6 +81,8 @@ export function createChromeFake(): ChromeFake {
   const fake: ChromeFake = {
     local, sessionArea,
     injected: [], messagesToTabs: [], badges: [], titles: [], menus: [], alarmsCreated: [], alarmEvent, options: { opened: 0 }, dispatch,
+    registeredScripts: [], grantedOrigins: [], permissionRequests: [], promptAnswer: true, permissionsRemoved,
+    grantOrigins(origins) { for (const o of origins) if (!fake.grantedOrigins.includes(o)) fake.grantedOrigins.push(o); },
     contentChrome(tabId = 7) {
       const tabEvents = emitter<MessageListener>();
       fake.tabListeners = tabEvents.listeners;
@@ -109,6 +121,29 @@ export function createChromeFake(): ChromeFake {
         fake.injected.push(injection);
         return [{}];
       },
+      // dynamic content scripts (GoLearn Active): kept in `registeredScripts`; a registration of an existing id throws like the browser does
+      registerContentScripts: async (scripts) => {
+        for (const s of scripts) if (fake.registeredScripts.some((r) => r.id === s.id)) throw new Error(`Duplicate script ID '${s.id}'`);
+        fake.registeredScripts.push(...scripts.map((s) => ({ ...s })));
+      },
+      unregisterContentScripts: async (filter) => {
+        const ids = filter?.ids;
+        if (!ids) { fake.registeredScripts.length = 0; return; }
+        for (const id of ids) { const i = fake.registeredScripts.findIndex((r) => r.id === id); if (i < 0) throw new Error(`Nonexistent script ID '${id}'`); fake.registeredScripts.splice(i, 1); }
+      },
+      getRegisteredContentScripts: async (filter) => fake.registeredScripts.filter((r) => !filter?.ids || filter.ids.includes(r.id)).map((s) => ({ ...s })),
+    },
+    // optional host permissions: nothing is granted until `grantOrigins` (what the browser's prompt would do on "Allow")
+    permissions: {
+      request: async (p) => {
+        fake.permissionRequests.push(p);
+        if (!fake.promptAnswer) return false;
+        for (const o of p.origins ?? []) if (!fake.grantedOrigins.includes(o)) fake.grantedOrigins.push(o);
+        return true;
+      },
+      remove: async (p) => { for (const o of p.origins ?? []) { const i = fake.grantedOrigins.indexOf(o); if (i >= 0) fake.grantedOrigins.splice(i, 1); } permissionsRemoved.fire(p); return true; },
+      contains: async (p) => (p.origins ?? []).every((o) => fake.grantedOrigins.includes(o)) && (p.permissions ?? []).every((x) => ['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms'].includes(x)),
+      onRemoved: permissionsRemoved,
     },
     contextMenus: {
       create: (props) => { fake.menus.push(props); },

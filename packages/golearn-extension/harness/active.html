@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="sq">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoLearn Active — harness page (prototype measurement; sentences written for this test)</title>
+<style>
+  body { margin: 0; font: 18px/1.65 Georgia, serif; color: #222; background: #fafafa; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px; }
+  .controls { position: sticky; top: 0; background: #fff; padding: 8px 12px; border: 1px solid #ddd; z-index: 5; font: 14px/1.4 system-ui, sans-serif; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  #status { font-variant-numeric: tabular-nums; }
+  p { margin: 0 0 1em; }
+  textarea { width: 100%; font: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <div class="controls">
+    <label><input type="checkbox" id="active" checked> GoLearn Active</label>
+    <label><input type="checkbox" id="speak"> Speak on click</label>
+    <span id="status">starting…</span>
+  </div>
+  <h1>Udha — kapitulli i parë (faqe për matje)</h1>
+  <p id="p0">Është mëngjes. Beni zgjohet herët. Ai lahet dhe vishet. Nëna është në kuzhinë. Ajo përgatit mëngjesin.</p>
+  <p id="p1">— Mirëmëngjes, nënë! — thotë Beni. — Mirëmëngjes, Beni! A do çaj? — Po, dua çaj dhe bukë.</p>
+  <p id="p2">Nëna i jep çajin. Beni e pi çajin dhe ha bukën. Pastaj shkon në shkollë.</p>
+  <p id="p3">Ana ka një libër të ri. Libri është i bukur. Ana e do librin. Ajo e lexon librin çdo ditë.</p>
+  <p id="p4">Në shkollë mësuesja i pret me buzëqeshje. Fëmijët lexojnë librin dhe shkruajnë fjalë të reja.</p>
+  <p id="p5">Pas shkollës Beni dhe Ana ecin në rrugë. Ata flasin për librin e ri dhe për shtëpinë e Anës.</p>
+  <p id="p6">Shtëpia e Anës është e madhe. Ka një kopsht me lule dhe një pemë të lartë. Beni e do kopshtin.</p>
+  <p id="p7">Në mbrëmje nëna përgatit darkën. Beni ha bukë me djathë dhe pi qumësht. Pastaj lexon librin e Anës.</p>
+  <p id="p8">Natën Beni fle herët. Nesër shkon përsëri në shkollë. Ai e do shkollën dhe i do shokët.</p>
+  <p id="p9">Ana shkruan një letër. Ajo shkruan për librin, për shkollën dhe për shtëpinë. Letra është e gjatë.</p>
+  <p><label>Fusha e shkrimit (nuk lexohet): <textarea rows="2">Beni shkon në shkollë.</textarea></label></p>
+  <p id="p10">Mësuesja lexon letrën e Anës. Ajo thotë: — Shumë mirë, Ana! Fjalët janë të bukura.</p>
+  <p id="p11">Beni dhe Ana shkojnë në shtëpi. Nëna i pret me çaj dhe bukë. Dita mbaron mirë.</p>
+</main>
+<script>
+  // A stand-in for the background worker, so the content script runs here as in the extension: the page answers its messages.
+  // The learner model says: libër/librin → produced, shtëpi/shtëpinë → known, çaj → assisted, Beni/nëna/shkollë → met.
+  (function () {
+    const rows = {};
+    const dim = (o) => Object.assign({ score: 0, confidence: 0, observations: 0, positive: 0, negative: 0 }, o);
+    const put = (id, dims) => { rows[id] = { unitId: id, dimensions: dims }; };
+    put('lemma:sq:libër:NOUN', { productiveRetrieval: dim({ observations: 2, score: 0.8 }) });
+    put('lemma:sq:shtëpi:NOUN', { readingRecognition: dim({ observations: 3, score: 0.7, confidence: 0.6 }) });
+    put('form:sq:çaj', { assistedRecognition: dim({ observations: 1 }) });
+    put('form:sq:beni', { exposure: dim({ observations: 1 }) });
+    put('form:sq:nëna', { exposure: dim({ observations: 2 }) });
+    put('form:sq:shkollë', { exposure: dim({ observations: 1 }) });
+    const settings = { active: true, speakOnClick: false };
+    let contentListener = null;
+    const reply = (m) => {
+      switch (m.type) {
+        case 'golearn:status': return { ok: true, connected: false, needsSignIn: false, languageId: 'sq', languageName: 'Albanian', packAvailable: true, installedLanguages: ['sq'] };
+        case 'golearn:active': return { ok: true, settings, granted: true, registered: true, excluded: 9 };
+        case 'golearn:profile': { const out = {}; for (const id of m.unitIds || []) if (rows[id]) out[id] = rows[id]; return { ok: true, connected: false, source: 'device', rows: out, depth: 'brief', depthOrigin: 'default' }; }
+        case 'golearn:gloss': return { ok: true, found: false, senses: [], reason: 'no-pack' };
+        case 'golearn:explain': return { ok: true, features: [], constructions: [], source: 'none' };
+        case 'golearn:pronounce-info': return { ok: true, deviceVoice: 'maybe', remoteConsent: false, sources: [], note: '' };
+        case 'golearn:record': return { ok: true, attributed: 'local' };
+        case 'golearn:metrics': return { ok: true };
+        default: return { ok: false, error: 'unknown-message' };
+      }
+    };
+    window.chrome = {
+      runtime: {
+        id: 'harness',
+        onMessage: { addListener(cb) { contentListener = cb; }, removeListener() {} },
+        sendMessage: async (m) => reply(m),
+        getManifest: () => ({ version: 'harness' }),
+        getURL: (p) => '/dist/' + p,
+      },
+    };
+    const send = (m) => new Promise((resolve) => { if (!contentListener) return resolve(undefined); const r = contentListener(m, { id: 'harness' }, resolve); if (r !== true) resolve(undefined); });
+    window.__harness = {
+      send,
+      state: () => window.__goLearnExtension && window.__goLearnExtension.active.state,
+    };
+    const status = document.getElementById('status');
+    const paint = () => { const s = window.__harness.state(); if (!s) return; status.textContent = `${s.on ? 'on' : 'off'} · ${s.languageId || '—'} · ${s.scanned} words · met ${s.marked.met}, assisted ${s.marked.assisted}, known ${s.marked.known}, produced ${s.marked.produced} · scan ${s.scanMs ?? '?'} ms · model ${s.profileMs ?? '?'} ms · clicks ${s.clicks}${s.reason ? ' · ' + s.reason : ''}`; };
+    setInterval(paint, 300);
+    document.getElementById('active').addEventListener('change', (e) => { settings.active = e.target.checked; send(e.target.checked ? { type: 'golearn:activate', speak: settings.speakOnClick } : { type: 'golearn:deactivate' }); });
+    document.getElementById('speak').addEventListener('change', (e) => { settings.speakOnClick = e.target.checked; send({ type: 'golearn:activate', speak: settings.speakOnClick }); });
+  })();
+</script>
+<script src="/dist/content.harness.js"></script>
+</body>
+</html>

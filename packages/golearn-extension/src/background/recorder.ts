@@ -37,6 +37,8 @@ export interface RecorderOptions {
   now?: () => number;
   /** Called after an event was queued (the debounced sync). */
   onQueued?: () => void;
+  /** Called, and awaited, with every event that was newly written to the local log and queued (the device-local Repository keeps a copy). A failure is ignored. */
+  onRecorded?: (event: GoEvent, attributed: 'account' | 'local') => Promise<unknown> | unknown;
 }
 
 export function createRecorder(opts: RecorderOptions) {
@@ -85,6 +87,7 @@ export function createRecorder(opts: RecorderOptions) {
     if (written.duplicate) return { ok: true, duplicate: true, attributed };
     const queued = await opts.queue.enqueue(event);
     if (!queued.ok && queued.reason === 'invalid') return { ok: false, error: 'invalid-for-queue' };
+    try { await opts.onRecorded?.(event, attributed); } catch { /* the local copy is best effort: the log and the queue already hold the event */ }
     if (attributed === 'account') opts.onQueued?.();
     return { ok: true, attributed };
   }

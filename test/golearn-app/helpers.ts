@@ -1,13 +1,14 @@
 /**
  * Shared fakes for the GoLearn setup application tests: an in-memory Repository service behind the typed API, small
- * pack bindings (an installable Albanian pack, a planned Spanish one, a Norway team), a chrome fake, and a rig that
- * builds the real application against them in jsdom.
+ * pack bindings (an installable Albanian pack, a planned Spanish one, the six languages), an on-device Repository fake, a chrome
+ * fake, and a rig that builds the real application against them in jsdom.
  */
 import { vi } from 'vitest';
 import type { Enrolment } from '../../packages/repository-contract/src';
 import type { ApiResult, RepositoryApi } from '../../packages/repository-service/src/api';
 import { createApp, type AppHandle } from '../../packages/golearn-extension/app/app';
-import type { Deps, PackBindings, PackView, TeamView, TutorialView, VerifyView } from '../../packages/golearn-extension/app/ports';
+import type { Deps, LanguageView, PackBindings, PackView, TutorialView, VerifyView } from '../../packages/golearn-extension/app/ports';
+import type { LocalRepo } from '../../packages/golearn-extension/app/localRepo';
 import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
 import type { ChromeApi, StorageArea } from '../../packages/golearn-extension/src/platform';
 import { createChromeFake, type ChromeFake } from '../extension/chromeFake';
@@ -35,14 +36,11 @@ export class FakeService {
   accounts = new Map<string, FakeAccount>();
   sessions = new Map<string, string>(); // token → learnerId
   enrolments: Enrolment[] = [];
-  members = new Set<string>(); // team ids every learner may join
   calls: Array<{ method: string; args: unknown[] }> = [];
   health: ApiResult<{ ok: true; service: string; version: number; contractVersion?: number }> = { ok: true, status: 200, data: { ok: true, service: 'go-repository', version: 2 } };
   exportBody: Record<string, unknown> = { schema: 'go-repository-export@1', events: [{ id: 'e1' }], enrolments: [] };
   down = false;
   private n = 0;
-
-  constructor(opts: { teams?: string[] } = {}) { for (const t of opts.teams ?? ['albania', 'norway']) this.members.add(t); }
 
   private fail(status: number, error: string, message = ''): ApiResult<never> { return { ok: false, status, error, message, body: { error, message } }; }
   private rec(method: string, ...args: unknown[]): void { this.calls.push({ method, args }); }
@@ -75,10 +73,9 @@ export class FakeService {
       },
       async deleteSession() { self.rec('deleteSession'); if (state.token) self.sessions.delete(state.token); state.token = undefined; return { ok: true as const, status: 204, data: null }; },
       async listEnrolments() { self.rec('listEnrolments'); return need((l) => ({ ok: true as const, status: 200, data: { enrolments: self.enrolments.filter((e) => e.learnerId === l) } })); },
-      async enrol(input: { teamId?: string } & Record<string, unknown>) {
+      async enrol(input: Record<string, unknown>) {
         self.rec('enrol', input);
         return need((l) => {
-          if (input.teamId !== undefined && !self.members.has(input.teamId)) return self.fail(403, 'not-a-member', 'no') as never;
           const e = { enrolmentId: `enr-${++self.n}`, learnerId: l, startedAt: `2026-10-08T10:00:0${self.n % 10}.000Z`, goals: [], ...input } as unknown as Enrolment;
           self.enrolments.push(e);
           return { ok: true as const, status: 201, data: { enrolment: e } };
@@ -124,13 +121,40 @@ export const NB_FAKE: PackView = {
 };
 export const NN_FAKE: PackView = { ...NB_FAKE, packId: 'pack:nn', languageId: 'nn', name: 'Norwegian (Nynorsk)', nativeName: 'Nynorsk', defaultVarietyId: 'nn', varieties: [{ varietyId: 'nn', label: 'Nynorsk', writtenStandard: 'nn', analysed: true }], manifest: { fake: 'nn' } };
 
-export const TEAMS_FAKE: TeamView[] = [
-  { teamId: 'albania', name: 'Albania', languages: [{ languageId: 'sq', label: 'Albanian', varietyId: 'sq-standard' }] },
-  { teamId: 'honduras', name: 'Honduras', languages: [{ languageId: 'es', label: 'Spanish (Honduras)', varietyId: 'es-HN' }] },
-  { teamId: 'norway', name: 'Norway', languages: [
-    { languageId: 'nb', label: 'Norwegian, Bokmål', varietyId: 'nb', requiredChoice: true },
-    { languageId: 'nn', label: 'Norwegian, Nynorsk', varietyId: 'nn', requiredChoice: true },
-  ] },
+const experimental = (languageId: string, name: string, nativeName: string, scriptId = 'Latn'): PackView => ({
+  packId: `pack:${languageId}`, languageId, version: '2', name, nativeName, status: 'installable', level: 'experimental', levelLabel: 'experimental, seed-only lemmatisation, unreviewed',
+  analyzerId: `adapter-${languageId}@2`, analyzerVersion: '2', validation: 'experimental', defaultVarietyId: languageId, scriptId,
+  varieties: [{ varietyId: languageId, label: name, analysed: true }], licences: [], attribution: [], reviewStatus: 'machine-drafted', provenance: [], manifest: { fake: languageId },
+});
+export const DE_FAKE = experimental('de', 'German', 'Deutsch');
+export const HI_FAKE = experimental('hi', 'Hindi', 'हिन्दी', 'Deva');
+export const TH_FAKE = experimental('th', 'Thai', 'ไทย', 'Thai');
+/** Spanish as an installable experimental pack with the two varieties the regional preference offers. */
+export const ES_OK_FAKE: PackView = {
+  ...experimental('es', 'Spanish', 'español'), defaultVarietyId: 'es-419',
+  varieties: [{ varietyId: 'es-419', label: 'Latin America (general)', analysed: true }, { varietyId: 'es-HN', label: 'Honduras', analysed: true }],
+};
+
+/** The six languages as the catalogue lists them: Norwegian first, with its written standard as a required choice; Spanish with an optional regional preference. */
+export const LANGUAGES_FAKE: LanguageView[] = [
+  {
+    languageId: 'nb', name: 'Norwegian', nativeName: 'norsk', scriptId: 'Latn', packIds: ['pack:nb', 'pack:nn'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false,
+    audio: 'Browser voices only.', whatWorks: ['Dictionary form and meaning for common words.'], whatDoesNot: ['Compounds are often not split.'],
+    choice: { kind: 'standard', required: true, label: 'Which written standard will you read?', options: [
+      { id: 'nb', label: 'Bokmål', languageId: 'nb', varietyId: 'nb' }, { id: 'nn', label: 'Nynorsk', languageId: 'nn', varietyId: 'nn' },
+    ] },
+  },
+  { languageId: 'de', name: 'German', nativeName: 'Deutsch', scriptId: 'Latn', packIds: ['pack:de'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Separable verbs are not joined.'] },
+  { languageId: 'sq', name: 'Albanian', nativeName: 'shqip', scriptId: 'Latn', packIds: ['pack:sq'], level: 'reference pack, machine-drafted, unreviewed', validation: 'unreviewed', tutorialAvailable: true, audio: 'Browser voices where the browser has one.', whatWorks: ['The reference analyser and dictionary.'], whatDoesNot: ['No person has reviewed the pack.'] },
+  { languageId: 'hi', name: 'Hindi', nativeName: 'हिन्दी', scriptId: 'Deva', packIds: ['pack:hi'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Conjunct verbs are not analysed.'] },
+  { languageId: 'th', name: 'Thai', nativeName: 'ไทย', scriptId: 'Thai', packIds: ['pack:th'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false, audio: 'Browser voices only.', whatWorks: ['Word segmentation by dictionary.'], whatDoesNot: ['Tone marks are not shown.'] },
+  {
+    languageId: 'es', name: 'Spanish', nativeName: 'español', scriptId: 'Latn', packIds: ['pack:es'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: true, audio: 'Browser voices only.',
+    whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Voseo is detected but not taught.'],
+    choice: { kind: 'variety', required: false, label: 'Regional preference', options: [
+      { id: 'es-standard', label: 'General', languageId: 'es', varietyId: 'es-419' }, { id: 'es-HN', label: 'Honduras (regional preference)', languageId: 'es', varietyId: 'es-HN' },
+    ] },
+  },
 ];
 
 /** Practice sentence the real Albanian analyser reads (also used by test/extension). */
@@ -146,6 +170,8 @@ export const TUTORIAL_FAKE: TutorialView = {
 };
 
 export interface FakePacks extends PackBindings {
+  /** The packs the language cards resolve to; replace entries to make a language installable or planned. */
+  all: PackView[];
   installs: PackView[];
   verifies: PackView[];
   nextInstall: VerifyView | (() => Promise<VerifyView>);
@@ -154,8 +180,10 @@ export interface FakePacks extends PackBindings {
 
 export function fakePacks(): FakePacks {
   const all = [SQ_FAKE, ES_FAKE, NB_FAKE, NN_FAKE];
+  /** German, Hindi and Thai resolve for the language cards but are not listed among the packs (the share screen would otherwise offer them). */
+  const extra = [DE_FAKE, HI_FAKE, TH_FAKE];
   const f: FakePacks = {
-    installs: [], verifies: [],
+    all, installs: [], verifies: [],
     nextInstall: { ok: false, version: '9', checks: [
       { id: 'dictionary-manifest', label: 'Dictionary description (kaikki-sq, 91,271 entries)', ok: true },
       { id: 'sample-shard', label: 'A dictionary shard can be fetched and read', ok: true },
@@ -163,9 +191,9 @@ export function fakePacks(): FakePacks {
       { id: 'case:v-pine', label: 'Validation case: “pinë”', ok: false, detail: 'the analyser gave pi' },
     ] },
     nextVerify: { ok: true, version: '9', checks: [{ id: 'dictionary-manifest', label: 'Dictionary description', ok: true }] },
-    packs: () => all,
-    teams: () => TEAMS_FAKE,
-    packFor: (id) => all.find((p) => p.languageId === id),
+    packs: () => f.all,
+    languages: () => LANGUAGES_FAKE,
+    packFor: (id) => f.all.find((p) => p.languageId === id) ?? extra.find((p) => p.languageId === id),
     async install(pack, o) {
       f.installs.push(pack);
       o.onProgress?.(1, 4, 'Reading the dictionary description');
@@ -177,6 +205,58 @@ export function fakePacks(): FakePacks {
   return f;
 }
 
+// ───────────────────────────── the on-device Repository ─────────────────────────────
+
+export interface FakeLocal extends LocalRepo {
+  enrolments: Enrolment[];
+  /** Every enrolment asked for, whether through the api or through the worker-style `enrol`. */
+  enrolCalls: Array<Record<string, unknown>>;
+  /** Enrolments the page asked the repository to make the active one (worker style only). */
+  selected: string[];
+  uploads: RepositoryApi[];
+  cleared: number;
+  closed: number;
+  /** What `uploadTo` reports. */
+  uploadResult: unknown;
+  /** Make `uploadTo` fail. */
+  uploadFails: boolean;
+}
+
+/** `worker`: the repository lives in the background worker (the extension), so the page also has `enrol` and `select` there. */
+export function fakeLocal(opts: { learnerId?: string; uploaded?: number; worker?: boolean } = {}): FakeLocal {
+  const learnerId = opts.learnerId ?? 'local-learner';
+  let n = 0;
+  const make = (input: Record<string, unknown>): Enrolment => {
+    f.enrolCalls.push(input);
+    const e = { enrolmentId: `loc-${++n}`, learnerId, startedAt: `2026-10-08T10:00:0${n % 10}.000Z`, goals: [], ...input } as unknown as Enrolment;
+    f.enrolments.push(e);
+    return e;
+  };
+  const f: FakeLocal = {
+    enrolments: [], enrolCalls: [], selected: [], uploads: [], cleared: 0, closed: 0, uploadResult: { events: opts.uploaded ?? 3 }, uploadFails: false,
+    api: {
+      async listEnrolments() { return { ok: true as const, status: 200, data: { enrolments: [...f.enrolments] } }; },
+      async enrol(input: Record<string, unknown>) { const e = make(input); return { ok: true as const, status: 201, data: { enrolment: e } }; },
+      async endEnrolment(id: string) {
+        const e = f.enrolments.find((x) => x.enrolmentId === id);
+        if (e) e.endedAt = '2026-10-08T11:00:00.000Z';
+        return { ok: true as const, status: 200, data: { enrolment: e } };
+      },
+    } as unknown as RepositoryApi,
+    identity: async () => ({ learnerId }),
+    exportEvents: async () => [],
+    uploadTo: async (remote) => { if (f.uploadFails) throw new Error('upload refused'); f.uploads.push(remote); return f.uploadResult; },
+    rebuild: async () => undefined,
+    clear: async () => { f.cleared += 1; },
+    close: () => { f.closed += 1; },
+  };
+  if (opts.worker) {
+    f.enrol = async (input) => ({ enrolmentId: make(input as unknown as Record<string, unknown>).enrolmentId });
+    f.select = async (id) => { f.selected.push(id); };
+  }
+  return f;
+}
+
 // ───────────────────────────── the rig ─────────────────────────────
 
 export interface Rig {
@@ -184,6 +264,8 @@ export interface Rig {
   deps: Deps;
   service: FakeService;
   packs: FakePacks;
+  /** The on-device Repository the rig opened (the same one on every open). */
+  local: FakeLocal;
   area: ReturnType<typeof createMemoryStorageArea>;
   chrome: ChromeFake | undefined;
   downloads: Array<{ filename: string; blob: Blob }>;
@@ -202,6 +284,8 @@ export interface RigOptions {
   config?: Deps['config'];
   service?: FakeService;
   packs?: FakePacks;
+  /** The on-device Repository; false = none is available in this build. */
+  local?: FakeLocal | false;
   startRoute?: string;
   now?: Date;
 }
@@ -214,6 +298,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   window.location.hash = '';
   const service = opts.service ?? new FakeService();
   const packs = opts.packs ?? fakePacks();
+  const local = opts.local === false ? undefined : (opts.local ?? fakeLocal({ worker: !!opts.extension }));
   const chrome = opts.extension ? createChromeFake() : undefined;
   const area = chrome ? (chrome.local as unknown as ReturnType<typeof createMemoryStorageArea>) : createMemoryStorageArea();
   const downloads: Rig['downloads'] = [];
@@ -222,6 +307,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const deps: Deps = {
     win: window, doc: document, chrome: chrome as ChromeApi | undefined, fetch: vi.fn() as unknown as typeof fetch,
     area: area as StorageArea, packs, config: opts.config ?? {},
+    ...(local ? { openLocal: async () => local } : {}),
     createApi: (baseUrl, token) => { createApiCalls.push({ baseUrl, token }); return service.api(token); },
     download: (filename, blob) => { downloads.push({ filename, blob }); },
     now: () => opts.now ?? new Date('2026-10-08T12:00:00.000Z'),
@@ -236,7 +322,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const app = createApp(root, deps);
   await app.ready();
   const rig: Rig = {
-    app, deps, service, packs, area, chrome, downloads, root, createApiCalls, closed,
+    app, deps, service, packs, local: local as FakeLocal, area, chrome, downloads, root, createApiCalls, closed,
     text: () => document.getElementById('screen')?.textContent ?? '',
     q: <T extends Element = HTMLElement>(sel: string): T => { const el = root.querySelector<T>(sel); if (!el) throw new Error(`not found: ${sel}`); return el; },
     async go(route) { await app.go(route); await app.ready(); await flush(); },
@@ -282,6 +368,8 @@ export interface FakeBackground {
   /** Types it answers; any other message gets no reply (as an older worker would behave). */
   handles: Set<string>;
   settings: Record<string, unknown>;
+  /** How many events of the device the worker says it uploaded at sign-in. */
+  uploaded: number;
   recorded: Array<Record<string, unknown>>;
   syncReply: Record<string, unknown>;
   statusReply: Record<string, unknown>;
@@ -295,7 +383,7 @@ export interface FakeBackground {
 export function fakeBackground(rig: Rig, only?: string[]): FakeBackground {
   const bg: FakeBackground = {
     messages: [], handles: new Set(only ?? ['connect', 'create-account', 'disconnect', 'service-config', 'select-enrolment', 'settings', 'record', 'status', 'sync-now', 'clear-local']),
-    settings: {}, recorded: [],
+    settings: {}, uploaded: 3, recorded: [],
     syncReply: { ok: true },
     statusReply: { ok: true, connected: true, needsSignIn: false, languageId: 'sq', languageName: 'Albanian', packAvailable: true, hasEnrolment: true, sync: { pending: 0, rejected: 0, online: true, needsSignIn: false } },
   };
@@ -315,7 +403,7 @@ export function fakeBackground(rig: Rig, only?: string[]): FakeBackground {
           if (!made.ok) return respond({ ok: false, error: 'unauthorized', message: 'The email or password was not accepted.' });
           const enrolment = rig.service.enrolments.filter((e) => e.learnerId === made.data.learnerId).at(-1);
           await area.set({ 'golearn:session': { token: made.data.token, learnerId: made.data.learnerId, expiresAt: made.data.expiresAt, email: String(msg.email).toLowerCase(), ...(enrolment ? { enrolmentId: enrolment.enrolmentId, languageId: enrolment.languageId } : {}) }, 'golearn:service': { baseUrl: msg.baseUrl } });
-          return respond({ ok: true, status: { connected: true, expired: false, email: msg.email, hasEnrolment: !!enrolment } });
+          return respond({ ok: true, uploaded: bg.uploaded, status: { connected: true, expired: false, email: msg.email, hasEnrolment: !!enrolment } });
         }
         case 'disconnect': { await area.remove('golearn:session'); return respond({ ok: true, remoteRevoked: true }); }
         case 'service-config': { await area.set({ 'golearn:service': { baseUrl: msg.baseUrl, ...(msg.assetBase ? { assetBase: msg.assetBase } : {}) } }); return respond({ ok: true }); }

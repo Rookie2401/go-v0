@@ -1,4 +1,5 @@
 import { experimentalManifest } from './experimental';
+import { TH_TUTORIAL } from '../tutorial/th';
 import type { PackManifest, ValidationCase } from '../manifest';
 
 /** Experimental: Thai. Adapter version 5 (checked against src/adapters/th.ts by test/language-packs/registry.test.ts). */
@@ -43,6 +44,7 @@ export function thaiManifest(): PackManifest {
     segmentation: { method: 'intl', notes: 'Thai has no spaces: ICU dictionary segmentation through Intl.Segmenter, plus a short course compound list; segmentation is limited and not measured on real prose.' },
     validation: TH_VALIDATION,
     pronunciationNotes: true,
+    tutorial: { ref: TH_TUTORIAL.ref, estimatedMinutes: TH_TUTORIAL.estimatedMinutes },
     thin: [
       'lemmatization is seed-only (a hand lexicon of about 600 entries; any other word is left unanalysed);',
       'word segmentation is the weakest part: an unlisted compound can be cut where a learner does not expect it (คนใน for คน + ใน) and nothing has been measured on running prose;',

@@ -17,9 +17,11 @@ import {
 } from '../protocol';
 import { METRIC_KEY_PREFIX, } from '../metrics';
 import { EVENT_KEY_PREFIX, getDeviceId } from '../store';
+import { createActiveService } from './active';
 import { createGlossService, defaultPacks, type PackProvider } from './gloss';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
+import { createLocalRepoService } from './localRepo';
 import { createProfileService } from './profile';
 import { createRecorder } from './recorder';
 import { createSessionManager } from './session';
@@ -48,10 +50,11 @@ type SenderKind = 'page' | 'content' | 'foreign';
 
 const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
   MSG.getState, MSG.setEnabled, MSG.serviceConfig, MSG.connect, MSG.createAccount, MSG.disconnect, MSG.syncNow,
-  MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.clearLocal,
+  MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.clearLocal, MSG.localRepo,
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
+  MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
 ]);
 
 const withTimeout = (f: typeof fetch, ms: number): typeof fetch => ((input: RequestInfo | URL, init?: RequestInit) => {
@@ -77,7 +80,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const settings = createSettings(local);
   const packs = bg.packs ?? defaultPacks;
   const packAvailable = (l: string): boolean => packs.manifest(l)?.status === 'installable';
-  const holder: { recorder?: ReturnType<typeof createRecorder>; sync?: ReturnType<typeof createSyncService>; profile?: ReturnType<typeof createProfileService> } = {};
+  const holder: { recorder?: ReturnType<typeof createRecorder>; sync?: ReturnType<typeof createSyncService>; profile?: ReturnType<typeof createProfileService>; local?: ReturnType<typeof createLocalRepoService> } = {};
   const session = createSessionManager({
     extensionId: chrome.runtime.id,
     area: local, fetch: doFetch, now, packAvailable,
@@ -86,18 +89,24 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       await holder.recorder?.setAsideForeign(s.learnerId);
       if (s.enrolmentId && s.languageId) await holder.recorder?.reattributeQueued(s.learnerId, s.enrolmentId, s.languageId);
       await holder.sync?.onSignedIn();
+      await holder.local?.afterSignIn(); // the device's history goes up once, then the account's comes down (failures are recorded, never thrown)
     },
     onEnrolmentChange: async (s) => {
       if (s.enrolmentId && s.languageId) await holder.recorder?.reattributeQueued(s.learnerId, s.enrolmentId, s.languageId);
       holder.sync?.schedule();
+      await holder.local?.afterEnrolment(); // events that waited for an enrolment in their language can go now
     },
     onDisconnect: async () => { await holder.profile?.clear(); },
   });
   const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now });
-  const profile = createProfileService({ area: cache, session, settings: settings.get, now });
+  // GoLearn Active: the switches, the host-permission check and the dynamic content script (the popup asks the browser for the permission)
+  const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE });
+  // the device's own Repository: GoLearn works with no account, and the account only keeps the history across devices
+  const localRepo = createLocalRepoService({ area: local, deviceId, session, packs, now });
+  const profile = createProfileService({ area: cache, session, settings: settings.get, now, local: localRepo.forProfile });
   const sync = createSyncService({ area: local, session, deviceId, now, timers: bg.timers, onSynced: async () => { await profile.refreshAfterSync(); } });
-  const recorder = createRecorder({ area: local, queue: sync.queue, session, deviceId, version, now: Date.now, onQueued: () => sync.schedule() });
-  holder.recorder = recorder; holder.sync = sync; holder.profile = profile;
+  const recorder = createRecorder({ area: local, queue: sync.queue, session, deviceId, version, now: Date.now, onQueued: () => sync.schedule(), onRecorded: (e, attributed) => localRepo.record(e, attributed) });
+  holder.recorder = recorder; holder.sync = sync; holder.profile = profile; holder.local = localRepo;
 
   // ───────────── per-tab state, injection ─────────────
   async function readState(tabId: number): Promise<TabState> {
@@ -183,7 +192,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   async function publicStatus(): Promise<PublicStatus> {
     // cheap: a lookup asks for this, so it must not scan the queue
     const [s, needsSignIn] = await Promise.all([session.status(), sync.needsSignIn()]);
-    const languageId = s.languageId ?? 'sq';
+    // the language of the account's enrolment; with none, the one the learner chose on this device; with none, Albanian (the reference language)
+    const languageId = s.languageId ?? (await localRepo.activeLanguage()) ?? 'sq';
     return {
       ok: true,
       connected: s.connected,
@@ -247,6 +257,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   }
 
   async function clearLocal(): Promise<{ ok: true; events: number; metrics: number; queued: number }> {
+    await localRepo.clear().catch(() => undefined); // the device-local Repository too: nothing of the learner's history stays on the device
     const all = await local.get(null);
     const keys = Object.keys(all);
     const events = keys.filter((k) => k.startsWith(EVENT_KEY_PREFIX));
@@ -296,6 +307,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.pronounceInfo: return pronounceInfo(m);
       case MSG.correct: return correct(m);
       case MSG.metrics: return storeMetric(m);
+      case MSG.active: return active.handle(m, kind);
       // ── extension pages only ──
       case MSG.serviceConfig: {
         const req = m as { op?: string; baseUrl?: string; assetBase?: string };
@@ -313,6 +325,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         return session.enrol({ languageId: String(m.languageId ?? ''), packId: String(m.packId ?? ''), packVersion: String(m.packVersion ?? ''), goals, ...(typeof m.varietyId === 'string' ? { varietyId: m.varietyId } : {}), ...(typeof m.scriptId === 'string' ? { scriptId: m.scriptId } : {}), ...(typeof m.teamId === 'string' && m.teamId ? { teamId: m.teamId } : {}) });
       }
       case MSG.clearLocal: return clearLocal();
+      case MSG.localRepo: return localRepo.handle(m);
       default: return { ok: false, error: 'unknown-message' };
     }
   }
@@ -337,13 +350,16 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     chrome.tabs?.onUpdated?.addListener((tabId, change) => { if (change.status === 'loading') void writeState(tabId, { enabled: false }); });
 
     sync.registerAlarm(chrome);
+    void localRepo.open(); // open the device-local Repository now, so the first lookup does not wait for it
+    void active.restore(); // keep Active's registration in step with the permission the learner may have withdrawn meanwhile
+    active.watchPermission();
 
     chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       const m = message as Record<string, unknown> | undefined;
       const type = m?.type;
       if (typeof type !== 'string' || !type.startsWith('golearn:')) return;
       // messages that GoLearn sends to a content script are not for the background
-      if (type === MSG.enable || type === MSG.disable || type === MSG.lookup || type === MSG.ping) return;
+      if (type === MSG.enable || type === MSG.disable || type === MSG.lookup || type === MSG.ping || type === MSG.activate || type === MSG.deactivate) return;
       const kind = classify(sender);
       const allowed = kind === 'page' ? (PAGE_ONLY.has(type) || CONTENT_OK.has(type)) : kind === 'content' ? CONTENT_OK.has(type) : false;
       if (!allowed) { sendResponse({ ok: false, error: 'forbidden' }); return; }
@@ -352,7 +368,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     });
   }
 
-  return { register, setEnabled, lookupNow, readState, inject, session, sync, recorder, profile, gloss, settings, status: pageStatus, handle };
+  return { register, setEnabled, lookupNow, readState, inject, session, sync, recorder, profile, gloss, settings, local: localRepo, active, status: pageStatus, handle };
 }
 
 /** A short, plain reason for a failed injection. The browser's wording is not shown raw. */

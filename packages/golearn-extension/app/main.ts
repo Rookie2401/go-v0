@@ -9,6 +9,7 @@ import { createMemoryStorageArea } from '../src/store';
 import { createApp } from './app';
 import { createPackBindings } from './bindings';
 import { loadConfig } from './config';
+import { openLocalRepo } from './localBinding';
 import type { Deps } from './ports';
 import { createWebStorageArea } from './state';
 import { APP_VERSION } from './version';
@@ -31,6 +32,7 @@ export async function createRealDeps(): Promise<Deps> {
     win: window, doc: document, chrome, fetch: doFetch,
     area: chrome ? chrome.storage.local : webArea(),
     packs: createPackBindings(),
+    openLocal: openLocalRepo,
     config: await loadConfig(doFetch),
     createApi: (baseUrl, token) => createRepositoryApi({ baseUrl, fetch: doFetch, token }),
     download(filename, blob) {

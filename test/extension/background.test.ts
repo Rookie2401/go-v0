@@ -34,12 +34,13 @@ afterEach(() => { for (const t of teardown) t(); teardown = []; restore(); delet
 
 describe('manifest', () => {
   const manifest = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../packages/golearn-extension/manifest.json'), 'utf8'));
-  it('is MV3 with exactly the five permissions (alarms is the new one: the 5-minute sync) and no host access', () => {
+  it('is MV3 with exactly the five permissions (alarms is the new one: the 5-minute sync), no host access by default, and the optional host permission GoLearn Active asks for', () => {
     expect(manifest.manifest_version).toBe(3);
     expect(manifest.permissions).toEqual(['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms']);
     expect(manifest.options_page).toBe('app/index.html');
     expect(manifest.host_permissions).toBeUndefined();
-    expect(manifest.optional_host_permissions).toBeUndefined();
+    // GoLearn Active (2026-10-09): nothing is granted at install; the popup asks the browser inside the learner's click, and the learner can withdraw it
+    expect(manifest.optional_host_permissions).toEqual(['https://*/*', 'http://*/*']);
     expect(manifest.content_scripts).toBeUndefined(); // injected on a gesture only, never declared
     // the analyser chunks the content script imports on demand (German, Hindi, Thai, Spanish), and nothing else
     expect(manifest.web_accessible_resources).toEqual([{ resources: ['analysers/*.js'], matches: ['<all_urls>'] }]);
@@ -209,7 +210,7 @@ describe('content script bootstrap', () => {
 
   it('answers ping and ignores unknown messages', async () => {
     await startContent();
-    expect(await fake.tabs!.sendMessage(7, { type: MSG.ping })).toEqual({ ok: true, enabled: false });
+    expect(await fake.tabs!.sendMessage(7, { type: MSG.ping })).toEqual({ ok: true, enabled: false, active: false });
     expect(await fake.tabs!.sendMessage(7, { type: 'something-else' })).toBeUndefined();
   });
 });

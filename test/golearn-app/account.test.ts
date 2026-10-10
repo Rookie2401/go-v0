@@ -186,6 +186,9 @@ describe('connecting in the extension', () => {
     expect(s).toMatchObject({ email: 'ana@example.org' });
     expect(rig.q('#signed-in-as').textContent).toBe('Signed in as ana@example.org');
     expect(JSON.stringify((rig.area as unknown as { dump(): Record<string, unknown> }).dump())).not.toContain('correct horse battery');
+    // the worker uploaded the device’s history and said how many; the page shows the count and made no upload of its own
+    expect(rig.q('#acct-form .status').textContent).toContain('Uploaded 3 events from this device to your account');
+    expect(rig.local.uploads).toHaveLength(0);
   });
 
   it('create account goes to golearn:create-account; a refusal from the worker is shown as it is', async () => {
@@ -242,5 +245,98 @@ describe('connecting in the extension', () => {
     expect(bg.messages.find((m) => m.type === 'golearn:service-config')).toMatchObject({ op: 'set', baseUrl: 'https://repository.example.org' });
     await flush(20);
     expect(await rig.app.ctx.serviceUrl()).toBe('https://repository.example.org');
+  });
+});
+
+describe('an account is optional, last, and only keeps progress across devices', () => {
+  const pickSq = async (rig: Awaited<ReturnType<typeof makeRig>>): Promise<void> => {
+    await rig.go('language');
+    choose(rig.q('#language'), 'sq');
+    submit(rig.q('#enrol-form'));
+    await until(() => /Chosen:/.test(rig.q('#enrol-form .status').textContent ?? ''));
+  };
+
+  it('the step is offered with “Not now”, says the progress is on this device only, and nothing needs signing in', async () => {
+    const rig = await makeRig();
+    await rig.go('account');
+    expect(rig.q('#screen h1').textContent).toBe('Keep your progress (optional)');
+    expect(rig.text()).toContain('Keep your progress across devices');
+    expect(rig.q('#account-state').textContent).toBe('On this device only');
+    expect(rig.q<HTMLAnchorElement>('#acct-not-now').getAttribute('href')).toBe('#/home');
+    rig.q('#acct-not-now').click();
+    await rig.go('home');
+    expect(rig.q('#progress-mode').textContent).toContain('On this device only');
+    expect(rig.createApiCalls).toHaveLength(0); // nothing was sent anywhere
+  });
+
+  it('signing in uploads the device’s history once, shows the count, and switches to “Synced to your account”', async () => {
+    const rig = await makeRig();
+    await pickSq(rig);
+    await signIn(rig);
+    expect(rig.local.uploads).toHaveLength(1);
+    expect(rig.q('#acct-form .status').textContent).toContain('Uploaded 3 events from this device to your account');
+    expect(rig.q('#acct-form .status').textContent).toContain('Progress is now synced to your account');
+    expect(rig.q('#account-state').textContent).toBe('Synced to your account');
+    // the language chosen before the account is now also an enrolment on the account, and the session’s active one
+    expect(rig.service.enrolments.map((e) => e.languageId)).toEqual(['sq']);
+    expect(rig.service.enrolments[0]).not.toHaveProperty('teamId');
+    expect(await sessionOf(rig.area)).toMatchObject({ enrolmentId: rig.service.enrolments[0].enrolmentId, languageId: 'sq' });
+    // creating an account does the same
+    await rig.app.ctx.signOut();
+    await signIn(rig, 'new@example.org', 'a long enough password', true);
+    expect(rig.local.uploads).toHaveLength(2);
+  });
+
+  it('a count of one reads in the singular, and an upload that failed does not stop the sign-in or claim a count', async () => {
+    const rig = await makeRig();
+    rig.local.uploadResult = { sent: 1 };
+    await signIn(rig);
+    expect(rig.q('#acct-form .status').textContent).toContain('Uploaded 1 event from this device');
+    await rig.app.ctx.signOut();
+    rig.local.uploadFails = true;
+    await signIn(rig, 'bo@example.org', 'another long password');
+    expect(rig.q('#acct-form .status').textContent).toMatch(/Signed in as bo@example\.org\./);
+    expect(rig.q('#acct-form .status').textContent).not.toMatch(/Uploaded/);
+    expect(rig.q('#acct-form .status').getAttribute('data-kind')).toBe('ok');
+  });
+
+  it('with nothing to upload it says so', async () => {
+    const rig = await makeRig();
+    rig.local.uploadResult = { sent: 0, duplicates: 0, failed: 0 };
+    await signIn(rig);
+    expect(rig.q('#acct-form .status').textContent).toContain('Nothing needed uploading from this device');
+  });
+
+  it('signing out returns to this device alone: the choice and the local data stay, and nothing is cleared', async () => {
+    const rig = await makeRig();
+    await pickSq(rig);
+    await signIn(rig);
+    await rig.go('account');
+    rig.q('#acct-disconnect').click();
+    await until(() => /Not signed in/.test(rig.text()));
+    expect(rig.q('#account-state').textContent).toBe('On this device only');
+    expect(await sessionOf(rig.area)).toBeUndefined();
+    expect(rig.local.cleared).toBe(0);
+    expect(await rig.app.ctx.activeLanguage()).toMatchObject({ languageId: 'sq' });
+    expect(rig.local.enrolments).toHaveLength(1);
+    await rig.go('home');
+    expect(rig.q('#progress-mode').textContent).toContain('On this device only');
+  });
+
+  it('“Clear local data” is explicit: the first click only arms it, leaving it disarms it, the second clears the on-device Repository', async () => {
+    const rig = await makeRig();
+    await rig.go('privacy');
+    const btn = rig.q<HTMLButtonElement>('#clear-local');
+    btn.click();
+    await flush(5);
+    expect(btn.textContent).toBe('Click again to clear');
+    expect(rig.local.cleared).toBe(0);
+    btn.dispatchEvent(new Event('blur'));
+    expect(btn.textContent).toBe('Clear local data');
+    btn.click();
+    await flush(5);
+    btn.click();
+    await until(() => rig.local.cleared === 1);
+    await until(() => /Cleared the local data/.test(rig.q('#priv-clear').closest('section')!.textContent ?? ''));
   });
 });

@@ -47,6 +47,13 @@
   .btns { display: flex; flex-wrap: wrap; gap: 6px; }
   .proto { margin-top: 10px; font-size: 0.8125rem; color: var(--ink-faint); }
   hr { border: 0; border-top: 1px solid var(--rule); margin: 10px 0; }
+  .legend { margin: 4px 0 6px; padding-left: 18px; font-size: 0.875rem; color: var(--ink-soft); }
+  .legend li { margin: 2px 0; }
+  .legend .sw { color: var(--ink); text-underline-offset: 0.2em; }
+  .legend .sw-met { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
+  .legend .sw-assisted { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: color-mix(in srgb, currentColor 65%, transparent); }
+  .legend .sw-known { text-decoration: underline solid; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }
+  .legend .sw-produced { text-decoration: underline solid; text-decoration-thickness: 0.5px; text-decoration-color: color-mix(in srgb, currentColor 18%, transparent); }
   @media (prefers-reduced-motion: no-preference) { button { transition: border-color .15s; } }
 </style>
 </head>
@@ -59,12 +66,28 @@
     <span class="grow status-line" id="connection" role="status" aria-live="polite">Checking the connection…</span>
     <button type="button" id="open-setup">Open GoLearn setup</button>
   </div>
+  <div class="row"><button type="button" id="practise">Practise</button><span class="muted grow">Review what you met and write; no account needed.</span></div>
 
   <div class="row">
     <label for="enabled">GoLearn on for this tab</label>
     <input type="checkbox" id="enabled">
   </div>
   <div class="err" id="error" role="status" aria-live="polite"></div>
+
+  <hr>
+  <div class="row">
+    <label for="active"><strong>GoLearn Active</strong>: read each page before me and underline the words I have met</label>
+    <input type="checkbox" id="active">
+  </div>
+  <div class="row">
+    <label for="speak">Speak on click, when this device has a voice for the language</label>
+    <input type="checkbox" id="speak" disabled>
+  </div>
+  <div class="status-line" id="active-status" role="status" aria-live="polite"></div>
+  <ul class="legend" id="active-legend" aria-label="What the underlines mean"></ul>
+  <div class="hint">With Active on, one click on a word opens its card. The page is read on this device only, nothing of it is kept, and readers that refuse (Kindle, Kobo, readAwrite, MEB, Pratilipi) are never read. Switching it on asks Brave once to let GoLearn read pages; you can withdraw that here.</div>
+  <div class="row"><button type="button" id="active-revoke" hidden>Withdraw page access</button></div>
+  <hr>
 
   <div class="row"><span>Language</span><span class="grow" id="language">Albanian</span></div>
 

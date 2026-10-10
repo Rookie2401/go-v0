@@ -5,24 +5,24 @@ import { hiAdapter } from '../../src/adapters/hi';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
 import { thAdapter } from '../../src/adapters/th';
-import { LEVEL_LABEL, PACKS, TEAMS, installablePacks, languagesOf, levelOf, packFor, teamList, validateManifest } from '../../packages/language-packs/src';
+import { LEVEL_LABEL, PACKS, TEAMS, installablePacks, languagesOf, levelOf, packFor, plannedManifest, teamList, validateManifest } from '../../packages/language-packs/src';
 import type { TeamId } from '../../packages/language-packs/src';
 
 describe('PACKS and packFor', () => {
-  it('lists seven packs; Albanian and Spanish are installable, German, Hindi and Thai experimental (installable), Norwegian planned', () => {
+  it('lists seven packs; Albanian and Spanish are installable, German, Hindi, Thai and both Norwegian packs experimental (installable)', () => {
     expect(Object.keys(PACKS).sort()).toEqual(['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th']);
-    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th']);
-    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'planned', nn: 'planned' } as const;
+    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn']);
+    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental' } as const;
     for (const [lang, m] of Object.entries(PACKS)) {
       expect(m.languageId).toBe(lang);
       expect(m.packId).toBe(`pack:${lang}`);
       expect(levelOf(m), lang).toBe(level[lang as keyof typeof level]);
-      expect(m.status, lang).toBe(level[lang as keyof typeof level] === 'planned' ? 'planned' : 'installable');
+      expect(m.status, lang).toBe('installable');
     }
   });
 
   it('an experimental pack says so: its level, its label and its review status; it never reads as plainly installable', () => {
-    for (const lang of ['de', 'hi', 'th']) {
+    for (const lang of ['de', 'hi', 'th', 'nb', 'nn']) {
       const m = PACKS[lang];
       expect(m.level, lang).toBe('experimental');
       expect(LEVEL_LABEL[levelOf(m)]).toBe('experimental, seed-only lemmatisation, unreviewed');
@@ -30,7 +30,9 @@ describe('PACKS and packFor', () => {
       expect(m.rights.provenance[0], lang).toMatch(/^Experimental, installable at a deliberately minimal level and not production-ready/);
       expect(m.rights.provenance.join(' '), lang).toMatch(/Thin:/);
       expect(m.rights.provenance.join(' '), lang).toMatch(/Nothing in this pack has been reviewed by a native speaker/);
-      expect(m.rights.provenance.join(' '), lang).toContain(`The orientation tutorial (tutorial/${lang}) does not exist`);
+      expect(m.rights.provenance.join(' '), lang).toContain(`The orientation (tutorial/${lang}) is minimal and AI-drafted for this pack and is not reviewed`);
+      expect(m.rights.provenance.join(' '), lang).not.toMatch(/does not exist/);
+      expect(m.tutorial.ref, lang).toBe(`tutorial/${lang}`);
     }
     expect(PACKS.sq.level).toBeUndefined();
     expect(levelOf(PACKS.sq)).toBe('installable');
@@ -39,7 +41,7 @@ describe('PACKS and packFor', () => {
   it('refuses an inconsistent level: planned with an installable status, experimental on a planned pack or a reviewed one, an unknown level', () => {
     const bad = (m: unknown): string[] => validateManifest(m).map((i) => i.path);
     expect(bad({ ...structuredClone(PACKS.de), level: 'planned' })).toContain('level');
-    expect(bad({ ...structuredClone(PACKS.nb), level: 'experimental' })).toContain('level');
+    expect(bad({ ...structuredClone(PACKS.nb), status: 'planned', level: 'experimental' })).toContain('level');
     expect(bad({ ...structuredClone(PACKS.de), level: 'production' })).toContain('level');
     const reviewed = structuredClone(PACKS.de);
     reviewed.rights.reviewStatus = 'reviewed';
@@ -54,7 +56,37 @@ describe('PACKS and packFor', () => {
   });
 });
 
-describe('planned packs', () => {
+describe('experimental packs without a dictionary (Norwegian)', () => {
+  it('an experimental pack may declare no dictionary; any other installable pack must, and a planned one may not be installable', () => {
+    const bad = (m: unknown): string[] => validateManifest(m).map((i) => i.path);
+    for (const lang of ['nb', 'nn']) {
+      expect(PACKS[lang].lexical.dictionary, lang).toBeUndefined();
+      expect(bad(PACKS[lang]), lang).toEqual([]);
+    }
+    const noDict = structuredClone(PACKS.sq);
+    delete noDict.lexical.dictionary;
+    expect(bad(noDict)).toContain('lexical.dictionary');
+    const sneaky = structuredClone(PACKS.nb);
+    delete sneaky.level;
+    expect(bad(sneaky), 'an installable pack with no level is not experimental and needs its dictionary').toContain('lexical.dictionary');
+  });
+
+  it('plannedManifest still describes a language that has an analyser and nothing else: never installable, no validation, no review', () => {
+    const m = plannedManifest({
+      languageId: 'nb', version: '2', varietyId: 'nb', scriptId: 'Latn', name: 'Norwegian (Bokmål)', nativeName: 'norsk bokmål',
+      varieties: [{ varietyId: 'nb', label: 'Bokmål', writtenStandard: 'nb', analysed: true }],
+      adapterSummary: 'seed-only', capabilities: ['tokenization'], features: [], constructions: [], voices: [], segmentation: { method: 'adapter', notes: 'x' },
+    });
+    expect(m.status).toBe('planned');
+    expect(levelOf(m)).toBe('planned');
+    expect(m.validation).toEqual([]);
+    expect(m.rights.provenance[0]).toMatch(/Planned, not installable/);
+    expect(m.rights.reviewStatus).toBe('machine-drafted');
+    expect(validateManifest(m)).toEqual([]);
+  });
+});
+
+describe('adapter versions', () => {
   const adapters = { es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter } as const;
 
   it('name the real adapter and its current version (the version constant must not drift from the adapter)', () => {
@@ -76,13 +108,14 @@ describe('planned packs', () => {
     }
   });
 
-  it('say honestly what exists: no validation, no tutorial, no review, no recordings (Spanish is installable and German, Hindi and Thai experimental; both are covered elsewhere)', () => {
+  it('the Norwegian packs say honestly what exists: 14 validation cases, a minimal orientation, no review, no recordings, no dictionary', () => {
     for (const lang of ['nb', 'nn']) {
       const m = PACKS[lang];
-      expect(m.validation, lang).toEqual([]);
+      expect(m.validation, lang).toHaveLength(14);
       expect(m.rights.reviewStatus, lang).toBe('machine-drafted');
-      expect(m.rights.provenance[0], lang).toMatch(/Planned, not installable/);
-      expect(m.rights.provenance.join(' '), lang).toMatch(/does not exist|Not yet written/);
+      expect(m.rights.provenance[0], lang).toMatch(/^Experimental, installable at a deliberately minimal level and not production-ready/);
+      expect(m.rights.provenance.join(' '), lang).toMatch(/no dictionary for this language in the repository: meanings come from the pack’s own word list only/);
+      expect(m.rights.provenance.join(' '), lang).toMatch(/Nothing in this pack has been reviewed by a native speaker/);
       expect(m.pronunciation.recordings, lang).toBe('none');
       expect(m.pronunciation.remoteVoice.requiresConsentAndKey, lang).toBe(true);
     }
@@ -97,6 +130,7 @@ describe('planned packs', () => {
     expect(PACKS.nb.lexical.dictionary).toBeUndefined();
     expect(PACKS.nn.lexical.dictionary).toBeUndefined();
     expect(PACKS.nb.rights.provenance.join(' ')).toMatch(/no dictionary/i);
+    expect(PACKS.nn.rights.provenance.join(' ')).toMatch(/no dictionary/i);
   });
 
   it('Norwegian: two packs, each stating its written standard on every variety', () => {

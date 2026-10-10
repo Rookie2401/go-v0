@@ -17,7 +17,10 @@
  *
  * A declared language is mapped through a BCP-47 table (below). A tag that names a language with no pack is skipped with
  * a reason (an English page does not stop the ladder); a tag that is ambiguous (no = Bokmål or Nynorsk; hi-Latn =
- * Hindi in Latin script, which no pack analyses; gsw = Swiss German, which is not Standard German) decides nothing; a
+ * Hindi in Latin script, which no pack analyses; gsw = Swiss German, which is not Standard German) decides nothing, with
+ * one exception: a bare Norwegian "no" is read as the one Norwegian pack the learner has installed when exactly one of nb / nn
+ * is installed (the learner's own choice of a written standard decides it, at a lowered confidence, and the reasons say so);
+ * with both installed, or neither, "no" decides nothing and the sample or the enrolment must; a
  * tag that names a pack language that is NOT installed ends the ladder with 'undetermined' and says so, because reading
  * a page in another language with the learner's default pack would produce confident nonsense.
  *
@@ -95,6 +98,10 @@ const NOT_THE_PACK: Readonly<Record<string, string>> = {
   bra: 'Braj is its own language, read beside Hindi, not analysed as Hindi',
 };
 const NORWEGIAN_UNSPECIFIED = new Set(['no', 'nor']);
+/** Confidence given to a bare "no" that the learner's single installed Norwegian pack settles: below what a declared nb or nn gets. */
+export const NORWEGIAN_UNSPECIFIED_CONFIDENCE = 0.6;
+/** True for a tag that says Norwegian without a written standard ("no", "no-NO", "nor"). */
+export const isUnspecifiedNorwegian = (tag: string): boolean => NORWEGIAN_UNSPECIFIED.has(tag.trim().toLowerCase().replace(/_/gu, '-').split('-')[0] ?? '');
 const LATIN_AMERICAN_REGIONS = new Set(['419', 'mx', 'ar', 'bo', 'cl', 'co', 'cr', 'cu', 'do', 'ec', 'gt', 'ni', 'pa', 'pe', 'pr', 'py', 'sv', 'uy', 've', 'us']);
 
 export type TagMapping =
@@ -234,7 +241,7 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
 // ───────────────────────────── the resolver ─────────────────────────────
 
 export interface ResolverOptions {
-  /** Word lists beyond the parser's (tests inject Norwegian here; the content bundle carries only the parser's). */
+  /** Word lists beyond the parser's. The parser's own registry already holds every language whose analyser chunk has been loaded (Norwegian Bokmål and Nynorsk included); this is for a caller that holds one the parser does not. */
   adapters?: Readonly<Record<string, LanguageAdapter>>;
 }
 
@@ -252,7 +259,19 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
     /** A declared language, mapped; returns a final answer, or undefined to let the ladder go on. */
     const fromDeclared = (tag: string, what: string, basis: LanguageResolution['basis'], confidence: number): LanguageResolution | undefined => {
       const m = mapLanguageTag(tag);
-      if (m.kind === 'ambiguous') { reasons.push(`${what} "${tag}" decides nothing: ${m.reason}`); return undefined; }
+      if (m.kind === 'ambiguous') {
+        if (isUnspecifiedNorwegian(tag)) {
+          const have = (['nb', 'nn'] as const).filter((l) => installed.has(l));
+          if (have.length === 1) {
+            return {
+              languageId: have[0], confidence: Math.min(r2(confidence), NORWEGIAN_UNSPECIFIED_CONFIDENCE), basis,
+              reasons: [...reasons, `${what} "${tag}", which is Norwegian without a written standard; ${have[0] === 'nb' ? 'Bokmål' : 'Nynorsk'} (${have[0]}) is the only Norwegian pack installed, so the learner's own choice of pack decides it`],
+            };
+          }
+        }
+        reasons.push(`${what} "${tag}" decides nothing: ${m.reason}`);
+        return undefined;
+      }
       if (m.kind === 'no-pack') {
         // A reliable declaration of a language no pack covers is evidence against the team default: detection may still
         // recognise a mislabelled page from real text, but the ladder never ends in the team language (certification

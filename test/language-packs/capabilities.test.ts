@@ -9,13 +9,15 @@ import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
 import { hiAdapter } from '../../src/adapters/hi';
+import { nbAdapter } from '../../src/adapters/nb';
+import { nnAdapter } from '../../src/adapters/nn';
 import { sqAdapter } from '../../src/adapters/sq';
 import { thAdapter } from '../../src/adapters/th';
 import type { LanguageAdapter } from '../../src/core';
 import { PACKS, allPackCapabilities, levelOf, packCapabilities } from '../../packages/language-packs/src';
 import type { SupportLevel } from '../../src/core';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter };
+const ADAPTERS: Record<string, LanguageAdapter> = { sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter };
 const q = (l: SupportLevel): string => (l === 'dependable' ? 'dependable' : l === 'limited' ? 'limited' : 'none');
 
 describe('every pack’s report matches its manifest and its adapter', () => {
@@ -84,24 +86,22 @@ describe('every pack’s report matches its manifest and its adapter', () => {
     expect(de.morphology.explained).toEqual(['Case', 'Gender']);
     expect(de.morphology.observed).toEqual(expect.arrayContaining(['Case', 'Gender', 'Number', 'Person', 'Tense', 'Mood']));
     expect(packCapabilities('hi')!.morphology.observed).toEqual(expect.arrayContaining(['Aspect', 'Gender', 'Number', 'Case']));
-    for (const lang of ['sq', 'es', 'de', 'hi']) expect(packCapabilities(lang)!.morphology.observed.length, lang).toBeGreaterThan(4);
+    for (const lang of ['sq', 'es', 'de', 'hi', 'nb', 'nn']) expect(packCapabilities(lang)!.morphology.observed.length, lang).toBeGreaterThan(4);
   });
 });
 
-describe('planned packs (Norwegian): nothing is claimed', () => {
-  it.each(['nb', 'nn'])('%s: no analyser, no lemma, no morphology, no phrases, no constructions, no checker; the browser segmenter only', (lang) => {
+describe('Norwegian (experimental): the report states what the adapter does and nothing more', () => {
+  it.each(['nb', 'nn'])('%s: an adapter, seed-only lemma, limited morphology and phrases, three explained features and three explained constructions, no checker offered', (lang) => {
     const c = packCapabilities(lang)!;
-    expect(c).toMatchObject({ level: 'planned', analyzer: 'none', analyzerId: 'intl-tokenize@1' });
-    expect(c.tokenization).toMatchObject({ quality: 'limited', method: 'intl' });
-    expect(c.lemma.supported).toBe(false);
-    expect(c.morphology.supported).toBe(false);
-    expect(c.phrases.supported).toBe(false);
-    expect(c.constructions.supported).toBe(false);
-    expect(c.constructions.explained).toEqual([]);
-    expect(c.morphology.explained).toEqual([]);
+    expect(c).toMatchObject({ level: 'experimental', analyzer: 'adapter', analyzerId: PACKS[lang].analyzer.id });
+    expect(c.tokenization).toMatchObject({ quality: 'dependable', method: 'adapter' });
+    expect(c.lemma).toMatchObject({ supported: true, quality: 'seed-only' });
+    expect(c.morphology).toMatchObject({ supported: true, quality: 'limited', explained: ['Gender', 'Definite', 'Tense'] });
+    expect(c.morphology.observed).toEqual(expect.arrayContaining(['Gender', 'Definite', 'Number', 'Tense']));
+    expect(c.phrases).toMatchObject({ supported: true, quality: 'limited' });
+    expect(c.constructions).toEqual({ supported: true, explained: ['perfect-har', 'modal-bare-infinitive', 'particle-verb'] });
     expect(c.checker.offered).toBe(false);
-    expect(c.scriptHandling.items).toEqual([]);
-    expect(c.limitations).toEqual([]);
+    expect(c.limitations.join(' ')).toMatch(/seed-only/);
   });
 });
 
@@ -137,7 +137,10 @@ describe('the production checker is offered only where the pack declares it', ()
       expect(k, lang).toMatchObject({ offered: false, quality: 'none', adapterLevel: 'limited' });
       expect(k.note, lang).toMatch(/does not offer them: nothing is checked/);
     }
-    for (const lang of ['nb', 'nn']) expect(packCapabilities(lang)!.checker).toMatchObject({ offered: false, adapterLevel: 'none' });
+    // the Bokmål adapter has production rules (limited), the Nynorsk one checks nothing; neither pack offers them
+    expect(packCapabilities('nb')!.checker).toMatchObject({ offered: false, quality: 'none', adapterLevel: 'limited' });
+    expect(packCapabilities('nb')!.checker.note).toMatch(/does not offer them: nothing is checked/);
+    expect(packCapabilities('nn')!.checker).toMatchObject({ offered: false, quality: 'none', adapterLevel: 'none' });
   });
 
   it('the Albanian and Spanish checkers really fire on a planted error (the claim is true)', () => {
@@ -154,6 +157,8 @@ describe('script handling is verified live, every time the report is built', () 
     de: ['compounds', 'separable-verbs'],
     hi: ['grapheme-clusters', 'sentence-end-danda'],
     th: ['word-segmentation', 'tone-decoding'],
+    nb: ['ae-oe-aa-stay-whole', 'particle-verbs'],
+    nn: ['ae-oe-aa-stay-whole', 'particle-verbs'],
   };
   it.each(Object.keys(claims))('%s: each claim has a probe and the probe passes on the real analyser', (lang) => {
     const items = packCapabilities(lang)!.scriptHandling.items;

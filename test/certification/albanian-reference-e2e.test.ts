@@ -3,7 +3,7 @@
  * Prompt 6 §14 — the complete feedback loop for one Albanian learner, 43 steps, over the ACTUAL applications and the
  * ACTUAL Repository:
  *   - the Repository service (`handle`, SQLite in memory, real scrypt, real linguistics and projection engine);
- *   - GoLearn: the real setup application (account, team, pack install, the orientation), the real background worker
+ *   - GoLearn: the real setup application (account, language, pack install, the orientation), the real background worker
  *     with the real Albanian pack (dictionary shards read from public/dict/sq), the real content-script controller and
  *     card on a page;
  *   - GoPractice: the real shell (`createApp`) with GoReview's real builders, scheduler, intake, planner, runner and
@@ -245,7 +245,7 @@ beforeAll(() => {
 afterAll(async () => { controller?.dispose(); practice?.destroy(); restoreLayout(); await store.close(); });
 
 describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', () => {
-  it('1–4. the learner is created, chooses Team Albania, installs the Albanian pack and completes the orientation', async () => {
+  it('1–4. the learner is created, chooses Albanian, installs the Albanian pack and completes the orientation', async () => {
     document.body.innerHTML = '<div id="app"></div>';
     window.location.hash = '';
     const deps: SetupDeps = {
@@ -269,16 +269,15 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
     expect(JSON.stringify(await area.get(null))).not.toContain(PASSWORD);
     api = createRepositoryApi({ baseUrl: BASE, fetch: serviceFetch, token });
 
-    await store.putTeam({ teamId: 'albania', name: 'Albania', createdAt: nowIso() });              // 2. Team Albania
-    await store.putTeamMember('albania', learnerId, 'member', nowIso());
-    await open('team');
-    choose(q('#team'), 'albania');
-    expect(q<HTMLSelectElement>('#language').value).toBe('sq');
+    await open('language');                                                            // 2. choose Albanian: any learner may pick any language; no team is asked for
+    expect(document.getElementById('team')).toBeNull();
+    choose(q('#language'), 'sq');
     submit(q<HTMLFormElement>('#enrol-form'));
-    await until(() => /Enrolled:/.test(q('#enrol-form .status').textContent ?? ''), 8000);
+    await until(() => /Chosen:/.test(q('#enrol-form .status').textContent ?? ''), 8000);
     const enrolment = (await store.listEnrolments(learnerId))[0];
     enrolmentId = enrolment.enrolmentId;
-    expect(enrolment).toMatchObject({ teamId: 'albania', languageId: 'sq', packId: 'pack:sq' });
+    expect(enrolment).toMatchObject({ languageId: 'sq', packId: 'pack:sq' });
+    expect(enrolment.teamId).toBeUndefined();
     await flush(30);
 
     await open('pack');                                                                // 3. install the pack

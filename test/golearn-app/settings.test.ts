@@ -84,7 +84,7 @@ describe('Sync', () => {
     expect(facts).toContain('Last sync2026-10-08 09:30 UTC');
     expect(facts).toContain('Refused by the service1');
     expect(facts).toContain('timeout');
-    expect(facts).toContain('connected as ana@example.org');
+    expect(facts).toContain('synced to your account (ana@example.org)');
   });
 
   it('without a worker that answers, says the status is unavailable instead of inventing one, and Sync now reports it', async () => {
@@ -104,7 +104,7 @@ describe('Sync', () => {
     expect(bg.messages.map((m) => m.type)).toContain('golearn:sync-now');
     bg.syncReply = { ok: true, skipped: 'not-connected' };
     rig.q('#sync-now').click();
-    await until(() => /not signed in/.test(rig.q('.screen .body > .status').textContent ?? ''));
+    await until(() => /on this device only/.test(rig.q('.screen .body > .status').textContent ?? ''));
     bg.syncReply = { ok: false, skipped: 'needs-sign-in' };
     rig.q('#sync-now').click();
     await until(() => /no longer accepts your sign-in/.test(rig.q('.screen .body > .status').textContent ?? ''));
@@ -219,7 +219,7 @@ describe('Privacy', () => {
     const rig = await makeRig();
     await rig.go('home');
     const labels = [...rig.root.querySelectorAll('#status-list a')].map((a) => a.getAttribute('aria-label'));
-    expect(labels.length).toBe(5);
+    expect(labels.length).toBe(4);
     expect(new Set(labels).size).toBe(labels.length);
     for (const l of labels) expect(l).toMatch(/^Change: /);
   });

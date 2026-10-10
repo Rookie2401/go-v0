@@ -6,7 +6,7 @@
  *   vite build -c packages/golearn-extension/vite.config.ts --mode content      -> dist/content.js (+ manifest.json, action/popup.html)
  *   vite build -c packages/golearn-extension/vite.config.ts --mode background   -> dist/background.js
  *   vite build -c packages/golearn-extension/vite.config.ts --mode action       -> dist/action/popup.js
- *   vite build -c packages/golearn-extension/vite.config.ts --mode analysers    -> dist/analysers/{sq,es,de,hi,th}.js (+ shared chunks)
+ *   vite build -c packages/golearn-extension/vite.config.ts --mode analysers    -> dist/analysers/{sq,es,de,hi,th,nb,nn}.js (+ shared chunks)
  *   vite build -c packages/golearn-extension/vite.config.ts --mode content-harness -> dist/content.harness.js (NOT part of ext:build; run it after)
  *
  * `npm run ext:build` runs the four in order. `content-harness` is the same content script compiled with `__GOLEARN_HARNESS__` true, which
@@ -22,8 +22,10 @@
  * `app/vite.config.ts`, which writes to `dist/app/`. This config never builds it, and the first (content) build keeps
  * `dist/app/` in place when it clears `dist/`; run the app's build after `ext:build` for a loadable extension.
  *
- * The background worker must not carry the service's in-process request handler (the API client module imports it for
- * `createInProcessApi`, which the extension never uses): it is replaced by an empty stub at build time.
+ * The device-local Repository (packages/repository-local) runs the service's request handler IN the background worker
+ * (`createInProcessApi`), so the background build links the real handler. Every other script has no use for it (the API client
+ * module imports it only for `createInProcessApi`) and gets an empty stub at build time. The worker also swaps the Spanish
+ * adapter for `src/background/esStub.ts` (`leanSpanish`, below): it carries Albanian only.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -41,7 +43,7 @@ const ENTRIES = {
 } as const;
 
 /** The analysers: one entry per language (`src/analysers/<id>.ts` exports the adapter as `adapter`). */
-const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th'] as const;
+const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn'] as const;
 
 /** Copy the static files once, in the first (content) build. */
 function copyStatic(): Plugin {
@@ -67,7 +69,7 @@ function cleanDistKeepingApp(): Plugin {
     buildStart() {
       const dist = path.join(here, 'dist');
       if (!fs.existsSync(dist)) return;
-      for (const name of fs.readdirSync(dist)) if (name !== 'app') fs.rmSync(path.join(dist, name), { recursive: true, force: true });
+      for (const name of fs.readdirSync(dist)) if (name !== 'app' && name !== 'practice') fs.rmSync(path.join(dist, name), { recursive: true, force: true });
     },
   };
 }
@@ -82,11 +84,12 @@ function cleanAnalysers(): Plugin {
 }
 
 /** The API client module imports the service's request handler only for `createInProcessApi`; the extension talks over `fetch`. */
-function stubServiceHandler(): Plugin {
+function stubServiceHandler(mode: string): Plugin {
   return {
     name: 'golearn-stub-service-handler',
     enforce: 'pre',
     resolveId(source, importer) {
+      if (mode === 'background') return null; // the worker's device-local Repository needs the real handler
       if (importer && /repository-service[\\/]src[\\/]api\.ts$/.test(importer) && source === './handler') return '\0golearn-stub-handler';
       return null;
     },
@@ -109,6 +112,23 @@ export function leanBuiltins(): Plugin {
     enforce: 'pre',
     resolveId(source, importer) {
       if (importer && /language-packs[\\/]src[\\/]runtime\.ts$/.test(importer) && source === './builtins') return lean;
+      return null;
+    },
+  };
+}
+
+/**
+ * The linguistic service's resolver (reached by the worker through the device-local Repository) links the Spanish adapter statically.
+ * The worker carries Albanian only, so there `src/adapters/es` is swapped for `src/background/esStub.ts`, which reads the parser's
+ * analyser registry at call time.
+ */
+export function leanSpanish(): Plugin {
+  const stub = path.join(here, 'src/background/esStub.ts');
+  return {
+    name: 'golearn-lean-spanish',
+    enforce: 'pre',
+    resolveId(source, importer) {
+      if (importer && /repository-linguistics[\\/]src[\\/]resolver\.ts$/.test(importer) && /[\\/]src[\\/]adapters[\\/]es$/.test(source)) return stub;
       return null;
     },
   };
@@ -147,7 +167,7 @@ export default defineConfig(({ mode }) => {
     logLevel: 'warn',
     // only the harness build has the fixture hook (src/adapters/page.ts); everywhere else the flag is the literal false and the branch is removed
     define: { 'process.env.NODE_ENV': '"production"', __GOLEARN_HARNESS__: mode === 'content-harness' ? 'true' : 'false' },
-    plugins: [stubServiceHandler(), leanBuiltins(), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
+    plugins: [stubServiceHandler(mode), leanBuiltins(), ...(mode === 'background' ? [leanSpanish()] : []), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
     build: {
       outDir: path.join(here, 'dist'),
       emptyOutDir: false,

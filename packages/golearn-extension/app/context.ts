@@ -14,16 +14,21 @@
  *   golearn:status / golearn:sync-now / golearn:clear-local
  * A message nobody answers (an older worker, or no extension) falls back to the same effect on the shared storage; in
  * the hosted web app there is no worker and this page keeps its own session in its origin’s localStorage.
+ *
+ * An account is optional. The language the learner picks is kept on this device (`golearn:choice`) and as an enrolment in the
+ * on-device Repository (`Deps.openLocal`, the local-repository lane); signing in adds a copy on the account and uploads the local
+ * history once. Signing out returns to the device alone and removes nothing.
  */
 import { validateEvent, type Enrolment, type GoEvent } from '../../repository-contract/src';
-import type { RepositoryApi } from '../../repository-service/src/api';
+import type { EnrolInput, RepositoryApi } from '../../repository-service/src/api';
 import { MSG } from '../src/platform';
 import type { PageStatus } from '../src/protocol';
 import { LOCAL_IDENTITY, createStorageEncounterStore, getDeviceId } from '../src/store';
 import { resolveServiceUrl, validateServiceUrl } from './config';
 import { explainFailure } from './errors';
-import type { Deps } from './ports';
-import { createStateStore, type ExplanationDepth, type Session, type Settings, type StateStore } from './state';
+import { uploadedCount, type LocalRepo } from './localRepo';
+import type { Deps, PackView } from './ports';
+import { createStateStore, type ActiveChoice, type ExplanationDepth, type Session, type Settings, type StateStore } from './state';
 
 export type RecordResult = 'recorded' | 'duplicate' | 'failed';
 
@@ -31,7 +36,12 @@ export interface BackgroundReply<T = unknown> { answered: boolean; value?: T }
 
 export interface AppIdentity { learnerId: string; enrolmentId: string; deviceId: string; signedIn: boolean }
 
-export type SignInResult = { ok: true; email: string } | { ok: false; message: string };
+/** `uploaded`: how many events of this device’s history went to the account at sign-in (absent when nothing was uploaded or it could not be counted). */
+export type SignInResult = { ok: true; email: string; uploaded?: number } | { ok: false; message: string };
+
+export type ChooseResult =
+  | { ok: true; choice: ActiveChoice; /** where the choice now lives */ where: 'device' | 'account'; /** the account copy failed; the device copy stands */ accountProblem?: string }
+  | { ok: false; message: string };
 export type Saved = { ok: true } | { ok: false; message: string };
 
 export interface AppContext {
@@ -44,6 +54,20 @@ export interface AppContext {
   /** The service address and the dictionary address as stored (the latter may be unset). */
   saveService(baseUrl: string | undefined, assetBase?: string | null): Promise<Saved>;
   api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }>;
+  /** The on-device Repository, opened once on this page’s storage area; undefined where none is available. */
+  local(): Promise<LocalRepo | undefined>;
+  /** The language this device reads: the learner’s choice, or (signed in, nothing chosen here) the account’s active enrolment. */
+  activeLanguage(): Promise<ActiveChoice | undefined>;
+  /** The languages enrolled on this device (the local Repository’s open enrolments). */
+  localEnrolments(): Promise<Enrolment[]>;
+  /** Pick a language: an enrolment in the on-device Repository (no account needed) and, when signed in, one on the account too. */
+  chooseLanguage(input: { pack: PackView; varietyId?: string; standard?: 'nb' | 'nn' }): Promise<ChooseResult>;
+  /** Switch to another enrolment already held on this device. */
+  useEnrolment(e: Pick<Enrolment, 'enrolmentId' | 'languageId'> & Partial<Pick<Enrolment, 'varietyId' | 'packId'>>): Promise<void>;
+  /** The one-time upload of this device’s history to the account just signed into; undefined when there is no local Repository or it failed. */
+  uploadLocal(): Promise<number | undefined>;
+  /** Release what the context holds open (the on-device Repository). */
+  destroy(): void;
   deviceId(): Promise<string>;
   identity(): Promise<AppIdentity>;
   /** Sign in (or create the account and sign in). A different sign-in replaces the old session and clears the cached profile. */
@@ -110,8 +134,132 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     }
   }
 
+  // ── the on-device Repository (opened once; undefined where there is none)
+  let localOpen: Promise<LocalRepo | undefined> | undefined;
+  const openLocal = (): Promise<LocalRepo | undefined> => {
+    localOpen ??= (async () => {
+      if (!deps.openLocal) return undefined;
+      try { return await deps.openLocal({ area: deps.area, chrome: deps.chrome }); } catch { return undefined; }
+    })();
+    return localOpen;
+  };
+  async function localLearnerId(): Promise<string> {
+    const l = await openLocal();
+    if (l) { try { const i = await l.identity(); if (i?.learnerId) return i.learnerId; } catch { /* the default stands */ } }
+    return LOCAL_IDENTITY.learnerId;
+  }
+  const tell = <T>(v: Promise<T>): Promise<T | undefined> => v.catch(() => undefined);
+
+  /** Make sure the account holds an enrolment for the chosen language and make it the one the background records against. */
+  async function enrolOnAccount(input: EnrolInput): Promise<{ ok: true } | { ok: false; message: string }> {
+    const { api } = await ctx.api();
+    try {
+      const list = await api.listEnrolments();
+      let found = list.ok ? list.data.enrolments.find((e) => !e.endedAt && e.languageId === input.languageId && (e.varietyId ?? '') === (input.varietyId ?? '')) : undefined;
+      if (!found) {
+        const made = await api.enrol(input);
+        if (!made.ok) return { ok: false, message: made.status === 401 ? 'Your session is no longer valid. Sign in again.' : made.message || `The service answered ${made.status}.` };
+        found = made.data.enrolment;
+      }
+      await ctx.adoptEnrolment(found);
+      return { ok: true };
+    } catch {
+      return { ok: false, message: 'The service could not be reached.' };
+    }
+  }
+
+  const inputOf = (c: ActiveChoice, pack: PackView | undefined): EnrolInput | undefined => (pack
+    ? { languageId: pack.languageId, ...(c.varietyId ? { varietyId: c.varietyId } : {}), scriptId: pack.scriptId, packId: pack.packId, packVersion: pack.version, goals: [{ kind: 'reading' }] }
+    : undefined);
+
+  async function afterSignIn(known: number | undefined): Promise<number | undefined> {
+    let uploaded = known;
+    if (uploaded === undefined) {
+      const local = await openLocal();
+      if (local) {
+        try { const { api } = await ctx.api(); uploaded = uploadedCount(await local.uploadTo(api)); } catch { uploaded = undefined; }
+      }
+    }
+    // the language chosen on this device is also an enrolment on the account
+    const choice = await state.getChoice();
+    const input = choice ? inputOf(choice, deps.packs.packFor(choice.languageId)) : undefined;
+    if (input) await enrolOnAccount(input).catch(() => undefined);
+    return uploaded;
+  }
+
   const ctx: AppContext = {
     deps, state, inExtension, ask,
+    local: openLocal,
+    async activeLanguage() {
+      const c = await state.getChoice();
+      if (c) return c;
+      const s = await state.getSession();
+      return s?.languageId ? { enrolmentId: s.enrolmentId, languageId: s.languageId } : undefined;
+    },
+    async localEnrolments() {
+      const l = await openLocal();
+      if (!l) return [];
+      try {
+        const r = await l.api.listEnrolments();
+        return r.ok ? r.data.enrolments.filter((e) => !e.endedAt).sort((a, b) => a.startedAt.localeCompare(b.startedAt)) : [];
+      } catch { return []; }
+    },
+    async chooseLanguage({ pack, varietyId, standard }) {
+      if (pack.status !== 'installable') return { ok: false, message: `${pack.name} is planned, not installable yet, so it cannot be chosen.` };
+      const analysed = pack.varieties.filter((v) => v.analysed);
+      const variety = varietyId && analysed.some((v) => v.varietyId === varietyId) ? varietyId : pack.defaultVarietyId;
+      const input: EnrolInput = { languageId: pack.languageId, varietyId: variety, scriptId: pack.scriptId, packId: pack.packId, packVersion: pack.version, goals: [{ kind: 'reading' }] };
+      let enrolmentId = `local-enrolment:${pack.languageId}:${variety}`;
+      const local = await openLocal();
+      if (local) {
+        try {
+          const have = await local.api.listEnrolments();
+          const open = have.ok ? have.data.enrolments.filter((e) => !e.endedAt && e.languageId === pack.languageId) : [];
+          const same = open.find((e) => (e.varietyId ?? '') === variety);
+          if (same) { enrolmentId = same.enrolmentId; await local.select?.(same.enrolmentId); }
+          else {
+            // a different preference for the same language replaces the earlier one (its events stay under it)
+            for (const other of open) await local.api.endEnrolment(other.enrolmentId);
+            if (local.enrol) enrolmentId = (await local.enrol(input)).enrolmentId; // the worker makes it the active one
+            else {
+              const made = await local.api.enrol(input);
+              if (!made.ok) return { ok: false, message: made.message || `The on-device record refused the enrolment (${made.status}).` };
+              enrolmentId = made.data.enrolment.enrolmentId;
+            }
+          }
+        } catch (e) { return { ok: false, message: `The enrolment could not be saved on this device: ${e instanceof Error ? e.message : String(e)}` }; }
+      }
+      const choice: ActiveChoice = { enrolmentId, languageId: pack.languageId, varietyId: variety, packId: pack.packId, ...(standard ? { standard } : {}) };
+      await state.setChoice(choice);
+      const session = await state.getSession();
+      if (!session) {
+        hooks.changed();
+        return { ok: true, choice, where: 'device' };
+      }
+      const account = await enrolOnAccount(input);
+      hooks.changed();
+      return account.ok ? { ok: true, choice, where: 'account' } : { ok: true, choice, where: 'device', accountProblem: account.message };
+    },
+    async useEnrolment(e) {
+      const pack = deps.packs.packFor(e.languageId);
+      const standard = pack?.varieties.find((v) => v.varietyId === e.varietyId)?.writtenStandard ?? (e.languageId === 'nb' || e.languageId === 'nn' ? e.languageId : undefined);
+      const choice: ActiveChoice = { enrolmentId: e.enrolmentId, languageId: e.languageId, ...(e.varietyId ? { varietyId: e.varietyId } : {}), ...(e.packId ? { packId: e.packId } : pack ? { packId: pack.packId } : {}), ...(standard ? { standard } : {}) };
+      await state.setChoice(choice);
+      if (await state.getSession()) {
+        const input = inputOf(choice, pack);
+        if (input) await enrolOnAccount(input);
+      }
+      // the worker records against the active enrolment of the on-device Repository
+      const local = await openLocal();
+      if (local?.select) await tell(Promise.resolve(local.select(e.enrolmentId)));
+      hooks.changed();
+    },
+    async uploadLocal() {
+      const local = await openLocal();
+      if (!local) return undefined;
+      try { const { api } = await ctx.api(); return uploadedCount(await local.uploadTo(api)); } catch { return undefined; }
+    },
+    destroy() { const o = localOpen; localOpen = undefined; if (o) void o.then((l) => { try { return l?.close(); } catch { return undefined; } }, () => undefined); },
     async serviceUrl() {
       const stored = await state.getService();
       return resolveServiceUrl(stored?.baseUrl, deps.config);
@@ -143,7 +291,8 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     async identity() {
       const [session, deviceId] = await Promise.all([state.getSession(), ctx.deviceId()]);
       if (session && session.enrolmentId) return { learnerId: session.learnerId, enrolmentId: session.enrolmentId, deviceId, signedIn: true };
-      return { learnerId: LOCAL_IDENTITY.learnerId, enrolmentId: LOCAL_IDENTITY.enrolmentId, deviceId, signedIn: false };
+      const choice = await state.getChoice();
+      return { learnerId: await localLearnerId(), enrolmentId: choice?.enrolmentId ?? LOCAL_IDENTITY.enrolmentId, deviceId, signedIn: false };
     },
     async signIn(input) {
       const baseUrl = await ctx.serviceUrl();
@@ -154,14 +303,23 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         const r = await ask<{ ok?: boolean; message?: string }>(
           { type: input.create ? MSG.createAccount : MSG.connect, baseUrl: check.url, email, password: input.password }, SIGN_IN_TIMEOUT_MS);
         if (r.answered && r.value && typeof (r.value as { ok?: unknown }).ok === 'boolean') {
-          if (okOf(r)) { await state.clearProfile(); hooks.changed(); return { ok: true, email }; }
+          if (okOf(r)) {
+            await state.clearProfile();
+            // the worker uploads the device’s history itself and may say how many; otherwise this page does
+            const said = (r.value as { uploaded?: unknown }).uploaded;
+            const uploaded = await afterSignIn(typeof said === 'number' ? said : undefined);
+            hooks.changed();
+            return { ok: true, email, ...(uploaded !== undefined ? { uploaded } : {}) };
+          }
           return { ok: false, message: messageOf(r, 'The extension could not sign you in.') };
         }
         // the worker did not answer: sign in from this page and write the session the worker reads
       }
       const out = await directSignIn({ ...input, email }, check.url);
-      if (out.ok) hooks.changed();
-      return out;
+      if (!out.ok) return out;
+      const uploaded = await afterSignIn(undefined);
+      hooks.changed();
+      return { ...out, ...(uploaded !== undefined ? { uploaded } : {}) };
     },
     async signOut() {
       await state.clearProfile();
@@ -193,6 +351,9 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       return state.patchSettings(patch);
     },
     async clearLocal() {
+      // explicit, never a side effect of signing out: the encounter rows, the queue and the on-device Repository
+      const local = await openLocal();
+      if (local) { try { await local.clear(); } catch { /* the rows below are still removed */ } }
       if (inExtension) {
         const r = await ask<{ ok?: boolean; events?: number; metrics?: number; queued?: number }>({ type: MSG.clearLocal });
         if (okOf(r)) { const v = r.value!; return (v.events ?? 0) + (v.metrics ?? 0) + (v.queued ?? 0); }

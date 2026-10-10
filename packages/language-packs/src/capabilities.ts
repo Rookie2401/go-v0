@@ -176,6 +176,34 @@ const PROBES: Readonly<Record<string, Probe[]>> = {
       run: (a) => a.segmentSentences('मैं घर में हूँ। वह स्कूल जाता है।').length === 2,
     },
   ],
+  nb: [
+    {
+      id: 'ae-oe-aa-stay-whole',
+      claim: 'æ, ø and å are letters of their own: they stay inside their words, and stand alone as words, in the tokens.',
+      evidence: 'Bøkene ligger på bordet, og æ ø å. is tokenised into eight words, with Bøkene, på and the three letters whole',
+      run: (a) => { const w = words(a, 'Bøkene ligg på bordet, og æ ø å.'); return w.length === 8 && w[0] === 'Bøkene' && w[2] === 'på' && w.slice(5).join('') === 'æøå'; },
+    },
+    {
+      id: 'particle-verbs',
+      claim: 'A particle verb split by other words (står … opp) is put together as one unit.',
+      evidence: 'the construction particle-verb covers står and opp in "Hun står opp klokka sju."',
+      run: (a) => { const t = a.tokenize('Hun står opp klokka sju.'); return a.detectPatterns(t, a.analyze(t)).some((p) => p.key === 'particle-verb'); },
+    },
+  ],
+  nn: [
+    {
+      id: 'ae-oe-aa-stay-whole',
+      claim: 'æ, ø and å are letters of their own: they stay inside their words, and stand alone as words, in the tokens.',
+      evidence: 'Bøkene ligger på bordet, og æ ø å. is tokenised into eight words, with Bøkene, på and the three letters whole',
+      run: (a) => { const w = words(a, 'Bøkene ligg på bordet, og æ ø å.'); return w.length === 8 && w[0] === 'Bøkene' && w[2] === 'på' && w.slice(5).join('') === 'æøå'; },
+    },
+    {
+      id: 'particle-verbs',
+      claim: 'A particle verb split by other words (står … opp) is put together as one unit.',
+      evidence: 'the construction particle-verb covers står and opp in "Ho står opp klokka sju."',
+      run: (a) => { const t = a.tokenize('Ho står opp klokka sju.'); return a.detectPatterns(t, a.analyze(t)).some((p) => p.key === 'particle-verb'); },
+    },
+  ],
   th: [
     {
       id: 'word-segmentation',

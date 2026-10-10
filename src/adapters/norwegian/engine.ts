@@ -96,11 +96,13 @@ export function describeNorwegianMorph(morph: Record<string, string>, pos?: Part
   const gender: Record<string, string> = { Masc: 'masculine', Fem: 'feminine', Neut: 'neuter' };
   const parts: string[] = [];
   if (pos === 'VERB' || pos === 'AUX') {
-    if (w('Mood').includes('Imp')) parts.push('imperative');
-    else if (w('VerbForm').includes('Inf') && !w('VerbForm').includes('Fin')) parts.push('infinitive');
+    // Mood "Imp,Ind" is a form that is BOTH (gjør, les, kom): it is described by its tense and the imperative is named as the other reading, never as the only one
+    const orImp = w('Mood').includes('Imp') && w('Mood').includes('Ind') ? ' or imperative' : '';
+    if (w('Mood').includes('Imp') && !orImp) parts.push(w('VerbForm').includes('Inf') ? 'imperative or infinitive' : 'imperative');
+    else if (w('VerbForm').includes('Inf') && !w('VerbForm').includes('Fin')) parts.push(w('VerbForm').includes('Part') ? 'infinitive or perfect participle' : 'infinitive');
     else if (w('VerbForm').includes('Part') && !w('VerbForm').includes('Fin')) parts.push('perfect participle');
-    else if (w('Tense').includes('Pres')) parts.push('present tense');
-    else if (w('Tense').includes('Past')) parts.push(w('VerbForm').includes('Part') ? 'past tense or perfect participle' : 'past tense');
+    else if (w('Tense').includes('Pres')) parts.push(`present tense${orImp}`);
+    else if (w('Tense').includes('Past')) parts.push(w('VerbForm').includes('Part') ? 'past tense or perfect participle' : `past tense${orImp}`);
     if (w('Voice').includes('Pass')) parts.push('passive (-s)');
     return parts.join(', ');
   }

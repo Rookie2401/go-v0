@@ -1,7 +1,10 @@
 /**
- * Content script. Injected by the background worker only after a user gesture (action popup, context menu, keyboard
- * command), so `activeTab` is what grants access; it holds no host permission. It reads nothing until the learner makes
- * a lookup happen. Everything the page can see of it is one fixed-position shadow-DOM host while a card is open.
+ * Content script. Injected by the background worker after a user gesture (action popup, context menu, keyboard
+ * command), so `activeTab` is what grants access; or, with GoLearn Active switched on (and the optional host permission
+ * granted by the learner), registered to run when a page loads. Without Active it reads nothing until the learner makes
+ * a lookup happen; with Active it reads the visible text of the page to underline the words the learner has met
+ * (content/active.ts). Everything the page can see of it is one fixed-position shadow-DOM host while a card is open;
+ * underlines are CSS custom highlights, never elements.
  *
  * It is the UNPRIVILEGED side: no token, no learner id, no storage, no network call. Everything that needs the
  * Repository, the dictionary or a stored setting is a message to the background worker (services.ts).
@@ -15,7 +18,9 @@ import { PARSER_LANGUAGES, getAnalyser, hasAnalyser, parseSelection } from '../p
 import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from '../platform';
 import { createCardUI } from '../popup/card';
 import type { Pronouncer } from '../popup/view';
+import type { ActivateMessage } from '../protocol';
 import { PENDING_IDENTITY, createMemoryEncounterStore, type Identity } from '../store';
+import { ActiveMode } from './active';
 import { LookupController } from './controller';
 import { createBridge } from './services';
 import { createDevicePronouncer } from './voice';
@@ -28,11 +33,11 @@ const segmenterOf = (languageId: string): ((t: string) => Array<{ start: number;
   return a ? (t) => a.segmentSentences(t) : undefined;
 };
 
-interface InstalledMarker { controller: LookupController }
+interface InstalledMarker { controller: LookupController; active: ActiveMode }
 
 export async function install(chromeApi: ContentChromeApi | undefined = getContentChrome(), doc: Document = document): Promise<LookupController | undefined> {
   const w = globalThis as unknown as Record<string, InstalledMarker | undefined>;
-  if (w[GLOBAL_KEY]) return w[GLOBAL_KEY]!.controller; // injected twice (a second gesture): reuse, do not stack listeners
+  if (w[GLOBAL_KEY]) return w[GLOBAL_KEY]!.controller; // injected twice (a second gesture, or a gesture on a page Active already runs on): reuse, do not stack listeners
   const bridge = chromeApi ? createBridge(chromeApi) : undefined;
   // events carry a placeholder identity; the background replaces it with the session's (or a local pseudonym)
   const identity: Identity = { ...PENDING_IDENTITY };
@@ -52,9 +57,11 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   const holder: { controller?: LookupController } = {};
   const ui = createCardUI({ doc, pronouncer, onDismiss: () => holder.controller?.onCardDismissed() });
   const fallbackEvents = bridge ? undefined : createMemoryEncounterStore();
+  const adapters = createAdapters(doc);
+  const loadAnalyser = createAnalyserLoader(chromeApi);
   const controller = new LookupController({
     doc,
-    adapters: createAdapters(doc),
+    adapters,
     // each language's own sentence cutter; a language without one (yet) is cut by the adapter's Intl.Segmenter default
     segmenterFor: segmenterOf,
     resolveLanguage,
@@ -63,7 +70,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
       if (!a || languageId === 'sq') return []; // the worker carries Albanian
       return [...new Set([a.normalize(lemma), ...(a.lemmaVariants?.(lemma, pos as Parameters<NonNullable<typeof a.lemmaVariants>>[1]) ?? []).map((v) => a.normalize(v))])].slice(0, 8);
     },
-    loadAnalyser: createAnalyserLoader(chromeApi),
+    loadAnalyser,
     hasAnalyser,
     parse: parseSelection,
     ui,
@@ -77,7 +84,12 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     moduleLoadMs: performance.now() - bootStart,
   });
   holder.controller = controller;
-  w[GLOBAL_KEY] = { controller };
+  // GoLearn Active: reads the page only when the background says the switch is on (below, or on `activate`)
+  const active = new ActiveMode({
+    doc, controller, adapters, ui, adapterOf: getAnalyser, loadAnalyser,
+    profile: bridge ? (unitIds, languageId) => bridge.profile({ unitIds, languageId }) : undefined,
+  });
+  w[GLOBAL_KEY] = { controller, active };
 
   chromeApi?.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // only this extension's own background may drive the content script
@@ -86,7 +98,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     switch (m?.type) {
       case MSG.enable: controller.enable(); sendResponse({ ok: true, enabled: true }); return;
       case MSG.disable: controller.disable(); sendResponse({ ok: true, enabled: false }); return;
-      case MSG.ping: sendResponse({ ok: true, enabled: controller.isEnabled }); return;
+      case MSG.ping: sendResponse({ ok: true, enabled: controller.isEnabled, active: active.state.on }); return;
       case MSG.lookup: {
         const req = m as LookupMessage;
         void controller.lookup({ trigger: req.trigger, selectionText: req.selectionText, focus: req.focus }).then(
@@ -95,9 +107,21 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
         );
         return true; // async response
       }
+      case MSG.activate: {
+        const speak = (m as ActivateMessage).speak !== false;
+        active.setSpeak(speak);
+        void active.start({ speak }).then((s) => sendResponse({ ok: true, ...s }), () => sendResponse({ ok: false }));
+        return true;
+      }
+      case MSG.deactivate: active.stop(); sendResponse({ ok: true }); return;
       default: return;
     }
   });
+
+  // registered to run on page load (Active on): ask whether to start; injected on a gesture with Active off: the answer is no
+  if (bridge?.active) {
+    void bridge.active().then((r) => { if (r?.ok && r.settings.active) return active.start({ speak: r.settings.speakOnClick }); return undefined; }).catch(() => undefined);
+  }
   return controller;
 }
 

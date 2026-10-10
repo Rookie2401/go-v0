@@ -2,9 +2,10 @@
   "manifest_version": 3,
   "name": "GoLearn reader",
   "version": "0.1.0",
-  "description": "Look up a selected word on an ordinary web page: meaning, form, grammar, pronunciation. Your history stays with your GoLearn account; web pages never see it.",
+  "description": "Look up a selected word on an ordinary web page: meaning, form, grammar, pronunciation. Your history stays on this device unless you choose to sign in; web pages never see it.",
   "minimum_chrome_version": "110",
   "permissions": ["activeTab", "scripting", "storage", "contextMenus", "alarms"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
   "background": { "service_worker": "background.js" },
   "options_page": "app/index.html",
   "action": {

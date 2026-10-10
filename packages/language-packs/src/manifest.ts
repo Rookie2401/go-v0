@@ -15,9 +15,9 @@ export type ReviewStatus = 'machine-drafted' | 'partly-reviewed' | 'reviewed';
  * How far a pack is built, in the words the setup page shows.
  *   installable   an analyser, a dictionary, validation cases and an orientation exist (Albanian; Spanish at a minimal level)
  *   experimental  wired and installable, but only at a deliberately minimal level: seed-only lemmatisation, an unreviewed
- *                 word list, validation cases and no orientation tutorial; shown as "experimental, seed-only
- *                 lemmatisation, unreviewed" (German, Hindi, Thai)
- *   planned       described honestly and never installable (Norwegian)
+ *                 word list, validation cases and a minimal orientation; shown as "experimental, seed-only
+ *                 lemmatisation, unreviewed" (German, Hindi, Thai, Norwegian Bokmål and Nynorsk)
+ *   planned       described honestly and never installable (no pack is planned only any more; the level stays for a language added later)
  * `status` keeps its two values ('installable' | 'planned'): an experimental pack has status 'installable' (the installer
  * and the parser accept it) and `level: 'experimental'`. A manifest without `level` has the level its status implies.
  */
@@ -265,7 +265,8 @@ export function validateManifest(m: unknown): ValidationIssue[] {
   if (x.status === 'installable') {
     if (Array.isArray(x.validation) && x.validation.length < MIN_VALIDATION_CASES) bad('validation', `an installable pack needs at least ${MIN_VALIDATION_CASES} validation cases`);
     if (isObj(an) && Array.isArray(an.capabilities) && an.capabilities.length === 0) bad('analyzer.capabilities', 'an installable pack states what its analyser can do');
-    if (isObj(lex) && lex.dictionary === undefined) bad('lexical.dictionary', 'an installable pack declares its dictionary (planned packs may not)');
+    // An experimental pack may have no dictionary (Norwegian: none is built in the repository); its provenance then says so and the installer skips the dictionary checks. Any other installable pack declares one.
+    if (isObj(lex) && lex.dictionary === undefined && x.level !== 'experimental') bad('lexical.dictionary', 'an installable pack declares its dictionary (an experimental or planned pack may not)');
   }
   return out;
 }

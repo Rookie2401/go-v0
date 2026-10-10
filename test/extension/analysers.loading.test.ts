@@ -11,6 +11,9 @@
  */
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
+import { nbAdapter } from '../../src/adapters/nb';
+import { nnAdapter } from '../../src/adapters/nn';
+import { loadAnalyser } from '../../packages/golearn-extension/src/analysers/loaders';
 import { analyserUrl, createAnalyserLoader } from '../../packages/golearn-extension/src/analysers/urlLoader';
 import { createAdapters } from '../../packages/golearn-extension/src/adapters';
 import {
@@ -30,9 +33,9 @@ afterAll(() => { registerAllAnalysers(); }); // leave the registry as the other 
 
 describe('the analyser registry', () => {
   it('lists the languages that CAN be loaded, and only Albanian is loaded at import', () => {
-    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th']);
+    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']);
     expect(hasAnalyser('sq')).toBe(true);
-    for (const l of ['es', 'de', 'hi', 'th']) expect(hasAnalyser(l), l).toBe(false);
+    for (const l of ['es', 'de', 'hi', 'th', 'nb', 'nn']) expect(hasAnalyser(l), l).toBe(false);
     expect(parserAdapter('de')).toBeUndefined();
   });
 
@@ -40,9 +43,27 @@ describe('the analyser registry', () => {
     registerAnalyser('de', deAdapter);
     expect(hasAnalyser('de')).toBe(true);
     expect(getAnalyser('de')).toBe(deAdapter);
-    expect(() => registerAnalyser('nb', deAdapter)).toThrow(RangeError);
-    expect(hasAnalyser('nb')).toBe(false);
+    expect(() => registerAnalyser('sv', deAdapter)).toThrow(RangeError);
+    expect(hasAnalyser('sv')).toBe(false);
     expect(hasAnalyser('constructor')).toBe(false);
+  });
+
+  it('Norwegian Bokmål and Nynorsk are loadable analysers of their own: registering one never makes the other available', () => {
+    registerAnalyser('nb', nbAdapter);
+    expect(hasAnalyser('nb')).toBe(true);
+    expect(hasAnalyser('nn')).toBe(false);
+    expect(parserAdapter('nb')).toBe(nbAdapter);
+    expect(parserAdapter('nn')).toBeUndefined();
+    registerAnalyser('nn', nnAdapter);
+    expect(getAnalyser('nn')).toBe(nnAdapter);
+  });
+
+  it('the on-demand loader (setup app, tests) has an entry for each of the seven and registers the adapter it imports', async () => {
+    for (const [id, adapter] of [['nb', nbAdapter], ['nn', nnAdapter], ['de', deAdapter]] as const) {
+      expect(await loadAnalyser(id), id).toBe(adapter);
+      expect(getAnalyser(id), id).toBe(adapter);
+    }
+    expect(await loadAnalyser('sv')).toBeUndefined();
   });
 });
 
@@ -53,7 +74,11 @@ describe('parseSelection and a language that is not loaded', () => {
     expect(err).toBeInstanceOf(AnalyserNotLoaded);
     expect(err).toMatchObject({ languageId: 'de', name: 'AnalyserNotLoaded' });
     expect((err as Error).message).toMatch(/German analyser is not loaded/);
-    expect(() => parseSelection({ surface: 'bok', context: { kind: 'none', confidence: 0 }, languageId: 'nb' })).toThrow(RangeError);
+    expect(() => parseSelection({ surface: 'bok', context: { kind: 'none', confidence: 0 }, languageId: 'sv' })).toThrow(RangeError);
+    for (const [id, name] of [['nb', 'Norwegian (Bokmål)'], ['nn', 'Norwegian (Nynorsk)']] as const) {
+      expect(() => parseSelection({ surface: 'bok', context: { kind: 'none', confidence: 0 }, languageId: id }), id).toThrow(AnalyserNotLoaded);
+      expect(() => parseSelection({ surface: 'bok', context: { kind: 'none', confidence: 0 }, languageId: id }), id).toThrow(new RegExp(`${name.replace(/[()]/g, '\\$&')} analyser is not loaded`));
+    }
   });
 
   it('reads the language once it is registered, and Albanian without any load', () => {

@@ -416,7 +416,7 @@ describe('Go deeper', () => {
     const out = await r.controller.lookup({ trigger: 'command' });
     if (out.status !== 'shown') throw new Error('card');
     click(r, 'button.deeperBtn');
-    expect(root(r).querySelector('.layer.l3')!.textContent).toMatch(/Phrases|Syntax|role: not available/);
+    expect(root(r).querySelector('.layer.l3')!.textContent).toMatch(/Phrases|Relation|role: not available/);
   });
 
   it('GRAMMAR (in the ANALYSIS dropdown) follows the explanation depth: label, brief, explanatory', async () => {
@@ -452,7 +452,7 @@ describe('Go deeper', () => {
     expect(root(r2).querySelector('.layer.l4')!.textContent).toMatch(/construction|No grammar note|Definite|Present/);
   });
 
-  it('Sentence is a word-by-word list behind "Go deeper", says there is no machine translation, and marks the selected word', async () => {
+  it('Sentence keeps its word-by-word list behind "Go deeper", makes translation on demand, and marks the selected word', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
     const panel = root(r).querySelector('.layer.l5') as HTMLElement;
@@ -461,7 +461,8 @@ describe('Go deeper', () => {
     click(r, 'button.deeperBtn');
     expect(deeper.hasAttribute('hidden')).toBe(false);
     expect(deeper.contains(panel)).toBe(true);
-    expect(panel.textContent).toContain('There is no machine translation in GoLearn');
+    expect(panel.textContent).toContain('The list below is word by word.');
+    expect(panel.textContent).toContain('only when you ask');
     const items = [...panel.querySelectorAll('li')].map((li) => li.textContent);
     expect(items.length).toBe(10); // Unë po lexoj një libër të bukur në shtëpinë time
     expect(items.find((t) => t!.startsWith('lexoj') || t!.startsWith('lexoj:'))).toBeTruthy();

@@ -92,7 +92,7 @@ async function probe(lang: string): Promise<Tally> {
     if (card.syntaxNotes.length) t.syntaxNotes++;
     if (card.pronunciation.length) t.pronunciationNotes++;
     if (card.alternatives.length) t.alternatives++;
-    let dict = false;
+    let dict = false; let lastRecordHadForms = false; let lastRecordHadEty = false; let lastRecordHadIpa = false;
     let record: LexicalRecord | undefined;
     if (runtime && card.lemma && adapter) {
       const forms = [...new Set([adapter.normalize(card.lemma), ...(adapter.lemmaVariants?.(card.lemma, card.pos as never) ?? []).map((v) => adapter.normalize(v))])].slice(0, 8);
@@ -109,9 +109,9 @@ async function probe(lang: string): Promise<Tally> {
         if (e.via) t.fullViaFormOf++;
         const rs = e.records;
         record = pickRecord(rs as unknown as LexicalRecord[], card.pos);
-        if (rs.some((r) => (r.f?.length ?? 0) >= 2)) t.fullForms++;
-        if (rs.some((r) => r.ety)) t.fullEtymology++;
-        if (rs.some((r) => r.ipa?.length)) t.fullIpa++;
+        if (rs.some((r) => (r.f?.length ?? 0) >= 2)) { t.fullForms++; lastRecordHadForms = true; }
+        if (rs.some((r) => r.ety)) { t.fullEtymology++; lastRecordHadEty = true; }
+        if (rs.some((r) => r.ipa?.length)) { t.fullIpa++; lastRecordHadIpa = true; }
         if (rs.some((r) => r.audio?.length)) t.fullAudio++;
         if (rs.some((r) => r.rel?.d?.length || r.rel?.r?.length)) t.fullRelated++;
       }
@@ -123,8 +123,10 @@ async function probe(lang: string): Promise<Tally> {
     }
     if (record && etymologyOf(record).cognates.length) t.cognates++;
     if (dict || card.gloss) t.anyDefinition++;
-    // the three fields no part of the stack produces today (so the baseline says 0, not "unknown"):
-    // a paradigm for the lemma, a sourced etymology, an IPA pronunciation
+    // the three Level 2 fields the card shows since Stage 2–3 (baseline 0 %): a paradigm (the adapter generates one, or the record has a table), a sourced etymology, an IPA
+    if ((adapter?.paradigm && card.lemma && card.pos && (() => { try { const g = adapter.paradigm!(card.lemma!, card.pos as never); return !!g && (g.kind === 'none' || g.cells.length > 0); } catch { return false; } })()) || lastRecordHadForms) t.paradigm++;
+    if (lastRecordHadEty) t.etymology++;
+    if (lastRecordHadIpa) t.ipa++;
   }
   return t;
 }
@@ -152,7 +154,7 @@ async function main(): Promise<void> {
     ['syntax notes', (t) => pct(t.syntaxNotes, t.n)],
     ['alternative readings kept', (t) => pct(t.alternatives, t.n)],
     ['pronunciation note (adapter)', (t) => pct(t.pronunciationNotes, t.n)],
-    ['full paradigm available', (t) => pct(t.paradigm, t.n)],
+    ['full paradigm available (generated or dictionary table)', (t) => pct(t.paradigm, t.n)],
     ['sourced etymology', (t) => pct(t.etymology, t.n)],
     ['IPA pronunciation', (t) => pct(t.ipa, t.n)],
     ['parse ms / selection', (t) => (t.n ? (t.msParse / t.n).toFixed(2) : '-')],

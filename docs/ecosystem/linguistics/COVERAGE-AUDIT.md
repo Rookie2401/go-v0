@@ -127,3 +127,11 @@ response, time to full analysis.
 | 6 | card sections (Grammar, Forms, Syntax, Meaning, Word structure, Etymology, Pronunciation) with field states | Forms / Meanings / Origin / Sound / Syntax done; Word structure in progress |
 | 7 | Repository field-level validation; GoReview eligibility | planned |
 | 8 | gold sets, unseen evaluation, end-to-end certification | planned |
+
+
+## 8. After (2026-10-10, same probe, same corpus, 200 selections per language)
+
+The before-and-after table with every row is in V2-REPORT-2026-10-10.md; the raw numbers are in after-2026-10-10.json.
+Headline: syntactic role 19.5/0/8/0/35 % → 100/98.5/99.5/100/94 %; paradigm 0 % → 96/79/88.5/83.5/95 %; sourced etymology
+0 % → 92/97/91.5/98.5/93.5 %; IPA 0 % → 80.5/99.5/96.5/97/95 %; dictionary senses 89.5/97.5/88.5/92.5/95 → 94.5/99.5/98/99/95 %
+(sq / es / de / hi / th). Availability, not correctness: correctness is in GOLD-REPORT-2026-10-10.md (AI-judged gold).

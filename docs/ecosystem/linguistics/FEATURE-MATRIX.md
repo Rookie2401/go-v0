@@ -42,11 +42,17 @@ unreviewed by a native speaker.
 
 | | sq | es | de | hi | th | nb / nn |
 |---|---|---|---|---|---|---|
-| rules (`adapter.syntax`) | see SYNTAX-sq.md | see SYNTAX-es.md | see SYNTAX-de.md | see SYNTAX-hi.md | see SYNTAX-th.md | see SYNTAX-nb-nn.md |
+| rules (`adapter.syntax`) | clauses, copula, agreement subjects, clitic doubling (expl), linking articles, prepositions, markers (SYNTAX-sq.md) | see SYNTAX-es.md (lane in progress at the time of writing) | V2/verb-final clauses, syncretism alternatives, two-way prepositions, separable bracket, modal xcomp (SYNTAX-de.md) | verb groups → root + aux, ergative agreement, postposition case, genitive agreement, कि/अगर/जो clauses, quotes (SYNTAX-hi.md) | SVO, serial verbs, aspect/modal aux, classifiers, ว่า/ที่ clauses, final particles (SYNTAX-th.md) | V2 and inversion, pronoun case, double definiteness, aux chains, som/at clauses (SYNTAX-nb-nn.md) |
 | role given before Stage 4 | 19.5 % | 0 % | 8 % | 0 % | 35 % | — |
+| relation given after Stage 4 (probe, 200 selections) | 100 % | 98.5 % | 99.5 % | 100 % | 94 % | nb 100 % / nn 97 % attached (corpus) |
+| relations with alternatives kept | 14.2 % | — | 8.1 % | 6.2 % | 16.6 % | 3 % |
+| gold dev UAS / LAS (rules tuned on it) | 100 / 99.7 | — | 99.8 / 99.8 | 98.9 / 98.4 | 89.3 / 88.3 | 99.7 / 99.7 ; 96.4 / 96.4 |
+| blind first-run UAS / LAS (held-out, before fixes) | — | — | 89.3 / 87.4 (held-out), 96.1 / 94.3 (unseen) | 94.1 / 92.0 (fresh) | 75.2 / 72.1 | 96.2 / 93.8 ; 91.2 / 89.5 |
+| independent treebank | UD STAF+TSA on disk: UAS 52.8 / LAS 43.8 (18 % of words unknown to the adapter) | none on disk | none on disk | none on disk | none on disk | none on disk |
+| ms per sentence (syntax only) | 0.04 | — | 0.09 | 0.08 | 0.01 | 0.1 |
 
-(The per-language rows are filled from the lanes' SYNTAX docs; a missing doc means the language has no rules yet and the
-card shows "role: not available from this analyser".)
+Every gold label is AI-judged and unreviewed; the dev scores are regression numbers, not accuracy estimates; the blind first-run
+numbers are the honest estimates for text like the course corpus; only Albanian has an independent treebank score.
 
 ## Origin, structure, sound (Stages 5–6)
 

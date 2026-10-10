@@ -94,7 +94,7 @@ function articleFits(c: C, form: string, adjacent: boolean): { fits: boolean; un
  * is the definite nominative singular). Returns the noun's token and, when it is known, its reading; undefined when
  * no noun stands there.
  */
-export function headOf(cx: Ctx, a: number, form: string): { idx: number; reading?: C } | undefined {
+export function headOf(cx: Ctx, a: number, form: string): { idx: number; reading?: C; compatible: boolean } | undefined {
   let j = a - 1;
   let skipped = false;
   while (wordAt(cx, j) !== undefined) {
@@ -107,15 +107,15 @@ export function headOf(cx: Ctx, a: number, form: string): { idx: number; reading
   const fit = nouns.map((c) => ({ c, ...articleFits(c, form, !skipped) }));
   const ok = fit.filter((f) => f.fits);
   const lone = nouns.length === 1 ? nouns[0] : undefined;
-  if (ok.length !== 1) return { idx: j, reading: lone };
+  if (ok.length !== 1) return { idx: j, reading: lone, compatible: ok.length > 0 };
   const only = ok[0];
-  if (only.unknown) return { idx: j, reading: lone };
+  if (only.unknown) return { idx: j, reading: lone, compatible: true };
   const done = pick(cx, j, {
     pred: (c) => c === only.c,
     why: `the linking article "${form}" after it: only this reading agrees with it`,
     allow: Object.fromEntries(Object.entries(only.left).map(([k, v]) => [k, [...v]])),
   });
-  return { idx: j, reading: done ? cx.cur[j][0] : only.c };
+  return { idx: j, reading: done ? cx.cur[j][0] : only.c, compatible: true };
 }
 
 /** The unions of a linking article (gender, number, case) cut down to what its noun's reading says. */

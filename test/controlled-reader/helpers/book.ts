@@ -37,6 +37,23 @@ function patchSelectionTimer(): void {
   if (patched) return;
   patched = true;
   const proto = (Contents as unknown as { prototype: Record<string, unknown> }).prototype;
+  const destroy = proto.destroy as (this: AnyBook) => void;
+  proto.resizeListeners = function (this: AnyBook): void {
+    clearTimeout(this.expanding);
+    // Bind polling to the chapter's window; epub.js otherwise uses a global RAF after jsdom teardown.
+    if (this.goTestDestroyed || !this.window?.document) return;
+    this.window.requestAnimationFrame(() => {
+      if (!this.goTestDestroyed && this.window?.document) this.resizeCheck();
+    });
+    this.expanding = setTimeout(() => this.resizeListeners(), 350);
+  };
+  proto.destroy = function (this: AnyBook): void {
+    // epub.js's polling and selection timers otherwise outlive the destroyed iframe/test environment.
+    clearTimeout(this.expanding);
+    clearTimeout(this.selectionEndTimeout);
+    this.goTestDestroyed = true;
+    destroy.call(this);
+  };
   proto.onSelectionChange = function (this: AnyBook): void {
     clearTimeout(this.selectionEndTimeout);
     this.selectionEndTimeout = setTimeout(() => {
@@ -60,6 +77,8 @@ export async function openFixture(name: string, flow: 'paginated' | 'scrolled-do
   const host = document.createElement('div');
   document.body.appendChild(host);
   const rendition: AnyRendition = book.renderTo(host, { width: 600, height: 400, flow, spread: 'none', method: 'write' }); // jsdom has no iframe srcdoc: epub.js's document.write path stands in
+  const openedContents = new Set<AnyBook>();
+  rendition.hooks.content.register((chapter: AnyBook) => { openedContents.add(chapter); });
   const adapter = new EpubLocalAdapter({ book, rendition } as unknown as ReaderHandle, { hostWindow: window });
   const contents = (): ContentsLike => rendition.getContents()[0] as ContentsLike;
   const show = async (target?: number | string): Promise<ContentsLike> => {
@@ -72,7 +91,14 @@ export async function openFixture(name: string, flow: 'paginated' | 'scrolled-do
   const close = async (): Promise<void> => {
     // epub.js starts the rendition on a timer: destroying the book before that leaves a timer pointing at nothing
     await Promise.race([rendition.started, new Promise((resolve) => setTimeout(resolve, 300))]).catch(() => undefined);
-    try { adapter.dispose(); rendition.destroy(); book.destroy(); } catch { /* already gone */ }
+    for (const chapter of openedContents) {
+      chapter.goTestDestroyed = true;
+      clearTimeout(chapter.expanding);
+      clearTimeout(chapter.selectionEndTimeout);
+    }
+    try { adapter.dispose(); } catch { /* already gone */ }
+    try { rendition.destroy(); } catch { /* already gone */ }
+    try { book.destroy(); } catch { /* already gone */ }
     host.remove();
     unshim();
   };

@@ -35,6 +35,12 @@ import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
 import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
 import { buildParadigm, etymologyOf, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, structureOf, type LexicalRecord } from './enrich';
+import type { TranslationRequest, TranslationResult } from '../translation/provider';
+
+export interface TranslationEngine {
+  translate(request: TranslationRequest): Promise<TranslationResult>;
+  processingMode?: string;
+}
 
 export interface ControllerDeps {
   doc: Document;
@@ -46,6 +52,8 @@ export interface ControllerDeps {
   metrics: MetricSink;
   /** The background's services (profile, gloss, explanations, status, corrections). Absent = a card with the analyser's own information only. */
   services?: ContentServices;
+  /** Optional explicit sentence translation port. The controller calls it only from the card's translate button. */
+  translationEngine?: TranslationEngine;
   /** The languages this build can analyse. */
   analysers?: string[];
   /** The placeholder identity written into events; the background replaces it. */
@@ -330,10 +338,14 @@ export class LookupController {
         gloss: askGloss ? { state: 'loading', senses: [] } : { state: 'idle', senses: [] },
         profile: services ? { state: 'loading', weak: [] } : { state: 'idle', weak: [] },
         explain: services && (card.features.length || card.constructions.length) ? { state: 'loading', features: [], constructions: [] } : { state: 'idle', features: [], constructions: [] },
+        sentenceTranslation: this.d.translationEngine && parseCtx.sentence && ctx.kind === 'sentence'
+          ? { state: 'idle', processingMode: translationProcessingMode(this.d.translationEngine) }
+          : { state: 'unavailable', message: this.d.translationEngine ? 'Sentence context is not available for translation.' : 'No sentence translation provider is available in this build.' },
       };
 
       // ── the learner's own interactions with this card ──
       const holder: { ictx?: InteractionContext } = {};
+      let translationRequest = 0;
       // a press on the card can come before the lookup event has its context (the card is on screen a few frames earlier): it waits for it, briefly
       const ictxReady: { resolve?: () => void; promise: Promise<void> } = { promise: Promise.resolve() };
       ictxReady.promise = new Promise<void>((r) => { ictxReady.resolve = r; });
@@ -374,6 +386,70 @@ export class LookupController {
         onLayer: (l) => { void record(layerOf(l)); },
         onPronounced: (p: PlayOutcome) => { void record((c) => buildPronunciationEvent(c, p)); },
         onCorrect: (c) => { void this.correct(my, card, languageId, holder.ictx, c, record); },
+        onTranslateSentence: () => {
+          const engine = this.d.translationEngine;
+          const text = parseCtx.sentence?.trim();
+          if (!engine || !text || ctx.kind !== 'sentence' || !live()) return;
+          const requestId = ++translationRequest;
+          const restriction = registryEntry(adapter.id)?.restrictions;
+          const source = {
+            languageId: language.languageId,
+            dialectId: language.varietyId,
+            source: language.basis === 'override' ? 'user' as const
+              : language.basis === 'document-metadata' || language.basis === 'book-metadata' ? 'page' as const
+              : language.basis === 'undetermined' || language.basis === 'team-default' || !language.languageId ? 'unknown' as const : 'selection' as const,
+            ...(language.confidence < 0.7 ? { uncertaintyNotes: [`Language confidence is ${Math.round(language.confidence * 100)}% (${language.basis}).`] } : {}),
+          };
+          const processingMode = translationProcessingMode(engine);
+          this.d.ui.update({ sentenceTranslation: { state: 'loading', sourceLanguage: languageName, sourceDialect: language.varietyId, sourceConfidence: language.confidence, sourceBasis: language.basis, processingMode } });
+          const request: TranslationRequest = {
+            text,
+            sourceLanguage: source,
+            targetLanguage: { languageId: 'en', source: 'user' },
+            explicitlyRequested: true,
+            ...(restriction ? { sourceRestrictions: { ...restriction } } : {}),
+            allowWordGloss: true,
+          };
+          void engine.translate(request).then((result) => {
+            if (!live() || requestId !== translationRequest) return;
+            if (result.status === 'unavailable') {
+              const message = result.reason === 'remote-processing-forbidden'
+                ? 'This reader’s terms do not allow sending text to a remote translation service.'
+                : result.reason === 'language-unknown'
+                  ? 'The source language is uncertain, so GoLearn did not guess.'
+                  : result.reason === 'input-too-long'
+                    ? 'This sentence is too long to translate. Select a shorter sentence and try again.'
+                    : language.languageId === 'sq'
+                      ? 'The local Albanian translation service is not ready, or no installed browser model supports this sentence. Start the local translation service and try again.'
+                      : 'No installed browser model supports this language pair. Choose a supported language and try again.';
+              this.d.ui.update({ sentenceTranslation: { state: 'error', processingMode, message } });
+              return;
+            }
+            if (result.status === 'gloss') {
+              this.d.ui.update({ sentenceTranslation: { state: 'error', processingMode, message: 'This provider returned a word gloss, not a sentence translation.' } });
+              return;
+            }
+            const provenance = result.sourceLanguage;
+            this.d.ui.update({ sentenceTranslation: {
+              state: 'ready',
+              naturalText: result.text,
+              origin: result.origin,
+              attribution: result.attribution,
+              generated: result.generated,
+              reviewed: result.reviewed,
+              sourceLanguage: provenance.languageId ? languageNameOf(provenance.languageId) : undefined,
+              sourceDialect: provenance.dialectId,
+              sourceConfidence: language.confidence,
+              sourceBasis: provenance.source,
+              providerId: result.providerId,
+              sourceUncertaintyNotes: provenance.uncertaintyNotes,
+              modelDownload: result.modelDownload,
+              processingMode,
+            } });
+          }).catch(() => {
+            if (live() && requestId === translationRequest) this.d.ui.update({ sentenceTranslation: { state: 'error', processingMode, message: 'The sentence could not be translated. Try again.' } });
+          });
+        },
         onRate: (mark: SelfMark) => {
           // saved as soon as the level is pressed: the event is written at once (no debounce, no batching), the meter moves at once, and the
           // next profile reply (the next card, the next scan) confirms the level; the press is taken back with a message when the write failed
@@ -736,6 +812,11 @@ function sampleAround(sel: ReaderSelection): string {
 
 function safe<T>(fn: () => T): T | undefined { try { return fn(); } catch { return undefined; } }
 async function safeAsync<T>(fn: () => T | Promise<T>): Promise<T | undefined> { try { return await fn(); } catch { return undefined; } }
+
+function translationProcessingMode(engine: TranslationEngine): NonNullable<CardView['sentenceTranslation']['processingMode']> {
+  const mode = engine.processingMode;
+  return mode === 'local' || mode === 'remote' || mode === 'mixed' ? mode : 'unknown';
+}
 
 function defaultFrame(doc: Document): () => Promise<void> {
   return () => new Promise<void>((resolve) => {

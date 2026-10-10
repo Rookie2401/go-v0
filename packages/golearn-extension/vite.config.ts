@@ -54,6 +54,9 @@ function copyStatic(): Plugin {
       const dist = path.join(here, 'dist');
       fs.mkdirSync(path.join(dist, 'action'), { recursive: true });
       fs.copyFileSync(path.join(here, 'manifest.json'), path.join(dist, 'manifest.json'));
+      // Optional device-only translation credentials: never a web-accessible asset or a source-controlled file.
+      const translationConfig = path.join(here, '..', '..', 'data', 'translation.local', 'extension-config.json');
+      if (fs.existsSync(translationConfig)) fs.copyFileSync(translationConfig, path.join(dist, 'translation.local.json'));
       fs.copyFileSync(path.join(here, 'action/popup.html'), path.join(dist, 'action/popup.html'));
       const notices = path.join(here, '..', '..', 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(dist, 'THIRD-PARTY-NOTICES.md'));

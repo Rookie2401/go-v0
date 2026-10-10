@@ -56,7 +56,7 @@ describe('parser: the card model on ten Albanian sentences', () => {
       expect(card.context.selectionLocated).toBe(true);
       // the card says what it lacks
       expect(card.limits.join(' ')).toMatch(/machine-drafted/);
-      expect(card.limits.join(' ')).toMatch(/no machine translation/);
+      expect(card.limits.join(' ')).toMatch(/not a sentence translation/);
       // the encounter has at least one item, as a lemma id only when the reading is creditable
       expect(card.itemIds.length).toBeGreaterThan(0);
       for (const id of card.itemIds) expect(id).toMatch(/^(lemma|form|phrase):sq:/);

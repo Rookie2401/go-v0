@@ -24,6 +24,9 @@ import { ActiveMode } from './active';
 import { LookupController } from './controller';
 import { createBridge } from './services';
 import { createDevicePronouncer } from './voice';
+import { createBrowserTranslationProvider, createTranslationEngine } from '../translation/provider';
+import { createLocalAlbanianTranslationProvider } from '../translation/localProvider';
+import { migjeniTitleReferenceProvider } from '../translation/referenceProvider';
 
 const GLOBAL_KEY = '__goLearnExtension';
 
@@ -78,6 +81,11 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     store: bridge?.events ?? fallbackEvents!,
     metrics: bridge?.metrics ?? createMemoryMetricsStore(),
     services: bridge,
+    translationEngine: createTranslationEngine({ providers: [
+      migjeniTitleReferenceProvider,
+      ...(bridge?.translateSentence ? [createLocalAlbanianTranslationProvider((request) => bridge.translateSentence!(request))] : []),
+      createBrowserTranslationProvider(),
+    ] }),
     analysers: [...PARSER_LANGUAGES],
     identity,
     version: chromeApi?.runtime.getManifest?.().version ?? '0.0.0',

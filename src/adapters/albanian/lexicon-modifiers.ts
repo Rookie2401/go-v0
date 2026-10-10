@@ -68,6 +68,8 @@ const ARTICULATED: SqLexeme[] = [
   IA('lumtur', 'happy', 'lumtura'),
   IA('trishtuar', 'sad', 'trishtuara'),
   IA('lodhur', 'tired', 'lodhura'),
+  IA('vuajtur', 'suffering', 'vuajtura'),
+  IA('kënaqur', 'satisfied, pleased', 'kënaqura'),
   IA('uritur', 'hungry', 'uritura'),
   IA('ngopur', 'full (of food)', 'ngopura'),
   IA('mërzitur', 'bored, upset', 'mërzitura'),

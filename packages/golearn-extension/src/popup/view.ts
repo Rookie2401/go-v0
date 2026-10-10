@@ -76,6 +76,11 @@ export interface ExplainView {
 export interface SentenceTranslationView {
   state: 'unavailable' | 'idle' | 'loading' | 'ready' | 'error';
   naturalText?: string;
+  /** Reference translations are sourced and scoped differently from model output. */
+  origin?: 'reference' | 'machine';
+  attribution?: string;
+  generated?: boolean;
+  reviewed?: boolean;
   sourceLanguage?: string;
   sourceDialect?: string;
   sourceConfidence?: number;

@@ -73,7 +73,7 @@ const RANK: Record<CardProvenance, number> = { none: 0, rule: 1, lexicon: 2 };
 const LIMITS = [
   'Meanings come from the word list and, when the dictionary pack can be reached, from its Wiktionary-derived dictionary. Neither has been checked by a native speaker.',
   'The word list and the rules are machine-drafted; no native speaker has checked them.',
-  'There is no machine translation: the sentence list is word by word, from the word list.',
+  'The sentence word list contains word-level glosses, not a sentence translation. Optional translation is generated separately, only when requested.',
 ];
 
 export function parseSelection(input: ParseInput): CardModel {

@@ -67,6 +67,16 @@ function formUnit(cx: Ctx, a: number, j: number): void {
   const head = headOf(cx, a, form);
   const art = narrowed(artC, agreeWith(head?.reading));
   const good = adjs.filter((c) => sqAgree(c.morph.Gender, art.morph.Gender) && sqAgree(c.morph.Number, art.morph.Number));
+  // A known, overt noun head constrains the linking article as well as the adjective. If the article cannot agree with
+  // that noun, or no articulated adjective reading agrees with the narrowed article, these words are not one unit.
+  const isListedLiteraryParticiple = adjs.some((c) => c.orthography?.modern === 'vuajtur' || c.orthography?.modern === 'kënaqur');
+  if (isListedLiteraryParticiple && ((head && !head.compatible) || (head?.reading && good.length === 0))) {
+    // Keep a clearly article-shaped token available to the production checker, but do not claim a lexical unit whose
+    // noun/adjective agreement is impossible. In particular, an article mismatch must remain diagnosable as an error.
+    cx.cur[a] = [withContext(art, `before an adjective, but it does not agree with the noun: left as a separate linking article`), ...cx.cur[a].filter((c) => c !== artC).map(lowered)];
+    cx.inUnit.add(a); // the article is resolved here, so littleWords must not reinterpret it as a pronoun or conjunction
+    return;
+  }
   const chosen = good.length > 0 ? good : adjs;
   const allow = { Gender: vals(art.morph.Gender), Number: vals(art.morph.Number) };
   const front = chosen.map((c) => withContext(narrowed(c, allow), `after the linking article "${form}": an adjective that goes with it, and the two words are one lexical unit`));

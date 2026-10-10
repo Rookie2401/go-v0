@@ -28,6 +28,7 @@ import { createSessionManager } from './session';
 import { createSettings } from './settings';
 import { restrictStorageToTrustedContexts } from './storageAccess';
 import { createSyncService } from './sync';
+import { createLocalTranslationService } from './translation';
 import { QUARANTINE_PREFIX, QUEUE_PREFIX, REJECTED_PREFIX } from '../../../repository-sync/src';
 
 export const CONTEXT_MENU_ID = 'golearn-lookup';
@@ -56,12 +57,24 @@ const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
+  MSG.translateSentence,
 ]);
 
-const withTimeout = (f: typeof fetch, ms: number): typeof fetch => ((input: RequestInfo | URL, init?: RequestInit) => {
+type TimedRequestInit = RequestInit & { timeoutMs?: number };
+const withTimeout = (f: typeof fetch, ms: number): typeof fetch => ((input: RequestInfo | URL, init?: TimedRequestInit) => {
   const ctl = new AbortController();
-  const t = setTimeout(() => ctl.abort(), ms);
-  return f(input, { ...init, signal: ctl.signal }).finally(() => clearTimeout(t));
+  const incoming = init?.signal;
+  const abort = () => ctl.abort(incoming?.reason);
+  if (incoming?.aborted) abort(); else incoming?.addEventListener('abort', abort, { once: true });
+  const requestedTimeout = init?.timeoutMs;
+  const timeout = typeof requestedTimeout === 'number' && Number.isFinite(requestedTimeout)
+    ? Math.max(1, Math.min(60_000, requestedTimeout)) : ms;
+  const t = setTimeout(() => ctl.abort(), timeout);
+  const { timeoutMs: _timeoutMs, ...forward } = init ?? {};
+  return f(input, { ...forward, signal: ctl.signal }).finally(() => {
+    clearTimeout(t);
+    incoming?.removeEventListener('abort', abort);
+  });
 }) as typeof fetch;
 
 export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) {
@@ -71,7 +84,11 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const cache = chrome.storage.session ?? chrome.storage.local;
   const stateArea = chrome.storage.session ?? chrome.storage.local;
   const now = bg.now ?? Date.now;
-  const doFetch: typeof fetch = bg.fetch ?? withTimeout(((i: RequestInfo | URL, init?: RequestInit) => globalThis.fetch(i, init)) as typeof fetch, 15_000);
+  // Test/integration callers that inject fetch keep their original Request and
+  // AbortSignal semantics. Production fetch still receives the central timeout
+  // wrapper, including the bounded per-request override used by translation.
+  const defaultFetch = ((i: RequestInfo | URL, init?: RequestInit) => globalThis.fetch(i, init)) as typeof fetch;
+  const doFetch: typeof fetch = bg.fetch ?? withTimeout(defaultFetch, 15_000);
   const version = chrome.runtime.getManifest?.().version ?? '0.0.0';
 
   let deviceIdP: Promise<string> | undefined;
@@ -100,6 +117,14 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     onDisconnect: async () => { await holder.profile?.clear(); },
   });
   const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path) });
+  const translation = createLocalTranslationService({
+    fetch: doFetch,
+    extensionId: chrome.runtime.id,
+    getURL: (path) => chrome.runtime.getURL?.(path) ?? '',
+    hasLoopbackPermission: chrome.permissions?.contains
+      ? () => chrome.permissions!.contains!({ origins: [['http:', '', '127.0.0.1:8792', '*'].join('/') ] })
+      : undefined,
+  });
   // GoLearn Active: the switches, the host-permission check and the dynamic content script (the popup asks the browser for the permission)
   const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE });
   // the device's own Repository: GoLearn works with no account, and the account only keeps the history across devices
@@ -322,6 +347,9 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         const languageId = typeof m.languageId === 'string' ? m.languageId : 'sq';
         return profile.knowledgeFor(m.unitIds, languageId, { deviceOnly: true });
       }
+      case MSG.translateSentence:
+        if (kind !== 'content') return { ok: false, reason: 'unavailable' };
+        return translation.translate(m);
       // ── extension pages only ──
       case MSG.serviceConfig: {
         const req = m as { op?: string; baseUrl?: string; assetBase?: string };
@@ -382,7 +410,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     });
   }
 
-  return { register, setEnabled, lookupNow, readState, inject, session, sync, recorder, profile, gloss, settings, local: localRepo, active, status: pageStatus, handle };
+  return { register, setEnabled, lookupNow, readState, inject, session, sync, recorder, profile, gloss, settings, local: localRepo, active, translation, status: pageStatus, handle };
 }
 
 /** A short, plain reason for a failed injection. The browser's wording is not shown raw. */

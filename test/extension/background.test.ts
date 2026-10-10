@@ -70,7 +70,10 @@ describe('background: gestures inject the content script', () => {
     fake.events.menuClicked.fire({ menuItemId: CONTEXT_MENU_ID, selectionText: 'shtëpinë' }, { id: 7 });
     // no language chosen yet: the resolver compares the block around the selection with every pack, and the content script first tries to
     // load the missing analyser chunks (they fail here: no getURL), so the lookup takes a few hundred milliseconds in this test
-    await flush(600);
+    await vi.waitFor(async () => {
+      const rows = Object.keys(await fake.local.get(null)).filter((k) => k.startsWith(EVENT_KEY_PREFIX));
+      expect(rows).toHaveLength(2);
+    }, { timeout: 5_000, interval: 25 });
     expect(fake.injected).toEqual([{ target: { tabId: 7 }, files: ['content.js'] }]);
     expect(fake.messagesToTabs[0]).toMatchObject({ tabId: 7, message: { type: MSG.lookup, trigger: 'menu', selectionText: 'shtëpinë' } });
     const rows = Object.keys(await fake.local.get(null)).filter((k) => k.startsWith(EVENT_KEY_PREFIX));
@@ -85,7 +88,7 @@ describe('background: gestures inject the content script', () => {
     await flush(20);
     expect(fake.injected).toHaveLength(0);
     fake.events.command.fire(COMMAND_ID, { id: 7 });
-    await flush(80);
+    await vi.waitFor(() => expect(document.querySelector('[data-golearn-host]')).toBeTruthy(), { timeout: 5_000, interval: 25 });
     expect(fake.injected).toHaveLength(1);
     expect(fake.messagesToTabs[0].message).toMatchObject({ type: MSG.lookup, trigger: 'command', focus: true });
     expect(document.querySelector('[data-golearn-host]')).toBeTruthy();

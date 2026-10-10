@@ -160,6 +160,8 @@ export const MSG = {
   active: 'golearn:active',
   /** GoLearn Active's scan asks about the words on screen: answered from the device's own Repository only, and only while Active is on. */
   activeProfile: 'golearn:active-profile',
+  /** Explicit on-demand request for the local sentence translation service. */
+  translateSentence: 'golearn:translate-sentence',
   // background -> content (GoLearn Active)
   activate: 'golearn:activate',
   deactivate: 'golearn:deactivate',

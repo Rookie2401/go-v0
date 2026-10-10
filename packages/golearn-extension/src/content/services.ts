@@ -10,6 +10,7 @@ import type {
   ActiveReply, CorrectReply, CorrectRequest, EntryReply, EntryRequest, ExplainReply, ExplainRequest, GlossReply, GlossRequest, PronounceInfoReply, ProfileReply, ProfileRequest, PublicStatus, RecordReply,
 } from '../protocol';
 import type { WriteResult } from '../store';
+import type { LocalSentenceTranslationReply, LocalSentenceTranslationRequest } from '../translation/localProtocol';
 
 /** Where the controller writes events: the background (identity replaced there), or a test store. */
 export interface EventSink { append(event: GoEvent): Promise<WriteResult> }
@@ -28,6 +29,8 @@ export interface ContentServices {
   active?(): Promise<ActiveReply | undefined>;
   /** The scan's learner-model question (the words on screen): the worker answers from the device's own Repository, only while Active is on. */
   activeProfile?(req: ProfileRequest): Promise<ProfileReply | undefined>;
+  /** Calls the background's local model bridge only after an explicit sentence-translation action. */
+  translateSentence?(req: LocalSentenceTranslationRequest): Promise<LocalSentenceTranslationReply | undefined>;
 }
 
 export interface Bridge extends ContentServices { events: EventSink; metrics: MetricSink }
@@ -35,12 +38,12 @@ export interface Bridge extends ContentServices { events: EventSink; metrics: Me
 const isReply = (v: unknown): v is { ok: boolean } => !!v && typeof v === 'object' && typeof (v as { ok?: unknown }).ok === 'boolean';
 
 export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
-  async function call<T>(type: string, payload: Record<string, unknown> = {}): Promise<T | undefined> {
+  async function call<T>(type: string, payload: Record<string, unknown> = {}, timeout = timeoutMs): Promise<T | undefined> {
     let timer: ReturnType<typeof setTimeout> | undefined;
     try {
       const reply = await Promise.race([
         api.runtime.sendMessage({ type, ...payload }),
-        new Promise<undefined>((resolve) => { timer = setTimeout(() => resolve(undefined), timeoutMs); }),
+        new Promise<undefined>((resolve) => { timer = setTimeout(() => resolve(undefined), timeout); }),
       ]);
       return isReply(reply) ? (reply as unknown as T) : undefined;
     } catch {
@@ -59,6 +62,8 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     active: () => call<ActiveReply>(MSG.active, { op: 'get' }),
     entry: (req) => call<EntryReply>(MSG.entry, { ...req }),
     activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }),
+    // The worker allows a cold local model up to 60 seconds; include time for its private config read and message round-trip.
+    translateSentence: (req) => call<LocalSentenceTranslationReply>(MSG.translateSentence, { ...req }, 125_000),
     events: {
       async append(event): Promise<WriteResult> {
         const r = await call<RecordReply>(MSG.record, { event });

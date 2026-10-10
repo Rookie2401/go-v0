@@ -37,6 +37,12 @@ export interface SqCorrespondence {
   variety: string;
 }
 
+/** Exact literary Gheg participle spellings that this adapter bridges; no productive -un rule is implied. */
+export const LITERARY_GHEG_PARTICIPLES: Readonly<Record<string, string>> = {
+  vuejtun: 'vuajtur',
+  kënaqun: 'kënaqur',
+};
+
 /** Listed pairs: Gheg written form → Standard form. No identities (kam, ke ... are the same in both). */
 const LISTED: ReadonlyArray<readonly [string[], string, string]> = [
   [['âsht', 'asht', 'âshtë', 'ashtë'], 'është', 'Gheg "is" (âsht / asht)'],
@@ -48,6 +54,10 @@ const LISTED: ReadonlyArray<readonly [string[], string, string]> = [
   [['çka'], 'çfarë', 'Gheg "what" (çka)'],
   [['un'], 'unë', 'Gheg "I" (un)'],
   [['kênë'], 'qenë', 'Gheg participle "been" (kênë)'],
+  // Migjeni's attested forms; these are lexical spellings, not a general -un rule.
+  ...Object.entries(LITERARY_GHEG_PARTICIPLES).map(([form, standard]): readonly [string[], string, string] => [
+    [form], standard, `Gheg participle in Migjeni: ${form} → ${standard}`,
+  ]),
 ];
 
 /** Per-form overrides where the Standard form differs by more than the head word (definite forms). */

@@ -115,6 +115,13 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     } catch { return undefined; }
   }
 
+  /** Every language the learner has chosen on this device (open enrolments), in setup order; empty when none. */
+  async function chosenLanguages(): Promise<string[]> {
+    const repo = await open();
+    if (!repo) return [];
+    try { return [...new Set((await openEnrolments(repo)).map((e) => e.languageId))]; } catch { return []; }
+  }
+
   // ───────────── recording ─────────────
 
   /** Appends the event the recorder just accepted. `attributed: 'account'` = signed in: the sync queue sends it, so it is marked as the account's. */
@@ -306,7 +313,7 @@ export function createLocalRepoService(opts: LocalRepoServiceOptions) {
     }
   }
 
-  return { open, record, forProfile, activeLanguage, afterSignIn, afterEnrolment, uploadAndPull, clear, handle, status };
+  return { open, record, forProfile, activeLanguage, chosenLanguages, afterSignIn, afterEnrolment, uploadAndPull, clear, handle, status };
 }
 
 export type LocalRepoService = ReturnType<typeof createLocalRepoService>;

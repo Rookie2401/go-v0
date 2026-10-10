@@ -201,7 +201,8 @@ describe('§XVII steps 4–12: the encounter in the authorised EPUB reader', () 
     expect(r.text()).toContain('libër (NOUN)');
     expect(r.text()).toContain('definite masculine accusative singular');
     expect(out.card.language?.languageId).toBe('sq');
-    expect(['book-metadata', 'document-metadata', 'team-default', 'override']).toContain(out.card.language?.basis);
+    // the sample EPUB declares no language, so the words around the selection decide (detection) since 2026-10-09; before, the one word fell to the default
+    expect(['book-metadata', 'document-metadata', 'detection', 'team-default', 'override']).toContain(out.card.language?.basis);
     expect(out.recorded).toBe('recorded');
   }, 60_000);
 
@@ -221,7 +222,7 @@ describe('§XVII steps 4–12: the encounter in the authorised EPUB reader', () 
     expect(sel[0].subject.sentenceKey).toBeTruthy();
     const lang = (sel[0].payload as { language?: { languageId: string; basis: string; confidence: number; override: boolean } }).language;   // 8. resolution basis preserved
     expect(lang?.languageId).toBe('sq');
-    expect(['book-metadata', 'document-metadata', 'team-default', 'override']).toContain(lang?.basis);
+    expect(['book-metadata', 'document-metadata', 'detection', 'team-default', 'override']).toContain(lang?.basis);
     expect(typeof lang?.override).toBe('boolean');
     const src = sel[0].subject.sourceRef as { kind: string; locator?: string; title?: string };          // 9. source metadata, never text
     expect(src.kind).toBe('file');

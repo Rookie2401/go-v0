@@ -487,7 +487,7 @@ export class LookupController {
     const evidence: LanguageEvidence = {
       ...declared,
       ...(override ? { override } : {}),
-      sample: sel.surface,
+      sample: sampleAround(sel),
       teamDefault: status?.languageId ?? 'sq',
       installed: [...installed],
     };
@@ -613,6 +613,32 @@ function languageNameOf(id: string): string {
   const known = knownLanguageName(id);
   if (known !== id) return known;
   try { return new Intl.DisplayNames(['en'], { type: 'language' }).of(id) ?? id; } catch { return id; }
+}
+
+const SAMPLE_CHARS = 400;
+const SAMPLE_BLOCKS = new Set(['P', 'LI', 'DD', 'DT', 'BLOCKQUOTE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'FIGCAPTION', 'CAPTION', 'TD', 'TH', 'ARTICLE', 'SECTION', 'MAIN', 'DIV', 'BODY']);
+
+/**
+ * The text the language resolver detects from: the selected word plus up to 400 characters of the block around it, so that one
+ * clicked word on a mislabelled page can still be recognised from its neighbours. Read from the page for this purpose only,
+ * never kept, never sent (the resolver is pure). A selection with no live range (the browser's own copy of a frame's text, or
+ * the page-level sample) gives its own surface.
+ */
+function sampleAround(sel: ReaderSelection): string {
+  const start = sel.range?.startContainer;
+  if (!start || start.nodeType === 9 /* a document: no live range */) return sel.surface;
+  let el: Element | null = start.nodeType === 1 ? (start as Element) : start.parentElement;
+  let best: Element | null = null;
+  for (let depth = 0; el && depth < 8; el = el.parentElement, depth++) {
+    if (SAMPLE_BLOCKS.has(el.tagName.toUpperCase())) { best = el; if ((el.textContent ?? '').length >= 80) break; }
+  }
+  const text = (best?.textContent ?? '').replace(/\s+/gu, ' ').trim();
+  if (text.length < sel.surface.length + 20) return sel.surface;
+  if (text.length <= SAMPLE_CHARS) return text;
+  // keep the window around the selected word when the block is long
+  const at = text.indexOf(sel.surface);
+  const from = Math.max(0, (at < 0 ? 0 : at) - Math.floor(SAMPLE_CHARS / 2));
+  return text.slice(from, from + SAMPLE_CHARS);
 }
 
 function safe<T>(fn: () => T): T | undefined { try { return fn(); } catch { return undefined; } }

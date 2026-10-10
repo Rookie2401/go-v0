@@ -6,8 +6,9 @@
 import { describe, expect, it } from 'vitest';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
+import { sqAdapter } from '../../src/adapters/sq';
 import {
-  BOOK_MIN_CONFIDENCE, DOCUMENT_MIN_CONFIDENCE, MIN_TOKENS, NORWEGIAN_UNSPECIFIED_CONFIDENCE, PACK_VARIETIES, TEAM_DEFAULT_CONFIDENCE, isUnspecifiedNorwegian,
+  BOOK_MIN_CONFIDENCE, DEFAULT_COMPATIBLE_SHARE, DOCUMENT_MIN_CONFIDENCE, MIN_TOKENS, NORWEGIAN_UNSPECIFIED_CONFIDENCE, PACK_VARIETIES, TEAM_DEFAULT_CONFIDENCE, isUnspecifiedNorwegian,
   createLanguageResolver, mapLanguageTag, resolveLanguage,
 } from '../../packages/golearn-extension/src/language/resolve';
 import type { LanguageEvidence } from '../../packages/golearn-extension/src/language/resolve';
@@ -364,6 +365,55 @@ describe('rung 5: the team default', () => {
   it('an empty installed list resolves nothing: every language is "not installed"', () => {
     expect(resolveLanguage({ installed: [], documentLanguage: doc('de'), teamDefault: 'de' })).toMatchObject({ basis: 'undetermined' });
     expect(resolveLanguage({ installed: [], sample: 'Ich lese das Buch.', teamDefault: 'de' })).toMatchObject({ basis: 'undetermined' });
+  });
+});
+
+describe('a mislabelled page and the learner’s chosen language (2026-10-09: an Albanian site declaring html lang="en")', () => {
+  const ALBANIAN = 'Policia njoftoi se dy persona u arrestuan mbrëmë në Durrës pas një përplasjeje mes dy grupeve në lagjen e vjetër të qytetit.';
+  const ENGLISH = 'In the beginning God created the heaven and the earth. And the earth was without form, and void.';
+  const chosen = (lang: string, sample: string, declared = 'en-US') => resolveLanguage({ installed: [lang], documentLanguage: doc(declared, 'html-lang'), teamDefault: lang, sample });
+
+  it(`with only the chosen language installed, real text in it on an "en" page is recognised by detection from the words around the selection`, () => {
+    const r = chosen('sq', ALBANIAN);
+    expect(r).toMatchObject({ languageId: 'sq', basis: 'detection' });
+    expect(r.reasons.join(' ')).toMatch(/sq word list recognises/);
+  });
+
+  it(`a short passage below detection's floor but at least ${Math.round(DEFAULT_COMPATIBLE_SHARE * 100)}% recognised still uses the chosen language, as a default, and says the share`, () => {
+    // a resolver handed a thinned Albanian word list (every third word unknown): about 55 % recognised, so detection's 60 % floor is not met but the default's 45 % is
+    const thin = createLanguageResolver({ adapters: { sq: {
+      ...sqAdapter,
+      analyze: (toks) => { let n = 0; return sqAdapter.analyze(toks).map((a) => (a.token.isWord && n++ % 3 === 2 ? { ...a, candidates: [] } : a)); },
+    } as typeof sqAdapter } });
+    const r = thin({ installed: ['sq'], documentLanguage: doc('en-US', 'html-lang'), teamDefault: 'sq', sample: ALBANIAN });
+    expect(r).toMatchObject({ languageId: 'sq', basis: 'team-default', confidence: TEAM_DEFAULT_CONFIDENCE });
+    expect(r.reasons.join(' ')).toMatch(/declared language has no pack, but the sq word list recognises \d+ of \d+ words around the selection/);
+  });
+
+  it('English text on an English page is still never read as the chosen language (the certification finding stands), and the reason gives the share', () => {
+    for (const lang of ['sq', 'es', 'de']) {
+      const r = chosen(lang, ENGLISH);
+      expect(r, lang).toMatchObject({ basis: 'undetermined' });
+      expect(r.reasons.join(' ')).toMatch(/recognises only \d+ of \d+ words around the selection/);
+      expect(r.reasons.join(' ')).toMatch(/not used against a declared language/);
+    }
+  });
+
+  it('one clicked word alone cannot show compatibility: fewer than 3 words stays undetermined with the reason', () => {
+    const r = chosen('sq', 'shtëpinë');
+    expect(r).toMatchObject({ basis: 'undetermined' });
+    expect(r.reasons.join(' ')).toMatch(/has 1 word; fewer than 3 cannot show that it is sq/);
+  });
+
+  it('the same rule serves every Latin-script pack: Spanish, German and Norwegian prose on an "en" page resolve to the chosen language', () => {
+    expect(chosen('es', 'El gobierno anunció ayer nuevas medidas para reducir la inflación en los próximos meses.')).toMatchObject({ languageId: 'es' });
+    expect(chosen('de', 'Der Bundestag hat am Donnerstag ein neues Gesetz zur Förderung erneuerbarer Energien verabschiedet.')).toMatchObject({ languageId: 'de' });
+    expect(withNorwegian({ installed: ['nb'], documentLanguage: doc('en', 'html-lang'), teamDefault: 'nb', sample: 'Regjeringen la fredag fram et forslag om endringer i skatteloven for neste år.' })).toMatchObject({ languageId: 'nb' });
+  });
+
+  it('Hindi and Thai are decided by their script before the rule is needed, with the chosen pack installed', () => {
+    expect(chosen('hi', 'क्षत्रिय ज्ञान की खोज में निकला। उसने कहा, मैं कल आऊँगा।')).toMatchObject({ languageId: 'hi', basis: 'detection' });
+    expect(chosen('th', 'วันนี้อากาศดีมาก ฉันไปตลาดกับเพื่อน แล้วก็กลับบ้าน')).toMatchObject({ languageId: 'th', basis: 'detection' });
   });
 });
 

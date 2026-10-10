@@ -27,7 +27,12 @@
  * When metadata decides but the sample clearly looks like another installed language, the answer keeps the metadata's
  * language, drops its confidence to 0.55 and says that the text disagrees.
  *
- * The evidence is metadata and a short sample of the selected surface; it never contains the page, the sentence or a book,
+ * A page or book that declares a language no pack covers (an English-labelled Albanian site) blocks the team default,
+ * unless the sample is plainly compatible with the chosen language (DEFAULT_COMPATIBLE_SHARE); then the default is used
+ * at its usual confidence, with the share in the reasons.
+ *
+ * The evidence is metadata and a short sample: the selected surface plus, since 2026-10-09, up to 400 characters of the
+ * block around it (the controller reads it from the page for this purpose only); it never contains a whole page or a book,
  * and nothing here keeps or sends it. Pure: no DOM, no storage, no network.
  */
 import type { LanguageAdapter } from '../../../../src/core';
@@ -56,6 +61,13 @@ export const MIN_SCRIPT_SHARE = 0.6;
 export const MIN_HINDI_SHARE = 0.5;
 /** Confidence given to the team default: a default, not evidence. */
 export const TEAM_DEFAULT_CONFIDENCE = 0.3;
+/**
+ * A page that declares a language no pack covers (an Albanian site with html lang="en") blocks the learner's chosen language,
+ * unless the chosen language's word list recognises at least this share of the words around the selection (and MIN_HITS of them).
+ * Measured 2026-10-09 (scripts/probe-resolver-share.mts): each pack recognises 70–100 % of its own language's prose and at most
+ * 38 % of foreign prose (English against Albanian: 7–22 %), so 45 % separates "compatible" from "another language".
+ */
+export const DEFAULT_COMPATIBLE_SHARE = 0.45;
 const MAX_SAMPLE_CHARS = 1200;
 const MAX_SAMPLE_TOKENS = 150;
 
@@ -238,6 +250,22 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
   };
 }
 
+/** Is the sample plainly in the learner's chosen language? (Only asked when a declaration names a language no pack covers.) */
+function defaultCompatibility(tag: string, sample: string, installed: ReadonlySet<string>, adapterOf: (l: string) => LanguageAdapter | undefined): { ok: boolean; reason: string } {
+  const m = mapLanguageTag(tag);
+  if (m.kind !== 'pack' || !installed.has(m.languageId)) return { ok: false, reason: `the chosen language "${tag}" is not an installed pack, so the text could not be checked against it` };
+  const adapter = adapterOf(m.languageId);
+  if (!adapter) return { ok: false, reason: `the ${m.languageId} word list is not loaded, so the text could not be checked against the chosen language` };
+  const words = sampleWords(sample);
+  if (words.length < MIN_TOKENS) return { ok: false, reason: `the text around the selection has ${words.length} word${words.length === 1 ? '' : 's'}; fewer than ${MIN_TOKENS} cannot show that it is ${m.languageId}` };
+  const w = wordListShare(adapter, sample);
+  const need = Math.round(DEFAULT_COMPATIBLE_SHARE * 100);
+  if (w.share >= DEFAULT_COMPATIBLE_SHARE && w.hits >= MIN_HITS) {
+    return { ok: true, reason: `the page's declared language has no pack, but the ${m.languageId} word list recognises ${w.hits} of ${w.words} words around the selection (at least ${need}% needed), so the learner's chosen language is used` };
+  }
+  return { ok: false, reason: `the ${m.languageId} word list recognises only ${w.hits} of ${w.words} words around the selection (at least ${need}% needed to use the chosen language on a page declared as another)` };
+}
+
 // ───────────────────────────── the resolver ─────────────────────────────
 
 export interface ResolverOptions {
@@ -338,8 +366,13 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
       reasons.push('no sample was given to detect a language from');
     }
 
-    // 5. team default — never when the page or book reliably declares a language no pack covers
-    if (declaredNoPack) return undetermined([...reasons, `${declaredNoPack}; the team default is not used against a declared language — choose a language if the page is mislabelled`]);
+    // 5. team default — not when the page or book reliably declares a language no pack covers, UNLESS the text around the
+    //    selection is plainly compatible with the learner's chosen language (a mislabelled page: an Albanian site declaring "en")
+    if (declaredNoPack) {
+      const compatible = evidence.teamDefault && evidence.sample ? defaultCompatibility(evidence.teamDefault, evidence.sample, installed, adapterOf) : undefined;
+      if (!compatible?.ok) return undetermined([...reasons, ...(compatible ? [compatible.reason] : []), `${declaredNoPack}; the team default is not used against a declared language — choose a language if the page is mislabelled`]);
+      reasons.push(compatible.reason);
+    }
     // 5. team default
     if (evidence.teamDefault) {
       const m = mapLanguageTag(evidence.teamDefault);

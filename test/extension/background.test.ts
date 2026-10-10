@@ -68,7 +68,9 @@ describe('background: gestures inject the content script', () => {
     await startContent();
     selectText(document.getElementById('p')!, 'shtëpinë');
     fake.events.menuClicked.fire({ menuItemId: CONTEXT_MENU_ID, selectionText: 'shtëpinë' }, { id: 7 });
-    await flush(80);
+    // no language chosen yet: the resolver compares the block around the selection with every pack, and the content script first tries to
+    // load the missing analyser chunks (they fail here: no getURL), so the lookup takes a few hundred milliseconds in this test
+    await flush(600);
     expect(fake.injected).toEqual([{ target: { tabId: 7 }, files: ['content.js'] }]);
     expect(fake.messagesToTabs[0]).toMatchObject({ tabId: 7, message: { type: MSG.lookup, trigger: 'menu', selectionText: 'shtëpinë' } });
     const rows = Object.keys(await fake.local.get(null)).filter((k) => k.startsWith(EVENT_KEY_PREFIX));

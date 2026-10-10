@@ -195,6 +195,10 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     const [s, needsSignIn] = await Promise.all([session.status(), sync.needsSignIn()]);
     // the language of the account's enrolment; with none, the one the learner chose on this device; with none, Albanian (the reference language)
     const languageId = s.languageId ?? (await localRepo.activeLanguage()) ?? 'sq';
+    // the languages the reader resolves against: the ones the learner chose (account enrolment, device enrolments), so a page in the
+    // chosen language is recognised from its own word list and no other pack's chunk is loaded to compare; with none chosen, every pack
+    const all = Object.keys(PACKS).filter((l) => { const m = packs.manifest(l); return !!m && levelOf(m) !== 'planned'; });
+    const chosen = [...new Set([s.languageId, ...(await localRepo.chosenLanguages())].filter((l): l is string => !!l && all.includes(l)))];
     return {
       ok: true,
       connected: s.connected,
@@ -202,7 +206,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       languageId,
       languageName: languageNameOf(languageId),
       packAvailable: gloss.packAvailable(languageId),
-      installedLanguages: Object.keys(PACKS).filter((l) => { const m = packs.manifest(l); return !!m && levelOf(m) !== 'planned'; }),
+      installedLanguages: chosen.length ? chosen : all,
     };
   }
 

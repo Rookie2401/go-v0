@@ -141,19 +141,23 @@ describe('the language-resolution hook', () => {
   const resolver = (resolution: LanguageResolution) => (e: LanguageEvidence): LanguageResolution => { seen.push(structuredClone(e)); return resolution; };
   beforeEach(() => { seen.length = 0; parseSpy.mockClear(); });
 
-  it('gets the evidence (document language, a sample of the selection, the default, the installed languages) and no page text', async () => {
+  it('gets the evidence (document language, the selection with up to 400 characters of its block as the sample, the default, the installed languages) and nothing of the page beyond that', async () => {
     mount('libroteka-reader.html');
     const r = build({ parse: parseSpy, resolveLanguage: resolver(fixed({ languageId: 'sq', basis: 'document-metadata', confidence: 0.8 })) });
     selectTop(byId('text'), 'shtëpinë');
     await r.controller.lookup({ trigger: 'command' });
     expect(seen).toHaveLength(1);
-    expect(seen[0]).toEqual({
+    const { sample, ...rest } = seen[0];
+    expect(rest).toEqual({
       documentLanguage: { languageId: 'sq', source: 'html-lang', confidence: 0.8 },
-      sample: 'shtëpinë',
       teamDefault: 'sq',
       installed: ['sq', 'es'],
     });
-    expect(JSON.stringify(seen[0])).not.toMatch(/Çdo|lexoj/);
+    // since 2026-10-09 the sample is the selected word plus the block around it (a mislabelled page is recognised from the neighbours),
+    // bounded, read for the resolver only (which is pure: nothing of it is kept or sent); the title and the reader chrome are not in it
+    expect(sample).toContain('shtëpinë');
+    expect(sample!.length).toBeLessThanOrEqual(400);
+    expect(sample).not.toMatch(/Libri im \(fixture\)/);
   });
 
   it('parses in the RESOLVED language, and records its basis and confidence on the card model and in the metrics', async () => {

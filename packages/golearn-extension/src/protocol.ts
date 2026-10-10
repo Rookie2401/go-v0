@@ -48,7 +48,10 @@ export interface PublicStatus {
   languageName: string;
   /** The background found an installable language pack for `languageId`. */
   packAvailable: boolean;
-  /** The languages the worker has a pack for that the reader may read with (installable or experimental; never a planned one). The resolver compares a sample only against these. */
+  /**
+   * The languages the reader resolves against: the ones the learner chose (the account's enrolment, the device's open enrolments);
+   * every pack the worker has (installable or experimental, never a planned one) when none is chosen. The resolver compares a sample only against these.
+   */
   installedLanguages?: string[];
 }
 

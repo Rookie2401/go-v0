@@ -14,9 +14,9 @@ interface LanguageEvidence {
   override?: string;                                   // the learner's choice
   bookLanguage?: { languageId; source; confidence };   // an OPF dc:language ...
   documentLanguage?: { languageId; source: 'html-lang' | 'meta' | 'og-locale' | 'element-lang' | 'url'; confidence };
-  sample?: string;                                     // the SELECTED surface, never the context sentence
+  sample?: string;                                     // the selected surface plus up to 400 characters of the block around it (since 2026-10-09; read for this only, never kept)
   teamDefault?: string;                                // the language the learner picked (the field keeps its old name; there are no teams in the apps)
-  installed: string[];                                 // the languages this build can analyse
+  installed: string[];                                 // the languages the learner chose (account + device enrolments); every pack when none is chosen
 }
 interface LanguageResolution {
   languageId?: string; varietyId?: string; confidence: number;
@@ -51,6 +51,24 @@ nothing. An override or a declaration naming something no pack covers is skipped
 
 When metadata decides but the sample clearly looks like another installed language (detection confidence at least 0.6), the
 answer keeps the declared language, drops its confidence to **0.55** and adds "the text itself looks like es, not de".
+
+### A mislabelled page and the learner's chosen language (2026-10-09)
+
+Many sites in the six languages declare `html lang="en"` (templates), so the first rule, "a reliable declaration of a language
+no pack covers blocks the default", stopped every lookup on them with "GoLearn cannot tell which language this is" although the
+learner had chosen the language in setup. Two changes, both for every language:
+
+1. The sample is no longer the selected word alone but the word plus up to **400 characters of the block around it**, so rung 4
+   (detection) has enough words to recognise the text, and so does the rule below.
+2. When a declaration names a language no pack covers, the chosen language (`teamDefault`) is still used if its word list
+   recognises at least **45 %** of the words around the selection, with at least 3 hits (`DEFAULT_COMPATIBLE_SHARE`); the reason
+   states the share. Measured with `scripts/probe-resolver-share.mts`: every pack recognises 70–100 % of its own prose and at most
+   38 % of foreign prose (English against Albanian 7–22 %, French against Spanish 38 %), so English text on an English-labelled
+   page is still never read as Albanian (the certification finding stands), and an Albanian article on an English-labelled page is.
+
+`installed` is now the learner's chosen languages (the account's enrolment and the device's open enrolments), every pack when
+none is chosen: a page in the chosen language is recognised from that language's own word list without loading the other
+packs' chunks, and a page in a language the learner has not chosen says so and offers the setup page.
 
 ## BCP-47 tags to pack languages
 

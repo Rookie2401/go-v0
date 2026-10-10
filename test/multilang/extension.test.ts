@@ -158,7 +158,7 @@ describe('the content controller with a Spanish enrolment', () => {
     expect(r.parser.mock.calls[0][0]).toMatchObject({ surface: 'libros', languageId: 'es' });
     expect(out.card).toMatchObject({ languageId: 'es', lemma: 'libro', pos: 'NOUN' });
     const shadow = r.ui.root()!;
-    expect(shadow.textContent).toContain('GoLearn · Spanish');
+    expect(shadow.textContent).toContain('Word · Spanish');
     expect(shadow.querySelector('.word')!.textContent).toBe('libros');
     expect(shadow.querySelector('.word')!.getAttribute('dir')).toBe('auto');
     expect(shadow.textContent).toMatch(/libro/);
@@ -181,7 +181,7 @@ describe('the content controller with a Spanish enrolment', () => {
     if (out.status !== 'shown') return;
     expect(r.parser.mock.calls[0][0]).toMatchObject({ languageId: 'sq' });
     expect(out.card.languageId).toBe('sq');
-    expect(r.ui.root()!.textContent).toContain('GoLearn · Albanian');
+    expect(r.ui.root()!.textContent).toContain('Word · Albanian');
     for (const e of await r.store.list()) expect(e.languageId).toBe('sq');
   });
 

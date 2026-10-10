@@ -519,7 +519,9 @@ export class LookupController {
   private async undetermined(p: { language: LanguageInfo; analysers: string[]; adapter: ReaderAdapter; timer: LookupTimer; anchor: PopupAnchor; my: number }): Promise<LookupOutcome> {
     const languageChoice = p.analysers.map((id) => ({ languageId: id, name: languageNameOf(id) }));
     const names = languageChoice.map((c) => c.name).join(', ');
-    const message = `GoLearn cannot tell which language this is, and will not guess. Choose one${names ? ` (${names})` : ''} and select again.`;
+    // the resolver's reasons are plain words about the evidence (never page text): shown so a learner can tell why, and tell us
+    const why = p.language.reasons.slice(-2).map((r) => r.replace(/\s+/g, ' ').trim()).filter(Boolean).join('; ');
+    const message = `GoLearn cannot tell which language this is, and will not guess. Choose one${names ? ` (${names})` : ''} and select again.${why ? ` Why: ${why}.` : ''}`;
     this.closeCard('replaced');
     this.d.ui.showMessage(message, p.anchor, 'info');
     this.stampLanguage(p.language);

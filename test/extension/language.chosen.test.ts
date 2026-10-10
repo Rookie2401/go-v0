@@ -50,7 +50,16 @@ describe('one clicked word on a page declared as English, with the language chos
     expect(r.ui.root()?.textContent).not.toMatch(/cannot tell which language/);
   });
 
-  it('English text on the same kind of page is still refused, with the choice offered, never read with the chosen word list', async () => {
+  it('a page declaring another pack language (a German template on an Albanian site) is read in the chosen language too', async () => {
+    const r = pageIn('sq', PAGES[0].text);
+    document.documentElement.lang = 'de';
+    selectText(document.getElementById('p')!, PAGES[0].word);
+    const out = await r.controller.lookup({ trigger: 'click' });
+    expect(out.status).toBe('shown');
+    if (out.status === 'shown') expect(out.card.language?.languageId).toBe('sq');
+  });
+
+  it('English text on the same kind of page is still refused, with the choice offered and the reason, never read with the chosen word list', async () => {
     const r = pageIn('sq', 'In the beginning God created the heaven and the earth. And the earth was without form, and void.');
     selectText(document.getElementById('p')!, 'heaven');
     const out = await r.controller.lookup({ trigger: 'command' });
@@ -58,6 +67,8 @@ describe('one clicked word on a page declared as English, with the language chos
     if (out.status !== 'message') return;
     expect(out.reason).toBe('language-undetermined');
     expect(out.message).toMatch(/cannot tell which language this is/);
+    expect(out.message).toMatch(/Why: .*sq word list recognises only \d+ of \d+ words/); // the learner can see why, and tell us
+    expect(out.message).not.toMatch(/heaven|earth/); // never the page's words
   });
 
   it('a page that declares the chosen language itself, or nothing, works as before', async () => {

@@ -70,6 +70,14 @@ learner had chosen the language in setup. Two changes, both for every language:
 none is chosen: a page in the chosen language is recognised from that language's own word list without loading the other
 packs' chunks, and a page in a language the learner has not chosen says so and offers the setup page.
 
+A declaration naming a **pack language the learner has not chosen** (an Albanian site on a German template declares `de`) is
+treated exactly like a no-pack declaration: it decides nothing, nothing is read with that language's word list, detection and
+the compatibility rule above still apply. Before, it ended the ladder at once. The "a book declares th, the page declares es"
+case now resolves to the page's own declaration of a chosen language.
+
+When the ladder ends undetermined, the card's message and the popup's "This page" line now append the resolver's last two
+reasons after "Why:" (plain words about the evidence, never the page's text), so a learner can see what blocked the lookup.
+
 ## BCP-47 tags to pack languages
 
 | tag | result |

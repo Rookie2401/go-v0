@@ -214,7 +214,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     const [pub, s, st, sy] = await Promise.all([publicStatus(), session.status(), settings.get(), sync.status()]);
     // `revocationPending`: the last sign-out could not reach the service (audit P-08); the setup page may say so
     const out: PageStatus & { revocationPending?: boolean } = {
-      ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment, settings: st,
+      // a language chosen on this device counts: an account without an enrolment yet must not make the popup say "choose a language"
+      ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
       needsSignIn: pub.needsSignIn || sy.needsSignIn,
       sync: { pending: sy.pending, localOnly: sy.localOnly, rejected: sy.rejected, lastPushAt: sy.lastPushAt, lastError: sy.lastError, online: sy.online, needsSignIn: sy.needsSignIn || (s.connected && s.expired) },
       ...(s.revocationPending ? { revocationPending: true } : {}),

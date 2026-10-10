@@ -111,7 +111,8 @@ export class ActiveMode {
     const res = await this.d.controller.resolvePageLanguage(sample);
     if (!this.on) return this.state;
     if (!res.languageId) {
-      this.reason = 'GoLearn cannot tell which language this page is in, and will not guess. Choose a language in the setup page.';
+      const why = res.reasons.slice(-2).join('; ');
+      this.reason = `GoLearn cannot tell which language this page is in, and will not guess. Choose a language in the setup page.${why ? ` Why: ${why}.` : ''}`;
       this.attachClick(); // a click still looks up (the lookup says the same thing, with the choice)
       return this.state;
     }

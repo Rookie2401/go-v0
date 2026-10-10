@@ -309,7 +309,12 @@ export function createLanguageResolver(options: ResolverOptions = {}): ResolveLa
         return undefined;
       }
       if (!installed.has(m.languageId)) {
-        return undetermined([...reasons, `${what} "${tag}" names ${m.languageId}, but the ${m.languageId} pack is not installed, so nothing is read with another language's word list`]);
+        // A declared pack language the learner has not chosen is treated like a declared language with no pack: nothing is read with
+        // that language's word list, detection may still recognise the text, and the chosen language applies only when the text is
+        // plainly compatible with it (an Albanian site built on a German template declares "de").
+        declaredNoPack = `${what} "${tag}" names ${m.languageId}, but the ${m.languageId} pack is not installed, so nothing is read with another language's word list`;
+        reasons.push(declaredNoPack);
+        return undefined;
       }
       return {
         languageId: m.languageId, ...(m.varietyId ? { varietyId: m.varietyId } : {}), confidence: r2(confidence), basis,

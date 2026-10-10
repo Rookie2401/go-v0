@@ -69,10 +69,13 @@ describe('rung 2: reliable book metadata (confidence at least 0.8)', () => {
     expect(r.reasons.join(' ')).toMatch(/team default is not used against a declared language/);
   });
 
-  it('a book in a pack language that is not installed ends the ladder: nothing is read with another language’s word list', () => {
-    const r = resolveLanguage({ bookLanguage: { languageId: 'th', source: 'opf', confidence: 0.95 }, installed: ['es'], teamDefault: 'es', documentLanguage: doc('es') });
+  it('a book in a pack language the learner has not chosen decides nothing, and nothing is read with that language’s word list: with no other evidence the result is undetermined (since 2026-10-09 it no longer ends the ladder, so a mislabelled template cannot block the chosen language)', () => {
+    const r = resolveLanguage({ bookLanguage: { languageId: 'th', source: 'opf', confidence: 0.95 }, installed: ['es'], teamDefault: 'es' });
     expect(r).toMatchObject({ basis: 'undetermined', confidence: 0 });
     expect(r.reasons.join(' ')).toMatch(/th pack is not installed/);
+    expect(r.reasons.join(' ')).toMatch(/not used against a declared language/);
+    // the page's own declaration of a chosen language still decides after it
+    expect(resolveLanguage({ bookLanguage: { languageId: 'th', source: 'opf', confidence: 0.95 }, installed: ['es'], teamDefault: 'es', documentLanguage: doc('es') })).toMatchObject({ languageId: 'es', basis: 'document-metadata' });
   });
 });
 
@@ -397,6 +400,13 @@ describe('a mislabelled page and the learner’s chosen language (2026-10-09: an
       expect(r.reasons.join(' ')).toMatch(/recognises only \d+ of \d+ words around the selection/);
       expect(r.reasons.join(' ')).toMatch(/not used against a declared language/);
     }
+  });
+
+  it('a page declaring another PACK language the learner has not chosen (an Albanian site on a German template says "de") is treated the same: the chosen language wins on compatible text, English is still refused', () => {
+    expect(chosen('sq', ALBANIAN, 'de')).toMatchObject({ languageId: 'sq' });
+    const r = chosen('sq', ENGLISH, 'de');
+    expect(r).toMatchObject({ basis: 'undetermined' });
+    expect(r.reasons.join(' ')).toMatch(/de pack is not installed/);
   });
 
   it('one clicked word alone cannot show compatibility: fewer than 3 words stays undetermined with the reason', () => {

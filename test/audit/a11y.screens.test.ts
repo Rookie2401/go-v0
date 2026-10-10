@@ -15,7 +15,7 @@ import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, k
 import { destroyRigs } from '../gopractice/helpers';
 import { makeTellRig, resetTellRig, typeInto, type TellRig } from '../gotell-ui/rig';
 import { HOME, SCREENS } from '../../packages/golearn-extension/app/app';
-import { destroyRigs as destroyAppRigs, makeRig as makeAppRig, signIn as appSignIn } from '../golearn-app/helpers';
+import { chooseOnWelcome as appChoose, destroyRigs as destroyAppRigs, failingInstall as appFailingInstall, makeRig as makeAppRig, signIn as appSignIn } from '../golearn-app/helpers';
 import { initPopup } from '../../packages/golearn-extension/action/popup';
 import { createChromeFake } from '../extension/chromeFake';
 
@@ -214,7 +214,17 @@ describe('GoLearn setup application', () => {
     for (const s of [HOME, ...SCREENS]) { await rig.go(s.id); audit(rig.root, `app/${s.id} (signed out)`); }
     await appSignIn(rig);
     for (const s of [HOME, ...SCREENS]) { await rig.go(s.id); audit(rig.root, `app/${s.id}`); }
-    expect(audits.filter((a) => a.screen.startsWith('app/')).length).toBe(20);
+    // Welcome is the whole of setup: its states too (a language ready, a pack that failed with its Retry button, the Advanced group open)
+    await appChoose(rig, 'sq');
+    audit(rig.root, 'app/welcome (language ready)');
+    rig.packs.nextInstall = appFailingInstall();
+    await appChoose(rig, 'de');
+    audit(rig.root, 'app/welcome (pack failed, Retry)');
+    rig.q<HTMLDetailsElement>('#advanced-nav').open = true;
+    audit(rig.root, 'app/welcome (Advanced open)');
+    for (const d of rig.root.querySelectorAll<HTMLDetailsElement>('#language-cards details')) d.open = true;
+    audit(rig.root, 'app/welcome (card details open)');
+    expect(audits.filter((a) => a.screen.startsWith('app/')).length).toBe(2 * (SCREENS.length + 1) + 4);
   }, 60_000);
 });
 

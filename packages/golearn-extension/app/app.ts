@@ -1,21 +1,17 @@
 /**
- * The application shell: a left list of screens with completion marks, one hash router, one content area, and the
- * “Done — back to reading” button at the end. The same code runs as the extension’s options page and as the hosted
- * web app; the difference is only `deps` (see main.ts).
+ * The application shell: a left list (Status, Welcome, and an Advanced group that starts collapsed), one hash router, one
+ * content area, and the “Done — back to reading” button at the foot of each screen. Welcome is the whole of setup. The same
+ * code runs as the extension’s options page and as the hosted web app; the difference is only `deps` (see main.ts).
  */
 import { append, button, clear, h, p } from './dom';
 import { createContext, type AppContext } from './context';
 import type { Deps } from './ports';
-import * as accountScreen from './screens/account';
 import * as diagnosticsScreen from './screens/diagnostics';
 import * as homeScreen from './screens/home';
-import * as languageScreen from './screens/language';
-import * as packScreen from './screens/pack';
 import * as privacyScreen from './screens/privacy';
 import * as readerScreen from './screens/reader';
 import * as shareScreen from './screens/share';
 import * as syncScreen from './screens/sync';
-import * as tutorialScreen from './screens/tutorial';
 import * as welcomeScreen from './screens/welcome';
 import type { View } from './screens/view';
 import { computeCompletion, setupComplete, SETUP_IDS } from './completion';
@@ -26,26 +22,26 @@ export type { Completion } from './completion';
 export interface ScreenDef {
   id: string;
   title: string;
-  group: 'status' | 'setup' | 'settings';
+  group: 'status' | 'setup' | 'advanced';
   render(el: HTMLElement, ctx: AppContext, view: View): void | Promise<void>;
 }
 
 export const SCREENS: readonly ScreenDef[] = [
+  // the whole of setup: choose a language (its pack installs by itself) and, if wanted, sign in
   { id: 'welcome', title: 'Welcome', group: 'setup', render: welcomeScreen.render },
-  { id: 'language', title: 'Choose your language', group: 'setup', render: languageScreen.render },
-  { id: 'pack', title: 'Install the pack', group: 'setup', render: packScreen.render },
-  { id: 'tutorial', title: 'Orientation', group: 'setup', render: tutorialScreen.render },
-  { id: 'reader', title: 'Reader integration', group: 'setup', render: readerScreen.render },
-  // optional and last: an account only keeps progress across devices
-  { id: 'account', title: 'Keep your progress (optional)', group: 'setup', render: accountScreen.render },
-  { id: 'sync', title: 'Sync', group: 'settings', render: syncScreen.render },
-  { id: 'privacy', title: 'Privacy', group: 'settings', render: privacyScreen.render },
-  { id: 'diagnostics', title: 'Diagnostics and updates', group: 'settings', render: diagnosticsScreen.render },
+  { id: 'sync', title: 'Sync', group: 'advanced', render: syncScreen.render },
+  { id: 'privacy', title: 'Privacy', group: 'advanced', render: privacyScreen.render },
+  { id: 'diagnostics', title: 'Diagnostics and updates', group: 'advanced', render: diagnosticsScreen.render },
+  // the old reader-integration screen; the learner reaches it from the footer link on Welcome
+  { id: 'reader', title: 'How GoLearn reads pages', group: 'advanced', render: readerScreen.render },
 ];
+/** Links from before setup was one page: all of them lead to Welcome. */
+export const ALIASES: Readonly<Record<string, string>> = { language: 'welcome', pack: 'welcome', account: 'welcome', tutorial: 'welcome', team: 'welcome' };
 export const HOME: ScreenDef = { id: 'home', title: 'Status', group: 'status', render: homeScreen.render };
-/** Reached from the web share target, a deep link or the status page; not part of setup, so it has no place in the navigation or the pager. */
+/** Reached from the web share target, a deep link or the status page; not part of setup, so it has no place in the navigation. */
 export const SHARE: ScreenDef = { id: 'share', title: 'Look up shared text', group: 'status', render: shareScreen.render };
 export const ROUTE_IDS = [HOME.id, ...SCREENS.map((s) => s.id), SHARE.id];
+const canonical = (id: string): string => ALIASES[id] ?? id;
 
 export interface AppHandle {
   ctx: AppContext;
@@ -64,27 +60,27 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   let renderDone: Promise<void> = Promise.resolve();
   let disposers: Array<() => void> = [];
   let destroyed = false;
+  /** The Advanced group starts collapsed; it opens when the learner opens it or when one of its screens is showing. */
+  let advancedOpen = false;
 
   const navList = h('ol', { class: 'steps' });
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
-  const nav = h('nav', { class: 'rail', 'aria-label': 'GoLearn setup' }, h('p', { class: 'brand' }, 'GoLearn'), navList);
+  const nav = h('nav', { class: 'rail', 'aria-label': 'GoLearn' }, h('p', { class: 'brand' }, 'GoLearn'), navList);
   const shell = h('div', { class: 'shell' }, nav, main);
   clear(root);
   root.append(shell);
 
   const ctx = createContext(deps, { go: (r) => { void go(r); }, changed: () => { void refreshNav(); } });
 
+  const rawId = (): string => /^#\/?([a-z-]+)/.exec(win.location.hash)?.[1] ?? '';
   const parse = (): string => {
-    const m = /^#\/?([a-z-]+)/.exec(win.location.hash);
-    // an old link to the screen that used to ask for a team goes to the language screen
-    if (m && m[1] === 'team') return 'language';
-    return m && ROUTE_IDS.includes(m[1]) ? m[1] : '';
+    const id = canonical(rawId());
+    return ROUTE_IDS.includes(id) ? id : '';
   };
 
   async function defaultRoute(): Promise<string> {
     const c = await computeCompletion(ctx);
-    if (setupComplete(c)) return HOME.id;
-    return SETUP_IDS.find((id) => !c[id]) ?? HOME.id;
+    return setupComplete(c) ? HOME.id : 'welcome';
   }
 
   async function refreshNav(): Promise<void> {
@@ -101,9 +97,14 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     };
     navList.append(item(HOME, undefined));
     navList.append(h('li', { class: 'group' }, 'Set up'));
+    // Welcome is the whole of setup: it is done once a language is chosen with its pack installed
     for (const s of SCREENS.filter((x) => x.group === 'setup')) navList.append(item(s, c[s.id]));
-    navList.append(h('li', { class: 'group' }, 'Settings'));
-    for (const s of SCREENS.filter((x) => x.group === 'settings')) navList.append(item(s, c[s.id]));
+    const inAdvanced = SCREENS.some((x) => x.group === 'advanced' && x.id === route);
+    const details = h('details', { class: 'advanced', id: 'advanced-nav', ...(advancedOpen || inAdvanced ? { open: true } : {}) },
+      h('summary', {}, 'Advanced'),
+      h('ol', { class: 'steps sub' }, ...SCREENS.filter((x) => x.group === 'advanced').map((s) => item(s, undefined))));
+    details.addEventListener('toggle', () => { if (!inAdvanced) advancedOpen = (details as HTMLDetailsElement).open; });
+    navList.append(h('li', { class: 'group-box' }, details));
   }
 
   async function show(id: string): Promise<void> {
@@ -118,38 +119,32 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     main.append(h('h1', {}, def.title), body);
     const view: View = { alive: () => my === seq && !destroyed, onDispose: (fn) => { disposers.push(fn); } };
     try {
-      if (def.group === 'settings') await ctx.state.markVisited(def.id);
-      if (def.id === 'welcome') await ctx.state.markVisited('welcome');
+      if (def.group === 'advanced') await ctx.state.markVisited(def.id);
       await def.render(body, ctx, view);
     } catch (e) {
       if (view.alive()) { clear(body); append(body, [p(`This screen could not be shown: ${e instanceof Error ? e.message : String(e)}`, 'error')]); }
     }
     if (!view.alive()) return;
-    main.append(pager(def));
+    main.append(footer(def));
     await refreshNav();
     try { main.focus({ preventScroll: true }); } catch { /* focus is a convenience */ }
   }
 
-  function pager(def: ScreenDef): HTMLElement {
+  /** No pager between screens any more: the foot of a screen holds only the way back to reading. */
+  function footer(def: ScreenDef): HTMLElement {
     if (def.id === SHARE.id) return h('footer', {}, h('div', { class: 'pager' }, h('a', { class: 'btn', href: '#/home' }, '← Status')));
-    const order = [HOME, ...SCREENS];
-    const i = order.findIndex((s) => s.id === def.id);
-    const prev = i > 0 ? order[i - 1] : undefined;
-    const next = def.id !== HOME.id && i < order.length - 1 ? order[i + 1] : undefined;
     const done = h('p', { class: 'finish-note', role: 'status', 'aria-live': 'polite' });
     const bar = h('div', { class: 'pager' });
-    if (prev && prev.id !== HOME.id) bar.append(h('a', { class: 'btn', href: `#/${prev.id}` }, `← ${prev.title}`));
-    if (next) bar.append(h('a', { class: 'btn primary', href: `#/${next.id}` }, `${next.title} →`));
-    if (!next) {
-      bar.append(button('Done — back to reading', () => {
-        done.textContent = deps.closeWindow() ? '' : 'You can close this tab now and go back to your reading. GoLearn is switched on per tab from the toolbar button.';
-      }, { class: 'btn primary', id: 'done-reading' }));
-    }
+    if (def.id !== HOME.id && def.id !== 'welcome') bar.append(h('a', { class: 'btn', href: '#/welcome' }, '← Welcome'));
+    bar.append(button('Done — back to reading', () => {
+      done.textContent = deps.closeWindow() ? '' : 'You can close this tab now and go back to your reading. GoLearn is switched on per tab from the toolbar button.';
+    }, { class: 'btn primary', id: 'done-reading' }));
     return h('footer', {}, bar, done);
   }
 
   async function go(next: string): Promise<void> {
-    const target = ROUTE_IDS.includes(next) ? next : await defaultRoute();
+    const wanted0 = canonical(next);
+    const target = ROUTE_IDS.includes(wanted0) ? wanted0 : await defaultRoute();
     const wanted = `#/${target}`;
     if (win.location.hash !== wanted) win.location.hash = wanted;
     if (route === target) return;
@@ -158,7 +153,10 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   }
 
   const onHash = (): void => {
+    const raw = rawId();
     const r = parse();
+    // an old link (#/language, #/pack, #/account, #/tutorial) is rewritten to the screen that replaced it
+    if (r && raw !== r && !win.location.hash.startsWith(`#/${r}?`)) { win.location.hash = `#/${r}`; return; }
     if (r && r !== route) { renderDone = show(r); }
   };
   win.addEventListener('hashchange', onHash);

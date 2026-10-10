@@ -12,7 +12,19 @@ afterEach(() => destroyRigs());
 
 const settingsOf = async (rig: Rig): Promise<Record<string, unknown>> => ((await rig.area.get(KEYS.settings))[KEYS.settings] ?? {}) as Record<string, unknown>;
 
-describe('Reader integration', () => {
+describe('How GoLearn reads pages (the reader integration, an advanced screen)', () => {
+  it('is reached from a footer link on Welcome and from the Advanced group, and is not part of setup', async () => {
+    const rig = await makeRig();
+    expect(rig.q<HTMLAnchorElement>('#reader-link').getAttribute('href')).toBe('#/reader');
+    expect(rig.q('#reader-link').textContent).toBe('How GoLearn reads pages');
+    expect(rig.q('#advanced-nav li[data-route="reader"] a').textContent).toBe('How GoLearn reads pages');
+    expect(rig.root.querySelector('.rail > ol > li[data-route="reader"]')).toBeNull();
+    await rig.go('reader');
+    expect(rig.q('#screen h1').textContent).toBe('How GoLearn reads pages');
+    expect(rig.text()).not.toMatch(/orientation/i);
+    expect(rig.root.querySelector('#try-here')).toBeNull();
+  });
+
   it('in the web app: step-by-step installation guidance, never a claim that it can install or detect the extension', async () => {
     const rig = await makeRig();
     await rig.go('reader');
@@ -23,11 +35,10 @@ describe('Reader integration', () => {
     expect(guide.textContent).toContain('Chrome Web Store');
     expect(guide.textContent).toMatch(/cannot check whether the extension is installed/);
     expect(rig.root.querySelector('#reader-installed')).toBeNull();
-    expect(rig.q('#try-here').getAttribute('href')).toBe('#/tutorial');
-    // acknowledging marks the step, because the page cannot verify it
-    expect(rig.root.querySelector('.rail li[data-route="reader"] .mark.done')).toBeNull();
+    // acknowledging is remembered, because the page cannot verify it; it is no part of setup
     rig.q('#reader-ack').click();
-    await until(() => rig.root.querySelector('.rail li[data-route="reader"] .mark.done'));
+    await until(() => rig.q('#reader-note').textContent === 'Noted.');
+    expect((await rig.area.get(KEYS.app))[KEYS.app]).toMatchObject({ readerAck: true });
   });
 
   it('in the extension: installed, its version, and how it is switched on', async () => {
@@ -39,7 +50,6 @@ describe('Reader integration', () => {
     expect(text).toContain('Alt+Shift+G');
     expect(text).toContain('right-click');
     expect(rig.root.querySelector('#reader-install')).toBeNull();
-    expect(rig.root.querySelector('.rail li[data-route="reader"] .mark.done')).not.toBeNull();
   });
 
   it('the permissions it explains are exactly the ones the manifest declares', () => {
@@ -219,7 +229,7 @@ describe('Privacy', () => {
     const rig = await makeRig();
     await rig.go('home');
     const labels = [...rig.root.querySelectorAll('#status-list a')].map((a) => a.getAttribute('aria-label'));
-    expect(labels.length).toBe(4);
+    expect(labels.length).toBe(2);
     expect(new Set(labels).size).toBe(labels.length);
     for (const l of labels) expect(l).toMatch(/^Change: /);
   });

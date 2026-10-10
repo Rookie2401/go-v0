@@ -1,5 +1,5 @@
 /**
- * 5. Reader integration. In the extension: installed, its version, how it is switched on. On the web: how to install it
+ * How GoLearn reads pages (an advanced screen, linked from the foot of Welcome). In the extension: installed, its version, how it is switched on. On the web: how to install it
  * legitimately (a web page can never install an extension, and nothing here pretends to). What works, what does not.
  */
 import type { AppContext } from '../context';
@@ -36,7 +36,7 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
           h('li', {}, 'Pin the GoLearn button to the toolbar so you can switch it on for a tab. This page cannot check whether the extension is installed; the extension’s own settings page (the same screens as these) shows “installed” once it is.'),
         ),
         p('Safari and Firefox are not supported yet.', 'muted'),
-        h('p', {}, button('I have installed it', async () => { await ctx.state.patchProgress({ readerAck: true }); ctx.changed(); note.textContent = 'Noted. Next, try the card on a practice passage.'; }, { id: 'reader-ack' })),
+        h('p', {}, button('I have installed it', async () => { await ctx.state.patchProgress({ readerAck: true }); ctx.changed(); note.textContent = 'Noted.'; }, { id: 'reader-ack' })),
         note),
     ]);
   }
@@ -48,6 +48,5 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
     h('section', { class: 'card', id: 'surfaces' }, h('h2', {}, 'Where it works'),
       h('ul', { class: 'surfaces' }, ...SURFACES.map((s) => h('li', { 'data-surface': s.id, 'data-status': s.status }, h('strong', {}, s.name), ' — ', h('span', { class: `status-${s.status}` }, STATUS_LABEL[s.status]), '. ', s.summary))),
       p('GoLearn never bypasses DRM, never scrolls or downloads a book to read it, and never keeps a copy of what you read.', 'muted')),
-    h('p', {}, h('a', { class: 'btn primary', id: 'try-here', href: '#/tutorial' }, 'Try it here →'), ' ', h('span', { class: 'muted' }, 'A short orientation on a practice passage, using the real card.')),
   ]);
 }

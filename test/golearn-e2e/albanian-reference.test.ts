@@ -137,7 +137,7 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
   let token = '';
   let constructionId = '';
 
-  it('1–5. launch GoLearn, create the account, choose Albanian (no team: any learner picks any language), install the Albanian pack, skip the orientation', async () => {
+  it('1–5. launch GoLearn, create the account and choose Albanian on the Welcome page (no team: any learner picks any language; the Albanian pack installs by itself)', async () => {
     document.body.innerHTML = '<div id="app"></div>';
     window.location.hash = '';
     const deps: Deps = {
@@ -149,7 +149,7 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
     await app.ready();
     const go = async (route: string) => { await app!.go(route); await app!.ready(); await flush(); };
 
-    await go('account');
+    await go('welcome');
     choose(q('#acct-mode'), 'create');
     type(q<HTMLInputElement>('#acct-email'), EMAIL);
     type(q<HTMLInputElement>('#acct-password'), PASSWORD);
@@ -159,26 +159,19 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
     learnerId = session.learnerId; token = session.token;
     expect(JSON.stringify(await area.get(null))).not.toContain(PASSWORD);
 
-    // since 2026-10-09 there are no teams in the apps: the language screen offers every language, and the enrolment names none
-    await go('language');
+    // since 2026-10-09 there are no teams in the apps: the Welcome page offers every language, and the enrolment names none.
+    // One click chooses Albanian (on the device and on the account) and installs its pack; there is no separate install or orientation step.
     expect(document.querySelector('#team')).toBeNull();
-    choose(q('#language'), 'sq');
-    submit(q<HTMLFormElement>('#enrol-form'));
-    await until(() => /Chosen:/.test(q('#enrol-form .status').textContent ?? ''), 8000);
+    q('#language-cards > [data-language="sq"] [data-action="choose"]').click();
+    await until(() => /is ready|did not|could not/.test(q('#language-cards > [data-language="sq"] .status').textContent ?? ''), 20_000);
     const enrolment = (await store.listEnrolments(learnerId))[0];
     enrolmentId = enrolment.enrolmentId;
     expect(enrolment).toMatchObject({ languageId: 'sq', packId: 'pack:sq' });
     expect(enrolment.teamId).toBeUndefined();
     await flush(30);
-
-    await go('pack');
-    q('[data-pack="pack:sq"] [data-action="install"]').click();
-    await until(() => document.querySelector('[data-pack="pack:sq"] .verify'), 15_000);
-    expect(q('[data-pack="pack:sq"] .verify').getAttribute('data-ok')).toBe('true');
-
-    await go('tutorial');
-    q<HTMLButtonElement>('#tutorial-skip').click();
-    await until(() => document.querySelector('#tutorial-state[data-state="skipped"]'), 5000);
+    expect(q('#language-cards > [data-language="sq"] .verify').getAttribute('data-ok')).toBe('true');
+    expect(q('#language-cards > [data-language="sq"] .status').textContent).toMatch(/Albanian is ready: [0-9]+ checks passed/);
+    await until(() => document.querySelector('.rail li[data-route="welcome"] .mark.done'));
     app.destroy(); app = undefined;
   }, 60_000);
 

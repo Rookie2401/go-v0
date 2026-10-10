@@ -1,7 +1,9 @@
 /**
- * Keep your progress across devices (optional, and last in setup): the service address, create account / sign in, connect /
- * disconnect, account switching. Without an account everything stays on this device; signing in uploads that history once and
- * then keeps the two in step; signing out returns to the device alone and removes nothing.
+ * Sign in (optional; a section of the Welcome screen). Without an account everything stays on this device; signing in keeps
+ * the learner’s progress across devices: what is already on this device is uploaded once, the languages chosen here become
+ * enrolments on the account, and from then on the two are kept in step. Signing out returns to the device alone and removes nothing.
+ * The service address (create account / sign in go there) is kept as an advanced detail under the form.
+ *
  * The password goes to the service address and nowhere else (in the extension: to the background worker, which sends
  * it to the service); it is never stored, logged or kept beyond the request. The bearer token is written only into
  * `golearn:session` (by the worker, or by this page when there is no worker).
@@ -17,14 +19,20 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export { explainFailure } from '../errors';
 
-export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
+export interface AccountHooks {
+  /** The learner signed in (or created the account): finish what the language choice still needs. */
+  signedIn(): Promise<void>;
+  /** The learner signed out. */
+  signedOut(): Promise<void>;
+}
+
+export async function renderAccountSection(el: HTMLElement, ctx: AppContext, view: View, hooks: AccountHooks): Promise<void> {
   const stateBox = h('p', { id: 'account-state', class: 'status-note', role: 'status' });
-  const serviceBox = h('section', { class: 'card', 'aria-labelledby': 'svc-h' });
-  const sessionBox = h('section', { class: 'card', 'aria-labelledby': 'sess-h' });
-  const formBox = h('section', { class: 'card', 'aria-labelledby': 'form-h' });
+  const sessionBox = h('div', { id: 'account-session' });
+  const formBox = h('div', { id: 'account-form-box' });
+  const serviceBox = h('details', { class: 'service-address', id: 'service-address' });
   append(el, [
-    p('Keep your progress across devices. An account is optional: without one, everything you do stays on this device and GoLearn works exactly the same. With one, what is already on this device is uploaded once, and from then on your record follows you between devices.'),
-    h('p', { class: 'actions' }, h('a', { class: 'btn', id: 'acct-not-now', href: '#/home' }, 'Not now')),
+    p('Signing in is optional. Without an account everything you do stays on this device and GoLearn works exactly the same. With one, what is already on this device is uploaded once, your languages are saved on the account, and your record follows you between devices.'),
     stateBox, sessionBox, formBox, serviceBox,
   ]);
 
@@ -40,7 +48,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     setStatus(svcStatus, raw ? `Service address set to ${urlInput.value}.` : 'Back to the default address.', 'ok');
   }, { id: 'svc-save' });
   append(serviceBox, [
-    h('h2', { id: 'svc-h' }, 'Service address (only used if you sign in)'),
+    h('summary', { id: 'svc-h' }, 'Service address (only used if you sign in)'),
     field('Go Repository service', urlInput, 'https, or http on localhost for development. Leave empty to use the default.'),
     h('div', { class: 'row' }, save), svcStatus,
   ]);
@@ -51,8 +59,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     clear(sessionBox);
     const s = await ctx.state.getSession();
     if (!view.alive()) return;
-    append(sessionBox, [h('h2', { id: 'sess-h' }, 'This device')]);
-    stateBox.textContent = s ? 'Synced to your account' : 'On this device only';
+    stateBox.textContent = s ? `Synced to your account as ${s.email}` : 'On this device only';
     stateBox.setAttribute('data-state', s ? 'synced' : 'device');
     if (!s) { sessionBox.append(p('Not signed in. GoLearn works on this device without an account; nothing is sent anywhere.', 'muted')); return; }
     const expired = Date.parse(s.expiresAt) <= ctx.deps.now().getTime();
@@ -61,10 +68,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       h('p', { id: 'signed-in-as' }, `Signed in as ${s.email}`),
       h('p', { class: 'muted' }, `Learner ${s.learnerId} · session ${expired ? 'expired' : 'valid'} until ${shortDate(s.expiresAt)}`),
       expired ? p('The session has expired. Sign in again below.', 'error') : null,
-      h('div', { class: 'row' }, button('Disconnect this device', async () => {
+      h('div', { class: 'row' }, button('Sign out of this device', async () => {
         await ctx.signOut();
         setStatus(out, 'Signed out. This device no longer holds a session or cached profile; everything you did here stays on this device.', 'ok');
         await paintSession();
+        await hooks.signedOut();
       }, { id: 'acct-disconnect' })),
       out,
       p('Signing in with another account replaces this session and clears the cached profile on this device.', 'muted'),
@@ -85,7 +93,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const submit = h('button', { type: 'submit', id: 'acct-submit', class: 'btn primary' }, 'Continue') as HTMLButtonElement;
   const form = h('form', { id: 'acct-form', novalidate: true },
     field('What would you like to do?', mode), field('Email', email), field('Password', password), hint, h('div', { class: 'row' }, submit), status);
-  append(formBox, [h('h2', { id: 'form-h' }, 'Sign in or create an account (optional)'), form]);
+  append(formBox, [form]);
 
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
@@ -102,7 +110,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         const r = await ctx.signIn({ email: addr, password: secret, create: creating });
         const sent = r.ok && r.uploaded !== undefined ? ` ${r.uploaded === 0 ? 'Nothing needed uploading from this device.' : `Uploaded ${r.uploaded} event${r.uploaded === 1 ? '' : 's'} from this device to your account.`} Progress is now synced to your account.` : r.ok ? ' Progress is now synced to your account.' : '';
         setStatus(status, r.ok ? (creating ? `Account created and signed in as ${addr}.` : `Signed in as ${addr}.`) + sent : r.message, r.ok ? 'ok' : 'error');
-        if (r.ok) await paintSession();
+        if (r.ok) {
+          await paintSession();
+          await hooks.signedIn();
+        }
       } finally {
         password.value = ''; // the password is never kept
         submit.disabled = false;

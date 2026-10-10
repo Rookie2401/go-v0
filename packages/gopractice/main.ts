@@ -42,7 +42,7 @@ export async function createRealDeps(): Promise<Deps> {
   const ext = getExtension();
   return {
     win: window, doc: document, fetch: doFetch, area: storageArea(), config,
-    ...(ext ? { local: async () => localRepoFor(ext), links: { setup: '../app/index.html#/language' } } : config.extensionUrl ? { links: { extension: config.extensionUrl } } : {}),
+    ...(ext ? { local: async () => localRepoFor(ext), links: { setup: '../app/index.html#/welcome' } } : config.extensionUrl ? { links: { extension: config.extensionUrl } } : {}),
     createApi: (baseUrl, token) => createRepositoryApi({ baseUrl, fetch: doFetch, token }),
     engine,
     audio: (consent) => createAudioDeps({ consent }),

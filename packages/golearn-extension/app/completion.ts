@@ -2,25 +2,26 @@
 import type { AppContext } from './context';
 
 /**
- * The steps that finish setup, in order. The account is not among them: it is optional, last, and only keeps progress across devices.
- * (Welcome, choose a language, install its pack, the orientation, the reader.)
+ * What finishes setup: at least one language chosen and its pack installed (and verified). Nothing else is required; the account is
+ * optional and the reader integration is an advanced screen.
  */
-export const SETUP_IDS: readonly string[] = ['welcome', 'language', 'pack', 'tutorial', 'reader'];
+export const SETUP_IDS: readonly string[] = ['language', 'pack'];
 
 export type Completion = Record<string, boolean>;
 
-/** Which screens are done. Setup screens by what is actually true; settings screens once opened. */
+/** Which screens are done. Setup by what is actually true; `welcome` is the whole of setup; the advanced screens by being opened. */
 export async function computeCompletion(ctx: AppContext): Promise<Completion> {
   const [session, progress, active] = await Promise.all([ctx.state.getSession(), ctx.state.getProgress(), ctx.activeLanguage()]);
   const pack = active?.languageId ? ctx.deps.packs.packFor(active.languageId) : undefined;
   const expired = !!session && Date.parse(session.expiresAt) <= ctx.deps.now().getTime();
+  const language = !!active;
+  const installed = !!pack && progress.packs[pack.packId]?.ok === true;
   return {
-    welcome: progress.visited.includes('welcome'),
-    language: !!active,
-    pack: !!pack && progress.packs[pack.packId]?.ok === true,
-    tutorial: progress.tutorial !== 'pending',
-    reader: ctx.inExtension || progress.readerAck,
+    welcome: language && installed,
+    language,
+    pack: installed,
     account: !!session && !expired,
+    reader: ctx.inExtension || progress.readerAck,
     sync: progress.visited.includes('sync'),
     privacy: progress.visited.includes('privacy'),
     diagnostics: progress.visited.includes('diagnostics'),

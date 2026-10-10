@@ -28,17 +28,17 @@ If Brave Shields complains on a reading site, the extension still works: it keep
 
 ## 3. First run, with no account
 
-1. In the popup press **Open GoLearn setup**. **Welcome** → **Choose your language**: six cards (Norwegian, German, Albanian, Hindi, Thai, Spanish), each saying what works, what does not, how far its pack is built and what the audio is. Pick one:
+1. In the popup press **Open GoLearn setup**. It opens on **Welcome**, which is the whole of setup. Under **Choose your language** there are six cards (Norwegian, German, Albanian, Hindi, Thai, Spanish), each saying what works, what does not, how far its pack is built and what the audio is. Pick one:
    - Norwegian asks for the written standard, Bokmål or Nynorsk; nothing is preselected.
    - Spanish offers an optional regional preference (Honduras is one).
-   - You can add another language later; the list at the top of the screen switches between them.
-2. **Install the pack** (Albanian: 16 checks; the others are experimental packs, labelled as such).
-3. **Orientation**: a short tutorial for that language with real lookups.
-4. **Reader integration**: how to switch GoLearn on for a tab.
-5. Read: open any web page in the language (for example a public-domain text, or the fixture pages below), select a word and press **Alt+Shift+G** (or right-click → "Look up with GoLearn", or switch "GoLearn on for this tab" in the popup so selecting a word looks it up). The card shows lemma, meaning, grammar, form, context, confidence, and after a few lookups your own history line.
+   - Choosing a language installs its pack by itself, on the card: Albanian says "Albanian is ready: 16 checks passed" (the others are experimental packs, labelled as such; all are machine-drafted, not native-reviewed). If a check fails the card says so and offers **Retry**.
+   - You can add another language later; the list above the cards switches between them.
+2. The page then says what to do next: open a page in the language and switch on **GoLearn Active** in the extension popup. (Sign-in is the optional second section of the same page, see section 4.)
+3. Out of the way, under **Advanced** in the left list: Sync, Privacy, Diagnostics and updates (which also holds the dictionary address) and **How GoLearn reads pages** (also a small link at the foot of Welcome).
+4. Read: open any web page in the language (for example a public-domain text, or the fixture pages below), select a word and press **Alt+Shift+G** (or right-click → "Look up with GoLearn", or switch "GoLearn on for this tab" in the popup so selecting a word looks it up). The card shows lemma, meaning, grammar, form, context, confidence, and after a few lookups your own history line.
    - Fixture pages that need no site account: `node scripts\local\static-server.cjs packages\golearn-extension 5197` → `http://localhost:5197/harness/albanian-article.html` (Albanian article) and `http://localhost:5197/harness/sites/*.html` (the nine reader fixtures).
-6. Practise: press **Practise** in the popup (or on the setup page's **Status** screen). GoPractice opens as a page of the extension, with no sign-in: **GoReview** shows the candidates from your lookups with their reasons, and you can start a session; **GoTell** → prompts → write, Analyse, Save. The header says **On this device only**.
-7. The status screen of the setup page also says **On this device only**.
+5. Practise: press **Practise** in the popup (or on the setup page's **Status** screen). GoPractice opens as a page of the extension, with no sign-in: **GoReview** shows the candidates from your lookups with their reasons, and you can start a session; **GoTell** → prompts → write, Analyse, Save. The header says **On this device only**.
+6. The status screen of the setup page also says **On this device only**.
 
 ## 3a. GoLearn Active (read the page before you)
 
@@ -59,8 +59,8 @@ scripts\local\start.cmd    # three windows: service :8790, hosted GoPractice :51
 
 Check <http://127.0.0.1:8790/health> answers `{"ok":true,…}`. Stop everything with `scripts\local\stop.cmd`.
 
-1. Setup page → **Keep your progress (optional)** (it is the last step; **Not now** skips it): keep the service address `http://127.0.0.1:8790`, create an account (any email, a password of at least 10 characters; it stays on this PC).
-2. Creating the account uploads what is already on this device **once**, says how many events, and switches the status to **Synced to your account**. Your language is also enrolled on the account (no team). GoPractice (in the extension) offers the same step through **Keep your progress across devices (optional)** in its header.
+1. Setup page → Welcome → **Sign in (optional)** (the second section; ignore it to stay on this device; the service address is under the form): keep the service address `http://127.0.0.1:8790`, create an account (any email, a password of at least 10 characters; it stays on this PC).
+2. Creating the account uploads what is already on this device **once**, says how many events, and switches the status to **Synced to your account**. Your language is also enrolled on the account (no team), and if the account already holds a language its pack is installed for you. GoPractice (in the extension) offers the same step through **Keep your progress across devices (optional)** in its header.
 3. Signing out returns to **On this device only** and removes nothing. **Privacy → Clear local data** (and GoPractice → Settings → Clear local data) is the explicit way to remove the device's data.
 4. The hosted copies still exist: <http://localhost:5199/> (GoPractice) needs an account and says so (it points to the extension's copy, which does not); <http://localhost:5198/#/share> is the phone-style share path (paste text → pick a word → the card and the encounter).
 

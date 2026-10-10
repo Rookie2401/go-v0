@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
-import { SCREENS, HOME } from '../../packages/golearn-extension/app/app';
+import { SCREENS, HOME, ALIASES } from '../../packages/golearn-extension/app/app';
 import { KEYS } from '../../packages/golearn-extension/app/state';
-import { destroyRigs, flush, makeRig, signIn, until } from './helpers';
+import { chooseOnWelcome, destroyRigs, flush, makeRig, signIn, until } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -19,22 +19,58 @@ describe('the router and the shell', () => {
       expect(rig.q(`.rail li[data-route="${screen.id}"] a`).getAttribute('aria-current')).toBe('page');
     }
     const labels = [...rig.root.querySelectorAll('.rail li[data-route]')].map((li) => li.getAttribute('data-route'));
-    expect(labels).toEqual(['home', 'welcome', 'language', 'pack', 'tutorial', 'reader', 'account', 'sync', 'privacy', 'diagnostics']);
+    expect(labels).toEqual(['home', 'welcome', 'sync', 'privacy', 'diagnostics', 'reader']);
   });
 
-  it('there are nine screens besides the status home, in the order the setup needs them: language first, the account optional and last', () => {
-    expect(SCREENS.map((s) => s.id)).toEqual(['welcome', 'language', 'pack', 'tutorial', 'reader', 'account', 'sync', 'privacy', 'diagnostics']);
-    expect(SCREENS.find((x) => x.id === 'language')!.title).toBe('Choose your language');
-    expect(SCREENS.find((x) => x.id === 'account')!.title).toMatch(/optional/);
+  it('setup is one screen, Welcome; the rest are advanced', () => {
+    expect(SCREENS.map((s) => s.id)).toEqual(['welcome', 'sync', 'privacy', 'diagnostics', 'reader']);
+    expect(SCREENS.filter((s) => s.group === 'setup').map((s) => s.id)).toEqual(['welcome']);
+    expect(SCREENS.filter((s) => s.group === 'advanced').map((s) => s.title)).toEqual(['Sync', 'Privacy', 'Diagnostics and updates', 'How GoLearn reads pages']);
   });
 
-  it('an old link to the team screen lands on the language screen', async () => {
-    const rig = await makeRig({ startRoute: 'team' });
-    expect(rig.app.current()).toBe('language');
-    expect(window.location.hash).toBe('#/language');
+  it('the navigation no longer lists the old setup steps', async () => {
+    const rig = await makeRig();
+    const rail = rig.q('.rail').textContent ?? '';
+    for (const gone of ['Choose your language', 'Install the pack', 'Orientation', 'Reader integration', 'Keep your progress']) expect(rail).not.toContain(gone);
+    expect(rail).toContain('Welcome');
+    expect(rail).toContain('Advanced');
   });
 
-  it('opens on the first incomplete step and follows a hash change', async () => {
+  it('the Advanced group starts collapsed, opens for one of its screens, and stays as the learner left it', async () => {
+    const rig = await makeRig();
+    const adv = (): HTMLDetailsElement => rig.q<HTMLDetailsElement>('#advanced-nav');
+    expect(adv().open).toBe(false);
+    expect([...adv().querySelectorAll('li[data-route]')].map((li) => li.getAttribute('data-route'))).toEqual(['sync', 'privacy', 'diagnostics', 'reader']);
+    await rig.go('privacy');
+    expect(adv().open).toBe(true);
+    await rig.go('welcome');
+    expect(adv().open).toBe(false);
+    // the learner opens it by hand: it stays open when another refresh redraws the list
+    adv().open = true;
+    adv().dispatchEvent(new Event('toggle'));
+    await rig.go('home');
+    expect(adv().open).toBe(true);
+  });
+
+  it.each(Object.keys(ALIASES))('an old link to #/%s lands on Welcome', async (old) => {
+    const rig = await makeRig({ startRoute: old });
+    expect(rig.app.current()).toBe('welcome');
+    expect(window.location.hash).toBe('#/welcome');
+  });
+
+  it('an old link followed while the app is open is rewritten, and rig.go on an old name shows Welcome', async () => {
+    const rig = await makeRig({ startRoute: 'privacy' });
+    window.location.hash = '#/pack';
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
+    await until(() => rig.app.current() === 'welcome');
+    await rig.app.ready();
+    expect(window.location.hash).toBe('#/welcome');
+    await rig.go('tutorial');
+    expect(rig.app.current()).toBe('welcome');
+    expect(rig.q('#screen h1').textContent).toBe('Welcome');
+  });
+
+  it('opens on Welcome while setup is not done and follows a hash change', async () => {
     const rig = await makeRig();
     expect(rig.app.current()).toBe('welcome');
     window.location.hash = '#/privacy';
@@ -49,51 +85,64 @@ describe('the router and the shell', () => {
     expect(rig.app.current()).toBe('welcome');
   });
 
-  it('marks completion from what is true, not from what was clicked', async () => {
+  it('marks completion from what is true, not from what was clicked: Welcome is done once a language is chosen and its pack installed', async () => {
     const rig = await makeRig();
-    const mark = (route: string): boolean => rig.q(`.rail li[data-route="${route}"] .mark`).classList.contains('done');
-    expect(mark('welcome')).toBe(true); // it is open
-    expect(mark('language')).toBe(false);
-    expect(mark('account')).toBe(false);
+    const mark = (): boolean => rig.q('.rail li[data-route="welcome"] .mark').classList.contains('done');
+    expect(mark()).toBe(false);
+    expect(rig.q('.rail li[data-route="welcome"] .sr').textContent).toContain('not yet');
     await signIn(rig);
-    expect(mark('account')).toBe(true); // an account is optional, but the mark still says what is true
-    expect(mark('language')).toBe(false); // signing in does not choose a language
-    expect(mark('pack')).toBe(false);
-    expect(mark('tutorial')).toBe(false);
-    expect(rig.q('.rail li[data-route="language"] .sr').textContent).toContain('not yet');
+    expect(mark()).toBe(false); // signing in does not choose a language
+    await chooseOnWelcome(rig, 'sq');
+    await until(() => mark());
+    expect(rig.q('.rail li[data-route="welcome"] .sr').textContent).toContain('done');
+    // the advanced screens carry no marks
+    expect(rig.root.querySelector('.rail li[data-route="sync"] .mark')).toBeNull();
   });
 
-  it('shows the compact status home once setup is complete, and Done — back to reading at the end', async () => {
+  it('shows the compact status home once setup is complete, and Done — back to reading on every screen', async () => {
     const rig = await makeRig({ extension: true });
-    // no account: choose a language, install, finish the orientation (the real screens do each of these, tested separately); here the state is set
+    // a language chosen with its pack installed (the real Welcome screen does both, tested separately); here the state is set
     await rig.deps.area.set({ [KEYS.choice]: { enrolmentId: 'loc-1', languageId: 'sq', varietyId: 'sq-standard', packId: 'pack:sq' } });
-    await rig.deps.area.set({ [KEYS.app]: { visited: ['welcome'], tutorial: 'skipped', tutorialStep: 0, packs: { 'pack:sq': { version: '9', ok: true, verifiedAt: '2026-10-08T00:00:00Z' } }, readerAck: false } });
+    await rig.deps.area.set({ [KEYS.app]: { visited: [], tutorial: 'pending', tutorialStep: 0, packs: { 'pack:sq': { version: '9', ok: true, verifiedAt: '2026-10-08T00:00:00Z' } }, readerAck: false } });
     await rig.go('home');
-    expect(rig.q('#status-list').children.length).toBe(4);
+    expect(rig.q('#status-list').children.length).toBe(2);
     expect(rig.text()).toContain('GoLearn is set up');
-    // without an account the progress is on this device, and the account step is offered any time
+    // without an account the progress is on this device, and signing in is offered any time (on Welcome)
     expect(rig.q('#progress-mode').textContent).toContain('On this device only');
     expect(rig.q('#progress-mode').getAttribute('data-state')).toBe('device');
-    expect(rig.q<HTMLAnchorElement>('#keep-progress').getAttribute('href')).toBe('#/account');
+    expect(rig.q<HTMLAnchorElement>('#keep-progress').getAttribute('href')).toBe('#/welcome');
     expect(rig.q<HTMLAnchorElement>('#practise').getAttribute('href')).toBe('../practice/index.html');
-    expect(rig.q('#status-list li[data-route="language"]').textContent).toContain('Albanian');
-    // the last screen carries the Done button
+    expect(rig.q('#status-list li[data-route="welcome"]').textContent).toContain('Albanian');
+    expect(rig.root.querySelector('a[href="#/tutorial"], a[href="#/account"], a[href="#/language"], a[href="#/pack"]')).toBeNull();
     await rig.go('diagnostics');
     const done = rig.q<HTMLButtonElement>('#done-reading');
     expect(done.textContent).toBe('Done — back to reading');
     done.click();
     expect(rig.closed.count).toBe(1);
     expect(rig.q('.finish-note').textContent).toContain('close this tab');
+    for (const id of ['welcome', 'home', 'sync', 'privacy', 'reader']) {
+      await rig.go(id);
+      expect(rig.root.querySelector('#done-reading'), id).not.toBeNull();
+    }
     await flush();
   });
 
-  it('every screen but the last has a link to the next one', async () => {
+  it('a pack that did not verify does not complete setup', async () => {
+    const rig = await makeRig({ extension: true });
+    await rig.deps.area.set({ [KEYS.choice]: { enrolmentId: 'loc-1', languageId: 'sq', varietyId: 'sq-standard', packId: 'pack:sq' } });
+    await rig.deps.area.set({ [KEYS.app]: { visited: [], tutorial: 'pending', tutorialStep: 0, packs: { 'pack:sq': { version: '9', ok: false, verifiedAt: '2026-10-08T00:00:00Z' } }, readerAck: false } });
+    await rig.go('home');
+    expect(rig.text()).toContain('Setup is not finished');
+    expect(rig.text()).toContain('Welcome');
+  });
+
+  it('there is no pager between screens: no "next" or "previous" setup links', async () => {
     const rig = await makeRig();
-    await rig.go('language');
-    expect(rig.q<HTMLAnchorElement>('.pager a.primary').getAttribute('href')).toBe('#/pack');
-    await rig.go('reader');
-    expect(rig.q<HTMLAnchorElement>('.pager a.primary').getAttribute('href')).toBe('#/account');
-    expect(rig.root.querySelector('#done-reading')).toBeNull();
+    for (const id of ['welcome', 'sync', 'reader']) {
+      await rig.go(id);
+      expect(rig.root.querySelector('.pager a.primary'), id).toBeNull();
+    }
+    expect(rig.root.querySelector('.pager a[href="#/pack"], .pager a[href="#/account"], .pager a[href="#/tutorial"]')).toBeNull();
   });
 
   it('the status home says "Synced to your account" once an account is signed in', async () => {

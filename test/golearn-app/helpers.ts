@@ -169,6 +169,16 @@ export const TUTORIAL_FAKE: TutorialView = {
   ],
 };
 
+/** An install whose checks all pass (the default). */
+export const passingInstall = (version = '9'): VerifyView => ({ ok: true, version, checks: [
+  { id: 'dictionary-manifest', label: 'Dictionary description (kaikki-sq, 91,271 entries)', ok: true },
+  { id: 'sample-shard', label: 'A dictionary shard can be fetched and read', ok: true },
+  { id: 'case:v-librin', label: 'Validation case: “librin”', ok: true },
+  { id: 'case:v-pine', label: 'Validation case: “pinë”', ok: true },
+] });
+/** An install that completes but one validation case does not match. */
+export const failingInstall = (version = '9'): VerifyView => ({ ...passingInstall(version), ok: false, checks: passingInstall(version).checks.map((c) => (c.id === 'case:v-pine' ? { ...c, ok: false, detail: 'the analyser gave pi' } : c)) });
+
 export interface FakePacks extends PackBindings {
   /** The packs the language cards resolve to; replace entries to make a language installable or planned. */
   all: PackView[];
@@ -184,12 +194,7 @@ export function fakePacks(): FakePacks {
   const extra = [DE_FAKE, HI_FAKE, TH_FAKE];
   const f: FakePacks = {
     all, installs: [], verifies: [],
-    nextInstall: { ok: false, version: '9', checks: [
-      { id: 'dictionary-manifest', label: 'Dictionary description (kaikki-sq, 91,271 entries)', ok: true },
-      { id: 'sample-shard', label: 'A dictionary shard can be fetched and read', ok: true },
-      { id: 'case:v-librin', label: 'Validation case: “librin”', ok: true },
-      { id: 'case:v-pine', label: 'Validation case: “pinë”', ok: false, detail: 'the analyser gave pi' },
-    ] },
+    nextInstall: passingInstall(),
     nextVerify: { ok: true, version: '9', checks: [{ id: 'dictionary-manifest', label: 'Dictionary description', ok: true }] },
     packs: () => f.all,
     languages: () => LANGUAGES_FAKE,
@@ -348,16 +353,34 @@ export function submit(form: HTMLFormElement): void {
   form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
 }
 
-/** Sign in through the Account screen's form. */
+/** Sign in through the Welcome screen's sign-in form. */
 export async function signIn(rig: Rig, email = 'ana@example.org', password = 'correct horse battery', create = false): Promise<void> {
   if (!create && !rig.service.accounts.has(email)) rig.service.accounts.set(email, { password, learnerId: `learner-${email.split('@')[0]}`, email });
-  await rig.go('account');
+  await rig.go('welcome');
   choose(rig.q<HTMLSelectElement>('#acct-mode'), create ? 'create' : 'signin');
   type(rig.q<HTMLInputElement>('#acct-email'), email);
   type(rig.q<HTMLInputElement>('#acct-password'), password);
   submit(rig.q<HTMLFormElement>('#acct-form'));
   await until(() => /Signed in as|Account created/.test(rig.q('#acct-form .status').textContent ?? ''));
   await flush(10);
+}
+
+/** The card of a language on the Welcome screen. */
+export const cardOf = (rig: Rig, languageId: string): HTMLElement => rig.q(`#language-cards > [data-language="${languageId}"]`);
+export const cardStatus = (rig: Rig, languageId: string): string => cardOf(rig, languageId).querySelector('.status')?.textContent ?? '';
+
+/**
+ * Choose a language the way a learner does: on its card on the Welcome screen (a written standard or regional preference first, when
+ * given). Waits until the choice and the pack install have finished (the card says it is ready, or why it is not).
+ */
+export async function chooseOnWelcome(rig: Rig, languageId: string, variety?: string, timeout = 8000): Promise<string> {
+  if (rig.app.current() !== 'welcome') await rig.go('welcome');
+  const card = cardOf(rig, languageId);
+  if (variety !== undefined) choose(card.querySelector<HTMLSelectElement>('select.variety')!, variety);
+  card.querySelector<HTMLButtonElement>('[data-action="choose"]')!.click();
+  await until(() => /is ready|did not|is chosen, but|cannot be chosen|Choose the|two written|could not|no pack/i.test(cardStatus(rig, languageId)), timeout);
+  await flush(5);
+  return cardStatus(rig, languageId);
 }
 
 // ───────────────────────────── a fake background worker ─────────────────────────────

@@ -3,8 +3,7 @@
  * The setup application against the REAL pieces it is built to work with, end to end, in one jsdom page:
  *   - the real Repository service (SQLite in memory, real scrypt crypto), reached through an in-process `fetch`;
  *   - the real background worker (src/background/core.ts) on a chrome fake, which holds the session, records and syncs;
- *   - the real language pack (installPack over the real dictionary files on disk) and the real Albanian tutorial;
- *   - the real parser and card for the orientation.
+ *   - the real language pack (installPack over the real dictionary files on disk).
  * Every message the application sends goes to the real worker, which only answers extension pages.
  */
 import fs from 'node:fs';
@@ -26,7 +25,7 @@ import { createBackground } from '../../packages/golearn-extension/src/backgroun
 import type { ChromeApi } from '../../packages/golearn-extension/src/platform';
 import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
 import { createChromeFake } from '../extension/chromeFake';
-import { selectText, stubLayout } from './domtools';
+import { stubLayout } from './domtools';
 import { choose, flush, submit, type, until } from './helpers';
 
 // the jsdom environment replaces the global URL with its own class, which node:fs and the SQLite migrations refuse
@@ -57,7 +56,7 @@ afterAll(() => restore());
 afterEach(() => { app?.destroy(); app = undefined; document.body.innerHTML = ''; });
 
 describe('the setup application with the real worker and the real service', () => {
-  it('chooses a language with no account, signs up, installs the pack, finishes a practice step, syncs, exports, and deletes — end to end', async () => {
+  it('chooses a language with no account (its pack installs by itself), signs up on the same page, syncs, exports, and deletes — end to end', async () => {
     document.body.innerHTML = '<div id="app"></div>';
     window.location.hash = '';
     const fake = createChromeFake();
@@ -87,18 +86,24 @@ describe('the setup application with the real worker and the real service', () =
     const q = <T extends Element = HTMLElement>(sel: string): T => { const el = document.querySelector<T>(sel); if (!el) throw new Error(`not found: ${sel}`); return el; };
     const go = async (route: string): Promise<void> => { await app!.go(route); await app!.ready(); await flush(); };
 
-    // ── language first, with no account: the choice is kept on this device
-    await go('language');
-    choose(q('#language'), 'sq');
-    submit(q<HTMLFormElement>('#enrol-form'));
-    await until(() => /Chosen:/.test(q('#enrol-form .status').textContent ?? ''), 8000);
-    expect(q('#enrol-form .status').textContent).toContain('Saved on this device');
+    // ── one page does it all. Language first, with no account: one click chooses it, keeps the choice on this device and installs the pack
+    //    (the real installer over the real dictionary files, every validation case run through the real analyser)
+    await go('welcome');
+    expect(q('#account-state').textContent).toBe('On this device only');
+    q('[data-language="sq"] [data-action="choose"]').click();
+    await until(() => /is ready|did not|could not/.test(q('[data-language="sq"] .status').textContent ?? ''), 20_000);
+    expect(q('[data-language="sq"] .status').textContent).toMatch(/Albanian is ready: [0-9]+ checks passed[.]/);
+    expect(q('[data-language="sq"] .status').textContent).toContain('Saved on this device');
+    expect(q('[data-language="sq"] .verify').getAttribute('data-ok')).toBe('true');
+    expect(q('[data-language="sq"] .verify').textContent).toMatch(/Verified: all [0-9]+ checks passed/);
+    expect(document.querySelectorAll('[data-language="sq"] .checks li').length).toBeGreaterThanOrEqual(14);
     expect(((await area.get('golearn:choice'))['golearn:choice'] as { languageId: string }).languageId).toBe('sq');
     expect((await area.get('golearn:session'))['golearn:session']).toBeUndefined();
+    expect((await area.get('golearn:pack:installed:pack:sq'))['golearn:pack:installed:pack:sq']).toMatchObject({ version: expect.any(String) });
+    await until(() => document.querySelector('.rail li[data-route="welcome"] .mark.done'));
+    expect(q('#next-note').textContent).toContain('GoLearn Active');
 
-    // ── account (optional, last): the worker signs the new account in; the page holds no token of its own making
-    await go('account');
-    expect(q('#account-state').textContent).toBe('On this device only');
+    // ── sign in (optional), on the same page: the worker signs the new account in; the page holds no token of its own making
     choose(q('#acct-mode'), 'create');
     type(q<HTMLInputElement>('#acct-email'), 'ana@example.org');
     type(q<HTMLInputElement>('#acct-password'), 'a very long password 123');
@@ -108,7 +113,7 @@ describe('the setup application with the real worker and the real service', () =
     expect(session.email).toBe('ana@example.org');
     expect(session.token.length).toBeGreaterThan(20);
     expect(JSON.stringify(await area.get(null))).not.toContain('a very long password 123');
-    expect(q('#account-state').textContent).toBe('Synced to your account');
+    expect(q('#account-state').textContent).toBe('Synced to your account as ana@example.org');
 
     // ── the language chosen on the device is now an enrolment on the account too (no team), and the worker adopted it
     await until(async () => (await store.listEnrolments(session.learnerId)).length === 1, 8000);
@@ -117,47 +122,24 @@ describe('the setup application with the real worker and the real service', () =
     expect(enrolment.teamId).toBeUndefined();
     await flush(30);
     expect((await area.get('golearn:session'))['golearn:session']).toMatchObject({ enrolmentId: enrolment.enrolmentId, languageId: 'sq' });
-
-    // ── pack: the real installer over the real dictionary files, every validation case run through the real analyser
-    await go('pack');
-    q('[data-pack="pack:sq"] [data-action="install"]').click();
-    await until(() => document.querySelector('[data-pack="pack:sq"] .verify'), 15_000);
-    const verify = q('[data-pack="pack:sq"] .verify');
-    expect(verify.getAttribute('data-ok')).toBe('true');
-    expect(verify.textContent).toMatch(/Verified: all \d+ checks passed/);
-    expect(document.querySelectorAll('[data-pack="pack:sq"] .checks li').length).toBeGreaterThanOrEqual(14);
-    expect((await area.get('golearn:pack:installed:pack:sq'))['golearn:pack:installed:pack:sq']).toMatchObject({ version: expect.any(String) });
-    await until(() => document.querySelector('.rail li[data-route="pack"] .mark.done'));
-
-    // ── orientation: a real card on the real Albanian passage, recorded by the worker under the learner’s own ids
-    await go('tutorial');
-    for (let i = 0; i < 40 && !document.querySelector('#demo-paragraph'); i++) { q<HTMLButtonElement>('#tutorial-next').click(); await flush(10); }
-    const para = q('#demo-paragraph');
-    const target = q('.demo .instruction.strong').textContent!.match(/“(.+?)”/)![1];
-    selectText(para, target);
-    para.dispatchEvent(new MouseEvent('dblclick', { bubbles: true }));
-    await until(() => /recorded as a tutorial encounter/.test(q('#tutorial-feedback').textContent ?? ''), 8000);
-    expect(document.querySelector('[data-golearn-host]')).toBeTruthy();
+    // the pack stayed installed; nothing needed installing again
+    expect(q('#language-cards > [data-language="sq"]').getAttribute('data-state')).toBe('ready');
     const all = Object.entries(await area.get(null)).filter(([k]) => k.startsWith('golearn:event:')).map(([, v]) => v as { learnerId: string; enrolmentId: string; producer: Record<string, string>; kind: string; payload: Record<string, unknown> });
-    // the install earlier wrote a PackInstalled (the pack's level and how far it is validated); the orientation wrote one lookup
+    // the install wrote one PackInstalled (the pack's level and how far it is validated), through the worker
     const installed = all.filter((e) => e.kind === 'PackInstalled');
     expect(installed).toHaveLength(1);
     expect(installed[0].payload).toMatchObject({ packId: 'pack:sq', level: 'installable', validation: 'unreviewed' });
     expect(installed[0].producer).toMatchObject({ app: 'golearn-ext', surface: 'pack' });
-    const logged = all.filter((e) => e.kind === 'SelectionLookedUp');
-    expect(logged).toHaveLength(1);
-    expect(logged[0]).toMatchObject({ kind: 'SelectionLookedUp', learnerId: session.learnerId, enrolmentId: enrolment.enrolmentId });
-    expect(logged[0].producer).toMatchObject({ app: 'golearn-ext', surface: 'tutorial' });
 
     // ── sync: the worker pushes it to the service
     await go('sync');
-    expect(q('#sync-facts').textContent).toMatch(/Waiting to send2/); // the PackInstalled and the orientation's lookup
+    expect(q('#sync-facts').textContent).toMatch(/Waiting to send1/); // the PackInstalled
     q('#sync-now').click();
     await until(() => /Synchronised|Sent|Nothing/.test(q('.screen .body > .status').textContent ?? ''), 10_000);
-    const stored = await store.list({ learnerId: session.learnerId, kinds: ['SelectionLookedUp'] });
+    const stored = await store.list({ learnerId: session.learnerId, kinds: ['PackInstalled'] });
     expect(stored).toHaveLength(1);
-    expect(stored[0].producer.surface).toBe('tutorial');
-    expect(stored[0].payload).toMatchObject({ surface: target, readerId: 'demo-reader' });
+    expect(stored[0].producer.surface).toBe('pack');
+    expect(stored[0].payload).toMatchObject({ packId: 'pack:sq', level: 'installable', validation: 'unreviewed' });
     await until(() => /Waiting to send0/.test(q('#sync-facts').textContent ?? ''), 5000);
 
     // ── privacy: the export carries the event; deleting the account erases it and signs the page out
@@ -165,7 +147,7 @@ describe('the setup application with the real worker and the real service', () =
     q('#export-data').click();
     await until(() => downloads.length === 1, 8000);
     const exported = JSON.parse(await new Promise<string>((resolve) => { const r = new FileReader(); r.onload = () => resolve(String(r.result)); r.readAsText(downloads[0].blob); }));
-    expect(JSON.stringify(exported)).toContain('SelectionLookedUp');
+    expect(JSON.stringify(exported)).toContain('PackInstalled');
     type(q<HTMLInputElement>('#delete-email'), 'ana@example.org');
     q('#delete-account').click();
     await until(() => /erased/.test(q('#priv-delete').closest('section')!.textContent ?? ''), 10_000);

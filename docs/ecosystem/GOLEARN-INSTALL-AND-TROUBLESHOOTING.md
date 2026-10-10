@@ -11,7 +11,7 @@ more than one device.
 |---|---|---|
 | Go Repository service (only for the optional account) | run by the owner (`npx vite-node packages/repository-service/src/main.ts --port 8790 --data data/repository`, Node 24, no other dependency) or hosted later; the learner only enters its address | accounts (scrypt hashes), sessions (sha256 of tokens), enrolments, events, projections, private documents |
 | GoLearn extension | Chrome: `chrome://extensions` → Developer mode → Load unpacked → `packages/golearn-extension/dist` (after `npm run ext:build` and the options build below). No website can install it; the hosted setup page only explains these steps | the on-device Repository (every lookup, your language enrolments, the learner model; `chrome.storage.local`, owned by the background worker), the session token and service address if you sign in (background only), the event queue, dictionary shards |
-| GoLearn setup page | the extension's options page (`dist/app/`), or the hosted web build (`dist-web/`) for reading the orientation and the installation guide without the extension | settings, tutorial progress, pack-install record; in web mode only the page's own origin |
+| GoLearn setup page | the extension's options page (`dist/app/`), or the hosted web build (`dist-web/`) for reading the installation guide without the extension | settings, pack-install record; in web mode only the page's own origin |
 | Albanian language pack | the analyser is bundled in the extension; the dictionary (CC BY-SA, 6.4 MB) is packaged with the setup page and fetched into extension storage on install; the installer verifies the dictionary and runs 14 validation selections through the analyser | `golearn:pack:installed:pack:sq` and `pack:shard:*` |
 
 Builds:
@@ -28,27 +28,28 @@ Run the options build after `ext:build` (the content build keeps `dist/app/`). `
 
 No account, no team and no service are needed for any of these.
 
-1. Open the setup page (toolbar button → Open GoLearn setup, or `dist-web/index.html`).
-2. Choose your language: six cards (Norwegian, German, Albanian, Hindi, Thai, Spanish), each with what works, what does
-   not, how far its pack is built and what the audio is. Any language is open to you. Norwegian asks for the written
-   standard (Bokmål or Nynorsk; nothing is preselected); Spanish offers an optional regional preference (Honduras is
-   one). You can add more languages later and switch between them from the same screen.
-3. Install the pack. Expected for Albanian: "Verified: all 16 checks passed". The other packs are experimental and say
-   so. If the dictionary address is empty the card has no dictionary meanings; set it on this screen (https,
-   localhost or the extension's own files).
-4. Orientation: the tutorial of the language you chose (Albanian: 15 steps, about 28 minutes), skippable in one click,
-   repeatable from the summary. The practice steps show the real card on a demonstration passage (machine-drafted,
-   not checked by a native speaker — it says so).
-5. Reader integration: in the extension, nothing to do. In the web page: follow the unpacked-load steps above.
-6. Read: open any ordinary web page or the controlled EPUB reader with a DRM-free book you own; turn GoLearn on for
+1. Open the setup page (toolbar button → Open GoLearn setup, or `dist-web/index.html`). It opens on **Welcome**, which is
+   the whole of setup: two sections, nothing else to do.
+2. **Choose your language**: six cards (Norwegian, German, Albanian, Hindi, Thai, Spanish), each with what works, what
+   does not, how far its pack is built and what the audio is. Any language is open to you. Norwegian asks for the
+   written standard (Bokmål or Nynorsk; nothing is preselected); Spanish offers an optional regional preference
+   (Honduras is one). One click on a card saves the choice and installs the language's pack by itself, checking it as it
+   goes. The card then says, for Albanian, "Albanian is ready: 16 checks passed" (the other packs are experimental and
+   say so; every pack is machine-drafted and not native-reviewed), or says what failed and offers **Retry**. You can
+   choose more languages and switch between them from the same page. If the dictionary address is empty the card has no
+   dictionary meanings; it is set under Advanced → Diagnostics and updates (https, localhost or the extension's own files).
+3. **Sign in (optional)**, on the same page: see step 7 below. After sign-in nothing else needs doing.
+4. The page now says what to do next: open a page in the language and switch on **GoLearn Active** in the extension
+   popup.
+5. Read: open any ordinary web page or the controlled EPUB reader with a DRM-free book you own; turn GoLearn on for
    the tab from the toolbar button; double-click a word (or select and press Alt+Shift+G, or right-click → Look up
    with GoLearn).
-7. Practise: the **Practise** button in the toolbar popup (or on the setup page's Status screen) opens GoPractice as a
+6. Practise: the **Practise** button in the toolbar popup (or on the setup page's Status screen) opens GoPractice as a
    page of the extension. It works on the device, without signing in: GoReview reads the candidates and knowledge from
    the on-device Repository, GoTell saves drafts there.
-8. Optional, and last: **Keep your progress (optional)**. Enter the service address (https, or http on localhost) and
+7. Optional, on the Welcome page under **Sign in (optional)**: enter the service address (under the form, in "Service address") (https, or http on localhost) and
    create an account or sign in. The password goes to the service only. What is already on this device is uploaded
-   **once** (the screen says how many events), the status changes from "On this device only" to "Synced to your
+   **once** (the page says how many events), the status changes from "On this device only" to "Synced to your
    account", and your language is enrolled on the account too. Signing out returns to this device alone and removes
    nothing; clearing the device's data is its own deliberate step (Privacy → Clear local data). Signing in on another
    account replaces the session and clears the cached profile.
@@ -61,7 +62,7 @@ No account, no team and no service are needed for any of these.
 | The toolbar switch turns off after a reload | `activeTab` is granted per gesture and lost on navigation | turn it on again (one click); this is by design |
 | The card says "only the selected word (this reader gives no sentence)" | the reader exposes no sentence context (cross-origin frame, or a reader that renders bitmaps) | the lookup still works without disambiguation; see the supported-surfaces list |
 | Kindle for Web shows nothing | Kindle renders pages as images; there is no text to select | copy the word or sentence in Kindle and paste it into the demonstration reader; Kindle is not supported and no claim is made |
-| "Not connected: your history with this word is not shown." | you are using GoLearn on this device only | nothing is wrong; the card still works. Setup → Keep your progress (optional) only if you want your history on a service |
+| "Not connected: your history with this word is not shown." | you are using GoLearn on this device only | nothing is wrong; the card still works. Setup → Welcome → Sign in (optional) only if you want your history on a service |
 | "Your history with this word is not available until you sign in to GoLearn again." | the session expired or was revoked (401) | sign in again; nothing was lost, the queue waits |
 | Sync shows pending rows and an error | the service is unreachable or offline | nothing to do; the worker retries with backoff and keeps every event; Sync → Sync now forces an attempt |
 | "Speech is not available in this browser." / "No local Albanian voice" | the browser has no `speechSynthesis` or no voice tagged `sq`/`sq-AL` | there is no Albanian recording and no bundled voice; an English voice is never substituted; a remote voice needs the owner's provider key and your consent (Privacy) |

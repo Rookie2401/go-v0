@@ -263,7 +263,7 @@ describe('data that comes back from the background or the dictionary is data too
         profile: { state: 'unavailable', weak: [evil], reason: 'error' },
         correction: { state: 'error', message: evil },
       },
-      actions: { onLayer: () => {}, onPronounced: () => {}, onSave: () => {}, onCorrect: () => {} },
+      actions: { onLayer: () => {}, onPronounced: () => {}, onCorrect: () => {} },
     });
     u.setFeedback(evil);
     expandEverything(u);
@@ -280,13 +280,46 @@ describe('data that comes back from the background or the dictionary is data too
     expect(document.querySelectorAll('img,script,iframe,a,svg').length).toBe(0);
   });
 
+  // The one place the card has links: the "view sources" list. `a` and `href` are allowed THERE and nowhere else (the checks above, which
+  // forbid both, run on cards that carry no sources); a source whose address is not a plain https one is shown as its name, never as a link.
+  it('"view sources": only https addresses become links, every link opens a new tab without an opener, and the links sit inside the sources list only', () => {
+    pageWith('Unë po lexoj një libër të bukur në ', 'shtëpinë', ' time.');
+    sinks = watchHtmlSinks();
+    const u = createCardUI({ doc: document, speech: null });
+    ui = u;
+    const card = parseSelection({ surface: 'shtëpinë', context: { kind: 'sentence', confidence: 0.9, sentence: BENIGN, selStart: 33, selEnd: 41 } });
+    const anchor = { rect: rects(), viewport: { width: 1024, height: 768 }, rtl: false, source: 'range' as const };
+    u.show(card, anchor, { view: initialView('Albanian') });
+    u.update({ sources: [
+      { label: 'javascript', url: 'javascript:window.__pwned=1' }, { label: 'data', url: 'data:text/html,<script>window.__pwned=1</script>' },
+      { label: 'plain http', url: 'http://example.test/' }, { label: 'credentials', url: 'https://user:pw@example.test/' }, { label: 'relative', url: '/etc/passwd' },
+      { label: 'good <img src=x onerror=window.__pwned=1>', url: 'https://en.wiktionary.org/wiki/x', licence: 'CC BY-SA 4.0' },
+    ] });
+    expandEverything(u);
+    const root = u.root()!;
+    const links = Array.from(root.querySelectorAll('a'));
+    expect(links.map((a) => a.getAttribute('href'))).toEqual(['https://en.wiktionary.org/wiki/x']);
+    for (const a of links) {
+      expect(a.closest('.sources'), 'a link outside the sources list').toBeTruthy();
+      expect(a.getAttribute('target')).toBe('_blank');
+      expect(a.getAttribute('rel')).toBe('noopener noreferrer');
+      expect(Array.from(a.attributes).map((x) => x.name).sort()).toEqual(['href', 'rel', 'target']);
+    }
+    // every other element of the card carries no href, src or handler; the markup in a label is text
+    for (const el of Array.from(root.querySelectorAll('*'))) if (el.tagName !== 'A') for (const a of Array.from(el.attributes)) expect(['href', 'src', 'srcdoc', 'action', 'formaction'].includes(a.name) || /^on/i.test(a.name), `${el.tagName} ${a.name}`).toBe(false);
+    expect(root.querySelectorAll('img,script,iframe,object,embed,svg').length).toBe(0);
+    expect(root.querySelector('.sources')!.textContent).toContain('<img src=x onerror=window.__pwned=1>');
+    expect(sinks.calls).toEqual([]);
+    expect((window as unknown as Record<string, unknown>).__pwned).toBeUndefined();
+  });
+
   it('what a hostile background reply (wrong types, huge strings, cycles) does to the card is nothing worse than an honest partial card', async () => {
     pageWith('Unë po lexoj një libër të bukur në ', 'shtëpinë', ' time.');
     const u = createCardUI({ doc: document, speech: null });
     ui = u;
     const card = parseSelection({ surface: 'shtëpinë', context: { kind: 'sentence', confidence: 0.9, sentence: BENIGN, selStart: 33, selEnd: 41 } });
     const anchor = { rect: rects(), viewport: { width: 1024, height: 768 }, rtl: false, source: 'range' as const };
-    u.show(card, anchor, { view: initialView('Albanian'), actions: { onLayer: () => {}, onPronounced: () => {}, onSave: () => {}, onCorrect: () => {} } });
+    u.show(card, anchor, { view: initialView('Albanian'), actions: { onLayer: () => {}, onPronounced: () => {}, onCorrect: () => {} } });
     const cyc: Record<string, unknown> = {}; cyc.self = cyc;
     for (const patch of [{ gloss: null }, { gloss: { state: 'ready', senses: 'not-a-list' } }, { gloss: { state: 'ready', senses: [null, 5, {}, cyc] } }, { explain: { state: 'ready', features: 7, constructions: null } }, { profile: 'x' }, { depth: { a: 1 } }, {}, { gloss: { state: 'ready', senses: ['x'.repeat(2_000_000)] } }]) {
       try { u.update(patch as never); } catch { /* an exception inside update is caught by the controller's promise chain; what matters is the page */ }

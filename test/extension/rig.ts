@@ -84,6 +84,8 @@ export function createRig(): Rig {
   // the dictionary lives under the same base in the tests: dict/ paths get a trivial shard, everything else is the service
   const fetchImpl = (async (input: RequestInfo | URL, init?: RequestInit) => {
     const u = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+    // the extension's own app/config.json (read for the source links) is a file of the extension, not a request to the service
+    if (u.endsWith('/app/config.json')) return new Response('', { status: 404 });
     if (u.includes('/dict/')) { if (offline.value) throw new TypeError('Failed to fetch'); log.push({ method: 'GET', path: new URL(u).pathname, status: 200 }); return shard(); }
     return svcFetch(input, init);
   }) as typeof fetch;
@@ -120,6 +122,8 @@ export function knowledgeRow(learnerId: string, unitId: string, dims: Partial<Re
     dimensions: Object.fromEntries(names.map((n) => [n, dim(dims[n])])) as UnitKnowledge['dimensions'],
     retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'none' }, uncertainty: 0.5, modelVersion: 'test', basis: { events: 1 },
     lastSeenAt: '2026-10-08T09:00:00.000Z',
+    // the engine's own level and meeting count (a stand-in: 'seen' once anything was observed; the page's thresholds are tested on their own)
+    level: names.some((d) => (dims[d]?.observations ?? 0) > 0) ? 'seen' : 'new', encounters: names.reduce((n, d) => n + (dims[d]?.observations ?? 0), 0),
   };
 }
 

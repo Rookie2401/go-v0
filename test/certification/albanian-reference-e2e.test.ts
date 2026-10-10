@@ -303,12 +303,12 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
     firstCardText = t;
     expect(t).toContain('libër (NOUN)');                                                   // 7. lemma
     expect(t).toContain('definite masculine accusative singular');                          // 7. morphology
-    (r.ui.root()!.querySelector('button.l2') as HTMLElement).click();
+    (r.ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click();
     expect(r.ui.root()!.querySelector('.layer.l2')!.textContent).toMatch(/accusative/i);    // 8. contextual explanation
     expect(t).toMatch(/context\s*full sentence/i);
     expect(t).toMatch(/Speech is not available|No local Albanian voice|voice/i);           // 9. GoListen: nothing validated for Albanian here, said plainly
     expect(t).not.toMatch(/native-quality|native speaker voice/i);
-    expect(t).toMatch(/not met this word before|first time/i);
+    expect(t).toMatch(/· 0× encounters/);
   });
 
   it('10–11. the encounter is recorded under the account without text, and no mastery was granted', async () => {
@@ -316,7 +316,7 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
     const r = reader();
     const again = await lookup(r, 'librin');                                               // a second encounter, so the Repository has something to propose
     expect(again.recorded).toBe('recorded');
-    (r.ui.root()!.querySelector('button.saveBtn') as HTMLElement).click();                 // "Review this" on the card: GoLearn's own ItemMarked
+    (r.ui.root()!.querySelector('.rateBtn[data-mark="new"]') as HTMLElement).click();      // the learner's own level on the card ("New", which grants no evidence): GoLearn's own ItemMarked
     await flush(40);
     await fireWorkerTimers();
     await page({ type: MSG.syncNow });
@@ -333,7 +333,9 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
     expect(evs.some((e) => e.kind === 'PronunciationPlayed')).toBe(false);
     const d = await dimsOf(learnerId, LEMMA);                                              // 11. no unearned mastery
     expect(d.exposure.observations).toBeGreaterThan(0);
-    for (const k of DIMS) if (k !== 'exposure' && k !== 'assistedRecognition') expect(d[k].weight, k).toBe(0);
+    // The learner's own "New" on the card is a weak NEGATIVE self-report of reading recognition (engine rule `itemMark`): it may carry weight, never a positive credit.
+    for (const k of DIMS) if (k !== 'exposure' && k !== 'assistedRecognition' && k !== 'readingRecognition') expect(d[k].weight, k).toBe(0);
+    expect(d.readingRecognition.positive, 'readingRecognition').toBe(0);
   });
 });
 
@@ -469,11 +471,11 @@ describe('§14 Return to GoLearn (steps 25–29)', () => {
     const out = await lookup(r, 'librin');                                                    // 27. the same form
     expect(out.status).toBe('shown');
     const t = r.text();
-    expect(t).toMatch(/You have met this word \d+ times/);                                    // 28. assistance reflects the model
-    expect(t).toMatch(/reading recognition: (low|medium|high)/);
-    expect(t).not.toMatch(/not met this word before/);
+    expect(t).toMatch(/· [1-9]\d*× encounters/);                                      // 28. assistance reflects the model (the card shows the number of meetings only)
+    expect(r.ui.root()!.querySelector('.rateBtn[aria-pressed="true"]')).not.toBeNull();       // ...and the word's level
+    expect(t).not.toMatch(/· 0× encounters/);
     expect(t).not.toBe(firstCardText);
-    (r.ui.root()!.querySelector('button.l4') as HTMLElement).click();                         // 29. the deeper explanation
+    (r.ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click();                   // 29. the deeper explanation
     expect(r.ui.root()!.querySelector('.layer.l4')!.textContent).toMatch(/direct object|ending|accusative/i);
     expect(t).toContain('libër (NOUN)');
     const related = await lookup(reader(), 'çajin');                                          // 27. a related form of the same construction

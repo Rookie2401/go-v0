@@ -14,7 +14,7 @@ export function row(unitId: string, dims: Partial<Record<Dimension, Partial<Dime
   const dimensions = Object.fromEntries(DIMENSIONS.map((d) => [d, est(dims[d])])) as Record<Dimension, DimensionEstimate>;
   return {
     learnerId: LEARNER, unitId, languageId: 'sq', dimensions,
-    retention: { estimate: 0, halfLifeDays: 1, basedOn: 'none' }, uncertainty: 1, modelVersion: 'test', basis: { events: 0 }, ...over,
+    retention: { estimate: 0, halfLifeDays: 1, basedOn: 'none' }, level: 'seen', encounters: 1, uncertainty: 1, modelVersion: 'test', basis: { events: 0 }, ...over,
   };
 }
 

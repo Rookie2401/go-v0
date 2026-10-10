@@ -10,6 +10,7 @@
  *  - everything that arrives from a remote service is data: it is rendered as text and unit ids are matched against a pattern.
  */
 import type { Dimension } from '../../repository-contract/src';
+import { KNOWLEDGE_LEVELS, type KnowledgeLevel, type LevelMark } from '../../repository-contract/src/knowledge-levels';
 
 export type ExplanationDepth = 'label' | 'brief' | 'explanatory';
 export const DEPTHS: readonly ExplanationDepth[] = ['label', 'brief', 'explanatory'];
@@ -67,12 +68,29 @@ export interface PageStatus extends PublicStatus {
 }
 
 export interface DimView { score: number; confidence: number; observations: number; positive: number; negative: number }
-/** The learner's own statement about a word ("New to me" / "I recognise it" / "I can use it"): the `ItemMarked` marks that say something about knowledge. */
-export type SelfMark = 'learning' | 'known' | 'productive';
-export const SELF_MARKS: readonly SelfMark[] = ['learning', 'known', 'productive'];
+/**
+ * The learner's own statement about a word: one of the six knowledge levels (New, Seen, Recognized, Familiar, Known, Automatic),
+ * sent as the `mark` of an `ItemMarked` event. Marks stored before the six levels ('learning', 'known', 'productive') are read
+ * through `levelOfMark` by whoever reads them (the Repository projection, `src/active/levels.ts`).
+ */
+export type SelfMark = KnowledgeLevel;
+export const SELF_MARKS: readonly SelfMark[] = KNOWLEDGE_LEVELS;
 export const isSelfMark = (v: unknown): v is SelfMark => typeof v === 'string' && (SELF_MARKS as readonly string[]).includes(v);
 /** A knowledge row as the content script sees it: the dimensions, the learner's latest own mark if any, no learner id. */
-export interface KnowledgeView { unitId: string; dimensions: Partial<Record<Dimension, DimView>>; lastSeenAt?: string; selfMark?: { mark: SelfMark; at: string } }
+export interface KnowledgeView {
+  unitId: string;
+  dimensions: Partial<Record<Dimension, DimView>>;
+  lastSeenAt?: string;
+  /** The learner's latest own mark. A row written before the six levels may carry one of the three older words ('learning' | 'known' | 'productive'): read it with `levelOfMark`. */
+  selfMark?: { mark: LevelMark; at: string };
+  /** The knowledge level the engine computed for the unit (absent from an older engine: the page then works it out from the dimensions, `src/active/levels.ts`). */
+  level?: KnowledgeLevel;
+  /** How many times the learner has met the unit, as the engine counts it (absent from an older engine: the page then sums the observations). */
+  encounters?: number;
+}
+
+/** Where a card's information came from, for its "view sources" list. A source without a `url` is named only (the course word list is a file of the extension, not a page). */
+export interface SourceLink { label: string; url?: string; licence?: string }
 
 export interface ProfileRequest { unitIds: string[]; languageId: string }
 export interface ProfileReply {
@@ -103,6 +121,8 @@ export interface GlossReply {
   message?: string;
   /** Where the meanings were read from: the learner's dictionary address, the extension's own files, or the hosted copy. */
   source?: 'configured' | 'extension' | 'hosted';
+  /** The pages and files the information came from (Wiktionary, kaikki.org, the course word list). The worker builds the links; the content bundle holds no address. */
+  sources?: SourceLink[];
 }
 
 /** Level 2 (Linguistic Engine V2): the dictionary's FULL record of a lemma (inflection table, etymology, IPA, audio, related words; schema full-1). */
@@ -116,6 +136,7 @@ export interface EntryReply {
   reason?: 'no-pack' | 'no-asset-base' | 'offline' | 'not-found' | 'error' | 'no-full-records';
   message?: string;
   source?: 'configured' | 'extension' | 'hosted';
+  sources?: SourceLink[];
 }
 
 export interface ExplainRequest { languageId: string; pos?: string; features: Record<string, string>; constructionIds: string[] }

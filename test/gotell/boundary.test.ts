@@ -106,7 +106,7 @@ describe('words you can use', () => {
       learnerId: 'L1', unitId, languageId,
       dimensions: Object.fromEntries(['exposure', 'assistedRecognition', 'readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding']
         .map((d) => [d, { score: 0, confidence: 0.5, observations: 0, positive: 0, negative: 0, weight: 0, contexts: 0, ...dims[d] }])) as UnknownDims,
-      retention: { estimate: 0, halfLifeDays: 1, basedOn: 'none' }, uncertainty: 1, modelVersion: 't', basis: { events: 0 },
+      retention: { estimate: 0, halfLifeDays: 1, basedOn: 'none' }, level: 'seen', encounters: 1, uncertainty: 1, modelVersion: 't', basis: { events: 0 },
     });
     type UnknownDims = UnitKnowledge['dimensions'];
     const words = wordsFrom([

@@ -20,6 +20,14 @@ let ui: CardUI;
 const dismissed: DismissReason[] = [];
 const make = (speech: SpeechLike | null = null) => createCardUI({ doc: document, speech, onDismiss: (r) => dismissed.push(r), makeUtterance: (text, voice) => ({ text, voice }) });
 const text = (el: ParentNode | undefined): string => (el as HTMLElement | undefined)?.textContent ?? '';
+/** What is on screen: the card's text without the closed panels, the off-screen live regions and the style sheet. */
+const visibleText = (root: ShadowRoot | undefined): string => {
+  const c = (root!.querySelector('.card') as HTMLElement).cloneNode(true) as HTMLElement;
+  c.querySelectorAll('[hidden], .sr, style').forEach((e) => e.remove());
+  return c.textContent ?? '';
+};
+const buttonsOf = (root: ShadowRoot | undefined): HTMLButtonElement[] => [...root!.querySelectorAll('button')].filter((b) => !b.closest('[hidden]'));
+const click = (root: ShadowRoot | undefined, selector: string): void => (root!.querySelector(selector) as HTMLElement).click();
 const pointerDown = (target: EventTarget) => target.dispatchEvent(new MouseEvent('pointerdown', { bubbles: true, composed: true, cancelable: true }));
 const key = (target: EventTarget, k: string, init: KeyboardEventInit = {}) => {
   const e = new KeyboardEvent('keydown', { key: k, bubbles: true, composed: true, cancelable: true, ...init });
@@ -65,7 +73,7 @@ describe('placement', () => {
 });
 
 describe('the card in the page', () => {
-  it('is a fixed host with a closed shadow root appended to body, and shows word, lemma, meaning, form and confidence', () => {
+  it('is a fixed host with a closed shadow root appended to body, and holds word, lemma, meaning, form and confidence (the last three in "Go deeper")', () => {
     const placement = ui.show(cardFor(), anchor());
     const host = document.body.querySelector(`[${GOLEARN_HOST_ATTR}]`) as HTMLElement;
     expect(host).toBeTruthy();
@@ -78,7 +86,7 @@ describe('the card in the page', () => {
     expect(t).toContain('shtëpi (NOUN)');
     expect(t).toContain('house, home');
     expect(t).toMatch(/definite feminine accusative singular/);
-    expect(t).toMatch(/confidence/);
+    expect(t).toMatch(/Confidence/);
     expect(t).toMatch(/machine-drafted/);
     expect(ui.isOpen()).toBe(true);
     expect(placement.placement).toBe('below');
@@ -87,14 +95,39 @@ describe('the card in the page', () => {
     expect(cardEl.getAttribute('role')).toBe('dialog');
   });
 
-  it('labels each analysis line as analysis and the word as fact, and names the limits in the "more" panel', () => {
+  it('labels each analysis line as analysis, and names the context, confidence, labels, limits and analyser in "About this analysis", the last block of "Go deeper"', () => {
     ui.show(cardFor(), anchor());
     const tags = [...ui.root()!.querySelectorAll('.tag')].map((x) => x.textContent);
     expect(tags).toContain('analysis');
-    const more = ui.root()!.querySelector('.more:not(.layer)') as HTMLElement;
-    expect(more.textContent).toMatch(/machine-drafted/);
-    expect(more.textContent).toMatch(/fact: what you selected/);
-    expect(more.textContent).toMatch(/Context/);
+    const about = ui.root()!.querySelector('.about') as HTMLElement;
+    expect(about.textContent).toMatch(/machine-drafted/);
+    expect(about.textContent).toMatch(/fact: what you selected/);
+    expect(about.textContent).toMatch(/Context/);
+    expect(about.textContent).toMatch(/Confidence\s*0\.\d\d/);
+    expect(about.textContent).toMatch(/Limits/);
+    expect(about.textContent).toMatch(/adapter-sq@/);
+    expect([...ui.root()!.querySelectorAll('.deeper h3')].at(-1)!.textContent).toBe('About this analysis');
+  });
+
+  it('the immediate card is the word with its speaker, the meaning and the subscript "view sources", then "Go deeper": no form line, confidence, context, you-row, pronounce button or Review button', () => {
+    ui.show(cardFor(), anchor());
+    const v = visibleText(ui.root());
+    expect(v).toContain('shtëpinë');
+    expect(v).toContain('house, home');
+    expect(v).toContain('view sources');
+    expect(v).toContain('Go deeper');
+    expect(v).not.toMatch(/confidence/i);
+    expect(v).not.toMatch(/context/i);
+    expect(v).toMatch(/shtëpi.*lemma/); // the lemma line, only because the lemma differs from the word
+    expect(v).not.toMatch(/definite feminine/); // the morphology line is in Go deeper
+    expect(v).not.toMatch(/Pronounce|practice/i);
+    expect(v).not.toMatch(/Review this|Saved for review/);
+    const labels = buttonsOf(ui.root()).map((b) => b.getAttribute('aria-label') ?? b.textContent);
+    expect(labels).not.toContain('Review this');
+    expect(labels.join('|')).not.toMatch(/wrong|More|Pronounce/);
+    // the word comes first, the meaning under it, "view sources" under the meaning
+    const order = ['.word', '.meaning', '.sourcesBtn', '.deeperBtn'].map((sel) => ui.root()!.querySelector(sel)!);
+    for (let i = 1; i < order.length; i++) expect(order[i - 1].compareDocumentPosition(order[i]) & Node.DOCUMENT_POSITION_FOLLOWING, order[i].className).toBeTruthy();
   });
 
   it('does not touch the page: no page element changes, no style added to the document, nothing inserted but the host', () => {
@@ -190,19 +223,28 @@ describe('dismissal', () => {
 });
 
 describe('keyboard and tab order', () => {
-  it('with no voice: the controls are Close, the four layers, Review, Wrong, More and the three "how well do you know it" marks; the pronounce button is disabled and says why', () => {
+  it('with no voice: the controls are Close, view sources, the six circles of the level meter, Go deeper and Report; the speaker is disabled and its title says why', () => {
     ui.show(cardFor(), anchor());
-    const names = [...ui.root()!.querySelectorAll('button:not([disabled])')].filter((b) => !b.closest('[hidden]')).map((b) => b.getAttribute('aria-label') ?? b.textContent);
-    expect(names).toEqual(['Close GoLearn card', 'Form', 'Phrase & syntax', 'Grammar', 'English rescue', 'Review this', 'This analysis is wrong', 'More', 'All forms', 'Meanings', 'Origin', 'Word structure', 'Sound', 'New to me', 'I recognise it', 'I can use it']);
+    const names = buttonsOf(ui.root()).filter((b) => !b.disabled).map((b) => b.getAttribute('aria-label') ?? b.textContent);
+    expect(names).toEqual(['Close GoLearn card', 'view sources', 'New', 'Seen', 'Recognized', 'Familiar', 'Known', 'Automatic', 'Go deeper', 'Report']);
     const say = ui.root()!.querySelector('.say') as HTMLButtonElement;
     expect(say.disabled).toBe(true);
-    expect(text(ui.root())).toMatch(/Speech is not available/);
+    expect(say.getAttribute('aria-label')).toBe('Play with GoListen');
+    expect(say.title).toMatch(/Speech is not available/); // the title says so; nothing else of it is drawn
+    expect(visibleText(ui.root())).not.toMatch(/Speech is not available/);
+  });
+  it('with a voice: the speaker comes right after Close, and the list is Close, Play with GoListen, view sources, the six levels, Go deeper, Report', () => {
+    ui.destroy(); ui = make({ getVoices: () => [{ lang: 'sq-AL', name: 'sq', localService: true }], speak() {}, cancel() {} });
+    ui.show(cardFor(), anchor());
+    const names = buttonsOf(ui.root()).filter((b) => !b.disabled).map((b) => b.getAttribute('aria-label') ?? b.textContent);
+    expect(names).toEqual(['Close GoLearn card', 'Play with GoListen', 'view sources', 'New', 'Seen', 'Recognized', 'Familiar', 'Known', 'Automatic', 'Go deeper', 'Report']);
+    expect((ui.root()!.querySelector('.say') as HTMLButtonElement).title).toBe('Play with GoListen');
   });
   it('Tab wraps inside the card in both directions while focus is in it', () => {
     ui.show(cardFor(), anchor(), { focus: true });
     const root = ui.root()!;
     const close = root.querySelector('.close') as HTMLElement;
-    const more = root.querySelector('.rateBtn[data-mark="productive"]') as HTMLElement; // the last control: "I can use it"
+    const more = root.querySelector('.reportBtn') as HTMLElement; // the last control: "Report"
     expect(root.activeElement).toBeTruthy();
     more.focus();
     const e1 = key(more, 'Tab');
@@ -223,18 +265,30 @@ describe('keyboard and tab order', () => {
     key(ui.root()!.querySelector('.card')!, 'Escape');
     expect(document.activeElement).toBe(btn);
   });
-  it('the more panel is a disclosure: hidden by default, aria-expanded follows', () => {
+  it('"Go deeper" is one disclosure: the sections are hidden by default, aria-expanded follows, the button reads "Less" while open', () => {
     ui.show(cardFor(), anchor());
-    const more = ui.root()!.querySelector('.more:not(.layer)') as HTMLElement;
-    const btn = ui.root()!.querySelector('.moreBtn') as HTMLButtonElement;
-    expect(more.hasAttribute('hidden')).toBe(true);
+    const deeper = ui.root()!.querySelector('.deeper') as HTMLElement;
+    const btn = ui.root()!.querySelector('.deeperBtn') as HTMLButtonElement;
+    expect(deeper.hasAttribute('hidden')).toBe(true);
     expect(btn.getAttribute('aria-expanded')).toBe('false');
+    expect(btn.getAttribute('aria-controls')).toBe(deeper.id);
+    expect(btn.textContent).toBe('Go deeper');
     btn.click();
-    expect(more.hasAttribute('hidden')).toBe(false);
+    expect(deeper.hasAttribute('hidden')).toBe(false);
     expect(btn.getAttribute('aria-expanded')).toBe('true');
     expect(btn.textContent).toBe('Less');
     btn.click();
-    expect(more.hasAttribute('hidden')).toBe(true);
+    expect(deeper.hasAttribute('hidden')).toBe(true);
+    expect(btn.textContent).toBe('Go deeper');
+  });
+  it('"Go deeper" shows every section at once, in the order Form, Grammar, Syntax, All forms, Meanings, Origin, Word structure, Sentence, About this analysis', () => {
+    ui.show(cardFor(), anchor());
+    click(ui.root(), '.deeperBtn');
+    const titles = [...ui.root()!.querySelectorAll('.deeper > h3')].map((x) => x.textContent);
+    expect(titles).toEqual(['Form', 'Grammar', 'Syntax', 'All forms', 'Meanings', 'Origin', 'Word structure', 'Sentence', 'About this analysis']);
+    expect(ui.root()!.querySelectorAll('.deeper [hidden]')).toHaveLength(0);
+    const buttons = buttonsOf(ui.root()).map((b) => b.textContent);
+    for (const gone of ['Form', 'Phrase & syntax', 'English rescue', 'All forms', 'Meanings', 'Origin', 'Word structure', 'Sound', 'More', 'Pronounce (practice)']) expect(buttons).not.toContain(gone);
   });
 });
 
@@ -243,23 +297,25 @@ describe('pronunciation', () => {
     const s = { spoken: [] as unknown[], cancelled: 0, getVoices: () => voices, speak(u: unknown) { s.spoken.push(u); }, cancel() { s.cancelled++; } };
     return s;
   };
-  it('plays through a local Albanian voice, labelled as practice', () => {
+  it('plays through a local Albanian voice when the speaker beside the word is clicked', () => {
     const speech = speechWith([{ lang: 'en-US', name: 'en', localService: true }, { lang: 'sq-AL', name: 'sq', localService: true }]);
     ui.destroy(); ui = make(speech);
     ui.show(cardFor(), anchor());
     const say = ui.root()!.querySelector('.say') as HTMLButtonElement;
     expect(say.disabled).toBe(false);
-    expect(say.textContent).toMatch(/practice/i);
-    expect(text(ui.root())).toMatch(/Practice only/);
+    expect(say.title).toBe('Play with GoListen');
+    expect(say.getAttribute('aria-label')).toBe('Play with GoListen');
+    expect(text(say)).not.toMatch(/Pronounce/);
     say.click();
     expect(speech.spoken).toEqual([{ text: 'shtëpinë', voice: expect.objectContaining({ lang: 'sq-AL' }) }]);
   });
-  it('does not use a remote voice: disabled with a note', () => {
+  it('does not use a remote voice: disabled, the title says why', () => {
     const speech = speechWith([{ lang: 'sq-AL', name: 'cloud', localService: false }]);
     ui.destroy(); ui = make(speech);
     ui.show(cardFor(), anchor());
     expect((ui.root()!.querySelector('.say') as HTMLButtonElement).disabled).toBe(true);
-    expect(text(ui.root())).toMatch(/No local Albanian voice/);
+    expect((ui.root()!.querySelector('.say') as HTMLButtonElement).title).toMatch(/No local Albanian voice/);
+    expect(visibleText(ui.root())).not.toMatch(/No local Albanian voice/); // the title says so; no note row is drawn
     expect(speech.spoken).toEqual([]);
   });
   it('no Albanian voice at all: disabled', () => {
@@ -296,5 +352,175 @@ describe('status, messages and repositioning', () => {
   it('flips above near the bottom of the viewport', () => {
     ui.show(cardFor(), anchor({ top: 700, bottom: 720 }));
     expect(ui.root()!.querySelector('.card')!.getAttribute('data-placement')).toBe('above');
+  });
+});
+
+describe('evidence boundaries in deeper layers', () => {
+  it('keeps the pack explanation for comma-union morphology instead of falling back to codes', () => {
+    const c = cardFor();
+    c.features = [{ key: 'Case', value: 'Nom,Acc' }];
+    ui.show(c, anchor());
+    ui.update({ explain: { state: 'ready', constructions: [], features: [
+      { key: 'Case', value: 'Nom,Acc', label: 'Case', brief: 'nominative or accusative', explanation: 'Subject or direct object; context is needed.' },
+    ] } });
+    click(ui.root(), '.deeperBtn');
+    const panel = ui.root()!.querySelector('.layer.l2') as HTMLElement;
+    expect(panel.textContent).toContain('nominative or accusative');
+    expect(panel.textContent).toContain('Subject or direct object');
+    expect(panel.textContent).toContain('alternative values');
+  });
+  it('collapses duplicate feature reports and preserves unresolved alternatives', () => {
+    const c = cardFor();
+    c.features = [{ key: 'Number', value: 'Sing' }, { key: 'Number', value: 'Sing' }, { key: 'Number', value: 'Plur' }];
+    ui.show(c, anchor());
+    click(ui.root(), '.deeperBtn');
+    const panel = ui.root()!.querySelector('.layer.l2') as HTMLElement;
+    expect(panel.querySelectorAll('tr')).toHaveLength(1);
+    expect(panel.textContent).toContain('Sing / Plur');
+    expect(panel.textContent).toContain('alternative values');
+  });
+
+  it('distinguishes an unavailable paradigm from a language-level non-inflecting result', () => {
+    ui.show(cardFor(), anchor());
+    ui.update({ enrichment: { state: 'ready', message: 'This build has no full dictionary records.' } });
+    click(ui.root(), '.deeperBtn');
+    expect(text(ui.root()!.querySelector('.layer.l6') as HTMLElement)).toMatch(/No inflection paradigm is available/);
+    expect(text(ui.root()!.querySelector('.layer.l6') as HTMLElement)).toMatch(/no full dictionary records/);
+
+    ui.show(cardFor(), anchor());
+    ui.update({ enrichment: { state: 'ready', paradigm: { languageId: 'th', lemma: 'ตา', pos: 'NOUN', kind: 'none', cells: [], status: 'none', notes: ['Thai words do not inflect.'], constructions: ['aspect-particle'], sources: [] } } });
+    click(ui.root(), '.deeperBtn');
+    expect(text(ui.root()!.querySelector('.layer.l6') as HTMLElement)).toContain('Thai words do not inflect.');
+    expect(text(ui.root()!.querySelector('.layer.l6') as HTMLElement)).not.toMatch(/No inflection paradigm is available/);
+  });
+});
+
+describe('view sources', () => {
+  const SOURCES = [
+    { label: 'Wiktionary: shtëpi (Albanian)', url: 'https://en.wiktionary.org/wiki/shtëpi#Albanian', licence: 'CC BY-SA 4.0' },
+    { label: 'kaikki.org: Albanian dictionary', url: 'https://kaikki.org/dictionary/Albanian/', licence: 'CC BY-SA 4.0' },
+    { label: 'Course word list (adapter-sq@9)' },
+  ];
+  it('is a subscript button that opens a list of links (new tab, no opener) with the licence; the course word list is named without a link', () => {
+    ui.show(cardFor(), anchor());
+    ui.update({ sources: SOURCES });
+    const btn = ui.root()!.querySelector('.sourcesBtn') as HTMLButtonElement;
+    const panel = ui.root()!.querySelector('.sources') as HTMLElement;
+    expect(btn.textContent).toBe('view sources');
+    expect(btn.getAttribute('aria-expanded')).toBe('false');
+    expect(btn.getAttribute('aria-controls')).toBe(panel.id);
+    expect(panel.hasAttribute('hidden')).toBe(true);
+    btn.click();
+    expect(panel.hasAttribute('hidden')).toBe(false);
+    expect(btn.getAttribute('aria-expanded')).toBe('true');
+    const links = [...panel.querySelectorAll('a')];
+    expect(links.map((a) => a.textContent)).toEqual(['Wiktionary: shtëpi (Albanian)', 'kaikki.org: Albanian dictionary']);
+    expect(links.map((a) => a.getAttribute('href'))).toEqual(['https://en.wiktionary.org/wiki/sht%C3%ABpi#Albanian', 'https://kaikki.org/dictionary/Albanian/']);
+    for (const a of links) { expect(a.getAttribute('target')).toBe('_blank'); expect(a.getAttribute('rel')).toBe('noopener noreferrer'); }
+    expect(panel.textContent).toContain('CC BY-SA 4.0');
+    expect(panel.textContent).toContain('Course word list (adapter-sq@9)');
+    expect(panel.querySelectorAll('li')).toHaveLength(3);
+    btn.click();
+    expect(panel.hasAttribute('hidden')).toBe(true);
+  });
+  it('with no source it says so', () => {
+    ui.show(cardFor(), anchor());
+    click(ui.root(), '.sourcesBtn');
+    expect((ui.root()!.querySelector('.sources') as HTMLElement).textContent).toBe('No external source: the course word list only.');
+    expect(ui.root()!.querySelectorAll('.sources a')).toHaveLength(0);
+  });
+  it("shows the dictionary's attribution notice beside the links", () => {
+    ui.show(cardFor(), anchor());
+    ui.update({ sources: SOURCES, gloss: { state: 'ready', senses: ['house'], attribution: 'Meanings: Wiktionary (CC BY-SA 4.0)' } });
+    expect((ui.root()!.querySelector('.sources') as HTMLElement).textContent).toContain('Meanings: Wiktionary (CC BY-SA 4.0)');
+  });
+  it('only an https address becomes a link: javascript:, data: and http: addresses a reply carries are shown as names', () => {
+    ui.show(cardFor(), anchor());
+    ui.update({ sources: [
+      { label: 'bad one', url: 'javascript:window.__pwned=1' }, { label: 'bad two', url: 'data:text/html,<script>1</script>' },
+      { label: 'bad three', url: 'http://example.test/x' }, { label: 'bad four', url: 'https://user:pw@example.test/x' }, { label: 'good', url: 'https://example.test/x' },
+    ] });
+    const links = [...ui.root()!.querySelectorAll('.sources a')];
+    expect(links.map((a) => a.textContent)).toEqual(['good']);
+    expect((ui.root()!.querySelector('.sources') as HTMLElement).textContent).toContain('bad one');
+    expect((window as unknown as { __pwned?: number }).__pwned).toBeUndefined();
+  });
+});
+
+describe('the rating row and the footer', () => {
+  it('offers the six levels in order, each sends its word as the mark, and the current level is the pressed one', () => {
+    const marks: string[] = [];
+    ui.show(cardFor(), anchor(), { actions: { onRate: (m) => marks.push(m) } });
+    const buttons = [...ui.root()!.querySelectorAll('.rateBtn')] as HTMLButtonElement[];
+    // each circle is named by its level (aria-label); the circles have no text of their own
+    expect(buttons.map((b) => b.getAttribute('aria-label'))).toEqual(['New', 'Seen', 'Recognized', 'Familiar', 'Known', 'Automatic']);
+    expect(buttons.every((b) => b.textContent === '')).toBe(true);
+    expect(buttons.map((b) => b.getAttribute('data-mark'))).toEqual(['new', 'seen', 'recognized', 'familiar', 'known', 'automatic']);
+    expect(ui.root()!.querySelector('.rate')!.textContent).toContain('How well do you know it?');
+    for (const b of buttons) b.click();
+    expect(marks).toEqual(['new', 'seen', 'recognized', 'familiar', 'known', 'automatic']);
+    // the model's level is highlighted until the learner marks the word
+    ui.update({ profile: { state: 'ready', weak: [], met: 2, level: 'familiar', encounters: 2 } });
+    const pressedNames = (): Array<string | null> => buttons.filter((b) => b.getAttribute('aria-pressed') === 'true').map((b) => b.getAttribute('aria-label'));
+    const filled = (): number => buttons.filter((b) => b.classList.contains('on')).length;
+    expect(pressedNames()).toEqual(['Familiar']);
+    expect(filled()).toBe(4); // the circles up to and including the current level are filled
+    expect(ui.root()!.querySelector('.levelName')!.textContent).toBe('Familiar');
+    ui.update({ rated: 'automatic' });
+    expect(pressedNames()).toEqual(['Automatic']);
+    expect(filled()).toBe(6);
+    expect(ui.root()!.querySelector('.levelName')!.textContent).toBe('Automatic');
+    // the same mark again is not sent twice
+    marks.length = 0;
+    buttons[5].click();
+    expect(marks).toEqual([]);
+  });
+
+  it('the kicker "· N× encounters" under the meter is the number only, shown once the model has answered', () => {
+    ui.show(cardFor(), anchor());
+    const line = ui.root()!.querySelector('.encounters') as HTMLElement;
+    expect(line.textContent).toBe('');
+    ui.update({ profile: { state: 'loading', weak: [] } });
+    expect(line.textContent).toBe('');
+    ui.update({ profile: { state: 'ready', weak: [], met: 3, encounters: 7 } });
+    expect(line.textContent).toBe('· 7× encounters');
+    ui.update({ profile: { state: 'ready', weak: [] } });
+    expect(line.textContent).toBe('· 0× encounters');
+    ui.update({ profile: { state: 'unavailable', weak: [], reason: 'offline' } });
+    expect(line.textContent).toBe('');
+    // nothing else about the learner is on the card
+    ui.update({ profile: { state: 'ready', weak: [], met: 3, encounters: 7, level: 'seen', recognition: { level: 'high', confidence: 0.9 } } });
+    expect(visibleText(ui.root())).not.toMatch(/You have met|reading recognition|confidence/i);
+    expect(line.previousElementSibling!.classList.contains('rate')).toBe(true); // right under the meter
+  });
+
+  it('"Report" is the quiet pill beside "Go deeper" that opens the correction form (and closes it again); there is no "This analysis is wrong" and no "Review this"', () => {
+    ui.show(cardFor(), anchor());
+    const report = ui.root()!.querySelector('.reportBtn') as HTMLButtonElement;
+    const form = ui.root()!.querySelector('form.fix') as HTMLElement;
+    expect(report.textContent).toBe('Report');
+    expect(report.closest('.pills')).toBeTruthy();
+    expect(report.previousElementSibling).toBe(ui.root()!.querySelector('.deeperBtn'));
+    expect(report.getAttribute('aria-controls')).toBe(form.id);
+    expect(form.hasAttribute('hidden')).toBe(true);
+    report.click();
+    expect(form.hasAttribute('hidden')).toBe(false);
+    expect(report.getAttribute('aria-expanded')).toBe('true');
+    expect(form.textContent).toContain('Send correction');
+    report.click();
+    expect(form.hasAttribute('hidden')).toBe(true);
+    const everything = [...ui.root()!.querySelectorAll('button')].map((b) => b.textContent).join('|');
+    expect(everything).not.toMatch(/This analysis is wrong|Review this|Saved for review/);
+  });
+
+  it('"Go deeper" reports every section once, in order, each time it is opened (the paradigm only for a single word); closing reports nothing', () => {
+    const layers: string[] = [];
+    ui.show(cardFor(), anchor(), { actions: { onLayer: (l) => layers.push(l) } });
+    click(ui.root(), '.deeperBtn');
+    expect(layers).toEqual(['morphology', 'grammar', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence']);
+    click(ui.root(), '.deeperBtn');
+    expect(layers).toHaveLength(8);
+    click(ui.root(), '.deeperBtn');
+    expect(layers).toHaveLength(16);
   });
 });

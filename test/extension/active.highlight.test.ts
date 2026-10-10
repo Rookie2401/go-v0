@@ -36,9 +36,9 @@ describe('createHighlighter', () => {
     const before = document.body.innerHTML;
     const h = createHighlighter(document);
     expect(h.supported).toBe(false);
-    h.apply(new Map([['met', [rangeOf('Beni')]]]));
+    h.apply(new Map([['seen', [rangeOf('Beni')]]]));
     expect(document.body.innerHTML).toBe(before);
-    expect(h.counts()).toEqual({ new: 0, met: 0, assisted: 0, known: 0, produced: 0 });
+    expect(h.counts()).toEqual({ new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 });
   });
 
   it('with the API: one named highlight per level, ranges replaced on each apply, and the DOM untouched', () => {
@@ -47,24 +47,24 @@ describe('createHighlighter', () => {
     const before = document.body.innerHTML;
     const h = createHighlighter(document);
     expect(h.supported).toBe(true);
-    h.apply(new Map([['met', [rangeOf('Beni'), rangeOf('shkon')]], ['known', [rangeOf('shkollë')]]]));
+    h.apply(new Map([['seen', [rangeOf('Beni'), rangeOf('shkon')]], ['familiar', [rangeOf('shkollë')]]]));
     expect(document.body.innerHTML).toBe(before);
-    expect([...registry.keys()].sort()).toEqual(['golearn-known', 'golearn-met']);
-    expect(h.counts()).toEqual({ new: 0, met: 2, assisted: 0, known: 1, produced: 0 });
-    h.apply(new Map([['produced', [rangeOf('në')]], ['new', [rangeOf('shkon')]]]));
-    expect(h.counts()).toEqual({ new: 1, met: 0, assisted: 0, known: 0, produced: 1 });
+    expect([...registry.keys()].sort()).toEqual(['golearn-familiar', 'golearn-seen']);
+    expect(h.counts()).toEqual({ new: 0, seen: 2, recognized: 0, familiar: 1, known: 0, automatic: 0 });
+    h.apply(new Map([['automatic', [rangeOf('në')]], ['new', [rangeOf('shkon')]]]));
+    expect(h.counts()).toEqual({ new: 1, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 1 });
     h.clear();
-    expect(h.counts()).toEqual({ new: 0, met: 0, assisted: 0, known: 0, produced: 0 });
-    h.apply(new Map([['assisted', [rangeOf('Beni')]]]));
+    expect(h.counts()).toEqual({ new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 });
+    h.apply(new Map([['recognized', [rangeOf('Beni')]]]));
     h.dispose();
     expect(registry.size).toBe(0);
   });
 
-  it('the style sheet has one ::highlight rule per level, each an underline: dashed for new, dotted for the two faint levels, solid for the rest', () => {
+  it('the style sheet has one ::highlight rule per level, each an underline: dashed for new, dotted for seen and recognized, solid for the three established levels', () => {
     for (const l of ACTIVE_LEVELS) expect(ACTIVE_CSS).toContain(`::highlight(${HIGHLIGHT_NAMES[l]})`);
     expect(ACTIVE_CSS.match(/underline dashed/g)).toHaveLength(1);
     expect(ACTIVE_CSS.match(/underline dotted/g)).toHaveLength(2);
-    expect(ACTIVE_CSS.match(/underline solid/g)).toHaveLength(2);
+    expect(ACTIVE_CSS.match(/underline solid/g)).toHaveLength(3);
     expect(ACTIVE_CSS).not.toMatch(/background/);
   });
 });

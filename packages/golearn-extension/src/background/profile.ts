@@ -11,7 +11,8 @@
  */
 import type { Dimension, UnitKnowledge } from '../../../repository-contract/src';
 import type { StorageArea } from '../platform';
-import { isDepth, isLanguageId, isSelfMark, isUnitId, type DimView, type ExplanationDepth, type KnowledgeView, type PrivacySettings, type ProfileReply } from '../protocol';
+import { isKnowledgeLevel, LEGACY_MARK_LEVEL } from '../../../repository-contract/src/knowledge-levels';
+import { isDepth, isLanguageId, isUnitId, type DimView, type ExplanationDepth, type KnowledgeView, type PrivacySettings, type ProfileReply } from '../protocol';
 import type { LocalKnowledge } from './localRepo';
 import type { SessionManager } from './session';
 import { limitWordIds } from './wordids';
@@ -47,10 +48,14 @@ export function compactKnowledge(k: UnitKnowledge): KnowledgeView {
     const n = (v: unknown): number => (typeof v === 'number' && Number.isFinite(v) ? v : 0);
     dims[name as Dimension] = { score: n(e.score), confidence: n(e.confidence), observations: n(e.observations), positive: n(e.positive), negative: n(e.negative) };
   }
-  // the learner's latest own mark (projection@3): passed through as data, validated as a mark
+  // the learner's latest own mark: passed through as data, validated as a mark (one of the six levels, or one of the three older words, which the page reads with `levelOfMark`)
   const sm = (k as unknown as { selfMark?: { mark?: unknown; at?: unknown } }).selfMark;
-  const selfMark = sm && isSelfMark(sm.mark) && typeof sm.at === 'string' ? { mark: sm.mark, at: sm.at } : undefined;
-  return { unitId: k.unitId, dimensions: dims, ...(typeof k.lastSeenAt === 'string' ? { lastSeenAt: k.lastSeenAt } : {}), ...(selfMark ? { selfMark } : {}) };
+  const markOk = (m: unknown): m is NonNullable<KnowledgeView['selfMark']>['mark'] => isKnowledgeLevel(m) || (typeof m === 'string' && Object.prototype.hasOwnProperty.call(LEGACY_MARK_LEVEL, m));
+  const selfMark = sm && markOk(sm.mark) && typeof sm.at === 'string' ? { mark: sm.mark, at: sm.at } : undefined;
+  // the level and the number of meetings, as the engine computed them (an older engine sends neither: the page works them out from the dimensions)
+  const level = isKnowledgeLevel((k as { level?: unknown }).level) ? (k as { level: KnowledgeView['level'] }).level : undefined;
+  const encounters = typeof (k as { encounters?: unknown }).encounters === 'number' && Number.isFinite((k as { encounters: number }).encounters) && (k as { encounters: number }).encounters >= 0 ? (k as { encounters: number }).encounters : undefined;
+  return { unitId: k.unitId, dimensions: dims, ...(typeof k.lastSeenAt === 'string' ? { lastSeenAt: k.lastSeenAt } : {}), ...(selfMark ? { selfMark } : {}), ...(level ? { level } : {}), ...(encounters !== undefined ? { encounters } : {}) };
 }
 
 export function createProfileService(opts: ProfileServiceOptions) {

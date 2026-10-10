@@ -37,12 +37,13 @@
 </main>
 <script>
   // A stand-in for the background worker, so the content script runs here as in the extension: the page answers its messages.
-  // The learner model says: libër/librin → produced, shtëpi/shtëpinë → known, çaj → assisted, Beni/nëna/shkollë → met.
+  // The learner model says (the six knowledge levels): libër/librin → automatic, shtëpi/shtëpinë → familiar, çaj → recognized, Beni/nëna/shkollë → seen,
+  // every other word → new. Click a word to see the card: the word with its speaker, the meaning, "view sources", "Go deeper", the six levels, "Report".
   (function () {
     const rows = {};
     const dim = (o) => Object.assign({ score: 0, confidence: 0, observations: 0, positive: 0, negative: 0 }, o);
     const put = (id, dims) => { rows[id] = { unitId: id, dimensions: dims }; };
-    put('lemma:sq:libër:NOUN', { productiveRetrieval: dim({ observations: 2, score: 0.8 }) });
+    put('lemma:sq:libër:NOUN', { exposure: dim({ observations: 4 }), productiveRetrieval: dim({ observations: 2, score: 0.8 }) });
     put('lemma:sq:shtëpi:NOUN', { readingRecognition: dim({ observations: 3, score: 0.7, confidence: 0.6 }) });
     put('form:sq:çaj', { assistedRecognition: dim({ observations: 1 }) });
     put('form:sq:beni', { exposure: dim({ observations: 1 }) });
@@ -56,12 +57,23 @@
         case 'golearn:active': return { ok: true, settings, granted: true, registered: true, excluded: 9 };
         case 'golearn:profile':
         case 'golearn:active-profile': { const out = {}; for (const id of m.unitIds || []) if (rows[id]) out[id] = rows[id]; return { ok: true, connected: false, source: 'device', rows: out, depth: 'brief', depthOrigin: 'default' }; }
-        case 'golearn:gloss': return { ok: true, found: false, senses: [], reason: 'no-pack' };
+        // the dictionary's meanings with the sources the worker names (the links are built by the worker from app/config.json `sourceLinks`)
+        case 'golearn:gloss': {
+          const asked = [m.lemma, ...(m.forms || [])].map((x) => String(x || '').toLowerCase());
+          const senses = { 'libër': ['book'], 'shtëpi': ['house', 'home'], 'çaj': ['tea'], 'shkollë': ['school'], 'nënë': ['mother'], 'bukë': ['bread'] };
+          const hit = Object.keys(senses).find((w) => asked.includes(w));
+          if (!hit) return { ok: true, found: false, senses: [], reason: 'not-found', source: 'extension' };
+          return { ok: true, found: true, senses: senses[hit], attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', source: 'extension', sources: [
+            { label: 'Wiktionary: ' + hit + ' (Albanian)', url: 'https://en.wiktionary.org/wiki/' + encodeURIComponent(hit) + '#Albanian', licence: 'CC BY-SA 4.0' },
+            { label: 'kaikki.org: Albanian dictionary', url: 'https://kaikki.org/dictionary/Albanian/', licence: 'CC BY-SA 4.0' },
+            { label: 'Course word list (adapter-sq@harness)' },
+          ] };
+        }
         // the dictionary's full record of libër as the built shard holds it (public/dict/sq/full, schema full-1), so the deeper sections can be seen here
         case 'golearn:entry': {
           const asked = [m.lemma, ...(m.forms || [])].map((s) => String(s || '').toLowerCase());
           if (!asked.some((s) => ['libër', 'librin', 'libri', 'libra', 'librat', 'librit', 'librave', 'librash'].includes(s))) return { ok: true, found: false, records: [], reason: 'not-found', source: 'extension' };
-          return { ok: true, found: true, source: 'extension', attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', records: [{"w":"libër","p":"NOUN","s":[{"g":"book","x":["Ia dhashë librin e ri atij."]}],"f":[{"f":"líbër","t":["canonical","masculine"]},{"f":"libra","t":["plural"]},{"f":"libri","t":["definite"]},{"f":"librat","t":["definite","plural"]},{"f":"libër","t":["indefinite","nominative","singular"],"s":"declension"},{"f":"libri","t":["definite","nominative","singular"],"s":"declension"},{"f":"libra","t":["indefinite","nominative","plural"],"s":"declension"},{"f":"librat","t":["definite","nominative","plural"],"s":"declension"},{"f":"libër","t":["accusative","indefinite","singular"],"s":"declension"},{"f":"librin","t":["accusative","definite","singular"],"s":"declension"},{"f":"libra","t":["accusative","indefinite","plural"],"s":"declension"},{"f":"librat","t":["accusative","definite","plural"],"s":"declension"},{"f":"libri","t":["dative","indefinite","singular"],"s":"declension"},{"f":"librit","t":["dative","definite","singular"],"s":"declension"},{"f":"librave","t":["dative","indefinite","plural"],"s":"declension"},{"f":"librave","t":["dative","definite","plural"],"s":"declension"},{"f":"libri","t":["ablative","indefinite","singular"],"s":"declension"},{"f":"librit","t":["ablative","definite","singular"],"s":"declension"},{"f":"librash","t":["ablative","indefinite","plural"],"s":"declension"},{"f":"librave","t":["ablative","definite","plural"],"s":"declension"}],"tpl":["sq-noun-m"],"ipa":[{"i":"/ˈlibəɾ/"},{"i":"[ˈlibəɹ]"}],"audio":[{"u":"https://upload.wikimedia.org/wikipedia/commons/transcoded/8/85/LL-Q8748_%28sqi%29-Katerinadedej-liber.wav/LL-Q8748_%28sqi%29-Katerinadedej-liber.wav.ogg","n":"LL-Q8748 (sqi)-Katerinadedej-liber.wav"}],"ety":{"text":"Borrowed through Late Vulgar Latin (or Old Italian) from Latin liber.","tpl":[{"k":"bor","lang":"la-vul"},{"k":"der","lang":"roa-oit"},{"k":"bor","lang":"la","form":"liber"}]}}] };
+          return { ok: true, found: true, source: 'extension', attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', sources: [{ label: 'Wiktionary: libër (Albanian)', url: 'https://en.wiktionary.org/wiki/lib%C3%ABr#Albanian', licence: 'CC BY-SA 4.0' }, { label: 'kaikki.org: Albanian dictionary', url: 'https://kaikki.org/dictionary/Albanian/', licence: 'CC BY-SA 4.0' }, { label: 'Course word list (adapter-sq@harness)' }], records: [{"w":"libër","p":"NOUN","s":[{"g":"book","x":["Ia dhashë librin e ri atij."]}],"f":[{"f":"líbër","t":["canonical","masculine"]},{"f":"libra","t":["plural"]},{"f":"libri","t":["definite"]},{"f":"librat","t":["definite","plural"]},{"f":"libër","t":["indefinite","nominative","singular"],"s":"declension"},{"f":"libri","t":["definite","nominative","singular"],"s":"declension"},{"f":"libra","t":["indefinite","nominative","plural"],"s":"declension"},{"f":"librat","t":["definite","nominative","plural"],"s":"declension"},{"f":"libër","t":["accusative","indefinite","singular"],"s":"declension"},{"f":"librin","t":["accusative","definite","singular"],"s":"declension"},{"f":"libra","t":["accusative","indefinite","plural"],"s":"declension"},{"f":"librat","t":["accusative","definite","plural"],"s":"declension"},{"f":"libri","t":["dative","indefinite","singular"],"s":"declension"},{"f":"librit","t":["dative","definite","singular"],"s":"declension"},{"f":"librave","t":["dative","indefinite","plural"],"s":"declension"},{"f":"librave","t":["dative","definite","plural"],"s":"declension"},{"f":"libri","t":["ablative","indefinite","singular"],"s":"declension"},{"f":"librit","t":["ablative","definite","singular"],"s":"declension"},{"f":"librash","t":["ablative","indefinite","plural"],"s":"declension"},{"f":"librave","t":["ablative","definite","plural"],"s":"declension"}],"tpl":["sq-noun-m"],"ipa":[{"i":"/ˈlibəɾ/"},{"i":"[ˈlibəɹ]"}],"audio":[{"u":"https://upload.wikimedia.org/wikipedia/commons/transcoded/8/85/LL-Q8748_%28sqi%29-Katerinadedej-liber.wav/LL-Q8748_%28sqi%29-Katerinadedej-liber.wav.ogg","n":"LL-Q8748 (sqi)-Katerinadedej-liber.wav"}],"ety":{"text":"Borrowed through Late Vulgar Latin (or Old Italian) from Latin liber.","tpl":[{"k":"bor","lang":"la-vul"},{"k":"der","lang":"roa-oit"},{"k":"bor","lang":"la","form":"liber"}]}}] };
         }
         case 'golearn:explain': return { ok: true, features: [], constructions: [], source: 'none' };
         case 'golearn:pronounce-info': return { ok: true, deviceVoice: 'maybe', remoteConsent: false, sources: [], note: '' };
@@ -85,7 +97,7 @@
       state: () => window.__goLearnExtension && window.__goLearnExtension.active.state,
     };
     const status = document.getElementById('status');
-    const paint = () => { const s = window.__harness.state(); if (!s) return; status.textContent = `${s.on ? 'on' : 'off'} · ${s.languageId || '—'} · ${s.scanned} words · met ${s.marked.met}, assisted ${s.marked.assisted}, known ${s.marked.known}, produced ${s.marked.produced} · scan ${s.scanMs ?? '?'} ms · model ${s.profileMs ?? '?'} ms · clicks ${s.clicks}${s.reason ? ' · ' + s.reason : ''}`; };
+    const paint = () => { const s = window.__harness.state(); if (!s) return; status.textContent = `${s.on ? 'on' : 'off'} · ${s.languageId || '—'} · ${s.scanned} words · new ${s.marked.new}, seen ${s.marked.seen}, recognized ${s.marked.recognized}, familiar ${s.marked.familiar}, known ${s.marked.known}, automatic ${s.marked.automatic} · scan ${s.scanMs ?? '?'} ms · model ${s.profileMs ?? '?'} ms · clicks ${s.clicks}${s.reason ? ' · ' + s.reason : ''}`; };
     setInterval(paint, 300);
     document.getElementById('active').addEventListener('change', (e) => { settings.active = e.target.checked; send(e.target.checked ? { type: 'golearn:activate', speak: settings.speakOnClick } : { type: 'golearn:deactivate' }); });
     document.getElementById('speak').addEventListener('change', (e) => { settings.speakOnClick = e.target.checked; send({ type: 'golearn:activate', speak: settings.speakOnClick }); });

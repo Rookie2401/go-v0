@@ -17,9 +17,12 @@ npx vite -c packages/gopractice/vite.config.ts           → dev server on :5198
 GOPRACTICE_DICT=sq,de npx vite build …                   → which dictionaries to copy into dist/dict/ (default sq; empty = none)
 ```
 
-`config.json` next to the page: `{ "serviceUrl", "assetBaseUrl", "extensionUrl"? }`. The service address must be https (http only on
+`config.json` next to the page: `{ "serviceUrl", "assetBaseUrl", "speechProxyBase"?, "extensionUrl"? }`. The service address must be https (http only on
 localhost); the learner can override it at sign-in or in Settings. `extensionUrl` (https, or chrome-extension) is where the hosted copy points to the
 extension's GoPractice page; without it the page tells the learner to use the extension's **Practise** button.
+
+When present, `speechProxyBase` must be an absolute `https://` endpoint (or `http://` on localhost for development). It is forwarded to GoListen;
+the browser never receives an Azure key. A relative `/api/speech` is ignored because it resolves against the extension page origin in the packaged app.
 
 ## Modes
 
@@ -38,7 +41,7 @@ Settings → **Clear local data** is the explicit way to remove the device's dat
 | route | what |
 |---|---|
 | `#/signin` | the optional account (extension copy: "Not now", upload count) or the explanation of the hosted copy; email + password to the service; the service address is under a disclosure |
-| `#/review` | GoReview workspace: due summary, intake outcomes with reasons and a "Why" expander per candidate (Test now / Later / Dismiss), session controls, the deck with per-item snooze / suspend / dismiss / resume, "Start a session" |
+| `#/review` | GoReview workspace: due summary, intake outcomes with reasons (each names the unit's knowledge level: candidates are drawn by level, see `docs/ecosystem/KNOWLEDGE-LEVELS.md`) and a "Why" expander per candidate (Test now / Later / Dismiss), session controls, the deck with per-item snooze / suspend / dismiss / resume, "Start a session" |
 | `#/review/session` | one exercise at a time, feedback, challenge, analysis-error report, per-item tools, summary |
 | `#/review/history/<item>` | the item's review history (the scheduler numbers are labelled bookkeeping) |
 | `#/review/transfer` | transfer measures — "research measures, not conclusions" — with their basis and what they cannot show |

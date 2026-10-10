@@ -82,8 +82,7 @@ describe('the lookup card shows Devanagari and Thai unchanged', () => {
     const at = s.sentence.indexOf(s.word);
     const model = parseSelection({ surface: s.word, languageId: 'es', context: { kind: 'sentence', confidence: 0.9, sentence: s.sentence, selStart: at, selEnd: at + s.word.length } });
     ui.show(model, anchor, { view: { languageName: 'Spanish', depth: 'explanatory' } });
-    for (const l of ['l2', 'l3', 'l4', 'l5']) (ui.root()!.querySelector(`button.${l}`) as HTMLElement).click();
-    (ui.root()!.querySelector('button.moreBtn') as HTMLElement).click();
+    (ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click();
     const card = ui.root()!.querySelector('.card') as HTMLElement;
     const word = ui.root()!.querySelector('.word')!.textContent!;
     const want = s.word.normalize('NFC');

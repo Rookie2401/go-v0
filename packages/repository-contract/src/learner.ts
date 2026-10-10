@@ -4,6 +4,7 @@
  * hypothesis until calibrated against independent assessment; the types carry the basis so each estimate can be
  * traced to the observations behind it.
  */
+import type { KnowledgeLevel } from './knowledge-levels';
 import type { AnalysisStatus } from './units';
 
 /** The eight distinguishable kinds of knowledge estimate (§5). Order is fixed; never merged into one number. */
@@ -54,12 +55,23 @@ export interface UnitKnowledge {
   firstSeenAt?: string;
   lastSeenAt?: string;
   /**
-   * projection@3: the learner's LATEST explicit self-assessment of this unit (an ItemMarked `known` = "I recognise it",
-   * `learning` = "New to me", `productive` = "I can use it"). A later mark replaces an earlier one (latest by event
-   * instant, then event id). `saved` and `ignore` are not statements about knowledge and never set it. Absent when the
-   * learner has never marked the unit.
+   * projection@4: where the unit stands on the six-level scale (new, seen, recognized, familiar, known, automatic), computed by the engine's
+   * `levelOf` from the dimension estimates and the learner's own latest mark (docs/ecosystem/KNOWLEDGE-LEVELS.md). Review is a natural
+   * progression along this level; it is not a rating the learner is asked for.
    */
-  selfMark?: { mark: 'known' | 'learning' | 'productive'; at: string };
+  level: KnowledgeLevel;
+  /**
+   * projection@4: how many DISTINCT encounter events the learner has with the unit (lookups, exposures, recognitions, assistance requests;
+   * each event id counted once, however many dimensions it touched).
+   */
+  encounters: number;
+  /**
+   * The learner's LATEST explicit self-assessment of this unit (projection@3, widened in projection@4): the level they chose, read through
+   * `levelOfMark`, so a stored legacy mark keeps its meaning (`learning` = new, `productive` = known; the word `known` is read as the
+   * level known, see `levelOfMark`). A later mark replaces an earlier one (latest by event instant, then event id). `saved` and `ignore`
+   * are not statements about knowledge and never set it. Absent when the learner has never marked the unit.
+   */
+  selfMark?: { mark: KnowledgeLevel; at: string };
   /** Projection algorithm version that produced this row. */
   modelVersion: string;
   /** Ids of the events folded into this row (count) and the last event id, so rebuilds can be compared. */

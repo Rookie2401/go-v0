@@ -58,8 +58,8 @@ describe('page -> bridge -> background -> service', () => {
     await out.settled;
     expect(out.recorded).toBe('recorded');
     expect(text(ui)).toContain('shtëpi (NOUN)');
-    // no account, but the device's own Repository answers: the history line is the learner's local one, never "not connected"
-    expect(text(ui)).toMatch(/You have (not met this word before|met this word \d+ time)/);
+    // no account, but the device's own Repository answers: the footer carries the learner's local count, never "not connected"
+    expect(text(ui)).toMatch(/· \d+× encounters/);
     expect(text(ui)).not.toContain('Not connected');
     expect(rig.log.filter((l) => !l.path.includes("/dict/"))).toEqual([]); // only the dictionary, read from the extension's own files
     const local = Object.values(await rig.fake.local.get(null)).filter((v) => (v as { learnerId?: string })?.learnerId?.startsWith('local:'));
@@ -81,22 +81,20 @@ describe('page -> bridge -> background -> service', () => {
     await out.settled;
     await flush(30);
 
-    // the learner model, in the adaptive order (a weak construction first), and the dictionary with its attribution
-    const rows = [...ui.root()!.querySelectorAll<HTMLElement>('.rows [data-row]')].map((r) => r.dataset.row);
-    expect(rows.indexOf('grammar')).toBeLessThan(rows.indexOf('meaning'));
-    expect(text(ui)).toContain('You have met this word 5 times; reading recognition: high (confidence 0.70)');
+    // the learner model: the number of earlier meetings in the footer, a weak construction first in Grammar, and the dictionary with its attribution
+    expect(ui.root()!.querySelector('.encounters')!.textContent).toBe('· 8× encounters');
     expect(text(ui)).toContain('house; home (Wiktionary, via kaikki.org — CC BY-SA 4.0)');
-    // the pack's own words for the form
-    (ui.root()!.querySelector('button.l2') as HTMLElement).click();
+    // Go deeper: the pack's own words for the form
+    (ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click();
     expect(ui.root()!.querySelector('.layer.l2')!.textContent).toContain('accusative');
-    (ui.root()!.querySelector('button.l4') as HTMLElement).click();
-    (ui.root()!.querySelector('.saveBtn') as HTMLElement).click();
+    expect(ui.root()!.querySelector('.layer.l4 .row strong')!.textContent).toBe('Definite accusative singular');
+    (ui.root()!.querySelector('.rateBtn[data-mark="seen"]') as HTMLElement).click();
     await flush(30);
 
-    // what the service now holds: the lookup, the card, the two layers, the mark; all under the account, none with text
+    // what the service now holds: the lookup, the card, the eight sections of Go deeper, the mark; all under the account, none with text
     await rig.fireTimers();
     const kinds = (await rig.h.store.list({ learnerId: who.learnerId })).filter((e) => e.producer.app === 'golearn-ext').map((e) => e.kind).sort();
-    expect(kinds).toEqual(['AnalysisShown', 'AssistanceRequested', 'AssistanceRequested', 'ItemMarked', 'SelectionLookedUp']);
+    expect(kinds).toEqual(['AnalysisShown', ...Array(8).fill('AssistanceRequested'), 'ItemMarked', 'SelectionLookedUp']);
     for (const e of await rig.h.store.list({ learnerId: who.learnerId })) {
       expect(validateEvent(e)).toEqual([]);
       if (e.producer.app === 'golearn-ext') expect(e.enrolmentId).toBe(who.enrolmentId);
@@ -115,7 +113,7 @@ describe('page -> bridge -> background -> service', () => {
     selectText(document.getElementById('p')!, 'bukur');
     const out = await c.lookup({ trigger: 'command' });
     if (out.status !== 'shown') throw new Error('card');
-    (ui.root()!.querySelector('.wrongBtn') as HTMLElement).click();
+    (ui.root()!.querySelector('.reportBtn') as HTMLElement).click();
     const form = ui.root()!.querySelector('form.fix') as HTMLFormElement;
     (form.querySelector('#typed-lemma') as HTMLInputElement).value = 'i bukur';
     (form.querySelector('#alt-typed') as HTMLInputElement).checked = true;
@@ -141,7 +139,7 @@ describe('page -> bridge -> background -> service', () => {
     if (out.status !== 'shown') throw new Error('card');
     await out.settled;
     expect(text(ui)).toContain('libër (NOUN)');
-    expect(text(ui)).toContain('Your history with this word is not available until you sign in to GoLearn again.'); // the 401 on /knowledge: no history, no pretence
+    expect(ui.root()!.querySelector('.encounters')!.textContent).toBe(''); // the 401 on /knowledge: no history, no number, no pretence
     expect(out.recorded).toBe('recorded');
     await rig.fireTimers();
     expect((await rig.page({ type: MSG.status })).needsSignIn).toBe(true);

@@ -1,60 +1,70 @@
 /**
  * GoLearn Active: how well the learner knows a word on the page, read from the learner model's rows for its unit ids
- * (lemma and form), as one of five levels. The thresholds live here and nowhere else; the popup's legend and the
- * underline styles name the same five levels.
+ * (lemma and form), as one of the six knowledge levels of the contract (`KnowledgeLevel`: new, seen, recognized, familiar,
+ * known, automatic). The Repository's engine computes the level of a unit itself (`KnowledgeView.level`); when a row carries
+ * it, it is used as it stands. The thresholds below are the page's reading of the same rows for an engine that does not send
+ * one yet, and they match the engine's: this file is the one place on the page side that states them.
  *
- * Since 2026-10-10 every word gets a level: a word with no row at all, or no encounter, is `new` (the owner wants the
- * unknown words visible too), and the learner's own mark on a word ("New to me", "I recognise it", "I can use it";
- * the newest mark among the word's rows) decides the level outright, until they mark it again. Nothing here decides a
- * status in the Repository: the levels are a reading of the projection for the underline only, the same rows the
- * card's history line shows.
+ * Every word gets a level: a word with no row at all, or no encounter, is `new` (the unknown words are underlined too), and the
+ * learner's own mark on a word (the newest mark among the word's rows, read through `levelOfMark`, so the three marks stored
+ * before the six levels keep their meaning) decides the level outright, until they mark it again. Nothing here decides a
+ * status in the Repository: the levels are a reading of the projection, the same rows the card's rating row shows.
  */
-import type { KnowledgeView, SelfMark } from '../protocol';
+import { KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_RANK, KNOWLEDGE_LEVEL_WORDS, levelOfMark, type KnowledgeLevel, type LevelMark } from '../../../repository-contract/src/knowledge-levels';
+import type { KnowledgeView } from '../protocol';
 
-export type ActiveLevel = 'new' | 'met' | 'assisted' | 'known' | 'produced';
+export type ActiveLevel = KnowledgeLevel;
 
 /** From the least to the most established. */
-export const ACTIVE_LEVELS: readonly ActiveLevel[] = ['new', 'met', 'assisted', 'known', 'produced'];
+export const ACTIVE_LEVELS: readonly ActiveLevel[] = KNOWLEDGE_LEVELS;
 
-/** The thresholds (docs/ecosystem/GOLEARN-ACTIVE-DESIGN.md §3). */
+/**
+ * The thresholds, over a row's dimensions (a dimension's `score` is the estimate in 0..1, `observations` how many events moved it):
+ *   new         no observation at all
+ *   seen        an exposure (or a lookup) or any other observation, nothing that shows it was understood
+ *   recognized  assisted recognition observed at least once, or reading recognition observed (once, or below the familiar bar)
+ *   familiar    reading recognition ≥ 0.6 over ≥ 2 observations
+ *   known       reading recognition ≥ 0.8 over ≥ 4 observations
+ *   automatic   productive retrieval or contextual production ≥ 0.7 over ≥ 2 observations
+ */
 export const LEVEL_RULES = {
-  /** Reading recognition estimate at least this, with at least this many observations. */
-  known: { minScore: 0.6, minObservations: 2 },
-  /** Productive retrieval or contextual production estimate at least this, with at least one observation. */
-  produced: { minScore: 0.6, minObservations: 1 },
+  familiar: { minScore: 0.6, minObservations: 2 },
+  known: { minScore: 0.8, minObservations: 4 },
+  automatic: { minScore: 0.7, minObservations: 2 },
 } as const;
 
-/** The legend the popup shows, one line per level, in the order of ACTIVE_LEVELS. */
+/** The legend the popup shows, one line per level, in the order of ACTIVE_LEVELS. The words come from the contract (`KNOWLEDGE_LEVEL_WORDS`). */
 export const LEVEL_LEGEND: Record<ActiveLevel, { title: string; detail: string; style: string }> = {
-  new: { title: 'New', detail: 'you have not met it yet, or you marked it as new to you', style: 'dashed' },
-  met: { title: 'Met', detail: 'you have looked it up, but nothing shows you understood it', style: 'dotted, faint' },
-  assisted: { title: 'Understood with help', detail: 'you read it with the card open', style: 'dotted' },
-  known: { title: 'Recognised', detail: `your reading estimate is at least ${LEVEL_RULES.known.minScore} over ${LEVEL_RULES.known.minObservations}+ observations, or you marked it as recognised`, style: 'thin solid, faint' },
-  produced: { title: 'Produced', detail: 'you have retrieved or written it yourself, or you marked it as one you can use', style: 'hairline, barely visible' },
+  new: { ...KNOWLEDGE_LEVEL_WORDS.new, style: 'dashed' },
+  seen: { ...KNOWLEDGE_LEVEL_WORDS.seen, style: 'dotted, faint' },
+  recognized: { ...KNOWLEDGE_LEVEL_WORDS.recognized, style: 'dotted' },
+  familiar: { ...KNOWLEDGE_LEVEL_WORDS.familiar, style: 'thin solid, faint' },
+  known: { ...KNOWLEDGE_LEVEL_WORDS.known, style: 'hairline, faint' },
+  automatic: { ...KNOWLEDGE_LEVEL_WORDS.automatic, style: 'hairline, barely visible' },
 };
 
-/** What the learner's own mark means for the underline. */
-export const SELF_MARK_LEVEL: Record<SelfMark, ActiveLevel> = { learning: 'new', known: 'known', productive: 'produced' };
+/** What the learner's own mark means for the underline (a mark stored before the six levels is read through `levelOfMark`). */
+export const levelOfSelfMark = (mark: LevelMark): ActiveLevel => levelOfMark(mark);
 
-const RANK: Record<ActiveLevel, number> = { new: 0, met: 1, assisted: 2, known: 3, produced: 4 };
-
-/** The level one row's evidence supports, or undefined when the row shows no encounter at all (the learner's own mark is not read here). */
+/** The level one row's evidence supports (or the level the engine sent), or undefined when there is no row. A row with nothing observed is `new`; the learner's own mark is not read here. */
 export function levelOfRow(row: KnowledgeView | undefined): ActiveLevel | undefined {
   if (!row) return undefined;
+  if (row.level && (KNOWLEDGE_LEVELS as readonly string[]).includes(row.level)) return row.level;
   const d = row.dimensions;
   const obs = (k: keyof typeof d): number => d[k]?.observations ?? 0;
   const score = (k: keyof typeof d): number => d[k]?.score ?? 0;
-  const produced = (['productiveRetrieval', 'contextualProduction'] as const).some((k) => obs(k) >= LEVEL_RULES.produced.minObservations && score(k) >= LEVEL_RULES.produced.minScore);
-  if (produced) return 'produced';
+  const automatic = (['productiveRetrieval', 'contextualProduction'] as const).some((k) => obs(k) >= LEVEL_RULES.automatic.minObservations && score(k) >= LEVEL_RULES.automatic.minScore);
+  if (automatic) return 'automatic';
   if (obs('readingRecognition') >= LEVEL_RULES.known.minObservations && score('readingRecognition') >= LEVEL_RULES.known.minScore) return 'known';
-  if (obs('assistedRecognition') > 0) return 'assisted';
-  if (obs('exposure') > 0 || obs('readingRecognition') > 0) return 'met';
-  return undefined;
+  if (obs('readingRecognition') >= LEVEL_RULES.familiar.minObservations && score('readingRecognition') >= LEVEL_RULES.familiar.minScore) return 'familiar';
+  if (obs('assistedRecognition') > 0 || obs('readingRecognition') > 0) return 'recognized';
+  if (Object.values(d).some((x) => (x?.observations ?? 0) > 0)) return 'seen';
+  return 'new';
 }
 
 /** The newest of the learner's own marks among a word's rows, if any. */
-export function selfMarkOfRows(rows: Array<KnowledgeView | undefined>): { mark: SelfMark; at: string } | undefined {
-  let best: { mark: SelfMark; at: string } | undefined;
+export function selfMarkOfRows(rows: Array<KnowledgeView | undefined>): { mark: LevelMark; at: string } | undefined {
+  let best: { mark: LevelMark; at: string } | undefined;
   for (const r of rows) if (r?.selfMark && (!best || r.selfMark.at > best.at)) best = r.selfMark;
   return best;
 }
@@ -65,11 +75,26 @@ export function selfMarkOfRows(rows: Array<KnowledgeView | undefined>): { mark: 
  */
 export function levelOfRows(rows: Array<KnowledgeView | undefined>): ActiveLevel {
   const mark = selfMarkOfRows(rows);
-  if (mark) return SELF_MARK_LEVEL[mark.mark];
-  let best: ActiveLevel | undefined;
+  if (mark) return levelOfMark(mark.mark);
+  let best: ActiveLevel = 'new';
   for (const r of rows) {
     const l = levelOfRow(r);
-    if (l && (!best || RANK[l] > RANK[best])) best = l;
+    if (l && KNOWLEDGE_LEVEL_RANK[l] > KNOWLEDGE_LEVEL_RANK[best]) best = l;
   }
-  return best ?? 'new';
+  return best;
+}
+
+/**
+ * How many times the learner has met a word: the sum of the observations over all dimensions of a row, and the larger of the
+ * lemma row's and the form row's (the two rows describe the same meetings, so they are not added). A row that carries the
+ * engine's own `encounters` is read as it stands.
+ */
+export function encountersOfRows(rows: Array<KnowledgeView | undefined>): number {
+  let best = 0;
+  for (const r of rows) {
+    if (!r) continue;
+    const n = typeof r.encounters === 'number' && r.encounters >= 0 ? r.encounters : Object.values(r.dimensions).reduce((sum, d) => sum + (d?.observations ?? 0), 0);
+    if (n > best) best = n;
+  }
+  return best;
 }

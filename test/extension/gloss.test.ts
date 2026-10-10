@@ -4,7 +4,7 @@
  * in chrome.storage.local under pack:shard:<id> with the attribution, nothing fetched by a content script.
  */
 import { describe, expect, it } from 'vitest';
-import { createGlossService, createShardFetch, defaultPacks, SHARD_PREFIX } from '../../packages/golearn-extension/src/background/gloss';
+import { cleanSourceTemplates, createGlossService, createShardFetch, defaultPacks, fillSourceUrl, SHARD_PREFIX } from '../../packages/golearn-extension/src/background/gloss';
 import type { SessionManager } from '../../packages/golearn-extension/src/background/session';
 import type { StorageArea } from '../../packages/golearn-extension/src/platform';
 import type { PackManifest } from '../../packages/language-packs/src/manifest';
@@ -13,6 +13,8 @@ import { MSG } from '../../packages/golearn-extension/src/platform';
 import { createChromeFake } from './chromeFake';
 import { ATTRIBUTION, createRig, fakePacks, SERVICE } from './rig';
 
+/** The course word list, named without an address, is always among the sources of a found entry. */
+const COURSE_LIST = { label: expect.stringMatching(/^Course word list \(adapter-sq@\d+\)$/) };
 const ask = (rig: ReturnType<typeof createRig>, lemma = 'shtëpi') => rig.content({ type: MSG.gloss, lemma, pos: 'NOUN', languageId: 'sq' });
 
 describe('golearn:gloss', () => {
@@ -21,7 +23,7 @@ describe('golearn:gloss', () => {
     await rig.signUp();
     await rig.connect();
     const r = await ask(rig);
-    expect(r).toEqual({ ok: true, found: true, senses: ['house', 'home'], attribution: ATTRIBUTION, source: 'configured' });
+    expect(r).toEqual({ ok: true, found: true, senses: ['house', 'home'], attribution: ATTRIBUTION, source: 'configured', sources: [COURSE_LIST] });
     expect(rig.log.filter((l) => l.path.includes('/dict/'))).toEqual([{ method: 'GET', path: '/dict/sq/manifest.json', status: 200 }, { method: 'GET', path: '/dict/sq/s-00.json', status: 200 }]);
     await new Promise((res) => setTimeout(res, 20));
     const rows = Object.entries(await rig.fake.local.get(null)).filter(([k]) => k.startsWith(SHARD_PREFIX));
@@ -177,8 +179,8 @@ describe('where the meanings are read from (per language: configured address, th
 
   it('(a) the learner\'s dictionary address is used first when it answers', async () => {
     const { svc, urls } = make({ 'https://mine.example/files/dict/sq/manifest.json': 200, 'https://mine.example/files/dict/sq/s-00.json': 200 }, { service: { baseUrl: 'https://repo.example', assetBase: 'https://mine.example/files' } });
-    expect(await g(svc)).toEqual({ ok: true, found: true, senses: ['house', 'home'], attribution: ATTRIBUTION, source: 'configured' });
-    expect(urls).toEqual(['https://mine.example/files/dict/sq/manifest.json', 'https://mine.example/files/dict/sq/s-00.json']);
+    expect(await g(svc)).toEqual({ ok: true, found: true, senses: ['house', 'home'], attribution: ATTRIBUTION, source: 'configured', sources: [COURSE_LIST] });
+    expect(urls.filter((u) => !u.endsWith('config.json'))).toEqual(['https://mine.example/files/dict/sq/manifest.json', 'https://mine.example/files/dict/sq/s-00.json']); // (config.json is read for the source links)
   });
 
   it('(b) the extension\'s own app/ folder when the configured address does not have the language', async () => {
@@ -186,7 +188,7 @@ describe('where the meanings are read from (per language: configured address, th
     expect(await g(svc)).toMatchObject({ ok: true, found: true, source: 'extension' });
     expect(urls[0]).toBe('https://mine.example/files/dict/sq/manifest.json');
     expect(urls).toContain(`${OWN}dict/sq/s-00.json`);
-    expect(urls.some((u) => u.endsWith('config.json'))).toBe(false); // the hosted address is not even read when an earlier place answers
+    expect(urls.some((u) => u.startsWith(HOSTED))).toBe(false); // the hosted copy is not used when an earlier place answers (config.json is read for the source links, not for this)
   });
 
   it('works with no account and no service at all: the extension\'s own files', async () => {
@@ -247,5 +249,68 @@ describe('where the meanings are read from (per language: configured address, th
     });
     expect(await g(svc)).toMatchObject({ ok: true, found: false, reason: 'not-found', source: 'extension' });
     expect(urls).toEqual([]);
+  });
+});
+
+describe('the sources of an entry ("view sources" on the card)', () => {
+  const OWN = 'chrome-extension://test-ext-id/app/';
+  const CONFIG = JSON.stringify({ sourceLinks: { wiktionary: 'https://en.wiktionary.org/wiki/{lemma}#{language}', kaikki: 'https://kaikki.org/dictionary/{language}/' } });
+  function make(config: string | undefined) {
+    const fake = createChromeFake();
+    const urls: string[] = [];
+    const doFetch = (async (input: RequestInfo | URL) => {
+      const u = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
+      urls.push(u);
+      if (u === `${OWN}config.json`) return config === undefined ? new Response('', { status: 404 }) : new Response(config, { status: 200 });
+      return new Response('{}', { status: 200 });
+    }) as typeof fetch;
+    const session = { getService: async () => undefined } as unknown as SessionManager;
+    return { svc: createGlossService({ area: fake.local, session, fetch: doFetch, packs: fakePacks(), getURL: (p: string) => fake.runtime.getURL!(p) }), urls };
+  }
+
+  it('a found gloss names Wiktionary (the lemma, the language), kaikki.org and the course word list; the links are built by the worker from config.json', async () => {
+    const { svc } = make(CONFIG);
+    const r = await svc.glossFor({ lemma: 'shtëpi', pos: 'NOUN', languageId: 'sq' });
+    expect(r.sources).toEqual([
+      { label: 'Wiktionary: shtëpi (Albanian)', url: 'https://en.wiktionary.org/wiki/sht%C3%ABpi#Albanian', licence: 'CC BY-SA 4.0' },
+      { label: 'kaikki.org: Albanian dictionary', url: 'https://kaikki.org/dictionary/Albanian/', licence: 'CC BY-SA 4.0' },
+      COURSE_LIST,
+    ]);
+  });
+
+  it('a reply that found nothing carries no sources', async () => {
+    const { svc } = make(CONFIG);
+    const miss = await svc.glossFor({ lemma: 'flurbozitet', pos: 'NOUN', languageId: 'sq' });
+    expect(miss.found).toBe(false);
+    expect(miss.sources).toBeUndefined();
+  });
+
+  it('without sourceLinks in the config (or an unreadable one) only the course word list is named: no address is invented', async () => {
+    for (const config of [undefined, '{}', 'not json']) {
+      const { svc } = make(config);
+      const r = await svc.glossFor({ lemma: 'shtëpi', pos: 'NOUN', languageId: 'sq' });
+      expect(r.sources, String(config)).toEqual([COURSE_LIST]);
+    }
+  });
+
+  it('a template that is not a plain https address is ignored (http, javascript:, a credential in the address)', async () => {
+    const { svc } = make(JSON.stringify({ sourceLinks: { wiktionary: 'http://en.wiktionary.org/wiki/{lemma}', kaikki: 'javascript:alert({lemma})' } }));
+    const r = await svc.glossFor({ lemma: 'shtëpi', pos: 'NOUN', languageId: 'sq' });
+    expect(r.sources).toEqual([COURSE_LIST]);
+    expect(cleanSourceTemplates({ wiktionary: 'https://user:pw@evil.example/{lemma}', kaikki: 'https://kaikki.org/dictionary/{language}/' })).toEqual({ kaikki: 'https://kaikki.org/dictionary/{language}/' });
+    expect(fillSourceUrl('https://user:pw@evil.example/{lemma}', 'x', 'Albanian')).toBeUndefined();
+  });
+
+  it('the fill puts the lemma in the path and the language in the fragment (spaces become underscores, as Wiktionary has them), and Norwegian is named as the dictionary names it', () => {
+    expect(fillSourceUrl('https://en.wiktionary.org/wiki/{lemma}#{language}', 'i bukur', 'Norwegian Bokmål')).toBe('https://en.wiktionary.org/wiki/i_bukur#Norwegian_Bokm%C3%A5l');
+    expect(fillSourceUrl('https://kaikki.org/dictionary/{language}/', 'x', 'Norwegian Bokmål')).toBe('https://kaikki.org/dictionary/Norwegian%20Bokm%C3%A5l/');
+    expect(fillSourceUrl(undefined, 'x', 'Albanian')).toBeUndefined();
+  });
+
+  it('config.json is read once for all the entries of a session', async () => {
+    const { svc, urls } = make(CONFIG);
+    await svc.glossFor({ lemma: 'shtëpi', pos: 'NOUN', languageId: 'sq' });
+    await svc.glossFor({ lemma: 'shtëpi', pos: 'NOUN', languageId: 'sq' });
+    expect(urls.filter((u) => u === `${OWN}config.json`)).toHaveLength(1);
   });
 });

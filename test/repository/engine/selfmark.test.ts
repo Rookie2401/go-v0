@@ -1,8 +1,9 @@
 // @vitest-environment node
 /**
- * projection@3: the learner's own marks on a word ("New to me" = learning, "I recognise it" = known, "I can use it" = productive).
- * The contract accepts `productive`; the fold keeps the LATEST explicit mark as `UnitKnowledge.selfMark`, order-independently; `productive`
- * is a weak productiveRetrieval credit; and the candidate rules read the mark.
+ * The learner's own marks on a word. projection@3 had three ("New to me" = learning, "I recognise it" = known, "I can use it" = productive);
+ * projection@4 reads them as LEVELS (learning = new, productive = known, the word known = the level known) and adds the six level words.
+ * The contract accepts the legacy words; the fold keeps the LATEST explicit mark as `UnitKnowledge.selfMark` (a level), order-independently;
+ * `productive` is a weak productiveRetrieval credit; and the candidate rules read the mark through the level.
  */
 import { describe, expect, it } from 'vitest';
 import { validateEvent } from '../../../packages/repository-contract/src';
@@ -21,7 +22,7 @@ const selfMarkOf = (events: GoEvent[], unitId = LEMMA): UnitKnowledge['selfMark'
 describe('the contract accepts the productive mark', () => {
   it('ItemMarked validates for saved, known, learning, productive and ignore, and refuses anything else', () => {
     resetIds();
-    for (const m of ['saved', 'known', 'learning', 'productive', 'ignore']) expect(validateEvent(mark(m, T(9))), m).toEqual([]);
+    for (const m of ['saved', 'known', 'learning', 'productive', 'ignore', 'new', 'seen', 'recognized', 'familiar', 'automatic']) expect(validateEvent(mark(m, T(9))), m).toEqual([]);
     expect(validateEvent(mark('mastered', T(9))).map((i) => i.path)).toContain('payload.mark');
   });
 });
@@ -71,9 +72,11 @@ describe('UnitKnowledge.selfMark: the latest explicit mark', () => {
 
   it('is the mark the learner made, with the instant of the event', () => {
     resetIds();
-    expect(selfMarkOf([mark('learning', T(9))])).toEqual({ mark: 'learning', at: T(9) });
+    // legacy words are read as the level they meant: learning = new, productive = known
+    expect(selfMarkOf([mark('learning', T(9))])).toEqual({ mark: 'new', at: T(9) });
     expect(selfMarkOf([mark('known', T(9))], FORM)).toEqual({ mark: 'known', at: T(9) });
-    expect(selfMarkOf([mark('productive', T(9))])).toEqual({ mark: 'productive', at: T(9) });
+    expect(selfMarkOf([mark('productive', T(9))])).toEqual({ mark: 'known', at: T(9) });
+    for (const m of ['new', 'seen', 'recognized', 'familiar', 'known', 'automatic']) expect(selfMarkOf([mark(m, T(9))]), m).toEqual({ mark: m, at: T(9) });
   });
 
   it('a later mark replaces an earlier one, whatever order the events arrive in', () => {
@@ -82,10 +85,10 @@ describe('UnitKnowledge.selfMark: the latest explicit mark', () => {
     const b = mark('known', T(10), undefined, 'm-b');
     const c = mark('productive', T(11), undefined, 'm-c');
     const d = mark('saved', T(12), undefined, 'm-d'); // a bookmark after: not a mark of knowledge
-    for (const order of [[a, b, c, d], [d, c, b, a], [b, d, a, c], [c, a, d, b]]) expect(selfMarkOf(order)).toEqual({ mark: 'productive', at: T(11) });
-    expect(selfMarkOf([c, b, a])).toEqual({ mark: 'productive', at: T(11) });
+    for (const order of [[a, b, c, d], [d, c, b, a], [b, d, a, c], [c, a, d, b]]) expect(selfMarkOf(order)).toEqual({ mark: 'known', at: T(11) });
+    expect(selfMarkOf([c, b, a])).toEqual({ mark: 'known', at: T(11) });
     // and back again: "New to me" after "I can use it" wins because it is later
-    expect(selfMarkOf([c, mark('learning', T(13), undefined, 'm-e'), b])).toEqual({ mark: 'learning', at: T(13) });
+    expect(selfMarkOf([c, mark('learning', T(13), undefined, 'm-e'), b])).toEqual({ mark: 'new', at: T(13) });
   });
 
   it('two marks at the same instant are settled by event id, the same way in any order', () => {
@@ -93,14 +96,14 @@ describe('UnitKnowledge.selfMark: the latest explicit mark', () => {
     const x = mark('known', T(9), undefined, 'ev-aaa');
     const y = mark('learning', T(9), undefined, 'ev-bbb');
     expect(selfMarkOf([x, y])).toEqual(selfMarkOf([y, x]));
-    expect(selfMarkOf([x, y])?.mark).toBe('learning');
+    expect(selfMarkOf([x, y])?.mark).toBe('new');
   });
 
   it('a marked event with a duplicate id counts once; a tombstoned mark is forgotten', () => {
     resetIds();
     const a = mark('known', T(9), undefined, 'ev-1');
     const b = mark('learning', T(10), undefined, 'ev-2');
-    expect(selfMarkOf([a, b, b, a])).toEqual({ mark: 'learning', at: T(10) });
+    expect(selfMarkOf([a, b, b, a])).toEqual({ mark: 'new', at: T(10) });
     const rows = foldEvents([a, b], { modelVersion: MODEL_VERSION, tombstones: [{ learnerId: L, scope: { kind: 'event', id: 'ev-2' } } as never] });
     expect(rows.find((r) => r.unitId === LEMMA)?.selfMark).toEqual({ mark: 'known', at: T(9) });
   });
@@ -114,14 +117,15 @@ describe('UnitKnowledge.selfMark: the latest explicit mark', () => {
     await store.append(L, [mark('known', T(10), undefined, 'ev-2')]);
     const live = await engine.knowledge(L);
     expect(live.find((r) => r.unitId === LEMMA)?.selfMark).toEqual({ mark: 'known', at: T(10) });
+    expect(live.find((r) => r.unitId === LEMMA)?.level).toBe('known');
     expect(await engine.rebuild(L)).toEqual(live);
   });
 });
 
-describe('projection@3 rebuilds what projection@2 stored', () => {
-  it('MODEL_VERSION is projection@3, and a stored projection@2 cursor is rebuilt on the next read, adding the selfMark', async () => {
+describe('projection@4 rebuilds what projection@2 stored', () => {
+  it('MODEL_VERSION is projection@4, and a stored projection@2 cursor is rebuilt on the next read, adding the selfMark, the level and the encounters', async () => {
     resetIds();
-    expect(MODEL_VERSION).toBe('projection@3');
+    expect(MODEL_VERSION).toBe('projection@4');
     const store = new FakeStore();
     await store.append(L, [mark('known', T(9))]);
     const old = createProjectionEngine({ store, now: () => NOW, modelVersion: 'projection@2' });
@@ -129,9 +133,10 @@ describe('projection@3 rebuilds what projection@2 stored', () => {
     expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@2' });
     const engine = createProjectionEngine({ store, now: () => NOW });
     const rows = await engine.knowledge(L);
-    expect(rows.every((r) => r.modelVersion === 'projection@3')).toBe(true);
+    expect(rows.every((r) => r.modelVersion === 'projection@4')).toBe(true);
     expect(rows.find((r) => r.unitId === LEMMA)?.selfMark).toEqual({ mark: 'known', at: T(9) });
-    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@3' });
+    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@4' });
+    expect(rows.find((r) => r.unitId === LEMMA)).toMatchObject({ level: 'known', encounters: 0 });
   });
 });
 
@@ -154,7 +159,7 @@ describe('candidates read the learner\'s marks', () => {
     expect(cand!.reasons.map((r) => r.rule)).toContain('repeatedLookups');
   });
 
-  it('"I recognise it" or "I can use it" after the lookups: not proposed as a recognition item', async () => {
+  it('"I recognise it" or "I can use it" (the level known) after the lookups: not drawn; a known unit waits for retention decay', async () => {
     resetIds();
     for (const m of ['known', 'productive']) {
       const { cand } = await candidatesFor([...lookups(3), mark(m, T(8), [LEMMA])]);
@@ -176,10 +181,11 @@ describe('candidates read the learner\'s marks', () => {
       const why = cand!.reasons.find((r) => r.rule === 'selfMarkContradicted');
       expect(why, name).toMatchObject({ weight: 0 });
       expect(why!.detail).toContain('later evidence disagrees');
-      expect(why!.detail).toContain('I recognise it');
+      expect(why!.detail).toContain('"Known"');
+      expect(why!.detail).toContain('supports');
     }
     const { cand } = await candidatesFor([...lookups(3), mark('productive', T(8), [LEMMA]), lookup([LEMMA], { at: T(9) })]);
-    expect(cand!.reasons.find((r) => r.rule === 'selfMarkContradicted')!.detail).toContain('I can use it');
+    expect(cand!.reasons.find((r) => r.rule === 'selfMarkContradicted')!.detail).toContain('"Known"'); // "I can use it" = the level known
   });
 
   it('evidence from BEFORE the mark does not contradict it, and a correct answer after it is no contradiction either', async () => {

@@ -5,6 +5,8 @@
  */
 import type { ValidationIssue, ValidationLevel } from './units';
 import { VALIDATION_LEVELS } from './units';
+import { KNOWLEDGE_LEVELS } from './knowledge-levels';
+import type { LevelMark } from './knowledge-levels';
 
 export const MAX_SURFACE_CHARS = 120;
 export const MAX_SURFACE_WORDS = 4;
@@ -102,11 +104,16 @@ export interface ReviewInvalidationPayload { reason: 'analysis-invalidated' | 'l
 /** An explicit preference change (§9). */
 export interface PreferenceChangePayload { key: string; value: unknown; origin: 'explicit' }
 /**
- * Explicit vocabulary marks. `known` = "I recognise it", `learning` = "New to me", `productive` = "I can use it" (the
- * GoLearn card's three self-assessment choices; `productive` was added with projection@3). `saved` and `ignore` are
- * bookmarks, not statements about knowledge.
+ * Explicit vocabulary marks. A mark is one of the SIX knowledge levels (`new`, `seen`, `recognized`, `familiar`, `known`, `automatic`;
+ * docs/ecosystem/KNOWLEDGE-LEVELS.md), or `saved` / `ignore` (bookmarks, not statements about knowledge).
+ *
+ * LEGACY marks stay valid and keep their meaning: the card's old three choices were stored as `learning` ("New to me"), `known`
+ * ("I recognise it") and `productive` ("I can use it", projection@3). Stored events are immutable and are never rewritten; the projection
+ * reads old and new marks through `LEGACY_MARK_LEVEL` / `levelOfMark` (`learning` = new, `productive` = known). `known` is both a legacy
+ * word and a level word and an event cannot say which was meant: `levelOfMark` reads it as the level `known`, while the evidence a `known`
+ * mark carries (a weak reading-recognition self-report) is exactly what it was before the six levels.
  */
-export interface ItemMarkPayload { mark: 'saved' | 'known' | 'learning' | 'productive' | 'ignore' }
+export interface ItemMarkPayload { mark: 'saved' | 'ignore' | LevelMark }
 /** The learner says they understood a sentence or passage (self-report; discounted by help used). */
 export interface UnderstoodPayload { scope: 'sentence' | 'passage'; helpUsed: boolean; tokenCount?: number }
 
@@ -242,6 +249,9 @@ export const uniqueByPath = (issues: ValidationIssue[]): ValidationIssue[] => {
   return issues.filter((i) => (seen.has(i.path) ? false : (seen.add(i.path), true)));
 };
 
+/** Every mark an ItemMarked may carry: the six levels, the legacy words `learning` and `productive` (`known` is a level too), and the bookmarks. */
+export const ITEM_MARKS: readonly string[] = ['saved', 'ignore', ...KNOWLEDGE_LEVELS, 'learning', 'productive'];
+
 const CHECKS: Record<string, Check> = {
   encounter: (p) => [...oneOf(p, 'contextKind', ['sentence', 'fragment', 'none']), ...surfaceOk(p), ...languageOk(p)],
   lookup: (p) => [...need(p, 'tokenCount', 'number'), ...oneOf(p, 'contextKind', ['sentence', 'fragment', 'none']), ...need(p, 'contextConfidence', 'number'), ...need(p, 'readerId', 'string'), ...(Array.isArray(p.helpShown) ? [] : [{ path: 'payload.helpShown', message: 'array of layer names' }]), ...surfaceOk(p), ...languageOk(p)],
@@ -249,7 +259,7 @@ const CHECKS: Record<string, Check> = {
   assistance: (p) => need(p, 'assistance', 'string'),
   playback: (p) => oneOf(p, 'voice', ['synthetic', 'recorded']),
   understood: (p) => [...oneOf(p, 'scope', ['sentence', 'passage']), ...need(p, 'helpUsed', 'boolean')],
-  'item-mark': (p) => oneOf(p, 'mark', ['saved', 'known', 'learning', 'productive', 'ignore']),
+  'item-mark': (p) => oneOf(p, 'mark', ITEM_MARKS),
   'listening-assessment': (p) => [
     ...oneOf(p, 'stimulus', ['word', 'sentence']), ...oneOf(p, 'voice', ['synthetic', 'recorded']), ...need(p, 'correct', 'boolean'),
     ...oneOf(p, 'responseMode', ['choice', 'typed', 'spoken', 'self-report']),

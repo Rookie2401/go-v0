@@ -4,11 +4,13 @@
  * that reaches the DOM is set with textContent, never as markup: page text, dictionary glosses and every reply from the
  * background are rendered as text. Dismissed by Escape, a click outside, or the close button. Tab cycles inside the card.
  *
- * LAYERS. Layer 1 is immediate and always on screen: the selected form, the likely meaning in this context, lemma and
- * part of speech, the essential morphology line, confidence, what the context was, and a pronunciation button.
- * Layers 2-5 are disclosures the learner opens, each reachable by one button: 2 morphology (a table of the features
- * that exist), 3 phrase & syntax, 4 the grammar explanation (how much depends on the explanation depth), 5 the English
- * rescue (a word-by-word list; there is no machine translation). Opening a layer is reported through `CardActions`.
+ * THE LOOK is Biblia's word card (the dark Western Canon theme): a "WORD · <language>" kicker with the close, the word large with a quiet speaker
+ * after it (GoListen's device provider speaks it; with no device voice the speaker's title says so and nothing else is shown), the meaning in
+ * curly quotes with a kicker naming its source, the lemma line when it differs, a quiet "view sources" link-button that opens the list of pages
+ * the information came from, then the level meter (six circles, filled up to the current level, its name beside them), the kicker
+ * "· N× encounters", and the pills: "Go deeper" ("Less" when open) and the quiet "Report" (the correction form). "Go deeper" opens every
+ * grammatical section at once, in this order: Form, Grammar, Syntax, All forms, Meanings, Origin, Word structure, Sentence (the word-by-word
+ * English rescue; there is no machine translation), and last "About this analysis". Opening it is reported through `CardActions`, one call per section.
  *
  * LATER ARRIVALS. The card is shown with what the parser had. The dictionary gloss, the learner-model line and the
  * pack's explanations arrive through `update()`; nothing waits for them. When the learner's grammatical understanding of
@@ -18,9 +20,10 @@ import { GOLEARN_HOST_ATTR, type PopupAnchor } from '../contract/readerAdapter';
 import { cellOf, cellsWithForm, featureKey, type ParadigmCell, type SegmentationCut } from '../../../../src/core/paradigm';
 import { contextLine, type CardModel, type EvidenceLabel } from '../parser/cardModel';
 import { languageNameOf, type SelfMark } from '../protocol';
+import { KNOWLEDGE_LEVELS, KNOWLEDGE_LEVEL_WORDS } from '../../../repository-contract/src/knowledge-levels';
 import { cognateText, etymologyStepText, type StructurePart } from '../content/enrich';
 import {
-  initialView, type CardActions, type CardView, type LayerName, type PlayResult, type PronounceAvailability, type Pronouncer,
+  initialView, LAYER_ORDER, type CardActions, type CardView, type LayerName, type PlayResult, type PronounceAvailability, type Pronouncer,
 } from './view';
 
 export type DismissReason = 'escape' | 'outside' | 'close' | 'replaced' | 'page-changed' | 'disposed' | 'new-lookup';
@@ -89,83 +92,119 @@ export function computePosition(anchor: PopupAnchor, size: { width: number; heig
 const CSS = `
 :host { all: initial; }
 * { box-sizing: border-box; }
-/* The lookup card, in the look of the Western Canon reader: a raised sheet of paper, hairline rows, tracked small labels, the lemma in the accent.
-   A shadow root cannot load a font of its own, so EB Garamond is named first (it is used where the reader has it installed) and the serif stack follows. */
+/* The lookup card, in the look of Biblia's word card (the dark Western Canon theme): paper, hairline rules, tracked small kickers, gold accent.
+   Tokens are Biblia's (src/index.css): paper #16130f, raised #1e1a15, ink #d9cfbe, ink-soft #a89c86, ink-faint #7d7059 (borders and decoration only: it is
+   below 4.5:1 on paper, so no text uses it), rule #322b22, rule-strong #453c2f, accent #c8a06a, accent-soft #b98f57. No font file is shipped: the stack
+   names EB Garamond (used where the reader has it installed) and falls back to Georgia. Sizes are em, so they follow the card's own 1.05 base, not the page's. */
 .card {
-  position: fixed; width: min(22.7em, calc(100vw - ${MARGIN * 2}px)); max-height: min(70vh, 520px); overflow: auto;
-  font: 0.9375em/1.4 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', 'Cardo', Georgia, 'Times New Roman', serif; color: #2b2620; background: #fdfaf3;
+  position: fixed; width: min(23em, calc(100vw - ${MARGIN * 2}px)); max-height: min(72vh, 540px); overflow: auto;
+  font: 1.05em/1.5 'EB Garamond', Georgia, 'Times New Roman', serif; color: #d9cfbe; background: #16130f;
   -webkit-font-smoothing: antialiased; font-feature-settings: 'kern' 1, 'liga' 1, 'locl' 0;
-  border: 1px solid #e0d6c2; border-radius: 8px; box-shadow: 0 1px 2px rgba(43,38,32,.08), 0 10px 28px rgba(43,38,32,.18); padding: 10px 14px 12px; text-align: start;
+  border: 1px solid #453c2f; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 32px rgba(0,0,0,.55); padding: 0.7em 1em 0.9em; text-align: start;
+  scrollbar-color: #453c2f #16130f; color-scheme: dark;
 }
 .card:focus { outline: none; }
-@media (prefers-color-scheme: dark) { .card { color: #d9cfbe; background: #1e1a15; border-color: #453c2f; box-shadow: 0 1px 2px rgba(0,0,0,.35), 0 10px 28px rgba(0,0,0,.5); } .tag { background: #2a241c; color: #a89c86; border-color: #453c2f; } button, input { color: #d9cfbe; background: #26211a; border-color: #80735c; } button:focus-visible, input:focus-visible { outline: 2px solid #c8a06a; } }
-.top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding-bottom: 4px; border-bottom: 1px solid #e0d6c2; }
-.brand { font-size: 0.78em; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; opacity: .7; }
-.word { font-size: 1.5em; font-weight: 600; line-height: 1.25; margin: 8px 0 6px; overflow-wrap: anywhere; }
-.row { display: flex; flex-wrap: wrap; gap: 2px 8px; align-items: baseline; margin: 0; padding: 4px 0; border-bottom: 1px solid #e0d6c2; }
-.k { flex: 0 1 auto; min-width: 5.5em; max-width: 8em; font-size: 0.74em; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .72; white-space: nowrap; }
+.label { letter-spacing: 0.16em; text-transform: uppercase; color: #a89c86; font-size: 0.69em; font-weight: 600; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.wordline { display: flex; align-items: center; gap: 0.35em; margin: 0.2em 0 0.1em; }
+.word { font-size: 1.85em; font-weight: 400; line-height: 1.2; margin: 0; overflow-wrap: anywhere; min-width: 0; color: #d9cfbe; }
+.say { flex: none; border: 0; background: none; color: #c8a06a; padding: 0.15em 0.3em; line-height: 1; font-size: 1em; }
+.say:disabled { opacity: .55; }
+.card__gloss { font-size: 1.1em; line-height: 1.4; margin: 0.1em 0 0; color: #d9cfbe; overflow-wrap: anywhere; }
+.card__gloss--quote::before { content: '\\201C'; color: #a89c86; }
+.card__gloss--quote::after { content: '\\201D'; color: #a89c86; }
+.card__gloss.muted { font-size: 0.95em; color: #a89c86; }
+.kicker { letter-spacing: 0.12em; text-transform: uppercase; color: #a89c86; font-size: 0.66em; font-weight: 600; margin-top: 0.1em; }
+.lemmaLine { display: flex; gap: 0.6em; align-items: baseline; flex-wrap: wrap; margin-top: 0.5em; }
+.lemmaLine .lv { font-size: 1.05em; color: #d9cfbe; }
+.lemmaLine .pos { font-variant: small-caps; letter-spacing: 0.06em; color: #a89c86; font-size: 0.85em; margin-inline-start: 0.35em; }
+.card__text { font-size: 0.9em; line-height: 1.5; color: #a89c86; font-style: italic; margin-top: 0.4em; }
+.sub { font-size: 0.78em; line-height: 1.3; margin: 2px 0 0; }
+button.sub, .sourcesBtn { border: 0; background: none; color: #c8a06a; padding: 0.2em 0; margin-top: 0.35em; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.74em; font-weight: 600; }
+button.sub:hover:not(:disabled) { color: #d9cfbe; }
+.sources { margin: 0.3em 0 0; font-size: 0.88em; color: #d9cfbe; }
+.sources[hidden], .deeper[hidden] { display: none; }
+.sources ul { margin: 0; padding-inline-start: 1.2em; }
+.sources a { color: #c8a06a; }
+.rate { display: flex; flex-wrap: wrap; gap: 0.4em 0.3em; margin-top: 0.8em; align-items: center; }
+.rate .label { flex: 0 0 100%; }
+.rateBtn { width: 1.6em; height: 1.6em; flex: none; padding: 0; border-radius: 50%; border: 1px solid #7d7059; background: #1e1a15; font-size: 1em; }
+.rateBtn:hover:not(:disabled) { border-color: #b98f57; }
+.rateBtn.on { background: #c8a06a; border-color: #c8a06a; }
+.levelName { letter-spacing: 0.16em; text-transform: uppercase; color: #c8a06a; font-size: 0.78em; font-weight: 600; margin-inline-start: 0.4em; }
+.encounters { letter-spacing: 0.12em; text-transform: uppercase; color: #a89c86; font-size: 0.66em; font-weight: 600; margin-top: 0.5em; min-height: 1.2em; }
+.pills { display: flex; gap: 0.5em; align-items: center; margin-top: 0.8em; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4em; border: 1px solid #453c2f; border-radius: 999px; padding: 0.5em 1.1em; color: #d9cfbe; background: #1e1a15; font-size: 0.9em; }
+.btn:hover:not(:disabled) { border-color: #b98f57; }
+.btn--quiet { border-color: transparent; background: transparent; color: #a89c86; margin-inline-start: auto; padding: 0.5em 0.8em; }
+.btn--quiet:hover:not(:disabled) { border-color: transparent; color: #d9cfbe; }
+.deeperBtn::after { content: ' \\25BE'; }
+.deeperBtn[aria-expanded="true"]::after { content: ' \\25B4'; }
+.deeper { margin-top: 0.8em; }
+.deeper h3 { margin: 0; padding: 0.8em 0 0.3em; border-top: 1px solid #322b22; letter-spacing: 0.16em; text-transform: uppercase; color: #a89c86; font-size: 0.69em; font-weight: 600; }
+.deeper .more { margin-top: 0; border-top: 0; padding-top: 0; }
+.deeper .about { color: #a89c86; }
+.sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.row { display: flex; flex-wrap: wrap; gap: 2px 8px; align-items: baseline; margin: 0; padding: 4px 0; border-bottom: 1px solid #322b22; }
+.k { flex: 0 1 auto; min-width: 5.5em; max-width: 8em; font-size: 0.7em; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #a89c86; white-space: nowrap; }
 .v { flex: 1 1 13.4em; min-width: 0; overflow-wrap: anywhere; }
-.row[data-row="lemma"] .v { color: #6b4f2a; font-weight: 600; font-size: 1.06em; }
-.tag { flex: none; margin-inline-start: auto; font-size: 0.66em; letter-spacing: .06em; text-transform: uppercase; padding: 0 5px; border-radius: 999px; border: 1px solid #cdbfa3; background: #f4eee0; color: #5c5346; white-space: nowrap; }
-.muted { opacity: .72; font-style: italic; }
-.actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
-.rate { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
-.actions.deeper { margin-top: 6px; }
-.actions.deeper button::before { content: '▸ '; opacity: .6; }
-table.paradigm { border-collapse: collapse; margin: 4px 0 8px; font-size: 0.92em; }
-table.paradigm th { font-weight: 600; text-align: left; padding: 2px 8px 2px 0; opacity: .85; }
-table.paradigm td.pcell { padding: 2px 8px 2px 0; white-space: nowrap; }
-table.paradigm td.pcell.sel { font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
-table.paradigm td.pcell.none { opacity: .4; }
+.row[data-row="lemma"] .v { color: #c8a06a; font-size: 1.05em; }
+.tag { flex: none; margin-inline-start: auto; font-size: 0.64em; letter-spacing: .06em; text-transform: uppercase; padding: 0 5px; border-radius: 999px; border: 1px solid #453c2f; background: #1e1a15; color: #a89c86; white-space: nowrap; }
+.muted { color: #a89c86; font-style: italic; }
+.actions { display: flex; gap: 6px; margin-top: 0.7em; flex-wrap: wrap; align-items: center; }
+table.paradigm { border-collapse: collapse; margin: 4px 0 8px; font-size: 0.92em; max-width: 100%; }
+table.paradigm th { font-weight: 600; text-align: left; padding: 2px 8px 2px 0; color: #a89c86; white-space: normal; }
+table.paradigm td.pcell { padding: 2px 8px 2px 0; }
+table.paradigm td.pcell.sel { font-weight: 600; color: #c8a06a; text-decoration: underline; text-underline-offset: .2em; }
+table.paradigm td.pcell.none { color: #a89c86; }
 table.paradigm td.pcell.generated { font-style: italic; }
-table.paradigm td.pcell.conflicted { color: #9b2c1f; }
-.pmark { margin-left: 3px; font-size: 0.8em; opacity: .7; }
+table.paradigm td.pcell.conflicted { color: #f0a090; }
+.pmark { margin-left: 3px; font-size: 0.8em; color: #a89c86; }
 ol.senses { padding-left: 18px; margin: 4px 0; }
 ol.senses li { margin: 2px 0; }
-.example { font-style: italic; opacity: .85; margin-left: 4px; }
+.example { font-style: italic; color: #a89c86; margin-left: 4px; }
 .ety { margin: 4px 0; }
 .segs { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 4px; margin: 6px 0; }
-.seg { display: inline-flex; flex-direction: column; align-items: center; border: 1px solid #cdbfa3; border-radius: 6px; padding: 2px 8px; }
-.seg .role { font-size: 0.66em; letter-spacing: .06em; text-transform: uppercase; opacity: .72; }
+.seg { display: inline-flex; flex-direction: column; align-items: center; border: 1px solid #453c2f; border-radius: 6px; padding: 2px 8px; }
+.seg .role { font-size: 0.66em; letter-spacing: .06em; text-transform: uppercase; color: #a89c86; }
 .seg.prefix, .seg.suffix, .seg.ending, .seg.linking, .seg.clitic { border-style: dashed; }
-.rateLabel { font-size: 0.857em; letter-spacing: .06em; text-transform: uppercase; opacity: .75; margin-right: 2px; }
-.rateBtn[aria-pressed="true"] { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
-button, input { font: inherit; font-size: 0.95em; padding: 0.2em 0.75em; border-radius: 6px; border: 1px solid #8a7d68; background: #f7f2e8; color: #2b2620; }
+button, input, select { font: inherit; font-size: 0.95em; padding: 0.2em 0.75em; border-radius: 999px; border: 1px solid #453c2f; background: #1e1a15; color: #d9cfbe; }
+select { border-radius: 6px; }
 button { cursor: pointer; }
-button:hover:not(:disabled) { border-color: #8a6b40; }
+button:hover:not(:disabled) { border-color: #b98f57; }
 button:disabled { opacity: .5; cursor: not-allowed; }
-button:focus-visible, input:focus-visible { outline: 2px solid #6b4f2a; outline-offset: 2px; }
-button[aria-expanded="true"] { border-color: #6b4f2a; }
-.close { padding: 0 0.5em; font-size: 1.143em; line-height: 1.3; }
-.more { margin-top: 10px; border-top: 1px solid #e0d6c2; padding-top: 6px; font-size: 0.95em; }
-.more[hidden] { display: none; }
-.more h4 { margin: 10px 0 2px; font-size: 0.8em; letter-spacing: .14em; text-transform: uppercase; opacity: .7; font-weight: 600; }
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid #c8a06a; outline-offset: 2px; }
+button[aria-expanded="true"] { border-color: #b98f57; }
+button.sub[aria-expanded="true"], .sourcesBtn[aria-expanded="true"] { border-color: transparent; }
+.close { border: 0; background: none; color: #a89c86; padding: 0 0.3em; font-size: 1.4em; line-height: 1; }
+.close:hover:not(:disabled) { color: #d9cfbe; }
+.more { margin-top: 10px; padding-top: 2px; font-size: 0.95em; }
+.more h4 { margin: 10px 0 2px; font-size: 0.72em; letter-spacing: .14em; text-transform: uppercase; color: #a89c86; font-weight: 600; }
 .more ul { margin: 0; padding-inline-start: 18px; }
 .more table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
-.more th, .more td { text-align: start; vertical-align: top; padding: 2px 6px 2px 0; border-bottom: 1px solid #e0d6c2; }
+.more th, .more td { text-align: start; vertical-align: top; padding: 2px 6px 2px 0; border-bottom: 1px solid #322b22; }
 .more .note { font-size: 0.923em; }
 .more .tag { font-size: 0.7em; }
 .more th { font-weight: 600; white-space: nowrap; }
 .sel { font-weight: 600; }
-.status { margin-top: 8px; font-size: 0.857em; font-style: italic; opacity: .8; min-height: 1.2em; }
-.feedback { font-size: 0.857em; font-style: italic; opacity: .85; min-height: 1.2em; }
-.note { font-size: 0.857em; margin-top: 4px; opacity: .8; }
+.status { margin-top: 0.6em; font-size: 0.857em; font-style: italic; color: #a89c86; min-height: 1.2em; }
+.feedback { margin-top: 0.4em; font-size: 0.857em; font-style: italic; color: #a89c86; min-height: 1.2em; }
+.note { font-size: 0.857em; margin-top: 4px; color: #a89c86; }
 .msg { margin: 4px 0; }
-.err { color: #9b2c1f; }
-form.fix { margin-top: 8px; border-top: 1px solid #e0d6c2; padding-top: 6px; font-size: 0.95em; }
+.err { color: #f0a090; }
+form.fix { margin-top: 0.7em; border-top: 1px solid #322b22; padding-top: 0.5em; font-size: 0.95em; }
 form.fix fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 form.fix legend { padding: 0; margin: 0 0 2px; }
 form.fix[hidden] { display: none; }
 form.fix label { display: block; margin: 2px 0; }
-form.fix input[type="text"] { width: 12em; }
-@media (prefers-color-scheme: dark) { .err { color: #f0a090; } .row[data-row="lemma"] .v { color: #c8a06a; } .top, .row, .more, .more th, .more td, form.fix { border-color: #322b22; } button:hover:not(:disabled) { border-color: #b98f57; } button[aria-expanded="true"] { border-color: #c8a06a; } }
+form.fix input[type="text"] { width: 12em; border-radius: 6px; }
 `;
 
 type Child = Node | string | null | undefined | false;
 
-const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', 'phrase-syntax': 'Phrase & syntax', grammar: 'Grammar', sentence: 'English rescue', forms: 'All forms', meaning: 'Meanings', origin: 'Origin', structure: 'Word structure', sound: 'Sound' };
-/** The deeper sections (Linguistic Engine V2) sit on their own row under the first four. */
-const DEEPER_LAYERS: readonly LayerName[] = ['forms', 'meaning', 'origin', 'structure', 'sound'];
+/** The sections "Go deeper" shows, in `LAYER_ORDER`. "Sentence" is the word-by-word English rescue list. */
+const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', grammar: 'Grammar', 'phrase-syntax': 'Syntax', forms: 'All forms', meaning: 'Meanings', origin: 'Origin', structure: 'Word structure', sentence: 'Sentence' };
+const LAYER_CLASS: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', structure: 'l10' };
 const STRUCTURE_STATUS: Record<string, string> = { 'supported-by-source': 'From the dictionary: its etymology template names these parts.', provisional: "Provisional: from the analyser's rules only; no dictionary template confirms it." };
 const STATUS_MARK: Record<string, string> = { verified: '✓', supported: '◌', generated: '~', conflicted: '‼' };
 const STATUS_LABEL: Record<string, string> = { verified: 'both the rules and the dictionary', supported: 'the dictionary only', generated: 'the rules only (unverified)', conflicted: 'the two disagree' };
@@ -232,9 +271,14 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let model: CardModel | undefined;
   let view: CardView = initialView('');
   let actions: CardActions = {};
-  let parts: { rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement; layers: Record<LayerName, { btn: HTMLButtonElement; panel: HTMLElement }>; fix: HTMLFormElement; save: HTMLButtonElement; wrong: HTMLButtonElement; rateBtns: Record<SelfMark, HTMLButtonElement> } | undefined;
+  let parts: {
+    rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement; stopAudio?: HTMLButtonElement; audioSpeed?: HTMLSelectElement;
+    sources: HTMLElement; sourcesBtn: HTMLButtonElement; deeper: HTMLElement; deeperBtn: HTMLButtonElement; encounters: HTMLElement; levelName: HTMLElement;
+    layers: Record<LayerName, HTMLElement>; fix: HTMLFormElement; report: HTMLButtonElement; rateBtns: Record<SelfMark, HTMLButtonElement>;
+  } | undefined;
   // `autoPlay`: the render token of a card that should speak once as soon as its voice is known to be available (GoLearn Active's "Speak on click")
-  let pron: { available: boolean; note: string; playing: boolean; plays: number; off?: () => void; autoPlay?: number } = { available: false, note: '', playing: false, plays: 0 };
+  let pron: { available: boolean; note: string; playing: boolean; plays: number; off?: () => void; offPlayback?: () => void; state?: 'idle' | 'playing' | 'paused' | 'ended' | 'error'; pending?: { voice: 'synthetic' | 'recorded'; voiceId?: string }; failed?: boolean; autoPlay?: number } = { available: false, note: '', playing: false, plays: 0 };
+  let playbackRate = 1;
   let renderToken = 0;
 
   const h = (tag: string, props: Record<string, string> = {}, ...children: Child[]): HTMLElement => {
@@ -310,7 +354,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (e.key === 'Escape') { e.stopPropagation(); dismiss('escape'); return; }
     if ((e.target as Element | null)?.tagName === 'INPUT') e.stopPropagation();
     if (e.key !== 'Tab' || !root) return;
-    const focusables = Array.from(root.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')).filter((el) => !el.closest('[hidden]'));
+    const focusables = Array.from(root.querySelectorAll<HTMLElement>('button:not([disabled]), input:not([disabled]), select:not([disabled]), [href], [tabindex]:not([tabindex="-1"])')).filter((el) => !el.closest('[hidden]'));
     if (!focusables.length) return;
     const first = focusables[0];
     const last = focusables[focusables.length - 1];
@@ -331,66 +375,36 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     return h('div', { class: 'row', 'data-row': rowId }, h('span', { class: 'k' }, key), h('span', { class: muted ? 'v muted' : 'v', ...(lang ? { lang } : {}) }, value), tag(label));
   }
 
-  // ───────────── layer 1 ─────────────
+  // ───────────── the immediate card ─────────────
 
-  function grammarHint(m: CardModel, v: CardView): { text: string; weak: boolean } | undefined {
-    if (!m.constructions.length) return undefined;
-    const weakIds = new Set(v.profile.weak);
-    const c = m.constructions.find((x) => weakIds.has(x.id)) ?? m.constructions[0];
-    const e = v.explain.constructions.find((x) => x.id === c.id);
-    const title = e?.title ?? c.title;
-    const brief = e?.brief ?? c.explanation.split(/(?<=[.!?])\s/u)[0];
-    return { text: v.depth === 'label' || !brief ? title : `${title}: ${brief}`, weak: weakIds.has(c.id) };
+  /** The meaning under the word: the lexicon gloss at once, else the dictionary's, else "looking up…" while it is on its way. */
+  function meaningText(m: CardModel, v: CardView): { text: string; attr?: string; muted: boolean; from?: string } {
+    const dict = v.gloss;
+    if (m.gloss) return { text: m.gloss, muted: false, from: 'Course word list' };
+    // a dictionary-only meaning carries its attribution beside it (CC BY-SA: the notice goes wherever the entry is shown)
+    if (dict.state === 'ready' && dict.senses.length) return { text: dict.senses.slice(0, 3).join('; '), ...(dict.attribution ? { attr: dict.attribution } : {}), muted: false, from: 'Wiktionary' };
+    if (dict.state === 'loading') return { text: 'looking up…', muted: true };
+    // the reason the dictionary gave nothing is shown ("no dictionary location", "could not be reached" and "not in the dictionary" must not look alike)
+    if (dict.state === 'none' || dict.state === 'error') return { text: `${m.provenance === 'none' ? 'Not in the word list' : 'No meaning in the word list'}; ${dict.message ? dict.message.replace(/\.$/, '') : dict.state === 'error' ? 'the dictionary could not be asked' : 'not in the dictionary either'}.`, muted: true };
+    return { text: m.provenance === 'none' ? 'Not in the word list.' : 'No meaning given.', muted: true };
   }
 
-  function profileLine(v: CardView): { text: string; label: EvidenceLabel } | undefined {
-    const p = v.profile;
-    if (p.state === 'ready') {
-      const own = p.selfMark ? `. You marked it: ${p.selfMark === 'learning' ? 'new to you' : p.selfMark === 'known' ? 'recognised' : 'one you can use'}` : '';
-      if (!p.met) return { text: `You have not met this word before, as far as GoLearn knows${own ? own + '.' : '.'}`, label: 'inference' };
-      const rec = p.recognition;
-      const r = rec === undefined || rec === 'not-assessed' ? 'not assessed yet' : `${rec.level} (confidence ${rec.confidence.toFixed(2)})`;
-      return { text: `You have met this word ${p.met} time${p.met === 1 ? '' : 's'}; reading recognition: ${r}${p.stale ? ' (from saved data)' : ''}${own}`, label: 'inference' };
-    }
-    if (p.state === 'not-connected') return { text: 'Not connected: your history with this word is not shown. Open GoLearn setup to connect.', label: 'fact' };
-    if (p.state === 'unavailable') {
-      const why = p.reason === 'needs-sign-in' ? 'is not available until you sign in to GoLearn again' : p.reason === 'offline' ? 'could not be loaded: GoLearn cannot reach your account right now' : 'could not be loaded right now';
-      return { text: `Your history with this word ${why}.`, label: 'fact' };
-    }
-    return undefined;
-  }
-
+  /**
+   * The immediate card under the word: the meaning in curly quotes with a kicker naming where it came from, the lemma line when the lemma
+   * differs from the word, and a note only when there is something honest to say (a guessed lemma). Nothing else: no confidence, no context.
+   */
   function renderRows(): void {
     if (!parts || !model) return;
-    const m = model; const v = view; const l = m.labels;
-    const rows: HTMLElement[] = [];
-    const lemmaText = m.lemma ? (m.pos ? `${m.lemma} (${m.pos})` : m.lemma) : '';
-    if (m.lemma) rows.push(row('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', lemmaText, l.lemma, false, m.languageId));
-
-    const hint = grammarHint(m, v);
-    const hintRow = hint ? row('grammar', 'grammar', hint.text, l.constructions, !hint.weak) : undefined;
-    if (hintRow && hint!.weak) rows.push(hintRow); // adaptive order: a weak construction comes before the gloss
-
-    // meaning: the lexicon gloss at once, else the dictionary's, else "looking up…" while it is on its way
-    const dict = v.gloss;
-    if (m.gloss) rows.push(row('meaning', 'meaning', m.gloss, l.gloss));
-    // a dictionary-only meaning carries its attribution on the row itself (CC BY-SA: the notice goes wherever the entry is shown)
-    else if (dict.state === 'ready' && dict.senses.length) rows.push(row('meaning', 'meaning', `${dict.senses.slice(0, 3).join('; ')}${dict.attribution ? ` (${dict.attribution})` : ''}`, l.gloss));
-    else if (dict.state === 'loading') rows.push(row('meaning', 'meaning', 'looking up…', l.gloss, true));
-    // the reason the dictionary gave nothing is shown (it was swallowed before: "no dictionary location", "could not be reached" and "not in the dictionary" all looked alike)
-    else if (dict.state === 'none' || dict.state === 'error') rows.push(row('meaning', 'meaning', `${m.provenance === 'none' ? 'Not in the word list' : 'No meaning in the word list'}; ${dict.message ? dict.message.replace(/\.$/, '') : dict.state === 'error' ? 'the dictionary could not be asked' : 'not in the dictionary either'}.`, l.gloss, true));
-    else rows.push(row('meaning', 'meaning', m.provenance === 'none' ? 'Not in the word list.' : 'No meaning given.', l.gloss, true));
-    if (m.gloss && dict.state === 'ready' && dict.senses.length) {
-      rows.push(row('dictionary', 'dictionary', `${dict.senses.slice(0, 4).join('; ')}${dict.attribution ? ` (${dict.attribution})` : ''}`, 'analysis', true));
+    const m = model; const v = view;
+    const { text, attr, muted, from } = meaningText(m, v);
+    const gloss = h('div', { class: muted ? 'meaning card__gloss muted' : 'meaning card__gloss', 'data-row': 'meaning' }, h('span', { class: muted ? '' : 'card__gloss--quote' }, text), attr ? ' ' : null, attr ? h('span', { class: 'kicker attr' }, `(${attr})`) : null);
+    const rows: HTMLElement[] = [gloss];
+    if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
+    const same = !m.lemma || m.lemma.normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
+    if (!same && m.lemma && m.tokenCount === 1) {
+      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
     }
-    if (hintRow && !hint!.weak) rows.push(hintRow);
-
-    if (m.morphology) rows.push(row('form', 'form', m.morphology, l.morphology));
-    rows.push(row('context', 'context', contextLine(m.context).replace(/^Context:\s*/, ''), l.context, true));
-    const src = m.source ? ` · ${m.source.label} (${m.source.reviewStatus})` : '';
-    rows.push(row('confidence', 'confidence', `${m.confidence.toFixed(2)} · ${m.provenance}${src}`, l.confidence, true));
-    const pl = profileLine(v);
-    if (pl) rows.push(row('learner', 'you', pl.text, pl.label, pl.label !== 'inference'));
+    if (m.unconfirmed && m.tokenCount === 1) rows.push(h('div', { class: 'card__text' }, 'The lemma is a guess from the ending; the word list does not hold this word.'));
     if (m.words.length > 1) {
       const ul = h('ul', {}, ...m.words.map((w) => h('li', {}, h('span', { lang: m.languageId }, w.surface), ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', `${w.gloss ? ` – ${w.gloss}` : ''} (${w.confidence.toFixed(2)})`)));
       rows.push(h('div', { class: 'more-inline' }, ul));
@@ -398,13 +412,58 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     parts.rows.replaceChildren(...rows);
   }
 
+  /** Only an https address becomes a link; anything else a reply carries is shown as its name. */
+  const safeHttps = (url: string | undefined): string | undefined => {
+    if (!url) return undefined;
+    // an address with credentials (https://user:pw@host/) does not begin with https://host: it is not a link either
+    try { const u = new URL(url); return u.protocol === 'https:' && u.href.startsWith(`https://${u.host}`) ? u.href : undefined; } catch { return undefined; }
+  };
+
+  /** The "view sources" list: each source with its link and licence; with none, a plain sentence saying so. */
+  function renderSources(): void {
+    if (!parts) return;
+    const list = view.sources ?? [];
+    const panel = parts.sources;
+    if (!list.length) { panel.replaceChildren(h('div', { class: 'note' }, 'No external source: the course word list only.')); return; }
+    const ul = h('ul', {});
+    for (const s of list) {
+      const url = safeHttps(s.url);
+      ul.append(h('li', {}, url ? h('a', { href: url, target: '_blank', rel: 'noopener noreferrer' }, s.label) : s.label, s.licence ? ` — ${s.licence}` : ''));
+    }
+    panel.replaceChildren(ul);
+    if (view.gloss.attribution) panel.append(h('div', { class: 'note' }, view.gloss.attribution));
+  }
+
+  /** "· N× encounters", once the learner model has answered (nothing before, and nothing when it cannot be asked). */
+  function renderEncounters(): void {
+    if (!parts) return;
+    const p = view.profile;
+    parts.encounters.textContent = p.state === 'ready' ? `· ${p.encounters ?? p.met ?? 0}× encounters` : '';
+  }
+
+
   // ───────────── pronunciation ─────────────
 
   function renderPron(): void {
     if (!parts) return;
     const speakText = model && model.surface.length <= 200 ? model.surface : '';
     parts.say.disabled = !(pron.available && speakText) || pron.playing;
+    // the speaker says why it cannot play in its title (no voice on this device, voices still loading); nothing else of that is shown
+    parts.say.title = pron.available ? 'Play with GoListen' : pron.note;
+    // the note is for screen readers (a live region off screen); it is drawn only when playing failed
     parts.pronNote.textContent = pron.note;
+    parts.pronNote.className = pron.state === 'error' || pron.failed ? 'note pron' : 'sr pron';
+    if (parts.stopAudio) parts.stopAudio.disabled = pron.state !== 'playing' && pron.state !== 'paused';
+    if (parts.audioSpeed) parts.audioSpeed.disabled = !pron.available;
+  }
+
+  function completedPronunciation(): void {
+    if (!pron.pending) return;
+    const outcome = pron.pending;
+    pron.pending = undefined;
+    const repeated = pron.plays++ > 0;
+    pron.note = 'Pronunciation played as practice. It is not listening evidence.';
+    try { actions.onPronounced?.({ ok: true, ...outcome, repeated }); } catch { /* reporting never blocks */ }
   }
 
   /** A synchronous answer (the local voice list) is applied at once; a promised one (GoListen asks the device) when it arrives. */
@@ -422,7 +481,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (got instanceof Promise) void got.then(apply, () => apply(undefined)); else apply(got);
   }
 
-  /** Speak the open card's word once, as the Pronounce button would (now, or as soon as the voice check says a voice exists; nothing when none does). */
+  /** Speak the open card's word once, as the speaker beside the word would (now, or as soon as the voice check says a voice exists; nothing when none does). */
   function pronounce(): void {
     if (!model || !open) return;
     if (pron.available) onPronounceClick(); else pron.autoPlay = renderToken;
@@ -436,16 +495,21 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const token = renderToken;
     let result: PlayResult | Promise<PlayResult>;
     try { result = pronouncer.play(text, lang); } catch { result = { ok: false, message: 'Pronunciation failed.' }; }
-    pron.playing = true; renderPron();
+    pron.playing = true;
+    pron.failed = false;
+    if (pronouncer.onPlaybackState && pron.state !== 'error') pron.note = 'Preparing pronunciation…';
+    renderPron();
     void Promise.resolve(result).then((r) => r, () => ({ ok: false, message: 'Pronunciation failed.' }) as PlayResult).then((r) => {
       if (token !== renderToken) return;
       pron.playing = false;
       if (r.ok) {
-        const repeated = pron.plays > 0;
-        pron.plays++;
-        try { actions.onPronounced?.({ ok: true, voice: r.voice, voiceId: r.voiceId, repeated }); } catch { /* reporting never blocks */ }
+        if (!pronouncer.onPlaybackState || (pron.state !== 'error' && pron.state !== 'idle')) {
+          pron.pending = { voice: r.voice, voiceId: r.voiceId };
+          if (!pronouncer.onPlaybackState || pron.state === 'ended') completedPronunciation();
+        }
       } else {
         pron.note = r.message; // one line; the analysis is untouched
+        pron.failed = true;
       }
       renderPron();
     });
@@ -468,22 +532,49 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       panel.append(h('div', { class: 'note' }, m.tokenCount > 1 ? 'Select one word to see its form.' : 'The analyser gave no features for this word.'));
       return;
     }
-    const table = h('table', {});
+    // Some analysers report the same feature more than once (and occasionally
+    // report two values for one key). Keep one row per feature so a duplicate
+    // such as `Number NUM .9` cannot look like two independent facts. A slash
+    // deliberately preserves unresolved alternatives instead of choosing one.
+    const grouped = new Map<string, string[]>();
     for (const f of m.features) {
-      const e = v.explain.features.find((x) => x.key === f.key && x.value === f.value);
-      const label = e?.label ?? f.key;
-      const value = e?.brief ?? f.value;
-      const why = v.depth === 'label' ? '' : v.depth === 'brief' ? (e?.explanation ? firstSentence(e.explanation) : '') : (e?.explanation ?? '');
+      const values = f.value.split(',').map((x) => x.trim()).filter(Boolean);
+      const prior = grouped.get(f.key) ?? [];
+      for (const value of values) if (!prior.includes(value)) prior.push(value);
+      grouped.set(f.key, prior);
+    }
+    const table = h('table', {});
+    for (const [key, values] of grouped) {
+      const explanations = values.map((value) => v.explain.features.find((x) => x.key === key && x.value === value));
+      const combined = v.explain.features.find((x) => x.key === key &&
+        x.value.split(',').map((raw) => raw.trim()).filter(Boolean).length === values.length &&
+        x.value.split(',').every((raw) => values.includes(raw.trim())));
+      const e = combined ?? explanations.find(Boolean);
+      const label = e?.label ?? key;
+      const value = combined?.brief ?? values.map((raw, i) => explanations[i]?.brief ?? raw).join(' / ');
+      const texts = [...new Set([combined, ...explanations].map((x) => x?.explanation).filter((x): x is string => !!x))];
+      const why = v.depth === 'label' ? '' : v.depth === 'brief'
+        ? texts.map(firstSentence).join(' / ')
+        : texts.join(' / ');
       table.append(h('tr', {}, h('th', {}, label), h('td', {}, value), h('td', { class: 'muted' }, why), h('td', {}, tag(m.labels.features))));
     }
     panel.append(table);
+    if ([...grouped.values()].some((values) => values.length > 1)) {
+      panel.append(h('div', { class: 'note' }, 'A slash joins alternative values supplied by the analyser; GoLearn has not chosen between them.'));
+    }
     if (v.explain.state !== 'ready') panel.append(h('div', { class: 'note' }, 'These are the analyser’s own labels; the pack’s explanations were not available.'));
+  }
+
+  /** Form: the lemma and part of speech, the essential morphology line, and the table of the features that exist. */
+  function fillForm(panel: HTMLElement, m: CardModel, v: CardView): void {
+    if (m.lemma) panel.append(row('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${m.lemma} (${m.pos})` : m.lemma, m.labels.lemma, false, m.languageId));
+    if (m.morphology) panel.append(row('form', 'form', m.morphology, m.labels.morphology));
+    fillMorphology(panel, m, v);
   }
 
   function fillSyntax(panel: HTMLElement, m: CardModel): void {
     section(panel, 'Phrases', m.phrases.map((p) => `${p.display} (${p.kind}${p.gloss ? `: ${p.gloss}` : ''}) · ${p.confidence.toFixed(2)}`));
     section(panel, 'Units and parts', m.syntaxNotes);
-    section(panel, 'Constructions here', m.constructions.map((c) => c.title));
     const s = m.syntax;
     if (s && s.status !== 'none') {
       // Stage 4: the relation, why the rules chose it, what else they could not rule out, and the words that hang on this one
@@ -508,7 +599,10 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       return;
     }
     const items: HTMLElement[] = [];
-    for (const c of m.constructions) {
+    // a construction the learner's grammar is weak on comes first
+    const weakIds = new Set(v.profile.weak);
+    const ordered = [...m.constructions].sort((a, b) => Number(weakIds.has(b.id)) - Number(weakIds.has(a.id)));
+    for (const c of ordered) {
       const e = v.explain.constructions.find((x) => x.id === c.id);
       const title = e?.title ?? c.title;
       const body = v.depth === 'label' ? '' : v.depth === 'brief' ? (e?.brief ?? firstSentence(c.explanation)) : (e?.explanation ?? c.explanation);
@@ -549,7 +643,13 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
         : seg.reason ?? 'Only one cut is plausible here.'));
     }
     const p = v.enrichment.paradigm;
-    if (!p) { panel.append(h('div', { class: 'note' }, m.tokenCount > 1 ? 'Select one word to see its forms.' : 'No paradigm: the analyser has no rules for this word and the dictionary has no table for it.')); return; }
+    if (!p) {
+      const detail = v.enrichment.message ? ` ${v.enrichment.message}` : '';
+      panel.append(h('div', { class: 'note' }, m.tokenCount > 1
+        ? 'Select one word to see its forms.'
+        : `No inflection paradigm is available for this lemma: neither the analyser nor the dictionary supplied a form table.${detail}`));
+      return;
+    }
     if (p.kind === 'none') {
       panel.append(h('div', { class: 'note' }, p.notes.join(' ') || 'This language does not inflect its words.'));
       if (p.constructions?.length) section(panel, 'Constructions to know instead', p.constructions);
@@ -572,7 +672,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const cellNode = (c: ParadigmCell | undefined): HTMLElement => {
       if (!c) return h('td', { class: 'pcell none' }, '—');
       const text = c.status === 'conflicted' && c.alternatives?.length ? `${c.form} / ${c.alternatives.join(' / ')}` : c.form;
-      return h('td', { class: `pcell ${c.status}${selected.has(c) ? ' sel' : ''}`, title: `${STATUS_LABEL[c.status]}${c.note ? `; ${c.note}` : ''}` }, h('span', { lang: m.languageId }, text), h('span', { class: 'pmark', 'aria-label': STATUS_LABEL[c.status] }, STATUS_MARK[c.status]));
+      const sources = c.sources.map((source) => source === 'generated' ? 'analyser rules' : 'dictionary table').join(' + ');
+      return h('td', { class: `pcell ${c.status}${selected.has(c) ? ' sel' : ''}`, title: `${STATUS_LABEL[c.status]} (${sources})${c.note ? `; ${c.note}` : ''}` }, h('span', { lang: m.languageId }, text), h('span', { class: 'pmark', 'aria-label': STATUS_LABEL[c.status] }, STATUS_MARK[c.status]));
     };
     const L = p.layout;
     if (L) {
@@ -618,9 +719,11 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function fillMeaning(panel: HTMLElement, m: CardModel, v: CardView): void {
     if (m.gloss) panel.append(h('div', { class: 'row' }, h('span', { class: 'v' }, h('strong', {}, 'Word list: '), m.gloss), tag(m.labels.gloss)));
+    // the dictionary's own senses (the immediate card shows the word list's meaning when it has one), with the attribution CC BY-SA asks for
+    if (m.gloss && v.gloss.state === 'ready' && v.gloss.senses.length) panel.append(row('dictionary', 'dictionary', `${v.gloss.senses.slice(0, 4).join('; ')}${v.gloss.attribution ? ` (${v.gloss.attribution})` : ''}`, 'analysis', true));
     if (!enrichNote(panel, v)) return;
     const e = v.enrichment;
-    if (!e.senses?.length) { panel.append(h('div', { class: 'note' }, 'The dictionary has no entry for this lemma.')); }
+    if (!e.senses?.length) { panel.append(h('div', { class: 'note' }, e.message ? `The dictionary did not provide senses for this lemma: ${e.message}` : 'The dictionary has no entry for this lemma.')); }
     else {
       const ol = h('ol', { class: 'senses' });
       for (const s of e.senses) {
@@ -644,7 +747,12 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function fillOrigin(panel: HTMLElement, m: CardModel, v: CardView): void {
     if (!enrichNote(panel, v)) return;
     const o = v.enrichment.etymology;
-    if (!o || o.status === 'unknown') { panel.append(h('div', { class: 'note' }, 'No documented origin in the dictionary. GoLearn does not invent one.')); return; }
+    if (!o || o.status === 'unknown') {
+      panel.append(h('div', { class: 'note' }, v.enrichment.message
+        ? `The dictionary did not provide a documented origin: ${v.enrichment.message}`
+        : 'No documented origin in the dictionary. GoLearn does not invent one.'));
+      return;
+    }
     panel.append(h('div', { class: 'note' }, o.status === 'conflicted' ? 'The source itself calls this origin uncertain or disputed.' : 'From the dictionary\'s etymology; a documented account, not GoLearn\'s own.'));
     if (o.text) panel.append(h('div', { class: 'ety', lang: 'en' }, o.text));
     if (o.chain.length) section(panel, 'Steps the source names', o.chain.map((c) => etymologyStepText(c, o.languageNames ?? {})));
@@ -656,7 +764,12 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (!enrichNote(panel, v)) return;
     const w = v.enrichment.structure;
     const family = w ? [...w.family.derived, ...w.family.related] : [];
-    if (!w || (w.status === 'unknown' && !w.derivedFrom && !family.length)) { panel.append(h('div', { class: 'note' }, 'No documented structure for this word.')); return; }
+    if (!w || (w.status === 'unknown' && !w.derivedFrom && !family.length)) {
+      panel.append(h('div', { class: 'note' }, v.enrichment.message
+        ? `The dictionary did not provide documented structure for this word: ${v.enrichment.message}`
+        : 'No documented structure for this word.'));
+      return;
+    }
     if (w.parts.length) {
       const describe = (p: StructurePart): string => `${p.text}: ${p.role}${p.gloss ? ` (${p.gloss})` : ''}`;
       const line = h('div', { class: 'segs', role: 'group', 'aria-label': `Parts of the word: ${w.parts.map(describe).join('; ')}` });
@@ -676,57 +789,62 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (sources.length) panel.append(h('div', { class: 'note' }, `Sources: ${sources.join('; ')}. Lemma: ${m.lemma ?? m.surface}.`));
   }
 
-  function fillSound(panel: HTMLElement, m: CardModel, v: CardView): void {
-    const s = v.enrichment.pronunciation;
-    if (m.pronunciation.length) section(panel, 'From the analyser', m.pronunciation);
-    if (!enrichNote(panel, v)) return;
-    if (!s || (!s.ipa.length && !s.recordings.length && !s.hyphenation && !s.romanization)) { panel.append(h('div', { class: 'note' }, 'The dictionary has no pronunciation for this lemma.')); return; }
-    if (s.ipa.length) section(panel, 'IPA', s.ipa.map((p) => `${p.ipa}${p.tags.length ? ` (${p.tags.join(', ')})` : ''}`));
-    if (s.hyphenation?.length) section(panel, 'Syllables', [s.hyphenation.join('·')]);
-    if (s.romanization) section(panel, 'Romanisation', [s.romanization]);
-    if (s.recordings.length) section(panel, 'Recordings', s.recordings.map((r) => `${r.name ?? 'recording'} — a Wikimedia Commons volunteer recording, not reviewed; GoLearn does not play it yet`));
-    if (s.source) panel.append(h('div', { class: 'note' }, `Source: ${s.source}.`));
-  }
-
   function renderPanels(): void {
     if (!parts || !model) return;
     const fills: Record<LayerName, (p: HTMLElement) => void> = {
-      morphology: (p) => fillMorphology(p, model!, view),
-      'phrase-syntax': (p) => fillSyntax(p, model!),
+      morphology: (p) => fillForm(p, model!, view),
       grammar: (p) => fillGrammar(p, model!, view),
-      sentence: (p) => fillSentence(p, model!),
+      'phrase-syntax': (p) => fillSyntax(p, model!),
       forms: (p) => fillForms(p, model!, view),
       meaning: (p) => fillMeaning(p, model!, view),
       origin: (p) => fillOrigin(p, model!, view),
       structure: (p) => fillStructure(p, model!, view),
-      sound: (p) => fillSound(p, model!, view),
+      sentence: (p) => fillSentence(p, model!),
     };
-    for (const name of Object.keys(parts.layers) as LayerName[]) {
-      const panel = parts.layers[name].panel;
+    for (const name of LAYER_ORDER) {
+      const panel = parts.layers[name];
       panel.replaceChildren();
       fills[name](panel);
     }
   }
 
+  /** The rating row (the word's level pressed: the learner's own mark when they made one, else the level the model gives), the correction feedback and the footer. */
   function renderSaved(): void {
     if (!parts) return;
-    parts.save.disabled = view.saved;
-    parts.save.textContent = view.saved ? 'Saved for review' : 'Review this';
-    for (const [mark, b] of Object.entries(parts.rateBtns) as Array<[SelfMark, HTMLButtonElement]>) b.setAttribute('aria-pressed', String(view.rated === mark));
+    const current = view.rated ?? view.profile.level;
+    const at = current ? KNOWLEDGE_LEVELS.indexOf(current) : -1;
+    for (const [mark, b] of Object.entries(parts.rateBtns) as Array<[SelfMark, HTMLButtonElement]>) {
+      b.setAttribute('aria-pressed', String(current === mark));
+      b.classList.toggle('on', KNOWLEDGE_LEVELS.indexOf(mark) <= at); // the circles up to and including the current level are filled
+    }
+    parts.levelName.textContent = current ? KNOWLEDGE_LEVEL_WORDS[current].title : '';
+    renderEncounters();
     const c = view.correction;
     if (c.state === 'sending') setFeedback('Sending your correction…');
     else if (c.state === 'sent' || c.state === 'saved-locally' || c.state === 'error') setFeedback(c.message);
   }
 
-  function renderAll(): void { renderRows(); renderPanels(); renderPron(); renderSaved(); }
+  function renderAll(): void { renderRows(); renderSources(); renderPanels(); renderPron(); renderSaved(); }
 
-  function toggleLayer(name: LayerName): void {
-    const l = parts!.layers[name];
-    const openNow = l.panel.hasAttribute('hidden');
-    if (openNow) l.panel.removeAttribute('hidden'); else l.panel.setAttribute('hidden', '');
-    l.btn.setAttribute('aria-expanded', String(openNow));
+  function toggleSources(): void {
+    const openNow = parts!.sources.hasAttribute('hidden');
+    if (openNow) parts!.sources.removeAttribute('hidden'); else parts!.sources.setAttribute('hidden', '');
+    parts!.sourcesBtn.setAttribute('aria-expanded', String(openNow));
     if (lastAnchor) place(lastAnchor);
-    if (openNow) { try { actions.onLayer?.(name); } catch { /* reporting never blocks */ } }
+  }
+
+  /** "Go deeper" opens every grammatical section at once ("Less" closes them). Each opening is reported once per section, in the order shown. */
+  function toggleDeeper(): void {
+    const openNow = parts!.deeper.hasAttribute('hidden');
+    if (openNow) parts!.deeper.removeAttribute('hidden'); else parts!.deeper.setAttribute('hidden', '');
+    parts!.deeperBtn.setAttribute('aria-expanded', String(openNow));
+    parts!.deeperBtn.textContent = openNow ? 'Less' : 'Go deeper';
+    if (lastAnchor) place(lastAnchor);
+    if (!openNow) return;
+    for (const name of LAYER_ORDER) {
+      if (name === 'forms' && model && model.tokenCount !== 1) continue; // the paradigm is for one word
+      try { actions.onLayer?.(name); } catch { /* reporting never blocks */ }
+    }
   }
 
   function buildCorrectionForm(m: CardModel): HTMLFormElement {
@@ -746,7 +864,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const send = h('button', { type: 'submit', class: 'sendFix' }, 'Send correction');
     const cancel = h('button', { type: 'button', class: 'cancelFix' }, 'Cancel');
     form.append(h('div', { class: 'actions' }, send, cancel));
-    cancel.addEventListener('click', () => { form.setAttribute('hidden', ''); parts?.wrong.setAttribute('aria-expanded', 'false'); if (lastAnchor) place(lastAnchor); });
+    cancel.addEventListener('click', () => { form.setAttribute('hidden', ''); parts?.report.setAttribute('aria-expanded', 'false'); if (lastAnchor) place(lastAnchor); });
     text.addEventListener('input', () => { (typed as HTMLInputElement).checked = true; });
     form.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -756,7 +874,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       else if (chosen !== undefined) { const a = alts[Number(chosen)]; if (a?.lemma) { lemma = a.lemma; pos = a.pos; fromAlternative = true; } }
       if (!lemma || /[:,?#&%\u0000-\u001f]/u.test(lemma) || lemma.length > 60) { setFeedback(!lemma ? 'Choose a reading or type the lemma first.' : 'The lemma may not contain : , ? # & % or line breaks.'); return; }
       form.setAttribute('hidden', '');
-      parts?.wrong.setAttribute('aria-expanded', 'false');
+      parts?.report.setAttribute('aria-expanded', 'false');
       try { actions.onCorrect?.({ lemma, pos, fromAlternative }); } catch { /* reporting never blocks */ }
     });
     return form;
@@ -765,73 +883,109 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function show(m: CardModel, anchor: PopupAnchor, opts: ShowOptions = {}): Placement {
     renderToken++;
     pron.off?.();
+    pron.offPlayback?.();
     pron = { available: false, note: 'Checking voices…', playing: false, plays: 0 };
     model = m;
     view = { ...initialView(opts.view?.languageName ?? ''), ...opts.view };
     actions = opts.actions ?? {};
-    const top = h('div', { class: 'top' }, h('span', { class: 'brand' }, `GoLearn${view.languageName ? ` · ${view.languageName}` : ''}`), closeButton());
+    const top = h('div', { class: 'top' }, h('span', { class: 'label' }, `Word${view.languageName ? ` · ${view.languageName}` : ''}`), closeButton());
     const word = h('div', { class: 'word', lang: m.languageId, dir: m.context.direction === 'rtl' ? 'rtl' : 'auto' }, m.surface);
     const rows = h('div', { class: 'rows' });
 
-    const say = h('button', { type: 'button', class: 'say', 'aria-label': 'Pronounce (practice only)' }, 'Pronounce (practice)') as HTMLButtonElement;
+    // the speaker beside the word: GoListen's device provider speaks it; with no device voice its title says so (disabled, nothing else shown)
+    const say = h('button', { type: 'button', class: 'say', 'aria-label': 'Play with GoListen', title: pron.note }, h('span', { 'aria-hidden': 'true' }, '🔊')) as HTMLButtonElement;
     say.disabled = true;
     say.addEventListener('click', onPronounceClick);
-    const pronNote = h('div', { class: 'note pron', role: 'status', 'aria-live': 'polite' }, pron.note);
-
-    const layerBtn = (name: LayerName, cls: string): HTMLButtonElement => h('button', { type: 'button', class: cls, 'aria-expanded': 'false' }, LAYER_TITLES[name]) as HTMLButtonElement;
-    const layers = {} as Record<LayerName, { btn: HTMLButtonElement; panel: HTMLElement }>;
-    const classes: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', structure: 'l10', sound: 'l9' };
-    for (const name of Object.keys(LAYER_TITLES) as LayerName[]) {
-      const btn = layerBtn(name, `layerBtn ${classes[name]}`);
-      const panel = h('div', { class: `more layer ${classes[name]}`, hidden: '', 'data-layer': name, id: `panel-${classes[name]}` });
-      btn.setAttribute('aria-controls', panel.id);
-      btn.addEventListener('click', () => toggleLayer(name));
-      layers[name] = { btn, panel };
+    const wordLine = h('div', { class: 'wordline' }, word, say);
+    // read aloud by screen readers when something changes (a played hearing, a failure); drawn on the card only when playing failed
+    const pronNote = h('div', { class: 'sr pron', role: 'status', 'aria-live': 'polite' }, pron.note);
+    const audioControls = h('div', { class: 'actions', role: 'group', 'aria-label': 'Playback' });
+    let stopAudio: HTMLButtonElement | undefined;
+    let audioSpeed: HTMLSelectElement | undefined;
+    if (pronouncer.onPlaybackState && pronouncer.stop) {
+      stopAudio = h('button', { type: 'button' }, 'Stop pronunciation') as HTMLButtonElement;
+      stopAudio.disabled = true;
+      stopAudio.addEventListener('click', () => { pron.pending = undefined; pronouncer.stop?.(); });
+      audioControls.append(stopAudio);
     }
-    if (m.context.kind === 'none') { layers.sentence.btn.title = 'There is no sentence context to list.'; }
+    if (pronouncer.setRate) {
+      audioSpeed = h('select', { 'aria-label': 'Pronunciation speed' }) as HTMLSelectElement;
+      for (const rate of [0.5, 0.75, 1, 1.25, 1.5]) audioSpeed.append(h('option', { value: String(rate) }, `${rate}×`));
+      audioSpeed.value = String(playbackRate);
+      audioSpeed.disabled = true;
+      audioSpeed.addEventListener('change', () => {
+        playbackRate = Number(audioSpeed!.value);
+        pronouncer.setRate?.(playbackRate);
+        pron.note = 'Pronunciation speed changed; device voices use it on the next playback.';
+        renderPron();
+      });
+      audioControls.append(h('label', {}, 'Speed ', audioSpeed));
+    }
 
-    const save = h('button', { type: 'button', class: 'saveBtn' }, 'Review this') as HTMLButtonElement;
-    save.addEventListener('click', () => { if (view.saved) return; try { actions.onSave?.(); } catch { /* reporting never blocks */ } });
-    // the learner's own word on how well they know it: three marks, the chosen one shown pressed (a new mark replaces it)
+    // "view sources", a subscript under the meaning: the list of pages the information came from
+    const sourcesBtn = h('button', { type: 'button', class: 'sourcesBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-sources' }, 'view sources') as HTMLButtonElement;
+    const sources = h('div', { class: 'sources', id: 'panel-sources', hidden: '' });
+    sourcesBtn.addEventListener('click', toggleSources);
+
+    // "Go deeper": every grammatical section at once, in order; the last is "About this analysis" (muted)
+    const layers = {} as Record<LayerName, HTMLElement>;
+    const deeper = h('div', { class: 'deeper', id: 'panel-deeper', hidden: '' });
+    for (const name of LAYER_ORDER) {
+      layers[name] = h('div', { class: `more layer ${LAYER_CLASS[name]}`, 'data-layer': name, id: `panel-${LAYER_CLASS[name]}` });
+      deeper.append(h('h3', {}, LAYER_TITLES[name]), layers[name]);
+    }
+    const about = h('div', { class: 'more about', id: 'panel-about' });
+    fillAbout(about, m);
+    deeper.append(h('h3', {}, 'About this analysis'), about);
+    if (audioControls.childElementCount) deeper.append(h('h3', {}, 'Playback'), audioControls);
+    const deeperBtn = h('button', { type: 'button', class: 'btn deeperBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-deeper' }, 'Go deeper') as HTMLButtonElement;
+    deeperBtn.addEventListener('click', toggleDeeper);
+
+    // the learner's own word on how well they know it: six levels, the current one shown pressed (a new mark replaces it)
     const rateBtns = {} as Record<SelfMark, HTMLButtonElement>;
-    const rate = h('div', { class: 'rate', role: 'group', 'aria-label': 'How well do you know this word?' }, h('span', { class: 'rateLabel' }, 'How well do you know it?'));
-    for (const [mark, label] of [['learning', 'New to me'], ['known', 'I recognise it'], ['productive', 'I can use it']] as Array<[SelfMark, string]>) {
-      const b = h('button', { type: 'button', class: 'rateBtn', 'data-mark': mark, 'aria-pressed': 'false' }, label) as HTMLButtonElement;
+    const rate = h('div', { class: 'rate', role: 'group', 'aria-label': 'How well do you know this word?' }, h('span', { class: 'label' }, 'How well do you know it?'));
+    for (const mark of KNOWLEDGE_LEVELS) {
+      // a circle of the level meter: its name is the level's title (the button has no text), its title says what the level means
+      const b = h('button', { type: 'button', class: 'rateBtn', 'data-mark': mark, 'aria-pressed': 'false', 'aria-label': KNOWLEDGE_LEVEL_WORDS[mark].title, title: `${KNOWLEDGE_LEVEL_WORDS[mark].title}: ${KNOWLEDGE_LEVEL_WORDS[mark].detail}` }) as HTMLButtonElement;
       b.addEventListener('click', () => { if (view.rated === mark) return; try { actions.onRate?.(mark); } catch { /* reporting never blocks */ } });
       rateBtns[mark] = b;
       rate.append(b);
     }
-    const wrong = h('button', { type: 'button', class: 'wrongBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-fix' }, 'This analysis is wrong') as HTMLButtonElement;
+    const levelName = h('span', { class: 'levelName', 'aria-hidden': 'true' }, '');
+    rate.append(levelName);
+
+    // under the meter, the kicker "· N× encounters" (all that is shown about the learner); "Report" is the quiet pill beside "Go deeper" and opens the correction form
+    const encounters = h('div', { class: 'encounters' }, '');
+    const report = h('button', { type: 'button', class: 'btn btn--quiet reportBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-fix' }, 'Report') as HTMLButtonElement;
     const fix = buildCorrectionForm(m);
-    if (m.tokenCount !== 1 || !m.itemIds.length) { wrong.disabled = true; wrong.title = 'Corrections are for a single word.'; }
-    wrong.addEventListener('click', () => {
+    if (m.tokenCount !== 1 || !m.itemIds.length) { report.disabled = true; report.title = 'Reports are for a single word.'; }
+    report.addEventListener('click', () => {
       const openNow = fix.hasAttribute('hidden');
       if (openNow) fix.removeAttribute('hidden'); else fix.setAttribute('hidden', '');
-      wrong.setAttribute('aria-expanded', String(openNow));
+      report.setAttribute('aria-expanded', String(openNow));
       if (lastAnchor) place(lastAnchor);
     });
-
-    const moreBtn = h('button', { type: 'button', class: 'moreBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-more' }, 'More') as HTMLButtonElement;
-    const more = h('div', { class: 'more', id: 'panel-more', hidden: '' });
-    fillMore(more, m);
-    moreBtn.addEventListener('click', () => {
-      const openNow = more.hasAttribute('hidden');
-      if (openNow) more.removeAttribute('hidden'); else more.setAttribute('hidden', '');
-      moreBtn.setAttribute('aria-expanded', String(openNow));
-      moreBtn.textContent = openNow ? 'Less' : 'More';
-      if (lastAnchor) place(lastAnchor);
-    });
+    const pills = h('div', { class: 'pills' }, deeperBtn, report);
 
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
-    const actionsRow = h('div', { class: 'actions' }, say, layers.morphology.btn, layers['phrase-syntax'].btn, layers.grammar.btn, layers.sentence.btn, save, wrong, moreBtn);
-    if (m.tokenCount !== 1) { layers.forms.btn.disabled = true; layers.forms.btn.title = 'Select one word to see its forms.'; }
-    parts = { rows, pronNote, say, layers, fix, save, wrong, rateBtns };
-    const deeperRow = h('div', { class: 'actions deeper', 'aria-label': 'Deeper sections' }, ...DEEPER_LAYERS.map((n) => layers[n].btn));
-    const wrapper = h('div', {}, top, word, rows, actionsRow, deeperRow, rate, pronNote, layers.morphology.panel, layers['phrase-syntax'].panel, layers.grammar.panel, layers.sentence.panel, ...DEEPER_LAYERS.map((n) => layers[n].panel), fix, more, feedbackEl, statusEl);
+    parts = { rows, pronNote, say, stopAudio, audioSpeed, sources, sourcesBtn, deeper, deeperBtn, encounters, levelName, layers, fix, report, rateBtns };
+    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, pronNote, fix, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });
+    const playbackToken = renderToken;
+    pron.offPlayback = pronouncer.onPlaybackState?.((state) => {
+      if (playbackToken !== renderToken) return;
+      pron.state = state;
+      if (state === 'error') {
+        pron.pending = undefined;
+        pron.playing = false;
+        pron.note = 'Pronunciation could not play. Try again, or continue with the written information.';
+      } else if (state === 'idle') { pron.pending = undefined; }
+      else if (state === 'ended') { completedPronunciation(); }
+      renderPron();
+    });
     checkPronunciation(renderToken);
     return finish(anchor, opts);
   }
@@ -844,7 +998,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (opts.focus) {
       prevFocus = doc.activeElement;
       card!.setAttribute('aria-modal', 'true'); // it traps Tab while focus is inside; a card opened by selection takes no focus and is not modal
-      const target = root!.querySelector<HTMLElement>('.say:not([disabled]), .layerBtn, .close') ?? card!;
+      const target = root!.querySelector<HTMLElement>('.say:not([disabled]), .deeperBtn, .close') ?? card!;
       target.focus();
       movedFocus = true;
     }
@@ -854,7 +1008,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function update(patch: Partial<CardView>): void {
     if (!open || !model || !parts) return;
     view = { ...view, ...patch };
-    renderRows(); renderPanels(); renderSaved();
+    renderRows(); renderSources(); renderPanels(); renderSaved();
     if (lastAnchor) place(lastAnchor);
   }
 
@@ -862,7 +1016,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     renderToken++;
     model = undefined; parts = undefined; statusEl = undefined; feedbackEl = undefined;
     pron.off?.(); pron = { available: false, note: '', playing: false, plays: 0 };
-    const top = h('div', { class: 'top' }, h('span', { class: 'brand' }, 'GoLearn'), closeButton());
+    const top = h('div', { class: 'top' }, h('span', { class: 'label' }, 'GoLearn'), closeButton());
     mountCard(h('div', {}, top, h('div', { class: kind === 'error' ? 'msg err' : 'msg', role: 'alert' }, text)), 'GoLearn message');
     return finish(anchor);
   }
@@ -887,6 +1041,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     for (const off of cleanup) off();
     cleanup = [];
     pron.off?.(); pron.off = undefined;
+    pron.offPlayback?.(); pron.offPlayback = undefined;
     try { pronouncer.stop?.(); } catch { /* nothing playing */ }
     host?.remove();
     host = undefined; root = undefined; card = undefined; statusEl = undefined; feedbackEl = undefined; lastAnchor = undefined;
@@ -911,22 +1066,27 @@ const LABEL_HELP: Record<EvidenceLabel, string> = {
   inference: 'An estimate about you, computed from your own learning history. It can be wrong and it is never shown to anyone else.',
 };
 
-function fillMore(more: HTMLElement, m: CardModel): void {
-  const doc = more.ownerDocument;
+/**
+ * "About this analysis", the last block of "Go deeper" (muted): how the reading was reached and how far to trust it. The context
+ * the word was read in, the confidence and where the reading came from, the labels, the limits, and the analyser's id.
+ */
+function fillAbout(about: HTMLElement, m: CardModel): void {
+  const doc = about.ownerDocument;
   const section = (title: string, items: string[]) => {
     if (!items.length) return;
-    const h4 = doc.createElement('h4'); h4.textContent = title; more.append(h4);
+    const h4 = doc.createElement('h4'); h4.textContent = title; about.append(h4);
     const ul = doc.createElement('ul');
     for (const t of items) { const li = doc.createElement('li'); li.textContent = t; ul.append(li); }
-    more.append(ul);
+    about.append(ul);
   };
+  const c = m.context;
+  section('Context', [contextLine(c).replace(/^Context:\s*/, '')]);
+  const src = m.source ? ` · ${m.source.label} (${m.source.reviewStatus})` : '';
+  section('Confidence', [`${m.confidence.toFixed(2)} · ${m.provenance}${src}`]);
   section('Why this reading', m.basis);
-  section('Phrases', m.phrases.map((p) => `${p.display} (${p.kind}${p.gloss ? `: ${p.gloss}` : ''}) · ${p.confidence.toFixed(2)}`));
   section('Other readings', m.alternatives.map((a) => `${a.lemma ?? '?'}${a.pos ? ` (${a.pos})` : ''}${a.gloss ? ` – ${a.gloss}` : ''} · ${a.confidence.toFixed(2)}`));
   section('Notes', m.notes);
-  section('Sound', m.pronunciation);
-  const c = m.context;
-  section('Context', [`${c.kind === 'none' ? 'none (word alone)' : c.kind}${c.kind !== 'none' ? ` · confidence ${c.confidence.toFixed(2)}` : ''}${c.reason ? ` · ${c.reason}` : ''}`]);
   section('Limits', m.limits);
   section('Labels', ['fact: what you selected and how the context was got', 'analysis: the reading, machine-drafted, unchecked', 'inference: an estimate about you from your own learning history']);
+  section('Analyser', [m.analyzerId]);
 }

@@ -304,10 +304,8 @@ describe('Prompt 5 §21 — GoReview over the real Repository, pack, scheduler, 
     await out.settled;
     await flush(60);
     const text = ui.root()!.textContent ?? '';
-    expect(text).toMatch(/You have met this word \d+ times/);               // 15. the learner state reached the reader
-    expect(text).toMatch(/reading recognition: (low|medium|high)/);
-    expect(text).not.toMatch(/not met this word before/);
-    (ui.root()!.querySelector('button.l4') as HTMLElement).click();        // 16. the full explanation is still there
+    expect(text).toMatch(/· [1-9]\d*× encounters/);                  // 15. the learner state reached the reader (the six-level card's footer; `encounters` comes from the projection@4 row)
+    (ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click();  // 16. the full explanation is still there (behind "Go deeper" on the six-level card)
     expect(ui.root()!.querySelector('.layer.l4')!.textContent).toMatch(/direct object|ending/i);
     expect(text).toContain('libër (NOUN)');
     c.dispose();

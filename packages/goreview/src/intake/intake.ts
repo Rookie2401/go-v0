@@ -26,6 +26,11 @@
  *   9. candidate.score < 0.15 → low-priority.
  *  10. candidate.score ≥ 0.5 → test-now; otherwise → test-later.
  *
+ * REVIEW FOLLOWS THE LEVEL (projection@4, docs/ecosystem/KNOWLEDGE-LEVELS.md). The Repository draws candidates by the unit's knowledge level (new / seen /
+ * recognized / familiar → recognition practice, known → retrieval, automatic → only when retention decayed or a mark was contradicted); intake adds
+ * nothing the learner has to ask for. Every test-now / test-later outcome carries the level in its reasons ('level Known: …'), and a candidate whose
+ * unit is Automatic with no decay or contradiction among its reasons is already-covered (rule 5b: a stale cached candidate must not re-test it).
+ *
  * `proposed` maps the Repository's target dimension to an assessment dimension and an exercise family:
  *   exposure / assistedRecognition / readingRecognition → written-recognition (phrase-comprehension for a multiword unit)
  *   productiveRetrieval        → meaning-to-form
@@ -35,7 +40,8 @@
  * (an `exposure`/`assistedRecognition` target means "the learner has only met or been helped with it": the next honest
  * question is plain recognition.)
  */
-import type { Dimension, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
+import { KNOWLEDGE_LEVEL_WORDS } from '../../../repository-contract/src';
+import type { Dimension, KnowledgeLevel, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
 import { FAMILY_DIMENSION, REPOSITORY_DIMENSION } from '../types';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeDecision, IntakeInput, IntakeOutcome } from '../types';
 
@@ -72,6 +78,18 @@ export function proposeFor(candidate: Pick<ReviewCandidate, 'kind' | 'targetDime
 }
 
 const pct = (x: number): string => `${Math.round(x * 100)}%`;
+
+/** What the level means for the next question (shown in the reasons, so GoPractice says why a unit is asked as it is). */
+const LEVEL_ASK: Record<KnowledgeLevel, string> = {
+  new: 'not understood yet, so a recognition question',
+  seen: 'met but not shown to be understood, so a recognition question',
+  recognized: 'understood once or with help, so reading it unaided is the next step',
+  familiar: 'recognised repeatedly, so reliable recognition is the next step',
+  known: 'recognised reliably, so retrieving it is the next step',
+  automatic: 'produced without help; asked again only because retention decayed or a mark was contradicted',
+};
+/** `level Known: …` for a knowledge row that carries a level (projection@4); nothing for a row that does not. */
+const levelNote = (k?: UnitKnowledge): string[] => (k?.level ? [`level ${KNOWLEDGE_LEVEL_WORDS[k.level].title}: ${LEVEL_ASK[k.level]}`] : []);
 
 function decide(
   candidate: ReviewCandidate, decision: IntakeDecision, reasons: string[],
@@ -136,6 +154,11 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
     return decide(candidate, 'already-covered', [`well established: ${d} estimated ${pct(est.score)} with confidence ${pct(est.confidence)} from ${est.observations} observation(s)`]);
   }
 
+  // 5b ── Automatic and nothing questions it (a stale or cached candidate must not re-test a unit the learner produces without help) ──────────────────
+  if (knowledge?.level === 'automatic' && !candidate.reasons.some((r) => r.rule === 'retentionDecayed' || r.rule === 'selfMarkContradicted')) {
+    return decide(candidate, 'already-covered', [`level Automatic: ${LEVEL_ASK.automatic}; neither decayed retention nor a contradicted mark is among its reasons`]);
+  }
+
   // 6 ── a provisional grammatical analysis is not a fact to test ────────────────────────────────────────────────
   if (el.eligible && el.status === 'provisional' && d === 'grammaticalUnderstanding') {
     return decide(candidate, 'needs-validation', ['the grammatical analysis is provisional; a grammar question would test a guess']);
@@ -158,7 +181,7 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
 
   // 8 ── explicitly saved ────────────────────────────────────────────────────────────────────────────────────────
   if (preferences.prioritizeSaved && saved.has(candidate.unitId)) {
-    return decide(candidate, 'test-now', [...caveats, 'saved by the learner (prioritised)', `score ${candidate.score.toFixed(2)}`], proposed);
+    return decide(candidate, 'test-now', [...caveats, ...levelNote(knowledge), 'saved by the learner (prioritised)', `score ${candidate.score.toFixed(2)}`], proposed);
   }
 
   // 9 ── not worth a card ────────────────────────────────────────────────────────────────────────────────────────
@@ -170,9 +193,9 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
   const top = [...candidate.reasons].sort((a, b) => b.weight - a.weight)[0];
   const why = top ? `${top.rule}${top.detail ? ` (${top.detail})` : ''}` : 'no stated reason';
   if (candidate.score >= SCORE_TEST_NOW) {
-    return decide(candidate, 'test-now', [...caveats, `score ${candidate.score.toFixed(2)} ≥ ${SCORE_TEST_NOW}`, `main reason: ${why}`], proposed);
+    return decide(candidate, 'test-now', [...caveats, ...levelNote(knowledge), `score ${candidate.score.toFixed(2)} ≥ ${SCORE_TEST_NOW}`, `main reason: ${why}`], proposed);
   }
-  return decide(candidate, 'test-later', [...caveats, `score ${candidate.score.toFixed(2)} is between ${SCORE_LOW_PRIORITY} and ${SCORE_TEST_NOW}`, `main reason: ${why}`], proposed);
+  return decide(candidate, 'test-later', [...caveats, ...levelNote(knowledge), `score ${candidate.score.toFixed(2)} is between ${SCORE_LOW_PRIORITY} and ${SCORE_TEST_NOW}`, `main reason: ${why}`], proposed);
 }
 
 const HEADLINE: Record<IntakeDecision, string> = {

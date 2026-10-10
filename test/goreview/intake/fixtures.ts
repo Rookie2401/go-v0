@@ -31,7 +31,7 @@ export function knowledge(unitId: string, dims: Partial<Record<Dimension, Partia
   return {
     learnerId: 'L1', unitId, languageId: LANG,
     dimensions: Object.fromEntries(DIMENSIONS.map((d) => [d, estimate(dims[d])])) as Record<Dimension, DimensionEstimate>,
-    retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'none' }, uncertainty: 0.5, modelVersion: 'test', basis: { events: 1 },
+    retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'none' }, level: 'seen', encounters: 1, uncertainty: 0.5, modelVersion: 'test', basis: { events: 1 },
   };
 }
 

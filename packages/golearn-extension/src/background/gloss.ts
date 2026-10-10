@@ -12,7 +12,7 @@ import { packFor } from '../../../language-packs/src/registry';
 import type { PackManifest } from '../../../language-packs/src/manifest';
 import type { StorageArea } from '../platform';
 import {
-  cleanText, isLanguageId, type ConstructionExplanation, type EntryReply, type EntryRequest, type ExplainReply, type ExplainRequest, type FeatureExplanation, type GlossReply, type GlossRequest, stringRecord,
+  cleanText, isLanguageId, languageNameOf, type ConstructionExplanation, type EntryReply, type EntryRequest, type ExplainReply, type ExplainRequest, type FeatureExplanation, type GlossReply, type GlossRequest, type SourceLink, stringRecord,
 } from '../protocol';
 import type { SessionManager } from './session';
 
@@ -82,6 +82,33 @@ export function cleanFallbackUrl(v: unknown): string | undefined {
   } catch { return undefined; }
 }
 
+/**
+ * The source-link templates of the extension's own app/config.json (`sourceLinks`): data, never code, so the content bundle holds no
+ * address. `{lemma}` and `{language}` are filled in per entry; a template that is not a plain https address is ignored.
+ */
+export interface SourceLinkTemplates { wiktionary?: string; kaikki?: string }
+const TEMPLATE_PATTERN = /^https:\/\/[a-z0-9.-]+\/\S*$/i;
+export function cleanSourceTemplates(v: unknown): SourceLinkTemplates {
+  const out: SourceLinkTemplates = {};
+  if (!v || typeof v !== 'object') return out;
+  for (const k of ['wiktionary', 'kaikki'] as const) {
+    const t = (v as Record<string, unknown>)[k];
+    if (typeof t === 'string' && t.length <= 200 && TEMPLATE_PATTERN.test(t)) out[k] = t;
+  }
+  return out;
+}
+/** The language's name as Wiktionary and kaikki.org spell it (the section heading and the folder), where it differs from the learner-facing name. */
+const DICTIONARY_LANGUAGE_NAME: Record<string, string> = { nb: 'Norwegian Bokmål', nn: 'Norwegian Nynorsk' };
+/** A template filled in; undefined unless the result is a plain https address. In a fragment (`#{language}`) the language's spaces become underscores, as Wiktionary's section anchors have them. */
+export function fillSourceUrl(template: string | undefined, lemma: string, languageName: string): string | undefined {
+  if (!template) return undefined;
+  const filled = template
+    .replace(/\{lemma\}/g, encodeURIComponent(lemma.replace(/ /g, '_')))
+    .replace(/#\{language\}/g, '#' + encodeURIComponent(languageName.replace(/ /g, '_')))
+    .replace(/\{language\}/g, encodeURIComponent(languageName));
+  try { const u = new URL(filled); return u.protocol === 'https:' && !u.username && !u.password ? u.href : undefined; } catch { return undefined; }
+}
+
 const firstSentence = (s: string): string => { const m = /^(.+?[.!?])(\s|$)/u.exec(s); return (m ? m[1] : s).trim(); };
 
 export interface GlossServiceOptions {
@@ -102,7 +129,7 @@ export function createGlossService(opts: GlossServiceOptions) {
   const shardFetches = new Map<string, ShardFetch>();
   /** The location chosen for a language, kept for the worker's lifetime (a failed search is made again next time). */
   const located = new Map<string, Promise<Located>>();
-  let fallbackRead: Promise<string | undefined> | undefined;
+  let configRead: Promise<unknown> | undefined;
 
   const shardFetchFor = (base: string): ShardFetch => {
     let f = shardFetches.get(`base@${base}`);
@@ -110,18 +137,41 @@ export function createGlossService(opts: GlossServiceOptions) {
     return f;
   };
 
-  /** The hosted copy's address: read ONCE from the extension's own app/config.json (the address is data, never code). */
-  function readFallback(): Promise<string | undefined> {
-    fallbackRead ??= (async () => {
+  /** The extension's own app/config.json, read ONCE (its addresses are data, never code). */
+  function readConfig(): Promise<unknown> {
+    configRead ??= (async () => {
       const url = opts.getURL?.('app/config.json');
       if (!url) return undefined;
       try {
         const res = await opts.fetch(url);
         if (!res.ok) return undefined;
-        return cleanFallbackUrl((JSON.parse(await res.text()) as { dictionaryFallbackUrl?: unknown } | null)?.dictionaryFallbackUrl);
+        return JSON.parse(await res.text()) as unknown;
       } catch { return undefined; }
     })();
-    return fallbackRead;
+    return configRead;
+  }
+
+  /** The hosted copy's address (`dictionaryFallbackUrl`). */
+  async function readFallback(): Promise<string | undefined> {
+    return cleanFallbackUrl((await readConfig() as { dictionaryFallbackUrl?: unknown } | null | undefined)?.dictionaryFallbackUrl);
+  }
+
+  /**
+   * Where the information on a card came from, for its "view sources" list: the lemma's Wiktionary page and kaikki.org (the
+   * links come from `sourceLinks` in config.json; none is invented when the config has none), and the course word list, named
+   * with its analyser id (no address: it is a file of the extension).
+   */
+  async function sourcesFor(languageId: string, lemma: string): Promise<SourceLink[]> {
+    const templates = cleanSourceTemplates((await readConfig() as { sourceLinks?: unknown } | null | undefined)?.sourceLinks);
+    const name = DICTIONARY_LANGUAGE_NAME[languageId] ?? languageNameOf(languageId);
+    const out: SourceLink[] = [];
+    const wiktionary = fillSourceUrl(templates.wiktionary, lemma, name);
+    if (wiktionary) out.push({ label: `Wiktionary: ${lemma} (${name})`, url: wiktionary, licence: 'CC BY-SA 4.0' });
+    const kaikki = fillSourceUrl(templates.kaikki, lemma, name);
+    if (kaikki) out.push({ label: `kaikki.org: ${name} dictionary`, url: kaikki, licence: 'CC BY-SA 4.0' });
+    const analyser = packs.manifest(languageId)?.analyzer?.id;
+    if (analyser) out.push({ label: `Course word list (${analyser})` });
+    return out;
   }
 
   /** The candidate locations in order; the hosted one is read lazily, only when the first two did not answer. */
@@ -222,7 +272,8 @@ export function createGlossService(opts: GlossServiceOptions) {
       const senses = [...new Set(g.senses.map((s) => cleanText(s.gloss, 160)).filter((s): s is string => !!s))].slice(0, 6);
       const attribution = cleanText(g.attribution, 200);
       if (attribution) void stampAttribution(r.languageId, attribution);
-      return { ok: true, found: senses.length > 0, senses, ...(attribution ? { attribution } : {}), ...(senses.length ? {} : { reason: 'not-found' as const }), ...from };
+      const sources = senses.length ? await sourcesFor(r.languageId, lemma) : [];
+      return { ok: true, found: senses.length > 0, senses, ...(attribution ? { attribution } : {}), ...(senses.length ? {} : { reason: 'not-found' as const }), ...(sources.length ? { sources } : {}), ...from };
     } catch {
       return { ok: true, found: false, senses: [], reason: 'offline', message: 'The dictionary could not be reached.', ...from };
     }
@@ -270,11 +321,19 @@ export function createGlossService(opts: GlossServiceOptions) {
     if (!rt) return { ok: true, found: false, records: [], reason, message: message ?? (reason === 'no-pack' ? `No pack with a dictionary is installed for ${r.languageId}.` : 'No dictionary location is configured.') };
     const entry = (rt as Partial<PackRuntime>).entry;
     if (typeof entry !== 'function') return { ok: true, found: false, records: [], reason: 'no-full-records', message: 'This build has no full dictionary records.', ...from };
+    const counter = [...shardFetches.entries()].find(([k]) => runtimes.get(k) === rt)?.[1];
+    const failuresBefore = counter?.failures ?? 0;
     try {
       const got = await entry.call(rt, lemma, pos, forms);
-      if (!got || !Array.isArray(got.records) || !got.records.length) return { ok: true, found: false, records: [], reason: 'not-found', ...from };
+      if (!got || !Array.isArray(got.records) || !got.records.length) {
+        // Full-record readers deliberately swallow transport failures. Preserve the distinction
+        // between an unavailable dictionary and a successful lookup with no entry.
+        if (counter && counter.failures > failuresBefore) return { ok: true, found: false, records: [], reason: 'offline', message: 'The dictionary could not be reached.', ...from };
+        return { ok: true, found: false, records: [], reason: 'not-found', ...from };
+      }
       const attribution = cleanText(got.attribution, 200);
-      return { ok: true, found: true, records: got.records.slice(0, 6), ...(attribution ? { attribution } : {}), ...from };
+      const sources = await sourcesFor(r.languageId, lemma);
+      return { ok: true, found: true, records: got.records.slice(0, 6), ...(attribution ? { attribution } : {}), ...(sources.length ? { sources } : {}), ...from };
     } catch {
       return { ok: true, found: false, records: [], reason: 'offline', message: 'The dictionary could not be reached.', ...from };
     }

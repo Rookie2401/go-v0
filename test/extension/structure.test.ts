@@ -207,13 +207,14 @@ let ui: CardUI;
 beforeEach(() => { restore = stubLayout(); setBody('<p id="p">Unë po lexoj një libër të bukur në shtëpinë time.</p>'); ui = createCardUI({ doc: document, speech: null, onDismiss: () => {}, makeUtterance: (text, voice) => ({ text, voice }) }); });
 afterEach(() => { ui.destroy(); restore(); });
 const panel = (): HTMLElement => ui.root()!.querySelector('[data-layer="structure"]') as HTMLElement;
-const button = (): HTMLButtonElement => [...ui.root()!.querySelectorAll('button')].find((b) => b.textContent === 'Word structure') as HTMLButtonElement;
+/** "Go deeper" opens every section, Word structure among them. */
+const button = (): HTMLButtonElement => ui.root()!.querySelector('button.deeperBtn') as HTMLButtonElement;
 
 describe('the Word structure section of the card', () => {
-  it('is a deeper layer between Origin and Sound, and a hint for the learner record', () => {
+  it('is a section of Go deeper between Origin and Sentence, and a hint for the learner record', () => {
     ui.show(cardFor(), anchor);
-    const deeper = [...ui.root()!.querySelectorAll('.deeper button')].map((b) => b.textContent);
-    expect(deeper).toEqual(['All forms', 'Meanings', 'Origin', 'Word structure', 'Sound']);
+    const sections = [...ui.root()!.querySelectorAll('.deeper > h3')].map((h) => h.textContent);
+    expect(sections.slice(sections.indexOf('Origin'), sections.indexOf('Sentence') + 1)).toEqual(['Origin', 'Word structure', 'Sentence']);
     expect(LAYER_ASSISTANCE.structure).toBe('hint');
   });
   it('shows the parts as a segmented line with roles, the status, derived-from, the family and the sources', () => {

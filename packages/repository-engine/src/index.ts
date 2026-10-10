@@ -3,6 +3,7 @@
  * These estimates are hypotheses until calibrated against independent assessments; see README.md for every rule.
  */
 export * from './evidence';
+export * from './levels';
 export * from './projection';
 export * from './preferences';
 export * from './eligibility';

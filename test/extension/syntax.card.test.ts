@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 /**
  * Stage 4 wiring (Linguistic Engine V2): when the analyser has syntax rules, the parser puts the selected word's relation
- * on the card (with basis, alternatives, dependents, clause) and the Phrase & syntax panel shows it; when the rules attach
+ * on the card (with basis, alternatives, dependents, clause) and the Syntax section of Go deeper shows it; when the rules attach
  * nothing, the card says so instead of guessing; without rules the old role line stays.
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
@@ -72,7 +72,7 @@ describe('the card model', () => {
   });
 });
 
-describe('the Phrase & syntax panel', () => {
+describe('the Syntax section of Go deeper', () => {
   it('shows the relation with its head, the why, the alternatives and the dependents, and names the rules', () => {
     ui.show(sel('Katze', fakeSyntax), anchor);
     const t = ui.root()!.textContent ?? '';

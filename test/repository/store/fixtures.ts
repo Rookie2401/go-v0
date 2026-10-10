@@ -45,7 +45,7 @@ const est = { score: 0.5, confidence: 0.5, observations: 2, positive: 1, negativ
 export const knowledgeRow = (learnerId: string, unitId: string, modelVersion = 'm1'): UnitKnowledge => ({
   learnerId, unitId, languageId: 'sq',
   dimensions: Object.fromEntries(DIMENSIONS.map((d) => [d, est])) as UnitKnowledge['dimensions'],
-  retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'readingRecognition' }, uncertainty: 0.5, modelVersion, basis: { events: 2, lastEventId: 'e2' },
+  retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'readingRecognition' }, level: 'seen', encounters: 1, uncertainty: 0.5, modelVersion, basis: { events: 2, lastEventId: 'e2' },
 });
 
 const pref = <T>(value: T) => ({ value, origin: 'default' as const });

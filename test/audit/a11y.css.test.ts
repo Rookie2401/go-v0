@@ -113,7 +113,7 @@ describe('focus indicators, motion and colour scheme', () => {
   it('A-C05 every stylesheet supports a dark scheme (prefers-color-scheme or color-scheme)', () => {
     for (const s of SHEETS) {
       // the GoTell workspace sheet adds no colours of its own: it uses the shell's custom properties, so it follows the shell's scheme
-      const has = /prefers-color-scheme:\s*dark/.test(s.css) || /color-scheme:\s*light dark/.test(s.css) || (s.key === 'tell' && !/#[0-9a-f]{3,6}\b/i.test(s.css));
+      const has = /prefers-color-scheme:\s*dark/.test(s.css) || /color-scheme:\s*(light )?dark/.test(s.css) || (s.key === 'tell' && !/#[0-9a-f]{3,6}\b/i.test(s.css));
       row(`A-C05:${s.key}`, 'css', `${s.label}: dark scheme`, has ? (s.key === 'tell' ? 'yes (the shell\'s tokens; no literal colours)' : 'yes') : 'no');
       expect(has, s.key).toBe(true);
     }
@@ -230,47 +230,48 @@ describe('contrast of the colour pairs actually used (WCAG 2.x, AA)', () => {
   });
 
   // ── the card and the action popup carry literal colours
-  it('A-K03 card: pairs read from the rules (light and dark)', () => {
+  // Since 2026-10-10 the card has Biblia's look: ONE dark scheme (paper #16130f), its own colours whatever the page. Every pair is read from the rules.
+  // ink-faint (#7d7059, ~3.4:1) is for borders and decoration only: no text uses it; the circles of the level meter, which have no text, take it as their border (3:1).
+  it('A-K03 card: pairs read from the rules (one dark scheme)', () => {
     const s = by('card');
-    const L = (sel: string, prop: string, dark = false): string => val(s, sel, prop, dark);
-    const mk = (dark: boolean): Pair[] => {
-      const suffix = dark ? ' (dark)' : '';
-      const fg = L('.card', 'color', dark); const bg = L('.card', 'background', dark);
-      const tagBg = L('.tag', 'background', dark); const tagFg = L('.tag', 'color', dark);
-      const btnBg = L('button', 'background', dark); const btnFg = L('button', 'color', dark);
-      const t = (id: string, what: string, f: string, b: string, extra: Partial<Pair> = {}): Pair => ({ id, sheet: 'card', what: what + suffix, fg: f, bg: b, kind: 'text', ...extra });
-      return [
-        t('ink', 'text on the card (.card)', fg, bg),
-        t('brand', 'brand line (.brand, opacity .7)', fg, bg, { opacity: num(L('.brand', 'opacity')) }),
-        t('k', 'row key (.k, opacity .65)', fg, bg, { opacity: num(L('.k', 'opacity')) }),
-        t('muted', 'muted value (.muted, opacity .72)', fg, bg, { opacity: num(L('.muted', 'opacity')) }),
-        t('more-h4', 'section heading (.more h4, opacity .7)', fg, bg, { opacity: num(L('.more h4', 'opacity')) }),
-        t('status', 'status line (.status, opacity .8)', fg, bg, { opacity: num(L('.status', 'opacity')) }),
-        t('feedback', 'feedback line (.feedback, opacity .85)', fg, bg, { opacity: num(L('.feedback', 'opacity')) }),
-        t('note', 'note (.note, opacity .8)', fg, bg, { opacity: num(L('.note', 'opacity')) }),
-        t('tag', 'evidence tag (.tag)', tagFg, tagBg),
-        t('button', 'button text (button, input)', btnFg, btnBg),
-        t('err', 'error text (.err)', L('.err', 'color', dark), bg),
-        t('disabled', 'disabled button (opacity .5; exempt, reported)', btnFg, btnBg, { opacity: num(L('button:disabled', 'opacity')) }),
-        t('focus', 'focus ring on the card', /#[0-9a-f]{6}/i.exec(L('button:focus-visible', 'outline', dark))![0], bg, { kind: 'ui' }),
-        t('border', 'button border on the card', /#[0-9a-f]{6}/i.exec(dark ? L('button', 'border-color', true) : L('button', 'border'))![0], bg, { kind: 'ui' }),
-      ];
-    };
-    // the dark block overrides colour/background and the tag/button/err colours; the border of the dark button too
-    const rs: Result[] = [];
-    for (const dark of [false, true]) {
-      for (const p of mk(dark)) {
-        const bgc = evalColor(p.bg, {}, { r: 255, g: 255, b: 255, a: 1 });
-        let fgc = evalColor(p.fg, {}, bgc);
-        if (p.opacity !== undefined) fgc = withOpacity(fgc, bgc, p.opacity);
-        const ratio = contrast(fgc, bgc);
-        const need = p.kind === 'ui' ? AA_LARGE_OR_UI : AA_TEXT;
-        rs.push({ ...p, scheme: dark ? 'dark' : 'light', ratio, need, pass: ratio >= need });
-      }
-    }
-    // the focus ring of the card is one literal colour for both schemes: evaluate it on the dark card too
+    const L = (sel: string, prop: string): string => val(s, sel, prop);
+    const fg = L('.card', 'color'); const bg = L('.card', 'background');
+    const t = (id: string, what: string, f: string, b: string, extra: Partial<Pair> = {}): Pair => ({ id, sheet: 'card', what: what + ' (dark)', fg: f, bg: b, kind: 'text', ...extra });
+    const ring = (decl: string): string => /#[0-9a-f]{6}/i.exec(decl)![0];
+    const pairs: Pair[] = [
+      t('ink', 'text on the card (.card)', fg, bg),
+      t('label', 'kicker (.label)', L('.label', 'color'), bg),
+      t('kicker', 'kicker under the meaning (.kicker)', L('.kicker', 'color'), bg),
+      t('k', 'row key (.k)', L('.k', 'color'), bg),
+      t('muted', 'muted value (.muted)', L('.muted', 'color'), bg),
+      t('note', 'note (.note)', L('.note', 'color'), bg),
+      t('guess', 'italic note (.card__text)', L('.card__text', 'color'), bg),
+      t('status', 'status line (.status)', L('.status', 'color'), bg),
+      t('feedback', 'feedback line (.feedback)', L('.feedback', 'color'), bg),
+      t('sources', 'view sources (.sourcesBtn, accent)', L('.sourcesBtn', 'color'), bg),
+      t('level', 'level name (.levelName, accent)', L('.levelName', 'color'), bg),
+      t('encounters', 'encounters kicker (.encounters)', L('.encounters', 'color'), bg),
+      t('quiet', 'quiet pill (.btn--quiet)', L('.btn--quiet', 'color'), bg),
+      t('tag', 'evidence tag (.tag)', L('.tag', 'color'), L('.tag', 'background')),
+      t('button', 'button text (button, input)', L('button', 'color'), L('button', 'background')),
+      t('err', 'error text (.err)', L('.err', 'color'), bg),
+      t('disabled', 'disabled button (opacity .5; exempt, reported)', L('button', 'color'), L('button', 'background'), { opacity: num(L('button:disabled', 'opacity')) }),
+      t('focus', 'focus ring on the card', ring(L('button:focus-visible', 'outline')), bg, { kind: 'ui' }),
+      t('meter', 'a circle of the level meter, empty (.rateBtn border)', ring(L('.rateBtn', 'border')), bg, { kind: 'ui' }),
+      t('meter-on', 'a circle of the level meter, filled (accent on paper)', L('.rateBtn.on', 'background'), bg, { kind: 'ui' }),
+    ];
+    const rs: Result[] = pairs.map((p) => {
+      const bgc = evalColor(p.bg, {}, { r: 255, g: 255, b: 255, a: 1 });
+      let fgc = evalColor(p.fg, {}, bgc);
+      if (p.opacity !== undefined) fgc = withOpacity(fgc, bgc, p.opacity);
+      const ratio = contrast(fgc, bgc);
+      const need = p.kind === 'ui' ? AA_LARGE_OR_UI : AA_TEXT;
+      return { ...p, scheme: 'dark' as const, ratio, need, pass: ratio >= need };
+    });
     fmtRows(rs);
-    expect(rs.length).toBe(28);
+    expect(rs.length).toBe(20);
+    // every pair passes but the disabled button, which WCAG exempts (reported above)
+    for (const r of rs) if (r.id !== 'disabled') expect(r.pass, `${r.what}: ${r.ratio.toFixed(2)}:1`).toBe(true);
   });
 
   it('A-K04 action popup: its colour pairs on its own paper (the tokens of its :root, light and dark)', () => {

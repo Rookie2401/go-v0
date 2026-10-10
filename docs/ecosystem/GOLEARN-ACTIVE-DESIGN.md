@@ -38,16 +38,24 @@ needs the script on page load, which needs host permission. Therefore:
 
 The CSS Custom Highlight API (`CSS.highlights`, `Highlight(range…)`, `::highlight(name)`) decorates ranges without
 wrapping, editing or re-flowing any node: the page DOM is unchanged (the existing rule), screen readers see the same
-text, and the page's own scripts are unaffected. Four named highlights, each a text-decoration underline:
+text, and the page's own scripts are unaffected. **Six levels** (the owner's scale, 2026-10-10; the first design had four
+and the first build five), one named highlight each, a text-decoration underline. The level is `UnitKnowledge.level`,
+computed by the Repository's engine (`levelOf`, `packages/repository-engine/src/levels.ts`) from the local Repository's
+knowledge rows (lemma + form) and the learner's own newest mark; the page reads it as it stands:
 
-| name | learner state (from the local Repository's knowledge row, lemma + form) | style |
+| level | learner state (the engine's rule, over the knowledge row) | style |
 |---|---|---|
-| `golearn-met` | exposure only (met, never shown to be understood) | dotted, low opacity |
-| `golearn-assisted` | understood with help (assistedRecognition) | dotted, mid opacity |
-| `golearn-known` | reading recognition estimate ≥ 0.6 with ≥ 2 observations | thin solid, low opacity |
-| `golearn-produced` | productive retrieval or contextual production estimate ≥ 0.6 | hairline, barely visible |
+| New | no observation and no mark; a word with no row at all | dashed |
+| Seen | met or looked up (exposure, lookup, a failed attempt), nothing shows it was understood | dotted, faint |
+| Recognized | understood with help (assistedRecognition), or recognised once (reading/listening recognition observed, below the familiar bar) | dotted |
+| Familiar | a recognition estimate ≥ 0.6 over ≥ 2 observations | thin solid, faint |
+| Known | a recognition estimate ≥ 0.8 over ≥ 4 observations (listening counts too) | hairline, faint |
+| Automatic | productive retrieval or contextual production estimate ≥ 0.7 over ≥ 2 observations | hairline, barely visible |
 
-Words never met get no mark. Thresholds live in one table and are shown in the popup's legend. When the API is absent
+The learner's newest mark decides the level outright until later evidence contradicts it (two or more levels away); every
+rule, the legacy-mark mapping and the migration are in `docs/ecosystem/KNOWLEDGE-LEVELS.md`. Review is not a metric shown
+on the page: whether a word is proposed for practice follows its level. Thresholds live in one table and are shown in
+the popup's legend. When the API is absent
 (an old engine), Active still enables click-to-look-up and says underlines are unavailable; it never falls back to
 DOM wrapping.
 
@@ -108,16 +116,20 @@ Owner's corrections after the first build (2026-10-09, evening), now in force:
 
 Owner's additions (2026-10-10):
 
-- **Unknown words are marked too.** A fifth level, `new` (dashed underline), for a word with no row in the learner model
+- **Unknown words are marked too.** A level `new` (dashed underline), for a word with no row in the learner model
   or no encounter: every word on the page now carries a level, so what the learner does not know is visible. When
   the learner model cannot be reached at all nothing is marked (every word would be "new" for the wrong reason).
-- **The learner says how well they know a word.** The card has a row "How well do you know it?" with three marks,
-  "New to me" (`ItemMarked` mark `learning`), "I recognise it" (`known`), "I can use it" (`productive`, new in the
-  contract). A mark is an event like any other (recorded on the device, synced with an account); the engine folds it
-  into the dimensions with a self-report weight and keeps the latest mark on the unit (`UnitKnowledge.selfMark`,
-  projection@3), the card's history line repeats it ("You marked it: recognised"), and the underline follows the
-  learner's own mark outright (`SELF_MARK_LEVEL` in levels.ts) until they mark the word again. The scan forgets the
-  word's rows when the controller records a mark and reads the page again, so the underline changes at once.
+- **The learner says how well they know a word, on SIX levels.** (First built with three marks: "New to me" =
+  `learning`, "I recognise it" = `known`, "I can use it" = `productive`; replaced the same day.) The card has a row
+  "How well do you know it?" with the six levels, New, Seen, Recognized, Familiar, Known, Automatic. A mark is an
+  `ItemMarked` event like any other (recorded on the device, synced with an account); the contract accepts the six
+  level words and, unchanged, the three older words (stored events are never rewritten; `levelOfMark` reads them:
+  `learning` = New, `productive` = Known). The engine folds a mark into the dimensions with a self-report weight and
+  keeps the latest mark on the unit as a level (`UnitKnowledge.selfMark`, projection@4); the unit's `level` follows the
+  mark until later evidence puts the unit two or more levels away from it, and the underline follows `level`. The scan
+  forgets the word's rows when the controller records a mark and reads the page again, so the underline changes at once.
+  The card's footer shows "Previous encounters: N" (`UnitKnowledge.encounters`, distinct events), not a review metric:
+  **review is a natural progression of how well the learner knows the word**, never something the card asks for.
 - **GoListen on this device.** The popup says which of the chosen languages this browser can speak (the strict tag
   rule the card uses, `hasDeviceVoice` in content/voice.ts); no device ships an Albanian voice, so Albanian is always
   "none". Speaking on click is the card's own Pronounce path (`CardUI.pronounce()`), practice only, never evidence.

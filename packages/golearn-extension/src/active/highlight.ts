@@ -7,15 +7,16 @@
  */
 import { ACTIVE_LEVELS, type ActiveLevel } from './levels';
 
-export const HIGHLIGHT_NAMES: Record<ActiveLevel, string> = { new: 'golearn-new', met: 'golearn-met', assisted: 'golearn-assisted', known: 'golearn-known', produced: 'golearn-produced' };
+export const HIGHLIGHT_NAMES: Record<ActiveLevel, string> = { new: 'golearn-new', seen: 'golearn-seen', recognized: 'golearn-recognized', familiar: 'golearn-familiar', known: 'golearn-known', automatic: 'golearn-automatic' };
 
-/** The five underline styles: dashed for a word not met yet, dotted and faint for one only met, down to a hairline for one the learner has produced. */
+/** The six underline styles: dashed for a word not met yet, dotted and faint for one only seen, solid for a familiar one, down to a barely visible hairline for one that is automatic. */
 export const ACTIVE_CSS = [
-  `::highlight(${HIGHLIGHT_NAMES.new}) { text-decoration: underline dashed; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.7); text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.met}) { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.5); text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.assisted}) { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.75); text-decoration-color: color-mix(in srgb, currentColor 65%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.known}) { text-decoration: underline solid; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.4); text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.produced}) { text-decoration: underline solid; text-decoration-thickness: 0.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.22); text-decoration-color: color-mix(in srgb, currentColor 18%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.new}) { text-decoration: underline dashed; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.55); text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.seen}) { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.4); text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.recognized}) { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.65); text-decoration-color: color-mix(in srgb, currentColor 65%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.familiar}) { text-decoration: underline solid; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.35); text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.known}) { text-decoration: underline solid; text-decoration-thickness: 0.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.22); text-decoration-color: color-mix(in srgb, currentColor 22%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.automatic}) { text-decoration: underline solid; text-decoration-thickness: 0.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.1); text-decoration-color: color-mix(in srgb, currentColor 10%, transparent); }`,
 ].join('\n');
 
 /** The slice of the Highlight API this module uses (typed locally: tests pass a fake, and the DOM lib may lack it). */
@@ -89,7 +90,7 @@ export function createHighlighter(doc: Document): Highlighter {
       }
     },
     counts() {
-      const out: Record<ActiveLevel, number> = { new: 0, met: 0, assisted: 0, known: 0, produced: 0 };
+      const out: Record<ActiveLevel, number> = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
       for (const level of ACTIVE_LEVELS) out[level] = highlights.get(level)?.size ?? 0;
       return out;
     },

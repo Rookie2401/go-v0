@@ -66,6 +66,15 @@ sentences). Never: `verified`, `supported`, `unknown` or `invalidated` fields, i
 items without field states (those stay with the intake rules above, unchanged). `reviewerView` shows the stored state and basis, never an upgrade;
 `reviewerCorrection` turns a reviewer's decision into a `correct` request that refuses an unnamed reviewer. See `docs/ecosystem/linguistics/REPOSITORY-STATES.md`.
 
+**By level, never by request (projection@4).** A unit becomes review material (for this human queue) only through its progression along the six knowledge
+levels (`docs/ecosystem/KNOWLEDGE-LEVELS.md`), never because a learner asked for it: there is no "requested" input anywhere in `reviewEligibility` or
+`validationQueue`. `reviewEvidenceOf(row)` builds the evidence from the Repository's `UnitKnowledge` row (its `encounters` and its `level`, or the
+distinct sentences the caller counted); a unit at level **New** (nobody has met it) is never eligible, and any level beyond it is eligible once the field
+rules above are met. The learner's deck follows the same idea: Repository candidates are drawn by level (new/seen -> recognition practice,
+recognized/familiar -> recognition and retention, known -> retrieval, automatic -> only when retention decayed or a mark was contradicted), and intake
+(`decideIntake`) puts `level Known: ...` in the reasons of every `test-now` / `test-later` outcome and leaves an Automatic unit alone (`already-covered`)
+unless the candidate carries `retentionDecayed` or `selfMarkContradicted`. Nothing is asked of the learner, and the card shows no review metric.
+
 ## What GoReview never does
 
 - **No card per clicked word.** Lookups are exposure and assistance; a unit becomes a card only through intake (a Repository candidate that passed the rules above) or the learner's own action.

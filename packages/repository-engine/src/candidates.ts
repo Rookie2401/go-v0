@@ -5,10 +5,22 @@
  * Never one card per encountered form: a unit with only exposure (no lookup, no assistance request, no demonstrated
  * error) is excluded unless its frequency says it is common. When several forms of one construction give trouble, the
  * CONSTRUCTION is proposed and its forms are demoted (grammaticalLeverage). A unit that already has a card is not proposed again.
+ *
+ * REVIEW IS A PROGRESSION (projection@4, docs/ecosystem/KNOWLEDGE-LEVELS.md). Whether a unit is a candidate, and what it is proposed for, follows its
+ * knowledge LEVEL (`UnitKnowledge.level`); the learner never asks for review and nothing is required from a card:
+ *   new, seen            proposed for RECOGNITION practice once they were looked up, got wrong, are common, or the learner marked them new / seen.
+ *   recognized, familiar proposed for reading RECOGNITION (and its retention) on the same signals; decayed retention raises the score but is not,
+ *                        alone, a reason (a word recognised once is not re-tested just because time passed: that would flood the queue).
+ *   known                proposed for RETRIEVAL (productiveRetrieval; recognition when the unit cannot support a production item), only when its
+ *                        retention has decayed or it is a common word.
+ *   automatic            proposed only when retention has decayed below the threshold, or when later evidence contradicted the learner's mark.
+ * A self-mark of level L is contradicted when later evidence puts the unit two or more levels below it (`markStatus`); the unit is then drawn by
+ * the level the evidence supports and the reason `selfMarkContradicted` says so. Every candidate carries a `knowledgeLevel` reason naming its level.
  */
-import { DIMENSIONS } from '../../repository-contract/src';
-import type { Dimension, FormAnalysis, LearningGoal, LinguisticUnit, ReviewCandidate, UnitKind, UnitKnowledge } from '../../repository-contract/src';
+import { DIMENSIONS, KNOWLEDGE_LEVEL_RANK, KNOWLEDGE_LEVEL_WORDS, levelOfMark } from '../../repository-contract/src';
+import type { Dimension, FormAnalysis, KnowledgeLevel, LearningGoal, LinguisticUnit, ReviewCandidate, UnitKind, UnitKnowledge } from '../../repository-contract/src';
 import { eligibilityFor, validationFor } from './eligibility';
+import { LEVEL_THRESHOLDS, levelOf } from './levels';
 
 const DAY_MS = 86_400_000;
 
@@ -30,13 +42,19 @@ export const CANDIDATE_RULES = {
   /** A unit in the pack's mission word list (only when the pack facts expose one). */
   missionRelevance: { weight: 0.1 },
   /**
-   * projection@3, the learner's own latest mark (`UnitKnowledge.selfMark`). "New to me" (`learning`) is a direct request for help: a strong
-   * recognition candidate (0.2, the same as weakButSeen; with the demonstratedError its negative reading observation already earns, a marked word
-   * outranks a merely looked-up one). "I recognise it" / "I can use it" (`known` / `productive`) is a standing claim: the unit is NOT proposed
-   * as a recognition item while no evidence dated after the mark disagrees (a later lookup, assistance request, or failed judgement). Once such
-   * evidence exists the unit is proposed again and the reason `selfMarkContradicted` (weight 0, explanation only) says so.
+   * The learner's own latest mark (`UnitKnowledge.selfMark`, a level). A mark of `new` or `seen` (the old "New to me") is a direct request for help:
+   * a strong recognition candidate (0.2, the same as weakButSeen; with the demonstratedError its negative reading observation already earns, a marked
+   * word outranks a merely looked-up one). A mark of recognized or better is a standing claim, and the unit is drawn by its LEVEL (see the header) while
+   * no evidence dated after the mark disagrees. Once such evidence puts the unit two levels below the mark, the unit is drawn by the evidence's level and
+   * the reason `selfMarkContradicted` (weight 0, explanation only) says so.
    */
   selfMark: { learningWeight: 0.2 },
+  /**
+   * projection@4, the level policy. `decayed`: a unit whose retention estimate (already decayed to `now`) is below `retentionBelow` AND whose
+   * strongest dimension was last observed at least `decayedAfterHalfLives` half-lives ago is due again: for a known or automatic unit this is (with
+   * a contradicted mark or a common word) the only way it is proposed; for a lower level it adds weight to a unit that is already drawn; `decayedWeight` is its reason's weight. The `knowledgeLevel` reason has weight 0: it explains.
+   */
+  level: { retentionBelow: 0.3, decayedAfterHalfLives: 1, decayedWeight: 0.15 },
   /** benefit (sum of the positive reasons) over burden (cost): a cheap, valuable item gains a little, a costly, marginal one loses a little. */
   benefitVsBurden: { cheapRatio: 2, cheapWeight: 0.05, costlyRatio: 0.5, costlyWeight: -0.05 },
   /** A capped analysis (experimental, seed-only or unreviewed resource) is a strong negative whatever the producer's confidence. */
@@ -79,11 +97,6 @@ export interface CandidateInputs {
   includeCovered?: boolean;
   /** Receives notes about rules that could not run. */
   notes?: string[];
-  /**
-   * unit id -> instants of evidence that could contradict a standing "I know it" self-mark: lookups, assistance requests and every negative
-   * judged observation. Absent: the row's own lastAt / exposure counters are used (coarser).
-   */
-  against?: Map<string, string[]>;
 }
 
 const JUDGED = DIMENSIONS.filter((d) => d !== 'exposure');
@@ -91,11 +104,30 @@ const TARGETABLE: Dimension[] = ['readingRecognition', 'listeningRecognition', '
 const isConstruction = (u?: LinguisticUnit): boolean => u?.kind === 'morph-construction' || u?.kind === 'syntactic-construction';
 const hasError = (r?: UnitKnowledge): boolean => !!r && JUDGED.some((d) => r.dimensions[d].negative > 0);
 
-function targetOf(row: UnitKnowledge | undefined, unit: LinguisticUnit | undefined): Dimension {
+/** What each level is proposed for when no dimension shows a demonstrated error: below known, recognition; known and automatic, retrieval. */
+export const LEVEL_DEFAULT_TARGET: Record<KnowledgeLevel, Dimension> = {
+  new: 'readingRecognition', seen: 'readingRecognition', recognized: 'readingRecognition', familiar: 'readingRecognition',
+  known: 'productiveRetrieval', automatic: 'productiveRetrieval',
+};
+
+/** One sentence per level: what the unit is proposed for and why (the `knowledgeLevel` reason's detail). */
+const LEVEL_PURPOSE: Record<KnowledgeLevel, string> = {
+  new: 'not understood yet; proposed for recognition practice',
+  seen: 'met or looked up, nothing shows it was understood; proposed for recognition practice',
+  recognized: 'understood once or with help; reading it unaided moves it to Familiar',
+  familiar: 'recognised repeatedly; reliable recognition moves it to Known',
+  known: 'recognised reliably; retrieving it moves it to Automatic',
+  automatic: 'produced without help; checked only because later evidence or retention decay questions it',
+};
+
+const levelRank = (l: KnowledgeLevel): number => KNOWLEDGE_LEVEL_RANK[l];
+const levelTitle = (l: KnowledgeLevel): string => KNOWLEDGE_LEVEL_WORDS[l].title;
+
+function targetOf(row: UnitKnowledge | undefined, unit: LinguisticUnit | undefined, level: KnowledgeLevel): Dimension {
   if (isConstruction(unit)) return 'grammaticalUnderstanding';
   let best: Dimension | undefined;
   if (row) for (const d of TARGETABLE) if (row.dimensions[d].negative > 0 && (best === undefined || row.dimensions[d].score < row.dimensions[best].score)) best = d;
-  return best ?? 'readingRecognition';
+  return best ?? LEVEL_DEFAULT_TARGET[level];
 }
 
 /** Pure ranking. Eligible candidates by score, then (limited) ineligible ones with score 0. */
@@ -125,12 +157,13 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
     }
   }
 
-  /** Evidence dated AFTER a self-mark that disagrees with it: a lookup, assistance request or negative judgement. */
-  const laterEvidenceAgainst = (id: string, row: UnitKnowledge, markAt: string): boolean => {
-    const after = (at: string | undefined): boolean => at !== undefined && Date.parse(at) > Date.parse(markAt);
-    if (inp.against) return (inp.against.get(id) ?? []).some(after);
-    // Without the instants: the latest observation of a dimension with a negative, or the latest exposure while lookups exist, is after the mark.
-    return JUDGED.some((d) => row.dimensions[d].negative > 0 && after(row.dimensions[d].lastAt)) || (row.dimensions.exposure.negative > 0 && after(row.dimensions.exposure.lastAt));
+  /** Retention has decayed: the estimate (already decayed to `now`) is below the threshold and the strongest dimension was last observed at least one half-life ago. */
+  const decayedRetention = (row: UnitKnowledge | undefined): boolean => {
+    if (!row || row.retention.basedOn === 'none') return false;
+    const last = row.dimensions[row.retention.basedOn].lastAt;
+    if (last === undefined || Number.isNaN(Date.parse(last))) return false;
+    const days = (nowMs - Date.parse(last)) / DAY_MS;
+    return row.retention.estimate < R.level.retentionBelow && days >= R.level.decayedAfterHalfLives * row.retention.halfLifeDays;
   };
 
   const ids = new Set<string>([...rowById.keys(), ...leverage.keys()]);
@@ -145,14 +178,24 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
     const rank = unit?.frequency?.rank;
     const common = rank !== undefined && rank <= R.wordFrequency.maxRank;
     const lookups = row?.dimensions.exposure.negative ?? 0;
+    // The level (projection@4; a row stored by an older projection has none, and the rules compute it from the row).
+    const level: KnowledgeLevel = row ? row.level ?? levelOf(row) : 'new';
     const mark = row?.selfMark;
-    let contradicted = false;
-    if (mark && mark.mark !== 'learning') {
-      contradicted = laterEvidenceAgainst(id, row!, mark.at);
-      if (!contradicted) continue; // the learner said they know it and nothing since disagrees: not proposed as a recognition item
+    const markLevel = mark ? levelOfMark(mark.mark) : undefined;
+    // contradicted: the learner's mark claims two or more levels more than the evidence since supports (the level is then the evidence's)
+    const contradicted = markLevel !== undefined && levelRank(markLevel) - levelRank(level) >= LEVEL_THRESHOLDS.contradictionGap;
+    // a mark of new / seen in force is a request for help the learner made by marking, not by asking for a review
+    const markedNew = markLevel !== undefined && !contradicted && level === markLevel && levelRank(level) <= levelRank('seen');
+    const decayed = decayedRetention(row);
+    const signalled = hasError(row) || lookups > 0 || common || !!lev || markedNew; // exposure alone is not a reason to review
+    let drawn: boolean;
+    switch (level) {
+      case 'known': drawn = contradicted || decayed || common || !!lev; break; // a known unit is retrieved when its retention decayed or it is a common word
+      case 'automatic': drawn = contradicted || decayed; break;
+      case 'recognized': case 'familiar': drawn = signalled; break; // decayed retention only adds weight (below)
+      default: drawn = signalled || contradicted; // new, seen
     }
-    const markedNew = mark?.mark === 'learning';
-    if (!(hasError(row) || lookups > 0 || common || lev || markedNew)) continue; // exposure alone is not a reason to review
+    if (!drawn) continue;
     const card = inp.cards.get(id);
     if (card?.covered && !inp.includeCovered) continue; // already in the deck: not proposed again
 
@@ -166,20 +209,27 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
       add('demonstratedError', R.demonstratedError.weight, `errors in ${dims.join(', ')}`);
     }
     if (row && row.dimensions.readingRecognition.weight > 0 && row.dimensions.readingRecognition.score < R.weakButSeen.readingBelow) add('weakButSeen', R.weakButSeen.weight, `reading recognition ${row.dimensions.readingRecognition.score.toFixed(2)}`);
-    if (markedNew) add('selfMarkedNew', R.selfMark.learningWeight, `you marked it as new to you (${mark!.at})`);
-    if (contradicted) add('selfMarkContradicted', 0, `you marked it as "${mark!.mark === 'productive' ? 'I can use it' : 'I recognise it'}" (${mark!.at}), but later evidence disagrees`);
+    if (markedNew) add('selfMarkedNew', R.selfMark.learningWeight, level === 'new' ? `you marked it as new to you (${mark!.at})` : `you marked it as ${levelTitle(level).toLowerCase()} (${mark!.at})`);
+    if (contradicted) add('selfMarkContradicted', 0, `you marked it as "${levelTitle(markLevel!)}" (${mark!.at}), but later evidence disagrees: it supports ${levelTitle(level)}`);
+    if (decayed) add('retentionDecayed', R.level.decayedWeight, `retention ${row!.retention.estimate.toFixed(2)} is below ${R.level.retentionBelow} (half-life ${row!.retention.halfLifeDays.toFixed(1)} days)`);
+    add('knowledgeLevel', 0, `${levelTitle(level)}${row ? ` (${row.encounters ?? 0} encounter${row.encounters === 1 ? '' : 's'})` : ''}: ${LEVEL_PURPOSE[level]}`);
     if (lev) add('grammaticalLeverage', R.grammaticalLeverage.weight, `repeated difficulty across ${lev.length} forms of ${unit?.label ?? id}`);
     if (common) add('wordFrequency', rank! <= R.wordFrequency.veryCommonRank ? R.wordFrequency.veryCommonWeight : R.wordFrequency.weight, `frequency rank ${rank}`);
     if (unit && inp.goals.some((g) => GOAL_UNIT_KINDS[g.kind].includes(unit.kind))) add('goalMatch', R.goalMatch.weight, 'unit kind serves a stated goal');
     if (inp.missionUnits?.has(id)) add('missionRelevance', R.missionRelevance.weight, "in the pack's mission word list");
     if (card?.covered) add('existingCoverage', R.existingCoverage.weight, 'already covered by a card');
     if (card?.lastReviewAt !== undefined && nowMs - Date.parse(card.lastReviewAt) <= R.priorReview.withinDays * DAY_MS) add('priorReview', R.priorReview.weight, `reviewed ${card.lastReviewAt}`);
-    const target = targetOf(row, unit);
+    let target = targetOf(row, unit, level);
+    const analysesOfUnit = unit?.kind === 'form' ? inp.analyses.get(id) ?? [] : [];
+    let eligibility = eligibilityFor(unit, analysesOfUnit, target);
+    // A known unit is proposed for retrieval; when its analysis cannot support a production item but can support recognition, recognition is asked instead.
+    if (!eligibility.eligible && target === 'productiveRetrieval' && level === 'known') {
+      const fallback = eligibilityFor(unit, analysesOfUnit, 'readingRecognition');
+      if (fallback.eligible) { target = 'readingRecognition'; eligibility = fallback; add('levelTarget', 0, 'retrieval is not supported by this analysis; recognition is asked instead'); }
+    }
     const tconf = row?.dimensions[target].confidence ?? 0;
     if (tconf >= R.expectedBenefit.confidenceFrom && tconf <= R.expectedBenefit.confidenceTo) add('expectedBenefit', R.expectedBenefit.weight, `confidence ${tconf.toFixed(2)} on ${target}: more evidence would change the estimate`);
 
-    const analysesOfUnit = unit?.kind === 'form' ? inp.analyses.get(id) ?? [] : [];
-    const eligibility = eligibilityFor(unit, analysesOfUnit, target);
     const cost = Math.round(Math.min(1, R.cost.base + R.cost.perWord * (unit?.label.trim().split(/\s+/u).filter(Boolean).length ?? 1)) * 1e9) / 1e9;
 
     // benefitVsBurden: a short, explained comparison of what the positive reasons promise against what the item costs to review.

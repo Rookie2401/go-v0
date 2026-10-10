@@ -51,7 +51,7 @@ describe('the card is a named dialog and every control in every state has a name
     expect(card.getAttribute('role')).toBe('dialog');
     expect(accessibleName(card).name).toBe('GoLearn: shtëpinë');
     const f = auditDom(root(), 'card/closed-layers', { fragment: true, skipRepeated: true, targetWords: ['shtëpinë', 'shtëpi'], targetLang: 'sq' });
-    row('A-D01', 'card', 'card with the five layers closed', f.findings.length ? `${f.findings.length} findings` : 'clean', f.findings.map((x) => `${x.rule}: ${x.where} ${x.detail}`).join('; '));
+    row('A-D01', 'card', 'card with "Go deeper" and "view sources" closed', f.findings.length ? `${f.findings.length} findings` : 'clean', f.findings.map((x) => `${x.rule}: ${x.where} ${x.detail}`).join('; '));
     const buttons = [...root().querySelectorAll('button')];
     expect(buttons.length).toBeGreaterThanOrEqual(8);
     for (const b of buttons) expect(accessibleName(b).name, b.className).not.toBe('');
@@ -59,13 +59,14 @@ describe('the card is a named dialog and every control in every state has a name
     expect(root().querySelectorAll('[role="status"][aria-live="polite"]').length).toBe(3); // the recorded status, the feedback line and (A-13) the pronunciation note
   });
 
-  it('A-D02 every layer open, the correction form open, and the message state', async () => {
+  it('A-D02 Go deeper open (every section), the sources and the correction form open, and the message state', async () => {
     ui.show(cardFor(), anchor, { view: { languageName: 'Albanian', depth: 'explanatory' } });
-    for (const l of ['l2', 'l3', 'l4', 'l5']) (root().querySelector(`button.${l}`) as HTMLElement).click();
-    (root().querySelector('button.wrongBtn') as HTMLElement).click();
-    (root().querySelector('button.moreBtn') as HTMLElement).click();
+    ui.update({ sources: [{ label: 'Wiktionary: shtëpi (Albanian)', url: 'https://en.wiktionary.org/wiki/sht%C3%ABpi#Albanian', licence: 'CC BY-SA 4.0' }, { label: 'Course word list (adapter-sq@9)' }] });
+    (root().querySelector('button.deeperBtn') as HTMLElement).click();
+    (root().querySelector('button.sourcesBtn') as HTMLElement).click();
+    (root().querySelector('button.reportBtn') as HTMLElement).click();
     const f = auditDom(root(), 'card/all-open', { fragment: true, skipRepeated: true });
-    row('A-D02', 'card', 'card with all layers, the correction form and "More" open', f.findings.length ? `${f.findings.length} findings` : 'clean', f.findings.map((x) => `${x.rule}: ${x.where} ${x.detail}`).join('; '));
+    row('A-D02', 'card', 'card with Go deeper, the sources and the correction form open', f.findings.length ? `${f.findings.length} findings` : 'clean', f.findings.map((x) => `${x.rule}: ${x.where} ${x.detail}`).join('; '));
     const msg = createCardUI({ doc: document, speech: null });
     msg.showMessage('This page is not in a language GoLearn can read.', anchor, 'error');
     const m = auditDom(msg.root()!, 'card/message', { fragment: true });
@@ -75,43 +76,50 @@ describe('the card is a named dialog and every control in every state has a name
     row('A-D03', 'card', 'message state', 'clean; the text is role="alert"');
   });
 
-  it('A-D04 each layer button says whether its panel is open (aria-expanded) and the panel is hidden when closed', () => {
+  it('A-D04 each disclosure button (view sources, Go deeper, Report) says whether its panel is open (aria-expanded) and the panel is hidden when closed', () => {
     ui.show(cardFor(), anchor, {});
-    const btns = ['l2', 'l3', 'l4', 'l5'].map((c) => root().querySelector(`button.${c}`) as HTMLElement);
-    for (const b of btns) expect(b.getAttribute('aria-expanded')).toBe('false');
-    const panels = [...root().querySelectorAll('.layer')] as HTMLElement[];
-    expect(panels.every((p) => p.hasAttribute('hidden'))).toBe(true);
-    btns[0].click();
-    expect(btns[0].getAttribute('aria-expanded')).toBe('true');
-    expect(panels[0].hasAttribute('hidden')).toBe(false);
-    btns[0].click();
-    expect(btns[0].getAttribute('aria-expanded')).toBe('false');
-    // the correction-form and More buttons too
-    for (const sel of ['button.wrongBtn', 'button.moreBtn']) expect((root().querySelector(sel) as HTMLElement).getAttribute('aria-expanded')).toBe('false');
+    const pairs: Array<[string, string]> = [['button.sourcesBtn', '.sources'], ['button.deeperBtn', '.deeper'], ['button.reportBtn', 'form.fix']];
+    for (const [btnSel, panelSel] of pairs) {
+      const btn = root().querySelector(btnSel) as HTMLElement;
+      const panel = root().querySelector(panelSel) as HTMLElement;
+      expect(btn.getAttribute('aria-expanded'), btnSel).toBe('false');
+      expect(panel.hasAttribute('hidden'), panelSel).toBe(true);
+      btn.click();
+      expect(btn.getAttribute('aria-expanded'), btnSel).toBe('true');
+      expect(panel.hasAttribute('hidden'), panelSel).toBe(false);
+      btn.click();
+      expect(btn.getAttribute('aria-expanded'), btnSel).toBe('false');
+      expect(panel.hasAttribute('hidden'), panelSel).toBe(true);
+    }
     row('A-D04', 'card', 'disclosure buttons: aria-expanded kept in step with the panel', 'pass');
   });
 
   // The disclosure buttons carry no aria-controls: assistive technology cannot jump from the button to its panel. Minor.
-  it('A-12 each disclosure button names the panel it controls (aria-controls)', () => {
+  it('A-12 each disclosure button names the panel it controls (aria-controls), and the panel exists', () => {
     ui.show(cardFor(), anchor, {});
-    for (const c of ['l2', 'l3', 'l4', 'l5', 'wrongBtn', 'moreBtn']) expect((root().querySelector(`button.${c}`) as HTMLElement).getAttribute('aria-controls'), c).toBeTruthy();
+    for (const c of ['sourcesBtn', 'deeperBtn', 'reportBtn']) {
+      const id = (root().querySelector(`button.${c}`) as HTMLElement).getAttribute('aria-controls');
+      expect(id, c).toBeTruthy();
+      expect(root().getElementById(id!), c).toBeTruthy();
+    }
   });
 
-  it('A-D05 pronunciation: when no voice exists the button is disabled and a visible note says so; nothing depends on audio', async () => {
+  it('A-D05 pronunciation: when no voice exists the speaker is disabled and its title says so (nothing else is drawn); nothing depends on audio', async () => {
     ui.destroy();
     ui = createCardUI({ doc: document, speech: null, pronouncer: pronouncer(false) });
     ui.show(cardFor(), anchor, {});
     await flush(2);
     const say = root().querySelector('button.say') as HTMLButtonElement;
     expect(say.disabled).toBe(true);
-    expect(root().querySelector('.pron')!.textContent).toMatch(/No Albanian voice/);
-    expect(accessibleName(say).name).toBe('Pronounce (practice only)');
-    // the written sound notes and the meaning are in the card whether or not audio works
-    expect(root().textContent).toMatch(/meaning/);
-    row('A-D05', 'card', 'audio-only interaction has a non-audio alternative / honest notice', 'pass', 'the card is text-first; the pronounce button is disabled with the visible note "No Albanian voice is installed on this device."');
+    expect(say.title).toMatch(/No Albanian voice/);
+    expect(root().querySelector('.pron')!.textContent).toMatch(/No Albanian voice/); // also read out by the off-screen live region
+    expect(accessibleName(say).name).toBe('Play with GoListen');
+    // the meaning is on the card whether or not audio works
+    expect(root().querySelector('.meaning')!.textContent).toMatch(/house, home/);
+    row('A-D05', 'card', 'audio-only interaction has a non-audio alternative / honest notice', 'pass', 'the card is text-first; the speaker is disabled and its title says "No Albanian voice is installed on this device."');
   });
 
-  // the pronunciation note is plain text: a change from "Checking voices…" to the result is not announced
+  // the pronunciation note is an off-screen live region (a hearing played, a failure) so a change is announced without a note row on the card
   it('A-13 the pronunciation note is a live region (it changes from "Checking voices…" to the result)', async () => {
     ui.show(cardFor(), anchor, {});
     await flush(2);
@@ -126,7 +134,7 @@ describe('the correction form', () => {
     const base = cardFor('libër');
     const withAlternatives: CardModel = { ...base, alternatives: [{ lemma: 'libër', pos: 'NOUN', gloss: 'book', confidence: 0.6 }, { lemma: 'libër', pos: 'ADJ', gloss: 'bookish', confidence: 0.3 }] } as CardModel;
     ui.show(withAlternatives, anchor, {});
-    (root().querySelector('button.wrongBtn') as HTMLElement).click();
+    (root().querySelector('button.reportBtn') as HTMLElement).click();
     const radios = [...root().querySelectorAll('form.fix input[type="radio"]')];
     expect(radios.length).toBeGreaterThan(1);
     const group = radios[0].closest('fieldset, [role="radiogroup"]');
@@ -191,7 +199,7 @@ describe('focus: in, around, out', () => {
 
   it('A-D09 the correction form: radios are labelled; the group has a name (the form is named)', () => {
     ui.show(cardFor('libër'), anchor, {});
-    (root().querySelector('button.wrongBtn') as HTMLElement).click();
+    (root().querySelector('button.reportBtn') as HTMLElement).click();
     const form = root().querySelector('form.fix')!;
     expect(accessibleName(form).name).toBe('Correct this analysis');
     for (const input of form.querySelectorAll('input')) expect(accessibleName(input).name, input.outerHTML.slice(0, 60)).not.toBe('');

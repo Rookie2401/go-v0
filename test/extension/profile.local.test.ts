@@ -54,7 +54,9 @@ describe('no account', () => {
     expect(r).toMatchObject({ ok: true, connected: false, source: 'device' });
     expect(Object.keys(r.rows)).toEqual([A]);
     expect(r.rows[A].dimensions.exposure?.observations).toBe(3);
-    expect(Object.keys(r.rows[A])).toEqual(['unitId', 'dimensions', 'lastSeenAt']); // no learner id
+    expect(Object.keys(r.rows[A])).toEqual(expect.arrayContaining(['unitId', 'dimensions', 'lastSeenAt']));
+    expect(Object.keys(r.rows[A])).not.toContain('learnerId'); // no learner id
+    expect(Object.keys(r.rows[A]).filter((k) => !['unitId', 'dimensions', 'lastSeenAt', 'level', 'encounters', 'selfMark'].includes(k))).toEqual([]);
     expect(calls).toEqual([]); // no account, no request
   });
 

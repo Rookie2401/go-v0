@@ -13,7 +13,10 @@
  *   3. A field the pack marks unreviewable (`unreviewableFields`: no native reviewer, no source to check against) never.
  *   4. A field is worth a person's time only when learners meet it: a `conflicted` field from 1 encounter, a `provisional` field
  *      from 2 encounters in different sentences (`encounters` counts distinct sentences, never repeated lookups).
- *   5. priority = conflicts x encounters, where `conflicts` is the number of conflicts (default: the conflicted fields found).
+ *   5. (projection@4) A unit becomes review material ONLY through its progression along the knowledge levels (docs/ecosystem/KNOWLEDGE-LEVELS.md): when the
+ *      evidence names the unit's level, a unit at level `new` (nobody has met it) is never eligible, and there is no input by which a learner asks for a
+ *      field to be reviewed: encounters and levels come from the Repository's projection (`reviewEvidenceOf`), never from a request.
+ *   6. priority = conflicts x encounters, where `conflicts` is the number of conflicts (default: the conflicted fields found).
  *      A provisional-only item therefore has priority 0 unless the caller counts conflicts; ties sort by encounters, then id.
  *
  * What the reviewer sees is exactly what is stored: `reviewerView` copies the stored state and basis and never upgrades a field,
@@ -24,7 +27,7 @@
  * rules keep deciding them.
  */
 import { FIELD_NAMES } from '../../../repository-contract/src';
-import type { AnalysisStatus, FieldName, FieldState, FieldStateEntry, FieldStates, LinguisticUnit, FormAnalysis } from '../../../repository-contract/src';
+import type { AnalysisStatus, FieldName, FieldState, FieldStateEntry, FieldStates, KnowledgeLevel, LinguisticUnit, FormAnalysis, UnitKnowledge } from '../../../repository-contract/src';
 import type { UnitFacts } from '../types';
 
 /** What may be reviewed: an analysis or a unit, reduced to the part the rules read. */
@@ -43,7 +46,17 @@ export interface ReviewEvidence {
   encounters: number;
   /** Conflicts counted by the caller; default: the number of conflicted fields found. */
   conflicts?: number;
+  /** projection@4: the knowledge level the evidence comes from (`UnitKnowledge.level`). A unit at level `new` has not been met, so it is never eligible. Absent: not checked. */
+  level?: KnowledgeLevel;
 }
+
+/**
+ * The evidence a knowledge row gives (projection@4): its encounters (or the distinct sentences the caller counted) and its level. Review material comes from
+ * the progression the row records, never from a request: there is no "requested" flag to pass.
+ */
+export const reviewEvidenceOf = (row: Pick<UnitKnowledge, 'encounters' | 'level'>, opts: { sentences?: number; conflicts?: number } = {}): ReviewEvidence => ({
+  encounters: opts.sentences ?? row.encounters, level: row.level, ...(opts.conflicts !== undefined ? { conflicts: opts.conflicts } : {}),
+});
 
 export interface FieldReviewEligibility {
   eligible: boolean;
@@ -70,6 +83,7 @@ const no = (reason: string): FieldReviewEligibility => ({ eligible: false, reaso
 export function reviewEligibility(input: FormAnalysis | LinguisticUnit | ReviewSubject, evidence: ReviewEvidence): FieldReviewEligibility {
   const s = subjectOf(input);
   if (s.status === 'invalidated' || s.supersededBy) return no('invalidated: withdrawn, so there is nothing to put to a reviewer');
+  if (evidence.level === 'new') return no('level New: nobody has met this item, so there is nothing to put to a reviewer yet (review follows the learner\'s progression, never a request)');
   const states = s.fieldStates;
   if (!states || FIELD_NAMES.every((f) => !states[f])) return no('no field states are stored for this item (written before field states): the intake rules decide it');
   const enc = Number.isFinite(evidence.encounters) ? Math.max(0, Math.floor(evidence.encounters)) : 0;

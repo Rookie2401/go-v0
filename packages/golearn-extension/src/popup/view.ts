@@ -5,10 +5,18 @@
  */
 import type { Paradigm, SegmentationAlternatives } from '../../../../src/core/paradigm';
 import type { EtymologyView, PronunciationView, RelationsView, WordStructureView } from '../content/enrich';
-import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, SelfMark } from '../protocol';
+import type { KnowledgeLevel } from '../../../repository-contract/src/knowledge-levels';
+import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, SelfMark, SourceLink } from '../protocol';
 
-/** The first four open at once; the last five are the deeper sections (Linguistic Engine V2): the paradigm, every sense, the origin, the word structure, the sound. */
-export type LayerName = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence' | 'forms' | 'meaning' | 'origin' | 'structure' | 'sound';
+/**
+ * The sections "Go deeper" opens, all at once, in this order: Form (`morphology`), Grammar, Syntax (`phrase-syntax`), All forms (the paradigm),
+ * Meanings, Origin, Word structure, Sentence (the word-by-word English rescue). "About this analysis" follows them and is not a layer: it records nothing.
+ * There is no Sound layer any more: the speaker beside the word replaces it.
+ */
+export type LayerName = 'morphology' | 'grammar' | 'phrase-syntax' | 'forms' | 'meaning' | 'origin' | 'structure' | 'sentence';
+
+/** The order "Go deeper" shows (and records) the layers in. */
+export const LAYER_ORDER: readonly LayerName[] = ['morphology', 'grammar', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence'];
 
 /** Level 2 of the card: what the dictionary's full record and the analyser's generation give, with field states; arrives after the card, never blocks it. */
 export interface EnrichmentView {
@@ -50,8 +58,12 @@ export interface ProfileView {
   stale?: boolean;
   /** Why the model could not be consulted (state 'unavailable'). */
   reason?: 'needs-sign-in' | 'offline' | 'error';
-  /** The learner's latest own mark on the word, from the model's rows. */
+  /** The learner's latest own mark on the word, from the model's rows, as a level (an older mark is already translated). */
   selfMark?: SelfMark;
+  /** The word's knowledge level: the learner's own mark, else the engine's, else the page's reading of the rows (`src/active/levels.ts`). */
+  level?: KnowledgeLevel;
+  /** How many times the learner has met the word before this lookup: the larger of the lemma row's and the form row's observations (summed over the dimensions). */
+  encounters?: number;
 }
 
 export interface ExplainView {
@@ -71,8 +83,10 @@ export interface CardView {
   profile: ProfileView;
   explain: ExplainView;
   saved: boolean;
-  /** The learner's own mark on this word, when they made one ("New to me" / "I recognise it" / "I can use it"). */
+  /** The learner's own mark on this word, when they made one (one of the six levels). */
   rated?: SelfMark;
+  /** Where the card's information came from (the "view sources" list); the worker builds the links. */
+  sources?: SourceLink[];
   correction: CorrectionState;
   enrichment: EnrichmentView;
 }
@@ -92,15 +106,13 @@ export interface CorrectionInput { lemma: string; pos?: string; fromAlternative:
 
 /** What the card reports. Every callback may be omitted (a card with no callbacks just displays). */
 export interface CardActions {
-  /** A layer was opened (each opening; the recorder decides what counts as a repeat). */
+  /** A layer was opened by "Go deeper" (each opening, one call per layer; the recorder decides what counts as a repeat). */
   onLayer?(layer: LayerName): void;
   /** A pronunciation was played. */
   onPronounced?(p: PlayOutcome): void;
-  /** "Review this". */
-  onSave?(): void;
-  /** The learner said how well they know the word. */
+  /** The learner said how well they know the word (one of the six levels). */
   onRate?(mark: SelfMark): void;
-  /** "This analysis is wrong": the learner chose an alternative reading or typed a lemma. */
+  /** "Report": the learner chose an alternative reading or typed a lemma. */
   onCorrect?(c: CorrectionInput): void;
 }
 
@@ -114,6 +126,10 @@ export interface Pronouncer {
   availability(languageId: string): PronounceAvailability | Promise<PronounceAvailability>;
   play(text: string, languageId: string): PlayResult | Promise<PlayResult>;
   stop?(): void;
+  /** The shared player reports delayed browser failures as well as normal completion. */
+  onPlaybackState?(cb: (state: 'idle' | 'playing' | 'paused' | 'ended' | 'error') => void): () => void;
+  /** Practice speed; device voices apply this at the next start. */
+  setRate?(rate: number): void;
   /** Voices may arrive after the page loaded (Chrome fills its list lazily). */
   onChange?(cb: () => void): () => void;
 }

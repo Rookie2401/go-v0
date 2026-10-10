@@ -37,13 +37,13 @@ beforeEach(() => {
 const change = (el: HTMLInputElement, checked: boolean): void => { el.checked = checked; el.dispatchEvent(new Event('change')); };
 
 describe('GoLearn Active in the popup', () => {
-  it('starts off, with the legend of the four underline levels and nothing about this page', async () => {
+  it('starts off, with the legend of the six underline levels and nothing about this page', async () => {
     await initPopup(document, fake);
     expect($<HTMLInputElement>('active').checked).toBe(false);
     expect($('active-status').textContent).toMatch(/^Off\. Nothing is read/);
     expect($('active-page').textContent).toBe('');
     expect($('active-legend').querySelectorAll('li')).toHaveLength(ACTIVE_LEVELS.length);
-    expect($('active-legend').textContent).toMatch(/New.*Met.*Understood with help.*Recognised.*Produced/s);
+    expect($('active-legend').textContent).toMatch(/New.*Seen.*Recognized.*Familiar.*Known.*Automatic/s);
   });
 
   it('switching on asks the browser for the host permission inside the click; a "no" keeps Active off and says so', async () => {
@@ -59,7 +59,7 @@ describe('GoLearn Active in the popup', () => {
 
   it('a "yes" registers GoLearn for pages and starts it on the page in front; the popup then says what that page got', async () => {
     await initPopup(document, fake);
-    pageState = { on: true, speak: true, supported: true, languageId: 'sq', scanned: 230, marked: { met: 16, assisted: 3, known: 4, produced: 8 }, clicks: 1 };
+    pageState = { on: true, speak: true, supported: true, languageId: 'sq', scanned: 230, marked: { new: 0, seen: 16, recognized: 3, familiar: 0, known: 4, automatic: 8 }, clicks: 1 };
     change($('active'), true);
     await flush(40);
     expect(fake.grantedOrigins).toEqual([...ACTIVE_ORIGINS]);
@@ -67,13 +67,13 @@ describe('GoLearn Active in the popup', () => {
     expect(fake.messagesToTabs.some((m) => (m.message as { type: string }).type === MSG.activate)).toBe(true);
     expect($<HTMLInputElement>('active').checked).toBe(true);
     expect($('active-status').textContent).toMatch(/^On\. Every page you open is read on this device/);
-    expect($('active-page').textContent).toBe('This page (sq): 230 words read, 31 underlined (met 16, understood with help 3, recognised 4, produced 8); 1 click looked up.');
+    expect($('active-page').textContent).toBe('This page (sq): 230 words read, 31 underlined (seen 16, recognized 3, known 4, automatic 8); 1 click looked up.');
   });
 
   it('a page where Active read nothing shows the reason; a page without the script says to reload it', async () => {
     fake.grantOrigins(ACTIVE_ORIGINS);
     await fake.dispatch({ type: MSG.active, op: 'set', patch: { active: true } }, { id: fake.runtime.id, url: `chrome-extension://${fake.runtime.id}/action/popup.html` });
-    pageState = { on: true, speak: true, supported: true, scanned: 0, marked: { met: 0, assisted: 0, known: 0, produced: 0 }, clicks: 0, reason: 'GoLearn cannot tell which language this page is in, and will not guess. Choose a language in the setup page.' };
+    pageState = { on: true, speak: true, supported: true, scanned: 0, marked: { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 }, clicks: 0, reason: 'GoLearn cannot tell which language this page is in, and will not guess. Choose a language in the setup page.' };
     await initPopup(document, fake);
     expect($('active-page').textContent).toMatch(/^This page: GoLearn cannot tell which language/);
     fake.tabListeners.clear();

@@ -3,7 +3,7 @@
  * written; nothing else is written. A row identifies a context (a hash) and a source (page title and URL path); it never
  * contains the sentence or the page. Prototype storage: one chrome.storage.local key per row.
  */
-import { CONTRACT_VERSION, validateEvent, type GoEvent, type ValidationIssue } from '../../../repository-contract/src';
+import { CONTRACT_VERSION, validateEvent, type GoEvent, type KnowledgeLevel, type ValidationIssue } from '../../../repository-contract/src';
 import type { CardModel } from '../parser/cardModel';
 import type { EventLanguage, LanguageResolution } from '../contract/language';
 import type { SourceReference, SourceRestrictions } from '../contract/readerAdapter';
@@ -283,13 +283,12 @@ export function buildPronunciationEvent(b: InteractionContext, p: { voice: 'synt
   return followUp(b, 'PronunciationPlayed', { voice: p.voice, ...(p.voiceId ? { voiceId: p.voiceId } : {}), repeated: p.repeated }, undefined, { evidence: { quality: 'none', assisted: false } });
 }
 
-/** "Review this". */
-export function buildSavedEvent(b: InteractionContext): GoEvent {
-  return followUp(b, 'ItemMarked', { mark: 'saved' }, `mark:${b.sessionId}:saved:${itemKey(b.card)}`);
-}
-
-/** The learner's own word on how well they know it: "New to me" (learning), "I recognise it" (known), "I can use it" (productive). A new mark replaces the last (its own event; the engine keeps the latest). */
-export function buildMarkEvent(b: InteractionContext, mark: 'learning' | 'known' | 'productive'): GoEvent {
+/**
+ * The learner's own word on how well they know it: one of the six knowledge levels (new, seen, recognized, familiar, known, automatic),
+ * sent as the `mark` of an `ItemMarked` event. A new mark replaces the last (its own event; the engine keeps the latest).
+ * There is no "Review this" mark any more: review is a natural progression of the knowledge level, decided in the Repository.
+ */
+export function buildMarkEvent(b: InteractionContext, mark: KnowledgeLevel): GoEvent {
   return followUp(b, 'ItemMarked', { mark }, `mark:${b.sessionId}:${mark}:${itemKey(b.card)}:${b.now.getTime().toString(36)}`);
 }
 

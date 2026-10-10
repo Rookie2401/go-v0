@@ -210,7 +210,7 @@ describe('§XVII steps 4–12: the encounter in the authorised EPUB reader', () 
     tick(2 * MIN);
     const r = readerOn(opened!);
     await lookupInBook(r, opened!, 'librin', SENTENCE);                                            // a second encounter, so the Repository has something to propose
-    (r.ui.root()!.querySelector('button.saveBtn') as HTMLElement).click();                        // "Review this"
+    (r.ui.root()!.querySelector('.rateBtn[data-mark="new"]') as HTMLElement).click();             // the learner's own level ("New", which grants no evidence)
     await flush(40);
     await fireTimers();
     await page({ type: MSG.syncNow });
@@ -240,7 +240,7 @@ describe('§XVII steps 4–12: the encounter in the authorised EPUB reader', () 
     const r = readerOn(opened!);
     const out = await lookupInBook(r, opened!, 'librin', SENTENCE);
     expect(out.status).toBe('shown');
-    const l2 = r.ui.root()!.querySelector('button.l2') as HTMLElement | null;
+    const l2 = r.ui.root()!.querySelector('button.deeperBtn') as HTMLElement | null;
     if (l2) l2.click();
     await flush(40);
     await fireTimers();
@@ -256,7 +256,9 @@ describe('§XVII steps 4–12: the encounter in the authorised EPUB reader', () 
     expect(Object.keys(row.dimensions).sort()).toEqual([...DIMENSIONS].sort());
     expect(DIMENSIONS).toContain('phraseComprehension');
     expect(row.dimensions.exposure.observations).toBeGreaterThan(0);
-    for (const d of demonstrated) expect(row.dimensions[d].weight, d).toBe(0);
+    // the learner's own "New" on the card is a weak NEGATIVE self-report of reading recognition (engine rule `itemMark`): it may carry weight, never a positive credit
+    for (const d of demonstrated) if (d !== 'readingRecognition') expect(row.dimensions[d].weight, d).toBe(0);
+    expect(row.dimensions.readingRecognition.positive, 'readingRecognition').toBe(0);
     expect(row.modelVersion).toMatch(/^projection@/);
   });
 });
@@ -337,11 +339,11 @@ describe('§XVII steps 20–22: back in GoLearn', () => {
     const out = await lookupInBook(r, opened!, 'librin', SENTENCE);
     expect(out.status).toBe('shown');
     const t = r.text();
-    expect(t).toMatch(/You have met this word \d+ times/);                                        // 22. assistance reflects the state…
-    expect(t).toMatch(/reading recognition: (low|medium|high)/);
+    expect(t).toMatch(/· [1-9]\d*× encounters/);                                          // 22. assistance reflects the state (the number of meetings)…
+    expect(r.ui.root()!.querySelector('.rateBtn[aria-pressed="true"]')).not.toBeNull();           // …and the word's level
     expect(t).toContain('libër (NOUN)');                                                           // …without hiding the analysis
     expect(t).toContain('definite masculine accusative singular');
-    (r.ui.root()!.querySelector('button.l4') as HTMLElement).click();
+    (r.ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click();
     expect(r.ui.root()!.querySelector('.layer.l4')!.textContent).toMatch(/direct object|ending|accusative/i);
   }, 60_000);
 });

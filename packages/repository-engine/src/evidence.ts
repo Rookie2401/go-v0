@@ -12,13 +12,19 @@
  *  (e) a producer's declared `evidence.quality` / `evidence.sourceReliability` can lower a weight, never raise it;
  *  (j) a positive observation exists only when the payload itself says correct / usedCorrectly / understood;
  *  (l) projection@3: an ItemMarked `productive` ("I can use it") is a self-report of production, so it feeds productiveRetrieval at a
- *      much lower weight than a demonstrated retrieval (RULES.itemMark.productive); and a `known` / `learning` / `productive` mark also
- *      travels on its observation as `selfMark`, so the fold can keep the learner's LATEST explicit self-assessment of the unit.
+ *      much lower weight than a demonstrated retrieval (RULES.itemMark.productive); and a level mark also travels on its observation as
+ *      `selfMark`, so the fold can keep the learner's LATEST explicit self-assessment of the unit.
+ *  (m) projection@4: a mark is one of the six knowledge levels or one of the legacy words (docs/ecosystem/KNOWLEDGE-LEVELS.md). Its evidence
+ *      follows what it claims, never more than a self-report: `new` / `seen` / `learning` are a request for help (negative
+ *      readingRecognition); `recognized` / `familiar` / `known` are a weak recognition self-report (positive readingRecognition, exactly
+ *      what the old `known` was); `automatic` / `productive` are a weak production self-report (positive productiveRetrieval). Every
+ *      legacy mark therefore weighs exactly what it weighed in projection@3. `selfMark` carries the LEVEL the mark means (`levelOfMark`).
  *  (k) projection@2: a phrase is understood as a whole (`phraseComprehension`), never inferred from its words, and never from
  *      a request for help; and an encounter whose language was only detected or defaulted weighs less than a stated one
  *      (`LANGUAGE_BASIS_FACTOR`), while one whose language is undetermined (nothing was parsed) produces no observation.
  */
-import type { Dimension, GoEvent } from '../../repository-contract/src';
+import { levelOfMark } from '../../repository-contract/src';
+import type { Dimension, GoEvent, KnowledgeLevel, LevelMark } from '../../repository-contract/src';
 
 export type ObservationOutcome = 'positive' | 'negative' | 'exposure';
 /** What kind of exposure an exposure observation is (kept so lookups, assistance and playbacks can be counted). */
@@ -43,11 +49,12 @@ export interface Observation {
   counter?: ExposureCounter;
   /** How the language of an exposure was settled (`override`, `detection`, ... or `missing` for a v2 event); exposure observations of encounters and lookups only. */
   languageBasis?: string;
-  /** projection@3: set on the observation of an ItemMarked `known` / `learning` / `productive`; the fold keeps the latest one per unit as `UnitKnowledge.selfMark`. */
+  /** projection@3/4: set on the observation of an ItemMarked level or legacy mark, as the LEVEL it means; the fold keeps the latest one per unit as `UnitKnowledge.selfMark`. */
   selfMark?: SelfMark;
 }
 
-export type SelfMark = 'known' | 'learning' | 'productive';
+/** The level a self-mark means (`levelOfMark`): `learning` = new, `productive` = known, a level word is itself. */
+export type SelfMark = KnowledgeLevel;
 
 /** Multiplier applied to a weight by the producer's declared evidence quality. All <= 1: the engine never raises. */
 export const QUALITY_FACTOR = { none: 0, weak: 0.5, moderate: 0.8, strong: 1 } as const;
@@ -58,6 +65,11 @@ export const RULES = {
   understood: { weight: 0.4, reliability: 0.4 },
   itemMark: {
     weight: 0.2, reliability: 0.3,
+    /**
+     * projection@4: every recognition-grade mark (`recognized`, `familiar`, `known`) and every help-request mark (`new`, `seen`) uses this
+     * ceiling (`weight`) at this reliability, exactly as the old `known` / `learning` did; the marks differ in the LEVEL they set, not in
+     * how much a self-report is worth as evidence. `automatic` uses `productive` below.
+     */
     /**
      * projection@3. "I can use it": a self-report of PRODUCTIVE knowledge, credited to productiveRetrieval. The claim is stronger than
      * "I recognise it", so its ceiling (0.3) is above a known / learning mark's (0.2); but it is only a claim, made at the same low
@@ -95,6 +107,16 @@ export const LANGUAGE_BASIS_FACTOR = {
 } as const;
 /** A basis string this table does not know (a newer producer): treated as the weakest known stated basis, never as certain. */
 export const UNRECOGNISED_BASIS_FACTOR = 0.5;
+
+/**
+ * The evidence each mark word carries (projection@4). `known` is both a level word and a legacy word; as evidence it was always a weak
+ * recognition self-report and stays one.
+ */
+const MARK_EVIDENCE: ReadonlyMap<string, 'help' | 'recognition' | 'production'> = new Map([
+  ['new', 'help'], ['seen', 'help'], ['learning', 'help'],
+  ['recognized', 'recognition'], ['familiar', 'recognition'], ['known', 'recognition'],
+  ['automatic', 'production'], ['productive', 'production'],
+]);
 
 /** Dimensions that only unassisted evidence may reach. */
 const INDEPENDENT: ReadonlySet<Dimension> = new Set<Dimension>([
@@ -222,11 +244,17 @@ function draftsOf(e: GoEvent): Draft[] {
       return help ? general : [...general, ...one({ dimension: 'phraseComprehension', outcome: 'positive', base: R.phrase.selfReport, reliability: R.understood.reliability }, phrases)];
     }
     case 'ItemMarked': {
-      if (p.mark === 'known') return one({ dimension: 'readingRecognition', outcome: 'positive', base: R.itemMark.weight, reliability: R.itemMark.reliability, selfMark: 'known' });
-      if (p.mark === 'learning') return one({ dimension: 'readingRecognition', outcome: 'negative', base: R.itemMark.weight, reliability: R.itemMark.reliability, selfMark: 'learning' });
-      // projection@3: "I can use it" is a self-report of production: a weak productiveRetrieval credit (see RULES.itemMark.productive).
-      if (p.mark === 'productive') return one({ dimension: 'productiveRetrieval', outcome: 'positive', base: R.itemMark.productive, reliability: R.itemMark.reliability, selfMark: 'productive' });
-      return []; // saved / ignore: a bookmark is not evidence of knowledge either way
+      const mark = p.mark;
+      if (typeof mark !== 'string' || !MARK_EVIDENCE.has(mark)) return []; // saved / ignore / anything else: a bookmark is not evidence of knowledge either way
+      const level = levelOfMark(mark as LevelMark);
+      switch (MARK_EVIDENCE.get(mark)) {
+        // new / seen / learning: a request for help, a negative reading-recognition self-report
+        case 'help': return one({ dimension: 'readingRecognition', outcome: 'negative', base: R.itemMark.weight, reliability: R.itemMark.reliability, selfMark: level });
+        // recognized / familiar / known: a weak recognition self-report
+        case 'recognition': return one({ dimension: 'readingRecognition', outcome: 'positive', base: R.itemMark.weight, reliability: R.itemMark.reliability, selfMark: level });
+        // automatic / productive: a self-report of production, a weak productiveRetrieval credit (see RULES.itemMark.productive)
+        default: return one({ dimension: 'productiveRetrieval', outcome: 'positive', base: R.itemMark.productive, reliability: R.itemMark.reliability, selfMark: level });
+      }
     }
     case 'ListeningAssessed': {
       if (p.answerShownBefore !== false || typeof p.correct !== 'boolean') return []; // not a listening assessment
@@ -297,7 +325,7 @@ function draftsOf(e: GoEvent): Draft[] {
 /**
  * Principle (j): a positive observation must trace to a payload that says so. True when `o` (a positive observation of
  * `event`) is justified: correct:true, usedCorrectly:true, an explicit "understood" mark (on the dimension its help flag
- * says) or an explicit "known" mark. Used by the invariant test and available to auditors of a projection version.
+ * says) or an explicit mark of recognition or better (recognized, familiar, known, automatic, productive). Used by the invariant test and available to auditors of a projection version.
  */
 export function isPositiveTraceable(event: GoEvent, o: Pick<Observation, 'dimension' | 'outcome'>): boolean {
   if (o.outcome !== 'positive') return true;
@@ -306,7 +334,7 @@ export function isPositiveTraceable(event: GoEvent, o: Pick<Observation, 'dimens
     case 'ListeningAssessed': case 'CardReviewed': case 'AssessmentAnswered': return p.correct === true;
     case 'ProductionRecorded': return p.usedCorrectly === true;
     case 'UnderstoodMarked': return o.dimension === 'readingRecognition' || o.dimension === 'phraseComprehension' ? p.helpUsed === false : p.helpUsed === true || event.evidence?.assisted === true;
-    case 'ItemMarked': return p.mark === 'known' || p.mark === 'productive';
+    case 'ItemMarked': return typeof p.mark === 'string' && MARK_EVIDENCE.get(p.mark) !== undefined && MARK_EVIDENCE.get(p.mark) !== 'help';
     default: return false;
   }
 }

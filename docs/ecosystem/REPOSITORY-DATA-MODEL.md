@@ -118,9 +118,9 @@ playback are exposure only; self-reports are discounted by source reliability; h
 correct writing moves `contextualProduction`, assisted writing `assistedRecognition`; accepting a correction moves
 nothing. `score = (0.5·1 + Σ w·[positive]) / (1 + Σ w)`, `confidence = Σw/(Σw+2) × (1 − disagreement)`; all updates
 are sums and maxima, so the fold is order-independent and a rebuild equals the live rows. Retention
-`strength × 2^(−days/halfLife)` with `halfLife = 2 + 3·Σw` days. `modelVersion = projection@3` on every row and on
+`strength × 2^(−days/halfLife)` with `halfLife = 2 + 3·Σw` days. `modelVersion = projection@4` on every row and on
 the cursor (projection@1 had seven dimensions; @2 adds `phraseComprehension` and the language-basis factors; @3 adds `selfMark`, the learner's latest
-`known` / `learning` / `productive` ItemMarked, and the `productive` mark itself, see the engine README); a version change rebuilds everything. These are hypotheses until calibrated.
+`known` / `learning` / `productive` ItemMarked, and the `productive` mark itself; @4 adds the six knowledge levels: `level`, `encounters`, and a `selfMark` that is a level, see `KNOWLEDGE-LEVELS.md` and the engine README); a version change rebuilds everything. These are hypotheses until calibrated.
 
 `AssistancePreferences` (explanation depth, terminology, transliteration, pronunciation-first, translation
 availability, visual assistance, accessibility) with `origin: default | inferred | explicit` per field; explicit is

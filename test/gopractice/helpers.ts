@@ -312,14 +312,14 @@ export const fakeEvidenceFor: GradingPort['evidenceFor'] = (i) => {
 
 export interface FakePlayback extends PlaybackHandle { plays: number; disposed: boolean }
 
-export function fakePlayback(): FakePlayback {
+export function fakePlayback(fails = false): FakePlayback {
   let replays = 0;
   const h = {
     plays: 0, disposed: false, rate: 1,
     play() { h.plays += 1; }, pause() { /* */ }, stop() { /* */ },
     replay() { replays += 1; },
     setRate() { /* */ },
-    get state() { return 'idle' as const; },
+    get state() { return fails ? 'error' as const : 'idle' as const; },
     get replays() { return replays; },
     onEnd() { return () => undefined; },
     dispose() { h.disposed = true; },
@@ -329,11 +329,11 @@ export function fakePlayback(): FakePlayback {
 
 export interface FakeAudio extends AudioDeps { handles: FakePlayback[] }
 
-export function fakeAudio(opts: { available?: boolean } = {}): FakeAudio {
+export function fakeAudio(opts: { available?: boolean; playbackFails?: boolean } = {}): FakeAudio {
   const handles: FakePlayback[] = [];
   const source: AssessmentSource = {
     prepareStimulus: async () => ({ unavailable: true, reason: 'unused in tests' }),
-    playbackOf: () => { const p = fakePlayback(); handles.push(p); return p; },
+    playbackOf: () => { const p = fakePlayback(opts.playbackFails === true); handles.push(p); return p; },
     scoringMetadata: (stimulus, replays) => ({ voice: 'synthetic', hinted: replays > stimulus.replaysAllowed, replays, eligibleForEvidence: false }),
   };
   return {
@@ -494,7 +494,7 @@ const est = (over: Partial<DimensionEstimate> = {}): DimensionEstimate => ({ sco
 export function knowledgeRow(learnerId: string, unitId: string, languageId: string, dims: Partial<Record<Dimension, Partial<DimensionEstimate>>>): UnitKnowledge {
   const dimensions = Object.fromEntries((['exposure', 'assistedRecognition', 'readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding'] as Dimension[])
     .map((d) => [d, est(dims[d])])) as Record<Dimension, DimensionEstimate>;
-  return { learnerId, unitId, languageId, dimensions, retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'none' }, uncertainty: 0.5, modelVersion: 'test', basis: { events: 1 } };
+  return { learnerId, unitId, languageId, dimensions, retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'none' }, level: 'seen', encounters: 1, uncertainty: 0.5, modelVersion: 'test', basis: { events: 1 } };
 }
 
 /** Appends events straight to the learner's local log (as if pulled or recorded earlier) without queueing them. */

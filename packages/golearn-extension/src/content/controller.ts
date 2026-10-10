@@ -23,11 +23,13 @@ import type { CardUI, DismissReason } from '../popup/card';
 import { initialView, type CardActions, type CardView, type CorrectionInput, type LayerName, type PlayOutcome } from '../popup/view';
 import { LookupTimer, type MetricsRow, type PerfLike } from '../metrics';
 import {
-  buildAnalysisShownEvent, buildAssistanceEvent, buildCorrectionEvent, buildMarkEvent, buildNoPackEvent, buildPronunciationEvent, buildSavedEvent, buildSelectionEvent,
+  buildAnalysisShownEvent, buildAssistanceEvent, buildCorrectionEvent, buildMarkEvent, buildNoPackEvent, buildPronunciationEvent, buildSelectionEvent,
   type StoredSourceRef, type Identity, type InteractionContext,
 } from '../store';
 import type { LookupTrigger } from '../platform';
-import { languageNameOf as knownLanguageName, type KnowledgeView, type ProfileReply, type PublicStatus, type SelfMark } from '../protocol';
+import { languageNameOf as knownLanguageName, type ProfileReply, type PublicStatus, type SelfMark, type SourceLink } from '../protocol';
+import { encountersOfRows, levelOfRows, selfMarkOfRows } from '../active/levels';
+import { KNOWLEDGE_LEVEL_WORDS, levelOfMark } from '../../../repository-contract/src/knowledge-levels';
 import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
@@ -342,17 +344,11 @@ export class LookupController {
       const actions: CardActions = {
         onLayer: (l) => { void record(layerOf(l)); },
         onPronounced: (p: PlayOutcome) => { void record((c) => buildPronunciationEvent(c, p)); },
-        onSave: () => {
-          void record((c) => buildSavedEvent(c)).then((ok) => {
-            if (my !== this.seq) return;
-            if (ok) { this.d.ui.update({ saved: true }); this.d.ui.setFeedback('Saved for review.'); } else this.d.ui.setFeedback('Could not save that. Try again.');
-          });
-        },
         onCorrect: (c) => { void this.correct(my, card, languageId, holder.ictx, c, record); },
         onRate: (mark: SelfMark) => {
           void record((c) => buildMarkEvent(c, mark)).then((ok) => {
             if (my !== this.seq) return;
-            if (ok) { this.d.ui.update({ rated: mark }); this.d.ui.setFeedback(mark === 'learning' ? 'Marked as new to you.' : mark === 'known' ? 'Marked as recognised.' : 'Marked as one you can use.'); }
+            if (ok) { this.d.ui.update({ rated: mark }); this.d.ui.setFeedback(`Marked as ${KNOWLEDGE_LEVEL_WORDS[mark].title.toLowerCase()}.`); }
             else this.d.ui.setFeedback('Could not save that. Try again.');
           });
         },
@@ -373,6 +369,13 @@ export class LookupController {
         if (metricRef.row) void this.updateMetric(timer, metricRef.row); // the row is already written: add the late mark
       };
       const pending: Array<Promise<void>> = [];
+      // where the information came from (the "view sources" list): what the dictionary replies named, gathered as they arrive
+      let gathered: SourceLink[] = [];
+      const gather = (more: SourceLink[] | undefined): Partial<CardView> => {
+        if (!more?.length) return {};
+        gathered = mergeSources(gathered, more);
+        return { sources: gathered };
+      };
       if (services) {
         pending.push(
           services.profile({ unitIds: card.unitIds, languageId }).then((reply) => {
@@ -394,7 +397,7 @@ export class LookupController {
               const gloss: CardView['gloss'] = reply?.found
                 ? { state: 'ready', senses: reply.senses, attribution: reply.attribution }
                 : reply ? { state: 'none', senses: [], message: reply.message } : { state: 'error', senses: [] };
-              this.d.ui.update({ gloss });
+              this.d.ui.update({ gloss, ...gather(reply?.sources) });
               arrived('glossArrived');
             }).catch(() => { if (live()) this.d.ui.update({ gloss: { state: 'error', senses: [] } }); }),
           );
@@ -412,7 +415,7 @@ export class LookupController {
               const hint = { features: Object.fromEntries(card.features.map((f) => [f.key, f.value])), surface: card.surface };
               const paradigm = card.lemma && card.pos ? buildParadigm(adapter, languageId, card.lemma, card.pos as PartOfSpeech, record, hint) : undefined;
               const selected = selectedCellKeys(adapter, paradigm, hint.features, card.surface);
-              this.d.ui.update({ enrichment: {
+              this.d.ui.update({ ...gather(reply.sources), enrichment: {
                 state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), structure: structureOf(record, adapter, card.lemma ?? card.surface.trim(), card.pos, card.surface, hint.features, { languageId }), pronunciation: pronunciationOf(record, card.pronunciation), relations: relationsOf(record), senses: sensesOf(record),
                 ...(reply.attribution ? { attribution: reply.attribution } : {}), ...(reply.reason && !reply.found ? { message: reply.message ?? reply.reason } : {}),
               } });
@@ -702,6 +705,14 @@ function defaultFrame(doc: Document): () => Promise<void> {
   });
 }
 
+/** Sources from two replies in one list, once each (a source is the same when its address, or without one its name, is). */
+function mergeSources(a: SourceLink[], b: SourceLink[]): SourceLink[] {
+  const seen = new Set<string>();
+  const out: SourceLink[] = [];
+  for (const x of [...a, ...b]) { const k = x.url ?? x.label; if (!seen.has(k)) { seen.add(k); out.push(x); } }
+  return out;
+}
+
 /** The learner-model line and the weak constructions, from the background's reply. */
 export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined): CardView['profile'] {
   if (!reply || !reply.ok) return { state: 'unavailable', weak: [] };
@@ -710,6 +721,7 @@ export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined
   const rows = reply.rows ?? {};
   const primary = card.itemIds.find((i) => i.startsWith('lemma:')) ?? card.formId ?? card.itemIds[0];
   const row = (primary ? rows[primary] : undefined) ?? (card.formId ? rows[card.formId] : undefined);
+  const wordRows = [primary, card.formId].filter((id): id is string => !!id).map((id) => rows[id]);
   const met = row?.dimensions.exposure?.observations ?? 0;
   const rr = row?.dimensions.readingRecognition;
   const recognition: NonNullable<CardView['profile']['recognition']> = rr && rr.observations > 0
@@ -719,6 +731,7 @@ export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined
   // an answer that carries an error is not evidence of "never met": without a cached row for the word, the model was not consulted
   if (reply.error && !row) return { state: 'unavailable', weak, reason: reply.error === 'needs-sign-in' ? 'needs-sign-in' : reply.error === 'offline' ? 'offline' : 'error' };
   // the learner's own latest mark, over the word's rows (lemma and form)
-  const marks = [primary, card.formId].filter((id): id is string => !!id).map((id) => rows[id]?.selfMark).filter((m): m is NonNullable<KnowledgeView['selfMark']> => !!m).sort((a, b) => (a.at < b.at ? 1 : -1));
-  return { state: 'ready', met, recognition, weak, ...(reply.stale ? { stale: true } : {}), ...(marks[0] ? { selfMark: marks[0].mark } : {}) };
+  const mark = selfMarkOfRows(wordRows);
+  // the word's level (the learner's mark, else the engine's, else the rows read with the page's thresholds) and how often it was met before: the card's rating row and its footer
+  return { state: 'ready', met, recognition, weak, level: levelOfRows(wordRows), encounters: encountersOfRows(wordRows), ...(reply.stale ? { stale: true } : {}), ...(mark ? { selfMark: levelOfMark(mark.mark) } : {}) };
 }

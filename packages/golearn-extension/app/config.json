@@ -1,5 +1,9 @@
 {
   "serviceUrl": "http://127.0.0.1:8790",
   "assetBaseUrl": "./",
-  "dictionaryFallbackUrl": "https://rookie2401.github.io/go-v0/"
+  "dictionaryFallbackUrl": "https://rookie2401.github.io/go-v0/",
+  "sourceLinks": {
+    "wiktionary": "https://en.wiktionary.org/wiki/{lemma}#{language}",
+    "kaikki": "https://kaikki.org/dictionary/{language}/"
+  }
 }

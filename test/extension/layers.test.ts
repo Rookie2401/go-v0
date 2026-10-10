@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 /**
- * The layered card and its pipeline: later arrivals never block the card, the order adapts to the learner model, every
- * layer opening records the right event (validated by the contract), failures of any side service leave an honest
- * partial card, and a language without a pack says so.
+ * The card and its pipeline: later arrivals never block the card, a construction the learner finds hard comes first in Grammar, "Go deeper"
+ * opens every section at once and records the right event for each (validated by the contract), failures of any side service leave an
+ * honest partial card, and a language without a pack says so.
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { UnsupportedAdapter, WebGenericAdapter } from '../../packages/golearn-extension/src/adapters';
@@ -92,9 +92,12 @@ function makeRig(opts: { services?: ContentServices; pronouncer?: Pronouncer; pa
 }
 
 const root = (r: { ui: { root(): ShadowRoot | undefined } }): ShadowRoot => r.ui.root()!;
+/** The text of every row the card has by name: the meaning on the immediate card, the lemma and form lines in "Form", the dictionary line in "Meanings". */
 const rowTexts = (r: { ui: { root(): ShadowRoot | undefined } }): Record<string, string> =>
-  Object.fromEntries([...root(r).querySelectorAll<HTMLElement>('.rows [data-row]')].map((el) => [el.dataset.row!, el.querySelector('.v')!.textContent!]));
-const rowOrder = (r: { ui: { root(): ShadowRoot | undefined } }): string[] => [...root(r).querySelectorAll<HTMLElement>('.rows [data-row]')].map((el) => el.dataset.row!);
+  Object.fromEntries([...root(r).querySelectorAll<HTMLElement>('[data-row]')].map((el) => [el.dataset.row!, (el.querySelector('.v') ?? el).textContent!]));
+const about = (r: { ui: { root(): ShadowRoot | undefined } }): string => root(r).querySelector('.about')!.textContent!;
+const encounters = (r: { ui: { root(): ShadowRoot | undefined } }): string => root(r).querySelector('.encounters')!.textContent!;
+const pressed = (r: { ui: { root(): ShadowRoot | undefined } }): string[] => [...root(r).querySelectorAll('.rateBtn[aria-pressed="true"]')].map((b) => b.getAttribute('aria-label')!);
 const click = (r: { ui: { root(): ShadowRoot | undefined } }, sel: string): void => (root(r).querySelector(sel) as HTMLElement).click();
 const events = async (s: { list(): Promise<GoEvent[]> }, kind?: string): Promise<GoEvent[]> => (await s.list()).filter((e) => !kind || e.kind === kind);
 const lookup = async (r: ReturnType<typeof makeRig>, word = 'shtëpinë') => {
@@ -121,7 +124,7 @@ describe('later arrivals never block the card', () => {
     expect(rowTexts(r).meaning).toBe(`house; home; household (${ATTRIBUTION})`);
   });
 
-  it('when the word list already has a meaning it stays, and the dictionary\'s senses arrive as a separate, attributed line', async () => {
+  it('when the word list already has a meaning it stays, and the dictionary\'s senses arrive as a separate, attributed line (in Meanings)', async () => {
     const g = defer<GlossReply>();
     const r = makeRig({ services: fakeServices({ gloss: () => g.promise }) });
     const out = await lookup(r);
@@ -143,16 +146,17 @@ describe('later arrivals never block the card', () => {
     expect((window as unknown as { __pwned?: number }).__pwned).toBeUndefined();
   });
 
-  it('the learner-model line arrives later too: the card shows without it, then with it', async () => {
+  it('the learner model arrives later too: the card shows without it, then with "· N× encounters" and the word\'s level pressed', async () => {
     const p = defer<ProfileReply>();
     const r = makeRig({ services: fakeServices({ profile: () => p.promise }) });
     const out = await lookup(r);
-    expect(rowTexts(r).learner).toBeUndefined();
+    expect(encounters(r)).toBe('');
+    expect(pressed(r)).toEqual([]);
     p.resolve(profileReply({ 'lemma:sq:shtëpi:NOUN': row('lemma:sq:shtëpi:NOUN', { exposure: { observations: 3 }, readingRecognition: { observations: 2, score: 0.5, confidence: 0.6 } }) }));
     await out.settled;
-    expect(rowTexts(r).learner).toBe('You have met this word 3 times; reading recognition: medium (confidence 0.60)');
-    const tag = root(r).querySelector('[data-row="learner"] .tag')!;
-    expect(tag.textContent).toBe('inference');
+    expect(encounters(r)).toBe('· 5× encounters'); // the observations of all the dimensions of the word's row
+    expect(pressed(r)).toEqual(['Recognized']); // reading recognition observed, below the familiar bar
+    expect(root(r).querySelector('[data-row="learner"]')).toBeNull(); // nothing else about the learner is shown
   });
 
   it('records the three late marks, and writes them into the same metrics row', async () => {
@@ -172,7 +176,7 @@ describe('later arrivals never block the card', () => {
     const r = makeRig({ services: nothing, parse: (i) => ({ ...parseSelection(i), gloss: undefined }) });
     const out = await lookup(r);
     await out.settled;
-    expect(rowTexts(r).learner).toBe('Your history with this word could not be loaded right now.');
+    expect(encounters(r)).toBe(''); // the history could not be loaded: no number is claimed
     expect(rowTexts(r).meaning).toBe('No meaning in the word list; the dictionary could not be asked.'); // the failure reason is said, not hidden (2026-10-10)
     expect(rowTexts(r).lemma).toBe('shtëpi (NOUN)');
     expect(await events(r.store)).toHaveLength(2);
@@ -183,7 +187,7 @@ describe('later arrivals never block the card', () => {
     const out = await lookup(r);
     await out.settled;
     expect(rowTexts(r).meaning).toBe('house, home');
-    expect(rowTexts(r).learner).toBeUndefined();
+    expect(encounters(r)).toBe('');
     expect(await events(r.store)).toHaveLength(2);
   });
 
@@ -200,45 +204,61 @@ describe('later arrivals never block the card', () => {
   });
 });
 
-describe('adaptive order: the grammar hint above the gloss when the construction is weak', () => {
-  it('a weak construction (grammatical understanding negative > positive) moves its hint above the meaning; every layer stays reachable', async () => {
+describe('Grammar puts a construction the learner finds hard first', () => {
+  const grammarTitles = (r: ReturnType<typeof makeRig>): string[] => [...root(r).querySelectorAll('.layer.l4 .row strong')].map((el) => el.textContent!);
+
+  it('a weak construction (grammatical understanding negative > positive) is listed first in Grammar once the model arrives; before that, in the analyser\'s order', async () => {
     const weak = row(CONSTRUCTION, { grammaticalUnderstanding: { observations: 4, positive: 1, negative: 3, score: 0.25, confidence: 0.5 } });
     const p = defer<ProfileReply>();
     const r = makeRig({ services: fakeServices({ profile: () => p.promise }) });
     const out = await lookup(r);
-    expect(rowOrder(r).indexOf('grammar')).toBeGreaterThan(rowOrder(r).indexOf('meaning')); // before the model arrives: the gloss first
+    const before = grammarTitles(r);
+    expect(before.length).toBeGreaterThan(1);
+    expect(before[0]).not.toBe('Definite accusative singular');
     p.resolve(profileReply({ [CONSTRUCTION]: weak }));
     await out.settled;
-    const order = rowOrder(r);
-    expect(order.indexOf('grammar')).toBeGreaterThan(-1);
-    expect(order.indexOf('grammar')).toBeLessThan(order.indexOf('meaning'));
-    expect(order.indexOf('lemma')).toBeLessThan(order.indexOf('grammar'));
-    expect(rowTexts(r).grammar).toMatch(/^Definite accusative singular: /);
-    for (const cls of ['.l2', '.l3', '.l4', '.l5']) expect((root(r).querySelector(`button${cls}`) as HTMLButtonElement).disabled, cls).toBe(false);
+    const after = grammarTitles(r);
+    expect(after[0]).toBe('Definite accusative singular');
+    expect([...after].sort()).toEqual([...before].sort()); // the same constructions, reordered
+    // nothing about it on the immediate card
+    expect(root(r).querySelector('[data-row="grammar"]')).toBeNull();
   });
 
-  it('a word the learner has never met gets the gloss first, and says so', async () => {
+  it('a word the learner has never met says "· 0× encounters" and has New pressed', async () => {
     const r = makeRig({ services: fakeServices({ profile: async () => profileReply({}) }) });
-    const out = await lookup(r);
-    await out.settled;
-    const order = rowOrder(r);
-    expect(order.indexOf('meaning')).toBeLessThan(order.indexOf('grammar'));
-    expect(rowTexts(r).learner).toBe('You have not met this word before, as far as GoLearn knows.');
+    await (await lookup(r)).settled;
+    expect(encounters(r)).toBe('· 0× encounters');
+    expect(pressed(r)).toEqual(['New']);
   });
 
   it('a construction the learner understands (positive >= negative) does not move', async () => {
     const strong = row(CONSTRUCTION, { grammaticalUnderstanding: { observations: 4, positive: 3, negative: 1, score: 0.75, confidence: 0.5 } });
     const r = makeRig({ services: fakeServices({ profile: async () => profileReply({ [CONSTRUCTION]: strong }) }) });
     await (await lookup(r)).settled;
-    const order = rowOrder(r);
-    expect(order.indexOf('meaning')).toBeLessThan(order.indexOf('grammar'));
+    expect(grammarTitles(r)[0]).not.toBe('Definite accusative singular');
   });
 
-  it('not connected: no history is claimed, and the card says how to get it', async () => {
+  it('not connected: no history is claimed (no number), and the level is not pressed', async () => {
     const r = makeRig({ services: fakeServices({ profile: async () => ({ ok: true, connected: false, rows: {}, depth: 'brief', depthOrigin: 'default' }) }) });
     await (await lookup(r)).settled;
-    expect(rowTexts(r).learner).toMatch(/^Not connected: your history with this word is not shown/);
-    expect(root(r).querySelector('[data-row="learner"] .tag')!.textContent).toBe('fact');
+    expect(encounters(r)).toBe('');
+    expect(pressed(r)).toEqual([]);
+  });
+
+  it('the profile view carries the level, the meetings and the learner\'s own mark as a level', () => {
+    const card = parseSelection({ surface: 'libër', context: { kind: 'none', confidence: 0 } });
+    const id = card.itemIds[0];
+    const ids = card.itemIds;
+    const v = profileViewFrom(card, profileReply({ [id]: row(id, { exposure: { observations: 2 }, readingRecognition: { observations: 4, score: 0.85, confidence: 0.7 } }) }));
+    expect(v).toMatchObject({ state: 'ready', level: 'known', encounters: 6 });
+    // the engine's own level and count are used when the row carries them; the larger count of the lemma row and the form row is kept (not their sum)
+    const withEngine = profileViewFrom(card, profileReply({ [ids[0]]: { ...row(ids[0], { exposure: { observations: 2 } }), level: 'familiar' as const, encounters: 9 } }));
+    expect(withEngine).toMatchObject({ level: 'familiar', encounters: 9 });
+    // a mark of the older words keeps its meaning: 'learning' is new, 'productive' is known
+    const old = profileViewFrom(card, profileReply({ [id]: { ...row(id, { readingRecognition: { observations: 4, score: 0.9 } }), selfMark: { mark: 'learning' as const, at: '2026-10-10T10:00:00.000Z' } } }));
+    expect(old).toMatchObject({ level: 'new', selfMark: 'new' });
+    const newer = profileViewFrom(card, profileReply({ [id]: { ...row(id, {}), selfMark: { mark: 'automatic' as const, at: '2026-10-10T10:00:00.000Z' } } }));
+    expect(newer).toMatchObject({ level: 'automatic', selfMark: 'automatic' });
   });
 
   it('reading recognition is not claimed when there is no observation of it', () => {
@@ -255,32 +275,40 @@ describe('adaptive order: the grammar hint above the gloss when the construction
   });
 });
 
-describe('the five layers', () => {
-  it('Layer 1 says what the context is, in plain words', async () => {
+describe('Go deeper', () => {
+  it('the context is said in plain words, in "About this analysis"', async () => {
     const r = makeRig({ services: fakeServices() });
     await lookup(r);
-    expect(rowTexts(r).context).toBe('full sentence');
+    expect(about(r)).toContain('full sentence');
     expect(contextLine(parseSelection({ surface: 'libër', context: { kind: 'sentence', confidence: 0.9, sentence: SENTENCE, selStart: 17, selEnd: 22 } }).context)).toBe('Context: full sentence');
     expect(contextLine({ kind: 'none', confidence: 0, reason: 'the reader does not provide sentence context', selectionLocated: true })).toBe('Context: only the selected word (this reader gives no sentence)');
     expect(contextLine({ kind: 'none', confidence: 0, reason: 'the selection is inside a frame this script cannot read', selectionLocated: true })).toBe('Context: only the selected word (the selection is inside a frame this script cannot read)');
     expect(contextLine({ kind: 'fragment', confidence: 0.2, selectionLocated: true })).toBe('Context: a fragment, not a verified sentence');
   });
 
-  it('opening Layer 2, 3, 4 and 5 records AssistanceRequested with morphology / example / grammar / translation, each valid under the contract', async () => {
+  it('opening Go deeper records AssistanceRequested for every section, in order (morphology, grammar, example, morphology, gloss, hint, hint, translation), each valid under the contract', async () => {
     const r = makeRig({ services: fakeServices() });
     const out = await lookup(r);
     await out.settled;
     expect((await events(r.store, 'AssistanceRequested'))).toHaveLength(0); // nothing is requested by merely showing the card
-    click(r, 'button.l2'); click(r, 'button.l3'); click(r, 'button.l4'); click(r, 'button.l5');
+    click(r, 'button.deeperBtn');
     await flush(5);
     const got = (await events(r.store, 'AssistanceRequested')).map((e) => e.payload);
     expect(got).toEqual([
       { assistance: 'morphology', layer: 'morphology' },
-      { assistance: 'example', layer: 'phrase-syntax' },
       { assistance: 'grammar', layer: 'grammar', depth: 'brief' },
+      { assistance: 'example', layer: 'phrase-syntax' },
+      { assistance: 'morphology', layer: 'forms' },
+      { assistance: 'gloss', layer: 'meaning' },
+      { assistance: 'hint', layer: 'origin' },
+      { assistance: 'hint', layer: 'structure' },
       { assistance: 'translation', layer: 'sentence' },
     ]);
     for (const e of await r.store.list()) expect(validateEvent(e), `${e.kind}`).toEqual([]);
+    // no Sound layer any more, and no ReviewRequested or "saved" mark from the card
+    expect(got.some((g) => g.layer === 'sound')).toBe(false);
+    expect((await events(r.store, 'ItemMarked'))).toHaveLength(0);
+    expect((await r.store.list()).some((e) => (e.kind as string) === 'ReviewRequested')).toBe(false);
     // Layer 1 shown is an AnalysisShown, recorded with the lookup
     const shown = await events(r.store, 'AnalysisShown');
     expect(shown).toHaveLength(1);
@@ -290,19 +318,19 @@ describe('the five layers', () => {
     expect(JSON.stringify(await r.store.list())).not.toContain('lexoj'); // no sentence anywhere
   });
 
-  it('opening the same layer twice on one card is one event; closing is not a request', async () => {
+  it('opening Go deeper twice on one card is the same events; closing ("Less") is not a request', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
-    click(r, 'button.l2'); click(r, 'button.l2'); click(r, 'button.l2');
+    click(r, 'button.deeperBtn'); click(r, 'button.deeperBtn'); click(r, 'button.deeperBtn');
     await flush(5);
-    expect(await events(r.store, 'AssistanceRequested')).toHaveLength(1);
-    expect((root(r).querySelector('button.l2') as HTMLElement).getAttribute('aria-expanded')).toBe('true');
+    expect(await events(r.store, 'AssistanceRequested')).toHaveLength(8);
+    expect((root(r).querySelector('button.deeperBtn') as HTMLElement).getAttribute('aria-expanded')).toBe('true');
   });
 
-  it('Layer 2 is a table of the features that exist, labelled from the pack when it answered', async () => {
+  it('Form is a table of the features that exist, labelled from the pack when it answered', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
-    click(r, 'button.l2');
+    click(r, 'button.deeperBtn');
     const table = root(r).querySelector('.layer.l2 table')!;
     const rows = [...table.querySelectorAll('tr')].map((tr) => [...tr.querySelectorAll('th, td')].map((c) => c.textContent));
     expect(rows.map((x) => x[0])).toEqual(expect.arrayContaining(['Case', 'Definite', 'Number']));
@@ -312,39 +340,39 @@ describe('the five layers', () => {
     expect(rows.find((x) => x[0] === 'Definite')![1]).toBe('Def'); // the pack gave no entry for it: the analyser's own value, unexplained
     const noPack = makeRig({ services: fakeServices({ explain: async () => explainReply({ source: 'none', features: [], constructions: [] }) }) });
     await (await lookup(noPack)).settled;
-    click(noPack, 'button.l2');
+    click(noPack, 'button.deeperBtn');
     expect(root(noPack).querySelector('.layer.l2')!.textContent).toMatch(/the pack’s explanations were not available/);
   });
 
-  it('Layer 3 lists phrases and units, and shows the syntax relation (Stage 4) or says plainly when the analyser gives none', async () => {
+  it('Syntax lists phrases and units, and shows the syntax relation (Stage 4) or says plainly when the analyser gives none', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
-    click(r, 'button.l3');
+    click(r, 'button.deeperBtn');
     const t = root(r).querySelector('.layer.l3')!.textContent!;
     // the Albanian analyser has syntax rules since Stage 4: the relation line names the rules and the attached share; an analyser without rules keeps the old role line
     expect(t).toMatch(/Generated by the analyser.s rules \([\w-]+@\d+\); \d+% of this sentence|role: not available from this analyser|could not attach this word/);
-    expect(t).toContain('Definite accusative singular');
+    expect(root(r).querySelector('.layer.l4')!.textContent).toContain('Definite accusative singular'); // the constructions are in Grammar
   });
 
-  it('Layer 3 with a phrase: the phrase entry and its meaning', async () => {
+  it('Syntax with a phrase: the phrase entry and its meaning', async () => {
     setBody('<div><p id="p">Ai ka shumë punë sot.</p></div>');
     const r = makeRig({ services: fakeServices() });
     selectText(document.getElementById('p')!, 'shumë');
     const out = await r.controller.lookup({ trigger: 'command' });
     if (out.status !== 'shown') throw new Error('card');
-    click(r, 'button.l3');
+    click(r, 'button.deeperBtn');
     expect(root(r).querySelector('.layer.l3')!.textContent).toMatch(/Phrases|Syntax|role: not available/);
   });
 
-  it('Layer 4 follows the explanation depth: label, brief, explanatory', async () => {
+  it('Grammar follows the explanation depth: label, brief, explanatory', async () => {
     const texts: Record<string, string> = {};
     for (const depth of ['label', 'brief', 'explanatory'] as const) {
       const r = makeRig({ services: fakeServices({ profile: async () => profileReply({}, { depth, depthOrigin: depth === 'label' ? 'settings' : 'default' }) }) });
       await (await lookup(r)).settled;
-      click(r, 'button.l4');
+      click(r, 'button.deeperBtn');
       await flush(5);
       texts[depth] = root(r).querySelector('.layer.l4')!.textContent!;
-      const ev = (await events(r.store, 'AssistanceRequested'))[0];
+      const ev = (await events(r.store, 'AssistanceRequested')).find((e) => e.payload.layer === 'grammar')!;
       expect(ev.payload).toMatchObject({ assistance: 'grammar', depth });
       r.controller.dispose();
     }
@@ -356,26 +384,28 @@ describe('the five layers', () => {
     expect(texts.label).toContain('(your setting)');
   });
 
-  it('Layer 4 falls back to the analyser\'s own explanation when the pack says nothing, and is honest when there is none', async () => {
+  it('Grammar falls back to the analyser\'s own explanation when the pack says nothing, and is honest when there is none', async () => {
     const r = makeRig({ services: fakeServices({ explain: async () => explainReply({ source: 'none', features: [], constructions: [] }) }) });
     await (await lookup(r)).settled;
-    click(r, 'button.l4');
+    click(r, 'button.deeperBtn');
     expect(root(r).querySelector('.layer.l4')!.textContent).toContain('The ending marks a definite noun as the direct object.');
     setBody('<div><p id="p">Zogu fluturon.</p></div>');
     const r2 = makeRig({ services: fakeServices({ explain: async () => explainReply({ source: 'none', features: [], constructions: [] }) }) });
     selectText(document.getElementById('p')!, 'fluturon');
     await (await r2.controller.lookup({ trigger: 'command' }) as { settled: Promise<void> }).settled;
-    click(r2, 'button.l4');
+    click(r2, 'button.deeperBtn');
     expect(root(r2).querySelector('.layer.l4')!.textContent).toMatch(/construction|No grammar note|Definite|Present/);
   });
 
-  it('Layer 5 is a word-by-word list behind a disclosure, says there is no machine translation, and marks the selected word', async () => {
+  it('Sentence is a word-by-word list behind "Go deeper", says there is no machine translation, and marks the selected word', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
     const panel = root(r).querySelector('.layer.l5') as HTMLElement;
-    expect(panel.hasAttribute('hidden')).toBe(true);
-    click(r, 'button.l5');
-    expect(panel.hasAttribute('hidden')).toBe(false);
+    const deeper = root(r).querySelector('.deeper') as HTMLElement;
+    expect(deeper.hasAttribute('hidden')).toBe(true);
+    click(r, 'button.deeperBtn');
+    expect(deeper.hasAttribute('hidden')).toBe(false);
+    expect(deeper.contains(panel)).toBe(true);
     expect(panel.textContent).toContain('There is no machine translation in GoLearn');
     const items = [...panel.querySelectorAll('li')].map((li) => li.textContent);
     expect(items.length).toBe(10); // Unë po lexoj një libër të bukur në shtëpinë time
@@ -383,16 +413,16 @@ describe('the five layers', () => {
     expect(panel.querySelector('li.sel')!.textContent).toMatch(/^shtëpinë: shtëpi \(NOUN\)/);
   });
 
-  it('Layer 5 with no sentence context says there is nothing to list', async () => {
+  it('Sentence with no sentence context says there is nothing to list', async () => {
     const r = makeRig({ services: fakeServices() });
     r.controller.dispose();
     const a = new WebGenericAdapter({ doc: document, segmentSentences: (t) => sqAdapter.segmentSentences(t) });
     const none = makeRig({ services: fakeServices(), parse: (i) => parseSelection({ ...i, context: { kind: 'none', confidence: 0 } }) });
     void a;
     await (await lookup(none)).settled;
-    click(none, 'button.l5');
+    click(none, 'button.deeperBtn');
     expect(root(none).querySelector('.layer.l5')!.textContent).toContain('no sentence context');
-    expect(rowTexts(none).context).toBe('only the selected word (this reader gives no sentence)');
+    expect(about(none)).toContain('only the selected word (this reader gives no sentence)');
   });
 });
 
@@ -447,37 +477,54 @@ describe('pronunciation', () => {
   });
 });
 
-describe('Review this', () => {
-  it('records ItemMarked saved once, disables itself, and says so', async () => {
+describe('the rating row', () => {
+  it('a level is recorded as ItemMarked with the level word, valid under the contract, said on the card, and shown pressed; the same level again is not a second event', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
-    click(r, '.saveBtn'); await flush(5);
+    click(r, '.rateBtn[data-mark="familiar"]'); await flush(5);
     const marks = await events(r.store, 'ItemMarked');
     expect(marks).toHaveLength(1);
-    expect(marks[0].payload).toEqual({ mark: 'saved' });
+    expect(marks[0].payload).toEqual({ mark: 'familiar' });
     expect(marks[0].subject.itemIds).toEqual(['lemma:sq:shtëpi:NOUN']);
     expect(validateEvent(marks[0])).toEqual([]);
-    const btn = root(r).querySelector('.saveBtn') as HTMLButtonElement;
-    expect(btn.disabled).toBe(true);
-    expect(btn.textContent).toBe('Saved for review');
-    expect(root(r).querySelector('.feedback')!.textContent).toBe('Saved for review.');
-    btn.click(); await flush(5);
+    expect(root(r).querySelector('.feedback')!.textContent).toBe('Marked as familiar.');
+    expect(pressed(r)).toEqual(['Familiar']);
+    click(r, '.rateBtn[data-mark="familiar"]'); await flush(5);
     expect(await events(r.store, 'ItemMarked')).toHaveLength(1);
+    click(r, '.rateBtn[data-mark="automatic"]'); await flush(5);
+    expect((await events(r.store, 'ItemMarked')).map((e) => e.payload.mark)).toEqual(['familiar', 'automatic']);
+    expect(pressed(r)).toEqual(['Automatic']);
   });
 
-  it('a failed write is said, and the button stays usable', async () => {
+  it('all six levels are sent as their words, and the card has no Review button and sends no ReviewRequested', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
+    for (const mark of ['new', 'seen', 'recognized', 'familiar', 'known', 'automatic']) { click(r, `.rateBtn[data-mark="${mark}"]`); await flush(3); }
+    const all = await r.store.list();
+    expect((await events(r.store, 'ItemMarked')).map((e) => e.payload.mark)).toEqual(['new', 'seen', 'recognized', 'familiar', 'known', 'automatic']);
+    for (const e of all) expect(validateEvent(e), e.kind).toEqual([]);
+    expect(all.some((e) => (e.kind as string) === 'ReviewRequested' || (e.kind === 'ItemMarked' && e.payload.mark === 'saved'))).toBe(false);
+    expect(root(r).querySelector('.saveBtn')).toBeNull();
+    expect([...root(r).querySelectorAll('button')].some((b) => /Review this/.test(b.textContent ?? ''))).toBe(false);
+  });
+
+  it('a failed write is said, and the level can be tried again', async () => {
+    const r = makeRig({ services: fakeServices() });
+    await (await lookup(r)).settled;
+    const real = r.store.append.bind(r.store);
     (r.store as { append: unknown }).append = async () => ({ ok: false, error: 'full' });
-    click(r, '.saveBtn'); await flush(5);
+    click(r, '.rateBtn[data-mark="known"]'); await flush(5);
     expect(root(r).querySelector('.feedback')!.textContent).toBe('Could not save that. Try again.');
-    expect((root(r).querySelector('.saveBtn') as HTMLButtonElement).disabled).toBe(false);
+    expect(pressed(r)).toEqual(['New']); // the model's level (nothing met yet), not the failed mark
+    (r.store as { append: unknown }).append = real;
+    click(r, '.rateBtn[data-mark="known"]'); await flush(5);
+    expect(pressed(r)).toEqual(['Known']);
   });
 });
 
-describe('"This analysis is wrong"', () => {
+describe('Report (the correction flow)', () => {
   const pickLemma = (r: ReturnType<typeof makeRig>, lemma: string) => {
-    click(r, '.wrongBtn');
+    click(r, '.reportBtn');
     const form = root(r).querySelector('form.fix') as HTMLFormElement;
     const typed = form.querySelector('#alt-typed') as HTMLInputElement;
     const text = form.querySelector('#typed-lemma') as HTMLInputElement;
@@ -513,7 +560,7 @@ describe('"This analysis is wrong"', () => {
     const r = makeRig({ services });
     const out = await lookup(r, 'bukur');
     expect(out.card.alternatives.length).toBeGreaterThan(0);
-    click(r, '.wrongBtn');
+    click(r, '.reportBtn');
     const first = root(r).querySelector('form.fix input[name="reading"]') as HTMLInputElement;
     first.checked = true;
     (root(r).querySelector('form.fix') as HTMLFormElement).dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
@@ -527,7 +574,7 @@ describe('"This analysis is wrong"', () => {
     const services = fakeServices();
     const r = makeRig({ services });
     await (await lookup(r, 'bukur')).settled;
-    click(r, '.wrongBtn');
+    click(r, '.reportBtn');
     (root(r).querySelector('form.fix') as HTMLFormElement).dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
     await flush(5);
     expect(root(r).querySelector('.feedback')!.textContent).toBe('Choose a reading or type the lemma first.');
@@ -562,7 +609,7 @@ describe('"This analysis is wrong"', () => {
     selectText(document.getElementById('p')!, 'një libër');
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out.status).toBe('shown');
-    expect((root(r).querySelector('.wrongBtn') as HTMLButtonElement).disabled).toBe(true);
+    expect((root(r).querySelector('.reportBtn') as HTMLButtonElement).disabled).toBe(true);
   });
 });
 
@@ -584,7 +631,7 @@ describe('honest partial cards', () => {
     expect(services.calls.gloss).toBe(1);
     expect(asked[0].lemma).toBe('Flurbozitet'); // the word as written, not the guess, is what the dictionary is asked about first
     expect(asked[0].forms).toEqual(expect.arrayContaining(['Flurbozitet', 'flurbozitet']));
-    expect(t.learner).toBe('You have not met this word before, as far as GoLearn knows.');
+    expect(encounters(r)).toBe('· 0× encounters');
     const sel = (await events(r.store, 'SelectionLookedUp'))[0];
     expect(sel.payload).toMatchObject({ unconfirmed: true, provenance: 'rule' });
     expect(sel.subject.itemIds![0]).toMatch(/^form:sq:/);
@@ -610,7 +657,7 @@ describe('a language without a pack', () => {
     expect(root(r).textContent).toContain('There is no GoLearn pack for German yet');
     expect(root(r).textContent).toContain('The lookup was counted; nothing else was recorded.');
     expect(r.parse).not.toHaveBeenCalled();
-    expect(r.ui.root()!.querySelector('.layerBtn')).toBeNull();
+    expect(r.ui.root()!.querySelector('.deeperBtn')).toBeNull();
     const all = await r.store.list();
     expect(all.map((e) => e.kind)).toEqual(['SelectionLookedUp']);
     expect(all[0]).toMatchObject({ languageId: 'de', payload: { surface: 'shtëpinë', mode: 'no-pack', helpShown: ['surface'] } });

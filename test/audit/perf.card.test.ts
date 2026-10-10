@@ -56,13 +56,13 @@ describe('the lookup card in jsdom', () => {
       const t0 = now();
       ui.update({ gloss: { state: 'ready', senses: ['book', 'volume'], attribution: 'Wiktionary, via kaikki.org, CC BY-SA 4.0' } });
       const t1 = now();
-      for (const layer of ['l2', 'l3', 'l4', 'l5']) (ui.root()!.querySelector(`button.${layer}`) as HTMLElement).click();
+      (ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click(); // "Go deeper": every section at once
       const t2 = now();
       ui.dismiss('close');
-      if (i >= 0) { updateT.push(t1 - t0); toggleT.push((t2 - t1) / 4); }
+      if (i >= 0) { updateT.push(t1 - t0); toggleT.push(t2 - t1); }
     }
     record('PF-M16', 'late gloss: ui.update({ gloss }) re-render', 'rows + panels re-filled, jsdom, N=30', updateT);
-    record('PF-M17', 'open one layer (button click → panel shown, reposition)', 'mean of 4 layer clicks per card, jsdom, N=30 cards', toggleT);
+    record('PF-M17', 'open Go deeper (button click → every section shown, reposition)', 'one click per card, jsdom, N=30 cards', toggleT);
     expect(median(updateT)).toBeLessThan(1000);
   });
 });

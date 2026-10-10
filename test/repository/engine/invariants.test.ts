@@ -113,13 +113,16 @@ describe('invariant (e): declared evidence can lower a weight, never raise it', 
 });
 
 describe('invariant (f): no single known/unknown boolean, no single mastery number', () => {
+  // projection@4 adds `level` (one of SIX words, derived from the dimensions) and `encounters` (a count): neither is a boolean nor a mastery number.
   it('a row has exactly the eight dimensions and no aggregate field', async () => {
     resetIds();
     const { rows } = await project([card([FORM], 'recognition', true), listening([FORM], false), lookup([FORM])]);
     const r = row(rows, FORM);
     expect(Object.keys(r.dimensions)).toEqual([...DIMENSIONS]);
-    for (const k of Object.keys(r)) expect(k).not.toMatch(/known|learned|mastery|mastered|level|score$/i);
-    expect(JSON.stringify(r)).not.toMatch(/learned|mastered|\bknown\b/i);
+    for (const k of Object.keys(r)) expect(k).not.toMatch(/known|learned|mastery|mastered|score$/i);
+    expect(typeof r.level).toBe('string'); // a word on a six-step scale, never a number or a boolean
+    expect(typeof r.encounters).toBe('number');
+    expect(JSON.stringify({ ...r, level: undefined })).not.toMatch(/learned|mastered|\bknown\b/i);
   });
   it('the same unit can be strong in one dimension and weak in another', async () => {
     resetIds();
@@ -135,7 +138,7 @@ describe('invariant (g): the fold is deterministic, order-independent and idempo
 
   it('property: the same 30 events in 20 seeded shuffles give identical stored rows', async () => {
     const events = thirty();
-    const baseline = JSON.stringify(foldEvents(events, { modelVersion: 'projection@3' }));
+    const baseline = JSON.stringify(foldEvents(events, { modelVersion: 'projection@4' }));
     expect(JSON.parse(baseline).length).toBeGreaterThan(2);
     const rand = rng(99);
     for (let k = 0; k < 20; k++) {
@@ -150,7 +153,7 @@ describe('invariant (g): the fold is deterministic, order-independent and idempo
 
   it('property: shuffled arrival split into three projected batches gives the same rows too', async () => {
     const events = thirty();
-    const baseline = JSON.stringify(foldEvents(events, { modelVersion: 'projection@3' }));
+    const baseline = JSON.stringify(foldEvents(events, { modelVersion: 'projection@4' }));
     const rand = rng(5);
     for (let k = 0; k < 10; k++) {
       const order = shuffled(events, rand);
@@ -164,8 +167,8 @@ describe('invariant (g): the fold is deterministic, order-independent and idempo
 
   it('duplicates of an event (same id) change nothing, at the fold and through the store', async () => {
     const events = thirty();
-    const once = JSON.stringify(foldEvents(events, { modelVersion: 'projection@3' }));
-    expect(JSON.stringify(foldEvents([...events, ...events.slice(0, 12), ...events], { modelVersion: 'projection@3' }))).toBe(once);
+    const once = JSON.stringify(foldEvents(events, { modelVersion: 'projection@4' }));
+    expect(JSON.stringify(foldEvents([...events, ...events.slice(0, 12), ...events], { modelVersion: 'projection@4' }))).toBe(once);
     const store = new FakeStore();
     await store.append(L, events);
     const engine = createProjectionEngine({ store, now: () => NOW });
@@ -206,8 +209,8 @@ describe('invariant (h): rebuild from the log equals the incrementally projected
     expect((await store.getKnowledge(L))[0].modelVersion).toBe('projection@0-test');
     const v2 = createProjectionEngine({ store, now: () => NOW });
     expect((await v2.project(L)).folded).toBe(1);
-    expect((await store.getKnowledge(L))[0].modelVersion).toBe('projection@3');
-    expect(await store.getProjectionCursor(L)).toEqual({ seq: 1, modelVersion: 'projection@3' });
+    expect((await store.getKnowledge(L))[0].modelVersion).toBe('projection@4');
+    expect(await store.getProjectionCursor(L)).toEqual({ seq: 1, modelVersion: 'projection@4' });
   });
 });
 

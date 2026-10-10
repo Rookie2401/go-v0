@@ -12,6 +12,7 @@ import { DIMENSIONS } from '../../repository-contract/src';
 import type { Dimension, DimensionEstimate, GoEvent, Tombstone, UnitKnowledge } from '../../repository-contract/src';
 import { observationsOf } from './evidence';
 import type { Observation } from './evidence';
+import { RECOGNITION_LEVEL_DIMENSIONS, levelOf } from './levels';
 
 /** Pseudo-observations at 0.5 that every judged dimension starts from: a prior of "undecided". */
 export const PRIOR = 1;
@@ -43,6 +44,7 @@ export function emptyRow(learnerId: string, unitId: string, languageId: string, 
   return {
     learnerId, unitId, languageId, dimensions,
     retention: { estimate: 0, halfLifeDays: HALF_LIFE_BASE_DAYS, basedOn: 'none' },
+    level: 'new', encounters: 0,
     uncertainty: 1, modelVersion, basis: { events: 0 },
   };
 }
@@ -63,12 +65,17 @@ export interface FoldState {
   events: Set<string>;
   /** Event id of the observation behind the row's current `selfMark` (the tie-break when two marks share an instant); '' for a seeded row. */
   selfMarkEventId: string;
+  /** projection@4: the observations folded in this state (the level is computed from them once the fold is done: see `finalizeRow`). */
+  observations: Observation[];
+  /** projection@4: the encounters a stored row already counted, when this state was seeded from it. */
+  encounterOffset: number;
 }
-export const newFoldState = (): FoldState => ({ seeded: false, eventOffset: 0, contextOffset: {}, contexts: {}, difficulty: {}, events: new Set(), selfMarkEventId: '' });
+export const newFoldState = (): FoldState => ({ seeded: false, eventOffset: 0, contextOffset: {}, contexts: {}, difficulty: {}, events: new Set(), selfMarkEventId: '', observations: [], encounterOffset: 0 });
 
 function seed(state: FoldState, row: UnitKnowledge): void {
   state.seeded = true;
   state.eventOffset = row.basis.events;
+  state.encounterOffset = row.encounters ?? 0;
   for (const d of DIMENSIONS) {
     const e = row.dimensions[d];
     state.contextOffset[d] = e.contexts;
@@ -107,13 +114,53 @@ function deriveRow(dims: Record<Dimension, DimensionEstimate>): Pick<UnitKnowled
   };
 }
 
-/** Folds one observation into a row (pure; returns a new row). Commutative with every other fold up to 1e-9. */
+/**
+ * True when an observation is an ENCOUNTER with the unit (projection@4 `UnitKnowledge.encounters`): the learner met it in text (an encounter, a lookup, an
+ * assistance request) or recognised it (any recognition judgement, assisted or not). Playing its audio, producing it and marking it are not encounters.
+ */
+export function isEncounterObservation(o: Observation): boolean {
+  if (o.selfMark !== undefined) return false;
+  if (o.dimension === 'exposure') return o.counter !== 'playback';
+  return o.dimension === 'assistedRecognition' || RECOGNITION_LEVEL_DIMENSIONS.includes(o.dimension);
+}
+
+/**
+ * Sets `encounters` (distinct events) and `level` from the observations a fold has seen (projection@4). The level needs the evidence dated AFTER
+ * the learner's mark, which only the observations can give, so it is computed once per unit when its fold is complete rather than at every step.
+ */
+export function finalizeRow(row: UnitKnowledge, state: FoldState): UnitKnowledge {
+  const encounters = state.encounterOffset + new Set(state.observations.filter(isEncounterObservation).map((o) => o.eventId)).size;
+  const mark = row.selfMark;
+  let since: UnitKnowledge['dimensions'] | undefined;
+  let evidence: UnitKnowledge['dimensions'] | undefined;
+  if (mark) {
+    // the evidence proper: the unit folded without its self-reports (a mark is a claim, not a recognition)
+    let own: UnitKnowledge | undefined;
+    const ownState = newFoldState();
+    for (const o of [...state.observations].filter((x) => x.selfMark === undefined).sort(compareObservations)) own = foldOne(own, o, row.modelVersion, ownState);
+    evidence = (own ?? emptyRow(row.learnerId, row.unitId, row.languageId, row.modelVersion)).dimensions;
+    const fresh = state.observations.filter((o) => o.selfMark === undefined && compareAt(o.at, mark.at) > 0).sort(compareObservations);
+    const st = newFoldState();
+    let acc: UnitKnowledge | undefined;
+    for (const o of fresh) acc = foldOne(acc, o, row.modelVersion, st);
+    since = (acc ?? emptyRow(row.learnerId, row.unitId, row.languageId, row.modelVersion)).dimensions;
+  }
+  return { ...row, encounters, level: levelOf(row, since, evidence) };
+}
+
+/** Folds one observation into a row (pure; returns a new row, level and encounters set). Commutative with every other fold up to 1e-9. */
 export function foldObservation(row: UnitKnowledge | undefined, o: Observation, modelVersion: string, state: FoldState = newFoldState()): UnitKnowledge {
+  return finalizeRow(foldOne(row, o, modelVersion, state), state);
+}
+
+/** The accumulation step shared by `foldObservation` (finalised at once) and `foldObservations` (finalised when a unit's fold is complete). */
+function foldOne(row: UnitKnowledge | undefined, o: Observation, modelVersion: string, state: FoldState): UnitKnowledge {
   const base = row ?? emptyRow(o.learnerId, o.unitId, o.languageId, modelVersion);
   if (!state.seeded) seed(state, base);
   const dim = o.dimension;
   const exposure = dim === 'exposure';
   if (!exposure && o.outcome === 'exposure') return base; // a judged dimension takes judgements only
+  state.observations.push(o);
   const prev = base.dimensions[dim];
   const e: DimensionEstimate = { ...prev };
   e.observations = prev.observations + 1;
@@ -188,8 +235,9 @@ export function foldObservations(observations: Observation[], modelVersion: stri
     seen.add(key);
     let st = states.get(o.unitId);
     if (!st) states.set(o.unitId, (st = newFoldState()));
-    rows.set(o.unitId, foldObservation(rows.get(o.unitId), o, modelVersion, st));
+    rows.set(o.unitId, foldOne(rows.get(o.unitId), o, modelVersion, st));
   }
+  for (const [unitId, row] of rows) rows.set(unitId, finalizeRow(row, states.get(unitId)!));
   return rows;
 }
 

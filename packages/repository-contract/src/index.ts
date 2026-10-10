@@ -17,6 +17,7 @@ import type { ValidationIssue } from './units';
 
 export * from './units';
 export * from './field-states';
+export * from './knowledge-levels';
 export * from './learner';
 export * from './payloads';
 export * from './sources';

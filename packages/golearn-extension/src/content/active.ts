@@ -324,7 +324,7 @@ export class ActiveMode {
   }
 }
 
-const noMarks = (): Record<ActiveLevel, number> => ({ new: 0, met: 0, assisted: 0, known: 0, produced: 0 });
+const noMarks = (): Record<ActiveLevel, number> => ({ new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 });
 
 /** The text node and offset under a point, through whichever API the engine has. */
 function caretAt(doc: Document, x: number, y: number): { node: Node; offset: number } | undefined {

@@ -1,8 +1,8 @@
 /** Events the shell itself builds (the deck's own events come from GoReview's builders). */
-import { CONTRACT_VERSION, type GoEvent } from '../repository-contract/src';
+import { CONTRACT_VERSION, type GoEvent, type ItemMarkPayload } from '../repository-contract/src';
 import type { EventContext } from './ports';
 
-export function itemMarked(ectx: EventContext, id: string, unitId: string, mark: 'ignore' | 'saved' | 'known' | 'learning'): GoEvent {
+export function itemMarked(ectx: EventContext, id: string, unitId: string, mark: ItemMarkPayload['mark']): GoEvent {
   return {
     id, v: CONTRACT_VERSION, learnerId: ectx.learnerId, enrolmentId: ectx.enrolmentId, languageId: ectx.languageId,
     ...(ectx.varietyId ? { varietyId: ectx.varietyId } : {}), at: ectx.now,

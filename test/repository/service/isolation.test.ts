@@ -7,7 +7,7 @@ import type { Harness } from './fakes';
 type Who = Awaited<ReturnType<typeof signUp>>;
 
 const knowledgeRow = (learnerId: string, unitId: string): UnitKnowledge => ({
-  learnerId, unitId, languageId: 'sq', dimensions: {} as UnitKnowledge['dimensions'], retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'none' }, uncertainty: 0.5, modelVersion: 'fake-1', basis: { events: 1 },
+  learnerId, unitId, languageId: 'sq', dimensions: {} as UnitKnowledge['dimensions'], retention: { estimate: 0.5, halfLifeDays: 3, basedOn: 'none' }, level: 'seen', encounters: 1, uncertainty: 0.5, modelVersion: 'fake-1', basis: { events: 1 },
 });
 
 /** Two learners; A has events, knowledge, a document and an enrolment. */

@@ -224,11 +224,39 @@ describe('Grammar puts a construction the learner finds hard first', () => {
     expect(root(r).querySelector('[data-row="grammar"]')).toBeNull();
   });
 
-  it('a word the learner has never met says "· 0× encounters" and has New pressed', async () => {
+  it('a word the learner has never met says "· 0× encounters" and, once its lookup has settled, has Seen pressed (the click met it: New becomes Seen at once)', async () => {
     const r = makeRig({ services: fakeServices({ profile: async () => profileReply({}) }) });
     await (await lookup(r)).settled;
-    expect(encounters(r)).toBe('· 0× encounters');
+    expect(encounters(r)).toBe('· 0× encounters'); // earlier meetings: the lookup just made is not one of them
+    expect(pressed(r)).toEqual(['Seen']);
+    expect(root(r).querySelector('.levelName')!.textContent).toBe('Seen');
+    expect((await events(r.store, 'SelectionLookedUp')).length).toBe(1);
+  });
+
+  it('New becomes Seen whichever comes last: the profile reply read before the lookup was recorded, or the record itself', async () => {
+    // the reply arrives after the lookup event is on the device: New in the reply is shown as Seen
+    const p = defer<ProfileReply>();
+    const r = makeRig({ services: fakeServices({ profile: () => p.promise }) });
+    const out = await lookup(r);
+    expect((await events(r.store, 'SelectionLookedUp')).length).toBe(1);
+    p.resolve(profileReply({}));
+    await out.settled;
+    expect(pressed(r)).toEqual(['Seen']);
+    // a stored mark of New (made before this lookup) is released by it as well
+    const q = makeRig({ services: fakeServices({ profile: async () => profileReply({ 'lemma:sq:libër:NOUN': { ...row('lemma:sq:libër:NOUN', { readingRecognition: { observations: 1, negative: 0.06 } }), selfMark: { mark: 'new', at: '2026-10-01T10:00:00.000Z' } } }) }) });
+    await (await lookup(q, 'libër')).settled;
+    expect(pressed(q)).toEqual(['Seen']);
+  });
+
+  it('a word whose lookup could not be recorded stays New, and a word at another level is not touched by the lookup', async () => {
+    const r = makeRig({ services: fakeServices({ profile: async () => profileReply({}) }) });
+    (r.store as { append: unknown }).append = async () => ({ ok: false, error: 'full' });
+    await (await lookup(r)).settled;
     expect(pressed(r)).toEqual(['New']);
+    const known = { ...row('lemma:sq:libër:NOUN', { readingRecognition: { observations: 5, score: 0.9, positive: 4 } }), selfMark: { mark: 'known' as const, at: '2026-10-01T10:00:00.000Z' } };
+    const q = makeRig({ services: fakeServices({ profile: async () => profileReply({ 'lemma:sq:libër:NOUN': known }) }) });
+    await (await lookup(q, 'libër')).settled;
+    expect(pressed(q)).toEqual(['Known']);
   });
 
   it('a construction the learner understands (positive >= negative) does not move', async () => {
@@ -521,7 +549,7 @@ describe('the rating row', () => {
     (r.store as { append: unknown }).append = async () => ({ ok: false, error: 'full' });
     click(r, '.rateBtn[data-mark="known"]'); await flush(5);
     expect(root(r).querySelector('.feedback')!.textContent).toBe('Could not save that. Try again.');
-    expect(pressed(r)).toEqual(['New']); // the model's level (nothing met yet), not the failed mark
+    expect(pressed(r)).toEqual(['Seen']); // the model's level (the lookup met the word: New is Seen), not the failed mark
     (r.store as { append: unknown }).append = real;
     click(r, '.rateBtn[data-mark="known"]'); await flush(5);
     expect(pressed(r)).toEqual(['Known']);

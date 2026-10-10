@@ -209,6 +209,30 @@ describe('the learner\'s newest mark decides the level, until later evidence con
     // evidence from before the mark does not release it
     expect(levelFrom([...later.map((e, i) => ({ ...e, at: T(7, i) })), mark('new', T(8))])).toBe('new');
   });
+
+  it('a mark of NEW is released by ANY later observation: a lookup after it makes the word seen (the click that meets a new word)', () => {
+    resetIds();
+    expect(levelFrom([mark('new', T(8))])).toBe('new');
+    expect(levelFrom([mark('new', T(8)), lookup([U], { at: T(9) })])).toBe('seen');
+    expect(rowOf([mark('new', T(8)), lookup([U], { at: T(9) })])).toMatchObject({ level: 'seen', selfMark: { mark: 'new' } });
+    // an exposure or a help request after the mark does the same
+    expect(levelFrom([mark('new', T(8)), encounter([U], { at: T(9) })])).toBe('seen');
+    expect(levelFrom([mark('new', T(8)), assist([U], { assistance: 'gloss' }, { at: T(9) })])).toBe('seen');
+    // a lookup BEFORE the mark does not release it: the learner said new after meeting it
+    expect(levelFrom([lookup([U], { at: T(7) }), mark('new', T(8))])).toBe('new');
+    // the level is max(seen, evidence): a recognition after the mark still wins
+    expect(levelFrom([mark('new', T(8)), lookup([U], { at: T(9) }), card([U], 'recognition', true, {}, { at: T(9, 1) })])).toBe('recognized');
+    // a mark of any other level keeps the two-level rule: one lookup does not touch a mark of seen, nor a mark of recognized
+    expect(levelFrom([mark('seen', T(8)), lookup([U], { at: T(9) })])).toBe('seen');
+    expect(levelFrom([mark('recognized', T(8)), lookup([U], { at: T(9) })])).toBe('recognized');
+    // marking new AGAIN after the lookup puts it back to new until the next meeting
+    expect(levelFrom([lookup([U], { at: T(7) }), mark('new', T(8)), lookup([U], { at: T(9) }), mark('new', T(10))])).toBe('new');
+    // the pure rule (a stored row, no `since`): dimensions touched after the mark stand in for the evidence since
+    const touched = dims({ exposure: { observations: 1, positive: 1, lastAt: T(9) } });
+    expect(markStatus({ dimensions: touched, selfMark: { mark: 'new', at: T(8) } }).status).toBe('released');
+    expect(levelOf({ dimensions: touched, selfMark: { mark: 'new', at: T(8) } })).toBe('seen');
+    expect(levelOf({ dimensions: touched, selfMark: { mark: 'new', at: T(10) } })).toBe('new');
+  });
 });
 
 describe('encounters: distinct encounter events', () => {

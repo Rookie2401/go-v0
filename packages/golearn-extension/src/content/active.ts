@@ -80,6 +80,9 @@ export class ActiveMode {
   private last: Pick<ActiveState, 'scanned' | 'marked' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: noMarks() };
   private clicks = 0;
   private offRecord: (() => void) | undefined;
+  /** Counts the events recorded from this page; an answer asked for before one of them was recorded may not include it (see `consult`). */
+  private epoch = 0;
+  private readonly refetch = new Set<string>();
 
   constructor(private readonly d: ActiveDeps) {}
 
@@ -97,11 +100,15 @@ export class ActiveMode {
     this.reason = undefined;
     // one switch: with Active on, a selection the learner makes is looked up too (the per-tab switch folded into Active, 2026-10-09)
     this.d.controller.enable();
-    // the learner marked a word on its card ("New to me" …): forget what the model said about it and read the page again
+    // the learner pressed a level on a word's card: forget what the model said about it and read the page again at once. A word looked up
+    // (the click that opened its card) has just been met: a New word is Seen now, so the page is read again a moment later (a few quick
+    // clicks are one scan). The device holds the event before this is called, so the new answer includes it.
     this.offRecord = this.d.controller.onRecorded((e) => {
-      if (e.kind !== 'ItemMarked') return;
+      if (e.kind !== 'ItemMarked' && e.kind !== 'SelectionLookedUp') return;
+      this.epoch++;
       for (const id of e.subject?.itemIds ?? []) this.rows.delete(id);
-      void this.rescan();
+      if (e.kind === 'ItemMarked') { clearTimeout(this.debounce); void this.rescan(); }
+      else { clearTimeout(this.debounce); this.debounce = setTimeout(() => { void this.rescan(); }, Math.min(this.d.debounceMs ?? 150, 100)); }
     });
 
     const adapter = chooseAdapter(describePage(this.d.doc), this.d.adapters);
@@ -152,6 +159,7 @@ export class ActiveMode {
     for (const h of this.highlighters.values()) h.dispose();
     this.highlighters.clear();
     this.rows.clear();
+    this.refetch.clear();
     this.languageId = undefined;
     this.scanner = undefined;
     this.last = { scanned: 0, marked: noMarks() };
@@ -209,6 +217,8 @@ export class ActiveMode {
 
     // the learner model, for the ids not asked about yet on this tab
     const want = new Set<string>();
+    for (const id of this.refetch) this.rows.delete(id); // answers that were asked for before an event of this page was recorded
+    this.refetch.clear();
     for (const tokens of byDoc.values()) for (const t of tokens) for (const id of t.ids) if (!this.rows.has(id)) want.add(id);
     const t1 = clock.now();
     await this.consult([...want], languageId);
@@ -251,12 +261,15 @@ export class ActiveMode {
     const size = Math.max(1, Math.min(this.d.batchSize ?? 60, 60));
     for (let i = 0; i < ids.length; i += size) {
       const batch = ids.slice(i, i + size);
+      const epoch = this.epoch;
       let reply: ProfileReply | undefined;
       try { reply = await ask(batch, languageId); } catch { reply = undefined; }
       if (!this.on) return;
       if (!reply || !reply.ok) continue;
       if (reply.error && !Object.keys(reply.rows ?? {}).length) continue; // the model was not consulted: no evidence of "never met"
       for (const id of batch) this.rows.set(id, reply.rows?.[id] ?? null);
+      // an event was recorded while this question was out: the answer may not hold it, so these words are asked again next scan
+      if (epoch !== this.epoch) for (const id of batch) this.refetch.add(id);
     }
   }
 

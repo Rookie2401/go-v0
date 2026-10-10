@@ -77,7 +77,22 @@
         }
         case 'golearn:explain': return { ok: true, features: [], constructions: [], source: 'none' };
         case 'golearn:pronounce-info': return { ok: true, deviceVoice: 'maybe', remoteConsent: false, sources: [], note: '' };
-        case 'golearn:record': return { ok: true, attributed: 'local' };
+        // what the worker's device Repository does with an event, in miniature: a lookup is a meeting (exposure +1, and a mark of New is then released:
+        // the page reads a New mark with a later meeting as Seen), a level pressed on the card is the word's mark; the next scan shows the change
+        case 'golearn:record': {
+          const e = m.event || {};
+          for (const id of (e.subject && e.subject.itemIds) || []) {
+            const row = rows[id] || (rows[id] = { unitId: id, dimensions: {} });
+            if (e.kind === 'SelectionLookedUp') {
+              const x = row.dimensions.exposure || (row.dimensions.exposure = dim({}));
+              x.observations += 1; x.positive += 1; row.lastSeenAt = e.at;
+            } else if (e.kind === 'ItemMarked' && e.payload && e.payload.mark) {
+              row.selfMark = { mark: e.payload.mark, at: e.at };
+              row.lastSeenAt = e.at;
+            }
+          }
+          return { ok: true, attributed: 'local' };
+        }
         case 'golearn:metrics': return { ok: true };
         default: return { ok: false, error: 'unknown-message' };
       }

@@ -71,6 +71,20 @@ describe('levelOfRows', () => {
       { ...row({}), selfMark: { mark: 'seen', at: '2026-10-10T11:00:00.000Z' } },
     ])).toBe('seen');
   });
+
+  it('a mark of "new" is released by a later observation (the click that looks the word up): it reads as seen; a lookup dated before the mark does not', () => {
+    const mark = { mark: 'new' as const, at: '2026-10-10T10:00:00.000Z' };
+    // no engine level: the page applies the rule to the row's dates
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), selfMark: mark, lastSeenAt: '2026-10-10T10:00:05.000Z' }])).toBe('seen');
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), selfMark: mark, lastSeenAt: '2026-10-10T09:00:00.000Z' }])).toBe('new');
+    expect(levelOfRows([{ ...row({}), selfMark: mark, lastSeenAt: mark.at }])).toBe('new'); // the mark's own observation is not a meeting
+    // another mark is not released by a lookup
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), selfMark: { mark: 'familiar', at: mark.at }, lastSeenAt: '2026-10-10T10:00:05.000Z' }])).toBe('familiar');
+    // the engine's own level, when the row carries it, is what the page shows (it has weighed the mark against what came after)
+    expect(levelOfRows([{ ...row({}), selfMark: mark, level: 'seen' }])).toBe('seen');
+    expect(levelOfRows([{ ...row({}), selfMark: mark, level: 'familiar' }])).toBe('familiar');
+    expect(levelOfRows([{ ...row({}), selfMark: mark, level: 'new' }])).toBe('new');
+  });
 });
 
 describe('encountersOfRows', () => {

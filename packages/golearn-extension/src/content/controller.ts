@@ -334,10 +334,39 @@ export class LookupController {
 
       // ── the learner's own interactions with this card ──
       const holder: { ictx?: InteractionContext } = {};
+      // a press on the card can come before the lookup event has its context (the card is on screen a few frames earlier): it waits for it, briefly
+      const ictxReady: { resolve?: () => void; promise: Promise<void> } = { promise: Promise.resolve() };
+      ictxReady.promise = new Promise<void>((r) => { ictxReady.resolve = r; });
       const record = async (build: (c: InteractionContext) => GoEvent): Promise<boolean> => {
+        if (this.disposed) return false;
+        if (!holder.ictx) {
+          let timer: ReturnType<typeof setTimeout> | undefined;
+          await Promise.race([ictxReady.promise, new Promise<void>((r) => { timer = setTimeout(r, 3000); })]);
+          clearTimeout(timer);
+        }
         if (!holder.ictx || this.disposed) return false;
         const res = await append(build({ ...holder.ictx, now: this.now() }));
         return res.ok;
+      };
+      // the learner's own mark on this card: shown at once when pressed (the profile replies never take it back), kept in the Repository by the same press
+      const marking: { pressed?: SelfMark; shown?: SelfMark; reply?: CardView['profile']; met: boolean } = { met: false };
+      // What the meter reads from a profile reply. A word looked up on this card has been met, so it is no longer New whatever the reply says (the
+      // engine's own rule, kept here so the meter does not wait on a model that has not folded the lookup yet: the first reply was read before
+      // the event existed, and a signed-in answer comes from the service, which has not seen it). Everything else is the reply as it stands.
+      const present = (p: CardView['profile']): CardView['profile'] => {
+        if (!marking.met || p.state !== 'ready' || p.level !== 'new') return p;
+        const { selfMark: _released, ...rest } = p;
+        return { ...rest, level: 'seen', encounters: Math.max(rest.encounters ?? 0, 1) }; // the lookup itself is the first meeting
+      };
+      const showProfile = (p: CardView['profile'], depth?: Partial<CardView>): void => {
+        marking.reply = p;
+        const shown = present(p);
+        // the learner's press on this card is never taken back by a reply; otherwise the meter shows the word's level, and `rated` is their stored
+        // mark only while that mark is still the level (a mark of New that a later lookup released is not: the level is Seen then)
+        const mark = shown.selfMark && shown.selfMark === shown.level ? shown.selfMark : undefined;
+        const rated: Partial<CardView> = marking.pressed ? {} : { rated: mark };
+        if (!marking.pressed) marking.shown = mark;
+        this.d.ui.update({ profile: shown, ...rated, ...(depth ?? {}) });
       };
       const layerOf = (l: LayerName) => (c: InteractionContext) => buildAssistanceEvent(c, l, this.currentDepth);
       this.currentDepth = 'brief';
@@ -346,10 +375,20 @@ export class LookupController {
         onPronounced: (p: PlayOutcome) => { void record((c) => buildPronunciationEvent(c, p)); },
         onCorrect: (c) => { void this.correct(my, card, languageId, holder.ictx, c, record); },
         onRate: (mark: SelfMark) => {
+          // saved as soon as the level is pressed: the event is written at once (no debounce, no batching), the meter moves at once, and the
+          // next profile reply (the next card, the next scan) confirms the level; the press is taken back with a message when the write failed
+          const before = { pressed: marking.pressed, shown: marking.shown };
+          marking.pressed = mark; marking.shown = mark;
+          this.d.ui.update({ rated: mark });
           void record((c) => buildMarkEvent(c, mark)).then((ok) => {
             if (my !== this.seq) return;
-            if (ok) { this.d.ui.update({ rated: mark }); this.d.ui.setFeedback(`Marked as ${KNOWLEDGE_LEVEL_WORDS[mark].title.toLowerCase()}.`); }
-            else this.d.ui.setFeedback('Could not save that. Try again.');
+            if (ok) {
+              this.d.ui.setFeedback(`Marked as ${KNOWLEDGE_LEVEL_WORDS[mark].title.toLowerCase()}.`);
+            } else if (marking.pressed === mark) {
+              marking.pressed = before.pressed; marking.shown = before.shown;
+              this.d.ui.update({ rated: before.shown });
+              this.d.ui.setFeedback('Could not save that. Try again.');
+            }
           });
         },
       };
@@ -382,7 +421,7 @@ export class LookupController {
             if (!live()) return;
             const profile = profileViewFrom(card, reply);
             if (reply?.depth) this.currentDepth = reply.depth;
-            this.d.ui.update({ profile, ...(profile.selfMark ? { rated: profile.selfMark } : {}), ...(reply?.depth ? { depth: reply.depth, depthOrigin: reply.depthOrigin } : {}) });
+            showProfile(profile, reply?.depth ? { depth: reply.depth, depthOrigin: reply.depthOrigin } : undefined);
             arrived('profileArrived');
           }).catch(() => { if (live()) this.d.ui.update({ profile: { state: 'unavailable', weak: [] } }); }),
         );
@@ -448,7 +487,12 @@ export class LookupController {
       };
       const event = buildSelectionEvent(base);
       holder.ictx = { ...base, selectionEventId: event.id };
+      ictxReady.resolve?.();
       const res = await append(event);
+      // the lookup is on the device now: the word has been met, so a word that was New is Seen (the profile answer asked for before this event
+      // existed, or by a service that has not folded it yet, said New): the meter follows at once
+      // (a repeat of a lookup already recorded this session is a duplicate: it is not a new meeting, and the reply already knows the first one)
+      if (res.ok && !res.duplicate) { marking.met = true; if (marking.reply && live()) showProfile(marking.reply); }
       // layer 1 was shown: the second event of every card
       await append(buildAnalysisShownEvent({ ...holder.ictx, now: this.now() }, ['identification']));
       timer.mark('eventQueued');

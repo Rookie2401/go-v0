@@ -55,6 +55,11 @@ observations dated *after* the mark, leaving out other self-reports.
   names the mark and the level the evidence supports.)
 - **Released (upward).** The evidence after the mark puts the unit two or more levels *above* it (a word marked New, then recognised
   reliably): the level is what the evidence supports. An old request for help does not stop a word progressing.
+- **A mark of New is released by any later observation (2026-10-10).** New means *not met*: a lookup, an exposure, a help request or a
+  failed attempt dated after the mark is a meeting, so the level becomes `max(seen, what the evidence supports)`. This is why clicking a New
+  word in GoLearn turns it into Seen at once (the click records `SelectionLookedUp`). No two-level gap applies (nothing lies below New);
+  an observation dated before the mark never releases it, and marking the word New again starts over. Rows stored before this rule keep the
+  level they were folded with until the unit's next event refolds them.
 - Otherwise the mark stands. A later mark replaces an earlier one, so a word can be marked back down.
 
 `saved` and `ignore` are bookmarks. They never set a mark and are not evidence either way.

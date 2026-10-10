@@ -22,6 +22,10 @@
  *     a plain re-encounter and a correct answer never contradict.
  *   - released UPWARD: evidence dated after the mark puts the unit two or more levels ABOVE it (a word marked "new", then recognised
  *     reliably) -> the level is what the evidence says. Progression is not stopped by an old request for help.
+ *   - released by ANY later observation, when the mark is `new` (2026-10-10): "new" means not met, so meeting the word after saying so (a click
+ *     that looks it up, an exposure, a help request, a failed attempt: anything dated after the mark) makes it at least `seen`; the level is
+ *     max(seen, what the evidence says). The two-level gap above does not apply to this mark (nothing lies below `new`); an observation dated
+ *     BEFORE the mark never releases it.
  * `evidenceDims` is the unit folded WITHOUT its self-mark observations, so a self-report never counts toward a threshold it did not earn (the fold
  * builds it exactly; without it the row's own dimensions are used, self-report included, which can only add a weak observation).
  * `since` is the evidence dated after the mark, which the fold builds exactly from the unit's observations. Without it (a caller holding
@@ -103,6 +107,8 @@ export function markStatus(k: LevelInput, since?: LevelDimensions, evidenceDims?
   if (!mark) return { status: 'none', evidence };
   const fresh = since ?? dimensionsTouchedAfter(k.dimensions, mark.at);
   if (!DIMENSIONS.some((d) => fresh[d]?.observations > 0)) return { status: 'in-force', evidence };
+  // a mark of "new" says "not met": any observation after it is a meeting, so the evidence decides (and it is never below seen)
+  if (mark.mark === 'new') return { status: 'released', evidence: higher('seen', evidence) };
   const freshLevel = evidenceLevelOf(fresh);
   const gap = LEVEL_THRESHOLDS.contradictionGap;
   if (rank(mark.mark) - rank(freshLevel) >= gap && holdsEvidenceAgainst(fresh)) return { status: 'contradicted', evidence };

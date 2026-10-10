@@ -75,7 +75,19 @@ export function selfMarkOfRows(rows: Array<KnowledgeView | undefined>): { mark: 
  */
 export function levelOfRows(rows: Array<KnowledgeView | undefined>): ActiveLevel {
   const mark = selfMarkOfRows(rows);
-  if (mark) return levelOfMark(mark.mark);
+  if (mark) {
+    // the engine already weighed the mark against the evidence dated after it (including "new is released by any later meeting"): its level for the row(s) carrying that mark stands
+    let engine: ActiveLevel | undefined;
+    for (const r of rows) {
+      if (!r || r.selfMark?.at !== mark.at || !r.level || !(KNOWLEDGE_LEVELS as readonly string[]).includes(r.level)) continue;
+      if (!engine || KNOWLEDGE_LEVEL_RANK[r.level] > KNOWLEDGE_LEVEL_RANK[engine]) engine = r.level;
+    }
+    if (engine) return engine;
+    const marked = levelOfMark(mark.mark);
+    // no engine level: the same rule on the row's own dates. A mark of "new" says not met; anything observed after it (a click that looked the word up) makes it seen.
+    if (marked === 'new' && rows.some((r) => !!r?.lastSeenAt && Date.parse(r.lastSeenAt) > Date.parse(mark.at))) return 'seen';
+    return marked;
+  }
   let best: ActiveLevel = 'new';
   for (const r of rows) {
     const l = levelOfRow(r);

@@ -204,7 +204,7 @@ describe('later arrivals never block the card', () => {
   });
 });
 
-describe('Grammar puts a construction the learner finds hard first', () => {
+describe('GRAMMAR puts a construction the learner finds hard first', () => {
   const grammarTitles = (r: ReturnType<typeof makeRig>): string[] => [...root(r).querySelectorAll('.layer.l4 .row strong')].map((el) => el.textContent!);
 
   it('a weak construction (grammatical understanding negative > positive) is listed first in Grammar once the model arrives; before that, in the analyser\'s order', async () => {
@@ -314,23 +314,27 @@ describe('Go deeper', () => {
     expect(contextLine({ kind: 'fragment', confidence: 0.2, selectionLocated: true })).toBe('Context: a fragment, not a verified sentence');
   });
 
-  it('opening Go deeper records AssistanceRequested for every section, in order (morphology, grammar, example, morphology, gloss, hint, hint, translation), each valid under the contract', async () => {
+  it('opening Go deeper records AssistanceRequested for every section, in order (morphology, example, morphology, gloss, hint, hint, translation), each valid under the contract; the grammar is recorded when the ANALYSIS dropdown is first opened', async () => {
     const r = makeRig({ services: fakeServices() });
     const out = await lookup(r);
     await out.settled;
     expect((await events(r.store, 'AssistanceRequested'))).toHaveLength(0); // nothing is requested by merely showing the card
     click(r, 'button.deeperBtn');
     await flush(5);
+    // Go deeper alone: no grammar yet (it lives in the ANALYSIS dropdown, closed)
+    expect((await events(r.store, 'AssistanceRequested')).map((e) => e.payload.layer)).toEqual(['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence']);
+    click(r, 'button.analysisBtn'); click(r, 'button.analysisBtn'); click(r, 'button.analysisBtn');
+    await flush(5);
     const got = (await events(r.store, 'AssistanceRequested')).map((e) => e.payload);
     expect(got).toEqual([
       { assistance: 'morphology', layer: 'morphology' },
-      { assistance: 'grammar', layer: 'grammar', depth: 'brief' },
       { assistance: 'example', layer: 'phrase-syntax' },
       { assistance: 'morphology', layer: 'forms' },
       { assistance: 'gloss', layer: 'meaning' },
       { assistance: 'hint', layer: 'origin' },
       { assistance: 'hint', layer: 'structure' },
       { assistance: 'translation', layer: 'sentence' },
+      { assistance: 'grammar', layer: 'grammar', depth: 'brief' }, // one event, on the first opening of ANALYSIS (it was opened, closed and opened again)
     ]);
     for (const e of await r.store.list()) expect(validateEvent(e), `${e.kind}`).toEqual([]);
     // no Sound layer any more, and no ReviewRequested or "saved" mark from the card
@@ -351,31 +355,48 @@ describe('Go deeper', () => {
     await (await lookup(r)).settled;
     click(r, 'button.deeperBtn'); click(r, 'button.deeperBtn'); click(r, 'button.deeperBtn');
     await flush(5);
-    expect(await events(r.store, 'AssistanceRequested')).toHaveLength(8);
+    expect(await events(r.store, 'AssistanceRequested')).toHaveLength(7);
     expect((root(r).querySelector('button.deeperBtn') as HTMLElement).getAttribute('aria-expanded')).toBe('true');
   });
 
-  it('Form is a table of the features that exist, labelled from the pack when it answered', async () => {
+  it('Form: the lemma and the morphology line, no table and no evidence chip; "analysis" is a quiet closed disclosure that opens GRAMMAR first and then one dropdown per feature, labelled from the pack', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
     click(r, 'button.deeperBtn');
-    const table = root(r).querySelector('.layer.l2 table')!;
-    const rows = [...table.querySelectorAll('tr')].map((tr) => [...tr.querySelectorAll('th, td')].map((c) => c.textContent));
-    expect(rows.map((x) => x[0])).toEqual(expect.arrayContaining(['Case', 'Definite', 'Number']));
-    const caseRow = rows.find((x) => x[0] === 'Case')!;
-    expect(caseRow[1]).toBe('accusative');
-    // the explanation is a closed dropdown (details/summary) in the third cell; 'brief' depth: the first sentence
-    const caseTr = [...table.querySelectorAll('tr')].find((tr) => tr.querySelector('th')?.textContent === 'Case')!;
-    const why = caseTr.querySelector('details.why') as HTMLDetailsElement;
-    expect(why.open).toBe(false);
-    expect(why.querySelector('summary')!.textContent).toBe('why');
-    expect(why.querySelector('.muted')!.textContent).toBe('A noun changes its ending to show its job in the sentence.');
-    expect(caseRow[2]).toContain('A noun changes its ending to show its job in the sentence.');
-    expect(rows.find((x) => x[0] === 'Definite')![1]).toBe('Def'); // the pack gave no entry for it: the analyser's own value, unexplained
+    const form = root(r).querySelector('.layer.l2') as HTMLElement;
+    expect(form.querySelector('table')).toBeNull();
+    expect(form.querySelector('.tag')).toBeNull(); // no "analysis" chip to collide with the toggle's name
+    expect(form.querySelector('[data-row="form"] .v')!.textContent).toBe('definite feminine accusative singular');
+    expect(form.querySelector('[data-row="lemma"] .v')!.textContent).toBe('shtëpi (NOUN)');
+    const btn = form.querySelector('button.analysisBtn') as HTMLButtonElement;
+    const box = form.querySelector('.analysis') as HTMLElement;
+    expect(btn.textContent).toBe('analysis');
+    expect(btn.getAttribute('aria-expanded')).toBe('false');
+    expect(btn.getAttribute('aria-controls')).toBe(box.id);
+    expect(box.hasAttribute('hidden')).toBe(true);
+    // under the morphology line
+    expect(form.querySelector('[data-row="form"]')!.compareDocumentPosition(btn) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    btn.click();
+    expect(box.hasAttribute('hidden')).toBe(false);
+    expect(btn.getAttribute('aria-expanded')).toBe('true');
+    // GRAMMAR first, then the features
+    expect(box.firstElementChild!.getAttribute('data-layer')).toBe('grammar');
+    expect(box.firstElementChild!.querySelector('.label')!.textContent).toBe('Grammar');
+    const feats = [...box.querySelectorAll('details.feat')] as HTMLDetailsElement[];
+    expect(feats.map((d) => d.querySelector('summary')!.textContent)).toEqual(expect.arrayContaining(['Case · accusative', 'Definite · Def', 'Number · Sing']));
+    expect(box.firstElementChild!.compareDocumentPosition(feats[0]) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    const caseFeat = feats.find((d) => d.querySelector('summary')!.textContent === 'Case · accusative')!;
+    expect(caseFeat.open).toBe(false);
+    expect(caseFeat.querySelector('.muted')!.textContent).toBe('A noun changes its ending to show its job in the sentence.'); // 'brief' depth: the first sentence
+    // the pack has no entry for Definite: its own value, and the why says so
+    const defFeat = feats.find((d) => d.querySelector('summary')!.textContent === 'Definite · Def')!;
+    expect(defFeat.querySelector('.muted')!.textContent).toBe('No explanation from the pack for this feature.');
+    expect(form.querySelector('table.paradigm, tr')).toBeNull();
     const noPack = makeRig({ services: fakeServices({ explain: async () => explainReply({ source: 'none', features: [], constructions: [] }) }) });
     await (await lookup(noPack)).settled;
     click(noPack, 'button.deeperBtn');
     expect(root(noPack).querySelector('.layer.l2')!.textContent).toMatch(/the pack’s explanations were not available/);
+    expect(root(noPack).querySelector('.layer.l2 details.feat .muted')!.textContent).toBe('No explanation from the pack for this feature.');
   });
 
   it('Syntax lists phrases and units, and shows the syntax relation (Stage 4) or says plainly when the analyser gives none', async () => {
@@ -398,12 +419,12 @@ describe('Go deeper', () => {
     expect(root(r).querySelector('.layer.l3')!.textContent).toMatch(/Phrases|Syntax|role: not available/);
   });
 
-  it('Grammar follows the explanation depth: label, brief, explanatory', async () => {
+  it('GRAMMAR (in the ANALYSIS dropdown) follows the explanation depth: label, brief, explanatory', async () => {
     const texts: Record<string, string> = {};
     for (const depth of ['label', 'brief', 'explanatory'] as const) {
       const r = makeRig({ services: fakeServices({ profile: async () => profileReply({}, { depth, depthOrigin: depth === 'label' ? 'settings' : 'default' }) }) });
       await (await lookup(r)).settled;
-      click(r, 'button.deeperBtn');
+      click(r, 'button.deeperBtn'); click(r, 'button.analysisBtn');
       await flush(5);
       texts[depth] = root(r).querySelector('.layer.l4')!.textContent!;
       const ev = (await events(r.store, 'AssistanceRequested')).find((e) => e.payload.layer === 'grammar')!;
@@ -418,16 +439,16 @@ describe('Go deeper', () => {
     expect(texts.label).toContain('(your setting)');
   });
 
-  it('Grammar falls back to the analyser\'s own explanation when the pack says nothing, and is honest when there is none', async () => {
+  it('GRAMMAR falls back to the analyser\'s own explanation when the pack says nothing, and is honest when there is none', async () => {
     const r = makeRig({ services: fakeServices({ explain: async () => explainReply({ source: 'none', features: [], constructions: [] }) }) });
     await (await lookup(r)).settled;
-    click(r, 'button.deeperBtn');
+    click(r, 'button.deeperBtn'); click(r, 'button.analysisBtn');
     expect(root(r).querySelector('.layer.l4')!.textContent).toContain('The ending marks a definite noun as the direct object.');
     setBody('<div><p id="p">Zogu fluturon.</p></div>');
     const r2 = makeRig({ services: fakeServices({ explain: async () => explainReply({ source: 'none', features: [], constructions: [] }) }) });
     selectText(document.getElementById('p')!, 'fluturon');
     await (await r2.controller.lookup({ trigger: 'command' }) as { settled: Promise<void> }).settled;
-    click(r2, 'button.deeperBtn');
+    click(r2, 'button.deeperBtn'); click(r2, 'button.analysisBtn');
     expect(root(r2).querySelector('.layer.l4')!.textContent).toMatch(/construction|No grammar note|Definite|Present/);
   });
 

@@ -86,6 +86,7 @@ describe('page -> bridge -> background -> service', () => {
     expect(text(ui)).toContain('house; home (Wiktionary, via kaikki.org — CC BY-SA 4.0)');
     // Go deeper: the pack's own words for the form
     (ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click();
+    (ui.root()!.querySelector('button.analysisBtn') as HTMLElement).click(); // the grammar is in the ANALYSIS dropdown
     expect(ui.root()!.querySelector('.layer.l2')!.textContent).toContain('accusative');
     expect(ui.root()!.querySelector('.layer.l4 .row strong')!.textContent).toBe('Definite accusative singular');
     (ui.root()!.querySelector('.rateBtn[data-mark="seen"]') as HTMLElement).click();

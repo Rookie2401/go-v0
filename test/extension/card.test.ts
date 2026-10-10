@@ -281,13 +281,16 @@ describe('keyboard and tab order', () => {
     expect(deeper.hasAttribute('hidden')).toBe(true);
     expect(btn.textContent).toBe('Go deeper');
   });
-  it('"Go deeper" shows every section at once, in the order Form, Grammar, Syntax, All forms, Meanings, Origin, Word structure, Sentence, About this analysis', () => {
+  it('"Go deeper" shows every section at once, in the order Form, Syntax, All forms, Meanings, Origin, Word structure, Sentence, About this analysis', () => {
     ui.show(cardFor(), anchor());
     click(ui.root(), '.deeperBtn');
     const titles = [...ui.root()!.querySelectorAll('.deeper > h3')].map((x) => x.textContent);
-    expect(titles).toEqual(['Form', 'Grammar', 'Syntax', 'All forms', 'Meanings', 'Origin', 'Word structure', 'Sentence', 'About this analysis']);
-    expect(ui.root()!.querySelectorAll('.deeper [hidden]')).toHaveLength(0);
+    expect(titles).toEqual(['Form', 'Syntax', 'All forms', 'Meanings', 'Origin', 'Word structure', 'Sentence', 'About this analysis']);
+    expect([...ui.root()!.querySelectorAll('.deeper [hidden]')].map((e) => e.className)).toEqual(['analysis']); // every section is open; only the ANALYSIS dropdown is closed
     const buttons = buttonsOf(ui.root()).map((b) => b.textContent);
+    // the Form section's quiet "analysis" toggle comes into the tab order with Go deeper, after the pills (Go deeper, Report)
+    expect(buttons.indexOf('analysis')).toBeGreaterThan(buttons.indexOf('Report'));
+    expect(buttons.filter((b) => b === 'analysis')).toHaveLength(1);
     for (const gone of ['Form', 'Phrase & syntax', 'English rescue', 'All forms', 'Meanings', 'Origin', 'Word structure', 'Sound', 'More', 'Pronounce (practice)']) expect(buttons).not.toContain(gone);
   });
 });
@@ -375,8 +378,8 @@ describe('evidence boundaries in deeper layers', () => {
     ui.show(c, anchor());
     click(ui.root(), '.deeperBtn');
     const panel = ui.root()!.querySelector('.layer.l2') as HTMLElement;
-    expect(panel.querySelectorAll('tr')).toHaveLength(1);
-    expect(panel.textContent).toContain('Sing / Plur');
+    expect(panel.querySelectorAll('details.feat')).toHaveLength(1);
+    expect(panel.querySelector('details.feat summary')!.textContent).toBe('Number · Sing / Plur');
     expect(panel.textContent).toContain('alternative values');
   });
 
@@ -517,10 +520,13 @@ describe('the rating row and the footer', () => {
     const layers: string[] = [];
     ui.show(cardFor(), anchor(), { actions: { onLayer: (l) => layers.push(l) } });
     click(ui.root(), '.deeperBtn');
-    expect(layers).toEqual(['morphology', 'grammar', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence']);
+    expect(layers).toEqual(['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence']);
     click(ui.root(), '.deeperBtn');
-    expect(layers).toHaveLength(8);
+    expect(layers).toHaveLength(7);
     click(ui.root(), '.deeperBtn');
-    expect(layers).toHaveLength(16);
+    expect(layers).toHaveLength(14);
+    // the grammar is reported once, when ANALYSIS is first opened
+    click(ui.root(), '.analysisBtn'); click(ui.root(), '.analysisBtn'); click(ui.root(), '.analysisBtn');
+    expect(layers.filter((l) => l === 'grammar')).toEqual(['grammar']);
   });
 });

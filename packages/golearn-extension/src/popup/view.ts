@@ -9,14 +9,14 @@ import type { KnowledgeLevel } from '../../../repository-contract/src/knowledge-
 import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, SelfMark, SourceLink } from '../protocol';
 
 /**
- * The sections "Go deeper" opens, all at once, in this order: Form (`morphology`), Grammar, Syntax (`phrase-syntax`), All forms (the paradigm),
+ * The sections "Go deeper" opens, all at once, in this order: Form (`morphology`; its ANALYSIS dropdown holds Grammar, recorded as `grammar` on its first opening), Syntax (`phrase-syntax`), All forms (the paradigm),
  * Meanings, Origin, Word structure, Sentence (the word-by-word English rescue). "About this analysis" follows them and is not a layer: it records nothing.
  * There is no Sound layer any more: the speaker beside the word replaces it.
  */
 export type LayerName = 'morphology' | 'grammar' | 'phrase-syntax' | 'forms' | 'meaning' | 'origin' | 'structure' | 'sentence';
 
 /** The order "Go deeper" shows (and records) the layers in. */
-export const LAYER_ORDER: readonly LayerName[] = ['morphology', 'grammar', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence'];
+export const LAYER_ORDER: readonly LayerName[] = ['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence'];
 
 /** Level 2 of the card: what the dictionary's full record and the analyser's generation give, with field states; arrives after the card, never blocks it. */
 export interface EnrichmentView {
@@ -72,6 +72,19 @@ export interface ExplainView {
   constructions: ConstructionExplanation[];
 }
 
+/** An explicitly requested, temporary sentence translation. The original word-by-word view remains separate. */
+export interface SentenceTranslationView {
+  state: 'unavailable' | 'idle' | 'loading' | 'ready' | 'error';
+  naturalText?: string;
+  literalText?: string;
+  sourceLanguage?: string;
+  sourceDialect?: string;
+  sourceConfidence?: number;
+  sourceBasis?: string;
+  message?: string;
+  providerId?: string;
+}
+
 export type CorrectionState = { state: 'idle' } | { state: 'sending' } | { state: 'sent' | 'saved-locally' | 'error'; message: string };
 
 export interface CardView {
@@ -89,6 +102,7 @@ export interface CardView {
   sources?: SourceLink[];
   correction: CorrectionState;
   enrichment: EnrichmentView;
+  sentenceTranslation: SentenceTranslationView;
 }
 
 export const initialView = (languageName: string): CardView => ({
@@ -99,6 +113,7 @@ export const initialView = (languageName: string): CardView => ({
   saved: false,
   correction: { state: 'idle' },
   enrichment: { state: 'idle' },
+  sentenceTranslation: { state: 'idle' },
 });
 
 export interface PlayOutcome { ok: true; voice: 'synthetic' | 'recorded'; voiceId?: string; repeated: boolean }
@@ -114,6 +129,8 @@ export interface CardActions {
   onRate?(mark: SelfMark): void;
   /** "Report": the learner chose an alternative reading or typed a lemma. */
   onCorrect?(c: CorrectionInput): void;
+  /** The learner explicitly asked for the visible sentence to be translated into natural English. */
+  onTranslateSentence?(): void;
 }
 
 // ───────────────────────────── pronunciation port ─────────────────────────────

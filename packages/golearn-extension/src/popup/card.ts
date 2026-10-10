@@ -120,12 +120,24 @@ const CSS = `
 .lemmaLine .pos { font-variant: small-caps; letter-spacing: 0.06em; color: #a89c86; font-size: 0.85em; margin-inline-start: 0.35em; }
 .card__text { font-size: 0.9em; line-height: 1.5; color: #a89c86; font-style: italic; margin-top: 0.4em; }
 .sub { font-size: 0.78em; line-height: 1.3; margin: 2px 0 0; }
-button.sub, .sourcesBtn { border: 0; background: none; color: #c8a06a; padding: 0.2em 0; margin-top: 0.35em; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.74em; font-weight: 600; }
-button.sub:hover:not(:disabled) { color: #d9cfbe; }
+button.sub, .sourcesBtn, .analysisBtn { border: 0; background: none; color: #c8a06a; padding: 0.2em 0; margin-top: 0.35em; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.74em; font-weight: 600; }
+button.sub:hover:not(:disabled), .analysisBtn:hover:not(:disabled) { color: #d9cfbe; }
 .sources { margin: 0.3em 0 0; font-size: 0.88em; color: #d9cfbe; }
 .sources[hidden], .deeper[hidden] { display: none; }
 .sources ul { margin: 0; padding-inline-start: 1.2em; }
 .sources a { color: #c8a06a; }
+.analysis { margin-top: 0.4em; }
+.analysis[hidden] { display: none; }
+.analysis .layer { margin-top: 0.2em; }
+.analysis .label { display: block; margin: 0.3em 0 0.2em; }
+details.feat { margin-top: 0.5em; }
+details.feat > summary { cursor: pointer; list-style: none; display: block; border: 1px solid #453c2f; border-radius: 6px; background: #1e1a15; color: #d9cfbe; padding: 0.3em 0.7em; }
+details.feat > summary::-webkit-details-marker { display: none; }
+details.feat > summary::after { content: ' \\25BE'; float: right; color: #a89c86; }
+details.feat[open] > summary::after { content: ' \\25B4'; }
+details.feat > summary:hover { border-color: #b98f57; }
+details.feat > summary:focus-visible { outline: 2px solid #c8a06a; outline-offset: 2px; }
+details.feat > .muted { margin: 0.3em 0 0 0.2em; font-size: 0.92em; }
 .rate { display: flex; flex-wrap: wrap; gap: 0.4em 0.3em; margin-top: 0.8em; align-items: center; }
 .rate .label { flex: 0 0 100%; }
 .rateBtn { width: 1.6em; height: 1.6em; flex: none; padding: 0; border-radius: 50%; border: 1px solid #7d7059; background: #1e1a15; font-size: 1em; }
@@ -151,11 +163,6 @@ button.sub:hover:not(:disabled) { color: #d9cfbe; }
 .row[data-row="lemma"] .v { color: #c8a06a; font-size: 1.05em; }
 .tag { flex: none; margin-inline-start: auto; font-size: 0.64em; letter-spacing: .06em; text-transform: uppercase; padding: 0 5px; border-radius: 999px; border: 1px solid #453c2f; background: #1e1a15; color: #a89c86; white-space: nowrap; }
 .muted { color: #a89c86; font-style: italic; }
-details.why > summary { cursor: pointer; list-style: none; display: inline-block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #c8a06a; font-style: normal; }
-details.why > summary::-webkit-details-marker { display: none; }
-details.why > summary::after { content: ' ▾'; }
-details.why[open] > summary::after { content: ' ▴'; }
-details.why > .muted { margin-top: 0.25rem; }
 .actions { display: flex; gap: 6px; margin-top: 0.7em; flex-wrap: wrap; align-items: center; }
 table.paradigm { border-collapse: collapse; margin: 4px 0 8px; font-size: 0.92em; max-width: 100%; }
 table.paradigm th { font-weight: 600; text-align: left; padding: 2px 8px 2px 0; color: #a89c86; white-space: normal; }
@@ -180,7 +187,7 @@ button:hover:not(:disabled) { border-color: #b98f57; }
 button:disabled { opacity: .5; cursor: not-allowed; }
 button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid #c8a06a; outline-offset: 2px; }
 button[aria-expanded="true"] { border-color: #b98f57; }
-button.sub[aria-expanded="true"], .sourcesBtn[aria-expanded="true"] { border-color: transparent; }
+button.sub[aria-expanded="true"], .sourcesBtn[aria-expanded="true"], .analysisBtn[aria-expanded="true"] { border-color: transparent; }
 .close { border: 0; background: none; color: #a89c86; padding: 0 0.3em; font-size: 1.4em; line-height: 1; }
 .close:hover:not(:disabled) { color: #d9cfbe; }
 .more { margin-top: 10px; padding-top: 2px; font-size: 0.95em; }
@@ -284,6 +291,9 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   // `autoPlay`: the render token of a card that should speak once as soon as its voice is known to be available (GoLearn Active's "Speak on click")
   let pron: { available: boolean; note: string; playing: boolean; plays: number; off?: () => void; offPlayback?: () => void; state?: 'idle' | 'playing' | 'paused' | 'ended' | 'error'; pending?: { voice: 'synthetic' | 'recorded'; voiceId?: string }; failed?: boolean; autoPlay?: number } = { available: false, note: '', playing: false, plays: 0 };
   let playbackRate = 1;
+  // the ANALYSIS dropdown of the Form section: open or not (kept when the panel is re-filled by a late arrival), and whether its first opening was reported
+  let analysisOpen = false;
+  let analysisReported = false;
   let renderToken = 0;
 
   const h = (tag: string, props: Record<string, string> = {}, ...children: Child[]): HTMLElement => {
@@ -532,15 +542,16 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   const firstSentence = (s: string): string => (/^(.+?[.!?])(\s|$)/u.exec(s)?.[1] ?? s).trim();
 
-  function fillMorphology(panel: HTMLElement, m: CardModel, v: CardView): void {
+  /**
+   * One dropdown per feature of the reading, in the pack's label words: the summary is "Case · accusative" (the label and the value; alternatives the
+   * analyser could not choose between stay slash-joined), the body beneath the box is the why: the pack's explanation at the current depth.
+   * (Some analysers report the same feature twice, or two values for one key: one dropdown per feature, so a duplicate such as `Number NUM .9` cannot look like two facts.)
+   */
+  function fillFeatures(panel: HTMLElement, m: CardModel, v: CardView): void {
     if (!m.features.length) {
       panel.append(h('div', { class: 'note' }, m.tokenCount > 1 ? 'Select one word to see its form.' : 'The analyser gave no features for this word.'));
       return;
     }
-    // Some analysers report the same feature more than once (and occasionally
-    // report two values for one key). Keep one row per feature so a duplicate
-    // such as `Number NUM .9` cannot look like two independent facts. A slash
-    // deliberately preserves unresolved alternatives instead of choosing one.
     const grouped = new Map<string, string[]>();
     for (const f of m.features) {
       const values = f.value.split(',').map((x) => x.trim()).filter(Boolean);
@@ -548,7 +559,6 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       for (const value of values) if (!prior.includes(value)) prior.push(value);
       grouped.set(f.key, prior);
     }
-    const table = h('table', {});
     for (const [key, values] of grouped) {
       const explanations = values.map((value) => v.explain.features.find((x) => x.key === key && x.value === value));
       const combined = v.explain.features.find((x) => x.key === key &&
@@ -558,25 +568,43 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       const label = e?.label ?? key;
       const value = combined?.brief ?? values.map((raw, i) => explanations[i]?.brief ?? raw).join(' / ');
       const texts = [...new Set([combined, ...explanations].map((x) => x?.explanation).filter((x): x is string => !!x))];
-      const why = v.depth === 'label' ? '' : v.depth === 'brief'
-        ? texts.map(firstSentence).join(' / ')
-        : texts.join(' / ');
-      // the explanation is a dropdown (owner, 2026-10-10): closed by default, one line per feature; opened with the native disclosure
-      const whyCell = why ? h('details', { class: 'why' }, h('summary', {}, 'why'), h('div', { class: 'muted' }, why)) : '';
-      table.append(h('tr', {}, h('th', {}, label), h('td', {}, value), h('td', {}, whyCell), h('td', {}, tag(m.labels.features))));
+      const why = v.depth === 'label' ? '' : v.depth === 'brief' ? texts.map(firstSentence).join(' / ') : texts.join(' / ');
+      const body = why || (texts.length ? 'Explanations are switched off by the explanation depth (label).' : 'No explanation from the pack for this feature.');
+      panel.append(h('details', { class: 'feat' }, h('summary', {}, `${label} · ${value}`), h('div', { class: 'muted' }, body)));
     }
-    panel.append(table);
     if ([...grouped.values()].some((values) => values.length > 1)) {
       panel.append(h('div', { class: 'note' }, 'A slash joins alternative values supplied by the analyser; GoLearn has not chosen between them.'));
     }
     if (v.explain.state !== 'ready') panel.append(h('div', { class: 'note' }, 'These are the analyser’s own labels; the pack’s explanations were not available.'));
   }
 
-  /** Form: the lemma and part of speech, the essential morphology line, and the table of the features that exist. */
+  /** A line of the Form section: key and value, with no evidence chip (the About block says the readings are machine-drafted). */
+  const plainRow = (rowId: string, key: string, value: string, lang?: string): HTMLElement =>
+    h('div', { class: 'row', 'data-row': rowId }, h('span', { class: 'k' }, key), h('span', { class: 'v', ...(lang ? { lang } : {}) }, value));
+
+  /**
+   * Form: the lemma and part of speech, the essential morphology line, and under it the quiet toggle "analysis" (a disclosure, closed by default).
+   * It opens GRAMMAR (the constructions the form realizes) and then one dropdown per feature. No table, no evidence chips.
+   */
   function fillForm(panel: HTMLElement, m: CardModel, v: CardView): void {
-    if (m.lemma) panel.append(row('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${m.lemma} (${m.pos})` : m.lemma, m.labels.lemma, false, m.languageId));
-    if (m.morphology) panel.append(row('form', 'form', m.morphology, m.labels.morphology));
-    fillMorphology(panel, m, v);
+    if (m.lemma) panel.append(plainRow('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${m.lemma} (${m.pos})` : m.lemma, m.languageId));
+    if (m.morphology) panel.append(plainRow('form', 'form', m.morphology));
+    const btn = h('button', { type: 'button', class: 'analysisBtn', 'aria-expanded': String(analysisOpen), 'aria-controls': 'panel-analysis' }, 'analysis') as HTMLButtonElement;
+    const box = h('div', { class: 'analysis', id: 'panel-analysis' });
+    if (!analysisOpen) box.setAttribute('hidden', '');
+    const grammar = h('div', { class: 'more layer l4', 'data-layer': 'grammar' }, h('span', { class: 'label' }, 'Grammar'));
+    fillGrammar(grammar, m, v);
+    box.append(grammar);
+    fillFeatures(box, m, v);
+    btn.addEventListener('click', () => {
+      analysisOpen = box.hasAttribute('hidden');
+      if (analysisOpen) box.removeAttribute('hidden'); else box.setAttribute('hidden', '');
+      btn.setAttribute('aria-expanded', String(analysisOpen));
+      if (lastAnchor) place(lastAnchor);
+      // the Repository still sees that the grammar was consulted: one event, on the first opening
+      if (analysisOpen && !analysisReported) { analysisReported = true; try { actions.onLayer?.('grammar'); } catch { /* reporting never blocks */ } }
+    });
+    panel.append(h('div', {}, btn), box);
   }
 
   function fillSyntax(panel: HTMLElement, m: CardModel): void {
@@ -613,14 +641,36 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       const e = v.explain.constructions.find((x) => x.id === c.id);
       const title = e?.title ?? c.title;
       const body = v.depth === 'label' ? '' : v.depth === 'brief' ? (e?.brief ?? firstSentence(c.explanation)) : (e?.explanation ?? c.explanation);
-      items.push(h('div', { class: 'row' }, h('span', { class: 'v' }, h('strong', {}, title), body ? ` — ${body}` : ''), tag(m.labels.constructions)));
+      items.push(h('div', { class: 'row' }, h('span', { class: 'v' }, h('strong', {}, title), body ? ` — ${body}` : '')));
     }
     for (const it of items) panel.append(it);
     panel.append(h('div', { class: 'note' }, `Explanation depth: ${v.depth}${v.depthOrigin === 'settings' || v.depthOrigin === 'explicit' ? ' (your setting)' : ''}.`));
   }
 
-  function fillSentence(panel: HTMLElement, m: CardModel): void {
-    panel.append(h('div', { class: 'note' }, 'There is no machine translation in GoLearn. This is a word-by-word list from the word list and the dictionary, not a translation of the sentence.'));
+  function fillSentence(panel: HTMLElement, m: CardModel, v: CardView): void {
+    panel.append(h('div', { class: 'note' }, 'The list below is word by word. A sentence translation is generated only when you ask for it.'));
+    const hasSentence = m.context.kind === 'sentence' || m.context.kind === 'fragment';
+    const translation = v.sentenceTranslation;
+    const button = h('button', { type: 'button', class: 'translateSentence' }, translation.state === 'loading' ? 'Translating…' : 'Translate sentence to English') as HTMLButtonElement;
+    button.disabled = !hasSentence || translation.state === 'loading' || translation.state === 'unavailable';
+    button.title = !hasSentence ? 'Sentence context is not available.' : translation.state === 'unavailable' ? (translation.message ?? 'Translation is not available.') : '';
+    button.addEventListener('click', () => { try { actions.onTranslateSentence?.(); } catch { /* translation never blocks the card */ } });
+    panel.append(h('div', { class: 'actions' }, button));
+    if (translation.state === 'unavailable') panel.append(h('div', { class: 'note' }, translation.message ?? 'Sentence translation is unavailable.'));
+    else if (translation.state === 'error') panel.append(h('div', { class: 'note err', role: 'alert' }, translation.message ?? 'The sentence could not be translated.'));
+    else if (translation.state === 'loading') panel.append(h('div', { class: 'note', role: 'status', 'aria-live': 'polite' }, 'Translating the selected sentence…'));
+    else if (translation.state === 'ready') {
+      if (translation.naturalText) {
+        panel.append(h('div', { class: 'row' }, h('span', { class: 'k' }, 'Natural English'), h('span', { class: 'v', lang: 'en' }, translation.naturalText)));
+      }
+      if (translation.literalText) {
+        panel.append(h('div', { class: 'row' }, h('span', { class: 'k' }, 'Literal'), h('span', { class: 'v', lang: 'en' }, translation.literalText)));
+        panel.append(h('div', { class: 'note' }, 'This is a literal rendering, not natural English.'));
+      }
+      const certainty = translation.sourceConfidence === undefined ? 'uncertain' : `${Math.round(translation.sourceConfidence * 100)}% confidence`;
+      const language = [translation.sourceLanguage ?? 'source language unknown', translation.sourceDialect].filter(Boolean).join(' · ');
+      panel.append(h('div', { class: 'note' }, `Source: ${language}; ${certainty}${translation.sourceBasis ? ` (${translation.sourceBasis})` : ''}. Generated by ${translation.providerId ?? 'a translation provider'}; not reviewed.`));
+    }
     if (!m.sentenceWords.length) { panel.append(h('div', { class: 'note' }, 'There is no sentence context, so there is nothing to list.')); return; }
     const ul = h('ul', {});
     for (const w of m.sentenceWords) {
@@ -798,20 +848,19 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function renderPanels(): void {
     if (!parts || !model) return;
-    const fills: Record<LayerName, (p: HTMLElement) => void> = {
+    const fills: Partial<Record<LayerName, (p: HTMLElement) => void>> = {
       morphology: (p) => fillForm(p, model!, view),
-      grammar: (p) => fillGrammar(p, model!, view),
       'phrase-syntax': (p) => fillSyntax(p, model!),
       forms: (p) => fillForms(p, model!, view),
       meaning: (p) => fillMeaning(p, model!, view),
       origin: (p) => fillOrigin(p, model!, view),
       structure: (p) => fillStructure(p, model!, view),
-      sentence: (p) => fillSentence(p, model!),
+      sentence: (p) => fillSentence(p, model!, view),
     };
     for (const name of LAYER_ORDER) {
       const panel = parts.layers[name];
       panel.replaceChildren();
-      fills[name](panel);
+      fills[name]?.(panel);
     }
   }
 
@@ -889,6 +938,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function show(m: CardModel, anchor: PopupAnchor, opts: ShowOptions = {}): Placement {
     renderToken++;
+    analysisOpen = false; analysisReported = false;
     pron.off?.();
     pron.offPlayback?.();
     pron = { available: false, note: 'Checking voices…', playing: false, plays: 0 };

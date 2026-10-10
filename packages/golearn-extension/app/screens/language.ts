@@ -14,8 +14,8 @@
 import type { Enrolment } from '../../../repository-contract/src';
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, shortDate, statusLine } from '../dom';
-import { installAndRecord, renderChecks, verifyAndRecord } from '../packInstall';
-import type { LanguageView, PackView, VerifyView } from '../ports';
+import { installAndRecord, renderChecks, sourceLabel, verifyAndRecord, type InstallResult } from '../packInstall';
+import type { LanguageView, PackView } from '../ports';
 import type { View } from './view';
 
 const STANDARD_MESSAGE = 'Norwegian has two written standards, Bokmål (nb) and Nynorsk (nn). Choose the one you will read; GoLearn never guesses.';
@@ -129,7 +129,7 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
     describeAll();
     if (view.alive()) { clear(c.results); c.progress.hidden = false; c.progress.value = 0; }
     set(`Downloading ${pack.name}…`, 'info');
-    let result: VerifyView | undefined;
+    let result: InstallResult | undefined;
     let problem: string | undefined;
     try {
       result = await installAndRecord(ctx, pack, (fraction, label) => {
@@ -146,7 +146,7 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
     if (view.alive()) { c.progress.hidden = true; clear(c.results); }
     if (result) {
       if (view.alive()) c.results.append(h('details', { class: 'checks-box' }, h('summary', {}, 'Show the checks'), renderChecks(result)));
-      if (result.ok) set(`${pack.name} is ready: ${result.checks.length} checks passed.${intro}`, 'ok');
+      if (result.ok) set(`${pack.name} is ready: ${result.checks.length} checks passed${result.dictionarySource ? `, dictionary from ${sourceLabel(ctx, result.dictionarySource)}` : ''}.${intro}`, 'ok');
       else {
         const failed = result.checks.filter((x) => !x.ok).length;
         set(`${pack.name} is downloaded, but its pack did not pass verification: ${failed} of ${result.checks.length} checks failed.${result.message ? ` ${result.message}` : ''}${intro}`, 'error');

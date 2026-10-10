@@ -53,7 +53,7 @@ const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
   MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.clearLocal, MSG.localRepo,
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
-  MSG.record, MSG.profile, MSG.gloss, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
+  MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
 ]);
@@ -99,7 +99,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     },
     onDisconnect: async () => { await holder.profile?.clear(); },
   });
-  const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now });
+  const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path) });
   // GoLearn Active: the switches, the host-permission check and the dynamic content script (the popup asks the browser for the permission)
   const active = createActiveService({ chrome, area: local, contentFile: CONTENT_FILE });
   // the device's own Repository: GoLearn works with no account, and the account only keeps the history across devices
@@ -309,6 +309,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         return reply;
       }
       case MSG.gloss: return gloss.glossFor(m) satisfies Promise<GlossReply>;
+      case MSG.entry: return gloss.entryFor(m);
       case MSG.explain: return gloss.explainFor(m);
       case MSG.pronounceInfo: return pronounceInfo(m);
       case MSG.correct: return correct(m);

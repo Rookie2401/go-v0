@@ -100,6 +100,7 @@ export function createChromeFake(): ChromeFake {
       // a message from the popup goes to the background listeners, which answer through sendResponse
       sendMessage: (message) => dispatch(message, PAGE_SENDER),
       getManifest: () => ({ version: '0.1.0' }),
+      getURL: (path: string) => `chrome-extension://${EXT_ID}/${path}`,
       openOptionsPage: async () => { fake.options.opened++; },
     },
     tabs: {

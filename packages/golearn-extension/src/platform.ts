@@ -50,6 +50,8 @@ export interface ChromeApi {
     onStartup?: ChromeEvent<() => void>;
     sendMessage(message: unknown): Promise<unknown>;
     getManifest?(): { version?: string };
+    /** The address of a file the extension packages (its `app/` folder, `app/config.json`). */
+    getURL?(path: string): string;
     openOptionsPage?(): Promise<void>;
   };
   tabs?: {
@@ -136,6 +138,8 @@ export const MSG = {
   gloss: 'golearn:gloss',
   explain: 'golearn:explain',
   pronounceInfo: 'golearn:pronounce-info',
+  /** The dictionary's full record of a lemma (Level 2: paradigm table, etymology, IPA, audio, relations). */
+  entry: 'golearn:entry',
   correct: 'golearn:correct',
   metrics: 'golearn:metrics',
   status: 'golearn:status',

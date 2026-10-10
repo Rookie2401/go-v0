@@ -23,6 +23,7 @@
     "corpus:prove": "vite-node --config scripts/vite.config.ts scripts/corpus-prove.mts",
     "corpus:convert": "vite-node --config scripts/vite.config.ts scripts/corpus-convert.mts",
     "dict:build": "vite-node --config scripts/vite.config.ts scripts/dict-build.mts",
+    "dict:build-full": "vite-node --config scripts/vite.config.ts src/dict/build-full.ts",
     "dict:compare": "vite-node --config scripts/vite.config.ts scripts/dict-compare.mts",
     "dict:status": "vite-node --config scripts/vite.config.ts scripts/dict-status.mts",
     "rights:check": "vite-node --config scripts/vite.config.ts scripts/rights-gate.mts",

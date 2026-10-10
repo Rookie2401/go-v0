@@ -188,7 +188,8 @@ describe('the controller loads the analyser, then parses', () => {
     const out = await r.controller.lookup({ trigger: 'command' });
     expect(out.status).toBe('shown');
     if (out.status === 'shown') await out.settled;
-    expect(gloss).toHaveBeenCalledWith(expect.objectContaining({ lemma: 'Wohnzimmer', languageId: 'de', forms: ['wohnzimmer'] }));
+    // the analyser's normalised lemma first, then the word as written (every single-word selection asks the dictionary since 2026-10-10)
+    expect(gloss).toHaveBeenCalledWith(expect.objectContaining({ lemma: 'Wohnzimmer', languageId: 'de', forms: ['wohnzimmer', 'Wohnzimmer'] }));
   });
 
   it('detection loads the word lists it needs and asks the resolver again (no declared language, three or more words)', async () => {

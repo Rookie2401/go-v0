@@ -61,7 +61,7 @@ describe('page -> bridge -> background -> service', () => {
     // no account, but the device's own Repository answers: the history line is the learner's local one, never "not connected"
     expect(text(ui)).toMatch(/You have (not met this word before|met this word \d+ time)/);
     expect(text(ui)).not.toContain('Not connected');
-    expect(rig.log).toEqual([]);
+    expect(rig.log.filter((l) => !l.path.includes("/dict/"))).toEqual([]); // only the dictionary, read from the extension's own files
     const local = Object.values(await rig.fake.local.get(null)).filter((v) => (v as { learnerId?: string })?.learnerId?.startsWith('local:'));
     expect(local).toHaveLength(2);
   });

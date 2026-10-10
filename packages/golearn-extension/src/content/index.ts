@@ -72,6 +72,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     },
     loadAnalyser,
     hasAnalyser,
+    analyserOf: getAnalyser,
     parse: parseSelection,
     ui,
     store: bridge?.events ?? fallbackEvents!,

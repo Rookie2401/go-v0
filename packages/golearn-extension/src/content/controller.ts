@@ -31,6 +31,8 @@ import { languageNameOf as knownLanguageName, type KnowledgeView, type ProfileRe
 import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
+import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
+import { buildParadigm, etymologyOf, pickRecord, pronunciationOf, relationsOf, sensesOf, type LexicalRecord } from './enrich';
 
 export interface ControllerDeps {
   doc: Document;
@@ -69,6 +71,8 @@ export interface ControllerDeps {
   glossForms?: (lemma: string, pos: string | undefined, languageId: string) => string[];
   /** The sentence cutter of a language (its pack's). Absent or undefined for a language = the adapter's own default. */
   segmenterFor?: SegmentFor;
+  /** The loaded analyser of a language (its generation and tag map feed the deeper sections). Absent = no generated paradigm. */
+  analyserOf?: (languageId: string) => LanguageAdapter | undefined;
 }
 
 /** What the controller knows about how the language of a lookup was decided. Metadata only. */
@@ -316,7 +320,9 @@ export class LookupController {
       const append = async (ev: GoEvent) => { const r = await this.d.store.append(ev); if (r.ok) this.notifyRecorded(ev); return r; };
       const services = this.d.services;
       const languageName = status && status.languageId === languageId ? status.languageName : languageNameOf(languageId);
-      const askGloss = !!services && !!card.lemma && !card.unconfirmed && card.tokenCount === 1;
+      // the dictionary is asked for EVERY single-word selection (2026-10-10): a word the small word list does not know is exactly the
+      // word a learner looks up, and the dictionary follows an inflected form to its headword itself; the guessed lemma is a hint, not a gate
+      const askGloss = !!services && card.tokenCount === 1 && !!card.surface.trim();
       const view: Partial<CardView> = {
         languageName,
         gloss: askGloss ? { state: 'loading', senses: [] } : { state: 'idle', senses: [] },
@@ -377,10 +383,13 @@ export class LookupController {
             arrived('profileArrived');
           }).catch(() => { if (live()) this.d.ui.update({ profile: { state: 'unavailable', weak: [] } }); }),
         );
-        const forms = askGloss ? safe(() => this.d.glossForms?.(card.lemma!, card.pos, languageId)) ?? [] : [];
+        // the forms the dictionary should try: the lemma's spellings when there is a confident lemma, then the surface as written and lower-cased
+        const surfaceForms = [...new Set([card.surface.trim(), card.surface.trim().toLowerCase()])].filter(Boolean);
+        const lemmaForms = askGloss && card.lemma ? safe(() => this.d.glossForms?.(card.lemma!, card.pos, languageId)) ?? [] : [];
+        const forms = askGloss ? [...new Set([...(card.lemma && !card.unconfirmed ? lemmaForms : []), ...surfaceForms, ...(card.lemma && card.unconfirmed ? lemmaForms : [])])].slice(0, 8) : [];
         if (askGloss) {
           pending.push(
-            services.gloss({ lemma: card.lemma!, pos: card.pos, languageId, ...(forms.length ? { forms } : {}) }).then((reply) => {
+            services.gloss({ lemma: card.lemma && !card.unconfirmed ? card.lemma : card.surface.trim(), pos: card.pos, languageId, ...(forms.length ? { forms } : {}) }).then((reply) => {
               if (!live()) return;
               const gloss: CardView['gloss'] = reply?.found
                 ? { state: 'ready', senses: reply.senses, attribution: reply.attribution }
@@ -388,6 +397,24 @@ export class LookupController {
               this.d.ui.update({ gloss });
               arrived('glossArrived');
             }).catch(() => { if (live()) this.d.ui.update({ gloss: { state: 'error', senses: [] } }); }),
+          );
+        }
+        // Level 2 (Linguistic Engine V2): the dictionary's full record, merged with the analyser's generation into the deeper sections; never blocks the card
+        if (services.entry && card.tokenCount === 1) {
+          this.d.ui.update({ enrichment: { state: 'loading' } });
+          pending.push(
+            services.entry({ lemma: card.lemma && !card.unconfirmed ? card.lemma : card.surface.trim(), pos: card.pos, languageId, ...(forms.length ? { forms } : {}) }).then((reply) => {
+              if (!live()) return;
+              if (!reply || !reply.ok) { this.d.ui.update({ enrichment: { state: 'unavailable', message: reply?.message ?? 'The dictionary could not be asked for the full entry.' } }); return; }
+              const adapter = this.d.analyserOf?.(languageId);
+              const record = pickRecord(reply.found ? (reply.records as LexicalRecord[]) : [], card.pos);
+              const hint = { features: Object.fromEntries(card.features.map((f) => [f.key, f.value])), surface: card.surface };
+              const paradigm = card.lemma && card.pos ? buildParadigm(adapter, languageId, card.lemma, card.pos as PartOfSpeech, record, hint) : undefined;
+              this.d.ui.update({ enrichment: {
+                state: 'ready', paradigm, etymology: etymologyOf(record), pronunciation: pronunciationOf(record, card.pronunciation), relations: relationsOf(record), senses: sensesOf(record),
+                ...(reply.attribution ? { attribution: reply.attribution } : {}), ...(reply.reason && !reply.found ? { message: reply.message ?? reply.reason } : {}),
+              } });
+            }).catch(() => { if (live()) this.d.ui.update({ enrichment: { state: 'unavailable', message: 'The dictionary could not be asked for the full entry.' } }); }),
           );
         }
         if (view.explain?.state === 'loading') {

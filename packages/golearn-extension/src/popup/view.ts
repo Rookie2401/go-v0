@@ -3,9 +3,25 @@
  * dictionary gloss, the learner-model consultation, the pack's explanations, the pronunciation state), and the
  * callbacks through which the card reports what the learner did. Pure data and types; no DOM.
  */
+import type { Paradigm } from '../../../../src/core/paradigm';
+import type { EtymologyView, PronunciationView, RelationsView } from '../content/enrich';
 import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, SelfMark } from '../protocol';
 
-export type LayerName = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence';
+/** The first four open at once; the last four are the deeper sections (Linguistic Engine V2): the paradigm, every sense, the origin, the sound. */
+export type LayerName = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence' | 'forms' | 'meaning' | 'origin' | 'sound';
+
+/** Level 2 of the card: what the dictionary's full record and the analyser's generation give, with field states; arrives after the card, never blocks it. */
+export interface EnrichmentView {
+  /** idle: not asked (no dictionary service); loading: asked; ready: answered (fields may still be unknown); unavailable: could not be asked, with why. */
+  state: 'idle' | 'loading' | 'ready' | 'unavailable';
+  paradigm?: Paradigm;
+  etymology?: EtymologyView;
+  pronunciation?: PronunciationView;
+  relations?: RelationsView;
+  senses?: Array<{ gloss: string; tags: string[]; examples: string[] }>;
+  attribution?: string;
+  message?: string;
+}
 
 export interface GlossView {
   /** idle: nothing asked (no dictionary service); loading: asked, not answered; ready: senses arrived; none: asked, nothing found; error: could not ask. */
@@ -52,6 +68,7 @@ export interface CardView {
   /** The learner's own mark on this word, when they made one ("New to me" / "I recognise it" / "I can use it"). */
   rated?: SelfMark;
   correction: CorrectionState;
+  enrichment: EnrichmentView;
 }
 
 export const initialView = (languageName: string): CardView => ({
@@ -61,6 +78,7 @@ export const initialView = (languageName: string): CardView => ({
   explain: { state: 'idle', features: [], constructions: [] },
   saved: false,
   correction: { state: 'idle' },
+  enrichment: { state: 'idle' },
 });
 
 export interface PlayOutcome { ok: true; voice: 'synthetic' | 'recorded'; voiceId?: string; repeated: boolean }

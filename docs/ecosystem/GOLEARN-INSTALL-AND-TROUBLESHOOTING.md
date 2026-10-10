@@ -40,8 +40,13 @@ No account, no team and no service are needed for any of these.
    say so; every pack is machine-drafted and not native-reviewed), or says what failed and offers **Retry**. You can
    download more languages: they all stay enabled; **Reading now** marks the one GoLearn records against, **Use for
    reading** switches, **Remove** takes a language off this device. What works and what does not, the licences and the
-   checks are under **Details**. If the dictionary address is empty the card has no dictionary meanings; it is set under
-   Settings → Diagnostics and updates (https, localhost or the extension's own files).
+   checks are under **Details**. Meanings are found per language, in this order: the dictionary address (Settings → Diagnostics and updates; https,
+   localhost or the extension's own files) if you set one; then the extension's own `app/` folder (Albanian only); then the
+   hosted copy named by `dictionaryFallbackUrl` in `app/config.json` (the project's GitHub Pages site, which serves every
+   language). The first place whose `dict/<language>/manifest.json` answers is used, so with no account and no address the
+   card still has meanings. The install says which one it used ("16 checks passed, dictionary from the hosted copy"), and
+   Diagnostics lists, for each downloaded language, where meanings are read from and whether that place answers now. The
+   dictionary address is the override.
 3. The cog wheel at the top right of every page opens **Settings**: the account (signed in as …, or on this device only;
    sign out; a link to the sign-in page) and the advanced screens (Sync, Privacy, Diagnostics and updates, How GoLearn
    reads pages). **Status** is a link in the top bar.
@@ -73,7 +78,7 @@ No account, no team and no service are needed for any of these.
 | Sync shows pending rows and an error | the service is unreachable or offline | nothing to do; the worker retries with backoff and keeps every event; Sync → Sync now forces an attempt |
 | "Speech is not available in this browser." / "No local Albanian voice" | the browser has no `speechSynthesis` or no voice tagged `sq`/`sq-AL` | there is no Albanian recording and no bundled voice; an English voice is never substituted; a remote voice needs the owner's provider key and your consent (Privacy) |
 | "Not in the word list" / "the lemma is a guess from the ending" | the word is outside the pack's word list; the rules guessed | the card says so; use "This analysis is wrong" to propose a correction (it is a proposal, not a fact) |
-| Dictionary meanings never appear | no dictionary address, or shards unreachable, or the host refuses CORS | Language pack → Dictionary address; the pack's own files work in the extension |
+| Dictionary meanings never appear | none of the three places answers for that language (Diagnostics → Dictionary address lists each language and what it tried), e.g. you are offline and the language was never looked up before, or the dictionary address you set is wrong | check the line for that language under Diagnostics; clear or correct the dictionary address (the other two places then apply); words looked up once keep working offline |
 | Diagnostics says the service speaks an older contract | the service build is behind the extension | update the service; the extension keeps working for lookups and queues events |
 | The pack screen says "planned, not installable" | that pack has no analyser in this build | no action; every language of the six has an installable pack today (Albanian is the reference, the rest are experimental) |
 | GoPractice from a website says it "needs an account" | that is the hosted copy, which keeps its data on an account and has no on-device Repository | use the **Practise** button of the extension (its copy works on the device with no account), or sign in to the hosted copy |

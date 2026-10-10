@@ -365,3 +365,100 @@ describe('the dictionary address (an advanced setting, under Diagnostics) and th
     expect(sq.querySelector('.licences')!.textContent).toContain('Machine-drafted; no native speaker has checked it.');
   });
 });
+
+describe('the dictionary is found per language: the dictionary address, then this application\'s own files, then the hosted copy', () => {
+  const OWN = 'https://app.example.org/golearn/';
+  const HOSTED = 'https://hosted.example.org/go-v0';
+  const config = { assetBaseUrl: OWN, dictionaryFallbackUrl: HOSTED };
+  /** A fetch that answers 200 for the manifest of the given bases only. */
+  const answering = (...bases: string[]) => {
+    const asked: string[] = [];
+    const fn = (async (input: RequestInfo | URL) => {
+      const u = String(input);
+      asked.push(u);
+      return new Response('{}', { status: bases.some((b) => u === `${b.replace(/\/+$/, '')}/dict/sq/manifest.json`) ? 200 : 404 });
+    }) as typeof fetch;
+    return { fn, asked };
+  };
+  const seenBase = (rig: Rig): { value: string } => {
+    const seen = { value: '' };
+    const original = rig.packs.install.bind(rig.packs);
+    rig.packs.install = async (pack, o) => { seen.value = o.baseUrl; return original(pack, o); };
+    return seen;
+  };
+
+  it('falls back to the hosted copy when neither the dictionary address nor the application\'s own files have the language, and says so', async () => {
+    const rig = await makeRig({ config });
+    const f = answering(HOSTED);
+    rig.deps.fetch = f.fn;
+    const seen = seenBase(rig);
+    const said = await downloadLanguage(rig, 'sq');
+    expect(seen.value).toBe(HOSTED);
+    expect(said).toMatch(/Albanian is ready: \d+ checks passed, dictionary from the hosted copy\./);
+    expect(f.asked).toEqual([`${OWN}dict/sq/manifest.json`, `${HOSTED}/dict/sq/manifest.json`]);
+  });
+
+  it('prefers the application\'s own files over the hosted copy when they answer', async () => {
+    const rig = await makeRig({ config });
+    rig.deps.fetch = answering(OWN, HOSTED).fn;
+    const seen = seenBase(rig);
+    const said = await downloadLanguage(rig, 'sq');
+    expect(seen.value).toBe(OWN);
+    expect(said).toMatch(/dictionary from this application’s own files\./);
+  });
+
+  it('prefers the learner\'s dictionary address over both', async () => {
+    const rig = await makeRig({ config });
+    await rig.area.set({ [KEYS.service]: { baseUrl: 'http://127.0.0.1:8790', assetBase: 'https://files.example.org/app' } });
+    rig.deps.fetch = answering('https://files.example.org/app', OWN, HOSTED).fn;
+    const seen = seenBase(rig);
+    const said = await downloadLanguage(rig, 'sq');
+    expect(seen.value).toBe('https://files.example.org/app');
+    expect(said).toMatch(/dictionary from your dictionary address\./);
+  });
+
+  it('when no place answers the install runs against the application\'s own files, as before, and reports the honest failure', async () => {
+    const rig = await makeRig({ config });
+    rig.deps.fetch = answering().fn;
+    const seen = seenBase(rig);
+    const said = await downloadLanguage(rig, 'sq');
+    expect(seen.value).toBe(OWN);
+    expect(said).not.toMatch(/dictionary from/);
+  });
+
+  it('a pack that declares no dictionary (Norwegian) is installed as before, with nothing probed', async () => {
+    const rig = await makeRig({ config });
+    rig.packs.all = rig.packs.all.map((x) => (x.languageId === 'nb' ? { ...x, manifest: { lexical: {} } } : x));
+    const f = answering(HOSTED);
+    rig.deps.fetch = f.fn;
+    const seen = seenBase(rig);
+    const said = await downloadLanguage(rig, 'nb', 'nb');
+    expect(seen.value).toBe(OWN);
+    expect(f.asked).toEqual([]);
+    expect(said).not.toMatch(/dictionary from/);
+  });
+
+  it('Diagnostics says, per downloaded language, where meanings are read from and whether that place answers', async () => {
+    const rig = await makeRig({ config });
+    rig.deps.fetch = answering(HOSTED).fn;
+    await downloadLanguage(rig, 'sq');
+    await rig.go('diagnostics');
+    await until(() => !!rig.root.querySelector('#dict-list li[data-language="sq"]'));
+    const li = rig.q('#dict-list li[data-language="sq"]');
+    expect(li.getAttribute('data-source')).toBe('hosted');
+    expect(li.textContent).toBe(`Albanian: meanings are read from the hosted copy, ${HOSTED}. It answers.`);
+    expect(rig.q('#dict-h').closest('section')!.textContent).toMatch(/first of three places/);
+    expect(rig.q<HTMLTextAreaElement>('#report').value).toContain(`sq: read from hosted ${HOSTED}, answers`);
+  });
+
+  it('Diagnostics says plainly when no place answers', async () => {
+    const rig = await makeRig({ config });
+    rig.deps.fetch = answering().fn;
+    await downloadLanguage(rig, 'sq');
+    await rig.go('diagnostics');
+    await until(() => !!rig.root.querySelector('#dict-list li[data-language="sq"]'));
+    const li = rig.q('#dict-list li[data-language="sq"]');
+    expect(li.getAttribute('data-ok')).toBe('false');
+    expect(li.textContent).toMatch(/Albanian: no dictionary location answers \(.*the hosted copy .* does not answer\)/);
+  });
+});

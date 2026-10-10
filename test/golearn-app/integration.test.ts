@@ -95,7 +95,7 @@ describe('the setup application with the real worker and the real service', () =
     expect(q('#account-line').textContent).toContain('On this device only');
     q('[data-language="sq"] [data-action="choose"]').click();
     await until(() => /is ready|did not|could not/.test(q('[data-language="sq"] .status').textContent ?? ''), 20_000);
-    expect(q('[data-language="sq"] .status').textContent).toMatch(/Albanian is ready: [0-9]+ checks passed[.]/);
+    expect(q('[data-language="sq"] .status').textContent).toMatch(/Albanian is ready: [0-9]+ checks passed(, dictionary from [^.]+)?[.]/);
     expect(q('[data-language="sq"] .status').textContent).toContain('Saved on this device');
     expect(q('[data-language="sq"] .verify').getAttribute('data-ok')).toBe('true');
     expect(q('[data-language="sq"] .verify').textContent).toMatch(/Verified: all [0-9]+ checks passed/);

@@ -9,6 +9,8 @@ export interface AppConfig {
   serviceUrl?: string;
   /** Where language-pack files (dictionary shards …) are served from; relative to the app page, or absolute. Default: the app’s own folder. */
   assetBaseUrl?: string;
+  /** A hosted copy of `dict/<language>/` (the project’s GitHub Pages site), tried last when neither the learner’s address nor the app’s own folder has the language. */
+  dictionaryFallbackUrl?: string;
 }
 
 export type UrlCheck = { ok: true; url: string } | { ok: false; message: string };
@@ -41,6 +43,7 @@ export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): 
     const out: AppConfig = {};
     if (typeof j.serviceUrl === 'string' && validateServiceUrl(j.serviceUrl).ok) out.serviceUrl = (validateServiceUrl(j.serviceUrl) as { url: string }).url;
     if (typeof j.assetBaseUrl === 'string' && j.assetBaseUrl) out.assetBaseUrl = j.assetBaseUrl;
+    if (typeof j.dictionaryFallbackUrl === 'string') { const c = validateServiceUrl(j.dictionaryFallbackUrl); if (c.ok) out.dictionaryFallbackUrl = c.url; }
     return out;
   } catch { return {}; }
 }

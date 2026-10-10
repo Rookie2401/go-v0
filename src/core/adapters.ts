@@ -12,6 +12,7 @@
 import type { AnalysisOrigin, AnalysisSourceInfo, ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord, WordPart, OrthographyRelation } from './model';
 import type { Variety } from './variety';
 import type { RegisterTag, SyllableAnalysis } from './course';
+import type { GeneratedParadigm } from './paradigm';
 
 export interface Span { start: number; end: number; text: string }
 
@@ -204,6 +205,20 @@ export interface LanguageAdapter {
    * The concept family this word belongs to, if the adapter knows one (Norwegian: jeg/eg). Optional; a language without families omits it.
    */
   family?(lemma: string, pos?: PartOfSpeech): ConceptFamily | undefined;
+  /**
+   * Morphological GENERATION (Linguistic Engine V2): the forms a lexeme takes, from this adapter's own rules and irregular
+   * tables, as feature-keyed cells (`src/core/paradigm.ts`). `undefined` when the adapter cannot generate for this lemma
+   * and part of speech (it is then the dictionary's table alone, or nothing). A language whose words do not inflect returns
+   * `kind: 'none'` with the constructions to show instead. Generation is `generated` until the dictionary's table confirms a
+   * cell; the merge with the dictionary happens outside the adapter (`mergeParadigm`).
+   */
+  paradigm?(lemma: string, pos: PartOfSpeech, hint?: { features?: Record<string, string>; surface?: string }): GeneratedParadigm | undefined;
+  /**
+   * Map the dictionary's inflection-table tags for one form ("accusative", "definite", "singular"; "first-person",
+   * "present", "subjunctive") to this adapter's feature keys, for the dictionary half of a paradigm. Unknown tags are
+   * ignored; a row whose tags name no feature maps to undefined (it is not placed in the table).
+   */
+  featuresFromTableTags?(tags: readonly string[], pos: PartOfSpeech): Record<string, string> | undefined;
   /**
    * Order the readings of each token by its neighbours again, after the importer replaced the readings of some tokens
    * with a dictionary's. The importer calls it once per sentence; the replaced lists arrive as the dictionary gives them

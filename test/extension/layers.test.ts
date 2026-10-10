@@ -173,7 +173,7 @@ describe('later arrivals never block the card', () => {
     const out = await lookup(r);
     await out.settled;
     expect(rowTexts(r).learner).toBe('Your history with this word could not be loaded right now.');
-    expect(rowTexts(r).meaning).toBe('No meaning given.');
+    expect(rowTexts(r).meaning).toBe('No meaning in the word list; the dictionary could not be asked.'); // the failure reason is said, not hidden (2026-10-10)
     expect(rowTexts(r).lemma).toBe('shtëpi (NOUN)');
     expect(await events(r.store)).toHaveLength(2);
   });
@@ -566,9 +566,10 @@ describe('"This analysis is wrong"', () => {
 });
 
 describe('honest partial cards', () => {
-  it('an unknown word: a guessed lemma is labelled a guess, no meaning is invented, the dictionary is not asked about a guess', async () => {
+  it('an unknown word: a guessed lemma is labelled a guess, no meaning is invented by the analyser, and the dictionary IS asked with the word as written (a failed morphology must not block a definition, 2026-10-10)', async () => {
     setBody('<div><p id="p">Flurbozitet shkëlqejnë sot.</p></div>');
-    const services = fakeServices({ profile: async () => profileReply({}) });
+    const asked: Array<{ lemma: string; forms?: string[] }> = [];
+    const services = fakeServices({ profile: async () => profileReply({}), gloss: async (req) => { asked.push({ lemma: req.lemma, forms: req.forms }); return { ok: true, found: false, senses: [], reason: 'not-found' }; } });
     const r = makeRig({ services });
     selectText(document.getElementById('p')!, 'Flurbozitet');
     const out = await r.controller.lookup({ trigger: 'command' });
@@ -578,8 +579,10 @@ describe('honest partial cards', () => {
     const t = rowTexts(r);
     expect(Object.keys(t)).toContain('lemma');
     expect(root(r).querySelector('[data-row="lemma"] .k')!.textContent).toBe('lemma (guess)');
-    expect(t.meaning).toBe('No meaning given.');
-    expect(services.calls.gloss ?? 0).toBe(0);
+    expect(t.meaning).toBe('No meaning in the word list; not in the dictionary either.');
+    expect(services.calls.gloss).toBe(1);
+    expect(asked[0].lemma).toBe('Flurbozitet'); // the word as written, not the guess, is what the dictionary is asked about first
+    expect(asked[0].forms).toEqual(expect.arrayContaining(['Flurbozitet', 'flurbozitet']));
     expect(t.learner).toBe('You have not met this word before, as far as GoLearn knows.');
     const sel = (await events(r.store, 'SelectionLookedUp'))[0];
     expect(sel.payload).toMatchObject({ unconfirmed: true, provenance: 'rule' });

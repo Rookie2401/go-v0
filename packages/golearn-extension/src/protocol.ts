@@ -101,6 +101,21 @@ export interface GlossReply {
   attribution?: string;
   reason?: 'no-pack' | 'no-asset-base' | 'offline' | 'not-found' | 'error';
   message?: string;
+  /** Where the meanings were read from: the learner's dictionary address, the extension's own files, or the hosted copy. */
+  source?: 'configured' | 'extension' | 'hosted';
+}
+
+/** Level 2 (Linguistic Engine V2): the dictionary's FULL record of a lemma (inflection table, etymology, IPA, audio, related words; schema full-1). */
+export interface EntryRequest { lemma: string; pos?: string; languageId: string; forms?: string[] }
+export interface EntryReply {
+  ok: boolean;
+  found: boolean;
+  /** The records as the shard holds them (`src/dict/full-format.ts` FullRecord); the page validates every field it reads. */
+  records: unknown[];
+  attribution?: string;
+  reason?: 'no-pack' | 'no-asset-base' | 'offline' | 'not-found' | 'error' | 'no-full-records';
+  message?: string;
+  source?: 'configured' | 'extension' | 'hosted';
 }
 
 export interface ExplainRequest { languageId: string; pos?: string; features: Record<string, string>; constructionIds: string[] }

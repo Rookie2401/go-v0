@@ -6,7 +6,7 @@ import { CONTRACT_VERSION } from '../../../repository-contract/src';
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, shortDate, statusLine } from '../dom';
 import { createStorageEncounterStore } from '../../src/store';
-import { dictionaryCard } from '../packInstall';
+import { dictionaryCard, resolveDictionary, sourceLabel } from '../packInstall';
 import type { View } from './view';
 
 export interface PackUpdate { packId: string; name: string; installed?: string; available: string; state: 'not-installed' | 'current' | 'update-available' | 'planned' | 'unverified' }
@@ -40,6 +40,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const extVersion = deps.chrome ? (deps.chrome.runtime.getManifest?.().version ?? 'unknown') : undefined;
   const updates = comparePacks(ctx, progress.packs);
   const dictService = await ctx.state.getService();
+  const dictBox = h('div', { id: 'dict-locations', 'aria-live': 'polite' }, p('Checking where meanings are read from…', 'muted'));
+  const dictLines: string[] = [];
 
   const health = h('p', { id: 'health' }, 'Checking the service…');
   const lines: string[] = [];
@@ -67,6 +69,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       'packs:',
       ...updates.map((u) => `  ${u.packId}: installed ${u.installed ?? 'none'}, available ${u.available}, ${STATE_TEXT[u.state]}`),
       serviceUpdate,
+      ...(dictLines.length ? ['dictionary:', ...dictLines.map((l) => `  ${l}`)] : []),
       'automatic updates: none in this build',
     );
     report.value = lines.join('\n');
@@ -114,6 +117,30 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     ]);
   }
 
+  /** Per language that has a downloaded pack (and the one in use): where its meanings are read from, and whether that place answers now. */
+  async function checkDictionaries(): Promise<void> {
+    const ids = new Set<string>(Object.keys(progress.packs));
+    const langs = ctx.deps.packs.packs().filter((pk) => pk.status === 'installable' && (ids.has(pk.packId) || pk.languageId === active?.languageId));
+    const items: HTMLElement[] = [];
+    const lines: string[] = [];
+    for (const pk of langs) {
+      const r = await resolveDictionary(ctx, pk, true);
+      if (!view.alive()) return;
+      if (!r) continue; // the pack declares no dictionary
+      const tried = r.checked.map((c) => `${sourceLabel(ctx, c.source)} (${c.base}): ${c.ok ? 'answers' : 'does not answer'}`).join('; ');
+      const text = r.chosen
+        ? `${pk.name}: meanings are read from ${sourceLabel(ctx, r.chosen.source)}, ${r.chosen.base}. It answers.`
+        : `${pk.name}: no dictionary location answers${r.checked.length ? ` (${tried})` : ' (none is set)'}, so the card shows no meanings until one does.`;
+      items.push(h('li', { 'data-language': pk.languageId, 'data-source': r.chosen?.source ?? 'none', 'data-ok': String(!!r.chosen) }, text));
+      lines.push(r.chosen ? `${pk.languageId}: read from ${r.chosen.source} ${r.chosen.base}, answers` : `${pk.languageId}: no location answers${r.checked.length ? ` (${tried})` : ''}`);
+    }
+    dictLines.length = 0;
+    dictLines.push(...lines);
+    clear(dictBox);
+    append(dictBox, items.length ? [h('ul', { id: 'dict-list' }, ...items)] : [p('No language with a dictionary is downloaded yet.', 'muted')]);
+    rebuild();
+  }
+
   append(el, [
     h('section', { class: 'card' }, h('h2', {}, 'Versions'),
       h('dl', { class: 'facts', id: 'versions' },
@@ -130,7 +157,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         h('dt', {}, 'Packs installed here'), h('dd', {}, String(Object.keys(progress.packs).length)),
         h('dt', {}, 'Last profile refresh'), h('dd', {}, shortDate(profile?.fetchedAt)))),
     h('section', { class: 'card', id: 'updates-card' }, h('h2', {}, 'Updates'), updatesBox),
-    dictionaryCard(ctx, dictService?.assetBase),
+    dictionaryCard(ctx, dictService?.assetBase, dictBox),
     h('section', { class: 'card' }, h('h2', {}, 'Report'),
       p('Copy this when you ask for help. It contains versions and counts only: no password, no token, no email and nothing you read.', 'muted'),
       report,
@@ -143,4 +170,5 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   paintUpdates();
   rebuild();
   void checkHealth();
+  void checkDictionaries();
 }

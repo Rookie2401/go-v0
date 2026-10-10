@@ -33,6 +33,7 @@ describe('the popup', () => {
   it('says plainly when the extension cannot give the practice page’s address', async () => {
     document.body.innerHTML = body;
     const fake = createChromeFake();
+    delete (fake.runtime as { getURL?: unknown }).getURL; // an extension that cannot name its own files
     await initPopup(document, fake as unknown as ChromeApi);
     (document.getElementById('practise') as HTMLButtonElement).click();
     expect(document.getElementById('error')!.textContent).toBe('GoLearn could not find the practice page.');

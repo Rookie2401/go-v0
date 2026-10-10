@@ -15,6 +15,7 @@
  * a construction the form realizes is weak, its hint is moved above the gloss; otherwise the gloss comes first.
  */
 import { GOLEARN_HOST_ATTR, type PopupAnchor } from '../contract/readerAdapter';
+import { cellOf, cellsWithForm, featureKey, type ParadigmCell } from '../../../../src/core/paradigm';
 import { contextLine, type CardModel, type EvidenceLabel } from '../parser/cardModel';
 import { languageNameOf, type SelfMark } from '../protocol';
 import {
@@ -108,6 +109,20 @@ const CSS = `
 .muted { opacity: .72; font-style: italic; }
 .actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
 .rate { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
+.actions.deeper { margin-top: 6px; }
+.actions.deeper button::before { content: '▸ '; opacity: .6; }
+table.paradigm { border-collapse: collapse; margin: 4px 0 8px; font-size: 0.92em; }
+table.paradigm th { font-weight: 600; text-align: left; padding: 2px 8px 2px 0; opacity: .85; }
+table.paradigm td.pcell { padding: 2px 8px 2px 0; white-space: nowrap; }
+table.paradigm td.pcell.sel { font-weight: 700; text-decoration: underline; text-underline-offset: .2em; }
+table.paradigm td.pcell.none { opacity: .4; }
+table.paradigm td.pcell.generated { font-style: italic; }
+table.paradigm td.pcell.conflicted { color: #9b2c1f; }
+.pmark { margin-left: 3px; font-size: 0.8em; opacity: .7; }
+ol.senses { padding-left: 18px; margin: 4px 0; }
+ol.senses li { margin: 2px 0; }
+.example { font-style: italic; opacity: .85; margin-left: 4px; }
+.ety { margin: 4px 0; }
 .rateLabel { font-size: 0.857em; letter-spacing: .06em; text-transform: uppercase; opacity: .75; margin-right: 2px; }
 .rateBtn[aria-pressed="true"] { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
 button, input { font: inherit; font-size: 0.95em; padding: 0.2em 0.75em; border-radius: 6px; border: 1px solid #8a7d68; background: #f7f2e8; color: #2b2620; }
@@ -143,7 +158,13 @@ form.fix input[type="text"] { width: 12em; }
 
 type Child = Node | string | null | undefined | false;
 
-const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', 'phrase-syntax': 'Phrase & syntax', grammar: 'Grammar', sentence: 'English rescue' };
+const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', 'phrase-syntax': 'Phrase & syntax', grammar: 'Grammar', sentence: 'English rescue', forms: 'All forms', meaning: 'Meanings', origin: 'Origin', sound: 'Sound' };
+/** The deeper sections (Linguistic Engine V2) sit on their own row under the first four. */
+const DEEPER_LAYERS: readonly LayerName[] = ['forms', 'meaning', 'origin', 'sound'];
+const STATUS_MARK: Record<string, string> = { verified: '✓', supported: '◌', generated: '~', conflicted: '‼' };
+const STATUS_LABEL: Record<string, string> = { verified: 'both the rules and the dictionary', supported: 'the dictionary only', generated: 'the rules only (unverified)', conflicted: 'the two disagree' };
+/** A feature bundle in plain key-value words (`Case Acc, Definite Def, Number Sing`); the pack's labels replace these where the Morphology layer has them. */
+const describeFeatures = (f: Record<string, string>): string => Object.keys(f).sort().map((k) => `${k} ${f[k]}`).join(', ');
 
 // ───────────────────────────── the built-in local pronouncer ─────────────────────────────
 
@@ -350,6 +371,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     // a dictionary-only meaning carries its attribution on the row itself (CC BY-SA: the notice goes wherever the entry is shown)
     else if (dict.state === 'ready' && dict.senses.length) rows.push(row('meaning', 'meaning', `${dict.senses.slice(0, 3).join('; ')}${dict.attribution ? ` (${dict.attribution})` : ''}`, l.gloss));
     else if (dict.state === 'loading') rows.push(row('meaning', 'meaning', 'looking up…', l.gloss, true));
+    // the reason the dictionary gave nothing is shown (it was swallowed before: "no dictionary location", "could not be reached" and "not in the dictionary" all looked alike)
+    else if (dict.state === 'none' || dict.state === 'error') rows.push(row('meaning', 'meaning', `${m.provenance === 'none' ? 'Not in the word list' : 'No meaning in the word list'}; ${dict.message ? dict.message.replace(/\.$/, '') : dict.state === 'error' ? 'the dictionary could not be asked' : 'not in the dictionary either'}.`, l.gloss, true));
     else rows.push(row('meaning', 'meaning', m.provenance === 'none' ? 'Not in the word list.' : 'No meaning given.', l.gloss, true));
     if (m.gloss && dict.state === 'ready' && dict.senses.length) {
       rows.push(row('dictionary', 'dictionary', `${dict.senses.slice(0, 4).join('; ')}${dict.attribution ? ` (${dict.attribution})` : ''}`, 'analysis', true));
@@ -487,6 +510,120 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     panel.append(ul);
   }
 
+  // ───────────── the deeper sections (Level 2) ─────────────
+
+  const enrichNote = (panel: HTMLElement, v: CardView): boolean => {
+    const e = v.enrichment;
+    if (e.state === 'ready') return true;
+    panel.append(h('div', { class: 'note' }, e.state === 'loading' ? 'Looking this up in the dictionary…' : e.state === 'unavailable' ? (e.message ?? 'The dictionary could not be asked.') : 'No dictionary service is connected, so there is nothing deeper to show.'));
+    return false;
+  };
+
+  function fillForms(panel: HTMLElement, m: CardModel, v: CardView): void {
+    if (!enrichNote(panel, v)) return;
+    const p = v.enrichment.paradigm;
+    if (!p) { panel.append(h('div', { class: 'note' }, m.tokenCount > 1 ? 'Select one word to see its forms.' : 'No paradigm: the analyser has no rules for this word and the dictionary has no table for it.')); return; }
+    if (p.kind === 'none') {
+      panel.append(h('div', { class: 'note' }, p.notes.join(' ') || 'This language does not inflect its words.'));
+      if (p.constructions?.length) section(panel, 'Constructions to know instead', p.constructions);
+      return;
+    }
+    const counts = { verified: 0, supported: 0, generated: 0, conflicted: 0 } as Record<string, number>;
+    for (const c of p.cells) counts[c.status]++;
+    const parts = (Object.keys(counts) as Array<keyof typeof counts>).filter((k) => counts[k]).map((k) => `${counts[k]} ${STATUS_LABEL[k]}`);
+    panel.append(h('div', { class: 'note' }, `${p.cells.length} form${p.cells.length === 1 ? '' : 's'}${p.template ? ` · ${p.template}` : ''}: ${parts.join('; ')}.`));
+    const selected = new Set<ParadigmCell>();
+    const feats = Object.fromEntries(m.features.map((f) => [f.key, f.value]));
+    const byFeatures = Object.keys(feats).length ? cellOf(p, feats) : undefined;
+    if (byFeatures) selected.add(byFeatures); else for (const c of cellsWithForm(p, m.surface)) selected.add(c);
+    const cellNode = (c: ParadigmCell | undefined): HTMLElement => {
+      if (!c) return h('td', { class: 'pcell none' }, '—');
+      const text = c.status === 'conflicted' && c.alternatives?.length ? `${c.form} / ${c.alternatives.join(' / ')}` : c.form;
+      return h('td', { class: `pcell ${c.status}${selected.has(c) ? ' sel' : ''}`, title: `${STATUS_LABEL[c.status]}${c.note ? `; ${c.note}` : ''}` }, h('span', { lang: m.languageId }, text), h('span', { class: 'pmark', 'aria-label': STATUS_LABEL[c.status] }, STATUS_MARK[c.status]));
+    };
+    const L = p.layout;
+    if (L) {
+      const sectionKeys = L.sections ?? [];
+      const combos: Array<Record<string, string>> = [];
+      const seen = new Set<string>();
+      for (const c of p.cells) {
+        const combo: Record<string, string> = {};
+        for (const k of sectionKeys) if (c.features[k] !== undefined) combo[k] = c.features[k];
+        const key = featureKey(combo);
+        if (!seen.has(key)) { seen.add(key); combos.push(combo); }
+      }
+      for (const combo of combos) {
+        const title = sectionKeys.map((k) => (combo[k] !== undefined ? (L.labels?.[k]?.[combo[k]] ?? `${k} ${combo[k]}`) : undefined)).filter(Boolean).join(' · ');
+        if (title) panel.append(h('h4', {}, title));
+        const table = h('table', { class: 'paradigm' });
+        table.append(h('tr', {}, h('th', {}, ''), ...L.columns.values.map(([, label]) => h('th', {}, label))));
+        for (const [rv, rlabel] of L.rows.values) {
+          const row = h('tr', {}, h('th', {}, rlabel));
+          for (const [cv] of L.columns.values) row.append(cellNode(cellOf(p, { ...combo, [L.rows.key]: rv, [L.columns.key]: cv })));
+          table.append(row);
+        }
+        panel.append(table);
+      }
+      // cells the layout does not place (an extra feature the layout has no axis for) are listed below the tables
+      const placed = new Set<string>();
+      for (const combo of combos) for (const [rv] of L.rows.values) for (const [cv] of L.columns.values) placed.add(featureKey({ ...combo, [L.rows.key]: rv, [L.columns.key]: cv }));
+      const rest = p.cells.filter((c) => !placed.has(featureKey(c.features)));
+      if (rest.length) section(panel, 'Other forms', rest.map((c) => `${c.form} — ${describeFeatures(c.features)} ${STATUS_MARK[c.status]}`));
+    } else {
+      section(panel, 'Forms', p.cells.map((c) => `${c.form} — ${describeFeatures(c.features)} ${STATUS_MARK[c.status]}`));
+    }
+    panel.append(h('div', { class: 'note' }, `${STATUS_MARK.verified} both agree · ${STATUS_MARK.supported} dictionary only · ${STATUS_MARK.generated} rules only · ${STATUS_MARK.conflicted} they disagree (both shown). The selected form is marked.`));
+    for (const n of p.notes) panel.append(h('div', { class: 'note' }, n));
+    panel.append(h('div', { class: 'note' }, `Sources: ${p.sources.map((s) => `${s.label}${s.licence ? ` (${s.licence})` : ''}`).join('; ')}.`));
+  }
+
+  function fillMeaning(panel: HTMLElement, m: CardModel, v: CardView): void {
+    if (m.gloss) panel.append(h('div', { class: 'row' }, h('span', { class: 'v' }, h('strong', {}, 'Word list: '), m.gloss), tag(m.labels.gloss)));
+    if (!enrichNote(panel, v)) return;
+    const e = v.enrichment;
+    if (!e.senses?.length) { panel.append(h('div', { class: 'note' }, 'The dictionary has no entry for this lemma.')); }
+    else {
+      const ol = h('ol', { class: 'senses' });
+      for (const s of e.senses) {
+        const li = h('li', {}, s.gloss, s.tags.length ? h('span', { class: 'muted' }, ` (${s.tags.join(', ')})`) : '');
+        for (const x of s.examples) li.append(h('div', { class: 'example', lang: m.languageId }, x));
+        ol.append(li);
+      }
+      panel.append(ol);
+      panel.append(h('div', { class: 'note' }, 'Senses are the dictionary\'s, in its order; the one meant here is not chosen by GoLearn (a future contextual step).'));
+    }
+    const r = e.relations;
+    if (r) {
+      section(panel, 'Derived words', r.derived);
+      section(panel, 'Related words', r.related);
+      section(panel, 'Synonyms', r.synonyms);
+      section(panel, 'Antonyms', r.antonyms);
+    }
+    if (e.attribution) panel.append(h('div', { class: 'note' }, e.attribution));
+  }
+
+  function fillOrigin(panel: HTMLElement, m: CardModel, v: CardView): void {
+    if (!enrichNote(panel, v)) return;
+    const o = v.enrichment.etymology;
+    if (!o || o.status === 'unknown') { panel.append(h('div', { class: 'note' }, 'No documented origin in the dictionary. GoLearn does not invent one.')); return; }
+    panel.append(h('div', { class: 'note' }, o.status === 'conflicted' ? 'The source itself calls this origin uncertain or disputed.' : 'From the dictionary\'s etymology; a documented account, not GoLearn\'s own.'));
+    if (o.text) panel.append(h('div', { class: 'ety', lang: 'en' }, o.text));
+    if (o.chain.length) section(panel, 'Steps the source names', o.chain.map((c) => `${c.relation}${c.language ? ` from ${c.language}` : ''}${c.form ? `: ${c.form}` : ''}${c.gloss ? ` (“${c.gloss}”)` : ''}`));
+    if (o.source) panel.append(h('div', { class: 'note' }, `Source: ${o.source.label} (${o.source.licence}). Lemma: ${m.lemma ?? m.surface}.`));
+  }
+
+  function fillSound(panel: HTMLElement, m: CardModel, v: CardView): void {
+    const s = v.enrichment.pronunciation;
+    if (m.pronunciation.length) section(panel, 'From the analyser', m.pronunciation);
+    if (!enrichNote(panel, v)) return;
+    if (!s || (!s.ipa.length && !s.recordings.length && !s.hyphenation && !s.romanization)) { panel.append(h('div', { class: 'note' }, 'The dictionary has no pronunciation for this lemma.')); return; }
+    if (s.ipa.length) section(panel, 'IPA', s.ipa.map((p) => `${p.ipa}${p.tags.length ? ` (${p.tags.join(', ')})` : ''}`));
+    if (s.hyphenation?.length) section(panel, 'Syllables', [s.hyphenation.join('·')]);
+    if (s.romanization) section(panel, 'Romanisation', [s.romanization]);
+    if (s.recordings.length) section(panel, 'Recordings', s.recordings.map((r) => `${r.name ?? 'recording'} — a Wikimedia Commons volunteer recording, not reviewed; GoLearn does not play it yet`));
+    if (s.source) panel.append(h('div', { class: 'note' }, `Source: ${s.source}.`));
+  }
+
   function renderPanels(): void {
     if (!parts || !model) return;
     const fills: Record<LayerName, (p: HTMLElement) => void> = {
@@ -494,6 +631,10 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       'phrase-syntax': (p) => fillSyntax(p, model!),
       grammar: (p) => fillGrammar(p, model!, view),
       sentence: (p) => fillSentence(p, model!),
+      forms: (p) => fillForms(p, model!, view),
+      meaning: (p) => fillMeaning(p, model!, view),
+      origin: (p) => fillOrigin(p, model!, view),
+      sound: (p) => fillSound(p, model!, view),
     };
     for (const name of Object.keys(parts.layers) as LayerName[]) {
       const panel = parts.layers[name].panel;
@@ -574,7 +715,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
     const layerBtn = (name: LayerName, cls: string): HTMLButtonElement => h('button', { type: 'button', class: cls, 'aria-expanded': 'false' }, LAYER_TITLES[name]) as HTMLButtonElement;
     const layers = {} as Record<LayerName, { btn: HTMLButtonElement; panel: HTMLElement }>;
-    const classes: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5' };
+    const classes: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', sound: 'l9' };
     for (const name of Object.keys(LAYER_TITLES) as LayerName[]) {
       const btn = layerBtn(name, `layerBtn ${classes[name]}`);
       const panel = h('div', { class: `more layer ${classes[name]}`, hidden: '', 'data-layer': name, id: `panel-${classes[name]}` });
@@ -619,8 +760,10 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
     const actionsRow = h('div', { class: 'actions' }, say, layers.morphology.btn, layers['phrase-syntax'].btn, layers.grammar.btn, layers.sentence.btn, save, wrong, moreBtn);
+    if (m.tokenCount !== 1) { layers.forms.btn.disabled = true; layers.forms.btn.title = 'Select one word to see its forms.'; }
     parts = { rows, pronNote, say, layers, fix, save, wrong, rateBtns };
-    const wrapper = h('div', {}, top, word, rows, actionsRow, rate, pronNote, layers.morphology.panel, layers['phrase-syntax'].panel, layers.grammar.panel, layers.sentence.panel, fix, more, feedbackEl, statusEl);
+    const deeperRow = h('div', { class: 'actions deeper', 'aria-label': 'Deeper sections' }, ...DEEPER_LAYERS.map((n) => layers[n].btn));
+    const wrapper = h('div', {}, top, word, rows, actionsRow, deeperRow, rate, pronNote, layers.morphology.panel, layers['phrase-syntax'].panel, layers.grammar.panel, layers.sentence.panel, ...DEEPER_LAYERS.map((n) => layers[n].panel), fix, more, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });

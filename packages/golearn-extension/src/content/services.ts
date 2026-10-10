@@ -7,7 +7,7 @@ import type { GoEvent } from '../../../repository-contract/src';
 import type { MetricsRow } from '../metrics';
 import { MSG, type ContentChromeApi } from '../platform';
 import type {
-  ActiveReply, CorrectReply, CorrectRequest, ExplainReply, ExplainRequest, GlossReply, GlossRequest, PronounceInfoReply, ProfileReply, ProfileRequest, PublicStatus, RecordReply,
+  ActiveReply, CorrectReply, CorrectRequest, EntryReply, EntryRequest, ExplainReply, ExplainRequest, GlossReply, GlossRequest, PronounceInfoReply, ProfileReply, ProfileRequest, PublicStatus, RecordReply,
 } from '../protocol';
 import type { WriteResult } from '../store';
 
@@ -22,6 +22,8 @@ export interface ContentServices {
   explain(req: ExplainRequest): Promise<ExplainReply | undefined>;
   correct(req: CorrectRequest): Promise<CorrectReply | undefined>;
   pronounceInfo(languageId: string): Promise<PronounceInfoReply | undefined>;
+  /** Level 2: the dictionary's full record of a lemma (paradigm table, etymology, IPA, audio, relations). Optional: fakes without it mean "no deeper sections". */
+  entry?(req: EntryRequest): Promise<EntryReply | undefined>;
   /** The GoLearn Active switches (read only: a content script cannot set them). Optional: test fakes without it mean "never asked". */
   active?(): Promise<ActiveReply | undefined>;
   /** The scan's learner-model question (the words on screen): the worker answers from the device's own Repository, only while Active is on. */
@@ -55,6 +57,7 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     correct: (req) => call<CorrectReply>(MSG.correct, { ...req }),
     pronounceInfo: (languageId) => call<PronounceInfoReply>(MSG.pronounceInfo, { languageId }),
     active: () => call<ActiveReply>(MSG.active, { op: 'get' }),
+    entry: (req) => call<EntryReply>(MSG.entry, { ...req }),
     activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }),
     events: {
       async append(event): Promise<WriteResult> {

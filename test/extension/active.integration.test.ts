@@ -65,7 +65,7 @@ describe('GoLearn Active, real page to real worker', () => {
     const out = await controller.lookup({ trigger: 'command' });
     expect(out.status).toBe('shown');
     await out.settled; await flush(40);
-    expect(rig.log).toEqual([]);
+    expect(rig.log.filter((l) => !l.path.includes("/dict/"))).toEqual([]); // the dictionary is read from the extension's own files; the service is never asked
     // 2. the scan's question is refused while the switch is off
     expect(await rig.content({ type: MSG.activeProfile, unitIds: ['lemma:sq:shtëpi:NOUN'], languageId: 'sq' })).toMatchObject({ ok: false, error: 'inactive' });
     expect(registry.size).toBe(0);
@@ -83,7 +83,7 @@ describe('GoLearn Active, real page to real worker', () => {
     expect(ping.enabled).toBe(true); // the per-tab selection lookup is part of Active now
     expect(ping.activeState).toMatchObject({ languageId: 'sq', scanned: 16, marked: { new: 14, met: 2, assisted: 0, known: 0, produced: 0 } });
     expect(ping.activeState.reason).toBeUndefined();
-    expect(rig.log).toEqual([]); // the scan asked the device, never the service
+    expect(rig.log.filter((l) => !l.path.includes("/dict/"))).toEqual([]); // the scan asked the device, never the service
     // 4. a batch of 60 ids is answered whole (not trimmed to four lemma ids as a long selection would be)
     const ids = Array.from({ length: 50 }, (_, i) => `form:sq:fjala${i}`).concat(['lemma:sq:shtëpi:NOUN']);
     const reply = await rig.content({ type: MSG.activeProfile, unitIds: ids, languageId: 'sq' });

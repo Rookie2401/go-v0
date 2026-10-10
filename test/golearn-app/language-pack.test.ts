@@ -1,9 +1,10 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
+import { computeCompletion, setupComplete } from '../../packages/golearn-extension/app/app';
 import { KEYS, type ActiveChoice, type Session } from '../../packages/golearn-extension/app/state';
 import {
-  ES_FAKE, ES_OK_FAKE, LANGUAGES_FAKE, cardOf, cardStatus, chooseOnWelcome, destroyRigs, failingInstall, fakeBackground, fakePacks, flush, makeRig, passingInstall,
-  signIn, until, type Rig,
+  ES_FAKE, ES_OK_FAKE, LANGUAGES_FAKE, cardOf, cardStatus, downloadLanguage, destroyRigs, failingInstall, fakeBackground, fakePacks, flush, passingInstall,
+  signIn, until, makeRig as baseRig, type Rig, type RigOptions,
 } from './helpers';
 
 afterEach(() => destroyRigs());
@@ -12,14 +13,17 @@ const sessionOf = async (rig: Rig): Promise<Session | undefined> => (await rig.a
 const choiceOf = async (rig: Rig): Promise<ActiveChoice | undefined> => (await rig.area.get(KEYS.choice))[KEYS.choice] as ActiveChoice | undefined;
 const recordsOf = async (rig: Rig): Promise<Record<string, { version: string; ok: boolean }>> => ((await rig.area.get(KEYS.app))[KEYS.app] as { packs: Record<string, { version: string; ok: boolean }> } | undefined)?.packs ?? {};
 const serverEnrols = (rig: Rig): Array<Record<string, unknown>> => rig.service.calls.filter((c) => c.method === 'enrol').map((c) => c.args[0] as Record<string, unknown>);
+/** These tests start on the languages page (the first page of a first run is the sign-in page). */
+const makeRig = (o: RigOptions = {}): Promise<Rig> => baseRig({ startRoute: 'languages', ...o });
+const rowsOf = (rig: Rig, languageId: string): HTMLElement[] => [...rig.root.querySelectorAll<HTMLElement>(`#language-cards [data-language="${languageId}"] .mine`)];
 const withSpanish = () => { const p = fakePacks(); p.all = p.all.map((x) => (x.languageId === 'es' ? ES_OK_FAKE : x)); return p; };
 
-describe('Welcome: choose your language', () => {
+describe('Languages: download your languages', () => {
   it('shows the six languages from the catalogue in its order, each with what works, what does not, its level and its audio, and asks for no account', async () => {
     const rig = await makeRig();
-    expect(rig.app.current()).toBe('welcome');
-    expect(rig.q('#screen h1').textContent).toBe('Welcome');
-    expect(rig.q('#choose-language h2').textContent).toBe('Choose your language');
+    expect(rig.app.current()).toBe('languages');
+    expect(rig.q('#screen h1').textContent).toBe('Choose your languages');
+    expect(rig.q('#languages h2').textContent).toBe('Languages');
     const cards = [...rig.root.querySelectorAll('#language-cards > .lang')];
     expect(cards.map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.map((l) => l.languageId));
     expect(cards.map((c) => c.querySelector('h3')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish']);
@@ -40,6 +44,15 @@ describe('Welcome: choose your language', () => {
     expect(rig.root.querySelector('#enrol-form, #language, #pack-info')).toBeNull();
     expect(rig.text()).not.toMatch(/Install the pack|Orientation/);
     expect(rig.root.querySelectorAll('[data-action="choose"]')).toHaveLength(6);
+    // each is a compact row with a “Download language” menu at the right; what works and what does not sit under a collapsed Details
+    expect(cards.every((c) => c.tagName === 'LI')).toBe(true);
+    expect(cards.map((c) => c.querySelector('details.download > summary')!.textContent)).toEqual(Array(6).fill('Download language'));
+    expect(cards.every((c) => !(c.querySelector('details.about') as HTMLDetailsElement).open)).toBe(true);
+    expect(albanian.querySelector('details.about > summary')!.textContent).toBe('Details');
+    expect(albanian.querySelector('details.about')!.contains(albanian.querySelector('.works'))).toBe(true);
+    expect(albanian.querySelector('details.about')!.contains(albanian.querySelector('.licences'))).toBe(true);
+    expect(albanian.querySelector('.lang-level')!.textContent).toContain('reference pack, machine-drafted, unreviewed');
+    expect(rig.q('#reader-link').getAttribute('href')).toBe('#/reader');
   });
 
   it('the card describes the pack as machine-drafted and not native-reviewed, and never says reviewed', async () => {
@@ -48,13 +61,13 @@ describe('Welcome: choose your language', () => {
     expect(sq.querySelector('.pack-info')!.textContent).toContain('machine-drafted, not native-reviewed');
     expect(sq.querySelector('.licences')!.textContent).toContain('Wiktionary, via kaikki.org — CC BY-SA 4.0');
     expect(sq.querySelector('.licences')!.textContent).toContain('CC BY-SA 4.0');
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     expect(rig.text()).not.toMatch(/(?<!not )native-reviewed|(?<!un)reviewed by a native/i);
   });
 
   it('choosing a language without an account makes a local enrolment and no server call, installs the pack and says it is ready', async () => {
     const rig = await makeRig();
-    const said = await chooseOnWelcome(rig, 'sq');
+    const said = await downloadLanguage(rig, 'sq');
     expect(said).toContain('Albanian is ready: 4 checks passed.');
     expect(said).toContain('Saved on this device');
     expect(rig.local.enrolCalls).toEqual([{ languageId: 'sq', varietyId: 'sq-standard', scriptId: 'Latn', packId: 'pack:sq', packVersion: '9', goals: [{ kind: 'reading' }] }]);
@@ -65,12 +78,12 @@ describe('Welcome: choose your language', () => {
     expect(await choiceOf(rig)).toEqual({ enrolmentId: rig.local.enrolments[0].enrolmentId, languageId: 'sq', varietyId: 'sq-standard', packId: 'pack:sq' });
     expect((await recordsOf(rig))['pack:sq']).toMatchObject({ version: '9', ok: true });
     // the list of languages, the card and the completion mark follow, and the page says what to do next
-    await until(() => rig.root.querySelector('#enrolments li[data-language="sq"] .tag'));
-    await until(() => rig.root.querySelector('.rail li[data-route="welcome"] .mark.done'));
-    expect(rig.q('#enrolments li').textContent).toContain('Albanian');
-    expect(rig.q('#enrolments li').textContent).toContain('reading now');
-    expect(rig.q('#enrolments li').textContent).toContain('pack ready');
-    expect(rig.q('#enrolments li').getAttribute('data-team')).toBeNull();
+    await until(() => rig.root.querySelector('[data-language="sq"] .mine .tag'));
+    await until(() => rig.root.querySelector('#next-note'));
+    expect(rowsOf(rig, 'sq')).toHaveLength(1);
+    expect(rowsOf(rig, 'sq')[0].textContent).toContain('Reading now');
+    expect(rowsOf(rig, 'sq')[0].textContent).toContain('Downloaded · ready');
+    expect(rowsOf(rig, 'sq')[0].getAttribute('data-team')).toBeNull();
     expect(cardOf(rig, 'sq').getAttribute('data-state')).toBe('ready');
     expect(cardOf(rig, 'sq').querySelector('.installed')!.textContent).toMatch(/version 9, verified/);
     expect(rig.q('#next-note').textContent).toMatch(/Albanian is ready.*open a page in the language and switch on GoLearn Active in the extension popup/);
@@ -82,7 +95,7 @@ describe('Welcome: choose your language', () => {
     let release!: () => void;
     rig.packs.nextInstall = () => new Promise((resolve) => { release = () => resolve(passingInstall()); });
     cardOf(rig, 'sq').querySelector<HTMLButtonElement>('[data-action="choose"]')!.click();
-    await until(() => /Installing Albanian/.test(cardStatus(rig, 'sq')));
+    await until(() => /Downloading Albanian/.test(cardStatus(rig, 'sq')));
     expect(cardOf(rig, 'sq').querySelector<HTMLProgressElement>('progress')!.hidden).toBe(false);
     expect(cardOf(rig, 'sq').querySelector('progress')).not.toBeNull();
     // while one install runs no card can start another
@@ -96,8 +109,8 @@ describe('Welcome: choose your language', () => {
   it('a pack whose checks fail is reported honestly with the checks and a Retry button, and setup is not complete', async () => {
     const rig = await makeRig();
     rig.packs.nextInstall = failingInstall();
-    const said = await chooseOnWelcome(rig, 'sq');
-    expect(said).toMatch(/Albanian is chosen, but its pack did not pass verification: 1 of 4 checks failed/);
+    const said = await downloadLanguage(rig, 'sq');
+    expect(said).toMatch(/Albanian is downloaded, but its pack did not pass verification: 1 of 4 checks failed/);
     expect(said).not.toMatch(/is ready/);
     const checks = [...rig.root.querySelectorAll('[data-language="sq"] .checks li')];
     expect(checks.map((c) => c.getAttribute('data-check'))).toEqual(['dictionary-manifest', 'sample-shard', 'case:v-librin', 'case:v-pine']);
@@ -108,7 +121,8 @@ describe('Welcome: choose your language', () => {
     expect((await recordsOf(rig))['pack:sq']).toMatchObject({ version: '9', ok: false });
     expect(cardOf(rig, 'sq').querySelector('.installed')!.textContent).toMatch(/version 9, verification failed/);
     expect(rig.root.querySelector('#next-note')).toBeNull();
-    expect(rig.root.querySelector('.rail li[data-route="welcome"] .mark.done')).toBeNull();
+    expect(rowsOf(rig, 'sq')[0].textContent).toContain('Downloaded · did not verify');
+    expect(setupComplete(await computeCompletion(rig.app.ctx))).toBe(false);
     // Retry runs the install again; this time it passes
     rig.packs.nextInstall = passingInstall();
     rig.q('[data-language="sq"] [data-action="retry"]').click();
@@ -116,14 +130,14 @@ describe('Welcome: choose your language', () => {
     expect(rig.root.querySelector('[data-language="sq"] [data-action="retry"]')).toBeNull();
     expect(rig.packs.installs).toHaveLength(2);
     expect(rig.local.enrolments).toHaveLength(1); // no second enrolment
-    await until(() => rig.root.querySelector('.rail li[data-route="welcome"] .mark.done'));
+    await until(() => rig.root.querySelector('#next-note'));
     expect(rig.q('#next-note').textContent).toContain('GoLearn Active');
   });
 
   it('an installer that throws leaves the choice saved, says why, and offers Retry', async () => {
     const rig = await makeRig();
     rig.packs.nextInstall = async () => { throw new Error('disk full'); };
-    const said = await chooseOnWelcome(rig, 'sq');
+    const said = await downloadLanguage(rig, 'sq');
     expect(said).toMatch(/Albanian pack did not install: disk full/);
     expect(said).toContain('Your choice is saved');
     expect(await choiceOf(rig)).toMatchObject({ languageId: 'sq' });
@@ -133,11 +147,11 @@ describe('Welcome: choose your language', () => {
     await until(() => /is ready/.test(cardStatus(rig, 'sq')));
   });
 
-  it('choosing an installed language again does not install it twice; Re-verify and Reinstall are offered on the card', async () => {
+  it('downloading an installed language again does not install it twice; Re-verify and Reinstall are offered under Details', async () => {
     const rig = await makeRig();
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     expect(cardOf(rig, 'sq').querySelector('[data-action="choose"]')!.textContent).toBe('Use Albanian');
-    const said = await chooseOnWelcome(rig, 'sq');
+    const said = await downloadLanguage(rig, 'sq');
     expect(said).toContain('already installed and verified');
     expect(rig.packs.installs).toHaveLength(1);
     expect(rig.local.enrolments).toHaveLength(1);
@@ -159,11 +173,11 @@ describe('Welcome: choose your language', () => {
     expect([...standard.options].map((o) => o.value)).toEqual(['', 'nb', 'nn']);
     expect([...standard.options].map((o) => o.textContent)).toEqual(['Choose the written standard…', 'Bokmål', 'Nynorsk']);
     expect(card.querySelector('.pack-info')!.textContent).toMatch(/Bokmål \(nb\) and Nynorsk \(nn\)/);
-    const said = await chooseOnWelcome(rig, 'nb');
+    const said = await downloadLanguage(rig, 'nb');
     expect(said).toMatch(/Bokmål \(nb\) and Nynorsk \(nn\)/);
     expect(rig.local.enrolCalls).toHaveLength(0);
     expect(rig.packs.installs).toHaveLength(0);
-    const ready = await chooseOnWelcome(rig, 'nb', 'nn');
+    const ready = await downloadLanguage(rig, 'nb', 'nn');
     expect(ready).toContain('Norwegian (Nynorsk) is ready');
     expect(rig.local.enrolCalls[0]).toMatchObject({ languageId: 'nn', varietyId: 'nn', packId: 'pack:nn' });
     expect(rig.packs.installs.map((p) => p.packId)).toEqual(['pack:nn']);
@@ -178,23 +192,23 @@ describe('Welcome: choose your language', () => {
     expect(variety.closest('label')!.textContent).toMatch(/Regional preference/);
     expect([...variety.options].map((o) => o.value)).toEqual(['es-standard', 'es-HN']);
     expect(variety.value).toBe('es-standard'); // optional: the general variety stands unless one is picked
-    const said = await chooseOnWelcome(rig, 'es', 'es-HN');
+    const said = await downloadLanguage(rig, 'es', 'es-HN');
     expect(rig.local.enrolCalls[0]).toMatchObject({ languageId: 'es', varietyId: 'es-HN', packId: 'pack:es' });
     expect(said).toContain('Spanish is ready');
-    await until(() => /Spanish \(Honduras\)/.test(rig.root.querySelector('#enrolments li')?.textContent ?? ''));
+    await until(() => /Spanish \(Honduras\)/.test(rowsOf(rig, 'es')[0]?.textContent ?? ''));
     // a different preference for the same language replaces the earlier one (its events stay under it); picking the same one twice adds nothing
-    await chooseOnWelcome(rig, 'es', 'es-standard');
+    await downloadLanguage(rig, 'es', 'es-standard');
     await until(() => rig.local.enrolments.length === 2);
-    await until(() => /General|Spanish/.test(rig.root.querySelector('#enrolments li')?.textContent ?? ''));
+    await until(() => rowsOf(rig, 'es').length === 1 && !/Honduras/.test(rowsOf(rig, 'es')[0].textContent ?? ''));
     expect(rig.local.enrolments.map((e) => [e.varietyId, !!e.endedAt])).toEqual([['es-HN', true], ['es-419', false]]);
     expect(rig.local.enrolCalls[1]).toMatchObject({ languageId: 'es', varietyId: 'es-419' }); // “General” is recorded as the pack’s general variety
-    await chooseOnWelcome(rig, 'es', 'es-standard');
+    await downloadLanguage(rig, 'es', 'es-standard');
     expect(rig.local.enrolments).toHaveLength(2);
-    expect(rig.root.querySelectorAll('#enrolments li')).toHaveLength(1);
+    expect(rowsOf(rig, 'es')).toHaveLength(1);
     expect(rig.packs.installs).toHaveLength(1); // the Spanish pack is installed once
   });
 
-  it('a planned pack cannot be chosen: the button is off and the reason is given', async () => {
+  it('a planned pack cannot be downloaded: the button is off and the reason is given', async () => {
     const rig = await makeRig(); // the default Spanish fake is planned
     expect(ES_FAKE.status).toBe('planned');
     const card = cardOf(rig, 'es');
@@ -209,7 +223,7 @@ describe('Welcome: choose your language', () => {
   it('signed in, the choice is also an enrolment on the account, and it becomes the account’s active one', async () => {
     const rig = await makeRig();
     await signIn(rig);
-    const said = await chooseOnWelcome(rig, 'sq');
+    const said = await downloadLanguage(rig, 'sq');
     expect(said).toContain('Albanian is ready');
     expect(said).toContain('Saved on this device and on your account');
     expect(rig.local.enrolCalls).toHaveLength(1);
@@ -222,50 +236,87 @@ describe('Welcome: choose your language', () => {
     const rig = await makeRig();
     await signIn(rig);
     rig.service.sessions.clear(); // the session is no longer valid at the service
-    const said = await chooseOnWelcome(rig, 'sq');
+    const said = await downloadLanguage(rig, 'sq');
     expect(said).toMatch(/Saved on this device; your account could not be updated/);
     expect(said).toContain('Albanian is ready');
     expect(rig.local.enrolments).toHaveLength(1);
     expect(await choiceOf(rig)).toMatchObject({ languageId: 'sq' });
   });
 
-  it('several languages may be chosen, and the list switches between them', async () => {
+  it('several languages may be downloaded and all stay enabled; Use for reading switches between them', async () => {
     const rig = await makeRig({ extension: true });
     fakeBackground(rig);
-    await chooseOnWelcome(rig, 'sq');
-    await chooseOnWelcome(rig, 'de');
+    await downloadLanguage(rig, 'sq');
+    await downloadLanguage(rig, 'de');
     await until(() => rig.local.enrolments.length === 2);
-    await until(() => rig.root.querySelectorAll('#enrolments li').length === 2);
+    await until(() => rowsOf(rig, 'sq').length === 1 && rowsOf(rig, 'de').length === 1);
+    // both are downloaded and ready at once
+    expect(rowsOf(rig, 'sq')[0].textContent).toContain('Downloaded · ready');
+    expect(rowsOf(rig, 'de')[0].textContent).toContain('Downloaded · ready');
+    expect(rig.packs.installs.map((x) => x.packId)).toEqual(['pack:sq', 'pack:de']);
+    expect(rig.q('#next-note').textContent).toContain('German');
     const [first, second] = rig.local.enrolments;
     expect((await choiceOf(rig))!.enrolmentId).toBe(second.enrolmentId);
     // the repository lives in the worker: the choice was made there (and so became the active one), and nothing was selected yet
     expect(rig.local.selected).toEqual([]);
     expect(cardOf(rig, 'de').getAttribute('data-active')).toBe('true');
     expect(cardOf(rig, 'sq').getAttribute('data-active')).toBe('false');
-    rig.q(`#enrolments li[data-enrolment="${first.enrolmentId}"] button`).click();
+    rig.q(`.mine[data-enrolment="${first.enrolmentId}"] [data-action="use"]`).click();
     await until(async () => (await choiceOf(rig))?.enrolmentId === first.enrolmentId);
     expect(await choiceOf(rig)).toMatchObject({ languageId: 'sq', packId: 'pack:sq' });
     expect(rig.local.selected).toEqual([first.enrolmentId]); // the worker is told to record against it
-    await until(() => rig.root.querySelector(`#enrolments li[data-enrolment="${first.enrolmentId}"] .tag`));
+    await until(() => rig.root.querySelector(`.mine[data-enrolment="${first.enrolmentId}"] .tag`));
+    expect(rig.q(`.mine[data-enrolment="${first.enrolmentId}"] .tag`).textContent).toBe('Reading now');
+    expect(rig.root.querySelector(`.mine[data-enrolment="${second.enrolmentId}"] .tag`)).toBeNull();
     await until(() => cardOf(rig, 'sq').getAttribute('data-active') === 'true');
   });
 
   it('where the on-device Repository is not available the choice is still kept, honestly', async () => {
     const rig = await makeRig({ local: false });
-    const said = await chooseOnWelcome(rig, 'sq');
+    const said = await downloadLanguage(rig, 'sq');
     expect(said).toContain('is ready');
     expect(await choiceOf(rig)).toMatchObject({ enrolmentId: 'local-enrolment:sq:sq-standard', languageId: 'sq', packId: 'pack:sq' });
-    await until(() => rig.root.querySelector('#enrolments li'));
+    await until(() => rowsOf(rig, 'sq').length === 1);
   });
 
-  it('Welcome shows no team anywhere, signed in or not, with Norwegian and Spanish chosen', async () => {
+  it('the languages page shows no team anywhere, signed in or not, with Norwegian and Spanish chosen', async () => {
     const rig = await makeRig({ packs: withSpanish() });
     await signIn(rig);
-    await chooseOnWelcome(rig, 'nb', 'nb');
+    await downloadLanguage(rig, 'nb', 'nb');
     expect(rig.text()).not.toMatch(/team|leader/i);
-    await chooseOnWelcome(rig, 'es');
+    await downloadLanguage(rig, 'es');
     expect(rig.text()).not.toMatch(/team|leader/i);
-    expect(rig.root.querySelectorAll('#enrolments li')).toHaveLength(2);
+    expect(rig.root.querySelectorAll('#language-cards .mine')).toHaveLength(2);
+  });
+
+  it('Remove ends the device enrolment, keeps the other languages, and hands “Reading now” to the next one', async () => {
+    const rig = await makeRig();
+    await downloadLanguage(rig, 'sq');
+    await downloadLanguage(rig, 'de');
+    const [sqEnrolment, deEnrolment] = rig.local.enrolments;
+    expect((await choiceOf(rig))!.enrolmentId).toBe(deEnrolment.enrolmentId);
+    rig.q('[data-language="de"] .mine [data-action="remove"]').click();
+    await until(() => rowsOf(rig, 'de').length === 0);
+    expect(rig.local.enrolments.map((e) => [e.languageId, !!e.endedAt])).toEqual([['sq', false], ['de', true]]);
+    expect((await choiceOf(rig))!.enrolmentId).toBe(sqEnrolment.enrolmentId);
+    expect(rig.q('[data-language="sq"] .mine .tag').textContent).toBe('Reading now');
+    // the row offers the download again, and what was removed says so
+    expect(rig.q('[data-language="de"] details.download').hasAttribute('hidden')).toBe(false);
+    expect(cardStatus(rig, 'de')).toContain('German is removed from this device');
+    rig.q('[data-language="sq"] .mine [data-action="remove"]').click();
+    await until(() => rowsOf(rig, 'sq').length === 0);
+    expect(await choiceOf(rig)).toBeUndefined();
+    expect(rig.root.querySelector('#next-note')).toBeNull();
+  });
+
+  it('a downloaded language whose pack did not install keeps a Retry on its row after the page is opened again', async () => {
+    const rig = await makeRig();
+    rig.packs.nextInstall = async () => { throw new Error('offline'); };
+    await downloadLanguage(rig, 'sq');
+    await rig.go('settings');
+    await rig.go('languages');
+    expect(rowsOf(rig, 'sq')[0].textContent).toContain('Download not finished');
+    expect(rig.root.querySelector('[data-language="sq"] [data-action="retry"]')).not.toBeNull();
   });
 });
 
@@ -286,7 +337,7 @@ describe('the dictionary address (an advanced setting, under Diagnostics) and th
     let seen = '';
     const original = rig.packs.install.bind(rig.packs);
     rig.packs.install = async (pack, o) => { seen = o.baseUrl; return original(pack, o); };
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     expect(seen).toBe('https://files.example.org/app');
   });
 
@@ -295,14 +346,14 @@ describe('the dictionary address (an advanced setting, under Diagnostics) and th
     let seen = '';
     const original = rig.packs.install.bind(rig.packs);
     rig.packs.install = async (pack, o) => { seen = o.baseUrl; return original(pack, o); };
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     expect(seen).toBe('https://app.example.org/golearn/');
   });
 
-  it('the pack check on Diagnostics lists packs and says how to update one: under its language on Welcome', async () => {
+  it('the pack check on Diagnostics lists packs and says how to update one: under Details on its language on the Languages page', async () => {
     const rig = await makeRig();
     await rig.go('diagnostics');
-    expect(rig.q('#updates').textContent).toMatch(/Reinstall under its language on the Welcome page/);
+    expect(rig.q('#updates').textContent).toMatch(/Reinstall under Details on its language on the Languages page/);
     expect(rig.text()).not.toContain('Language pack screen');
   });
 

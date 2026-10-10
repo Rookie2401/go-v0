@@ -26,7 +26,7 @@ const dimsOf = (events: GoEvent[], unitId = PH) => observationsOf(events[0]).fil
 
 describe('projection@2: the model version and the eighth dimension', () => {
   it('is projection@2 and DIMENSIONS has eight entries with the original seven first, in their old order', () => {
-    expect(MODEL_VERSION).toBe('projection@2');
+    expect(MODEL_VERSION).toBe('projection@3');
     expect(DIMENSIONS).toHaveLength(8);
     expect(DIMENSIONS[7]).toBe('phraseComprehension');
     expect(DIMENSIONS.slice(0, 7)).toEqual(['exposure', 'assistedRecognition', 'readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding']);
@@ -54,11 +54,11 @@ describe('projection@2: the model version and the eighth dimension', () => {
 
     const engine = createProjectionEngine({ store, now: () => NOW });
     const rows = await engine.knowledge(L); // nothing new in the log, yet the version differs: a full rebuild
-    expect(await store.getProjectionCursor(L)).toEqual({ seq: await store.head(L), modelVersion: 'projection@2' });
+    expect(await store.getProjectionCursor(L)).toEqual({ seq: await store.head(L), modelVersion: 'projection@3' });
     expect(rows.length).toBe(old.length);
     for (const r of rows) {
       const before = old.find((o) => o.unitId === r.unitId)!;
-      expect(r.modelVersion).toBe('projection@2');
+      expect(r.modelVersion).toBe('projection@3');
       expect(Object.keys(r.dimensions)).toEqual([...DIMENSIONS]);
       for (const d of OLD_SEVEN) expect(r.dimensions[d], `${r.unitId} ${d}`).toEqual(before.dimensions[d]);
       expect(r.dimensions.phraseComprehension).toMatchObject({ observations: 0, confidence: 0, score: 0.5 });

@@ -106,6 +106,22 @@ Owner's corrections after the first build (2026-10-09, evening), now in force:
   permission is granted; the service is never asked about the words on a page. Proven end to end in
   `test/extension/active.integration.test.ts` (real content script, real worker, device-local Repository).
 
+Owner's additions (2026-10-10):
+
+- **Unknown words are marked too.** A fifth level, `new` (dashed underline), for a word with no row in the learner model
+  or no encounter: every word on the page now carries a level, so what the learner does not know is visible. When
+  the learner model cannot be reached at all nothing is marked (every word would be "new" for the wrong reason).
+- **The learner says how well they know a word.** The card has a row "How well do you know it?" with three marks,
+  "New to me" (`ItemMarked` mark `learning`), "I recognise it" (`known`), "I can use it" (`productive`, new in the
+  contract). A mark is an event like any other (recorded on the device, synced with an account); the engine folds it
+  into the dimensions with a self-report weight and keeps the latest mark on the unit (`UnitKnowledge.selfMark`,
+  projection@3), the card's history line repeats it ("You marked it: recognised"), and the underline follows the
+  learner's own mark outright (`SELF_MARK_LEVEL` in levels.ts) until they mark the word again. The scan forgets the
+  word's rows when the controller records a mark and reads the page again, so the underline changes at once.
+- **GoListen on this device.** The popup says which of the chosen languages this browser can speak (the strict tag
+  rule the card uses, `hasDeviceVoice` in content/voice.ts); no device ships an Albanian voice, so Albanian is always
+  "none". Speaking on click is the card's own Pronounce path (`CardUI.pronounce()`), practice only, never evidence.
+
 Where the build differs from §1–§6, and why:
 
 - **Batches of 60, not 200.** The background's profile service answers at most 60 ids per request (`profile.ts`

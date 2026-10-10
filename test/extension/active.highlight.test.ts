@@ -38,7 +38,7 @@ describe('createHighlighter', () => {
     expect(h.supported).toBe(false);
     h.apply(new Map([['met', [rangeOf('Beni')]]]));
     expect(document.body.innerHTML).toBe(before);
-    expect(h.counts()).toEqual({ met: 0, assisted: 0, known: 0, produced: 0 });
+    expect(h.counts()).toEqual({ new: 0, met: 0, assisted: 0, known: 0, produced: 0 });
   });
 
   it('with the API: one named highlight per level, ranges replaced on each apply, and the DOM untouched', () => {
@@ -50,18 +50,19 @@ describe('createHighlighter', () => {
     h.apply(new Map([['met', [rangeOf('Beni'), rangeOf('shkon')]], ['known', [rangeOf('shkollë')]]]));
     expect(document.body.innerHTML).toBe(before);
     expect([...registry.keys()].sort()).toEqual(['golearn-known', 'golearn-met']);
-    expect(h.counts()).toEqual({ met: 2, assisted: 0, known: 1, produced: 0 });
-    h.apply(new Map([['produced', [rangeOf('në')]]]));
-    expect(h.counts()).toEqual({ met: 0, assisted: 0, known: 0, produced: 1 });
+    expect(h.counts()).toEqual({ new: 0, met: 2, assisted: 0, known: 1, produced: 0 });
+    h.apply(new Map([['produced', [rangeOf('në')]], ['new', [rangeOf('shkon')]]]));
+    expect(h.counts()).toEqual({ new: 1, met: 0, assisted: 0, known: 0, produced: 1 });
     h.clear();
-    expect(h.counts()).toEqual({ met: 0, assisted: 0, known: 0, produced: 0 });
+    expect(h.counts()).toEqual({ new: 0, met: 0, assisted: 0, known: 0, produced: 0 });
     h.apply(new Map([['assisted', [rangeOf('Beni')]]]));
     h.dispose();
     expect(registry.size).toBe(0);
   });
 
-  it('the style sheet has one ::highlight rule per level, each an underline, dotted for the two faint levels', () => {
+  it('the style sheet has one ::highlight rule per level, each an underline: dashed for new, dotted for the two faint levels, solid for the rest', () => {
     for (const l of ACTIVE_LEVELS) expect(ACTIVE_CSS).toContain(`::highlight(${HIGHLIGHT_NAMES[l]})`);
+    expect(ACTIVE_CSS.match(/underline dashed/g)).toHaveLength(1);
     expect(ACTIVE_CSS.match(/underline dotted/g)).toHaveLength(2);
     expect(ACTIVE_CSS.match(/underline solid/g)).toHaveLength(2);
     expect(ACTIVE_CSS).not.toMatch(/background/);

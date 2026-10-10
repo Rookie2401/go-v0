@@ -86,10 +86,13 @@ describe('the setup application with the real worker and the real service', () =
     const q = <T extends Element = HTMLElement>(sel: string): T => { const el = document.querySelector<T>(sel); if (!el) throw new Error(`not found: ${sel}`); return el; };
     const go = async (route: string): Promise<void> => { await app!.go(route); await app!.ready(); await flush(); };
 
-    // ── one page does it all. Language first, with no account: one click chooses it, keeps the choice on this device and installs the pack
+    // ── the languages page. Language first, with no account: one click downloads it, keeps the choice on this device and installs the pack
     //    (the real installer over the real dictionary files, every validation case run through the real analyser)
-    await go('welcome');
-    expect(q('#account-state').textContent).toBe('On this device only');
+    expect(app!.current()).toBe('signin'); // a first run opens on the sign-in page
+    q('#continue-without-account').click();
+    await until(() => app!.current() === 'languages');
+    await app!.ready();
+    expect(q('#account-line').textContent).toContain('On this device only');
     q('[data-language="sq"] [data-action="choose"]').click();
     await until(() => /is ready|did not|could not/.test(q('[data-language="sq"] .status').textContent ?? ''), 20_000);
     expect(q('[data-language="sq"] .status').textContent).toMatch(/Albanian is ready: [0-9]+ checks passed[.]/);
@@ -100,20 +103,24 @@ describe('the setup application with the real worker and the real service', () =
     expect(((await area.get('golearn:choice'))['golearn:choice'] as { languageId: string }).languageId).toBe('sq');
     expect((await area.get('golearn:session'))['golearn:session']).toBeUndefined();
     expect((await area.get('golearn:pack:installed:pack:sq'))['golearn:pack:installed:pack:sq']).toMatchObject({ version: expect.any(String) });
-    await until(() => document.querySelector('.rail li[data-route="welcome"] .mark.done'));
+    await until(() => document.querySelector('#next-note'));
     expect(q('#next-note').textContent).toContain('GoLearn Active');
 
-    // ── sign in (optional), on the same page: the worker signs the new account in; the page holds no token of its own making
+    // ── sign in (optional), on the sign-in page: the worker signs the new account in; the page holds no token of its own making
+    await go('signin');
     choose(q('#acct-mode'), 'create');
     type(q<HTMLInputElement>('#acct-email'), 'ana@example.org');
     type(q<HTMLInputElement>('#acct-password'), 'a very long password 123');
     submit(q<HTMLFormElement>('#acct-form'));
-    await until(() => /Account created/.test(q('#acct-form .status').textContent ?? ''), 8000);
+    await until(() => app!.current() === 'languages' && document.getElementById('flash'), 8000);
+    expect(q('#flash').textContent).toMatch(/Account created/);
     const session = (await area.get('golearn:session'))['golearn:session'] as { learnerId: string; token: string; email: string };
     expect(session.email).toBe('ana@example.org');
     expect(session.token.length).toBeGreaterThan(20);
     expect(JSON.stringify(await area.get(null))).not.toContain('a very long password 123');
+    await go('settings');
     expect(q('#account-state').textContent).toBe('Synced to your account as ana@example.org');
+    await go('languages');
 
     // ── the language chosen on the device is now an enrolment on the account too (no team), and the worker adopted it
     await until(async () => (await store.listEnrolments(session.learnerId)).length === 1, 8000);

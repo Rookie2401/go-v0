@@ -77,8 +77,9 @@ export class ActiveMode {
   private debounce: ReturnType<typeof setTimeout> | undefined;
   private scanning: Promise<void> | undefined;
   private rescanWanted = false;
-  private last: Pick<ActiveState, 'scanned' | 'marked' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: { met: 0, assisted: 0, known: 0, produced: 0 } };
+  private last: Pick<ActiveState, 'scanned' | 'marked' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: noMarks() };
   private clicks = 0;
+  private offRecord: (() => void) | undefined;
 
   constructor(private readonly d: ActiveDeps) {}
 
@@ -96,6 +97,12 @@ export class ActiveMode {
     this.reason = undefined;
     // one switch: with Active on, a selection the learner makes is looked up too (the per-tab switch folded into Active, 2026-10-09)
     this.d.controller.enable();
+    // the learner marked a word on its card ("New to me" …): forget what the model said about it and read the page again
+    this.offRecord = this.d.controller.onRecorded((e) => {
+      if (e.kind !== 'ItemMarked') return;
+      for (const id of e.subject?.itemIds ?? []) this.rows.delete(id);
+      void this.rescan();
+    });
 
     const adapter = chooseAdapter(describePage(this.d.doc), this.d.adapters);
     const entry = registryEntry(adapter.id);
@@ -136,6 +143,7 @@ export class ActiveMode {
     if (!this.on) return;
     this.on = false;
     this.d.controller.disable();
+    this.offRecord?.(); this.offRecord = undefined;
     clearTimeout(this.debounce);
     for (const off of this.listeners) off();
     this.listeners = [];
@@ -146,7 +154,7 @@ export class ActiveMode {
     this.rows.clear();
     this.languageId = undefined;
     this.scanner = undefined;
-    this.last = { scanned: 0, marked: { met: 0, assisted: 0, known: 0, produced: 0 } };
+    this.last = { scanned: 0, marked: noMarks() };
   }
 
   /** Read the viewport again (scroll, resize, a page change). Runs one scan at a time; a request during a scan runs once after it. */
@@ -208,13 +216,15 @@ export class ActiveMode {
     if (!this.on) return;
 
     let scanned = 0;
-    const marked = { met: 0, assisted: 0, known: 0, produced: 0 };
+    const marked = noMarks();
+    // with no learner model at all, nothing is marked (every word would be "new" for the wrong reason)
+    const modelKnown = !!this.d.profile && [...this.rows.values()].length > 0 || this.rows.size > 0;
     for (const [root, tokens] of byDoc) {
       const byLevel = new Map<ActiveLevel, Range[]>();
       for (const t of tokens) {
         scanned++;
+        if (!modelKnown) continue;
         const level = levelOfRows(t.ids.map((id) => this.rows.get(id) ?? undefined));
-        if (!level) continue;
         let range: Range;
         try { range = root.createRange(); range.setStart(t.node, t.start); range.setEnd(t.node, t.end); } catch { continue; }
         (byLevel.get(level) ?? byLevel.set(level, []).get(level)!).push(range);
@@ -313,6 +323,8 @@ export class ActiveMode {
     if (out.status === 'shown' && this.speak) this.d.ui.pronounce();
   }
 }
+
+const noMarks = (): Record<ActiveLevel, number> => ({ new: 0, met: 0, assisted: 0, known: 0, produced: 0 });
 
 /** The text node and offset under a point, through whichever API the engine has. */
 function caretAt(doc: Document, x: number, y: number): { node: Node; offset: number } | undefined {

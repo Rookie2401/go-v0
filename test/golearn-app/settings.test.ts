@@ -13,12 +13,13 @@ afterEach(() => destroyRigs());
 const settingsOf = async (rig: Rig): Promise<Record<string, unknown>> => ((await rig.area.get(KEYS.settings))[KEYS.settings] ?? {}) as Record<string, unknown>;
 
 describe('How GoLearn reads pages (the reader integration, an advanced screen)', () => {
-  it('is reached from a footer link on Welcome and from the Advanced group, and is not part of setup', async () => {
-    const rig = await makeRig();
+  it('is reached from a footer link on the languages page and from Settings, and is not part of setup', async () => {
+    const rig = await makeRig({ startRoute: 'languages' });
     expect(rig.q<HTMLAnchorElement>('#reader-link').getAttribute('href')).toBe('#/reader');
     expect(rig.q('#reader-link').textContent).toBe('How GoLearn reads pages');
-    expect(rig.q('#advanced-nav li[data-route="reader"] a').textContent).toBe('How GoLearn reads pages');
-    expect(rig.root.querySelector('.rail > ol > li[data-route="reader"]')).toBeNull();
+    expect(rig.q('.topbar').querySelector('a[href="#/reader"]')).toBeNull();
+    await rig.go('settings');
+    expect(rig.q('#advanced-links li[data-route="reader"] a').textContent).toBe('How GoLearn reads pages');
     await rig.go('reader');
     expect(rig.q('#screen h1').textContent).toBe('How GoLearn reads pages');
     expect(rig.text()).not.toMatch(/orientation/i);

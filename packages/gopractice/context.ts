@@ -273,6 +273,55 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     return profile.enrolments.filter((e) => !e.endedAt).sort((a, b) => b.startedAt.localeCompare(a.startedAt));
   }
 
+  /**
+   * When each language was last read in: the newest `SelectionLookedUp` (a lookup is the sign of reading) per language, over the learner's whole
+   * history, from the local log and, on the device, from the on-device Repository itself (which GoLearn writes to between syncs). Scanned
+   * incrementally (only events after the last seen seq), so asking again costs one head read.
+   */
+  let recentScan: { learnerId: string; logSeq: number; repoSeq: number; byLanguage: Map<string, string> } | undefined;
+  async function lastReadAtByLanguage(learnerId: string, local: LocalRepo | undefined): Promise<Map<string, string>> {
+    if (!recentScan || recentScan.learnerId !== learnerId) recentScan = { learnerId, logSeq: 0, repoSeq: 0, byLanguage: new Map() };
+    const scan = recentScan;
+    const note = (e: { kind: string; languageId: string; at: string }): void => {
+      if (e.kind !== 'SelectionLookedUp' || typeof e.languageId !== 'string' || Number.isNaN(Date.parse(e.at))) return;
+      const cur = scan.byLanguage.get(e.languageId);
+      if (cur === undefined || Date.parse(e.at) > Date.parse(cur)) scan.byLanguage.set(e.languageId, e.at);
+    };
+    try {
+      const d = await data();
+      if (d && d.learnerId === learnerId) {
+        const head = await d.log.head(learnerId);
+        if (head < scan.logSeq) { scan.logSeq = 0; scan.byLanguage.clear(); scan.repoSeq = 0; } // the log was cleared
+        if (head > scan.logSeq) {
+          for (const e of await d.log.list({ learnerId, kinds: ['SelectionLookedUp'], afterSeq: scan.logSeq })) note(e);
+          scan.logSeq = head;
+        }
+      }
+    } catch { /* an unreadable log leaves the earlier scan standing */ }
+    if (local) {
+      try {
+        for (let page = 0; page < 200; page++) {
+          const r = await local.api.listEvents({ afterSeq: scan.repoSeq, kinds: ['SelectionLookedUp'], limit: 500 });
+          if (!r.ok || !r.data.events.length) { if (r.ok && r.data.head < scan.repoSeq) scan.repoSeq = 0; break; }
+          for (const e of r.data.events) { note(e); scan.repoSeq = Math.max(scan.repoSeq, e.seq); }
+        }
+      } catch { /* the repository could not be read: the log's view stands */ }
+    }
+    return scan.byLanguage;
+  }
+
+  /** The enrolment of the language read in most recently, among the learner's enrolments; undefined when none has been read in. */
+  async function mostRecentlyRead(learnerId: string, list: Enrolment[], local: LocalRepo | undefined): Promise<Enrolment | undefined> {
+    const lastRead = await lastReadAtByLanguage(learnerId, local);
+    let best: Enrolment | undefined;
+    let bestAt: string | undefined;
+    for (const e of list) {
+      const at = lastRead.get(e.languageId);
+      if (at !== undefined && (bestAt === undefined || Date.parse(at) > Date.parse(bestAt))) { best = e; bestAt = at; }
+    }
+    return best;
+  }
+
   async function identity(): Promise<Identity | undefined> {
     const session = await state.getSession();
     if (!session) {
@@ -283,19 +332,27 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const who = await l.identity();
       const wanted = await state.getActive(who.learnerId);
       const chosenInSetup = l.activeLanguageId ? await l.activeLanguageId().catch(() => undefined) : undefined;
-      const active = list.find((e) => e.enrolmentId === wanted) ?? (chosenInSetup ? list.find((e) => e.languageId === chosenInSetup) : undefined) ?? list[0];
+      // the learner's own pick in GoPractice, else where they read most recently, else GoLearn's setup choice, else the first
+      const picked = list.find((e) => e.enrolmentId === wanted);
+      const recent = picked ? undefined : await mostRecentlyRead(who.learnerId, list, l);
+      const setup = picked || recent || !chosenInSetup ? undefined : list.find((e) => e.languageId === chosenInSetup);
+      const active = picked ?? recent ?? setup ?? list[0];
       return {
         learnerId: who.learnerId, enrolmentId: active.enrolmentId, languageId: active.languageId,
         ...(active.varietyId ? { varietyId: active.varietyId } : {}), deviceId: who.deviceId || await deviceId(), email: '', enrolment: active,
+        chosenBy: picked ? 'picked' : recent ? 'recent-reading' : setup ? 'setup' : 'first',
       };
     }
     const list = await enrolments();
     if (!list.length) return undefined;
     const wanted = await state.getActive(session.learnerId);
-    const active = list.find((e) => e.enrolmentId === wanted) ?? list[0];
+    const picked = list.find((e) => e.enrolmentId === wanted);
+    const recent = picked ? undefined : await mostRecentlyRead(session.learnerId, list, undefined);
+    const active = picked ?? recent ?? list[0];
     return {
       learnerId: session.learnerId, enrolmentId: active.enrolmentId, languageId: active.languageId,
       ...(active.varietyId ? { varietyId: active.varietyId } : {}), deviceId: await deviceId(), email: session.email, enrolment: active,
+      chosenBy: picked ? 'picked' : recent ? 'recent-reading' : 'first',
     };
   }
 

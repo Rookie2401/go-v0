@@ -11,7 +11,7 @@
  */
 import type { Dimension, UnitKnowledge } from '../../../repository-contract/src';
 import type { StorageArea } from '../platform';
-import { isDepth, isLanguageId, isUnitId, type DimView, type ExplanationDepth, type KnowledgeView, type PrivacySettings, type ProfileReply } from '../protocol';
+import { isDepth, isLanguageId, isSelfMark, isUnitId, type DimView, type ExplanationDepth, type KnowledgeView, type PrivacySettings, type ProfileReply } from '../protocol';
 import type { LocalKnowledge } from './localRepo';
 import type { SessionManager } from './session';
 import { limitWordIds } from './wordids';
@@ -47,7 +47,10 @@ export function compactKnowledge(k: UnitKnowledge): KnowledgeView {
     const n = (v: unknown): number => (typeof v === 'number' && Number.isFinite(v) ? v : 0);
     dims[name as Dimension] = { score: n(e.score), confidence: n(e.confidence), observations: n(e.observations), positive: n(e.positive), negative: n(e.negative) };
   }
-  return { unitId: k.unitId, dimensions: dims, ...(typeof k.lastSeenAt === 'string' ? { lastSeenAt: k.lastSeenAt } : {}) };
+  // the learner's latest own mark (projection@3): passed through as data, validated as a mark
+  const sm = (k as unknown as { selfMark?: { mark?: unknown; at?: unknown } }).selfMark;
+  const selfMark = sm && isSelfMark(sm.mark) && typeof sm.at === 'string' ? { mark: sm.mark, at: sm.at } : undefined;
+  return { unitId: k.unitId, dimensions: dims, ...(typeof k.lastSeenAt === 'string' ? { lastSeenAt: k.lastSeenAt } : {}), ...(selfMark ? { selfMark } : {}) };
 }
 
 export function createProfileService(opts: ProfileServiceOptions) {

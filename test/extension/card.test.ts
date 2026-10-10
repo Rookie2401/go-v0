@@ -190,10 +190,10 @@ describe('dismissal', () => {
 });
 
 describe('keyboard and tab order', () => {
-  it('with no voice: the controls are Close, the four layers, Review, Wrong and More; the pronounce button is disabled and says why', () => {
+  it('with no voice: the controls are Close, the four layers, Review, Wrong, More and the three "how well do you know it" marks; the pronounce button is disabled and says why', () => {
     ui.show(cardFor(), anchor());
     const names = [...ui.root()!.querySelectorAll('button:not([disabled])')].filter((b) => !b.closest('[hidden]')).map((b) => b.getAttribute('aria-label') ?? b.textContent);
-    expect(names).toEqual(['Close GoLearn card', 'Form', 'Phrase & syntax', 'Grammar', 'English rescue', 'Review this', 'This analysis is wrong', 'More']);
+    expect(names).toEqual(['Close GoLearn card', 'Form', 'Phrase & syntax', 'Grammar', 'English rescue', 'Review this', 'This analysis is wrong', 'More', 'New to me', 'I recognise it', 'I can use it']);
     const say = ui.root()!.querySelector('.say') as HTMLButtonElement;
     expect(say.disabled).toBe(true);
     expect(text(ui.root())).toMatch(/Speech is not available/);
@@ -202,7 +202,7 @@ describe('keyboard and tab order', () => {
     ui.show(cardFor(), anchor(), { focus: true });
     const root = ui.root()!;
     const close = root.querySelector('.close') as HTMLElement;
-    const more = root.querySelector('.moreBtn') as HTMLElement;
+    const more = root.querySelector('.rateBtn[data-mark="productive"]') as HTMLElement; // the last control: "I can use it"
     expect(root.activeElement).toBeTruthy();
     more.focus();
     const e1 = key(more, 'Tab');

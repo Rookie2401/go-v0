@@ -286,6 +286,11 @@ export function buildSavedEvent(b: InteractionContext): GoEvent {
   return followUp(b, 'ItemMarked', { mark: 'saved' }, `mark:${b.sessionId}:saved:${itemKey(b.card)}`);
 }
 
+/** The learner's own word on how well they know it: "New to me" (learning), "I recognise it" (known), "I can use it" (productive). A new mark replaces the last (its own event; the engine keeps the latest). */
+export function buildMarkEvent(b: InteractionContext, mark: 'learning' | 'known' | 'productive'): GoEvent {
+  return followUp(b, 'ItemMarked', { mark }, `mark:${b.sessionId}:${mark}:${itemKey(b.card)}:${b.now.getTime().toString(36)}`);
+}
+
 /** "This analysis is wrong": the correction references the selection event it corrects. The lemma id is a proposal. */
 export function buildCorrectionEvent(b: InteractionContext, c: { formId: string; correctedLexemeId?: string; reason?: string }): GoEvent {
   const payload: Record<string, unknown> = { formId: c.formId, by: 'learner', ...(c.correctedLexemeId ? { correctedLexemeId: c.correctedLexemeId } : {}), ...(c.reason ? { reason: c.reason } : {}) };

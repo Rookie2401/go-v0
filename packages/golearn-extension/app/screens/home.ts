@@ -21,20 +21,20 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       h('strong', {}, label), ' ', h('span', {}, value), ' ', h('a', { href: `#/${route}`, 'aria-label': `Change: ${label}` }, 'Change'));
 
   append(el, [
-    setupComplete(completion) ? p('GoLearn is set up. Open the page you want to read, press the GoLearn button in the toolbar and select a word.') : p('Setup is not finished. Choose a language on the Welcome page: its pack installs by itself.'),
+    setupComplete(completion) ? p('GoLearn is set up. Open the page you want to read, press the GoLearn button in the toolbar and select a word.') : p('Setup is not finished. Download a language on the Languages page: its pack installs by itself.'),
     h('p', { id: 'progress-mode', 'data-state': session ? 'synced' : 'device' },
       h('strong', {}, session ? 'Synced to your account' : 'On this device only'),
       session ? ` as ${session.email}.` : '. ',
-      session ? null : h('a', { href: '#/welcome', id: 'keep-progress' }, 'Sign in to keep your progress across devices (optional)')),
+      session ? null : h('a', { href: '#/signin', id: 'keep-progress' }, 'Sign in to keep your progress across devices (optional)')),
     h('ul', { class: 'status-list', id: 'status-list' },
-      row('Language', active ? languageLabel(ctx, active.languageId, active.varietyId) : 'none chosen yet', 'welcome', completion.language),
-      row('Language pack', pack ? (rec ? `${pack.name} ${rec.version}, ${rec.ok ? 'verified' : 'did not verify'}` : `${pack.name} ${pack.version} not installed`) : 'none chosen', 'welcome', completion.pack),
+      row('Language', active ? languageLabel(ctx, active.languageId, active.varietyId) : 'none downloaded yet', 'languages', completion.language),
+      row('Language pack', pack ? (rec ? `${pack.name} ${rec.version}, ${rec.ok ? 'verified' : 'did not verify'}` : `${pack.name} ${pack.version} not installed`) : 'none downloaded', 'languages', completion.pack),
       ),
     h('p', {}, ctx.inExtension
       ? h('a', { class: 'btn primary', id: 'practise', href: PRACTICE_HREF }, 'Practise')
       : h('span', { class: 'muted', id: 'practise-note' }, 'Practice (GoPractice) runs in the extension, on this device.'),
     ctx.inExtension ? ' ' : null, ctx.inExtension ? h('span', { class: 'muted' }, 'Review what you met and write in the language, without an account.') : null),
     p(`Works on: ${SURFACES.filter((s) => s.status !== 'not-supported').map((s) => s.name).join('; ')}.`, 'muted'),
-    h('p', {}, h('a', { class: 'btn', href: '#/welcome' }, 'Welcome'), ' ', h('a', { class: 'btn', href: '#/sync' }, 'Sync settings'), ' ', h('a', { class: 'btn', href: '#/privacy' }, 'Privacy settings'), ' ', h('a', { class: 'btn', href: '#/diagnostics' }, 'Diagnostics'), ' ', h('a', { class: 'btn', href: '#/share' }, 'Look up shared text')),
+    h('p', {}, h('a', { class: 'btn', href: '#/languages' }, 'Languages'), ' ', h('a', { class: 'btn', href: '#/sync' }, 'Sync settings'), ' ', h('a', { class: 'btn', href: '#/privacy' }, 'Privacy settings'), ' ', h('a', { class: 'btn', href: '#/diagnostics' }, 'Diagnostics'), ' ', h('a', { class: 'btn', href: '#/share' }, 'Look up shared text')),
   ]);
 }

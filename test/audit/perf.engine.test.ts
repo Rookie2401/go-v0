@@ -114,7 +114,7 @@ async function seed(kind: 'memory' | 'sqlite', count: number): Promise<{ store: 
 
 describe.each([['memory'], ['sqlite']] as const)('projection fold on the %s store (projection@2)', (kind) => {
   it.each([[1000, 7], [10000, 5]] as const)('PF-M2x: %i events, full rebuild + pure fold + one-event increment', async (count, runs) => {
-    expect(MODEL_VERSION).toBe('projection@2');
+    expect(MODEL_VERSION).toBe('projection@3');
     const { store, engine } = await seed(kind, count);
     const tag = `${kind} ${count >= 1000 ? `${count / 1000}k` : count}`;
     const idBase = kind === 'memory' ? 20 : 26;

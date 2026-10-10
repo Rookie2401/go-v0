@@ -15,7 +15,7 @@ import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, k
 import { destroyRigs } from '../gopractice/helpers';
 import { makeTellRig, resetTellRig, typeInto, type TellRig } from '../gotell-ui/rig';
 import { HOME, SCREENS } from '../../packages/golearn-extension/app/app';
-import { chooseOnWelcome as appChoose, destroyRigs as destroyAppRigs, failingInstall as appFailingInstall, makeRig as makeAppRig, signIn as appSignIn } from '../golearn-app/helpers';
+import { downloadLanguage as appChoose, destroyRigs as destroyAppRigs, failingInstall as appFailingInstall, makeRig as makeAppRig, signIn as appSignIn } from '../golearn-app/helpers';
 import { initPopup } from '../../packages/golearn-extension/action/popup';
 import { createChromeFake } from '../extension/chromeFake';
 
@@ -214,16 +214,19 @@ describe('GoLearn setup application', () => {
     for (const s of [HOME, ...SCREENS]) { await rig.go(s.id); audit(rig.root, `app/${s.id} (signed out)`); }
     await appSignIn(rig);
     for (const s of [HOME, ...SCREENS]) { await rig.go(s.id); audit(rig.root, `app/${s.id}`); }
-    // Welcome is the whole of setup: its states too (a language ready, a pack that failed with its Retry button, the Advanced group open)
+    // the screens are the sign-in page, the languages page and Settings (SCREENS); the languages page in its states too:
+    // a language ready, a pack that failed with its Retry button, a Download language menu open, every Details open
     await appChoose(rig, 'sq');
-    audit(rig.root, 'app/welcome (language ready)');
+    audit(rig.root, 'app/languages (language ready)');
     rig.packs.nextInstall = appFailingInstall();
     await appChoose(rig, 'de');
-    audit(rig.root, 'app/welcome (pack failed, Retry)');
-    rig.q<HTMLDetailsElement>('#advanced-nav').open = true;
-    audit(rig.root, 'app/welcome (Advanced open)');
+    audit(rig.root, 'app/languages (pack failed, Retry)');
+    rig.q<HTMLDetailsElement>('#download-hi').open = true;
+    audit(rig.root, 'app/languages (Download language menu open)');
     for (const d of rig.root.querySelectorAll<HTMLDetailsElement>('#language-cards details')) d.open = true;
-    audit(rig.root, 'app/welcome (card details open)');
+    audit(rig.root, 'app/languages (Details open)');
+    expect(SCREENS.map((x) => x.id)).toEqual(expect.arrayContaining(['signin', 'languages', 'settings']));
+    expect(SCREENS.map((x) => x.id)).not.toContain('welcome');
     expect(audits.filter((a) => a.screen.startsWith('app/')).length).toBe(2 * (SCREENS.length + 1) + 4);
   }, 60_000);
 });

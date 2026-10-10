@@ -371,7 +371,7 @@ export interface RigOptions {
   config?: Deps['config'];
   transport?: (api: RepositoryApi) => Transport;
   /** Run as the extension's copy of GoPractice: the device's own Repository answers, and no account is needed. `true` makes a default one. */
-  local?: FakeLocalRepo | boolean | { worker?: boolean; activeLanguageId?: string };
+  local?: FakeLocalRepo | boolean | { worker?: boolean; activeLanguageId?: string; enrolments?: Array<Partial<Enrolment> & { languageId: string }> };
   links?: Deps['links'];
   /** Sign in as the default account before returning. */
   signedIn?: boolean;

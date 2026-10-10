@@ -53,6 +53,13 @@ export interface UnitKnowledge {
   analysisStatus?: AnalysisStatus;
   firstSeenAt?: string;
   lastSeenAt?: string;
+  /**
+   * projection@3: the learner's LATEST explicit self-assessment of this unit (an ItemMarked `known` = "I recognise it",
+   * `learning` = "New to me", `productive` = "I can use it"). A later mark replaces an earlier one (latest by event
+   * instant, then event id). `saved` and `ignore` are not statements about knowledge and never set it. Absent when the
+   * learner has never marked the unit.
+   */
+  selfMark?: { mark: 'known' | 'learning' | 'productive'; at: string };
   /** Projection algorithm version that produced this row. */
   modelVersion: string;
   /** Ids of the events folded into this row (count) and the last event id, so rebuilds can be compared. */

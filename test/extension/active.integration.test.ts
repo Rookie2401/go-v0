@@ -76,11 +76,12 @@ describe('GoLearn Active, real page to real worker', () => {
     await until(() => registry.size > 0);
     const m = marks();
     expect(m['golearn-met']).toEqual(['shtëpinë', 'shtëpinë']); // both paragraphs carry the looked-up word; exposure only so far
-    expect(Object.keys(m)).toEqual(['golearn-met']);
+    expect(Object.keys(m).sort()).toEqual(['golearn-met', 'golearn-new']);
+    expect(m['golearn-new']).toHaveLength(14); // every other word is new to the learner, and marked so
     const ping = await rig.fake.tabs!.sendMessage(7, { type: MSG.ping }) as { active: boolean; enabled: boolean; activeState: { scanned: number; marked: Record<string, number>; languageId?: string; reason?: string } };
     expect(ping.active).toBe(true);
     expect(ping.enabled).toBe(true); // the per-tab selection lookup is part of Active now
-    expect(ping.activeState).toMatchObject({ languageId: 'sq', scanned: 16, marked: { met: 2, assisted: 0, known: 0, produced: 0 } });
+    expect(ping.activeState).toMatchObject({ languageId: 'sq', scanned: 16, marked: { new: 14, met: 2, assisted: 0, known: 0, produced: 0 } });
     expect(ping.activeState.reason).toBeUndefined();
     expect(rig.log).toEqual([]); // the scan asked the device, never the service
     // 4. a batch of 60 ids is answered whole (not trimmed to four lemma ids as a long selection would be)
@@ -105,6 +106,17 @@ describe('GoLearn Active, real page to real worker', () => {
     expect(root?.textContent).toContain('shkoj');
     const st = await rig.page({ type: MSG.localRepo, op: 'status' });
     expect(st.events).toBeGreaterThanOrEqual(2); // SelectionLookedUp + AnalysisShown from the click
+    // the learner marks the word as recognised on the card: the device Repository keeps the mark, and the underline follows it on the next scan
+    (root!.querySelector('.rateBtn[data-mark="known"]') as HTMLButtonElement).click();
+    await until(() => (marks()['golearn-known'] ?? []).includes('shkon'), 4000);
+    expect(marks()['golearn-new']).not.toContain('shkon');
+    const know = await rig.content({ type: MSG.activeProfile, unitIds: ['lemma:sq:shkoj:VERB', 'form:sq:shkon'], languageId: 'sq' });
+    expect(Object.values(know.rows as Record<string, { selfMark?: { mark: string } }>).some((r) => r.selfMark?.mark === 'known')).toBe(true);
+    // "I can use it" (the mark the contract gained for this, projection@3): the underline becomes the hairline of a produced word
+    (root!.querySelector('.rateBtn[data-mark="productive"]') as HTMLButtonElement).click();
+    await until(() => (marks()['golearn-produced'] ?? []).includes('shkon'), 4000);
+    expect(marks()['golearn-known'] ?? []).not.toContain('shkon');
+    expect(root!.querySelector('.rateBtn[data-mark="productive"]')!.getAttribute('aria-pressed')).toBe('true');
     await rig.page({ type: MSG.active, op: 'set', patch: { active: false } });
     await flush(40);
     expect(registry.size).toBe(0);

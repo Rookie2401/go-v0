@@ -1,5 +1,5 @@
 /**
- * How GoLearn reads pages (an advanced screen, linked from the foot of Welcome). In the extension: installed, its version, how it is switched on. On the web: how to install it
+ * How GoLearn reads pages (an advanced screen, linked from the foot of the languages page and from Settings). In the extension: installed, its version, how it is switched on. On the web: how to install it
  * legitimately (a web page can never install an extension, and nothing here pretends to). What works, what does not.
  */
 import type { AppContext } from '../context';

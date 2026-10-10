@@ -61,8 +61,10 @@ export interface FoldState {
   contexts: Partial<Record<Dimension, Set<string>>>;
   difficulty: Partial<Record<Dimension, { sum: number; w: number }>>;
   events: Set<string>;
+  /** Event id of the observation behind the row's current `selfMark` (the tie-break when two marks share an instant); '' for a seeded row. */
+  selfMarkEventId: string;
 }
-export const newFoldState = (): FoldState => ({ seeded: false, eventOffset: 0, contextOffset: {}, contexts: {}, difficulty: {}, events: new Set() });
+export const newFoldState = (): FoldState => ({ seeded: false, eventOffset: 0, contextOffset: {}, contexts: {}, difficulty: {}, events: new Set(), selfMarkEventId: '' });
 
 function seed(state: FoldState, row: UnitKnowledge): void {
   state.seeded = true;
@@ -142,11 +144,19 @@ export function foldObservation(row: UnitKnowledge | undefined, o: Observation, 
 
   const dimensions = { ...base.dimensions, [dim]: e };
   state.events.add(o.eventId);
+  // projection@3: the LATEST explicit mark wins. "Latest" is the fold's own recency order: event instant, then event id. A max over
+  // that total order, so it is commutative like the other accumulations.
+  let selfMark = base.selfMark;
+  if (o.selfMark !== undefined) {
+    const c = selfMark === undefined ? 1 : compareAt(o.at, selfMark.at) || (o.eventId < state.selfMarkEventId ? -1 : o.eventId > state.selfMarkEventId ? 1 : 0);
+    if (c > 0) { selfMark = { mark: o.selfMark, at: o.at }; state.selfMarkEventId = o.eventId; }
+  }
   const lastCmp = base.lastSeenAt === undefined ? 1 : compareAt(o.at, base.lastSeenAt) || (o.eventId < (base.basis.lastEventId ?? '') ? -1 : o.eventId > (base.basis.lastEventId ?? '') ? 1 : 0);
   return {
     ...base,
     dimensions,
     ...deriveRow(dimensions),
+    ...(selfMark !== undefined ? { selfMark } : {}),
     firstSeenAt: base.firstSeenAt === undefined || compareAt(o.at, base.firstSeenAt) < 0 ? o.at : base.firstSeenAt,
     lastSeenAt: lastCmp > 0 ? o.at : base.lastSeenAt,
     modelVersion,

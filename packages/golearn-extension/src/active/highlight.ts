@@ -7,10 +7,11 @@
  */
 import { ACTIVE_LEVELS, type ActiveLevel } from './levels';
 
-export const HIGHLIGHT_NAMES: Record<ActiveLevel, string> = { met: 'golearn-met', assisted: 'golearn-assisted', known: 'golearn-known', produced: 'golearn-produced' };
+export const HIGHLIGHT_NAMES: Record<ActiveLevel, string> = { new: 'golearn-new', met: 'golearn-met', assisted: 'golearn-assisted', known: 'golearn-known', produced: 'golearn-produced' };
 
-/** The four underline styles: dotted and faint for a word only met, down to a hairline for one the learner has produced. */
+/** The five underline styles: dashed for a word not met yet, dotted and faint for one only met, down to a hairline for one the learner has produced. */
 export const ACTIVE_CSS = [
+  `::highlight(${HIGHLIGHT_NAMES.new}) { text-decoration: underline dashed; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.7); text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }`,
   `::highlight(${HIGHLIGHT_NAMES.met}) { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.5); text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }`,
   `::highlight(${HIGHLIGHT_NAMES.assisted}) { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.75); text-decoration-color: color-mix(in srgb, currentColor 65%, transparent); }`,
   `::highlight(${HIGHLIGHT_NAMES.known}) { text-decoration: underline solid; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.4); text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }`,
@@ -88,7 +89,7 @@ export function createHighlighter(doc: Document): Highlighter {
       }
     },
     counts() {
-      const out = { met: 0, assisted: 0, known: 0, produced: 0 };
+      const out: Record<ActiveLevel, number> = { new: 0, met: 0, assisted: 0, known: 0, produced: 0 };
       for (const level of ACTIVE_LEVELS) out[level] = highlights.get(level)?.size ?? 0;
       return out;
     },

@@ -2,7 +2,7 @@
 
 Turns learner events into multidimensional knowledge estimates, assistance preferences, review candidates, review
 eligibility and reading suitability. Imports only `../../repository-contract/src`. Implements `ProjectionEngine`
-(`createProjectionEngine`, `modelVersion = 'projection@2'`); consumes `EventLog`, `ProjectionStore`, `LinguisticStore`
+(`createProjectionEngine`, `modelVersion = 'projection@3'`); consumes `EventLog`, `ProjectionStore`, `LinguisticStore`
 (read only), `TombstoneStore` and `IdentityStore.listEnrolments`.
 
 **These estimates are hypotheses until calibrated against independent assessments.** Every number below is a first
@@ -59,8 +59,13 @@ An observation is `{unitId, dimension, outcome, weight, assisted, difficulty?, s
 | UnderstoodMarked `helpUsed: true` | assistedRecognition positive | 0.4 | 0.4 |
 | UnderstoodMarked `helpUsed: false` on a `phrase:` unit | **plus** phraseComprehension positive (self-report) | 0.3 | 0.4 |
 | ItemMarked `known` | readingRecognition positive | 0.2 | 0.3 (self-assertion) |
-| ItemMarked `learning` | readingRecognition negative | 0.2 | 0.3 |
+| ItemMarked `learning` ("New to me") | readingRecognition negative | 0.2 | 0.3 |
+| ItemMarked `productive` ("I can use it"; projection@3) | productiveRetrieval positive | 0.3 | 0.3 (self-assertion) |
 | ItemMarked `saved`, `ignore` | nothing (a bookmark is not evidence) | | |
+
+**Why `productive` weighs 0.3 x 0.3 = 0.09 (projection@3).** "I can use it" claims more than "I recognise it", so its ceiling (0.3) is above a `known` / `learning` mark's (0.2);
+but it is only a claim, made at the same low self-assertion reliability (0.3). A demonstrated retrieval (a recall / cloze card, a `mode: 'retrieval'` production) is 0.8 at reliability 1,
+nine times as much: a self-report must never outweigh the learner actually producing the word. The observation also carries `selfMark` (below) so the fold can keep the learner's latest explicit mark.
 | ListeningAssessed (`answerShownBefore: false`, else nothing) | listeningRecognition +/- by `correct`; `hinted` goes to assistedRecognition | 0.8 recorded voice, 0 for synthetic or unverified voices (never listening evidence; D8), x (1 - 0.3 if hinted) | 0.5 if `responseMode: 'self-report'`, else 1 |
 | CardReviewed recognition | readingRecognition +/- by `correct`; **on a `phrase:` unit phraseComprehension +/- instead** | 0.7 x grade factor | 1 |
 | CardReviewed recall, cloze | productiveRetrieval +/- by `correct`; **on a `phrase:` unit also phraseComprehension +/-** | 0.8 x grade factor (phrase comprehension 0.4 x grade factor) | 1 |
@@ -98,6 +103,9 @@ Per unit and dimension, using only commutative accumulations:
 - `confidence = weight / (weight + 2) x (1 - disagreement)`, `disagreement = 2 x min(positive, negative) / (positive + negative)`.
 - `lastAt` = max; `lastAssisted` = whether the latest observation was assisted (OR on a tie); `sourceReliability` = min;
   `difficulty` = weight-averaged mean over observations that reported one; `contexts` = number of distinct `sentenceKey`s.
+- `selfMark` (projection@3): the learner's **latest** explicit self-assessment of the unit, `{ mark: 'known' | 'learning' | 'productive', at }`, from ItemMarked. A later mark replaces an earlier one;
+  "latest" is the fold's own recency order (event instant, then event id), a maximum over a total order, so it is commutative like the sums. `saved` and `ignore` never set it; the field is absent for a unit never marked.
+  The marks still feed the dimensions as above (an earlier `learning` stays in readingRecognition's negative sum after a later `known`); `selfMark` is only what the learner said last.
 - Row: `firstSeenAt` = min `at`, `lastSeenAt` = max `at` over all observations (exposure included), `basis.events` = distinct events folded,
   `basis.lastEventId` = the event with the greatest `(at, id)`.
 - **Exposure encoding.** The contract's row has no counters field, so the exposure estimate holds them:
@@ -176,6 +184,8 @@ leverage, or a frequency rank <= 2000. Exposure alone excludes it. **A unit whos
 | explained-by-construction | x0.5 | applied to those forms' scores (a negative reason of half their score), **only when the construction candidate is itself eligible** |
 | wordFrequency | +0.15 / +0.1 | the unit's `frequency.rank` <= 500 / <= 2000 (a unit is a candidate on frequency alone up to 2000); no rank, no reason |
 | goalMatch | +0.05 | unit kind serves a goal (`GOAL_UNIT_KINDS`; `custom` serves none) |
+| selfMarkedNew | +0.2 | the unit's latest `selfMark` is `learning` ("New to me"): a candidate even with no lookup, detail "you marked it as new to you" (with the negative reading observation the mark itself records, a marked word outranks a merely looked-up one) |
+| (self-mark known / productive) | skip | the latest `selfMark` is `known` or `productive` ("I recognise it" / "I can use it") and **no lookup, assistance request or negative judgement is dated after the mark**: the unit is not proposed as a recognition item at all. Once such later evidence exists it is proposed again with `selfMarkContradicted` (weight 0, explanation only: "you marked it as ..., but later evidence disagrees"). Evidence from before the mark never contradicts it |
 | missionRelevance | +0.1 | the unit is in the pack's mission word list **if the pack facts expose one** (`LanguagePackInfo.missionUnitIds`, none today). Otherwise the rule is skipped and `candidates(..., { notes })` receives `MISSION_SKIPPED_NOTE` |
 | existingCoverage | -0.3 | only with `includeCovered`: the unit already has a card ("already covered"). By default such a unit is dropped |
 | priorReview | -0.15 | a CardReviewed within 2 days |

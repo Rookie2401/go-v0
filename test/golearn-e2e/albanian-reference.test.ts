@@ -137,7 +137,7 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
   let token = '';
   let constructionId = '';
 
-  it('1–5. launch GoLearn, create the account and choose Albanian on the Welcome page (no team: any learner picks any language; the Albanian pack installs by itself)', async () => {
+  it('1–5. launch GoLearn, create the account on the sign-in page and download Albanian on the languages page (no team: any learner picks any language; the Albanian pack installs by itself)', async () => {
     document.body.innerHTML = '<div id="app"></div>';
     window.location.hash = '';
     const deps: Deps = {
@@ -147,20 +147,20 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
     };
     app = createApp(document.getElementById('app')!, deps);
     await app.ready();
-    const go = async (route: string) => { await app!.go(route); await app!.ready(); await flush(); };
 
-    await go('welcome');
+    expect(app.current()).toBe('signin');
     choose(q('#acct-mode'), 'create');
     type(q<HTMLInputElement>('#acct-email'), EMAIL);
     type(q<HTMLInputElement>('#acct-password'), PASSWORD);
     submit(q<HTMLFormElement>('#acct-form'));
-    await until(() => /Account created/.test(q('#acct-form .status').textContent ?? ''), 8000);
+    await until(() => app!.current() === 'languages' && document.getElementById('flash'), 8000);
+    expect(q('#flash').textContent).toMatch(/Account created/);
     const session = (await area.get('golearn:session'))['golearn:session'] as { learnerId: string; token: string };
     learnerId = session.learnerId; token = session.token;
     expect(JSON.stringify(await area.get(null))).not.toContain(PASSWORD);
 
-    // since 2026-10-09 there are no teams in the apps: the Welcome page offers every language, and the enrolment names none.
-    // One click chooses Albanian (on the device and on the account) and installs its pack; there is no separate install or orientation step.
+    // since 2026-10-09 there are no teams in the apps: the languages page offers every language, and the enrolment names none.
+    // One click downloads Albanian (on the device and on the account) and installs its pack; there is no separate install or orientation step.
     expect(document.querySelector('#team')).toBeNull();
     q('#language-cards > [data-language="sq"] [data-action="choose"]').click();
     await until(() => /is ready|did not|could not/.test(q('#language-cards > [data-language="sq"] .status').textContent ?? ''), 20_000);
@@ -171,7 +171,8 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
     await flush(30);
     expect(q('#language-cards > [data-language="sq"] .verify').getAttribute('data-ok')).toBe('true');
     expect(q('#language-cards > [data-language="sq"] .status').textContent).toMatch(/Albanian is ready: [0-9]+ checks passed/);
-    await until(() => document.querySelector('.rail li[data-route="welcome"] .mark.done'));
+    await until(() => document.querySelector('#next-note'));
+    expect(q('#language-cards > [data-language="sq"] .mine').textContent).toContain('Downloaded · ready');
     app.destroy(); app = undefined;
   }, 60_000);
 

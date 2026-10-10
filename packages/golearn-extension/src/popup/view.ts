@@ -3,7 +3,7 @@
  * dictionary gloss, the learner-model consultation, the pack's explanations, the pronunciation state), and the
  * callbacks through which the card reports what the learner did. Pure data and types; no DOM.
  */
-import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation } from '../protocol';
+import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, SelfMark } from '../protocol';
 
 export type LayerName = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence';
 
@@ -28,6 +28,8 @@ export interface ProfileView {
   stale?: boolean;
   /** Why the model could not be consulted (state 'unavailable'). */
   reason?: 'needs-sign-in' | 'offline' | 'error';
+  /** The learner's latest own mark on the word, from the model's rows. */
+  selfMark?: SelfMark;
 }
 
 export interface ExplainView {
@@ -47,6 +49,8 @@ export interface CardView {
   profile: ProfileView;
   explain: ExplainView;
   saved: boolean;
+  /** The learner's own mark on this word, when they made one ("New to me" / "I recognise it" / "I can use it"). */
+  rated?: SelfMark;
   correction: CorrectionState;
 }
 
@@ -70,6 +74,8 @@ export interface CardActions {
   onPronounced?(p: PlayOutcome): void;
   /** "Review this". */
   onSave?(): void;
+  /** The learner said how well they know the word. */
+  onRate?(mark: SelfMark): void;
   /** "This analysis is wrong": the learner chose an alternative reading or typed a lemma. */
   onCorrect?(c: CorrectionInput): void;
 }

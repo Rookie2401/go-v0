@@ -9,7 +9,7 @@ export const SETUP_IDS: readonly string[] = ['language', 'pack'];
 
 export type Completion = Record<string, boolean>;
 
-/** Which screens are done. Setup by what is actually true; `welcome` is the whole of setup; the advanced screens by being opened. */
+/** Which screens are done. Setup by what is actually true; `languages` is the whole of setup; the advanced screens by being opened. */
 export async function computeCompletion(ctx: AppContext): Promise<Completion> {
   const [session, progress, active] = await Promise.all([ctx.state.getSession(), ctx.state.getProgress(), ctx.activeLanguage()]);
   const pack = active?.languageId ? ctx.deps.packs.packFor(active.languageId) : undefined;
@@ -17,7 +17,7 @@ export async function computeCompletion(ctx: AppContext): Promise<Completion> {
   const language = !!active;
   const installed = !!pack && progress.packs[pack.packId]?.ok === true;
   return {
-    welcome: language && installed,
+    languages: language && installed,
     language,
     pack: installed,
     account: !!session && !expired,

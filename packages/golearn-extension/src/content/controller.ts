@@ -23,11 +23,11 @@ import type { CardUI, DismissReason } from '../popup/card';
 import { initialView, type CardActions, type CardView, type CorrectionInput, type LayerName, type PlayOutcome } from '../popup/view';
 import { LookupTimer, type MetricsRow, type PerfLike } from '../metrics';
 import {
-  buildAnalysisShownEvent, buildAssistanceEvent, buildCorrectionEvent, buildNoPackEvent, buildPronunciationEvent, buildSavedEvent, buildSelectionEvent,
+  buildAnalysisShownEvent, buildAssistanceEvent, buildCorrectionEvent, buildMarkEvent, buildNoPackEvent, buildPronunciationEvent, buildSavedEvent, buildSelectionEvent,
   type StoredSourceRef, type Identity, type InteractionContext,
 } from '../store';
 import type { LookupTrigger } from '../platform';
-import { languageNameOf as knownLanguageName, type ProfileReply, type PublicStatus } from '../protocol';
+import { languageNameOf as knownLanguageName, type KnowledgeView, type ProfileReply, type PublicStatus, type SelfMark } from '../protocol';
 import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
@@ -146,6 +146,11 @@ export class LookupController {
 
   /** GoLearn Active: a selection lookup still waiting in the debounce is dropped (a click lookup of the same word is about to run). */
   cancelPendingLookup(): void { clearTimeout(this.debounce); }
+
+  private readonly recordListeners = new Set<(event: GoEvent) => void>();
+  /** Be told of every event this controller recorded successfully (GoLearn Active refreshes a word's underline after the learner marks it). Returns the unsubscribe. */
+  onRecorded(fn: (event: GoEvent) => void): () => void { this.recordListeners.add(fn); return () => { this.recordListeners.delete(fn); }; }
+  private notifyRecorded(event: GoEvent): void { for (const fn of this.recordListeners) { try { fn(event); } catch { /* a listener never breaks a lookup */ } } }
 
   /**
    * GoLearn Active: the language of the page, decided exactly as a lookup decides it (the learner's override, the book's or the
@@ -308,7 +313,7 @@ export class LookupController {
 
       // the source of the selection is read before the card is built so that every interaction can name it
       const sourceP = safeAsync(() => adapter.sourceRef());
-      const append = (ev: GoEvent) => this.d.store.append(ev);
+      const append = async (ev: GoEvent) => { const r = await this.d.store.append(ev); if (r.ok) this.notifyRecorded(ev); return r; };
       const services = this.d.services;
       const languageName = status && status.languageId === languageId ? status.languageName : languageNameOf(languageId);
       const askGloss = !!services && !!card.lemma && !card.unconfirmed && card.tokenCount === 1;
@@ -338,6 +343,13 @@ export class LookupController {
           });
         },
         onCorrect: (c) => { void this.correct(my, card, languageId, holder.ictx, c, record); },
+        onRate: (mark: SelfMark) => {
+          void record((c) => buildMarkEvent(c, mark)).then((ok) => {
+            if (my !== this.seq) return;
+            if (ok) { this.d.ui.update({ rated: mark }); this.d.ui.setFeedback(mark === 'learning' ? 'Marked as new to you.' : mark === 'known' ? 'Marked as recognised.' : 'Marked as one you can use.'); }
+            else this.d.ui.setFeedback('Could not save that. Try again.');
+          });
+        },
       };
 
       const anchor = usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed;
@@ -361,7 +373,7 @@ export class LookupController {
             if (!live()) return;
             const profile = profileViewFrom(card, reply);
             if (reply?.depth) this.currentDepth = reply.depth;
-            this.d.ui.update({ profile, ...(reply?.depth ? { depth: reply.depth, depthOrigin: reply.depthOrigin } : {}) });
+            this.d.ui.update({ profile, ...(profile.selfMark ? { rated: profile.selfMark } : {}), ...(reply?.depth ? { depth: reply.depth, depthOrigin: reply.depthOrigin } : {}) });
             arrived('profileArrived');
           }).catch(() => { if (live()) this.d.ui.update({ profile: { state: 'unavailable', weak: [] } }); }),
         );
@@ -674,5 +686,7 @@ export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined
   const weak = card.constructions.filter((c) => { const g = rows[c.unitId]?.dimensions.grammaticalUnderstanding; return !!g && g.negative > g.positive; }).map((c) => c.id);
   // an answer that carries an error is not evidence of "never met": without a cached row for the word, the model was not consulted
   if (reply.error && !row) return { state: 'unavailable', weak, reason: reply.error === 'needs-sign-in' ? 'needs-sign-in' : reply.error === 'offline' ? 'offline' : 'error' };
-  return { state: 'ready', met, recognition, weak, ...(reply.stale ? { stale: true } : {}) };
+  // the learner's own latest mark, over the word's rows (lemma and form)
+  const marks = [primary, card.formId].filter((id): id is string => !!id).map((id) => rows[id]?.selfMark).filter((m): m is NonNullable<KnowledgeView['selfMark']> => !!m).sort((a, b) => (a.at < b.at ? 1 : -1));
+  return { state: 'ready', met, recognition, weak, ...(reply.stale ? { stale: true } : {}), ...(marks[0] ? { selfMark: marks[0].mark } : {}) };
 }

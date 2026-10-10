@@ -8,8 +8,9 @@
  * background as text: this page never holds a token.
  */
 import { ACTIVE_LEVELS, LEVEL_LEGEND, type ActiveLevel } from '../src/active/levels';
+import { hasDeviceVoice } from '../src/content/voiceTags';
 import { MSG, getChrome, type ChromeApi } from '../src/platform';
-import { ACTIVE_ORIGINS, type ActiveReply, type ActiveSettings, type PageStatus } from '../src/protocol';
+import { ACTIVE_ORIGINS, languageNameOf, type ActiveReply, type ActiveSettings, type PageStatus } from '../src/protocol';
 import type { ActiveState } from '../src/content/active';
 
 export interface PopupHandle { refresh(): Promise<void> }
@@ -38,6 +39,19 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
       const s = (await chrome.runtime.sendMessage({ type: MSG.status })) as PageStatus | undefined;
       return s && s.ok === true ? s : undefined;
     } catch { return undefined; }
+  }
+
+  /** GoListen on this device: which of the chosen languages this browser can speak (the same strict voice rule the card uses). Albanian: never. */
+  function renderVoices(s: PageStatus | undefined): void {
+    const el = $('voices');
+    const synth = (globalThis as { speechSynthesis?: { getVoices(): Array<{ lang: string }> } }).speechSynthesis;
+    if (!s || !synth) { el.textContent = ''; return; }
+    let voices: Array<{ lang: string }> = [];
+    try { voices = synth.getVoices(); } catch { voices = []; }
+    const langs = s.installedLanguages ?? [s.languageId];
+    const yes = langs.filter((l) => hasDeviceVoice(l, voices)).map(languageNameOf);
+    const no = langs.filter((l) => !hasDeviceVoice(l, voices)).map(languageNameOf);
+    el.textContent = `Speaking on click uses a voice installed on this device: ${yes.length ? `yes for ${yes.join(', ')}` : 'none yet for your languages'}${no.length ? `; none for ${no.join(', ')}${no.includes('Albanian') ? ' (no device ships an Albanian voice)' : ' (add the language\'s voice in the system settings)'}` : ''}.`;
   }
 
   function renderStatus(s: PageStatus | undefined): void {
@@ -150,7 +164,9 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
   });
 
   async function refresh(): Promise<void> {
-    renderStatus(await status());
+    const s = await status();
+    renderStatus(s);
+    renderVoices(s);
     const a = await activeCall('get');
     showActive(a);
     await showPage(!!a?.settings.active);

@@ -67,8 +67,12 @@ export interface PageStatus extends PublicStatus {
 }
 
 export interface DimView { score: number; confidence: number; observations: number; positive: number; negative: number }
-/** A knowledge row as the content script sees it: the seven dimensions, no learner id. */
-export interface KnowledgeView { unitId: string; dimensions: Partial<Record<Dimension, DimView>>; lastSeenAt?: string }
+/** The learner's own statement about a word ("New to me" / "I recognise it" / "I can use it"): the `ItemMarked` marks that say something about knowledge. */
+export type SelfMark = 'learning' | 'known' | 'productive';
+export const SELF_MARKS: readonly SelfMark[] = ['learning', 'known', 'productive'];
+export const isSelfMark = (v: unknown): v is SelfMark => typeof v === 'string' && (SELF_MARKS as readonly string[]).includes(v);
+/** A knowledge row as the content script sees it: the dimensions, the learner's latest own mark if any, no learner id. */
+export interface KnowledgeView { unitId: string; dimensions: Partial<Record<Dimension, DimView>>; lastSeenAt?: string; selfMark?: { mark: SelfMark; at: string } }
 
 export interface ProfileRequest { unitIds: string[]; languageId: string }
 export interface ProfileReply {

@@ -101,8 +101,12 @@ export interface UserCorrectionPayload {
 export interface ReviewInvalidationPayload { reason: 'analysis-invalidated' | 'learner-removed' | 'pack-superseded'; analysisId?: string; cardId?: string }
 /** An explicit preference change (§9). */
 export interface PreferenceChangePayload { key: string; value: unknown; origin: 'explicit' }
-/** Explicit vocabulary save / known / still-learning marks. */
-export interface ItemMarkPayload { mark: 'saved' | 'known' | 'learning' | 'ignore' }
+/**
+ * Explicit vocabulary marks. `known` = "I recognise it", `learning` = "New to me", `productive` = "I can use it" (the
+ * GoLearn card's three self-assessment choices; `productive` was added with projection@3). `saved` and `ignore` are
+ * bookmarks, not statements about knowledge.
+ */
+export interface ItemMarkPayload { mark: 'saved' | 'known' | 'learning' | 'productive' | 'ignore' }
 /** The learner says they understood a sentence or passage (self-report; discounted by help used). */
 export interface UnderstoodPayload { scope: 'sentence' | 'passage'; helpUsed: boolean; tokenCount?: number }
 
@@ -245,7 +249,7 @@ const CHECKS: Record<string, Check> = {
   assistance: (p) => need(p, 'assistance', 'string'),
   playback: (p) => oneOf(p, 'voice', ['synthetic', 'recorded']),
   understood: (p) => [...oneOf(p, 'scope', ['sentence', 'passage']), ...need(p, 'helpUsed', 'boolean')],
-  'item-mark': (p) => oneOf(p, 'mark', ['saved', 'known', 'learning', 'ignore']),
+  'item-mark': (p) => oneOf(p, 'mark', ['saved', 'known', 'learning', 'productive', 'ignore']),
   'listening-assessment': (p) => [
     ...oneOf(p, 'stimulus', ['word', 'sentence']), ...oneOf(p, 'voice', ['synthetic', 'recorded']), ...need(p, 'correct', 'boolean'),
     ...oneOf(p, 'responseMode', ['choice', 'typed', 'spoken', 'self-report']),

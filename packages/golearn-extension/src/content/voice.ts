@@ -28,13 +28,11 @@ export interface DevicePronouncerOptions {
   voiceWaitMs?: number;
 }
 
-/** The language tags a device voice must carry for each language (GoListen matches them strictly, no neighbour language is ever "close enough"). */
-const DEVICE_TAGS: Record<string, string[]> = {
-  de: ['de-DE', 'de-AT', 'de-CH', 'de'], es: ['es-HN', 'es-ES', 'es-MX', 'es-US', 'es'], hi: ['hi-IN', 'hi'], th: ['th-TH', 'th'], nb: ['nb-NO', 'nb', 'no-NO', 'no'], nn: ['nn-NO', 'nn'],
-};
+import { DEVICE_TAGS } from './voiceTags';
+export { DEVICE_TAGS, hasDeviceVoice } from './voiceTags';
 
 function registryFor(languageId: string): VoiceRegistry {
-  return languageId === 'sq' ? albanianRegistry() : deviceRegistry(languageId, DEVICE_TAGS[languageId] ?? [languageId], languageNameOf(languageId));
+  return languageId === 'sq' ? albanianRegistry() : deviceRegistry(languageId, [...(DEVICE_TAGS[languageId] ?? [languageId])], languageNameOf(languageId));
 }
 
 export function createDevicePronouncer(opts: DevicePronouncerOptions): Pronouncer {

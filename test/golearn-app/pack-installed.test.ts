@@ -10,7 +10,7 @@ import { createPackBindings } from '../../packages/golearn-extension/app/binding
 import { packInstalledEvent } from '../../packages/golearn-extension/app/packEvent';
 import { EVENT_KEY_PREFIX } from '../../packages/golearn-extension/src/store';
 import { PACKS, levelOf, validationOf } from '../../packages/language-packs/src';
-import { SQ_FAKE, chooseOnWelcome, destroyRigs, failingInstall, fakeBackground, flush, makeRig, until, type Rig } from './helpers';
+import { SQ_FAKE, downloadLanguage, destroyRigs, failingInstall, fakeBackground, flush, makeRig, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -20,7 +20,7 @@ const installed = async (rig: Rig): Promise<GoEvent[]> =>
 describe('the installer records PackInstalled', () => {
   it('a passing install of an installable, machine-drafted pack: level installable, validation unreviewed, with the analyser', async () => {
     const rig = await makeRig();
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     const [ev, ...rest] = await installed(rig);
     expect(rest).toEqual([]);
     expect(ev.payload).toEqual({ packId: 'pack:sq', packVersion: '9', analyzerId: 'adapter-sq@9', analyzerVersion: '9', level: 'installable', validation: 'unreviewed' });
@@ -32,7 +32,7 @@ describe('the installer records PackInstalled', () => {
   it('an install whose validation case did not match is recorded as incomplete, never with the manifest’s more hopeful word', async () => {
     const rig = await makeRig();
     rig.packs.nextInstall = failingInstall(); // one validation case does not match
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     const [ev] = await installed(rig);
     expect(ev.payload).toMatchObject({ packId: 'pack:sq', level: 'installable', validation: 'incomplete' });
     expect(validateEvent(ev)).toEqual([]);
@@ -41,7 +41,7 @@ describe('the installer records PackInstalled', () => {
   it('an install that did not complete (no version) records nothing, and neither does a verification alone', async () => {
     const rig = await makeRig();
     rig.packs.nextInstall = { ok: false, message: 'fetch_failed: offline', checks: [{ id: 'fetch_failed', label: 'The install stopped (fetch_failed)', ok: false }] };
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     await flush(10);
     expect(await installed(rig)).toEqual([]);
     rig.q('[data-language="sq"] [data-action="verify"]').click();
@@ -53,7 +53,7 @@ describe('the installer records PackInstalled', () => {
   it('inside the extension the event goes to the background worker, as the extension’s own producer', async () => {
     const rig = await makeRig({ extension: true });
     const bg = fakeBackground(rig);
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     await until(() => bg.recorded.some((e) => e.kind === 'PackInstalled'));
     expect(bg.recorded.find((e) => e.kind === 'PackInstalled')).toMatchObject({ producer: { app: 'golearn-ext', surface: 'pack' }, payload: { packId: 'pack:sq', level: 'installable', validation: 'unreviewed' } });
   });

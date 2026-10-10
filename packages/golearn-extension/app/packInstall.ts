@@ -1,5 +1,5 @@
 /**
- * Installing a language pack, shared by the Welcome screen (which installs the pack of the language the learner just chose)
+ * Installing a language pack, shared by the languages page (which installs the pack of the language the learner just downloaded)
  * and Diagnostics (which holds the dictionary address). The install, its verification and its record are one operation here:
  * the installer's result, the learner's progress record (`golearn:pack:installed:<packId>`) and the `PackInstalled` event.
  */

@@ -69,11 +69,15 @@ nor the item id before the response (`hiddenBeforeAnswer`; the item tools are co
 | `gopractice:settings` | `{remoteSpeechConsent}` |
 | `gopractice:deviceId` | random device id |
 | `gopractice:profile` | cached enrolments (cleared at every account switch) |
-| `gopractice:active` | `{learnerId, enrolmentId}` — the one active language |
+| `gopractice:active` | `{learnerId, enrolmentId}` — the language the learner picked in the header switcher (remembered; wins over everything below) |
 | `gopractice:prefs:<learner>:<language>` | `ReviewPreferences` |
 | `gopractice:choices:<learner>` | "test later" notes (device-local) |
 | `gopractice:candidates:<learner>:<enrolment>` | last candidate list from the service (offline display) |
 | `u:<learnerId>:…` | one learner's data: `queue:*`, `rejected:*`, `quarantine:*`, `sync:*`, `log:*` (the local event log), `goreview:session:*` |
+
+With several enabled languages and no pick yet, the active language is the one of the **most recent reading event** (the newest `SelectionLookedUp` over all the
+learner's enrolments, from the local log and, on the device, the on-device Repository), then GoLearn's setup language, then the first enrolment; the header switcher lists every
+enrolled language and says "Albanian: the language you read most recently" when the language was chosen that way (`Identity.chosenBy`).
 
 Switching accounts clears the profile, the active language and the candidate caches, and never exposes another learner's
 `u:<id>:` rows; the previous learner's unsent events stay under their prefix (Settings can remove them). Storage is

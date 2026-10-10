@@ -178,6 +178,12 @@ export interface Identity {
   deviceId: string;
   email: string;
   enrolment: Enrolment;
+  /**
+   * How the active language was settled: `picked` = the learner chose it in GoPractice (remembered); `recent-reading` = none was chosen, so it is the
+   * language of the newest lookup the learner made while reading (any enrolled language); `setup` = the language chosen on GoLearn's setup page;
+   * `first` = nothing else was known, the first enrolment.
+   */
+  chosenBy?: 'picked' | 'recent-reading' | 'setup' | 'first';
 }
 
 export type { AppendOutcome };

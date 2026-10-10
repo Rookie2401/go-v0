@@ -86,10 +86,12 @@ describe('the scan', () => {
     const before = document.body.innerHTML;
     const s = await make().start({ speak: false });
     // 10 words of the sentence plus the link's text (links are text the learner reads; a click on one is left to the link); the field is not read
-    expect(s).toMatchObject({ on: true, supported: true, languageId: 'sq', scanned: 11, marked: { met: 2, assisted: 1, known: 1, produced: 1 } });
+    // the five met words get their level; the six other words are "new" (marked too, since 2026-10-10)
+    expect(s).toMatchObject({ on: true, supported: true, languageId: 'sq', scanned: 11, marked: { new: 6, met: 2, assisted: 1, known: 1, produced: 1 } });
     expect(s.reason).toBeUndefined();
     expect(document.body.innerHTML).toBe(before);
-    expect([...registry.keys()].sort()).toEqual(['golearn-assisted', 'golearn-known', 'golearn-met', 'golearn-produced']);
+    expect([...registry.keys()].sort()).toEqual(['golearn-assisted', 'golearn-known', 'golearn-met', 'golearn-new', 'golearn-produced']);
+    expect([...(registry.get('golearn-new') as FakeHighlight).ranges].map((r) => r.toString())).toEqual(['po', 'lexoj', 'një', 'të', 'në', 'time']);
     const known = registry.get('golearn-known')!;
     expect([...(known as FakeHighlight).ranges].map((r) => r.toString())).toEqual(['shtëpinë']);
     expect([...(registry.get('golearn-met') as FakeHighlight).ranges].map((r) => r.toString())).toEqual(['libër', 'libër']);
@@ -112,9 +114,31 @@ describe('the scan', () => {
     expect(a.state.scanned).toBe(5); // the four words of the new sentence and the link's
   });
 
+  it('a mark on the card ("New to me", "I recognise it") refreshes the word: its rows are asked again and the underline follows the mark', async () => {
+    const a = make();
+    await a.start({ speak: false });
+    expect(asked).toHaveLength(1);
+    const t = document.getElementById('p')!.firstChild as Text;
+    caretAt(t, SENTENCE.indexOf('shtëpinë') + 2);
+    click(document.getElementById('p')!);
+    await flush(60);
+    expect(rig.ui.isOpen()).toBe(true);
+    // the learner says the recognised word is new to them: the model is asked about it again (the fake has no mark, so the rows stay); the event is recorded
+    ROWS['lemma:sq:shtëpi:NOUN'] = { ...ROWS['lemma:sq:shtëpi:NOUN'], selfMark: { mark: 'learning', at: '2026-10-10T12:00:00.000Z' } };
+    (rig.ui.root()!.querySelector('.rateBtn[data-mark="learning"]') as HTMLButtonElement).click();
+    await flush(80);
+    expect((await rig.store.list()).map((e) => e.kind)).toContain('ItemMarked');
+    expect(asked.length).toBeGreaterThanOrEqual(2);
+    expect(asked.at(-1)).toContain('lemma:sq:shtëpi:NOUN');
+    expect([...(registry.get('golearn-new') as FakeHighlight).ranges].map((r) => r.toString())).toContain('shtëpinë');
+    expect(a.state.marked.known).toBe(0);
+    expect(rig.ui.root()!.querySelector('.rateBtn[data-mark="learning"]')!.getAttribute('aria-pressed')).toBe('true');
+    delete ROWS['lemma:sq:shtëpi:NOUN'].selfMark;
+  });
+
   it('without the learner model (no extension context) nothing is underlined and the state says why; without the highlight API likewise', async () => {
     const s = await make({ profile: undefined }).start({ speak: false });
-    expect(s.marked).toEqual({ met: 0, assisted: 0, known: 0, produced: 0 });
+    expect(s.marked).toEqual({ new: 0, met: 0, assisted: 0, known: 0, produced: 0 });
     expect(s.reason).toMatch(/learner model is not reachable/);
     active!.stop();
     w.CSS = undefined; w.Highlight = undefined;
@@ -186,7 +210,7 @@ describe('stop', () => {
   it('removes the underlines and the click handling, and a later start reads again', async () => {
     const a = make();
     await a.start({ speak: false });
-    expect(registry.size).toBe(4);
+    expect(registry.size).toBe(5);
     a.stop();
     expect(registry.size).toBe(0);
     expect(a.state).toMatchObject({ on: false, scanned: 0 });

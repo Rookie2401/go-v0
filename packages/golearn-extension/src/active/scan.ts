@@ -49,7 +49,11 @@ const HAS_LETTER = /\p{L}/u;
 const MARGIN_SCREENS = 1;
 
 export function createScanner(opts: ScannerOptions): Scanner {
-  const ignoreSel = [...(opts.ignore ?? []), `[${GOLEARN_HOST_ATTR}]`, '[contenteditable]:not([contenteditable="false"])', '[aria-hidden="true"]'].join(', ');
+  // page chrome is never the text the learner reads: navigation, banners, footers, menus, toolbars and dialogs are left unmarked (a site entry may add more)
+  const ignoreSel = [
+    ...(opts.ignore ?? []), `[${GOLEARN_HOST_ATTR}]`, '[contenteditable]:not([contenteditable="false"])', '[aria-hidden="true"]',
+    'nav', 'header', 'footer', '[role="navigation"]', '[role="banner"]', '[role="contentinfo"]', '[role="menu"]', '[role="menubar"]', '[role="toolbar"]', '[role="dialog"]', '[role="tooltip"]',
+  ].join(', ');
   const containerSel = (opts.containers ?? []).join(', ');
   const cache = new WeakMap<Text, { data: string; languageId: string; tokens: ScanToken[] }>();
 

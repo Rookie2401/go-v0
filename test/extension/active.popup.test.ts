@@ -43,7 +43,7 @@ describe('GoLearn Active in the popup', () => {
     expect($('active-status').textContent).toMatch(/^Off\. Nothing is read/);
     expect($('active-page').textContent).toBe('');
     expect($('active-legend').querySelectorAll('li')).toHaveLength(ACTIVE_LEVELS.length);
-    expect($('active-legend').textContent).toMatch(/Met.*Understood with help.*Recognised.*Produced/s);
+    expect($('active-legend').textContent).toMatch(/New.*Met.*Understood with help.*Recognised.*Produced/s);
   });
 
   it('switching on asks the browser for the host permission inside the click; a "no" keeps Active off and says so', async () => {

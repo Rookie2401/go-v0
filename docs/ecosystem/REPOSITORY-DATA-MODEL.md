@@ -106,7 +106,7 @@ after tombstone deletions, so a sync cursor never sees a seq twice.
 ## 4. Layer C — derived state
 
 `UnitKnowledge { learnerId, unitId, languageId, dimensions: Record<Dimension, DimensionEstimate>, retention
-{ estimate, halfLifeDays, basedOn }, uncertainty, analysisStatus?, firstSeenAt?, lastSeenAt?, modelVersion, basis
+{ estimate, halfLifeDays, basedOn }, uncertainty, analysisStatus?, firstSeenAt?, lastSeenAt?, selfMark?, modelVersion, basis
 { events, lastEventId? } }` with the seven dimensions `exposure, assistedRecognition, readingRecognition,
 listeningRecognition, productiveRetrieval, contextualProduction, grammaticalUnderstanding`; each `DimensionEstimate
 { score, confidence, observations, positive, negative, weight, lastAt?, lastAssisted?, contexts, difficulty?,
@@ -118,8 +118,9 @@ playback are exposure only; self-reports are discounted by source reliability; h
 correct writing moves `contextualProduction`, assisted writing `assistedRecognition`; accepting a correction moves
 nothing. `score = (0.5·1 + Σ w·[positive]) / (1 + Σ w)`, `confidence = Σw/(Σw+2) × (1 − disagreement)`; all updates
 are sums and maxima, so the fold is order-independent and a rebuild equals the live rows. Retention
-`strength × 2^(−days/halfLife)` with `halfLife = 2 + 3·Σw` days. `modelVersion = projection@2` on every row and on
-the cursor (projection@1 had seven dimensions; @2 adds `phraseComprehension` and the language-basis factors, see the engine README); a version change rebuilds everything. These are hypotheses until calibrated.
+`strength × 2^(−days/halfLife)` with `halfLife = 2 + 3·Σw` days. `modelVersion = projection@3` on every row and on
+the cursor (projection@1 had seven dimensions; @2 adds `phraseComprehension` and the language-basis factors; @3 adds `selfMark`, the learner's latest
+`known` / `learning` / `productive` ItemMarked, and the `productive` mark itself, see the engine README); a version change rebuilds everything. These are hypotheses until calibrated.
 
 `AssistancePreferences` (explanation depth, terminology, transliteration, pronunciation-first, translation
 availability, visual assistance, accessibility) with `origin: default | inferred | explicit` per field; explicit is

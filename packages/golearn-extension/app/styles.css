@@ -52,16 +52,18 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* shell: a rail of screens beside the page */
-.shell { display: grid; grid-template-columns: 17rem minmax(0, 1fr); min-height: 100vh; }
-.rail { background: var(--panel); border-inline-end: 1px solid var(--divider); padding: 1rem 1rem 1.5rem; position: sticky; top: 0; align-self: start; max-height: 100vh; overflow: auto; }
-.brand { font-size: .82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); margin: .1rem 0 1rem; padding-bottom: .75rem; border-bottom: 1px solid var(--rule); }
-.steps { list-style: none; margin: 0; padding: 0; }
-.steps li { margin: 0; }
-.steps li.group { margin-top: 1.2rem; font-size: .8rem; font-variant: small-caps; letter-spacing: .1em; text-transform: lowercase; color: var(--ink-faint); padding: 0 .5rem; }
-.steps a { display: flex; gap: .55rem; align-items: baseline; padding: .35rem .5rem; border-bottom: 1px solid var(--rule); border-radius: 0; color: var(--ink-soft); text-decoration: none; }
-.steps a:hover { background: color-mix(in srgb, var(--ink) 3.5%, transparent); color: var(--ink); padding-left: .8rem; }
-.steps a[aria-current="page"] { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); font-weight: 600; }
+/* shell: a slim top bar (brand, page title, Status, the cog) above the page */
+.shell { min-height: 100vh; }
+.topbar { display: flex; align-items: center; gap: .9rem; background: var(--panel); border-bottom: 1px solid var(--divider); padding: .45rem clamp(1rem, 4vw, 3rem); position: sticky; top: 0; z-index: 5; }
+.brand { font-size: .82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
+.topbar .brand:hover { text-decoration: none; color: var(--ink); }
+.topbar .page-title { flex: 1 1 auto; min-width: 0; color: var(--ink-soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar .page-title:not(:empty)::before { content: '·'; margin-inline-end: .9rem; color: var(--ink-faint); }
+.top-actions { display: flex; align-items: center; gap: .4rem; margin-inline-start: auto; }
+.top-link { color: var(--ink-soft); padding: .2rem .5rem; border-radius: 6px; }
+.top-link[aria-current="page"], .cog[aria-current="page"] { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); }
+.cog { display: inline-flex; align-items: center; justify-content: center; min-width: 2.4rem; min-height: 2.4rem; font-size: 1.45rem; line-height: 1; color: var(--ink-soft); border-radius: 6px; text-decoration: none; }
+.cog:hover, .top-link:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 5%, transparent); text-decoration: none; }
 .mark { display: inline-block; width: 1.1em; text-align: center; font-weight: 600; }
 .mark.done { color: var(--ok); }
 .mark.todo { color: var(--muted); }
@@ -141,22 +143,19 @@ table.examples th { font-weight: 600; font-size: 1.15rem; white-space: nowrap; }
 .pager { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 2.25rem; padding-top: 1.1rem; border-top: 1px solid var(--divider); }
 .finish-note { color: var(--muted); font-style: italic; }
 
-@media (max-width: 760px) {
-  .shell { grid-template-columns: 1fr; }
-  .rail { position: static; max-height: none; border-inline-end: 0; border-bottom: 1px solid var(--divider); }
-  .steps { display: flex; flex-wrap: wrap; gap: .25rem; }
-  .steps li.group { width: 100%; margin-top: .4rem; }
+@media (max-width: 560px) {
+  .topbar .page-title { display: none; }
 }
 
 /* motion: restrained and opacity-led, and only when the person has not asked for less */
 @keyframes screen-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: no-preference) {
   button, .btn { transition: border-color .15s, background-color .15s, opacity .15s; }
-  .steps a, .enrolments li, .status-list li { transition: padding-left .15s, background-color .15s; }
+  .enrolments li, .status-list li { transition: padding-left .15s, background-color .15s; }
   .screen > h1, .screen > .body { animation: screen-in .22s ease-out both; }
 }
 
-/* the language screen: six cards in one quiet column; the card the learner picked is marked by its rule, not by colour alone */
+/* the languages page: six compact rows in one quiet column; a downloaded row is marked by its rule, not by colour alone */
 .lang .native { font-weight: 400; font-style: italic; color: var(--muted); text-transform: none; letter-spacing: 0; }
 .lang h4 { font-size: .78rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); margin: .9rem 0 .2rem; }
 .lang .lang-name { font-size: 1.25rem; margin: 0 0 .2rem; }
@@ -165,7 +164,7 @@ table.examples th { font-weight: 600; font-size: 1.15rem; white-space: nowrap; }
 .status-note { font-weight: 600; margin: .4rem 0 1rem; }
 .status-note[data-state="synced"]::before { content: '✓ '; color: var(--ok); }
 
-/* Welcome: two parts on one page (the language cards, then the optional sign-in), the advanced group tucked away in the rail */
+/* Sections of a page (the languages, the account, the advanced links) */
 .part { margin: 2.25rem 0 1.5rem; }
 .part > h2 { font-size: .95rem; padding-bottom: .4rem; border-bottom: 1px solid var(--rule); margin-bottom: .9rem; }
 h3.sub { font-size: .85rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin: 1.2rem 0 .4rem; }
@@ -179,6 +178,46 @@ h3.sub { font-size: .85rem; font-weight: 600; letter-spacing: .14em; text-transf
 progress { width: 100%; max-width: 28rem; height: .6rem; accent-color: var(--accent); }
 .service-address { margin: 1.1rem 0 .4rem; }
 .footer-link { margin-top: 2.5rem; font-size: .95rem; }
-.steps li.group-box { margin-top: 1.2rem; }
-.steps details.advanced > summary { cursor: pointer; font-size: .8rem; font-variant: small-caps; letter-spacing: .1em; text-transform: lowercase; color: var(--ink-faint); padding: 0 .5rem; }
-.steps ol.sub { list-style: none; margin: .3rem 0 0; padding: 0; }
+
+/* a language row: name and level at the left, the Download language menu (or the downloaded state) at the right, feedback and Details under */
+.lang-rows { list-style: none; margin: .5rem 0; padding: 0; border-top: 1px solid var(--divider); }
+.lang-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 22rem); gap: .2rem 1.25rem; align-items: start; padding: .75rem .6rem; border-bottom: 1px solid var(--divider); border-inline-start: 3px solid transparent; }
+.lang-row.chosen { border-inline-start-color: var(--accent); }
+.lang-row[data-state="ready"] { border-inline-start-color: var(--ok); }
+.lang-row .lang-name { font-size: 1.2rem; margin: 0; }
+.lang-row .lang-level { margin: .1rem 0 0; font-size: .95rem; }
+.lang-actions { display: grid; gap: .4rem; justify-items: start; }
+.lang-feedback, .lang-row > details.about { grid-column: 1 / -1; }
+.lang-feedback .status:empty { display: none; }
+.lang-row > details.about { margin: .2rem 0 0; }
+.mine-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem; }
+.mine-list .mine { display: flex; gap: .4rem; flex-wrap: wrap; align-items: baseline; }
+.dl-state.ok { color: var(--ok); font-weight: 600; }
+.dl-state.error { color: var(--bad); font-weight: 600; }
+details.download { width: 100%; }
+details.download[hidden] { display: none; }
+details.download > summary { list-style: none; cursor: pointer; display: block; text-align: center; padding: .4rem .95rem; border-radius: 6px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); }
+details.download > summary::-webkit-details-marker { display: none; }
+details.download > summary::after { content: ' ▾'; }
+details.download[open] > summary::after { content: ' ▴'; }
+details.download .dl-panel { margin-top: .4rem; padding: .5rem .8rem .3rem; background: var(--panel); border: 1px solid var(--divider); border-radius: 6px; }
+details.download .dl-panel .field { margin: .2rem 0; max-width: none; }
+details.download .dl-panel .dl-note { font-size: .92rem; margin: .4rem 0; }
+.lang-row details.about .row { margin: .4rem 0; }
+.account-line { margin: .3rem 0 .6rem; font-size: .98rem; }
+
+/* the sign-in page: one quiet column */
+.signin { max-width: 28rem; margin: 0 auto; }
+.signin .hero-brand { font-size: 1.6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; text-align: center; color: var(--ink); margin: 0 0 .6rem; }
+.signin .lede { text-align: center; margin-inline: auto; }
+.signin .part { margin-top: 1.25rem; }
+.signin .skip-row { justify-content: center; margin-top: 1.1rem; }
+.signin > .muted { text-align: center; margin-inline: auto; }
+
+/* Settings: the advanced screens as a plain list of links */
+.settings-links { list-style: none; margin: .4rem 0; padding: 0; border-top: 1px solid var(--divider); }
+.settings-links li { padding: .55rem .3rem; border-bottom: 1px solid var(--divider); }
+
+@media (max-width: 640px) {
+  .lang-row { grid-template-columns: minmax(0, 1fr); }
+}

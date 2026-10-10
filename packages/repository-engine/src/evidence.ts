@@ -11,6 +11,9 @@
  *  (d) assisted observations feed `assistedRecognition`, never the independent dimensions;
  *  (e) a producer's declared `evidence.quality` / `evidence.sourceReliability` can lower a weight, never raise it;
  *  (j) a positive observation exists only when the payload itself says correct / usedCorrectly / understood;
+ *  (l) projection@3: an ItemMarked `productive` ("I can use it") is a self-report of production, so it feeds productiveRetrieval at a
+ *      much lower weight than a demonstrated retrieval (RULES.itemMark.productive); and a `known` / `learning` / `productive` mark also
+ *      travels on its observation as `selfMark`, so the fold can keep the learner's LATEST explicit self-assessment of the unit.
  *  (k) projection@2: a phrase is understood as a whole (`phraseComprehension`), never inferred from its words, and never from
  *      a request for help; and an encounter whose language was only detected or defaulted weighs less than a stated one
  *      (`LANGUAGE_BASIS_FACTOR`), while one whose language is undetermined (nothing was parsed) produces no observation.
@@ -40,7 +43,11 @@ export interface Observation {
   counter?: ExposureCounter;
   /** How the language of an exposure was settled (`override`, `detection`, ... or `missing` for a v2 event); exposure observations of encounters and lookups only. */
   languageBasis?: string;
+  /** projection@3: set on the observation of an ItemMarked `known` / `learning` / `productive`; the fold keeps the latest one per unit as `UnitKnowledge.selfMark`. */
+  selfMark?: SelfMark;
 }
+
+export type SelfMark = 'known' | 'learning' | 'productive';
 
 /** Multiplier applied to a weight by the producer's declared evidence quality. All <= 1: the engine never raises. */
 export const QUALITY_FACTOR = { none: 0, weak: 0.5, moderate: 0.8, strong: 1 } as const;
@@ -49,7 +56,16 @@ export const QUALITY_FACTOR = { none: 0, weak: 0.5, moderate: 0.8, strong: 1 } a
 export const RULES = {
   exposure: { encounter: 0.2, lookup: 0.3, assistance: 0.3, playback: 0.2, unjudgedProduction: 0.3 },
   understood: { weight: 0.4, reliability: 0.4 },
-  itemMark: { weight: 0.2, reliability: 0.3 },
+  itemMark: {
+    weight: 0.2, reliability: 0.3,
+    /**
+     * projection@3. "I can use it": a self-report of PRODUCTIVE knowledge, credited to productiveRetrieval. The claim is stronger than
+     * "I recognise it", so its ceiling (0.3) is above a known / learning mark's (0.2); but it is only a claim, made at the same low
+     * self-assertion reliability (0.3), so it counts 0.3 x 0.3 = 0.09, about a ninth of one demonstrated retrieval (a recall card or a
+     * retrieval ProductionRecorded: 0.8 x reliability 1). A self-report must never outweigh the learner actually producing the word.
+     */
+    productive: 0.3,
+  },
   listening: { recorded: 0.8, synthetic: 0, hintedDiscount: 0.3, selfReportReliability: 0.5 },
   card: { recognition: 0.7, recall: 0.8, cloze: 0.8, grade: { again: 1.0, hard: 0.6, good: 0.8, easy: 1.0 } },
   grammar: { weight: 0.8 },
@@ -122,6 +138,7 @@ interface Draft {
   /** Factor from the event's language basis (exposure of encounters and lookups only); absent = 1. */
   languageFactor?: number;
   languageBasis?: string;
+  selfMark?: SelfMark;
 }
 
 /**
@@ -160,6 +177,7 @@ export function observationsOf(event: GoEvent): Observation[] {
       if (sentenceKey) o.sentenceKey = sentenceKey;
       if (d.counter) o.counter = d.counter;
       if (d.languageBasis !== undefined) o.languageBasis = d.languageBasis;
+      if (d.selfMark !== undefined) o.selfMark = d.selfMark;
       out.push(o);
     }
   }
@@ -204,8 +222,10 @@ function draftsOf(e: GoEvent): Draft[] {
       return help ? general : [...general, ...one({ dimension: 'phraseComprehension', outcome: 'positive', base: R.phrase.selfReport, reliability: R.understood.reliability }, phrases)];
     }
     case 'ItemMarked': {
-      if (p.mark === 'known') return one({ dimension: 'readingRecognition', outcome: 'positive', base: R.itemMark.weight, reliability: R.itemMark.reliability });
-      if (p.mark === 'learning') return one({ dimension: 'readingRecognition', outcome: 'negative', base: R.itemMark.weight, reliability: R.itemMark.reliability });
+      if (p.mark === 'known') return one({ dimension: 'readingRecognition', outcome: 'positive', base: R.itemMark.weight, reliability: R.itemMark.reliability, selfMark: 'known' });
+      if (p.mark === 'learning') return one({ dimension: 'readingRecognition', outcome: 'negative', base: R.itemMark.weight, reliability: R.itemMark.reliability, selfMark: 'learning' });
+      // projection@3: "I can use it" is a self-report of production: a weak productiveRetrieval credit (see RULES.itemMark.productive).
+      if (p.mark === 'productive') return one({ dimension: 'productiveRetrieval', outcome: 'positive', base: R.itemMark.productive, reliability: R.itemMark.reliability, selfMark: 'productive' });
       return []; // saved / ignore: a bookmark is not evidence of knowledge either way
     }
     case 'ListeningAssessed': {
@@ -286,7 +306,7 @@ export function isPositiveTraceable(event: GoEvent, o: Pick<Observation, 'dimens
     case 'ListeningAssessed': case 'CardReviewed': case 'AssessmentAnswered': return p.correct === true;
     case 'ProductionRecorded': return p.usedCorrectly === true;
     case 'UnderstoodMarked': return o.dimension === 'readingRecognition' || o.dimension === 'phraseComprehension' ? p.helpUsed === false : p.helpUsed === true || event.evidence?.assisted === true;
-    case 'ItemMarked': return p.mark === 'known';
+    case 'ItemMarked': return p.mark === 'known' || p.mark === 'productive';
     default: return false;
   }
 }

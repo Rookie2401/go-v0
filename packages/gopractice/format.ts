@@ -8,6 +8,13 @@ export function unitLabel(unitId: string): string {
   return unitId;
 }
 
+/** English names of the languages GoLearn teaches (and a few more); an unknown code is returned as it is. */
+const LANGUAGE_NAMES: Record<string, string> = {
+  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', fr: 'French', it: 'Italian', pt: 'Portuguese', ru: 'Russian', ar: 'Arabic',
+  he: 'Hebrew', el: 'Greek', grc: 'Ancient Greek', la: 'Latin', en: 'English', tr: 'Turkish', pl: 'Polish', ja: 'Japanese', ko: 'Korean', zh: 'Chinese',
+};
+export const languageName = (languageId: string): string => LANGUAGE_NAMES[languageId.split('-')[0].toLowerCase()] ?? languageId;
+
 export const FAMILY_LABEL: Record<ExerciseFamily, string> = {
   'written-recognition': 'Recognition (meaning of a word)',
   'meaning-to-form': 'Retrieval (meaning to word)',

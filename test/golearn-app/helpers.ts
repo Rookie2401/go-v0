@@ -353,32 +353,35 @@ export function submit(form: HTMLFormElement): void {
   form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
 }
 
-/** Sign in through the Welcome screen's sign-in form. */
+/**
+ * Sign in through the sign-in page's form. The application moves on to the languages page by itself once the learner is in
+ * (what the form said is carried there as the #flash note), so this waits for that.
+ */
 export async function signIn(rig: Rig, email = 'ana@example.org', password = 'correct horse battery', create = false): Promise<void> {
   if (!create && !rig.service.accounts.has(email)) rig.service.accounts.set(email, { password, learnerId: `learner-${email.split('@')[0]}`, email });
-  await rig.go('welcome');
+  await rig.go('signin');
   choose(rig.q<HTMLSelectElement>('#acct-mode'), create ? 'create' : 'signin');
   type(rig.q<HTMLInputElement>('#acct-email'), email);
   type(rig.q<HTMLInputElement>('#acct-password'), password);
   submit(rig.q<HTMLFormElement>('#acct-form'));
-  await until(() => /Signed in as|Account created/.test(rig.q('#acct-form .status').textContent ?? ''));
+  await until(() => rig.app.current() === 'languages' && document.getElementById('language-cards'));
   await flush(10);
 }
 
-/** The card of a language on the Welcome screen. */
+/** The row of a language on the languages page. */
 export const cardOf = (rig: Rig, languageId: string): HTMLElement => rig.q(`#language-cards > [data-language="${languageId}"]`);
 export const cardStatus = (rig: Rig, languageId: string): string => cardOf(rig, languageId).querySelector('.status')?.textContent ?? '';
 
 /**
- * Choose a language the way a learner does: on its card on the Welcome screen (a written standard or regional preference first, when
- * given). Waits until the choice and the pack install have finished (the card says it is ready, or why it is not).
+ * Download a language the way a learner does: on its row on the languages page (a written standard or regional preference first,
+ * when given). Waits until the download and the pack install have finished (the row says it is ready, or why it is not).
  */
-export async function chooseOnWelcome(rig: Rig, languageId: string, variety?: string, timeout = 8000): Promise<string> {
-  if (rig.app.current() !== 'welcome') await rig.go('welcome');
+export async function downloadLanguage(rig: Rig, languageId: string, variety?: string, timeout = 8000): Promise<string> {
+  if (rig.app.current() !== 'languages') await rig.go('languages');
   const card = cardOf(rig, languageId);
   if (variety !== undefined) choose(card.querySelector<HTMLSelectElement>('select.variety')!, variety);
   card.querySelector<HTMLButtonElement>('[data-action="choose"]')!.click();
-  await until(() => /is ready|did not|is chosen, but|cannot be chosen|Choose the|two written|could not|no pack/i.test(cardStatus(rig, languageId)), timeout);
+  await until(() => /is ready|did not|is downloaded, but|cannot be downloaded|Choose the|two written|could not|no pack/i.test(cardStatus(rig, languageId)), timeout);
   await flush(5);
   return cardStatus(rig, languageId);
 }

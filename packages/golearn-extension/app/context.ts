@@ -64,6 +64,12 @@ export interface AppContext {
   chooseLanguage(input: { pack: PackView; varietyId?: string; standard?: 'nb' | 'nn' }): Promise<ChooseResult>;
   /** Switch to another enrolment already held on this device. */
   useEnrolment(e: Pick<Enrolment, 'enrolmentId' | 'languageId'> & Partial<Pick<Enrolment, 'varietyId' | 'packId'>>): Promise<void>;
+  /**
+   * Take a language off this device: its open enrolment in the on-device Repository ends (what was recorded stays under it, and the
+   * installed pack stays too). If it was the language being read, the next one still enrolled here takes over, else none is. The account
+   * copy is not touched.
+   */
+  removeEnrolment(e: Pick<Enrolment, 'enrolmentId' | 'languageId'>): Promise<void>;
   /** The one-time upload of this device’s history to the account just signed into; undefined when there is no local Repository or it failed. */
   uploadLocal(): Promise<number | undefined>;
   /** Release what the context holds open (the on-device Repository). */
@@ -252,6 +258,18 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       // the worker records against the active enrolment of the on-device Repository
       const local = await openLocal();
       if (local?.select) await tell(Promise.resolve(local.select(e.enrolmentId)));
+      hooks.changed();
+    },
+    async removeEnrolment(e) {
+      const local = await openLocal();
+      if (local) { try { await local.api.endEnrolment(e.enrolmentId); } catch { /* the choice below is cleared either way */ } }
+      const choice = await state.getChoice();
+      if (choice?.enrolmentId === e.enrolmentId) {
+        await state.clearChoice();
+        const rest = (await ctx.localEnrolments()).filter((x) => x.enrolmentId !== e.enrolmentId);
+        const next = rest[rest.length - 1];
+        if (next) await ctx.useEnrolment(next);
+      }
       hooks.changed();
     },
     async uploadLocal() {

@@ -15,8 +15,12 @@ import { compareAt, countersOf, dedupeEvents, foldObservations, isTombstoned, ma
 import type { ExposureCounters, UnitResolver } from './projection';
 import { estimateSuitability } from './suitability';
 
-/** projection@2: the eighth dimension (phraseComprehension) and language-basis weighting of exposure; a stored cursor at another version is rebuilt on the next read. */
-export const MODEL_VERSION = 'projection@2';
+/**
+ * projection@3: `UnitKnowledge.selfMark` (the learner's latest known / learning / productive mark) and the `productive` ItemMarked ("I can use it")
+ * credited to productiveRetrieval; the candidate rules read the mark. (projection@2: the eighth dimension, phraseComprehension, and language-basis
+ * weighting of exposure.) A stored cursor at another version is rebuilt on the next read.
+ */
+export const MODEL_VERSION = 'projection@3';
 const PAGE = 500;
 
 export type EngineStore = EventLog & ProjectionStore & LinguisticStore & TombstoneStore & Pick<IdentityStore, 'listEnrolments'>;
@@ -220,6 +224,13 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
       if (struggle) (struggles.get(o.unitId) ?? struggles.set(o.unitId, []).get(o.unitId)!).push(o.at);
     }
 
+    // Instants of evidence that could contradict a standing "I know it" self-mark: every lookup / assistance request and every negative judged observation.
+    const against = new Map<string, string[]>();
+    for (const o of observationsFromEvents(events, tombstones, resolve)) {
+      const contra = o.dimension === 'exposure' ? o.counter === 'lookup' || o.counter === 'assistance' : o.outcome === 'negative';
+      if (contra) (against.get(o.unitId) ?? against.set(o.unitId, []).get(o.unitId)!).push(o.at);
+    }
+
     // Constructions realised by forms the learner is in difficulty with (the evidence for grammaticalLeverage).
     const realizedBy = new Map<string, string[]>();
     for (const r of rows) {
@@ -241,7 +252,7 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     const missionUnits = Array.isArray(mission) ? new Set(mission.filter((m): m is string => typeof m === 'string')) : undefined;
 
     return rankCandidates({
-      rows, units, analyses, realizedBy, cards, goals: enrolment.goals, now: at, limit: opts?.limit ?? 20, struggles,
+      rows, units, analyses, realizedBy, cards, goals: enrolment.goals, now: at, limit: opts?.limit ?? 20, struggles, against,
       ...(missionUnits ? { missionUnits } : {}), ...(opts?.includeCovered ? { includeCovered: true } : {}), ...(opts?.notes ? { notes: opts.notes } : {}),
     });
   }

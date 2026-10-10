@@ -45,6 +45,7 @@
   .legend { margin: 4px 0 6px; padding-left: 18px; font-size: 0.875rem; color: var(--ink-soft); }
   .legend li { margin: 2px 0; }
   .legend .sw { color: var(--ink); text-underline-offset: 0.2em; }
+  .legend .sw-new { text-decoration: underline dashed; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }
   .legend .sw-met { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }
   .legend .sw-assisted { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-decoration-color: color-mix(in srgb, currentColor 65%, transparent); }
   .legend .sw-known { text-decoration: underline solid; text-decoration-thickness: 1px; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }
@@ -71,6 +72,7 @@
   <div class="status-line" id="active-status" role="status" aria-live="polite"></div>
   <div class="status-line" id="active-page" role="status" aria-live="polite"></div>
   <ul class="legend" id="active-legend" aria-label="What the underlines mean"></ul>
+  <div class="status-line muted" id="voices"></div>
   <div class="hint">Pages are read on this device only and nothing of them is kept; the words are matched against your own history here, never sent anywhere. A click speaks the word when this device has a voice for the language. Readers that refuse (Kindle, Kobo, readAwrite, MEB, Pratilipi) are never read. Switching on asks Brave once to let GoLearn read pages; switching off withdraws that.</div>
   <div class="err" id="error" role="status" aria-live="polite"></div>
   <hr>

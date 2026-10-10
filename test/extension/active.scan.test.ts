@@ -24,13 +24,13 @@ beforeEach(() => { document.body.innerHTML = PAGE; });
 const make = (over: Partial<Parameters<typeof createScanner>[0]> = {}) => createScanner({ doc: document, adapterOf: getAnalyser, viewport: 'all', ...over });
 
 describe('textNodes', () => {
-  it('reads paragraphs and skips hidden text, editable regions, form fields, the card host and text without letters', () => {
+  it('reads paragraphs and skips navigation, hidden text, editable regions, form fields, the card host and text without letters', () => {
     const ids = make().textNodes(document).map((n) => n.parentElement!.id || n.parentElement!.tagName);
-    expect(ids).toEqual(['A', 'p1', 'p2', 'chrome']);
+    expect(ids).toEqual(['p1', 'p2', 'chrome']); // the nav link is page chrome, not text the learner reads
   });
 
   it('a site entry\'s ignore list removes reader chrome; its containers limit the reading area', () => {
-    expect(make({ ignore: ['.reader-menu', 'nav'] }).textNodes(document).map((n) => n.parentElement!.id)).toEqual(['p1', 'p2']);
+    expect(make({ ignore: ['.reader-menu'] }).textNodes(document).map((n) => n.parentElement!.id)).toEqual(['p1', 'p2']);
     expect(make({ containers: ['#p2'] }).textNodes(document).map((n) => n.parentElement!.id)).toEqual(['p2']);
   });
 });

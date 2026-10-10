@@ -9,6 +9,7 @@
  * Routes:  #/review[/session | /history/<item> | /transfer]   #/tell   #/settings   #/signin
  */
 import { append, clear, h, p } from './dom';
+import { languageName } from './format';
 import { createContext, type AppContext, type Mode, type SyncView } from './context';
 import type { Deps } from './ports';
 import * as reviewScreen from './screens/review';
@@ -105,18 +106,19 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
       navEl.append(h('a', { href: `#/${r.id}`, 'data-route': r.id, ...(active ? { 'aria-current': 'page' } : {}) }, r.title));
     }
     navEl.hidden = mode === 'none';
+    // read first, then replace the switcher in one synchronous step: two header refreshes in flight must not both append to it
+    const list = mode !== 'none' ? await ctx.enrolments() : [];
+    const id = mode !== 'none' ? await ctx.identity() : undefined;
+    if (destroyed) return;
     clear(langWrap);
-    if (mode !== 'none') {
-      const list = await ctx.enrolments();
-      const id = await ctx.identity();
-      if (destroyed) return;
-      if (list.length) {
-        const select = h('select', { id: 'language-select', name: 'language', 'aria-label': 'Language' },
-          ...list.map((e) => h('option', { value: e.enrolmentId, ...(id?.enrolmentId === e.enrolmentId ? { selected: true } : {}) }, `${e.languageId}${e.varietyId ? ` (${e.varietyId})` : ''}`))) as HTMLSelectElement;
-        select.value = id?.enrolmentId ?? list[0].enrolmentId;
-        select.addEventListener('change', () => { void switchLanguage(select.value); });
-        langWrap.append(h('label', { class: 'language-label' }, h('span', { class: 'sr' }, 'Language '), select));
-      }
+    if (list.length) {
+      const select = h('select', { id: 'language-select', name: 'language', 'aria-label': 'Language' },
+        ...list.map((e) => h('option', { value: e.enrolmentId, ...(id?.enrolmentId === e.enrolmentId ? { selected: true } : {}) }, `${e.languageId}${e.varietyId ? ` (${e.varietyId})` : ''}`))) as HTMLSelectElement;
+      select.value = id?.enrolmentId ?? list[0].enrolmentId;
+      select.addEventListener('change', () => { void switchLanguage(select.value); });
+      langWrap.append(h('label', { class: 'language-label' }, h('span', { class: 'sr' }, 'Language '), select));
+      // none was picked here: say which one was chosen for the learner, and why, in one line
+      if (id?.chosenBy === 'recent-reading') langWrap.append(h('span', { class: 'language-note', id: 'language-note' }, `${languageName(id.languageId)}: the language you read most recently`));
     }
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required

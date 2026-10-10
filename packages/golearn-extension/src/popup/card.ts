@@ -16,7 +16,7 @@
  */
 import { GOLEARN_HOST_ATTR, type PopupAnchor } from '../contract/readerAdapter';
 import { contextLine, type CardModel, type EvidenceLabel } from '../parser/cardModel';
-import { languageNameOf } from '../protocol';
+import { languageNameOf, type SelfMark } from '../protocol';
 import {
   initialView, type CardActions, type CardView, type LayerName, type PlayResult, type PronounceAvailability, type Pronouncer,
 } from './view';
@@ -107,6 +107,9 @@ const CSS = `
 .tag { flex: none; margin-inline-start: auto; font-size: 0.66em; letter-spacing: .06em; text-transform: uppercase; padding: 0 5px; border-radius: 999px; border: 1px solid #cdbfa3; background: #f4eee0; color: #5c5346; white-space: nowrap; }
 .muted { opacity: .72; font-style: italic; }
 .actions { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
+.rate { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
+.rateLabel { font-size: 0.857em; letter-spacing: .06em; text-transform: uppercase; opacity: .75; margin-right: 2px; }
+.rateBtn[aria-pressed="true"] { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
 button, input { font: inherit; font-size: 0.95em; padding: 0.2em 0.75em; border-radius: 6px; border: 1px solid #8a7d68; background: #f7f2e8; color: #2b2620; }
 button { cursor: pointer; }
 button:hover:not(:disabled) { border-color: #8a6b40; }
@@ -202,7 +205,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let model: CardModel | undefined;
   let view: CardView = initialView('');
   let actions: CardActions = {};
-  let parts: { rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement; layers: Record<LayerName, { btn: HTMLButtonElement; panel: HTMLElement }>; fix: HTMLFormElement; save: HTMLButtonElement; wrong: HTMLButtonElement } | undefined;
+  let parts: { rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement; layers: Record<LayerName, { btn: HTMLButtonElement; panel: HTMLElement }>; fix: HTMLFormElement; save: HTMLButtonElement; wrong: HTMLButtonElement; rateBtns: Record<SelfMark, HTMLButtonElement> } | undefined;
   // `autoPlay`: the render token of a card that should speak once as soon as its voice is known to be available (GoLearn Active's "Speak on click")
   let pron: { available: boolean; note: string; playing: boolean; plays: number; off?: () => void; autoPlay?: number } = { available: false, note: '', playing: false, plays: 0 };
   let renderToken = 0;
@@ -316,10 +319,11 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function profileLine(v: CardView): { text: string; label: EvidenceLabel } | undefined {
     const p = v.profile;
     if (p.state === 'ready') {
-      if (!p.met) return { text: 'You have not met this word before, as far as GoLearn knows.', label: 'inference' };
+      const own = p.selfMark ? `. You marked it: ${p.selfMark === 'learning' ? 'new to you' : p.selfMark === 'known' ? 'recognised' : 'one you can use'}` : '';
+      if (!p.met) return { text: `You have not met this word before, as far as GoLearn knows${own ? own + '.' : '.'}`, label: 'inference' };
       const rec = p.recognition;
       const r = rec === undefined || rec === 'not-assessed' ? 'not assessed yet' : `${rec.level} (confidence ${rec.confidence.toFixed(2)})`;
-      return { text: `You have met this word ${p.met} time${p.met === 1 ? '' : 's'}; reading recognition: ${r}${p.stale ? ' (from saved data)' : ''}`, label: 'inference' };
+      return { text: `You have met this word ${p.met} time${p.met === 1 ? '' : 's'}; reading recognition: ${r}${p.stale ? ' (from saved data)' : ''}${own}`, label: 'inference' };
     }
     if (p.state === 'not-connected') return { text: 'Not connected: your history with this word is not shown. Open GoLearn setup to connect.', label: 'fact' };
     if (p.state === 'unavailable') {
@@ -502,6 +506,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (!parts) return;
     parts.save.disabled = view.saved;
     parts.save.textContent = view.saved ? 'Saved for review' : 'Review this';
+    for (const [mark, b] of Object.entries(parts.rateBtns) as Array<[SelfMark, HTMLButtonElement]>) b.setAttribute('aria-pressed', String(view.rated === mark));
     const c = view.correction;
     if (c.state === 'sending') setFeedback('Sending your correction…');
     else if (c.state === 'sent' || c.state === 'saved-locally' || c.state === 'error') setFeedback(c.message);
@@ -581,6 +586,15 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
     const save = h('button', { type: 'button', class: 'saveBtn' }, 'Review this') as HTMLButtonElement;
     save.addEventListener('click', () => { if (view.saved) return; try { actions.onSave?.(); } catch { /* reporting never blocks */ } });
+    // the learner's own word on how well they know it: three marks, the chosen one shown pressed (a new mark replaces it)
+    const rateBtns = {} as Record<SelfMark, HTMLButtonElement>;
+    const rate = h('div', { class: 'rate', role: 'group', 'aria-label': 'How well do you know this word?' }, h('span', { class: 'rateLabel' }, 'How well do you know it?'));
+    for (const [mark, label] of [['learning', 'New to me'], ['known', 'I recognise it'], ['productive', 'I can use it']] as Array<[SelfMark, string]>) {
+      const b = h('button', { type: 'button', class: 'rateBtn', 'data-mark': mark, 'aria-pressed': 'false' }, label) as HTMLButtonElement;
+      b.addEventListener('click', () => { if (view.rated === mark) return; try { actions.onRate?.(mark); } catch { /* reporting never blocks */ } });
+      rateBtns[mark] = b;
+      rate.append(b);
+    }
     const wrong = h('button', { type: 'button', class: 'wrongBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-fix' }, 'This analysis is wrong') as HTMLButtonElement;
     const fix = buildCorrectionForm(m);
     if (m.tokenCount !== 1 || !m.itemIds.length) { wrong.disabled = true; wrong.title = 'Corrections are for a single word.'; }
@@ -605,8 +619,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
     const actionsRow = h('div', { class: 'actions' }, say, layers.morphology.btn, layers['phrase-syntax'].btn, layers.grammar.btn, layers.sentence.btn, save, wrong, moreBtn);
-    parts = { rows, pronNote, say, layers, fix, save, wrong };
-    const wrapper = h('div', {}, top, word, rows, actionsRow, pronNote, layers.morphology.panel, layers['phrase-syntax'].panel, layers.grammar.panel, layers.sentence.panel, fix, more, feedbackEl, statusEl);
+    parts = { rows, pronNote, say, layers, fix, save, wrong, rateBtns };
+    const wrapper = h('div', {}, top, word, rows, actionsRow, rate, pronNote, layers.morphology.panel, layers['phrase-syntax'].panel, layers.grammar.panel, layers.sentence.panel, fix, more, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });

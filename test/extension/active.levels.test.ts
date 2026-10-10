@@ -41,16 +41,28 @@ describe('levelOfRow', () => {
 });
 
 describe('levelOfRows', () => {
-  it('takes the highest level over the lemma row and the form row', () => {
+  it('takes the highest level over the lemma row and the form row; a word with no row or no encounter is "new" (the unknown words are marked too, since 2026-10-10)', () => {
     expect(levelOfRows([row({ exposure: dim({ observations: 1 }) }), row({ readingRecognition: dim({ observations: 2, score: 0.8 }) })])).toBe('known');
-    expect(levelOfRows([undefined, undefined])).toBeUndefined();
-    expect(levelOfRows([])).toBeUndefined();
+    expect(levelOfRows([undefined, undefined])).toBe('new');
+    expect(levelOfRows([])).toBe('new');
+    expect(levelOfRows([row({})])).toBe('new');
+  });
+
+  it('the learner’s own mark decides outright: "New to me" is new whatever the evidence, "I recognise it" is known, "I can use it" is produced; the newest mark among the rows wins', () => {
+    const evidence = row({ readingRecognition: dim({ observations: 5, score: 0.9 }) });
+    expect(levelOfRows([{ ...evidence, selfMark: { mark: 'learning', at: '2026-10-10T10:00:00.000Z' } }])).toBe('new');
+    expect(levelOfRows([{ ...row({}), selfMark: { mark: 'known', at: '2026-10-10T10:00:00.000Z' } }])).toBe('known');
+    expect(levelOfRows([{ ...row({}), selfMark: { mark: 'productive', at: '2026-10-10T10:00:00.000Z' } }])).toBe('produced');
+    expect(levelOfRows([
+      { ...row({}), selfMark: { mark: 'productive', at: '2026-10-10T09:00:00.000Z' } },
+      { ...row({}), selfMark: { mark: 'learning', at: '2026-10-10T11:00:00.000Z' } },
+    ])).toBe('new');
   });
 });
 
 describe('the legend', () => {
-  it('names every level once, in order from the faintest, and states the thresholds it uses', () => {
-    expect(ACTIVE_LEVELS).toEqual(['met', 'assisted', 'known', 'produced']);
+  it('names every level once, in order from the least established, and states the thresholds it uses', () => {
+    expect(ACTIVE_LEVELS).toEqual(['new', 'met', 'assisted', 'known', 'produced']);
     for (const l of ACTIVE_LEVELS) { expect(LEVEL_LEGEND[l].title).toBeTruthy(); expect(LEVEL_LEGEND[l].style).toBeTruthy(); }
     expect(LEVEL_LEGEND.known.detail).toContain(String(LEVEL_RULES.known.minScore));
     expect(LEVEL_LEGEND.known.detail).toContain(`${LEVEL_RULES.known.minObservations}+`);

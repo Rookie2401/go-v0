@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { DEFAULT_SERVICE_URL, loadConfig, resolveServiceUrl, validateServiceUrl } from '../../packages/golearn-extension/app/config';
 import { KEYS, type Session } from '../../packages/golearn-extension/app/state';
 import { DEVICE_KEY } from '../../packages/golearn-extension/src/store';
-import { cardStatus, chooseOnWelcome, destroyRigs, fakeBackground, flush, makeRig, signIn, submit, type, until, choose } from './helpers';
+import { cardStatus, downloadLanguage, destroyRigs, fakeBackground, flush, makeRig, signIn, submit, type, until, choose } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -41,10 +41,10 @@ describe('the service address', () => {
   });
 });
 
-describe('Welcome: sign in (optional)', () => {
+describe('Sign-in page (optional)', () => {
   it('refuses an http, non-localhost service address and keeps the old one', async () => {
     const rig = await makeRig({ config: { serviceUrl: 'https://repository.example.org' } });
-    await rig.go('welcome');
+    await rig.go('signin');
     const input = rig.q<HTMLInputElement>('#svc-url');
     expect(input.value).toBe('https://repository.example.org');
     type(input, 'http://repository.example.org');
@@ -60,7 +60,7 @@ describe('Welcome: sign in (optional)', () => {
 
   it('accepts localhost over http and https, and an empty field returns to the default', async () => {
     const rig = await makeRig();
-    await rig.go('welcome');
+    await rig.go('signin');
     const input = rig.q<HTMLInputElement>('#svc-url');
     expect(input.value).toBe(DEFAULT_SERVICE_URL);
     type(input, 'http://localhost:9000/');
@@ -93,6 +93,7 @@ describe('Welcome: sign in (optional)', () => {
     expect(Object.keys(s!).sort()).toEqual(['email', 'enrolmentId', 'expiresAt', 'languageId', 'learnerId', 'token']);
     expect(s).toMatchObject({ email: 'ana@example.org', learnerId: 'learner-ana', enrolmentId: '', languageId: '', expiresAt: '2026-11-08T00:00:00.000Z' });
     expect(s!.token).toMatch(/^tok-learner-ana-/);
+    await rig.go('settings');
     expect(rig.q('#signed-in-as').textContent).toBe('Signed in as ana@example.org');
     // a dummy device id was created once and sent with the sign-in
     const device = (await rig.area.get(DEVICE_KEY))[DEVICE_KEY] as string;
@@ -102,7 +103,6 @@ describe('Welcome: sign in (optional)', () => {
     const dump = (rig.area as unknown as { dump(): Record<string, unknown> }).dump();
     expect(JSON.stringify(dump)).not.toContain('correct horse battery');
     for (const [k, v] of Object.entries(dump)) if (k !== KEYS.session) expect(JSON.stringify(v), k).not.toContain(s!.token);
-    expect((rig.q('#acct-password') as HTMLInputElement).value).toBe('');
   });
 
   it('adopts the newest enrolment the account already has', async () => {
@@ -127,12 +127,13 @@ describe('Welcome: sign in (optional)', () => {
     expect(second!.learnerId).not.toBe(first!.learnerId);
     expect(second!.token).not.toBe(first!.token);
     expect((await rig.area.get(KEYS.profile))[KEYS.profile]).toBeUndefined();
+    await rig.go('settings');
     expect(rig.q('#signed-in-as').textContent).toBe('Signed in as bo@example.org');
   });
 
   it('create account: refuses a short password before any request, then creates and signs in', async () => {
     const rig = await makeRig();
-    await rig.go('welcome');
+    await rig.go('signin');
     choose(rig.q('#acct-mode'), 'create');
     type(rig.q('#acct-email'), 'new@example.org');
     type(rig.q('#acct-password'), 'short');
@@ -148,7 +149,7 @@ describe('Welcome: sign in (optional)', () => {
   it('explains wrong credentials and an unreachable service plainly, and keeps nothing', async () => {
     const rig = await makeRig();
     rig.service.accounts.set('ana@example.org', { password: 'right password!', learnerId: 'l1', email: 'ana@example.org' });
-    await rig.go('welcome');
+    await rig.go('signin');
     type(rig.q('#acct-email'), 'ana@example.org');
     type(rig.q('#acct-password'), 'wrong password');
     submit(rig.q('#acct-form'));
@@ -166,6 +167,7 @@ describe('Welcome: sign in (optional)', () => {
     const rig = await makeRig();
     await signIn(rig);
     await rig.app.ctx.state.setProfile({ fetchedAt: 'x', email: 'ana@example.org', learnerId: 'l', enrolments: [] });
+    await rig.go('settings');
     rig.q('#acct-disconnect').click();
     await until(() => /Not signed in/.test(rig.text()));
     expect(rig.service.calls.map((c) => c.method)).toContain('deleteSession');
@@ -184,11 +186,12 @@ describe('connecting in the extension', () => {
     expect(rig.createApiCalls).toHaveLength(0); // this page made no request to the service itself
     const s = await sessionOf(rig.area);
     expect(s).toMatchObject({ email: 'ana@example.org' });
+    // the worker uploaded the device’s history and said how many; the page shows the count and made no upload of its own
+    expect(rig.q('#flash').textContent).toContain('Uploaded 3 events from this device to your account');
+    expect(rig.local.uploads).toHaveLength(0);
+    await rig.go('settings');
     expect(rig.q('#signed-in-as').textContent).toBe('Signed in as ana@example.org');
     expect(JSON.stringify((rig.area as unknown as { dump(): Record<string, unknown> }).dump())).not.toContain('correct horse battery');
-    // the worker uploaded the device’s history and said how many; the page shows the count and made no upload of its own
-    expect(rig.q('#acct-form .status').textContent).toContain('Uploaded 3 events from this device to your account');
-    expect(rig.local.uploads).toHaveLength(0);
   });
 
   it('create account goes to golearn:create-account; a refusal from the worker is shown as it is', async () => {
@@ -198,7 +201,7 @@ describe('connecting in the extension', () => {
     expect(bg.messages.map((m) => m.type)).toContain('golearn:create-account');
     // the worker refuses a wrong password: its words reach the screen, and nothing is kept
     rig.service.accounts.set('bo@example.org', { password: 'right password!', learnerId: 'l-bo', email: 'bo@example.org' });
-    await rig.go('welcome');
+    await rig.go('signin');
     choose(rig.q('#acct-mode'), 'signin');
     type(rig.q('#acct-email'), 'bo@example.org');
     type(rig.q('#acct-password'), 'wrong password');
@@ -229,6 +232,7 @@ describe('connecting in the extension', () => {
     const rig = await makeRig({ extension: true });
     const bg = fakeBackground(rig);
     await signIn(rig);
+    await rig.go('settings');
     rig.q('#acct-disconnect').click();
     await until(() => /Not signed in/.test(rig.text()));
     expect(bg.messages.map((m) => m.type)).toContain('golearn:disconnect');
@@ -238,7 +242,7 @@ describe('connecting in the extension', () => {
   it('the service address goes to the worker too (golearn:service-config), which validates and stores it', async () => {
     const rig = await makeRig({ extension: true });
     const bg = fakeBackground(rig);
-    await rig.go('welcome');
+    await rig.go('signin');
     type(rig.q('#svc-url'), 'https://repository.example.org/');
     rig.q('#svc-save').click();
     await until(() => bg.messages.some((m) => m.type === 'golearn:service-config'));
@@ -249,21 +253,85 @@ describe('connecting in the extension', () => {
 });
 
 describe('an account is optional and only keeps progress across devices', () => {
-  const pickSq = async (rig: Awaited<ReturnType<typeof makeRig>>): Promise<void> => { await chooseOnWelcome(rig, 'sq'); };
+  const pickSq = async (rig: Awaited<ReturnType<typeof makeRig>>): Promise<void> => { await downloadLanguage(rig, 'sq'); };
 
-  it('signing in is offered on the Welcome page, says the progress is on this device only, and nothing needs signing in', async () => {
+  it('the sign-in page is the first page: the brand, one sentence, the form, and a plain “Continue without an account” that says an account is optional', async () => {
     const rig = await makeRig();
-    await rig.go('welcome');
-    expect(rig.q('#screen h1').textContent).toBe('Welcome');
-    expect(rig.q('#sign-in h2').textContent).toBe('Sign in (optional)');
-    expect(rig.text()).toContain('your record follows you between devices');
+    expect(rig.app.current()).toBe('signin');
+    expect(rig.q('#signin')).toBeTruthy();
+    expect(rig.q('#screen h1').textContent).toBe('Sign in');
+    expect(rig.q('.topbar .brand').textContent).toBe('GoLearn');
+    expect(rig.q('.signin .hero-brand').textContent).toBe('GoLearn');
+    expect(rig.text()).toContain('select a word on a web page');
+    for (const id of ['#acct-form', '#acct-email', '#acct-password', '#acct-mode', '#acct-submit', '#service-address']) expect(rig.root.querySelector(id), id).not.toBeNull();
+    expect(rig.q<HTMLDetailsElement>('#service-address').open).toBe(false);
+    expect(rig.q('#continue-without-account').textContent).toBe('Continue without an account');
+    expect(rig.text()).toContain('An account is optional: it only keeps your progress across devices');
     expect(rig.q('#account-state').textContent).toBe('On this device only');
-    expect(rig.root.querySelector('#acct-not-now')).toBeNull(); // nothing to dismiss: it is a section of the page, not a step
-    // the old page is gone from the navigation; its address leads here
-    expect(rig.q('.rail').textContent).not.toContain('Keep your progress');
+    expect(rig.root.querySelector('#acct-not-now')).toBeNull();
+    expect(rig.q('#account-state').hidden).toBe(true); // a clean page: nothing is said about the account until someone signs in
+    // nothing on this page is the language list
+    expect(rig.root.querySelector('#language-cards')).toBeNull();
     await rig.go('home');
     expect(rig.q('#progress-mode').textContent).toContain('On this device only');
     expect(rig.createApiCalls).toHaveLength(0); // nothing was sent anywhere
+  });
+
+  it('“Continue without an account” moves on to the languages page and sends nothing anywhere', async () => {
+    const rig = await makeRig();
+    expect(rig.app.current()).toBe('signin');
+    rig.q('#continue-without-account').click();
+    await until(() => rig.app.current() === 'languages');
+    await rig.app.ready();
+    expect(window.location.hash).toBe('#/languages');
+    expect(rig.q('#language-cards')).toBeTruthy();
+    expect(rig.q('#account-line').getAttribute('data-state')).toBe('device');
+    expect(rig.root.querySelector('#flash')).toBeNull();
+    expect(await sessionOf(rig.area)).toBeUndefined();
+    expect(rig.createApiCalls).toHaveLength(0);
+    expect(rig.service.calls).toHaveLength(0);
+  });
+
+  it('creating an account on the sign-in page moves on to the languages page, which says who is signed in', async () => {
+    const rig = await makeRig();
+    await signIn(rig, 'new@example.org', 'a long enough password', true);
+    expect(rig.app.current()).toBe('languages');
+    expect(window.location.hash).toBe('#/languages');
+    expect(rig.q('#flash').textContent).toContain('Account created and signed in as new@example.org');
+    expect(rig.q('#account-line').getAttribute('data-state')).toBe('synced');
+    // the note is shown once
+    await rig.go('settings');
+    await rig.go('languages');
+    expect(rig.root.querySelector('#flash')).toBeNull();
+  });
+
+  it('a wrong password keeps the learner on the sign-in page', async () => {
+    const rig = await makeRig();
+    rig.service.accounts.set('ana@example.org', { password: 'right password!', learnerId: 'l1', email: 'ana@example.org' });
+    type(rig.q('#acct-email'), 'ana@example.org');
+    type(rig.q('#acct-password'), 'wrong password');
+    submit(rig.q('#acct-form'));
+    await until(() => /not accepted/.test(rig.q('#acct-form .status').textContent ?? ''));
+    await flush(20);
+    expect(rig.app.current()).toBe('signin');
+  });
+
+  it('Settings holds the account: signed in as … with sign-out, or “On this device only” with a link to the sign-in page', async () => {
+    const rig = await makeRig();
+    await rig.go('settings');
+    expect(rig.q('#settings-account h2').textContent).toBe('Account');
+    expect(rig.q('#account-state').textContent).toBe('On this device only');
+    expect(rig.q('#settings-signin').getAttribute('href')).toBe('#/signin');
+    expect(rig.root.querySelector('#acct-form, #svc-url')).toBeNull(); // the form lives on the sign-in page
+    await signIn(rig);
+    await rig.go('settings');
+    expect(rig.q('#signed-in-as').textContent).toBe('Signed in as ana@example.org');
+    expect(rig.q('#acct-disconnect').textContent).toBe('Sign out of this device');
+    expect(rig.q('#settings-signin').getAttribute('href')).toBe('#/signin');
+    // and the sign-in page remains reachable, with the form for another account
+    await rig.go('signin');
+    expect(rig.q('#acct-form')).toBeTruthy();
+    expect(rig.q('#signed-in-as').textContent).toBe('Signed in as ana@example.org');
   });
 
   it('signing in uploads the device’s history once, shows the count, and switches to “Synced to your account”', async () => {
@@ -271,8 +339,10 @@ describe('an account is optional and only keeps progress across devices', () => 
     await pickSq(rig);
     await signIn(rig);
     expect(rig.local.uploads).toHaveLength(1);
-    expect(rig.q('#acct-form .status').textContent).toContain('Uploaded 3 events from this device to your account');
-    expect(rig.q('#acct-form .status').textContent).toContain('Progress is now synced to your account');
+    expect(rig.q('#flash').textContent).toContain('Uploaded 3 events from this device to your account');
+    expect(rig.q('#flash').textContent).toContain('Progress is now synced to your account');
+    expect(rig.q('#account-line').textContent).toContain('Synced to your account as ana@example.org');
+    await rig.go('settings');
     expect(rig.q('#account-state').textContent).toBe('Synced to your account as ana@example.org');
     // the language chosen before the account is now also an enrolment on the account, and the session’s active one
     expect(rig.service.enrolments.map((e) => e.languageId)).toEqual(['sq']);
@@ -288,27 +358,27 @@ describe('an account is optional and only keeps progress across devices', () => 
     const rig = await makeRig();
     rig.local.uploadResult = { sent: 1 };
     await signIn(rig);
-    expect(rig.q('#acct-form .status').textContent).toContain('Uploaded 1 event from this device');
+    expect(rig.q('#flash').textContent).toContain('Uploaded 1 event from this device');
     await rig.app.ctx.signOut();
     rig.local.uploadFails = true;
     await signIn(rig, 'bo@example.org', 'another long password');
-    expect(rig.q('#acct-form .status').textContent).toMatch(/Signed in as bo@example\.org\./);
-    expect(rig.q('#acct-form .status').textContent).not.toMatch(/Uploaded/);
-    expect(rig.q('#acct-form .status').getAttribute('data-kind')).toBe('ok');
+    expect(rig.q('#flash').textContent).toMatch(/Signed in as bo@example\.org\./);
+    expect(rig.q('#flash').textContent).not.toMatch(/Uploaded/);
+    expect(rig.q('#flash').getAttribute('role')).toBe('status');
   });
 
   it('with nothing to upload it says so', async () => {
     const rig = await makeRig();
     rig.local.uploadResult = { sent: 0, duplicates: 0, failed: 0 };
     await signIn(rig);
-    expect(rig.q('#acct-form .status').textContent).toContain('Nothing needed uploading from this device');
+    expect(rig.q('#flash').textContent).toContain('Nothing needed uploading from this device');
   });
 
   it('signing out returns to this device alone: the choice and the local data stay, and nothing is cleared', async () => {
     const rig = await makeRig();
     await pickSq(rig);
     await signIn(rig);
-    await rig.go('welcome');
+    await rig.go('settings');
     rig.q('#acct-disconnect').click();
     await until(() => /Not signed in/.test(rig.text()));
     expect(rig.q('#account-state').textContent).toBe('On this device only');
@@ -341,14 +411,16 @@ describe('an account is optional and only keeps progress across devices', () => 
 describe('after sign-in everything that needs doing happens by itself', () => {
   it('a language chosen before signing in stays installed, becomes an enrolment on the account, and nothing is installed twice', async () => {
     const rig = await makeRig();
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     await signIn(rig);
     await until(() => rig.service.enrolments.length === 1);
     expect(rig.service.enrolments[0]).toMatchObject({ languageId: 'sq', packId: 'pack:sq' });
     expect(rig.local.uploads).toHaveLength(1);
     expect(rig.packs.installs).toHaveLength(1);
+    await rig.go('settings');
     expect(rig.q('#account-state').textContent).toBe('Synced to your account as ana@example.org');
-    expect(rig.q('#enrolments li').textContent).toContain('pack ready');
+    await rig.go('languages');
+    expect(rig.q('#language-cards [data-language="sq"] .mine').textContent).toContain('Downloaded · ready');
   });
 
   it('on a new device the account’s language gets its pack installed without a click', async () => {
@@ -359,7 +431,7 @@ describe('after sign-in everything that needs doing happens by itself', () => {
     await until(() => rig.packs.installs.length === 1);
     await until(() => /Albanian is ready/.test(cardStatus(rig, 'sq')));
     expect(cardStatus(rig, 'sq')).toContain('Taken from your account');
-    await until(() => rig.root.querySelector('.rail li[data-route="welcome"] .mark.done'));
+    await until(() => rig.root.querySelector('#next-note'));
     expect(rig.q('#next-note').textContent).toContain('GoLearn Active');
     // the account’s enrolment was used; no second one was made
     expect(rig.service.enrolments).toHaveLength(1);
@@ -368,7 +440,7 @@ describe('after sign-in everything that needs doing happens by itself', () => {
   it('a pack that failed before signing in is installed again after it', async () => {
     const rig = await makeRig();
     rig.packs.nextInstall = { ok: false, version: '9', checks: [{ id: 'sample-shard', label: 'A dictionary shard can be fetched and read', ok: false }] };
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     expect(rig.packs.installs).toHaveLength(1);
     rig.packs.nextInstall = { ok: true, version: '9', checks: [{ id: 'sample-shard', label: 'A dictionary shard can be fetched and read', ok: true }] };
     await signIn(rig);
@@ -376,14 +448,17 @@ describe('after sign-in everything that needs doing happens by itself', () => {
     await until(() => /Albanian is ready/.test(cardStatus(rig, 'sq')));
   });
 
-  it('signing out on the Welcome page keeps the languages and says the progress is on this device only', async () => {
+  it('signing out under Settings keeps the languages and says the progress is on this device only', async () => {
     const rig = await makeRig();
-    await chooseOnWelcome(rig, 'sq');
+    await downloadLanguage(rig, 'sq');
     await signIn(rig);
+    await rig.go('settings');
     rig.q('#acct-disconnect').click();
     await until(() => /Not signed in/.test(rig.text()));
     expect(rig.q('#account-state').textContent).toBe('On this device only');
-    expect(rig.q('#enrolments li').textContent).toContain('Albanian');
+    expect(rig.q('#settings-signin').getAttribute('href')).toBe('#/signin');
+    await rig.go('languages');
+    expect(rig.q('#language-cards [data-language="sq"] .mine').textContent).toContain('Downloaded · ready');
     expect(rig.q('#next-note').textContent).toContain('GoLearn Active');
   });
 

@@ -102,7 +102,7 @@ export function randomEvent(rand: () => number, i: number): GoEvent {
     case 3: return play(ids, o);
     case 4: return ev('ListeningCompleted', ids, { voice: 'recorded' }, o);
     case 5: return ev('UnderstoodMarked', ids, { scope: 'sentence', helpUsed: hinted }, o);
-    case 6: return ev('ItemMarked', ids, { mark: pick(['known', 'learning', 'saved', 'ignore']) }, o);
+    case 6: return ev('ItemMarked', ids, { mark: pick(['known', 'learning', 'productive', 'saved', 'ignore']) }, o);
     case 7: return listening(ids, correct, { hinted, voice: pick(['recorded', 'synthetic']), ...d }, o);
     case 8: return card(ids, pick(['recognition', 'recall', 'cloze'] as const), correct, { hinted, grade: pick(['again', 'hard', 'good', 'easy']), ...d }, o);
     case 9: return grammar(ids, 'morph:sq:NOUN:X', correct, { hinted, ...d }, o);

@@ -110,7 +110,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         h('thead', {}, h('tr', {}, h('th', {}, 'Pack'), h('th', {}, 'Installed'), h('th', {}, 'Available'), h('th', {}, 'State'))),
         h('tbody', {}, ...updates.map((u) => h('tr', { 'data-pack': u.packId, 'data-state': u.state }, h('th', { scope: 'row' }, u.name), h('td', {}, u.installed ?? '—'), h('td', {}, u.available), h('td', {}, STATE_TEXT[u.state]))))),
       p(serviceUpdate.charAt(0).toUpperCase() + serviceUpdate.slice(1) + '.', 'muted'),
-      p('There are no automatic updates in this build. A newer pack is installed by pressing Reinstall under its language on the Welcome page; a newer extension is installed the way the first one was.', 'notice'),
+      p('There are no automatic updates in this build. A newer pack is installed by pressing Reinstall under Details on its language on the Languages page; a newer extension is installed the way the first one was.', 'notice'),
     ]);
   }
 

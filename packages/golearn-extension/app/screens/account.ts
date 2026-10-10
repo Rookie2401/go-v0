@@ -1,5 +1,5 @@
 /**
- * Sign in (optional; a section of the Welcome screen). Without an account everything stays on this device; signing in keeps
+ * Sign in (optional): the form on the sign-in page, and the account state with sign-out under Settings. Without an account everything stays on this device; signing in keeps
  * the learner’s progress across devices: what is already on this device is uploaded once, the languages chosen here become
  * enrolments on the account, and from then on the two are kept in step. Signing out returns to the device alone and removes nothing.
  * The service address (create account / sign in go there) is kept as an advanced detail under the form.
@@ -20,20 +20,35 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export { explainFailure } from '../errors';
 
 export interface AccountHooks {
-  /** The learner signed in (or created the account): finish what the language choice still needs. */
-  signedIn(): Promise<void>;
+  /** The learner signed in (or created the account); `message` is what the form said about it (who, and what was uploaded). */
+  signedIn(message: string): Promise<void>;
   /** The learner signed out. */
   signedOut(): Promise<void>;
 }
 
-export async function renderAccountSection(el: HTMLElement, ctx: AppContext, view: View, hooks: AccountHooks): Promise<void> {
+export interface AccountOptions {
+  /**
+   * true (default): the sign in / create form and the service address, as on the sign-in page.
+   * false: only who is signed in and the way out (the Account section of Settings); the form is a link to the sign-in page.
+   */
+  form?: boolean;
+  /** The paragraph above the account state; false = none (the page has its own words). */
+  intro?: string | false;
+  /** Say nothing about the account while nobody is signed in (the sign-in page: the form is the whole of it). */
+  quiet?: boolean;
+}
+
+const ACCOUNT_INTRO = 'Signing in is optional. Without an account everything you do stays on this device and GoLearn works exactly the same. With one, what is already on this device is uploaded once, your languages are saved on the account, and your record follows you between devices.';
+
+export async function renderAccountSection(el: HTMLElement, ctx: AppContext, view: View, hooks: AccountHooks, opts: AccountOptions = {}): Promise<void> {
+  const withForm = opts.form !== false;
   const stateBox = h('p', { id: 'account-state', class: 'status-note', role: 'status' });
   const sessionBox = h('div', { id: 'account-session' });
   const formBox = h('div', { id: 'account-form-box' });
   const serviceBox = h('details', { class: 'service-address', id: 'service-address' });
   append(el, [
-    p('Signing in is optional. Without an account everything you do stays on this device and GoLearn works exactly the same. With one, what is already on this device is uploaded once, your languages are saved on the account, and your record follows you between devices.'),
-    stateBox, sessionBox, formBox, serviceBox,
+    opts.intro === false ? null : p(opts.intro ?? ACCOUNT_INTRO),
+    stateBox, sessionBox, withForm ? formBox : null, withForm ? serviceBox : null,
   ]);
 
   // ── service address
@@ -61,7 +76,13 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
     if (!view.alive()) return;
     stateBox.textContent = s ? `Synced to your account as ${s.email}` : 'On this device only';
     stateBox.setAttribute('data-state', s ? 'synced' : 'device');
-    if (!s) { sessionBox.append(p('Not signed in. GoLearn works on this device without an account; nothing is sent anywhere.', 'muted')); return; }
+    stateBox.hidden = !!opts.quiet && !s;
+    if (!s && opts.quiet) return;
+    if (!s) {
+      sessionBox.append(p('Not signed in. GoLearn works on this device without an account; nothing is sent anywhere.', 'muted'));
+      if (!withForm) sessionBox.append(h('p', {}, h('a', { href: '#/signin', id: 'settings-signin' }, 'Sign in or create an account (optional)')));
+      return;
+    }
     const expired = Date.parse(s.expiresAt) <= ctx.deps.now().getTime();
     const out = statusLine();
     append(sessionBox, [
@@ -75,10 +96,13 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
         await hooks.signedOut();
       }, { id: 'acct-disconnect' })),
       out,
-      p('Signing in with another account replaces this session and clears the cached profile on this device.', 'muted'),
+      withForm
+        ? p('Signing in with another account replaces this session and clears the cached profile on this device.', 'muted')
+        : h('p', {}, h('a', { href: '#/signin', id: 'settings-signin' }, 'Sign in with another account')),
     ]);
   }
   await paintSession();
+  if (!withForm) return;
 
   // ── sign in / create
   const mode = h('select', { id: 'acct-mode', name: 'mode' }, h('option', { value: 'signin' }, 'Sign in'), h('option', { value: 'create' }, 'Create an account')) as HTMLSelectElement;
@@ -109,10 +133,11 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
       try {
         const r = await ctx.signIn({ email: addr, password: secret, create: creating });
         const sent = r.ok && r.uploaded !== undefined ? ` ${r.uploaded === 0 ? 'Nothing needed uploading from this device.' : `Uploaded ${r.uploaded} event${r.uploaded === 1 ? '' : 's'} from this device to your account.`} Progress is now synced to your account.` : r.ok ? ' Progress is now synced to your account.' : '';
-        setStatus(status, r.ok ? (creating ? `Account created and signed in as ${addr}.` : `Signed in as ${addr}.`) + sent : r.message, r.ok ? 'ok' : 'error');
+        const said = r.ok ? (creating ? `Account created and signed in as ${addr}.` : `Signed in as ${addr}.`) + sent : r.message;
+        setStatus(status, said, r.ok ? 'ok' : 'error');
         if (r.ok) {
           await paintSession();
-          await hooks.signedIn();
+          await hooks.signedIn(said);
         }
       } finally {
         password.value = ''; // the password is never kept

@@ -3,7 +3,7 @@
  * Prompt 6 §14 — the complete feedback loop for one Albanian learner, 43 steps, over the ACTUAL applications and the
  * ACTUAL Repository:
  *   - the Repository service (`handle`, SQLite in memory, real scrypt, real linguistics and projection engine);
- *   - GoLearn: the real setup application (the Welcome page: sign in, choose the language, whose pack installs by itself), the real background worker
+ *   - GoLearn: the real setup application (the sign-in page, then the languages page: download the language, whose pack installs by itself), the real background worker
  *     with the real Albanian pack (dictionary shards read from public/dict/sq), the real content-script controller and
  *     card on a page;
  *   - GoPractice: the real shell (`createApp`) with GoReview's real builders, scheduler, intake, planner, runner and
@@ -245,7 +245,7 @@ beforeAll(() => {
 afterAll(async () => { controller?.dispose(); practice?.destroy(); restoreLayout(); await store.close(); });
 
 describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', () => {
-  it('1–4. the learner is created and chooses Albanian on the Welcome page, whose pack installs by itself', async () => {
+  it('1–4. the learner is created on the sign-in page and downloads Albanian on the languages page, whose pack installs by itself', async () => {
     document.body.innerHTML = '<div id="app"></div>';
     window.location.hash = '';
     const deps: SetupDeps = {
@@ -257,12 +257,13 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
     await setup.ready();
     const open = async (route: string) => { await setup!.go(route); await setup!.ready(); await flush(); };
 
-    await open('welcome');                                                             // 1. create a learner (the Welcome page: sign in, optional)
+    expect(setup.current()).toBe('signin');                                            // 1. create a learner (the first page of a first run: sign in, optional)
     choose(q('#acct-mode'), 'create');
     type(q<HTMLInputElement>('#acct-email'), EMAIL);
     type(q<HTMLInputElement>('#acct-password'), PASSWORD);
     submit(q<HTMLFormElement>('#acct-form'));
-    await until(() => /Account created/.test(q('#acct-form .status').textContent ?? ''), 8000);
+    await until(() => setup!.current() === 'languages' && document.getElementById('flash'), 8000);   //    the app moves on to the languages page by itself
+    expect(q('#flash').textContent).toMatch(/Account created/);
     const session = (await area.get('golearn:session'))['golearn:session'] as { learnerId: string; token: string };
     learnerId = session.learnerId; token = session.token;
     learnerDevice = ((await area.get(null)) as Record<string, unknown>)['golearn:deviceId'] as string ?? (session as { deviceId?: string }).deviceId ?? learnerDevice;
@@ -270,7 +271,7 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
     api = createRepositoryApi({ baseUrl: BASE, fetch: serviceFetch, token });
 
     expect(document.getElementById('team')).toBeNull();                               // 2. choose Albanian: any learner may pick any language; no team is asked for.
-    q('#language-cards > [data-language="sq"] [data-action="choose"]').click();       //    One click enrols (on the device and on the account) and installs the pack.
+    q('#language-cards > [data-language="sq"] [data-action="choose"]').click();       //    “Download Albanian”: one click enrols (on the device and on the account) and installs the pack.
     await until(() => /is ready|did not|could not/.test(q('#language-cards > [data-language="sq"] .status').textContent ?? ''), 20_000);
     const enrolment = (await store.listEnrolments(learnerId))[0];
     enrolmentId = enrolment.enrolmentId;
@@ -282,10 +283,11 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
     await until(() => document.querySelector('#language-cards > [data-language="sq"] .verify'), 15_000);
     expect(q('#language-cards > [data-language="sq"] .verify').getAttribute('data-ok')).toBe('true');
     expect(q('#language-cards > [data-language="sq"] .status').textContent).toMatch(/Albanian is ready: [0-9]+ checks passed/);
-    await until(() => document.querySelector('.rail li[data-route="welcome"] .mark.done'));
-    // 4. there is no orientation in setup any more: the old links lead to the Welcome page
+    await until(() => document.querySelector('#next-note'));
+    expect(q('#language-cards > [data-language="sq"] .mine').textContent).toContain('Downloaded · ready');
+    // 4. there is no orientation in setup any more: the old links lead to the languages page
     await open('tutorial');
-    expect(setup!.current()).toBe('welcome');
+    expect(setup!.current()).toBe('languages');
     setup.destroy(); setup = undefined;
   }, 90_000);
 

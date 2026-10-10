@@ -29,6 +29,14 @@ export const CANDIDATE_RULES = {
   expectedBenefit: { weight: 0.1, confidenceFrom: 0.2, confidenceTo: 0.7 },
   /** A unit in the pack's mission word list (only when the pack facts expose one). */
   missionRelevance: { weight: 0.1 },
+  /**
+   * projection@3, the learner's own latest mark (`UnitKnowledge.selfMark`). "New to me" (`learning`) is a direct request for help: a strong
+   * recognition candidate (0.2, the same as weakButSeen; with the demonstratedError its negative reading observation already earns, a marked word
+   * outranks a merely looked-up one). "I recognise it" / "I can use it" (`known` / `productive`) is a standing claim: the unit is NOT proposed
+   * as a recognition item while no evidence dated after the mark disagrees (a later lookup, assistance request, or failed judgement). Once such
+   * evidence exists the unit is proposed again and the reason `selfMarkContradicted` (weight 0, explanation only) says so.
+   */
+  selfMark: { learningWeight: 0.2 },
   /** benefit (sum of the positive reasons) over burden (cost): a cheap, valuable item gains a little, a costly, marginal one loses a little. */
   benefitVsBurden: { cheapRatio: 2, cheapWeight: 0.05, costlyRatio: 0.5, costlyWeight: -0.05 },
   /** A capped analysis (experimental, seed-only or unreviewed resource) is a strong negative whatever the producer's confidence. */
@@ -71,6 +79,11 @@ export interface CandidateInputs {
   includeCovered?: boolean;
   /** Receives notes about rules that could not run. */
   notes?: string[];
+  /**
+   * unit id -> instants of evidence that could contradict a standing "I know it" self-mark: lookups, assistance requests and every negative
+   * judged observation. Absent: the row's own lastAt / exposure counters are used (coarser).
+   */
+  against?: Map<string, string[]>;
 }
 
 const JUDGED = DIMENSIONS.filter((d) => d !== 'exposure');
@@ -112,6 +125,14 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
     }
   }
 
+  /** Evidence dated AFTER a self-mark that disagrees with it: a lookup, assistance request or negative judgement. */
+  const laterEvidenceAgainst = (id: string, row: UnitKnowledge, markAt: string): boolean => {
+    const after = (at: string | undefined): boolean => at !== undefined && Date.parse(at) > Date.parse(markAt);
+    if (inp.against) return (inp.against.get(id) ?? []).some(after);
+    // Without the instants: the latest observation of a dimension with a negative, or the latest exposure while lookups exist, is after the mark.
+    return JUDGED.some((d) => row.dimensions[d].negative > 0 && after(row.dimensions[d].lastAt)) || (row.dimensions.exposure.negative > 0 && after(row.dimensions.exposure.lastAt));
+  };
+
   const ids = new Set<string>([...rowById.keys(), ...leverage.keys()]);
   const eligibleOut: ReviewCandidate[] = [];
   const ineligibleOut: ReviewCandidate[] = [];
@@ -124,7 +145,14 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
     const rank = unit?.frequency?.rank;
     const common = rank !== undefined && rank <= R.wordFrequency.maxRank;
     const lookups = row?.dimensions.exposure.negative ?? 0;
-    if (!(hasError(row) || lookups > 0 || common || lev)) continue; // exposure alone is not a reason to review
+    const mark = row?.selfMark;
+    let contradicted = false;
+    if (mark && mark.mark !== 'learning') {
+      contradicted = laterEvidenceAgainst(id, row!, mark.at);
+      if (!contradicted) continue; // the learner said they know it and nothing since disagrees: not proposed as a recognition item
+    }
+    const markedNew = mark?.mark === 'learning';
+    if (!(hasError(row) || lookups > 0 || common || lev || markedNew)) continue; // exposure alone is not a reason to review
     const card = inp.cards.get(id);
     if (card?.covered && !inp.includeCovered) continue; // already in the deck: not proposed again
 
@@ -138,6 +166,8 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
       add('demonstratedError', R.demonstratedError.weight, `errors in ${dims.join(', ')}`);
     }
     if (row && row.dimensions.readingRecognition.weight > 0 && row.dimensions.readingRecognition.score < R.weakButSeen.readingBelow) add('weakButSeen', R.weakButSeen.weight, `reading recognition ${row.dimensions.readingRecognition.score.toFixed(2)}`);
+    if (markedNew) add('selfMarkedNew', R.selfMark.learningWeight, `you marked it as new to you (${mark!.at})`);
+    if (contradicted) add('selfMarkContradicted', 0, `you marked it as "${mark!.mark === 'productive' ? 'I can use it' : 'I recognise it'}" (${mark!.at}), but later evidence disagrees`);
     if (lev) add('grammaticalLeverage', R.grammaticalLeverage.weight, `repeated difficulty across ${lev.length} forms of ${unit?.label ?? id}`);
     if (common) add('wordFrequency', rank! <= R.wordFrequency.veryCommonRank ? R.wordFrequency.veryCommonWeight : R.wordFrequency.weight, `frequency rank ${rank}`);
     if (unit && inp.goals.some((g) => GOAL_UNIT_KINDS[g.kind].includes(unit.kind))) add('goalMatch', R.goalMatch.weight, 'unit kind serves a stated goal');

@@ -151,6 +151,11 @@ button.sub:hover:not(:disabled) { color: #d9cfbe; }
 .row[data-row="lemma"] .v { color: #c8a06a; font-size: 1.05em; }
 .tag { flex: none; margin-inline-start: auto; font-size: 0.64em; letter-spacing: .06em; text-transform: uppercase; padding: 0 5px; border-radius: 999px; border: 1px solid #453c2f; background: #1e1a15; color: #a89c86; white-space: nowrap; }
 .muted { color: #a89c86; font-style: italic; }
+details.why > summary { cursor: pointer; list-style: none; display: inline-block; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #c8a06a; font-style: normal; }
+details.why > summary::-webkit-details-marker { display: none; }
+details.why > summary::after { content: ' ▾'; }
+details.why[open] > summary::after { content: ' ▴'; }
+details.why > .muted { margin-top: 0.25rem; }
 .actions { display: flex; gap: 6px; margin-top: 0.7em; flex-wrap: wrap; align-items: center; }
 table.paradigm { border-collapse: collapse; margin: 4px 0 8px; font-size: 0.92em; max-width: 100%; }
 table.paradigm th { font-weight: 600; text-align: left; padding: 2px 8px 2px 0; color: #a89c86; white-space: normal; }
@@ -556,7 +561,9 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       const why = v.depth === 'label' ? '' : v.depth === 'brief'
         ? texts.map(firstSentence).join(' / ')
         : texts.join(' / ');
-      table.append(h('tr', {}, h('th', {}, label), h('td', {}, value), h('td', { class: 'muted' }, why), h('td', {}, tag(m.labels.features))));
+      // the explanation is a dropdown (owner, 2026-10-10): closed by default, one line per feature; opened with the native disclosure
+      const whyCell = why ? h('details', { class: 'why' }, h('summary', {}, 'why'), h('div', { class: 'muted' }, why)) : '';
+      table.append(h('tr', {}, h('th', {}, label), h('td', {}, value), h('td', {}, whyCell), h('td', {}, tag(m.labels.features))));
     }
     panel.append(table);
     if ([...grouped.values()].some((values) => values.length > 1)) {

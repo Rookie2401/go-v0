@@ -336,7 +336,13 @@ describe('Go deeper', () => {
     expect(rows.map((x) => x[0])).toEqual(expect.arrayContaining(['Case', 'Definite', 'Number']));
     const caseRow = rows.find((x) => x[0] === 'Case')!;
     expect(caseRow[1]).toBe('accusative');
-    expect(caseRow[2]).toBe('A noun changes its ending to show its job in the sentence.'); // 'brief' depth: the first sentence
+    // the explanation is a closed dropdown (details/summary) in the third cell; 'brief' depth: the first sentence
+    const caseTr = [...table.querySelectorAll('tr')].find((tr) => tr.querySelector('th')?.textContent === 'Case')!;
+    const why = caseTr.querySelector('details.why') as HTMLDetailsElement;
+    expect(why.open).toBe(false);
+    expect(why.querySelector('summary')!.textContent).toBe('why');
+    expect(why.querySelector('.muted')!.textContent).toBe('A noun changes its ending to show its job in the sentence.');
+    expect(caseRow[2]).toContain('A noun changes its ending to show its job in the sentence.');
     expect(rows.find((x) => x[0] === 'Definite')![1]).toBe('Def'); // the pack gave no entry for it: the analyser's own value, unexplained
     const noPack = makeRig({ services: fakeServices({ explain: async () => explainReply({ source: 'none', features: [], constructions: [] }) }) });
     await (await lookup(noPack)).settled;

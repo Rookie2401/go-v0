@@ -60,11 +60,17 @@ describe('createHighlighter', () => {
     expect(registry.size).toBe(0);
   });
 
-  it('the style sheet has one ::highlight rule per level, each an underline: dashed for new, dotted for seen and recognized, solid for the three established levels', () => {
+  it('the style sheet has one ::highlight rule per level: a light-blue highlight for new, three solid underlines from heavy to faint for seen / recognized / familiar, nothing for known and automatic', () => {
     for (const l of ACTIVE_LEVELS) expect(ACTIVE_CSS).toContain(`::highlight(${HIGHLIGHT_NAMES[l]})`);
-    expect(ACTIVE_CSS.match(/underline dashed/g)).toHaveLength(1);
-    expect(ACTIVE_CSS.match(/underline dotted/g)).toHaveLength(2);
+    const rule = (l: (typeof ACTIVE_LEVELS)[number]): string => ACTIVE_CSS.split('\n').find((x) => x.includes(`::highlight(${HIGHLIGHT_NAMES[l]})`))!;
+    expect(rule('new')).toMatch(/background-color: rgba\(173, 216, 230/);
+    expect(rule('new')).toMatch(/text-decoration: none/);
+    const thickness = (l: (typeof ACTIVE_LEVELS)[number]): number => Number(/text-decoration-thickness: ([\d.]+)px/.exec(rule(l))![1]);
+    expect(thickness('seen')).toBeGreaterThan(thickness('recognized'));
+    expect(thickness('recognized')).toBeGreaterThan(thickness('familiar'));
     expect(ACTIVE_CSS.match(/underline solid/g)).toHaveLength(3);
-    expect(ACTIVE_CSS).not.toMatch(/background/);
+    expect(rule('known')).toMatch(/text-decoration: none/);
+    expect(rule('automatic')).toMatch(/text-decoration: none/);
+    expect(rule('known')).not.toMatch(/background/);
   });
 });

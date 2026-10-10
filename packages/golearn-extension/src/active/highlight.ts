@@ -9,14 +9,18 @@ import { ACTIVE_LEVELS, type ActiveLevel } from './levels';
 
 export const HIGHLIGHT_NAMES: Record<ActiveLevel, string> = { new: 'golearn-new', seen: 'golearn-seen', recognized: 'golearn-recognized', familiar: 'golearn-familiar', known: 'golearn-known', automatic: 'golearn-automatic' };
 
-/** The six underline styles: dashed for a word not met yet, dotted and faint for one only seen, solid for a familiar one, down to a barely visible hairline for one that is automatic. */
+/**
+ * The six marks (owner, 2026-10-10): a word that is new is highlighted light blue (no underline); a word only seen gets a
+ * heavy underline, a recognized one a lighter underline, a familiar one lighter still; a known or automatic word carries
+ * nothing. Only the properties ::highlight() allows are used (background-color, text-decoration and its colour).
+ */
 export const ACTIVE_CSS = [
-  `::highlight(${HIGHLIGHT_NAMES.new}) { text-decoration: underline dashed; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.55); text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.seen}) { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.4); text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.recognized}) { text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.65); text-decoration-color: color-mix(in srgb, currentColor 65%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.familiar}) { text-decoration: underline solid; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.35); text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.known}) { text-decoration: underline solid; text-decoration-thickness: 0.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.22); text-decoration-color: color-mix(in srgb, currentColor 22%, transparent); }`,
-  `::highlight(${HIGHLIGHT_NAMES.automatic}) { text-decoration: underline solid; text-decoration-thickness: 0.5px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.1); text-decoration-color: color-mix(in srgb, currentColor 10%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.new}) { background-color: rgba(173, 216, 230, 0.45); text-decoration: none; }`,
+  `::highlight(${HIGHLIGHT_NAMES.seen}) { text-decoration: underline solid; text-decoration-thickness: 2px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.8); text-decoration-color: color-mix(in srgb, currentColor 80%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.recognized}) { text-decoration: underline solid; text-decoration-thickness: 1.25px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.55); text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.familiar}) { text-decoration: underline solid; text-decoration-thickness: 0.75px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.3); text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }`,
+  `::highlight(${HIGHLIGHT_NAMES.known}) { text-decoration: none; }`,
+  `::highlight(${HIGHLIGHT_NAMES.automatic}) { text-decoration: none; }`,
 ].join('\n');
 
 /** The slice of the Highlight API this module uses (typed locally: tests pass a fake, and the DOM lib may lack it). */

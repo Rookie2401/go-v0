@@ -45,12 +45,12 @@ knowledge rows (lemma + form) and the learner's own newest mark; the page reads 
 
 | level | learner state (the engine's rule, over the knowledge row) | style |
 |---|---|---|
-| New | no observation and no mark; a word with no row at all | dashed |
-| Seen | met or looked up (exposure, lookup, a failed attempt), nothing shows it was understood | dotted, faint |
-| Recognized | understood with help (assistedRecognition), or recognised once (reading/listening recognition observed, below the familiar bar) | dotted |
-| Familiar | a recognition estimate ≥ 0.6 over ≥ 2 observations | thin solid, faint |
-| Known | a recognition estimate ≥ 0.8 over ≥ 4 observations (listening counts too) | hairline, faint |
-| Automatic | productive retrieval or contextual production estimate ≥ 0.7 over ≥ 2 observations | hairline, barely visible |
+| New | no observation and no mark; a word with no row at all | light-blue highlight |
+| Seen | met or looked up (exposure, lookup, a failed attempt), nothing shows it was understood | heavy underline |
+| Recognized | understood with help (assistedRecognition), or recognised once (reading/listening recognition observed, below the familiar bar) | lighter underline |
+| Familiar | a recognition estimate ≥ 0.6 over ≥ 2 observations | faint underline |
+| Known | a recognition estimate ≥ 0.8 over ≥ 4 observations (listening counts too) | no mark |
+| Automatic | productive retrieval or contextual production estimate ≥ 0.7 over ≥ 2 observations | no mark |
 
 The learner's newest mark decides the level outright until later evidence contradicts it (two or more levels away); every
 rule, the legacy-mark mapping and the migration are in `docs/ecosystem/KNOWLEDGE-LEVELS.md`. Review is not a metric shown

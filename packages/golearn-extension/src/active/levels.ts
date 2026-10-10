@@ -35,12 +35,12 @@ export const LEVEL_RULES = {
 
 /** The legend the popup shows, one line per level, in the order of ACTIVE_LEVELS. The words come from the contract (`KNOWLEDGE_LEVEL_WORDS`). */
 export const LEVEL_LEGEND: Record<ActiveLevel, { title: string; detail: string; style: string }> = {
-  new: { ...KNOWLEDGE_LEVEL_WORDS.new, style: 'dashed' },
-  seen: { ...KNOWLEDGE_LEVEL_WORDS.seen, style: 'dotted, faint' },
-  recognized: { ...KNOWLEDGE_LEVEL_WORDS.recognized, style: 'dotted' },
-  familiar: { ...KNOWLEDGE_LEVEL_WORDS.familiar, style: 'thin solid, faint' },
-  known: { ...KNOWLEDGE_LEVEL_WORDS.known, style: 'hairline, faint' },
-  automatic: { ...KNOWLEDGE_LEVEL_WORDS.automatic, style: 'hairline, barely visible' },
+  new: { ...KNOWLEDGE_LEVEL_WORDS.new, style: 'light-blue highlight' },
+  seen: { ...KNOWLEDGE_LEVEL_WORDS.seen, style: 'heavy underline' },
+  recognized: { ...KNOWLEDGE_LEVEL_WORDS.recognized, style: 'lighter underline' },
+  familiar: { ...KNOWLEDGE_LEVEL_WORDS.familiar, style: 'faint underline' },
+  known: { ...KNOWLEDGE_LEVEL_WORDS.known, style: 'no mark' },
+  automatic: { ...KNOWLEDGE_LEVEL_WORDS.automatic, style: 'no mark' },
 };
 
 /** What the learner's own mark means for the underline (a mark stored before the six levels is read through `levelOfMark`). */

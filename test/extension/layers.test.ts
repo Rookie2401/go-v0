@@ -314,7 +314,7 @@ describe('Go deeper', () => {
     expect(contextLine({ kind: 'fragment', confidence: 0.2, selectionLocated: true })).toBe('Context: a fragment, not a verified sentence');
   });
 
-  it('opening Go deeper records AssistanceRequested for every section, in order (morphology, example, morphology, gloss, hint, hint, translation), each valid under the contract; the grammar is recorded when the ANALYSIS dropdown is first opened', async () => {
+  it('opening Go deeper records AssistanceRequested for every section, in order (morphology, example, morphology, gloss, hint, hint), each valid under the contract; the grammar is recorded when the ANALYSIS dropdown is first opened, the translation when "See full sentence" is', async () => {
     const r = makeRig({ services: fakeServices() });
     const out = await lookup(r);
     await out.settled;
@@ -322,8 +322,9 @@ describe('Go deeper', () => {
     click(r, 'button.deeperBtn');
     await flush(5);
     // Go deeper alone: no grammar yet (it lives in the ANALYSIS dropdown, closed)
-    expect((await events(r.store, 'AssistanceRequested')).map((e) => e.payload.layer)).toEqual(['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence']);
+    expect((await events(r.store, 'AssistanceRequested')).map((e) => e.payload.layer)).toEqual(['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure']);
     click(r, 'button.analysisBtn'); click(r, 'button.analysisBtn'); click(r, 'button.analysisBtn');
+    click(r, 'button.sentenceBtn'); click(r, 'button.sentenceBtn'); click(r, 'button.sentenceBtn'); // opening it closes Go deeper; opened again, it is the same event
     await flush(5);
     const got = (await events(r.store, 'AssistanceRequested')).map((e) => e.payload);
     expect(got).toEqual([
@@ -333,8 +334,8 @@ describe('Go deeper', () => {
       { assistance: 'gloss', layer: 'meaning' },
       { assistance: 'hint', layer: 'origin' },
       { assistance: 'hint', layer: 'structure' },
-      { assistance: 'translation', layer: 'sentence' },
       { assistance: 'grammar', layer: 'grammar', depth: 'brief' }, // one event, on the first opening of ANALYSIS (it was opened, closed and opened again)
+      { assistance: 'translation', layer: 'sentence' }, // one event, on the first opening of "See full sentence"
     ]);
     for (const e of await r.store.list()) expect(validateEvent(e), `${e.kind}`).toEqual([]);
     // no Sound layer any more, and no ReviewRequested or "saved" mark from the card
@@ -355,7 +356,7 @@ describe('Go deeper', () => {
     await (await lookup(r)).settled;
     click(r, 'button.deeperBtn'); click(r, 'button.deeperBtn'); click(r, 'button.deeperBtn');
     await flush(5);
-    expect(await events(r.store, 'AssistanceRequested')).toHaveLength(7);
+    expect(await events(r.store, 'AssistanceRequested')).toHaveLength(6);
     expect((root(r).querySelector('button.deeperBtn') as HTMLElement).getAttribute('aria-expanded')).toBe('true');
   });
 
@@ -452,15 +453,41 @@ describe('Go deeper', () => {
     expect(root(r2).querySelector('.layer.l4')!.textContent).toMatch(/construction|No grammar note|Definite|Present/);
   });
 
-  it('Sentence keeps its word-by-word list behind "Go deeper", makes translation on demand, and marks the selected word', async () => {
+  it('"See full sentence" is a pill beside "Go deeper", exclusive with it: opening one closes the other, each says so with aria-expanded and its text', async () => {
+    const r = makeRig({ services: fakeServices() });
+    await (await lookup(r)).settled;
+    const deeper = root(r).querySelector('.deeper') as HTMLElement;
+    const box = root(r).querySelector('.sentenceBox') as HTMLElement;
+    const goDeeper = root(r).querySelector('button.deeperBtn') as HTMLButtonElement;
+    const sentence = root(r).querySelector('button.sentenceBtn') as HTMLButtonElement;
+    expect(sentence.previousElementSibling).toBe(goDeeper);
+    expect(sentence.textContent).toBe('See full sentence');
+    expect(sentence.getAttribute('aria-controls')).toBe(box.id);
+    expect([deeper, box].map((x) => x.hasAttribute('hidden'))).toEqual([true, true]);
+    goDeeper.click();
+    expect([deeper, box].map((x) => x.hasAttribute('hidden'))).toEqual([false, true]);
+    sentence.click();
+    expect([deeper, box].map((x) => x.hasAttribute('hidden'))).toEqual([true, false]);
+    expect([goDeeper, sentence].map((b) => b.getAttribute('aria-expanded'))).toEqual(['false', 'true']);
+    expect([goDeeper.textContent, sentence.textContent]).toEqual(['Go deeper', 'Hide sentence']);
+    goDeeper.click();
+    expect([deeper, box].map((x) => x.hasAttribute('hidden'))).toEqual([false, true]);
+    expect([goDeeper, sentence].map((b) => b.getAttribute('aria-expanded'))).toEqual(['true', 'false']);
+    expect([goDeeper.textContent, sentence.textContent]).toEqual(['Less', 'See full sentence']);
+    sentence.click(); sentence.click();
+    expect([deeper, box].map((x) => x.hasAttribute('hidden'))).toEqual([true, true]);
+  });
+
+  it('Sentence keeps its word-by-word list behind "See full sentence", makes translation on demand, and marks the selected word', async () => {
     const r = makeRig({ services: fakeServices() });
     await (await lookup(r)).settled;
     const panel = root(r).querySelector('.layer.l5') as HTMLElement;
-    const deeper = root(r).querySelector('.deeper') as HTMLElement;
-    expect(deeper.hasAttribute('hidden')).toBe(true);
-    click(r, 'button.deeperBtn');
-    expect(deeper.hasAttribute('hidden')).toBe(false);
-    expect(deeper.contains(panel)).toBe(true);
+    const box = root(r).querySelector('.sentenceBox') as HTMLElement;
+    expect(box.hasAttribute('hidden')).toBe(true);
+    click(r, 'button.sentenceBtn');
+    expect(box.hasAttribute('hidden')).toBe(false);
+    expect(box.contains(panel)).toBe(true);
+    expect((root(r).querySelector('.deeper') as HTMLElement).contains(panel)).toBe(false); // Sentence is not a section of Go deeper any more
     expect(panel.textContent).toContain('The list below is word by word.');
     expect(panel.textContent).toContain('only when you ask');
     const items = [...panel.querySelectorAll('li')].map((li) => li.textContent);
@@ -469,15 +496,18 @@ describe('Go deeper', () => {
     expect(panel.querySelector('li.sel')!.textContent).toMatch(/^shtëpinë: shtëpi \(NOUN\)/);
   });
 
-  it('Sentence with no sentence context says there is nothing to list', async () => {
+  it('Sentence with no sentence context: the pill is disabled with its title, and the panel says there is nothing to list', async () => {
     const r = makeRig({ services: fakeServices() });
     r.controller.dispose();
     const a = new WebGenericAdapter({ doc: document, segmentSentences: (t) => sqAdapter.segmentSentences(t) });
     const none = makeRig({ services: fakeServices(), parse: (i) => parseSelection({ ...i, context: { kind: 'none', confidence: 0 } }) });
     void a;
     await (await lookup(none)).settled;
-    click(none, 'button.deeperBtn');
+    const pill = root(none).querySelector('button.sentenceBtn') as HTMLButtonElement;
+    expect(pill.disabled).toBe(true);
+    expect(pill.title).toBe('No sentence around this word');
     expect(root(none).querySelector('.layer.l5')!.textContent).toContain('no sentence context');
+    click(none, 'button.deeperBtn');
     expect(about(none)).toContain('only the selected word (this reader gives no sentence)');
   });
 });

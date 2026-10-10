@@ -126,6 +126,9 @@ button.sub:hover:not(:disabled), .analysisBtn:hover:not(:disabled) { color: #d9c
 .sources[hidden], .deeper[hidden] { display: none; }
 .sources ul { margin: 0; padding-inline-start: 1.2em; }
 .sources a { color: #c8a06a; }
+.row.noRule { border-bottom: 0; padding-bottom: 0; }
+.row.analysisRow { border-bottom: 0; padding: 0; margin-top: 0.2rem; }
+.row.analysisRow .analysisBtn { margin-top: 0; }
 .analysis { margin-top: 0.4em; }
 .analysis[hidden] { display: none; }
 .analysis .layer { margin-top: 0.2em; }
@@ -148,17 +151,23 @@ details.feat > .muted { margin: 0.3em 0 0 0.2em; font-size: 0.92em; }
 .pills { display: flex; gap: 0.5em; align-items: center; margin-top: 0.8em; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4em; border: 1px solid #453c2f; border-radius: 999px; padding: 0.5em 1.1em; color: #d9cfbe; background: #1e1a15; font-size: 0.9em; }
 .btn:hover:not(:disabled) { border-color: #b98f57; }
-.btn--quiet { border-color: transparent; background: transparent; color: #a89c86; margin-inline-start: auto; padding: 0.5em 0.8em; }
+.pills .btn { padding: 0.45em 0.85em; font-size: 0.85em; }
+.btn--quiet { border-color: transparent; background: transparent; color: #a89c86; margin-inline-start: auto; }
 .btn--quiet:hover:not(:disabled) { border-color: transparent; color: #d9cfbe; }
-.deeperBtn::after { content: ' \\25BE'; }
-.deeperBtn[aria-expanded="true"]::after { content: ' \\25B4'; }
+.deeperBtn::after, .sentenceBtn::after { content: ' \\25BE'; }
+.deeperBtn[aria-expanded="true"]::after, .sentenceBtn[aria-expanded="true"]::after { content: ' \\25B4'; }
+.sentenceBox { margin-top: 0.8em; }
+.sentenceBox[hidden] { display: none; }
+.sentenceBox .more { margin-top: 0; }
 .deeper { margin-top: 0.8em; }
 .deeper h3 { margin: 0; padding: 0.8em 0 0.3em; border-top: 1px solid #322b22; letter-spacing: 0.16em; text-transform: uppercase; color: #a89c86; font-size: 0.69em; font-weight: 600; }
 .deeper .more { margin-top: 0; border-top: 0; padding-top: 0; }
 .deeper .about { color: #a89c86; }
 .sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .row { display: flex; flex-wrap: wrap; gap: 2px 8px; align-items: baseline; margin: 0; padding: 4px 0; border-bottom: 1px solid #322b22; }
-.k { flex: 0 1 auto; min-width: 5.5em; max-width: 8em; font-size: 0.7em; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #a89c86; white-space: nowrap; }
+.k { flex: none; min-width: 5.5em; font-size: 0.7em; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #a89c86; white-space: nowrap; }
+/* a kicker longer than its column pushes the value to the right (or onto the next line); it never runs under it. The spacer of a subscript row repeats the width of the key above it. */
+.kpad::before { content: attr(data-pad); visibility: hidden; }
 .v { flex: 1 1 13.4em; min-width: 0; overflow-wrap: anywhere; }
 .row[data-row="lemma"] .v { color: #c8a06a; font-size: 1.05em; }
 .tag { flex: none; margin-inline-start: auto; font-size: 0.64em; letter-spacing: .06em; text-transform: uppercase; padding: 0 5px; border-radius: 999px; border: 1px solid #453c2f; background: #1e1a15; color: #a89c86; white-space: nowrap; }
@@ -216,6 +225,8 @@ type Child = Node | string | null | undefined | false;
 
 /** The sections "Go deeper" shows, in `LAYER_ORDER`. "Sentence" is the word-by-word English rescue list. */
 const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', grammar: 'Grammar', 'phrase-syntax': 'Syntax', forms: 'All forms', meaning: 'Meanings', origin: 'Origin', structure: 'Word structure', sentence: 'Sentence' };
+/** The panels renderPanels fills: the sections of "Go deeper" and the sentence (its own pill, "See full sentence", exclusive with "Go deeper"). */
+const PANEL_LAYERS: readonly LayerName[] = [...LAYER_ORDER, 'sentence'];
 const LAYER_CLASS: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', structure: 'l10' };
 const STRUCTURE_STATUS: Record<string, string> = { 'supported-by-source': 'From the dictionary: its etymology template names these parts.', provisional: "Provisional: from the analyser's rules only; no dictionary template confirms it." };
 const STATUS_MARK: Record<string, string> = { verified: '✓', supported: '◌', generated: '~', conflicted: '‼' };
@@ -285,7 +296,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let actions: CardActions = {};
   let parts: {
     rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement; stopAudio?: HTMLButtonElement; audioSpeed?: HTMLSelectElement;
-    sources: HTMLElement; sourcesBtn: HTMLButtonElement; deeper: HTMLElement; deeperBtn: HTMLButtonElement; encounters: HTMLElement; levelName: HTMLElement;
+    sources: HTMLElement; sourcesBtn: HTMLButtonElement; deeper: HTMLElement; deeperBtn: HTMLButtonElement; sentenceBox: HTMLElement; sentenceBtn: HTMLButtonElement; encounters: HTMLElement; levelName: HTMLElement;
     layers: Record<LayerName, HTMLElement>; fix: HTMLFormElement; report: HTMLButtonElement; rateBtns: Record<SelfMark, HTMLButtonElement>;
   } | undefined;
   // `autoPlay`: the render token of a card that should speak once as soon as its voice is known to be available (GoLearn Active's "Speak on click")
@@ -294,6 +305,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   // the ANALYSIS dropdown of the Form section: open or not (kept when the panel is re-filled by a late arrival), and whether its first opening was reported
   let analysisOpen = false;
   let analysisReported = false;
+  // the sentence pill's first opening is reported once per card
+  let sentenceReported = false;
   let renderToken = 0;
 
   const h = (tag: string, props: Record<string, string> = {}, ...children: Child[]): HTMLElement => {
@@ -587,8 +600,13 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
    * It opens GRAMMAR (the constructions the form realizes) and then one dropdown per feature. No table, no evidence chips.
    */
   function fillForm(panel: HTMLElement, m: CardModel, v: CardView): void {
-    if (m.lemma) panel.append(plainRow('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${m.lemma} (${m.pos})` : m.lemma, m.languageId));
-    if (m.morphology) panel.append(plainRow('form', 'form', m.morphology));
+    const lines: HTMLElement[] = [];
+    if (m.lemma) lines.push(plainRow('lemma', m.unconfirmed ? 'lemma (guess)' : 'lemma', m.pos ? `${m.lemma} (${m.pos})` : m.lemma, m.languageId));
+    if (m.morphology) lines.push(plainRow('form', 'form', m.morphology));
+    // the toggle is a subscript of the last line: no rule between them (the rule after the whole Form block is the next section's)
+    lines.at(-1)?.classList.add('noRule');
+    const lastKey = lines.at(-1)?.querySelector('.k')?.textContent ?? '';
+    panel.append(...lines);
     const btn = h('button', { type: 'button', class: 'analysisBtn', 'aria-expanded': String(analysisOpen), 'aria-controls': 'panel-analysis' }, 'analysis') as HTMLButtonElement;
     const box = h('div', { class: 'analysis', id: 'panel-analysis' });
     if (!analysisOpen) box.setAttribute('hidden', '');
@@ -604,7 +622,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       // the Repository still sees that the grammar was consulted: one event, on the first opening
       if (analysisOpen && !analysisReported) { analysisReported = true; try { actions.onLayer?.('grammar'); } catch { /* reporting never blocks */ } }
     });
-    panel.append(h('div', {}, btn), box);
+    // under the form text, in the value column (an empty key cell holds the kicker column's width), as quiet as "view sources"
+    panel.append(h('div', { class: 'row analysisRow' }, h('span', { class: 'k kpad', 'aria-hidden': 'true', 'data-pad': lastKey }), h('span', { class: 'v' }, btn)), box);
   }
 
   function fillSyntax(panel: HTMLElement, m: CardModel): void {
@@ -862,7 +881,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       structure: (p) => fillStructure(p, model!, view),
       sentence: (p) => fillSentence(p, model!, view),
     };
-    for (const name of LAYER_ORDER) {
+    for (const name of PANEL_LAYERS) {
       const panel = parts.layers[name];
       panel.replaceChildren();
       fills[name]?.(panel);
@@ -894,19 +913,32 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (lastAnchor) place(lastAnchor);
   }
 
-  /** "Go deeper" opens every grammatical section at once ("Less" closes them). Each opening is reported once per section, in the order shown. */
-  function toggleDeeper(): void {
-    const openNow = parts!.deeper.hasAttribute('hidden');
-    if (openNow) parts!.deeper.removeAttribute('hidden'); else parts!.deeper.setAttribute('hidden', '');
-    parts!.deeperBtn.setAttribute('aria-expanded', String(openNow));
-    parts!.deeperBtn.textContent = openNow ? 'Less' : 'Go deeper';
+  /**
+   * "Go deeper" and "See full sentence" are one or the other: opening either closes the other (aria-expanded on both). "Go deeper" opens every
+   * grammatical section at once ("Less" closes them) and reports each, in order; the sentence reports its one event on its first opening.
+   */
+  function setPills(which: 'deeper' | 'sentence' | 'none'): void {
+    if (!parts) return;
+    const set = (box: HTMLElement, btn: HTMLButtonElement, open: boolean, openText: string, closedText: string): boolean => {
+      const was = !box.hasAttribute('hidden');
+      if (open) box.removeAttribute('hidden'); else box.setAttribute('hidden', '');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? openText : closedText;
+      return open && !was;
+    };
+    const opened = set(parts.deeper, parts.deeperBtn, which === 'deeper', 'Less', 'Go deeper');
+    const sentenceOpened = set(parts.sentenceBox, parts.sentenceBtn, which === 'sentence', 'Hide sentence', 'See full sentence');
     if (lastAnchor) place(lastAnchor);
-    if (!openNow) return;
-    for (const name of LAYER_ORDER) {
-      if (name === 'forms' && model && model.tokenCount !== 1) continue; // the paradigm is for one word
-      try { actions.onLayer?.(name); } catch { /* reporting never blocks */ }
+    if (opened) {
+      for (const name of LAYER_ORDER) {
+        if (name === 'forms' && model && model.tokenCount !== 1) continue; // the paradigm is for one word
+        try { actions.onLayer?.(name); } catch { /* reporting never blocks */ }
+      }
     }
+    if (sentenceOpened && !sentenceReported) { sentenceReported = true; try { actions.onLayer?.('sentence'); } catch { /* reporting never blocks */ } }
   }
+  const toggleDeeper = (): void => setPills(parts!.deeper.hasAttribute('hidden') ? 'deeper' : 'none');
+  const toggleSentence = (): void => setPills(parts!.sentenceBox.hasAttribute('hidden') ? 'sentence' : 'none');
 
   function buildCorrectionForm(m: CardModel): HTMLFormElement {
     const form = h('form', { class: 'fix', id: 'panel-fix', hidden: '', 'aria-label': 'Correct this analysis' }) as HTMLFormElement;
@@ -943,7 +975,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function show(m: CardModel, anchor: PopupAnchor, opts: ShowOptions = {}): Placement {
     renderToken++;
-    analysisOpen = false; analysisReported = false;
+    analysisOpen = false; analysisReported = false; sentenceReported = false;
     pron.off?.();
     pron.offPlayback?.();
     pron = { available: false, note: 'Checking voices…', playing: false, plays: 0 };
@@ -996,6 +1028,12 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       layers[name] = h('div', { class: `more layer ${LAYER_CLASS[name]}`, 'data-layer': name, id: `panel-${LAYER_CLASS[name]}` });
       deeper.append(h('h3', {}, LAYER_TITLES[name]), layers[name]);
     }
+    // "See full sentence": the word-by-word list (and the translation block) in its own panel, beside "Go deeper" and exclusive with it
+    layers.sentence = h('div', { class: `more layer ${LAYER_CLASS.sentence}`, 'data-layer': 'sentence', id: `panel-${LAYER_CLASS.sentence}` });
+    const sentenceBox = h('div', { class: 'sentenceBox', id: 'panel-sentence', hidden: '' }, layers.sentence);
+    const sentenceBtn = h('button', { type: 'button', class: 'btn sentenceBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-sentence' }, 'See full sentence') as HTMLButtonElement;
+    if (m.context.kind === 'none') { sentenceBtn.disabled = true; sentenceBtn.title = 'No sentence around this word'; }
+    sentenceBtn.addEventListener('click', toggleSentence);
     const about = h('div', { class: 'more about', id: 'panel-about' });
     fillAbout(about, m);
     deeper.append(h('h3', {}, 'About this analysis'), about);
@@ -1027,12 +1065,12 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       report.setAttribute('aria-expanded', String(openNow));
       if (lastAnchor) place(lastAnchor);
     });
-    const pills = h('div', { class: 'pills' }, deeperBtn, report);
+    const pills = h('div', { class: 'pills' }, deeperBtn, sentenceBtn, report);
 
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
-    parts = { rows, pronNote, say, stopAudio, audioSpeed, sources, sourcesBtn, deeper, deeperBtn, encounters, levelName, layers, fix, report, rateBtns };
-    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, pronNote, fix, feedbackEl, statusEl);
+    parts = { rows, pronNote, say, stopAudio, audioSpeed, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, encounters, levelName, layers, fix, report, rateBtns };
+    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, pronNote, fix, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });

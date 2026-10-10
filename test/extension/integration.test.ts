@@ -87,6 +87,7 @@ describe('page -> bridge -> background -> service', () => {
     // Go deeper: the pack's own words for the form
     (ui.root()!.querySelector('button.deeperBtn') as HTMLElement).click();
     (ui.root()!.querySelector('button.analysisBtn') as HTMLElement).click(); // the grammar is in the ANALYSIS dropdown
+    (ui.root()!.querySelector('button.sentenceBtn') as HTMLElement).click(); // the sentence has its own pill (it closes Go deeper)
     expect(ui.root()!.querySelector('.layer.l2')!.textContent).toContain('accusative');
     expect(ui.root()!.querySelector('.layer.l4 .row strong')!.textContent).toBe('Definite accusative singular');
     (ui.root()!.querySelector('.rateBtn[data-mark="seen"]') as HTMLElement).click();

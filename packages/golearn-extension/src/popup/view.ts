@@ -16,7 +16,7 @@ import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, Sel
 export type LayerName = 'morphology' | 'grammar' | 'phrase-syntax' | 'forms' | 'meaning' | 'origin' | 'structure' | 'sentence';
 
 /** The order "Go deeper" shows (and records) the layers in. */
-export const LAYER_ORDER: readonly LayerName[] = ['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence'];
+export const LAYER_ORDER: readonly LayerName[] = ['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure'];
 
 /** Level 2 of the card: what the dictionary's full record and the analyser's generation give, with field states; arrives after the card, never blocks it. */
 export interface EnrichmentView {
@@ -76,13 +76,15 @@ export interface ExplainView {
 export interface SentenceTranslationView {
   state: 'unavailable' | 'idle' | 'loading' | 'ready' | 'error';
   naturalText?: string;
-  literalText?: string;
   sourceLanguage?: string;
   sourceDialect?: string;
   sourceConfidence?: number;
   sourceBasis?: string;
   message?: string;
   providerId?: string;
+  sourceUncertaintyNotes?: string[];
+  modelDownload?: 'not-needed' | 'may-start';
+  processingMode?: 'local' | 'remote' | 'mixed' | 'unknown';
 }
 
 export type CorrectionState = { state: 'idle' } | { state: 'sending' } | { state: 'sent' | 'saved-locally' | 'error'; message: string };

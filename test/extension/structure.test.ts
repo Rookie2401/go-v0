@@ -211,10 +211,10 @@ const panel = (): HTMLElement => ui.root()!.querySelector('[data-layer="structur
 const button = (): HTMLButtonElement => ui.root()!.querySelector('button.deeperBtn') as HTMLButtonElement;
 
 describe('the Word structure section of the card', () => {
-  it('is a section of Go deeper between Origin and Sentence, and a hint for the learner record', () => {
+  it('is a section of Go deeper between Origin and About this analysis, and a hint for the learner record', () => {
     ui.show(cardFor(), anchor);
     const sections = [...ui.root()!.querySelectorAll('.deeper > h3')].map((h) => h.textContent);
-    expect(sections.slice(sections.indexOf('Origin'), sections.indexOf('Sentence') + 1)).toEqual(['Origin', 'Word structure', 'Sentence']);
+    expect(sections.slice(sections.indexOf('Origin'))).toEqual(['Origin', 'Word structure', 'About this analysis']);
     expect(LAYER_ASSISTANCE.structure).toBe('hint');
   });
   it('shows the parts as a segmented line with roles, the status, derived-from, the family and the sources', () => {

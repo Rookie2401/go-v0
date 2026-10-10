@@ -1,4 +1,6 @@
 // @vitest-environment jsdom
+import fs from 'node:fs';
+import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { computePosition, createCardUI, type CardUI, type DismissReason, type SpeechLike } from '../../packages/golearn-extension/src/popup/card';
 import { parseSelection, type CardModel } from '../../packages/golearn-extension/src/parser';
@@ -223,21 +225,21 @@ describe('dismissal', () => {
 });
 
 describe('keyboard and tab order', () => {
-  it('with no voice: the controls are Close, view sources, the six circles of the level meter, Go deeper and Report; the speaker is disabled and its title says why', () => {
+  it('with no voice: the controls are Close, view sources, the six circles of the level meter, Go deeper, See full sentence and Report; the speaker is disabled and its title says why', () => {
     ui.show(cardFor(), anchor());
     const names = buttonsOf(ui.root()).filter((b) => !b.disabled).map((b) => b.getAttribute('aria-label') ?? b.textContent);
-    expect(names).toEqual(['Close GoLearn card', 'view sources', 'New', 'Seen', 'Recognized', 'Familiar', 'Known', 'Automatic', 'Go deeper', 'Report']);
+    expect(names).toEqual(['Close GoLearn card', 'view sources', 'New', 'Seen', 'Recognized', 'Familiar', 'Known', 'Automatic', 'Go deeper', 'See full sentence', 'Report']);
     const say = ui.root()!.querySelector('.say') as HTMLButtonElement;
     expect(say.disabled).toBe(true);
     expect(say.getAttribute('aria-label')).toBe('Play with GoListen');
     expect(say.title).toMatch(/Speech is not available/); // the title says so; nothing else of it is drawn
     expect(visibleText(ui.root())).not.toMatch(/Speech is not available/);
   });
-  it('with a voice: the speaker comes right after Close, and the list is Close, Play with GoListen, view sources, the six levels, Go deeper, Report', () => {
+  it('with a voice: the speaker comes right after Close, and the list is Close, Play with GoListen, view sources, the six levels, Go deeper, See full sentence, Report', () => {
     ui.destroy(); ui = make({ getVoices: () => [{ lang: 'sq-AL', name: 'sq', localService: true }], speak() {}, cancel() {} });
     ui.show(cardFor(), anchor());
     const names = buttonsOf(ui.root()).filter((b) => !b.disabled).map((b) => b.getAttribute('aria-label') ?? b.textContent);
-    expect(names).toEqual(['Close GoLearn card', 'Play with GoListen', 'view sources', 'New', 'Seen', 'Recognized', 'Familiar', 'Known', 'Automatic', 'Go deeper', 'Report']);
+    expect(names).toEqual(['Close GoLearn card', 'Play with GoListen', 'view sources', 'New', 'Seen', 'Recognized', 'Familiar', 'Known', 'Automatic', 'Go deeper', 'See full sentence', 'Report']);
     expect((ui.root()!.querySelector('.say') as HTMLButtonElement).title).toBe('Play with GoListen');
   });
   it('Tab wraps inside the card in both directions while focus is in it', () => {
@@ -281,11 +283,11 @@ describe('keyboard and tab order', () => {
     expect(deeper.hasAttribute('hidden')).toBe(true);
     expect(btn.textContent).toBe('Go deeper');
   });
-  it('"Go deeper" shows every section at once, in the order Form, Syntax, All forms, Meanings, Origin, Word structure, Sentence, About this analysis', () => {
+  it('"Go deeper" shows every section at once, in the order Form, Syntax, All forms, Meanings, Origin, Word structure, About this analysis (Sentence has its own pill)', () => {
     ui.show(cardFor(), anchor());
     click(ui.root(), '.deeperBtn');
     const titles = [...ui.root()!.querySelectorAll('.deeper > h3')].map((x) => x.textContent);
-    expect(titles).toEqual(['Form', 'Syntax', 'All forms', 'Meanings', 'Origin', 'Word structure', 'Sentence', 'About this analysis']);
+    expect(titles).toEqual(['Form', 'Syntax', 'All forms', 'Meanings', 'Origin', 'Word structure', 'About this analysis']);
     expect([...ui.root()!.querySelectorAll('.deeper [hidden]')].map((e) => e.className)).toEqual(['analysis']); // every section is open; only the ANALYSIS dropdown is closed
     const buttons = buttonsOf(ui.root()).map((b) => b.textContent);
     // the Form section's quiet "analysis" toggle comes into the tab order with Go deeper, after the pills (Go deeper, Report)
@@ -503,7 +505,7 @@ describe('the rating row and the footer', () => {
     const form = ui.root()!.querySelector('form.fix') as HTMLElement;
     expect(report.textContent).toBe('Report');
     expect(report.closest('.pills')).toBeTruthy();
-    expect(report.previousElementSibling).toBe(ui.root()!.querySelector('.deeperBtn'));
+    expect(report.previousElementSibling).toBe(ui.root()!.querySelector('.sentenceBtn')); // Go deeper, See full sentence, then Report
     expect(report.getAttribute('aria-controls')).toBe(form.id);
     expect(form.hasAttribute('hidden')).toBe(true);
     report.click();
@@ -520,13 +522,56 @@ describe('the rating row and the footer', () => {
     const layers: string[] = [];
     ui.show(cardFor(), anchor(), { actions: { onLayer: (l) => layers.push(l) } });
     click(ui.root(), '.deeperBtn');
-    expect(layers).toEqual(['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure', 'sentence']);
+    expect(layers).toEqual(['morphology', 'phrase-syntax', 'forms', 'meaning', 'origin', 'structure']);
     click(ui.root(), '.deeperBtn');
-    expect(layers).toHaveLength(7);
+    expect(layers).toHaveLength(6);
     click(ui.root(), '.deeperBtn');
-    expect(layers).toHaveLength(14);
+    expect(layers).toHaveLength(12);
+    // the sentence is reported once, on its first opening (opening it closes Go deeper)
+    click(ui.root(), '.sentenceBtn'); click(ui.root(), '.sentenceBtn'); click(ui.root(), '.sentenceBtn');
+    expect(layers.filter((l) => l === 'sentence')).toEqual(['sentence']);
     // the grammar is reported once, when ANALYSIS is first opened
     click(ui.root(), '.analysisBtn'); click(ui.root(), '.analysisBtn'); click(ui.root(), '.analysisBtn');
     expect(layers.filter((l) => l === 'grammar')).toEqual(['grammar']);
+  });
+});
+
+describe('the rows of Form never let a kicker run under its value', () => {
+  const cssOf = (selector: string): string => {
+    const src = fs.readFileSync(path.resolve(__dirname, '../../packages/golearn-extension/src/popup/card.ts'), 'utf8');
+    const m = new RegExp(`^${selector.replace(/[.]/g, '\.')} \{([^}]*)\}`, 'm').exec(src);
+    if (!m) throw new Error(`no rule ${selector}`);
+    return m[1];
+  };
+
+  it('a long kicker ("lemma (guess)") comes first in its row, is nowrap with no max-width, and the row is auto width: it pushes the value, it cannot overlap it', () => {
+    ui.show(cardFor('Flurbozitet', 'Ai tha Flurbozitet sot.'), anchor());
+    click(ui.root(), '.deeperBtn');
+    const lemma = ui.root()!.querySelector('.layer.l2 [data-row="lemma"]') as HTMLElement;
+    const k = lemma.querySelector('.k') as HTMLElement;
+    const v = lemma.querySelector('.v') as HTMLElement;
+    expect(k.textContent).toBe('lemma (guess)');
+    expect(k.compareDocumentPosition(v) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy(); // the kicker, then the value: two boxes in a flex row, never one over the other
+    const kc = cssOf('.k');
+    expect(kc).toMatch(/white-space:\s*nowrap/);
+    expect(kc).not.toMatch(/max-width/); // a fixed width would let the text spill under the value
+    expect(kc).toMatch(/min-width:\s*5\.5em/); // a column MINIMUM: a longer kicker widens it
+    expect(kc).toMatch(/flex:\s*none/);
+    expect(cssOf('.row')).toMatch(/display:\s*flex/);
+    expect(cssOf('.row')).not.toMatch(/(^|[;\s])width:/); // auto width
+  });
+
+  it('the "analysis" subscript sits in the value column of the form row, with no rule between them, its spacer as wide as that row\'s kicker', () => {
+    ui.show(cardFor(), anchor());
+    click(ui.root(), '.deeperBtn');
+    const form = ui.root()!.querySelector('.layer.l2 [data-row="form"]') as HTMLElement;
+    const sub = ui.root()!.querySelector('.layer.l2 .analysisRow') as HTMLElement;
+    expect(form.classList.contains('noRule')).toBe(true);
+    expect(form.nextElementSibling).toBe(sub);
+    expect(sub.querySelector('.kpad')!.getAttribute('data-pad')).toBe(form.querySelector('.k')!.textContent);
+    expect(sub.querySelector('.v button.analysisBtn')).toBeTruthy();
+    expect(cssOf('.row.noRule')).toMatch(/border-bottom:\s*0/);
+    expect(cssOf('.row.analysisRow')).toMatch(/border-bottom:\s*0/);
+    expect(cssOf('.row.analysisRow')).toMatch(/margin-top:\s*0\.2rem/);
   });
 });

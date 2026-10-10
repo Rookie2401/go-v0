@@ -1,16 +1,16 @@
 /**
  * The action popup: connection status (connected as <email> / not connected -> "Open GoLearn setup"; an account is optional and
- * the extension works without one), the "Practise" link to GoPractice (the extension's own page, no account needed), the per-tab
- * switch, the language of the enrolment, the sync status (pending events, last sync, last error), and export / delete
- * of what is on this device. Opening the popup is the user gesture that grants activeTab; the background worker injects
- * the content script when the switch is turned on. Everything about the connection comes from the background as
- * text: this page never holds a token.
+ * the extension works without one), the "Practise" link to GoPractice (the extension's own page, no account needed), the ONE
+ * switch "GoLearn Active" (reads each page before the learner, underlines the words met, opens a word's card on a click, speaks it
+ * when a voice exists; switching on asks the browser for the page access inside the learner's click, switching off withdraws it),
+ * what Active found on the page in front, the language of the enrolment and the sync status. Nothing here needs a learner's hand
+ * for housekeeping: export and deletion are in the setup page under Privacy. Everything about the connection comes from the
+ * background as text: this page never holds a token.
  */
-import { ACTIVE_LEVELS, LEVEL_LEGEND } from '../src/active/levels';
-import { createStorageMetricsStore, exportMetrics } from '../src/metrics';
-import { MSG, getChrome, type ChromeApi, type TabState } from '../src/platform';
+import { ACTIVE_LEVELS, LEVEL_LEGEND, type ActiveLevel } from '../src/active/levels';
+import { MSG, getChrome, type ChromeApi } from '../src/platform';
 import { ACTIVE_ORIGINS, type ActiveReply, type ActiveSettings, type PageStatus } from '../src/protocol';
-import { createStorageEncounterStore } from '../src/store';
+import type { ActiveState } from '../src/content/active';
 
 export interface PopupHandle { refresh(): Promise<void> }
 
@@ -23,22 +23,15 @@ const ago = (t: number | undefined, now = Date.now()): string => {
   return `${Math.round(s / 86_400)} d ago`;
 };
 
+/** What the content script answers to a ping while Active runs on its page. */
+interface PingReply { ok: boolean; active?: boolean; activeState?: ActiveState }
+
 export async function initPopup(doc: Document, chrome: ChromeApi): Promise<PopupHandle> {
   const $ = <T extends HTMLElement>(id: string): T => doc.getElementById(id) as T;
-  const toggle = $<HTMLInputElement>('enabled');
   const errorEl = $('error');
-  const countEl = $('count');
-  const out = $<HTMLTextAreaElement>('output');
-  const events = createStorageEncounterStore(chrome.storage.local);
-  const metrics = createStorageMetricsStore(chrome.storage.local);
 
   let tabId: number | undefined;
   try { tabId = (await chrome.tabs?.query({ active: true, currentWindow: true }))?.[0]?.id; } catch { tabId = undefined; }
-
-  const show = (state: TabState | undefined) => {
-    toggle.checked = !!state?.enabled;
-    errorEl.textContent = state?.error ?? '';
-  };
 
   async function status(): Promise<PageStatus | undefined> {
     try {
@@ -77,11 +70,10 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     detail.textContent = y.lastError ?? '';
   }
 
-  // ── GoLearn Active: the switch, Speak on click, the legend, and withdrawing the page access ──
+  // ── GoLearn Active: the one switch, what it found on this page, and the legend ──
   const activeToggle = $<HTMLInputElement>('active');
-  const speakToggle = $<HTMLInputElement>('speak');
   const activeStatus = $('active-status');
-  const revoke = $<HTMLButtonElement>('active-revoke');
+  const pageLine = $('active-page');
   const legend = $('active-legend');
   for (const level of ACTIVE_LEVELS) {
     const li = doc.createElement('li');
@@ -97,17 +89,26 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
   }
   function showActive(r: ActiveReply | undefined): void {
     activeStatus.classList.remove('warn');
-    if (!r) { activeToggle.disabled = true; speakToggle.disabled = true; revoke.hidden = true; activeStatus.textContent = 'The background worker did not answer about Active.'; return; }
+    if (!r) { activeToggle.disabled = true; activeStatus.textContent = 'The background worker did not answer about Active.'; return; }
     activeToggle.disabled = false;
     activeToggle.checked = r.settings.active;
-    speakToggle.checked = r.settings.speakOnClick;
-    speakToggle.disabled = !r.settings.active;
-    revoke.hidden = !r.granted;
     if (!r.ok && r.message) { activeStatus.textContent = r.message; activeStatus.classList.add('warn'); return; }
-    if (r.settings.active && r.registered) activeStatus.textContent = `On. Pages you open from now on are read on this device and the words you have met are underlined (${r.excluded} refusing readers excluded). A page that is already open gets it when you reload it.`;
+    if (r.settings.active && r.registered) activeStatus.textContent = `On. Every page you open is read on this device and the words you have met are underlined (${r.excluded} refusing readers excluded). A page that was already open gets it when you reload it.`;
     else if (r.settings.active) { activeStatus.textContent = 'On, but GoLearn is not registered for pages; switch it off and on again.'; activeStatus.classList.add('warn'); }
-    else if (r.granted) activeStatus.textContent = 'Off. Brave lets GoLearn read pages; switch Active on to use that, or withdraw the access below.';
     else activeStatus.textContent = 'Off. Nothing is read before you select a word.';
+  }
+  /** What Active did on the page in front: words read, words underlined per level, or why it read nothing. */
+  async function showPage(on: boolean): Promise<void> {
+    if (!on || tabId === undefined) { pageLine.textContent = ''; return; }
+    let ping: PingReply | undefined;
+    try { ping = (await chrome.tabs?.sendMessage(tabId, { type: MSG.ping })) as PingReply | undefined; } catch { ping = undefined; }
+    if (!ping || !ping.ok) { pageLine.textContent = 'This page: GoLearn is not running here yet. Reload the page (Brave\'s own pages and the store cannot be read).'; return; }
+    const s = ping.activeState;
+    if (!ping.active || !s) { pageLine.textContent = 'This page: GoLearn is here but Active has not started on it. Reload the page.'; return; }
+    if (s.reason) { pageLine.textContent = `This page: ${s.reason}`; return; }
+    const marked = (Object.keys(s.marked) as ActiveLevel[]).reduce((n, k) => n + s.marked[k], 0);
+    const parts = ACTIVE_LEVELS.filter((l) => s.marked[l]).map((l) => `${LEVEL_LEGEND[l].title.toLowerCase()} ${s.marked[l]}`).join(', ');
+    pageLine.textContent = `This page (${s.languageId ?? 'language unknown'}): ${s.scanned} words read, ${marked} underlined${parts ? ` (${parts})` : ''}${s.clicks ? `; ${s.clicks} click${s.clicks === 1 ? '' : 's'} looked up` : ''}.`;
   }
   activeToggle.addEventListener('change', async () => {
     activeToggle.disabled = true;
@@ -116,31 +117,15 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
       let granted = false;
       try { granted = (await chrome.permissions?.request({ origins: [...ACTIVE_ORIGINS] })) === true; } catch { granted = false; }
       if (!granted) { activeToggle.checked = false; activeToggle.disabled = false; activeStatus.textContent = 'Brave did not allow GoLearn to read pages, so Active stays off.'; activeStatus.classList.add('warn'); return; }
-      showActive(await activeCall('set', { active: true }));
-    } else showActive(await activeCall('set', { active: false }));
-  });
-  speakToggle.addEventListener('change', async () => { showActive(await activeCall('set', { speakOnClick: speakToggle.checked })); });
-  revoke.addEventListener('click', async () => {
-    revoke.disabled = true;
-    try { await chrome.permissions?.remove({ origins: [...ACTIVE_ORIGINS] }); } catch { /* the reply below says what the browser still allows */ }
-    showActive(await activeCall('set', { active: false }));
-    revoke.disabled = false;
-  });
-
-  async function refresh(): Promise<void> {
-    countEl.textContent = String(await events.count().catch(() => 0));
-    renderStatus(await status());
-    showActive(await activeCall('get'));
-    if (tabId === undefined) { toggle.disabled = true; errorEl.textContent = 'No active tab.'; return; }
-    try { show((await chrome.runtime.sendMessage({ type: MSG.getState, tabId })) as TabState | undefined); } catch { show(undefined); }
-  }
-
-  toggle.addEventListener('change', async () => {
-    if (tabId === undefined) return;
-    toggle.disabled = true;
-    try { show((await chrome.runtime.sendMessage({ type: MSG.setEnabled, tabId, enabled: toggle.checked })) as TabState | undefined); }
-    catch { toggle.checked = false; errorEl.textContent = 'GoLearn could not change this tab.'; }
-    toggle.disabled = false;
+      const r = await activeCall('set', { active: true });
+      showActive(r);
+      await showPage(!!r?.settings.active);
+    } else {
+      // off = off: the page access the learner granted is withdrawn too, so nothing can read a page until they switch on again
+      try { await chrome.permissions?.remove({ origins: [...ACTIVE_ORIGINS] }); } catch { /* the reply below says what the browser still allows */ }
+      showActive(await activeCall('set', { active: false }));
+      await showPage(false);
+    }
   });
 
   $('open-setup').addEventListener('click', () => {
@@ -164,23 +149,12 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     await refresh();
   });
 
-  const print = (text: string) => { out.hidden = false; out.value = text; out.focus(); out.select(); };
-  $('export-events').addEventListener('click', async () => print(await events.exportRows()));
-  $('export-metrics').addEventListener('click', async () => print(await exportMetrics(metrics)));
-  const del = $<HTMLButtonElement>('delete-all');
-  const deleteNote = $('delete-note');
-  let armed = false;
-  // the first click only arms the button; leaving it (focus moves elsewhere) disarms it, so a later click is never a surprise
-  del.addEventListener('blur', () => { if (armed) { armed = false; del.textContent = 'Delete all rows'; deleteNote.textContent = 'Nothing was deleted.'; } });
-  del.addEventListener('click', async () => {
-    if (!armed) { armed = true; del.textContent = 'Click again to delete'; deleteNote.textContent = 'Click Delete all rows again to delete every encounter and metric stored on this device. Move on to cancel.'; return; }
-    armed = false; del.textContent = 'Delete all rows'; deleteNote.textContent = '';
-    await events.clear(); await metrics.clear();
-    try { await chrome.runtime.sendMessage({ type: MSG.clearLocal }); } catch { /* the rows above are gone; the queue is cleared by the worker when it answers */ }
-    out.hidden = true; out.value = '';
-    deleteNote.textContent = 'All rows on this device were deleted.';
-    await refresh();
-  });
+  async function refresh(): Promise<void> {
+    renderStatus(await status());
+    const a = await activeCall('get');
+    showActive(a);
+    await showPage(!!a?.settings.active);
+  }
 
   await refresh();
   return { refresh };

@@ -225,24 +225,13 @@ describe('action popup', () => {
     const html = fs.readFileSync(path.resolve(__dirname, '../../packages/golearn-extension/action/popup.html'), 'utf8');
     document.body.innerHTML = /<body>([\s\S]*)<\/body>/.exec(html)![1].replace(/<script[\s\S]*?<\/script>/g, '');
     await initPopup(document, createChromeFake());
-    document.getElementById('output')!.hidden = false;
     audit(document.body, 'popup/action', { fragment: true });
-    expect(tabSequence(document.body).length).toBeGreaterThan(4);
+    // with no worker answering, the Active switch and Sync now are disabled: the two buttons that always work remain in the tab order
+    expect(tabSequence(document.body).length).toBeGreaterThanOrEqual(2);
+    expect(document.querySelectorAll('input[type="checkbox"]')).toHaveLength(1);
   });
 
-  // "Delete all rows" asks for a second click by changing its own label. Nothing announces the change.
-  it('A-21 the two-step delete of the action popup announces that it is waiting for a second click (live region), not only by changing the button label', async () => {
-    const html = fs.readFileSync(path.resolve(__dirname, '../../packages/golearn-extension/action/popup.html'), 'utf8');
-    const inner = html.slice(html.indexOf('<body>') + 6, html.indexOf('</body>'));
-    document.body.innerHTML = inner.slice(0, inner.indexOf('<script'));
-    await initPopup(document, createChromeFake());
-    const del = document.getElementById('delete-all') as HTMLButtonElement;
-    del.focus();
-    del.click();
-    expect(del.textContent).toBe('Click again to delete');
-    const live = [...document.querySelectorAll('[role="status"], [role="alert"], [aria-live]')].map((e) => e.textContent ?? '').join(' ') + (del.getAttribute('aria-live') ?? '');
-    expect(live).toMatch(/delete/i);
-  });
+  // A-21 (the two-step delete's announcement) is retired with the control: the popup has no delete button since 2026-10-09 (deletion lives in the setup page's Privacy screen, audited above).
 });
 
 // ───────────────────────────── the auditor audited ─────────────────────────────

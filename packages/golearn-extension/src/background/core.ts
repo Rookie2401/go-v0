@@ -55,6 +55,7 @@ const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
+  MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
 ]);
 
 const withTimeout = (f: typeof fetch, ms: number): typeof fetch => ((input: RequestInfo | URL, init?: RequestInit) => {
@@ -308,6 +309,13 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.correct: return correct(m);
       case MSG.metrics: return storeMetric(m);
       case MSG.active: return active.handle(m, kind);
+      case MSG.activeProfile: {
+        // the words on the learner's screen, by the learner's own switch: never trimmed like a long selection, never sent to the service
+        const s = await active.get();
+        if (!s.active || !(await active.granted())) return { ok: false, error: 'inactive' };
+        const languageId = typeof m.languageId === 'string' ? m.languageId : 'sq';
+        return profile.knowledgeFor(m.unitIds, languageId, { deviceOnly: true });
+      }
       // ── extension pages only ──
       case MSG.serviceConfig: {
         const req = m as { op?: string; baseUrl?: string; assetBase?: string };

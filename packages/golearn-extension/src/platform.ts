@@ -154,6 +154,8 @@ export const MSG = {
   localRepo: 'golearn:local-repo',
   /** GoLearn Active (read the page before the learner): the popup sets it, a content script may read it. See `ActiveRequest` in protocol.ts. */
   active: 'golearn:active',
+  /** GoLearn Active's scan asks about the words on screen: answered from the device's own Repository only, and only while Active is on. */
+  activeProfile: 'golearn:active-profile',
   // background -> content (GoLearn Active)
   activate: 'golearn:activate',
   deactivate: 'golearn:deactivate',

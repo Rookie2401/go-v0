@@ -88,6 +88,24 @@ Where the build is:
 | tests | `test/extension/active.{levels,exclude,highlight,scan,content,background,popup}.test.ts` |
 | harness | `harness/active.html` (a stand-in for the worker on the page, with a fixed learner model) |
 
+Owner's corrections after the first build (2026-10-09, evening), now in force:
+
+- **One switch.** The popup has a single control, **GoLearn Active**. On = the browser's prompt (inside the click), the
+  dynamic registration, selection lookups on every page where Active runs (`controller.enable()` is part of
+  `ActiveMode.start()`), click-to-look-up, and speaking on click whenever a device voice exists. Off = the page access
+  is **withdrawn** (`chrome.permissions.remove`) as well as the registration; there is no separate "Speak on click",
+  "GoLearn on for this tab" or "Withdraw page access". The popup shows what Active found on the page in front
+  (words read, underlined per level, or the reason it read nothing) from the content script's `ping`.
+- **No housekeeping in the popup.** The encounter counter, export, metrics export and the two-click delete are gone from
+  the popup; export and deletion live in the setup page's Privacy screen, and the worker does the rest by itself.
+- **The scan has its own message, `MSG.activeProfile`.** The first build sent the scan's ids through the card's
+  `MSG.profile`, whose long-selection rule trims any list of more than four words to at most four lemma ids (a privacy
+  rule for selections, `wordids.ts`): a batch of sixty page words came back almost empty, so nothing was underlined in
+  the real browser. The scan's question is now answered whole, but **from the device's own Repository only** (the
+  account's history is in it too, pulled at sign-in and after each sync), and only while the switch is on and the
+  permission is granted; the service is never asked about the words on a page. Proven end to end in
+  `test/extension/active.integration.test.ts` (real content script, real worker, device-local Repository).
+
 Where the build differs from §1–§6, and why:
 
 - **Batches of 60, not 200.** The background's profile service answers at most 60 ids per request (`profile.ts`

@@ -94,6 +94,8 @@ export class ActiveMode {
     if (this.on) return this.state;
     this.on = true;
     this.reason = undefined;
+    // one switch: with Active on, a selection the learner makes is looked up too (the per-tab switch folded into Active, 2026-10-09)
+    this.d.controller.enable();
 
     const adapter = chooseAdapter(describePage(this.d.doc), this.d.adapters);
     const entry = registryEntry(adapter.id);
@@ -132,6 +134,7 @@ export class ActiveMode {
   stop(): void {
     if (!this.on) return;
     this.on = false;
+    this.d.controller.disable();
     clearTimeout(this.debounce);
     for (const off of this.listeners) off();
     this.listeners = [];

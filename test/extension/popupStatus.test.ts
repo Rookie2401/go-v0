@@ -34,7 +34,6 @@ describe('not connected', () => {
     await rig.content({ type: MSG.record, event: pendingEvent('libër') });
     await initPopup(document, rig.fake);
     expect(text('sync')).toBe('2 events waiting for an account');
-    expect(text('count')).toBe('2');
   });
 
   it('"Open GoLearn setup" opens the options page', async () => {
@@ -103,16 +102,13 @@ describe('connected', () => {
     expect($('sync').classList.contains('warn')).toBe(true);
   });
 
-  it('"Delete all rows" also clears the unsent queue and the caches, not just the rows the popup can see', async () => {
+  it('clearing the device (the setup page\'s Privacy screen sends MSG.clearLocal) also clears the unsent queue and the caches, and does not sign the learner out', async () => {
     await rig.signUp();
     await rig.connect();
     await rig.content({ type: MSG.record, event: pendingEvent() });
-    await initPopup(document, rig.fake);
-    $('delete-all').click(); await flush(5);
-    $('delete-all').click(); await flush(40);
+    await rig.page({ type: MSG.clearLocal });
     const keys = Object.keys(await rig.fake.local.get(null));
     expect(keys.filter((k) => k.startsWith('golearn:event:') || k.startsWith('queue:'))).toEqual([]);
     expect(keys).toContain('golearn:session'); // deleting rows does not sign the learner out
-    expect(text('count')).toBe('0');
   });
 });

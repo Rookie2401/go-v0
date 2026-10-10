@@ -35,17 +35,12 @@
   button { padding: 3px 10px; border: 1px solid var(--control-line); border-radius: 6px; background: var(--paper-raised); color: var(--ink); cursor: pointer; }
   button:hover:not(:disabled) { border-color: var(--accent-soft); }
   button:disabled { opacity: .5; cursor: not-allowed; }
-  input[type="checkbox"] { accent-color: var(--accent); }
-  .count { font-variant-numeric: tabular-nums; font-weight: 600; }
+  input[type="checkbox"] { accent-color: var(--accent); width: 1.1rem; height: 1.1rem; }
   .err { color: var(--bad); margin: 6px 0; min-height: 1.2em; }
   .hint { color: var(--ink-soft); font-style: italic; font-size: 0.875rem; margin: 6px 0; }
   .status-line { margin: 4px 0; }
   .status-line.warn { color: var(--bad); }
   .muted { color: var(--ink-soft); font-size: 0.875rem; }
-  textarea { width: 100%; height: 130px; margin-top: 8px; padding: 6px 8px; background: var(--paper-raised); color: var(--ink); border: 1px solid var(--control-line); border-radius: 6px; font: 0.75rem/1.3 ui-monospace, Consolas, monospace; box-sizing: border-box; }
-  textarea[hidden] { display: none; }
-  .btns { display: flex; flex-wrap: wrap; gap: 6px; }
-  .proto { margin-top: 10px; font-size: 0.8125rem; color: var(--ink-faint); }
   hr { border: 0; border-top: 1px solid var(--rule); margin: 10px 0; }
   .legend { margin: 4px 0 6px; padding-left: 18px; font-size: 0.875rem; color: var(--ink-soft); }
   .legend li { margin: 2px 0; }
@@ -68,44 +63,23 @@
   </div>
   <div class="row"><button type="button" id="practise">Practise</button><span class="muted grow">Review what you met and write; no account needed.</span></div>
 
-  <div class="row">
-    <label for="enabled">GoLearn on for this tab</label>
-    <input type="checkbox" id="enabled">
-  </div>
-  <div class="err" id="error" role="status" aria-live="polite"></div>
-
   <hr>
   <div class="row">
-    <label for="active"><strong>GoLearn Active</strong>: read each page before me and underline the words I have met</label>
+    <label for="active"><strong>GoLearn Active</strong>: read each page before me, underline the words I have met, and open a word's card when I click it</label>
     <input type="checkbox" id="active">
   </div>
-  <div class="row">
-    <label for="speak">Speak on click, when this device has a voice for the language</label>
-    <input type="checkbox" id="speak" disabled>
-  </div>
   <div class="status-line" id="active-status" role="status" aria-live="polite"></div>
+  <div class="status-line" id="active-page" role="status" aria-live="polite"></div>
   <ul class="legend" id="active-legend" aria-label="What the underlines mean"></ul>
-  <div class="hint">With Active on, one click on a word opens its card. The page is read on this device only, nothing of it is kept, and readers that refuse (Kindle, Kobo, readAwrite, MEB, Pratilipi) are never read. Switching it on asks Brave once to let GoLearn read pages; you can withdraw that here.</div>
-  <div class="row"><button type="button" id="active-revoke" hidden>Withdraw page access</button></div>
+  <div class="hint">Pages are read on this device only and nothing of them is kept; the words are matched against your own history here, never sent anywhere. A click speaks the word when this device has a voice for the language. Readers that refuse (Kindle, Kobo, readAwrite, MEB, Pratilipi) are never read. Switching on asks Brave once to let GoLearn read pages; switching off withdraws that.</div>
+  <div class="err" id="error" role="status" aria-live="polite"></div>
   <hr>
 
   <div class="row"><span>Language</span><span class="grow" id="language">Albanian</span></div>
 
   <div class="status-line" id="sync" role="status" aria-live="polite"></div>
   <div class="row"><button type="button" id="sync-now">Sync now</button><span class="muted" id="sync-detail"></span></div>
-
-  <hr>
-  <div class="row"><span>Encounters on this device</span><span class="count" id="count">0</span></div>
-  <div class="hint">Select a word, then press Alt+Shift+G, or use the right-click item "Look up with GoLearn". With GoLearn on, selecting a word looks it up.</div>
-
-  <div class="status-line" id="delete-note" role="status" aria-live="polite"></div>
-  <div class="btns">
-    <button type="button" id="export-events">Export encounters</button>
-    <button type="button" id="export-metrics">Export metrics</button>
-    <button type="button" id="delete-all">Delete all rows</button>
-  </div>
-  <textarea id="output" hidden readonly aria-label="Exported rows"></textarea>
-  <div class="proto">The stored rows hold hashes and item ids, not page text. Signed in, they are sent to your GoLearn service by the extension's background worker; the web page never sees them.</div>
+  <div class="muted">Your history is kept on this device as hashes and item ids, never page text; export and deletion are in the setup page under Privacy. Signed in, it is sent to your GoLearn service by the extension's background worker; the web page never sees it.</div>
 </main>
 <script src="popup.js"></script>
 </body>

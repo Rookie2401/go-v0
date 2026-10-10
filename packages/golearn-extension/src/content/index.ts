@@ -85,9 +85,10 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   });
   holder.controller = controller;
   // GoLearn Active: reads the page only when the background says the switch is on (below, or on `activate`)
+  // its learner-model question goes through the scan's own message (device rows only, honoured only while the switch is on), not the card's
   const active = new ActiveMode({
     doc, controller, adapters, ui, adapterOf: getAnalyser, loadAnalyser,
-    profile: bridge ? (unitIds, languageId) => bridge.profile({ unitIds, languageId }) : undefined,
+    profile: bridge?.activeProfile ? (unitIds, languageId) => bridge.activeProfile!({ unitIds, languageId }) : undefined,
   });
   w[GLOBAL_KEY] = { controller, active };
 
@@ -98,7 +99,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     switch (m?.type) {
       case MSG.enable: controller.enable(); sendResponse({ ok: true, enabled: true }); return;
       case MSG.disable: controller.disable(); sendResponse({ ok: true, enabled: false }); return;
-      case MSG.ping: sendResponse({ ok: true, enabled: controller.isEnabled, active: active.state.on }); return;
+      case MSG.ping: { const s = active.state; sendResponse({ ok: true, enabled: controller.isEnabled, active: s.on, ...(s.on ? { activeState: s } : {}) }); return; }
       case MSG.lookup: {
         const req = m as LookupMessage;
         void controller.lookup({ trigger: req.trigger, selectionText: req.selectionText, focus: req.focus }).then(

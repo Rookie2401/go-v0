@@ -278,7 +278,8 @@ describe('contrast of the colour pairs actually used (WCAG 2.x, AA)', () => {
     const white: Rgba = { r: 255, g: 255, b: 255, a: 1 };
     const text: Array<[string, string, string]> = [
       ['body', 'body text (body)', 'body'], ['err', 'error text (.err)', '.err'], ['warn', 'warning status (.status-line.warn)', '.status-line.warn'],
-      ['sub', 'sub-title (.sub)', '.sub'], ['hint', 'hint (.hint)', '.hint'], ['proto', 'protocol note (.proto)', '.proto'], ['muted', 'muted detail (.muted)', '.muted'], ['title', 'popup title (h1)', 'h1'],
+      // the protocol note (.proto) left the popup with its housekeeping controls on 2026-10-09; the closing note uses .muted
+      ['sub', 'sub-title (.sub)', '.sub'], ['hint', 'hint (.hint)', '.hint'], ['legend', 'underline legend (.legend)', '.legend'], ['muted', 'muted detail (.muted)', '.muted'], ['title', 'popup title (h1)', 'h1'],
     ];
     const rs: Result[] = [];
     for (const scheme of ['light', 'dark'] as const) {

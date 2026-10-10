@@ -24,6 +24,8 @@ export interface ContentServices {
   pronounceInfo(languageId: string): Promise<PronounceInfoReply | undefined>;
   /** The GoLearn Active switches (read only: a content script cannot set them). Optional: test fakes without it mean "never asked". */
   active?(): Promise<ActiveReply | undefined>;
+  /** The scan's learner-model question (the words on screen): the worker answers from the device's own Repository, only while Active is on. */
+  activeProfile?(req: ProfileRequest): Promise<ProfileReply | undefined>;
 }
 
 export interface Bridge extends ContentServices { events: EventSink; metrics: MetricSink }
@@ -53,6 +55,7 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     correct: (req) => call<CorrectReply>(MSG.correct, { ...req }),
     pronounceInfo: (languageId) => call<PronounceInfoReply>(MSG.pronounceInfo, { languageId }),
     active: () => call<ActiveReply>(MSG.active, { op: 'get' }),
+    activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }),
     events: {
       async append(event): Promise<WriteResult> {
         const r = await call<RecordReply>(MSG.record, { event });

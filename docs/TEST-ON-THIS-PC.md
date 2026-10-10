@@ -42,11 +42,11 @@ If Brave Shields complains on a reading site, the extension still works: it keep
 
 ## 3a. GoLearn Active (read the page before you)
 
-1. In the popup switch on **GoLearn Active**. Brave asks once whether GoLearn may read the pages you visit; say yes (you can withdraw it in the same popup with **Withdraw page access**, or in Brave's extension settings).
-2. The page in front gets it at once; any other page that is already open gets it when you reload it. From then on every page you open in the language is read on this device: the words you have met are underlined, dotted and faint for a word only met, dotted for one you understood with help, thin solid for one you recognise, a hairline for one you have produced (the legend is in the popup).
-3. Click a word: its card opens with the full analysis, no selection needed. **Speak on click** plays the word when Brave has a voice for the language (none for Albanian).
-4. With no lookups yet nothing is underlined: look a few words up first (or practise), then reload the page.
-5. Readers that refuse (Kindle, Kobo, readAwrite, MEB, Pratilipi) are never read. A page whose language GoLearn cannot tell is not read either; a click there says so.
+1. In the popup switch on **GoLearn Active** (the one switch). Brave asks once whether GoLearn may read the pages you visit; say yes. Switching it off withdraws that access again.
+2. The page in front gets it at once; any other page that is already open gets it when you reload it. From then on every page you open in the language is read on this device: the words you have met are underlined, dotted and faint for a word only met, dotted for one you understood with help, thin solid for one you recognise, a hairline for one you have produced (the legend is in the popup). The popup's "This page" line says how many words were read and underlined, or why nothing was.
+3. Click a word: its card opens with the full analysis, no selection needed; selecting a phrase looks it up too. The word is spoken when Brave has a voice for the language (none for Albanian).
+4. With no lookups yet nothing is underlined: look a few words up first (or practise), then reload the page. The words are matched against your history on this device only; nothing of the page is sent anywhere.
+5. Readers that refuse (Kindle, Kobo, readAwrite, MEB, Pratilipi) are never read. A page whose language GoLearn cannot tell is not read either; the popup and a click there say so.
    - Harness page with a fixed learner model, no extension needed: `npx vite build -c packages/golearn-extension/vite.config.ts --mode content-harness`, then `node scripts\local\static-server.cjs packages\golearn-extension 5197` → `http://localhost:5197/harness/active.html` (the status line shows the words found, the marks per level and the scan time).
 
 ## 4. The account step (optional, only to try it)

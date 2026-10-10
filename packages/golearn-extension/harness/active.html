@@ -54,7 +54,8 @@
       switch (m.type) {
         case 'golearn:status': return { ok: true, connected: false, needsSignIn: false, languageId: 'sq', languageName: 'Albanian', packAvailable: true, installedLanguages: ['sq'] };
         case 'golearn:active': return { ok: true, settings, granted: true, registered: true, excluded: 9 };
-        case 'golearn:profile': { const out = {}; for (const id of m.unitIds || []) if (rows[id]) out[id] = rows[id]; return { ok: true, connected: false, source: 'device', rows: out, depth: 'brief', depthOrigin: 'default' }; }
+        case 'golearn:profile':
+        case 'golearn:active-profile': { const out = {}; for (const id of m.unitIds || []) if (rows[id]) out[id] = rows[id]; return { ok: true, connected: false, source: 'device', rows: out, depth: 'brief', depthOrigin: 'default' }; }
         case 'golearn:gloss': return { ok: true, found: false, senses: [], reason: 'no-pack' };
         case 'golearn:explain': return { ok: true, features: [], constructions: [], source: 'none' };
         case 'golearn:pronounce-info': return { ok: true, deviceVoice: 'maybe', remoteConsent: false, sources: [], note: '' };

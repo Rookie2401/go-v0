@@ -130,12 +130,23 @@ export function createProfileService(opts: ProfileServiceOptions) {
     return { ok: true, connected: true, stale: true, rows, error, ...(mine && Object.keys(mine).length ? { source: 'device' as const } : {}), ...base };
   }
 
-  async function knowledgeFor(unitIds: unknown, languageId: string): Promise<ProfileReply> {
+  /**
+   * `how.deviceOnly` (GoLearn Active's scan): the words on the learner's screen, asked by the learner's own switch. They are not trimmed
+   * like a long selection (the scan is exactly a reading of the page, by design) and they are answered from the device's own Repository
+   * only: the service is never asked, so no word of the page leaves the device. The account's history is in the device Repository too
+   * (pulled at sign-in and after each sync).
+   */
+  async function knowledgeFor(unitIds: unknown, languageId: string, how: { deviceOnly?: boolean } = {}): Promise<ProfileReply> {
+    const valid = [...new Set(Array.isArray(unitIds) ? unitIds.filter(isUnitId) : [])];
     // A request that names more than four words comes from a long selection: it asks for lemma ids only, never the page's raw words (./wordids).
-    const ids = limitWordIds([...new Set(Array.isArray(unitIds) ? unitIds.filter(isUnitId) : [])]).ids.slice(0, MAX_IDS_PER_REQUEST);
+    const ids = (how.deviceOnly ? valid : limitWordIds(valid).ids).slice(0, MAX_IDS_PER_REQUEST);
     const st = await opts.session.status();
     const d = await depthFor(languageId);
     const base = { depth: d.depth, depthOrigin: d.origin } as const;
+    if (how.deviceOnly) {
+      const rows = await deviceRows(ids);
+      return { ok: true, connected: st.connected, source: 'device', rows: rows ?? {}, ...(rows ? {} : { error: 'device-unavailable' }), ...base };
+    }
     if (!st.connected) {
       const rows = await deviceRows(ids);
       return rows ? { ok: true, connected: false, source: 'device', rows, ...base } : { ok: true, connected: false, rows: {}, ...base };

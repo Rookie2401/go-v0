@@ -32,6 +32,7 @@ import { deMorphFromTags, deVarietiesFromTags } from './german/tags';
 import { LISTED_GROUPS } from './german/historical';
 import { deCellsFor, germanParadigm } from './german/paradigm';
 import { tableRow } from './german/table-tags';
+import { germanSyntax } from './german/syntax';
 
 const LANG = 'de' as const;
 const VERSION = DE_ANALYZER_VERSION;
@@ -186,6 +187,9 @@ export const deAdapter: LanguageAdapter = {
   checkProduction: (tokens, analyses, sentence) => checkGermanProduction(tokens, productionView(tokens, analyses), sentence, deLexiconView),
 
   relate: (a, b) => relateGerman(a, b, deLexiconView),
+
+  /** Linguistic Engine V2, Stage 4: shallow dependency relations over the readings above (german/syntax.ts). */
+  syntax: (tokens, analyses) => germanSyntax(tokens, analyses),
 
   /**
    * Other headwords a dictionary may file this lemma under: an older spelling the list pairs with it (Tal → Thal), then the

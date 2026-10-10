@@ -32,6 +32,7 @@ import { SQ_PHRASE_RULES } from './albanian/phrases';
 import { checkSqProduction } from './albanian/production';
 import { orderSqSentence } from './albanian/sentence';
 import { segmentSqSentences } from './albanian/sentences';
+import { sqSyntax } from './albanian/syntax';
 import { sqMorphFromTags } from './albanian/tags';
 import { SQ_VARIETIES, sqVarietiesFromTags } from './albanian/varieties';
 
@@ -118,6 +119,9 @@ export const sqAdapter: LanguageAdapter = {
   detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, SQ_PHRASE_RULES, sqNormalize),
 
   detectPatterns: (tokens, analyses) => detectSqConstructions(tokens, analyses),
+
+  /** Contextual syntax (Linguistic Engine V2, Stage 4): shallow dependencies from the readings above; see albanian/syntax.ts and docs/ecosystem/linguistics/SYNTAX-sq.md. */
+  syntax: (tokens, analyses) => sqSyntax(tokens, analyses),
 
   /** One line for each letter of the word that is not sounded as an English reader expects; a digraph is one letter. */
   pronunciation(token): PronunciationSupport {

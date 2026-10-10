@@ -25,6 +25,7 @@ import type {
 import {
   Lexicon, hasPos, makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric, type LexEntry, type PhraseRule,
 } from './shared';
+import { hindiSyntax } from './hindi/syntax';
 import { analyzeHindiForm, describeHindiMorph, type HindiAnalysis, type HindiLemmaInfo } from './hindi/morphology';
 import { annotationKey, buildRows, parseRows, type HiAnnotation } from './hindi/entries';
 import { FUNCTION_ROWS } from './hindi/lexicon-function';
@@ -672,6 +673,9 @@ export const hiAdapter: LanguageAdapter = {
   /** The cells an analysed reading occupies: the reading is normalised like a cell and matched where both state a feature (hindi/paradigm.ts `hindiCellsFor`). */
   cellsFor: (p, features, surface) => hindiCellsFor(p, p.pos, features, surface),
   featuresFromTableTags: (tags, pos, form?: string) => hiFeaturesFromTableTags(tags, pos, form),
+
+  /** Contextual syntax (Linguistic Engine V2, Stage 4): shallow dependencies from the readings and verb groups; see hindi/syntax.ts. */
+  syntax: (tokens, analyses) => hindiSyntax(tokens, analyses),
 };
 
 const HI_UNITS = ['शून्य', 'एक', 'दो', 'तीन', 'चार', 'पाँच', 'छह', 'सात', 'आठ', 'नौ', 'दस', 'ग्यारह', 'बारह', 'तेरह', 'चौदह', 'पंद्रह', 'सोलह', 'सत्रह', 'अठारह', 'उन्नीस', 'बीस'];

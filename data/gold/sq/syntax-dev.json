@@ -1,0 +1,2913 @@
+{
+ "language": "sq",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "note": "Hand-labelled dependency trees in the style of the Universal Dependencies Albanian treebanks (STAF, TSA). Word tokens only (punctuation is not scored). heads are 0-based indexes into tokens, -1 = root. Relations are UD labels with subtypes dropped; \"dep\" marks parataxis (the contract has no parataxis label); a fused clitic cluster (ia, ma, ta) is one token labelled by its first component. Text = sentences of data/corpus/sq. Written from the grammar, before looking at the rules output; no native speaker has checked it.",
+ "sentences": [
+  {
+   "id": "bible-1john-1#1",
+   "source": "bible-1john-1",
+   "text": "Në qoftë se themi se nuk kemi mëkat, e mashtrojmë veten tonë dhe e vërteta nuk është në ne.",
+   "tokens": [
+    "Në",
+    "qoftë",
+    "se",
+    "themi",
+    "se",
+    "nuk",
+    "kemi",
+    "mëkat",
+    "e",
+    "mashtrojmë",
+    "veten",
+    "tonë",
+    "dhe",
+    "e",
+    "vërteta",
+    "nuk",
+    "është",
+    "në",
+    "ne"
+   ],
+   "heads": [
+    2,
+    2,
+    3,
+    9,
+    6,
+    6,
+    3,
+    6,
+    9,
+    -1,
+    9,
+    10,
+    18,
+    14,
+    18,
+    18,
+    18,
+    18,
+    9
+   ],
+   "relations": [
+    "fixed",
+    "fixed",
+    "mark",
+    "advcl",
+    "mark",
+    "advmod",
+    "ccomp",
+    "obj",
+    "expl",
+    "root",
+    "obj",
+    "det",
+    "cc",
+    "det",
+    "nsubj",
+    "advmod",
+    "cop",
+    "case",
+    "conj"
+   ]
+  },
+  {
+   "id": "dialogue-01#4",
+   "source": "dialogue-01",
+   "text": "Përshëndetje, Ana, si je?",
+   "tokens": [
+    "Përshëndetje",
+    "Ana",
+    "si",
+    "je"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2
+   ],
+   "relations": [
+    "discourse",
+    "vocative",
+    "root",
+    "cop"
+   ]
+  },
+  {
+   "id": "dialogue-01#5",
+   "source": "dialogue-01",
+   "text": "Jam mirë, Pavli, por nuk e kuptoj një gjë.",
+   "tokens": [
+    "Jam",
+    "mirë",
+    "Pavli",
+    "por",
+    "nuk",
+    "e",
+    "kuptoj",
+    "një",
+    "gjë"
+   ],
+   "heads": [
+    1,
+    -1,
+    1,
+    6,
+    6,
+    6,
+    1,
+    8,
+    6
+   ],
+   "relations": [
+    "cop",
+    "root",
+    "vocative",
+    "cc",
+    "advmod",
+    "expl",
+    "conj",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "dialogue-01#6",
+   "source": "dialogue-01",
+   "text": "Çfarë nuk kupton?",
+   "tokens": [
+    "Çfarë",
+    "nuk",
+    "kupton"
+   ],
+   "heads": [
+    2,
+    2,
+    -1
+   ],
+   "relations": [
+    "obj",
+    "advmod",
+    "root"
+   ]
+  },
+  {
+   "id": "dialogue-01#7",
+   "source": "dialogue-01",
+   "text": "Nuk e kuptoj pse Perëndia e fal mëkatin.",
+   "tokens": [
+    "Nuk",
+    "e",
+    "kuptoj",
+    "pse",
+    "Perëndia",
+    "e",
+    "fal",
+    "mëkatin"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    6,
+    6,
+    6,
+    2,
+    6
+   ],
+   "relations": [
+    "advmod",
+    "obj",
+    "root",
+    "advmod",
+    "nsubj",
+    "expl",
+    "ccomp",
+    "obj"
+   ]
+  },
+  {
+   "id": "dialogue-01#8",
+   "source": "dialogue-01",
+   "text": "Edhe unë fillova të kuptoj.",
+   "tokens": [
+    "Edhe",
+    "unë",
+    "fillova",
+    "të",
+    "kuptoj"
+   ],
+   "heads": [
+    1,
+    2,
+    -1,
+    4,
+    2
+   ],
+   "relations": [
+    "advmod",
+    "nsubj",
+    "root",
+    "mark",
+    "xcomp"
+   ]
+  },
+  {
+   "id": "dialogue-01#9",
+   "source": "dialogue-01",
+   "text": "A beson te Perëndia?",
+   "tokens": [
+    "A",
+    "beson",
+    "te",
+    "Perëndia"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "discourse",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "dialogue-01#10",
+   "source": "dialogue-01",
+   "text": "Po, besoj te Perëndia me gjithë zemër.",
+   "tokens": [
+    "Po",
+    "besoj",
+    "te",
+    "Perëndia",
+    "me",
+    "gjithë",
+    "zemër"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    6,
+    6,
+    1
+   ],
+   "relations": [
+    "discourse",
+    "root",
+    "case",
+    "obl",
+    "case",
+    "det",
+    "obl"
+   ]
+  },
+  {
+   "id": "dialogue-01#11",
+   "source": "dialogue-01",
+   "text": "Faleminderit, Pavli, edhe unë dua të besoj te Perëndia.",
+   "tokens": [
+    "Faleminderit",
+    "Pavli",
+    "edhe",
+    "unë",
+    "dua",
+    "të",
+    "besoj",
+    "te",
+    "Perëndia"
+   ],
+   "heads": [
+    4,
+    4,
+    3,
+    4,
+    -1,
+    6,
+    4,
+    8,
+    6
+   ],
+   "relations": [
+    "discourse",
+    "vocative",
+    "advmod",
+    "nsubj",
+    "root",
+    "mark",
+    "xcomp",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "misioni-1-01#13",
+   "source": "misioni-1-01",
+   "text": "Si quheni ju?",
+   "tokens": [
+    "Si",
+    "quheni",
+    "ju"
+   ],
+   "heads": [
+    1,
+    -1,
+    1
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "nsubj"
+   ]
+  },
+  {
+   "id": "misioni-1-01#14",
+   "source": "misioni-1-01",
+   "text": "— Unë quhem Dritan.",
+   "tokens": [
+    "Unë",
+    "quhem",
+    "Dritan"
+   ],
+   "heads": [
+    1,
+    -1,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "xcomp"
+   ]
+  },
+  {
+   "id": "misioni-1-01#15",
+   "source": "misioni-1-01",
+   "text": "Gëzohem që ju njoh.",
+   "tokens": [
+    "Gëzohem",
+    "që",
+    "ju",
+    "njoh"
+   ],
+   "heads": [
+    -1,
+    3,
+    3,
+    0
+   ],
+   "relations": [
+    "root",
+    "mark",
+    "obj",
+    "ccomp"
+   ]
+  },
+  {
+   "id": "misioni-1-01#18",
+   "source": "misioni-1-01",
+   "text": "— Jam nga Tirana.",
+   "tokens": [
+    "Jam",
+    "nga",
+    "Tirana"
+   ],
+   "heads": [
+    2,
+    2,
+    -1
+   ],
+   "relations": [
+    "cop",
+    "case",
+    "root"
+   ]
+  },
+  {
+   "id": "misioni-1-01#20",
+   "source": "misioni-1-01",
+   "text": "— Unë jam nga Amerika.",
+   "tokens": [
+    "Unë",
+    "jam",
+    "nga",
+    "Amerika"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "case",
+    "root"
+   ]
+  },
+  {
+   "id": "misioni-1-01#21",
+   "source": "misioni-1-01",
+   "text": "Tani jetoj në Tiranë.",
+   "tokens": [
+    "Tani",
+    "jetoj",
+    "në",
+    "Tiranë"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "misioni-1-02#30",
+   "source": "misioni-1-02",
+   "text": "Shtëpia juaj është shumë e bukur.",
+   "tokens": [
+    "Shtëpia",
+    "juaj",
+    "është",
+    "shumë",
+    "e",
+    "bukur"
+   ],
+   "heads": [
+    5,
+    0,
+    5,
+    5,
+    5,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "det",
+    "cop",
+    "advmod",
+    "det",
+    "root"
+   ]
+  },
+  {
+   "id": "misioni-1-02#32",
+   "source": "misioni-1-02",
+   "text": "A doni një kafe?",
+   "tokens": [
+    "A",
+    "doni",
+    "një",
+    "kafe"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "discourse",
+    "root",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "misioni-1-02#34",
+   "source": "misioni-1-02",
+   "text": "Dritani sjell kafenë.",
+   "tokens": [
+    "Dritani",
+    "sjell",
+    "kafenë"
+   ],
+   "heads": [
+    1,
+    -1,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "misioni-1-02#35",
+   "source": "misioni-1-02",
+   "text": "— Kjo është gruaja ime, Mira.",
+   "tokens": [
+    "Kjo",
+    "është",
+    "gruaja",
+    "ime",
+    "Mira"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "root",
+    "det",
+    "appos"
+   ]
+  },
+  {
+   "id": "misioni-1-02#39",
+   "source": "misioni-1-02",
+   "text": "Ata janë në Amerikë.",
+   "tokens": [
+    "Ata",
+    "janë",
+    "në",
+    "Amerikë"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "case",
+    "root"
+   ]
+  },
+  {
+   "id": "misioni-1-03#40",
+   "source": "misioni-1-03",
+   "text": "Të dielën Marku shkon në kishë.",
+   "tokens": [
+    "Të",
+    "dielën",
+    "Marku",
+    "shkon",
+    "në",
+    "kishë"
+   ],
+   "heads": [
+    1,
+    3,
+    3,
+    -1,
+    5,
+    3
+   ],
+   "relations": [
+    "det",
+    "obl",
+    "nsubj",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "misioni-1-03#42",
+   "source": "misioni-1-03",
+   "text": "Në kishë ka shumë njerëz.",
+   "tokens": [
+    "Në",
+    "kishë",
+    "ka",
+    "shumë",
+    "njerëz"
+   ],
+   "heads": [
+    1,
+    2,
+    -1,
+    4,
+    2
+   ],
+   "relations": [
+    "case",
+    "obl",
+    "root",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "misioni-1-03#43",
+   "source": "misioni-1-03",
+   "text": "Ata këndojnë dhe luten.",
+   "tokens": [
+    "Ata",
+    "këndojnë",
+    "dhe",
+    "luten"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "cc",
+    "conj"
+   ]
+  },
+  {
+   "id": "misioni-1-03#44",
+   "source": "misioni-1-03",
+   "text": "Një burrë lexon nga Bibla.",
+   "tokens": [
+    "Një",
+    "burrë",
+    "lexon",
+    "nga",
+    "Bibla"
+   ],
+   "heads": [
+    1,
+    2,
+    -1,
+    4,
+    2
+   ],
+   "relations": [
+    "det",
+    "nsubj",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "misioni-1-03#45",
+   "source": "misioni-1-03",
+   "text": "Ai flet për dashurinë e Perëndisë.",
+   "tokens": [
+    "Ai",
+    "flet",
+    "për",
+    "dashurinë",
+    "e",
+    "Perëndisë"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl",
+    "det",
+    "nmod"
+   ]
+  },
+  {
+   "id": "misioni-1-03#47",
+   "source": "misioni-1-03",
+   "text": "Pas kishës Dritani pyet:",
+   "tokens": [
+    "Pas",
+    "kishës",
+    "Dritani",
+    "pyet"
+   ],
+   "heads": [
+    1,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "case",
+    "obl",
+    "nsubj",
+    "root"
+   ]
+  },
+  {
+   "id": "misioni-1-03#48",
+   "source": "misioni-1-03",
+   "text": "— Çfarë është Bibla?",
+   "tokens": [
+    "Çfarë",
+    "është",
+    "Bibla"
+   ],
+   "heads": [
+    -1,
+    0,
+    0
+   ],
+   "relations": [
+    "root",
+    "cop",
+    "nsubj"
+   ]
+  },
+  {
+   "id": "misioni-1-03#50",
+   "source": "misioni-1-03",
+   "text": "— A mund ta lexoj?",
+   "tokens": [
+    "A",
+    "mund",
+    "ta",
+    "lexoj"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "discourse",
+    "root",
+    "mark",
+    "xcomp"
+   ]
+  },
+  {
+   "id": "misioni-1-04#54",
+   "source": "misioni-1-04",
+   "text": "— Çfarë beson ti për Perëndinë?",
+   "tokens": [
+    "Çfarë",
+    "beson",
+    "ti",
+    "për",
+    "Perëndinë"
+   ],
+   "heads": [
+    1,
+    -1,
+    1,
+    4,
+    1
+   ],
+   "relations": [
+    "obj",
+    "root",
+    "nsubj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "misioni-1-04#55",
+   "source": "misioni-1-04",
+   "text": "— Unë besoj se ka një Zot.",
+   "tokens": [
+    "Unë",
+    "besoj",
+    "se",
+    "ka",
+    "një",
+    "Zot"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "mark",
+    "ccomp",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "misioni-1-04#57",
+   "source": "misioni-1-04",
+   "text": "— Unë besoj se Perëndia na do.",
+   "tokens": [
+    "Unë",
+    "besoj",
+    "se",
+    "Perëndia",
+    "na",
+    "do"
+   ],
+   "heads": [
+    1,
+    -1,
+    5,
+    5,
+    5,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "mark",
+    "nsubj",
+    "obj",
+    "ccomp"
+   ]
+  },
+  {
+   "id": "misioni-1-04#58",
+   "source": "misioni-1-04",
+   "text": "Ai e dha Birin e tij për ne.",
+   "tokens": [
+    "Ai",
+    "e",
+    "dha",
+    "Birin",
+    "e",
+    "tij",
+    "për",
+    "ne"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    5,
+    3,
+    7,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "det",
+    "det",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "misioni-1-04#59",
+   "source": "misioni-1-04",
+   "text": "— Kush është Biri i tij?",
+   "tokens": [
+    "Kush",
+    "është",
+    "Biri",
+    "i",
+    "tij"
+   ],
+   "heads": [
+    -1,
+    0,
+    0,
+    4,
+    2
+   ],
+   "relations": [
+    "root",
+    "cop",
+    "nsubj",
+    "det",
+    "det"
+   ]
+  },
+  {
+   "id": "misioni-1-04#61",
+   "source": "misioni-1-04",
+   "text": "Ai vdiq për mëkatet tona dhe u ringjall.",
+   "tokens": [
+    "Ai",
+    "vdiq",
+    "për",
+    "mëkatet",
+    "tona",
+    "dhe",
+    "u",
+    "ringjall"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    3,
+    7,
+    7,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl",
+    "det",
+    "cc",
+    "expl",
+    "conj"
+   ]
+  },
+  {
+   "id": "misioni-1-04#62",
+   "source": "misioni-1-04",
+   "text": "— Dua të di më shumë.",
+   "tokens": [
+    "Dua",
+    "të",
+    "di",
+    "më",
+    "shumë"
+   ],
+   "heads": [
+    -1,
+    2,
+    0,
+    4,
+    2
+   ],
+   "relations": [
+    "root",
+    "mark",
+    "xcomp",
+    "advmod",
+    "advmod"
+   ]
+  },
+  {
+   "id": "story-01#64",
+   "source": "story-01",
+   "text": "Kur isha i ri, nuk e kuptoja zemrën time.",
+   "tokens": [
+    "Kur",
+    "isha",
+    "i",
+    "ri",
+    "nuk",
+    "e",
+    "kuptoja",
+    "zemrën",
+    "time"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    6,
+    6,
+    6,
+    -1,
+    6,
+    7
+   ],
+   "relations": [
+    "advmod",
+    "cop",
+    "det",
+    "advcl",
+    "advmod",
+    "expl",
+    "root",
+    "obj",
+    "det"
+   ]
+  },
+  {
+   "id": "story-01#65",
+   "source": "story-01",
+   "text": "Kur isha i ri, kisha mëkat në zemrën time.",
+   "tokens": [
+    "Kur",
+    "isha",
+    "i",
+    "ri",
+    "kisha",
+    "mëkat",
+    "në",
+    "zemrën",
+    "time"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    4,
+    -1,
+    4,
+    7,
+    4,
+    7
+   ],
+   "relations": [
+    "advmod",
+    "cop",
+    "det",
+    "advcl",
+    "root",
+    "obj",
+    "case",
+    "obl",
+    "det"
+   ]
+  },
+  {
+   "id": "story-01#66",
+   "source": "story-01",
+   "text": "Nuk besoja te Perëndia.",
+   "tokens": [
+    "Nuk",
+    "besoja",
+    "te",
+    "Perëndia"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "story-01#67",
+   "source": "story-01",
+   "text": "Një ditë fillova të kuptoj mëkatin tim.",
+   "tokens": [
+    "Një",
+    "ditë",
+    "fillova",
+    "të",
+    "kuptoj",
+    "mëkatin",
+    "tim"
+   ],
+   "heads": [
+    1,
+    2,
+    -1,
+    4,
+    2,
+    4,
+    5
+   ],
+   "relations": [
+    "det",
+    "obl",
+    "root",
+    "mark",
+    "xcomp",
+    "obj",
+    "det"
+   ]
+  },
+  {
+   "id": "story-01#68",
+   "source": "story-01",
+   "text": "Perëndia e fali mëkatin tim.",
+   "tokens": [
+    "Perëndia",
+    "e",
+    "fali",
+    "mëkatin",
+    "tim"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "det"
+   ]
+  },
+  {
+   "id": "story-01#71",
+   "source": "story-01",
+   "text": "Perëndia e do botën.",
+   "tokens": [
+    "Perëndia",
+    "e",
+    "do",
+    "botën"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "story-01#72",
+   "source": "story-01",
+   "text": "Edhe unë e dua Perëndinë.",
+   "tokens": [
+    "Edhe",
+    "unë",
+    "e",
+    "dua",
+    "Perëndinë"
+   ],
+   "heads": [
+    1,
+    3,
+    3,
+    -1,
+    3
+   ],
+   "relations": [
+    "advmod",
+    "nsubj",
+    "expl",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "story-01#73",
+   "source": "story-01",
+   "text": "Tani e kuptoj se Perëndia i fal të gjithë.",
+   "tokens": [
+    "Tani",
+    "e",
+    "kuptoj",
+    "se",
+    "Perëndia",
+    "i",
+    "fal",
+    "të",
+    "gjithë"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    6,
+    6,
+    6,
+    2,
+    8,
+    6
+   ],
+   "relations": [
+    "advmod",
+    "obj",
+    "root",
+    "mark",
+    "nsubj",
+    "expl",
+    "ccomp",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-0-02#84",
+   "source": "udha-0-02",
+   "text": "Kjo është një shtëpi.",
+   "tokens": [
+    "Kjo",
+    "është",
+    "një",
+    "shtëpi"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "det",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-02#85",
+   "source": "udha-0-02",
+   "text": "Shtëpia është e madhe.",
+   "tokens": [
+    "Shtëpia",
+    "është",
+    "e",
+    "madhe"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "det",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-03#92",
+   "source": "udha-0-03",
+   "text": "Kjo është familja e Benit.",
+   "tokens": [
+    "Kjo",
+    "është",
+    "familja",
+    "e",
+    "Benit"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    4,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "root",
+    "det",
+    "nmod"
+   ]
+  },
+  {
+   "id": "udha-0-03#95",
+   "source": "udha-0-03",
+   "text": "Beni ka një motër.",
+   "tokens": [
+    "Beni",
+    "ka",
+    "një",
+    "motër"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-0-03#96",
+   "source": "udha-0-03",
+   "text": "Motra e Benit është Ana.",
+   "tokens": [
+    "Motra",
+    "e",
+    "Benit",
+    "është",
+    "Ana"
+   ],
+   "heads": [
+    4,
+    2,
+    0,
+    4,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "det",
+    "nmod",
+    "cop",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-03#98",
+   "source": "udha-0-03",
+   "text": "Vëllai i Anës është Beni.",
+   "tokens": [
+    "Vëllai",
+    "i",
+    "Anës",
+    "është",
+    "Beni"
+   ],
+   "heads": [
+    4,
+    2,
+    0,
+    4,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "det",
+    "nmod",
+    "cop",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-03#99",
+   "source": "udha-0-03",
+   "text": "Familja është në shtëpi.",
+   "tokens": [
+    "Familja",
+    "është",
+    "në",
+    "shtëpi"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "case",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-04#100",
+   "source": "udha-0-04",
+   "text": "Shtëpia ka një dhomë të madhe.",
+   "tokens": [
+    "Shtëpia",
+    "ka",
+    "një",
+    "dhomë",
+    "të",
+    "madhe"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "det",
+    "obj",
+    "det",
+    "amod"
+   ]
+  },
+  {
+   "id": "udha-0-04#101",
+   "source": "udha-0-04",
+   "text": "Në dhomë ka një tavolinë.",
+   "tokens": [
+    "Në",
+    "dhomë",
+    "ka",
+    "një",
+    "tavolinë"
+   ],
+   "heads": [
+    1,
+    2,
+    -1,
+    4,
+    2
+   ],
+   "relations": [
+    "case",
+    "obl",
+    "root",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-0-04#106",
+   "source": "udha-0-04",
+   "text": "Babai nuk është në dhomë.",
+   "tokens": [
+    "Babai",
+    "nuk",
+    "është",
+    "në",
+    "dhomë"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    4,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "advmod",
+    "cop",
+    "case",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-05#111",
+   "source": "udha-0-05",
+   "text": "Beni ka një xhaketë të re.",
+   "tokens": [
+    "Beni",
+    "ka",
+    "një",
+    "xhaketë",
+    "të",
+    "re"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "det",
+    "obj",
+    "det",
+    "amod"
+   ]
+  },
+  {
+   "id": "udha-0-06#113",
+   "source": "udha-0-06",
+   "text": "Ana ha bukë.",
+   "tokens": [
+    "Ana",
+    "ha",
+    "bukë"
+   ],
+   "heads": [
+    1,
+    -1,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-0-06#119",
+   "source": "udha-0-06",
+   "text": "Uji është i mirë.",
+   "tokens": [
+    "Uji",
+    "është",
+    "i",
+    "mirë"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "det",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-07#121",
+   "source": "udha-0-07",
+   "text": "Sot Beni është në shkollë.",
+   "tokens": [
+    "Sot",
+    "Beni",
+    "është",
+    "në",
+    "shkollë"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    4,
+    -1
+   ],
+   "relations": [
+    "advmod",
+    "nsubj",
+    "cop",
+    "case",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-07#124",
+   "source": "udha-0-07",
+   "text": "Ku është Beni?",
+   "tokens": [
+    "Ku",
+    "është",
+    "Beni"
+   ],
+   "heads": [
+    -1,
+    0,
+    0
+   ],
+   "relations": [
+    "root",
+    "cop",
+    "nsubj"
+   ]
+  },
+  {
+   "id": "udha-0-07#126",
+   "source": "udha-0-07",
+   "text": "A është Ana në shkollë?",
+   "tokens": [
+    "A",
+    "është",
+    "Ana",
+    "në",
+    "shkollë"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    4,
+    -1
+   ],
+   "relations": [
+    "discourse",
+    "cop",
+    "nsubj",
+    "case",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-0-08#135",
+   "source": "udha-0-08",
+   "text": "Si je?",
+   "tokens": [
+    "Si",
+    "je"
+   ],
+   "heads": [
+    -1,
+    0
+   ],
+   "relations": [
+    "root",
+    "cop"
+   ]
+  },
+  {
+   "id": "udha-1-01#137",
+   "source": "udha-1-01",
+   "text": "Është mëngjes.",
+   "tokens": [
+    "Është",
+    "mëngjes"
+   ],
+   "heads": [
+    1,
+    -1
+   ],
+   "relations": [
+    "cop",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-1-01#139",
+   "source": "udha-1-01",
+   "text": "Ai lahet dhe vishet.",
+   "tokens": [
+    "Ai",
+    "lahet",
+    "dhe",
+    "vishet"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "cc",
+    "conj"
+   ]
+  },
+  {
+   "id": "udha-1-01#145",
+   "source": "udha-1-01",
+   "text": "Nëna i jep çajin.",
+   "tokens": [
+    "Nëna",
+    "i",
+    "jep",
+    "çajin"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "iobj",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-01#146",
+   "source": "udha-1-01",
+   "text": "Beni e pi çajin dhe ha bukën.",
+   "tokens": [
+    "Beni",
+    "e",
+    "pi",
+    "çajin",
+    "dhe",
+    "ha",
+    "bukën"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    5,
+    2,
+    5
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "cc",
+    "conj",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-01#147",
+   "source": "udha-1-01",
+   "text": "Pastaj shkon në shkollë.",
+   "tokens": [
+    "Pastaj",
+    "shkon",
+    "në",
+    "shkollë"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-02#148",
+   "source": "udha-1-02",
+   "text": "Ana ka një libër të ri.",
+   "tokens": [
+    "Ana",
+    "ka",
+    "një",
+    "libër",
+    "të",
+    "ri"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "det",
+    "obj",
+    "det",
+    "amod"
+   ]
+  },
+  {
+   "id": "udha-1-02#150",
+   "source": "udha-1-02",
+   "text": "Ana e do librin.",
+   "tokens": [
+    "Ana",
+    "e",
+    "do",
+    "librin"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-02#151",
+   "source": "udha-1-02",
+   "text": "Ajo e lexon librin çdo ditë.",
+   "tokens": [
+    "Ajo",
+    "e",
+    "lexon",
+    "librin",
+    "çdo",
+    "ditë"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    5,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "det",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-02#152",
+   "source": "udha-1-02",
+   "text": "Sot Ana nuk e gjen librin.",
+   "tokens": [
+    "Sot",
+    "Ana",
+    "nuk",
+    "e",
+    "gjen",
+    "librin"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    4,
+    -1,
+    4
+   ],
+   "relations": [
+    "advmod",
+    "nsubj",
+    "advmod",
+    "expl",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-02#153",
+   "source": "udha-1-02",
+   "text": "— Ku është libri im? — pyet Ana.",
+   "tokens": [
+    "Ku",
+    "është",
+    "libri",
+    "im",
+    "pyet",
+    "Ana"
+   ],
+   "heads": [
+    -1,
+    0,
+    0,
+    2,
+    0,
+    4
+   ],
+   "relations": [
+    "root",
+    "cop",
+    "nsubj",
+    "det",
+    "dep",
+    "nsubj"
+   ]
+  },
+  {
+   "id": "udha-1-02#154",
+   "source": "udha-1-02",
+   "text": "Beni nuk e di.",
+   "tokens": [
+    "Beni",
+    "nuk",
+    "e",
+    "di"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "advmod",
+    "obj",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-1-02#155",
+   "source": "udha-1-02",
+   "text": "Nëna e sheh librin mbi tavolinë.",
+   "tokens": [
+    "Nëna",
+    "e",
+    "sheh",
+    "librin",
+    "mbi",
+    "tavolinë"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    5,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-02#157",
+   "source": "udha-1-02",
+   "text": "Ajo ia jep librin Anës.",
+   "tokens": [
+    "Ajo",
+    "ia",
+    "jep",
+    "librin",
+    "Anës"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "iobj"
+   ]
+  },
+  {
+   "id": "udha-1-03#159",
+   "source": "udha-1-03",
+   "text": "Gjyshi dhe gjyshja jetojnë në fshat.",
+   "tokens": [
+    "Gjyshi",
+    "dhe",
+    "gjyshja",
+    "jetojnë",
+    "në",
+    "fshat"
+   ],
+   "heads": [
+    3,
+    2,
+    0,
+    -1,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "cc",
+    "conj",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-03#160",
+   "source": "udha-1-03",
+   "text": "Shtëpia e gjyshit është e vjetër, por e bukur.",
+   "tokens": [
+    "Shtëpia",
+    "e",
+    "gjyshit",
+    "është",
+    "e",
+    "vjetër",
+    "por",
+    "e",
+    "bukur"
+   ],
+   "heads": [
+    5,
+    2,
+    0,
+    5,
+    5,
+    -1,
+    8,
+    8,
+    5
+   ],
+   "relations": [
+    "nsubj",
+    "det",
+    "nmod",
+    "cop",
+    "det",
+    "root",
+    "cc",
+    "det",
+    "conj"
+   ]
+  },
+  {
+   "id": "udha-1-03#161",
+   "source": "udha-1-03",
+   "text": "Gjyshi ka një qen të madh.",
+   "tokens": [
+    "Gjyshi",
+    "ka",
+    "një",
+    "qen",
+    "të",
+    "madh"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "det",
+    "obj",
+    "det",
+    "amod"
+   ]
+  },
+  {
+   "id": "udha-1-03#164",
+   "source": "udha-1-03",
+   "text": "Buka e gjyshes është shumë e mirë.",
+   "tokens": [
+    "Buka",
+    "e",
+    "gjyshes",
+    "është",
+    "shumë",
+    "e",
+    "mirë"
+   ],
+   "heads": [
+    6,
+    2,
+    0,
+    6,
+    6,
+    6,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "det",
+    "nmod",
+    "cop",
+    "advmod",
+    "det",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-1-03#165",
+   "source": "udha-1-03",
+   "text": "Beni dhe Ana shkojnë në fshat çdo verë.",
+   "tokens": [
+    "Beni",
+    "dhe",
+    "Ana",
+    "shkojnë",
+    "në",
+    "fshat",
+    "çdo",
+    "verë"
+   ],
+   "heads": [
+    3,
+    2,
+    0,
+    -1,
+    5,
+    3,
+    7,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "cc",
+    "conj",
+    "root",
+    "case",
+    "obl",
+    "det",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-03#166",
+   "source": "udha-1-03",
+   "text": "Ata i duan gjyshin dhe gjyshen.",
+   "tokens": [
+    "Ata",
+    "i",
+    "duan",
+    "gjyshin",
+    "dhe",
+    "gjyshen"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "cc",
+    "conj"
+   ]
+  },
+  {
+   "id": "udha-1-04#170",
+   "source": "udha-1-04",
+   "text": "Nëna blen bukë, djathë dhe mollë.",
+   "tokens": [
+    "Nëna",
+    "blen",
+    "bukë",
+    "djathë",
+    "dhe",
+    "mollë"
+   ],
+   "heads": [
+    1,
+    -1,
+    1,
+    2,
+    5,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj",
+    "conj",
+    "cc",
+    "conj"
+   ]
+  },
+  {
+   "id": "udha-1-04#173",
+   "source": "udha-1-04",
+   "text": "Nëna e blen djathin.",
+   "tokens": [
+    "Nëna",
+    "e",
+    "blen",
+    "djathin"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-04#175",
+   "source": "udha-1-04",
+   "text": "Nëna i blen një mollë të kuqe.",
+   "tokens": [
+    "Nëna",
+    "i",
+    "blen",
+    "një",
+    "mollë",
+    "të",
+    "kuqe"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    4,
+    2,
+    6,
+    4
+   ],
+   "relations": [
+    "nsubj",
+    "iobj",
+    "root",
+    "det",
+    "obj",
+    "det",
+    "amod"
+   ]
+  },
+  {
+   "id": "udha-1-05#177",
+   "source": "udha-1-05",
+   "text": "Sot bie shi.",
+   "tokens": [
+    "Sot",
+    "bie",
+    "shi"
+   ],
+   "heads": [
+    1,
+    -1,
+    1
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "nsubj"
+   ]
+  },
+  {
+   "id": "udha-1-05#178",
+   "source": "udha-1-05",
+   "text": "Beni nuk mund të dalë.",
+   "tokens": [
+    "Beni",
+    "nuk",
+    "mund",
+    "të",
+    "dalë"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    4,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "advmod",
+    "root",
+    "mark",
+    "xcomp"
+   ]
+  },
+  {
+   "id": "udha-1-05#179",
+   "source": "udha-1-05",
+   "text": "Ai është në dhomë dhe shikon nga dritarja.",
+   "tokens": [
+    "Ai",
+    "është",
+    "në",
+    "dhomë",
+    "dhe",
+    "shikon",
+    "nga",
+    "dritarja"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1,
+    5,
+    3,
+    7,
+    5
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "case",
+    "root",
+    "cc",
+    "conj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-05#184",
+   "source": "udha-1-05",
+   "text": "— Mund të lexosh një libër.",
+   "tokens": [
+    "Mund",
+    "të",
+    "lexosh",
+    "një",
+    "libër"
+   ],
+   "heads": [
+    -1,
+    2,
+    0,
+    4,
+    2
+   ],
+   "relations": [
+    "root",
+    "mark",
+    "xcomp",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-05#185",
+   "source": "udha-1-05",
+   "text": "Beni merr një libër dhe fillon të lexojë.",
+   "tokens": [
+    "Beni",
+    "merr",
+    "një",
+    "libër",
+    "dhe",
+    "fillon",
+    "të",
+    "lexojë"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    5,
+    1,
+    7,
+    5
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "det",
+    "obj",
+    "cc",
+    "conj",
+    "mark",
+    "xcomp"
+   ]
+  },
+  {
+   "id": "udha-1-05#187",
+   "source": "udha-1-05",
+   "text": "Beni nuk mendon më për shiun.",
+   "tokens": [
+    "Beni",
+    "nuk",
+    "mendon",
+    "më",
+    "për",
+    "shiun"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    5,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "advmod",
+    "root",
+    "advmod",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-06#188",
+   "source": "udha-1-06",
+   "text": "Dje Ana i shkroi një letër gjyshes.",
+   "tokens": [
+    "Dje",
+    "Ana",
+    "i",
+    "shkroi",
+    "një",
+    "letër",
+    "gjyshes"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1,
+    5,
+    3,
+    3
+   ],
+   "relations": [
+    "advmod",
+    "nsubj",
+    "expl",
+    "root",
+    "det",
+    "obj",
+    "iobj"
+   ]
+  },
+  {
+   "id": "udha-1-06#192",
+   "source": "udha-1-06",
+   "text": "Dje shkova në shkollë dhe mësova shumë.",
+   "tokens": [
+    "Dje",
+    "shkova",
+    "në",
+    "shkollë",
+    "dhe",
+    "mësova",
+    "shumë"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1,
+    5,
+    1,
+    5
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "case",
+    "obl",
+    "cc",
+    "conj",
+    "advmod"
+   ]
+  },
+  {
+   "id": "udha-1-06#193",
+   "source": "udha-1-06",
+   "text": "Beni më dha një libër të ri.",
+   "tokens": [
+    "Beni",
+    "më",
+    "dha",
+    "një",
+    "libër",
+    "të",
+    "ri"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    4,
+    2,
+    6,
+    4
+   ],
+   "relations": [
+    "nsubj",
+    "iobj",
+    "root",
+    "det",
+    "obj",
+    "det",
+    "amod"
+   ]
+  },
+  {
+   "id": "udha-1-06#196",
+   "source": "udha-1-06",
+   "text": "Ana ia dha letrën nënës.",
+   "tokens": [
+    "Ana",
+    "ia",
+    "dha",
+    "letrën",
+    "nënës"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "iobj"
+   ]
+  },
+  {
+   "id": "udha-1-06#197",
+   "source": "udha-1-06",
+   "text": "Nëna e lexoi letrën dhe buzëqeshi.",
+   "tokens": [
+    "Nëna",
+    "e",
+    "lexoi",
+    "letrën",
+    "dhe",
+    "buzëqeshi"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    2,
+    5,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "root",
+    "obj",
+    "cc",
+    "conj"
+   ]
+  },
+  {
+   "id": "udha-1-07#198",
+   "source": "udha-1-07",
+   "text": "Në darkë familja është në shtëpi.",
+   "tokens": [
+    "Në",
+    "darkë",
+    "familja",
+    "është",
+    "në",
+    "shtëpi"
+   ],
+   "heads": [
+    1,
+    5,
+    5,
+    5,
+    5,
+    -1
+   ],
+   "relations": [
+    "case",
+    "obl",
+    "nsubj",
+    "cop",
+    "case",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-1-07#199",
+   "source": "udha-1-07",
+   "text": "Babai vjen nga puna.",
+   "tokens": [
+    "Babai",
+    "vjen",
+    "nga",
+    "puna"
+   ],
+   "heads": [
+    1,
+    -1,
+    3,
+    1
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-07#200",
+   "source": "udha-1-07",
+   "text": "Ai është i lodhur, por i lumtur.",
+   "tokens": [
+    "Ai",
+    "është",
+    "i",
+    "lodhur",
+    "por",
+    "i",
+    "lumtur"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1,
+    6,
+    6,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "det",
+    "root",
+    "cc",
+    "det",
+    "conj"
+   ]
+  },
+  {
+   "id": "udha-1-07#201",
+   "source": "udha-1-07",
+   "text": "Nëna e ka bërë darkën.",
+   "tokens": [
+    "Nëna",
+    "e",
+    "ka",
+    "bërë",
+    "darkën"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "expl",
+    "aux",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-07#202",
+   "source": "udha-1-07",
+   "text": "Të gjithë ulen në tavolinë.",
+   "tokens": [
+    "Të",
+    "gjithë",
+    "ulen",
+    "në",
+    "tavolinë"
+   ],
+   "heads": [
+    1,
+    2,
+    -1,
+    4,
+    2
+   ],
+   "relations": [
+    "det",
+    "nsubj",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-07#205",
+   "source": "udha-1-07",
+   "text": "— Mësuesi na dha një libër të ri.",
+   "tokens": [
+    "Mësuesi",
+    "na",
+    "dha",
+    "një",
+    "libër",
+    "të",
+    "ri"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    4,
+    2,
+    6,
+    4
+   ],
+   "relations": [
+    "nsubj",
+    "iobj",
+    "root",
+    "det",
+    "obj",
+    "det",
+    "amod"
+   ]
+  },
+  {
+   "id": "udha-1-07#207",
+   "source": "udha-1-07",
+   "text": "Pas darkës, fëmijët lajnë pjatat.",
+   "tokens": [
+    "Pas",
+    "darkës",
+    "fëmijët",
+    "lajnë",
+    "pjatat"
+   ],
+   "heads": [
+    1,
+    3,
+    3,
+    -1,
+    3
+   ],
+   "relations": [
+    "case",
+    "obl",
+    "nsubj",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-08#208",
+   "source": "udha-1-08",
+   "text": "Është natë.",
+   "tokens": [
+    "Është",
+    "natë"
+   ],
+   "heads": [
+    1,
+    -1
+   ],
+   "relations": [
+    "cop",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-1-08#209",
+   "source": "udha-1-08",
+   "text": "Fëmijët janë të lodhur.",
+   "tokens": [
+    "Fëmijët",
+    "janë",
+    "të",
+    "lodhur"
+   ],
+   "heads": [
+    3,
+    3,
+    3,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "det",
+    "root"
+   ]
+  },
+  {
+   "id": "udha-1-08#211",
+   "source": "udha-1-08",
+   "text": "— Është koha për të fjetur.",
+   "tokens": [
+    "Është",
+    "koha",
+    "për",
+    "të",
+    "fjetur"
+   ],
+   "heads": [
+    1,
+    -1,
+    4,
+    4,
+    1
+   ],
+   "relations": [
+    "cop",
+    "root",
+    "mark",
+    "mark",
+    "acl"
+   ]
+  },
+  {
+   "id": "udha-1-08#212",
+   "source": "udha-1-08",
+   "text": "Beni dhe Ana lahen dhe shkojnë në dhomë.",
+   "tokens": [
+    "Beni",
+    "dhe",
+    "Ana",
+    "lahen",
+    "dhe",
+    "shkojnë",
+    "në",
+    "dhomë"
+   ],
+   "heads": [
+    3,
+    2,
+    0,
+    -1,
+    5,
+    3,
+    7,
+    5
+   ],
+   "relations": [
+    "nsubj",
+    "cc",
+    "conj",
+    "root",
+    "cc",
+    "conj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "id": "udha-1-08#213",
+   "source": "udha-1-08",
+   "text": "Babai u lexon një histori.",
+   "tokens": [
+    "Babai",
+    "u",
+    "lexon",
+    "një",
+    "histori"
+   ],
+   "heads": [
+    2,
+    2,
+    -1,
+    4,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "iobj",
+    "root",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "id": "udha-1-08#216",
+   "source": "udha-1-08",
+   "text": "— Natën e mirë!",
+   "tokens": [
+    "Natën",
+    "e",
+    "mirë"
+   ],
+   "heads": [
+    -1,
+    2,
+    0
+   ],
+   "relations": [
+    "root",
+    "det",
+    "amod"
+   ]
+  },
+  {
+   "id": "udha-1-08#218",
+   "source": "udha-1-08",
+   "text": "Fëmijët flenë.",
+   "tokens": [
+    "Fëmijët",
+    "flenë"
+   ],
+   "heads": [
+    1,
+    -1
+   ],
+   "relations": [
+    "nsubj",
+    "root"
+   ]
+  }
+ ]
+}

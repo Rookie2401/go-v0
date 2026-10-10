@@ -1,0 +1,1259 @@
+{
+ "language": "nn",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "note": "tokens are the word tokens of the adapter tokenizer (punctuation is not scored); heads are 1-based indexes into tokens (0 = root); relations are UD-style labels with the conventions in docs/ecosystem/linguistics/SYNTAX-nb-nn.md. The first 21 sentences are the course comprehensible-input texts under data/corpus/nn (story-01, dialogue-01, bible-1john-1: that is all the sentences there are); the others are course test sentences of test/adapters/norwegian-gold-data.ts (one new, Nynorsk-only: Eg bad, og Gud svara på bøna mi).",
+ "sentences": [
+  {
+   "text": "Då eg var ung, forstod eg ikkje hjartet mitt.",
+   "source": "data/corpus",
+   "tokens": [
+    "Då",
+    "eg",
+    "var",
+    "ung",
+    "forstod",
+    "eg",
+    "ikkje",
+    "hjartet",
+    "mitt"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    5,
+    0,
+    5,
+    5,
+    5,
+    8
+   ],
+   "relations": [
+    "mark",
+    "nsubj",
+    "cop",
+    "advcl",
+    "root",
+    "nsubj",
+    "advmod",
+    "obj",
+    "det"
+   ]
+  },
+  {
+   "text": "Då eg var ung, hadde eg synd i hjartet.",
+   "source": "data/corpus",
+   "tokens": [
+    "Då",
+    "eg",
+    "var",
+    "ung",
+    "hadde",
+    "eg",
+    "synd",
+    "i",
+    "hjartet"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    5,
+    0,
+    5,
+    5,
+    9,
+    5
+   ],
+   "relations": [
+    "mark",
+    "nsubj",
+    "cop",
+    "advcl",
+    "root",
+    "nsubj",
+    "obj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Eg trudde ikkje på Gud.",
+   "source": "data/corpus",
+   "tokens": [
+    "Eg",
+    "trudde",
+    "ikkje",
+    "på",
+    "Gud"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    5,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "advmod",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Ein dag byrja eg å forstå synda mi.",
+   "source": "data/corpus",
+   "tokens": [
+    "Ein",
+    "dag",
+    "byrja",
+    "eg",
+    "å",
+    "forstå",
+    "synda",
+    "mi"
+   ],
+   "heads": [
+    2,
+    3,
+    0,
+    3,
+    6,
+    3,
+    6,
+    7
+   ],
+   "relations": [
+    "det",
+    "obl",
+    "root",
+    "nsubj",
+    "mark",
+    "xcomp",
+    "obj",
+    "det"
+   ]
+  },
+  {
+   "text": "Gud tilgav synda mi.",
+   "source": "data/corpus",
+   "tokens": [
+    "Gud",
+    "tilgav",
+    "synda",
+    "mi"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj",
+    "det"
+   ]
+  },
+  {
+   "text": "No trur eg på Gud.",
+   "source": "data/corpus",
+   "tokens": [
+    "No",
+    "trur",
+    "eg",
+    "på",
+    "Gud"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    5,
+    2
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "nsubj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "No har eg fred i hjartet.",
+   "source": "data/corpus",
+   "tokens": [
+    "No",
+    "har",
+    "eg",
+    "fred",
+    "i",
+    "hjartet"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    2,
+    6,
+    2
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "nsubj",
+    "obj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Gud elskar verda.",
+   "source": "data/corpus",
+   "tokens": [
+    "Gud",
+    "elskar",
+    "verda"
+   ],
+   "heads": [
+    2,
+    0,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "text": "Eg elskar Gud òg.",
+   "source": "data/corpus",
+   "tokens": [
+    "Eg",
+    "elskar",
+    "Gud",
+    "òg"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj",
+    "advmod"
+   ]
+  },
+  {
+   "text": "No forstår eg at Gud tilgir alle.",
+   "source": "data/corpus",
+   "tokens": [
+    "No",
+    "forstår",
+    "eg",
+    "at",
+    "Gud",
+    "tilgir",
+    "alle"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    6,
+    6,
+    2,
+    6
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "nsubj",
+    "mark",
+    "nsubj",
+    "ccomp",
+    "obj"
+   ]
+  },
+  {
+   "text": "Hei, Anna, korleis har du det?",
+   "source": "data/corpus",
+   "tokens": [
+    "Hei",
+    "Anna",
+    "korleis",
+    "har",
+    "du",
+    "det"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    0,
+    4,
+    4
+   ],
+   "relations": [
+    "discourse",
+    "vocative",
+    "advmod",
+    "root",
+    "nsubj",
+    "obj"
+   ]
+  },
+  {
+   "text": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "source": "data/corpus",
+   "tokens": [
+    "Eg",
+    "har",
+    "det",
+    "bra",
+    "Per",
+    "men",
+    "det",
+    "er",
+    "noko",
+    "eg",
+    "ikkje",
+    "forstår"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    2,
+    2,
+    9,
+    9,
+    9,
+    2,
+    12,
+    12,
+    9
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj",
+    "xcomp",
+    "vocative",
+    "cc",
+    "nsubj",
+    "cop",
+    "conj",
+    "nsubj",
+    "advmod",
+    "acl"
+   ]
+  },
+  {
+   "text": "Kva er det du ikkje forstår?",
+   "source": "data/corpus",
+   "tokens": [
+    "Kva",
+    "er",
+    "det",
+    "du",
+    "ikkje",
+    "forstår"
+   ],
+   "heads": [
+    0,
+    1,
+    1,
+    6,
+    6,
+    3
+   ],
+   "relations": [
+    "root",
+    "cop",
+    "nsubj",
+    "nsubj",
+    "advmod",
+    "acl"
+   ]
+  },
+  {
+   "text": "Eg forstår ikkje kvifor Gud tilgir synd.",
+   "source": "data/corpus",
+   "tokens": [
+    "Eg",
+    "forstår",
+    "ikkje",
+    "kvifor",
+    "Gud",
+    "tilgir",
+    "synd"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    6,
+    6,
+    2,
+    6
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "advmod",
+    "advmod",
+    "nsubj",
+    "ccomp",
+    "obj"
+   ]
+  },
+  {
+   "text": "Eg har òg byrja å forstå det.",
+   "source": "data/corpus",
+   "tokens": [
+    "Eg",
+    "har",
+    "òg",
+    "byrja",
+    "å",
+    "forstå",
+    "det"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    0,
+    6,
+    4,
+    6
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "advmod",
+    "root",
+    "mark",
+    "xcomp",
+    "obj"
+   ]
+  },
+  {
+   "text": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "source": "data/corpus",
+   "tokens": [
+    "Eg",
+    "trur",
+    "på",
+    "Gud",
+    "og",
+    "Gud",
+    "elskar",
+    "oss",
+    "og",
+    "difor",
+    "tilgir",
+    "han",
+    "oss"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2,
+    7,
+    7,
+    2,
+    7,
+    11,
+    11,
+    7,
+    11,
+    11
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl",
+    "cc",
+    "nsubj",
+    "conj",
+    "obj",
+    "cc",
+    "advmod",
+    "conj",
+    "nsubj",
+    "obj"
+   ]
+  },
+  {
+   "text": "No forstår eg det òg.",
+   "source": "data/corpus",
+   "tokens": [
+    "No",
+    "forstår",
+    "eg",
+    "det",
+    "òg"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    2,
+    2
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "nsubj",
+    "obj",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Takk, Per!",
+   "source": "data/corpus",
+   "tokens": [
+    "Takk",
+    "Per"
+   ],
+   "heads": [
+    0,
+    1
+   ],
+   "relations": [
+    "root",
+    "vocative"
+   ]
+  },
+  {
+   "text": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "source": "data/corpus",
+   "tokens": [
+    "Dersom",
+    "me",
+    "segjer",
+    "at",
+    "me",
+    "ikkje",
+    "hev",
+    "synd",
+    "so",
+    "dårar",
+    "me",
+    "oss",
+    "sjølve",
+    "og",
+    "sanningi",
+    "er",
+    "ikkje",
+    "i",
+    "oss"
+   ],
+   "heads": [
+    3,
+    3,
+    10,
+    7,
+    7,
+    7,
+    3,
+    7,
+    10,
+    0,
+    10,
+    10,
+    12,
+    19,
+    19,
+    19,
+    19,
+    19,
+    10
+   ],
+   "relations": [
+    "mark",
+    "nsubj",
+    "advcl",
+    "mark",
+    "nsubj",
+    "advmod",
+    "ccomp",
+    "obj",
+    "advmod",
+    "root",
+    "nsubj",
+    "obj",
+    "appos",
+    "cc",
+    "nsubj",
+    "cop",
+    "advmod",
+    "case",
+    "conj"
+   ]
+  },
+  {
+   "text": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "source": "data/corpus",
+   "tokens": [
+    "Dersom",
+    "me",
+    "sannar",
+    "synderne",
+    "våre",
+    "so",
+    "er",
+    "han",
+    "trufast",
+    "og",
+    "rettferdig",
+    "so",
+    "han",
+    "forlet",
+    "oss",
+    "synderne",
+    "og",
+    "reinsar",
+    "oss",
+    "frå",
+    "all",
+    "urettferd"
+   ],
+   "heads": [
+    3,
+    3,
+    9,
+    3,
+    4,
+    9,
+    9,
+    9,
+    0,
+    11,
+    9,
+    14,
+    14,
+    9,
+    14,
+    14,
+    18,
+    14,
+    18,
+    22,
+    22,
+    18
+   ],
+   "relations": [
+    "mark",
+    "nsubj",
+    "advcl",
+    "obj",
+    "det",
+    "advmod",
+    "cop",
+    "nsubj",
+    "root",
+    "cc",
+    "conj",
+    "mark",
+    "nsubj",
+    "advcl",
+    "iobj",
+    "obj",
+    "cc",
+    "conj",
+    "obj",
+    "case",
+    "det",
+    "obl"
+   ]
+  },
+  {
+   "text": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "source": "data/corpus",
+   "tokens": [
+    "For",
+    "so",
+    "elska",
+    "Gud",
+    "verdi",
+    "at",
+    "han",
+    "gav",
+    "Son",
+    "sin",
+    "den",
+    "einborne",
+    "so",
+    "kvar",
+    "den",
+    "som",
+    "trur",
+    "på",
+    "honom",
+    "ikkje",
+    "skal",
+    "verta",
+    "fortapt",
+    "men",
+    "hava",
+    "ævelegt",
+    "liv"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    3,
+    3,
+    8,
+    8,
+    3,
+    8,
+    9,
+    12,
+    9,
+    23,
+    15,
+    23,
+    17,
+    15,
+    19,
+    17,
+    23,
+    23,
+    23,
+    3,
+    25,
+    23,
+    27,
+    25
+   ],
+   "relations": [
+    "cc",
+    "advmod",
+    "root",
+    "nsubj",
+    "obj",
+    "mark",
+    "nsubj",
+    "advcl",
+    "obj",
+    "det",
+    "det",
+    "appos",
+    "mark",
+    "det",
+    "nsubj",
+    "mark",
+    "acl",
+    "case",
+    "obl",
+    "advmod",
+    "aux",
+    "aux",
+    "advcl",
+    "cc",
+    "conj",
+    "amod",
+    "obj"
+   ]
+  },
+  {
+   "text": "Ho les boka.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Ho",
+    "les",
+    "boka"
+   ],
+   "heads": [
+    2,
+    0,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "text": "Det gamle huset er stort.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Det",
+    "gamle",
+    "huset",
+    "er",
+    "stort"
+   ],
+   "heads": [
+    3,
+    3,
+    5,
+    5,
+    0
+   ],
+   "relations": [
+    "det",
+    "amod",
+    "nsubj",
+    "cop",
+    "root"
+   ]
+  },
+  {
+   "text": "Kva heiter du?",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Kva",
+    "heiter",
+    "du"
+   ],
+   "heads": [
+    2,
+    0,
+    2
+   ],
+   "relations": [
+    "xcomp",
+    "root",
+    "nsubj"
+   ]
+  },
+  {
+   "text": "Kvifor kjem han ikkje?",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Kvifor",
+    "kjem",
+    "han",
+    "ikkje"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    2
+   ],
+   "relations": [
+    "advmod",
+    "root",
+    "nsubj",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Eg veit at ho ikkje kjem.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Eg",
+    "veit",
+    "at",
+    "ho",
+    "ikkje",
+    "kjem"
+   ],
+   "heads": [
+    2,
+    0,
+    6,
+    6,
+    6,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "mark",
+    "nsubj",
+    "advmod",
+    "ccomp"
+   ]
+  },
+  {
+   "text": "Når eg er trøytt, søv eg.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Når",
+    "eg",
+    "er",
+    "trøytt",
+    "søv",
+    "eg"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    5,
+    0,
+    5
+   ],
+   "relations": [
+    "mark",
+    "nsubj",
+    "cop",
+    "advcl",
+    "root",
+    "nsubj"
+   ]
+  },
+  {
+   "text": "Eg har kjøpt brød.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Eg",
+    "har",
+    "kjøpt",
+    "brød"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "text": "Du må hjelpe meg.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Du",
+    "må",
+    "hjelpe",
+    "meg"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "root",
+    "obj"
+   ]
+  },
+  {
+   "text": "Eg likar å synge.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Eg",
+    "likar",
+    "å",
+    "synge"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "mark",
+    "xcomp"
+   ]
+  },
+  {
+   "text": "Han gav meg von.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Han",
+    "gav",
+    "meg",
+    "von"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "iobj",
+    "obj"
+   ]
+  },
+  {
+   "text": "Eg står opp tidleg.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Eg",
+    "står",
+    "opp",
+    "tidleg"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "compound",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Veka har sju dagar.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Veka",
+    "har",
+    "sju",
+    "dagar"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "nummod",
+    "obj"
+   ]
+  },
+  {
+   "text": "Gud er kjærleik.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Gud",
+    "er",
+    "kjærleik"
+   ],
+   "heads": [
+    3,
+    3,
+    0
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "root"
+   ]
+  },
+  {
+   "text": "Dei går til skulen.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Dei",
+    "går",
+    "til",
+    "skulen"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Ho kasta steinen i vatnet.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Ho",
+    "kasta",
+    "steinen",
+    "i",
+    "vatnet"
+   ],
+   "heads": [
+    2,
+    0,
+    2,
+    5,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "obj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Eg bur i Bergen.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Eg",
+    "bur",
+    "i",
+    "Bergen"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Kven bur der?",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Kven",
+    "bur",
+    "der"
+   ],
+   "heads": [
+    2,
+    0,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Barnet søv i senga.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Barnet",
+    "søv",
+    "i",
+    "senga"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Vêret er fint i dag.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Vêret",
+    "er",
+    "fint",
+    "i",
+    "dag"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "root",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Dei små borna søv.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Dei",
+    "små",
+    "borna",
+    "søv"
+   ],
+   "heads": [
+    3,
+    3,
+    4,
+    0
+   ],
+   "relations": [
+    "det",
+    "amod",
+    "nsubj",
+    "root"
+   ]
+  },
+  {
+   "text": "Eg bad, og Gud svara på bøna mi.",
+   "source": "test/adapters/norwegian-gold-data.ts",
+   "tokens": [
+    "Eg",
+    "bad",
+    "og",
+    "Gud",
+    "svara",
+    "på",
+    "bøna",
+    "mi"
+   ],
+   "heads": [
+    2,
+    0,
+    5,
+    5,
+    2,
+    7,
+    5,
+    7
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "cc",
+    "nsubj",
+    "conj",
+    "case",
+    "obl",
+    "det"
+   ]
+  }
+ ]
+}

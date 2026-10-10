@@ -31,6 +31,7 @@ import { norwegianCellFeatures, norwegianParadigm } from './paradigm';
 import { checkNorwegianProduction } from './production';
 import { transcribe } from './pronunciation';
 import { norwegianFeaturesFromTableTags } from './table-tags';
+import { norwegianSyntax } from './syntax';
 import { NB_UNITS, NN_UNITS } from './units';
 import { NB_VARIETIES, NN_VARIETIES } from './varieties';
 import { normalizeNo, segmentSentencesNo, tokenizeNo } from './text';
@@ -280,6 +281,8 @@ export function makeNorwegianAdapter(std: NoStandard): LanguageAdapter {
     family: (lemma: string, pos?: PartOfSpeech) => familyOf(std, lemma, pos),
     paradigm: (lemma: string, pos: PartOfSpeech) => norwegianParadigm(std, lemma, pos),
     featuresFromTableTags: (tags: readonly string[], pos: PartOfSpeech) => norwegianFeaturesFromTableTags(tags, pos),
+    // Linguistic Engine V2, Stage 4: shallow dependencies from the readings above (syntax.ts)
+    syntax: (tokens: RawToken[], analyses: AnalyzedToken[]) => norwegianSyntax(std, tokens, analyses),
     // the union reading (Gender "Fem,Masc", Mood "Imp,Ind") taken apart into the cell bundles it covers
     cellsFor: (p: Pick<Paradigm, 'cells' | 'kind' | 'pos'>, features: Record<string, string>) => { const out: ParadigmCell[] = []; for (const f of norwegianCellFeatures(p.pos, features)) { const c = cellOf(p, f); if (c && !out.includes(c)) out.push(c); } return out; },
   });

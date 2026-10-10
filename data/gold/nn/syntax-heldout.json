@@ -1,0 +1,476 @@
+{
+ "language": "nn",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "note": "HELD-OUT: written and labelled AFTER the rules were tuned on syntax-dev.json, and scored once before any rule was changed for it (the first-pass numbers are in docs/ecosystem/linguistics/SYNTAX-nb-nn.md). Same conventions as syntax-dev.json.",
+ "sentences": [
+  {
+   "text": "Borna leikar i hagen kvar dag.",
+   "tokens": [
+    "Borna",
+    "leikar",
+    "i",
+    "hagen",
+    "kvar",
+    "dag"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2,
+    6,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl",
+    "det",
+    "obl"
+   ]
+  },
+  {
+   "text": "Læraren sa at boka var vanskeleg.",
+   "tokens": [
+    "Læraren",
+    "sa",
+    "at",
+    "boka",
+    "var",
+    "vanskeleg"
+   ],
+   "heads": [
+    2,
+    0,
+    6,
+    6,
+    6,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "mark",
+    "nsubj",
+    "cop",
+    "ccomp"
+   ]
+  },
+  {
+   "text": "Viss du kjem i morgon, kan me ete middag saman.",
+   "tokens": [
+    "Viss",
+    "du",
+    "kjem",
+    "i",
+    "morgon",
+    "kan",
+    "me",
+    "ete",
+    "middag",
+    "saman"
+   ],
+   "heads": [
+    3,
+    3,
+    8,
+    5,
+    3,
+    8,
+    8,
+    0,
+    8,
+    8
+   ],
+   "relations": [
+    "mark",
+    "nsubj",
+    "advcl",
+    "case",
+    "obl",
+    "aux",
+    "nsubj",
+    "root",
+    "obj",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Mannen som bur i det store huset, er onkelen min.",
+   "tokens": [
+    "Mannen",
+    "som",
+    "bur",
+    "i",
+    "det",
+    "store",
+    "huset",
+    "er",
+    "onkelen",
+    "min"
+   ],
+   "heads": [
+    9,
+    3,
+    1,
+    7,
+    7,
+    7,
+    3,
+    9,
+    0,
+    9
+   ],
+   "relations": [
+    "nsubj",
+    "mark",
+    "acl",
+    "case",
+    "det",
+    "amod",
+    "obl",
+    "cop",
+    "root",
+    "det"
+   ]
+  },
+  {
+   "text": "Ho ville ikkje fortelje meg kva ho hadde gjort.",
+   "tokens": [
+    "Ho",
+    "ville",
+    "ikkje",
+    "fortelje",
+    "meg",
+    "kva",
+    "ho",
+    "hadde",
+    "gjort"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    0,
+    4,
+    9,
+    9,
+    9,
+    4
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "advmod",
+    "root",
+    "iobj",
+    "obj",
+    "nsubj",
+    "aux",
+    "ccomp"
+   ]
+  },
+  {
+   "text": "Det er ikkje lett å lære eit nytt språk.",
+   "tokens": [
+    "Det",
+    "er",
+    "ikkje",
+    "lett",
+    "å",
+    "lære",
+    "eit",
+    "nytt",
+    "språk"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    0,
+    6,
+    4,
+    9,
+    9,
+    6
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "advmod",
+    "root",
+    "mark",
+    "xcomp",
+    "det",
+    "amod",
+    "obj"
+   ]
+  },
+  {
+   "text": "Hunden vår likar å springe i skogen.",
+   "tokens": [
+    "Hunden",
+    "vår",
+    "likar",
+    "å",
+    "springe",
+    "i",
+    "skogen"
+   ],
+   "heads": [
+    3,
+    1,
+    0,
+    5,
+    3,
+    7,
+    5
+   ],
+   "relations": [
+    "nsubj",
+    "det",
+    "root",
+    "mark",
+    "xcomp",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Eg har kjøpt ein ny bil til mor mi.",
+   "tokens": [
+    "Eg",
+    "har",
+    "kjøpt",
+    "ein",
+    "ny",
+    "bil",
+    "til",
+    "mor",
+    "mi"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    6,
+    6,
+    3,
+    8,
+    3,
+    8
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "root",
+    "det",
+    "amod",
+    "obj",
+    "case",
+    "obl",
+    "det"
+   ]
+  },
+  {
+   "text": "Kven har skrive denne boka?",
+   "tokens": [
+    "Kven",
+    "har",
+    "skrive",
+    "denne",
+    "boka"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "root",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "text": "Me budde i Oslo då eg var barn.",
+   "tokens": [
+    "Me",
+    "budde",
+    "i",
+    "Oslo",
+    "då",
+    "eg",
+    "var",
+    "barn"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2,
+    8,
+    8,
+    8,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl",
+    "mark",
+    "nsubj",
+    "cop",
+    "advcl"
+   ]
+  },
+  {
+   "text": "Han seier at han ikkje har tid, men eg trur han ikkje.",
+   "tokens": [
+    "Han",
+    "seier",
+    "at",
+    "han",
+    "ikkje",
+    "har",
+    "tid",
+    "men",
+    "eg",
+    "trur",
+    "han",
+    "ikkje"
+   ],
+   "heads": [
+    2,
+    0,
+    6,
+    6,
+    6,
+    2,
+    6,
+    10,
+    10,
+    2,
+    10,
+    10
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "mark",
+    "nsubj",
+    "advmod",
+    "ccomp",
+    "obj",
+    "cc",
+    "nsubj",
+    "conj",
+    "obj",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Kan du seie meg kvar stasjonen ligg?",
+   "tokens": [
+    "Kan",
+    "du",
+    "seie",
+    "meg",
+    "kvar",
+    "stasjonen",
+    "ligg"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    3,
+    7,
+    7,
+    3
+   ],
+   "relations": [
+    "aux",
+    "nsubj",
+    "root",
+    "iobj",
+    "advmod",
+    "nsubj",
+    "ccomp"
+   ]
+  },
+  {
+   "text": "Presten las ein tekst frå Bibelen for kyrkjelyden.",
+   "tokens": [
+    "Presten",
+    "las",
+    "ein",
+    "tekst",
+    "frå",
+    "Bibelen",
+    "for",
+    "kyrkjelyden"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2,
+    6,
+    4,
+    8,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "det",
+    "obj",
+    "case",
+    "nmod",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Eg har aldri sett ei så vakker kyrkje.",
+   "tokens": [
+    "Eg",
+    "har",
+    "aldri",
+    "sett",
+    "ei",
+    "så",
+    "vakker",
+    "kyrkje"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    0,
+    8,
+    7,
+    8,
+    4
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "advmod",
+    "root",
+    "det",
+    "advmod",
+    "amod",
+    "obj"
+   ]
+  }
+ ]
+}

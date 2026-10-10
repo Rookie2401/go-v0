@@ -1,0 +1,542 @@
+{
+ "language": "nb",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "note": "HELD-OUT: written and labelled AFTER the rules were tuned on syntax-dev.json, and scored once before any rule was changed for it (the first-pass numbers are in docs/ecosystem/linguistics/SYNTAX-nb-nn.md). Same conventions as syntax-dev.json.",
+ "sentences": [
+  {
+   "text": "Barna leker i hagen hver dag.",
+   "tokens": [
+    "Barna",
+    "leker",
+    "i",
+    "hagen",
+    "hver",
+    "dag"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2,
+    6,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl",
+    "det",
+    "obl"
+   ]
+  },
+  {
+   "text": "Læreren sa at boka var vanskelig.",
+   "tokens": [
+    "Læreren",
+    "sa",
+    "at",
+    "boka",
+    "var",
+    "vanskelig"
+   ],
+   "heads": [
+    2,
+    0,
+    6,
+    6,
+    6,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "mark",
+    "nsubj",
+    "cop",
+    "ccomp"
+   ]
+  },
+  {
+   "text": "Hvis du kommer i morgen, kan vi spise middag sammen.",
+   "tokens": [
+    "Hvis",
+    "du",
+    "kommer",
+    "i",
+    "morgen",
+    "kan",
+    "vi",
+    "spise",
+    "middag",
+    "sammen"
+   ],
+   "heads": [
+    3,
+    3,
+    8,
+    5,
+    3,
+    8,
+    8,
+    0,
+    8,
+    8
+   ],
+   "relations": [
+    "mark",
+    "nsubj",
+    "advcl",
+    "case",
+    "obl",
+    "aux",
+    "nsubj",
+    "root",
+    "obj",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Mannen som bor i det store huset, er min onkel.",
+   "tokens": [
+    "Mannen",
+    "som",
+    "bor",
+    "i",
+    "det",
+    "store",
+    "huset",
+    "er",
+    "min",
+    "onkel"
+   ],
+   "heads": [
+    10,
+    3,
+    1,
+    7,
+    7,
+    7,
+    3,
+    10,
+    10,
+    0
+   ],
+   "relations": [
+    "nsubj",
+    "mark",
+    "acl",
+    "case",
+    "det",
+    "amod",
+    "obl",
+    "cop",
+    "det",
+    "root"
+   ]
+  },
+  {
+   "text": "Jeg har aldri sett en så vakker kirke.",
+   "tokens": [
+    "Jeg",
+    "har",
+    "aldri",
+    "sett",
+    "en",
+    "så",
+    "vakker",
+    "kirke"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    0,
+    8,
+    7,
+    8,
+    4
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "advmod",
+    "root",
+    "det",
+    "advmod",
+    "amod",
+    "obj"
+   ]
+  },
+  {
+   "text": "Hun ville ikke fortelle meg hva hun hadde gjort.",
+   "tokens": [
+    "Hun",
+    "ville",
+    "ikke",
+    "fortelle",
+    "meg",
+    "hva",
+    "hun",
+    "hadde",
+    "gjort"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    0,
+    4,
+    9,
+    9,
+    9,
+    4
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "advmod",
+    "root",
+    "iobj",
+    "obj",
+    "nsubj",
+    "aux",
+    "ccomp"
+   ]
+  },
+  {
+   "text": "Etter middagen vasket vi opp og gikk en tur.",
+   "tokens": [
+    "Etter",
+    "middagen",
+    "vasket",
+    "vi",
+    "opp",
+    "og",
+    "gikk",
+    "en",
+    "tur"
+   ],
+   "heads": [
+    2,
+    3,
+    0,
+    3,
+    3,
+    7,
+    3,
+    9,
+    7
+   ],
+   "relations": [
+    "case",
+    "obl",
+    "root",
+    "nsubj",
+    "compound",
+    "cc",
+    "conj",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "text": "Det er ikke lett å lære et nytt språk.",
+   "tokens": [
+    "Det",
+    "er",
+    "ikke",
+    "lett",
+    "å",
+    "lære",
+    "et",
+    "nytt",
+    "språk"
+   ],
+   "heads": [
+    4,
+    4,
+    4,
+    0,
+    6,
+    4,
+    9,
+    9,
+    6
+   ],
+   "relations": [
+    "nsubj",
+    "cop",
+    "advmod",
+    "root",
+    "mark",
+    "xcomp",
+    "det",
+    "amod",
+    "obj"
+   ]
+  },
+  {
+   "text": "Hunden vår liker å løpe i skogen.",
+   "tokens": [
+    "Hunden",
+    "vår",
+    "liker",
+    "å",
+    "løpe",
+    "i",
+    "skogen"
+   ],
+   "heads": [
+    3,
+    1,
+    0,
+    5,
+    3,
+    7,
+    5
+   ],
+   "relations": [
+    "nsubj",
+    "det",
+    "root",
+    "mark",
+    "xcomp",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Kjøp melk og brød på veien hjem!",
+   "tokens": [
+    "Kjøp",
+    "melk",
+    "og",
+    "brød",
+    "på",
+    "veien",
+    "hjem"
+   ],
+   "heads": [
+    0,
+    1,
+    4,
+    2,
+    6,
+    1,
+    6
+   ],
+   "relations": [
+    "root",
+    "obj",
+    "cc",
+    "conj",
+    "case",
+    "obl",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Han sier at han ikke har tid, men jeg tror ham ikke.",
+   "tokens": [
+    "Han",
+    "sier",
+    "at",
+    "han",
+    "ikke",
+    "har",
+    "tid",
+    "men",
+    "jeg",
+    "tror",
+    "ham",
+    "ikke"
+   ],
+   "heads": [
+    2,
+    0,
+    6,
+    6,
+    6,
+    2,
+    6,
+    10,
+    10,
+    2,
+    10,
+    10
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "mark",
+    "nsubj",
+    "advmod",
+    "ccomp",
+    "obj",
+    "cc",
+    "nsubj",
+    "conj",
+    "obj",
+    "advmod"
+   ]
+  },
+  {
+   "text": "Presten leste en tekst fra Bibelen for menigheten.",
+   "tokens": [
+    "Presten",
+    "leste",
+    "en",
+    "tekst",
+    "fra",
+    "Bibelen",
+    "for",
+    "menigheten"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2,
+    6,
+    4,
+    8,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "det",
+    "obj",
+    "case",
+    "nmod",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Hvem har skrevet denne boken?",
+   "tokens": [
+    "Hvem",
+    "har",
+    "skrevet",
+    "denne",
+    "boken"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    5,
+    3
+   ],
+   "relations": [
+    "nsubj",
+    "aux",
+    "root",
+    "det",
+    "obj"
+   ]
+  },
+  {
+   "text": "Vi bodde i Oslo da jeg var barn.",
+   "tokens": [
+    "Vi",
+    "bodde",
+    "i",
+    "Oslo",
+    "da",
+    "jeg",
+    "var",
+    "barn"
+   ],
+   "heads": [
+    2,
+    0,
+    4,
+    2,
+    8,
+    8,
+    8,
+    2
+   ],
+   "relations": [
+    "nsubj",
+    "root",
+    "case",
+    "obl",
+    "mark",
+    "nsubj",
+    "cop",
+    "advcl"
+   ]
+  },
+  {
+   "text": "Mora mi har kjøpt en ny bil til meg.",
+   "tokens": [
+    "Mora",
+    "mi",
+    "har",
+    "kjøpt",
+    "en",
+    "ny",
+    "bil",
+    "til",
+    "meg"
+   ],
+   "heads": [
+    4,
+    1,
+    4,
+    0,
+    7,
+    7,
+    4,
+    9,
+    4
+   ],
+   "relations": [
+    "nsubj",
+    "det",
+    "aux",
+    "root",
+    "det",
+    "amod",
+    "obj",
+    "case",
+    "obl"
+   ]
+  },
+  {
+   "text": "Kan du fortelle meg hvor stasjonen ligger?",
+   "tokens": [
+    "Kan",
+    "du",
+    "fortelle",
+    "meg",
+    "hvor",
+    "stasjonen",
+    "ligger"
+   ],
+   "heads": [
+    3,
+    3,
+    0,
+    3,
+    7,
+    7,
+    3
+   ],
+   "relations": [
+    "aux",
+    "nsubj",
+    "root",
+    "iobj",
+    "advmod",
+    "nsubj",
+    "ccomp"
+   ]
+  }
+ ]
+}

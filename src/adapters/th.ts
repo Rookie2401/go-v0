@@ -29,6 +29,7 @@ import { CAST_NAMES, readsAsName } from './thai/names';
 import { buildPhraseRules } from './thai/phrases';
 import { detectThaiConstructions } from './thai/constructions';
 import { makeThaiParadigm } from './thai/paradigm';
+import { thaiSyntax } from './thai/syntax';
 import { createThaiSegmentations, type ThaiSegmentation } from './thai/segmentations';
 import type { SegmentationCut } from '../core/paradigm';
 import { thFeaturesFromTableTags } from './thai/table-tags';
@@ -401,6 +402,9 @@ export const thAdapter: LanguageAdapter = {
   detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, PHRASES, normalize),
 
   detectPatterns: (tokens, analyses): PatternCandidate[] => detectThaiConstructions(tokens, analyses, PARTICLES),
+
+  /** Linguistic Engine V2, Stage 4: shallow dependencies from word order and function words (thai/syntax.ts). */
+  syntax: (tokens, analyses) => thaiSyntax(tokens, analyses),
 
   decode: decodeTh,
   decodeWithPronunciation: decodeThWithPronunciation,

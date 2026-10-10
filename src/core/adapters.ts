@@ -13,6 +13,7 @@ import type { AnalysisOrigin, AnalysisSourceInfo, ErrorCategory, LanguageCode, P
 import type { Variety } from './variety';
 import type { RegisterTag, SyllableAnalysis } from './course';
 import type { GeneratedParadigm, Paradigm, ParadigmCell, SegmentationAlternatives } from './paradigm';
+import type { SyntaxAnalysis } from './syntax';
 
 export interface Span { start: number; end: number; text: string }
 
@@ -231,6 +232,13 @@ export interface LanguageAdapter {
    * then the others the word list allows, each with its confidence share and basis. Optional.
    */
   segmentations?(text: string, context?: { before?: string; after?: string }): SegmentationAlternatives | undefined;
+  /**
+   * Contextual syntax (Linguistic Engine V2, Stage 4): shallow dependency relations between the words of one sentence,
+   * from this adapter's rules over the readings `analyze` gave (`src/core/syntax.ts`). Every relation carries its basis and
+   * the alternatives the rules could not rule out; a word the rules cannot attach gets none. Optional; a sentence the rules
+   * do not model returns an analysis with few relations and a note, never a guess.
+   */
+  syntax?(tokens: RawToken[], analyses: AnalyzedToken[]): SyntaxAnalysis | undefined;
   /**
    * Order the readings of each token by its neighbours again, after the importer replaced the readings of some tokens
    * with a dictionary's. The importer calls it once per sentence; the replaced lists arrive as the dictionary gives them

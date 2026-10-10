@@ -119,11 +119,11 @@ response, time to full analysis.
 
 | stage | content | status |
 |---|---|---|
-| 1 | this audit; baseline; dictionary delivery repair | audit done; repair in progress |
-| 2 | full lexical records from kaikki (tables, etymology, IPA, audio, relations), `entry()` at Level 2 | in progress |
-| 3 | paradigm layer: adapter generation cross-checked against Wiktionary tables; Albanian nouns and Spanish verbs first | planned |
-| 4 | contextual syntax: shallow dependency relations with explanations; alternatives kept | planned |
+| 1 | this audit; baseline; dictionary delivery repair | done (d1bd3588) |
+| 2 | full lexical records from kaikki (tables, etymology, IPA, audio, relations), `entry()` at Level 2 | done (ed7153c1): schema full-1, LEXICAL-SCHEMA.md, SOURCE-INVENTORY.md |
+| 3 | paradigm layer: adapter generation cross-checked against Wiktionary tables; Albanian nouns and Spanish verbs first | done (ed7153c1) for sq, es, de, hi, nb/nn, th: PARADIGMS-*.md |
+| 4 | contextual syntax: shallow dependency relations with explanations; alternatives kept | contract src/core/syntax.ts + card wiring done; per-language rules in progress (SYNTAX-*.md) |
 | 5 | etymology and derivation layer with provenance and status; never generated | planned |
-| 6 | card sections (Grammar, Forms, Syntax, Meaning, Word structure, Etymology, Pronunciation) with field states | planned |
+| 6 | card sections (Grammar, Forms, Syntax, Meaning, Word structure, Etymology, Pronunciation) with field states | Forms / Meanings / Origin / Sound / Syntax done; Word structure in progress |
 | 7 | Repository field-level validation; GoReview eligibility | planned |
 | 8 | gold sets, unseen evaluation, end-to-end certification | planned |

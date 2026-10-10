@@ -45,6 +45,27 @@ export type LabelledField =
 /** One morphological feature of the reading shown (only features the analyser gave). */
 export interface FeatureItem { key: string; value: string }
 
+/** One word's place in the sentence as the analyser's syntax rules state it: generated, with its basis and the readings not ruled out. */
+export interface SyntaxNote {
+  /** 'none' when the analyser has rules but could not attach this word; the notes say why. */
+  status: 'generated' | 'conflicted' | 'none';
+  relation?: string;
+  /** The relation in plain words ("subject of 'lexon'"). */
+  label?: string;
+  headSurface?: string;
+  basis: string[];
+  confidence?: number;
+  alternatives: Array<{ relation: string; headSurface?: string; confidence: number; why: string }>;
+  /** The words that depend on this one, in sentence order. */
+  dependents: Array<{ surface: string; relation: string; label: string }>;
+  /** The clause this word sits in, when the rules found clause boundaries. */
+  clause?: string;
+  notes: string[];
+  /** The share of the sentence's words the rules could attach (0..1). */
+  attached: number;
+  analyzer: string;
+}
+
 /** A construction the form realizes or takes part in, as the analyser or the form's own features show it. */
 export interface ConstructionNote {
   /** The id the language pack explains (`negation-nuk`, `definite-accusative-singular`). */
@@ -107,6 +128,8 @@ export interface CardModel {
   role?: string;
   /** Unit membership and parts the analyser reports (a verb with attached pronouns, a particle of a unit). */
   syntaxNotes: string[];
+  /** The dependency relation of a single selected word in its sentence (Linguistic Engine V2, Stage 4), when the analyser has syntax rules. */
+  syntax?: SyntaxNote;
   /** Every word of the sentence with its best reading, when there is sentence context (first 60 words). */
   sentenceWords: SentenceWord[];
   /** The Repository unit ids to ask the learner model about: the form, the lemma, the constructions. */

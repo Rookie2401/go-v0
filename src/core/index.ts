@@ -5,6 +5,7 @@ export * from './ids';
 export * from './events';
 export * from './adapters';
 export * from './paradigm';
+export * from './syntax';
 export * from './store';
 export * from './memory';
 export * from './bus';

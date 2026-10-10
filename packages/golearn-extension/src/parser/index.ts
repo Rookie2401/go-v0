@@ -7,10 +7,10 @@
  * the selected tokens are found by offsets. With no context the selection alone is tokenized and the card says so.
  */
 import { sqAdapter } from '../../../../src/adapters/sq';
-import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidate, PhraseCandidate, RawToken } from '../../../../src/core';
+import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PatternCandidate, PhraseCandidate, RawToken, SyntaxAnalysis } from '../../../../src/core';
 import { unitIds } from '../../../repository-contract/src';
 import { sentenceKeyOf, fnv1a64 } from '../text';
-import type { Alternative, CardModel, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
+import type { Alternative, CardModel, SyntaxNote, CardProvenance, ConstructionNote, ContextReport, EvidenceLabel, FeatureItem, LabelledField, PhraseNote, SentenceWord, WordLine } from './cardModel';
 import { AnalyserNotLoaded, LANGUAGE_META, PARSER_LANGUAGES, clearAnalysers, getAnalyser, hasAnalyser, languageMeta, registerAnalyser, type LanguageMeta } from './registry';
 
 export * from './cardModel';
@@ -147,7 +147,7 @@ export function parseSelection(input: ParseInput): CardModel {
   let lemma: string | undefined; let pos: string | undefined; let gloss: string | undefined; let morphology: string | undefined;
   let confidence = 0; let provenance: CardProvenance = 'none'; let source; let unconfirmed = false;
   const basis: string[] = []; let pronunciation: string[] = []; const alternatives: Alternative[] = [];
-  let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = [];
+  let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = []; let syntax: SyntaxNote | undefined;
   const constructions: ConstructionNote[] = patternsFor(L, tokens, analyses, selected).map((p) => ({
     id: p.key, unitId: unitIds.syntactic(L.lang, p.key), title: p.title, explanation: p.explanation, confidence: clamp01(p.confidence), source: 'pattern' as const,
   }));
@@ -166,6 +166,8 @@ export function parseSelection(input: ParseInput): CardModel {
       source = sourceOf(c);
       features = Object.entries(c.morph ?? {}).filter(([, v]) => typeof v === 'string' && v).map(([key, value]) => ({ key, value }));
       role = typeof c.role === 'string' && c.role ? c.role : undefined;
+      syntax = syntaxNoteFor(L, tokens, analyses, i);
+      if (!role && syntax?.label) role = syntax.label;
       if (c.unit && c.unit.pieces.length > 1) syntaxNotes.push(`Part of the unit “${c.unit.display}” (${c.unit.role}).`);
       for (const part of c.parts ?? []) syntaxNotes.push(`${part.text}: ${[part.lemma && part.lemma !== part.text ? `from ${part.lemma}` : '', part.role ?? part.pos ?? ''].filter(Boolean).join(', ') || 'part of the word'}`);
       for (const f of formConstructions(L, c)) if (!constructions.some((x) => x.id === f.id)) constructions.push(f);
@@ -220,7 +222,29 @@ export function parseSelection(input: ParseInput): CardModel {
     phrases: phrases.map((p) => ({ display: p.display, kind: p.kind, gloss: p.gloss, confidence: clamp01(p.confidence) })),
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
     alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, itemIds,
-    features, constructions, role, syntaxNotes, sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
+    features, constructions, role, syntaxNotes, ...(syntax ? { syntax } : {}), sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
+  };
+}
+
+/**
+ * The selected word's dependency relation from the adapter's syntax rules (Stage 4), with the head's and dependents' surfaces
+ * filled in. Undefined when the adapter has no rules or they threw; status 'none' when it has rules but attached nothing here.
+ */
+function syntaxNoteFor(L: Lang, tokens: RawToken[], analyses: AnalyzedToken[], i: number): SyntaxNote | undefined {
+  if (!L.adapter.syntax || tokens.length < 2) return undefined;
+  let a: SyntaxAnalysis | undefined;
+  try { a = L.adapter.syntax(tokens, analyses); } catch { return undefined; }
+  if (!a) return undefined;
+  const word = (k: number | undefined): string | undefined => (k === undefined ? undefined : a!.tokens[k] ?? tokens[k]?.surface);
+  const r = a.relations.find((x) => x.dependent === i);
+  const dependents = a.relations.filter((x) => x.head === i).sort((x, y) => x.dependent - y.dependent).map((x) => ({ surface: word(x.dependent) ?? '', relation: x.relation, label: x.label })).slice(0, 12);
+  const clause = a.clauses?.find((c) => i >= c.start && i <= c.end);
+  const notes = a.notes.slice(0, 6);
+  if (!r) return { status: 'none', basis: [], alternatives: [], dependents, ...(clause ? { clause: clause.label } : {}), notes: [...notes, 'The rules could not attach this word to another word of the sentence.'], attached: clamp01(a.attached), analyzer: a.analyzer };
+  return {
+    status: r.status, relation: r.relation, label: r.label, headSurface: word(r.head), basis: r.basis.slice(0, 6), confidence: clamp01(r.confidence),
+    alternatives: (r.alternatives ?? []).slice(0, 4).map((x) => ({ relation: x.relation, headSurface: word(x.head), confidence: clamp01(x.confidence), why: x.why })),
+    dependents, ...(clause ? { clause: clause.label } : {}), notes, attached: clamp01(a.attached), analyzer: a.analyzer,
   };
 }
 

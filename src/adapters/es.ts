@@ -38,6 +38,7 @@ import { capitalInside, disambiguateSpanish } from './spanish/disambiguate';
 import { spanishCellFeatureSets, spanishParadigm } from './spanish/paradigm';
 import { cellOf, type ParadigmCell } from '../core/paradigm';
 import { spanishFeaturesFromTableTags } from './spanish/table-tags';
+import { spanishSyntax } from './spanish/syntax';
 
 const LANG = 'es' as const;
 const VERSION = '12';
@@ -793,6 +794,8 @@ export const esAdapter: LanguageAdapter = {
   // the analysed reading projected onto the cells (comma lists split, Variant kept); empty when nothing matches, so the card falls back
   cellsFor: (p, features) => { const out: ParadigmCell[] = []; for (const f of spanishCellFeatureSets(p.pos, features)) { const c = cellOf(p, f); if (c && !out.includes(c)) out.push(c); } return out; },
   describeMorph: (morph) => describeSpanishMorph(morph),
+  /** Contextual syntax (Stage 4): shallow dependencies from the readings above (spanish/syntax.ts). */
+  syntax: (tokens, analyses) => spanishSyntax(tokens, analyses),
 };
 
 // ── numbers 0–999 999 ──

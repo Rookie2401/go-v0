@@ -224,10 +224,10 @@ describe('Grammar puts a construction the learner finds hard first', () => {
     expect(root(r).querySelector('[data-row="grammar"]')).toBeNull();
   });
 
-  it('a word the learner has never met says "· 0× encounters" and, once its lookup has settled, has Seen pressed (the click met it: New becomes Seen at once)', async () => {
+  it('a word the learner has never met says "· 1× encounters" (the lookup is its first meeting) and, once its lookup has settled, has Seen pressed (the click met it: New becomes Seen at once)', async () => {
     const r = makeRig({ services: fakeServices({ profile: async () => profileReply({}) }) });
     await (await lookup(r)).settled;
-    expect(encounters(r)).toBe('· 0× encounters'); // earlier meetings: the lookup just made is not one of them
+    expect(encounters(r)).toBe('· 1× encounters'); // earlier meetings: the lookup just made is not one of them
     expect(pressed(r)).toEqual(['Seen']);
     expect(root(r).querySelector('.levelName')!.textContent).toBe('Seen');
     expect((await events(r.store, 'SelectionLookedUp')).length).toBe(1);
@@ -665,7 +665,7 @@ describe('honest partial cards', () => {
     expect(services.calls.gloss).toBe(1);
     expect(asked[0].lemma).toBe('Flurbozitet'); // the word as written, not the guess, is what the dictionary is asked about first
     expect(asked[0].forms).toEqual(expect.arrayContaining(['Flurbozitet', 'flurbozitet']));
-    expect(encounters(r)).toBe('· 0× encounters');
+    expect(encounters(r)).toBe('· 1× encounters');
     const sel = (await events(r.store, 'SelectionLookedUp'))[0];
     expect(sel.payload).toMatchObject({ unconfirmed: true, provenance: 'rule' });
     expect(sel.subject.itemIds![0]).toMatch(/^form:sq:/);

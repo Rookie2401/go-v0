@@ -15,6 +15,13 @@ import type {
   AnalysisCandidate, AnalysisStatus, FormAnalysis, LanguagePackInfo, LinguisticUnit, ProvenanceSource, UnitKind, UnitProvenance, UnitRelation, ValidationLevel,
 } from '../../repository-contract/src';
 import { albanianPack, genericPack, genericValidation, packValidation, withValidation } from './packs';
+import { CLOSE, HIGH_CONFIDENCE, contextualFieldStates, fieldStatesFor, pickFieldStates } from './field-states';
+import type { FieldReading, FieldStatesInput } from './field-states';
+
+export { CLOSE, HIGH_CONFIDENCE };
+
+/** Field evidence only the caller has (the dictionary-fed paradigm, etymology and syntax of the card); see `FieldStatesInput`. */
+export type FieldEvidence = Pick<FieldStatesInput, 'paradigmCells' | 'etymology' | 'pronunciation' | 'syntax' | 'segmentation'>;
 
 export interface ResolveInput {
   languageId: string;
@@ -28,6 +35,8 @@ export interface ResolveInput {
    * (`packValidation`), which for the machine-drafted installable packs is `unreviewed`.
    */
   validation?: ValidationLevel;
+  /** Stage 7: what the caller knows about the paradigm cell, etymology, pronunciation, syntax and segmentation of this selection; absent fields read `unknown`. */
+  fieldEvidence?: FieldEvidence;
   now: string;
 }
 
@@ -39,10 +48,7 @@ export interface Resolution {
   coverage: { known: boolean; notes: string[] };
 }
 
-/** Two readings this close in confidence are treated as competing. */
-export const CLOSE = 0.15;
-/** The confidence from which a hand-lexicon / dictionary reading is `high-confidence`. */
-export const HIGH_CONFIDENCE = 0.85;
+// CLOSE (0.15) and HIGH_CONFIDENCE (0.85) live in ./field-states and are re-exported above.
 export const SQ_VARIETY = 'sq-standard';
 export const ES_VARIETY = 'es-HN';
 
@@ -145,6 +151,8 @@ function genericResolution(input: ResolveInput, note: string): Resolution {
     analysisId: analysisIdOf(formId, undefined, pack.analyzerId), formId, languageId: lang,
     candidates: [{ confidence: 0.1, provenance }], chosen: 0, status: 'provisional',
     analyzerId: pack.analyzerId, packId: pack.packId, packVersion: pack.version, createdAt: input.now,
+    // a bare form states no lemma, pos, features or sense: every field is unknown (the parser only recorded the surface)
+    fieldStates: contextualFieldStates(fieldStatesFor({ readings: [], now: input.now, ...(input.fieldEvidence ?? {}) })),
   };
   return { formId, units: [unit], relations: [], analysis, coverage: { known: false, notes: [note] } };
 }
@@ -273,6 +281,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
   const statuses: AnalysisStatus[] = [];
   const adapterCands: AdapterCandidate[] = single ? analyzed[selected[0]].candidates : [];
   const prov: UnitProvenance[] = [];
+  const readings: FieldReading[] = []; // the same readings with what the field states need (unconfirmed, native-reviewed)
 
   if (single) {
     const draft: AnalysisCandidate[] = adapterCands.map((c) => {
@@ -307,6 +316,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
       const c = adapterCands[i];
       const p = provenanceOf(c, adapter);
       candidates.push(cand);
+      readings.push({ ...cand, ...(c.unconfirmed ? { unconfirmed: true } : {}), ...(p.reviewed ? { nativeReviewed: true } : {}) });
       statuses.push(statusFor(cand, draft, { reviewedByPerson: p.reviewed, unconfirmed: !!c.unconfirmed }));
       prov.push(cand.provenance);
     });
@@ -319,6 +329,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
         provenance: withValidation({ source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}:phrases`, confidence: clamp01(whole.confidence) }, packLevel),
       };
       candidates.push(cand);
+      readings.push(cand);
       statuses.push(statusFor(cand, [cand]));
       prov.push(cand.provenance);
       notes.push(`The selection matches the phrase entry "${whole.display}".`);
@@ -341,6 +352,19 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
     unitId, kind, languageId: lang, label, packId, packVersion, provenance: prov[i], status: statuses[i], createdAt: input.now, ...extra,
   });
 
+  // pronunciation notes (the adapter's rules), needed by the form unit's field states and by the pronunciation units below
+  let pronNotes: string[] = [];
+  if (single) {
+    try { pronNotes = adapter.pronunciation(tokens[selected[0]], analyzed[selected[0]]).notes ?? []; } catch { pronNotes = []; }
+  }
+
+  // field states: the chosen reading's, from the sources; pronunciation comes from the adapter's rules unless the caller supplies better
+  const evidence = input.fieldEvidence ?? {};
+  const allFields = fieldStatesFor({
+    readings, ...(chosen === undefined ? {} : { chosen }), now: input.now, ...evidence,
+    ...(evidence.pronunciation || !pronNotes.length ? {} : { pronunciation: { status: 'provisional' as const, source: `adapter-${lang}@${adapter.version} rules` } }),
+  });
+
   // the form
   const formIdx = chosen;
   const chosenCand = formIdx === undefined ? undefined : candidates[formIdx];
@@ -354,6 +378,8 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
       scriptId: 'Latn',
       ...(chosenAdapter?.pos ? { pos: chosenAdapter.pos } : {}),
       ...(chosenCand?.features && Object.keys(chosenCand.features).length ? { features: chosenCand.features } : {}),
+      // the fields that belong to the form whatever the sentence (only the ones something states)
+      ...(() => { const fs = pickFieldStates(allFields, ['pronunciation', 'etymology', 'paradigmCell']); return fs ? { fieldStates: fs } : {}; })(),
     });
   units.add(formUnit);
 
@@ -368,7 +394,9 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
         // sense
         if (cand.senseId && c.gloss) {
           const sBest = bestFor((x) => x.senseId === cand.senseId)!;
-          units.add(stamp('sense', cand.senseId, c.gloss, sBest, { ...(c.pos ? { pos: c.pos } : {}) }));
+          // the sense's own state is the one it has as the CHOSEN reading of its best candidate
+          const senseState = fieldStatesFor({ readings, chosen: sBest, now: input.now }).sense;
+          units.add(stamp('sense', cand.senseId, c.gloss, sBest, { ...(c.pos ? { pos: c.pos } : {}), fieldStates: { sense: senseState } }));
           rels.add({ fromId: cand.senseId, relation: 'sense-of', toId: cand.lexemeId, confidence: cand.confidence, provenance: cand.provenance, status: statuses[i] });
         }
       }
@@ -411,9 +439,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
 
   // pronunciation, only when the adapter has something to say
   if (single) {
-    let pron: string[] = [];
-    try { pron = adapter.pronunciation(tokens[selected[0]], analyzed[selected[0]]).notes ?? []; } catch { pron = []; }
-    for (const note of pron) {
+    for (const note of pronNotes) {
       const letters = note.split(':')[0].trim() || 'note';
       const uid = unitIds.pronunciation(lang, varietyId, letters);
       const pp: AnalysisCandidate = { confidence: 0.8, provenance: withValidation({ source: 'hand-lexicon', ref: `adapter-${lang}@${adapter.version}`, confidence: 0.8 }, packLevel) };
@@ -433,6 +459,7 @@ function resolveWith(input: ResolveInput, surface: string, entry: LanguageEntry)
     ...(sentenceKey ? { sentenceKey } : {}),
     candidates, ...(chosen === undefined ? {} : { chosen }), status: analysisStatus,
     analyzerId, packId, packVersion, createdAt: input.now,
+    fieldStates: contextualFieldStates(allFields),
   };
 
   const known = single && adapterCands.some((c) => !c.unconfirmed && !!c.lemma);

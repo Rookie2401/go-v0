@@ -18,6 +18,8 @@ export interface AuditRig {
   sent: Sent[];
   /** Requests whose origin is not the service's (they were refused: the worker saw a network error). */
   offOrigin: Sent[];
+  /** Reads of the extension's own files (chrome-extension://), which are not network requests. */
+  local: Sent[];
   timers: Array<{ ms: number; cleared: boolean; fired: boolean; fire(): void }>;
   page(message: Record<string, unknown>): Promise<any>;
   content(message: Record<string, unknown>, tabId?: number): Promise<any>;
@@ -36,12 +38,16 @@ export function createAuditRig(opts: { allowOrigins?: string[]; realPacks?: bool
   const fake = createChromeFake();
   const sent: Sent[] = [];
   const offOrigin: Sent[] = [];
+  const local: Sent[] = [];
   const timers: AuditRig['timers'] = [];
   const allowed = new Set([new URL(SERVICE).origin, ...(opts.allowOrigins ?? [])]);
   const fetchImpl = (async (input: RequestInfo | URL, init?: RequestInit) => {
     const req = new Request(input, init);
     const u = new URL(req.url);
     const record: Sent = { url: req.url, origin: u.origin, method: req.method, headers: Object.fromEntries(req.headers.entries()), body: await req.clone().text() };
+    // a read of the extension's own package (its bundled dictionary copy, app/config.json) is not a network request: it is
+    // kept apart in `local` and answered 'not found' (the rig bundles no dictionary), so the worker goes on to its next source
+    if (u.protocol === 'chrome-extension:') { local.push(record); return new Response('not found', { status: 404 }); }
     sent.push(record);
     if (!allowed.has(u.origin)) { offOrigin.push(record); throw new TypeError('Failed to fetch'); }
     if (u.pathname.includes('/dict/')) return shard();
@@ -53,7 +59,7 @@ export function createAuditRig(opts: { allowOrigins?: string[]; realPacks?: bool
   });
   bg.register();
   const rig: AuditRig = {
-    fake, h, bg, sent, offOrigin, timers,
+    fake, h, bg, sent, offOrigin, local, timers,
     page: (m) => fake.dispatch(m, { id: 'test-ext-id', url: 'chrome-extension://test-ext-id/app/index.html' }),
     content: (m, tabId = 7) => fake.dispatch(m, { id: 'test-ext-id', tab: { id: tabId }, url: 'https://example.test/page' }),
     async signUp(email = 'ana@example.com') {

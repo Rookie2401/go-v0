@@ -1,0 +1,3553 @@
+{
+ "language": "hi",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "dev",
+ "source": "data/corpus/hi (course texts; bible-* excluded)",
+ "feature_keys": [
+  "Case",
+  "Number",
+  "Gender",
+  "Person",
+  "Tense",
+  "Aspect",
+  "Mood",
+  "VerbForm",
+  "Voice",
+  "Polite"
+ ],
+ "notes": "Contextual word selections from the course corpus. AI-judged, unreviewed. Labelled without running the analysers on the items. Use for measuring; do not tune the engine to this file.",
+ "items": [
+  {
+   "id": "hi-dev-001",
+   "text": "dialogue-01",
+   "sentence": "नमस्ते, अनीता, आप कैसी हैं?",
+   "start": 0,
+   "end": 6,
+   "surface": "नमस्ते",
+   "lemma": "नमस्ते",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse"
+  },
+  {
+   "id": "hi-dev-002",
+   "text": "dialogue-01",
+   "sentence": "नमस्ते, अनीता, आप कैसी हैं?",
+   "start": 23,
+   "end": 26,
+   "surface": "हैं",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Plur",
+    "Polite": "Form"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "hi-dev-003",
+   "text": "dialogue-01",
+   "sentence": "मैं ठीक हूँ, पॉल, पर मैं एक बात नहीं समझती।",
+   "start": 18,
+   "end": 20,
+   "surface": "पर",
+   "lemma": "पर",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-004",
+   "text": "dialogue-01",
+   "sentence": "मैं ठीक हूँ, पॉल, पर मैं एक बात नहीं समझती।",
+   "start": 32,
+   "end": 36,
+   "surface": "नहीं",
+   "lemma": "नहीं",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-005",
+   "text": "dialogue-01",
+   "sentence": "आप क्या नहीं समझतीं?",
+   "start": 13,
+   "end": 19,
+   "surface": "समझतीं",
+   "lemma": "समझना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-006",
+   "text": "dialogue-01",
+   "sentence": "मैं नहीं समझती कि परमेश्वर ने पाप क्षमा क्यों किया।",
+   "start": 15,
+   "end": 17,
+   "surface": "कि",
+   "lemma": "कि",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-007",
+   "text": "dialogue-01",
+   "sentence": "मैं नहीं समझती कि परमेश्वर ने पाप क्षमा क्यों किया।",
+   "start": 40,
+   "end": 45,
+   "surface": "क्यों",
+   "lemma": "क्यों",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-008",
+   "text": "dialogue-01",
+   "sentence": "क्या आप परमेश्वर पर विश्वास करते हैं?",
+   "start": 0,
+   "end": 4,
+   "surface": "क्या",
+   "lemma": "क्या",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "discourse",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-009",
+   "text": "dialogue-01",
+   "sentence": "क्या आप परमेश्वर पर विश्वास करते हैं?",
+   "start": 20,
+   "end": 27,
+   "surface": "विश्वास",
+   "lemma": "विश्वास",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "compound"
+  },
+  {
+   "id": "hi-dev-010",
+   "text": "dialogue-01",
+   "sentence": "हाँ, मैं पूरे दिल से परमेश्वर पर विश्वास करता हूँ।",
+   "start": 14,
+   "end": 17,
+   "surface": "दिल",
+   "lemma": "दिल",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-011",
+   "text": "dialogue-01",
+   "sentence": "हाँ, मैं पूरे दिल से परमेश्वर पर विश्वास करता हूँ।",
+   "start": 33,
+   "end": 40,
+   "surface": "विश्वास",
+   "lemma": "विश्वास",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "compound"
+  },
+  {
+   "id": "hi-dev-012",
+   "text": "dialogue-01",
+   "sentence": "धन्यवाद, पॉल, मैं भी परमेश्वर पर विश्वास करना चाहती हूँ।",
+   "start": 18,
+   "end": 20,
+   "surface": "भी",
+   "lemma": "भी",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-013",
+   "text": "s0a-01",
+   "sentence": "यह रवि है।",
+   "start": 0,
+   "end": 2,
+   "surface": "यह",
+   "lemma": "यह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-014",
+   "text": "s0a-01",
+   "sentence": "रवि घर में है।",
+   "start": 4,
+   "end": 6,
+   "surface": "घर",
+   "lemma": "घर",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-015",
+   "text": "s0a-01",
+   "sentence": "यह मीरा है।",
+   "start": 8,
+   "end": 10,
+   "surface": "है",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "hi-dev-016",
+   "text": "s0a-01",
+   "sentence": "मीरा भी घर में है।",
+   "start": 11,
+   "end": 14,
+   "surface": "में",
+   "lemma": "में",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "hi-dev-017",
+   "text": "s0a-01",
+   "sentence": "रवि और मीरा घर में हैं।",
+   "start": 15,
+   "end": 18,
+   "surface": "में",
+   "lemma": "में",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "hi-dev-018",
+   "text": "s0a-01",
+   "sentence": "घर में रवि और मीरा हैं।",
+   "start": 11,
+   "end": 13,
+   "surface": "और",
+   "lemma": "और",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-019",
+   "text": "s0a-02",
+   "sentence": "माँ रसोई में है।",
+   "start": 0,
+   "end": 3,
+   "surface": "माँ",
+   "lemma": "माँ",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-020",
+   "text": "s0a-02",
+   "sentence": "यह पापा हैं।",
+   "start": 3,
+   "end": 7,
+   "surface": "पापा",
+   "lemma": "पापा",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-021",
+   "text": "s0a-02",
+   "sentence": "रसोई बड़ी है।",
+   "start": 5,
+   "end": 9,
+   "surface": "बड़ी",
+   "lemma": "बड़ा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-022",
+   "text": "s0a-03",
+   "sentence": "यह दादी हैं।",
+   "start": 3,
+   "end": 7,
+   "surface": "दादी",
+   "lemma": "दादी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-023",
+   "text": "s0a-03",
+   "sentence": "दादा जी घर में नहीं हैं।",
+   "start": 0,
+   "end": 4,
+   "surface": "दादा",
+   "lemma": "दादा",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-024",
+   "text": "s0a-03",
+   "sentence": "बाज़ार बड़ा है।",
+   "start": 0,
+   "end": 6,
+   "surface": "बाज़ार",
+   "lemma": "बाज़ार",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-025",
+   "text": "s0a-03",
+   "sentence": "बाज़ार में लोग हैं।",
+   "start": 11,
+   "end": 14,
+   "surface": "लोग",
+   "lemma": "लोग",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-026",
+   "text": "s0a-04",
+   "sentence": "यह कुत्ता छोटा है।",
+   "start": 3,
+   "end": 9,
+   "surface": "कुत्ता",
+   "lemma": "कुत्ता",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-027",
+   "text": "s0a-04",
+   "sentence": "कुर्सी बड़ी है।",
+   "start": 0,
+   "end": 6,
+   "surface": "कुर्सी",
+   "lemma": "कुर्सी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-028",
+   "text": "s0a-04",
+   "sentence": "मेज़ सफ़ेद है।",
+   "start": 5,
+   "end": 10,
+   "surface": "सफ़ेद",
+   "lemma": "सफ़ेद",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-029",
+   "text": "s0a-04",
+   "sentence": "मोती छोटा है।",
+   "start": 5,
+   "end": 9,
+   "surface": "छोटा",
+   "lemma": "छोटा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-030",
+   "text": "s0a-05",
+   "sentence": "रवि और अमित दोस्त हैं।",
+   "start": 7,
+   "end": 11,
+   "surface": "अमित",
+   "lemma": "अमित",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "hi-dev-031",
+   "text": "s0a-05",
+   "sentence": "नेहा स्कूल में है।",
+   "start": 5,
+   "end": 10,
+   "surface": "स्कूल",
+   "lemma": "स्कूल",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-032",
+   "text": "s0a-05",
+   "sentence": "अमित अच्छा है।",
+   "start": 5,
+   "end": 10,
+   "surface": "अच्छा",
+   "lemma": "अच्छा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-033",
+   "text": "s0a-05",
+   "sentence": "नेहा अच्छी है।",
+   "start": 5,
+   "end": 10,
+   "surface": "अच्छी",
+   "lemma": "अच्छा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-034",
+   "text": "s0a-06",
+   "sentence": "मेज़ पर किताब है।",
+   "start": 8,
+   "end": 13,
+   "surface": "किताब",
+   "lemma": "किताब",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-035",
+   "text": "s0a-06",
+   "sentence": "किताब बैग में नहीं है।",
+   "start": 6,
+   "end": 9,
+   "surface": "बैग",
+   "lemma": "बैग",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-036",
+   "text": "s0a-06",
+   "sentence": "नई किताब मेज़ पर है।",
+   "start": 0,
+   "end": 2,
+   "surface": "नई",
+   "lemma": "नया",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "hi-dev-037",
+   "text": "s0a-06",
+   "sentence": "बैग लाल है।",
+   "start": 4,
+   "end": 7,
+   "surface": "लाल",
+   "lemma": "लाल",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-038",
+   "text": "s0a-07",
+   "sentence": "खाना मेज़ पर है।",
+   "start": 0,
+   "end": 4,
+   "surface": "खाना",
+   "lemma": "खाना",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-039",
+   "text": "s0a-07",
+   "sentence": "आम मीठा है।",
+   "start": 0,
+   "end": 2,
+   "surface": "आम",
+   "lemma": "आम",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-040",
+   "text": "s0a-07",
+   "sentence": "दूध सफ़ेद है।",
+   "start": 0,
+   "end": 3,
+   "surface": "दूध",
+   "lemma": "दूध",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-041",
+   "text": "s0a-07",
+   "sentence": "चाय गरम है।",
+   "start": 0,
+   "end": 3,
+   "surface": "चाय",
+   "lemma": "चाय",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-042",
+   "text": "s0a-07",
+   "sentence": "रोटी गरम है।",
+   "start": 5,
+   "end": 8,
+   "surface": "गरम",
+   "lemma": "गरम",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-043",
+   "text": "s0a-08",
+   "sentence": "रवि रोटी खाता है।",
+   "start": 9,
+   "end": 13,
+   "surface": "खाता",
+   "lemma": "खाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-044",
+   "text": "s0a-08",
+   "sentence": "माँ खाना खाती है।",
+   "start": 9,
+   "end": 13,
+   "surface": "खाती",
+   "lemma": "खाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-045",
+   "text": "s0a-08",
+   "sentence": "माँ चाय पीती है।",
+   "start": 8,
+   "end": 12,
+   "surface": "पीती",
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-046",
+   "text": "s0a-08",
+   "sentence": "अमित पानी पीता है।",
+   "start": 10,
+   "end": 14,
+   "surface": "पीता",
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-047",
+   "text": "s0a-08",
+   "sentence": "सब आम खाते हैं।",
+   "start": 0,
+   "end": 2,
+   "surface": "सब",
+   "lemma": "सब",
+   "pos": "DET",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-048",
+   "text": "s0a-09",
+   "sentence": "मीरा रोज़ स्कूल जाती है।",
+   "start": 5,
+   "end": 9,
+   "surface": "रोज़",
+   "lemma": "रोज़",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-049",
+   "text": "s0a-09",
+   "sentence": "रवि स्कूल में पढ़ता है।",
+   "start": 14,
+   "end": 19,
+   "surface": "पढ़ता",
+   "lemma": "पढ़ना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-050",
+   "text": "s0a-09",
+   "sentence": "शर्मा जी भी स्कूल जाते हैं।",
+   "start": 18,
+   "end": 22,
+   "surface": "जाते",
+   "lemma": "जाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-051",
+   "text": "s0a-09",
+   "sentence": "रवि किताब पढ़ता है।",
+   "start": 10,
+   "end": 15,
+   "surface": "पढ़ता",
+   "lemma": "पढ़ना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-052",
+   "text": "s0a-10",
+   "sentence": "मैदान बड़ा है।",
+   "start": 0,
+   "end": 5,
+   "surface": "मैदान",
+   "lemma": "मैदान",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-053",
+   "text": "s0a-10",
+   "sentence": "पेड़ बड़ा है।",
+   "start": 0,
+   "end": 4,
+   "surface": "पेड़",
+   "lemma": "पेड़",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-054",
+   "text": "s0a-10",
+   "sentence": "फूल सफ़ेद हैं।",
+   "start": 0,
+   "end": 3,
+   "surface": "फूल",
+   "lemma": "फूल",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-055",
+   "text": "s0a-10",
+   "sentence": "मीरा भी मैदान में खेलती है।",
+   "start": 18,
+   "end": 23,
+   "surface": "खेलती",
+   "lemma": "खेलना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-056",
+   "text": "s0a-10",
+   "sentence": "क्या यह गेंद है?",
+   "start": 8,
+   "end": 12,
+   "surface": "गेंद",
+   "lemma": "गेंद",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-057",
+   "text": "s0a-10",
+   "sentence": "क्या मीरा खेलती है?",
+   "start": 10,
+   "end": 15,
+   "surface": "खेलती",
+   "lemma": "खेलना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-058",
+   "text": "s0a-11",
+   "sentence": "गेंद कहाँ है?",
+   "start": 5,
+   "end": 9,
+   "surface": "कहाँ",
+   "lemma": "कहाँ",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-059",
+   "text": "s0a-11",
+   "sentence": "मीरा कहाँ है?",
+   "start": 5,
+   "end": 9,
+   "surface": "कहाँ",
+   "lemma": "कहाँ",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-060",
+   "text": "s0a-12",
+   "sentence": "तस्वीर में कौन है?",
+   "start": 11,
+   "end": 14,
+   "surface": "कौन",
+   "lemma": "कौन",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-061",
+   "text": "s0a-12",
+   "sentence": "यह लड़का रवि है।",
+   "start": 3,
+   "end": 8,
+   "surface": "लड़का",
+   "lemma": "लड़का",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-062",
+   "text": "s0b-01",
+   "sentence": "मेरा नाम रवि है।",
+   "start": 5,
+   "end": 8,
+   "surface": "नाम",
+   "lemma": "नाम",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-063",
+   "text": "s0b-01",
+   "sentence": "मेरे घर में छह लोग हैं।",
+   "start": 0,
+   "end": 4,
+   "surface": "मेरे",
+   "lemma": "मेरा",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "hi-dev-064",
+   "text": "s0b-01",
+   "sentence": "मैं अपने कमरे में पढ़ता हूँ।",
+   "start": 4,
+   "end": 8,
+   "surface": "अपने",
+   "lemma": "अपना",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "hi-dev-065",
+   "text": "s0b-01",
+   "sentence": "यह मेरी माँ है।",
+   "start": 3,
+   "end": 7,
+   "surface": "मेरी",
+   "lemma": "मेरा",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "hi-dev-066",
+   "text": "s0b-01",
+   "sentence": "मेरी माँ मुझे दूध देती है।",
+   "start": 9,
+   "end": 13,
+   "surface": "मुझे",
+   "lemma": "मैं",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dat",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "iobj"
+  },
+  {
+   "id": "hi-dev-067",
+   "text": "s0b-01",
+   "sentence": "मेरे पापा शाम को घर आते हैं।",
+   "start": 10,
+   "end": 13,
+   "surface": "शाम",
+   "lemma": "शाम",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-068",
+   "text": "s0b-01",
+   "sentence": "यह मेरी बहन है।",
+   "start": 8,
+   "end": 11,
+   "surface": "बहन",
+   "lemma": "बहन",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-069",
+   "text": "s0b-01",
+   "sentence": "मीरा भी मेरे साथ स्कूल जाती है।",
+   "start": 13,
+   "end": 16,
+   "surface": "साथ",
+   "lemma": "साथ",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-070",
+   "text": "s0b-01",
+   "sentence": "उसका नाम मोती है।",
+   "start": 0,
+   "end": 4,
+   "surface": "उसका",
+   "lemma": "वह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Gen",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-071",
+   "text": "s0b-01",
+   "sentence": "तस्वीर में हम सब हैं।",
+   "start": 11,
+   "end": 13,
+   "surface": "हम",
+   "lemma": "हम",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-072",
+   "text": "s0b-01",
+   "sentence": "मेरे घर के पास एक बाग है।",
+   "start": 11,
+   "end": 14,
+   "surface": "पास",
+   "lemma": "पास",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-073",
+   "text": "s0b-02",
+   "sentence": "दो किताबें छोटी हैं।",
+   "start": 0,
+   "end": 2,
+   "surface": "दो",
+   "lemma": "दो",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "hi-dev-074",
+   "text": "s0b-02",
+   "sentence": "वह किताब रवि की है।",
+   "start": 13,
+   "end": 15,
+   "surface": "की",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Fem"
+   },
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-075",
+   "text": "s0b-02",
+   "sentence": "मेज़ के पास चार कुर्सियाँ हैं।",
+   "start": 16,
+   "end": 25,
+   "surface": "कुर्सियाँ",
+   "lemma": "कुर्सी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-076",
+   "text": "s0b-02",
+   "sentence": "मीरा के पास दो किताबें हैं।",
+   "start": 12,
+   "end": 14,
+   "surface": "दो",
+   "lemma": "दो",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "hi-dev-077",
+   "text": "s0b-02",
+   "sentence": "मोती गेंद को देखता है।",
+   "start": 10,
+   "end": 12,
+   "surface": "को",
+   "lemma": "को",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "hi-dev-078",
+   "text": "s0b-02",
+   "sentence": "रवि मीरा से पूछता है, \"तुम्हारी किताब कहाँ है?\"",
+   "start": 23,
+   "end": 31,
+   "surface": "तुम्हारी",
+   "lemma": "तुम्हारा",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "hi-dev-079",
+   "text": "s0b-02",
+   "sentence": "मीरा कहती है, \"हाँ, वह तुम्हारी किताब है।\"",
+   "start": 23,
+   "end": 31,
+   "surface": "तुम्हारी",
+   "lemma": "तुम्हारा",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "hi-dev-080",
+   "text": "s0b-03",
+   "sentence": "बस में बहुत बच्चे हैं।",
+   "start": 12,
+   "end": 17,
+   "surface": "बच्चे",
+   "lemma": "बच्चा",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-081",
+   "text": "s0b-03",
+   "sentence": "रवि की कक्षा बड़ी है।",
+   "start": 7,
+   "end": 12,
+   "surface": "कक्षा",
+   "lemma": "कक्षा",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-082",
+   "text": "s0b-03",
+   "sentence": "शर्मा जी कक्षा में आते हैं।",
+   "start": 19,
+   "end": 22,
+   "surface": "आते",
+   "lemma": "आना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-083",
+   "text": "s0b-03",
+   "sentence": "शर्मा जी कहते हैं, \"नमस्ते, बच्चो। बैठो।\"",
+   "start": 20,
+   "end": 26,
+   "surface": "नमस्ते",
+   "lemma": "नमस्ते",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse"
+  },
+  {
+   "id": "hi-dev-084",
+   "text": "s0b-03",
+   "sentence": "शर्मा जी बच्चों को कहानी सुनाते हैं।",
+   "start": 25,
+   "end": 31,
+   "surface": "सुनाते",
+   "lemma": "सुनाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-085",
+   "text": "s0b-03",
+   "sentence": "कहानी बहुत अच्छी है।",
+   "start": 0,
+   "end": 5,
+   "surface": "कहानी",
+   "lemma": "कहानी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-086",
+   "text": "s0b-03",
+   "sentence": "शर्मा जी रवि को किताब देते हैं।",
+   "start": 22,
+   "end": 26,
+   "surface": "देते",
+   "lemma": "देना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-087",
+   "text": "s0b-03",
+   "sentence": "रवि अमित को किताब देता है।",
+   "start": 18,
+   "end": 22,
+   "surface": "देता",
+   "lemma": "देना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-088",
+   "text": "s0b-03",
+   "sentence": "लड़कियाँ बाग में बैठती हैं।",
+   "start": 17,
+   "end": 22,
+   "surface": "बैठती",
+   "lemma": "बैठना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-089",
+   "text": "s0b-03",
+   "sentence": "माँ रवि और मीरा को दूध देती है।",
+   "start": 23,
+   "end": 27,
+   "surface": "देती",
+   "lemma": "देना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-090",
+   "text": "s0b-04",
+   "sentence": "गाँव में एक नदी है।",
+   "start": 12,
+   "end": 15,
+   "surface": "नदी",
+   "lemma": "नदी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-091",
+   "text": "s0b-04",
+   "sentence": "घर में एक बड़ा आँगन है।",
+   "start": 15,
+   "end": 19,
+   "surface": "आँगन",
+   "lemma": "आँगन",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-092",
+   "text": "s0b-04",
+   "sentence": "दादी रोज़ गाय को पानी देती हैं।",
+   "start": 10,
+   "end": 13,
+   "surface": "गाय",
+   "lemma": "गाय",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "hi-dev-093",
+   "text": "s0b-04",
+   "sentence": "राजू सीता का भाई है।",
+   "start": 0,
+   "end": 4,
+   "surface": "राजू",
+   "lemma": "राजू",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-094",
+   "text": "s0b-04",
+   "sentence": "सीता राजू की बहन है।",
+   "start": 5,
+   "end": 9,
+   "surface": "राजू",
+   "lemma": "राजू",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-095",
+   "text": "s0b-04",
+   "sentence": "मोती गाय को देखता है।",
+   "start": 5,
+   "end": 8,
+   "surface": "गाय",
+   "lemma": "गाय",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "hi-dev-096",
+   "text": "s0b-04",
+   "sentence": "कल रवि और मीरा गाँव में थे।",
+   "start": 0,
+   "end": 2,
+   "surface": "कल",
+   "lemma": "कल",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-097",
+   "text": "s0b-04",
+   "sentence": "सीता नदी के पास थी।",
+   "start": 5,
+   "end": 8,
+   "surface": "नदी",
+   "lemma": "नदी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-098",
+   "text": "s0b-05",
+   "sentence": "आज शर्मा जी रवि के घर आ रहे हैं।",
+   "start": 22,
+   "end": 23,
+   "surface": "आ",
+   "lemma": "आना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-099",
+   "text": "s0b-05",
+   "sentence": "मीरा पूछती है, \"दरवाज़े पर कौन है?\"",
+   "start": 5,
+   "end": 10,
+   "surface": "पूछती",
+   "lemma": "पूछना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-100",
+   "text": "s0b-05",
+   "sentence": "माँ रसोई से आती है।",
+   "start": 12,
+   "end": 15,
+   "surface": "आती",
+   "lemma": "आना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-101",
+   "text": "s0b-05",
+   "sentence": "रवि कहता है, \"शर्मा जी, पानी लीजिए।\"",
+   "start": 29,
+   "end": 34,
+   "surface": "लीजिए",
+   "lemma": "लेना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-102",
+   "text": "s0b-05",
+   "sentence": "पापा कहते हैं, \"आइए, बैठिए।\"",
+   "start": 21,
+   "end": 26,
+   "surface": "बैठिए",
+   "lemma": "बैठना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-103",
+   "text": "s0b-05",
+   "sentence": "माँ मीरा से कहती है, \"रोटी लाओ।\"",
+   "start": 27,
+   "end": 30,
+   "surface": "लाओ",
+   "lemma": "लाना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Infm"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-104",
+   "text": "s0b-05",
+   "sentence": "रवि कहता है, \"मोती, बैठो।\"",
+   "start": 20,
+   "end": 24,
+   "surface": "बैठो",
+   "lemma": "बैठना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Infm"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-105",
+   "text": "s0b-06",
+   "sentence": "आज राजू रवि को फ़ोन करता है।",
+   "start": 0,
+   "end": 2,
+   "surface": "आज",
+   "lemma": "आज",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-106",
+   "text": "s0b-06",
+   "sentence": "राजू कहता है, \"हैलो, रवि! तुम कैसे हो?\"",
+   "start": 30,
+   "end": 34,
+   "surface": "कैसे",
+   "lemma": "कैसा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-107",
+   "text": "s0b-06",
+   "sentence": "रवि कहता है, \"मैं ठीक हूँ। तुम कैसे हो?\"",
+   "start": 31,
+   "end": 35,
+   "surface": "कैसे",
+   "lemma": "कैसा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-108",
+   "text": "s0b-06",
+   "sentence": "रवि पूछता है, \"तुम क्या कर रहे हो?\"",
+   "start": 24,
+   "end": 26,
+   "surface": "कर",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-109",
+   "text": "s0b-06",
+   "sentence": "राजू कहता है, \"मैं आम खा रहा हूँ। तुम क्या कर रहे हो?\"",
+   "start": 43,
+   "end": 45,
+   "surface": "कर",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-110",
+   "text": "s0b-06",
+   "sentence": "राजू पूछता है, \"मीरा क्या कर रही है?\"",
+   "start": 29,
+   "end": 32,
+   "surface": "रही",
+   "lemma": "रहना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Prog",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-dev-111",
+   "text": "s0b-06",
+   "sentence": "रवि पूछता है, \"सीता कहाँ है? वह क्या कर रही है?\"",
+   "start": 40,
+   "end": 43,
+   "surface": "रही",
+   "lemma": "रहना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Prog",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-dev-112",
+   "text": "s0b-06",
+   "sentence": "राजू पूछता है, \"तुम गाँव कब आ रहे हो?\"",
+   "start": 28,
+   "end": 29,
+   "surface": "आ",
+   "lemma": "आना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-113",
+   "text": "s0b-06",
+   "sentence": "रवि कहता है, \"अच्छा! मैं भी अपनी गेंद लाता हूँ।\"",
+   "start": 38,
+   "end": 42,
+   "surface": "लाता",
+   "lemma": "लाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-114",
+   "text": "s0b-07",
+   "sentence": "मीरा कुत्ते को दूध देती है।",
+   "start": 5,
+   "end": 11,
+   "surface": "कुत्ते",
+   "lemma": "कुत्ता",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "hi-dev-115",
+   "text": "s0b-07",
+   "sentence": "वह कुर्सी के नीचे सोता है।",
+   "start": 13,
+   "end": 17,
+   "surface": "नीचे",
+   "lemma": "नीचे",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-116",
+   "text": "s0b-07",
+   "sentence": "कभी वह मेज़ के नीचे सोता है।",
+   "start": 20,
+   "end": 24,
+   "surface": "सोता",
+   "lemma": "सोना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-117",
+   "text": "s0b-07",
+   "sentence": "मोती कब सोता है?",
+   "start": 5,
+   "end": 7,
+   "surface": "कब",
+   "lemma": "कब",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-118",
+   "text": "s0b-07",
+   "sentence": "वहाँ उसकी गेंद है।",
+   "start": 5,
+   "end": 9,
+   "surface": "उसकी",
+   "lemma": "वह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Gen",
+    "Person": "3",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-119",
+   "text": "s0b-07",
+   "sentence": "कल रवि की रोटी मेज़ पर थी।",
+   "start": 23,
+   "end": 25,
+   "surface": "थी",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "hi-dev-120",
+   "text": "s0b-07",
+   "sentence": "अब रात है।",
+   "start": 3,
+   "end": 6,
+   "surface": "रात",
+   "lemma": "रात",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-121",
+   "text": "s0b-07",
+   "sentence": "आज वह घर के अंदर है।",
+   "start": 12,
+   "end": 16,
+   "surface": "अंदर",
+   "lemma": "अंदर",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-122",
+   "text": "s0b-08",
+   "sentence": "शहर में बहुत सड़कें हैं।",
+   "start": 13,
+   "end": 19,
+   "surface": "सड़कें",
+   "lemma": "सड़क",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-123",
+   "text": "s0b-08",
+   "sentence": "रवि कहता है, \"देखो, मीरा! वह कितना बड़ा बाज़ार है!\"",
+   "start": 29,
+   "end": 34,
+   "surface": "कितना",
+   "lemma": "कितना",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-124",
+   "text": "s0b-08",
+   "sentence": "दुकान में बहुत किताबें हैं।",
+   "start": 0,
+   "end": 5,
+   "surface": "दुकान",
+   "lemma": "दुकान",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-125",
+   "text": "s0b-08",
+   "sentence": "पापा रवि और मीरा को दफ़्तर ले जाते हैं।",
+   "start": 20,
+   "end": 26,
+   "surface": "दफ़्तर",
+   "lemma": "दफ़्तर",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-126",
+   "text": "s0b-08",
+   "sentence": "दफ़्तर में बहुत लोग काम करते हैं।",
+   "start": 24,
+   "end": 28,
+   "surface": "करते",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-127",
+   "text": "s0b-08",
+   "sentence": "माँ पूछती है, \"शहर कैसा है?\"",
+   "start": 4,
+   "end": 9,
+   "surface": "पूछती",
+   "lemma": "पूछना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-128",
+   "text": "s0c-01",
+   "sentence": "मीरा ने कहा, \"रवि, उठो! बस आ रही है।\"",
+   "start": 5,
+   "end": 7,
+   "surface": "ने",
+   "lemma": "ने",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "hi-dev-129",
+   "text": "s0c-01",
+   "sentence": "रवि ने कहा, \"थोड़ी देर और।\"",
+   "start": 13,
+   "end": 18,
+   "surface": "थोड़ी",
+   "lemma": "थोड़ा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "hi-dev-130",
+   "text": "s0c-01",
+   "sentence": "मीरा स्कूल चली गई, और रवि सो गया।",
+   "start": 29,
+   "end": 32,
+   "surface": "गया",
+   "lemma": "जाना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-dev-131",
+   "text": "s0c-01",
+   "sentence": "थोड़ी देर बाद रवि उठा।",
+   "start": 18,
+   "end": 21,
+   "surface": "उठा",
+   "lemma": "उठना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-132",
+   "text": "s0c-01",
+   "sentence": "घड़ी में आठ बजे थे।",
+   "start": 9,
+   "end": 11,
+   "surface": "आठ",
+   "lemma": "आठ",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "hi-dev-133",
+   "text": "s0c-01",
+   "sentence": "रवि घबरा गया, क्योंकि बस आठ बजे आती है।",
+   "start": 9,
+   "end": 12,
+   "surface": "गया",
+   "lemma": "जाना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-dev-134",
+   "text": "s0c-01",
+   "sentence": "उसने माँ से पूछा, \"मीरा कहाँ है?\"",
+   "start": 0,
+   "end": 4,
+   "surface": "उसने",
+   "lemma": "वह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-135",
+   "text": "s0c-01",
+   "sentence": "माँ ने कहा, \"मीरा बस से स्कूल चली गई। उसने तुम्हें दो बार उठाया।\"",
+   "start": 38,
+   "end": 42,
+   "surface": "उसने",
+   "lemma": "वह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-136",
+   "text": "s0c-01",
+   "sentence": "माँ ने कहा, \"मीरा बस से स्कूल चली गई। उसने तुम्हें दो बार उठाया।\"",
+   "start": 58,
+   "end": 63,
+   "surface": "उठाया",
+   "lemma": "उठाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-137",
+   "text": "s0c-01",
+   "sentence": "माँ ने उसे एक रोटी दी।",
+   "start": 19,
+   "end": 21,
+   "surface": "दी",
+   "lemma": "देना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-138",
+   "text": "s0c-01",
+   "sentence": "सड़क पर बहुत लोग थे।",
+   "start": 0,
+   "end": 4,
+   "surface": "सड़क",
+   "lemma": "सड़क",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-139",
+   "text": "s0c-01",
+   "sentence": "वह चली गई।",
+   "start": 7,
+   "end": 9,
+   "surface": "गई",
+   "lemma": "जाना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-dev-140",
+   "text": "s0c-01",
+   "sentence": "तभी पीछे से आवाज़ आई।",
+   "start": 18,
+   "end": 20,
+   "surface": "आई",
+   "lemma": "आना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-141",
+   "text": "s0c-01",
+   "sentence": "मोती उसके पास आ गया।",
+   "start": 5,
+   "end": 9,
+   "surface": "उसके",
+   "lemma": "वह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Gen",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-142",
+   "text": "s0c-01",
+   "sentence": "रवि स्कूल की तरफ़ भागा।",
+   "start": 13,
+   "end": 17,
+   "surface": "तरफ़",
+   "lemma": "तरफ़",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-143",
+   "text": "s0c-01",
+   "sentence": "जब रवि कक्षा में आया, तब सब बच्चे बैठे थे।",
+   "start": 0,
+   "end": 2,
+   "surface": "जब",
+   "lemma": "जब",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "hi-dev-144",
+   "text": "s0c-01",
+   "sentence": "शर्मा जी ने पूछा, \"रवि, तुम देर से क्यों आए?\"",
+   "start": 12,
+   "end": 16,
+   "surface": "पूछा",
+   "lemma": "पूछना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-145",
+   "text": "s0c-01",
+   "sentence": "रवि ने कहा, \"शर्मा जी, मैं देर से उठा, इसलिए बस चली गई।\"",
+   "start": 39,
+   "end": 44,
+   "surface": "इसलिए",
+   "lemma": "इसलिए",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc"
+  },
+  {
+   "id": "hi-dev-146",
+   "text": "s0c-01",
+   "sentence": "शर्मा जी ने कहा, \"अगर तुम जल्दी उठते हो, तो बस मिल जाती है।\"",
+   "start": 41,
+   "end": 43,
+   "surface": "तो",
+   "lemma": "तो",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-147",
+   "text": "s0c-01",
+   "sentence": "सब बच्चों ने बाहर देखा।",
+   "start": 3,
+   "end": 9,
+   "surface": "बच्चों",
+   "lemma": "बच्चा",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-148",
+   "text": "s0c-01",
+   "sentence": "सब बच्चे हँसने लगे।",
+   "start": 9,
+   "end": 14,
+   "surface": "हँसने",
+   "lemma": "हँसना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-149",
+   "text": "s0c-01",
+   "sentence": "रवि ने अपनी रोटी मोती को दे दी।",
+   "start": 25,
+   "end": 27,
+   "surface": "दे",
+   "lemma": "देना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-150",
+   "text": "s0c-01",
+   "sentence": "रवि को भूख लगी, लेकिन वह भी हँसने लगा।",
+   "start": 11,
+   "end": 14,
+   "surface": "लगी",
+   "lemma": "लगना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-151",
+   "text": "s0c-01",
+   "sentence": "मोती सारा दिन दरवाज़े पर बैठा रहा।",
+   "start": 5,
+   "end": 9,
+   "surface": "सारा",
+   "lemma": "सारा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "hi-dev-152",
+   "text": "s0c-01",
+   "sentence": "माँ ने रवि से पूछा, \"आज तुमने क्या खाया?\"",
+   "start": 14,
+   "end": 18,
+   "surface": "पूछा",
+   "lemma": "पूछना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-153",
+   "text": "s0c-01",
+   "sentence": "रवि ने कहा, \"आज मैंने कुछ नहीं खाया।\"",
+   "start": 22,
+   "end": 25,
+   "surface": "कुछ",
+   "lemma": "कुछ",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-154",
+   "text": "s0c-01",
+   "sentence": "रवि ने खाना खाया, और मोती उसके पास बैठ गया।",
+   "start": 26,
+   "end": 30,
+   "surface": "उसके",
+   "lemma": "वह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Gen",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-155",
+   "text": "s0c-02",
+   "sentence": "दादी ने कहा, \"ठीक है, सुनो।\"",
+   "start": 22,
+   "end": 26,
+   "surface": "सुनो",
+   "lemma": "सुनना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Infm"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-156",
+   "text": "s0c-02",
+   "sentence": "रवि और मीरा ध्यान से सुन रहे थे।",
+   "start": 12,
+   "end": 17,
+   "surface": "ध्यान",
+   "lemma": "ध्यान",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-157",
+   "text": "s0c-02",
+   "sentence": "गर्मी का दिन था।",
+   "start": 0,
+   "end": 5,
+   "surface": "गर्मी",
+   "lemma": "गर्मी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-158",
+   "text": "s0c-02",
+   "sentence": "कौए को बहुत प्यास लगी।",
+   "start": 18,
+   "end": 21,
+   "surface": "लगी",
+   "lemma": "लगना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-159",
+   "text": "s0c-02",
+   "sentence": "कौआ आसमान में उड़ा।",
+   "start": 14,
+   "end": 18,
+   "surface": "उड़ा",
+   "lemma": "उड़ना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-160",
+   "text": "s0c-02",
+   "sentence": "उसने तालाब ढूँढा, लेकिन तालाब में पानी नहीं था।",
+   "start": 11,
+   "end": 16,
+   "surface": "ढूँढा",
+   "lemma": "ढूँढना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-161",
+   "text": "s0c-02",
+   "sentence": "घर के आँगन में एक घड़ा था।",
+   "start": 18,
+   "end": 22,
+   "surface": "घड़ा",
+   "lemma": "घड़ा",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-162",
+   "text": "s0c-02",
+   "sentence": "कौआ पानी तक नहीं पहुँचा।",
+   "start": 17,
+   "end": 23,
+   "surface": "पहुँचा",
+   "lemma": "पहुँचना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-163",
+   "text": "s0c-02",
+   "sentence": "कौए ने एक कंकड़ उठाया।",
+   "start": 10,
+   "end": 15,
+   "surface": "कंकड़",
+   "lemma": "कंकड़",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "hi-dev-164",
+   "text": "s0c-02",
+   "sentence": "फिर उसने दूसरा कंकड़ डाला।",
+   "start": 0,
+   "end": 3,
+   "surface": "फिर",
+   "lemma": "फिर",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-165",
+   "text": "s0c-02",
+   "sentence": "पानी ऊपर आ गया।",
+   "start": 5,
+   "end": 8,
+   "surface": "ऊपर",
+   "lemma": "ऊपर",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-166",
+   "text": "s0c-02",
+   "sentence": "फिर वह आसमान में उड़ गया।",
+   "start": 17,
+   "end": 20,
+   "surface": "उड़",
+   "lemma": "उड़ना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-167",
+   "text": "s0c-02",
+   "sentence": "दादी ने कहा, \"जब हम सोचते हैं, तब हमें रास्ता मिल जाता है।\"",
+   "start": 39,
+   "end": 45,
+   "surface": "रास्ता",
+   "lemma": "रास्ता",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-168",
+   "text": "s0c-02",
+   "sentence": "रवि ने कहा, \"दादी, एक कहानी और सुनाइए।\"",
+   "start": 31,
+   "end": 37,
+   "surface": "सुनाइए",
+   "lemma": "सुनाना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-169",
+   "text": "s0c-02",
+   "sentence": "दोनों ने दूध पिया।",
+   "start": 13,
+   "end": 17,
+   "surface": "पिया",
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-170",
+   "text": "s0c-03",
+   "sentence": "छुट्टी का पहला दिन था।",
+   "start": 10,
+   "end": 14,
+   "surface": "पहला",
+   "lemma": "पहला",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "hi-dev-171",
+   "text": "s0c-03",
+   "sentence": "रवि ने माँ से पूछा, \"क्या मोती भी हमारे साथ आ रहा है?\"",
+   "start": 34,
+   "end": 39,
+   "surface": "हमारे",
+   "lemma": "हमारा",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "hi-dev-172",
+   "text": "s0c-03",
+   "sentence": "रवि को खिड़की के पास जगह मिली।",
+   "start": 7,
+   "end": 13,
+   "surface": "खिड़की",
+   "lemma": "खिड़की",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-173",
+   "text": "s0c-03",
+   "sentence": "मोती रवि के पास बैठ गया।",
+   "start": 16,
+   "end": 19,
+   "surface": "बैठ",
+   "lemma": "बैठना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-174",
+   "text": "s0c-03",
+   "sentence": "उसने खेत देखे, पेड़ देखे और एक नदी देखी।",
+   "start": 35,
+   "end": 39,
+   "surface": "देखी",
+   "lemma": "देखना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-175",
+   "text": "s0c-03",
+   "sentence": "रवि ने कहा, \"धन्यवाद। इसका नाम मोती है।\"",
+   "start": 22,
+   "end": 26,
+   "surface": "इसका",
+   "lemma": "यह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Gen",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-176",
+   "text": "s0c-03",
+   "sentence": "मोती ने भी थोड़ी रोटी खाई।",
+   "start": 22,
+   "end": 25,
+   "surface": "खाई",
+   "lemma": "खाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-177",
+   "text": "s0c-03",
+   "sentence": "सड़क पर बहुत गायें थीं।",
+   "start": 0,
+   "end": 4,
+   "surface": "सड़क",
+   "lemma": "सड़क",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-178",
+   "text": "s0c-03",
+   "sentence": "रवि ने कहा, \"डर की कोई बात नहीं है।\"",
+   "start": 13,
+   "end": 15,
+   "surface": "डर",
+   "lemma": "डर",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-179",
+   "text": "s0c-03",
+   "sentence": "थोड़ी देर बाद गायें चली गईं।",
+   "start": 14,
+   "end": 19,
+   "surface": "गायें",
+   "lemma": "गाय",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-180",
+   "text": "s0c-03",
+   "sentence": "दो घंटे बाद बस गाँव पहुँची।",
+   "start": 20,
+   "end": 26,
+   "surface": "पहुँची",
+   "lemma": "पहुँचना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-181",
+   "text": "s0c-03",
+   "sentence": "उसने कहा, \"अरे, मोती भी आ गया!\"",
+   "start": 11,
+   "end": 14,
+   "surface": "अरे",
+   "lemma": "अरे",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse"
+  },
+  {
+   "id": "hi-dev-182",
+   "text": "s0c-03",
+   "sentence": "सीता ने मीरा का बैग ले लिया।",
+   "start": 23,
+   "end": 27,
+   "surface": "लिया",
+   "lemma": "लेना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-dev-183",
+   "text": "s0c-03",
+   "sentence": "दादी ने सबको देखा और हँसने लगीं।",
+   "start": 8,
+   "end": 12,
+   "surface": "सबको",
+   "lemma": "सब",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "obj"
+  },
+  {
+   "id": "hi-dev-184",
+   "text": "s0c-04",
+   "sentence": "आम बहुत मीठे थे।",
+   "start": 8,
+   "end": 12,
+   "surface": "मीठे",
+   "lemma": "मीठा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-185",
+   "text": "s0c-04",
+   "sentence": "राजू और सीता ने भी आम खाए।",
+   "start": 22,
+   "end": 25,
+   "surface": "खाए",
+   "lemma": "खाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-186",
+   "text": "s0c-04",
+   "sentence": "सबने आँगन में देखा।",
+   "start": 0,
+   "end": 4,
+   "surface": "सबने",
+   "lemma": "सब",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-187",
+   "text": "s0c-04",
+   "sentence": "सीता ने कहा, \"शायद वह खेत की तरफ़ गया।\"",
+   "start": 22,
+   "end": 25,
+   "surface": "खेत",
+   "lemma": "खेत",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-dev-188",
+   "text": "s0c-04",
+   "sentence": "सबने मोती को ढूँढा।",
+   "start": 13,
+   "end": 18,
+   "surface": "ढूँढा",
+   "lemma": "ढूँढना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-189",
+   "text": "s0c-04",
+   "sentence": "वहाँ भी मोती नहीं मिला।",
+   "start": 18,
+   "end": 22,
+   "surface": "मिला",
+   "lemma": "मिलना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-190",
+   "text": "s0c-04",
+   "sentence": "फिर सीता ने पड़ोस की चाची से पूछा, \"चाची, क्या आपने एक सफ़ेद कुत्ता देखा?\"",
+   "start": 47,
+   "end": 51,
+   "surface": "आपने",
+   "lemma": "आप",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-191",
+   "text": "s0c-04",
+   "sentence": "राजू ने गाँव के बच्चों से पूछा, \"क्या तुमने एक सफ़ेद कुत्ता देखा?\"",
+   "start": 16,
+   "end": 22,
+   "surface": "बच्चों",
+   "lemma": "बच्चा",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-192",
+   "text": "s0c-04",
+   "sentence": "मीरा रोने लगी।",
+   "start": 5,
+   "end": 9,
+   "surface": "रोने",
+   "lemma": "रोना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-193",
+   "text": "s0c-04",
+   "sentence": "मीरा ने कहा, \"मोती खो गया, इसलिए मुझे डर लग रहा है।\"",
+   "start": 27,
+   "end": 32,
+   "surface": "इसलिए",
+   "lemma": "इसलिए",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc"
+  },
+  {
+   "id": "hi-dev-194",
+   "text": "s0c-04",
+   "sentence": "राजू ने कहा, \"हमने खेत में देखा। हमने नदी के पास भी देखा।\"",
+   "start": 33,
+   "end": 37,
+   "surface": "हमने",
+   "lemma": "हम",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-dev-195",
+   "text": "s0c-04",
+   "sentence": "दादी ने पूछा, \"क्या हुआ?\"",
+   "start": 20,
+   "end": 23,
+   "surface": "हुआ",
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-196",
+   "text": "s0c-05",
+   "sentence": "उसके नीचे ठंडी छाया थी।",
+   "start": 10,
+   "end": 14,
+   "surface": "ठंडी",
+   "lemma": "ठंडा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "hi-dev-197",
+   "text": "s0c-05",
+   "sentence": "मोती ने आँखें खोलीं।",
+   "start": 14,
+   "end": 19,
+   "surface": "खोलीं",
+   "lemma": "खोलना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-198",
+   "text": "s0c-05",
+   "sentence": "सीता ने कहा, \"देखो, वह तो यहीं सो रहा था!\"",
+   "start": 26,
+   "end": 30,
+   "surface": "यहीं",
+   "lemma": "यहाँ",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-dev-199",
+   "text": "s0c-05",
+   "sentence": "रवि ने कहा, \"मोती, हमने तुम्हें हर जगह ढूँढा।\"",
+   "start": 32,
+   "end": 34,
+   "surface": "हर",
+   "lemma": "हर",
+   "pos": "DET",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "hi-dev-200",
+   "text": "s0c-05",
+   "sentence": "दादी ने मोती के सिर पर हाथ रखा।",
+   "start": 23,
+   "end": 26,
+   "surface": "हाथ",
+   "lemma": "हाथ",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "hi-dev-201",
+   "text": "s0c-05",
+   "sentence": "सब ज़ोर से हँसे।",
+   "start": 3,
+   "end": 7,
+   "surface": "ज़ोर",
+   "lemma": "ज़ोर",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-dev-202",
+   "text": "s0c-05",
+   "sentence": "रवि ने बैग से अपनी गेंद निकाली।",
+   "start": 24,
+   "end": 30,
+   "surface": "निकाली",
+   "lemma": "निकालना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-203",
+   "text": "s0c-05",
+   "sentence": "मोती ने गेंद पकड़ ली।",
+   "start": 13,
+   "end": 17,
+   "surface": "पकड़",
+   "lemma": "पकड़ना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-204",
+   "text": "s0c-05",
+   "sentence": "रात को दादी ने आँगन का दरवाज़ा बंद कर दिया।",
+   "start": 31,
+   "end": 34,
+   "surface": "बंद",
+   "lemma": "बंद",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "compound",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-205",
+   "text": "s0c-06",
+   "sentence": "छुट्टी के बाद स्कूल खुला।",
+   "start": 20,
+   "end": 24,
+   "surface": "खुला",
+   "lemma": "खुलना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-206",
+   "text": "s0c-06",
+   "sentence": "नेहा ने कहा कि उसने बहुत किताबें पढ़ीं और एक कहानी लिखी।",
+   "start": 12,
+   "end": 14,
+   "surface": "कि",
+   "lemma": "कि",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-dev-207",
+   "text": "s0c-06",
+   "sentence": "शर्मा जी ने पूछा, \"नेहा, तुमने कौन सी कहानी लिखी?\"",
+   "start": 44,
+   "end": 48,
+   "surface": "लिखी",
+   "lemma": "लिखना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-208",
+   "text": "s0c-06",
+   "sentence": "मीरा ने कहा कि उसने दादी से कहानी सुनी।",
+   "start": 34,
+   "end": 38,
+   "surface": "सुनी",
+   "lemma": "सुनना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "ccomp"
+  },
+  {
+   "id": "hi-dev-209",
+   "text": "s0c-06",
+   "sentence": "उसने घड़े में कंकड़ डाले, और पानी ऊपर आ गया।",
+   "start": 20,
+   "end": 24,
+   "surface": "डाले",
+   "lemma": "डालना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-210",
+   "text": "s0c-06",
+   "sentence": "अमित ने पूछा, \"फिर वह कहाँ मिला?\"",
+   "start": 27,
+   "end": 31,
+   "surface": "मिला",
+   "lemma": "मिलना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-211",
+   "text": "s0c-06",
+   "sentence": "उसी समय दरवाज़े पर कोई आया।",
+   "start": 0,
+   "end": 3,
+   "surface": "उसी",
+   "lemma": "वह",
+   "pos": "DET",
+   "features": {
+    "Case": "Obl",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det"
+  },
+  {
+   "id": "hi-dev-212",
+   "text": "s0c-06",
+   "sentence": "शर्मा जी हँसने लगे और बोले, \"ठीक है, मोती, तुम भी बैठ जाओ।\"",
+   "start": 22,
+   "end": 26,
+   "surface": "बोले",
+   "lemma": "बोलना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "hi-dev-213",
+   "text": "story-01",
+   "sentence": "जब मैं छोटा था, मैं अपने दिल को नहीं समझता था।",
+   "start": 37,
+   "end": 42,
+   "surface": "समझता",
+   "lemma": "समझना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-dev-214",
+   "text": "story-01",
+   "sentence": "एक दिन मैं अपना पाप समझने लगा।",
+   "start": 16,
+   "end": 19,
+   "surface": "पाप",
+   "lemma": "पाप",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "hi-dev-215",
+   "text": "story-01",
+   "sentence": "परमेश्वर दुनिया से प्रेम करता है।",
+   "start": 9,
+   "end": 15,
+   "surface": "दुनिया",
+   "lemma": "दुनिया",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  }
+ ]
+}

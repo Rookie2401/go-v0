@@ -230,8 +230,12 @@ export function parseSelection(input: ParseInput): CardModel {
  * The selected word's dependency relation from the adapter's syntax rules (Stage 4), with the head's and dependents' surfaces
  * filled in. Undefined when the adapter has no rules or they threw; status 'none' when it has rules but attached nothing here.
  */
+const MAX_SYNTAX_TOKENS = 120;
+
 function syntaxNoteFor(L: Lang, tokens: RawToken[], analyses: AnalyzedToken[], i: number): SyntaxNote | undefined {
   if (!L.adapter.syntax || tokens.length < 2) return undefined;
+  // the rules are quadratic in places; a hostile or runaway 'sentence' is not parsed for syntax (the card says so)
+  if (tokens.length > MAX_SYNTAX_TOKENS) return { status: 'none', basis: [], alternatives: [], dependents: [], notes: [`The sentence has ${tokens.length} tokens; the syntax rules are applied to sentences of at most ${MAX_SYNTAX_TOKENS}.`], attached: 0, analyzer: L.adapter.version ? `adapter-${L.lang}@${L.adapter.version}` : L.lang };
   let a: SyntaxAnalysis | undefined;
   try { a = L.adapter.syntax(tokens, analyses); } catch { return undefined; }
   if (!a) return undefined;

@@ -1,0 +1,1758 @@
+{
+ "language": "sq",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "hard",
+ "source": "authored sentences (not from the corpus)",
+ "feature_keys": [
+  "Case",
+  "Number",
+  "Gender",
+  "Definite",
+  "Person",
+  "Tense",
+  "Mood",
+  "Voice",
+  "VerbForm",
+  "Degree",
+  "PronType"
+ ],
+ "notes": "Hard cases written to break a naive engine: each carries the expected analysis, the wrong analysis a naive engine would give, and why it is hard. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "sq-hard-001",
+   "text": "authored",
+   "sentence": "Unë jam djalë i ri.",
+   "start": 14,
+   "end": 15,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "linking-article",
+   "why_hard": "The linking article i looks like the dative clitic i but here only agrees with the masculine singular adjective ri.",
+   "wrong": {
+    "lemma": "ai",
+    "pos": "PRON",
+    "note": "Read as the dative clitic i (to him/her) because the clitic spelling is identical."
+   },
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-002",
+   "text": "authored",
+   "sentence": "Ana është e bukur.",
+   "start": 10,
+   "end": 11,
+   "surface": "e",
+   "lemma": "e",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "linking-article",
+   "why_hard": "The feminine article e before an adjective is spelled like the conjunction and the clitic e.",
+   "wrong": {
+    "lemma": "e",
+    "pos": "CONJ",
+    "note": "Read as the conjunction e (and) or the accusative clitic e."
+   },
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-003",
+   "text": "authored",
+   "sentence": "Ata janë fëmijë të mirë.",
+   "start": 16,
+   "end": 18,
+   "surface": "të",
+   "lemma": "të",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "linking-article",
+   "why_hard": "The plural article të precedes an adjective and is identical to the subjunctive particle and the clitic të.",
+   "wrong": {
+    "lemma": "të",
+    "pos": "PART",
+    "note": "Read as the subjunctive particle të."
+   },
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-004",
+   "text": "authored",
+   "sentence": "Shtëpia e nënës së Anës është e madhe.",
+   "start": 16,
+   "end": 18,
+   "surface": "së",
+   "lemma": "së",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "linking-article",
+   "why_hard": "The article së appears only after a feminine genitive noun (nënës) and is easy to miss.",
+   "wrong": {
+    "lemma": "së",
+    "pos": "SCONJ",
+    "note": "Treated as an unknown token or as a stray conjunction."
+   },
+   "relation": "det"
+  },
+  {
+   "id": "sq-hard-005",
+   "text": "authored",
+   "sentence": "Pema ka fruta të ëmbla.",
+   "start": 14,
+   "end": 16,
+   "surface": "të",
+   "lemma": "të",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "linking-article",
+   "why_hard": "The article të links the noun fruta to the adjective ëmbla; the particle reading is wrong here.",
+   "wrong": {
+    "lemma": "të",
+    "pos": "PART",
+    "note": "Read as the subjunctive particle."
+   },
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-006",
+   "text": "authored",
+   "sentence": "Djali i vogël ka një libër të madh.",
+   "start": 8,
+   "end": 13,
+   "surface": "vogël",
+   "lemma": "vogël",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "linking-article",
+   "why_hard": "The adjective lemma must not absorb the linking article i that stands before it.",
+   "wrong": {
+    "lemma": "i vogël",
+    "pos": "ADJ",
+    "note": "Keeps the preposed article inside the lemma."
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "sq-hard-007",
+   "text": "authored",
+   "sentence": "Zemra e tij është e mirë.",
+   "start": 8,
+   "end": 11,
+   "surface": "tij",
+   "lemma": "tij",
+   "pos": "DET",
+   "features": {
+    "Person": "3",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "linking-article",
+   "why_hard": "The possessive tij is the genitive of ai but works as a possessive determiner after the article e.",
+   "wrong": {
+    "lemma": "ai",
+    "pos": "PRON",
+    "note": "Reads tij as the genitive of the pronoun ai instead of the possessive."
+   },
+   "relation": "det"
+  },
+  {
+   "id": "sq-hard-008",
+   "text": "authored",
+   "sentence": "Kjo është mësuesja e re.",
+   "start": 21,
+   "end": 23,
+   "surface": "re",
+   "lemma": "ri",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "linking-article",
+   "why_hard": "The feminine singular of ri (new/young) is re, an irregular alternation.",
+   "wrong": {
+    "lemma": "re",
+    "pos": "ADJ",
+    "note": "Keeps re as its own lemma instead of the suppletive feminine of ri."
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "sq-hard-009",
+   "text": "authored",
+   "sentence": "Ana e njeh Markun.",
+   "start": 4,
+   "end": 5,
+   "surface": "e",
+   "lemma": "ai",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Sing",
+    "Case": "Acc",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "The accusative clitic e doubles the object Markun and is homographic with the conjunction e.",
+   "wrong": {
+    "lemma": "e",
+    "pos": "CONJ",
+    "note": "Reads e as the conjunction and."
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-010",
+   "text": "authored",
+   "sentence": "Nëna i dha një libër Anës.",
+   "start": 5,
+   "end": 6,
+   "surface": "i",
+   "lemma": "ai",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Sing",
+    "Case": "Dat",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "The dative clitic i doubles the indirect object Anës and looks like the article i.",
+   "wrong": {
+    "lemma": "i",
+    "pos": "DET",
+    "note": "Reads i as the linking article."
+   },
+   "relation": "iobj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-011",
+   "text": "authored",
+   "sentence": "Ia dhashë librin shokut.",
+   "start": 0,
+   "end": 2,
+   "surface": "Ia",
+   "lemma": "ai",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "Ia is a fusion of the dative clitic i and the accusative clitic e.",
+   "wrong": {
+    "lemma": "ia",
+    "pos": "X",
+    "note": "Leaves the combined clitic ia (i + e) as one unknown word."
+   },
+   "relation": "iobj"
+  },
+  {
+   "id": "sq-hard-012",
+   "text": "authored",
+   "sentence": "Ata na ftuan në darkë.",
+   "start": 4,
+   "end": 6,
+   "surface": "na",
+   "lemma": "ne",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Plur",
+    "Case": "Acc",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "The clitic na is a short form of ne and must be lemmatised to ne.",
+   "wrong": {
+    "lemma": "na",
+    "pos": "X",
+    "note": "No lemma link between the clitic na and the pronoun ne."
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "sq-hard-013",
+   "text": "authored",
+   "sentence": "Ti më pe dje.",
+   "start": 3,
+   "end": 5,
+   "surface": "më",
+   "lemma": "unë",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing",
+    "Case": "Acc",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "The accusative clitic më is identical to the adverb më and must come from the verb frame.",
+   "wrong": {
+    "lemma": "më",
+    "pos": "ADV",
+    "note": "Reads më as the comparative adverb more."
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-014",
+   "text": "authored",
+   "sentence": "Ai ma dha.",
+   "start": 3,
+   "end": 5,
+   "surface": "ma",
+   "lemma": "unë",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "Ma fuses the dative më and the accusative e.",
+   "wrong": {
+    "lemma": "ma",
+    "pos": "X",
+    "note": "Unknown token; the fusion më + e is not split."
+   },
+   "relation": "iobj"
+  },
+  {
+   "id": "sq-hard-015",
+   "text": "authored",
+   "sentence": "Nëna u dha fëmijëve bukë.",
+   "start": 5,
+   "end": 6,
+   "surface": "u",
+   "lemma": "ai",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Plur",
+    "Case": "Dat",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "The clitic u here is the dative plural pronoun doubling fëmijëve, not the voice marker u.",
+   "wrong": {
+    "lemma": "u",
+    "pos": "PART",
+    "note": "Reads u as the non-active marker."
+   },
+   "relation": "iobj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-016",
+   "text": "authored",
+   "sentence": "Ta lexoj letrën.",
+   "start": 0,
+   "end": 2,
+   "surface": "Ta",
+   "lemma": "ti",
+   "pos": "PRON",
+   "features": {
+    "Person": "2",
+    "Number": "Sing",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "Ta fuses the clitic të (to you) with the accusative e.",
+   "wrong": {
+    "lemma": "ta",
+    "pos": "PART",
+    "note": "Treats ta as a particle."
+   },
+   "relation": "iobj"
+  },
+  {
+   "id": "sq-hard-017",
+   "text": "authored",
+   "sentence": "Jua tregova historinë.",
+   "start": 0,
+   "end": 3,
+   "surface": "Jua",
+   "lemma": "ju",
+   "pos": "PRON",
+   "features": {
+    "Person": "2",
+    "Number": "Plur",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "clitic-doubling",
+   "why_hard": "Jua fuses ju and e into one orthographic word.",
+   "wrong": {
+    "lemma": "jua",
+    "pos": "X",
+    "note": "Unknown word."
+   },
+   "relation": "iobj"
+  },
+  {
+   "id": "sq-hard-018",
+   "text": "authored",
+   "sentence": "Qeni lehu gjithë natën.",
+   "start": 0,
+   "end": 4,
+   "surface": "Qeni",
+   "lemma": "qen",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "Masculine definite -i must be stripped to reach the indefinite stem.",
+   "wrong": {
+    "lemma": "qeni",
+    "pos": "NOUN",
+    "note": "Keeps the definite form as the lemma, indefinite."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-hard-019",
+   "text": "authored",
+   "sentence": "Shoku im punon në bankë.",
+   "start": 0,
+   "end": 5,
+   "surface": "Shoku",
+   "lemma": "shok",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "Definite -u after a velar-final stem must be stripped.",
+   "wrong": {
+    "lemma": "shoku",
+    "pos": "NOUN",
+    "note": "Treats the definite ending -u as part of the stem."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-hard-020",
+   "text": "authored",
+   "sentence": "Vajza hapi derën.",
+   "start": 11,
+   "end": 16,
+   "surface": "derën",
+   "lemma": "derë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "The accusative definite -n attaches to the stem derë, so a naive suffix strip loses the final ë.",
+   "wrong": {
+    "lemma": "der",
+    "pos": "NOUN",
+    "note": "Strips -ën and drops the final ë of the stem."
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "sq-hard-021",
+   "text": "authored",
+   "sentence": "Burri lexon gazetën.",
+   "start": 12,
+   "end": 19,
+   "surface": "gazetën",
+   "lemma": "gazetë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "The accusative definite -n must be removed from a stem ending in ë.",
+   "wrong": {
+    "lemma": "gazet",
+    "pos": "NOUN",
+    "note": "Over-strips the accusative definite."
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "sq-hard-022",
+   "text": "authored",
+   "sentence": "Mësuesja hyri në klasë.",
+   "start": 0,
+   "end": 8,
+   "surface": "Mësuesja",
+   "lemma": "mësuese",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "Feminine definite -ja alternates with the stem-final e of mësuese.",
+   "wrong": {
+    "lemma": "mësuesja",
+    "pos": "NOUN",
+    "note": "Keeps -ja as stem; or maps to the masculine mësues."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-hard-023",
+   "text": "authored",
+   "sentence": "Libri është në çantën time.",
+   "start": 15,
+   "end": 21,
+   "surface": "çantën",
+   "lemma": "çantë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "Accusative definite after në, written with -n.",
+   "wrong": {
+    "lemma": "çantën",
+    "pos": "NOUN",
+    "note": "Treats the definite accusative as an unknown lemma."
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "sq-hard-024",
+   "text": "authored",
+   "sentence": "Djemtë luajnë në oborr.",
+   "start": 0,
+   "end": 6,
+   "surface": "Djemtë",
+   "lemma": "djalë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "The plural stem djem is suppletive for djalë and the definite plural ends in -të.",
+   "wrong": {
+    "lemma": "djem",
+    "pos": "NOUN",
+    "note": "Strips the definite plural -të but keeps the plural stem as lemma."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-hard-025",
+   "text": "authored",
+   "sentence": "Zogjtë këndojnë në pemë.",
+   "start": 0,
+   "end": 6,
+   "surface": "Zogjtë",
+   "lemma": "zog",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "Plural zogj with the definite -të: stem alternation g/gj plus the ending.",
+   "wrong": {
+    "lemma": "zogjt",
+    "pos": "NOUN",
+    "note": "Strips only -ë and leaves a non-word."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-hard-026",
+   "text": "authored",
+   "sentence": "Gruaja është e re.",
+   "start": 0,
+   "end": 6,
+   "surface": "Gruaja",
+   "lemma": "grua",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "definite-ending",
+   "why_hard": "The definite of grua is gruaja, with an inserted j.",
+   "wrong": {
+    "lemma": "gruaj",
+    "pos": "NOUN",
+    "note": "Strips -a from the definite as if it were a plain feminine -a."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-hard-027",
+   "text": "authored",
+   "sentence": "Ai nuk më sheh më.",
+   "start": 7,
+   "end": 9,
+   "surface": "më",
+   "lemma": "unë",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing",
+    "Case": "Acc",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "category": "case-syncretism-homograph",
+   "why_hard": "The same spelling is clitic pronoun (first) and adverb (second) in one sentence.",
+   "wrong": {
+    "lemma": "më",
+    "pos": "ADV",
+    "note": "Takes the first më as the adverb no longer."
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-028",
+   "text": "authored",
+   "sentence": "Ai nuk më sheh më.",
+   "start": 15,
+   "end": 17,
+   "surface": "më",
+   "lemma": "më",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "case-syncretism-homograph",
+   "why_hard": "After a negated verb, final më means no longer.",
+   "wrong": {
+    "lemma": "unë",
+    "pos": "PRON",
+    "note": "Takes the second më as the clitic pronoun."
+   },
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-029",
+   "text": "authored",
+   "sentence": "Ajo pa një film të mirë.",
+   "start": 4,
+   "end": 6,
+   "surface": "pa",
+   "lemma": "shoh",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "case-syncretism-homograph",
+   "why_hard": "Pa is both the preposition without and the aorist 3sg of shoh.",
+   "wrong": {
+    "lemma": "pa",
+    "pos": "ADP",
+    "note": "Reads pa as the preposition without."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-030",
+   "text": "authored",
+   "sentence": "Ai shkoi pa kapelë.",
+   "start": 9,
+   "end": 11,
+   "surface": "pa",
+   "lemma": "pa",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "category": "case-syncretism-homograph",
+   "why_hard": "Here pa is the preposition without, before an indefinite noun.",
+   "wrong": {
+    "lemma": "shoh",
+    "pos": "VERB",
+    "note": "Reads pa as the aorist of shoh."
+   },
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-031",
+   "text": "authored",
+   "sentence": "Hodhën pak dhe mbi varr.",
+   "start": 11,
+   "end": 14,
+   "surface": "dhe",
+   "lemma": "dhe",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "case-syncretism-homograph",
+   "why_hard": "Dhe is the noun earth/soil and the conjunction; only syntax separates them.",
+   "wrong": {
+    "lemma": "dhe",
+    "pos": "CONJ",
+    "note": "Reads dhe as the conjunction and."
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-032",
+   "text": "authored",
+   "sentence": "Nëna do të vijë nesër.",
+   "start": 5,
+   "end": 7,
+   "surface": "do",
+   "lemma": "do",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "hard",
+   "category": "case-syncretism-homograph",
+   "why_hard": "Do before të is the future marker, not the verb dua.",
+   "wrong": {
+    "lemma": "dua",
+    "pos": "VERB",
+    "note": "Reads do as the verb she wants."
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-033",
+   "text": "authored",
+   "sentence": "Beni e do nënën e tij.",
+   "start": 7,
+   "end": 9,
+   "surface": "do",
+   "lemma": "dua",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "case-syncretism-homograph",
+   "why_hard": "Here do is the 3sg of dua (he loves), with the object nënën.",
+   "wrong": {
+    "lemma": "do",
+    "pos": "PART",
+    "note": "Reads do as the future particle."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-034",
+   "text": "authored",
+   "sentence": "Ai është i mirë ndaj të gjithëve.",
+   "start": 16,
+   "end": 20,
+   "surface": "ndaj",
+   "lemma": "ndaj",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "category": "case-syncretism-homograph",
+   "why_hard": "Ndaj is the preposition toward and the verb ndaj (I divide).",
+   "wrong": {
+    "lemma": "ndaj",
+    "pos": "VERB",
+    "note": "Reads ndaj as the verb I divide."
+   },
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-035",
+   "text": "authored",
+   "sentence": "Ai shkoi në treg.",
+   "start": 3,
+   "end": 8,
+   "surface": "shkoi",
+   "lemma": "shkoj",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "The aorist of shkoj is formed on shko- with -i, not on the present stem.",
+   "wrong": {
+    "lemma": "shkoi",
+    "pos": "VERB",
+    "note": "Uses the surface as the lemma, no link to shkoj."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-036",
+   "text": "authored",
+   "sentence": "Unë do të vij nesër.",
+   "start": 10,
+   "end": 13,
+   "surface": "vij",
+   "lemma": "vij",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Vij is a root with irregular stems (vij, erdha, ardhur).",
+   "wrong": {
+    "lemma": "vi",
+    "pos": "VERB",
+    "note": "Strips -j as if it were a suffix."
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "sq-hard-037",
+   "text": "authored",
+   "sentence": "Ata erdhën vonë.",
+   "start": 4,
+   "end": 10,
+   "surface": "erdhën",
+   "lemma": "vij",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "The aorist stem erdh- is suppletive for vij.",
+   "wrong": {
+    "lemma": "erdhë",
+    "pos": "VERB",
+    "note": "No suppletion link between erdh- and vij."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-038",
+   "text": "authored",
+   "sentence": "Ne pamë një film.",
+   "start": 3,
+   "end": 7,
+   "surface": "pamë",
+   "lemma": "shoh",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "The aorist of shoh is built on pa-, unrelated to the present stem.",
+   "wrong": {
+    "lemma": "pam",
+    "pos": "VERB",
+    "note": "Strips -ë; no link to shoh."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-039",
+   "text": "authored",
+   "sentence": "Ai hëngri bukë.",
+   "start": 3,
+   "end": 9,
+   "surface": "hëngri",
+   "lemma": "ha",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "The aorist of ha uses the stem hëng-.",
+   "wrong": {
+    "lemma": "hëngër",
+    "pos": "VERB",
+    "note": "Invents a lemma from the aorist stem."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-040",
+   "text": "authored",
+   "sentence": "Ti the të vërtetën.",
+   "start": 3,
+   "end": 6,
+   "surface": "the",
+   "lemma": "them",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "2",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "The 2sg aorist of them is the short form the.",
+   "wrong": {
+    "lemma": "the",
+    "pos": "DET",
+    "note": "Reads the as an unknown determiner."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-041",
+   "text": "authored",
+   "sentence": "Ai nuk ka dhënë asgjë.",
+   "start": 10,
+   "end": 15,
+   "surface": "dhënë",
+   "lemma": "jap",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "The participle dhënë of jap is irregular.",
+   "wrong": {
+    "lemma": "dhënë",
+    "pos": "NOUN",
+    "note": "Leaves the participle as an unknown noun."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-042",
+   "text": "authored",
+   "sentence": "Ata kanë ardhur vonë.",
+   "start": 9,
+   "end": 15,
+   "surface": "ardhur",
+   "lemma": "vij",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "The participle ardhur is suppletive for vij.",
+   "wrong": {
+    "lemma": "ardhur",
+    "pos": "ADJ",
+    "note": "No link between ardhur and vij."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-043",
+   "text": "authored",
+   "sentence": "Ata morën letrën.",
+   "start": 4,
+   "end": 9,
+   "surface": "morën",
+   "lemma": "marr",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "The aorist stem mor- differs from the present marr.",
+   "wrong": {
+    "lemma": "morë",
+    "pos": "VERB",
+    "note": "Strips -n only."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-044",
+   "text": "authored",
+   "sentence": "Qenka shumë e bukur!",
+   "start": 0,
+   "end": 5,
+   "surface": "Qenka",
+   "lemma": "jam",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Adm",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "The admirative of jam is built on qen- with -ka.",
+   "wrong": {
+    "lemma": "qenka",
+    "pos": "NOUN",
+    "note": "Unknown word or a noun."
+   },
+   "relation": "cop"
+  },
+  {
+   "id": "sq-hard-045",
+   "text": "authored",
+   "sentence": "Paskam harruar çelësat!",
+   "start": 0,
+   "end": 6,
+   "surface": "Paskam",
+   "lemma": "kam",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Adm",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "Admirative of kam in 1sg, with the stem pas-.",
+   "wrong": {
+    "lemma": "paskam",
+    "pos": "X",
+    "note": "Unknown word."
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "sq-hard-046",
+   "text": "authored",
+   "sentence": "Ti paske të drejtë!",
+   "start": 3,
+   "end": 8,
+   "surface": "paske",
+   "lemma": "kam",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Adm",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "Admirative 2sg of kam (you turn out to be right).",
+   "wrong": {
+    "lemma": "paske",
+    "pos": "X",
+    "note": "Unknown word."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-047",
+   "text": "authored",
+   "sentence": "Qofshin të bekuar!",
+   "start": 0,
+   "end": 7,
+   "surface": "Qofshin",
+   "lemma": "jam",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Opt",
+    "Person": "3",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "Optative of jam (may they be).",
+   "wrong": {
+    "lemma": "qofshin",
+    "pos": "X",
+    "note": "Unknown word."
+   },
+   "relation": "cop"
+  },
+  {
+   "id": "sq-hard-048",
+   "text": "authored",
+   "sentence": "Dua që ti të vish me ne.",
+   "start": 13,
+   "end": 17,
+   "surface": "vish",
+   "lemma": "vij",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "Vish is the subjunctive 2sg of vij, not a form of vesh.",
+   "wrong": {
+    "lemma": "vesh",
+    "pos": "VERB",
+    "note": "Matches vish to the verb vesh (to dress)."
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "sq-hard-049",
+   "text": "authored",
+   "sentence": "Është koha për të shkuar.",
+   "start": 18,
+   "end": 24,
+   "surface": "shkuar",
+   "lemma": "shkoj",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "Participle shkuar of shkoj after për të.",
+   "wrong": {
+    "lemma": "shkuar",
+    "pos": "ADJ",
+    "note": "Reads the participle as an adjective."
+   },
+   "relation": "acl"
+  },
+  {
+   "id": "sq-hard-050",
+   "text": "authored",
+   "sentence": "Ai ka mbaruar punën.",
+   "start": 6,
+   "end": 13,
+   "surface": "mbaruar",
+   "lemma": "mbaroj",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "Perfect with ka + participle in -uar.",
+   "wrong": {
+    "lemma": "mbaruar",
+    "pos": "ADJ",
+    "note": "Reads the participle as an adjective."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-051",
+   "text": "authored",
+   "sentence": "Duhet të shkojmë së bashku.",
+   "start": 9,
+   "end": 16,
+   "surface": "shkojmë",
+   "lemma": "shkoj",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "Subjunctive after të has the same form as the indicative; mood comes from the particle.",
+   "wrong": {
+    "lemma": "shkoj",
+    "pos": "VERB",
+    "note": "Reads it as indicative."
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "sq-hard-052",
+   "text": "authored",
+   "sentence": "Thonë se të gjithë duhet të dalin.",
+   "start": 28,
+   "end": 33,
+   "surface": "dalin",
+   "lemma": "dal",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "category": "admirative-subjunctive-participle",
+   "why_hard": "Subjunctive 3pl of dal after të.",
+   "wrong": {
+    "lemma": "dal",
+    "pos": "VERB",
+    "note": "Reads dalin as indicative."
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "sq-hard-053",
+   "text": "authored",
+   "sentence": "Ajo lahet çdo mëngjes.",
+   "start": 4,
+   "end": 9,
+   "surface": "lahet",
+   "lemma": "lahem",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Mid"
+   },
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "Non-active -het (reflexive) of laj.",
+   "wrong": {
+    "lemma": "laj",
+    "pos": "VERB",
+    "note": "Gives the active lemma and no Mid voice."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-054",
+   "text": "authored",
+   "sentence": "Dera hapet ngadalë.",
+   "start": 5,
+   "end": 10,
+   "surface": "hapet",
+   "lemma": "hapem",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Mid"
+   },
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "Passive -et ending gives the non-active voice without a particle.",
+   "wrong": {
+    "lemma": "hap",
+    "pos": "VERB",
+    "note": "Gives the active lemma and active voice."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-055",
+   "text": "authored",
+   "sentence": "Unë quhem Arben.",
+   "start": 4,
+   "end": 9,
+   "surface": "quhem",
+   "lemma": "quhem",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Mid"
+   },
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "Quhem is the non-active verb meaning be called.",
+   "wrong": {
+    "lemma": "quaj",
+    "pos": "VERB",
+    "note": "Maps to the verb quaj (cry/call) in the active."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "sq-hard-056",
+   "text": "authored",
+   "sentence": "Faleminderit shumë!",
+   "start": 0,
+   "end": 12,
+   "surface": "Faleminderit",
+   "lemma": "faleminderit",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "A fused fixed expression written as one word.",
+   "wrong": {
+    "lemma": "faleminderit",
+    "pos": "NOUN",
+    "note": "Treats the word as a noun (grace + mind)."
+   },
+   "relation": "discourse"
+  },
+  {
+   "id": "sq-hard-057",
+   "text": "authored",
+   "sentence": "Mirëdita, zonja Mira!",
+   "start": 0,
+   "end": 8,
+   "surface": "Mirëdita",
+   "lemma": "mirëdita",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "The greeting mirëdita is a fixed compound written as one word.",
+   "wrong": {
+    "lemma": "mirë",
+    "pos": "ADV",
+    "note": "Splits it into mirë + dita and reads an adverb."
+   },
+   "relation": "discourse"
+  },
+  {
+   "id": "sq-hard-058",
+   "text": "authored",
+   "sentence": "Megjithatë ai erdhi.",
+   "start": 0,
+   "end": 10,
+   "surface": "Megjithatë",
+   "lemma": "megjithatë",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "A compound adverb of frozen parts.",
+   "wrong": {
+    "lemma": "me",
+    "pos": "ADP",
+    "note": "Segments me + gjithë + at."
+   },
+   "relation": "advmod"
+  },
+  {
+   "id": "sq-hard-059",
+   "text": "authored",
+   "sentence": "Ai është i sjellshëm, prandaj të gjithë e duan.",
+   "start": 22,
+   "end": 29,
+   "surface": "prandaj",
+   "lemma": "prandaj",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "A compound conjunction (therefore).",
+   "wrong": {
+    "lemma": "ndaj",
+    "pos": "ADP",
+    "note": "Cuts pra + ndaj."
+   },
+   "relation": "cc"
+  },
+  {
+   "id": "sq-hard-060",
+   "text": "authored",
+   "sentence": "Shkojmë në mal e pastaj kthehemi.",
+   "start": 24,
+   "end": 32,
+   "surface": "kthehemi",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Plur",
+    "Voice": "Mid"
+   },
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "Non-active -hemi form of kthehem (return).",
+   "wrong": {
+    "lemma": "kthej",
+    "pos": "VERB",
+    "note": "Gives the active lemma and active voice."
+   },
+   "relation": "conj"
+  },
+  {
+   "id": "sq-hard-061",
+   "text": "authored",
+   "sentence": "Ju lutem, më ndihmoni.",
+   "start": 3,
+   "end": 8,
+   "surface": "lutem",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Mid"
+   },
+   "difficulty": "hard",
+   "category": "compound-or-multiword",
+   "why_hard": "Lutem (I beg) has only non-active forms, the polite formula ju lutem.",
+   "wrong": {
+    "lemma": "lus",
+    "pos": "VERB",
+    "note": "Maps to an invented active lus."
+   },
+   "relation": "parataxis"
+  },
+  {
+   "id": "sq-hard-062",
+   "text": "authored",
+   "sentence": "Dy burra hynë në dhomë.",
+   "start": 3,
+   "end": 8,
+   "surface": "burra",
+   "lemma": "burrë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Nom",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "Irregular plural burra of burrë.",
+   "wrong": {
+    "lemma": "burra",
+    "pos": "NOUN",
+    "note": "Treats burra as its own singular lemma."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-hard-063",
+   "text": "authored",
+   "sentence": "Kam dy motra.",
+   "start": 7,
+   "end": 12,
+   "surface": "motra",
+   "lemma": "motër",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "The indefinite plural motra equals the definite singular; the numeral dy decides.",
+   "wrong": {
+    "lemma": "motër",
+    "pos": "NOUN",
+    "note": "Reads motra as the definite singular the sister."
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-hard-064",
+   "text": "authored",
+   "sentence": "Pashë shumë njerëz në treg.",
+   "start": 12,
+   "end": 18,
+   "surface": "njerëz",
+   "lemma": "njeri",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "Suppletive plural njerëz of njeri.",
+   "wrong": {
+    "lemma": "njerëz",
+    "pos": "NOUN",
+    "note": "Takes the plural as the lemma."
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "sq-hard-065",
+   "text": "authored",
+   "sentence": "Ai ka tre fëmijë.",
+   "start": 10,
+   "end": 16,
+   "surface": "fëmijë",
+   "lemma": "fëmijë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "Plural identical to the singular fëmijë; the numeral tre makes it plural.",
+   "wrong": {
+    "lemma": "fëmijë",
+    "pos": "NOUN",
+    "note": "Reads fëmijë as singular."
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "sq-hard-066",
+   "text": "authored",
+   "sentence": "Gjyshërit e mi jetojnë në fshat.",
+   "start": 0,
+   "end": 9,
+   "surface": "Gjyshërit",
+   "lemma": "gjysh",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "Plural gjyshër with -ë- extension plus the definite -it.",
+   "wrong": {
+    "lemma": "gjyshër",
+    "pos": "NOUN",
+    "note": "Keeps the plural stem and leaves -it."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-hard-067",
+   "text": "authored",
+   "sentence": "Lexoj dy libra.",
+   "start": 9,
+   "end": 14,
+   "surface": "libra",
+   "lemma": "libër",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "Plural libra drops the ë of libër.",
+   "wrong": {
+    "lemma": "libra",
+    "pos": "NOUN",
+    "note": "Treats libra as a feminine -a noun."
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "sq-hard-068",
+   "text": "authored",
+   "sentence": "Pashë dy zogj në pemë.",
+   "start": 9,
+   "end": 13,
+   "surface": "zogj",
+   "lemma": "zog",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "Plural zogj shows the g/gj stem alternation.",
+   "wrong": {
+    "lemma": "zogj",
+    "pos": "NOUN",
+    "note": "Takes zogj as its own lemma."
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "sq-hard-069",
+   "text": "authored",
+   "sentence": "Fshatari ka tre kuaj.",
+   "start": 16,
+   "end": 20,
+   "surface": "kuaj",
+   "lemma": "kalë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "Plural kuaj is suppletive for kalë.",
+   "wrong": {
+    "lemma": "kuaj",
+    "pos": "NOUN",
+    "note": "Takes kuaj as its own lemma."
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "sq-hard-070",
+   "text": "authored",
+   "sentence": "Kam dhëmbë të bardhë.",
+   "start": 4,
+   "end": 10,
+   "surface": "dhëmbë",
+   "lemma": "dhëmb",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "plural-irregular",
+   "why_hard": "Plural with -ë ending dhëmbë from dhëmb.",
+   "wrong": {
+    "lemma": "dhëmbë",
+    "pos": "NOUN",
+    "note": "Takes dhëmbë as lemma."
+   },
+   "relation": "obj"
+  }
+ ]
+}

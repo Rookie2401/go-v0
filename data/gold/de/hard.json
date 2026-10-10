@@ -1,0 +1,1776 @@
+{
+ "language": "de",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "hard",
+ "source": "authored sentences (not from the corpus)",
+ "feature_keys": [
+  "Case",
+  "Number",
+  "Gender",
+  "Person",
+  "Tense",
+  "Mood",
+  "VerbForm",
+  "Degree",
+  "PronType",
+  "Polite"
+ ],
+ "notes": "Hard cases written to break a naive engine: each carries the expected analysis, the wrong analysis a naive engine would give, and why it is hard. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "de-hard-001",
+   "text": "authored",
+   "sentence": "Der Zug fährt um acht Uhr ab.",
+   "start": 8,
+   "end": 13,
+   "surface": "fährt",
+   "lemma": "abfahren",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "The lemma needs the particle at the end of the clause plus an umlaut stem.",
+   "wrong": {
+    "lemma": "fahren",
+    "pos": "VERB",
+    "note": "ignores the separated particle ab, so the lemma lacks the prefix"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-002",
+   "text": "authored",
+   "sentence": "Ich stehe jeden Morgen früh auf.",
+   "start": 4,
+   "end": 9,
+   "surface": "stehe",
+   "lemma": "aufstehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "The finite verb is split from its prefix by several words.",
+   "wrong": {
+    "lemma": "stehen",
+    "pos": "VERB",
+    "note": "lemma stehen: the particle auf is far away at the clause end"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-003",
+   "text": "authored",
+   "sentence": "Er hat das Fenster aufgemacht.",
+   "start": 19,
+   "end": 29,
+   "surface": "aufgemacht",
+   "lemma": "aufmachen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "The participle prefix ge- is inserted between particle and stem.",
+   "wrong": {
+    "lemma": "aufgemacht",
+    "pos": "ADJ",
+    "note": "treats the form as an unknown word or adjective because ge- sits inside the word"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-004",
+   "text": "authored",
+   "sentence": "Ich weiß nicht, wann der Film anfängt.",
+   "start": 30,
+   "end": 37,
+   "surface": "anfängt",
+   "lemma": "anfangen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "Joined in a subordinate clause with umlaut in the stem.",
+   "wrong": {
+    "lemma": "anfängen",
+    "pos": "VERB",
+    "note": "strips -t and keeps the umlaut, giving a non-existent lemma"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "de-hard-005",
+   "text": "authored",
+   "sentence": "Sie kommt heute Abend nicht zurück.",
+   "start": 28,
+   "end": 34,
+   "surface": "zurück",
+   "lemma": "zurück",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "The particle belongs to kommt zurück (zurückkommen).",
+   "wrong": {
+    "lemma": "zurück",
+    "pos": "ADV",
+    "note": "tags the stranded particle as an adverb instead of a verb particle"
+   },
+   "relation": "compound"
+  },
+  {
+   "id": "de-hard-006",
+   "text": "authored",
+   "sentence": "Wir laden Freunde zum Essen ein.",
+   "start": 28,
+   "end": 31,
+   "surface": "ein",
+   "lemma": "ein",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "Verb particle homographic with the article.",
+   "wrong": {
+    "lemma": "ein",
+    "pos": "DET",
+    "note": "reads ein as the indefinite article"
+   },
+   "relation": "compound",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-007",
+   "text": "authored",
+   "sentence": "Vergiss nicht, die Tür abzuschließen.",
+   "start": 23,
+   "end": 36,
+   "surface": "abzuschließen",
+   "lemma": "abschließen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "zu is inserted between particle and stem in one written word.",
+   "wrong": {
+    "lemma": "abzuschließen",
+    "pos": "VERB",
+    "note": "does not remove the infixed zu, keeps the whole form as lemma"
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-hard-008",
+   "text": "authored",
+   "sentence": "Als er ankam, regnete es schon.",
+   "start": 7,
+   "end": 12,
+   "surface": "ankam",
+   "lemma": "ankommen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "Strong past of a separable verb written together in a subordinate clause.",
+   "wrong": {
+    "lemma": "kommen",
+    "pos": "VERB",
+    "note": "lemma kommen: the prefix an- is not recognised in the joined past form"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "de-hard-009",
+   "text": "authored",
+   "sentence": "Wenn du aufstehst, mach bitte das Licht aus.",
+   "start": 8,
+   "end": 17,
+   "surface": "aufstehst",
+   "lemma": "aufstehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "separable-verb",
+   "why_hard": "Joined finite form of a separable verb in a subordinate clause.",
+   "wrong": {
+    "lemma": "aufstehst",
+    "pos": "VERB",
+    "note": "cannot map the -st ending of a prefixed verb to the infinitive"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "de-hard-010",
+   "text": "authored",
+   "sentence": "Die Bundesgartenschau zieht viele Besucher an.",
+   "start": 4,
+   "end": 21,
+   "surface": "Bundesgartenschau",
+   "lemma": "Bundesgartenschau",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Very long compound of three nouns with a linking element.",
+   "wrong": {
+    "lemma": "Schau",
+    "pos": "NOUN",
+    "note": "reduces the compound to its head noun"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-hard-011",
+   "text": "authored",
+   "sentence": "Das Arbeitszimmer ist hell.",
+   "start": 4,
+   "end": 17,
+   "surface": "Arbeitszimmer",
+   "lemma": "Arbeitszimmer",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Fugen-s between the parts.",
+   "wrong": {
+    "lemma": "Arbeitszimm",
+    "pos": "NOUN",
+    "note": "splits at Fugen-s and takes the head Zimmer or breaks the stem"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-hard-012",
+   "text": "authored",
+   "sentence": "Der Geburtstagskuchen schmeckt gut.",
+   "start": 4,
+   "end": 21,
+   "surface": "Geburtstagskuchen",
+   "lemma": "Geburtstagskuchen",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Final -n is part of the stem, not an ending.",
+   "wrong": {
+    "lemma": "Geburtstagskuche",
+    "pos": "NOUN",
+    "note": "strips the final -n as a plural or dative ending"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-hard-013",
+   "text": "authored",
+   "sentence": "Er vermisst seine Heimatstadt sehr.",
+   "start": 18,
+   "end": 29,
+   "surface": "Heimatstadt",
+   "lemma": "Heimatstadt",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Two nouns written as one word.",
+   "wrong": {
+    "lemma": "Heimat",
+    "pos": "NOUN",
+    "note": "keeps only the first constituent"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "de-hard-014",
+   "text": "authored",
+   "sentence": "Wir warten im Hauptbahnhof auf den Zug.",
+   "start": 14,
+   "end": 26,
+   "surface": "Hauptbahnhof",
+   "lemma": "Hauptbahnhof",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Compound of an adjective-like prefix and a noun.",
+   "wrong": {
+    "lemma": "Hauptbahnhof",
+    "pos": "ADJ",
+    "note": "reads the Haupt- prefix as an adjective"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "de-hard-015",
+   "text": "authored",
+   "sentence": "Die Hochzeitsfeier war sehr schön.",
+   "start": 4,
+   "end": 18,
+   "surface": "Hochzeitsfeier",
+   "lemma": "Hochzeitsfeier",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Fugen-s compound.",
+   "wrong": {
+    "lemma": "Feier",
+    "pos": "NOUN",
+    "note": "analyses only the head"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-hard-016",
+   "text": "authored",
+   "sentence": "Die Krankenversicherungskarte liegt auf dem Tisch.",
+   "start": 4,
+   "end": 29,
+   "surface": "Krankenversicherungskarte",
+   "lemma": "Krankenversicherungskarte",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Four constituents with Fugen-n and Fugen-s.",
+   "wrong": {
+    "lemma": "Krankenversicherungskarte",
+    "pos": "X",
+    "note": "treats the long word as unknown"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-hard-017",
+   "text": "authored",
+   "sentence": "Die Straßenbahnhaltestellen sind weit entfernt.",
+   "start": 4,
+   "end": 27,
+   "surface": "Straßenbahnhaltestellen",
+   "lemma": "Straßenbahnhaltestelle",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Nested compound with plural ending.",
+   "wrong": {
+    "lemma": "Haltestelle",
+    "pos": "NOUN",
+    "note": "head-only lemma, loses the first constituents"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-hard-018",
+   "text": "authored",
+   "sentence": "Wir kaufen Lebensmittel im Laden.",
+   "start": 11,
+   "end": 23,
+   "surface": "Lebensmittel",
+   "lemma": "Lebensmittel",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "compound",
+   "why_hard": "Lexicalised compound, plural without ending.",
+   "wrong": {
+    "lemma": "Mittel",
+    "pos": "NOUN",
+    "note": "reads Leben plus Mittel and keeps only Mittel"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "de-hard-019",
+   "text": "authored",
+   "sentence": "Gestern ging er früh nach Hause.",
+   "start": 8,
+   "end": 12,
+   "surface": "ging",
+   "lemma": "gehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Suppletive-looking preterite.",
+   "wrong": {
+    "lemma": "ging",
+    "pos": "VERB",
+    "note": "no stem change rule, form returned as its own lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-020",
+   "text": "authored",
+   "sentence": "Sie sah den Vogel auf dem Dach.",
+   "start": 4,
+   "end": 7,
+   "surface": "sah",
+   "lemma": "sehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Strong preterite with ablaut.",
+   "wrong": {
+    "lemma": "sah",
+    "pos": "VERB",
+    "note": "no rule maps sah to sehen"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-021",
+   "text": "authored",
+   "sentence": "Er wusste die Antwort nicht.",
+   "start": 3,
+   "end": 9,
+   "surface": "wusste",
+   "lemma": "wissen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Preterite-present verb with weak ending but changed stem.",
+   "wrong": {
+    "lemma": "wussen",
+    "pos": "VERB",
+    "note": "strips -te like a weak verb"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-022",
+   "text": "authored",
+   "sentence": "Der Lehrer hielt einen Vortrag.",
+   "start": 11,
+   "end": 16,
+   "surface": "hielt",
+   "lemma": "halten",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Strong preterite ie from a.",
+   "wrong": {
+    "lemma": "hielt",
+    "pos": "VERB",
+    "note": "unknown ablaut form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-023",
+   "text": "authored",
+   "sentence": "Sie gab ihm das Buch.",
+   "start": 4,
+   "end": 7,
+   "surface": "gab",
+   "lemma": "geben",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Strong preterite with ablaut e to a.",
+   "wrong": {
+    "lemma": "gab",
+    "pos": "VERB",
+    "note": "no ablaut rule"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-024",
+   "text": "authored",
+   "sentence": "Er kam spät nach Hause.",
+   "start": 3,
+   "end": 6,
+   "surface": "kam",
+   "lemma": "kommen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Strong preterite with ablaut o to a.",
+   "wrong": {
+    "lemma": "kam",
+    "pos": "VERB",
+    "note": "returns the form unchanged"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-025",
+   "text": "authored",
+   "sentence": "Er ist gestern nach Berlin geflogen.",
+   "start": 27,
+   "end": 35,
+   "surface": "geflogen",
+   "lemma": "fliegen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Strong participle with ablaut ie to o.",
+   "wrong": {
+    "lemma": "geflogen",
+    "pos": "VERB",
+    "note": "does not recognise the strong participle"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-026",
+   "text": "authored",
+   "sentence": "Ich weiß es nicht.",
+   "start": 4,
+   "end": 8,
+   "surface": "weiß",
+   "lemma": "wissen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Irregular singular present, homograph with the adjective.",
+   "wrong": {
+    "lemma": "weiß",
+    "pos": "ADJ",
+    "note": "reads the colour adjective weiß"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-027",
+   "text": "authored",
+   "sentence": "Du isst zu wenig.",
+   "start": 3,
+   "end": 7,
+   "surface": "isst",
+   "lemma": "essen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "strong-verb-irregular",
+   "why_hard": "Stem ends in s/t so the 2sg ending -st merges with it.",
+   "wrong": {
+    "lemma": "isst",
+    "pos": "VERB",
+    "note": "does not know that st is absorbed into the stem"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-028",
+   "text": "authored",
+   "sentence": "Ich kenne die Frau, die dort wohnt.",
+   "start": 20,
+   "end": 23,
+   "surface": "die",
+   "lemma": "der",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Rel",
+    "Case": "Nom",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Relative pronoun identical to the article.",
+   "wrong": {
+    "lemma": "der",
+    "pos": "DET",
+    "note": "tags the relative pronoun as the article"
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-029",
+   "text": "authored",
+   "sentence": "Er liest sein Buch.",
+   "start": 9,
+   "end": 13,
+   "surface": "sein",
+   "lemma": "sein",
+   "pos": "DET",
+   "features": {
+    "PronType": "Prs",
+    "Case": "Acc",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Possessive determiner homographic with the verb.",
+   "wrong": {
+    "lemma": "sein",
+    "pos": "AUX",
+    "note": "reads the infinitive of the verb to be"
+   },
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-030",
+   "text": "authored",
+   "sentence": "Wir wollen morgen essen gehen.",
+   "start": 18,
+   "end": 23,
+   "surface": "essen",
+   "lemma": "essen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Lower case verb vs capitalised noun; context decides.",
+   "wrong": {
+    "lemma": "Essen",
+    "pos": "NOUN",
+    "note": "assigns the noun Essen"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-031",
+   "text": "authored",
+   "sentence": "Das Essen schmeckt sehr gut.",
+   "start": 4,
+   "end": 9,
+   "surface": "Essen",
+   "lemma": "Essen",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Capitalised noun vs verb infinitive.",
+   "wrong": {
+    "lemma": "essen",
+    "pos": "VERB",
+    "note": "assigns the verb essen"
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-032",
+   "text": "authored",
+   "sentence": "Ich gebe ihr das Buch zurück.",
+   "start": 9,
+   "end": 12,
+   "surface": "ihr",
+   "lemma": "sie",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dat"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Dative of sie, identical to nominative ihr.",
+   "wrong": {
+    "lemma": "ihr",
+    "pos": "PRON",
+    "note": "reads the second person plural subject pronoun ihr"
+   },
+   "relation": "iobj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-033",
+   "text": "authored",
+   "sentence": "Sie haben ihr Auto verkauft.",
+   "start": 10,
+   "end": 13,
+   "surface": "ihr",
+   "lemma": "ihr",
+   "pos": "DET",
+   "features": {
+    "PronType": "Prs",
+    "Case": "Acc",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Possessive determiner vs pronoun.",
+   "wrong": {
+    "lemma": "ihr",
+    "pos": "PRON",
+    "note": "reads the pronoun ihr (you pl.)"
+   },
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-034",
+   "text": "authored",
+   "sentence": "Haben Sie Zeit?",
+   "start": 6,
+   "end": 9,
+   "surface": "Sie",
+   "lemma": "Sie",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Number": "Plur",
+    "Case": "Nom",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Polite Sie vs ordinary sie.",
+   "wrong": {
+    "lemma": "sie",
+    "pos": "PRON",
+    "note": "lemma sie, 3rd person, ignoring the capital in a question"
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-035",
+   "text": "authored",
+   "sentence": "Das Leben ist schön.",
+   "start": 4,
+   "end": 9,
+   "surface": "Leben",
+   "lemma": "Leben",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Nominalised infinitive that is a real noun.",
+   "wrong": {
+    "lemma": "leben",
+    "pos": "VERB",
+    "note": "lemma leben as verb"
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-036",
+   "text": "authored",
+   "sentence": "Dem Kind schmeckt das nicht.",
+   "start": 0,
+   "end": 3,
+   "surface": "Dem",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Dat",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Article vs demonstrative; Kind is neuter dative.",
+   "wrong": {
+    "lemma": "der",
+    "pos": "PRON",
+    "note": "reads a demonstrative pronoun"
+   },
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-hard-037",
+   "text": "authored",
+   "sentence": "Er trägt einen neuen Mantel.",
+   "start": 15,
+   "end": 20,
+   "surface": "neuen",
+   "lemma": "neu",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "Mixed declension ending -en.",
+   "wrong": {
+    "lemma": "neuen",
+    "pos": "ADJ",
+    "note": "keeps the inflected form as lemma"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-038",
+   "text": "authored",
+   "sentence": "Das ist die schönste Stadt der Welt.",
+   "start": 12,
+   "end": 20,
+   "surface": "schönste",
+   "lemma": "schön",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Sup",
+    "Case": "Nom",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "Superlative stem plus declension ending.",
+   "wrong": {
+    "lemma": "schönst",
+    "pos": "ADJ",
+    "note": "strips only -e and keeps the superlative suffix"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-039",
+   "text": "authored",
+   "sentence": "Mit kaltem Wasser wäscht er sich.",
+   "start": 4,
+   "end": 10,
+   "surface": "kaltem",
+   "lemma": "kalt",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Dat",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "Strong dative ending -em.",
+   "wrong": {
+    "lemma": "kaltem",
+    "pos": "ADJ",
+    "note": "unknown -em ending"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-040",
+   "text": "authored",
+   "sentence": "Ein höherer Berg liegt dahinter.",
+   "start": 4,
+   "end": 11,
+   "surface": "höherer",
+   "lemma": "hoch",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp",
+    "Case": "Nom",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "Comparative with stem change hoch/höher and mixed ending.",
+   "wrong": {
+    "lemma": "höher",
+    "pos": "ADJ",
+    "note": "strips -er and returns the comparative stem"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-041",
+   "text": "authored",
+   "sentence": "Die jüngeren Kinder spielen draußen.",
+   "start": 4,
+   "end": 12,
+   "surface": "jüngeren",
+   "lemma": "jung",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp",
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "Comparative with umlaut plus -en.",
+   "wrong": {
+    "lemma": "jüngeren",
+    "pos": "ADJ",
+    "note": "no umlaut reversal"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-042",
+   "text": "authored",
+   "sentence": "Das ist ein teures Auto.",
+   "start": 12,
+   "end": 18,
+   "surface": "teures",
+   "lemma": "teuer",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Nom",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "Adjectives in -er lose the e before an ending.",
+   "wrong": {
+    "lemma": "teur",
+    "pos": "ADJ",
+    "note": "strips -es but misses the dropped e in teuer"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-043",
+   "text": "authored",
+   "sentence": "Sie kauft frisches Brot.",
+   "start": 10,
+   "end": 18,
+   "surface": "frisches",
+   "lemma": "frisch",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "Strong ending without article.",
+   "wrong": {
+    "lemma": "frisches",
+    "pos": "ADJ",
+    "note": "no strong ending -es handling"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-044",
+   "text": "authored",
+   "sentence": "Der beste Freund wartet.",
+   "start": 4,
+   "end": 9,
+   "surface": "beste",
+   "lemma": "gut",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Sup",
+    "Case": "Nom",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "gut / besser / best.",
+   "wrong": {
+    "lemma": "best",
+    "pos": "ADJ",
+    "note": "suppletive superlative"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-045",
+   "text": "authored",
+   "sentence": "Ich sehe viele hohe Häuser.",
+   "start": 15,
+   "end": 19,
+   "surface": "hohe",
+   "lemma": "hoch",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "adjective-declension",
+   "why_hard": "hoch loses the c before an ending.",
+   "wrong": {
+    "lemma": "hohe",
+    "pos": "ADJ",
+    "note": "no c-to-h stem alternation"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-046",
+   "text": "authored",
+   "sentence": "Wenn ich Zeit hätte, käme ich gern.",
+   "start": 14,
+   "end": 19,
+   "surface": "hätte",
+   "lemma": "haben",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Konjunktiv II of haben.",
+   "wrong": {
+    "lemma": "haben",
+    "pos": "AUX",
+    "note": "gives the indicative past hatte features"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "de-hard-047",
+   "text": "authored",
+   "sentence": "Wenn ich Zeit hätte, käme ich gern.",
+   "start": 21,
+   "end": 25,
+   "surface": "käme",
+   "lemma": "kommen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Konjunktiv II of a strong verb with umlaut.",
+   "wrong": {
+    "lemma": "käme",
+    "pos": "VERB",
+    "note": "no rule for umlauted Konjunktiv II"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-048",
+   "text": "authored",
+   "sentence": "Er sagte, er sei krank.",
+   "start": 13,
+   "end": 16,
+   "surface": "sei",
+   "lemma": "sein",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Konjunktiv I in indirect speech.",
+   "wrong": {
+    "lemma": "sein",
+    "pos": "AUX",
+    "note": "treats sei as an imperative or infinitive"
+   },
+   "relation": "cop"
+  },
+  {
+   "id": "de-hard-049",
+   "text": "authored",
+   "sentence": "Sie sagt, sie habe keine Zeit.",
+   "start": 14,
+   "end": 18,
+   "surface": "habe",
+   "lemma": "haben",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Konjunktiv I habe is identical to 1sg indicative.",
+   "wrong": {
+    "lemma": "haben",
+    "pos": "VERB",
+    "note": "reads first person singular indicative"
+   },
+   "relation": "ccomp"
+  },
+  {
+   "id": "de-hard-050",
+   "text": "authored",
+   "sentence": "Wenn ich du wäre, bliebe ich hier.",
+   "start": 12,
+   "end": 16,
+   "surface": "wäre",
+   "lemma": "sein",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Konjunktiv II of sein.",
+   "wrong": {
+    "lemma": "wäre",
+    "pos": "AUX",
+    "note": "no rule links wäre to sein"
+   },
+   "relation": "cop"
+  },
+  {
+   "id": "de-hard-051",
+   "text": "authored",
+   "sentence": "Er tat, als wüsste er nichts.",
+   "start": 12,
+   "end": 18,
+   "surface": "wüsste",
+   "lemma": "wissen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Konjunktiv II of a preterite-present verb.",
+   "wrong": {
+    "lemma": "wüssen",
+    "pos": "VERB",
+    "note": "strips -te and keeps umlaut"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "de-hard-052",
+   "text": "authored",
+   "sentence": "Wir würden gern helfen.",
+   "start": 4,
+   "end": 10,
+   "surface": "würden",
+   "lemma": "werden",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Periphrastic Konjunktiv II auxiliary.",
+   "wrong": {
+    "lemma": "würden",
+    "pos": "AUX",
+    "note": "does not link würden to werden"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "de-hard-053",
+   "text": "authored",
+   "sentence": "Sie fragte, ob er heute komme.",
+   "start": 24,
+   "end": 29,
+   "surface": "komme",
+   "lemma": "kommen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Konjunktiv I with 3sg subject has the -e ending.",
+   "wrong": {
+    "lemma": "kommen",
+    "pos": "VERB",
+    "note": "reads indicative first person singular"
+   },
+   "relation": "ccomp"
+  },
+  {
+   "id": "de-hard-054",
+   "text": "authored",
+   "sentence": "Man könnte hier wohnen.",
+   "start": 4,
+   "end": 10,
+   "surface": "könnte",
+   "lemma": "können",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "konjunktiv",
+   "why_hard": "Konjunktiv II of a modal with umlaut.",
+   "wrong": {
+    "lemma": "könnten",
+    "pos": "AUX",
+    "note": "lemma könnten or Ind past konnte"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "de-hard-055",
+   "text": "authored",
+   "sentence": "Er versucht, früh aufzustehen.",
+   "start": 18,
+   "end": 29,
+   "surface": "aufzustehen",
+   "lemma": "aufstehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "zu-infinitive of a separable verb is one word.",
+   "wrong": {
+    "lemma": "aufzustehen",
+    "pos": "VERB",
+    "note": "keeps the infixed zu as part of the lemma"
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-hard-056",
+   "text": "authored",
+   "sentence": "Ich habe keine Lust, heute einzukaufen.",
+   "start": 27,
+   "end": 38,
+   "surface": "einzukaufen",
+   "lemma": "einkaufen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "Infixed zu.",
+   "wrong": {
+    "lemma": "einzukaufen",
+    "pos": "VERB",
+    "note": "cannot strip -zu-"
+   },
+   "relation": "acl"
+  },
+  {
+   "id": "de-hard-057",
+   "text": "authored",
+   "sentence": "Das Kind hat laut gelacht.",
+   "start": 18,
+   "end": 25,
+   "surface": "gelacht",
+   "lemma": "lachen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "Weak past participle.",
+   "wrong": {
+    "lemma": "gelacht",
+    "pos": "VERB",
+    "note": "does not remove ge- and -t"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-058",
+   "text": "authored",
+   "sentence": "Der Brief wurde gestern geschrieben.",
+   "start": 24,
+   "end": 35,
+   "surface": "geschrieben",
+   "lemma": "schreiben",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "Strong participle used in the passive.",
+   "wrong": {
+    "lemma": "geschreiben",
+    "pos": "VERB",
+    "note": "strips ge- and adds -en on the wrong stem"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-059",
+   "text": "authored",
+   "sentence": "Er hat das Haus verkauft.",
+   "start": 16,
+   "end": 24,
+   "surface": "verkauft",
+   "lemma": "verkaufen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "Participle without ge- because of the inseparable prefix ver-.",
+   "wrong": {
+    "lemma": "verkaufen",
+    "pos": "VERB",
+    "note": "reads a 3sg present form (Fin)"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-060",
+   "text": "authored",
+   "sentence": "Wir sind spät angekommen.",
+   "start": 14,
+   "end": 24,
+   "surface": "angekommen",
+   "lemma": "ankommen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "ge- is inserted inside a separable verb.",
+   "wrong": {
+    "lemma": "kommen",
+    "pos": "VERB",
+    "note": "loses the prefix"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-061",
+   "text": "authored",
+   "sentence": "Das spielende Kind lacht.",
+   "start": 4,
+   "end": 13,
+   "surface": "spielende",
+   "lemma": "spielen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Pres",
+    "Case": "Nom",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "Present participle with adjective ending.",
+   "wrong": {
+    "lemma": "spielend",
+    "pos": "ADJ",
+    "note": "treats it as a plain adjective and leaves out the verb lemma"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-062",
+   "text": "authored",
+   "sentence": "Das gekochte Ei ist heiß.",
+   "start": 4,
+   "end": 12,
+   "surface": "gekochte",
+   "lemma": "kochen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past",
+    "Case": "Nom",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "Past participle with adjective ending -e.",
+   "wrong": {
+    "lemma": "gekochte",
+    "pos": "ADJ",
+    "note": "no ge- and -t removal under the adjective ending"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "de-hard-063",
+   "text": "authored",
+   "sentence": "Das Wetter ist besser geworden.",
+   "start": 22,
+   "end": 30,
+   "surface": "geworden",
+   "lemma": "werden",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "zu-infinitive-and-participles",
+   "why_hard": "Participle of werden (copula use).",
+   "wrong": {
+    "lemma": "worden",
+    "pos": "AUX",
+    "note": "lemma worden or geworden"
+   },
+   "relation": "cop"
+  },
+  {
+   "id": "de-hard-064",
+   "text": "authored",
+   "sentence": "Das Kind wäscht sich die Hände.",
+   "start": 16,
+   "end": 20,
+   "surface": "sich",
+   "lemma": "sich",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Case": "Dat"
+   },
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Reflexive pronoun, dative here.",
+   "wrong": {
+    "lemma": "sich",
+    "pos": "SCONJ",
+    "note": "no lexicon entry, tagged as a conjunction or unknown"
+   },
+   "relation": "iobj"
+  },
+  {
+   "id": "de-hard-065",
+   "text": "authored",
+   "sentence": "Er interessiert sich für Musik.",
+   "start": 3,
+   "end": 15,
+   "surface": "interessiert",
+   "lemma": "interessieren",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Reflexive verb, homograph with participle adjective.",
+   "wrong": {
+    "lemma": "interessieren",
+    "pos": "ADJ",
+    "note": "reads it as the adjective interessiert"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-066",
+   "text": "authored",
+   "sentence": "Wir haben uns gestern getroffen.",
+   "start": 10,
+   "end": 13,
+   "surface": "uns",
+   "lemma": "wir",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "1",
+    "Number": "Plur",
+    "Case": "Acc"
+   },
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Reciprocal or reflexive use of the first person plural.",
+   "wrong": {
+    "lemma": "uns",
+    "pos": "PRON",
+    "note": "keeps uns as its own lemma"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "de-hard-067",
+   "text": "authored",
+   "sentence": "Ich freue mich auf den Urlaub.",
+   "start": 10,
+   "end": 14,
+   "surface": "mich",
+   "lemma": "ich",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "1",
+    "Number": "Sing",
+    "Case": "Acc"
+   },
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Reflexive pronoun with the personal pronoun as lemma.",
+   "wrong": {
+    "lemma": "mich",
+    "pos": "PRON",
+    "note": "keeps mich as its own lemma"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "de-hard-068",
+   "text": "authored",
+   "sentence": "Darauf freue ich mich sehr.",
+   "start": 0,
+   "end": 6,
+   "surface": "Darauf",
+   "lemma": "darauf",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Pronominal adverb.",
+   "wrong": {
+    "lemma": "auf",
+    "pos": "ADP",
+    "note": "cuts da- off and returns the preposition"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "de-hard-069",
+   "text": "authored",
+   "sentence": "Wir haben lange darüber gesprochen.",
+   "start": 16,
+   "end": 23,
+   "surface": "darüber",
+   "lemma": "darüber",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Pronominal adverb.",
+   "wrong": {
+    "lemma": "über",
+    "pos": "ADP",
+    "note": "cuts da- off and returns the preposition"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "de-hard-070",
+   "text": "authored",
+   "sentence": "Wofür interessierst du dich?",
+   "start": 0,
+   "end": 5,
+   "surface": "Wofür",
+   "lemma": "wofür",
+   "pos": "ADV",
+   "features": {
+    "PronType": "Int"
+   },
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Interrogative pronominal adverb.",
+   "wrong": {
+    "lemma": "für",
+    "pos": "ADP",
+    "note": "cuts wo- off and returns the preposition"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "de-hard-071",
+   "text": "authored",
+   "sentence": "Er hat sich bei mir entschuldigt.",
+   "start": 20,
+   "end": 32,
+   "surface": "entschuldigt",
+   "lemma": "entschuldigen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Participle of a reflexive verb without ge-.",
+   "wrong": {
+    "lemma": "entschuldigen",
+    "pos": "VERB",
+    "note": "reads a 3sg present form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "de-hard-072",
+   "text": "authored",
+   "sentence": "Du solltest dich beeilen.",
+   "start": 17,
+   "end": 24,
+   "surface": "beeilen",
+   "lemma": "beeilen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "category": "reflexive-and-pronominal",
+   "why_hard": "Reflexive verb with inseparable prefix be-.",
+   "wrong": {
+    "lemma": "beeilen",
+    "pos": "VERB",
+    "note": "tries to analyse be- as a prefix and returns eilen"
+   },
+   "relation": "xcomp"
+  }
+ ]
+}

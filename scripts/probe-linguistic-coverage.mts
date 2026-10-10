@@ -14,6 +14,7 @@ import path from 'node:path';
 import { parseSelection, getAnalyser } from '../packages/golearn-extension/src/parser';
 import { createPackRuntime, PACKS } from '../packages/language-packs/src';
 import type { PackRuntime } from '../packages/language-packs/src';
+import { etymologyOf, pickRecord, structureOf, type LexicalRecord } from '../packages/golearn-extension/src/content/enrich';
 import { registerAllAnalysers } from '../test/support/analysers';
 
 registerAllAnalysers();
@@ -66,11 +67,11 @@ function selections(lang: string, n: number): Selection[] {
   return out;
 }
 
-interface Tally { n: number; sentences: number; lemma: number; lemmaLexicon: number; lemmaRule: number; unconfirmed: number; unknown: number; pos: number; features: number; morphologyLine: number; wordListGloss: number; dictSenses: number; anyDefinition: number; constructions: number; role: number; syntaxNotes: number; pronunciationNotes: number; alternatives: number; paradigm: number; etymology: number; ipa: number; msParse: number; msDict: number; fullRecord: number; fullViaFormOf: number; fullForms: number; fullEtymology: number; fullIpa: number; fullAudio: number; fullRelated: number; msEntry: number }
+interface Tally { n: number; sentences: number; lemma: number; lemmaLexicon: number; lemmaRule: number; unconfirmed: number; unknown: number; pos: number; features: number; morphologyLine: number; wordListGloss: number; dictSenses: number; anyDefinition: number; constructions: number; role: number; syntaxNotes: number; pronunciationNotes: number; alternatives: number; paradigm: number; etymology: number; ipa: number; msParse: number; msDict: number; fullRecord: number; fullViaFormOf: number; fullForms: number; fullEtymology: number; fullIpa: number; fullAudio: number; fullRelated: number; msEntry: number; structure: number; structureDictionary: number; cognates: number }
 
 async function probe(lang: string): Promise<Tally> {
   const sel = selections(lang, N);
-  const t: Tally = { n: sel.length, sentences: new Set(sel.map((s) => s.sentence)).size, lemma: 0, lemmaLexicon: 0, lemmaRule: 0, unconfirmed: 0, unknown: 0, pos: 0, features: 0, morphologyLine: 0, wordListGloss: 0, dictSenses: 0, anyDefinition: 0, constructions: 0, role: 0, syntaxNotes: 0, pronunciationNotes: 0, alternatives: 0, paradigm: 0, etymology: 0, ipa: 0, msParse: 0, msDict: 0, fullRecord: 0, fullViaFormOf: 0, fullForms: 0, fullEtymology: 0, fullIpa: 0, fullAudio: 0, fullRelated: 0, msEntry: 0 };
+  const t: Tally = { n: sel.length, sentences: new Set(sel.map((s) => s.sentence)).size, lemma: 0, lemmaLexicon: 0, lemmaRule: 0, unconfirmed: 0, unknown: 0, pos: 0, features: 0, morphologyLine: 0, wordListGloss: 0, dictSenses: 0, anyDefinition: 0, constructions: 0, role: 0, syntaxNotes: 0, pronunciationNotes: 0, alternatives: 0, paradigm: 0, etymology: 0, ipa: 0, msParse: 0, msDict: 0, fullRecord: 0, fullViaFormOf: 0, fullForms: 0, fullEtymology: 0, fullIpa: 0, fullAudio: 0, fullRelated: 0, msEntry: 0, structure: 0, structureDictionary: 0, cognates: 0 };
   const manifest = PACKS[lang];
   const runtime: PackRuntime | undefined = manifest ? createPackRuntime(manifest, { fetch: fileFetch, baseUrl: '/' }) : undefined;
   const adapter = getAnalyser(lang);
@@ -92,6 +93,7 @@ async function probe(lang: string): Promise<Tally> {
     if (card.pronunciation.length) t.pronunciationNotes++;
     if (card.alternatives.length) t.alternatives++;
     let dict = false;
+    let record: LexicalRecord | undefined;
     if (runtime && card.lemma && adapter) {
       const forms = [...new Set([adapter.normalize(card.lemma), ...(adapter.lemmaVariants?.(card.lemma, card.pos as never) ?? []).map((v) => adapter.normalize(v))])].slice(0, 8);
       const t1 = performance.now();
@@ -106,6 +108,7 @@ async function probe(lang: string): Promise<Tally> {
         t.fullRecord++;
         if (e.via) t.fullViaFormOf++;
         const rs = e.records;
+        record = pickRecord(rs as unknown as LexicalRecord[], card.pos);
         if (rs.some((r) => (r.f?.length ?? 0) >= 2)) t.fullForms++;
         if (rs.some((r) => r.ety)) t.fullEtymology++;
         if (rs.some((r) => r.ipa?.length)) t.fullIpa++;
@@ -113,6 +116,12 @@ async function probe(lang: string): Promise<Tally> {
         if (rs.some((r) => r.rel?.d?.length || r.rel?.r?.length)) t.fullRelated++;
       }
     }
+    // Stage 5: the structure of the word (parts or a word it derives from) from any named source, and cognates from the etymology templates
+    if (card.lemma && adapter) {
+      const st = structureOf(record, adapter, card.lemma, card.pos, card.surface, Object.fromEntries(card.features.map((f) => [f.key, f.value])), { languageId: lang });
+      if (st.parts.length || st.derivedFrom) { t.structure++; if (st.status === 'supported-by-source') t.structureDictionary++; }
+    }
+    if (record && etymologyOf(record).cognates.length) t.cognates++;
     if (dict || card.gloss) t.anyDefinition++;
     // the three fields no part of the stack produces today (so the baseline says 0, not "unknown"):
     // a paradigm for the lemma, a sourced etymology, an IPA pronunciation
@@ -155,6 +164,9 @@ async function main(): Promise<void> {
     ['  IPA present', (t) => pct(t.fullIpa, t.n)],
     ['  audio present', (t) => pct(t.fullAudio, t.n)],
     ['  derived / related words present', (t) => pct(t.fullRelated, t.n)],
+    ['word structure available (Stage 5)', (t) => pct(t.structure, t.n)],
+    ['  of which a dictionary template gave the parts', (t) => pct(t.structureDictionary, t.n)],
+    ['cognates present (Stage 5)', (t) => pct(t.cognates, t.n)],
     ['entry ms / selection', (t) => (t.n ? (t.msEntry / t.n).toFixed(2) : '-')],
   ];
   const head = `| field | ${LANGS.join(' | ')} |\n|---|${LANGS.map(() => '---').join('|')}|`;

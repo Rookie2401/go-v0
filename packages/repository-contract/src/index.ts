@@ -16,6 +16,7 @@ import type { SourceRef } from './sources';
 import type { ValidationIssue } from './units';
 
 export * from './units';
+export * from './field-states';
 export * from './learner';
 export * from './payloads';
 export * from './sources';
@@ -23,6 +24,8 @@ export * from './ports';
 export type { ValidationIssue };
 
 export const CONTRACT_VERSION = 3 as const;
+// CONTRACT_VERSION is the EVENT envelope version and stays 3: Stage 7 (field states) only adds an optional field to Layer A rows, which an
+// older reader ignores and a newer reader reads as `unknown` when absent. The Layer A row revision is CONTRACT_REVISION ('3.1', ./field-states).
 /**
  * Envelopes of these versions are accepted at the write boundary. v1 rows (the extension prototype) lack the optional v2 fields only; a v2
  * event stays valid and ingestible as it was written; v3 adds optional fields and validates `subject.sourceRef` as the typed union.

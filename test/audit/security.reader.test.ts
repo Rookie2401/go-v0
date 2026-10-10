@@ -188,7 +188,7 @@ describe('the card renders hostile page text as text', () => {
         expect((window as unknown as Record<string, unknown>).__pwned).toBeUndefined();
         expect(({} as Record<string, unknown>).__pwned).toBeUndefined();
         // 4. only the messages a reader may send went to the background
-        const allowed: string[] = [MSG.record, MSG.status, MSG.profile, MSG.gloss, MSG.explain, MSG.metrics, MSG.pronounceInfo];
+        const allowed: string[] = [MSG.record, MSG.status, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.metrics, MSG.pronounceInfo]; // entry: the full dictionary record of the lemma (Linguistic Engine V2), the same shape of request as gloss
         for (const m of sent) expect(allowed, String(m.type)).toContain(m.type);
       });
     }
@@ -407,7 +407,7 @@ describe('what is stored and what is sent', () => {
     await lookupOn(rig, INSTRUCTION, 'payload');
     const mine = rig.sent.slice(before);
     const routes = new Set(mine.map((s) => `${s.method} ${new URL(s.url).pathname}`));
-    for (const r of routes) expect(['POST /sessions', 'GET /me', 'POST /sync/push', 'POST /sync/pull', 'GET /knowledge', 'GET /preferences', 'GET /dict/sq/s-00.json'], r).toContain(r);
+    for (const r of routes) expect(['POST /sessions', 'GET /me', 'POST /sync/push', 'POST /sync/pull', 'GET /knowledge', 'GET /preferences', 'GET /dict/sq/s-00.json', 'GET /dict/sq/manifest.json', 'GET /dict/sq/full/manifest.json'], r).toContain(r); // the dictionary manifests: the worker reads the configured service's dictionary (Linguistic Engine V2), with no credential
     for (const s of mine) {
       expect(s.origin).toBe(SERVICE);
       expect(s.body + s.url).not.toContain(token);

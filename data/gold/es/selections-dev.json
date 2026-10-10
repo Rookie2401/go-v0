@@ -1,0 +1,3469 @@
+{
+ "language": "es",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "dev",
+ "source": "data/corpus/es (course texts; bible-* excluded)",
+ "feature_keys": [
+  "Gender",
+  "Number",
+  "Person",
+  "Tense",
+  "Mood",
+  "VerbForm",
+  "Degree",
+  "Polite"
+ ],
+ "notes": "Contextual word selections from the course corpus. AI-judged, unreviewed. Labelled without running the analysers on the items. Use for measuring; do not tune the engine to this file.",
+ "items": [
+  {
+   "id": "es-dev-001",
+   "text": "camino-1-01",
+   "sentence": "Juan tiene un libro.",
+   "start": 0,
+   "end": 4,
+   "surface": "Juan",
+   "lemma": "Juan",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-002",
+   "text": "camino-1-01",
+   "sentence": "El libro está en la mesa.",
+   "start": 14,
+   "end": 16,
+   "surface": "en",
+   "lemma": "en",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-dev-003",
+   "text": "camino-1-01",
+   "sentence": "Juan quiere leer el libro.",
+   "start": 20,
+   "end": 25,
+   "surface": "libro",
+   "lemma": "libro",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-004",
+   "text": "camino-1-01",
+   "sentence": "Juan toma el libro.",
+   "start": 10,
+   "end": 12,
+   "surface": "el",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-005",
+   "text": "camino-1-01",
+   "sentence": "Juan lee y lee.",
+   "start": 11,
+   "end": 14,
+   "surface": "lee",
+   "lemma": "leer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-006",
+   "text": "camino-1-02",
+   "sentence": "Ana tiene una casa.",
+   "start": 4,
+   "end": 9,
+   "surface": "tiene",
+   "lemma": "tener",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-007",
+   "text": "camino-1-02",
+   "sentence": "La casa es bonita.",
+   "start": 3,
+   "end": 7,
+   "surface": "casa",
+   "lemma": "casa",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-008",
+   "text": "camino-1-02",
+   "sentence": "En la casa hay una silla.",
+   "start": 11,
+   "end": 14,
+   "surface": "hay",
+   "lemma": "haber",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-009",
+   "text": "camino-1-02",
+   "sentence": "Ana quiere comer.",
+   "start": 4,
+   "end": 10,
+   "surface": "quiere",
+   "lemma": "querer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-010",
+   "text": "camino-1-02",
+   "sentence": "En la cocina hay pan.",
+   "start": 17,
+   "end": 20,
+   "surface": "pan",
+   "lemma": "pan",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-011",
+   "text": "camino-1-03",
+   "sentence": "Juan es un hombre.",
+   "start": 11,
+   "end": 17,
+   "surface": "hombre",
+   "lemma": "hombre",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-012",
+   "text": "camino-1-03",
+   "sentence": "Hoy Juan va a la casa de Ana.",
+   "start": 12,
+   "end": 13,
+   "surface": "a",
+   "lemma": "a",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-dev-013",
+   "text": "camino-1-03",
+   "sentence": "—Tengo un libro —dice Juan.",
+   "start": 17,
+   "end": 21,
+   "surface": "dice",
+   "lemma": "decir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-014",
+   "text": "camino-1-04",
+   "sentence": "La familia de Marta es grande.",
+   "start": 3,
+   "end": 10,
+   "surface": "familia",
+   "lemma": "familia",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-015",
+   "text": "camino-1-04",
+   "sentence": "El padre se llama Pedro.",
+   "start": 3,
+   "end": 8,
+   "surface": "padre",
+   "lemma": "padre",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-016",
+   "text": "camino-1-04",
+   "sentence": "La madre se llama Rosa.",
+   "start": 18,
+   "end": 22,
+   "surface": "Rosa",
+   "lemma": "Rosa",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-017",
+   "text": "camino-1-04",
+   "sentence": "Pedro, Rosa, Luis y Marta viven en una casa.",
+   "start": 0,
+   "end": 5,
+   "surface": "Pedro",
+   "lemma": "Pedro",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-018",
+   "text": "camino-1-04",
+   "sentence": "Marta quiere mucho a su familia.",
+   "start": 6,
+   "end": 12,
+   "surface": "quiere",
+   "lemma": "querer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-019",
+   "text": "camino-1-05",
+   "sentence": "Luis tiene hambre.",
+   "start": 11,
+   "end": 17,
+   "surface": "hambre",
+   "lemma": "hambre",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-020",
+   "text": "camino-1-05",
+   "sentence": "Marta toma los huevos.",
+   "start": 11,
+   "end": 14,
+   "surface": "los",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-021",
+   "text": "camino-1-05",
+   "sentence": "Pedro toma agua.",
+   "start": 11,
+   "end": 15,
+   "surface": "agua",
+   "lemma": "agua",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-022",
+   "text": "camino-1-06",
+   "sentence": "Pedro tiene un carro.",
+   "start": 15,
+   "end": 20,
+   "surface": "carro",
+   "lemma": "carro",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-023",
+   "text": "camino-1-06",
+   "sentence": "En la ciudad hay muchas casas y muchas tiendas.",
+   "start": 24,
+   "end": 29,
+   "surface": "casas",
+   "lemma": "casa",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-024",
+   "text": "camino-1-06",
+   "sentence": "Pedro quiere pan y café para su familia.",
+   "start": 29,
+   "end": 31,
+   "surface": "su",
+   "lemma": "su",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-025",
+   "text": "camino-1-07",
+   "sentence": "Sol tiene hambre.",
+   "start": 0,
+   "end": 3,
+   "surface": "Sol",
+   "lemma": "Sol",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-026",
+   "text": "camino-1-07",
+   "sentence": "Luis y Sol van al parque.",
+   "start": 18,
+   "end": 24,
+   "surface": "parque",
+   "lemma": "parque",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-027",
+   "text": "camino-1-08",
+   "sentence": "Marta tiene ocho años.",
+   "start": 17,
+   "end": 21,
+   "surface": "años",
+   "lemma": "año",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-028",
+   "text": "camino-1-08",
+   "sentence": "La maestra se llama Elena.",
+   "start": 20,
+   "end": 25,
+   "surface": "Elena",
+   "lemma": "Elena",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-dev-029",
+   "text": "camino-1-08",
+   "sentence": "Marta habla con su madre.",
+   "start": 6,
+   "end": 11,
+   "surface": "habla",
+   "lemma": "hablar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-030",
+   "text": "camino-2-01",
+   "sentence": "Ayer Juan quería leer su libro.",
+   "start": 0,
+   "end": 4,
+   "surface": "Ayer",
+   "lemma": "ayer",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-dev-031",
+   "text": "camino-2-01",
+   "sentence": "Fue a la mesa, pero el libro no estaba allí.",
+   "start": 39,
+   "end": 43,
+   "surface": "allí",
+   "lemma": "allí",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-dev-032",
+   "text": "camino-2-01",
+   "sentence": "No lo encontró.",
+   "start": 3,
+   "end": 5,
+   "surface": "lo",
+   "lemma": "lo",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Person": "3"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-033",
+   "text": "camino-2-01",
+   "sentence": "—Ana, ¿tienes mi libro? —preguntó Juan.",
+   "start": 14,
+   "end": 16,
+   "surface": "mi",
+   "lemma": "mi",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-034",
+   "text": "camino-2-01",
+   "sentence": "—Pues no sé dónde está —dijo Juan.",
+   "start": 12,
+   "end": 17,
+   "surface": "dónde",
+   "lemma": "dónde",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-dev-035",
+   "text": "camino-2-01",
+   "sentence": "—Voy a tu casa y vamos a buscarlo juntos —dijo Ana.",
+   "start": 42,
+   "end": 46,
+   "surface": "dijo",
+   "lemma": "decir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-036",
+   "text": "camino-2-01",
+   "sentence": "Al final, Ana vio el libro.",
+   "start": 3,
+   "end": 8,
+   "surface": "final",
+   "lemma": "final",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-037",
+   "text": "camino-2-01",
+   "sentence": "Juan tomó el libro y dio las gracias a Ana.",
+   "start": 21,
+   "end": 24,
+   "surface": "dio",
+   "lemma": "dar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-038",
+   "text": "camino-2-01",
+   "sentence": "Los dos estaban muy contentos.",
+   "start": 20,
+   "end": 29,
+   "surface": "contentos",
+   "lemma": "contento",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-039",
+   "text": "camino-2-02",
+   "sentence": "Esta mañana Rosa fue al mercado con su hija Marta.",
+   "start": 39,
+   "end": 43,
+   "surface": "hija",
+   "lemma": "hijo",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-040",
+   "text": "camino-2-02",
+   "sentence": "En el mercado había mucha gente.",
+   "start": 6,
+   "end": 13,
+   "surface": "mercado",
+   "lemma": "mercado",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-041",
+   "text": "camino-2-02",
+   "sentence": "—Buenos días.",
+   "start": 1,
+   "end": 7,
+   "surface": "Buenos",
+   "lemma": "bueno",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "amod"
+  },
+  {
+   "id": "es-dev-042",
+   "text": "camino-2-02",
+   "sentence": "—¿Cuántas naranjas quiere? —preguntó la vendedora.",
+   "start": 2,
+   "end": 9,
+   "surface": "Cuántas",
+   "lemma": "cuánto",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-043",
+   "text": "camino-2-02",
+   "sentence": "—Quiero diez naranjas y seis plátanos —dijo Rosa.",
+   "start": 24,
+   "end": 28,
+   "surface": "seis",
+   "lemma": "seis",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "es-dev-044",
+   "text": "camino-2-02",
+   "sentence": "Rosa pagó y dio las gracias.",
+   "start": 5,
+   "end": 9,
+   "surface": "pagó",
+   "lemma": "pagar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-045",
+   "text": "camino-2-02",
+   "sentence": "—Mamá, ¿me das un plátano? —preguntó.",
+   "start": 8,
+   "end": 10,
+   "surface": "me",
+   "lemma": "me",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "es-dev-046",
+   "text": "camino-2-02",
+   "sentence": "Después Rosa compró tomates y cebollas.",
+   "start": 0,
+   "end": 7,
+   "surface": "Después",
+   "lemma": "después",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-dev-047",
+   "text": "camino-2-02",
+   "sentence": "En casa, Rosa dijo: —Voy a hacer una sopa.",
+   "start": 21,
+   "end": 24,
+   "surface": "Voy",
+   "lemma": "ir",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "es-dev-048",
+   "text": "camino-2-03",
+   "sentence": "Luis y Marta iban a ir al parque con Sol.",
+   "start": 20,
+   "end": 22,
+   "surface": "ir",
+   "lemma": "ir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-049",
+   "text": "camino-2-03",
+   "sentence": "—Qué lástima, ahora no podemos ir al parque —dijo Luis.",
+   "start": 1,
+   "end": 4,
+   "surface": "Qué",
+   "lemma": "qué",
+   "pos": "DET",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-050",
+   "text": "camino-2-03",
+   "sentence": "Los niños tenían que quedarse en casa.",
+   "start": 10,
+   "end": 16,
+   "surface": "tenían",
+   "lemma": "tener",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-051",
+   "text": "camino-2-03",
+   "sentence": "Miraba la lluvia por la ventana.",
+   "start": 24,
+   "end": 31,
+   "surface": "ventana",
+   "lemma": "ventana",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-052",
+   "text": "camino-2-03",
+   "sentence": "Luis jugó con Sol en la sala y le dio una pelota.",
+   "start": 42,
+   "end": 48,
+   "surface": "pelota",
+   "lemma": "pelota",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-053",
+   "text": "camino-2-03",
+   "sentence": "—¡Mira, ya no llueve! —dijo.",
+   "start": 14,
+   "end": 20,
+   "surface": "llueve",
+   "lemma": "llover",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-054",
+   "text": "camino-2-03",
+   "sentence": "El suelo estaba mojado y Sol corrió por todas partes.",
+   "start": 16,
+   "end": 22,
+   "surface": "mojado",
+   "lemma": "mojado",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-055",
+   "text": "camino-2-03",
+   "sentence": "Después de todo, fue un buen día.",
+   "start": 29,
+   "end": 32,
+   "surface": "día",
+   "lemma": "día",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-056",
+   "text": "camino-2-04",
+   "sentence": "No lo encontró.",
+   "start": 6,
+   "end": 14,
+   "surface": "encontró",
+   "lemma": "encontrar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-057",
+   "text": "camino-2-04",
+   "sentence": "Los dos niños salieron a la calle.",
+   "start": 14,
+   "end": 22,
+   "surface": "salieron",
+   "lemma": "salir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-058",
+   "text": "camino-2-04",
+   "sentence": "—¿Vieron ustedes un perro blanco que se llama Sol?",
+   "start": 33,
+   "end": 36,
+   "surface": "que",
+   "lemma": "que",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-059",
+   "text": "camino-2-04",
+   "sentence": "Un señor dijo: —Sí, lo vi hace un rato, cuando iba hacia el parque.",
+   "start": 47,
+   "end": 50,
+   "surface": "iba",
+   "lemma": "ir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-060",
+   "text": "camino-2-04",
+   "sentence": "Cuando vio a Luis, corrió hacia él.",
+   "start": 7,
+   "end": 10,
+   "surface": "vio",
+   "lemma": "ver",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-061",
+   "text": "camino-2-04",
+   "sentence": "—¡Sol, qué susto me diste! —dijo Luis.",
+   "start": 17,
+   "end": 19,
+   "surface": "me",
+   "lemma": "me",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "es-dev-062",
+   "text": "camino-2-04",
+   "sentence": "Desde ese día, Luis siempre cierra la puerta.",
+   "start": 38,
+   "end": 44,
+   "surface": "puerta",
+   "lemma": "puerta",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-063",
+   "text": "camino-2-05",
+   "sentence": "Tomás vivía lejos, en otra ciudad.",
+   "start": 0,
+   "end": 5,
+   "surface": "Tomás",
+   "lemma": "Tomás",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-064",
+   "text": "camino-2-05",
+   "sentence": "Tomás escribió: «Voy a visitarlos el sábado, porque quiero ver a todos.»",
+   "start": 0,
+   "end": 5,
+   "surface": "Tomás",
+   "lemma": "Tomás",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-065",
+   "text": "camino-2-05",
+   "sentence": "Tomás escribió: «Voy a visitarlos el sábado, porque quiero ver a todos.»",
+   "start": 65,
+   "end": 70,
+   "surface": "todos",
+   "lemma": "todo",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-066",
+   "text": "camino-2-05",
+   "sentence": "Rosa dijo: —Tenemos que preparar la casa.",
+   "start": 24,
+   "end": 32,
+   "surface": "preparar",
+   "lemma": "preparar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-dev-067",
+   "text": "camino-2-05",
+   "sentence": "El sábado Tomás llegó con una bolsa grande.",
+   "start": 30,
+   "end": 35,
+   "surface": "bolsa",
+   "lemma": "bolsa",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-068",
+   "text": "camino-2-06",
+   "sentence": "El sábado era el cumpleaños de Marta.",
+   "start": 10,
+   "end": 13,
+   "surface": "era",
+   "lemma": "ser",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-069",
+   "text": "camino-2-06",
+   "sentence": "Marta no sabía nada de la fiesta.",
+   "start": 15,
+   "end": 19,
+   "surface": "nada",
+   "lemma": "nada",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-070",
+   "text": "camino-2-06",
+   "sentence": "Rosa hizo un pastel de chocolate.",
+   "start": 23,
+   "end": 32,
+   "surface": "chocolate",
+   "lemma": "chocolate",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "es-dev-071",
+   "text": "camino-2-06",
+   "sentence": "Pedro acababa de llegar con el regalo cuando Marta entró.",
+   "start": 38,
+   "end": 44,
+   "surface": "cuando",
+   "lemma": "cuando",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "es-dev-072",
+   "text": "camino-2-06",
+   "sentence": "—¿Es para mí? —preguntó Marta.",
+   "start": 5,
+   "end": 9,
+   "surface": "para",
+   "lemma": "para",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-073",
+   "text": "camino-2-06",
+   "sentence": "Al final Marta dijo: —¡Gracias a todos, qué día tan bonito!",
+   "start": 3,
+   "end": 8,
+   "surface": "final",
+   "lemma": "final",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-074",
+   "text": "camino-2-07",
+   "sentence": "Su abuela vivía en un pueblo pequeño.",
+   "start": 3,
+   "end": 9,
+   "surface": "abuela",
+   "lemma": "abuelo",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-075",
+   "text": "camino-2-07",
+   "sentence": "El viaje era largo.",
+   "start": 3,
+   "end": 8,
+   "surface": "viaje",
+   "lemma": "viaje",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-076",
+   "text": "camino-2-07",
+   "sentence": "En la estación compraron los boletos.",
+   "start": 6,
+   "end": 14,
+   "surface": "estación",
+   "lemma": "estación",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-077",
+   "text": "camino-2-07",
+   "sentence": "Marta quería ese asiento también.",
+   "start": 6,
+   "end": 12,
+   "surface": "quería",
+   "lemma": "querer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-078",
+   "text": "camino-2-07",
+   "sentence": "Rosa dijo: —Luis, dale el asiento a tu hermana un rato.",
+   "start": 36,
+   "end": 38,
+   "surface": "tu",
+   "lemma": "tu",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-079",
+   "text": "camino-2-07",
+   "sentence": "Marta durmió un rato y Luis leyó un libro.",
+   "start": 6,
+   "end": 12,
+   "surface": "durmió",
+   "lemma": "dormir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-080",
+   "text": "camino-2-07",
+   "sentence": "La abuela los esperaba en la puerta.",
+   "start": 3,
+   "end": 9,
+   "surface": "abuela",
+   "lemma": "abuelo",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-081",
+   "text": "camino-2-08",
+   "sentence": "Por la noche, la abuela se sentó con los niños.",
+   "start": 7,
+   "end": 12,
+   "surface": "noche",
+   "lemma": "noche",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-082",
+   "text": "camino-2-08",
+   "sentence": "—Voy a contarles cómo era mi vida cuando tenía su edad —dijo la abuela.",
+   "start": 29,
+   "end": 33,
+   "surface": "vida",
+   "lemma": "vida",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-083",
+   "text": "camino-2-08",
+   "sentence": "Mi padre trabajaba en el campo y mi madre cocinaba.",
+   "start": 0,
+   "end": 2,
+   "surface": "Mi",
+   "lemma": "mi",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-084",
+   "text": "camino-2-08",
+   "sentence": "Todos los días yo iba a la escuela a pie.",
+   "start": 18,
+   "end": 21,
+   "surface": "iba",
+   "lemma": "ir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-085",
+   "text": "camino-2-08",
+   "sentence": "Por la tarde ayudaba a mi madre a hacer tortillas.",
+   "start": 13,
+   "end": 20,
+   "surface": "ayudaba",
+   "lemma": "ayudar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-086",
+   "text": "camino-2-08",
+   "sentence": "—Teníamos una pelota vieja y mucha imaginación —dijo la abuela, y se rió.",
+   "start": 21,
+   "end": 26,
+   "surface": "vieja",
+   "lemma": "viejo",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "es-dev-087",
+   "text": "camino-2-08",
+   "sentence": "Marta dijo: —Me gusta tu historia.",
+   "start": 25,
+   "end": 33,
+   "surface": "historia",
+   "lemma": "historia",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-088",
+   "text": "camino-2-08",
+   "sentence": "Los niños se fueron a dormir muy contentos.",
+   "start": 33,
+   "end": 42,
+   "surface": "contentos",
+   "lemma": "contento",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-dev-089",
+   "text": "camino-3-01",
+   "sentence": "Buscó en la cocina, en la sala y debajo de la cama, pero no lo encontró.",
+   "start": 33,
+   "end": 39,
+   "surface": "debajo",
+   "lemma": "debajo",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-090",
+   "text": "camino-3-01",
+   "sentence": "—Qué raro, estoy seguro de que lo dejé aquí —pensó.",
+   "start": 34,
+   "end": 38,
+   "surface": "dejé",
+   "lemma": "dejar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "ccomp"
+  },
+  {
+   "id": "es-dev-091",
+   "text": "camino-3-01",
+   "sentence": "Juan se sentó e intentó recordar lo que había hecho esa mañana.",
+   "start": 40,
+   "end": 45,
+   "surface": "había",
+   "lemma": "haber",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "es-dev-092",
+   "text": "camino-3-01",
+   "sentence": "Se había levantado temprano, había tomado café y había leído unas páginas.",
+   "start": 61,
+   "end": 65,
+   "surface": "unas",
+   "lemma": "uno",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-093",
+   "text": "camino-3-01",
+   "sentence": "Entonces recordó que su hermana Sofía había pasado por la casa a la hora del almuerzo.",
+   "start": 32,
+   "end": 37,
+   "surface": "Sofía",
+   "lemma": "Sofía",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "appos"
+  },
+  {
+   "id": "es-dev-094",
+   "text": "camino-3-01",
+   "sentence": "—Sofía, ¿has visto mi libro? —preguntó.",
+   "start": 9,
+   "end": 12,
+   "surface": "has",
+   "lemma": "haber",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "es-dev-095",
+   "text": "camino-3-01",
+   "sentence": "—Sí, lo tengo yo, porque quería leerlo esta noche —dijo ella.",
+   "start": 56,
+   "end": 60,
+   "surface": "ella",
+   "lemma": "ella",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Person": "3"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-096",
+   "text": "camino-3-01",
+   "sentence": "—No hay problema —dijo Juan—, pero la próxima vez dime antes de que te lo lleves.",
+   "start": 74,
+   "end": 80,
+   "surface": "lleves",
+   "lemma": "llevar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-097",
+   "text": "camino-3-01",
+   "sentence": "—No te preocupes, quédatelo y léelo con calma.",
+   "start": 18,
+   "end": 27,
+   "surface": "quédatelo",
+   "lemma": "quedar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-098",
+   "text": "camino-3-01",
+   "sentence": "—Gracias. Cuando lo termine, te lo traeré, aunque tarde unos días.",
+   "start": 50,
+   "end": 55,
+   "surface": "tarde",
+   "lemma": "tardar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "advcl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-099",
+   "text": "camino-3-01",
+   "sentence": "Después de colgar, Juan miró la mesa vacía.",
+   "start": 37,
+   "end": 42,
+   "surface": "vacía",
+   "lemma": "vacío",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-100",
+   "text": "camino-3-01",
+   "sentence": "Pensó que, al fin y al cabo, un libro prestado también se lee.",
+   "start": 23,
+   "end": 27,
+   "surface": "cabo",
+   "lemma": "cabo",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-101",
+   "text": "camino-3-02",
+   "sentence": "Su padre era agricultor y su madre cosía ropa para los vecinos.",
+   "start": 13,
+   "end": 23,
+   "surface": "agricultor",
+   "lemma": "agricultor",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-102",
+   "text": "camino-3-02",
+   "sentence": "Elena era la mayor de cinco hermanos, y desde niña ayudó en casa.",
+   "start": 28,
+   "end": 36,
+   "surface": "hermanos",
+   "lemma": "hermano",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "es-dev-103",
+   "text": "camino-3-02",
+   "sentence": "Aunque la familia era pobre, sus padres querían que ella estudiara.",
+   "start": 33,
+   "end": 39,
+   "surface": "padres",
+   "lemma": "padre",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-104",
+   "text": "camino-3-02",
+   "sentence": "Cada mañana caminaba una hora hasta la escuela del pueblo vecino.",
+   "start": 30,
+   "end": 35,
+   "surface": "hasta",
+   "lemma": "hasta",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-dev-105",
+   "text": "camino-3-02",
+   "sentence": "Cuando tenía quince años, su maestro le dijo que ella también podía ser maestra.",
+   "start": 68,
+   "end": 71,
+   "surface": "ser",
+   "lemma": "ser",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "es-dev-106",
+   "text": "camino-3-02",
+   "sentence": "Una tía la recibió en su casa de la ciudad, y Elena vivió allí cuatro años mientras estudiaba.",
+   "start": 75,
+   "end": 83,
+   "surface": "mientras",
+   "lemma": "mientras",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "es-dev-107",
+   "text": "camino-3-02",
+   "sentence": "Cuando terminó sus estudios, volvió a su pueblo.",
+   "start": 7,
+   "end": 14,
+   "surface": "terminó",
+   "lemma": "terminar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-108",
+   "text": "camino-3-02",
+   "sentence": "Los primeros años tenía pocos alumnos, pero poco a poco llegaron más niños.",
+   "start": 4,
+   "end": 12,
+   "surface": "primeros",
+   "lemma": "primero",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "es-dev-109",
+   "text": "camino-3-02",
+   "sentence": "Elena enseñaba a leer a los niños y también a sus padres, que nunca habían aprendido.",
+   "start": 46,
+   "end": 49,
+   "surface": "sus",
+   "lemma": "su",
+   "pos": "DET",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-110",
+   "text": "camino-3-02",
+   "sentence": "Se casó con Miguel, un carpintero que hizo los bancos de la escuela.",
+   "start": 23,
+   "end": 33,
+   "surface": "carpintero",
+   "lemma": "carpintero",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "appos"
+  },
+  {
+   "id": "es-dev-111",
+   "text": "camino-3-02",
+   "sentence": "Hoy Elena tiene setenta años y ya no enseña, pero muchos de sus alumnos han llegado a ser maestros, enfermeros y agricultores.",
+   "start": 31,
+   "end": 33,
+   "surface": "ya",
+   "lemma": "ya",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-dev-112",
+   "text": "camino-3-02",
+   "sentence": "Hoy Elena tiene setenta años y ya no enseña, pero muchos de sus alumnos han llegado a ser maestros, enfermeros y agricultores.",
+   "start": 90,
+   "end": 98,
+   "surface": "maestros",
+   "lemma": "maestro",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-dev-113",
+   "text": "camino-3-02",
+   "sentence": "Algunos le dicen: —Maestra, gracias por todo lo que nos enseñó.",
+   "start": 0,
+   "end": 7,
+   "surface": "Algunos",
+   "lemma": "alguno",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-114",
+   "text": "camino-3-02",
+   "sentence": "Ella siempre contesta: —Yo solo quería que ustedes aprendieran.",
+   "start": 27,
+   "end": 31,
+   "surface": "solo",
+   "lemma": "solo",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-115",
+   "text": "camino-3-03",
+   "sentence": "Tomás decidió visitar a su hermano Pedro, al que no veía desde hacía tres años.",
+   "start": 63,
+   "end": 68,
+   "surface": "hacía",
+   "lemma": "hacer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-116",
+   "text": "camino-3-03",
+   "sentence": "Salió de su casa antes de que saliera el sol para tomar el primer autobús.",
+   "start": 66,
+   "end": 73,
+   "surface": "autobús",
+   "lemma": "autobús",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-117",
+   "text": "camino-3-03",
+   "sentence": "Tomás compró un café y se sentó a esperar.",
+   "start": 34,
+   "end": 41,
+   "surface": "esperar",
+   "lemma": "esperar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-118",
+   "text": "camino-3-03",
+   "sentence": "Se llamaba Carmen y llevaba una caja grande sobre las piernas.",
+   "start": 11,
+   "end": 17,
+   "surface": "Carmen",
+   "lemma": "Carmen",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-dev-119",
+   "text": "camino-3-03",
+   "sentence": "—Es un pastel para mi nieta —le explicó—, y quiero que llegue entero, así que lo llevo con mucho cuidado.",
+   "start": 32,
+   "end": 39,
+   "surface": "explicó",
+   "lemma": "explicar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-120",
+   "text": "camino-3-03",
+   "sentence": "El autobús salió por fin.",
+   "start": 21,
+   "end": 24,
+   "surface": "fin",
+   "lemma": "fin",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-121",
+   "text": "camino-3-03",
+   "sentence": "El camino subía por las montañas, y por la ventana Tomás veía campos verdes y casas pequeñas.",
+   "start": 78,
+   "end": 83,
+   "surface": "casas",
+   "lemma": "casa",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "conj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-122",
+   "text": "camino-3-03",
+   "sentence": "Un árbol había caído sobre el camino.",
+   "start": 30,
+   "end": 36,
+   "surface": "camino",
+   "lemma": "camino",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-123",
+   "text": "camino-3-03",
+   "sentence": "Tomás también bajó, aunque no estaba acostumbrado al trabajo pesado.",
+   "start": 20,
+   "end": 26,
+   "surface": "aunque",
+   "lemma": "aunque",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "es-dev-124",
+   "text": "camino-3-03",
+   "sentence": "Cuando por fin pudieron seguir, ya era de noche.",
+   "start": 11,
+   "end": 14,
+   "surface": "fin",
+   "lemma": "fin",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-125",
+   "text": "camino-3-03",
+   "sentence": "Tomás pensó que llegaría muy tarde y que Pedro estaría dormido.",
+   "start": 55,
+   "end": 62,
+   "surface": "dormido",
+   "lemma": "dormido",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "ccomp",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-126",
+   "text": "camino-3-03",
+   "sentence": "—Te estaba esperando —dijo Pedro—, porque le pregunté al empleado y me dijo que el autobús se había retrasado.",
+   "start": 100,
+   "end": 109,
+   "surface": "retrasado",
+   "lemma": "retrasar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "ccomp"
+  },
+  {
+   "id": "es-dev-127",
+   "text": "camino-3-03",
+   "sentence": "Carmen bajó detrás de Tomás, con el pastel entero en los brazos.",
+   "start": 43,
+   "end": 49,
+   "surface": "entero",
+   "lemma": "entero",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "amod"
+  },
+  {
+   "id": "es-dev-128",
+   "text": "camino-3-03",
+   "sentence": "Esa noche cenaron juntos y hablaron hasta que se hizo muy tarde.",
+   "start": 36,
+   "end": 41,
+   "surface": "hasta",
+   "lemma": "hasta",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-129",
+   "text": "camino-3-04",
+   "sentence": "Un día el hijo menor le dijo a su padre: —Quiero que me des la parte del dinero que me toca.",
+   "start": 63,
+   "end": 68,
+   "surface": "parte",
+   "lemma": "parte",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-130",
+   "text": "camino-3-04",
+   "sentence": "El hijo menor juntó todo lo que tenía y se fue a un país lejano.",
+   "start": 52,
+   "end": 56,
+   "surface": "país",
+   "lemma": "país",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-131",
+   "text": "camino-3-04",
+   "sentence": "Cuando ya no le quedaba nada, llegó un hambre fuerte a aquella tierra.",
+   "start": 16,
+   "end": 23,
+   "surface": "quedaba",
+   "lemma": "quedar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-132",
+   "text": "camino-3-04",
+   "sentence": "El joven, que nunca había pasado necesidad, empezó a sufrir.",
+   "start": 33,
+   "end": 42,
+   "surface": "necesidad",
+   "lemma": "necesidad",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-133",
+   "text": "camino-3-04",
+   "sentence": "Buscó trabajo, y un hombre lo mandó a cuidar cerdos.",
+   "start": 45,
+   "end": 51,
+   "surface": "cerdos",
+   "lemma": "cerdo",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-134",
+   "text": "camino-3-04",
+   "sentence": "Tenía tanta hambre que habría querido comer lo mismo que los cerdos, pero nadie le daba nada.",
+   "start": 74,
+   "end": 79,
+   "surface": "nadie",
+   "lemma": "nadie",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-135",
+   "text": "camino-3-04",
+   "sentence": "Entonces pensó: —En la casa de mi padre, hasta los trabajadores tienen pan de sobra, y yo me muero de hambre aquí.",
+   "start": 78,
+   "end": 83,
+   "surface": "sobra",
+   "lemma": "sobra",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-136",
+   "text": "camino-3-04",
+   "sentence": "Voy a volver con mi padre y le voy a decir: «He pecado contra Dios y contra ti, y ya no merezco que me llames hijo; trátame como a uno de tus trabajadores.»",
+   "start": 55,
+   "end": 61,
+   "surface": "contra",
+   "lemma": "contra",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-dev-137",
+   "text": "camino-3-04",
+   "sentence": "Voy a volver con mi padre y le voy a decir: «He pecado contra Dios y contra ti, y ya no merezco que me llames hijo; trátame como a uno de tus trabajadores.»",
+   "start": 116,
+   "end": 123,
+   "surface": "trátame",
+   "lemma": "tratar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-138",
+   "text": "camino-3-04",
+   "sentence": "Cuando todavía estaba lejos, su padre lo vio y sintió compasión.",
+   "start": 7,
+   "end": 14,
+   "surface": "todavía",
+   "lemma": "todavía",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-dev-139",
+   "text": "camino-3-04",
+   "sentence": "El padre corrió hacia él, lo abrazó y lo besó.",
+   "start": 41,
+   "end": 45,
+   "surface": "besó",
+   "lemma": "besar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-140",
+   "text": "camino-3-04",
+   "sentence": "Llamó a sus criados y les dijo: —Traigan la mejor ropa y vístanlo, y pónganle también un anillo y zapatos.",
+   "start": 33,
+   "end": 40,
+   "surface": "Traigan",
+   "lemma": "traer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "3",
+    "Number": "Plur",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-141",
+   "text": "camino-3-04",
+   "sentence": "Hagamos una fiesta, porque mi hijo estaba perdido y ya lo hemos encontrado: era como si hubiera muerto y ha vuelto a vivir.",
+   "start": 0,
+   "end": 7,
+   "surface": "Hagamos",
+   "lemma": "hacer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-142",
+   "text": "camino-3-04",
+   "sentence": "Hagamos una fiesta, porque mi hijo estaba perdido y ya lo hemos encontrado: era como si hubiera muerto y ha vuelto a vivir.",
+   "start": 88,
+   "end": 95,
+   "surface": "hubiera",
+   "lemma": "haber",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "es-dev-143",
+   "text": "camino-3-04",
+   "sentence": "Mientras tanto, el hijo mayor volvía del campo.",
+   "start": 24,
+   "end": 29,
+   "surface": "mayor",
+   "lemma": "mayor",
+   "pos": "ADJ",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-144",
+   "text": "camino-3-04",
+   "sentence": "Al acercarse a la casa, oyó música y supo que había una fiesta.",
+   "start": 56,
+   "end": 62,
+   "surface": "fiesta",
+   "lemma": "fiesta",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-145",
+   "text": "camino-3-04",
+   "sentence": "El hijo mayor se enojó mucho y no quiso entrar.",
+   "start": 40,
+   "end": 46,
+   "surface": "entrar",
+   "lemma": "entrar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-dev-146",
+   "text": "camino-3-04",
+   "sentence": "—Yo te he servido durante muchos años —respondió el hijo mayor—, y nunca me diste ni un cabrito para celebrar con mis amigos.",
+   "start": 26,
+   "end": 32,
+   "surface": "muchos",
+   "lemma": "mucho",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-147",
+   "text": "camino-3-04",
+   "sentence": "—Yo te he servido durante muchos años —respondió el hijo mayor—, y nunca me diste ni un cabrito para celebrar con mis amigos.",
+   "start": 118,
+   "end": 124,
+   "surface": "amigos",
+   "lemma": "amigo",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-148",
+   "text": "camino-3-04",
+   "sentence": "Pero cuando vuelve este hijo tuyo, que gastó tu dinero, haces una fiesta para él.",
+   "start": 78,
+   "end": 80,
+   "surface": "él",
+   "lemma": "él",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Person": "3"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-149",
+   "text": "camino-3-04",
+   "sentence": "Pero teníamos que alegrarnos, porque tu hermano estaba perdido y ha sido encontrado.",
+   "start": 5,
+   "end": 13,
+   "surface": "teníamos",
+   "lemma": "tener",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-150",
+   "text": "camino-3-04",
+   "sentence": "La historia no dice si el hijo mayor entró a la fiesta.",
+   "start": 20,
+   "end": 22,
+   "surface": "si",
+   "lemma": "si",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-151",
+   "text": "camino-3-05",
+   "sentence": "Todos los días veía pasar a los niños del barrio en sus bicicletas.",
+   "start": 15,
+   "end": 19,
+   "surface": "veía",
+   "lemma": "ver",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-152",
+   "text": "camino-3-05",
+   "sentence": "—Papá, quiero una bicicleta, ¿me la puedes comprar? —dijo.",
+   "start": 43,
+   "end": 50,
+   "surface": "comprar",
+   "lemma": "comprar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-dev-153",
+   "text": "camino-3-05",
+   "sentence": "—Una bicicleta cuesta mucho —dijo—, y no podemos comprarla ahora, pero te propongo algo.",
+   "start": 74,
+   "end": 82,
+   "surface": "propongo",
+   "lemma": "proponer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-154",
+   "text": "camino-3-05",
+   "sentence": "—Cuando hayas ahorrado la mitad del dinero, yo pondré la otra mitad.",
+   "start": 62,
+   "end": 67,
+   "surface": "mitad",
+   "lemma": "mitad",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-155",
+   "text": "camino-3-05",
+   "sentence": "Al día siguiente fue a ver a don Carlos, un vecino que tenía un jardín grande.",
+   "start": 64,
+   "end": 70,
+   "surface": "jardín",
+   "lemma": "jardín",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-156",
+   "text": "camino-3-05",
+   "sentence": "—Pues sí —dijo don Carlos—, porque mis rodillas ya no son como antes, y si vienes los sábados, te pagaré por tu trabajo.",
+   "start": 1,
+   "end": 5,
+   "surface": "Pues",
+   "lemma": "pues",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "discourse"
+  },
+  {
+   "id": "es-dev-157",
+   "text": "camino-3-05",
+   "sentence": "—Pues sí —dijo don Carlos—, porque mis rodillas ya no son como antes, y si vienes los sábados, te pagaré por tu trabajo.",
+   "start": 72,
+   "end": 74,
+   "surface": "si",
+   "lemma": "si",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-158",
+   "text": "camino-3-05",
+   "sentence": "Desde entonces, cada sábado Marta regaba las plantas y sacaba las malas hierbas.",
+   "start": 45,
+   "end": 52,
+   "surface": "plantas",
+   "lemma": "planta",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-159",
+   "text": "camino-3-05",
+   "sentence": "Aunque a veces hacía calor y estaba cansada, no dejó de ir ni un solo sábado.",
+   "start": 36,
+   "end": 43,
+   "surface": "cansada",
+   "lemma": "cansado",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-160",
+   "text": "camino-3-05",
+   "sentence": "Luis, que ya tenía una bicicleta vieja, le dijo que le enseñaría a montar en cuanto tuviera la suya.",
+   "start": 33,
+   "end": 38,
+   "surface": "vieja",
+   "lemma": "viejo",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "es-dev-161",
+   "text": "camino-3-05",
+   "sentence": "Pasaron los meses.",
+   "start": 12,
+   "end": 17,
+   "surface": "meses",
+   "lemma": "mes",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-162",
+   "text": "camino-3-05",
+   "sentence": "Pedro contó el dinero y dijo: —Marta, ya has ahorrado la mitad.",
+   "start": 57,
+   "end": 62,
+   "surface": "mitad",
+   "lemma": "mitad",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-163",
+   "text": "camino-3-05",
+   "sentence": "—Nunca había tenido algo tan bonito —dijo.",
+   "start": 29,
+   "end": 35,
+   "surface": "bonito",
+   "lemma": "bonito",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "amod"
+  },
+  {
+   "id": "es-dev-164",
+   "text": "camino-3-05",
+   "sentence": "Se cayó dos veces, pero no lloró.",
+   "start": 27,
+   "end": 32,
+   "surface": "lloró",
+   "lemma": "llorar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-165",
+   "text": "camino-3-05",
+   "sentence": "—¡Lo logré! —gritó.",
+   "start": 13,
+   "end": 18,
+   "surface": "gritó",
+   "lemma": "gritar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-166",
+   "text": "camino-3-06",
+   "sentence": "Esta es la carta que Marta le escribió a su abuela durante su primer mes en la ciudad.",
+   "start": 51,
+   "end": 58,
+   "surface": "durante",
+   "lemma": "durante",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-dev-167",
+   "text": "camino-3-06",
+   "sentence": "Espero que estés bien y que la rodilla ya no te duela.",
+   "start": 31,
+   "end": 38,
+   "surface": "rodilla",
+   "lemma": "rodilla",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-168",
+   "text": "camino-3-06",
+   "sentence": "Los primeros días me perdí tres veces, y una señora tuvo que acompañarme hasta la casa.",
+   "start": 4,
+   "end": 12,
+   "surface": "primeros",
+   "lemma": "primero",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "es-dev-169",
+   "text": "camino-3-06",
+   "sentence": "Mi tía Lucía dice que no me preocupe, porque pronto conoceré todas las calles.",
+   "start": 3,
+   "end": 6,
+   "surface": "tía",
+   "lemma": "tío",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-170",
+   "text": "camino-3-06",
+   "sentence": "En la escuela nueva tengo una maestra que se parece mucho a ti.",
+   "start": 45,
+   "end": 51,
+   "surface": "parece",
+   "lemma": "parecer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "acl"
+  },
+  {
+   "id": "es-dev-171",
+   "text": "camino-3-06",
+   "sentence": "Ayer me dijo que he mejorado mucho en matemáticas.",
+   "start": 38,
+   "end": 49,
+   "surface": "matemáticas",
+   "lemma": "matemáticas",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-172",
+   "text": "camino-3-06",
+   "sentence": "Cuando vuelva en las vacaciones, quiero que me enseñes a hacer tortillas como las tuyas.",
+   "start": 7,
+   "end": 13,
+   "surface": "vuelva",
+   "lemma": "volver",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-173",
+   "text": "camino-3-06",
+   "sentence": "Dile a Luis que no se olvide de darle de comer a Sol.",
+   "start": 32,
+   "end": 37,
+   "surface": "darle",
+   "lemma": "dar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-dev-174",
+   "text": "camino-3-06",
+   "sentence": "Ojalá que puedas venir a visitarme algún día, para que veas dónde vivo.",
+   "start": 60,
+   "end": 65,
+   "surface": "dónde",
+   "lemma": "dónde",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-dev-175",
+   "text": "camino-3-06",
+   "sentence": "Pero si no puedes, no te preocupes: yo iré a verte en cuanto pueda.",
+   "start": 61,
+   "end": 66,
+   "surface": "pueda",
+   "lemma": "poder",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-176",
+   "text": "camino-3-06",
+   "sentence": "La abuela leyó la carta tres veces y la guardó en su caja de recuerdos.",
+   "start": 53,
+   "end": 57,
+   "surface": "caja",
+   "lemma": "caja",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-177",
+   "text": "dialogue-01",
+   "sentence": "Estoy bien, Pedro, pero no entiendo una cosa.",
+   "start": 40,
+   "end": 44,
+   "surface": "cosa",
+   "lemma": "cosa",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-178",
+   "text": "dialogue-01",
+   "sentence": "¿Y tú crees en Dios?",
+   "start": 3,
+   "end": 5,
+   "surface": "tú",
+   "lemma": "tú",
+   "pos": "PRON",
+   "features": {
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-179",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "Es sábado por la mañana en Tegucigalpa, la capital de Honduras.",
+   "start": 43,
+   "end": 50,
+   "surface": "capital",
+   "lemma": "capital",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "appos",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-180",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "En el mercado hay mucha gente.",
+   "start": 24,
+   "end": 29,
+   "surface": "gente",
+   "lemma": "gente",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-181",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "Doña Reina necesita frijoles, plátanos y tomates.",
+   "start": 20,
+   "end": 28,
+   "surface": "frijoles",
+   "lemma": "frijol",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-182",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "—¿Qué desea? —pregunta la vendedora.",
+   "start": 6,
+   "end": 11,
+   "surface": "desea",
+   "lemma": "desear",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-183",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "—¿Cuánto es? —pregunta doña Reina.",
+   "start": 2,
+   "end": 8,
+   "surface": "Cuánto",
+   "lemma": "cuánto",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-184",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "Doña Reina paga y recibe su cambio.",
+   "start": 18,
+   "end": 24,
+   "surface": "recibe",
+   "lemma": "recibir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-185",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "Una baleada es una tortilla de harina con frijoles.",
+   "start": 19,
+   "end": 27,
+   "surface": "tortilla",
+   "lemma": "tortilla",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-186",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "En una esquina del mercado, una mujer hace baleadas.",
+   "start": 38,
+   "end": 42,
+   "surface": "hace",
+   "lemma": "hacer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-187",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "Al salir, pasan por la pulpería de la esquina.",
+   "start": 3,
+   "end": 8,
+   "surface": "salir",
+   "lemma": "salir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-188",
+   "text": "honduras-lecturas-1-01",
+   "sentence": "Con las bolsas llenas, las dos vuelven a casa.",
+   "start": 31,
+   "end": 38,
+   "surface": "vuelven",
+   "lemma": "volver",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-189",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "Hoy van a San Pedro Sula, una ciudad de Honduras.",
+   "start": 10,
+   "end": 13,
+   "surface": "San",
+   "lemma": "San",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "flat"
+  },
+  {
+   "id": "es-dev-190",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "En la terminal, Daniel habla con el empleado.",
+   "start": 16,
+   "end": 22,
+   "surface": "Daniel",
+   "lemma": "Daniel",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-191",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "—¿A qué hora sale el autobús para San Pedro Sula?",
+   "start": 34,
+   "end": 37,
+   "surface": "San",
+   "lemma": "San",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "flat"
+  },
+  {
+   "id": "es-dev-192",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "—Entonces quiero dos boletos, por favor.",
+   "start": 34,
+   "end": 39,
+   "surface": "favor",
+   "lemma": "favor",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-193",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "—¿Vos tenés los boletos? —pregunta Marvin.",
+   "start": 6,
+   "end": 11,
+   "surface": "tenés",
+   "lemma": "tener",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-194",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "—Mirá, hay dos asientos junto a la ventana —dice Marvin.",
+   "start": 15,
+   "end": 23,
+   "surface": "asientos",
+   "lemma": "asiento",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-195",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "—¿Qué hacés en San Pedro Sula? —pregunta Daniel.",
+   "start": 6,
+   "end": 11,
+   "surface": "hacés",
+   "lemma": "hacer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-196",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "—Vos sos un buen sobrino —dice Marvin.",
+   "start": 5,
+   "end": 8,
+   "surface": "sos",
+   "lemma": "ser",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "es-dev-197",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "Después de varias horas, el autobús llega a San Pedro Sula.",
+   "start": 11,
+   "end": 17,
+   "surface": "varias",
+   "lemma": "vario",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "es-dev-198",
+   "text": "honduras-lecturas-1-02",
+   "sentence": "—Cuidate, catracho —dice Marvin.",
+   "start": 10,
+   "end": 18,
+   "surface": "catracho",
+   "lemma": "catracho",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "vocative"
+  },
+  {
+   "id": "es-dev-199",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "Hoy van a la iglesia.",
+   "start": 13,
+   "end": 20,
+   "surface": "iglesia",
+   "lemma": "iglesia",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-200",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "Se ponen su mejor ropa y salen de la casa.",
+   "start": 25,
+   "end": 30,
+   "surface": "salen",
+   "lemma": "salir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-201",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "Frente a la puerta, don Mario saluda a todos.",
+   "start": 30,
+   "end": 36,
+   "surface": "saluda",
+   "lemma": "saludar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-202",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "Adentro, la iglesia está llena de gente.",
+   "start": 12,
+   "end": 19,
+   "surface": "iglesia",
+   "lemma": "iglesia",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-dev-203",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "Un grupo de jóvenes toca la guitarra y todos cantan.",
+   "start": 20,
+   "end": 24,
+   "surface": "toca",
+   "lemma": "tocar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-204",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "El pastor habla del amor de Dios y de cómo ayudar a los vecinos.",
+   "start": 20,
+   "end": 24,
+   "surface": "amor",
+   "lemma": "amor",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-dev-205",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "Al final todos oran.",
+   "start": 15,
+   "end": 19,
+   "surface": "oran",
+   "lemma": "orar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-206",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "Los hombres hablan, las mujeres hablan y los niños corren.",
+   "start": 32,
+   "end": 38,
+   "surface": "hablan",
+   "lemma": "hablar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-207",
+   "text": "honduras-lecturas-1-03",
+   "sentence": "Karla habla con una amiga, y Kevin juega con otros cipotes.",
+   "start": 35,
+   "end": 40,
+   "surface": "juega",
+   "lemma": "jugar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-208",
+   "text": "honduras-lecturas-1-04",
+   "sentence": "En la casa de doña Reina, todos ayudan con la comida.",
+   "start": 46,
+   "end": 52,
+   "surface": "comida",
+   "lemma": "comida",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-dev-209",
+   "text": "honduras-lecturas-1-04",
+   "sentence": "Llega la abuela, doña Ana, con una bolsa de naranjas.",
+   "start": 0,
+   "end": 5,
+   "surface": "Llega",
+   "lemma": "llegar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-210",
+   "text": "honduras-lecturas-1-04",
+   "sentence": "La mesa está llena: hay pollo, tajadas, arroz, frijoles, tortillas y ensalada.",
+   "start": 31,
+   "end": 38,
+   "surface": "tajadas",
+   "lemma": "tajada",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "es-dev-211",
+   "text": "honduras-lecturas-1-04",
+   "sentence": "Todos dicen: —Amén.",
+   "start": 14,
+   "end": 18,
+   "surface": "Amén",
+   "lemma": "amén",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse"
+  },
+  {
+   "id": "es-dev-212",
+   "text": "honduras-lecturas-1-04",
+   "sentence": "—No, gracias, mi hijo. Ya comí mucho —responde la abuela.",
+   "start": 38,
+   "end": 46,
+   "surface": "responde",
+   "lemma": "responder",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-dev-213",
+   "text": "honduras-lecturas-1-04",
+   "sentence": "—Gracias a todos por ayudar —dice doña Reina.",
+   "start": 21,
+   "end": 27,
+   "surface": "ayudar",
+   "lemma": "ayudar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-dev-214",
+   "text": "story-01",
+   "sentence": "Cuando era joven, yo no entendía mi corazón.",
+   "start": 36,
+   "end": 43,
+   "surface": "corazón",
+   "lemma": "corazón",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-dev-215",
+   "text": "story-01",
+   "sentence": "Ahora creo en Dios.",
+   "start": 0,
+   "end": 5,
+   "surface": "Ahora",
+   "lemma": "ahora",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  }
+ ]
+}

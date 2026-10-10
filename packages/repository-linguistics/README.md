@@ -77,6 +77,25 @@ Every provenance the resolver writes carries `validation` (the contract's six le
 `origin` is stamped from the producer (hand-lexicon -> pack-lexicon, dictionary, rule and parser -> rule-derived, reviewer, learner -> learner-lookup, import). `packValidation(languageId)` and `genericValidation(languageId)` are exported.
 **Consequence:** with the default levels every Albanian and Spanish row is `unreviewed`, so the engine's gate keeps them at `provisional` and offers no grammatical, productive or phrase item on them until a manifest (or a reviewer's correction) validates them.
 
+## Field states (Stage 7) and the three stores
+
+Full rules, mappings and compatibility: `docs/ecosystem/linguistics/REPOSITORY-STATES.md`. In short:
+
+| Kind of knowledge | Where it is stored | Carries `fieldStates`? |
+|---|---|---|
+| **Shared linguistic facts** (lexeme, forms, paradigm cells, senses, etymology, pronunciation) | `LinguisticUnit` / `UnitRelation` rows | yes, for the fields that belong to the unit (`etymology`, `pronunciation`, `paradigmCell`, `sense`) |
+| **Contextual analyses** (one reading of a form in one sentence) | `FormAnalysis` rows | yes: `lemma`, `pos`, `features`, `sense`, `paradigmCell`, `syntaxRelation`, `segmentation` of the chosen reading |
+| **Learner evidence** (encounters, lookups, self-marks) | the event log (Layer B) and its projection (Layer C), in the engine | **never**: a correction writes no event, a learner event changes no field state |
+
+`fieldStatesFor(input)` (`src/field-states.ts`) is the one place that decides a field state: `verified` only with a named reviewer's
+correction or a `native-reviewed` source (never from confidence), `supported` when one authoritative source states it and the rules agree
+or are silent, `provisional` when only the rules state it, `conflicted` when two sources or two readings within 0.15 disagree, `unknown`
+when nothing states it (also what a row without `fieldStates` reads as), `invalidated` only through `invalidate` / `correct`, and the row stays.
+`statusFor` is split: lemma conflicted when the lemmas differ, pos when the parts of speech differ, features when readings of the same lemma
+differ only in features. `resolveSelection` returns the states, `resolveAndStore` stores them (a shared field only ever rises), `lookup`
+returns them, `correct` sets the corrected fields to verified (`Correction.reviewerId`) or provisional (learner) and the superseded analysis'
+fields to invalidated, and `coverageGaps(lang, ids, { byField: true })` / `coverageGapsByField` report per field.
+
 ## Limits
 
 - Albanian only. Any other language, or a selection with no Latin letter, yields one provisional `form` unit (provenance `parser` / `generic`, 0.1).

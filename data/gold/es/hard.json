@@ -1,0 +1,2069 @@
+{
+ "language": "es",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "hard",
+ "source": "authored sentences (not from the corpus)",
+ "feature_keys": [
+  "Gender",
+  "Number",
+  "Person",
+  "Tense",
+  "Mood",
+  "VerbForm",
+  "Degree",
+  "Polite"
+ ],
+ "notes": "Hard cases written to break a naive engine: each carries the expected analysis, the wrong analysis a naive engine would give, and why it is hard. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "es-hard-001",
+   "text": "authored",
+   "sentence": "Vos tenés razón, ¿verdad?",
+   "start": 4,
+   "end": 9,
+   "surface": "tenés",
+   "lemma": "tener",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Voseo present of tener has a stress-final -és ending and no stem diphthong.",
+   "wrong": {
+    "lemma": "tenés",
+    "pos": "X",
+    "note": "No rule strips -és to an infinitive; the engine treats the unknown word as its own lemma."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-002",
+   "text": "authored",
+   "sentence": "¿Vos querés un café?",
+   "start": 5,
+   "end": 11,
+   "surface": "querés",
+   "lemma": "querer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Voseo form without the e>ie stem change of tú quieres.",
+   "wrong": {
+    "lemma": "querés",
+    "pos": "X",
+    "note": "Unknown voseo form left as its own lemma."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-003",
+   "text": "authored",
+   "sentence": "Mirá, ya llegó tu hermano.",
+   "start": 0,
+   "end": 4,
+   "surface": "Mirá",
+   "lemma": "mirar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Voseo imperative is the infinitive minus -r with the accent on the last vowel.",
+   "wrong": {
+    "lemma": "mirá",
+    "pos": "X",
+    "note": "Final stressed -á is not recognised as an imperative ending."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-004",
+   "text": "authored",
+   "sentence": "Vení acá, que te quiero mostrar algo.",
+   "start": 0,
+   "end": 4,
+   "surface": "Vení",
+   "lemma": "venir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Voseo imperative of an irregular verb (tú ven).",
+   "wrong": {
+    "lemma": "vení",
+    "pos": "X",
+    "note": "Not recognised as venir; lemma left as the form."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-005",
+   "text": "authored",
+   "sentence": "Vos sabés que te quiero.",
+   "start": 4,
+   "end": 9,
+   "surface": "sabés",
+   "lemma": "saber",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Voseo present; the tú form is sabes without accent.",
+   "wrong": {
+    "lemma": "sabés",
+    "pos": "X",
+    "note": "Unknown form kept as lemma; or confused with sabe."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-006",
+   "text": "authored",
+   "sentence": "Vos podés venir mañana.",
+   "start": 4,
+   "end": 9,
+   "surface": "podés",
+   "lemma": "poder",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Voseo form lacks the o>ue stem change.",
+   "wrong": {
+    "lemma": "podés",
+    "pos": "X",
+    "note": "-és not mapped to poder; no stem change (tú puedes)."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-007",
+   "text": "authored",
+   "sentence": "Vos sos mi mejor amigo.",
+   "start": 4,
+   "end": 7,
+   "surface": "sos",
+   "lemma": "ser",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Irregular voseo copula that has nothing in common with eres.",
+   "wrong": {
+    "lemma": "sos",
+    "pos": "X",
+    "note": "Taken as an unknown short word, or as the plural of so."
+   },
+   "relation": "cop"
+  },
+  {
+   "id": "es-hard-008",
+   "text": "authored",
+   "sentence": "Cuando vos decís la verdad, todos te creen.",
+   "start": 11,
+   "end": 16,
+   "surface": "decís",
+   "lemma": "decir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Voseo of an irregular verb; ends in -ís like a regular -ir verb.",
+   "wrong": {
+    "lemma": "decí",
+    "pos": "X",
+    "note": "Strips -s to a bogus stem decí."
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "es-hard-009",
+   "text": "authored",
+   "sentence": "Callate un momento, por favor.",
+   "start": 0,
+   "end": 7,
+   "surface": "Callate",
+   "lemma": "callar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "voseo",
+   "why_hard": "Voseo imperative (cállate in tuteo) with a reflexive clitic and no written accent.",
+   "wrong": {
+    "lemma": "callate",
+    "pos": "X",
+    "note": "Voseo imperative with attached te is not split and not recognised."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-010",
+   "text": "authored",
+   "sentence": "Si tuviera dinero, compraría una casa.",
+   "start": 3,
+   "end": 10,
+   "surface": "tuviera",
+   "lemma": "tener",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ra-se-subjunctive",
+   "why_hard": "Irregular preterite stem tuv- plus -ra subjunctive ending.",
+   "wrong": {
+    "lemma": "tuviar",
+    "pos": "VERB",
+    "note": "-ra ending read as a regular -ar verb stem tuvi-."
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "es-hard-011",
+   "text": "authored",
+   "sentence": "Quería que vinieras temprano.",
+   "start": 11,
+   "end": 19,
+   "surface": "vinieras",
+   "lemma": "venir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ra-se-subjunctive",
+   "why_hard": "Irregular preterite stem vin- with -iera.",
+   "wrong": {
+    "lemma": "viniar",
+    "pos": "VERB",
+    "note": "-ras ending read as a present of an -ar verb."
+   },
+   "relation": "ccomp"
+  },
+  {
+   "id": "es-hard-012",
+   "text": "authored",
+   "sentence": "Ojalá hubiese más tiempo para estudiar.",
+   "start": 6,
+   "end": 13,
+   "surface": "hubiese",
+   "lemma": "haber",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ra-se-subjunctive",
+   "why_hard": "Existential haber in the -se subjunctive.",
+   "wrong": {
+    "lemma": "hubir",
+    "pos": "VERB",
+    "note": "-se ending not recognised."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-013",
+   "text": "authored",
+   "sentence": "Si fuese rico, viajaría por el mundo.",
+   "start": 3,
+   "end": 8,
+   "surface": "fuese",
+   "lemma": "ser",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ra-se-subjunctive",
+   "why_hard": "Ser and ir share the whole -ra/-se subjunctive; the copula reading comes from rico.",
+   "wrong": {
+    "lemma": "ir",
+    "pos": "VERB",
+    "note": "fuese shared by ser and ir; the engine picks ir."
+   },
+   "relation": "cop",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-014",
+   "text": "authored",
+   "sentence": "Me pidió que cantara una canción.",
+   "start": 13,
+   "end": 20,
+   "surface": "cantara",
+   "lemma": "cantar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ra-se-subjunctive",
+   "why_hard": "Regular verb whose -ra form looks like the pluperfect indicative of older Spanish.",
+   "wrong": {
+    "lemma": "cantar",
+    "pos": "VERB",
+    "note": "Read as future cantará or as infinitive, missing Mood=Sub."
+   },
+   "relation": "ccomp"
+  },
+  {
+   "id": "es-hard-015",
+   "text": "authored",
+   "sentence": "Era necesario que durmiésemos temprano.",
+   "start": 18,
+   "end": 29,
+   "surface": "durmiésemos",
+   "lemma": "dormir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "ra-se-subjunctive",
+   "why_hard": "Stem change o>u in the -iese subjunctive and an accented 1pl ending.",
+   "wrong": {
+    "lemma": "durmiesemos",
+    "pos": "X",
+    "note": "Accented -ésemos plus o>u stem change not matched."
+   },
+   "relation": "csubj"
+  },
+  {
+   "id": "es-hard-016",
+   "text": "authored",
+   "sentence": "Pidió que dijeran la verdad.",
+   "start": 10,
+   "end": 17,
+   "surface": "dijeran",
+   "lemma": "decir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "ra-se-subjunctive",
+   "why_hard": "Irregular stem dij- loses the i in -eron/-eran.",
+   "wrong": {
+    "lemma": "dijerar",
+    "pos": "VERB",
+    "note": "Reads -ran as an -ar ending."
+   },
+   "relation": "ccomp"
+  },
+  {
+   "id": "es-hard-017",
+   "text": "authored",
+   "sentence": "Si no estuvieses cansado, vendrías con nosotros.",
+   "start": 6,
+   "end": 16,
+   "surface": "estuvieses",
+   "lemma": "estar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ra-se-subjunctive",
+   "why_hard": "-se form on an irregular preterite stem (estuv-).",
+   "wrong": {
+    "lemma": "estuvier",
+    "pos": "X",
+    "note": "Unknown -ieses ending."
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "es-hard-018",
+   "text": "authored",
+   "sentence": "Dámelo ahora mismo.",
+   "start": 0,
+   "end": 6,
+   "surface": "Dámelo",
+   "lemma": "dar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "clitic-attached",
+   "why_hard": "Stress accent moves and two object pronouns (me, lo) are attached.",
+   "wrong": {
+    "lemma": "dámelo",
+    "pos": "X",
+    "note": "Two clitics glued to an imperative; the whole is taken as one unknown word."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-019",
+   "text": "authored",
+   "sentence": "Quiero comprarlo hoy mismo.",
+   "start": 7,
+   "end": 16,
+   "surface": "comprarlo",
+   "lemma": "comprar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "category": "clitic-attached",
+   "why_hard": "Infinitive with an attached object pronoun.",
+   "wrong": {
+    "lemma": "comprarlo",
+    "pos": "X",
+    "note": "Clitic -lo not split off."
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-hard-020",
+   "text": "authored",
+   "sentence": "Estaba escribiéndole una carta a su madre.",
+   "start": 7,
+   "end": 20,
+   "surface": "escribiéndole",
+   "lemma": "escribir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Ger"
+   },
+   "difficulty": "hard",
+   "category": "clitic-attached",
+   "why_hard": "Gerund with accent written on the stem because of the clitic.",
+   "wrong": {
+    "lemma": "escribiéndole",
+    "pos": "X",
+    "note": "Gerund plus clitic not split."
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-hard-021",
+   "text": "authored",
+   "sentence": "Siéntate aquí, por favor.",
+   "start": 0,
+   "end": 8,
+   "surface": "Siéntate",
+   "lemma": "sentar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "clitic-attached",
+   "why_hard": "Reflexive sentarse; the stem change makes it look like sentir.",
+   "wrong": {
+    "lemma": "sentir",
+    "pos": "VERB",
+    "note": "Stem siént- matched to sentir (siento, sientes)."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-022",
+   "text": "authored",
+   "sentence": "Cuéntaselo a tu madre antes de que se entere.",
+   "start": 0,
+   "end": 10,
+   "surface": "Cuéntaselo",
+   "lemma": "contar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "clitic-attached",
+   "why_hard": "Imperative with se + lo, and an o>ue stem.",
+   "wrong": {
+    "lemma": "cuéntaselo",
+    "pos": "X",
+    "note": "Both clitics left attached."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-023",
+   "text": "authored",
+   "sentence": "No puedo decírtelo todavía.",
+   "start": 9,
+   "end": 18,
+   "surface": "decírtelo",
+   "lemma": "decir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "category": "clitic-attached",
+   "why_hard": "Accented infinitive with te + lo.",
+   "wrong": {
+    "lemma": "decírtelo",
+    "pos": "X",
+    "note": "Infinitive+two clitics not decomposed."
+   },
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-hard-024",
+   "text": "authored",
+   "sentence": "Vámonos ya, que es tarde.",
+   "start": 0,
+   "end": 7,
+   "surface": "Vámonos",
+   "lemma": "ir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "clitic-attached",
+   "why_hard": "The final -s of vamos is dropped before nos, and ir is irregular.",
+   "wrong": {
+    "lemma": "vamo",
+    "pos": "X",
+    "note": "Drops the -s of vamos and keeps -nos as a plural ending, or reads as present indicative."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-025",
+   "text": "authored",
+   "sentence": "Llévalos contigo al mercado.",
+   "start": 0,
+   "end": 8,
+   "surface": "Llévalos",
+   "lemma": "llevar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "clitic-attached",
+   "why_hard": "Imperative accent shifts when a clitic is attached.",
+   "wrong": {
+    "lemma": "llévalo",
+    "pos": "X",
+    "note": "Read as a noun or as an unknown word."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-026",
+   "text": "authored",
+   "sentence": "Ayer no supe qué decir.",
+   "start": 8,
+   "end": 12,
+   "surface": "supe",
+   "lemma": "saber",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Irregular preterite stem sup-.",
+   "wrong": {
+    "lemma": "supar",
+    "pos": "VERB",
+    "note": "Regular -ar analysis of supe."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-027",
+   "text": "authored",
+   "sentence": "Los niños cupieron todos en el coche.",
+   "start": 10,
+   "end": 18,
+   "surface": "cupieron",
+   "lemma": "caber",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Irregular preterite stem cup-.",
+   "wrong": {
+    "lemma": "cupar",
+    "pos": "VERB",
+    "note": "No lemma found, regular guess."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-028",
+   "text": "authored",
+   "sentence": "Yo no quepo en esta silla.",
+   "start": 6,
+   "end": 11,
+   "surface": "quepo",
+   "lemma": "caber",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Irregular 1sg present.",
+   "wrong": {
+    "lemma": "quepar",
+    "pos": "VERB",
+    "note": "Unknown form guessed as -ar."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-029",
+   "text": "authored",
+   "sentence": "Anoche trajeron la comida a casa.",
+   "start": 7,
+   "end": 15,
+   "surface": "trajeron",
+   "lemma": "traer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Irregular preterite with the -eron (not -ieron) ending.",
+   "wrong": {
+    "lemma": "trajar",
+    "pos": "VERB",
+    "note": "Regular guess."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-030",
+   "text": "authored",
+   "sentence": "El mecánico condujo despacio.",
+   "start": 12,
+   "end": 19,
+   "surface": "condujo",
+   "lemma": "conducir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Irregular -ducir preterite (-duj-).",
+   "wrong": {
+    "lemma": "condujar",
+    "pos": "VERB",
+    "note": "Regular guess from the stem."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-031",
+   "text": "authored",
+   "sentence": "El perro oyó un ruido en el patio.",
+   "start": 9,
+   "end": 12,
+   "surface": "oyó",
+   "lemma": "oír",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "y-insertion in the preterite of oír.",
+   "wrong": {
+    "lemma": "oyar",
+    "pos": "VERB",
+    "note": "Regular guess."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-032",
+   "text": "authored",
+   "sentence": "Ella se rió de la broma.",
+   "start": 8,
+   "end": 11,
+   "surface": "rió",
+   "lemma": "reír",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Written without the accent on the stem; reír is an irregular -ír verb.",
+   "wrong": {
+    "lemma": "riar",
+    "pos": "VERB",
+    "note": "Looks like a stem plus -ió of a missing -er verb."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-033",
+   "text": "authored",
+   "sentence": "Mañana haré la tarea.",
+   "start": 7,
+   "end": 11,
+   "surface": "haré",
+   "lemma": "hacer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Irregular future stem har-.",
+   "wrong": {
+    "lemma": "harar",
+    "pos": "VERB",
+    "note": "Taken as a regular future of harar."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-034",
+   "text": "authored",
+   "sentence": "No quiso venir a la fiesta.",
+   "start": 3,
+   "end": 8,
+   "surface": "quiso",
+   "lemma": "querer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Irregular preterite stem quis-.",
+   "wrong": {
+    "lemma": "quisar",
+    "pos": "VERB",
+    "note": "Regular guess."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-035",
+   "text": "authored",
+   "sentence": "Los pájaros duermen en el árbol.",
+   "start": 12,
+   "end": 19,
+   "surface": "duermen",
+   "lemma": "dormir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Stem change o>ue.",
+   "wrong": {
+    "lemma": "duermir",
+    "pos": "VERB",
+    "note": "Stem not normalised."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-036",
+   "text": "authored",
+   "sentence": "Él puso los libros en la mesa.",
+   "start": 3,
+   "end": 7,
+   "surface": "puso",
+   "lemma": "poner",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "Irregular preterite with no accent and stem pus-.",
+   "wrong": {
+    "lemma": "pusar",
+    "pos": "VERB",
+    "note": "Regular guess."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-037",
+   "text": "authored",
+   "sentence": "Ya he escrito la carta.",
+   "start": 6,
+   "end": 13,
+   "surface": "escrito",
+   "lemma": "escribir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle (not escribido).",
+   "wrong": {
+    "lemma": "escritar",
+    "pos": "VERB",
+    "note": "Treated as a regular -ado/-ido participle of a nonexistent verb."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-038",
+   "text": "authored",
+   "sentence": "Hemos abierto la puerta.",
+   "start": 6,
+   "end": 13,
+   "surface": "abierto",
+   "lemma": "abrir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle that is also an ordinary adjective.",
+   "wrong": {
+    "lemma": "abierto",
+    "pos": "ADJ",
+    "note": "Lemma kept as adjective abierto."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-039",
+   "text": "authored",
+   "sentence": "¿Has visto mi libro?",
+   "start": 5,
+   "end": 10,
+   "surface": "visto",
+   "lemma": "ver",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle of ver.",
+   "wrong": {
+    "lemma": "vistar",
+    "pos": "VERB",
+    "note": "Regular guess."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-040",
+   "text": "authored",
+   "sentence": "Habían vuelto muy tarde.",
+   "start": 7,
+   "end": 13,
+   "surface": "vuelto",
+   "lemma": "volver",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle with o>ue.",
+   "wrong": {
+    "lemma": "vuelto",
+    "pos": "NOUN",
+    "note": "Read as a noun (change, coin)."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-041",
+   "text": "authored",
+   "sentence": "Todavía no he hecho la cama.",
+   "start": 14,
+   "end": 19,
+   "surface": "hecho",
+   "lemma": "hacer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle that is also a noun.",
+   "wrong": {
+    "lemma": "hecho",
+    "pos": "NOUN",
+    "note": "Read as the noun hecho (fact)."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-042",
+   "text": "authored",
+   "sentence": "Se le había roto el vaso.",
+   "start": 12,
+   "end": 16,
+   "surface": "roto",
+   "lemma": "romper",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle of romper that is also an adjective.",
+   "wrong": {
+    "lemma": "roto",
+    "pos": "ADJ",
+    "note": "Adjective roto kept as the lemma."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-043",
+   "text": "authored",
+   "sentence": "Ella ha dicho la verdad.",
+   "start": 8,
+   "end": 13,
+   "surface": "dicho",
+   "lemma": "decir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle that is also a noun.",
+   "wrong": {
+    "lemma": "dicho",
+    "pos": "NOUN",
+    "note": "Read as the noun dicho (saying)."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-044",
+   "text": "authored",
+   "sentence": "Me han puesto una multa.",
+   "start": 7,
+   "end": 13,
+   "surface": "puesto",
+   "lemma": "poner",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle that is also a noun.",
+   "wrong": {
+    "lemma": "puesto",
+    "pos": "NOUN",
+    "note": "Read as the noun puesto (stall, post)."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-045",
+   "text": "authored",
+   "sentence": "Había muerto en paz.",
+   "start": 6,
+   "end": 12,
+   "surface": "muerto",
+   "lemma": "morir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle of morir (o>ue, not morido) that is also an adjective.",
+   "wrong": {
+    "lemma": "muerto",
+    "pos": "ADJ",
+    "note": "Lemma kept as the adjective muerto."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-046",
+   "text": "authored",
+   "sentence": "Habían cubierto la mesa con un mantel.",
+   "start": 7,
+   "end": 15,
+   "surface": "cubierto",
+   "lemma": "cubrir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-participle",
+   "why_hard": "Irregular participle that is also a noun.",
+   "wrong": {
+    "lemma": "cubierto",
+    "pos": "NOUN",
+    "note": "Read as the noun cubierto (cutlery)."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-047",
+   "text": "authored",
+   "sentence": "Fue al mercado ayer.",
+   "start": 0,
+   "end": 3,
+   "surface": "Fue",
+   "lemma": "ir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Ser and ir share the preterite; the directional phrase al mercado selects ir.",
+   "wrong": {
+    "lemma": "ser",
+    "pos": "AUX",
+    "note": "Defaults to ser."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-048",
+   "text": "authored",
+   "sentence": "Vino a verme ayer.",
+   "start": 0,
+   "end": 4,
+   "surface": "Vino",
+   "lemma": "venir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Preterite of venir identical to the noun vino.",
+   "wrong": {
+    "lemma": "vino",
+    "pos": "NOUN",
+    "note": "Read as the noun vino (wine)."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-049",
+   "text": "authored",
+   "sentence": "Estudio para ser médico.",
+   "start": 8,
+   "end": 12,
+   "surface": "para",
+   "lemma": "para",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Preposition identical to a verb form.",
+   "wrong": {
+    "lemma": "parar",
+    "pos": "VERB",
+    "note": "Read as the present of parar."
+   },
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-050",
+   "text": "authored",
+   "sentence": "Tengo hambre, así que como una manzana.",
+   "start": 22,
+   "end": 26,
+   "surface": "como",
+   "lemma": "comer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Verb form identical to the conjunction como.",
+   "wrong": {
+    "lemma": "como",
+    "pos": "SCONJ",
+    "note": "Always read as the conjunction/adverb como."
+   },
+   "relation": "conj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-051",
+   "text": "authored",
+   "sentence": "Yo sé la respuesta.",
+   "start": 3,
+   "end": 5,
+   "surface": "sé",
+   "lemma": "saber",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Sé is both saber 1sg and ser imperative; the subject yo selects saber.",
+   "wrong": {
+    "lemma": "ser",
+    "pos": "AUX",
+    "note": "Read as the imperative of ser."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-052",
+   "text": "authored",
+   "sentence": "El niño está en casa.",
+   "start": 8,
+   "end": 12,
+   "surface": "está",
+   "lemma": "estar",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Accent is the only difference from the demonstrative esta.",
+   "wrong": {
+    "lemma": "este",
+    "pos": "DET",
+    "note": "Matched to the demonstrative esta after accent stripping."
+   },
+   "relation": "cop",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-053",
+   "text": "authored",
+   "sentence": "Ella cuenta cuentos a los niños.",
+   "start": 5,
+   "end": 11,
+   "surface": "cuenta",
+   "lemma": "contar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Verb form identical to a noun; the object cuentos selects the verb.",
+   "wrong": {
+    "lemma": "cuenta",
+    "pos": "NOUN",
+    "note": "Read as the noun cuenta (bill)."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-054",
+   "text": "authored",
+   "sentence": "Mi padre toca el piano todas las tardes.",
+   "start": 9,
+   "end": 13,
+   "surface": "toca",
+   "lemma": "tocar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Verb form identical to a rare noun.",
+   "wrong": {
+    "lemma": "toca",
+    "pos": "NOUN",
+    "note": "Read as the noun toca (headdress)."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-055",
+   "text": "authored",
+   "sentence": "Mi madre lava la ropa los lunes.",
+   "start": 9,
+   "end": 13,
+   "surface": "lava",
+   "lemma": "lavar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Verb form identical to a noun.",
+   "wrong": {
+    "lemma": "lava",
+    "pos": "NOUN",
+    "note": "Read as the noun lava."
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-056",
+   "text": "authored",
+   "sentence": "Llegué tarde al trabajo.",
+   "start": 7,
+   "end": 12,
+   "surface": "tarde",
+   "lemma": "tarde",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "Adverb identical to a noun and to a verb form.",
+   "wrong": {
+    "lemma": "tardar",
+    "pos": "VERB",
+    "note": "Read as the subjunctive of tardar."
+   },
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-057",
+   "text": "authored",
+   "sentence": "Se venden casas en esta calle.",
+   "start": 0,
+   "end": 2,
+   "surface": "Se",
+   "lemma": "se",
+   "pos": "PRON",
+   "features": {
+    "Person": "3"
+   },
+   "difficulty": "hard",
+   "category": "se-construction",
+   "why_hard": "Passive se has no referent and no accent.",
+   "wrong": {
+    "lemma": "ser",
+    "pos": "AUX",
+    "note": "Confused with sé or with the verb ser."
+   },
+   "relation": "expl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-058",
+   "text": "authored",
+   "sentence": "Juan se lava las manos antes de comer.",
+   "start": 5,
+   "end": 7,
+   "surface": "se",
+   "lemma": "se",
+   "pos": "PRON",
+   "features": {
+    "Person": "3"
+   },
+   "difficulty": "hard",
+   "category": "se-construction",
+   "why_hard": "Reflexive se of a body-part action.",
+   "wrong": {
+    "lemma": "sé",
+    "pos": "VERB",
+    "note": "Confused with the first person of saber."
+   },
+   "relation": "expl"
+  },
+  {
+   "id": "es-hard-059",
+   "text": "authored",
+   "sentence": "Se dice que hay un examen mañana.",
+   "start": 0,
+   "end": 2,
+   "surface": "Se",
+   "lemma": "se",
+   "pos": "PRON",
+   "features": {
+    "Person": "3"
+   },
+   "difficulty": "hard",
+   "category": "se-construction",
+   "why_hard": "Impersonal se.",
+   "wrong": {
+    "lemma": "ser",
+    "pos": "AUX",
+    "note": "Read as a verb form."
+   },
+   "relation": "expl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-060",
+   "text": "authored",
+   "sentence": "Ellos se dieron un abrazo.",
+   "start": 6,
+   "end": 8,
+   "surface": "se",
+   "lemma": "se",
+   "pos": "PRON",
+   "features": {
+    "Person": "3"
+   },
+   "difficulty": "hard",
+   "category": "se-construction",
+   "why_hard": "Reciprocal se.",
+   "wrong": {
+    "lemma": "sé",
+    "pos": "VERB",
+    "note": "Read as a verb."
+   },
+   "relation": "expl"
+  },
+  {
+   "id": "es-hard-061",
+   "text": "authored",
+   "sentence": "Se lo dije ayer.",
+   "start": 0,
+   "end": 2,
+   "surface": "Se",
+   "lemma": "se",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "se-construction",
+   "why_hard": "Se replaces le before lo; it is an indirect object, not a reflexive.",
+   "wrong": {
+    "lemma": "ser",
+    "pos": "AUX",
+    "note": "Treated as a verb or as the reflexive se."
+   },
+   "relation": "iobj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-062",
+   "text": "authored",
+   "sentence": "Ella se levanta temprano.",
+   "start": 8,
+   "end": 15,
+   "surface": "levanta",
+   "lemma": "levantar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "se-construction",
+   "why_hard": "Reflexive use; the lemma is the bare infinitive in this convention.",
+   "wrong": {
+    "lemma": "levantarse",
+    "pos": "VERB",
+    "note": "Lemma given as the reflexive infinitive."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-063",
+   "text": "authored",
+   "sentence": "Me acuesto a las diez.",
+   "start": 3,
+   "end": 10,
+   "surface": "acuesto",
+   "lemma": "acostar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "se-construction",
+   "why_hard": "Reflexive acostarse with an o>ue stem change.",
+   "wrong": {
+    "lemma": "acuestar",
+    "pos": "VERB",
+    "note": "Stem acuest- not mapped to acostar."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-064",
+   "text": "authored",
+   "sentence": "Busqué mi llave por todas partes.",
+   "start": 0,
+   "end": 6,
+   "surface": "Busqué",
+   "lemma": "buscar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "c>qu spelling before e.",
+   "wrong": {
+    "lemma": "busquer",
+    "pos": "X",
+    "note": "The qu is not mapped back to c."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-065",
+   "text": "authored",
+   "sentence": "Empecé a estudiar ayer.",
+   "start": 0,
+   "end": 6,
+   "surface": "Empecé",
+   "lemma": "empezar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "z>c before e and e>ie in other forms.",
+   "wrong": {
+    "lemma": "empecer",
+    "pos": "VERB",
+    "note": "The c is not mapped back to z, and an -er verb is guessed."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-066",
+   "text": "authored",
+   "sentence": "Pagué la cuenta anoche.",
+   "start": 0,
+   "end": 5,
+   "surface": "Pagué",
+   "lemma": "pagar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "g>gu before e.",
+   "wrong": {
+    "lemma": "paguer",
+    "pos": "X",
+    "note": "The gu is not mapped back to g."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-067",
+   "text": "authored",
+   "sentence": "Escojo el azul.",
+   "start": 0,
+   "end": 6,
+   "surface": "Escojo",
+   "lemma": "escoger",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "g>j before o.",
+   "wrong": {
+    "lemma": "escojar",
+    "pos": "VERB",
+    "note": "j taken as the stem consonant."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-068",
+   "text": "authored",
+   "sentence": "El perro muerde si lo molestan.",
+   "start": 9,
+   "end": 15,
+   "surface": "muerde",
+   "lemma": "morder",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "o>ue stem change in an -er verb.",
+   "wrong": {
+    "lemma": "muerder",
+    "pos": "VERB",
+    "note": "Stem not normalised."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-069",
+   "text": "authored",
+   "sentence": "Siempre sigue las reglas.",
+   "start": 8,
+   "end": 13,
+   "surface": "sigue",
+   "lemma": "seguir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "e>i change plus gu before e.",
+   "wrong": {
+    "lemma": "siguer",
+    "pos": "X",
+    "note": "Missing e>i and gu>g mapping."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-070",
+   "text": "authored",
+   "sentence": "Yo construyo casas.",
+   "start": 3,
+   "end": 12,
+   "surface": "construyo",
+   "lemma": "construir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "-uir verbs insert y.",
+   "wrong": {
+    "lemma": "construyar",
+    "pos": "VERB",
+    "note": "y read as part of the stem."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-071",
+   "text": "authored",
+   "sentence": "Espero que lo cruces con cuidado.",
+   "start": 14,
+   "end": 20,
+   "surface": "cruces",
+   "lemma": "cruzar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "z>c before e, and the form looks like a noun plural.",
+   "wrong": {
+    "lemma": "cruce",
+    "pos": "NOUN",
+    "note": "Read as the plural of the noun cruce."
+   },
+   "relation": "ccomp",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-072",
+   "text": "authored",
+   "sentence": "Los chicos juegan fútbol en el parque.",
+   "start": 11,
+   "end": 17,
+   "surface": "juegan",
+   "lemma": "jugar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "u>ue, the only verb with that change.",
+   "wrong": {
+    "lemma": "juegar",
+    "pos": "VERB",
+    "note": "Stem not normalised."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-073",
+   "text": "authored",
+   "sentence": "Quiero que saques la basura.",
+   "start": 11,
+   "end": 17,
+   "surface": "saques",
+   "lemma": "sacar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "stem-change-or-orthographic",
+   "why_hard": "c>qu before e in the subjunctive.",
+   "wrong": {
+    "lemma": "saquer",
+    "pos": "X",
+    "note": "qu not mapped back to c."
+   },
+   "relation": "ccomp"
+  },
+  {
+   "id": "es-hard-074",
+   "text": "authored",
+   "sentence": "Los pobres también tienen derechos.",
+   "start": 4,
+   "end": 10,
+   "surface": "pobres",
+   "lemma": "pobre",
+   "pos": "ADJ",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Nominalised adjective with the article; gender is not marked.",
+   "wrong": {
+    "lemma": "pobres",
+    "pos": "NOUN",
+    "note": "Lemma left in the plural noun reading."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-hard-075",
+   "text": "authored",
+   "sentence": "La capital de Francia es París.",
+   "start": 3,
+   "end": 10,
+   "surface": "capital",
+   "lemma": "capital",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Noun and adjective homograph; the article la selects the noun.",
+   "wrong": {
+    "lemma": "capital",
+    "pos": "ADJ",
+    "note": "Read as the adjective capital."
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-076",
+   "text": "authored",
+   "sentence": "Mi hermana es médica.",
+   "start": 14,
+   "end": 20,
+   "surface": "médica",
+   "lemma": "médico",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Feminine noun of a profession; lemma is the masculine.",
+   "wrong": {
+    "lemma": "médica",
+    "pos": "ADJ",
+    "note": "Lemma kept as the feminine form and read as an adjective."
+   },
+   "relation": "root"
+  },
+  {
+   "id": "es-hard-077",
+   "text": "authored",
+   "sentence": "Las trabajadoras llegaron temprano.",
+   "start": 4,
+   "end": 16,
+   "surface": "trabajadoras",
+   "lemma": "trabajador",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Feminine plural noun derived from an agent noun in -or.",
+   "wrong": {
+    "lemma": "trabajadora",
+    "pos": "NOUN",
+    "note": "Plural stripped but feminine ending kept in the lemma."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-hard-078",
+   "text": "authored",
+   "sentence": "Conozco a una joven muy simpática.",
+   "start": 14,
+   "end": 19,
+   "surface": "joven",
+   "lemma": "joven",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Adjective used as a noun after una.",
+   "wrong": {
+    "lemma": "joven",
+    "pos": "ADJ",
+    "note": "Read as the adjective joven."
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-079",
+   "text": "authored",
+   "sentence": "Los jóvenes votan por primera vez.",
+   "start": 4,
+   "end": 11,
+   "surface": "jóvenes",
+   "lemma": "joven",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Plural of joven loses the accent mark in the singular.",
+   "wrong": {
+    "lemma": "jóvene",
+    "pos": "NOUN",
+    "note": "Plural stripped without adding or removing the written accent."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-hard-080",
+   "text": "authored",
+   "sentence": "Los ricos no siempre son felices.",
+   "start": 4,
+   "end": 9,
+   "surface": "ricos",
+   "lemma": "rico",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Adjective used as a noun with the article; masculine plural.",
+   "wrong": {
+    "lemma": "rico",
+    "pos": "NOUN",
+    "note": "Given the noun rico."
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-hard-081",
+   "text": "authored",
+   "sentence": "Mi abuela es una mujer fuerte.",
+   "start": 23,
+   "end": 29,
+   "surface": "fuerte",
+   "lemma": "fuerte",
+   "pos": "ADJ",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Adjective with one form for both genders, identical to a noun.",
+   "wrong": {
+    "lemma": "fuerte",
+    "pos": "NOUN",
+    "note": "Read as the noun fuerte (fort)."
+   },
+   "relation": "amod",
+   "ambiguous": true
+  },
+  {
+   "id": "es-hard-082",
+   "text": "authored",
+   "sentence": "La mayor de mis hermanas vive en Chile.",
+   "start": 3,
+   "end": 8,
+   "surface": "mayor",
+   "lemma": "mayor",
+   "pos": "ADJ",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "adjective-as-noun-or-gender",
+   "why_hard": "Elliptical adjective with the article, used as the subject.",
+   "wrong": {
+    "lemma": "mayor",
+    "pos": "NOUN",
+    "note": "Read as the noun mayor."
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  }
+ ]
+}

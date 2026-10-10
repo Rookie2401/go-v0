@@ -193,7 +193,7 @@ describe('keyboard and tab order', () => {
   it('with no voice: the controls are Close, the four layers, Review, Wrong, More and the three "how well do you know it" marks; the pronounce button is disabled and says why', () => {
     ui.show(cardFor(), anchor());
     const names = [...ui.root()!.querySelectorAll('button:not([disabled])')].filter((b) => !b.closest('[hidden]')).map((b) => b.getAttribute('aria-label') ?? b.textContent);
-    expect(names).toEqual(['Close GoLearn card', 'Form', 'Phrase & syntax', 'Grammar', 'English rescue', 'Review this', 'This analysis is wrong', 'More', 'All forms', 'Meanings', 'Origin', 'Sound', 'New to me', 'I recognise it', 'I can use it']);
+    expect(names).toEqual(['Close GoLearn card', 'Form', 'Phrase & syntax', 'Grammar', 'English rescue', 'Review this', 'This analysis is wrong', 'More', 'All forms', 'Meanings', 'Origin', 'Word structure', 'Sound', 'New to me', 'I recognise it', 'I can use it']);
     const say = ui.root()!.querySelector('.say') as HTMLButtonElement;
     expect(say.disabled).toBe(true);
     expect(text(ui.root())).toMatch(/Speech is not available/);

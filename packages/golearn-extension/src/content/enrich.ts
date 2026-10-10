@@ -8,8 +8,10 @@
  * an etymology is `supported-by-source` (Wiktionary, CC BY-SA) and never generated; a pronunciation says whether it is
  * the dictionary's IPA, the analyser's rule, or a recording. Pure: no DOM, no network.
  */
-import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
+import type { LanguageAdapter, PartOfSpeech, WordPart } from '../../../../src/core';
 import { cellsForSelection, featureKey, mergeParadigm, type Paradigm, type SegmentationAlternatives } from '../../../../src/core/paradigm';
+import type { AnalysisCandidate } from '../../../../src/core/adapters';
+import { languageNameOf } from './languageNames';
 
 /** The dictionary's full record as the worker hands it to the page (the `full-1` keys; every field optional and untrusted). */
 export interface LexicalRecord {
@@ -32,6 +34,10 @@ export interface EtymologyView {
   text?: string;
   /** The structured chain the templates give: inherited / borrowed / derived from a language and form. */
   chain: Array<{ relation: 'inherited' | 'borrowed' | 'derived' | 'cognate' | 'calque' | 'affix' | 'compound' | 'onomatopoeic' | 'uncertain' | 'other'; language?: string; form?: string; gloss?: string }>;
+  /** Cognates the source lists (template `cog`): words of other languages that share the origin. Not steps of the word's own history. */
+  cognates: Array<{ language?: string; form?: string; gloss?: string }>;
+  /** Names for the language codes that occur in the chain and the cognates (`la` → Latin); a code with no entry stays a code. */
+  languageNames: Record<string, string>;
   source?: { label: string; licence: string };
   note?: string;
 }
@@ -132,6 +138,7 @@ export function alignTable<R extends { features: Record<string, string>; form: s
 export function etymologyOf(record: LexicalRecord | undefined): EtymologyView {
   const text = str(record?.ety?.text, 600);
   const chain: EtymologyView['chain'] = [];
+  const cognates: EtymologyView['cognates'] = [];
   for (const t of record?.ety?.tpl ?? []) {
     const k = str(t?.k, 20);
     if (!k) continue;
@@ -139,11 +146,35 @@ export function etymologyOf(record: LexicalRecord | undefined): EtymologyView {
     const language = str(t.lang, 20);
     const form = str(t.form, 80);
     if (!language && !form && relation === 'other') continue;
-    chain.push({ relation, ...(language ? { language } : {}), ...(form ? { form } : {}), ...(str(t.gloss, 120) ? { gloss: str(t.gloss, 120) } : {}) });
+    const gloss = str(t.gloss, 120);
+    // a cognate is a word of another language that shares the origin, not a step in this word's history
+    if (relation === 'cognate') { if (form) cognates.push({ ...(language ? { language } : {}), form, ...(gloss ? { gloss } : {}) }); continue; }
+    chain.push({ relation, ...(language ? { language } : {}), ...(form ? { form } : {}), ...(gloss ? { gloss } : {}) });
   }
-  if (!text && !chain.length) return { status: 'unknown', chain: [], note: 'No documented origin in the dictionary.' };
+  if (!text && !chain.length && !cognates.length) return { status: 'unknown', chain: [], cognates: [], languageNames: {}, note: 'No documented origin in the dictionary.' };
   const disputed = /uncertain|unknown|disputed|unclear|perhaps|possibly/i.test(text ?? '') || chain.some((c) => c.relation === 'uncertain');
-  return { status: disputed ? 'conflicted' : 'supported-by-source', text, chain: chain.slice(0, 12), source: WIKTIONARY, ...(disputed ? { note: 'The source itself calls this origin uncertain or disputed.' } : {}) };
+  const kept = chain.slice(0, 12);
+  const keptCognates = cognates.slice(0, 12);
+  const languageNames: Record<string, string> = {};
+  for (const c of [...kept, ...keptCognates]) { const n = languageNameOf(c.language); if (c.language && n) languageNames[c.language] = n; }
+  return { status: disputed ? 'conflicted' : 'supported-by-source', text, chain: kept, cognates: keptCognates, languageNames, source: WIKTIONARY, ...(disputed ? { note: 'The source itself calls this origin uncertain or disputed.' } : {}) };
+}
+
+const STEP_VERB: Record<EtymologyView['chain'][number]['relation'], string> = { inherited: 'inherited from', borrowed: 'borrowed from', derived: 'derived from', cognate: 'cognate', calque: 'calque of', affix: 'built from', compound: 'compound of', onomatopoeic: 'imitative', uncertain: 'uncertain', other: 'see' };
+
+/** One step of the chain in words: "borrowed from Latin liber (“book”)"; a code with no known name stays a code ("borrowed from xyz: liber"). */
+export function etymologyStepText(c: EtymologyView['chain'][number], names: Record<string, string>): string {
+  const lang = c.language ? names[c.language] ?? languageNameOf(c.language) : undefined;
+  const gloss = c.gloss ? ` (“${c.gloss}”)` : '';
+  if (c.relation === 'affix' || c.relation === 'compound') return `${STEP_VERB[c.relation]} ${c.form ?? ''}${lang ? ` (${lang})` : c.language ? ` (${c.language})` : ''}${gloss}`.replace(/\s+/g, ' ').trim();
+  const where = lang ? `${lang}${c.form ? ` ${c.form}` : ''}` : c.language ? `${c.language}${c.form ? `: ${c.form}` : ''}` : c.form ?? '';
+  return `${STEP_VERB[c.relation]}${where ? ` ${where}` : ''}${gloss}`;
+}
+
+/** One cognate in words: "German Buch (“book”)"; an unknown code stays a code ("xyz: Buch"). */
+export function cognateText(c: EtymologyView['cognates'][number], names: Record<string, string>): string {
+  const lang = c.language ? names[c.language] ?? languageNameOf(c.language) : undefined;
+  return `${lang ? `${lang} ` : c.language ? `${c.language}: ` : ''}${c.form ?? ''}${c.gloss ? ` (“${c.gloss}”)` : ''}`.trim();
 }
 
 /** Pronunciation: the dictionary's IPA, hyphenation, romanisation and recordings, with the analyser's notes beside them. */
@@ -185,6 +216,196 @@ export function segmentationsOf(adapter: LanguageAdapter | undefined, text: stri
   if (!adapter?.segmentations || !text.trim()) return undefined;
   const s = safe(() => adapter.segmentations!(text, context));
   return s && s.chosen && Array.isArray(s.alternatives) ? s : undefined;
+}
+
+// ───────────────────────────── word structure (Stage 5) ─────────────────────────────
+
+export type StructureRole = 'prefix' | 'root' | 'stem' | 'suffix' | 'ending' | 'component' | 'head' | 'clitic' | 'linking';
+
+export interface StructurePart {
+  text: string;
+  role: StructureRole;
+  gloss?: string;
+  /** Who gave this part: the dictionary's template, the analyser's rules, or the analyser's paradigm. */
+  source: string;
+}
+
+export interface WordStructureView {
+  /** supported-by-source: a dictionary template gave the parts; provisional: only the analyser's rules did; unknown: nothing. */
+  status: FieldStatus;
+  parts: StructurePart[];
+  derivedFrom?: { lemma: string; relation: string; source: string };
+  /** Words of the same family the dictionary lists (derived: rel.d; related: rel.r). */
+  family: { derived: string[]; related: string[]; source?: string };
+  notes: string[];
+}
+
+const PART_TEMPLATES = new Set(['af', 'affix', 'suffix', 'prefix', 'com', 'compound', 'blend']);
+const FORMING = new Set(['af', 'affix', 'suffix', 'prefix']);
+
+/**
+ * The parts one dictionary template names. `form` is the template's parts joined with " + ". A hyphen marks an affix
+ * ("-keit" a suffix, "ver-" a prefix, "-s-" a linking element); without hyphens the template kind decides (prefix: the
+ * first part is the prefix; suffix: the last is the suffix) and every other part is a root or, in a compound, a component.
+ */
+function partsOfTemplate(k: string, form: string, source: string): StructurePart[] {
+  const raw = form.split(/\s+\+\s+/).map((p) => p.replace(/[\u0000-\u001f\u007f]/g, '').trim()).filter((p) => p && p !== '-' && p !== '?');
+  if (!raw.length || raw.length > 8 || raw.some((p) => p.length > 40)) return [];
+  const affixy = (p: string): boolean => /^-|-$/.test(p);
+  const bases = raw.filter((p, i) => !affixy(p) && !(k === 'prefix' && i === 0) && !(k === 'suffix' && i === raw.length - 1)).length;
+  return raw.map((p, i): StructurePart => {
+    const lead = p.startsWith('-'); const trail = p.endsWith('-') && p.length > 1;
+    let role: StructureRole;
+    if (lead && trail) role = 'linking';
+    else if (lead) role = 'suffix';
+    else if (trail) role = 'prefix';
+    else if (k === 'prefix' && i === 0) role = 'prefix';
+    else if (k === 'suffix' && i === raw.length - 1) role = 'suffix';
+    else if (k === 'com' || k === 'compound' || k === 'blend') role = 'component';
+    else role = bases > 1 ? 'component' : 'root';
+    return { text: p, role, source };
+  });
+}
+
+const baseOf = (p: string): string => p.replace(/^\*/, '').replace(/^-+|-+$/g, '');
+const normText = (s: string | undefined): string => (s ?? '').normalize('NFC').toLowerCase();
+
+const PART_ROLE: Record<NonNullable<WordPart['kind']>, StructureRole> = { component: 'component', head: 'head', link: 'linking', contracted: 'component', clitic: 'clitic', prefix: 'prefix', marker: 'linking', stem: 'stem' };
+
+/** The analyser's reading of the word that matches the card's lemma, part of speech and features, with the structure it carries. */
+function analysedReading(adapter: LanguageAdapter, word: string, lemma: string, pos: string | undefined, features: Record<string, string>): AnalysisCandidate | undefined {
+  const analysed = safe(() => adapter.analyze([{ surface: word, start: 0, end: word.length, isWord: true, normalized: adapter.normalize(word) }]));
+  const cands = analysed?.[0]?.candidates ?? [];
+  const same = cands.filter((c) => normText(c.lemma) === normText(lemma) && (!pos || !c.pos || c.pos === pos));
+  if (!same.length) return undefined;
+  const score = (c: AnalysisCandidate): number => Object.entries(features).filter(([k, v]) => c.morph?.[k] === v).length;
+  const top = Math.max(...same.map(score));
+  const pool = same.filter((c) => score(c) === top);
+  return pool.find(hasStructure) ?? pool[0];
+}
+const hasStructure = (c: AnalysisCandidate): boolean => (c.parts?.length ?? 0) >= 2 || Array.isArray(c.notes?.components) || typeof c.notes?.derivedFrom === 'string' || !!c.unit;
+
+/** The longest common prefix of the paradigm's one-word cells, as the stem of the selected form, when it is a believable one. */
+function generatedSplit(adapter: LanguageAdapter, lemma: string, pos: PartOfSpeech, surface: string, features: Record<string, string>): { stem: string; ending: string } | undefined {
+  const g = adapter.paradigm ? safe(() => adapter.paradigm!(lemma, pos, { features, surface })) : undefined;
+  if (!g || g.kind === 'none' || !g.cells?.length) return undefined;
+  const forms = [...new Set(g.cells.map((c) => c.form.normalize('NFC')).filter((f) => f && !/\s/.test(f)))];
+  const w = surface.normalize('NFC');
+  if (forms.length < 2 || !forms.some((f) => normText(f) === normText(w))) return undefined;
+  let lcp = forms[0];
+  for (const f of forms) { let i = 0; while (i < lcp.length && i < f.length && normText(lcp[i]) === normText(f[i])) i++; lcp = lcp.slice(0, i); }
+  // never cut between a consonant and its nukta / virama; an irregular paradigm shares too little to name a stem
+  while (lcp.length && /[़्]/.test(w[lcp.length] ?? '')) lcp = lcp.slice(0, -1);
+  if (lcp.length < 2 || lcp.length < Math.ceil(lemma.length / 2) || lcp.length >= w.length) return undefined;
+  return { stem: w.slice(0, lcp.length), ending: w.slice(lcp.length) };
+}
+
+/**
+ * The structure of a word, from named sources only and never from guesswork. In this order: (1) the dictionary's etymology
+ * templates that give parts (af, affix, suffix, prefix, compound, com, blend); (2) the analyser's reading: compound
+ * components, a separable prefix, attached pronouns, the causative base or the word a derivation comes from (`parts`,
+ * `notes`, `unit`); (3) the stem and ending of the selected form when the analyser's paradigm generates the lemma
+ * (`generated`: the shared start of the paradigm's cells is the stem); (4) the dictionary's derived and related words as the
+ * family. A source that has nothing contributes nothing: a word with no source stays `unknown` and is never split.
+ */
+export function structureOf(record: LexicalRecord | undefined, adapter: LanguageAdapter | undefined, lemma: string, pos: PartOfSpeech | string | undefined, surface: string, features: Record<string, string> = {}, opts: { languageId?: string } = {}): WordStructureView {
+  const notes: string[] = [];
+  const own = opts.languageId ?? adapter?.lang;
+  const ownName = languageNameOf(own);
+  const wordLemma = lemma.trim() || surface.trim();
+  const written = surface.trim() || wordLemma;
+
+  // (1) the dictionary's templates
+  let parts: StructurePart[] = [];
+  let derivedFrom: WordStructureView['derivedFrom'];
+  const templates = (record?.ety?.tpl ?? []).filter((t) => t && PART_TEMPLATES.has(String(t.k)) && typeof t.form === 'string').map((t) => ({ k: String(t.k), lang: str(t.lang, 20), form: String(t.form) }));
+  const ordered = [...templates.filter((t) => !t.lang || t.lang === own), ...templates.filter((t) => t.lang && t.lang !== own)];
+  for (const t of ordered) {
+    const source = `Wiktionary etymology template “${t.k}”`;
+    const tp = partsOfTemplate(t.k, t.form, source);
+    if (!tp.length) continue;
+    parts = tp;
+    const foreign = !!t.lang && t.lang !== own;
+    if (foreign) notes.push(`The dictionary gives these parts for the ${languageNameOf(t.lang) ?? t.lang} word this one comes from, not for the ${ownName ?? 'word\'s own language'} word itself.`);
+    else {
+      const bases = tp.filter((p) => p.role === 'root');
+      const affixes = tp.filter((p) => p.role === 'prefix' || p.role === 'suffix');
+      if (FORMING.has(t.k) && bases.length === 1 && affixes.length && !tp.some((p) => p.role === 'component')) {
+        derivedFrom = { lemma: baseOf(bases[0].text), relation: `formed with ${affixes.map((a) => `${a.role} ${a.text}`).join(' and ')}`, source };
+      }
+    }
+    break;
+  }
+  const fromTemplate = parts.length > 0;
+
+  // (2) the analyser's reading
+  let analyserParts: StructurePart[] = [];
+  let analyserDerived: WordStructureView['derivedFrom'];
+  let analyserSource = '';
+  if (adapter) {
+    analyserSource = `${adapter.name} analyser (${adapter.lang}@${adapter.version}), by its rules`;
+    let reading = analysedReading(adapter, written, wordLemma, pos, features);
+    let on = 'the written form';
+    if ((!reading || !hasStructure(reading)) && normText(written) !== normText(wordLemma)) {
+      const viaLemma = analysedReading(adapter, wordLemma, wordLemma, pos, {});
+      if (viaLemma && hasStructure(viaLemma)) { reading = viaLemma; on = 'the lemma'; }
+    }
+    if (reading) {
+      const src = `${analyserSource}, on ${on}`;
+      const wp = reading.parts ?? [];
+      if (wp.length >= 2) {
+        analyserParts = wp.filter((p) => p.text).map((p): StructurePart => {
+          const bits = [p.role, p.lemma && normText(p.lemma) !== normText(p.text) ? `lemma ${p.lemma}` : undefined].filter((x): x is string => !!x);
+          return { text: p.text, role: p.kind ? PART_ROLE[p.kind] : /pronoun|reflexive|clitic/i.test(p.role ?? '') ? 'clitic' : 'component', ...(bits.length ? { gloss: bits.join('; ') } : {}), source: src };
+        });
+      } else if (Array.isArray(reading.notes?.components) && reading.notes!.components.length >= 2) {
+        analyserParts = (reading.notes!.components as string[]).filter((x) => typeof x === 'string' && x).map((text) => ({ text, role: 'component' as const, source: src }));
+      }
+      const df = reading.notes?.derivedFrom;
+      if (typeof df === 'string' && df.trim()) {
+        const causative = typeof reading.notes?.causative === 'string' ? reading.notes.causative : undefined;
+        analyserDerived = { lemma: df.trim(), relation: causative ? `${causative} causative of` : reading.morph?.Voice === 'Cau' ? 'causative of (marked so in the analyser\'s word list)' : 'derived from, by the analyser\'s rule', source: src };
+      }
+      if (reading.unit) notes.push(`This word is a piece of the unit “${reading.unit.display}” (${reading.unit.role}), as the analyser reads the sentence.`);
+      const stemNote = reading.notes?.stem;
+      if (typeof stemNote === 'string' && stemNote && !analyserParts.some((p) => p.role === 'stem')) notes.push(`Stem by the analyser's rules: ${stemNote}.`);
+    }
+  }
+
+  // (3) the generated stem and ending of the selected form
+  let generated: StructurePart[] = [];
+  if (adapter && pos) {
+    const split = generatedSplit(adapter, wordLemma, pos as PartOfSpeech, written, features);
+    if (split) {
+      const src = `${adapter.name} analyser (${adapter.lang}@${adapter.version}), generated: the stem is the start the paradigm's forms share`;
+      const gloss = Object.keys(features).sort().map((k) => `${k} ${features[k]}`).join(', ');
+      generated = [{ text: split.stem, role: 'stem', source: src }, { text: split.ending, role: 'ending', ...(gloss ? { gloss } : {}), source: src }];
+    }
+  }
+
+  // which source supplies the parts
+  let status: FieldStatus = 'unknown';
+  if (fromTemplate) {
+    status = 'supported-by-source';
+    if (analyserParts.length && normText(written) === normText(wordLemma)) {
+      const join = (ps: StructurePart[]): string => normText(ps.map((p) => baseOf(p.text)).join(''));
+      if (join(analyserParts) !== join(parts)) notes.push(`The analyser's rules cut this word differently (${analyserParts.map((p) => p.text).join(' | ')}); the dictionary's parts are shown.`);
+    }
+    if (generated.length) notes.push(`The form “${written}” is the stem “${generated[0].text}” with the ending “${generated[1].text}” (generated by the analyser's rules, not from the dictionary).`);
+  } else if (analyserParts.length) {
+    parts = analyserParts; status = 'provisional';
+    if (generated.length) notes.push(`The form “${written}” is the stem “${generated[0].text}” with the ending “${generated[1].text}” (generated by the analyser's rules).`);
+  } else if (generated.length) {
+    parts = generated; status = 'provisional';
+  }
+  if (!derivedFrom && analyserDerived) { derivedFrom = analyserDerived; if (status === 'unknown') status = 'provisional'; }
+  else if (derivedFrom && analyserDerived && normText(derivedFrom.lemma) !== normText(analyserDerived.lemma)) notes.push(`The analyser's rules read it as derived from “${analyserDerived.lemma}”; the dictionary's template gives “${derivedFrom.lemma}”.`);
+  if (status === 'provisional') notes.push('Provisional: from the analyser\'s rules only, with no dictionary template to confirm it.');
+
+  // (4) the family
+  const rel = relationsOf(record);
+  const family: WordStructureView['family'] = { derived: rel.derived, related: rel.related, ...(rel.derived.length || rel.related.length ? { source: WIKTIONARY.label } : {}) };
+  return { status, parts, ...(derivedFrom ? { derivedFrom } : {}), family, notes };
 }
 
 function safe<T>(fn: () => T): T | undefined { try { return fn(); } catch { return undefined; } }

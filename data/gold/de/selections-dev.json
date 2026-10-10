@@ -1,0 +1,3507 @@
+{
+ "language": "de",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "dev",
+ "source": "data/corpus/de (course texts; bible-* excluded)",
+ "feature_keys": [
+  "Case",
+  "Number",
+  "Gender",
+  "Person",
+  "Tense",
+  "Mood",
+  "VerbForm",
+  "Degree",
+  "PronType",
+  "Polite"
+ ],
+ "notes": "Contextual word selections from the course corpus. AI-judged, unreviewed. Labelled without running the analysers on the items. Use for measuring; do not tune the engine to this file.",
+ "items": [
+  {
+   "id": "de-dev-001",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Daniel kommt aus den USA und wohnt seit zwei Wochen in einer kleinen Stadt in Deutschland.",
+   "start": 0,
+   "end": 6,
+   "surface": "Daniel",
+   "lemma": "Daniel",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-002",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Daniel kommt aus den USA und wohnt seit zwei Wochen in einer kleinen Stadt in Deutschland.",
+   "start": 40,
+   "end": 44,
+   "surface": "zwei",
+   "lemma": "zwei",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "de-dev-003",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Heute möchte er einen Freund in der nächsten größeren Stadt besuchen.",
+   "start": 6,
+   "end": 12,
+   "surface": "möchte",
+   "lemma": "mögen",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-dev-004",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Heute möchte er einen Freund in der nächsten größeren Stadt besuchen.",
+   "start": 60,
+   "end": 68,
+   "surface": "besuchen",
+   "lemma": "besuchen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-005",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Er fährt mit dem Regionalzug, weil das die einfachste Möglichkeit ist.",
+   "start": 39,
+   "end": 42,
+   "surface": "die",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Nom",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-006",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Auf dem Bildschirm kann man oft die Sprache wählen.",
+   "start": 0,
+   "end": 3,
+   "surface": "Auf",
+   "lemma": "auf",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-dev-007",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Daniel wählt Deutsch, weil er üben will.",
+   "start": 0,
+   "end": 6,
+   "surface": "Daniel",
+   "lemma": "Daniel",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-008",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Er kauft eine Fahrkarte und liest den Text darauf genau.",
+   "start": 14,
+   "end": 23,
+   "surface": "Fahrkarte",
+   "lemma": "Fahrkarte",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-009",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Manchmal muss man eine Fahrkarte vor der Fahrt stempeln, und dann steht ein kleines Gerät am Bahnsteig.",
+   "start": 9,
+   "end": 13,
+   "surface": "muss",
+   "lemma": "müssen",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-dev-010",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Manchmal muss man eine Fahrkarte vor der Fahrt stempeln, und dann steht ein kleines Gerät am Bahnsteig.",
+   "start": 61,
+   "end": 65,
+   "surface": "dann",
+   "lemma": "dann",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-011",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Der Regionalzug hält an vielen kleinen Bahnhöfen.",
+   "start": 16,
+   "end": 20,
+   "surface": "hält",
+   "lemma": "halten",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-012",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Vor jedem Halt sagt eine Stimme den Namen des Bahnhofs an.",
+   "start": 20,
+   "end": 24,
+   "surface": "eine",
+   "lemma": "ein",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Nom",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-013",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Manchmal hat ein Zug Verspätung, aber heute kommt er pünktlich an.",
+   "start": 9,
+   "end": 12,
+   "surface": "hat",
+   "lemma": "haben",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-014",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "In der größeren Stadt steigt Daniel in die Straßenbahn um.",
+   "start": 7,
+   "end": 15,
+   "surface": "größeren",
+   "lemma": "groß",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp",
+    "Case": "Dat",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-015",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Oft zeigt ein Bildschirm den Namen der nächsten Haltestelle.",
+   "start": 14,
+   "end": 24,
+   "surface": "Bildschirm",
+   "lemma": "Bildschirm",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-016",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Wer aussteigen möchte, drückt auf einen Knopf.",
+   "start": 34,
+   "end": 39,
+   "surface": "einen",
+   "lemma": "ein",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Acc",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-017",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Sie kontrolliert die Fahrkarten, und wer keine hat, muss Strafe zahlen.",
+   "start": 0,
+   "end": 3,
+   "surface": "Sie",
+   "lemma": "sie",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Nom"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-018",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Daniel zeigt seine Fahrkarte, und alles ist in Ordnung.",
+   "start": 7,
+   "end": 12,
+   "surface": "zeigt",
+   "lemma": "zeigen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-019",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "An der Haltestelle wartet sein Freund und winkt.",
+   "start": 31,
+   "end": 37,
+   "surface": "Freund",
+   "lemma": "Freund",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-020",
+   "text": "deutschland-lesungen-1-01",
+   "sentence": "Daniel ist froh, denn die erste Fahrt allein hat gut geklappt.",
+   "start": 49,
+   "end": 52,
+   "surface": "gut",
+   "lemma": "gut",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-021",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Am Sonntag geht Daniel zum ersten Mal in eine deutsche Gemeinde.",
+   "start": 46,
+   "end": 54,
+   "surface": "deutsche",
+   "lemma": "deutsch",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-022",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Der Gottesdienst beginnt um zehn Uhr.",
+   "start": 17,
+   "end": 24,
+   "surface": "beginnt",
+   "lemma": "beginnen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-023",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Vor dem Gottesdienst geben sich die Leute die Hand und sagen: „Guten Morgen!“",
+   "start": 36,
+   "end": 41,
+   "surface": "Leute",
+   "lemma": "Leute",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-024",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Lena geht in den Kindergottesdienst, weil sie dort mit anderen Kindern singen und spielen kann.",
+   "start": 0,
+   "end": 4,
+   "surface": "Lena",
+   "lemma": "Lena",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-025",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Lena geht in den Kindergottesdienst, weil sie dort mit anderen Kindern singen und spielen kann.",
+   "start": 63,
+   "end": 70,
+   "surface": "Kindern",
+   "lemma": "Kind",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-026",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Zuerst singt die Gemeinde ein Lied.",
+   "start": 0,
+   "end": 6,
+   "surface": "Zuerst",
+   "lemma": "zuerst",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-027",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Er singt leise mit und liest den Text im Buch.",
+   "start": 3,
+   "end": 8,
+   "surface": "singt",
+   "lemma": "singen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-028",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Dann liest ein Mann aus der Bibel vor, und die Gemeinde betet.",
+   "start": 15,
+   "end": 19,
+   "surface": "Mann",
+   "lemma": "Mann",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-029",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Danach hält der Pastor die Predigt.",
+   "start": 27,
+   "end": 34,
+   "surface": "Predigt",
+   "lemma": "Predigt",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-030",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Am Ende singen alle noch ein Lied.",
+   "start": 3,
+   "end": 7,
+   "surface": "Ende",
+   "lemma": "Ende",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-031",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Nach dem Gottesdienst gibt es Kaffee und Kuchen.",
+   "start": 30,
+   "end": 36,
+   "surface": "Kaffee",
+   "lemma": "Kaffee",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-032",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Eine ältere Frau kommt zu Daniel und sagt: „Willkommen bei uns! Bleiben Sie noch auf einen Kaffee?“",
+   "start": 5,
+   "end": 11,
+   "surface": "ältere",
+   "lemma": "alt",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp",
+    "Case": "Nom",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-033",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Eine ältere Frau kommt zu Daniel und sagt: „Willkommen bei uns! Bleiben Sie noch auf einen Kaffee?“",
+   "start": 72,
+   "end": 75,
+   "surface": "Sie",
+   "lemma": "Sie",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Number": "Plur",
+    "Case": "Nom",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-034",
+   "text": "deutschland-lesungen-1-02",
+   "sentence": "Er trinkt Kaffee, isst ein Stück Kuchen und spricht Deutsch.",
+   "start": 27,
+   "end": 32,
+   "surface": "Stück",
+   "lemma": "Stück",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-035",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Viele Bäckereien öffnen schon früh am Morgen.",
+   "start": 0,
+   "end": 5,
+   "surface": "Viele",
+   "lemma": "viel",
+   "pos": "DET",
+   "features": {
+    "PronType": "Ind",
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-036",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "In der Auslage liegen Brötchen, Brezeln und viele Sorten Brot.",
+   "start": 32,
+   "end": 39,
+   "surface": "Brezeln",
+   "lemma": "Brezel",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-037",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Anna sagt, dass man in Deutschland sehr viele Brotsorten kennt.",
+   "start": 35,
+   "end": 39,
+   "surface": "sehr",
+   "lemma": "sehr",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-038",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Die Verkäuferin fragt: „Was darf es sein?“",
+   "start": 36,
+   "end": 40,
+   "surface": "sein",
+   "lemma": "sein",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-039",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Anna erklärt: „In Bayern sagt man oft Semmel statt Brötchen.“",
+   "start": 34,
+   "end": 37,
+   "surface": "oft",
+   "lemma": "oft",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-040",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Danach gehen sie auf den Wochenmarkt.",
+   "start": 25,
+   "end": 36,
+   "surface": "Wochenmarkt",
+   "lemma": "Wochenmarkt",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-041",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Dort verkaufen Bauern und Händler Obst, Gemüse, Käse, Eier und Blumen.",
+   "start": 5,
+   "end": 14,
+   "surface": "verkaufen",
+   "lemma": "verkaufen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-042",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Man bezahlt in Euro, und am Marktstand oft mit Bargeld.",
+   "start": 15,
+   "end": 19,
+   "surface": "Euro",
+   "lemma": "Euro",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-043",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Der Mann am Käsestand gibt Daniel ein kleines Stück zum Probieren.",
+   "start": 56,
+   "end": 65,
+   "surface": "Probieren",
+   "lemma": "Probieren",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-044",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Daniel kauft ein Pfund Tomaten und einen Strauß Blumen.",
+   "start": 48,
+   "end": 54,
+   "surface": "Blumen",
+   "lemma": "Blume",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Gen",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-dev-045",
+   "text": "deutschland-lesungen-1-03",
+   "sentence": "Deshalb kaufen viele Leute schon am Samstag ein.",
+   "start": 0,
+   "end": 7,
+   "surface": "Deshalb",
+   "lemma": "deshalb",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-046",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Daniel ist am Samstagabend zum ersten Mal bei der Familie Keller eingeladen.",
+   "start": 14,
+   "end": 26,
+   "surface": "Samstagabend",
+   "lemma": "Samstagabend",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-047",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Er kommt pünktlich um sechs Uhr, weil man in Deutschland gern pünktlich ist.",
+   "start": 19,
+   "end": 21,
+   "surface": "um",
+   "lemma": "um",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-dev-048",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Er bringt einen kleinen Strauß Blumen mit.",
+   "start": 31,
+   "end": 37,
+   "surface": "Blumen",
+   "lemma": "Blume",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Gen",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-dev-049",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Paul macht die Tür auf und sagt: „Guten Abend, Herr Miller! Kommen Sie herein.“",
+   "start": 60,
+   "end": 66,
+   "surface": "Kommen",
+   "lemma": "hereinkommen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-050",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "In vielen Häusern zieht man die Schuhe an der Tür aus.",
+   "start": 3,
+   "end": 9,
+   "surface": "vielen",
+   "lemma": "viel",
+   "pos": "DET",
+   "features": {
+    "PronType": "Ind",
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "de-dev-051",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Daniel zieht die Schuhe aus und nimmt die Hausschuhe.",
+   "start": 42,
+   "end": 52,
+   "surface": "Hausschuhe",
+   "lemma": "Hausschuh",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-052",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Zum Abendbrot gibt es Brot, Käse, Wurst, Tomaten und Tee.",
+   "start": 4,
+   "end": 13,
+   "surface": "Abendbrot",
+   "lemma": "Abendbrot",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-053",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Viele Familien essen abends kalt und mittags warm.",
+   "start": 15,
+   "end": 20,
+   "surface": "essen",
+   "lemma": "essen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-054",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Daniel antwortet: „Danke, gleichfalls!“",
+   "start": 19,
+   "end": 24,
+   "surface": "Danke",
+   "lemma": "danke",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "discourse",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-055",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Paul sagt: „Wir können uns ruhig duzen. Ich bin Paul.“",
+   "start": 16,
+   "end": 22,
+   "surface": "können",
+   "lemma": "können",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-dev-056",
+   "text": "deutschland-lesungen-1-04",
+   "sentence": "Lena fragt: „Darf ich auch du sagen?“",
+   "start": 13,
+   "end": 17,
+   "surface": "Darf",
+   "lemma": "dürfen",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-dev-057",
+   "text": "dialogue-01",
+   "sentence": "Hallo, Anna, wie geht es dir?",
+   "start": 17,
+   "end": 21,
+   "surface": "geht",
+   "lemma": "gehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-058",
+   "text": "dialogue-01",
+   "sentence": "Was verstehst du nicht?",
+   "start": 17,
+   "end": 22,
+   "surface": "nicht",
+   "lemma": "nicht",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-059",
+   "text": "dialogue-01",
+   "sentence": "Ich fing auch an, es zu verstehen.",
+   "start": 24,
+   "end": 33,
+   "surface": "verstehen",
+   "lemma": "verstehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-dev-060",
+   "text": "dialogue-01",
+   "sentence": "Ja, ich glaube von ganzem Herzen an Gott.",
+   "start": 36,
+   "end": 40,
+   "surface": "Gott",
+   "lemma": "Gott",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-061",
+   "text": "gespraeche-1-01",
+   "sentence": "Guten Morgen! Ich bin neu hier.",
+   "start": 26,
+   "end": 30,
+   "surface": "hier",
+   "lemma": "hier",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-062",
+   "text": "gespraeche-1-01",
+   "sentence": "Guten Morgen, Herr Miller! Ich bin Anna Keller, und das ist mein Mann Paul.",
+   "start": 65,
+   "end": 69,
+   "surface": "Mann",
+   "lemma": "Mann",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-063",
+   "text": "gespraeche-1-01",
+   "sentence": "Ich lerne seit einem Jahr Deutsch, aber ich spreche noch nicht gut.",
+   "start": 10,
+   "end": 14,
+   "surface": "seit",
+   "lemma": "seit",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-dev-064",
+   "text": "gespraeche-1-01",
+   "sentence": "Das ist nett. Ich bin ja erst seit zwei Wochen hier.",
+   "start": 22,
+   "end": 24,
+   "surface": "ja",
+   "lemma": "ja",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-065",
+   "text": "gespraeche-1-01",
+   "sentence": "Keine Sorge, das wird mit der Zeit immer besser.",
+   "start": 17,
+   "end": 21,
+   "surface": "wird",
+   "lemma": "werden",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "de-dev-066",
+   "text": "gespraeche-1-01",
+   "sentence": "Ich helfe in einer Gemeinde mit und möchte Deutsch lernen.",
+   "start": 36,
+   "end": 42,
+   "surface": "möchte",
+   "lemma": "mögen",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-dev-067",
+   "text": "gespraeche-1-01",
+   "sentence": "Sehr gern. Vielen Dank!",
+   "start": 11,
+   "end": 17,
+   "surface": "Vielen",
+   "lemma": "viel",
+   "pos": "DET",
+   "features": {
+    "PronType": "Ind",
+    "Case": "Acc",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det"
+  },
+  {
+   "id": "de-dev-068",
+   "text": "gespraeche-1-02",
+   "sentence": "Welches Brot denn?",
+   "start": 13,
+   "end": 17,
+   "surface": "denn",
+   "lemma": "denn",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-069",
+   "text": "gespraeche-1-02",
+   "sentence": "Hm, ich weiß nicht. Was ist denn das da, das dunkle Brot?",
+   "start": 37,
+   "end": 39,
+   "surface": "da",
+   "lemma": "da",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-070",
+   "text": "gespraeche-1-02",
+   "sentence": "Eine gute Wahl! Das Brot ist von heute Morgen und noch ganz frisch.",
+   "start": 5,
+   "end": 9,
+   "surface": "gute",
+   "lemma": "gut",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Nom",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-071",
+   "text": "gespraeche-1-02",
+   "sentence": "Ja, bitte. Und noch eine Brezel.",
+   "start": 0,
+   "end": 2,
+   "surface": "Ja",
+   "lemma": "ja",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "discourse",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-072",
+   "text": "gespraeche-1-02",
+   "sentence": "Das macht vier Euro fünfzig.",
+   "start": 10,
+   "end": 14,
+   "surface": "vier",
+   "lemma": "vier",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "de-dev-073",
+   "text": "gespraeche-1-02",
+   "sentence": "Und fünfzig Cent zurück. Schönen Tag noch!",
+   "start": 17,
+   "end": 23,
+   "surface": "zurück",
+   "lemma": "zurück",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-074",
+   "text": "gespraeche-1-03",
+   "sentence": "Zum Bahnhof? Das ist nicht weit.",
+   "start": 4,
+   "end": 11,
+   "surface": "Bahnhof",
+   "lemma": "Bahnhof",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-075",
+   "text": "gespraeche-1-03",
+   "sentence": "Bis zur Ampel. Und dann?",
+   "start": 8,
+   "end": 13,
+   "surface": "Ampel",
+   "lemma": "Ampel",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-076",
+   "text": "gespraeche-1-03",
+   "sentence": "Wie lange dauert das denn zu Fuß?",
+   "start": 10,
+   "end": 16,
+   "surface": "dauert",
+   "lemma": "dauern",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-077",
+   "text": "gespraeche-1-03",
+   "sentence": "Gut, das schaffe ich. Mein Zug fährt erst in einer Stunde.",
+   "start": 31,
+   "end": 36,
+   "surface": "fährt",
+   "lemma": "fahren",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-078",
+   "text": "gespraeche-1-03",
+   "sentence": "Sie können aber auch die Straßenbahn nehmen, die fährt ja direkt hin.",
+   "start": 65,
+   "end": 68,
+   "surface": "hin",
+   "lemma": "hin",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "compound"
+  },
+  {
+   "id": "de-dev-079",
+   "text": "gespraeche-1-03",
+   "sentence": "Ja, da hinten, sehen Sie?",
+   "start": 15,
+   "end": 20,
+   "surface": "sehen",
+   "lemma": "sehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-080",
+   "text": "gespraeche-1-03",
+   "sentence": "Gern geschehen. Gute Fahrt!",
+   "start": 21,
+   "end": 26,
+   "surface": "Fahrt",
+   "lemma": "Fahrt",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-081",
+   "text": "gespraeche-1-04",
+   "sentence": "Mama! Daniel ist am Telefon!",
+   "start": 0,
+   "end": 4,
+   "surface": "Mama",
+   "lemma": "Mama",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "vocative"
+  },
+  {
+   "id": "de-dev-082",
+   "text": "gespraeche-1-04",
+   "sentence": "Auch gut. Lena hat gerade ihre Hausaufgaben gemacht.",
+   "start": 44,
+   "end": 51,
+   "surface": "gemacht",
+   "lemma": "machen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-083",
+   "text": "gespraeche-1-04",
+   "sentence": "Der Bus fährt ja nur alle zwei Stunden.",
+   "start": 4,
+   "end": 7,
+   "surface": "Bus",
+   "lemma": "Bus",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-084",
+   "text": "gespraeche-1-04",
+   "sentence": "Komm einfach um neun, dann frühstücken wir halt zusammen.",
+   "start": 5,
+   "end": 12,
+   "surface": "einfach",
+   "lemma": "einfach",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-085",
+   "text": "gespraeche-1-04",
+   "sentence": "Wirklich? Das ist nett. Soll ich etwas mitbringen?",
+   "start": 24,
+   "end": 28,
+   "surface": "Soll",
+   "lemma": "sollen",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-dev-086",
+   "text": "gespraeche-1-04",
+   "sentence": "Nein, nein. Es gibt ja schon genug. Bring nur gute Laune mit!",
+   "start": 51,
+   "end": 56,
+   "surface": "Laune",
+   "lemma": "Laune",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-087",
+   "text": "gespraeche-1-05",
+   "sentence": "Sehr gut! Ich habe nicht alles verstanden, aber die Lieder waren schön.",
+   "start": 52,
+   "end": 58,
+   "surface": "Lieder",
+   "lemma": "Lied",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-088",
+   "text": "gespraeche-1-05",
+   "sentence": "Hoffentlich! Die Predigt war schwer für mich.",
+   "start": 25,
+   "end": 28,
+   "surface": "war",
+   "lemma": "sein",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-089",
+   "text": "gespraeche-1-05",
+   "sentence": "Das ist ja normal. Pastor Lange spricht eben manchmal schnell.",
+   "start": 45,
+   "end": 53,
+   "surface": "manchmal",
+   "lemma": "manchmal",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-090",
+   "text": "gespraeche-1-05",
+   "sentence": "Der Kuchen ist heute wohl von Frau Schmidt, und der ist immer gut.",
+   "start": 4,
+   "end": 10,
+   "surface": "Kuchen",
+   "lemma": "Kuchen",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-091",
+   "text": "gespraeche-1-05",
+   "sentence": "Aber natürlich! Ich bin übrigens Heinz.",
+   "start": 5,
+   "end": 14,
+   "surface": "natürlich",
+   "lemma": "natürlich",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-092",
+   "text": "gespraeche-1-06",
+   "sentence": "Hast du am Samstag schon etwas vor, Daniel?",
+   "start": 11,
+   "end": 18,
+   "surface": "Samstag",
+   "lemma": "Samstag",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-093",
+   "text": "gespraeche-1-06",
+   "sentence": "Das ist ja nett! Wann soll ich denn da sein?",
+   "start": 22,
+   "end": 26,
+   "surface": "soll",
+   "lemma": "sollen",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-dev-094",
+   "text": "gespraeche-1-06",
+   "sentence": "Ja, ich esse fast alles.",
+   "start": 13,
+   "end": 17,
+   "surface": "fast",
+   "lemma": "fast",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-095",
+   "text": "gespraeche-1-06",
+   "sentence": "Nein, nein. Bring einfach dich mit.",
+   "start": 26,
+   "end": 30,
+   "surface": "dich",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "2",
+    "Number": "Sing",
+    "Case": "Acc"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-096",
+   "text": "gespraeche-1-06",
+   "sentence": "Na gut. Es gibt halt nur Brot und Aufschnitt, nichts Besonderes.",
+   "start": 34,
+   "end": 44,
+   "surface": "Aufschnitt",
+   "lemma": "Aufschnitt",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-097",
+   "text": "gespraeche-1-06",
+   "sentence": "Das klingt perfekt. Bis Samstag!",
+   "start": 11,
+   "end": 18,
+   "surface": "perfekt",
+   "lemma": "perfekt",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-dev-098",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Es war einmal ein armes frommes Mädchen, das lebte mit seiner Mutter allein, und sie hatten nichts mehr zu essen.",
+   "start": 69,
+   "end": 75,
+   "surface": "allein",
+   "lemma": "allein",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-099",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Da gieng das Kind hinaus in den Wald, und begegnete ihm da eine alte Frau, die wußte seinen Jammer schon und schenkte ihm ein Töpfchen, zu dem sollt es sagen „Töpfchen, koche,“ so kochte es guten süßen Hirsenbrei, und wenn es sagte „Töpfchen, steh,“ so hörte es wieder auf zu kochen.",
+   "start": 52,
+   "end": 55,
+   "surface": "ihm",
+   "lemma": "er",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Case": "Dat"
+   },
+   "difficulty": "hard",
+   "relation": "iobj"
+  },
+  {
+   "id": "de-dev-100",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Da gieng das Kind hinaus in den Wald, und begegnete ihm da eine alte Frau, die wußte seinen Jammer schon und schenkte ihm ein Töpfchen, zu dem sollt es sagen „Töpfchen, koche,“ so kochte es guten süßen Hirsenbrei, und wenn es sagte „Töpfchen, steh,“ so hörte es wieder auf zu kochen.",
+   "start": 169,
+   "end": 174,
+   "surface": "koche",
+   "lemma": "kochen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-101",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Da gieng das Kind hinaus in den Wald, und begegnete ihm da eine alte Frau, die wußte seinen Jammer schon und schenkte ihm ein Töpfchen, zu dem sollt es sagen „Töpfchen, koche,“ so kochte es guten süßen Hirsenbrei, und wenn es sagte „Töpfchen, steh,“ so hörte es wieder auf zu kochen.",
+   "start": 243,
+   "end": 247,
+   "surface": "steh",
+   "lemma": "stehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-102",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Das Mädchen brachte den Topf seiner Mutter heim, und nun waren sie ihrer Armuth und ihres Hungers ledig und aßen süßen Brei so oft sie wollten.",
+   "start": 36,
+   "end": 42,
+   "surface": "Mutter",
+   "lemma": "Mutter",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "de-dev-103",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Das Mädchen brachte den Topf seiner Mutter heim, und nun waren sie ihrer Armuth und ihres Hungers ledig und aßen süßen Brei so oft sie wollten.",
+   "start": 108,
+   "end": 112,
+   "surface": "aßen",
+   "lemma": "essen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "conj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-104",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Auf eine Zeit war das Mädchen ausgegangen, da sprach die Mutter „Töpfchen, koche,“ da kocht es, und sie ißt sich satt; nun will sie daß das Töpfchen wieder aufhören soll, aber sie weiß das Wort nicht.",
+   "start": 46,
+   "end": 52,
+   "surface": "sprach",
+   "lemma": "sprechen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-105",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Auf eine Zeit war das Mädchen ausgegangen, da sprach die Mutter „Töpfchen, koche,“ da kocht es, und sie ißt sich satt; nun will sie daß das Töpfchen wieder aufhören soll, aber sie weiß das Wort nicht.",
+   "start": 132,
+   "end": 135,
+   "surface": "daß",
+   "lemma": "dass",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "mark"
+  },
+  {
+   "id": "de-dev-106",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Also kocht es fort, und der Brei steigt über den Rand hinaus und kocht immer zu, die Küche und das ganze Haus voll, und das zweite Haus und dann die Straße, als wollts die ganze Welt satt machen, und ist die größte Noth, und kein Mensch weiß sich da zu helfen.",
+   "start": 33,
+   "end": 39,
+   "surface": "steigt",
+   "lemma": "steigen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-107",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Also kocht es fort, und der Brei steigt über den Rand hinaus und kocht immer zu, die Küche und das ganze Haus voll, und das zweite Haus und dann die Straße, als wollts die ganze Welt satt machen, und ist die größte Noth, und kein Mensch weiß sich da zu helfen.",
+   "start": 124,
+   "end": 130,
+   "surface": "zweite",
+   "lemma": "zweit",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "amod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-108",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Also kocht es fort, und der Brei steigt über den Rand hinaus und kocht immer zu, die Küche und das ganze Haus voll, und das zweite Haus und dann die Straße, als wollts die ganze Welt satt machen, und ist die größte Noth, und kein Mensch weiß sich da zu helfen.",
+   "start": 208,
+   "end": 214,
+   "surface": "größte",
+   "lemma": "groß",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Sup",
+    "Case": "Nom",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-109",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Endlich, wie nur noch ein einziges Haus übrig ist, da kommt das Kind heim, und spricht nur „Töpfchen, steh,“ da steht es und hört auf zu kochen; und wer wieder in die Stadt wollte, der mußte sich durchessen.",
+   "start": 35,
+   "end": 39,
+   "surface": "Haus",
+   "lemma": "Haus",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-110",
+   "text": "grimm-der-suesse-brei-1857",
+   "sentence": "Endlich, wie nur noch ein einziges Haus übrig ist, da kommt das Kind heim, und spricht nur „Töpfchen, steh,“ da steht es und hört auf zu kochen; und wer wieder in die Stadt wollte, der mußte sich durchessen.",
+   "start": 149,
+   "end": 152,
+   "surface": "wer",
+   "lemma": "wer",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Rel",
+    "Case": "Nom"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-111",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte.",
+   "start": 85,
+   "end": 88,
+   "surface": "arm",
+   "lemma": "arm",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-112",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte.",
+   "start": 185,
+   "end": 192,
+   "surface": "endlich",
+   "lemma": "endlich",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-113",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte.",
+   "start": 286,
+   "end": 297,
+   "surface": "mitleidiges",
+   "lemma": "mitleidig",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Nom",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-114",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Und weil es so von aller Welt verlassen war, gieng es im Vertrauen auf den lieben Gott hinaus ins Feld.",
+   "start": 54,
+   "end": 56,
+   "surface": "im",
+   "lemma": "in",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "case"
+  },
+  {
+   "id": "de-dev-115",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Da begegnete ihm ein armer Mann, der sprach „ach, gib mir etwas zu essen, ich bin so hungerig.“",
+   "start": 45,
+   "end": 48,
+   "surface": "ach",
+   "lemma": "ach",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse"
+  },
+  {
+   "id": "de-dev-116",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Es reichte ihm das ganze Stückchen Brot und sagte „Gott segne dirs“ und gieng weiter.",
+   "start": 62,
+   "end": 66,
+   "surface": "dirs",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "2",
+    "Number": "Sing",
+    "Case": "Dat"
+   },
+   "difficulty": "hard",
+   "relation": "iobj"
+  },
+  {
+   "id": "de-dev-117",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Da kam ein Kind das jammerte und sprach „es friert mich so an meinem Kopfe, schenk mir etwas, womit ich ihn bedecken kann.“",
+   "start": 51,
+   "end": 55,
+   "surface": "mich",
+   "lemma": "ich",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "1",
+    "Number": "Sing",
+    "Case": "Acc"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-118",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Da that es seine Mütze ab und gab sie ihm.",
+   "start": 17,
+   "end": 22,
+   "surface": "Mütze",
+   "lemma": "Mütze",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-119",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Und als es noch eine Weile gegangen war, kam wieder ein Kind und hatte kein Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin.",
+   "start": 101,
+   "end": 104,
+   "surface": "gab",
+   "lemma": "geben",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-120",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Endlich gelangte es in einen Wald, und es war schon dunkel geworden, da kam noch eins und bat um ein Hemdlein, und das fromme Mädchen dachte „es ist dunkle Nacht, da sieht dich niemand du kannst wohl dein Hemd weg geben,“ und zog das Hemd ab und gab es auch noch hin.",
+   "start": 8,
+   "end": 16,
+   "surface": "gelangte",
+   "lemma": "gelangen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-121",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Endlich gelangte es in einen Wald, und es war schon dunkel geworden, da kam noch eins und bat um ein Hemdlein, und das fromme Mädchen dachte „es ist dunkle Nacht, da sieht dich niemand du kannst wohl dein Hemd weg geben,“ und zog das Hemd ab und gab es auch noch hin.",
+   "start": 119,
+   "end": 125,
+   "surface": "fromme",
+   "lemma": "fromm",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Nom",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-122",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Endlich gelangte es in einen Wald, und es war schon dunkel geworden, da kam noch eins und bat um ein Hemdlein, und das fromme Mädchen dachte „es ist dunkle Nacht, da sieht dich niemand du kannst wohl dein Hemd weg geben,“ und zog das Hemd ab und gab es auch noch hin.",
+   "start": 200,
+   "end": 204,
+   "surface": "dein",
+   "lemma": "dein",
+   "pos": "DET",
+   "features": {
+    "PronType": "Prs",
+    "Case": "Acc",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "de-dev-123",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen.",
+   "start": 24,
+   "end": 27,
+   "surface": "gar",
+   "lemma": "gar",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-124",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen.",
+   "start": 111,
+   "end": 117,
+   "surface": "blanke",
+   "lemma": "blank",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-125",
+   "text": "grimm-sternthaler-1857",
+   "sentence": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen.",
+   "start": 207,
+   "end": 210,
+   "surface": "vom",
+   "lemma": "von",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "case"
+  },
+  {
+   "id": "de-dev-126",
+   "text": "story-01",
+   "sentence": "Als ich jung war, verstand ich mein Herz nicht.",
+   "start": 8,
+   "end": 12,
+   "surface": "jung",
+   "lemma": "jung",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advcl"
+  },
+  {
+   "id": "de-dev-127",
+   "text": "story-01",
+   "sentence": "Eines Tages fing ich an, meine Sünde zu verstehen.",
+   "start": 6,
+   "end": 11,
+   "surface": "Tages",
+   "lemma": "Tag",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Gen",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-128",
+   "text": "story-01",
+   "sentence": "Jetzt habe ich Frieden in meinem Herzen.",
+   "start": 0,
+   "end": 5,
+   "surface": "Jetzt",
+   "lemma": "jetzt",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-129",
+   "text": "story-01",
+   "sentence": "Jetzt verstehe ich, dass Gott allen vergibt.",
+   "start": 6,
+   "end": 14,
+   "surface": "verstehe",
+   "lemma": "verstehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-130",
+   "text": "weg-1-01",
+   "sentence": "Ich habe auch ein Buch.",
+   "start": 18,
+   "end": 22,
+   "surface": "Buch",
+   "lemma": "Buch",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-131",
+   "text": "weg-1-01",
+   "sentence": "Ich lese das Buch.",
+   "start": 4,
+   "end": 8,
+   "surface": "lese",
+   "lemma": "lesen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-132",
+   "text": "weg-1-02",
+   "sentence": "Max ist groß und braun.",
+   "start": 17,
+   "end": 22,
+   "surface": "braun",
+   "lemma": "braun",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-133",
+   "text": "weg-1-02",
+   "sentence": "Paul wirft den Ball.",
+   "start": 5,
+   "end": 10,
+   "surface": "wirft",
+   "lemma": "werfen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-134",
+   "text": "weg-1-03",
+   "sentence": "Jetzt ist Lena zu Hause.",
+   "start": 18,
+   "end": 23,
+   "surface": "Hause",
+   "lemma": "Haus",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-135",
+   "text": "weg-1-03",
+   "sentence": "Lena nimmt das Brot.",
+   "start": 5,
+   "end": 10,
+   "surface": "nimmt",
+   "lemma": "nehmen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-136",
+   "text": "weg-1-04",
+   "sentence": "Die Küche ist hell.",
+   "start": 14,
+   "end": 18,
+   "surface": "hell",
+   "lemma": "hell",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-137",
+   "text": "weg-1-04",
+   "sentence": "Max schläft und schläft.",
+   "start": 4,
+   "end": 11,
+   "surface": "schläft",
+   "lemma": "schlafen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-138",
+   "text": "weg-1-05",
+   "sentence": "Max hat Wasser.",
+   "start": 8,
+   "end": 14,
+   "surface": "Wasser",
+   "lemma": "Wasser",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-139",
+   "text": "weg-1-06",
+   "sentence": "Das Brot ist braun.",
+   "start": 13,
+   "end": 18,
+   "surface": "braun",
+   "lemma": "braun",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-140",
+   "text": "weg-1-07",
+   "sentence": "Der Park ist groß und schön.",
+   "start": 4,
+   "end": 8,
+   "surface": "Park",
+   "lemma": "Park",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-141",
+   "text": "weg-1-07",
+   "sentence": "Der Baum ist hoch.",
+   "start": 4,
+   "end": 8,
+   "surface": "Baum",
+   "lemma": "Baum",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-142",
+   "text": "weg-1-08",
+   "sentence": "Es ist Abend.",
+   "start": 7,
+   "end": 12,
+   "surface": "Abend",
+   "lemma": "Abend",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-143",
+   "text": "weg-1-08",
+   "sentence": "Lena ist müde.",
+   "start": 9,
+   "end": 13,
+   "surface": "müde",
+   "lemma": "müde",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-144",
+   "text": "weg-2-01",
+   "sentence": "Um halb sieben kommt Paul in die Küche.",
+   "start": 3,
+   "end": 7,
+   "surface": "halb",
+   "lemma": "halb",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-145",
+   "text": "weg-2-01",
+   "sentence": "Anna sagt: „Du musst jetzt aufstehen, Lena. Die Schule fängt um acht Uhr an.“",
+   "start": 27,
+   "end": 36,
+   "surface": "aufstehen",
+   "lemma": "aufstehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "ccomp"
+  },
+  {
+   "id": "de-dev-146",
+   "text": "weg-2-01",
+   "sentence": "Der Bus fährt um Viertel nach sieben ab.",
+   "start": 17,
+   "end": 24,
+   "surface": "Viertel",
+   "lemma": "Viertel",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-147",
+   "text": "weg-2-01",
+   "sentence": "Max kommt zurück und schläft wieder.",
+   "start": 10,
+   "end": 16,
+   "surface": "zurück",
+   "lemma": "zurück",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "compound",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-148",
+   "text": "weg-2-02",
+   "sentence": "Heute will sie Äpfel, Tomaten und Kartoffeln kaufen.",
+   "start": 15,
+   "end": 20,
+   "surface": "Äpfel",
+   "lemma": "Apfel",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-149",
+   "text": "weg-2-02",
+   "sentence": "Anna sagt: „Ich möchte ein Kilo Äpfel und zwei Kilo Kartoffeln, bitte.“",
+   "start": 52,
+   "end": 62,
+   "surface": "Kartoffeln",
+   "lemma": "Kartoffel",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-dev-150",
+   "text": "weg-2-02",
+   "sentence": "Lena sagt: „Vielen Dank!“",
+   "start": 19,
+   "end": 23,
+   "surface": "Dank",
+   "lemma": "Dank",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-151",
+   "text": "weg-2-03",
+   "sentence": "Plötzlich klingelt es.",
+   "start": 0,
+   "end": 9,
+   "surface": "Plötzlich",
+   "lemma": "plötzlich",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-152",
+   "text": "weg-2-03",
+   "sentence": "Er sagt: „Hallo, Paul! Wie geht es euch?“",
+   "start": 35,
+   "end": 39,
+   "surface": "euch",
+   "lemma": "ihr",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "2",
+    "Number": "Plur",
+    "Case": "Dat"
+   },
+   "difficulty": "hard",
+   "relation": "iobj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-153",
+   "text": "weg-2-03",
+   "sentence": "Dann ruft Paul: „Anna! Opa hat angerufen!“",
+   "start": 5,
+   "end": 9,
+   "surface": "ruft",
+   "lemma": "rufen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-154",
+   "text": "weg-2-03",
+   "sentence": "Anna lacht und sagt: „Gute Idee! Wir kaufen morgen Eier und Mehl.“",
+   "start": 51,
+   "end": 55,
+   "surface": "Eier",
+   "lemma": "Ei",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-155",
+   "text": "weg-2-04",
+   "sentence": "Paul ist um zehn Uhr zum Bahnhof gefahren und hat sie abgeholt.",
+   "start": 33,
+   "end": 41,
+   "surface": "gefahren",
+   "lemma": "fahren",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-156",
+   "text": "weg-2-04",
+   "sentence": "Danach haben wir den Kuchen gegessen.",
+   "start": 28,
+   "end": 36,
+   "surface": "gegessen",
+   "lemma": "essen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-157",
+   "text": "weg-2-04",
+   "sentence": "Er hat Max ein Stück Wurst gegeben.",
+   "start": 15,
+   "end": 20,
+   "surface": "Stück",
+   "lemma": "Stück",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-158",
+   "text": "weg-2-05",
+   "sentence": "Lena liegt im Bett und ist sehr müde.",
+   "start": 5,
+   "end": 10,
+   "surface": "liegt",
+   "lemma": "liegen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-159",
+   "text": "weg-2-05",
+   "sentence": "Sie sagt: „Lena muss drei Tage im Bett bleiben und viel Tee trinken.“",
+   "start": 21,
+   "end": 25,
+   "surface": "drei",
+   "lemma": "drei",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "de-dev-160",
+   "text": "weg-2-05",
+   "sentence": "Zu Hause macht Anna einen Tee mit Honig.",
+   "start": 34,
+   "end": 39,
+   "surface": "Honig",
+   "lemma": "Honig",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-dev-161",
+   "text": "weg-2-05",
+   "sentence": "Am Abend sagt Lena: „Ich möchte aufstehen und spielen.“",
+   "start": 3,
+   "end": 8,
+   "surface": "Abend",
+   "lemma": "Abend",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-162",
+   "text": "weg-2-06",
+   "sentence": "Sie ist schon achtzig Jahre alt und wohnt allein.",
+   "start": 42,
+   "end": 48,
+   "surface": "allein",
+   "lemma": "allein",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-163",
+   "text": "weg-2-06",
+   "sentence": "Frau Weber freut sich sehr.",
+   "start": 11,
+   "end": 16,
+   "surface": "freut",
+   "lemma": "freuen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-164",
+   "text": "weg-2-06",
+   "sentence": "Am Ende sagt Frau Weber: „Vielen Dank für Ihre Hilfe!“",
+   "start": 47,
+   "end": 52,
+   "surface": "Hilfe",
+   "lemma": "Hilfe",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-dev-165",
+   "text": "weg-2-07",
+   "sentence": "Sie sucht unter dem Bett und hinter dem Schrank.",
+   "start": 29,
+   "end": 35,
+   "surface": "hinter",
+   "lemma": "hinter",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-dev-166",
+   "text": "weg-2-07",
+   "sentence": "Unter Max liegt etwas.",
+   "start": 0,
+   "end": 5,
+   "surface": "Unter",
+   "lemma": "unter",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-dev-167",
+   "text": "weg-2-08",
+   "sentence": "Die Familie sitzt am Tisch und isst Abendbrot.",
+   "start": 12,
+   "end": 17,
+   "surface": "sitzt",
+   "lemma": "sitzen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-168",
+   "text": "weg-2-08",
+   "sentence": "„Aber am Nachmittag kann ich mitkommen“, sagt er.",
+   "start": 9,
+   "end": 19,
+   "surface": "Nachmittag",
+   "lemma": "Nachmittag",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-169",
+   "text": "weg-2-08",
+   "sentence": "Paul sagt: „Dann esse ich mit euch zu Mittag, und danach fahren wir ins Schwimmbad.“",
+   "start": 57,
+   "end": 63,
+   "surface": "fahren",
+   "lemma": "fahren",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-170",
+   "text": "weg-3-01",
+   "sentence": "Anna suchte im Zimmer, in der Küche und sogar im Garten, aber sie fand es nicht.",
+   "start": 5,
+   "end": 11,
+   "surface": "suchte",
+   "lemma": "suchen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-171",
+   "text": "weg-3-01",
+   "sentence": "„Nein“, sagte er, „ich war ja den ganzen Tag bei der Arbeit.“",
+   "start": 34,
+   "end": 40,
+   "surface": "ganzen",
+   "lemma": "ganz",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-172",
+   "text": "weg-3-01",
+   "sentence": "Lena wurde rot.",
+   "start": 5,
+   "end": 10,
+   "surface": "wurde",
+   "lemma": "werden",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "de-dev-173",
+   "text": "weg-3-01",
+   "sentence": "Lena erzählte, dass Frau Weber seit drei Tagen krank war und den ganzen Tag im Bett lag.",
+   "start": 41,
+   "end": 46,
+   "surface": "Tagen",
+   "lemma": "Tag",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-174",
+   "text": "weg-3-01",
+   "sentence": "Anna wollte zuerst ein bisschen böse sein.",
+   "start": 23,
+   "end": 31,
+   "surface": "bisschen",
+   "lemma": "bisschen",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-175",
+   "text": "weg-3-01",
+   "sentence": "Sie sagte: „Ihr Buch ist wunderbar, Frau Keller. Ich kann kaum aufhören zu lesen.“",
+   "start": 25,
+   "end": 34,
+   "surface": "wunderbar",
+   "lemma": "wunderbar",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-176",
+   "text": "weg-3-01",
+   "sentence": "Zu Hause lag Max wieder in seinem Korb und sah sehr zufrieden aus.",
+   "start": 43,
+   "end": 46,
+   "surface": "sah",
+   "lemma": "aussehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-177",
+   "text": "weg-3-02",
+   "sentence": "Wir haben sie gegessen, und Papa hat gesagt, dass es die besten Äpfel sind, die er kennt.",
+   "start": 83,
+   "end": 88,
+   "surface": "kennt",
+   "lemma": "kennen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "acl"
+  },
+  {
+   "id": "de-dev-178",
+   "text": "weg-3-02",
+   "sentence": "Die Ärztin hat gesagt, dass ich viel Tee trinken muss.",
+   "start": 4,
+   "end": 10,
+   "surface": "Ärztin",
+   "lemma": "Ärztin",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-179",
+   "text": "weg-3-02",
+   "sentence": "In der Schule habe ich ein Bild von unserem Haus gemalt, und meine Lehrerin hat es an die Wand gehängt.",
+   "start": 49,
+   "end": 55,
+   "surface": "gemalt",
+   "lemma": "malen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-180",
+   "text": "weg-3-02",
+   "sentence": "Er hat auf Mamas Buch geschlafen, und Mama hat es eine Stunde lang gesucht!",
+   "start": 55,
+   "end": 61,
+   "surface": "Stunde",
+   "lemma": "Stunde",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-181",
+   "text": "weg-3-02",
+   "sentence": "Ich weiß nicht, ob du schon gehört hast, dass bald die Ferien anfangen.",
+   "start": 46,
+   "end": 50,
+   "surface": "bald",
+   "lemma": "bald",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-182",
+   "text": "weg-3-02",
+   "sentence": "Wenn es nicht regnet, können wir im Garten Kaffee trinken und Kuchen essen.",
+   "start": 14,
+   "end": 20,
+   "surface": "regnet",
+   "lemma": "regnen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "advcl"
+  },
+  {
+   "id": "de-dev-183",
+   "text": "weg-3-02",
+   "sentence": "Ich warte schon auf deinen Brief.",
+   "start": 27,
+   "end": 32,
+   "surface": "Brief",
+   "lemma": "Brief",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-184",
+   "text": "weg-3-03",
+   "sentence": "Lena war schon um fünf Uhr aufgestanden, weil sie sich so auf die Reise freute.",
+   "start": 18,
+   "end": 22,
+   "surface": "fünf",
+   "lemma": "fünf",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "de-dev-185",
+   "text": "weg-3-03",
+   "sentence": "Der Zug fuhr um zehn Uhr ab, und Lena saß am Fenster.",
+   "start": 38,
+   "end": 41,
+   "surface": "saß",
+   "lemma": "sitzen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-186",
+   "text": "weg-3-03",
+   "sentence": "Nach zwei Stunden hielt der Zug plötzlich mitten auf dem Feld.",
+   "start": 32,
+   "end": 41,
+   "surface": "plötzlich",
+   "lemma": "plötzlich",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-187",
+   "text": "weg-3-03",
+   "sentence": "Alle mussten eine Stunde warten.",
+   "start": 25,
+   "end": 31,
+   "surface": "warten",
+   "lemma": "warten",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-dev-188",
+   "text": "weg-3-03",
+   "sentence": "Der nächste Zug fuhr erst in zwei Stunden.",
+   "start": 34,
+   "end": 41,
+   "surface": "Stunden",
+   "lemma": "Stunde",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-189",
+   "text": "weg-3-03",
+   "sentence": "Eine ältere Frau, die auf der Bank neben ihnen saß, hatte alles gehört.",
+   "start": 64,
+   "end": 70,
+   "surface": "gehört",
+   "lemma": "hören",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-190",
+   "text": "weg-3-03",
+   "sentence": "Im Taxi erzählte die Frau, dass sie Oma schon seit vierzig Jahren kannte.",
+   "start": 3,
+   "end": 7,
+   "surface": "Taxi",
+   "lemma": "Taxi",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-191",
+   "text": "weg-3-03",
+   "sentence": "Lena lief zu ihm und rief: „Opa, wir haben eine Freundin von Oma getroffen!“",
+   "start": 48,
+   "end": 56,
+   "surface": "Freundin",
+   "lemma": "Freundin",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-192",
+   "text": "weg-3-04",
+   "sentence": "Eines Tages sagte der jüngere Sohn: „Vater, gib mir jetzt meinen Teil vom Geld. Ich will die Welt sehen.“",
+   "start": 30,
+   "end": 34,
+   "surface": "Sohn",
+   "lemma": "Sohn",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-dev-193",
+   "text": "weg-3-04",
+   "sentence": "Der Vater war traurig, aber er gab ihm das Geld.",
+   "start": 43,
+   "end": 47,
+   "surface": "Geld",
+   "lemma": "Geld",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-194",
+   "text": "weg-3-04",
+   "sentence": "Wenige Tage später packte der Sohn seine Sachen und zog in ein fernes Land.",
+   "start": 63,
+   "end": 69,
+   "surface": "fernes",
+   "lemma": "fern",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-195",
+   "text": "weg-3-04",
+   "sentence": "Der junge Mann fand Arbeit bei einem Bauern, der Schweine hatte.",
+   "start": 4,
+   "end": 9,
+   "surface": "junge",
+   "lemma": "jung",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Nom",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-196",
+   "text": "weg-3-04",
+   "sentence": "Er dachte: „Bei meinem Vater haben sogar die Arbeiter genug Brot, und ich sterbe hier vor Hunger.“",
+   "start": 35,
+   "end": 40,
+   "surface": "sogar",
+   "lemma": "sogar",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-dev-197",
+   "text": "weg-3-04",
+   "sentence": "Sein Vater sah ihn schon von weitem, lief ihm entgegen, nahm ihn in die Arme und küsste ihn.",
+   "start": 15,
+   "end": 18,
+   "surface": "ihn",
+   "lemma": "er",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Acc"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-198",
+   "text": "weg-3-04",
+   "sentence": "Der Sohn sagte: „Vater, ich habe Unrecht getan. Ich bin es nicht wert, dein Sohn zu sein.“",
+   "start": 41,
+   "end": 46,
+   "surface": "getan",
+   "lemma": "tun",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-199",
+   "text": "weg-3-04",
+   "sentence": "Aber der Vater rief seinen Dienern zu: „Bringt das beste Hemd, einen Ring und neue Schuhe!“",
+   "start": 69,
+   "end": 73,
+   "surface": "Ring",
+   "lemma": "Ring",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-200",
+   "text": "weg-3-04",
+   "sentence": "Als er nach Hause kam, hörte er Musik und Lachen, und ein Diener erzählte ihm, was passiert war.",
+   "start": 23,
+   "end": 28,
+   "surface": "hörte",
+   "lemma": "hören",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-201",
+   "text": "weg-3-04",
+   "sentence": "Der Vater kam heraus und bat ihn, mitzufeiern.",
+   "start": 14,
+   "end": 20,
+   "surface": "heraus",
+   "lemma": "heraus",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "compound"
+  },
+  {
+   "id": "de-dev-202",
+   "text": "weg-3-04",
+   "sentence": "Der Vater antwortete: „Mein Sohn, du bist immer bei mir, und alles, was ich habe, gehört auch dir.“",
+   "start": 10,
+   "end": 20,
+   "surface": "antwortete",
+   "lemma": "antworten",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-203",
+   "text": "weg-3-05",
+   "sentence": "Frau Weber wurde am Sonntag einundachtzig Jahre alt.",
+   "start": 28,
+   "end": 41,
+   "surface": "einundachtzig",
+   "lemma": "einundachtzig",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "nummod"
+  },
+  {
+   "id": "de-dev-204",
+   "text": "weg-3-05",
+   "sentence": "Lena schlug die Eier in die Schüssel, und Anna gab Mehl, Zucker und Butter dazu.",
+   "start": 5,
+   "end": 11,
+   "surface": "schlug",
+   "lemma": "schlagen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-205",
+   "text": "weg-3-05",
+   "sentence": "„In einer Stunde ist er fertig“, sagte Anna.",
+   "start": 24,
+   "end": 30,
+   "surface": "fertig",
+   "lemma": "fertig",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-206",
+   "text": "weg-3-05",
+   "sentence": "Die beiden redeten und lachten, und Anna vergaß die Zeit.",
+   "start": 23,
+   "end": 30,
+   "surface": "lachten",
+   "lemma": "lachen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "de-dev-207",
+   "text": "weg-3-05",
+   "sentence": "Anna hatte vergessen, ihn rechtzeitig herauszunehmen.",
+   "start": 26,
+   "end": 37,
+   "surface": "rechtzeitig",
+   "lemma": "rechtzeitig",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-dev-208",
+   "text": "weg-3-05",
+   "sentence": "Anna nahm ein Messer und schnitt die schwarze Seite ab.",
+   "start": 37,
+   "end": 45,
+   "surface": "schwarze",
+   "lemma": "schwarz",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-209",
+   "text": "weg-3-05",
+   "sentence": "Anna sagte: „Wir haben ihn leider ein bisschen zu lange gebacken.“",
+   "start": 56,
+   "end": 64,
+   "surface": "gebacken",
+   "lemma": "backen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-210",
+   "text": "weg-3-05",
+   "sentence": "Am Ende aß Frau Weber drei Stücke.",
+   "start": 27,
+   "end": 33,
+   "surface": "Stücke",
+   "lemma": "Stück",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "de-dev-211",
+   "text": "weg-3-06",
+   "sentence": "Anna hatte es eilig, weil ihr Zug in zehn Minuten fuhr.",
+   "start": 42,
+   "end": 49,
+   "surface": "Minuten",
+   "lemma": "Minute",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-212",
+   "text": "weg-3-06",
+   "sentence": "Im gleichen Moment streckte auch ein großer Mann, der neben ihr stand, die Hand aus.",
+   "start": 12,
+   "end": 18,
+   "surface": "Moment",
+   "lemma": "Moment",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-dev-213",
+   "text": "weg-3-06",
+   "sentence": "Die Verkäuferin lachte und sagte: „Dann teilen Sie sie doch!“",
+   "start": 16,
+   "end": 22,
+   "surface": "lachte",
+   "lemma": "lachen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "de-dev-214",
+   "text": "weg-3-06",
+   "sentence": "Paul fuhr erst seit einer Woche mit diesem Zug, weil er eine neue Arbeit hatte.",
+   "start": 61,
+   "end": 65,
+   "surface": "neue",
+   "lemma": "neu",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Acc",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-dev-215",
+   "text": "weg-3-06",
+   "sentence": "Zwei Jahre später waren sie verheiratet.",
+   "start": 28,
+   "end": 39,
+   "surface": "verheiratet",
+   "lemma": "verheiratet",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  }
+ ]
+}

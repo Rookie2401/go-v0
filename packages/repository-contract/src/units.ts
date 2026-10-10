@@ -7,6 +7,9 @@
  * Nothing in this layer is ever modified by a learner's performance; corrections create new rows and aliases.
  */
 
+import type { FieldName, FieldStates } from './field-states';
+import { validateFieldStates } from './field-states';
+
 export const UNIT_KINDS = [
   'lexeme',                   // lexical identity (lemma + part of speech)
   'sense',                    // one meaning of a lexeme
@@ -112,6 +115,11 @@ export interface LinguisticUnit {
   createdAt: string;
   /** Set when a later pack version replaced this unit; the alias table says by what. */
   supersededBy?: string;
+  /**
+   * Stage 7: the state of each linguistic FIELD that belongs to this unit whatever the sentence (a form's pronunciation and paradigm cell,
+   * a lexeme's etymology, a sense's gloss). Absent on a row written before Stage 7: every field reads `unknown` (`fieldStateOf`).
+   */
+  fieldStates?: FieldStates;
 }
 
 export const RELATION_KINDS = [
@@ -174,6 +182,11 @@ export interface FormAnalysis {
   reason?: string;
   /** Contract v3: how the analysis as a whole came to exist; without it a store reads the chosen candidate's provenance. */
   provenance?: UnitProvenance;
+  /**
+   * Stage 7: the state of each field of the CHOSEN reading (lemma, pos, features, sense, paradigmCell, syntaxRelation, segmentation).
+   * Absent on a row written before Stage 7: every field reads `unknown`. When the analysis is invalidated its stated fields read `invalidated`.
+   */
+  fieldStates?: FieldStates;
 }
 
 /** Identity migration between pack versions (Prompt 3 §17): never silent, always carries confidence. */
@@ -201,6 +214,8 @@ export interface LanguagePackInfo {
   level?: 'installable' | 'experimental' | 'planned';
   /** Contract v3: the validation level the pack's MANIFEST claims. Only `production-validated` here lets an installable pack's rows read as production-validated. */
   validation?: ValidationLevel;
+  /** Stage 7: fields this pack says no human can review (no native reviewer, no source to check against); GoReview never puts them to a reviewer. */
+  unreviewableFields?: FieldName[];
 }
 
 /**
@@ -265,6 +280,7 @@ export function validateUnit(u: unknown): ValidationIssue[] {
   if (!(ANALYSIS_STATUSES as readonly string[]).includes(String(x.status))) out.push({ path: 'status', message: 'unknown status' });
   out.push(...validateProvenance(x.provenance));
   if (x.features !== undefined && (typeof x.features !== 'object' || x.features === null)) out.push({ path: 'features', message: 'object of strings' });
+  out.push(...validateFieldStates(x.fieldStates));
   return out;
 }
 
@@ -287,6 +303,7 @@ export function validateAnalysis(a: unknown): ValidationIssue[] {
   for (const k of ['analysisId', 'formId', 'languageId', 'analyzerId', 'packId', 'packVersion', 'createdAt']) if (!isStr(x[k])) out.push({ path: k, message: 'required string' });
   if (!(ANALYSIS_STATUSES as readonly string[]).includes(String(x.status))) out.push({ path: 'status', message: 'unknown status' });
   if (x.provenance !== undefined) out.push(...validateProvenance(x.provenance));
+  out.push(...validateFieldStates(x.fieldStates));
   if (!Array.isArray(x.candidates)) out.push({ path: 'candidates', message: 'array required' });
   else {
     x.candidates.forEach((c, i) => {

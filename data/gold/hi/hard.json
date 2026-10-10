@@ -1,0 +1,1662 @@
+{
+ "language": "hi",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "hard",
+ "source": "authored sentences (not from the corpus)",
+ "feature_keys": [
+  "Case",
+  "Number",
+  "Gender",
+  "Person",
+  "Tense",
+  "Aspect",
+  "Mood",
+  "VerbForm",
+  "Voice",
+  "Polite"
+ ],
+ "notes": "Hard cases written to break a naive engine: each carries the expected analysis, the wrong analysis a naive engine would give, and why it is hard. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "hi-hard-001",
+   "text": "authored",
+   "sentence": "उसने रोटी खाई।",
+   "start": 10,
+   "end": 13,
+   "surface": "खाई",
+   "lemma": "खाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ergative",
+   "why_hard": "the verb agrees with the object रोटी (ergative ने), and खाई is also a noun",
+   "wrong": {
+    "lemma": "खाई",
+    "pos": "NOUN",
+    "note": "reads the homograph खाई 'ditch' instead of the feminine perfective of खाना agreeing with रोटी"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-002",
+   "text": "authored",
+   "sentence": "मैंने एक कहानी सुनी।",
+   "start": 0,
+   "end": 5,
+   "surface": "मैंने",
+   "lemma": "मैं",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ergative",
+   "why_hard": "the ergative of मैं is written as one word with ने attached",
+   "wrong": {
+    "lemma": "मैंने",
+    "pos": "PRON",
+    "note": "keeps the fused ergative pronoun as its own lemma instead of मैं + ने"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-hard-003",
+   "text": "authored",
+   "sentence": "लड़कियों ने खाना बनाया।",
+   "start": 0,
+   "end": 8,
+   "surface": "लड़कियों",
+   "lemma": "लड़की",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "ergative",
+   "why_hard": "the oblique plural before ने has a different ending from the direct plural",
+   "wrong": {
+    "lemma": "लड़कियाँ",
+    "pos": "NOUN",
+    "note": "takes the plural direct form as the lemma or tags it Dir; ने demands the oblique plural -ियों"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-hard-004",
+   "text": "authored",
+   "sentence": "तुमने यह चिट्ठी लिखी?",
+   "start": 16,
+   "end": 20,
+   "surface": "लिखी",
+   "lemma": "लिखना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ergative",
+   "why_hard": "perfective -ी agrees with the object चिट्ठी, not with the ergative subject तुमने",
+   "wrong": {
+    "lemma": "लिख",
+    "pos": "VERB",
+    "note": "strips the ending and returns the stem as lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-005",
+   "text": "authored",
+   "sentence": "राम ने सीता को बुलाया।",
+   "start": 15,
+   "end": 21,
+   "surface": "बुलाया",
+   "lemma": "बुलाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "ergative",
+   "why_hard": "the verb stays masculine singular by default agreement because the object takes को",
+   "wrong": {
+    "lemma": "बुला",
+    "pos": "VERB",
+    "note": "returns the stem बुला or the ya-glide form as lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-006",
+   "text": "authored",
+   "sentence": "हमने कल नई गाड़ियाँ देखीं।",
+   "start": 20,
+   "end": 25,
+   "surface": "देखीं",
+   "lemma": "देखना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "ergative",
+   "why_hard": "the plural feminine perfective agrees with the plural object गाड़ियाँ under ने",
+   "wrong": {
+    "lemma": "देखी",
+    "pos": "VERB",
+    "note": "treats the nasalised -ीं as a separate unknown word or as singular"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-007",
+   "text": "authored",
+   "sentence": "आपने क्या कहा?",
+   "start": 0,
+   "end": 4,
+   "surface": "आपने",
+   "lemma": "आप",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "category": "ergative",
+   "why_hard": "honorific pronoun fused with ने",
+   "wrong": {
+    "lemma": "आप",
+    "pos": "PRON",
+    "note": "returns आप but drops the ergative case, or fails to split ने"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-hard-008",
+   "text": "authored",
+   "sentence": "सबने गाना सुना।",
+   "start": 0,
+   "end": 4,
+   "surface": "सबने",
+   "lemma": "सब",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "ergative",
+   "why_hard": "quantifier used as a pronoun with attached ergative marker",
+   "wrong": {
+    "lemma": "सब",
+    "pos": "DET",
+    "note": "tags सब as a determiner and loses the fused ने"
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-009",
+   "text": "authored",
+   "sentence": "बच्चा सारी रोटी खा गया।",
+   "start": 16,
+   "end": 18,
+   "surface": "खा",
+   "lemma": "खाना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-verb",
+   "why_hard": "the main verb appears only as a bare stem before the vector गया",
+   "wrong": {
+    "lemma": "खा",
+    "pos": "VERB",
+    "note": "uses the bare stem खा as the lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-010",
+   "text": "authored",
+   "sentence": "उसने दरवाज़ा खोल दिया।",
+   "start": 17,
+   "end": 21,
+   "surface": "दिया",
+   "lemma": "देना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound-verb",
+   "why_hard": "दिया is a light vector verb here, not 'gave'",
+   "wrong": {
+    "lemma": "देना",
+    "pos": "VERB",
+    "note": "treats the vector as the lexical verb 'give'"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-011",
+   "text": "authored",
+   "sentence": "वह अचानक उठ बैठा।",
+   "start": 12,
+   "end": 16,
+   "surface": "बैठा",
+   "lemma": "बैठना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound-verb",
+   "why_hard": "बैठना is a vector expressing suddenness after the main verb stem उठ",
+   "wrong": {
+    "lemma": "बैठना",
+    "pos": "VERB",
+    "note": "reads 'sat' as a full verb"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-012",
+   "text": "authored",
+   "sentence": "मैंने सारा काम कर लिया है।",
+   "start": 18,
+   "end": 22,
+   "surface": "लिया",
+   "lemma": "लेना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound-verb",
+   "why_hard": "irregular perfective of a vector verb",
+   "wrong": {
+    "lemma": "लिया",
+    "pos": "VERB",
+    "note": "keeps the surface form as lemma (irregular perfective of लेना)"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-013",
+   "text": "authored",
+   "sentence": "सारा पानी बह गया।",
+   "start": 10,
+   "end": 12,
+   "surface": "बह",
+   "lemma": "बहना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-verb",
+   "why_hard": "bare stem before the vector गया",
+   "wrong": {
+    "lemma": "बह",
+    "pos": "NOUN",
+    "note": "uses the stem as lemma and reads it as a noun"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-014",
+   "text": "authored",
+   "sentence": "वह रोज़ घर का सारा काम करता है।",
+   "start": 23,
+   "end": 27,
+   "surface": "करता",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound-verb",
+   "why_hard": "light verb of a conjunct verb काम करना; the habitual participle must be reduced to करना",
+   "wrong": {
+    "lemma": "करता",
+    "pos": "VERB",
+    "note": "does not reduce the habitual participle to the infinitive"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-015",
+   "text": "authored",
+   "sentence": "वह यह सुनकर रो पड़ा।",
+   "start": 15,
+   "end": 19,
+   "surface": "पड़ा",
+   "lemma": "पड़ना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound-verb",
+   "why_hard": "पड़ना is an inceptive vector after रो, and पड़ा also exists as an adjective",
+   "wrong": {
+    "lemma": "पड़ा",
+    "pos": "ADJ",
+    "note": "reads पड़ा 'lying' as an adjective"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-016",
+   "text": "authored",
+   "sentence": "उसने सारी मिठाई खा डाली।",
+   "start": 19,
+   "end": 23,
+   "surface": "डाली",
+   "lemma": "डालना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "compound-verb",
+   "why_hard": "vector डालना (completive, violent) agrees with the object मिठाई; डाली is also a noun",
+   "wrong": {
+    "lemma": "डाली",
+    "pos": "NOUN",
+    "note": "reads डाली 'branch' as a noun"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-017",
+   "text": "authored",
+   "sentence": "छोटे बच्चों को कहानी पसंद है।",
+   "start": 0,
+   "end": 4,
+   "surface": "छोटे",
+   "lemma": "छोटा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "oblique-and-postposition",
+   "why_hard": "the adjective in -े agrees with an oblique plural noun",
+   "wrong": {
+    "lemma": "छोटे",
+    "pos": "ADJ",
+    "note": "returns the inflected form as lemma"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "hi-hard-018",
+   "text": "authored",
+   "sentence": "मैं अच्छे लड़कों के साथ खेलता हूँ।",
+   "start": 10,
+   "end": 16,
+   "surface": "लड़कों",
+   "lemma": "लड़का",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "oblique-and-postposition",
+   "why_hard": "-ों is the oblique plural of -ा nouns",
+   "wrong": {
+    "lemma": "लड़कों",
+    "pos": "NOUN",
+    "note": "leaves the oblique plural -ों unreduced"
+   },
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-hard-019",
+   "text": "authored",
+   "sentence": "यह मेरी बहन की किताब है।",
+   "start": 12,
+   "end": 14,
+   "surface": "की",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Fem"
+   },
+   "difficulty": "hard",
+   "category": "oblique-and-postposition",
+   "why_hard": "की is the feminine form of the genitive postposition का",
+   "wrong": {
+    "lemma": "करना",
+    "pos": "VERB",
+    "note": "reads की as the feminine perfective of करना"
+   },
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-020",
+   "text": "authored",
+   "sentence": "घोड़े के सिर पर टोपी है।",
+   "start": 0,
+   "end": 5,
+   "surface": "घोड़े",
+   "lemma": "घोड़ा",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "oblique-and-postposition",
+   "why_hard": "-े here is the singular oblique before के",
+   "wrong": {
+    "lemma": "घोड़े",
+    "pos": "NOUN",
+    "note": "takes -े as the plural direct only"
+   },
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-hard-021",
+   "text": "authored",
+   "sentence": "उस बड़े कमरे में कोई नहीं है।",
+   "start": 3,
+   "end": 7,
+   "surface": "बड़े",
+   "lemma": "बड़ा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "oblique-and-postposition",
+   "why_hard": "the adjective is singular oblique, agreeing with कमरे",
+   "wrong": {
+    "lemma": "बड़े",
+    "pos": "ADJ",
+    "note": "returns the -े form as lemma or calls it plural"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "hi-hard-022",
+   "text": "authored",
+   "sentence": "बहनों के पास किताबें हैं।",
+   "start": 0,
+   "end": 5,
+   "surface": "बहनों",
+   "lemma": "बहन",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "oblique-and-postposition",
+   "why_hard": "oblique plural of a feminine noun before के",
+   "wrong": {
+    "lemma": "बहनों",
+    "pos": "NOUN",
+    "note": "leaves -ों on the lemma"
+   },
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-hard-023",
+   "text": "authored",
+   "sentence": "वह दोस्तों से मिलता है।",
+   "start": 3,
+   "end": 10,
+   "surface": "दोस्तों",
+   "lemma": "दोस्त",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "oblique-and-postposition",
+   "why_hard": "oblique plural before the postposition से",
+   "wrong": {
+    "lemma": "दोस्तों",
+    "pos": "NOUN",
+    "note": "keeps -ों in the lemma"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "hi-hard-024",
+   "text": "authored",
+   "sentence": "राम के भाई ने मुझे बुलाया।",
+   "start": 4,
+   "end": 6,
+   "surface": "के",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Masc"
+   },
+   "difficulty": "hard",
+   "category": "oblique-and-postposition",
+   "why_hard": "के is the oblique/plural masculine form of का",
+   "wrong": {
+    "lemma": "के",
+    "pos": "ADP",
+    "note": "returns के as its own lemma instead of the masculine base का"
+   },
+   "relation": "case"
+  },
+  {
+   "id": "hi-hard-025",
+   "text": "authored",
+   "sentence": "वह खाना खा रहा था।",
+   "start": 11,
+   "end": 14,
+   "surface": "रहा",
+   "lemma": "रहना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Prog",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "verb-complex-aux",
+   "why_hard": "रहा is the progressive auxiliary after the stem खा",
+   "wrong": {
+    "lemma": "रहना",
+    "pos": "VERB",
+    "note": "reads रहा as the full verb 'stay'"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-026",
+   "text": "authored",
+   "sentence": "मैं तब तक सो चुका था।",
+   "start": 13,
+   "end": 17,
+   "surface": "चुका",
+   "lemma": "चुकना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "verb-complex-aux",
+   "why_hard": "चुका is the completive auxiliary of चुकना",
+   "wrong": {
+    "lemma": "चुका",
+    "pos": "VERB",
+    "note": "returns the surface form as lemma"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-027",
+   "text": "authored",
+   "sentence": "वह रोज़ यहाँ आया करता है।",
+   "start": 17,
+   "end": 21,
+   "surface": "करता",
+   "lemma": "करना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "verb-complex-aux",
+   "why_hard": "करना here is a habitual auxiliary after the perfective participle आया",
+   "wrong": {
+    "lemma": "करना",
+    "pos": "VERB",
+    "note": "treats करता as 'does'"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-028",
+   "text": "authored",
+   "sentence": "बच्चे बाहर खेल रहे थे।",
+   "start": 19,
+   "end": 21,
+   "surface": "थे",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "verb-complex-aux",
+   "why_hard": "the past of होना is suppletive (था/थे/थी)",
+   "wrong": {
+    "lemma": "थे",
+    "pos": "AUX",
+    "note": "keeps थे as its own lemma"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-029",
+   "text": "authored",
+   "sentence": "वह कल यहाँ आता होगा।",
+   "start": 15,
+   "end": 19,
+   "surface": "होगा",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "verb-complex-aux",
+   "why_hard": "होगा after a habitual participle expresses probability",
+   "wrong": {
+    "lemma": "होगा",
+    "pos": "VERB",
+    "note": "sees a plain future 'will be' instead of a presumptive auxiliary"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-030",
+   "text": "authored",
+   "sentence": "सीता ने रोटी बना दी है।",
+   "start": 20,
+   "end": 22,
+   "surface": "है",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "verb-complex-aux",
+   "why_hard": "है is a form of होना and carries the present of a present perfect",
+   "wrong": {
+    "lemma": "है",
+    "pos": "AUX",
+    "note": "keeps है as the lemma"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-031",
+   "text": "authored",
+   "sentence": "तुम यहाँ बैठे रहो।",
+   "start": 14,
+   "end": 17,
+   "surface": "रहो",
+   "lemma": "रहना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Infm"
+   },
+   "difficulty": "hard",
+   "category": "verb-complex-aux",
+   "why_hard": "रहना after the participle बैठे expresses continuing state",
+   "wrong": {
+    "lemma": "रहो",
+    "pos": "VERB",
+    "note": "reads the main verb 'stay!'"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-032",
+   "text": "authored",
+   "sentence": "हम खा चुके हैं।",
+   "start": 6,
+   "end": 10,
+   "surface": "चुके",
+   "lemma": "चुकना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "verb-complex-aux",
+   "why_hard": "plural of the completive auxiliary चुका",
+   "wrong": {
+    "lemma": "चुके",
+    "pos": "ADJ",
+    "note": "no analysis for the plural form, falls back to an adjective"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-033",
+   "text": "authored",
+   "sentence": "वह खाना खाकर सो गया।",
+   "start": 8,
+   "end": 12,
+   "surface": "खाकर",
+   "lemma": "खाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Conv"
+   },
+   "difficulty": "hard",
+   "category": "conjunctive-participle-and-infinitive",
+   "why_hard": "the conjunctive participle is written solid with the stem",
+   "wrong": {
+    "lemma": "खाकर",
+    "pos": "ADV",
+    "note": "does not split stem + कर and tags the whole as an adverb"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "hi-hard-034",
+   "text": "authored",
+   "sentence": "घर जाकर फ़ोन करना।",
+   "start": 3,
+   "end": 7,
+   "surface": "जाकर",
+   "lemma": "जाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Conv"
+   },
+   "difficulty": "hard",
+   "category": "conjunctive-participle-and-infinitive",
+   "why_hard": "stem जा + कर conjunctive written as one word",
+   "wrong": {
+    "lemma": "जाकर",
+    "pos": "ADV",
+    "note": "no lemma reduction for जा + कर"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "hi-hard-035",
+   "text": "authored",
+   "sentence": "वह हँसते हुए आया।",
+   "start": 3,
+   "end": 8,
+   "surface": "हँसते",
+   "lemma": "हँसना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "conjunctive-participle-and-infinitive",
+   "why_hard": "the -ते हुए adverbial participle is built on the habitual participle",
+   "wrong": {
+    "lemma": "हँसते",
+    "pos": "ADJ",
+    "note": "analyses -ते as an adjective"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "hi-hard-036",
+   "text": "authored",
+   "sentence": "मुझे पढ़ने जाना है।",
+   "start": 5,
+   "end": 10,
+   "surface": "पढ़ने",
+   "lemma": "पढ़ना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "conjunctive-participle-and-infinitive",
+   "why_hard": "oblique infinitive before the motion verb, not a participle",
+   "wrong": {
+    "lemma": "पढ़ना",
+    "pos": "VERB",
+    "note": "calls it a masculine singular habitual participle (-ने looks like a plural participle)"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "hi-hard-037",
+   "text": "authored",
+   "sentence": "खेलने वाला लड़का मेरा भाई है।",
+   "start": 6,
+   "end": 10,
+   "surface": "वाला",
+   "lemma": "वाला",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "hard",
+   "category": "conjunctive-participle-and-infinitive",
+   "why_hard": "-ने वाला builds an agent adjective on the oblique infinitive",
+   "wrong": {
+    "lemma": "वाला",
+    "pos": "NOUN",
+    "note": "reads वाला as an agent noun 'seller'"
+   },
+   "relation": "amod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-038",
+   "text": "authored",
+   "sentence": "बोलना आसान नहीं है।",
+   "start": 0,
+   "end": 5,
+   "surface": "बोलना",
+   "lemma": "बोलना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "category": "conjunctive-participle-and-infinitive",
+   "why_hard": "the infinitive is the subject of the clause",
+   "wrong": {
+    "lemma": "बोलना",
+    "pos": "NOUN",
+    "note": "reads the infinitive as a verbal noun"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-hard-039",
+   "text": "authored",
+   "sentence": "वह दौड़कर स्टेशन पहुँचा।",
+   "start": 3,
+   "end": 9,
+   "surface": "दौड़कर",
+   "lemma": "दौड़ना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Conv"
+   },
+   "difficulty": "hard",
+   "category": "conjunctive-participle-and-infinitive",
+   "why_hard": "conjunctive participle fused with the stem",
+   "wrong": {
+    "lemma": "दौड़कर",
+    "pos": "ADV",
+    "note": "does not recognise stem + कर"
+   },
+   "relation": "advcl"
+  },
+  {
+   "id": "hi-hard-040",
+   "text": "authored",
+   "sentence": "लिखने को कुछ नहीं था।",
+   "start": 0,
+   "end": 5,
+   "surface": "लिखने",
+   "lemma": "लिखना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "conjunctive-participle-and-infinitive",
+   "why_hard": "oblique infinitive before the postposition को",
+   "wrong": {
+    "lemma": "लिखना",
+    "pos": "VERB",
+    "note": "drops the oblique case of the infinitive"
+   },
+   "relation": "acl"
+  },
+  {
+   "id": "hi-hard-041",
+   "text": "authored",
+   "sentence": "कृपया यहाँ बैठिए।",
+   "start": 11,
+   "end": 16,
+   "surface": "बैठिए",
+   "lemma": "बैठना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "polite imperative in -इए",
+   "wrong": {
+    "lemma": "बैठिए",
+    "pos": "VERB",
+    "note": "does not strip the -इए honorific ending"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-042",
+   "text": "authored",
+   "sentence": "आप जल्दी आइए।",
+   "start": 9,
+   "end": 12,
+   "surface": "आइए",
+   "lemma": "आना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "polite imperative of आना has a long vowel stem change",
+   "wrong": {
+    "lemma": "आइए",
+    "pos": "INTJ",
+    "note": "no lemma, fallback to an interjection"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-043",
+   "text": "authored",
+   "sentence": "पानी पी लो।",
+   "start": 8,
+   "end": 10,
+   "surface": "लो",
+   "lemma": "लेना",
+   "pos": "AUX",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Infm"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "irregular imperative of the vector लेना in a compound",
+   "wrong": {
+    "lemma": "लो",
+    "pos": "VERB",
+    "note": "reads the main verb 'take!' or has no lemma"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-044",
+   "text": "authored",
+   "sentence": "यह काम कीजिए।",
+   "start": 7,
+   "end": 12,
+   "surface": "कीजिए",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "irregular polite imperative of करना",
+   "wrong": {
+    "lemma": "कीजिए",
+    "pos": "VERB",
+    "note": "no link to करना"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-045",
+   "text": "authored",
+   "sentence": "शायद वह कल आए।",
+   "start": 11,
+   "end": 13,
+   "surface": "आए",
+   "lemma": "आना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Sub",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "आए is also the perfective participle plural; here it is the subjunctive after शायद",
+   "wrong": {
+    "lemma": "आना",
+    "pos": "VERB",
+    "note": "reads the masculine plural perfective 'came'"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-046",
+   "text": "authored",
+   "sentence": "मैं चाहता हूँ कि तुम जाओ।",
+   "start": 21,
+   "end": 24,
+   "surface": "जाओ",
+   "lemma": "जाना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Sub",
+    "Person": "2"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "second person intimate subjunctive coincides with the imperative",
+   "wrong": {
+    "lemma": "जाओ",
+    "pos": "VERB",
+    "note": "reads an imperative"
+   },
+   "relation": "ccomp",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-047",
+   "text": "authored",
+   "sentence": "मैं अब चलूँ?",
+   "start": 7,
+   "end": 11,
+   "surface": "चलूँ",
+   "lemma": "चलना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Sub",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "-ूँ ending of the first person singular subjunctive",
+   "wrong": {
+    "lemma": "चलूँ",
+    "pos": "VERB",
+    "note": "does not reduce the first person subjunctive"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-048",
+   "text": "authored",
+   "sentence": "आप मुझे ज़रूर बताइएगा।",
+   "start": 14,
+   "end": 21,
+   "surface": "बताइएगा",
+   "lemma": "बताना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Imp",
+    "Person": "2",
+    "Polite": "Form",
+    "Tense": "Fut"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "the -इएगा form is a deferential future imperative, not an indicative future",
+   "wrong": {
+    "lemma": "बताइएगा",
+    "pos": "VERB",
+    "note": "reads a future indicative with -गा"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-049",
+   "text": "authored",
+   "sentence": "वे सब यहाँ आएँ।",
+   "start": 11,
+   "end": 14,
+   "surface": "आएँ",
+   "lemma": "आना",
+   "pos": "VERB",
+   "features": {
+    "Mood": "Sub",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "honorific-subjunctive-imperative",
+   "why_hard": "आएँ is the third plural subjunctive",
+   "wrong": {
+    "lemma": "आना",
+    "pos": "VERB",
+    "note": "reads a nasal feminine plural perfective"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-050",
+   "text": "authored",
+   "sentence": "उसने मुझे एक किताब दी।",
+   "start": 19,
+   "end": 21,
+   "surface": "दी",
+   "lemma": "देना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular perfective of देना",
+   "wrong": {
+    "lemma": "दी",
+    "pos": "VERB",
+    "note": "treats दी as its own lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-051",
+   "text": "authored",
+   "sentence": "वह कल दिल्ली गया।",
+   "start": 13,
+   "end": 16,
+   "surface": "गया",
+   "lemma": "जाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "suppletive perfective of जाना; गया is also a city",
+   "wrong": {
+    "lemma": "गया",
+    "pos": "PROPN",
+    "note": "reads the city name Gaya"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-052",
+   "text": "authored",
+   "sentence": "तुमने क्या किया?",
+   "start": 11,
+   "end": 15,
+   "surface": "किया",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular perfective of करना",
+   "wrong": {
+    "lemma": "किया",
+    "pos": "VERB",
+    "note": "does not map to करना"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-053",
+   "text": "authored",
+   "sentence": "मैंने नई कमीज़ ली।",
+   "start": 15,
+   "end": 17,
+   "surface": "ली",
+   "lemma": "लेना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular perfective of लेना agreeing with कमीज़",
+   "wrong": {
+    "lemma": "ली",
+    "pos": "VERB",
+    "note": "treats ली as its own lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-054",
+   "text": "authored",
+   "sentence": "वहाँ बहुत भीड़ हुई।",
+   "start": 15,
+   "end": 18,
+   "surface": "हुई",
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular perfective of होना",
+   "wrong": {
+    "lemma": "हुई",
+    "pos": "VERB",
+    "note": "no mapping to होना"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-055",
+   "text": "authored",
+   "sentence": "सबने चाय पी।",
+   "start": 9,
+   "end": 11,
+   "surface": "पी",
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "perfective of पीना is the single letter पी",
+   "wrong": {
+    "lemma": "पी",
+    "pos": "NOUN",
+    "note": "reads the literary noun पी 'beloved'"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-056",
+   "text": "authored",
+   "sentence": "वे लोग जल्दी चले गए।",
+   "start": 17,
+   "end": 19,
+   "surface": "गए",
+   "lemma": "जाना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular perfective plural used as the vector after चले",
+   "wrong": {
+    "lemma": "गए",
+    "pos": "VERB",
+    "note": "treats गए as the lexical verb"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "hi-hard-057",
+   "text": "authored",
+   "sentence": "लड़कियाँ वहाँ गईं।",
+   "start": 14,
+   "end": 17,
+   "surface": "गईं",
+   "lemma": "जाना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "feminine plural of the suppletive perfective of जाना",
+   "wrong": {
+    "lemma": "गई",
+    "pos": "VERB",
+    "note": "does not link to जाना"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-058",
+   "text": "authored",
+   "sentence": "हम सब ख़ुश हुए।",
+   "start": 11,
+   "end": 14,
+   "surface": "हुए",
+   "lemma": "होना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular masculine plural perfective of होना",
+   "wrong": {
+    "lemma": "हुए",
+    "pos": "VERB",
+    "note": "does not map to होना"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "hi-hard-059",
+   "text": "authored",
+   "sentence": "मैंने सुना कि वह आ गया है।",
+   "start": 11,
+   "end": 13,
+   "surface": "कि",
+   "lemma": "कि",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "कि 'that' versus की, and the spelling is close to the perfective",
+   "wrong": {
+    "lemma": "करना",
+    "pos": "VERB",
+    "note": "reads कि as the perfective of करना"
+   },
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-060",
+   "text": "authored",
+   "sentence": "वह दिन भर काम कर घर लौटा।",
+   "start": 14,
+   "end": 16,
+   "surface": "कर",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Conv"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "bare conjunctive कर after the noun काम",
+   "wrong": {
+    "lemma": "कर",
+    "pos": "NOUN",
+    "note": "reads कर 'tax' as a noun"
+   },
+   "relation": "advcl",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-061",
+   "text": "authored",
+   "sentence": "मेज़ पर किताब है, पर कलम नहीं है।",
+   "start": 5,
+   "end": 7,
+   "surface": "पर",
+   "lemma": "पर",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "पर is both the postposition 'on' and the conjunction 'but'",
+   "wrong": {
+    "lemma": "पर",
+    "pos": "CONJ",
+    "note": "reads the first पर as 'but'"
+   },
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-062",
+   "text": "authored",
+   "sentence": "मेज़ पर किताब है, पर कलम नहीं है।",
+   "start": 18,
+   "end": 20,
+   "surface": "पर",
+   "lemma": "पर",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "पर is both the postposition 'on' and the conjunction 'but'",
+   "wrong": {
+    "lemma": "पर",
+    "pos": "ADP",
+    "note": "reads the clause-initial पर as 'on'"
+   },
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-063",
+   "text": "authored",
+   "sentence": "आम का पेड़ बहुत ऊँचा है।",
+   "start": 0,
+   "end": 2,
+   "surface": "आम",
+   "lemma": "आम",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "आम is 'mango' and also 'common'",
+   "wrong": {
+    "lemma": "आम",
+    "pos": "ADJ",
+    "note": "reads आम as 'common'"
+   },
+   "relation": "nmod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-064",
+   "text": "authored",
+   "sentence": "यह आम बात है।",
+   "start": 3,
+   "end": 5,
+   "surface": "आम",
+   "lemma": "आम",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "आम 'common' modifies बात; the mango is not meant",
+   "wrong": {
+    "lemma": "आम",
+    "pos": "NOUN",
+    "note": "reads आम as 'mango'"
+   },
+   "relation": "amod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-065",
+   "text": "authored",
+   "sentence": "बीते काल की बातें मत करो।",
+   "start": 5,
+   "end": 8,
+   "surface": "काल",
+   "lemma": "काल",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "काल 'time, era' is a noun (not a stem of काला)",
+   "wrong": {
+    "lemma": "काला",
+    "pos": "ADJ",
+    "note": "relates काल to the adjective काला 'black' by suffix guess"
+   },
+   "relation": "nmod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-066",
+   "text": "authored",
+   "sentence": "कल मैं दिल्ली जाऊँगा।",
+   "start": 0,
+   "end": 2,
+   "surface": "कल",
+   "lemma": "कल",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "कल means 'yesterday' or 'tomorrow' and is also a noun",
+   "wrong": {
+    "lemma": "कल",
+    "pos": "NOUN",
+    "note": "reads the noun कल 'machine, ease'"
+   },
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-067",
+   "text": "authored",
+   "sentence": "उसने अपनी बहन की शादी की।",
+   "start": 14,
+   "end": 16,
+   "surface": "की",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Fem"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "same surface as the perfective of करना, which occurs right after",
+   "wrong": {
+    "lemma": "करना",
+    "pos": "VERB",
+    "note": "reads the first की as the perfective of करना"
+   },
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-hard-068",
+   "text": "authored",
+   "sentence": "उसने अपनी बहन की शादी की।",
+   "start": 22,
+   "end": 24,
+   "surface": "की",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "perfective of करना in the light-verb construction शादी करना",
+   "wrong": {
+    "lemma": "का",
+    "pos": "ADP",
+    "note": "reads the final की as the genitive postposition"
+   },
+   "relation": "root",
+   "ambiguous": true
+  }
+ ]
+}

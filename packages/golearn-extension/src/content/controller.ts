@@ -32,7 +32,7 @@ import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
 import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
-import { buildParadigm, etymologyOf, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, type LexicalRecord } from './enrich';
+import { buildParadigm, etymologyOf, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, structureOf, type LexicalRecord } from './enrich';
 
 export interface ControllerDeps {
   doc: Document;
@@ -413,7 +413,7 @@ export class LookupController {
               const paradigm = card.lemma && card.pos ? buildParadigm(adapter, languageId, card.lemma, card.pos as PartOfSpeech, record, hint) : undefined;
               const selected = selectedCellKeys(adapter, paradigm, hint.features, card.surface);
               this.d.ui.update({ enrichment: {
-                state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), pronunciation: pronunciationOf(record, card.pronunciation), relations: relationsOf(record), senses: sensesOf(record),
+                state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), structure: structureOf(record, adapter, card.lemma ?? card.surface.trim(), card.pos, card.surface, hint.features, { languageId }), pronunciation: pronunciationOf(record, card.pronunciation), relations: relationsOf(record), senses: sensesOf(record),
                 ...(reply.attribution ? { attribution: reply.attribution } : {}), ...(reply.reason && !reply.found ? { message: reply.message ?? reply.reason } : {}),
               } });
             }).catch(() => { if (live()) this.d.ui.update({ enrichment: { state: 'unavailable', message: 'The dictionary could not be asked for the full entry.' } }); }),

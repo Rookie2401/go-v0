@@ -1,0 +1,1271 @@
+{
+ "language": "sq",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "unseen",
+ "source": "NO verified Scripture slice for sq: the four latest-listed course texts of the latest-dated batch (2026-10-05): udha-1-06, udha-1-07, udha-1-08, misioni-1-04 (data/corpus/sq) — labelled as such; these texts are NOT unseen by the word list, only by the dev set",
+ "feature_keys": [
+  "Case",
+  "Number",
+  "Gender",
+  "Definite",
+  "Person",
+  "Tense",
+  "Mood",
+  "Voice",
+  "VerbForm",
+  "Degree",
+  "PronType"
+ ],
+ "notes": "Held-out selections, never to be used for tuning. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "sq-unseen-001",
+   "text": "misioni-1-04",
+   "sentence": "— Dritan, a mund të të pyes diçka?",
+   "start": 2,
+   "end": 8,
+   "surface": "Dritan",
+   "lemma": "Dritan",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Nom"
+   },
+   "difficulty": "easy",
+   "relation": "vocative"
+  },
+  {
+   "id": "sq-unseen-002",
+   "text": "misioni-1-04",
+   "sentence": "— Dritan, a mund të të pyes diçka?",
+   "start": 12,
+   "end": 16,
+   "surface": "mund",
+   "lemma": "mund",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-003",
+   "text": "misioni-1-04",
+   "sentence": "— Dritan, a mund të të pyes diçka?",
+   "start": 20,
+   "end": 22,
+   "surface": "të",
+   "lemma": "ti",
+   "pos": "PRON",
+   "features": {
+    "Person": "2",
+    "Number": "Sing",
+    "Case": "Acc",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-004",
+   "text": "misioni-1-04",
+   "sentence": "— Po, pyet.",
+   "start": 2,
+   "end": 4,
+   "surface": "Po",
+   "lemma": "po",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "discourse",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-005",
+   "text": "misioni-1-04",
+   "sentence": "— Çfarë beson ti për Perëndinë?",
+   "start": 2,
+   "end": 7,
+   "surface": "Çfarë",
+   "lemma": "çfarë",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Int"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "sq-unseen-006",
+   "text": "misioni-1-04",
+   "sentence": "— Çfarë beson ti për Perëndinë?",
+   "start": 17,
+   "end": 20,
+   "surface": "për",
+   "lemma": "për",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "sq-unseen-007",
+   "text": "misioni-1-04",
+   "sentence": "— Unë besoj se ka një Zot.",
+   "start": 2,
+   "end": 5,
+   "surface": "Unë",
+   "lemma": "unë",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing",
+    "Case": "Nom",
+    "PronType": "Prs"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-008",
+   "text": "misioni-1-04",
+   "sentence": "— Unë besoj se ka një Zot.",
+   "start": 15,
+   "end": 17,
+   "surface": "ka",
+   "lemma": "kam",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "ccomp"
+  },
+  {
+   "id": "sq-unseen-009",
+   "text": "misioni-1-04",
+   "sentence": "— Unë besoj se ka një Zot.",
+   "start": 22,
+   "end": 25,
+   "surface": "Zot",
+   "lemma": "zot",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "sq-unseen-010",
+   "text": "misioni-1-04",
+   "sentence": "Por nuk e njoh.",
+   "start": 8,
+   "end": 9,
+   "surface": "e",
+   "lemma": "ai",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Sing",
+    "Case": "Acc",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-011",
+   "text": "misioni-1-04",
+   "sentence": "— Unë besoj se Perëndia na do.",
+   "start": 2,
+   "end": 5,
+   "surface": "Unë",
+   "lemma": "unë",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing",
+    "Case": "Nom",
+    "PronType": "Prs"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-012",
+   "text": "misioni-1-04",
+   "sentence": "— Unë besoj se Perëndia na do.",
+   "start": 15,
+   "end": 23,
+   "surface": "Perëndia",
+   "lemma": "perëndi",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-013",
+   "text": "misioni-1-04",
+   "sentence": "— Unë besoj se Perëndia na do.",
+   "start": 27,
+   "end": 29,
+   "surface": "do",
+   "lemma": "dua",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "ccomp",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-014",
+   "text": "misioni-1-04",
+   "sentence": "Ai e dha Birin e tij për ne.",
+   "start": 5,
+   "end": 8,
+   "surface": "dha",
+   "lemma": "jap",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-015",
+   "text": "misioni-1-04",
+   "sentence": "Ai e dha Birin e tij për ne.",
+   "start": 15,
+   "end": 16,
+   "surface": "e",
+   "lemma": "e",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-016",
+   "text": "misioni-1-04",
+   "sentence": "Ai e dha Birin e tij për ne.",
+   "start": 25,
+   "end": 27,
+   "surface": "ne",
+   "lemma": "ne",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Plur",
+    "Case": "Acc",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "sq-unseen-017",
+   "text": "misioni-1-04",
+   "sentence": "— Kush është Biri i tij?",
+   "start": 7,
+   "end": 12,
+   "surface": "është",
+   "lemma": "jam",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "sq-unseen-018",
+   "text": "misioni-1-04",
+   "sentence": "— Kush është Biri i tij?",
+   "start": 20,
+   "end": 23,
+   "surface": "tij",
+   "lemma": "tij",
+   "pos": "DET",
+   "features": {
+    "Person": "3",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "sq-unseen-019",
+   "text": "misioni-1-04",
+   "sentence": "Ai vdiq për mëkatet tona dhe u ringjall.",
+   "start": 0,
+   "end": 2,
+   "surface": "Ai",
+   "lemma": "ai",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Sing",
+    "Gender": "Masc",
+    "Case": "Nom",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-020",
+   "text": "misioni-1-04",
+   "sentence": "Ai vdiq për mëkatet tona dhe u ringjall.",
+   "start": 8,
+   "end": 11,
+   "surface": "për",
+   "lemma": "për",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "sq-unseen-021",
+   "text": "misioni-1-04",
+   "sentence": "Ai vdiq për mëkatet tona dhe u ringjall.",
+   "start": 25,
+   "end": 28,
+   "surface": "dhe",
+   "lemma": "dhe",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "sq-unseen-022",
+   "text": "misioni-1-04",
+   "sentence": "Ai vdiq për mëkatet tona dhe u ringjall.",
+   "start": 31,
+   "end": 39,
+   "surface": "ringjall",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Mid"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "sq-unseen-023",
+   "text": "misioni-1-04",
+   "sentence": "— Dua të di më shumë.",
+   "start": 9,
+   "end": 11,
+   "surface": "di",
+   "lemma": "di",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "xcomp"
+  },
+  {
+   "id": "sq-unseen-024",
+   "text": "misioni-1-04",
+   "sentence": "— Dua të di më shumë.",
+   "start": 15,
+   "end": 20,
+   "surface": "shumë",
+   "lemma": "shumë",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-025",
+   "text": "misioni-1-04",
+   "sentence": "— Mirë. Mund të lexojmë Biblën bashkë.",
+   "start": 16,
+   "end": 23,
+   "surface": "lexojmë",
+   "lemma": "lexoj",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "medium",
+   "relation": "xcomp"
+  },
+  {
+   "id": "sq-unseen-026",
+   "text": "misioni-1-04",
+   "sentence": "— Mirë. Mund të lexojmë Biblën bashkë.",
+   "start": 31,
+   "end": 37,
+   "surface": "bashkë",
+   "lemma": "bashkë",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod"
+  },
+  {
+   "id": "sq-unseen-027",
+   "text": "udha-1-06",
+   "sentence": "Dje Ana i shkroi një letër gjyshes.",
+   "start": 8,
+   "end": 9,
+   "surface": "i",
+   "lemma": "ai",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Sing",
+    "Case": "Dat",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "relation": "iobj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-028",
+   "text": "udha-1-06",
+   "sentence": "Dje Ana i shkroi një letër gjyshes.",
+   "start": 17,
+   "end": 20,
+   "surface": "një",
+   "lemma": "një",
+   "pos": "DET",
+   "features": {
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-029",
+   "text": "udha-1-06",
+   "sentence": "Ajo shkroi:",
+   "start": 0,
+   "end": 3,
+   "surface": "Ajo",
+   "lemma": "ai",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Sing",
+    "Gender": "Fem",
+    "Case": "Nom",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-030",
+   "text": "udha-1-06",
+   "sentence": "«E dashur gjyshe, si je?",
+   "start": 3,
+   "end": 9,
+   "surface": "dashur",
+   "lemma": "dashur",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "sq-unseen-031",
+   "text": "udha-1-06",
+   "sentence": "«E dashur gjyshe, si je?",
+   "start": 21,
+   "end": 23,
+   "surface": "je",
+   "lemma": "jam",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "2",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "sq-unseen-032",
+   "text": "udha-1-06",
+   "sentence": "Unë jam mirë.",
+   "start": 4,
+   "end": 7,
+   "surface": "jam",
+   "lemma": "jam",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "sq-unseen-033",
+   "text": "udha-1-06",
+   "sentence": "Dje shkova në shkollë dhe mësova shumë.",
+   "start": 4,
+   "end": 10,
+   "surface": "shkova",
+   "lemma": "shkoj",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-034",
+   "text": "udha-1-06",
+   "sentence": "Dje shkova në shkollë dhe mësova shumë.",
+   "start": 14,
+   "end": 21,
+   "surface": "shkollë",
+   "lemma": "shkollë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "sq-unseen-035",
+   "text": "udha-1-06",
+   "sentence": "Dje shkova në shkollë dhe mësova shumë.",
+   "start": 33,
+   "end": 38,
+   "surface": "shumë",
+   "lemma": "shumë",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-036",
+   "text": "udha-1-06",
+   "sentence": "Beni më dha një libër të ri.",
+   "start": 5,
+   "end": 7,
+   "surface": "më",
+   "lemma": "unë",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing",
+    "Case": "Dat",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "relation": "iobj",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-037",
+   "text": "udha-1-06",
+   "sentence": "Beni më dha një libër të ri.",
+   "start": 12,
+   "end": 15,
+   "surface": "një",
+   "lemma": "një",
+   "pos": "DET",
+   "features": {
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-038",
+   "text": "udha-1-06",
+   "sentence": "Të dua shumë.",
+   "start": 3,
+   "end": 6,
+   "surface": "dua",
+   "lemma": "dua",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "1",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-039",
+   "text": "udha-1-06",
+   "sentence": "Ana.»",
+   "start": 0,
+   "end": 3,
+   "surface": "Ana",
+   "lemma": "Ana",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Nom"
+   },
+   "difficulty": "easy",
+   "relation": "dep"
+  },
+  {
+   "id": "sq-unseen-040",
+   "text": "udha-1-06",
+   "sentence": "Ana ia dha letrën nënës.",
+   "start": 7,
+   "end": 10,
+   "surface": "dha",
+   "lemma": "jap",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-041",
+   "text": "udha-1-06",
+   "sentence": "Ana ia dha letrën nënës.",
+   "start": 18,
+   "end": 23,
+   "surface": "nënës",
+   "lemma": "nënë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dat",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "sq-unseen-042",
+   "text": "udha-1-06",
+   "sentence": "Nëna e lexoi letrën dhe buzëqeshi.",
+   "start": 13,
+   "end": 19,
+   "surface": "letrën",
+   "lemma": "letër",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "sq-unseen-043",
+   "text": "udha-1-06",
+   "sentence": "Nëna e lexoi letrën dhe buzëqeshi.",
+   "start": 24,
+   "end": 33,
+   "surface": "buzëqeshi",
+   "lemma": "buzëqesh",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "sq-unseen-044",
+   "text": "udha-1-07",
+   "sentence": "Në darkë familja është në shtëpi.",
+   "start": 9,
+   "end": 16,
+   "surface": "familja",
+   "lemma": "familje",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-045",
+   "text": "udha-1-07",
+   "sentence": "Në darkë familja është në shtëpi.",
+   "start": 23,
+   "end": 25,
+   "surface": "në",
+   "lemma": "në",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "sq-unseen-046",
+   "text": "udha-1-07",
+   "sentence": "Babai vjen nga puna.",
+   "start": 6,
+   "end": 10,
+   "surface": "vjen",
+   "lemma": "vij",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-047",
+   "text": "udha-1-07",
+   "sentence": "Babai vjen nga puna.",
+   "start": 15,
+   "end": 19,
+   "surface": "puna",
+   "lemma": "punë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "sq-unseen-048",
+   "text": "udha-1-07",
+   "sentence": "Ai është i lodhur, por i lumtur.",
+   "start": 9,
+   "end": 10,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "sq-unseen-049",
+   "text": "udha-1-07",
+   "sentence": "Ai është i lodhur, por i lumtur.",
+   "start": 19,
+   "end": 22,
+   "surface": "por",
+   "lemma": "por",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "sq-unseen-050",
+   "text": "udha-1-07",
+   "sentence": "Nëna e ka bërë darkën.",
+   "start": 7,
+   "end": 9,
+   "surface": "ka",
+   "lemma": "kam",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "sq-unseen-051",
+   "text": "udha-1-07",
+   "sentence": "Nëna e ka bërë darkën.",
+   "start": 15,
+   "end": 21,
+   "surface": "darkën",
+   "lemma": "darkë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "sq-unseen-052",
+   "text": "udha-1-07",
+   "sentence": "Të gjithë ulen në tavolinë.",
+   "start": 18,
+   "end": 26,
+   "surface": "tavolinë",
+   "lemma": "tavolinë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "sq-unseen-053",
+   "text": "udha-1-07",
+   "sentence": "— Si ishte dita? — pyet babai.",
+   "start": 5,
+   "end": 10,
+   "surface": "ishte",
+   "lemma": "jam",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "sq-unseen-054",
+   "text": "udha-1-07",
+   "sentence": "— Si ishte dita? — pyet babai.",
+   "start": 19,
+   "end": 23,
+   "surface": "pyet",
+   "lemma": "pyes",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "dep"
+  },
+  {
+   "id": "sq-unseen-055",
+   "text": "udha-1-07",
+   "sentence": "— Mirë, — thotë Beni.",
+   "start": 10,
+   "end": 15,
+   "surface": "thotë",
+   "lemma": "them",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "dep"
+  },
+  {
+   "id": "sq-unseen-056",
+   "text": "udha-1-07",
+   "sentence": "— Mësuesi na dha një libër të ri.",
+   "start": 2,
+   "end": 9,
+   "surface": "Mësuesi",
+   "lemma": "mësues",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-057",
+   "text": "udha-1-07",
+   "sentence": "— Mësuesi na dha një libër të ri.",
+   "start": 30,
+   "end": 32,
+   "surface": "ri",
+   "lemma": "ri",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "sq-unseen-058",
+   "text": "udha-1-07",
+   "sentence": "— Unë i shkrova gjyshes, — thotë Ana.",
+   "start": 16,
+   "end": 23,
+   "surface": "gjyshes",
+   "lemma": "gjyshe",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dat",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "iobj"
+  },
+  {
+   "id": "sq-unseen-059",
+   "text": "udha-1-07",
+   "sentence": "Pas darkës, fëmijët lajnë pjatat.",
+   "start": 4,
+   "end": 10,
+   "surface": "darkës",
+   "lemma": "darkë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Abl",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "sq-unseen-060",
+   "text": "udha-1-07",
+   "sentence": "Pas darkës, fëmijët lajnë pjatat.",
+   "start": 20,
+   "end": 25,
+   "surface": "lajnë",
+   "lemma": "laj",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-061",
+   "text": "udha-1-08",
+   "sentence": "Fëmijët janë të lodhur.",
+   "start": 0,
+   "end": 7,
+   "surface": "Fëmijët",
+   "lemma": "fëmijë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-062",
+   "text": "udha-1-08",
+   "sentence": "Fëmijët janë të lodhur.",
+   "start": 16,
+   "end": 22,
+   "surface": "lodhur",
+   "lemma": "lodhur",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-063",
+   "text": "udha-1-08",
+   "sentence": "Nëna u thotë:",
+   "start": 7,
+   "end": 12,
+   "surface": "thotë",
+   "lemma": "them",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-064",
+   "text": "udha-1-08",
+   "sentence": "— Është koha për të fjetur.",
+   "start": 20,
+   "end": 26,
+   "surface": "fjetur",
+   "lemma": "fle",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part"
+   },
+   "difficulty": "hard",
+   "relation": "xcomp"
+  },
+  {
+   "id": "sq-unseen-065",
+   "text": "udha-1-08",
+   "sentence": "Beni dhe Ana lahen dhe shkojnë në dhomë.",
+   "start": 23,
+   "end": 30,
+   "surface": "shkojnë",
+   "lemma": "shkoj",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "sq-unseen-066",
+   "text": "udha-1-08",
+   "sentence": "Babai u lexon një histori.",
+   "start": 0,
+   "end": 5,
+   "surface": "Babai",
+   "lemma": "baba",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Nom",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "sq-unseen-067",
+   "text": "udha-1-08",
+   "sentence": "Babai u lexon një histori.",
+   "start": 18,
+   "end": 25,
+   "surface": "histori",
+   "lemma": "histori",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "sq-unseen-068",
+   "text": "udha-1-08",
+   "sentence": "Historia është e bukur.",
+   "start": 17,
+   "end": 22,
+   "surface": "bukur",
+   "lemma": "bukur",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "sq-unseen-069",
+   "text": "udha-1-08",
+   "sentence": "— Natën e mirë, baba! — thonë fëmijët.",
+   "start": 2,
+   "end": 7,
+   "surface": "Natën",
+   "lemma": "natë",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Acc",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "sq-unseen-070",
+   "text": "udha-1-08",
+   "sentence": "— Natën e mirë, baba! — thonë fëmijët.",
+   "start": 24,
+   "end": 29,
+   "surface": "thonë",
+   "lemma": "them",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur",
+    "Voice": "Act"
+   },
+   "difficulty": "hard",
+   "relation": "dep"
+  }
+ ]
+}

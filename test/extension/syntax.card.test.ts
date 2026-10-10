@@ -32,7 +32,10 @@ const fakeSyntax = (tokens: RawToken[], _analyses: AnalyzedToken[]): SyntaxAnaly
 const anchor: PopupAnchor = { rect: { top: 100, left: 50, right: 110, bottom: 120, width: 60, height: 20 }, viewport: { width: 1024, height: 768 }, rtl: false, source: 'range' };
 const sel = (surface: string, syntax?: LanguageAdapter['syntax']) => {
   clearAnalysers();
-  registerAnalyser('de', { ...deAdapter, ...(syntax ? { syntax } : {}) });
+  // the real German adapter has its own rules since Stage 4; the tests control them explicitly (none, a fake, or throwing)
+  const adapter: LanguageAdapter = { ...deAdapter, ...(syntax ? { syntax } : {}) };
+  if (!syntax) delete (adapter as { syntax?: unknown }).syntax;
+  registerAnalyser('de', adapter);
   const at = SENTENCE.indexOf(surface);
   return parseSelection({ surface, context: { kind: 'sentence', confidence: 0.9, sentence: SENTENCE, selStart: at, selEnd: at + surface.length }, languageId: 'de' });
 };

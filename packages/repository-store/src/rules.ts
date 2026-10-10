@@ -2,7 +2,7 @@
  * The rules both stores share, written once so memory and SQLite cannot drift apart. Pure functions only: no I/O, no
  * clock beyond the injected one, nothing that knows which backend calls it.
  */
-import { MAX_CORRECTIONS, STATUS_RANK, sourceLocator, validateEvent } from '../../repository-contract/src';
+import { MAX_CORRECTIONS, STATUS_RANK, invalidateFieldStates, sourceLocator, validateEvent } from '../../repository-contract/src';
 import type {
   AnalysisStatus, EventFilter, FormAnalysis, GoEvent, LanguagePackInfo, LinguisticUnit, PrivateDocument, RepositoryStore, SourceRef, StoredEvent, Tombstone,
   ProvenanceOrigin, UnitCorrection, UnitProvenance, ValidationLevel,
@@ -122,13 +122,21 @@ export function carryProvenance(existing: UnitProvenance | undefined, incoming: 
 
 /** A unit or relation as it is stored over `existing`: same row, provenance carried. */
 export function carried<T extends { provenance: UnitProvenance }>(existing: T | undefined, incoming: T): T {
-  return existing ? { ...incoming, provenance: carryProvenance(existing.provenance, incoming.provenance) } : incoming;
+  if (!existing) return incoming;
+  const out = { ...incoming, provenance: carryProvenance(existing.provenance, incoming.provenance) };
+  // Stage 7: a unit rewritten by a producer that states no field states keeps the stored ones
+  const stored = (existing as { fieldStates?: unknown }).fieldStates;
+  if (stored !== undefined && (incoming as { fieldStates?: unknown }).fieldStates === undefined) (out as { fieldStates?: unknown }).fieldStates = stored;
+  return out;
 }
 
 /** An analysis as stored over `existing`: the analysis' own provenance (when it has one) is carried the same way. */
 export function carriedAnalysis(existing: FormAnalysis | undefined, incoming: FormAnalysis): FormAnalysis {
-  if (!existing?.provenance) return incoming;
-  return { ...incoming, provenance: incoming.provenance ? carryProvenance(existing.provenance, incoming.provenance) : existing.provenance };
+  if (!existing) return incoming;
+  // Stage 7: a rewrite that states no field states keeps the stored ones (a producer that predates Stage 7 cannot erase them)
+  const withStates: FormAnalysis = incoming.fieldStates === undefined && existing.fieldStates !== undefined ? { ...incoming, fieldStates: existing.fieldStates } : incoming;
+  if (!existing.provenance) return withStates;
+  return { ...withStates, provenance: incoming.provenance ? carryProvenance(existing.provenance, incoming.provenance) : existing.provenance };
 }
 
 /**
@@ -153,6 +161,9 @@ export const relationKey = (r: { fromId: string; relation: string; toId: string 
 
 export function invalidated(a: FormAnalysis, reason: string, supersededBy?: string): FormAnalysis {
   const out: FormAnalysis = { ...a, status: 'invalidated', reason };
+  // Stage 7: every field the analysis stated reads invalidated (the row, its candidates and the old states' basis stay)
+  const fs = invalidateFieldStates(a.fieldStates, reason);
+  if (fs) out.fieldStates = fs;
   if (supersededBy !== undefined) out.supersededBy = supersededBy;
   return out;
 }

@@ -1,0 +1,1315 @@
+{
+ "language": "hi",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "unseen",
+ "source": "data/verified/scripture.json, IRV Hindi 2019 (hin2017), chapters not in the corpus slices",
+ "feature_keys": [
+  "Case",
+  "Number",
+  "Gender",
+  "Person",
+  "Tense",
+  "Aspect",
+  "Mood",
+  "VerbForm",
+  "Voice",
+  "Polite"
+ ],
+ "notes": "Held-out selections, never to be used for tuning. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "hi-unseen-001",
+   "text": "GEN.16.11",
+   "sentence": "और यहोवा के दूत ने उससे कहा, “देख तू गर्भवती है, और पुत्र जनेगी; तू उसका नाम इश्माएल रखना; क्योंकि यहोवा ने तेरे दुःख का हाल सुन लिया है।",
+   "start": 34,
+   "end": 36,
+   "surface": "तू",
+   "lemma": "तू",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-unseen-002",
+   "text": "GEN.16.11",
+   "sentence": "और यहोवा के दूत ने उससे कहा, “देख तू गर्भवती है, और पुत्र जनेगी; तू उसका नाम इश्माएल रखना; क्योंकि यहोवा ने तेरे दुःख का हाल सुन लिया है।",
+   "start": 99,
+   "end": 104,
+   "surface": "यहोवा",
+   "lemma": "यहोवा",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-unseen-003",
+   "text": "EXO.38.22",
+   "sentence": "जिस-जिस वस्तु के बनाने की आज्ञा यहोवा ने मूसा को दी थी उसको यहूदा के गोत्रवाले बसलेल ने, जो हूर का पोता और ऊरी का पुत्र था, बना दिया।",
+   "start": 41,
+   "end": 45,
+   "surface": "मूसा",
+   "lemma": "मूसा",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "hi-unseen-004",
+   "text": "EXO.38.22",
+   "sentence": "जिस-जिस वस्तु के बनाने की आज्ञा यहोवा ने मूसा को दी थी उसको यहूदा के गोत्रवाले बसलेल ने, जो हूर का पोता और ऊरी का पुत्र था, बना दिया।",
+   "start": 96,
+   "end": 98,
+   "surface": "का",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Masc"
+   },
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-005",
+   "text": "NUM.21.31",
+   "sentence": "इस प्रकार इस्राएल एमोरियों के देश में रहने लगा।",
+   "start": 10,
+   "end": 17,
+   "surface": "इस्राएल",
+   "lemma": "इस्राएल",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-unseen-006",
+   "text": "NUM.21.31",
+   "sentence": "इस प्रकार इस्राएल एमोरियों के देश में रहने लगा।",
+   "start": 34,
+   "end": 37,
+   "surface": "में",
+   "lemma": "में",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "hi-unseen-007",
+   "text": "DEU.7.11",
+   "sentence": "इसलिए इन आज्ञाओं, विधियों, और नियमों को, जो मैं आज तुझे चिताता हूँ, मानने में चौकसी करना।",
+   "start": 30,
+   "end": 36,
+   "surface": "नियमों",
+   "lemma": "नियम",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "hi-unseen-008",
+   "text": "DEU.7.11",
+   "sentence": "इसलिए इन आज्ञाओं, विधियों, और नियमों को, जो मैं आज तुझे चिताता हूँ, मानने में चौकसी करना।",
+   "start": 56,
+   "end": 62,
+   "surface": "चिताता",
+   "lemma": "चिताना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "acl"
+  },
+  {
+   "id": "hi-unseen-009",
+   "text": "JDG.19.6",
+   "sentence": "तब उन दोनों ने बैठकर संग-संग खाया पिया; फिर स्त्री के पिता ने उस पुरुष से कहा, “और एक रात टिके रहने को प्रसन्न हो और आनन्द कर।”",
+   "start": 34,
+   "end": 38,
+   "surface": "पिया",
+   "lemma": "पीना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "hi-unseen-010",
+   "text": "JDG.19.6",
+   "sentence": "तब उन दोनों ने बैठकर संग-संग खाया पिया; फिर स्त्री के पिता ने उस पुरुष से कहा, “और एक रात टिके रहने को प्रसन्न हो और आनन्द कर।”",
+   "start": 86,
+   "end": 89,
+   "surface": "रात",
+   "lemma": "रात",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-unseen-011",
+   "text": "RUT.3.3",
+   "sentence": "तू स्नान कर तेल लगा, वस्त्र पहनकर खलिहान को जा; परन्तु जब तक वह पुरुष खा पी न चुके तब तक अपने को उस पर प्रगट न करना।",
+   "start": 34,
+   "end": 40,
+   "surface": "खलिहान",
+   "lemma": "खलिहान",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-unseen-012",
+   "text": "RUT.3.3",
+   "sentence": "तू स्नान कर तेल लगा, वस्त्र पहनकर खलिहान को जा; परन्तु जब तक वह पुरुष खा पी न चुके तब तक अपने को उस पर प्रगट न करना।",
+   "start": 83,
+   "end": 85,
+   "surface": "तब",
+   "lemma": "तब",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod"
+  },
+  {
+   "id": "hi-unseen-013",
+   "text": "2SA.3.25",
+   "sentence": "तू नेर के पुत्र अब्नेर को जानता होगा कि वह तुझे धोखा देने, और तेरे आने-जाने, और सारे काम का भेद लेने आया था।”",
+   "start": 32,
+   "end": 36,
+   "surface": "होगा",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-unseen-014",
+   "text": "2SA.3.25",
+   "sentence": "तू नेर के पुत्र अब्नेर को जानता होगा कि वह तुझे धोखा देने, और तेरे आने-जाने, और सारे काम का भेद लेने आया था।”",
+   "start": 77,
+   "end": 79,
+   "surface": "और",
+   "lemma": "और",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-015",
+   "text": "1KI.17.5",
+   "sentence": "यहोवा का यह वचन मानकर वह यरदन के पूर्व में करीत नामक नदी में जाकर छिपा रहा।",
+   "start": 22,
+   "end": 24,
+   "surface": "वह",
+   "lemma": "वह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-016",
+   "text": "1KI.17.5",
+   "sentence": "यहोवा का यह वचन मानकर वह यरदन के पूर्व में करीत नामक नदी में जाकर छिपा रहा।",
+   "start": 48,
+   "end": 52,
+   "surface": "नामक",
+   "lemma": "नामक",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "hi-unseen-017",
+   "text": "1CH.8.12",
+   "sentence": "एल्पाल के पुत्र एबेर, मिशाम और शामेद, इसी ने ओनो और गाँवों समेत लोद को बसाया।",
+   "start": 22,
+   "end": 27,
+   "surface": "मिशाम",
+   "lemma": "मिशाम",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "hi-unseen-018",
+   "text": "1CH.8.12",
+   "sentence": "एल्पाल के पुत्र एबेर, मिशाम और शामेद, इसी ने ओनो और गाँवों समेत लोद को बसाया।",
+   "start": 52,
+   "end": 58,
+   "surface": "गाँवों",
+   "lemma": "गाँव",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "hi-unseen-019",
+   "text": "2CH.2.1",
+   "sentence": "अब सुलैमान ने यहोवा के नाम का एक भवन और अपना राजभवन बनाने का विचार किया।",
+   "start": 20,
+   "end": 22,
+   "surface": "के",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Masc"
+   },
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-020",
+   "text": "2CH.2.1",
+   "sentence": "अब सुलैमान ने यहोवा के नाम का एक भवन और अपना राजभवन बनाने का विचार किया।",
+   "start": 45,
+   "end": 51,
+   "surface": "राजभवन",
+   "lemma": "राजभवन",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "hi-unseen-021",
+   "text": "NEH.10.1",
+   "sentence": "जिन्होंने छाप लगाई वे ये हैं हकल्याह का पुत्र नहेम्याह जो अधिपति था, और सिदकिय्याह;",
+   "start": 22,
+   "end": 24,
+   "surface": "ये",
+   "lemma": "यह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-022",
+   "text": "NEH.10.1",
+   "sentence": "जिन्होंने छाप लगाई वे ये हैं हकल्याह का पुत्र नहेम्याह जो अधिपति था, और सिदकिय्याह;",
+   "start": 55,
+   "end": 57,
+   "surface": "जो",
+   "lemma": "जो",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-023",
+   "text": "EST.4.6",
+   "sentence": "तब हताक नगर के उस चौक में, जो राजभवन के फाटक के सामने था, मोर्दकै के पास निकल गया।",
+   "start": 18,
+   "end": 21,
+   "surface": "चौक",
+   "lemma": "चौक",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-unseen-024",
+   "text": "EST.4.6",
+   "sentence": "तब हताक नगर के उस चौक में, जो राजभवन के फाटक के सामने था, मोर्दकै के पास निकल गया।",
+   "start": 54,
+   "end": 56,
+   "surface": "था",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "hi-unseen-025",
+   "text": "PSA.135.2",
+   "sentence": "तुम जो यहोवा के भवन में, अर्थात् हमारे परमेश्वर के भवन के आँगनों में खड़े रहते हो!",
+   "start": 20,
+   "end": 23,
+   "surface": "में",
+   "lemma": "में",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "hi-unseen-026",
+   "text": "PSA.135.2",
+   "sentence": "तुम जो यहोवा के भवन में, अर्थात् हमारे परमेश्वर के भवन के आँगनों में खड़े रहते हो!",
+   "start": 55,
+   "end": 57,
+   "surface": "के",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Masc"
+   },
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-027",
+   "text": "PRO.18.10",
+   "sentence": "यहोवा का नाम दृढ़ गढ़ है; धर्मी उसमें भागकर सब दुर्घटनाओं से बचता है।",
+   "start": 18,
+   "end": 21,
+   "surface": "गढ़",
+   "lemma": "गढ़",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "hi-unseen-028",
+   "text": "PRO.18.10",
+   "sentence": "यहोवा का नाम दृढ़ गढ़ है; धर्मी उसमें भागकर सब दुर्घटनाओं से बचता है।",
+   "start": 44,
+   "end": 46,
+   "surface": "सब",
+   "lemma": "सब",
+   "pos": "DET",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-029",
+   "text": "SNG.2.16",
+   "sentence": "मेरा प्रेमी मेरा है और मैं उसकी हूँ, वह अपनी भेड़-बकरियाँ सोसन फूलों के बीच में चराता है।",
+   "start": 23,
+   "end": 26,
+   "surface": "मैं",
+   "lemma": "मैं",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-unseen-030",
+   "text": "SNG.2.16",
+   "sentence": "मेरा प्रेमी मेरा है और मैं उसकी हूँ, वह अपनी भेड़-बकरियाँ सोसन फूलों के बीच में चराता है।",
+   "start": 63,
+   "end": 68,
+   "surface": "फूलों",
+   "lemma": "फूल",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-unseen-031",
+   "text": "ISA.48.18",
+   "sentence": "भला होता कि तूने मेरी आज्ञाओं को ध्यान से सुना होता! तब तेरी शान्ति नदी के समान और तेरी धार्मिकता समुद्र की लहरों के समान होता;",
+   "start": 33,
+   "end": 38,
+   "surface": "ध्यान",
+   "lemma": "ध्यान",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-unseen-032",
+   "text": "ISA.48.18",
+   "sentence": "भला होता कि तूने मेरी आज्ञाओं को ध्यान से सुना होता! तब तेरी शान्ति नदी के समान और तेरी धार्मिकता समुद्र की लहरों के समान होता;",
+   "start": 83,
+   "end": 87,
+   "surface": "तेरी",
+   "lemma": "तेरा",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "hi-unseen-033",
+   "text": "LAM.3.48",
+   "sentence": "मेरी आँखों से मेरी प्रजा की पुत्री के विनाश के कारण जल की धाराएँ बह रही है।",
+   "start": 25,
+   "end": 27,
+   "surface": "की",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Fem"
+   },
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-034",
+   "text": "LAM.3.48",
+   "sentence": "मेरी आँखों से मेरी प्रजा की पुत्री के विनाश के कारण जल की धाराएँ बह रही है।",
+   "start": 52,
+   "end": 54,
+   "surface": "जल",
+   "lemma": "जल",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-unseen-035",
+   "text": "EZK.8.4",
+   "sentence": "फिर वहाँ इस्राएल के परमेश्वर का तेज वैसा ही था जैसा मैंने मैदान में देखा था।",
+   "start": 20,
+   "end": 28,
+   "surface": "परमेश्वर",
+   "lemma": "परमेश्वर",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-unseen-036",
+   "text": "EZK.8.4",
+   "sentence": "फिर वहाँ इस्राएल के परमेश्वर का तेज वैसा ही था जैसा मैंने मैदान में देखा था।",
+   "start": 52,
+   "end": 57,
+   "surface": "मैंने",
+   "lemma": "मैं",
+   "pos": "PRON",
+   "features": {
+    "Case": "Erg",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-unseen-037",
+   "text": "HOS.11.6",
+   "sentence": "तलवार उनके नगरों में चलेगी, और उनके बेंड़ों को पूरा नाश करेगी; और यह उनकी युक्तियों के कारण होगा।",
+   "start": 28,
+   "end": 30,
+   "surface": "और",
+   "lemma": "और",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-038",
+   "text": "HOS.11.6",
+   "sentence": "तलवार उनके नगरों में चलेगी, और उनके बेंड़ों को पूरा नाश करेगी; और यह उनकी युक्तियों के कारण होगा।",
+   "start": 66,
+   "end": 68,
+   "surface": "यह",
+   "lemma": "यह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-039",
+   "text": "JOL.2.22",
+   "sentence": "हे मैदान के पशुओं, मत डरो, क्योंकि जंगल में चराई उगेगी, और वृक्ष फलने लगेंगे; अंजीर का वृक्ष और दाखलता अपना-अपना बल दिखाने लगेंगी।",
+   "start": 35,
+   "end": 39,
+   "surface": "जंगल",
+   "lemma": "जंगल",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-unseen-040",
+   "text": "JOL.2.22",
+   "sentence": "हे मैदान के पशुओं, मत डरो, क्योंकि जंगल में चराई उगेगी, और वृक्ष फलने लगेंगे; अंजीर का वृक्ष और दाखलता अपना-अपना बल दिखाने लगेंगी।",
+   "start": 87,
+   "end": 92,
+   "surface": "वृक्ष",
+   "lemma": "वृक्ष",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-unseen-041",
+   "text": "JON.2.1",
+   "sentence": "तब योना ने महा मच्छ के पेट में से अपने परमेश्वर यहोवा से प्रार्थना करके कहा,",
+   "start": 15,
+   "end": 19,
+   "surface": "मच्छ",
+   "lemma": "मच्छ",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-unseen-042",
+   "text": "JON.2.1",
+   "sentence": "तब योना ने महा मच्छ के पेट में से अपने परमेश्वर यहोवा से प्रार्थना करके कहा,",
+   "start": 48,
+   "end": 53,
+   "surface": "यहोवा",
+   "lemma": "यहोवा",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "appos"
+  },
+  {
+   "id": "hi-unseen-043",
+   "text": "NAM.3.6",
+   "sentence": "मैं तुझ पर घिनौनी वस्तुएँ फेंककर तुझे तुच्छ कर दूँगा, और सबसे तेरी हँसी कराऊँगा।",
+   "start": 18,
+   "end": 25,
+   "surface": "वस्तुएँ",
+   "lemma": "वस्तु",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Case": "Dir"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "hi-unseen-044",
+   "text": "NAM.3.6",
+   "sentence": "मैं तुझ पर घिनौनी वस्तुएँ फेंककर तुझे तुच्छ कर दूँगा, और सबसे तेरी हँसी कराऊँगा।",
+   "start": 54,
+   "end": 56,
+   "surface": "और",
+   "lemma": "और",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-045",
+   "text": "HAB.2.12",
+   "sentence": "हाय उस पर जो हत्या करके नगर को बनाता, और कुटिलता करके शहर को दृढ़ करता है।",
+   "start": 19,
+   "end": 23,
+   "surface": "करके",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Conv"
+   },
+   "difficulty": "medium",
+   "relation": "advcl",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-046",
+   "text": "HAB.2.12",
+   "sentence": "हाय उस पर जो हत्या करके नगर को बनाता, और कुटिलता करके शहर को दृढ़ करता है।",
+   "start": 49,
+   "end": 53,
+   "surface": "करके",
+   "lemma": "करना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Conv"
+   },
+   "difficulty": "medium",
+   "relation": "advcl",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-047",
+   "text": "HAG.2.20",
+   "sentence": "उसी महीने के चौबीसवें दिन को दूसरी बार यहोवा का यह वचन हाग्गै के पास पहुँचा,",
+   "start": 22,
+   "end": 25,
+   "surface": "दिन",
+   "lemma": "दिन",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "hi-unseen-048",
+   "text": "HAG.2.20",
+   "sentence": "उसी महीने के चौबीसवें दिन को दूसरी बार यहोवा का यह वचन हाग्गै के पास पहुँचा,",
+   "start": 51,
+   "end": 54,
+   "surface": "वचन",
+   "lemma": "वचन",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-unseen-049",
+   "text": "ZEC.8.15",
+   "sentence": "उसी प्रकार मैंने इन दिनों में यरूशलेम की और यहूदा के घराने की भलाई करने की ठान ली है; इसलिए तुम मत डरो।",
+   "start": 30,
+   "end": 37,
+   "surface": "यरूशलेम",
+   "lemma": "यरूशलेम",
+   "pos": "PROPN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "hi-unseen-050",
+   "text": "ZEC.8.15",
+   "sentence": "उसी प्रकार मैंने इन दिनों में यरूशलेम की और यहूदा के घराने की भलाई करने की ठान ली है; इसलिए तुम मत डरो।",
+   "start": 75,
+   "end": 78,
+   "surface": "ठान",
+   "lemma": "ठानना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-unseen-051",
+   "text": "MAT.8.27",
+   "sentence": "और वे अचम्भा करके कहने लगे, “यह कैसा मनुष्य है, कि आँधी और पानी भी उसकी आज्ञा मानते हैं।”",
+   "start": 23,
+   "end": 26,
+   "surface": "लगे",
+   "lemma": "लगना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-052",
+   "text": "MAT.8.27",
+   "sentence": "और वे अचम्भा करके कहने लगे, “यह कैसा मनुष्य है, कि आँधी और पानी भी उसकी आज्ञा मानते हैं।”",
+   "start": 59,
+   "end": 63,
+   "surface": "पानी",
+   "lemma": "पानी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "hi-unseen-053",
+   "text": "MRK.14.27",
+   "sentence": "तब यीशु ने उनसे कहा, “तुम सब ठोकर खाओगे, क्योंकि लिखा है: ‘मैं चरवाहे को मारूँगा, और भेड़ें तितर-बितर हो जाएँगी।’",
+   "start": 26,
+   "end": 28,
+   "surface": "सब",
+   "lemma": "सब",
+   "pos": "DET",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-054",
+   "text": "MRK.14.27",
+   "sentence": "तब यीशु ने उनसे कहा, “तुम सब ठोकर खाओगे, क्योंकि लिखा है: ‘मैं चरवाहे को मारूँगा, और भेड़ें तितर-बितर हो जाएँगी।’",
+   "start": 73,
+   "end": 80,
+   "surface": "मारूँगा",
+   "lemma": "मारना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "ccomp"
+  },
+  {
+   "id": "hi-unseen-055",
+   "text": "JHN.9.20",
+   "sentence": "उसके माता-पिता ने उत्तर दिया, “हम तो जानते हैं कि यह हमारा पुत्र है, और अंधा जन्मा था।",
+   "start": 24,
+   "end": 28,
+   "surface": "दिया",
+   "lemma": "देना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-unseen-056",
+   "text": "JHN.9.20",
+   "sentence": "उसके माता-पिता ने उत्तर दिया, “हम तो जानते हैं कि यह हमारा पुत्र है, और अंधा जन्मा था।",
+   "start": 59,
+   "end": 64,
+   "surface": "पुत्र",
+   "lemma": "पुत्र",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "ccomp"
+  },
+  {
+   "id": "hi-unseen-057",
+   "text": "ROM.3.10",
+   "sentence": "जैसा लिखा है: “कोई धर्मी नहीं, एक भी नहीं।",
+   "start": 10,
+   "end": 12,
+   "surface": "है",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-unseen-058",
+   "text": "ROM.3.10",
+   "sentence": "जैसा लिखा है: “कोई धर्मी नहीं, एक भी नहीं।",
+   "start": 31,
+   "end": 33,
+   "surface": "एक",
+   "lemma": "एक",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "medium",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-059",
+   "text": "2CO.11.1",
+   "sentence": "यदि तुम मेरी थोड़ी मूर्खता सह लेते तो क्या ही भला होता; हाँ, मेरी सह भी लेते हो।",
+   "start": 27,
+   "end": 29,
+   "surface": "सह",
+   "lemma": "सहना",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "hi-unseen-060",
+   "text": "2CO.11.1",
+   "sentence": "यदि तुम मेरी थोड़ी मूर्खता सह लेते तो क्या ही भला होता; हाँ, मेरी सह भी लेते हो।",
+   "start": 56,
+   "end": 59,
+   "surface": "हाँ",
+   "lemma": "हाँ",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse"
+  },
+  {
+   "id": "hi-unseen-061",
+   "text": "GAL.4.2",
+   "sentence": "परन्तु पिता के ठहराए हुए समय तक रक्षकों और भण्डारियों के वश में रहता है।",
+   "start": 21,
+   "end": 24,
+   "surface": "हुए",
+   "lemma": "होना",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "hi-unseen-062",
+   "text": "GAL.4.2",
+   "sentence": "परन्तु पिता के ठहराए हुए समय तक रक्षकों और भण्डारियों के वश में रहता है।",
+   "start": 54,
+   "end": 56,
+   "surface": "के",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Masc"
+   },
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-063",
+   "text": "PHP.2.1",
+   "sentence": "अतः यदि मसीह में कुछ प्रोत्साहन और प्रेम से ढाढ़स और आत्मा की सहभागिता, और कुछ करुणा और दया हो,",
+   "start": 32,
+   "end": 34,
+   "surface": "और",
+   "lemma": "और",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-064",
+   "text": "PHP.2.1",
+   "sentence": "अतः यदि मसीह में कुछ प्रोत्साहन और प्रेम से ढाढ़स और आत्मा की सहभागिता, और कुछ करुणा और दया हो,",
+   "start": 72,
+   "end": 74,
+   "surface": "और",
+   "lemma": "और",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-065",
+   "text": "COL.3.20",
+   "sentence": "हे बच्चों, सब बातों में अपने-अपने माता-पिता की आज्ञा का पालन करो, क्योंकि प्रभु इससे प्रसन्न होता है।",
+   "start": 24,
+   "end": 33,
+   "surface": "अपने-अपने",
+   "lemma": "अपना",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "hard",
+   "relation": "det"
+  },
+  {
+   "id": "hi-unseen-066",
+   "text": "COL.3.20",
+   "sentence": "हे बच्चों, सब बातों में अपने-अपने माता-पिता की आज्ञा का पालन करो, क्योंकि प्रभु इससे प्रसन्न होता है।",
+   "start": 66,
+   "end": 73,
+   "surface": "क्योंकि",
+   "lemma": "क्योंकि",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "hi-unseen-067",
+   "text": "2TH.2.11",
+   "sentence": "और इसी कारण परमेश्वर उनमें एक भटका देनेवाली सामर्थ्य को भेजेगा ताकि वे झूठ पर विश्वास करें।",
+   "start": 27,
+   "end": 29,
+   "surface": "एक",
+   "lemma": "एक",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "nummod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-068",
+   "text": "2TH.2.11",
+   "sentence": "और इसी कारण परमेश्वर उनमें एक भटका देनेवाली सामर्थ्य को भेजेगा ताकि वे झूठ पर विश्वास करें।",
+   "start": 63,
+   "end": 67,
+   "surface": "ताकि",
+   "lemma": "ताकि",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "hi-unseen-069",
+   "text": "1TI.6.12",
+   "sentence": "विश्वास की अच्छी कुश्ती लड़; और उस अनन्त जीवन को धर ले, जिसके लिये तू बुलाया गया, और बहुत गवाहों के सामने अच्छा अंगीकार किया था।",
+   "start": 35,
+   "end": 40,
+   "surface": "अनन्त",
+   "lemma": "अनन्त",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "amod"
+  },
+  {
+   "id": "hi-unseen-070",
+   "text": "1TI.6.12",
+   "sentence": "विश्वास की अच्छी कुश्ती लड़; और उस अनन्त जीवन को धर ले, जिसके लिये तू बुलाया गया, और बहुत गवाहों के सामने अच्छा अंगीकार किया था।",
+   "start": 85,
+   "end": 89,
+   "surface": "बहुत",
+   "lemma": "बहुत",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "amod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-071",
+   "text": "TIT.3.1",
+   "sentence": "लोगों को सुधि दिला, कि हाकिमों और अधिकारियों के अधीन रहें, और उनकी आज्ञा मानें, और हर एक अच्छे काम के लिये तैयार रहें,",
+   "start": 34,
+   "end": 44,
+   "surface": "अधिकारियों",
+   "lemma": "अधिकारी",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Case": "Obl"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "hi-unseen-072",
+   "text": "TIT.3.1",
+   "sentence": "लोगों को सुधि दिला, कि हाकिमों और अधिकारियों के अधीन रहें, और उनकी आज्ञा मानें, और हर एक अच्छे काम के लिये तैयार रहें,",
+   "start": 83,
+   "end": 85,
+   "surface": "हर",
+   "lemma": "हर",
+   "pos": "DET",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "hi-unseen-073",
+   "text": "HEB.4.13",
+   "sentence": "और सृष्टि की कोई वस्तु परमेश्वर से छिपी नहीं है वरन् जिसे हमें लेखा देना है, उसकी आँखों के सामने सब वस्तुएँ खुली और प्रगट हैं।",
+   "start": 35,
+   "end": 39,
+   "surface": "छिपी",
+   "lemma": "छिपना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Perf",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-unseen-074",
+   "text": "HEB.4.13",
+   "sentence": "और सृष्टि की कोई वस्तु परमेश्वर से छिपी नहीं है वरन् जिसे हमें लेखा देना है, उसकी आँखों के सामने सब वस्तुएँ खुली और प्रगट हैं।",
+   "start": 88,
+   "end": 90,
+   "surface": "के",
+   "lemma": "का",
+   "pos": "ADP",
+   "features": {
+    "Gender": "Masc"
+   },
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-075",
+   "text": "2PE.3.13",
+   "sentence": "पर उसकी प्रतिज्ञा के अनुसार हम एक नये आकाश और नई पृथ्वी की आस देखते हैं जिनमें धार्मिकता वास करेगी।",
+   "start": 31,
+   "end": 33,
+   "surface": "एक",
+   "lemma": "एक",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "nummod",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-076",
+   "text": "2PE.3.13",
+   "sentence": "पर उसकी प्रतिज्ञा के अनुसार हम एक नये आकाश और नई पृथ्वी की आस देखते हैं जिनमें धार्मिकता वास करेगी।",
+   "start": 62,
+   "end": 67,
+   "surface": "देखते",
+   "lemma": "देखना",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Aspect": "Hab",
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "hi-unseen-077",
+   "text": "1JN.3.19",
+   "sentence": "इसी से हम जानेंगे, कि हम सत्य के हैं; और जिस बात में हमारा मन हमें दोष देगा, उस विषय में हम उसके सामने अपने मन को आश्वस्त कर सकेंगे।",
+   "start": 38,
+   "end": 40,
+   "surface": "और",
+   "lemma": "और",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "hi-unseen-078",
+   "text": "1JN.3.19",
+   "sentence": "इसी से हम जानेंगे, कि हम सत्य के हैं; और जिस बात में हमारा मन हमें दोष देगा, उस विषय में हम उसके सामने अपने मन को आश्वस्त कर सकेंगे।",
+   "start": 89,
+   "end": 91,
+   "surface": "हम",
+   "lemma": "हम",
+   "pos": "PRON",
+   "features": {
+    "Case": "Dir",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "hi-unseen-079",
+   "text": "ACT.4.14",
+   "sentence": "परन्तु उस मनुष्य को जो अच्छा हुआ था, उनके साथ खड़े देखकर, यहूदी उनके विरोध में कुछ न कह सके।",
+   "start": 23,
+   "end": 28,
+   "surface": "अच्छा",
+   "lemma": "अच्छा",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dir"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "hi-unseen-080",
+   "text": "ACT.4.14",
+   "sentence": "परन्तु उस मनुष्य को जो अच्छा हुआ था, उनके साथ खड़े देखकर, यहूदी उनके विरोध में कुछ न कह सके।",
+   "start": 64,
+   "end": 68,
+   "surface": "उनके",
+   "lemma": "वह",
+   "pos": "PRON",
+   "features": {
+    "Case": "Gen",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  }
+ ]
+}

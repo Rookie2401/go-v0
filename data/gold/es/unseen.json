@@ -1,0 +1,1259 @@
+{
+ "language": "es",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "unseen",
+ "source": "data/verified/scripture.json, Reina-Valera 1909 (spaRV1909), chapters not in the corpus slices",
+ "feature_keys": [
+  "Gender",
+  "Number",
+  "Person",
+  "Tense",
+  "Mood",
+  "VerbForm",
+  "Degree",
+  "Polite"
+ ],
+ "notes": "Held-out selections, never to be used for tuning. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "es-unseen-001",
+   "text": "GEN.17.5",
+   "sentence": "Y no se llamará más tu nombre Abram, sino que será tu nombre Abraham, porque te he puesto por padre de muchedumbre de gentes.",
+   "start": 30,
+   "end": 35,
+   "surface": "Abram",
+   "lemma": "Abram",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "es-unseen-002",
+   "text": "GEN.17.5",
+   "sentence": "Y no se llamará más tu nombre Abram, sino que será tu nombre Abraham, porque te he puesto por padre de muchedumbre de gentes.",
+   "start": 83,
+   "end": 89,
+   "surface": "puesto",
+   "lemma": "poner",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-003",
+   "text": "EXO.38.22",
+   "sentence": "Y Bezaleel, hijo de Uri, hijo de Hur, de la tribu de Judá, hizo todas las cosas que Jehová mandó á Moisés.",
+   "start": 33,
+   "end": 36,
+   "surface": "Hur",
+   "lemma": "Hur",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "es-unseen-004",
+   "text": "EXO.38.22",
+   "sentence": "Y Bezaleel, hijo de Uri, hijo de Hur, de la tribu de Judá, hizo todas las cosas que Jehová mandó á Moisés.",
+   "start": 70,
+   "end": 73,
+   "surface": "las",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-005",
+   "text": "NUM.22.3",
+   "sentence": "Y Moab temió mucho á causa del pueblo que era mucho; y angustióse Moab á causa de los hijos de Israel.",
+   "start": 31,
+   "end": 37,
+   "surface": "pueblo",
+   "lemma": "pueblo",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "es-unseen-006",
+   "text": "NUM.22.3",
+   "sentence": "Y Moab temió mucho á causa del pueblo que era mucho; y angustióse Moab á causa de los hijos de Israel.",
+   "start": 73,
+   "end": 78,
+   "surface": "causa",
+   "lemma": "causa",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-007",
+   "text": "DEU.7.3",
+   "sentence": "Y no emparentarás con ellos: no darás tu hija á su hijo, ni tomarás á su hija para tu hijo.",
+   "start": 32,
+   "end": 37,
+   "surface": "darás",
+   "lemma": "dar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-008",
+   "text": "DEU.7.3",
+   "sentence": "Y no emparentarás con ellos: no darás tu hija á su hijo, ni tomarás á su hija para tu hijo.",
+   "start": 60,
+   "end": 67,
+   "surface": "tomarás",
+   "lemma": "tomar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "es-unseen-009",
+   "text": "JDG.18.13",
+   "sentence": "Y pasando de allí al monte de Ephraim, vinieron hasta la casa de Michâs.",
+   "start": 18,
+   "end": 20,
+   "surface": "al",
+   "lemma": "al",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-010",
+   "text": "JDG.18.13",
+   "sentence": "Y pasando de allí al monte de Ephraim, vinieron hasta la casa de Michâs.",
+   "start": 54,
+   "end": 56,
+   "surface": "la",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-011",
+   "text": "RUT.3.6",
+   "sentence": "Descendió pues á la era, é hizo todo lo que su suegra le había mandado.",
+   "start": 20,
+   "end": 23,
+   "surface": "era",
+   "lemma": "era",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-012",
+   "text": "RUT.3.6",
+   "sentence": "Descendió pues á la era, é hizo todo lo que su suegra le había mandado.",
+   "start": 47,
+   "end": 53,
+   "surface": "suegra",
+   "lemma": "suegro",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-unseen-013",
+   "text": "2SA.3.20",
+   "sentence": "Vino pues Abner á David en Hebrón, y con él veinte hombres: y David hizo banquete á Abner y á los que con él habían venido.",
+   "start": 37,
+   "end": 40,
+   "surface": "con",
+   "lemma": "con",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-014",
+   "text": "2SA.3.20",
+   "sentence": "Vino pues Abner á David en Hebrón, y con él veinte hombres: y David hizo banquete á Abner y á los que con él habían venido.",
+   "start": 94,
+   "end": 97,
+   "surface": "los",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-015",
+   "text": "1KI.17.15",
+   "sentence": "Entonces ella fué, é hizo como le dijo Elías; y comió él, y ella y su casa, muchos días.",
+   "start": 26,
+   "end": 30,
+   "surface": "como",
+   "lemma": "como",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-016",
+   "text": "1KI.17.15",
+   "sentence": "Entonces ella fué, é hizo como le dijo Elías; y comió él, y ella y su casa, muchos días.",
+   "start": 60,
+   "end": 64,
+   "surface": "ella",
+   "lemma": "ella",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Person": "3"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-unseen-017",
+   "text": "1CH.8.12",
+   "sentence": "Y los hijos de Elphaal: Heber, Misam, y Semeb, (el cual edificó á Ono, y á Loth con sus aldeas,)",
+   "start": 24,
+   "end": 29,
+   "surface": "Heber",
+   "lemma": "Heber",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "appos"
+  },
+  {
+   "id": "es-unseen-018",
+   "text": "1CH.8.12",
+   "sentence": "Y los hijos de Elphaal: Heber, Misam, y Semeb, (el cual edificó á Ono, y á Loth con sus aldeas,)",
+   "start": 66,
+   "end": 69,
+   "surface": "Ono",
+   "lemma": "Ono",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-unseen-019",
+   "text": "2CH.2.1",
+   "sentence": "DETERMINÓ pues Salomón edificar casa al nombre de Jehová, y otra casa para su reino.",
+   "start": 32,
+   "end": 36,
+   "surface": "casa",
+   "lemma": "casa",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-020",
+   "text": "2CH.2.1",
+   "sentence": "DETERMINÓ pues Salomón edificar casa al nombre de Jehová, y otra casa para su reino.",
+   "start": 60,
+   "end": 64,
+   "surface": "otra",
+   "lemma": "otro",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-021",
+   "text": "NEH.10.10",
+   "sentence": "Y sus hermanos Sebanías, Odaía, Celita, Pelaías, Hanán;",
+   "start": 15,
+   "end": 23,
+   "surface": "Sebanías",
+   "lemma": "Sebanías",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "appos"
+  },
+  {
+   "id": "es-unseen-022",
+   "text": "NEH.10.10",
+   "sentence": "Y sus hermanos Sebanías, Odaía, Celita, Pelaías, Hanán;",
+   "start": 32,
+   "end": 38,
+   "surface": "Celita",
+   "lemma": "Celita",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "es-unseen-023",
+   "text": "EST.4.6",
+   "sentence": "Salió pues Atach á Mardochêo, á la plaza de la ciudad que estaba delante de la puerta del rey.",
+   "start": 35,
+   "end": 40,
+   "surface": "plaza",
+   "lemma": "plaza",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-unseen-024",
+   "text": "EST.4.6",
+   "sentence": "Salió pues Atach á Mardochêo, á la plaza de la ciudad que estaba delante de la puerta del rey.",
+   "start": 65,
+   "end": 72,
+   "surface": "delante",
+   "lemma": "delante",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-unseen-025",
+   "text": "PSA.135.8",
+   "sentence": "El es el que hirió los primogénitos de Egipto, desde el hombre hasta la bestia.",
+   "start": 13,
+   "end": 18,
+   "surface": "hirió",
+   "lemma": "herir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "acl"
+  },
+  {
+   "id": "es-unseen-026",
+   "text": "PSA.135.8",
+   "sentence": "El es el que hirió los primogénitos de Egipto, desde el hombre hasta la bestia.",
+   "start": 53,
+   "end": 55,
+   "surface": "el",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-027",
+   "text": "PRO.18.9",
+   "sentence": "También el que es negligente en su obra es hermano del hombre disipador.",
+   "start": 15,
+   "end": 17,
+   "surface": "es",
+   "lemma": "ser",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop"
+  },
+  {
+   "id": "es-unseen-028",
+   "text": "PRO.18.9",
+   "sentence": "También el que es negligente en su obra es hermano del hombre disipador.",
+   "start": 43,
+   "end": 50,
+   "surface": "hermano",
+   "lemma": "hermano",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-029",
+   "text": "SNG.3.3",
+   "sentence": "Halláronme los guardas que rondan la ciudad, y díjeles: ¿Habéis visto al que ama mi alma?",
+   "start": 27,
+   "end": 33,
+   "surface": "rondan",
+   "lemma": "rondar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "acl"
+  },
+  {
+   "id": "es-unseen-030",
+   "text": "SNG.3.3",
+   "sentence": "Halláronme los guardas que rondan la ciudad, y díjeles: ¿Habéis visto al que ama mi alma?",
+   "start": 70,
+   "end": 72,
+   "surface": "al",
+   "lemma": "al",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-031",
+   "text": "ISA.50.5",
+   "sentence": "El Señor Jehová me abrió el oído, y yo no fuí rebelde, ni me torné atrás.",
+   "start": 19,
+   "end": 24,
+   "surface": "abrió",
+   "lemma": "abrir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-032",
+   "text": "ISA.50.5",
+   "sentence": "El Señor Jehová me abrió el oído, y yo no fuí rebelde, ni me torné atrás.",
+   "start": 46,
+   "end": 53,
+   "surface": "rebelde",
+   "lemma": "rebelde",
+   "pos": "ADJ",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-033",
+   "text": "LAM.3.47",
+   "sentence": "Temor y lazo fué para nosotros, asolamiento y quebrantamiento.",
+   "start": 13,
+   "end": 16,
+   "surface": "fué",
+   "lemma": "ser",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-034",
+   "text": "LAM.3.47",
+   "sentence": "Temor y lazo fué para nosotros, asolamiento y quebrantamiento.",
+   "start": 22,
+   "end": 30,
+   "surface": "nosotros",
+   "lemma": "nosotros",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "es-unseen-035",
+   "text": "EZK.7.21",
+   "sentence": "Y en mano de extraños la entregué para ser saqueada, y en despojo á los impíos de la tierra, y la contaminarán.",
+   "start": 25,
+   "end": 33,
+   "surface": "entregué",
+   "lemma": "entregar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-036",
+   "text": "EZK.7.21",
+   "sentence": "Y en mano de extraños la entregué para ser saqueada, y en despojo á los impíos de la tierra, y la contaminarán.",
+   "start": 72,
+   "end": 78,
+   "surface": "impíos",
+   "lemma": "impío",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "es-unseen-037",
+   "text": "HOS.11.1",
+   "sentence": "CUANDO Israel era muchacho, yo lo amé, y de Egipto llamé á mi hijo.",
+   "start": 18,
+   "end": 26,
+   "surface": "muchacho",
+   "lemma": "muchacho",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-unseen-038",
+   "text": "HOS.11.1",
+   "sentence": "CUANDO Israel era muchacho, yo lo amé, y de Egipto llamé á mi hijo.",
+   "start": 44,
+   "end": 50,
+   "surface": "Egipto",
+   "lemma": "Egipto",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-unseen-039",
+   "text": "JOL.2.21",
+   "sentence": "Tierra, no temas; alégrate y gózate: porque Jehová ha de hacer grandes cosas.",
+   "start": 18,
+   "end": 26,
+   "surface": "alégrate",
+   "lemma": "alegrar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Imp",
+    "Person": "2",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-040",
+   "text": "JOL.2.21",
+   "sentence": "Tierra, no temas; alégrate y gózate: porque Jehová ha de hacer grandes cosas.",
+   "start": 54,
+   "end": 56,
+   "surface": "de",
+   "lemma": "de",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark"
+  },
+  {
+   "id": "es-unseen-041",
+   "text": "JON.2.1",
+   "sentence": "MAS Jehová había prevenido un gran pez que tragase á Jonás: y estuvo Jonás en el vientre del pez tres días y tres noches.",
+   "start": 35,
+   "end": 38,
+   "surface": "pez",
+   "lemma": "pez",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-unseen-042",
+   "text": "JON.2.1",
+   "sentence": "MAS Jehová había prevenido un gran pez que tragase á Jonás: y estuvo Jonás en el vientre del pez tres días y tres noches.",
+   "start": 81,
+   "end": 88,
+   "surface": "vientre",
+   "lemma": "vientre",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-unseen-043",
+   "text": "NAM.3.8",
+   "sentence": "¿Eres tú mejor que No-amón, que estaba asentada entre ríos, cercada de aguas, cuyo baluarte era la mar, y del mar su muralla?",
+   "start": 28,
+   "end": 31,
+   "surface": "que",
+   "lemma": "que",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-044",
+   "text": "NAM.3.8",
+   "sentence": "¿Eres tú mejor que No-amón, que estaba asentada entre ríos, cercada de aguas, cuyo baluarte era la mar, y del mar su muralla?",
+   "start": 92,
+   "end": 95,
+   "surface": "era",
+   "lemma": "ser",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Imp",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-045",
+   "text": "HAB.2.11",
+   "sentence": "Porque la piedra clamará desde el muro, y la tabla del enmaderado le responderá.",
+   "start": 17,
+   "end": 24,
+   "surface": "clamará",
+   "lemma": "clamar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-046",
+   "text": "HAB.2.11",
+   "sentence": "Porque la piedra clamará desde el muro, y la tabla del enmaderado le responderá.",
+   "start": 51,
+   "end": 54,
+   "surface": "del",
+   "lemma": "del",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-047",
+   "text": "HAG.2.21",
+   "sentence": "Habla á Zorobabel, gobernador de Judá, diciendo: Yo haré temblar los cielos y la tierra;",
+   "start": 30,
+   "end": 32,
+   "surface": "de",
+   "lemma": "de",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-048",
+   "text": "HAG.2.21",
+   "sentence": "Habla á Zorobabel, gobernador de Judá, diciendo: Yo haré temblar los cielos y la tierra;",
+   "start": 65,
+   "end": 68,
+   "surface": "los",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-049",
+   "text": "ZEC.8.16",
+   "sentence": "Estas son las cosas que habéis de hacer: Hablad verdad cada cual con su prójimo; juzgad en vuestras puertas verdad y juicio de paz:",
+   "start": 31,
+   "end": 33,
+   "surface": "de",
+   "lemma": "de",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark"
+  },
+  {
+   "id": "es-unseen-050",
+   "text": "ZEC.8.16",
+   "sentence": "Estas son las cosas que habéis de hacer: Hablad verdad cada cual con su prójimo; juzgad en vuestras puertas verdad y juicio de paz:",
+   "start": 88,
+   "end": 90,
+   "surface": "en",
+   "lemma": "en",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-051",
+   "text": "MAT.8.21",
+   "sentence": "Y otro de sus discípulos le dijo: Señor, dame licencia para que vaya primero, y entierre á mi padre.",
+   "start": 25,
+   "end": 27,
+   "surface": "le",
+   "lemma": "le",
+   "pos": "PRON",
+   "features": {
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "es-unseen-052",
+   "text": "MAT.8.21",
+   "sentence": "Y otro de sus discípulos le dijo: Señor, dame licencia para que vaya primero, y entierre á mi padre.",
+   "start": 64,
+   "end": 68,
+   "surface": "vaya",
+   "lemma": "ir",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "es-unseen-053",
+   "text": "MRK.14.31",
+   "sentence": "Mas él con mayor porfía decía: Si me fuere menester morir contigo, no te negaré. También todos decían lo mismo.",
+   "start": 31,
+   "end": 33,
+   "surface": "Si",
+   "lemma": "si",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-054",
+   "text": "MRK.14.31",
+   "sentence": "Mas él con mayor porfía decía: Si me fuere menester morir contigo, no te negaré. También todos decían lo mismo.",
+   "start": 73,
+   "end": 79,
+   "surface": "negaré",
+   "lemma": "negar",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Fut",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "es-unseen-055",
+   "text": "JHN.9.24",
+   "sentence": "Así que, volvieron á llamar al hombre que había sido ciego, y dijéronle: Da gloria á Dios: nosotros sabemos que este hombre es pecador.",
+   "start": 38,
+   "end": 41,
+   "surface": "que",
+   "lemma": "que",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-056",
+   "text": "JHN.9.24",
+   "sentence": "Así que, volvieron á llamar al hombre que había sido ciego, y dijéronle: Da gloria á Dios: nosotros sabemos que este hombre es pecador.",
+   "start": 91,
+   "end": 99,
+   "surface": "nosotros",
+   "lemma": "nosotros",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-unseen-057",
+   "text": "ACT.4.6",
+   "sentence": "Y Anás, príncipe de los sacerdotes, y Caifás, y Juan y Alejandro, y todos los que eran del linaje sacerdotal;",
+   "start": 24,
+   "end": 34,
+   "surface": "sacerdotes",
+   "lemma": "sacerdote",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "es-unseen-058",
+   "text": "ACT.4.6",
+   "sentence": "Y Anás, príncipe de los sacerdotes, y Caifás, y Juan y Alejandro, y todos los que eran del linaje sacerdotal;",
+   "start": 78,
+   "end": 81,
+   "surface": "que",
+   "lemma": "que",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-059",
+   "text": "1CO.14.14",
+   "sentence": "Porque si yo orare en lengua desconocida, mi espíritu ora; mas mi entendimiento es sin fruto.",
+   "start": 19,
+   "end": 21,
+   "surface": "en",
+   "lemma": "en",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-060",
+   "text": "1CO.14.14",
+   "sentence": "Porque si yo orare en lengua desconocida, mi espíritu ora; mas mi entendimiento es sin fruto.",
+   "start": 63,
+   "end": 65,
+   "surface": "mi",
+   "lemma": "mi",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-061",
+   "text": "2CO.6.6",
+   "sentence": "En castidad, en ciencia, en longanimidad, en bondad, en Espíritu Santo, en amor no fingido;",
+   "start": 25,
+   "end": 27,
+   "surface": "en",
+   "lemma": "en",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-062",
+   "text": "2CO.6.6",
+   "sentence": "En castidad, en ciencia, en longanimidad, en bondad, en Espíritu Santo, en amor no fingido;",
+   "start": 65,
+   "end": 70,
+   "surface": "Santo",
+   "lemma": "santo",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "es-unseen-063",
+   "text": "EPH.2.1",
+   "sentence": "Y DE ella recibisteis vosotros, que estabais muertos en vuestros delitos y pecados,",
+   "start": 22,
+   "end": 30,
+   "surface": "vosotros",
+   "lemma": "vosotros",
+   "pos": "PRON",
+   "features": {
+    "Person": "2",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "es-unseen-064",
+   "text": "EPH.2.1",
+   "sentence": "Y DE ella recibisteis vosotros, que estabais muertos en vuestros delitos y pecados,",
+   "start": 53,
+   "end": 55,
+   "surface": "en",
+   "lemma": "en",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-065",
+   "text": "PHP.3.17",
+   "sentence": "Hermanos, sed imitadores de mí, y mirad los que así anduvieren como nos tenéis por ejemplo.",
+   "start": 28,
+   "end": 30,
+   "surface": "mí",
+   "lemma": "mí",
+   "pos": "PRON",
+   "features": {
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-066",
+   "text": "PHP.3.17",
+   "sentence": "Hermanos, sed imitadores de mí, y mirad los que así anduvieren como nos tenéis por ejemplo.",
+   "start": 63,
+   "end": 67,
+   "surface": "como",
+   "lemma": "como",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-067",
+   "text": "1TH.3.7",
+   "sentence": "En ello, hermanos, recibimos consolación de vosotros en toda nuestra necesidad y aflicción por causa de vuestra fe:",
+   "start": 41,
+   "end": 43,
+   "surface": "de",
+   "lemma": "de",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-068",
+   "text": "1TH.3.7",
+   "sentence": "En ello, hermanos, recibimos consolación de vosotros en toda nuestra necesidad y aflicción por causa de vuestra fe:",
+   "start": 81,
+   "end": 90,
+   "surface": "aflicción",
+   "lemma": "aflicción",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "es-unseen-069",
+   "text": "2TH.3.16",
+   "sentence": "Y el mismo Señor de paz os dé siempre paz en toda manera. El Señor sea con todos vosotros.",
+   "start": 24,
+   "end": 26,
+   "surface": "os",
+   "lemma": "os",
+   "pos": "PRON",
+   "features": {
+    "Person": "2",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "es-unseen-070",
+   "text": "2TH.3.16",
+   "sentence": "Y el mismo Señor de paz os dé siempre paz en toda manera. El Señor sea con todos vosotros.",
+   "start": 58,
+   "end": 60,
+   "surface": "El",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-071",
+   "text": "2TI.3.7",
+   "sentence": "Que siempre aprenden, y nunca pueden acabar de llegar al conocimiento de la verdad.",
+   "start": 24,
+   "end": 29,
+   "surface": "nunca",
+   "lemma": "nunca",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "es-unseen-072",
+   "text": "2TI.3.7",
+   "sentence": "Que siempre aprenden, y nunca pueden acabar de llegar al conocimiento de la verdad.",
+   "start": 57,
+   "end": 69,
+   "surface": "conocimiento",
+   "lemma": "conocimiento",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "es-unseen-073",
+   "text": "TIT.2.5",
+   "sentence": "A ser templadas, castas, que tengan cuidado de la casa, buenas, sujetas á sus maridos; porque la palabra de Dios no sea blasfemada.",
+   "start": 44,
+   "end": 46,
+   "surface": "de",
+   "lemma": "de",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "es-unseen-074",
+   "text": "TIT.2.5",
+   "sentence": "A ser templadas, castas, que tengan cuidado de la casa, buenas, sujetas á sus maridos; porque la palabra de Dios no sea blasfemada.",
+   "start": 94,
+   "end": 96,
+   "surface": "la",
+   "lemma": "el",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-075",
+   "text": "JAS.5.2",
+   "sentence": "Vuestras riquezas están podridas: vuestras ropas están comidas de polilla.",
+   "start": 24,
+   "end": 32,
+   "surface": "podridas",
+   "lemma": "podrido",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-076",
+   "text": "JAS.5.2",
+   "sentence": "Vuestras riquezas están podridas: vuestras ropas están comidas de polilla.",
+   "start": 55,
+   "end": 62,
+   "surface": "comidas",
+   "lemma": "comer",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Gender": "Fem",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "conj",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-077",
+   "text": "1PE.3.10",
+   "sentence": "Porque el que quiere amar la vida, y ver días buenos, refrene su lengua de mal, y sus labios no hablen engaño;",
+   "start": 29,
+   "end": 33,
+   "surface": "vida",
+   "lemma": "vida",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "es-unseen-078",
+   "text": "1PE.3.10",
+   "sentence": "Porque el que quiere amar la vida, y ver días buenos, refrene su lengua de mal, y sus labios no hablen engaño;",
+   "start": 75,
+   "end": 78,
+   "surface": "mal",
+   "lemma": "mal",
+   "pos": "NOUN",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl",
+   "ambiguous": true
+  },
+  {
+   "id": "es-unseen-079",
+   "text": "1JN.2.10",
+   "sentence": "El que ama á su hermano, está en luz, y no hay tropiezo en él.",
+   "start": 13,
+   "end": 15,
+   "surface": "su",
+   "lemma": "su",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "es-unseen-080",
+   "text": "1JN.2.10",
+   "sentence": "El que ama á su hermano, está en luz, y no hay tropiezo en él.",
+   "start": 43,
+   "end": 46,
+   "surface": "hay",
+   "lemma": "haber",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  }
+ ]
+}

@@ -1,0 +1,1716 @@
+{
+ "language": "nb",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "hard",
+ "source": "authored sentences (not from the corpus)",
+ "feature_keys": [
+  "Gender",
+  "Number",
+  "Definite",
+  "Tense",
+  "VerbForm",
+  "Mood",
+  "Degree",
+  "Voice",
+  "PronType"
+ ],
+ "notes": "Hard cases written to break a naive engine: each carries the expected analysis, the wrong analysis a naive engine would give, and why it is hard. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "nb-hard-001",
+   "text": "authored",
+   "sentence": "Det store huset ligger ved sjøen.",
+   "start": 10,
+   "end": 15,
+   "surface": "huset",
+   "lemma": "hus",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "double-definiteness",
+   "why_hard": "suffixed definite -et on a noun that already follows a definite determiner and adjective",
+   "wrong": {
+    "lemma": "huse",
+    "pos": "VERB",
+    "note": "strips -et as a past-tense ending"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-002",
+   "text": "authored",
+   "sentence": "Den gamle mannen sitter på benken.",
+   "start": 4,
+   "end": 9,
+   "surface": "gamle",
+   "lemma": "gammel",
+   "pos": "ADJ",
+   "features": {
+    "Definite": "Def",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "double-definiteness",
+   "why_hard": "-e form after den is the definite singular, lemma is gammel",
+   "wrong": {
+    "lemma": "gamle",
+    "pos": "ADJ",
+    "note": "keeps the -e form as its own lemma"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-003",
+   "text": "authored",
+   "sentence": "De røde bilene står utenfor.",
+   "start": 3,
+   "end": 7,
+   "surface": "røde",
+   "lemma": "rød",
+   "pos": "ADJ",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "category": "double-definiteness",
+   "why_hard": "plural/definite -e adjective whose citation form is rød",
+   "wrong": {
+    "lemma": "røde",
+    "pos": "ADJ",
+    "note": "no suffix stripping, lemma left as the inflected form"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-004",
+   "text": "authored",
+   "sentence": "Det lille barnet sover.",
+   "start": 4,
+   "end": 9,
+   "surface": "lille",
+   "lemma": "liten",
+   "pos": "ADJ",
+   "features": {
+    "Definite": "Def",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "double-definiteness",
+   "why_hard": "lille is the definite singular of liten and cannot be derived by a suffix rule",
+   "wrong": {
+    "lemma": "lille",
+    "pos": "ADJ",
+    "note": "suppletive adjective: lille is not derivable from the lemma by suffix"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-005",
+   "text": "authored",
+   "sentence": "Den nye læreren kommer i dag.",
+   "start": 8,
+   "end": 15,
+   "surface": "læreren",
+   "lemma": "lærer",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "double-definiteness",
+   "why_hard": "-en definite noun in double definiteness, with a verb homonym of the indefinite form",
+   "wrong": {
+    "lemma": "lære",
+    "pos": "VERB",
+    "note": "strips -en and then reads lærer as the verb lære"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-006",
+   "text": "authored",
+   "sentence": "Den beste venninnen min bor i Bergen.",
+   "start": 4,
+   "end": 9,
+   "surface": "beste",
+   "lemma": "god",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Sup",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "double-definiteness",
+   "why_hard": "suppletive superlative in a double-definite noun phrase",
+   "wrong": {
+    "lemma": "beste",
+    "pos": "ADJ",
+    "note": "keeps the superlative as lemma"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-007",
+   "text": "authored",
+   "sentence": "Vi gikk langs den lange veien.",
+   "start": 18,
+   "end": 23,
+   "surface": "lange",
+   "lemma": "lang",
+   "pos": "ADJ",
+   "features": {
+    "Definite": "Def",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "double-definiteness",
+   "why_hard": "definite -e after den; the lemma is lang",
+   "wrong": {
+    "lemma": "lange",
+    "pos": "ADJ",
+    "note": "lemma left as the -e form"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-008",
+   "text": "authored",
+   "sentence": "Det nye huset har fire soverom.",
+   "start": 4,
+   "end": 7,
+   "surface": "nye",
+   "lemma": "ny",
+   "pos": "ADJ",
+   "features": {
+    "Definite": "Def",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "double-definiteness",
+   "why_hard": "-e form after det; the lemma is ny",
+   "wrong": {
+    "lemma": "nye",
+    "pos": "ADJ",
+    "note": "lemma left as the -e form"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-009",
+   "text": "authored",
+   "sentence": "Jenta leser boka på kjøkkenet.",
+   "start": 0,
+   "end": 5,
+   "surface": "Jenta",
+   "lemma": "jente",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "feminine-forms",
+   "why_hard": "feminine definite in -a, stem has final -e: jente",
+   "wrong": {
+    "lemma": "jent",
+    "pos": "NOUN",
+    "note": "strips -a as the definite article and gets the wrong stem"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-010",
+   "text": "authored",
+   "sentence": "Mora lager mat til oss.",
+   "start": 0,
+   "end": 4,
+   "surface": "Mora",
+   "lemma": "mor",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "feminine-forms",
+   "why_hard": "irregular-looking definite -a on a short noun at sentence start",
+   "wrong": {
+    "lemma": "mora",
+    "pos": "PROPN",
+    "note": "unknown capitalised word read as a name"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-011",
+   "text": "authored",
+   "sentence": "Hun kasta ballen over gjerdet.",
+   "start": 4,
+   "end": 9,
+   "surface": "kasta",
+   "lemma": "kaste",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "feminine-forms",
+   "why_hard": "-a past tense of a weak verb (alternative to -et)",
+   "wrong": {
+    "lemma": "kast",
+    "pos": "NOUN",
+    "note": "strips -a as a noun ending"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-012",
+   "text": "authored",
+   "sentence": "Ei bok ligger på bordet.",
+   "start": 0,
+   "end": 2,
+   "surface": "Ei",
+   "lemma": "en",
+   "pos": "DET",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "feminine-forms",
+   "why_hard": "feminine indefinite article, lemma en",
+   "wrong": {
+    "lemma": "ei",
+    "pos": "X",
+    "note": "unknown short word"
+   },
+   "relation": "det"
+  },
+  {
+   "id": "nb-hard-013",
+   "text": "authored",
+   "sentence": "Kua står i fjøset.",
+   "start": 0,
+   "end": 3,
+   "surface": "Kua",
+   "lemma": "ku",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "feminine-forms",
+   "why_hard": "definite -a on a monosyllabic feminine noun",
+   "wrong": {
+    "lemma": "kue",
+    "pos": "NOUN",
+    "note": "restores a final -e that is not there"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-014",
+   "text": "authored",
+   "sentence": "Hun har kasta ballen.",
+   "start": 8,
+   "end": 13,
+   "surface": "kasta",
+   "lemma": "kaste",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "feminine-forms",
+   "why_hard": "participle in -a after har; same surface as the preterite",
+   "wrong": {
+    "lemma": "kasta",
+    "pos": "NOUN",
+    "note": "same surface as the past tense, read as a noun"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-015",
+   "text": "authored",
+   "sentence": "Ei kvinne står ved døra.",
+   "start": 19,
+   "end": 23,
+   "surface": "døra",
+   "lemma": "dør",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "feminine-forms",
+   "why_hard": "definite -a of a monosyllabic feminine noun",
+   "wrong": {
+    "lemma": "døre",
+    "pos": "NOUN",
+    "note": "invents a final -e"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "nb-hard-016",
+   "text": "authored",
+   "sentence": "Husa i byen er gamle.",
+   "start": 0,
+   "end": 4,
+   "surface": "Husa",
+   "lemma": "hus",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Plur",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "feminine-forms",
+   "why_hard": "one-syllable neuter plural definite in -a",
+   "wrong": {
+    "lemma": "hus",
+    "pos": "NOUN",
+    "note": "assigns singular because -a looks like feminine definite singular"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-017",
+   "text": "authored",
+   "sentence": "Brua er gammel.",
+   "start": 0,
+   "end": 4,
+   "surface": "Brua",
+   "lemma": "bro",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "bro-bru-variants",
+   "why_hard": "bru/bro spelling variant with the definite -a",
+   "wrong": {
+    "lemma": "brua",
+    "pos": "PROPN",
+    "note": "capitalised unknown word taken as a name"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-018",
+   "text": "authored",
+   "sentence": "Broen er gammel og smal.",
+   "start": 0,
+   "end": 5,
+   "surface": "Broen",
+   "lemma": "bro",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "bro-bru-variants",
+   "why_hard": "masculine definite of a vowel-final monosyllable",
+   "wrong": {
+    "lemma": "broe",
+    "pos": "VERB",
+    "note": "strips -n and reads a verb broe"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-019",
+   "text": "authored",
+   "sentence": "Bruene over elva er gamle.",
+   "start": 0,
+   "end": 6,
+   "surface": "Bruene",
+   "lemma": "bro",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "bro-bru-variants",
+   "why_hard": "spelling variant bru must resolve to the lemma bro",
+   "wrong": {
+    "lemma": "brue",
+    "pos": "NOUN",
+    "note": "takes the variant bru as a separate lemma"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-020",
+   "text": "authored",
+   "sentence": "Vi gikk langs gaten.",
+   "start": 14,
+   "end": 19,
+   "surface": "gaten",
+   "lemma": "gate",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "bro-bru-variants",
+   "why_hard": "gate/gata variant with a definite in -en",
+   "wrong": {
+    "lemma": "gat",
+    "pos": "NOUN",
+    "note": "strips -en and loses the stem vowel e"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "nb-hard-021",
+   "text": "authored",
+   "sentence": "Eplene er billigere i butikken.",
+   "start": 0,
+   "end": 6,
+   "surface": "Eplene",
+   "lemma": "eple",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Plur",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "bro-bru-variants",
+   "why_hard": "neuter noun ending in -e takes plural -er and definite plural -ene",
+   "wrong": {
+    "lemma": "eplen",
+    "pos": "NOUN",
+    "note": "strips -ne only"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-022",
+   "text": "authored",
+   "sentence": "Det var meget kaldt i går.",
+   "start": 8,
+   "end": 13,
+   "surface": "meget",
+   "lemma": "meget",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "bro-bru-variants",
+   "why_hard": "alternative form of mye kept as its own lemma",
+   "wrong": {
+    "lemma": "mye",
+    "pos": "ADV",
+    "note": "normalises to the commoner synonym mye as lemma"
+   },
+   "relation": "advmod"
+  },
+  {
+   "id": "nb-hard-023",
+   "text": "authored",
+   "sentence": "Hun har to hester.",
+   "start": 11,
+   "end": 17,
+   "surface": "hester",
+   "lemma": "hest",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "bro-bru-variants",
+   "why_hard": "regular plural in -er",
+   "wrong": {
+    "lemma": "hester",
+    "pos": "NOUN",
+    "note": "lemma left as the plural"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "nb-hard-024",
+   "text": "authored",
+   "sentence": "Hun gikk hjem i går.",
+   "start": 4,
+   "end": 8,
+   "surface": "gikk",
+   "lemma": "gå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "strong verb with changed stem",
+   "wrong": {
+    "lemma": "gikke",
+    "pos": "VERB",
+    "note": "strips -k-ending pattern, no irregular entry"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-025",
+   "text": "authored",
+   "sentence": "De kom sent til festen.",
+   "start": 3,
+   "end": 6,
+   "surface": "kom",
+   "lemma": "komme",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "ablaut past, lemma differs from the form",
+   "wrong": {
+    "lemma": "kom",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-026",
+   "text": "authored",
+   "sentence": "Jeg har sett filmen to ganger.",
+   "start": 8,
+   "end": 12,
+   "surface": "sett",
+   "lemma": "se",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "participle homophone: sett belongs to se, sette has satt",
+   "wrong": {
+    "lemma": "sette",
+    "pos": "VERB",
+    "note": "reads sett as the participle of sette (to put)"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-027",
+   "text": "authored",
+   "sentence": "Hun så ham i går.",
+   "start": 4,
+   "end": 6,
+   "surface": "så",
+   "lemma": "se",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "past tense of se identical to the adverb/conjunction så",
+   "wrong": {
+    "lemma": "så",
+    "pos": "ADV",
+    "note": "reads så as the adverb or conjunction"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-028",
+   "text": "authored",
+   "sentence": "Vi har fått brev fra skolen.",
+   "start": 7,
+   "end": 11,
+   "surface": "fått",
+   "lemma": "få",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "participle of an irregular monosyllabic verb",
+   "wrong": {
+    "lemma": "fått",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-029",
+   "text": "authored",
+   "sentence": "Han ga meg en gave.",
+   "start": 4,
+   "end": 6,
+   "surface": "ga",
+   "lemma": "gi",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular past ga/gav of gi",
+   "wrong": {
+    "lemma": "ga",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-030",
+   "text": "authored",
+   "sentence": "Hun hadde tatt bussen.",
+   "start": 10,
+   "end": 14,
+   "surface": "tatt",
+   "lemma": "ta",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular participle of ta",
+   "wrong": {
+    "lemma": "tatt",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-031",
+   "text": "authored",
+   "sentence": "Vi stod og ventet i flere timer.",
+   "start": 3,
+   "end": 7,
+   "surface": "stod",
+   "lemma": "stå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "past stod of stå with changed vowel",
+   "wrong": {
+    "lemma": "stod",
+    "pos": "VERB",
+    "note": "no mapping from the past stem"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-032",
+   "text": "authored",
+   "sentence": "Hun lå i sengen hele dagen.",
+   "start": 4,
+   "end": 6,
+   "surface": "lå",
+   "lemma": "ligge",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "irregular past of ligge, stem shared with nothing regular",
+   "wrong": {
+    "lemma": "lå",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-033",
+   "text": "authored",
+   "sentence": "Han har vært i Bergen mange ganger.",
+   "start": 8,
+   "end": 12,
+   "surface": "vært",
+   "lemma": "være",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "participle of the copula being auxiliary after har",
+   "wrong": {
+    "lemma": "være",
+    "pos": "VERB",
+    "note": "verb instead of auxiliary and wrong lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-034",
+   "text": "authored",
+   "sentence": "De drakk te hele kvelden.",
+   "start": 3,
+   "end": 8,
+   "surface": "drakk",
+   "lemma": "drikke",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "strong verb with vowel change",
+   "wrong": {
+    "lemma": "drakk",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-035",
+   "text": "authored",
+   "sentence": "Jeg har gitt ham boka.",
+   "start": 8,
+   "end": 12,
+   "surface": "gitt",
+   "lemma": "gi",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "irregular-verb",
+   "why_hard": "participle of an irregular verb",
+   "wrong": {
+    "lemma": "gitt",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-036",
+   "text": "authored",
+   "sentence": "Jeg står opp klokka sju hver dag.",
+   "start": 4,
+   "end": 8,
+   "surface": "står",
+   "lemma": "stå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "category": "particle-verb",
+   "why_hard": "first piece of the particle verb stå opp, the lemma is the plain verb",
+   "wrong": {
+    "lemma": "står",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-037",
+   "text": "authored",
+   "sentence": "Jeg står opp klokka sju hver dag.",
+   "start": 9,
+   "end": 12,
+   "surface": "opp",
+   "lemma": "opp",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-verb",
+   "why_hard": "verb particle after stå",
+   "wrong": {
+    "lemma": "opp",
+    "pos": "ADP",
+    "note": "tags the particle as a preposition"
+   },
+   "relation": "compound"
+  },
+  {
+   "id": "nb-hard-038",
+   "text": "authored",
+   "sentence": "Han slo av lyset og gikk til sengs.",
+   "start": 4,
+   "end": 7,
+   "surface": "slo",
+   "lemma": "slå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "particle-verb",
+   "why_hard": "irregular past of slå inside a particle verb",
+   "wrong": {
+    "lemma": "slo",
+    "pos": "VERB",
+    "note": "lemma left as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-039",
+   "text": "authored",
+   "sentence": "Hun tok på seg jakken og gikk ut.",
+   "start": 8,
+   "end": 10,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-verb",
+   "why_hard": "particle of ta på seg, not a preposition",
+   "wrong": {
+    "lemma": "på",
+    "pos": "ADP",
+    "note": "tags the particle as a preposition"
+   },
+   "relation": "compound"
+  },
+  {
+   "id": "nb-hard-040",
+   "text": "authored",
+   "sentence": "Vi må finne ut av problemet.",
+   "start": 12,
+   "end": 14,
+   "surface": "ut",
+   "lemma": "ut",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-verb",
+   "why_hard": "ut is part of finne ut, followed by av",
+   "wrong": {
+    "lemma": "ut",
+    "pos": "ADP",
+    "note": "tags the particle as a preposition"
+   },
+   "relation": "compound"
+  },
+  {
+   "id": "nb-hard-041",
+   "text": "authored",
+   "sentence": "De la ned arbeidet etter lunsj.",
+   "start": 6,
+   "end": 9,
+   "surface": "ned",
+   "lemma": "ned",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-verb",
+   "why_hard": "ned is a verb particle of legge ned",
+   "wrong": {
+    "lemma": "ned",
+    "pos": "ADP",
+    "note": "tags the particle as a preposition"
+   },
+   "relation": "compound"
+  },
+  {
+   "id": "nb-hard-042",
+   "text": "authored",
+   "sentence": "Hun ringte opp læreren i går.",
+   "start": 4,
+   "end": 10,
+   "surface": "ringte",
+   "lemma": "ringe",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "particle-verb",
+   "why_hard": "weak past of a particle verb",
+   "wrong": {
+    "lemma": "ringe",
+    "pos": "VERB",
+    "note": "keeps the infinitive as the form"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-043",
+   "text": "authored",
+   "sentence": "Sykehuset ligger ved siden av bussholdeplassen.",
+   "start": 30,
+   "end": 46,
+   "surface": "bussholdeplassen",
+   "lemma": "bussholdeplass",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "compound-noun",
+   "why_hard": "three-part compound with definite -en",
+   "wrong": {
+    "lemma": "buss",
+    "pos": "NOUN",
+    "note": "analyses only the first element"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "nb-hard-044",
+   "text": "authored",
+   "sentence": "Kjøleskapet er nesten tomt.",
+   "start": 0,
+   "end": 11,
+   "surface": "Kjøleskapet",
+   "lemma": "kjøleskap",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "compound-noun",
+   "why_hard": "compound whose head skap is neuter; definite -et",
+   "wrong": {
+    "lemma": "kjøleskape",
+    "pos": "NOUN",
+    "note": "wrongly restores -e"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-045",
+   "text": "authored",
+   "sentence": "Hun jobber som tannlege i Oslo.",
+   "start": 15,
+   "end": 23,
+   "surface": "tannlege",
+   "lemma": "tannlege",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "compound-noun",
+   "why_hard": "compound is one lemma, not its head",
+   "wrong": {
+    "lemma": "lege",
+    "pos": "NOUN",
+    "note": "lemmatises to the head only"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "nb-hard-046",
+   "text": "authored",
+   "sentence": "Han kjøpte en ny datamaskin i går.",
+   "start": 17,
+   "end": 27,
+   "surface": "datamaskin",
+   "lemma": "datamaskin",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "compound-noun",
+   "why_hard": "compound is one lemma, not its head",
+   "wrong": {
+    "lemma": "maskin",
+    "pos": "NOUN",
+    "note": "lemmatises to the head only"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "nb-hard-047",
+   "text": "authored",
+   "sentence": "Skoleveien er lang og farlig.",
+   "start": 0,
+   "end": 10,
+   "surface": "Skoleveien",
+   "lemma": "skolevei",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "compound-noun",
+   "why_hard": "compound with a linking -e- and definite -en",
+   "wrong": {
+    "lemma": "skoleveie",
+    "pos": "NOUN",
+    "note": "wrong stem"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-048",
+   "text": "authored",
+   "sentence": "Mobiltelefonen ligger i lommen.",
+   "start": 0,
+   "end": 14,
+   "surface": "Mobiltelefonen",
+   "lemma": "mobiltelefon",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "compound-noun",
+   "why_hard": "compound is one lemma, not its head",
+   "wrong": {
+    "lemma": "telefon",
+    "pos": "NOUN",
+    "note": "lemmatises to the head only"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-049",
+   "text": "authored",
+   "sentence": "Fotballaget vant kampen i går.",
+   "start": 0,
+   "end": 11,
+   "surface": "Fotballaget",
+   "lemma": "fotballag",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "compound-noun",
+   "why_hard": "compound whose head lag is neuter; definite -et",
+   "wrong": {
+    "lemma": "fotballage",
+    "pos": "NOUN",
+    "note": "wrongly restores -e"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-hard-050",
+   "text": "authored",
+   "sentence": "Du bør gå til legen.",
+   "start": 3,
+   "end": 6,
+   "surface": "bør",
+   "lemma": "burde",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "present of the modal burde, which has the same surface as a noun",
+   "wrong": {
+    "lemma": "bør",
+    "pos": "NOUN",
+    "note": "reads the noun bør (a load)"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-051",
+   "text": "authored",
+   "sentence": "Hun ligger i sengen og leser.",
+   "start": 4,
+   "end": 10,
+   "surface": "ligger",
+   "lemma": "ligge",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "finite verb with a noun homograph",
+   "wrong": {
+    "lemma": "ligger",
+    "pos": "NOUN",
+    "note": "reads the noun ligger (one who lies)"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-052",
+   "text": "authored",
+   "sentence": "Det var et stort fall fra taket.",
+   "start": 17,
+   "end": 21,
+   "surface": "fall",
+   "lemma": "fall",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "noun that looks like the stem of falle",
+   "wrong": {
+    "lemma": "falle",
+    "pos": "VERB",
+    "note": "reads fall as a verb form"
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-053",
+   "text": "authored",
+   "sentence": "Laget vann kampen i går.",
+   "start": 6,
+   "end": 10,
+   "surface": "vann",
+   "lemma": "vinne",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "past of vinne identical to the noun vann",
+   "wrong": {
+    "lemma": "vann",
+    "pos": "NOUN",
+    "note": "reads the noun vann (water)"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-054",
+   "text": "authored",
+   "sentence": "Vi trenger mer vann.",
+   "start": 15,
+   "end": 19,
+   "surface": "vann",
+   "lemma": "vann",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "noun identical to the past of vinne",
+   "wrong": {
+    "lemma": "vinne",
+    "pos": "VERB",
+    "note": "reads the past tense of vinne"
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-055",
+   "text": "authored",
+   "sentence": "Taket på huset er rødt.",
+   "start": 0,
+   "end": 5,
+   "surface": "Taket",
+   "lemma": "tak",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "tak (roof) shares letters with ta",
+   "wrong": {
+    "lemma": "ta",
+    "pos": "VERB",
+    "note": "strips -et to a verb stem"
+   },
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-056",
+   "text": "authored",
+   "sentence": "Rommet er veldig lyst.",
+   "start": 17,
+   "end": 21,
+   "surface": "lyst",
+   "lemma": "lys",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "neuter of the adjective lys with a noun homograph",
+   "wrong": {
+    "lemma": "lyst",
+    "pos": "NOUN",
+    "note": "reads the noun lyst (desire)"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-057",
+   "text": "authored",
+   "sentence": "Han mal kaffe til frokosten.",
+   "start": 4,
+   "end": 7,
+   "surface": "mal",
+   "lemma": "male",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "past of male, same surface as a noun",
+   "wrong": {
+    "lemma": "mal",
+    "pos": "NOUN",
+    "note": "reads the noun mal (template)"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-058",
+   "text": "authored",
+   "sentence": "Hun er en god leser.",
+   "start": 14,
+   "end": 19,
+   "surface": "leser",
+   "lemma": "leser",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "homograph",
+   "why_hard": "agent noun identical to the present of lese",
+   "wrong": {
+    "lemma": "lese",
+    "pos": "VERB",
+    "note": "reads the verb form"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-hard-059",
+   "text": "authored",
+   "sentence": "Døra lukkes klokka ti.",
+   "start": 5,
+   "end": 11,
+   "surface": "lukkes",
+   "lemma": "lukke",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres",
+    "Voice": "Pass"
+   },
+   "difficulty": "hard",
+   "category": "s-passive-and-reflexive",
+   "why_hard": "passive in -s, lemma without -s",
+   "wrong": {
+    "lemma": "lukkes",
+    "pos": "VERB",
+    "note": "keeps the -s as part of the lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-060",
+   "text": "authored",
+   "sentence": "Vi sees i morgen.",
+   "start": 3,
+   "end": 7,
+   "surface": "sees",
+   "lemma": "se",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres",
+    "Voice": "Pass"
+   },
+   "difficulty": "hard",
+   "category": "s-passive-and-reflexive",
+   "why_hard": "reciprocal -s form of se",
+   "wrong": {
+    "lemma": "see",
+    "pos": "VERB",
+    "note": "strips only -s and gets an impossible lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-061",
+   "text": "authored",
+   "sentence": "Huset bygges av tre.",
+   "start": 6,
+   "end": 12,
+   "surface": "bygges",
+   "lemma": "bygge",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres",
+    "Voice": "Pass"
+   },
+   "difficulty": "hard",
+   "category": "s-passive-and-reflexive",
+   "why_hard": "s-passive of a weak verb",
+   "wrong": {
+    "lemma": "bygges",
+    "pos": "VERB",
+    "note": "keeps the -s as part of the lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-062",
+   "text": "authored",
+   "sentence": "Boka kan kjøpes i alle butikker.",
+   "start": 9,
+   "end": 15,
+   "surface": "kjøpes",
+   "lemma": "kjøpe",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf",
+    "Voice": "Pass"
+   },
+   "difficulty": "hard",
+   "category": "s-passive-and-reflexive",
+   "why_hard": "infinitive passive after a modal",
+   "wrong": {
+    "lemma": "kjøpes",
+    "pos": "VERB",
+    "note": "keeps the -s and loses Inf"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-063",
+   "text": "authored",
+   "sentence": "Vi møtes ved inngangen klokka åtte.",
+   "start": 3,
+   "end": 8,
+   "surface": "møtes",
+   "lemma": "møte",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres",
+    "Voice": "Pass"
+   },
+   "difficulty": "hard",
+   "category": "s-passive-and-reflexive",
+   "why_hard": "reciprocal -s form, same stem as the noun møte",
+   "wrong": {
+    "lemma": "møtes",
+    "pos": "VERB",
+    "note": "keeps the -s as part of the lemma"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-064",
+   "text": "authored",
+   "sentence": "Hun vasker seg hver morgen.",
+   "start": 11,
+   "end": 14,
+   "surface": "seg",
+   "lemma": "seg",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "hard",
+   "category": "s-passive-and-reflexive",
+   "why_hard": "reflexive pronoun with no number or gender of its own",
+   "wrong": {
+    "lemma": "han",
+    "pos": "PRON",
+    "note": "maps the reflexive to a third person pronoun"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "nb-hard-065",
+   "text": "authored",
+   "sentence": "Han skammer seg over det han gjorde.",
+   "start": 4,
+   "end": 11,
+   "surface": "skammer",
+   "lemma": "skamme",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "category": "s-passive-and-reflexive",
+   "why_hard": "reflexive verb skamme seg, noun skam in the same family",
+   "wrong": {
+    "lemma": "skam",
+    "pos": "NOUN",
+    "note": "strips -er into the noun skam"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-066",
+   "text": "authored",
+   "sentence": "Dette er bedre enn før.",
+   "start": 9,
+   "end": 14,
+   "surface": "bedre",
+   "lemma": "god",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp"
+   },
+   "difficulty": "hard",
+   "category": "comparison-irregular",
+   "why_hard": "suppletive comparative of god",
+   "wrong": {
+    "lemma": "bedre",
+    "pos": "ADJ",
+    "note": "lemma left as the comparative"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-067",
+   "text": "authored",
+   "sentence": "Han er den eldste i klassen.",
+   "start": 11,
+   "end": 17,
+   "surface": "eldste",
+   "lemma": "gammel",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Sup",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "comparison-irregular",
+   "why_hard": "irregular superlative with changed vowel",
+   "wrong": {
+    "lemma": "eldste",
+    "pos": "ADJ",
+    "note": "lemma left as the superlative"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-068",
+   "text": "authored",
+   "sentence": "Vi har færre biler enn før.",
+   "start": 7,
+   "end": 12,
+   "surface": "færre",
+   "lemma": "få",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp"
+   },
+   "difficulty": "hard",
+   "category": "comparison-irregular",
+   "why_hard": "suppletive comparative of få",
+   "wrong": {
+    "lemma": "færre",
+    "pos": "ADJ",
+    "note": "lemma left as the comparative"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-069",
+   "text": "authored",
+   "sentence": "Det minste barnet gråter.",
+   "start": 4,
+   "end": 10,
+   "surface": "minste",
+   "lemma": "liten",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Sup",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "category": "comparison-irregular",
+   "why_hard": "suppletive superlative of liten",
+   "wrong": {
+    "lemma": "minste",
+    "pos": "ADJ",
+    "note": "lemma left as the superlative"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "nb-hard-070",
+   "text": "authored",
+   "sentence": "Hun leser mer enn meg.",
+   "start": 10,
+   "end": 13,
+   "surface": "mer",
+   "lemma": "mye",
+   "pos": "ADV",
+   "features": {
+    "Degree": "Cmp"
+   },
+   "difficulty": "hard",
+   "category": "comparison-irregular",
+   "why_hard": "suppletive comparative of mye",
+   "wrong": {
+    "lemma": "mer",
+    "pos": "ADV",
+    "note": "lemma left as the comparative"
+   },
+   "relation": "advmod"
+  },
+  {
+   "id": "nb-hard-071",
+   "text": "authored",
+   "sentence": "Han er størst i klassen.",
+   "start": 7,
+   "end": 13,
+   "surface": "størst",
+   "lemma": "stor",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Sup",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "category": "comparison-irregular",
+   "why_hard": "superlative with umlaut-like vowel change",
+   "wrong": {
+    "lemma": "stør",
+    "pos": "ADJ",
+    "note": "strips -st to get a nonexistent stem"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-072",
+   "text": "authored",
+   "sentence": "Veien hjem er lengre enn jeg trodde.",
+   "start": 14,
+   "end": 20,
+   "surface": "lengre",
+   "lemma": "lang",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp"
+   },
+   "difficulty": "hard",
+   "category": "comparison-irregular",
+   "why_hard": "irregular comparative with changed vowel",
+   "wrong": {
+    "lemma": "lengre",
+    "pos": "ADJ",
+    "note": "lemma left as the comparative"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "nb-hard-073",
+   "text": "authored",
+   "sentence": "Været er dårligere i dag.",
+   "start": 9,
+   "end": 18,
+   "surface": "dårligere",
+   "lemma": "dårlig",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp"
+   },
+   "difficulty": "hard",
+   "category": "comparison-irregular",
+   "why_hard": "regular comparative of a word with an irregular alternative (verre)",
+   "wrong": {
+    "lemma": "dårligere",
+    "pos": "ADJ",
+    "note": "lemma left as the comparative"
+   },
+   "relation": "root"
+  }
+ ]
+}

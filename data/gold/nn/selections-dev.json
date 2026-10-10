@@ -1,0 +1,3354 @@
+{
+ "language": "nn",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "dev",
+ "source": "data/corpus/nn (all 21 sentences) + the sentence text (annotations stripped) of NN_GOLD in test/adapters/norwegian-gold-data.ts",
+ "feature_keys": [
+  "Gender",
+  "Number",
+  "Definite",
+  "Tense",
+  "VerbForm",
+  "Mood",
+  "Degree",
+  "Voice",
+  "PronType"
+ ],
+ "notes": "Contextual word selections from the course corpus. AI-judged, unreviewed. Labelled without running the analysers on the items. Use for measuring; do not tune the engine to this file.",
+ "items": [
+  {
+   "id": "nn-dev-001",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 0,
+   "end": 6,
+   "surface": "Dersom",
+   "lemma": "dersom",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-002",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 7,
+   "end": 9,
+   "surface": "me",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-003",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 10,
+   "end": 16,
+   "surface": "segjer",
+   "lemma": "segje",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "advcl"
+  },
+  {
+   "id": "nn-dev-004",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 17,
+   "end": 19,
+   "surface": "at",
+   "lemma": "at",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-005",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 20,
+   "end": 22,
+   "surface": "me",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-006",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 23,
+   "end": 28,
+   "surface": "ikkje",
+   "lemma": "ikkje",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-007",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 29,
+   "end": 32,
+   "surface": "hev",
+   "lemma": "ha",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "ccomp"
+  },
+  {
+   "id": "nn-dev-008",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 33,
+   "end": 37,
+   "surface": "synd",
+   "lemma": "synd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-009",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 42,
+   "end": 47,
+   "surface": "dårar",
+   "lemma": "dåra",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-010",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 48,
+   "end": 50,
+   "surface": "me",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-011",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 51,
+   "end": 54,
+   "surface": "oss",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-012",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 55,
+   "end": 61,
+   "surface": "sjølve",
+   "lemma": "sjølv",
+   "pos": "ADJ",
+   "features": {
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "nn-dev-013",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 63,
+   "end": 65,
+   "surface": "og",
+   "lemma": "og",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-dev-014",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 66,
+   "end": 74,
+   "surface": "sanningi",
+   "lemma": "sanning",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-015",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 75,
+   "end": 77,
+   "surface": "er",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-dev-016",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 78,
+   "end": 83,
+   "surface": "ikkje",
+   "lemma": "ikkje",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-017",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me segjer at me ikkje hev synd, so dårar me oss sjølve, og sanningi er ikkje i oss.",
+   "start": 86,
+   "end": 89,
+   "surface": "oss",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-018",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 0,
+   "end": 6,
+   "surface": "Dersom",
+   "lemma": "dersom",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-019",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 7,
+   "end": 9,
+   "surface": "me",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-020",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 10,
+   "end": 16,
+   "surface": "sannar",
+   "lemma": "sanna",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "nn-dev-021",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 17,
+   "end": 25,
+   "surface": "synderne",
+   "lemma": "synd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-022",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 26,
+   "end": 30,
+   "surface": "våre",
+   "lemma": "vår",
+   "pos": "DET",
+   "features": {
+    "Number": "Plur",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nn-dev-023",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 32,
+   "end": 34,
+   "surface": "so",
+   "lemma": "so",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-024",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 35,
+   "end": 37,
+   "surface": "er",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-dev-025",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 42,
+   "end": 49,
+   "surface": "trufast",
+   "lemma": "trufast",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-026",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 50,
+   "end": 52,
+   "surface": "og",
+   "lemma": "og",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-dev-027",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 53,
+   "end": 63,
+   "surface": "rettferdig",
+   "lemma": "rettferdig",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-dev-028",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 65,
+   "end": 67,
+   "surface": "so",
+   "lemma": "so",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-029",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 68,
+   "end": 71,
+   "surface": "han",
+   "lemma": "han",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-030",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 72,
+   "end": 78,
+   "surface": "forlet",
+   "lemma": "forlate",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "nn-dev-031",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 79,
+   "end": 82,
+   "surface": "oss",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "nn-dev-032",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 92,
+   "end": 94,
+   "surface": "og",
+   "lemma": "og",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-dev-033",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 95,
+   "end": 102,
+   "surface": "reinsar",
+   "lemma": "reinsa",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-dev-034",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 103,
+   "end": 106,
+   "surface": "oss",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-035",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 107,
+   "end": 110,
+   "surface": "frå",
+   "lemma": "frå",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-036",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 111,
+   "end": 114,
+   "surface": "all",
+   "lemma": "all",
+   "pos": "DET",
+   "features": {
+    "PronType": "Tot"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nn-dev-037",
+   "text": "bible-1john-1",
+   "sentence": "Dersom me sannar synderne våre, so er han trufast og rettferdig, so han forlet oss synderne og reinsar oss frå all urettferd.",
+   "start": 115,
+   "end": 124,
+   "surface": "urettferd",
+   "lemma": "urettferd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-038",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 0,
+   "end": 3,
+   "surface": "For",
+   "lemma": "for",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "cc",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-039",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 4,
+   "end": 6,
+   "surface": "so",
+   "lemma": "so",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-040",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 13,
+   "end": 16,
+   "surface": "Gud",
+   "lemma": "gud",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-041",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 17,
+   "end": 22,
+   "surface": "verdi",
+   "lemma": "verd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-042",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 23,
+   "end": 25,
+   "surface": "at",
+   "lemma": "at",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-043",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 26,
+   "end": 29,
+   "surface": "han",
+   "lemma": "han",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-044",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 30,
+   "end": 33,
+   "surface": "gav",
+   "lemma": "gje",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "nn-dev-045",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 34,
+   "end": 37,
+   "surface": "Son",
+   "lemma": "son",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-046",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 38,
+   "end": 41,
+   "surface": "sin",
+   "lemma": "sin",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nn-dev-047",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 43,
+   "end": 46,
+   "surface": "den",
+   "lemma": "den",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing",
+    "PronType": "Dem"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-048",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 57,
+   "end": 59,
+   "surface": "so",
+   "lemma": "so",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-049",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 60,
+   "end": 64,
+   "surface": "kvar",
+   "lemma": "kvar",
+   "pos": "DET",
+   "features": {
+    "PronType": "Tot"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-050",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 65,
+   "end": 68,
+   "surface": "den",
+   "lemma": "den",
+   "pos": "PRON",
+   "features": {
+    "Number": "Sing",
+    "PronType": "Dem"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-051",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 69,
+   "end": 72,
+   "surface": "som",
+   "lemma": "som",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-052",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 73,
+   "end": 77,
+   "surface": "trur",
+   "lemma": "tru",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "acl"
+  },
+  {
+   "id": "nn-dev-053",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 78,
+   "end": 80,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-054",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 81,
+   "end": 86,
+   "surface": "honom",
+   "lemma": "han",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-055",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 94,
+   "end": 98,
+   "surface": "skal",
+   "lemma": "skulle",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "nn-dev-056",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 99,
+   "end": 104,
+   "surface": "verta",
+   "lemma": "verte",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "aux"
+  },
+  {
+   "id": "nn-dev-057",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 105,
+   "end": 112,
+   "surface": "fortapt",
+   "lemma": "fortapt",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "nn-dev-058",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 114,
+   "end": 117,
+   "surface": "men",
+   "lemma": "men",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-dev-059",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 118,
+   "end": 122,
+   "surface": "hava",
+   "lemma": "ha",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-dev-060",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 123,
+   "end": 130,
+   "surface": "ævelegt",
+   "lemma": "ævelig",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "nn-dev-061",
+   "text": "bible-1john-1",
+   "sentence": "For so elska Gud verdi at han gav Son sin, den einborne, so kvar den som trur på honom, ikkje skal verta fortapt, men hava ævelegt liv.",
+   "start": 131,
+   "end": 134,
+   "surface": "liv",
+   "lemma": "liv",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-062",
+   "text": "dialogue-01",
+   "sentence": "Hei, Anna, korleis har du det?",
+   "start": 0,
+   "end": 3,
+   "surface": "Hei",
+   "lemma": "hei",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse"
+  },
+  {
+   "id": "nn-dev-063",
+   "text": "dialogue-01",
+   "sentence": "Hei, Anna, korleis har du det?",
+   "start": 11,
+   "end": 18,
+   "surface": "korleis",
+   "lemma": "korleis",
+   "pos": "ADV",
+   "features": {
+    "PronType": "Int"
+   },
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-064",
+   "text": "dialogue-01",
+   "sentence": "Hei, Anna, korleis har du det?",
+   "start": 19,
+   "end": 22,
+   "surface": "har",
+   "lemma": "ha",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-065",
+   "text": "dialogue-01",
+   "sentence": "Hei, Anna, korleis har du det?",
+   "start": 23,
+   "end": 25,
+   "surface": "du",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-066",
+   "text": "dialogue-01",
+   "sentence": "Hei, Anna, korleis har du det?",
+   "start": 26,
+   "end": 29,
+   "surface": "det",
+   "lemma": "det",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-067",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 0,
+   "end": 2,
+   "surface": "Eg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-068",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 3,
+   "end": 6,
+   "surface": "har",
+   "lemma": "ha",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-069",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 7,
+   "end": 10,
+   "surface": "det",
+   "lemma": "det",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-070",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 11,
+   "end": 14,
+   "surface": "bra",
+   "lemma": "bra",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-071",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 21,
+   "end": 24,
+   "surface": "men",
+   "lemma": "men",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-dev-072",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 25,
+   "end": 28,
+   "surface": "det",
+   "lemma": "det",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-073",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 29,
+   "end": 31,
+   "surface": "er",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-dev-074",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 32,
+   "end": 36,
+   "surface": "noko",
+   "lemma": "noko",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-dev-075",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 37,
+   "end": 39,
+   "surface": "eg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-076",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 40,
+   "end": 45,
+   "surface": "ikkje",
+   "lemma": "ikkje",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-077",
+   "text": "dialogue-01",
+   "sentence": "Eg har det bra, Per, men det er noko eg ikkje forstår.",
+   "start": 46,
+   "end": 53,
+   "surface": "forstår",
+   "lemma": "forstå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "acl"
+  },
+  {
+   "id": "nn-dev-078",
+   "text": "dialogue-01",
+   "sentence": "Kva er det du ikkje forstår?",
+   "start": 4,
+   "end": 6,
+   "surface": "er",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-dev-079",
+   "text": "dialogue-01",
+   "sentence": "Kva er det du ikkje forstår?",
+   "start": 7,
+   "end": 10,
+   "surface": "det",
+   "lemma": "det",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-080",
+   "text": "dialogue-01",
+   "sentence": "Kva er det du ikkje forstår?",
+   "start": 11,
+   "end": 13,
+   "surface": "du",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-081",
+   "text": "dialogue-01",
+   "sentence": "Kva er det du ikkje forstår?",
+   "start": 14,
+   "end": 19,
+   "surface": "ikkje",
+   "lemma": "ikkje",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-082",
+   "text": "dialogue-01",
+   "sentence": "Kva er det du ikkje forstår?",
+   "start": 20,
+   "end": 27,
+   "surface": "forstår",
+   "lemma": "forstå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "acl"
+  },
+  {
+   "id": "nn-dev-083",
+   "text": "dialogue-01",
+   "sentence": "Eg forstår ikkje kvifor Gud tilgir synd.",
+   "start": 0,
+   "end": 2,
+   "surface": "Eg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-084",
+   "text": "dialogue-01",
+   "sentence": "Eg forstår ikkje kvifor Gud tilgir synd.",
+   "start": 3,
+   "end": 10,
+   "surface": "forstår",
+   "lemma": "forstå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-085",
+   "text": "dialogue-01",
+   "sentence": "Eg forstår ikkje kvifor Gud tilgir synd.",
+   "start": 17,
+   "end": 23,
+   "surface": "kvifor",
+   "lemma": "kvifor",
+   "pos": "ADV",
+   "features": {
+    "PronType": "Int"
+   },
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-086",
+   "text": "dialogue-01",
+   "sentence": "Eg forstår ikkje kvifor Gud tilgir synd.",
+   "start": 28,
+   "end": 34,
+   "surface": "tilgir",
+   "lemma": "tilgje",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "ccomp"
+  },
+  {
+   "id": "nn-dev-087",
+   "text": "dialogue-01",
+   "sentence": "Eg forstår ikkje kvifor Gud tilgir synd.",
+   "start": 35,
+   "end": 39,
+   "surface": "synd",
+   "lemma": "synd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-088",
+   "text": "dialogue-01",
+   "sentence": "Eg har òg byrja å forstå det.",
+   "start": 0,
+   "end": 2,
+   "surface": "Eg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-089",
+   "text": "dialogue-01",
+   "sentence": "Eg har òg byrja å forstå det.",
+   "start": 3,
+   "end": 6,
+   "surface": "har",
+   "lemma": "ha",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "aux"
+  },
+  {
+   "id": "nn-dev-090",
+   "text": "dialogue-01",
+   "sentence": "Eg har òg byrja å forstå det.",
+   "start": 7,
+   "end": 9,
+   "surface": "òg",
+   "lemma": "òg",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-091",
+   "text": "dialogue-01",
+   "sentence": "Eg har òg byrja å forstå det.",
+   "start": 10,
+   "end": 15,
+   "surface": "byrja",
+   "lemma": "byrja",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-092",
+   "text": "dialogue-01",
+   "sentence": "Eg har òg byrja å forstå det.",
+   "start": 16,
+   "end": 17,
+   "surface": "å",
+   "lemma": "å",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-093",
+   "text": "dialogue-01",
+   "sentence": "Eg har òg byrja å forstå det.",
+   "start": 18,
+   "end": 24,
+   "surface": "forstå",
+   "lemma": "forstå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "nn-dev-094",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 0,
+   "end": 2,
+   "surface": "Eg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-095",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 3,
+   "end": 7,
+   "surface": "trur",
+   "lemma": "tru",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-096",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 8,
+   "end": 10,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-097",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 11,
+   "end": 14,
+   "surface": "Gud",
+   "lemma": "gud",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-098",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 16,
+   "end": 18,
+   "surface": "og",
+   "lemma": "og",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-dev-099",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 19,
+   "end": 22,
+   "surface": "Gud",
+   "lemma": "gud",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-100",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 23,
+   "end": 29,
+   "surface": "elskar",
+   "lemma": "elska",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-dev-101",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 35,
+   "end": 37,
+   "surface": "og",
+   "lemma": "og",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-dev-102",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 38,
+   "end": 43,
+   "surface": "difor",
+   "lemma": "difor",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-103",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 44,
+   "end": 50,
+   "surface": "tilgir",
+   "lemma": "tilgje",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-dev-104",
+   "text": "dialogue-01",
+   "sentence": "Eg trur på Gud, og Gud elskar oss, og difor tilgir han oss.",
+   "start": 51,
+   "end": 54,
+   "surface": "han",
+   "lemma": "han",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-105",
+   "text": "dialogue-01",
+   "sentence": "No forstår eg det òg.",
+   "start": 0,
+   "end": 2,
+   "surface": "No",
+   "lemma": "no",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-106",
+   "text": "dialogue-01",
+   "sentence": "No forstår eg det òg.",
+   "start": 3,
+   "end": 10,
+   "surface": "forstår",
+   "lemma": "forstå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-107",
+   "text": "dialogue-01",
+   "sentence": "No forstår eg det òg.",
+   "start": 18,
+   "end": 20,
+   "surface": "òg",
+   "lemma": "òg",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-108",
+   "text": "dialogue-01",
+   "sentence": "Takk, Per!",
+   "start": 0,
+   "end": 4,
+   "surface": "Takk",
+   "lemma": "takk",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-109",
+   "text": "story-01",
+   "sentence": "Då eg var ung, forstod eg ikkje hjartet mitt.",
+   "start": 0,
+   "end": 2,
+   "surface": "Då",
+   "lemma": "då",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-110",
+   "text": "story-01",
+   "sentence": "Då eg var ung, forstod eg ikkje hjartet mitt.",
+   "start": 6,
+   "end": 9,
+   "surface": "var",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-dev-111",
+   "text": "story-01",
+   "sentence": "Då eg var ung, forstod eg ikkje hjartet mitt.",
+   "start": 10,
+   "end": 13,
+   "surface": "ung",
+   "lemma": "ung",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advcl"
+  },
+  {
+   "id": "nn-dev-112",
+   "text": "story-01",
+   "sentence": "Då eg var ung, forstod eg ikkje hjartet mitt.",
+   "start": 15,
+   "end": 22,
+   "surface": "forstod",
+   "lemma": "forstå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-113",
+   "text": "story-01",
+   "sentence": "Då eg var ung, forstod eg ikkje hjartet mitt.",
+   "start": 32,
+   "end": 39,
+   "surface": "hjartet",
+   "lemma": "hjarte",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-114",
+   "text": "story-01",
+   "sentence": "Då eg var ung, forstod eg ikkje hjartet mitt.",
+   "start": 40,
+   "end": 44,
+   "surface": "mitt",
+   "lemma": "min",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nn-dev-115",
+   "text": "story-01",
+   "sentence": "Då eg var ung, hadde eg synd i hjartet.",
+   "start": 0,
+   "end": 2,
+   "surface": "Då",
+   "lemma": "då",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-116",
+   "text": "story-01",
+   "sentence": "Då eg var ung, hadde eg synd i hjartet.",
+   "start": 6,
+   "end": 9,
+   "surface": "var",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-dev-117",
+   "text": "story-01",
+   "sentence": "Då eg var ung, hadde eg synd i hjartet.",
+   "start": 15,
+   "end": 20,
+   "surface": "hadde",
+   "lemma": "ha",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-118",
+   "text": "story-01",
+   "sentence": "Då eg var ung, hadde eg synd i hjartet.",
+   "start": 24,
+   "end": 28,
+   "surface": "synd",
+   "lemma": "synd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-119",
+   "text": "story-01",
+   "sentence": "Då eg var ung, hadde eg synd i hjartet.",
+   "start": 29,
+   "end": 30,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-120",
+   "text": "story-01",
+   "sentence": "Då eg var ung, hadde eg synd i hjartet.",
+   "start": 31,
+   "end": 38,
+   "surface": "hjartet",
+   "lemma": "hjarte",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-121",
+   "text": "story-01",
+   "sentence": "Eg trudde ikkje på Gud.",
+   "start": 3,
+   "end": 9,
+   "surface": "trudde",
+   "lemma": "tru",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-122",
+   "text": "story-01",
+   "sentence": "Eg trudde ikkje på Gud.",
+   "start": 16,
+   "end": 18,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-123",
+   "text": "story-01",
+   "sentence": "Eg trudde ikkje på Gud.",
+   "start": 19,
+   "end": 22,
+   "surface": "Gud",
+   "lemma": "gud",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-124",
+   "text": "story-01",
+   "sentence": "Ein dag byrja eg å forstå synda mi.",
+   "start": 4,
+   "end": 7,
+   "surface": "dag",
+   "lemma": "dag",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-125",
+   "text": "story-01",
+   "sentence": "Ein dag byrja eg å forstå synda mi.",
+   "start": 8,
+   "end": 13,
+   "surface": "byrja",
+   "lemma": "byrja",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-126",
+   "text": "story-01",
+   "sentence": "Ein dag byrja eg å forstå synda mi.",
+   "start": 17,
+   "end": 18,
+   "surface": "å",
+   "lemma": "å",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-127",
+   "text": "story-01",
+   "sentence": "Ein dag byrja eg å forstå synda mi.",
+   "start": 19,
+   "end": 25,
+   "surface": "forstå",
+   "lemma": "forstå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "nn-dev-128",
+   "text": "story-01",
+   "sentence": "Ein dag byrja eg å forstå synda mi.",
+   "start": 26,
+   "end": 31,
+   "surface": "synda",
+   "lemma": "synd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-129",
+   "text": "story-01",
+   "sentence": "Ein dag byrja eg å forstå synda mi.",
+   "start": 32,
+   "end": 34,
+   "surface": "mi",
+   "lemma": "min",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nn-dev-130",
+   "text": "story-01",
+   "sentence": "Gud tilgav synda mi.",
+   "start": 4,
+   "end": 10,
+   "surface": "tilgav",
+   "lemma": "tilgje",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-131",
+   "text": "story-01",
+   "sentence": "Gud tilgav synda mi.",
+   "start": 11,
+   "end": 16,
+   "surface": "synda",
+   "lemma": "synd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-132",
+   "text": "story-01",
+   "sentence": "No trur eg på Gud.",
+   "start": 0,
+   "end": 2,
+   "surface": "No",
+   "lemma": "no",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-133",
+   "text": "story-01",
+   "sentence": "No trur eg på Gud.",
+   "start": 3,
+   "end": 7,
+   "surface": "trur",
+   "lemma": "tru",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-134",
+   "text": "story-01",
+   "sentence": "No trur eg på Gud.",
+   "start": 11,
+   "end": 13,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-135",
+   "text": "story-01",
+   "sentence": "No har eg fred i hjartet.",
+   "start": 0,
+   "end": 2,
+   "surface": "No",
+   "lemma": "no",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-136",
+   "text": "story-01",
+   "sentence": "No har eg fred i hjartet.",
+   "start": 3,
+   "end": 6,
+   "surface": "har",
+   "lemma": "ha",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-137",
+   "text": "story-01",
+   "sentence": "No har eg fred i hjartet.",
+   "start": 10,
+   "end": 14,
+   "surface": "fred",
+   "lemma": "fred",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-138",
+   "text": "story-01",
+   "sentence": "No har eg fred i hjartet.",
+   "start": 15,
+   "end": 16,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-139",
+   "text": "story-01",
+   "sentence": "No har eg fred i hjartet.",
+   "start": 17,
+   "end": 24,
+   "surface": "hjartet",
+   "lemma": "hjarte",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-140",
+   "text": "story-01",
+   "sentence": "Gud elskar verda.",
+   "start": 11,
+   "end": 16,
+   "surface": "verda",
+   "lemma": "verd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-141",
+   "text": "story-01",
+   "sentence": "Eg elskar Gud òg.",
+   "start": 3,
+   "end": 9,
+   "surface": "elskar",
+   "lemma": "elska",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-142",
+   "text": "story-01",
+   "sentence": "Eg elskar Gud òg.",
+   "start": 14,
+   "end": 16,
+   "surface": "òg",
+   "lemma": "òg",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-143",
+   "text": "story-01",
+   "sentence": "No forstår eg at Gud tilgir alle.",
+   "start": 0,
+   "end": 2,
+   "surface": "No",
+   "lemma": "no",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-144",
+   "text": "story-01",
+   "sentence": "No forstår eg at Gud tilgir alle.",
+   "start": 3,
+   "end": 10,
+   "surface": "forstår",
+   "lemma": "forstå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-145",
+   "text": "story-01",
+   "sentence": "No forstår eg at Gud tilgir alle.",
+   "start": 14,
+   "end": 16,
+   "surface": "at",
+   "lemma": "at",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-146",
+   "text": "story-01",
+   "sentence": "No forstår eg at Gud tilgir alle.",
+   "start": 21,
+   "end": 27,
+   "surface": "tilgir",
+   "lemma": "tilgje",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "ccomp"
+  },
+  {
+   "id": "nn-dev-147",
+   "text": "gold-data-1",
+   "sentence": "Eg bur i Bergen.",
+   "start": 3,
+   "end": 6,
+   "surface": "bur",
+   "lemma": "bu",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-148",
+   "text": "gold-data-1",
+   "sentence": "Eg bur i Bergen.",
+   "start": 7,
+   "end": 8,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-149",
+   "text": "gold-data-1",
+   "sentence": "Eg bur i Bergen.",
+   "start": 9,
+   "end": 15,
+   "surface": "Bergen",
+   "lemma": "bergen",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-150",
+   "text": "gold-data-2",
+   "sentence": "Ho les boka.",
+   "start": 0,
+   "end": 2,
+   "surface": "Ho",
+   "lemma": "ho",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-151",
+   "text": "gold-data-2",
+   "sentence": "Ho les boka.",
+   "start": 3,
+   "end": 6,
+   "surface": "les",
+   "lemma": "lese",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-152",
+   "text": "gold-data-2",
+   "sentence": "Ho les boka.",
+   "start": 7,
+   "end": 11,
+   "surface": "boka",
+   "lemma": "bok",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-153",
+   "text": "gold-data-3",
+   "sentence": "Vi et middag klokka seks.",
+   "start": 0,
+   "end": 2,
+   "surface": "Vi",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-154",
+   "text": "gold-data-3",
+   "sentence": "Vi et middag klokka seks.",
+   "start": 3,
+   "end": 5,
+   "surface": "et",
+   "lemma": "ete",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-155",
+   "text": "gold-data-3",
+   "sentence": "Vi et middag klokka seks.",
+   "start": 13,
+   "end": 19,
+   "surface": "klokka",
+   "lemma": "klokke",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-156",
+   "text": "gold-data-3",
+   "sentence": "Vi et middag klokka seks.",
+   "start": 20,
+   "end": 24,
+   "surface": "seks",
+   "lemma": "seks",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "nn-dev-157",
+   "text": "gold-data-4",
+   "sentence": "Dei går til skulen.",
+   "start": 0,
+   "end": 3,
+   "surface": "Dei",
+   "lemma": "dei",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-158",
+   "text": "gold-data-4",
+   "sentence": "Dei går til skulen.",
+   "start": 4,
+   "end": 7,
+   "surface": "går",
+   "lemma": "gå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-159",
+   "text": "gold-data-4",
+   "sentence": "Dei går til skulen.",
+   "start": 8,
+   "end": 11,
+   "surface": "til",
+   "lemma": "til",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-160",
+   "text": "gold-data-4",
+   "sentence": "Dei går til skulen.",
+   "start": 12,
+   "end": 18,
+   "surface": "skulen",
+   "lemma": "skule",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-161",
+   "text": "gold-data-5",
+   "sentence": "Guten kastar ballen.",
+   "start": 0,
+   "end": 5,
+   "surface": "Guten",
+   "lemma": "gut",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-162",
+   "text": "gold-data-5",
+   "sentence": "Guten kastar ballen.",
+   "start": 6,
+   "end": 12,
+   "surface": "kastar",
+   "lemma": "kasta",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-163",
+   "text": "gold-data-6",
+   "sentence": "Ho kasta steinen i vatnet.",
+   "start": 0,
+   "end": 2,
+   "surface": "Ho",
+   "lemma": "ho",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-164",
+   "text": "gold-data-6",
+   "sentence": "Ho kasta steinen i vatnet.",
+   "start": 3,
+   "end": 8,
+   "surface": "kasta",
+   "lemma": "kasta",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-165",
+   "text": "gold-data-6",
+   "sentence": "Ho kasta steinen i vatnet.",
+   "start": 9,
+   "end": 16,
+   "surface": "steinen",
+   "lemma": "stein",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-166",
+   "text": "gold-data-6",
+   "sentence": "Ho kasta steinen i vatnet.",
+   "start": 17,
+   "end": 18,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-167",
+   "text": "gold-data-6",
+   "sentence": "Ho kasta steinen i vatnet.",
+   "start": 19,
+   "end": 25,
+   "surface": "vatnet",
+   "lemma": "vatn",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-168",
+   "text": "gold-data-7",
+   "sentence": "Mor lagar mat.",
+   "start": 0,
+   "end": 3,
+   "surface": "Mor",
+   "lemma": "mor",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-169",
+   "text": "gold-data-7",
+   "sentence": "Mor lagar mat.",
+   "start": 4,
+   "end": 9,
+   "surface": "lagar",
+   "lemma": "laga",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-170",
+   "text": "gold-data-8",
+   "sentence": "Vêret er fint i dag.",
+   "start": 0,
+   "end": 5,
+   "surface": "Vêret",
+   "lemma": "vêr",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-171",
+   "text": "gold-data-8",
+   "sentence": "Vêret er fint i dag.",
+   "start": 6,
+   "end": 8,
+   "surface": "er",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-dev-172",
+   "text": "gold-data-8",
+   "sentence": "Vêret er fint i dag.",
+   "start": 9,
+   "end": 13,
+   "surface": "fint",
+   "lemma": "fin",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-173",
+   "text": "gold-data-8",
+   "sentence": "Vêret er fint i dag.",
+   "start": 16,
+   "end": 19,
+   "surface": "dag",
+   "lemma": "dag",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-dev-174",
+   "text": "gold-data-9",
+   "sentence": "Det gamle huset er stort.",
+   "start": 4,
+   "end": 9,
+   "surface": "gamle",
+   "lemma": "gamal",
+   "pos": "ADJ",
+   "features": {
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "nn-dev-175",
+   "text": "gold-data-9",
+   "sentence": "Det gamle huset er stort.",
+   "start": 10,
+   "end": 15,
+   "surface": "huset",
+   "lemma": "hus",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-176",
+   "text": "gold-data-9",
+   "sentence": "Det gamle huset er stort.",
+   "start": 19,
+   "end": 24,
+   "surface": "stort",
+   "lemma": "stor",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-177",
+   "text": "gold-data-10",
+   "sentence": "Dei små borna søv.",
+   "start": 0,
+   "end": 3,
+   "surface": "Dei",
+   "lemma": "den",
+   "pos": "DET",
+   "features": {
+    "Number": "Plur",
+    "PronType": "Dem"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-178",
+   "text": "gold-data-10",
+   "sentence": "Dei små borna søv.",
+   "start": 8,
+   "end": 13,
+   "surface": "borna",
+   "lemma": "barn",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Plur",
+    "Definite": "Def"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-179",
+   "text": "gold-data-10",
+   "sentence": "Dei små borna søv.",
+   "start": 14,
+   "end": 17,
+   "surface": "søv",
+   "lemma": "sove",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-180",
+   "text": "gold-data-11",
+   "sentence": "Kva heiter du?",
+   "start": 0,
+   "end": 3,
+   "surface": "Kva",
+   "lemma": "kva",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Int"
+   },
+   "difficulty": "medium",
+   "relation": "xcomp"
+  },
+  {
+   "id": "nn-dev-181",
+   "text": "gold-data-11",
+   "sentence": "Kva heiter du?",
+   "start": 4,
+   "end": 10,
+   "surface": "heiter",
+   "lemma": "heite",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-182",
+   "text": "gold-data-11",
+   "sentence": "Kva heiter du?",
+   "start": 11,
+   "end": 13,
+   "surface": "du",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-183",
+   "text": "gold-data-12",
+   "sentence": "Kvifor kjem han ikkje?",
+   "start": 0,
+   "end": 6,
+   "surface": "Kvifor",
+   "lemma": "kvifor",
+   "pos": "ADV",
+   "features": {
+    "PronType": "Int"
+   },
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-184",
+   "text": "gold-data-12",
+   "sentence": "Kvifor kjem han ikkje?",
+   "start": 7,
+   "end": 11,
+   "surface": "kjem",
+   "lemma": "koma",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-185",
+   "text": "gold-data-12",
+   "sentence": "Kvifor kjem han ikkje?",
+   "start": 12,
+   "end": 15,
+   "surface": "han",
+   "lemma": "han",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-186",
+   "text": "gold-data-13",
+   "sentence": "Kven bur der?",
+   "start": 5,
+   "end": 8,
+   "surface": "bur",
+   "lemma": "bu",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-187",
+   "text": "gold-data-13",
+   "sentence": "Kven bur der?",
+   "start": 9,
+   "end": 12,
+   "surface": "der",
+   "lemma": "der",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-dev-188",
+   "text": "gold-data-14",
+   "sentence": "Eg veit at ho ikkje kjem.",
+   "start": 3,
+   "end": 7,
+   "surface": "veit",
+   "lemma": "vite",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-189",
+   "text": "gold-data-14",
+   "sentence": "Eg veit at ho ikkje kjem.",
+   "start": 8,
+   "end": 10,
+   "surface": "at",
+   "lemma": "at",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-190",
+   "text": "gold-data-14",
+   "sentence": "Eg veit at ho ikkje kjem.",
+   "start": 11,
+   "end": 13,
+   "surface": "ho",
+   "lemma": "ho",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-191",
+   "text": "gold-data-14",
+   "sentence": "Eg veit at ho ikkje kjem.",
+   "start": 20,
+   "end": 24,
+   "surface": "kjem",
+   "lemma": "koma",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "ccomp"
+  },
+  {
+   "id": "nn-dev-192",
+   "text": "gold-data-15",
+   "sentence": "Når eg er trøytt, søv eg.",
+   "start": 0,
+   "end": 3,
+   "surface": "Når",
+   "lemma": "når",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-193",
+   "text": "gold-data-15",
+   "sentence": "Når eg er trøytt, søv eg.",
+   "start": 18,
+   "end": 21,
+   "surface": "søv",
+   "lemma": "sove",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-194",
+   "text": "gold-data-16",
+   "sentence": "Eg har kjøpt brød.",
+   "start": 3,
+   "end": 6,
+   "surface": "har",
+   "lemma": "ha",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "aux"
+  },
+  {
+   "id": "nn-dev-195",
+   "text": "gold-data-16",
+   "sentence": "Eg har kjøpt brød.",
+   "start": 7,
+   "end": 12,
+   "surface": "kjøpt",
+   "lemma": "kjøpe",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-196",
+   "text": "gold-data-16",
+   "sentence": "Eg har kjøpt brød.",
+   "start": 13,
+   "end": 17,
+   "surface": "brød",
+   "lemma": "brød",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-197",
+   "text": "gold-data-17",
+   "sentence": "Du må hjelpe meg.",
+   "start": 0,
+   "end": 2,
+   "surface": "Du",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-198",
+   "text": "gold-data-17",
+   "sentence": "Du må hjelpe meg.",
+   "start": 3,
+   "end": 5,
+   "surface": "må",
+   "lemma": "måtte",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "nn-dev-199",
+   "text": "gold-data-17",
+   "sentence": "Du må hjelpe meg.",
+   "start": 6,
+   "end": 12,
+   "surface": "hjelpe",
+   "lemma": "hjelpe",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-200",
+   "text": "gold-data-17",
+   "sentence": "Du må hjelpe meg.",
+   "start": 13,
+   "end": 16,
+   "surface": "meg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-201",
+   "text": "gold-data-18",
+   "sentence": "Eg likar å synge.",
+   "start": 9,
+   "end": 10,
+   "surface": "å",
+   "lemma": "å",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-dev-202",
+   "text": "gold-data-18",
+   "sentence": "Eg likar å synge.",
+   "start": 11,
+   "end": 16,
+   "surface": "synge",
+   "lemma": "synge",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "xcomp"
+  },
+  {
+   "id": "nn-dev-203",
+   "text": "gold-data-19",
+   "sentence": "Eg trur på Gud.",
+   "start": 3,
+   "end": 7,
+   "surface": "trur",
+   "lemma": "tru",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-204",
+   "text": "gold-data-19",
+   "sentence": "Eg trur på Gud.",
+   "start": 8,
+   "end": 10,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-dev-205",
+   "text": "gold-data-20",
+   "sentence": "Han gav meg von.",
+   "start": 4,
+   "end": 7,
+   "surface": "gav",
+   "lemma": "gje",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-206",
+   "text": "gold-data-20",
+   "sentence": "Han gav meg von.",
+   "start": 8,
+   "end": 11,
+   "surface": "meg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "nn-dev-207",
+   "text": "gold-data-20",
+   "sentence": "Han gav meg von.",
+   "start": 12,
+   "end": 15,
+   "surface": "von",
+   "lemma": "von",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-208",
+   "text": "gold-data-21",
+   "sentence": "Gud er kjærleik.",
+   "start": 7,
+   "end": 15,
+   "surface": "kjærleik",
+   "lemma": "kjærleik",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "nn-dev-209",
+   "text": "gold-data-22",
+   "sentence": "Eg står opp tidleg.",
+   "start": 8,
+   "end": 11,
+   "surface": "opp",
+   "lemma": "opp",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "compound"
+  },
+  {
+   "id": "nn-dev-210",
+   "text": "gold-data-22",
+   "sentence": "Eg står opp tidleg.",
+   "start": 12,
+   "end": 18,
+   "surface": "tidleg",
+   "lemma": "tidleg",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-dev-211",
+   "text": "gold-data-23",
+   "sentence": "Veka har sju dagar.",
+   "start": 0,
+   "end": 4,
+   "surface": "Veka",
+   "lemma": "veke",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-212",
+   "text": "gold-data-23",
+   "sentence": "Veka har sju dagar.",
+   "start": 9,
+   "end": 12,
+   "surface": "sju",
+   "lemma": "sju",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "nn-dev-213",
+   "text": "gold-data-23",
+   "sentence": "Veka har sju dagar.",
+   "start": 13,
+   "end": 18,
+   "surface": "dagar",
+   "lemma": "dag",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Plur",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-dev-214",
+   "text": "gold-data-24",
+   "sentence": "Barnet søv i senga.",
+   "start": 0,
+   "end": 6,
+   "surface": "Barnet",
+   "lemma": "barn",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-dev-215",
+   "text": "gold-data-24",
+   "sentence": "Barnet søv i senga.",
+   "start": 7,
+   "end": 10,
+   "surface": "søv",
+   "lemma": "sove",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  }
+ ]
+}

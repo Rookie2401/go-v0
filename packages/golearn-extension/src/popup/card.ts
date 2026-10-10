@@ -18,6 +18,7 @@ import { GOLEARN_HOST_ATTR, type PopupAnchor } from '../contract/readerAdapter';
 import { cellOf, cellsWithForm, featureKey, type ParadigmCell, type SegmentationCut } from '../../../../src/core/paradigm';
 import { contextLine, type CardModel, type EvidenceLabel } from '../parser/cardModel';
 import { languageNameOf, type SelfMark } from '../protocol';
+import { cognateText, etymologyStepText, type StructurePart } from '../content/enrich';
 import {
   initialView, type CardActions, type CardView, type LayerName, type PlayResult, type PronounceAvailability, type Pronouncer,
 } from './view';
@@ -123,6 +124,10 @@ ol.senses { padding-left: 18px; margin: 4px 0; }
 ol.senses li { margin: 2px 0; }
 .example { font-style: italic; opacity: .85; margin-left: 4px; }
 .ety { margin: 4px 0; }
+.segs { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 4px; margin: 6px 0; }
+.seg { display: inline-flex; flex-direction: column; align-items: center; border: 1px solid #cdbfa3; border-radius: 6px; padding: 2px 8px; }
+.seg .role { font-size: 0.66em; letter-spacing: .06em; text-transform: uppercase; opacity: .72; }
+.seg.prefix, .seg.suffix, .seg.ending, .seg.linking, .seg.clitic { border-style: dashed; }
 .rateLabel { font-size: 0.857em; letter-spacing: .06em; text-transform: uppercase; opacity: .75; margin-right: 2px; }
 .rateBtn[aria-pressed="true"] { font-weight: 600; text-decoration: underline; text-underline-offset: .2em; }
 button, input { font: inherit; font-size: 0.95em; padding: 0.2em 0.75em; border-radius: 6px; border: 1px solid #8a7d68; background: #f7f2e8; color: #2b2620; }
@@ -158,9 +163,10 @@ form.fix input[type="text"] { width: 12em; }
 
 type Child = Node | string | null | undefined | false;
 
-const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', 'phrase-syntax': 'Phrase & syntax', grammar: 'Grammar', sentence: 'English rescue', forms: 'All forms', meaning: 'Meanings', origin: 'Origin', sound: 'Sound' };
+const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', 'phrase-syntax': 'Phrase & syntax', grammar: 'Grammar', sentence: 'English rescue', forms: 'All forms', meaning: 'Meanings', origin: 'Origin', structure: 'Word structure', sound: 'Sound' };
 /** The deeper sections (Linguistic Engine V2) sit on their own row under the first four. */
-const DEEPER_LAYERS: readonly LayerName[] = ['forms', 'meaning', 'origin', 'sound'];
+const DEEPER_LAYERS: readonly LayerName[] = ['forms', 'meaning', 'origin', 'structure', 'sound'];
+const STRUCTURE_STATUS: Record<string, string> = { 'supported-by-source': 'From the dictionary: its etymology template names these parts.', provisional: "Provisional: from the analyser's rules only; no dictionary template confirms it." };
 const STATUS_MARK: Record<string, string> = { verified: '✓', supported: '◌', generated: '~', conflicted: '‼' };
 const STATUS_LABEL: Record<string, string> = { verified: 'both the rules and the dictionary', supported: 'the dictionary only', generated: 'the rules only (unverified)', conflicted: 'the two disagree' };
 /** A feature bundle in plain key-value words (`Case Acc, Definite Def, Number Sing`); the pack's labels replace these where the Morphology layer has them. */
@@ -641,8 +647,33 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (!o || o.status === 'unknown') { panel.append(h('div', { class: 'note' }, 'No documented origin in the dictionary. GoLearn does not invent one.')); return; }
     panel.append(h('div', { class: 'note' }, o.status === 'conflicted' ? 'The source itself calls this origin uncertain or disputed.' : 'From the dictionary\'s etymology; a documented account, not GoLearn\'s own.'));
     if (o.text) panel.append(h('div', { class: 'ety', lang: 'en' }, o.text));
-    if (o.chain.length) section(panel, 'Steps the source names', o.chain.map((c) => `${c.relation}${c.language ? ` from ${c.language}` : ''}${c.form ? `: ${c.form}` : ''}${c.gloss ? ` (“${c.gloss}”)` : ''}`));
+    if (o.chain.length) section(panel, 'Steps the source names', o.chain.map((c) => etymologyStepText(c, o.languageNames ?? {})));
+    if (o.cognates?.length) section(panel, 'Cognates the source lists', o.cognates.map((c) => cognateText(c, o.languageNames ?? {})));
     if (o.source) panel.append(h('div', { class: 'note' }, `Source: ${o.source.label} (${o.source.licence}). Lemma: ${m.lemma ?? m.surface}.`));
+  }
+
+  function fillStructure(panel: HTMLElement, m: CardModel, v: CardView): void {
+    if (!enrichNote(panel, v)) return;
+    const w = v.enrichment.structure;
+    const family = w ? [...w.family.derived, ...w.family.related] : [];
+    if (!w || (w.status === 'unknown' && !w.derivedFrom && !family.length)) { panel.append(h('div', { class: 'note' }, 'No documented structure for this word.')); return; }
+    if (w.parts.length) {
+      const describe = (p: StructurePart): string => `${p.text}: ${p.role}${p.gloss ? ` (${p.gloss})` : ''}`;
+      const line = h('div', { class: 'segs', role: 'group', 'aria-label': `Parts of the word: ${w.parts.map(describe).join('; ')}` });
+      for (const p of w.parts) line.append(h('span', { class: `seg ${p.role}`, title: p.gloss ? `${p.role}; ${p.gloss}` : p.role }, h('span', { lang: m.languageId }, p.text), h('span', { class: 'role', 'aria-hidden': 'true' }, p.role)));
+      panel.append(line);
+      const glossed = w.parts.filter((p) => p.gloss);
+      if (glossed.length) section(panel, 'What the parts are', glossed.map(describe));
+    } else {
+      panel.append(h('div', { class: 'note' }, 'No documented parts for this word.'));
+    }
+    if (STRUCTURE_STATUS[w.status]) panel.append(h('div', { class: 'note' }, STRUCTURE_STATUS[w.status]));
+    if (w.derivedFrom) section(panel, 'Derived from', [h('span', {}, h('span', { lang: m.languageId }, w.derivedFrom.lemma), ` — ${w.derivedFrom.relation} (${w.derivedFrom.source})`)]);
+    section(panel, 'Word family: derived words', w.family.derived);
+    section(panel, 'Word family: related words', w.family.related);
+    for (const n of w.notes) panel.append(h('div', { class: 'note' }, n));
+    const sources = [...new Set([...w.parts.map((p) => p.source), ...(w.derivedFrom ? [w.derivedFrom.source] : []), ...(w.family.source ? [`${w.family.source}, CC BY-SA 4.0`] : [])])];
+    if (sources.length) panel.append(h('div', { class: 'note' }, `Sources: ${sources.join('; ')}. Lemma: ${m.lemma ?? m.surface}.`));
   }
 
   function fillSound(panel: HTMLElement, m: CardModel, v: CardView): void {
@@ -667,6 +698,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       forms: (p) => fillForms(p, model!, view),
       meaning: (p) => fillMeaning(p, model!, view),
       origin: (p) => fillOrigin(p, model!, view),
+      structure: (p) => fillStructure(p, model!, view),
       sound: (p) => fillSound(p, model!, view),
     };
     for (const name of Object.keys(parts.layers) as LayerName[]) {
@@ -748,7 +780,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
     const layerBtn = (name: LayerName, cls: string): HTMLButtonElement => h('button', { type: 'button', class: cls, 'aria-expanded': 'false' }, LAYER_TITLES[name]) as HTMLButtonElement;
     const layers = {} as Record<LayerName, { btn: HTMLButtonElement; panel: HTMLElement }>;
-    const classes: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', sound: 'l9' };
+    const classes: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', structure: 'l10', sound: 'l9' };
     for (const name of Object.keys(LAYER_TITLES) as LayerName[]) {
       const btn = layerBtn(name, `layerBtn ${classes[name]}`);
       const panel = h('div', { class: `more layer ${classes[name]}`, hidden: '', 'data-layer': name, id: `panel-${classes[name]}` });

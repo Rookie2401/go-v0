@@ -1,0 +1,1084 @@
+{
+ "language": "nb",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "unseen",
+ "source": "NO verified Scripture slice for nb and the corpus holds only 21 sentences: the 40+ sentence texts of the blind holdout in test/adapters/norwegian-holdout.test.ts (annotations ignored, relabelled independently) — labelled as such",
+ "feature_keys": [
+  "Gender",
+  "Number",
+  "Definite",
+  "Tense",
+  "VerbForm",
+  "Mood",
+  "Degree",
+  "Voice",
+  "PronType"
+ ],
+ "notes": "Held-out selections, never to be used for tuning. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "nb-unseen-001",
+   "text": "holdout-1",
+   "sentence": "Hei, hvordan går det med deg?",
+   "start": 0,
+   "end": 3,
+   "surface": "Hei",
+   "lemma": "hei",
+   "pos": "INTJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "discourse"
+  },
+  {
+   "id": "nb-unseen-002",
+   "text": "holdout-1",
+   "sentence": "Hei, hvordan går det med deg?",
+   "start": 21,
+   "end": 24,
+   "surface": "med",
+   "lemma": "med",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nb-unseen-003",
+   "text": "holdout-2",
+   "sentence": "God morgen, jeg heter Kari.",
+   "start": 16,
+   "end": 21,
+   "surface": "heter",
+   "lemma": "hete",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-004",
+   "text": "holdout-3",
+   "sentence": "Takk for maten, den var veldig god.",
+   "start": 9,
+   "end": 14,
+   "surface": "maten",
+   "lemma": "mat",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nb-unseen-005",
+   "text": "holdout-4",
+   "sentence": "Min mor og min far bor i Bergen.",
+   "start": 0,
+   "end": 3,
+   "surface": "Min",
+   "lemma": "min",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nb-unseen-006",
+   "text": "holdout-4",
+   "sentence": "Min mor og min far bor i Bergen.",
+   "start": 15,
+   "end": 18,
+   "surface": "far",
+   "lemma": "far",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "nb-unseen-007",
+   "text": "holdout-5",
+   "sentence": "Søsteren min er tre år eldre enn meg.",
+   "start": 9,
+   "end": 12,
+   "surface": "min",
+   "lemma": "min",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nb-unseen-008",
+   "text": "holdout-5",
+   "sentence": "Søsteren min er tre år eldre enn meg.",
+   "start": 23,
+   "end": 28,
+   "surface": "eldre",
+   "lemma": "gammel",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-009",
+   "text": "holdout-6",
+   "sentence": "Broren min har to barn, og de bor i Trondheim.",
+   "start": 15,
+   "end": 17,
+   "surface": "to",
+   "lemma": "to",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "nb-unseen-010",
+   "text": "holdout-6",
+   "sentence": "Broren min har to barn, og de bor i Trondheim.",
+   "start": 34,
+   "end": 35,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nb-unseen-011",
+   "text": "holdout-7",
+   "sentence": "Bestemor kommer på besøk i morgen.",
+   "start": 16,
+   "end": 18,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nb-unseen-012",
+   "text": "holdout-8",
+   "sentence": "Huset vårt har et stort kjøkken og tre soverom.",
+   "start": 6,
+   "end": 10,
+   "surface": "vårt",
+   "lemma": "vår",
+   "pos": "DET",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nb-unseen-013",
+   "text": "holdout-8",
+   "sentence": "Huset vårt har et stort kjøkken og tre soverom.",
+   "start": 24,
+   "end": 31,
+   "surface": "kjøkken",
+   "lemma": "kjøkken",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nb-unseen-014",
+   "text": "holdout-9",
+   "sentence": "Vi spiser middag ved kjøkkenbordet hver kveld.",
+   "start": 3,
+   "end": 9,
+   "surface": "spiser",
+   "lemma": "spise",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-015",
+   "text": "holdout-9",
+   "sentence": "Vi spiser middag ved kjøkkenbordet hver kveld.",
+   "start": 35,
+   "end": 39,
+   "surface": "hver",
+   "lemma": "hver",
+   "pos": "DET",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "det"
+  },
+  {
+   "id": "nb-unseen-016",
+   "text": "holdout-10",
+   "sentence": "Jeg står opp klokka sju hver dag.",
+   "start": 13,
+   "end": 19,
+   "surface": "klokka",
+   "lemma": "klokke",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nb-unseen-017",
+   "text": "holdout-11",
+   "sentence": "Hun slår på lyset og setter seg ved bordet.",
+   "start": 0,
+   "end": 3,
+   "surface": "Hun",
+   "lemma": "hun",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-unseen-018",
+   "text": "holdout-11",
+   "sentence": "Hun slår på lyset og setter seg ved bordet.",
+   "start": 28,
+   "end": 31,
+   "surface": "seg",
+   "lemma": "seg",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nb-unseen-019",
+   "text": "holdout-12",
+   "sentence": "Vi har endelig funnet ut hva som har skjedd.",
+   "start": 7,
+   "end": 14,
+   "surface": "endelig",
+   "lemma": "endelig",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nb-unseen-020",
+   "text": "holdout-12",
+   "sentence": "Vi har endelig funnet ut hva som har skjedd.",
+   "start": 29,
+   "end": 32,
+   "surface": "som",
+   "lemma": "som",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-unseen-021",
+   "text": "holdout-13",
+   "sentence": "Jeg vet at han ikke kommer i dag.",
+   "start": 11,
+   "end": 14,
+   "surface": "han",
+   "lemma": "han",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-unseen-022",
+   "text": "holdout-14",
+   "sentence": "Hvis det regner, går vi ikke ut.",
+   "start": 0,
+   "end": 4,
+   "surface": "Hvis",
+   "lemma": "hvis",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nb-unseen-023",
+   "text": "holdout-14",
+   "sentence": "Hvis det regner, går vi ikke ut.",
+   "start": 24,
+   "end": 28,
+   "surface": "ikke",
+   "lemma": "ikke",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nb-unseen-024",
+   "text": "holdout-15",
+   "sentence": "Det er kaldt ute, men jeg liker snø.",
+   "start": 7,
+   "end": 12,
+   "surface": "kaldt",
+   "lemma": "kald",
+   "pos": "ADJ",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-025",
+   "text": "holdout-16",
+   "sentence": "Om vinteren faller det snø på fjellet.",
+   "start": 0,
+   "end": 2,
+   "surface": "Om",
+   "lemma": "om",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-unseen-026",
+   "text": "holdout-16",
+   "sentence": "Om vinteren faller det snø på fjellet.",
+   "start": 27,
+   "end": 29,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nb-unseen-027",
+   "text": "holdout-17",
+   "sentence": "Sola skinner, og himmelen er blå.",
+   "start": 26,
+   "end": 28,
+   "surface": "er",
+   "lemma": "være",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nb-unseen-028",
+   "text": "holdout-18",
+   "sentence": "Vi tok toget fra Oslo til Bergen.",
+   "start": 17,
+   "end": 21,
+   "surface": "Oslo",
+   "lemma": "oslo",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nb-unseen-029",
+   "text": "holdout-19",
+   "sentence": "Hva koster billetten?",
+   "start": 4,
+   "end": 10,
+   "surface": "koster",
+   "lemma": "koste",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-030",
+   "text": "holdout-20",
+   "sentence": "Kan du hjelpe meg å finne bussholdeplassen?",
+   "start": 14,
+   "end": 17,
+   "surface": "meg",
+   "lemma": "jeg",
+   "pos": "PRON",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nb-unseen-031",
+   "text": "holdout-21",
+   "sentence": "Jeg vil gjerne ha en kopp kaffe og to brødskiver.",
+   "start": 4,
+   "end": 7,
+   "surface": "vil",
+   "lemma": "ville",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "aux"
+  },
+  {
+   "id": "nb-unseen-032",
+   "text": "holdout-21",
+   "sentence": "Jeg vil gjerne ha en kopp kaffe og to brødskiver.",
+   "start": 26,
+   "end": 31,
+   "surface": "kaffe",
+   "lemma": "kaffe",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "nb-unseen-033",
+   "text": "holdout-22",
+   "sentence": "Eplene er billigere i butikken enn på torget.",
+   "start": 10,
+   "end": 19,
+   "surface": "billigere",
+   "lemma": "billig",
+   "pos": "ADJ",
+   "features": {
+    "Degree": "Cmp"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-034",
+   "text": "holdout-23",
+   "sentence": "Vi må handle melk, brød og ost før middag.",
+   "start": 6,
+   "end": 12,
+   "surface": "handle",
+   "lemma": "handle",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-035",
+   "text": "holdout-23",
+   "sentence": "Vi må handle melk, brød og ost før middag.",
+   "start": 31,
+   "end": 34,
+   "surface": "før",
+   "lemma": "før",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-unseen-036",
+   "text": "holdout-24",
+   "sentence": "Datteren min begynte på skolen i august.",
+   "start": 33,
+   "end": 39,
+   "surface": "august",
+   "lemma": "august",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nb-unseen-037",
+   "text": "holdout-25",
+   "sentence": "Læreren ga barna en ny bok.",
+   "start": 20,
+   "end": 22,
+   "surface": "ny",
+   "lemma": "ny",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "amod"
+  },
+  {
+   "id": "nb-unseen-038",
+   "text": "holdout-26",
+   "sentence": "Den minste gutten går i barnehagen.",
+   "start": 11,
+   "end": 17,
+   "surface": "gutten",
+   "lemma": "gutt",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-unseen-039",
+   "text": "holdout-27",
+   "sentence": "Fotballkampen begynner klokka seks.",
+   "start": 23,
+   "end": 29,
+   "surface": "klokka",
+   "lemma": "klokke",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nb-unseen-040",
+   "text": "holdout-28",
+   "sentence": "Jeg har spilt fotball siden jeg var liten.",
+   "start": 22,
+   "end": 27,
+   "surface": "siden",
+   "lemma": "siden",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-unseen-041",
+   "text": "holdout-29",
+   "sentence": "Hun jobber på sykehuset hver dag.",
+   "start": 14,
+   "end": 23,
+   "surface": "sykehuset",
+   "lemma": "sykehus",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nb-unseen-042",
+   "text": "holdout-30",
+   "sentence": "Sjefen min sa at møtet var flyttet til fredag.",
+   "start": 11,
+   "end": 13,
+   "surface": "sa",
+   "lemma": "si",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-043",
+   "text": "holdout-30",
+   "sentence": "Sjefen min sa at møtet var flyttet til fredag.",
+   "start": 35,
+   "end": 38,
+   "surface": "til",
+   "lemma": "til",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nb-unseen-044",
+   "text": "holdout-31",
+   "sentence": "Hvorfor kom du ikke på jobb i dag?",
+   "start": 12,
+   "end": 14,
+   "surface": "du",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-unseen-045",
+   "text": "holdout-32",
+   "sentence": "Jeg har ikke tid til å lese avisen.",
+   "start": 21,
+   "end": 22,
+   "surface": "å",
+   "lemma": "å",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nb-unseen-046",
+   "text": "holdout-33",
+   "sentence": "Skal vi gå en tur når det slutter å regne?",
+   "start": 11,
+   "end": 13,
+   "surface": "en",
+   "lemma": "en",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nb-unseen-047",
+   "text": "holdout-33",
+   "sentence": "Skal vi gå en tur når det slutter å regne?",
+   "start": 34,
+   "end": 35,
+   "surface": "å",
+   "lemma": "å",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nb-unseen-048",
+   "text": "holdout-34",
+   "sentence": "Vi reiste til Lofoten i sommer og bodde i en rorbu.",
+   "start": 34,
+   "end": 39,
+   "surface": "bodde",
+   "lemma": "bo",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "nb-unseen-049",
+   "text": "holdout-35",
+   "sentence": "Flyet fra Tromsø var forsinket i to timer.",
+   "start": 10,
+   "end": 16,
+   "surface": "Tromsø",
+   "lemma": "tromsø",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nmod"
+  },
+  {
+   "id": "nb-unseen-050",
+   "text": "holdout-36",
+   "sentence": "Bilen vår ble reparert på verkstedet.",
+   "start": 6,
+   "end": 9,
+   "surface": "vår",
+   "lemma": "vår",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nb-unseen-051",
+   "text": "holdout-37",
+   "sentence": "Jeg vokste opp i en kristen familie, men jeg ble ikke frelst før jeg var tjue år.",
+   "start": 4,
+   "end": 10,
+   "surface": "vokste",
+   "lemma": "vokse",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-052",
+   "text": "holdout-37",
+   "sentence": "Jeg vokste opp i en kristen familie, men jeg ble ikke frelst før jeg var tjue år.",
+   "start": 45,
+   "end": 48,
+   "surface": "ble",
+   "lemma": "bli",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "nb-unseen-053",
+   "text": "holdout-37",
+   "sentence": "Jeg vokste opp i en kristen familie, men jeg ble ikke frelst før jeg var tjue år.",
+   "start": 78,
+   "end": 80,
+   "surface": "år",
+   "lemma": "år",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Plur",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "nb-unseen-054",
+   "text": "holdout-38",
+   "sentence": "Da forstod jeg at Jesus døde for meg på korset.",
+   "start": 24,
+   "end": 28,
+   "surface": "døde",
+   "lemma": "dø",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "ccomp",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-unseen-055",
+   "text": "holdout-39",
+   "sentence": "Gud tilgav syndene mine, og jeg fikk et nytt liv.",
+   "start": 4,
+   "end": 10,
+   "surface": "tilgav",
+   "lemma": "tilgi",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-056",
+   "text": "holdout-39",
+   "sentence": "Gud tilgav syndene mine, og jeg fikk et nytt liv.",
+   "start": 37,
+   "end": 39,
+   "surface": "et",
+   "lemma": "en",
+   "pos": "DET",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nb-unseen-057",
+   "text": "holdout-40",
+   "sentence": "Nå ber jeg til Gud hver morgen, og jeg takker ham for nåden.",
+   "start": 15,
+   "end": 18,
+   "surface": "Gud",
+   "lemma": "gud",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nb-unseen-058",
+   "text": "holdout-40",
+   "sentence": "Nå ber jeg til Gud hver morgen, og jeg takker ham for nåden.",
+   "start": 50,
+   "end": 53,
+   "surface": "for",
+   "lemma": "for",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-unseen-059",
+   "text": "holdout-41",
+   "sentence": "Vi går i kirka hver søndag og synger sammen.",
+   "start": 37,
+   "end": 43,
+   "surface": "sammen",
+   "lemma": "sammen",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nb-unseen-060",
+   "text": "holdout-42",
+   "sentence": "Jeg er takknemlig fordi Gud har hjulpet meg hver dag.",
+   "start": 32,
+   "end": 39,
+   "surface": "hjulpet",
+   "lemma": "hjelpe",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nb-unseen-061",
+   "text": "holdout-43",
+   "sentence": "Hvem er den mannen som står ved døra?",
+   "start": 23,
+   "end": 27,
+   "surface": "står",
+   "lemma": "stå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "acl"
+  },
+  {
+   "id": "nb-unseen-062",
+   "text": "holdout-44",
+   "sentence": "Hvor ligger den nærmeste butikken?",
+   "start": 5,
+   "end": 11,
+   "surface": "ligger",
+   "lemma": "ligge",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-unseen-063",
+   "text": "holdout-45",
+   "sentence": "Når kommer du hjem fra jobben?",
+   "start": 11,
+   "end": 13,
+   "surface": "du",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-unseen-064",
+   "text": "holdout-46",
+   "sentence": "Jeg synes at boka er veldig spennende.",
+   "start": 13,
+   "end": 17,
+   "surface": "boka",
+   "lemma": "bok",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-unseen-065",
+   "text": "holdout-47",
+   "sentence": "Naboen vår har kjøpt en ny sofa, og den er rød.",
+   "start": 7,
+   "end": 10,
+   "surface": "vår",
+   "lemma": "vår",
+   "pos": "DET",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nb-unseen-066",
+   "text": "holdout-48",
+   "sentence": "Hun sa at hun ikke hadde sett ham før.",
+   "start": 0,
+   "end": 3,
+   "surface": "Hun",
+   "lemma": "hun",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nb-unseen-067",
+   "text": "holdout-48",
+   "sentence": "Hun sa at hun ikke hadde sett ham før.",
+   "start": 30,
+   "end": 33,
+   "surface": "ham",
+   "lemma": "han",
+   "pos": "PRON",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nb-unseen-068",
+   "text": "holdout-49",
+   "sentence": "Jenta leser ei bok på kjøkkenet, mens mora lager mat.",
+   "start": 15,
+   "end": 18,
+   "surface": "bok",
+   "lemma": "bok",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nb-unseen-069",
+   "text": "holdout-49",
+   "sentence": "Jenta leser ei bok på kjøkkenet, mens mora lager mat.",
+   "start": 43,
+   "end": 48,
+   "surface": "lager",
+   "lemma": "lage",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "advcl",
+   "ambiguous": true
+  },
+  {
+   "id": "nb-unseen-070",
+   "text": "holdout-50",
+   "sentence": "Ungene har tegnet en stor hund, og læreren har hengt tegninga på veggen.",
+   "start": 26,
+   "end": 30,
+   "surface": "hund",
+   "lemma": "hund",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  }
+ ]
+}

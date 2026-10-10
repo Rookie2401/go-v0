@@ -1,0 +1,1331 @@
+{
+ "language": "de",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "unseen",
+ "source": "data/verified/scripture.json, Lutherbibel 1912 (deu1912), chapters not in the corpus slices",
+ "feature_keys": [
+  "Case",
+  "Number",
+  "Gender",
+  "Person",
+  "Tense",
+  "Mood",
+  "VerbForm",
+  "Degree",
+  "PronType",
+  "Polite"
+ ],
+ "notes": "Held-out selections, never to be used for tuning. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "de-unseen-001",
+   "text": "GEN.16.14",
+   "sentence": "Darum hieß man den Brunnen einen Brunnen des Lebendigen, der mich ansieht; welcher Brunnen ist zwischen Kades und Bared.",
+   "start": 27,
+   "end": 32,
+   "surface": "einen",
+   "lemma": "ein",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Acc",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-002",
+   "text": "GEN.16.14",
+   "sentence": "Darum hieß man den Brunnen einen Brunnen des Lebendigen, der mich ansieht; welcher Brunnen ist zwischen Kades und Bared.",
+   "start": 83,
+   "end": 90,
+   "surface": "Brunnen",
+   "lemma": "Brunnen",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-003",
+   "text": "EXO.38.29",
+   "sentence": "Das Webeopfer aber des Erzes war siebzig Zentner zweitausendvierhundert Lot.",
+   "start": 19,
+   "end": 22,
+   "surface": "des",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Gen",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-004",
+   "text": "EXO.38.29",
+   "sentence": "Das Webeopfer aber des Erzes war siebzig Zentner zweitausendvierhundert Lot.",
+   "start": 41,
+   "end": 48,
+   "surface": "Zentner",
+   "lemma": "Zentner",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-unseen-005",
+   "text": "NUM.21.20",
+   "sentence": "und von Bamoth in das Tal, das im Felde Moabs liegt, zu dem hohen Berge Pisgas, der gegen die Wüste sieht.",
+   "start": 27,
+   "end": 30,
+   "surface": "das",
+   "lemma": "der",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Rel",
+    "Case": "Nom",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-006",
+   "text": "NUM.21.20",
+   "sentence": "und von Bamoth in das Tal, das im Felde Moabs liegt, zu dem hohen Berge Pisgas, der gegen die Wüste sieht.",
+   "start": 66,
+   "end": 71,
+   "surface": "Berge",
+   "lemma": "Berg",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-unseen-007",
+   "text": "DEU.7.14",
+   "sentence": "Gesegnet wirst du sein über alle Völker. Es wird niemand unter dir unfruchtbar sein noch unter deinem Vieh.",
+   "start": 28,
+   "end": 32,
+   "surface": "alle",
+   "lemma": "all",
+   "pos": "DET",
+   "features": {
+    "PronType": "Ind",
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-008",
+   "text": "DEU.7.14",
+   "sentence": "Gesegnet wirst du sein über alle Völker. Es wird niemand unter dir unfruchtbar sein noch unter deinem Vieh.",
+   "start": 67,
+   "end": 78,
+   "surface": "unfruchtbar",
+   "lemma": "unfruchtbar",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-unseen-009",
+   "text": "JDG.18.16",
+   "sentence": "Aber die sechshundert Gerüsteten mit ihren Waffen, die von den Kindern Dan waren, standen vor dem Tor.",
+   "start": 37,
+   "end": 42,
+   "surface": "ihren",
+   "lemma": "ihr",
+   "pos": "DET",
+   "features": {
+    "PronType": "Prs",
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-010",
+   "text": "JDG.18.16",
+   "sentence": "Aber die sechshundert Gerüsteten mit ihren Waffen, die von den Kindern Dan waren, standen vor dem Tor.",
+   "start": 71,
+   "end": 74,
+   "surface": "Dan",
+   "lemma": "Dan",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Gen",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-unseen-011",
+   "text": "RUT.3.8",
+   "sentence": "Da es nun Mitternacht ward, erschrak der Mann und beugte sich vor; und siehe, ein Weib lag zu seinen Füßen.",
+   "start": 37,
+   "end": 40,
+   "surface": "der",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Nom",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-012",
+   "text": "RUT.3.8",
+   "sentence": "Da es nun Mitternacht ward, erschrak der Mann und beugte sich vor; und siehe, ein Weib lag zu seinen Füßen.",
+   "start": 78,
+   "end": 81,
+   "surface": "ein",
+   "lemma": "ein",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Nom",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-013",
+   "text": "2SA.3.26",
+   "sentence": "Und da Joab von David ausging, sandte er Boten Abner nach, daß sie ihn wiederum holten von Bor-Hassira; und David wußte nichts darum.",
+   "start": 38,
+   "end": 40,
+   "surface": "er",
+   "lemma": "er",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Nom"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-014",
+   "text": "2SA.3.26",
+   "sentence": "Und da Joab von David ausging, sandte er Boten Abner nach, daß sie ihn wiederum holten von Bor-Hassira; und David wußte nichts darum.",
+   "start": 87,
+   "end": 90,
+   "surface": "von",
+   "lemma": "von",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-unseen-015",
+   "text": "1KI.17.2",
+   "sentence": "Und das Wort des HERRN kam zu ihm und sprach:",
+   "start": 13,
+   "end": 16,
+   "surface": "des",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Gen",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-016",
+   "text": "1KI.17.2",
+   "sentence": "Und das Wort des HERRN kam zu ihm und sprach:",
+   "start": 30,
+   "end": 33,
+   "surface": "ihm",
+   "lemma": "er",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dat"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-unseen-017",
+   "text": "1CH.8.8",
+   "sentence": "Und Saharaim zeugte im Lande Moab, da er von sich gelassen hatte seine Weiber Husim und Baara,",
+   "start": 29,
+   "end": 33,
+   "surface": "Moab",
+   "lemma": "Moab",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "appos"
+  },
+  {
+   "id": "de-unseen-018",
+   "text": "1CH.8.8",
+   "sentence": "Und Saharaim zeugte im Lande Moab, da er von sich gelassen hatte seine Weiber Husim und Baara,",
+   "start": 59,
+   "end": 64,
+   "surface": "hatte",
+   "lemma": "haben",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-unseen-019",
+   "text": "2CH.2.1",
+   "sentence": "[1:18] Und Salomo gedachte zu bauen ein Haus dem Namen des HERRN und ein Haus seines Königreichs.",
+   "start": 30,
+   "end": 35,
+   "surface": "bauen",
+   "lemma": "bauen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-unseen-020",
+   "text": "2CH.2.1",
+   "sentence": "[1:18] Und Salomo gedachte zu bauen ein Haus dem Namen des HERRN und ein Haus seines Königreichs.",
+   "start": 65,
+   "end": 68,
+   "surface": "und",
+   "lemma": "und",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "de-unseen-021",
+   "text": "NEH.9.38",
+   "sentence": "[10:1] Und in diesem allem machen wir einen festen Bund und schreiben und lassen's unsere Fürsten, Leviten und Priester versiegeln.",
+   "start": 34,
+   "end": 37,
+   "surface": "wir",
+   "lemma": "wir",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "1",
+    "Number": "Plur",
+    "Case": "Nom"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-022",
+   "text": "NEH.9.38",
+   "sentence": "[10:1] Und in diesem allem machen wir einen festen Bund und schreiben und lassen's unsere Fürsten, Leviten und Priester versiegeln.",
+   "start": 83,
+   "end": 89,
+   "surface": "unsere",
+   "lemma": "unser",
+   "pos": "DET",
+   "features": {
+    "PronType": "Prs",
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "de-unseen-023",
+   "text": "EST.4.2",
+   "sentence": "Und kam bis vor das Tor des Königs; denn es durfte niemand zu des Königs Tor eingehen, der einen Sack anhatte.",
+   "start": 24,
+   "end": 27,
+   "surface": "des",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Gen",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-024",
+   "text": "EST.4.2",
+   "sentence": "Und kam bis vor das Tor des Königs; denn es durfte niemand zu des Königs Tor eingehen, der einen Sack anhatte.",
+   "start": 66,
+   "end": 72,
+   "surface": "Königs",
+   "lemma": "König",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Gen",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-unseen-025",
+   "text": "PSA.135.10",
+   "sentence": "der viele Völker schlug und tötete mächtige Könige:",
+   "start": 10,
+   "end": 16,
+   "surface": "Völker",
+   "lemma": "Volk",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "obj"
+  },
+  {
+   "id": "de-unseen-026",
+   "text": "PSA.135.10",
+   "sentence": "der viele Völker schlug und tötete mächtige Könige:",
+   "start": 28,
+   "end": 34,
+   "surface": "tötete",
+   "lemma": "töten",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "de-unseen-027",
+   "text": "PRO.18.9",
+   "sentence": "Wer lässig ist in seiner Arbeit, der ist ein Bruder des, der das Seine umbringt.",
+   "start": 18,
+   "end": 24,
+   "surface": "seiner",
+   "lemma": "sein",
+   "pos": "DET",
+   "features": {
+    "PronType": "Prs",
+    "Case": "Dat",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-028",
+   "text": "PRO.18.9",
+   "sentence": "Wer lässig ist in seiner Arbeit, der ist ein Bruder des, der das Seine umbringt.",
+   "start": 52,
+   "end": 55,
+   "surface": "des",
+   "lemma": "der",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Dem",
+    "Case": "Gen",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-029",
+   "text": "SNG.2.17",
+   "sentence": "Bis der Tag kühl wird und die Schatten weichen, kehre um; werde wie ein Reh, mein Freund, oder wie ein junger Hirsch auf den Scheidebergen.",
+   "start": 30,
+   "end": 38,
+   "surface": "Schatten",
+   "lemma": "Schatten",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-030",
+   "text": "SNG.2.17",
+   "sentence": "Bis der Tag kühl wird und die Schatten weichen, kehre um; werde wie ein Reh, mein Freund, oder wie ein junger Hirsch auf den Scheidebergen.",
+   "start": 90,
+   "end": 94,
+   "surface": "oder",
+   "lemma": "oder",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "de-unseen-031",
+   "text": "ISA.48.15",
+   "sentence": "Ich, ja, ich habe es gesagt, ich habe ihn gerufen; ich will ihn auch kommen lassen, und sein Weg soll ihm gelingen.",
+   "start": 29,
+   "end": 32,
+   "surface": "ich",
+   "lemma": "ich",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "1",
+    "Number": "Sing",
+    "Case": "Nom"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-032",
+   "text": "ISA.48.15",
+   "sentence": "Ich, ja, ich habe es gesagt, ich habe ihn gerufen; ich will ihn auch kommen lassen, und sein Weg soll ihm gelingen.",
+   "start": 76,
+   "end": 82,
+   "surface": "lassen",
+   "lemma": "lassen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "hard",
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-unseen-033",
+   "text": "LAM.3.46",
+   "sentence": "Alle unsre Feinde sperren ihr Maul auf wider uns.",
+   "start": 11,
+   "end": 17,
+   "surface": "Feinde",
+   "lemma": "Feind",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-034",
+   "text": "LAM.3.46",
+   "sentence": "Alle unsre Feinde sperren ihr Maul auf wider uns.",
+   "start": 35,
+   "end": 38,
+   "surface": "auf",
+   "lemma": "auf",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "compound",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-035",
+   "text": "EZK.8.2",
+   "sentence": "Und siehe, ich sah, daß es von seinen Lenden herunterwärts war gleichwie Feuer; aber oben über seinen Lenden war es lichthell;",
+   "start": 27,
+   "end": 30,
+   "surface": "von",
+   "lemma": "von",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-unseen-036",
+   "text": "EZK.8.2",
+   "sentence": "Und siehe, ich sah, daß es von seinen Lenden herunterwärts war gleichwie Feuer; aber oben über seinen Lenden war es lichthell;",
+   "start": 85,
+   "end": 89,
+   "surface": "oben",
+   "lemma": "oben",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-unseen-037",
+   "text": "HOS.11.2",
+   "sentence": "Aber wenn man sie jetzt ruft, so wenden sie sich davon und opfern den Baalim und räuchern den Bildern.",
+   "start": 24,
+   "end": 28,
+   "surface": "ruft",
+   "lemma": "rufen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "advcl"
+  },
+  {
+   "id": "de-unseen-038",
+   "text": "HOS.11.2",
+   "sentence": "Aber wenn man sie jetzt ruft, so wenden sie sich davon und opfern den Baalim und räuchern den Bildern.",
+   "start": 66,
+   "end": 69,
+   "surface": "den",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-039",
+   "text": "JOL.2.24",
+   "sentence": "daß die Tenne voll Korn werden und die Keltern Überfluß von Most und Öl haben sollen.",
+   "start": 19,
+   "end": 23,
+   "surface": "Korn",
+   "lemma": "Korn",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Gen",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-unseen-040",
+   "text": "JOL.2.24",
+   "sentence": "daß die Tenne voll Korn werden und die Keltern Überfluß von Most und Öl haben sollen.",
+   "start": 60,
+   "end": 64,
+   "surface": "Most",
+   "lemma": "Most",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "nmod"
+  },
+  {
+   "id": "de-unseen-041",
+   "text": "JON.2.1",
+   "sentence": "Und Jona betete zu dem HERRN, seinem Gott, im Leibe des Fisches.",
+   "start": 16,
+   "end": 18,
+   "surface": "zu",
+   "lemma": "zu",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-unseen-042",
+   "text": "JON.2.1",
+   "sentence": "Und Jona betete zu dem HERRN, seinem Gott, im Leibe des Fisches.",
+   "start": 43,
+   "end": 45,
+   "surface": "im",
+   "lemma": "in",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "case"
+  },
+  {
+   "id": "de-unseen-043",
+   "text": "NAM.3.9",
+   "sentence": "Mohren und Ägypten war ihre unzählige Macht, Put und Libyen waren ihre Hilfe.",
+   "start": 19,
+   "end": 22,
+   "surface": "war",
+   "lemma": "sein",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "cop",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-044",
+   "text": "NAM.3.9",
+   "sentence": "Mohren und Ägypten war ihre unzählige Macht, Put und Libyen waren ihre Hilfe.",
+   "start": 53,
+   "end": 59,
+   "surface": "Libyen",
+   "lemma": "Libyen",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-045",
+   "text": "HAB.2.11",
+   "sentence": "Denn auch die Steine in der Mauer werden schreien, und die Sparren am Balkenwerk werden ihnen antworten.",
+   "start": 24,
+   "end": 27,
+   "surface": "der",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Dat",
+    "Gender": "Fem",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-046",
+   "text": "HAB.2.11",
+   "sentence": "Denn auch die Steine in der Mauer werden schreien, und die Sparren am Balkenwerk werden ihnen antworten.",
+   "start": 59,
+   "end": 66,
+   "surface": "Sparren",
+   "lemma": "Sparren",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-047",
+   "text": "HAG.2.21",
+   "sentence": "Sage Serubabel, dem Fürsten Juda's, und sprich: Ich will Himmel und Erde bewegen",
+   "start": 20,
+   "end": 27,
+   "surface": "Fürsten",
+   "lemma": "Fürst",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "iobj"
+  },
+  {
+   "id": "de-unseen-048",
+   "text": "HAG.2.21",
+   "sentence": "Sage Serubabel, dem Fürsten Juda's, und sprich: Ich will Himmel und Erde bewegen",
+   "start": 57,
+   "end": 63,
+   "surface": "Himmel",
+   "lemma": "Himmel",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Acc",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "de-unseen-049",
+   "text": "ZEC.8.15",
+   "sentence": "also gedenke ich nun wiederum in diesen Tagen, wohlzutun Jerusalem und dem Hause Juda. Fürchtet euch nur nicht.",
+   "start": 30,
+   "end": 32,
+   "surface": "in",
+   "lemma": "in",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-unseen-050",
+   "text": "ZEC.8.15",
+   "sentence": "also gedenke ich nun wiederum in diesen Tagen, wohlzutun Jerusalem und dem Hause Juda. Fürchtet euch nur nicht.",
+   "start": 75,
+   "end": 80,
+   "surface": "Hause",
+   "lemma": "Haus",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "iobj"
+  },
+  {
+   "id": "de-unseen-051",
+   "text": "MAT.8.27",
+   "sentence": "Die Menschen aber verwunderten sich und sprachen: Was ist das für ein Mann, daß ihm Wind und Meer gehorsam ist?",
+   "start": 40,
+   "end": 48,
+   "surface": "sprachen",
+   "lemma": "sprechen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "3",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "de-unseen-052",
+   "text": "MAT.8.27",
+   "sentence": "Die Menschen aber verwunderten sich und sprachen: Was ist das für ein Mann, daß ihm Wind und Meer gehorsam ist?",
+   "start": 80,
+   "end": 83,
+   "surface": "ihm",
+   "lemma": "er",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Person": "3",
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Case": "Dat"
+   },
+   "difficulty": "medium",
+   "relation": "iobj"
+  },
+  {
+   "id": "de-unseen-053",
+   "text": "MRK.14.29",
+   "sentence": "Petrus aber sagte zu ihm: Und wenn sie sich alle ärgerten, so wollte doch ich mich nicht ärgern.",
+   "start": 26,
+   "end": 29,
+   "surface": "Und",
+   "lemma": "und",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "de-unseen-054",
+   "text": "MRK.14.29",
+   "sentence": "Petrus aber sagte zu ihm: Und wenn sie sich alle ärgerten, so wollte doch ich mich nicht ärgern.",
+   "start": 62,
+   "end": 68,
+   "surface": "wollte",
+   "lemma": "wollen",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "aux"
+  },
+  {
+   "id": "de-unseen-055",
+   "text": "JHN.9.23",
+   "sentence": "Darum sprachen seine Eltern: er ist alt genug, fraget ihn selbst.",
+   "start": 21,
+   "end": 27,
+   "surface": "Eltern",
+   "lemma": "Eltern",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "de-unseen-056",
+   "text": "JHN.9.23",
+   "sentence": "Darum sprachen seine Eltern: er ist alt genug, fraget ihn selbst.",
+   "start": 40,
+   "end": 45,
+   "surface": "genug",
+   "lemma": "genug",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-unseen-057",
+   "text": "ACT.4.6",
+   "sentence": "Hannas, der Hohepriester, und Kaiphas und Johannes und Alexander und wie viel ihrer waren vom Hohenpriestergeschlecht;",
+   "start": 30,
+   "end": 37,
+   "surface": "Kaiphas",
+   "lemma": "Kaiphas",
+   "pos": "PROPN",
+   "features": {
+    "Case": "Nom",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "de-unseen-058",
+   "text": "ACT.4.6",
+   "sentence": "Hannas, der Hohepriester, und Kaiphas und Johannes und Alexander und wie viel ihrer waren vom Hohenpriestergeschlecht;",
+   "start": 73,
+   "end": 77,
+   "surface": "viel",
+   "lemma": "viel",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Ind"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-059",
+   "text": "1CO.14.14",
+   "sentence": "Denn so ich mit Zungen bete, so betet mein Geist; aber mein Sinn bringt niemand Frucht.",
+   "start": 16,
+   "end": 22,
+   "surface": "Zungen",
+   "lemma": "Zunge",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "de-unseen-060",
+   "text": "1CO.14.14",
+   "sentence": "Denn so ich mit Zungen bete, so betet mein Geist; aber mein Sinn bringt niemand Frucht.",
+   "start": 55,
+   "end": 59,
+   "surface": "mein",
+   "lemma": "mein",
+   "pos": "DET",
+   "features": {
+    "PronType": "Prs",
+    "Case": "Nom",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "de-unseen-061",
+   "text": "2CO.6.6",
+   "sentence": "in Keuschheit, in Erkenntnis, in Langmut, in Freundlichkeit, in dem heiligen Geist, in ungefärbter Liebe,",
+   "start": 30,
+   "end": 32,
+   "surface": "in",
+   "lemma": "in",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-unseen-062",
+   "text": "2CO.6.6",
+   "sentence": "in Keuschheit, in Erkenntnis, in Langmut, in Freundlichkeit, in dem heiligen Geist, in ungefärbter Liebe,",
+   "start": 68,
+   "end": 76,
+   "surface": "heiligen",
+   "lemma": "heilig",
+   "pos": "ADJ",
+   "features": {
+    "Case": "Dat",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "amod"
+  },
+  {
+   "id": "de-unseen-063",
+   "text": "EPH.2.1",
+   "sentence": "Und auch euch, da ihr tot waret durch Übertretungen und Sünden,",
+   "start": 15,
+   "end": 17,
+   "surface": "da",
+   "lemma": "da",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-064",
+   "text": "EPH.2.1",
+   "sentence": "Und auch euch, da ihr tot waret durch Übertretungen und Sünden,",
+   "start": 32,
+   "end": 37,
+   "surface": "durch",
+   "lemma": "durch",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "de-unseen-065",
+   "text": "PHP.3.18",
+   "sentence": "Denn viele wandeln, von welchen ich euch oft gesagt habe, nun aber sage ich auch mit Weinen, daß sie sind die Feinde des Kreuzes Christi,",
+   "start": 41,
+   "end": 44,
+   "surface": "oft",
+   "lemma": "oft",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-unseen-066",
+   "text": "PHP.3.18",
+   "sentence": "Denn viele wandeln, von welchen ich euch oft gesagt habe, nun aber sage ich auch mit Weinen, daß sie sind die Feinde des Kreuzes Christi,",
+   "start": 93,
+   "end": 96,
+   "surface": "daß",
+   "lemma": "dass",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "mark"
+  },
+  {
+   "id": "de-unseen-067",
+   "text": "1TH.3.4",
+   "sentence": "und da wir bei euch waren, sagten wir's euch zuvor, wir würden Trübsale haben müssen; wie denn auch geschehen ist und ihr wisset.",
+   "start": 27,
+   "end": 33,
+   "surface": "sagten",
+   "lemma": "sagen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past",
+    "Person": "1",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "de-unseen-068",
+   "text": "1TH.3.4",
+   "sentence": "und da wir bei euch waren, sagten wir's euch zuvor, wir würden Trübsale haben müssen; wie denn auch geschehen ist und ihr wisset.",
+   "start": 90,
+   "end": 94,
+   "surface": "denn",
+   "lemma": "denn",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-069",
+   "text": "2TH.3.16",
+   "sentence": "Er aber, der HERR des Friedens, gebe euch Frieden allenthalben und auf allerlei Weise. Der HERR sei mit euch allen!",
+   "start": 32,
+   "end": 36,
+   "surface": "gebe",
+   "lemma": "geben",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "de-unseen-070",
+   "text": "2TH.3.16",
+   "sentence": "Er aber, der HERR des Friedens, gebe euch Frieden allenthalben und auf allerlei Weise. Der HERR sei mit euch allen!",
+   "start": 87,
+   "end": 90,
+   "surface": "Der",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Nom",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-071",
+   "text": "2TI.3.9",
+   "sentence": "Aber sie werden's in die Länge nicht treiben; denn ihre Torheit wird offenbar werden jedermann, gleichwie auch jener Torheit offenbar ward.",
+   "start": 31,
+   "end": 36,
+   "surface": "nicht",
+   "lemma": "nicht",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "de-unseen-072",
+   "text": "2TI.3.9",
+   "sentence": "Aber sie werden's in die Länge nicht treiben; denn ihre Torheit wird offenbar werden jedermann, gleichwie auch jener Torheit offenbar ward.",
+   "start": 85,
+   "end": 94,
+   "surface": "jedermann",
+   "lemma": "jedermann",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Ind",
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "iobj"
+  },
+  {
+   "id": "de-unseen-073",
+   "text": "TIT.2.5",
+   "sentence": "sittig sein, keusch, häuslich, gütig, ihren Männern untertan, auf daß nicht das Wort Gottes verlästert werde.",
+   "start": 31,
+   "end": 36,
+   "surface": "gütig",
+   "lemma": "gütig",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "xcomp"
+  },
+  {
+   "id": "de-unseen-074",
+   "text": "TIT.2.5",
+   "sentence": "sittig sein, keusch, häuslich, gütig, ihren Männern untertan, auf daß nicht das Wort Gottes verlästert werde.",
+   "start": 76,
+   "end": 79,
+   "surface": "das",
+   "lemma": "der",
+   "pos": "DET",
+   "features": {
+    "PronType": "Art",
+    "Case": "Nom",
+    "Gender": "Neut",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "de-unseen-075",
+   "text": "JAS.5.5",
+   "sentence": "Ihr habt wohlgelebt auf Erden und eure Wollust gehabt und eure Herzen geweidet am Schlachttag.",
+   "start": 24,
+   "end": 29,
+   "surface": "Erden",
+   "lemma": "Erde",
+   "pos": "NOUN",
+   "features": {
+    "Case": "Dat",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "obl"
+  },
+  {
+   "id": "de-unseen-076",
+   "text": "JAS.5.5",
+   "sentence": "Ihr habt wohlgelebt auf Erden und eure Wollust gehabt und eure Herzen geweidet am Schlachttag.",
+   "start": 58,
+   "end": 62,
+   "surface": "eure",
+   "lemma": "euer",
+   "pos": "DET",
+   "features": {
+    "PronType": "Prs",
+    "Case": "Acc",
+    "Number": "Plur"
+   },
+   "difficulty": "hard",
+   "relation": "det"
+  },
+  {
+   "id": "de-unseen-077",
+   "text": "1PE.3.10",
+   "sentence": "Denn wer leben will und gute Tage sehen, der schweige seine Zunge, daß sie nichts Böses rede, und seine Lippen, daß sie nicht trügen.",
+   "start": 34,
+   "end": 39,
+   "surface": "sehen",
+   "lemma": "sehen",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Inf"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "de-unseen-078",
+   "text": "1PE.3.10",
+   "sentence": "Denn wer leben will und gute Tage sehen, der schweige seine Zunge, daß sie nichts Böses rede, und seine Lippen, daß sie nicht trügen.",
+   "start": 88,
+   "end": 92,
+   "surface": "rede",
+   "lemma": "reden",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Sub",
+    "Tense": "Pres",
+    "Person": "3",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "advcl"
+  },
+  {
+   "id": "de-unseen-079",
+   "text": "1JN.2.9",
+   "sentence": "Wer da sagt, er sei im Licht, und haßt seinen Bruder, der ist noch in der Finsternis.",
+   "start": 20,
+   "end": 22,
+   "surface": "im",
+   "lemma": "in",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "case"
+  },
+  {
+   "id": "de-unseen-080",
+   "text": "1JN.2.9",
+   "sentence": "Wer da sagt, er sei im Licht, und haßt seinen Bruder, der ist noch in der Finsternis.",
+   "start": 54,
+   "end": 57,
+   "surface": "der",
+   "lemma": "der",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Dem",
+    "Case": "Nom",
+    "Gender": "Masc",
+    "Number": "Sing"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj",
+   "ambiguous": true
+  }
+ ]
+}

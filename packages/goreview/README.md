@@ -57,6 +57,15 @@ is recorded as written recognition, not listening. Practice-only (synthetic) aud
 A challenge never counts as evidence; `keyIsWrong` additionally records `ReviewItemInvalidated`. Sessions persist under
 `goreview:session:<id>` and resume with `recover(id)`.
 
+## Review eligibility: which fields a human reviewer is shown (`src/intake/review-eligibility.ts`)
+
+Separate from the learner's deck: `reviewEligibility(analysisOrUnit, { encounters, conflicts? })` says which *linguistic fields* may be put to a
+person who can settle them. Eligible only when a field is `conflicted` (from 1 encounter) or `provisional` (from 2 encounters in different
+sentences). Never: `verified`, `supported`, `unknown` or `invalidated` fields, invalidated or superseded rows, fields the pack marks unreviewable.
+`priority = conflicts x encounters`. `validationQueue(items)` returns the sorted queue with reasons, what it skipped and why, and the `legacy`
+items without field states (those stay with the intake rules above, unchanged). `reviewerView` shows the stored state and basis, never an upgrade;
+`reviewerCorrection` turns a reviewer's decision into a `correct` request that refuses an unnamed reviewer. See `docs/ecosystem/linguistics/REPOSITORY-STATES.md`.
+
 ## What GoReview never does
 
 - **No card per clicked word.** Lookups are exposure and assistance; a unit becomes a card only through intake (a Repository candidate that passed the rules above) or the learner's own action.

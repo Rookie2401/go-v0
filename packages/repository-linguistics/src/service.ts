@@ -3,10 +3,11 @@
  * and correct analyses, migrate identities between pack versions and report coverage gaps. Nothing here ever deletes
  * a row, and a learner's performance never reaches this layer.
  */
-import { STATUS_RANK, unitIds } from '../../repository-contract/src';
+import { FIELD_NAMES, STATUS_RANK, invalidateFieldStates, mergeFieldStates, sameFieldStates, unitIds } from '../../repository-contract/src';
 import type {
-  AnalysisCandidate, AnalysisStatus, FormAnalysis, LinguisticStore, LinguisticUnit, UnitAlias, UnitProvenance, UnitRelation,
+  AnalysisCandidate, AnalysisStatus, FieldName, FieldState, FormAnalysis, LinguisticStore, LinguisticUnit, UnitAlias, UnitProvenance, UnitRelation,
 } from '../../repository-contract/src';
+import { contextualFieldStates, fieldStatesFor } from './field-states';
 import { packFor, withValidation } from './packs';
 import { resolveSelection } from './resolver';
 import type { ResolveInput, Resolution } from './resolver';
@@ -15,6 +16,8 @@ export interface Correction {
   lexemeId?: string;
   features?: Record<string, string>;
   by: 'learner' | 'reviewer';
+  /** The reviewer's name or id (Stage 7). A field is `verified` by a NAMED reviewer; a caller that omits it is recorded as the role `reviewer`. */
+  reviewerId?: string;
   reason?: string;
   /** Limits the correction (and the analyses it invalidates) to one sentence; absent = the out-of-context analysis. */
   sentenceKey?: string;
@@ -42,16 +45,27 @@ export interface CorrectionResult {
 
 export interface MigrationChange { oldId: string; newId?: string; reason: string; confidence: number }
 
+/**
+ * What `lookup` returns. Stage 7: `unit.fieldStates` are the unit's shared-fact fields and each `analyses[i].fieldStates` the contextual
+ * fields of that reading (an invalidated analysis shows its stated fields as `invalidated` even if the store row predates the rule).
+ */
 export interface LookupResult {
   unit?: LinguisticUnit;
   relations: { out: UnitRelation[]; in: UnitRelation[] };
   analyses: FormAnalysis[];
 }
 
+/** One field that is not yet solid, for `coverageGapsByField`. */
+export interface FieldGap { unitId: string; field: FieldName; state: FieldState; basis: string; where: 'unit' | 'analysis'; analysisId?: string }
+
 export const LEARNER_CORRECTION_CONFIDENCE = 0.6;
 export const REVIEWER_CORRECTION_CONFIDENCE = 0.95;
 /** From this confidence an identity migration is `certain` and evidence may be re-attributed. */
 export const CERTAIN_MIGRATION = 0.9;
+
+/** An invalidated analysis reads with its stated fields invalidated, whatever the store row says (rows invalidated by a store that predates Stage 7). */
+const withInvalidatedFields = (a: FormAnalysis): FormAnalysis =>
+  a.status === 'invalidated' && a.fieldStates ? { ...a, fieldStates: invalidateFieldStates(a.fieldStates, a.reason ?? 'analysis invalidated') } : a;
 
 const relKey = (r: UnitRelation): string => `${r.fromId}|${r.relation}|${r.toId}`;
 const uniq = <T>(xs: T[]): T[] => [...new Set(xs)];
@@ -63,12 +77,20 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     const resolution = resolveSelection({ ...input, now: input.now ?? opts.now() });
 
     const existing = new Map((await store.getUnits(resolution.units.map((u) => u.unitId))).map((u) => [u.unitId, u]));
-    const toPut = resolution.units.filter((u) => {
+    const toPut: LinguisticUnit[] = [];
+    for (const u of resolution.units) {
       const old = existing.get(u.unitId);
-      if (!old) return true;
-      if (old.status === 'invalidated' || old.supersededBy) return false;
-      return STATUS_RANK[u.status] > STATUS_RANK[old.status];
-    });
+      if (!old) { toPut.push(u); continue; }
+      if (old.status === 'invalidated' || old.supersededBy) continue;
+      if (STATUS_RANK[u.status] > STATUS_RANK[old.status]) {
+        const merged = mergeFieldStates(old.fieldStates, u.fieldStates);
+        toPut.push(merged ? { ...u, fieldStates: merged } : u);
+        continue;
+      }
+      // same or lower unit status: the row stays as it is, but a shared field that is now better stated (or newly stated) is added, never lowered
+      const merged = mergeFieldStates(old.fieldStates, u.fieldStates);
+      if (merged && !sameFieldStates(merged, old.fieldStates)) toPut.push({ ...old, fieldStates: merged });
+    }
     if (toPut.length) await store.putUnits(toPut);
 
     const known = new Set<string>();
@@ -79,7 +101,12 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     if (newRels.length) await store.putRelations(newRels);
 
     // an analysis that exists (and may have been invalidated or corrected since) is never rewritten
-    if (!(await store.getAnalysis(resolution.analysis.analysisId))) await store.putAnalyses([resolution.analysis]);
+    const storedAnalysis = await store.getAnalysis(resolution.analysis.analysisId);
+    if (!storedAnalysis) await store.putAnalyses([resolution.analysis]);
+    else if (!storedAnalysis.fieldStates && resolution.analysis.fieldStates && storedAnalysis.status !== 'invalidated' && !storedAnalysis.supersededBy) {
+      // a row written before Stage 7: it gains its field states once and is otherwise untouched
+      await store.putAnalyses([{ ...storedAnalysis, fieldStates: resolution.analysis.fieldStates }]);
+    }
     return resolution;
   }
 
@@ -99,7 +126,7 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
       }
       analyses = [...seen.values()];
     }
-    return { unit, relations: { out, in: inn }, analyses };
+    return { unit, relations: { out, in: inn }, analyses: analyses.map(withInvalidatedFields) };
   }
 
   /**
@@ -129,7 +156,7 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     // A reviewer's correction is validated for the item it names; a learner's is not (it stays provisional and unreviewed).
     const provenance: UnitProvenance = withValidation({
       source: correction.by, ref: `correction:${correction.by}`, confidence,
-      ...(learner ? {} : { validatedBy: 'reviewer', validatedAt: now }),
+      ...(learner ? {} : { validatedBy: correction.reviewerId?.trim() || 'reviewer', validatedAt: now }),
     }, learner ? 'unreviewed' : 'production-validated');
 
     const previous = (await store.analysesOfForm(formId, correction.sentenceKey))
@@ -152,6 +179,11 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
       formId, languageId, ...(correction.sentenceKey ? { sentenceKey: correction.sentenceKey } : {}),
       candidates: [candidate], chosen: 0, status, analyzerId: `correction:${correction.by}`,
       packId: pack.packId, packVersion: pack.version, createdAt: now,
+      // Stage 7: what the correction states becomes verified (a reviewer, named by reviewerId) or provisional (a learner); nothing else is claimed
+      fieldStates: contextualFieldStates(fieldStatesFor({
+        readings: [candidate], chosen: 0, now,
+        ...(learner ? {} : { reviewer: { id: correction.reviewerId?.trim() || 'reviewer' } }),
+      })),
     };
 
     // the units the correction points at, so nothing it names dangles; existing units are left as they are
@@ -176,9 +208,17 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
     await store.putAnalyses([analysis]);
     const reason = `Corrected by ${correction.by}${correction.reason ? `: ${correction.reason}` : ''}`;
     const invalidated: FormAnalysis[] = [];
-    for (const a of previous) {
+    for (let prior of previous) {
+      if (!prior.fieldStates) {
+        // a row written before Stage 7: derive what it stated from its readings so that the fields can be shown as invalidated, not lost
+        prior = { ...prior, fieldStates: contextualFieldStates(fieldStatesFor({ readings: prior.candidates, ...(prior.chosen === undefined ? {} : { chosen: prior.chosen }), now: prior.createdAt })) };
+        await store.putAnalyses([prior]);
+      }
+      const a = prior;
       await store.invalidateAnalysis(a.analysisId, reason, analysis.analysisId);
-      invalidated.push({ ...a, status: 'invalidated', reason, supersededBy: analysis.analysisId });
+      // the superseded analysis keeps its row; every field it stated reads invalidated (the stores do the same to the stored row)
+      const fs = invalidateFieldStates(a.fieldStates, reason, now);
+      invalidated.push({ ...a, status: 'invalidated', reason, supersededBy: analysis.analysisId, ...(fs ? { fieldStates: fs } : {}) });
     }
     // Re-key (b), withdraw (c): the ids the superseded analyses pointed at and the corrected one does not.
     const nextIds = new Set(pointedAt(analysis));
@@ -255,7 +295,7 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
   }
 
   /** Notes for the suitability query: ids with no stored unit, or a unit that is only provisional or conflicted. */
-  async function coverageGaps(languageId: string, ids: string[]): Promise<string[]> {
+  async function coverageGaps(languageId: string, ids: string[], opts: { byField?: boolean } = {}): Promise<string[]> {
     const wanted = uniq(ids);
     const have = new Map((await store.getUnits(wanted)).map((u) => [u.unitId, u]));
     const notes: string[] = [];
@@ -264,10 +304,39 @@ export function createLinguisticService(store: LinguisticStore, opts: { now: () 
       if (!u) notes.push(`${id}: no stored linguistic unit for ${languageId}`);
       else if (u.status === 'provisional' || u.status === 'requires-review' || u.status === 'conflicted') notes.push(`${id}: status ${u.status}`);
     }
+    // Stage 7, opt in so the unit-level notes above keep their exact text: one note per field that is not yet supported or verified
+    if (opts.byField) for (const g of await coverageGapsByField(languageId, wanted)) notes.push(`${g.unitId}: ${g.where === 'analysis' ? 'reading' : 'unit'} field ${g.field} is ${g.state}`);
     return notes;
   }
 
-  return { resolveAndStore, lookup, invalidate, correct, migrate, coverageGaps };
+  /**
+   * The fields that are `provisional` or `conflicted` on the stored units and on the live analyses of the forms among `ids`
+   * (and of the forms that point at a lexeme / sense / construction among them). `unknown` is not listed: a field nothing
+   * states is not a gap in what is stored, it is what is absent (`absent = unknown`). Invalidated rows are skipped.
+   */
+  async function coverageGapsByField(_languageId: string, ids: string[]): Promise<FieldGap[]> {
+    const wanted = uniq(ids);
+    const gaps: FieldGap[] = [];
+    const add = (unitId: string, fs: LinguisticUnit['fieldStates'], where: FieldGap['where'], analysisId?: string): void => {
+      for (const f of FIELD_NAMES) {
+        const e = fs?.[f];
+        if (e && (e.state === 'provisional' || e.state === 'conflicted')) gaps.push({ unitId, field: f, state: e.state, basis: e.basis, where, ...(analysisId ? { analysisId } : {}) });
+      }
+    };
+    for (const u of await store.getUnits(wanted)) {
+      if (u.status === 'invalidated' || u.supersededBy) continue;
+      add(u.unitId, u.fieldStates, 'unit');
+    }
+    for (const id of wanted) {
+      for (const a of (await lookup(id)).analyses) {
+        if (a.status === 'invalidated' || a.supersededBy) continue;
+        add(id, a.fieldStates, 'analysis', a.analysisId);
+      }
+    }
+    return gaps;
+  }
+
+  return { resolveAndStore, lookup, invalidate, correct, migrate, coverageGaps, coverageGapsByField };
 }
 
 export type LinguisticService = ReturnType<typeof createLinguisticService>;

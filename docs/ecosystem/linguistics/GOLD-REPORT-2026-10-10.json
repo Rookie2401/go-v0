@@ -1,0 +1,3600 @@
+{
+ "at": "2026-10-10T17:13:18.792Z",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "limit": null,
+ "results": {
+  "sq": {
+   "dev": {
+    "language": "sq",
+    "set": "dev",
+    "n": 215,
+    "scored": 215,
+    "errors": 0,
+    "lemma": 204,
+    "pos": 192,
+    "both": 183,
+    "featureTotals": {
+     "tp": 698,
+     "pred": 816,
+     "gold": 806,
+     "tpLenient": 770
+    },
+    "featuresByKey": {
+     "PronType": {
+      "tp": 16,
+      "pred": 22,
+      "gold": 22,
+      "tpLenient": 17
+     },
+     "Number": {
+      "tp": 164,
+      "pred": 172,
+      "gold": 166,
+      "tpLenient": 164
+     },
+     "Person": {
+      "tp": 58,
+      "pred": 76,
+      "gold": 82,
+      "tpLenient": 67
+     },
+     "Tense": {
+      "tp": 66,
+      "pred": 66,
+      "gold": 70,
+      "tpLenient": 66
+     },
+     "Mood": {
+      "tp": 34,
+      "pred": 68,
+      "gold": 70,
+      "tpLenient": 66
+     },
+     "Voice": {
+      "tp": 68,
+      "pred": 68,
+      "gold": 70,
+      "tpLenient": 68
+     },
+     "VerbForm": {
+      "tp": 68,
+      "pred": 68,
+      "gold": 70,
+      "tpLenient": 68
+     },
+     "Case": {
+      "tp": 60,
+      "pred": 97,
+      "gold": 89,
+      "tpLenient": 88
+     },
+     "Gender": {
+      "tp": 91,
+      "pred": 99,
+      "gold": 93,
+      "tpLenient": 93
+     },
+     "Definite": {
+      "tp": 73,
+      "pred": 80,
+      "gold": 74,
+      "tpLenient": 73
+     }
+    },
+    "precision": 0.8553921568627451,
+    "recall": 0.8660049627791563,
+    "f1": 0.8606658446362515,
+    "precisionLenient": 0.9436274509803921,
+    "recallLenient": 0.9553349875930521,
+    "f1Lenient": 0.9494451294697903,
+    "role": {
+     "coverage": 0.9813953488372092,
+     "mappedN": 20,
+     "accuracy": 0.65,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 214,
+     "accuracy": 0.8598130841121495,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": "n/a: no data/gold/sq/syntax-dev.json yet"
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.9534883720930233,
+     "definition": 1,
+     "etymology": 0.9395348837209302,
+     "ipa": 0.827906976744186,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 21,
+     "kept": 0.8095238095238095,
+     "topOk": 0.6190476190476191
+    },
+    "conflictRate": 0.018604651162790697,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.36069674418602643,
+     "dictMs": 1.740910697674403,
+     "totalMs": 2.1016074418604296
+    },
+    "byDifficulty": {
+     "medium": {
+      "n": 82,
+      "both": 68
+     },
+     "easy": {
+      "n": 75,
+      "both": 72
+     },
+     "hard": {
+      "n": 58,
+      "both": 43
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "dev · POS wrong",
+      "count": 21,
+      "examples": [
+       "Jam: gold jam/AUX, engine jam/VERB",
+       "Edhe: gold edhe/ADV, engine edhe/CONJ",
+       "edhe: gold edhe/ADV, engine edhe/CONJ"
+      ]
+     },
+     {
+      "cls": "dev · lemma wrong",
+      "count": 9,
+      "examples": [
+       "bukur: gold bukur/ADJ, engine i bukur/ADJ",
+       "Marku: gold Marku/PROPN, engine Mark/PROPN",
+       "ri: gold ri/ADJ, engine i ri/ADJ"
+      ]
+     },
+     {
+      "cls": "dev · lemma and POS wrong",
+      "count": 2,
+      "examples": [
+       "Mirë: gold mirë/ADV, engine i mirë/ADJ",
+       "më: gold më/ADV, engine unë/PRON"
+      ]
+     }
+    ]
+   },
+   "hard": {
+    "language": "sq",
+    "set": "hard",
+    "n": 70,
+    "scored": 70,
+    "errors": 0,
+    "lemma": 58,
+    "pos": 60,
+    "both": 54,
+    "featureTotals": {
+     "tp": 219,
+     "pred": 266,
+     "gold": 256,
+     "tpLenient": 242
+    },
+    "featuresByKey": {
+     "Case": {
+      "tp": 9,
+      "pred": 33,
+      "gold": 25,
+      "tpLenient": 22
+     },
+     "Number": {
+      "tp": 50,
+      "pred": 56,
+      "gold": 56,
+      "tpLenient": 52
+     },
+     "Gender": {
+      "tp": 23,
+      "pred": 25,
+      "gold": 26,
+      "tpLenient": 25
+     },
+     "PronType": {
+      "tp": 9,
+      "pred": 15,
+      "gold": 11,
+      "tpLenient": 9
+     },
+     "Definite": {
+      "tp": 17,
+      "pred": 19,
+      "gold": 19,
+      "tpLenient": 17
+     },
+     "Person": {
+      "tp": 29,
+      "pred": 31,
+      "gold": 32,
+      "tpLenient": 30
+     },
+     "Tense": {
+      "tp": 20,
+      "pred": 20,
+      "gold": 20,
+      "tpLenient": 20
+     },
+     "Mood": {
+      "tp": 16,
+      "pred": 21,
+      "gold": 21,
+      "tpLenient": 21
+     },
+     "Voice": {
+      "tp": 21,
+      "pred": 21,
+      "gold": 21,
+      "tpLenient": 21
+     },
+     "VerbForm": {
+      "tp": 25,
+      "pred": 25,
+      "gold": 25,
+      "tpLenient": 25
+     }
+    },
+    "precision": 0.8233082706766918,
+    "recall": 0.85546875,
+    "f1": 0.839080459770115,
+    "precisionLenient": 0.9097744360902256,
+    "recallLenient": 0.9453125,
+    "f1Lenient": 0.9272030651340997,
+    "role": {
+     "coverage": 1,
+     "mappedN": 11,
+     "accuracy": 0.8181818181818182,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 70,
+     "accuracy": 0.7571428571428571,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.9857142857142858,
+     "definition": 0.9857142857142858,
+     "etymology": 0.9285714285714286,
+     "ipa": 0.8,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 17,
+     "kept": 0.7058823529411765,
+     "topOk": 0.5882352941176471
+    },
+    "conflictRate": 0.02857142857142857,
+    "naiveWrongRate": 0.08571428571428572,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.3086300000000392,
+     "dictMs": 2.051739999999979,
+     "totalMs": 2.3603700000000183
+    },
+    "byDifficulty": {
+     "hard": {
+      "n": 70,
+      "both": 54
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "linking-article · lemma and POS wrong",
+      "count": 4,
+      "examples": [
+       "i: gold i/DET, engine i ri/ADJ",
+       "e: gold e/DET, engine i bukur/ADJ",
+       "të: gold të/DET, engine i mirë/ADJ"
+      ]
+     },
+     {
+      "cls": "linking-article · lemma wrong",
+      "count": 4,
+      "examples": [
+       "së: gold së/DET, engine i/DET",
+       "vogël: gold vogël/ADJ, engine i vogël/ADJ",
+       "tij: gold tij/DET, engine i tij/DET"
+      ]
+     },
+     {
+      "cls": "admirative-subjunctive-participle · POS wrong",
+      "count": 3,
+      "examples": [
+       "Qenka: gold jam/AUX, engine jam/VERB",
+       "Paskam: gold kam/AUX, engine kam/VERB",
+       "Qofshin: gold jam/AUX, engine jam/VERB"
+      ]
+     },
+     {
+      "cls": "compound-or-multiword · lemma wrong",
+      "count": 2,
+      "examples": [
+       "lahet: gold lahem/VERB, engine laj/VERB",
+       "hapet: gold hapem/VERB, engine hap/VERB"
+      ]
+     },
+     {
+      "cls": "clitic-doubling · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "u: gold ai/PRON, engine u/PART"
+      ]
+     },
+     {
+      "cls": "case-syncretism-homograph · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "më: gold më/ADV, engine unë/PRON"
+      ]
+     },
+     {
+      "cls": "case-syncretism-homograph · POS wrong",
+      "count": 1,
+      "examples": [
+       "dhe: gold dhe/NOUN, engine dhe/CONJ"
+      ]
+     }
+    ]
+   },
+   "unseen": {
+    "language": "sq",
+    "set": "unseen",
+    "n": 70,
+    "scored": 70,
+    "errors": 0,
+    "lemma": 63,
+    "pos": 61,
+    "both": 55,
+    "featureTotals": {
+     "tp": 232,
+     "pred": 260,
+     "gold": 264,
+     "tpLenient": 252
+    },
+    "featuresByKey": {
+     "Case": {
+      "tp": 18,
+      "pred": 29,
+      "gold": 27,
+      "tpLenient": 26
+     },
+     "Number": {
+      "tp": 54,
+      "pred": 55,
+      "gold": 56,
+      "tpLenient": 54
+     },
+     "Gender": {
+      "tp": 23,
+      "pred": 26,
+      "gold": 26,
+      "tpLenient": 26
+     },
+     "Definite": {
+      "tp": 16,
+      "pred": 18,
+      "gold": 18,
+      "tpLenient": 16
+     },
+     "Person": {
+      "tp": 28,
+      "pred": 31,
+      "gold": 33,
+      "tpLenient": 31
+     },
+     "Tense": {
+      "tp": 22,
+      "pred": 22,
+      "gold": 23,
+      "tpLenient": 22
+     },
+     "Mood": {
+      "tp": 16,
+      "pred": 22,
+      "gold": 23,
+      "tpLenient": 22
+     },
+     "Voice": {
+      "tp": 22,
+      "pred": 22,
+      "gold": 23,
+      "tpLenient": 22
+     },
+     "VerbForm": {
+      "tp": 23,
+      "pred": 23,
+      "gold": 24,
+      "tpLenient": 23
+     },
+     "PronType": {
+      "tp": 10,
+      "pred": 12,
+      "gold": 11,
+      "tpLenient": 10
+     }
+    },
+    "precision": 0.8923076923076924,
+    "recall": 0.8787878787878788,
+    "f1": 0.8854961832061069,
+    "precisionLenient": 0.9692307692307692,
+    "recallLenient": 0.9545454545454546,
+    "f1Lenient": 0.9618320610687022,
+    "role": {
+     "coverage": 0.9857142857142858,
+     "mappedN": 12,
+     "accuracy": 0.75,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 70,
+     "accuracy": 0.8428571428571429,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.9857142857142858,
+     "definition": 1,
+     "etymology": 0.9571428571428572,
+     "ipa": 0.8428571428571429,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 13,
+     "kept": 0.7692307692307693,
+     "topOk": 0.6153846153846154
+    },
+    "conflictRate": 0.02857142857142857,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.36927285714286234,
+     "dictMs": 1.919871428571475,
+     "totalMs": 2.2891442857143374
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 13,
+      "both": 13
+     },
+     "hard": {
+      "n": 31,
+      "both": 23
+     },
+     "medium": {
+      "n": 26,
+      "both": 19
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "unseen · POS wrong",
+      "count": 8,
+      "examples": [
+       "mund: gold mund/AUX, engine mund/VERB",
+       "është: gold jam/AUX, engine jam/VERB",
+       "një: gold një/DET, engine një/NUM"
+      ]
+     },
+     {
+      "cls": "unseen · lemma wrong",
+      "count": 6,
+      "examples": [
+       "e: gold e/DET, engine i tij/DET",
+       "tij: gold tij/DET, engine i tij/DET",
+       "dashur: gold dashur/ADJ, engine i dashur/ADJ"
+      ]
+     },
+     {
+      "cls": "unseen · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "i: gold i/DET, engine i lodhur/ADJ"
+      ]
+     }
+    ]
+   }
+  },
+  "es": {
+   "dev": {
+    "language": "es",
+    "set": "dev",
+    "n": 215,
+    "scored": 215,
+    "errors": 0,
+    "lemma": 206,
+    "pos": 202,
+    "both": 195,
+    "featureTotals": {
+     "tp": 431,
+     "pred": 510,
+     "gold": 448,
+     "tpLenient": 432
+    },
+    "featuresByKey": {
+     "Gender": {
+      "tp": 30,
+      "pred": 87,
+      "gold": 30,
+      "tpLenient": 30
+     },
+     "Number": {
+      "tp": 165,
+      "pred": 169,
+      "gold": 165,
+      "tpLenient": 165
+     },
+     "Person": {
+      "tp": 57,
+      "pred": 67,
+      "gold": 66,
+      "tpLenient": 58
+     },
+     "Tense": {
+      "tp": 56,
+      "pred": 59,
+      "gold": 56,
+      "tpLenient": 56
+     },
+     "Mood": {
+      "tp": 58,
+      "pred": 61,
+      "gold": 60,
+      "tpLenient": 58
+     },
+     "VerbForm": {
+      "tp": 65,
+      "pred": 67,
+      "gold": 70,
+      "tpLenient": 65
+     },
+     "Polite": {
+      "tp": 0,
+      "pred": 0,
+      "gold": 1,
+      "tpLenient": 0
+     }
+    },
+    "precision": 0.8450980392156863,
+    "recall": 0.9620535714285714,
+    "f1": 0.8997912317327766,
+    "precisionLenient": 0.8470588235294118,
+    "recallLenient": 0.9642857142857143,
+    "f1Lenient": 0.9018789144050104,
+    "role": {
+     "coverage": 0,
+     "mappedN": 0,
+     "accuracy": null,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 0,
+     "accuracy": null,
+     "note": "n/a: adapter has no `syntax` at run time"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": "n/a: no data/gold/es/syntax-dev.json yet"
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 1,
+     "definition": 1,
+     "etymology": 0.9767441860465116,
+     "ipa": 1,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 32,
+     "kept": 0.8125,
+     "topOk": 0.8125
+    },
+    "conflictRate": 0,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.7897153488371979,
+     "dictMs": 3.2174111627906967,
+     "totalMs": 4.007126511627895
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 100,
+      "both": 97
+     },
+     "medium": {
+      "n": 87,
+      "both": 73
+     },
+     "hard": {
+      "n": 28,
+      "both": 25
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "dev · POS wrong",
+      "count": 11,
+      "examples": [
+       "hay: gold haber/VERB, engine haber/AUX",
+       "Rosa: gold Rosa/PROPN, engine rosa/NOUN",
+       "Sol: gold Sol/PROPN, engine sol/NOUN"
+      ]
+     },
+     {
+      "cls": "dev · lemma wrong",
+      "count": 7,
+      "examples": [
+       "los: gold el/DET, engine los/DET",
+       "hija: gold hijo/NOUN, engine hija/NOUN",
+       "abuela: gold abuelo/NOUN, engine abuela/NOUN"
+      ]
+     },
+     {
+      "cls": "dev · lemma and POS wrong",
+      "count": 2,
+      "examples": [
+       "dormido: gold dormido/ADJ, engine dormir/VERB",
+       "sobra: gold sobra/NOUN, engine sobrar/VERB"
+      ]
+     }
+    ]
+   },
+   "hard": {
+    "language": "es",
+    "set": "hard",
+    "n": 82,
+    "scored": 82,
+    "errors": 0,
+    "lemma": 81,
+    "pos": 76,
+    "both": 76,
+    "featureTotals": {
+     "tp": 291,
+     "pred": 296,
+     "gold": 308,
+     "tpLenient": 291
+    },
+    "featuresByKey": {
+     "Number": {
+      "tp": 71,
+      "pred": 71,
+      "gold": 73,
+      "tpLenient": 71
+     },
+     "Person": {
+      "tp": 48,
+      "pred": 52,
+      "gold": 58,
+      "tpLenient": 48
+     },
+     "Tense": {
+      "tp": 44,
+      "pred": 44,
+      "gold": 45,
+      "tpLenient": 44
+     },
+     "Mood": {
+      "tp": 52,
+      "pred": 52,
+      "gold": 53,
+      "tpLenient": 52
+     },
+     "VerbForm": {
+      "tp": 63,
+      "pred": 63,
+      "gold": 66,
+      "tpLenient": 63
+     },
+     "Gender": {
+      "tp": 13,
+      "pred": 14,
+      "gold": 13,
+      "tpLenient": 13
+     }
+    },
+    "precision": 0.9831081081081081,
+    "recall": 0.9448051948051948,
+    "f1": 0.9635761589403974,
+    "precisionLenient": 0.9831081081081081,
+    "recallLenient": 0.9448051948051948,
+    "f1Lenient": 0.9635761589403974,
+    "role": {
+     "coverage": 0,
+     "mappedN": 0,
+     "accuracy": null,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 0,
+     "accuracy": null,
+     "note": "n/a: adapter has no `syntax` at run time"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 1,
+     "definition": 1,
+     "etymology": 1,
+     "ipa": 1,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 21,
+     "kept": 0.9523809523809523,
+     "topOk": 0.9047619047619048
+    },
+    "conflictRate": 0.012195121951219513,
+    "naiveWrongRate": 0.024390243902439025,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.532053658536586,
+     "dictMs": 3.26862439024393,
+     "totalMs": 3.800678048780516
+    },
+    "byDifficulty": {
+     "hard": {
+      "n": 82,
+      "both": 76
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "adjective-as-noun-or-gender · POS wrong",
+      "count": 3,
+      "examples": [
+       "trabajadoras: gold trabajador/NOUN, engine trabajador/ADJ",
+       "joven: gold joven/NOUN, engine joven/ADJ",
+       "jóvenes: gold joven/NOUN, engine joven/ADJ"
+      ]
+     },
+     {
+      "cls": "ra-se-subjunctive · POS wrong",
+      "count": 2,
+      "examples": [
+       "hubiese: gold haber/VERB, engine haber/AUX",
+       "estuvieses: gold estar/VERB, engine estar/AUX"
+      ]
+     },
+     {
+      "cls": "homograph · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "como: gold comer/VERB, engine como/SCONJ"
+      ]
+     }
+    ]
+   },
+   "unseen": {
+    "language": "es",
+    "set": "unseen",
+    "n": 80,
+    "scored": 80,
+    "errors": 0,
+    "lemma": 66,
+    "pos": 66,
+    "both": 60,
+    "featureTotals": {
+     "tp": 121,
+     "pred": 156,
+     "gold": 131,
+     "tpLenient": 122
+    },
+    "featuresByKey": {
+     "Gender": {
+      "tp": 13,
+      "pred": 23,
+      "gold": 15,
+      "tpLenient": 13
+     },
+     "Number": {
+      "tp": 50,
+      "pred": 50,
+      "gold": 52,
+      "tpLenient": 50
+     },
+     "VerbForm": {
+      "tp": 12,
+      "pred": 18,
+      "gold": 16,
+      "tpLenient": 12
+     },
+     "Person": {
+      "tp": 19,
+      "pred": 27,
+      "gold": 21,
+      "tpLenient": 20
+     },
+     "Tense": {
+      "tp": 13,
+      "pred": 18,
+      "gold": 13,
+      "tpLenient": 13
+     },
+     "Mood": {
+      "tp": 14,
+      "pred": 20,
+      "gold": 14,
+      "tpLenient": 14
+     }
+    },
+    "precision": 0.7756410256410257,
+    "recall": 0.9236641221374046,
+    "f1": 0.843205574912892,
+    "precisionLenient": 0.782051282051282,
+    "recallLenient": 0.9312977099236641,
+    "f1Lenient": 0.8501742160278746,
+    "role": {
+     "coverage": 0,
+     "mappedN": 0,
+     "accuracy": null,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 0,
+     "accuracy": null,
+     "note": "n/a: adapter has no `syntax` at run time"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.8625,
+     "definition": 0.8625,
+     "etymology": 0.825,
+     "ipa": 0.8625,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 16,
+     "kept": 0.6875,
+     "topOk": 0.625
+    },
+    "conflictRate": 0.0125,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 1.6816075000000068,
+     "dictMs": 2.5116574999999672,
+     "totalMs": 4.193264999999974
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 38,
+      "both": 28
+     },
+     "hard": {
+      "n": 14,
+      "both": 12
+     },
+     "medium": {
+      "n": 28,
+      "both": 20
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "unseen · lemma and POS wrong",
+      "count": 7,
+      "examples": [
+       "era: gold era/NOUN, engine ser/AUX",
+       "rebelde: gold rebelde/ADJ, engine rebeldar/VERB",
+       "impíos: gold impío/ADJ, engine impir/VERB"
+      ]
+     },
+     {
+      "cls": "unseen · lemma wrong",
+      "count": 6,
+      "examples": [
+       "las: gold el/DET, engine las/DET",
+       "la: gold el/DET, engine la/DET",
+       "suegra: gold suegro/NOUN, engine suegra/NOUN"
+      ]
+     },
+     {
+      "cls": "unseen · POS wrong",
+      "count": 6,
+      "examples": [
+       "Heber: gold Heber/PROPN, engine heber/VERB",
+       "que: gold que/PRON, engine que/SCONJ",
+       "que: gold que/PRON, engine que/SCONJ"
+      ]
+     },
+     {
+      "cls": "unseen · no reading",
+      "count": 1,
+      "examples": [
+       "aflicción: gold aflicción/NOUN, engine -/-"
+      ]
+     }
+    ]
+   }
+  },
+  "de": {
+   "dev": {
+    "language": "de",
+    "set": "dev",
+    "n": 215,
+    "scored": 215,
+    "errors": 0,
+    "lemma": 207,
+    "pos": 209,
+    "both": 204,
+    "featureTotals": {
+     "tp": 439,
+     "pred": 566,
+     "gold": 503,
+     "tpLenient": 486
+    },
+    "featuresByKey": {
+     "Case": {
+      "tp": 51,
+      "pred": 95,
+      "gold": 97,
+      "tpLenient": 92
+     },
+     "Number": {
+      "tp": 137,
+      "pred": 144,
+      "gold": 144,
+      "tpLenient": 139
+     },
+     "Person": {
+      "tp": 54,
+      "pred": 57,
+      "gold": 57,
+      "tpLenient": 54
+     },
+     "Tense": {
+      "tp": 53,
+      "pred": 55,
+      "gold": 53,
+      "tpLenient": 53
+     },
+     "Mood": {
+      "tp": 45,
+      "pred": 49,
+      "gold": 49,
+      "tpLenient": 47
+     },
+     "VerbForm": {
+      "tp": 61,
+      "pred": 61,
+      "gold": 61,
+      "tpLenient": 61
+     },
+     "Gender": {
+      "tp": 19,
+      "pred": 85,
+      "gold": 21,
+      "tpLenient": 20
+     },
+     "PronType": {
+      "tp": 15,
+      "pred": 16,
+      "gold": 16,
+      "tpLenient": 16
+     },
+     "Degree": {
+      "tp": 3,
+      "pred": 3,
+      "gold": 3,
+      "tpLenient": 3
+     },
+     "Polite": {
+      "tp": 1,
+      "pred": 1,
+      "gold": 2,
+      "tpLenient": 1
+     }
+    },
+    "precision": 0.7756183745583038,
+    "recall": 0.8727634194831014,
+    "f1": 0.8213283442469598,
+    "precisionLenient": 0.8586572438162544,
+    "recallLenient": 0.9662027833001988,
+    "f1Lenient": 0.9092609915809168,
+    "role": {
+     "coverage": 0.9302325581395349,
+     "mappedN": 20,
+     "accuracy": 0.6,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 215,
+     "accuracy": 0.7395348837209302,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": "n/a: no data/gold/de/syntax-dev.json yet"
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.9953488372093023,
+     "definition": 0.9953488372093023,
+     "etymology": 0.9627906976744186,
+     "ipa": 0.9767441860465116,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 29,
+     "kept": 0.9310344827586207,
+     "topOk": 0.8620689655172413
+    },
+    "conflictRate": 0.018604651162790697,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 1.395430697674432,
+     "dictMs": 2.8581660465115926,
+     "totalMs": 4.253596744186025
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 80,
+      "both": 79
+     },
+     "hard": {
+      "n": 65,
+      "both": 60
+     },
+     "medium": {
+      "n": 70,
+      "both": 65
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "dev · lemma wrong",
+      "count": 5,
+      "examples": [
+       "singt: gold singen/VERB, engine mitsingen/VERB",
+       "Viele: gold viel/DET, engine viele/DET",
+       "vielen: gold viel/DET, engine viele/DET"
+      ]
+     },
+     {
+      "cls": "dev · POS wrong",
+      "count": 3,
+      "examples": [
+       "ja: gold ja/ADV, engine ja/PART",
+       "denn: gold denn/ADV, engine denn/CONJ",
+       "einundachtzig: gold einundachtzig/NUM, engine einundachtzig/ADJ"
+      ]
+     },
+     {
+      "cls": "dev · lemma and POS wrong",
+      "count": 3,
+      "examples": [
+       "hin: gold hin/PART, engine hinfahren/ADV",
+       "zurück: gold zurück/PART, engine zurückkommen/ADV",
+       "heraus: gold heraus/PART, engine herauskommen/ADV"
+      ]
+     }
+    ]
+   },
+   "hard": {
+    "language": "de",
+    "set": "hard",
+    "n": 72,
+    "scored": 72,
+    "errors": 0,
+    "lemma": 69,
+    "pos": 68,
+    "both": 68,
+    "featureTotals": {
+     "tp": 215,
+     "pred": 242,
+     "gold": 235,
+     "tpLenient": 231
+    },
+    "featuresByKey": {
+     "Number": {
+      "tp": 51,
+      "pred": 53,
+      "gold": 53,
+      "tpLenient": 53
+     },
+     "Person": {
+      "tp": 26,
+      "pred": 28,
+      "gold": 28,
+      "tpLenient": 27
+     },
+     "Tense": {
+      "tp": 32,
+      "pred": 32,
+      "gold": 33,
+      "tpLenient": 32
+     },
+     "Mood": {
+      "tp": 23,
+      "pred": 23,
+      "gold": 23,
+      "tpLenient": 23
+     },
+     "VerbForm": {
+      "tp": 37,
+      "pred": 37,
+      "gold": 38,
+      "tpLenient": 37
+     },
+     "Case": {
+      "tp": 18,
+      "pred": 31,
+      "gold": 31,
+      "tpLenient": 31
+     },
+     "Gender": {
+      "tp": 14,
+      "pred": 24,
+      "gold": 14,
+      "tpLenient": 14
+     },
+     "PronType": {
+      "tp": 9,
+      "pred": 9,
+      "gold": 10,
+      "tpLenient": 9
+     },
+     "Polite": {
+      "tp": 1,
+      "pred": 1,
+      "gold": 1,
+      "tpLenient": 1
+     },
+     "Degree": {
+      "tp": 4,
+      "pred": 4,
+      "gold": 4,
+      "tpLenient": 4
+     }
+    },
+    "precision": 0.8884297520661157,
+    "recall": 0.9148936170212766,
+    "f1": 0.9014675052410901,
+    "precisionLenient": 0.9545454545454546,
+    "recallLenient": 0.9829787234042553,
+    "f1Lenient": 0.9685534591194969,
+    "role": {
+     "coverage": 1,
+     "mappedN": 3,
+     "accuracy": 1,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 72,
+     "accuracy": 0.8472222222222222,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.9722222222222222,
+     "definition": 0.9722222222222222,
+     "etymology": 0.9444444444444444,
+     "ipa": 0.9444444444444444,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 11,
+     "kept": 0.9090909090909091,
+     "topOk": 0.9090909090909091
+    },
+    "conflictRate": 0.013888888888888888,
+    "naiveWrongRate": 0,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.5913208333333083,
+     "dictMs": 2.6047416666666674,
+     "totalMs": 3.196062499999976
+    },
+    "byDifficulty": {
+     "hard": {
+      "n": 72,
+      "both": 68
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "separable-verb · lemma and POS wrong",
+      "count": 2,
+      "examples": [
+       "zurück: gold zurück/PART, engine zurückkommen/ADV",
+       "ein: gold ein/PART, engine einladen/ADV"
+      ]
+     },
+     {
+      "cls": "konjunktiv · POS wrong",
+      "count": 1,
+      "examples": [
+       "hätte: gold haben/AUX, engine haben/VERB"
+      ]
+     },
+     {
+      "cls": "zu-infinitive-and-participles · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "gekochte: gold kochen/VERB, engine gekocht/ADJ"
+      ]
+     }
+    ]
+   },
+   "unseen": {
+    "language": "de",
+    "set": "unseen",
+    "n": 80,
+    "scored": 80,
+    "errors": 0,
+    "lemma": 77,
+    "pos": 70,
+    "both": 69,
+    "featureTotals": {
+     "tp": 158,
+     "pred": 200,
+     "gold": 189,
+     "tpLenient": 180
+    },
+    "featuresByKey": {
+     "Case": {
+      "tp": 30,
+      "pred": 45,
+      "gold": 46,
+      "tpLenient": 44
+     },
+     "Number": {
+      "tp": 47,
+      "pred": 52,
+      "gold": 55,
+      "tpLenient": 49
+     },
+     "Gender": {
+      "tp": 13,
+      "pred": 33,
+      "gold": 18,
+      "tpLenient": 18
+     },
+     "PronType": {
+      "tp": 25,
+      "pred": 26,
+      "gold": 26,
+      "tpLenient": 25
+     },
+     "Person": {
+      "tp": 14,
+      "pred": 14,
+      "gold": 14,
+      "tpLenient": 14
+     },
+     "Tense": {
+      "tp": 9,
+      "pred": 9,
+      "gold": 9,
+      "tpLenient": 9
+     },
+     "Mood": {
+      "tp": 8,
+      "pred": 9,
+      "gold": 9,
+      "tpLenient": 9
+     },
+     "VerbForm": {
+      "tp": 12,
+      "pred": 12,
+      "gold": 12,
+      "tpLenient": 12
+     }
+    },
+    "precision": 0.79,
+    "recall": 0.8359788359788359,
+    "f1": 0.8123393316195374,
+    "precisionLenient": 0.9,
+    "recallLenient": 0.9523809523809523,
+    "f1Lenient": 0.9254498714652956,
+    "role": {
+     "coverage": 0.875,
+     "mappedN": 19,
+     "accuracy": 0.7368421052631579,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 80,
+     "accuracy": 0.6375,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.95,
+     "definition": 0.95,
+     "etymology": 0.9375,
+     "ipa": 0.9375,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 21,
+     "kept": 0.8571428571428571,
+     "topOk": 0.7142857142857143
+    },
+    "conflictRate": 0.0375,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 1.6272624999999947,
+     "dictMs": 2.241747499999974,
+     "totalMs": 3.8690099999999688
+    },
+    "byDifficulty": {
+     "medium": {
+      "n": 26,
+      "both": 24
+     },
+     "hard": {
+      "n": 34,
+      "both": 28
+     },
+     "easy": {
+      "n": 20,
+      "both": 17
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "unseen · POS wrong",
+      "count": 8,
+      "examples": [
+       "Moab: gold Moab/PROPN, engine Moab/NOUN",
+       "des: gold der/PRON, engine der/DET",
+       "auf: gold auf/PART, engine auf/ADP"
+      ]
+     },
+     {
+      "cls": "unseen · no reading",
+      "count": 2,
+      "examples": [
+       "unfruchtbar: gold unfruchtbar/ADJ, engine -/-",
+       "Dan: gold Dan/PROPN, engine -/-"
+      ]
+     },
+     {
+      "cls": "unseen · lemma wrong",
+      "count": 1,
+      "examples": [
+       "alle: gold all/DET, engine alle/DET"
+      ]
+     }
+    ]
+   }
+  },
+  "hi": {
+   "dev": {
+    "language": "hi",
+    "set": "dev",
+    "n": 215,
+    "scored": 215,
+    "errors": 0,
+    "lemma": 204,
+    "pos": 195,
+    "both": 192,
+    "featureTotals": {
+     "tp": 422,
+     "pred": 484,
+     "gold": 543,
+     "tpLenient": 422
+    },
+    "featuresByKey": {
+     "Number": {
+      "tp": 119,
+      "pred": 120,
+      "gold": 153,
+      "tpLenient": 119
+     },
+     "Person": {
+      "tp": 21,
+      "pred": 27,
+      "gold": 21,
+      "tpLenient": 21
+     },
+     "Tense": {
+      "tp": 3,
+      "pred": 3,
+      "gold": 3,
+      "tpLenient": 3
+     },
+     "Mood": {
+      "tp": 9,
+      "pred": 9,
+      "gold": 9,
+      "tpLenient": 9
+     },
+     "VerbForm": {
+      "tp": 61,
+      "pred": 76,
+      "gold": 61,
+      "tpLenient": 61
+     },
+     "Polite": {
+      "tp": 5,
+      "pred": 10,
+      "gold": 8,
+      "tpLenient": 5
+     },
+     "Gender": {
+      "tp": 139,
+      "pred": 140,
+      "gold": 142,
+      "tpLenient": 139
+     },
+     "Aspect": {
+      "tp": 33,
+      "pred": 56,
+      "gold": 56,
+      "tpLenient": 33
+     },
+     "Case": {
+      "tp": 32,
+      "pred": 38,
+      "gold": 90,
+      "tpLenient": 32
+     },
+     "Voice": {
+      "tp": 0,
+      "pred": 5,
+      "gold": 0,
+      "tpLenient": 0
+     }
+    },
+    "precision": 0.871900826446281,
+    "recall": 0.7771639042357275,
+    "f1": 0.821811100292113,
+    "precisionLenient": 0.871900826446281,
+    "recallLenient": 0.7771639042357275,
+    "f1Lenient": 0.821811100292113,
+    "role": {
+     "coverage": 0.9953488372093023,
+     "mappedN": 31,
+     "accuracy": 0.3225806451612903,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 215,
+     "accuracy": 0.7534883720930232,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": "n/a: no data/gold/hi/syntax-dev.json yet"
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.986046511627907,
+     "definition": 1,
+     "etymology": 0.9720930232558139,
+     "ipa": 0.958139534883721,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 29,
+     "kept": 0.8620689655172413,
+     "topOk": 0.7241379310344828
+    },
+    "conflictRate": 0.018604651162790697,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.6274651162790348,
+     "dictMs": 1.7597493023256057,
+     "totalMs": 2.3872144186046405
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 69,
+      "both": 68
+     },
+     "medium": {
+      "n": 111,
+      "both": 103
+     },
+     "hard": {
+      "n": 35,
+      "both": 21
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "dev · POS wrong",
+      "count": 12,
+      "examples": [
+       "नहीं: gold नहीं/PART, engine नहीं/ADV",
+       "क्या: gold क्या/PART, engine क्या/PRON",
+       "खाना: gold खाना/NOUN, engine खाना/VERB"
+      ]
+     },
+     {
+      "cls": "dev · lemma and POS wrong",
+      "count": 8,
+      "examples": [
+       "उसका: gold वह/PRON, engine उसका/DET",
+       "कैसे: gold कैसा/ADJ, engine कैसे/ADV",
+       "कैसे: gold कैसा/ADJ, engine कैसे/ADV"
+      ]
+     },
+     {
+      "cls": "dev · lemma wrong",
+      "count": 3,
+      "examples": [
+       "ढूँढा: gold ढूँढना/VERB, engine ढूँढ़ना/VERB",
+       "ढूँढा: gold ढूँढना/VERB, engine ढूँढ़ना/VERB",
+       "यहीं: gold यहाँ/ADV, engine यहीं/ADV"
+      ]
+     }
+    ]
+   },
+   "hard": {
+    "language": "hi",
+    "set": "hard",
+    "n": 68,
+    "scored": 68,
+    "errors": 0,
+    "lemma": 67,
+    "pos": 53,
+    "both": 53,
+    "featureTotals": {
+     "tp": 187,
+     "pred": 205,
+     "gold": 198,
+     "tpLenient": 187
+    },
+    "featuresByKey": {
+     "Number": {
+      "tp": 40,
+      "pred": 40,
+      "gold": 43,
+      "tpLenient": 40
+     },
+     "Gender": {
+      "tp": 40,
+      "pred": 41,
+      "gold": 40,
+      "tpLenient": 40
+     },
+     "Aspect": {
+      "tp": 22,
+      "pred": 25,
+      "gold": 25,
+      "tpLenient": 22
+     },
+     "VerbForm": {
+      "tp": 35,
+      "pred": 46,
+      "gold": 36,
+      "tpLenient": 35
+     },
+     "Case": {
+      "tp": 13,
+      "pred": 13,
+      "gold": 15,
+      "tpLenient": 13
+     },
+     "Person": {
+      "tp": 15,
+      "pred": 15,
+      "gold": 15,
+      "tpLenient": 15
+     },
+     "Polite": {
+      "tp": 5,
+      "pred": 8,
+      "gold": 7,
+      "tpLenient": 5
+     },
+     "Tense": {
+      "tp": 4,
+      "pred": 4,
+      "gold": 4,
+      "tpLenient": 4
+     },
+     "Mood": {
+      "tp": 13,
+      "pred": 13,
+      "gold": 13,
+      "tpLenient": 13
+     }
+    },
+    "precision": 0.9121951219512195,
+    "recall": 0.9444444444444444,
+    "f1": 0.9280397022332506,
+    "precisionLenient": 0.9121951219512195,
+    "recallLenient": 0.9444444444444444,
+    "f1Lenient": 0.9280397022332506,
+    "role": {
+     "coverage": 1,
+     "mappedN": 5,
+     "accuracy": 0.8,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 68,
+     "accuracy": 0.8676470588235294,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 1,
+     "definition": 1,
+     "etymology": 0.9852941176470589,
+     "ipa": 0.9852941176470589,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 21,
+     "kept": 0.9047619047619048,
+     "topOk": 0.8095238095238095
+    },
+    "conflictRate": 0.029411764705882353,
+    "naiveWrongRate": 0.058823529411764705,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.4244941176471002,
+     "dictMs": 1.3884573529411255,
+     "totalMs": 1.8129514705882257
+    },
+    "byDifficulty": {
+     "hard": {
+      "n": 68,
+      "both": 53
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "compound-verb · POS wrong",
+      "count": 5,
+      "examples": [
+       "दिया: gold देना/AUX, engine देना/VERB",
+       "बैठा: gold बैठना/AUX, engine बैठना/VERB",
+       "लिया: gold लेना/AUX, engine लेना/VERB"
+      ]
+     },
+     {
+      "cls": "verb-complex-aux · POS wrong",
+      "count": 4,
+      "examples": [
+       "चुका: gold चुकना/AUX, engine चुकना/VERB",
+       "करता: gold करना/AUX, engine करना/VERB",
+       "रहो: gold रहना/AUX, engine रहना/VERB"
+      ]
+     },
+     {
+      "cls": "irregular-verb · POS wrong",
+      "count": 3,
+      "examples": [
+       "हुई: gold होना/VERB, engine होना/AUX",
+       "गए: gold जाना/AUX, engine जाना/VERB",
+       "हुए: gold होना/VERB, engine होना/AUX"
+      ]
+     },
+     {
+      "cls": "conjunctive-participle-and-infinitive · POS wrong",
+      "count": 1,
+      "examples": [
+       "वाला: gold वाला/ADJ, engine वाला/PART"
+      ]
+     },
+     {
+      "cls": "honorific-subjunctive-imperative · POS wrong",
+      "count": 1,
+      "examples": [
+       "लो: gold लेना/AUX, engine लेना/VERB"
+      ]
+     },
+     {
+      "cls": "homograph · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "कर: gold करना/VERB, engine कर/NOUN"
+      ]
+     }
+    ]
+   },
+   "unseen": {
+    "language": "hi",
+    "set": "unseen",
+    "n": 80,
+    "scored": 80,
+    "errors": 0,
+    "lemma": 71,
+    "pos": 68,
+    "both": 67,
+    "featureTotals": {
+     "tp": 113,
+     "pred": 128,
+     "gold": 172,
+     "tpLenient": 113
+    },
+    "featuresByKey": {
+     "Case": {
+      "tp": 14,
+      "pred": 16,
+      "gold": 38,
+      "tpLenient": 14
+     },
+     "Number": {
+      "tp": 25,
+      "pred": 28,
+      "gold": 48,
+      "tpLenient": 25
+     },
+     "Person": {
+      "tp": 11,
+      "pred": 13,
+      "gold": 12,
+      "tpLenient": 11
+     },
+     "Polite": {
+      "tp": 0,
+      "pred": 2,
+      "gold": 0,
+      "tpLenient": 0
+     },
+     "Gender": {
+      "tp": 37,
+      "pred": 37,
+      "gold": 46,
+      "tpLenient": 37
+     },
+     "Aspect": {
+      "tp": 5,
+      "pred": 7,
+      "gold": 7,
+      "tpLenient": 5
+     },
+     "VerbForm": {
+      "tp": 13,
+      "pred": 16,
+      "gold": 13,
+      "tpLenient": 13
+     },
+     "Tense": {
+      "tp": 4,
+      "pred": 4,
+      "gold": 4,
+      "tpLenient": 4
+     },
+     "Mood": {
+      "tp": 4,
+      "pred": 4,
+      "gold": 4,
+      "tpLenient": 4
+     },
+     "Voice": {
+      "tp": 0,
+      "pred": 1,
+      "gold": 0,
+      "tpLenient": 0
+     }
+    },
+    "precision": 0.8828125,
+    "recall": 0.6569767441860465,
+    "f1": 0.7533333333333333,
+    "precisionLenient": 0.8828125,
+    "recallLenient": 0.6569767441860465,
+    "f1Lenient": 0.7533333333333333,
+    "role": {
+     "coverage": 0.8875,
+     "mappedN": 17,
+     "accuracy": 0.47058823529411764,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 78,
+     "accuracy": 0.6153846153846154,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.8625,
+     "definition": 0.9125,
+     "etymology": 0.85,
+     "ipa": 0.85,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 25,
+     "kept": 0.84,
+     "topOk": 0.84
+    },
+    "conflictRate": 0,
+    "naiveWrongRate": null,
+    "tokenAligned": 0.9875,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.9466862500000047,
+     "dictMs": 1.316506250000043,
+     "totalMs": 2.2631925000000477
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 23,
+      "both": 21
+     },
+     "medium": {
+      "n": 44,
+      "both": 37
+     },
+     "hard": {
+      "n": 13,
+      "both": 9
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "unseen · no reading",
+      "count": 6,
+      "examples": [
+       "नामक: gold नामक/ADJ, engine -/-",
+       "मिशाम: gold मिशाम/PROPN, engine -/-",
+       "राजभवन: gold राजभवन/NOUN, engine -/-"
+      ]
+     },
+     {
+      "cls": "unseen · POS wrong",
+      "count": 4,
+      "examples": [
+       "सब: gold सब/DET, engine सब/PRON",
+       "परमेश्वर: gold परमेश्वर/NOUN, engine परमेश्वर/PROPN",
+       "लगे: gold लगना/AUX, engine लगना/VERB"
+      ]
+     },
+     {
+      "cls": "unseen · lemma and POS wrong",
+      "count": 2,
+      "examples": [
+       "जल: gold जल/NOUN, engine जलना/VERB",
+       "उनके: gold वह/PRON, engine उनका/DET"
+      ]
+     },
+     {
+      "cls": "unseen · lemma wrong",
+      "count": 1,
+      "examples": [
+       "ये: gold यह/PRON, engine ये/PRON"
+      ]
+     }
+    ]
+   }
+  },
+  "th": {
+   "dev": {
+    "language": "th",
+    "set": "dev",
+    "n": 214,
+    "scored": 214,
+    "errors": 0,
+    "lemma": 181,
+    "pos": 158,
+    "both": 158,
+    "featureTotals": {
+     "tp": 0,
+     "pred": 0,
+     "gold": 2,
+     "tpLenient": 0
+    },
+    "featuresByKey": {
+     "Aspect": {
+      "tp": 0,
+      "pred": 0,
+      "gold": 2,
+      "tpLenient": 0
+     }
+    },
+    "precision": null,
+    "recall": 0,
+    "f1": null,
+    "precisionLenient": null,
+    "recallLenient": 0,
+    "f1Lenient": null,
+    "role": {
+     "coverage": 0.822429906542056,
+     "mappedN": 22,
+     "accuracy": 0.36363636363636365,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 195,
+     "accuracy": 0.7692307692307693,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": 0.1328125,
+     "las": 0.12239583333333333,
+     "n": 384,
+     "note": "assumed file layout; see scripts/gold-lib.mts syntaxGoldScore"
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.8457943925233645,
+     "definition": 0.8504672897196262,
+     "etymology": 0.8130841121495327,
+     "ipa": 0.8457943925233645,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 40,
+     "kept": 0.625,
+     "topOk": 0.625
+    },
+    "conflictRate": 0,
+    "naiveWrongRate": null,
+    "tokenAligned": 0.9112149532710281,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.2893065420560807,
+     "dictMs": 0.8101593457943586,
+     "totalMs": 1.0994658878504393
+    },
+    "byDifficulty": {
+     "medium": {
+      "n": 66,
+      "both": 43
+     },
+     "easy": {
+      "n": 129,
+      "both": 114
+     },
+     "hard": {
+      "n": 19,
+      "both": 1
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "dev · no reading",
+      "count": 32,
+      "examples": [
+       "ของเล่น: gold ของเล่น/NOUN, engine -/-",
+       "กระทะ: gold กระทะ/NOUN, engine -/-",
+       "แรง: gold แรง/NOUN, engine -/-"
+      ]
+     },
+     {
+      "cls": "dev · POS wrong",
+      "count": 23,
+      "examples": [
+       "นั้น: gold นั้น/PRON, engine นั้น/DET",
+       "วันนี้: gold วันนี้/NOUN, engine วันนี้/ADV",
+       "พรุ่งนี้: gold พรุ่งนี้/NOUN, engine พรุ่งนี้/ADV"
+      ]
+     },
+     {
+      "cls": "dev · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "ความสุข: gold ความสุข/NOUN, engine มีความสุข/-"
+      ]
+     }
+    ]
+   },
+   "hard": {
+    "language": "th",
+    "set": "hard",
+    "n": 74,
+    "scored": 74,
+    "errors": 0,
+    "lemma": 47,
+    "pos": 39,
+    "both": 38,
+    "featureTotals": {
+     "tp": 0,
+     "pred": 0,
+     "gold": 6,
+     "tpLenient": 0
+    },
+    "featuresByKey": {
+     "Aspect": {
+      "tp": 0,
+      "pred": 0,
+      "gold": 5,
+      "tpLenient": 0
+     },
+     "Polarity": {
+      "tp": 0,
+      "pred": 0,
+      "gold": 1,
+      "tpLenient": 0
+     }
+    },
+    "precision": null,
+    "recall": 0,
+    "f1": null,
+    "precisionLenient": null,
+    "recallLenient": 0,
+    "f1Lenient": null,
+    "role": {
+     "coverage": 0.6486486486486487,
+     "mappedN": 3,
+     "accuracy": 0.3333333333333333,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 60,
+     "accuracy": 0.5833333333333334,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.6351351351351351,
+     "definition": 0.6486486486486487,
+     "etymology": 0.6216216216216216,
+     "ipa": 0.6351351351351351,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 47,
+     "kept": 0.6808510638297872,
+     "topOk": 0.6170212765957447
+    },
+    "conflictRate": 0.04054054054054054,
+    "naiveWrongRate": 0.10810810810810811,
+    "tokenAligned": 0.7972972972972973,
+    "segmentation": {
+     "n": 10,
+     "exact": 0.5
+    },
+    "latency": {
+     "parseMs": 0.19184999999994967,
+     "dictMs": 0.5758540540540633,
+     "totalMs": 0.767704054054013
+    },
+    "byDifficulty": {
+     "hard": {
+      "n": 74,
+      "both": 38
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "loanword-or-name · no reading",
+      "count": 9,
+      "examples": [
+       "เชียงใหม่: gold เชียงใหม่/PROPN, engine -/-",
+       "คอมพิวเตอร์: gold คอมพิวเตอร์/NOUN, engine -/-",
+       "แคนาดา: gold แคนาดา/PROPN, engine -/-"
+      ]
+     },
+     {
+      "cls": "segmentation-trap · no reading",
+      "count": 8,
+      "examples": [
+       "ตากลม: gold ตากลม/NOUN, engine -/-",
+       "ไปเที่ยวใหม่: gold ไปเที่ยวใหม่/VERB, engine -/-",
+       "คนอื่นๆ: gold คนอื่น/PRON, engine -/-"
+      ]
+     },
+     {
+      "cls": "compound-word · no reading",
+      "count": 7,
+      "examples": [
+       "แม่น้ำ: gold แม่น้ำ/NOUN, engine -/-",
+       "ห้องน้ำ: gold ห้องน้ำ/NOUN, engine -/-",
+       "น้ำตก: gold น้ำตก/NOUN, engine -/-"
+      ]
+     },
+     {
+      "cls": "Thai segmentation · cut differs",
+      "count": 5,
+      "examples": [
+       "ตากลม: gold ตากลม, engine ตา|กลม",
+       "คนอื่นๆ: gold คน|อื่น, engine คน|อื่นๆ",
+       "คนในเมือง: gold คน|ใน|เมือง, engine คนใน|เมือง"
+      ]
+     },
+     {
+      "cls": "particle-polysemy · POS wrong",
+      "count": 5,
+      "examples": [
+       "ที่: gold ที่/ADP, engine ที่/SCONJ",
+       "ที่: gold ที่/NOUN, engine ที่/SCONJ",
+       "ให้: gold ให้/VERB, engine ให้/ADP"
+      ]
+     },
+     {
+      "cls": "reduplication-or-ellipsis · POS wrong",
+      "count": 3,
+      "examples": [
+       "ช้าๆ: gold ช้า/ADV, engine ช้า/ADJ",
+       "เย็นๆ: gold เย็น/ADJ, engine เย็น/NOUN",
+       "ได้: gold ได้/VERB, engine ได้/AUX"
+      ]
+     },
+     {
+      "cls": "classifier · no reading",
+      "count": 1,
+      "examples": [
+       "ฟอง: gold ฟอง/CLF, engine -/-"
+      ]
+     },
+     {
+      "cls": "classifier · POS wrong",
+      "count": 1,
+      "examples": [
+       "หลัง: gold หลัง/CLF, engine หลัง/ADP"
+      ]
+     }
+    ]
+   },
+   "unseen": {
+    "language": "th",
+    "set": "unseen",
+    "n": 80,
+    "scored": 80,
+    "errors": 0,
+    "lemma": 73,
+    "pos": 53,
+    "both": 53,
+    "featureTotals": {
+     "tp": 0,
+     "pred": 0,
+     "gold": 1,
+     "tpLenient": 0
+    },
+    "featuresByKey": {
+     "Aspect": {
+      "tp": 0,
+      "pred": 0,
+      "gold": 1,
+      "tpLenient": 0
+     }
+    },
+    "precision": null,
+    "recall": 0,
+    "f1": null,
+    "precisionLenient": null,
+    "recallLenient": 0,
+    "f1Lenient": null,
+    "role": {
+     "coverage": 0.825,
+     "mappedN": 34,
+     "accuracy": 0.29411764705882354,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 72,
+     "accuracy": 0.2361111111111111,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": true,
+     "hit": 0.8375,
+     "definition": 0.8875,
+     "etymology": 0.825,
+     "ipa": 0.8375,
+     "note": "measured on the engine's lemma (as the card asks); a selection with no engine lemma counts as a miss"
+    },
+    "alternativesKept": {
+     "n": 40,
+     "kept": 0.675,
+     "topOk": 0.65
+    },
+    "conflictRate": 0.0125,
+    "naiveWrongRate": null,
+    "tokenAligned": 0.9,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.4932137499999385,
+     "dictMs": 0.7521237500000553,
+     "totalMs": 1.2453374999999938
+    },
+    "byDifficulty": {
+     "medium": {
+      "n": 46,
+      "both": 31
+     },
+     "easy": {
+      "n": 24,
+      "both": 22
+     },
+     "hard": {
+      "n": 10,
+      "both": 0
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "unseen · POS wrong",
+      "count": 20,
+      "examples": [
+       "ให้: gold ให้/VERB, engine ให้/ADP",
+       "ต่อไป: gold ต่อไป/ADV, engine ต่อไป/-",
+       "ผ่าน: gold ผ่าน/ADP, engine ผ่าน/VERB"
+      ]
+     },
+     {
+      "cls": "unseen · no reading",
+      "count": 7,
+      "examples": [
+       "โดย​รอบ: gold โดยรอบ/ADV, engine -/-",
+       "ดินแดน: gold ดินแดน/NOUN, engine -/-",
+       "คำ​สั่ง: gold คำสั่ง/NOUN, engine -/-"
+      ]
+     }
+    ]
+   }
+  },
+  "nb": {
+   "dev": {
+    "language": "nb",
+    "set": "dev",
+    "n": 215,
+    "scored": 215,
+    "errors": 0,
+    "lemma": 208,
+    "pos": 213,
+    "both": 206,
+    "featureTotals": {
+     "tp": 293,
+     "pred": 445,
+     "gold": 326,
+     "tpLenient": 318
+    },
+    "featuresByKey": {
+     "Number": {
+      "tp": 81,
+      "pred": 100,
+      "gold": 88,
+      "tpLenient": 88
+     },
+     "PronType": {
+      "tp": 7,
+      "pred": 35,
+      "gold": 8,
+      "tpLenient": 7
+     },
+     "Tense": {
+      "tp": 49,
+      "pred": 50,
+      "gold": 49,
+      "tpLenient": 49
+     },
+     "VerbForm": {
+      "tp": 48,
+      "pred": 55,
+      "gold": 55,
+      "tpLenient": 55
+     },
+     "Mood": {
+      "tp": 0,
+      "pred": 41,
+      "gold": 0,
+      "tpLenient": 0
+     },
+     "Gender": {
+      "tp": 52,
+      "pred": 74,
+      "gold": 67,
+      "tpLenient": 61
+     },
+     "Definite": {
+      "tp": 53,
+      "pred": 70,
+      "gold": 56,
+      "tpLenient": 55
+     },
+     "Degree": {
+      "tp": 2,
+      "pred": 19,
+      "gold": 2,
+      "tpLenient": 2
+     },
+     "Voice": {
+      "tp": 1,
+      "pred": 1,
+      "gold": 1,
+      "tpLenient": 1
+     }
+    },
+    "precision": 0.6584269662921348,
+    "recall": 0.8987730061349694,
+    "f1": 0.7600518806744487,
+    "precisionLenient": 0.7146067415730337,
+    "recallLenient": 0.9754601226993865,
+    "f1Lenient": 0.8249027237354087,
+    "role": {
+     "coverage": 1,
+     "mappedN": 30,
+     "accuracy": 0.8,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 215,
+     "accuracy": 0.9348837209302325,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": 0.9905362776025236,
+     "las": 0.9842271293375394,
+     "n": 317,
+     "note": "assumed file layout; see scripts/gold-lib.mts syntaxGoldScore"
+    },
+    "dictionary": {
+     "available": false,
+     "hit": null,
+     "definition": null,
+     "etymology": null,
+     "ipa": null,
+     "note": "no schema-3 dictionary shards for this language"
+    },
+    "alternativesKept": {
+     "n": 20,
+     "kept": 1,
+     "topOk": 1
+    },
+    "conflictRate": 0.023255813953488372,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.24387116279066146,
+     "dictMs": 0,
+     "totalMs": 0.24387116279066146
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 94,
+      "both": 94
+     },
+     "medium": {
+      "n": 92,
+      "both": 87
+     },
+     "hard": {
+      "n": 29,
+      "both": 25
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "dev · lemma wrong",
+      "count": 7,
+      "examples": [
+       "alle: gold all/PRON, engine alle/PRON",
+       "Dette: gold denne/PRON, engine dette/PRON",
+       "foreldrene: gold forelder/NOUN, engine foreldre/NOUN"
+      ]
+     },
+     {
+      "cls": "dev · POS wrong",
+      "count": 2,
+      "examples": [
+       "selv: gold selv/ADV, engine selv/PRON",
+       "mange: gold mange/DET, engine mange/PRON"
+      ]
+     }
+    ]
+   },
+   "hard": {
+    "language": "nb",
+    "set": "hard",
+    "n": 73,
+    "scored": 73,
+    "errors": 0,
+    "lemma": 53,
+    "pos": 62,
+    "both": 53,
+    "featureTotals": {
+     "tp": 111,
+     "pred": 161,
+     "gold": 157,
+     "tpLenient": 129
+    },
+    "featuresByKey": {
+     "Gender": {
+      "tp": 16,
+      "pred": 19,
+      "gold": 26,
+      "tpLenient": 18
+     },
+     "Number": {
+      "tp": 21,
+      "pred": 28,
+      "gold": 31,
+      "tpLenient": 27
+     },
+     "Definite": {
+      "tp": 26,
+      "pred": 32,
+      "gold": 33,
+      "tpLenient": 30
+     },
+     "Degree": {
+      "tp": 7,
+      "pred": 12,
+      "gold": 9,
+      "tpLenient": 7
+     },
+     "Tense": {
+      "tp": 21,
+      "pred": 24,
+      "gold": 26,
+      "tpLenient": 21
+     },
+     "VerbForm": {
+      "tp": 17,
+      "pred": 26,
+      "gold": 27,
+      "tpLenient": 23
+     },
+     "Mood": {
+      "tp": 0,
+      "pred": 15,
+      "gold": 0,
+      "tpLenient": 0
+     },
+     "PronType": {
+      "tp": 0,
+      "pred": 2,
+      "gold": 0,
+      "tpLenient": 0
+     },
+     "Voice": {
+      "tp": 3,
+      "pred": 3,
+      "gold": 5,
+      "tpLenient": 3
+     }
+    },
+    "precision": 0.6894409937888198,
+    "recall": 0.7070063694267515,
+    "f1": 0.6981132075471698,
+    "precisionLenient": 0.8012422360248447,
+    "recallLenient": 0.821656050955414,
+    "f1Lenient": 0.8113207547169812,
+    "role": {
+     "coverage": 0.9315068493150684,
+     "mappedN": 7,
+     "accuracy": 0.2857142857142857,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 73,
+     "accuracy": 0.8356164383561644,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": false,
+     "hit": null,
+     "definition": null,
+     "etymology": null,
+     "ipa": null,
+     "note": "no schema-3 dictionary shards for this language"
+    },
+    "alternativesKept": {
+     "n": 11,
+     "kept": 0.7272727272727273,
+     "topOk": 0.5454545454545454
+    },
+    "conflictRate": 0.136986301369863,
+    "naiveWrongRate": 0.0821917808219178,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.16965753424655342,
+     "dictMs": 0,
+     "totalMs": 0.16965753424655342
+    },
+    "byDifficulty": {
+     "hard": {
+      "n": 73,
+      "both": 53
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "particle-verb · lemma wrong",
+      "count": 7,
+      "examples": [
+       "står: gold stå/VERB, engine stå opp/VERB",
+       "opp: gold opp/ADV, engine stå opp/ADV",
+       "slo: gold slå/VERB, engine slå av/VERB"
+      ]
+     },
+     {
+      "cls": "homograph · lemma and POS wrong",
+      "count": 4,
+      "examples": [
+       "fall: gold fall/NOUN, engine falle/VERB",
+       "vann: gold vinne/VERB, engine vann/NOUN",
+       "lyst: gold lys/ADJ, engine lyse/VERB"
+      ]
+     },
+     {
+      "cls": "s-passive-and-reflexive · no reading",
+      "count": 2,
+      "examples": [
+       "sees: gold se/VERB, engine -/-",
+       "skammer: gold skamme/VERB, engine -/-"
+      ]
+     },
+     {
+      "cls": "comparison-irregular · no reading",
+      "count": 2,
+      "examples": [
+       "færre: gold få/ADJ, engine -/-",
+       "dårligere: gold dårlig/ADJ, engine -/-"
+      ]
+     },
+     {
+      "cls": "bro-bru-variants · no reading",
+      "count": 1,
+      "examples": [
+       "meget: gold meget/ADV, engine -/-"
+      ]
+     },
+     {
+      "cls": "irregular-verb · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "så: gold se/VERB, engine så/ADV"
+      ]
+     },
+     {
+      "cls": "compound-noun · lemma and POS wrong",
+      "count": 1,
+      "examples": [
+       "Fotballaget: gold fotballag/NOUN, engine Fotballaget/PROPN"
+      ]
+     },
+     {
+      "cls": "s-passive-and-reflexive · lemma wrong",
+      "count": 1,
+      "examples": [
+       "møtes: gold møte/VERB, engine møtes/VERB"
+      ]
+     }
+    ]
+   },
+   "unseen": {
+    "language": "nb",
+    "set": "unseen",
+    "n": 70,
+    "scored": 70,
+    "errors": 0,
+    "lemma": 70,
+    "pos": 69,
+    "both": 69,
+    "featureTotals": {
+     "tp": 89,
+     "pred": 133,
+     "gold": 99,
+     "tpLenient": 99
+    },
+    "featuresByKey": {
+     "Tense": {
+      "tp": 15,
+      "pred": 15,
+      "gold": 15,
+      "tpLenient": 15
+     },
+     "VerbForm": {
+      "tp": 15,
+      "pred": 16,
+      "gold": 16,
+      "tpLenient": 16
+     },
+     "Mood": {
+      "tp": 0,
+      "pred": 12,
+      "gold": 0,
+      "tpLenient": 0
+     },
+     "Gender": {
+      "tp": 19,
+      "pred": 27,
+      "gold": 23,
+      "tpLenient": 23
+     },
+     "Number": {
+      "tp": 23,
+      "pred": 30,
+      "gold": 28,
+      "tpLenient": 28
+     },
+     "Definite": {
+      "tp": 15,
+      "pred": 17,
+      "gold": 15,
+      "tpLenient": 15
+     },
+     "Degree": {
+      "tp": 2,
+      "pred": 4,
+      "gold": 2,
+      "tpLenient": 2
+     },
+     "PronType": {
+      "tp": 0,
+      "pred": 12,
+      "gold": 0,
+      "tpLenient": 0
+     }
+    },
+    "precision": 0.6691729323308271,
+    "recall": 0.898989898989899,
+    "f1": 0.7672413793103449,
+    "precisionLenient": 0.7443609022556391,
+    "recallLenient": 1,
+    "f1Lenient": 0.8534482758620691,
+    "role": {
+     "coverage": 1,
+     "mappedN": 21,
+     "accuracy": 0.9047619047619048,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 70,
+     "accuracy": 0.9285714285714286,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": false,
+     "hit": null,
+     "definition": null,
+     "etymology": null,
+     "ipa": null,
+     "note": "no schema-3 dictionary shards for this language"
+    },
+    "alternativesKept": {
+     "n": 8,
+     "kept": 1,
+     "topOk": 0.875
+    },
+    "conflictRate": 0.014285714285714285,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.2078899999999521,
+     "dictMs": 0,
+     "totalMs": 0.2078899999999521
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 29,
+      "both": 29
+     },
+     "medium": {
+      "n": 33,
+      "both": 32
+     },
+     "hard": {
+      "n": 8,
+      "both": 8
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "unseen · POS wrong",
+      "count": 1,
+      "examples": [
+       "som: gold som/SCONJ, engine som/PRON"
+      ]
+     }
+    ]
+   }
+  },
+  "nn": {
+   "dev": {
+    "language": "nn",
+    "set": "dev",
+    "n": 215,
+    "scored": 215,
+    "errors": 0,
+    "lemma": 187,
+    "pos": 206,
+    "both": 181,
+    "featureTotals": {
+     "tp": 335,
+     "pred": 412,
+     "gold": 369,
+     "tpLenient": 346
+    },
+    "featuresByKey": {
+     "Number": {
+      "tp": 72,
+      "pred": 86,
+      "gold": 75,
+      "tpLenient": 74
+     },
+     "PronType": {
+      "tp": 40,
+      "pred": 45,
+      "gold": 47,
+      "tpLenient": 40
+     },
+     "Tense": {
+      "tp": 57,
+      "pred": 58,
+      "gold": 58,
+      "tpLenient": 58
+     },
+     "VerbForm": {
+      "tp": 58,
+      "pred": 63,
+      "gold": 64,
+      "tpLenient": 63
+     },
+     "Mood": {
+      "tp": 43,
+      "pred": 48,
+      "gold": 56,
+      "tpLenient": 45
+     },
+     "Gender": {
+      "tp": 31,
+      "pred": 58,
+      "gold": 34,
+      "tpLenient": 31
+     },
+     "Definite": {
+      "tp": 34,
+      "pred": 45,
+      "gold": 35,
+      "tpLenient": 35
+     },
+     "Degree": {
+      "tp": 0,
+      "pred": 9,
+      "gold": 0,
+      "tpLenient": 0
+     }
+    },
+    "precision": 0.8131067961165048,
+    "recall": 0.907859078590786,
+    "f1": 0.8578745198463509,
+    "precisionLenient": 0.8398058252427184,
+    "recallLenient": 0.9376693766937669,
+    "f1Lenient": 0.8860435339308579,
+    "role": {
+     "coverage": 0.9720930232558139,
+     "mappedN": 43,
+     "accuracy": 0.8372093023255814,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 215,
+     "accuracy": 0.9255813953488372,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": 0.9638989169675091,
+     "las": 0.9566787003610109,
+     "n": 277,
+     "note": "assumed file layout; see scripts/gold-lib.mts syntaxGoldScore"
+    },
+    "dictionary": {
+     "available": false,
+     "hit": null,
+     "definition": null,
+     "etymology": null,
+     "ipa": null,
+     "note": "no schema-3 dictionary shards for this language"
+    },
+    "alternativesKept": {
+     "n": 22,
+     "kept": 0.6818181818181818,
+     "topOk": 0.5454545454545454
+    },
+    "conflictRate": 0.023255813953488372,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.1685800000000263,
+     "dictMs": 0,
+     "totalMs": 0.1685800000000263
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 90,
+      "both": 89
+     },
+     "medium": {
+      "n": 94,
+      "both": 74
+     },
+     "hard": {
+      "n": 31,
+      "both": 18
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "dev · lemma wrong",
+      "count": 25,
+      "examples": [
+       "segjer: gold segje/VERB, engine seie/VERB",
+       "dårar: gold dåra/VERB, engine dåre/VERB",
+       "sannar: gold sanna/VERB, engine sanne/VERB"
+      ]
+     },
+     {
+      "cls": "dev · POS wrong",
+      "count": 6,
+      "examples": [
+       "sjølve: gold sjølv/ADJ, engine sjølv/PRON",
+       "For: gold for/CONJ, engine for/ADP",
+       "den: gold den/DET, engine den/PRON"
+      ]
+     },
+     {
+      "cls": "dev · lemma and POS wrong",
+      "count": 3,
+      "examples": [
+       "so: gold so/SCONJ, engine så/CONJ",
+       "so: gold so/SCONJ, engine så/ADV",
+       "hava: gold ha/VERB, engine hav/NOUN"
+      ]
+     }
+    ]
+   },
+   "hard": {
+    "language": "nn",
+    "set": "hard",
+    "n": 76,
+    "scored": 76,
+    "errors": 0,
+    "lemma": 52,
+    "pos": 63,
+    "both": 51,
+    "featureTotals": {
+     "tp": 125,
+     "pred": 147,
+     "gold": 170,
+     "tpLenient": 133
+    },
+    "featuresByKey": {
+     "Number": {
+      "tp": 23,
+      "pred": 30,
+      "gold": 31,
+      "tpLenient": 25
+     },
+     "Definite": {
+      "tp": 26,
+      "pred": 30,
+      "gold": 34,
+      "tpLenient": 30
+     },
+     "Degree": {
+      "tp": 8,
+      "pred": 12,
+      "gold": 8,
+      "tpLenient": 8
+     },
+     "Gender": {
+      "tp": 13,
+      "pred": 14,
+      "gold": 26,
+      "tpLenient": 13
+     },
+     "Tense": {
+      "tp": 19,
+      "pred": 20,
+      "gold": 22,
+      "tpLenient": 19
+     },
+     "VerbForm": {
+      "tp": 18,
+      "pred": 20,
+      "gold": 22,
+      "tpLenient": 19
+     },
+     "Mood": {
+      "tp": 14,
+      "pred": 16,
+      "gold": 19,
+      "tpLenient": 15
+     },
+     "PronType": {
+      "tp": 4,
+      "pred": 5,
+      "gold": 8,
+      "tpLenient": 4
+     }
+    },
+    "precision": 0.8503401360544217,
+    "recall": 0.7352941176470589,
+    "f1": 0.7886435331230285,
+    "precisionLenient": 0.9047619047619048,
+    "recallLenient": 0.7823529411764706,
+    "f1Lenient": 0.8391167192429022,
+    "role": {
+     "coverage": 0.9210526315789473,
+     "mappedN": 7,
+     "accuracy": 0.2857142857142857,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 76,
+     "accuracy": 0.8026315789473685,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": false,
+     "hit": null,
+     "definition": null,
+     "etymology": null,
+     "ipa": null,
+     "note": "no schema-3 dictionary shards for this language"
+    },
+    "alternativesKept": {
+     "n": 11,
+     "kept": 0.8181818181818182,
+     "topOk": 0.8181818181818182
+    },
+    "conflictRate": 0.039473684210526314,
+    "naiveWrongRate": 0.02631578947368421,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.08685657894736658,
+     "dictMs": 0,
+     "totalMs": 0.08685657894736658
+    },
+    "byDifficulty": {
+     "hard": {
+      "n": 76,
+      "both": 51
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "particle-verb · lemma wrong",
+      "count": 5,
+      "examples": [
+       "opp: gold opp/ADV, engine stå opp/ADV",
+       "av: gold av/ADV, engine slå av/ADV",
+       "imot: gold imot/ADV, engine ta imot/ADV"
+      ]
+     },
+     {
+      "cls": "bro-bru-variants · lemma and POS wrong",
+      "count": 4,
+      "examples": [
+       "Jeg: gold eg/PRON, engine Jeg/PROPN",
+       "Hun: gold ho/PRON, engine Hun/PROPN",
+       "Hva: gold kva/PRON, engine Hva/PROPN"
+      ]
+     },
+     {
+      "cls": "a-infinitive-and-verb-classes · no reading",
+      "count": 2,
+      "examples": [
+       "hoppar: gold hoppa/VERB, engine -/-",
+       "talar: gold tala/VERB, engine -/-"
+      ]
+     },
+     {
+      "cls": "a-infinitive-and-verb-classes · lemma wrong",
+      "count": 2,
+      "examples": [
+       "kasta: gold kasta/VERB, engine kaste/VERB",
+       "spelar: gold spela/VERB, engine spele/VERB"
+      ]
+     },
+     {
+      "cls": "comparison-irregular · lemma wrong",
+      "count": 2,
+      "examples": [
+       "eldre: gold gamal/ADJ, engine gammal/ADJ",
+       "eldste: gold gamal/ADJ, engine gammal/ADJ"
+      ]
+     },
+     {
+      "cls": "double-definiteness · lemma wrong",
+      "count": 1,
+      "examples": [
+       "gamle: gold gamal/ADJ, engine gammal/ADJ"
+      ]
+     },
+     {
+      "cls": "feminine-and-plural-forms · no reading",
+      "count": 1,
+      "examples": [
+       "hylla: gold hylle/NOUN, engine -/-"
+      ]
+     },
+     {
+      "cls": "bro-bru-variants · no reading",
+      "count": 1,
+      "examples": [
+       "ikke: gold ikkje/ADV, engine -/-"
+      ]
+     }
+    ]
+   },
+   "unseen": {
+    "language": "nn",
+    "set": "unseen",
+    "n": 70,
+    "scored": 70,
+    "errors": 0,
+    "lemma": 60,
+    "pos": 70,
+    "both": 60,
+    "featureTotals": {
+     "tp": 106,
+     "pred": 126,
+     "gold": 117,
+     "tpLenient": 109
+    },
+    "featuresByKey": {
+     "Number": {
+      "tp": 22,
+      "pred": 25,
+      "gold": 22,
+      "tpLenient": 22
+     },
+     "PronType": {
+      "tp": 11,
+      "pred": 11,
+      "gold": 13,
+      "tpLenient": 11
+     },
+     "Tense": {
+      "tp": 19,
+      "pred": 20,
+      "gold": 20,
+      "tpLenient": 19
+     },
+     "VerbForm": {
+      "tp": 17,
+      "pred": 20,
+      "gold": 20,
+      "tpLenient": 20
+     },
+     "Mood": {
+      "tp": 15,
+      "pred": 17,
+      "gold": 18,
+      "tpLenient": 15
+     },
+     "Gender": {
+      "tp": 10,
+      "pred": 17,
+      "gold": 11,
+      "tpLenient": 10
+     },
+     "Definite": {
+      "tp": 12,
+      "pred": 14,
+      "gold": 12,
+      "tpLenient": 12
+     },
+     "Degree": {
+      "tp": 0,
+      "pred": 2,
+      "gold": 0,
+      "tpLenient": 0
+     },
+     "Voice": {
+      "tp": 0,
+      "pred": 0,
+      "gold": 1,
+      "tpLenient": 0
+     }
+    },
+    "precision": 0.8412698412698413,
+    "recall": 0.905982905982906,
+    "f1": 0.8724279835390947,
+    "precisionLenient": 0.8650793650793651,
+    "recallLenient": 0.9316239316239316,
+    "f1Lenient": 0.897119341563786,
+    "role": {
+     "coverage": 1,
+     "mappedN": 24,
+     "accuracy": 0.7083333333333334,
+     "note": "parser `role` is a functional-word label; only labels with an unambiguous UD counterpart are compared (preposition→case, negation→advmod, article→det, …)"
+    },
+    "relation": {
+     "n": 70,
+     "accuracy": 0.9571428571428572,
+     "note": "adapter.syntax relation of the selected token vs gold `relation`"
+    },
+    "syntaxGold": {
+     "uas": null,
+     "las": null,
+     "n": 0,
+     "note": ""
+    },
+    "dictionary": {
+     "available": false,
+     "hit": null,
+     "definition": null,
+     "etymology": null,
+     "ipa": null,
+     "note": "no schema-3 dictionary shards for this language"
+    },
+    "alternativesKept": {
+     "n": 6,
+     "kept": 0.8333333333333334,
+     "topOk": 0.8333333333333334
+    },
+    "conflictRate": 0.05714285714285714,
+    "naiveWrongRate": null,
+    "tokenAligned": 1,
+    "segmentation": {
+     "n": 0,
+     "exact": null
+    },
+    "latency": {
+     "parseMs": 0.1261385714286007,
+     "dictMs": 0,
+     "totalMs": 0.1261385714286007
+    },
+    "byDifficulty": {
+     "easy": {
+      "n": 33,
+      "both": 33
+     },
+     "medium": {
+      "n": 25,
+      "both": 20
+     },
+     "hard": {
+      "n": 12,
+      "both": 7
+     }
+    },
+    "errorClasses": [
+     {
+      "cls": "unseen · lemma wrong",
+      "count": 10,
+      "examples": [
+       "stod: gold stå/VERB, engine stå opp/VERB",
+       "slo: gold slå/VERB, engine slå på/VERB",
+       "på: gold på/ADV, engine slå på/ADV"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "paradigmRoundTrip": {
+  "sq": {
+   "lemmas": 150,
+   "withParadigm": 98,
+   "cells": 2254,
+   "lemmaAndFeatures": 2009,
+   "lemmaOnly": 2241,
+   "share": 0.8913043478260869,
+   "shareLemmaOnly": 0.9942324755989352,
+   "ignoredKeys": [
+    "Variety"
+   ],
+   "worst": [
+    {
+     "lemma": "bukur",
+     "pos": "ADJ",
+     "cells": 4,
+     "ok": 0
+    },
+    {
+     "lemma": "ri",
+     "pos": "ADJ",
+     "cells": 4,
+     "ok": 0
+    },
+    {
+     "lemma": "madh",
+     "pos": "ADJ",
+     "cells": 4,
+     "ok": 0
+    },
+    {
+     "lemma": "vogël",
+     "pos": "ADJ",
+     "cells": 4,
+     "ok": 0
+    },
+    {
+     "lemma": "ti",
+     "pos": "PRON",
+     "cells": 6,
+     "ok": 4
+    }
+   ]
+  },
+  "es": {
+   "lemmas": 150,
+   "withParadigm": 103,
+   "cells": 2795,
+   "lemmaAndFeatures": 2747,
+   "lemmaOnly": 2774,
+   "share": 0.9828264758497317,
+   "shareLemmaOnly": 0.9924865831842576,
+   "ignoredKeys": [
+    "Variety"
+   ],
+   "worst": [
+    {
+     "lemma": "dormido",
+     "pos": "ADJ",
+     "cells": 4,
+     "ok": 0
+    },
+    {
+     "lemma": "sobra",
+     "pos": "NOUN",
+     "cells": 2,
+     "ok": 0
+    },
+    {
+     "lemma": "hijo",
+     "pos": "NOUN",
+     "cells": 4,
+     "ok": 2
+    },
+    {
+     "lemma": "abuelo",
+     "pos": "NOUN",
+     "cells": 4,
+     "ok": 2
+    },
+    {
+     "lemma": "hermano",
+     "pos": "NOUN",
+     "cells": 4,
+     "ok": 2
+    }
+   ]
+  },
+  "de": {
+   "lemmas": 150,
+   "withParadigm": 102,
+   "cells": 2910,
+   "lemmaAndFeatures": 2786,
+   "lemmaOnly": 2910,
+   "share": 0.9573883161512028,
+   "shareLemmaOnly": 1,
+   "ignoredKeys": [
+    "Variety"
+   ],
+   "worst": [
+    {
+     "lemma": "hereinkommen",
+     "pos": "VERB",
+     "cells": 55,
+     "ok": 30
+    },
+    {
+     "lemma": "aufstehen",
+     "pos": "VERB",
+     "cells": 55,
+     "ok": 30
+    },
+    {
+     "lemma": "Predigt",
+     "pos": "NOUN",
+     "cells": 8,
+     "ok": 5
+    },
+    {
+     "lemma": "Ende",
+     "pos": "NOUN",
+     "cells": 8,
+     "ok": 5
+    },
+    {
+     "lemma": "mögen",
+     "pos": "AUX",
+     "cells": 27,
+     "ok": 26
+    }
+   ]
+  },
+  "hi": {
+   "lemmas": 150,
+   "withParadigm": 117,
+   "cells": 2718,
+   "lemmaAndFeatures": 2189,
+   "lemmaOnly": 2595,
+   "share": 0.8053715967623253,
+   "shareLemmaOnly": 0.9547461368653422,
+   "ignoredKeys": [
+    "Variety"
+   ],
+   "worst": [
+    {
+     "lemma": "कुछ",
+     "pos": "PRON",
+     "cells": 1,
+     "ok": 0
+    },
+    {
+     "lemma": "ढूँढना",
+     "pos": "VERB",
+     "cells": 80,
+     "ok": 0
+    },
+    {
+     "lemma": "अमित",
+     "pos": "PROPN",
+     "cells": 5,
+     "ok": 1
+    },
+    {
+     "lemma": "राजू",
+     "pos": "PROPN",
+     "cells": 5,
+     "ok": 1
+    },
+    {
+     "lemma": "विश्वास",
+     "pos": "NOUN",
+     "cells": 5,
+     "ok": 2
+    }
+   ]
+  },
+  "th": {
+   "lemmas": 150,
+   "withParadigm": 0,
+   "cells": 0,
+   "lemmaAndFeatures": 0,
+   "lemmaOnly": 0,
+   "share": null,
+   "shareLemmaOnly": null,
+   "ignoredKeys": [
+    "Variety"
+   ],
+   "worst": []
+  },
+  "nb": {
+   "lemmas": 150,
+   "withParadigm": 102,
+   "cells": 531,
+   "lemmaAndFeatures": 519,
+   "lemmaOnly": 531,
+   "share": 0.9774011299435028,
+   "shareLemmaOnly": 1,
+   "ignoredKeys": [
+    "Variety"
+   ],
+   "worst": [
+    {
+     "lemma": "kunne",
+     "pos": "AUX",
+     "cells": 4,
+     "ok": 2
+    },
+    {
+     "lemma": "måtte",
+     "pos": "AUX",
+     "cells": 4,
+     "ok": 2
+    },
+    {
+     "lemma": "være",
+     "pos": "AUX",
+     "cells": 5,
+     "ok": 3
+    },
+    {
+     "lemma": "trofast",
+     "pos": "ADJ",
+     "cells": 7,
+     "ok": 6
+    },
+    {
+     "lemma": "rettferdig",
+     "pos": "ADJ",
+     "cells": 7,
+     "ok": 6
+    }
+   ]
+  },
+  "nn": {
+   "lemmas": 150,
+   "withParadigm": 93,
+   "cells": 458,
+   "lemmaAndFeatures": 377,
+   "lemmaOnly": 386,
+   "share": 0.8231441048034934,
+   "shareLemmaOnly": 0.8427947598253275,
+   "ignoredKeys": [
+    "Variety"
+   ],
+   "worst": [
+    {
+     "lemma": "dåra",
+     "pos": "VERB",
+     "cells": 7,
+     "ok": 0
+    },
+    {
+     "lemma": "sanna",
+     "pos": "VERB",
+     "cells": 7,
+     "ok": 0
+    },
+    {
+     "lemma": "reinsa",
+     "pos": "VERB",
+     "cells": 7,
+     "ok": 0
+    },
+    {
+     "lemma": "byrja",
+     "pos": "VERB",
+     "cells": 7,
+     "ok": 0
+    },
+    {
+     "lemma": "elska",
+     "pos": "VERB",
+     "cells": 7,
+     "ok": 0
+    }
+   ]
+  }
+ }
+}

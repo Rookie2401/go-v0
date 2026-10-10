@@ -1,0 +1,1098 @@
+{
+ "language": "nn",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "unseen",
+ "source": "NO verified Scripture slice for nn and the corpus holds only 21 sentences: the sentence texts of the blind holdout in test/adapters/norwegian-holdout.test.ts (annotations ignored, relabelled independently) — labelled as such",
+ "feature_keys": [
+  "Gender",
+  "Number",
+  "Definite",
+  "Tense",
+  "VerbForm",
+  "Mood",
+  "Degree",
+  "Voice",
+  "PronType"
+ ],
+ "notes": "Held-out selections, never to be used for tuning. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "nn-unseen-001",
+   "text": "holdout-1",
+   "sentence": "Eg heiter Ola og bur i Bergen.",
+   "start": 0,
+   "end": 2,
+   "surface": "Eg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-002",
+   "text": "holdout-1",
+   "sentence": "Eg heiter Ola og bur i Bergen.",
+   "start": 3,
+   "end": 9,
+   "surface": "heiter",
+   "lemma": "heite",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-003",
+   "text": "holdout-1",
+   "sentence": "Eg heiter Ola og bur i Bergen.",
+   "start": 14,
+   "end": 16,
+   "surface": "og",
+   "lemma": "og",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-unseen-004",
+   "text": "holdout-1",
+   "sentence": "Eg heiter Ola og bur i Bergen.",
+   "start": 17,
+   "end": 20,
+   "surface": "bur",
+   "lemma": "bu",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "conj",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-unseen-005",
+   "text": "holdout-1",
+   "sentence": "Eg heiter Ola og bur i Bergen.",
+   "start": 23,
+   "end": 29,
+   "surface": "Bergen",
+   "lemma": "bergen",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-unseen-006",
+   "text": "holdout-2",
+   "sentence": "Mora mi og faren min er heime no.",
+   "start": 0,
+   "end": 4,
+   "surface": "Mora",
+   "lemma": "mor",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-007",
+   "text": "holdout-2",
+   "sentence": "Mora mi og faren min er heime no.",
+   "start": 8,
+   "end": 10,
+   "surface": "og",
+   "lemma": "og",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-unseen-008",
+   "text": "holdout-2",
+   "sentence": "Mora mi og faren min er heime no.",
+   "start": 17,
+   "end": 20,
+   "surface": "min",
+   "lemma": "min",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing",
+    "PronType": "Prs"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nn-unseen-009",
+   "text": "holdout-2",
+   "sentence": "Mora mi og faren min er heime no.",
+   "start": 21,
+   "end": 23,
+   "surface": "er",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-unseen-010",
+   "text": "holdout-2",
+   "sentence": "Mora mi og faren min er heime no.",
+   "start": 30,
+   "end": 32,
+   "surface": "no",
+   "lemma": "no",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-unseen-011",
+   "text": "holdout-3",
+   "sentence": "Vi et middag ved kjøkkenbordet kvar kveld.",
+   "start": 0,
+   "end": 2,
+   "surface": "Vi",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-012",
+   "text": "holdout-3",
+   "sentence": "Vi et middag ved kjøkkenbordet kvar kveld.",
+   "start": 6,
+   "end": 12,
+   "surface": "middag",
+   "lemma": "middag",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-unseen-013",
+   "text": "holdout-3",
+   "sentence": "Vi et middag ved kjøkkenbordet kvar kveld.",
+   "start": 13,
+   "end": 16,
+   "surface": "ved",
+   "lemma": "ved",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-unseen-014",
+   "text": "holdout-3",
+   "sentence": "Vi et middag ved kjøkkenbordet kvar kveld.",
+   "start": 31,
+   "end": 35,
+   "surface": "kvar",
+   "lemma": "kvar",
+   "pos": "DET",
+   "features": {
+    "PronType": "Tot"
+   },
+   "difficulty": "medium",
+   "relation": "det",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-unseen-015",
+   "text": "holdout-4",
+   "sentence": "Eg stod opp klokka sju og slo på lyset.",
+   "start": 0,
+   "end": 2,
+   "surface": "Eg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-016",
+   "text": "holdout-4",
+   "sentence": "Eg stod opp klokka sju og slo på lyset.",
+   "start": 3,
+   "end": 7,
+   "surface": "stod",
+   "lemma": "stå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-017",
+   "text": "holdout-4",
+   "sentence": "Eg stod opp klokka sju og slo på lyset.",
+   "start": 12,
+   "end": 18,
+   "surface": "klokka",
+   "lemma": "klokke",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-unseen-018",
+   "text": "holdout-4",
+   "sentence": "Eg stod opp klokka sju og slo på lyset.",
+   "start": 19,
+   "end": 22,
+   "surface": "sju",
+   "lemma": "sju",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nummod"
+  },
+  {
+   "id": "nn-unseen-019",
+   "text": "holdout-4",
+   "sentence": "Eg stod opp klokka sju og slo på lyset.",
+   "start": 26,
+   "end": 29,
+   "surface": "slo",
+   "lemma": "slå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-unseen-020",
+   "text": "holdout-4",
+   "sentence": "Eg stod opp klokka sju og slo på lyset.",
+   "start": 30,
+   "end": 32,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "compound",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-unseen-021",
+   "text": "holdout-5",
+   "sentence": "Eg veit at ho ikkje kjem i dag.",
+   "start": 0,
+   "end": 2,
+   "surface": "Eg",
+   "lemma": "eg",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-022",
+   "text": "holdout-5",
+   "sentence": "Eg veit at ho ikkje kjem i dag.",
+   "start": 8,
+   "end": 10,
+   "surface": "at",
+   "lemma": "at",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-unseen-023",
+   "text": "holdout-5",
+   "sentence": "Eg veit at ho ikkje kjem i dag.",
+   "start": 11,
+   "end": 13,
+   "surface": "ho",
+   "lemma": "ho",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-024",
+   "text": "holdout-5",
+   "sentence": "Eg veit at ho ikkje kjem i dag.",
+   "start": 20,
+   "end": 24,
+   "surface": "kjem",
+   "lemma": "koma",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "hard",
+   "relation": "ccomp"
+  },
+  {
+   "id": "nn-unseen-025",
+   "text": "holdout-5",
+   "sentence": "Eg veit at ho ikkje kjem i dag.",
+   "start": 25,
+   "end": 26,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-unseen-026",
+   "text": "holdout-6",
+   "sentence": "Dersom det regnar, går vi ikkje ut.",
+   "start": 0,
+   "end": 6,
+   "surface": "Dersom",
+   "lemma": "dersom",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "mark"
+  },
+  {
+   "id": "nn-unseen-027",
+   "text": "holdout-6",
+   "sentence": "Dersom det regnar, går vi ikkje ut.",
+   "start": 7,
+   "end": 10,
+   "surface": "det",
+   "lemma": "det",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "medium",
+   "relation": "expl",
+   "ambiguous": true
+  },
+  {
+   "id": "nn-unseen-028",
+   "text": "holdout-6",
+   "sentence": "Dersom det regnar, går vi ikkje ut.",
+   "start": 19,
+   "end": 22,
+   "surface": "går",
+   "lemma": "gå",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-029",
+   "text": "holdout-6",
+   "sentence": "Dersom det regnar, går vi ikkje ut.",
+   "start": 26,
+   "end": 31,
+   "surface": "ikkje",
+   "lemma": "ikkje",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-unseen-030",
+   "text": "holdout-6",
+   "sentence": "Dersom det regnar, går vi ikkje ut.",
+   "start": 32,
+   "end": 34,
+   "surface": "ut",
+   "lemma": "ut",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "compound"
+  },
+  {
+   "id": "nn-unseen-031",
+   "text": "holdout-7",
+   "sentence": "Det er kaldt ute, men eg likar snø.",
+   "start": 4,
+   "end": 6,
+   "surface": "er",
+   "lemma": "vere",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "cop"
+  },
+  {
+   "id": "nn-unseen-032",
+   "text": "holdout-7",
+   "sentence": "Det er kaldt ute, men eg likar snø.",
+   "start": 7,
+   "end": 12,
+   "surface": "kaldt",
+   "lemma": "kald",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-033",
+   "text": "holdout-7",
+   "sentence": "Det er kaldt ute, men eg likar snø.",
+   "start": 18,
+   "end": 21,
+   "surface": "men",
+   "lemma": "men",
+   "pos": "CONJ",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "cc"
+  },
+  {
+   "id": "nn-unseen-034",
+   "text": "holdout-7",
+   "sentence": "Det er kaldt ute, men eg likar snø.",
+   "start": 25,
+   "end": 30,
+   "surface": "likar",
+   "lemma": "lika",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-unseen-035",
+   "text": "holdout-8",
+   "sentence": "Dotter mi byrja på skulen i august.",
+   "start": 0,
+   "end": 6,
+   "surface": "Dotter",
+   "lemma": "dotter",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "hard",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-036",
+   "text": "holdout-8",
+   "sentence": "Dotter mi byrja på skulen i august.",
+   "start": 10,
+   "end": 15,
+   "surface": "byrja",
+   "lemma": "byrja",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-037",
+   "text": "holdout-8",
+   "sentence": "Dotter mi byrja på skulen i august.",
+   "start": 16,
+   "end": 18,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-unseen-038",
+   "text": "holdout-8",
+   "sentence": "Dotter mi byrja på skulen i august.",
+   "start": 26,
+   "end": 27,
+   "surface": "i",
+   "lemma": "i",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-unseen-039",
+   "text": "holdout-8",
+   "sentence": "Dotter mi byrja på skulen i august.",
+   "start": 28,
+   "end": 34,
+   "surface": "august",
+   "lemma": "august",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-unseen-040",
+   "text": "holdout-9",
+   "sentence": "Vi har ein stor hage og ei lita hytte.",
+   "start": 3,
+   "end": 6,
+   "surface": "har",
+   "lemma": "ha",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-041",
+   "text": "holdout-9",
+   "sentence": "Vi har ein stor hage og ei lita hytte.",
+   "start": 7,
+   "end": 10,
+   "surface": "ein",
+   "lemma": "ein",
+   "pos": "DET",
+   "features": {
+    "Number": "Sing",
+    "Definite": "Ind",
+    "PronType": "Art"
+   },
+   "difficulty": "medium",
+   "relation": "det"
+  },
+  {
+   "id": "nn-unseen-042",
+   "text": "holdout-9",
+   "sentence": "Vi har ein stor hage og ei lita hytte.",
+   "start": 16,
+   "end": 20,
+   "surface": "hage",
+   "lemma": "hage",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-unseen-043",
+   "text": "holdout-9",
+   "sentence": "Vi har ein stor hage og ei lita hytte.",
+   "start": 27,
+   "end": 31,
+   "surface": "lita",
+   "lemma": "liten",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "hard",
+   "relation": "amod"
+  },
+  {
+   "id": "nn-unseen-044",
+   "text": "holdout-9",
+   "sentence": "Vi har ein stor hage og ei lita hytte.",
+   "start": 32,
+   "end": 37,
+   "surface": "hytte",
+   "lemma": "hytte",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-unseen-045",
+   "text": "holdout-10",
+   "sentence": "Gutane har spela fotball på banen.",
+   "start": 7,
+   "end": 10,
+   "surface": "har",
+   "lemma": "ha",
+   "pos": "AUX",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "easy",
+   "relation": "aux"
+  },
+  {
+   "id": "nn-unseen-046",
+   "text": "holdout-10",
+   "sentence": "Gutane har spela fotball på banen.",
+   "start": 11,
+   "end": 16,
+   "surface": "spela",
+   "lemma": "spela",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-047",
+   "text": "holdout-10",
+   "sentence": "Gutane har spela fotball på banen.",
+   "start": 25,
+   "end": 27,
+   "surface": "på",
+   "lemma": "på",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-unseen-048",
+   "text": "holdout-10",
+   "sentence": "Gutane har spela fotball på banen.",
+   "start": 28,
+   "end": 33,
+   "surface": "banen",
+   "lemma": "bane",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-unseen-049",
+   "text": "holdout-11",
+   "sentence": "Læraren sa at møtet ikkje var flytta.",
+   "start": 8,
+   "end": 10,
+   "surface": "sa",
+   "lemma": "segje",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-050",
+   "text": "holdout-11",
+   "sentence": "Læraren sa at møtet ikkje var flytta.",
+   "start": 14,
+   "end": 19,
+   "surface": "møtet",
+   "lemma": "møte",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Neut",
+    "Number": "Sing",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-051",
+   "text": "holdout-11",
+   "sentence": "Læraren sa at møtet ikkje var flytta.",
+   "start": 20,
+   "end": 25,
+   "surface": "ikkje",
+   "lemma": "ikkje",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "advmod"
+  },
+  {
+   "id": "nn-unseen-052",
+   "text": "holdout-11",
+   "sentence": "Læraren sa at møtet ikkje var flytta.",
+   "start": 30,
+   "end": 36,
+   "surface": "flytta",
+   "lemma": "flytte",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Part",
+    "Tense": "Past",
+    "Voice": "Pass"
+   },
+   "difficulty": "medium",
+   "relation": "ccomp"
+  },
+  {
+   "id": "nn-unseen-053",
+   "text": "holdout-12",
+   "sentence": "Kva gjer du etter skulen?",
+   "start": 0,
+   "end": 3,
+   "surface": "Kva",
+   "lemma": "kva",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Int"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-unseen-054",
+   "text": "holdout-12",
+   "sentence": "Kva gjer du etter skulen?",
+   "start": 9,
+   "end": 11,
+   "surface": "du",
+   "lemma": "du",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Sing"
+   },
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-055",
+   "text": "holdout-12",
+   "sentence": "Kva gjer du etter skulen?",
+   "start": 12,
+   "end": 17,
+   "surface": "etter",
+   "lemma": "etter",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-unseen-056",
+   "text": "holdout-13",
+   "sentence": "Eg trur at Jesus døydde for oss.",
+   "start": 3,
+   "end": 7,
+   "surface": "trur",
+   "lemma": "tru",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Pres"
+   },
+   "difficulty": "medium",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-057",
+   "text": "holdout-13",
+   "sentence": "Eg trur at Jesus døydde for oss.",
+   "start": 11,
+   "end": 16,
+   "surface": "Jesus",
+   "lemma": "jesus",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-058",
+   "text": "holdout-13",
+   "sentence": "Eg trur at Jesus døydde for oss.",
+   "start": 17,
+   "end": 23,
+   "surface": "døydde",
+   "lemma": "døy",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "ccomp"
+  },
+  {
+   "id": "nn-unseen-059",
+   "text": "holdout-13",
+   "sentence": "Eg trur at Jesus døydde for oss.",
+   "start": 28,
+   "end": 31,
+   "surface": "oss",
+   "lemma": "vi",
+   "pos": "PRON",
+   "features": {
+    "PronType": "Prs",
+    "Number": "Plur"
+   },
+   "difficulty": "medium",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-unseen-060",
+   "text": "holdout-14",
+   "sentence": "Gud tilgav syndene mine, og no bed eg kvar morgon.",
+   "start": 0,
+   "end": 3,
+   "surface": "Gud",
+   "lemma": "gud",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "nsubj"
+  },
+  {
+   "id": "nn-unseen-061",
+   "text": "holdout-14",
+   "sentence": "Gud tilgav syndene mine, og no bed eg kvar morgon.",
+   "start": 11,
+   "end": 18,
+   "surface": "syndene",
+   "lemma": "synd",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Fem",
+    "Number": "Plur",
+    "Definite": "Def"
+   },
+   "difficulty": "medium",
+   "relation": "obj"
+  },
+  {
+   "id": "nn-unseen-062",
+   "text": "holdout-14",
+   "sentence": "Gud tilgav syndene mine, og no bed eg kvar morgon.",
+   "start": 19,
+   "end": 23,
+   "surface": "mine",
+   "lemma": "min",
+   "pos": "DET",
+   "features": {
+    "Number": "Plur",
+    "PronType": "Prs"
+   },
+   "difficulty": "hard",
+   "relation": "det"
+  },
+  {
+   "id": "nn-unseen-063",
+   "text": "holdout-14",
+   "sentence": "Gud tilgav syndene mine, og no bed eg kvar morgon.",
+   "start": 31,
+   "end": 34,
+   "surface": "bed",
+   "lemma": "be",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-unseen-064",
+   "text": "holdout-14",
+   "sentence": "Gud tilgav syndene mine, og no bed eg kvar morgon.",
+   "start": 43,
+   "end": 49,
+   "surface": "morgon",
+   "lemma": "morgon",
+   "pos": "NOUN",
+   "features": {
+    "Gender": "Masc",
+    "Number": "Sing",
+    "Definite": "Ind"
+   },
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-unseen-065",
+   "text": "holdout-15",
+   "sentence": "Vi tok toget frå Oslo til Trondheim og budde der i tre veker.",
+   "start": 3,
+   "end": 6,
+   "surface": "tok",
+   "lemma": "ta",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "root"
+  },
+  {
+   "id": "nn-unseen-066",
+   "text": "holdout-15",
+   "sentence": "Vi tok toget frå Oslo til Trondheim og budde der i tre veker.",
+   "start": 13,
+   "end": 16,
+   "surface": "frå",
+   "lemma": "frå",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "case"
+  },
+  {
+   "id": "nn-unseen-067",
+   "text": "holdout-15",
+   "sentence": "Vi tok toget frå Oslo til Trondheim og budde der i tre veker.",
+   "start": 17,
+   "end": 21,
+   "surface": "Oslo",
+   "lemma": "oslo",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-unseen-068",
+   "text": "holdout-15",
+   "sentence": "Vi tok toget frå Oslo til Trondheim og budde der i tre veker.",
+   "start": 26,
+   "end": 35,
+   "surface": "Trondheim",
+   "lemma": "trondheim",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "easy",
+   "relation": "obl"
+  },
+  {
+   "id": "nn-unseen-069",
+   "text": "holdout-15",
+   "sentence": "Vi tok toget frå Oslo til Trondheim og budde der i tre veker.",
+   "start": 39,
+   "end": 44,
+   "surface": "budde",
+   "lemma": "bu",
+   "pos": "VERB",
+   "features": {
+    "VerbForm": "Fin",
+    "Mood": "Ind",
+    "Tense": "Past"
+   },
+   "difficulty": "hard",
+   "relation": "conj"
+  },
+  {
+   "id": "nn-unseen-070",
+   "text": "holdout-15",
+   "sentence": "Vi tok toget frå Oslo til Trondheim og budde der i tre veker.",
+   "start": 51,
+   "end": 54,
+   "surface": "tre",
+   "lemma": "tre",
+   "pos": "NUM",
+   "features": {},
+   "difficulty": "medium",
+   "relation": "nummod",
+   "ambiguous": true
+  }
+ ]
+}

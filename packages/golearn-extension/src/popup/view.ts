@@ -4,11 +4,11 @@
  * callbacks through which the card reports what the learner did. Pure data and types; no DOM.
  */
 import type { Paradigm, SegmentationAlternatives } from '../../../../src/core/paradigm';
-import type { EtymologyView, PronunciationView, RelationsView } from '../content/enrich';
+import type { EtymologyView, PronunciationView, RelationsView, WordStructureView } from '../content/enrich';
 import type { ConstructionExplanation, ExplanationDepth, FeatureExplanation, SelfMark } from '../protocol';
 
-/** The first four open at once; the last four are the deeper sections (Linguistic Engine V2): the paradigm, every sense, the origin, the sound. */
-export type LayerName = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence' | 'forms' | 'meaning' | 'origin' | 'sound';
+/** The first four open at once; the last five are the deeper sections (Linguistic Engine V2): the paradigm, every sense, the origin, the word structure, the sound. */
+export type LayerName = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence' | 'forms' | 'meaning' | 'origin' | 'structure' | 'sound';
 
 /** Level 2 of the card: what the dictionary's full record and the analyser's generation give, with field states; arrives after the card, never blocks it. */
 export interface EnrichmentView {
@@ -20,6 +20,8 @@ export interface EnrichmentView {
   /** Alternative cuts of the selection into words (a script without word spaces). */
   segmentations?: SegmentationAlternatives;
   etymology?: EtymologyView;
+  /** The word's parts, what it derives from and its family (Stage 5), each with its source and a status. */
+  structure?: WordStructureView;
   pronunciation?: PronunciationView;
   relations?: RelationsView;
   senses?: Array<{ gloss: string; tags: string[]; examples: string[] }>;

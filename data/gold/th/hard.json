@@ -1,0 +1,1591 @@
+{
+ "language": "th",
+ "labelled_by": "Claude (AI-judged, unreviewed; no native speaker)",
+ "created": "2026-10-10",
+ "purpose": "hard",
+ "source": "authored sentences (not from the corpus)",
+ "feature_keys": [
+  "Aspect",
+  "Polarity"
+ ],
+ "notes": "Hard cases written to break a naive engine: each carries the expected analysis, the wrong analysis a naive engine would give, and why it is hard. AI-judged, unreviewed.",
+ "items": [
+  {
+   "id": "th-hard-001",
+   "text": "authored",
+   "sentence": "ฉันไปตากลมที่ชายหาดทุกเย็น",
+   "start": 5,
+   "end": 10,
+   "surface": "ตากลม",
+   "lemma": "ตากลม",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "Three legal cuts (ตา+กลม, ตาก+ลม, ตากลม); only the verb reading fits after ไป.",
+   "wrong": {
+    "lemma": "ตา",
+    "pos": "NOUN",
+    "note": "cuts the string as ตา (eye) + กลม (round) although ไป before it makes the verb ตากลม (take the air) the only sensible reading"
+   },
+   "relation": "xcomp",
+   "ambiguous": true,
+   "expected_segmentation": [
+    "ตากลม"
+   ]
+  },
+  {
+   "id": "th-hard-002",
+   "text": "authored",
+   "sentence": "เด็กหญิงคนนั้นมีตากลมโต",
+   "start": 16,
+   "end": 21,
+   "surface": "ตากลม",
+   "lemma": "ตากลม",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "Same string as the verb ตากลม, but after มี it is ตา (eye) + กลม (round).",
+   "wrong": {
+    "lemma": "ตากลม",
+    "pos": "VERB",
+    "note": "takes the single word ตากลม (to take the air) although here มี + noun phrase means round eyes"
+   },
+   "relation": "obj",
+   "ambiguous": true,
+   "expected_segmentation": [
+    "ตา",
+    "กลม"
+   ]
+  },
+  {
+   "id": "th-hard-003",
+   "text": "authored",
+   "sentence": "ปีหน้าเราจะไปเที่ยวใหม่อีกครั้ง",
+   "start": 11,
+   "end": 23,
+   "surface": "ไปเที่ยวใหม่",
+   "lemma": "ไปเที่ยวใหม่",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "Three short words in a row; ใหม่ (again) must not be taken for the particle ไหม.",
+   "wrong": {
+    "lemma": "ไหม",
+    "pos": "PART",
+    "note": "reads ใหม่ (new, anew) as the question particle ไหม because of the similar sound/spelling and cuts the phrase wrongly"
+   },
+   "relation": "root",
+   "ambiguous": true,
+   "expected_segmentation": [
+    "ไป",
+    "เที่ยว",
+    "ใหม่"
+   ]
+  },
+  {
+   "id": "th-hard-004",
+   "text": "authored",
+   "sentence": "คนอื่นๆ ก็มาถึงแล้ว",
+   "start": 0,
+   "end": 7,
+   "surface": "คนอื่นๆ",
+   "lemma": "คนอื่น",
+   "pos": "PRON",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "คน + อื่น with the repetition mark ๆ, which is never a word of its own.",
+   "wrong": {
+    "lemma": "คนอื่นๆ",
+    "pos": "X",
+    "note": "keeps the repetition mark ๆ in the lemma and treats คนอื่นๆ as one unknown word"
+   },
+   "relation": "nsubj",
+   "expected_segmentation": [
+    "คน",
+    "อื่น"
+   ]
+  },
+  {
+   "id": "th-hard-005",
+   "text": "authored",
+   "sentence": "ฉันชอบเรื่องของคนในเมือง",
+   "start": 15,
+   "end": 24,
+   "surface": "คนในเมือง",
+   "lemma": "คนในเมือง",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "Dictionary compound คนใน (insiders) competes with คน + ใน + เมือง (people in the city).",
+   "wrong": {
+    "lemma": "คนใน",
+    "pos": "NOUN",
+    "note": "joins คนใน as one word (insider), leaving เมือง stranded"
+   },
+   "relation": "nmod",
+   "ambiguous": true,
+   "expected_segmentation": [
+    "คน",
+    "ใน",
+    "เมือง"
+   ]
+  },
+  {
+   "id": "th-hard-006",
+   "text": "authored",
+   "sentence": "ครอบครัวของฉันไปตากอากาศที่หัวหิน",
+   "start": 16,
+   "end": 24,
+   "surface": "ตากอากาศ",
+   "lemma": "ตากอากาศ",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "Lexical verb versus two plausible words.",
+   "wrong": {
+    "lemma": "ตาก",
+    "pos": "VERB",
+    "note": "cuts ตาก (to dry in the sun) + อากาศ (air) instead of the lexical verb ตากอากาศ (to go on a holiday)"
+   },
+   "relation": "xcomp",
+   "ambiguous": true,
+   "expected_segmentation": [
+    "ตากอากาศ"
+   ]
+  },
+  {
+   "id": "th-hard-007",
+   "text": "authored",
+   "sentence": "เขาซื้อที่นอนใหม่มาจากตลาด",
+   "start": 7,
+   "end": 13,
+   "surface": "ที่นอน",
+   "lemma": "ที่นอน",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "ที่นอน (mattress) versus ที่ + นอน.",
+   "wrong": {
+    "lemma": "ที่",
+    "pos": "SCONJ",
+    "note": "cuts ที่ (relative marker) + นอน (sleep) as a relative clause"
+   },
+   "relation": "obj",
+   "ambiguous": true,
+   "expected_segmentation": [
+    "ที่นอน"
+   ]
+  },
+  {
+   "id": "th-hard-008",
+   "text": "authored",
+   "sentence": "เธอเปิดหน้าต่างรับลมเย็น",
+   "start": 7,
+   "end": 15,
+   "surface": "หน้าต่าง",
+   "lemma": "หน้าต่าง",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "Opaque compound: window, not front + different.",
+   "wrong": {
+    "lemma": "หน้า",
+    "pos": "NOUN",
+    "note": "takes หน้า (face/front) and leaves ต่าง as a separate word (different)"
+   },
+   "relation": "obj",
+   "expected_segmentation": [
+    "หน้าต่าง"
+   ]
+  },
+  {
+   "id": "th-hard-009",
+   "text": "authored",
+   "sentence": "แม่ถามว่าลูกไปไหนมา",
+   "start": 12,
+   "end": 19,
+   "surface": "ไปไหนมา",
+   "lemma": "ไปไหนมา",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "Four syllables of three function-like words framing a question word.",
+   "wrong": {
+    "lemma": "ไหน",
+    "pos": "PRON",
+    "note": "reads only the question word ไหน and ignores ไป and มา as a frame meaning where have you been"
+   },
+   "relation": "ccomp",
+   "expected_segmentation": [
+    "ไป",
+    "ไหน",
+    "มา"
+   ]
+  },
+  {
+   "id": "th-hard-010",
+   "text": "authored",
+   "sentence": "เด็กๆ เล่นของเล่นกันอยู่ใต้ต้นไม้",
+   "start": 10,
+   "end": 17,
+   "surface": "ของเล่น",
+   "lemma": "ของเล่น",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "segmentation-trap",
+   "why_hard": "Compound noun (toy) versus ของ + เล่น.",
+   "wrong": {
+    "lemma": "ของ",
+    "pos": "ADP",
+    "note": "reads ของ as the possessive marker and เล่น as a verb (of play)"
+   },
+   "relation": "obj",
+   "ambiguous": true,
+   "expected_segmentation": [
+    "ของเล่น"
+   ]
+  },
+  {
+   "id": "th-hard-011",
+   "text": "authored",
+   "sentence": "แม่น้ำเจ้าพระยาไหลผ่านกรุงเทพ",
+   "start": 0,
+   "end": 6,
+   "surface": "แม่น้ำ",
+   "lemma": "แม่น้ำ",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Opaque compound: river, not mother water.",
+   "wrong": {
+    "lemma": "แม่",
+    "pos": "NOUN",
+    "note": "takes แม่ (mother) and drops น้ำ"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "th-hard-012",
+   "text": "authored",
+   "sentence": "ฉันล้างมือในห้องน้ำ",
+   "start": 12,
+   "end": 19,
+   "surface": "ห้องน้ำ",
+   "lemma": "ห้องน้ำ",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Compound with a transparent head that is a separate word.",
+   "wrong": {
+    "lemma": "ห้อง",
+    "pos": "NOUN",
+    "note": "takes the first member ห้อง (room) only"
+   },
+   "relation": "nmod"
+  },
+  {
+   "id": "th-hard-013",
+   "text": "authored",
+   "sentence": "เรานั่งรถไปดูน้ำตกในป่า",
+   "start": 13,
+   "end": 18,
+   "surface": "น้ำตก",
+   "lemma": "น้ำตก",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Noun compound versus noun + verb.",
+   "wrong": {
+    "lemma": "น้ำ",
+    "pos": "NOUN",
+    "note": "analyses น้ำ + ตก (water falls)"
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-014",
+   "text": "authored",
+   "sentence": "ป้าของฉันใจดีมาก",
+   "start": 9,
+   "end": 13,
+   "surface": "ใจดี",
+   "lemma": "ใจดี",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Noun + adjective compound that works as one adjective.",
+   "wrong": {
+    "lemma": "ใจ",
+    "pos": "NOUN",
+    "note": "takes ใจ (heart) as a noun and ดี as a separate predicate"
+   },
+   "relation": "root"
+  },
+  {
+   "id": "th-hard-015",
+   "text": "authored",
+   "sentence": "เขาขับเครื่องบินมาสิบปีแล้ว",
+   "start": 6,
+   "end": 16,
+   "surface": "เครื่องบิน",
+   "lemma": "เครื่องบิน",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Compound noun: aeroplane.",
+   "wrong": {
+    "lemma": "เครื่อง",
+    "pos": "NOUN",
+    "note": "takes เครื่อง (machine) and treats บิน (fly) as a verb"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-016",
+   "text": "authored",
+   "sentence": "ผู้หญิงคนนั้นนั่งอ่านหนังสือพิมพ์",
+   "start": 21,
+   "end": 33,
+   "surface": "หนังสือพิมพ์",
+   "lemma": "หนังสือพิมพ์",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Compound: newspaper, not book print.",
+   "wrong": {
+    "lemma": "หนังสือ",
+    "pos": "NOUN",
+    "note": "takes หนังสือ (book) and leaves พิมพ์ (print) as a verb"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-017",
+   "text": "authored",
+   "sentence": "เราซื้อตู้เย็นใหม่",
+   "start": 7,
+   "end": 14,
+   "surface": "ตู้เย็น",
+   "lemma": "ตู้เย็น",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Compound: refrigerator.",
+   "wrong": {
+    "lemma": "ตู้",
+    "pos": "NOUN",
+    "note": "takes ตู้ (cabinet) and reads เย็น as a stative verb"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-018",
+   "text": "authored",
+   "sentence": "ฉันกินข้าวผัดกับไข่ดาว",
+   "start": 6,
+   "end": 13,
+   "surface": "ข้าวผัด",
+   "lemma": "ข้าวผัด",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Compound dish name: fried rice.",
+   "wrong": {
+    "lemma": "ข้าว",
+    "pos": "NOUN",
+    "note": "takes ข้าว (rice) only and reads ผัด (stir-fry) as a verb"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-019",
+   "text": "authored",
+   "sentence": "เขามีน้ำใจมาก",
+   "start": 5,
+   "end": 10,
+   "surface": "น้ำใจ",
+   "lemma": "น้ำใจ",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "compound-word",
+   "why_hard": "Figurative compound: kindness.",
+   "wrong": {
+    "lemma": "น้ำ",
+    "pos": "NOUN",
+    "note": "takes น้ำ (water) and ใจ (heart) as unrelated nouns"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-020",
+   "text": "authored",
+   "sentence": "นักเรียนสามคนยืนอยู่หน้าห้อง",
+   "start": 11,
+   "end": 13,
+   "surface": "คน",
+   "lemma": "คน",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Numeral + คน is a classifier phrase, not a noun.",
+   "wrong": {
+    "lemma": "คน",
+    "pos": "NOUN",
+    "note": "takes the noun person after a numeral"
+   },
+   "relation": "clf",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-021",
+   "text": "authored",
+   "sentence": "ฉันซื้อหนังสือสองเล่ม",
+   "start": 17,
+   "end": 21,
+   "surface": "เล่ม",
+   "lemma": "เล่ม",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Classifier of books, directly after the numeral.",
+   "wrong": {
+    "lemma": "เล่ม",
+    "pos": "NOUN",
+    "note": "treats เล่ม as an ordinary noun volume"
+   },
+   "relation": "clf"
+  },
+  {
+   "id": "th-hard-022",
+   "text": "authored",
+   "sentence": "เขาเลี้ยงสุนัขสี่ตัว",
+   "start": 17,
+   "end": 20,
+   "surface": "ตัว",
+   "lemma": "ตัว",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Animal classifier after the numeral.",
+   "wrong": {
+    "lemma": "ตัว",
+    "pos": "NOUN",
+    "note": "reads ตัว as the noun body"
+   },
+   "relation": "clf",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-023",
+   "text": "authored",
+   "sentence": "ที่บ้านมีรถสองคัน",
+   "start": 14,
+   "end": 17,
+   "surface": "คัน",
+   "lemma": "คัน",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Vehicle classifier; คัน is also a noun and a verb (to itch).",
+   "wrong": {
+    "lemma": "คัน",
+    "pos": "NOUN",
+    "note": "reads คัน as handle/shaft or the adjective itchy"
+   },
+   "relation": "clf",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-024",
+   "text": "authored",
+   "sentence": "แม่ซื้อไข่สิบฟอง",
+   "start": 13,
+   "end": 16,
+   "surface": "ฟอง",
+   "lemma": "ฟอง",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Egg classifier versus noun foam.",
+   "wrong": {
+    "lemma": "ฟอง",
+    "pos": "NOUN",
+    "note": "reads ฟอง as the noun bubble/foam"
+   },
+   "relation": "clf",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-025",
+   "text": "authored",
+   "sentence": "เขาซื้อบ้านหลังหนึ่ง",
+   "start": 11,
+   "end": 15,
+   "surface": "หลัง",
+   "lemma": "หลัง",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Classifier of houses versus preposition after, noun back.",
+   "wrong": {
+    "lemma": "หลัง",
+    "pos": "ADP",
+    "note": "reads หลัง as after/behind"
+   },
+   "relation": "clf",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-026",
+   "text": "authored",
+   "sentence": "แม่ซื้อส้มสามลูก",
+   "start": 13,
+   "end": 16,
+   "surface": "ลูก",
+   "lemma": "ลูก",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Classifier of round fruit versus noun child.",
+   "wrong": {
+    "lemma": "ลูก",
+    "pos": "NOUN",
+    "note": "reads ลูก as the noun child"
+   },
+   "relation": "clf",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-027",
+   "text": "authored",
+   "sentence": "เขาปลูกต้นไม้สิบต้น",
+   "start": 16,
+   "end": 19,
+   "surface": "ต้น",
+   "lemma": "ต้น",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Same word as the first syllable of ต้นไม้, but here a classifier of plants after the numeral.",
+   "wrong": {
+    "lemma": "ต้น",
+    "pos": "NOUN",
+    "note": "reads the second ต้น as the noun trunk/stem, as in ต้นไม้"
+   },
+   "relation": "clf",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-028",
+   "text": "authored",
+   "sentence": "ฉันซื้อจานสองใบ",
+   "start": 13,
+   "end": 15,
+   "surface": "ใบ",
+   "lemma": "ใบ",
+   "pos": "CLF",
+   "features": {},
+   "difficulty": "hard",
+   "category": "classifier",
+   "why_hard": "Classifier of flat or hollow things versus noun leaf.",
+   "wrong": {
+    "lemma": "ใบ",
+    "pos": "NOUN",
+    "note": "reads ใบ as the noun leaf"
+   },
+   "relation": "clf",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-029",
+   "text": "authored",
+   "sentence": "เด็กคนนี้อ่านภาษาไทยได้",
+   "start": 20,
+   "end": 23,
+   "surface": "ได้",
+   "lemma": "ได้",
+   "pos": "AUX",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "ได้ after a verb marks ability, not obtaining.",
+   "wrong": {
+    "lemma": "ได้",
+    "pos": "VERB",
+    "note": "takes ได้ as the full verb to get/obtain"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-030",
+   "text": "authored",
+   "sentence": "เมื่อวานฉันได้กินข้าวกับเพื่อน",
+   "start": 11,
+   "end": 14,
+   "surface": "ได้",
+   "lemma": "ได้",
+   "pos": "AUX",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "ได้ before a verb marks that the event was realised (got to), not ability.",
+   "wrong": {
+    "lemma": "ได้",
+    "pos": "VERB",
+    "note": "takes ได้ as the verb to get"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-031",
+   "text": "authored",
+   "sentence": "หนังสือที่ฉันอ่านสนุกมาก",
+   "start": 7,
+   "end": 10,
+   "surface": "ที่",
+   "lemma": "ที่",
+   "pos": "SCONJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "Relative-clause marker, not the noun place.",
+   "wrong": {
+    "lemma": "ที่",
+    "pos": "NOUN",
+    "note": "takes ที่ as the noun place"
+   },
+   "relation": "mark",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-032",
+   "text": "authored",
+   "sentence": "ฉันรอเพื่อนที่สถานี",
+   "start": 11,
+   "end": 14,
+   "surface": "ที่",
+   "lemma": "ที่",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "Preposition at before a place noun.",
+   "wrong": {
+    "lemma": "ที่",
+    "pos": "SCONJ",
+    "note": "takes ที่ as the relative marker"
+   },
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-033",
+   "text": "authored",
+   "sentence": "ฉันหาที่จอดรถไม่ได้",
+   "start": 5,
+   "end": 8,
+   "surface": "ที่",
+   "lemma": "ที่",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "Noun place followed by a verb phrase (a place to park).",
+   "wrong": {
+    "lemma": "ที่",
+    "pos": "SCONJ",
+    "note": "takes ที่ as the relative marker"
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-034",
+   "text": "authored",
+   "sentence": "แม่ให้เงินน้องร้อยบาท",
+   "start": 3,
+   "end": 6,
+   "surface": "ให้",
+   "lemma": "ให้",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "Main verb to give.",
+   "wrong": {
+    "lemma": "ให้",
+    "pos": "ADP",
+    "note": "takes ให้ as the preposition for"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-035",
+   "text": "authored",
+   "sentence": "พ่อให้ลูกล้างจาน",
+   "start": 3,
+   "end": 6,
+   "surface": "ให้",
+   "lemma": "ให้",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "Causative let/make with a following clause.",
+   "wrong": {
+    "lemma": "ให้",
+    "pos": "ADP",
+    "note": "takes ให้ as the preposition for"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-036",
+   "text": "authored",
+   "sentence": "แม่ซื้อหนังสือให้น้อง",
+   "start": 14,
+   "end": 17,
+   "surface": "ให้",
+   "lemma": "ให้",
+   "pos": "ADP",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "Benefactive for after the object.",
+   "wrong": {
+    "lemma": "ให้",
+    "pos": "VERB",
+    "note": "takes ให้ as the verb to give"
+   },
+   "relation": "case",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-037",
+   "text": "authored",
+   "sentence": "ในห้องมีโต๊ะสามตัว",
+   "start": 6,
+   "end": 8,
+   "surface": "มี",
+   "lemma": "มี",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "Existential there is, with the place first and no subject.",
+   "wrong": {
+    "lemma": "มี",
+    "pos": "AUX",
+    "note": "takes มี as an auxiliary"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-038",
+   "text": "authored",
+   "sentence": "เขาเดินไปโรงเรียน",
+   "start": 7,
+   "end": 9,
+   "surface": "ไป",
+   "lemma": "ไป",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "Directional go after another verb.",
+   "wrong": {
+    "lemma": "ไป",
+    "pos": "AUX",
+    "note": "takes ไป as an aspect marker"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-039",
+   "text": "authored",
+   "sentence": "เขากินข้าวไปคุยไป",
+   "start": 10,
+   "end": 12,
+   "surface": "ไป",
+   "lemma": "ไป",
+   "pos": "AUX",
+   "features": {
+    "Aspect": "Prog"
+   },
+   "difficulty": "hard",
+   "category": "particle-polysemy",
+   "why_hard": "In the doubled ...ไป...ไป frame, ไป marks simultaneous continuing action.",
+   "wrong": {
+    "lemma": "ไป",
+    "pos": "VERB",
+    "note": "takes ไป as the verb go"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-040",
+   "text": "authored",
+   "sentence": "เขาหยิบหนังสือมาอ่าน",
+   "start": 14,
+   "end": 16,
+   "surface": "มา",
+   "lemma": "มา",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "serial-verb",
+   "why_hard": "มา in a serial verb construction is the verb come to (and then).",
+   "wrong": {
+    "lemma": "มา",
+    "pos": "AUX",
+    "note": "takes มา as an aspect auxiliary (since)"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-041",
+   "text": "authored",
+   "sentence": "นกบินขึ้นไปบนต้นไม้",
+   "start": 5,
+   "end": 9,
+   "surface": "ขึ้น",
+   "lemma": "ขึ้น",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "serial-verb",
+   "why_hard": "Verb go up in a serial chain บิน-ขึ้น-ไป.",
+   "wrong": {
+    "lemma": "ขึ้น",
+    "pos": "ADP",
+    "note": "takes ขึ้น as the preposition up/on"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-042",
+   "text": "authored",
+   "sentence": "เด็กวิ่งออกไปนอกบ้าน",
+   "start": 8,
+   "end": 11,
+   "surface": "ออก",
+   "lemma": "ออก",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "serial-verb",
+   "why_hard": "Verb exit in a serial chain.",
+   "wrong": {
+    "lemma": "ออก",
+    "pos": "ADP",
+    "note": "takes ออก as the preposition from/out of"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-043",
+   "text": "authored",
+   "sentence": "แม่เดินเข้าไปในครัว",
+   "start": 7,
+   "end": 11,
+   "surface": "เข้า",
+   "lemma": "เข้า",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "serial-verb",
+   "why_hard": "Verb enter in a serial chain with ไป.",
+   "wrong": {
+    "lemma": "เข้า",
+    "pos": "ADP",
+    "note": "takes เข้า as the preposition into"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-044",
+   "text": "authored",
+   "sentence": "เธอเดินไปซื้อของที่ตลาด",
+   "start": 7,
+   "end": 9,
+   "surface": "ไป",
+   "lemma": "ไป",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "serial-verb",
+   "why_hard": "Verb go in a chain walk-go-buy.",
+   "wrong": {
+    "lemma": "ไป",
+    "pos": "AUX",
+    "note": "takes ไป as an aspect marker"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-045",
+   "text": "authored",
+   "sentence": "เขาลงไปข้างล่าง",
+   "start": 3,
+   "end": 5,
+   "surface": "ลง",
+   "lemma": "ลง",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "serial-verb",
+   "why_hard": "Verb go down, followed by ไป.",
+   "wrong": {
+    "lemma": "ลง",
+    "pos": "ADP",
+    "note": "takes ลง as the preposition down"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-046",
+   "text": "authored",
+   "sentence": "พ่อขับรถกลับบ้าน",
+   "start": 8,
+   "end": 12,
+   "surface": "กลับ",
+   "lemma": "กลับ",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "serial-verb",
+   "why_hard": "Verb return in a chain drive-return, with บ้าน its goal.",
+   "wrong": {
+    "lemma": "กลับ",
+    "pos": "ADV",
+    "note": "takes กลับ as an adverb back"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-047",
+   "text": "authored",
+   "sentence": "ฉันไม่ชอบกินผัก",
+   "start": 3,
+   "end": 6,
+   "surface": "ไม่",
+   "lemma": "ไม่",
+   "pos": "PART",
+   "features": {
+    "Polarity": "Neg"
+   },
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "Negative marker before the verb.",
+   "wrong": {
+    "lemma": "ไม่",
+    "pos": "ADV",
+    "note": "treats ไม่ as a plain adverb with no polarity feature"
+   },
+   "relation": "advmod"
+  },
+  {
+   "id": "th-hard-048",
+   "text": "authored",
+   "sentence": "เขายังไม่มา",
+   "start": 3,
+   "end": 6,
+   "surface": "ยัง",
+   "lemma": "ยัง",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "ยังไม่ is not yet.",
+   "wrong": {
+    "lemma": "ยัง",
+    "pos": "ADP",
+    "note": "takes ยัง as the preposition to (as in ยังที่)"
+   },
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-049",
+   "text": "authored",
+   "sentence": "ฉันเคยไปเชียงใหม่",
+   "start": 3,
+   "end": 6,
+   "surface": "เคย",
+   "lemma": "เคย",
+   "pos": "AUX",
+   "features": {
+    "Aspect": "Perf"
+   },
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "Experiential aspect marker before the verb.",
+   "wrong": {
+    "lemma": "เคย",
+    "pos": "VERB",
+    "note": "takes เคย as a verb to be used to"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-050",
+   "text": "authored",
+   "sentence": "แม่กำลังทำอาหาร",
+   "start": 3,
+   "end": 8,
+   "surface": "กำลัง",
+   "lemma": "กำลัง",
+   "pos": "AUX",
+   "features": {
+    "Aspect": "Prog"
+   },
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "Progressive marker before the verb.",
+   "wrong": {
+    "lemma": "กำลัง",
+    "pos": "NOUN",
+    "note": "takes กำลัง as the noun strength/power"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-051",
+   "text": "authored",
+   "sentence": "แม่ทำอาหารอยู่",
+   "start": 10,
+   "end": 14,
+   "surface": "อยู่",
+   "lemma": "อยู่",
+   "pos": "AUX",
+   "features": {
+    "Aspect": "Prog"
+   },
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "Continuing marker after the verb.",
+   "wrong": {
+    "lemma": "อยู่",
+    "pos": "VERB",
+    "note": "takes อยู่ as the verb to live/stay"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-052",
+   "text": "authored",
+   "sentence": "ฝนตกแล้ว",
+   "start": 4,
+   "end": 8,
+   "surface": "แล้ว",
+   "lemma": "แล้ว",
+   "pos": "ADV",
+   "features": {
+    "Aspect": "Perf"
+   },
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "Sentence-final change-of-state marker.",
+   "wrong": {
+    "lemma": "แล้ว",
+    "pos": "CONJ",
+    "note": "takes แล้ว as the connective then"
+   },
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-053",
+   "text": "authored",
+   "sentence": "อย่าลืมปิดประตู",
+   "start": 0,
+   "end": 4,
+   "surface": "อย่า",
+   "lemma": "อย่า",
+   "pos": "AUX",
+   "features": {},
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "Prohibitive marker before a verb.",
+   "wrong": {
+    "lemma": "อย่า",
+    "pos": "ADV",
+    "note": "takes อย่า as an adverb or as a noun"
+   },
+   "relation": "aux"
+  },
+  {
+   "id": "th-hard-054",
+   "text": "authored",
+   "sentence": "ฉันไม่ได้กินข้าวเช้า",
+   "start": 6,
+   "end": 9,
+   "surface": "ได้",
+   "lemma": "ได้",
+   "pos": "AUX",
+   "features": {},
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "ไม่ได้ + verb is the past negative.",
+   "wrong": {
+    "lemma": "ได้",
+    "pos": "VERB",
+    "note": "takes ได้ as the verb get, ignoring that ไม่ได้ negates the past"
+   },
+   "relation": "aux",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-055",
+   "text": "authored",
+   "sentence": "ฉันไม่หิวเลย",
+   "start": 9,
+   "end": 12,
+   "surface": "เลย",
+   "lemma": "เลย",
+   "pos": "PART",
+   "features": {},
+   "difficulty": "hard",
+   "category": "negation-aspect-marker",
+   "why_hard": "Emphatic particle closing a negative clause (not at all).",
+   "wrong": {
+    "lemma": "เลย",
+    "pos": "VERB",
+    "note": "takes เลย as the verb to pass beyond"
+   },
+   "relation": "discourse",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-056",
+   "text": "authored",
+   "sentence": "เธอเกิดที่เชียงใหม่",
+   "start": 10,
+   "end": 19,
+   "surface": "เชียงใหม่",
+   "lemma": "เชียงใหม่",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "City name made of two syllables, one of which is a common word.",
+   "wrong": {
+    "lemma": "ใหม่",
+    "pos": "ADJ",
+    "note": "cuts off เชียง and tags ใหม่ as the adjective new"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "th-hard-057",
+   "text": "authored",
+   "sentence": "ฉันใช้คอมพิวเตอร์ทำงาน",
+   "start": 6,
+   "end": 17,
+   "surface": "คอมพิวเตอร์",
+   "lemma": "คอมพิวเตอร์",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Transliterated English word, not in a native word list.",
+   "wrong": {
+    "lemma": "คอม",
+    "pos": "X",
+    "note": "cuts the loanword into unknown fragments"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-058",
+   "text": "authored",
+   "sentence": "เขาซื้อโทรศัพท์เครื่องใหม่",
+   "start": 7,
+   "end": 15,
+   "surface": "โทรศัพท์",
+   "lemma": "โทรศัพท์",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Sanskrit-derived compound noun: telephone.",
+   "wrong": {
+    "lemma": "โทร",
+    "pos": "VERB",
+    "note": "takes โทร (to call) and leaves ศัพท์ over"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-059",
+   "text": "authored",
+   "sentence": "พี่ชายไปเรียนที่แคนาดา",
+   "start": 16,
+   "end": 22,
+   "surface": "แคนาดา",
+   "lemma": "แคนาดา",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Transliterated place name.",
+   "wrong": {
+    "lemma": "แคนาดา",
+    "pos": "NOUN",
+    "note": "tags a country name as a common noun"
+   },
+   "relation": "nmod"
+  },
+  {
+   "id": "th-hard-060",
+   "text": "authored",
+   "sentence": "เด็กๆ ชอบกินไอศกรีม",
+   "start": 12,
+   "end": 19,
+   "surface": "ไอศกรีม",
+   "lemma": "ไอศกรีม",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Transliterated English word.",
+   "wrong": {
+    "lemma": "ไอ",
+    "pos": "X",
+    "note": "cuts the loanword at ไอ (cough/steam)"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-061",
+   "text": "authored",
+   "sentence": "ฉันรักประเทศไทย",
+   "start": 6,
+   "end": 15,
+   "surface": "ประเทศไทย",
+   "lemma": "ประเทศไทย",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Country name with a common-noun head.",
+   "wrong": {
+    "lemma": "ประเทศ",
+    "pos": "NOUN",
+    "note": "takes only ประเทศ (country) and ไทย as a separate adjective"
+   },
+   "relation": "obj",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-062",
+   "text": "authored",
+   "sentence": "โยนาห์อธิษฐานต่อพระเจ้า",
+   "start": 0,
+   "end": 6,
+   "surface": "โยนาห์",
+   "lemma": "โยนาห์",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Transliterated personal name.",
+   "wrong": {
+    "lemma": "โยนาห์",
+    "pos": "X",
+    "note": "leaves the biblical name unknown"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "th-hard-063",
+   "text": "authored",
+   "sentence": "เราไปกินพิซซ่าที่ร้านใหม่",
+   "start": 8,
+   "end": 14,
+   "surface": "พิซซ่า",
+   "lemma": "พิซซ่า",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Transliterated English word.",
+   "wrong": {
+    "lemma": "พิซซ่า",
+    "pos": "X",
+    "note": "leaves the loanword unknown"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-064",
+   "text": "authored",
+   "sentence": "ผมเล่นเฟซบุ๊กทุกวัน",
+   "start": 6,
+   "end": 13,
+   "surface": "เฟซบุ๊ก",
+   "lemma": "เฟซบุ๊ก",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Transliterated brand name.",
+   "wrong": {
+    "lemma": "เฟซ",
+    "pos": "X",
+    "note": "cuts the brand name into fragments"
+   },
+   "relation": "obj"
+  },
+  {
+   "id": "th-hard-065",
+   "text": "authored",
+   "sentence": "สุนัขของเขาชื่อทองดี",
+   "start": 15,
+   "end": 20,
+   "surface": "ทองดี",
+   "lemma": "ทองดี",
+   "pos": "PROPN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "loanword-or-name",
+   "why_hard": "Personal name that looks like two common words.",
+   "wrong": {
+    "lemma": "ทอง",
+    "pos": "NOUN",
+    "note": "cuts the name into ทอง (gold) + ดี (good)"
+   },
+   "relation": "xcomp",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-066",
+   "text": "authored",
+   "sentence": "แม่เดินช้าๆ",
+   "start": 7,
+   "end": 11,
+   "surface": "ช้าๆ",
+   "lemma": "ช้า",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "Repetition mark ๆ doubles ช้า; the lemma is the word without it.",
+   "wrong": {
+    "lemma": "ช้าๆ",
+    "pos": "X",
+    "note": "keeps ๆ in the lemma"
+   },
+   "relation": "advmod"
+  },
+  {
+   "id": "th-hard-067",
+   "text": "authored",
+   "sentence": "เด็กๆ วิ่งเล่นในสวน",
+   "start": 0,
+   "end": 5,
+   "surface": "เด็กๆ",
+   "lemma": "เด็ก",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "Repetition of a noun marks plural/distributive meaning, and the lemma is เด็ก.",
+   "wrong": {
+    "lemma": "เด็กๆ",
+    "pos": "X",
+    "note": "keeps ๆ in the lemma"
+   },
+   "relation": "nsubj"
+  },
+  {
+   "id": "th-hard-068",
+   "text": "authored",
+   "sentence": "เธอมีตาเล็กๆ",
+   "start": 7,
+   "end": 12,
+   "surface": "เล็กๆ",
+   "lemma": "เล็ก",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "Repetition of an adjective softens or intensifies; lemma เล็ก.",
+   "wrong": {
+    "lemma": "เล็กๆ",
+    "pos": "X",
+    "note": "keeps ๆ in the lemma"
+   },
+   "relation": "amod"
+  },
+  {
+   "id": "th-hard-069",
+   "text": "authored",
+   "sentence": "เขาค่อยๆ เปิดประตู",
+   "start": 3,
+   "end": 8,
+   "surface": "ค่อยๆ",
+   "lemma": "ค่อย",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "ค่อยๆ is a fixed doubling that means slowly.",
+   "wrong": {
+    "lemma": "ค่อยๆ",
+    "pos": "X",
+    "note": "keeps ๆ in the lemma or tags it as particle ค่อย"
+   },
+   "relation": "advmod",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-070",
+   "text": "authored",
+   "sentence": "ฉันไปห้องสมุดบ่อยๆ",
+   "start": 13,
+   "end": 18,
+   "surface": "บ่อยๆ",
+   "lemma": "บ่อย",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "Repetition marks emphasis.",
+   "wrong": {
+    "lemma": "บ่อยๆ",
+    "pos": "X",
+    "note": "keeps ๆ in the lemma"
+   },
+   "relation": "advmod"
+  },
+  {
+   "id": "th-hard-071",
+   "text": "authored",
+   "sentence": "ขอน้ำเย็นๆ แก้วหนึ่ง",
+   "start": 5,
+   "end": 10,
+   "surface": "เย็นๆ",
+   "lemma": "เย็น",
+   "pos": "ADJ",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "Repetition with an adjective reading; เย็น is also the noun evening.",
+   "wrong": {
+    "lemma": "เย็น",
+    "pos": "NOUN",
+    "note": "takes เย็น as the noun evening and keeps ๆ"
+   },
+   "relation": "amod",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-072",
+   "text": "authored",
+   "sentence": "วันๆ เขาไม่ทำอะไรเลย",
+   "start": 0,
+   "end": 4,
+   "surface": "วันๆ",
+   "lemma": "วัน",
+   "pos": "NOUN",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "Doubled วัน means all day long.",
+   "wrong": {
+    "lemma": "วันๆ",
+    "pos": "X",
+    "note": "keeps ๆ in the lemma"
+   },
+   "relation": "obl"
+  },
+  {
+   "id": "th-hard-073",
+   "text": "authored",
+   "sentence": "คุณกินข้าวหรือยัง ยังครับ",
+   "start": 18,
+   "end": 21,
+   "surface": "ยัง",
+   "lemma": "ยัง",
+   "pos": "ADV",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "Whole answer is the bare adverb: not yet, with the verb understood from the question.",
+   "wrong": {
+    "lemma": "ยัง",
+    "pos": "ADP",
+    "note": "takes the elliptical answer ยัง as the preposition to, or fails to recover the omitted verb"
+   },
+   "relation": "root",
+   "ambiguous": true
+  },
+  {
+   "id": "th-hard-074",
+   "text": "authored",
+   "sentence": "ไปด้วยกันไหม ได้ครับ",
+   "start": 13,
+   "end": 16,
+   "surface": "ได้",
+   "lemma": "ได้",
+   "pos": "VERB",
+   "features": {},
+   "difficulty": "hard",
+   "category": "reduplication-or-ellipsis",
+   "why_hard": "Elliptical answer okay / can, a sentence in itself.",
+   "wrong": {
+    "lemma": "ได้",
+    "pos": "AUX",
+    "note": "takes ได้ as an auxiliary though no verb follows"
+   },
+   "relation": "root",
+   "ambiguous": true
+  }
+ ]
+}

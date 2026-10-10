@@ -88,6 +88,11 @@ it); calls made inside `fn` (also through `await`) run in it. A transaction insi
 
 ## Migrations
 
+*Field states (Stage 7, contract row revision 3.1) needed no migration:* `units` and `analyses` keep the full row as JSON, so the optional `fieldStates`
+key is just more JSON (`schema.sql` is unchanged). The shared rules do two things with it: `invalidateAnalysis` sets every stated field to `invalidated`
+(`rules.invalidated`), and a rewrite by a producer that states no `fieldStates` keeps the stored ones (`carried`, `carriedAnalysis`). A row written before
+Stage 7 has none and reads `unknown` for every field.
+
 **Add `migrations/NNN-short-name.sql` (next number, three digits at least); never edit an applied file.**
 
 1. The runner (`applyMigrations`, called by `openSqliteStore`) creates `schema_version` if needed, then applies every file

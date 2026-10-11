@@ -17,7 +17,7 @@ import { languageNameOf } from './languageNames';
 export interface LexicalRecord {
   w: string; p: string; e?: number;
   s?: Array<{ g: string; t?: string[]; x?: string[] }>;
-  f?: Array<{ f: string; t: string[]; s?: string }>;
+  f?: Array<{ f: string; t: string[]; s?: string; r?: string }>;
   tpl?: string[]; rom?: string;
   ipa?: Array<{ i: string; t?: string[] }>;
   audio?: Array<{ u: string; n?: string; t?: string[] }>;
@@ -175,6 +175,16 @@ export function etymologyStepText(c: EtymologyView['chain'][number], names: Reco
 export function cognateText(c: EtymologyView['cognates'][number], names: Record<string, string>): string {
   const lang = c.language ? names[c.language] ?? languageNameOf(c.language) : undefined;
   return `${lang ? `${lang} ` : c.language ? `${c.language}: ` : ''}${c.form ?? ''}${c.gloss ? ` (“${c.gloss}”)` : ''}`.trim();
+}
+
+/** The romanization the dictionary gives for each form of a table (Hindi tables carry it as `r` on the form row), by form. Empty when the record has none. */
+export function formRomanOf(record: LexicalRecord | undefined): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const row of (record?.f ?? []).slice(0, 200)) {
+    const form = str(row?.f, 80); const rom = str(row?.r, 80);
+    if (form && rom && !(form in out)) out[form] = rom;
+  }
+  return out;
 }
 
 /** Pronunciation: the dictionary's IPA, hyphenation, romanisation and recordings, with the analyser's notes beside them. */

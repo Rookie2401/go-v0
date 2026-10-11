@@ -80,7 +80,7 @@ export interface ConstructionNote {
 }
 
 /** One word of the sentence, for the word-by-word list (Layer 5). */
-export interface SentenceWord { surface: string; lemma?: string; pos?: string; gloss?: string; confidence: number; selected: boolean }
+export interface SentenceWord { surface: string; lemma?: string; pos?: string; gloss?: string; confidence: number; selected: boolean; /** The adapter's romanization of this word, when it is sure of it (Hindi, Thai); never for a Latin-script language. */ transliteration?: string }
 
 /** The plain-words line about the context the card was made from. */
 export function contextLine(c: ContextReport): string {
@@ -117,6 +117,10 @@ export interface CardModel {
   /** Honest remarks: ambiguity, missing context, unit membership, script mismatch. */
   notes: string[];
   pronunciation: string[];
+  /** The adapter's rule-based romanization of the selected word, only when the adapter is sure of every unit of it (Hindi, Thai); absent for Latin scripts. Never invented. */
+  transliteration?: string;
+  /** The same for the lemma, when it differs from the selection and the adapter can romanize it on its own. */
+  lemmaTransliteration?: string;
   context: ContextReport;
   /** Item ids for the encounter: lemma ids when creditable, otherwise form ids. */
   itemIds: string[];

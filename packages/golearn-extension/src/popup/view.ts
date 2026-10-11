@@ -31,6 +31,8 @@ export interface EnrichmentView {
   /** The word's parts, what it derives from and its family (Stage 5), each with its source and a status. */
   structure?: WordStructureView;
   pronunciation?: PronunciationView;
+  /** The dictionary's romanization of each form of its table (Hindi), by form; the All forms cells show it under the form. */
+  formRoman?: Record<string, string>;
   relations?: RelationsView;
   senses?: Array<{ gloss: string; tags: string[]; examples: string[] }>;
   attribution?: string;

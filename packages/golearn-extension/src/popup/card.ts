@@ -117,6 +117,11 @@ const CSS = `
 .kicker { letter-spacing: 0.12em; text-transform: uppercase; color: #a89c86; font-size: 0.66em; font-weight: 600; margin-top: 0.1em; }
 .lemmaLine { display: flex; gap: 0.6em; align-items: baseline; flex-wrap: wrap; margin-top: 0.5em; }
 .lemmaLine .lv { font-size: 1.05em; color: #d9cfbe; }
+.translit { font-style: italic; color: #a89c86; font-size: 0.95em; line-height: 1.3; }
+.wordTranslit { margin: 0 0 0.1em; }
+.lemmaLine .translit { font-size: 0.9em; }
+.pcell .rom { display: block; font-style: italic; color: #a89c86; font-size: 0.85em; }
+.sentenceRom { color: #a89c86; font-style: italic; }
 .lemmaLine .pos { font-variant: small-caps; letter-spacing: 0.06em; color: #a89c86; font-size: 0.85em; margin-inline-start: 0.35em; }
 .card__text { font-size: 0.9em; line-height: 1.5; color: #a89c86; font-style: italic; margin-top: 0.4em; }
 .sub { font-size: 0.78em; line-height: 1.3; margin: 2px 0 0; }
@@ -426,11 +431,20 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const m = model; const v = view;
     const { text, attr, muted, from } = meaningText(m, v);
     const gloss = h('div', { class: muted ? 'meaning card__gloss muted' : 'meaning card__gloss', 'data-row': 'meaning' }, h('span', { class: muted ? '' : 'card__gloss--quote' }, text), attr ? ' ' : null, attr ? h('span', { class: 'kicker attr' }, `(${attr})`) : null);
-    const rows: HTMLElement[] = [gloss];
+    const dictRom = v.enrichment.pronunciation?.romanization;
+    const sameWord = !m.lemma || m.lemma.normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
+    // the transliteration: the adapter's rule-based romanization first; the dictionary's romanization of the lemma (Level 2) when the adapter has none
+    const wordRom = m.transliteration ?? (sameWord && m.tokenCount === 1 ? dictRom : undefined);
+    const wordRomSource = m.transliteration ? 'Romanization by the analyser\'s rules' : 'Wiktionary romanization';
+    const rows: HTMLElement[] = [];
+    if (wordRom) rows.push(h('div', { class: 'translit wordTranslit', role: 'note', 'aria-label': 'transliteration', title: wordRomSource, 'data-row': 'transliteration' }, wordRom));
+    rows.push(gloss);
     if (from) rows.push(h('div', { class: 'kicker' }, `Meaning · ${from}`));
     const same = !m.lemma || m.lemma.normalize('NFC').toLowerCase() === m.surface.normalize('NFC').trim().toLowerCase();
     if (!same && m.lemma && m.tokenCount === 1) {
-      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
+      const lemmaRom = m.lemmaTransliteration ?? dictRom;
+      const lemmaRomSource = m.lemmaTransliteration ? 'Romanization by the analyser\'s rules' : 'Wiktionary romanization';
+      rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), lemmaRom ? h('span', { class: 'translit', role: 'note', 'aria-label': 'lemma transliteration', title: lemmaRomSource }, lemmaRom) : null, h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
     }
     if (m.unconfirmed && m.tokenCount === 1) rows.push(h('div', { class: 'card__text' }, 'The lemma is a guess from the ending; the word list does not hold this word.'));
     if (m.words.length > 1) {
@@ -709,7 +723,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const ul = h('ul', {});
     for (const w of m.sentenceWords) {
       const rest = `${w.pos ? ` (${w.pos})` : ''}${w.gloss ? ` – ${w.gloss}` : ''}`;
-      ul.append(h('li', w.selected ? { class: 'sel' } : {}, h('span', { lang: m.languageId }, w.surface), ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', w.lemma ? rest : ''));
+      ul.append(h('li', w.selected ? { class: 'sel' } : {}, h('span', { lang: m.languageId }, w.surface), w.transliteration ? h('span', { class: 'sentenceRom' }, ` (${w.transliteration})`) : null, ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', w.lemma ? rest : ''));
     }
     panel.append(ul);
   }
@@ -760,11 +774,12 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       const byFeatures = Object.keys(feats).length ? cellOf(p, feats) : undefined;
       if (byFeatures) selected.add(byFeatures); else for (const c of cellsWithForm(p, m.surface)) selected.add(c);
     }
+    const formRom = v.enrichment.formRoman;
     const cellNode = (c: ParadigmCell | undefined): HTMLElement => {
       if (!c) return h('td', { class: 'pcell none' }, '—');
       const text = c.status === 'conflicted' && c.alternatives?.length ? `${c.form} / ${c.alternatives.join(' / ')}` : c.form;
       const sources = c.sources.map((source) => source === 'generated' ? 'analyser rules' : 'dictionary table').join(' + ');
-      return h('td', { class: `pcell ${c.status}${selected.has(c) ? ' sel' : ''}`, title: `${STATUS_LABEL[c.status]} (${sources})${c.note ? `; ${c.note}` : ''}` }, h('span', { lang: m.languageId }, text), h('span', { class: 'pmark', 'aria-label': STATUS_LABEL[c.status] }, STATUS_MARK[c.status]));
+      return h('td', { class: `pcell ${c.status}${selected.has(c) ? ' sel' : ''}`, title: `${STATUS_LABEL[c.status]} (${sources})${c.note ? `; ${c.note}` : ''}` }, h('span', { lang: m.languageId }, text), h('span', { class: 'pmark', 'aria-label': STATUS_LABEL[c.status] }, STATUS_MARK[c.status]), formRom && formRom[c.form] ? h('span', { class: 'rom', title: 'Wiktionary romanization' }, formRom[c.form]) : null);
     };
     const L = p.layout;
     if (L) {

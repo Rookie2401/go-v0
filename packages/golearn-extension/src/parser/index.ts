@@ -147,6 +147,7 @@ export function parseSelection(input: ParseInput): CardModel {
   let lemma: string | undefined; let pos: string | undefined; let gloss: string | undefined; let morphology: string | undefined;
   let confidence = 0; let provenance: CardProvenance = 'none'; let source; let unconfirmed = false;
   const basis: string[] = []; let pronunciation: string[] = []; const alternatives: Alternative[] = [];
+  let transliteration: string | undefined; let lemmaTransliteration: string | undefined;
   let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = []; let syntax: SyntaxNote | undefined;
   const constructions: ConstructionNote[] = patternsFor(L, tokens, analyses, selected).map((p) => ({
     id: p.key, unitId: unitIds.syntactic(L.lang, p.key), title: p.title, explanation: p.explanation, confidence: clamp01(p.confidence), source: 'pattern' as const,
@@ -155,7 +156,9 @@ export function parseSelection(input: ParseInput): CardModel {
   if (selected.length === 1) {
     const i = selected[0];
     const c = best[0];
-    pronunciation = L.adapter.pronunciation(tokens[i], analyses[i]).notes ?? [];
+    const pron = L.adapter.pronunciation(tokens[i], analyses[i]);
+    pronunciation = pron.notes ?? [];
+    transliteration = romanOf(pron.transliteration, tokens[i].surface);
     if (selStart > tokens[i].start || selEnd < tokens[i].end) notes.push(`The selection is part of the word "${tokens[i].surface}"; the reading is for the whole word.`);
     if (c) {
       lemma = c.lemma; pos = c.pos; gloss = c.unconfirmed ? undefined : c.gloss;
@@ -164,6 +167,7 @@ export function parseSelection(input: ParseInput): CardModel {
       provenance = provenanceOf(c);
       unconfirmed = !!c.unconfirmed;
       source = sourceOf(c);
+      lemmaTransliteration = lemmaRomanOf(L, c.lemma, tokens[i].surface, transliteration);
       features = Object.entries(c.morph ?? {}).filter(([, v]) => typeof v === 'string' && v).map(([key, value]) => ({ key, value }));
       role = typeof c.role === 'string' && c.role ? c.role : undefined;
       syntax = syntaxNoteFor(L, tokens, analyses, i);
@@ -213,7 +217,8 @@ export function parseSelection(input: ParseInput): CardModel {
     tokens.forEach((t, i) => {
       if (!t.isWord || sentenceWords.length >= MAX_SENTENCE_WORDS) return;
       const l = i === selected[0] || selected.includes(i) ? lines[selected.indexOf(i)] : lineOf(t, pick(analyses[i]));
-      sentenceWords.push({ surface: t.surface, lemma: l.lemma, pos: l.pos, gloss: l.gloss, confidence: l.confidence, selected: selected.includes(i) });
+      const roman = romanOf(safeRoman(L, t, analyses[i]), t.surface);
+      sentenceWords.push({ surface: t.surface, lemma: l.lemma, pos: l.pos, gloss: l.gloss, confidence: l.confidence, selected: selected.includes(i), ...(roman ? { transliteration: roman } : {}) });
     });
   }
 
@@ -221,9 +226,33 @@ export function parseSelection(input: ParseInput): CardModel {
     ...base, lemma, pos, morphology, gloss, confidence, provenance, source, unconfirmed,
     phrases: phrases.map((p) => ({ display: p.display, kind: p.kind, gloss: p.gloss, confidence: clamp01(p.confidence) })),
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
-    alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, itemIds,
+    alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,
     features, constructions, role, syntaxNotes, ...(syntax ? { syntax } : {}), sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
   };
+}
+
+/** A romanization only when the adapter gave one that is not just the word again (a Latin-script word has none). */
+function romanOf(t: string | undefined, surface: string): string | undefined {
+  const v = typeof t === 'string' ? t.normalize('NFC').trim() : '';
+  return v && v !== surface.normalize('NFC').trim() ? v : undefined;
+}
+/** The adapter's romanization of a word, or undefined when it has none or throws (a romanization is an aid: it never breaks a card). */
+function safeRoman(L: Lang, token: RawToken, analysis: AnalyzedToken): string | undefined {
+  try { return L.adapter.pronunciation(token, analysis).transliteration; } catch { return undefined; }
+}
+/**
+ * The lemma's romanization, asked of the same adapter method on a token made from the lemma. Only when the lemma is a different single
+ * word and the adapter is sure of it on its own; an adapter that needs an analysis it cannot get leaves it undefined.
+ */
+function lemmaRomanOf(L: Lang, lemma: string | undefined, surface: string, own: string | undefined): string | undefined {
+  if (!lemma || lemma.normalize('NFC') === surface.normalize('NFC') || /\s/u.test(lemma)) return undefined;
+  try {
+    const toks = L.adapter.tokenize(lemma).filter((t) => t.isWord);
+    if (toks.length !== 1) return undefined;
+    const an = L.adapter.analyze(toks)[0];
+    const r = romanOf(L.adapter.pronunciation(toks[0], an).transliteration, lemma);
+    return r && r !== own ? r : undefined;
+  } catch { return undefined; }
 }
 
 /**

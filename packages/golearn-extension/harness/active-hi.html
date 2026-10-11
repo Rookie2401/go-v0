@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoLearn Active — Hindi harness page (transliteration; sentences from the course corpus data/corpus/hi, machine-drafted)</title>
+<style>
+  body { margin: 0; font: 18px/1.65 Georgia, serif; color: #222; background: #fafafa; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px; }
+  .controls { position: sticky; top: 0; background: #fff; padding: 8px 12px; border: 1px solid #ddd; z-index: 5; font: 14px/1.4 system-ui, sans-serif; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  #status { font-variant-numeric: tabular-nums; }
+  p { margin: 0 0 1em; }
+  textarea { width: 100%; font: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <div class="controls">
+    <label><input type="checkbox" id="active" checked> GoLearn Active</label>
+    <label><input type="checkbox" id="speak"> Speak on click</label>
+    <span id="status">starting…</span>
+  </div>
+  <h1>माँ और पापा — Hindi harness page (transliteration)</h1>
+  <p id="p0">यह माँ है। माँ रसोई में है। यह रसोई है। रसोई बड़ी है।</p>
+  <p id="p1">यह पापा हैं। पापा घर में हैं। पापा भी रसोई में हैं। माँ और पापा रसोई में हैं।</p>
+  <p id="p2">वह रवि है। वह मीरा है। रवि और मीरा घर में हैं। घर बड़ा है। रसोई भी बड़ी है।</p>
+  <p id="p3">मैं घर जाता हूँ। वह घर जाती है। हम घरों में रहते हैं।</p>
+</main>
+<script>
+  // A stand-in for the background worker, so the content script runs here as in the extension: the page answers its messages.
+  // Same stand-in as active.html, for Hindi: click a word to see the card with its transliteration (the adapter's rules), the lemma's, the dictionary's
+  // romanization in All forms (the "r" of the Hindi table rows) and the romanization after each word of "See full sentence".
+  (function () {
+    const rows = {};
+    const dim = (o) => Object.assign({ score: 0, confidence: 0, observations: 0, positive: 0, negative: 0 }, o);
+    const put = (id, dims) => { rows[id] = { unitId: id, dimensions: dims }; };
+    put('form:hi:घर', { exposure: dim({ observations: 3 }) });
+    put('form:hi:माँ', { exposure: dim({ observations: 1 }) });
+    const settings = { active: true, speakOnClick: false };
+    let contentListener = null;
+    const reply = (m) => {
+      switch (m.type) {
+        case 'golearn:status': return { ok: true, connected: false, needsSignIn: false, languageId: 'hi', languageName: 'Hindi', packAvailable: true, installedLanguages: ['hi'] };
+        case 'golearn:active': return { ok: true, settings, granted: true, registered: true, excluded: 9 };
+        case 'golearn:profile':
+        case 'golearn:active-profile': { const out = {}; for (const id of m.unitIds || []) if (rows[id]) out[id] = rows[id]; return { ok: true, connected: false, source: 'device', rows: out, depth: 'brief', depthOrigin: 'default' }; }
+        // the dictionary's meanings with the sources the worker names (the links are built by the worker from app/config.json `sourceLinks`)
+        case 'golearn:gloss': {
+          const asked = [m.lemma, ...(m.forms || [])].map((x) => String(x || ''));
+          const senses = { 'घर': ['house', 'home'], 'माँ': ['mother'], 'पापा': ['father'], 'रसोई': ['kitchen'], 'बड़ा': ['big'], 'जाना': ['to go'] };
+          const hit = Object.keys(senses).find((w) => asked.includes(w));
+          if (!hit) return { ok: true, found: false, senses: [], reason: 'not-found', source: 'extension' };
+          return { ok: true, found: true, senses: senses[hit], attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', source: 'extension', sources: [
+            { label: 'Wiktionary: ' + hit + ' (Hindi)', url: 'https://en.wiktionary.org/wiki/' + encodeURIComponent(hit) + '#Hindi', licence: 'CC BY-SA 4.0' },
+            { label: 'kaikki.org: Hindi dictionary', url: 'https://kaikki.org/dictionary/Hindi/', licence: 'CC BY-SA 4.0' },
+            { label: 'Course word list (adapter-hi@harness)' },
+          ] };
+        }
+        // the dictionary's full record of घर as the Hindi shard holds it: the lemma's romanization (rom) and the romanization of each table row (r)
+        case 'golearn:entry': {
+          const asked = [m.lemma, ...(m.forms || [])].map((x) => String(x || ''));
+          if (!asked.some((x) => ['घर', 'घरों'].includes(x))) return { ok: true, found: false, records: [], reason: 'not-found', source: 'extension' };
+          return { ok: true, found: true, source: 'extension', attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', records: [{ w: 'घर', p: 'NOUN', s: [{ g: 'house, home' }], rom: 'ghar', tpl: ['hi-noun'], f: [
+            { f: 'घर', t: ['direct', 'singular'], s: 'declension', r: 'ghar' }, { f: 'घर', t: ['direct', 'plural'], s: 'declension', r: 'ghar' },
+            { f: 'घर', t: ['oblique', 'singular'], s: 'declension', r: 'ghar' }, { f: 'घरों', t: ['oblique', 'plural'], s: 'declension', r: 'gharõ' },
+            { f: 'घरो', t: ['vocative', 'plural'], s: 'declension', r: 'gharo' },
+          ] }] };
+        }
+        case 'golearn:explain': return { ok: true, features: [], constructions: [], source: 'none' };
+        case 'golearn:pronounce-info': return { ok: true, deviceVoice: 'maybe', remoteConsent: false, sources: [], note: '' };
+        // what the worker's device Repository does with an event, in miniature: a lookup is a meeting (exposure +1, and a mark of New is then released:
+        // the page reads a New mark with a later meeting as Seen), a level pressed on the card is the word's mark; the next scan shows the change
+        case 'golearn:record': {
+          const e = m.event || {};
+          for (const id of (e.subject && e.subject.itemIds) || []) {
+            const row = rows[id] || (rows[id] = { unitId: id, dimensions: {} });
+            if (e.kind === 'SelectionLookedUp') {
+              const x = row.dimensions.exposure || (row.dimensions.exposure = dim({}));
+              x.observations += 1; x.positive += 1; row.lastSeenAt = e.at;
+            } else if (e.kind === 'ItemMarked' && e.payload && e.payload.mark) {
+              row.selfMark = { mark: e.payload.mark, at: e.at };
+              row.lastSeenAt = e.at;
+            }
+          }
+          return { ok: true, attributed: 'local' };
+        }
+        case 'golearn:metrics': return { ok: true };
+        default: return { ok: false, error: 'unknown-message' };
+      }
+    };
+    window.chrome = {
+      runtime: {
+        id: 'harness',
+        onMessage: { addListener(cb) { contentListener = cb; }, removeListener() {} },
+        sendMessage: async (m) => reply(m),
+        getManifest: () => ({ version: 'harness' }),
+        getURL: (p) => '/dist/' + p,
+      },
+    };
+    const send = (m) => new Promise((resolve) => { if (!contentListener) return resolve(undefined); const r = contentListener(m, { id: 'harness' }, resolve); if (r !== true) resolve(undefined); });
+    window.__harness = {
+      send,
+      state: () => window.__goLearnExtension && window.__goLearnExtension.active.state,
+    };
+    const status = document.getElementById('status');
+    const paint = () => { const s = window.__harness.state(); if (!s) return; status.textContent = `${s.on ? 'on' : 'off'} · ${s.languageId || '—'} · ${s.scanned} words · new ${s.marked.new}, seen ${s.marked.seen}, recognized ${s.marked.recognized}, familiar ${s.marked.familiar}, known ${s.marked.known}, automatic ${s.marked.automatic} · scan ${s.scanMs ?? '?'} ms · model ${s.profileMs ?? '?'} ms · clicks ${s.clicks}${s.reason ? ' · ' + s.reason : ''}`; };
+    setInterval(paint, 300);
+    document.getElementById('active').addEventListener('change', (e) => { settings.active = e.target.checked; send(e.target.checked ? { type: 'golearn:activate', speak: settings.speakOnClick } : { type: 'golearn:deactivate' }); });
+    document.getElementById('speak').addEventListener('change', (e) => { settings.speakOnClick = e.target.checked; send({ type: 'golearn:activate', speak: settings.speakOnClick }); });
+  })();
+</script>
+<script src="/dist/content.harness.js"></script>
+</body>
+</html>

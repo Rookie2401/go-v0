@@ -34,7 +34,7 @@ import { unitIds } from '../../../repository-contract/src';
 import type { ContentServices, EventSink, MetricSink } from './services';
 import type { GoEvent } from '../../../repository-contract/src';
 import type { LanguageAdapter, PartOfSpeech } from '../../../../src/core';
-import { buildParadigm, etymologyOf, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, structureOf, type LexicalRecord } from './enrich';
+import { buildParadigm, etymologyOf, formRomanOf, pickRecord, pronunciationOf, relationsOf, segmentationsOf, selectedCellKeys, sensesOf, structureOf, type LexicalRecord } from './enrich';
 import type { TranslationRequest, TranslationResult } from '../translation/provider';
 
 export interface TranslationEngine {
@@ -419,9 +419,7 @@ export class LookupController {
                   ? 'The source language is uncertain, so GoLearn did not guess.'
                   : result.reason === 'input-too-long'
                     ? 'This sentence is too long to translate. Select a shorter sentence and try again.'
-                    : language.languageId === 'sq'
-                      ? 'The local Albanian translation service is not ready, or no installed browser model supports this sentence. Start the local translation service and try again.'
-                      : 'No installed browser model supports this language pair. Choose a supported language and try again.';
+                    : 'The local translation service is not ready for this language pair, or no installed local model supports it. Start the local translation service and try again.';
               this.d.ui.update({ sentenceTranslation: { state: 'error', processingMode, message } });
               return;
             }
@@ -531,7 +529,7 @@ export class LookupController {
               const paradigm = card.lemma && card.pos ? buildParadigm(adapter, languageId, card.lemma, card.pos as PartOfSpeech, record, hint) : undefined;
               const selected = selectedCellKeys(adapter, paradigm, hint.features, card.surface);
               this.d.ui.update({ ...gather(reply.sources), enrichment: {
-                state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), structure: structureOf(record, adapter, card.lemma ?? card.surface.trim(), card.pos, card.surface, hint.features, { languageId }), pronunciation: pronunciationOf(record, card.pronunciation), relations: relationsOf(record), senses: sensesOf(record),
+                state: 'ready', paradigm, selected, ...(segmentations ? { segmentations } : {}), etymology: etymologyOf(record), structure: structureOf(record, adapter, card.lemma ?? card.surface.trim(), card.pos, card.surface, hint.features, { languageId }), pronunciation: pronunciationOf(record, card.pronunciation), formRoman: formRomanOf(record), relations: relationsOf(record), senses: sensesOf(record),
                 ...(reply.attribution ? { attribution: reply.attribution } : {}), ...(reply.reason && !reply.found ? { message: reply.message ?? reply.reason } : {}),
               } });
             }).catch(() => { if (live()) this.d.ui.update({ enrichment: { state: 'unavailable', message: 'The dictionary could not be asked for the full entry.' } }); }),

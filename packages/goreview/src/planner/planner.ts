@@ -2,13 +2,8 @@
  * PLANNING — composes one review session from the deck, the intake outcomes and the learner's preferences. Pure: it
  * reads, it never writes. A plan is a proposal; nothing is recorded until the learner answers (the session runner).
  *
- * Tiers, in order:
- *   1. DUE      reviewed items whose schedule says "due", lowest recall probability first. Never dropped silently: an item
- *               that does not fit the time budget stays due (nothing is written, so its schedule is untouched) and the plan
- *               lists it in `skipped` with 'over budget'.
- *   2. WEAK     items not yet due but failed repeatedly (≥ 2 Again among the last 10 reviews) or whose unit the learner
- *               repeatedly asked help for (`recentHelp`), at most WEAK_EXTRA_MAX extra practice items.
- *   3. NEW      never-reviewed deck items first (already committed), then intake `test-now` outcomes, up to `maxNew`.
+ * Eligible due, weak and new items compete in one priority-sorted pool. Knowability stage weights apply across comparable
+ * items; maxNew is an introduction cap, not a priority tier.
  *
  * Time. Estimated seconds per item (estimates, not measurements): written recognition / meaning-to-form 25 s; a CHOICE
  * question 15 s (written recognition and phrase comprehension while the item is still new or learning, because those are
@@ -20,20 +15,18 @@
  * NEW listening item is not added at all. When the audio is available but is only practice (not evidence-eligible) the item
  * is planned and flagged: the runner will record it with evidence quality 'none'.
  *
- * Grammar share. `grammarShare` is APPROXIMATED when enough items of both kinds exist: each optional pick (tiers 2 and 3)
- * prefers a grammar item while the projected grammar fraction is below the target and a non-grammar item otherwise, and
- * falls back to the other kind when the preferred one is exhausted. Due items are never reordered or dropped to hit the share.
- *
  * Cost/benefit. benefit = retrievability deficit (1 − recall probability; 1 for a new item) × the Repository's candidate
- * score (0.5 when the unit has no candidate) ÷ cost, with cost = estimated seconds / 30 × (1 + candidate.cost). It orders
- * the optional tiers and breaks ties among due items.
+ * score (0.5 when the unit has no candidate) ÷ cost, with cost = estimated seconds / 30 × (1 + candidate.cost). The
+ * versioned Knowability priority multiplies this value before the global order is selected.
  */
 import type {
   AudioAvailability, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, ReviewPreferences, Scheduler, SessionPlan,
 } from '../types';
+import type { GoEvent, UnitKnowledge } from '../../../repository-contract/src';
 import { FAMILY_DIMENSION } from '../types';
 import { itemIdFor } from '../scheduler/deck';
 import { cardReasonFor } from '../intake/intake';
+import { eligibleByKnowability, hasConfirmedAutomaticFailure, scoreReviewPriority, seenEligibility, type KnowabilityPolicy } from './priority-policy';
 
 const GRAMMAR_FAMILY_SET: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['morphological-identification', 'grammar-application']);
 const AUDIO_FAMILY_SET: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['audio-to-meaning', 'audio-transcription']);
@@ -41,9 +34,9 @@ const AUDIO_FAMILY_SET: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['
 /** Seconds per kind of item; estimates the planner documents and a host may replace with measured latencies. */
 export const ESTIMATED_SECONDS = { written: 25, choice: 15, grammar: 35, sentenceCompletion: 40, audio: 30, replay: 8 } as const;
 export const EXPECTED_REPLAYS = 1;
-export const WEAK_EXTRA_MAX = 5;
 export const WEAK_AGAIN_COUNT = 2;
 export const WEAK_WINDOW = 10;
+export const LEECH_AGAIN_THRESHOLD = 5;
 
 export const isGrammarFamily = (f: ExerciseFamily): boolean => GRAMMAR_FAMILY_SET.has(f);
 export const isAudioFamily = (f: ExerciseFamily): boolean => AUDIO_FAMILY_SET.has(f);
@@ -78,27 +71,46 @@ export interface PlanInput {
   now: string;
   /** Units for which the learner repeatedly asked for help (repeated AssistanceRequested). */
   recentHelp?: Set<string>;
+  /** Repository projections and raw event evidence used to decide stage eligibility and ranking. */
+  knowledge?: UnitKnowledge[];
+  readingSignals?: GoEvent[];
+  /** Units the learner explicitly selected for practice; may bypass the New-stage automatic exclusion. */
+  manuallySelectedUnitIds?: Set<string>;
+  priorityPolicy?: KnowabilityPolicy;
+  /** Optional measured seconds per card, clamped to a conservative finite range. */
+  observedReviewSeconds?: Record<string, number>;
   random: () => number;
 }
 
-interface Cand { planned: PlannedItem; benefit: number; grammar: boolean; recall: number }
+interface Cand { planned: PlannedItem; benefit: number; priority: number; recall: number; bucket: 'due' | 'weak' | 'new' }
 
 const pct = (x: number): string => `${Math.round(x * 100)}%`;
 const isLive = (i: DeckItem, nowMs: number): boolean =>
   i.status === 'active' || (i.status === 'snoozed' && i.snoozedUntil !== undefined && Date.parse(i.snoozedUntil) <= nowMs);
 
 /** Recent Again ratings among the last WEAK_WINDOW reviews. */
-export const recentAgains = (i: DeckItem): number => i.history.slice(-WEAK_WINDOW).filter((h) => h.rating === 1).length;
+const effectiveHistory = (i: DeckItem) => i.history.filter((h) => h.retracted !== true);
+export const recentAgains = (i: DeckItem): number => effectiveHistory(i).slice(-WEAK_WINDOW).filter((h) => h.rating === 1).length;
 
 export const benefitOf = (deficit: number, score: number, seconds: number, cost: number): number =>
   (deficit * score) / Math.max(0.1, (seconds / 30) * (1 + cost));
+
+const comparePriority = (a: Cand, b: Cand): number =>
+  b.priority * b.benefit - a.priority * a.benefit || a.planned.item.itemId.localeCompare(b.planned.item.itemId);
 
 export function planSession(input: PlanInput): SessionPlan {
   const { deck, intake, preferences, audio, scheduler, now, random } = input;
   const nowMs = Date.parse(now);
   if (Number.isNaN(nowMs)) throw new RangeError(`not an ISO timestamp: ${now}`);
   const recentHelp = input.recentHelp ?? new Set<string>();
-  const budget = Math.max(0, preferences.sessionMinutes) * 60;
+  const budget = preferences.sessionMinutes === 0 ? Number.POSITIVE_INFINITY : Math.max(0, preferences.sessionMinutes) * 60;
+  const knowledgeByUnit = new Map<string, UnitKnowledge>();
+  for (const row of [...(input.knowledge ?? []), ...intake.flatMap((o) => o.knowledge ? [o.knowledge] : [])]) knowledgeByUnit.set(row.unitId, row);
+  const signalsFor = (unitId: string) => (input.readingSignals ?? []).filter((e) => e.subject?.itemIds?.includes(unitId));
+  const recentFor = (unitId: string, withinDays: number) => signalsFor(unitId).filter((e) => {
+    const t = Date.parse(e.at); return Number.isFinite(t) && nowMs >= t && nowMs - t <= withinDays * 86_400_000;
+  });
+  const stageOf = (unitId: string): UnitKnowledge['level'] | undefined => knowledgeByUnit.get(unitId)?.level;
   const candidateOf = new Map(intake.map((o) => [o.unitId, o.candidate] as const));
   const listeningOk = preferences.includeListening && audio.available;
 
@@ -115,15 +127,44 @@ export function planSession(input: PlanInput): SessionPlan {
     return { family: writtenCounterpart(family), notes: [`${why}: asked in writing, so the result counts as reading, not listening`] };
   };
 
-  const make = (item: DeckItem, why: string[], deficit: number, isNew: boolean, recall = 0): Cand => {
+  const make = (item: DeckItem, why: string[], deficit: number, isNew: boolean, recall = 0, explicit = false, bucket: Cand['bucket'] = isNew ? 'new' : 'due'): Cand => {
     const r = resolve(item.family);
-    const seconds = estimateSeconds(r.family, item.schedule.phase);
+    const measured = input.observedReviewSeconds?.[item.itemId];
+    const seconds = Number.isFinite(measured) && measured! > 0 && measured! <= 900 ? measured! : estimateSeconds(r.family, item.schedule.phase);
     const cand = candidateOf.get(item.unitId);
+    const stage = stageOf(item.unitId) ?? (isNew ? 'seen' : 'known');
+    const events = signalsFor(item.unitId);
+    const recent = recentFor(item.unitId, 30);
+    const history = effectiveHistory(item);
+    const failureCount = history.slice(-WEAK_WINDOW).filter((h) => h.rating === 1).length;
+    const readingEvents = recent.filter((e) => ['EncounterRecorded', 'SelectionLookedUp', 'AnalysisShown'].includes(e.kind));
+    const encounterSignal = Math.min(0.25, (knowledgeByUnit.get(item.unitId)?.encounters ?? events.filter((e) => e.kind === 'EncounterRecorded').length) / 40);
+    const readingRelevance = Math.max(encounterSignal, Math.min(1, readingEvents.length / 3));
+    const distinctContexts = new Set(readingEvents.flatMap((e) => e.subject?.sentenceKey ? [e.subject.sentenceKey] : []));
+    const diversity = distinctContexts.size ? Math.min(1, distinctContexts.size / 3) : 0.5;
+    const seenEligible = seenEligibility({
+      knowledge: knowledgeByUnit.get(item.unitId), explicitRequest: explicit || item.addedBy === 'learner',
+      assistanceRequests: events.filter((e) => e.kind === 'AssistanceRequested').length,
+      readingRelevance,
+      policy: input.priorityPolicy,
+    });
+    const automaticFailure = hasConfirmedAutomaticFailure(events, item.unitId, input.priorityPolicy?.automaticFailureWindow ?? 10);
+    const priority = explicit && stage === 'new' ? 1 : scoreReviewPriority({
+      level: stage, retrievability: recall, stability: item.schedule.stability, due: bucket === 'due',
+      overdueDays: bucket === 'due' ? Math.max(0, (nowMs - Date.parse(item.schedule.due)) / 86_400_000) : 0,
+      recentFailures: failureCount, readingRelevance,
+      encounters: knowledgeByUnit.get(item.unitId)?.encounters ?? events.filter((e) => e.kind === 'EncounterRecorded').length,
+      recentExposure: recent.filter((e) => ['EncounterRecorded', 'SelectionLookedUp'].includes(e.kind)).length / 3,
+      evidenceQuality: knowledgeByUnit.get(item.unitId)?.uncertainty === undefined ? 0.5 : 1 - knowledgeByUnit.get(item.unitId)!.uncertainty,
+      cost: 0, diversity,
+      explicitRequest: explicit || item.addedBy === 'learner', seenEligible, automaticFailure,
+    }, input.priorityPolicy);
     return {
       planned: { item, family: r.family, why: [...why, ...r.notes], estimatedSeconds: seconds, isNew },
       benefit: benefitOf(deficit, cand?.score ?? 0.5, seconds, cand?.cost ?? 0),
-      grammar: isGrammarFamily(r.family),
+      priority,
       recall,
+      bucket,
     };
   };
 
@@ -131,72 +172,66 @@ export function planSession(input: PlanInput): SessionPlan {
     if (used + c.planned.estimatedSeconds > budget) return false;
     items.push(c.planned);
     used += c.planned.estimatedSeconds;
-    if (c.grammar) grammar += 1;
+    if (isGrammarFamily(c.planned.family)) grammar += 1;
     return true;
   };
 
   // ── classify the deck ──
   const live = deck.filter((i) => isLive(i, nowMs));
-  const due: Cand[] = [];
-  const weak: Cand[] = [];
-  const deckNew: Cand[] = [];
+  const pool: Cand[] = [];
   for (const item of live) {
-    const reviewed = item.history.length > 0;
+    const history = effectiveHistory(item);
+    const reviewed = history.length > 0;
     const helped = recentHelp.has(item.unitId);
     const againCount = recentAgains(item);
     const isWeak = againCount >= WEAK_AGAIN_COUNT || helped;
     const weakWhy = [
-      ...(againCount >= WEAK_AGAIN_COUNT ? [`repeated weak point: ${againCount} Again in the last ${Math.min(WEAK_WINDOW, item.history.length)} reviews`] : []),
+      ...(againCount >= WEAK_AGAIN_COUNT ? [`repeated weak point: ${againCount} Again in the last ${Math.min(WEAK_WINDOW, history.length)} effective reviews`] : []),
       ...(helped ? ['you asked for help with this unit repeatedly'] : []),
     ];
+    const stage = stageOf(item.unitId) ?? 'known'; // legacy deck maintenance; fresh items need an actual stage below
+    const manual = input.manuallySelectedUnitIds?.has(item.unitId) === true;
+    if (againCount >= LEECH_AGAIN_THRESHOLD && !manual) {
+      skipped.push({ itemId: item.itemId, why: `deferred for content repair: ${againCount} Again ratings in the last ${Math.min(WEAK_WINDOW, history.length)} effective reviews; automatic practice is paused` });
+      continue;
+    }
+    if (!eligibleByKnowability({ level: stage, seenEligible: seenEligibility({ knowledge: knowledgeByUnit.get(item.unitId), assistanceRequests: signalsFor(item.unitId).filter((e) => e.kind === 'AssistanceRequested').length, explicitRequest: manual || item.addedBy === 'learner', readingRelevance: recentFor(item.unitId, 30).filter((e) => ['EncounterRecorded', 'SelectionLookedUp', 'AnalysisShown'].includes(e.kind)).length / 3, policy: input.priorityPolicy }), automaticFailure: hasConfirmedAutomaticFailure(signalsFor(item.unitId), item.unitId, input.priorityPolicy?.automaticFailureWindow ?? 10), explicitRequest: manual || item.addedBy === 'learner' })) {
+      skipped.push({ itemId: item.itemId, why: `level ${stage}: not eligible for automatic review` });
+      continue;
+    }
     if (!reviewed) {
-      deckNew.push(make(item, ['new in the deck: not reviewed yet', ...weakWhy], 1, true));
+      pool.push(make(item, ['new in the deck: not reviewed yet', ...weakWhy], 1, true, 0, manual, 'new'));
       continue;
     }
     const r = scheduler.retrievability(item.schedule, now);
     if (scheduler.isDue(item.schedule, now)) {
-      due.push(make(item, [`due: recall probability ${pct(r)}`, ...weakWhy], 1 - r, false, r));
+      pool.push(make(item, [`due: recall probability ${pct(r)}`, ...weakWhy], 1 - r, false, r, false, 'due'));
     } else if (isWeak) {
-      weak.push(make(item, [`not due yet (recall ${pct(r)}), but ${weakWhy.join('; ')}`], Math.max(0.05, 1 - r), false));
+      pool.push(make(item, [`not due yet (recall ${pct(r)}), but ${weakWhy.join('; ')}`], Math.max(0.05, 1 - r), false, r, false, 'weak'));
     }
   }
-
-  // ── tier 1: due, lowest retrievability first, never silently dropped ──
-  due.sort((a, b) => a.recall - b.recall || b.benefit - a.benefit || (a.planned.item.itemId < b.planned.item.itemId ? -1 : 1));
-  let dueCount = 0;
-  for (const c of due) {
-    if (add(c)) dueCount += 1;
-    else skipped.push({ itemId: c.planned.item.itemId, why: 'over budget (still due; nothing was written)' });
-  }
-
-  // ── optional tiers: grammar-share aware picking ──
-  const pick = (pool: Cand[], limit: number): { picked: Cand[]; overBudget: Cand[] } => {
-    const rest = [...pool].sort((a, b) => b.benefit - a.benefit || (a.planned.item.itemId < b.planned.item.itemId ? -1 : 1));
-    const picked: Cand[] = [];
-    const overBudget: Cand[] = [];
-    while (rest.length && picked.length < limit) {
-      const wantGrammar = grammar / (items.length + 1) < preferences.grammarShare;
-      const fits = (c: Cand) => used + c.planned.estimatedSeconds <= budget;
-      const choice = rest.find((c) => c.grammar === wantGrammar && fits(c)) ?? rest.find(fits);
-      if (!choice) break;
-      add(choice);
-      picked.push(choice);
-      rest.splice(rest.indexOf(choice), 1);
-    }
-    // what was eligible but did not fit (not beyond the limit)
-    if (picked.length < limit) overBudget.push(...rest);
-    return { picked, overBudget };
-  };
-
-  // tier 2: weak extras
-  pick(weak, WEAK_EXTRA_MAX);
-
-  // tier 3: new — the deck's own never-reviewed items, then the intake's test-now outcomes
   const deckIds = new Set(deck.map((i) => i.itemId));
-  const fresh: Cand[] = [];
   const admitted = new Set<string>(); // an outcome list that names the same unit twice must not ask (or review) it twice
   for (const o of intake) {
     if (o.decision !== 'test-now' || !o.proposed) continue;
+    const stage = knowledgeByUnit.get(o.unitId)?.level;
+    const manual = o.explicitlySelected === true || input.manuallySelectedUnitIds?.has(o.unitId) === true;
+    if (!stage && !manual) {
+      skipped.push({ itemId: itemIdFor(o.unitId, o.proposed.dimension), why: 'no confirmed knowledge stage: fresh items require observed learner evidence or explicit selection' });
+      continue;
+    }
+    if (stage === 'new' && !manual) {
+      skipped.push({ itemId: itemIdFor(o.unitId, o.proposed.dimension), why: 'level New: automatic review excludes it until the learner explicitly selects practice' });
+      continue;
+    }
+    if (stage === 'automatic' && !manual && !hasConfirmedAutomaticFailure(signalsFor(o.unitId), o.unitId, input.priorityPolicy?.automaticFailureWindow ?? 10)) {
+      skipped.push({ itemId: itemIdFor(o.unitId, o.proposed.dimension), why: 'level Automatic: no confirmed unassisted retrieval failure' });
+      continue;
+    }
+    if (stage === 'seen' && !manual && !seenEligibility({ knowledge: knowledgeByUnit.get(o.unitId), assistanceRequests: signalsFor(o.unitId).filter((e) => e.kind === 'AssistanceRequested').length, readingRelevance: recentFor(o.unitId, 30).filter((e) => ['EncounterRecorded', 'SelectionLookedUp', 'AnalysisShown'].includes(e.kind)).length / 3, policy: input.priorityPolicy })) {
+      skipped.push({ itemId: itemIdFor(o.unitId, o.proposed.dimension), why: 'level Seen: no qualifying evidence for deliberate practice' });
+      continue;
+    }
     const itemId = itemIdFor(o.unitId, o.proposed.dimension);
     const key = `${o.unitId}|${o.proposed.family}`;
     if (admitted.has(key) || admitted.has(itemId)) continue; // duplicate outcome: the first one stands
@@ -212,21 +247,22 @@ export function planSession(input: PlanInput): SessionPlan {
       dimension: o.proposed.dimension, family: o.proposed.family, addedAt: now, addedBy: 'intake',
       reasons: [cardReasonFor(o.candidate, o.reasons[0] ?? 'intake')], schedule: scheduler.newState(now), history: [], status: 'active',
     };
-    fresh.push(make(item, ['new from intake', ...o.reasons], 1, true));
+    pool.push(make(item, ['new from intake', ...o.reasons], 1, true, 0, manual, 'new'));
   }
   const newLimit = Math.max(0, preferences.maxNew);
-  const committed = pick(deckNew, newLimit);
-  const intakePicked = pick(fresh, Math.max(0, newLimit - committed.picked.length));
-  const newCount = committed.picked.length + intakePicked.picked.length;
-  for (const c of [...committed.overBudget, ...intakePicked.overBudget]) {
-    skipped.push({ itemId: c.planned.item.itemId, why: c.planned.isNew && !deckIds.has(c.planned.item.itemId) ? 'over budget (not added to the deck)' : 'over budget (stays in the deck)' });
-  }
-  // eligible new items beyond the maxNew limit are listed too, so the plan explains every test-now it did not use
-  const used_ = new Set(items.map((p) => p.item.itemId));
-  const listed = new Set(skipped.map((s) => s.itemId));
-  for (const c of [...deckNew, ...fresh]) {
-    const id = c.planned.item.itemId;
-    if (!used_.has(id) && !listed.has(id)) skipped.push({ itemId: id, why: `beyond the limit of ${newLimit} new item(s) per session` });
+  let dueCount = 0;
+  let newCount = 0;
+  for (const c of pool.sort(comparePriority)) {
+    if (c.bucket === 'new' && newCount >= newLimit) {
+      skipped.push({ itemId: c.planned.item.itemId, why: `beyond the limit of ${newLimit} new item(s) per session` });
+      continue;
+    }
+    if (!add(c)) {
+      skipped.push({ itemId: c.planned.item.itemId, why: c.bucket === 'due' ? 'over budget (still due; nothing was written)' : c.bucket === 'new' && !deckIds.has(c.planned.item.itemId) ? 'over budget (not added to the deck)' : 'over budget (stays in the deck)' });
+      continue;
+    }
+    if (c.bucket === 'due') dueCount += 1;
+    if (c.bucket === 'new') newCount += 1;
   }
 
   return {

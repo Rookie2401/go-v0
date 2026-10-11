@@ -9,7 +9,7 @@
  * Team membership grants nothing; no route exists that reads another learner.
  */
 import {
-  CONTRACT_VERSION, EVENT_KINDS, MAX_CORRECTIONS, UNKNOWN_RESTRICTIONS, capRestrictions, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, provenanceOf, validateCorrection, validateEvent, validationForPack,
+  CONTRACT_VERSION, EVENT_KINDS, KNOWLEDGE_LEVELS, MAX_CORRECTIONS, UNKNOWN_RESTRICTIONS, capRestrictions, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, provenanceOf, validateCorrection, validateEvent, validationForPack,
 } from '../../repository-contract/src';
 import type {
   Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFamily, EventKind, GoEvent, Learner,
@@ -366,7 +366,7 @@ async function registerSurfaces(ctx: Ctx, events: GoEvent[]): Promise<void> {
     if (e.kind !== 'SelectionLookedUp') continue;
     const surface = (e.payload as { surface?: unknown }).surface;
     if (typeof surface !== 'string' || !surface.trim() || surface.length > MAX_SURFACE_CHARS) continue;
-    const key = `${e.languageId} ${surface}`;
+    const key = `${e.languageId}\0${surface}`;
     if (seen.has(key)) continue;
     seen.add(key);
     try {
@@ -761,6 +761,136 @@ route('GET', '/knowledge', true, async (ctx) => {
   assertSelf(ctx, ctx.query.get('learnerId') ?? undefined);
   const unitIds = listParam(ctx.query, 'unitIds', 200);
   return respond(200, { knowledge: await ctx.deps.engine.knowledge(ctx.session.learnerId, unitIds) });
+});
+
+route('GET', '/vocabulary', true, async (ctx) => {
+  assertSelf(ctx, ctx.query.get('learnerId') ?? undefined);
+  const languageId = ctx.query.get('languageId');
+  if (!languageId || languageId.length > 200) throw new Refusal(422, 'invalid-query', 'A languageId of at most 200 characters is required.');
+  const level = ctx.query.get('level') ?? undefined;
+  if (level && !(KNOWLEDGE_LEVELS as readonly string[]).includes(level)) throw new Refusal(422, 'invalid-query', 'The level is not a known knowledge level.');
+  const search = (ctx.query.get('search') ?? '').trim();
+  if (search.length > 120) throw new Refusal(422, 'invalid-query', 'Search is limited to 120 characters.');
+  const limit = intParam(ctx.query, 'limit', { def: 50, min: 1, max: 100, clamp: true });
+  const after = ctx.query.get('after') ?? undefined;
+  if (after && after.length > 300) throw new Refusal(422, 'invalid-query', 'The cursor is too long.');
+  const minEncounters = intParam(ctx.query, 'minEncounters', { def: 0, min: 0, max: 1_000_000, clamp: true });
+  const dateFilters = ['firstEncounterFrom', 'firstEncounterTo', 'lastEncounterFrom', 'lastEncounterTo'] as const;
+  const dates: Partial<Record<(typeof dateFilters)[number], string>> = {};
+  for (const key of dateFilters) {
+    const value = ctx.query.get(key) ?? undefined;
+    if (value !== undefined) {
+      if (!isIso(value)) throw new Refusal(422, 'invalid-query', `"${key}" must be an ISO date.`);
+      dates[key] = value;
+    }
+  }
+  const boolFilter = (key: 'requiresAssistance' | 'unresolved'): boolean | undefined => {
+    const value = ctx.query.get(key);
+    if (value === null) return undefined;
+    if (value === 'true') return true;
+    if (value === 'false') return false;
+    throw new Refusal(422, 'invalid-query', `"${key}" must be true or false.`);
+  };
+  const requiresAssistance = boolFilter('requiresAssistance');
+  const unresolved = boolFilter('unresolved');
+  const reviewStatus = ctx.query.get('reviewStatus') ?? undefined;
+  if (reviewStatus && !['none', 'active', 'suspended'].includes(reviewStatus)) throw new Refusal(422, 'invalid-query', '"reviewStatus" must be none, active, or suspended.');
+  const sourceRef = ctx.query.get('sourceRef') ?? undefined;
+  if (sourceRef !== undefined && (!sourceRef.length || sourceRef.length > 2048)) throw new Refusal(422, 'invalid-query', '"sourceRef" must be a non-empty reference value of at most 2048 characters.');
+  const { store, engine } = ctx.deps;
+  const learnerId = ctx.session.learnerId;
+  await engine.knowledge(learnerId, []); // ensure the projection and alias re-keying are current
+  let catalog = store.getEncounteredKnowledgeStats ? await store.getEncounteredKnowledgeStats(learnerId, languageId) : undefined;
+  if (!catalog) {
+    const rows = (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.encounters > 0);
+    const counts = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
+    for (const r of rows) counts[r.level]++;
+    catalog = { total: rows.length, counts };
+  }
+  const matches: Array<{ knowledge: import('../../repository-contract/src').UnitKnowledge; unit?: LinguisticUnit; surfaceForms: string[]; lastEncounter?: string; firstEncounter?: string; reviewStatus?: 'none' | 'active' | 'suspended'; sources: SourceRef[] }> = [];
+  let cursor = after ?? '';
+  let hasMore = false;
+  const pageSize = Math.max(100, limit);
+  while (matches.length < limit) {
+    const rows = store.getKnowledgePage
+      ? await store.getKnowledgePage(learnerId, { languageId, after: cursor || undefined, limit: pageSize, sourceRef })
+      : (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.unitId > cursor).slice(0, pageSize);
+    if (!rows.length) break;
+    const encountered = rows.filter((r) => r.encounters > 0 && (!level || r.level === level));
+    const units = await store.getUnits(encountered.map((r) => r.unitId));
+    const unitsById = new Map(units.map((u) => [u.unitId, u]));
+    const pageIds = encountered.map((r) => r.unitId);
+    const aliases = [...await store.aliasesFor(pageIds), ...(store.aliasesTo ? await store.aliasesTo(pageIds) : [])];
+    const aliasUnits = await store.getUnits([...new Set(aliases.flatMap((a) => [a.oldId, a.newId]))]);
+    const aliasLabels = new Map(aliasUnits.map((u) => [u.unitId, u.label]));
+    let summaries: Array<{ unitId: string; event: StoredEvent }>;
+    if (store.listEncounterSummaries) summaries = await store.listEncounterSummaries(learnerId, languageId, pageIds, 25);
+    else {
+      summaries = [];
+      for (const unitId of pageIds) {
+        const events = await store.list({ learnerId, languageId, unitId, kinds: ['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested'], limit: 25, order: 'desc' });
+        summaries.push(...events.map((event) => ({ unitId, event })));
+      }
+    }
+    const summariesByUnit = new Map<string, typeof summaries>();
+    for (const summary of summaries) summariesByUnit.set(summary.unitId, [...(summariesByUnit.get(summary.unitId) ?? []), summary]);
+    const assistanceIds = new Set(store.listAssistanceRequestedUnitIds
+      ? await store.listAssistanceRequestedUnitIds(learnerId, languageId, pageIds)
+      : summaries.filter((summary) => summary.event.kind === 'AssistanceRequested').map((summary) => summary.unitId));
+    const dateRanges = store.getEncounterDateRanges ? await store.getEncounterDateRanges(learnerId, languageId, pageIds) : [];
+    const datesByUnit = new Map(dateRanges.map((x) => [x.unitId, x]));
+    const reviewSummaries = store.listReviewStatusSummaries ? await store.listReviewStatusSummaries(learnerId, languageId, pageIds) : [];
+    const reviewByUnit = new Map<string, typeof reviewSummaries>();
+    for (const summary of reviewSummaries) reviewByUnit.set(summary.unitId, [...(reviewByUnit.get(summary.unitId) ?? []), summary]);
+    for (const knowledge of rows) {
+      cursor = knowledge.unitId;
+      if (knowledge.encounters <= 0 || (level && knowledge.level !== level)) continue;
+      const unit = unitsById.get(knowledge.unitId);
+      const relatedAliases = aliases.filter((a) => a.oldId === knowledge.unitId || a.newId === knowledge.unitId);
+      const surfaceForms = [...new Set([unit?.label, ...relatedAliases.flatMap((a) => [aliasLabels.get(a.oldId), aliasLabels.get(a.newId)])].filter((x): x is string => !!x))].slice(0, 20);
+      let lastEncounter: string | undefined;
+      const sources = new Map<string, SourceRef>();
+      for (const { event: e } of summariesByUnit.get(knowledge.unitId) ?? []) {
+        if (e.kind === 'EncounterRecorded' || e.kind === 'SelectionLookedUp' || e.kind === 'AssistanceRequested') {
+          if (!lastEncounter || Date.parse(e.at) > Date.parse(lastEncounter)) lastEncounter = e.at;
+        }
+        if (e.kind === 'EncounterRecorded' || e.kind === 'SelectionLookedUp') {
+          const surface = (e.payload as { surface?: unknown }).surface;
+          if (typeof surface === 'string' && !surfaceForms.includes(surface) && surfaceForms.length < 20) surfaceForms.push(surface);
+        }
+        if (e.subject.sourceRef && sources.size < 10) sources.set(JSON.stringify(e.subject.sourceRef), e.subject.sourceRef);
+      }
+      const range = datesByUnit.get(knowledge.unitId);
+      const firstEncounter = range?.firstEncounter;
+      const exactLastEncounter = range?.lastEncounter ?? lastEncounter;
+      const perCard = reviewByUnit.get(knowledge.unitId) ?? [];
+      const cardStates = perCard.map(({ event }) => {
+        if (event.kind === 'CardAdded') return 'active';
+        if (event.kind === 'ReviewItemInvalidated') return 'suspended';
+        const reason = (event.payload as Record<string, unknown>).reason;
+        return reason === 'suspended' ? 'suspended' : reason === 'dismissed' ? 'none' : 'active';
+      });
+      const currentReviewStatus: 'none' | 'active' | 'suspended' = cardStates.includes('active') ? 'active' : cardStates.includes('suspended') ? 'suspended' : 'none';
+      if (knowledge.encounters < minEncounters) continue;
+      if (dates.firstEncounterFrom && (!firstEncounter || Date.parse(firstEncounter) < Date.parse(dates.firstEncounterFrom))) continue;
+      if (dates.firstEncounterTo && (!firstEncounter || Date.parse(firstEncounter) > Date.parse(dates.firstEncounterTo))) continue;
+      if (dates.lastEncounterFrom && (!exactLastEncounter || Date.parse(exactLastEncounter) < Date.parse(dates.lastEncounterFrom))) continue;
+      if (dates.lastEncounterTo && (!exactLastEncounter || Date.parse(exactLastEncounter) > Date.parse(dates.lastEncounterTo))) continue;
+      const assisted = assistanceIds.has(knowledge.unitId);
+      if (requiresAssistance !== undefined && assisted !== requiresAssistance) continue;
+      const status = knowledge.analysisStatus ?? unit?.status;
+      const isUnresolved = status !== 'verified' && status !== 'high-confidence';
+      if (unresolved !== undefined && isUnresolved !== unresolved) continue;
+      if (reviewStatus && currentReviewStatus !== reviewStatus) continue;
+      const haystack = [unit?.label, ...surfaceForms].filter(Boolean).join('\n').normalize('NFC').toLowerCase();
+      if (search && !haystack.includes(search.normalize('NFC').toLowerCase())) continue;
+      matches.push({ knowledge, ...(unit ? { unit } : {}), surfaceForms, ...(firstEncounter ? { firstEncounter } : {}), ...(exactLastEncounter ? { lastEncounter: exactLastEncounter } : {}), reviewStatus: currentReviewStatus, sources: [...sources.values()] });
+      if (matches.length >= limit) { hasMore = true; break; }
+    }
+    if (rows.length < pageSize) break;
+    hasMore = true;
+  }
+  return respond(200, { items: matches, catalog, ...(hasMore ? { nextCursor: cursor } : {}) });
 });
 
 route('GET', '/candidates', true, async (ctx) => {

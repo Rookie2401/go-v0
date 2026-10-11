@@ -16,12 +16,12 @@ import { DatabaseSync } from 'node:sqlite';
 import type { StatementSync } from 'node:sqlite';
 import { provenanceColumns } from '../../repository-contract/src';
 import type {
-  Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFilter, FormAnalysis, LanguagePackInfo, Learner, LinguisticUnit,
-  PrivateDocument, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
+  Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFilter, EncounterDateRange, EncounterEventSummary, FormAnalysis, LanguagePackInfo, Learner, LinguisticUnit,
+  PrivateDocument, ReviewStatusSummary, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
 } from '../../repository-contract/src';
 import { applyMigrations } from './migrate';
 import {
-  appendIssues, assertSameOwner, atMs, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack,
+  appendIssues, expectedReviewPredecessorIssue, assertSameOwner, atMs, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack,
   mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, sortPacks, withCorrection, zeroErase,
 } from './rules';
 import type { ConcreteStore, EraseCounts, ProvenanceCount, StoreOptions } from './rules';
@@ -173,6 +173,12 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
             if (first) { out.push({ id, stored: false, duplicateOf: first.id as string }); continue; }
           }
           if (tombstonedEvent(learnerId, e.id)) { out.push({ id, stored: false, issues: [{ path: 'id', message: 'this event was deleted by a tombstone' }] }); continue; }
+          if ((e.payload as Record<string, unknown>).expectedPreviousReviewId !== undefined) {
+            const cardId = e.subject.cardId;
+            const history = cardId ? all(`SELECT json FROM events WHERE learner_id = ? AND language_id = ? AND json_extract(json, '$.subject.cardId') = ? AND kind IN ('CardAdded', 'CardReviewed', 'AssessmentAnswered', 'ListeningAssessed')`, learnerId, e.languageId, cardId).map((r) => parse<StoredEvent>(r)) : [];
+            const casIssue = expectedReviewPredecessorIssue(e, history);
+            if (casIssue) { out.push({ id, stored: false, issues: [casIssue] }); continue; }
+          }
           const recordedAt = now();
           const seq = Number((get(
             'INSERT INTO event_heads (learner_id, head) VALUES (?, 1) ON CONFLICT (learner_id) DO UPDATE SET head = head + 1 RETURNING head',
@@ -207,8 +213,65 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       }
       if (f.afterSeq !== undefined) { where.push('e.seq > ?'); params.push(f.afterSeq); }
       params.push(clampLimit(f.limit));
-      const rows = db.prepare(`SELECT ${EVENT_COLS} FROM events e WHERE ${where.join(' AND ')} ORDER BY e.seq LIMIT ?`).all(...params) as Row[];
+      const rows = db.prepare(`SELECT ${EVENT_COLS} FROM events e WHERE ${where.join(' AND ')} ORDER BY e.seq ${f.order === 'desc' ? 'DESC' : 'ASC'} LIMIT ?`).all(...params) as Row[];
       return rows.map(eventOfRow);
+    },
+    async listEncounterSummaries(learnerId, languageId, unitIds, perUnitLimit) {
+      const out: EncounterEventSummary[] = [];
+      for (const part of chunks([...new Set(unitIds)], 250)) {
+        if (!part.length) continue;
+        const rows = db.prepare(`WITH recent AS (
+          SELECT eu.unit_id AS unit_id, e.seq AS seq, e.recorded_at AS recorded_at, e.json AS json,
+            ROW_NUMBER() OVER (PARTITION BY eu.unit_id ORDER BY e.seq DESC) AS rn
+          FROM events e JOIN event_units eu ON eu.event_id = e.id
+          WHERE e.learner_id = ? AND e.language_id = ? AND e.kind IN ('EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested')
+            AND eu.unit_id IN (${placeholders(part.length)})
+        ) SELECT unit_id, seq, recorded_at, json FROM recent WHERE rn <= ? ORDER BY unit_id, seq DESC`).all(learnerId, languageId, ...part, Math.max(1, Math.min(100, perUnitLimit))) as Row[];
+        for (const row of rows) out.push({ unitId: row.unit_id as string, event: eventOfRow(row) });
+      }
+      return out;
+    },
+    async getEncounterDateRanges(learnerId, languageId, unitIds) {
+      const found = new Map<string, EncounterDateRange>();
+      for (const part of chunks([...new Set(unitIds)], 250)) {
+        if (!part.length) continue;
+        const rows = db.prepare(`SELECT eu.unit_id AS unit_id, MIN(e.at_ms) AS first_ms, MAX(e.at_ms) AS last_ms
+          FROM event_units eu JOIN events e ON e.id = eu.event_id
+          WHERE e.learner_id = ? AND e.language_id = ? AND e.kind IN ('EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested')
+            AND eu.unit_id IN (${placeholders(part.length)}) GROUP BY eu.unit_id`).all(learnerId, languageId, ...part) as Row[];
+        for (const row of rows) found.set(row.unit_id as string, {
+          unitId: row.unit_id as string,
+          firstEncounter: new Date(Number(row.first_ms)).toISOString(), lastEncounter: new Date(Number(row.last_ms)).toISOString(),
+        });
+      }
+      return [...new Set(unitIds)].map((id) => found.get(id) ?? { unitId: id });
+    },
+    async listReviewStatusSummaries(learnerId, languageId, unitIds) {
+      const out: ReviewStatusSummary[] = [];
+      for (const part of chunks([...new Set(unitIds)], 250)) {
+        if (!part.length) continue;
+        const rows = db.prepare(`WITH latest AS (
+          SELECT eu.unit_id AS unit_id, e.seq AS seq, e.recorded_at AS recorded_at, e.json AS json,
+            ROW_NUMBER() OVER (PARTITION BY eu.unit_id, json_extract(e.json, '$.subject.cardId') ORDER BY e.at_ms DESC, e.id DESC) AS rn
+          FROM events e JOIN event_units eu ON eu.event_id = e.id
+          WHERE e.learner_id = ? AND e.language_id = ? AND e.kind IN ('CardAdded', 'CardRemoved', 'ReviewItemInvalidated')
+            AND json_extract(e.json, '$.subject.cardId') IS NOT NULL AND eu.unit_id IN (${placeholders(part.length)})
+        ) SELECT unit_id, seq, recorded_at, json FROM latest WHERE rn = 1 ORDER BY unit_id`).all(learnerId, languageId, ...part) as Row[];
+        for (const row of rows) out.push({ unitId: row.unit_id as string, event: eventOfRow(row) });
+      }
+      return out;
+    },
+    async listAssistanceRequestedUnitIds(learnerId, languageId, unitIds) {
+      const found = new Set<string>();
+      for (const part of chunks([...new Set(unitIds)], 250)) {
+        if (!part.length) continue;
+        const rows = db.prepare(`SELECT DISTINCT eu.unit_id AS unit_id
+          FROM events e JOIN event_units eu ON eu.event_id = e.id
+          WHERE e.learner_id = ? AND e.language_id = ? AND e.kind = 'AssistanceRequested'
+            AND eu.unit_id IN (${placeholders(part.length)})`).all(learnerId, languageId, ...part) as Row[];
+        for (const row of rows) found.add(row.unit_id as string);
+      }
+      return [...found];
     },
     async get(learnerId, id) {
       const r = get(`SELECT ${EVENT_COLS} FROM events e WHERE e.learner_id = ? AND e.id = ?`, learnerId, id);
@@ -331,6 +394,14 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       }
       return out.sort(byKey((x) => [x.oldId, x.newId, x.packVersion]));
     },
+    async aliasesTo(ids) {
+      const out: UnitAlias[] = [];
+      for (const part of chunks([...new Set(ids)], 500)) {
+        const rows = db.prepare(`SELECT json FROM aliases WHERE new_id IN (${placeholders(part.length)})`).all(...part) as Row[];
+        out.push(...rows.map((r) => parse<UnitAlias>(r)));
+      }
+      return out.sort(byKey((x) => [x.newId, x.oldId, x.packVersion]));
+    },
     async putAliases(rows) {
       atomic(() => {
         for (const a of rows) {
@@ -370,6 +441,26 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
         out.push(...rows.map((r) => parse<UnitKnowledge>(r)));
       }
       return out.sort(byKey((k) => [k.unitId]));
+    },
+    async getKnowledgePage(learnerId, q) {
+      const limit = Math.max(1, Math.min(500, Math.trunc(q.limit)));
+      const rows = db.prepare(`SELECT k.json FROM knowledge k WHERE k.learner_id = ? AND k.language_id = ? AND k.unit_id > ?
+        AND (? IS NULL OR EXISTS (SELECT 1 FROM event_units eu JOIN events e ON e.id = eu.event_id
+          WHERE eu.unit_id = k.unit_id AND e.learner_id = k.learner_id AND e.language_id = k.language_id
+            AND e.kind IN ('EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested')
+            AND (json_extract(e.json, '$.subject.sourceRef.kind') = ? OR json_extract(e.json, '$.subject.sourceRef.title') = ? OR json_extract(e.json, '$.subject.sourceRef.locator') = ?
+              OR json_extract(e.json, '$.subject.sourceRef.book') = ? OR json_extract(e.json, '$.subject.sourceRef.provider') = ? OR json_extract(e.json, '$.subject.sourceRef.translationId') = ?
+              OR json_extract(e.json, '$.subject.sourceRef.mediaId') = ? OR json_extract(e.json, '$.subject.sourceRef.shareId') = ?)))
+        ORDER BY k.unit_id LIMIT ?`)
+        .all(learnerId, q.languageId, q.after ?? '', q.sourceRef ?? null, ...Array.from({ length: 8 }, () => q.sourceRef ?? null), limit) as Row[];
+      return rows.map((r) => parse<UnitKnowledge>(r));
+    },
+    async getEncounteredKnowledgeStats(learnerId, languageId) {
+      const rows = all(`SELECT json_extract(json, '$.level') AS level, count(*) AS n FROM knowledge
+        WHERE learner_id = ? AND language_id = ? AND json_extract(json, '$.encounters') > 0 GROUP BY json_extract(json, '$.level')`, learnerId, languageId);
+      const counts = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
+      for (const row of rows) if (typeof row.level === 'string' && row.level in counts) counts[row.level as keyof typeof counts] = Number(row.n);
+      return { total: Object.values(counts).reduce((a, b) => a + b, 0), counts };
     },
     async putKnowledge(rows) {
       atomic(() => {

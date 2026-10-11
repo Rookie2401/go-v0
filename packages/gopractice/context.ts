@@ -13,6 +13,7 @@
  * the account; signing out returns to the device without removing anything. The hosted copy has no such repository and needs an account.
  */
 import type { Enrolment, GoEvent, EventLog } from '../repository-contract/src';
+import { validateEvent } from '../repository-contract/src';
 import type { RepositoryApi, ApiResult } from '../repository-service/src/api';
 import {
   createLocalQueue, createSyncClient, pushIsolatingRefusals, type LocalQueue, type SyncClient, type SyncResult, type SyncStatus, type Transport,
@@ -466,12 +467,23 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const d = await data();
       if (!d) return [];
       const rows = await d.log.list({ learnerId: d.learnerId, ...(languageId ? { languageId } : {}) });
-      return rows;
+      // Refused submissions remain in the audit log and rejected queue, but must
+      // not continue advancing the displayed memory model after a sync conflict.
+      const refused = new Set((await d.queue.rejected()).map((r) => r.event.id));
+      return rows.filter((e) => !refused.has(e.id));
     },
     async record(events) {
       const out: RecordResult = { queued: 0, duplicates: 0, refused: [] };
       const d = await data();
       if (!d) { for (const e of events) out.refused.push({ id: e.id, issues: ['not signed in'] }); return out; }
+      // Validate the whole attempted review before accepting its CardAdded or grade.
+      // A refused partner must not leave half a review in the outbound queue.
+      for (const e of events) {
+        const issues = validateEvent(e);
+        if (e.learnerId !== d.learnerId) issues.push({ path: 'learnerId', message: 'does not match this learner' });
+        if (issues.length) out.refused.push({ id: e.id, issues: issues.map((i) => `${i.path}: ${i.message}`) });
+      }
+      if (out.refused.length) return out;
       for (const e of events) {
         const r = await d.queue.enqueue(e);
         if (r.ok) out.queued += 1;

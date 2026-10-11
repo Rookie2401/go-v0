@@ -35,6 +35,35 @@ export function storeConformance(name: string, open: () => Promise<RepositorySto
       expect(await s.get(L1, 'nope')).toBeUndefined();
     }));
 
+    it('atomically checks the effective graded predecessor, retaining rejected events only as caller-recoverable outcomes', withStore(async (s) => {
+      const card = 'card:lemma:sq:test:NOUN';
+      const target = { itemIds: ['lemma:sq:test:NOUN'], cardId: card };
+      const grade = (id: string, at: string, expectedPreviousReviewId: string | null) => ev(id, {
+        kind: 'CardReviewed', at, subject: target,
+        payload: { cardKind: 'recall', grade: 'good', correct: true, hinted: false, rating: 3, expectedPreviousReviewId },
+        evidence: { quality: 'strong' },
+      });
+      expect((await s.append(L1, [grade('orphan-review', '2026-10-08T09:58:00.000Z', null)]))[0]).toMatchObject({
+        stored: false, issues: [{ path: 'subject.cardId' }],
+      });
+      expect((await s.append(L1, [ev('card-added', {
+        kind: 'CardAdded', at: '2026-10-08T09:59:00.000Z', subject: target,
+        payload: { unitId: target.itemIds[0], unitKind: 'lexeme', dimension: 'productiveRetrieval', family: 'written-recall', addedBy: 'intake' },
+      })]))[0]?.stored).toBe(true);
+      expect((await s.append(L1, [grade('review-1', '2026-10-08T10:00:00.000Z', null)]))[0]?.stored).toBe(true);
+      expect((await s.append(L1, [grade('review-stale', '2026-10-08T10:01:00.000Z', null)]))[0]).toMatchObject({
+        stored: false, issues: [{ path: 'payload.expectedPreviousReviewId' }],
+      });
+      expect((await s.append(L1, [grade('review-2', '2026-10-08T10:02:00.000Z', 'review-1')]))[0]?.stored).toBe(true);
+      const correction = ev('correction-2', {
+        kind: 'CardReviewed', at: '2026-10-08T10:03:00.000Z', subject: target, correctionOf: 'review-2',
+        payload: { cardKind: 'recall', grade: 'good', correct: true, hinted: false, rating: null, challenged: true, expectedPreviousReviewId: 'review-2' }, evidence: { quality: 'none' },
+      });
+      expect((await s.append(L1, [correction]))[0]?.stored).toBe(true);
+      expect((await s.append(L1, [grade('review-3', '2026-10-08T10:04:00.000Z', 'review-1')]))[0]?.stored).toBe(true);
+      expect((await s.list({ learnerId: L1, kinds: ['CardReviewed'] })).map((e) => e.id)).toEqual(['review-1', 'review-2', 'correction-2', 'review-3']);
+    }));
+
     it('refuses an invalid event with issues and stores nothing', withStore(async (s) => {
       const out = await s.append(L1, [ev('bad', { kind: 'PageRead' as never }), null as never, ev('good')]);
       expect(out[0]).toMatchObject({ id: 'bad', stored: false });

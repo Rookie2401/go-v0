@@ -9,6 +9,7 @@
  * These estimates are hypotheses until calibrated against independent assessments.
  */
 import { DIMENSIONS } from '../../repository-contract/src';
+import { effectiveReviewEvents } from '../../repository-contract/src';
 import type { Dimension, DimensionEstimate, GoEvent, Tombstone, UnitKnowledge } from '../../repository-contract/src';
 import { observationsOf } from './evidence';
 import type { Observation } from './evidence';
@@ -313,8 +314,8 @@ export function makeResolver(aliases: Array<{ oldId: string; newId: string; mapp
 /** Observations of the live (non-tombstoned, de-duplicated) events, with unit ids re-targeted through `resolve`. */
 export function observationsFromEvents(events: GoEvent[], tombstones: Tombstone[], resolve: UnitResolver = identityResolver): Observation[] {
   const out: Observation[] = [];
-  for (const e of dedupeEvents(events)) {
-    if (isTombstoned(e, tombstones)) continue;
+  const live = effectiveReviewEvents(dedupeEvents(events).filter((e) => !isTombstoned(e, tombstones)));
+  for (const e of live) {
     for (const o of observationsOf(e)) out.push({ ...o, unitId: resolve(o.unitId) });
   }
   return out;

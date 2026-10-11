@@ -13,7 +13,7 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
   const status = statusLine();
   const num = (id: string, value: number, min: number, max: number, step: number): HTMLInputElement =>
     h('input', { type: 'number', id, name: id, min, max, step, value }) as HTMLInputElement;
-  const minutes = num('pref-minutes', initial.sessionMinutes, 1, 120, 1);
+  const minutes = num('pref-minutes', initial.sessionMinutes, 0, 120, 1);
   const maxNew = num('pref-max-new', initial.maxNew, 0, 50, 1);
   const retention = num('pref-retention', Math.round(initial.desiredRetention * 100), 70, 97, 1);
   const grammar = num('pref-grammar', Math.round(initial.grammarShare * 100), 0, 100, 5);
@@ -48,7 +48,7 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
 
   const form = h('div', { class: 'prefs', id: 'prefs-form' });
   append(form, [
-    field('Session length (minutes)', minutes, 'The plan never exceeds this; what does not fit stays due.'),
+    field('Session length (minutes)', minutes, 'Choose 5, 10, 15, or 20 minutes, or enter 0 for flexible. The plan never exceeds a timed limit; what does not fit stays due.'),
     field('New items per session (at most)', maxNew),
     field('Desired retention (%)', retention, 'How likely you want to recall an item when it comes due. Higher means more reviews.'),
     field('Share of grammar items (%)', grammar, 'Approximate; due items are never dropped to reach it.'),

@@ -69,6 +69,8 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 .sync { margin: 0 0 0 auto; font-size: .9rem; font-style: italic; color: var(--ink-soft); max-width: 32rem; }
 .sync[data-kind="error"] { color: var(--bad); font-style: normal; }
 .sync[data-kind="ok"] { color: var(--ok); font-style: normal; }
+.account { display: flex; gap: .8rem; align-items: center; margin: 0; font-size: .9rem; }
+.utility-link { color: var(--ink-soft); text-decoration: underline; text-underline-offset: .15em; }
 
 /* page */
 .screen { padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; }
@@ -121,6 +123,10 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .status[data-kind="ok"] { color: var(--ok); }
 /* chips: 999px pills */
 .tag { display: inline-block; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; padding: 0 .6rem; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--ink-soft); white-space: nowrap; }
+.time-presets [aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.attempt-toggle { align-items: center; }
+.vocabulary-item h3 { margin: 0; font-size: 1.25rem; }
+.vocabulary-title { justify-content: space-between; }
 .facts { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1.25rem; margin: .6rem 0; }
 .facts dt { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); padding-top: .25em; }
 .facts dd { margin: 0; }
@@ -155,6 +161,11 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 .feedback[data-outcome="incorrect"] { border-inline-start-color: var(--bad); }
 .item-tools { margin: 1rem 0; }
 .item-history { margin-top: .6rem; }
+
+#vocabulary-catalog { grid-template-columns: repeat(3, minmax(0, 1fr) auto); column-gap: .75rem; }
+@media (max-width: 760px) {
+  #vocabulary-catalog { grid-template-columns: repeat(2, minmax(0, 1fr) auto); font-size: .9rem; }
+}
 
 @media (max-width: 760px) {
   .sync { margin-left: 0; width: 100%; }

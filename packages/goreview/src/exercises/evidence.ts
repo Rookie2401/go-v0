@@ -59,8 +59,10 @@ function responseKind(exercise: Exercise, response: Response): 'typed' | 'choice
 /** The evidence note: the producer's own statement; the engine may lower it and never raises it. */
 function noteFor(exercise: ReviewExercise, result: EvidenceResult, kind: 'typed' | 'choice' | 'self', hinted: boolean): EvidenceNote {
   const { response, grading } = result;
-  const assisted = hinted;
+  const assisted = hinted || response.hinted === true || (response.assistance?.length ?? 0) > 0 ||
+    response.transcriptShownBefore === true || response.retrievalAttempted === false;
   if (response.challenged === true) return { quality: 'none', assisted };
+  if (assisted) return { quality: 'none', assisted, sourceReliability: 0 };
   let quality: Quality = kind === 'typed' ? 'moderate' : 'weak';
   if (hinted) quality = lower(quality, 'weak');
   if (exercise.eligibility.eligible && exercise.eligibility.status === 'provisional') quality = lower(quality, 'weak');
@@ -77,7 +79,7 @@ function buildEvidence(
   if (NO_CLAIM.includes(grading.outcome)) return null;
 
   const correct = grading.outcome === 'correct';
-  const hinted = response.hinted === true;
+    const hinted = response.hinted === true || (response.assistance?.length ?? 0) > 0 || response.retrievalAttempted === false;
   const kind = responseKind(e, response);
   const dimension = FAMILY_DIMENSION[e.family];
   const unitId = e.target.unitId;
@@ -95,7 +97,7 @@ function buildEvidence(
   };
   const shared = {
     outcome: grading.outcome, family: e.family, exerciseId: e.exerciseId, assessmentDimension: dimension,
-    ...(rating !== null ? { rating } : {}),
+    rating,
   };
   const timing = { ...(extra.latencyMs !== undefined ? { latencyMs: extra.latencyMs } : {}), ...(extra.difficulty !== undefined ? { difficulty: extra.difficulty } : {}) };
   const grade = gradeLabel(grading, response, rating);

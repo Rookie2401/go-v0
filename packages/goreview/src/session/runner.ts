@@ -38,6 +38,7 @@ import type { AssessmentSource } from '../../../golisten/src/contracts';
 import type { KeyValueArea } from '../../../repository-sync/src/area';
 import { getOne } from '../../../repository-sync/src/area';
 import { FAMILY_DIMENSION } from '../types';
+import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../planner/priority-policy';
 import type {
   BuildContext, DeckItem, Exercise, ExerciseBuilder, ExerciseFamily, FactsProvider, Grading, PlannedItem, Rating, Response,
   ReviewResult, ReviewTarget, Scheduler, SessionPlan, SessionState, UnitFacts,
@@ -94,6 +95,8 @@ export interface RunnerDeps {
   grading?: GradingPort;
   audio?: AssessmentSource;
   scheduler: Scheduler;
+  /** Optional per-card scheduler; intended for validated experimental profiles on written-recognition only. */
+  schedulerForItem?: (item: DeckItem) => Scheduler;
   identity: Identity;
   /** The device queue: must persist before it resolves. */
   record: (events: GoEvent[]) => Promise<void>;
@@ -105,6 +108,8 @@ export interface RunnerDeps {
   pool?: () => Promise<UnitFacts[]> | UnitFacts[];
   /** True when the deck already has the item; defaults to "not a plan item born from intake". */
   inDeck?: (p: PlannedItem) => boolean;
+  /** Current committed event snapshot, used to reconcile a crash after record() but before session persistence. */
+  committedEvents?: () => Promise<GoEvent[]> | GoEvent[];
 }
 
 export interface SkipRecord { index: number; itemId: string; reason: string; at: string; kind: 'learner' | 'build-failed' }
@@ -133,9 +138,11 @@ export interface SessionRunner {
   /** No event; the item stays due. */
   skip(reason?: string): Promise<void>;
   challenge(reason: string, opts?: { keyIsWrong?: boolean }): Promise<ReviewResult | undefined>;
+  /** Append-only correction that removes the event's schedule/evidence contribution on refold. */
+  undo(resultId: string, reason: string): Promise<ReviewResult | undefined>;
   finish(): Promise<SessionState>;
   /** Loads a saved session (state and skips) from the area and continues from it; false when none exists. */
-  recover(sessionId: string): Promise<boolean>;
+  recover(sessionId: string, committedEvents?: GoEvent[]): Promise<boolean>;
 }
 
 // ───────────────────────────── helpers ─────────────────────────────
@@ -185,6 +192,8 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
   const sessionId = deps.sessionId ?? `s:${deps.plan.planId.replace(/^plan:/u, '')}`;
   const key = (id: string) => SESSION_KEY_PREFIX + id;
   const inDeck = deps.inDeck ?? ((p: PlannedItem) => !isNewToDeck(p));
+  const schedulerFor = (item: DeckItem): Scheduler =>
+    item.dimension === 'written-recognition' && deps.schedulerForItem ? deps.schedulerForItem(item) : deps.scheduler;
 
   let st: PersistedSession = {
     version: SESSION_VERSION, sessionId, plan: clone(deps.plan), index: 0, results: [], startedAt: now(), deviceId: identity.deviceId,
@@ -192,6 +201,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
   };
   const persistErrs: string[] = [];
   const cache = new Map<number, Promise<Built>>();
+  let initialStateSaved = false;
 
   async function save(): Promise<void> {
     try { await persist.set({ [key(st.sessionId)]: clone(st) }); } catch (e) { persistErrs.push(errText(e)); }
@@ -232,7 +242,16 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     return b;
   };
 
-  async function current(): Promise<CurrentExercise | null> {
+  async function currentUnsafe(): Promise<CurrentExercise | null> {
+    if (!initialStateSaved) {
+      try {
+        await persist.set({ [key(st.sessionId)]: clone(st) });
+        initialStateSaved = true;
+      } catch (e) {
+        persistErrs.push(errText(e));
+        throw new Error(`could not save the session before showing an exercise (${errText(e)})`);
+      }
+    }
     while (st.status === 'in-progress' && st.index < st.plan.items.length) {
       const i = st.index;
       const b = await built(i);
@@ -284,7 +303,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     return { exercise, evidenceExercise: b.exercise, family, response: res, grading, listening, scoring, rating, at };
   }
 
-  function normalise(ev: GoEvent, cur: CurrentExercise, rating: Rating | null, result: Pick<ReviewResult, 'exerciseId' | 'family' | 'grading'>, index: number, quality?: 'none'): GoEvent {
+  function normalise(ev: GoEvent, cur: CurrentExercise, rating: Rating | null, result: Pick<ReviewResult, 'exerciseId' | 'family' | 'grading' | 'response'>, index: number, quality?: 'none'): GoEvent {
     const e = clone(ev);
     e.id = `gr:${st.sessionId}:${index}:${e.kind}`;
     e.dedupeKey = `goreview:${st.sessionId}:${index}:${e.kind}`;
@@ -292,14 +311,29 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     e.enrolmentId = identity.enrolmentId;
     e.producer = { ...e.producer, app: e.producer?.app ?? PRODUCER_APP, deviceId: identity.deviceId };
     e.subject = { ...e.subject, cardId: cur.planned.item.itemId, itemIds: [...new Set([...(e.subject?.itemIds ?? []), cur.planned.item.unitId])] };
-    e.payload = { ...e.payload, rating, outcome: result.grading.outcome, exerciseId: result.exerciseId, family: result.family, ...('assessmentDimension' in e.payload ? { assessmentDimension: FAMILY_DIMENSION[result.family] } : {}) };
+    e.payload = {
+      ...e.payload, rating, outcome: result.grading.outcome, exerciseId: result.exerciseId, family: result.family,
+      ...(Number.isFinite(result.response.reviewSeconds) && result.response.reviewSeconds! > 0 && result.response.reviewSeconds! <= 900 ? { reviewSeconds: result.response.reviewSeconds } : {}),
+      ...('assessmentDimension' in e.payload ? { assessmentDimension: FAMILY_DIMENSION[result.family] } : {}),
+    };
+    if (['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(e.kind)) {
+      const scheduler = schedulerFor(cur.planned.item);
+      e.payload.expectedPreviousReviewId = [...cur.planned.item.history].reverse().find((h) => !h.retracted)?.eventId ?? null;
+      e.payload.schedulerProfile = {
+        ...(scheduler.profile ? structuredClone(scheduler.profile) : {}),
+        algorithm: scheduler.algorithm,
+        parametersVersion: scheduler.parametersVersion,
+        desiredRetention: scheduler.desiredRetention,
+        priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION,
+      };
+    }
     if (quality) e.evidence = { ...(e.evidence ?? {}), quality, assisted: e.evidence?.assisted ?? false };
     return e;
   }
 
-  async function answer(response: Response): Promise<ReviewResult> {
+  async function answerUnsafe(response: Response): Promise<ReviewResult> {
     if (st.status !== 'in-progress') throw new Error('the session is not in progress');
-    const cur = await current();
+    const cur = await currentUnsafe();
     if (!cur) throw new Error('there is no current exercise');
     const a = await assess(cur, response);
     const index = cur.index;
@@ -347,21 +381,23 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     return clone(result);
   }
 
-  async function challenge(reason: string, opts: { keyIsWrong?: boolean } = {}): Promise<ReviewResult | undefined> {
-    const idx = st.results.length - 1;
+  async function undoUnsafe(resultId: string, reason: string, opts: { keyIsWrong?: boolean } = {}): Promise<ReviewResult | undefined> {
+    const idx = st.results.findIndex((r) => r.resultId === resultId);
     const last = st.results[idx];
-    if (!last || last.response.challenged) return last ? clone(last) : undefined;
-    const at = now();
-    const events: GoEvent[] = [];
-    if (last.evidence) {
-      const orig = last.evidence;
-      const note: GoEvent = {
-        ...clone(orig), id: `gr:${st.sessionId}:${idx}:challenge`, dedupeKey: `goreview:${st.sessionId}:${idx}:challenge`, at,
-        correctionOf: orig.id, evidence: { quality: 'none', assisted: orig.evidence?.assisted ?? false },
-        payload: { ...orig.payload, rating: null, challenged: true, challengeReason: reason.slice(0, 200) },
-      };
-      events.push(note);
+    if (!last || last.response.challenged || !last.evidence) return last ? clone(last) : undefined;
+    if (st.results.some((r) => r.itemId === last.itemId && !r.response.challenged && Date.parse(r.at) > Date.parse(last.at))) {
+      throw new Error('cannot undo an older review after a newer effective review; refresh the deck and resolve the conflict first');
     }
+    const at = now();
+    if (Date.parse(at) <= Date.parse(last.evidence.at)) throw new RangeError('correction time must follow the graded event');
+    const events: GoEvent[] = [];
+    const orig = last.evidence;
+    const note: GoEvent = {
+      ...clone(orig), id: `gr:${st.sessionId}:${idx}:undo`, dedupeKey: `goreview:${st.sessionId}:${idx}:undo`, at,
+      correctionOf: orig.id, evidence: { quality: 'none', assisted: orig.evidence?.assisted ?? false },
+      payload: { ...orig.payload, rating: null, challenged: true, challengeReason: reason.slice(0, 200), expectedPreviousReviewId: orig.id },
+    };
+    events.push(note);
     if (opts.keyIsWrong) {
       const itemId = last.itemId;
       events.push({
@@ -378,48 +414,89 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
       if (issues.length) throw new Error(`invalid challenge event (${issues.map((x) => `${x.path} ${x.message}`).join('; ')})`);
     }
     if (events.length) await record(events);
-    const updated: ReviewResult = {
-      ...last, rating: null, response: { ...last.response, challenged: true }, evidence: events[0] && last.evidence ? events[0] : last.evidence,
-    };
+    const updated: ReviewResult = { ...last, rating: null, response: { ...last.response, challenged: true }, evidence: events[0], correctedAt: at, correctionReason: reason.slice(0, 200) };
     st.results[idx] = updated;
     await save();
     return clone(updated);
   }
+
+  async function challengeUnsafe(reason: string, opts: { keyIsWrong?: boolean } = {}): Promise<ReviewResult | undefined> {
+    const last = st.results[st.results.length - 1];
+    return last ? undoUnsafe(last.resultId, reason, opts) : undefined;
+  }
+
+  async function skipUnsafe(reason = 'skipped by the learner'): Promise<void> {
+    if (st.status !== 'in-progress') return;
+    const p = planned(st.index);
+    if (!p) return;
+    st.skips.push({ index: st.index, itemId: p.item.itemId, reason, at: now(), kind: 'learner' });
+    cache.delete(st.index);
+    st.index += 1;
+    await save();
+  }
+
+  let mutationQueue: Promise<void> = Promise.resolve();
+  const serialize = <T>(run: () => Promise<T>): Promise<T> => {
+    const next = mutationQueue.then(run, run);
+    mutationQueue = next.then(() => undefined, () => undefined);
+    return next;
+  };
+  let transitionPending = false;
+  const serializeTransition = <T>(run: () => Promise<T>): Promise<T> => {
+    if (transitionPending) return Promise.reject(new Error('another review answer or skip is already in progress'));
+    transitionPending = true;
+    return serialize(run).finally(() => { transitionPending = false; });
+  };
 
   return {
     sessionId,
     state: () => clone(st),
     skips: () => clone(st.skips),
     persistErrors: () => [...persistErrs],
-    current,
-    async preview(response) {
-      const cur = await current();
+    current: () => serialize(currentUnsafe),
+    preview: (response) => serialize(async () => {
+      const cur = await currentUnsafe();
       if (!cur) throw new Error('there is no current exercise');
       return (await assess(cur, response)).grading;
-    },
-    answer,
-    async skip(reason = 'skipped by the learner') {
-      if (st.status !== 'in-progress') return;
-      const p = planned(st.index);
-      if (!p) return;
-      st.skips.push({ index: st.index, itemId: p.item.itemId, reason, at: now(), kind: 'learner' });
-      cache.delete(st.index);
-      st.index += 1;
-      await save();
-    },
-    challenge,
-    async finish() {
+    }),
+    answer: (response) => serializeTransition(() => answerUnsafe(response)),
+    skip: (reason) => serializeTransition(() => skipUnsafe(reason)),
+    challenge: (reason, opts) => serialize(() => challengeUnsafe(reason, opts)),
+    undo: (resultId, reason) => serialize(() => undoUnsafe(resultId, reason)),
+    finish: () => serialize(async () => {
       if (st.status === 'in-progress') { st.status = 'finished'; st.finishedAt = now(); }
       await save();
       return clone(st);
-    },
-    async recover(id) {
+    }),
+    recover: (id, suppliedEvents) => serialize(async () => {
       const saved = await getOne<PersistedSession>(persist, key(id));
       if (!saved) return false;
       st = clone(saved);
       st.skips ??= [];
+      st.recoveryNotes ??= [];
+      initialStateSaved = true;
       cache.clear();
+      const committed = suppliedEvents ?? await deps.committedEvents?.() ?? [];
+      let recovered = 0;
+      while (st.status === 'in-progress' && st.index < st.plan.items.length) {
+        const index = st.index;
+        const item = st.plan.items[index].item;
+        const prefix = `gr:${st.sessionId}:${index}:`;
+        const match = committed.find((event) => event.id.startsWith(prefix)
+          && ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(event.kind)
+          && event.learnerId === identity.learnerId
+          && event.enrolmentId === identity.enrolmentId
+          && event.subject.cardId === item.itemId);
+        if (!match) break;
+        // The deterministic review event is already durable. Advance without creating a fake
+        // result, another event, or a learner-visible skip entry.
+        st.recoveryNotes.push(`Recovered item ${index + 1}: its review event was already committed (${match.id}).`);
+        st.index += 1;
+        cache.delete(index);
+        recovered += 1;
+      }
+      if (recovered) await save();
       return true;
-    },
+    }),
   };
 }

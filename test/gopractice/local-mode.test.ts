@@ -27,7 +27,8 @@ describe('on the device, with no account', () => {
     const rig = await makeRig({ local: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('#signin-form')).toBeNull();
-    expect(rig.qa('.topnav a').map((a) => a.textContent)).toEqual(['GoReview', 'GoTell', 'Settings']);
+    expect(rig.qa('.topnav a').map((a) => a.textContent)).toEqual(['GoReview', 'GoTell', 'My Vocabulary']);
+    expect(rig.q('#settings-link').textContent).toBe('Settings');
     expect(rig.q<HTMLElement>('.topnav').hidden).toBe(false);
     expect(rig.q('#sync-indicator').textContent).toBe('On this device only');
     expect(rig.q<HTMLAnchorElement>('#account-link').getAttribute('href')).toBe('#/signin');
@@ -68,8 +69,8 @@ describe('on the device, with no account', () => {
     service.candidates.set('LOC-e1', [candidate('det', 0.8), candidate('zog', 0.9)]);
     const rig = await makeRig({ service, local: true });
     await seed(rig, [
-      cardAdded(LOC, 'zog', 'meaning-to-form', '2026-09-01T09:00:00.000Z'),
-      reviewed(LOC, 'zog', 'meaning-to-form', 3, '2026-09-01T10:00:00.000Z'),
+      cardAdded(LOC, 'zog', 'written-recognition', '2026-09-01T09:00:00.000Z'),
+      reviewed(LOC, 'zog', 'written-recognition', 3, '2026-09-01T10:00:00.000Z'),
       cardAdded(LOC, 'mace', 'meaning-to-form', '2026-09-01T09:00:00.000Z'),
     ]);
     await reopen(rig);

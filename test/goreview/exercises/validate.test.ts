@@ -54,9 +54,11 @@ describe('validateExercise catches a bad exercise', () => {
 
   it('the stimulus never equals the answer for a meaning question', () => {
     const a = clone(good.recognition!);
+    a.prompt.stimulusText = 'LIBËR';
     a.answerKey.accepted = ['LIBËR'];
     expect(issues(a)).toContain('the stimulus equals an accepted answer');
     const loose = clone(good.recognition!);
+    loose.prompt.stimulusText = 'libër';
     loose.answerKey.accepted = ['liber'];
     expect(issues(loose)).toContain('the stimulus equals an accepted answer');
     const b = clone(good.toForm!);

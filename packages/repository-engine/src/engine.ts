@@ -10,20 +10,23 @@ import type {
 import { rankCandidates } from './candidates';
 import type { CardState } from './candidates';
 import { observationsOf } from './evidence';
+import type { Observation } from './evidence';
 import { derivePreferences } from './preferences';
 import { compareAt, countersOf, dedupeEvents, foldObservations, isTombstoned, makeResolver, observationsFromEvents, retentionAt } from './projection';
 import type { ExposureCounters, UnitResolver } from './projection';
 import { estimateSuitability } from './suitability';
 
 /**
- * projection@4: the six knowledge levels. `UnitKnowledge.level` (new, seen, recognized, familiar, known, automatic; `levelOf`), `UnitKnowledge.encounters`
+ * projection@5: the six knowledge levels. `UnitKnowledge.level` (new, seen, recognized, familiar, known, automatic; `levelOf`), `UnitKnowledge.encounters`
  * (distinct encounter events) and a `selfMark` that is a LEVEL (a stored legacy `learning` / `known` / `productive` mark is read through `levelOfMark`);
  * ItemMarked accepts the six level words beside the legacy ones; the candidate rules draw units by level, and review is a progression, not a request.
  * The evidence every stored event carries is unchanged, so a rebuild gives the same dimension estimates as projection@3 plus the new fields; nothing
- * stored is rewritten. (projection@3: `selfMark` and the `productive` mark credited to productiveRetrieval. projection@2: the eighth dimension,
+ * stored is rewritten. projection@5 stops inferring `automatic` from production counts and carries an existing projection@4 automatic row as
+ * `legacyKnowability` metadata until a later explicit non-automatic mark or an unassisted productive retrieval failure. It creates no event or self-mark.
+ * (projection@3: `selfMark` and the `productive` mark credited to productiveRetrieval. projection@2: the eighth dimension,
  * phraseComprehension, and language-basis weighting of exposure.) A stored cursor at another version is rebuilt from the immutable events on the next read.
  */
-export const MODEL_VERSION = 'projection@4';
+export const MODEL_VERSION = 'projection@5';
 const PAGE = 500;
 
 export type EngineStore = EventLog & ProjectionStore & LinguisticStore & TombstoneStore & Pick<IdentityStore, 'listEnrolments'>;
@@ -46,6 +49,23 @@ export interface ProjectionEngineX extends ProjectionEngine {
 const STRUGGLE_DIMENSIONS: ReadonlySet<string> = new Set(['readingRecognition', 'listeningRecognition', 'assistedRecognition', 'phraseComprehension']);
 
 const byUnitId = (a: { unitId: string }, b: { unitId: string }): number => (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0);
+
+/** Carry the old automatic label as explicit migration metadata, never as a synthetic learner mark or event. */
+function carryLegacyAutomatic(rows: UnitKnowledge[], previousRows: UnitKnowledge[], observations: Observation[], migratedAt: string, migrate: boolean): UnitKnowledge[] {
+  const previous = new Map(previousRows.map((row) => [row.unitId, row]));
+  return rows.map((row) => {
+    const old = previous.get(row.unitId);
+    let legacy = old?.legacyKnowability;
+    if (!legacy && migrate && old?.modelVersion === 'projection@4' && old.level === 'automatic' && old.selfMark?.mark !== 'automatic') {
+      legacy = { level: 'automatic', modelVersion: 'projection@4', migratedAt, basis: 'legacy-production-inference' };
+    }
+    if (!legacy) return row;
+    const newExplicitMark = row.selfMark && Date.parse(row.selfMark.at) > Date.parse(legacy.migratedAt) && row.selfMark.mark !== 'automatic';
+    const confirmedFailure = observations.some((o) => o.unitId === row.unitId && o.dimension === 'productiveRetrieval' && o.outcome === 'negative' && !o.assisted && Date.parse(o.at) > Date.parse(legacy!.migratedAt));
+    if (newExplicitMark || confirmedFailure) return row;
+    return { ...row, level: 'automatic', legacyKnowability: legacy };
+  });
+}
 
 export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
   const store = deps.store;
@@ -97,9 +117,11 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
   }
 
   async function rebuildRows(learnerId: string): Promise<{ rows: UnitKnowledge[]; seq: number; read: number }> {
+    const previousRows = await store.getKnowledge(learnerId);
     const events = await readEvents(learnerId);
     const { observations } = await liveObservations(learnerId, events);
-    const rows = await attachStatus([...foldObservations(observations, modelVersion).values()].sort(byUnitId));
+    const folded = [...foldObservations(observations, modelVersion).values()].sort(byUnitId);
+    const rows = await attachStatus(carryLegacyAutomatic(folded, previousRows, observations, now(), true));
     await store.clearKnowledge(learnerId);
     await store.putKnowledge(rows);
     const seq = events.reduce((m, e) => Math.max(m, e.seq), 0);
@@ -132,6 +154,12 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     if (rekeyed) return { folded: rekeyed.read, cursor: rekeyed.seq };
     const fresh = await readEvents(learnerId, cursor.seq);
     if (!fresh.length) return { folded: 0, cursor: cursor.seq };
+    // A valid review correction retracts an earlier event's evidence. Rebuild from the immutable log so the
+    // projection removes that contribution instead of merely folding the correction as another observation.
+    if (fresh.some((e) => e.correctionOf !== undefined)) {
+      const rebuilt = await rebuildRows(learnerId);
+      return { folded: fresh.length, cursor: rebuilt.seq };
+    }
     const seq = fresh.reduce((m, e) => Math.max(m, e.seq), cursor.seq);
     const events = await readEvents(learnerId);
     const { observations, resolve, tombstones } = await liveObservations(learnerId, events);
@@ -141,7 +169,8 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
       for (const o of observationsOf(e)) touched.add(resolve(o.unitId));
     }
     const rows = await attachStatus([...foldObservations(observations.filter((o) => touched.has(o.unitId)), modelVersion).values()].sort(byUnitId));
-    await store.putKnowledge(rows);
+    const previousRows = await store.getKnowledge(learnerId, [...touched]);
+    await store.putKnowledge(carryLegacyAutomatic(rows, previousRows, observations, now(), false));
     await store.putProjectionCursor(learnerId, { seq, modelVersion });
     return { folded: fresh.length, cursor: seq };
   }

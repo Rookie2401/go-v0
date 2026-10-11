@@ -176,6 +176,10 @@ export interface Response {
   choice?: string;
   selfGrade?: 'again' | 'hard' | 'good' | 'easy';
   hinted: boolean;
+  /** Explicit evidence that the learner attempted retrieval; absent means true for older clients. */
+  retrievalAttempted?: boolean;
+  /** Active prompt-to-response time, in seconds; excludes idle time and does not affect grading or scheduling. */
+  reviewSeconds?: number;
   /** Assistance used during the item (gloss, hint, transcript, replay…). */
   assistance: string[];
   replays?: number;
@@ -218,6 +222,8 @@ export interface ReviewResult {
   rating: Rating | null;
   /** The event submitted to the Repository, or null when no evidence may be claimed. */
   evidence: GoEvent | null;
+  correctedAt?: string;
+  correctionReason?: string;
 }
 
 // ───────────────────────────── scheduling (FSRS) ─────────────────────────────
@@ -241,7 +247,7 @@ export interface ScheduleState {
   parametersVersion: string;
 }
 
-export interface ReviewLogEntry { at: string; rating: Rating; outcome: GradeOutcome; deviceId: string; exerciseId: string; family: ExerciseFamily; elapsedDays: number }
+export interface ReviewLogEntry { at: string; rating: Rating; outcome: GradeOutcome; deviceId: string; exerciseId: string; family: ExerciseFamily; elapsedDays: number; eventId?: string; retracted?: boolean }
 
 export type ItemStatus = 'active' | 'snoozed' | 'suspended' | 'dismissed';
 
@@ -269,12 +275,24 @@ export interface Scheduler {
   readonly algorithm: string;
   readonly parametersVersion: string;
   readonly desiredRetention: number;
+  readonly profile?: ScheduleProfile;
   newState(now: string): ScheduleState;
   /** The next state after a rating at `now`; pure. */
   review(state: ScheduleState, rating: Rating, now: string): ScheduleState;
   /** Probability of recall at `now` (0..1); 0 for a new item. */
   retrievability(state: ScheduleState, now: string): number;
   isDue(state: ScheduleState, now: string): boolean;
+}
+
+export interface ScheduleProfile {
+  algorithm: string;
+  parametersVersion: string;
+  desiredRetention: number;
+  maximumInterval?: number;
+  parameters?: number[];
+  enableShortTerm?: boolean;
+  learningSteps?: string[];
+  relearningSteps?: string[];
 }
 
 // ───────────────────────────── intake and planning ─────────────────────────────
@@ -304,6 +322,11 @@ export interface IntakeInput {
   saved: Set<string>;
   preferences: ReviewPreferences;
   now: string;
+  /** Repeated event evidence used only to qualify Seen/Automatic stages. */
+  readingSignals?: GoEvent[];
+  assistanceRequests?: number;
+  /** Explicit opt-in to productive/grammar/listening targets; default is contextual reading recognition. */
+  secondaryPractice?: boolean;
 }
 
 export interface IntakeOutcome {
@@ -314,6 +337,10 @@ export interface IntakeOutcome {
   proposed?: { dimension: AssessmentDimension; family: ExerciseFamily };
   /** The candidate's own explanation, kept for the UI. */
   candidate: ReviewCandidate;
+  /** Knowledge projection that qualified this candidate, retained for transparent planning. */
+  knowledge?: UnitKnowledge;
+  /** A persisted target is user-selected, so policy may admit it even when New. */
+  explicitlySelected?: boolean;
 }
 
 export interface PlannedItem { item: DeckItem; family: ExerciseFamily; why: string[]; estimatedSeconds: number; isNew: boolean }
@@ -340,4 +367,6 @@ export interface SessionState {
   finishedAt?: string;
   deviceId: string;
   status: 'in-progress' | 'finished' | 'abandoned';
+  /** Notes explaining deterministic event reconciliation performed after a page/process crash. */
+  recoveryNotes?: string[];
 }

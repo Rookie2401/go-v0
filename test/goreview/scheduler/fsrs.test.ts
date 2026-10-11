@@ -43,6 +43,15 @@ describe('createFsrsScheduler identity', () => {
     expect(() => sched.review(sched.newState(T0), 0 as Rating, T0)).toThrow(RangeError);
     expect(() => sched.newState('not a date')).toThrow(RangeError);
   });
+  it('refuses malformed parameter vectors, state values and reviews before the previous review', () => {
+    expect(() => createFsrsScheduler({ parameters: [1, 2] })).toThrow(/21/);
+    expect(() => createFsrsScheduler({ parameters: [...Array(20).fill(1), Number.NaN] })).toThrow(/21/);
+    const { state, at } = afterGoods();
+    expect(() => sched.review(state, 3, new Date(Date.parse(state.lastReview!) - 1).toISOString())).toThrow(/precedes lastReview/);
+    expect(() => sched.retrievability({ ...state, stability: Number.NaN }, at)).toThrow(/stability/);
+    expect(() => sched.review({ ...state, phase: 'bad' as never }, 3, at)).toThrow(/phase/);
+    expect(() => sched.newState('2026-02-31T00:00:00.000Z')).toThrow(RangeError);
+  });
 });
 
 describe('state transitions', () => {

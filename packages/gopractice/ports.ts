@@ -3,11 +3,11 @@
  * is the only file that imports the GoReview modules and adapts them to the engine port; the screens and the tests
  * use the port alone, so a change inside GoReview is absorbed in one place and a test can supply a small fake.
  */
-import type { AppendOutcome, Enrolment, GoEvent, ReviewCandidate, UnitKnowledge } from '../repository-contract/src';
+import type { AppendOutcome, Enrolment, GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../repository-contract/src';
 import type { AssessmentSource, PlaybackHandle } from '../golisten/src/contracts';
 import type { RepositoryApi } from '../repository-service/src/api';
 import type {
-  AudioAvailability, DeckItem, Exercise, Grading, IntakeOutcome, PlannedItem, Response, ReviewPreferences, ReviewResult, Scheduler, SessionPlan, SessionState,
+  AudioAvailability, DeckItem, Exercise, Grading, IntakeOutcome, PlannedItem, Response, ReviewPreferences, ReviewResult, Scheduler, SessionPlan, SessionState, UnitFacts,
 } from '../goreview/src/types';
 import type { ItemHistory } from '../goreview/src/history/history';
 import type { Measure } from '../goreview/src/transfer/measures';
@@ -60,9 +60,13 @@ export interface SessionDriver {
   skips(): Array<{ itemId: string; reason: string; kind: 'learner' | 'build-failed' }>;
   state(): SessionState;
   finish(): Promise<SessionState>;
+  /** Append a validated reversal; never delete historical evidence. */
+  undo?(resultId: string, reason?: string): Promise<ReviewResult | undefined>;
+  recover?(sessionId: string): Promise<boolean>;
 }
 
 export interface SessionStart {
+  schedulerProfile?: SchedulerProfile;
   prefs: ReviewPreferences;
   plan: SessionPlan;
   ctx: EventContext;
@@ -73,6 +77,8 @@ export interface SessionStart {
   record: (events: GoEvent[]) => Promise<void>;
   /** Where the session's resumable state is kept. */
   persist: KeyValueArea;
+  /** The learner's committed, locally synchronized event history for crash reconciliation. */
+  committedEvents?: () => Promise<GoEvent[]>;
 }
 
 /** A session in progress (or just finished): what the session screen and the summary read. */
@@ -96,6 +102,8 @@ export interface ActiveRun {
 }
 
 export interface PlanRequest {
+  observedReviewSeconds?: Record<string, number>;
+  schedulerProfile?: SchedulerProfile;
   deck: DeckItem[];
   intake: IntakeOutcome[];
   prefs: ReviewPreferences;
@@ -103,10 +111,13 @@ export interface PlanRequest {
   now: string;
   /** Units the learner repeatedly asked for help with. */
   recentHelp?: Set<string>;
+  knowledge?: UnitKnowledge[];
+  readingSignals?: GoEvent[];
 }
 
 export interface ReviewEngine {
-  scheduler(prefs: ReviewPreferences): Scheduler;
+  factsFor?(unitId: string, languageId: string, api: RepositoryApi): Promise<UnitFacts | undefined>;
+  scheduler(prefs: ReviewPreferences, profile?: SchedulerProfile): Scheduler;
   /** The deck of one language as a fold over the learner's events (a snooze that has ended by `now` is over). */
   foldDeck(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];
   /** Intake decisions for the Repository's candidates, each with its reasons. */

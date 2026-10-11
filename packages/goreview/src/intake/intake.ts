@@ -44,6 +44,7 @@ import { KNOWLEDGE_LEVEL_WORDS } from '../../../repository-contract/src';
 import type { Dimension, KnowledgeLevel, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
 import { FAMILY_DIMENSION, REPOSITORY_DIMENSION } from '../types';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeDecision, IntakeInput, IntakeOutcome } from '../types';
+import { eligibleByKnowability, hasConfirmedAutomaticFailure, seenEligibility } from '../planner/priority-policy';
 
 export const SCORE_TEST_NOW = 0.5;
 export const SCORE_LOW_PRIORITY = 0.15;
@@ -65,7 +66,11 @@ export const reasonTokens = (reasons: readonly string[]): string[] => reasons.fl
 export const isRecognitionDimension = (d: Dimension): boolean => RECOGNITION.has(d);
 
 /** The family (and so the assessment dimension) a candidate is tested through. */
-export function proposeFor(candidate: Pick<ReviewCandidate, 'kind' | 'targetDimension'>): { dimension: AssessmentDimension; family: ExerciseFamily } {
+export function proposeFor(candidate: Pick<ReviewCandidate, 'kind' | 'targetDimension'>, secondaryPractice = false): { dimension: AssessmentDimension; family: ExerciseFamily } {
+  if (!secondaryPractice) {
+    const family: ExerciseFamily = candidate.kind === 'multiword' ? 'phrase-comprehension' : 'written-recognition';
+    return { dimension: FAMILY_DIMENSION[family], family };
+  }
   let family: ExerciseFamily;
   switch (candidate.targetDimension) {
     case 'productiveRetrieval': family = 'meaning-to-form'; break;
@@ -102,8 +107,34 @@ const sameDimension = (item: DeckItem, d: Dimension): boolean => REPOSITORY_DIME
 
 export function decideIntake(input: IntakeInput): IntakeOutcome {
   const { candidate, knowledge, facts, existing, audio, saved, preferences } = input;
+  const makeDecision = (...args: Parameters<typeof decide>): IntakeOutcome => ({ ...decide(...args), ...(knowledge ? { knowledge } : {}), ...(saved.has(candidate.unitId) ? { explicitlySelected: true } : {}) });
   const d = candidate.targetDimension;
+  const proposed = proposeFor(candidate, input.secondaryPractice === true);
+  const proposedRepositoryDimension = REPOSITORY_DIMENSION[proposed.dimension];
   const caveats: string[] = [];
+
+  // Stages govern whether a card may be proposed; candidate score and FSRS due state do not override this gate.
+  if (knowledge?.level === 'new') {
+    const explicitRecognition = saved.has(candidate.unitId) && !input.secondaryPractice && isRecognitionDimension(d);
+    if (!explicitRecognition) return makeDecision(candidate, 'low-priority', ['level New: automatic review excludes items not yet understood']);
+    caveats.push('level New: learner explicitly requested a written recognition practice item');
+  }
+  if (knowledge?.level === 'seen') {
+    const assistanceRequests = input.assistanceRequests ?? (input.readingSignals ?? []).filter((e) => e.kind === 'AssistanceRequested' && e.subject?.itemIds?.includes(candidate.unitId)).length;
+    const recent = (input.readingSignals ?? []).filter((e) => e.subject?.itemIds?.includes(candidate.unitId) &&
+      ['EncounterRecorded', 'SelectionLookedUp', 'AnalysisShown'].includes(e.kind) &&
+      Number.isFinite(Date.parse(e.at)) && Date.parse(input.now) >= Date.parse(e.at) && Date.parse(input.now) - Date.parse(e.at) <= 30 * 86_400_000).length >= 2;
+    const explicitRequest = saved.has(candidate.unitId);
+    if (!seenEligibility({ knowledge, assistanceRequests, explicitRequest, readingRelevance: recent ? 1 : 0 })) {
+      return makeDecision(candidate, 'low-priority', ['level Seen: no qualifying repeated encounter, repeated assistance, current reading relevance, or explicit request for practice']);
+    }
+  }
+  if (knowledge?.level === 'automatic' && !eligibleByKnowability({
+    level: 'automatic', explicitRequest: saved.has(candidate.unitId),
+    automaticFailure: hasConfirmedAutomaticFailure(input.readingSignals ?? [], candidate.unitId),
+  })) {
+    return makeDecision(candidate, 'already-covered', ['level Automatic: ordinary review is suppressed until an explicit request or confirmed unassisted retrieval failure']);
+  }
 
   // 1 ── eligibility ─────────────────────────────────────────────────────────────────────────────────────────────
   const el = candidate.eligibility;
@@ -111,7 +142,7 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
     if (el.status === 'provisional' && isRecognitionDimension(d)) {
       caveats.push(`caveat: the analysis is provisional (${el.reason}); allowed because the target (${d}) is recognition only`);
     } else {
-      return decide(candidate, 'needs-validation', [`not eligible for assessment: ${el.reason}`, `analysis status: ${el.status}`]);
+      return makeDecision(candidate, 'needs-validation', [`not eligible for assessment: ${el.reason}`, `analysis status: ${el.status}`]);
     }
   } else {
     for (const c of el.caveats.slice(0, 3)) caveats.push(`caveat: ${c}`);
@@ -119,83 +150,76 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
 
   // 2 ── the pack's own facts disagree with the candidate ────────────────────────────────────────────────────────
   if (facts && (facts.status === 'conflicted' || facts.status === 'invalidated')) {
-    return decide(candidate, 'too-uncertain', [`the pack facts for this unit are ${facts.status}; nothing sound can be asked yet`]);
+    return makeDecision(candidate, 'too-uncertain', [`the pack facts for this unit are ${facts.status}; nothing sound can be asked yet`]);
   }
   // The unit row's status is never lowered by the store (a unit can only be superseded), so an invalidated ANALYSIS is
   // visible only in `facts.analyses`: a candidate computed before a reviewer withdrew every analysis is refused here.
   if (facts && facts.analyses.length > 0 && facts.analyses.every((a) => a.status === 'invalidated')) {
-    return decide(candidate, 'needs-validation', ['every analysis of this unit has been invalidated; it is not asked until a reviewer supplies a verified one']);
+    return makeDecision(candidate, 'needs-validation', ['every analysis of this unit has been invalidated; it is not asked until a reviewer supplies a verified one']);
   }
 
   // 3 ── same unit, same dimension already in the deck ───────────────────────────────────────────────────────────
-  const mine = existing.filter((i) => i.unitId === candidate.unitId && sameDimension(i, d));
+  const mine = existing.filter((i) => i.unitId === candidate.unitId && sameDimension(i, proposedRepositoryDimension));
   const live = mine.find((i) => i.status === 'active' || i.status === 'snoozed');
-  if (live) return decide(candidate, 'already-covered', [`already in the deck as ${live.family} (${live.status})`]);
+  if (live) return makeDecision(candidate, 'already-covered', [`already in the deck as ${live.family} (${live.status})`]);
   const suspended = mine.find((i) => i.status === 'suspended');
   if (suspended) {
-    return decide(candidate, 'already-covered', [suspended.suspendedReason
+    return makeDecision(candidate, 'already-covered', [suspended.suspendedReason
       ? `in the deck but suspended (${suspended.family}): ${suspended.suspendedReason}; it stays out until the pack is fixed`
       : `in the deck but suspended by the learner (${suspended.family}); resume it instead of adding another`]);
   }
   if (mine.some((i) => i.status === 'dismissed')) {
-    return decide(candidate, 'low-priority', ['the learner removed this item from the deck; it is not proposed again unprompted']);
+    return makeDecision(candidate, 'low-priority', ['the learner removed this item from the deck; it is not proposed again unprompted']);
   }
 
   // 4 ── a construction already in the deck explains this unit ───────────────────────────────────────────────────
   const tag = explainsReason(candidate.unitId);
   const explainer = existing.find((i) => (i.status === 'active' || i.status === 'snoozed') && reasonTokens(i.reasons).includes(tag));
   if (explainer) {
-    return decide(candidate, 'redundant', [`the deck already tests ${explainer.unitId}, which explains this unit; testing the cause first avoids a card per symptom`]);
+    return makeDecision(candidate, 'redundant', [`the deck already tests ${explainer.unitId}, which explains this unit; testing the cause first avoids a card per symptom`]);
   }
 
   // 5 ── already well established ────────────────────────────────────────────────────────────────────────────────
   const est = knowledge?.dimensions[d];
   if (est && est.confidence >= WELL_ESTABLISHED.confidence && est.score >= WELL_ESTABLISHED.score) {
-    return decide(candidate, 'already-covered', [`well established: ${d} estimated ${pct(est.score)} with confidence ${pct(est.confidence)} from ${est.observations} observation(s)`]);
-  }
-
-  // 5b ── Automatic and nothing questions it (a stale or cached candidate must not re-test a unit the learner produces without help) ──────────────────
-  if (knowledge?.level === 'automatic' && !candidate.reasons.some((r) => r.rule === 'retentionDecayed' || r.rule === 'selfMarkContradicted')) {
-    return decide(candidate, 'already-covered', [`level Automatic: ${LEVEL_ASK.automatic}; neither decayed retention nor a contradicted mark is among its reasons`]);
+    return makeDecision(candidate, 'already-covered', [`well established: ${d} estimated ${pct(est.score)} with confidence ${pct(est.confidence)} from ${est.observations} observation(s)`]);
   }
 
   // 6 ── a provisional grammatical analysis is not a fact to test ────────────────────────────────────────────────
   if (el.eligible && el.status === 'provisional' && d === 'grammaticalUnderstanding') {
-    return decide(candidate, 'needs-validation', ['the grammatical analysis is provisional; a grammar question would test a guess']);
+    return makeDecision(candidate, 'needs-validation', ['the grammatical analysis is provisional; a grammar question would test a guess']);
   }
-
-  const proposed = proposeFor(candidate);
 
   // 7 ── audio gating for a listening target ─────────────────────────────────────────────────────────────────────
   if (proposed.family === 'audio-to-meaning') {
     if (!preferences.includeListening) {
-      return decide(candidate, 'test-later', [...caveats, 'listening practice is switched off in the preferences', 'no written substitute: a reading question would credit reading, not listening'], proposed);
+      return makeDecision(candidate, 'test-later', [...caveats, 'listening practice is switched off in the preferences', 'no written substitute: a reading question would credit reading, not listening'], proposed);
     }
     if (!audio.available) {
-      return decide(candidate, 'test-later', [...caveats, `no suitable audio: ${audio.reason}`, 'no written substitute: a reading question would credit reading, not listening'], proposed);
+      return makeDecision(candidate, 'test-later', [...caveats, `no suitable audio: ${audio.reason}`, 'no written substitute: a reading question would credit reading, not listening'], proposed);
     }
     if (!audio.eligibleForEvidence) {
-      return decide(candidate, 'test-later', [...caveats, `no suitable audio: ${audio.reason}`, 'the available audio is practice only and cannot be listening evidence'], proposed);
+      return makeDecision(candidate, 'test-later', [...caveats, `no suitable audio: ${audio.reason}`, 'the available audio is practice only and cannot be listening evidence'], proposed);
     }
   }
 
   // 8 ── explicitly saved ────────────────────────────────────────────────────────────────────────────────────────
-  if (preferences.prioritizeSaved && saved.has(candidate.unitId)) {
-    return decide(candidate, 'test-now', [...caveats, ...levelNote(knowledge), 'saved by the learner (prioritised)', `score ${candidate.score.toFixed(2)}`], proposed);
+  if (saved.has(candidate.unitId) && (preferences.prioritizeSaved || knowledge?.level === 'new' && !input.secondaryPractice && isRecognitionDimension(d))) {
+    return makeDecision(candidate, 'test-now', [...caveats, ...levelNote(knowledge), 'saved by the learner (prioritised)', `score ${candidate.score.toFixed(2)}`], proposed);
   }
 
   // 9 ── not worth a card ────────────────────────────────────────────────────────────────────────────────────────
   if (candidate.score < SCORE_LOW_PRIORITY) {
-    return decide(candidate, 'low-priority', [`score ${candidate.score.toFixed(2)} is below ${SCORE_LOW_PRIORITY}`]);
+    return makeDecision(candidate, 'low-priority', [`score ${candidate.score.toFixed(2)} is below ${SCORE_LOW_PRIORITY}`]);
   }
 
   // 10 ── score ──────────────────────────────────────────────────────────────────────────────────────────────────
   const top = [...candidate.reasons].sort((a, b) => b.weight - a.weight)[0];
   const why = top ? `${top.rule}${top.detail ? ` (${top.detail})` : ''}` : 'no stated reason';
   if (candidate.score >= SCORE_TEST_NOW) {
-    return decide(candidate, 'test-now', [...caveats, ...levelNote(knowledge), `score ${candidate.score.toFixed(2)} ≥ ${SCORE_TEST_NOW}`, `main reason: ${why}`], proposed);
+    return makeDecision(candidate, 'test-now', [...caveats, ...levelNote(knowledge), `score ${candidate.score.toFixed(2)} ≥ ${SCORE_TEST_NOW}`, `main reason: ${why}`], proposed);
   }
-  return decide(candidate, 'test-later', [...caveats, ...levelNote(knowledge), `score ${candidate.score.toFixed(2)} is between ${SCORE_LOW_PRIORITY} and ${SCORE_TEST_NOW}`, `main reason: ${why}`], proposed);
+  return makeDecision(candidate, 'test-later', [...caveats, ...levelNote(knowledge), `score ${candidate.score.toFixed(2)} is between ${SCORE_LOW_PRIORITY} and ${SCORE_TEST_NOW}`, `main reason: ${why}`], proposed);
 }
 
 const HEADLINE: Record<IntakeDecision, string> = {

@@ -4,11 +4,11 @@
  */
 import { provenanceColumns } from '../../repository-contract/src';
 import type {
-  Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFilter, FormAnalysis, LanguagePackInfo, Learner,
-  LinguisticUnit, PrivateDocument, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
+  Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFilter, EncounterEventSummary, FormAnalysis, LanguagePackInfo, Learner,
+  LinguisticUnit, PrivateDocument, ReviewStatusSummary, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
 } from '../../repository-contract/src';
 import {
-  appendIssues, assertSameOwner, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated,
+  appendIssues, expectedReviewPredecessorIssue, assertSameOwner, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated,
   latestPack, matchesFilter, mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, relationKey, sortPacks, tombstonedEventIds, withCorrection, zeroErase,
 } from './rules';
 import type { ConcreteStore, EraseCounts, ProvenanceCount, StoreOptions } from './rules';
@@ -89,6 +89,8 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
           if (first !== undefined) { out.push({ id, stored: false, duplicateOf: first }); continue; }
         }
         if (blocked.has(e.id)) { out.push({ id, stored: false, issues: [{ path: 'id', message: 'this event was deleted by a tombstone' }] }); continue; }
+        const casIssue = expectedReviewPredecessorIssue(e, logs.get(learnerId) ?? []);
+        if (casIssue) { out.push({ id, stored: false, issues: [casIssue] }); continue; }
         const seq = (heads.get(learnerId) ?? 0) + 1;
         heads.set(learnerId, seq);
         const recordedAt = now();
@@ -103,12 +105,70 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
     async list(f: EventFilter) {
       const limit = clampLimit(f.limit);
       const out: StoredEvent[] = [];
-      for (const e of logs.get(f.learnerId) ?? []) {
+      const source = f.order === 'desc' ? [...(logs.get(f.learnerId) ?? [])].reverse() : (logs.get(f.learnerId) ?? []);
+      for (const e of source) {
         if (!matchesFilter(e, f)) continue;
         out.push(copy(e));
         if (out.length >= limit) break;
       }
       return out;
+    },
+    async listEncounterSummaries(learnerId, languageId, unitIds, perUnitLimit) {
+      const wanted = new Set(unitIds);
+      const counts = new Map<string, number>();
+      const out: EncounterEventSummary[] = [];
+      const recent = [...(logs.get(learnerId) ?? [])].reverse();
+      for (const event of recent) {
+        if (event.languageId !== languageId || !['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested'].includes(event.kind)) continue;
+        for (const unitId of event.subject.itemIds ?? []) {
+          if (!wanted.has(unitId)) continue;
+          const n = counts.get(unitId) ?? 0;
+          if (n >= perUnitLimit) continue;
+          counts.set(unitId, n + 1);
+          out.push({ unitId, event: copy(event) });
+        }
+      }
+      return out;
+    },
+    async getEncounterDateRanges(learnerId, languageId, unitIds) {
+      const wanted = new Set(unitIds);
+      const dates = new Map<string, { first: string; last: string }>();
+      for (const e of logs.get(learnerId) ?? []) {
+        if (e.languageId !== languageId || !['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested'].includes(e.kind)) continue;
+        for (const id of e.subject.itemIds ?? []) {
+          if (!wanted.has(id)) continue;
+          const d = dates.get(id);
+          if (!d) dates.set(id, { first: e.at, last: e.at });
+          else {
+            if (Date.parse(e.at) < Date.parse(d.first)) d.first = e.at;
+            if (Date.parse(e.at) > Date.parse(d.last)) d.last = e.at;
+          }
+        }
+      }
+      return [...wanted].map((unitId) => ({ unitId, ...(dates.has(unitId) ? { firstEncounter: dates.get(unitId)!.first, lastEncounter: dates.get(unitId)!.last } : {}) }));
+    },
+    async listReviewStatusSummaries(learnerId, languageId, unitIds) {
+      const wanted = new Set(unitIds);
+      const latest = new Map<string, ReviewStatusSummary>();
+      for (const e of logs.get(learnerId) ?? []) {
+        if (e.languageId !== languageId || !['CardAdded', 'CardRemoved', 'ReviewItemInvalidated'].includes(e.kind) || !e.subject.cardId) continue;
+        for (const unitId of e.subject.itemIds ?? []) {
+          if (!wanted.has(unitId)) continue;
+          const key = `${unitId}\u0000${e.subject.cardId}`;
+          const old = latest.get(key)?.event;
+          if (!old || Date.parse(e.at) > Date.parse(old.at) || (Date.parse(e.at) === Date.parse(old.at) && e.id > old.id)) latest.set(key, { unitId, event: copy(e) });
+        }
+      }
+      return [...latest.values()];
+    },
+    async listAssistanceRequestedUnitIds(learnerId, languageId, unitIds) {
+      const wanted = new Set(unitIds);
+      const found = new Set<string>();
+      for (const e of logs.get(learnerId) ?? []) {
+        if (e.languageId !== languageId || e.kind !== 'AssistanceRequested') continue;
+        for (const id of e.subject.itemIds ?? []) if (wanted.has(id)) found.add(id);
+      }
+      return [...found];
     },
     async get(learnerId, id) {
       if (idOwner.get(id) !== learnerId) return undefined;
@@ -188,6 +248,10 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
         .sort(byKey((a) => [a.oldId, a.newId, a.packVersion]))
         .map(copy);
     },
+    async aliasesTo(ids) {
+      const want = new Set(ids);
+      return [...aliases.values()].filter((a) => want.has(a.newId)).sort(byKey((a) => [a.newId, a.oldId, a.packVersion])).map(copy);
+    },
     async putAliases(rows) {
       for (const a of rows) aliases.set(`${a.oldId}|${a.newId}|${a.packVersion}`, copy(a));
     },
@@ -210,6 +274,17 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
         .filter((k) => k.learnerId === learnerId && (!want || want.has(k.unitId)))
         .sort(byKey((k) => [k.unitId]))
         .map(copy);
+    },
+    async getKnowledgePage(learnerId, q) {
+      const sourceUnits = q.sourceRef === undefined ? undefined : new Set((logs.get(learnerId) ?? []).filter((e) => e.languageId === q.languageId && ['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested'].includes(e.kind) &&
+        Object.values(e.subject.sourceRef ?? {}).includes(q.sourceRef)).flatMap((e) => e.subject.itemIds ?? []));
+      return [...knowledge.values()].filter((k) => k.learnerId === learnerId && k.languageId === q.languageId && k.unitId > (q.after ?? '') && (!sourceUnits || sourceUnits.has(k.unitId)))
+        .sort(byKey((k) => [k.unitId])).slice(0, Math.max(1, Math.min(500, q.limit))).map(copy);
+    },
+    async getEncounteredKnowledgeStats(learnerId, languageId) {
+      const counts = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
+      for (const k of knowledge.values()) if (k.learnerId === learnerId && k.languageId === languageId && k.encounters > 0) counts[k.level]++;
+      return { total: Object.values(counts).reduce((a, b) => a + b, 0), counts };
     },
     async putKnowledge(rows) {
       for (const k of rows) knowledge.set(k2(k.learnerId, k.unitId), copy(k));

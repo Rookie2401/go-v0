@@ -129,3 +129,7 @@ rows equal the ones projection@3 stored (the evidence rules did not change); onl
 `new` where it read `learning`. The incremental projection refolds every touched unit from all its events, so the level and the
 contradiction rule are always exact; a caller that folds one observation into a stored row without history gets a coarser level
 (documented on `foldObservation`).
+
+## 8. Migration: projection@4 -> projection@5
+
+Projection@5 no longer infers `automatic` from production/review counts alone. Existing rows that were `automatic` under projection@4 are carried in `legacyKnowability` with basis `legacy-production-inference`; this is explicitly marked as a legacy inference, never converted into a self-mark or a fabricated event. The carried label remains until a later explicit non-automatic self-mark or an unassisted negative productive-retrieval observation occurs after the migration time. New successful reviews alone cannot create `automatic`.

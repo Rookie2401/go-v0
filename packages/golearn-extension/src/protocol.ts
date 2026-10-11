@@ -279,7 +279,7 @@ export type LocalRepoRequest =
 /** The methods of the Repository API client that `{ op: 'api' }` forwards. Accounts and sessions are not among them: there is no password on this device. */
 export const LOCAL_API_METHODS: readonly string[] = [
   'health', 'me', 'listEnrolments', 'enrol', 'endEnrolment', 'packs', 'unit', 'units', 'lookup', 'correctUnit', 'correct', 'appendEvents', 'listEvents',
-  'knowledge', 'candidates', 'preferences', 'submitReviews', 'submitWriting', 'listDocuments', 'getDocument', 'putDocument', 'deleteDocument', 'exportAll', 'putTombstone',
+  'knowledge', 'vocabulary', 'candidates', 'preferences', 'submitReviews', 'submitWriting', 'listDocuments', 'getDocument', 'putDocument', 'deleteDocument', 'exportAll', 'putTombstone',
 ];
 
 export interface LocalRepoStatus {

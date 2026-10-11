@@ -177,7 +177,7 @@ describe('listening evidence', () => {
     expect(rating).toBeNull();
     expect(ev?.kind).toBe('ListeningAssessed');
     expect(ev!.evidence?.quality).toBe('none');
-    expect(ev!.payload).not.toHaveProperty('rating');
+    expect(ev!.payload).toHaveProperty('rating', null);
   });
 
   it('GoListen’s scoring metadata can lower eligibility but a stimulus that is not eligible is never raised by it', async () => {

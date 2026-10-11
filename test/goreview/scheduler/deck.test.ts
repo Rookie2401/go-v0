@@ -289,3 +289,30 @@ describe('foldDeck: scheduler identity', () => {
     expect(Date.parse(b.schedule.due)).toBeLessThan(Date.parse(a.schedule.due));
   });
 });
+
+describe('foldDeck: append-only review corrections', () => {
+  it('retains a retracted result in history but removes its scheduling contribution', () => {
+    const original = { ...reviewed(ID, at(10 * DAY), 3), subject: { cardId: ID, itemIds: ['lex:logos'] } };
+    const correction: GoEvent = {
+      ...original, id: 'review-correction', at: at(10 * DAY + 1000), correctionOf: original.id,
+      payload: { ...original.payload, rating: null, challenged: true }, evidence: { quality: 'none' },
+    };
+    const fold = foldDeck([added('lex:logos', T0), original, correction], sched, { now: NOW });
+    const item = fold.items[0]!;
+    expect(item.history).toMatchObject([{ eventId: original.id, rating: 3, retracted: true }]);
+    expect(item.schedule).toEqual(sched.newState(T0));
+    expect(fold.unscored[item.itemId]).toBeUndefined();
+    expect(fold.ignored).toEqual([]);
+  });
+
+  it('does not let a mismatched or early correction retract an event', () => {
+    const original = { ...reviewed(ID, at(10 * DAY), 3), subject: { cardId: ID, itemIds: ['lex:logos'] } };
+    const mismatch: GoEvent = { ...original, id: 'wrong-target', at: at(10 * DAY + 1000), correctionOf: original.id, subject: { cardId: 'card:elsewhere' }, payload: { rating: null, challenged: true }, evidence: { quality: 'none' } };
+    const early: GoEvent = { ...original, id: 'too-early', at: at(10 * DAY - 1), correctionOf: original.id, payload: { rating: null, challenged: true }, evidence: { quality: 'none' } };
+    const fold = foldDeck([added('lex:logos', T0), original, mismatch, early], sched, { now: NOW });
+    expect(fold.items[0]?.history[0]?.rating).toBe(3);
+    expect(fold.items[0]?.history[0]?.retracted).not.toBe(true);
+    expect(fold.items[0]?.schedule.reps).toBe(1);
+    expect(fold.ignored).toHaveLength(2);
+  });
+});

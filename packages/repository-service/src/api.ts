@@ -8,7 +8,7 @@
  */
 import type {
   AssistancePreferences, Enrolment, GoEvent, LearningGoal, LinguisticUnit, Learner, PrivateDocument, ReviewCandidate,
-  StoredEvent, SyncPullRequest, SyncPullResponse, SyncPushRequest, SyncPushResponse, Tombstone, UnitKnowledge,
+  StoredEvent, SyncPullRequest, SyncPullResponse, SyncPushRequest, SyncPushResponse, Tombstone, UnitKnowledge, KnowledgeLevel, SourceRef,
   UnitRelation, FormAnalysis, LanguagePackInfo, AppendOutcome, UnitProvenance, ProvenanceOrigin, ValidationLevel,
 } from '../../repository-contract/src';
 import type { CorrectionResult, ServiceDeps } from './deps';
@@ -29,6 +29,13 @@ export interface MeResponse {
 export interface EnrolInput { teamId?: string; languageId: string; varietyId?: string; scriptId?: string; packId: string; packVersion: string; goals: LearningGoal[] }
 export interface LookupRequest { languageId: string; surface: string; sentence?: string; sentenceKey?: string; selStart?: number; selEnd?: number }
 export interface EventsQuery { afterSeq?: number; kinds?: string[]; unitId?: string; languageId?: string; since?: string; limit?: number }
+export interface VocabularyQuery {
+  languageId: string; level?: KnowledgeLevel; search?: string; after?: string; limit?: number; minEncounters?: number;
+  firstEncounterFrom?: string; firstEncounterTo?: string; lastEncounterFrom?: string; lastEncounterTo?: string;
+  requiresAssistance?: boolean; unresolved?: boolean; reviewStatus?: 'none' | 'active' | 'suspended'; sourceRef?: string;
+}
+export interface VocabularyItem { knowledge: UnitKnowledge; unit?: LinguisticUnit; surfaceForms: string[]; firstEncounter?: string; lastEncounter?: string; assistanceCount?: number; reviewStatus?: 'none' | 'active' | 'suspended'; sources: SourceRef[] }
+export interface VocabularyPage { items: VocabularyItem[]; nextCursor?: string; catalog: { total: number; counts: Record<KnowledgeLevel, number> } }
 export type DocumentMeta = Omit<PrivateDocument, 'body'>;
 /** A unit's provenance as the service reports it: the v3 defaults are filled in (a v2 row reads as origin "import", validation "unreviewed"). */
 export type ReportedProvenance = UnitProvenance & { origin: ProvenanceOrigin; validation: ValidationLevel };
@@ -58,6 +65,7 @@ export interface RepositoryApi {
   appendEvents(events: GoEvent[]): Promise<ApiResult<EventsResponse>>;
   listEvents(q?: EventsQuery): Promise<ApiResult<{ events: StoredEvent[]; head: number }>>;
   knowledge(unitIds?: string[]): Promise<ApiResult<{ knowledge: UnitKnowledge[] }>>;
+  vocabulary(query: VocabularyQuery): Promise<ApiResult<VocabularyPage>>;
   candidates(enrolmentId: string, limit?: number): Promise<ApiResult<{ candidates: ReviewCandidate[] }>>;
   preferences(languageId?: string): Promise<ApiResult<{ preferences: AssistancePreferences }>>;
   submitReviews(events: GoEvent[]): Promise<ApiResult<EventsResponse>>;
@@ -122,6 +130,12 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
     appendEvents: (events) => call('POST', '/events', { events }),
     listEvents: (q = {}) => call('GET', '/events', undefined, { afterSeq: q.afterSeq, kinds: q.kinds?.join(','), unitId: q.unitId, languageId: q.languageId, since: q.since, limit: q.limit }),
     knowledge: (unitIds) => call('GET', '/knowledge', undefined, { unitIds: unitIds?.join(',') }),
+    vocabulary: (q) => call('GET', '/vocabulary', undefined, {
+      languageId: q.languageId, level: q.level, search: q.search, after: q.after, limit: q.limit, minEncounters: q.minEncounters,
+      firstEncounterFrom: q.firstEncounterFrom, firstEncounterTo: q.firstEncounterTo, lastEncounterFrom: q.lastEncounterFrom, lastEncounterTo: q.lastEncounterTo,
+      requiresAssistance: q.requiresAssistance === undefined ? undefined : String(q.requiresAssistance),
+      unresolved: q.unresolved === undefined ? undefined : String(q.unresolved), reviewStatus: q.reviewStatus, sourceRef: q.sourceRef,
+    }),
     candidates: (enrolmentId, limit) => call('GET', '/candidates', undefined, { enrolmentId, limit }),
     preferences: (languageId) => call('GET', '/preferences', undefined, { languageId }),
     submitReviews: (events) => call('POST', '/reviews', { events }),

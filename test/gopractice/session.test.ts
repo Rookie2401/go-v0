@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
-import { destroyRigs, defaultService, dueCard, ids, key, makeRig, queued, reopen, shownLabel, startWith, type, until, unitOf, type Rig } from './helpers';
+import { createPlayback, type DriverCallbacks } from '../../packages/golisten/src/playback';
+import { destroyRigs, defaultService, dueCard, fakeAudio, ids, key, makeRig, queued, reopen, shownLabel, startWith, type, until, unitOf, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -13,6 +14,17 @@ const answerTyped = (rig: Rig, text: string): void => {
 };
 
 describe('a written exercise', () => {
+  it('records active time for an explicitly attempted answer, measured from card display', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await startWith(rig, dueCard(A, 'zog', 'meaning-to-form'));
+    rig.clock.set('2026-10-08T10:01:23.000Z');
+    answerTyped(rig, shownLabel(rig));
+    await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
+    rig.q('#next').click();
+    await until(async () => (await queued(rig)).length === 1, 'the recorded review');
+    expect((await queued(rig))[0].payload).toMatchObject({ reviewSeconds: 83 });
+  });
+
   it('records the result to the queue before the next item renders, and not before the learner moves on', async () => {
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
@@ -88,6 +100,7 @@ describe('a self-graded question', () => {
     key(digit); // before the answer is shown: refused, with a hint
     expect(rig.root.querySelector('#feedback')).toBeNull();
     expect(rig.q('#session-status').textContent).toContain('Show the answer first');
+    rig.q<HTMLInputElement>('#retrieval-attempted').click(); // explicitly confirm a retrieval attempt
     key('Enter'); // reveals
     expect(rig.q('#revealed-answer').textContent).toBe('house');
     key(digit);
@@ -109,6 +122,49 @@ describe('a self-graded question', () => {
     await until(() => progress(rig) === 'Item 2 of 2', 'the next item');
     expect((await queued(rig)).length).toBe(1);
   });
+
+  it('Space reveals a recall prompt without submitting a grade', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await startWith(rig, dueCard(A, 'shtepi', 'phrase-comprehension'));
+    key(' ');
+    expect(rig.q('#revealed-answer').textContent).toBe('house');
+    expect(await queued(rig)).toEqual([]);
+    expect(rig.root.querySelector('#feedback')).toBeNull();
+  });
+
+  it('withholds a self-grade when the answer is revealed without a confirmed retrieval attempt', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await startWith(rig, dueCard(A, 'shtepi', 'phrase-comprehension'));
+    rig.clock.set('2026-10-08T10:02:00.000Z');
+    key('Enter');
+    key('3');
+    await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
+    await until(async () => (await queued(rig)).length === 1, 'the committed self-grade');
+    expect((await queued(rig))[0].payload).toMatchObject({ rating: null });
+    rig.q('#next').click();
+    await until(() => !!rig.root.querySelector('#summary'), 'the summary');
+    const [event] = await queued(rig);
+    expect(event?.payload).not.toHaveProperty('rating', 3);
+    expect(event?.payload).not.toHaveProperty('reviewSeconds');
+  });
+
+  it('omits elapsed time after a long idle interval and records nothing for an abandoned prompt', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await startWith(rig, dueCard(A, 'zog', 'meaning-to-form'));
+    rig.clock.set('2026-10-08T10:20:00.000Z');
+    answerTyped(rig, shownLabel(rig));
+    await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
+    rig.q('#next').click();
+    await until(async () => (await queued(rig)).length === 1, 'the review event');
+    expect((await queued(rig))[0].payload).not.toHaveProperty('reviewSeconds');
+
+    const abandoned = await makeRig({ signedIn: true });
+    await startWith(abandoned, dueCard(A, 'mace', 'meaning-to-form'));
+    abandoned.clock.set('2026-10-08T10:20:00.000Z');
+    abandoned.q('#skip').click();
+    await until(() => !!abandoned.root.querySelector('#summary'), 'the skipped prompt');
+    expect(await queued(abandoned)).toEqual([]);
+  });
 });
 
 describe('an audio-only question', () => {
@@ -117,6 +173,26 @@ describe('an audio-only question', () => {
     await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
     return rig;
   };
+
+  it('removes typing after revealing the answer and explains the self-grades', async () => {
+    const rig = await audioRig();
+    const current = await rig.app.ctx.run.active!.driver.current();
+    current!.exercise.responseMode = 'typed-or-self';
+    await rig.go('settings');
+    await rig.go('review/session');
+    rig.q('#reveal').click();
+    expect(rig.q<HTMLInputElement>('#answer-input').disabled).toBe(true);
+    expect(rig.q<HTMLInputElement>('#answer-input').closest('.field')?.hasAttribute('hidden')).toBe(true);
+    expect(rig.q<HTMLButtonElement>('#answer-check').hidden).toBe(true);
+    const grades = rig.qa('.grade').map((grade) => grade.textContent).join(' ');
+    expect(grades).toContain('Again · forgot');
+    expect(grades).toContain('Hard · recalled with difficulty');
+    expect(grades).toContain('Good · recalled');
+    expect(grades).toContain('Easy · easy recall');
+    rig.q<HTMLButtonElement>('#answer-check').click();
+    expect(rig.root.querySelector('#feedback')).toBeNull();
+    expect(await queued(rig)).toEqual([]);
+  });
 
   it('keeps the transcript out of the DOM until after the answer, then shows it', async () => {
     const rig = await audioRig();
@@ -153,6 +229,82 @@ describe('an audio-only question', () => {
     expect(ev.payload).toMatchObject({ answerShownBefore: false, correct: true });
     expect(rig.q('#sum-withheld').textContent).toContain('practice only');
     expect(rig.audio!.handles[0].disposed).toBe(true);
+  });
+
+  it('does not count a provider that is already in an error state as heard audio', async () => {
+    const rig = await makeRig({ signedIn: true, audio: fakeAudio({ playbackFails: true }) });
+    await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
+    key(' ');
+    await until(() => !!rig.root.querySelector('#session-status'), 'the playback error');
+    expect(rig.q('#session-status').textContent).toContain('Audio could not be played');
+    rig.q('[data-choice="dog"]').click();
+    await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
+    expect(rig.q('#outcome').textContent).toContain('Not heard');
+    rig.q('#next').click();
+    await until(() => !!rig.root.querySelector('#summary'), 'the summary');
+    expect(await queued(rig)).toEqual([]);
+  });
+
+  const realPlayback = () => {
+    const audio = fakeAudio();
+    const callbacks: DriverCallbacks[] = [];
+    const playback = createPlayback({
+      start(_rate, cb) { callbacks.push(cb); },
+      pause() {}, resume() {}, cancel() {},
+    }, { now: () => Date.now() });
+    audio.playbackOf = () => playback;
+    return { audio, playback, callbacks };
+  };
+
+  it('withholds an answer when shared playback is still playing', async () => {
+    const { audio, playback, callbacks } = realPlayback();
+    const rig = await makeRig({ signedIn: true, audio });
+    await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
+    key(' ');
+    await until(() => callbacks.length === 1, 'playback start');
+    expect(playback.state).toBe('playing');
+    rig.q('[data-choice="dog"]').click();
+    await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
+    expect(rig.q('#outcome').textContent).toContain('Not heard');
+    rig.q('#next').click();
+    await until(() => !!rig.root.querySelector('#summary'), 'the summary');
+    expect(await queued(rig)).toEqual([]);
+  });
+
+  it('withholds a delayed shared playback failure and lets a completed retry count', async () => {
+    const first = realPlayback();
+    const rig = await makeRig({ signedIn: true, audio: first.audio });
+    await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
+    key(' ');
+    await until(() => first.callbacks.length === 1, 'playback start');
+    first.callbacks[0].failed();
+    await until(() => (rig.q('#session-status').textContent ?? '').includes('Audio could not be played'), 'the delayed playback error');
+    rig.q('[data-choice="dog"]').click();
+    await until(() => !!rig.root.querySelector('#feedback'), 'the failed feedback');
+    expect(rig.q('#outcome').textContent).toContain('Not heard');
+    rig.q('#next').click();
+    await until(() => !!rig.root.querySelector('#summary'), 'the failed summary');
+    expect(await queued(rig)).toEqual([]);
+
+    const retry = realPlayback();
+    const rig2 = await makeRig({ signedIn: true, audio: retry.audio });
+    await startWith(rig2, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
+    key(' ');
+    await until(() => retry.callbacks.length === 1, 'playback start');
+    retry.callbacks[0].failed();
+    await until(() => (rig2.q('#session-status').textContent ?? '').includes('Audio could not be played'), 'the retry error');
+    key(' ');
+    await until(() => retry.callbacks.length === 2, 'playback retry');
+    retry.callbacks[1].ended();
+    await until(() => retry.playback.state === 'ended', 'the completed retry');
+    rig2.q('[data-choice="dog"]').click();
+    await until(() => !!rig2.root.querySelector('#feedback'), 'the retry feedback');
+    expect(rig2.q('#outcome').textContent).toBe('Correct');
+    rig2.q('#next').click();
+    await until(() => !!rig2.root.querySelector('#summary'), 'the retry summary');
+    const [event] = await queued(rig2);
+    expect(event.kind).toBe('ListeningAssessed');
+    expect(event.evidence?.quality).toBe('none');
   });
 
   it('"I could not hear it" claims nothing and records nothing', async () => {
@@ -205,13 +357,29 @@ describe('skipping, finishing early and setting items aside', () => {
     expect(rig.q('#count-due').textContent).toBe('1');
   });
 
-  it('leaving the screen mid-feedback still records the answered item and abandons the rest', async () => {
+  it('leaving mid-feedback records the answer and keeps the remaining session resumable', async () => {
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     answerTyped(rig, shownLabel(rig));
     await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
     await rig.go('settings');
     await until(async () => (await queued(rig)).length === 1, 'the answer to be recorded');
+    await rig.go('review');
+    await until(() => !!rig.root.querySelector('#recoverable-sessions'), 'the saved session');
+    rig.q('[data-action="resume-session"]').click();
+    await until(() => rig.app.current() === 'review/session' && progress(rig) === 'Item 2 of 2', 'the resumed prompt');
+  });
+
+  it('offers recovery on the session route after a reload cleared the in-memory run', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await startWith(rig, dueCard(A, 'zog', 'meaning-to-form'));
+    await rig.go('settings'); // persists the in-progress driver state
+    rig.app.ctx.run.active = undefined; // simulate a page reload losing only in-memory state
+    await rig.go('review/session');
+    await until(() => !!rig.root.querySelector('[data-action="resume-session"]'), 'the route recovery control');
+    rig.q('[data-action="resume-session"]').click();
+    await until(() => rig.app.ctx.run.active !== undefined && rig.root.querySelector('#instruction') !== null, 'the recovered prompt');
+    expect(rig.q('#session-progress').textContent).toBe('Item 1 of 1');
   });
 
   it('snooze, suspend and dismiss are events, and the session moves on', async () => {
@@ -352,5 +520,22 @@ describe('the summary', () => {
     expect(rig.q('#sum-answered').textContent).toBe('2 of 2 planned, 1 correct');
     expect(rig.q('#summary').textContent).toContain('Nothing was withheld');
     expect(rig.q('#summary').textContent).not.toMatch(/streak|points|badge/i);
+  });
+
+  it('can append an undo after the session without deleting the original review event', async () => {
+    const rig = await makeRig({ signedIn: true });
+    await startWith(rig, dueCard(A, 'zog', 'meaning-to-form'));
+    answerTyped(rig, 'zog');
+    await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
+    rig.q('#next').click();
+    await until(() => !!rig.root.querySelector('#session-undo'), 'the summary undo control');
+    expect((await queued(rig)).length).toBe(1);
+    rig.clock.set('2026-10-09T10:00:00.000Z');
+    rig.q('#session-undo button').click();
+    await until(async () => (await queued(rig)).length === 2 || rig.q('#session-undo .status').textContent !== '', 'the appended reversal or its error');
+    if ((await queued(rig)).length !== 2) throw new Error(`undo failed: ${rig.q('#session-undo .status').textContent}`);
+    expect((await queued(rig))[0].kind).toBe('CardReviewed');
+    expect((await queued(rig))[1]).toMatchObject({ correctionOf: (await queued(rig))[0].id, payload: { rating: null } });
+    expect(rig.root.querySelector('#session-undo')).toBeNull();
   });
 });

@@ -21,6 +21,7 @@ export * from './knowledge-levels';
 export * from './learner';
 export * from './payloads';
 export * from './sources';
+export * from './review-corrections';
 export * from './ports';
 export type { ValidationIssue };
 

@@ -71,16 +71,28 @@ export interface PlaybackPayload { voice: 'synthetic' | 'recorded'; voiceId?: st
 export interface ListeningAssessmentPayload {
   stimulus: 'word' | 'sentence'; voice: 'synthetic' | 'recorded'; answerShownBefore: false; correct: boolean;
   responseMode: 'choice' | 'typed' | 'spoken' | 'self-report'; difficulty?: number; latencyMs?: number; hinted?: boolean;
+  expectedPreviousReviewId?: string | null;
+  schedulerProfile?: SchedulerProfile;
 }
 /** A written review attempt (GoReview card). */
 export interface WrittenReviewPayload {
   cardKind: 'recognition' | 'recall' | 'cloze'; grade: 'again' | 'hard' | 'good' | 'easy'; correct: boolean;
-  hinted: boolean; answerShownBefore?: boolean; latencyMs?: number; difficulty?: number;
+  hinted: boolean; answerShownBefore?: boolean; latencyMs?: number; difficulty?: number; rating?: number | null; challenged?: boolean; challengeReason?: string;
+  /** CAS token for concurrent review scheduling. Omitted on legacy events; null asserts no prior effective grade. */
+  expectedPreviousReviewId?: string | null;
+  /** Scheduler parameters that authored this grade, retained so later preference changes cannot rewrite history. */
+  schedulerProfile?: SchedulerProfile;
+}
+export interface SchedulerProfile {
+  algorithm: string; parametersVersion: string; desiredRetention: number; priorityPolicyVersion: string;
+  parameters?: number[]; maximumInterval?: number; enableShortTerm?: boolean; learningSteps?: string[]; relearningSteps?: string[];
 }
 /** A grammar / construction assessment. */
 export interface GrammarAssessmentPayload {
   constructionId: string; task: 'interpret' | 'apply' | 'choose-form' | 'explain'; correct: boolean;
   hinted: boolean; difficulty?: number; answer?: string; expected?: string;
+  expectedPreviousReviewId?: string | null;
+  schedulerProfile?: SchedulerProfile;
 }
 /** A writing observation: `assisted: false` only when no correction, suggestion, translation or hint was used for this sentence. */
 export interface WritingObservationPayload {
@@ -189,6 +201,37 @@ const surfaceOk = (p: Record<string, unknown>): ValidationIssue[] => {
   if (s.length > MAX_SURFACE_CHARS || s.trim().split(/\s+/u).length > MAX_SURFACE_WORDS) return [{ path: 'payload.surface', message: `a surface is at most ${MAX_SURFACE_WORDS} words; passages are never stored` }];
   return [];
 };
+const schedulerMetadataOk = (p: Record<string, unknown>): ValidationIssue[] => {
+  const out: ValidationIssue[] = [];
+  if (p.expectedPreviousReviewId !== undefined && p.expectedPreviousReviewId !== null &&
+      (typeof p.expectedPreviousReviewId !== 'string' || p.expectedPreviousReviewId.length < 1 || p.expectedPreviousReviewId.length > 200)) {
+    out.push({ path: 'payload.expectedPreviousReviewId', message: 'null or a string of 1 to 200 characters' });
+  }
+  if (p.schedulerProfile !== undefined) {
+    const s = p.schedulerProfile;
+    if (!s || typeof s !== 'object' || Array.isArray(s)) return [...out, { path: 'payload.schedulerProfile', message: 'object' }];
+    const x = s as Record<string, unknown>;
+    for (const k of ['algorithm', 'parametersVersion', 'priorityPolicyVersion']) {
+      if (typeof x[k] !== 'string' || x[k].length < 1 || x[k].length > 80) out.push({ path: `payload.schedulerProfile.${k}`, message: 'required string of 1 to 80 characters' });
+    }
+    if (typeof x.desiredRetention !== 'number' || !Number.isFinite(x.desiredRetention) || x.desiredRetention <= 0 || x.desiredRetention >= 1) {
+      out.push({ path: 'payload.schedulerProfile.desiredRetention', message: 'finite number strictly between 0 and 1' });
+    }
+    if (x.parameters !== undefined && (!Array.isArray(x.parameters) || x.parameters.length !== 21 || x.parameters.some((n) => typeof n !== 'number' || !Number.isFinite(n) || Math.abs(n) > 1000))) {
+      out.push({ path: 'payload.schedulerProfile.parameters', message: '21 finite numbers within -1000..1000' });
+    }
+    if (x.maximumInterval !== undefined && (typeof x.maximumInterval !== 'number' || !Number.isFinite(x.maximumInterval) || x.maximumInterval <= 0 || x.maximumInterval > 365000)) {
+      out.push({ path: 'payload.schedulerProfile.maximumInterval', message: 'finite number within 0..365000 days' });
+    }
+    if (x.enableShortTerm !== undefined && typeof x.enableShortTerm !== 'boolean') out.push({ path: 'payload.schedulerProfile.enableShortTerm', message: 'boolean' });
+    for (const k of ['learningSteps', 'relearningSteps']) {
+      if (x[k] !== undefined && (!Array.isArray(x[k]) || x[k].length > 10 || x[k].some((v) => typeof v !== 'string' || v.length > 40))) {
+        out.push({ path: `payload.schedulerProfile.${k}`, message: 'array of at most 10 strings of at most 40 characters' });
+      }
+    }
+  }
+  return out;
+};
 /** Key names (compared in lower case with everything but letters removed) that mean "a passage lives here". */
 const TEXT_KEYS: ReadonlySet<string> = new Set(['text', 'sentence', 'sentencetext', 'passage', 'content', 'body', 'versetext']);
 /**
@@ -263,11 +306,12 @@ const CHECKS: Record<string, Check> = {
   'listening-assessment': (p) => [
     ...oneOf(p, 'stimulus', ['word', 'sentence']), ...oneOf(p, 'voice', ['synthetic', 'recorded']), ...need(p, 'correct', 'boolean'),
     ...oneOf(p, 'responseMode', ['choice', 'typed', 'spoken', 'self-report']),
-    ...(p.answerShownBefore === false ? [] : [{ path: 'payload.answerShownBefore', message: 'a listening assessment must state answerShownBefore: false; otherwise it is a reading review' }]),
+    ...(p.answerShownBefore === false ? [] : [{ path: 'payload.answerShownBefore', message: 'a listening assessment must state answerShownBefore: false; otherwise it is a reading review' }]), ...schedulerMetadataOk(p),
   ],
-  'written-review': (p) => [...oneOf(p, 'cardKind', ['recognition', 'recall', 'cloze']), ...oneOf(p, 'grade', ['again', 'hard', 'good', 'easy']), ...need(p, 'correct', 'boolean'), ...need(p, 'hinted', 'boolean')],
+  'written-review': (p) => [...oneOf(p, 'cardKind', ['recognition', 'recall', 'cloze']), ...oneOf(p, 'grade', ['again', 'hard', 'good', 'easy']), ...need(p, 'correct', 'boolean'), ...need(p, 'hinted', 'boolean'),
+    ...(p.rating === undefined || p.rating === null || (typeof p.rating === 'number' && Number.isInteger(p.rating) && p.rating >= 1 && p.rating <= 4) ? [] : [{ path: 'payload.rating', message: 'integer 1..4 or null' }]), ...schedulerMetadataOk(p)],
   card: () => [],
-  'grammar-assessment': (p) => [...need(p, 'constructionId', 'string'), ...oneOf(p, 'task', ['interpret', 'apply', 'choose-form', 'explain']), ...need(p, 'correct', 'boolean'), ...need(p, 'hinted', 'boolean')],
+  'grammar-assessment': (p) => [...need(p, 'constructionId', 'string'), ...oneOf(p, 'task', ['interpret', 'apply', 'choose-form', 'explain']), ...need(p, 'correct', 'boolean'), ...need(p, 'hinted', 'boolean'), ...schedulerMetadataOk(p)],
   draft: (p) => need(p, 'draftId', 'string'),
   'correction-response': () => [],
   'writing-observation': (p) => [

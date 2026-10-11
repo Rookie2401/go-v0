@@ -60,12 +60,12 @@ describe('levelOf: the thresholds, on the dimension estimates', () => {
     expect(LEVEL_THRESHOLDS.known).toEqual({ score: 0.8, observations: 4 });
   });
 
-  it('automatic: productiveRetrieval or contextualProduction score >= 0.7 over >= 2 observations', () => {
-    expect(levelOf({ dimensions: dims({ productiveRetrieval: { observations: 2, positive: 1, score: 0.7 } }) })).toBe('automatic');
-    expect(levelOf({ dimensions: dims({ contextualProduction: { observations: 2, positive: 1, score: 0.75 } }) })).toBe('automatic');
+  it('production successes alone do not establish automatic knowledge', () => {
+    expect(levelOf({ dimensions: dims({ productiveRetrieval: { observations: 2, positive: 1, score: 0.7 } }) })).toBe('recognized');
+    expect(levelOf({ dimensions: dims({ contextualProduction: { observations: 2, positive: 1, score: 0.75 } }) })).toBe('recognized');
     expect(levelOf({ dimensions: dims({ productiveRetrieval: { observations: 1, positive: 1, score: 0.9 } }) })).toBe('recognized');
     expect(levelOf({ dimensions: dims({ productiveRetrieval: { observations: 2, positive: 1, score: 0.69 } }) })).toBe('recognized');
-    expect(LEVEL_THRESHOLDS.automatic).toEqual({ score: 0.7, observations: 2 });
+    expect(LEVEL_THRESHOLDS).not.toHaveProperty('automatic');
   });
 
   it('a phrase or a construction is understood as a whole: phraseComprehension and grammaticalUnderstanding count as recognition', () => {
@@ -74,7 +74,7 @@ describe('levelOf: the thresholds, on the dimension estimates', () => {
   });
 
   it('the highest level any dimension reaches counts', () => {
-    expect(evidenceLevelOf(dims({ readingRecognition: { observations: 2, positive: 1, score: 0.7 }, productiveRetrieval: { observations: 3, positive: 2, score: 0.8 } }))).toBe('automatic');
+    expect(evidenceLevelOf(dims({ readingRecognition: { observations: 2, positive: 1, score: 0.7 }, productiveRetrieval: { observations: 3, positive: 2, score: 0.8 } }))).toBe('familiar');
   });
 });
 
@@ -105,10 +105,10 @@ describe('levels from real events (the fold)', () => {
     expect(levelFrom(Array.from({ length: 4 }, (_, i) => listening([U], true, {}, { at: T(8, i) })))).toBe('known');
   });
 
-  it('two correct recall cards are automatic; one is not; failures hold it back', () => {
+  it('correct recall cards do not alone reach automatic; failures lower the evidence estimate', () => {
     resetIds();
     const recall = (ok: boolean, m: number): GoEvent => card([U], 'recall', ok, {}, { at: T(8, m) });
-    expect(levelFrom([recall(true, 0), recall(true, 1)])).toBe('automatic');
+    expect(levelFrom([recall(true, 0), recall(true, 1)])).toBe('recognized');
     expect(levelFrom([recall(true, 0)])).toBe('recognized');
     expect(levelFrom([recall(true, 0), recall(false, 1)])).not.toBe('automatic');
   });
@@ -285,11 +285,33 @@ describe('the projection (live and rebuilt) carries level and encounters', () =>
 
     const engine = createProjectionEngine({ store, now: () => NOW });
     const rows = await engine.knowledge(L);
-    expect(rows[0].modelVersion).toBe('projection@4');
+    expect(rows[0].modelVersion).toBe('projection@5');
     expect(rows[0].dimensions).toEqual(before[0].dimensions); // every number the old projection stored, unchanged
     expect(rows[0]).toMatchObject({ level: 'familiar', encounters: 4, selfMark: { mark: 'new', at: T(9) } }); // new -> released by two reliable recognitions after it
-    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@4' });
+    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@5' });
     expect(JSON.stringify(await store.list({ learnerId: L, limit: 100 }))).toBe(eventsBefore); // nothing stored was rewritten
+  });
+
+  it('migrates a stored projection@4 automatic inference without inventing a mark or event, and releases it after later independent failure', async () => {
+    resetIds();
+    const history = [card([U], 'recall', true, {}, { at: T(8, 0, 8) }), card([U], 'recall', true, {}, { at: T(8, 1, 8) })];
+    const store = new FakeStore();
+    await store.append(L, history);
+    const prior = foldEvents(history, { modelVersion: 'projection@4' })[0];
+    await store.putKnowledge([{ ...prior, level: 'automatic', modelVersion: 'projection@4' }]);
+    await store.putProjectionCursor(L, { seq: await store.head(L), modelVersion: 'projection@4' });
+    const beforeEvents = JSON.stringify(await store.list({ learnerId: L, limit: 100 }));
+    const engine = createProjectionEngine({ store, now: () => '2026-10-10T09:00:00.000Z' });
+
+    const migrated = (await engine.knowledge(L))[0];
+    expect(migrated).toMatchObject({ level: 'automatic', legacyKnowability: { level: 'automatic', modelVersion: 'projection@4', migratedAt: '2026-10-10T09:00:00.000Z', basis: 'legacy-production-inference' } });
+    expect(migrated.selfMark).toBeUndefined();
+    expect(JSON.stringify(await store.list({ learnerId: L, limit: 100 }))).toBe(beforeEvents);
+
+    await store.append(L, [card([U], 'recall', false, {}, { at: '2026-10-10T10:00:00.000Z' })]);
+    const afterFailure = (await engine.knowledge(L))[0];
+    expect(afterFailure.level).not.toBe('automatic');
+    expect(afterFailure.legacyKnowability).toBeUndefined();
   });
 });
 
@@ -362,14 +384,14 @@ describe('candidates are drawn by level: review is a progression, not a request'
     expect(old.cand!.reasons.map((r) => r.rule)).toContain('levelTarget');
   });
 
-  it('automatic: only when retention decayed or when later evidence contradicted the mark', async () => {
+  it('production reviews do not create automatic; an explicit automatic mark can be contradicted', async () => {
     resetIds();
     const fresh = await run(recallCards(2, 7));
-    expect(fresh.row.level).toBe('automatic');
+    expect(fresh.row.level).toBe('recognized');
     expect(fresh.cand).toBeUndefined();
     const old = await run(recallCards(2, 1));
-    expect(old.row.level).toBe('automatic');
-    expect(old.cand?.reasons.map((r) => r.rule)).toContain('retentionDecayed');
+    expect(old.row.level).toBe('recognized');
+    expect(old.cand).toBeUndefined();
     const marked = await run([mark('automatic', T(8, 0, 7)), lookup([U], { at: T(9, 0, 7) })]);
     expect(marked.row.level).not.toBe('automatic');
     const why = marked.cand!.reasons.find((r) => r.rule === 'selfMarkContradicted')!;

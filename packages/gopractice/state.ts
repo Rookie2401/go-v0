@@ -187,7 +187,7 @@ export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string 
   const num = (v: unknown, lo: number, hi: number, def: number): number => (typeof v === 'number' && Number.isFinite(v) ? Math.min(hi, Math.max(lo, v)) : def);
   return {
     languageId: p.languageId,
-    sessionMinutes: Math.round(num(p.sessionMinutes, 1, 120, d.sessionMinutes)),
+    sessionMinutes: p.sessionMinutes === 0 ? 0 : Math.round(num(p.sessionMinutes, 1, 120, d.sessionMinutes)),
     maxNew: Math.round(num(p.maxNew, 0, 50, d.maxNew)),
     desiredRetention: num(p.desiredRetention, 0.7, 0.97, d.desiredRetention),
     includeListening: p.includeListening === true,

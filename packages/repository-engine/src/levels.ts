@@ -10,7 +10,7 @@
  *               observation) while the estimate is still below FAMILIAR_SCORE. A produced answer or a correct unaided recall counts too.
  *   familiar    a recognition dimension with score >= 0.6 over >= 2 observations.
  *   known       a recognition dimension with score >= 0.8 over >= 4 observations.
- *   automatic   productiveRetrieval or contextualProduction with score >= 0.7 over >= 2 observations.
+ *   automatic   not inferred from production counts in the current model; it requires an explicit learner mark or preserved legacy state.
  * "A recognition dimension" is readingRecognition or listeningRecognition (the owner's rule: listening counts too) and, because a phrase or a
  * construction is understood as a whole, also phraseComprehension and grammaticalUnderstanding; the highest level any of them reaches counts.
  * The score is the engine's own estimate (prior 0.5, weighted positives), so a self-report alone (weight <= 0.09) never reaches a threshold.
@@ -41,8 +41,6 @@ export const LEVEL_THRESHOLDS = {
   familiar: { score: 0.6, observations: 2 },
   /** known: recognition score and observations. */
   known: { score: 0.8, observations: 4 },
-  /** automatic: production score and observations. */
-  automatic: { score: 0.7, observations: 2 },
   /** A mark is contradicted / released when the evidence is this many levels away from it. */
   contradictionGap: 2,
 } as const;
@@ -76,8 +74,7 @@ export function evidenceLevelOf(dims: LevelDimensions): KnowledgeLevel {
   for (const d of PRODUCTION_LEVEL_DIMENSIONS) {
     const e = dims[d];
     if (!e || e.observations === 0) continue;
-    if (e.score >= T.automatic.score && e.observations >= T.automatic.observations) level = higher(level, 'automatic');
-    else if (e.positive > 0) level = higher(level, 'recognized');
+    if (e.positive > 0) level = higher(level, 'recognized');
   }
   return level;
 }

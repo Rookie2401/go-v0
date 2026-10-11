@@ -53,6 +53,15 @@ describe('decideIntake: deck and knowledge', () => {
     expect(o.decision).toBe('test-now');
   });
 
+  it('recognition default checks coverage against its proposed dimension, not the candidate production target', () => {
+    const o = decideIntake(intakeInput({
+      candidate: candidate({ targetDimension: 'productiveRetrieval' }),
+      existing: [deckItem({ family: 'written-recognition' })],
+    }));
+    expect(o.decision).toBe('already-covered');
+    expect(o.proposed).toBeUndefined();
+  });
+
   it('snoozed and suspended items count as covered; a dismissed one is not re-proposed', () => {
     expect(decideIntake(intakeInput({ existing: [deckItem({ status: 'snoozed' })] })).decision).toBe('already-covered');
     const s = decideIntake(intakeInput({ existing: [deckItem({ status: 'suspended' })] }));
@@ -97,6 +106,18 @@ describe('decideIntake: deck and knowledge', () => {
 });
 
 describe('decideIntake: score, saved and the proposal', () => {
+  it('a New-stage item stays out automatically, but an explicit save requests written recognition', () => {
+    const c = candidate();
+    const newKnowledge = { ...knowledge(c.unitId), level: 'new' as const };
+    expect(decideIntake(intakeInput({ candidate: c, knowledge: newKnowledge })).decision).toBe('low-priority');
+    const requested = decideIntake(intakeInput({
+      candidate: c, knowledge: newKnowledge, saved: new Set([c.unitId]), preferences: prefs({ prioritizeSaved: false }),
+    }));
+    expect(requested.decision).toBe('test-now');
+    expect(requested.proposed?.family).toBe('written-recognition');
+    expect(requested.explicitlySelected).toBe(true);
+  });
+
   it('score below 0.15 → low-priority', () => {
     const o = decideIntake(intakeInput({ candidate: candidate({ score: 0.1 }) }));
     expect(o.decision).toBe('low-priority');
@@ -127,11 +148,12 @@ describe('decideIntake: score, saved and the proposal', () => {
   it('maps the target dimension to an assessment dimension and a family', () => {
     expect(proposeFor(candidate())).toEqual({ dimension: 'written-recognition', family: 'written-recognition' });
     expect(proposeFor(candidate({ kind: 'multiword' }))).toEqual({ dimension: 'phrase-comprehension', family: 'phrase-comprehension' });
-    expect(proposeFor(candidate({ targetDimension: 'productiveRetrieval' }))).toEqual({ dimension: 'meaning-to-target-retrieval', family: 'meaning-to-form' });
-    expect(proposeFor(candidate({ targetDimension: 'grammaticalUnderstanding', kind: 'form' }))).toEqual({ dimension: 'morphological-analysis', family: 'morphological-identification' });
-    expect(proposeFor(candidate({ targetDimension: 'grammaticalUnderstanding', kind: 'morph-construction' }))).toEqual({ dimension: 'construction-understanding', family: 'grammar-application' });
-    expect(proposeFor(candidate({ targetDimension: 'listeningRecognition' }))).toEqual({ dimension: 'auditory-recognition', family: 'audio-to-meaning' });
-    expect(proposeFor(candidate({ targetDimension: 'contextualProduction' }))).toEqual({ dimension: 'productive-recall', family: 'sentence-completion' });
+    expect(proposeFor(candidate({ targetDimension: 'productiveRetrieval' }))).toEqual({ dimension: 'written-recognition', family: 'written-recognition' });
+    expect(proposeFor(candidate({ targetDimension: 'productiveRetrieval' }), true)).toEqual({ dimension: 'meaning-to-target-retrieval', family: 'meaning-to-form' });
+    expect(proposeFor(candidate({ targetDimension: 'grammaticalUnderstanding', kind: 'form' }), true)).toEqual({ dimension: 'morphological-analysis', family: 'morphological-identification' });
+    expect(proposeFor(candidate({ targetDimension: 'grammaticalUnderstanding', kind: 'morph-construction' }), true)).toEqual({ dimension: 'construction-understanding', family: 'grammar-application' });
+    expect(proposeFor(candidate({ targetDimension: 'listeningRecognition' }), true)).toEqual({ dimension: 'auditory-recognition', family: 'audio-to-meaning' });
+    expect(proposeFor(candidate({ targetDimension: 'contextualProduction' }), true)).toEqual({ dimension: 'productive-recall', family: 'sentence-completion' });
   });
 });
 
@@ -139,32 +161,32 @@ describe('decideIntake: audio', () => {
   const listening = candidate({ targetDimension: 'listeningRecognition', score: 0.9 });
 
   it('audio available and evidence-eligible → test-now as audio-to-meaning', () => {
-    const o = decideIntake(intakeInput({ candidate: listening, audio: audioOk }));
+    const o = decideIntake(intakeInput({ candidate: listening, audio: audioOk, secondaryPractice: true }));
     expect(o.decision).toBe('test-now');
     expect(o.proposed?.family).toBe('audio-to-meaning');
   });
 
   it('audio unavailable → test-later "no suitable audio", proposal kept, never a written substitute', () => {
-    const o = decideIntake(intakeInput({ candidate: listening, audio: audioNone }));
+    const o = decideIntake(intakeInput({ candidate: listening, audio: audioNone, secondaryPractice: true }));
     expect(o.decision).toBe('test-later');
     expect(o.reasons.join(' ')).toContain('no suitable audio');
     expect(o.proposed?.family).toBe('audio-to-meaning');
   });
 
   it('audio available but practice-only → test-later (cannot be listening evidence)', () => {
-    const o = decideIntake(intakeInput({ candidate: listening, audio: audioPractice }));
+    const o = decideIntake(intakeInput({ candidate: listening, audio: audioPractice, secondaryPractice: true }));
     expect(o.decision).toBe('test-later');
     expect(o.reasons.join(' ')).toContain('practice only');
   });
 
   it('listening switched off → test-later', () => {
-    const o = decideIntake(intakeInput({ candidate: listening, preferences: prefs({ includeListening: false }) }));
+    const o = decideIntake(intakeInput({ candidate: listening, preferences: prefs({ includeListening: false }), secondaryPractice: true }));
     expect(o.decision).toBe('test-later');
     expect(o.reasons.join(' ')).toContain('switched off');
   });
 
   it('a saved listening unit still waits for audio', () => {
-    const o = decideIntake(intakeInput({ candidate: listening, audio: audioNone, saved: new Set([listening.unitId]) }));
+    const o = decideIntake(intakeInput({ candidate: listening, audio: audioNone, saved: new Set([listening.unitId]), secondaryPractice: true }));
     expect(o.decision).toBe('test-later');
   });
 
@@ -243,10 +265,107 @@ describe('gatherCandidates', () => {
     const { deps: d } = deps({
       api: { candidates: async () => [lc], knowledge: async () => [] },
       audio: async () => { throw new Error('probe failed'); },
+      secondaryPractice: true,
     });
     const out = await gatherCandidates(d);
     expect(out[0].decision).toBe('test-later');
     expect(out[0].reasons.join(' ')).toContain('probe failed');
+  });
+
+  it('merges a verified form into its canonical lexeme for one reading encounter, but leaves morphology practice separate', async () => {
+    const formId = 'form:sq:shkolle';
+    const lexemeId = 'lemma:sq:shkollë:NOUN';
+    const formCandidate = candidate({ unitId: formId, kind: 'form', score: 0.9 });
+    const lexemeCandidate = candidate({ unitId: lexemeId, kind: 'lexeme', score: 0.8 });
+    const relation = {
+      fromId: formId, relation: 'form-of' as const, toId: lexemeId, confidence: 1, status: 'verified' as const,
+      provenance: { source: 'hand-lexicon' as const, ref: 'pack:sq:test', confidence: 1 },
+    };
+    const localDeps = deps({
+      api: {
+        candidates: async () => [formCandidate, lexemeCandidate],
+        knowledge: async () => [knowledge(formId), knowledge(lexemeId)],
+      },
+      facts: { factsFor: async (id: string) => facts(id, id === formId ? { relations: [relation] } : {}) },
+    });
+    const out = await gatherCandidates(localDeps.deps);
+    expect(out.map((row) => [row.unitId, row.decision])).toEqual([
+      [formId, 'redundant'], [lexemeId, 'test-now'],
+    ]);
+    expect(out[0].reasons[0]).toContain(`canonical lexeme ${lexemeId}`);
+
+    const morphology = candidate({ unitId: formId, kind: 'form', targetDimension: 'grammaticalUnderstanding' });
+    const separate = await gatherCandidates(deps({
+      secondaryPractice: true,
+      api: { candidates: async () => [morphology, lexemeCandidate], knowledge: async () => [knowledge(formId), knowledge(lexemeId)] },
+      facts: { factsFor: async (id: string) => facts(id, id === formId ? { relations: [relation] } : {}) },
+    }).deps);
+    expect(separate[0].decision).toBe('test-now');
+    expect(separate[0].proposed?.family).toBe('morphological-identification');
+    expect(separate[1].decision).toBe('test-now');
+
+    const ambiguous = await gatherCandidates(deps({
+      api: {
+        candidates: async () => [formCandidate, lexemeCandidate],
+        knowledge: async () => [knowledge(formId), knowledge(lexemeId)],
+      },
+      facts: { factsFor: async (id: string) => facts(id, id === formId ? {
+        relations: [relation],
+        analyses: [{
+          analysisId: 'ambiguous-analysis', formId, languageId: 'sq', candidates: [
+            { lexemeId, senseId: 'sense:one', confidence: 0.5, provenance: relation.provenance },
+            { lexemeId, senseId: 'sense:two', confidence: 0.5, provenance: relation.provenance },
+          ], status: 'high-confidence', analyzerId: 'test', packId: 'pack:sq', packVersion: '1', createdAt: NOW,
+        }],
+      } : {}) },
+    }).deps);
+    expect(ambiguous[0].decision).toBe('test-now');
+  });
+
+  it('does not add a canonical lexeme when a legacy form-recognition card already covers it', async () => {
+    const formId = 'form:sq:shkolle';
+    const lexemeId = 'lemma:sq:shkollë:NOUN';
+    const lexemeCandidate = candidate({ unitId: lexemeId, kind: 'lexeme', score: 0.8 });
+    const relation = {
+      fromId: formId, relation: 'form-of' as const, toId: lexemeId, confidence: 1, status: 'verified' as const,
+      provenance: { source: 'hand-lexicon' as const, ref: 'pack:sq:test', confidence: 1 },
+    };
+    const existingForm = (status: 'active' | 'suspended' | 'dismissed') => deckItem({ unitId: formId, unitKind: 'form', status });
+    const gather = (status: 'active' | 'suspended' | 'dismissed') => gatherCandidates(deps({
+      api: {
+        candidates: async () => [lexemeCandidate],
+        knowledge: async () => [knowledge(lexemeId)],
+      },
+      deck: [existingForm(status)],
+      facts: { factsFor: async (id: string) => facts(id, id === formId ? { relations: [relation] } : {}) },
+    }).deps);
+
+    for (const status of ['active', 'suspended'] as const) {
+      const [outcome] = await gather(status);
+      expect(outcome.decision).toBe('already-covered');
+      expect(outcome.reasons[0]).toContain(`existing form recognition ${formId}`);
+    }
+    expect((await gather('dismissed'))[0].decision).toBe('test-now');
+  });
+
+  it.each([
+    ['hand-lexicon', 1, 'redundant'], ['rule', 1, 'test-now'], ['hand-lexicon', 0.4, 'test-now'],
+  ] as const)('aliases provisional %s links at confidence %s only when the lexical source warrants it', async (source, confidence, expected) => {
+    const formId = 'form:sq:shkollë';
+    const lexemeId = 'lemma:sq:shkollë:NOUN';
+    const rows = [candidate({ unitId: formId, kind: 'form' }), candidate({ unitId: lexemeId, kind: 'lexeme' })];
+    const result = await gatherCandidates(deps({
+      api: { candidates: async () => rows, knowledge: async () => rows.map((r) => knowledge(r.unitId)) },
+      facts: { factsFor: async (id: string) => facts(id, id === formId ? { analyses: [{
+        analysisId: 'single-sense', formId, languageId: 'sq', status: 'high-confidence',
+        analyzerId: 'test', packId: 'pack:sq', packVersion: '1', createdAt: NOW,
+        candidates: [{ lexemeId, senseId: 'sense:school', confidence: 1, provenance: { source: 'hand-lexicon', ref: 'pack:sq:test', confidence: 1 } }],
+      }], relations: [{
+        fromId: formId, toId: lexemeId, relation: 'form-of', status: 'provisional', confidence,
+        provenance: { source, ref: 'pack:sq:test', confidence },
+      }] } : {}) },
+    }).deps);
+    expect(result[0].decision).toBe(expected);
   });
 
   it('no candidates → no calls beyond the candidate query', async () => {

@@ -9,7 +9,7 @@ import type { EvidenceInput, GradingPort } from '../../../packages/goreview/src/
 import { FAMILY_DIMENSION } from '../../../packages/goreview/src/types';
 import type { Exercise, ExerciseBuilder, ExerciseFamily, FactsProvider, Response, ReviewTarget, SessionPlan } from '../../../packages/goreview/src/types';
 import { planSession } from '../../../packages/goreview/src/planner/planner';
-import { dueItem, facts, fakeScheduler, NOW, prefs, testNow } from '../intake/fixtures';
+import { dueItem, facts, fakeScheduler, knowledge, NOW, prefs, testNow } from '../intake/fixtures';
 
 export const IDENTITY = { learnerId: 'L1', enrolmentId: 'E1', deviceId: 'D1' };
 
@@ -127,7 +127,7 @@ export function makePlan(opts: { due?: number; newItems?: Array<{ unitId: string
   const n = opts.due ?? 3;
   const deck = Array.from({ length: n }, (_, i) => dueItem(`form:sq:u${i + 1}`, 0.2 + i / 10, opts.dueFamilies?.[i] ?? 'written-recognition'));
   const intake = (opts.newItems ?? []).map((x) => testNow(x.unitId, {}, x.family ?? 'written-recognition'));
-  return planSession({ deck, intake, preferences: prefs({ sessionMinutes: 20 }), audio: { available: true, eligibleForEvidence: true, reason: 'ok' }, scheduler: fakeScheduler, now: NOW, random: () => 0.25 });
+  return planSession({ deck, intake, knowledge: intake.map((o) => knowledge(o.unitId)), preferences: prefs({ sessionMinutes: 20 }), audio: { available: true, eligibleForEvidence: true, reason: 'ok' }, scheduler: fakeScheduler, now: NOW, random: () => 0.25 });
 }
 
 export { validateEvent };

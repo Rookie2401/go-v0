@@ -7,7 +7,7 @@ import { afterAll, describe, expect, it } from 'vitest';
 import { applyMigrations, exportLearner, openSqliteStore, readMigrations } from '../../../packages/repository-store/src';
 import { storeConformance } from './conformance';
 import { storeProvenanceConformance } from './provenance';
-import { L1, L2, analysis, doc, encounter, ev, relation, unit } from './fixtures';
+import { L1, L2, analysis, doc, encounter, ev, knowledgeRow, relation, unit } from './fixtures';
 
 const tmp = mkdtempSync(join(tmpdir(), 'repo-store-'));
 afterAll(() => rmSync(tmp, { recursive: true, force: true }));
@@ -21,6 +21,30 @@ storeProvenanceConformance('sqlite store (:memory:)', async () => openSqliteStor
 storeProvenanceConformance('sqlite store (file)', async () => openSqliteStore(fresh()));
 
 describe('sqlite store: schema and migrations', () => {
+  it('pages a 10k encountered catalog by indexed stable unit id and reports exact level counts', async () => {
+    const store = openSqliteStore(':memory:');
+    const rows = Array.from({ length: 10_000 }, (_, i) => {
+      const row = knowledgeRow(L1, `lemma:sq:word-${String(i).padStart(5, '0')}:NOUN`);
+      return { ...row, level: i % 2 ? 'seen' as const : 'new' as const, encounters: 1 };
+    });
+    await store.putKnowledge(rows);
+    const started = performance.now();
+    const read: string[] = [];
+    let after: string | undefined;
+    for (;;) {
+      const page = await store.getKnowledgePage!(L1, { languageId: 'sq', after, limit: 500 });
+      if (!page.length) break;
+      read.push(...page.map((r) => r.unitId));
+      after = page[page.length - 1]!.unitId;
+    }
+    const stats = await store.getEncounteredKnowledgeStats!(L1, 'sq');
+    const elapsedMs = performance.now() - started;
+    expect(read).toHaveLength(10_000);
+    expect(new Set(read).size).toBe(10_000);
+    expect(stats).toEqual({ total: 10_000, counts: { new: 5_000, seen: 5_000, recognized: 0, familiar: 0, known: 0, automatic: 0 } });
+    expect(Number.isFinite(elapsedMs)).toBe(true); // recorded during local runs; intentionally no flaky wall-clock threshold
+    await store.close();
+  });
   it('applies 001-initial on first open and nothing on a reopen; data persists', async () => {
     const path = fresh();
     const a = openSqliteStore(path);
@@ -32,7 +56,7 @@ describe('sqlite store: schema and migrations', () => {
     const raw1 = new DatabaseSync(path);
     const versions1 = raw1.prepare('SELECT version, name FROM schema_version').all();
     raw1.close();
-    expect(versions1).toEqual([{ version: 1, name: '001-initial.sql' }, { version: 2, name: '002-provenance.sql' }]);
+    expect(versions1).toEqual([{ version: 1, name: '001-initial.sql' }, { version: 2, name: '002-provenance.sql' }, { version: 3, name: '003-vocabulary-page-index.sql' }]);
 
     const b = openSqliteStore(path);
     expect((await b.list({ learnerId: L1 })).map((e) => [e.id, e.seq])).toEqual([['e1', 1], ['e2', 2]]);
@@ -44,13 +68,13 @@ describe('sqlite store: schema and migrations', () => {
     await b.close();
 
     const raw2 = new DatabaseSync(path);
-    expect(raw2.prepare('SELECT COUNT(*) AS n FROM schema_version').get()).toEqual({ n: 2 });
+    expect(raw2.prepare('SELECT COUNT(*) AS n FROM schema_version').get()).toEqual({ n: 3 });
     raw2.close();
   });
 
   it('the migration runner reports what it applied and is idempotent', () => {
     const db = new DatabaseSync(':memory:');
-    expect(applyMigrations(db)).toEqual(['001-initial.sql', '002-provenance.sql']);
+    expect(applyMigrations(db)).toEqual(['001-initial.sql', '002-provenance.sql', '003-vocabulary-page-index.sql']);
     expect(applyMigrations(db)).toEqual([]);
     db.close();
   });
@@ -156,11 +180,11 @@ describe('sqlite store: schema and migrations', () => {
     copyFileSync(new URL('002-provenance.sql', MIGRATIONS), join(dir, '002-provenance.sql'));
     const path = fresh();
     openSqliteStore(path, { migrationsDir: dir }).close();
-    writeFileSync(join(dir, '003-extra.sql'), 'CREATE TABLE extra (id TEXT PRIMARY KEY) STRICT;');
+    writeFileSync(join(dir, '004-extra.sql'), 'CREATE TABLE extra (id TEXT PRIMARY KEY) STRICT;');
     openSqliteStore(path, { migrationsDir: dir }).close();
     openSqliteStore(path, { migrationsDir: dir }).close(); // third open: nothing to do
     const raw = new DatabaseSync(path);
-    expect(raw.prepare('SELECT version FROM schema_version ORDER BY version').all()).toEqual([{ version: 1 }, { version: 2 }, { version: 3 }]);
+    expect(raw.prepare('SELECT version FROM schema_version ORDER BY version').all()).toEqual([{ version: 1 }, { version: 2 }, { version: 4 }]);
     raw.close();
     // the shipped code (001 and 002) must not open a database that has 003
     expect(() => openSqliteStore(path)).toThrow(/newer than the code/);
@@ -178,7 +202,7 @@ describe('sqlite store: schema and migrations', () => {
   });
 
   it('reads migrations in order and ignores other files', () => {
-    expect(readMigrations().map((m) => m.name)).toEqual(['001-initial.sql', '002-provenance.sql']);
+    expect(readMigrations().map((m) => m.name)).toEqual(['001-initial.sql', '002-provenance.sql', '003-vocabulary-page-index.sql']);
   });
 
   it('opens file databases in WAL mode with foreign keys on', async () => {

@@ -3,11 +3,13 @@
  * candidates (live, or the last list the service sent) and GoListen's availability. Rendering lives in the screens;
  * this file has no DOM, so a test can read the model directly.
  */
-import type { GoEvent, ReviewCandidate, UnitKnowledge } from '../repository-contract/src';
-import type { AudioAvailability, DeckItem, IntakeOutcome, ReviewPreferences, SessionPlan } from '../goreview/src/types';
+import type { GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../repository-contract/src';
+import { effectiveReviewEvents } from '../repository-contract/src';
+import type { AudioAvailability, DeckItem, IntakeOutcome, ReviewPreferences, SessionPlan, SessionState } from '../goreview/src/types';
 import type { AppContext } from './context';
 import { candidatesKey, type CandidateChoice } from './state';
 import type { ActiveRun, Identity, SessionDriver } from './ports';
+import { activeSchedulerProfile } from './profiles';
 
 export const NO_AUDIO: AudioAvailability = { available: false, eligibleForEvidence: false, reason: 'no audio is available in this browser' };
 
@@ -32,6 +34,8 @@ export interface ReviewModel {
   counts: DeckCounts;
   audio: AudioAvailability;
   outcomes: IntakeOutcome[];
+  knowledge: UnitKnowledge[];
+  schedulerProfile?: SchedulerProfile;
   /** Candidates the learner dismissed (ItemMarked ignore) and so are not proposed. */
   dismissed: string[];
   choices: Record<string, CandidateChoice>;
@@ -80,7 +84,8 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   const now = deps.now().toISOString();
   const prefs = await state.getPrefs(identity.learnerId, identity.languageId);
   const events = await ctx.events(identity.languageId);
-  const scheduler = engine.scheduler(prefs);
+  const schedulerProfile = activeSchedulerProfile(events);
+  const scheduler = engine.scheduler(prefs, schedulerProfile);
   const deck = engine.foldDeck(events, identity.languageId, prefs, now);
   const counts = countDeck(deck, { scheduler, now });
   const { saved, ignored } = marksOf(events);
@@ -101,9 +106,10 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     const c = await api.candidates(identity.enrolmentId, 40);
     if (!c.ok) throw new Error(c.message || `the service answered ${c.status}`);
     candidates = c.data.candidates;
-    if (candidates.length) {
-      const k = await api.knowledge([...new Set(candidates.map((x) => x.unitId))].slice(0, 200));
-      knowledge = k.ok ? k.data.knowledge : [];
+    const unitIds = [...new Set([...candidates.map((x) => x.unitId), ...deck.map((x) => x.unitId)])];
+    for (let offset = 0; offset < unitIds.length; offset += 200) {
+      const k = await api.knowledge(unitIds.slice(offset, offset + 200));
+      if (k.ok) knowledge.push(...k.data.knowledge);
     }
     candidateSource = 'live';
     await deps.area.set({ [cacheKey]: { fetchedAt: now, candidates, knowledge } satisfies CandidateCache });
@@ -125,7 +131,7 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   }
   const choices = await state.getChoices(identity.learnerId);
   return {
-    identity, prefs, events, deck, counts, audio, outcomes, dismissed: [...ignored], choices, saved, candidateSource,
+    identity, prefs, events, deck, counts, audio, outcomes, knowledge, schedulerProfile, dismissed: [...ignored], choices, saved, candidateSource,
     ...(candidateNote ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
   };
 }
@@ -136,13 +142,75 @@ export type StartResult =
   | { ok: true; run: ActiveRun }
   | { ok: false; message: string };
 
+/** Robust recent duration estimates; idle, assisted and reversed grades are excluded. */
+export function observedReviewSeconds(events: readonly GoEvent[]): Record<string, number> {
+  const samples = new Map<string, number[]>();
+  for (const event of effectiveReviewEvents([...events]).sort((a, b) => Date.parse(a.at) - Date.parse(b.at) || a.id.localeCompare(b.id))) {
+    const seconds = event.payload.reviewSeconds;
+    if (!event.subject.cardId || event.correctionOf || event.payload.rating == null
+      || event.evidence?.assisted || event.payload.hinted || typeof seconds !== 'number' || !Number.isFinite(seconds) || seconds <= 0 || seconds > 900) continue;
+    const values = samples.get(event.subject.cardId) ?? [];
+    values.push(seconds); samples.set(event.subject.cardId, values.slice(-10));
+  }
+  return Object.fromEntries([...samples].map(([id, values]) => {
+    values.sort((a, b) => a - b);
+    return [id, Math.max(5, values[Math.floor(values.length / 2)])];
+  }));
+}
+
+/** Learner-scoped resumable state; this is not a second vocabulary store. */
+export async function recoverableSessions(ctx: AppContext): Promise<SessionState[]> {
+  const [data, identity] = await Promise.all([ctx.data(), ctx.identity()]);
+  if (!data || !identity) return [];
+  const keys = await data.area.list('goreview:session:');
+  const rows = keys.length ? await data.area.get(keys) : {};
+  return Object.values(rows).filter((value): value is SessionState => {
+    const s = value as SessionState | undefined;
+    return !!s && s.status === 'in-progress' && s.plan?.languageId === identity.languageId
+      && typeof s.sessionId === 'string' && Array.isArray(s.results)
+      && Number.isInteger(s.index) && s.index >= 0 && s.index <= s.plan.items.length;
+  }).sort((a, b) => b.startedAt.localeCompare(a.startedAt));
+}
+
+export async function resumeSession(ctx: AppContext, sessionId: string): Promise<StartResult> {
+  const saved = (await recoverableSessions(ctx)).find((s) => s.sessionId === sessionId);
+  if (!saved) return { ok: false, message: 'That session is no longer available. Your committed reviews are preserved.' };
+  const [ectx, data, identity] = await Promise.all([ctx.eventContext(), ctx.data(), ctx.identity()]);
+  if (!ectx || !data || !identity) return { ok: false, message: 'Choose a language first.' };
+  const prefs = await ctx.state.getPrefs(identity.learnerId, identity.languageId);
+  const { api } = await ctx.api();
+  const audio = await ctx.audio();
+  const driver = ctx.engine.startSession({ prefs, plan: saved.plan, ctx: ectx, api, persist: data.area,
+    schedulerProfile: activeSchedulerProfile(await ctx.events(identity.languageId)),
+    committedEvents: () => ctx.events(identity.languageId),
+    ...(audio?.source() ? { assessment: audio.source() } : {}),
+    record: async (events) => {
+      const result = await ctx.record(events);
+      if (result.refused.length) throw new Error(result.refused[0].issues.join('; '));
+    },
+  });
+  if (!driver.recover || !(await driver.recover(sessionId))) return { ok: false, message: 'The saved session could not be restored.' };
+  const state = driver.state();
+  return { ok: true, run: { driver, plan: state.plan, ctx: ectx, addedCount: 0,
+    startedAt: Date.parse(state.startedAt), results: [...state.results],
+    skipped: driver.skips().map((s) => s.itemId), withheld: [], controls: [] } };
+}
+
+/** End without grading unanswered prompts or removing committed events. */
+export async function endSavedSession(ctx: AppContext, sessionId: string): Promise<boolean> {
+  const resumed = await resumeSession(ctx, sessionId);
+  if (!resumed.ok) return false;
+  await resumed.run.driver.finish();
+  return true;
+}
+
 /** Plans a session from the model and opens the driver. Nothing is written until the learner answers. */
 export async function beginSession(ctx: AppContext, model: ReviewModel): Promise<StartResult> {
   const { engine, deps } = ctx;
   const ectx = await ctx.eventContext();
   if (!ectx) return { ok: false, message: 'Choose a language first.' };
   const now = ectx.now;
-  const plan: SessionPlan = engine.plan({ deck: model.deck, intake: model.outcomes.filter((o) => model.choices[o.unitId] !== 'later'), prefs: model.prefs, audio: model.audio, now });
+  const plan: SessionPlan = engine.plan({ deck: model.deck, intake: model.outcomes.filter((o) => model.choices[o.unitId] !== 'later'), prefs: model.prefs, audio: model.audio, now, knowledge: model.knowledge, readingSignals: model.events, schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events) });
   if (!plan.items.length) {
     return { ok: false, message: plan.skipped.length ? `Nothing fits this session: ${plan.skipped[0].why}.` : 'Nothing is due, and nothing new is worth adding right now.' };
   }
@@ -156,6 +224,8 @@ export async function beginSession(ctx: AppContext, model: ReviewModel): Promise
   if (!data) return { ok: false, message: 'Sign in first.' };
   const driver: SessionDriver = engine.startSession({
     prefs: model.prefs, plan, ctx: ectx, ...(audioDeps?.source() ? { assessment: audioDeps.source() } : {}), api, persist: data.area,
+    committedEvents: () => ctx.events(model.identity.languageId),
+    schedulerProfile: model.schedulerProfile,
     record: async (events) => {
       const r = await ctx.record(events);
       if (r.refused.length) throw new Error(`the device queue refused an event (${r.refused[0].issues.join('; ')})`);

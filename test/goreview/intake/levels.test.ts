@@ -13,8 +13,13 @@ import { candidate, intakeInput, knowledge } from './fixtures';
 const at = (level: KnowledgeLevel) => ({ ...knowledge('form:sq:librin'), level });
 
 describe('intake: the level is in the reasons', () => {
-  it.each(KNOWLEDGE_LEVELS.filter((l) => l !== 'automatic'))('a %s unit says so when it is tested now or later', (level) => {
+  it.each(KNOWLEDGE_LEVELS.filter((l) => l !== 'automatic'))('a %s unit follows the conservative progression gate', (level) => {
     const o = decideIntake(intakeInput({ knowledge: at(level) }));
+    if (level === 'new' || level === 'seen') {
+      expect(o.decision).toBe('low-priority');
+      expect(o.reasons[0]).toContain(`level ${level === 'new' ? 'New' : 'Seen'}`);
+      return;
+    }
     expect(['test-now', 'test-later']).toContain(o.decision);
     expect(o.reasons.some((r) => r.startsWith('level ') && r.toLowerCase().startsWith(`level ${level}`))).toBe(true);
   });
@@ -32,12 +37,11 @@ describe('intake: the level is in the reasons', () => {
     expect(o.reasons[0]).toContain('level Automatic');
   });
 
-  it('Automatic with decayed retention or a contradicted mark in the candidate\'s reasons is tested again', () => {
+  it('candidate labels alone do not count as confirmed unassisted retrieval failure', () => {
     for (const rule of ['retentionDecayed', 'selfMarkContradicted']) {
       const c = candidate({ reasons: [{ rule, weight: rule === 'retentionDecayed' ? 0.15 : 0 }, { rule: 'repeatedLookups', weight: 0.6 }] });
       const o = decideIntake(intakeInput({ candidate: c, knowledge: at('automatic') }));
-      expect(['test-now', 'test-later'], rule).toContain(o.decision);
-      expect(o.reasons.some((r) => r.startsWith('level Automatic')), rule).toBe(true);
+      expect(o.decision, rule).toBe('already-covered');
     }
   });
 });

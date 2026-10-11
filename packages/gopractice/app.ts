@@ -16,11 +16,12 @@ import * as reviewScreen from './screens/review';
 import * as settingsScreen from './screens/settings';
 import * as signinScreen from './screens/signin';
 import * as tellScreen from './screens/tell';
+import * as vocabularyScreen from './screens/vocabulary';
 import type { View } from './screens/view';
 import { shortDate } from './dom';
 
 export interface RouteDef {
-  id: 'review' | 'tell' | 'settings' | 'signin';
+  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'signin';
   title: string;
   render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): void | Promise<void>;
 }
@@ -28,10 +29,12 @@ export interface RouteDef {
 export const ROUTES: readonly RouteDef[] = [
   { id: 'review', title: 'GoReview', render: reviewScreen.render },
   { id: 'tell', title: 'GoTell', render: tellScreen.render },
+  { id: 'vocabulary', title: 'My Vocabulary', render: vocabularyScreen.render },
   { id: 'settings', title: 'Settings', render: settingsScreen.render },
   { id: 'signin', title: 'Sign in', render: signinScreen.render },
 ];
-export const NAV = ROUTES.filter((r) => r.id !== 'signin');
+/** The three work areas; Settings remains available as a utility route. */
+export const NAV = ROUTES.filter((r) => r.id === 'review' || r.id === 'tell' || r.id === 'vocabulary');
 
 export interface ParsedRoute { id: RouteDef['id']; params: string[]; path: string }
 
@@ -123,6 +126,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required
     clear(acctEl);
+    if (mode !== 'none') acctEl.append(h('a', { href: '#/settings', id: 'settings-link', class: 'utility-link' }, 'Settings'));
     if (mode === 'device') acctEl.append(h('a', { href: '#/signin', id: 'account-link', class: 'account-link' }, 'Keep your progress across devices (optional)'));
     else if (mode === 'account') acctEl.append(h('span', { id: 'account-state', class: 'account-state' }, 'Synced to your account'));
   }
@@ -132,7 +136,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (!ok) return;
     // the deck of the other language is folded afresh from the same local log
     const top = route.split('/')[0];
-    if (top === 'review' || top === 'tell') {
+    if (top === 'review' || top === 'tell' || top === 'vocabulary') {
       if (win.location.hash !== `#/${top}`) win.location.hash = `#/${top}`;
       renderDone = show(top, []);
       await renderDone;

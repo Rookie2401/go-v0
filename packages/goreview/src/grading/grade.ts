@@ -150,7 +150,8 @@ export function gradeResponse(exercise: Exercise, response: Response): Grading {
  *   incorrect                                                               → 1
  */
 export function ratingFor(grading: Grading, response: Response): Rating | null {
-  if (response.challenged === true || response.audioFailed === true) return null;
+  if (response.challenged === true || response.audioFailed === true || response.retrievalAttempted === false ||
+      response.hinted === true || (response.assistance?.length ?? 0) > 0 || response.transcriptShownBefore === true) return null;
   switch (grading.outcome) {
     case 'ambiguous':
     case 'invalid-question':
@@ -161,7 +162,6 @@ export function ratingFor(grading: Grading, response: Response): Rating | null {
     case 'partial':
       return 2;
     case 'correct':
-      if (response.hinted) return 2;
       return response.selfGrade === 'easy' ? 4 : 3;
     default:
       return null;

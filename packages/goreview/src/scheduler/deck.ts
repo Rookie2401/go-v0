@@ -16,7 +16,7 @@
  *                        later CardAdded (someone who can fix the pack re-adds it) re-activates it.
  */
 import type { EventKind, GoEvent } from '../../../repository-contract/src';
-import { validateEvent } from '../../../repository-contract/src';
+import { retractedReviewIds, validateEvent } from '../../../repository-contract/src';
 import { ASSESSMENT_DIMENSIONS, EXERCISE_FAMILIES } from '../types';
 import type { AssessmentDimension, DeckItem, ExerciseFamily, GradeOutcome, Rating, ReviewLogEntry, Scheduler } from '../types';
 
@@ -84,6 +84,8 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
   }
   orderable.sort(byAtThenId);
 
+  const retracted = new Set(retractedReviewIds(orderable));
+
   const items = new Map<string, DeckItem>();
   const seen = new Set<string>();
 
@@ -91,6 +93,11 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
     if (seen.has(e.id)) continue; // the same event delivered twice (retries, two sync paths)
     seen.add(e.id);
     const payload = (e.payload ?? {}) as Record<string, unknown>;
+    if (e.correctionOf) {
+      if (retracted.has(e.correctionOf)) continue;
+      ignore(e, 'invalid review correction: target, kind, identity, card or timestamp did not match');
+      continue;
+    }
     const itemId = e.subject?.cardId;
 
     if (e.kind === 'CardAdded') {
@@ -168,9 +175,11 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
         exerciseId: nonEmpty(payload.exerciseId) ? payload.exerciseId : e.id,
         family: isFamily(payload.family) ? payload.family : item.family,
         elapsedDays: next.elapsedDays,
+        eventId: e.id,
+        ...(retracted.has(e.id) ? { retracted: true } : {}),
       };
       item.history.push(entry);
-      item.schedule = next;
+      if (!retracted.has(e.id)) item.schedule = next;
     }
   }
 

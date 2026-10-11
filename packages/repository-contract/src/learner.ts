@@ -74,6 +74,8 @@ export interface UnitKnowledge {
   selfMark?: { mark: KnowledgeLevel; at: string };
   /** Projection algorithm version that produced this row. */
   modelVersion: string;
+  /** Preserves projection@4's production-count-based automatic label during migration; this is legacy inference, not a learner assertion. */
+  legacyKnowability?: { level: 'automatic'; modelVersion: 'projection@4'; migratedAt: string; basis: 'legacy-production-inference' };
   /** Ids of the events folded into this row (count) and the last event id, so rebuilds can be compared. */
   basis: { events: number; lastEventId?: string };
 }

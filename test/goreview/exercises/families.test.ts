@@ -32,8 +32,8 @@ describe('written-recognition', () => {
     const w = makeWorld();
     const e = await ok(w, 'written-recognition', IDS.liber);
     expect(e.family).toBe('written-recognition');
-    expect(e.prompt.stimulusText).toBe('libër');
-    expect(e.prompt.instruction).toBe('What does “libër” mean?');
+    expect(e.prompt.stimulusText).toBe('Fëmijët lexojnë librin.');
+    expect(e.prompt.instruction).toBe('What does “librin” mean in this sentence?');
     expect(e.answerKey.accepted).toEqual(['book']);
     expect(e.answerKey.normalization).toBe('loose');
     expect(e.responseMode).toBe('typed-or-self');

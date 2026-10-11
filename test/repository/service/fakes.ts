@@ -88,6 +88,43 @@ export function createFakeStore(clock: () => string): FakeStore {
     },
     async get(learnerId, id) { return (s.events.get(learnerId) ?? []).find((e) => e.id === id); },
     async head(learnerId) { return (s.events.get(learnerId) ?? []).length; },
+    async listEncounterSummaries(learnerId, languageId, unitIds, perUnitLimit) {
+      const wanted = new Set(unitIds);
+      const counts = new Map<string, number>();
+      const out: Array<{ unitId: string; event: StoredEvent }> = [];
+      for (const event of [...(s.events.get(learnerId) ?? [])].reverse()) {
+        if (event.languageId !== languageId || !['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested'].includes(event.kind)) continue;
+        for (const unitId of event.subject.itemIds ?? []) {
+          if (!wanted.has(unitId) || (counts.get(unitId) ?? 0) >= perUnitLimit) continue;
+          counts.set(unitId, (counts.get(unitId) ?? 0) + 1);
+          out.push({ unitId, event });
+        }
+      }
+      return out;
+    },
+    async getEncounterDateRanges(learnerId, languageId, unitIds) {
+      const ranges = new Map<string, { firstEncounter: string; lastEncounter: string }>();
+      for (const event of s.events.get(learnerId) ?? []) {
+        if (event.languageId !== languageId || !['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested'].includes(event.kind)) continue;
+        for (const unitId of event.subject.itemIds ?? []) {
+          if (!unitIds.includes(unitId)) continue;
+          const old = ranges.get(unitId);
+          if (!old) ranges.set(unitId, { firstEncounter: event.at, lastEncounter: event.at });
+          else {
+            if (Date.parse(event.at) < Date.parse(old.firstEncounter)) old.firstEncounter = event.at;
+            if (Date.parse(event.at) > Date.parse(old.lastEncounter)) old.lastEncounter = event.at;
+          }
+        }
+      }
+      return unitIds.map((unitId) => ({ unitId, ...ranges.get(unitId) }));
+    },
+    async listAssistanceRequestedUnitIds(learnerId, languageId, unitIds) {
+      const found = new Set<string>();
+      for (const event of s.events.get(learnerId) ?? []) if (event.languageId === languageId && event.kind === 'AssistanceRequested')
+        for (const unitId of event.subject.itemIds ?? []) if (unitIds.includes(unitId)) found.add(unitId);
+      return [...found];
+    },
+    async listReviewStatusSummaries() { return []; },
 
     // linguistic
     async getUnits(ids) { return ids.flatMap((i) => (s.units.has(i) ? [s.units.get(i)!] : [])); },
@@ -107,6 +144,15 @@ export function createFakeStore(clock: () => string): FakeStore {
 
     // projection
     async getKnowledge(learnerId, unitIds) { return (s.knowledge.get(learnerId) ?? []).filter((k) => !unitIds || unitIds.includes(k.unitId)); },
+    async getKnowledgePage(learnerId, q) {
+      const sourceMatch = (unitId: string): boolean => !q.sourceRef || (s.events.get(learnerId) ?? []).some((e) => e.languageId === q.languageId && e.subject.itemIds?.includes(unitId) && Object.values(e.subject.sourceRef ?? {}).includes(q.sourceRef!));
+      return (s.knowledge.get(learnerId) ?? []).filter((k) => k.languageId === q.languageId && k.unitId > (q.after ?? '') && sourceMatch(k.unitId)).sort((a, b) => a.unitId.localeCompare(b.unitId)).slice(0, q.limit);
+    },
+    async getEncounteredKnowledgeStats(learnerId, languageId) {
+      const counts = { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 };
+      for (const k of s.knowledge.get(learnerId) ?? []) if (k.languageId === languageId && k.encounters > 0) counts[k.level]++;
+      return { total: Object.values(counts).reduce((a, b) => a + b, 0), counts };
+    },
     async putKnowledge(rows) { for (const r of rows) s.knowledge.set(r.learnerId, [...(s.knowledge.get(r.learnerId) ?? []).filter((k) => k.unitId !== r.unitId), r]); },
     async clearKnowledge(learnerId) { s.knowledge.delete(learnerId); },
     async getProjectionCursor(learnerId) { return s.cursors.get(learnerId); },

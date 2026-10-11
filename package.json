@@ -74,6 +74,7 @@
     "local:service": "vite-node packages/repository-service/src/main.ts --port 8790 --data data/local-repository --host 127.0.0.1"
   },
   "dependencies": {
+    "@open-spaced-repetition/binding": "0.5.0",
     "dexie": "^4",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

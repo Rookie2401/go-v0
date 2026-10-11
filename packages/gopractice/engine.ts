@@ -5,7 +5,7 @@
  * The exercise builders and the evidence builder are injected (`EngineOptions`) so the shell does not decide which
  * families exist: `main.ts` hands over GoReview's registry and `evidenceFor`; a test hands over small fakes.
  */
-import type { GoEvent } from '../repository-contract/src';
+import type { GoEvent, SchedulerProfile } from '../repository-contract/src';
 import {
   applyControls, buildCardAdded, createFsrsScheduler, createSessionRunner, decideIntake, explainIntake, explainItem, foldDeckItems,
   gatherCandidates, measuresFor, planSession, reviewHistory,
@@ -29,12 +29,16 @@ const noFacts: FactsProvider = { factsFor: async () => undefined };
 export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   const now = opts.now ?? (() => new Date().toISOString());
   const random = opts.random ?? Math.random;
-  const scheduler = (desiredRetention: number) => createFsrsScheduler({ desiredRetention });
+  const scheduler = (desiredRetention: number, profile?: SchedulerProfile) => createFsrsScheduler({ desiredRetention,
+    ...(profile ? { parameters: profile.parameters, maximumInterval: profile.maximumInterval } : {}) });
   const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => opts.factsFor?.(languageId, api) ?? noFacts;
 
   return {
-    scheduler: (prefs) => scheduler(prefs.desiredRetention),
-    foldDeck: (events, languageId, prefs, at) => foldDeckItems(events, scheduler(prefs.desiredRetention), { languageId, now: at }),
+    factsFor: (unitId, languageId, api) => factsOf(languageId, api).factsFor(unitId, languageId),
+    scheduler: (prefs, profile) => scheduler(prefs.desiredRetention, profile),
+    // New grades carry their own exact profile. Unversioned legacy grades use
+    // the supported 90% default, never a newly activated personal profile.
+    foldDeck: (events, languageId, _prefs, at) => foldDeckItems(events, scheduler(0.9), { languageId, now: at }),
 
     async intake(req) {
       const facts = opts.factsFor?.(req.prefs.languageId, req.api);
@@ -66,8 +70,10 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     },
 
     plan: (req) => planSession({
-      deck: req.deck, intake: req.intake, preferences: req.prefs, audio: req.audio, scheduler: scheduler(req.prefs.desiredRetention), now: req.now,
+      deck: req.deck, intake: req.intake, preferences: req.prefs, audio: req.audio, scheduler: scheduler(req.prefs.desiredRetention, req.schedulerProfile), now: req.now,
       ...(req.recentHelp ? { recentHelp: req.recentHelp } : {}), random,
+      knowledge: req.knowledge, readingSignals: req.readingSignals,
+      observedReviewSeconds: req.observedReviewSeconds,
     }),
 
     startSession(start) {
@@ -76,8 +82,9 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
         grading: { ratingFor: opts.ratingFor, evidenceFor: opts.evidenceFor },
         ...(start.assessment ? { audio: start.assessment } : {}),
         scheduler: scheduler(start.prefs.desiredRetention),
+        schedulerForItem: () => scheduler(start.prefs.desiredRetention, start.schedulerProfile),
         identity: { learnerId: start.ctx.learnerId, enrolmentId: start.ctx.enrolmentId, deviceId: start.ctx.deviceId },
-        record: start.record, persist: start.persist, now, random,
+        record: start.record, persist: start.persist, now, random, committedEvents: start.committedEvents,
       });
       return {
         plan: start.plan,
@@ -88,6 +95,8 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
         skips: () => runner.skips().map((s) => ({ itemId: s.itemId, reason: s.reason, kind: s.kind })),
         state: () => runner.state(),
         finish: () => runner.finish(),
+        recover: (sessionId) => runner.recover(sessionId),
+        undo: (resultId, reason) => runner.undo(resultId, reason ?? 'learner corrected review grade'),
       };
     },
 

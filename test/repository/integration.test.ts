@@ -119,9 +119,9 @@ describe('Prompt 3 §18 — the Albanian learner, end to end over the real packa
     expect(d.assistedRecognition.weight).toBe(0);    // asking for a gloss is not understanding with help either
     const counters = await engine.counters(a.learnerId, LEMMA);
     expect(counters).toMatchObject({ lookups: 1, assistance: 1, playbacks: 1 });
-    // projection@4: the rows the service returns carry the level and the encounters (a lookup and an assistance request are two encounters; a playback is none)
+    // projection@5: the rows the service returns carry the level and the encounters (a lookup and an assistance request are two encounters; a playback is none)
     const row = (await knowledgeOf(a, [LEMMA])).find((r) => r.unitId === LEMMA)!;
-    expect(row).toMatchObject({ level: 'seen', encounters: 2, modelVersion: 'projection@4' });
+    expect(row).toMatchObject({ level: 'seen', encounters: 2, modelVersion: 'projection@5' });
   });
 
   it('8. review candidates are explainable, and the provisional construction is not eligible for a grammar assessment', async () => {

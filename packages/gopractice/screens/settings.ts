@@ -6,6 +6,7 @@ import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } 
 import { setRemoteSpeechConsent } from './consent';
 import { licencesSection } from './licences';
 import { prefsForm } from './prefs';
+import { profileControls } from '../profiles';
 import type { View } from './view';
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
@@ -24,6 +25,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const prefs = await ctx.state.getPrefs(id.learnerId, id.languageId);
     prefsBox.append(p(`These apply to ${id.languageId}${id.varietyId ? ` (${id.varietyId})` : ''}, the active language.`, 'muted'), prefsForm(ctx, id.learnerId, prefs));
   } else prefsBox.append(p(mode === 'device' ? 'Choose a language in GoLearn setup to set preferences.' : 'Sign in and choose a language to set preferences.', 'muted'));
+  prefsBox.append(await profileControls(ctx));
   const settings = await ctx.state.getSettings();
   const consent = h('input', { type: 'checkbox', id: 'consent-remote-speech', name: 'remote-speech' }) as HTMLInputElement;
   consent.checked = settings.remoteSpeechConsent;

@@ -182,20 +182,25 @@ describe.each(STORE_KINDS)('an interrupted review session — %s store', (kind) 
     expect(reviewEvents(await serverEvents(s, a.learnerId)).length).toBe(second.state().results.length);
   });
 
-  it('the page dies AFTER the answer was recorded but BEFORE the session state was saved: the item is asked again, and the repeat is a duplicate, not a second observation', async () => {
+  it('the page dies after recording: recovery reconciles the committed grade without asking or grading it twice', async () => {
     const { s, a, rig, plan } = await sessionOf(2);
     const persist = createMemoryArea();
-    const lossy = { ...persist, set: async () => { throw new Error('the tab was closed before this write'); } };
+    const lossy = { ...persist, set: async (items: Record<string, unknown>) => {
+      if (Object.values(items).some((value) => (value as { index?: number }).index! > 0)) throw new Error('the tab was closed before this write');
+      await persist.set(items);
+    } };
     const first = rig.runner(plan, { persist: lossy, sessionId: 'sess-2' });
     const r = await rig.answerRight(first);
     expect(r?.index).toBe(0);
     expect(first.persistErrors().length).toBeGreaterThan(0);                            // reported, not fatal: the answer itself is safe in the queue
     await rig.device.client.syncOnce();
-    // a new page: nothing was saved, so there is nothing to recover, and the same plan starts again from item 0
+    // The initial checkpoint survives; authoritative committed history advances it.
     const second = rig.runner(plan, { persist, sessionId: 'sess-2' });
-    expect(await second.recover('sess-2')).toBe(false);
+    expect(await second.recover('sess-2', await serverEvents(s, a.learnerId))).toBe(true);
+    expect(second.state().index).toBe(1);
+    expect(second.state().recoveryNotes?.[0]).toContain('gr:sess-2:0:CardReviewed');
     const again = await rig.answerRight(second);
-    expect(again?.index).toBe(0);
+    expect(again?.index).toBe(1);
     const outcome = await rig.device.client.syncOnce();
     expect(outcome.ok).toBe(true);
     const kinds = reviewEvents(await serverEvents(s, a.learnerId)).filter((e) => e.subject.itemIds?.includes(plan.items[0].item.unitId));

@@ -6,6 +6,7 @@
 import type { GoEvent } from './index';
 import type { FormAnalysis, LanguagePackInfo, LinguisticUnit, UnitAlias, UnitCorrection, UnitRelation } from './units';
 import type { AssistancePreferences, Device, Enrolment, Learner, ReviewCandidate, SuitabilityEstimate, Team, UnitKnowledge } from './learner';
+import type { KnowledgeLevel } from './knowledge-levels';
 
 // ───────────────────────────── events (Layer B) ─────────────────────────────
 
@@ -20,10 +21,15 @@ export interface EventFilter {
   since?: string;
   /** Pagination over the stored order (`seq`), for sync. */
   afterSeq?: number;
+  /** Optional newest-first ordering for bounded recent activity views. */
+  order?: 'asc' | 'desc';
   limit?: number;
 }
 
 export interface StoredEvent extends GoEvent { seq: number; recordedAt: string }
+export interface EncounterEventSummary { unitId: string; event: StoredEvent }
+export interface EncounterDateRange { unitId: string; firstEncounter?: string; lastEncounter?: string }
+export interface ReviewStatusSummary { unitId: string; event: StoredEvent }
 
 export interface EventLog {
   /** Validates, de-duplicates on id and dedupeKey, stamps `recordedAt`, never overwrites. */
@@ -32,6 +38,14 @@ export interface EventLog {
   get(learnerId: string, id: string): Promise<StoredEvent | undefined>;
   /** Highest seq for the learner (0 when empty). */
   head(learnerId: string): Promise<number>;
+  /** Bounded recent encounter/assistance metadata for a page of units; does not load full event histories. */
+  listEncounterSummaries?(learnerId: string, languageId: string, unitIds: string[], perUnitLimit: number): Promise<EncounterEventSummary[]>;
+  /** Exact encounter date bounds for a page of units, grouped from indexed event references. */
+  getEncounterDateRanges?(learnerId: string, languageId: string, unitIds: string[]): Promise<EncounterDateRange[]>;
+  /** Latest status event per card for units on a page; event history remains untouched. */
+  listReviewStatusSummaries?(learnerId: string, languageId: string, unitIds: string[]): Promise<ReviewStatusSummary[]>;
+  /** Units with at least one actual AssistanceRequested event in the language. */
+  listAssistanceRequestedUnitIds?(learnerId: string, languageId: string, unitIds: string[]): Promise<string[]>;
 }
 
 // ───────────────────────────── linguistic knowledge (Layer A) ─────────────────────────────
@@ -48,6 +62,8 @@ export interface LinguisticStore {
   /** Marks an analysis invalidated (status + reason + supersededBy); the row remains. */
   invalidateAnalysis(analysisId: string, reason: string, supersededBy?: string): Promise<void>;
   aliasesFor(ids: string[]): Promise<UnitAlias[]>;
+  /** Aliases whose canonical target is one of the requested ids (for learner-facing alternate-form search). */
+  aliasesTo?(ids: string[]): Promise<UnitAlias[]>;
   putAliases(a: UnitAlias[]): Promise<void>;
   /**
    * Contract v3. Appends `correction` to the unit's `provenance.corrections` (oldest first; the unit's other fields are untouched) and,
@@ -66,6 +82,10 @@ export interface LinguisticStore {
 
 export interface ProjectionStore {
   getKnowledge(learnerId: string, unitIds?: string[]): Promise<UnitKnowledge[]>;
+  /** Indexed page over a learner's derived rows; cursor is the last returned unit id. */
+  getKnowledgePage?(learnerId: string, q: { languageId: string; after?: string; limit: number; minEncounters?: number; sourceRef?: string }): Promise<UnitKnowledge[]>;
+  /** Exact full-catalog encountered counts, computed from indexed projection rows. */
+  getEncounteredKnowledgeStats?(learnerId: string, languageId: string): Promise<{ total: number; counts: Record<KnowledgeLevel, number> }>;
   putKnowledge(rows: UnitKnowledge[]): Promise<void>;
   /** Removes every projection row of the learner (for a rebuild). */
   clearKnowledge(learnerId: string): Promise<void>;

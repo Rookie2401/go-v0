@@ -73,5 +73,6 @@ describe('review preferences', () => {
     expect(DEFAULT_PREFERENCES('sq')).toEqual({ languageId: 'sq', sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
     expect(clampPrefs({ languageId: 'sq', sessionMinutes: -4, maxNew: 1000, desiredRetention: 2, grammarShare: 5 })).toMatchObject({ sessionMinutes: 1, maxNew: 50, desiredRetention: 0.97, grammarShare: 1 });
     expect(clampPrefs({ languageId: 'sq', sessionMinutes: Number.NaN })).toMatchObject({ sessionMinutes: 10 });
+    expect(clampPrefs({ languageId: 'sq', sessionMinutes: 0 })).toMatchObject({ sessionMinutes: 0 });
   });
 });

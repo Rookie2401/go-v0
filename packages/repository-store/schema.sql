@@ -92,6 +92,7 @@ CREATE UNIQUE INDEX events_dedupe ON events (learner_id, dedupe_key) WHERE dedup
 CREATE INDEX events_kind ON events (learner_id, kind, seq);
 CREATE INDEX events_language ON events (learner_id, language_id, seq);
 CREATE INDEX events_at ON events (learner_id, at_ms);
+CREATE INDEX events_card_review ON events (learner_id, language_id, json_extract(json, '$.subject.cardId'), seq);
 
 CREATE TABLE event_units (
   event_id TEXT NOT NULL REFERENCES events (id) ON DELETE CASCADE,
@@ -165,6 +166,8 @@ CREATE TABLE knowledge (
   json          TEXT NOT NULL,
   PRIMARY KEY (learner_id, unit_id)
 ) STRICT;
+CREATE INDEX knowledge_vocabulary_page ON knowledge (learner_id, language_id, unit_id);
+CREATE INDEX knowledge_vocabulary_counts ON knowledge (learner_id, language_id, json_extract(json, '$.encounters'), json_extract(json, '$.level'));
 
 CREATE TABLE projection_cursor (
   learner_id    TEXT PRIMARY KEY,

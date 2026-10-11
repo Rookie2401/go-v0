@@ -10,7 +10,7 @@ import { reviewFacts } from '../facts/review-facts';
 import { normalizeAnswer } from '../grading/normalize';
 import { defineBuilder } from './builders';
 import {
-  acceptedMeanings, assemble, attributionLine, eligibilityOf, exerciseIdOf, glossSplit, precheck, quote, referenceGloss, refuse, rnd, shuffle,
+  acceptedMeanings, assemble, attributionLine, contextOf, eligibilityOf, exerciseIdOf, glossSplit, occurrences, precheck, quote, referenceGloss, refuse, rnd, shuffle,
 } from './shared';
 import type { Planned } from './shared';
 import type { BuildContext, UnitFacts } from '../types';
@@ -48,6 +48,9 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
 
   const isForm = facts.unit.kind === 'form';
   const shown = isForm ? facts.unit.label : facts.lemma ?? facts.unit.label;
+  const occurrence = occurrences(facts)[0];
+  const context = occurrence ? contextOf(occurrence) : undefined;
+  const contextualTarget = context?.surface ?? shown;
   const reference = referenceGloss(facts);
   const accepted = acceptedMeanings(facts);
   if (!reference || accepted.length === 0) return refuse('no gloss in the word list or the dictionary, so there is nothing to check a meaning against');
@@ -72,8 +75,10 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
       family: 'written-recognition',
       target: { ...target },
       prompt: {
-        instruction: `What does ${quote(shown)} mean?`,
-        stimulusText: shown,
+      instruction: context
+        ? `What does ${quote(contextualTarget)} mean in this sentence?`
+        : `What does ${quote(shown)} mean?`,
+      stimulusText: context?.sentence ?? shown,
         ...(choice ? { options: shuffle([reference, ...distractors], random) } : {}),
       },
       answerKey: choice
@@ -86,7 +91,8 @@ function plan(target: Parameters<typeof precheck>[1], facts: UnitFacts, ctx: Bui
       hiddenBeforeAnswer: [],
       responseMode: choice ? 'choice' : 'typed-or-self',
       eligibility,
-      builtFrom: { facts: [...new Set(tags)] },
+      builtFrom: { facts: [...new Set(tags)], ...(occurrence ? { sentenceSource: occurrence.example.source } : {}) },
+      ...(occurrence ? { context } : {}),
       variant,
     }),
   };

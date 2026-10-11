@@ -88,6 +88,8 @@ export interface PlaybackHandle {
   readonly replays: number;
   /** Called each time a hearing runs to its natural end. Returns an unsubscribe function. */
   onEnd(cb: () => void): () => void;
+  /** Called when playback changes state, including asynchronous device speech errors. Returns an unsubscribe function. */
+  onState?(cb: (state: PlaybackState) => void): () => void;
   /** The recording's length, or the measured length of the last completed hearing; unknown before then. */
   readonly durationMs?: number;
   /** Releases the audio (and any object URL this handle owns). */

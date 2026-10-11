@@ -42,13 +42,29 @@ describe('answer: record before advancing', () => {
     expect(saved.index).toBe(1);
   });
 
+  it('persists bounded active review duration as metadata without changing the grade', async () => {
+    const { runner, rec } = setup();
+    const result = await runner.answer(right({ reviewSeconds: 42.5 }));
+    expect(result.response.reviewSeconds).toBe(42.5);
+    expect(result.rating).toBe(3);
+    expect(rec.all()[0].payload).toHaveProperty('reviewSeconds', 42.5);
+    expect(validateEvent(rec.all()[0])).toEqual([]);
+  });
+
+  it.each([0, -1, 901, Number.NaN, Number.POSITIVE_INFINITY])('omits invalid review duration %s from event metadata', async (reviewSeconds) => {
+    const { runner, rec } = setup();
+    await runner.answer(right({ reviewSeconds }));
+    expect(rec.all()[0].payload).not.toHaveProperty('reviewSeconds');
+    expect(rec.all()[0].payload).toHaveProperty('rating', 3);
+  });
+
   it('the event is recorded BEFORE the session state is persisted', async () => {
     const order: string[] = [];
     const base = createMemoryArea();
     const persist = { ...base, set: async (i: Record<string, unknown>) => { order.push('persist'); return base.set(i); } };
     const { runner } = setup({ persist, record: async () => { order.push('record'); } });
     await runner.answer(right());
-    expect(order).toEqual(['record', 'persist']);
+    expect(order).toEqual(['persist', 'record', 'persist']);
   });
 
   it('if record throws, nothing advanced: same exercise, no result, nothing persisted, and a retry works', async () => {
@@ -59,7 +75,7 @@ describe('answer: record before advancing', () => {
     await expect(runner.answer(right())).rejects.toThrow('queue full');
     expect(runner.state().index).toBe(0);
     expect(runner.state().results).toEqual([]);
-    expect(await persist.list('goreview:session:')).toEqual([]);
+    expect(await persist.list('goreview:session:')).toHaveLength(1); // the untouched initial state is recoverable
     expect((await runner.current())?.exercise.exerciseId).toBe(first?.exercise.exerciseId);
     fail = false;
     const r = await runner.answer(right());
@@ -68,21 +84,25 @@ describe('answer: record before advancing', () => {
     expect(runner.state().index).toBe(1);
   });
 
-  it('a persistence failure after a successful record does not fail the answer (the event is already safe)', async () => {
+  it('a persistence failure before the first exercise blocks the attempt so the session can be recovered safely', async () => {
     const base = createMemoryArea();
     const persist = { ...base, set: async () => { throw new Error('disk full'); } };
     const { runner, rec } = setup({ persist });
-    const r = await runner.answer(right());
-    expect(r.evidence).not.toBeNull();
-    expect(rec.batches).toHaveLength(1);
-    expect(runner.state().index).toBe(1);
+    await expect(runner.answer(right())).rejects.toThrow('could not save the session before showing an exercise');
+    expect(rec.batches).toHaveLength(0);
+    expect(runner.state().index).toBe(0);
     expect(runner.persistErrors()).toEqual(['disk full']);
   });
 
   it('a page that died after record is repaired by deterministic ids: re-answering is a duplicate in the queue, not a second observation', async () => {
     const q = queueRecorder();
     const base = createMemoryArea();
-    const dead = { ...base, set: async () => { throw new Error('page died'); } }; // the state never reached storage
+    let writes = 0;
+    const dead = { ...base, set: async (items: Record<string, unknown>) => {
+      writes += 1;
+      if (writes > 1) throw new Error('page died');
+      return base.set(items);
+    } }; // the initial state reached storage; the post-record checkpoint did not
     const plan = makePlan();
     const a = setup({ plan, record: q.record, persist: dead, now: clock() }).runner;
     await a.answer(right());
@@ -178,6 +198,30 @@ describe('skip', () => {
 });
 
 describe('recovery', () => {
+  it('reconciles a committed deterministic review after a crash without inventing a result or skip', async () => {
+    const q = queueRecorder();
+    const plan = makePlan();
+    const base = createMemoryArea();
+    let writes = 0;
+    const dead = { ...base, set: async (items: Record<string, unknown>) => {
+      writes += 1;
+      if (writes > 1) throw new Error('page died');
+      return base.set(items);
+    } };
+    const first = setup({ plan, record: q.record, persist: dead, now: clock() }).runner;
+    await first.answer(right());
+
+    const recovered = setup({ plan, persist: base, record: q.record, committedEvents: () => q.recorded.flat() });
+    expect(await recovered.runner.recover(first.sessionId)).toBe(true);
+    expect(recovered.runner.state().index).toBe(1);
+    expect(recovered.runner.state().results).toEqual([]);
+    expect(recovered.runner.skips()).toEqual([]);
+    expect(recovered.runner.state().recoveryNotes).toHaveLength(1);
+    expect(recovered.runner.state().recoveryNotes?.[0]).toContain(`gr:${first.sessionId}:0:CardReviewed`);
+    expect((await recovered.runner.current())?.index).toBe(1);
+    expect(recovered.rec.batches).toEqual([]);
+  });
+
   it('a new runner over the same area resumes mid-session', async () => {
     const plan = makePlan();
     const persist = createMemoryArea();
@@ -302,7 +346,7 @@ describe('listening', () => {
     expect(r.evidence?.kind).toBe('CardReviewed');
     expect(r.evidence?.payload).toMatchObject({ family: 'written-recognition', assessmentDimension: 'written-recognition', answerShownBefore: true });
     expect(r.evidence?.evidence?.quality).toBe('none'); // a reading review that claims nothing, per the evidence builder
-    expect(r.rating).toBe(3); // the schedule still hears that it was recalled
+    expect(r.rating).toBeNull(); // seeing a transcript is assistance, not independent recall
     expect(r.grading.outcome).toBe('correct');
   });
 });
@@ -329,6 +373,7 @@ describe('challenge', () => {
     expect(events.map((e) => e.kind)).toEqual(['CardReviewed', 'CardReviewed']);
     expect(events[1].correctionOf).toBe(answered.evidence?.id);
     expect(events[1].payload).toMatchObject({ rating: null, challenged: true, challengeReason: 'I typed it right' });
+    expect(events[1].payload.expectedPreviousReviewId).toBe(answered.evidence?.id);
     expect(events.some((e) => e.kind === 'ReviewItemInvalidated')).toBe(false);
     expect(validateEvent(events[1])).toEqual([]);
     expect(runner.state().results[0].rating).toBeNull();
@@ -356,12 +401,12 @@ describe('challenge', () => {
 describe('new items', () => {
   it('a new item gets its CardAdded in the same batch as its first event; a deck item does not', async () => {
     const plan = makePlan({ due: 1, newItems: [{ unitId: 'form:sq:fresh' }] });
-    expect(plan.items.map((p) => p.isNew)).toEqual([false, true]);
+    expect(plan.items.map((p) => p.isNew)).toEqual([true, false]);
     const { runner, rec } = setup({ plan });
     await runner.answer(right());
     await runner.answer(right());
-    expect(rec.batches.map((b) => b.map((e) => e.kind))).toEqual([['CardReviewed'], ['CardAdded', 'CardReviewed']]);
-    const added = rec.batches[1][0];
+    expect(rec.batches.map((b) => b.map((e) => e.kind))).toEqual([['CardAdded', 'CardReviewed'], ['CardReviewed']]);
+    const added = rec.batches[0][0];
     expect(added.subject.cardId).toBe('card:written-recognition:form:sq:fresh');
     expect(added.payload).toMatchObject({ unitId: 'form:sq:fresh', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'intake' });
     expect(validateEvent(added)).toEqual([]);

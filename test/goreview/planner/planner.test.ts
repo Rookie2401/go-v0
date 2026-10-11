@@ -4,10 +4,13 @@ import { benefitOf, estimateSeconds, planSession } from '../../../packages/gorev
 import { buildCardAdded, foldDeck } from '../../../packages/goreview/src/scheduler/deck';
 import { validateEvent } from '../../../packages/repository-contract/src';
 import type { IntakeOutcome } from '../../../packages/goreview/src/types';
-import { audioNone, audioOk, audioPractice, deckItem, dueItem, fakeScheduler, NOW, prefs, scheduleState, testNow } from '../intake/fixtures';
+import { audioNone, audioOk, audioPractice, deckItem, dueItem, fakeScheduler, knowledge, NOW, prefs, scheduleState, testNow } from '../intake/fixtures';
 
-const plan = (over: Partial<Parameters<typeof planSession>[0]> = {}) =>
-  planSession({ deck: [], intake: [], preferences: prefs(), audio: audioOk, scheduler: fakeScheduler, now: NOW, random: () => 0.5, ...over });
+const plan = (over: Partial<Parameters<typeof planSession>[0]> = {}) => {
+  const intake = over.intake ?? [];
+  const inferredTestEvidence = intake.filter((o) => o.decision === 'test-now').map((o) => knowledge(o.unitId));
+  return planSession({ deck: [], intake, preferences: prefs(), audio: audioOk, scheduler: fakeScheduler, now: NOW, random: () => 0.5, knowledge: inferredTestEvidence, ...over });
+};
 
 describe('planSession: tiers and ordering', () => {
   it('due items come first, lowest recall probability first', () => {
@@ -17,16 +20,54 @@ describe('planSession: tiers and ordering', () => {
     expect(p.items[0].why[0]).toContain('due: recall probability 20%');
   });
 
-  it('order is due → repeated weak points → new', () => {
+  it('repeated automatic failures pause the item for content repair instead of reseeding it', () => {
+    const leech = deckItem({
+      unitId: 'form:leech',
+      history: Array.from({ length: 5 }, (_, i) => ({ at: `2026-10-0${i + 1}T10:00:00.000Z`, rating: 1 as const, outcome: 'incorrect' as const, deviceId: 'D', exerciseId: `l${i}`, family: 'written-recognition' as const, elapsedDays: 1 })),
+    });
+    const p = plan({ deck: [leech] });
+    expect(p.items).toEqual([]);
+    expect(p.skipped[0].why).toContain('deferred for content repair');
+  });
+
+  it('retracted Again ratings remain in history but do not trigger leech deferral or make a card reviewed', () => {
+    const retracted = deckItem({
+      unitId: 'form:undone-leech',
+      schedule: scheduleState({ phase: 'new', stability: 0, reps: 0, lapses: 0, due: NOW }),
+      history: Array.from({ length: 5 }, (_, i) => ({
+        at: `2026-10-0${i + 1}T10:00:00.000Z`, rating: 1 as const, outcome: 'incorrect' as const,
+        deviceId: 'D', exerciseId: `undone-${i}`, family: 'written-recognition' as const, elapsedDays: 0, retracted: true,
+      })),
+    });
+    const p = plan({ deck: [retracted] });
+    expect(retracted.history).toHaveLength(5); // audit history is retained
+    expect(p.skipped).toEqual([]);
+    expect(p.items).toHaveLength(1);
+    expect(p.items[0].isNew).toBe(true);
+    expect(p.items[0].why[0]).toContain('new in the deck');
+  });
+
+  it('stage weights beat a known-stage due card for otherwise comparable evidence', () => {
+    const due = dueItem('form:known', 0.5);
+    const intake = testNow('form:recognized', { score: 0.7 });
+    const p = plan({
+      deck: [due], intake: [intake],
+      knowledge: [knowledge(due.unitId, { readingRecognition: { score: 0.5, confidence: 0.5 } }), knowledge(intake.unitId)],
+      preferences: prefs({ sessionMinutes: 10, maxNew: 2 }),
+    });
+    expect(p.items.map((x) => x.item.unitId)[0]).toBe(intake.unitId);
+  });
+
+  it('one priority order lets a higher Knowability stage outrank otherwise comparable due and weak items', () => {
     const weak = deckItem({
       unitId: 'form:weak', schedule: scheduleState({ stability: 0.8, due: '2026-10-20T00:00:00.000Z' }),
       history: [1, 3, 1].map((rating, i) => ({ at: `2026-10-0${i + 1}T10:00:00.000Z`, rating: rating as 1 | 3, outcome: rating === 1 ? 'incorrect' as const : 'correct' as const, deviceId: 'D', exerciseId: `x${i}`, family: 'written-recognition' as const, elapsedDays: 1 })),
     });
     const p = plan({ deck: [weak, dueItem('form:due', 0.4)], intake: [testNow('form:new')] });
-    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:due', 'form:weak', 'form:new']);
-    expect(p.items[1].why[0]).toContain('repeated weak point: 2 Again');
-    expect(p.items[2].isNew).toBe(true);
-    expect(p.items[2].why[0]).toBe('new from intake');
+    expect(p.items.map((i) => i.item.unitId)).toEqual(['form:new', 'form:due', 'form:weak']);
+    expect(p.items[2].why[0]).toContain('repeated weak point: 2 Again');
+    expect(p.items[0].isNew).toBe(true);
+    expect(p.items[0].why[0]).toBe('new from intake');
   });
 
   it('a unit the learner repeatedly asked help for is a weak point even when not due', () => {
@@ -213,15 +254,15 @@ describe('planSession: grammar share', () => {
     ...Array.from({ length: written }, (_, i) => testNow(`form:w${i}`, { score: 0.8 - i * 0.01 }, 'written-recognition')),
   ];
 
-  it('approximates grammarShare when enough items of both kinds exist', () => {
+  it('grammarShare does not override global priority ordering', () => {
     const p = plan({ intake: mixed(8, 8), preferences: prefs({ maxNew: 10, sessionMinutes: 30, grammarShare: 0.4 }) });
     expect(p.items).toHaveLength(10);
-    expect(p.grammarCount).toBe(4);
+    expect(p.grammarCount).toBe(2);
   });
 
-  it('a high share is honoured too', () => {
+  it('a high grammarShare does not pull lower-priority grammar items ahead', () => {
     const p = plan({ intake: mixed(8, 8), preferences: prefs({ maxNew: 10, sessionMinutes: 30, grammarShare: 0.8 }) });
-    expect(p.grammarCount).toBe(8);
+    expect(p.grammarCount).toBe(2);
   });
 
   it('falls back to the other kind when the preferred one runs out', () => {
@@ -233,10 +274,11 @@ describe('planSession: grammar share', () => {
     expect(only.grammarCount).toBe(5);
   });
 
-  it('never reorders or drops due items to hit the share', () => {
+  it('higher-priority new grammar items may precede due items in the shared pool', () => {
     const deck = Array.from({ length: 5 }, (_, i) => dueItem(`form:d${i}`, 0.1 + i / 20));
     const p = plan({ deck, intake: mixed(4, 0), preferences: prefs({ maxNew: 4, sessionMinutes: 30, grammarShare: 0.5 }) });
-    expect(p.items.slice(0, 5).map((i) => i.item.unitId)).toEqual(deck.map((d) => d.unitId));
+    expect(p.items.slice(0, 4).map((i) => i.item.unitId)).toEqual(['morph:g0', 'morph:g1', 'morph:g2', 'morph:g3']);
+    expect(p.items.slice(4).map((i) => i.item.unitId)).toEqual(deck.map((d) => d.unitId));
     expect(p.dueCount).toBe(5);
   });
 });

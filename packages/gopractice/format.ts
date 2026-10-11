@@ -83,6 +83,9 @@ export function forecastRecording(grading: Grading, response: Response, exercise
   if (grading.outcome === 'invalid-question') return 'Not recorded: the question was not valid.';
   if (grading.outcome === 'unable-to-grade') return 'Not recorded: the answer could not be graded.';
   if (response.challenged) return 'Will be kept in your history, not counted as evidence and not used to schedule the item.';
+  if (response.retrievalAttempted === false || response.hinted || response.assistance.length || response.transcriptShownBefore) {
+    return 'Will be kept in your history without a recall rating or evidence weight because help was used or no retrieval attempt was confirmed.';
+  }
   if (isAudioExercise(exercise) && !exercise.prompt.audio?.validity.eligibleForEvidence) {
     return 'Will be recorded as listening practice with no evidence weight: synthetic or unreviewed speech cannot be listening evidence.';
   }

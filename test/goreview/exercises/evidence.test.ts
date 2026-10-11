@@ -40,10 +40,10 @@ describe('written families → CardReviewed', () => {
     expect(ev).toMatchObject({ learnerId: 'L1', enrolmentId: 'E1', languageId: 'sq', varietyId: 'sq-standard', at: NOW, producer: { app: 'gopractice-review', deviceId: 'D1', surface: 'written-recognition' } });
   });
 
-  it('the grade follows the rating: partial → hard, incorrect → again, hinted → hard, self-graded easy → easy; partial is not correct', async () => {
+  it('assisted answers do not produce a schedule rating; unassisted grades retain their rating', async () => {
     const e = await exercise('written-recognition', IDS.liber);
     expect(must(event(e, resp({ typed: 'volume' })).ev).payload).toMatchObject({ grade: 'again', correct: false, rating: 1 });
-    expect(must(event(e, resp({ typed: 'book', hinted: true })).ev)).toMatchObject({ payload: { grade: 'hard', correct: true, hinted: true, rating: 2 }, evidence: { quality: 'weak', assisted: true } });
+    expect(must(event(e, resp({ typed: 'book', hinted: true })).ev)).toMatchObject({ payload: { grade: 'good', correct: true, hinted: true, rating: null }, evidence: { quality: 'none', assisted: true } });
     expect(must(event(e, resp({ selfGrade: 'easy' })).ev)).toMatchObject({ payload: { grade: 'easy', correct: true, rating: 4 }, evidence: { quality: 'weak', sourceReliability: 0.6 } });
     expect(must(event(e, resp({ selfGrade: 'hard' })).ev).payload).toMatchObject({ grade: 'hard', correct: false, rating: 2 });
     const t = await exercise('audio-transcription', IDS.liber);
@@ -130,7 +130,7 @@ describe('nothing to claim, and history that claims nothing', () => {
     const x = must(ev);
     expect(validateEvent(x)).toEqual([]);
     expect(x.evidence).toMatchObject({ quality: 'none' });
-    expect(x.payload).not.toHaveProperty('rating');
+    expect(x.payload).toHaveProperty('rating', null);
     expect(x.payload).toMatchObject({ correct: true, grade: 'good' });
     // and the Repository’s engine draws nothing from it
     expect(observationsOf(x)).toEqual([]);
@@ -149,7 +149,7 @@ describe('the events the Repository engine reads', () => {
     expect(go).toHaveLength(1);
     expect(go[0]).toMatchObject({ unitId: 'morph:sq:NOUN:Case=Acc|Definite=Ind|Gender=Fem|Number=Sing', dimension: 'grammaticalUnderstanding', outcome: 'negative' });
     const hinted = observationsOf(must(event(r, resp({ typed: 'book', hinted: true })).ev));
-    expect(hinted[0].dimension).toBe('assistedRecognition');
+    expect(hinted).toEqual([]);
     const cloze = observationsOf(must(event(await exercise('sentence-completion', IDS.shkolle), resp({ typed: 'shkollë' })).ev));
     expect(cloze[0]).toMatchObject({ dimension: 'productiveRetrieval', outcome: 'positive' });
   });

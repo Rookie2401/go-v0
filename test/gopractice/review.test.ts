@@ -14,8 +14,8 @@ async function fixtureRig(): Promise<Rig> {
   ]);
   const rig = await makeRig({ service, signedIn: true });
   await seed(rig, [
-    cardAdded(A, 'zog', 'meaning-to-form', '2026-09-01T09:00:00.000Z', { reason: 'you looked it up three times' }),
-    reviewed(A, 'zog', 'meaning-to-form', 3, '2026-09-01T10:00:00.000Z'),
+    cardAdded(A, 'zog', 'written-recognition', '2026-09-01T09:00:00.000Z', { reason: 'you looked it up three times' }),
+    reviewed(A, 'zog', 'written-recognition', 3, '2026-09-01T10:00:00.000Z'),
     cardAdded(A, 'mace', 'meaning-to-form', '2026-09-01T09:00:00.000Z'),
     reviewed(A, 'mace', 'meaning-to-form', 1, '2026-09-01T10:00:00.000Z'),
     cardAdded(A, 'shtepi', 'meaning-to-form', '2026-10-08T09:00:00.000Z'),
@@ -27,6 +27,15 @@ async function fixtureRig(): Promise<Rig> {
 }
 
 describe('the due-review summary', () => {
+  it('offers the five session time presets and saves Flexible as the unlimited plan', async () => {
+    const rig = await fixtureRig();
+    expect(rig.qa('.time-presets button').map((b) => b.textContent)).toEqual(['5 min', '10 min', '15 min', '20 min', 'Flexible']);
+    rig.q('[data-minutes="0"]').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).sessionMinutes === 0, 'the flexible preference');
+    await until(() => rig.q('#review-home').textContent.includes('Flexible time'), 'the refreshed flexible time label');
+    expect(rig.q('#review-home').textContent).toContain('Flexible time');
+  });
+
   it('counts due, learning, new items, candidates and listening from the local log', async () => {
     const rig = await fixtureRig();
     // zog and mace were reviewed weeks ago, shtepi two minutes ago, qen never
@@ -65,15 +74,15 @@ describe('the candidate list', () => {
     expect(why.textContent).toContain('looked-up-recently');
   });
 
-  it('"Test now" puts the item in the deck as a queued CardAdded; "Dismiss" records an ignore mark and stops proposing it', async () => {
+  it('"Test now" adds the selected recognition skill and then marks that candidate covered', async () => {
     const rig = await fixtureRig();
     rig.q('[data-unit="' + unitOf('det') + '"] [data-act="test-now"]').click();
     await until(async () => (await queued(rig)).some((e) => e.kind === 'CardAdded'), 'the CardAdded');
     const added = (await queued(rig)).find((e) => e.kind === 'CardAdded')!;
-    expect(added.payload).toMatchObject({ unitId: unitOf('det'), addedBy: 'learner', family: 'meaning-to-form' });
+    expect(added.payload).toMatchObject({ unitId: unitOf('det'), addedBy: 'learner', family: 'written-recognition' });
     expect(added.producer.app).toBe('gopractice-review');
     await until(() => rig.q('#count-fresh').textContent === '2', 'the deck to grow');
-    // it is covered now
+    // The selected recognition skill covers this candidate's recognition need.
     expect(rig.q(`[data-unit="${unitOf('det')}"]`).getAttribute('data-decision')).toBe('already-covered');
 
     rig.q(`[data-unit="${unitOf('diell')}"] [data-act="dismiss"]`).click();

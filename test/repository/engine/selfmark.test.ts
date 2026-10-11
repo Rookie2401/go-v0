@@ -1,7 +1,7 @@
 // @vitest-environment node
 /**
  * The learner's own marks on a word. projection@3 had three ("New to me" = learning, "I recognise it" = known, "I can use it" = productive);
- * projection@4 reads them as LEVELS (learning = new, productive = known, the word known = the level known) and adds the six level words.
+ * projection@5 reads them as LEVELS (learning = new, productive = known, the word known = the level known) and adds the six level words.
  * The contract accepts the legacy words; the fold keeps the LATEST explicit mark as `UnitKnowledge.selfMark` (a level), order-independently;
  * `productive` is a weak productiveRetrieval credit; and the candidate rules read the mark through the level.
  */
@@ -122,10 +122,10 @@ describe('UnitKnowledge.selfMark: the latest explicit mark', () => {
   });
 });
 
-describe('projection@4 rebuilds what projection@2 stored', () => {
-  it('MODEL_VERSION is projection@4, and a stored projection@2 cursor is rebuilt on the next read, adding the selfMark, the level and the encounters', async () => {
+describe('projection@5 rebuilds what projection@2 stored', () => {
+  it('MODEL_VERSION is projection@5, and a stored projection@2 cursor is rebuilt on the next read, adding the selfMark, the level and the encounters', async () => {
     resetIds();
-    expect(MODEL_VERSION).toBe('projection@4');
+    expect(MODEL_VERSION).toBe('projection@5');
     const store = new FakeStore();
     await store.append(L, [mark('known', T(9))]);
     const old = createProjectionEngine({ store, now: () => NOW, modelVersion: 'projection@2' });
@@ -133,9 +133,9 @@ describe('projection@4 rebuilds what projection@2 stored', () => {
     expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@2' });
     const engine = createProjectionEngine({ store, now: () => NOW });
     const rows = await engine.knowledge(L);
-    expect(rows.every((r) => r.modelVersion === 'projection@4')).toBe(true);
+    expect(rows.every((r) => r.modelVersion === 'projection@5')).toBe(true);
     expect(rows.find((r) => r.unitId === LEMMA)?.selfMark).toEqual({ mark: 'known', at: T(9) });
-    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@4' });
+    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@5' });
     expect(rows.find((r) => r.unitId === LEMMA)).toMatchObject({ level: 'known', encounters: 0 });
   });
 });

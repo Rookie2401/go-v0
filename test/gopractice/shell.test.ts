@@ -2,7 +2,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { parseHash } from '../../packages/gopractice/app';
 import { KEYS } from '../../packages/gopractice/state';
-import { DEFAULT_SERVICE_URL, loadConfig, resolveServiceUrl, validateServiceUrl } from '../../packages/gopractice/config';
+import { DEFAULT_SERVICE_URL, loadConfig, resolveServiceUrl, validateServiceUrl, validateSpeechProxyBase } from '../../packages/gopractice/config';
 import { cardAdded, defaultService, destroyRigs, flush, ids, makeRig, seed, type, until } from './helpers';
 
 afterEach(() => destroyRigs());
@@ -27,14 +27,18 @@ describe('the hash router', () => {
     expect(rig.q('#sync-indicator').textContent).toBe('Not signed in');
   });
 
-  it('after sign-in it shows GoReview | GoTell | Settings and follows the hash', async () => {
+  it('after sign-in it shows three workspaces and keeps Settings in the utility area', async () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
-    expect(rig.qa('.topnav a').map((a) => a.textContent)).toEqual(['GoReview', 'GoTell', 'Settings']);
+    expect(rig.qa('.topnav a').map((a) => a.textContent)).toEqual(['GoReview', 'GoTell', 'My Vocabulary']);
+    expect(rig.q('#settings-link').textContent).toBe('Settings');
     expect(rig.q('.topnav a[aria-current="page"]').textContent).toBe('GoReview');
     await rig.go('tell');
     expect(rig.q('main h1').textContent).toBe('GoTell');
     expect(rig.q('.topnav a[aria-current="page"]').textContent).toBe('GoTell');
+    await rig.go('vocabulary');
+    expect(rig.q('main h1').textContent).toBe('My Vocabulary');
+    expect(rig.q('.topnav a[aria-current="page"]').textContent).toBe('My Vocabulary');
     await rig.go('settings');
     expect(rig.q('main h1').textContent).toBe('Settings');
     window.location.hash = '#/review';
@@ -51,6 +55,18 @@ describe('the service address', () => {
     expect(resolveServiceUrl('https://mine.example.org', { serviceUrl: 'https://r.example.org' })).toBe('https://mine.example.org');
     expect(resolveServiceUrl('http://evil.example', { serviceUrl: 'https://r.example.org' })).toBe('https://r.example.org');
     expect(await loadConfig((async () => new Response('<!doctype html>')) as unknown as typeof fetch)).toEqual({});
+  });
+
+  it('accepts only an absolute secure or loopback speech proxy and loads the normalized endpoint', async () => {
+    expect(validateSpeechProxyBase('https://speech.example.org/api/speech/')).toEqual({ ok: true, url: 'https://speech.example.org/api/speech' });
+    expect(validateSpeechProxyBase('http://127.0.0.1:8790/api/speech').ok).toBe(true);
+    for (const bad of ['/api/speech', 'chrome-extension://abc/api/speech', 'http://speech.example.org/api/speech', 'https://u:p@speech.example.org/api/speech', 'https://speech.example.org/api/speech?q=1']) {
+      expect(validateSpeechProxyBase(bad).ok, bad).toBe(false);
+    }
+    const fetchConfig = (async () => new Response(JSON.stringify({ speechProxyBase: 'https://speech.example.org/api/speech/' }), { status: 200 })) as unknown as typeof fetch;
+    await expect(loadConfig(fetchConfig)).resolves.toMatchObject({ speechProxyBase: 'https://speech.example.org/api/speech' });
+    const badConfig = (async () => new Response(JSON.stringify({ speechProxyBase: '/api/speech' }), { status: 200 })) as unknown as typeof fetch;
+    await expect(loadConfig(badConfig)).resolves.not.toHaveProperty('speechProxyBase');
   });
 });
 

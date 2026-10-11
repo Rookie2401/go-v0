@@ -44,46 +44,52 @@ export function createPlayback(driver: PlaybackDriver, opts: PlaybackOptions): P
   let measured: number | undefined;
   let disposed = false;
   const listeners = new Set<() => void>();
+  const stateListeners = new Set<(state: PlaybackState) => void>();
 
   const safe = (f: () => void) => { try { f(); } catch { /* a driver must not break the caller */ } };
+  const setState = (next: PlaybackState) => {
+    if (state === next) return;
+    state = next;
+    for (const cb of [...stateListeners]) safe(() => cb(next));
+  };
 
   const begin = () => {
     const mine = ++token;
     hearings += 1;
-    state = 'playing';
+    setState('playing');
     startedAt = opts.now();
     try {
       driver.start(rate, {
         ended: () => {
           if (mine !== token || disposed) return;
-          state = 'ended';
+          setState('ended');
           measured = Math.max(0, opts.now() - startedAt);
           for (const cb of [...listeners]) safe(cb);
         },
-        failed: () => { if (mine === token && !disposed) state = 'error'; },
-        interrupted: () => { if (mine === token && !disposed) state = 'idle'; },
+        failed: () => { if (mine === token && !disposed) setState('error'); },
+        interrupted: () => { if (mine === token && !disposed) setState('idle'); },
       });
     } catch {
-      state = 'error';
+      setState('error');
     }
   };
 
   return {
     play() {
       if (disposed || state === 'playing') return;
-      if (state === 'paused') { safe(() => driver.resume()); state = 'playing'; return; }
+      if (state === 'paused') { safe(() => driver.resume()); setState('playing'); return; }
       begin();
     },
     pause() {
       if (disposed || state !== 'playing') return;
       safe(() => driver.pause());
-      state = 'paused';
+      setState('paused');
     },
     stop() {
       if (disposed || state === 'idle') return;
       token += 1;
       safe(() => driver.cancel());
-      state = 'idle';
+      setState('idle');
     },
     replay() {
       if (disposed) return;
@@ -99,6 +105,12 @@ export function createPlayback(driver: PlaybackDriver, opts: PlaybackOptions): P
     get state() { return state; },
     get replays() { return Math.max(0, hearings - 1); },
     onEnd(cb: () => void) { listeners.add(cb); return () => { listeners.delete(cb); }; },
+    onState(cb: (next: PlaybackState) => void) {
+      stateListeners.add(cb);
+      // Give UI subscribers an immediate snapshot, including the initial idle state.
+      safe(() => cb(state));
+      return () => { stateListeners.delete(cb); };
+    },
     get durationMs() { return driver.durationMs?.() ?? measured; },
     dispose() {
       if (disposed) return;
@@ -107,7 +119,7 @@ export function createPlayback(driver: PlaybackDriver, opts: PlaybackOptions): P
       safe(() => driver.dispose?.());
       disposed = true;
       listeners.clear();
-      state = 'idle';
+      setState('idle');
     },
   };
 }

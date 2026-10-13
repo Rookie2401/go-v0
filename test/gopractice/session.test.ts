@@ -219,11 +219,12 @@ describe('an audio-only question', () => {
     expect(rig.q<HTMLInputElement>('#answer-input').disabled).toBe(true);
     expect(rig.q<HTMLInputElement>('#answer-input').closest('.field')?.hasAttribute('hidden')).toBe(true);
     expect(rig.q<HTMLButtonElement>('#answer-check').hidden).toBe(true);
-    const grades = rig.qa('.grade').map((grade) => grade.textContent).join(' ');
-    expect(grades).toContain('Again · forgot');
-    expect(grades).toContain('Hard · recalled with difficulty');
-    expect(grades).toContain('Good · recalled');
-    expect(grades).toContain('Easy · easy recall');
+    // one line of four: a numbered circle and the word, named for assistive technology by the word alone
+    expect(rig.qa('.grade').map((grade) => grade.getAttribute('aria-label'))).toEqual(['Again', 'Hard', 'Good', 'Easy']);
+    expect(rig.qa('.grade .grade-dot').map((dot) => dot.textContent)).toEqual(['1', '2', '3', '4']);
+    expect(rig.qa('.grade .grade-word').map((word) => word.textContent)).toEqual(['Again', 'Hard', 'Good', 'Easy']);
+    expect(rig.q('#grade-assisted').textContent).toBe('I needed help');
+    expect(rig.q('#self-grade').textContent).not.toMatch(/forgot|recalled/);
     rig.q<HTMLButtonElement>('#answer-check').click();
     expect(rig.root.querySelector('#feedback')).toBeNull();
     expect(await queued(rig)).toEqual([]);

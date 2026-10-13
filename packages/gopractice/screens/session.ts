@@ -32,9 +32,21 @@ import { DEFAULT_UI, getUiPrefs, patchUiPrefs, type UiPrefs } from './uiprefs';
 import type { View } from './view';
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
-const GRADE_MEANING: Record<(typeof GRADES)[number], string> = {
-  again: 'forgot', hard: 'recalled with difficulty', good: 'recalled', easy: 'easy recall',
-};
+
+/** A speaker icon for the card's corner: plain SVG, no text; the button around it carries the name. */
+function speakerIcon(doc: Document): Element {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = doc.createElementNS(ns, 'svg');
+  for (const [k, v] of Object.entries({ viewBox: '0 0 24 24', width: '22', height: '22', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.7', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false' })) svg.setAttribute(k, v);
+  const body = doc.createElementNS(ns, 'path');
+  body.setAttribute('d', 'M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4z');
+  const wave1 = doc.createElementNS(ns, 'path');
+  wave1.setAttribute('d', 'M15.5 9.2a4 4 0 0 1 0 5.6');
+  const wave2 = doc.createElementNS(ns, 'path');
+  wave2.setAttribute('d', 'M18 6.8a7.4 7.4 0 0 1 0 10.4');
+  svg.append(body, wave1, wave2);
+  return svg;
+}
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const run = ctx.run.active;
@@ -480,11 +492,15 @@ class Controller {
     append(area, [
       h('p', { class: 'reference' }, 'Answer: ', h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ref)),
       h('p', { class: 'muted' }, 'How well did you know it?'),
-      h('div', { class: 'row grades' }, ...GRADES.map((g, i) => button(flashcard ? (this.ui.shortcuts ? `${i + 1}  ${RATING_LABEL[i + 1]}` : RATING_LABEL[i + 1]) : this.ui.shortcuts ? `${i + 1}  ${RATING_LABEL[i + 1]} · ${GRADE_MEANING[g]}` : `${RATING_LABEL[i + 1]} · ${GRADE_MEANING[g]}`, () => void this.submit(this.base({ selfGrade: g }), true), { class: 'grade btn', 'data-grade': g }))),
-      button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'btn' }),
+      h('div', { class: 'grades', role: 'group', 'aria-label': 'How well did you know it?' }, ...GRADES.map((g, i) => {
+        const word = RATING_LABEL[i + 1];
+        const choice = button('', () => void this.submit(this.base({ selfGrade: g }), true), { class: 'grade', 'data-grade': g, 'aria-label': word, ...(this.ui.shortcuts ? { 'aria-keyshortcuts': String(i + 1) } : {}) });
+        append(choice, [h('span', { class: 'grade-dot', 'aria-hidden': 'true' }, String(i + 1)), h('span', { class: 'grade-word' }, word)]);
+        return choice;
+      })),
+      h('p', { class: 'grade-help' }, button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'linklike' })),
     ]);
-    if (flashcard) area.append(h('p', { class: 'muted' }, 'Again: forgot · Hard: recalled with difficulty · Good: recalled · Easy: recalled easily'),
-      h('details', {}, h('summary', {}, 'More detail'), h('p', {}, exercise.answerKey.explanation)));
+    if (flashcard) area.append(h('details', {}, h('summary', {}, 'More detail'), h('p', {}, exercise.answerKey.explanation)));
     try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
   }
 
@@ -511,7 +527,11 @@ class Controller {
     const target = this.pronunciationTarget(pr);
     if (!target) return null;
     return h('div', { class: 'pronunciation', id: 'pronunciation', role: 'group', 'aria-label': 'Pronunciation' },
-      button('Hear word', () => this.pronounce(target), { id: 'pronounce', class: 'btn small' }),
+      (() => {
+        const hear = button('', () => this.pronounce(target), { id: 'pronounce', class: 'icon-btn', 'aria-label': 'Hear word', title: 'Hear word' });
+        hear.append(speakerIcon(this.ctx.deps.doc));
+        return hear;
+      })(),
       h('span', { id: 'pronunciation-status', class: 'muted', role: 'status', 'aria-live': 'polite' }));
   }
 

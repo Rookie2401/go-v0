@@ -43,7 +43,7 @@ describe('My Vocabulary', () => {
     const rig = await makeRig({ signedIn: true });
     const queries = await useVocabularyApi(rig, (query) => query.after
       ? { items: [item('lemma:sq:shtepi:NOUN', 'shtëpi', 'seen')], catalog }
-      : { items: [item('lemma:sq:libër:NOUN', 'libër', 'new')], nextCursor: 'cursor-1', catalog });
+      : { items: [item('lemma:sq:libër:NOUN', 'libër', 'new')], nextCursor: query.sort === 'recent' ? 'cursor-2' : 'cursor-1', catalog });
     const search = rig.q<HTMLInputElement>('#vocabulary-search');
     search.value = 'book';
     rig.q<HTMLSelectElement>('#vocabulary-level').value = 'new';
@@ -56,11 +56,23 @@ describe('My Vocabulary', () => {
     rig.q<HTMLInputElement>('#vocabulary-source-ref').value = 'reader:chapter-2';
     rig.q('#vocabulary-filters').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
     await vi.waitFor(() => expect(queries.length).toBe(2));
-    expect(queries[1]).toMatchObject({ search: 'book', level: 'new', languageId: 'sq', minEncounters: 3, firstEncounterFrom: '2026-09-01', lastEncounterTo: '2026-10-10', requiresAssistance: true, unresolved: false, reviewStatus: 'active', sourceRef: 'reader:chapter-2' });
+    expect(queries[1]).toMatchObject({ search: 'book', level: 'new', languageId: 'sq', sort: 'knowledge', minEncounters: 3, firstEncounterFrom: '2026-09-01', lastEncounterTo: '2026-10-10', requiresAssistance: true, unresolved: false, reviewStatus: 'active', sourceRef: 'reader:chapter-2' });
     rig.q('#vocabulary-next').click();
     await vi.waitFor(() => expect(queries.length).toBe(3));
-    expect(queries[2]).toMatchObject({ after: 'cursor-1', search: 'book', level: 'new', minEncounters: 3, requiresAssistance: true, unresolved: false, reviewStatus: 'active' });
+    expect(queries[2]).toMatchObject({ after: 'cursor-1', search: 'book', level: 'new', sort: 'knowledge', minEncounters: 3, requiresAssistance: true, unresolved: false, reviewStatus: 'active' });
     expect(rig.q('#vocabulary-results').textContent).toContain('shtëpi');
+    rig.q<HTMLSelectElement>('#vocabulary-order').value = 'recent';
+    rig.q<HTMLSelectElement>('#vocabulary-order').dispatchEvent(new Event('change', { bubbles: true }));
+    await vi.waitFor(() => expect(queries.length).toBe(4));
+    expect(queries[3]).toMatchObject({ sort: 'recent' });
+    expect(queries[3]).not.toHaveProperty('after');
+    rig.q('#vocabulary-next').click();
+    await vi.waitFor(() => expect(queries.length).toBe(5));
+    expect(queries[4]).toMatchObject({ sort: 'recent', after: 'cursor-2' });
+    rig.deps.win.dispatchEvent(new Event('focus'));
+    await vi.waitFor(() => expect(queries.length).toBe(6));
+    expect(queries[5]).toMatchObject({ sort: 'recent' });
+    expect(queries[5]).not.toHaveProperty('after');
   });
 
   it('loads bounded unit details and event history only when the learner opens a row', async () => {
@@ -100,7 +112,7 @@ describe('My Vocabulary', () => {
     const rig = await makeRig({ signedIn: true });
     const unitId = unitOf('libër');
     await seed(rig, [cardAdded(ids('L1', 'sq'), 'libër', 'written-recognition', '2026-10-01T00:00:00.000Z')]);
-    await useVocabularyApi(rig, () => ({ items: [item(unitId, 'libër', 'new')], catalog }));
+    const queries = await useVocabularyApi(rig, () => ({ items: [item(unitId, 'libër', 'new')], catalog }));
     rig.q('[data-action="suspend-practice"]').click();
     await until(async () => (await queued(rig)).some((event) => event.kind === 'CardRemoved'), 'the suspension event');
     expect((await queued(rig)).find((event) => event.kind === 'CardRemoved')?.payload).toMatchObject({ reason: 'suspended' });
@@ -111,6 +123,7 @@ describe('My Vocabulary', () => {
     rig.q('[data-action="save-practice"]').click();
     await until(async () => (await queued(rig)).some((event) => event.kind === 'ItemMarked'), 'the explicit saved request');
     expect((await queued(rig)).find((event) => event.kind === 'ItemMarked')?.payload).toMatchObject({ mark: 'saved' });
+    await vi.waitFor(() => expect(queries.length).toBe(2));
   });
 
   it('keeps the current practice control unchanged when the Repository refuses suspension', async () => {

@@ -13,12 +13,18 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const session = await ctx.state.getSession();
   const mode = await ctx.mode();
   const id = await ctx.identity();
+  // everything the GoReview home no longer shows is kept here, one tap away
+  const moreBox = h('section', { class: 'card', id: 'settings-more', 'aria-labelledby': 'more-h' }, h('h2', { id: 'more-h' }, 'More from GoReview'),
+    h('ul', { class: 'plainlinks' },
+      h('li', {}, h('a', { href: '#/review/details', id: 'link-details' }, 'Review details'), h('span', { class: 'muted' }, ' · the proposals with their reasons, the deck and its controls, the counts')),
+      h('li', {}, h('a', { href: '#/review/transfer', id: 'link-transfer' }, 'Transfer measures'), h('span', { class: 'muted' }, ' · research measures, not conclusions')),
+      h('li', {}, h('a', { href: '#/vocabulary', id: 'link-vocabulary' }, 'Vocabulary details'), h('span', { class: 'muted' }, ' · search, filters and the unit records'))));
   const prefsBox = h('section', { class: 'card', id: 'settings-prefs', 'aria-labelledby': 'prefs-h' }, h('h2', { id: 'prefs-h' }, 'Review preferences'));
   const accountBox = h('section', { class: 'card', id: 'settings-account', 'aria-labelledby': 'acct-h' }, h('h2', { id: 'acct-h' }, 'Account'));
   const serviceBox = h('section', { class: 'card', id: 'settings-service', 'aria-labelledby': 'svc-h' }, h('h2', { id: 'svc-h' }, 'Service address (only used if you sign in)'));
   const syncBox = h('section', { class: 'card', id: 'settings-sync', 'aria-labelledby': 'sync-h' }, h('h2', { id: 'sync-h' }, 'Synchronisation'));
   const diagBox = h('section', { class: 'card', id: 'settings-diagnostics', 'aria-labelledby': 'diag-h' }, h('h2', { id: 'diag-h' }, 'Diagnostics'));
-  el.append(prefsBox, accountBox, serviceBox, syncBox, diagBox, licencesSection(ctx));
+  el.append(moreBox, prefsBox, accountBox, serviceBox, syncBox, diagBox, licencesSection(ctx));
 
   // ── preferences
   if (id) {

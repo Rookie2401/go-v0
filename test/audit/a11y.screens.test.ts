@@ -11,7 +11,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, afterEach, describe, expect, it } from 'vitest';
 import { accessibleName, auditDom, flushAfterAll, row, tabSequence, type Finding } from './a11y.support';
-import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, key, makeRig, reopen, seed, startWith, type as typeIn, until } from '../gopractice/helpers';
+import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, key, makeRig, reopen, reopenDetails, seed, startWith, type as typeIn, until } from '../gopractice/helpers';
 import { destroyRigs } from '../gopractice/helpers';
 import { makeTellRig, resetTellRig, typeInto, type TellRig } from '../gotell-ui/rig';
 import { HOME, SCREENS } from '../../packages/golearn-extension/app/app';
@@ -57,8 +57,10 @@ describe('GoPractice screens', () => {
   it('A-S02 GoReview home, session (every family, question and feedback), summary, transfer, history', async () => {
     const A = ids('L1', 'sq');
     const service = defaultService();
-    service.candidates.set('L1-e1', [candidate('det', 0.8), candidate('diell', 0.3), candidate('hene', 0.05), candidate('zog', 0.9)]);
     const rig = await makeTellRig({ service });
+    // the proposals arrive after the first paint and no card is admitted automatically, so they keep their "Test now" and "Dismiss" buttons to be audited
+    await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 10, maxNew: 0, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
+    service.candidates.set('L1-e1', [candidate('det', 0.8), candidate('diell', 0.3), candidate('hene', 0.05), candidate('zog', 0.9)]);
     await seed(rig, [
       ...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'written-recognition'), ...dueCard(A, 'qen', 'audio-to-meaning'),
       ...dueCard(A, 'shtepi', 'phrase-comprehension'), ...dueCard(A, 'diell', 'sentence-completion'),
@@ -67,15 +69,17 @@ describe('GoPractice screens', () => {
     await reopen(rig);
     audit(rig.root, 'practice/review-home');
 
-    // open the lazily built parts so their content is audited too
+    // the details page the home used to be: open the lazily built parts so their content is audited too
+    await reopenDetails(rig);
+    audit(rig.root, 'practice/review-details');
     for (const d of rig.qa<HTMLDetailsElement>('details')) { d.open = true; d.dispatchEvent(new Event('toggle')); }
     await flush(4);
-    audit(rig.root, 'practice/review-home (details open)');
+    audit(rig.root, 'practice/review-details (details open)');
 
     // a status message that quotes a target-language word inside an English sentence
     click(rig.q('[data-act="test-now"]'));
-    await until(() => /Added .* to your deck/.test(rig.root.querySelector('#review-home > .status')?.textContent ?? ''), `the status message (now: ${rig.root.querySelector('#review-home > .status')?.textContent})`);
-    audit(rig.root, 'practice/review-home (after Test now)');
+    await until(() => /Added .* to your deck/.test(rig.root.querySelector('#review-details > .status')?.textContent ?? ''), `the status message (now: ${rig.root.querySelector('#review-details > .status')?.textContent})`);
+    audit(rig.root, 'practice/review-details (after Test now)');
 
     // a session
     const prefs = await rig.app.ctx.identity();
@@ -107,6 +111,13 @@ describe('GoPractice screens', () => {
     await rig.go('review/transfer');
     audit(rig.root, 'practice/transfer');
     await reopen(rig);
+    // Save deck moves the deck to the previous decks; the list is audited too
+    click(rig.q('#save-deck'));
+    await until(() => /Deck saved/.test(rig.root.querySelector('#review-home > .status')?.textContent ?? ''), 'the deck to be saved');
+    audit(rig.root, 'practice/review-home (after Save deck)');
+    await rig.go('review/decks');
+    audit(rig.root, 'practice/previous-decks');
+    await reopenDetails(rig);
     const hist = rig.root.querySelector<HTMLAnchorElement>('a[href^="#/review/history"]');
     if (hist) { await rig.go(hist.getAttribute('href')!.replace(/^#\//, '')); audit(rig.root, 'practice/history'); }
   }, 60_000);
@@ -163,7 +174,7 @@ describe('audio-only interactions, character-key shortcuts and the session clock
     await startWith(mute, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
     expect(mute.root.querySelector('#audio')).toBeNull();
     expect(mute.q('.exercise').getAttribute('data-family')).toBe('written-recognition');
-    await reopen(mute);
+    await reopenDetails(mute);
     expect(mute.q('#listening-availability').textContent).toMatch(/^not available: no Albanian voice is installed/);
     row('A-S06', 'audio', 'audio-only question: alternatives and honest notices', 'pass', 'group "Audio question"; Play/Replay (Space) and "I could not hear it" are buttons; choices are written; with no voice the item is asked in writing and the home says "not available: …"; "Include listening practice" can be switched off');
     destroyRigs();
@@ -171,7 +182,7 @@ describe('audio-only interactions, character-key shortcuts and the session clock
 
   it('A-S07 the listening preference is a labelled checkbox in Session controls', async () => {
     const rig = await makeRig({ signedIn: true });
-    await reopen(rig);
+    await reopenDetails(rig);
     const box = rig.q<HTMLInputElement>('#pref-listening');
     expect(box.type).toBe('checkbox');
     expect(box.labels?.[0]?.textContent).toMatch(/Include listening practice/);

@@ -8,7 +8,7 @@
 import type { GoEvent, SchedulerProfile } from '../repository-contract/src';
 import {
   applyControls, buildCardAdded, createFsrsScheduler, createSessionRunner, decideIntake, explainIntake, explainItem, foldDeckItems,
-  gatherCandidates, measuresFor, planSession, reviewHistory,
+  gatherCandidates, measuresFor, planSession, reviewHistory, resolveBuilder,
 } from '../goreview/src';
 import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome } from '../goreview/src';
 import type { RepositoryApi } from '../repository-service/src/api';
@@ -35,6 +35,16 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
 
   return {
     factsFor: (unitId, languageId, api) => factsOf(languageId, api).factsFor(unitId, languageId),
+    async exerciseAvailable(request) {
+      const facts = await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId);
+      const builder = resolveBuilder(opts.builders, request.family);
+      if (!facts || !builder) return false;
+      const target = { unitId: request.unitId, unitKind: request.unitKind, languageId: request.languageId, dimension: request.dimension };
+      const context = { now: request.now, random: () => 0 };
+      if (!builder.canBuild(target, facts, context)) return false;
+      const built = await builder.build(target, facts, context);
+      return !('unavailable' in built) && built.validation.ok && built.eligibility.eligible;
+    },
     scheduler: (prefs, profile) => scheduler(prefs.desiredRetention, profile),
     // New grades carry their own exact profile. Unversioned legacy grades use
     // the supported 90% default, never a newly activated personal profile.

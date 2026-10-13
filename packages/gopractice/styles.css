@@ -53,24 +53,24 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 [hidden] { display: none !important; }
 
-/* top bar: translucent paper, the app name as the tracked uppercase title */
+/* top bar: translucent paper; the language on the left, the Settings cog on the right, nothing else */
 .shell { min-height: 100vh; }
 .topbar {
   display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; align-items: center; min-height: 3rem; padding: .55rem clamp(1rem, 4vw, 3rem);
   background: color-mix(in srgb, var(--paper) 88%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 20;
 }
-.brand { font-size: .82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
-.topnav { display: flex; flex-wrap: wrap; gap: .15rem; }
-.topnav a { padding: .2rem .7rem; border-radius: 6px; color: var(--ink-soft); font-size: 1rem; text-decoration: none; }
-.topnav a:hover { background: color-mix(in srgb, var(--ink) 3.5%, transparent); color: var(--ink); }
-.topnav a[aria-current="page"] { background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--ink); font-weight: 600; }
 .language select { width: auto; font-size: .95rem; padding: .2rem .5rem; }
 .sync { margin: 0 0 0 auto; font-size: .9rem; font-style: italic; color: var(--ink-soft); max-width: 32rem; }
 .sync[data-kind="error"] { color: var(--bad); font-style: normal; }
 .sync[data-kind="ok"] { color: var(--ok); font-style: normal; }
-.account { display: flex; gap: .8rem; align-items: center; margin: 0; font-size: .9rem; }
-.utility-link { color: var(--ink-soft); text-decoration: underline; text-underline-offset: .15em; }
+.account { display: flex; gap: .8rem; align-items: center; margin: 0 0 0 auto; font-size: .9rem; max-width: none; }
+.sync + .account { margin-left: 0; }
+.cog { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 999px; color: var(--ink-soft); }
+.cog:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 5%, transparent); text-decoration: none; }
+.cog[aria-current="page"] { color: var(--accent); }
+.crumb { margin: 0 0 .25rem; font-size: .95rem; }
+.crumb a { color: var(--ink-soft); }
 
 /* page */
 .screen { padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; }
@@ -148,6 +148,15 @@ details > summary:hover { color: var(--ink); }
 /* target-language text: the same serif, slightly larger; the Noto faces cover scripts EB Garamond does not; bidirectional text isolated */
 .target-text { unicode-bidi: plaintext; font-family: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic', 'Noto Sans', Georgia, serif; font-size: 1.06em; }
 .stimulus { font-size: 1.7rem; line-height: 1.5; margin: .6rem 0; }
+.flashcard { min-height: 20rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.flashcard .stimulus { font-size: clamp(2.5rem, 7vw, 4rem); margin: 1.5rem 0; overflow-wrap: anywhere; }
+.flashcard-label { color: var(--muted); font-size: .95rem; }
+.flashcard .response { width: 100%; }
+.flashcard .grades { justify-content: center; flex-wrap: wrap; }
+.flashcard[data-side="back"] .stimulus { font-size: 1.7rem; margin: .5rem 0; }
+.flashcard .reference { font-size: 1.8rem; }
+.flashcard #type-answer { display: block; margin: .8rem auto; }
+.flashcard [hidden] { display: none !important; }
 input.target-text, textarea.target-text { font-size: 1.15rem; }
 
 /* session */
@@ -178,4 +187,46 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
   button, .btn { transition: border-color .15s, background-color .15s, opacity .15s; }
   .candidate, ul.deck li, ul.drafts li, ul.words li { transition: padding-left .15s, background-color .15s; }
   .screen > h1, .screen > .body { animation: screen-in .22s ease-out both; }
+}
+
+/* ── the GoReview home: four entries, a large serif title over an uppercase kicker, hairline rules, no boxes ── */
+.home { max-width: 30rem; margin: 0 auto; }
+.entry { padding: 1.35rem .6rem 1.45rem; border-bottom: 1px solid var(--rule); }
+.entry-tell { padding-top: .6rem; padding-bottom: 2.1rem; margin-bottom: .6rem; border-bottom: 1px solid var(--rule-strong); }
+.entry-link { display: block; color: var(--ink); text-decoration: none; margin: -.35rem -.6rem; padding: .35rem .6rem; border-radius: 6px; }
+.entry-link:hover { text-decoration: none; background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
+.entry-title { display: block; margin: 0; font-size: clamp(1.9rem, 6vw, 2.5rem); line-height: 1.15; font-weight: 400; letter-spacing: .005em; text-transform: none; color: var(--ink); }
+.entry-kicker { display: block; margin: .45rem 0 0; font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); max-width: none; }
+.entry-link:hover .entry-title { color: var(--accent); }
+.entry-actions { display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; align-items: center; margin: 1.15rem 0 0; }
+.entry-actions .btn.primary { border-radius: 999px; padding: .4rem 1.7rem; letter-spacing: .04em; }
+.linklike { font: inherit; font-size: .95rem; background: none; border: 0; padding: .1rem 0; color: var(--ink-soft); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: var(--rule-strong); cursor: pointer; border-radius: 2px; }
+.linklike:hover:not(:disabled) { background: none; color: var(--accent); text-decoration-color: var(--accent); }
+.home .status { text-align: center; min-height: 1.4em; margin-top: 1.4rem; font-style: italic; color: var(--ink-soft); }
+.home .status[data-kind="error"] { color: var(--bad); font-style: normal; }
+
+/* sub-screens of the home: a large title, quiet toggles, hairline lines */
+.page-title { font-size: clamp(1.7rem, 5.5vw, 2.2rem); font-weight: 400; letter-spacing: .005em; text-transform: none; color: var(--ink); margin: .4rem 0 1.1rem; }
+.vocab-sorts { display: flex; flex-wrap: wrap; gap: .3rem 1.4rem; margin: 0 0 1rem; }
+.toggle-link { font: inherit; font-size: .8rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; background: none; border: 0; border-bottom: 1px solid transparent; border-radius: 0; padding: .25rem 0; color: var(--ink-faint); cursor: pointer; }
+.toggle-link:hover:not(:disabled) { background: none; color: var(--ink); }
+.toggle-link[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+ul.vocablist, ul.decklist { list-style: none; padding: 0; margin: .4rem 0 0; border-top: 1px solid var(--rule); }
+.vocab-item, .deckrow { border-bottom: 1px solid var(--rule); }
+.vocab-row { display: flex; align-items: baseline; gap: .4rem 1rem; padding: .6rem .5rem; color: var(--ink); text-decoration: none; }
+.vocab-row:hover { text-decoration: none; background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
+.vocab-word { font-size: 1.3rem; flex: 0 1 auto; overflow-wrap: anywhere; }
+.vocab-gloss { flex: 1 1 auto; color: var(--ink-soft); font-style: italic; min-width: 0; overflow-wrap: anywhere; }
+.vocab-level { margin-left: auto; flex: 0 0 auto; font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+.vocab-more { margin: 1rem 0 0; text-align: center; }
+.deckrow { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1.2rem; padding: .85rem .5rem; }
+.deckrow-line { font-size: 1.15rem; }
+.deckrow .entry-actions { margin: 0; }
+.deckrow .btn.small { border-radius: 999px; padding: .1rem .85rem; }
+#decks-empty, #vocab-empty { padding: .9rem .5rem; }
+ul.plainlinks { list-style: none; padding: 0; margin: .3rem 0; }
+ul.plainlinks li { padding: .3rem 0; }
+@media (max-width: 760px) {
+  .vocab-row { flex-wrap: wrap; }
+  .vocab-gloss { flex-basis: 100%; order: 3; }
 }

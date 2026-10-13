@@ -441,7 +441,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         if (l?.disconnectAccount) await l.disconnectAccount();
         await state.clearSession();
         await state.clearCaches(session.learnerId);
-        if (opts?.forget) await removeByPrefix(deps.area, [learnerPrefix(session.learnerId), `gopractice:prefs:${session.learnerId}:`, `gopractice:choices:${session.learnerId}`]);
+        if (opts?.forget) await removeByPrefix(deps.area, [learnerPrefix(session.learnerId), `gopractice:prefs:${session.learnerId}:`, `gopractice:choices:${session.learnerId}`, `gopractice:decks:${session.learnerId}:`]);
       }
       dropHandle();
       audioDeps = undefined;
@@ -456,7 +456,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const who = await Promise.resolve(l.identity()).catch(() => undefined);
       try { await l.clear(); } catch { /* the rows below are still removed */ }
       let n = 0;
-      if (who) n += await removeByPrefix(deps.area, [learnerPrefix(who.learnerId), `gopractice:prefs:${who.learnerId}:`, `gopractice:choices:${who.learnerId}`]);
+      if (who) n += await removeByPrefix(deps.area, [learnerPrefix(who.learnerId), `gopractice:prefs:${who.learnerId}:`, `gopractice:choices:${who.learnerId}`, `gopractice:decks:${who.learnerId}:`]);
       n += await state.clearCaches(who?.learnerId);
       dropHandle();
       hooks.changed();

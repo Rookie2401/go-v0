@@ -6,7 +6,10 @@
  * An account is optional where the app runs inside the GoLearn extension: it then works on the device (the on-device Repository) and offers
  * the account any time (#/signin). The hosted copy has no such repository and shows #/signin first, explaining that.
  *
- * Routes:  #/review[/session | /history/<item> | /transfer]   #/tell   #/settings   #/signin
+ * The header is quiet: the active language (with its variety) and the Settings cog. Review, GoTell and the rest are reached from the
+ * GoReview home, which shows four things only; the sync state is spoken for assistive technology and shown only when it needs attention.
+ *
+ * Routes:  #/review[/session | /history/<item> | /transfer | /decks | /vocab | /details]   #/tell   #/vocabulary   #/settings   #/signin
  */
 import { append, clear, h, p } from './dom';
 import { languageName } from './format';
@@ -33,8 +36,21 @@ export const ROUTES: readonly RouteDef[] = [
   { id: 'settings', title: 'Settings', render: settingsScreen.render },
   { id: 'signin', title: 'Sign in', render: signinScreen.render },
 ];
-/** The three work areas; Settings remains available as a utility route. */
-export const NAV = ROUTES.filter((r) => r.id === 'review' || r.id === 'tell' || r.id === 'vocabulary');
+/** The routes that get a quiet way back to the GoReview home above their title. */
+const HAS_BACK = new Set<RouteDef['id']>(['tell', 'vocabulary', 'settings']);
+
+/** The Settings cog: a plain SVG (no icon font, nothing fetched), named for assistive technology by the link. */
+function cogIcon(doc: Document): Element {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = doc.createElementNS(ns, 'svg');
+  for (const [k, v] of Object.entries({ viewBox: '0 0 24 24', width: '20', height: '20', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false' })) svg.setAttribute(k, v);
+  const circle = doc.createElementNS(ns, 'circle');
+  for (const [k, v] of Object.entries({ cx: '12', cy: '12', r: '3' })) circle.setAttribute(k, v);
+  const path = doc.createElementNS(ns, 'path');
+  path.setAttribute('d', 'M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z');
+  svg.append(circle, path);
+  return svg;
+}
 
 export interface ParsedRoute { id: RouteDef['id']; params: string[]; path: string }
 
@@ -66,11 +82,10 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   let disposers: Array<() => void> = [];
   let destroyed = false;
 
-  const navEl = h('nav', { class: 'topnav', 'aria-label': 'GoPractice' });
   const langWrap = h('div', { class: 'language' });
   const syncEl = h('p', { id: 'sync-indicator', class: 'sync', role: 'status', 'aria-live': 'polite' });
   const acctEl = h('p', { class: 'account', id: 'account' });
-  const header = h('header', { class: 'topbar' }, h('span', { class: 'brand' }, 'GoPractice'), navEl, langWrap, syncEl, acctEl);
+  const header = h('header', { class: 'topbar' }, langWrap, syncEl, acctEl);
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   clear(root);
   root.append(h('div', { class: 'shell' }, header, main));
@@ -97,18 +112,14 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const t = syncText(v, mode);
     syncEl.textContent = t.text;
     syncEl.setAttribute('data-kind', t.kind);
+    // quiet unless it needs the learner: the text stays in the page for assistive technology
+    syncEl.classList.toggle('sr', t.kind !== 'error');
   }
 
   async function refreshHeader(): Promise<void> {
     if (destroyed) return;
     const mode = await ctx.mode();
     if (destroyed) return;
-    clear(navEl);
-    for (const r of NAV) {
-      const active = route === r.id || route.startsWith(`${r.id}/`);
-      navEl.append(h('a', { href: `#/${r.id}`, 'data-route': r.id, ...(active ? { 'aria-current': 'page' } : {}) }, r.title));
-    }
-    navEl.hidden = mode === 'none';
     // read first, then replace the switcher in one synchronous step: two header refreshes in flight must not both append to it
     const list = mode !== 'none' ? await ctx.enrolments() : [];
     const id = mode !== 'none' ? await ctx.identity() : undefined;
@@ -126,9 +137,11 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required
     clear(acctEl);
-    if (mode !== 'none') acctEl.append(h('a', { href: '#/settings', id: 'settings-link', class: 'utility-link' }, 'Settings'));
-    if (mode === 'device') acctEl.append(h('a', { href: '#/signin', id: 'account-link', class: 'account-link' }, 'Keep your progress across devices (optional)'));
-    else if (mode === 'account') acctEl.append(h('span', { id: 'account-state', class: 'account-state' }, 'Synced to your account'));
+    if (mode !== 'none') {
+      const cog = h('a', { href: '#/settings', id: 'settings-link', class: 'cog', 'aria-label': 'Settings', title: 'Settings', ...(route === 'settings' ? { 'aria-current': 'page' } : {}) });
+      cog.append(cogIcon(deps.doc));
+      acctEl.append(cog);
+    }
   }
 
   async function switchLanguage(enrolmentId: string): Promise<void> {
@@ -166,7 +179,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (my !== seq) return;
     if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
     const body = h('div', { class: 'body' });
-    main.append(h('h1', {}, def.title), body);
+    main.append(...(mode !== 'none' && HAS_BACK.has(def.id) ? [h('p', { class: 'crumb' }, h('a', { href: '#/review', id: 'back-home' }, '← GoReview'))] : []), h('h1', {}, def.title), body);
     const view: View = { alive: () => my === seq && !destroyed, onDispose: (fn) => { disposers.push(fn); } };
     try { await def.render(body, ctx, view, subs); } catch (e) {
       if (view.alive()) { clear(body); append(body, [p(`This screen could not be shown: ${e instanceof Error ? e.message : String(e)}`, 'error')]); }

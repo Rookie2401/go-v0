@@ -3,13 +3,15 @@
  * could that audio ever be listening evidence?), and the assessment source that prepares stimuli. Synthetic speech is
  * practice: it is available but never evidence (GoListen's evidence-direction rule), and the answer says so.
  */
-import { createGoListen, defaultRegistries, type GoListenOptions } from '../golisten/src';
+import { createGoListen, defaultRegistries, isAssessmentQualified, type GoListenOptions } from '../golisten/src';
 import type { AudioAvailability } from '../goreview/src/types';
 import type { AudioDeps } from './ports';
+import { createPracticeSpeechFetch, type PracticeExtensionRuntime } from './speechBridge';
 
-export function createAudioDeps(opts: { consent: () => boolean } & Partial<Omit<GoListenOptions, 'registries' | 'consent'>> & { registries?: GoListenOptions['registries'] }): AudioDeps {
+export function createAudioDeps(opts: { consent: () => boolean; extensionRuntime?: PracticeExtensionRuntime; extensionUrl?: string } & Partial<Omit<GoListenOptions, 'registries' | 'consent'>> & { registries?: GoListenOptions['registries'] }): AudioDeps {
   const listen = createGoListen({
     ...opts,
+    ...(opts.extensionRuntime ? { fetch: createPracticeSpeechFetch(opts.extensionRuntime, opts.extensionUrl) } : {}),
     registries: opts.registries ?? defaultRegistries(),
     consent: () => ({ remoteSpeech: opts.consent() }),
   });
@@ -17,6 +19,7 @@ export function createAudioDeps(opts: { consent: () => boolean } & Partial<Omit<
   return {
     source: () => source,
     playbackOf: (stimulus) => source.playbackOf(stimulus),
+    pronounce: (request) => listen.pronounce(request),
     async availability(languageId): Promise<AudioAvailability> {
       const a = await listen.availability(languageId);
       if (!a.canPronounce) {
@@ -25,7 +28,7 @@ export function createAudioDeps(opts: { consent: () => boolean } & Partial<Omit<
       const voices = await listen.voices(languageId);
       let evidence = false;
       for (const v of voices) {
-        if (v.synthetic || !v.suitableForAssessment) continue;
+        if (!isAssessmentQualified(v)) continue;
         if ((await v.availability()) === 'available') { evidence = true; break; }
       }
       return evidence

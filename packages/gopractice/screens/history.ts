@@ -14,9 +14,21 @@ export async function fillItemHistory(ctx: AppContext, el: HTMLElement, itemId: 
   const prefs = await ctx.state.getPrefs(id.learnerId, id.languageId);
   const events = await ctx.events(id.languageId);
   const deck = ctx.engine.foldDeck(events, id.languageId, prefs, ctx.deps.now().toISOString());
-  const item = deck.find((i) => i.itemId === itemId);
+  // My vocab links by item when the word has a card and by unit id when it has none
+  const item = deck.find((i) => i.itemId === itemId) ?? deck.find((i) => i.unitId === itemId);
   clear(el);
-  if (!item) { append(el, [p('That item is not in your deck on this device.', 'muted')]); return false; }
+  if (!item) {
+    const mine = events.filter((e) => e.subject.itemIds?.includes(itemId) && ['EncounterRecorded', 'SelectionLookedUp', 'AssistanceRequested', 'AnalysisShown'].includes(e.kind));
+    if (!mine.length) { append(el, [p('That item is not in your deck on this device.', 'muted')]); return false; }
+    const lookups = mine.filter((e) => e.kind === 'SelectionLookedUp').length;
+    const last = mine.map((e) => e.at).sort().at(-1)!;
+    append(el, [
+      h(level, {}, 'Word'),
+      h('p', {}, h('span', langProps(tag ?? id.varietyId ?? id.languageId), unitLabel(itemId)), ` · met ${mine.length} time${mine.length === 1 ? '' : 's'}${lookups ? `, looked up ${lookups}` : ''} · last ${last.slice(0, 10)}`),
+      p('It is not in a deck yet. GoReview adds words from what you read when they are worth asking.', 'muted'),
+    ]);
+    return true;
+  }
   const hist = ctx.engine.itemHistory(events, itemId);
   append(el, [
     h(level, {}, 'Item'),

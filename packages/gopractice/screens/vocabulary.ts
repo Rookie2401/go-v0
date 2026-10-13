@@ -1,6 +1,6 @@
 /** My Vocabulary is a read-only view of the Repository's encounter projection, not a second deck or word store. */
 import type { KnowledgeLevel } from '../../repository-contract/src';
-import type { VocabularyItem } from '../../repository-service/src/api';
+import type { VocabularyItem, VocabularyQuery } from '../../repository-service/src/api';
 import { sourceTitle } from '../../repository-contract/src/sources';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, langProps, p, setStatus, statusLine } from '../dom';
@@ -13,6 +13,12 @@ const LEVEL_LABEL: Record<KnowledgeLevel, string> = {
   new: 'New', seen: 'Seen', recognized: 'Recognized', familiar: 'Familiar', known: 'Known', automatic: 'Automatic',
 };
 const UNIT_KIND_LABEL: Record<string, string> = { lexeme: 'Lemma', form: 'Form', sense: 'Meaning', phrase: 'Phrase', 'morph-construction': 'Grammar pattern' };
+type VocabularySort = 'knowledge' | 'recent' | 'alphabetical';
+const SORT_OPTIONS: Array<[VocabularySort, string]> = [
+  ['knowledge', 'Knowledge: least established first'],
+  ['recent', 'Recently encountered'],
+  ['alphabetical', 'Alphabetical'],
+];
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const identity = await ctx.identity();
@@ -23,6 +29,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const search = h('input', { type: 'search', id: 'vocabulary-search', name: 'search', maxlength: 120, autocomplete: 'off', 'aria-label': 'Search vocabulary' }) as HTMLInputElement;
   const level = h('select', { id: 'vocabulary-level', name: 'level', 'aria-label': 'Filter by knowledge level' }) as HTMLSelectElement;
   for (const value of LEVELS) level.append(h('option', { value }, value === 'all' ? 'All levels' : LEVEL_LABEL[value]));
+  const order = h('select', { id: 'vocabulary-order', name: 'order', 'aria-label': 'Order words' }) as HTMLSelectElement;
+  for (const [value, label] of SORT_OPTIONS) order.append(h('option', { value }, label));
   const minEncounters = h('input', { type: 'number', id: 'vocabulary-min-encounters', min: 1, max: 100000, step: 1, inputmode: 'numeric' }) as HTMLInputElement;
   const firstFrom = h('input', { type: 'date', id: 'vocabulary-first-from' }) as HTMLInputElement;
   const firstTo = h('input', { type: 'date', id: 'vocabulary-first-to' }) as HTMLInputElement;
@@ -60,10 +68,15 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     field('Last encountered from', lastFrom), field('Last encountered through', lastTo),
     field('Help requested', requiresAssistance, 'Filters for assisted recognition events.'), field('Analysis unresolved', unresolved),
     field('GoReview status', reviewStatus), field('Source reference', sourceRef, 'Match an indexed reference identifier.')]);
-  form.append(field('Search labels and forms', search, 'Search covers labels and up to 25 recent encountered forms per record. Dictionary meanings are not indexed.'), field('Knowledge level', level),
-    h('button', { id: 'vocabulary-search-button', type: 'submit', class: 'btn primary' }, 'Apply filters'), moreFilters);
+  form.append(field('Search labels and forms', search, 'Search covers labels and up to 25 recent encountered forms per record. Dictionary meanings are not indexed.'), field('Knowledge level', level), field('Order words', order, 'Knowledge order uses the latest knowledge estimate. It does not replace your manual marks.'),
+    h('button', { id: 'vocabulary-search-button', type: 'submit', class: 'btn primary' }, 'Apply filters'),
+    button('Refresh words', () => { cursor = undefined; void load(); }, { id: 'vocabulary-refresh', class: 'btn' }), moreFilters);
   form.addEventListener('submit', (event) => { event.preventDefault(); cursor = undefined; void load(); });
   level.addEventListener('change', () => { cursor = undefined; void load(); });
+  order.addEventListener('change', () => { cursor = undefined; void load(); });
+  const refreshOnFocus = (): void => { if (!view.alive()) return; cursor = undefined; void load(); };
+  ctx.deps.win.addEventListener('focus', refreshOnFocus);
+  view.onDispose(() => ctx.deps.win.removeEventListener('focus', refreshOnFocus));
 
   async function load(appendPage = false): Promise<void> {
     const turn = ++serial;
@@ -72,8 +85,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     setStatus(status, 'Loading encountered vocabulary…');
     try {
       const { api } = await ctx.api();
-      const result = await api.vocabulary({
+      const query: VocabularyQuery = {
         languageId: activeIdentity.languageId,
+        sort: order.value as VocabularySort,
         ...(level.value !== 'all' ? { level: level.value as KnowledgeLevel } : {}),
         ...(search.value.trim() ? { search: search.value.trim() } : {}),
         ...(minEncounters.value && Number(minEncounters.value) >= 1 ? { minEncounters: Math.floor(Number(minEncounters.value)) } : {}),
@@ -84,7 +98,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         ...(reviewStatus.value ? { reviewStatus: reviewStatus.value as 'none' | 'active' | 'suspended' } : {}),
         ...(sourceRef.value.trim() ? { sourceRef: sourceRef.value.trim() } : {}),
         ...(cursor ? { after: cursor } : {}), limit: 50,
-      });
+      };
+      const result = await api.vocabulary(query);
       if (!view.alive() || turn !== serial) return;
       if (!result.ok) throw new Error(result.message || `The Repository answered ${result.status}.`);
       const page = result.data;
@@ -129,6 +144,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         saved.add(unitId); setStatus(status, `Saved ${title} as a request for GoReview.`, 'ok');
         const control = tools.querySelector<HTMLButtonElement>('button');
         if (control) { control.textContent = 'Saved for GoReview'; control.disabled = true; }
+        cursor = undefined;
+        void load();
       })();
     }, { class: 'btn small', 'data-action': 'save-practice' }));
     else tools.append(button('Saved for GoReview', () => undefined, { class: 'btn small', disabled: true }));

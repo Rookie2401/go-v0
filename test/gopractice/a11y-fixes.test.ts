@@ -11,7 +11,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { embedTarget, h } from '../../packages/gopractice/dom';
 import { UI_KEY } from '../../packages/gopractice/screens/uiprefs';
-import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, queued, reopen, seed, startWith, type, until } from './helpers';
+import { cardAdded, defaultService, destroyRigs, dueCard, ids, key, makeRig, queued, reopenDetails, seed, startWith, type, until } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -45,7 +45,7 @@ describe('embedTarget (A-11)', () => {
 describe('one-key shortcuts and the session clock (A-08, A-09)', () => {
   it('the review preferences carry a "Keyboard shortcuts" switch and a "Show the clock" switch, both on by default', async () => {
     const rig = await makeRig({ signedIn: true });
-    await reopen(rig);
+    await reopenDetails(rig);
     const shortcuts = rig.q<HTMLInputElement>('#pref-shortcuts');
     const clock = rig.q<HTMLInputElement>('#pref-clock');
     await until(() => shortcuts.checked && clock.checked, 'the defaults');
@@ -55,7 +55,7 @@ describe('one-key shortcuts and the session clock (A-08, A-09)', () => {
 
   it('turning the shortcuts off is remembered on the device, and a session then ignores 1 to 4 and Space (the buttons still work)', async () => {
     const rig = await makeRig({ signedIn: true });
-    await reopen(rig);
+    await reopenDetails(rig);
     const box = rig.q<HTMLInputElement>('#pref-shortcuts');
     box.checked = false; box.dispatchEvent(new Event('change', { bubbles: true }));
     await until(async () => ((await rig.area.get(UI_KEY))[UI_KEY] as { shortcuts?: boolean } | undefined)?.shortcuts === false, 'the stored switch');
@@ -155,7 +155,7 @@ describe('Settings and History (A-10, A-19)', () => {
   it('A-19 the history screen goes h1 then h2 (no skipped level)', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, dueCard(A, 'zog', 'meaning-to-form'));
-    await reopen(rig);
+    await reopenDetails(rig);
     const href = rig.q<HTMLAnchorElement>('a[href^="#/review/history"]').getAttribute('href')!;
     await rig.go(href.replace(/^#\//, ''));
     await until(() => !!rig.root.querySelector('#item-history h2'), 'the history');
@@ -168,13 +168,13 @@ describe('E-03 Start a session plans with the preferences saved an instant befor
   it('changing "Session length" and pressing Start at once plans with the new length', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
-    await reopen(rig);
+    await reopenDetails(rig);
     const minutes = rig.q<HTMLInputElement>('#pref-minutes');
     const before = Number(minutes.value);
     const wanted = before === 7 ? 9 : 7;
     type(minutes, String(wanted));
     minutes.dispatchEvent(new Event('change', { bubbles: true }));
-    rig.q('#start-session').click();                   // no wait: the save is still in flight
+    rig.q('#start-session').click();                   // the details page can start a session too; no wait: the save is still in flight
     await until(() => !!rig.app.ctx.run.active, 'the run');
     expect(rig.app.ctx.run.active!.plan.budgetMinutes).toBe(wanted);
   });
@@ -185,6 +185,7 @@ describe('E-04 the review home follows a sync that finishes after it was painted
     const service = defaultService();
     const rig = await makeRig({ service, signedIn: true });
     await rig.app.ctx.whenSynced();
+    await rig.go('review/details');
     await until(() => rig.q('#count-fresh').textContent === '0', 'the empty deck');
     service.inject('L1', cardAdded(A, 'mace', 'meaning-to-form', '2026-10-08T09:00:00.000Z'));   // arrives from another device
     await rig.app.ctx.syncNow({ force: true });
@@ -196,6 +197,7 @@ describe('E-04 the review home follows a sync that finishes after it was painted
     const service = defaultService();
     const rig = await makeRig({ service, signedIn: true });
     await rig.app.ctx.whenSynced();
+    await rig.go('review/details');
     rig.q<HTMLDetailsElement>('#session-controls').open = true;
     const minutes = rig.q<HTMLInputElement>('#pref-minutes');
     minutes.focus();

@@ -4,7 +4,7 @@
  * use the port alone, so a change inside GoReview is absorbed in one place and a test can supply a small fake.
  */
 import type { AppendOutcome, Enrolment, GoEvent, ReviewCandidate, UnitKnowledge, SchedulerProfile } from '../repository-contract/src';
-import type { AssessmentSource, PlaybackHandle } from '../golisten/src/contracts';
+import type { AssessmentSource, PlaybackHandle, PronunciationRequest, PronunciationResult } from '../golisten/src/contracts';
 import type { RepositoryApi } from '../repository-service/src/api';
 import type {
   AudioAvailability, DeckItem, Exercise, Grading, IntakeOutcome, PlannedItem, Response, ReviewPreferences, ReviewResult, Scheduler, SessionPlan, SessionState, UnitFacts,
@@ -117,6 +117,8 @@ export interface PlanRequest {
 
 export interface ReviewEngine {
   factsFor?(unitId: string, languageId: string, api: RepositoryApi): Promise<UnitFacts | undefined>;
+  /** Whether the proposed family has verified facts and can produce a valid exercise. */
+  exerciseAvailable?(request: { unitId: string; unitKind: string; languageId: string; dimension: import('../goreview/src/types').AssessmentDimension; family: import('../goreview/src/types').ExerciseFamily; api: RepositoryApi; now: string }): Promise<boolean>;
   scheduler(prefs: ReviewPreferences, profile?: SchedulerProfile): Scheduler;
   /** The deck of one language as a fold over the learner's events (a snooze that has ended by `now` is over). */
   foldDeck(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];
@@ -144,6 +146,8 @@ export interface AudioDeps {
   availability(languageId: string): Promise<AudioAvailability>;
   source(): AssessmentSource | undefined;
   playbackOf(stimulus: Parameters<AssessmentSource['playbackOf']>[0]): PlaybackHandle;
+  /** Pronunciation for visible text. This is exposure only and never listening evidence. */
+  pronounce?(request: PronunciationRequest): Promise<PronunciationResult>;
 }
 
 // ───────────────────────────── the environment ─────────────────────────────

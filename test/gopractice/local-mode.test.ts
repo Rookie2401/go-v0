@@ -9,7 +9,7 @@ import { decodeBody } from '../../packages/gotell/src/documents';
 import { tellOverrides } from '../../packages/gopractice/screens/tell/overrides';
 import { draftIdFromHash, press, typeInto } from '../gotell-ui/rig';
 import {
-  LOCAL_LEARNER, candidate, cardAdded, defaultService, destroyRigs, flush, ids, makeRig, queued, reopen, reviewed, seed, type, unitOf, until, type Rig,
+  LOCAL_LEARNER, candidate, cardAdded, defaultService, destroyRigs, flush, ids, makeRig, queued, reopenDetails, reviewed, seed, type, unitOf, until, type Rig,
 } from './helpers';
 
 afterEach(() => { tellOverrides.timers = undefined; tellOverrides.download = undefined; destroyRigs(); });
@@ -27,12 +27,15 @@ describe('on the device, with no account', () => {
     const rig = await makeRig({ local: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('#signin-form')).toBeNull();
-    expect(rig.qa('.topnav a').map((a) => a.textContent)).toEqual(['GoReview', 'GoTell', 'My Vocabulary']);
-    expect(rig.q('#settings-link').textContent).toBe('Settings');
-    expect(rig.q<HTMLElement>('.topnav').hidden).toBe(false);
+    // the header is the language and the Settings cog; the account offer lives in Settings
+    expect(rig.root.querySelector('.topnav')).toBeNull();
+    expect(rig.q('#settings-link').getAttribute('aria-label')).toBe('Settings');
     expect(rig.q('#sync-indicator').textContent).toBe('On this device only');
-    expect(rig.q<HTMLAnchorElement>('#account-link').getAttribute('href')).toBe('#/signin');
-    expect(rig.q('#account-link').textContent).toBe('Keep your progress across devices (optional)');
+    expect(rig.root.querySelector('#account-link')).toBeNull();
+    await rig.go('settings');
+    expect(rig.q<HTMLAnchorElement>('#settings-keep-progress').getAttribute('href')).toBe('#/signin');
+    expect(rig.q('#settings-keep-progress').textContent).toBe('Keep your progress across devices (optional)');
+    await rig.go('review');
     expect(rig.q('#language-select').textContent).toBe('sq (sq-AL)');
     expect(rig.q('main').getAttribute('data-language')).toBe('sq-AL');
     expect(rig.service.calls).not.toContain('createSession');
@@ -73,10 +76,11 @@ describe('on the device, with no account', () => {
       reviewed(LOC, 'zog', 'written-recognition', 3, '2026-09-01T10:00:00.000Z'),
       cardAdded(LOC, 'mace', 'meaning-to-form', '2026-09-01T09:00:00.000Z'),
     ]);
-    await reopen(rig);
+    await reopenDetails(rig);
     expect(rig.q('#due-summary').textContent).toContain('Due');
-    expect(rig.q('#count-candidates').textContent).toBe('1'); // det: test now; zog is already in the deck
-    expect(rig.q(`#candidates [data-unit="${unitOf('det')}"]`).getAttribute('data-decision')).toBe('test-now');
+    expect(rig.q('#count-candidates').textContent).toBe('0'); // det is now admitted automatically; zog was already covered
+    expect(rig.q(`#candidates [data-unit="${unitOf('det')}"]`).getAttribute('data-decision')).toBe('already-covered');
+    expect((await rig.app.ctx.events('sq')).some((e) => e.kind === 'CardAdded' && e.subject.itemIds?.includes(unitOf('det')))).toBe(true);
     expect(rig.qa('#candidates li[data-unit]').length).toBe(2);
     expect(service.calls).toContain('candidates'); // asked of the device’s own Repository, not of a server
     expect(rig.root.querySelector('#no-enrolment')).toBeNull();
@@ -150,7 +154,7 @@ describe('the account is optional and only keeps progress across devices', () =>
     expect(rig.q<HTMLAnchorElement>('#signin-not-now').getAttribute('href')).toBe('#/review');
     expect(rig.root.querySelector('#hosted-copy')).toBeNull();
     expect(rig.q<HTMLAnchorElement>('#link-setup').getAttribute('href')).toBe('../app/index.html#/language');
-    expect(rig.q<HTMLElement>('.topnav').hidden).toBe(false);
+    expect(rig.q('#settings-link')).toBeTruthy();
   });
 
   it('signing in uploads the device’s history once, says how many events, and switches to the synced mode with the history on the account', async () => {
@@ -171,7 +175,6 @@ describe('the account is optional and only keeps progress across devices', () =>
     expect((await rig.app.ctx.events('sq')).some((e) => e.kind === 'CardReviewed')).toBe(true);
     click(rig.q('#signin-continue'));
     await rig.app.ready(); await flush(6);
-    expect(rig.q('#account-state').textContent).toBe('Synced to your account');
     expect(rig.q('#sync-indicator').textContent).toMatch(/^Online/);
     expect(rig.root.querySelector('#account-link')).toBeNull();
   });
@@ -264,7 +267,7 @@ describe('the hosted copy', () => {
     expect(rig.root.querySelector('#account-optional')).toBeNull();
     expect(rig.root.querySelector('#signin-not-now')).toBeNull(); // here the account is the only way in
     expect(rig.q('#signin-form')).toBeTruthy(); // for those who have an account
-    expect(rig.q<HTMLElement>('.topnav').hidden).toBe(true);
+    expect(rig.root.querySelector('#settings-link')).toBeNull();
     expect(rig.q('#sync-indicator').textContent).toBe('Not signed in');
     expect(rig.root.textContent).not.toMatch(/team/i);
   });
@@ -284,7 +287,7 @@ describe('the hosted copy', () => {
   it('still signs in and works as before once the learner has an account', async () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
-    expect(rig.q('#account-state').textContent).toBe('Synced to your account');
+    expect(rig.q('#sync-indicator').textContent).toMatch(/^Online/);
     expect(await rig.app.ctx.mode()).toBe('account');
   });
 

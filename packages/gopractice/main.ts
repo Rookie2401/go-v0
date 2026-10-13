@@ -45,7 +45,9 @@ export async function createRealDeps(): Promise<Deps> {
     ...(ext ? { local: async () => localRepoFor(ext), links: { setup: '../app/index.html#/languages' } } : config.extensionUrl ? { links: { extension: config.extensionUrl } } : {}),
     createApi: (baseUrl, token) => createRepositoryApi({ baseUrl, fetch: doFetch, token }),
     engine,
-    audio: (consent) => createAudioDeps({ consent }),
+    audio: (consent) => createAudioDeps({ consent,
+      ...(ext ? { extensionRuntime: ext.runtime, extensionUrl: `${location.protocol}//${location.host}${location.pathname}` } : config.speechProxyBase ? { speechProxyBase: config.speechProxyBase } : {}),
+    }),
     now: () => new Date(), newId: uuid, random: Math.random, appVersion: APP_VERSION, autoSync: true,
   };
 }

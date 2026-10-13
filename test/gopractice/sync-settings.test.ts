@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
 import { KEYS } from '../../packages/gopractice/state';
-import { cardAdded, defaultService, destroyRigs, dueCard, ids, makeRig, queued, reopen, reviewed, seed, type, until, unitOf } from './helpers';
+import { cardAdded, defaultService, destroyRigs, dueCard, ids, makeRig, queued, reopenDetails, reviewed, seed, type, until, unitOf } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -15,7 +15,7 @@ describe('synchronisation', () => {
     const rig = await makeRig({ service });
     await rig.signIn();
     await rig.app.ctx.whenSynced();
-    await reopen(rig);
+    await reopenDetails(rig);
     expect((await rig.app.ctx.events('sq')).length).toBe(3);
     expect(rig.q('#count-due').textContent).toBe('1');
     expect(rig.q('#count-fresh').textContent).toBe('1');

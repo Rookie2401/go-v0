@@ -11,6 +11,77 @@ import { candidatesKey, type CandidateChoice } from './state';
 import type { ActiveRun, Identity, SessionDriver } from './ports';
 import { activeSchedulerProfile } from './profiles';
 
+// Automatic admission is deliberately serialized in this process. The event id and dedupe key below also make a
+// second tab/retry harmless: the Repository's append boundary sees the same CardAdded identity.
+const automaticDeckLocks = new Map<string, Promise<void>>();
+const stableId = (text: string): string => {
+  let h = 14695981039346656037n;
+  for (let i = 0; i < text.length; i++) { h ^= BigInt(text.charCodeAt(i)); h = BigInt.asUintN(64, h * 1099511628211n); }
+  return h.toString(16).padStart(16, '0');
+};
+
+async function admitAutomaticDeck(ctx: AppContext, model: Pick<ReviewModel, 'identity' | 'deck' | 'outcomes' | 'choices' | 'prefs' | 'now' | 'audio'>, unavailable = new Set<string>()): Promise<GoEvent[]> {
+  const lockKey = `${model.identity.learnerId}:${model.identity.languageId}`;
+  const previous = automaticDeckLocks.get(lockKey) ?? Promise.resolve();
+  let release!: () => void;
+  const current = new Promise<void>((resolve) => { release = resolve; });
+  const chain = previous.then(() => current);
+  automaticDeckLocks.set(lockKey, chain);
+  await previous;
+  try {
+    const data = await ctx.data();
+    const markerKey = `auto-deck:candidates:${model.identity.languageId}`;
+    // Intake decisions change to `already-covered` after admission; the marker tracks source evidence and target,
+    // rather than that derived deck state, so a refresh of the same candidate pool cannot grow the deck.
+    const signature = JSON.stringify({ maxNew: model.prefs.maxNew, prioritizeSaved: model.prefs.prioritizeSaved, listening: model.prefs.includeListening, audio: model.audio, candidates: model.outcomes.map((o) => [o.unitId, o.candidate.score, o.candidate.targetDimension, o.candidate.eligibility, o.knowledge?.level, o.knowledge?.basis, o.explicitlySelected, model.choices[o.unitId] ?? '']).sort((a, b) => String(a[0]) < String(b[0]) ? -1 : String(a[0]) > String(b[0]) ? 1 : 0) });
+    if (data && (await data.area.get(markerKey))[markerKey] === signature) return [];
+    // `maxNew` is the admission batch bound. The planner still enforces its own per-session new-item budget, while
+    // using a batch bound here lets a newly surfaced higher-scoring candidate displace no existing card or history.
+    const remaining = Math.max(0, model.prefs.maxNew);
+    if (!remaining) return [];
+    const ectx = await ctx.eventContext();
+    if (!ectx) return [];
+    const { api } = await ctx.api();
+    const candidates = model.outcomes
+      .filter((o) => model.choices[o.unitId] !== 'later')
+      .filter((o) => o.proposed && (o.decision === 'test-now' || o.decision === 'test-later' || o.decision === 'low-priority'))
+      .filter((o) => !model.deck.some((i) => i.unitId === o.unitId && (i.status === 'dismissed' || i.status === 'suspended')))
+      .filter((o) => !model.deck.some((i) => i.unitId === o.unitId && i.dimension === o.proposed?.dimension && i.status !== 'dismissed'))
+      .sort((a, b) => (model.prefs.prioritizeSaved ? Number(b.explicitlySelected === true) - Number(a.explicitlySelected === true) : 0)
+        || (Number.isFinite(b.candidate.score) ? b.candidate.score : -Infinity) - (Number.isFinite(a.candidate.score) ? a.candidate.score : -Infinity)
+        || (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0));
+    const added: GoEvent[] = [];
+    const addedKeys = new Set<string>();
+    let hadUnavailable = false;
+    for (const outcome of candidates) {
+      if (added.length >= remaining) break;
+      const proposed = outcome.proposed!;
+      const key = `${outcome.unitId}|${proposed.dimension}`;
+      if (addedKeys.has(key) || model.deck.some((i) => i.unitId === outcome.unitId && i.dimension === proposed.dimension && i.status !== 'dismissed')) continue;
+      if (proposed.family.startsWith('audio-') && (!model.prefs.includeListening || !model.audio.available || !model.audio.eligibleForEvidence)) continue;
+      if (!ctx.engine.exerciseAvailable) { unavailable.add(outcome.unitId); hadUnavailable = true; continue; }
+      try {
+        if (!(await ctx.engine.exerciseAvailable({ unitId: outcome.unitId, unitKind: outcome.candidate.kind, languageId: model.identity.languageId, dimension: proposed.dimension, family: proposed.family, api, now: model.now }))) { unavailable.add(outcome.unitId); hadUnavailable = true; continue; }
+      } catch { unavailable.add(outcome.unitId); hadUnavailable = true; continue; }
+      // A failed build is deliberately not cached. A repaired pack or changed builder must be retried on the next
+      // review load even when the candidate evidence snapshot is unchanged.
+      const reason = `automatic deck (${outcome.decision}; score ${outcome.candidate.score.toFixed(2)}): ${outcome.reasons.join('; ')}`;
+      const event = ctx.engine.cardAdded({ ...ectx, now: model.now }, { unitId: outcome.unitId, unitKind: outcome.candidate.kind, dimension: proposed.dimension, family: proposed.family, reasons: [reason] }, 'intake');
+      const identity = stableId(`${model.identity.learnerId}|${model.identity.languageId}|${outcome.unitId}|${proposed.dimension}`);
+      event.id = `auto-card:${identity}`;
+      event.dedupeKey = `auto-card:${identity}`;
+      const result = await ctx.record([event]);
+      if (!result.refused.length) { added.push(event); addedKeys.add(key); }
+      else hadUnavailable = true;
+    }
+    if (data && added.length && !hadUnavailable) await data.area.set({ [markerKey]: signature });
+    return added;
+  } finally {
+    release();
+    if (automaticDeckLocks.get(lockKey) === chain) automaticDeckLocks.delete(lockKey);
+  }
+}
+
 export const NO_AUDIO: AudioAvailability = { available: false, eligibleForEvidence: false, reason: 'no audio is available in this browser' };
 
 export interface DeckCounts {
@@ -103,9 +174,16 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   try {
     const { api } = await ctx.api();
     if ((await ctx.mode()) === 'none') throw new Error('not signed in');
-    const c = await api.candidates(identity.enrolmentId, 40);
-    if (!c.ok) throw new Error(c.message || `the service answered ${c.status}`);
-    candidates = c.data.candidates;
+    let cursor: string | undefined;
+    const cursors = new Set<string>();
+    do {
+      const c = await api.candidates(identity.enrolmentId, 200, cursor);
+      if (!c.ok) throw new Error(c.message || `the service answered ${c.status}`);
+      candidates.push(...c.data.candidates);
+      cursor = c.data.nextCursor;
+      if (cursor && cursors.has(cursor)) throw new Error('The candidate service repeated a page cursor.');
+      if (cursor) cursors.add(cursor);
+    } while (cursor);
     const unitIds = [...new Set([...candidates.map((x) => x.unitId), ...deck.map((x) => x.unitId)])];
     for (let offset = 0; offset < unitIds.length; offset += 200) {
       const k = await api.knowledge(unitIds.slice(offset, offset + 200));
@@ -130,10 +208,21 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     catch (e) { candidateNote = `Intake failed (${e instanceof Error ? e.message : 'unknown error'}).`; }
   }
   const choices = await state.getChoices(identity.learnerId);
-  return {
+  const base: ReviewModel = {
     identity, prefs, events, deck, counts, audio, outcomes, knowledge, schedulerProfile, dismissed: [...ignored], choices, saved, candidateSource,
     ...(candidateNote ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
   };
+  const unavailable = new Set<string>();
+  const added = await admitAutomaticDeck(ctx, base, unavailable);
+  if (!added.length && !unavailable.size) return base;
+  const refreshedEvents = await ctx.events(identity.languageId);
+  const refreshedDeck = engine.foldDeck(refreshedEvents, identity.languageId, prefs, now);
+  const addedUnits = new Set(added.map((e) => e.subject.itemIds?.[0]).filter((id): id is string => !!id));
+  const refreshedOutcomes = base.outcomes.map((o) => addedUnits.has(o.unitId)
+    ? { ...o, decision: 'already-covered' as const, proposed: undefined, reasons: ['automatically added to the deck on review load', ...o.reasons] }
+    : unavailable.has(o.unitId) ? { ...o, decision: 'needs-validation' as const, proposed: undefined, reasons: ['No usable exercise could be built for this word yet; it remains in My words.', ...o.reasons] } : o);
+  const assemblyNote = `Automatic deck: ${added.length} card${added.length === 1 ? '' : 's'} added${unavailable.size ? `; ${unavailable.size} word${unavailable.size === 1 ? '' : 's'} waiting for a usable exercise` : ''}.`;
+  return { ...base, candidateNote: [base.candidateNote, assemblyNote].filter(Boolean).join(' '), events: refreshedEvents, deck: refreshedDeck, outcomes: refreshedOutcomes, counts: countDeck(refreshedDeck, { scheduler, now }) };
 }
 
 // ───────────────────────────── starting a session ─────────────────────────────
@@ -205,12 +294,13 @@ export async function endSavedSession(ctx: AppContext, sessionId: string): Promi
 }
 
 /** Plans a session from the model and opens the driver. Nothing is written until the learner answers. */
-export async function beginSession(ctx: AppContext, model: ReviewModel): Promise<StartResult> {
+export async function beginSession(ctx: AppContext, model: ReviewModel, opts: { plan?: SessionPlan } = {}): Promise<StartResult> {
   const { engine, deps } = ctx;
   const ectx = await ctx.eventContext();
   if (!ectx) return { ok: false, message: 'Choose a language first.' };
   const now = ectx.now;
-  const plan: SessionPlan = engine.plan({ deck: model.deck, intake: model.outcomes.filter((o) => model.choices[o.unitId] !== 'later'), prefs: model.prefs, audio: model.audio, now, knowledge: model.knowledge, readingSignals: model.events, schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events) });
+  // the home plans its own deck (with its fallback fill, ./deckModel) and hands that plan over; without one the session is planned as the details page always did
+  const plan: SessionPlan = opts.plan ?? engine.plan({ deck: model.deck, intake: model.outcomes.filter((o) => model.choices[o.unitId] !== 'later'), prefs: model.prefs, audio: model.audio, now, knowledge: model.knowledge, readingSignals: model.events, schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events) });
   if (!plan.items.length) {
     return { ok: false, message: plan.skipped.length ? `Nothing fits this session: ${plan.skipped[0].why}.` : 'Nothing is due, and nothing new is worth adding right now.' };
   }

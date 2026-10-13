@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
 import { createPlayback, type DriverCallbacks } from '../../packages/golisten/src/playback';
-import { destroyRigs, defaultService, dueCard, fakeAudio, ids, key, makeRig, queued, reopen, shownLabel, startWith, type, until, unitOf, type Rig } from './helpers';
+import { destroyRigs, defaultService, dueCard, fakeAudio, ids, key, makeRig, queued, reopenDetails, shownLabel, startWith, type, until, unitOf, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -88,6 +88,41 @@ describe('a choice question', () => {
     await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
     expect(rig.q('#outcome').textContent).toBe('Correct');
     expect(rig.q('#given').textContent).toBe('cat');
+  });
+});
+
+describe('pending GoListen playback', () => {
+  it('does not start audio after leaving the session while audio setup is pending', async () => {
+    const audio = fakeAudio();
+    const rig = await makeRig({ signedIn: true, audio });
+    await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
+    const original = rig.app.ctx.audio;
+    let resolveAudio!: (value: typeof audio) => void;
+    const pending = new Promise<typeof audio>((resolve) => { resolveAudio = resolve; });
+    rig.app.ctx.audio = () => pending;
+    key(' ');
+    await rig.go('settings');
+    resolveAudio(audio);
+    await until(() => !!rig.root.querySelector('#settings-prefs'), 'settings');
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    expect(audio.handles).toHaveLength(0);
+    expect(await queued(rig)).toEqual([]);
+    rig.app.ctx.audio = original;
+  });
+
+  it('keeps a managed unanswered stimulus playable after leaving and reopening', async () => {
+    const audio = fakeAudio();
+    audio.source()!.releaseStimulus = () => {};
+    const rig = await makeRig({ signedIn: true, audio });
+    await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });
+    key(' ');
+    await until(() => audio.handles.length === 1, 'first playback');
+    await rig.go('settings');
+    expect(audio.handles[0].disposed).toBe(false);
+    await rig.go('review/session');
+    key(' ');
+    await until(() => audio.handles.length === 2, 'reopened playback');
+    expect(await queued(rig)).toEqual([]);
   });
 });
 
@@ -340,7 +375,7 @@ describe('skipping, finishing early and setting items aside', () => {
     expect(rig.q('#sum-skipped').textContent).toBe('1');
     expect(rig.q('#sum-left').textContent).toContain('stay due');
     expect(await queued(rig)).toEqual([]);
-    await reopen(rig);
+    await reopenDetails(rig);
     expect(rig.q('#count-due').textContent).toBe('2');
   });
 
@@ -353,7 +388,7 @@ describe('skipping, finishing early and setting items aside', () => {
     await until(() => !!rig.root.querySelector('#summary'), 'the summary');
     expect((await queued(rig)).length).toBe(1);
     expect(rig.q('#sum-answered').textContent).toBe('1 of 2 planned, 1 correct');
-    await reopen(rig);
+    await reopenDetails(rig);
     expect(rig.q('#count-due').textContent).toBe('1');
   });
 
@@ -365,7 +400,7 @@ describe('skipping, finishing early and setting items aside', () => {
     await rig.go('settings');
     await until(async () => (await queued(rig)).length === 1, 'the answer to be recorded');
     await rig.go('review');
-    await until(() => !!rig.root.querySelector('#recoverable-sessions'), 'the saved session');
+    await until(() => !!rig.root.querySelector('[data-action="resume-session"]'), 'the saved session');
     rig.q('[data-action="resume-session"]').click();
     await until(() => rig.app.current() === 'review/session' && progress(rig) === 'Item 2 of 2', 'the resumed prompt');
   });
@@ -401,7 +436,7 @@ describe('skipping, finishing early and setting items aside', () => {
     expect(q.map((e) => e.subject.cardId!.split(":")[4])).toEqual([first, second, third]);
     expect((q[1].payload as { until: string }).until).toBe('2026-10-15T10:01:00.000Z');
     expect(rig.q('#sum-controls').textContent).toContain('suspend');
-    await reopen(rig);
+    await reopenDetails(rig);
     expect(rig.q('#count-due').textContent).toBe('0');
   });
 });
@@ -421,7 +456,7 @@ describe('challenging an answer and reporting an analysis error', () => {
     expect(ev.evidence?.quality).toBe('none');
     expect(ev.payload).toMatchObject({ rating: null });
     expect(rig.q('#sum-withheld').textContent).toContain('challenged');
-    await reopen(rig);
+    await reopenDetails(rig);
     rig.root.querySelector<HTMLElement>('#deck')!.setAttribute('open', '');
     expect(rig.q('#deck').textContent).toContain('due'); // still due: the challenged answer scheduled nothing
     expect(rig.q('#count-due').textContent).toBe('1');

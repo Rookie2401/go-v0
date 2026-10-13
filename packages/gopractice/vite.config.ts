@@ -4,7 +4,7 @@
  *   vite build -c packages/gopractice/vite.config.ts
  *       -> packages/gopractice/dist/   a static site with relative URLs (base './'), any host or sub-path:
  *          index.html, assets/*.js, styles.css, config.json, and dict/<lang>/ for the languages in GOPRACTICE_DICT
- *          (default "sq", the only installable pack; set it empty to leave the dictionaries out). Review exercises read
+ *          (default "sq,es,de,hi,th", the currently supported installable packs; set it empty to leave the dictionaries out). Review exercises read
  *          glosses from there, lazily, shard by shard.
  *   vite build -c packages/gopractice/vite.config.ts --mode extension
  *       -> packages/golearn-extension/dist/practice/   the same app as a page of the GoLearn extension (chrome-extension://<id>/practice/index.html).
@@ -21,7 +21,7 @@ import { defineConfig, type Plugin } from 'vite';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../..');
 
-const dictLanguages = (): string[] => (process.env.GOPRACTICE_DICT ?? 'sq').split(',').map((s) => s.trim()).filter(Boolean);
+const dictLanguages = (): string[] => (process.env.GOPRACTICE_DICT ?? 'sq,es,de,hi,th').split(',').map((s) => s.trim()).filter(Boolean);
 
 const fontsSource = path.join(repoRoot, 'packages', 'shared-fonts');
 

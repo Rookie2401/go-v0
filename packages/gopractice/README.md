@@ -14,7 +14,7 @@ npx vite build -c packages/gopractice/vite.config.ts --mode extension
                                                          → packages/golearn-extension/dist/practice/   (a page of the extension: chrome-extension://<id>/practice/index.html,
                                                            opened by the popup's "Practise" button; works with no account. Run it AFTER `npm run ext:build`, which empties dist/)
 npx vite -c packages/gopractice/vite.config.ts           → dev server on :5198
-GOPRACTICE_DICT=sq,de npx vite build …                   → which dictionaries to copy into dist/dict/ (default sq; empty = none)
+GOPRACTICE_DICT=sq,de npx vite build …                   → which dictionaries to copy into dist/dict/ (default sq,es,de,hi,th; empty = none)
 ```
 
 `config.json` next to the page: `{ "serviceUrl", "assetBaseUrl", "speechProxyBase"?, "extensionUrl"? }`. The service address must be https (http only on

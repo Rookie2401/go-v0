@@ -23,24 +23,25 @@ describe('the hash router', () => {
     const rig = await makeRig();
     expect(rig.app.current()).toBe('signin');
     expect(rig.q('main').getAttribute('data-route')).toBe('signin');
-    expect(rig.q<HTMLElement>('.topnav').hidden).toBe(true);
+    expect(rig.root.querySelector('#settings-link')).toBeNull();
     expect(rig.q('#sync-indicator').textContent).toBe('Not signed in');
   });
 
-  it('after sign-in it shows three workspaces and keeps Settings in the utility area', async () => {
+  it('after sign-in the header is the language and the Settings cog; the screens are reached from the home', async () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
-    expect(rig.qa('.topnav a').map((a) => a.textContent)).toEqual(['GoReview', 'GoTell', 'My Vocabulary']);
-    expect(rig.q('#settings-link').textContent).toBe('Settings');
-    expect(rig.q('.topnav a[aria-current="page"]').textContent).toBe('GoReview');
+    expect(rig.root.querySelector('.topnav')).toBeNull();
+    expect([...rig.root.querySelectorAll('header a')].map((a) => a.getAttribute('aria-label'))).toEqual(['Settings']);
+    expect(rig.q('#language-select')).toBeTruthy();
+    expect(rig.root.querySelector('#back-home')).toBeNull();      // the home has nowhere to go back to
     await rig.go('tell');
     expect(rig.q('main h1').textContent).toBe('GoTell');
-    expect(rig.q('.topnav a[aria-current="page"]').textContent).toBe('GoTell');
+    expect(rig.q<HTMLAnchorElement>('#back-home').getAttribute('href')).toBe('#/review');
     await rig.go('vocabulary');
     expect(rig.q('main h1').textContent).toBe('My Vocabulary');
-    expect(rig.q('.topnav a[aria-current="page"]').textContent).toBe('My Vocabulary');
     await rig.go('settings');
     expect(rig.q('main h1').textContent).toBe('Settings');
+    expect(rig.q('#settings-link').getAttribute('aria-current')).toBe('page');
     window.location.hash = '#/review';
     await until(() => rig.app.current() === 'review', 'the hashchange');
   });

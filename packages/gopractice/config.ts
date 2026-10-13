@@ -13,6 +13,8 @@ export interface AppConfig {
   extensionUrl?: string;
   /** Where audio files for recorded stimuli are served from; relative to the app page, or absolute. */
   assetBaseUrl?: string;
+  /** Absolute speech proxy endpoint. Relative paths use the current origin, which is wrong for the extension page. */
+  speechProxyBase?: string;
 }
 
 export type UrlCheck = { ok: true; url: string } | { ok: false; message: string };
@@ -34,6 +36,19 @@ export function validateServiceUrl(input: string): UrlCheck {
   return { ok: true, url: u.origin + u.pathname.replace(/\/+$/, '') };
 }
 
+/** Speech text may leave the device only through an explicitly configured secure or local proxy. */
+export function validateSpeechProxyBase(input: string): UrlCheck {
+  const raw = input.trim();
+  if (!raw) return { ok: false, message: 'Enter the speech proxy address.' };
+  let u: URL;
+  try { u = new URL(raw); } catch { return { ok: false, message: 'The speech proxy must be an absolute https address (or localhost for development).' }; }
+  if (u.protocol !== 'https:' && !(u.protocol === 'http:' && isLoopback(u.hostname))) {
+    return { ok: false, message: 'The speech proxy must use https. Plain http is accepted only for localhost (development).' };
+  }
+  if (u.username || u.password || u.search || u.hash) return { ok: false, message: 'The speech proxy address must not contain credentials, a query or a fragment.' };
+  return { ok: true, url: u.origin + u.pathname.replace(/\/+$/, '') };
+}
+
 /** config.json next to the app. A missing file, a non-JSON answer (a dev server may return index.html) or bad values give {}. */
 export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): Promise<AppConfig> {
   try {
@@ -44,6 +59,7 @@ export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): 
     const out: AppConfig = {};
     if (typeof j.serviceUrl === 'string') { const c = validateServiceUrl(j.serviceUrl); if (c.ok) out.serviceUrl = c.url; }
     if (typeof j.assetBaseUrl === 'string' && j.assetBaseUrl) out.assetBaseUrl = j.assetBaseUrl;
+    if (typeof j.speechProxyBase === 'string' && j.speechProxyBase) { const c = validateSpeechProxyBase(j.speechProxyBase); if (c.ok) out.speechProxyBase = c.url; }
     if (typeof j.extensionUrl === 'string' && /^(https:|chrome-extension:)/.test(j.extensionUrl)) out.extensionUrl = j.extensionUrl;
     return out;
   } catch { return {}; }

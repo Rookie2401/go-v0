@@ -16,7 +16,7 @@
  * can be hidden from the header (WCAG 2.2.2); nothing is announced every second either way.
  */
 import type { Grading, Response } from '../../goreview/src/types';
-import type { PlaybackHandle } from '../../golisten/src/contracts';
+import type { PlaybackHandle, PronunciationResult } from '../../golisten/src/contracts';
 import type { AppContext } from '../context';
 import { explainFailure } from '../config';
 import { append, button, clear, embedTarget, field, h, langProps, p, setStatus, statusLine } from '../dom';
@@ -24,6 +24,7 @@ import {
   answerInTarget, DIMENSION_LABEL, duration, FAMILY_LABEL, forecastRecording, isAudioExercise, itemLabel, OUTCOME_LABEL, RATING_LABEL, unitLabel, withheldReason,
 } from '../format';
 import type { ActiveRun, ItemControl, Presented } from '../ports';
+import type { ReviewExercise } from '../../goreview/src/exercises/shared';
 import { endSavedSession, recoverableSessions, resumeSession } from '../workspace';
 import { fillItemHistory } from './history';
 import { DEFAULT_UI, getUiPrefs, patchUiPrefs, type UiPrefs } from './uiprefs';
@@ -85,6 +86,13 @@ class Controller {
   /** The answer given and its preview, waiting to be committed. */
   private given: { response: Response; grading: Grading; challenged: boolean; committed?: import('../../goreview/src/types').ReviewResult } | undefined;
   private playback: PlaybackHandle | undefined;
+  private pronunciation: PlaybackHandle | undefined;
+  private pronunciationStateOff: (() => void) | undefined;
+  private pronunciationAbort: AbortController | undefined;
+  private pronunciationUsed = false;
+  private audioGeneration = 0;
+  private pronunciationGeneration = 0;
+  private managedPlayback = false;
   private hearings = 0;
   private completedHearings = 0;
   private observesPlaybackState = false;
@@ -93,7 +101,9 @@ class Controller {
    * hearing count so a failed attempt is never presented as listening evidence. */
   private audioPlaybackFailed = false;
   private revealed = false;
-  /** Self-grade recall is evidence only when the learner explicitly confirms an attempt before the answer is shown. */
+  private typingCard = false;
+  private isFlashcard(): boolean { return this.presented?.exercise.family === 'written-recognition' && this.presented.exercise.responseMode === 'typed-or-self' && !this.typingCard; }
+  /** Other self-graded exercises use an explicit attempt check; flashcard ratings state whether the learner recalled it. */
   private retrievalAttempted = false;
   /** Time spent on this visible card, measured from presentation (never from session planning). */
   private presentedAt: number | undefined;
@@ -145,11 +155,13 @@ class Controller {
     if (!this.presented) { await this.conclude('complete'); return; }
     this.given = undefined;
     this.revealed = false;
+    this.typingCard = false;
     this.retrievalAttempted = false;
     this.hearings = 0;
     this.completedHearings = 0;
     this.observesPlaybackState = false;
     this.audioPlaybackFailed = false;
+    this.pronunciationUsed = false;
     this.stage = 'prompt';
     this.paintPrompt(this.presented);
     this.presentedAt = this.ctx.deps.now().getTime();
@@ -252,6 +264,10 @@ class Controller {
           return;
         }
       }
+      if (this.isFlashcard() && response.selfGrade !== undefined && commitImmediately) {
+        await this.showCurrent();
+        return;
+      }
       this.stage = 'feedback';
       this.paintFeedback(this.presented);
     } finally { this.busy = false; }
@@ -302,7 +318,7 @@ class Controller {
       } else if (ev.key === ' ' && !onControl && (mode === 'self-graded' || mode === 'typed-or-self') && !this.revealed) {
         ev.preventDefault();
         this.reveal();
-      } else if (ev.key === 'Enter' && !onControl && mode === 'self-graded' && !this.revealed) {
+      } else if (ev.key === 'Enter' && !onControl && (mode === 'self-graded' || this.isFlashcard()) && !this.revealed) {
         ev.preventDefault();
         this.reveal();
       }
@@ -321,10 +337,11 @@ class Controller {
   private base(extra: Partial<Response>): Response {
     const audio = !!this.presented?.exercise.prompt.audio;
     return {
-      hinted: false, assistance: [], ...extra,
+      hinted: false, ...extra,
+      assistance: [...new Set([...(extra.assistance ?? []), ...(this.pronunciationUsed ? ['pronunciation'] : [])])],
       retrievalAttempted: extra.retrievalAttempted ?? (extra.typed !== undefined || extra.choice !== undefined
         ? true : this.presented?.exercise.responseMode === 'self-graded' || this.presented?.exercise.responseMode === 'typed-or-self'
-          ? this.retrievalAttempted : true),
+          ? (this.isFlashcard() && extra.selfGrade !== undefined ? true : this.retrievalAttempted) : true),
       ...(audio ? {
         // A playback handle enters error when the browser rejects play() or reports a media error. Treat that as
         // "could not hear" even if the learner pressed Play; the runner then withholds the result entirely.
@@ -355,11 +372,22 @@ class Controller {
     clear(this.root);
     const concealed = exercise.hiddenBeforeAnswer.length > 0 || isAudioExercise(exercise);
     const card = h('article', { class: 'exercise', 'data-family': exercise.family, 'data-mode': exercise.responseMode, ...(concealed ? {} : { 'data-item': pr.planned.item.itemId }) });
-    append(card, [h('p', { class: 'instruction strong', id: 'instruction' }, exercise.prompt.instruction)]);
+    if (this.isFlashcard()) {
+      card.classList.add('flashcard');
+      card.setAttribute('data-side', 'front');
+      card.setAttribute('aria-label', 'Flashcard front');
+      card.append(h('p', { class: 'flashcard-label', id: 'flashcard-label' }, 'Recall the meaning'));
+    } else append(card, [h('p', { class: 'instruction strong', id: 'instruction' }, exercise.prompt.instruction)]);
     const pp = exercise.prompt;
-    if (pp.stimulusText && !hidden.has('stimulusText')) card.append(h('p', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, pp.stimulusText));
+    const wordContext = (exercise as ReviewExercise).context;
+    if (pp.stimulusText && !hidden.has('stimulusText')) {
+      card.append(h('p', { ...langProps(this.tag), id: 'stimulus', class: 'target-text stimulus' }, this.isFlashcard() && wordContext?.surface ? wordContext.surface : pp.stimulusText));
+      if (this.isFlashcard() && wordContext?.surface) card.append(h('p', { ...langProps(this.tag), class: 'flashcard-context' }, pp.stimulusText));
+    }
     if (pp.sentenceWithGap && !hidden.has('sentenceWithGap')) card.append(h('p', { ...langProps(this.tag), id: 'sentence-gap', class: 'target-text stimulus' }, pp.sentenceWithGap));
     if (pp.meaning && !hidden.has('meaning')) card.append(h('p', { id: 'meaning', class: 'meaning' }, pp.meaning));
+    const pronunciation = this.pronunciationBlock(pr);
+    if (pronunciation) card.append(pronunciation);
     if (pp.audio) card.append(this.audioBlock(pp.audio.replaysAllowed));
     card.append(this.responseArea(pr));
     append(this.root, [this.header(pr, true), card, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
@@ -377,6 +405,12 @@ class Controller {
     const mode = exercise.responseMode;
     const options = exercise.prompt.options ?? [];
     const target = answerInTarget(exercise.family);
+    if (this.isFlashcard()) {
+      area.append(button(this.ui.shortcuts ? 'Show answer (Space)' : 'Show answer', () => this.reveal(), { id: 'reveal', class: 'btn primary' }),
+        button('Type an answer', () => { this.typingCard = true; this.paintPrompt(pr); }, { id: 'type-answer', class: 'btn small' }),
+        h('div', { id: 'self-grade', class: 'self-grade', hidden: true }));
+      return area;
+    }
     if (mode === 'choice') {
       const optsInTarget = exercise.family === 'grammar-application' || exercise.family === 'sentence-completion';
       area.append(h('div', { class: 'choices', role: 'group', 'aria-label': 'Choices' }, ...options.map((o, i) =>
@@ -418,6 +452,16 @@ class Controller {
     if (this.stage !== 'prompt' || !this.presented || this.revealed) return;
     this.revealed = true;
     const { exercise } = this.presented;
+    const flashcard = this.isFlashcard();
+    if (flashcard) {
+      const card = this.root.querySelector<HTMLElement>('.flashcard');
+      card?.setAttribute('data-side', 'back');
+      card?.setAttribute('aria-label', 'Flashcard back');
+      const label = this.root.querySelector<HTMLElement>('#flashcard-label');
+      if (label) label.textContent = 'Meaning';
+      const typing = this.root.querySelector<HTMLElement>('#type-answer');
+      if (typing) typing.hidden = true;
+    }
     if (exercise.responseMode === 'typed-or-self') {
       const input = this.root.querySelector<HTMLInputElement>('#answer-input');
       if (input) { input.disabled = true; input.closest('.field')?.setAttribute('hidden', ''); }
@@ -435,13 +479,106 @@ class Controller {
     append(area, [
       h('p', { class: 'reference' }, 'Answer: ', h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ref)),
       h('p', { class: 'muted' }, 'How well did you know it?'),
-      h('div', { class: 'row grades' }, ...GRADES.map((g, i) => button(this.ui.shortcuts ? `${i + 1}  ${RATING_LABEL[i + 1]} · ${GRADE_MEANING[g]}` : `${RATING_LABEL[i + 1]} · ${GRADE_MEANING[g]}`, () => void this.submit(this.base({ selfGrade: g }), true), { class: 'grade btn', 'data-grade': g }))),
+      h('div', { class: 'row grades' }, ...GRADES.map((g, i) => button(flashcard ? (this.ui.shortcuts ? `${i + 1}  ${RATING_LABEL[i + 1]}` : RATING_LABEL[i + 1]) : this.ui.shortcuts ? `${i + 1}  ${RATING_LABEL[i + 1]} · ${GRADE_MEANING[g]}` : `${RATING_LABEL[i + 1]} · ${GRADE_MEANING[g]}`, () => void this.submit(this.base({ selfGrade: g }), true), { class: 'grade btn', 'data-grade': g }))),
       button('I needed help', () => void this.submit(this.base({ hinted: true, assistance: ['learner-requested-help'], retrievalAttempted: false, selfGrade: 'again' }), true), { id: 'grade-assisted', class: 'btn' }),
     ]);
+    if (flashcard) area.append(h('p', { class: 'muted' }, 'Again: forgot · Hard: recalled with difficulty · Good: recalled · Easy: recalled easily'),
+      h('details', {}, h('summary', {}, 'More detail'), h('p', {}, exercise.answerKey.explanation)));
     try { area.querySelector<HTMLElement>('.grade')?.focus({ preventScroll: true }); } catch { /* */ }
   }
 
   // ───────────── audio ─────────────
+
+  /** Pronounce only text already visible on this card; audio-only prompts stay fully concealed. */
+  private pronunciationTarget(pr: Presented): { text: string; kind: 'word' | 'phrase' } | undefined {
+    const exercise = pr.exercise;
+    const afterAnswer = this.stage === 'feedback';
+    if (isAudioExercise(exercise) && !afterAnswer) return undefined;
+    const hidden = new Set(exercise.hiddenBeforeAnswer);
+    if (hidden.has('stimulusText') && !afterAnswer) return undefined;
+    const context = (exercise as ReviewExercise).context;
+    const revealedTarget = afterAnswer && answerInTarget(exercise.family) ? exercise.answerKey.accepted[0] : undefined;
+    const text = context?.surface ?? exercise.prompt.stimulusText ?? revealedTarget;
+    if (!text?.trim()) return undefined;
+    const normalized = text.replace(/\s+/g, ' ').trim();
+    if (!normalized) return undefined;
+    return { text: normalized, kind: /\s/.test(normalized) ? 'phrase' : 'word' };
+  }
+
+  private pronunciationBlock(pr: Presented): HTMLElement | null {
+    if (!this.ctx.deps.audio) return null;
+    const target = this.pronunciationTarget(pr);
+    if (!target) return null;
+    return h('div', { class: 'pronunciation', id: 'pronunciation', role: 'group', 'aria-label': 'Pronunciation' },
+      button('Hear word', () => this.pronounce(target), { id: 'pronounce', class: 'btn small' }),
+      h('span', { id: 'pronunciation-status', class: 'muted', role: 'status', 'aria-live': 'polite' }));
+  }
+
+  private pronounce(target: { text: string; kind: 'word' | 'phrase' }): void {
+    if ((this.stage !== 'prompt' && this.stage !== 'feedback') || !this.presented) return;
+    const generation = ++this.pronunciationGeneration;
+    this.disposePronunciation();
+    const abortController = new AbortController();
+    this.pronunciationAbort = abortController;
+    const status = this.root.querySelector<HTMLElement>('#pronunciation-status');
+    if (status) status.textContent = 'Preparing pronunciation…';
+    void (async () => {
+      let audio: Awaited<ReturnType<AppContext['audio']>>;
+      try { audio = await this.ctx.audio(); } catch {
+        if (generation === this.pronunciationGeneration && status) status.textContent = 'Pronunciation is not available here.';
+        return;
+      }
+      if (generation !== this.pronunciationGeneration || (this.stage !== 'prompt' && this.stage !== 'feedback')) return;
+      if (!audio?.pronounce) {
+        if (status) status.textContent = 'Pronunciation is not available here.';
+        return;
+      }
+      let result: PronunciationResult;
+      try {
+        result = await audio.pronounce({
+          languageId: this.run.ctx.languageId,
+          ...(this.run.ctx.varietyId ? { varietyId: this.run.ctx.varietyId } : {}),
+          text: target.text,
+          kind: target.kind,
+          autoplay: false,
+          processingPermission: 'allowed',
+          signal: abortController.signal,
+        });
+      } catch {
+        if (status) status.textContent = 'Pronunciation failed. Continue without audio.';
+        return;
+      }
+      if (generation !== this.pronunciationGeneration || (this.stage !== 'prompt' && this.stage !== 'feedback')) {
+        if (result.ok) result.playback.dispose();
+        return;
+      }
+      if (!result.ok) {
+        if (status) status.textContent = result.message;
+        return;
+      }
+      this.pronunciation = result.playback;
+      const off = result.playback.onState?.((state) => {
+        if (generation !== this.pronunciationGeneration) return;
+        if ((state === 'playing' || state === 'ended') && this.stage === 'prompt') this.pronunciationUsed = true;
+        if (state === 'error' && status) status.textContent = 'Pronunciation could not be played here. Continue without audio.';
+        else if (state === 'ended' && status) status.textContent = 'Heard for pronunciation practice; this does not count as listening evidence.';
+      });
+      this.pronunciationStateOff = off;
+      try { result.playback.play(); } catch {
+        off?.();
+        result.playback.dispose();
+        this.pronunciation = undefined;
+        if (status) status.textContent = 'Pronunciation could not be played here. Continue without audio.';
+        return;
+      }
+      if (status) status.textContent = result.playback.state === 'error'
+        ? 'Pronunciation could not be played here. Continue without audio.'
+        : result.playback.state === 'ended'
+          ? 'Heard for pronunciation practice; this does not count as listening evidence.'
+          : 'Playing pronunciation practice…';
+      if (this.stage === 'prompt' && (result.playback.state === 'playing' || result.playback.state === 'ended')) this.pronunciationUsed = true;
+    })();
+  }
 
   private audioBlock(replaysAllowed: number): HTMLElement {
     const box = h('div', { class: 'audio', id: 'audio', role: 'group', 'aria-label': 'Audio question' });
@@ -457,11 +594,15 @@ class Controller {
   private playOrReplay(): void {
     const stimulus = this.presented?.exercise.prompt.audio;
     if (!stimulus || this.stage !== 'prompt') return;
+    const generation = ++this.audioGeneration;
     void (async () => {
       const audio = await this.ctx.audio();
-      if (this.stage !== 'prompt') return;
+      if (generation !== this.audioGeneration || this.stage !== 'prompt' || this.presented?.exercise.prompt.audio !== stimulus) return;
       try {
-        if (!this.playback) this.playback = audio?.playbackOf(stimulus);
+        if (!this.playback) {
+          this.playback = audio?.playbackOf(stimulus);
+          this.managedPlayback = typeof audio?.source()?.releaseStimulus === 'function';
+        }
         if (!this.playback) throw new Error('no audio');
         if (!this.playbackStateOff && this.playback.onState) {
           this.observesPlaybackState = true;
@@ -494,11 +635,26 @@ class Controller {
   }
 
   private disposeAudio(): void {
+    this.audioGeneration += 1;
+    this.pronunciationGeneration += 1;
+    this.disposePronunciation();
     try { this.playbackStateOff?.(); } catch { /* */ }
     this.playbackStateOff = undefined;
-    try { this.playback?.dispose(); } catch { /* */ }
+    // The runner owns prepared stimuli, including an unanswered one reopened after navigation.
+    try { if (this.managedPlayback) this.playback?.stop(); else this.playback?.dispose(); } catch { /* */ }
     this.playback = undefined;
+    this.managedPlayback = false;
     this.observesPlaybackState = false;
+  }
+
+  private disposePronunciation(): void {
+    try { this.pronunciationAbort?.abort(); } catch { /* */ }
+    this.pronunciationAbort = undefined;
+    try { this.pronunciationStateOff?.(); } catch { /* */ }
+    this.pronunciationStateOff = undefined;
+    try { this.pronunciation?.stop(); } catch { /* */ }
+    try { this.pronunciation?.dispose(); } catch { /* */ }
+    this.pronunciation = undefined;
   }
 
   // ───────────── feedback ─────────────
@@ -522,6 +678,8 @@ class Controller {
     const deeper = grading.deeper ?? exercise.answerKey.deeper;
     if (deeper) fb.append(h('details', { id: 'more' }, h('summary', {}, 'More'), h('p', {}, deeper)));
     if (isAudioExercise(exercise)) fb.append(this.revealAudio(pr));
+    const pronunciation = this.pronunciationBlock(pr);
+    if (pronunciation) fb.append(pronunciation);
     fb.append(h('p', { id: 'recording', class: 'muted' }, g.committed
       ? g.committed.rating === null ? 'Saved on this device without a graded memory update.' : 'Review saved on this device.'
       : forecastRecording(grading, g.challenged ? { ...response, challenged: true } : response, exercise)));
@@ -718,7 +876,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       const section = h('section', { class: 'card', id: 'session-undo', 'aria-labelledby': 'session-undo-heading' },
         h('h2', { id: 'session-undo-heading' }, 'Correct a grade'),
         p('Undo appends a correction to your history; it does not erase the original event.', 'muted'), status,
-        ...undoable.map((result) => h('div', { class: 'row', 'data-result-id': result.resultId },
+        ...undoable.map((result, index) => h('div', { class: 'row', 'data-result-id': result.resultId },
           h('span', { lang: tag }, unitLabel(result.target.unitId)),
           h('span', {}, ` · ${DIMENSION_LABEL[result.target.dimension]} · ${result.grading.outcome}`),
           button('Undo this grade', () => {
@@ -733,7 +891,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
               clear(root);
               await renderSummary(root, ctx, run);
             }).catch((error) => { setStatus(status, `This grade could not be corrected: ${error instanceof Error ? error.message : 'try again'}`, 'error'); if (control) control.disabled = false; });
-          }, { class: 'btn small' }))));
+          }, { class: 'btn small', 'aria-label': `Undo this grade for ${unitLabel(result.target.unitId)} (${DIMENSION_LABEL[result.target.dimension]}, review ${index + 1})` }))));
       root.append(section);
     }
   }

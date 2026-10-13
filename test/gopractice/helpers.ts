@@ -11,7 +11,7 @@ import type {
 import { buildCardAdded, gradeResponse, itemIdFor, ratingFor, FAMILY_DIMENSION } from '../../packages/goreview/src';
 import type { Exercise, ExerciseBuilder, ExerciseFamily, FactsProvider, GradingPort, ReviewPreferences, UnitFacts } from '../../packages/goreview/src';
 import { DEFAULT_PREFERENCES } from '../../packages/gopractice/state';
-import type { AssessmentSource, AudioStimulus, PlaybackHandle } from '../../packages/golisten/src/contracts';
+import type { AssessmentSource, AudioStimulus, PlaybackHandle, PronunciationRequest, PronunciationResult } from '../../packages/golisten/src/contracts';
 import type { ApiResult, RepositoryApi } from '../../packages/repository-service/src/api';
 import { createMemoryArea } from '../../packages/repository-sync/src';
 import type { Transport } from '../../packages/repository-sync/src';
@@ -303,8 +303,8 @@ export const fakeEvidenceFor: GradingPort['evidenceFor'] = (i) => {
   }
   return {
     ...base, kind: 'CardReviewed',
-    payload: { cardKind: i.exercise.responseMode === 'typed' ? 'recall' : 'recognition', grade: i.rating === 1 ? 'again' : i.rating === 2 ? 'hard' : i.rating === 4 ? 'easy' : 'good', correct, hinted: i.response.hinted },
-    evidence: { quality: 'moderate', assisted: i.response.hinted },
+    payload: { cardKind: i.exercise.responseMode === 'typed' ? 'recall' : 'recognition', grade: i.rating === 1 ? 'again' : i.rating === 2 ? 'hard' : i.rating === 4 ? 'easy' : 'good', correct, hinted: i.response.hinted || i.response.assistance.length > 0 },
+    evidence: { quality: 'moderate', assisted: i.response.hinted || i.response.assistance.length > 0 },
   } as GoEvent;
 };
 
@@ -312,14 +312,14 @@ export const fakeEvidenceFor: GradingPort['evidenceFor'] = (i) => {
 
 export interface FakePlayback extends PlaybackHandle { plays: number; disposed: boolean }
 
-export function fakePlayback(fails = false): FakePlayback {
+export function fakePlayback(fails = false, state: 'idle' | 'playing' | 'ended' = 'idle'): FakePlayback {
   let replays = 0;
   const h = {
     plays: 0, disposed: false, rate: 1,
     play() { h.plays += 1; }, pause() { /* */ }, stop() { /* */ },
     replay() { replays += 1; },
     setRate() { /* */ },
-    get state() { return fails ? 'error' as const : 'idle' as const; },
+    get state() { return fails ? 'error' as const : state; },
     get replays() { return replays; },
     onEnd() { return () => undefined; },
     dispose() { h.disposed = true; },
@@ -329,7 +329,7 @@ export function fakePlayback(fails = false): FakePlayback {
 
 export interface FakeAudio extends AudioDeps { handles: FakePlayback[] }
 
-export function fakeAudio(opts: { available?: boolean; playbackFails?: boolean } = {}): FakeAudio {
+export function fakeAudio(opts: { available?: boolean; playbackFails?: boolean; pronounce?: (request: PronunciationRequest) => Promise<PronunciationResult> } = {}): FakeAudio {
   const handles: FakePlayback[] = [];
   const source: AssessmentSource = {
     prepareStimulus: async () => ({ unavailable: true, reason: 'unused in tests' }),
@@ -338,6 +338,7 @@ export function fakeAudio(opts: { available?: boolean; playbackFails?: boolean }
   };
   return {
     handles, source: () => source, playbackOf: (s) => source.playbackOf(s),
+    ...(opts.pronounce ? { pronounce: opts.pronounce } : {}),
     availability: async () => (opts.available === false
       ? { available: false, eligibleForEvidence: false, reason: 'no Albanian voice is installed' }
       : { available: true, eligibleForEvidence: false, reason: 'only synthetic speech is available: listening practice, never listening evidence' }),
@@ -512,10 +513,17 @@ export async function queued(rig: Rig): Promise<GoEvent[]> {
 
 export const ids = (learnerId = 'L1', languageId = 'sq'): Ids => ({ learnerId, enrolmentId: `${learnerId}-e1`, languageId });
 
-/** Re-renders GoReview from the current local log. */
+/** Re-renders the GoReview home (four entries) from the current local log. */
 export async function reopen(rig: Rig): Promise<void> {
   await rig.go('settings');
   await rig.go('review');
+  await until(() => !!rig.root.querySelector('#current-deck'), 'the current deck');
+}
+
+/** Re-renders the review details (the counts, the proposals with reasons, the deck controls, the session controls) from the current local log. */
+export async function reopenDetails(rig: Rig): Promise<void> {
+  await rig.go('settings');
+  await rig.go('review/details');
   await until(() => !!rig.root.querySelector('#due-summary'), 'the due summary');
 }
 

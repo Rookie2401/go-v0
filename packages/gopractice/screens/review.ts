@@ -59,7 +59,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       holdOutOf(ctx, id.learnerId, id.languageId),
       listSavedDecks(ctx, id.learnerId, id.languageId),
       recoverableSessions(ctx),
-      countVocab(ctx, id.languageId, model.knowledge.length),
+      countVocab(ctx, id.languageId, model.knowledge.length, `${id.learnerId}|${model.events.length}`),
     ]);
     const deck = await planCurrentDeck(ctx, model, holdOut);
     if (!view.alive()) return;

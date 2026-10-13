@@ -217,6 +217,7 @@ ul.vocablist, ul.decklist { list-style: none; padding: 0; margin: .4rem 0 0; bor
 .vocab-row:hover { text-decoration: none; background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
 .vocab-word { font-size: 1.3rem; flex: 0 1 auto; overflow-wrap: anywhere; }
 .vocab-gloss { flex: 1 1 auto; color: var(--ink-soft); font-style: italic; min-width: 0; overflow-wrap: anywhere; }
+.vocab-met { flex: 0 1 auto; font-size: .9rem; color: var(--ink-soft); overflow-wrap: anywhere; }
 .vocab-level { margin-left: auto; flex: 0 0 auto; font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
 .vocab-more { margin: 1rem 0 0; text-align: center; }
 .deckrow { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1.2rem; padding: .85rem .5rem; }
@@ -228,5 +229,5 @@ ul.plainlinks { list-style: none; padding: 0; margin: .3rem 0; }
 ul.plainlinks li { padding: .3rem 0; }
 @media (max-width: 760px) {
   .vocab-row { flex-wrap: wrap; }
-  .vocab-gloss { flex-basis: 100%; order: 3; }
+  .vocab-gloss, .vocab-met { flex-basis: 100%; order: 3; }
 }

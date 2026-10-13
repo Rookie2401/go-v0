@@ -48,7 +48,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const gloss = h('span', { class: 'vocab-gloss', 'data-gloss': r.unitId }, known ?? '');
     return h('li', { class: 'vocab-item', 'data-unit-id': r.unitId, 'data-level': r.level },
       h('a', { class: 'vocab-row', href: `#/review/history/${encodeURIComponent(itemOfUnit.get(r.unitId) ?? r.unitId)}` },
-        h('span', { ...langProps(tag), class: 'vocab-word target-text' }, r.label), gloss, h('span', { class: 'vocab-level' }, r.level)));
+        h('span', { ...langProps(tag), class: 'vocab-word target-text' }, r.label), gloss,
+        r.metAs?.length ? h('span', { class: 'vocab-met' }, 'met as: ', h('span', langProps(tag), r.metAs.join(', '))) : null,
+        h('span', { class: 'vocab-level' }, r.level)));
   }
 
   function paintList(): void {

@@ -247,6 +247,7 @@ export function releaseHoldOut(ctx: AppContext, learnerId: string, languageId: s
 
 export type VocabSort = 'least' | 'recent';
 
+/** One line of My vocab: a word, once, however many Repository records (its lemma, its forms) stand behind it. */
 export interface VocabRow {
   unitId: string;
   label: string;
@@ -254,10 +255,56 @@ export interface VocabRow {
   encounters: number;
   /** When the word was last tapped or met (ISO). */
   lastSeenAt?: string;
+  /** The surface forms it was met as, when they differ from the word itself. */
+  metAs?: string[];
+}
+
+/** A Repository record as listed, before records of the same word are folded together. */
+export interface VocabRecord extends VocabRow {
+  kind: string;
+  /** The lemma unit this record is a form of, when the Repository says so. */
+  lemmaId?: string;
+  forms: string[];
+}
+
+const normWord = (s: string): string => s.normalize('NFC').toLowerCase();
+
+/**
+ * One entry per word. A form record whose lemma record is in the list folds into the lemma's entry; two records with the same
+ * word fold too (a form spelled like its lemma, whatever the Repository says). The lemma is the displayed word; the level is the
+ * higher of the records', the encounters the larger, the last-seen the later; forms met under another spelling are listed in `metAs`.
+ */
+export function mergeVocab(records: readonly VocabRecord[]): VocabRow[] {
+  const byId = new Map(records.map((r) => [r.unitId, r] as const));
+  const parent = new Map<string, string>(records.map((r) => [r.unitId, r.unitId] as const));
+  const find = (id: string): string => { let x = id; while (parent.get(x) !== x) x = parent.get(x)!; return x; };
+  const join = (a: string, b: string): void => { const ra = find(a), rb = find(b); if (ra !== rb) parent.set(rb, ra); };
+  const firstOfWord = new Map<string, string>();
+  for (const r of records) {
+    if (r.lemmaId && r.lemmaId !== r.unitId && byId.has(r.lemmaId)) join(r.lemmaId, r.unitId);
+    const w = normWord(r.label);
+    const seen = firstOfWord.get(w);
+    if (seen) join(seen, r.unitId); else firstOfWord.set(w, r.unitId);
+  }
+  const groups = new Map<string, VocabRecord[]>();
+  for (const r of records) { const k = find(r.unitId); groups.set(k, [...(groups.get(k) ?? []), r]); }
+  const out: VocabRow[] = [];
+  for (const members of groups.values()) {
+    const isLemma = (r: VocabRecord): boolean => r.kind !== 'form' && members.some((m) => m.lemmaId === r.unitId) ;
+    const shown = members.find(isLemma) ?? members.find((r) => r.kind !== 'form') ?? [...members].sort((a, b) => b.encounters - a.encounters)[0];
+    const level = members.reduce<KnowledgeLevel>((best, r) => (rankOf(r.level) > rankOf(best) ? r.level : best), shown.level);
+    const lastSeen = members.map((r) => r.lastSeenAt).filter((t): t is string => !!t).sort().at(-1);
+    const met = [...new Set(members.flatMap((r) => [...r.forms, ...(r.kind === 'form' ? [r.label] : [])]).filter((f) => f && normWord(f) !== normWord(shown.label)))].slice(0, 3);
+    out.push({
+      unitId: shown.unitId, label: shown.label, level, encounters: Math.max(...members.map((r) => r.encounters)),
+      ...(lastSeen ? { lastSeenAt: lastSeen } : {}), ...(met.length ? { metAs: met } : {}),
+    });
+  }
+  return out;
 }
 
 /** Least known first (level, then fewest encounters), or the most recently encountered first. Ties fall back to the word, so the order is stable. */
-export function sortVocab(rows: readonly VocabRow[], sort: VocabSort): VocabRow[] {
+export function sortVocab<T extends VocabRow>(rows: readonly T[], sort: VocabSort): T[] {
   const text = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
   const when = (r: VocabRow): number => { const t = r.lastSeenAt ? Date.parse(r.lastSeenAt) : NaN; return Number.isFinite(t) ? t : -Infinity; };
   return [...rows].sort(sort === 'recent'
@@ -266,32 +313,58 @@ export function sortVocab(rows: readonly VocabRow[], sort: VocabSort): VocabRow[
 }
 
 const MAX_VOCAB_PAGES = 60;
+const UNITS_PER_BATCH = 50;
 
-/** Every unit the learner has met in the language, from the Repository's vocabulary projection (its knowledge rows). */
+/**
+ * Every word the learner has met in the language: the Repository's vocabulary records (its knowledge rows), with each form's lemma
+ * looked up, folded to one entry per word. Without the lemma lookup (it fails, or the Repository cannot answer) forms that are spelled
+ * like their lemma still fold, and the rest stay their own entries.
+ */
 export async function loadVocab(ctx: AppContext, languageId: string): Promise<{ rows: VocabRow[]; total: number }> {
   const { api } = await ctx.api();
-  const rows: VocabRow[] = [];
+  const records: VocabRecord[] = [];
   let after: string | undefined;
-  let total = 0;
   for (let page = 0; page < MAX_VOCAB_PAGES; page++) {
     const r = await api.vocabulary({ languageId, sort: 'recent', limit: 100, ...(after ? { after } : {}) });
     if (!r.ok) throw new Error(r.message || `The Repository answered ${r.status}.`);
-    total = r.data.catalog.total;
     for (const item of r.data.items) {
       const k = item.knowledge;
-      rows.push({ unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: k.level, encounters: k.encounters, ...((k.lastSeenAt ?? item.lastEncounter) ? { lastSeenAt: k.lastSeenAt ?? item.lastEncounter } : {}) });
+      const last = k.lastSeenAt ?? item.lastEncounter;
+      records.push({
+        unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: k.level, encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),
+        kind: item.unit?.kind ?? k.unitId.split(':', 1)[0], forms: item.surfaceForms ?? [],
+      });
     }
     after = r.data.nextCursor;
     if (!after) break;
   }
-  return { rows, total: Math.max(total, rows.length) };
+  const forms = records.filter((r) => r.kind === 'form');
+  const present = new Set(records.map((r) => r.unitId));
+  for (let at = 0; at < forms.length && typeof api.units === 'function'; at += UNITS_PER_BATCH) {
+    const chunk = forms.slice(at, at + UNITS_PER_BATCH);
+    try {
+      const u = await api.units(chunk.map((f) => f.unitId));
+      if (!u.ok) break;
+      for (const f of chunk) {
+        const rel = u.data.units[f.unitId]?.relations.find((x) => x.relation === 'form-of' && x.fromId === f.unitId);
+        if (rel && present.has(rel.toId)) f.lemmaId = rel.toId;
+      }
+    } catch { break; }
+  }
+  const rows = mergeVocab(records);
+  return { rows, total: rows.length };
 }
 
-/** How many words the learner has met, for the home: one cheap request, or the rows already known when the Repository cannot say. */
-export async function countVocab(ctx: AppContext, languageId: string, fallback: number): Promise<number> {
+const countCaches = new WeakMap<AppContext, Map<string, number>>();
+/** How many words the learner has met, for the home: the same merged count My vocab lists (cached per language and log size), or the fallback when the Repository cannot say. */
+export async function countVocab(ctx: AppContext, languageId: string, fallback: number, stamp = ''): Promise<number> {
+  const key = `${languageId}|${stamp}`;
+  const cache = countCaches.get(ctx) ?? new Map<string, number>();
+  countCaches.set(ctx, cache);
+  if (stamp && cache.has(key)) return cache.get(key)!;
   try {
-    const { api } = await ctx.api();
-    const r = await api.vocabulary({ languageId, limit: 1 });
-    return r.ok ? r.data.catalog.total : fallback;
+    const n = (await loadVocab(ctx, languageId)).total;
+    if (stamp) cache.set(key, n);
+    return n;
   } catch { return fallback; }
 }

@@ -154,3 +154,75 @@ describe('My vocab', () => {
     expect(sortVocab([...rows].reverse(), 'least').map((r) => r.label)).toEqual(['zog', 'shtepi', 'qen', 'diell', 'mace']);
   });
 });
+
+function entry(unitId: string, label: string, level: UnitKnowledge['level'], encounters: number, lastSeenAt: string, forms: string[] = [label]): VocabularyItem {
+  const knowledge = { unitId, languageId: 'sq', level, encounters, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt } as UnitKnowledge;
+  return { knowledge, unit: { unitId, languageId: 'sq', label, kind: unitId.startsWith('form:') ? 'form' : 'lexeme' } as VocabularyItem['unit'], surfaceForms: forms, lastEncounter: lastSeenAt, sources: [] };
+}
+/** The vocabulary the Repository lists, and which form belongs to which lemma (the `form-of` relations of the batch lookup). */
+function useRecords(rig: Rig, items: VocabularyItem[], formOf: Record<string, string> = {}): void {
+  const page: VocabularyPage = { items, catalog: { total: items.length, counts: { new: 0, seen: 0, recognized: 0, familiar: 0, known: 0, automatic: 0 } } };
+  const units = vi.fn(async (ids: string[]) => ({
+    ok: true as const, status: 200,
+    data: { units: Object.fromEntries(ids.map((id) => [id, { unit: {}, analyses: [], provenance: {}, relations: formOf[id] ? [{ fromId: id, relation: 'form-of', toId: formOf[id] }] : [] }])), missing: [] },
+  }));
+  const api = { vocabulary: vi.fn(async () => ({ ok: true as const, status: 200, data: page })), units } as unknown as RepositoryApi;
+  rig.app.ctx.api = async () => ({ api, session: undefined, baseUrl: '' });
+}
+
+describe('My vocab: one line per word', () => {
+  it('folds a form into its lemma: the lemma is the word, the level is the higher, encounters the larger, last-seen the later, and the other spelling is quiet', async () => {
+    const rig = await makeRig({ signedIn: true });
+    useRecords(rig, [
+      entry('lemma:sq:zemër:NOUN', 'zemër', 'seen', 2, '2026-10-01T00:00:00.000Z'),
+      entry('form:sq:zemrën', 'zemrën', 'recognized', 5, '2026-10-06T00:00:00.000Z'),
+      entry('lemma:sq:mace:NOUN', 'mace', 'known', 3, '2026-10-02T00:00:00.000Z'),
+    ], { 'form:sq:zemrën': 'lemma:sq:zemër:NOUN' });
+    await rig.go('review/vocab');
+    await until(() => rig.qa('.vocab-item').length === 2, 'two words, not three records');
+    const row = rig.q(`[data-unit-id="lemma:sq:zemër:NOUN"]`);
+    expect(row.querySelector('.vocab-word')!.textContent).toBe('zemër');
+    expect(row.querySelector('.vocab-level')!.textContent).toBe('recognized');
+    expect(row.querySelector('.vocab-met')!.textContent).toBe('met as: zemrën');
+    expect(rig.root.querySelector('[data-unit-id="form:sq:zemrën"]')).toBeNull();
+    expect(rig.root.querySelector(`[data-unit-id="${unitOf('mace')}"] .vocab-met`)).toBeNull();
+    // sorting applies after the merge: zemër (recognized) now comes before mace (known); by recency it is the later one too
+    expect(order(rig)).toEqual(['zemër', 'mace']);
+    click(rig.q('#vocab-sort-recent'));
+    expect(order(rig)).toEqual(['zemër', 'mace']);
+  });
+
+  it('keeps a form with no lemma record as its own line, and folds a form spelled like its lemma', async () => {
+    const rig = await makeRig({ signedIn: true });
+    useRecords(rig, [
+      entry('form:sq:shtëpinë', 'shtëpinë', 'seen', 1, '2026-10-03T00:00:00.000Z'),
+      entry('lemma:sq:qen:NOUN', 'qen', 'seen', 1, '2026-10-01T00:00:00.000Z'),
+      entry('form:sq:qen', 'qen', 'seen', 4, '2026-10-02T00:00:00.000Z'),
+    ], { 'form:sq:shtëpinë': 'lemma:sq:shtëpi:NOUN' }); // its lemma was never met: no record to fold into
+    await rig.go('review/vocab');
+    await until(() => rig.qa('.vocab-item').length === 2, 'two words');
+    expect(order(rig).sort()).toEqual(['qen', 'shtëpinë']);
+    expect(rig.q('[data-unit-id="form:sq:shtëpinë"] .vocab-word').textContent).toBe('shtëpinë');
+    expect(rig.root.querySelector('[data-unit-id="lemma:sq:qen:NOUN"] .vocab-met')).toBeNull();
+    expect(rig.root.querySelectorAll('.vocab-item').length).toBe(2);
+  });
+
+  it('still shows one line per word when the Repository cannot say which lemma a form belongs to', async () => {
+    const rig = await makeRig({ signedIn: true });
+    useRecords(rig, [entry('lemma:sq:diell:NOUN', 'diell', 'seen', 1, '2026-10-01T00:00:00.000Z'), entry('form:sq:diell', 'diell', 'seen', 2, '2026-10-02T00:00:00.000Z')]);
+    (await rig.app.ctx.api()).api.units = (async () => ({ ok: false as const, status: 500, message: 'down' })) as unknown as RepositoryApi['units'];
+    await rig.go('review/vocab');
+    await until(() => rig.qa('.vocab-item').length === 1, 'one word');
+  });
+
+  it('the count on the home is the number of merged entries', async () => {
+    const rig = await makeRig({ signedIn: true });
+    useRecords(rig, [
+      entry('lemma:sq:zemër:NOUN', 'zemër', 'seen', 2, '2026-10-01T00:00:00.000Z'), entry('form:sq:zemrën', 'zemrën', 'seen', 1, '2026-10-02T00:00:00.000Z'),
+      entry('lemma:sq:mace:NOUN', 'mace', 'known', 3, '2026-10-02T00:00:00.000Z'), entry('form:sq:maces', 'maces', 'seen', 1, '2026-10-02T00:00:00.000Z'),
+      entry('lemma:sq:qen:NOUN', 'qen', 'seen', 1, '2026-10-03T00:00:00.000Z'),
+    ], { 'form:sq:zemrën': 'lemma:sq:zemër:NOUN', 'form:sq:maces': 'lemma:sq:mace:NOUN' });
+    await reopen(rig);
+    expect(rig.q('#vocab-count').textContent).toBe('3 words');
+  });
+});

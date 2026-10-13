@@ -70,7 +70,7 @@ function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet
  * one goes through the planner as a deliberate selection (so the new-item limit and the level gates of the automatic plan
  * do not drop it), after the exercise engine has said it can be built. The result keeps the order of `wanted`.
  */
-export async function assemble(ctx: AppContext, model: ReviewModel, wanted: readonly Wanted[], size: number): Promise<SessionPlan> {
+export async function assemble(ctx: AppContext, model: ReviewModel, wanted: readonly Wanted[], size: number, opts: { unchecked?: boolean } = {}): Promise<SessionPlan> {
   const listeningOk = model.prefs.includeListening && model.audio.available;
   const holds = (w: Wanted): DeckItem | undefined =>
     model.deck.find((i) => i.unitId === w.unitId && i.dimension === w.dimension && i.status !== 'dismissed' && i.status !== 'suspended');
@@ -78,8 +78,9 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
   const fresh: IntakeOutcome[] = [];
   const order: string[] = [];
   const api = (await ctx.api()).api;
+  let tried = 0;
   for (const w of wanted) {
-    if (order.length >= size + 4) break;
+    if (order.length >= size + 4 || tried >= (size + 4) * 3) break;
     const key = `${w.unitId}|${w.dimension}`;
     if (order.includes(key)) continue;
     if (isAudio(w.family) && !listeningOk) continue;
@@ -90,7 +91,8 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
       order.push(key);
       continue;
     }
-    if (ctx.engine.exerciseAvailable) {
+    tried += 1;
+    if (ctx.engine.exerciseAvailable && !opts.unchecked) {
       try {
         if (!(await ctx.engine.exerciseAvailable({ unitId: w.unitId, unitKind: w.unitKind, languageId: model.identity.languageId, dimension: w.dimension, family: w.family, api, now: model.now }))) continue;
       } catch { continue; }
@@ -142,15 +144,79 @@ function fillOrder(model: ReviewModel, holdOut: ReadonlySet<string>): Wanted[] {
   return kept.length ? kept : all;
 }
 
-/** The deck the home offers now: the scheduled plan, else the filled one. Never empty while the Repository has anything to practise. */
-export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set()): Promise<CurrentDeck> {
-  const hasVocabulary = model.outcomes.length > 0 || model.deck.length > 0 || model.knowledge.length > 0;
+/** The one note the session shows when the deck was built from the learner's vocabulary instead of the review schedule. */
+export const VOCAB_NOTE = 'These cards come from your vocabulary, not from the review schedule: nothing was due and nothing was proposed.';
+
+/** Words the learner has met, as cards to ask: least known first, then the most recently met, as written recognition (what a provisional analysis is allowed). */
+function vocabularyOrder(rows: readonly VocabRow[], holdOut: ReadonlySet<string>): Wanted[] {
+  const when = (r: VocabRow): number => { const t = r.lastSeenAt ? Date.parse(r.lastSeenAt) : NaN; return Number.isFinite(t) ? t : -Infinity; };
+  const text = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
+  const ordered = [...rows].sort((a, b) => rankOf(a.level) - rankOf(b.level) || when(b) - when(a) || b.encounters - a.encounters || text(a.unitId, b.unitId));
+  const all = ordered.map((r): Wanted => ({ unitId: r.unitId, unitKind: r.kind ?? 'lexeme', dimension: 'written-recognition', family: 'written-recognition' }));
+  const kept = all.filter((w) => !holdOut.has(w.unitId));
+  return kept.length ? kept : all;
+}
+
+export async function loadVocabSafe(ctx: AppContext, languageId: string): Promise<VocabRow[]> {
+  try { return (await loadVocab(ctx, languageId)).rows; } catch { return []; }
+}
+
+/**
+ * The deck the home offers now: the scheduled plan; when that yields nothing, the candidates (test-later first, then the weakest by level);
+ * when those yield nothing too, the learner's own vocabulary (My vocab: least known first, then most recently met) as written-recognition
+ * cards. Words the learner added by hand (My vocab, Add) come first and stay until the session begins or the deck is saved.
+ * Never empty while My vocab holds a word. `vocab` is My vocab's merged entries when the caller already loaded them.
+ */
+export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[]): Promise<CurrentDeck> {
+  const { learnerId, languageId } = model.identity;
+  const size = fillSize(model);
   let plan = scheduledPlan(ctx, model, holdOut);
   if (!plan.items.length && holdOut.size) plan = scheduledPlan(ctx, model, new Set());
-  if (plan.items.length) return { plan, entries: plan.items.map(entryOf), filled: false, hasVocabulary };
-  if (!hasVocabulary) return { plan, entries: [], filled: false, hasVocabulary };
-  const filled = await assemble(ctx, model, fillOrder(model, holdOut), fillSize(model));
-  return { plan: filled, entries: filled.items.map(entryOf), filled: true, hasVocabulary };
+  let filled = false;
+  if (!plan.items.length) {
+    const pool = fillOrder(model, holdOut);
+    if (pool.length) { plan = await assemble(ctx, model, pool, size); filled = plan.items.length > 0; }
+  }
+  let rows = vocab;
+  if (!plan.items.length) {
+    rows = rows ?? await loadVocabSafe(ctx, languageId);
+    if (rows.length) {
+      const order = vocabularyOrder(rows, holdOut);
+      // the exercise engine may refuse every word it cannot build yet; the deck is still offered, and the session says which cards it could not ask
+      let fromVocab = await assemble(ctx, model, order, size);
+      if (!fromVocab.items.length) fromVocab = await assemble(ctx, model, order, size, { unchecked: true });
+      plan = { ...fromVocab, items: fromVocab.items.map((p) => ({ ...p, why: [VOCAB_NOTE, ...p.why] })) };
+      filled = plan.items.length > 0;
+    }
+  }
+  // the learner's own additions lead the deck
+  const added = (await readStore(ctx, learnerId, languageId)).added;
+  if (added.length) {
+    const mine = await assemble(ctx, model, added, added.length);
+    if (mine.items.length) {
+      const taken = new Set(mine.items.map((p) => p.item.unitId));
+      plan = { ...plan, items: [...mine.items, ...plan.items.filter((p) => !taken.has(p.item.unitId))] };
+    }
+  }
+  const hasVocabulary = plan.items.length > 0 || model.outcomes.length > 0 || model.deck.length > 0 || model.knowledge.length > 0 || (rows?.length ?? 0) > 0;
+  return { plan, entries: plan.items.map(entryOf), filled, hasVocabulary };
+}
+
+/** Puts a word into the current deck by the learner's own choice: it leads the deck until the session begins or the deck is saved. */
+export function addToDeck(ctx: AppContext, id: { learnerId: string; languageId: string }, word: Pick<Wanted, 'unitId' | 'unitKind' | 'dimension' | 'family'>): Promise<void> {
+  return serial(async () => {
+    const store = await readStore(ctx, id.learnerId, id.languageId);
+    if (store.added.some((w) => w.unitId === word.unitId)) return;
+    store.added = [...store.added, { unitId: word.unitId, unitKind: word.unitKind, dimension: word.dimension, family: word.family }].slice(-50);
+    await writeStore(ctx, id.learnerId, id.languageId, store);
+  });
+}
+export function removeFromAdded(ctx: AppContext, id: { learnerId: string; languageId: string }, unitId: string): Promise<void> {
+  return serial(async () => {
+    const store = await readStore(ctx, id.learnerId, id.languageId);
+    store.added = store.added.filter((w) => w.unitId !== unitId);
+    await writeStore(ctx, id.learnerId, id.languageId, store);
+  });
 }
 
 /** A saved deck's cards asked again, as a plan (cards the deck still holds as they stand; the rest as new). */
@@ -172,7 +238,8 @@ export interface SavedDeck {
   items: DeckEntry[];
 }
 
-interface DeckStore { v: 1; decks: SavedDeck[]; holdOut: string[] }
+type AddedWord = Pick<Wanted, 'unitId' | 'unitKind' | 'dimension' | 'family'>;
+interface DeckStore { v: 1; decks: SavedDeck[]; holdOut: string[]; added: AddedWord[] }
 
 export const decksKey = (learnerId: string, languageId: string): string => `gopractice:decks:${learnerId}:${languageId}`;
 const MAX_SAVED = 60;
@@ -186,14 +253,15 @@ function cleanEntry(v: unknown): DeckEntry | undefined {
 }
 function cleanStore(raw: unknown): DeckStore {
   const r = raw as Partial<DeckStore> | undefined;
-  if (!r || typeof r !== 'object' || r.v !== 1 || !Array.isArray(r.decks)) return { v: 1, decks: [], holdOut: [] };
+  if (!r || typeof r !== 'object' || r.v !== 1 || !Array.isArray(r.decks)) return { v: 1, decks: [], holdOut: [], added: [] };
   const decks: SavedDeck[] = [];
   for (const d of r.decks as Array<Partial<SavedDeck>>) {
     if (!d || !str(d.id) || !str(d.savedAt) || !str(d.languageId) || !Array.isArray(d.items)) continue;
     const items = d.items.map(cleanEntry).filter((x): x is DeckEntry => !!x);
     if (items.length) decks.push({ id: d.id, savedAt: d.savedAt, languageId: d.languageId, ...(str(d.varietyId) ? { varietyId: d.varietyId } : {}), items });
   }
-  return { v: 1, decks, holdOut: Array.isArray(r.holdOut) ? r.holdOut.filter(str) : [] };
+  const added = (Array.isArray(r.added) ? r.added : []).filter((w): w is AddedWord => !!w && str((w as AddedWord).unitId) && str((w as AddedWord).unitKind) && str((w as AddedWord).dimension) && str((w as AddedWord).family));
+  return { v: 1, decks, holdOut: Array.isArray(r.holdOut) ? r.holdOut.filter(str) : [], added };
 }
 
 async function readStore(ctx: AppContext, learnerId: string, languageId: string): Promise<DeckStore> {
@@ -222,6 +290,7 @@ export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: s
     const saved: SavedDeck = { id: ctx.deps.newId(), savedAt: ctx.deps.now().toISOString(), languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}), items: entries.map((e) => ({ ...e })) };
     store.decks = [saved, ...store.decks].slice(0, MAX_SAVED);
     store.holdOut = [...new Set(entries.map((e) => e.unitId))];
+    store.added = [];
     await writeStore(ctx, id.learnerId, id.languageId, store);
     return saved;
   });
@@ -233,12 +302,13 @@ export function removeSavedDeck(ctx: AppContext, learnerId: string, languageId: 
     await writeStore(ctx, learnerId, languageId, store);
   });
 }
-/** Once a session has begun the held-out units may come back in later decks. */
+/** Once a session has begun the held-out units may come back in later decks, and the words added by hand have been asked. */
 export function releaseHoldOut(ctx: AppContext, learnerId: string, languageId: string): Promise<void> {
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
-    if (!store.holdOut.length) return;
+    if (!store.holdOut.length && !store.added.length) return;
     store.holdOut = [];
+    store.added = [];
     await writeStore(ctx, learnerId, languageId, store);
   });
 }
@@ -257,6 +327,9 @@ export interface VocabRow {
   lastSeenAt?: string;
   /** The surface forms it was met as, when they differ from the word itself. */
   metAs?: string[];
+  /** The kind of the displayed unit (lexeme, form, ...) and every record folded into this entry. */
+  kind?: string;
+  unitIds?: string[];
 }
 
 /** A Repository record as listed, before records of the same word are folded together. */
@@ -296,7 +369,7 @@ export function mergeVocab(records: readonly VocabRecord[]): VocabRow[] {
     const lastSeen = members.map((r) => r.lastSeenAt).filter((t): t is string => !!t).sort().at(-1);
     const met = [...new Set(members.flatMap((r) => [...r.forms, ...(r.kind === 'form' ? [r.label] : [])]).filter((f) => f && normWord(f) !== normWord(shown.label)))].slice(0, 3);
     out.push({
-      unitId: shown.unitId, label: shown.label, level, encounters: Math.max(...members.map((r) => r.encounters)),
+      unitId: shown.unitId, label: shown.label, kind: shown.kind, unitIds: members.map((m) => m.unitId), level, encounters: Math.max(...members.map((r) => r.encounters)),
       ...(lastSeen ? { lastSeenAt: lastSeen } : {}), ...(met.length ? { metAs: met } : {}),
     });
   }
@@ -355,16 +428,5 @@ export async function loadVocab(ctx: AppContext, languageId: string): Promise<{ 
   return { rows, total: rows.length };
 }
 
-const countCaches = new WeakMap<AppContext, Map<string, number>>();
-/** How many words the learner has met, for the home: the same merged count My vocab lists (cached per language and log size), or the fallback when the Repository cannot say. */
-export async function countVocab(ctx: AppContext, languageId: string, fallback: number, stamp = ''): Promise<number> {
-  const key = `${languageId}|${stamp}`;
-  const cache = countCaches.get(ctx) ?? new Map<string, number>();
-  countCaches.set(ctx, cache);
-  if (stamp && cache.has(key)) return cache.get(key)!;
-  try {
-    const n = (await loadVocab(ctx, languageId)).total;
-    if (stamp) cache.set(key, n);
-    return n;
-  } catch { return fallback; }
-}
+/** How many words the learner has met: the merged entries of My vocab. */
+export const vocabCount = (rows: readonly VocabRow[]): number => rows.length;

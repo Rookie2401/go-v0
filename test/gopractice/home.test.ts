@@ -4,7 +4,7 @@ import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { decksKey, sortVocab, type SavedDeck } from '../../packages/gopractice/deckModel';
 import { UI_KEY } from '../../packages/gopractice/screens/uiprefs';
-import { candidate, defaultService, destroyRigs, dueCard, ids, makeRig, reopen, seed, until, unitOf, type Rig } from './helpers';
+import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, seed, until, unitOf, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -145,7 +145,7 @@ describe('My vocab', () => {
     await until(() => row.querySelector('.vocab-gloss')!.textContent !== '', 'the meaning');
     expect(row.querySelector('.vocab-word')!.getAttribute('lang')).toBe('sq-AL');
     expect(row.querySelector('.vocab-level')!.textContent).toBe('new');
-    expect(row.querySelector<HTMLAnchorElement>('a')!.getAttribute('href')).toBe(`#/review/history/${encodeURIComponent(unitOf('zog'))}`);
+    expect(row.querySelector<HTMLAnchorElement>('a.vocab-history')!.getAttribute('href')).toBe(`#/review/history/${encodeURIComponent(unitOf('zog'))}`);
   });
 
   it('sortVocab breaks ties by word so the order is stable', () => {
@@ -224,5 +224,97 @@ describe('My vocab: one line per word', () => {
     ], { 'form:sq:zemrën': 'lemma:sq:zemër:NOUN', 'form:sq:maces': 'lemma:sq:mace:NOUN' });
     await reopen(rig);
     expect(rig.q('#vocab-count').textContent).toBe('3 words');
+  });
+});
+
+describe('the deck always comes from the vocabulary when nothing else yields a card', () => {
+  const HINDI_LIKE = [
+    entry('lemma:sq:zog:NOUN', 'zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), entry('lemma:sq:mace:NOUN', 'mace', 'recognized', 2, '2026-10-06T00:00:00.000Z'),
+    entry('lemma:sq:qen:NOUN', 'qen', 'new', 1, '2026-10-01T00:00:00.000Z'), entry('lemma:sq:diell:NOUN', 'diell', 'new', 1, '2026-10-04T00:00:00.000Z'),
+  ];
+
+  it('every candidate ineligible and nothing due: the deck is built from My vocab, least known first then most recent, and Begin is enabled', async () => {
+    const service = defaultService();
+    const rig = await makeRig({ service, signedIn: true });
+    service.candidates.set('L1-e1', ['zog', 'mace'].map((l) => candidate(l, 0.9, { eligibility: { eligible: false, status: 'unknown', reason: 'the analysis of this pack is unreviewed' } })));
+    useRecords(rig, HINDI_LIKE);
+    await reopen(rig);
+    expect(rig.q('#deck-count').textContent).toBe('4 cards ready');
+    expect(rig.q('#vocab-count').textContent).toBe('4 words');
+    expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(false);
+    expect(rig.q('#review-home').textContent).not.toMatch(/Read with GoLearn|vocabulary, not|schedule/);   // no explanation on the home
+    click(rig.q('#start-session'));
+    await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
+    const plan = rig.app.ctx.run.active!.plan.items;
+    expect(plan.map((p) => p.item.unitId)).toEqual(['lemma:sq:diell:NOUN', 'lemma:sq:qen:NOUN', 'lemma:sq:zog:NOUN', 'lemma:sq:mace:NOUN']); // new (most recent first), seen, recognized
+    expect(plan.every((p) => p.family === 'written-recognition' && p.item.dimension === 'written-recognition')).toBe(true);
+    expect(rig.q('#vocab-note').textContent).toMatch(/from your vocabulary, not from the review schedule/);   // the one honest note, in the session
+  });
+
+  it('shows the empty state only when My vocab has no word', async () => {
+    const rig = await makeRig({ signedIn: true });
+    useRecords(rig, []);
+    await reopen(rig);
+    expect(rig.q('#deck-count').textContent).toBe('Read with GoLearn to build your first deck');
+    expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
+  });
+});
+
+describe('My vocab: add a word to the current deck', () => {
+  const WORDS2 = [entry('lemma:sq:zog:NOUN', 'zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), entry('lemma:sq:mace:NOUN', 'mace', 'new', 1, '2026-10-06T00:00:00.000Z')];
+
+  it('tapping a word asks, "Not now" closes the question, and History stays a small link on the row', async () => {
+    const rig = await makeRig({ signedIn: true });
+    useRecords(rig, WORDS2);
+    await seed(rig, [...dueCard(A, 'qen', 'meaning-to-form')]);   // a scheduled deck, so the vocabulary words are not in it
+    await rig.go('review/vocab');
+    await until(() => rig.qa('.vocab-item').length === 2, 'the words');
+    await flush(6);
+    const row = rig.q(`[data-unit-id="lemma:sq:mace:NOUN"]`);
+    expect(row.querySelector<HTMLAnchorElement>('a.vocab-history')!.getAttribute('href')).toBe(`#/review/history/${encodeURIComponent('lemma:sq:mace:NOUN')}`);
+    expect(row.querySelector('.vocab-ask')).toBeNull();
+    click(row.querySelector('button.vocab-row')!);
+    await until(() => !!rig.root.querySelector('.vocab-ask'), 'the question');
+    expect(rig.q('.vocab-ask').textContent).toContain('Add mace to the current deck?');
+    click(rig.q('[data-action="not-now"]'));
+    expect(rig.root.querySelector('.vocab-ask')).toBeNull();
+  });
+
+  it('Add records the explicit saved choice, puts the word into the current deck at once, and the row says "In your deck"', async () => {
+    const rig = await makeRig({ signedIn: true });
+    useRecords(rig, WORDS2);
+    await seed(rig, [...dueCard(A, 'qen', 'meaning-to-form')]);
+    await reopen(rig);
+    const before = Number(rig.q('#deck-count').getAttribute('data-cards'));
+    await rig.go('review/vocab');
+    await until(() => rig.qa('.vocab-item').length === 2, 'the words');
+    click(rig.q(`[data-unit-id="lemma:sq:mace:NOUN"] button.vocab-row`));
+    await until(() => !!rig.root.querySelector('[data-action="add-to-deck"]'), 'the question');
+    click(rig.q('[data-action="add-to-deck"]'));
+    await until(() => rig.q(`[data-unit-id="lemma:sq:mace:NOUN"]`).getAttribute('data-in-deck') === 'true', 'the row to say it is in the deck');
+    expect(rig.q(`[data-unit-id="lemma:sq:mace:NOUN"] .vocab-indeck`).textContent).toBe('In your deck');
+    const marks = (await queued(rig)).filter((e) => e.kind === 'ItemMarked');
+    expect(marks).toHaveLength(1);
+    expect(marks[0].payload).toMatchObject({ mark: 'saved' });
+    expect(marks[0].subject.itemIds).toEqual(['lemma:sq:mace:NOUN']);
+    // the home's deck has it, first, even though the deck was already full of due cards
+    await reopen(rig);
+    expect(Number(rig.q('#deck-count').getAttribute('data-cards'))).toBe(before + 1);
+    click(rig.q('#start-session'));
+    await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
+    expect(rig.app.ctx.run.active!.plan.items[0].item.unitId).toBe('lemma:sq:mace:NOUN');
+  });
+
+  it('tapping a word that is already in the deck says so instead of asking', async () => {
+    const rig = await makeRig({ signedIn: true });
+    useRecords(rig, WORDS2);
+    await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form')]);
+    await rig.go('review/vocab');
+    await until(() => rig.qa('.vocab-item').length === 2, 'the words');
+    await until(() => rig.q(`[data-unit-id="lemma:sq:zog:NOUN"]`).getAttribute('data-in-deck') === 'true', 'the deck to be known');
+    click(rig.q(`[data-unit-id="lemma:sq:zog:NOUN"] button.vocab-row`));
+    await until(() => !!rig.root.querySelector('.vocab-ask'), 'the answer');
+    expect(rig.q('.vocab-ask').textContent).toContain('is already in your deck');
+    expect(rig.root.querySelector('[data-action="add-to-deck"]')).toBeNull();
   });
 });

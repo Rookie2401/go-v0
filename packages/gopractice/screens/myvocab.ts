@@ -1,13 +1,17 @@
 /**
- * #/review/vocab — My vocab: every unit the learner has met (the Repository's knowledge rows), one quiet line each: the
+ * #/review/vocab — My vocab: every word the learner has met, once (a lemma and its forms are one entry), one quiet line each: the
  * word, its meaning when the pack knows it, and its level in a word. Two orders, chosen with two quiet toggles and remembered
  * on this device: least known first (by level, then encounters) or most recently encountered (by when it was last tapped).
- * Tapping a word opens its history. The filtered, searchable list with the unit details is kept at #/vocabulary (Settings).
+ * Tapping a word asks "Add <word> to the current deck?" under the row (Add / Not now); a word already in the deck says so. Add
+ * records the learner's explicit choice (ItemMarked saved) and puts the word at the head of the current deck. A small History link
+ * keeps the word's history one tap away. The filtered, searchable list with the unit details is kept at #/vocabulary (Settings).
  */
 import { KNOWLEDGE_LEVELS } from '../../repository-contract/src';
 import type { AppContext } from '../context';
 import { append, button, clear, h, langProps, p, setStatus, statusLine } from '../dom';
-import { loadVocab, sortVocab, type VocabRow, type VocabSort } from '../deckModel';
+import { addToDeck, holdOutOf, loadVocab, planCurrentDeck, removeFromAdded, sortVocab, type VocabRow, type VocabSort } from '../deckModel';
+import { itemMarked } from '../events';
+import { loadReviewModel } from '../workspace';
 import type { View } from './view';
 import { getUiPrefs, patchUiPrefs } from './uiprefs';
 
@@ -30,6 +34,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   let shown = PAGE;
   const itemOfUnit = new Map<string, string>();
   const glossed = new Map<string, string | null>();
+  /** The units of the current deck, once known; a word of one of them is "In your deck". */
+  let deckUnits: Set<string> | undefined;
+  /** The word whose question is open under its row. */
+  let asking: string | undefined;
+
+  const inDeck = (r: VocabRow): boolean => !!deckUnits && (r.unitIds ?? [r.unitId]).some((u) => deckUnits!.has(u));
 
   function paintToggles(): void {
     clear(toggles);
@@ -43,14 +53,69 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     }
   }
 
+  /** The current deck's units: the home's own plan, so what is said here is what Begin will ask. */
+  async function refreshDeck(): Promise<void> {
+    try {
+      const model = await loadReviewModel(ctx);
+      if (!model || !view.alive()) return;
+      const deck = await planCurrentDeck(ctx, model, await holdOutOf(ctx, identity.learnerId, identity.languageId), rows);
+      if (!view.alive()) return;
+      deckUnits = new Set(deck.entries.map((e) => e.unitId));
+      paintList();
+    } catch { /* the question is still asked; Add reports what happened */ }
+  }
+
+  async function add(r: VocabRow): Promise<void> {
+    try {
+      const ectx = await ctx.eventContext();
+      if (!ectx) { setStatus(status, 'Choose a language first.', 'error'); return; }
+      const marked = await ctx.record([itemMarked(ectx, ctx.deps.newId(), r.unitId, 'saved')]);
+      if (marked.refused.length) { setStatus(status, marked.refused[0].issues.join('; '), 'error'); return; }
+      await addToDeck(ctx, identity, { unitId: r.unitId, unitKind: r.kind ?? 'lexeme', dimension: 'written-recognition', family: 'written-recognition' });
+      const model = await loadReviewModel(ctx);
+      const deck = model ? await planCurrentDeck(ctx, model, await holdOutOf(ctx, identity.learnerId, identity.languageId), rows) : undefined;
+      if (!view.alive()) return;
+      if (deck?.entries.some((e) => e.unitId === r.unitId)) {
+        deckUnits = new Set(deck.entries.map((e) => e.unitId));
+        asking = undefined;
+        setStatus(status, `${r.label} is in your deck.`, 'ok');
+      } else {
+        await removeFromAdded(ctx, identity, r.unitId);
+        setStatus(status, `${r.label} cannot be asked yet: no exercise can be built for it. Your choice is kept as a saved word.`, 'info');
+      }
+      paintList();
+    } catch (e) { setStatus(status, e instanceof Error ? e.message : 'The word could not be added.', 'error'); }
+  }
+
   function rowView(r: VocabRow): HTMLElement {
     const known = glossed.get(r.unitId);
     const gloss = h('span', { class: 'vocab-gloss', 'data-gloss': r.unitId }, known ?? '');
-    return h('li', { class: 'vocab-item', 'data-unit-id': r.unitId, 'data-level': r.level },
-      h('a', { class: 'vocab-row', href: `#/review/history/${encodeURIComponent(itemOfUnit.get(r.unitId) ?? r.unitId)}` },
-        h('span', { ...langProps(tag), class: 'vocab-word target-text' }, r.label), gloss,
-        r.metAs?.length ? h('span', { class: 'vocab-met' }, 'met as: ', h('span', langProps(tag), r.metAs.join(', '))) : null,
-        h('span', { class: 'vocab-level' }, r.level)));
+    const present = inDeck(r);
+    const open = asking === r.unitId;
+    const line = h('div', { class: 'vocab-line' },
+      button('', () => { asking = open ? undefined : r.unitId; paintList(); void (deckUnits ? Promise.resolve() : refreshDeck()); }, {
+        class: 'vocab-row', 'aria-expanded': open ? 'true' : 'false',
+      }),
+      h('a', { class: 'vocab-history', href: `#/review/history/${encodeURIComponent(itemOfUnit.get(r.unitId) ?? r.unitId)}`, 'aria-label': `History of ${r.label}` }, 'History'));
+    const tap = line.querySelector('button')!;
+    append(tap, [
+      h('span', { ...langProps(tag), class: 'vocab-word target-text' }, r.label), gloss,
+      r.metAs?.length ? h('span', { class: 'vocab-met' }, 'met as: ', h('span', langProps(tag), r.metAs.join(', '))) : null,
+      present ? h('span', { class: 'vocab-indeck' }, 'In your deck') : null,
+      h('span', { class: 'vocab-level' }, r.level),
+    ]);
+    const item = h('li', { class: 'vocab-item', 'data-unit-id': r.unitId, 'data-level': r.level, ...(present ? { 'data-in-deck': 'true' } : {}) }, line);
+    if (open) {
+      const ask = h('div', { class: 'vocab-ask', role: 'group', 'aria-label': `Add ${r.label} to the current deck` });
+      if (present) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is already in your deck.'));
+      else {
+        const addBtn = button('Add', () => { addBtn.disabled = true; void add(r).finally(() => { addBtn.disabled = false; }); }, { class: 'btn small', 'data-action': 'add-to-deck' });
+        ask.append(h('p', {}, 'Add ', h('span', langProps(tag), r.label), ' to the current deck?'),
+          h('div', { class: 'entry-actions' }, addBtn, button('Not now', () => { asking = undefined; paintList(); }, { class: 'linklike', 'data-action': 'not-now' })));
+      }
+      item.append(ask);
+    }
+    return item;
   }
 
   function paintList(): void {
@@ -95,6 +160,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     rows = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
     setStatus(status, '');
     paintList();
+    void refreshDeck();
   } catch (e) {
     if (!view.alive()) return;
     setStatus(status, `Your words could not be loaded${e instanceof Error ? `: ${e.message}` : ''}.`, 'error');

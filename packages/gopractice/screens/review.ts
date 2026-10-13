@@ -12,7 +12,7 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { countVocab, holdOutOf, listSavedDecks, planCurrentDeck, releaseHoldOut, saveDeck, type CurrentDeck } from '../deckModel';
+import { holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, releaseHoldOut, saveDeck, type CurrentDeck } from '../deckModel';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
 import { renderHistory, renderTransfer } from './history';
@@ -55,13 +55,14 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       return;
     }
     const id = model.identity;
-    const [holdOut, saved, resumable, words] = await Promise.all([
+    const [holdOut, saved, resumable, vocab] = await Promise.all([
       holdOutOf(ctx, id.learnerId, id.languageId),
       listSavedDecks(ctx, id.learnerId, id.languageId),
       recoverableSessions(ctx),
-      countVocab(ctx, id.languageId, model.knowledge.length, `${id.learnerId}|${model.events.length}`),
+      loadVocabSafe(ctx, id.languageId),
     ]);
-    const deck = await planCurrentDeck(ctx, model, holdOut);
+    const deck = await planCurrentDeck(ctx, model, holdOut, vocab);
+    const words = vocab.length || model.knowledge.length;
     if (!view.alive()) return;
     clear(root);
     root.setAttribute('lang', 'en');

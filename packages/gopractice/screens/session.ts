@@ -27,6 +27,7 @@ import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../goreview/src/exercises/shared';
 import { endSavedSession, recoverableSessions, resumeSession } from '../workspace';
 import { fillItemHistory } from './history';
+import { VOCAB_NOTE } from '../deckModel';
 import { DEFAULT_UI, getUiPrefs, patchUiPrefs, type UiPrefs } from './uiprefs';
 import type { View } from './view';
 
@@ -390,7 +391,7 @@ class Controller {
     if (pronunciation) card.append(pronunciation);
     if (pp.audio) card.append(this.audioBlock(pp.audio.replaysAllowed));
     card.append(this.responseArea(pr));
-    append(this.root, [this.header(pr, true), card, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
+    append(this.root, [this.header(pr, true), pr.index === 0 && pr.planned.why.includes(VOCAB_NOTE) ? h('p', { class: 'muted', id: 'vocab-note' }, VOCAB_NOTE) : null, card, h('p', { class: 'status', id: 'session-status', role: 'status', 'aria-live': 'polite' }), this.itemTools(pr, concealed)]);
     this.focusFirst();
   }
 

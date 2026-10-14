@@ -32,7 +32,7 @@ describe('the hash router', () => {
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('.topnav')).toBeNull();
     expect([...rig.root.querySelectorAll('header a')].map((a) => a.getAttribute('aria-label'))).toEqual(['Settings']);
-    expect(rig.q('#language-select')).toBeTruthy();
+    expect(rig.q('#language-name')).toBeTruthy();
     expect(rig.root.querySelector('#back-home')).toBeNull();      // the home has nowhere to go back to
     await rig.go('tell');
     expect(rig.q('main h1').textContent).toBe('GoTell');

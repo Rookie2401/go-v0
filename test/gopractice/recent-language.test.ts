@@ -22,7 +22,11 @@ const lookedUp = (learnerId: string, enrolmentId: string, languageId: string, at
 };
 
 const optionLabels = (rig: Awaited<ReturnType<typeof makeRig>>): string[] => rig.qa<HTMLOptionElement>('#language-select option').map((o) => o.textContent ?? '');
-const note = (rig: Awaited<ReturnType<typeof makeRig>>): string | undefined => rig.root.querySelector('#language-note')?.textContent ?? undefined;
+/** The sentence "X: the language you read most recently" is no longer on screen; it is the tooltip of the language control. */
+const note = (rig: Awaited<ReturnType<typeof makeRig>>): string | undefined => {
+  const title = rig.root.querySelector('#language-select, #language-name')?.getAttribute('title') ?? '';
+  return /most recently/.test(title) ? title : undefined;
+};
 /** GoPractice does not re-render a route it is already on: leave and return, so the header is read afresh. */
 const rerender = async (rig: Awaited<ReturnType<typeof makeRig>>): Promise<void> => { await rig.go('settings'); await rig.go('review'); };
 const pick = async (rig: Awaited<ReturnType<typeof makeRig>>, enrolmentId: string): Promise<void> => {
@@ -52,7 +56,7 @@ describe('on the device (the extension\'s copy), with Albanian, German and Hindi
     const id = await rig.app.ctx.identity();
     expect(id).toMatchObject({ languageId: 'de', enrolmentId: E.de, chosenBy: 'recent-reading' });
     expect(rig.q<HTMLSelectElement>('#language-select').value).toBe(E.de);
-    expect(optionLabels(rig).sort()).toEqual(['de', 'hi', 'sq (sq-AL)']);
+    expect(optionLabels(rig).sort()).toEqual(['Albanian', 'German', 'Hindi']);
     expect(note(rig)).toBe('German: the language you read most recently');
     expect(rig.q('main').getAttribute('data-language')).toBe('de');
   });
@@ -123,7 +127,7 @@ describe('with an account, and Albanian and German enabled', () => {
     await rig.app.ctx.syncNow({ force: true });
     await rerender(rig);
     expect(await rig.app.ctx.identity()).toMatchObject({ learnerId: 'L9', languageId: 'sq', chosenBy: 'recent-reading' });
-    expect(optionLabels(rig).sort()).toEqual(['de', 'sq (sq-AL)']);
+    expect(optionLabels(rig).sort()).toEqual(['Albanian', 'German']);
     expect(rig.q<HTMLSelectElement>('#language-select').value).toBe('L9-e1');
     expect(note(rig)).toBe('Albanian: the language you read most recently');
   });

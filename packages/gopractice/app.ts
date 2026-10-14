@@ -126,13 +126,22 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (destroyed) return;
     clear(langWrap);
     if (list.length) {
-      const select = h('select', { id: 'language-select', name: 'language', 'aria-label': 'Language' },
-        ...list.map((e) => h('option', { value: e.enrolmentId, ...(id?.enrolmentId === e.enrolmentId ? { selected: true } : {}) }, `${e.languageId}${e.varietyId ? ` (${e.varietyId})` : ''}`))) as HTMLSelectElement;
-      select.value = id?.enrolmentId ?? list[0].enrolmentId;
-      select.addEventListener('change', () => { void switchLanguage(select.value); });
-      langWrap.append(h('label', { class: 'language-label' }, h('span', { class: 'sr' }, 'Language '), select));
-      // none was picked here: say which one was chosen for the learner, and why, in one line
-      if (id?.chosenBy === 'recent-reading') langWrap.append(h('span', { class: 'language-note', id: 'language-note' }, `${languageName(id.languageId)}: the language you read most recently`));
+      // a quiet kicker: the language's name only; a select (same quiet style, a tiny arrow) only when there is more than one to choose from
+      const nameOf = (e: (typeof list)[number]): string => {
+        const sameLanguage = list.filter((x) => x.languageId === e.languageId).length > 1;
+        return languageName(e.languageId) + (sameLanguage && e.varietyId ? ` (${e.varietyId})` : '');
+      };
+      const current = list.find((e) => e.enrolmentId === id?.enrolmentId) ?? list[0];
+      const tip = id?.chosenBy === 'recent-reading' ? `${languageName(current.languageId)}: the language you read most recently` : `${languageName(current.languageId)}${current.varietyId ? ` (${current.varietyId})` : ''}`;
+      if (list.length > 1) {
+        const select = h('select', { id: 'language-select', name: 'language', class: 'language-kicker', 'aria-label': 'Language', title: tip },
+          ...list.map((e) => h('option', { value: e.enrolmentId, ...(id?.enrolmentId === e.enrolmentId ? { selected: true } : {}) }, nameOf(e)))) as HTMLSelectElement;
+        select.value = id?.enrolmentId ?? list[0].enrolmentId;
+        select.addEventListener('change', () => { void switchLanguage(select.value); });
+        langWrap.append(h('span', { class: 'language-picker' }, select, h('span', { class: 'language-caret', 'aria-hidden': 'true' }, '▾')));
+      } else {
+        langWrap.append(h('span', { id: 'language-name', class: 'language-kicker', title: tip }, nameOf(current)));
+      }
     }
     paintSync(await ctx.syncView(), mode);
     // the account is offered any time, never required

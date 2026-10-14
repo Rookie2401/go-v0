@@ -60,7 +60,11 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
   background: color-mix(in srgb, var(--paper) 88%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 20;
 }
-.language select { width: auto; font-size: .95rem; padding: .2rem .5rem; }
+.language-kicker { font: inherit; font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
+.language-picker { position: relative; display: inline-flex; align-items: center; }
+select.language-kicker { width: auto; appearance: none; -webkit-appearance: none; background: transparent; border: 0; border-radius: 2px; padding: .2rem 1rem .2rem 0; cursor: pointer; }
+select.language-kicker:hover { color: var(--ink); }
+.language-caret { position: absolute; right: 0; font-size: .7rem; color: var(--ink-faint); pointer-events: none; }
 .sync { margin: 0 0 0 auto; font-size: .9rem; font-style: italic; color: var(--ink-soft); max-width: 32rem; }
 .sync[data-kind="error"] { color: var(--bad); font-style: normal; }
 .sync[data-kind="ok"] { color: var(--ok); font-style: normal; }
@@ -160,7 +164,9 @@ details > summary:hover { color: var(--ink); }
 input.target-text, textarea.target-text { font-size: 1.15rem; }
 
 /* session */
-.session .progress { gap: .9rem; align-items: baseline; font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+.session-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem 1rem; margin: 0 0 .8rem; }
+.bar-kicker { font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+.bar-actions { margin-left: auto; display: flex; gap: 1.2rem; }
 .exercise { background: var(--panel); border: 1px solid var(--divider); border-radius: 8px; box-shadow: var(--shadow-raised); padding: 1.2rem 1.4rem; margin: 1.25rem 0; }
 .choices { display: grid; gap: .5rem; max-width: 34rem; }
 .choice { text-align: start; padding: .6rem .95rem; }

@@ -82,7 +82,7 @@ describe('traditional word flashcards', () => {
     expect(rig.q('#revealed-answer').textContent).toBe('house');
     expect(await queued(rig)).toEqual([]);
     rig.q('[data-grade="good"]').click();
-    await until(() => rig.q('#session-progress').textContent === 'Item 2 of 2', 'next flashcard');
+    await until(() => rig.q('#session-progress').textContent === '2 of 2', 'next flashcard');
     const events = await queued(rig);
     expect(events).toHaveLength(1);
     expect(events[0].payload).toMatchObject({ grade: 'good', rating: 3 });

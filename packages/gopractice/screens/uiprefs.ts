@@ -5,7 +5,6 @@
  *
  *   shortcuts   the one-key shortcuts of a session (1 to 4 answer or grade, Space plays the audio). On by default. Off, every
  *               action is still a button and Enter and Esc still work (they are not character keys) — WCAG 2.1.4.
- *   showClock   the elapsed-time clock in the session header. On by default. Off, nothing ticks on screen — WCAG 2.2.2.
  *   vocabSort   how My vocab is ordered: 'least' (least known first, the default) or 'recent' (most recently encountered first).
  */
 import type { AppContext } from '../context';
@@ -13,13 +12,13 @@ import type { AppContext } from '../context';
 export const UI_KEY = 'gopractice:ui';
 
 export type VocabSortChoice = 'least' | 'recent';
-export interface UiPrefs { shortcuts: boolean; showClock: boolean; vocabSort: VocabSortChoice }
-export const DEFAULT_UI: UiPrefs = { shortcuts: true, showClock: true, vocabSort: 'least' };
+export interface UiPrefs { shortcuts: boolean; vocabSort: VocabSortChoice }
+export const DEFAULT_UI: UiPrefs = { shortcuts: true, vocabSort: 'least' };
 
 export async function getUiPrefs(ctx: AppContext): Promise<UiPrefs> {
   try {
     const v = (await ctx.deps.area.get(UI_KEY))[UI_KEY] as Record<string, unknown> | undefined;
-    return { shortcuts: v?.shortcuts !== false, showClock: v?.showClock !== false, vocabSort: v?.vocabSort === 'recent' ? 'recent' : 'least' };
+    return { shortcuts: v?.shortcuts !== false, vocabSort: v?.vocabSort === 'recent' ? 'recent' : 'least' };
   } catch { return { ...DEFAULT_UI }; }
 }
 

@@ -28,7 +28,7 @@ describe('a written exercise', () => {
   it('records the result to the queue before the next item renders, and not before the learner moves on', async () => {
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
-    expect(progress(rig)).toBe('Item 1 of 2');
+    expect(progress(rig)).toBe('1 of 2');
     expect(rig.q('#instruction').textContent).toBe('Write the Albanian word.');
     const first = shownLabel(rig);
     answerTyped(rig, first);
@@ -38,7 +38,7 @@ describe('a written exercise', () => {
     // feedback is on screen; the claim is made once, when the learner moves on (so a challenge can still change it)
     expect(await queued(rig)).toEqual([]);
     rig.q('#next').click();
-    await until(() => progress(rig) === 'Item 2 of 2', 'the second exercise');
+    await until(() => progress(rig) === '2 of 2', 'the second exercise');
     const q = await queued(rig);
     expect(q.map((e) => e.kind)).toEqual(['CardReviewed']);
     expect(q[0].payload).toMatchObject({ rating: 3, outcome: 'correct' });
@@ -154,7 +154,7 @@ describe('a self-graded question', () => {
     key('Enter'); key('3');
     await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
     key('Enter');
-    await until(() => progress(rig) === 'Item 2 of 2', 'the next item');
+    await until(() => progress(rig) === '2 of 2', 'the next item');
     expect((await queued(rig)).length).toBe(1);
   });
 
@@ -368,7 +368,7 @@ describe('skipping, finishing early and setting items aside', () => {
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     key('Escape');
-    await until(() => progress(rig) === 'Item 2 of 2', 'the second item');
+    await until(() => progress(rig) === '2 of 2', 'the second item');
     expect(await queued(rig)).toEqual([]);
     rig.q('#finish-early').click();
     await until(() => !!rig.root.querySelector('#summary'), 'the summary');
@@ -403,7 +403,7 @@ describe('skipping, finishing early and setting items aside', () => {
     await rig.go('review');
     await until(() => !!rig.root.querySelector('[data-action="resume-session"]'), 'the saved session');
     rig.q('[data-action="resume-session"]').click();
-    await until(() => rig.app.current() === 'review/session' && progress(rig) === 'Item 2 of 2', 'the resumed prompt');
+    await until(() => rig.app.current() === 'review/session' && progress(rig) === '2 of 2', 'the resumed prompt');
   });
 
   it('offers recovery on the session route after a reload cleared the in-memory run', async () => {
@@ -415,7 +415,7 @@ describe('skipping, finishing early and setting items aside', () => {
     await until(() => !!rig.root.querySelector('[data-action="resume-session"]'), 'the route recovery control');
     rig.q('[data-action="resume-session"]').click();
     await until(() => rig.app.ctx.run.active !== undefined && rig.root.querySelector('#instruction') !== null, 'the recovered prompt');
-    expect(rig.q('#session-progress').textContent).toBe('Item 1 of 1');
+    expect(rig.q('#session-progress').textContent).toBe('1 of 1');
   });
 
   it('snooze, suspend and dismiss are events, and the session moves on', async () => {
@@ -423,11 +423,11 @@ describe('skipping, finishing early and setting items aside', () => {
     await startWith(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form'), ...dueCard(A, 'qen', 'meaning-to-form')]);
     const first = shownLabel(rig);
     rig.q('#suspend').click();
-    await until(() => progress(rig) === 'Item 2 of 3', 'the next item');
+    await until(() => progress(rig) === '2 of 3', 'the next item');
     const second = shownLabel(rig);
     rig.clock.set('2026-10-08T10:01:00.000Z');
     rig.q('#snooze-week').click();
-    await until(() => progress(rig) === 'Item 3 of 3', 'the next item');
+    await until(() => progress(rig) === '3 of 3', 'the next item');
     const third = shownLabel(rig);
     rig.clock.set('2026-10-08T10:02:00.000Z');
     rig.q('#dismiss').click();

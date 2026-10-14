@@ -36,7 +36,8 @@ describe('on the device, with no account', () => {
     expect(rig.q<HTMLAnchorElement>('#settings-keep-progress').getAttribute('href')).toBe('#/signin');
     expect(rig.q('#settings-keep-progress').textContent).toBe('Keep your progress across devices (optional)');
     await rig.go('review');
-    expect(rig.q('#language-select').textContent).toBe('sq (sq-AL)');
+    expect(rig.q('#language-name').textContent).toBe('Albanian'); // one language: plain text, no select
+    expect(rig.root.querySelector('#language-select')).toBeNull();
     expect(rig.q('main').getAttribute('data-language')).toBe('sq-AL');
     expect(rig.service.calls).not.toContain('createSession');
   });
@@ -57,7 +58,8 @@ describe('on the device, with no account', () => {
   it('shows no team even for an account whose enrolment carries one, and labels the language only', async () => {
     const rig = await makeRig({ signedIn: true }); // the default account’s enrolment is stored with teamId 'albania'
     expect(rig.service.enrolments.get('L1')![0].teamId).toBe('albania');
-    expect(rig.q('#language-select').textContent).toBe('sq (sq-AL)');
+    expect(rig.q('#language-name').textContent).toBe('Albanian'); // one language: plain text, no select
+    expect(rig.root.querySelector('#language-select')).toBeNull();
     for (const route of ['review', 'tell', 'settings']) {
       await rig.go(route);
       await flush(4);
@@ -115,7 +117,7 @@ describe('on the device, with no account', () => {
     await rig.go('settings');
     await rig.go('review');
     const options = rig.qa<HTMLOptionElement>('#language-select option');
-    expect(options.map((o) => o.textContent)).toEqual(['de', 'sq (sq-AL)', 'hi']); // setup’s choices first, newest first
+    expect(options.map((o) => o.textContent)).toEqual(['German', 'Albanian', 'Hindi']); // setup’s choices first, newest first
     expect(rig.q<HTMLSelectElement>('#language-select').value).toBe('LOC-e2');
     expect(rig.q('main').getAttribute('data-language')).toBe('de');
   });

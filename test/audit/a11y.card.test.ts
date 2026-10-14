@@ -261,7 +261,7 @@ describe('focus in the GoPractice and setup-app shells', () => {
     await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
     expect(document.activeElement, 'Next has focus when the feedback appears').toBe(rig.q('#next'));
     (rig.q('#next') as HTMLElement).click();
-    await until(() => (rig.root.querySelector('#session-progress')?.textContent ?? '') === 'Item 2 of 2', 'the second item');
+    await until(() => (rig.root.querySelector('#session-progress')?.textContent ?? '') === '2 of 2', 'the second item');
     await flush(4);
     expect(document.activeElement, 'the answer box has focus on the second item').toBe(rig.q('#answer-input'));
     row('A-D13', 'focus', 'session: focus after answering and after Next', 'pass', 'Next → answer box of the next item');

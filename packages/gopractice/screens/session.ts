@@ -12,8 +12,7 @@
  *
  * Keys: Enter submits (and moves on after feedback), 1-4 are the self-grades Again/Hard/Good/Easy (or the first four
  * choices in a choice question), Space plays and replays the audio, Esc skips the item. The character keys (1-4, Space) can
- * be turned off in the session controls (WCAG 2.1.4); Enter and Esc are not character keys and stay. The elapsed-time clock
- * can be hidden from the header (WCAG 2.2.2); nothing is announced every second either way.
+ * be turned off in the session controls (WCAG 2.1.4); Enter and Esc are not character keys and stay. There is no timer on screen.
  */
 import type { Grading, Response } from '../../goreview/src/types';
 import type { PlaybackHandle, PronunciationResult } from '../../golisten/src/contracts';
@@ -21,14 +20,14 @@ import type { AppContext } from '../context';
 import { explainFailure } from '../config';
 import { append, button, clear, embedTarget, field, h, langProps, p, setStatus, statusLine } from '../dom';
 import {
-  answerInTarget, DIMENSION_LABEL, duration, FAMILY_LABEL, forecastRecording, isAudioExercise, itemLabel, OUTCOME_LABEL, RATING_LABEL, unitLabel, withheldReason,
+  answerInTarget, DIMENSION_LABEL, FAMILY_LABEL, forecastRecording, isAudioExercise, itemLabel, OUTCOME_LABEL, RATING_LABEL, unitLabel, withheldReason,
 } from '../format';
 import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../goreview/src/exercises/shared';
 import { endSavedSession, recoverableSessions, resumeSession } from '../workspace';
 import { fillItemHistory } from './history';
 import { VOCAB_NOTE } from '../deckModel';
-import { DEFAULT_UI, getUiPrefs, patchUiPrefs, type UiPrefs } from './uiprefs';
+import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import type { View } from './view';
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
@@ -122,7 +121,6 @@ class Controller {
   private presentedAt: number | undefined;
   private lastReviewActivityAt: number | undefined;
   private activeReviewMs = 0;
-  private clockHandle: unknown;
   private readonly tag: string;
   private busy = false;
   private readonly doc: Document;
@@ -143,7 +141,6 @@ class Controller {
       this.doc.removeEventListener('pointerdown', onActivity, true);
       this.doc.removeEventListener('input', onActivity, true);
       this.doc.removeEventListener('change', onActivity, true);
-      this.stopClock();
       this.disposeAudio();
       // leaving the screen: an answered item is committed, the rest of the plan stays due
       if (this.stage !== 'summary') void this.leave();
@@ -152,7 +149,6 @@ class Controller {
 
   async start(): Promise<void> {
     this.ui = await getUiPrefs(this.ctx);
-    this.tick();
     await this.showCurrent();
   }
 
@@ -195,7 +191,6 @@ class Controller {
     this.run.finish = kind;
     this.run.endedAt = this.ctx.deps.now().getTime();
     this.stage = 'summary';
-    this.stopClock();
     this.disposeAudio();
     clear(this.root);
     await renderSummary(this.root, this.ctx, this.run);
@@ -369,14 +364,14 @@ class Controller {
     };
   }
 
+  /** One quiet line: where the learner is, the kind of question, and two links. Nothing ticks and nothing is timed on screen. */
   private header(pr: Presented, withSkip: boolean): HTMLElement {
-    return h('div', { class: 'progress row', id: 'session-header' },
-      h('span', { id: 'session-progress' }, `Item ${pr.index + 1} of ${pr.total}`),
-      h('span', { id: 'session-clock', class: 'muted', ...(this.ui.showClock ? {} : { hidden: true }) }, duration(this.ctx.deps.now().getTime() - this.run.startedAt)),
-      h('span', { class: 'tag' }, FAMILY_LABEL[pr.exercise.family]),
-      withSkip ? button('Skip (Esc)', () => void this.skip(), { id: 'skip', class: 'btn small' }) : null,
-      button(this.ui.showClock ? 'Hide clock' : 'Show clock', () => void this.toggleClock(), { id: 'toggle-clock', class: 'btn small' }),
-      button('Finish early', () => void this.finish('early'), { id: 'finish-early', class: 'btn small' }));
+    return h('div', { class: 'session-bar', id: 'session-header', role: 'group', 'aria-label': 'Session' },
+      h('span', { class: 'bar-kicker', id: 'session-progress' }, `${pr.index + 1} of ${pr.total}`),
+      h('span', { class: 'bar-kicker bar-kind' }, FAMILY_LABEL[pr.exercise.family]),
+      h('span', { class: 'bar-actions' },
+        withSkip ? button('Skip', () => void this.skip(), { id: 'skip', class: 'linklike', title: 'Skip (Esc)', 'aria-keyshortcuts': 'Escape' }) : null,
+        button('Finish early', () => void this.finish('early'), { id: 'finish-early', class: 'linklike' })));
   }
 
   private paintPrompt(pr: Presented): void {
@@ -795,32 +790,6 @@ class Controller {
   private targetWords(pr: Presented): string[] {
     return [unitLabel(pr.planned.item.unitId), ...(answerInTarget(pr.exercise.family) ? pr.exercise.answerKey.accepted : [])];
   }
-
-  // ───────────── clock ─────────────
-
-  private async toggleClock(): Promise<void> {
-    this.ui = await patchUiPrefs(this.ctx, { showClock: !this.ui.showClock });
-    const clock = this.root.querySelector<HTMLElement>('#session-clock');
-    const btn = this.root.querySelector<HTMLButtonElement>('#toggle-clock');
-    if (clock) { clock.hidden = !this.ui.showClock; if (this.ui.showClock) clock.textContent = duration(this.ctx.deps.now().getTime() - this.run.startedAt); }
-    if (btn) btn.textContent = this.ui.showClock ? 'Hide clock' : 'Show clock';
-  }
-
-  private tick(): void {
-    const timers = this.ctx.deps.timers ?? { set: (fn: () => void, ms: number) => setTimeout(fn, ms), clear: (x: unknown) => clearTimeout(x as ReturnType<typeof setTimeout>) };
-    const loop = (): void => {
-      const c = this.root.querySelector<HTMLElement>('#session-clock');
-      if (c && this.ui.showClock) c.textContent = duration(this.ctx.deps.now().getTime() - this.run.startedAt);
-      this.clockHandle = timers.set(loop, 1000);
-    };
-    this.clockHandle = timers.set(loop, 1000);
-  }
-
-  private stopClock(): void {
-    const timers = this.ctx.deps.timers ?? { clear: (x: unknown) => clearTimeout(x as ReturnType<typeof setTimeout>) };
-    if (this.clockHandle !== undefined) timers.clear(this.clockHandle);
-    this.clockHandle = undefined;
-  }
 }
 
 /** "lemma:sq:shtëpi:NOUN" or "case=gen, number=pl" → the fields of the correction route; undefined when neither is given. */
@@ -847,7 +816,6 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
   const correct = results.filter((r) => r.grading.outcome === 'correct').length;
   const unbuildable = run.driver.skips().filter((s) => s.kind === 'build-failed');
   const left = Math.max(0, planned - answered - run.skipped.length - run.controls.length - unbuildable.length);
-  const elapsed = (run.endedAt ?? ctx.deps.now().getTime()) - run.startedAt;
   const recorded = results.filter((r) => r.evidence);
   const counting = recorded.filter((r) => (r.evidence?.evidence?.quality ?? 'none') !== 'none');
 
@@ -871,7 +839,6 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       h('h2', {}, run.finish === 'early' ? 'Session ended early' : 'Session complete'),
       h('dl', { class: 'facts' },
         h('dt', {}, 'Answered'), h('dd', { id: 'sum-answered' }, `${answered} of ${planned} planned, ${correct} correct`),
-        h('dt', {}, 'Time'), h('dd', {}, duration(elapsed)),
         h('dt', {}, 'Skipped'), h('dd', { id: 'sum-skipped' }, String(run.skipped.length)),
         h('dt', {}, 'Set aside'), h('dd', { id: 'sum-controls' }, ...(run.controls.length ? run.controls.flatMap((c, i) => [i ? ', ' : '', h('span', langProps(tag), unitLabel(c.unitId)), ` (${c.control})`]) : ['none'])),
         h('dt', {}, 'Still due'), h('dd', { id: 'sum-left' }, `${left + run.skipped.length} item(s) were not answered; nothing was written for them, so they stay due.`)),

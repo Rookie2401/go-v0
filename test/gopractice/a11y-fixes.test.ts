@@ -43,14 +43,13 @@ describe('embedTarget (A-11)', () => {
 });
 
 describe('one-key shortcuts and the session clock (A-08, A-09)', () => {
-  it('the review preferences carry a "Keyboard shortcuts" switch and a "Show the clock" switch, both on by default', async () => {
+  it('the review preferences carry a "Keyboard shortcuts" switch, on by default, and no clock switch', async () => {
     const rig = await makeRig({ signedIn: true });
     await reopenDetails(rig);
     const shortcuts = rig.q<HTMLInputElement>('#pref-shortcuts');
-    const clock = rig.q<HTMLInputElement>('#pref-clock');
-    await until(() => shortcuts.checked && clock.checked, 'the defaults');
+    await until(() => shortcuts.checked, 'the default');
+    expect(rig.root.querySelector('#pref-clock')).toBeNull();
     expect(shortcuts.labels?.[0]?.textContent).toMatch(/Keyboard shortcuts/);
-    expect(clock.labels?.[0]?.textContent).toMatch(/clock/);
   });
 
   it('turning the shortcuts off is remembered on the device, and a session then ignores 1 to 4 and Space (the buttons still work)', async () => {
@@ -78,21 +77,18 @@ describe('one-key shortcuts and the session clock (A-08, A-09)', () => {
     await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
   });
 
-  it('the clock can be hidden from the session header, the choice is remembered, and it comes back', async () => {
+  it('the session bar is one quiet line, with no clock and no timer control; Skip names its shortcut', async () => {
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, dueCard(A, 'mace', 'written-recognition'));
-    const clock = rig.q('#session-clock');
-    expect(clock.hidden).toBe(false);
-    rig.q('#toggle-clock').click();
-    await until(() => rig.q('#session-clock').hidden === true, 'the clock to hide');
-    expect(rig.q('#toggle-clock').textContent).toBe('Show clock');
-    expect(((await rig.area.get(UI_KEY))[UI_KEY] as { showClock?: boolean }).showClock).toBe(false);
-    // the next screen of the session (the feedback) keeps it hidden
-    key('1');
-    await until(() => !!rig.root.querySelector('#feedback'), 'the feedback');
-    expect(rig.q('#session-clock').hidden).toBe(true);
-    rig.q('#toggle-clock').click();
-    await until(() => rig.q('#session-clock').hidden === false, 'the clock to come back');
+    expect(rig.root.querySelector('#session-clock')).toBeNull();
+    expect(rig.root.querySelector('#toggle-clock')).toBeNull();
+    expect(rig.q('#session-progress').textContent).toBe('1 of 1');
+    expect(rig.q('#skip').textContent).toBe('Skip');
+    expect(rig.q('#skip').getAttribute('aria-keyshortcuts')).toBe('Escape');
+    expect(rig.q('#skip').getAttribute('title')).toBe('Skip (Esc)');
+    expect(rig.q('#finish-early').textContent).toBe('Finish early');
+    expect(/\d\d:\d\d/.test(rig.q('#session-header').textContent ?? '')).toBe(false);
+    expect(await rig.area.get(UI_KEY)).not.toHaveProperty([UI_KEY, 'showClock']);
   });
 
   it('A-16 on the first item of a session the answer box keeps focus', async () => {

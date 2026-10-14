@@ -205,14 +205,14 @@ describe('audio-only interactions, character-key shortcuts and the session clock
     destroyRigs();
   }, 30_000);
 
-  // The elapsed-time clock changes every second, starts by itself and cannot be hidden or paused (WCAG 2.2.2). It is not a live region.
-  it('A-09 the session clock can be hidden or paused (WCAG 2.2.2)', async () => {
+  // There is no timer on screen (the clock and its Hide control are gone), so nothing ticks and WCAG 2.2.2 has nothing to pause.
+  it('A-09 the session bar has no clock or timer: nothing ticks on screen (WCAG 2.2.2)', async () => {
     const A = ids('L1', 'sq');
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, dueCard(A, 'mace', 'written-recognition'));
-    expect(rig.q('#session-clock').closest('[aria-live], [role="timer"], [role="status"]')).toBeNull(); // pinned: it is not announced every second
+    expect(rig.root.querySelector('#session-clock')).toBeNull();
     const controls = [...rig.root.querySelectorAll('#session button, #session input[type="checkbox"]')].map((e) => accessibleName(e).name);
-    expect(controls.some((n) => /clock|timer|hide time|pause/i.test(n)), `a control to hide or pause the clock among: ${controls.join(', ')}`).toBe(true);
+    expect(controls.some((n) => /clock|timer|hide time|pause/i.test(n)), `no clock control among: ${controls.join(', ')}`).toBe(false);
     destroyRigs();
   }, 30_000);
 });

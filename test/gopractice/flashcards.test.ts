@@ -29,6 +29,8 @@ describe('traditional word flashcards', () => {
     await until(() => handle.plays === 1, 'pronunciation playback');
     expect(requests[0]).toMatchObject({ languageId: 'sq', kind: 'word', text: 'shtepi', autoplay: false });
     expect(await queued(rig)).toEqual([]);
+    expect(rig.q('#pronunciation-status').textContent).toBe(''); // a normal playback leaves no note under the speaker; only a failure does
+    expect(rig.q('#pronounce').getAttribute('aria-label')).toBe('Hear word');
     key('Enter');
     rig.q('[data-grade="good"]').click();
     await until(() => !!rig.root.querySelector('#summary'), 'summary');

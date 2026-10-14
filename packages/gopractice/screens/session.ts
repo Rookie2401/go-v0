@@ -485,7 +485,7 @@ class Controller {
     area.removeAttribute('hidden');
     const ref = exercise.answerKey.accepted[0] ?? '';
     append(area, [
-      h('p', { class: 'reference' }, 'Answer: ', h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ref)),
+      h('p', { class: 'reference' }, h('span', { class: 'sr' }, 'Answer: '), h('span', { ...(answerInTarget(exercise.family) ? langProps(this.tag) : {}), id: 'revealed-answer' }, ref)),
       h('p', { class: 'muted' }, 'How well did you know it?'),
       h('div', { class: 'grades', role: 'group', 'aria-label': 'How well did you know it?' }, ...GRADES.map((g, i) => {
         const word = RATING_LABEL[i + 1];
@@ -577,7 +577,7 @@ class Controller {
         if (generation !== this.pronunciationGeneration) return;
         if ((state === 'playing' || state === 'ended') && this.stage === 'prompt') this.pronunciationUsed = true;
         if (state === 'error' && status) status.textContent = 'Pronunciation could not be played here. Continue without audio.';
-        else if (state === 'ended' && status) status.textContent = 'Heard for pronunciation practice; this does not count as listening evidence.';
+        else if (status) status.textContent = ''; // a normal playback says nothing; only a failure is worth a line
       });
       this.pronunciationStateOff = off;
       try { result.playback.play(); } catch {
@@ -587,11 +587,7 @@ class Controller {
         if (status) status.textContent = 'Pronunciation could not be played here. Continue without audio.';
         return;
       }
-      if (status) status.textContent = result.playback.state === 'error'
-        ? 'Pronunciation could not be played here. Continue without audio.'
-        : result.playback.state === 'ended'
-          ? 'Heard for pronunciation practice; this does not count as listening evidence.'
-          : 'Playing pronunciation practice…';
+      if (status) status.textContent = result.playback.state === 'error' ? 'Pronunciation could not be played here. Continue without audio.' : '';
       if (this.stage === 'prompt' && (result.playback.state === 'playing' || result.playback.state === 'ended')) this.pronunciationUsed = true;
     })();
   }

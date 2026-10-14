@@ -21,6 +21,11 @@ import type { SessionManager } from './session';
 
 export const SYNC_STATUS_KEY = 'golearn:sync-status';
 export const SYNC_ALARM = 'golearn-sync';
+/**
+ * This debounce is what bounds the latency of a live second device. GoReview on the phone holds `POST /sync/wait` against the service and
+ * hears of new events the moment a push lands, so "learner reads on the desktop -> phone knows" is this 2 s plus the push itself.
+ * A signed-in event (SelectionLookedUp, ItemMarked, ...) is pushed after one debounce; do not lengthen it without telling GoReview.
+ */
 export const SYNC_DEBOUNCE_MS = 2_000;
 export const SYNC_PERIOD_MINUTES = 5;
 

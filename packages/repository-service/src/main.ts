@@ -15,6 +15,7 @@ import { join, resolve } from 'node:path';
 import { nodeCrypto } from './crypto-node';
 import type { ServiceDeps } from './deps';
 import { handle } from './handler';
+import { createChangeNotifier } from './notifier';
 import { adaptLinguistics } from './linguistics-adapter';
 
 interface Args { port: number; data: string; host: string }
@@ -43,7 +44,7 @@ function parseArgs(argv: readonly string[]): Args {
 }
 
 /** node:http request to a web Request. The body is a pull stream, so an unread or over-long body is never buffered. */
-function toRequest(req: IncomingMessage, host: string): Request {
+function toRequest(req: IncomingMessage, host: string, signal: AbortSignal): Request {
   const headers = new Headers();
   for (const [k, v] of Object.entries(req.headers)) {
     if (Array.isArray(v)) for (const x of v) headers.append(k, x);
@@ -51,7 +52,7 @@ function toRequest(req: IncomingMessage, host: string): Request {
   }
   const url = `http://${req.headers.host ?? host}${req.url ?? '/'}`;
   const method = req.method ?? 'GET';
-  if (method === 'GET' || method === 'HEAD') return new Request(url, { method, headers });
+  if (method === 'GET' || method === 'HEAD') return new Request(url, { method, headers, signal });
   let finished = false;
   const body = new ReadableStream<Uint8Array>({
     start(controller) {
@@ -63,7 +64,7 @@ function toRequest(req: IncomingMessage, host: string): Request {
     pull() { req.resume(); },
     cancel() { finished = true; req.removeAllListeners('data'); req.resume(); },
   });
-  return new Request(url, { method, headers, body, duplex: 'half' } as RequestInit);
+  return new Request(url, { method, headers, body, signal, duplex: 'half' } as RequestInit);
 }
 
 async function send(res: ServerResponse, response: Response): Promise<void> {
@@ -85,7 +86,8 @@ async function wire(dataDir: string): Promise<{ deps: ServiceDeps; close: () => 
   const store = openSqliteStore(join(dataDir, 'repository.sqlite'), { now });
   const engine = createProjectionEngine({ store, now });
   const linguistics = adaptLinguistics(createLinguisticService(store, { now }));
-  return { deps: { store, engine, linguistics, crypto: nodeCrypto, sourcePolicy: policyFor, now, log: (line) => console.log(line) }, close: () => store.close() };
+  const notifier = createChangeNotifier();
+  return { deps: { store, engine, linguistics, crypto: nodeCrypto, sourcePolicy: policyFor, now, notifier, log: (line) => console.log(line) }, close: () => { notifier.closeAll(); return store.close(); } };
 }
 
 async function main(): Promise<void> {
@@ -93,7 +95,10 @@ async function main(): Promise<void> {
   const { deps, close } = await wire(resolve(args.data));
 
   const server = createServer((req, res) => {
-    handle(toRequest(req, args.host), deps) // logs its own line: METHOD /path status ms
+    // a client that goes away (a phone that lost its network) ends its held /sync/wait request instead of leaving it to the timeout
+    const gone = new AbortController();
+    res.on('close', () => { if (!res.writableFinished) gone.abort(); });
+    handle(toRequest(req, args.host, gone.signal), deps) // logs its own line: METHOD /path status ms
       .then(async (response) => {
         await send(res, response);
         req.removeAllListeners('data');
@@ -106,6 +111,7 @@ async function main(): Promise<void> {
   const shutdown = (): void => {
     if (closing) return;
     closing = true;
+    deps.notifier?.closeAll(); // held /sync/wait requests answer changed:false now, so the server can close
     server.close(() => { void close(); process.exit(0); });
     server.closeAllConnections();
     setTimeout(() => { void close(); process.exit(0); }, 2000).unref();

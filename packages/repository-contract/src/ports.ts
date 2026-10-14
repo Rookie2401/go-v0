@@ -198,3 +198,20 @@ export interface SyncPushResponse {
 }
 export interface SyncPullRequest { deviceId: string; afterSeq: number; limit?: number; documentsSince?: string }
 export interface SyncPullResponse { events: StoredEvent[]; documents: PrivateDocument[]; head: number; serverTime: string }
+
+/**
+ * `GET /sync/status`: where the learner's event log stands.
+ * `cursor` is opaque to clients: pass it back as `SyncWaitRequest.since`. It is the decimal text of the head sequence, so `Number(cursor)` is the
+ * `afterSeq` that `POST /sync/pull` takes to receive everything after this point.
+ */
+export interface SyncStatusReply {
+  cursor: string;
+  /** The learner's stored event count (the log's head sequence). */
+  events: number;
+  /** ISO server time of the reply. */
+  at: string;
+}
+/** `POST /sync/wait`: hold until events newer than `since` exist for this learner, or `timeoutMs` (default and maximum 25000) elapses. */
+export interface SyncWaitRequest { since: string; timeoutMs?: number }
+/** `changed: true` = events newer than `since` exist now (pull after `since`); `false` = the timeout elapsed or the service is shutting down. `cursor` and `events` are the current ones either way. */
+export interface SyncWaitReply { changed: boolean; cursor: string; events: number }

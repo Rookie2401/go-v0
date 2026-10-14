@@ -5,6 +5,7 @@
 import type {
   FormAnalysis, LinguisticUnit, ProjectionEngine, RepositoryStore, SourceRestrictions, UnitRelation,
 } from '../../repository-contract/src';
+import type { ChangeNotifier } from './notifier';
 
 /** What the learner selected. The sentence (when given) is used to analyse and is never stored by the service. */
 export interface LookupInput {
@@ -77,6 +78,11 @@ export interface ServiceDeps {
    * wired by `main.ts`). A client's claim is capped by it. Absent, every claim is capped to all `unknown`.
    */
   sourcePolicy?: (readerId: unknown) => Readonly<SourceRestrictions>;
+  /**
+   * The change notifier behind `POST /sync/wait`. Absent, the handler keeps one per store (so tests and in-process use work unwired);
+   * `main.ts` wires one explicitly so it can `closeAll()` on shutdown.
+   */
+  notifier?: ChangeNotifier;
   /** Replaces the default export assembled from the store ports. */
   exporter?: (learnerId: string) => Promise<unknown>;
 }

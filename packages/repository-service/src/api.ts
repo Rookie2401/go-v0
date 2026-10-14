@@ -31,6 +31,7 @@ export interface LookupRequest { languageId: string; surface: string; sentence?:
 export interface EventsQuery { afterSeq?: number; kinds?: string[]; unitId?: string; languageId?: string; since?: string; limit?: number }
 export interface VocabularyQuery {
   languageId: string; level?: KnowledgeLevel; search?: string; after?: string; limit?: number; minEncounters?: number;
+  sort?: 'knowledge' | 'recent' | 'alphabetical';
   firstEncounterFrom?: string; firstEncounterTo?: string; lastEncounterFrom?: string; lastEncounterTo?: string;
   requiresAssistance?: boolean; unresolved?: boolean; reviewStatus?: 'none' | 'active' | 'suspended'; sourceRef?: string;
 }
@@ -66,7 +67,7 @@ export interface RepositoryApi {
   listEvents(q?: EventsQuery): Promise<ApiResult<{ events: StoredEvent[]; head: number }>>;
   knowledge(unitIds?: string[]): Promise<ApiResult<{ knowledge: UnitKnowledge[] }>>;
   vocabulary(query: VocabularyQuery): Promise<ApiResult<VocabularyPage>>;
-  candidates(enrolmentId: string, limit?: number): Promise<ApiResult<{ candidates: ReviewCandidate[] }>>;
+  candidates(enrolmentId: string, limit?: number, after?: string): Promise<ApiResult<{ candidates: ReviewCandidate[]; nextCursor?: string }>>;
   preferences(languageId?: string): Promise<ApiResult<{ preferences: AssistancePreferences }>>;
   submitReviews(events: GoEvent[]): Promise<ApiResult<EventsResponse>>;
   submitWriting(input: { observation: GoEvent; document?: { doc: PrivateDocument; expectedRevision: number } }): Promise<ApiResult<{ outcome: AppendOutcome; document?: DocumentMeta; projected: boolean }>>;
@@ -131,12 +132,12 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
     listEvents: (q = {}) => call('GET', '/events', undefined, { afterSeq: q.afterSeq, kinds: q.kinds?.join(','), unitId: q.unitId, languageId: q.languageId, since: q.since, limit: q.limit }),
     knowledge: (unitIds) => call('GET', '/knowledge', undefined, { unitIds: unitIds?.join(',') }),
     vocabulary: (q) => call('GET', '/vocabulary', undefined, {
-      languageId: q.languageId, level: q.level, search: q.search, after: q.after, limit: q.limit, minEncounters: q.minEncounters,
+      languageId: q.languageId, level: q.level, search: q.search, after: q.after, limit: q.limit, minEncounters: q.minEncounters, sort: q.sort,
       firstEncounterFrom: q.firstEncounterFrom, firstEncounterTo: q.firstEncounterTo, lastEncounterFrom: q.lastEncounterFrom, lastEncounterTo: q.lastEncounterTo,
       requiresAssistance: q.requiresAssistance === undefined ? undefined : String(q.requiresAssistance),
       unresolved: q.unresolved === undefined ? undefined : String(q.unresolved), reviewStatus: q.reviewStatus, sourceRef: q.sourceRef,
     }),
-    candidates: (enrolmentId, limit) => call('GET', '/candidates', undefined, { enrolmentId, limit }),
+    candidates: (enrolmentId, limit, after) => call('GET', '/candidates', undefined, { enrolmentId, limit, after }),
     preferences: (languageId) => call('GET', '/preferences', undefined, { languageId }),
     submitReviews: (events) => call('POST', '/reviews', { events }),
     submitWriting: (input) => call('POST', '/writing', input),

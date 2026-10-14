@@ -9,13 +9,16 @@
  * Team membership grants nothing; no route exists that reads another learner.
  */
 import {
-  CONTRACT_VERSION, EVENT_KINDS, KNOWLEDGE_LEVELS, MAX_CORRECTIONS, UNKNOWN_RESTRICTIONS, capRestrictions, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, provenanceOf, validateCorrection, validateEvent, validationForPack,
+  CONTRACT_VERSION, EVENT_KINDS, KNOWLEDGE_LEVELS, MAX_CORRECTIONS, UNKNOWN_RESTRICTIONS, capRestrictions, MAX_FUTURE_SKEW_MS, MAX_SURFACE_CHARS, familyOf, provenanceOf, surfaceFromEncounterUnitId, validateCorrection, validateEvent, validationForPack,
 } from '../../repository-contract/src';
 import type {
+  SyncStatusReply, SyncWaitReply,
   Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFamily, EventKind, GoEvent, Learner,
   LearningGoal, LinguisticUnit, PrivateDocument, RestrictionsInput, Session, SourceRef, SourceRestrictions, StoredEvent, SyncPullResponse, SyncPushResponse, Tombstone, UnitCorrection, ValidationIssue, ValidationLevel,
 } from '../../repository-contract/src';
 import type { CorrectionResult, LookupResult, ServiceDeps } from './deps';
+import { MAX_WAIT_MS, createChangeNotifier } from './notifier';
+import type { ChangeNotifier } from './notifier';
 
 export const SERVICE_VERSION = 1;
 /** The largest request body accepted (bytes), counted on the stream; over it is 413. */
@@ -363,8 +366,17 @@ async function project(ctx: Ctx): Promise<boolean> {
 async function registerSurfaces(ctx: Ctx, events: GoEvent[]): Promise<void> {
   const seen = new Set<string>();
   for (const e of events) {
-    if (e.kind !== 'SelectionLookedUp') continue;
-    const surface = (e.payload as { surface?: unknown }).surface;
+    // A reading encounter intentionally carries no surface. A short, single-word
+    // encounter may still name the exact form/lemma id created by the reader; using
+    // only that bounded id keeps the repository from reconstructing passage text.
+    const ids = e.kind === 'EncounterRecorded' && (e.subject?.itemIds?.length ?? 0) <= 4 ? e.subject?.itemIds ?? [] : [undefined];
+    const surfaces = e.kind === 'SelectionLookedUp'
+      ? [(e.payload as { surface?: unknown }).surface]
+      : ids.map((id) => {
+        return surfaceFromEncounterUnitId(id, e.languageId);
+      });
+    for (const raw of surfaces) {
+      const surface = raw;
     if (typeof surface !== 'string' || !surface.trim() || surface.length > MAX_SURFACE_CHARS) continue;
     const key = `${e.languageId}\0${surface}`;
     if (seen.has(key)) continue;
@@ -374,6 +386,7 @@ async function registerSurfaces(ctx: Ctx, events: GoEvent[]): Promise<void> {
       await ctx.deps.linguistics.resolveAndStore({ languageId: e.languageId, surface });
       await stampLookup(ctx, result);
     } catch { /* the analysis can be registered by a later lookup */ }
+    }
   }
 }
 
@@ -773,7 +786,23 @@ route('GET', '/vocabulary', true, async (ctx) => {
   if (search.length > 120) throw new Refusal(422, 'invalid-query', 'Search is limited to 120 characters.');
   const limit = intParam(ctx.query, 'limit', { def: 50, min: 1, max: 100, clamp: true });
   const after = ctx.query.get('after') ?? undefined;
-  if (after && after.length > 300) throw new Refusal(422, 'invalid-query', 'The cursor is too long.');
+  if (after && after.length > 4096) throw new Refusal(422, 'invalid-query', 'The cursor is too long.');
+  const sortParam = ctx.query.get('sort') ?? undefined;
+  if (sortParam && !['knowledge', 'recent', 'alphabetical'].includes(sortParam)) {
+    throw new Refusal(422, 'invalid-query', '"sort" must be knowledge, recent, or alphabetical.');
+  }
+  const sorted = sortParam !== undefined;
+  type SortCursor = { sort: 'knowledge' | 'recent' | 'alphabetical'; rank?: number; retention?: number; uncertainty?: number; label?: string; last?: string; unitId: string };
+  const decodeCursor = (value: string | undefined): SortCursor | undefined => {
+    if (!value || !sorted) return undefined;
+    try {
+      const json = decodeURIComponent(value.startsWith('v1.') ? value.slice(3) : value);
+      const parsed = JSON.parse(json) as SortCursor;
+      if (!parsed || parsed.sort !== sortParam || typeof parsed.unitId !== 'string') throw new Error('bad cursor');
+      return parsed;
+    } catch { throw new Refusal(422, 'invalid-query', 'The cursor is invalid for this sort.'); }
+  };
+  const sortAfter = decodeCursor(after);
   const minEncounters = intParam(ctx.query, 'minEncounters', { def: 0, min: 0, max: 1_000_000, clamp: true });
   const dateFilters = ['firstEncounterFrom', 'firstEncounterTo', 'lastEncounterFrom', 'lastEncounterTo'] as const;
   const dates: Partial<Record<(typeof dateFilters)[number], string>> = {};
@@ -808,10 +837,12 @@ route('GET', '/vocabulary', true, async (ctx) => {
     catalog = { total: rows.length, counts };
   }
   const matches: Array<{ knowledge: import('../../repository-contract/src').UnitKnowledge; unit?: LinguisticUnit; surfaceForms: string[]; lastEncounter?: string; firstEncounter?: string; reviewStatus?: 'none' | 'active' | 'suspended'; sources: SourceRef[] }> = [];
-  let cursor = after ?? '';
+  // Explicit sorting scans every bounded store page, then sorts the filtered rows globally. The
+  // old omitted-sort path below remains indexed unitId pagination for existing clients/cursors.
+  let cursor = sorted ? '' : (after ?? '');
   let hasMore = false;
   const pageSize = Math.max(100, limit);
-  while (matches.length < limit) {
+  while (sorted || matches.length < limit) {
     const rows = store.getKnowledgePage
       ? await store.getKnowledgePage(learnerId, { languageId, after: cursor || undefined, limit: pageSize, sourceRef })
       : (await store.getKnowledge(learnerId)).filter((r) => r.languageId === languageId && r.unitId > cursor).slice(0, pageSize);
@@ -885,10 +916,47 @@ route('GET', '/vocabulary', true, async (ctx) => {
       const haystack = [unit?.label, ...surfaceForms].filter(Boolean).join('\n').normalize('NFC').toLowerCase();
       if (search && !haystack.includes(search.normalize('NFC').toLowerCase())) continue;
       matches.push({ knowledge, ...(unit ? { unit } : {}), surfaceForms, ...(firstEncounter ? { firstEncounter } : {}), ...(exactLastEncounter ? { lastEncounter: exactLastEncounter } : {}), reviewStatus: currentReviewStatus, sources: [...sources.values()] });
-      if (matches.length >= limit) { hasMore = true; break; }
+      if (!sorted && matches.length >= limit) { hasMore = true; break; }
     }
     if (rows.length < pageSize) break;
     hasMore = true;
+  }
+  if (sorted) {
+    const labelOf = (m: typeof matches[number]): string => m.unit?.label ?? m.surfaceForms[0] ?? '';
+    // Use code-point ordering instead of locale state so page boundaries are stable across hosts.
+    const cmpText = (a: string, b: string): number => a < b ? -1 : a > b ? 1 : 0;
+    const compare = (a: typeof matches[number], b: typeof matches[number]): number => {
+      if (sortParam === 'knowledge') {
+        return KNOWLEDGE_LEVELS.indexOf(a.knowledge.level) - KNOWLEDGE_LEVELS.indexOf(b.knowledge.level)
+          || a.knowledge.retention.estimate - b.knowledge.retention.estimate
+          || b.knowledge.uncertainty - a.knowledge.uncertainty
+          || cmpText(labelOf(a), labelOf(b)) || cmpText(a.knowledge.unitId, b.knowledge.unitId);
+      }
+      if (sortParam === 'recent') return (b.lastEncounter ? Date.parse(b.lastEncounter) : -Infinity) - (a.lastEncounter ? Date.parse(a.lastEncounter) : -Infinity)
+        || cmpText(a.knowledge.unitId, b.knowledge.unitId);
+      return cmpText(labelOf(a), labelOf(b)) || cmpText(a.knowledge.unitId, b.knowledge.unitId);
+    };
+    matches.sort(compare);
+    // Locate the boundary by its deterministic unit id. The other key fields are
+    // carried for an opaque, self-describing cursor, but retention can decay on a
+    // later request without changing the learner's record or invalidating paging.
+    const afterIndex = sortAfter ? matches.findIndex((m) => m.knowledge.unitId === sortAfter.unitId) : -1;
+    if (sortAfter && afterIndex < 0) throw new Refusal(422, 'invalid-query', 'The cursor no longer matches this vocabulary list. Refresh and try again.');
+    const start = afterIndex + 1;
+    const page = matches.slice(start, start + limit);
+    const more = start + page.length < matches.length;
+    const last = page[page.length - 1];
+    let nextCursor: string | undefined;
+    if (more && last) {
+      const label = labelOf(last);
+      const key: SortCursor = sortParam === 'knowledge'
+        ? { sort: 'knowledge', rank: KNOWLEDGE_LEVELS.indexOf(last.knowledge.level), retention: last.knowledge.retention.estimate, uncertainty: last.knowledge.uncertainty, label, unitId: last.knowledge.unitId }
+        : sortParam === 'recent'
+          ? { sort: 'recent', last: last.lastEncounter ?? '', unitId: last.knowledge.unitId }
+          : { sort: 'alphabetical', label, unitId: last.knowledge.unitId };
+      nextCursor = `v1.${encodeURIComponent(JSON.stringify(key))}`;
+    }
+    return respond(200, { items: page, catalog, ...(nextCursor ? { nextCursor } : {}) });
   }
   return respond(200, { items: matches, catalog, ...(hasMore ? { nextCursor: cursor } : {}) });
 });
@@ -902,7 +970,16 @@ route('GET', '/candidates', true, async (ctx) => {
     throw new Refusal(404, 'no-such-enrolment', 'You have no enrolment with that id.');
   }
   const limit = intParam(ctx.query, 'limit', { def: 20, min: 1, max: 200, clamp: true });
-  return respond(200, { candidates: await ctx.deps.engine.candidates(ctx.session.learnerId, enrolmentId, { limit, now: ctx.now() }) });
+  const after = ctx.query.get('after');
+  if (after !== null && (!after || after.length > 300)) throw new Refusal(422, 'invalid-query', 'The candidate cursor is invalid.');
+  // The engine already ranks the complete learner set. Page that order so unusable
+  // exercises in an early page cannot hide usable, comparatively lower candidates.
+  const ranked = await ctx.deps.engine.candidates(ctx.session.learnerId, enrolmentId, { limit: Number.MAX_SAFE_INTEGER, now: ctx.now() });
+  const boundary = after === null ? -1 : ranked.findIndex((candidate) => candidate.unitId === after);
+  if (after !== null && boundary < 0) throw new Refusal(422, 'invalid-query', 'The candidate list changed. Refresh and try again.');
+  const page = ranked.slice(boundary + 1, boundary + 1 + limit);
+  const more = boundary + 1 + page.length < ranked.length;
+  return respond(200, { candidates: page, ...(more && page.length ? { nextCursor: page[page.length - 1].unitId } : {}) });
 });
 
 route('GET', '/preferences', true, async (ctx) => {
@@ -1109,6 +1186,50 @@ route('POST', '/sync/pull', true, async (ctx) => {
   return respond(200, response);
 });
 
+// ── sync: change cursor and long-poll ──
+
+/** One notifier per store when the deps carry none (tests, in-process use); `main.ts` wires its own so shutdown can close it. */
+const notifiers = new WeakMap<object, ChangeNotifier>();
+function notifierOf(deps: ServiceDeps): ChangeNotifier {
+  if (deps.notifier) return deps.notifier;
+  let n = notifiers.get(deps.store);
+  if (!n) { n = createChangeNotifier(); notifiers.set(deps.store, n); }
+  return n;
+}
+
+/** The cursor is the head sequence as decimal text: `Number(cursor)` is the `afterSeq` `POST /sync/pull` takes. */
+const cursorOf = (head: number): string => String(head);
+
+route('GET', '/sync/status', true, async (ctx) => {
+  assertSelf(ctx, ctx.query.get('learnerId') ?? undefined);
+  const head = await ctx.deps.store.head(ctx.session.learnerId);
+  const reply: SyncStatusReply = { cursor: cursorOf(head), events: head, at: ctx.now() };
+  return respond(200, reply);
+});
+
+route('POST', '/sync/wait', true, async (ctx) => {
+  const b = await ctx.body();
+  assertSelf(ctx, b.learnerId);
+  if (typeof b.since !== 'string' || !/^[0-9]{1,15}$/.test(b.since)) throw invalid('"since" must be a cursor from GET /sync/status or the last pull.');
+  if (b.timeoutMs !== undefined && (typeof b.timeoutMs !== 'number' || !Number.isFinite(b.timeoutMs) || b.timeoutMs < 0)) throw invalid('"timeoutMs" must be a number of milliseconds, 0 to ' + MAX_WAIT_MS + '.');
+  const timeoutMs = Math.min(Math.floor((b.timeoutMs as number | undefined) ?? MAX_WAIT_MS), MAX_WAIT_MS);
+  const since = Number(b.since);
+  const { store } = ctx.deps;
+  const learnerId = ctx.session.learnerId;
+  // "Moved" is any difference, not only growth: a cursor ahead of the head means the log was emptied (deletion), and the device must look again.
+  const moved = async (): Promise<boolean> => (await store.head(learnerId)) !== since;
+  const reply = async (changed: boolean): Promise<Response> => {
+    const head = await store.head(learnerId);
+    const body: SyncWaitReply = { changed, cursor: cursorOf(head), events: head };
+    return respond(200, body);
+  };
+  if (await moved()) return reply(true); // behind: answered at once, and never counted against the waiter cap
+  const held = notifierOf(ctx.deps).wait(learnerId, { timeoutMs, check: moved, signal: ctx.request.signal });
+  if (!held) throw new Refusal(429, 'too-many-waiters', 'This learner already has the most waiting requests (4). Close one or wait for it to return.');
+  const outcome = await held;
+  return reply(outcome.changed);
+});
+
 // ── export, tombstones ──
 
 async function buildExport(ctx: Ctx): Promise<unknown> {
@@ -1262,7 +1383,9 @@ async function dispatch(request: Request, deps: ServiceDeps): Promise<Response> 
       return parsed;
     },
   };
-  return found.run(ctx);
+  // Anything that can append events wakes the learner's waiters when it finishes (committed or not, a waiter only resolves if the head moved).
+  if (!session || method === 'GET' || found.path.join('/') === 'sync/wait') return found.run(ctx);
+  try { return await found.run(ctx); } finally { notifierOf(deps).poke(session.learnerId); }
 }
 
 /** Handle one request. Never throws: anything unexpected is a 500 without detail. One log line per request. */
@@ -1273,7 +1396,7 @@ export async function handle(request: Request, deps: ServiceDeps): Promise<Respo
     response = await dispatch(request, deps);
   } catch (e) {
     if (e instanceof Refusal) {
-      response = respond(e.status, { error: e.error, message: e.message, ...e.extra }, e.status === 401 ? { 'WWW-Authenticate': 'Bearer' } : e.status === 429 ? { 'Retry-After': '900' } : {});
+      response = respond(e.status, { error: e.error, message: e.message, ...e.extra }, e.status === 401 ? { 'WWW-Authenticate': 'Bearer' } : e.status === 429 ? { 'Retry-After': e.error === 'too-many-waiters' ? '5' : '900' } : {});
     } else {
       // never the cause: it could hold a document, a header or a password
       response = respond(500, { error: 'server-error', message: MESSAGES.server });

@@ -264,3 +264,39 @@ button.grade:focus-visible { outline: 2px solid var(--accent); outline-offset: 2
   button.grade { gap: .25rem; padding: .15rem .1rem; font-size: .88rem; }
   .grade-dot { width: 1.6rem; height: 1.6rem; }
 }
+
+/* ── installed on a phone (the GoReview build; harmless elsewhere): the notch and home-indicator safe areas, the dynamic viewport,
+      the quiet update link, and fingertip-sized targets (at least 44 x 44 CSS px: 2.75rem at the default size) ── */
+.shell { min-height: 100vh; min-height: 100dvh; }
+.topbar {
+  padding-top: calc(.55rem + env(safe-area-inset-top, 0px));
+  padding-left: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-right, 0px));
+}
+.screen {
+  padding-left: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-right, 0px));
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
+}
+.update-link { font-size: .9rem; font-style: italic; color: var(--accent); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: var(--rule-strong); }
+.update-link:hover { text-decoration-color: var(--accent); }
+/* the installed app uses a translucent status bar with light text: a band of ink behind the clock keeps it legible on the paper */
+html[data-edition="review"] body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: env(safe-area-inset-top, 0px); background: var(--ink); z-index: 30; }
+@media (prefers-color-scheme: dark) { html[data-edition="review"] body::before { background: var(--paper); } }
+html[data-edition="review"] { overscroll-behavior-y: none; }
+
+@media (pointer: coarse), (display-mode: standalone) {
+  button, .btn, .toggle-link, .linklike, .vocab-history, .update-link, .crumb a, #signin-not-now {
+    min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center;
+  }
+  select.language-kicker { min-height: 2.75rem; }
+  .cog, .icon-btn { width: 2.75rem; height: 2.75rem; }
+  .vocab-history, .crumb a, .update-link, .linklike, .toggle-link { min-width: 2.75rem; }
+  .vocab-row { min-height: 2.75rem; }
+  button.grade { min-height: 2.75rem; min-width: 2.75rem; padding: .2rem .5rem; }
+  .btn.small, button.small { padding: .1rem .85rem; }
+  .entry-link { min-height: 2.75rem; }
+  .vocab-sorts, .entry-actions, .bar-actions { gap: .3rem 1rem; }
+  input[type="text"], input[type="url"], input[type="email"], input[type="password"], input[type="number"], select:not(.language-kicker), textarea { font-size: 1rem; min-height: 2.75rem; } /* 16px or more: iOS does not zoom the page on focus */
+  .toggle input { transform: none; width: 1.4rem; height: 1.4rem; }
+}

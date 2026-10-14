@@ -80,6 +80,11 @@ export interface AppContext {
   whenSynced(): Promise<void>;
   syncView(): Promise<SyncView>;
   onSync(cb: (v: SyncView) => void): () => void;
+  /** Called when the learner's data changed underneath the screen (a pull brought events, a live update arrived); screens repaint themselves when they can. */
+  onData(cb: () => void): () => void;
+  notifyData(): void;
+  /** Marks the cached profile (enrolments) stale: the next read fetches it again. A live update calls this. */
+  invalidateProfile(): void;
   audio(): Promise<AudioDeps | null>;
   /** Device switches (remote speech consent); the audio's consent getter follows at once. */
   setSettings(patch: Partial<Settings>): Promise<Settings>;
@@ -116,6 +121,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   let consentCache = false;
   let audioDeps: AudioDeps | null | undefined;
   const listeners = new Set<(v: SyncView) => void>();
+  const dataListeners = new Set<() => void>();
+  /** How long a fetched profile is trusted, and whether a live update has declared it stale. */
+  const PROFILE_TTL_MS = 10 * 60_000;
+  let profileDirty = false;
+  let lastProfileTry = 0;
   const disposers: Array<() => void> = [];
 
   const view = (): SyncView => ({ status: lastStatus, authExpired, syncing });
@@ -229,9 +239,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     const out = await run;
     try { lastStatus = await d.sync.status(); } catch { /* */ }
     notify();
-    if (out.pull && out.pull.appended > 0) hooks.changed();
+    if (out.pull && out.pull.appended > 0) { hooks.changed(); notifyData(); }
     return out;
   }
+
+  function notifyData(): void { for (const l of [...dataListeners]) { try { l(); } catch { /* a screen's repaint must not break another */ } } }
 
   const onOnline = (): void => { if (handle) { handle.sync.setOnline(true); void syncNow({ force: true }); } };
   const onOffline = (): void => { if (handle && !handleKey.startsWith('device|')) handle.sync.setOnline(false); };
@@ -246,6 +258,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const me = await client.me();
       if (me.ok) {
         await state.setProfile({ fetchedAt: deps.now().toISOString(), email: me.data.account.email, learnerId: session.learnerId, enrolments: me.data.enrolments });
+        profileDirty = false;
         return 'fresh';
       }
       if (me.status === 401 || me.status === 403) { authExpired = true; notify(); }
@@ -270,6 +283,13 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     if (!session) { const l = await openLocal(); return l ? localEnrolments(l) : []; }
     let profile = await state.getProfile();
     if (!profile || profile.learnerId !== session.learnerId) { await refreshProfile(); profile = await state.getProfile(); }
+    else {
+      // a cached profile is trusted for ten minutes, and not at all after a live update; offline, the cache stands (one retry in half a minute)
+      const age = deps.now().getTime() - Date.parse(profile.fetchedAt);
+      const stale = profileDirty || !(age >= 0 && age < PROFILE_TTL_MS);
+      const at = deps.now().getTime();
+      if (stale && at - lastProfileTry >= 30_000) { lastProfileTry = at; await refreshProfile(); profile = (await state.getProfile()) ?? profile; }
+    }
     if (!profile || profile.learnerId !== session.learnerId) return [];
     return profile.enrolments.filter((e) => !e.endedAt).sort((a, b) => b.startedAt.localeCompare(a.startedAt));
   }
@@ -441,7 +461,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         if (l?.disconnectAccount) await l.disconnectAccount();
         await state.clearSession();
         await state.clearCaches(session.learnerId);
-        if (opts?.forget) await removeByPrefix(deps.area, [learnerPrefix(session.learnerId), `gopractice:prefs:${session.learnerId}:`, `gopractice:choices:${session.learnerId}`, `gopractice:decks:${session.learnerId}:`]);
+        if (opts?.forget) await removeByPrefix(deps.area, [learnerPrefix(session.learnerId), `gopractice:prefs:${session.learnerId}:`, `gopractice:choices:${session.learnerId}`, `gopractice:decks:${session.learnerId}:`, `gopractice:snapshot:${session.learnerId}:`]);
       }
       dropHandle();
       audioDeps = undefined;
@@ -456,7 +476,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const who = await Promise.resolve(l.identity()).catch(() => undefined);
       try { await l.clear(); } catch { /* the rows below are still removed */ }
       let n = 0;
-      if (who) n += await removeByPrefix(deps.area, [learnerPrefix(who.learnerId), `gopractice:prefs:${who.learnerId}:`, `gopractice:choices:${who.learnerId}`, `gopractice:decks:${who.learnerId}:`]);
+      if (who) n += await removeByPrefix(deps.area, [learnerPrefix(who.learnerId), `gopractice:prefs:${who.learnerId}:`, `gopractice:choices:${who.learnerId}`, `gopractice:decks:${who.learnerId}:`, `gopractice:snapshot:${who.learnerId}:`]);
       n += await state.clearCaches(who?.learnerId);
       dropHandle();
       hooks.changed();
@@ -503,6 +523,9 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       return view();
     },
     onSync(cb) { listeners.add(cb); return () => { listeners.delete(cb); }; },
+    onData(cb) { dataListeners.add(cb); return () => { dataListeners.delete(cb); }; },
+    notifyData,
+    invalidateProfile() { profileDirty = true; lastProfileTry = 0; },
     async audio() {
       if (audioDeps !== undefined) return audioDeps;
       const a = deps.audio;
@@ -518,7 +541,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     changed: hooks.changed,
     destroy() {
       for (const d of disposers) { try { d(); } catch { /* */ } }
-      dropHandle(); listeners.clear();
+      dropHandle(); listeners.clear(); dataListeners.clear();
       const o = localOpen; localOpen = undefined;
       if (o) void o.then((l) => { try { return l?.close(); } catch { return undefined; } }, () => undefined);
     },

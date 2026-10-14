@@ -179,6 +179,10 @@ export interface Deps {
   local?: () => Promise<LocalRepo>;
   /** Where the neighbouring pages are, when this copy knows them (relative links inside the extension; the extension page for the hosted copy, from config.json). */
   links?: { setup?: string; extension?: string };
+  /** 'review' in the GoReview (iPhone) build: its own title, its first-launch message, and the update link. Absent elsewhere. */
+  edition?: 'review';
+  /** Live updates (./live.ts) run in the real app (autoSync); false turns them off. Tests that exercise them pass their own timers. */
+  live?: false | { timers?: { set(fn: () => void, ms: number): unknown; clear(h: unknown): void }; pollMs?: number; waitTimeoutMs?: number; minRoundMs?: number; backoff?: { baseMs: number; maxMs: number } };
   /** Run the sync client's own timer (the real app) or only on demand (tests). */
   autoSync: boolean;
   /** Timer functions for the session clock; tests may freeze them. */

@@ -9,6 +9,9 @@
  * The header is quiet: the active language (with its variety) and the Settings cog. Review, GoTell and the rest are reached from the
  * GoReview home, which shows four things only; the sync state is spoken for assistive technology and shown only when it needs attention.
  *
+ * Live updates (./live.ts) keep the data current while the app is visible, and the "Update ready — reload" link appears when the GoReview build's
+ * service worker has a newer version waiting.
+ *
  * Routes:  #/review[/session | /history/<item> | /transfer | /decks | /vocab | /details]   #/tell   #/vocabulary   #/settings   #/signin
  */
 import { append, clear, h, p } from './dom';
@@ -20,6 +23,7 @@ import * as settingsScreen from './screens/settings';
 import * as signinScreen from './screens/signin';
 import * as tellScreen from './screens/tell';
 import * as vocabularyScreen from './screens/vocabulary';
+import { createLive, type Live } from './live';
 import type { View } from './screens/view';
 import { shortDate } from './dom';
 
@@ -90,7 +94,48 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   clear(root);
   root.append(h('div', { class: 'shell' }, header, main));
 
-  const ctx = createContext(deps, { go: (r) => { void go(r); }, changed: () => { void refreshHeader(); } });
+  const brand = deps.edition === 'review' ? 'GoReview' : 'GoPractice';
+  if (deps.edition === 'review') deps.doc.documentElement.setAttribute('data-edition', 'review');
+  let live: Live | undefined;
+  const ctx = createContext(deps, { go: (r) => { void go(r); }, changed: () => { void refreshHeader(); live?.kick(); } });
+
+  // ───────────── a newer build is waiting (the GoReview service worker) ─────────────
+
+  /** Built when a worker is waiting (the header carries nothing else until then): a quiet text button in the link style, before the sync line. */
+  let updateEl: HTMLElement | undefined;
+  const onUpdateClick = (ev: Event): void => {
+    ev.preventDefault();
+    const apply = (win as unknown as { __goreviewApplyUpdate?: () => boolean }).__goreviewApplyUpdate;
+    // the page reloads itself when the new worker takes over; without a worker to tell, a plain reload does it
+    if (!(apply && apply())) { try { win.location.reload(); } catch { /* */ } }
+  };
+  const showUpdate = (): void => {
+    if (updateEl || destroyed) return;
+    updateEl = h('button', { type: 'button', id: 'update-ready', class: 'linklike update-link' }, 'Update ready — reload');
+    updateEl.addEventListener('click', onUpdateClick);
+    header.insertBefore(updateEl, syncEl);
+  };
+  const onUpdateReady = (): void => showUpdate();
+  win.addEventListener('goreview:update-ready', onUpdateReady);
+  if ((win as unknown as { __goreviewUpdate?: unknown }).__goreviewUpdate) showUpdate();
+
+  // ───────────── live updates ─────────────
+
+  if (deps.live !== false && (deps.autoSync || deps.live)) {
+    const lv = deps.live ?? {};
+    live = createLive({
+      win, doc: deps.doc, fetch: deps.fetch, ...lv,
+      auth: async () => { const a = await ctx.api(); return a.session ? { baseUrl: a.baseUrl, token: a.session.token } : undefined; },
+      pull: async (reason) => {
+        // a live update outdates the cached profile (a language added in GoLearn) before the pull that may bring its first events
+        if (reason === 'wait') ctx.invalidateProfile();
+        const r = await ctx.syncNow({ force: true });
+        return r ? { appended: r.pull?.appended ?? 0, ...(r.pull?.cursor !== undefined ? { cursor: r.pull.cursor } : {}) } : undefined;
+      },
+      onChanged: () => { void refreshHeader(); },
+    });
+    live.kick();
+  }
 
   // ───────────── header ─────────────
 
@@ -181,7 +226,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     if (my !== seq) return;
     const def = ROUTES.find((r) => r.id === target)!;
     route = [def.id, ...subs].join('/');
-    deps.doc.title = `GoPractice — ${def.title}`;
+    deps.doc.title = brand === 'GoReview' && def.id === 'review' ? 'GoReview' : `${brand} — ${def.title}`;
     clear(main);
     main.setAttribute('data-route', route);
     const idn = await ctx.identity();
@@ -233,6 +278,9 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     destroy() {
       destroyed = true;
       win.removeEventListener('hashchange', onHash);
+      win.removeEventListener('goreview:update-ready', onUpdateReady);
+      updateEl?.removeEventListener('click', onUpdateClick);
+      live?.destroy();
       offSync();
       for (const d of disposers) { try { d(); } catch { /* */ } }
       disposers = [];

@@ -12,6 +12,7 @@
  *   gopractice:prefs:<learner>:<language>     ReviewPreferences
  *   gopractice:choices:<learner>  { <unitId>: 'later' }            "test later" notes on candidates (device-local)
  *   gopractice:candidates:<learner>:<enrolment>   the last candidate list the service sent (offline display)
+ *   gopractice:snapshot:<learner>:<language>      the last review model inputs, merged vocab, decks record and prefs (./snapshot.ts): what renders offline
  *   u:<learnerId>:…               ONE LEARNER'S DATA, kept apart by prefix: queue:*, rejected:*, quarantine:*, sync:*, and the
  *                                 local event log (log:ev:*, log:id:*, log:dk:*, log:head). Another account never reads it.
  */
@@ -31,6 +32,7 @@ export const KEYS = {
 export const prefsKey = (learnerId: string, languageId: string): string => `gopractice:prefs:${learnerId}:${languageId}`;
 export const choicesKey = (learnerId: string): string => `gopractice:choices:${learnerId}`;
 export const candidatesKey = (learnerId: string, enrolmentId: string): string => `gopractice:candidates:${learnerId}:${enrolmentId}`;
+export const snapshotKey = (learnerId: string, languageId: string): string => `gopractice:snapshot:${learnerId}:${languageId}`;
 export const learnerPrefix = (learnerId: string): string => `u:${learnerId}:`;
 
 export interface Session { token: string; learnerId: string; email: string; expiresAt: string }
@@ -249,8 +251,8 @@ export function createStateStore(area: KeyValueArea): StateStore {
     async clearCaches(learnerId) {
       await area.remove([KEYS.profile, KEYS.active]);
       let n = 2;
-      if (learnerId) n += await removeByPrefix(area, [`gopractice:candidates:${learnerId}:`]);
-      else n += await removeByPrefix(area, ['gopractice:candidates:']);
+      if (learnerId) n += await removeByPrefix(area, [`gopractice:candidates:${learnerId}:`, `gopractice:snapshot:${learnerId}:`]);
+      else n += await removeByPrefix(area, ['gopractice:candidates:', 'gopractice:snapshot:']);
       return n;
     },
   };

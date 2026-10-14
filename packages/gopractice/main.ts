@@ -48,6 +48,7 @@ export async function createRealDeps(): Promise<Deps> {
     audio: (consent) => createAudioDeps({ consent,
       ...(ext ? { extensionRuntime: ext.runtime, extensionUrl: `${location.protocol}//${location.host}${location.pathname}` } : config.speechProxyBase ? { speechProxyBase: config.speechProxyBase } : {}),
     }),
+    ...(document.querySelector('meta[name="goreview-edition"][content="review"]') ? { edition: 'review' as const } : {}),
     now: () => new Date(), newId: uuid, random: Math.random, appVersion: APP_VERSION, autoSync: true,
   };
 }

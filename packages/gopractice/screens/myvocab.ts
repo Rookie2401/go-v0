@@ -38,6 +38,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   let deckUnits: Set<string> | undefined;
   /** The word whose question is open under its row. */
   let asking: string | undefined;
+  /** An Add in flight, or the first load: a live repaint waits for them, so nothing under the learner's finger is replaced. */
+  let busy = true;
 
   const inDeck = (r: VocabRow): boolean => !!deckUnits && (r.unitIds ?? [r.unitId]).some((u) => deckUnits!.has(u));
 
@@ -66,6 +68,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
 
   async function add(r: VocabRow): Promise<void> {
+    busy = true;
     try {
       const ectx = await ctx.eventContext();
       if (!ectx) { setStatus(status, 'Choose a language first.', 'error'); return; }
@@ -84,7 +87,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         setStatus(status, `${r.label} cannot be asked yet: no exercise can be built for it. Your choice is kept as a saved word.`, 'info');
       }
       paintList();
-    } catch (e) { setStatus(status, e instanceof Error ? e.message : 'The word could not be added.', 'error'); }
+    } catch (e) { setStatus(status, e instanceof Error ? e.message : 'The word could not be added.', 'error'); } finally { busy = false; }
   }
 
   function rowView(r: VocabRow): HTMLElement {
@@ -149,6 +152,26 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     await Promise.all([worker(), worker(), worker(), worker()]);
   }
 
+  const offlineNote = (at: string): string => `You are offline: these are the words this device saved on ${at.slice(0, 10)}. New ones appear when you are back online.`;
+  const signature = (list: readonly VocabRow[]): string => JSON.stringify(list.map((r) => [r.unitId, r.level, r.encounters, r.lastSeenAt ?? '']));
+
+  /** A live update (GoLearn pushed new lookups): the list is read again and repainted in place, unless the learner is in the middle of an Add. */
+  async function refresh(): Promise<void> {
+    if (busy || !view.alive()) return;
+    busy = true;
+    try {
+      const loaded = await loadVocab(ctx, identity.languageId);
+      if (!view.alive() || loaded.stale) return;
+      const next = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
+      if (signature(next) === signature(rows)) return;
+      rows = next;
+      setStatus(status, '');
+      paintList();
+      deckUnits = undefined; void refreshDeck();
+    } catch { /* the list stays as painted */ } finally { busy = false; }
+  }
+  view.onDispose(ctx.onData(() => { void refresh(); }));
+
   paintToggles();
   setStatus(status, 'Loading your words…');
   try {
@@ -158,10 +181,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const loaded = await loadVocab(ctx, identity.languageId);
     if (!view.alive()) return;
     rows = loaded.rows.filter((r) => KNOWLEDGE_LEVELS.includes(r.level));
-    setStatus(status, '');
+    setStatus(status, loaded.stale ? offlineNote(loaded.stale) : '', loaded.stale ? 'info' : 'info');
+    busy = false;
     paintList();
     void refreshDeck();
   } catch (e) {
+    busy = false;
     if (!view.alive()) return;
     setStatus(status, `Your words could not be loaded${e instanceof Error ? `: ${e.message}` : ''}.`, 'error');
     more.append(button('Try again', () => { clear(el); void render(el, ctx, view); }, { class: 'linklike', id: 'vocab-retry' }));

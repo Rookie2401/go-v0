@@ -261,6 +261,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
   };
   void ctx.whenSynced().then(repaintIfChanged);
   view.onDispose(ctx.onSync(() => { void repaintIfChanged(); }));
+  view.onDispose(ctx.onData(() => { void repaintIfChanged(); }));
 }
 
 const DECISION_LABEL: Record<IntakeOutcome['decision'], string> = {

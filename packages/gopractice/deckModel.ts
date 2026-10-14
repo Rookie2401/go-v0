@@ -15,6 +15,7 @@ import { KNOWLEDGE_LEVELS, type KnowledgeLevel, type UnitKnowledge } from '../re
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, SessionPlan } from '../goreview/src/types';
 import type { AppContext } from './context';
 import { unitLabel } from './format';
+import { readSnapshot, writeSnapshot, MAX_SNAPSHOT_WORDS } from './snapshot';
 import { observedReviewSeconds, type ReviewModel } from './workspace';
 
 // ───────────────────────────── the current deck ─────────────────────────────
@@ -393,7 +394,22 @@ const UNITS_PER_BATCH = 50;
  * looked up, folded to one entry per word. Without the lemma lookup (it fails, or the Repository cannot answer) forms that are spelled
  * like their lemma still fold, and the rest stay their own entries.
  */
-export async function loadVocab(ctx: AppContext, languageId: string): Promise<{ rows: VocabRow[]; total: number }> {
+export async function loadVocab(ctx: AppContext, languageId: string): Promise<{ rows: VocabRow[]; total: number; /** Set when the Repository could not answer and the rows are the device's snapshot: when it was taken (ISO). */ stale?: string }> {
+  try {
+    const fresh = await loadVocabLive(ctx, languageId);
+    const who = await ctx.identity().catch(() => undefined);
+    if (who && who.languageId === languageId) await writeSnapshot(ctx, who.learnerId, languageId, { vocab: { savedAt: ctx.deps.now().toISOString(), rows: fresh.rows.slice(0, MAX_SNAPSHOT_WORDS) } });
+    return fresh;
+  } catch (e) {
+    // offline (or the service is down): the words this device last saw, said to be so
+    const who = await ctx.identity().catch(() => undefined);
+    const snap = who ? await readSnapshot(ctx, who.learnerId, languageId) : undefined;
+    if (snap?.vocab && who?.languageId === languageId) return { rows: snap.vocab.rows as VocabRow[], total: snap.vocab.rows.length, stale: snap.vocab.savedAt };
+    throw e;
+  }
+}
+
+async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ rows: VocabRow[]; total: number }> {
   const { api } = await ctx.api();
   const records: VocabRecord[] = [];
   let after: string | undefined;

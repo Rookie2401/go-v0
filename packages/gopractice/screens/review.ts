@@ -178,4 +178,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   };
   void ctx.whenSynced().then(repaintIfChanged);
   view.onDispose(ctx.onSync(() => { void repaintIfChanged(); }));
+  // a live update: the same guarded repaint (it waits while a field has focus)
+  view.onDispose(ctx.onData(() => { void repaintIfChanged(); }));
 }

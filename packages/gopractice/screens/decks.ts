@@ -51,4 +51,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     }
   }
   await paint();
+  // a live update (or a sync from another tab) may have changed what is saved: the list is read again, in place
+  view.onDispose(ctx.onData(() => { void paint(); }));
 }

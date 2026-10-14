@@ -377,6 +377,12 @@ export interface RigOptions {
   /** Sign in as the default account before returning. */
   signedIn?: boolean;
   builders?: ExerciseBuilder[];
+  /** The network the live updates (and nothing else) use; the rig's default throws. */
+  fetch?: typeof fetch;
+  /** Turn the live updates on with these timers (the rig's autoSync stays off). */
+  live?: Deps['live'];
+  /** The GoReview (iPhone) edition. */
+  edition?: Deps['edition'];
 }
 
 export const rigs: Rig[] = [];
@@ -422,7 +428,9 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const deps: Deps = {
     ...(local ? { local: async () => local } : {}),
     ...(opts.links ? { links: opts.links } : {}),
-    win: window, doc: document, fetch: (() => { throw new Error('no network in tests'); }) as unknown as typeof fetch, area, config: opts.config ?? { serviceUrl: 'https://repository.example.org' },
+    ...(opts.live ? { live: opts.live } : {}),
+    ...(opts.edition ? { edition: opts.edition } : {}),
+    win: window, doc: document, fetch: opts.fetch ?? ((() => { throw new Error('no network in tests'); }) as unknown as typeof fetch), area, config: opts.config ?? { serviceUrl: 'https://repository.example.org' },
     createApi: (_url, token) => service.api(token),
     ...(opts.transport ? { createTransport: opts.transport } : {}),
     engine, audio, now: () => new Date(clock.now), newId: () => `id${++ids}`, random: () => 0.5, appVersion: '0.1.0-test', autoSync: false,

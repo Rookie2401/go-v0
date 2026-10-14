@@ -86,8 +86,22 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
   const root = h('div', { id: 'session', class: 'session' });
   el.append(root);
-  if (run.finish) { await renderSummary(root, ctx, run); return; }
+  if (run.finish) {
+    await renderSummary(root, ctx, run);
+    view.onDispose(ctx.onData(() => { void repaintSummary(root, ctx, run, view); }));
+    return;
+  }
   await new Controller(root, ctx, run, view).start();
+}
+
+/**
+ * A live update reached a finished session: the summary is drawn again from the same run (its sync line reads the fresh state).
+ * Not while a grade is being undone (that button is disabled until the correction is written).
+ */
+async function repaintSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, view: View): Promise<void> {
+  if (!view.alive() || !root.querySelector('#summary') || root.querySelector('#session-undo button:disabled')) return;
+  clear(root);
+  await renderSummary(root, ctx, run);
 }
 
 type Stage = 'loading' | 'prompt' | 'feedback' | 'summary';
@@ -123,6 +137,8 @@ class Controller {
   private activeReviewMs = 0;
   private readonly tag: string;
   private busy = false;
+  /** A live update arrived while a card was on screen; the summary reads the new state anyway. */
+  dataWaiting = false;
   private readonly doc: Document;
   /** Interface switches of this device, read when the session screen opens. */
   private ui: UiPrefs = { ...DEFAULT_UI };
@@ -136,6 +152,12 @@ class Controller {
     this.doc.addEventListener('pointerdown', onActivity, true);
     this.doc.addEventListener('input', onActivity, true);
     this.doc.addEventListener('change', onActivity, true);
+    // a live update while a card is on screen touches nothing (the answer box, the choice, the grade stay as they are);
+    // what arrived is read when the summary is drawn, and a summary already on screen is drawn again
+    view.onDispose(ctx.onData(() => {
+      if (this.stage === 'summary') void repaintSummary(this.root, this.ctx, this.run, view);
+      else this.dataWaiting = true;
+    }));
     view.onDispose(() => {
       this.doc.removeEventListener('keydown', onKey);
       this.doc.removeEventListener('pointerdown', onActivity, true);

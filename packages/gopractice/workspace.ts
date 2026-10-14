@@ -10,6 +10,7 @@ import type { AppContext } from './context';
 import { candidatesKey, type CandidateChoice } from './state';
 import type { ActiveRun, Identity, SessionDriver } from './ports';
 import { activeSchedulerProfile } from './profiles';
+import { readSnapshot, restoreMissing, writeSnapshot } from './snapshot';
 
 // Automatic admission is deliberately serialized in this process. The event id and dedupe key below also make a
 // second tab/retry harmless: the Repository's append boundary sees the same CardAdded identity.
@@ -153,6 +154,7 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   if (!identity) return undefined;
   const { deps, state, engine } = ctx;
   const now = deps.now().toISOString();
+  await restoreMissing(ctx, identity.learnerId, identity.languageId);
   const prefs = await state.getPrefs(identity.learnerId, identity.languageId);
   const events = await ctx.events(identity.languageId);
   const schedulerProfile = activeSchedulerProfile(events);
@@ -203,9 +205,22 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
 
   const proposed = candidates.filter((c) => !ignored.has(c.unitId));
   let outcomes: IntakeOutcome[] = [];
+  let intakeFailed = false;
   if (proposed.length) {
     try { outcomes = await engine.intake({ api: (await ctx.api()).api, candidates: proposed, knowledge, deck, saved, prefs, audio, now }); }
-    catch (e) { candidateNote = `Intake failed (${e instanceof Error ? e.message : 'unknown error'}).`; }
+    catch (e) { intakeFailed = true; candidateNote = `Intake failed (${e instanceof Error ? e.message : 'unknown error'}).`; }
+  }
+  // Offline the service cannot answer for intake: the outcomes of the last successful load stand in (minus what the deck has taken since).
+  if (candidateSource === 'live' && !intakeFailed) {
+    await writeSnapshot(ctx, identity.learnerId, identity.languageId, { model: { savedAt: now, outcomes, knowledge } });
+  } else if (!outcomes.length || intakeFailed) {
+    const snap = (await readSnapshot(ctx, identity.learnerId, identity.languageId))?.model;
+    if (snap) {
+      const held = new Set(deck.filter((i) => i.status !== 'dismissed').map((i) => `${i.unitId}|${i.dimension}`));
+      outcomes = snap.outcomes.filter((o) => !ignored.has(o.unitId) && !(o.proposed && held.has(`${o.unitId}|${o.proposed.dimension}`)));
+      if (!knowledge.length) knowledge = snap.knowledge;
+      candidateNote = `The service could not be reached; the proposals are from this device's copy of ${snap.savedAt.slice(0, 16).replace('T', ' ')} UTC.`;
+    }
   }
   const choices = await state.getChoices(identity.learnerId);
   const base: ReviewModel = {

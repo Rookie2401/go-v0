@@ -97,3 +97,11 @@ start of a session · `screens/*` · `packages/gotell/src` the GoTell workspace 
 
 Boundaries (`test/ecosystem/boundaries.test.ts`): GoPractice may import `goreview`, `gotell`, the contract, `golisten`,
 `language-packs`, `repository-sync` and `repository-service/src/api`; `goreview` and `gotell` never import each other.
+
+## GoReview (the iPhone build)
+
+`vite build -c packages/gopractice/vite.config.ts --mode review` writes `dist-review/`: this app as an installable PWA (manifest, icons, iOS tags,
+service worker, "Update ready — reload"), starting at `#/review`, titled GoReview. It always needs an account (no extension on a phone) and a
+Repository service reachable over HTTPS. While it is visible, online and signed in, `live.ts` holds `POST /sync/wait` and pulls when GoLearn pushes
+(60 s pull as the fallback); `snapshot.ts` keeps the vocabulary list and the intake proposals on the device so the home, My vocab and Previous decks
+render offline. Hosting, the service requirement, what "live" means on iOS and the limits: `docs/ecosystem/GOREVIEW-IPHONE.md`.

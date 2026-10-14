@@ -23,7 +23,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const hosted = mode === 'none';
   const links = ctx.deps.links ?? {};
 
-  if (hosted) {
+  if (hosted && ctx.deps.edition === 'review') {
+    // the iPhone app: there is no extension on a phone, so the account is the only way in, and it is the one GoLearn uses
+    append(el, [h('section', { class: 'card', id: 'review-first-launch', 'aria-labelledby': 'review-first-h' },
+      h('h2', { id: 'review-first-h' }, 'Welcome to GoReview'),
+      p('GoReview shows what you read with GoLearn on the same account. Sign in with the account you use in GoLearn: your words, your decks and your reviews appear here, and what you look up while reading on your computer arrives within seconds while GoReview is open.'),
+      p('Your reviews done here go back to the same account, so GoLearn sees them too. Nothing is shown until you sign in.', 'muted'))]);
+  } else if (hosted) {
     // no wall: the page says what this copy is and where the copy that needs no account lives
     append(el, [h('section', { class: 'card', id: 'hosted-copy', 'aria-labelledby': 'hosted-h' },
       h('h2', { id: 'hosted-h' }, 'This is the hosted copy of GoPractice'),

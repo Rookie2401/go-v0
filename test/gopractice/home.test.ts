@@ -25,7 +25,7 @@ describe('the GoReview home', () => {
     expect(rig.q('#deck-count').textContent).toBe('2 cards ready');
     expect(rig.q('#previous-count').textContent).toBe('None saved yet');
     expect(rig.q('#vocab-count').textContent).toMatch(/^\d+ words?$/);
-    expect(rig.qa('#review-home button').map((b) => b.textContent)).toEqual(['Begin', 'Save deck']);
+    expect(rig.qa('#review-home button:not(.stepper-btn):not(.pill)').map((b) => b.textContent)).toEqual(['deck size: 10', 'Begin', 'Save deck']);   // the four entries and one quiet size line
     // none of what the home used to show
     for (const gone of ['.card', '#due-summary', '.time-presets', '#session-controls', '#candidates', '#deck-list', 'table', 'dl', 'details', '#link-transfer']) {
       expect(rig.root.querySelector(`#review-home ${gone}`), gone).toBeNull();
@@ -266,7 +266,8 @@ describe('My vocab: add a word to the current deck', () => {
   it('tapping a word asks, "Not now" closes the question, and History stays a small link on the row', async () => {
     const rig = await makeRig({ signedIn: true });
     useRecords(rig, WORDS2);
-    await seed(rig, [...dueCard(A, 'qen', 'meaning-to-form')]);   // a scheduled deck, so the vocabulary words are not in it
+    await rig.app.ctx.state.setPrefs('L1', { ...(await rig.app.ctx.state.getPrefs('L1', 'sq')), cardsPerDeck: 5 });
+    await seed(rig, ['qen', 'a1', 'a2', 'a3', 'a4'].flatMap((l) => dueCard(A, l, 'meaning-to-form')));   // a scheduled deck that is full, so the vocabulary words are not in it
     await rig.go('review/vocab');
     await until(() => rig.qa('.vocab-item').length === 2, 'the words');
     await flush(6);
@@ -283,7 +284,8 @@ describe('My vocab: add a word to the current deck', () => {
   it('Add records the explicit saved choice, puts the word into the current deck at once, and the row says "In your deck"', async () => {
     const rig = await makeRig({ signedIn: true });
     useRecords(rig, WORDS2);
-    await seed(rig, [...dueCard(A, 'qen', 'meaning-to-form')]);
+    await rig.app.ctx.state.setPrefs('L1', { ...(await rig.app.ctx.state.getPrefs('L1', 'sq')), cardsPerDeck: 5 });
+    await seed(rig, ['qen', 'a1', 'a2', 'a3', 'a4'].flatMap((l) => dueCard(A, l, 'meaning-to-form')));
     await reopen(rig);
     const before = Number(rig.q('#deck-count').getAttribute('data-cards'));
     await rig.go('review/vocab');

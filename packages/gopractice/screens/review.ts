@@ -15,6 +15,7 @@ import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
 import { holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, releaseHoldOut, saveDeck, type CurrentDeck } from '../deckModel';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
+import { deckSizeControl } from './cardsper';
 import { renderHistory, renderTransfer } from './history';
 import * as myVocab from './myvocab';
 import { renderDetails } from './reviewDetails';
@@ -37,6 +38,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   const status = statusLine();
   /** How many events the painted model was folded from; a sync that brings more repaints the home. */
   let paintedEvents = -1;
+  /** Whether the inline deck-size stepper is open (it stays open across the re-plan a change causes). */
+  let sizeOpen = false;
 
   async function paint(): Promise<void> {
     const model = await loadReviewModel(ctx);
@@ -149,9 +152,21 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
         })();
       }, { class: 'linklike', id: 'save-deck' }));
     }
+    // the deck's size, one quiet line: it opens the same stepper as Settings, inline
+    const sizeBox = h('div', { class: 'deck-size-box', id: 'deck-size-box', hidden: !sizeOpen });
+    const sizeLink = button(`deck size: ${m.prefs.cardsPerDeck ?? 10}`, () => {
+      sizeOpen = !sizeOpen;
+      sizeBox.hidden = !sizeOpen;
+      sizeLink.setAttribute('aria-expanded', sizeOpen ? 'true' : 'false');
+    }, { class: 'linklike', id: 'deck-size-link', 'aria-expanded': sizeOpen ? 'true' : 'false', 'aria-controls': 'deck-size-box' });
+    sizeBox.append(deckSizeControl(ctx, m.identity.learnerId, m.identity.languageId, m.prefs.cardsPerDeck, () => {
+      if (resumeId) { setStatus(status, 'A session is open: the new size applies to the next deck.', 'info'); return; }
+      void paint();
+    }, 'home'));
     return h('section', { class: 'entry', 'data-entry': 'deck', id: 'current-deck' },
       h('h2', { class: 'entry-title' }, 'Current deck'),
-      h('p', { class: 'entry-kicker', id: 'deck-count', 'data-cards': String(count) }, kicker), actions);
+      h('p', { class: 'entry-kicker', id: 'deck-count', 'data-cards': String(count) }, kicker),
+      h('p', { class: 'deck-size-line' }, sizeLink), sizeBox, actions);
   }
 
   await paint();

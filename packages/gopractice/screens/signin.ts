@@ -23,6 +23,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const hosted = mode === 'none';
   const links = ctx.deps.links ?? {};
 
+  if (ctx.deps.mobile?.native && !ctx.deps.mobile.bridge) {
+    append(el, [h('section', { class: 'card error', id: 'native-storage-unavailable' },
+      h('h2', {}, 'GoReview needs to reconnect to secure storage'),
+      p('Your sign-in is kept in iPhone Keychain. This app could not reach that storage. Close and reopen GoReview, then try again.'))]);
+  }
+
   if (hosted && ctx.deps.edition === 'review') {
     // the iPhone app: there is no extension on a phone, so the account is the only way in, and it is the one GoLearn uses
     append(el, [h('section', { class: 'card', id: 'review-first-launch', 'aria-labelledby': 'review-first-h' },

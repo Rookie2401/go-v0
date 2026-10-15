@@ -35,15 +35,23 @@ export const candidatesKey = (learnerId: string, enrolmentId: string): string =>
 export const snapshotKey = (learnerId: string, languageId: string): string => `gopractice:snapshot:${learnerId}:${languageId}`;
 export const learnerPrefix = (learnerId: string): string => `u:${learnerId}:`;
 
-export interface Session { token: string; learnerId: string; email: string; expiresAt: string }
+export interface Session { token: string; learnerId: string; email: string; expiresAt: string; /** Origin that issued the token; prevents sending it to another configured service. */ serviceUrl?: string }
 export interface Settings { remoteSpeechConsent: boolean }
 export const DEFAULT_SETTINGS: Settings = { remoteSpeechConsent: false };
 export interface Profile { fetchedAt: string; email: string; learnerId: string; enrolments: Enrolment[] }
 export interface ActiveLanguage { learnerId: string; enrolmentId: string }
 export type CandidateChoice = 'later';
 
+export const MIN_CARDS_PER_DECK = 5;
+export const MAX_CARDS_PER_DECK = 60;
+export const DEFAULT_CARDS_PER_DECK = 10;
+/** The deck size as a whole number from 5 to 60 (nonsense reads as the default). */
+export const clampDeckSize = (v: unknown): number => (typeof v === 'number' && Number.isFinite(v) ? Math.min(MAX_CARDS_PER_DECK, Math.max(MIN_CARDS_PER_DECK, Math.round(v))) : DEFAULT_CARDS_PER_DECK);
+/** The nearest card count for an earlier "session length" preference: about two cards a minute; flexible time reads as the default. */
+export const cardsFromMinutes = (minutes: number): number => (minutes === 0 ? DEFAULT_CARDS_PER_DECK : clampDeckSize(minutes * 2));
+
 export const DEFAULT_PREFERENCES = (languageId: string): ReviewPreferences => ({
-  languageId, sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true,
+  languageId, sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
 });
 
 // ───────────────────────────── key-value areas ─────────────────────────────
@@ -116,23 +124,50 @@ export function createLocalEventLog(area: KeyValueArea, opts: { now?: () => stri
     append: (learnerId, events) => lock.run(async (): Promise<AppendOutcome[]> => {
       const out: AppendOutcome[] = [];
       let head = await readHead(learnerId);
+      // Pulls can contain hundreds of rows. On native storage every area operation crosses the
+      // Capacitor bridge, and each set atomically rewrites the backing JSON file. Read all
+      // id/dedupe indexes once, then commit accepted events and the new head in one bulk set.
+      const lookupKeys = events.flatMap((e) => {
+        const keys = [idKey(learnerId, String((e as { id?: unknown })?.id ?? ''))];
+        if (typeof e?.dedupeKey === 'string' && e.dedupeKey) keys.push(dkKey(learnerId, e.dedupeKey));
+        return keys;
+      });
+      const existing = lookupKeys.length ? await area.get(lookupKeys) : {};
+      const seenIds = new Map<string, unknown>();
+      const seenDedupe = new Map<string, string>();
+      for (const e of events) {
+        const id = String((e as { id?: unknown })?.id ?? '');
+        const seq = existing[idKey(learnerId, id)];
+        if (seq !== undefined) seenIds.set(id, seq);
+        if (typeof e?.dedupeKey === 'string' && e.dedupeKey) {
+          const other = existing[dkKey(learnerId, e.dedupeKey)];
+          if (typeof other === 'string') seenDedupe.set(e.dedupeKey, other);
+        }
+      }
+      const writes: Record<string, unknown> = {};
       for (const e of events) {
         const issues = validateEvent(e);
         if (issues.length) { out.push({ id: String((e as { id?: unknown })?.id ?? ''), stored: false, issues }); continue; }
         if (e.learnerId !== learnerId) { out.push({ id: e.id, stored: false, issues: [{ path: 'learnerId', message: 'the event belongs to another learner' }] }); continue; }
-        const seen = (await area.get(idKey(learnerId, e.id)))[idKey(learnerId, e.id)];
-        if (seen !== undefined) { out.push({ id: e.id, stored: false, duplicateOf: e.id }); continue; }
+        if (seenIds.has(e.id)) { out.push({ id: e.id, stored: false, duplicateOf: e.id }); continue; }
         if (e.dedupeKey) {
-          const other = (await area.get(dkKey(learnerId, e.dedupeKey)))[dkKey(learnerId, e.dedupeKey)] as string | undefined;
+          const other = seenDedupe.get(e.dedupeKey);
           if (other) { out.push({ id: e.id, stored: false, duplicateOf: other }); continue; }
         }
         head += 1;
         const stored: StoredEvent = { ...e, seq: head, recordedAt: e.recordedAt ?? now() };
-        await area.set({
-          [evKey(learnerId, head)]: stored, [idKey(learnerId, e.id)]: head, ...(e.dedupeKey ? { [dkKey(learnerId, e.dedupeKey)]: e.id } : {}),
-          [headKey(learnerId)]: head,
-        });
+        writes[evKey(learnerId, head)] = stored;
+        writes[idKey(learnerId, e.id)] = head;
+        seenIds.set(e.id, head);
+        if (e.dedupeKey) {
+          writes[dkKey(learnerId, e.dedupeKey)] = e.id;
+          seenDedupe.set(e.dedupeKey, e.id);
+        }
         out.push({ id: e.id, stored: true });
+      }
+      if (Object.keys(writes).length) {
+        writes[headKey(learnerId)] = head;
+        await area.set(writes);
       }
       return out;
     }),
@@ -178,6 +213,8 @@ export interface StateStore {
   setActive(learnerId: string, enrolmentId: string): Promise<void>;
   getPrefs(learnerId: string, languageId: string): Promise<ReviewPreferences>;
   setPrefs(learnerId: string, prefs: ReviewPreferences): Promise<ReviewPreferences>;
+  /** Changes some of the preferences as one read-and-write, so two controls changing different ones at once cannot overwrite each other. */
+  updatePrefs(learnerId: string, languageId: string, patch: Partial<ReviewPreferences>): Promise<ReviewPreferences>;
   getChoices(learnerId: string): Promise<Record<string, CandidateChoice>>;
   setChoice(learnerId: string, unitId: string, choice: CandidateChoice | undefined): Promise<void>;
   /** Everything an account switch must forget: the profile, the active language and the cached candidate lists of that learner. */
@@ -195,10 +232,17 @@ export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string 
     includeListening: p.includeListening === true,
     grammarShare: num(p.grammarShare, 0, 1, d.grammarShare),
     prioritizeSaved: p.prioritizeSaved !== false,
+    cardsPerDeck: clampDeckSize(p.cardsPerDeck ?? d.cardsPerDeck),
   };
 };
 
-export function createStateStore(area: KeyValueArea): StateStore {
+export interface SecureSessionStore {
+  get(): Promise<Session | undefined>;
+  set(session: Session): Promise<void>;
+  clear(): Promise<void>;
+}
+
+export function createStateStore(area: KeyValueArea, secureSession?: SecureSessionStore): StateStore {
   const read = async <T>(key: string): Promise<T | undefined> => {
     try { return (await area.get(key))[key] as T | undefined; } catch { return undefined; }
   };
@@ -211,11 +255,14 @@ export function createStateStore(area: KeyValueArea): StateStore {
   return {
     area,
     async getSession() {
+      if (secureSession) { try { return await secureSession.get(); } catch { return undefined; } }
       const v = await read<Record<string, unknown>>(KEYS.session);
-      return v && str(v.token) && v.token && str(v.learnerId) && str(v.email) && str(v.expiresAt) ? { token: v.token, learnerId: v.learnerId, email: v.email, expiresAt: v.expiresAt } : undefined;
+      return v && str(v.token) && v.token && str(v.learnerId) && str(v.email) && str(v.expiresAt)
+        ? { token: v.token, learnerId: v.learnerId, email: v.email, expiresAt: v.expiresAt, ...(str(v.serviceUrl) ? { serviceUrl: v.serviceUrl } : {}) }
+        : undefined;
     },
-    setSession: (s) => area.set({ [KEYS.session]: s }),
-    clearSession: () => area.remove(KEYS.session),
+    setSession: (s) => secureSession ? secureSession.set(s) : area.set({ [KEYS.session]: s }),
+    clearSession: () => secureSession ? secureSession.clear() : area.remove(KEYS.session),
     async getService() { const v = await read<{ baseUrl?: unknown }>(KEYS.service); return v && str(v.baseUrl) ? { baseUrl: v.baseUrl } : undefined; },
     async setService(baseUrl) { if (baseUrl) await area.set({ [KEYS.service]: { baseUrl } }); else await area.remove(KEYS.service); },
     async getSettings() { const v = (await read<Record<string, unknown>>(KEYS.settings)) ?? {}; return { remoteSpeechConsent: v.remoteSpeechConsent === true }; },
@@ -232,8 +279,21 @@ export function createStateStore(area: KeyValueArea): StateStore {
     setActive: (learnerId, enrolmentId) => area.set({ [KEYS.active]: { learnerId, enrolmentId } satisfies ActiveLanguage }),
     async getPrefs(learnerId, languageId) {
       const v = await read<Partial<ReviewPreferences>>(prefsKey(learnerId, languageId));
+      // once: a record from before cards-per-deck keeps its meaning, as the nearest card count for the minutes it asked for
+      if (v && typeof v === 'object' && v.cardsPerDeck === undefined && typeof v.sessionMinutes === 'number') {
+        const migrated = clampPrefs({ ...v, languageId, cardsPerDeck: cardsFromMinutes(v.sessionMinutes) });
+        try { await area.set({ [prefsKey(learnerId, languageId)]: migrated }); } catch { /* read again next time */ }
+        return migrated;
+      }
       return clampPrefs({ ...(v ?? {}), languageId });
     },
+    updatePrefs: (learnerId, languageId, patch) => serial(async () => {
+      const v = await read<Partial<ReviewPreferences>>(prefsKey(learnerId, languageId));
+      const migrated = v && v.cardsPerDeck === undefined && typeof v.sessionMinutes === 'number' ? { cardsPerDeck: cardsFromMinutes(v.sessionMinutes) } : {};
+      const next = clampPrefs({ ...(v ?? {}), ...migrated, ...patch, languageId });
+      await area.set({ [prefsKey(learnerId, languageId)]: next });
+      return next;
+    }),
     async setPrefs(learnerId, prefs) {
       const next = clampPrefs(prefs);
       await area.set({ [prefsKey(learnerId, next.languageId)]: next });

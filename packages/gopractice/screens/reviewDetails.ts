@@ -10,7 +10,9 @@ import { append, button, clear, embedTarget, h, langProps, p, setStatus, statusL
 import { itemMarked } from '../events';
 import { DIMENSION_LABEL, FAMILY_LABEL, languageName, unitLabel } from '../format';
 import { beginSession, endSavedSession, loadReviewModel, observedReviewSeconds, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
+import { deckSizeControl } from './cardsper';
 import { prefsForm } from './prefs';
+import { holdOutOf, planCurrentDeck } from '../deckModel';
 import type { View } from './view';
 
 export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
@@ -114,28 +116,22 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
     const start = button('Start a session', () => {
       start.disabled = true;
       void (async () => {
-        const r = await beginSession(ctx, await freshModel(m));
+        const current = await freshModel(m);
+        const planned = await planCurrentDeck(ctx, current, await holdOutOf(ctx, current.identity.learnerId, current.identity.languageId));
+        const r = await beginSession(ctx, current, { plan: planned.plan });
         if (!r.ok) { start.disabled = false; setStatus(status, r.message, 'info'); return; }
         ctx.run.active = r.run;
         ctx.go('review/session');
       })();
     }, { id: 'start-session', class: 'btn primary' });
-    note.textContent = `${m.prefs.sessionMinutes === 0 ? 'Flexible time' : `Up to ${m.prefs.sessionMinutes} minutes`}, at most ${m.prefs.maxNew} new item(s). Review results are recorded only when you answer.`;
-    const presetStatus = statusLine();
-    const presets = [5, 10, 15, 20, 0] as const;
-    const choices = h('div', { class: 'row time-presets', role: 'group', 'aria-label': 'Session time' },
-      ...presets.map((minutes) => button(minutes === 0 ? 'Flexible' : `${minutes} min`, () => {
-        const savingNow = ctx.state.setPrefs(m.identity.learnerId, { ...m.prefs, sessionMinutes: minutes });
-        saving.push(savingNow);
-        void savingNow.then(() => { setStatus(presetStatus, 'Session time saved.', 'ok'); return paint(); })
-          .catch(() => setStatus(presetStatus, 'Session time could not be saved.', 'error'));
-      }, { class: 'btn small', 'data-minutes': minutes, ...(m.prefs.sessionMinutes === minutes ? { 'aria-pressed': 'true' } : { 'aria-pressed': 'false' }) })));
-    return h('section', { class: 'card' }, h('div', { class: 'row' }, start, h('a', { class: 'btn', href: '#/review/transfer', id: 'link-transfer' }, 'Transfer measures')), h('p', {}, 'Session time'), choices, presetStatus, note);
+    note.textContent = `${m.prefs.cardsPerDeck ?? 10} cards per deck, at most ${m.prefs.maxNew} new item(s) from the schedule. Review results are recorded only when you answer.`;
+    const size = deckSizeControl(ctx, m.identity.learnerId, m.identity.languageId, m.prefs.cardsPerDeck, () => { void paint(); }, 'details');
+    return h('section', { class: 'card' }, h('div', { class: 'row' }, start, h('a', { class: 'btn', href: '#/review/transfer', id: 'link-transfer' }, 'Transfer measures')), h('p', {}, 'Cards per deck'), size, note);
   }
 
   function controlsBlock(m: ReviewModel): HTMLElement {
     const d = h('details', { class: 'card', id: 'session-controls' }, h('summary', {}, 'Session controls'),
-      prefsForm(ctx, m.identity.learnerId, m.prefs, () => { setStatus(status, 'Preferences saved.', 'ok'); }, (p) => { saving.push(p); }));
+      prefsForm(ctx, m.identity.learnerId, m.prefs, () => { setStatus(status, 'Preferences saved.', 'ok'); }, (p) => { saving.push(p); }, { deckSize: false }));
     return d;
   }
 

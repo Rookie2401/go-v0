@@ -77,8 +77,8 @@ describe('Settings', () => {
     const box = rig.q<HTMLInputElement>('#consent-remote-speech');
     box.checked = true; box.dispatchEvent(new Event('change'));
     await until(async () => (await rig.app.ctx.state.getSettings()).remoteSpeechConsent, 'the switch');
-    type(rig.q<HTMLInputElement>('#pref-minutes'), '15');
-    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).sessionMinutes === 15, 'the preference');
+    type(rig.q<HTMLInputElement>('#pref-size'), '15');
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 15, 'the preference');
   });
 
   it('validates the service address and keeps the old one when it is refused', async () => {

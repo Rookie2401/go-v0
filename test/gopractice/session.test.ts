@@ -267,6 +267,18 @@ describe('an audio-only question', () => {
     expect(rig.audio!.handles[0].disposed).toBe(true);
   });
 
+  it('stops in-flight audio when the native app suspends and allows playback again on resume', async () => {
+    const rig = await audioRig();
+    key(' ');
+    await until(() => (rig.audio?.handles[0]?.plays ?? 0) === 1, 'the first play');
+    window.dispatchEvent(new Event('suspend'));
+    expect(rig.audio!.handles[0].disposed).toBe(true);
+    window.dispatchEvent(new Event('resume'));
+    key(' ');
+    await until(() => (rig.audio?.handles[1]?.replays ?? 0) === 1, 'playback after resume');
+    expect(rig.audio!.handles).toHaveLength(2);
+  });
+
   it('does not count a provider that is already in an error state as heard audio', async () => {
     const rig = await makeRig({ signedIn: true, audio: fakeAudio({ playbackFails: true }) });
     await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: true });

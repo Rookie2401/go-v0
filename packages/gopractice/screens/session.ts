@@ -148,10 +148,20 @@ class Controller {
     this.tag = run.ctx.varietyId ?? run.ctx.languageId;
     const onKey = (ev: KeyboardEvent): void => { this.trackReviewActivity(); void this.key(ev); };
     const onActivity = (): void => this.trackReviewActivity();
+    const onSuspend = (): void => {
+      this.trackReviewActivity();
+      this.lastReviewActivityAt = undefined;
+      this.disposeAudio();
+    };
+    const onResume = (): void => {
+      if (this.stage === 'prompt') this.lastReviewActivityAt = this.ctx.deps.now().getTime();
+    };
     this.doc.addEventListener('keydown', onKey);
     this.doc.addEventListener('pointerdown', onActivity, true);
     this.doc.addEventListener('input', onActivity, true);
     this.doc.addEventListener('change', onActivity, true);
+    ctx.deps.win.addEventListener('suspend', onSuspend);
+    ctx.deps.win.addEventListener('resume', onResume);
     // a live update while a card is on screen touches nothing (the answer box, the choice, the grade stay as they are);
     // what arrived is read when the summary is drawn, and a summary already on screen is drawn again
     view.onDispose(ctx.onData(() => {
@@ -163,6 +173,8 @@ class Controller {
       this.doc.removeEventListener('pointerdown', onActivity, true);
       this.doc.removeEventListener('input', onActivity, true);
       this.doc.removeEventListener('change', onActivity, true);
+      ctx.deps.win.removeEventListener('suspend', onSuspend);
+      ctx.deps.win.removeEventListener('resume', onResume);
       this.disposeAudio();
       // leaving the screen: an answered item is committed, the rest of the plan stays due
       if (this.stage !== 'summary') void this.leave();

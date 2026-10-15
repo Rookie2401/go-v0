@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
 import { createMemoryArea } from '../../packages/repository-sync/src';
+import type { KeyValueArea } from '../../packages/repository-sync/src';
 import { clampPrefs, createLocalEventLog, createScopedArea, createWebKeyValueArea, DEFAULT_PREFERENCES, removeByPrefix } from '../../packages/gopractice/state';
 import { cardAdded, ids, reviewed } from './helpers';
 
@@ -38,6 +39,33 @@ describe('the local event log', () => {
     expect((await log.list({ learnerId: 'L1', afterSeq: 2 })).length).toBe(1);
     expect((await log.list({ learnerId: 'L2' })).length).toBe(0);
   });
+
+  it('commits a full pull page with bounded storage operations', async () => {
+    const backing = createMemoryArea();
+    const calls = { get: 0, set: 0 };
+    const area: KeyValueArea = {
+      async get(keys) { calls.get += 1; return backing.get(keys); },
+      async set(items) { calls.set += 1; return backing.set(items); },
+      remove: (keys) => backing.remove(keys),
+      list: (prefix) => backing.list(prefix),
+    };
+    const log = createLocalEventLog(area);
+    const page = Array.from({ length: 500 }, (_, i) => cardAdded(A, `batch-${i}`, 'meaning-to-form', `2026-10-01T10:${String(i % 60).padStart(2, '0')}:00.000Z`));
+
+    calls.get = 0; calls.set = 0;
+    const result = await log.append('L1', page);
+
+    expect(result).toHaveLength(500);
+    expect(result.every((row) => row.stored)).toBe(true);
+    // One head read, one batched index read, one atomic bulk write; no per-row bridge/storage calls.
+    expect(calls).toEqual({ get: 2, set: 1 });
+    expect(await log.head('L1')).toBe(500);
+    expect((await log.list({ learnerId: 'L1' })).map((e) => e.seq)).toEqual(Array.from({ length: 500 }, (_, i) => i + 1));
+    calls.get = 0; calls.set = 0;
+    const retry = await log.append('L1', page);
+    expect(retry.every((row) => row.duplicateOf === row.id)).toBe(true);
+    expect(calls).toEqual({ get: 2, set: 0 });
+  });
 });
 
 describe('storage areas', () => {
@@ -70,7 +98,11 @@ describe('storage areas', () => {
 
 describe('review preferences', () => {
   it('have defaults and are clamped', () => {
-    expect(DEFAULT_PREFERENCES('sq')).toEqual({ languageId: 'sq', sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
+    expect(DEFAULT_PREFERENCES('sq')).toEqual({ languageId: 'sq', sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: 10 });
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 1 }).cardsPerDeck).toBe(5);
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 9999 }).cardsPerDeck).toBe(60);
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: 12.6 }).cardsPerDeck).toBe(13);
+    expect(clampPrefs({ languageId: 'sq', cardsPerDeck: Number.NaN }).cardsPerDeck).toBe(10);
     expect(clampPrefs({ languageId: 'sq', sessionMinutes: -4, maxNew: 1000, desiredRetention: 2, grammarShare: 5 })).toMatchObject({ sessionMinutes: 1, maxNew: 50, desiredRetention: 0.97, grammarShare: 1 });
     expect(clampPrefs({ languageId: 'sq', sessionMinutes: Number.NaN })).toMatchObject({ sessionMinutes: 10 });
     expect(clampPrefs({ languageId: 'sq', sessionMinutes: 0 })).toMatchObject({ sessionMinutes: 0 });

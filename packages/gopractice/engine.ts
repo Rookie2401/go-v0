@@ -25,18 +25,42 @@ export interface EngineOptions {
 }
 
 const noFacts: FactsProvider = { factsFor: async () => undefined };
+const WARM_FACTS_TTL_MS = 30_000;
 
 export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   const now = opts.now ?? (() => new Date().toISOString());
   const random = opts.random ?? Math.random;
   const scheduler = (desiredRetention: number, profile?: SchedulerProfile) => createFsrsScheduler({ desiredRetention,
     ...(profile ? { parameters: profile.parameters, maximumInterval: profile.maximumInterval } : {}) });
-  const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => opts.factsFor?.(languageId, api) ?? noFacts;
+  // Pack analyzers are language scoped, while their repository lookup is API scoped. Reuse the
+  // provider only for the exact API client (the context keeps that client stable per service/token).
+  const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
+  const warmFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
+  const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => {
+    let byLanguage = providers.get(api);
+    if (!byLanguage) { byLanguage = new Map(); providers.set(api, byLanguage); }
+    if (!byLanguage.has(languageId)) {
+      const configured = opts.factsFor?.(languageId, api);
+      // A missing provider can become available later (for example after a pack is loaded),
+      // so only positive provider lookups are memoized.
+      if (configured) byLanguage.set(languageId, configured);
+      else return noFacts;
+    }
+    return byLanguage.get(languageId)!;
+  };
+  const configuredFactsOf = (languageId: string, api: RepositoryApi): FactsProvider | undefined => opts.factsFor?.(languageId, api);
+  const takeWarmFacts = (api: RepositoryApi, languageId: string, unitId: string): Awaited<ReturnType<FactsProvider['factsFor']>> | undefined => {
+    const cache = warmFacts.get(api);
+    const key = `${languageId}\u0000${unitId}`;
+    const entry = cache?.get(key);
+    cache?.delete(key); // successful intake facts are consumed exactly once by deck admission
+    return entry && Date.now() - entry.at < WARM_FACTS_TTL_MS ? entry.facts ?? undefined : undefined;
+  };
 
   return {
     factsFor: (unitId, languageId, api) => factsOf(languageId, api).factsFor(unitId, languageId),
     async exerciseAvailable(request) {
-      const facts = await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId);
+      const facts = takeWarmFacts(request.api, request.languageId, request.unitId) ?? await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId);
       const builder = resolveBuilder(opts.builders, request.family);
       if (!facts || !builder) return false;
       const target = { unitId: request.unitId, unitKind: request.unitKind, languageId: request.languageId, dimension: request.dimension };
@@ -51,12 +75,31 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
     foldDeck: (events, languageId, _prefs, at) => foldDeckItems(events, scheduler(0.9), { languageId, now: at }),
 
     async intake(req) {
-      const facts = opts.factsFor?.(req.prefs.languageId, req.api);
+      const facts = configuredFactsOf(req.prefs.languageId, req.api);
       if (facts) {
-        return gatherCandidates({
+        const cache = warmFacts.get(req.api);
+        for (const id of new Set([...req.candidates.map((c) => c.unitId), ...req.deck.map((item) => item.unitId)])) {
+          cache?.delete(`${req.prefs.languageId}\u0000${id}`);
+        }
+        const captured = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
+        const capturing: FactsProvider = { ...facts, async factsFor(unitId, languageId) {
+          const value = await facts.factsFor(unitId, languageId);
+          if (value) captured.set(unitId, value); // never retain missing/failed facts
+          return value;
+        } };
+        const out = await gatherCandidates({
           api: { candidates: async () => req.candidates, knowledge: async () => req.knowledge },
-          facts, audio: async () => req.audio, deck: req.deck, saved: req.saved, preferences: req.prefs, now: req.now, enrolmentId: '', limit: req.candidates.length || 1,
+          facts: Object.assign(capturing, { prime: (ids: string[]) => (facts as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(ids) ?? Promise.resolve() }),
+          audio: async () => req.audio, deck: req.deck, saved: req.saved, preferences: req.prefs, now: req.now, enrolmentId: '', limit: req.candidates.length || 1,
         });
+        if (captured.size) {
+          let cache = warmFacts.get(req.api);
+          if (!cache) { cache = new Map(); warmFacts.set(req.api, cache); }
+          for (const [key, entry] of cache) if (Date.now() - entry.at >= WARM_FACTS_TTL_MS) cache.delete(key);
+          for (const [id, value] of captured) cache.set(`${req.prefs.languageId}\u0000${id}`, { at: Date.now(), facts: value });
+          while (cache.size > 256) cache.delete(cache.keys().next().value!);
+        }
+        return out;
       }
       // without pack facts the decision rests on the Repository's candidate alone; the session still refuses what cannot be built
       const byUnit = new Map(req.knowledge.map((k) => [k.unitId, k] as const));

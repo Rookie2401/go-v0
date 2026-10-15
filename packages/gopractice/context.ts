@@ -109,7 +109,18 @@ export function defaultTransport(api: RepositoryApi): Transport {
 }
 
 export function createContext(deps: Deps, hooks: { go(route: string): void; changed(): void }): AppContext {
-  const state = createStateStore(deps.area);
+  const state = createStateStore(deps.area, deps.mobile?.native ? {
+    get: async () => {
+      const session = await deps.mobile!.getSession(await serviceUrl());
+      return session?.serviceUrl ? session : undefined;
+    },
+    set: (session) => deps.mobile!.setSession(session),
+    clear: async () => {
+      const origin = await serviceUrl();
+      const session = await deps.mobile!.getSession(origin);
+      await deps.mobile!.clearSession(session?.serviceUrl ?? origin);
+    },
+  } : undefined);
   const run: { active?: ActiveRun } = {};
   let handle: DataHandle | undefined;
   let handleKey = '';
@@ -127,6 +138,13 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   let profileDirty = false;
   let lastProfileTry = 0;
   const disposers: Array<() => void> = [];
+  let identityMemo: { expiresAt: number; value: Identity | undefined } | undefined;
+  let identityFlight: Promise<Identity | undefined> | undefined;
+  let identityRevision = 0;
+  let identityMemoAllowed = !deps.local;
+  let lastRemoteClient: { baseUrl: string; token?: string; factory: Deps['createApi']; client: RepositoryApi } | undefined;
+  const invalidateIdentity = (): void => { identityRevision += 1; identityMemo = undefined; identityFlight = undefined; };
+  const changed = (): void => { invalidateIdentity(); hooks.changed(); };
 
   const view = (): SyncView => ({ status: lastStatus, authExpired, syncing });
   const notify = (): void => { const v = view(); for (const l of [...listeners]) { try { l(v); } catch { /* a listener must not break sync */ } } };
@@ -142,7 +160,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   async function deviceId(): Promise<string> {
     const cur = (await deps.area.get(KEYS.device))[KEYS.device];
     if (typeof cur === 'string' && cur) return cur;
-    const id = `web-${deps.newId()}`;
+    const id = `${deps.mobile?.native && deps.mobile.platform === 'ios' ? 'ios' : 'web'}-${deps.newId()}`;
     await deps.area.set({ [KEYS.device]: id });
     return id;
   }
@@ -164,7 +182,10 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   async function api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }> {
     const [baseUrl, session] = await Promise.all([serviceUrl(), state.getSession()]);
     if (!session) { const l = await openLocal(); if (l) return { api: l.api, session: undefined, baseUrl: '' }; }
-    return { api: deps.createApi(baseUrl, session?.token), session, baseUrl };
+    const token = session?.serviceUrl && session.serviceUrl !== baseUrl ? undefined : session?.token;
+    let client = lastRemoteClient?.baseUrl === baseUrl && lastRemoteClient.token === token && lastRemoteClient.factory === deps.createApi ? lastRemoteClient.client : undefined;
+    if (!client) { client = deps.createApi(baseUrl, token); lastRemoteClient = { baseUrl, token, factory: deps.createApi, client }; }
+    return { api: client, session, baseUrl };
   }
 
   function dropHandle(): void {
@@ -195,6 +216,10 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     return handle;
   }
 
+  const learnerDataPrefix = (learnerId: string, baseUrl?: string): string => deps.mobile?.native && baseUrl
+    ? `u:server:${encodeURIComponent(baseUrl)}:${encodeURIComponent(learnerId)}:`
+    : learnerPrefix(learnerId);
+
   async function data(): Promise<DataHandle | undefined> {
     const { api: client, session, baseUrl } = await api();
     if (!session) {
@@ -206,7 +231,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     if (handle && handleKey === key) return handle;
     dropHandle();
     const device = await deviceId();
-    const area = createScopedArea(deps.area, learnerPrefix(session.learnerId));
+    const area = createScopedArea(deps.area, learnerDataPrefix(session.learnerId, baseUrl));
     const queue = createLocalQueue(area, { now: () => deps.now().getTime() });
     const log = createLocalEventLog(area, { now: () => deps.now().toISOString() });
     const transport = (deps.createTransport ?? defaultTransport)(client);
@@ -239,17 +264,33 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     const out = await run;
     try { lastStatus = await d.sync.status(); } catch { /* */ }
     notify();
-    if (out.pull && out.pull.appended > 0) { hooks.changed(); notifyData(); }
+    if (out.pull && out.pull.appended > 0) { changed(); notifyData(); }
     return out;
   }
 
-  function notifyData(): void { for (const l of [...dataListeners]) { try { l(); } catch { /* a screen's repaint must not break another */ } } }
+  function notifyData(): void { invalidateIdentity(); for (const l of [...dataListeners]) { try { l(); } catch { /* a screen's repaint must not break another */ } } }
 
   const onOnline = (): void => { if (handle) { handle.sync.setOnline(true); void syncNow({ force: true }); } };
   const onOffline = (): void => { if (handle && !handleKey.startsWith('device|')) handle.sync.setOnline(false); };
+  const onResume = (): void => {
+    if (!handle) return;
+    handle.sync.setOnline(onlineNow());
+    if (deps.autoSync) handle.sync.start(30_000);
+    profileDirty = true;
+    invalidateIdentity();
+    lastProfileTry = 0;
+    void syncNow({ force: true });
+  };
+  const onSuspend = (): void => {
+    if (!handle) return;
+    handle.sync.stop();
+  };
   deps.win.addEventListener('online', onOnline);
   deps.win.addEventListener('offline', onOffline);
-  disposers.push(() => { deps.win.removeEventListener('online', onOnline); deps.win.removeEventListener('offline', onOffline); });
+  deps.win.addEventListener('resume', onResume);
+  deps.win.addEventListener('suspend', onSuspend);
+  const removeMobileLifecycle = deps.mobile?.native ? deps.mobile.installLifecycle?.(deps.win) : undefined;
+  disposers.push(() => { deps.win.removeEventListener('online', onOnline); deps.win.removeEventListener('offline', onOffline); deps.win.removeEventListener('resume', onResume); deps.win.removeEventListener('suspend', onSuspend); removeMobileLifecycle?.(); });
 
   async function refreshProfile(): Promise<'fresh' | 'cached' | 'none'> {
     const { api: client, session } = await api();
@@ -343,8 +384,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     return best;
   }
 
-  async function identity(): Promise<Identity | undefined> {
+  async function computeIdentity(): Promise<Identity | undefined> {
     const session = await state.getSession();
+    // Local Repository enrolments can change in GoLearn without a GoPractice invalidation event.
+    // Keep only in-flight deduplication there; remote identities retain the short result memo.
+    identityMemoAllowed = !!session || !deps.local;
     if (!session) {
       const l = await openLocal();
       if (!l) return undefined;
@@ -377,6 +421,22 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     };
   }
 
+  async function identity(): Promise<Identity | undefined> {
+    const at = deps.now().getTime();
+    if (identityMemoAllowed && identityMemo && at < identityMemo.expiresAt) return identityMemo.value;
+    if (identityFlight) return identityFlight;
+    const revision = identityRevision;
+    const request = computeIdentity();
+    identityFlight = request;
+    try {
+      const value = await request;
+      if (revision === identityRevision && identityMemoAllowed && value !== undefined) identityMemo = { expiresAt: deps.now().getTime() + 2_000, value };
+      return value;
+    } finally {
+      if (identityFlight === request) identityFlight = undefined;
+    }
+  }
+
   async function eventContext(): Promise<EventContext | undefined> {
     const id = await identity();
     if (!id) return undefined;
@@ -390,10 +450,29 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     deps, state, engine: deps.engine, run,
     serviceUrl, mode, local: openLocal,
     async saveService(baseUrl) {
-      if (baseUrl === undefined || baseUrl.trim() === '') { await state.setService(undefined); return { ok: true }; }
-      const check = validateServiceUrl(baseUrl);
-      if (!check.ok) return { ok: false, message: check.message };
-      await state.setService(check.url);
+      let next: string | undefined;
+      if (baseUrl !== undefined && baseUrl.trim() !== '') {
+        const check = validateServiceUrl(baseUrl);
+        if (!check.ok) return { ok: false, message: check.message };
+        next = check.url;
+      }
+      const previousUrl = await serviceUrl();
+      const previousSession = deps.mobile?.native ? await state.getSession() : undefined;
+      const nextUrl = resolveServiceUrl(next, deps.config);
+      if (deps.mobile?.native && previousUrl !== nextUrl) {
+        if (previousSession) {
+          try { await deps.createApi(previousUrl, previousSession.token).deleteSession(); } catch { /* the old credential is still cleared locally */ }
+          try { await state.clearSession(); }
+          catch { return { ok: false, message: 'GoReview could not clear the previous sign-in securely. Try again before changing the service address.' }; }
+          await state.clearCaches(previousSession.learnerId);
+          await removeByPrefix(deps.area, [`gopractice:choices:${previousSession.learnerId}`, `gopractice:prefs:${previousSession.learnerId}:`]);
+        }
+        dropHandle();
+        authExpired = false;
+        changed();
+      }
+      await state.setService(next);
+      if (!(deps.mobile?.native && previousUrl !== nextUrl)) invalidateIdentity();
       return { ok: true };
     },
     api, deviceId,
@@ -406,10 +485,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const target = (await enrolments()).find((e) => e.enrolmentId === enrolmentId);
       if (!target) return false;
       await state.setActive(learnerId, enrolmentId);
-      hooks.changed();
+      changed();
       return true;
     },
     async signIn(input) {
+      if (deps.mobile?.native && !deps.mobile.bridgeAvailable) return { ok: false, message: 'Secure sign-in storage is unavailable in this GoReview build.' };
       const baseUrl = await serviceUrl();
       const check = validateServiceUrl(baseUrl);
       if (!check.ok) return { ok: false, message: check.message };
@@ -423,7 +503,8 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       }
       let result: ApiResult<{ token: string; learnerId: string; expiresAt: string }>;
       try {
-        result = await deps.createApi(check.url).createSession({ email, password: input.password, deviceId: device, platform: 'web' });
+        const platform = deps.mobile?.native ? deps.mobile.platform : 'web';
+        result = await deps.createApi(check.url).createSession({ email, password: input.password, deviceId: device, platform });
       } catch {
         return { ok: false, message: `Could not reach the service at ${check.url}. Check that it is running and that the address is right.` };
       }
@@ -435,14 +516,16 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       else await state.clearProfile();
       dropHandle();
       audioDeps = undefined;
-      await state.setSession({ token: result.data.token, learnerId: result.data.learnerId, email, expiresAt: result.data.expiresAt });
+      try { await state.setSession({ token: result.data.token, learnerId: result.data.learnerId, email, expiresAt: result.data.expiresAt, serviceUrl: check.url }); }
+      catch { return { ok: false, message: 'GoReview could not save the sign-in securely. Close and reopen the app, then try again.' }; }
+      invalidateIdentity();
       authExpired = false;
       await refreshProfile();
       await data();
       // the one-time upload of the device's own history to the account just signed into; a failure never undoes the sign-in
       let uploaded: number | undefined;
       if (l) { try { uploaded = uploadedCount(await l.uploadTo(deps.createApi(check.url, result.data.token))); } catch { uploaded = undefined; } }
-      hooks.changed();
+      changed();
       return { ok: true, email, switched, ...(uploaded !== undefined ? { uploaded } : {}) };
     },
     async signOut(opts) {
@@ -461,12 +544,13 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         if (l?.disconnectAccount) await l.disconnectAccount();
         await state.clearSession();
         await state.clearCaches(session.learnerId);
-        if (opts?.forget) await removeByPrefix(deps.area, [learnerPrefix(session.learnerId), `gopractice:prefs:${session.learnerId}:`, `gopractice:choices:${session.learnerId}`, `gopractice:decks:${session.learnerId}:`, `gopractice:snapshot:${session.learnerId}:`]);
+        if (opts?.forget) await removeByPrefix(deps.area, [learnerDataPrefix(session.learnerId, session.serviceUrl), `gopractice:prefs:${session.learnerId}:`, `gopractice:choices:${session.learnerId}`, `gopractice:decks:${session.learnerId}:`, `gopractice:snapshot:${session.learnerId}:`]);
       }
       dropHandle();
       audioDeps = undefined;
       authExpired = false;
-      hooks.changed();
+      invalidateIdentity();
+      changed();
       return { pendingLeft };
     },
     data,
@@ -476,10 +560,10 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const who = await Promise.resolve(l.identity()).catch(() => undefined);
       try { await l.clear(); } catch { /* the rows below are still removed */ }
       let n = 0;
-      if (who) n += await removeByPrefix(deps.area, [learnerPrefix(who.learnerId), `gopractice:prefs:${who.learnerId}:`, `gopractice:choices:${who.learnerId}`, `gopractice:decks:${who.learnerId}:`, `gopractice:snapshot:${who.learnerId}:`]);
+      if (who) n += await removeByPrefix(deps.area, [learnerDataPrefix(who.learnerId, (await state.getSession())?.serviceUrl), `gopractice:prefs:${who.learnerId}:`, `gopractice:choices:${who.learnerId}`, `gopractice:decks:${who.learnerId}:`, `gopractice:snapshot:${who.learnerId}:`]);
       n += await state.clearCaches(who?.learnerId);
       dropHandle();
-      hooks.changed();
+      changed();
       return n;
     },
     eventContext,
@@ -511,6 +595,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         else { out.refused.push({ id: e.id, issues: r.issues.map((i) => `${i.path}: ${i.message}`) }); continue; }
         await d.log.append(d.learnerId, [e]);
       }
+      if (out.queued > 0) notifyData();
       try { lastStatus = await d.sync.status(); notify(); } catch { /* the header may lag one event */ }
       if (deps.autoSync && out.queued) void syncNow();
       return out;
@@ -525,7 +610,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     onSync(cb) { listeners.add(cb); return () => { listeners.delete(cb); }; },
     onData(cb) { dataListeners.add(cb); return () => { dataListeners.delete(cb); }; },
     notifyData,
-    invalidateProfile() { profileDirty = true; lastProfileTry = 0; },
+    invalidateProfile() { profileDirty = true; lastProfileTry = 0; invalidateIdentity(); },
     async audio() {
       if (audioDeps !== undefined) return audioDeps;
       const a = deps.audio;

@@ -97,7 +97,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const brand = deps.edition === 'review' ? 'GoReview' : 'GoPractice';
   if (deps.edition === 'review') deps.doc.documentElement.setAttribute('data-edition', 'review');
   let live: Live | undefined;
-  const ctx = createContext(deps, { go: (r) => { void go(r); }, changed: () => { void refreshHeader(); live?.kick(); } });
+  const ctx = createContext(deps, { go: (r) => { void go(r); }, changed: () => { void safeRefreshHeader(); live?.kick(); } });
 
   // ───────────── a newer build is waiting (the GoReview service worker) ─────────────
 
@@ -132,10 +132,14 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
         const r = await ctx.syncNow({ force: true });
         return r ? { appended: r.pull?.appended ?? 0, ...(r.pull?.cursor !== undefined ? { cursor: r.pull.cursor } : {}) } : undefined;
       },
-      onChanged: () => { void refreshHeader(); },
+      onChanged: () => { void safeRefreshHeader(); },
     });
     live.kick();
   }
+  const onResume = (): void => live?.kick();
+  const onSuspend = (): void => live?.stop();
+  win.addEventListener('resume', onResume);
+  win.addEventListener('suspend', onSuspend);
 
   // ───────────── header ─────────────
 
@@ -198,6 +202,13 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     }
   }
 
+  async function safeRefreshHeader(): Promise<void> {
+    try { await refreshHeader(); }
+    catch {
+      if (!destroyed) { syncEl.textContent = 'Account status could not be loaded'; syncEl.setAttribute('data-kind', 'error'); syncEl.classList.remove('sr'); }
+    }
+  }
+
   async function switchLanguage(enrolmentId: string): Promise<void> {
     const ok = await ctx.setLanguage(enrolmentId);
     if (!ok) return;
@@ -207,7 +218,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
       if (win.location.hash !== `#/${top}`) win.location.hash = `#/${top}`;
       renderDone = show(top, []);
       await renderDone;
-    } else await refreshHeader();
+    } else await safeRefreshHeader();
   }
 
   const offSync = ctx.onSync((v) => { void ctx.mode().then((m) => { if (!destroyed) paintSync(v, m); }); });
@@ -218,7 +229,23 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const my = ++seq;
     for (const d of disposers) { try { d(); } catch { /* a screen's cleanup must not stop the next screen */ } }
     disposers = [];
-    const mode = await ctx.mode();
+    clear(main);
+    main.setAttribute('data-route', [id, ...params].join('/'));
+    append(main, [p('Opening GoReview…', 'muted')]);
+    const recovery = (message: string, retry: () => void): HTMLElement => {
+      const button = h('button', { type: 'button', class: 'btn primary' }, 'Try again') as HTMLButtonElement;
+      button.addEventListener('click', retry);
+      return h('section', { class: 'card error', role: 'alert' }, p(message), button);
+    };
+    let mode: Mode;
+    try { mode = await ctx.mode(); }
+    catch {
+      if (my === seq && !destroyed) {
+        clear(main);
+        append(main, [h('h1', {}, 'GoReview'), recovery('GoReview could not open your saved account data. Try again.', () => { renderDone = show(id, params); })]);
+      }
+      return;
+    }
     let target: RouteDef['id'] = id;
     let subs = params;
     // the hosted copy needs an account for anything but the sign-in page; inside the extension nothing is behind it
@@ -229,17 +256,27 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     deps.doc.title = brand === 'GoReview' && def.id === 'review' ? 'GoReview' : `${brand} — ${def.title}`;
     clear(main);
     main.setAttribute('data-route', route);
-    const idn = await ctx.identity();
-    if (my !== seq) return;
-    if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
     const body = h('div', { class: 'body' });
     main.append(...(mode !== 'none' && HAS_BACK.has(def.id) ? [h('p', { class: 'crumb' }, h('a', { href: '#/review', id: 'back-home' }, '← GoReview'))] : []), h('h1', {}, def.title), body);
+    body.append(p('Loading your saved account data…', 'muted'));
+    let idn: Awaited<ReturnType<AppContext['identity']>>;
+    try { idn = await ctx.identity(); }
+    catch {
+      if (my === seq && !destroyed) {
+        clear(body);
+        append(body, [recovery('GoReview could not load your saved account data. Try again.', () => { renderDone = show(target, subs); })]);
+      }
+      return;
+    }
+    if (my !== seq) return;
+    if (idn) main.setAttribute('data-language', idn.varietyId ?? idn.languageId); else main.removeAttribute('data-language');
+    clear(body);
     const view: View = { alive: () => my === seq && !destroyed, onDispose: (fn) => { disposers.push(fn); } };
     try { await def.render(body, ctx, view, subs); } catch (e) {
       if (view.alive()) { clear(body); append(body, [p(`This screen could not be shown: ${e instanceof Error ? e.message : String(e)}`, 'error')]); }
     }
     if (!view.alive()) return;
-    await refreshHeader();
+    await safeRefreshHeader();
     // a screen that put focus on a control of its own (the answer box of a session's first item) keeps it; otherwise the screen itself takes focus
     const held = deps.doc.activeElement;
     if (held && held !== main && main.contains(held)) return;
@@ -279,6 +316,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
       destroyed = true;
       win.removeEventListener('hashchange', onHash);
       win.removeEventListener('goreview:update-ready', onUpdateReady);
+      win.removeEventListener('resume', onResume);
+      win.removeEventListener('suspend', onSuspend);
       updateEl?.removeEventListener('click', onUpdateClick);
       live?.destroy();
       offSync();

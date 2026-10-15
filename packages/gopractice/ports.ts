@@ -14,6 +14,7 @@ import type { Measure } from '../goreview/src/transfer/measures';
 import type { AppConfig } from './config';
 import type { KeyValueArea, Transport } from '../repository-sync/src';
 import type { LocalRepo } from './localRepo';
+import type { MobileRuntime } from './mobile';
 
 // ───────────────────────────── the GoReview engine port ─────────────────────────────
 
@@ -158,6 +159,8 @@ export interface Deps {
   fetch: typeof fetch;
   /** The application origin's storage. */
   area: KeyValueArea;
+  /** Capacitor native adapters; sessions are held separately in Keychain. */
+  mobile?: MobileRuntime;
   config: AppConfig;
   createApi(baseUrl: string, token?: string): RepositoryApi;
   /** The two calls of the sync client; default: the typed API client, throwing on any failure. */

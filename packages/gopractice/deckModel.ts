@@ -15,6 +15,7 @@ import { KNOWLEDGE_LEVELS, type KnowledgeLevel, type UnitKnowledge } from '../re
 import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, SessionPlan } from '../goreview/src/types';
 import type { AppContext } from './context';
 import { unitLabel } from './format';
+import { clampDeckSize } from './state';
 import { readSnapshot, writeSnapshot, MAX_SNAPSHOT_WORDS } from './snapshot';
 import { observedReviewSeconds, type ReviewModel } from './workspace';
 
@@ -46,10 +47,9 @@ const rankOf = (level: KnowledgeLevel | undefined): number => (level ? Math.max(
 const isAudio = (family: ExerciseFamily): boolean => family === 'audio-to-meaning' || family === 'audio-transcription';
 const GRAMMAR: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['morphological-identification', 'grammar-application']);
 
-/** How many cards a filled deck holds: about two a minute of the session length, 10 when the length is flexible. */
+/** How many cards the current deck holds: the learner's "cards per deck" (5 to 60). */
 export function fillSize(model: Pick<ReviewModel, 'prefs'>): number {
-  const minutes = model.prefs.sessionMinutes;
-  return minutes === 0 ? 10 : Math.min(30, Math.max(5, Math.round(minutes * 2)));
+  return clampDeckSize(model.prefs.cardsPerDeck);
 }
 
 const entryOf = (p: PlannedItem): DeckEntry => ({
@@ -61,7 +61,8 @@ function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet
   return ctx.engine.plan({
     deck: model.deck.filter((i) => !holdOut.has(i.unitId)),
     intake: model.outcomes.filter((o) => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
-    prefs: model.prefs, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
+    // the deck is sized by cards, not minutes: flexible time, so the planner's budget never cuts it short of the size
+    prefs: { ...model.prefs, sessionMinutes: 0 }, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
     schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events),
   });
 }
@@ -146,7 +147,7 @@ function fillOrder(model: ReviewModel, holdOut: ReadonlySet<string>): Wanted[] {
 }
 
 /** The one note the session shows when the deck was built from the learner's vocabulary instead of the review schedule. */
-export const VOCAB_NOTE = 'These cards come from your vocabulary, not from the review schedule: nothing was due and nothing was proposed.';
+export const VOCAB_NOTE = 'Some cards come from your vocabulary, not from the review schedule: they fill the deck to its size.';
 
 /** Words the learner has met, as cards to ask: least known first, then the most recently met, as written recognition (what a provisional analysis is allowed). */
 function vocabularyOrder(rows: readonly VocabRow[], holdOut: ReadonlySet<string>): Wanted[] {
@@ -173,24 +174,36 @@ export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdO
   const size = fillSize(model);
   let plan = scheduledPlan(ctx, model, holdOut);
   if (!plan.items.length && holdOut.size) plan = scheduledPlan(ctx, model, new Set());
+  // exactly the learner's deck size when there is enough material: the schedule first, then the candidates, then the vocabulary
+  let items: PlannedItem[] = plan.items.slice(0, size);
   let filled = false;
-  if (!plan.items.length) {
-    const pool = fillOrder(model, holdOut);
-    if (pool.length) { plan = await assemble(ctx, model, pool, size); filled = plan.items.length > 0; }
+  const have = (): Set<string> => new Set(items.map((p) => p.item.unitId));
+  const take = (from: SessionPlan, mark?: (p: PlannedItem) => PlannedItem): void => {
+    const taken = have();
+    const extra = from.items.filter((p) => !taken.has(p.item.unitId)).slice(0, size - items.length).map((p) => (mark ? mark(p) : p));
+    if (extra.length) { items = [...items, ...extra]; filled = true; plan = { ...from, items }; }
+  };
+  if (items.length < size) {
+    const taken = have();
+    const pool = fillOrder(model, holdOut).filter((w) => !taken.has(w.unitId));
+    if (pool.length) take(await assemble(ctx, model, pool, size - items.length));
   }
   let rows = vocab;
-  if (!plan.items.length) {
+  if (items.length < size) {
     rows = rows ?? await loadVocabSafe(ctx, languageId);
     if (rows.length) {
-      const order = vocabularyOrder(rows, holdOut);
-      // the exercise engine may refuse every word it cannot build yet; the deck is still offered, and the session says which cards it could not ask
-      let fromVocab = await assemble(ctx, model, order, size);
-      if (!fromVocab.items.length) fromVocab = await assemble(ctx, model, order, size, { unchecked: true });
-      plan = { ...fromVocab, items: fromVocab.items.map((p) => ({ ...p, why: [VOCAB_NOTE, ...p.why] })) };
-      filled = plan.items.length > 0;
+      const taken = have();
+      const order = vocabularyOrder(rows, holdOut).filter((w) => !taken.has(w.unitId));
+      if (order.length) {
+        let fromVocab = await assemble(ctx, model, order, size - items.length);
+        // the exercise engine may refuse every word it cannot build yet; with nothing else in the deck it is still offered, and the session says which cards it could not ask
+        if (!fromVocab.items.length && !items.length) fromVocab = await assemble(ctx, model, order, size - items.length, { unchecked: true });
+        take(fromVocab, (p) => ({ ...p, why: [VOCAB_NOTE, ...p.why] }));
+      }
     }
   }
-  // the learner's own additions lead the deck
+  plan = { ...plan, items };
+  // the learner's own additions lead the deck, beyond its size when it is full
   const added = (await readStore(ctx, learnerId, languageId)).added;
   if (added.length) {
     const mine = await assemble(ctx, model, added, added.length);

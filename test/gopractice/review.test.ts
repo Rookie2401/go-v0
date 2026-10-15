@@ -28,13 +28,13 @@ async function fixtureRig(): Promise<Rig> {
 }
 
 describe('the due-review summary', () => {
-  it('offers the five session time presets and saves Flexible as the unlimited plan', async () => {
+  it('offers the deck size presets in place of the session time, and saves the choice', async () => {
     const rig = await fixtureRig();
-    expect(rig.qa('.time-presets button').map((b) => b.textContent)).toEqual(['5 min', '10 min', '15 min', '20 min', 'Flexible']);
-    rig.q('[data-minutes="0"]').click();
-    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).sessionMinutes === 0, 'the flexible preference');
-    await until(() => rig.q('#review-details').textContent.includes('Flexible time'), 'the refreshed flexible time label');
-    expect(rig.q('#review-details').textContent).toContain('Flexible time');
+    expect([...rig.q('#review-details .pills').querySelectorAll('button')].map((b) => b.textContent)).toEqual(['5', '10', '15', '20', '30']);
+    expect(rig.root.querySelector('.time-presets')).toBeNull();
+    rig.q('#review-details [data-cards="20"]').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 20, 'the deck size preference');
+    await until(() => rig.q('#review-details').textContent.includes('20 cards per deck'), 'the refreshed note');
   });
 
   it('counts due, learning, new items, candidates and listening from the local log', async () => {
@@ -174,7 +174,7 @@ describe('the session controls', () => {
     const rig = await makeRig({ service, signedIn: true });
     await reopenDetails(rig);
     rig.root.querySelector<HTMLElement>('#session-controls')!.setAttribute('open', '');
-    type(rig.q<HTMLInputElement>('#pref-minutes'), '25');
+    type(rig.q<HTMLInputElement>('#details-size'), '25');
     type(rig.q<HTMLInputElement>('#pref-max-new'), '3');
     type(rig.q<HTMLInputElement>('#pref-retention'), '85');
     const listening = rig.q<HTMLInputElement>('#pref-listening');
@@ -184,7 +184,7 @@ describe('the session controls', () => {
     await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).includeListening, 'the preferences to be saved');
     await flush(4);
     expect(await rig.app.ctx.state.getPrefs('L1', 'sq')).toEqual({
-      languageId: 'sq', sessionMinutes: 25, maxNew: 3, desiredRetention: 0.85, includeListening: true, grammarShare: 0.2, prioritizeSaved: false,
+      languageId: 'sq', sessionMinutes: 10, cardsPerDeck: 25, maxNew: 3, desiredRetention: 0.85, includeListening: true, grammarShare: 0.2, prioritizeSaved: false,
     });
     const { area } = rig;
     rig.app.destroy();
@@ -192,7 +192,7 @@ describe('the session controls', () => {
     await again.go('review/details');
     await until(() => !!again.root.querySelector('#due-summary'), 'the review details');
     again.root.querySelector<HTMLElement>('#session-controls')!.setAttribute('open', '');
-    expect(again.q<HTMLInputElement>('#pref-minutes').value).toBe('25');
+    expect(again.q<HTMLInputElement>('#details-size').value).toBe('25');
     expect(again.q<HTMLInputElement>('#pref-listening').checked).toBe(true);
     expect(again.q<HTMLInputElement>('#pref-saved').checked).toBe(false);
   });
@@ -200,8 +200,10 @@ describe('the session controls', () => {
   it('clamps nonsense instead of storing it', async () => {
     const rig = await makeRig({ signedIn: true });
     await reopenDetails(rig);
-    type(rig.q<HTMLInputElement>('#pref-minutes'), '9999');
-    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).sessionMinutes === 120, 'the clamp');
+    type(rig.q<HTMLInputElement>('#details-size'), '9999');
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 60, 'the clamp');
+    type(rig.q<HTMLInputElement>('#details-size'), '1');
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 5, 'the lower clamp');
     type(rig.q<HTMLInputElement>('#pref-retention'), '10');
     await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).desiredRetention === 0.7, 'the clamp');
   });

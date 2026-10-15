@@ -119,6 +119,23 @@ describe('the stylesheet for a phone', () => {
     expect(block).toMatch(/min-height:\s*2\.75rem/);
     expect(block).toMatch(/\.cog, \.icon-btn \{ width: 2\.75rem; height: 2\.75rem; \}/);
   });
+  it('keeps editable controls at iOS focus-zoom-safe sizes and reflows the 375/390px phone layouts', () => {
+    const touch = /@media \(pointer: coarse\)[^{]*\{([\s\S]*?)\n\}\n/.exec(css)![1];
+    for (const control of ['input[type="search"]', 'input[type="date"]', 'select']) expect(touch).toContain(control);
+    expect(touch).toContain('select.language-kicker { font-size: 1rem; }');
+    expect(touch).toMatch(/font-size:\s*1rem; min-height:\s*2\.75rem/);
+    const phone = [...css.matchAll(/@media \(max-width: 760px\) \{([\s\S]*?)\n\}/g)].map((match) => match[1]).join('\n');
+    expect(phone).toMatch(/select\.language-kicker \{[^}]*font-size:\s*1rem/);
+    const narrow = /@media \(max-width: 420px\) \{([\s\S]*?)\n\}/.exec(css)![1];
+    for (const width of [375, 390]) {
+      expect(width).toBeLessThanOrEqual(420);
+      expect(narrow).toContain('.grades { flex-wrap: wrap; }');
+      expect(narrow).toContain('.sync { overflow-wrap: anywhere; }');
+    }
+    // Preserve user zoom: viewport configuration must not lock the scale to 1.
+    const html = read(outs.review, 'index.html');
+    expect(html).not.toMatch(/user-scalable\s*=\s*no|maximum-scale\s*=\s*1(?:\.0)?(?:[,\"]|\s|$)/i);
+  });
 });
 
 describe('the other builds carry none of it', () => {

@@ -310,6 +310,8 @@ export interface ReviewPreferences {
   /** Preferred share of grammar items in a session, 0..1. */
   grammarShare: number;
   prioritizeSaved: boolean;
+  /** How many cards a deck holds, 5 to 60 (GoPractice sizes the current deck to it; absent in a record from before it existed). */
+  cardsPerDeck?: number;
 }
 
 export interface IntakeInput {

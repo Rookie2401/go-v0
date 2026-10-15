@@ -19,6 +19,7 @@ import { createApp, type AppHandle } from '../../packages/gopractice/app';
 import type { LocalRepo } from '../../packages/gopractice/localRepo';
 import { createReviewEngine } from '../../packages/gopractice/engine';
 import type { AudioDeps, Deps } from '../../packages/gopractice/ports';
+import type { MobileRuntime } from '../../packages/gopractice/mobile';
 
 export const T0 = '2026-10-08T10:00:00.000Z';
 
@@ -40,6 +41,7 @@ export class FakeService {
   docs = new Map<string, Map<string, PrivateDocument>>();
   corrections: Array<Record<string, unknown>> = [];
   calls: string[] = [];
+  platforms: string[] = [];
   /** When true every sync call throws (a dead network). */
   netDown = false;
   /** When true every call throws. */
@@ -75,8 +77,9 @@ export class FakeService {
     const api = {
       get token() { return state.token; }, set token(t) { state.token = t; },
       async health() { net(false); return ok({ ok: true as const, service: 'fake', version: 1 }); },
-      async createSession(input: { email: string; password: string; deviceId: string }) {
+      async createSession(input: { email: string; password: string; deviceId: string; platform?: string }) {
         net(false); self.calls.push('createSession');
+        if (input.platform) self.platforms.push(input.platform);
         const a = self.accounts.get(input.email);
         if (!a || a.password !== input.password) return fail(401, 'bad credentials');
         const token = `tok-${a.learnerId}-${++self.n}`;
@@ -371,6 +374,7 @@ export interface RigOptions {
   audio?: FakeAudio | null;
   config?: Deps['config'];
   transport?: (api: RepositoryApi) => Transport;
+  mobile?: MobileRuntime;
   /** Run as the extension's copy of GoPractice: the device's own Repository answers, and no account is needed. `true` makes a default one. */
   local?: FakeLocalRepo | boolean | { worker?: boolean; activeLanguageId?: string; enrolments?: Array<Partial<Enrolment> & { languageId: string }> };
   links?: Deps['links'];
@@ -430,6 +434,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
     ...(opts.links ? { links: opts.links } : {}),
     ...(opts.live ? { live: opts.live } : {}),
     ...(opts.edition ? { edition: opts.edition } : {}),
+    ...(opts.mobile ? { mobile: opts.mobile } : {}),
     win: window, doc: document, fetch: opts.fetch ?? ((() => { throw new Error('no network in tests'); }) as unknown as typeof fetch), area, config: opts.config ?? { serviceUrl: 'https://repository.example.org' },
     createApi: (_url, token) => service.api(token),
     ...(opts.transport ? { createTransport: opts.transport } : {}),

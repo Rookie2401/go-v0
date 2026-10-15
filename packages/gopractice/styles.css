@@ -40,7 +40,7 @@
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0; background: var(--bg); color: var(--ink);
+  margin: 0; min-width: 0; background: var(--bg); color: var(--ink);
   font-family: var(--serif); font-size: 1.125rem; line-height: 1.6;
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility;
   font-feature-settings: 'kern' 1, 'liga' 1, 'locl' 0; font-variant-alternates: normal;
@@ -48,13 +48,14 @@ body {
 ::selection { background: var(--selection); }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: .18em; }
-code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divider) 55%, transparent); padding: 0 .3em; border-radius: 4px; }
+code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divider) 55%, transparent); padding: 0 .3em; border-radius: 4px; overflow-wrap: anywhere; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 [hidden] { display: none !important; }
 
 /* top bar: translucent paper; the language on the left, the Settings cog on the right, nothing else */
 .shell { min-height: 100vh; }
+.shell, #app, .topbar > *, .screen, .screen > * { min-width: 0; }
 .topbar {
   display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; align-items: center; min-height: 3rem; padding: .55rem clamp(1rem, 4vw, 3rem);
   background: color-mix(in srgb, var(--paper) 88%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
@@ -77,7 +78,7 @@ select.language-kicker:hover { color: var(--ink); }
 .crumb a { color: var(--ink-soft); }
 
 /* page */
-.screen { padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; }
+.screen { width: 100%; padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; overflow-wrap: anywhere; }
 .screen:focus { outline: none; }
 h1 {
   font-size: clamp(1.5rem, 4.5vw, 2.1rem); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-align: center;
@@ -87,7 +88,7 @@ h1::after { content: ""; display: block; width: 3rem; height: 1px; background: v
 h2 { font-size: .85rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin: 0 0 .6rem; }
 h3 { font-size: 1.1rem; font-weight: 600; margin: 1.1rem 0 .3rem; }
 #outcome, .feedback h2, .exercise h2 { font-size: 1.2rem; letter-spacing: .03em; text-transform: none; color: var(--ink); }
-p { margin: .55rem 0; max-width: 42rem; }
+p { margin: .55rem 0; max-width: 42rem; overflow-wrap: anywhere; }
 .muted { color: var(--muted); }
 .error { color: var(--bad); }
 .ok { color: var(--ok); }
@@ -99,11 +100,16 @@ hr { border: 0; border-top: 1px solid var(--rule); margin: 1.4rem 0; }
 .card { background: var(--panel); border: 1px solid var(--divider); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.25rem 0; }
 .card > :first-child { margin-top: 0; }
 .row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin: .65rem 0; }
-.field { display: grid; gap: .25rem; margin: .8rem 0; max-width: 28rem; }
+.row > *, .entry-actions > *, .session-bar > *, .vocab-line > * { min-width: 0; }
+.field { display: grid; gap: .25rem; margin: .8rem 0; max-width: 28rem; min-width: 0; }
+.field > * { min-width: 0; max-width: 100%; }
 .field .cap { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
 .field .help, .toggle .help { color: var(--muted); font-size: .92rem; font-style: italic; }
 input[type="text"], input[type="url"], input[type="email"], input[type="password"], input[type="number"], select, textarea {
-  font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: .45rem .7rem; width: 100%;
+  font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: .45rem .7rem; width: 100%; min-width: 0;
+}
+input[type="search"], input[type="date"] {
+  font: inherit; color: inherit; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: .45rem .7rem; width: 100%; min-width: 0;
 }
 input::placeholder, textarea::placeholder { color: var(--ink-faint); opacity: 1; }
 .field input[type="number"] { max-width: 9rem; font-variant-numeric: tabular-nums; }
@@ -126,16 +132,17 @@ button:disabled { opacity: .5; cursor: not-allowed; }
 .status[data-kind="error"] { color: var(--bad); }
 .status[data-kind="ok"] { color: var(--ok); }
 /* chips: 999px pills */
-.tag { display: inline-block; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; padding: 0 .6rem; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--ink-soft); white-space: nowrap; }
+.tag { display: inline-block; max-width: 100%; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; padding: 0 .6rem; border-radius: 999px; border: 1px solid var(--rule-strong); color: var(--ink-soft); overflow-wrap: anywhere; }
 .time-presets [aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .attempt-toggle { align-items: center; }
 .vocabulary-item h3 { margin: 0; font-size: 1.25rem; }
 .vocabulary-title { justify-content: space-between; }
-.facts { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1.25rem; margin: .6rem 0; }
+.facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .3rem 1.25rem; margin: .6rem 0; min-width: 0; }
+.facts dt, .facts dd { min-width: 0; overflow-wrap: anywhere; }
 .facts dt { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); padding-top: .25em; }
 .facts dd { margin: 0; }
-table.plain { border-collapse: collapse; width: 100%; max-width: 46rem; font-variant-numeric: tabular-nums; }
-table.plain th, table.plain td { text-align: start; padding: .4rem .7rem .4rem 0; border-bottom: 1px solid var(--divider); }
+table.plain { border-collapse: collapse; table-layout: fixed; width: 100%; max-width: 46rem; font-variant-numeric: tabular-nums; }
+table.plain th, table.plain td { min-width: 0; text-align: start; padding: .4rem .7rem .4rem 0; border-bottom: 1px solid var(--divider); overflow-wrap: anywhere; }
 table.plain th { font-weight: 600; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); }
 
 /* lists are hairline entries, not boxed cards */
@@ -185,6 +192,11 @@ input.target-text, textarea.target-text { font-size: 1.15rem; }
 @media (max-width: 760px) {
   .sync { margin-left: 0; width: 100%; }
   .facts { grid-template-columns: 1fr; }
+  /* WebKit auto-zooms focused controls below 16px even when a test/browser is not marked coarse. */
+  input[type="text"], input[type="url"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], select, textarea { font-size: 1rem; }
+  .language-picker, #language-name { min-width: 0; max-width: calc(100vw - 6rem); }
+  select.language-kicker { max-width: 100%; font-size: 1rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #language-name { overflow-wrap: anywhere; }
 }
 
 /* motion: restrained and opacity-led, and only when the person has not asked for less */
@@ -263,6 +275,9 @@ button.grade:focus-visible { outline: 2px solid var(--accent); outline-offset: 2
 @media (max-width: 420px) {
   button.grade { gap: .25rem; padding: .15rem .1rem; font-size: .88rem; }
   .grade-dot { width: 1.6rem; height: 1.6rem; }
+  .grades { flex-wrap: wrap; }
+  .topbar { column-gap: .65rem; }
+  .sync { overflow-wrap: anywhere; }
 }
 
 /* ── installed on a phone (the GoReview build; harmless elsewhere): the notch and home-indicator safe areas, the dynamic viewport,
@@ -297,6 +312,82 @@ html[data-edition="review"] { overscroll-behavior-y: none; }
   .btn.small, button.small { padding: .1rem .85rem; }
   .entry-link { min-height: 2.75rem; }
   .vocab-sorts, .entry-actions, .bar-actions { gap: .3rem 1rem; }
-  input[type="text"], input[type="url"], input[type="email"], input[type="password"], input[type="number"], select:not(.language-kicker), textarea { font-size: 1rem; min-height: 2.75rem; } /* 16px or more: iOS does not zoom the page on focus */
+  input[type="text"], input[type="url"], input[type="email"], input[type="password"], input[type="number"], input[type="search"], input[type="date"], select, textarea { font-size: 1rem; min-height: 2.75rem; } /* 16px or more: iOS does not zoom the page on focus */
+  select.language-kicker { font-size: 1rem; }
   .toggle input { transform: none; width: 1.4rem; height: 1.4rem; }
+}
+
+/* the deck size: a quiet stepper and presets as quiet pills */
+.deck-size-line { margin: .5rem 0 0; max-width: none; }
+.deck-size-box { margin: .6rem 0 0; }
+.deck-size { display: grid; gap: .6rem; max-width: 24rem; }
+.stepper { display: inline-flex; align-items: center; gap: .4rem; }
+.stepper-btn { width: 2.4rem; height: 2.4rem; padding: 0; border-radius: 999px; font-size: 1.3rem; line-height: 1; background: none; border: 1px solid var(--rule-strong); color: var(--ink); }
+.stepper-btn:disabled { opacity: .4; }
+input.stepper-value { width: 4rem; text-align: center; font-size: 1.15rem; border: 0; border-bottom: 1px solid var(--rule-strong); border-radius: 0; background: transparent; padding: .2rem 0; font-variant-numeric: tabular-nums; -moz-appearance: textfield; }
+input.stepper-value::-webkit-outer-spin-button, input.stepper-value::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.pills { display: flex; flex-wrap: wrap; gap: .4rem; }
+button.pill { padding: .1rem .9rem; border-radius: 999px; font-size: .95rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink-soft); }
+button.pill:hover:not(:disabled) { color: var(--ink); }
+button.pill[aria-pressed="true"] { color: var(--ink); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+@media (pointer: coarse), (display-mode: standalone) {
+  .stepper-btn { width: 2.75rem; height: 2.75rem; }
+  button.pill { min-height: 2.75rem; min-width: 2.75rem; }
+  #deck-size-link { min-height: 2.75rem; }
+}
+
+/* ── phone first (430 CSS px and below, portrait, installed or not). Everything above 640px keeps its desktop layout. The body is the one
+      scroll area (no fixed-height boxes), nothing may overflow sideways, the header is one 44px line under the notch, the type is scaled
+      for a handheld and every link and pill is a fingertip target. ── */
+html, body { overscroll-behavior-y: contain; }
+body { min-height: 100vh; min-height: 100dvh; overflow-x: hidden; }
+.sync.sr { width: 1px; max-width: 1px; margin: 0; } /* the visually hidden sync line must not widen the page */
+img, svg, video, canvas { max-width: 100%; }
+@media (max-width: 430px) {
+  body { font-size: 1rem; line-height: 1.55; }
+  .topbar { flex-wrap: nowrap; gap: .5rem; align-items: center; min-height: calc(2.75rem + env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px); padding-bottom: 0;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .language { flex: 1 1 auto; min-width: 0; }
+  .language-picker, #language-name { max-width: 100%; }
+  .account { margin-left: auto; flex: 0 0 auto; }
+  .screen { padding: 1rem max(16px, env(safe-area-inset-right, 0px)) calc(2rem + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+  h1 { font-size: 1.4rem; margin: .25rem 0 1.4rem; }
+  h1::after { margin-top: .8rem; }
+  .page-title { font-size: 1.7rem; margin: .25rem 0 .9rem; }
+  .home { max-width: none; }
+  .entry { padding: 1.1rem 0 1.2rem; }
+  .entry-tell { padding-top: .25rem; padding-bottom: 1.6rem; }
+  .entry-link { margin: -.35rem 0; padding: .35rem 0; }
+  .entry-title { font-size: 1.7rem; }
+  .entry-kicker { font-size: .7rem; letter-spacing: .14em; }
+  .entry-actions { gap: .25rem 1.2rem; }
+  .card, .exercise, .feedback { padding: 16px; }
+  .exercise, .feedback { margin: 1rem 0; }
+  .session-bar { gap: .1rem .75rem; }
+  .bar-actions { order: 2; gap: 0 .9rem; }
+  .bar-kind { order: 3; flex-basis: 100%; }
+  .field, .deck-size { max-width: none; }
+  .choices { max-width: none; }
+  .stimulus { font-size: 1.5rem; }
+  .flashcard { min-height: 16rem; }
+  .flashcard .stimulus { font-size: clamp(2.2rem, 11vw, 3rem); }
+  /* the four self-grades stay on one line: four equal columns, the word shrinks, and below 360px the number alone remains */
+  .grades { flex-wrap: nowrap; justify-content: space-between; gap: 0; }
+  button.grade { flex: 1 1 0; min-width: 0; justify-content: center; gap: .3rem; padding: 0 .1rem; }
+  .grade-word { font-size: .85rem; }
+  .deckrow { gap: .3rem .8rem; }
+  .deckrow-line { font-size: 1.05rem; }
+  table.plain th, table.plain td { padding: .35rem .5rem .35rem 0; font-size: .92rem; }
+  /* My vocab: the word and its level on one line, the meaning under the word, a small History link at the right */
+  .vocab-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "word level" "gloss indeck" "met met"; gap: .05rem .75rem; align-items: baseline; padding: .55rem 0; }
+  .vocab-word { grid-area: word; font-size: 1.3rem; }
+  .vocab-level { grid-area: level; margin-left: 0; text-align: right; }
+  .vocab-gloss { grid-area: gloss; flex-basis: auto; font-size: .95rem; }
+  .vocab-indeck { grid-area: indeck; justify-self: end; }
+  .vocab-met { grid-area: met; flex-basis: auto; }
+  .vocab-history { padding: 0 .25rem 0 .5rem; margin-left: 0; }
+  .vocab-ask { padding-left: 0; padding-right: 0; }
+}
+@media (max-width: 359px) {
+  .grade-word { display: none; } /* the number remains; the button keeps its word as its accessible name */
 }

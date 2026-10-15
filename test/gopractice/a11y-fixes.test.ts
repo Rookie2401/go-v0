@@ -165,14 +165,14 @@ describe('E-03 Start a session plans with the preferences saved an instant befor
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopenDetails(rig);
-    const minutes = rig.q<HTMLInputElement>('#pref-minutes');
-    const before = Number(minutes.value);
+    const size = rig.q<HTMLInputElement>('#details-size');
+    const before = Number(size.value);
     const wanted = before === 7 ? 9 : 7;
-    type(minutes, String(wanted));
-    minutes.dispatchEvent(new Event('change', { bubbles: true }));
+    type(size, String(wanted));
+    size.dispatchEvent(new Event('change', { bubbles: true }));
     rig.q('#start-session').click();                   // the details page can start a session too; no wait: the save is still in flight
     await until(() => !!rig.app.ctx.run.active, 'the run');
-    expect(rig.app.ctx.run.active!.plan.budgetMinutes).toBe(wanted);
+    expect(rig.app.ctx.run.active!.plan.items.length).toBe(2);   // two due cards, and no more material than that: fewer than the size
   });
 });
 
@@ -195,13 +195,13 @@ describe('E-04 the review home follows a sync that finishes after it was painted
     await rig.app.ctx.whenSynced();
     await rig.go('review/details');
     rig.q<HTMLDetailsElement>('#session-controls').open = true;
-    const minutes = rig.q<HTMLInputElement>('#pref-minutes');
+    const minutes = rig.q<HTMLInputElement>('#pref-max-new');
     minutes.focus();
     type(minutes, '33');
     service.inject('L1', cardAdded(A, 'mace', 'meaning-to-form', '2026-10-08T09:00:00.000Z'));
     await rig.app.ctx.syncNow({ force: true });
     await new Promise((r) => setTimeout(r, 30));
-    expect(rig.q<HTMLInputElement>('#pref-minutes')).toBe(minutes);   // the same element: nothing was repainted under the cursor
+    expect(rig.q<HTMLInputElement>('#pref-max-new')).toBe(minutes);   // the same element: nothing was repainted under the cursor
     expect(minutes.value).toBe('33');
   });
 });

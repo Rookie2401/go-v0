@@ -6,14 +6,14 @@
 import type { ReviewPreferences } from '../../goreview/src/types';
 import type { AppContext } from '../context';
 import { append, field, h, p, setStatus, statusLine } from '../dom';
+import { deckSizeControl } from './cardsper';
 import { getUiPrefs, patchUiPrefs } from './uiprefs';
 
-export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPreferences, onSaved?: (p: ReviewPreferences) => void, track?: (saving: Promise<unknown>) => void): HTMLElement {
+export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPreferences, onSaved?: (p: ReviewPreferences) => void, track?: (saving: Promise<unknown>) => void, opts: { deckSize?: boolean } = {}): HTMLElement {
   let current = initial;
   const status = statusLine();
   const num = (id: string, value: number, min: number, max: number, step: number): HTMLInputElement =>
     h('input', { type: 'number', id, name: id, min, max, step, value }) as HTMLInputElement;
-  const minutes = num('pref-minutes', initial.sessionMinutes, 0, 120, 1);
   const maxNew = num('pref-max-new', initial.maxNew, 0, 50, 1);
   const retention = num('pref-retention', Math.round(initial.desiredRetention * 100), 70, 97, 1);
   const grammar = num('pref-grammar', Math.round(initial.grammarShare * 100), 0, 100, 5);
@@ -23,18 +23,17 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
   saved.checked = initial.prioritizeSaved;
 
   async function save(): Promise<void> {
-    const next = await ctx.state.setPrefs(learnerId, {
-      languageId: current.languageId,
-      sessionMinutes: Number(minutes.value), maxNew: Number(maxNew.value), desiredRetention: Number(retention.value) / 100,
+    const next = await ctx.state.updatePrefs(learnerId, current.languageId, {
+      maxNew: Number(maxNew.value), desiredRetention: Number(retention.value) / 100,
       grammarShare: Number(grammar.value) / 100, includeListening: listening.checked, prioritizeSaved: saved.checked,
     });
     current = next;
-    minutes.value = String(next.sessionMinutes); maxNew.value = String(next.maxNew);
+    maxNew.value = String(next.maxNew);
     retention.value = String(Math.round(next.desiredRetention * 100)); grammar.value = String(Math.round(next.grammarShare * 100));
     setStatus(status, 'Saved on this device.', 'ok');
     onSaved?.(next);
   }
-  for (const c of [minutes, maxNew, retention, grammar, listening, saved]) c.addEventListener('change', () => { const saving = save(); track?.(saving); void saving; });
+  for (const c of [maxNew, retention, grammar, listening, saved]) c.addEventListener('change', () => { const saving = save(); track?.(saving); void saving; });
 
   // interface switches of this device (WCAG 2.1.4 and 2.2.2): defaults are on; read when the form is built
   const shortcuts = h('input', { type: 'checkbox', id: 'pref-shortcuts', name: 'pref-shortcuts', checked: true }) as HTMLInputElement;
@@ -46,7 +45,7 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
 
   const form = h('div', { class: 'prefs', id: 'prefs-form' });
   append(form, [
-    field('Session length (minutes)', minutes, 'Choose 5, 10, 15, or 20 minutes, or enter 0 for flexible. The plan never exceeds a timed limit; what does not fit stays due.'),
+    opts.deckSize === false ? null : h('div', { class: 'field' }, h('span', { class: 'cap' }, 'Cards per deck'), deckSizeControl(ctx, learnerId, current.languageId, initial.cardsPerDeck, (_n, prefs) => { current = prefs; onSaved?.(prefs); }, 'pref'), h('span', { class: 'help' }, 'How many cards the current deck holds, from 5 to 60. It changes the deck at once.')),
     field('New items per session (at most)', maxNew),
     field('Desired retention (%)', retention, 'How likely you want to recall an item when it comes due. Higher means more reviews.'),
     field('Share of grammar items (%)', grammar, 'Approximate; due items are never dropped to reach it.'),

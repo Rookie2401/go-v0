@@ -61,8 +61,11 @@ class Refusal extends Error {
 const CORS: Record<string, string> = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
-  'Access-Control-Allow-Headers': 'Authorization, Content-Type',
-  'Access-Control-Max-Age': '600',
+  'Access-Control-Allow-Headers': 'Authorization, Content-Type, If-None-Match',
+  // a browser asks permission (an OPTIONS round trip) before each cross-origin call that carries Authorization; browsers cap this at 2 h (Chromium) or 5 min (WebKit)
+  'Access-Control-Max-Age': '7200',
+  // the typed client reads the validator to ask "has it changed?" next time
+  'Access-Control-Expose-Headers': 'ETag',
 };
 
 /**
@@ -961,6 +964,29 @@ route('GET', '/vocabulary', true, async (ctx) => {
   return respond(200, { items: matches, catalog, ...(hasMore ? { nextCursor: cursor } : {}) });
 });
 
+/**
+ * The learner's whole ranked candidate list, shared by the pages of one load. Paging used to rank the complete set again for every page (a learner with
+ * 2000 words and pages of 200 paid for eleven rankings per home load). The list is kept per learner and enrolment for CANDIDATE_CACHE_MS and only while the
+ * event log has not moved, so a push (a new lookup, a review) always ranks afresh.
+ */
+export const CANDIDATE_CACHE_MS = 20_000;
+const candidateCaches = new WeakMap<object, Map<string, { head: number; at: number; ranked: Awaited<ReturnType<ServiceDeps['engine']['candidates']>> }>>();
+async function rankedCandidates(ctx: Ctx, enrolmentId: string) {
+  const { store, engine } = ctx.deps;
+  const learnerId = ctx.session.learnerId;
+  let cache = candidateCaches.get(store);
+  if (!cache) { cache = new Map(); candidateCaches.set(store, cache); }
+  const key = `${learnerId}|${enrolmentId}`;
+  const nowMs = Date.parse(ctx.now());
+  const head = await store.head(learnerId);
+  const hit = cache.get(key);
+  if (hit && hit.head === head && nowMs - hit.at >= 0 && nowMs - hit.at < CANDIDATE_CACHE_MS) return hit.ranked;
+  const ranked = await engine.candidates(learnerId, enrolmentId, { limit: Number.MAX_SAFE_INTEGER, now: ctx.now() });
+  if (cache.size >= 64) cache.delete(cache.keys().next().value as string);
+  cache.set(key, { head, at: nowMs, ranked });
+  return ranked;
+}
+
 route('GET', '/candidates', true, async (ctx) => {
   assertSelf(ctx, ctx.query.get('learnerId') ?? undefined);
   const enrolmentId = ctx.query.get('enrolmentId');
@@ -974,7 +1000,7 @@ route('GET', '/candidates', true, async (ctx) => {
   if (after !== null && (!after || after.length > 300)) throw new Refusal(422, 'invalid-query', 'The candidate cursor is invalid.');
   // The engine already ranks the complete learner set. Page that order so unusable
   // exercises in an early page cannot hide usable, comparatively lower candidates.
-  const ranked = await ctx.deps.engine.candidates(ctx.session.learnerId, enrolmentId, { limit: Number.MAX_SAFE_INTEGER, now: ctx.now() });
+  const ranked = await rankedCandidates(ctx, enrolmentId);
   const boundary = after === null ? -1 : ranked.findIndex((candidate) => candidate.unitId === after);
   if (after !== null && boundary < 0) throw new Refusal(422, 'invalid-query', 'The candidate list changed. Refresh and try again.');
   const page = ranked.slice(boundary + 1, boundary + 1 + limit);
@@ -1176,13 +1202,16 @@ route('POST', '/sync/pull', true, async (ctx) => {
   if (b.documentsSince !== undefined && !isIso(b.documentsSince)) throw invalid('"documentsSince" must be an ISO date and time.');
   const { store } = ctx.deps;
   const learnerId = ctx.session.learnerId;
+  if (b.documents !== undefined && typeof b.documents !== 'boolean') throw invalid('"documents" must be true or false.');
   const events: StoredEvent[] = await store.list({ learnerId, afterSeq: b.afterSeq, limit: Math.min(b.limit ?? MAX_PAGE, MAX_PAGE) });
   const since = typeof b.documentsSince === 'string' ? Date.parse(b.documentsSince) : undefined;
   // Deleted documents travel too (body gone, `deletedAt` set), so the other devices can drop them.
   // `>=`: a document written in the same millisecond as the device's cursor, after it pulled, must still arrive (audit P-05). The client keeps
   // the newest revision per document, so a document it already holds is delivered again harmlessly.
-  const documents = (await store.listDocuments(learnerId)).filter((d) => since === undefined || Date.parse(d.updatedAt) >= since);
-  const response: SyncPullResponse = { events, documents, head: await store.head(learnerId), serverTime: ctx.now() };
+  // A client that keeps no documents asks for none (`documents: false`): their bodies are the heaviest thing a pull can carry, and every round used to send them all.
+  const documents = b.documents === false ? [] : (await store.listDocuments(learnerId)).filter((d) => since === undefined || Date.parse(d.updatedAt) >= since);
+  const head = await store.head(learnerId);
+  const response: SyncPullResponse = { events, documents, head, serverTime: ctx.now(), hasMore: events.length > 0 && events[events.length - 1].seq < head };
   return respond(200, response);
 });
 
@@ -1388,6 +1417,25 @@ async function dispatch(request: Request, deps: ServiceDeps): Promise<Response> 
   try { return await found.run(ctx); } finally { notifierOf(deps).poke(session.learnerId); }
 }
 
+/**
+ * A weak validator on every successful JSON read (GET), and 304 when the caller already holds that version (`If-None-Match`). The body is the same, so
+ * the tag is a digest of it: nothing to keep per learner. The saving is the bytes (a vocabulary page is 50-100 KB before compression); the service still
+ * answers from fresh data every time, so the tag can never be stale.
+ */
+async function withValidator(request: Request, response: Response, deps: ServiceDeps): Promise<Response> {
+  if (request.method !== 'GET' || response.status !== 200 || !deps.crypto || !(response.headers.get('Content-Type') ?? '').startsWith('application/json')) return response;
+  const text = await response.text();
+  const etag = `W/"${deps.crypto.sha256(text).slice(0, 32)}"`;
+  const headers = new Headers(response.headers);
+  headers.set('ETag', etag);
+  const offered = request.headers.get('If-None-Match');
+  if (offered && offered.split(',').some((t) => t.trim() === etag || t.trim() === '*')) {
+    headers.delete('Content-Type');
+    return new Response(null, { status: 304, headers });
+  }
+  return new Response(text, { status: 200, headers });
+}
+
 /** Handle one request. Never throws: anything unexpected is a 500 without detail. One log line per request. */
 export async function handle(request: Request, deps: ServiceDeps): Promise<Response> {
   const started = Date.now();
@@ -1402,6 +1450,7 @@ export async function handle(request: Request, deps: ServiceDeps): Promise<Respo
       response = respond(500, { error: 'server-error', message: MESSAGES.server });
     }
   }
+  response = await withValidator(request, response, deps);
   if (deps.log) {
     let path = '-';
     try { path = new URL(request.url).pathname; } catch { /* keep "-" */ }

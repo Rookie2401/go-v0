@@ -37,11 +37,11 @@ describe('when a sync runs', () => {
     expect(Object.keys(await rig.fake.local.get(null)).filter((k) => k.startsWith('golearn:event:'))).toHaveLength(3);
   });
 
-  it('on a chrome.alarms alarm every 5 minutes', async () => {
+  it('on a chrome.alarms alarm every minute', async () => {
     const rig = createRig();
     await rig.signUp();
     await rig.connect();
-    expect(rig.fake.alarmsCreated).toContainEqual({ name: 'golearn-sync', periodInMinutes: 5 });
+    expect(rig.fake.alarmsCreated).toContainEqual({ name: 'golearn-sync', periodInMinutes: 1 });
     await rig.fireTimers();
     rig.timers.length = 0;
     // an event that never got its debounced round (the worker was killed before it fired)

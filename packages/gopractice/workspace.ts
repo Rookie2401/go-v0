@@ -147,6 +147,9 @@ export function countDeck(deck: DeckItem[], model: { scheduler: { isDue(s: DeckI
   return c;
 }
 
+/** How many `GET /knowledge` batches one home load asks for at once. */
+export const KNOWLEDGE_PARALLEL = 4;
+
 interface CandidateCache { fetchedAt: string; candidates: ReviewCandidate[]; knowledge: UnitKnowledge[] }
 
 export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | undefined> {
@@ -187,9 +190,12 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
       if (cursor) cursors.add(cursor);
     } while (cursor);
     const unitIds = [...new Set([...candidates.map((x) => x.unitId), ...deck.map((x) => x.unitId)])];
-    for (let offset = 0; offset < unitIds.length; offset += 200) {
-      const k = await api.knowledge(unitIds.slice(offset, offset + 200));
-      if (k.ok) knowledge.push(...k.data.knowledge);
+    // the knowledge batches are independent of one another: ask for them together (four at a time) instead of one after another
+    const batches: string[][] = [];
+    for (let offset = 0; offset < unitIds.length; offset += 200) batches.push(unitIds.slice(offset, offset + 200));
+    for (let i = 0; i < batches.length; i += KNOWLEDGE_PARALLEL) {
+      const answers = await Promise.all(batches.slice(i, i + KNOWLEDGE_PARALLEL).map((ids) => api.knowledge(ids)));
+      for (const k of answers) if (k.ok) knowledge.push(...k.data.knowledge);
     }
     candidateSource = 'live';
     await deps.area.set({ [cacheKey]: { fetchedAt: now, candidates, knowledge } satisfies CandidateCache });

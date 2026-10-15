@@ -17,6 +17,7 @@ import type { ServiceDeps } from './deps';
 import { handle } from './handler';
 import { createChangeNotifier } from './notifier';
 import { adaptLinguistics } from './linguistics-adapter';
+import { maybeGzip } from './compress';
 
 interface Args { port: number; data: string; host: string }
 
@@ -67,12 +68,13 @@ function toRequest(req: IncomingMessage, host: string, signal: AbortSignal): Req
   return new Request(url, { method, headers, body, signal, duplex: 'half' } as RequestInit);
 }
 
-async function send(res: ServerResponse, response: Response): Promise<void> {
-  const headers: Record<string, string> = {};
+async function send(res: ServerResponse, response: Response, acceptEncoding: string | undefined): Promise<void> {
+  let headers: Record<string, string> = {};
   response.headers.forEach((v, k) => { headers[k] = v; });
-  const payload = Buffer.from(await response.arrayBuffer());
+  let payload: Buffer = Buffer.from(await response.arrayBuffer());
+  if (response.status !== 204 && response.status !== 304) ({ payload, headers } = await maybeGzip(payload, headers, acceptEncoding));
   res.writeHead(response.status, headers);
-  res.end(response.status === 204 ? undefined : payload);
+  res.end(response.status === 204 || response.status === 304 ? undefined : payload);
 }
 
 /** Wires the sibling packages. They are loaded here and nowhere else in the service. */
@@ -100,7 +102,7 @@ async function main(): Promise<void> {
     res.on('close', () => { if (!res.writableFinished) gone.abort(); });
     handle(toRequest(req, args.host, gone.signal), deps) // logs its own line: METHOD /path status ms
       .then(async (response) => {
-        await send(res, response);
+        await send(res, response, req.headers['accept-encoding']);
         req.removeAllListeners('data');
         req.resume(); // whatever of the body was not read is let go
       })

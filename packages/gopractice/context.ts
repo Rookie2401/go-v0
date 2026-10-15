@@ -100,11 +100,19 @@ class ApiError extends Error {
 }
 const throwFailure = (r: Extract<ApiResult<unknown>, { ok: false }>): never => { throw new ApiError(r.status, r.message || `The service answered ${r.status}.`); };
 
+/** The longest the sync client waits after a failed round before trying again (it was two minutes: a service that came back stayed unseen for that long). */
+export const SYNC_BACKOFF_MAX_MS = 30_000;
+/** After a failed round, a forced attempt (ignoring the backoff) is made for a newly recorded event at most this often. */
+export const FORCED_PUSH_GAP_MS = 5_000;
+/** Events asked for per pull page (the service's cap; it was 500): a fresh install or a new service address reads its history in few round trips. */
+export const SYNC_PULL_PAGE = 1_000;
+
 export function defaultTransport(api: RepositoryApi): Transport {
   return {
     // one event the service refuses (422 invalid-events) is set aside by the sync client and the rest goes in the same round (audit O-06)
     async push(req) { const r = await pushIsolatingRefusals((q) => api.syncPush(q), req); return r.ok ? r.data : throwFailure(r as Extract<ApiResult<unknown>, { ok: false }>); },
-    async pull(req) { const r = await api.syncPull(req); return r.ok ? r.data : throwFailure(r); },
+    // this app keeps no private documents in its sync client: ask for none, so a pull never carries every document body
+    async pull(req) { const r = await api.syncPull({ ...req, documents: false }); return r.ok ? r.data : throwFailure(r); },
   };
 }
 
@@ -206,7 +214,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     const log = createLocalEventLog(area, { now: () => deps.now().toISOString() });
     const sync = createSyncClient({
       queue, local: log, transport: localTransport(l.api, () => deps.now().toISOString()), deviceId: device, now: () => deps.now().getTime(), area,
-      backoff: { baseMs: 2_000, maxMs: 120_000 },
+      backoff: { baseMs: 2_000, maxMs: SYNC_BACKOFF_MAX_MS }, pullLimit: SYNC_PULL_PAGE,
       onStatus: (s) => { lastStatus = s; notify(); },
     });
     sync.setOnline(true); // the repository is on this device: there is no network to be offline from
@@ -241,7 +249,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     };
     const sync = createSyncClient({
       queue, local: log, transport: guarded, deviceId: device, now: () => deps.now().getTime(), area,
-      backoff: { baseMs: 2_000, maxMs: 120_000 },
+      backoff: { baseMs: 2_000, maxMs: SYNC_BACKOFF_MAX_MS }, pullLimit: SYNC_PULL_PAGE,
       onStatus: (s) => { lastStatus = s; notify(); },
     });
     sync.setOnline(onlineNow());
@@ -255,6 +263,18 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     if (e instanceof ApiError && (e.status === 401 || e.status === 403)) { authExpired = true; notify(); }
   }
 
+  /**
+   * A new event is sent now, whatever the sync client's backoff says: a learner who answers a card while the service is back must not wait out the
+   * minutes a dead service earned. While it keeps failing, a forced attempt is made at most every FORCED_PUSH_GAP_MS (the rest wait for the backoff).
+   */
+  let lastForcedAt = 0;
+  function pushOptions(): { force: boolean } | undefined {
+    const at = deps.now().getTime();
+    if (lastStatus?.lastError && at - lastForcedAt < FORCED_PUSH_GAP_MS) return undefined;
+    lastForcedAt = at;
+    return { force: true };
+  }
+
   async function syncNow(opts?: { force?: boolean }): Promise<SyncResult | undefined> {
     const d = await data();
     if (!d) return undefined;
@@ -264,7 +284,8 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     const out = await run;
     try { lastStatus = await d.sync.status(); } catch { /* */ }
     notify();
-    if (out.pull && out.pull.appended > 0) { changed(); notifyData(); }
+    // events from another device arrived: the cached profile (enrolments, languages) may be out of date with them, so the next read asks again
+    if (out.pull && out.pull.appended > 0) { profileDirty = true; lastProfileTry = 0; changed(); notifyData(); }
     return out;
   }
 
@@ -597,7 +618,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       }
       if (out.queued > 0) notifyData();
       try { lastStatus = await d.sync.status(); notify(); } catch { /* the header may lag one event */ }
-      if (deps.autoSync && out.queued) void syncNow();
+      if (deps.autoSync && out.queued) void syncNow(pushOptions());
       return out;
     },
     syncNow,

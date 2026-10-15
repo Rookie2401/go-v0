@@ -5,8 +5,11 @@
  *   client    createSyncClient({ transport })                            push, pull, backoff, status
  *   transport the typed API client's syncPush / syncPull with the session's token
  *
- * When it runs: once, debounced 2 s after an event is queued; every 5 minutes on a `chrome.alarms` alarm (the manifest
- * declares the "alarms" permission for this and nothing else); on request from an extension page.
+ * When it runs: once, debounced 2 s after an event is queued; every minute on a `chrome.alarms` alarm (the manifest
+ * declares the "alarms" permission for this and nothing else); when the connection returns; on request from an extension page; and,
+ * while events are waiting after a failed round, again after 5 s, 10 s, 20 s, 30 s, 30 s ... (RETRY_*): a service that was down for a
+ * minute is not waited on for five. A round that has something to send is never skipped for the client's own backoff: that backoff is
+ * for the rest of the work (the pull), and a queue that is not empty is always worth one attempt.
  *
  * Events recorded while signed out are attributed to `local:<deviceId>` and are INVISIBLE to the sync client (a view of
  * the queue hides them) until they are re-attributed on sign-in. A 401 sets `needsSignIn`; sync then stops until the
@@ -27,7 +30,12 @@ export const SYNC_ALARM = 'golearn-sync';
  * A signed-in event (SelectionLookedUp, ItemMarked, ...) is pushed after one debounce; do not lengthen it without telling GoReview.
  */
 export const SYNC_DEBOUNCE_MS = 2_000;
-export const SYNC_PERIOD_MINUTES = 5;
+export const SYNC_PERIOD_MINUTES = 1;
+/** After a failed round with events waiting, the next attempt comes after RETRY_BASE_MS, doubling to RETRY_MAX_MS (a worker that sleeps is woken by the alarm instead). */
+/** Events asked for per pull page (the service's own cap): a cold history is a few round trips, not dozens. */
+export const PULL_PAGE = 1_000;
+export const RETRY_BASE_MS = 5_000;
+export const RETRY_MAX_MS = 30_000;
 
 export class UnauthorizedError extends Error { constructor() { super('The service did not accept the stored sign-in (401).'); this.name = 'UnauthorizedError'; } }
 
@@ -69,6 +77,7 @@ export function createSyncService(opts: SyncServiceOptions) {
   let online = true;
   let sawUnauthorized = false;
   let forceNext = false;
+  let failureStreak = 0;
 
   const load = async (): Promise<Persisted> => (persisted ??= ((await opts.area.get(SYNC_STATUS_KEY))[SYNC_STATUS_KEY] as Persisted | undefined) ?? {});
   const save = async (patch: Persisted): Promise<void> => {
@@ -91,7 +100,8 @@ export function createSyncService(opts: SyncServiceOptions) {
     async pull(req: SyncPullRequest): Promise<SyncPullResponse> {
       const a = await opts.session.authenticated();
       if (!a) { sawUnauthorized = true; throw new UnauthorizedError(); }
-      const r = await a.api.syncPull(req);
+      // the worker keeps no documents (and no copy of other devices' events): ask for none, so a round does not carry every document body
+      const r = await a.api.syncPull({ ...req, documents: false });
       if (r.ok) return r.data;
       if (r.status === 401 || (r.status === 403 && r.error === 'not-your-device')) { sawUnauthorized = true; throw new UnauthorizedError(); }
       throw new Error(`sync pull refused: ${r.error}${r.message ? ` (${r.message})` : ''}`);
@@ -101,7 +111,7 @@ export function createSyncService(opts: SyncServiceOptions) {
   async function getClient(): Promise<SyncClient> {
     if (client) return client;
     const deviceId = await opts.deviceId();
-    client = createSyncClient({ queue: syncable, local: discardLog, transport, deviceId, now, pullLimit: 200, backoff: { baseMs: 2_000, maxMs: 5 * 60_000, factor: 2, jitter: 0.5 } });
+    client = createSyncClient({ queue: syncable, local: discardLog, transport, deviceId, now, pullLimit: PULL_PAGE, backoff: { baseMs: 2_000, maxMs: RETRY_MAX_MS, factor: 2, jitter: 0.5 } });
     client.setOnline(online);
     return client;
   }
@@ -138,10 +148,13 @@ export function createSyncService(opts: SyncServiceOptions) {
       if (p.needsSignIn || s.expired) return { ok: false, skipped: 'needs-sign-in' };
       const c = await getClient();
       sawUnauthorized = false;
-      const r = await c.syncOnce({ force: o.force });
+      // a queue with events in it is always tried: the client's backoff is for the pull and for an empty queue, not a reason to hold events back
+      const waiting = o.force || (await syncable.size()) > 0;
+      const r = await c.syncOnce({ force: waiting });
       if (r.skipped) return { ok: r.ok, skipped: r.skipped };
       const st = await c.status();
       if (r.ok) {
+        failureStreak = 0;
         await save({ lastPushAt: st.lastPushAt ?? now(), lastError: undefined });
         try { await opts.onSynced?.(); } catch { /* a cache refresh must not fail a sync */ }
         return { ok: true };
@@ -150,18 +163,29 @@ export function createSyncService(opts: SyncServiceOptions) {
       const message = st.lastError ?? r.push?.error ?? r.pull?.error ?? 'sync failed';
       if (sawUnauthorized) { await save({ needsSignIn: true, lastError: message }); return { ok: false, skipped: 'needs-sign-in' }; }
       await save({ lastError: message });
+      await armRetry();
       return { ok: false };
     } catch (e) {
       await save({ lastError: e instanceof Error ? e.message : String(e) });
+      await armRetry();
       return { ok: false };
     }
   }
 
+  /** After a failed round with events waiting: try again soon, on a short ladder, instead of leaving it to the next alarm. Nothing is armed while signed out, offline or after a 401. */
+  async function armRetry(): Promise<void> {
+    try {
+      if (debounce !== undefined || !online || sawUnauthorized || (await load()).needsSignIn || (await syncable.size()) === 0) return; // a round already scheduled (a newer event's debounce) is sooner
+      failureStreak += 1;
+      schedule(true, Math.min(RETRY_MAX_MS, RETRY_BASE_MS * 2 ** (failureStreak - 1)));
+    } catch { /* the alarm is the safety net */ }
+  }
+
   /** Debounced: a burst of events (a card, its layers, a pronunciation) is one round. */
-  function schedule(force = false): void {
+  function schedule(force = false, delayMs = SYNC_DEBOUNCE_MS): void {
     if (debounce !== undefined) timers.clear(debounce);
     forceNext = forceNext || force;
-    debounce = timers.set(() => { debounce = undefined; const f = forceNext; forceNext = false; void syncOnce({ force: f }); }, SYNC_DEBOUNCE_MS);
+    debounce = timers.set(() => { debounce = undefined; const f = forceNext; forceNext = false; void syncOnce({ force: f }); }, delayMs);
   }
 
   /** A new sign-in clears the 401 state and tries at once. */
@@ -173,14 +197,14 @@ export function createSyncService(opts: SyncServiceOptions) {
   /** Any other call that met a 401 (a correction, a knowledge query) reports it here so the popup can say "sign in again". */
   async function noteUnauthorized(): Promise<void> { await save({ needsSignIn: true, lastError: 'The service did not accept the stored sign-in (401).' }); }
 
-  function setOnline(v: boolean): void { online = v; client?.setOnline(v); if (v) schedule(); }
+  function setOnline(v: boolean): void { online = v; client?.setOnline(v); if (v) { failureStreak = 0; schedule(true); } }
 
   function registerAlarm(chrome: ChromeApi): void {
     const alarms = chrome.alarms;
     if (!alarms) return; // the permission is not declared or not available: the debounce and the popup's button remain
     try {
-      void Promise.resolve(alarms.get?.(SYNC_ALARM)).then((existing) => { if (!existing) void alarms.create(SYNC_ALARM, { periodInMinutes: SYNC_PERIOD_MINUTES, delayInMinutes: 1 }); }, () => { void alarms.create(SYNC_ALARM, { periodInMinutes: SYNC_PERIOD_MINUTES }); });
-      alarms.onAlarm.addListener((a) => { if (a.name === SYNC_ALARM) void syncOnce(); });
+      void Promise.resolve(alarms.get?.(SYNC_ALARM)).then((existing) => { if (!existing || existing.periodInMinutes !== SYNC_PERIOD_MINUTES) void alarms.create(SYNC_ALARM, { periodInMinutes: SYNC_PERIOD_MINUTES, delayInMinutes: 1 }); /* an install from before the 1-minute period still has its 5-minute alarm */ }, () => { void alarms.create(SYNC_ALARM, { periodInMinutes: SYNC_PERIOD_MINUTES }); });
+      alarms.onAlarm.addListener((a) => { if (a.name === SYNC_ALARM) void syncOnce(); }); // waiting events are sent whatever the backoff says (syncOnce)
     } catch { /* an alarm is an extra, not a requirement */ }
   }
 

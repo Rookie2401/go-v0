@@ -1,6 +1,6 @@
 /** #/settings — preferences, account, service address, synchronisation, diagnostics, licences and attribution. */
 import { CONTRACT_VERSION } from '../../repository-contract/src';
-import type { AppContext } from '../context';
+import type { AppContext, Mode, SyncView } from '../context';
 import { validateServiceUrl } from '../config';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
 import { setRemoteSpeechConsent } from './consent';
@@ -8,6 +8,38 @@ import { licencesSection } from './licences';
 import { prefsForm } from './prefs';
 import { profileControls } from '../profiles';
 import type { View } from './view';
+
+/** "just now", "40 s ago", "5 min ago", "3 h ago"; a date beyond a day. */
+export function ago(at: number, now: number): string {
+  const s = Math.max(0, Math.round((now - at) / 1000));
+  if (s < 10) return 'just now';
+  if (s < 60) return `${s} s ago`;
+  if (s < 3600) return `${Math.round(s / 60)} min ago`;
+  if (s < 86_400) return `${Math.round(s / 3600)} h ago`;
+  return shortDate(new Date(at).toISOString());
+}
+
+/**
+ * The one quiet line at the top of the Synchronisation card: whether the account is up to date, when something was last sent and fetched, how many
+ * events wait on this device, and, if the service is not being reached, why and when the next attempt is.
+ */
+export function syncLine(v: SyncView, mode: Mode, now: number): { text: string; kind: 'ok' | 'info' | 'error' } {
+  if (mode === 'none') return { text: 'Not signed in.', kind: 'info' };
+  if (mode === 'device') return { text: 'On this device only: nothing is sent anywhere.', kind: 'info' };
+  if (v.authExpired) return { text: 'Sign in again to sync. Nothing on this device was lost.', kind: 'error' };
+  const s = v.status;
+  if (!s) return { text: 'Sync has not started yet.', kind: 'info' };
+  const waiting = s.pending ? `${s.pending} waiting on this device` : 'nothing waiting';
+  const sent = s.lastPushAt ? `sent ${ago(s.lastPushAt, now)}` : 'nothing sent yet';
+  const fetched = s.lastPullAt ? `fetched ${ago(s.lastPullAt, now)}` : 'nothing fetched yet';
+  if (!s.online) return { text: `Offline · ${waiting} · will send when the connection returns`, kind: 'info' };
+  if (s.lastError) {
+    const retry = s.nextRetryAt === undefined || s.nextRetryAt <= now ? 'trying again now' : `trying again in ${Math.max(1, Math.round((s.nextRetryAt - now) / 1000))} s`;
+    return { text: `Not reaching the service: ${s.lastError} · ${waiting} · ${retry}`, kind: 'error' };
+  }
+  if (v.syncing) return { text: `Syncing · ${waiting}`, kind: 'info' };
+  return { text: `${s.pending ? 'Waiting to send' : 'Up to date'} · ${sent} · ${fetched} · ${waiting}`, kind: s.pending ? 'info' : 'ok' };
+}
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const session = await ctx.state.getSession();
@@ -115,8 +147,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     if (!view.alive()) return;
     const s = v.status;
     clear(syncBox);
+    const line = syncLine(v, mode, ctx.deps.now().getTime());
     append(syncBox, [
       h('h2', { id: 'sync-h' }, 'Synchronisation'),
+      h('p', { id: 'sync-line', class: line.kind === 'error' ? 'error' : 'muted', 'data-kind': line.kind, role: 'status' }, line.text),
       h('dl', { class: 'facts', id: 'sync-facts' },
         h('dt', {}, 'Connection'), h('dd', {}, s ? (s.online ? 'online' : 'offline') : 'not started'),
         h('dt', {}, 'Waiting to send'), h('dd', { id: 'sync-pending' }, String(s?.pending ?? 0)),

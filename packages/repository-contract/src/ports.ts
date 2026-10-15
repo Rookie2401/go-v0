@@ -196,8 +196,19 @@ export interface SyncPushResponse {
   clockSkewMs: number;
   head: number;
 }
-export interface SyncPullRequest { deviceId: string; afterSeq: number; limit?: number; documentsSince?: string }
-export interface SyncPullResponse { events: StoredEvent[]; documents: PrivateDocument[]; head: number; serverTime: string }
+export interface SyncPullRequest {
+  deviceId: string; afterSeq: number; limit?: number; documentsSince?: string;
+  /**
+   * `false`: send no documents at all (the reply's `documents` is empty). A client that does not keep private documents (GoLearn's worker, GoReview)
+   * sets it so that a pull does not carry every document body on every round. Absent or `true`: as before. Additive: an older service ignores it.
+   */
+  documents?: boolean;
+}
+export interface SyncPullResponse {
+  events: StoredEvent[]; documents: PrivateDocument[]; head: number; serverTime: string;
+  /** More events lie beyond this page (the last event's `seq` is below `head`): ask again with `afterSeq` = that `seq`. Additive: an older service omits it and the client compares `seq` with `head`. */
+  hasMore?: boolean;
+}
 
 /**
  * `GET /sync/status`: where the learner's event log stands.

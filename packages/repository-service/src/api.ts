@@ -87,17 +87,32 @@ export interface ApiOptions { baseUrl: string; fetch: typeof fetch; token?: stri
 export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
   const base = opts.baseUrl.replace(/\/+$/, '');
   const self: { token: string | undefined } = { token: opts.token };
+  // Reads that were answered with a validator are remembered in memory only (never written to disk) and asked again with If-None-Match: an unchanged answer
+  // (the vocabulary, the candidates, the profile) comes back as an empty 304 instead of the whole page. A service without validators simply never fills it.
+  const validated = new Map<string, { etag: string; text: string }>();
+  const VALIDATED_MAX = 32;
 
   async function call<T>(method: string, path: string, body?: unknown, query?: Record<string, string | number | undefined>): Promise<ApiResult<T>> {
     const qs = query ? Object.entries(query).filter(([, v]) => v !== undefined && v !== '').map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`).join('&') : '';
     const headers: Record<string, string> = {};
     if (self.token) headers.Authorization = `Bearer ${self.token}`;
     if (body !== undefined) headers['Content-Type'] = 'application/json';
-    const response = await opts.fetch(`${base}${path}${qs ? `?${qs}` : ''}`, { method, headers, ...(body !== undefined ? { body: JSON.stringify(body) } : {}) });
-    const text = response.status === 204 ? '' : await response.text();
+    const url = `${base}${path}${qs ? `?${qs}` : ''}`;
+    const vkey = method === 'GET' ? `${self.token ?? ''}|${url}` : undefined;
+    const held = vkey ? validated.get(vkey) : undefined;
+    if (held) headers['If-None-Match'] = held.etag;
+    const response = await opts.fetch(url, { method, headers, ...(body !== undefined ? { body: JSON.stringify(body) } : {}) });
+    let text: string;
+    if (response.status === 304 && held) text = held.text;
+    else text = response.status === 204 || response.status === 304 ? '' : await response.text();
+    if (vkey && response.status === 200) {
+      const etag = response.headers?.get?.('ETag');
+      if (etag) { validated.delete(vkey); if (validated.size >= VALIDATED_MAX) validated.delete(validated.keys().next().value as string); validated.set(vkey, { etag, text }); }
+      else validated.delete(vkey);
+    }
     let parsed: unknown = null;
     if (text) { try { parsed = JSON.parse(text); } catch { parsed = null; } }
-    if (response.ok) return { ok: true, status: response.status, data: parsed as T };
+    if (response.ok || (response.status === 304 && held)) return { ok: true, status: response.status === 304 ? 200 : response.status, data: parsed as T };
     const b = (parsed && typeof parsed === 'object' ? parsed : {}) as Record<string, unknown>;
     return { ok: false, status: response.status, error: String(b.error ?? 'error'), message: String(b.message ?? ''), body: b };
   }

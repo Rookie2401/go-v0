@@ -26,15 +26,16 @@ const sizesIn = (dir: string, rel = ''): Array<{ file: string; bytes: number }> 
   fs.readdirSync(path.join(dir, rel), { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? sizesIn(dir, path.posix.join(rel, e.name)) : [{ file: path.posix.join(rel, e.name), bytes: fs.statSync(path.join(dir, rel, e.name)).size }]));
 
 describe.skipIf(!have)('the built extension', () => {
-  it('stays small: the content script and the worker carry Albanian only, and every other analyser is its own chunk', () => {
+  it('keeps bounded bundles with Hindi available for on-device Repository analysis', () => {
     const sizes = new Map(sizesIn(dist).filter((f) => /\.js$/.test(f.file)).map((f) => [f.file, f.bytes]));
     const table = [...sizes].map(([f, b]) => `  ${f.padEnd(34)} ${(b / KB).toFixed(1).padStart(8)} KB`).join('\n');
     // eslint-disable-next-line no-console
     console.info(`[bundle] dist/ JavaScript, minified:\n${table}`);
     expect(sizes.get('content.js')!, 'content.js').toBeLessThanOrEqual(520 * KB);
-    // 560 since Linguistic Engine V2 (2026-10-10): the Albanian generation (paradigm.ts, table-tags.ts) and the full-record
-    // format travel with the Albanian adapter the worker carries; no other analyser is in it (checked below)
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(560 * KB);
+    // Hindi reading must resolve in the offline Repository too. Its real analyser adds
+    // about 460 KB to the former Albanian-only worker; classic workers cannot import
+    // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1050 * KB);
     if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(650 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });
@@ -52,14 +53,15 @@ describe.skipIf(!have)('the built extension', () => {
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
   });
 
-  it('the worker and the content script do not carry the German, Hindi, Thai or Norwegian analysers', () => {
+  it('keeps Hindi out of the content script and unrelated analysers out of both scripts', () => {
     for (const f of ['content.js', 'background.js']) {
       const code = read(f);
       expect(code, f).not.toContain('adapter-de@');
-      expect(code, f).not.toContain('adapter-hi@');
       expect(code, f).not.toContain('adapter-th@');
       expect(code, f).not.toContain('Reference realisation of East Norwegian speech'); // the Norwegian engine (its ids are built at run time, so a literal from its text is checked)
     }
+    expect(read('content.js')).not.toContain('adapter-hi@');
+    expect(read('background.js')).toContain('adapter-hi@');
     expect(read('analysers/de.js')).toContain('adapter-de@');
     // Bokmål and Nynorsk share one engine, so the chunk that holds it (imported by both nb.js and nn.js) is the only place its text appears
     const shared = fs.readdirSync(path.join(dist, 'analysers')).filter((n) => /^shared-.*\.js$/.test(n)).map((n) => read(`analysers/${n}`)).join('\n');
@@ -69,7 +71,9 @@ describe.skipIf(!have)('the built extension', () => {
 
   it('has the files the manifest names, and the manifest copied is the source manifest', () => {
     const m = JSON.parse(read('manifest.json'));
-    expect(m.permissions).toEqual(['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms']);
+    // unlimitedStorage (2026-10-16): the device event log (GoLearn Active records every page scan) outgrew chrome.storage.local's
+    // default 10 MB; a full store refused every new write (level presses) while duplicate lookups still 'succeeded'
+    expect(m.permissions).toEqual(['activeTab', 'scripting', 'storage', 'unlimitedStorage', 'contextMenus', 'alarms']);
     expect(m.host_permissions).toBeUndefined();
     expect(m.options_page).toBe('app/index.html');
     expect(fs.existsSync(path.join(dist, m.background.service_worker))).toBe(true);

@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 /**
- * GoReview on a phone, offline: the snapshot (packages/gopractice/snapshot.ts) puts the home, My vocab and Previous decks back on screen with no
+ * GoReview on a phone, offline: the snapshot (packages/gopractice/snapshot.ts) puts the home, My vocab and Saved decks back on screen with no
  * network, the events made meanwhile stay queued and go out when the network returns; and the review edition's own bits (title, first-launch
  * message, the "Update ready — reload" link).
  */
@@ -127,14 +127,14 @@ describe('offline: the home keeps its deck', () => {
     expect(Number(rig.q('#deck-count').getAttribute('data-cards'))).toBe(0);
   });
 
-  it('Previous decks and the preferences come back from the snapshot if the storage lost them, and are never overwritten when present', async () => {
+  it('Saved decks and the preferences come back from the snapshot if the storage lost them, and are never overwritten when present', async () => {
     const service = defaultService();
     const rig = await makeRig({ service, signedIn: true });
     await seed(rig, dueCard(A, 'zog', 'meaning-to-form'));
     await reopen(rig);
     await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 25, maxNew: 3, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
     click(rig.q('#save-deck'));
-    await until(() => rig.q('#previous-count').textContent === '1 saved', 'the saved deck');
+    await until(() => rig.q('#previous-count').textContent === '2 saved', 'the saved deck');
     await rig.go('settings'); await rig.go('review');            // a load writes the snapshot with the deck and the prefs
     const snap = await readSnapshot(rig.app.ctx, 'L1', 'sq');
     expect(JSON.stringify(snap?.decks)).toContain('zog');
@@ -142,10 +142,10 @@ describe('offline: the home keeps its deck', () => {
 
     await rig.app.ctx.deps.area.remove([decksKey('L1', 'sq'), 'gopractice:prefs:L1:sq']);   // storage lost both
     await reopen(rig);
-    expect(rig.q('#previous-count').textContent).toBe('1 saved');
+    expect(rig.q('#previous-count').textContent).toBe('2 saved');
     expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).sessionMinutes).toBe(25);
     await rig.go('review/decks');
-    await until(() => rig.qa('.deckrow').length === 1, 'the deck in the list');
+    await until(() => rig.qa('.deckrow').length === 2, 'the deck in the list');
 
     // a record that is there is left alone
     await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 12, maxNew: 3, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });

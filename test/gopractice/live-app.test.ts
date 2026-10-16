@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 /**
  * Live updates inside the real app: GoLearn pushes an event to the service, the held `POST /sync/wait` answers, the app pulls through its normal
- * sync path and the screen on view repaints (the home, My vocab, Previous decks, the session summary), the cached profile is dropped, and a card
+ * sync path and the screen on view repaints (the home, My vocab, Saved decks, the session summary), the cached profile is dropped, and a card
  * that is mid-answer is never touched. The service is the suite's FakeService behind a fake fetch speaking the two routes the service lane adds.
  */
 import { afterEach, describe, expect, it, vi } from 'vitest';
@@ -121,7 +121,7 @@ describe('live updates in the app', () => {
     expect(rig.q('#current-deck')).toBe(home);
   });
 
-  describe('My vocab and Previous decks react too', () => {
+  describe('My vocab and Saved decks react too', () => {
     const word = (label: string): VocabularyItem => {
       const unitId = `lemma:sq:${label}:NOUN`;
       const knowledge = { unitId, languageId: 'sq', level: 'seen', encounters: 2, firstSeenAt: '2026-09-01T00:00:00.000Z', lastSeenAt: '2026-10-07T00:00:00.000Z' } as UnitKnowledge;
@@ -172,17 +172,17 @@ describe('live updates in the app', () => {
       expect(rig.root.querySelector('.vocab-ask')).not.toBeNull();
     });
 
-    it('Previous decks lists a deck that was saved while the screen was open', async () => {
+    it('Saved decks lists a deck that was saved while the screen was open', async () => {
       const service = defaultService();
       const svc = liveService(service);
       const rig = await makeRig({ service, fetch: svc.fetchFn, live, signedIn: true });
       await ready(rig, svc);
       await rig.go('review/decks');
-      await until(() => !!rig.root.querySelector('#decks-empty'), 'the empty list');
+      await until(() => rig.qa('.deckrow').length === 1, 'the list holds only Class Essentials');
       await saveDeck(rig.app.ctx, { learnerId: 'L1', languageId: 'sq' }, [{ itemId: 'i1', unitId: 'lemma:sq:zog:NOUN', unitKind: 'lemma', label: 'zog', dimension: 'productive-recall', family: 'meaning-to-form' }]);
       service.inject('L1', cardAdded(A, 'zog', 'meaning-to-form', '2026-10-08T09:00:00.000Z'));
       svc.push();
-      await until(() => rig.qa('.deckrow').length === 1, 'the saved deck');
+      await until(() => rig.qa('.deckrow').length === 2, 'the saved deck');
     });
   });
 

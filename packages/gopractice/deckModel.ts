@@ -16,6 +16,7 @@ import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, Plan
 import type { AppContext } from './context';
 import { unitLabel } from './format';
 import { clampDeckSize } from './state';
+import { classDeckFor, classLanguageOf, isClassUnit } from './classEssentials';
 import { readSnapshot, writeSnapshot, MAX_SNAPSHOT_WORDS } from './snapshot';
 import { observedReviewSeconds, type ReviewModel } from './workspace';
 
@@ -59,7 +60,7 @@ const entryOf = (p: PlannedItem): DeckEntry => ({
 /** The deck as the scheduler plans it today, with the units of `holdOut` left out (the deck that was just saved). */
 function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string>): SessionPlan {
   return ctx.engine.plan({
-    deck: model.deck.filter((i) => !holdOut.has(i.unitId)),
+    deck: model.deck.filter((i) => !holdOut.has(i.unitId) && !isClassUnit(i.unitId)),
     intake: model.outcomes.filter((o) => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
     // the deck is sized by cards, not minutes: flexible time, so the planner's budget never cuts it short of the size
     prefs: { ...model.prefs, sessionMinutes: 0 }, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
@@ -75,7 +76,7 @@ function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet
 export async function assemble(ctx: AppContext, model: ReviewModel, wanted: readonly Wanted[], size: number, opts: { unchecked?: boolean } = {}): Promise<SessionPlan> {
   const listeningOk = model.prefs.includeListening && model.audio.available;
   const holds = (w: Wanted): DeckItem | undefined =>
-    model.deck.find((i) => i.unitId === w.unitId && i.dimension === w.dimension && i.status !== 'dismissed' && i.status !== 'suspended');
+    [...model.deck, ...(model.classDeck ?? [])].find((i) => i.unitId === w.unitId && i.dimension === w.dimension && i.status !== 'dismissed' && i.status !== 'suspended');
   const direct = new Map<string, PlannedItem>();
   const fresh: IntakeOutcome[] = [];
   const order: string[] = [];
@@ -250,10 +251,15 @@ export interface SavedDeck {
   languageId: string;
   varietyId?: string;
   items: DeckEntry[];
+  /** A built-in deck (Class Essentials) has a name, a description and notes of its own; a deck the learner saved has none. */
+  name?: string;
+  description?: string;
+  notes?: string;
+  builtin?: 'class-essentials';
 }
 
 type AddedWord = Pick<Wanted, 'unitId' | 'unitKind' | 'dimension' | 'family'>;
-interface DeckStore { v: 1; decks: SavedDeck[]; holdOut: string[]; added: AddedWord[] }
+interface DeckStore { v: 1; decks: SavedDeck[]; holdOut: string[]; added: AddedWord[]; /** Built-in decks the learner removed (they stay removed until restored). */ dismissed: string[] }
 
 export const decksKey = (learnerId: string, languageId: string): string => `gopractice:decks:${learnerId}:${languageId}`;
 const MAX_SAVED = 60;
@@ -267,15 +273,16 @@ function cleanEntry(v: unknown): DeckEntry | undefined {
 }
 function cleanStore(raw: unknown): DeckStore {
   const r = raw as Partial<DeckStore> | undefined;
-  if (!r || typeof r !== 'object' || r.v !== 1 || !Array.isArray(r.decks)) return { v: 1, decks: [], holdOut: [], added: [] };
+  if (!r || typeof r !== 'object' || r.v !== 1 || !Array.isArray(r.decks)) return { v: 1, decks: [], holdOut: [], added: [], dismissed: [] };
   const decks: SavedDeck[] = [];
   for (const d of r.decks as Array<Partial<SavedDeck>>) {
     if (!d || !str(d.id) || !str(d.savedAt) || !str(d.languageId) || !Array.isArray(d.items)) continue;
     const items = d.items.map(cleanEntry).filter((x): x is DeckEntry => !!x);
-    if (items.length) decks.push({ id: d.id, savedAt: d.savedAt, languageId: d.languageId, ...(str(d.varietyId) ? { varietyId: d.varietyId } : {}), items });
+    if (items.length) decks.push({ id: d.id, savedAt: d.savedAt, languageId: d.languageId, ...(str(d.varietyId) ? { varietyId: d.varietyId } : {}), items,
+      ...(str(d.name) ? { name: d.name } : {}), ...(str(d.description) ? { description: d.description } : {}), ...(str(d.notes) ? { notes: d.notes } : {}), ...(d.builtin === 'class-essentials' ? { builtin: d.builtin } : {}) });
   }
   const added = (Array.isArray(r.added) ? r.added : []).filter((w): w is AddedWord => !!w && str((w as AddedWord).unitId) && str((w as AddedWord).unitKind) && str((w as AddedWord).dimension) && str((w as AddedWord).family));
-  return { v: 1, decks, holdOut: Array.isArray(r.holdOut) ? r.holdOut.filter(str) : [], added };
+  return { v: 1, decks, holdOut: Array.isArray(r.holdOut) ? r.holdOut.filter(str) : [], added, dismissed: Array.isArray(r.dismissed) ? r.dismissed.filter(str) : [] };
 }
 
 async function readStore(ctx: AppContext, learnerId: string, languageId: string): Promise<DeckStore> {
@@ -289,8 +296,36 @@ const writeStore = (ctx: AppContext, learnerId: string, languageId: string, stor
 let chain: Promise<unknown> = Promise.resolve();
 const serial = <T>(fn: () => Promise<T>): Promise<T> => { const run = chain.then(fn, fn); chain = run.catch(() => undefined); return run; };
 
-export async function listSavedDecks(ctx: AppContext, learnerId: string, languageId: string): Promise<SavedDeck[]> {
-  return (await readStore(ctx, learnerId, languageId)).decks;
+/**
+ * The saved decks of one language, newest first. Class Essentials is seeded here on the first visit, with the stable id `class-essentials:<lang>`:
+ * a second call finds it and adds nothing, and a deck the learner removed stays removed until it is restored.
+ */
+export async function listSavedDecks(ctx: AppContext, learnerId: string, languageId: string, varietyId?: string): Promise<SavedDeck[]> {
+  const first = await readStore(ctx, learnerId, languageId);
+  if (!classLanguageOf(languageId)) return first.decks;
+  return serial(async () => {
+    const store = await readStore(ctx, learnerId, languageId);
+    const seed = classDeckFor(languageId, varietyId, ctx.deps.now().toISOString());
+    if (seed && !store.dismissed.includes(seed.id) && !store.decks.some((d) => d.id === seed.id)) {
+      store.decks = [seed, ...store.decks];
+      await writeStore(ctx, learnerId, languageId, store);
+    }
+    return store.decks;
+  });
+}
+/** Whether Class Essentials was removed, so Saved decks can offer to restore it. */
+export async function classEssentialsRemoved(ctx: AppContext, learnerId: string, languageId: string): Promise<boolean> {
+  const id = classDeckFor(languageId, undefined, '')?.id;
+  return !!id && (await readStore(ctx, learnerId, languageId)).dismissed.includes(id);
+}
+export function restoreClassEssentials(ctx: AppContext, learnerId: string, languageId: string): Promise<void> {
+  return serial(async () => {
+    const store = await readStore(ctx, learnerId, languageId);
+    const id = classDeckFor(languageId, undefined, '')?.id;
+    if (!id) return;
+    store.dismissed = store.dismissed.filter((d) => d !== id);
+    await writeStore(ctx, learnerId, languageId, store);
+  });
 }
 export async function holdOutOf(ctx: AppContext, learnerId: string, languageId: string): Promise<Set<string>> {
   return new Set((await readStore(ctx, learnerId, languageId)).holdOut);
@@ -312,7 +347,9 @@ export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: s
 export function removeSavedDeck(ctx: AppContext, learnerId: string, languageId: string, deckId: string): Promise<void> {
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
+    const gone = store.decks.find((d) => d.id === deckId);
     store.decks = store.decks.filter((d) => d.id !== deckId);
+    if (gone?.builtin && !store.dismissed.includes(gone.id)) store.dismissed = [...store.dismissed, gone.id];
     await writeStore(ctx, learnerId, languageId, store);
   });
 }
@@ -431,6 +468,7 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ row
     if (!r.ok) throw new Error(r.message || `The Repository answered ${r.status}.`);
     for (const item of r.data.items) {
       const k = item.knowledge;
+      if (isClassUnit(k.unitId)) continue; // the Class Essentials cards are not vocabulary the learner met
       const last = k.lastSeenAt ?? item.lastEncounter;
       records.push({
         unitId: k.unitId, label: item.unit?.label || unitLabel(k.unitId), level: k.level, encounters: k.encounters, ...(last ? { lastSeenAt: last } : {}),

@@ -74,7 +74,7 @@ has to be **reachable from the phone**:
 
 While GoReview is **on screen, online and signed in**, it keeps one request open to the service (`POST /sync/wait`, up to 25 s).
 When GoLearn on the desktop pushes a lookup the request answers at once; the app does its normal sync (pull), and the screen you are
-on repaints: the home's counts and deck, My vocab, Previous decks, the session summary. The cached profile (your languages) is
+on repaints: the home's counts and deck, My vocab, Saved decks, the session summary. The cached profile (your languages) is
 dropped, so a language you add in GoLearn shows up too.
 
 - It is **foreground only**. iOS suspends a web app in the background; nothing can arrive then, and without a native app there is no
@@ -89,7 +89,7 @@ dropped, so a language you add in GoLearn shows up too.
 
 The learner's events (their own log, per account), the queue of events waiting to be sent, the saved decks, the preferences, the cached
 profile and candidate list, and the **snapshot** of what only the service can compute: My vocab (merged, one line per word, up to 6000
-words) and the intake proposals that fill the deck. With no network the home, My vocab and Previous decks come from those; My vocab
+words) and the intake proposals that fill the deck. With no network the home, My vocab and Saved decks come from those; My vocab
 says it is showing what the phone saved, and when. Reviews done offline stay in the queue ("Offline · N waiting on this device") and go
 out by themselves when the network returns. All of this is in the app's own storage on the phone, per account; signing out with
 "forget" or clearing the device's data removes it; another account never sees it.
@@ -108,7 +108,7 @@ time the app returns to the foreground.)
 1. Phone: open GoReview from the icon, sign in, look at the home ("N cards ready", "My vocab N words").
 2. Desktop: read something with GoLearn and look a word up (the same account, the service reachable by both).
 3. Phone, still open: the counts change **within a few seconds**, and the word is in My vocab, with no reload.
-4. Put the phone in airplane mode: the home, My vocab and Previous decks still show; do a review; the header says
+4. Put the phone in airplane mode: the home, My vocab and Saved decks still show; do a review; the header says
    "Offline · 1 waiting on this device". Switch airplane mode off: it says "Online · nothing waiting" and the desktop sees the review.
 5. Lock the phone for a minute, unlock: it catches up on its own.
 

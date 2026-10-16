@@ -391,3 +391,9 @@ img, svg, video, canvas { max-width: 100%; }
 @media (max-width: 359px) {
   .grade-word { display: none; } /* the number remains; the button keeps its word as its accessible name */
 }
+
+/* Saved decks: a built-in deck carries a name, a description and a fine-print note under its line */
+.deckrow-body { display: flex; flex-direction: column; gap: .15rem; min-width: 0; flex: 1 1 14rem; }
+.deckrow-note { color: var(--ink-soft); font-size: .95rem; overflow-wrap: anywhere; }
+.deckrow-fine { color: var(--ink-faint); font-size: .85rem; font-style: italic; }
+.restore-line { margin: .8rem 0 0; max-width: none; }

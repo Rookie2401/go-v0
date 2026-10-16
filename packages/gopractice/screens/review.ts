@@ -3,7 +3,7 @@
  *
  *   GoTell          its own hierarchy (above a rule): the writing workspace, #/tell
  *   Current deck    "N cards ready", Begin, and a quiet Save deck. The deck is always ready (../deckModel)
- *   Previous decks  "N saved" → #/review/decks
+ *   Saved decks     "N saved" → #/review/decks
  *   My vocab        "N words" → #/review/vocab
  *
  * Everything the home used to show (intake proposals with their reasons, the dimension counts, the session controls, the deck
@@ -60,7 +60,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const id = model.identity;
     const [holdOut, saved, resumable, vocab] = await Promise.all([
       holdOutOf(ctx, id.learnerId, id.languageId),
-      listSavedDecks(ctx, id.learnerId, id.languageId),
+      listSavedDecks(ctx, id.learnerId, id.languageId, id.varietyId),
       recoverableSessions(ctx),
       loadVocabSafe(ctx, id.languageId),
     ]);
@@ -82,7 +82,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   function previousEntry(count: number): HTMLElement {
     return h('section', { class: 'entry', 'data-entry': 'previous' },
       h('a', { class: 'entry-link', href: '#/review/decks', id: 'entry-previous' },
-        h('span', { class: 'entry-title' }, 'Previous decks'), h('span', { class: 'entry-kicker', id: 'previous-count' }, count ? `${count} saved` : 'None saved yet')));
+        h('span', { class: 'entry-title' }, 'Saved decks'), h('span', { class: 'entry-kicker', id: 'previous-count' }, count ? `${count} saved` : 'None saved yet')));
   }
 
   function vocabEntry(count: number): HTMLElement {

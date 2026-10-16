@@ -11,19 +11,19 @@ const A = ids('L1', 'sq');
 const click = (el: Element): void => (el as HTMLElement).click();
 const savedDecks = async (rig: Rig): Promise<SavedDeck[]> => {
   const key = decksKey('L1', 'sq');
-  return ((await rig.area.get(key))[key] as { decks?: SavedDeck[] } | undefined)?.decks ?? [];
+  return (((await rig.area.get(key))[key] as { decks?: SavedDeck[] } | undefined)?.decks ?? []).filter((d) => !d.builtin); // the learner's own; Class Essentials is seeded beside them
 };
 
 describe('the GoReview home', () => {
-  it('shows four entries in order (GoTell above a rule, the current deck, previous decks, my vocab) and nothing else', async () => {
+  it('shows four entries in order (GoTell above a rule, the current deck, saved decks, my vocab) and nothing else', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
     expect(rig.qa('#review-home > section').map((s) => s.getAttribute('data-entry'))).toEqual(['tell', 'deck', 'previous', 'vocab']);
-    expect(rig.qa('#review-home .entry-title').map((t) => t.textContent)).toEqual(['GoTell', 'Current deck', 'Previous decks', 'My vocab']);
+    expect(rig.qa('#review-home .entry-title').map((t) => t.textContent)).toEqual(['GoTell', 'Current deck', 'Saved decks', 'My vocab']);
     expect(rig.q('#entry-tell .entry-kicker').textContent).toBe('Write and be corrected');
     expect(rig.q('#deck-count').textContent).toBe('2 cards ready');
-    expect(rig.q('#previous-count').textContent).toBe('None saved yet');
+    expect(rig.q('#previous-count').textContent).toBe('1 saved'); // Class Essentials, the built-in deck, is already there
     expect(rig.q('#vocab-count').textContent).toMatch(/^\d+ words?$/);
     expect(rig.qa('#review-home button:not(.stepper-btn):not(.pill)').map((b) => b.textContent)).toEqual(['deck size: 10', 'Begin', 'Save deck']);   // the four entries and one quiet size line
     // none of what the home used to show
@@ -63,12 +63,12 @@ describe('the GoReview home', () => {
     expect(rig.root.querySelector('#save-deck')).toBeNull();
   });
 
-  it('Save deck moves the deck to Previous decks and plans a fresh one; the list offers Practise again and Remove', async () => {
+  it('Save deck moves the deck to Saved decks and plans a fresh one; the list offers Practise again and Remove', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
     click(rig.q('#save-deck'));
-    await until(() => rig.q('#previous-count').textContent === '1 saved', 'the saved count');
+    await until(() => rig.q('#previous-count').textContent === '2 saved', 'the saved count');
     const [deck] = await savedDecks(rig);
     expect(deck.items.map((i) => i.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
     expect(deck.languageId).toBe('sq');
@@ -76,15 +76,15 @@ describe('the GoReview home', () => {
     expect((await rig.area.get(decksKey('L1', 'sq')))[decksKey('L1', 'sq')]).toMatchObject({ v: 1 });
 
     click(rig.q('#entry-previous'));
-    await until(() => rig.app.current() === 'review/decks' && !!rig.root.querySelector('.deckrow'), 'the list');
-    expect(rig.q('.deckrow-line').textContent).toMatch(/ · 2 cards · Albanian$/);
-    click(rig.q('[data-action="practise-again"]'));
+    await until(() => rig.app.current() === 'review/decks' && rig.qa('.deckrow').length === 2, 'the list');
+    expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) .deckrow-line').textContent).toMatch(/ · 2 cards · Albanian$/);
+    click(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="practise-again"]'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     expect(rig.app.ctx.run.active!.plan.items.map((p) => p.item.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
 
     await rig.go('review/decks');
-    click(rig.q('[data-action="remove-deck"]'));
-    await until(() => !!rig.root.querySelector('#decks-empty'), 'the removal');
+    click(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="remove-deck"]'));
+    await until(() => rig.qa('.deckrow').length === 1, 'the removal');
     expect(await savedDecks(rig)).toEqual([]);
   });
 
@@ -93,7 +93,7 @@ describe('the GoReview home', () => {
     await rig.area.set({ [decksKey('L1', 'sq')]: { v: 7, decks: 'nonsense' } });
     await rig.go('review');
     await until(() => !!rig.root.querySelector('#previous-count'), 'the home');
-    expect(rig.q('#previous-count').textContent).toBe('None saved yet');
+    expect(rig.q('#previous-count').textContent).toBe('1 saved'); // nothing of the learner's own, and only the built-in deck
   });
 
   it('puts the details, the session controls and the transfer measures one tap away in Settings', async () => {

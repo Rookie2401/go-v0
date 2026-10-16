@@ -10,6 +10,7 @@ import type { AppContext } from './context';
 import { candidatesKey, type CandidateChoice } from './state';
 import type { ActiveRun, Identity, SessionDriver } from './ports';
 import { activeSchedulerProfile } from './profiles';
+import { isClassUnit } from './classEssentials';
 import { readSnapshot, restoreMissing, writeSnapshot } from './snapshot';
 
 // Automatic admission is deliberately serialized in this process. The event id and dedupe key below also make a
@@ -99,6 +100,8 @@ export interface DeckCounts {
 }
 
 export interface ReviewModel {
+  /** The Class Essentials cards in the deck fold: kept apart from `deck`, so the ordinary queue never meets them. */
+  classDeck?: DeckItem[];
   identity: Identity;
   prefs: ReviewPreferences;
   events: GoEvent[];
@@ -162,7 +165,9 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   const events = await ctx.events(identity.languageId);
   const schedulerProfile = activeSchedulerProfile(events);
   const scheduler = engine.scheduler(prefs, schedulerProfile);
-  const deck = engine.foldDeck(events, identity.languageId, prefs, now);
+  const wholeDeck = engine.foldDeck(events, identity.languageId, prefs, now);
+  const deck = wholeDeck.filter((i) => !isClassUnit(i.unitId));
+  const classDeck = wholeDeck.filter((i) => isClassUnit(i.unitId));
   const counts = countDeck(deck, { scheduler, now });
   const { saved, ignored } = marksOf(events);
 
@@ -184,7 +189,7 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
     do {
       const c = await api.candidates(identity.enrolmentId, 200, cursor);
       if (!c.ok) throw new Error(c.message || `the service answered ${c.status}`);
-      candidates.push(...c.data.candidates);
+      candidates.push(...c.data.candidates.filter((x) => !isClassUnit(x.unitId)));
       cursor = c.data.nextCursor;
       if (cursor && cursors.has(cursor)) throw new Error('The candidate service repeated a page cursor.');
       if (cursor) cursors.add(cursor);
@@ -230,20 +235,21 @@ export async function loadReviewModel(ctx: AppContext): Promise<ReviewModel | un
   }
   const choices = await state.getChoices(identity.learnerId);
   const base: ReviewModel = {
-    identity, prefs, events, deck, counts, audio, outcomes, knowledge, schedulerProfile, dismissed: [...ignored], choices, saved, candidateSource,
+    identity, prefs, events, deck, classDeck, counts, audio, outcomes, knowledge, schedulerProfile, dismissed: [...ignored], choices, saved, candidateSource,
     ...(candidateNote ? { candidateNote } : {}), now, algorithm: scheduler.algorithm, parametersVersion: scheduler.parametersVersion,
   };
   const unavailable = new Set<string>();
   const added = await admitAutomaticDeck(ctx, base, unavailable);
   if (!added.length && !unavailable.size) return base;
   const refreshedEvents = await ctx.events(identity.languageId);
-  const refreshedDeck = engine.foldDeck(refreshedEvents, identity.languageId, prefs, now);
+  const refreshedWhole = engine.foldDeck(refreshedEvents, identity.languageId, prefs, now);
+  const refreshedDeck = refreshedWhole.filter((i) => !isClassUnit(i.unitId));
   const addedUnits = new Set(added.map((e) => e.subject.itemIds?.[0]).filter((id): id is string => !!id));
   const refreshedOutcomes = base.outcomes.map((o) => addedUnits.has(o.unitId)
     ? { ...o, decision: 'already-covered' as const, proposed: undefined, reasons: ['automatically added to the deck on review load', ...o.reasons] }
     : unavailable.has(o.unitId) ? { ...o, decision: 'needs-validation' as const, proposed: undefined, reasons: ['No usable exercise could be built for this word yet; it remains in My words.', ...o.reasons] } : o);
   const assemblyNote = `Automatic deck: ${added.length} card${added.length === 1 ? '' : 's'} added${unavailable.size ? `; ${unavailable.size} word${unavailable.size === 1 ? '' : 's'} waiting for a usable exercise` : ''}.`;
-  return { ...base, candidateNote: [base.candidateNote, assemblyNote].filter(Boolean).join(' '), events: refreshedEvents, deck: refreshedDeck, outcomes: refreshedOutcomes, counts: countDeck(refreshedDeck, { scheduler, now }) };
+  return { ...base, candidateNote: [base.candidateNote, assemblyNote].filter(Boolean).join(' '), events: refreshedEvents, deck: refreshedDeck, classDeck: refreshedWhole.filter((i) => isClassUnit(i.unitId)), outcomes: refreshedOutcomes, counts: countDeck(refreshedDeck, { scheduler, now }) };
 }
 
 // ───────────────────────────── starting a session ─────────────────────────────

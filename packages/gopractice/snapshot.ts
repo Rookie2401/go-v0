@@ -1,5 +1,5 @@
 /**
- * The offline snapshot: what GoReview keeps on the device, per learner and language, so the home, My vocab and Previous decks
+ * The offline snapshot: what GoReview keeps on the device, per learner and language, so the home, My vocab and Saved decks
  * render with no network (an iPhone on a train, a closed laptop at home).
  *
  * Most of GoReview is already local: the learner's events live in their own log (`u:<learner>:log:*`), the saved decks and the

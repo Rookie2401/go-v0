@@ -13,6 +13,7 @@ import {
 import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome } from '../goreview/src';
 import type { RepositoryApi } from '../repository-service/src/api';
 import type { ItemControl, ReviewEngine } from './ports';
+import { classFacts, isClassUnit } from './classEssentials';
 
 export interface EngineOptions {
   builders: BuilderRegistry;
@@ -36,7 +37,10 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   // provider only for the exact API client (the context keeps that client stable per service/token).
   const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
   const warmFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
-  const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => {
+  /** Class Essentials phrases are answered from the deck's own table; every other unit goes to the pack, as before. */
+  const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) : base.factsFor(unitId, languageId)) });
+  const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => withClass(packFactsOf(languageId, api));
+  const packFactsOf = (languageId: string, api: RepositoryApi): FactsProvider => {
     let byLanguage = providers.get(api);
     if (!byLanguage) { byLanguage = new Map(); providers.set(api, byLanguage); }
     if (!byLanguage.has(languageId)) {

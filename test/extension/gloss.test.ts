@@ -3,6 +3,7 @@
  * Dictionary glosses and grammar explanations: run in the background through the language-pack runtime, shards cached
  * in chrome.storage.local under pack:shard:<id> with the attribution, nothing fetched by a content script.
  */
+import { gzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import { cleanSourceTemplates, createGlossService, createShardFetch, defaultPacks, fillSourceUrl, SHARD_PREFIX } from '../../packages/golearn-extension/src/background/gloss';
 import type { SessionManager } from '../../packages/golearn-extension/src/background/session';
@@ -97,6 +98,25 @@ describe('the shard cache', () => {
     const f = createShardFetch(rig.fake.local, 'https://pages.example', (async () => new Response('nope', { status: 404 })) as typeof fetch);
     expect((await f('https://pages.example/dict/sq/s-ff.json')).status).toBe(404);
     expect(Object.keys(await rig.fake.local.get(null)).filter((k) => k.startsWith(SHARD_PREFIX))).toHaveLength(0);
+  });
+
+  it('a gzipped full-2 shard (f-xx.json.gz?v=rev) is stored inflated, as JSON text, and served from the cache the second time', async () => {
+    const rig = createRig();
+    const body = JSON.stringify({ v: 2, T: [], k: { haus: [{ l: 'Haus' }] } });
+    let fetches = 0;
+    const f = createShardFetch(rig.fake.local, 'https://pages.example', (async () => { fetches += 1; return new Response(gzipSync(body), { status: 200, headers: { 'content-type': 'application/gzip' } }); }) as typeof fetch);
+    const url = 'https://pages.example/dict/de/full/f-1a.json.gz?v=d71ec8d518ef';
+    expect(JSON.parse(await (await f(url)).text())).toEqual(JSON.parse(body));
+    const key = `${SHARD_PREFIX}dict/de/full/f-1a?v=d71ec8d518ef`;
+    const row = (await rig.fake.local.get(key))[key] as { text: string; url: string };
+    expect(row.text).toBe(body); // inflated BEFORE storing: never gzip bytes read as text
+    expect(row.url).toBe(url);
+    expect(JSON.parse(await (await f(url)).text())).toEqual(JSON.parse(body));
+    expect(fetches).toBe(1);
+    // a plain shard is keyed the same way (without .json), so the two layouts never collide with each other's revisions
+    const plain = createShardFetch(rig.fake.local, 'https://pages.example', (async () => new Response(body)) as typeof fetch);
+    await plain('https://pages.example/dict/de/full/f-1b.json');
+    expect(Object.keys(await rig.fake.local.get(null))).toContain(`${SHARD_PREFIX}dict/de/full/f-1b`);
   });
 });
 

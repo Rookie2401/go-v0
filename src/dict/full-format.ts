@@ -17,6 +17,9 @@ import { MAX_BUCKETS, PARTS_OF_SPEECH, bucketOf } from './format';
 import { NON_WORD_POS, partOfSpeechOf } from './map';
 
 export const FULL_SCHEMA = 'full-1';
+/** The compact schema (src/dict/full2.ts): tag-set tables, interned strings, gzip at rest. Same records once read back. */
+export const FULL_SCHEMA_2 = 'full-2';
+export type FullSchema = typeof FULL_SCHEMA | typeof FULL_SCHEMA_2;
 export const FULL_TARGET_SHARD_BYTES = 150_000;
 export const FULL_MIN_BUCKETS = 256;
 
@@ -70,11 +73,11 @@ export const RELATED_SOURCE: ReadonlyArray<readonly [keyof FullRelated, string]>
 // ───────────────────────────── file names ─────────────────────────────
 
 /** Full shard file name: two hex digits for 256 buckets or fewer, wider when there are more (f-3ff.json for 1024). */
-export function fullShardName(bucket: number, buckets: number): string {
+export function fullShardName(bucket: number, buckets: number, gzip = false): string {
   const width = Math.max(2, (buckets - 1).toString(16).length);
-  return `f-${bucket.toString(16).padStart(width, '0')}.json`;
+  return `f-${bucket.toString(16).padStart(width, '0')}.json${gzip ? '.gz' : ''}`;
 }
-export const FULL_SHARD_FILE = /^f-[0-9a-f]{2,4}\.json$/;
+export const FULL_SHARD_FILE = /^f-[0-9a-f]{2,4}\.json(?:\.gz)?$/;
 
 /** 256 times a power of two, the smallest that brings the average shard under the target. */
 export function chooseFullBuckets(totalBytes: number, target = FULL_TARGET_SHARD_BYTES): number {
@@ -313,13 +316,22 @@ export interface FullSource {
 }
 export interface FullCounts { records: number; withForms: number; withEtymology: number; withIpa: number; withAudio: number }
 export interface FullManifest {
-  schema: typeof FULL_SCHEMA;
+  schema: FullSchema;
   lang: LanguageCode;
   source: FullSource;
   buckets: number;
+  /** The shard files that exist (full-1: listed in the manifest; full-2: derived from `occupied`). */
   shardFiles: string[];
   counts: FullCounts;
   builtAt: string;
+  /** full-2: the shards are stored gzipped (`f-xx.json.gz`). */
+  gzip?: boolean;
+  /** full-2: the dictionary-wide interned strings (template names, language codes, form sources, audio url prefixes). */
+  strings?: string[];
+  /** full-2: hex bitmap of the occupied buckets (bucket i is bit 3 - (i mod 4) of hex digit floor(i / 4)). */
+  occupied?: string;
+  /** full-2: a short content hash; the reader adds it to shard urls as `?v=<rev>` so a host can cache them as immutable. */
+  rev?: string;
 }
 
 export const newFullCounts = (): FullCounts => ({ records: 0, withForms: 0, withEtymology: 0, withIpa: 0, withAudio: 0 });
@@ -331,7 +343,13 @@ export function tallyFullRecord(c: FullCounts, r: FullRecord): void {
   if (r.audio?.length) c.withAudio++;
 }
 
-export const fullManifestText = (m: FullManifest): string => JSON.stringify(m, null, 2) + '\n';
+/** The manifest as written: full-2 leaves the shard list out (it is the `occupied` bitmap). */
+export function fullManifestText(m: FullManifest): string {
+  if (m.schema !== FULL_SCHEMA_2) return JSON.stringify(m, null, 2) + '\n';
+  const { shardFiles: derived, ...rest } = m;
+  void derived;
+  return JSON.stringify(rest, null, 2) + '\n';
+}
 
 const byCodeUnit = (x: string, y: string) => (x < y ? -1 : x > y ? 1 : 0);
 /** Shard file text: keys in code-unit order, each with its records' JSON, one line, trailing newline. */
@@ -431,7 +449,8 @@ const count = (x: unknown): number | undefined => (typeof x === 'number' && Numb
 
 /** A full manifest the runtime can trust, or undefined (wrong schema or language, missing fields). */
 export function parseFullManifest(raw: unknown, lang: LanguageCode): FullManifest | undefined {
-  if (!isObj(raw) || raw.schema !== FULL_SCHEMA || raw.lang !== lang) return undefined;
+  if (!isObj(raw) || (raw.schema !== FULL_SCHEMA && raw.schema !== FULL_SCHEMA_2) || raw.lang !== lang) return undefined;
+  const v2 = raw.schema === FULL_SCHEMA_2;
   const src = isObj(raw.source) ? raw.source : undefined;
   if (!src) return undefined;
   const name = str(src.name), url = str(src.url), version = str(src.version), licence = str(src.licence), attribution = str(src.attribution);
@@ -444,12 +463,42 @@ export function parseFullManifest(raw: unknown, lang: LanguageCode): FullManifes
   };
   if (Object.values(counts).some((v) => v < 0)) return undefined;
   if (typeof raw.buckets !== 'number' || !Number.isInteger(raw.buckets) || raw.buckets < 1 || raw.buckets > MAX_BUCKETS) return undefined;
-  const shardFiles = Array.isArray(raw.shardFiles) && raw.shardFiles.every((s) => typeof s === 'string' && FULL_SHARD_FILE.test(s)) ? (raw.shardFiles as string[]) : [];
   const source: FullSource = { name, url, version, licence, attribution };
   const file = str(src.file); if (file) source.file = file;
   const sha256 = str(src.sha256); if (sha256) source.sha256 = sha256;
   const lines = count(src.lines); if (lines !== undefined) source.lines = lines;
-  return { schema: FULL_SCHEMA, lang, source, buckets: raw.buckets, shardFiles, counts, builtAt: str(raw.builtAt) ?? '' };
+  if (!v2) {
+    const shardFiles = Array.isArray(raw.shardFiles) && raw.shardFiles.every((s) => typeof s === 'string' && FULL_SHARD_FILE.test(s)) ? (raw.shardFiles as string[]) : [];
+    return { schema: FULL_SCHEMA, lang, source, buckets: raw.buckets, shardFiles, counts, builtAt: str(raw.builtAt) ?? '' };
+  }
+  // full-2: the shard list is a bitmap, the strings are a table, the shards may be gzipped
+  const gzip = raw.gzip === true;
+  const strings = Array.isArray(raw.strings) ? raw.strings.map((x) => (typeof x === 'string' ? x : '')) : [];
+  const occupied = typeof raw.occupied === 'string' && /^[0-9a-f]*$/.test(raw.occupied) && raw.occupied.length === Math.ceil(raw.buckets / 4) ? raw.occupied : undefined;
+  const shardFiles = occupied ? occupiedBuckets(occupied, raw.buckets).map((b) => fullShardName(b, raw.buckets as number, gzip)) : [];
+  const out: FullManifest = { schema: FULL_SCHEMA_2, lang, source, buckets: raw.buckets, shardFiles, counts, builtAt: str(raw.builtAt) ?? '', gzip, strings };
+  if (occupied) out.occupied = occupied;
+  const rev = str(raw.rev); if (rev && /^[0-9a-zA-Z_-]{4,64}$/.test(rev)) out.rev = rev;
+  return out;
+}
+
+/** The hex bitmap of a set of occupied buckets (see FullManifest.occupied). */
+export function occupiedHex(buckets: number, has: (b: number) => boolean): string {
+  let out = '';
+  for (let i = 0; i < buckets; i += 4) {
+    let d = 0;
+    for (let j = 0; j < 4; j++) if (i + j < buckets && has(i + j)) d |= 8 >> j;
+    out += d.toString(16);
+  }
+  return out;
+}
+export function occupiedBuckets(hex: string, buckets: number): number[] {
+  const out: number[] = [];
+  for (let i = 0; i < hex.length; i++) {
+    const d = parseInt(hex[i], 16);
+    for (let j = 0; j < 4; j++) if (d & (8 >> j) && i * 4 + j < buckets) out.push(i * 4 + j);
+  }
+  return out;
 }
 
 export { bucketOf };

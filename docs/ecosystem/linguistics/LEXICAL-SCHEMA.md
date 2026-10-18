@@ -1,17 +1,22 @@
 # Lexical schemas (GoLearn Linguistic Engine V2, Stage 2)
 
-Status: 2026-10-10. Code: `src/dict/format.ts` (schema 3), `src/dict/full-format.ts` + `src/dict/full.ts` + `src/dict/build-full.ts`
-(schema `full-1`), `packages/language-packs/src/runtime.ts` (`gloss`, `entry`). Inventory of the sources and the counts:
-`SOURCE-INVENTORY.md`.
+Status: 2026-10-17. Code: `src/dict/format.ts` (schema 3), `src/dict/full-format.ts` + `src/dict/full.ts` + `src/dict/build-full.ts`
+(schema `full-1`), `src/dict/full2.ts` + `src/dict/gzip.ts` + `src/dict/full-pack.ts` (schema `full-2`, the compact form of the same
+records; section 2b), `packages/language-packs/src/runtime.ts` (`gloss`, `entry`). Inventory of the sources and the counts:
+`SOURCE-INVENTORY.md`. Hosting and publishing: `docs/ops/DICTIONARIES.md`.
+
+**Which `full` schema is built.** `npm run dict:build-full` now writes `full-2` (the records are unchanged; only the encoding is
+compact and the shards may be gzipped). `full-1` is still built with `--schema full-1` and both are read by the same reader to the
+same `FullRecord` shape. Everything in sections 2.1 to 2.4 about the records (keys, caps, tags) holds for both.
 
 The engine reads the same Wiktionary data (kaikki.org / Wiktextract JSON Lines) at two levels, built from the same file by two
 builders into two parallel shard sets:
 
-| | Level 1: schema 3 | Level 2: `full-1` |
+| | Level 1: schema 3 | Level 2: `full-1` / `full-2` |
 |---|---|---|
 | purpose | fast lookup of every surface form: lemma, part of speech, short gloss, form-of relation | everything a card or a paradigm view can show about a lemma |
 | built by | `npm run dict:build` (`src/dict/build.ts`, `build-node.ts`) | `npm run dict:build-full -- <lang> [--limit N]` (`src/dict/build-full.ts`) |
-| files | `public/dict/<lang>/manifest.json`, `s-<hh>.json` | `public/dict/<lang>/full/manifest.json`, `f-<hh>.json` |
+| files | `public/dict/<lang>/manifest.json`, `s-<hh>.json` | `public/dict/<lang>/full/manifest.json`, `f-<hh>.json` (`full-2`: also `f-<hh>.json.gz`) |
 | keyed by | the form (every inflected form is its own entry) | the lemma only (inflected-form lines carry no senses and are skipped) |
 | read by | `createFetchLexiconSource` (`LexiconSource`) | `createFullRecordSource` (`FullRecordSource`) |
 | runtime method | `PackRuntime.gloss()` | `PackRuntime.entry()` |
@@ -115,6 +120,76 @@ can be spelled differently in two languages and a few tags are not grammar at al
 region names). **Mapping these to UD-style features (Case, Number, Person, Tense ...) is the paradigm layer's job later**, per
 language, with the unmapped tags reported rather than guessed. Nothing in `full-1` pretends the tags are normalised.
 
+## 2b. Schema `full-2` (the same records, compact)
+
+Added 2026-10-17 because `full-1` was 780 MB for five languages (409 MB German, 244 MB Spanish): 85 to 87 % of the bytes were the
+form rows, each repeating its tag array and its `source`. `full-2` loses **no information**: reading a `full-2` shard gives, key by
+key and record by record, exactly the records `full-1` gives (`npm run dict:verify-full` proves it on the real files: every key,
+every record, byte-equal JSON). The only rows dropped are exact duplicates (same form, tags, source and romanization), which the
+mapper already removed, so none were found in the real data.
+
+### 2b.1 Files
+
+```
+<lang>/full/manifest.json
+<lang>/full/f-<hh>.json.gz     gzipped JSON (manifest "gzip": true)      or
+<lang>/full/f-<hh>.json        plain JSON   (manifest "gzip": false)
+```
+
+Manifest: as `full-1`, with `"schema": "full-2"` and these differences:
+
+```jsonc
+{
+  "schema": "full-2", "lang": "de", "source": { … }, "counts": { … }, "builtAt": "2026-10-17",
+  "buckets": 2048,
+  "occupied": "ffff…",       // hex bitmap of the buckets that have a shard (bucket i = bit 3 - (i mod 4) of hex digit floor(i/4)); replaces shardFiles
+  "gzip": true,              // the shard files are named f-<hh>.json.gz
+  "strings": ["singular", "declension", "plural", "de", "inh", "https://upload.wikimedia.org/wikipedia/commons/", …],   // dictionary-wide interned strings
+  "rev": "d71ec8d518ef"      // 12 hex digits: a hash of every shard's TEXT (the same for the gzip and the plain layout)
+}
+```
+
+`buckets` is chosen so the average shard is about 70 kB of text (gzipped about 15 kB); `shardFiles` is no longer written (the reader
+derives it from `occupied`, so the manifest of the German set shrank from 74 kB to 7 kB).
+
+### 2b.2 Shard
+
+```
+{ "v": 2, "T": [ [tag, tag, …], … ], "k": { <lemmaKey>: [ record, … ] } }
+```
+
+- `T` is this shard's **tag-set table**, most used first (so the common sets have one-digit indices). Every tag array of the record
+  (sense labels `t`, a form's tags, IPA and audio tags) is written as its index into `T`. A tag set is a list whose elements are an
+  index into `manifest.strings` when the tag is frequent in the dictionary (almost all grammar tags are) or the tag itself.
+- `manifest.strings` is the **dictionary-wide string table** (strings that occur at least 6 times, at most 2,048, most frequent
+  first): grammar tags, a form's `source` (`declension`, `conjugation` …), an etymology template's name `k` and language code `lang`
+  (`inh`, `bor`, `la`, `gmh` …), and the **url prefix of an audio file** (`https://upload.wikimedia.org/wikipedia/commons/`, with or
+  without `transcoded/`). A field that may be interned is a number (an index) or a string (itself, when it was not frequent).
+- Record: the `full-1` keys in the `full-1` order, except `s[].t` → number; `f[]` → `[form, T index]`, `[form, T index, source]` or
+  `[form, T index, source|null, romanization]`; `ipa[].t` and `audio[].t` → number; `audio[]` → `{ u: <url after the prefix>, b: <prefix index>, n, t? }`
+  when the prefix is interned (else `u` is the whole url); `ety.tpl[].k` and `.lang` → number or string.
+- Keys inside a shard are in code-unit order and gzip is level 9 (Node's header carries no time), so the same input gives
+  **byte-identical files**. Records of a lemma stay in the source's order.
+
+### 2b.3 Reading
+
+`createFullRecordSource` reads a `full-2` manifest as it reads `full-1` and **expands each shard on read** (`parseFullShard2`): the
+tag-set indices become tag arrays again, strings are looked up, and every record then goes through the same `readFullRecord` gate as
+`full-1`. An out-of-range index (a damaged shard, or one from a different build) drops that sub-entry, never the shard. The shapes
+the callers see (`PackRuntime.entry`, `packages/golearn-extension/src/content/enrich.ts`) are identical.
+
+Fetching: with `"gzip": true` the reader asks for `f-<hh>.json.gz?v=<rev>` (the `?v=` lets a host cache the shard as immutable; a
+static file server ignores it), reads the body as bytes and **inflates it when it starts with the gzip magic number**
+(`DecompressionStream('gzip')` in browsers and workers, the same global in Node, `node:zlib` if a runtime lacks it). Because it
+looks at the bytes, a server that already content-encoded the answer (so `fetch` hands over plain JSON) works too. A 404 for the
+`.json.gz` name makes it try the plain `f-<hh>.json`. The manifest is never versioned in the URL.
+
+**A client that caches shards as text** must inflate a gzip body before storing it. The browser extension's shard cache
+(`createShardFetch` in `packages/golearn-extension/src/background/gloss.ts`) does so since 2026-10-17: it reads the body as bytes,
+runs it through `bytesToText` (this file's `gzip.ts`), stores the JSON text in `chrome.storage.local`, and keys the row by the file
+name without `.json`/`.json.gz` but with the `?v=<rev>`. Either layout works for it; an older extension build needs the plain layout
+(the builder's default; `npm run dict:publish -- --full-shards plain` sends it). See `docs/ops/DICTIONARIES.md` section 3.
+
 ## 3. Reading: `createFullRecordSource(lang, { baseUrl, fetch, cache? })`
 
 `info()` returns the parsed manifest (or undefined when none is installed), `lookup(lemmaKey, pos?)` returns that key's records
@@ -140,8 +215,10 @@ normalized lemma and the adapter's `lemmaVariants`. Both return `undefined` on e
 
 ## 5. Size and delivery
 
-`full-1` is much larger than schema 3 because the tables repeat their tag lists in every form row. Measured 2026-10-10 (bytes on
-disk; gzip ratio about 0.09 to 0.11 for most languages, so transfer is about a tenth): see the table in `SOURCE-INVENTORY.md`
-section 3. A tag-set table in the manifest (as schema 3 does for form-of labels) would cut the raw size by a large factor; it was
-not done because the brief fixes `t` as the tag list. `npm run build` copies `public/` into `dist/`, so a full set under
+`full-1` was much larger than schema 3 because the tables repeat their tag lists in every form row (measured 2026-10-10: 780 MB on
+disk for five languages). `full-2` (2026-10-17) fixes that at the source with the tag-set table and the interned strings, and
+gzip at rest takes the rest. Measured on the real builds (full-1 → full-2 plain → full-2 gzip): German 409 MB → 139 MB → 30 MB,
+Spanish 244 MB → 81 MB → 21 MB, Hindi 85 MB → 43 MB → 7.6 MB, Albanian 28.8 MB → 10.9 MB → 2.8 MB, Thai 11.4 MB → 10.8 MB → 3.1 MB
+(Thai has almost no form tables, so only gzip helps); the whole table, the cold-fetch numbers and the hosting options are in
+`SOURCE-INVENTORY.md` section 3 and `docs/ops/DICTIONARIES.md`. `npm run build` copies `public/` into `dist/`, so a full set under
 `public/dict/<lang>/full/` is copied into the production bundle, the extension bundle and the zips unless that is excluded.

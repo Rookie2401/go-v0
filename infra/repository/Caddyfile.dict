@@ -1,0 +1,70 @@
+# Static dictionary hosting for the Go apps and the GoLearn extension, off GitHub Pages.
+# Docs: docs/ops/DICTIONARIES.md (what to publish, the two layouts, the measured sizes). NOT yet run against a live Caddy
+# in this repo: check it with `caddy validate --config <your Caddyfile>` (Caddy 2.6 or newer) before the first deploy.
+#
+# The web root holds what `npm run dict:publish -- --dest /srv/golearn/dict` writes:
+#   <lang>/manifest.json   <lang>/s-xx.json   <lang>/frequency.json   <lang>/full/manifest.json   <lang>/full/f-xx.json[.gz]
+# and it is served under /dict/, so the dictionary location the apps use is  https://<host>/dict/
+#
+# Use the snippet either way (put it BEFORE the catch-all reverse_proxy in the repository site):
+#
+#   dict.golearn-global-languages.com {                 # a dedicated host
+#       import dict_static /srv/golearn/dict
+#   }
+#
+#   repo.golearn-global-languages.com {                 # the repository host, a /dict/ path
+#       import dict_static /srv/golearn/dict
+#       reverse_proxy 127.0.0.1:8790 { flush_interval -1 }
+#   }
+
+(dict_static) {
+	@dict path /dict/*
+	handle @dict {
+		uri strip_prefix /dict
+		root * {args[0]}
+
+		# zstd or gzip on the wire for the JSON. A shard stored as .json.gz is already compressed and is left alone.
+		encode zstd gzip {
+			match {
+				header Content-Type application/json*
+			}
+		}
+
+		# CORS: public CC BY-SA data, read by the apps (any origin they are served from) and by the extension's worker
+		# (a chrome-extension:// origin). No credentials are involved, so the wildcard is safe.
+		header {
+			Access-Control-Allow-Origin "*"
+			Access-Control-Allow-Methods "GET, HEAD, OPTIONS"
+			Access-Control-Allow-Headers "Content-Type, Range, If-None-Match, If-Modified-Since"
+			Access-Control-Max-Age "86400"
+			Access-Control-Expose-Headers "Content-Length, Content-Encoding, ETag"
+			X-Content-Type-Options "nosniff"
+			Cross-Origin-Resource-Policy "cross-origin"
+		}
+		@preflight method OPTIONS
+		respond @preflight 204
+
+		# Cache-Control.
+		#  manifests and the frequency table: short and revalidated, so a republished dictionary shows within minutes;
+		@manifests path_regexp manifests ^/[a-z]{2,3}/(full/)?(manifest|frequency)\.json$
+		header @manifests Cache-Control "public, max-age=300, must-revalidate"
+		#  full shards fetched with ?v=<rev> (the reader adds the manifest's content hash): the URL changes when the content
+		#  does, so a year and immutable;
+		@versioned {
+			path_regexp versioned ^/[a-z]{2,3}/full/f-[0-9a-f]{2,4}\.json(\.gz)?$
+			query v=*
+		}
+		header @versioned Cache-Control "public, max-age=31536000, immutable"
+		#  every other shard (schema-3 s-xx.json, an unversioned request): a day, then revalidate by ETag.
+		@shards path_regexp shards ^/[a-z]{2,3}/(s-[0-9a-f]{2,4}\.json|full/f-[0-9a-f]{2,4}\.json(\.gz)?)$
+		header @shards ?Cache-Control "public, max-age=86400, stale-while-revalidate=604800"
+
+		# A gzipped shard is served as the bytes it is (the reader inflates by magic number); serving f-xx.json.gz for a
+		# request for f-xx.json when the client accepts gzip is `precompressed`.
+		@gz path *.json.gz
+		header @gz Content-Type "application/gzip"
+		file_server {
+			precompressed zstd gzip
+		}
+	}
+}

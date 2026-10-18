@@ -24,7 +24,7 @@ what is known to be wrong. Schemas: `LEXICAL-SCHEMA.md`. Coverage figures: `COVE
 | lines | 24,262 | 21,020 | 39,220 | 371,261 | 811,049 |
 | sha256 (first 12) | 29cf43f3475e | 202acdc93b99 | d8cbd27fc31c | 650a0f3a06c6 | a2cc93aee2b0 |
 | schema-3 build (`public/dict/<lang>/`) | `kaikki-sq@2026-09-28`, 91,271 entries, 256 shards, built from the larger `kaikki.org-dictionary-Albanian+tables.jsonl` (128,809 lines; the dump plus the entries `npm run sq:dict-expand` generates from the tables; the extract and that file are in `data/research/kaikki/`, with the dump's headers, Last-Modified 2026-09-28 18:01:40 GMT) | `kaikki-th@2026-09-28`, 20,254 entries, schema 2, 256 shards | `kaikki-hi@2026-09-28`, 38,635 entries, 256 shards | `kaikki-de@2026-09-28`, 357,750 entries, 512 shards | `kaikki-es@2026-09-28`, 808,278 entries, 1,024 shards |
-| `full-1` build (`public/dict/<lang>/full/`) | built | built | built | built | built |
+| `full-2` build (`public/dict/<lang>/full/`, plain layout; was `full-1` until 2026-10-17, kept in `data/dictionaries/old-full-1/`) | built | built | built | built | built |
 | full: input lines kept as records | 14,471 | 20,860 | 26,036 | 102,649 | 123,933 |
 | full: skipped, no senses of their own (inflected-form lines) | 9,702 | 29 | 13,118 | 268,507 | 687,014 |
 | full: skipped, non-word | 89 | 131 | 66 | 105 | 102 |
@@ -33,11 +33,28 @@ what is known to be wrong. Schemas: `LEXICAL-SCHEMA.md`. Coverage figures: `COVE
 | with etymology (text or templates) | 10,194 (70.4%) | 16,607 (79.6%) | 22,149 (85.1%) | 74,871 (72.9%) | 62,396 (50.3%) |
 | with IPA | 4,954 (34.2%) | 20,789 (99.7%) | 24,086 (92.5%) | 62,391 (60.8%) | 85,105 (68.7%) |
 | with audio (Commons file with a URL) | 87 (0.6%) | 273 (1.3%) | 783 (3.0%) | 74,138 (72.2%) | 35 (0.0%) |
-| `full-1` shards / buckets | 256 / 256 | 256 / 256 | 1,024 / 1,024 | 4,096 / 4,096 | 2,048 / 2,048 |
+| **before, `full-1`** shards / buckets | 256 / 256 | 256 / 256 | 1,024 / 1,024 | 4,096 / 4,096 | 2,048 / 2,048 |
 | `full-1` bytes on disk | 28,753,448 | 11,360,553 | 85,459,250 | 408,991,001 | 244,467,340 |
-| average / largest shard | 112,318 / 209,920 | 44,377 / 72,645 | 83,456 / 295,508 | 99,851 / 261,199 | 119,369 / 365,650 |
-| gzip ratio (sampled shards) / transfer estimate | 0.11 / 3.2 MB | 0.28 / 3.1 MB | 0.11 / 9.3 MB | 0.09 / 38 MB | 0.10 / 25 MB |
-| build time / peak memory | 2.6 s / 473 MB | 1.0 s / 376 MB | 4.8 s / 528 MB | 25.5 s / 806 MB | 19.2 s / 754 MB |
+| `full-1` average / largest shard | 112,318 / 209,920 | 44,377 / 72,645 | 83,456 / 295,508 | 99,851 / 261,199 | 119,369 / 365,650 |
+| `full-1` manifest | 5.0 kB | 5.0 kB | 19.1 kB | 74.4 kB | 37.6 kB |
+| `full-1` gzip ratio (sampled shards) / transfer estimate | 0.11 / 3.2 MB | 0.28 / 3.1 MB | 0.11 / 9.3 MB | 0.09 / 38 MB | 0.10 / 25 MB |
+| **after, `full-2`** shards / buckets | 256 / 256 | 256 / 256 | 512 / 512 | 2,048 / 2,048 | 2,048 / 2,048 |
+| `full-2` plain: bytes on disk (shards + manifest) | 10,875,549 | 10,827,906 | 42,700,147 | 138,962,707 | 81,392,828 |
+| `full-2` plain: smaller than `full-1` by | 62.2 % | 4.7 % | 50.0 % | 66.0 % | 66.7 % |
+| `full-2` gzip at rest: bytes on disk | 2,820,074 | 3,077,185 | 7,616,090 | 30,137,193 | 21,321,736 |
+| `full-2` gzip at rest: smaller than `full-1` by | 90.2 % | 72.9 % | 91.1 % | 92.6 % | 91.3 % |
+| `full-2` largest shard, plain / gzip | 68.6 kB / 16.0 kB | 68.5 kB / 18.0 kB | 199.1 kB / 28.7 kB | 114.6 kB / 23.3 kB | 82.9 kB / 18.2 kB |
+| `full-2` manifest | 3.5 kB | 3.1 kB | 4.0 kB | 7.4 kB | 7.0 kB |
+| cold fetch of one lemma (manifest + its shard), `full-1` → `full-2`: stored bytes | 114 kB → 46 kB plain / 15 kB gzip | 49 kB → 44 kB plain / 15.5 kB gzip | 87 kB → 57 kB plain / 15.3 kB gzip | 171 kB → 61 kB plain / 19.1 kB gzip | 151 kB → 44 kB plain / 16.9 kB gzip |
+| the same, on the wire (a host that gzips plain JSON, or the `.gz` as stored) | 13.6 → 12.8 kB | 13.5 → 13.6 kB | 11.5 → 12.8 kB | 18.8 → 14.2 kB | 16.8 → 12.2 kB |
+| build time (`full-2`) / peak memory | 2.1 s / 444 MB | 1.2 s / 410 MB | 5.4 s / 525 MB | 28 s / 887 MB | 20 s / 815 MB |
+| `full-1` build time / peak memory (2026-10-10) | 2.6 s / 473 MB | 1.0 s / 376 MB | 4.8 s / 528 MB | 25.5 s / 806 MB | 19.2 s / 754 MB |
+
+The `full-2` rows are from `npm run dict:build-full -- <lang>` on 2026-10-17 from the same kaikki files (same sha256), and
+`npm run dict:verify-full -- <lang> --old <full-1 root> --new public/dict` compared every lemma key and every record of the old and
+new folders: **zero differences in all five languages**, counts equal, every key in its hash bucket. Lemmas for the cold-fetch row
+are the middle key of the old median-sized shard (llokume, มัลดีฟส์, जलसा, moribund, gúrida). Thai shrinks least in plain form because
+it has almost no form tables (39 % of its records have forms), so most of its bytes are text that cannot be shared.
 
 All counts are from `npm run dict:build-full -- <lang>` on 2026-10-10 (one record per kaikki line with senses; a lemma can have
 several records, one per part of speech and etymology). The build streams the file line by line (a `.gz` is gunzipped on the
@@ -48,10 +65,13 @@ fly) and spills records to 256 temporary files by key hash, so memory is bounded
 
 - **Schema-3 shards of all five languages** are hosted at `https://rookie2401.github.io/go-v0/dict/<lang>/` (all answer 200;
   see `COVERAGE-AUDIT.md` section 2), and Albanian is also shipped inside the extension (`dist/app/dict/sq`).
-- **`full-1` is built locally only; nothing is hosted.** It is 780 MB on disk for the five languages (409 MB German, 244 MB
-  Spanish), which is too much for a GitHub Pages site of a few hundred MB already, and `npm run build` would copy it from `public/`
-  into `dist/` and into every zip. **Hosting German and Spanish full shards on GitHub Pages (about 640 MB) needs an owner decision.** Decide where it lives (a separate gh-pages path, object storage, a tag-set compaction of the
-  shards, or only the languages that need it) before the next build or release.
+- **The full records are built locally only; nothing is hosted yet.** As `full-1` they were 780 MB on disk for the five languages
+  (409 MB German, 244 MB Spanish), too much for GitHub Pages. As `full-2` they are **285 MB plain or 65 MB gzipped at rest** for all
+  five (German 139 / 30 MB, Spanish 81 / 21 MB); with the 122 MB of schema-3 shards the whole `dict/` tree is **407 MB plain or
+  187 MB gzipped**, so the full records now fit GitHub Pages in the gzipped layout (+65 MB over what is hosted today), and fit
+  plain too but not comfortably. The extension's text-caching shard fetch needs the plain layout until it stores gzip bodies as
+  bytes (`LEXICAL-SCHEMA.md` 2b.3). Where to host and how: `docs/ops/DICTIONARIES.md`. `npm run build` copies `public/` into `dist/`
+  and into every zip, so the full set under `public/dict` still lands there unless it is excluded.
 
 ### Known quality notes
 
@@ -84,6 +104,9 @@ fly) and spills records to 256 temporary files by key hash, so memory is bounded
 npm run dict:build-full -- sq          # all of data/dictionaries/kaikki.org-dictionary-Albanian.jsonl[.gz] -> public/dict/sq/full
 npm run dict:build-full -- es --limit 50000     # a sample, written to a temporary directory (never over a real build)
 npm run dict:build-full -- de --out some/dir --last-modified 2026-09-28
+npm run dict:build-full -- de --gzip        # gzip at rest (f-xx.json.gz); the default is plain full-2, which every client reads
+npm run dict:build-full -- de --schema full-1   # the old format (still readable)
+npm run dict:verify-full -- de --old <old root> --new public/dict   # same records? plus the before/after table
 ```
 
 The source version and url are taken from the schema-3 manifest in `public/dict/<lang>/` when it exists, else from

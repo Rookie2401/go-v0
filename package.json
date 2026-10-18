@@ -26,6 +26,8 @@
     "dict:build-full": "vite-node --config scripts/vite.config.ts src/dict/build-full.ts",
     "dict:compare": "vite-node --config scripts/vite.config.ts scripts/dict-compare.mts",
     "dict:status": "vite-node --config scripts/vite.config.ts scripts/dict-status.mts",
+    "dict:verify-full": "vite-node --config scripts/vite.config.ts scripts/dict-verify-full.mts",
+    "dict:publish": "vite-node --config scripts/vite.config.ts scripts/dict-publish.mts",
     "rights:check": "vite-node --config scripts/vite.config.ts scripts/rights-gate.mts",
     "hi:gold": "vite-node --config scripts/vite.config.ts scripts/hi-gold.mts",
     "hi:eval-gold": "vite-node --config scripts/vite.config.ts scripts/eval-hi-gold.mts",

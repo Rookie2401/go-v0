@@ -26,10 +26,16 @@ export type { BuildOutput, BuildStats, BuilderOptions, DictionaryBuilder } from 
 export { createFullRecordSource } from './full';
 export type { FullRecordSource, FullRecordSourceOptions } from './full';
 export {
-  FULL_SCHEMA, FULL_CAPS, ETYMOLOGY_TEMPLATES, bucketOf as fullBucketOf, fullShardName, mapFullLine, parseFullManifest, parseFullShard, readFullRecord, chooseFullBuckets,
+  FULL_SCHEMA, FULL_SCHEMA_2, FULL_CAPS, ETYMOLOGY_TEMPLATES, bucketOf as fullBucketOf, fullShardName, mapFullLine, parseFullManifest, parseFullShard, readFullRecord, chooseFullBuckets,
 } from './full-format';
+export {
+  encodeRecord2, encodeShard2, expandRecord2, parseFullShard2, buildStringTable, makeStringTable, buildTagSets, dedupeForms, internCandidates, splitUrl,
+  FULL2_TARGET_SHARD_BYTES, FULL2_SIZE_FACTOR,
+} from './full2';
+export type { StringTable, TagSets } from './full2';
+export { bytesToText, inflateGzip, isGzip } from './gzip';
 export type {
-  FullAudio, FullCounts, FullEtymology, FullEtymologyTemplate, FullForm, FullIpa, FullManifest, FullMapping, FullRecord, FullRelated, FullSense, FullSkip, FullSource,
+  FullAudio, FullCounts, FullEtymology, FullEtymologyTemplate, FullForm, FullIpa, FullManifest, FullSchema, FullMapping, FullRecord, FullRelated, FullSense, FullSkip, FullSource,
 } from './full-format';
 export { createShardedSource, newShardCacheProbe, DEFAULT_MAX_PARSED_SHARDS, DEFAULT_SHARD_CONCURRENCY } from './sharded';
 export type { ReadDictFile, ShardCacheOptions, ShardCacheProbe } from './sharded';

@@ -18,6 +18,7 @@ import { LAYER_ASSISTANCE } from '../../packages/golearn-extension/src/store';
 import { deAdapter } from '../../src/adapters/de';
 import { hiAdapter } from '../../src/adapters/hi';
 import { sqAdapter } from '../../src/adapters/sq';
+import { parseFullShard2 } from '../../src/dict/full2';
 import { setBody, stubLayout } from './dom';
 
 const rec = (w: string, tpl: NonNullable<LexicalRecord['ety']>['tpl'], over: Partial<LexicalRecord> = {}): LexicalRecord => ({ w, p: 'NOUN', ety: { text: `${w} (test)`, tpl }, ...over });
@@ -177,8 +178,15 @@ describe('etymology: language names and cognates', () => {
 describe('the built shards (skipped when not built)', () => {
   const dir = path.resolve(__dirname, '../../public/dict/de/full');
   it.skipIf(!fs.existsSync(path.join(dir, 'f-000.json')))('structureOf never throws on real German records, and every part list has a named source', () => {
+    // full-1 shards are { lemmaKey: records }; full-2 shards (since 2026-10-17) are { v, T, k } and need the manifest's string table
+    const manifest = JSON.parse(fs.readFileSync(path.join(dir, 'manifest.json'), 'utf8')) as { schema: string; strings?: string[] };
     const shard: Record<string, LexicalRecord[]> = {};
-    for (const f of ['f-000.json', 'f-001.json', 'f-002.json']) if (fs.existsSync(path.join(dir, f))) Object.assign(shard, JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')));
+    for (const f of ['f-000.json', 'f-001.json', 'f-002.json']) {
+      if (!fs.existsSync(path.join(dir, f))) continue;
+      const raw = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) as unknown;
+      if (manifest.schema === 'full-2') for (const [k, recs] of parseFullShard2(raw, manifest.strings ?? [])) shard[k] = recs as unknown as LexicalRecord[];
+      else Object.assign(shard, raw);
+    }
     let withParts = 0; let n = 0;
     for (const recs of Object.values(shard)) {
       if (!Array.isArray(recs)) continue;

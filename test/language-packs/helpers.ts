@@ -11,9 +11,9 @@ export function diskFetch(root = PUBLIC): typeof fetch & { calls: string[] } {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     calls.push(url);
     if (!url.startsWith(BASE)) return new Response('not here', { status: 404 });
-    const file = path.join(root, decodeURIComponent(url.slice(BASE.length)));
+    const file = path.join(root, decodeURIComponent(url.slice(BASE.length).split('?')[0]));
     if (!file.startsWith(root) || !fs.existsSync(file) || !fs.statSync(file).isFile()) return new Response('missing', { status: 404 });
-    return new Response(fs.readFileSync(file, 'utf8'), { status: 200 });
+    return new Response(fs.readFileSync(file), { status: 200 });
   }) as typeof fetch & { calls: string[] };
   f.calls = calls;
   return f;

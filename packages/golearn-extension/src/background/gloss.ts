@@ -15,6 +15,7 @@ import {
   cleanText, isLanguageId, languageNameOf, type ConstructionExplanation, type EntryReply, type EntryRequest, type ExplainReply, type ExplainRequest, type FeatureExplanation, type GlossReply, type GlossRequest, type SourceLink, stringRecord,
 } from '../protocol';
 import type { SessionManager } from './session';
+import { bytesToText } from '../../../../src/dict/gzip';
 
 export const SHARD_PREFIX = 'pack:shard:';
 const MAX_SHARD_CHARS = 3_000_000;
@@ -41,13 +42,19 @@ export type ShardFetch = typeof fetch & {
   network(url: string): Promise<Response>;
 };
 
-/** A `fetch` that reads a dictionary file from storage first, and stores what it fetches. Only URLs under `base` are served. */
+/**
+ * A `fetch` that reads a dictionary file from storage first, and stores what it fetches. Only URLs under `base` are served.
+ * A `full-2` shard stored gzipped (`f-xx.json.gz`, maybe with the `?v=<rev>` the reader appends) is inflated BEFORE it is stored,
+ * so the cache always holds JSON text: a gzip body read as text would be garbage, and the reader's own magic-number check
+ * then sees plain JSON on both the first and the later reads. The cache key is the file name without `.json`/`.json.gz`
+ * (the `?v=` stays, so a new revision never serves the old shard).
+ */
 export function createShardFetch(area: StorageArea, base: string, doFetch: typeof fetch, now: () => number = Date.now): ShardFetch {
   const root = base.replace(/\/+$/, '') + '/';
   const load = async (input: RequestInfo | URL, useCache: boolean): Promise<Response> => {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url;
     if (!url.startsWith(root)) throw new Error('refusing to fetch outside the dictionary location');
-    const id = url.slice(root.length).replace(/\.json$/i, '');
+    const id = url.slice(root.length).replace(/\.json(\.gz)?(?=\?|$)/i, '');
     const key = SHARD_PREFIX + id;
     if (useCache) {
       const hit = (await area.get(key))[key] as ShardRow | undefined;
@@ -56,7 +63,7 @@ export function createShardFetch(area: StorageArea, base: string, doFetch: typeo
     let res: Response;
     try { res = await doFetch(url); } catch (e) { shardFetch.failures += 1; throw e; }
     if (!res.ok) { if (res.status >= 500) shardFetch.failures += 1; return res; }
-    const text = await res.text();
+    const text = await bytesToText(new Uint8Array(await res.arrayBuffer()));
     if (text.length <= MAX_SHARD_CHARS) { try { await area.set({ [key]: { text, at: now(), url } satisfies ShardRow }); } catch { /* storage full: the shard is used this once */ } }
     return new Response(text, { status: 200, headers: { 'content-type': 'application/json' } });
   };

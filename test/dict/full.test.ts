@@ -184,7 +184,7 @@ describe('build -> read round trip', () => {
     const text = lines.join('\n') + '\n';
     fs.writeFileSync(input, gz ? zlib.gzipSync(text) : text);
     const out = path.join(dir, 'out');
-    const r = await buildFullFile({ input, lang: 'es', outDir: out, date: '2026-10-10', normalize: norm, source: { url: 'https://kaikki.org/dictionary/Spanish/', lastModified: '2026-09-28' } });
+    const r = await buildFullFile({ input, lang: 'es', outDir: out, date: '2026-10-10', schema: 'full-1', normalize: norm, source: { url: 'https://kaikki.org/dictionary/Spanish/', lastModified: '2026-09-28' } });
     return { dir, out, r };
   }
 

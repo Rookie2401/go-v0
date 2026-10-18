@@ -31,3 +31,6 @@ wrangler.toml
 data/repository/
 packages/golearn-extension/dist-web/
 data/local-repository/
+
+# Go Repository backups written by scripts/ops/backup.mts (default --out)
+/backups/

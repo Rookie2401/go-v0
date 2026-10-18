@@ -1,0 +1,38 @@
+repository.example.com {
+	encode zstd gzip
+
+	# Prometheus scrapes the service on 127.0.0.1:8790 directly (docs/ops/MONITORING.md); the public name never serves /metrics.
+	@metrics path /metrics /metrics/*
+	respond @metrics 404
+
+	# Nothing the service accepts is larger than 1 MB (sign-up and sign-in: 16 KB); refuse more before it reaches Node.
+	request_body {
+		max_size 2MB
+	}
+
+	reverse_proxy 127.0.0.1:8790 {
+		# /sync/wait holds a request for at most 25 seconds. Keep proxying the
+		# request open and flush the response as soon as the service answers.
+		flush_interval -1
+
+		# The service runs with TRUST_PROXY=1 and rate-limits by the LAST X-Forwarded-For entry, the one this line writes. Replacing the header (rather
+		# than appending to whatever the client sent) means the client cannot choose its own address. Caddy already does this for untrusted clients;
+		# stating it keeps the rule visible and survives a future "trusted_proxies" change.
+		header_up X-Forwarded-For {remote_host}
+		header_up X-Real-IP {remote_host}
+		header_up X-Forwarded-Proto {scheme}
+	}
+
+	# The access log must not hold bearer tokens or cookies.
+	log {
+		output file /var/log/caddy/repository-access.log {
+			roll_size 50mb
+			roll_keep 10
+		}
+		format filter {
+			wrap json
+			request>headers>Authorization delete
+			request>headers>Cookie delete
+		}
+	}
+}

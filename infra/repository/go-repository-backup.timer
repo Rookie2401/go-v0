@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Go Repository backup
+
+[Timer]
+# 02:30 UTC every day; if the machine was off then, run once at the next boot
+OnCalendar=*-*-* 02:30:00 UTC
+Persistent=true
+RandomizedDelaySec=300
+
+[Install]
+WantedBy=timers.target

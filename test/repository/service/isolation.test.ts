@@ -59,7 +59,7 @@ describe('two learners, one server', () => {
     // B's own enrolment works
     const own = await raw(h, 'GET', `/candidates?enrolmentId=${b.enrolmentId}`, { token: b.token });
     expect(own.status).toBe(200);
-    expect(h.engine.candidateCalls).toEqual([{ learnerId: b.learnerId, enrolmentId: b.enrolmentId, limit: 20 }]);
+    expect(h.engine.candidateCalls).toEqual([{ learnerId: b.learnerId, enrolmentId: b.enrolmentId, limit: Number.MAX_SAFE_INTEGER }]);
     // B's export holds nothing of A's
     const ex = JSON.stringify((await b.api.exportAll()));
     expect(ex).not.toContain(a.learnerId);

@@ -4,7 +4,7 @@
  */
 import { provenanceColumns } from '../../repository-contract/src';
 import type {
-  Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFilter, EncounterEventSummary, FormAnalysis, LanguagePackInfo, Learner,
+  Account, AccountToken, AppendOutcome, SecurityEvent, AssistancePreferences, Device, Enrolment, EventFilter, EncounterEventSummary, FormAnalysis, LanguagePackInfo, Learner,
   LinguisticUnit, PrivateDocument, ReviewStatusSummary, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
 } from '../../repository-contract/src';
 import {
@@ -46,6 +46,9 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
   const teams = new Map<string, Team>();
   const members = new Map<string, { teamId: string; learnerId: string; role: 'member' | 'leader'; since: string }>();
   const tombstones = new Map<string, Tombstone>();
+  const accountTokens = new Map<string, AccountToken>();
+  const securityEvents: SecurityEvent[] = [];
+  const serviceState = new Map<string, string>();
 
   const logOf = (learnerId: string): StoredEvent[] => {
     let l = logs.get(learnerId);
@@ -434,6 +437,9 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
       c.enrolments = sweep(enrolments, (e) => e.learnerId === learnerId);
       c.tombstones = sweep(tombstones, (t) => t.learnerId === learnerId);
       c.teamMemberships = sweep(members, (m) => m.learnerId === learnerId);
+      const accountIds = new Set([...accounts.values()].filter((a) => a.learnerId === learnerId).map((a) => a.accountId));
+      sweep(accountTokens, (t) => accountIds.has(t.accountId));
+      for (let i = securityEvents.length - 1; i >= 0; i--) if (securityEvents[i]!.learnerId === learnerId) securityEvents.splice(i, 1);
       c.accounts = sweep(accounts, (a) => a.learnerId === learnerId);
       c.learners = sweep(learners, (l) => l.learnerId === learnerId);
       return c;
@@ -454,8 +460,68 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
       for (const a of analyses.values()) add('analyses', a);
       return [...tally.values()].sort(byKey((c) => [c.table, c.origin, c.validation]));
     },
+    async stats() {
+      return { kind: 'memory' as const, eventsIssued: [...heads.values()].reduce((a, b) => a + b, 0), learners: learners.size, accounts: accounts.size };
+    },
+    async getServiceState(key) { return serviceState.get(key); },
+    async setServiceState(key, value) { serviceState.set(key, value); },
     async close() {
       // nothing to release
+    },
+  };
+  store.security = {
+    async putAccountToken(t) { accountTokens.set(t.tokenHash, copy(t)); },
+    async consumeAccountToken(tokenHash, purpose, at) {
+      const t = accountTokens.get(tokenHash);
+      if (!t || t.purpose !== purpose || t.usedAt !== undefined || !(Date.parse(t.expiresAt) > Date.parse(at))) return undefined;
+      t.usedAt = at;
+      return copy(t);
+    },
+    async clearAccountTokens(accountId, purpose) {
+      for (const [k, t] of [...accountTokens]) if (t.accountId === accountId && t.purpose === purpose && t.usedAt === undefined) accountTokens.delete(k);
+    },
+    async deleteAccountTokensBefore(cutoff) {
+      let n = 0;
+      for (const [k, t] of [...accountTokens]) if (Date.parse(t.expiresAt) < Date.parse(cutoff) || (t.usedAt !== undefined && Date.parse(t.usedAt) < Date.parse(cutoff))) { accountTokens.delete(k); n++; }
+      return n;
+    },
+    async touchSession(sessionId, at) {
+      const s = sessions.get(sessionId);
+      if (s && s.revokedAt === undefined) s.lastSeenAt = at;
+    },
+    async listSessions(learnerId) {
+      return [...sessions.values()].filter((s) => s.learnerId === learnerId).map((s) => stripSecret(s) as Session)
+        .sort((a, b) => (a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : a.sessionId < b.sessionId ? 1 : -1));
+    },
+    async revokeSessions(learnerId, at, exceptSessionId) {
+      let n = 0;
+      for (const s of sessions.values()) {
+        if (s.learnerId !== learnerId || s.revokedAt !== undefined || s.sessionId === exceptSessionId) continue;
+        s.revokedAt = at;
+        n++;
+      }
+      return n;
+    },
+    async deleteSessionsEndedBefore(cutoff) {
+      let n = 0;
+      for (const [k, s] of [...sessions]) {
+        const ended = s.revokedAt !== undefined ? s.revokedAt : s.expiresAt;
+        if (Date.parse(ended) < Date.parse(cutoff)) { sessions.delete(k); n++; }
+      }
+      return n;
+    },
+    async appendSecurityEvent(e) { if (!securityEvents.some((x) => x.eventId === e.eventId)) securityEvents.push(copy(e)); },
+    async listSecurityEvents(learnerId, limit = 100) {
+      return securityEvents.filter((e) => (learnerId === null ? e.learnerId === undefined : e.learnerId === learnerId)).sort((a, b) => (a.at < b.at ? 1 : a.at > b.at ? -1 : a.eventId < b.eventId ? 1 : -1)).slice(0, Math.max(1, Math.min(1000, limit))).map(copy);
+    },
+    async deleteSecurityEventsBefore(cutoff) {
+      let n = 0;
+      for (let i = securityEvents.length - 1; i >= 0; i--) if (Date.parse(securityEvents[i]!.at) < Date.parse(cutoff)) { securityEvents.splice(i, 1); n++; }
+      return n;
+    },
+    async listAccountsDeletionDue(at, limit = 100) {
+      return [...accounts.values()].filter((a) => a.deletionDueAt !== undefined && Date.parse(a.deletionDueAt) <= Date.parse(at))
+        .sort((a, b) => (a.deletionDueAt! < b.deletionDueAt! ? -1 : 1)).slice(0, limit).map((a) => stripSecret(a) as Account);
     },
   };
   return store;

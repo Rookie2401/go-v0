@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: go-repository
+    runtime: node
+    plan: starter
+    region: oregon
+    autoDeployTrigger: "off"
+    numInstances: 1
+    buildCommand: npm ci --include=dev
+    startCommand: node infra/repository/render-start.mjs
+    healthCheckPath: /health
+    maxShutdownDelaySeconds: 60
+    envVars:
+      - key: NODE_VERSION
+        value: 24.21.0
+      - key: REPOSITORY_MIGRATION_PENDING
+        value: "true"
+      - key: REPOSITORY_DATA_DIR
+        value: /var/data/repository
+    disk:
+      name: repository-data
+      mountPath: /var/data
+      sizeGB: 1

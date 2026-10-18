@@ -1,0 +1,22 @@
+[Unit]
+Description=Go Repository backup (snapshot or pg_dump, compress, encrypt, upload off the box, prune)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=go-repository
+Group=go-repository
+WorkingDirectory=/opt/go-v0
+Environment=NODE_ENV=production
+EnvironmentFile=-/etc/go-repository/env
+# --data is the SQLite directory (ignored when DATABASE_URL is set: pg_dump is used, so postgresql-client must be installed)
+ExecStart=/opt/go-v0/node_modules/.bin/vite-node --config scripts/vite.config.ts scripts/ops/backup.mts -- --data /var/lib/go-repository --out /var/backups/go-repository
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+# the data directory is read (a read-only SQLite connection still needs its -shm file); the backup directory is written
+ReadWritePaths=/var/lib/go-repository /var/backups/go-repository
+# a failure shows in `systemctl status` and `journalctl -u go-repository-backup`; add OnFailure= a unit that mails you if you want it pushed

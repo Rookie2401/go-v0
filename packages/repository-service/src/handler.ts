@@ -17,16 +17,21 @@ import type {
   LearningGoal, LinguisticUnit, PrivateDocument, RestrictionsInput, Session, SourceRef, SourceRestrictions, StoredEvent, SyncPullResponse, SyncPushResponse, Tombstone, UnitCorrection, ValidationIssue, ValidationLevel,
 } from '../../repository-contract/src';
 import type { CorrectionResult, LookupResult, ServiceDeps } from './deps';
+import { EMAIL, MESSAGES, MIN_PASSWORD_CHARS, Refusal, checkPassword, invalid, isIso, isObj, isStr, normalEmail, respond, takeLimit, uuid } from './http';
+import { DELETION_ALLOWED, accountStatus, audit, deletionPending, registerAccountRoutes, requestDeletion, sendVerification, signInGate, touchSession } from './accounts';
+import { LOCKOUT_ATTEMPTS, LOCKOUT_WINDOW_MS, dummyHash, forgetFailures, lockedOut, noteFailure } from './throttle';
+import { isLoopback } from './ratelimit';
+import type { Ctx, Handler, Route } from './http';
 import { MAX_WAIT_MS, createChangeNotifier } from './notifier';
 import type { ChangeNotifier } from './notifier';
 
 export const SERVICE_VERSION = 1;
 /** The largest request body accepted (bytes), counted on the stream; over it is 413. */
 export const MAX_BODY_BYTES = 1024 * 1024;
+/** The largest body an unauthenticated route reads (sign-up, sign-in, verification, reset): a few hundred bytes are real, so a megabyte is only abuse. */
+export const MAX_OPEN_BODY_BYTES = 16 * 1024;
 export const SESSION_TTL_MS = 30 * 24 * 3600 * 1000;
-export const LOCKOUT_ATTEMPTS = 5;
-export const LOCKOUT_WINDOW_MS = 15 * 60 * 1000;
-export const MIN_PASSWORD_CHARS = 10;
+export { LOCKOUT_ATTEMPTS, LOCKOUT_WINDOW_MS, MIN_PASSWORD_CHARS };
 export const MAX_EVENTS_PER_BATCH = 500;
 export const MAX_DOCUMENTS_PER_PUSH = 50;
 export const MAX_PAGE = 1000;
@@ -41,52 +46,6 @@ export const EXPORT_FORMAT = 'go-repository-export@1';
 /** What the two concrete stores add to the port: record a tombstone, then physically remove what it names (repository-store `applyTombstone`). Declared here so the handler imports no store code. */
 interface TombstoneApplier { applyTombstone(t: Tombstone): Promise<{ events: number; knowledge: number }> }
 
-const MESSAGES = {
-  unauthorized: 'Sign in again: this session is missing, unknown, expired or ended.',
-  notYours: 'That belongs to a different learner. A request can only name its own learner.',
-  notFound: 'Nothing here.',
-  method: 'That method is not allowed here.',
-  tooLarge: 'That request is too large (the limit is 1 MB). Send it in smaller parts.',
-  invalidJson: 'The request body is not valid JSON.',
-  server: 'The server could not complete the request.',
-} as const;
-
-/** A failure the handler turns into a response. */
-class Refusal extends Error {
-  constructor(readonly status: number, readonly error: string, message: string, readonly extra: Record<string, unknown> = {}) {
-    super(message);
-  }
-}
-
-const CORS: Record<string, string> = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
-  'Access-Control-Allow-Headers': 'Authorization, Content-Type, If-None-Match',
-  // a browser asks permission (an OPTIONS round trip) before each cross-origin call that carries Authorization; browsers cap this at 2 h (Chromium) or 5 min (WebKit)
-  'Access-Control-Max-Age': '7200',
-  // the typed client reads the validator to ask "has it changed?" next time
-  'Access-Control-Expose-Headers': 'ETag',
-};
-
-/**
- * Sent on every response. The service answers JSON only, some of it user-controlled (document bodies, titles), so a browser
- * must never sniff it into something else (nosniff), never frame it, never leak the address of the page that fetched it
- * (a path can hold an id), and has no business running anything from it (an empty CSP).
- */
-const SECURITY_HEADERS: Record<string, string> = {
-  'X-Content-Type-Options': 'nosniff',
-  'Referrer-Policy': 'no-referrer',
-  'Content-Security-Policy': "default-src 'none'; frame-ancestors 'none'",
-  'X-Frame-Options': 'DENY',
-};
-
-function respond(status: number, body?: unknown, extraHeaders: Record<string, string> = {}): Response {
-  const headers: Record<string, string> = { ...CORS, ...SECURITY_HEADERS, 'Cache-Control': 'no-store', ...extraHeaders };
-  if (body === undefined || status === 204) return new Response(null, { status, headers });
-  headers['Content-Type'] = 'application/json; charset=utf-8';
-  return new Response(JSON.stringify(body), { status, headers });
-}
-
 /** Equality of two strings in time that depends only on their length (never stops early). */
 export function constantTimeEqual(a: string, b: string): boolean {
   let diff = a.length ^ b.length;
@@ -95,10 +54,6 @@ export function constantTimeEqual(a: string, b: string): boolean {
   return diff === 0;
 }
 
-const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
-const isStr = (v: unknown): v is string => typeof v === 'string' && v.length > 0;
-const isIso = (v: unknown): v is string => typeof v === 'string' && !Number.isNaN(Date.parse(v));
-const uuid = (): string => crypto.randomUUID();
 
 /** Whether `root` has objects or arrays nested more than `max` levels deep. Iterative and stops at the first excess, so a hostile body costs little and cannot overflow the stack. */
 function nestedDeeperThan(root: unknown, max: number): boolean {
@@ -115,11 +70,12 @@ function nestedDeeperThan(root: unknown, max: number): boolean {
 }
 
 /** Read the body as text, refusing at the size limit; the limit is on the stream, not only on the header. */
-async function readText(request: Request): Promise<string> {
+async function readText(request: Request, limit: number): Promise<string> {
+  const tooLarge = (): Refusal => new Refusal(413, 'too-large', limit === MAX_BODY_BYTES ? MESSAGES.tooLarge : `That request is too large (the limit is ${Math.round(limit / 1024)} KB for this route).`);
   const declared = Number(request.headers.get('content-length'));
-  if (Number.isFinite(declared) && declared > MAX_BODY_BYTES) {
+  if (Number.isFinite(declared) && declared > limit) {
     await request.body?.cancel().catch(() => undefined);
-    throw new Refusal(413, 'too-large', MESSAGES.tooLarge);
+    throw tooLarge();
   }
   if (!request.body) return '';
   const reader = request.body.getReader();
@@ -129,9 +85,9 @@ async function readText(request: Request): Promise<string> {
     const { done, value } = await reader.read();
     if (done) break;
     size += value.length;
-    if (size > MAX_BODY_BYTES) {
+    if (size > limit) {
       await reader.cancel().catch(() => undefined);
-      throw new Refusal(413, 'too-large', MESSAGES.tooLarge);
+      throw tooLarge();
     }
     chunks.push(value);
   }
@@ -143,26 +99,12 @@ async function readText(request: Request): Promise<string> {
 
 // ───────────────────────────── context ─────────────────────────────
 
-interface Ctx {
-  request: Request;
-  deps: ServiceDeps;
-  query: URLSearchParams;
-  params: Record<string, string>;
-  now: () => string;
-  body: () => Promise<Record<string, unknown>>;
-  /** Only after `authed`. */
-  session: Session;
-}
-
-type Handler = (ctx: Ctx) => Promise<Response>;
-interface Route { method: string; path: string[]; auth: boolean; run: Handler }
 
 /** The learner is the session's. Anything else named in a request is refused. */
 function assertSelf(ctx: Ctx, supplied: unknown): void {
   if (supplied !== undefined && supplied !== null && supplied !== ctx.session.learnerId) throw new Refusal(403, 'not-your-data', MESSAGES.notYours);
 }
 
-const invalid = (message: string, issues?: unknown): Refusal => new Refusal(422, 'invalid-input', message, issues ? { issues } : {});
 
 function intParam(q: URLSearchParams, name: string, opts: { def: number; min: number; max: number; clamp?: boolean }): number {
   const raw = q.get(name);
@@ -184,33 +126,6 @@ const listParam = (q: URLSearchParams, name: string, max: number): string[] | un
   if (items.length > max) throw new Refusal(422, 'invalid-query', `"${name}" takes at most ${max} values.`);
   return items;
 };
-
-// ───────────────────────────── sign-in throttle ─────────────────────────────
-
-/**
- * Failed sign-ins per email, in memory. PER PROCESS: it is lost on restart and not shared between instances, so a
- * horizontally scaled deployment multiplies the allowance. Unknown emails are counted the same as known ones, so the
- * 429 reveals nothing about which addresses have accounts.
- */
-const failures = new WeakMap<object, Map<string, number[]>>();
-const dummyHashes = new WeakMap<object, Promise<string>>();
-
-function failureLog(deps: ServiceDeps): Map<string, number[]> {
-  let m = failures.get(deps);
-  if (!m) { m = new Map(); failures.set(deps, m); }
-  return m;
-}
-
-function recentFailures(deps: ServiceDeps, email: string, nowMs: number): number[] {
-  const m = failureLog(deps);
-  const recent = (m.get(email) ?? []).filter((t) => nowMs - t < LOCKOUT_WINDOW_MS);
-  if (recent.length) m.set(email, recent); else m.delete(email);
-  if (m.size > 10_000) for (const [k, v] of m) if (v.every((t) => nowMs - t >= LOCKOUT_WINDOW_MS)) m.delete(k);
-  return recent;
-}
-
-const normalEmail = (e: string): string => e.trim().toLowerCase();
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // ───────────────────────────── validation of inputs ─────────────────────────────
 
@@ -462,27 +377,55 @@ async function currentAccount(ctx: Ctx): Promise<Account> {
 const routes: Route[] = [];
 const route = (method: string, path: string, auth: boolean, run: Handler): void => { routes.push({ method, path: path.split('/').filter(Boolean), auth, run }); };
 
-route('GET', '/health', false, async () => respond(200, { ok: true, service: 'repository', version: SERVICE_VERSION, contractVersion: CONTRACT_VERSION }));
+route('GET', '/health', false, async (ctx) => {
+  const info = ctx.deps.info;
+  let schemaVersion: number | undefined;
+  if (info?.schemaVersion) { try { schemaVersion = await info.schemaVersion(); } catch { /* reported as absent */ } }
+  return respond(200, {
+    ok: true, service: 'repository', version: SERVICE_VERSION, contractVersion: CONTRACT_VERSION,
+    ...(info ? { store: info.storeKind, ...(schemaVersion !== undefined ? { migrations: schemaVersion } : {}), uptimeSec: Math.max(0, Math.floor((Date.now() - info.startedAt) / 1000)) } : {}),
+  });
+});
+
+/**
+ * Prometheus text. With a configured `METRICS_TOKEN` only a request carrying it (Bearer) is answered; without one only a request from this machine, and
+ * not through a reverse proxy (a forwarding header means someone else asked), is. Everything else is 404, so the route does not announce itself.
+ */
+route('GET', '/metrics', false, async (ctx) => {
+  const m = ctx.deps.metrics;
+  if (!m) throw new Refusal(404, 'not-found', MESSAGES.notFound);
+  const header = ctx.request.headers.get('authorization');
+  const presented = header ? /^Bearer[ 	]+(.+)$/i.exec(header.trim())?.[1]?.trim() ?? '' : '';
+  const viaProxy = ctx.request.headers.has('x-forwarded-for') || ctx.request.headers.has('x-forwarded-host') || ctx.request.headers.has('forwarded') || ctx.request.headers.has('cf-connecting-ip');
+  const allowed = m.token !== undefined ? constantTimeEqual(presented, m.token) : isLoopback(ctx.ip) && !viaProxy;
+  if (!allowed) throw new Refusal(404, 'not-found', MESSAGES.notFound);
+  const samples = (await m.collect?.().catch(() => [])) ?? [];
+  return new Response(m.registry.render(samples), { status: 200, headers: { 'Content-Type': 'text/plain; version=0.0.4; charset=utf-8', 'Cache-Control': 'no-store' } });
+});
 
 // ── accounts and sessions ──
 
 route('POST', '/accounts', false, async (ctx) => {
+  takeLimit(ctx.deps, 'signup', ctx.ip);
   const b = await ctx.body();
   if (typeof b.email !== 'string' || b.email.length > 254 || !EMAIL.test(normalEmail(b.email))) throw invalid('"email" must be an email address.');
-  if (typeof b.password !== 'string' || b.password.length < MIN_PASSWORD_CHARS) throw new Refusal(422, 'weak-password', `The password needs at least ${MIN_PASSWORD_CHARS} characters.`);
-  if (b.password.length > 1000) throw invalid('"password" is too long (at most 1000 characters).');
+  const password = checkPassword(b.password);
   if (b.displayName !== undefined && (typeof b.displayName !== 'string' || b.displayName.length > 200)) throw invalid('"displayName" must be a string of at most 200 characters.');
   const email = normalEmail(b.email);
   const { store, crypto: c } = ctx.deps;
   if (await store.getAccountByEmail(email)) throw new Refusal(409, 'email-taken', 'There is already an account with that email.');
   const at = ctx.now();
   const learner: Learner = { learnerId: uuid(), createdAt: at, ...(typeof b.displayName === 'string' && b.displayName ? { displayName: b.displayName } : {}) };
-  const account: Account & { passwordHash: string } = { accountId: uuid(), learnerId: learner.learnerId, email, createdAt: at, passwordHash: await c.hashPassword(b.password) };
+  const account: Account & { passwordHash: string } = { accountId: uuid(), learnerId: learner.learnerId, email, createdAt: at, passwordHash: await c.hashPassword(password) };
   await store.transaction(async () => { await store.putLearner(learner); await store.putAccount(account); });
+  // The account starts unverified: it may sign in for the grace period (GRACE_DAYS) while the confirmation email is on its way.
+  await audit(ctx.deps, 'account-created', learner.learnerId, {}, at);
+  try { await sendVerification(ctx.deps, account, at); } catch { /* the account exists; "resend" can ask again */ }
   return respond(201, { learnerId: learner.learnerId, accountId: account.accountId });
 });
 
 route('POST', '/sessions', false, async (ctx) => {
+  takeLimit(ctx.deps, 'signin', ctx.ip);
   const b = await ctx.body();
   if (typeof b.email !== 'string' || typeof b.password !== 'string' || b.email.length > 254 || b.password.length > 1000) throw invalid('"email" and "password" are required.');
   if (!isStr(b.deviceId) || b.deviceId.length > 200) throw invalid('"deviceId" is required (at most 200 characters).');
@@ -490,20 +433,19 @@ route('POST', '/sessions', false, async (ctx) => {
   const { store, crypto: c } = ctx.deps;
   const email = normalEmail(b.email);
   const nowMs = Date.parse(ctx.now());
-  if (recentFailures(ctx.deps, email, nowMs).length >= LOCKOUT_ATTEMPTS) {
-    throw new Refusal(429, 'too-many-attempts', 'Too many failed sign-ins for that email. Wait 15 minutes and try again.');
+  if (lockedOut(ctx.deps, email, nowMs)) {
+    throw new Refusal(429, 'too-many-attempts', 'Too many failed sign-ins for that email. Wait 15 minutes and try again.', {}, { 'Retry-After': '900' });
   }
   const account = await store.getAccountByEmail(email);
   // The same work whether or not the email exists: an unknown email is checked against a throw-away hash.
-  let dummy = dummyHashes.get(ctx.deps);
-  if (!dummy) { dummy = c.hashPassword(c.randomToken()); dummyHashes.set(ctx.deps, dummy); }
-  const ok = await c.verifyPassword(b.password, account ? account.passwordHash : await dummy);
+  const ok = await c.verifyPassword(b.password, account ? account.passwordHash : await dummyHash(ctx.deps));
   if (!account || !ok || account.disabledAt) {
-    const m = failureLog(ctx.deps);
-    m.set(email, [...recentFailures(ctx.deps, email, nowMs), nowMs]);
+    noteFailure(ctx.deps, email, nowMs);
+    if (account) await audit(ctx.deps, 'sign-in-failed', account.learnerId, { deviceId: b.deviceId as string });
     throw new Refusal(401, 'bad-credentials', 'The email or the password is not right.');
   }
-  failureLog(ctx.deps).delete(email);
+  signInGate(ctx.deps, account, nowMs); // an unverified account past its grace: 403 email-unverified (not a failed attempt)
+  forgetFailures(ctx.deps, email);
   const at = ctx.now();
   const existing = await store.getDevice(account.learnerId, b.deviceId);
   const device: Device = {
@@ -519,11 +461,14 @@ route('POST', '/sessions', false, async (ctx) => {
     sessionId: uuid(), accountId: account.accountId, learnerId: account.learnerId, deviceId: b.deviceId, createdAt: at, expiresAt, tokenHash: c.sha256(token),
   };
   await store.putSession(session);
-  return respond(201, { token, learnerId: account.learnerId, expiresAt });
+  await audit(ctx.deps, 'sign-in', account.learnerId, { deviceId: b.deviceId }, at);
+  const status = accountStatus(ctx.deps, account);
+  return respond(201, { token, learnerId: account.learnerId, expiresAt, verified: status.verified, emailVerified: status.emailVerified, ...(status.verifyBy ? { verifyBy: status.verifyBy } : {}), ...(status.deletionDueAt ? { scheduledPurgeAt: status.scheduledPurgeAt, deletionRequestedAt: status.deletionRequestedAt, deletionDueAt: status.deletionDueAt } : {}) });
 });
 
 route('DELETE', '/sessions/current', true, async (ctx) => {
   await ctx.deps.store.revokeSession(ctx.session.sessionId, ctx.now());
+  await audit(ctx.deps, 'sign-out', ctx.session.learnerId, { deviceId: ctx.session.deviceId });
   return respond(204);
 });
 
@@ -545,7 +490,7 @@ route('GET', '/me', true, async (ctx) => {
     consents.set(key, { key, given: e.kind === 'ConsentGiven', at: e.at });
   }
   return respond(200, {
-    learner, account: accountView(account), enrolments,
+    learner, account: { ...accountView(account), ...accountStatus(ctx.deps, account) }, enrolments,
     devices: device ? [{ deviceId: device.deviceId, platform: device.platform, registeredAt: device.registeredAt, lastSyncAt: device.lastSyncAt }] : [{ deviceId: ctx.session.deviceId }],
     consents: [...consents.values()],
   });
@@ -554,6 +499,8 @@ route('GET', '/me', true, async (ctx) => {
 route('DELETE', '/me', true, async (ctx) => {
   const b = await ctx.body();
   assertSelf(ctx, b.learnerId);
+  // With a password: schedule the deletion (202, a grace period to cancel in, then the purge). With the account's email: erase now (as before).
+  if (typeof b.password === 'string') return requestDeletion(ctx, b.password);
   const account = await currentAccount(ctx);
   if (typeof b.confirmEmail !== 'string' || normalEmail(b.confirmEmail) !== account.email) {
     throw new Refusal(422, 'email-mismatch', 'To delete everything, send the email address of this account as "confirmEmail".');
@@ -1305,6 +1252,8 @@ route('GET', '/export', true, async (ctx) => {
   return respond(200, exported, { 'Content-Disposition': 'attachment; filename="go-repository-export.json"' });
 });
 
+registerAccountRoutes(route, { buildExport: async (ctx) => (await buildExport(ctx)) as Record<string, unknown> });
+
 function parseScope(raw: unknown): Tombstone['scope'] {
   if (!isObj(raw)) throw invalid('"scope" is required: {kind:"learner"}, {kind:"source",sourceRef}, {kind:"range",from,to} or {kind:"event",id}.');
   switch (raw.kind) {
@@ -1357,7 +1306,7 @@ function match(pattern: string[], parts: string[]): Record<string, string> | und
   return params;
 }
 
-async function authenticate(request: Request, deps: ServiceDeps, now: string): Promise<Session> {
+async function authenticate(request: Request, deps: ServiceDeps, now: string): Promise<{ session: Session; account: Account }> {
   const header = request.headers.get('authorization');
   const m = header ? /^Bearer[ \t]+(.+)$/i.exec(header.trim()) : null;
   const token = m ? m[1].trim() : '';
@@ -1372,38 +1321,66 @@ async function authenticate(request: Request, deps: ServiceDeps, now: string): P
   if (found.revokedAt || !(Date.parse(found.expiresAt) > Date.parse(now))) throw unauthorized;
   const account = await deps.store.getAccount(found.accountId);
   if (!account || account.disabledAt) throw unauthorized;
-  return { sessionId: found.sessionId, accountId: found.accountId, learnerId: found.learnerId, deviceId: found.deviceId, createdAt: found.createdAt, expiresAt: found.expiresAt };
+  return {
+    session: { sessionId: found.sessionId, accountId: found.accountId, learnerId: found.learnerId, deviceId: found.deviceId, createdAt: found.createdAt, expiresAt: found.expiresAt, ...(found.lastSeenAt ? { lastSeenAt: found.lastSeenAt } : {}) },
+    account,
+  };
 }
 
-async function dispatch(request: Request, deps: ServiceDeps): Promise<Response> {
+/** What `handle` learns about a request while it is dispatched, for the metrics and the log. */
+interface RequestMeta { route: string; limited?: string }
+
+const REQUEST_ID = /^[A-Za-z0-9._-]{8,64}$/;
+
+async function dispatch(request: Request, deps: ServiceDeps, meta: RequestMeta, requestId: string): Promise<Response> {
   const now = deps.now ?? ((): string => new Date().toISOString());
   const method = request.method;
   const url = new URL(request.url);
-  if (method === 'OPTIONS') return respond(204);
+  if (method === 'OPTIONS') { meta.route = 'OPTIONS'; return respond(204); }
+  const ip = deps.clientIp?.(request) ?? 'unknown';
   let parts: string[];
   try { parts = url.pathname.split('/').filter((p) => p.length > 0).map(decodeURIComponent); } catch { throw new Refusal(404, 'not-found', MESSAGES.notFound); }
 
-  let params: Record<string, string> | undefined;
-  let found: Route | undefined;
-  let pathMatched = false;
-  for (const r of routes) {
-    const p = match(r.path, parts);
-    if (!p) continue;
-    pathMatched = true;
-    if (r.method === method) { found = r; params = p; break; }
+  try {
+    // the general per-IP limit, before anything is read or looked up and whether or not the path exists (the health and metrics routes are for monitors)
+    if (url.pathname !== '/health' && url.pathname !== '/metrics') takeLimit(deps, 'general', ip);
+    let params: Record<string, string> | undefined;
+    let found: Route | undefined;
+    let pathMatched = false;
+    for (const r of routes) {
+      const p = match(r.path, parts);
+      if (!p) continue;
+      pathMatched = true;
+      if (r.method === method) { found = r; params = p; break; }
+    }
+    if (!found || !params) throw pathMatched ? new Refusal(405, 'method-not-allowed', MESSAGES.method) : new Refusal(404, 'not-found', MESSAGES.notFound);
+    meta.route = `/${found.path.join('/')}`;
+    return await run(request, deps, found, params, url, ip, requestId, now);
+  } catch (e) {
+    if (e instanceof Refusal && e.status === 429 && typeof e.extra.rule === 'string') meta.limited = e.extra.rule;
+    throw e;
   }
-  if (!found || !params) throw pathMatched ? new Refusal(405, 'method-not-allowed', MESSAGES.method) : new Refusal(404, 'not-found', MESSAGES.notFound);
+}
 
+async function run(request: Request, deps: ServiceDeps, found: Route, params: Record<string, string>, url: URL, ip: string, requestId: string, now: () => string): Promise<Response> {
+  const method = request.method;
   let session: Session | undefined;
-  if (found.auth) session = await authenticate(request, deps, now());
+  let account: Account | undefined;
+  if (found.auth) {
+    ({ session, account } = await authenticate(request, deps, now()));
+    // an account whose deletion is scheduled may only look, export, and cancel
+    if (account.deletionRequestedAt !== undefined && !DELETION_ALLOWED.has(`${method} /${found.path.join('/')}`)) throw deletionPending(account);
+    if (method === 'POST' && found.path.join('/') === 'sync/push') takeLimit(deps, 'syncPush', session.accountId);
+    await touchSession(deps, session, now());
+  }
 
   let cached: Record<string, unknown> | undefined;
   const ctx: Ctx = {
-    request, deps, query: url.searchParams, params, now,
-    session: session as Session,
+    request, deps, query: url.searchParams, params, now, ip, requestId,
+    session: session as Session, account: account as Account,
     body: async () => {
       if (cached) return cached;
-      const raw = await readText(request);
+      const raw = await readText(request, found.auth ? MAX_BODY_BYTES : MAX_OPEN_BODY_BYTES);
       let parsed: unknown;
       try { parsed = raw.trim() === '' ? {} : JSON.parse(raw); } catch { throw new Refusal(400, 'invalid-json', MESSAGES.invalidJson); }
       if (!isObj(parsed)) throw new Refusal(422, 'invalid-input', 'The request body must be a JSON object.');
@@ -1439,22 +1416,40 @@ async function withValidator(request: Request, response: Response, deps: Service
 /** Handle one request. Never throws: anything unexpected is a 500 without detail. One log line per request. */
 export async function handle(request: Request, deps: ServiceDeps): Promise<Response> {
   const started = Date.now();
+  const offered = request.headers.get('x-request-id');
+  const requestId = offered && REQUEST_ID.test(offered) ? offered : crypto.randomUUID();
+  const meta: RequestMeta = { route: 'unmatched' };
   let response: Response;
+  let errorCode: string | undefined;
   try {
-    response = await dispatch(request, deps);
+    response = await dispatch(request, deps, meta, requestId);
   } catch (e) {
     if (e instanceof Refusal) {
-      response = respond(e.status, { error: e.error, message: e.message, ...e.extra }, e.status === 401 ? { 'WWW-Authenticate': 'Bearer' } : e.status === 429 ? { 'Retry-After': e.error === 'too-many-waiters' ? '5' : '900' } : {});
+      const extra: Record<string, string> = { ...e.headers };
+      if (e.status === 401) extra['WWW-Authenticate'] = 'Bearer';
+      if (e.status === 429 && extra['Retry-After'] === undefined) extra['Retry-After'] = e.error === 'too-many-waiters' ? '5' : '900';
+      response = respond(e.status, { error: e.error, message: e.message, ...e.extra }, extra);
     } else {
-      // never the cause: it could hold a document, a header or a password
+      // never the cause: it could hold a document, a header or a password. The log gets its class (and a driver's SQLSTATE), which hold neither.
+      errorCode = typeof (e as { code?: unknown })?.code === 'string' ? String((e as { code: string }).code) : (e as Error)?.name ?? 'Error';
       response = respond(500, { error: 'server-error', message: MESSAGES.server });
     }
   }
   response = await withValidator(request, response, deps);
+  if (response.headers.get('X-Request-Id') === null) response.headers.set('X-Request-Id', requestId);
+  const ms = Date.now() - started;
+  deps.metrics?.registry.observeRequest(meta.route, request.method, response.status, ms / 1000);
   if (deps.log) {
     let path = '-';
     try { path = new URL(request.url).pathname; } catch { /* keep "-" */ }
-    deps.log(`${request.method} ${path} ${response.status} ${Date.now() - started}ms`);
+    if (deps.logFormat === 'json') {
+      deps.log(JSON.stringify({
+        ts: new Date(started).toISOString(), level: response.status >= 500 ? 'error' : 'info', msg: 'request', requestId, method: request.method, path, route: meta.route,
+        status: response.status, ms, ...(meta.limited ? { limited: meta.limited } : {}), ...(errorCode ? { error: errorCode } : {}),
+      }));
+    } else {
+      deps.log(`${request.method} ${path} ${response.status} ${ms}ms`);
+    }
   }
   return response;
 }

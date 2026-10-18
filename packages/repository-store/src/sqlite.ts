@@ -10,13 +10,13 @@
  * No SQL is built from values: every value is a bound parameter. The only text assembled is the `?` placeholder list.
  */
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, statSync } from 'node:fs';
 import { dirname } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
 import type { StatementSync } from 'node:sqlite';
 import { provenanceColumns } from '../../repository-contract/src';
 import type {
-  Account, AppendOutcome, AssistancePreferences, Device, Enrolment, EventFilter, EncounterDateRange, EncounterEventSummary, FormAnalysis, LanguagePackInfo, Learner, LinguisticUnit,
+  Account, AccountToken, AppendOutcome, AssistancePreferences, SecurityEvent, SecurityStore, Device, Enrolment, EventFilter, EncounterDateRange, EncounterEventSummary, FormAnalysis, LanguagePackInfo, Learner, LinguisticUnit,
   PrivateDocument, ReviewStatusSummary, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
 } from '../../repository-contract/src';
 import { applyMigrations } from './migrate';
@@ -145,6 +145,9 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       accountId: r.account_id as string, learnerId: r.learner_id as string, email: r.email as string, createdAt: r.created_at as string, passwordHash: r.password_hash as string,
     };
     if (r.disabled_at !== null) a.disabledAt = r.disabled_at as string;
+    if (r.verified_at !== null) a.verifiedAt = r.verified_at as string;
+    if (r.deletion_requested_at !== null) a.deletionRequestedAt = r.deletion_requested_at as string;
+    if (r.deletion_due_at !== null) a.deletionDueAt = r.deletion_due_at as string;
     return a;
   };
   const sessionOfRow = (r: Row): Session => {
@@ -550,9 +553,10 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
         if (clash) throw new Error('email already in use');
         assertSameOwner('account', get('SELECT learner_id FROM accounts WHERE account_id = ?', a.accountId)?.learner_id as string | undefined, a.learnerId);
         run(
-          `INSERT INTO accounts (account_id, learner_id, email, password_hash, created_at, disabled_at) VALUES (?, ?, ?, ?, ?, ?)
-           ON CONFLICT (account_id) DO UPDATE SET email = excluded.email, password_hash = excluded.password_hash, created_at = excluded.created_at, disabled_at = excluded.disabled_at`,
-          a.accountId, a.learnerId, email, a.passwordHash, a.createdAt, a.disabledAt ?? null,
+          `INSERT INTO accounts (account_id, learner_id, email, password_hash, created_at, disabled_at, verified_at, deletion_requested_at, deletion_due_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+           ON CONFLICT (account_id) DO UPDATE SET email = excluded.email, password_hash = excluded.password_hash, created_at = excluded.created_at, disabled_at = excluded.disabled_at,
+             verified_at = excluded.verified_at, deletion_requested_at = excluded.deletion_requested_at, deletion_due_at = excluded.deletion_due_at`,
+          a.accountId, a.learnerId, email, a.passwordHash, a.createdAt, a.disabledAt ?? null, a.verifiedAt ?? null, a.deletionRequestedAt ?? null, a.deletionDueAt ?? null,
         );
       });
     },
@@ -645,6 +649,8 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
         run('DELETE FROM projection_cursor WHERE learner_id = ?', learnerId);
         c.preferences = run('DELETE FROM preferences WHERE learner_id = ?', learnerId);
         c.documents = run('DELETE FROM documents WHERE learner_id = ?', learnerId);
+        run('DELETE FROM account_tokens WHERE account_id IN (SELECT account_id FROM accounts WHERE learner_id = ?)', learnerId);
+        run('DELETE FROM security_events WHERE learner_id = ?', learnerId);
         c.sessions = run('DELETE FROM sessions WHERE learner_id = ?', learnerId);
         c.devices = run('DELETE FROM devices WHERE learner_id = ?', learnerId);
         c.enrolments = run('DELETE FROM enrolments WHERE learner_id = ?', learnerId);
@@ -669,6 +675,28 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
       }
       return out.sort(byKey((c) => [c.table, c.origin, c.validation]));
     },
+    async stats() {
+      const heads = get('SELECT COALESCE(SUM(head), 0) AS n FROM event_heads') as Row;
+      const learners = get('SELECT COUNT(*) AS n FROM learners') as Row;
+      const accounts = get('SELECT COUNT(*) AS n FROM accounts') as Row;
+      const version = get('SELECT MAX(version) AS v FROM schema_version') as Row;
+      let sizeBytes: number | undefined;
+      if (path !== ':memory:') {
+        sizeBytes = 0;
+        for (const suffix of ['', '-wal']) { try { sizeBytes += statSync(path + suffix).size; } catch { /* no log file */ } }
+      }
+      return {
+        kind: 'sqlite' as const, schemaVersion: Number(version.v), eventsIssued: Number(heads.n), learners: Number(learners.n), accounts: Number(accounts.n),
+        ...(sizeBytes !== undefined ? { sizeBytes } : {}),
+      };
+    },
+    async getServiceState(key) {
+      const r = get('SELECT value FROM service_state WHERE key = ?', key);
+      return r ? (r.value as string) : undefined;
+    },
+    async setServiceState(key, value) {
+      run('INSERT INTO service_state (key, value) VALUES (?, ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value', key, value);
+    },
     /** Operator maintenance: empty the log and rebuild the file without its free pages (VACUUM can take a while on a large store). */
     async compact() {
       if (path === ':memory:') return;
@@ -678,13 +706,95 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
     },
   };
 
+  const tokenOfRow = (r: Row): AccountToken => {
+    const t: AccountToken = { tokenHash: r.token_hash as string, accountId: r.account_id as string, purpose: r.purpose as AccountToken['purpose'], createdAt: r.created_at as string, expiresAt: r.expires_at as string };
+    if (r.used_at !== null) t.usedAt = r.used_at as string;
+    return t;
+  };
+  const securityEventOfRow = (r: Row): SecurityEvent => {
+    const e: SecurityEvent = { eventId: r.event_id as string, kind: r.kind as SecurityEvent['kind'], at: r.at as string };
+    if (r.learner_id !== null) e.learnerId = r.learner_id as string;
+    if (r.device_id !== null) e.deviceId = r.device_id as string;
+    if (r.detail !== null) e.detail = r.detail as string;
+    if (r.subject_ref !== null) e.subjectRef = r.subject_ref as string;
+    return e;
+  };
+  const securityImpl: SecurityStore = {
+    async putAccountToken(t) {
+      run(
+        `INSERT INTO account_tokens (token_hash, account_id, purpose, created_at, expires_at, used_at) VALUES (?, ?, ?, ?, ?, ?)
+         ON CONFLICT (token_hash) DO UPDATE SET account_id = excluded.account_id, purpose = excluded.purpose, created_at = excluded.created_at, expires_at = excluded.expires_at, used_at = excluded.used_at`,
+        t.tokenHash, t.accountId, t.purpose, t.createdAt, t.expiresAt, t.usedAt ?? null,
+      );
+    },
+    async consumeAccountToken(tokenHash, purpose, at) {
+      return atomic(() => {
+        const r = get('SELECT * FROM account_tokens WHERE token_hash = ? AND purpose = ? AND used_at IS NULL', tokenHash, purpose);
+        if (!r || !(Date.parse(r.expires_at as string) > Date.parse(at))) return undefined;
+        run('UPDATE account_tokens SET used_at = ? WHERE token_hash = ? AND used_at IS NULL', at, tokenHash);
+        return { ...tokenOfRow(r), usedAt: at };
+      });
+    },
+    async clearAccountTokens(accountId, purpose) {
+      run('DELETE FROM account_tokens WHERE account_id = ? AND purpose = ? AND used_at IS NULL', accountId, purpose);
+    },
+    async deleteAccountTokensBefore(cutoff) {
+      return run('DELETE FROM account_tokens WHERE expires_at < ? OR (used_at IS NOT NULL AND used_at < ?)', cutoff, cutoff);
+    },
+    async touchSession(sessionId, at) {
+      atomic(() => {
+        const r = get('SELECT json FROM sessions WHERE session_id = ? AND revoked_at IS NULL', sessionId);
+        if (r) run('UPDATE sessions SET json = ? WHERE session_id = ?', text({ ...parse<Session>(r), lastSeenAt: at }), sessionId);
+      });
+    },
+    async listSessions(learnerId) {
+      return all('SELECT json, revoked_at FROM sessions WHERE learner_id = ?', learnerId).map(sessionOfRow)
+        .sort((a, b) => (a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : a.sessionId < b.sessionId ? 1 : -1));
+    },
+    async revokeSessions(learnerId, at, exceptSessionId) {
+      return exceptSessionId === undefined
+        ? run('UPDATE sessions SET revoked_at = ? WHERE learner_id = ? AND revoked_at IS NULL', at, learnerId)
+        : run('UPDATE sessions SET revoked_at = ? WHERE learner_id = ? AND revoked_at IS NULL AND session_id <> ?', at, learnerId, exceptSessionId);
+    },
+    async deleteSessionsEndedBefore(cutoff) {
+      return atomic(() => {
+        let n = run('DELETE FROM sessions WHERE revoked_at IS NOT NULL AND revoked_at < ?', cutoff);
+        for (const r of all('SELECT session_id, json FROM sessions WHERE revoked_at IS NULL')) {
+          if (Date.parse(parse<Session>(r).expiresAt) < Date.parse(cutoff)) n += run('DELETE FROM sessions WHERE session_id = ?', r.session_id as string);
+        }
+        return n;
+      });
+    },
+    async appendSecurityEvent(e) {
+      run(
+        'INSERT INTO security_events (event_id, learner_id, kind, at, device_id, detail, subject_ref) VALUES (?, ?, ?, ?, ?, ?, ?) ON CONFLICT (event_id) DO NOTHING',
+        e.eventId, e.learnerId ?? null, e.kind, e.at, e.deviceId ?? null, e.detail ?? null, e.subjectRef ?? null,
+      );
+    },
+    async listSecurityEvents(learnerId, limit = 100) {
+      const max = Math.max(1, Math.min(1000, Math.trunc(limit)));
+      return (learnerId === null
+        ? all('SELECT * FROM security_events WHERE learner_id IS NULL ORDER BY at DESC, event_id DESC LIMIT ?', max)
+        : all('SELECT * FROM security_events WHERE learner_id = ? ORDER BY at DESC, event_id DESC LIMIT ?', learnerId, max)).map(securityEventOfRow);
+    },
+    async deleteSecurityEventsBefore(cutoff) {
+      return run('DELETE FROM security_events WHERE at < ?', cutoff);
+    },
+    async listAccountsDeletionDue(at, limit = 100) {
+      return all('SELECT * FROM accounts WHERE deletion_due_at IS NOT NULL AND deletion_due_at <= ? ORDER BY deletion_due_at, account_id LIMIT ?', at, Math.max(1, Math.trunc(limit)))
+        .map((r) => { const { passwordHash: _h, ...account } = accountOfRow(r); return account; });
+    },
+  };
+
   // Every method waits for an open `transaction()` unless it is called from inside it.
-  const gated = Object.fromEntries(
-    Object.entries(impl).map(([name, fn]) => [name, async (...args: unknown[]) => { await gate(); return (fn as (...a: unknown[]) => unknown)(...args); }]),
-  ) as unknown as Omit<ConcreteStore, 'transaction' | 'close'>;
+  const gateAll = <T extends object>(methods: T): T => Object.fromEntries(
+    Object.entries(methods).map(([name, fn]) => [name, async (...args: unknown[]) => { await gate(); return (fn as (...a: unknown[]) => unknown)(...args); }]),
+  ) as unknown as T;
+  const gated = gateAll(impl);
 
   const store: ConcreteStore = {
     ...gated,
+    security: gateAll(securityImpl),
     async transaction<T>(fn: () => Promise<T>): Promise<T> {
       if (inside.getStore()) {
         const name = `sp${++savepoints}`;

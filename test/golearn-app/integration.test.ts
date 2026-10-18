@@ -42,8 +42,9 @@ const serviceDeps: ServiceDeps = {
 /** `fetch` for the service: straight into the handler (the host and port of the address are ignored). */
 const serviceFetch = ((input: RequestInfo | URL, init?: RequestInit) => handle(new Request(input, init), serviceDeps)) as typeof fetch;
 
-/** `fetch` for the pack files: public/dict/** read from disk. */
-const fileFetch = (async (input: RequestInfo | URL) => {
+/** `fetch` for the page: the service’s own address goes straight into the handler (the account routes), everything else is a pack file read from disk (public/dict/**). */
+const fileFetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
+  if (String(input).startsWith('http://127.0.0.1:8790/')) return serviceFetch(input, init);
   const url = new URL(String(input), 'http://app.test/');
   const file = path.join(DICT_ROOT, url.pathname);
   return fs.existsSync(file) ? new Response(fs.readFileSync(file), { status: 200 }) : new Response('not found', { status: 404 });
@@ -155,11 +156,14 @@ describe('the setup application with the real worker and the real service', () =
     await until(() => downloads.length === 1, 8000);
     const exported = JSON.parse(await new Promise<string>((resolve) => { const r = new FileReader(); r.onload = () => resolve(String(r.result)); r.readAsText(downloads[0].blob); }));
     expect(JSON.stringify(exported)).toContain('PackInstalled');
-    type(q<HTMLInputElement>('#delete-email'), 'ana@example.org');
+    // deleting is scheduled, not immediate: the password confirms it, the 14-day grace keeps everything, and Cancel undoes it
+    type(q<HTMLInputElement>('#delete-password'), 'a very long password 123');
     q('#delete-account').click();
-    await until(() => /erased/.test(q('#priv-delete').closest('section')!.textContent ?? ''), 10_000);
-    expect((await area.get('golearn:session'))['golearn:session']).toBeUndefined();
-    expect(await store.list({ learnerId: session.learnerId })).toHaveLength(0);
-    expect(Object.keys(await area.get(null)).filter((k) => k.startsWith('golearn:event:'))).toHaveLength(0);
+    await until(() => q('#priv-delete').querySelector('#delete-cancel'), 10_000);
+    expect(q('#priv-delete').textContent).toMatch(/Deletion is scheduled for/);
+    expect((await area.get('golearn:session'))['golearn:session']).toBeDefined();
+    expect((await store.list({ learnerId: session.learnerId })).length).toBeGreaterThan(0);
+    q('#delete-cancel').click();
+    await until(() => q('#priv-delete').querySelector('#delete-account'), 10_000);
   }, 60_000);
 });

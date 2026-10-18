@@ -123,8 +123,19 @@ export interface DocumentStore {
 
 // ───────────────────────────── identity and access ─────────────────────────────
 
-export interface Account { accountId: string; learnerId: string; email: string; createdAt: string; disabledAt?: string }
-export interface Session { sessionId: string; accountId: string; learnerId: string; deviceId: string; createdAt: string; expiresAt: string; revokedAt?: string }
+export interface Account {
+  accountId: string; learnerId: string; email: string; createdAt: string; disabledAt?: string;
+  /** Additive (accounts hardening). When the email address was confirmed; absent = not yet. Accounts that predate verification are stamped with their `createdAt` by the migration. */
+  verifiedAt?: string;
+  /** Additive. A deletion was requested at this time and the data is purged at `deletionDueAt` unless cancelled before. */
+  deletionRequestedAt?: string;
+  deletionDueAt?: string;
+}
+export interface Session {
+  sessionId: string; accountId: string; learnerId: string; deviceId: string; createdAt: string; expiresAt: string; revokedAt?: string;
+  /** Additive. The last time the session was used (written at most every few minutes). */
+  lastSeenAt?: string;
+}
 
 export interface IdentityStore {
   getLearner(learnerId: string): Promise<Learner | undefined>;
@@ -146,6 +157,59 @@ export interface IdentityStore {
   putTeamMember(teamId: string, learnerId: string, role: 'member' | 'leader', since: string): Promise<void>;
 }
 
+// ───────────────────────────── account security (additive) ─────────────────────────────
+
+export type AccountTokenPurpose = 'verify-email' | 'reset-password';
+
+/** A one-time secret mailed to the account holder. Only the sha256 of the token is stored. */
+export interface AccountToken { tokenHash: string; accountId: string; purpose: AccountTokenPurpose; createdAt: string; expiresAt: string; usedAt?: string }
+
+/**
+ * One line of the security log. It never holds a password, a token or a token hash. `learnerId` is absent on rows that must outlive the learner
+ * (the purge audit line carries only `subjectRef`, a truncated digest of the account id).
+ */
+export interface SecurityEvent {
+  eventId: string;
+  learnerId?: string;
+  kind: SecurityEventKind;
+  at: string;
+  deviceId?: string;
+  /** A short fixed-vocabulary note (for example a session id, or counts for a purge). Never free text from a client. */
+  detail?: string;
+  subjectRef?: string;
+}
+export type SecurityEventKind =
+  | 'account-created' | 'sign-in' | 'sign-in-failed' | 'sign-out' | 'sessions-revoked'
+  | 'email-verification-sent' | 'email-verified'
+  | 'password-reset-requested' | 'password-reset-used'
+  | 'export-requested' | 'deletion-requested' | 'deletion-cancelled' | 'deletion-purged';
+
+/** What accounts hardening needs beyond `IdentityStore`. Optional on `RepositoryStore` so a store written before it still satisfies the port; the service answers 501 for the routes that need it. */
+export interface SecurityStore {
+  /** Replaces nothing: tokens are keyed by hash. */
+  putAccountToken(t: AccountToken): Promise<void>;
+  /** Atomically marks the token used and returns it, only if it exists, has this purpose, is unused and has not expired at `at`. Otherwise undefined and nothing changes. */
+  consumeAccountToken(tokenHash: string, purpose: AccountTokenPurpose, at: string): Promise<AccountToken | undefined>;
+  /** Removes the account's unused tokens of this purpose (a newer one replaces them). */
+  clearAccountTokens(accountId: string, purpose: AccountTokenPurpose): Promise<void>;
+  /** Removes tokens that expired or were used before `cutoff`; returns how many. */
+  deleteAccountTokensBefore(cutoff: string): Promise<number>;
+  /** Stamps `lastSeenAt` on a live session. */
+  touchSession(sessionId: string, at: string): Promise<void>;
+  /** Every session row of the learner (revoked and expired included), newest first. Never a token hash. */
+  listSessions(learnerId: string): Promise<Session[]>;
+  /** Revokes the learner's live sessions (all, or all but `exceptSessionId`); returns how many were revoked. */
+  revokeSessions(learnerId: string, at: string, exceptSessionId?: string): Promise<number>;
+  /** Deletes session rows that ended (revoked or expired) before `cutoff`; returns how many. */
+  deleteSessionsEndedBefore(cutoff: string): Promise<number>;
+  appendSecurityEvent(e: SecurityEvent): Promise<void>;
+  /** The learner's own events, newest first; `null` lists the lines that name no learner (the purge audit), for the operator. */
+  listSecurityEvents(learnerId: string | null, limit?: number): Promise<SecurityEvent[]>;
+  deleteSecurityEventsBefore(cutoff: string): Promise<number>;
+  /** Accounts whose requested deletion is due at `at`, oldest due first. */
+  listAccountsDeletionDue(at: string, limit?: number): Promise<Account[]>;
+}
+
 // ───────────────────────────── deletion / tombstones ─────────────────────────────
 
 export interface Tombstone {
@@ -165,6 +229,8 @@ export interface TombstoneStore {
 export interface RepositoryStore extends EventLog, LinguisticStore, ProjectionStore, DocumentStore, IdentityStore, TombstoneStore {
   /** Runs `fn` atomically where the backend supports it (SQLite); the memory store runs it as is. */
   transaction<T>(fn: () => Promise<T>): Promise<T>;
+  /** Additive: tokens, the session list and the security log. Absent on a store that predates accounts hardening. */
+  security?: SecurityStore;
   /** Removes every row of the learner (events, projections, documents, sessions, devices, enrolments). Irreversible. */
   eraseLearner(learnerId: string): Promise<{ events: number; documents: number; knowledge: number }>;
   close(): Promise<void>;

@@ -1,15 +1,19 @@
 # repository-store
 
-The storage of the Go Repository: **two implementations of one port**, `RepositoryStore` in
+The storage of the Go Repository: **three implementations of one port** (memory, SQLite, and PostgreSQL in `src/postgres.ts`), `RepositoryStore` in
 `packages/repository-contract/src/ports.ts` (event log, linguistic store, projection store, private documents, identity,
-tombstones, `transaction`, `eraseLearner`, `close`). Imports the contract and `node:*` only; no third-party dependency
-(`node:sqlite` needs Node 24).
+tombstones, `transaction`, `eraseLearner`, `close`, and the optional account-security port `store.security`). Imports the contract and `node:*` only; the
+one third-party dependency is the `pg` driver, loaded by `src/postgres-pool.ts` alone (`node:sqlite` needs Node 24).
 
 | file | what |
 |---|---|
 | `src/rules.ts` | the rules both stores share, as pure functions (validation of an append, de-duplication keys, filter matching, status rank, document revisions, ordering), so the two cannot drift |
 | `src/memory.ts` | `createMemoryStore(opts?)` |
 | `src/sqlite.ts` | `openSqliteStore(path \| ':memory:', opts?)` |
+| `src/postgres.ts` | `openPostgresStore(pool, opts?)`: the Postgres store over a `PgPool` (a `pg.Pool` satisfies it; tests use PGlite). Transactions pin one connection with AsyncLocalStorage; `append` takes a per-learner advisory lock |
+| `src/postgres-migrate.ts` | the Postgres migration runner over `migrations-pg/NNN-*.sql` (version table, checksums, advisory lock) |
+| `src/postgres-pool.ts`, `src/postgres-types.ts` | `createPgPool(url)` (the only file that imports `pg`), `isPostgresUrl`, the structural pool types |
+| `src/copy-sqlite-to-postgres.ts` | `copySqliteToPostgres(sqlitePath, pool, opts)`: the verified, all-or-nothing copy behind `scripts/ops/migrate-sqlite-to-postgres.mts` |
 | `src/migrate.ts` | the migration runner (`applyMigrations`, `readMigrations`) |
 | `src/export.ts` | `exportLearner`, `importLearner`, `unitProvenanceFor` |
 | `src/deletion.ts` | `applyTombstone` |
@@ -21,6 +25,7 @@ the fuller `EraseCounts` from `eraseLearner`. Neither is part of the port.
 
 ## Which store for what
 
+- **Postgres** (`openPostgresStore`, selected by `DATABASE_URL`): when one SQLite file on one box is no longer enough. Same rules and the same conformance suite; see `docs/ops/SCALING.md` for the limits of each, when to move, and how (`scripts/ops/migrate-sqlite-to-postgres.mts`). The schema is `migrations-pg/` (text columns are `go_text` = `text COLLATE "C"`, JSON is `jsonb`), applied on boot; add a migration by adding the next file. `schema.sql` documents the SQLite end state only.
 - **Memory** (`createMemoryStore`): tests, the demo app, development servers, anything that may lose its data. Everything
   in or out is copied. `transaction(fn)` just runs `fn` (no rollback).
 - **SQLite** (`openSqliteStore`): anything that must survive a restart (the Node service, a desktop build).
@@ -92,6 +97,8 @@ it); calls made inside `fn` (also through `await`) run in it. A transaction insi
 key is just more JSON (`schema.sql` is unchanged). The shared rules do two things with it: `invalidateAnalysis` sets every stated field to `invalidated`
 (`rules.invalidated`), and a rewrite by a producer that states no `fieldStates` keeps the stored ones (`carried`, `carriedAnalysis`). A row written before
 Stage 7 has none and reads `unknown` for every field.
+
+5a. `004-account-security.sql` (accounts hardening) adds `verified_at`, `deletion_requested_at`, `deletion_due_at` to `accounts` (every existing account is stamped verified at its `created_at`: they predate the rule), and the tables `account_tokens`, `security_events` and `service_state`. The Postgres twin is in `migrations-pg/001-initial.sql`.
 
 **Add `migrations/NNN-short-name.sql` (next number, three digits at least); never edit an applied file.**
 

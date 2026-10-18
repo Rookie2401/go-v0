@@ -1,0 +1,19 @@
+[Unit]
+Description=Go Repository maintenance (purge accounts past their deletion grace, prune old sessions, tokens and security-log lines)
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=go-repository
+Group=go-repository
+WorkingDirectory=/opt/go-v0
+Environment=NODE_ENV=production
+EnvironmentFile=-/etc/go-repository/env
+# The service also runs this at start and hourly while it is up; this unit is the belt to those braces and is safe to run alongside it.
+ExecStart=/opt/go-v0/node_modules/.bin/vite-node --config scripts/vite.config.ts scripts/ops/purge.mts -- --data /var/lib/go-repository
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/go-repository

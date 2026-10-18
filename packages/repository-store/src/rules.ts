@@ -269,6 +269,22 @@ export interface ConcreteStore extends RepositoryStore, EventRemover {
   provenanceStats(): Promise<ProvenanceCount[]>;
   /** Operator maintenance (SQLite): empties the write-ahead log and rebuilds the file without its free pages. A no-op where there is nothing to compact. */
   compact?(): Promise<void>;
+  /** Cheap counters for monitoring (the `/metrics` and `/health` routes). `eventsIssued` is the sum of the per-learner head sequences: it does not fall when events are deleted. */
+  stats?(): Promise<StoreStats>;
+  /** Small named values the operator tooling keeps with the data (for example `migration-ready`, the Postgres counterpart of the `.migration-ready` sentinel file). */
+  getServiceState?(key: string): Promise<string | undefined>;
+  setServiceState?(key: string, value: string): Promise<void>;
+}
+
+export interface StoreStats {
+  kind: 'memory' | 'sqlite' | 'postgres';
+  /** The highest applied migration version (absent for memory). */
+  schemaVersion?: number;
+  eventsIssued: number;
+  learners: number;
+  accounts: number;
+  /** The database size in bytes (the SQLite file with its log, or pg_database_size). */
+  sizeBytes?: number;
 }
 
 export const zeroErase =(): EraseCounts => ({ events: 0, documents: 0, knowledge: 0, preferences: 0, sessions: 0, devices: 0, enrolments: 0, tombstones: 0, teamMemberships: 0, accounts: 0, learners: 0 });

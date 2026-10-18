@@ -1,4 +1,4 @@
--- The Go Repository store schema as it stands after every migration (migrations/001-... and 002-provenance.sql). This file is documentation and a
+-- The Go Repository store schema as it stands after every migration (migrations/001 to 004). This file is documentation and a
 -- test oracle (test/repository/store/sqlite.test.ts compares it with a migrated database); the runner applies migrations/,
 -- never this file. When you add migrations/NNN-*.sql, update this file to match.
 
@@ -22,9 +22,43 @@ CREATE TABLE accounts (
   email         TEXT NOT NULL UNIQUE,          -- trimmed and lower-cased by the store
   password_hash TEXT NOT NULL,
   created_at    TEXT NOT NULL,
-  disabled_at   TEXT
+  disabled_at   TEXT,
+  verified_at   TEXT,                          -- migration 004: email confirmed (accounts that predate it are stamped with created_at)
+  deletion_requested_at TEXT,                  -- migration 004: a requested deletion and when it falls due
+  deletion_due_at       TEXT
 ) STRICT;
 CREATE INDEX accounts_learner ON accounts (learner_id);
+CREATE INDEX accounts_deletion_due ON accounts (deletion_due_at) WHERE deletion_due_at IS NOT NULL;
+
+-- migration 004: one-time secrets mailed to the account holder; only the sha256 of the token is stored
+CREATE TABLE account_tokens (
+  token_hash TEXT PRIMARY KEY,
+  account_id TEXT NOT NULL,
+  purpose    TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  expires_at TEXT NOT NULL,
+  used_at    TEXT
+) STRICT;
+CREATE INDEX account_tokens_account ON account_tokens (account_id, purpose);
+
+-- migration 004: never a password, token or token hash. learner_id is NULL on rows that must outlive the learner (the purge audit line).
+CREATE TABLE security_events (
+  event_id    TEXT PRIMARY KEY,
+  learner_id  TEXT,
+  kind        TEXT NOT NULL,
+  at          TEXT NOT NULL,
+  device_id   TEXT,
+  detail      TEXT,
+  subject_ref TEXT
+) STRICT;
+CREATE INDEX security_events_learner ON security_events (learner_id, at);
+CREATE INDEX security_events_at ON security_events (at);
+
+-- migration 004
+CREATE TABLE service_state (
+  key   TEXT PRIMARY KEY,
+  value TEXT NOT NULL
+) STRICT;
 
 CREATE TABLE sessions (
   session_id TEXT PRIMARY KEY,

@@ -17,7 +17,15 @@ stored. It depends on the contract's ports (`RepositoryStore`, `ProjectionEngine
 | `src/crypto-node.ts` | `nodeCrypto`: scrypt (N=16384, r=8, p=1, random 16-byte salt, `scrypt$<salt b64url>$<hash b64url>`), `timingSafeEqual`, `randomBytes(32)` base64url, sha256 hex |
 | `src/linguistics-adapter.ts` | `adaptLinguistics(createLinguisticService(...))` → `LinguisticsPort` (flattens relations, maps `invalidated` to ids) |
 | `src/api.ts` | `createRepositoryApi({ baseUrl, fetch, token? })` typed client, one method per route; `createInProcessApi(deps)` calls `handle` directly |
-| `src/main.ts` | Node entry: `node:http` bridge + SQLite store + engine + linguistics + node crypto |
+| `src/main.ts` | Node entry: `node:http` bridge + SQLite or Postgres store + engine + linguistics + node crypto + limiter + mailer + metrics; settings from the environment |
+| `src/http.ts` | `Refusal`, `respond` (CORS and security headers), the request context, the password rules, `takeLimit` |
+| `src/accounts.ts` | accounts hardening: email verification, password reset, session list, `/me/export`, deletion with a grace period, security log |
+| `src/throttle.ts` | the per-email sign-in lockout |
+| `src/ratelimit.ts` | token buckets (sign-in, sign-up, sync push, general, recovery, export), `resolveClientIp` (`TRUST_PROXY`) |
+| `src/metrics.ts` | Prometheus text registry behind `GET /metrics` |
+| `src/mailer.ts` | `EmailSender` implementations: SMTP (no dependency), Resend, file outbox, console, memory |
+| `src/purge.ts` | `purgeDueAccounts`, `runMaintenance` (also `scripts/ops/purge.mts`) |
+| `src/config.ts` | the environment parsed and validated (`serviceConfigFromEnv`) |
 
 ## Run it
 
@@ -26,7 +34,9 @@ npx vite-node --config server/goread/vite.config.ts packages/repository-service/
 ```
 
 `--port` (default 8790; `0` picks a free one), `--data` (default `data/repository`, created if missing; the database is
-`<data>/repository.sqlite`), `--host` (default `127.0.0.1`). Prints `repository listening on http://127.0.0.1:<port>`.
+`<data>/repository.sqlite`, or the Postgres database when `DATABASE_URL` is set), `--host` (default `127.0.0.1`). Everything operational (rate
+limits, proxy trust, log format, metrics token, mail, account policy, Postgres) is an environment variable: the list is in
+`src/config.ts`, the root `.env.example`, `infra/repository/go-repository.env.example` and `docs/ops/DEPLOY.md`. Prints `repository listening on http://127.0.0.1:<port>`.
 Needs Node 24 (`node:sqlite`). Stops cleanly on Ctrl-C / SIGTERM. `data/repository/` should be git-ignored like
 `data/goread/`. Tests: `npx vitest run test/repository/service`.
 
@@ -44,8 +54,29 @@ Needs Node 24 (`node:sqlite`). Stops cleanly on Ctrl-C / SIGTERM. `data/reposito
 * **Throttle**: 5 failed sign-ins for one email (known or not) within 15 minutes → `429 too-many-attempts`
   (with `Retry-After`), even for the right password, until the oldest failure is 15 minutes old. The counters are an
   in-memory map **per process**: lost on restart, not shared between instances, so a scaled-out deployment multiplies the
-  allowance (put a shared limiter in front, or in the store, before running more than one instance). There is no limit on
-  account creation yet.
+  allowance (put a shared limiter in front, or in the store, before running more than one instance).
+* **Rate limits** (token buckets, per process, `src/ratelimit.ts`; wired by `main.ts`, absent from in-process use and tests): sign-in 10/min per IP,
+  account creation 5/hour per IP, `POST /sync/push` 60/min per account, every request 600/min per IP (health and metrics exempt, `OPTIONS` free),
+  the recovery routes 10/hour per IP plus 3 mails an hour per address, `GET /me/export` 3/hour per account. All configurable
+  (`RATE_<NAME>_MAX`, `RATE_<NAME>_WINDOW_S`, `RATE_LIMIT=off`). A refusal is `429 { error: "rate-limited", rule, retryAfterSec }` with a
+  `Retry-After` header. The caller's address is the socket's, or with `TRUST_PROXY=1` the last `X-Forwarded-For` entry (Caddy), or with
+  `TRUST_PROXY=cloudflare` `CF-Connecting-IP` (the named tunnel); never a header otherwise.
+* **Body size**: 1 MB for a signed-in route, **16 KB** for the open ones (sign-up, sign-in, verification, reset), counted on the stream → `413 too-large`.
+* **Accounts hardening** (this section's routes need a store with the `security` port; the memory, SQLite and Postgres stores have it, a store without
+  it answers `501 unsupported` for them and the old behaviour is unchanged):
+  * *Email verification.* `POST /accounts` still returns 201 at once; the account starts unverified and a 24-hour, single-use token is mailed (stored as
+    a sha256 only). An unverified account signs in and syncs for `GRACE_DAYS` (7); after that `POST /sessions` answers `403 email-unverified` with a
+    `resend` hint, **when verification can be completed** (a mailer that reaches people is configured and `REQUIRE_EMAIL_VERIFICATION` is not 0).
+    Sessions signed in before keep working. Accounts that predate the rule were stamped verified by migration 004.
+  * *Password reset.* `forgot` always answers 202 and mails a 1-hour single-use token; `reset` sets the password, revokes **every** session, clears the
+    sign-in lockout and confirms the address.
+  * *Deletion.* `DELETE /me` with `{ password }` schedules it: 202 `{ scheduledPurgeAt }`, every session revoked. Sign-in still works so the learner can
+    cancel; such a session may call only `GET /me`, `DELETE /me`, `POST /me/delete/cancel`, `GET /me/export`, `GET /me/security-events`, `GET /me/sessions`,
+    `DELETE /me/sessions/:id` and `DELETE /sessions/current` (anything else: `403 deletion-pending` with `scheduledPurgeAt`). After the grace the purge erases the
+    learner's events, documents, sessions, devices, enrolments, tombstones, account and address, and writes one audit line with no learner id. The shared
+    linguistic tables stay.
+  * *Security log*: sign-in, failed sign-in (known account), sign-out, sessions ended, verification sent / done, reset requested / used, export, deletion requested /
+    cancelled / purged. Never a password, token, hash or address.
 
 ## Authorization
 
@@ -62,12 +93,23 @@ All bodies and responses are JSON. Errors: `{ error, message }` plus route-speci
 
 | route | body / query | answer |
 |---|---|---|
-| `GET /health` | | `{ ok: true, service: 'repository', version }` |
-| `POST /accounts` | `{ email, password, displayName? }` | `201 { learnerId, accountId }`; 422 `weak-password`/invalid; 409 `email-taken` (emails are trimmed and lower-cased) |
-| `POST /sessions` | `{ email, password, deviceId, platform? }` | `201 { token, learnerId, expiresAt }`; creates/updates the Device; 401 `bad-credentials`; 429 |
+| `GET /health` | | `{ ok: true, service: 'repository', version, contractVersion }` plus, where wired, `store` (`sqlite`/`postgres`), `migrations` (newest applied version) and `uptimeSec` |
+| `GET /metrics` | | Prometheus text. 404 unless allowed: `Authorization: Bearer <METRICS_TOKEN>` when that is set, otherwise this machine only and not through a proxy. See `docs/ops/MONITORING.md` |
+| `POST /accounts` | `{ email, password, displayName? }` | `201 { learnerId, accountId }`; 422 `weak-password`/invalid; 409 `email-taken` (emails are trimmed and lower-cased); 429 `rate-limited`; mails a confirmation token |
+| `POST /sessions` | `{ email, password, deviceId, platform? }` | `201 { token, learnerId, expiresAt, verified, emailVerified, verifyBy? , scheduledPurgeAt? }` (`verifyBy` while unverified; `scheduledPurgeAt`, `deletionDueAt`, `deletionRequestedAt` while a deletion is pending); creates/updates the Device; 401 `bad-credentials`; 403 `email-unverified` (past the grace); 429 `too-many-attempts` or `rate-limited` |
+| `POST /accounts/verify` | `{ token }` | `200 { verified: true }`; 422 `invalid-token` (unknown, used, expired or replaced). Open |
+| `POST /accounts/verify/resend` | `{ email }` | always `202 { accepted: true }`; mails a new token (replacing the old) only to an existing unverified account, at most 3 an hour per address. Open |
+| `POST /accounts/password/forgot` | `{ email }` | always `202 { accepted: true }`; mails a 1-hour token to an existing account. Open |
+| `POST /accounts/password/reset` | `{ token, password }` | `200 { reset: true, sessionsRevoked }`; 422 `weak-password` (the token is not spent) / `invalid-token`. Revokes all sessions. Open |
+| `GET /me/sessions` | | `{ sessions: [{ sessionId, deviceId, platform?, label?, createdAt, lastSeenAt?, expiresAt, current }] }`, live sessions only, newest first |
+| `DELETE /me/sessions/:id` | | 204; 404 `no-such-session` (another learner's or an ended one) |
+| `DELETE /me/sessions` | | `200 { revoked: n }`: every live session except the current one |
+| `GET /me/export` | | the base export (`GET /export`) plus `units`, `analyses` (the shared rows the learner's events point to), `sessions` and `securityEvents`, as `Content-Disposition: attachment; filename="go-repository-export-<date>.json"`. 3 an hour per account (429). Never another learner's data, a hash or a token |
+| `GET /me/security-events?limit=` | | `{ events: [{ eventId, kind, at, deviceId?, detail? }] }`, the learner's own, newest first (default 100, at most 500) |
+| `POST /me/delete/cancel` | | `200 { cancelled: true }`; 409 `no-deletion-pending` |
 | `DELETE /sessions/current` | | 204 |
-| `GET /me` | | `{ learner, account: { accountId, email, createdAt }, enrolments, devices, consents }`. `devices` holds the session's device only (the port has no device listing). `consents`: latest `ConsentGiven`/`ConsentWithdrawn` per key (`payload.consent`, else `scope`, else `key`, else `general`) |
-| `DELETE /me` | `{ confirmEmail }` | 204 after `store.eraseLearner` and revoking the session; 422 `email-mismatch` unless it equals the account email. If the store leaves the account row, it is disabled and its email and the display name are scrubbed (the port has no account deletion) |
+| `GET /me` | | `{ learner, account: { accountId, email, createdAt, verified, emailVerified, verifyBy?, scheduledPurgeAt?, deletionRequestedAt?, deletionDueAt? }, enrolments, devices, consents }` (`verified` = `emailVerified`; `verifyBy` while unverified; `scheduledPurgeAt` = `deletionDueAt` while a deletion is pending). `devices` holds the session's device only (the port has no device listing). `consents`: latest `ConsentGiven`/`ConsentWithdrawn` per key (`payload.consent`, else `scope`, else `key`, else `general`) |
+| `DELETE /me` | `{ password }` | **202 `{ scheduledPurgeAt, deletionRequestedAt, deletionDueAt, graceDays }`**: schedules the deletion (see Accounts hardening), revokes every OTHER session (the one that asked stays signed in, so the page can show the date and offer Cancel); 401 `bad-credentials` (counts against the lockout), 429. Idempotent: the first due date stands. Otherwise `{ confirmEmail }` (the original behaviour, kept): 204 after `store.eraseLearner` and revoking the session; 422 `email-mismatch` unless it equals the account email. If the store leaves the account row, it is disabled and its email and the display name are scrubbed (the port has no account deletion) |
 | `GET /enrolments` | | `{ enrolments }` |
 | `POST /enrolments` | `{ teamId?, languageId, varietyId?, scriptId?, packId, packVersion, goals }` | `201 { enrolment }`; also appends an `EnrolmentChanged` event (producer `repository`, dedupeKey `enrolment:<id>:started`) |
 | `GET /packs?languageId=` | | `{ packs }` |
@@ -117,7 +159,9 @@ A second device (GoReview on the phone) learns of new events without polling: it
 ## What is logged
 
 One line per request: `METHOD /path status ms` (path only: never the query string, a body, a header or a token), via
-`deps.log` (`console.log` in `main.ts`). Nothing else is logged; unexpected errors are a bare 500.
+`deps.log` (`console.log` in `main.ts`). With `LOG_FORMAT=json` it is one JSON object (`ts, level, msg, requestId, method, path, route, status, ms`, and
+`limited` or `error` when they apply; `error` is the error class or SQLSTATE, never a message). Every response carries `X-Request-Id` (the caller's, if it is
+8 to 64 characters of `[A-Za-z0-9._-]`, else a UUID). Nothing else is logged; unexpected errors are a bare 500. Details: `docs/ops/MONITORING.md`.
 
 ## What is never stored
 
@@ -128,7 +172,7 @@ One line per request: `METHOD /path status ms` (path only: never the query strin
 
 ## Known limits and gaps
 
-* The throttle is per process (above). No rate limit on `POST /accounts` or on other routes.
+* The throttle and the rate limits are per process (above); the long-poll notifier is too. Running two instances needs `LISTEN/NOTIFY` and a shared limiter (`docs/ops/SCALING.md`).
 * `GET /me` lists one device because `IdentityStore` has no `listDevices`; consents are read from the first 1000 consent events.
 * `POST /tombstones` for `source`/`range`/`event` is applied by the store (`applyTombstone`) and the projection is refolded; backups, replicas and the shared linguistic tables are not covered (see REPOSITORY-API-AND-OPERATIONS.md).
 * Source restrictions are capped by the wired `sourcePolicy` at ingestion (none wired: all `unknown`) (a client may tighten, never loosen); a reference that claims none is stored without and reads as `unknown`. `POST /events`, `/sync/push`, `/reviews` and `/writing` all do it.

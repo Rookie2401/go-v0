@@ -34,9 +34,9 @@ afterEach(() => { for (const t of teardown) t(); teardown = []; restore(); delet
 
 describe('manifest', () => {
   const manifest = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../packages/golearn-extension/manifest.json'), 'utf8'));
-  it('is MV3 with exactly the five permissions (alarms is the new one: the 5-minute sync), no host access by default, and the optional host permission GoLearn Active asks for', () => {
+  it('is MV3 with exactly the six permissions (alarms: the 5-minute sync; unlimitedStorage, 2026-10-17: the on-device record past 10 MB), no host access by default, and the optional host permission GoLearn Active asks for', () => {
     expect(manifest.manifest_version).toBe(3);
-    expect(manifest.permissions).toEqual(['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms']);
+    expect(manifest.permissions).toEqual(['activeTab', 'scripting', 'storage', 'unlimitedStorage', 'contextMenus', 'alarms']);
     expect(manifest.options_page).toBe('app/index.html');
     expect(manifest.host_permissions).toBeUndefined();
     // GoLearn Active (2026-10-09): nothing is granted at install; the popup asks the browser inside the learner's click, and the learner can withdraw it

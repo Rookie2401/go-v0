@@ -50,9 +50,9 @@ function Find-Cloudflared {
 if ($Hostname -notmatch '^[a-z0-9.-]+\.[a-z]{2,}$') { throw "Hostname '$Hostname' is not a DNS name (e.g. repo.example.com)." }
 
 $cf = Find-Cloudflared $Cloudflared
-$home = Join-Path $env:USERPROFILE '.cloudflared'
-$cert = Join-Path $home 'cert.pem'
-$config = Join-Path $home 'config.yml'
+$cfHome = Join-Path $env:USERPROFILE '.cloudflared'
+$cert = Join-Path $cfHome 'cert.pem'
+$config = Join-Path $cfHome 'config.yml'
 Write-Host "cloudflared: $cf"
 Write-Host "tunnel: $TunnelName  hostname: $Hostname  local: http://127.0.0.1:$Port"
 
@@ -81,7 +81,7 @@ if ($existing) {
   if (-not $tunnelId) { throw 'The tunnel was not created.' }
   Write-Host "created: $tunnelId"
 }
-$credentials = Join-Path $home "$tunnelId.json"
+$credentials = Join-Path $cfHome "$tunnelId.json"
 if (-not (Test-Path $credentials)) { throw "Credentials file missing: $credentials (create the tunnel on this PC, or copy the JSON here)." }
 
 # 3. config.yml (the ingress; the catch-all 404 is required by cloudflared)
@@ -98,7 +98,7 @@ ingress:
       noTLSVerify: true
   - service: http_status:404
 "@
-New-Item -ItemType Directory -Force -Path $home | Out-Null
+New-Item -ItemType Directory -Force -Path $cfHome | Out-Null
 Set-Content -Path $config -Value $yaml -Encoding utf8
 Write-Host "wrote $config"
 & $cf tunnel ingress validate | Out-Host

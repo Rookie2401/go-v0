@@ -123,3 +123,11 @@ time the app returns to the foreground.)
 - The status bar of a home-screen app is translucent with light text; the app puts a band of ink behind the clock in the light theme so
   it stays legible. If it looks wrong on your phone, change `apple-mobile-web-app-status-bar-style` in `vite.config.ts`.
 - The sign-in password is sent to the service address and nowhere else; nothing is sent to any third party.
+
+## Live address (2026-10-17)
+
+The Repository service is reachable at https://repo.golearn-global-languages.com through a named Cloudflare tunnel from the
+owner's PC (infra/cloudflare/README.md: tunnel goreview-repository, zone golearn-global-languages.com). Build the installable
+edition against it with GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com (the copied config.json gets that
+serviceUrl; the source config.json keeps the local address), and use the same address as REPOSITORY_SERVICE_URL for the
+next TestFlight build. The PC must still be on and online; the tunnel is not yet installed as a Windows service.

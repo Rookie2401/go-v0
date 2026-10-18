@@ -119,3 +119,11 @@ The "simulated phone" rows are what the bench's `--link` model predicts, not mea
 3. **Rebuild and reload the extension** (`npm run ext:build`, reload in Brave) for the timing fixes and the 1-minute alarm.
 4. **The next TestFlight build** for the phone's fixes (forced push, backoff cap, no documents, 1000-event pages, Sync line). The hosted PWA needs a rebuild and deploy as well.
 5. **A decision on item 12** (adopt stranded events when the address changes), and on native HTTP for item 13.
+
+## Live address (2026-10-17)
+
+The Repository service is reachable at https://repo.golearn-global-languages.com through a named Cloudflare tunnel from the
+owner's PC (infra/cloudflare/README.md: tunnel goreview-repository, zone golearn-global-languages.com). Build the installable
+edition against it with GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com (the copied config.json gets that
+serviceUrl; the source config.json keeps the local address), and use the same address as REPOSITORY_SERVICE_URL for the
+next TestFlight build. The PC must still be on and online; the tunnel is not yet installed as a Windows service.

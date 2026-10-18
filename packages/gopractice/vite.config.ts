@@ -63,7 +63,18 @@ function staticFiles(outDir: string, pwa = false): Plugin {
     apply: 'build',
     closeBundle() {
       fs.mkdirSync(outDir, { recursive: true });
-      fs.copyFileSync(path.join(here, 'config.json'), path.join(outDir, 'config.json'));
+      // GOPRACTICE_SERVICE_URL (https, or http on localhost) replaces config.json's serviceUrl in the copy: the installable review
+      // edition is built against the public Repository address (e.g. https://repo.golearn-global-languages.com), the source file
+      // keeps the local development address. Anything else is refused so a typo cannot ship.
+      const config = JSON.parse(fs.readFileSync(path.join(here, 'config.json'), 'utf8')) as { serviceUrl: string };
+      const override = process.env.GOPRACTICE_SERVICE_URL;
+      if (override) {
+        const u = new URL(override);
+        const local = u.hostname === 'localhost' || u.hostname === '127.0.0.1';
+        if (!(u.protocol === 'https:' || (u.protocol === 'http:' && local)) || u.search || u.hash || u.username) throw new Error(`GOPRACTICE_SERVICE_URL must be an https URL (http only on localhost): ${override}`);
+        config.serviceUrl = u.origin + u.pathname.replace(/\/$/, '');
+      }
+      fs.writeFileSync(path.join(outDir, 'config.json'), JSON.stringify(config, null, 2) + '\n');
       for (const lang of dictLanguages()) {
         const from = path.join(repoRoot, 'public', 'dict', lang);
         // the frequency sidecar was counted from the retired library and is quarantined (RIGHTS-AND-PRIVACY-BOUNDARIES §2): never shipped

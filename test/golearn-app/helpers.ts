@@ -40,6 +40,10 @@ export class FakeService {
   health: ApiResult<{ ok: true; service: string; version: number; contractVersion?: number }> = { ok: true, status: 200, data: { ok: true, service: 'go-repository', version: 2 } };
   exportBody: Record<string, unknown> = { schema: 'go-repository-export@1', events: [{ id: 'e1' }], enrolments: [] };
   down = false;
+  /** Emails whose sign-in the service refuses with 403 email-unverified (the grace period is over). */
+  unverified = new Set<string>();
+  /** What account creation says about the confirmation email. */
+  verificationSent = true;
   private n = 0;
 
   private fail(status: number, error: string, message = ''): ApiResult<never> { return { ok: false, status, error, message, body: { error, message } }; }
@@ -59,13 +63,14 @@ export class FakeService {
         if (input.password.length < 10) return self.fail(400, 'weak-password', 'Password too short.');
         const learnerId = `learner-${++self.n}`;
         self.accounts.set(input.email, { password: input.password, learnerId, email: input.email });
-        return { ok: true as const, status: 201, data: { learnerId, accountId: `acct-${self.n}` } };
+        return { ok: true as const, status: 201, data: { learnerId, accountId: `acct-${self.n}`, email: input.email, verified: false, verificationSent: self.verificationSent } };
       },
       async createSession(input: { email: string; password: string; deviceId: string }) {
         self.rec('createSession', input.email, input.deviceId);
         if (self.down) throw new Error('network down');
         const a = self.accounts.get(input.email);
         if (!a || a.password !== input.password) return self.fail(401, 'bad-credentials', 'No.');
+        if (self.unverified.has(input.email)) return self.fail(403, 'email-unverified', 'Confirm your email address first: open the link we sent you.');
         const token = `tok-${a.learnerId}-${++self.n}`;
         self.sessions.set(token, a.learnerId);
         state.token = token;
@@ -293,6 +298,8 @@ export interface RigOptions {
   local?: FakeLocal | false;
   startRoute?: string;
   now?: Date;
+  /** The page’s `fetch` (the account-hardening routes go through it); default: a mock that answers nothing. */
+  fetch?: typeof fetch;
 }
 
 let rigs: Rig[] = [];
@@ -310,7 +317,7 @@ export async function makeRig(opts: RigOptions = {}): Promise<Rig> {
   const createApiCalls: Rig['createApiCalls'] = [];
   const closed = { count: 0, allowed: false };
   const deps: Deps = {
-    win: window, doc: document, chrome: chrome as ChromeApi | undefined, fetch: vi.fn() as unknown as typeof fetch,
+    win: window, doc: document, chrome: chrome as ChromeApi | undefined, fetch: opts.fetch ?? (vi.fn() as unknown as typeof fetch),
     area: area as StorageArea, packs, config: opts.config ?? {},
     ...(local ? { openLocal: async () => local } : {}),
     createApi: (baseUrl, token) => { createApiCalls.push({ baseUrl, token }); return service.api(token); },

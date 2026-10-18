@@ -218,6 +218,18 @@ details.download .dl-panel .dl-note { font-size: .92rem; margin: .4rem 0; }
 .settings-links { list-style: none; margin: .4rem 0; padding: 0; border-top: 1px solid var(--divider); }
 .settings-links li { padding: .55rem .3rem; border-bottom: 1px solid var(--divider); }
 
+/* account hardening: confirmation, sessions, export, deletion, security events, legal text */
+section.sub { margin: 1.4rem 0; padding-top: .9rem; border-top: 1px solid var(--divider); }
+section.sub > h3 { margin-top: 0; }
+details.forgot { margin: 1rem 0; }
+details.forgot > summary { cursor: pointer; }
+.legal-text h2 { margin-top: 1.4rem; }
+.legal-text h2:first-child { margin-top: 0; }
+.legal-text ul, .legal-text ol { padding-inline-start: 1.3rem; }
+.legal-text li { margin: .25rem 0; }
+.legal-text .notice { margin: .8rem 0; }
+.status-list li .btn.small { margin-inline-start: .4rem; }
+
 @media (max-width: 640px) {
   .lang-row { grid-template-columns: minmax(0, 1fr); }
 }

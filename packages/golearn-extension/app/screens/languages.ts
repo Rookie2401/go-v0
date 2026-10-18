@@ -6,17 +6,20 @@
  */
 import type { AppContext } from '../context';
 import { append, h, p } from '../dom';
-import { takeFlash } from '../flash';
+import { takeCheckEmail, takeFlash } from '../flash';
+import { checkEmailNotice } from './accountSecurity';
 import { renderLanguageSection } from './language';
 import type { View } from './view';
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const flash = takeFlash(ctx);
+  const checkEmail = takeCheckEmail(ctx);
   const session = await ctx.state.getSession();
   if (!view.alive()) return;
   const list = h('section', { class: 'part', id: 'languages', 'aria-labelledby': 'languages-h' }, h('h2', { id: 'languages-h' }, 'Languages'));
   append(el, [
     flash ? h('p', { class: 'notice', id: 'flash', role: 'status' }, flash) : null,
+    checkEmail ? checkEmailNotice(ctx, checkEmail.email, checkEmail.sent) : null,
     p('Download the languages you want to read. Downloading sets everything up: GoLearn saves the choice on this device and installs the language’s pack, checking it as it goes. You can download several and they all stay on; the one marked Reading now is the one GoLearn records against.'),
     h('p', { class: 'account-line muted', id: 'account-line', 'data-state': session ? 'synced' : 'device' },
       session ? `Synced to your account as ${session.email}. ` : 'On this device only. ',

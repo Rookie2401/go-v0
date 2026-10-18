@@ -24,7 +24,7 @@ export interface LocalRepo {
   clear(): Promise<unknown>;
   close(): Promise<void> | void;
   /** Extension only: signs the worker in to the same account, so its upload and pull use it. */
-  connectAccount?(input: { baseUrl: string; email: string; password: string }): Promise<{ ok: true } | { ok: false; message: string }>;
+  connectAccount?(input: { baseUrl: string; email: string; password: string }): Promise<{ ok: true } | { ok: false; message: string; code?: string }>;
   /** Extension only: signs the worker out of the account (the device's data stays). */
   disconnectAccount?(): Promise<void>;
   /** The language the learner chose in GoLearn setup, when the repository knows one. */

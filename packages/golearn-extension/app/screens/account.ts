@@ -9,8 +9,10 @@
  * `golearn:session` (by the worker, or by this page when there is no worker).
  */
 import { validateServiceUrl } from '../config';
+import { recordTermsAcceptance } from '../consent';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
+import { setCheckEmail } from '../flash';
 import type { View } from './view';
 
 export const MIN_PASSWORD = 10;
@@ -109,15 +111,18 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
   const email = h('input', { type: 'email', id: 'acct-email', name: 'email', autocomplete: 'email', required: true }) as HTMLInputElement;
   const password = h('input', { type: 'password', id: 'acct-password', name: 'password', autocomplete: 'current-password', required: true }) as HTMLInputElement;
   const hint = h('p', { class: 'muted' });
+  const terms = h('p', { class: 'muted', id: 'terms-note', hidden: true }, 'By creating an account you accept the ', h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy', id: 'link-privacy' }, 'Privacy Policy'), '.');
   mode.addEventListener('change', () => {
     password.setAttribute('autocomplete', mode.value === 'create' ? 'new-password' : 'current-password');
     hint.textContent = mode.value === 'create' ? `At least ${MIN_PASSWORD} characters. The password is sent to the service only; it is never stored here.` : '';
+    terms.hidden = mode.value !== 'create';
   });
   const status = statusLine();
   const submit = h('button', { type: 'submit', id: 'acct-submit', class: 'btn primary' }, 'Continue') as HTMLButtonElement;
+  const unverified = h('div', { id: 'unverified-notice' });
   const form = h('form', { id: 'acct-form', novalidate: true },
-    field('What would you like to do?', mode), field('Email', email), field('Password', password), hint, h('div', { class: 'row' }, submit), status);
-  append(formBox, [form]);
+    field('What would you like to do?', mode), field('Email', email), field('Password', password), hint, terms, h('div', { class: 'row' }, submit), status, unverified);
+  append(formBox, [form, forgotBlock(ctx, email)]);
 
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
@@ -129,13 +134,29 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
       if (!secret) { setStatus(status, 'Enter your password.', 'error'); return; }
       if (creating && secret.length < MIN_PASSWORD) { setStatus(status, `Choose a password of at least ${MIN_PASSWORD} characters.`, 'error'); return; }
       submit.disabled = true;
+      clear(unverified);
       setStatus(status, creating ? 'Creating the account…' : 'Signing in…', 'info');
       try {
         const r = await ctx.signIn({ email: addr, password: secret, create: creating });
         const sent = r.ok && r.uploaded !== undefined ? ` ${r.uploaded === 0 ? 'Nothing needed uploading from this device.' : `Uploaded ${r.uploaded} event${r.uploaded === 1 ? '' : 's'} from this device to your account.`} Progress is now synced to your account.` : r.ok ? ' Progress is now synced to your account.' : '';
-        const said = r.ok ? (creating ? `Account created and signed in as ${addr}.` : `Signed in as ${addr}.`) + sent : r.message;
+        const said = r.ok ? (creating ? `Account created and signed in as ${addr}.` : `Signed in as ${addr}.`) + sent + (creating ? ' Check your email to confirm the address.' : '') : r.message;
         setStatus(status, said, r.ok ? 'ok' : 'error');
+        if (!r.ok && r.code === 'email-unverified') {
+          const again = statusLine();
+          append(unverified, [h('div', { class: 'row' }, button('Send the confirmation email again', () => {
+            void (async () => {
+              const { client } = await ctx.accountApi();
+              setStatus(again, 'Sending…', 'info');
+              const sentAgain = await client.resendVerification(addr);
+              setStatus(again, sentAgain.ok ? `If ${addr} still needs confirming, a new email is on its way.` : sentAgain.message || 'The service could not be reached. Try again.', sentAgain.ok ? 'ok' : 'error');
+            })();
+          }, { id: 'unverified-resend', class: 'btn' })), again]);
+        }
         if (r.ok) {
+          if (creating) {
+            setCheckEmail(ctx, { email: addr, ...(r.verificationSent !== undefined ? { sent: r.verificationSent } : {}) });
+            void recordTermsAcceptance(ctx);
+          }
           await paintSession();
           await hooks.signedIn(said);
         }
@@ -145,4 +166,30 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
       }
     })();
   });
+}
+
+/**
+ * “Forgot password?”: asks for the email address and has the service send a reset link. The answer is always the same whether or not
+ * the address has an account, so the page never reveals which addresses do.
+ */
+function forgotBlock(ctx: AppContext, signInEmail: HTMLInputElement): HTMLElement {
+  const email = h('input', { type: 'email', id: 'forgot-email', name: 'forgot-email', autocomplete: 'email' }) as HTMLInputElement;
+  const out = statusLine();
+  const box = h('details', { class: 'forgot', id: 'forgot' },
+    h('summary', { id: 'forgot-h' }, 'Forgot password?'),
+    p('Enter the email address of your account and we will send you a link to choose a new password.', 'muted'),
+    field('Email', email),
+    h('div', { class: 'row' }, button('Email me a reset link', () => {
+      void (async () => {
+        const addr = email.value.trim();
+        if (!EMAIL.test(addr)) { setStatus(out, 'Enter a valid email address.', 'error'); return; }
+        const { client } = await ctx.accountApi();
+        setStatus(out, 'Sending…', 'info');
+        const r = await client.forgotPassword(addr);
+        if (r.ok || (r.status >= 400 && r.status < 500 && r.status !== 429)) setStatus(out, 'If that address has an account, an email is on its way.', 'ok');
+        else setStatus(out, r.status === 0 ? 'The service could not be reached, so no email was sent. Try again.' : r.status === 429 ? 'Too many attempts. Wait a few minutes and try again.' : r.message || `The service answered ${r.status}.`, 'error');
+      })();
+    }, { id: 'forgot-submit', class: 'btn' })), out);
+  box.addEventListener('toggle', () => { if ((box as HTMLDetailsElement).open && !email.value) email.value = signInEmail.value.trim(); });
+  return box;
 }

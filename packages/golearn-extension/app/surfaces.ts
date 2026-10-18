@@ -56,6 +56,7 @@ export const PERMISSIONS: ReadonlyArray<{ name: string; why: string }> = [
   { name: 'activeTab', why: 'lets GoLearn read the page you are on only after you press its toolbar button, the keyboard shortcut or the right-click item; it expires when you leave the page.' },
   { name: 'scripting', why: 'puts the lookup card on that page after your gesture. Nothing is declared to run on pages by itself.' },
   { name: 'storage', why: 'keeps your settings, your sign-in on this device and the local record of what you looked up.' },
+  { name: 'unlimitedStorage', why: 'lets that local record grow past the browser’s 10 MB default: GoLearn Active notes every page you read, and a full store would refuse to save your marks.' },
   { name: 'contextMenus', why: 'adds “Look up with GoLearn” to the right-click menu for a selection.' },
   { name: 'alarms', why: 'wakes the extension every few minutes to send what you looked up to your own account, when you are signed in; nothing else is scheduled.' },
 ];

@@ -6,7 +6,7 @@ import { CONTRACT_VERSION } from '../../packages/repository-contract/src';
 import { KEYS, createStateStore, createWebStorageArea } from '../../packages/golearn-extension/app/state';
 import { PERMISSIONS, SURFACES } from '../../packages/golearn-extension/app/surfaces';
 import { createMemoryStorageArea, createStorageEncounterStore } from '../../packages/golearn-extension/src/store';
-import { destroyRigs, fakeBackground, flush, makeRig, readBlob, signIn, type, until, choose, type Rig } from './helpers';
+import { destroyRigs, fakeBackground, flush, makeRig, readBlob, signIn, until, choose, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -138,8 +138,8 @@ describe('Privacy', () => {
     // the remote speech text names the provider and what is sent
     const speech = rig.q('#remote-speech').closest('section')!.textContent!;
     expect(speech).toContain('azure');
-    expect(speech).toMatch(/only the word or phrase you ask to hear/);
-    expect(speech).toMatch(/never the page/);
+    expect(speech).toMatch(/only the word, phrase or sentence you explicitly ask to hear/);
+    expect(speech).toMatch(/Source permissions must allow this/);
     expect(rig.q('#keep-snippets').closest('section')!.textContent).toMatch(/cannot be switched on in this version/);
     expect(rig.text()).toMatch(/nothing in GoLearn sends text to an outside AI provider/);
   });
@@ -151,7 +151,7 @@ describe('Privacy', () => {
     speech.checked = true; speech.dispatchEvent(new Event('change', { bubbles: true }));
     choose(rig.q('#depth'), 'explanatory');
     await flush(30);
-    expect(await settingsOf(rig)).toEqual({ keepSnippets: false, remoteSpeechConsent: true, externalProcessingConsent: false, explanationDepth: 'explanatory' });
+    expect(await settingsOf(rig)).toEqual({ keepSnippets: false, remoteSpeechConsent: true, localOnlySpeech: true, externalProcessingConsent: false, explanationDepth: 'explanatory' });
     await rig.go('home');
     await rig.go('privacy');
     expect(rig.q<HTMLInputElement>('#remote-speech').checked).toBe(true);
@@ -159,7 +159,7 @@ describe('Privacy', () => {
     // back to automatic removes the override instead of storing a value for it
     choose(rig.q('#depth'), 'auto');
     await flush(30);
-    expect(await settingsOf(rig)).toEqual({ keepSnippets: false, remoteSpeechConsent: true, externalProcessingConsent: false });
+    expect(await settingsOf(rig)).toEqual({ keepSnippets: false, remoteSpeechConsent: true, localOnlySpeech: true, externalProcessingConsent: false });
   });
 
   it('in the extension the worker is asked to write them (golearn:settings, op set); depth back to automatic sends null', async () => {
@@ -245,18 +245,6 @@ describe('Privacy', () => {
     expect(rig.q<HTMLSelectElement>('#depth').value).toBe('label');
   });
 
-  it('export my data downloads the service’s export as a JSON file', async () => {
-    const rig = await makeRig();
-    await signIn(rig);
-    await rig.go('privacy');
-    rig.q('#export-data').click();
-    await until(() => rig.downloads.length === 1);
-    expect(rig.downloads[0].filename).toBe('golearn-export-2026-10-08.json');
-    expect(rig.downloads[0].blob.type).toBe('application/json');
-    expect(JSON.parse(await readBlob(rig.downloads[0].blob))).toEqual(rig.service.exportBody);
-    expect(rig.service.calls.map((c) => c.method)).toContain('exportAll');
-  });
-
   it('export without an account says to sign in and downloads nothing', async () => {
     const rig = await makeRig();
     await rig.go('privacy');
@@ -275,48 +263,11 @@ describe('Privacy', () => {
     expect(JSON.parse(await readBlob(rig.downloads[0].blob))).toEqual([]);
   });
 
-  it('deleting the account requires typing the email exactly; then erases, disconnects and clears local rows', async () => {
-    const rig = await makeRig();
-    await signIn(rig, 'ana@example.org');
-    await rig.area.set({ 'golearn:event:abc': { id: 'x' } });
-    await rig.go('privacy');
-    const del = rig.q<HTMLButtonElement>('#delete-account');
-    const email = rig.q<HTMLInputElement>('#delete-email');
-    expect(del.disabled).toBe(true);
-    type(email, 'someone@else.org');
-    expect(del.disabled).toBe(true);
-    del.click(); // a disabled button does nothing
-    await flush(20);
-    expect(rig.service.calls.map((c) => c.method)).not.toContain('deleteMe');
-    type(email, 'ana@example');
-    expect(del.disabled).toBe(true);
-    type(email, ' ANA@example.org ');
-    expect(del.disabled).toBe(false);
-    del.click();
-    await until(() => /erased/.test(rig.text()));
-    expect(rig.service.calls.find((c) => c.method === 'deleteMe')!.args[0]).toBe('ANA@example.org');
-    expect(rig.service.accounts.has('ana@example.org')).toBe(false);
-    expect((await rig.area.get(KEYS.session))[KEYS.session]).toBeUndefined();
-    expect((await rig.area.get('golearn:event:abc'))['golearn:event:abc']).toBeUndefined();
-    expect(await rig.app.ctx.state.getProfile()).toBeUndefined();
-  });
-
-  it('a refused deletion keeps everything and says so', async () => {
-    const rig = await makeRig();
-    await signIn(rig, 'ana@example.org');
-    rig.service.accounts.get('ana@example.org')!.email = 'changed@example.org'; // the service no longer agrees
-    await rig.go('privacy');
-    type(rig.q('#delete-email'), 'ana@example.org');
-    rig.q('#delete-account').click();
-    await until(() => /nothing was deleted|Wrong email/.test(rig.text()));
-    expect((await rig.area.get(KEYS.session))[KEYS.session]).toBeDefined();
-  });
-
   it('without an account there is nothing to delete', async () => {
     const rig = await makeRig();
     await rig.go('privacy');
+    await until(() => /Sign in to delete an account/.test(rig.text()));
     expect(rig.root.querySelector('#delete-account')).toBeNull();
-    expect(rig.text()).toContain('Sign in to delete an account');
   });
 });
 

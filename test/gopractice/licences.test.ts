@@ -17,7 +17,8 @@ describe('the Licences and attribution section in Settings', () => {
   it('is a closed section that fetches nothing until it is opened, then shows the shipped notices as headings, lists and links', async () => {
     const rig = await makeRig({ signedIn: true });
     const urls: string[] = [];
-    rig.deps.fetch = (async (u: string) => { urls.push(String(u)); return reply(NOTICES); }) as unknown as typeof fetch;
+    // the account blocks of Settings talk to the service; only the notices file is counted here
+    rig.deps.fetch = (async (u: string) => { if (!String(u).startsWith('https://repository.example.org/')) urls.push(String(u)); return reply(NOTICES); }) as unknown as typeof fetch;
     await rig.go('settings');
     const section = rig.q<HTMLDetailsElement>('#settings-licences');
     expect(section.querySelector('summary')?.textContent).toBe('Licences and attribution');
@@ -80,7 +81,7 @@ describe('the Licences and attribution section in Settings', () => {
   it('reads the file next to the app when the config names another asset base', async () => {
     const rig = await makeRig({ signedIn: true, config: { serviceUrl: 'https://repository.example.org', assetBaseUrl: 'https://cdn.example.org/go' } });
     const urls: string[] = [];
-    rig.deps.fetch = (async (u: string) => { urls.push(String(u)); return reply(NOTICES); }) as unknown as typeof fetch;
+    rig.deps.fetch = (async (u: string) => { if (!String(u).startsWith('https://repository.example.org/')) urls.push(String(u)); return reply(NOTICES); }) as unknown as typeof fetch;
     await rig.go('settings');
     open(rig.q('#settings-licences'));
     await until(() => urls.length === 1, 'the fetch');

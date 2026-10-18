@@ -50,3 +50,28 @@ export async function setRemoteSpeechConsent(ctx: AppContext, on: boolean, langu
   const r = await ctx.record(event);
   return { ok: true, settings, recorded: r !== 'failed' };
 }
+
+/** Which texts the learner accepted at sign-up. The documents are drafts for now; the version names them. */
+export const TERMS_SCOPE = 'terms-and-privacy';
+export const TERMS_VERSION = 'draft-2026-10-17';
+
+/**
+ * Creating an account records that the learner accepted the Terms and the Privacy Policy as a ConsentGiven event (scope
+ * `terms-and-privacy`), through the same path as the speech switch. Best effort: an account is not refused because the record failed.
+ */
+export async function recordTermsAcceptance(ctx: AppContext): Promise<RecordOutcome> {
+  try {
+    const id = await ctx.identity();
+    const at = ctx.deps.now().toISOString();
+    const eventId = `consent-${ctx.deps.now().getTime().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+    const event: GoEvent = {
+      id: eventId, v: CONTRACT_VERSION, learnerId: id.learnerId, enrolmentId: id.enrolmentId, languageId: 'und', at,
+      producer: { app: ctx.inExtension ? 'golearn-ext' : 'golearn-app', version: ctx.deps.appVersion, deviceId: id.deviceId, surface: 'signin' },
+      kind: 'ConsentGiven', subject: {},
+      payload: { consent: TERMS_SCOPE, scope: TERMS_SCOPE, documents: ['terms', 'privacy-policy'], version: TERMS_VERSION },
+      dedupeKey: `${TERMS_SCOPE}:given:${eventId}`,
+    };
+    return await ctx.record(event);
+  } catch { return 'failed'; }
+}
+type RecordOutcome = Awaited<ReturnType<AppContext['record']>>;

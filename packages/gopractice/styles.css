@@ -397,3 +397,10 @@ img, svg, video, canvas { max-width: 100%; }
 .deckrow-note { color: var(--ink-soft); font-size: .95rem; overflow-wrap: anywhere; }
 .deckrow-fine { color: var(--ink-faint); font-size: .85rem; font-style: italic; }
 .restore-line { margin: .8rem 0 0; max-width: none; }
+
+/* the legal drafts (#/privacy, #/terms) */
+.legal-text h2 { margin-top: 1.4rem; }
+.legal-text h2:first-child { margin-top: 0; }
+.legal-text ul, .legal-text ol { padding-inline-start: 1.3rem; }
+.legal-text li { margin: .25rem 0; }
+.legal-text .notice { margin: .8rem 0; }

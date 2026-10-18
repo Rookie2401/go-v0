@@ -13,3 +13,15 @@ export function takeFlash(ctx: AppContext): string | undefined {
   notes.delete(ctx);
   return t;
 }
+
+/** Account creation also leaves a “check your email” notice (with a resend) for the page that follows. Kept the same way, read once. */
+export interface CheckEmail { email: string; /** false when the service said it could not send the email. */ sent?: boolean }
+const checks = new WeakMap<AppContext, CheckEmail>();
+
+export function setCheckEmail(ctx: AppContext, v: CheckEmail): void { checks.set(ctx, v); }
+
+export function takeCheckEmail(ctx: AppContext): CheckEmail | undefined {
+  const v = checks.get(ctx);
+  checks.delete(ctx);
+  return v;
+}

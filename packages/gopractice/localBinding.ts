@@ -52,10 +52,10 @@ export function localRepoFor(ext: ExtensionApi): LocalRepo {
     },
     async connectAccount(input) {
       try {
-        const r = (await send({ type: MSG.connect, ...input })) as { ok?: boolean; message?: string } | undefined;
+        const r = (await send({ type: MSG.connect, ...input })) as { ok?: boolean; message?: string; error?: string } | undefined;
         if (r && r.ok === true) return { ok: true };
         if (!r) return { ok: false, message: 'The extension did not answer.' };
-        return { ok: false, message: typeof r.message === 'string' && r.message ? r.message : 'The extension could not sign you in.' };
+        return { ok: false, message: typeof r.message === 'string' && r.message ? r.message : 'The extension could not sign you in.', ...(typeof r.error === 'string' && r.error ? { code: r.error } : {}) };
       } catch { return { ok: false, message: 'The extension did not answer.' }; }
     },
     async disconnectAccount() { try { await send({ type: MSG.disconnect }); } catch { /* the page's own session is dropped anyway */ } },

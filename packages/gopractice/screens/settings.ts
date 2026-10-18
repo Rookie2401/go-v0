@@ -5,6 +5,7 @@ import { validateServiceUrl } from '../config';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
 import { setRemoteSpeechConsent } from './consent';
 import { licencesSection } from './licences';
+import { legalLinks, renderAccountDetails } from './accountSecurity';
 import { prefsForm } from './prefs';
 import { profileControls } from '../profiles';
 import type { View } from './view';
@@ -56,7 +57,10 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const serviceBox = h('section', { class: 'card', id: 'settings-service', 'aria-labelledby': 'svc-h' }, h('h2', { id: 'svc-h' }, 'Service address (only used if you sign in)'));
   const syncBox = h('section', { class: 'card', id: 'settings-sync', 'aria-labelledby': 'sync-h' }, h('h2', { id: 'sync-h' }, 'Synchronisation'));
   const diagBox = h('section', { class: 'card', id: 'settings-diagnostics', 'aria-labelledby': 'diag-h' }, h('h2', { id: 'diag-h' }, 'Diagnostics'));
-  el.append(moreBox, prefsBox, accountBox, serviceBox, syncBox, diagBox, licencesSection(ctx));
+  const accountMore = h('div', { id: 'settings-account-more' });
+  el.append(moreBox, prefsBox, accountBox, accountMore, serviceBox, syncBox, diagBox, licencesSection(ctx), legalLinks());
+  // an account: confirmation, sessions, the data download, deletion with its grace period, and the security events
+  if (session) renderAccountDetails(accountMore, ctx, view);
 
   // ── preferences
   if (id) {

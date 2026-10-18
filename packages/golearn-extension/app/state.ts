@@ -47,11 +47,12 @@ export interface Settings {
   /** Not implemented by the extension in this build: always false. */
   keepSnippets: boolean;
   remoteSpeechConsent: boolean;
+  localOnlySpeech?: boolean;
   externalProcessingConsent: boolean;
   explanationDepth?: ExplanationDepth;
 }
 
-export const DEFAULT_SETTINGS: Settings = { keepSnippets: false, remoteSpeechConsent: false, externalProcessingConsent: false };
+export const DEFAULT_SETTINGS: Settings = { keepSnippets: false, remoteSpeechConsent: false, externalProcessingConsent: false, localOnlySpeech: true };
 
 export interface ServiceSetting { baseUrl: string; assetBase?: string }
 
@@ -149,6 +150,7 @@ export function createStateStore(area: StorageArea): StateStore {
     return {
       keepSnippets: false, // the extension holds this at false: nothing can keep a sentence yet
       remoteSpeechConsent: v.remoteSpeechConsent === true,
+      localOnlySpeech: v.localOnlySpeech !== false,
       externalProcessingConsent: v.externalProcessingConsent === true,
       ...(DEPTHS.includes(v.explanationDepth as ExplanationDepth) ? { explanationDepth: v.explanationDepth as ExplanationDepth } : {}),
     };

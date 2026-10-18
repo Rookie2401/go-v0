@@ -18,6 +18,7 @@ import type { RepositoryApi, ApiResult } from '../repository-service/src/api';
 import {
   createLocalQueue, createSyncClient, pushIsolatingRefusals, type LocalQueue, type SyncClient, type SyncResult, type SyncStatus, type Transport,
 } from '../repository-sync/src';
+import { createAccountClient, type AccountClient } from './accountClient';
 import { explainFailure, resolveServiceUrl, validateServiceUrl } from './config';
 import { localTransport, uploadedCount, type LocalRepo } from './localRepo';
 import type { ActiveRun, AudioDeps, Deps, EventContext, Identity, ReviewEngine } from './ports';
@@ -36,7 +37,7 @@ export interface DataHandle {
 }
 
 /** `uploaded`: how many of this device's events the account holds after the one-time upload (absent when there was nothing to upload it from, or it failed). */
-export type SignInResult = { ok: true; email: string; switched: boolean; uploaded?: number } | { ok: false; message: string };
+export type SignInResult = { ok: true; email: string; switched: boolean; uploaded?: number } | { ok: false; message: string; /** The service’s error code (`email-unverified` …), when it gave one. */ code?: string };
 
 /** 'account': signed in. 'device': no account, the on-device Repository answers. 'none': the hosted copy before sign-in. */
 export type Mode = 'account' | 'device' | 'none';
@@ -57,6 +58,8 @@ export interface AppContext {
   serviceUrl(): Promise<string>;
   saveService(baseUrl: string | undefined): Promise<{ ok: true } | { ok: false; message: string }>;
   api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }>;
+  /** The account-hardening routes (confirmation, reset, sessions, export, deletion) on the service address, with the session’s token when it belongs to that address. */
+  accountApi(): Promise<{ client: AccountClient; session: Session | undefined; baseUrl: string }>;
   deviceId(): Promise<string>;
   session(): Promise<Session | undefined>;
   /** The learner's enrolments that have not ended (from the cache, refreshed when the service answers). */
@@ -497,6 +500,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       return { ok: true };
     },
     api, deviceId,
+    async accountApi() {
+      const [baseUrl, session] = await Promise.all([serviceUrl(), state.getSession()]);
+      const token = session?.serviceUrl && session.serviceUrl !== baseUrl ? undefined : session?.token;
+      return { client: createAccountClient({ baseUrl, fetch: deps.fetch, token }), session, baseUrl };
+    },
     session: () => state.getSession(),
     enrolments, refreshProfile, identity,
     async setLanguage(enrolmentId) {
@@ -520,7 +528,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const l = await openLocal();
       if (l?.connectAccount) {
         const worker = await l.connectAccount({ baseUrl: check.url, email, password: input.password });
-        if (!worker.ok) return { ok: false, message: worker.message };
+        if (!worker.ok) return { ok: false, message: worker.message, ...(worker.code ? { code: worker.code } : {}) };
       }
       let result: ApiResult<{ token: string; learnerId: string; expiresAt: string }>;
       try {
@@ -529,7 +537,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       } catch {
         return { ok: false, message: `Could not reach the service at ${check.url}. Check that it is running and that the address is right.` };
       }
-      if (!result.ok) return { ok: false, message: explainFailure(result, 'signin') };
+      if (!result.ok) return { ok: false, message: explainFailure(result, 'signin'), code: result.error };
       const previous = await state.getSession();
       const switched = !!previous && previous.learnerId !== result.data.learnerId;
       // an account switch forgets the cache of the account it replaces; that learner's queued events stay under their own prefix

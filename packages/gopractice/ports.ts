@@ -180,6 +180,8 @@ export interface Deps {
    * where GoPractice works on the device with no account. Absent in the hosted copy, which needs an account.
    */
   local?: () => Promise<LocalRepo>;
+  /** Offers a file to the learner (the data export); default: the share sheet on a phone, else a link click. */
+  download?(filename: string, blob: Blob): void;
   /** Where the neighbouring pages are, when this copy knows them (relative links inside the extension; the extension page for the hosted copy, from config.json). */
   links?: { setup?: string; extension?: string };
   /** 'review' in the GoReview (iPhone) build: its own title, its first-launch message, and the update link. Absent elsewhere. */

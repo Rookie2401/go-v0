@@ -46,7 +46,10 @@ Settings → **Clear local data** is the explicit way to remove the device's dat
 | `#/review/history/<item>` | the item's review history (the scheduler numbers are labelled bookkeeping) |
 | `#/review/transfer` | transfer measures — "research measures, not conclusions" — with their basis and what they cannot show |
 | `#/tell` | GoTell: the writing workspace (modes, prompts, writer with analysis and the six-level assistance ladder, versions, goals, privacy); see `docs/ecosystem/GOTELL-ARCHITECTURE.md` |
-| `#/settings` | review preferences, remote-speech switch, account (on the device: "On this device only", the account offer, Clear local data; signed in: sign out / sign out and remove this device's data), service address, sync, diagnostics (versions, FSRS algorithm string, counts) |
+| `#/settings` | review preferences, remote-speech switch, account (on the device: "On this device only", the account offer, Clear local data; signed in: sign out / sign out and remove this device's data), service address, sync, diagnostics (versions, FSRS algorithm string, counts). Signed in, the account also has: **Email address** (confirmed or not, with a resend), **Sessions** (device, last use, end one, "Sign out everywhere else"), **Download my data** (`GET /me/export` → `goreview-data-<date>.json`, through the share sheet on a phone), **Delete my account** (password-confirmed, 14-day grace, then the pending deletion with Cancel) and **Security events** (the last 20); a banner shows while a deletion is pending (`screens/accountSecurity.ts`, `accountClient.ts`) |
+| `#/privacy`, `#/terms` | the Privacy Policy and the Terms of use, the drafts in `docs/legal` (marked "not in force"), rendered as text (`legal.ts`, `screens/legal.ts`); open without an account |
+
+On `#/signin`: **Forgot password?** (asks for the email and always answers "If that address has an account, an email is on its way."), an unverified account's refusal (`403 email-unverified`) with "Send the confirmation email again", and the pending-deletion banner with Cancel. The links in confirmation and password-reset emails open the GoLearn setup app (`#/verify?token=…`, `#/reset?token=…`), not this one; the sign-in page says so and links to it when `links.setup` is known. Accounts are created in GoLearn setup.
 
 ## Keyboard (session)
 

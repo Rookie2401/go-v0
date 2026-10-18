@@ -11,7 +11,8 @@
  */
 import type { AppContext } from '../context';
 import { validateServiceUrl } from '../config';
-import { append, field, h, p, setStatus, statusLine } from '../dom';
+import { append, button, clear, field, h, p, setStatus, statusLine } from '../dom';
+import { mountDeletionBanner } from './accountSecurity';
 import type { View } from './view';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -66,12 +67,17 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const status = statusLine();
   const submit = h('button', { type: 'submit', id: 'signin-submit', class: 'btn primary' }, 'Sign in') as HTMLButtonElement;
   const next = h('p', { id: 'signin-next', hidden: true }, h('a', { class: 'btn primary', id: 'signin-continue', href: '#/review' }, 'Continue to GoReview'));
+  const unverified = h('div', { id: 'unverified-notice' });
   const form = h('form', { id: 'signin-form', novalidate: true, class: 'card' },
     h('h2', {}, 'Sign in'),
     field('Email', email), field('Password', password),
     h('details', {}, h('summary', {}, 'Service address'), field('Go Repository service', url, 'https, or http on localhost for development.')),
-    h('div', { class: 'row' }, submit), status, next);
-  el.append(form);
+    h('div', { class: 'row' }, submit), status, unverified, next);
+  const banner = h('div', { id: 'deletion-slot' });
+  el.append(banner, form, forgotBlock(ctx, email), h('p', { class: 'muted', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup. ',
+    links.setup ? h('a', { href: links.setup, id: 'link-setup-email' }, 'Open GoLearn setup') : null),
+  h('p', { class: 'muted', id: 'legal-links' }, h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy', id: 'link-privacy-policy' }, 'Privacy Policy'), ' (drafts)'));
+  const repaintBanner = mountDeletionBanner(banner, ctx, view);
 
   form.addEventListener('submit', (ev) => {
     ev.preventDefault();
@@ -87,11 +93,35 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         if (!saved.ok) { setStatus(status, saved.message, 'error'); return; }
       }
       submit.disabled = true;
+      clear(unverified);
       setStatus(status, 'Signing in…', 'info');
       try {
         const r = await ctx.signIn({ email: addr, password: secret });
-        if (!r.ok) { setStatus(status, r.message, 'error'); return; }
+        if (!r.ok) {
+          setStatus(status, r.message, 'error');
+          if (r.code === 'email-unverified') {
+            const again = statusLine();
+            append(unverified, [h('div', { class: 'row' }, button('Send the confirmation email again', () => {
+              void (async () => {
+                const { client } = await ctx.accountApi();
+                setStatus(again, 'Sending…', 'info');
+                const sent = await client.resendVerification(addr);
+                setStatus(again, sent.ok ? `If ${addr} still needs confirming, a new email is on its way.` : sent.message || 'The service could not be reached. Try again.', sent.ok ? 'ok' : 'error');
+              })();
+            }, { id: 'unverified-resend', class: 'btn' })), again]);
+          }
+          return;
+        }
         const who = r.switched ? `Switched to ${addr}.` : `Signed in as ${addr}.`;
+        // a deletion that is still scheduled is shown here, with its Cancel, before GoReview opens
+        const { client } = await ctx.accountApi();
+        const pending = await client.state();
+        if (pending.ok && pending.data.scheduledPurgeAt) {
+          setStatus(status, who, 'ok');
+          await repaintBanner();
+          next.hidden = false;
+          return;
+        }
         if (mode !== 'device') {
           setStatus(status, who, 'ok');
           ctx.go('review');
@@ -107,4 +137,30 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       }
     })();
   });
+}
+
+/**
+ * “Forgot password?”: asks for the email address and has the service send a reset link (the link opens GoLearn setup). The answer is
+ * always the same whether or not the address has an account, so the page never reveals which addresses do.
+ */
+function forgotBlock(ctx: AppContext, signInEmail: HTMLInputElement): HTMLElement {
+  const email = h('input', { type: 'email', id: 'forgot-email', name: 'forgot-email', autocomplete: 'email' }) as HTMLInputElement;
+  const out = statusLine();
+  const box = h('details', { class: 'card', id: 'forgot' },
+    h('summary', { id: 'forgot-h' }, 'Forgot password?'),
+    p('Enter the email address of your account and we will send you a link to choose a new password.', 'muted'),
+    field('Email', email),
+    h('div', { class: 'row' }, button('Email me a reset link', () => {
+      void (async () => {
+        const addr = email.value.trim();
+        if (!EMAIL.test(addr)) { setStatus(out, 'Enter a valid email address.', 'error'); return; }
+        const { client } = await ctx.accountApi();
+        setStatus(out, 'Sending…', 'info');
+        const r = await client.forgotPassword(addr);
+        if (r.ok || (r.status >= 400 && r.status < 500 && r.status !== 429)) setStatus(out, 'If that address has an account, an email is on its way.', 'ok');
+        else setStatus(out, r.status === 0 ? 'The service could not be reached, so no email was sent. Try again.' : r.status === 429 ? 'Too many attempts. Wait a few minutes and try again.' : r.message || `The service answered ${r.status}.`, 'error');
+      })();
+    }, { id: 'forgot-submit', class: 'btn' })), out);
+  box.addEventListener('toggle', () => { if ((box as HTMLDetailsElement).open && !email.value) email.value = signInEmail.value.trim(); });
+  return box;
 }

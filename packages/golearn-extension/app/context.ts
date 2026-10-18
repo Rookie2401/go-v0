@@ -25,6 +25,7 @@ import { MSG } from '../src/platform';
 import type { PageStatus } from '../src/protocol';
 import { LOCAL_IDENTITY, createStorageEncounterStore, getDeviceId } from '../src/store';
 import { resolveServiceUrl, validateServiceUrl } from './config';
+import { createAccountClient, type AccountClient } from './accountClient';
 import { explainFailure } from './errors';
 import { uploadedCount, type LocalRepo } from './localRepo';
 import type { Deps, PackView } from './ports';
@@ -37,7 +38,9 @@ export interface BackgroundReply<T = unknown> { answered: boolean; value?: T }
 export interface AppIdentity { learnerId: string; enrolmentId: string; deviceId: string; signedIn: boolean }
 
 /** `uploaded`: how many events of this device’s history went to the account at sign-in (absent when nothing was uploaded or it could not be counted). */
-export type SignInResult = { ok: true; email: string; uploaded?: number } | { ok: false; message: string };
+export type SignInResult =
+  | { ok: true; email: string; uploaded?: number; /** Account creation: the service said whether it sent the confirmation email. */ verificationSent?: boolean }
+  | { ok: false; message: string; /** The service’s error code (`email-unverified` …), when it gave one. */ code?: string };
 
 export type ChooseResult =
   | { ok: true; choice: ActiveChoice; /** where the choice now lives */ where: 'device' | 'account'; /** the account copy failed; the device copy stands */ accountProblem?: string }
@@ -54,6 +57,8 @@ export interface AppContext {
   /** The service address and the dictionary address as stored (the latter may be unset). */
   saveService(baseUrl: string | undefined, assetBase?: string | null): Promise<Saved>;
   api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }>;
+  /** The account-hardening routes (confirmation, reset, sessions, export, deletion) on the service address, with the session’s token when there is one. */
+  accountApi(): Promise<{ client: AccountClient; session: Session | undefined; baseUrl: string }>;
   /** The on-device Repository, opened once on this page’s storage area; undefined where none is available. */
   local(): Promise<LocalRepo | undefined>;
   /** The language this device reads: the learner’s choice, or (signed in, nothing chosen here) the account’s active enrolment. */
@@ -119,13 +124,15 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   async function directSignIn(input: { email: string; password: string; create: boolean }, baseUrl: string): Promise<SignInResult> {
     try {
       const api = deps.createApi(baseUrl);
+      let sent: unknown;
       if (input.create) {
         const made = await api.createAccount({ email: input.email, password: input.password });
-        if (!made.ok) return { ok: false, message: explainFailure(made, 'create') };
+        if (!made.ok) return { ok: false, message: explainFailure(made, 'create'), code: made.error };
+        sent = (made.data as { verificationSent?: unknown } | null)?.verificationSent;
       }
       const device = await getDeviceId(deps.area);
       const made = await api.createSession({ email: input.email, password: input.password, deviceId: device, platform: inExtension ? 'chrome-extension' : 'web' });
-      if (!made.ok) return { ok: false, message: explainFailure(made, 'signin') };
+      if (!made.ok) return { ok: false, message: explainFailure(made, 'signin'), code: made.error };
       // an enrolment already on the account is adopted as the active one (the newest that has not ended)
       const enrolments = await api.listEnrolments();
       const active = enrolments.ok ? [...enrolments.data.enrolments].filter((e) => !e.endedAt).sort((a, b) => b.startedAt.localeCompare(a.startedAt))[0] : undefined;
@@ -134,7 +141,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         token: made.data.token, learnerId: made.data.learnerId, enrolmentId: active?.enrolmentId ?? '', languageId: active?.languageId ?? '',
         expiresAt: made.data.expiresAt, email: input.email,
       });
-      return { ok: true, email: input.email };
+      return { ok: true, email: input.email, ...(typeof sent === 'boolean' ? { verificationSent: sent } : {}) };
     } catch {
       return { ok: false, message: `Could not reach the service at ${baseUrl}. Check that it is running and that the address is right.` };
     }
@@ -305,6 +312,10 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const [baseUrl, session] = await Promise.all([ctx.serviceUrl(), state.getSession()]);
       return { api: deps.createApi(baseUrl, session?.token), session, baseUrl };
     },
+    async accountApi() {
+      const [baseUrl, session] = await Promise.all([ctx.serviceUrl(), state.getSession()]);
+      return { client: createAccountClient({ baseUrl, fetch: deps.fetch, token: session?.token }), session, baseUrl };
+    },
     deviceId: () => getDeviceId(deps.area),
     async identity() {
       const [session, deviceId] = await Promise.all([state.getSession(), ctx.deviceId()]);
@@ -327,9 +338,11 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
             const said = (r.value as { uploaded?: unknown }).uploaded;
             const uploaded = await afterSignIn(typeof said === 'number' ? said : undefined);
             hooks.changed();
-            return { ok: true, email, ...(uploaded !== undefined ? { uploaded } : {}) };
+            const sent = (r.value as { verificationSent?: unknown }).verificationSent;
+            return { ok: true, email, ...(uploaded !== undefined ? { uploaded } : {}), ...(typeof sent === 'boolean' ? { verificationSent: sent } : {}) };
           }
-          return { ok: false, message: messageOf(r, 'The extension could not sign you in.') };
+          const code = (r.value as { error?: unknown }).error;
+          return { ok: false, message: messageOf(r, 'The extension could not sign you in.'), ...(typeof code === 'string' ? { code } : {}) };
         }
         // the worker did not answer: sign in from this page and write the session the worker reads
       }

@@ -5,6 +5,7 @@
 import type { AppContext } from '../context';
 import { h, p } from '../dom';
 import { renderAccountSection } from './account';
+import { renderAccountDetails } from './accountSecurity';
 import type { View } from './view';
 
 /** The advanced screens, in the order Settings lists them, each with the one line that says what it is for. */
@@ -26,4 +27,5 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     async signedIn() { /* the form is on the sign-in page */ },
     async signedOut() { /* nothing else on this page depends on it */ },
   }, { form: false, intro: false });
+  await renderAccountDetails(account, ctx, view);
 }

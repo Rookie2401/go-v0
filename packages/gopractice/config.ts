@@ -78,6 +78,7 @@ export type Refused = Extract<ApiResult<unknown>, { ok: false }>;
 
 export function explainFailure(r: Refused, mode: 'signin' | 'request' = 'request'): string {
   if (r.status === 429) return 'Too many attempts. Wait a few minutes and try again.';
+  if (r.status === 403 && r.error === 'email-unverified') return r.message || 'Confirm your email address first: open the link in the email GoLearn sent you, or ask for it again below.';
   if (r.status === 401 || r.status === 403) return mode === 'signin' ? 'That email and password were not accepted.' : 'The service no longer accepts this sign-in. Sign in again.';
   if (r.status === 409) return r.message || 'The item changed elsewhere. Reload it and try again.';
   if (r.status === 400 || r.status === 422) return r.message || 'The service did not accept that request.';

@@ -9,7 +9,10 @@ import { append, button, h, p, setStatus, statusLine } from '../dom';
 import { createStorageEncounterStore } from '../../src/store';
 import { setRemoteSpeechConsent } from '../consent';
 import { DEPTHS, type ExplanationDepth } from '../state';
+import { dataFilename, deleteBlock, mountDeletionBanner } from './accountSecurity';
+import { policySection } from './legal';
 import type { View } from './view';
+import { MSG } from '../../src/platform';
 
 export const DEPTH_LABEL: Record<ExplanationDepth | 'auto', string> = {
   auto: 'Automatic (GoLearn adapts to what you already know)',
@@ -18,7 +21,6 @@ export const DEPTH_LABEL: Record<ExplanationDepth | 'auto', string> = {
   explanatory: 'Explanatory (the full explanation, always)',
 };
 
-export const exportFilename = (now: Date): string => `golearn-export-${now.toISOString().slice(0, 10)}.json`;
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const [settings, active, session] = await Promise.all([ctx.state.getSettings(), ctx.activeLanguage(), ctx.state.getSession()]);
@@ -49,19 +51,23 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   });
 
   append(el, [
-    p('Everything below starts off. GoLearn keeps what you looked up as hashes and short word lists, never the pages you read.'),
+    p('Remote processing starts off, and speech starts in local-only mode. GoLearn keeps what you looked up as hashes and short word lists, never the pages you read.'),
     h('section', { class: 'card', 'aria-labelledby': 'priv-snip' },
       h('h2', { id: 'priv-snip' }, 'Keep snippets'),
       toggle('keep-snippets', 'Keep one sentence with each lookup, so I can see where I met a word', false, async () => false, true),
       p('Off, and it cannot be switched on in this version. A lookup is recorded as a hash of its sentence, the page title and the page path, never the sentence itself; nothing in the extension can keep a sentence yet. When keeping a sentence becomes possible it will be a separate switch here, off until you turn it on.', 'muted')),
     h('section', { class: 'card', 'aria-labelledby': 'priv-speech' },
       h('h2', { id: 'priv-speech' }, 'Remote speech'),
+      toggle('local-only-speech', 'Use only voices that run on this device', settings.localOnlySpeech !== false, async (v) => {
+        const next = await ctx.setSettings({ localOnlySpeech: v });
+        return next.localOnlySpeech !== false;
+      }),
       toggle('remote-speech', `Allow a remote speech provider (${provider}) to say words for me`, settings.remoteSpeechConsent, async (v) => {
         // recorded as a ConsentGiven / ConsentWithdrawn event (scope remote-speech); switched on only once the record is made
         const r = await setRemoteSpeechConsent(ctx, v, active?.languageId || pack?.languageId);
         return r.ok ? r.settings.remoteSpeechConsent : { value: r.settings.remoteSpeechConsent, message: r.message };
       }),
-      p(`What would be sent: only the word or phrase you ask to hear and its language, to ${provider}, when you press “Pronounce” and a speech key has been set up by you; never the page, the surrounding sentence or your name. Nothing is sent otherwise. This build’s card plays only voices that are already on your device, so nothing is sent today; the switch records your consent for when a remote voice is offered.`, 'muted')),
+      p('Azure Neural speech receives only the word, phrase or sentence you explicitly ask to hear, through your authenticated speech backend. Source permissions must allow this. Local-only mode also blocks browser voices that use a cloud service. Synthetic pronunciation is practice and exposure; it never proves mastery.', 'muted')),
     h('section', { class: 'card', 'aria-labelledby': 'priv-ext' },
       h('h2', { id: 'priv-ext' }, 'External processing'),
       toggle('external-processing', 'Allow my passages to be analysed by an outside AI service', settings.externalProcessingConsent, async () => settings.externalProcessingConsent, true),
@@ -71,6 +77,36 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       h('label', { class: 'field' }, h('span', { class: 'cap' }, 'Override the automatic choice'), depth)),
     saved,
   ]);
+
+  if (ctx.deps.chrome) {
+    const chrome = ctx.deps.chrome;
+    const endpoint = h('input', { type: 'url', id: 'speech-endpoint', placeholder: 'https://your-service/api/speech', autocomplete: 'off' }) as HTMLInputElement;
+    const access = h('input', { type: 'password', id: 'speech-access', autocomplete: 'off' }) as HTMLInputElement;
+    const source = h('input', { type: 'url', id: 'speech-source-origin', placeholder: 'https://my-owned-content.example', autocomplete: 'off' }) as HTMLInputElement;
+    const rights = h('input', { type: 'checkbox', id: 'speech-source-rights' }) as HTMLInputElement;
+    const setupOut = statusLine();
+    append(el, [h('section', { class: 'card', 'aria-labelledby': 'speech-backend' },
+      h('h2', { id: 'speech-backend' }, 'Speech backend'),
+      p('Azure keys stay on the backend. Enter a separate backend access token here; GoLearn keeps it in trusted extension storage and never exposes it to a web page.'),
+      h('label', { class: 'field' }, h('span', {}, 'Speech endpoint'), endpoint),
+      h('label', { class: 'field' }, h('span', {}, 'Backend access token'), access),
+      h('label', { class: 'field' }, h('span', {}, 'Optional source origin for content you have permission to process'), source),
+      h('label', { class: 'toggle' }, rights, h('span', {}, 'I own this content or have permission to send its text to Azure for pronunciation')),
+      p('Unknown source rights stay blocked unless you explicitly declare permission for this exact origin. A reader prohibition always remains blocked. Leave the origin blank to use only sources already approved by the reader registry.', 'muted'),
+      button('Save speech backend', async () => {
+        try {
+          const url = new URL(endpoint.value);
+          if (url.protocol !== 'https:' && !(url.protocol === 'http:' && ['127.0.0.1', '[::1]'].includes(url.hostname))) throw new Error('Invalid endpoint');
+          if (source.value.trim() && !rights.checked) { setStatus(setupOut, 'Declare source processing permission before adding an origin.', 'error'); return; }
+          // Must be invoked by this button gesture for Brave to offer the optional permission.
+          if (!(await chrome.permissions?.request({ origins: [`${url.origin}/*`] }))) { setStatus(setupOut, 'Speech backend access was not granted.', 'error'); return; }
+          const r = await chrome.runtime.sendMessage({ type: MSG.speechConfig, op: 'set', baseUrl: endpoint.value.trim(), token: access.value, permittedSourceOrigins: source.value.trim() ? [source.value.trim()] : [] }) as { ok?: boolean; message?: string };
+          access.value = '';
+          setStatus(setupOut, r?.ok ? 'Speech backend saved. Remote speech also needs consent and local-only mode switched off.' : r?.message ?? 'Speech setup failed.', r?.ok ? 'ok' : 'error');
+        } catch { access.value = ''; setStatus(setupOut, 'Speech setup failed. Check the endpoint and backend access token.', 'error'); }
+      }, { id: 'save-speech-backend' }),
+      setupOut)]);
+  }
 
   // ── export
   const exportOut = statusLine();
@@ -82,12 +118,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         if (!session) { setStatus(exportOut, 'Sign in first: the export comes from your account on the service.', 'error'); return; }
         setStatus(exportOut, 'Preparing the export…', 'info');
         try {
-          const { api } = await ctx.api();
-          const r = await api.exportAll();
-          if (!r.ok) { setStatus(exportOut, r.status === 401 ? 'Your session is no longer valid. Sign in again.' : r.message || `The service answered ${r.status}.`, 'error'); return; }
-          const blob = new Blob([JSON.stringify(r.data, null, 2)], { type: 'application/json' });
-          ctx.deps.download(exportFilename(ctx.deps.now()), blob);
-          setStatus(exportOut, `Export ready: ${exportFilename(ctx.deps.now())}.`, 'ok');
+          const { client } = await ctx.accountApi();
+          const r = await client.exportData();
+          if (!r.ok) { setStatus(exportOut, r.status === 401 ? 'Your session is no longer valid. Sign in again.' : r.message || (r.status === 0 ? 'The service could not be reached.' : `The service answered ${r.status}.`), 'error'); return; }
+          ctx.deps.download(dataFilename(ctx.deps.now()), new Blob([r.data], { type: 'application/json' }));
+          setStatus(exportOut, `Export ready: ${dataFilename(ctx.deps.now())}.`, 'ok');
         } catch { setStatus(exportOut, 'The service could not be reached.', 'error'); }
       }, { id: 'export-data', class: 'btn primary' }),
       button('Export this device’s rows', async () => {
@@ -120,37 +155,15 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     p('Your lookups and the record GoLearn keeps for you are stored on this device first. Signing out leaves them here; clearing them is a separate, deliberate step.'),
     h('div', { class: 'row' }, clearBtn), clearOut)]);
 
-  // ── delete
-  const deleteOut = statusLine();
-  const confirm = h('input', { type: 'email', id: 'delete-email', name: 'delete-email', autocomplete: 'off', placeholder: session?.email ?? 'your email' }) as HTMLInputElement;
-  const alsoLocal = h('input', { type: 'checkbox', id: 'delete-local' }) as HTMLInputElement;
-  alsoLocal.checked = true;
-  const del = h('button', { type: 'button', id: 'delete-account', class: 'btn danger', disabled: true }, 'Delete my account') as HTMLButtonElement;
-  const matches = (): boolean => !!session && confirm.value.trim().toLowerCase() === session.email.toLowerCase();
-  confirm.addEventListener('input', () => { del.disabled = !matches(); });
-  del.addEventListener('click', () => {
-    void (async () => {
-      if (!session || !matches()) { setStatus(deleteOut, 'Type your account email exactly to confirm.', 'error'); return; }
-      del.disabled = true;
-      setStatus(deleteOut, 'Deleting…', 'info');
-      try {
-        const { api } = await ctx.api();
-        const r = await api.deleteMe(confirm.value.trim());
-        if (!r.ok) { setStatus(deleteOut, r.message || `The service answered ${r.status}; nothing was deleted.`, 'error'); del.disabled = false; return; }
-        if (alsoLocal.checked) await ctx.clearLocal();
-        await ctx.signOut();
-        confirm.value = '';
-        setStatus(deleteOut, 'Your account and everything the service held about you were erased, and this device was disconnected.', 'ok');
-      } catch { setStatus(deleteOut, 'The service could not be reached; nothing was deleted.', 'error'); del.disabled = false; }
-    })();
-  });
-  append(el, [h('section', { class: 'card', 'aria-labelledby': 'priv-delete' },
-    h('h2', { id: 'priv-delete' }, 'Delete my account'),
-    session
-      ? [p('This erases your account and every row of your record on the service, and signs this device out. It cannot be undone. Export first if you want a copy.'),
-        h('label', { class: 'field' }, h('span', { class: 'cap' }, `Type ${session.email} to confirm`), confirm),
-        h('label', { class: 'toggle' }, alsoLocal, h('span', {}, 'Also delete the rows stored on this device')),
-        h('div', { class: 'row' }, del)]
-      : [p('Sign in to delete an account.', 'muted')],
-    deleteOut)]);
+  // ── delete (password-confirmed, with a grace period; the same block as in Settings)
+  const slot = h('div', { id: 'deletion-slot' });
+  mountDeletionBanner(slot, ctx, view);
+  append(el, [slot, h('section', { class: 'card', id: 'priv-delete' }, deleteBlock(ctx, view))]);
+
+  // ── the policy and the terms
+  append(el, [
+    p('The text below is a draft that has not been adopted yet. Creating an account also asks you to accept the Terms of use.', 'muted'),
+    h('p', {}, h('a', { href: '#/terms', id: 'link-terms' }, 'Read the Terms of use')),
+    policySection(),
+  ]);
 }

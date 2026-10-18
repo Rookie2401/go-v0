@@ -50,7 +50,7 @@ export interface SessionStatus {
 }
 
 export type Failure = { ok: false; error: string; message: string };
-export type SessionResult = { ok: true; status: SessionStatus } | Failure;
+export type SessionResult = { ok: true; status: SessionStatus; /** Account creation only: the service said whether it sent the confirmation email. */ verificationSent?: boolean } | Failure;
 
 export interface ConnectInput { baseUrl: string; email: string; password: string; deviceId: string }
 export interface CreateAccountInput extends ConnectInput { displayName?: string }
@@ -110,6 +110,7 @@ const fromApi = (r: Extract<ApiResult<unknown>, { ok: false }>): Failure => {
     r.status === 401 ? 'The email or password was not accepted.'
     : r.status === 429 ? 'Too many sign-in attempts. Wait a few minutes and try again.'
     : r.status === 409 ? 'An account with that email already exists.'
+    : r.status === 403 && r.error === 'email-unverified' ? (r.message || 'Confirm your email address first: open the link in the email GoLearn sent you, or ask for it again.')
     : r.status === 422 && r.error === 'weak-password' ? 'The password must be at least 10 characters.'
     : r.message || 'The service refused the request.';
   return fail(r.error, msg);
@@ -188,11 +189,15 @@ export function createSessionManager(opts: SessionManagerOptions) {
     const email = typeof input.email === 'string' ? input.email.trim() : '';
     if (!email || typeof input.password !== 'string' || !input.password) return fail('invalid-input', 'Enter an email and a password.');
     const api = apiFor(base.url);
+    let verificationSent: boolean | undefined;
     try {
       const made = await api.createAccount({ email, password: input.password, ...(input.displayName ? { displayName: input.displayName } : {}) });
       if (!made.ok) return fromApi(made);
+      const said = (made.data as { verificationSent?: unknown } | null)?.verificationSent;
+      if (typeof said === 'boolean') verificationSent = said;
     } catch { return fail('unreachable', 'GoLearn could not reach the service. Check the address and your connection.'); }
-    return connect(input);
+    const signedIn = await connect(input);
+    return signedIn.ok && verificationSent !== undefined ? { ...signedIn, verificationSent } : signedIn;
   }
 
   async function disconnect(): Promise<{ ok: true; remoteRevoked: boolean }> {

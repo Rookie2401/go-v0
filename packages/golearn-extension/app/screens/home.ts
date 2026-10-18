@@ -31,7 +31,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       row('Language pack', pack ? (rec ? `${pack.name} ${rec.version}, ${rec.ok ? 'verified' : 'did not verify'}` : `${pack.name} ${pack.version} not installed`) : 'none downloaded', 'languages', completion.pack),
       ),
     h('p', {}, ctx.inExtension
-      ? h('a', { class: 'btn primary', id: 'practise', href: PRACTICE_HREF }, 'Practise')
+      ? h('span', {}, h('a', { class: 'btn primary', id: 'practise', href: PRACTICE_HREF }, 'Practise'), ' ', h('a', { class: 'btn', id: 'my-vocabulary', href: `${PRACTICE_HREF}#/vocabulary` }, 'My words'))
       : h('span', { class: 'muted', id: 'practise-note' }, 'Practice (GoPractice) runs in the extension, on this device.'),
     ctx.inExtension ? ' ' : null, ctx.inExtension ? h('span', { class: 'muted' }, 'Review what you met and write in the language, without an account.') : null),
     p(`Works on: ${SURFACES.filter((s) => s.status !== 'not-supported').map((s) => s.name).join('; ')}.`, 'muted'),

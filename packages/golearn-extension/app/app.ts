@@ -11,12 +11,15 @@ import type { Deps } from './ports';
 import * as diagnosticsScreen from './screens/diagnostics';
 import * as homeScreen from './screens/home';
 import * as languagesScreen from './screens/languages';
+import * as legalScreen from './screens/legal';
 import * as privacyScreen from './screens/privacy';
 import * as readerScreen from './screens/reader';
+import * as resetScreen from './screens/reset';
 import * as settingsScreen from './screens/settings';
 import * as shareScreen from './screens/share';
 import * as signinScreen from './screens/signin';
 import * as syncScreen from './screens/sync';
+import * as verifyScreen from './screens/verify';
 import type { View } from './screens/view';
 import { computeCompletion, setupComplete, SETUP_IDS } from './completion';
 
@@ -47,7 +50,16 @@ export const ALIASES: Readonly<Record<string, string>> = { welcome: 'languages',
 export const HOME: ScreenDef = { id: 'home', title: 'Status', group: 'status', render: homeScreen.render };
 /** Reached from the web share target, a deep link or the status page; not part of setup, so it has no place in the navigation. */
 export const SHARE: ScreenDef = { id: 'share', title: 'Look up shared text', group: 'status', render: shareScreen.render };
-export const ROUTE_IDS = [HOME.id, ...SCREENS.map((s) => s.id), SHARE.id];
+/**
+ * Pages reached from a link, not from the navigation: #/verify?token=… and #/reset?token=… (the links in the emails the service sends)
+ * and #/terms (linked from sign-up and Settings). The Privacy Policy is on #/privacy.
+ */
+export const VERIFY: ScreenDef = { id: 'verify', title: 'Confirm your email', group: 'status', render: verifyScreen.render };
+export const RESET: ScreenDef = { id: 'reset', title: 'Reset your password', group: 'status', render: resetScreen.render };
+export const TERMS: ScreenDef = { id: 'terms', title: 'Terms of use', group: 'status', render: legalScreen.render };
+const LINKED: readonly ScreenDef[] = [SHARE, VERIFY, RESET, TERMS];
+export const ROUTE_IDS = [HOME.id, ...SCREENS.map((s) => s.id), ...LINKED.map((l) => l.id)];
+const defOf = (id: string): ScreenDef | undefined => (id === HOME.id ? HOME : LINKED.find((l) => l.id === id) ?? SCREENS.find((x) => x.id === id));
 const canonical = (id: string): string => ALIASES[id] ?? id;
 
 export interface AppHandle {
@@ -97,7 +109,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     return active || session ? 'languages' : 'signin';
   }
 
-  const titleOf = (id: string): string => (id === HOME.id ? HOME : id === SHARE.id ? SHARE : SCREENS.find((s) => s.id === id))?.title ?? '';
+  const titleOf = (id: string): string => defOf(id)?.title ?? '';
 
   function paintBar(): void {
     if (destroyed) return;
@@ -112,7 +124,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     for (const d of disposers) { try { d(); } catch { /* a screen’s cleanup must not stop the next screen */ } }
     disposers = [];
     route = id;
-    const def = id === HOME.id ? HOME : id === SHARE.id ? SHARE : SCREENS.find((s) => s.id === id)!;
+    const def = defOf(id)!;
     deps.doc.title = `GoLearn — ${def.title}`;
     paintBar();
     clear(main);
@@ -133,6 +145,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   /** No pager between screens: the foot of a screen holds the way back (where there is one) and the way back to reading. */
   function footer(def: ScreenDef): HTMLElement {
     if (def.id === SHARE.id) return h('footer', {}, h('div', { class: 'pager' }, h('a', { class: 'btn', href: '#/home' }, '← Status')));
+    if (def.id === VERIFY.id || def.id === RESET.id) return h('footer', {}, h('div', { class: 'pager' }, h('a', { class: 'btn', href: '#/languages' }, '← Languages')));
+    if (def.id === TERMS.id) return h('footer', {}, h('div', { class: 'pager' }, h('a', { class: 'btn', href: '#/settings' }, '← Settings')));
     const done = h('p', { class: 'finish-note', role: 'status', 'aria-live': 'polite' });
     const pager = h('div', { class: 'pager' });
     if (def.group === 'advanced') pager.append(h('a', { class: 'btn', href: '#/settings' }, '← Settings'));
@@ -158,7 +172,9 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const r = parse();
     // an old link (#/welcome, #/language, #/pack, #/account, #/tutorial) is rewritten to the screen that replaced it
     if (r && raw !== r && !win.location.hash.startsWith(`#/${r}?`)) { win.location.hash = `#/${r}`; return; }
-    if (r && r !== route) { renderDone = show(r); }
+    // a link from an email opened in the tab that is already on that page (#/verify?token=…) runs again with its token
+    const again = (r === VERIFY.id || r === RESET.id) && win.location.hash.startsWith(`#/${r}?`);
+    if (r && (r !== route || again)) { renderDone = show(r); }
   };
   win.addEventListener('hashchange', onHash);
 

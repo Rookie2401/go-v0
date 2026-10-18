@@ -13,11 +13,13 @@
  * service worker has a newer version waiting.
  *
  * Routes:  #/review[/session | /history/<item> | /transfer | /decks | /vocab | /details]   #/tell   #/vocabulary   #/settings   #/signin
+ *           #/privacy and #/terms (the legal drafts; open without an account)
  */
 import { append, clear, h, p } from './dom';
 import { languageName } from './format';
 import { createContext, type AppContext, type Mode, type SyncView } from './context';
 import type { Deps } from './ports';
+import * as legalScreen from './screens/legal';
 import * as reviewScreen from './screens/review';
 import * as settingsScreen from './screens/settings';
 import * as signinScreen from './screens/signin';
@@ -28,7 +30,7 @@ import type { View } from './screens/view';
 import { shortDate } from './dom';
 
 export interface RouteDef {
-  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'signin';
+  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'signin' | 'privacy' | 'terms';
   title: string;
   render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): void | Promise<void>;
 }
@@ -39,9 +41,11 @@ export const ROUTES: readonly RouteDef[] = [
   { id: 'vocabulary', title: 'My Vocabulary', render: vocabularyScreen.render },
   { id: 'settings', title: 'Settings', render: settingsScreen.render },
   { id: 'signin', title: 'Sign in', render: signinScreen.render },
+  { id: 'privacy', title: 'Privacy Policy', render: legalScreen.renderPrivacy },
+  { id: 'terms', title: 'Terms of use', render: legalScreen.renderTerms },
 ];
 /** The routes that get a quiet way back to the GoReview home above their title. */
-const HAS_BACK = new Set<RouteDef['id']>(['tell', 'vocabulary', 'settings']);
+const HAS_BACK = new Set<RouteDef['id']>(['tell', 'vocabulary', 'settings', 'privacy', 'terms']);
 
 /** The Settings cog: a plain SVG (no icon font, nothing fetched), named for assistive technology by the link. */
 function cogIcon(doc: Document): Element {
@@ -249,7 +253,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     let target: RouteDef['id'] = id;
     let subs = params;
     // the hosted copy needs an account for anything but the sign-in page; inside the extension nothing is behind it
-    if (mode === 'none' && target !== 'signin') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
+    if (mode === 'none' && target !== 'signin' && target !== 'privacy' && target !== 'terms') { target = 'signin'; subs = []; if (win.location.hash !== '#/signin') win.location.hash = '#/signin'; }
     if (my !== seq) return;
     const def = ROUTES.find((r) => r.id === target)!;
     route = [def.id, ...subs].join('/');

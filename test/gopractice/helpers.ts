@@ -44,6 +44,8 @@ export class FakeService {
   platforms: string[] = [];
   /** When true every sync call throws (a dead network). */
   netDown = false;
+  /** Emails whose sign-in the service refuses with 403 email-unverified (the grace period is over). */
+  unverified = new Set<string>();
   /** When true every call throws. */
   allDown = false;
   private n = 0;
@@ -82,6 +84,7 @@ export class FakeService {
         if (input.platform) self.platforms.push(input.platform);
         const a = self.accounts.get(input.email);
         if (!a || a.password !== input.password) return fail(401, 'bad credentials');
+        if (self.unverified.has(input.email)) return { ok: false as const, status: 403, error: 'email-unverified', message: 'Confirm your email address first: open the link we sent you.', body: {} };
         const token = `tok-${a.learnerId}-${++self.n}`;
         self.tokens.set(token, a.learnerId);
         state.token = token;

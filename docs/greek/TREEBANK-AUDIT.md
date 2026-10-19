@@ -9,26 +9,26 @@ ordered by attestation, not a disambiguation result. Nothing was tuned on these 
 
 | text | tokens | covered | lemma = gold | POS = gold | both | sentences read as (expected `period`) |
 |---|---|---|---|---|---|---|
-| Homer, Iliad | 3005 | 94.9 % | 81.5 % | 76.1 % | 67.8 % | el-hom 173, el-att 58, el-koi 1, el-mod 1 (el-hom) |
-| Homer, Odyssey | 3006 | 93.4 % | 79.7 % | 75.6 % | 68.2 % | el-hom 161, el-att 68, el-mod 1 (el-hom) |
-| Plato, Euthyphro | 3001 | 94.8 % | 85.2 % | 74.8 % | 70.8 % | el-att 168, el-koi 52, el-hom 4, el-mod 3 (el-att) |
-| Thucydides, Histories 1 | 3017 | 100.0 % | 91.1 % | 79.3 % | 73.0 % | el-att 120, el-koi 6, el-hom 1 (el-att) |
-| Herodotus, Histories 1 (Ionic) | 3014 | 86.5 % | 75.0 % | 67.7 % | 59.3 % | el-att 99, el-hom 56, el-koi 7 (el-att) |
-| Sophocles, Oedipus Tyrannus | 3005 | 89.1 % | 77.7 % | 70.0 % | 64.6 % | el-att 266, el-koi 19, el-hom 17, el-mod 2 (el-att) |
-| Polybius, Histories 1 (Hellenistic Koine) | 3016 | 89.2 % | 81.2 % | 71.5 % | 66.3 % | el-att 103, el-koi 11 (el-att or el-koi: not told apart by vocabulary) |
-| Plutarch, Alcibiades (literary Koine) | 3003 | 89.2 % | 81.7 % | 71.3 % | 66.2 % | el-att 134, el-koi 12, el-hom 1 (el-att or el-koi: not told apart by vocabulary) |
+| Homer, Iliad | 3005 | 95.0 % | 81.4 % | 76.1 % | 67.8 % | el-hom 181, el-att 51, el-koi 1 (el-hom) |
+| Homer, Odyssey | 3006 | 93.5 % | 79.7 % | 75.5 % | 68.1 % | el-hom 165, el-att 65 (el-hom) |
+| Plato, Euthyphro | 3001 | 94.8 % | 85.2 % | 74.8 % | 70.8 % | el-att 173, el-koi 51, el-hom 2, el-mod 1 (el-att) |
+| Thucydides, Histories 1 | 3017 | 100.0 % | 91.2 % | 79.4 % | 73.2 % | el-att 120, el-koi 6, el-hom 1 (el-att) |
+| Herodotus, Histories 1 (Ionic) | 3014 | 86.6 % | 75.0 % | 67.8 % | 59.3 % | el-att 92, el-hom 63, el-koi 7 (el-att) |
+| Sophocles, Oedipus Tyrannus | 3005 | 89.3 % | 77.9 % | 70.2 % | 64.9 % | el-att 274, el-koi 18, el-hom 12 (el-att) |
+| Polybius, Histories 1 (Hellenistic Koine) | 3016 | 89.2 % | 81.2 % | 71.5 % | 66.4 % | el-att 103, el-koi 11 (el-att or el-koi: not told apart by vocabulary) |
+| Plutarch, Alcibiades (literary Koine) | 3003 | 89.2 % | 81.9 % | 71.4 % | 66.3 % | el-att 135, el-koi 11, el-hom 1 (el-att or el-koi: not told apart by vocabulary) |
 
 ## Commonest disagreements (first reading ≠ treebank lemma) and uncovered forms, per text
 
 ### Homer, Iliad
 - 14× ὣς: got ὅς (PRON), gold ὡς (ADV)
-- 12× οἱ: got ὁ (PRON), gold ἕ (PRON)
 - 12× ἦ: got ἠμί (VERB), gold ἦ (ADV)
 - 12× αὐτὰρ: got αὐτάρ (CONJ), gold ἀτάρ (PART)
 - 11× ὃ: got ὅς (PRON), gold ὁ (PRON)
+- 11× οἱ: got ὁ (PRON), gold ἕ (PRON)
+- 10× ἀλλ̓: got ἄλλος (ADJ), gold ἀλλά (ADV)
 - 10× μιν: got οὗ (PRON), gold μιν (PRON)
 - 10× ὅ: got ὅς (PRON), gold ὁ (PRON)
-- 8× ἀλλ̓: got ἄλλος (ADJ), gold ἀλλά (ADV)
 - 8× περ: got περί (ADP), gold πέρ (PART)
 - 6× οἳ: got ὅς (PRON), gold ὁ (PRON)
 - 5× ἠδ̓: got ὅδε (PRON), gold ἠδέ (CONJ)
@@ -43,15 +43,15 @@ ordered by attestation, not a disambiguation result. Nothing was tuned on these 
 - 8× περ: got περί (ADP), gold πέρ (PART)
 - 7× ὣς: got ὅς (PRON), gold ὡς (ADV)
 - 7× ἀλλ̓: got ἄλλος (ADJ), gold ἀλλά (ADV)
+- 6× γ̓: got γῆ (NOUN), gold γε (PART)
 - 6× ἐν: got ἐν (ADP), gold εἰς (ADP)
+- 6× αἰεὶ: got αἰεί (ADV), gold ἀεί (ADV)
 - 6× ἠδ̓: got ὅδε (PRON), gold ἠδέ (CONJ)
-- 6× τοι: got σύ (PRON), gold τοι (PART)
 - 6× ἄγε: got ἄγω (VERB), gold ἄγε (ADV)
-- 6× κε: got κε (PART), gold ἄν (PART)
 - skipped sentences (token count mismatch): 32
 
 ### Plato, Euthyphro
-- 53× ὦ: got εἰμί (VERB), gold ὦ (INTJ)
+- 54× ὦ: got εἰμί (VERB), gold ὦ (INTJ)
 - 22× ὡς: got ὅς (PRON), gold ὡς (CONJ)
 - 10× ὀρθῶς: got ὀρθῶς (ADV), gold ὀρθός (ADV)
 - 8× ὅτι: got ὅτι (CONJ), gold ὅστις (PRON)
@@ -74,10 +74,10 @@ ordered by attestation, not a disambiguation result. Nothing was tuned on these 
 - 5× Ἀθηναίων: got Ἀθήναιον (NOUN), gold Ἀθήναιος (NOUN)
 - 5× ἔχοντες: got ἔχων (VERB), gold ἔχω (VERB)
 - 5× νήσων: got νέω (VERB), gold νῆσος (NOUN)
-- 4× δἰ: got Ζεύς (PROPN), gold διά (ADP)
 - 4× οὖσαν: got ὤν (VERB), gold εἰμί (VERB)
 - 4× ἐπειδὴ: got ἐπειδή (CONJ), gold ἐπεί (CONJ)
 - 4× ὄντα: got ὤν (VERB), gold εἰμί (VERB)
+- 4× σφίσιν: got οὗ (PRON), gold σφεῖς (PRON)
 - skipped sentences (token count mismatch): 23
 
 ### Herodotus, Histories 1 (Ionic)
@@ -86,20 +86,20 @@ ordered by attestation, not a disambiguation result. Nothing was tuned on these 
 - 10× ὃ: got ὅς (PRON), gold ὁ (DET)
 - 8× οὕτω: got οὗτος (DET), gold οὕτως (ADV)
 - 8× μιν: got οὗ (PRON), gold μιν (PRON)
-- 7× οἱ: got ὁ (DET), gold ἕ (PRON)
 - 7× σφι: got οὗ (PRON), gold σφεῖς (PRON)
+- 6× οἱ: got ὁ (PRON), gold ἕ (PRON)
 - 5× εἵνεκεν: got εἵνεκεν (ADP), gold ἕνεκα (ADP)
+- 5× ἀλλ̓: got ἄλλος (ADJ), gold ἀλλά (CONJ)
 - 5× ἐόντα: got ἐών (VERB), gold εἰμί (VERB)
-- 4× οὕτω: got οὕτω(ς) (ADV), gold οὕτως (ADV)
-- 4× ἀλλ̓: got ἄλλος (ADJ), gold ἀλλά (CONJ)
+- 4× τὰ: got ὁ (DET), gold ὅς (PRON)
 - 4× ἐγένετο: got γίνομαι (VERB), gold γίγνομαι (VERB)
 - skipped sentences (token count mismatch): 47
 
 ### Sophocles, Oedipus Tyrannus
 - 19× οὔ: got οὔ (PART), gold οὔτε (ADV)
-- 15× οὐ: got οὐ (PART), gold οὐδέ (PART)
-- 14× ὦ: got εἰμί (VERB), gold ὦ (INTJ)
-- 12× μ̓: got μά (PART), gold ἐγώ (PRON)
+- 16× οὐ: got οὐ (PART), gold οὐδέ (PART)
+- 15× ὦ: got εἰμί (VERB), gold ὦ (INTJ)
+- 13× μ̓: got μά (PART), gold ἐγώ (PRON)
 - 9× ὡς: got ὅς (PRON), gold ὡς (ADV)
 - 7× ὡς: got ὅς (PRON), gold ὡς (CONJ)
 - 7× πῶς: got πούς (NOUN), gold πῶς (ADV)
@@ -129,9 +129,9 @@ ordered by attestation, not a disambiguation result. Nothing was tuned on these 
 - 13× ὡς: got ὅς (PRON), gold ὡς (CONJ)
 - 8× Ἀθηναίοις: got Ἀθήναιον (NOUN), gold Ἀθήναιος (NOUN)
 - 7× ὡς: got ὅς (PRON), gold ὡς (ADV)
-- 5× δἰ: got Ζεύς (PROPN), gold διά (ADP)
 - 4× οὖσαν: got ὤν (VERB), gold εἰμί (VERB)
 - 4× Ἀθηναίων: got Ἀθήναιον (NOUN), gold Ἀθήναιος (NOUN)
+- 3× ἴσως: got ἴσος (ADJ), gold ἴσως (ADV)
 - 3× δεῖ: got δέω (VERB), gold δεῖ (VERB)
 - 3× ἐν: got ἐν (ADP), gold εἰς (ADP)
 - 3× οὕτως: got οὗτος (DET), gold οὕτως (ADV)

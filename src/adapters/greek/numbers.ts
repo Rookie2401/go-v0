@@ -31,3 +31,31 @@ export function elNumberToWords(n: number): string | null {
   const head = th === 1 ? 'χίλια' : `${below1000(th, true)} χιλιάδες`;
   return r ? `${head} ${below1000(r)}` : head;
 }
+
+/** The letters of the Milesian (alphabetic) numeral system: α–θ units, ι–ϙ tens, ρ–ϡ hundreds; ϛ / στ / ϝ 6, ϙ / ϟ 90, ϡ 900. */
+const MILESIAN: Record<string, number> = {
+  'α': 1, 'β': 2, 'γ': 3, 'δ': 4, 'ε': 5, 'ϛ': 6, 'ϝ': 6, 'ζ': 7, 'η': 8, 'θ': 9,
+  'ι': 10, 'κ': 20, 'λ': 30, 'μ': 40, 'ν': 50, 'ξ': 60, 'ο': 70, 'π': 80, 'ϙ': 90, 'ϟ': 90,
+  'ρ': 100, 'σ': 200, 'τ': 300, 'υ': 400, 'φ': 500, 'χ': 600, 'ψ': 700, 'ω': 800, 'ϡ': 900,
+};
+
+/**
+ * The value of letters read as a Milesian numeral (αʹ 1, ιϛʹ 16, ρνʹ 150): units, tens and hundreds each at most once, in descending
+ * order (στ counts as ϛ, 6); null for letters that are not a well-formed numeral below 1000. The keraia is not part of the input.
+ */
+export function milesianValue(letters: string): number | null {
+  const s = letters.normalize('NFC').toLowerCase().replace(/στ/g, 'ϛ');
+  if (!s || s.length > 3) return null;
+  let total = 0;
+  let last = Infinity;
+  for (const ch of s) {
+    const v = MILESIAN[ch];
+    if (v === undefined || v >= last) return null;
+    // one digit per decade: 1–9, 10–90, 100–900
+    const decade = v >= 100 ? 100 : v >= 10 ? 10 : 1;
+    const lastDecade = last === Infinity ? Infinity : last >= 100 ? 100 : last >= 10 ? 10 : 1;
+    if (decade === lastDecade) return null;
+    total += v; last = v;
+  }
+  return total;
+}

@@ -19,7 +19,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { consonantal, letterCount, pointed, splitByLetters } from '../src/adapters/hebrew/text';
-import { posOfOshb } from '../src/adapters/hebrew/oshb';
+import { PREFIXES, posOfOshb } from '../src/adapters/hebrew/oshb';
 import type { HeFormRow, HeLemmaRow, HebrewFormIndex } from '../src/adapters/hebrew/index-store';
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
@@ -98,7 +98,12 @@ for (const [stem, n] of lemmaCount) {
   const pos = [...pm].sort((a, b) => b[1] - a[1])[0][0];
   const row = lemmas[stem];
   if (row) { row[2] = pos; row[3] = n; }
-  else { lemmasWithoutEntry++; lemmas[stem] = [stem, '', pos, n]; }
+  else {
+    lemmasWithoutEntry++;
+    // the prefix morphemes OSHB cites by a letter (l for לְ in לוֹ, b, k, m): their Hebrew headwords and glosses, not the code letters
+    const pre = PREFIXES[stem];
+    lemmas[stem] = pre ? [pre.lemma, pre.gloss, pos, n] : [stem, '', pos, n];
+  }
 }
 for (const id of Object.keys(lemmas)) if (!lemmaCount.has(id)) delete lemmas[id]; // lexicon entries never read in the text
 

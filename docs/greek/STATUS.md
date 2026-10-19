@@ -53,3 +53,28 @@ a Modern reading. Readings of the chosen period go first; none is removed; every
   (`ParseContext.gold`), so there the figure is 100 % by construction and the analyser's reading stays as the alternative.
 - Attic vs Koine prose (Plato, Thucydides vs Polybius, Plutarch) is NOT told apart by vocabulary: Polybius and Plutarch read as Attic unless
   the learner's target or the reader declares Koine; the card says so in its period line.
+
+## Audit on plain texts and the fixes it led to (2026-10-19, later)
+
+- **Plain texts, no gold** (`npm run texts:audit-plain`): `docs/greek/TEXTS-AUDIT.md` — Aristotle (Nicomachean Ethics, Metaphysics), Plato (Republic),
+  Marcus Aurelius, Euclid, Archimedes (Perseus / First1KGreek, CC BY-SA 4.0, `data/raw/audit-texts`, approved downloads), the first 4,000 word
+  tokens each. After the fixes below: covered 93.3 / 94.9 / 94.3 / 87.7 / 97.0 / 94.0 %, read as Attic with a few Koine sentences (Marcus and
+  Euclid read as Attic: vocabulary cannot tell literary Koine from Attic; the card's period line says so); no sentence of the prose texts is
+  read as Homeric except one of the Metaphysics (three Epic-only readings and four marks among 95 words), and none as Modern except one
+  one-word sentence of the Republic. What stays uncovered: proper names (Πολέμαρχος, Σιμωνίδης, Κλαζομένιος), rare compounds and
+  Aristotle's coinages (γνωρίζειν, πειρατέον), which no Wiktionary table holds.
+- **Defects found and fixed** (rules, each reading marked `origin: 'rule'` and saying what it did): (1) an elided stem ending in a vowel
+  (διʼ for διά) was refused by the elision regex; (2) an apostrophe set as a separate character by the edition (οὔτ ʼ) left the stem
+  unread; (3) crasis (τἀγαθόν, τἆλλα, κἀγώ) had no rule — the coronis on the first vowel now gives τό/τά or καί + the word, trying the
+  contraction's circumflex as an acute and ου as ο; (4) Euclid's and Archimedes' diagram labels (ΑΒΓ) and letter-numerals (ιϛʹ, α΄ with
+  the keraia split off by the tokenizer) counted as uncovered words — now a label reading (pos X) and a Milesian numeral reading
+  (`milesianValue`); (5) capital headings without breathings (ΑΞΙΩΜΑΤΑ) and single letters counted as monotonic evidence and made the
+  sentence Modern — no longer; (6) ἄρα (the ordinary inferential particle of Attic prose) was a Homeric mark and made Attic sentences
+  Homeric — ἄρα / ἄρ᾽ / τοι are now WEAK marks, counted only beside an Epic-only reading or a strong mark, or when the sentence before
+  was Homeric; a Homeric run continues on single evidence; (7) a sentence whose spelling shows neither system (φαίνεται.) was read as
+  Modern in a polytonic text — the analyser now remembers the period of the last sentence decided by evidence and reads on in it when
+  nothing is declared (`resetElPeriodMemory()` for tests).
+- **Treebank audit re-run after the fixes** (`docs/greek/TREEBANK-AUDIT.md`): Iliad 181 of 233 sentences Homeric (was 173), Odyssey 165
+  of 230 (161); Euthyphro 2 Homeric sentences (was 4), Sophocles 12 (17), Thucydides 1 (1); Herodotus (Ionic) 63 (56: Ionic shares its
+  forms with Epic, and the treebank's Ionic reads as Homeric about a third of the time — a known limit, el-ion is recognised on cards but
+  is not a period the decision chooses); lemma and POS agreement unchanged within 0.3 points.

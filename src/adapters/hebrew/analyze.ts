@@ -20,6 +20,7 @@ import type { AnalysisCandidate, AnalyzeOptions, AnalyzedToken, PartOfSpeech, Ra
 import { type HeIndexHit, lemmaStem, lookupHebrewForm } from './index-store';
 import { PREFIXES, decodeOshb, oshbParts } from './oshb';
 import { heMorphFromTags } from './tags';
+import { gematriaValue } from './numbers';
 import { consonantal, hasCantillation, isPointed, pointed } from './text';
 import { HE_VARIETIES } from './varieties';
 
@@ -37,11 +38,12 @@ const PERIOD_LABEL = (code: string): string => HE_VARIETIES[code]?.label ?? code
 const PEELABLE: Array<{ code: string; re: RegExp }> = [
   { code: 'c', re: /^ו[ְַָּ]*/u },
   { code: 'd', re: /^ה[ֶַָ]?/u },
-  { code: 'b', re: /^ב[ּ]?[ְִַָ]?/u },
+  // the marks in any order: NFC puts a dagesh AFTER the vowel point (בְּ is ב + ְ + ּ), the older order before it
+  { code: 'b', re: /^ב[\u05B0\u05B4\u05B7\u05B8\u05BC]{0,2}/u },
   { code: 'l', re: /^ל[ְִַָ]?/u },
-  { code: 'k', re: /^כ[ּ]?[ְַָ]?/u },
+  { code: 'k', re: /^כ[\u05B0\u05B7\u05B8\u05BC]{0,2}/u },
   { code: 'm', re: /^מ[ִֵ]?/u },
-  { code: 's', re: /^ש[ׁ]?[ֶ]?/u },
+  { code: 's', re: /^ש(?:\u05B6\u05C1|\u05C1\u05B6|\u05B6)/u },
   { code: 'i', re: /^ה[ֲ]/u },
 ];
 /** Which prefix may follow which (וְ before anything; a preposition before the article is fused, so הַ is not peeled after בְּ). */
@@ -59,6 +61,11 @@ function peelings(form: string): Peeled[] {
       const next = rest.slice(m[0].length);
       if (consonantal(next).length < 2) continue;
       out.push({ codes: [...codes, p.code], pieces: [...pieces, m[0]], rest: next });
+      // the article and שֶׁ double the next consonant (dagesh forte): the index's form of the rest has no such dagesh
+      if (p.code === 'd' || p.code === 's') {
+        const undoubled = next.replace(/^([א-ת][\u05B0-\u05BB]*)\u05BC/u, '$1');
+        if (undoubled !== next) out.push({ codes: [...codes, p.code], pieces: [...pieces, m[0]], rest: undoubled });
+      }
       if (codes.length < 2) walk(next, [...codes, p.code], [...pieces, m[0]]);
     }
   };
@@ -148,16 +155,69 @@ function hitsToCandidates(token: RawToken, allHits: HeIndexHit[], peeled?: Peele
 }
 
 /** Context-free readings of one token, best first. */
+/** The Name as the editions point it (the Masoretic text writes it with the vowels of אֲדֹנָי, with or without the holam); the first spelling an index holds is used. */
+const NAME_KEYS = ['\u05D9\u05B0\u05D4\u05D5\u05B8\u05D4', '\u05D9\u05B0\u05D4\u05B9\u05D5\u05B8\u05D4', '\u05D9\u05B0\u05D4\u05D5\u05B4\u05D4', '\u05D9\u05B1\u05D4\u05B9\u05D5\u05B4\u05D4'].map((k) => pointed(k));
+const nameHits = (): HeIndexHit[] => { for (const k of NAME_KEYS) { const h = lookupHebrewForm(k); if (h.length) return h; } return []; };
+const round = (n: number): number => Math.round(n * 100) / 100;
+const ALL_PERIODS = ['he-bib', 'he-mish', 'he-med', 'he-mod'];
+/** The Mishnaic masculine plural ending ־ִין and its Biblical / Modern counterpart ־ִים. */
+const MISHNAIC_PLURAL = /\u05B4\u05D9\u05DF$/u;
+const PLURAL_IM = '\u05B4\u05D9\u05DD';
+
+/** Readings of a written form: as written, else with attachable prefixes cut off (longest remainder first). */
+function readForm(token: RawToken, key: string): AnalysisCandidate[] {
+  const direct = lookupHebrewForm(key);
+  if (direct.length) return hitsToCandidates(token, direct);
+  for (const p of peelings(key).sort((a, b) => b.rest.length - a.rest.length)) {
+    const hits = lookupHebrewForm(p.rest);
+    if (hits.length) return hitsToCandidates(token, hits, p);
+  }
+  return [];
+}
+
+/** The Name written as the rabbinic abbreviation יי or ה׳ (with or without an attached prefix): the index's readings of the Name itself. */
+function nameAbbreviation(token: RawToken, key: string): AnalysisCandidate[] {
+  const asName = (peeled?: Peeled): AnalysisCandidate[] => hitsToCandidates(token, nameHits(), peeled).map((c) => ({
+    ...c, confidence: round(c.confidence * 0.9), origin: 'rule' as const, sourceId: HE_SOURCE_IDS.rules,
+    notes: { ...c.notes, rule: 'written יי / ה׳: the rabbinic abbreviation of the Name', source: 'rule' },
+  }));
+  if (/^\u05D4[\u05F3']$/u.test(key) || consonantal(key) === '\u05D9\u05D9') return asName();
+  for (const p of peelings(key)) if (consonantal(p.rest) === '\u05D9\u05D9') return asName(p);
+  return [];
+}
+
 export function heCandidates(token: RawToken): AnalysisCandidate[] {
   const key = token.normalized;
   if (!key) return [];
-  const direct = lookupHebrewForm(key);
-  if (direct.length) return hitsToCandidates(token, direct);
-  // nothing attested as written: cut off attachable prefixes and look up the rest (longest remainder first)
-  const peels = peelings(key).sort((a, b) => b.rest.length - a.rest.length);
-  for (const p of peels) {
-    const hits = lookupHebrewForm(p.rest).filter((h) => h.index.codes !== 'oshb' || !/^(c|d|b|l|k|m|s|i)\//.test(h.row[0]) || true);
-    if (hits.length) return hitsToCandidates(token, hits, p);
+  const read = readForm(token, key);
+  if (read.length) return read;
+  // nothing attested as written, with or without prefixes: the rules below, each saying what it did
+  // the Mishnaic masculine plural in ־ִין (Biblical and Modern ־ִים): read as the ־ִים form, which counts as Mishnaic evidence
+  if (MISHNAIC_PLURAL.test(key)) {
+    const out = readForm(token, key.replace(MISHNAIC_PLURAL, PLURAL_IM)).map((c) => ({
+      ...c, confidence: round(c.confidence * 0.8), unconfirmed: true, origin: 'rule' as const, sourceId: HE_SOURCE_IDS.rules,
+      varieties: [...new Set([...(c.varieties ?? []), 'he-mish'])],
+      notes: { ...c.notes, rule: 'Mishnaic plural ־ִין read as the ־ִים form', source: 'rule' },
+    }));
+    if (out.length) return out;
+  }
+  const name = nameAbbreviation(token, key);
+  if (name.length) return name;
+  // letters as a number: a geresh after one to three letters (ג׳), gershayim before the last letter (י״ב)
+  const numeral = /^([\u05D0-\u05EA]{1,3})[\u05F3']$/u.exec(key) ?? /^([\u05D0-\u05EA]+)[\u05F4"]([\u05D0-\u05EA])$/u.exec(key);
+  if (numeral) {
+    const letters = numeral[1] + (numeral[2] ?? '');
+    const v = gematriaValue(letters);
+    if (v !== null) return [{ lemma: letters, pos: 'NUM', morph: { NumType: 'Card' }, gloss: String(v), confidence: 0.8, varieties: [...ALL_PERIODS], notes: { rule: `letters as a number (gematria: ${v})`, source: 'rule' }, origin: 'rule', sourceId: HE_SOURCE_IDS.rules }];
+  }
+  // a pointed form the indexes do not hold as written (another pointing tradition, a defective spelling): its consonants, said so
+  if (isPointed(key)) {
+    const byLetters = (form: string, peeled?: Peeled): AnalysisCandidate[] => hitsToCandidates(token, lookupHebrewForm(consonantal(form)).filter((h) => h.viaConsonantal), peeled).map((c) => ({
+      ...c, confidence: round(c.confidence * 0.7), unconfirmed: true, notes: { ...c.notes, pointing: 'differs from the source’s form: matched by the letters only' },
+    }));
+    const whole = byLetters(key);
+    if (whole.length) return whole;
+    for (const p of peelings(key).sort((a, b) => b.rest.length - a.rest.length)) { const out = byLetters(p.rest, p); if (out.length) return out; }
   }
   return [];
 }

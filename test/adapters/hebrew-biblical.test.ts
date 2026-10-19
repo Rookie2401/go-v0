@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { heAdapter, heInstalledIndexes } from '../../src/adapters/he';
 import { installHebrewIndex, resetHebrewIndexes, type HebrewFormIndex } from '../../src/adapters/hebrew/index-store';
+import { gematriaValue } from '../../src/adapters/hebrew/numbers';
 import { decodeOshb } from '../../src/adapters/hebrew/oshb';
 import { consonantal, pointed, splitByLetters } from '../../src/adapters/hebrew/text';
 
@@ -96,6 +97,24 @@ describe('the compiled core: closed classes and the commonest words', () => {
   it('a word the core does not hold has NO reading (nothing guessed)', () => {
     expect(run('זְבוּלֻן').analyses[0].candidates.length === 0 || heInstalledIndexes().includes('oshb-tanakh')).toBe(true);
   });
+  it('rules for a form the core does not hold as written: שֶׁ cut off (שֶׁהוּא), letters as a number (ג׳, י״ב), the Name written ה׳ or יי (לַייָ), a pointing the source lacks matched by its letters (שְׁלשָׁה)', () => {
+    expect(best('שֶׁהוּא', 'שֶׁהוּא')).toMatchObject({ lemma: 'הוּא', origin: 'rule', notes: { rule: expect.stringMatching(/שֶׁ cut off by rule/) } });
+    expect(best('ג׳ שָׁעוֹת', 'ג׳')).toMatchObject({ pos: 'NUM', gloss: '3', origin: 'rule' });
+    expect(best('י״ב', 'י״ב')).toMatchObject({ pos: 'NUM', gloss: '12' });
+    expect(gematriaValue('תשפו')).toBe(786);
+    expect(gematriaValue('אב')).toBeNull(); // not descending: not a numeral
+    expect(best("ה' אֱלֹהִים", "ה'")).toMatchObject({ origin: 'rule', notes: { rule: expect.stringMatching(/abbreviation of the Name/) } });
+    const name = best('לַייָ', 'לַייָ');
+    expect(name).toMatchObject({ origin: 'rule', notes: { rule: expect.stringMatching(/abbreviation of the Name/) } });
+    expect(name.parts?.[0]).toMatchObject({ lemma: 'לְ', kind: 'clitic' });
+    expect(best('שְׁלשָׁה', 'שְׁלשָׁה')).toMatchObject({ lemma: 'שָׁלוֹשׁ', unconfirmed: true, notes: { pointing: expect.stringMatching(/differs from the source/) } });
+  });
+  it('a prefix peels whatever order its marks are in: NFC puts the dagesh after the vowel (בְּ), and the article’s doubling dagesh is dropped from the rest', () => {
+    expect(best('בְּבַיִת', 'בְּבַיִת')).toMatchObject({ lemma: 'בַּיִת', origin: 'dictionary' }); // attested as written: the source's own reading, no rule
+    const b = best('בְּאֱלֹהִים', 'בְּאֱלֹהִים'); // this pointing is not attested: the prefix is cut off by rule
+    expect(b).toMatchObject({ lemma: 'אֱלֹהִים', origin: 'rule' });
+    expect(b.parts?.[0]).toMatchObject({ lemma: 'בְּ', kind: 'clitic' });
+  });
   it('relate: same / inflection / none', () => {
     expect(heAdapter.relate('אֱלֹהִ֑ים', 'אֱלֹהִים')).toBe('same');
     expect(heAdapter.relate('וַיֹּ֥אמֶר', 'אָמַ֣ר')).toBe('inflection');
@@ -155,6 +174,14 @@ describe.skipIf(!fs.existsSync(FULL_BIB) || !fs.existsSync(FULL_MOD))('with the 
     expect(c).toMatchObject({ lemma: 'כָּתַב', pos: 'VERB', morph: { Conj: 'Past', Person: '1', Number: 'Sing', VerbForm: 'Fin' } });
   });
 
+  it('the Mishnaic plural ־ִין is read as the ־ִים form the tables hold, marked as a rule and counted as Mishnaic evidence', () => {
+    const c = best('חַיָּבִין', 'חַיָּבִין');
+    expect(c).toMatchObject({ lemma: 'חַיָּב', origin: 'rule', unconfirmed: true, notes: { rule: expect.stringMatching(/Mishnaic plural/) } });
+    expect(c.varieties).toContain('he-mish');
+  });
+  it('the prefix morphemes OSHB cites by a letter have Hebrew headwords and glosses in the index (לוֹ is לְ "to, for", not "l")', () => {
+    expect(best('וַיֹּאמֶר לוֹ', 'לוֹ')).toMatchObject({ lemma: 'לְ', gloss: 'to, for', pos: 'ADP' });
+  });
   it('the Variants tab: כָּתַב is attested in the Tanakh and in the Modern tables; Mishnaic and Medieval say "not in our sources"', () => {
     const v = heAdapter.variants!('כָּתַב', 'VERB', 'כָּתַ֣ב');
     expect(v?.rows.map((r) => [r.varietyId, r.status])).toEqual([['he-bib', 'attested'], ['he-mish', 'not-in-sources'], ['he-med', 'not-in-sources'], ['he-mod', 'attested']]);

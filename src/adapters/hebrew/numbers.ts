@@ -35,3 +35,28 @@ export function heNumberToWords(n: number): string | null {
   const r = n % 1000;
   return r ? `${thousands(th)} ${r < 11 ? 'ו' : ''}${below1000(r)}` : thousands(th);
 }
+
+/** The letters as numbers (gematria): א–ט 1–9, י–צ 10–90, ק–ת 100–400; a final letter counts as its ordinary form. */
+const GEMATRIA: Record<string, number> = {
+  'א': 1, 'ב': 2, 'ג': 3, 'ד': 4, 'ה': 5, 'ו': 6, 'ז': 7, 'ח': 8, 'ט': 9, 'י': 10, 'כ': 20, 'ך': 20, 'ל': 30, 'מ': 40, 'ם': 40, 'נ': 50, 'ן': 50,
+  'ס': 60, 'ע': 70, 'פ': 80, 'ף': 80, 'צ': 90, 'ץ': 90, 'ק': 100, 'ר': 200, 'ש': 300, 'ת': 400,
+};
+
+/**
+ * The value of letters written as a number (ג׳ 3, י״ב 12, תשפ״ו 786): the sum of the letters, which a well-formed numeral writes from the
+ * largest; ט״ו and ט״ז (15, 16) are the customary spellings that avoid the Name. null for anything that is not Hebrew letters only, or
+ * for letters that do not descend. The geresh / gershayim are not part of the input.
+ */
+export function gematriaValue(letters: string): number | null {
+  const s = letters.normalize('NFC').replace(/[\u0591-\u05C7]/g, '');
+  if (!s || s.length > 5 || !/^[א-ת]+$/u.test(s)) return null;
+  let total = 0;
+  let last = Infinity;
+  for (const ch of s) {
+    const v = GEMATRIA[ch];
+    if (v === undefined) return null;
+    if (v > last) return null;
+    total += v; last = v;
+  }
+  return total;
+}

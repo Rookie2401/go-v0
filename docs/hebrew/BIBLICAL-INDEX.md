@@ -1,4 +1,4 @@
-# Biblical Hebrew form index — build of 2026-10-18
+# Biblical Hebrew form index — build of 2026-10-19
 
 Built by `npm run he:build-biblical` from the Biblia app's shipped data (`C:/Users/CJWal/dev/biblia-v0`): the Miqra according to the Masorah text
 (CC BY-SA 4.0, via Sefaria, fetched 2026-09-20) aligned with the Open Scriptures Hebrew Bible morphology

@@ -8,7 +8,9 @@ import fs from 'node:fs';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { elAdapter, elInstalledIndexes } from '../../src/adapters/el';
 import { installGreekIndex, resetGreekIndexes, type GreekFormIndex } from '../../src/adapters/greek/index-store';
+import { resetElPeriodMemory } from '../../src/adapters/greek/analyze';
 import { decodeMorphGnt } from '../../src/adapters/greek/morphgnt';
+import { milesianValue } from '../../src/adapters/greek/numbers';
 import { transliterateGreek } from '../../src/adapters/greek/pronunciation';
 import { bare, elKey, toMonotonic } from '../../src/adapters/greek/text';
 
@@ -77,6 +79,21 @@ describe('the compiled Koine core', () => {
   it('a word the core does not hold has NO reading', () => {
     expect(run('Πηληϊάδεω').analyses[0].candidates).toEqual([]);
   });
+  it('rules for a form no index holds, each marked as a rule: an elided stem ending in a vowel (διʼ), an apostrophe the edition set apart (οὔτ), crasis (τἀγαθόν), a diagram label (ΑΒΓ), letters with a keraia (ιϛʹ, α΄)', () => {
+    expect(best('διʼ ἡμῶν', 'διʼ')).toMatchObject({ lemma: 'διά', origin: 'rule', notes: { rule: expect.stringMatching(/elided/) } });
+    expect(best('οὔτ ἄλλο', 'οὔτ')).toMatchObject({ lemma: 'οὔτε', origin: 'rule', unconfirmed: true, notes: { rule: expect.stringMatching(/apostrophe is a separate character/) } });
+    expect(best('τἀγαθόν', 'τἀγαθόν')).toMatchObject({ lemma: 'ἀγαθός', origin: 'rule', unconfirmed: true, notes: { rule: expect.stringMatching(/^crasis: τό \/ τά \+ ἀγαθόν/) } });
+    expect(best('ΑΒΓ τρίγωνον', 'ΑΒΓ')).toMatchObject({ pos: 'X', origin: 'rule', unconfirmed: true, gloss: expect.stringMatching(/diagram label/) });
+    expect(best('ιϛʹ', 'ιϛʹ')).toMatchObject({ pos: 'NUM', gloss: '16', origin: 'rule' });
+    expect(run('α΄.').analyses[0].candidates[0]).toMatchObject({ pos: 'NUM', gloss: '1' }); // the keraia split off by the tokenizer: the next token says so
+    expect(milesianValue('ρν')).toBe(150);
+    expect(milesianValue('αα')).toBeNull();
+    expect(elAdapter.analyze(elAdapter.tokenize('ξυλον')).every((a) => a.candidates.every((c) => c.pos !== 'X'))).toBe(true); // a lower-case word is never a label
+  });
+  it('ἄρα and τοι are not Homeric evidence: an Attic sentence with ἄρα is not read as Homeric', () => {
+    const r = run('ἔστιν ἄρα τὸ ἀγαθὸν κοινόν τι.');
+    expect(r.analyses[0].candidates[0].notes?.period).not.toBe('el-hom');
+  });
   it('pronunciation: three named conventions for an ancient word, one for a Modern one', () => {
     expect(transliterateGreek('λόγος', 'modern')).toBe('loɣos');
     expect(transliterateGreek('λόγος', 'erasmian')).toBe('logos');
@@ -123,6 +140,20 @@ describe.skipIf(!FULL.every((f) => fs.existsSync(f)))('with the full indexes ins
     expect(run('λόγος', 'el-att').analyses[0].candidates[0].notes).toMatchObject({ period: 'el-att' });
     expect(run('λόγος', 'el-koi').analyses[0].candidates[0].notes).toMatchObject({ period: 'el-koi' });
     expect(best(MODERN, 'λόγος', 'el-koi').notes).toMatchObject({ period: 'el-mod' }); // monotonic text with Modern readings stays Modern
+  });
+  it('a sentence whose spelling shows neither system (λόγος.) is read on in the period of the sentence before; with nothing before, as Modern', () => {
+    resetElPeriodMemory();
+    expect(run('λόγος.').analyses[0].candidates[0].notes).toMatchObject({ period: 'el-mod' });
+    run(JOHN_1_1); // decided by its polytonic marks
+    expect(run('λόγος.').analyses[0].candidates[0].notes).toMatchObject({ period: 'el-koi', periodBasis: expect.stringMatching(/period of the sentence before/) });
+    expect(run('λόγος.', 'el-att').analyses[0].candidates[0].notes).toMatchObject({ period: 'el-att' }); // a declared variety still comes first
+    resetElPeriodMemory();
+  });
+  it('a capital heading without breathings (ΑΞΙΩΜΑΤΑ) and a letter-numeral are not monotonic evidence', () => {
+    resetElPeriodMemory();
+    run(ILIAD_1_1);
+    expect(run('ΑΞΙΩΜΑΤΑ α΄.').analyses[0].candidates[0]?.notes?.period ?? 'none').not.toBe('el-mod');
+    resetElPeriodMemory();
   });
   it('the Variants tab for λόγος: Attic, Koine (with Septuagint count) and Modern attested; Homeric and Medieval honest about their sources', () => {
     const v = elAdapter.variants!('λόγος', 'NOUN', 'λόγος');

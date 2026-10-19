@@ -30,6 +30,7 @@
     "el:build-modern": "vite-node --config scripts/vite.config.ts scripts/el-build-kaikki.mts --lang el",
     "el:audit-treebank": "vite-node --config scripts/vite.config.ts scripts/el-audit-treebank.mts",
     "scripture:audit-first-reading": "vite-node --config scripts/vite.config.ts scripts/scripture-audit-first-reading.mts",
+    "texts:audit-plain": "vite-node --config scripts/vite.config.ts scripts/texts-audit-plain.mts",
     "biblia:import": "vite-node --config scripts/vite.config.ts scripts/biblia-import.mts",
     "biblia:dev": "vite -c packages/biblia/vite.config.ts --port 5199",
     "biblia:build": "vite build -c packages/biblia/vite.config.ts",

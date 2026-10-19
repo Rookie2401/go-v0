@@ -45,3 +45,20 @@ Readings of the chosen period go first on every word; none is removed; every rea
   tapped token is put first (`ParseContext.gold`); the analyser's reading stays as the alternative.
 - No independent Hebrew gold exists in the repository (the Open Scriptures morphology IS the index's source); rabbinic Hebrew has not been
   audited: no Mishnaic text is on disk (permission to fetch one from Sefaria is requested in the owner report).
+
+## Rabbinic audit and the fixes it led to (2026-10-19, later)
+
+- **Mishnah Berakhot and Pirkei Avot** (Sefaria, Torat Emet 357, public domain, pointed; approved download, `data/raw/audit-texts/sefaria`;
+  `npm run texts:audit-plain`): `docs/hebrew/RABBINIC-AUDIT.md`. Before the fixes 81.6 % / 80.2 % of word tokens had a reading; after them
+  94.6 % / 93.2 %. With nothing declared the sentences read as Biblical (the text is fully pointed) or Modern; with Mishnaic declared, the
+  sentences with a Mishnaic-labelled reading read as Mishnaic (73 of 171, 83 of 234). No Mishnaic index exists; what stays uncovered is
+  rabbinic lexis and names (שַׁמַּאי, רַבָּן, רַשַּׁאי, הַבְּרִיּוֹת, שָׁעוֹת) and the Aramaic-shaped forms; a tagged rabbinic corpus is what would cover them.
+- **Defects found and fixed**: (1) the prefix regexes expected the dagesh BEFORE the vowel point, but NFC puts it after (בְּ is ב + ְ + ּ), so
+  בְּ, כְּ and שֶׁ never peeled — any order is accepted now; (2) the article's and שֶׁ's doubling dagesh in the next letter kept the rest
+  from matching (שֶׁנֶּאֱמַר) — a variant without it is tried; (3) the Mishnaic masculine plural ־ִין (מְבָרְכִין, חַיָּבִין) had no rule — read
+  as the ־ִים form, marked unconfirmed, and counted as Mishnaic evidence for the period; (4) the Name written יי or ה׳ (לַייָ) had no reading
+  — the index's readings of the Name, marked as the rabbinic abbreviation; (5) letters as numbers (ג׳, י״ב) had no reading — `gematriaValue`;
+  (6) a pointed form the indexes lack as written (שְׁלשָׁה, the defective spelling) got nothing — now matched by its letters, marked
+  "pointing differs from the source's form", unconfirmed; (7) the prefix morphemes OSHB cites by a letter (l in לוֹ, b, k, m) had the code
+  letter as their headword in the index and on cards — the Biblical index and core were rebuilt with their Hebrew headwords and glosses
+  (לְ "to, for"; same core size: 441 lemmas, 6,994 forms).

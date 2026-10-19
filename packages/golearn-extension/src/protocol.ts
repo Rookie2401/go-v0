@@ -233,7 +233,7 @@ export function cleanText(v: unknown, max = 400): string | undefined {
 // ───────────────────────────── language names ─────────────────────────────
 
 const LANGUAGE_NAMES: Record<string, string> = {
-  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', nb: 'Norwegian (Bokmål)', nn: 'Norwegian (Nynorsk)',
+  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', nb: 'Norwegian (Bokmål)', nn: 'Norwegian (Nynorsk)', la: 'Latin',
 };
 /** A learner-facing name for a language id; the id itself when the name is not known. */
 export const languageNameOf = (id: string): string => LANGUAGE_NAMES[id] ?? id;

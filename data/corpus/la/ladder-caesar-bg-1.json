@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 2,
+  "id": "ladder-caesar-bg-1",
+  "lang": "la",
+  "title": "De bello Gallico I, 1–7",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "lit-la",
+    "kind": "comprehensible-input",
+    "title": "Latin literature"
+  },
+  "source": {
+    "id": "src:la:ladder-caesar-bg-1",
+    "title": "Commentarii de bello Gallico, Liber I (chapters 1-7)",
+    "author": "Gaius Iulius Caesar",
+    "date": "c. 58-50 BC",
+    "url": "https://la.wikisource.org/wiki/Commentarii_de_bello_Gallico/Liber_I",
+    "edition": "Latin Wikisource edition with vowel length marked (macrons)",
+    "attribution": "Gaius Iulius Caesar, Commentarii de bello Gallico I (c. 50 BC), public domain. Text with macrons: Latin Wikisource (Vicifons), CC BY-SA 4.0.",
+    "provenance": "Taken by scripts/corpus-la-build.mts from the Latin Wikisource page, held by romance-v0/data/la/caesar-bg-1.text.json (SHA-256 0194ad6cdfb9dc822d53a0e67bc94c221e1ea66208e4d0e68f56cd89d30ca637). Nothing was retyped. The edition marks vowel length (macrons) and they are kept. The source's hard line breaks inside a paragraph are joined with a space; chapters 1-7 only; split into sentences at \".\" \"?\" \"!\".",
+    "rights": "public-domain",
+    "licenseNote": "Caesar’s text is in the public domain. The Wikisource edition (macrons, transcription) is offered under CC BY-SA 4.0; the source is named here and on the text.",
+    "authorship": "public-domain",
+    "sourceHash": "0194ad6cdfb9dc822d53a0e67bc94c221e1ea66208e4d0e68f56cd89d30ca637",
+    "licence": "public domain; edition CC BY-SA 4.0",
+    "modifications": "Line breaks joined; split into sentences; chapters 1-7 only."
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Copied mechanically from the Wikisource edition; not proofread against a printed edition."
+  },
+  "difficulty": "B2",
+  "topics": [
+    "history",
+    "caesar",
+    "gaul"
+  ],
+  "editorialTags": [
+    "classical",
+    "macronised"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "caesar-de-bello-gallico-1",
+    "chapter": {
+      "index": 1,
+      "title": "De bello Gallico I, 1–7"
+    }
+  },
+  "streams": [
+    "library"
+  ],
+  "sections": [
+    {
+      "title": "Caput 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "bg1.1.1",
+              "text": "Gallia est omnis dīvīsa in partēs trēs, quārum ūnam incolunt Belgae, aliam Aquītānī, tertiam quī ipsōrum linguā Celtae, nostrā Gallī appellantur."
+            },
+            {
+              "id": "bg1.1.2",
+              "text": "Hī omnēs linguā, īnstitūtīs, lēgibus inter sē differunt."
+            },
+            {
+              "id": "bg1.1.3",
+              "text": "Gallōs ab Aquītānīs Garumna flūmen, ā Belgīs Mātrona et Sēquana dīvidit."
+            },
+            {
+              "id": "bg1.1.4",
+              "text": "Hōrum omnium fortissimī sunt Belgae, proptereā quod ā cultū atque hūmānitāte prōvinciae longissimē absunt, minimēque ad eōs mercātōrēs saepe commeant atque ea quae ad effēminandōs animōs pertinent important, proximīque sunt Germānīs, quī trāns Rhēnum incolunt, quibuscum continenter bellum gerunt."
+            },
+            {
+              "id": "bg1.1.5",
+              "text": "Quā dē causā Helvētiī quoque reliquōs Gallōs virtūte praecēdunt, quod fere cotīdiānīs proeliīs cum Germānīs contendunt, cum aut suīs fīnibus eōs prohibent aut ipsī in eōrum fīnibus bellum gerunt."
+            },
+            {
+              "id": "bg1.1.6",
+              "text": "Eōrum ūna, pars, quam Gallōs obtinēre dictum est, initium capit ā flūmine Rhodano, continētur Garumna flūmine, Ōceanō, fīnibus Belgārum, attingit etiam ab Sēquanīs et Helvētiīs flūmen Rhēnum, vergit ad septentriōnēs."
+            },
+            {
+              "id": "bg1.1.7",
+              "text": "Belgae ab extrēmīs Galliae fīnibus oriuntur, pertinent ad īnferiōrem partem flūminis Rhēnī, spectant in septentriōnem et orientem sōlem."
+            },
+            {
+              "id": "bg1.1.8",
+              "text": "Aquītānia ā Garumnā flūmine ad Pȳrēnaeōs montēs et eam partem Ōceanī quae est ad Hispāniam pertinet; spectat inter occāsum sōlis et septentriōnēs."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Caput 2",
+      "chapter": 2,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "bg1.2.1",
+              "text": "Apud Helvētiōs longē nōbilissimus fuit et dītissimus Orgetorīx."
+            },
+            {
+              "id": "bg1.2.2",
+              "text": "Is M. Messālā, [et P.] M. Pīsōne cōnsulibus rēgnī cupiditāte inductus coniūrātiōnem nōbilitātis fēcit et cīvitātī persuāsit ut dē fīnibus suīs cum omnibus cōpiīs exīrent: perfacile esse, cum virtūte omnibus praestārent, tōtīus Galliae imperiō potīrī."
+            },
+            {
+              "id": "bg1.2.3",
+              "text": "Id hōc facilius iīs persuāsit, quod undique locī nātūrā Helvētiī continentur: ūnā ex parte flūmine Rhēnō lātissimō atque altissimō, quī agrum Helvētium ā Germānīs dīvidit; alterā ex parte monte Iūrā altissimō, quī est inter Sēquanōs et Helvētiōs; tertiā lacū Lemannō et flūmine Rhodanō, quī prōvinciam nostram ab Helvētiīs dīvidit."
+            },
+            {
+              "id": "bg1.2.4",
+              "text": "Hīs rēbus fīēbat ut et minus lātē vagārentur et minus facile fīnitimīs bellum īnferre possent; quā ex parte hominēs bellandī cupidī magnō dolōre adficiēbantur."
+            },
+            {
+              "id": "bg1.2.5",
+              "text": "Prō multitūdine autem hominum et prō glōriā bellī atque fortitūdinis angustōs sē fīnēs habēre arbitrābantur, quī in longitūdinem mīlia passuum CCXL, in lātitūdinem CLXXX patēbant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Caput 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "bg1.3.1",
+              "text": "Hīs rēbus adductī et auctōritāte Orgetorīgis permōtī cōnstituērunt ea quae ad proficīscendum pertinērent comparāre, iūmentōrum et carrōrum quam maximum numerum coëmere, sēmentēs quam maximās facere, ut in itinere cōpia frūmentī suppeteret, cum proximīs cīvitātibus pācem et amīcitiam cōnfirmāre."
+            },
+            {
+              "id": "bg1.3.2",
+              "text": "Ad eās rēs cōnficiendās biennium sibi satis esse dūxērunt; in tertium annum profectiōnem lēge cōnfirmant."
+            },
+            {
+              "id": "bg1.3.3",
+              "text": "Ad eās rēs cōnficiendās Orgetorīx dēligitur."
+            },
+            {
+              "id": "bg1.3.4",
+              "text": "Is sibi lēgātiōnem ad cīvitātēs suscipit."
+            },
+            {
+              "id": "bg1.3.5",
+              "text": "In eō itinere persuādet Casticō, Catamantāloedis fīliō, Sēquanō, cuius pater rēgnum in Sēquanīs multōs annōs obtinuerat et ā senātū populī Rōmānī amīcus appellātus erat, ut rēgnum in cīvitāte suā occupāret, quod pater ante habuerit; itemque Dumnorīgī Haeduō, frātrī Dīviciācī, quī eō tempore prīncipātum in cīvitāte obtinēbat ac maximē plēbī acceptus erat, ut idem cōnārētur persuādet eīque fīliam suam in mātrimōnium dat."
+            },
+            {
+              "id": "bg1.3.6",
+              "text": "Perfacile factū esse illīs probat cōnāta perficere, proptereā quod ipse suae cīvitātis imperium obtentūrus esset: nōn esse dubium quīn tōtīus Galliae plūrimum Helvētiī possent; sē suīs cōpiīs suōque exercitū illīs rēgna conciliātūrum cōnfirmat."
+            },
+            {
+              "id": "bg1.3.7",
+              "text": "Hāc ōrātiōne adductī inter sē fīdem et iūs iūrandum dant et rēgnō occupātō per trēs potentissimōs ac firmissimōs populōs tōtīus Galliae sēsē potīrī posse spērant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Caput 4",
+      "chapter": 4,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "bg1.4.1",
+              "text": "Ea res est Helvetiis per indicium enuntiata."
+            },
+            {
+              "id": "bg1.4.2",
+              "text": "Moribus suis Orgetoricem ex vinculis causam dicere coegerunt; damnatum poenam sequi oportebat, ut igni cremaretur."
+            },
+            {
+              "id": "bg1.4.3",
+              "text": "Die constituta causae dictionis Orgetorix ad iudicium omnem suam familiam, ad hominum milia decem, undique coegit, et omnes clientes obaeratosque suos, quorum magnum numerum habebat, eodem conduxit; per eos ne causam diceret se eripuit."
+            },
+            {
+              "id": "bg1.4.4",
+              "text": "Cum civitas ob eam rem incitata armis ius suum exequi conaretur multitudinemque hominum ex agris magistratus cogerent, Orgetorix mortuus est; neque abest suspicio, ut Helvetii arbitrantur, quin ipse sibi mortem consciverit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Caput 5",
+      "chapter": 5,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "bg1.5.1",
+              "text": "Post eius mortem nihilo minus Helvetii id quod constituerant facere conantur, ut e finibus suis exeant."
+            },
+            {
+              "id": "bg1.5.2",
+              "text": "Ubi iam se ad eam rem paratos esse arbitrati sunt, oppida sua omnia, numero ad duodecim, vicos ad quadringentos, reliqua privata aedificia incendunt; frumentum omne, praeter quod secum portaturi erant, comburunt, ut domum reditionis spe sublata paratiores ad omnia pericula subeunda essent; trium mensum molita cibaria sibi quemque domo efferre iubent."
+            },
+            {
+              "id": "bg1.5.3",
+              "text": "Persuadent Rauracis et Tulingis et Latobrigis finitimis, uti eodem usi consilio oppidis suis vicisque exustis una cum iis proficiscantur, Boiosque, qui trans Rhenum incoluerant et in agrum Noricum transierant Noreiamque oppugnabant, receptos ad se socios sibi adsciscunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Caput 6",
+      "chapter": 6,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "bg1.6.1",
+              "text": "Erant omnino itinera duo, quibus itineribus domo exire possent: unum per Sequanos, angustum et difficile, inter montem Iuram et flumen Rhodanum, vix qua singuli carri ducerentur, mons autem altissimus impendebat, ut facile perpauci prohibere possent; alterum per provinciam nostram, multo facilius atque expeditius, propterea quod inter fines Helvetiorum et Allobrogum, qui nuper pacati erant, Rhodanus fluit isque non nullis locis vado transitur."
+            },
+            {
+              "id": "bg1.6.2",
+              "text": "Extremum oppidum Allobrogum est proximumque Helvetiorum finibus Genava."
+            },
+            {
+              "id": "bg1.6.3",
+              "text": "Ex eo oppido pons ad Helvetios pertinet."
+            },
+            {
+              "id": "bg1.6.4",
+              "text": "Allobrogibus sese vel persuasuros, quod nondum bono animo in populum Romanum viderentur, existimabant vel vi coacturos ut per suos fines eos ire paterentur."
+            },
+            {
+              "id": "bg1.6.5",
+              "text": "Omnibus rebus ad profectionem comparatis diem dicunt, qua die ad ripam Rhodani omnes conveniant."
+            },
+            {
+              "id": "bg1.6.6",
+              "text": "Is dies erat a. d. V. Kal. Apr. L. Pisone, A. Gabinio consulibus."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Caput 7",
+      "chapter": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "bg1.7.1",
+              "text": "Caesari cum id nuntiatum esset, eos per provinciam nostram iter facere conari, maturat ab urbe proficisci et quam maximis potest itineribus in Galliam ulteriorem contendit et ad Genavam pervenit."
+            },
+            {
+              "id": "bg1.7.2",
+              "text": "Provinciae toti quam maximum potest militum numerum imperat (erat omnino in Gallia ulteriore legio una), pontem, qui erat ad Genavam, iubet rescindi."
+            },
+            {
+              "id": "bg1.7.3",
+              "text": "Ubi de eius adventu Helvetii certiores facti sunt, legatos ad eum mittunt nobilissimos civitatis, cuius legationis Nammeius et Verucloetius principem locum obtinebant, qui dicerent sibi esse in animo sine ullo maleficio iter per provinciam facere, propterea quod aliud iter haberent nullum: rogare ut eius voluntate id sibi facere liceat."
+            },
+            {
+              "id": "bg1.7.4",
+              "text": "Caesar, quod memoria tenebat L. Cassium consulem occisum exercitumque eius ab Helvetiis pulsum et sub iugum missum, concedendum non putabat; neque homines inimico animo, data facultate per provinciam itineris faciundi, temperaturos ab iniuria et maleficio existimabat."
+            },
+            {
+              "id": "bg1.7.5",
+              "text": "Tamen, ut spatium intercedere posset dum milites quos imperaverat convenirent, legatis respondit diem se ad deliberandum sumpturum: si quid vellent, ad Id. April. reverterentur."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 2,
+  "id": "vulgate-gen-1",
+  "lang": "la",
+  "title": "Genesis 1",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-la-clementine",
+    "kind": "scripture",
+    "title": "Biblia Sacra Vulgata (Clementine, 1592)"
+  },
+  "source": {
+    "id": "src:la:vulgate-gen-1",
+    "title": "Biblia Sacra Vulgata, Clementine edition (1592)",
+    "edition": "Clementine Vulgate 1592",
+    "attribution": "Biblia Sacra Vulgata, editio Clementina (1592), public domain. USFX text from seven1m/open-bibles, held by the Vetus V0 app.",
+    "provenance": "Taken verse by verse from vetus-v0/data/vulgate/lat-clementine.usfx.xml (SHA-256 5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf) by scripts/corpus-la-build.mts; nothing was retyped. Clementine spelling kept (ae ligatures as printed, i/j and u/v as printed, no macrons). One verse is one sentence (the verse is not split, although it may hold several clauses or sentences), so every sentence is addressable by its reference. The text has not been compared with a second, independent edition.",
+    "url": "https://github.com/seven1m/open-bibles",
+    "rights": "public-domain",
+    "licenseNote": "The Clementine Vulgate (1592) is in the public domain. The USFX file comes from seven1m/open-bibles (Bible texts that are public domain or openly licensed).",
+    "authorship": "public-domain",
+    "sourceHash": "5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf",
+    "licence": "public domain",
+    "modifications": "none: each sentence is exactly one verse of the source (surrounding whitespace trimmed)."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-la-scripture.mts",
+    "reviewedAt": "2026-10-17",
+    "notes": "Wording verified by byte-comparison against the Clementine USFX file it was copied from (a copy-integrity check, not a second edition)."
+  },
+  "topics": [
+    "scripture",
+    "genesis-1",
+    "creation"
+  ],
+  "editorialTags": [
+    "clementine-orthography"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "vulgata-clementina",
+    "chapter": {
+      "index": 1,
+      "title": "Genesis 1"
+    }
+  },
+  "streams": [
+    "scripture"
+  ],
+  "scripture": {
+    "translationId": "latVulgClementine",
+    "translationName": "Biblia Sacra Vulgata (Clementine, 1592)",
+    "edition": "Clementine Vulgate 1592",
+    "book": "GEN",
+    "chapter": 1,
+    "verification": {
+      "against": "seven1m/open-bibles Clementine USFX (lat-clementine.usfx.xml, as held by vetus-v0)",
+      "url": "https://github.com/seven1m/open-bibles",
+      "checkedAt": "2026-10-17",
+      "method": "byte-comparison",
+      "by": "scripts/verify-la-scripture.mts"
+    }
+  },
+  "english": {
+    "source": "World English Bible (public domain), eBible.org eng-web, copied verbatim from the German/Hindi corpora for the verses they carry"
+  },
+  "sections": [
+    {
+      "title": "Genesis 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "GEN.1.1",
+              "text": "In principio creavit Deus cælum et terram.",
+              "english": "In the beginning, God created the heavens and the earth.",
+              "verseRefs": [
+                "GEN.1.1"
+              ]
+            },
+            {
+              "id": "GEN.1.2",
+              "text": "Terra autem erat inanis et vacua, et tenebræ erant super faciem abyssi : et spiritus Dei ferebatur super aquas.",
+              "english": "The earth was formless and empty. Darkness was on the surface of the deep and God’s Spirit was hovering over the surface of the waters.",
+              "verseRefs": [
+                "GEN.1.2"
+              ]
+            },
+            {
+              "id": "GEN.1.3",
+              "text": "Dixitque Deus : Fiat lux. Et facta est lux.",
+              "english": "God said, “Let there be light,” and there was light.",
+              "verseRefs": [
+                "GEN.1.3"
+              ]
+            },
+            {
+              "id": "GEN.1.4",
+              "text": "Et vidit Deus lucem quod esset bona : et divisit lucem a tenebris.",
+              "english": "God saw the light, and saw that it was good. God divided the light from the darkness.",
+              "verseRefs": [
+                "GEN.1.4"
+              ]
+            },
+            {
+              "id": "GEN.1.5",
+              "text": "Appellavitque lucem Diem, et tenebras Noctem : factumque est vespere et mane, dies unus.",
+              "english": "God called the light “day”, and the darkness he called “night”. There was evening and there was morning, the first day.",
+              "verseRefs": [
+                "GEN.1.5"
+              ]
+            },
+            {
+              "id": "GEN.1.6",
+              "text": "Dixit quoque Deus : Fiat firmamentum in medio aquarum : et dividat aquas ab aquis.",
+              "english": "God said, “Let there be an expanse in the middle of the waters, and let it divide the waters from the waters.”",
+              "verseRefs": [
+                "GEN.1.6"
+              ]
+            },
+            {
+              "id": "GEN.1.7",
+              "text": "Et fecit Deus firmamentum, divisitque aquas, quæ erant sub firmamento, ab his, quæ erant super firmamentum. Et factum est ita.",
+              "english": "God made the expanse, and divided the waters which were under the expanse from the waters which were above the expanse; and it was so.",
+              "verseRefs": [
+                "GEN.1.7"
+              ]
+            },
+            {
+              "id": "GEN.1.8",
+              "text": "Vocavitque Deus firmamentum, Cælum : et factum est vespere et mane, dies secundus.",
+              "english": "God called the expanse “sky”. There was evening and there was morning, a second day.",
+              "verseRefs": [
+                "GEN.1.8"
+              ]
+            },
+            {
+              "id": "GEN.1.9",
+              "text": "Dixit vero Deus : Congregentur aquæ, quæ sub cælo sunt, in locum unum : et appareat arida. Et factum est ita.",
+              "english": "God said, “Let the waters under the sky be gathered together to one place, and let the dry land appear;” and it was so.",
+              "verseRefs": [
+                "GEN.1.9"
+              ]
+            },
+            {
+              "id": "GEN.1.10",
+              "text": "Et vocavit Deus aridam Terram, congregationesque aquarum appellavit Maria. Et vidit Deus quod esset bonum.",
+              "english": "God called the dry land “earth”, and the gathering together of the waters he called “seas”. God saw that it was good.",
+              "verseRefs": [
+                "GEN.1.10"
+              ]
+            },
+            {
+              "id": "GEN.1.11",
+              "text": "Et ait : Germinet terra herbam virentem, et facientem semen, et lignum pomiferum faciens fructum juxta genus suum, cujus semen in semetipso sit super terram. Et factum est ita.",
+              "english": "God said, “Let the earth yield grass, herbs yielding seeds, and fruit trees bearing fruit after their kind, with their seeds in it, on the earth;” and it was so.",
+              "verseRefs": [
+                "GEN.1.11"
+              ]
+            },
+            {
+              "id": "GEN.1.12",
+              "text": "Et protulit terra herbam virentem, et facientem semen juxta genus suum, lignumque faciens fructum, et habens unumquodque sementem secundum speciem suam. Et vidit Deus quod esset bonum.",
+              "english": "The earth yielded grass, herbs yielding seed after their kind, and trees bearing fruit, with their seeds in it, after their kind; and God saw that it was good.",
+              "verseRefs": [
+                "GEN.1.12"
+              ]
+            },
+            {
+              "id": "GEN.1.13",
+              "text": "Et factum est vespere et mane, dies tertius.",
+              "english": "There was evening and there was morning, a third day.",
+              "verseRefs": [
+                "GEN.1.13"
+              ]
+            },
+            {
+              "id": "GEN.1.14",
+              "text": "Dixit autem Deus : Fiant luminaria in firmamento cæli, et dividant diem ac noctem, et sint in signa et tempora, et dies et annos :",
+              "english": "God said, “Let there be lights in the expanse of the sky to divide the day from the night; and let them be for signs to mark seasons, days, and years;",
+              "verseRefs": [
+                "GEN.1.14"
+              ]
+            },
+            {
+              "id": "GEN.1.15",
+              "text": "ut luceant in firmamento cæli, et illuminent terram. Et factum est ita.",
+              "english": "and let them be for lights in the expanse of the sky to give light on the earth;” and it was so.",
+              "verseRefs": [
+                "GEN.1.15"
+              ]
+            },
+            {
+              "id": "GEN.1.16",
+              "text": "Fecitque Deus duo luminaria magna : luminare majus, ut præesset diei : et luminare minus, ut præesset nocti : et stellas.",
+              "english": "God made the two great lights: the greater light to rule the day, and the lesser light to rule the night. He also made the stars.",
+              "verseRefs": [
+                "GEN.1.16"
+              ]
+            },
+            {
+              "id": "GEN.1.17",
+              "text": "Et posuit eas in firmamento cæli, ut lucerent super terram,",
+              "english": "God set them in the expanse of the sky to give light to the earth,",
+              "verseRefs": [
+                "GEN.1.17"
+              ]
+            },
+            {
+              "id": "GEN.1.18",
+              "text": "et præessent diei ac nocti, et dividerent lucem ac tenebras. Et vidit Deus quod esset bonum.",
+              "english": "and to rule over the day and over the night, and to divide the light from the darkness. God saw that it was good.",
+              "verseRefs": [
+                "GEN.1.18"
+              ]
+            },
+            {
+              "id": "GEN.1.19",
+              "text": "Et factum est vespere et mane, dies quartus.",
+              "english": "There was evening and there was morning, a fourth day.",
+              "verseRefs": [
+                "GEN.1.19"
+              ]
+            },
+            {
+              "id": "GEN.1.20",
+              "text": "Dixit etiam Deus : Producant aquæ reptile animæ viventis, et volatile super terram sub firmamento cæli.",
+              "english": "God said, “Let the waters abound with living creatures, and let birds fly above the earth in the open expanse of the sky.”",
+              "verseRefs": [
+                "GEN.1.20"
+              ]
+            },
+            {
+              "id": "GEN.1.21",
+              "text": "Creavitque Deus cete grandia, et omnem animam viventem atque motabilem, quam produxerant aquæ in species suas, et omne volatile secundum genus suum. Et vidit Deus quod esset bonum.",
+              "english": "God created the large sea creatures and every living creature that moves, with which the waters swarmed, after their kind, and every winged bird after its kind. God saw that it was good.",
+              "verseRefs": [
+                "GEN.1.21"
+              ]
+            },
+            {
+              "id": "GEN.1.22",
+              "text": "Benedixitque eis, dicens : Crescite, et multiplicamini, et replete aquas maris : avesque multiplicentur super terram.",
+              "english": "God blessed them, saying, “Be fruitful, and multiply, and fill the waters in the seas, and let birds multiply on the earth.”",
+              "verseRefs": [
+                "GEN.1.22"
+              ]
+            },
+            {
+              "id": "GEN.1.23",
+              "text": "Et factum est vespere et mane, dies quintus.",
+              "english": "There was evening and there was morning, a fifth day.",
+              "verseRefs": [
+                "GEN.1.23"
+              ]
+            },
+            {
+              "id": "GEN.1.24",
+              "text": "Dixit quoque Deus : Producat terra animam viventem in genere suo, jumenta, et reptilia, et bestias terræ secundum species suas. Factumque est ita.",
+              "english": "God said, “Let the earth produce living creatures after their kind, livestock, creeping things, and animals of the earth after their kind;” and it was so.",
+              "verseRefs": [
+                "GEN.1.24"
+              ]
+            },
+            {
+              "id": "GEN.1.25",
+              "text": "Et fecit Deus bestias terræ juxta species suas, et jumenta, et omne reptile terræ in genere suo. Et vidit Deus quod esset bonum,",
+              "english": "God made the animals of the earth after their kind, and the livestock after their kind, and everything that creeps on the ground after its kind. God saw that it was good.",
+              "verseRefs": [
+                "GEN.1.25"
+              ]
+            },
+            {
+              "id": "GEN.1.26",
+              "text": "et ait : Faciamus hominem ad imaginem et similitudinem nostram : et præsit piscibus maris, et volatilibus cæli, et bestiis, universæque terræ, omnique reptili, quod movetur in terra.",
+              "english": "God said, “Let’s make man in our image, after our likeness. Let them have dominion over the fish of the sea, and over the birds of the sky, and over the livestock, and over all the earth, and over every creeping thing that creeps on the earth.”",
+              "verseRefs": [
+                "GEN.1.26"
+              ]
+            },
+            {
+              "id": "GEN.1.27",
+              "text": "Et creavit Deus hominem ad imaginem suam : ad imaginem Dei creavit illum, masculum et feminam creavit eos.",
+              "english": "God created man in his own image. In God’s image he created him; male and female he created them.",
+              "verseRefs": [
+                "GEN.1.27"
+              ]
+            },
+            {
+              "id": "GEN.1.28",
+              "text": "Benedixitque illis Deus, et ait : Crescite et multiplicamini, et replete terram, et subjicite eam, et dominamini piscibus maris, et volatilibus cæli, et universis animantibus, quæ moventur super terram.",
+              "english": "God blessed them. God said to them, “Be fruitful, multiply, fill the earth, and subdue it. Have dominion over the fish of the sea, over the birds of the sky, and over every living thing that moves on the earth.”",
+              "verseRefs": [
+                "GEN.1.28"
+              ]
+            },
+            {
+              "id": "GEN.1.29",
+              "text": "Dixitque Deus : Ecce dedi vobis omnem herbam afferentem semen super terram, et universa ligna quæ habent in semetipsis sementem generis sui, ut sint vobis in escam :",
+              "english": "God said, “Behold, I have given you every herb yielding seed, which is on the surface of all the earth, and every tree, which bears fruit yielding seed. It will be your food.",
+              "verseRefs": [
+                "GEN.1.29"
+              ]
+            },
+            {
+              "id": "GEN.1.30",
+              "text": "et cunctis animantibus terræ, omnique volucri cæli, et universis quæ moventur in terra, et in quibus est anima vivens, ut habeant ad vescendum. Et factum est ita.",
+              "english": "To every animal of the earth, and to every bird of the sky, and to everything that creeps on the earth, in which there is life, I have given every green herb for food;” and it was so.",
+              "verseRefs": [
+                "GEN.1.30"
+              ]
+            },
+            {
+              "id": "GEN.1.31",
+              "text": "Viditque Deus cuncta quæ fecerat, et erant valde bona. Et factum est vespere et mane, dies sextus.",
+              "english": "God saw everything that he had made, and, behold, it was very good. There was evening and there was morning, a sixth day.",
+              "verseRefs": [
+                "GEN.1.31"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

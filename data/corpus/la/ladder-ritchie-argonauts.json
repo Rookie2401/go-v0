@@ -1,0 +1,923 @@
+{
+  "schemaVersion": 2,
+  "id": "ladder-ritchie-argonauts",
+  "lang": "la",
+  "title": "Fabulae Faciles: Argonautae",
+  "contentType": "story",
+  "corpus": {
+    "id": "lit-la",
+    "kind": "comprehensible-input",
+    "title": "Latin literature"
+  },
+  "source": {
+    "id": "src:la:ladder-ritchie-argonauts",
+    "title": "Fabulae Faciles: A First Latin Reader (Argonautae)",
+    "author": "Francis Ritchie",
+    "date": "1903",
+    "url": "https://la.wikisource.org/wiki/Ritchie%27s_Fabulae_Faciles",
+    "edition": "Ritchie, Fabulae Faciles (1903), Latin Wikisource transcription",
+    "attribution": "Francis Ritchie, Fabulae Faciles (1903), public domain. Transcription: Latin Wikisource (Vicifons), CC BY-SA 4.0.",
+    "provenance": "Latin text taken by scripts/corpus-la-build.mts from the Latin Wikisource wikitext of the page, held by romance-v0/data/la/ritchie-fabulae-faciles.wikitext.json (SHA-256 d50eb1fd84ef7bb62ed81adc5bd56cc34a8475bb7d5ea8c18f7a275e00ef3ee5). Nothing was retyped. Only the Latin paragraphs are kept: the italic English argument before each tale is the editor's summary and is left out, and the section headings are Ritchie's English headings (the section title only, never sentence text). Paragraphs are split into sentences at \".\" \"?\" \"!\". Pedagogical Latin composed in 1903 in a classical register.",
+    "rights": "public-domain",
+    "licenseNote": "Francis Ritchie’s Fabulae Faciles was published in 1903: public domain. The Wikisource transcription is offered under CC BY-SA 4.0; the source is named here and on the text.",
+    "authorship": "public-domain",
+    "sourceHash": "d50eb1fd84ef7bb62ed81adc5bd56cc34a8475bb7d5ea8c18f7a275e00ef3ee5",
+    "licence": "public domain (1903); transcription CC BY-SA 4.0",
+    "modifications": "Paragraphs split into sentences; English argument omitted; 1 stray U+FFFD replacement character(s) in the stored copy removed (Hercules 23.5, before \"neque\"); nothing else changed."
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Copied mechanically from the Wikisource transcription; not proofread against the printed book."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "myth",
+    "argonauts"
+  ],
+  "editorialTags": [
+    "graded-reader",
+    "neo-latin"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "ritchie-fabulae-faciles",
+    "chapter": {
+      "index": 3,
+      "title": "Fabulae Faciles: Argonautae"
+    }
+  },
+  "streams": [
+    "library"
+  ],
+  "sections": [
+    {
+      "title": "57. THE WICKED UNCLE",
+      "chapter": 57,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.57.1",
+              "text": "Erant olim in Thessalia duo fratres, quorum alter Aeson, Pelias alter appellabatur."
+            },
+            {
+              "id": "argonauts.57.2",
+              "text": "Aeson primo regnum obtinuerat; at post paucos annos Pelias regni cupiditate adductus non modo fratrem suum expulit, sed etiam in animo habebat Iasonem, Aesonis filium, interficere."
+            },
+            {
+              "id": "argonauts.57.3",
+              "text": "Quidam tamen ex amicis Aesonis, ubi sententiam Peliae cognoverunt, puerum e tanto periculo eripere constituerunt."
+            },
+            {
+              "id": "argonauts.57.4",
+              "text": "Noctu igitur Iasonem ex urbe abstulerunt, et cum postero die ad regem rediissent, ei renuntiaverunt puerum mortuum esse."
+            },
+            {
+              "id": "argonauts.57.5",
+              "text": "Pelias cum hoc audivisset, etsi re vera magnum gaudium percipiebat, speciem tamen doloris praebuit et quae causa esset mortis quaesivit."
+            },
+            {
+              "id": "argonauts.57.6",
+              "text": "Illi autem cum bene intellegerent dolorem eius falsum esse, nescio quam fabulam de morte pueri finxerunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "58. A FATEFUL ACCIDENT",
+      "chapter": 58,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.58.1",
+              "text": "Post breve tempus Pelias, veritus ne regnum suum tanta vi et fraude occupatum amitteret, amicum quendam Delphos misit, qui oraculum consuleret."
+            },
+            {
+              "id": "argonauts.58.2",
+              "text": "Ille igitur quam celerrime Delphos se contulit et quam ob causam venisset demonstravit."
+            },
+            {
+              "id": "argonauts.58.3",
+              "text": "Respondit oraculum nullum esse in praesentia periculum; monuit tamen Peliam ut si quis unum calceum gerens veniret, eum caveret."
+            },
+            {
+              "id": "argonauts.58.4",
+              "text": "Post paucis annis accidit ut Pelias magnum sacrificium facturus esset; nuntios in omnis partis dimiserat et certam diem conveniendi dixerat."
+            },
+            {
+              "id": "argonauts.58.5",
+              "text": "Die constituta magnus hominum numerus undique ex agris convenit; in his autem venit etiam Iason, qui a pueritia apud centaurum quendam habitaverat."
+            },
+            {
+              "id": "argonauts.58.6",
+              "text": "Dum tamen iter facit, unum e calceis in transeundo nescio quo flumine amisit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "59. THE GOLDEN FLEECE",
+      "chapter": 59,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.59.1",
+              "text": "Iason igitur cum calceum amissum nullo modo recipere posset, uno pede nudo in regiam pervenit."
+            },
+            {
+              "id": "argonauts.59.2",
+              "text": "Quem cum Pelias vidisset, subito timore adfectus est; intellexit enim hunc esse hominem quem oraculum demonstravisset."
+            },
+            {
+              "id": "argonauts.59.3",
+              "text": "Hoc igitur consilium iniit."
+            },
+            {
+              "id": "argonauts.59.4",
+              "text": "Rex erat quidam Aeetes, qui regnum Colchidis illo tempore obtinebat."
+            },
+            {
+              "id": "argonauts.59.5",
+              "text": "Huic commissum erat vellus illud aureum quod Phrixus olim ibi reliquerat."
+            },
+            {
+              "id": "argonauts.59.6",
+              "text": "Constituit igitur Pelias Iasoni negotium dare ut hoc vellere potiretur; cum enim res esset magni periculi, eum in itinere periturum esse sperabat."
+            },
+            {
+              "id": "argonauts.59.7",
+              "text": "Iasonem igitur ad se arcessivit, et eum cohortatus quid fieri vellet docuit."
+            },
+            {
+              "id": "argonauts.59.8",
+              "text": "Ille etsi intellegebat rem esse difficillimam, negotium libenter suscepit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "60. THE BUILDING OF THE GOOD SHIP ARGO",
+      "chapter": 60,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.60.1",
+              "text": "Cum tamen Colchis multorum dierum iter ab eo loco abesset, solus Iason proficisci noluit."
+            },
+            {
+              "id": "argonauts.60.2",
+              "text": "Dimisit igitur nuntios in omnis partis, qui causam itineris docerent et diem certam conveniendi dicerent."
+            },
+            {
+              "id": "argonauts.60.3",
+              "text": "Interea, postquam omnia quae sunt usui ad armandas navis comportari iussit, negotium dedit Argo cuidam, qui summam scientiam nauticarum rerum habebat, ut navem aedificaret."
+            },
+            {
+              "id": "argonauts.60.4",
+              "text": "In his rebus circiter decem dies consumpti sunt; Argus enim, qui operi praeerat, tantam diligentiam adhibebat ut ne nocturnum quidem tempus ad laborem intermitteret."
+            },
+            {
+              "id": "argonauts.60.5",
+              "text": "Ad multitudinem hominum transportandam navis paulo erat latior quam quibus in nostro mari uti consuevimus, et ad vim tempestatum perferendam tota e robore facta est."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "61. THE ANCHOR IS WEIGHED",
+      "chapter": 61,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.61.1",
+              "text": "Interea is dies appetebat quem Iason per nuntios edixerat, et ex omnibus regionibus Graeciae multi, quos aut rei novitas aut spes gloriae movebat, undique conveniebant."
+            },
+            {
+              "id": "argonauts.61.2",
+              "text": "Traditum est autem in hoc numero fuisse Herculem, de quo supra multa perscripsimus, Orpheum, citharoedum praeclarissimum, Theseum, Castorem, multosque alios quorum nomina sunt notissima."
+            },
+            {
+              "id": "argonauts.61.3",
+              "text": "Ex his Iason quos arbitratus est ad omnia pericula subeunda paratissimos esse, eos ad numerum quinquaginta delegit et socios sibi adiunxit; tum paucos dies commoratus, ut ad omnis casus subsidia compararet, navem deduxit, et tempestatem ad navigandum idoneam nactus magno cum plausu omnium solvit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "62. A FATAL MISTAKE",
+      "chapter": 62,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.62.1",
+              "text": "Haud multo post Argonautae (ita enim appellabantur qui in ista navi vehebantur) insulam quandam, nomine Cyzicum, attigerunt; et e navi egressi a rege illius regionis hospitio excepti sunt."
+            },
+            {
+              "id": "argonauts.62.2",
+              "text": "Paucas horas ibi commorati ad solis occasum rursus solverunt; sed postquam pauca milia passuum progressi sunt, tanta tempestas subito coorta est ut cursum tenere non possent, et in eandem partem insulae unde nuper profecti erant magno cum periculo deicerentur."
+            },
+            {
+              "id": "argonauts.62.3",
+              "text": "Incolae tamen, cum nox esset obscura, Argonautas non agnoscebant, et navem inimicam venisse arbitrati arma rapuerunt et eos egredi prohibebant."
+            },
+            {
+              "id": "argonauts.62.4",
+              "text": "Acriter in litore pugnatum est, et rex ipse, qui cum aliis decucurrerat, ab Argonautis occisus est."
+            },
+            {
+              "id": "argonauts.62.5",
+              "text": "Mox tamen, cum iam dilucesceret, senserunt incolae se errare et arma abiecerunt; Argonautae autem cum regem occisum esse viderent, magnum dolorem perceperunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "63. THE LOSS OF HYLAS",
+      "chapter": 63,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.63.1",
+              "text": "Postridie eius diei Iason tempestatem satis idoneam esse arbitratus (summa enim tranquillitas iam consecuta erat), ancoras sustulit, et pauca milia passuum progressus ante noctem Mysiam attigit."
+            },
+            {
+              "id": "argonauts.63.2",
+              "text": "Ibi paucas horas in ancoris exspectavit; a nautis enim cognoverat aquae copiam quam secum haberent iam deficere, quam ob causam quidam ex Argonautis in terram egressi aquam quaerebant."
+            },
+            {
+              "id": "argonauts.63.3",
+              "text": "Horum in numero erat Hylas quidam, puer forma praestantissima."
+            },
+            {
+              "id": "argonauts.63.4",
+              "text": "Qui dum fontem quaerit, a comitibus paulum secesserat."
+            },
+            {
+              "id": "argonauts.63.5",
+              "text": "Nymphae autem quae fontem colebant, cum iuvenem vidissent, ei persuadere conatae sunt ut secum maneret; et cum ille negaret se hoc facturum esse, puerum vi abstulerunt."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "argonauts.63.6",
+              "text": "Comites eius postquam Hylam amissum esse senserunt, magno dolore adfecti diu frustra quaerebant."
+            },
+            {
+              "id": "argonauts.63.7",
+              "text": "Hercules autem et Polyphemus, qui vestigia pueri longius secuti erant, ubi tandem ad litus redierunt, Iasonem solvisse cognoverunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "64. DIFFICULT DINING",
+      "chapter": 64,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.64.1",
+              "text": "Post haec Argonautae ad Thraciam cursum tenuerunt, et postquam ad oppidum Salmydessum navem appulerunt, in terram egressi sunt."
+            },
+            {
+              "id": "argonauts.64.2",
+              "text": "Ibi cum ab incolis quaesissent quis regnum eius regionis obtineret, certiores facti sunt Phineum quendam tum regem esse."
+            },
+            {
+              "id": "argonauts.64.3",
+              "text": "Cognoverunt etiam hunc caecum esse et diro quodam supplicio adfici, quod olim se crudelissimum in filios suos praebuisset."
+            },
+            {
+              "id": "argonauts.64.4",
+              "text": "Cuius supplici hoc erat genus."
+            },
+            {
+              "id": "argonauts.64.5",
+              "text": "Missa erant a Iove monstra quaedam specie horribili, quae capita virginum, corpora volucrum habebant."
+            },
+            {
+              "id": "argonauts.64.6",
+              "text": "Hae volucres, quae Harpyiae appellabantur, Phineo summam molestiam adferebant; quotiens enim ille accubuerat, veniebant et cibum appositum statim auferebant."
+            },
+            {
+              "id": "argonauts.64.7",
+              "text": "Quo factum est ut haud multum abesset quin Phineus fame moreretur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "65. THE DELIVERANCE OF PHINEUS",
+      "chapter": 65,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.65.1",
+              "text": "Res igitur male se habebat cum Argonautae navem appulerunt."
+            },
+            {
+              "id": "argonauts.65.2",
+              "text": "Phineus autem simul atque audivit eos in suos finis egressos esse, magnopere gavisus est."
+            },
+            {
+              "id": "argonauts.65.3",
+              "text": "Sciebat enim quantam opinionem virtutis Argonautae haberent, nec dubitabat quin sibi auxilium ferrent."
+            },
+            {
+              "id": "argonauts.65.4",
+              "text": "Nuntium igitur ad navem misit, qui Iasonem sociosque ad regiam vocaret."
+            },
+            {
+              "id": "argonauts.65.5",
+              "text": "Eo cum venissent, Phineus demonstravit quanto in periculo suae res essent, et promisit se magna praemia daturum esse, si illi remedium repperissent."
+            },
+            {
+              "id": "argonauts.65.6",
+              "text": "Argonautae negotium libenter susceperunt, et ubi hora venit, cum rege accubuerunt; at simul ac cena apposita est, Harpyiae cenaculum intraverunt et cibum auferre conabantur."
+            },
+            {
+              "id": "argonauts.65.7",
+              "text": "Argonautae primum gladiis volucres petierunt; cum tamen viderent hoc nihil prodesse, Zetes et Calais, qui alis erant instructi, in aera se sublevaverunt, ut desuper impetum facerent."
+            },
+            {
+              "id": "argonauts.65.8",
+              "text": "Quod cum sensissent Harpyiae, rei novitate perterritae statim aufugerunt, neque postea umquam redierunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "66. THE SYMPLEGADES",
+      "chapter": 66,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.66.1",
+              "text": "Hoc facto Phineus, ut pro tanto beneficio meritam gratiam referret, Iasoni demonstravit qua ratione Symplegades vitare posset."
+            },
+            {
+              "id": "argonauts.66.2",
+              "text": "Symplegades autem duae erant rupes ingenti magnitudine, quae a Iove positae erant eo consilio, ne quis ad Colchida perveniret."
+            },
+            {
+              "id": "argonauts.66.3",
+              "text": "Hae parvo intervallo in mari natabant, et si quid in medium spatium venerat, incredibili celeritate concurrebant."
+            },
+            {
+              "id": "argonauts.66.4",
+              "text": "Postquam igitur a Phineo doctus est quid faciendum esset, Iason sublatis ancoris navem solvit, et leni vento provectus mox ad Symplegades appropinquavit."
+            },
+            {
+              "id": "argonauts.66.5",
+              "text": "Tum in prora stans columbam quam in manu tenebat emisit."
+            },
+            {
+              "id": "argonauts.66.6",
+              "text": "Illa recta via per medium spatium volavit, et priusquam rupes conflixerunt, incolumis evasit cauda tantum amissa."
+            },
+            {
+              "id": "argonauts.66.7",
+              "text": "Tum rupes utrimque discesserunt; antequam tamen rursus concurrerent, Argonautae, bene intellegentes omnem spem salutis in celeritate positam esse, summa vi remis contenderunt et navem incolumem perduxerunt."
+            },
+            {
+              "id": "argonauts.66.8",
+              "text": "Hoc facto dis gratias maximas egerunt, quorum auxilio e tanto periculo erepti essent; omnes enim sciebant non sine auxilio deorum rem tam feliciter evenisse."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "67. A HEAVY TASK",
+      "chapter": 67,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.67.1",
+              "text": "Brevi intermisso spatio Argonautae ad flumen Phasim venerunt, quod in finibus Colchorum erat."
+            },
+            {
+              "id": "argonauts.67.2",
+              "text": "Ibi cum navem appulissent et in terram egressi essent, statim ad regem Aeetem se contulerunt et ab eo postulaverunt ut vellus aureum sibi traderetur."
+            },
+            {
+              "id": "argonauts.67.3",
+              "text": "Ille cum audivisset quam ob causam Argonautae venissent, ira commotus est et diu negabat se vellus traditurum esse."
+            },
+            {
+              "id": "argonauts.67.4",
+              "text": "Tandem tamen, quod sciebat Iasonem non sine auxilio deorum hoc negotium suscepisse, mutata sententia promisit se vellus traditurum, si Iason labores duos difficillimos prius perfecisset; et cum Iason dixisset se ad omnia pericula subeunda paratum esse, quid fieri vellet ostendit."
+            },
+            {
+              "id": "argonauts.67.5",
+              "text": "Primum iungendi erant duo tauri specie horribili, qui flammas ex ore edebant; tum his iunctis ager quidam arandus erat et dentes draconis serendi."
+            },
+            {
+              "id": "argonauts.67.6",
+              "text": "His auditis Iason etsi rem esse summi periculi intellegebat, tamen, ne hanc occasionem rei bene gerendae amitteret, negotium suscepit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "68. THE MAGIC OINTMENT",
+      "chapter": 68,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.68.1",
+              "text": "Medea, regis filia, Iasonem adamavit, et ubi audivit eum tantum periculum subiturum esse, rem aegre ferebat."
+            },
+            {
+              "id": "argonauts.68.2",
+              "text": "Intellegebat enim patrem suum hunc laborem proposuisse eo ipso consilio, ut Iason moreretur."
+            },
+            {
+              "id": "argonauts.68.3",
+              "text": "Quae cum ita essent, Medea, quae summam scientiam medicinae habebat, hoc consilium iniit."
+            },
+            {
+              "id": "argonauts.68.4",
+              "text": "Media nocte insciente patre ex urbe evasit, et postquam in montis finitimos venit, herbas quasdam carpsit; tum suco expresso unguentum paravit quod vi sua corpus aleret nervosque confirmaret."
+            },
+            {
+              "id": "argonauts.68.5",
+              "text": "Hoc facto Iasoni unguentum dedit; praecepit autem ut eo die quo isti labores conficiendi essent corpus suum et arma mane oblineret."
+            },
+            {
+              "id": "argonauts.68.6",
+              "text": "Iason etsi paene omnibus hominibus magnitudine et viribus corporis antecellebat (vita enim omnis in venationibus atque in studio rei militaris consumebatur), tamen hoc consilium non neglegendum esse censebat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "69. THE SOWING OF THE DRAGON'S TEETH",
+      "chapter": 69,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.69.1",
+              "text": "Ubi is dies venit quem rex ad arandum agrum edixerat, Iason orta luce cum sociis ad locum constitutum se contulit."
+            },
+            {
+              "id": "argonauts.69.2",
+              "text": "Ibi stabulum ingens repperit, in quo tauri erant inclusi; tum portis apertis tauros in lucem traxit, et summa cum difficultate iugum imposuit."
+            },
+            {
+              "id": "argonauts.69.3",
+              "text": "At Aeetes cum videret tauros nihil contra Iasonem valere, magnopere miratus est; nesciebat enim filiam suam auxilium ei dedisse."
+            },
+            {
+              "id": "argonauts.69.4",
+              "text": "Tum Iason omnibus aspicientibus agrum arare coepit, qua in re tantam diligentiam praebuit ut ante meridiem totum opus confecerit."
+            },
+            {
+              "id": "argonauts.69.5",
+              "text": "Hoc facto ad locum ubi rex sedebat adiit et dentis draconis postulavit; quos ubi accepit, in agrum quem araverat magna cum diligentia sparsit."
+            },
+            {
+              "id": "argonauts.69.6",
+              "text": "Horum autem dentium natura erat talis ut in eo loco ubi sementes factae essent viri armati miro quodam modo gignerentur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "70. A STRANGE CROP",
+      "chapter": 70,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.70.1",
+              "text": "Nondum tamen Iason totum opus confecerat; imperaverat enim ei Aeetes ut armatos viros qui e dentibus gignerentur solus interficeret."
+            },
+            {
+              "id": "argonauts.70.2",
+              "text": "Postquam igitur omnis dentis in agrum sparsit, Iason lassitudine exanimatus quieti se tradidit, dum viri isti gignerentur."
+            },
+            {
+              "id": "argonauts.70.3",
+              "text": "Paucas horas dormiebat, sub vesperum tamen e somno subito excitatus rem ita evenisse ut praedictum esset cognovit; nam in omnibus agri partibus viri ingenti magnitudine corporis gladiis galeisque armati mirum in modum e terra oriebantur."
+            },
+            {
+              "id": "argonauts.70.4",
+              "text": "Hoc cognito Iason consilium quod dedisset Medea non omittendum esse putabat."
+            },
+            {
+              "id": "argonauts.70.5",
+              "text": "Saxum igitur ingens (ita enim Medea praeceperat) in medios viros coniecit."
+            },
+            {
+              "id": "argonauts.70.6",
+              "text": "Illi undique ad locum concurrerunt, et cum quisque sibi id saxum nescio cur habere vellet, magna controversia orta est."
+            },
+            {
+              "id": "argonauts.70.7",
+              "text": "Mox strictis gladiis inter se pugnare coeperunt, et cum hoc modo plurimi occisi essent, reliqui vulneribus confecti a Iasone nullo negotio interfecti sunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "71. THE FLIGHT OF MEDEA",
+      "chapter": 71,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.71.1",
+              "text": "Rex Aeetes ubi Iasonem laborem propositum confecisse cognovit, ira graviter commotus est; id enim per dolum factum esse intellegebat; nec dubitabat quin Medea ei auxilium tulisset."
+            },
+            {
+              "id": "argonauts.71.2",
+              "text": "Medea autem cum intellegeret se in magno fore periculo si in regia maneret, fuga salutem petere constituit."
+            },
+            {
+              "id": "argonauts.71.3",
+              "text": "Omnibus rebus igitur ad fugam paratis media nocte insciente patre cum fratre Absyrto evasit, et quam celerrime ad locum ubi Argo subducta erat se contulit."
+            },
+            {
+              "id": "argonauts.71.4",
+              "text": "Eo cum venisset, ad pedes Iasonis se proiecit, et multis cum lacrimis eum obsecravit ne in tanto discrimine mulierem desereret quae ei tantum profuisset."
+            },
+            {
+              "id": "argonauts.71.5",
+              "text": "Ille quod memoria tenebat se per eius auxilium e magno periculo evasisse, libenter eam excepit, et postquam causam veniendi audivit, hortatus est ne patris iram timeret."
+            },
+            {
+              "id": "argonauts.71.6",
+              "text": "Promisit autem se quam primum eam in navi sua avecturum."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "72. THE SEIZURE OF THE FLEECE",
+      "chapter": 72,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.72.1",
+              "text": "Postridie eius diei Iason cum sociis suis orta luce navem deduxit, et tempestatem idoneam nacti ad eum locum remis contenderunt, quo in loco Medea vellus celatum esse demonstrabat."
+            },
+            {
+              "id": "argonauts.72.2",
+              "text": "Cum eo venissent, Iason in terram egressus est, et sociis ad mare relictis, qui praesidio navi essent, ipse cum Medea in silvas se contulit."
+            },
+            {
+              "id": "argonauts.72.3",
+              "text": "Pauca milia passuum per silvam progressus vellus quod quaerebat ex arbore suspensum vidit."
+            },
+            {
+              "id": "argonauts.72.4",
+              "text": "Id tamen auferre erat summae difficultatis; non modo enim locus ipse egregie et natura et arte erat munitus, sed etiam draco quidam specie terribili arborem custodiebat."
+            },
+            {
+              "id": "argonauts.72.5",
+              "text": "Tum Medea, quae, ut supra demonstravimus, medicinae summam scientiam habuit, ramum quem de arbore proxima deripuerat veneno infecit."
+            },
+            {
+              "id": "argonauts.72.6",
+              "text": "Hoc facto ad locum appropinquavit, et draconem, qui faucibus apertis eius adventum exspectabat, veneno sparsit; deinde, dum draco somno oppressus dormit, Iason vellus aureum de arbore deripuit et cum Medea quam celerrime pedem rettulit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "73. THE RETURN TO THE ARGO",
+      "chapter": 73,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.73.1",
+              "text": "Dum autem ea geruntur, Argonautae, qui ad mare relicti erant, anxio animo reditum Iasonis exspectabant; id enim negotium summi esse periculi intellegebant."
+            },
+            {
+              "id": "argonauts.73.2",
+              "text": "Postquam igitur ad occasum solis frustra exspectaverunt, de eius salute desperare coeperunt, nec dubitabant quin aliqui casus accidisset."
+            },
+            {
+              "id": "argonauts.73.3",
+              "text": "Quae cum ita essent, maturandum sibi censuerunt, ut duci auxilium ferrent; sed dum proficisci parant, lumen quoddam subito conspiciunt mirum in modum intra silvas refulgens, et magnopere mirati quae causa esset eius rei ad locum concurrunt."
+            },
+            {
+              "id": "argonauts.73.4",
+              "text": "Quo cum venissent, Iasoni et Medeae advenientibus occurrerunt, et vellus aureum luminis eius causam esse cognoverunt."
+            },
+            {
+              "id": "argonauts.73.5",
+              "text": "Omni timore sublato magno cum gaudio ducem suum exceperunt, et dis gratias maximas egerunt quod res tam feliciter evenisset."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "74. THE PURSUIT",
+      "chapter": 74,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.74.1",
+              "text": "His rebus gestis omnes sine mora navem rursus conscenderunt, et sublatis ancoris prima vigilia solverunt; neque enim satis tutum esse arbitrati sunt in eo loco manere."
+            },
+            {
+              "id": "argonauts.74.2",
+              "text": "At rex Aeetes, qui iam ante inimico in eos fuerat animo, ubi cognovit filiam suam non modo ad Argonautas se recepisse sed etiam ad vellus auferendum auxilium tulisse, hoc dolore gravius exarsit."
+            },
+            {
+              "id": "argonauts.74.3",
+              "text": "Navem longam quam celerrime deduci iussit, et militibus impositis fugientis insecutus est."
+            },
+            {
+              "id": "argonauts.74.4",
+              "text": "Argonautae, qui rem in discrimine esse bene sciebant, omnibus viribus remis contendebant; cum tamen navis qua vehebantur ingenti esset magnitudine, non eadem celeritate qua Colchi progredi poterant."
+            },
+            {
+              "id": "argonauts.74.5",
+              "text": "Quo factum est ut minimum abesset quin a Colchis sequentibus caperentur, neque enim longius intererat quam quo telum adici posset."
+            },
+            {
+              "id": "argonauts.74.6",
+              "text": "At Medea cum vidisset quo in loco res essent, paene omni spe deposita infandum hoc consilium cepit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "75. A FEARFUL EXPEDIENT",
+      "chapter": 75,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.75.1",
+              "text": "Erat in navi Argonautarum filius quidam regis Aeetae, nomine Absyrtus, quem, ut supra demonstravimus, Medea ex urbe fugiens secum abduxerat."
+            },
+            {
+              "id": "argonauts.75.2",
+              "text": "Hunc puerum Medea interficere constituit eo consilio, ut membris eius in mare coniectis cursum Colchorum impediret; certo enim sciebat Aeetem, cum membra fili vidisset, non longius prosecuturum esse."
+            },
+            {
+              "id": "argonauts.75.3",
+              "text": "Neque opinio Medeam fefellit, omnia enim ita evenerunt ut speraverat."
+            },
+            {
+              "id": "argonauts.75.4",
+              "text": "Aeetes ubi primum membra vidit, ad ea conligenda navem teneri iussit."
+            },
+            {
+              "id": "argonauts.75.5",
+              "text": "Dum tamen ea geruntur, Argonautae non intermisso remigandi labore mox e conspectu hostium auferebantur, neque prius fugere destiterunt quam ad flumen Eridanum pervenerunt."
+            },
+            {
+              "id": "argonauts.75.6",
+              "text": "Aeetes nihil sibi profuturum esse arbitratus si longius progressus esset, animo demisso domum revertit, ut fili corpus ad sepulturam daret."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "76. THE BARGAIN WITH PELIAS",
+      "chapter": 76,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.76.1",
+              "text": "Tandem post multa pericula Iason in eundem locum pervenit unde profectus erat."
+            },
+            {
+              "id": "argonauts.76.2",
+              "text": "Tum e navi egressus ad regem Peliam, qui regnum adhuc obtinebat, statim se contulit, et vellere aureo monstrato ab eo postulavit ut regnum sibi traderetur; Pelias enim pollicitus erat, si Iason vellus rettulisset, se regnum ei traditurum."
+            },
+            {
+              "id": "argonauts.76.3",
+              "text": "Postquam Iason quid fieri vellet ostendit, Pelias primo nihil respondit, sed diu in eadem tristitia tacitus permansit; tandem ita locutus est: \"Vides me aetate iam esse confectum, neque dubium est quin dies supremus mihi appropinquet."
+            },
+            {
+              "id": "argonauts.76.4",
+              "text": "Liceat igitur mihi, dum vivam, hoc regnum obtinere; cum autem tandem decessero, tu mihi succedes.\""
+            },
+            {
+              "id": "argonauts.76.5",
+              "text": "Hac oratione adductus Iason respondit se id facturum quod ille rogasset."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "77. MAGIC ARTS",
+      "chapter": 77,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.77.1",
+              "text": "His rebus cognitis Medea rem aegre tulit, et regni cupiditate adducta mortem regi per dolum inferre constituit."
+            },
+            {
+              "id": "argonauts.77.2",
+              "text": "Hoc constituto ad filias regis venit atque ita locuta est: \"Videtis patrem vestrum aetate iam esse confectum neque ad laborem regnandi perferendum satis valere."
+            },
+            {
+              "id": "argonauts.77.3",
+              "text": "Vultisne eum rursus iuvenem fieri?\""
+            },
+            {
+              "id": "argonauts.77.4",
+              "text": "Tum filiae regis ita responderunt: \"Num hoc fieri potest?"
+            },
+            {
+              "id": "argonauts.77.5",
+              "text": "Quis enim umquam e sene iuvenis factus est?\""
+            },
+            {
+              "id": "argonauts.77.6",
+              "text": "At Medea respondit: \"Me medicinae summam habere scientiam scitis."
+            },
+            {
+              "id": "argonauts.77.7",
+              "text": "Nunc igitur vobis demonstrabo quo modo haec res fieri possit.\""
+            },
+            {
+              "id": "argonauts.77.8",
+              "text": "Postquam finem loquendi fecit, arietem aetate iam confectum interfecit et membra eius in vase aeneo posuit, atque igni supposito in aquam herbas quasdam infudit."
+            },
+            {
+              "id": "argonauts.77.9",
+              "text": "Tum, dum aqua effervesceret, carmen magicum cantabat."
+            },
+            {
+              "id": "argonauts.77.10",
+              "text": "Mox aries e vase exsiluit et viribus refectis per agros currebat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "78. A DANGEROUS EXPERIMENT",
+      "chapter": 78,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.78.1",
+              "text": "Dum filiae regis hoc miraculum stupentes intuentur, Medea ita locuta est: \"Videtis quantum valeat medicina."
+            },
+            {
+              "id": "argonauts.78.2",
+              "text": "Vos igitur, si vultis patrem vestrum in adulescentiam reducere, id quod feci ipsae facietis."
+            },
+            {
+              "id": "argonauts.78.3",
+              "text": "Vos patris membra in vas conicite; ego herbas magicas praebebo.\""
+            },
+            {
+              "id": "argonauts.78.4",
+              "text": "Quod ubi auditum est, filiae regis consilium quod dedisset Medea non omittendum putaverunt."
+            },
+            {
+              "id": "argonauts.78.5",
+              "text": "Patrem igitur Peliam necaverunt et membra eius in vas aeneum coniecerunt; nihil autem dubitabant quin hoc maxime ei profuturum esset."
+            },
+            {
+              "id": "argonauts.78.6",
+              "text": "At res omnino aliter evenit ac speraverant, Medea enim non easdem herbas dedit quibus ipsa usa erat."
+            },
+            {
+              "id": "argonauts.78.7",
+              "text": "Itaque postquam diu frustra exspectaverunt, patrem suum re vera mortuum esse intellexerunt."
+            },
+            {
+              "id": "argonauts.78.8",
+              "text": "His rebus gestis Medea se cum coniuge suo regnum accepturam esse sperabat; sed cives cum intellegerent quo modo Pelias periisset, tantum scelus aegre tulerunt."
+            },
+            {
+              "id": "argonauts.78.9",
+              "text": "Itaque Iasone et Medea e regno expulsis Acastum regem creaverunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "79. A FATAL GIFT",
+      "chapter": 79,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.79.1",
+              "text": "Iason et Medea e Thessalia expulsi ad urbem Corinthum venerunt, cuius urbis Creon quidam regnum tum obtinebat."
+            },
+            {
+              "id": "argonauts.79.2",
+              "text": "Erat autem Creonti filia una, nomine Glauce."
+            },
+            {
+              "id": "argonauts.79.3",
+              "text": "Quam cum vidisset, Iason constituit Medeae uxori suae nuntium mittere eo consilio, ut Glaucen in matrimonium duceret."
+            },
+            {
+              "id": "argonauts.79.4",
+              "text": "At Medea ubi intellexit quae ille in animo haberet, ira graviter commota iure iurando confirmavit se tantam iniuriam ulturam."
+            },
+            {
+              "id": "argonauts.79.5",
+              "text": "Hoc igitur consilium cepit."
+            },
+            {
+              "id": "argonauts.79.6",
+              "text": "Vestem paravit summa arte textam et variis coloribus infectam; hanc mortifero quodam veneno tinxit, cuius vis talis erat ut si quis eam vestem induisset, corpus eius quasi igni ureretur."
+            },
+            {
+              "id": "argonauts.79.7",
+              "text": "Hoc facto vestem ad Glaucen misit; illa autem nihil mali suspicans donum libenter accepit, et vestem novam more feminarum statim induit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "80. MEDEA KILLS HER SONS",
+      "chapter": 80,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "argonauts.80.1",
+              "text": "Vix vestem induerat Glauce cum dolorem gravem per omnia membra sensit, et paulo post crudeli cruciatu adfecta e vita excessit."
+            },
+            {
+              "id": "argonauts.80.2",
+              "text": "His rebus gestis Medea furore atque amentia impulsa filios suos necavit; tum magnum sibi fore periculum arbitrata si in Thessalia maneret, ex ea regione fugere constituit."
+            },
+            {
+              "id": "argonauts.80.3",
+              "text": "Hoc constituto solem oravit ut in tanto periculo auxilium sibi praeberet."
+            },
+            {
+              "id": "argonauts.80.4",
+              "text": "Sol autem his precibus commotus currum misit cui erant iuncti dracones alis instructi."
+            },
+            {
+              "id": "argonauts.80.5",
+              "text": "Medea non omittendam tantam occasionem arbitrata currum ascendit, itaque per aera vecta incolumis ad urbem Athenas pervenit."
+            },
+            {
+              "id": "argonauts.80.6",
+              "text": "Iason ipse brevi tempore miro modo occisus est."
+            },
+            {
+              "id": "argonauts.80.7",
+              "text": "Accidit sive casu sive consilio deorum ut sub umbra navis suae, quae in litus subducta erat, dormiret."
+            },
+            {
+              "id": "argonauts.80.8",
+              "text": "Mox navis, quae adhuc erecta steterat, in eam partem ubi Iason iacebat subito delapsa virum infelicem oppressit."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

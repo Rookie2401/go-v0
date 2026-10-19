@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 2,
+  "id": "vulgate-john-3",
+  "lang": "la",
+  "title": "Ioannes 3",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-la-clementine",
+    "kind": "scripture",
+    "title": "Biblia Sacra Vulgata (Clementine, 1592)"
+  },
+  "source": {
+    "id": "src:la:vulgate-john-3",
+    "title": "Biblia Sacra Vulgata, Clementine edition (1592)",
+    "edition": "Clementine Vulgate 1592",
+    "attribution": "Biblia Sacra Vulgata, editio Clementina (1592), public domain. USFX text from seven1m/open-bibles, held by the Vetus V0 app.",
+    "provenance": "Taken verse by verse from vetus-v0/data/vulgate/lat-clementine.usfx.xml (SHA-256 5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf) by scripts/corpus-la-build.mts; nothing was retyped. Clementine spelling kept (ae ligatures as printed, i/j and u/v as printed, no macrons). One verse is one sentence (the verse is not split, although it may hold several clauses or sentences), so every sentence is addressable by its reference. The text has not been compared with a second, independent edition.",
+    "url": "https://github.com/seven1m/open-bibles",
+    "rights": "public-domain",
+    "licenseNote": "The Clementine Vulgate (1592) is in the public domain. The USFX file comes from seven1m/open-bibles (Bible texts that are public domain or openly licensed).",
+    "authorship": "public-domain",
+    "sourceHash": "5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf",
+    "licence": "public domain",
+    "modifications": "none: each sentence is exactly one verse of the source (surrounding whitespace trimmed)."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-la-scripture.mts",
+    "reviewedAt": "2026-10-17",
+    "notes": "Wording verified by byte-comparison against the Clementine USFX file it was copied from (a copy-integrity check, not a second edition)."
+  },
+  "topics": [
+    "scripture",
+    "john-3",
+    "gospel"
+  ],
+  "editorialTags": [
+    "clementine-orthography"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "vulgata-clementina",
+    "chapter": {
+      "index": 6,
+      "title": "Ioannes 3"
+    }
+  },
+  "streams": [
+    "scripture"
+  ],
+  "scripture": {
+    "translationId": "latVulgClementine",
+    "translationName": "Biblia Sacra Vulgata (Clementine, 1592)",
+    "edition": "Clementine Vulgate 1592",
+    "book": "JHN",
+    "chapter": 3,
+    "verification": {
+      "against": "seven1m/open-bibles Clementine USFX (lat-clementine.usfx.xml, as held by vetus-v0)",
+      "url": "https://github.com/seven1m/open-bibles",
+      "checkedAt": "2026-10-17",
+      "method": "byte-comparison",
+      "by": "scripts/verify-la-scripture.mts"
+    }
+  },
+  "english": {
+    "source": "World English Bible (public domain), eBible.org eng-web, copied verbatim from the German/Hindi corpora for the verses they carry"
+  },
+  "sections": [
+    {
+      "title": "Ioannes 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "JHN.3.1",
+              "text": "Erat autem homo ex pharisæis, Nicodemus nomine, princeps Judæorum.",
+              "verseRefs": [
+                "JHN.3.1"
+              ]
+            },
+            {
+              "id": "JHN.3.2",
+              "text": "Hic venit ad Jesum nocte, et dixit ei : Rabbi, scimus quia a Deo venisti magister, nemo enim potest hæc signa facere, quæ tu facis, nisi fuerit Deus cum eo.",
+              "verseRefs": [
+                "JHN.3.2"
+              ]
+            },
+            {
+              "id": "JHN.3.3",
+              "text": "Respondit Jesus, et dixit ei : Amen, amen dico tibi, nisi quis renatus fuerit denuo, non potest videre regnum Dei.",
+              "verseRefs": [
+                "JHN.3.3"
+              ]
+            },
+            {
+              "id": "JHN.3.4",
+              "text": "Dicit ad eum Nicodemus : Quomodo potest homo nasci, cum sit senex ? numquid potest in ventrem matris suæ iterato introire et renasci ?",
+              "verseRefs": [
+                "JHN.3.4"
+              ]
+            },
+            {
+              "id": "JHN.3.5",
+              "text": "Respondit Jesus : Amen, amen dico tibi, nisi quis renatus fuerit ex aqua, et Spiritu Sancto, non potest introire in regnum Dei.",
+              "verseRefs": [
+                "JHN.3.5"
+              ]
+            },
+            {
+              "id": "JHN.3.6",
+              "text": "Quod natum est ex carne, caro est : et quod natum est ex spiritu, spiritus est.",
+              "verseRefs": [
+                "JHN.3.6"
+              ]
+            },
+            {
+              "id": "JHN.3.7",
+              "text": "Non mireris quia dixi tibi : oportet vos nasci denuo.",
+              "verseRefs": [
+                "JHN.3.7"
+              ]
+            },
+            {
+              "id": "JHN.3.8",
+              "text": "Spiritus ubi vult spirat, et vocem ejus audis, sed nescis unde veniat, aut quo vadat : sic est omnis qui natus est ex spiritu.",
+              "verseRefs": [
+                "JHN.3.8"
+              ]
+            },
+            {
+              "id": "JHN.3.9",
+              "text": "Respondit Nicodemus, et dixit ei : Quomodo possunt hæc fieri ?",
+              "verseRefs": [
+                "JHN.3.9"
+              ]
+            },
+            {
+              "id": "JHN.3.10",
+              "text": "Respondit Jesus, et dixit ei : Tu es magister in Israël, et hæc ignoras ?",
+              "verseRefs": [
+                "JHN.3.10"
+              ]
+            },
+            {
+              "id": "JHN.3.11",
+              "text": "Amen, amen dico tibi, quia quod scimus loquimur, et quod vidimus testamur, et testimonium nostrum non accipitis.",
+              "verseRefs": [
+                "JHN.3.11"
+              ]
+            },
+            {
+              "id": "JHN.3.12",
+              "text": "Si terrena dixi vobis, et non creditis : quomodo, si dixero vobis cælestia, credetis ?",
+              "verseRefs": [
+                "JHN.3.12"
+              ]
+            },
+            {
+              "id": "JHN.3.13",
+              "text": "Et nemo ascendit in cælum, nisi qui descendit de cælo, Filius hominis, qui est in cælo.",
+              "verseRefs": [
+                "JHN.3.13"
+              ]
+            },
+            {
+              "id": "JHN.3.14",
+              "text": "Et sicut Moyses exaltavit serpentem in deserto, ita exaltari oportet Filium hominis :",
+              "verseRefs": [
+                "JHN.3.14"
+              ]
+            },
+            {
+              "id": "JHN.3.15",
+              "text": "ut omnis qui credit in ipsum, non pereat, sed habeat vitam æternam.",
+              "verseRefs": [
+                "JHN.3.15"
+              ]
+            },
+            {
+              "id": "JHN.3.16",
+              "text": "Sic enim Deus dilexit mundum, ut Filium suum unigenitum daret : ut omnis qui credit in eum, non pereat, sed habeat vitam æternam.",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": [
+                "JHN.3.16"
+              ]
+            },
+            {
+              "id": "JHN.3.17",
+              "text": "Non enim misit Deus Filium suum in mundum, ut judicet mundum, sed ut salvetur mundus per ipsum.",
+              "verseRefs": [
+                "JHN.3.17"
+              ]
+            },
+            {
+              "id": "JHN.3.18",
+              "text": "Qui credit in eum, non judicatur ; qui autem non credit, jam judicatus est : quia non credit in nomine unigeniti Filii Dei.",
+              "verseRefs": [
+                "JHN.3.18"
+              ]
+            },
+            {
+              "id": "JHN.3.19",
+              "text": "Hoc est autem judicium : quia lux venit in mundum, et dilexerunt homines magis tenebras quam lucem : erant enim eorum mala opera.",
+              "verseRefs": [
+                "JHN.3.19"
+              ]
+            },
+            {
+              "id": "JHN.3.20",
+              "text": "Omnis enim qui male agit, odit lucem, et non venit ad lucem, ut non arguantur opera ejus :",
+              "verseRefs": [
+                "JHN.3.20"
+              ]
+            },
+            {
+              "id": "JHN.3.21",
+              "text": "qui autem facit veritatem, venit ad lucem, ut manifestentur opera ejus, quia in Deo sunt facta.",
+              "verseRefs": [
+                "JHN.3.21"
+              ]
+            },
+            {
+              "id": "JHN.3.22",
+              "text": "Post hæc venit Jesus et discipuli ejus in terram Judæam : et illic demorabatur cum eis, et baptizabat.",
+              "verseRefs": [
+                "JHN.3.22"
+              ]
+            },
+            {
+              "id": "JHN.3.23",
+              "text": "Erat autem et Joannes baptizans, in Ænnon, juxta Salim : quia aquæ multæ erant illic, et veniebant et baptizabantur.",
+              "verseRefs": [
+                "JHN.3.23"
+              ]
+            },
+            {
+              "id": "JHN.3.24",
+              "text": "Nondum enim missus fuerat Joannes in carcerem.",
+              "verseRefs": [
+                "JHN.3.24"
+              ]
+            },
+            {
+              "id": "JHN.3.25",
+              "text": "Facta est autem quæstio ex discipulis Joannis cum Judæis de purificatione.",
+              "verseRefs": [
+                "JHN.3.25"
+              ]
+            },
+            {
+              "id": "JHN.3.26",
+              "text": "Et venerunt ad Joannem, et dixerunt ei : Rabbi, qui erat tecum trans Jordanem, cui tu testimonium perhibuisti, ecce hic baptizat, et omnes veniunt ad eum.",
+              "verseRefs": [
+                "JHN.3.26"
+              ]
+            },
+            {
+              "id": "JHN.3.27",
+              "text": "Respondit Joannes, et dixit : Non potest homo accipere quidquam, nisi fuerit ei datum de cælo.",
+              "verseRefs": [
+                "JHN.3.27"
+              ]
+            },
+            {
+              "id": "JHN.3.28",
+              "text": "Ipsi vos mihi testimonium perhibetis, quod dixerim : Non sum ego Christus : sed quia missus sum ante illum.",
+              "verseRefs": [
+                "JHN.3.28"
+              ]
+            },
+            {
+              "id": "JHN.3.29",
+              "text": "Qui habet sponsam, sponsus est : amicus autem sponsi, qui stat, et audit eum, gaudio gaudet propter vocem sponsi. Hoc ergo gaudium meum impletum est.",
+              "verseRefs": [
+                "JHN.3.29"
+              ]
+            },
+            {
+              "id": "JHN.3.30",
+              "text": "Illum oportet crescere, me autem minui.",
+              "verseRefs": [
+                "JHN.3.30"
+              ]
+            },
+            {
+              "id": "JHN.3.31",
+              "text": "Qui desursum venit, super omnes est. Qui est de terra, de terra est, et de terra loquitur. Qui de cælo venit, super omnes est.",
+              "verseRefs": [
+                "JHN.3.31"
+              ]
+            },
+            {
+              "id": "JHN.3.32",
+              "text": "Et quod vidit, et audivit, hoc testatur : et testimonium ejus nemo accipit.",
+              "verseRefs": [
+                "JHN.3.32"
+              ]
+            },
+            {
+              "id": "JHN.3.33",
+              "text": "Qui accepit ejus testimonium signavit, quia Deus verax est.",
+              "verseRefs": [
+                "JHN.3.33"
+              ]
+            },
+            {
+              "id": "JHN.3.34",
+              "text": "Quem enim misit Deus, verba Dei loquitur : non enim ad mensuram dat Deus spiritum.",
+              "verseRefs": [
+                "JHN.3.34"
+              ]
+            },
+            {
+              "id": "JHN.3.35",
+              "text": "Pater diligit Filium et omnia dedit in manu ejus.",
+              "verseRefs": [
+                "JHN.3.35"
+              ]
+            },
+            {
+              "id": "JHN.3.36",
+              "text": "Qui credit in Filium, habet vitam æternam ; qui autem incredulus est Filio, non videbit vitam, sed ira Dei manet super eum.",
+              "verseRefs": [
+                "JHN.3.36"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

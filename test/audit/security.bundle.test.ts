@@ -19,14 +19,16 @@ const EXT_STORAGE = /chrome\.storage|browser\.storage|\.storage\.(local|session|
 const DYNAMIC_CODE = /\beval\s*\(|new Function\s*\(|setTimeout\s*\(\s*['"`]|setInterval\s*\(\s*['"`]|document\.write|\.innerHTML\s*=|\.outerHTML\s*=|insertAdjacentHTML|createContextualFragment|setHTMLUnsafe|srcdoc/;
 const CREDENTIAL = /Authorization|Bearer|\bapiKey\b|\.password\b|`golearn:session`|"golearn:session"|'golearn:session'|createSession|syncPush|syncPull|deleteSession|\/sessions\b|\/sync\//;
 const PAGE_CHANNELS = /window\.postMessage|\.postMessage\(|addEventListener\(\s*[`'"]message[`'"]|BroadcastChannel|window\.name|window\.open|location\.(href|assign|replace)\s*=|document\.domain/;
-const FORBIDDEN_PERMISSIONS = ['tabs', 'cookies', 'webRequest', 'webRequestBlocking', 'webNavigation', 'history', 'bookmarks', 'downloads', 'clipboardRead', 'clipboardWrite', 'nativeMessaging', 'debugger', 'management', 'proxy', 'declarativeNetRequest', 'identity', 'geolocation', 'unlimitedStorage', 'background', 'privacy', 'system.storage', 'topSites', '<all_urls>', '*://*/*', 'http://*/*', 'https://*/*'];
+// unlimitedStorage is not in this list: it only lifts the quota of the extension's OWN storage (the on-device Repository and the dictionary cache, added 2026-10-17) and reaches no other tab, site or browser store.
+const FORBIDDEN_PERMISSIONS = ['tabs', 'cookies', 'webRequest', 'webRequestBlocking', 'webNavigation', 'history', 'bookmarks', 'downloads', 'clipboardRead', 'clipboardWrite', 'nativeMessaging', 'debugger', 'management', 'proxy', 'declarativeNetRequest', 'identity', 'geolocation', 'background', 'privacy', 'system.storage', 'topSites', '<all_urls>', '*://*/*', 'http://*/*', 'https://*/*'];
 
 describe('manifest (source)', () => {
   const manifest = JSON.parse(fs.readFileSync(path.join(base, 'manifest.json'), 'utf8'));
 
-  it('asks for exactly five permissions, no host access, nothing that reaches other tabs, cookies, history, the network layer or other extensions', () => {
+  it('asks for exactly six permissions, no host access, nothing that reaches other tabs, cookies, history, the network layer or other extensions', () => {
     expect(manifest.manifest_version).toBe(3);
-    expect(manifest.permissions).toEqual(['activeTab', 'scripting', 'storage', 'contextMenus', 'alarms']);
+    // unlimitedStorage (2026-10-17): the on-device Repository and the dictionary cache outgrow the default quota; it reaches no other tab or site
+    expect(manifest.permissions).toEqual(['activeTab', 'scripting', 'storage', 'unlimitedStorage', 'contextMenus', 'alarms']);
     for (const p of FORBIDDEN_PERMISSIONS) expect(manifest.permissions ?? [], p).not.toContain(p);
     for (const key of ['host_permissions', 'optional_permissions']) expect(manifest[key], key).toBeUndefined();
     // GoLearn Active (2026-10-09): the one optional host permission, never granted at install; the popup asks the browser inside the learner's click

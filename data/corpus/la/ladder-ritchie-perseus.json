@@ -1,0 +1,505 @@
+{
+  "schemaVersion": 2,
+  "id": "ladder-ritchie-perseus",
+  "lang": "la",
+  "title": "Fabulae Faciles: Perseus",
+  "contentType": "story",
+  "corpus": {
+    "id": "lit-la",
+    "kind": "comprehensible-input",
+    "title": "Latin literature"
+  },
+  "source": {
+    "id": "src:la:ladder-ritchie-perseus",
+    "title": "Fabulae Faciles: A First Latin Reader (Perseus)",
+    "author": "Francis Ritchie",
+    "date": "1903",
+    "url": "https://la.wikisource.org/wiki/Ritchie%27s_Fabulae_Faciles",
+    "edition": "Ritchie, Fabulae Faciles (1903), Latin Wikisource transcription",
+    "attribution": "Francis Ritchie, Fabulae Faciles (1903), public domain. Transcription: Latin Wikisource (Vicifons), CC BY-SA 4.0.",
+    "provenance": "Latin text taken by scripts/corpus-la-build.mts from the Latin Wikisource wikitext of the page, held by romance-v0/data/la/ritchie-fabulae-faciles.wikitext.json (SHA-256 d50eb1fd84ef7bb62ed81adc5bd56cc34a8475bb7d5ea8c18f7a275e00ef3ee5). Nothing was retyped. Only the Latin paragraphs are kept: the italic English argument before each tale is the editor's summary and is left out, and the section headings are Ritchie's English headings (the section title only, never sentence text). Paragraphs are split into sentences at \".\" \"?\" \"!\". Pedagogical Latin composed in 1903 in a classical register.",
+    "rights": "public-domain",
+    "licenseNote": "Francis Ritchie’s Fabulae Faciles was published in 1903: public domain. The Wikisource transcription is offered under CC BY-SA 4.0; the source is named here and on the text.",
+    "authorship": "public-domain",
+    "sourceHash": "d50eb1fd84ef7bb62ed81adc5bd56cc34a8475bb7d5ea8c18f7a275e00ef3ee5",
+    "licence": "public domain (1903); transcription CC BY-SA 4.0",
+    "modifications": "Paragraphs split into sentences; English argument omitted; 1 stray U+FFFD replacement character(s) in the stored copy removed (Hercules 23.5, before \"neque\"); nothing else changed."
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Copied mechanically from the Wikisource transcription; not proofread against the printed book."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "myth",
+    "perseus"
+  ],
+  "editorialTags": [
+    "graded-reader",
+    "neo-latin"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "ritchie-fabulae-faciles",
+    "chapter": {
+      "index": 1,
+      "title": "Fabulae Faciles: Perseus"
+    }
+  },
+  "streams": [
+    "library"
+  ],
+  "sections": [
+    {
+      "title": "1. THE ARK",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.1.1",
+              "text": "Haec narrantur a poetis de Perseo."
+            },
+            {
+              "id": "perseus.1.2",
+              "text": "Perseus filius erat Iovis, maximi deorum; avus eius Acrisius appellabatur."
+            },
+            {
+              "id": "perseus.1.3",
+              "text": "Acrisius volebat Perseum nepotem suum necare; nam propter oraculum puerum timebat."
+            },
+            {
+              "id": "perseus.1.4",
+              "text": "Comprehendit igitur Perseum adhuc infantem, et cum matre in arca lignea inclusit."
+            },
+            {
+              "id": "perseus.1.5",
+              "text": "Tum arcam ipsam in mare coniecit."
+            },
+            {
+              "id": "perseus.1.6",
+              "text": "Danae, Persei mater, magnopere territa est; tempestas enim magna mare turbabat."
+            },
+            {
+              "id": "perseus.1.7",
+              "text": "Perseus autem in sinu matris dormiebat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "2. JUPITER SAVES HIS SON",
+      "chapter": 2,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.2.1",
+              "text": "Iuppiter tamen haec omnia vidit, et filium suum servare constituit."
+            },
+            {
+              "id": "perseus.2.2",
+              "text": "Tranquillum igitur fecit mare, et arcam ad insulam Seriphum perduxit."
+            },
+            {
+              "id": "perseus.2.3",
+              "text": "Huius insulae Polydectes tum rex erat."
+            },
+            {
+              "id": "perseus.2.4",
+              "text": "Postquam arca ad litus appulsa est, Danae in harena quietem capiebat."
+            },
+            {
+              "id": "perseus.2.5",
+              "text": "Post breve tempus a piscatore quodam reperta est, et ad domum regis Polydectis adducta est."
+            },
+            {
+              "id": "perseus.2.6",
+              "text": "Ille matrem et puerum benigne excepit, et iis sedem tutam in finibus suis dedit."
+            },
+            {
+              "id": "perseus.2.7",
+              "text": "Danae hoc donum libenter accepit, et pro tanto beneficio regi gratias egit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "3. PERSEUS IS SENT ON HIS TRAVELS",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.3.1",
+              "text": "Perseus igitur multos annos ibi habitabat, et cum matre sua vitam beatam agebat."
+            },
+            {
+              "id": "perseus.3.2",
+              "text": "At Polydectes Danaen magnopere amabat, atque eam in matrimonium ducere volebat."
+            },
+            {
+              "id": "perseus.3.3",
+              "text": "Hoc tamen consilium Perseo minime gratum erat."
+            },
+            {
+              "id": "perseus.3.4",
+              "text": "Polydectes igitur Perseum dimittere constituit."
+            },
+            {
+              "id": "perseus.3.5",
+              "text": "Tum iuvenem ad se vocavit et haec dixit: \"Turpe est hanc ignavam vitam agere; iam dudum tu adulescens es."
+            },
+            {
+              "id": "perseus.3.6",
+              "text": "Quo usque hic manebis?"
+            },
+            {
+              "id": "perseus.3.7",
+              "text": "Tempus est arma capere et virtutem praestare."
+            },
+            {
+              "id": "perseus.3.8",
+              "text": "Hinc abi, et caput Medusae mihi refer.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. PERSEUS GETS HIS OUTFIT",
+      "chapter": 4,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.4.1",
+              "text": "Perseus ubi haec audivit, ex insula discessit, et postquam ad continentem venit, Medusam quaesivit."
+            },
+            {
+              "id": "perseus.4.2",
+              "text": "Diu frustra quaerebat; namque naturam loci ignorabat."
+            },
+            {
+              "id": "perseus.4.3",
+              "text": "Tandem Apollo et Minerva viam demonstraverunt."
+            },
+            {
+              "id": "perseus.4.4",
+              "text": "Primum ad Graeas, sorores Medusae, pervenit."
+            },
+            {
+              "id": "perseus.4.5",
+              "text": "Ab his talaria et galeam magicam accepit."
+            },
+            {
+              "id": "perseus.4.6",
+              "text": "Apollo autem et Minerva falcem et speculum dederunt."
+            },
+            {
+              "id": "perseus.4.7",
+              "text": "Tum postquam talaria pedibus induit, in aera ascendit."
+            },
+            {
+              "id": "perseus.4.8",
+              "text": "Diu per aera volabat; tandem tamen ad eum locum venit ubi Medusa cum ceteris Gorgonibus habitabat."
+            },
+            {
+              "id": "perseus.4.9",
+              "text": "Gorgones autem monstra erant specie horribili; capita enim earum anguibus omnino contecta erant."
+            },
+            {
+              "id": "perseus.4.10",
+              "text": "Manus etiam ex aere factae erant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "5. THE GORGON'S HEAD",
+      "chapter": 5,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.5.1",
+              "text": "Res difficillima erat caput Gorgonis abscidere; eius enim conspectu homines in saxum vertebantur."
+            },
+            {
+              "id": "perseus.5.2",
+              "text": "Propter hanc causam Minerva speculum Perseo dederat."
+            },
+            {
+              "id": "perseus.5.3",
+              "text": "Ille igitur tergum vertit, et in speculum inspiciebat; hoc modo ad locum venit ubi Medusa dormiebat."
+            },
+            {
+              "id": "perseus.5.4",
+              "text": "Tum falce sua caput eius uno ictu abscidit."
+            },
+            {
+              "id": "perseus.5.5",
+              "text": "Ceterae Gorgones statim e somno excitatae sunt, et ubi rem viderunt, ira commotae sunt."
+            },
+            {
+              "id": "perseus.5.6",
+              "text": "Arma rapuerunt, et Perseum occidere volebant."
+            },
+            {
+              "id": "perseus.5.7",
+              "text": "Ille autem dum fugit, galeam magicam induit; et ubi hoc fecit, statim e conspectu earum evasit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "6. THE SEA-SERPENT",
+      "chapter": 6,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.6.1",
+              "text": "Post haec Perseus in finis Aethiopum venit."
+            },
+            {
+              "id": "perseus.6.2",
+              "text": "Ibi Cepheus quidam illo tempore regnabat."
+            },
+            {
+              "id": "perseus.6.3",
+              "text": "Hic Neptunum, maris deum, olim offenderat; Neptunus autem monstrum saevissimum miserat."
+            },
+            {
+              "id": "perseus.6.4",
+              "text": "Hoc cottidie e mari veniebat et homines devorabat."
+            },
+            {
+              "id": "perseus.6.5",
+              "text": "Ob hanc causam pavor animos omnium occupaverat."
+            },
+            {
+              "id": "perseus.6.6",
+              "text": "Cepheus igitur oraculum dei Hammonis consuluit, atque a deo iussus est filiam monstro tradere."
+            },
+            {
+              "id": "perseus.6.7",
+              "text": "Eius autem filia, nomine Andromeda, virgo formosissima erat."
+            },
+            {
+              "id": "perseus.6.8",
+              "text": "Cepheus ubi haec audivit, magnum dolorem percepit."
+            },
+            {
+              "id": "perseus.6.9",
+              "text": "Volebat tamen civis suos e tanto periculo extrahere, atque ob eam causam imperata Hammonis facere constituit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "7. A HUMAN SACRIFICE",
+      "chapter": 7,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.7.1",
+              "text": "Tum rex diem certam dixit et omnia paravit."
+            },
+            {
+              "id": "perseus.7.2",
+              "text": "Ubi ea dies venit, Andromeda ad litus deducta est, et in conspectu omnium ad rupem adligata est."
+            },
+            {
+              "id": "perseus.7.3",
+              "text": "Omnes fatum eius deplorabant, nec lacrimas tenebant."
+            },
+            {
+              "id": "perseus.7.4",
+              "text": "At subito, dum monstrum exspectant, Perseus accurrit; et ubi lacrimas vidit, causam doloris quaerit."
+            },
+            {
+              "id": "perseus.7.5",
+              "text": "Illi rem totam exponunt et puellam demonstrant."
+            },
+            {
+              "id": "perseus.7.6",
+              "text": "Dum haec geruntur, fremitus terribilis auditur; simul monstrum horribili specie procul conspicitur."
+            },
+            {
+              "id": "perseus.7.7",
+              "text": "Eius conspectus timorem maximum omnibus iniecit."
+            },
+            {
+              "id": "perseus.7.8",
+              "text": "Monstrum magna celeritate ad litus contendit, iamque ad locum appropinquabat ubi puella stabat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "8. THE RESCUE",
+      "chapter": 8,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.8.1",
+              "text": "At Perseus ubi haec vidit, gladium suum eduxit, et postquam talaria induit, in aera sublatus est."
+            },
+            {
+              "id": "perseus.8.2",
+              "text": "Tum desuper in monstrum impetum subito fecit, et gladio suo collum eius graviter vulneravit."
+            },
+            {
+              "id": "perseus.8.3",
+              "text": "Monstrum ubi sensit vulnus, fremitum horribilem edidit, et sine mora totum corpus in aquam mersit."
+            },
+            {
+              "id": "perseus.8.4",
+              "text": "Perseus dum circum litus volat, reditum eius exspectabat."
+            },
+            {
+              "id": "perseus.8.5",
+              "text": "Mare autem interea undique sanguine inficitur."
+            },
+            {
+              "id": "perseus.8.6",
+              "text": "Post breve tempus belua rursus caput sustulit; mox tamen a Perseo ictu graviore vulnerata est."
+            },
+            {
+              "id": "perseus.8.7",
+              "text": "Tum iterum se in undas mersit, neque postea visa est."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "9. THE REWARD OF VALOR",
+      "chapter": 9,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.9.1",
+              "text": "Perseus postquam ad litus descendit, primum talaria exuit; tum ad rupem venit ubi Andromeda vincta erat."
+            },
+            {
+              "id": "perseus.9.2",
+              "text": "Ea autem omnem spem salutis deposuerat, et ubi Perseus adiit, terrore paene exanimata erat."
+            },
+            {
+              "id": "perseus.9.3",
+              "text": "Ille vincula statim solvit, et puellam patri reddidit."
+            },
+            {
+              "id": "perseus.9.4",
+              "text": "Cepheus ob hanc rem maximo gaudio adfectus est."
+            },
+            {
+              "id": "perseus.9.5",
+              "text": "Meritam gratiam pro tanto beneficio Perseo rettulit; praeterea Andromedam ipsam ei in matrimonium dedit."
+            },
+            {
+              "id": "perseus.9.6",
+              "text": "Ille libenter hoc donum accepit et puellam duxit."
+            },
+            {
+              "id": "perseus.9.7",
+              "text": "Paucos annos cum uxore sua in ea regione habitabat, et in magno honore erat apud omnis Aethiopes."
+            },
+            {
+              "id": "perseus.9.8",
+              "text": "Magnopere tamen matrem suam rursus videre cupiebat."
+            },
+            {
+              "id": "perseus.9.9",
+              "text": "Tandem igitur cum uxore sua e regno Cephei discessit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "10. POLYDECTES IS TURNED TO STONE",
+      "chapter": 10,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.10.1",
+              "text": "Postquam Perseus ad insulam navem appulit, se ad locum contulit ubi mater olim habitaverat, sed domum invenit vacuam et omnino desertam."
+            },
+            {
+              "id": "perseus.10.2",
+              "text": "Tris dies per totam insulam matrem quaerebat; tandem quarto die ad templum Dianae pervenit."
+            },
+            {
+              "id": "perseus.10.3",
+              "text": "Huc Danae refugerat, quod Polydectem timebat."
+            },
+            {
+              "id": "perseus.10.4",
+              "text": "Perseus ubi haec cognovit, ira magna commotus est; ad regiam Polydectis sine mora contendit, et ubi eo venit, statim in atrium inrupit."
+            },
+            {
+              "id": "perseus.10.5",
+              "text": "Polydectes magno timore adfectus est et fugere volebat."
+            },
+            {
+              "id": "perseus.10.6",
+              "text": "Dum tamen ille fugit, Perseus caput Medusae monstravit; ille autem simul atque hoc vidit, in saxum versus est."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "11. THE ORACLE FULFILLED",
+      "chapter": 11,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "perseus.11.1",
+              "text": "Post haec Perseus cum uxore sua ad urbem Acrisi rediit."
+            },
+            {
+              "id": "perseus.11.2",
+              "text": "Ille autem ubi Perseum vidit, magno terrore adfectus est; nam propter oraculum istud nepotem suum adhuc timebat."
+            },
+            {
+              "id": "perseus.11.3",
+              "text": "In Thessaliam igitur ad urbem Larisam statim refugit, frustra tamen; neque enim fatum suum vitavit."
+            },
+            {
+              "id": "perseus.11.4",
+              "text": "Post paucos annos rex Larisae ludos magnos fecit; nuntios in omnis partis dimiserat et diem edixerat."
+            },
+            {
+              "id": "perseus.11.5",
+              "text": "Multi ex omnibus urbibus Graeciae ad ludos convenerunt."
+            },
+            {
+              "id": "perseus.11.6",
+              "text": "Ipse Perseus inter alios certamen discorum iniit."
+            },
+            {
+              "id": "perseus.11.7",
+              "text": "At dum discum conicit, avum suum casu occidit; Acrisius enim inter spectatores eius certaminis forte stabat."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

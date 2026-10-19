@@ -30,6 +30,7 @@ export const LANGUAGE_META: Readonly<Record<string, LanguageMeta>> = {
   // A page that declares plain "no" is not noted for either Norwegian pack: "no" does not say which written standard, and the learner's pack decides.
   nb: { lang: 'nb', name: 'Norwegian (Bokmål)', pageTag: /^(nb|no)(-|$)/, experimental: 'The Norwegian (Bokmål) pack is experimental: lemmatisation is seed-only (a machine-drafted word list), morphology and rules are limited, and nothing has been reviewed by a native speaker. Nynorsk words are never credited to it.' },
   nn: { lang: 'nn', name: 'Norwegian (Nynorsk)', pageTag: /^(nn|no)(-|$)/, experimental: 'The Norwegian (Nynorsk) pack is experimental: lemmatisation is seed-only (a machine-drafted word list, smaller than the Bokmål one), morphology and rules are limited, and nothing has been reviewed by a native speaker. Bokmål words are never credited to it.' },
+  la: { lang: 'la', name: 'Latin', pageTag: /^la(-|$)/i, experimental: 'Latin analyser ported from the Romance app, 2026-10-17: Clementine-Vulgate orthography; no native review' },
 };
 
 /** The languages the parser CAN read (an analyser exists for them, loaded or not). */

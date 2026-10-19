@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="la">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GoLearn Active — Latin harness page (Clementine Vulgate, John 1:1–5, public domain; seven1m/open-bibles USFX as held by the Vetus app)</title>
+<style>
+  body { margin: 0; font: 18px/1.65 Georgia, serif; color: #222; background: #fafafa; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px; }
+  .controls { position: sticky; top: 0; background: #fff; padding: 8px 12px; border: 1px solid #ddd; z-index: 5; font: 14px/1.4 system-ui, sans-serif; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  #status { font-variant-numeric: tabular-nums; }
+  p { margin: 0 0 1em; }
+  textarea { width: 100%; font: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <div class="controls">
+    <label><input type="checkbox" id="active" checked> GoLearn Active</label>
+    <label><input type="checkbox" id="speak"> Speak on click</label>
+    <span id="status">starting…</span>
+  </div>
+  <h1>In principio erat Verbum — Latin harness page (Vulgata Clementina, Ioannes 1)</h1>
+  <p id="p0">In principio erat Verbum, et Verbum erat apud Deum, et Deus erat Verbum. Hoc erat in principio apud Deum.</p>
+  <p id="p1">Omnia per ipsum facta sunt : et sine ipso factum est nihil, quod factum est. In ipso vita erat, et vita erat lux hominum :</p>
+  <p id="p2">et lux in tenebris lucet, et tenebræ eam non comprehenderunt.</p>
+  <p id="p3">Dixitque Deus : Fiat lux. Et facta est lux. Et vidit Deus lucem quod esset bona : et divisit lucem a tenebris.</p>
+</main>
+<script>
+  // A stand-in for the background worker, so the content script runs here as in the extension: the page answers its messages.
+  // Same stand-in as active.html, for Latin: click a word to see the card with the Latin analyser's reading (lemma, case/number/tense), the dictionary senses
+  // and the declension table of verbum. The text is the Clementine Vulgate (public domain), John 1:1-5 and Genesis 1:3-4.
+  (function () {
+    const rows = {};
+    const dim = (o) => Object.assign({ score: 0, confidence: 0, observations: 0, positive: 0, negative: 0 }, o);
+    const put = (id, dims) => { rows[id] = { unitId: id, dimensions: dims }; };
+    put('form:la:verbum', { exposure: dim({ observations: 3 }) });
+    put('form:la:lux', { exposure: dim({ observations: 1 }) });
+    const settings = { active: true, speakOnClick: false };
+    let contentListener = null;
+    const reply = (m) => {
+      switch (m.type) {
+        case 'golearn:status': return { ok: true, connected: false, needsSignIn: false, languageId: 'la', languageName: 'Latin', packAvailable: true, installedLanguages: ['la'] };
+        case 'golearn:active': return { ok: true, settings, granted: true, registered: true, excluded: 9 };
+        case 'golearn:profile':
+        case 'golearn:active-profile': { const out = {}; for (const id of m.unitIds || []) if (rows[id]) out[id] = rows[id]; return { ok: true, connected: false, source: 'device', rows: out, depth: 'brief', depthOrigin: 'default' }; }
+        // the dictionary's meanings with the sources the worker names (the links are built by the worker from app/config.json `sourceLinks`)
+        case 'golearn:gloss': {
+          const asked = [m.lemma, ...(m.forms || [])].map((x) => String(x || ''));
+          const senses = { 'verbum': ['word'], 'principium': ['beginning', 'origin'], 'lux': ['light'], 'deus': ['god'], 'vita': ['life'], 'tenebrae': ['darkness'], 'homo': ['human being', 'man'], 'facio': ['to make', 'to do'], 'sum': ['to be'], 'video': ['to see'] };
+          const hit = Object.keys(senses).find((w) => asked.includes(w));
+          if (!hit) return { ok: true, found: false, senses: [], reason: 'not-found', source: 'extension' };
+          return { ok: true, found: true, senses: senses[hit], attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', source: 'extension', sources: [
+            { label: 'Wiktionary: ' + hit + ' (Latin)', url: 'https://en.wiktionary.org/wiki/' + encodeURIComponent(hit) + '#Latin', licence: 'CC BY-SA 4.0' },
+            { label: 'kaikki.org: Latin dictionary', url: 'https://kaikki.org/dictionary/Latin/', licence: 'CC BY-SA 4.0' },
+            { label: 'Course word list (adapter-la@harness)' },
+          ] };
+        }
+        // the dictionary's full record of verbum as the Latin shard holds it: the declension table (macrons as Wiktionary prints them)
+        case 'golearn:entry': {
+          const asked = [m.lemma, ...(m.forms || [])].map((x) => String(x || ''));
+          if (!asked.some((x) => ['verbum', 'verbi', 'verbo', 'verba', 'verborum', 'verbis'].includes(x))) return { ok: true, found: false, records: [], reason: 'not-found', source: 'extension' };
+          return { ok: true, found: true, source: 'extension', attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', records: [{ w: 'verbum', p: 'NOUN', s: [{ g: 'word' }, { g: 'verb (grammar)' }], tpl: ['la-ndecl'], f: [
+            { f: 'verbum', t: ['nominative', 'singular'], s: 'declension' }, { f: 'verba', t: ['nominative', 'plural'], s: 'declension' },
+            { f: 'verbī', t: ['genitive', 'singular'], s: 'declension' }, { f: 'verbōrum', t: ['genitive', 'plural'], s: 'declension' },
+            { f: 'verbō', t: ['dative', 'singular'], s: 'declension' }, { f: 'verbīs', t: ['dative', 'plural'], s: 'declension' },
+            { f: 'verbum', t: ['accusative', 'singular'], s: 'declension' }, { f: 'verba', t: ['accusative', 'plural'], s: 'declension' },
+            { f: 'verbō', t: ['ablative', 'singular'], s: 'declension' }, { f: 'verbīs', t: ['ablative', 'plural'], s: 'declension' },
+          ] }] };
+        }
+        case 'golearn:explain': return { ok: true, features: [], constructions: [], source: 'none' };
+        case 'golearn:pronounce-info': return { ok: true, deviceVoice: 'maybe', remoteConsent: false, sources: [], note: '' };
+        // what the worker's device Repository does with an event, in miniature: a lookup is a meeting (exposure +1, and a mark of New is then released:
+        // the page reads a New mark with a later meeting as Seen), a level pressed on the card is the word's mark; the next scan shows the change
+        case 'golearn:record': {
+          const e = m.event || {};
+          for (const id of (e.subject && e.subject.itemIds) || []) {
+            const row = rows[id] || (rows[id] = { unitId: id, dimensions: {} });
+            if (e.kind === 'SelectionLookedUp') {
+              const x = row.dimensions.exposure || (row.dimensions.exposure = dim({}));
+              x.observations += 1; x.positive += 1; row.lastSeenAt = e.at;
+            } else if (e.kind === 'ItemMarked' && e.payload && e.payload.mark) {
+              row.selfMark = { mark: e.payload.mark, at: e.at };
+              row.lastSeenAt = e.at;
+            }
+          }
+          return { ok: true, attributed: 'local' };
+        }
+        case 'golearn:metrics': return { ok: true };
+        default: return { ok: false, error: 'unknown-message' };
+      }
+    };
+    window.chrome = {
+      runtime: {
+        id: 'harness',
+        onMessage: { addListener(cb) { contentListener = cb; }, removeListener() {} },
+        sendMessage: async (m) => reply(m),
+        getManifest: () => ({ version: 'harness' }),
+        getURL: (p) => '/dist/' + p,
+      },
+    };
+    const send = (m) => new Promise((resolve) => { if (!contentListener) return resolve(undefined); const r = contentListener(m, { id: 'harness' }, resolve); if (r !== true) resolve(undefined); });
+    window.__harness = {
+      send,
+      state: () => window.__goLearnExtension && window.__goLearnExtension.active.state,
+    };
+    const status = document.getElementById('status');
+    const paint = () => { const s = window.__harness.state(); if (!s) return; status.textContent = `${s.on ? 'on' : 'off'} · ${s.languageId || '—'} · ${s.scanned} words · new ${s.marked.new}, seen ${s.marked.seen}, recognized ${s.marked.recognized}, familiar ${s.marked.familiar}, known ${s.marked.known}, automatic ${s.marked.automatic} · scan ${s.scanMs ?? '?'} ms · model ${s.profileMs ?? '?'} ms · clicks ${s.clicks}${s.reason ? ' · ' + s.reason : ''}`; };
+    setInterval(paint, 300);
+    document.getElementById('active').addEventListener('change', (e) => { settings.active = e.target.checked; send(e.target.checked ? { type: 'golearn:activate', speak: settings.speakOnClick } : { type: 'golearn:deactivate' }); });
+    document.getElementById('speak').addEventListener('change', (e) => { settings.speakOnClick = e.target.checked; send({ type: 'golearn:activate', speak: settings.speakOnClick }); });
+  })();
+</script>
+<script src="/dist/content.harness.js"></script>
+</body>
+</html>

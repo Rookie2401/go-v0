@@ -24,8 +24,9 @@ import type { DictionaryEntry, DictionaryInfo, LanguageCode } from '../core';
 import { createAdapterRegistry } from '../adapters';
 import {
   chooseBuckets, createLabelSetRegistry, createLineIngestor, dropsFormPronunciations, entryJson, estimateBytes, makeManifest, manifestText,
-  mergeEntries, mergeKey, newBuildStats, settleEntries, shardShape, shardText, tallyEntry, tallyShard, type BuildStats,
+  mergeEntries, mergeKey, newBuildStats, settleEntries, shardShape, shardText, tallyEntry, tallyShard, withAliases, type BuildStats,
 } from './build';
+import { latinNormalize } from './latin-normalize';
 import { SHARD_FILE, bucketOf, shardName, type DictionaryManifest } from './format';
 
 export const SPILL_PARTITIONS = 256;
@@ -39,6 +40,8 @@ export interface BuildFileOptions {
   normalize?: (surface: string) => string;
   /** Leave the pronunciation off inflected-form entries (default: the language's setting, DROP_FORM_PRONUNCIATIONS in build.ts). */
   dropFormPronunciations?: boolean;
+  /** Extra entries to index beside a mapped entry (default: Latin's spelling variants, src/dict/latin.ts). */
+  aliasesOf?: (entry: DictionaryEntry) => DictionaryEntry[];
   /** What the caller knows about the file; the file name, sha256 and line count are computed here. */
   source?: { url?: string; lastModified?: string; retrievedAt?: string };
   /** Where the temporary spill directory is made (default: the system temp directory). It is removed when the build ends. */
@@ -95,8 +98,8 @@ function createSpill(dir: string) {
 }
 
 export async function buildDictionaryFile(opts: BuildFileOptions): Promise<BuildFileResult> {
-  const adapter = opts.normalize ? undefined : createAdapterRegistry().get(opts.lang);
-  const normalize = opts.normalize ?? ((s: string) => adapter!.normalize(s));
+  const adapter = opts.normalize || opts.lang === ('la' as LanguageCode) ? undefined : createAdapterRegistry().get(opts.lang);
+  const normalize = opts.normalize ?? (opts.lang === ('la' as LanguageCode) ? latinNormalize : (s: string) => adapter!.normalize(s));
   const stats = newBuildStats();
   const labelSets = createLabelSetRegistry();
   const drop = dropsFormPronunciations({ lang: opts.lang, dropFormPronunciations: opts.dropFormPronunciations });
@@ -112,11 +115,14 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
     const rl = readline.createInterface({ input: fs.createReadStream(opts.input, { encoding: 'utf8' }), crlfDelay: Infinity });
     for await (const line of rl) {
       lines++;
-      const entry = ingest(line);
-      if (!entry) continue;
-      estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional));
-      // The spill is this process's own temporary file: the mapped entry as it is, read back with JSON.parse.
-      spill.add(bucketOf(entry.form, SPILL_PARTITIONS), JSON.stringify(entry));
+      const mapped = ingest(line);
+      if (!mapped) continue;
+      for (const entry of withAliases(mapped, opts, stats)) { // a Latin headword also gets its other printed spellings
+        for (const f of entry.formOf ?? []) if (entry !== mapped) labelSets.note(f.tags);
+        estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional));
+        // The spill is this process's own temporary file: the mapped entry as it is, read back with JSON.parse.
+        spill.add(bucketOf(entry.form, SPILL_PARTITIONS), JSON.stringify(entry));
+      }
     }
     spill.close();
     const source: NonNullable<DictionaryInfo['source']> = {

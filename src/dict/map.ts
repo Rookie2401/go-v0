@@ -66,6 +66,27 @@ const labelsOf = (o: Record<string, unknown>): string[] => {
 };
 const lower = (labels: string[]): string[] => labels.map((t) => t.toLowerCase());
 
+/**
+ * Latin pronunciation rows say which pronunciation they are in a free-text `note` ("modern Italianate Ecclesiastical") where
+ * the Classical rows carry the tag `Classical-Latin`. For Latin the note becomes a verbatim label of the row, so a reader can
+ * tell Classical from Ecclesiastical; other languages' rows are untouched.
+ */
+export function soundsWithNotes(sounds: unknown[], lang: string): unknown[] {
+  if (lang !== 'la') return sounds;
+  return sounds.map((raw) => {
+    if (!isObj(raw)) return raw;
+    const note = str(raw.note);
+    return note ? { ...raw, raw_tags: [...list(raw.raw_tags), note] } : raw;
+  });
+}
+const isClassicalLatin = (p: DictionaryPronunciation): boolean => p.tags?.some((t) => /^classical/i.test(t)) ?? false;
+
+/** The etymology number of a line: a whole number from 1 up. The Latin extract writes it as a string ("2"), and for Latin a digit string counts; for any other language only a number does. */
+export function etymologyNumberOf(x: unknown, lang: string): number | undefined {
+  const n = lang === 'la' && typeof x === 'string' && /^[0-9]{1,6}$/.test(x.trim()) ? Number(x.trim()) : x;
+  return typeof n === 'number' && Number.isInteger(n) && n >= 1 ? n : undefined;
+}
+
 const pushUnique = <T>(arr: T[], v: T) => { if (!arr.includes(v)) arr.push(v); };
 const sameList = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => x === b[i]);
 
@@ -231,12 +252,15 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
   const altOf: string[] = [];
   for (const s of senses) for (const a of list(s.alt_of)) { const w = isObj(a) ? str(a.word) : undefined; if (w) pushUnique(altOf, w); }
 
-  const { list: pronunciations, unpaired } = pronunciationsOf(soundRows(list(line.sounds)), form);
+  const { list: pronunciations, unpaired } = pronunciationsOf(soundRows(soundsWithNotes(list(line.sounds), lang)), form);
   // The short view comes from the plain readings (no variant label); with none, from whatever is there.
   // Thai variant readings are orthographic variants; another language's labels are usually regions, and no region's
   // reading is promoted to "the" reading, so there the short view comes from untagged readings only.
   const plain = pronunciations.filter((p) => !p.tags?.length);
-  const pool = plain.length || lang !== 'th' ? plain : pronunciations;
+  // Latin rows are all labelled (Classical, Ecclesiastical): the short view is the Classical reading.
+  const latin = (lang as string) === 'la';
+  const classical = latin ? pronunciations.filter(isClassicalLatin) : [];
+  const pool = latin ? classical : plain.length || lang !== 'th' ? plain : pronunciations;
   const respelling = pool.find((p) => p.respelling)?.respelling;
   const ipa = pool.find((p) => p.ipa)?.ipa;
   const formRoman = list(line.forms).filter(isObj).map((f) => (lower(labelsOf(f)).includes('romanization') ? str(f.form) : undefined)).find((v) => v !== undefined);
@@ -257,8 +281,8 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
   if (classifiers.length) entry.classifiers = classifiers;
   if (allSenses.length) entry.senses = allSenses;
   if (pronunciations.length) entry.pronunciations = pronunciations;
-  const ety = line.etymology_number;
-  if (typeof ety === 'number' && Number.isInteger(ety) && ety >= 1) entry.etymology = ety;
+  const ety = etymologyNumberOf(line.etymology_number, lang);
+  if (ety !== undefined) entry.etymology = ety;
   if (altOf.length) entry.altOf = altOf;
   if (formOf.length) entry.formOf = formOf;
   return unpaired ? { entry, unpairedPronunciations: true } : { entry };

@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 2,
+  "id": "vulgate-mat-5",
+  "lang": "la",
+  "title": "Matthaeus 5",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-la-clementine",
+    "kind": "scripture",
+    "title": "Biblia Sacra Vulgata (Clementine, 1592)"
+  },
+  "source": {
+    "id": "src:la:vulgate-mat-5",
+    "title": "Biblia Sacra Vulgata, Clementine edition (1592)",
+    "edition": "Clementine Vulgate 1592",
+    "attribution": "Biblia Sacra Vulgata, editio Clementina (1592), public domain. USFX text from seven1m/open-bibles, held by the Vetus V0 app.",
+    "provenance": "Taken verse by verse from vetus-v0/data/vulgate/lat-clementine.usfx.xml (SHA-256 5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf) by scripts/corpus-la-build.mts; nothing was retyped. Clementine spelling kept (ae ligatures as printed, i/j and u/v as printed, no macrons). One verse is one sentence (the verse is not split, although it may hold several clauses or sentences), so every sentence is addressable by its reference. The text has not been compared with a second, independent edition.",
+    "url": "https://github.com/seven1m/open-bibles",
+    "rights": "public-domain",
+    "licenseNote": "The Clementine Vulgate (1592) is in the public domain. The USFX file comes from seven1m/open-bibles (Bible texts that are public domain or openly licensed).",
+    "authorship": "public-domain",
+    "sourceHash": "5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf",
+    "licence": "public domain",
+    "modifications": "none: each sentence is exactly one verse of the source (surrounding whitespace trimmed)."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-la-scripture.mts",
+    "reviewedAt": "2026-10-17",
+    "notes": "Wording verified by byte-comparison against the Clementine USFX file it was copied from (a copy-integrity check, not a second edition)."
+  },
+  "topics": [
+    "scripture",
+    "matthew-5",
+    "gospel"
+  ],
+  "editorialTags": [
+    "clementine-orthography"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "vulgata-clementina",
+    "chapter": {
+      "index": 9,
+      "title": "Matthaeus 5"
+    }
+  },
+  "streams": [
+    "scripture"
+  ],
+  "scripture": {
+    "translationId": "latVulgClementine",
+    "translationName": "Biblia Sacra Vulgata (Clementine, 1592)",
+    "edition": "Clementine Vulgate 1592",
+    "book": "MAT",
+    "chapter": 5,
+    "verification": {
+      "against": "seven1m/open-bibles Clementine USFX (lat-clementine.usfx.xml, as held by vetus-v0)",
+      "url": "https://github.com/seven1m/open-bibles",
+      "checkedAt": "2026-10-17",
+      "method": "byte-comparison",
+      "by": "scripts/verify-la-scripture.mts"
+    }
+  },
+  "sections": [
+    {
+      "title": "Matthaeus 5",
+      "chapter": 5,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "MAT.5.1",
+              "text": "Videns autem Jesus turbas, ascendit in montem, et cum sedisset, accesserunt ad eum discipuli ejus,",
+              "verseRefs": [
+                "MAT.5.1"
+              ]
+            },
+            {
+              "id": "MAT.5.2",
+              "text": "et aperiens os suum docebat eos dicens :",
+              "verseRefs": [
+                "MAT.5.2"
+              ]
+            },
+            {
+              "id": "MAT.5.3",
+              "text": "Beati pauperes spiritu : quoniam ipsorum est regnum cælorum.",
+              "verseRefs": [
+                "MAT.5.3"
+              ]
+            },
+            {
+              "id": "MAT.5.4",
+              "text": "Beati mites : quoniam ipsi possidebunt terram.",
+              "verseRefs": [
+                "MAT.5.4"
+              ]
+            },
+            {
+              "id": "MAT.5.5",
+              "text": "Beati qui lugent : quoniam ipsi consolabuntur.",
+              "verseRefs": [
+                "MAT.5.5"
+              ]
+            },
+            {
+              "id": "MAT.5.6",
+              "text": "Beati qui esuriunt et sitiunt justitiam : quoniam ipsi saturabuntur.",
+              "verseRefs": [
+                "MAT.5.6"
+              ]
+            },
+            {
+              "id": "MAT.5.7",
+              "text": "Beati misericordes : quoniam ipsi misericordiam consequentur.",
+              "verseRefs": [
+                "MAT.5.7"
+              ]
+            },
+            {
+              "id": "MAT.5.8",
+              "text": "Beati mundo corde : quoniam ipsi Deum videbunt.",
+              "verseRefs": [
+                "MAT.5.8"
+              ]
+            },
+            {
+              "id": "MAT.5.9",
+              "text": "Beati pacifici : quoniam filii Dei vocabuntur.",
+              "verseRefs": [
+                "MAT.5.9"
+              ]
+            },
+            {
+              "id": "MAT.5.10",
+              "text": "Beati qui persecutionem patiuntur propter justitiam : quoniam ipsorum est regnum cælorum.",
+              "verseRefs": [
+                "MAT.5.10"
+              ]
+            },
+            {
+              "id": "MAT.5.11",
+              "text": "Beati estis cum maledixerint vobis, et persecuti vos fuerint, et dixerint omne malum adversum vos mentientes, propter me :",
+              "verseRefs": [
+                "MAT.5.11"
+              ]
+            },
+            {
+              "id": "MAT.5.12",
+              "text": "gaudete, et exsultate, quoniam merces vestra copiosa est in cælis. Sic enim persecuti sunt prophetas, qui fuerunt ante vos.",
+              "verseRefs": [
+                "MAT.5.12"
+              ]
+            },
+            {
+              "id": "MAT.5.13",
+              "text": "Vos estis sal terræ. Quod si sal evanuerit, in quo salietur ? ad nihilum valet ultra, nisi ut mittatur foras, et conculcetur ab hominibus.",
+              "verseRefs": [
+                "MAT.5.13"
+              ]
+            },
+            {
+              "id": "MAT.5.14",
+              "text": "Vos estis lux mundi. Non potest civitas abscondi supra montem posita,",
+              "verseRefs": [
+                "MAT.5.14"
+              ]
+            },
+            {
+              "id": "MAT.5.15",
+              "text": "neque accendunt lucernam, et ponunt eam sub modio, sed super candelabrum, ut luceat omnibus qui in domo sunt.",
+              "verseRefs": [
+                "MAT.5.15"
+              ]
+            },
+            {
+              "id": "MAT.5.16",
+              "text": "Sic luceat lux vestra coram hominibus : ut videant opera vestra bona, et glorificent Patrem vestrum, qui in cælis est.",
+              "verseRefs": [
+                "MAT.5.16"
+              ]
+            },
+            {
+              "id": "MAT.5.17",
+              "text": "Nolite putare quoniam veni solvere legem aut prophetas : non veni solvere, sed adimplere.",
+              "verseRefs": [
+                "MAT.5.17"
+              ]
+            },
+            {
+              "id": "MAT.5.18",
+              "text": "Amen quippe dico vobis, donec transeat cælum et terra, jota unum aut unus apex non præteribit a lege, donec omnia fiant.",
+              "verseRefs": [
+                "MAT.5.18"
+              ]
+            },
+            {
+              "id": "MAT.5.19",
+              "text": "Qui ergo solverit unum de mandatis istis minimis, et docuerit sic homines, minimus vocabitur in regno cælorum : qui autem fecerit et docuerit, hic magnus vocabitur in regno cælorum.",
+              "verseRefs": [
+                "MAT.5.19"
+              ]
+            },
+            {
+              "id": "MAT.5.20",
+              "text": "Dico enim vobis, quia nisi abundaverit justitia vestra plus quam scribarum et pharisæorum, non intrabitis in regnum cælorum.",
+              "verseRefs": [
+                "MAT.5.20"
+              ]
+            },
+            {
+              "id": "MAT.5.21",
+              "text": "Audistis quia dictum est antiquis : Non occides : qui autem occiderit, reus erit judicio.",
+              "verseRefs": [
+                "MAT.5.21"
+              ]
+            },
+            {
+              "id": "MAT.5.22",
+              "text": "Ego autem dico vobis : quia omnis qui irascitur fratri suo, reus erit judicio. Qui autem dixerit fratri suo, raca : reus erit concilio. Qui autem dixerit, fatue : reus erit gehennæ ignis.",
+              "verseRefs": [
+                "MAT.5.22"
+              ]
+            },
+            {
+              "id": "MAT.5.23",
+              "text": "Si ergo offers munus tuum ad altare, et ibi recordatus fueris quia frater tuus habet aliquid adversum te :",
+              "verseRefs": [
+                "MAT.5.23"
+              ]
+            },
+            {
+              "id": "MAT.5.24",
+              "text": "relinque ibi munus tuum ante altare, et vade prius reconciliari fratri tuo : et tunc veniens offeres munus tuum.",
+              "verseRefs": [
+                "MAT.5.24"
+              ]
+            },
+            {
+              "id": "MAT.5.25",
+              "text": "Esto consentiens adversario tuo cito dum es in via cum eo : ne forte tradat te adversarius judici, et judex tradat te ministro : et in carcerem mittaris.",
+              "verseRefs": [
+                "MAT.5.25"
+              ]
+            },
+            {
+              "id": "MAT.5.26",
+              "text": "Amen dico tibi, non exies inde, donec reddas novissimum quadrantem.",
+              "verseRefs": [
+                "MAT.5.26"
+              ]
+            },
+            {
+              "id": "MAT.5.27",
+              "text": "Audistis quia dictum est antiquis : Non mœchaberis.",
+              "verseRefs": [
+                "MAT.5.27"
+              ]
+            },
+            {
+              "id": "MAT.5.28",
+              "text": "Ego autem dico vobis : quia omnis qui viderit mulierem ad concupiscendum eam, jam mœchatus est eam in corde suo.",
+              "verseRefs": [
+                "MAT.5.28"
+              ]
+            },
+            {
+              "id": "MAT.5.29",
+              "text": "Quod si oculus tuus dexter scandalizat te, erue eum, et projice abs te : expedit enim tibi ut pereat unum membrorum tuorum, quam totum corpus tuum mittatur in gehennam.",
+              "verseRefs": [
+                "MAT.5.29"
+              ]
+            },
+            {
+              "id": "MAT.5.30",
+              "text": "Et si dextra manus tua scandalizat te, abscide eam, et projice abs te : expedit enim tibi ut pereat unum membrorum tuorum, quam totum corpus tuum eat in gehennam.",
+              "verseRefs": [
+                "MAT.5.30"
+              ]
+            },
+            {
+              "id": "MAT.5.31",
+              "text": "Dictum est autem : Quicumque dimiserit uxorem suam, det ei libellum repudii.",
+              "verseRefs": [
+                "MAT.5.31"
+              ]
+            },
+            {
+              "id": "MAT.5.32",
+              "text": "Ego autem dico vobis : quia omnis qui dimiserit uxorem suam, excepta fornicationis causa, facit eam mœchari : et qui dimissam duxerit, adulterat.",
+              "verseRefs": [
+                "MAT.5.32"
+              ]
+            },
+            {
+              "id": "MAT.5.33",
+              "text": "Iterum audistis quia dictum est antiquis : Non perjurabis : reddes autem Domino juramenta tua.",
+              "verseRefs": [
+                "MAT.5.33"
+              ]
+            },
+            {
+              "id": "MAT.5.34",
+              "text": "Ego autem dico vobis, non jurare omnino, neque per cælum, quia thronus Dei est :",
+              "verseRefs": [
+                "MAT.5.34"
+              ]
+            },
+            {
+              "id": "MAT.5.35",
+              "text": "neque per terram, quia scabellum est pedum ejus : neque per Jerosolymam, quia civitas est magni regis :",
+              "verseRefs": [
+                "MAT.5.35"
+              ]
+            },
+            {
+              "id": "MAT.5.36",
+              "text": "neque per caput tuum juraveris, quia non potes unum capillum album facere, aut nigrum.",
+              "verseRefs": [
+                "MAT.5.36"
+              ]
+            },
+            {
+              "id": "MAT.5.37",
+              "text": "Sit autem sermo vester, est, est : non, non : quod autem his abundantius est, a malo est.",
+              "verseRefs": [
+                "MAT.5.37"
+              ]
+            },
+            {
+              "id": "MAT.5.38",
+              "text": "Audistis quia dictum est : Oculum pro oculo, et dentem pro dente.",
+              "verseRefs": [
+                "MAT.5.38"
+              ]
+            },
+            {
+              "id": "MAT.5.39",
+              "text": "Ego autem dico vobis, non resistere malo : sed si quis te percusserit in dexteram maxillam tuam, præbe illi et alteram :",
+              "verseRefs": [
+                "MAT.5.39"
+              ]
+            },
+            {
+              "id": "MAT.5.40",
+              "text": "et ei, qui vult tecum judicio contendere, et tunicam tuam tollere, dimitte ei et pallium :",
+              "verseRefs": [
+                "MAT.5.40"
+              ]
+            },
+            {
+              "id": "MAT.5.41",
+              "text": "et quicumque te angariaverit mille passus, vade cum illo et alia duo.",
+              "verseRefs": [
+                "MAT.5.41"
+              ]
+            },
+            {
+              "id": "MAT.5.42",
+              "text": "Qui petit a te, da ei : et volenti mutuari a te, ne avertaris.",
+              "verseRefs": [
+                "MAT.5.42"
+              ]
+            },
+            {
+              "id": "MAT.5.43",
+              "text": "Audistis quia dictum est : Diliges proximum tuum, et odio habebis inimicum tuum.",
+              "verseRefs": [
+                "MAT.5.43"
+              ]
+            },
+            {
+              "id": "MAT.5.44",
+              "text": "Ego autem dico vobis : diligite inimicos vestros, benefacite his qui oderunt vos, et orate pro persequentibus et calumniantibus vos :",
+              "verseRefs": [
+                "MAT.5.44"
+              ]
+            },
+            {
+              "id": "MAT.5.45",
+              "text": "ut sitis filii Patris vestri, qui in cælis est : qui solem suum oriri facit super bonos et malos : et pluit super justos et injustos.",
+              "verseRefs": [
+                "MAT.5.45"
+              ]
+            },
+            {
+              "id": "MAT.5.46",
+              "text": "Si enim diligitis eos qui vos diligunt, quam mercedem habebitis ? nonne et publicani hoc faciunt ?",
+              "verseRefs": [
+                "MAT.5.46"
+              ]
+            },
+            {
+              "id": "MAT.5.47",
+              "text": "Et si salutaveritis fratres vestros tantum, quid amplius facitis ? nonne et ethnici hoc faciunt ?",
+              "verseRefs": [
+                "MAT.5.47"
+              ]
+            },
+            {
+              "id": "MAT.5.48",
+              "text": "Estote ergo vos perfecti, sicut et Pater vester cælestis perfectus est.",
+              "verseRefs": [
+                "MAT.5.48"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

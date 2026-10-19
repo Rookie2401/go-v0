@@ -1,0 +1,1737 @@
+{
+  "schemaVersion": 2,
+  "id": "ladder-ritchie-hercules",
+  "lang": "la",
+  "title": "Fabulae Faciles: Hercules",
+  "contentType": "story",
+  "corpus": {
+    "id": "lit-la",
+    "kind": "comprehensible-input",
+    "title": "Latin literature"
+  },
+  "source": {
+    "id": "src:la:ladder-ritchie-hercules",
+    "title": "Fabulae Faciles: A First Latin Reader (Hercules)",
+    "author": "Francis Ritchie",
+    "date": "1903",
+    "url": "https://la.wikisource.org/wiki/Ritchie%27s_Fabulae_Faciles",
+    "edition": "Ritchie, Fabulae Faciles (1903), Latin Wikisource transcription",
+    "attribution": "Francis Ritchie, Fabulae Faciles (1903), public domain. Transcription: Latin Wikisource (Vicifons), CC BY-SA 4.0.",
+    "provenance": "Latin text taken by scripts/corpus-la-build.mts from the Latin Wikisource wikitext of the page, held by romance-v0/data/la/ritchie-fabulae-faciles.wikitext.json (SHA-256 d50eb1fd84ef7bb62ed81adc5bd56cc34a8475bb7d5ea8c18f7a275e00ef3ee5). Nothing was retyped. Only the Latin paragraphs are kept: the italic English argument before each tale is the editor's summary and is left out, and the section headings are Ritchie's English headings (the section title only, never sentence text). Paragraphs are split into sentences at \".\" \"?\" \"!\". Pedagogical Latin composed in 1903 in a classical register.",
+    "rights": "public-domain",
+    "licenseNote": "Francis Ritchie’s Fabulae Faciles was published in 1903: public domain. The Wikisource transcription is offered under CC BY-SA 4.0; the source is named here and on the text.",
+    "authorship": "public-domain",
+    "sourceHash": "d50eb1fd84ef7bb62ed81adc5bd56cc34a8475bb7d5ea8c18f7a275e00ef3ee5",
+    "licence": "public domain (1903); transcription CC BY-SA 4.0",
+    "modifications": "Paragraphs split into sentences; English argument omitted; 1 stray U+FFFD replacement character(s) in the stored copy removed (Hercules 23.5, before \"neque\"); nothing else changed."
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Copied mechanically from the Wikisource transcription; not proofread against the printed book."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "myth",
+    "hercules"
+  ],
+  "editorialTags": [
+    "graded-reader",
+    "neo-latin"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "ritchie-fabulae-faciles",
+    "chapter": {
+      "index": 2,
+      "title": "Fabulae Faciles: Hercules"
+    }
+  },
+  "streams": [
+    "library"
+  ],
+  "sections": [
+    {
+      "title": "12. THE HATRED OF JUNO",
+      "chapter": 12,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.12.1",
+              "text": "Hercules, Alcmenae filius, olim in Graecia habitabat."
+            },
+            {
+              "id": "hercules.12.2",
+              "text": "Hic omnium hominum validissimus fuisse dicitur."
+            },
+            {
+              "id": "hercules.12.3",
+              "text": "At Iuno, regina deorum, Alcmenam oderat et Herculem adhuc infantem necare voluit."
+            },
+            {
+              "id": "hercules.12.4",
+              "text": "Misit igitur duas serpentis saevissimas; hae media nocte in cubiculum Alcmenae venerunt, ubi Hercules cum fratre suo dormiebat."
+            },
+            {
+              "id": "hercules.12.5",
+              "text": "Nec tamen in cunis, sed in scuto magno cubabant."
+            },
+            {
+              "id": "hercules.12.6",
+              "text": "Serpentes iam appropinquaverant et scutum movebant; itaque pueri e somno excitati sunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "13. HERCULES AND THE SERPENTS",
+      "chapter": 13,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.13.1",
+              "text": "Iphicles, frater Herculis, magna voce exclamavit; sed Hercules ipse, fortissimus puer, haudquaquam territus est."
+            },
+            {
+              "id": "hercules.13.2",
+              "text": "Parvis manibus serpentis statim prehendit, et colla earum magna vi compressit."
+            },
+            {
+              "id": "hercules.13.3",
+              "text": "Tali modo serpentes a puero interfectae sunt."
+            },
+            {
+              "id": "hercules.13.4",
+              "text": "Alcmena autem, mater puerorum, clamorem audiverat, et maritum suum e somno excitaverat."
+            },
+            {
+              "id": "hercules.13.5",
+              "text": "Ille lumen accendit et gladium suum rapuit; tum ad pueros properabat, sed ubi ad locum venit, rem miram vidit, Hercules enim ridebat et serpentis mortuas monstrabat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "14. THE MUSIC-LESSON",
+      "chapter": 14,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.14.1",
+              "text": "Hercules a puero corpus suum diligenter exercebat; magnam partem diei in palaestra consumebat; didicit etiam arcum intendere et tela conicere."
+            },
+            {
+              "id": "hercules.14.2",
+              "text": "His exercitationibus vires eius confirmatae sunt."
+            },
+            {
+              "id": "hercules.14.3",
+              "text": "In musica etiam a Lino centauro erudiebatur (centauri autem equi erant sed caput hominis habebant); huic tamen arti minus diligenter studebat."
+            },
+            {
+              "id": "hercules.14.4",
+              "text": "Hic Linus Herculem olim obiurgabat, quod non studiosus erat; tum puer iratus citharam subito rapuit, et omnibus viribus caput magistri infelicis percussit."
+            },
+            {
+              "id": "hercules.14.5",
+              "text": "Ille ictu prostratus est, et paulo post e vita excessit, neque quisquam postea id officium suscipere voluit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "15. HERCULES ESCAPES SACRIFICE",
+      "chapter": 15,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.15.1",
+              "text": "De Hercule haec etiam inter alia narrantur."
+            },
+            {
+              "id": "hercules.15.2",
+              "text": "Olim dum iter facit, in finis Aegyptiorum venit."
+            },
+            {
+              "id": "hercules.15.3",
+              "text": "Ibi rex quidam, nomine Busiris, illo tempore regnabat; hic autem vir crudelissimus homines immolare consueverat."
+            },
+            {
+              "id": "hercules.15.4",
+              "text": "Herculem igitur corripuit et in vincula coniecit."
+            },
+            {
+              "id": "hercules.15.5",
+              "text": "Tum nuntios dimisit et diem sacrificio edixit."
+            },
+            {
+              "id": "hercules.15.6",
+              "text": "Mox ea dies appetebat, et omnia rite parata sunt."
+            },
+            {
+              "id": "hercules.15.7",
+              "text": "Manus Herculis catenis ferreis vinctae sunt, et mola salsa in caput eius inspersa est."
+            },
+            {
+              "id": "hercules.15.8",
+              "text": "Mos enim erat apud antiquos salem et far capitibus victimarum imponere."
+            },
+            {
+              "id": "hercules.15.9",
+              "text": "Iam victima ad aram stabat; iam sacerdos cultrum sumpserat."
+            },
+            {
+              "id": "hercules.15.10",
+              "text": "Subito tamen Hercules magno conatu vincula perrupit; tum ictu sacerdotem prostravit; altero regem ipsum occidit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "16. A CRUEL DEED",
+      "chapter": 16,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.16.1",
+              "text": "Hercules iam adulescens Thebis habitabat."
+            },
+            {
+              "id": "hercules.16.2",
+              "text": "Rex Thebarum, vir ignavus, Creon appellabatur."
+            },
+            {
+              "id": "hercules.16.3",
+              "text": "Minyae, gens bellicosissima, Thebanis finitimi erant."
+            },
+            {
+              "id": "hercules.16.4",
+              "text": "Legati autem a Minyis ad Thebanos quotannis mittebantur; hi Thebas veniebant et centum boves postulabant."
+            },
+            {
+              "id": "hercules.16.5",
+              "text": "Thebani enim olim a Minyis superati erant; tributa igitur regi Minyarum quotannis pendebant."
+            },
+            {
+              "id": "hercules.16.6",
+              "text": "At Hercules civis suos hoc stipendio liberare constituit; legatos igitur comprehendit, atque auris eorum abscidit."
+            },
+            {
+              "id": "hercules.16.7",
+              "text": "Legati autem apud omnis gentis sancti habentur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "17. THE DEFEAT OF THE MINYAE",
+      "chapter": 17,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.17.1",
+              "text": "Erginus, rex Minyarum, ob haec vehementer iratus statim cum omnibus copiis in finis Thebanorum contendit."
+            },
+            {
+              "id": "hercules.17.2",
+              "text": "Creon adventum eius per exploratores cognovit."
+            },
+            {
+              "id": "hercules.17.3",
+              "text": "Ipse tamen pugnare noluit, nam magno timore adfectus erat; Thebani igitur Herculem imperatorem creaverunt."
+            },
+            {
+              "id": "hercules.17.4",
+              "text": "Ille nuntios in omnis partis dimisit, et copias coegit; tum proximo die cum magno exercitu profectus est."
+            },
+            {
+              "id": "hercules.17.5",
+              "text": "Locum idoneum delegit et aciem instruxit."
+            },
+            {
+              "id": "hercules.17.6",
+              "text": "Tum Thebani e superiore loco impetum in hostis fecerunt."
+            },
+            {
+              "id": "hercules.17.7",
+              "text": "Illi autem impetum sustinere non potuerunt; itaque acies hostium pulsa est atque in fugam conversa."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "18. MADNESS AND MURDER",
+      "chapter": 18,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.18.1",
+              "text": "Post hoc proelium Hercules copias suas ad urbem reduxit."
+            },
+            {
+              "id": "hercules.18.2",
+              "text": "Omnes Thebani propter victoriam maxime gaudebant; Creon autem magnis honoribus Herculem decoravit, atque filiam suam ei in matrimonium dedit."
+            },
+            {
+              "id": "hercules.18.3",
+              "text": "Hercules cum uxore sua beatam vitam agebat; sed post paucos annos subito in furorem incidit, atque liberos suos ipse sua manu occidit."
+            },
+            {
+              "id": "hercules.18.4",
+              "text": "Post breve tempus ad sanitatem reductus est, et propter hoc facinus magno dolore adfectus est; mox ex urbe effugit et in silvas se recepit."
+            },
+            {
+              "id": "hercules.18.5",
+              "text": "Nolebant enim cives sermonem cum eo habere."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "19. HERCULES CONSULTS THE ORACLE",
+      "chapter": 19,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.19.1",
+              "text": "Hercules tantum scelus expiare magnopere cupiebat."
+            },
+            {
+              "id": "hercules.19.2",
+              "text": "Constituit igitur ad oraculum Delphicum ire; hoc enim oraculum erat omnium celeberrimum."
+            },
+            {
+              "id": "hercules.19.3",
+              "text": "Ibi templum erat Apollinis plurimis donis ornatum."
+            },
+            {
+              "id": "hercules.19.4",
+              "text": "Hoc in templo sedebat femina quaedam, nomine Pythia et consilium dabat iis qui ad oraculum veniebant."
+            },
+            {
+              "id": "hercules.19.5",
+              "text": "Haec autem femina ab ipso Apolline docebatur, et voluntatem dei hominibus enuntiabat."
+            },
+            {
+              "id": "hercules.19.6",
+              "text": "Hercules igitur, qui Apollinem praecipue colebat, huc venit."
+            },
+            {
+              "id": "hercules.19.7",
+              "text": "Tum rem totam exposuit, neque scelus celavit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "20. THE ORACLE'S REPLY",
+      "chapter": 20,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.20.1",
+              "text": "Ubi Hercules finem fecit, Pythia primo tacebat; tandem tamen iussit eum ad urbem Tiryntha ire, et Eurysthei regis omnia imperata facere."
+            },
+            {
+              "id": "hercules.20.2",
+              "text": "Hercules ubi haec audivit, ad urbem illam contendit, et Eurystheo regi se in servitutem tradidit."
+            },
+            {
+              "id": "hercules.20.3",
+              "text": "Duodecim annos crudelissimo Eurystheo serviebat, et duodecim labores, quos ille imperaverat, confecit; hoc enim uno modo tantum scelus expiari potuit."
+            },
+            {
+              "id": "hercules.20.4",
+              "text": "De his laboribus plurima a poetis scripta sunt."
+            },
+            {
+              "id": "hercules.20.5",
+              "text": "Multa tamen quae poetae narrant vix credibilia sunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "21. FIRST LABOR: THE NEMEAN LION",
+      "chapter": 21,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.21.1",
+              "text": "Primum ab Eurystheo iussus est Hercules leonem occidere qui illo tempore vallem Nemeaeam reddebat infestam."
+            },
+            {
+              "id": "hercules.21.2",
+              "text": "In silvas igitur in quibus leo habitabat statim se contulit."
+            },
+            {
+              "id": "hercules.21.3",
+              "text": "Mox feram vidit, et arcum, quem secum attulerat, intendit; eius tamen pellem, quae densissima erat, traicere non potuit."
+            },
+            {
+              "id": "hercules.21.4",
+              "text": "Tum clava magna quam semper gerebat leonem percussit, frustra tamen; neque enim hoc modo eum occidere potuit."
+            },
+            {
+              "id": "hercules.21.5",
+              "text": "Tum demum collum monstri bracchiis suis complexus est et faucis eius omnibus viribus compressit."
+            },
+            {
+              "id": "hercules.21.6",
+              "text": "Hoc modo leo brevi tempore exanimatus est; nulla enim respirandi facultas ei dabatur."
+            },
+            {
+              "id": "hercules.21.7",
+              "text": "Tum Hercules cadaver ad oppidum in umeris rettulit; et pellem, quam detraxerat, postea pro veste gerebat."
+            },
+            {
+              "id": "hercules.21.8",
+              "text": "Omnes autem qui eam regionem incolebant, ubi famam de morte leonis acceperunt, vehementer gaudebant et Herculem magno honore habebant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "22. SECOND LABOR: THE LERNEAN HYDRA",
+      "chapter": 22,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.22.1",
+              "text": "Paulo post iussus est ab Eurystheo Hydram necare."
+            },
+            {
+              "id": "hercules.22.2",
+              "text": "Hoc autem monstrum erat cui novem erant capita."
+            },
+            {
+              "id": "hercules.22.3",
+              "text": "Hercules igitur cum amico Iolao profectus est ad paludem Lernaeam, in qua Hydra habitabat."
+            },
+            {
+              "id": "hercules.22.4",
+              "text": "Mox monstrum invenit, et quamquam res erat magni periculi, collum eius sinistra prehendit."
+            },
+            {
+              "id": "hercules.22.5",
+              "text": "Tum dextra capita novem abscidere coepit; quotiens tamen hoc fecerat, nova capita exoriebantur."
+            },
+            {
+              "id": "hercules.22.6",
+              "text": "Diu frustra laborabat; tandem hoc conatu destitit."
+            },
+            {
+              "id": "hercules.22.7",
+              "text": "Deinde arbores succidere et ignem accendere constituit."
+            },
+            {
+              "id": "hercules.22.8",
+              "text": "Hoc celeriter fecit, et postquam ligna ignem comprehenderunt, face ardente colla adussit, unde capita exoriebantur."
+            },
+            {
+              "id": "hercules.22.9",
+              "text": "Nec tamen sine magno labore haec fecit; venit enim auxilio Hydrae cancer ingens, qui, dum Hercules capita abscidit, crura eius mordebat."
+            },
+            {
+              "id": "hercules.22.10",
+              "text": "Postquam monstrum tali modo interfecit, sagittas suas sanguine eius imbuit, itaque mortiferas reddidit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "23. THIRD LABOR: THE CERYNEAN STAG",
+      "chapter": 23,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.23.1",
+              "text": "Postquam Eurystheo caedes Hydrae nuntiata est, magnus timor animum eius occupavit."
+            },
+            {
+              "id": "hercules.23.2",
+              "text": "Iussit igitur Herculem cervum quendam ad se referre; noluit enim virum tantae audaciae in urbe retinere."
+            },
+            {
+              "id": "hercules.23.3",
+              "text": "Hic autem cervus, cuius cornua aurea fuisse traduntur, incredibili fuit celeritate."
+            },
+            {
+              "id": "hercules.23.4",
+              "text": "Hercules igitur primo vestigiis eum in silva persequebatur; deinde ubi cervum ipsum vidit, omnibus viribus currere coepit."
+            },
+            {
+              "id": "hercules.23.5",
+              "text": "Usque ad vesperum currebat, neque nocturnum tempus sibi ad quietem relinquebat, frustra tamen; nullo enim modo cervum consequi poterat."
+            },
+            {
+              "id": "hercules.23.6",
+              "text": "Tandem postquam totum annum cucurrerat (ita traditur), cervum cursu exanimatum cepit, et vivum ad Eurystheum rettulit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "24. FOURTH LABOR: THE ERYMANTHIAN BOAR",
+      "chapter": 24,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.24.1",
+              "text": "Tum vero iussus est Hercules aprum quendam capere qui illo tempore agros Erymanthios vastabat et incolas huius regionis magnopere terrebat."
+            },
+            {
+              "id": "hercules.24.2",
+              "text": "Hercules rem suscepit et in Arcadiam profectus est."
+            },
+            {
+              "id": "hercules.24.3",
+              "text": "Postquam in silvam paulum progressus est, apro occurrit."
+            },
+            {
+              "id": "hercules.24.4",
+              "text": "Ille autem simul atque Herculem vidit, statim refugit; et timore perterritus in altam fossam se proiecit."
+            },
+            {
+              "id": "hercules.24.5",
+              "text": "Hercules igitur laqueum quem attulerat iniecit, et summa cum difficultate aprum e fossa extraxit."
+            },
+            {
+              "id": "hercules.24.6",
+              "text": "Ille etsi fortiter repugnabat, nullo modo se liberare potuit; et ab Hercule ad Eurystheum vivus relatus est."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "25. HERCULES AT THE CENTAUR'S CAVE",
+      "chapter": 25,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.25.1",
+              "text": "De quarto labore, quem supra narravimus, haec etiam traduntur."
+            },
+            {
+              "id": "hercules.25.2",
+              "text": "Hercules dum iter in Arcadiam facit, ad eam regionem venit quam centauri incolebant."
+            },
+            {
+              "id": "hercules.25.3",
+              "text": "Cum nox iam appeteret, ad speluncam devertit in qua centaurus quidam, nomine Pholus, habitabat."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "hercules.25.4",
+              "text": "Ille Herculem benigne excepit et cenam paravit."
+            },
+            {
+              "id": "hercules.25.5",
+              "text": "At Hercules postquam cenavit, vinum a Pholo postulavit."
+            },
+            {
+              "id": "hercules.25.6",
+              "text": "Erat autem in spelunca magna amphora vino optimo repleta, quam centauri ibi deposuerant."
+            },
+            {
+              "id": "hercules.25.7",
+              "text": "Pholus igitur hoc vinum dare nolebat, quod reliquos centauros timebat; nullum tamen vinum praeter hoc in spelunca habebat."
+            },
+            {
+              "id": "hercules.25.8",
+              "text": "\"Hoc vinum,\" inquit, \"mihi commissum est."
+            },
+            {
+              "id": "hercules.25.9",
+              "text": "Si igitur hoc dabo, centauri me interficient.\""
+            },
+            {
+              "id": "hercules.25.10",
+              "text": "Hercules tamen eum inrisit, et ipse poculum vini de amphora hausit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "26. THE FIGHT WITH THE CENTAURS",
+      "chapter": 26,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.26.1",
+              "text": "Simul atque amphora aperta est, odor iucundissimus undique diffusus est; vinum enim suavissimum erat."
+            },
+            {
+              "id": "hercules.26.2",
+              "text": "Centauri notum odorem senserunt et omnes ad locum convenerunt."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "hercules.26.3",
+              "text": "Ubi ad speluncam pervenerunt, magnopere irati erant quod Herculem bibentem viderunt."
+            },
+            {
+              "id": "hercules.26.4",
+              "text": "Tum arma rapuerunt et Pholum interficere volebant."
+            },
+            {
+              "id": "hercules.26.5",
+              "text": "Hercules tamen in aditu speluncae constitit et impetum eorum fortissime sustinebat."
+            },
+            {
+              "id": "hercules.26.6",
+              "text": "Faces ardentis in eos coniecit; multos etiam sagittis suis vulneravit."
+            },
+            {
+              "id": "hercules.26.7",
+              "text": "Hae autem sagittae eaedem erant quae sanguine Hydrae olim imbutae erant."
+            },
+            {
+              "id": "hercules.26.8",
+              "text": "Omnes igitur quos ille sagittis vulneraverat veneno statim absumpti sunt; reliqui autem ubi hoc viderunt, terga verterunt et fuga salutem petierunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "27. THE FATE OF PHOLUS",
+      "chapter": 27,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.27.1",
+              "text": "Postquam reliqui fugerunt, Pholus ex spelunca egressus est, et corpora spectabat eorum qui sagittis interfecti erant."
+            },
+            {
+              "id": "hercules.27.2",
+              "text": "Magnopere autem miratus est quod tam levi vulnere exanimati erant, et causam eius rei quaerebat."
+            },
+            {
+              "id": "hercules.27.3",
+              "text": "Adiit igitur locum ubi cadaver cuiusdam centauri iacebat, et sagittam e vulnere traxit."
+            },
+            {
+              "id": "hercules.27.4",
+              "text": "Haec tamen sive casu sive consilio deorum e manibus eius lapsa est, et pedem leviter vulneravit."
+            },
+            {
+              "id": "hercules.27.5",
+              "text": "Ille extemplo dolorem gravem per omnia membra sensit, et post breve tempus vi veneni exanimatus est."
+            },
+            {
+              "id": "hercules.27.6",
+              "text": "Mox Hercules, qui reliquos centauros secutus erat, ad speluncam rediit, et magno cum dolore Pholum mortuum vidit."
+            },
+            {
+              "id": "hercules.27.7",
+              "text": "Multis cum lacrimis corpus amici ad sepulturam dedit; tum, postquam alterum poculum vini exhausit, somno se dedit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "28. FIFTH LABOR: THE AUGEAN STABLES",
+      "chapter": 28,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.28.1",
+              "text": "Deinde Eurystheus Herculi hunc laborem graviorem imposuit."
+            },
+            {
+              "id": "hercules.28.2",
+              "text": "Augeas quidam, qui illo tempore regnum in Elide obtinebat, tria milia boum habebat."
+            },
+            {
+              "id": "hercules.28.3",
+              "text": "Hi in stabulo ingentis magnitudinis includebantur."
+            },
+            {
+              "id": "hercules.28.4",
+              "text": "Stabulum autem inluvie ac squalore erat obsitum, neque enim ad hoc tempus umquam purgatum erat."
+            },
+            {
+              "id": "hercules.28.5",
+              "text": "Hoc Hercules intra spatium unius diei purgare iussus est."
+            },
+            {
+              "id": "hercules.28.6",
+              "text": "Ille, etsi res erat multae operae, negotium suscepit."
+            },
+            {
+              "id": "hercules.28.7",
+              "text": "Primum magno labore fossam duodeviginti pedum duxit, per quam fluminis aquam de montibus ad murum stabuli perduxit."
+            },
+            {
+              "id": "hercules.28.8",
+              "text": "Tum postquam murum perrupit, aquam in stabulum immisit et tali modo contra opinionem omnium opus confecit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "29. SIXTH LABOR: THE STYMPHALIAN BIRDS",
+      "chapter": 29,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.29.1",
+              "text": "Post paucos dies Hercules ad oppidum Stymphalum iter fecit; imperaverat enim ei Eurystheus ut avis Stymphalides necaret."
+            },
+            {
+              "id": "hercules.29.2",
+              "text": "Hae aves rostra aenea habebant et carne hominum vescebantur."
+            },
+            {
+              "id": "hercules.29.3",
+              "text": "Ille postquam ad locum pervenit, lacum vidit; in hoc autem lacu, qui non procul erat ab oppido, aves habitabant."
+            },
+            {
+              "id": "hercules.29.4",
+              "text": "Nulla tamen dabatur appropinquandi facultas; lacus enim non ex aqua sed e limo constitit."
+            },
+            {
+              "id": "hercules.29.5",
+              "text": "Hercules igitur neque pedibus neque lintre progredi potuit."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "hercules.29.6",
+              "text": "Ille cum magnam partem diei frustra consumpsisset, hoc conatu destitit et ad Volcanum se contulit, ut auxilium ab eo peteret."
+            },
+            {
+              "id": "hercules.29.7",
+              "text": "Volcanus (qui ab fabris maxime colebatur) crepundia quae ipse ex aere fabricatus erat Herculi dedit."
+            },
+            {
+              "id": "hercules.29.8",
+              "text": "His Hercules tam acrem crepitum fecit ut aves perterritae avolarent."
+            },
+            {
+              "id": "hercules.29.9",
+              "text": "Ille autem, dum avolant, magnum numerum earum sagittis transfixit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "30. SEVENTH LABOR: THE CRETAN BULL",
+      "chapter": 30,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.30.1",
+              "text": "Tum Eurystheus Herculi imperavit ut taurum quendam ferocissimum ex insula Creta vivum referret."
+            },
+            {
+              "id": "hercules.30.2",
+              "text": "Ille igitur navem conscendit, et cum ventus idoneus esset, statim solvit."
+            },
+            {
+              "id": "hercules.30.3",
+              "text": "Cum tamen insulae iam appropinquaret, tanta tempestas subito coorta est ut navis cursum tenere non posset."
+            },
+            {
+              "id": "hercules.30.4",
+              "text": "Tantus autem timor animos nautarum occupavit ut paene omnem spem salutis deponerent."
+            },
+            {
+              "id": "hercules.30.5",
+              "text": "Hercules tamen, etsi navigandi imperitus erat, haudquaquam territus est."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "hercules.30.6",
+              "text": "Post breve tempus summa tranquillitas consecuta est, et nautae, qui se ex timore iam receperant, navem incolumem ad terram appulerunt."
+            },
+            {
+              "id": "hercules.30.7",
+              "text": "Hercules e navi egressus est, et cum ad regem Cretae venisset, causam veniendi docuit."
+            },
+            {
+              "id": "hercules.30.8",
+              "text": "Deinde, postquam omnia parata sunt, ad eam regionem contendit quam taurus vastabat."
+            },
+            {
+              "id": "hercules.30.9",
+              "text": "Mox taurum vidit, et quamquam res erat magni periculi, cornua eius prehendit."
+            },
+            {
+              "id": "hercules.30.10",
+              "text": "Tum, cum ingenti labore monstrum ad navem traxisset, cum praeda in Graeciam rediit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "31. EIGHTH LABOR: THE MAN-EATING HORSES OF DIOMEDE",
+      "chapter": 31,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.31.1",
+              "text": "Postquam ex insula Creta rediit, Hercules ab Eurystheo in Thraciam missus est, ut equos Diomedis reduceret."
+            },
+            {
+              "id": "hercules.31.2",
+              "text": "Hi equi carne hominum vescebantur; Diomedes autem, vir crudelissimus, illis obiciebat peregrinos omnis qui in eam regionem venerant."
+            },
+            {
+              "id": "hercules.31.3",
+              "text": "Hercules igitur magna celeritate in Thraciam contendit et ab Diomede postulavit ut equi sibi traderentur."
+            },
+            {
+              "id": "hercules.31.4",
+              "text": "Cum tamen ille hoc facere nollet, Hercules ira commotus regem interfecit et cadaver eius equis obici iussit."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "hercules.31.5",
+              "text": "Ita mira rerum commutatio facta est; is enim qui antea multos cum cruciatu necaverat ipse eodem supplicio necatus est."
+            },
+            {
+              "id": "hercules.31.6",
+              "text": "Cum haec nuntiata essent, omnes qui eam regionem incolebant maxima laetitia adfecti sunt et Herculi meritam gratiam referebant."
+            },
+            {
+              "id": "hercules.31.7",
+              "text": "Non modo maximis honoribus et praemiis eum decoraverunt sed orabant etiam ut regnum ipse susciperet."
+            },
+            {
+              "id": "hercules.31.8",
+              "text": "Ille tamen hoc facere nolebat, et cum ad mare rediisset, navem occupavit."
+            },
+            {
+              "id": "hercules.31.9",
+              "text": "Ubi omnia ad navigandum parata sunt, equos in navi conlocavit; deinde, cum idoneam tempestatem nactus esset, sine mora e portu solvit, et paulo post equos in litus Argolicum exposuit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "32. NINTH LABOR: THE GIRDLE OF HIPPOLYTE",
+      "chapter": 32,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.32.1",
+              "text": "Gens Amazonum dicitur omnino ex mulieribus constitisse."
+            },
+            {
+              "id": "hercules.32.2",
+              "text": "Hae summam scientiam rei militaris habebant, et tantam virtutem adhibebant ut cum viris proelium committere auderent."
+            },
+            {
+              "id": "hercules.32.3",
+              "text": "Hippolyte, Amazonum regina, balteum habuit celeberrimum quem Mars ei dederat."
+            },
+            {
+              "id": "hercules.32.4",
+              "text": "Admeta autem, Eurysthei filia, famam de hoc balteo acceperat et eum possidere vehementer cupiebat."
+            },
+            {
+              "id": "hercules.32.5",
+              "text": "Eurystheus igitur Herculi mandavit ut copias cogeret et bellum Amazonibus inferret."
+            },
+            {
+              "id": "hercules.32.6",
+              "text": "Ille nuntios in omnis partis dimisit, et cum magna multitudo convenisset, eos delegit qui maximum usum in re militari habebant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "33. THE GIRDLE IS REFUSED",
+      "chapter": 33,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.33.1",
+              "text": "His viris Hercules persuasit, postquam causam itineris exposuit, ut secum iter facerent."
+            },
+            {
+              "id": "hercules.33.2",
+              "text": "Tum cum iis quibus persuaserat navem conscendit, et cum ventus idoneus esset, post paucos dies ad ostium fluminis Thermodontis appulit."
+            },
+            {
+              "id": "hercules.33.3",
+              "text": "Postquam in finis Amazonum venit, nuntium ad Hippolytam misit, qui causam veniendi doceret et balteum posceret."
+            },
+            {
+              "id": "hercules.33.4",
+              "text": "Ipsa Hippolyte balteum tradere volebat, quod de Herculis virtute famam acceperat; reliquae tamen Amazones ei persuaserunt ut negaret."
+            },
+            {
+              "id": "hercules.33.5",
+              "text": "At Hercules, cum haec nuntiata essent, belli fortunam temptare constituit."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "hercules.33.6",
+              "text": "Proximo igitur die cum copias eduxisset, locum idoneum delegit et hostis ad pugnam evocavit."
+            },
+            {
+              "id": "hercules.33.7",
+              "text": "Amazones quoque copias suas ex castris eduxerunt et non magno intervallo ab Hercule aciem instruxerunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "34. THE BATTLE",
+      "chapter": 34,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.34.1",
+              "text": "Palus erat non magna inter duo exercitus; neutri tamen initium transeundi facere volebant."
+            },
+            {
+              "id": "hercules.34.2",
+              "text": "Tandem Hercules signum dedit, et ubi paludem transiit, proelium commisit."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "hercules.34.3",
+              "text": "Amazones impetum virorum fortissime sustinuerunt, et contra opinionem omnium tantam virtutem praestiterunt ut multos eorum occiderint, multos etiam in fugam coniecerint."
+            },
+            {
+              "id": "hercules.34.4",
+              "text": "Viri enim novo genere pugnae perturbabantur nec magnam virtutem praestabant."
+            },
+            {
+              "id": "hercules.34.5",
+              "text": "Hercules autem cum haec videret, de suis fortunis desperare coepit."
+            },
+            {
+              "id": "hercules.34.6",
+              "text": "Milites igitur vehementer cohortatus est ut pristinae virtutis memoriam retinerent neu tantum dedecus admitterent, hostiumque impetum fortiter sustinerent; quibus verbis animos omnium ita erexit ut multi etiam qui vulneribus confecti essent proelium sine mora redintegrarent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "35. THE DEFEAT OF THE AMAZONS",
+      "chapter": 35,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.35.1",
+              "text": "Diu et acriter pugnatum est; tandem tamen ad solis occasum tanta commutatio rerum facta est ut mulieres terga verterent et fuga salutem peterent."
+            },
+            {
+              "id": "hercules.35.2",
+              "text": "Multae autem vulneribus defessae dum fugiunt captae sunt, in quo numero ipsa erat Hippolyte."
+            },
+            {
+              "id": "hercules.35.3",
+              "text": "Hercules summam clementiam praestitit, et postquam balteum accepit, libertatem omnibus captivis dedit."
+            },
+            {
+              "id": "hercules.35.4",
+              "text": "Tum vero socios ad mare reduxit, et quod non multum aestatis supererat, in Graeciam proficisci maturavit."
+            },
+            {
+              "id": "hercules.35.5",
+              "text": "Navem igitur conscendit, et tempestatem idoneam nactus statim solvit; antequam tamen in Graeciam pervenit, ad urbem Troiam navem appellere constituit, frumentum enim quod secum habebat iam deficere coeperat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "36. LAOMEDON AND THE SEA-MONSTER",
+      "chapter": 36,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.36.1",
+              "text": "Laomedon quidam illo tempore regnum Troiae obtinebat."
+            },
+            {
+              "id": "hercules.36.2",
+              "text": "Ad hunc Neptunus et Apollo anno superiore venerant, et cum Troia nondum moenia haberet, ad hoc opus auxilium obtulerant."
+            },
+            {
+              "id": "hercules.36.3",
+              "text": "Postquam tamen horum auxilio moenia confecta sunt, nolebat Laomedon praemium quod proposuerat persolvere."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "hercules.36.4",
+              "text": "Neptunus igitur et Apollo ob hanc causam irati monstrum quoddam miserunt specie horribili, quod cottidie e mari veniebat et homines pecudesque vorabat."
+            },
+            {
+              "id": "hercules.36.5",
+              "text": "Troiani autem timore perterriti in urbe continebantur, et pecora omnia ex agris intra muros compulerant."
+            },
+            {
+              "id": "hercules.36.6",
+              "text": "Laomedon his rebus commotus oraculum consuluit, ac deus ei praecepit ut filiam Hesionem monstro obiceret."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "37. THE RESCUE OF HESIONE",
+      "chapter": 37,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.37.1",
+              "text": "Laomedon, cum hoc responsum renuntiatum esset, magnum dolorem percepit; sed tamen, ut civis suos tanto periculo liberaret, oraculo parere constituit et diem sacrificio dixit."
+            },
+            {
+              "id": "hercules.37.2",
+              "text": "Sed sive casu sive consilio deorum Hercules tempore opportunissimo Troiam attigit; ipso enim temporis puncto quo puella catenis vincta ad litus deducebatur ille navem appulit."
+            },
+            {
+              "id": "hercules.37.3",
+              "text": "Hercules e navi egressus de rebus quae gerebantur certior factus est; tum ira commotus ad regem se contulit et auxilium suum obtulit."
+            },
+            {
+              "id": "hercules.37.4",
+              "text": "Cum rex libenter ei concessisset ut, si posset, puellam liberaret, Hercules monstrum interfecit; et puellam, quae iam omnem spem salutis deposuerat, incolumem ad patrem reduxit."
+            },
+            {
+              "id": "hercules.37.5",
+              "text": "Laomedon magno cum gaudio filiam suam accepit, et Herculi pro tanto beneficio meritam gratiam rettulit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "38. TENTH LABOR: THE OXEN OF GERYON",
+      "chapter": 38,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.38.1",
+              "text": "Tum vero missus est Hercules ad insulam Erythiam, ut boves Geryonis arcesseret."
+            },
+            {
+              "id": "hercules.38.2",
+              "text": "Res erat summae difficultatis, quod boves a quodam Eurytione et a cane bicipite custodiebantur."
+            },
+            {
+              "id": "hercules.38.3",
+              "text": "Ipse autem Geryon speciem horribilem praebebat; tria enim corpora inter se coniuncta habebat."
+            },
+            {
+              "id": "hercules.38.4",
+              "text": "Hercules tamen etsi intellegebat quantum periculum esset, negotium suscepit; ac postquam per multas terras iter fecit, ad eam partem Libyae pervenit quae Europae proxima est."
+            },
+            {
+              "id": "hercules.38.5",
+              "text": "Ibi in utroque litore freti quod Europam a Libya dividit columnas constituit, quae postea Herculis Columnae appellabantur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "39. THE GOLDEN SHIP",
+      "chapter": 39,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.39.1",
+              "text": "Dum hic moratur, Hercules magnum incommodum ex calore solis accipiebat; tandem igitur ira commotus arcum suum intendit et solem sagittis petiit."
+            },
+            {
+              "id": "hercules.39.2",
+              "text": "Sol tamen audaciam viri tantum admiratus est ut lintrem auream ei dederit."
+            },
+            {
+              "id": "hercules.39.3",
+              "text": "Hercules hoc donum libentissime accepit, nullam enim navem in his regionibus invenire potuerat."
+            },
+            {
+              "id": "hercules.39.4",
+              "text": "Tum lintrem deduxit, et ventum nactus idoneum post breve tempus ad insulam pervenit."
+            },
+            {
+              "id": "hercules.39.5",
+              "text": "Ubi ex incolis cognovit quo in loco boves essent, in eam partem statim profectus est et a rege Geryone postulavit ut boves sibi traderentur."
+            },
+            {
+              "id": "hercules.39.6",
+              "text": "Cum tamen ille hoc facere nollet, Hercules et regem ipsum et Eurytionem, qui erat ingenti magnitudine corporis, interfecit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "40. A MIRACULOUS HAIL-STORM",
+      "chapter": 40,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.40.1",
+              "text": "Tum Hercules boves per Hispaniam et Liguriam compellere constituit; postquam igitur omnia parata sunt, boves ex insula ad continentem transportavit."
+            },
+            {
+              "id": "hercules.40.2",
+              "text": "Ligures autem, gens bellicosissima, dum ille per finis eorum iter facit, magnas copias coegerunt atque eum longius progredi prohibebant."
+            },
+            {
+              "id": "hercules.40.3",
+              "text": "Hercules magnam difficultatem habebat, barbari enim in locis superioribus constiterant et saxa telaque in eum coniciebant."
+            },
+            {
+              "id": "hercules.40.4",
+              "text": "Ille quidem paene omnem spem salutis deposuerat, sed tempore opportunissimo Iuppiter imbrem lapidum ingentium e caelo demisit."
+            },
+            {
+              "id": "hercules.40.5",
+              "text": "Hi tanta vi ceciderunt ut magnum numerum Ligurum occiderint; ipse tamen Hercules (ut in talibus rebus accidere consuevit) nihil incommodi cepit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "41. THE PASSAGE OF THE ALPS",
+      "chapter": 41,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.41.1",
+              "text": "Postquam Ligures hoc modo superati sunt, Hercules quam celerrime progressus est et post paucos dies ad Alpis pervenit."
+            },
+            {
+              "id": "hercules.41.2",
+              "text": "Necesse erat has transire, ut in Italiam boves ageret; res tamen summae erat difficultatis."
+            },
+            {
+              "id": "hercules.41.3",
+              "text": "Hi enim montes, qui ulteriorem a citeriore Gallia dividunt, nive perenni sunt tecti; quam ob causam neque frumentum neque pabulum in his regionibus inveniri potest."
+            },
+            {
+              "id": "hercules.41.4",
+              "text": "Hercules igitur antequam ascendere coepit, magnam copiam frumenti et pabuli comparavit et hoc commeatu boves oneravit."
+            },
+            {
+              "id": "hercules.41.5",
+              "text": "Postquam in his rebus tris dies consumpserat, quarto die profectus est, et contra omnium opinionem boves incolumis in Italiam traduxit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "42. CACUS STEALS THE OXEN",
+      "chapter": 42,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.42.1",
+              "text": "Brevi tempore ad flumen Tiberim venit."
+            },
+            {
+              "id": "hercules.42.2",
+              "text": "Tum tamen nulla erat urbs in eo loco, Roma enim nondum condita erat."
+            },
+            {
+              "id": "hercules.42.3",
+              "text": "Hercules itinere fessus constituit ibi paucos dies morari, ut se ex laboribus recrearet."
+            },
+            {
+              "id": "hercules.42.4",
+              "text": "Haud procul a valle ubi boves pascebantur spelunca erat, in qua Cacus, horribile monstrum, tum habitabat."
+            },
+            {
+              "id": "hercules.42.5",
+              "text": "Hic speciem terribilem praebebat, non modo quod ingenti magnitudine corporis erat, sed quod ignem ex ore exspirabat."
+            },
+            {
+              "id": "hercules.42.6",
+              "text": "Cacus autem de adventu Herculis famam acceperat; noctu igitur venit, et dum Hercules dormit, quattuor pulcherrimorum boum abripuit."
+            },
+            {
+              "id": "hercules.42.7",
+              "text": "Hos caudis in speluncam traxit, ne Hercules e vestigiis cognoscere posset quo in loco celati essent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "43. HERCULES DISCOVERS THE THEFT",
+      "chapter": 43,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.43.1",
+              "text": "Postero die simul atque e somno excitatus est, Hercules furtum animadvertit et boves amissos omnibus locis quaerebat."
+            },
+            {
+              "id": "hercules.43.2",
+              "text": "Hos tamen nusquam reperire poterat, non modo quod loci naturam ignorabat, sed quod vestigiis falsis deceptus est."
+            },
+            {
+              "id": "hercules.43.3",
+              "text": "Tandem cum magnam partem diei frustra consumpsisset, cum reliquis bobus progredi constituit."
+            },
+            {
+              "id": "hercules.43.4",
+              "text": "At dum proficisci parat, unus e bobus quos secum habuit mugire coepit."
+            },
+            {
+              "id": "hercules.43.5",
+              "text": "Subito ii qui in spelunca inclusi erant mugitum reddiderunt, et hoc modo Herculem certiorem fecerunt quo in loco celati essent."
+            },
+            {
+              "id": "hercules.43.6",
+              "text": "Ille vehementer iratus ad speluncam quam celerrime se contulit, ut praedam reciperet."
+            },
+            {
+              "id": "hercules.43.7",
+              "text": "At Cacus saxum ingens ita deiecerat ut aditus speluncae omnino obstrueretur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "44. HERCULES AND CACUS",
+      "chapter": 44,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.44.1",
+              "text": "Hercules cum nullum alium introitum reperire posset, hoc saxum amovere conatus est, sed propter eius magnitudinem res erat difficillima."
+            },
+            {
+              "id": "hercules.44.2",
+              "text": "Diu frustra laborabat neque quicquam efficere poterat; tandem tamen magno conatu saxum amovit et speluncam patefecit."
+            },
+            {
+              "id": "hercules.44.3",
+              "text": "Ibi amissos boves magno cum gaudio conspexit; sed Cacum ipsum vix cernere potuit, quod spelunca repleta erat fumo quem ille more suo evomebat."
+            },
+            {
+              "id": "hercules.44.4",
+              "text": "Hercules inusitata specie turbatus breve tempus haesitabat; mox tamen in speluncam inrupit et collum monstri bracchiis complexus est."
+            },
+            {
+              "id": "hercules.44.5",
+              "text": "Ille etsi multum repugnavit, nullo modo se liberare potuit, et cum nulla facultas respirandi daretur, mox exanimatus est."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "45. ELEVENTH LABOR: THE GOLDEN APPLES OF THE HESPERIDES",
+      "chapter": 45,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.45.1",
+              "text": "Eurystheus postquam boves Geryonis accepit, laborem undecimum Herculi imposuit, graviorem quam quos supra narravimus."
+            },
+            {
+              "id": "hercules.45.2",
+              "text": "Mandavit enim ei ut aurea poma ex horto Hesperidum auferret."
+            },
+            {
+              "id": "hercules.45.3",
+              "text": "Hesperides autem nymphae erant quaedam forma praestantissima, quae in terra longinqua habitabant, et quibus aurea quaedam poma a Iunone commissa erant."
+            },
+            {
+              "id": "hercules.45.4",
+              "text": "Multi homines auri cupiditate inducti haec poma auferre iam antea conati erant."
+            },
+            {
+              "id": "hercules.45.5",
+              "text": "Res tamen difficillima erat, namque hortus in quo poma erant muro ingenti undique circumdatus erat; praeterea draco quidam cui centum erant capita portam horti diligenter custodiebat."
+            },
+            {
+              "id": "hercules.45.6",
+              "text": "Opus igitur quod Eurystheus Herculi imperaverat erat summae difficultatis, non modo ob causas quas memoravimus, sed etiam quod Hercules omnino ignorabat quo in loco hortus ille situs esset."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "46. HERCULES ASKS AID OF ATLAS",
+      "chapter": 46,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.46.1",
+              "text": "Hercules quamquam quietem vehementer cupiebat, tamen Eurystheo parere constituit, et simul ac iussa eius accepit, proficisci maturavit."
+            },
+            {
+              "id": "hercules.46.2",
+              "text": "A multis mercatoribus quaesiverat quo in loco Hesperides habitarent, nihil tamen certum reperire potuerat."
+            },
+            {
+              "id": "hercules.46.3",
+              "text": "Frustra per multas terras iter fecit et multa pericula subiit; tandem, cum in his itineribus totum annum consumpsisset, ad extremam partem orbis terrarum, quae proxima est Oceano, pervenit."
+            },
+            {
+              "id": "hercules.46.4",
+              "text": "Hic stabat vir quidam, nomine Atlas, ingenti magnitudine corporis, qui caelum (ita traditum est) umeris suis sustinebat, ne in terram decideret."
+            },
+            {
+              "id": "hercules.46.5",
+              "text": "Hercules tantas viris magnopere miratus statim in conloquium cum Atlante venit, et cum causam itineris docuisset, auxilium ab eo petiit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "47. HERCULES BEARS UP THE HEAVENS",
+      "chapter": 47,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.47.1",
+              "text": "Atlas autem Herculi maxime prodesse potuit; ille enim cum ipse esset pater Hesperidum, certo scivit quo in loco esset hortus."
+            },
+            {
+              "id": "hercules.47.2",
+              "text": "Postquam igitur audivit quam ob causam Hercules venisset, \"Ipse,\" inquit, \"ad hortum ibo et filiabus meis persuadebo ut poma sua sponte tradant.\""
+            },
+            {
+              "id": "hercules.47.3",
+              "text": "Hercules cum haec audiret, magnopere gavisus est; vim enim adhibere noluit, si res aliter fieri posset."
+            },
+            {
+              "id": "hercules.47.4",
+              "text": "Constituit igitur oblatum auxilium accipere."
+            },
+            {
+              "id": "hercules.47.5",
+              "text": "Atlas tamen postulavit ut, dum ipse abesset, Hercules caelum umeris sustineret."
+            },
+            {
+              "id": "hercules.47.6",
+              "text": "Hoc autem negotium Hercules libenter suscepit, et quamquam res erat summi laboris, totum pondus caeli continuos compluris dies solus sustinebat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "48. THE RETURN OF ATLAS",
+      "chapter": 48,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.48.1",
+              "text": "Atlas interea abierat et ad hortum Hesperidum, qui pauca milia passuum aberat, se quam celerrime contulerat."
+            },
+            {
+              "id": "hercules.48.2",
+              "text": "Eo cum venisset, causam veniendi exposuit et filias suas vehementer hortatus est ut poma traderent."
+            },
+            {
+              "id": "hercules.48.3",
+              "text": "Illae diu haerebant; nolebant enim hoc facere, quod ab ipsa Iunone (ita ut ante dictum est) hoc munus accepissent."
+            },
+            {
+              "id": "hercules.48.4",
+              "text": "Atlas tamen aliquando iis persuasit ut sibi parerent, et poma ad Herculem rettulit."
+            },
+            {
+              "id": "hercules.48.5",
+              "text": "Hercules interea cum pluris dies exspectavisset neque ullam famam de reditu Atlantis accepisset, hac mora graviter commotus est."
+            },
+            {
+              "id": "hercules.48.6",
+              "text": "Tandem quinto die Atlantem vidit redeuntem, et mox magno cum gaudio poma accepit; tum, postquam gratias pro tanto beneficio egit, ad Graeciam proficisci maturavit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "49. TWELFTH LABOR: CERBERUS THE THREE-HEADED DOG",
+      "chapter": 49,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.49.1",
+              "text": "Postquam aurea poma ad Eurystheum relata sunt, unus modo relinquebatur e duodecim laboribus quos Pythia Herculi praeceperat."
+            },
+            {
+              "id": "hercules.49.2",
+              "text": "Eurystheus autem cum Herculem magnopere timeret, eum in aliquem locum mittere volebat unde numquam redire posset."
+            },
+            {
+              "id": "hercules.49.3",
+              "text": "Negotium igitur ei dedit ut canem Cerberum ex Orco in lucem traheret."
+            },
+            {
+              "id": "hercules.49.4",
+              "text": "Hoc opus omnium difficillimum erat, nemo enim umquam ex Orco redierat."
+            },
+            {
+              "id": "hercules.49.5",
+              "text": "Praeterea Cerberus iste monstrum erat horribili specie, cui tria erant capita serpentibus saevis cincta."
+            },
+            {
+              "id": "hercules.49.6",
+              "text": "Antequam tamen de hoc labore narramus, non alienum videtur, quoniam de Orco mentionem fecimus, pauca de ea regione proponere."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "50. CHARON'S FERRY",
+      "chapter": 50,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.50.1",
+              "text": "De Orco, qui idem Hades appellabatur, haec traduntur."
+            },
+            {
+              "id": "hercules.50.2",
+              "text": "Ut quisque de vita decesserat, manes eius ad Orcum, sedem mortuorum, a deo Mercurio deducebantur."
+            },
+            {
+              "id": "hercules.50.3",
+              "text": "Huius regionis, quae sub terra fuisse dicitur, rex erat Pluto, cui uxor erat Proserpina, Iovis et Cereris filia."
+            },
+            {
+              "id": "hercules.50.4",
+              "text": "Manes igitur a Mercurio deducti primum ad ripam veniebant Stygis fluminis, quo regnum Plutonis continetur."
+            },
+            {
+              "id": "hercules.50.5",
+              "text": "Hoc transire necesse erat antequam in Orcum venire possent."
+            },
+            {
+              "id": "hercules.50.6",
+              "text": "Cum tamen in hoc flumine nullus pons factus esset, manes transvehebantur a Charonte quodam, qui cum parva scapha ad ripam exspectabat."
+            },
+            {
+              "id": "hercules.50.7",
+              "text": "Charon pro hoc officio mercedem postulabat, neque quemquam, nisi hoc praemium prius dedisset, transvehere volebat."
+            },
+            {
+              "id": "hercules.50.8",
+              "text": "Quam ob causam mos erat apud antiquos nummum in ore mortui ponere eo consilio, ut cum ad Stygem venisset, pretium traiectus solvere posset."
+            },
+            {
+              "id": "hercules.50.9",
+              "text": "Ii autem qui post mortem in terra non sepulti erant Stygem transire non potuerunt, sed in ripa per centum annos errare coacti sunt; tum demum Orcum intrare licuit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "51. THE REALM OF PLUTO",
+      "chapter": 51,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.51.1",
+              "text": "Ut autem manes Stygem hoc modo transierant, ad alterum veniebant flumen, quod Lethe appellabatur."
+            },
+            {
+              "id": "hercules.51.2",
+              "text": "Ex hoc flumine aquam bibere cogebantur; quod cum fecissent, res omnis in vita gestas e memoria deponebant."
+            },
+            {
+              "id": "hercules.51.3",
+              "text": "Denique ad sedem ipsius Plutonis veniebant, cuius introitus a cane Cerbero custodiebatur."
+            },
+            {
+              "id": "hercules.51.4",
+              "text": "Ibi Pluto nigro vestitu indutus cum uxore Proserpina in solio sedebat."
+            },
+            {
+              "id": "hercules.51.5",
+              "text": "Stabant etiam non procul ab eo loco tria alia solia, in quibus sedebant Minos, Rhadamanthus, Aeacusque, iudices apud inferos."
+            },
+            {
+              "id": "hercules.51.6",
+              "text": "Hi mortuis ius dicebant et praemia poenasque constituebant."
+            },
+            {
+              "id": "hercules.51.7",
+              "text": "Boni enim in Campos Elysios, sedem beatorum, veniebant; improbi autem in Tartarum mittebantur ac multis et variis suppliciis ibi excruciabantur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "52. HERCULES CROSSES THE STYX",
+      "chapter": 52,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.52.1",
+              "text": "Hercules postquam imperia Eurysthei accepit, in Laconiam ad Taenarum statim se contulit; ibi enim spelunca erat ingenti magnitudine, per quam, ut tradebatur, homines ad Orcum descendebant."
+            },
+            {
+              "id": "hercules.52.2",
+              "text": "Eo cum venisset, ex incolis quaesivit quo in loco spelunca illa sita esset; quod cum cognovisset, sine mora descendere constituit."
+            },
+            {
+              "id": "hercules.52.3",
+              "text": "Nec tamen solus hoc iter faciebat, Mercurius enim et Minerva se ei socios adiunxerant."
+            },
+            {
+              "id": "hercules.52.4",
+              "text": "Ubi ad ripam Stygis venit, Hercules scapham Charontis conscendit, ut ad ulteriorem ripam transiret."
+            },
+            {
+              "id": "hercules.52.5",
+              "text": "Cum tamen Hercules vir esset ingenti magnitudine corporis, Charon solvere nolebat; magnopere enim verebatur ne scapha sua tanto pondere onerata in medio flumine mergeretur."
+            },
+            {
+              "id": "hercules.52.6",
+              "text": "Tandem tamen minis Herculis territus Charon scapham solvit, et eum incolumem ad ulteriorem ripam perduxit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "53. THE LAST LABOR IS ACCOMPLISHED",
+      "chapter": 53,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.53.1",
+              "text": "Postquam flumen Stygem hoc modo transiit, Hercules in sedem ipsius Plutonis venit; et postquam causam veniendi docuit, ab eo petivit ut Cerberum auferre sibi liceret."
+            },
+            {
+              "id": "hercules.53.2",
+              "text": "Pluto, qui de Hercule famam acceperat, eum benigne excepit, et facultatem quam ille petebat libenter dedit."
+            },
+            {
+              "id": "hercules.53.3",
+              "text": "Postulavit tamen ut Hercules ipse, cum imperata Eurysthei fecisset, Cerberum in Orcum rursus reduceret."
+            },
+            {
+              "id": "hercules.53.4",
+              "text": "Hercules hoc pollicitus est, et Cerberum, quem non sine magno periculo manibus prehenderat, summo cum labore ex Orco in lucem et ad urbem Eurysthei traxit."
+            },
+            {
+              "id": "hercules.53.5",
+              "text": "Eo cum venisset, tantus timor animum Eurysthei occupavit ut ex atrio statim refugerit; cum autem paulum se ex timore recepisset, multis cum lacrimis obsecravit Herculem ut monstrum sine mora in Orcum reduceret."
+            },
+            {
+              "id": "hercules.53.6",
+              "text": "Sic contra omnium opinionem duodecim illi labores quos Pythia praeceperat intra duodecim annos confecti sunt; quae cum ita essent, Hercules servitute tandem liberatus magno cum gaudio Thebas rediit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "54. THE CENTAUR NESSUS",
+      "chapter": 54,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.54.1",
+              "text": "Postea Hercules multa alia praeclara perfecit, quae nunc perscribere longum est."
+            },
+            {
+              "id": "hercules.54.2",
+              "text": "Tandem iam aetate provectus Deianiram, Oenei filiam, in matrimonium duxit; post tamen tris annos accidit ut puerum quendam, cui nomen erat Eunomus, casu occiderit."
+            },
+            {
+              "id": "hercules.54.3",
+              "text": "Cum autem mos esset ut si quis hominem casu occidisset, in exsilium iret, Hercules cum uxore sua e finibus eius civitatis exire maturavit."
+            },
+            {
+              "id": "hercules.54.4",
+              "text": "Dum tamen iter faciunt, ad flumen quoddam pervenerunt in quo nullus pons erat; et dum quaerunt quonam modo flumen transeant, accurrit centaurus Nessus, qui viatoribus auxilium obtulit."
+            },
+            {
+              "id": "hercules.54.5",
+              "text": "Hercules igitur uxorem suam in tergum Nessi imposuit; tum ipse flumen tranavit."
+            },
+            {
+              "id": "hercules.54.6",
+              "text": "Nessus autem paulum in aquam progressus ad ripam subito revertebatur et Deianiram auferre conabatur."
+            },
+            {
+              "id": "hercules.54.7",
+              "text": "Quod cum animadvertisset Hercules, ira graviter commotus arcum intendit et pectus Nessi sagitta transfixit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "55. THE POISONED ROBE",
+      "chapter": 55,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.55.1",
+              "text": "Nessus igitur sagitta Herculis transfixus moriens humi iacebat; at ne occasionem sui ulciscendi dimitteret, ita locutus est: \"Tu, Deianira, verba morientis audi."
+            },
+            {
+              "id": "hercules.55.2",
+              "text": "Si amorem mariti tui conservare vis, hunc sanguinem qui nunc e pectore meo effunditur sume ac repone; tum, si umquam in suspicionem tibi venerit, vestem mariti hoc sanguine inficies.\""
+            },
+            {
+              "id": "hercules.55.3",
+              "text": "Haec locutus Nessus animam efflavit; Deianira autem nihil mali suspicata imperata fecit."
+            },
+            {
+              "id": "hercules.55.4",
+              "text": "Paulo post Hercules bellum contra Eurytum, regem Oechaliae, suscepit; et cum regem ipsum cum filiis interfecisset, Iolen eius filiam captivam secum reduxit."
+            },
+            {
+              "id": "hercules.55.5",
+              "text": "Antequam tamen domum venit, navem ad Cenaeum promunturium appulit, et in terram egressus aram constituit, ut Iovi sacrificaret."
+            },
+            {
+              "id": "hercules.55.6",
+              "text": "Dum tamen sacrificium parat, Licham comitem suum domum misit, qui vestem albam referret; mos enim erat apud antiquos, dum sacrificia facerent, albam vestem gerere."
+            },
+            {
+              "id": "hercules.55.7",
+              "text": "At Deianira verita ne Hercules amorem erga Iolen haberet, vestem priusquam Lichae dedit, sanguine Nessi infecit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "56. THE DEATH OF HERCULES",
+      "chapter": 56,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "hercules.56.1",
+              "text": "Hercules nihil mali suspicans vestem quam Lichas attulerat statim induit; paulo post tamen dolorem per omnia membra sensit, et quae causa esset eius rei magnopere mirabatur."
+            },
+            {
+              "id": "hercules.56.2",
+              "text": "Dolore paene exanimatus vestem detrahere conatus est; illa tamen in corpore haesit, neque ullo modo abscindi potuit."
+            },
+            {
+              "id": "hercules.56.3",
+              "text": "Tum demum Hercules quasi furore impulsus in montem Octam se contulit, et in rogum, quem summa celeritate exstruxit, se imposuit."
+            },
+            {
+              "id": "hercules.56.4",
+              "text": "Hoc cum fecisset, eos qui circumstabant oravit ut rogum quam celerrime succenderent."
+            },
+            {
+              "id": "hercules.56.5",
+              "text": "Omnes diu recusabant; tandem tamen pastor quidam ad misericordiam inductus ignem subdidit."
+            },
+            {
+              "id": "hercules.56.6",
+              "text": "Tum, dum omnia fumo obscurantur, Hercules densa nube velatus a Iove in Olympum abreptus est."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

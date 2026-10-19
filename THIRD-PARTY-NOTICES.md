@@ -52,3 +52,11 @@ Build tooling (Vite, esbuild, TypeScript, Vitest, jsdom and their dependencies) 
 The Albanian word list, word-form rules, phrase list, construction rules, tutorial, writing prompts and validation
 sentences are owner-authored and machine-drafted (not reviewed by a native speaker) and are labelled so in the
 product.
+
+## Corpus texts
+
+- **Latin corpus** (`data/corpus/la`; `docs/latin/CORPUS.md`) - Clementine Vulgate (1592), public domain, USFX text from seven1m/open-bibles
+  (https://github.com/seven1m/open-bibles); Francis Ritchie, *Fabulae Faciles* (1903), and Caesar, *De bello Gallico* I.1-7, public-domain texts
+  taken from Latin Wikisource (Vicifons, https://la.wikisource.org), whose transcription and macron edition are offered under Creative Commons
+  Attribution-ShareAlike 4.0 (https://creativecommons.org/licenses/by-sa/4.0/). English lines on some Scripture verses: World English Bible (eBible.org), public domain.
+  Changes: verses and paragraphs split into sentences; line breaks joined; Ritchie's English arguments omitted. Each document names its source and source file hash.

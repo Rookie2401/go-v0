@@ -33,9 +33,9 @@ afterAll(() => { registerAllAnalysers(); }); // leave the registry as the other 
 
 describe('the analyser registry', () => {
   it('lists the languages that CAN be loaded, and only Albanian is loaded at import', () => {
-    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']);
+    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la']);
     expect(hasAnalyser('sq')).toBe(true);
-    for (const l of ['es', 'de', 'hi', 'th', 'nb', 'nn']) expect(hasAnalyser(l), l).toBe(false);
+    for (const l of ['es', 'de', 'hi', 'th', 'nb', 'nn', 'la']) expect(hasAnalyser(l), l).toBe(false);
     expect(parserAdapter('de')).toBeUndefined();
   });
 

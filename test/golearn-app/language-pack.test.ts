@@ -19,14 +19,14 @@ const rowsOf = (rig: Rig, languageId: string): HTMLElement[] => [...rig.root.que
 const withSpanish = () => { const p = fakePacks(); p.all = p.all.map((x) => (x.languageId === 'es' ? ES_OK_FAKE : x)); return p; };
 
 describe('Languages: download your languages', () => {
-  it('shows the six languages from the catalogue in its order, each with what works, what does not, its level and its audio, and asks for no account', async () => {
+  it('shows the seven languages (Latin last, since 2026-10-17) from the catalogue in its order, each with what works, what does not, its level and its audio, and asks for no account', async () => {
     const rig = await makeRig();
     expect(rig.app.current()).toBe('languages');
     expect(rig.q('#screen h1').textContent).toBe('Choose your languages');
     expect(rig.q('#languages h2').textContent).toBe('Languages');
     const cards = [...rig.root.querySelectorAll('#language-cards > .lang')];
     expect(cards.map((c) => c.getAttribute('data-language'))).toEqual(LANGUAGES_FAKE.map((l) => l.languageId));
-    expect(cards.map((c) => c.querySelector('h3')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish']);
+    expect(cards.map((c) => c.querySelector('h3')!.firstChild!.textContent)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin']);
     const albanian = rig.q('[data-language="sq"]');
     expect(albanian.querySelector('.native')!.textContent).toContain('shqip');
     expect(albanian.textContent).toContain('Latn script');
@@ -37,16 +37,19 @@ describe('Languages: download your languages', () => {
     expect(rig.q('[data-language="de"]').textContent).toContain('experimental, seed-only');
     expect(rig.q('[data-language="hi"]').textContent).toContain('Deva script');
     expect(rig.q('[data-language="th"]').textContent).toContain('Thai script');
+    expect(rig.q('[data-language="la"]').textContent).toContain('Latn script');
+    expect(rig.q('[data-language="la"]').textContent).toContain('experimental, seed-only');
+    expect(rig.q('[data-language="la"] details.download > summary').textContent).toBe('Download language');
     // free choice: no account is needed and no team is asked for; there is no separate install step and no language form any more
     expect(rig.text()).not.toMatch(/sign in first/i);
     expect(rig.root.querySelector('#team')).toBeNull();
     expect(rig.text()).not.toMatch(/team|leader/i);
     expect(rig.root.querySelector('#enrol-form, #language, #pack-info')).toBeNull();
     expect(rig.text()).not.toMatch(/Install the pack|Orientation/);
-    expect(rig.root.querySelectorAll('[data-action="choose"]')).toHaveLength(6);
+    expect(rig.root.querySelectorAll('[data-action="choose"]')).toHaveLength(7);
     // each is a compact row with a “Download language” menu at the right; what works and what does not sit under a collapsed Details
     expect(cards.every((c) => c.tagName === 'LI')).toBe(true);
-    expect(cards.map((c) => c.querySelector('details.download > summary')!.textContent)).toEqual(Array(6).fill('Download language'));
+    expect(cards.map((c) => c.querySelector('details.download > summary')!.textContent)).toEqual(Array(7).fill('Download language'));
     expect(cards.every((c) => !(c.querySelector('details.about') as HTMLDetailsElement).open)).toBe(true);
     expect(albanian.querySelector('details.about > summary')!.textContent).toBe('Details');
     expect(albanian.querySelector('details.about')!.contains(albanian.querySelector('.works'))).toBe(true);

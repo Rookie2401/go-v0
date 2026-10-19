@@ -15,6 +15,7 @@ import { DEFAULT_ASSISTANCE } from '../core';
 import { ALBANIAN_COURSE_ID, ALBANIAN_STAGES, ALBANIAN_STREAMS, ALBANIAN_WORKS } from './albanian';
 import { GERMAN_COURSE_ID, GERMAN_LADDER_SHELF, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
 import { HINDI_COURSE_ID, HINDI_OUTSIDE_ASSISTANCE, HINDI_SHELVES, HINDI_STREAMS, HINDI_WORKS } from './hindi';
+import { LATIN_COURSE_ID, LATIN_SHELVES, LATIN_STREAMS, LATIN_WORKS } from './latin';
 import { NORWEGIAN_COURSE_ID, NORWEGIAN_LADDER_SHELF, NORWEGIAN_SHELVES, NORWEGIAN_STREAMS, NORWEGIAN_WORKS } from './norwegian';
 import { SPANISH_COURSE_ID, SPANISH_LADDER_SHELF, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_STREAMS, THAI_WORKS } from './thai';
@@ -44,6 +45,8 @@ const LADDERS: Record<string, { stages: Stage[]; works: Work[]; outside?: Assist
   [HINDI_COURSE_ID]: { stages: HINDI_SHELVES, works: HINDI_WORKS, outside: HINDI_OUTSIDE_ASSISTANCE },
   // Norwegian: shelves like German (a browsing orientation, never a gate); empty until the Norwegian catalogue is filled in
   [NORWEGIAN_COURSE_ID]: { stages: NORWEGIAN_SHELVES, works: NORWEGIAN_WORKS },
+  // Latin: shelves over the bundled public-domain works (Ritchie's Fabulae Faciles, Caesar, the Clementine Vulgate); a browsing orientation, never a gate
+  [LATIN_COURSE_ID]: { stages: LATIN_SHELVES, works: LATIN_WORKS },
 };
 
 /**
@@ -68,6 +71,7 @@ const STREAMS: Record<string, Stream[]> = {
   [ALBANIAN_COURSE_ID]: ALBANIAN_STREAMS,
   [HINDI_COURSE_ID]: HINDI_STREAMS,
   [NORWEGIAN_COURSE_ID]: NORWEGIAN_STREAMS,
+  [LATIN_COURSE_ID]: LATIN_STREAMS,
 };
 
 /** Accent- and case-insensitive text for matching titles and authors. */

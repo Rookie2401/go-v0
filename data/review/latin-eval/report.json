@@ -1,0 +1,4390 @@
+{
+ "tool": "scripts/latin-eval.mts",
+ "runAt": "2026-10-19T16:54:32.720Z",
+ "adapter": {
+  "id": "adapter-la@1",
+  "version": "1",
+  "fingerprint": "1f9ba9db2e9d3ebc",
+  "files": 29
+ },
+ "options": {
+  "corpora": [
+   "vulgate",
+   "nt",
+   "cicero",
+   "vergil",
+   "ovid",
+   "principia",
+   "perseus-caesar",
+   "perseus-cicero",
+   "perseus-propertius",
+   "perseus-sallust",
+   "perseus-vergil",
+   "perseus-ovid",
+   "perseus-petronius",
+   "perseus-phaedrus",
+   "perseus-resgestae",
+   "perseus-suetonius",
+   "perseus-tacitus",
+   "perseus-jerome"
+  ],
+  "gold": true,
+  "limit": null,
+  "rawPrincipia": false
+ },
+ "initMs": 43,
+ "corpora": {
+  "vulgate": {
+   "name": "vulgate",
+   "label": "Clementine Vulgate, whole Bible (73 books)",
+   "source": "vetus-v0/data/vulgate/lat-clementine.usfx.xml (seven1m/open-bibles USFX)",
+   "licence": "public domain (Clementine Vulgate, 1592)",
+   "sentences": 35809,
+   "tokens": 612227,
+   "excludedLabels": 0,
+   "analyzeMs": 9414,
+   "wordsPerSecond": 65035,
+   "anyReadingPct": 99.98,
+   "lexiconConfirmedPct": 97.22,
+   "ruleBuiltPct": 2.61,
+   "unconfirmedGuessPct": 0.16,
+   "noReadingPct": 0.02,
+   "multiReadingPct": 44.33,
+   "counts": {
+    "anyReading": 612122,
+    "lexiconConfirmed": 595208,
+    "ruleBuilt": 15952,
+    "unconfirmedGuess": 962,
+    "noReading": 105,
+    "multiReading": 271373,
+    "lowConfidenceConfirmed": 9554
+   },
+   "distinctForms": 46373,
+   "missBreakdown": {
+    "names": 638,
+    "enclitic": 9,
+    "short": 0,
+    "other": 420
+   },
+   "listedFormsSharePct": 83.41,
+   "gold": null,
+   "goldNote": "gold for the New Testament portion: see the nt row"
+  },
+  "nt": {
+   "name": "nt",
+   "label": "Clementine Vulgate, New Testament (27 books)",
+   "source": "vetus-v0/data/vulgate/lat-clementine.usfx.xml",
+   "licence": "public domain; gold PROIEL CC BY-NC-SA 4.0",
+   "sentences": 7951,
+   "tokens": 126563,
+   "excludedLabels": 0,
+   "analyzeMs": 1603,
+   "wordsPerSecond": 78951,
+   "anyReadingPct": 99.98,
+   "lexiconConfirmedPct": 98.54,
+   "ruleBuiltPct": 1.22,
+   "unconfirmedGuessPct": 0.22,
+   "noReadingPct": 0.02,
+   "multiReadingPct": 44.82,
+   "counts": {
+    "anyReading": 126539,
+    "lexiconConfirmed": 124717,
+    "ruleBuilt": 1546,
+    "unconfirmedGuess": 276,
+    "noReading": 24,
+    "multiReading": 56730,
+    "lowConfidenceConfirmed": 1969
+   },
+   "distinctForms": 15704,
+   "missBreakdown": {
+    "names": 197,
+    "enclitic": 2,
+    "short": 0,
+    "other": 101
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "PROIEL Latin NT (Vetus V0 copy), CC BY-NC-SA 4.0",
+    "mode": "proiel",
+    "goldUnits": 110384,
+    "aligned": 104345,
+    "alignedPct": 94.53,
+    "lemmaStrict": 95.56,
+    "lemmaLenient": 97.52,
+    "lemmaAnyLenient": 99.41,
+    "posStrict": 88.72,
+    "posLenient": 98.23,
+    "lemmaPosStrict": 86.13,
+    "lemmaPosLenient": 97.03,
+    "featuresSubsetStrict": 47.5,
+    "featuresSubsetLenient": 89.47,
+    "featuresDenominator": 72329,
+    "featuresDenominatorLenient": 72329,
+    "fullStrict": 56.75,
+    "fullLenient": 90.98,
+    "perFeature": {
+     "Case": {
+      "n": 51045,
+      "nLenient": 51045,
+      "strict": 55.16,
+      "lenient": 92.39
+     },
+     "Number": {
+      "n": 70266,
+      "nLenient": 70040,
+      "strict": 91.93,
+      "lenient": 95.55
+     },
+     "Gender": {
+      "n": 50586,
+      "nLenient": 48182,
+      "strict": 66.83,
+      "lenient": 93.62
+     },
+     "Person": {
+      "n": 28393,
+      "nLenient": 22901,
+      "strict": 79.69,
+      "lenient": 98.86
+     },
+     "Tense": {
+      "n": 25592,
+      "nLenient": 25592,
+      "strict": 93.73,
+      "lenient": 95.65
+     },
+     "Mood": {
+      "n": 19283,
+      "nLenient": 19283,
+      "strict": 95.28,
+      "lenient": 96.28
+     },
+     "Voice": {
+      "n": 25592,
+      "nLenient": 25592,
+      "strict": 92.33,
+      "lenient": 97.11
+     },
+     "VerbForm": {
+      "n": 25690,
+      "nLenient": 25690,
+      "strict": 97.15,
+      "lenient": 97.15
+     },
+     "Degree": {
+      "n": 4583,
+      "nLenient": 4583,
+      "strict": 8.07,
+      "lenient": 97.01
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 272,
+      "sharePct": 14.73
+     },
+     {
+      "gold": "NOUN",
+      "system": "ADJ",
+      "n": 249,
+      "sharePct": 13.49
+     },
+     {
+      "gold": "NOUN",
+      "system": "VERB",
+      "n": 201,
+      "sharePct": 10.89
+     },
+     {
+      "gold": "VERB",
+      "system": "NOUN",
+      "n": 165,
+      "sharePct": 8.94
+     },
+     {
+      "gold": "SCONJ",
+      "system": "PRON",
+      "n": 155,
+      "sharePct": 8.4
+     },
+     {
+      "gold": "ADJ",
+      "system": "NOUN",
+      "n": 121,
+      "sharePct": 6.55
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 118,
+      "sharePct": 6.39
+     },
+     {
+      "gold": "ADV",
+      "system": "NUM",
+      "n": 60,
+      "sharePct": 3.25
+     },
+     {
+      "gold": "ADV",
+      "system": "NOUN",
+      "n": 50,
+      "sharePct": 2.71
+     },
+     {
+      "gold": "SCONJ",
+      "system": "ADP",
+      "n": 50,
+      "sharePct": 2.71
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "ADV",
+      "system": "CONJ",
+      "n": 3483,
+      "sharePct": 29.6
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 3341,
+      "sharePct": 28.39
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 1723,
+      "sharePct": 14.64
+     },
+     {
+      "gold": "ADV",
+      "system": "SCONJ",
+      "n": 399,
+      "sharePct": 3.39
+     },
+     {
+      "gold": "VERB",
+      "system": "ADJ",
+      "n": 281,
+      "sharePct": 2.39
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 272,
+      "sharePct": 2.31
+     },
+     {
+      "gold": "NOUN",
+      "system": "ADJ",
+      "n": 249,
+      "sharePct": 2.12
+     },
+     {
+      "gold": "NOUN",
+      "system": "PROPN",
+      "n": 205,
+      "sharePct": 1.74
+     },
+     {
+      "gold": "NOUN",
+      "system": "VERB",
+      "n": 201,
+      "sharePct": 1.71
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "NOUN",
+      "n": 200,
+      "sharePct": 1.7
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 103115,
+      "lemmaLenient": 100673,
+      "lemmaPosLenient": 100169
+     },
+     "rule": {
+      "n": 1083,
+      "lemmaLenient": 1070,
+      "lemmaPosLenient": 1070
+     },
+     "guess": {
+      "n": 129,
+      "lemmaLenient": 13,
+      "lemmaPosLenient": 7
+     },
+     "none": {
+      "n": 18,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "cicero": {
+   "name": "cicero",
+   "label": "Cicero: In Catilinam 1-4, Pro Archia, De amicitia, Somnium Scipionis",
+   "source": "romance-v0/data/la/cicero-*.text.json (Latin Wikisource)",
+   "licence": "public domain text (Wikisource page layout CC BY-SA)",
+   "sentences": 1072,
+   "tokens": 27221,
+   "excludedLabels": 0,
+   "analyzeMs": 544,
+   "wordsPerSecond": 50028,
+   "anyReadingPct": 99.96,
+   "lexiconConfirmedPct": 98.68,
+   "ruleBuiltPct": 0.82,
+   "unconfirmedGuessPct": 0.46,
+   "noReadingPct": 0.04,
+   "multiReadingPct": 53.19,
+   "counts": {
+    "anyReading": 27211,
+    "lexiconConfirmed": 26861,
+    "ruleBuilt": 224,
+    "unconfirmedGuess": 126,
+    "noReading": 10,
+    "multiReading": 14480,
+    "lowConfidenceConfirmed": 806
+   },
+   "distinctForms": 7895,
+   "missBreakdown": {
+    "names": 65,
+    "enclitic": 5,
+    "short": 2,
+    "other": 64
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Marcus Tullius Cicero: M. Tulli Ciceronis Orationes: Recognovit brevique adnotatione critica instruxit Albertus Curtis Clark Collegii Reginae Socius",
+    "mode": "perseus-aligned",
+    "goldUnits": 5519,
+    "aligned": 5254,
+    "alignedPct": 95.2,
+    "lemmaStrict": 91.72,
+    "lemmaLenient": 92.65,
+    "lemmaAnyLenient": 97.39,
+    "posStrict": 88.6,
+    "posLenient": 95.18,
+    "lemmaPosStrict": 84.37,
+    "lemmaPosLenient": 90.48,
+    "featuresSubsetStrict": 46.01,
+    "featuresSubsetLenient": 89.57,
+    "featuresDenominator": 3806,
+    "featuresDenominatorLenient": 3806,
+    "fullStrict": 52.19,
+    "fullLenient": 86.41,
+    "perFeature": {
+     "Case": {
+      "n": 2805,
+      "nLenient": 2805,
+      "strict": 52.48,
+      "lenient": 93.26
+     },
+     "Number": {
+      "n": 3570,
+      "nLenient": 3545,
+      "strict": 92.21,
+      "lenient": 95.37
+     },
+     "Gender": {
+      "n": 2810,
+      "nLenient": 2570,
+      "strict": 64.2,
+      "lenient": 95.37
+     },
+     "Person": {
+      "n": 760,
+      "nLenient": 760,
+      "strict": 98.42,
+      "lenient": 98.42
+     },
+     "Tense": {
+      "n": 1192,
+      "nLenient": 1192,
+      "strict": 88.67,
+      "lenient": 90.1
+     },
+     "Mood": {
+      "n": 762,
+      "nLenient": 762,
+      "strict": 93.31,
+      "lenient": 94.49
+     },
+     "Voice": {
+      "n": 1088,
+      "nLenient": 1088,
+      "strict": 90.72,
+      "lenient": 91.18
+     },
+     "VerbForm": {
+      "n": 1236,
+      "nLenient": 1236,
+      "strict": 91.34,
+      "lenient": 91.34
+     },
+     "Degree": {
+      "n": 84,
+      "nLenient": 84,
+      "strict": 71.43,
+      "lenient": 71.43
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 43,
+      "sharePct": 17
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 26,
+      "sharePct": 10.28
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 25,
+      "sharePct": 9.88
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 21,
+      "sharePct": 8.3
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 17,
+      "sharePct": 6.72
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 15,
+      "sharePct": 5.93
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 14,
+      "sharePct": 5.53
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 12,
+      "sharePct": 4.74
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADP",
+      "n": 10,
+      "sharePct": 3.95
+     },
+     {
+      "gold": "ADV",
+      "system": "NOUN",
+      "n": 9,
+      "sharePct": 3.56
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 129,
+      "sharePct": 21.54
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 96,
+      "sharePct": 16.03
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 63,
+      "sharePct": 10.52
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 59,
+      "sharePct": 9.85
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 43,
+      "sharePct": 7.18
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 26,
+      "sharePct": 4.34
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 25,
+      "sharePct": 4.17
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 21,
+      "sharePct": 3.51
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 17,
+      "sharePct": 2.84
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 14,
+      "sharePct": 2.34
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 5191,
+      "lemmaLenient": 4823,
+      "lemmaPosLenient": 4710
+     },
+     "rule": {
+      "n": 52,
+      "lemmaLenient": 42,
+      "lemmaPosLenient": 42
+     },
+     "guess": {
+      "n": 11,
+      "lemmaLenient": 3,
+      "lemmaPosLenient": 2
+     },
+     "none": {
+      "n": 0,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "vergil": {
+   "name": "vergil",
+   "label": "Vergil, Aeneid 1, 2, 4, 6 (macronised)",
+   "source": "romance-v0/data/la/vergil-aeneid-{1,2,4,6}.text.json (Latin Wikisource)",
+   "licence": "public domain text (Wikisource edition CC BY-SA)",
+   "sentences": 1082,
+   "tokens": 20535,
+   "excludedLabels": 0,
+   "analyzeMs": 520,
+   "wordsPerSecond": 39506,
+   "anyReadingPct": 99.96,
+   "lexiconConfirmedPct": 97.86,
+   "ruleBuiltPct": 0.65,
+   "unconfirmedGuessPct": 1.44,
+   "noReadingPct": 0.04,
+   "multiReadingPct": 52.04,
+   "counts": {
+    "anyReading": 20526,
+    "lexiconConfirmed": 20096,
+    "ruleBuilt": 134,
+    "unconfirmedGuess": 296,
+    "noReading": 9,
+    "multiReading": 10687,
+    "lowConfidenceConfirmed": 818
+   },
+   "distinctForms": 8160,
+   "missBreakdown": {
+    "names": 250,
+    "enclitic": 2,
+    "short": 7,
+    "other": 46
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Publius Vergilius Maro: Bucolics, Aeneid, and Georgics Of Vergil",
+    "mode": "perseus-aligned",
+    "goldUnits": 2186,
+    "aligned": 2131,
+    "alignedPct": 97.48,
+    "lemmaStrict": 89.82,
+    "lemmaLenient": 90.29,
+    "lemmaAnyLenient": 95.92,
+    "posStrict": 89.54,
+    "posLenient": 94.6,
+    "lemmaPosStrict": 84.56,
+    "lemmaPosLenient": 88.03,
+    "featuresSubsetStrict": 38.72,
+    "featuresSubsetLenient": 84.14,
+    "featuresDenominator": 1728,
+    "featuresDenominatorLenient": 1728,
+    "fullStrict": 44.39,
+    "fullLenient": 81.65,
+    "perFeature": {
+     "Case": {
+      "n": 1379,
+      "nLenient": 1379,
+      "strict": 35.1,
+      "lenient": 89.41
+     },
+     "Number": {
+      "n": 1676,
+      "nLenient": 1666,
+      "strict": 89.14,
+      "lenient": 89.98
+     },
+     "Gender": {
+      "n": 1376,
+      "nLenient": 1340,
+      "strict": 68.6,
+      "lenient": 90.52
+     },
+     "Person": {
+      "n": 300,
+      "nLenient": 300,
+      "strict": 97.67,
+      "lenient": 97.67
+     },
+     "Tense": {
+      "n": 505,
+      "nLenient": 505,
+      "strict": 83.56,
+      "lenient": 85.35
+     },
+     "Mood": {
+      "n": 301,
+      "nLenient": 301,
+      "strict": 96.35,
+      "lenient": 96.68
+     },
+     "Voice": {
+      "n": 467,
+      "nLenient": 467,
+      "strict": 86.51,
+      "lenient": 87.15
+     },
+     "VerbForm": {
+      "n": 511,
+      "nLenient": 511,
+      "strict": 85.32,
+      "lenient": 85.32
+     },
+     "Degree": {
+      "n": 23,
+      "nLenient": 23,
+      "strict": 60.87,
+      "lenient": 60.87
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 19,
+      "sharePct": 16.52
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 12,
+      "sharePct": 10.43
+     },
+     {
+      "gold": "ADV",
+      "system": "ADP",
+      "n": 11,
+      "sharePct": 9.57
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 10,
+      "sharePct": 8.7
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 10,
+      "sharePct": 8.7
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 8,
+      "sharePct": 6.96
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 7,
+      "sharePct": 6.09
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 7,
+      "sharePct": 6.09
+     },
+     {
+      "gold": "ADV",
+      "system": "NUM",
+      "n": 4,
+      "sharePct": 3.48
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 4,
+      "sharePct": 3.48
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 49,
+      "sharePct": 21.97
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 19,
+      "sharePct": 8.52
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 18,
+      "sharePct": 8.07
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 14,
+      "sharePct": 6.28
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 12,
+      "sharePct": 5.38
+     },
+     {
+      "gold": "ADV",
+      "system": "ADP",
+      "n": 11,
+      "sharePct": 4.93
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 11,
+      "sharePct": 4.93
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 10,
+      "sharePct": 4.48
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 10,
+      "sharePct": 4.48
+     },
+     {
+      "gold": "ADV",
+      "system": "SCONJ",
+      "n": 9,
+      "sharePct": 4.04
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 2085,
+      "lemmaLenient": 1903,
+      "lemmaPosLenient": 1856
+     },
+     "rule": {
+      "n": 14,
+      "lemmaLenient": 14,
+      "lemmaPosLenient": 14
+     },
+     "guess": {
+      "n": 32,
+      "lemmaLenient": 7,
+      "lemmaPosLenient": 6
+     },
+     "none": {
+      "n": 0,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "ovid": {
+   "name": "ovid",
+   "label": "Ovid, Metamorphoses 1 (macronised)",
+   "source": "romance-v0/data/la/ovid-met-1.text.json (Latin Wikisource)",
+   "licence": "public domain text (Wikisource edition CC BY-SA)",
+   "sentences": 190,
+   "tokens": 5097,
+   "excludedLabels": 0,
+   "analyzeMs": 128,
+   "wordsPerSecond": 39767,
+   "anyReadingPct": 99.96,
+   "lexiconConfirmedPct": 97.8,
+   "ruleBuiltPct": 0.88,
+   "unconfirmedGuessPct": 1.28,
+   "noReadingPct": 0.04,
+   "multiReadingPct": 48.6,
+   "counts": {
+    "anyReading": 5095,
+    "lexiconConfirmed": 4985,
+    "ruleBuilt": 45,
+    "unconfirmedGuess": 65,
+    "noReading": 2,
+    "multiReading": 2477,
+    "lowConfidenceConfirmed": 173
+   },
+   "distinctForms": 2979,
+   "missBreakdown": {
+    "names": 48,
+    "enclitic": 0,
+    "short": 1,
+    "other": 18
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Ovid: Metamorphoses",
+    "mode": "perseus-aligned",
+    "goldUnits": 4132,
+    "aligned": 3529,
+    "alignedPct": 85.41,
+    "lemmaStrict": 89.69,
+    "lemmaLenient": 90.51,
+    "lemmaAnyLenient": 96,
+    "posStrict": 90.22,
+    "posLenient": 94.19,
+    "lemmaPosStrict": 85.86,
+    "lemmaPosLenient": 88.81,
+    "featuresSubsetStrict": 42.78,
+    "featuresSubsetLenient": 88.48,
+    "featuresDenominator": 2882,
+    "featuresDenominatorLenient": 2882,
+    "fullStrict": 48.26,
+    "fullLenient": 84.44,
+    "perFeature": {
+     "Case": {
+      "n": 2145,
+      "nLenient": 2145,
+      "strict": 38.83,
+      "lenient": 91.47
+     },
+     "Number": {
+      "n": 2795,
+      "nLenient": 2786,
+      "strict": 92.34,
+      "lenient": 93.65
+     },
+     "Gender": {
+      "n": 2145,
+      "nLenient": 2071,
+      "strict": 71.05,
+      "lenient": 92.61
+     },
+     "Person": {
+      "n": 648,
+      "nLenient": 648,
+      "strict": 98.46,
+      "lenient": 98.61
+     },
+     "Tense": {
+      "n": 937,
+      "nLenient": 937,
+      "strict": 87.94,
+      "lenient": 90.07
+     },
+     "Mood": {
+      "n": 648,
+      "nLenient": 648,
+      "strict": 96.6,
+      "lenient": 97.22
+     },
+     "Voice": {
+      "n": 937,
+      "nLenient": 937,
+      "strict": 88.26,
+      "lenient": 92
+     },
+     "VerbForm": {
+      "n": 938,
+      "nLenient": 938,
+      "strict": 91.9,
+      "lenient": 91.9
+     },
+     "Degree": {
+      "n": 25,
+      "nLenient": 25,
+      "strict": 96,
+      "lenient": 96
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 54,
+      "sharePct": 26.34
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 25,
+      "sharePct": 12.2
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 18,
+      "sharePct": 8.78
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 15,
+      "sharePct": 7.32
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 15,
+      "sharePct": 7.32
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 13,
+      "sharePct": 6.34
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 9,
+      "sharePct": 4.39
+     },
+     {
+      "gold": "ADV",
+      "system": "NUM",
+      "n": 4,
+      "sharePct": 1.95
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADP",
+      "n": 4,
+      "sharePct": 1.95
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADV",
+      "n": 4,
+      "sharePct": 1.95
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 54,
+      "sharePct": 15.65
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 53,
+      "sharePct": 15.36
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 29,
+      "sharePct": 8.41
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 25,
+      "sharePct": 7.25
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NUM",
+      "n": 22,
+      "sharePct": 6.38
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 18,
+      "sharePct": 5.22
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 15,
+      "sharePct": 4.35
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 15,
+      "sharePct": 4.35
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 13,
+      "sharePct": 3.77
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "VERB",
+      "n": 9,
+      "sharePct": 2.61
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 3455,
+      "lemmaLenient": 3148,
+      "lemmaPosLenient": 3093
+     },
+     "rule": {
+      "n": 33,
+      "lemmaLenient": 27,
+      "lemmaPosLenient": 27
+     },
+     "guess": {
+      "n": 41,
+      "lemmaLenient": 19,
+      "lemmaPosLenient": 14
+     },
+     "none": {
+      "n": 0,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "principia": {
+   "name": "principia",
+   "label": "Newton, Philosophiae Naturalis Principia Mathematica (1687)",
+   "source": "Project Gutenberg eBook #28233, https://www.gutenberg.org/cache/epub/28233/pg28233.txt",
+   "licence": "public domain; Project Gutenberg licence header kept with the file",
+   "sentences": 5672,
+   "tokens": 99976,
+   "excludedLabels": 7276,
+   "analyzeMs": 1795,
+   "wordsPerSecond": 55706,
+   "anyReadingPct": 99.65,
+   "lexiconConfirmedPct": 93.28,
+   "ruleBuiltPct": 2.81,
+   "unconfirmedGuessPct": 3.56,
+   "noReadingPct": 0.35,
+   "multiReadingPct": 48.78,
+   "counts": {
+    "anyReading": 99628,
+    "lexiconConfirmed": 93255,
+    "ruleBuilt": 2812,
+    "unconfirmedGuess": 3561,
+    "noReading": 348,
+    "multiReading": 48769,
+    "lowConfidenceConfirmed": 3626
+   },
+   "distinctForms": 10211,
+   "missBreakdown": {
+    "names": 1863,
+    "enclitic": 10,
+    "short": 846,
+    "other": 1190
+   },
+   "listedFormsSharePct": 72.83,
+   "gold": null
+  },
+  "perseus-caesar": {
+   "name": "perseus-caesar",
+   "label": "Perseus treebank: Gaius Iulius Caesar: C. Iuli Commentarii Rerum in Gallia Gestarum VII A. Hirti Commentarius VII",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi0448.phi001.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 71,
+   "tokens": 1334,
+   "excludedLabels": 0,
+   "analyzeMs": 27,
+   "wordsPerSecond": 49086,
+   "anyReadingPct": 100,
+   "lexiconConfirmedPct": 97.08,
+   "ruleBuiltPct": 1.72,
+   "unconfirmedGuessPct": 1.2,
+   "noReadingPct": 0,
+   "multiReadingPct": 53.75,
+   "counts": {
+    "anyReading": 1334,
+    "lexiconConfirmed": 1295,
+    "ruleBuilt": 23,
+    "unconfirmedGuess": 16,
+    "noReading": 0,
+    "multiReading": 717,
+    "lowConfidenceConfirmed": 33
+   },
+   "distinctForms": 767,
+   "missBreakdown": {
+    "names": 13,
+    "enclitic": 0,
+    "short": 0,
+    "other": 3
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Gaius Iulius Caesar: C. Iuli Commentarii Rerum in Gallia Gestarum VII A. Hirti Commentarius VII",
+    "mode": "perseus-own",
+    "goldUnits": 1334,
+    "aligned": 1334,
+    "alignedPct": 100,
+    "lemmaStrict": 87.93,
+    "lemmaLenient": 88.08,
+    "lemmaAnyLenient": 92.8,
+    "posStrict": 90.7,
+    "posLenient": 95.13,
+    "lemmaPosStrict": 83.13,
+    "lemmaPosLenient": 86.21,
+    "featuresSubsetStrict": 50.7,
+    "featuresSubsetLenient": 88.05,
+    "featuresDenominator": 1004,
+    "featuresDenominatorLenient": 1004,
+    "fullStrict": 53.3,
+    "fullLenient": 81.78,
+    "perFeature": {
+     "Case": {
+      "n": 765,
+      "nLenient": 765,
+      "strict": 52.55,
+      "lenient": 90.85
+     },
+     "Number": {
+      "n": 931,
+      "nLenient": 914,
+      "strict": 88.18,
+      "lenient": 92.89
+     },
+     "Gender": {
+      "n": 762,
+      "nLenient": 744,
+      "strict": 67.59,
+      "lenient": 93.41
+     },
+     "Person": {
+      "n": 169,
+      "nLenient": 169,
+      "strict": 100,
+      "lenient": 100
+     },
+     "Tense": {
+      "n": 294,
+      "nLenient": 294,
+      "strict": 91.84,
+      "lenient": 92.86
+     },
+     "Mood": {
+      "n": 169,
+      "nLenient": 169,
+      "strict": 100,
+      "lenient": 100
+     },
+     "Voice": {
+      "n": 274,
+      "nLenient": 274,
+      "strict": 92.7,
+      "lenient": 93.8
+     },
+     "VerbForm": {
+      "n": 304,
+      "nLenient": 304,
+      "strict": 92.76,
+      "lenient": 92.76
+     },
+     "Degree": {
+      "n": 24,
+      "nLenient": 24,
+      "strict": 58.33,
+      "lenient": 58.33
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 9,
+      "sharePct": 13.85
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 8,
+      "sharePct": 12.31
+     },
+     {
+      "gold": "NUM",
+      "system": "NOUN",
+      "n": 7,
+      "sharePct": 10.77
+     },
+     {
+      "gold": "ADV",
+      "system": "ADP",
+      "n": 5,
+      "sharePct": 7.69
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 5,
+      "sharePct": 7.69
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 5,
+      "sharePct": 7.69
+     },
+     {
+      "gold": "ADV",
+      "system": "NOUN",
+      "n": 4,
+      "sharePct": 6.15
+     },
+     {
+      "gold": "ADV",
+      "system": "NUM",
+      "n": 3,
+      "sharePct": 4.62
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 3,
+      "sharePct": 4.62
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 2,
+      "sharePct": 3.08
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 24,
+      "sharePct": 19.35
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 13,
+      "sharePct": 10.48
+     },
+     {
+      "gold": "PROPN",
+      "system": "NOUN",
+      "n": 10,
+      "sharePct": 8.06
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 9,
+      "sharePct": 7.26
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 8,
+      "sharePct": 6.45
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 7,
+      "sharePct": 5.65
+     },
+     {
+      "gold": "NUM",
+      "system": "NOUN",
+      "n": 7,
+      "sharePct": 5.65
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 6,
+      "sharePct": 4.84
+     },
+     {
+      "gold": "ADV",
+      "system": "ADP",
+      "n": 5,
+      "sharePct": 4.03
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 5,
+      "sharePct": 4.03
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 1295,
+      "lemmaLenient": 1158,
+      "lemmaPosLenient": 1133
+     },
+     "rule": {
+      "n": 23,
+      "lemmaLenient": 16,
+      "lemmaPosLenient": 16
+     },
+     "guess": {
+      "n": 16,
+      "lemmaLenient": 1,
+      "lemmaPosLenient": 1
+     },
+     "none": {
+      "n": 0,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-cicero": {
+   "name": "perseus-cicero",
+   "label": "Perseus treebank: Marcus Tullius Cicero: M. Tulli Ciceronis Orationes: Recognovit brevique adnotatione critica instruxit Albertus Curtis Clark Collegii Reginae Socius",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi0474.phi013.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 326,
+   "tokens": 5519,
+   "excludedLabels": 0,
+   "analyzeMs": 97,
+   "wordsPerSecond": 57070,
+   "anyReadingPct": 100,
+   "lexiconConfirmedPct": 98.77,
+   "ruleBuiltPct": 0.98,
+   "unconfirmedGuessPct": 0.25,
+   "noReadingPct": 0,
+   "multiReadingPct": 53.9,
+   "counts": {
+    "anyReading": 5519,
+    "lexiconConfirmed": 5451,
+    "ruleBuilt": 54,
+    "unconfirmedGuess": 14,
+    "noReading": 0,
+    "multiReading": 2975,
+    "lowConfidenceConfirmed": 145
+   },
+   "distinctForms": 2319,
+   "missBreakdown": {
+    "names": 7,
+    "enclitic": 0,
+    "short": 2,
+    "other": 5
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Marcus Tullius Cicero: M. Tulli Ciceronis Orationes: Recognovit brevique adnotatione critica instruxit Albertus Curtis Clark Collegii Reginae Socius",
+    "mode": "perseus-own",
+    "goldUnits": 5519,
+    "aligned": 5519,
+    "alignedPct": 100,
+    "lemmaStrict": 91.65,
+    "lemmaLenient": 92.55,
+    "lemmaAnyLenient": 97.25,
+    "posStrict": 88.66,
+    "posLenient": 95.18,
+    "lemmaPosStrict": 84.4,
+    "lemmaPosLenient": 90.43,
+    "featuresSubsetStrict": 46.28,
+    "featuresSubsetLenient": 89.29,
+    "featuresDenominator": 4023,
+    "featuresDenominatorLenient": 4023,
+    "fullStrict": 52.15,
+    "fullLenient": 86.1,
+    "perFeature": {
+     "Case": {
+      "n": 2962,
+      "nLenient": 2962,
+      "strict": 52.67,
+      "lenient": 92.84
+     },
+     "Number": {
+      "n": 3776,
+      "nLenient": 3748,
+      "strict": 92.03,
+      "lenient": 95.09
+     },
+     "Gender": {
+      "n": 2972,
+      "nLenient": 2719,
+      "strict": 64.13,
+      "lenient": 95.55
+     },
+     "Person": {
+      "n": 804,
+      "nLenient": 804,
+      "strict": 98.38,
+      "lenient": 98.38
+     },
+     "Tense": {
+      "n": 1254,
+      "nLenient": 1254,
+      "strict": 88.52,
+      "lenient": 89.87
+     },
+     "Mood": {
+      "n": 806,
+      "nLenient": 806,
+      "strict": 93.05,
+      "lenient": 94.17
+     },
+     "Voice": {
+      "n": 1148,
+      "nLenient": 1148,
+      "strict": 90.68,
+      "lenient": 91.11
+     },
+     "VerbForm": {
+      "n": 1303,
+      "nLenient": 1303,
+      "strict": 91.33,
+      "lenient": 91.33
+     },
+     "Degree": {
+      "n": 92,
+      "nLenient": 92,
+      "strict": 73.91,
+      "lenient": 73.91
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 45,
+      "sharePct": 16.92
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 29,
+      "sharePct": 10.9
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 26,
+      "sharePct": 9.77
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 21,
+      "sharePct": 7.89
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 18,
+      "sharePct": 6.77
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 15,
+      "sharePct": 5.64
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 14,
+      "sharePct": 5.26
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 12,
+      "sharePct": 4.51
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADP",
+      "n": 11,
+      "sharePct": 4.14
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 11,
+      "sharePct": 4.14
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 131,
+      "sharePct": 20.93
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 99,
+      "sharePct": 15.81
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 66,
+      "sharePct": 10.54
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 62,
+      "sharePct": 9.9
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 45,
+      "sharePct": 7.19
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 29,
+      "sharePct": 4.63
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 26,
+      "sharePct": 4.15
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 21,
+      "sharePct": 3.35
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 18,
+      "sharePct": 2.88
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 14,
+      "sharePct": 2.24
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 5451,
+      "lemmaLenient": 5059,
+      "lemmaPosLenient": 4943
+     },
+     "rule": {
+      "n": 54,
+      "lemmaLenient": 46,
+      "lemmaPosLenient": 46
+     },
+     "guess": {
+      "n": 14,
+      "lemmaLenient": 3,
+      "lemmaPosLenient": 2
+     },
+     "none": {
+      "n": 0,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-propertius": {
+   "name": "perseus-propertius",
+   "label": "Perseus treebank: Propertius: Elegies",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi0620.phi001.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 364,
+   "tokens": 4372,
+   "excludedLabels": 0,
+   "analyzeMs": 91,
+   "wordsPerSecond": 47991,
+   "anyReadingPct": 100,
+   "lexiconConfirmedPct": 96.71,
+   "ruleBuiltPct": 1.19,
+   "unconfirmedGuessPct": 2.1,
+   "noReadingPct": 0,
+   "multiReadingPct": 54.99,
+   "counts": {
+    "anyReading": 4372,
+    "lexiconConfirmed": 4228,
+    "ruleBuilt": 52,
+    "unconfirmedGuess": 92,
+    "noReading": 0,
+    "multiReading": 2404,
+    "lowConfidenceConfirmed": 124
+   },
+   "distinctForms": 2205,
+   "missBreakdown": {
+    "names": 82,
+    "enclitic": 1,
+    "short": 0,
+    "other": 9
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Propertius: Elegies",
+    "mode": "perseus-own",
+    "goldUnits": 4372,
+    "aligned": 4372,
+    "alignedPct": 100,
+    "lemmaStrict": 91.01,
+    "lemmaLenient": 91.93,
+    "lemmaAnyLenient": 96.07,
+    "posStrict": 86.83,
+    "posLenient": 95.36,
+    "lemmaPosStrict": 83.05,
+    "lemmaPosLenient": 90.37,
+    "featuresSubsetStrict": 36.45,
+    "featuresSubsetLenient": 86.63,
+    "featuresDenominator": 3501,
+    "featuresDenominatorLenient": 3501,
+    "fullStrict": 41.24,
+    "fullLenient": 84.81,
+    "perFeature": {
+     "Case": {
+      "n": 2647,
+      "nLenient": 2647,
+      "strict": 32.68,
+      "lenient": 89.31
+     },
+     "Number": {
+      "n": 3276,
+      "nLenient": 3273,
+      "strict": 90.08,
+      "lenient": 91.2
+     },
+     "Gender": {
+      "n": 2645,
+      "nLenient": 2415,
+      "strict": 63.63,
+      "lenient": 90.72
+     },
+     "Person": {
+      "n": 630,
+      "nLenient": 630,
+      "strict": 98.25,
+      "lenient": 98.25
+     },
+     "Tense": {
+      "n": 1093,
+      "nLenient": 1093,
+      "strict": 89.66,
+      "lenient": 91.22
+     },
+     "Mood": {
+      "n": 630,
+      "nLenient": 630,
+      "strict": 94.76,
+      "lenient": 96.03
+     },
+     "Voice": {
+      "n": 999,
+      "nLenient": 999,
+      "strict": 91.19,
+      "lenient": 91.89
+     },
+     "VerbForm": {
+      "n": 1101,
+      "nLenient": 1101,
+      "strict": 92.1,
+      "lenient": 92.1
+     },
+     "Degree": {
+      "n": 59,
+      "nLenient": 59,
+      "strict": 50.85,
+      "lenient": 50.85
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 46,
+      "sharePct": 22.66
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 19,
+      "sharePct": 9.36
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 17,
+      "sharePct": 8.37
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 15,
+      "sharePct": 7.39
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 12,
+      "sharePct": 5.91
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 10,
+      "sharePct": 4.93
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 10,
+      "sharePct": 4.93
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 9,
+      "sharePct": 4.43
+     },
+     {
+      "gold": "INTJ",
+      "system": "ADP",
+      "n": 8,
+      "sharePct": 3.94
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "VERB",
+      "n": 7,
+      "sharePct": 3.45
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 134,
+      "sharePct": 23.26
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 84,
+      "sharePct": 14.58
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 63,
+      "sharePct": 10.94
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 56,
+      "sharePct": 9.72
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 46,
+      "sharePct": 7.99
+     },
+     {
+      "gold": "ADV",
+      "system": "SCONJ",
+      "n": 28,
+      "sharePct": 4.86
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 19,
+      "sharePct": 3.3
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 17,
+      "sharePct": 2.95
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 15,
+      "sharePct": 2.6
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 12,
+      "sharePct": 2.08
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 4228,
+      "lemmaLenient": 3921,
+      "lemmaPosLenient": 3861
+     },
+     "rule": {
+      "n": 52,
+      "lemmaLenient": 49,
+      "lemmaPosLenient": 49
+     },
+     "guess": {
+      "n": 92,
+      "lemmaLenient": 49,
+      "lemmaPosLenient": 41
+     },
+     "none": {
+      "n": 0,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-sallust": {
+   "name": "perseus-sallust",
+   "label": "Perseus treebank: C. Sallusti Crispi: Catilina, Iugurtha, Orationes Et Epistulae Excerptae De Historiis",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi0631.phi001.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 699,
+   "tokens": 10751,
+   "excludedLabels": 0,
+   "analyzeMs": 226,
+   "wordsPerSecond": 47574,
+   "anyReadingPct": 99.92,
+   "lexiconConfirmedPct": 98.28,
+   "ruleBuiltPct": 0.6,
+   "unconfirmedGuessPct": 1.04,
+   "noReadingPct": 0.08,
+   "multiReadingPct": 52.64,
+   "counts": {
+    "anyReading": 10742,
+    "lexiconConfirmed": 10566,
+    "ruleBuilt": 64,
+    "unconfirmedGuess": 112,
+    "noReading": 9,
+    "multiReading": 5659,
+    "lowConfidenceConfirmed": 304
+   },
+   "distinctForms": 3979,
+   "missBreakdown": {
+    "names": 34,
+    "enclitic": 2,
+    "short": 1,
+    "other": 84
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT C. Sallusti Crispi: Catilina, Iugurtha, Orationes Et Epistulae Excerptae De Historiis",
+    "mode": "perseus-own",
+    "goldUnits": 10746,
+    "aligned": 10746,
+    "alignedPct": 100,
+    "lemmaStrict": 89.33,
+    "lemmaLenient": 89.92,
+    "lemmaAnyLenient": 94.31,
+    "posStrict": 89.13,
+    "posLenient": 92.54,
+    "lemmaPosStrict": 84.61,
+    "lemmaPosLenient": 87.61,
+    "featuresSubsetStrict": 42.92,
+    "featuresSubsetLenient": 86.07,
+    "featuresDenominator": 8111,
+    "featuresDenominatorLenient": 8111,
+    "fullStrict": 49.82,
+    "fullLenient": 81.24,
+    "perFeature": {
+     "Case": {
+      "n": 6334,
+      "nLenient": 6334,
+      "strict": 43.42,
+      "lenient": 88.82
+     },
+     "Number": {
+      "n": 7692,
+      "nLenient": 7617,
+      "strict": 89.46,
+      "lenient": 91.89
+     },
+     "Gender": {
+      "n": 6339,
+      "nLenient": 6147,
+      "strict": 68.09,
+      "lenient": 92.78
+     },
+     "Person": {
+      "n": 1351,
+      "nLenient": 1351,
+      "strict": 98.59,
+      "lenient": 98.59
+     },
+     "Tense": {
+      "n": 2297,
+      "nLenient": 2297,
+      "strict": 88.94,
+      "lenient": 89.94
+     },
+     "Mood": {
+      "n": 1349,
+      "nLenient": 1349,
+      "strict": 97.18,
+      "lenient": 97.78
+     },
+     "Voice": {
+      "n": 2298,
+      "nLenient": 2298,
+      "strict": 85.68,
+      "lenient": 92.21
+     },
+     "VerbForm": {
+      "n": 2293,
+      "nLenient": 2293,
+      "strict": 93.11,
+      "lenient": 93.11
+     },
+     "Degree": {
+      "n": 61,
+      "nLenient": 61,
+      "strict": 57.38,
+      "lenient": 57.38
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 200,
+      "sharePct": 24.94
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 68,
+      "sharePct": 8.48
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 62,
+      "sharePct": 7.73
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 56,
+      "sharePct": 6.98
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 51,
+      "sharePct": 6.36
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 39,
+      "sharePct": 4.86
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 37,
+      "sharePct": 4.61
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 36,
+      "sharePct": 4.49
+     },
+     {
+      "gold": "ADV",
+      "system": "ADP",
+      "n": 30,
+      "sharePct": 3.74
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 30,
+      "sharePct": 3.74
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 201,
+      "sharePct": 17.21
+     },
+     {
+      "gold": "ADV",
+      "system": "SCONJ",
+      "n": 93,
+      "sharePct": 7.96
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 80,
+      "sharePct": 6.85
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 76,
+      "sharePct": 6.51
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 68,
+      "sharePct": 5.82
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 62,
+      "sharePct": 5.31
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 56,
+      "sharePct": 4.79
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 51,
+      "sharePct": 4.37
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 45,
+      "sharePct": 3.85
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 39,
+      "sharePct": 3.34
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 10565,
+      "lemmaLenient": 9596,
+      "lemmaPosLenient": 9351
+     },
+     "rule": {
+      "n": 64,
+      "lemmaLenient": 49,
+      "lemmaPosLenient": 49
+     },
+     "guess": {
+      "n": 109,
+      "lemmaLenient": 18,
+      "lemmaPosLenient": 15
+     },
+     "none": {
+      "n": 8,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-vergil": {
+   "name": "perseus-vergil",
+   "label": "Perseus treebank: Publius Vergilius Maro: Bucolics, Aeneid, and Georgics Of Vergil",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi0690.phi003.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 177,
+   "tokens": 2186,
+   "excludedLabels": 0,
+   "analyzeMs": 39,
+   "wordsPerSecond": 56165,
+   "anyReadingPct": 100,
+   "lexiconConfirmedPct": 97.71,
+   "ruleBuiltPct": 0.64,
+   "unconfirmedGuessPct": 1.65,
+   "noReadingPct": 0,
+   "multiReadingPct": 53.06,
+   "counts": {
+    "anyReading": 2186,
+    "lexiconConfirmed": 2136,
+    "ruleBuilt": 14,
+    "unconfirmedGuess": 36,
+    "noReading": 0,
+    "multiReading": 1160,
+    "lowConfidenceConfirmed": 95
+   },
+   "distinctForms": 1512,
+   "missBreakdown": {
+    "names": 29,
+    "enclitic": 1,
+    "short": 0,
+    "other": 6
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Publius Vergilius Maro: Bucolics, Aeneid, and Georgics Of Vergil",
+    "mode": "perseus-own",
+    "goldUnits": 2186,
+    "aligned": 2186,
+    "alignedPct": 100,
+    "lemmaStrict": 89.3,
+    "lemmaLenient": 89.8,
+    "lemmaAnyLenient": 95.33,
+    "posStrict": 89.62,
+    "posLenient": 94.6,
+    "lemmaPosStrict": 84.17,
+    "lemmaPosLenient": 87.69,
+    "featuresSubsetStrict": 38.6,
+    "featuresSubsetLenient": 84.13,
+    "featuresDenominator": 1777,
+    "featuresDenominatorLenient": 1777,
+    "fullStrict": 44.05,
+    "fullLenient": 81.43,
+    "perFeature": {
+     "Case": {
+      "n": 1418,
+      "nLenient": 1418,
+      "strict": 34.84,
+      "lenient": 89.21
+     },
+     "Number": {
+      "n": 1724,
+      "nLenient": 1714,
+      "strict": 88.81,
+      "lenient": 89.61
+     },
+     "Gender": {
+      "n": 1415,
+      "nLenient": 1379,
+      "strict": 68.48,
+      "lenient": 90.5
+     },
+     "Person": {
+      "n": 309,
+      "nLenient": 309,
+      "strict": 97.73,
+      "lenient": 97.73
+     },
+     "Tense": {
+      "n": 518,
+      "nLenient": 518,
+      "strict": 83.98,
+      "lenient": 85.71
+     },
+     "Mood": {
+      "n": 310,
+      "nLenient": 310,
+      "strict": 96.45,
+      "lenient": 96.77
+     },
+     "Voice": {
+      "n": 479,
+      "nLenient": 479,
+      "strict": 86.85,
+      "lenient": 87.47
+     },
+     "VerbForm": {
+      "n": 524,
+      "nLenient": 524,
+      "strict": 85.69,
+      "lenient": 85.69
+     },
+     "Degree": {
+      "n": 23,
+      "nLenient": 23,
+      "strict": 60.87,
+      "lenient": 60.87
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 18,
+      "sharePct": 15.25
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 13,
+      "sharePct": 11.02
+     },
+     {
+      "gold": "ADV",
+      "system": "ADP",
+      "n": 11,
+      "sharePct": 9.32
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 11,
+      "sharePct": 9.32
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 10,
+      "sharePct": 8.47
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 9,
+      "sharePct": 7.63
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 7,
+      "sharePct": 5.93
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 7,
+      "sharePct": 5.93
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 5,
+      "sharePct": 4.24
+     },
+     {
+      "gold": "ADV",
+      "system": "NUM",
+      "n": 4,
+      "sharePct": 3.39
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 48,
+      "sharePct": 21.15
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 18,
+      "sharePct": 7.93
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 18,
+      "sharePct": 7.93
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 16,
+      "sharePct": 7.05
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 13,
+      "sharePct": 5.73
+     },
+     {
+      "gold": "ADV",
+      "system": "ADP",
+      "n": 11,
+      "sharePct": 4.85
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 11,
+      "sharePct": 4.85
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 11,
+      "sharePct": 4.85
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 10,
+      "sharePct": 4.41
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 9,
+      "sharePct": 3.96
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 2136,
+      "lemmaLenient": 1942,
+      "lemmaPosLenient": 1897
+     },
+     "rule": {
+      "n": 14,
+      "lemmaLenient": 14,
+      "lemmaPosLenient": 14
+     },
+     "guess": {
+      "n": 36,
+      "lemmaLenient": 7,
+      "lemmaPosLenient": 6
+     },
+     "none": {
+      "n": 0,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-ovid": {
+   "name": "perseus-ovid",
+   "label": "Perseus treebank: Ovid: Metamorphoses",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi0959.phi006.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 317,
+   "tokens": 4133,
+   "excludedLabels": 0,
+   "analyzeMs": 71,
+   "wordsPerSecond": 58308,
+   "anyReadingPct": 100,
+   "lexiconConfirmedPct": 97.8,
+   "ruleBuiltPct": 0.94,
+   "unconfirmedGuessPct": 1.26,
+   "noReadingPct": 0,
+   "multiReadingPct": 47.11,
+   "counts": {
+    "anyReading": 4133,
+    "lexiconConfirmed": 4042,
+    "ruleBuilt": 39,
+    "unconfirmedGuess": 52,
+    "noReading": 0,
+    "multiReading": 1947,
+    "lowConfidenceConfirmed": 128
+   },
+   "distinctForms": 2465,
+   "missBreakdown": {
+    "names": 40,
+    "enclitic": 3,
+    "short": 0,
+    "other": 9
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Ovid: Metamorphoses",
+    "mode": "perseus-own",
+    "goldUnits": 4132,
+    "aligned": 4132,
+    "alignedPct": 100,
+    "lemmaStrict": 89.25,
+    "lemmaLenient": 90,
+    "lemmaAnyLenient": 95.5,
+    "posStrict": 89.93,
+    "posLenient": 94.14,
+    "lemmaPosStrict": 85.45,
+    "lemmaPosLenient": 88.43,
+    "featuresSubsetStrict": 42.41,
+    "featuresSubsetLenient": 87.97,
+    "featuresDenominator": 3341,
+    "featuresDenominatorLenient": 3341,
+    "fullStrict": 47.97,
+    "fullLenient": 83.91,
+    "perFeature": {
+     "Case": {
+      "n": 2490,
+      "nLenient": 2490,
+      "strict": 38.19,
+      "lenient": 91.33
+     },
+     "Number": {
+      "n": 3243,
+      "nLenient": 3230,
+      "strict": 92.14,
+      "lenient": 93.37
+     },
+     "Gender": {
+      "n": 2490,
+      "nLenient": 2407,
+      "strict": 70.84,
+      "lenient": 92.31
+     },
+     "Person": {
+      "n": 751,
+      "nLenient": 751,
+      "strict": 98.54,
+      "lenient": 98.67
+     },
+     "Tense": {
+      "n": 1091,
+      "nLenient": 1091,
+      "strict": 87.72,
+      "lenient": 89.83
+     },
+     "Mood": {
+      "n": 751,
+      "nLenient": 751,
+      "strict": 96.94,
+      "lenient": 97.47
+     },
+     "Voice": {
+      "n": 1091,
+      "nLenient": 1091,
+      "strict": 87.17,
+      "lenient": 91.57
+     },
+     "VerbForm": {
+      "n": 1092,
+      "nLenient": 1092,
+      "strict": 91.58,
+      "lenient": 91.58
+     },
+     "Degree": {
+      "n": 27,
+      "nLenient": 27,
+      "strict": 96.3,
+      "lenient": 96.3
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 58,
+      "sharePct": 23.97
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 29,
+      "sharePct": 11.98
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 23,
+      "sharePct": 9.5
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PROPN",
+      "n": 16,
+      "sharePct": 6.61
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 15,
+      "sharePct": 6.2
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 15,
+      "sharePct": 6.2
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 15,
+      "sharePct": 6.2
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 10,
+      "sharePct": 4.13
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 5,
+      "sharePct": 2.07
+     },
+     {
+      "gold": "ADV",
+      "system": "NUM",
+      "n": 4,
+      "sharePct": 1.65
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 68,
+      "sharePct": 16.35
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 58,
+      "sharePct": 13.94
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 31,
+      "sharePct": 7.45
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 29,
+      "sharePct": 6.97
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NUM",
+      "n": 24,
+      "sharePct": 5.77
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 23,
+      "sharePct": 5.53
+     },
+     {
+      "gold": "ADV",
+      "system": "SCONJ",
+      "n": 23,
+      "sharePct": 5.53
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PROPN",
+      "n": 16,
+      "sharePct": 3.85
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 15,
+      "sharePct": 3.61
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 15,
+      "sharePct": 3.61
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 4041,
+      "lemmaLenient": 3664,
+      "lemmaPosLenient": 3606
+     },
+     "rule": {
+      "n": 39,
+      "lemmaLenient": 33,
+      "lemmaPosLenient": 33
+     },
+     "guess": {
+      "n": 52,
+      "lemmaLenient": 22,
+      "lemmaPosLenient": 15
+     },
+     "none": {
+      "n": 0,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-petronius": {
+   "name": "perseus-petronius",
+   "label": "Perseus treebank: Petronius Arbiter: Petronius",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi0972.phi001.perseus-lat1.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 1114,
+   "tokens": 11140,
+   "excludedLabels": 0,
+   "analyzeMs": 241,
+   "wordsPerSecond": 46315,
+   "anyReadingPct": 99.79,
+   "lexiconConfirmedPct": 96.04,
+   "ruleBuiltPct": 0.92,
+   "unconfirmedGuessPct": 2.83,
+   "noReadingPct": 0.21,
+   "multiReadingPct": 48.65,
+   "counts": {
+    "anyReading": 11117,
+    "lexiconConfirmed": 10699,
+    "ruleBuilt": 103,
+    "unconfirmedGuess": 315,
+    "noReading": 23,
+    "multiReading": 5420,
+    "lowConfidenceConfirmed": 284
+   },
+   "distinctForms": 4695,
+   "missBreakdown": {
+    "names": 164,
+    "enclitic": 2,
+    "short": 4,
+    "other": 168
+   },
+   "listedFormsSharePct": 65.68,
+   "gold": {
+    "source": "Perseus AGLDT Petronius Arbiter: Petronius",
+    "mode": "perseus-own",
+    "goldUnits": 11129,
+    "aligned": 11129,
+    "alignedPct": 100,
+    "lemmaStrict": 88.35,
+    "lemmaLenient": 89.61,
+    "lemmaAnyLenient": 94.57,
+    "posStrict": 88.74,
+    "posLenient": 92.99,
+    "lemmaPosStrict": 82.68,
+    "lemmaPosLenient": 87.08,
+    "featuresSubsetStrict": 49.72,
+    "featuresSubsetLenient": 87.07,
+    "featuresDenominator": 8069,
+    "featuresDenominatorLenient": 8069,
+    "fullStrict": 54.68,
+    "fullLenient": 82.59,
+    "perFeature": {
+     "Case": {
+      "n": 5623,
+      "nLenient": 5623,
+      "strict": 50.99,
+      "lenient": 89.03
+     },
+     "Number": {
+      "n": 7767,
+      "nLenient": 7722,
+      "strict": 91.86,
+      "lenient": 93.89
+     },
+     "Gender": {
+      "n": 5632,
+      "nLenient": 5252,
+      "strict": 66.28,
+      "lenient": 91.98
+     },
+     "Person": {
+      "n": 2127,
+      "nLenient": 2127,
+      "strict": 97.37,
+      "lenient": 97.46
+     },
+     "Tense": {
+      "n": 2899,
+      "nLenient": 2899,
+      "strict": 90.69,
+      "lenient": 92.24
+     },
+     "Mood": {
+      "n": 2124,
+      "nLenient": 2124,
+      "strict": 95.72,
+      "lenient": 96.23
+     },
+     "Voice": {
+      "n": 2904,
+      "nLenient": 2904,
+      "strict": 89.12,
+      "lenient": 93.8
+     },
+     "VerbForm": {
+      "n": 2901,
+      "nLenient": 2901,
+      "strict": 93.93,
+      "lenient": 93.93
+     },
+     "Degree": {
+      "n": 87,
+      "nLenient": 87,
+      "strict": 89.66,
+      "lenient": 89.66
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 136,
+      "sharePct": 17.44
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 72,
+      "sharePct": 9.23
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 64,
+      "sharePct": 8.21
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 61,
+      "sharePct": 7.82
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 40,
+      "sharePct": 5.13
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 39,
+      "sharePct": 5
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 35,
+      "sharePct": 4.49
+     },
+     {
+      "gold": "ADV",
+      "system": "CONJ",
+      "n": 32,
+      "sharePct": 4.1
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "X",
+      "n": 30,
+      "sharePct": 3.85
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADP",
+      "n": 27,
+      "sharePct": 3.46
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 156,
+      "sharePct": 12.45
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 136,
+      "sharePct": 10.85
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 92,
+      "sharePct": 7.34
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 72,
+      "sharePct": 5.75
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 64,
+      "sharePct": 5.11
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NUM",
+      "n": 64,
+      "sharePct": 5.11
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 61,
+      "sharePct": 4.87
+     },
+     {
+      "gold": "ADV",
+      "system": "CONJ",
+      "n": 60,
+      "sharePct": 4.79
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 58,
+      "sharePct": 4.63
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 40,
+      "sharePct": 3.19
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 10689,
+      "lemmaLenient": 9770,
+      "lemmaPosLenient": 9518
+     },
+     "rule": {
+      "n": 103,
+      "lemmaLenient": 96,
+      "lemmaPosLenient": 96
+     },
+     "guess": {
+      "n": 314,
+      "lemmaLenient": 107,
+      "lemmaPosLenient": 77
+     },
+     "none": {
+      "n": 23,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-phaedrus": {
+   "name": "perseus-phaedrus",
+   "label": "Perseus treebank: Phaedrus, Augusti libertus: Fabulae Aesopiae",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi0975.phi001.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 582,
+   "tokens": 5345,
+   "excludedLabels": 0,
+   "analyzeMs": 101,
+   "wordsPerSecond": 52755,
+   "anyReadingPct": 99.98,
+   "lexiconConfirmedPct": 98.47,
+   "ruleBuiltPct": 1.2,
+   "unconfirmedGuessPct": 0.32,
+   "noReadingPct": 0.02,
+   "multiReadingPct": 51.9,
+   "counts": {
+    "anyReading": 5344,
+    "lexiconConfirmed": 5263,
+    "ruleBuilt": 64,
+    "unconfirmedGuess": 17,
+    "noReading": 1,
+    "multiReading": 2774,
+    "lowConfidenceConfirmed": 169
+   },
+   "distinctForms": 3078,
+   "missBreakdown": {
+    "names": 12,
+    "enclitic": 0,
+    "short": 0,
+    "other": 6
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Phaedrus, Augusti libertus: Fabulae Aesopiae",
+    "mode": "perseus-own",
+    "goldUnits": 5345,
+    "aligned": 5345,
+    "alignedPct": 100,
+    "lemmaStrict": 92.31,
+    "lemmaLenient": 92.8,
+    "lemmaAnyLenient": 97.23,
+    "posStrict": 91.21,
+    "posLenient": 95.83,
+    "lemmaPosStrict": 87.39,
+    "lemmaPosLenient": 90.83,
+    "featuresSubsetStrict": 47.85,
+    "featuresSubsetLenient": 89.54,
+    "featuresDenominator": 4301,
+    "featuresDenominatorLenient": 4301,
+    "fullStrict": 51.23,
+    "fullLenient": 85.82,
+    "perFeature": {
+     "Case": {
+      "n": 2985,
+      "nLenient": 2985,
+      "strict": 44.69,
+      "lenient": 93.13
+     },
+     "Number": {
+      "n": 4073,
+      "nLenient": 4037,
+      "strict": 92.81,
+      "lenient": 95.71
+     },
+     "Gender": {
+      "n": 2989,
+      "nLenient": 2852,
+      "strict": 66.71,
+      "lenient": 96.07
+     },
+     "Person": {
+      "n": 1084,
+      "nLenient": 1084,
+      "strict": 98.71,
+      "lenient": 98.8
+     },
+     "Tense": {
+      "n": 1629,
+      "nLenient": 1629,
+      "strict": 87.72,
+      "lenient": 89.99
+     },
+     "Mood": {
+      "n": 1085,
+      "nLenient": 1085,
+      "strict": 95.94,
+      "lenient": 96.31
+     },
+     "Voice": {
+      "n": 1460,
+      "nLenient": 1460,
+      "strict": 91.51,
+      "lenient": 93.08
+     },
+     "VerbForm": {
+      "n": 1655,
+      "nLenient": 1655,
+      "strict": 92.99,
+      "lenient": 92.99
+     },
+     "Degree": {
+      "n": 77,
+      "nLenient": 77,
+      "strict": 76.62,
+      "lenient": 76.62
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 53,
+      "sharePct": 23.77
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 20,
+      "sharePct": 8.97
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 20,
+      "sharePct": 8.97
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 15,
+      "sharePct": 6.73
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 15,
+      "sharePct": 6.73
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 14,
+      "sharePct": 6.28
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 12,
+      "sharePct": 5.38
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 9,
+      "sharePct": 4.04
+     },
+     {
+      "gold": "ADV",
+      "system": "PROPN",
+      "n": 9,
+      "sharePct": 4.04
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "VERB",
+      "n": 6,
+      "sharePct": 2.69
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 72,
+      "sharePct": 15.32
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 72,
+      "sharePct": 15.32
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 53,
+      "sharePct": 11.28
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 48,
+      "sharePct": 10.21
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 25,
+      "sharePct": 5.32
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 20,
+      "sharePct": 4.26
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 20,
+      "sharePct": 4.26
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 15,
+      "sharePct": 3.19
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 15,
+      "sharePct": 3.19
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 14,
+      "sharePct": 2.98
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 5263,
+      "lemmaLenient": 4899,
+      "lemmaPosLenient": 4794
+     },
+     "rule": {
+      "n": 64,
+      "lemmaLenient": 58,
+      "lemmaPosLenient": 58
+     },
+     "guess": {
+      "n": 17,
+      "lemmaLenient": 3,
+      "lemmaPosLenient": 3
+     },
+     "none": {
+      "n": 1,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-resgestae": {
+   "name": "perseus-resgestae",
+   "label": "Perseus treebank: anon.: Res Gestae",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi1221.phi007.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 116,
+   "tokens": 2616,
+   "excludedLabels": 0,
+   "analyzeMs": 64,
+   "wordsPerSecond": 40904,
+   "anyReadingPct": 99.85,
+   "lexiconConfirmedPct": 95.49,
+   "ruleBuiltPct": 1.22,
+   "unconfirmedGuessPct": 3.13,
+   "noReadingPct": 0.15,
+   "multiReadingPct": 49.89,
+   "counts": {
+    "anyReading": 2612,
+    "lexiconConfirmed": 2498,
+    "ruleBuilt": 32,
+    "unconfirmedGuess": 82,
+    "noReading": 4,
+    "multiReading": 1305,
+    "lowConfidenceConfirmed": 52
+   },
+   "distinctForms": 1250,
+   "missBreakdown": {
+    "names": 57,
+    "enclitic": 0,
+    "short": 2,
+    "other": 27
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT anon.: Res Gestae",
+    "mode": "perseus-own",
+    "goldUnits": 2613,
+    "aligned": 2613,
+    "alignedPct": 100,
+    "lemmaStrict": 89.21,
+    "lemmaLenient": 89.44,
+    "lemmaAnyLenient": 92.19,
+    "posStrict": 88.06,
+    "posLenient": 91.54,
+    "lemmaPosStrict": 81.06,
+    "lemmaPosLenient": 83.89,
+    "featuresSubsetStrict": 40.58,
+    "featuresSubsetLenient": 87.46,
+    "featuresDenominator": 2001,
+    "featuresDenominatorLenient": 2001,
+    "fullStrict": 49.64,
+    "fullLenient": 79.87,
+    "perFeature": {
+     "Case": {
+      "n": 1725,
+      "nLenient": 1725,
+      "strict": 48.06,
+      "lenient": 90.72
+     },
+     "Number": {
+      "n": 1970,
+      "nLenient": 1969,
+      "strict": 90.86,
+      "lenient": 92.64
+     },
+     "Gender": {
+      "n": 1727,
+      "nLenient": 1693,
+      "strict": 69.31,
+      "lenient": 92.5
+     },
+     "Person": {
+      "n": 252,
+      "nLenient": 252,
+      "strict": 99.6,
+      "lenient": 99.6
+     },
+     "Tense": {
+      "n": 384,
+      "nLenient": 384,
+      "strict": 93.75,
+      "lenient": 94.01
+     },
+     "Mood": {
+      "n": 252,
+      "nLenient": 252,
+      "strict": 99.6,
+      "lenient": 99.6
+     },
+     "Voice": {
+      "n": 360,
+      "nLenient": 360,
+      "strict": 93.89,
+      "lenient": 95.83
+     },
+     "VerbForm": {
+      "n": 396,
+      "nLenient": 396,
+      "strict": 94.95,
+      "lenient": 94.95
+     },
+     "Degree": {
+      "n": 21,
+      "nLenient": 21,
+      "strict": 95.24,
+      "lenient": 95.24
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "PRON",
+      "n": 67,
+      "sharePct": 30.32
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 32,
+      "sharePct": 14.48
+     },
+     {
+      "gold": "NUM",
+      "system": "NOUN",
+      "n": 19,
+      "sharePct": 8.6
+     },
+     {
+      "gold": "ADV",
+      "system": "X",
+      "n": 17,
+      "sharePct": 7.69
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 16,
+      "sharePct": 7.24
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 14,
+      "sharePct": 6.33
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 9,
+      "sharePct": 4.07
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 7,
+      "sharePct": 3.17
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 5,
+      "sharePct": 2.26
+     },
+     {
+      "gold": "NUM",
+      "system": "X",
+      "n": 4,
+      "sharePct": 1.81
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "PRON",
+      "n": 67,
+      "sharePct": 21.47
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NUM",
+      "n": 52,
+      "sharePct": 16.67
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 32,
+      "sharePct": 10.26
+     },
+     {
+      "gold": "NUM",
+      "system": "NOUN",
+      "n": 19,
+      "sharePct": 6.09
+     },
+     {
+      "gold": "ADV",
+      "system": "X",
+      "n": 17,
+      "sharePct": 5.45
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 16,
+      "sharePct": 5.13
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 15,
+      "sharePct": 4.81
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 14,
+      "sharePct": 4.49
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 9,
+      "sharePct": 2.88
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 8,
+      "sharePct": 2.56
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 2496,
+      "lemmaLenient": 2276,
+      "lemmaPosLenient": 2145
+     },
+     "rule": {
+      "n": 32,
+      "lemmaLenient": 28,
+      "lemmaPosLenient": 27
+     },
+     "guess": {
+      "n": 81,
+      "lemmaLenient": 33,
+      "lemmaPosLenient": 20
+     },
+     "none": {
+      "n": 4,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-suetonius": {
+   "name": "perseus-suetonius",
+   "label": "Perseus treebank: C. Suetonius Tranquillus: Divus Augustus",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi1348.abo012.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 346,
+   "tokens": 7002,
+   "excludedLabels": 0,
+   "analyzeMs": 168,
+   "wordsPerSecond": 41581,
+   "anyReadingPct": 99.86,
+   "lexiconConfirmedPct": 97.51,
+   "ruleBuiltPct": 1.03,
+   "unconfirmedGuessPct": 1.31,
+   "noReadingPct": 0.14,
+   "multiReadingPct": 51.74,
+   "counts": {
+    "anyReading": 6992,
+    "lexiconConfirmed": 6828,
+    "ruleBuilt": 72,
+    "unconfirmedGuess": 92,
+    "noReading": 10,
+    "multiReading": 3623,
+    "lowConfidenceConfirmed": 216
+   },
+   "distinctForms": 3773,
+   "missBreakdown": {
+    "names": 73,
+    "enclitic": 1,
+    "short": 0,
+    "other": 28
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT C. Suetonius Tranquillus: Divus Augustus",
+    "mode": "perseus-own",
+    "goldUnits": 7001,
+    "aligned": 7000,
+    "alignedPct": 99.99,
+    "lemmaStrict": 89.89,
+    "lemmaLenient": 90.26,
+    "lemmaAnyLenient": 94.73,
+    "posStrict": 89.41,
+    "posLenient": 93.81,
+    "lemmaPosStrict": 84.3,
+    "lemmaPosLenient": 87.53,
+    "featuresSubsetStrict": 47.44,
+    "featuresSubsetLenient": 88.85,
+    "featuresDenominator": 5074,
+    "featuresDenominatorLenient": 5074,
+    "fullStrict": 54.37,
+    "fullLenient": 83.99,
+    "perFeature": {
+     "Case": {
+      "n": 4070,
+      "nLenient": 4070,
+      "strict": 53.34,
+      "lenient": 93.46
+     },
+     "Number": {
+      "n": 4825,
+      "nLenient": 4756,
+      "strict": 92.99,
+      "lenient": 95.16
+     },
+     "Gender": {
+      "n": 4051,
+      "nLenient": 3972,
+      "strict": 66.28,
+      "lenient": 94.46
+     },
+     "Person": {
+      "n": 763,
+      "nLenient": 763,
+      "strict": 99.61,
+      "lenient": 99.61
+     },
+     "Tense": {
+      "n": 1440,
+      "nLenient": 1440,
+      "strict": 88.06,
+      "lenient": 89.86
+     },
+     "Mood": {
+      "n": 764,
+      "nLenient": 764,
+      "strict": 98.3,
+      "lenient": 98.3
+     },
+     "Voice": {
+      "n": 1229,
+      "nLenient": 1229,
+      "strict": 90.15,
+      "lenient": 90.56
+     },
+     "VerbForm": {
+      "n": 1510,
+      "nLenient": 1510,
+      "strict": 89.47,
+      "lenient": 89.47
+     },
+     "Degree": {
+      "n": 164,
+      "nLenient": 164,
+      "strict": 80.49,
+      "lenient": 80.49
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 68,
+      "sharePct": 15.7
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 59,
+      "sharePct": 13.63
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 55,
+      "sharePct": 12.7
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 41,
+      "sharePct": 9.47
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 36,
+      "sharePct": 8.31
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 23,
+      "sharePct": 5.31
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 22,
+      "sharePct": 5.08
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 21,
+      "sharePct": 4.85
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 15,
+      "sharePct": 3.46
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADP",
+      "n": 14,
+      "sharePct": 3.23
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 92,
+      "sharePct": 12.42
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 85,
+      "sharePct": 11.47
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 68,
+      "sharePct": 9.18
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 59,
+      "sharePct": 7.96
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 55,
+      "sharePct": 7.42
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 49,
+      "sharePct": 6.61
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 44,
+      "sharePct": 5.94
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 41,
+      "sharePct": 5.53
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 36,
+      "sharePct": 4.86
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 23,
+      "sharePct": 3.1
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 6826,
+      "lemmaLenient": 6227,
+      "lemmaPosLenient": 6043
+     },
+     "rule": {
+      "n": 72,
+      "lemmaLenient": 68,
+      "lemmaPosLenient": 68
+     },
+     "guess": {
+      "n": 92,
+      "lemmaLenient": 23,
+      "lemmaPosLenient": 16
+     },
+     "none": {
+      "n": 10,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-tacitus": {
+   "name": "perseus-tacitus",
+   "label": "Perseus treebank: Cornelius Tacitus: Annales",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/phi1351.phi005.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 197,
+   "tokens": 2881,
+   "excludedLabels": 0,
+   "analyzeMs": 65,
+   "wordsPerSecond": 43998,
+   "anyReadingPct": 99.97,
+   "lexiconConfirmedPct": 97.67,
+   "ruleBuiltPct": 1.04,
+   "unconfirmedGuessPct": 1.25,
+   "noReadingPct": 0.03,
+   "multiReadingPct": 55.43,
+   "counts": {
+    "anyReading": 2880,
+    "lexiconConfirmed": 2814,
+    "ruleBuilt": 30,
+    "unconfirmedGuess": 36,
+    "noReading": 1,
+    "multiReading": 1597,
+    "lowConfidenceConfirmed": 95
+   },
+   "distinctForms": 1790,
+   "missBreakdown": {
+    "names": 26,
+    "enclitic": 2,
+    "short": 0,
+    "other": 9
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Cornelius Tacitus: Annales",
+    "mode": "perseus-own",
+    "goldUnits": 2881,
+    "aligned": 2881,
+    "alignedPct": 100,
+    "lemmaStrict": 90.91,
+    "lemmaLenient": 91.15,
+    "lemmaAnyLenient": 95.42,
+    "posStrict": 88.62,
+    "posLenient": 95.07,
+    "lemmaPosStrict": 84.45,
+    "lemmaPosLenient": 88.58,
+    "featuresSubsetStrict": 39.88,
+    "featuresSubsetLenient": 84.82,
+    "featuresDenominator": 2154,
+    "featuresDenominatorLenient": 2154,
+    "fullStrict": 47.48,
+    "fullLenient": 82.33,
+    "perFeature": {
+     "Case": {
+      "n": 1819,
+      "nLenient": 1819,
+      "strict": 45.52,
+      "lenient": 90.16
+     },
+     "Number": {
+      "n": 2060,
+      "nLenient": 2050,
+      "strict": 90.87,
+      "lenient": 92.34
+     },
+     "Gender": {
+      "n": 1819,
+      "nLenient": 1787,
+      "strict": 68.94,
+      "lenient": 95.41
+     },
+     "Person": {
+      "n": 241,
+      "nLenient": 241,
+      "strict": 100,
+      "lenient": 100
+     },
+     "Tense": {
+      "n": 528,
+      "nLenient": 528,
+      "strict": 84.09,
+      "lenient": 84.09
+     },
+     "Mood": {
+      "n": 243,
+      "nLenient": 243,
+      "strict": 97.94,
+      "lenient": 98.35
+     },
+     "Voice": {
+      "n": 462,
+      "nLenient": 462,
+      "strict": 82.68,
+      "lenient": 82.9
+     },
+     "VerbForm": {
+      "n": 553,
+      "nLenient": 553,
+      "strict": 84.09,
+      "lenient": 84.09
+     },
+     "Degree": {
+      "n": 87,
+      "nLenient": 87,
+      "strict": 73.56,
+      "lenient": 73.56
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 29,
+      "sharePct": 20.42
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 23,
+      "sharePct": 16.2
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 20,
+      "sharePct": 14.08
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 11,
+      "sharePct": 7.75
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 10,
+      "sharePct": 7.04
+     },
+     {
+      "gold": "ADV",
+      "system": "PRON",
+      "n": 8,
+      "sharePct": 5.63
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 5,
+      "sharePct": 3.52
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 4,
+      "sharePct": 2.82
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "ADV",
+      "n": 2,
+      "sharePct": 1.41
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 2,
+      "sharePct": 1.41
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 67,
+      "sharePct": 20.43
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 46,
+      "sharePct": 14.02
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 29,
+      "sharePct": 8.84
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 28,
+      "sharePct": 8.54
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 23,
+      "sharePct": 7.01
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 23,
+      "sharePct": 7.01
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 20,
+      "sharePct": 6.1
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 11,
+      "sharePct": 3.35
+     },
+     {
+      "gold": "ADV",
+      "system": "SCONJ",
+      "n": 10,
+      "sharePct": 3.05
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 10,
+      "sharePct": 3.05
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 2814,
+      "lemmaLenient": 2582,
+      "lemmaPosLenient": 2509
+     },
+     "rule": {
+      "n": 30,
+      "lemmaLenient": 22,
+      "lemmaPosLenient": 22
+     },
+     "guess": {
+      "n": 36,
+      "lemmaLenient": 22,
+      "lemmaPosLenient": 21
+     },
+     "none": {
+      "n": 1,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  },
+  "perseus-jerome": {
+   "name": "perseus-jerome",
+   "label": "Perseus treebank: Jerome: Vulgate Bible",
+   "source": "PerseusDL/treebank_data v2.1/Latin/texts/tlg0031.tlg027.perseus-lat1.tb.xml @ bf4334f (scored on the treebank's own text)",
+   "licence": "CC BY-SA 3.0 US (Perseus Digital Library, Tufts University)",
+   "sentences": 617,
+   "tokens": 8366,
+   "excludedLabels": 0,
+   "analyzeMs": 119,
+   "wordsPerSecond": 70399,
+   "anyReadingPct": 99.98,
+   "lexiconConfirmedPct": 99.15,
+   "ruleBuiltPct": 0.61,
+   "unconfirmedGuessPct": 0.22,
+   "noReadingPct": 0.02,
+   "multiReadingPct": 43.28,
+   "counts": {
+    "anyReading": 8364,
+    "lexiconConfirmed": 8295,
+    "ruleBuilt": 51,
+    "unconfirmedGuess": 18,
+    "noReading": 2,
+    "multiReading": 3621,
+    "lowConfidenceConfirmed": 87
+   },
+   "distinctForms": 2179,
+   "missBreakdown": {
+    "names": 11,
+    "enclitic": 0,
+    "short": 0,
+    "other": 9
+   },
+   "listedFormsSharePct": 100,
+   "gold": {
+    "source": "Perseus AGLDT Jerome: Vulgate Bible",
+    "mode": "perseus-own",
+    "goldUnits": 8340,
+    "aligned": 8338,
+    "alignedPct": 99.98,
+    "lemmaStrict": 95.47,
+    "lemmaLenient": 95.61,
+    "lemmaAnyLenient": 98.2,
+    "posStrict": 93.43,
+    "posLenient": 97.45,
+    "lemmaPosStrict": 91.05,
+    "lemmaPosLenient": 94.76,
+    "featuresSubsetStrict": 48.86,
+    "featuresSubsetLenient": 89.24,
+    "featuresDenominator": 5825,
+    "featuresDenominatorLenient": 5825,
+    "fullStrict": 59.59,
+    "fullLenient": 89.4,
+    "perFeature": {
+     "Case": {
+      "n": 4458,
+      "nLenient": 4458,
+      "strict": 55.72,
+      "lenient": 92.58
+     },
+     "Number": {
+      "n": 5741,
+      "nLenient": 5728,
+      "strict": 91.08,
+      "lenient": 94.85
+     },
+     "Gender": {
+      "n": 4445,
+      "nLenient": 4336,
+      "strict": 71.38,
+      "lenient": 94.67
+     },
+     "Person": {
+      "n": 1280,
+      "nLenient": 1280,
+      "strict": 98.59,
+      "lenient": 98.83
+     },
+     "Tense": {
+      "n": 1767,
+      "nLenient": 1767,
+      "strict": 93.04,
+      "lenient": 94.68
+     },
+     "Mood": {
+      "n": 1280,
+      "nLenient": 1280,
+      "strict": 96.33,
+      "lenient": 97.5
+     },
+     "Voice": {
+      "n": 1768,
+      "nLenient": 1768,
+      "strict": 94,
+      "lenient": 96.66
+     },
+     "VerbForm": {
+      "n": 1768,
+      "nLenient": 1768,
+      "strict": 96.89,
+      "lenient": 96.89
+     },
+     "Degree": {
+      "n": 10,
+      "nLenient": 10,
+      "strict": 30,
+      "lenient": 30
+     }
+    },
+    "topPosErrors": [
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 83,
+      "sharePct": 38.97
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 19,
+      "sharePct": 8.92
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 18,
+      "sharePct": 8.45
+     },
+     {
+      "gold": "NUM",
+      "system": "NOUN",
+      "n": 15,
+      "sharePct": 7.04
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 13,
+      "sharePct": 6.1
+     },
+     {
+      "gold": "ADV",
+      "system": "NOUN",
+      "n": 11,
+      "sharePct": 5.16
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 5,
+      "sharePct": 2.35
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 5,
+      "sharePct": 2.35
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PRON",
+      "n": 5,
+      "sharePct": 2.35
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "PROPN",
+      "n": 4,
+      "sharePct": 1.88
+     }
+    ],
+    "topPosErrorsStrict": [
+     {
+      "gold": "ADJ|DET",
+      "system": "NUM",
+      "n": 107,
+      "sharePct": 19.53
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "ADJ",
+      "n": 84,
+      "sharePct": 15.33
+     },
+     {
+      "gold": "ADV",
+      "system": "PART",
+      "n": 67,
+      "sharePct": 12.23
+     },
+     {
+      "gold": "ADV",
+      "system": "SCONJ",
+      "n": 58,
+      "sharePct": 10.58
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADV",
+      "n": 34,
+      "sharePct": 6.2
+     },
+     {
+      "gold": "ADV",
+      "system": "INTJ",
+      "n": 23,
+      "sharePct": 4.2
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "NOUN",
+      "n": 19,
+      "sharePct": 3.47
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "ADJ",
+      "n": 19,
+      "sharePct": 3.47
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 18,
+      "sharePct": 3.28
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PRON",
+      "n": 15,
+      "sharePct": 2.74
+     }
+    ],
+    "topLemmaErrors": [],
+    "topPosErrorForms": [],
+    "topFeatureErrors": [],
+    "byKind": {
+     "lexicon": {
+      "n": 8269,
+      "lemmaLenient": 7924,
+      "lemmaPosLenient": 7853
+     },
+     "rule": {
+      "n": 51,
+      "lemmaLenient": 40,
+      "lemmaPosLenient": 40
+     },
+     "guess": {
+      "n": 16,
+      "lemmaLenient": 8,
+      "lemmaPosLenient": 8
+     },
+     "none": {
+      "n": 2,
+      "lemmaLenient": 0,
+      "lemmaPosLenient": 0
+     }
+    }
+   }
+  }
+ },
+ "provenance": {
+  "clementine-usfx": {
+   "file": "C:/Users/CJWal/dev/vetus-v0/data/vulgate/lat-clementine.usfx.xml",
+   "sha256": "5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf",
+   "bytes": 4652377
+  },
+  "proiel-latin-nt": {
+   "file": "C:/Users/CJWal/dev/vetus-v0/data/proiel/latin-nt.xml",
+   "sha256": "8622b5af6c6e0effc86e64a43a859b959437c305b40fcab32fc93576e5ebe07d",
+   "bytes": 23344223
+  },
+  "romance-cicero-in-catilinam-1": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/cicero-in-catilinam-1.text.json",
+   "sha256": "b981b01d7ecdedc09e746a1cc0839a6761bb999e2b0df611aabb22e40ebcb710",
+   "bytes": 40883
+  },
+  "romance-cicero-in-catilinam-2": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/cicero-in-catilinam-2.text.json",
+   "sha256": "19f538a8af8acfce537de4be5fe3d396540f6795d1baa0aef4c3e659e84cd257",
+   "bytes": 39334
+  },
+  "romance-cicero-in-catilinam-3": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/cicero-in-catilinam-3.text.json",
+   "sha256": "33273beb26f03c727710a43900c3c7155cdf02b932acc2f066d1fc3641bb4f39",
+   "bytes": 40248
+  },
+  "romance-cicero-in-catilinam-4": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/cicero-in-catilinam-4.text.json",
+   "sha256": "44155c3a643f83bd4a600487010b52544d8efc6b46cc4e56a1e3623d24edb4c5",
+   "bytes": 34733
+  },
+  "romance-cicero-pro-archia": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/cicero-pro-archia.text.json",
+   "sha256": "496e339f337f9e0a80e0d62e470114f18810321e7b0ac0be9634b7d488c24dd1",
+   "bytes": 39353
+  },
+  "romance-cicero-de-amicitia": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/cicero-de-amicitia.text.json",
+   "sha256": "e9074cfa2222222ccee600e0bc0e7a6148fb2c206967bd4b466b7f1a59e380af",
+   "bytes": 105835
+  },
+  "romance-cicero-somnium-scipionis": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/cicero-somnium-scipionis.text.json",
+   "sha256": "77baef033d74adf3f5aef8cb7721ec513af132ebfe8c70d318648d38722a5c0b",
+   "bytes": 21368
+  },
+  "perseus-cicero": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi0474.phi013.perseus-lat1.tb.xml",
+   "sha256": "55b12883b48e5c8489e8cd7ebc0f34fc1892642571121f1783bae5f1df43d24a",
+   "bytes": 666003
+  },
+  "romance-vergil-aeneid-1": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/vergil-aeneid-1.text.json",
+   "sha256": "66787a6fb73d1fddab17bbd303d379d4bb0addd62d3ac8cad01cd13bb906f9c8",
+   "bytes": 73720
+  },
+  "romance-vergil-aeneid-2": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/vergil-aeneid-2.text.json",
+   "sha256": "a06f0a44db2843056ad0aa282b0562203e0f213f76f299b983170a9a8d0bdbc9",
+   "bytes": 78214
+  },
+  "romance-vergil-aeneid-4": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/vergil-aeneid-4.text.json",
+   "sha256": "8c80085e4019b3401b234c87d8272560432d18ddf057893465846874e679c0d6",
+   "bytes": 69212
+  },
+  "romance-vergil-aeneid-6": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/vergil-aeneid-6.text.json",
+   "sha256": "168a954cfae55460eaba528d43600923d6e643a18cdc42083e540d69bf0aefe1",
+   "bytes": 87057
+  },
+  "perseus-vergil": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi0690.phi003.perseus-lat1.tb.xml",
+   "sha256": "cb2a94852cd8320e8f4ac63cb941899a7381e581fc62138c52d9eb1bbbed24c0",
+   "bytes": 288975
+  },
+  "romance-ovid-met-1": {
+   "file": "C:/Users/CJWal/dev/romance-v0/data/la/ovid-met-1.text.json",
+   "sha256": "92c8c661503b5f206f0a61a9ba69962c52db003199b7fc8f8b0dd7ea78fc23e1",
+   "bytes": 75588
+  },
+  "perseus-ovid": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi0959.phi006.perseus-lat1.tb.xml",
+   "sha256": "3372ca14b792d4e888307b77eb6f4175b0dec4be56d0953d01ac627a8f6c32e1",
+   "bytes": 726704
+  },
+  "principia-pg28233": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/principia/pg28233.txt",
+   "sha256": "a734045637deef5f22ce71d469deb44b19f73583d9576a9646db8dd3431b30ab",
+   "bytes": 851750
+  },
+  "perseus-caesar": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi0448.phi001.perseus-lat1.tb.xml",
+   "sha256": "74b0fd8486ca71501a5f57c4363bfb321330bb5678923f6dbe08e48075f6dd75",
+   "bytes": 217789
+  },
+  "perseus-propertius": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi0620.phi001.perseus-lat1.tb.xml",
+   "sha256": "a61ffec0631c8dd46a2109c0a4e7e715d08dd16460dc17829d7b8e3e2a3c2b29",
+   "bytes": 538755
+  },
+  "perseus-sallust": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi0631.phi001.perseus-lat1.tb.xml",
+   "sha256": "07febef0f140f508a1978a94a79d3c82a672a8c2ef094c1e49c63f36ef715ea1",
+   "bytes": 1323586
+  },
+  "perseus-petronius": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi0972.phi001.perseus-lat1.xml",
+   "sha256": "edcaa56832a116904905c6fc5bb66dc8fbfd34b8597a38f8ac3ff0f82c7dfa46",
+   "bytes": 1451109
+  },
+  "perseus-phaedrus": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi0975.phi001.perseus-lat1.tb.xml",
+   "sha256": "5e2d99af8fd3a7fd56d7cd14c21cd23271247712785c29155cb6a69d43a4a929",
+   "bytes": 751179
+  },
+  "perseus-resgestae": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi1221.phi007.perseus-lat1.tb.xml",
+   "sha256": "9130f3e018588eafa7295b717507104cc409d38d887b39d318aae85c460e1760",
+   "bytes": 348368
+  },
+  "perseus-suetonius": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi1348.abo012.perseus-lat1.tb.xml",
+   "sha256": "e974a30eb87cac19ad4ccedc37f9784d11f663ebab25f6b62134ba703e667aaa",
+   "bytes": 828254
+  },
+  "perseus-tacitus": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/phi1351.phi005.perseus-lat1.tb.xml",
+   "sha256": "eb1cd0d7ea6bfb7a9184e8ac4eb6405d2c6a0e547fde06b4a194a835668696ab",
+   "bytes": 358558
+  },
+  "perseus-jerome": {
+   "file": "C:/Users/CJWal/dev/latin-eval-sources/perseus/tlg0031.tlg027.perseus-lat1.tb.xml",
+   "sha256": "e81b2b6849561bbd720c0c34244cc33aeb3159d6eff3b20db7c7d27fee135820",
+   "bytes": 937434
+  }
+ }
+}

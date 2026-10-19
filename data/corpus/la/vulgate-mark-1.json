@@ -1,0 +1,441 @@
+{
+  "schemaVersion": 2,
+  "id": "vulgate-mark-1",
+  "lang": "la",
+  "title": "Marcus 1",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-la-clementine",
+    "kind": "scripture",
+    "title": "Biblia Sacra Vulgata (Clementine, 1592)"
+  },
+  "source": {
+    "id": "src:la:vulgate-mark-1",
+    "title": "Biblia Sacra Vulgata, Clementine edition (1592)",
+    "edition": "Clementine Vulgate 1592",
+    "attribution": "Biblia Sacra Vulgata, editio Clementina (1592), public domain. USFX text from seven1m/open-bibles, held by the Vetus V0 app.",
+    "provenance": "Taken verse by verse from vetus-v0/data/vulgate/lat-clementine.usfx.xml (SHA-256 5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf) by scripts/corpus-la-build.mts; nothing was retyped. Clementine spelling kept (ae ligatures as printed, i/j and u/v as printed, no macrons). One verse is one sentence (the verse is not split, although it may hold several clauses or sentences), so every sentence is addressable by its reference. The text has not been compared with a second, independent edition.",
+    "url": "https://github.com/seven1m/open-bibles",
+    "rights": "public-domain",
+    "licenseNote": "The Clementine Vulgate (1592) is in the public domain. The USFX file comes from seven1m/open-bibles (Bible texts that are public domain or openly licensed).",
+    "authorship": "public-domain",
+    "sourceHash": "5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf",
+    "licence": "public domain",
+    "modifications": "none: each sentence is exactly one verse of the source (surrounding whitespace trimmed)."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-la-scripture.mts",
+    "reviewedAt": "2026-10-17",
+    "notes": "Wording verified by byte-comparison against the Clementine USFX file it was copied from (a copy-integrity check, not a second edition)."
+  },
+  "topics": [
+    "scripture",
+    "mark-1",
+    "gospel"
+  ],
+  "editorialTags": [
+    "clementine-orthography"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "vulgata-clementina",
+    "chapter": {
+      "index": 11,
+      "title": "Marcus 1"
+    }
+  },
+  "streams": [
+    "scripture"
+  ],
+  "scripture": {
+    "translationId": "latVulgClementine",
+    "translationName": "Biblia Sacra Vulgata (Clementine, 1592)",
+    "edition": "Clementine Vulgate 1592",
+    "book": "MRK",
+    "chapter": 1,
+    "verification": {
+      "against": "seven1m/open-bibles Clementine USFX (lat-clementine.usfx.xml, as held by vetus-v0)",
+      "url": "https://github.com/seven1m/open-bibles",
+      "checkedAt": "2026-10-17",
+      "method": "byte-comparison",
+      "by": "scripts/verify-la-scripture.mts"
+    }
+  },
+  "english": {
+    "source": "World English Bible (public domain), eBible.org eng-web, copied verbatim from the German/Hindi corpora for the verses they carry"
+  },
+  "sections": [
+    {
+      "title": "Marcus 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "MRK.1.1",
+              "text": "Initium Evangelii Jesu Christi, Filii Dei.",
+              "english": "The beginning of the Good News of Jesus Christ, the Son of God.",
+              "verseRefs": [
+                "MRK.1.1"
+              ]
+            },
+            {
+              "id": "MRK.1.2",
+              "text": "Sicut scriptum est in Isaia propheta : Ecce ego mitto angelum meum ante faciem tuam, qui præparabit viam tuam ante te.",
+              "english": "As it is written in the prophets, “Behold, I send my messenger before your face, who will prepare your way before you:",
+              "verseRefs": [
+                "MRK.1.2"
+              ]
+            },
+            {
+              "id": "MRK.1.3",
+              "text": "Vox clamantis in deserto : Parate viam Domini, rectas facite semitas ejus.",
+              "english": "the voice of one crying in the wilderness, ‘Make ready the way of the Lord! Make his paths straight!’ ”",
+              "verseRefs": [
+                "MRK.1.3"
+              ]
+            },
+            {
+              "id": "MRK.1.4",
+              "text": "Fuit Joannes in deserto baptizans, et prædicans baptismum pœnitentiæ in remissionem peccatorum.",
+              "english": "John came baptizing in the wilderness and preaching the baptism of repentance for forgiveness of sins.",
+              "verseRefs": [
+                "MRK.1.4"
+              ]
+            },
+            {
+              "id": "MRK.1.5",
+              "text": "Et egrediebatur ad eum omnis Judææ regio, et Jerosolymitæ universi, et baptizabantur ab illo in Jordanis flumine, confitentes peccata sua.",
+              "english": "All the country of Judea and all those of Jerusalem went out to him. They were baptized by him in the Jordan river, confessing their sins.",
+              "verseRefs": [
+                "MRK.1.5"
+              ]
+            },
+            {
+              "id": "MRK.1.6",
+              "text": "Et erat Joannes vestitus pilis cameli, et zona pellicea circa lumbos ejus, et locustas et mel silvestre edebat.",
+              "english": "John was clothed with camel’s hair and a leather belt around his waist. He ate locusts and wild honey.",
+              "verseRefs": [
+                "MRK.1.6"
+              ]
+            },
+            {
+              "id": "MRK.1.7",
+              "text": "Et prædicabat dicens : Venit fortior me post me, cujus non sum dignus procumbens solvere corrigiam calceamentorum ejus.",
+              "english": "He preached, saying, “After me comes he who is mightier than I, the strap of whose sandals I am not worthy to stoop down and loosen.",
+              "verseRefs": [
+                "MRK.1.7"
+              ]
+            },
+            {
+              "id": "MRK.1.8",
+              "text": "Ego baptizavi vos aqua, ille vero baptizabit vos Spiritu Sancto.",
+              "english": "I baptized you in water, but he will baptize you in the Holy Spirit.”",
+              "verseRefs": [
+                "MRK.1.8"
+              ]
+            },
+            {
+              "id": "MRK.1.9",
+              "text": "Et factum est : in diebus illis venit Jesus a Nazareth Galilææ : et baptizatus est a Joanne in Jordane.",
+              "english": "In those days, Jesus came from Nazareth of Galilee, and was baptized by John in the Jordan.",
+              "verseRefs": [
+                "MRK.1.9"
+              ]
+            },
+            {
+              "id": "MRK.1.10",
+              "text": "Et statim ascendens de aqua, vidit cælos apertos, et Spiritum tamquam columbam descendentem, et manentem in ipso.",
+              "english": "Immediately coming up from the water, he saw the heavens parting and the Spirit descending on him like a dove.",
+              "verseRefs": [
+                "MRK.1.10"
+              ]
+            },
+            {
+              "id": "MRK.1.11",
+              "text": "Et vox facta est de cælis : Tu es Filius meus dilectus, in te complacui.",
+              "english": "A voice came out of the sky, “You are my beloved Son, in whom I am well pleased.”",
+              "verseRefs": [
+                "MRK.1.11"
+              ]
+            },
+            {
+              "id": "MRK.1.12",
+              "text": "Et statim Spiritus expulit eum in desertum.",
+              "english": "Immediately the Spirit drove him out into the wilderness.",
+              "verseRefs": [
+                "MRK.1.12"
+              ]
+            },
+            {
+              "id": "MRK.1.13",
+              "text": "Et erat in deserto quadraginta diebus, et quadraginta noctibus : et tentabatur a Satana : eratque cum bestiis, et angeli ministrabant illi.",
+              "english": "He was there in the wilderness forty days, tempted by Satan. He was with the wild animals; and the angels were serving him.",
+              "verseRefs": [
+                "MRK.1.13"
+              ]
+            },
+            {
+              "id": "MRK.1.14",
+              "text": "Postquam autem traditus est Joannes, venit Jesus in Galilæam, prædicans Evangelium regni Dei,",
+              "english": "Now after John was taken into custody, Jesus came into Galilee, preaching the Good News of God’s Kingdom,",
+              "verseRefs": [
+                "MRK.1.14"
+              ]
+            },
+            {
+              "id": "MRK.1.15",
+              "text": "et dicens : Quoniam impletum est tempus, et appropinquavit regnum Dei : pœnitemini, et credite Evangelio.",
+              "english": "and saying, “The time is fulfilled, and God’s Kingdom is at hand! Repent, and believe in the Good News.”",
+              "verseRefs": [
+                "MRK.1.15"
+              ]
+            },
+            {
+              "id": "MRK.1.16",
+              "text": "Et præteriens secus mare Galilææ, vidit Simonem, et Andream fratrem ejus, mittentes retia in mare (erant enim piscatores),",
+              "english": "Passing along by the sea of Galilee, he saw Simon and Andrew, the brother of Simon, casting a net into the sea, for they were fishermen.",
+              "verseRefs": [
+                "MRK.1.16"
+              ]
+            },
+            {
+              "id": "MRK.1.17",
+              "text": "et dixit eis Jesus : Venite post me, et faciam vos fieri piscatores hominum.",
+              "english": "Jesus said to them, “Come after me, and I will make you into fishers for men.”",
+              "verseRefs": [
+                "MRK.1.17"
+              ]
+            },
+            {
+              "id": "MRK.1.18",
+              "text": "Et protinus relictis retibus, secuti sunt eum.",
+              "english": "Immediately they left their nets, and followed him.",
+              "verseRefs": [
+                "MRK.1.18"
+              ]
+            },
+            {
+              "id": "MRK.1.19",
+              "text": "Et progressus inde pusillum, vidit Jacobum Zebedæi, et Joannem fratrem ejus, et ipsos componentes retia in navi :",
+              "english": "Going on a little further from there, he saw James the son of Zebedee, and John his brother, who were also in the boat mending the nets.",
+              "verseRefs": [
+                "MRK.1.19"
+              ]
+            },
+            {
+              "id": "MRK.1.20",
+              "text": "et statim vocavit illos. Et relicto patre suo Zebedæo in navi cum mercenariis, secuti sunt eum.",
+              "english": "Immediately he called them, and they left their father, Zebedee, in the boat with the hired servants, and went after him.",
+              "verseRefs": [
+                "MRK.1.20"
+              ]
+            },
+            {
+              "id": "MRK.1.21",
+              "text": "Et ingrediuntur Capharnaum : et statim sabbatis ingressus in synagogam, docebat eos.",
+              "english": "They went into Capernaum, and immediately on the Sabbath day he entered into the synagogue and taught.",
+              "verseRefs": [
+                "MRK.1.21"
+              ]
+            },
+            {
+              "id": "MRK.1.22",
+              "text": "Et stupebant super doctrina ejus : erat enim docens eos quasi potestatem habens, et non sicut scribæ.",
+              "english": "They were astonished at his teaching, for he taught them as having authority, and not as the scribes.",
+              "verseRefs": [
+                "MRK.1.22"
+              ]
+            },
+            {
+              "id": "MRK.1.23",
+              "text": "Et erat in synagoga eorum homo in spiritu immundo : et exclamavit,",
+              "english": "Immediately there was in their synagogue a man with an unclean spirit, and he cried out,",
+              "verseRefs": [
+                "MRK.1.23"
+              ]
+            },
+            {
+              "id": "MRK.1.24",
+              "text": "dicens : Quid nobis et tibi, Jesu Nazarene ? venisti perdere nos ? scio qui sis, Sanctus Dei.",
+              "english": "saying, “Ha! What do we have to do with you, Jesus, you Nazarene? Have you come to destroy us? I know who you are: the Holy One of God!”",
+              "verseRefs": [
+                "MRK.1.24"
+              ]
+            },
+            {
+              "id": "MRK.1.25",
+              "text": "Et comminatus est ei Jesus, dicens : Obmutesce, et exi de homine.",
+              "english": "Jesus rebuked him, saying, “Be quiet, and come out of him!”",
+              "verseRefs": [
+                "MRK.1.25"
+              ]
+            },
+            {
+              "id": "MRK.1.26",
+              "text": "Et discerpens eum spiritus immundus, et exclamans voce magna, exiit ab eo.",
+              "english": "The unclean spirit, convulsing him and crying with a loud voice, came out of him.",
+              "verseRefs": [
+                "MRK.1.26"
+              ]
+            },
+            {
+              "id": "MRK.1.27",
+              "text": "Et mirati sunt omnes, ita ut conquirerent inter se dicentes : Quidnam est hoc ? quænam doctrina hæc nova ? quia in potestate etiam spiritibus immundis imperat, et obediunt ei.",
+              "english": "They were all amazed, so that they questioned among themselves, saying, “What is this? What can this new doctrine be? For with authority he commands even the unclean spirits, and they obey him!”",
+              "verseRefs": [
+                "MRK.1.27"
+              ]
+            },
+            {
+              "id": "MRK.1.28",
+              "text": "Et processit rumor ejus statim in omnem regionem Galilææ.",
+              "english": "The report of him went out immediately into all the region of Galilee and its surrounding area.",
+              "verseRefs": [
+                "MRK.1.28"
+              ]
+            },
+            {
+              "id": "MRK.1.29",
+              "text": "Et protinus egredientes de synagoga, venerunt in domum Simonis et Andreæ, cum Jacobo et Joanne.",
+              "english": "Immediately, when they had come out of the synagogue, they came into the house of Simon and Andrew, with James and John.",
+              "verseRefs": [
+                "MRK.1.29"
+              ]
+            },
+            {
+              "id": "MRK.1.30",
+              "text": "Decumbebat autem socrus Simonis febricitans : et statim dicunt ei de illa.",
+              "english": "Now Simon’s wife’s mother lay sick with a fever, and immediately they told him about her.",
+              "verseRefs": [
+                "MRK.1.30"
+              ]
+            },
+            {
+              "id": "MRK.1.31",
+              "text": "Et accedens elevavit eam, apprehensa manu ejus : et continuo dimisit eam febris, et ministrabat eis.",
+              "english": "He came and took her by the hand and raised her up. The fever left her immediately, and she served them.",
+              "verseRefs": [
+                "MRK.1.31"
+              ]
+            },
+            {
+              "id": "MRK.1.32",
+              "text": "Vespere autem facto cum occidisset sol, afferebant ad eum omnes male habentes, et dæmonia habentes :",
+              "english": "At evening, when the sun had set, they brought to him all who were sick and those who were possessed by demons.",
+              "verseRefs": [
+                "MRK.1.32"
+              ]
+            },
+            {
+              "id": "MRK.1.33",
+              "text": "et erat omnis civitas congregata ad januam.",
+              "english": "All the city was gathered together at the door.",
+              "verseRefs": [
+                "MRK.1.33"
+              ]
+            },
+            {
+              "id": "MRK.1.34",
+              "text": "Et curavit multos, qui vexabantur variis languoribus, et dæmonia multa ejiciebat, et non sinebat ea loqui, quoniam sciebant eum.",
+              "english": "He healed many who were sick with various diseases and cast out many demons. He didn’t allow the demons to speak, because they knew him.",
+              "verseRefs": [
+                "MRK.1.34"
+              ]
+            },
+            {
+              "id": "MRK.1.35",
+              "text": "Et diluculo valde surgens, egressus abiit in desertum locum, ibique orabat.",
+              "english": "Early in the morning, while it was still dark, he rose up and went out, and departed into a deserted place, and prayed there.",
+              "verseRefs": [
+                "MRK.1.35"
+              ]
+            },
+            {
+              "id": "MRK.1.36",
+              "text": "Et prosecutus est eum Simon, et qui cum illo erant.",
+              "english": "Simon and those who were with him searched for him.",
+              "verseRefs": [
+                "MRK.1.36"
+              ]
+            },
+            {
+              "id": "MRK.1.37",
+              "text": "Et cum invenissent eum, dixerunt ei : Quia omnes quærunt te.",
+              "english": "They found him and told him, “Everyone is looking for you.”",
+              "verseRefs": [
+                "MRK.1.37"
+              ]
+            },
+            {
+              "id": "MRK.1.38",
+              "text": "Et ait illis : Eamus in proximos vicos, et civitates, ut et ibi prædicem : ad hoc enim veni.",
+              "english": "He said to them, “Let’s go elsewhere into the next towns, that I may preach there also, because I came out for this reason.”",
+              "verseRefs": [
+                "MRK.1.38"
+              ]
+            },
+            {
+              "id": "MRK.1.39",
+              "text": "Et erat prædicans in synagogis eorum, et in omni Galilæa, et dæmonia ejiciens.",
+              "english": "He went into their synagogues throughout all Galilee, preaching and casting out demons.",
+              "verseRefs": [
+                "MRK.1.39"
+              ]
+            },
+            {
+              "id": "MRK.1.40",
+              "text": "Et venit ad eum leprosus deprecans eum : et genu flexo dixit ei : Si vis, potes me mundare.",
+              "english": "A leper came to him, begging him, kneeling down to him, and saying to him, “If you want to, you can make me clean.”",
+              "verseRefs": [
+                "MRK.1.40"
+              ]
+            },
+            {
+              "id": "MRK.1.41",
+              "text": "Jesus autem misertus ejus, extendit manum suam : et tangens eum, ait illi : Volo : mundare.",
+              "english": "Being moved with compassion, he stretched out his hand, and touched him, and said to him, “I want to. Be made clean.”",
+              "verseRefs": [
+                "MRK.1.41"
+              ]
+            },
+            {
+              "id": "MRK.1.42",
+              "text": "Et cum dixisset, statim discessit ab eo lepra, et mundatus est.",
+              "english": "When he had said this, immediately the leprosy departed from him and he was made clean.",
+              "verseRefs": [
+                "MRK.1.42"
+              ]
+            },
+            {
+              "id": "MRK.1.43",
+              "text": "Et comminatus est ei, statimque ejecit illum,",
+              "english": "He strictly warned him and immediately sent him out,",
+              "verseRefs": [
+                "MRK.1.43"
+              ]
+            },
+            {
+              "id": "MRK.1.44",
+              "text": "et dicit ei : Vide nemini dixeris : sed vade, ostende te principi sacerdotum, et offer pro emundatione tua, quæ præcepit Moyses in testimonium illis.",
+              "english": "and said to him, “See that you say nothing to anybody, but go show yourself to the priest and offer for your cleansing the things which Moses commanded, for a testimony to them.”",
+              "verseRefs": [
+                "MRK.1.44"
+              ]
+            },
+            {
+              "id": "MRK.1.45",
+              "text": "At ille egressus cœpit prædicare, et diffamare sermonem, ita ut jam non posset manifeste introire in civitatem, sed foris in desertis locis esset, et conveniebant ad eum undique.",
+              "english": "But he went out, and began to proclaim it much, and to spread about the matter, so that Jesus could no more openly enter into a city, but was outside in desert places. People came to him from everywhere.",
+              "verseRefs": [
+                "MRK.1.45"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -4,13 +4,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { createAdapterRegistry } from '../src/adapters';
-import { THAI_WORKS, SPANISH_WORKS, GERMAN_WORKS, HINDI_WORKS, ALBANIAN_WORKS, NORWEGIAN_WORKS } from '../src/course';
+import { THAI_WORKS, SPANISH_WORKS, GERMAN_WORKS, HINDI_WORKS, ALBANIAN_WORKS, NORWEGIAN_WORKS, LATIN_WORKS } from '../src/course';
 import { validateDocument, computePublished, type CorpusDocument } from '../src/ingest';
 import { bundleDecision } from '../src/ingest/rights';
 import { parseManifest, parseShard, documentPathOf } from '../src/library/format';
 import type { LanguageCode } from '../src/core';
 
-const works = [...THAI_WORKS, ...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...NORWEGIAN_WORKS];
+const works = [...THAI_WORKS, ...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...NORWEGIAN_WORKS, ...LATIN_WORKS];
 const adapters = createAdapterRegistry();
 const verifiedFile = 'data/verified/scripture.json';
 const verified = fs.existsSync(verifiedFile) ? JSON.parse(fs.readFileSync(verifiedFile, 'utf8')) : { translations: [] };

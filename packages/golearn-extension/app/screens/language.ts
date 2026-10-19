@@ -1,5 +1,5 @@
 /**
- * The language rows (the body of the languages page). Six languages, from the catalogue and in its order, each a compact row: the
+ * The language rows (the body of the languages page). Seven languages, from the catalogue and in its order, each a compact row: the
  * language and its native name, one line of what level it is at, and at the right a “Download language” menu. Any learner may
  * download any of them freely; there is no team to belong to and no account to hold. Several can be downloaded: all of them stay
  * enabled at once, and the one marked “Reading now” is the one GoLearn records against.
@@ -277,7 +277,7 @@ export async function renderLanguageSection(el: HTMLElement, ctx: AppContext, vi
     }
   }
 
-  // ── the six rows
+  // ── the seven rows
   for (const l of languages) {
     const works = h('ul', { class: 'works' }, ...l.whatWorks.map((x) => h('li', {}, x)));
     const not = h('ul', { class: 'does-not' }, ...l.whatDoesNot.map((x) => h('li', {}, x)));

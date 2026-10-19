@@ -33,7 +33,7 @@ for (const k of Object.keys(opt)) if (!['in', 'lang', 'out', 'date', 'source-url
 const isDate = (s: string) => /^\d{4}-\d{2}-\d{2}$/.test(s);
 if (!opt.in) fail('--in is required');
 if (!opt.lang) fail('--lang is required');
-if (!(LANGUAGES as readonly string[]).includes(opt.lang)) fail(`unknown language "${opt.lang}" (one of ${LANGUAGES.join(', ')})`);
+if (!([...LANGUAGES, 'la'] as readonly string[]).includes(opt.lang)) fail(`unknown language "${opt.lang}" (one of ${LANGUAGES.join(', ')}, la)`);
 const date = opt.date ?? new Date().toISOString().slice(0, 10);
 if (!isDate(date)) fail(`--date must be YYYY-MM-DD, got "${date}"`);
 for (const k of ['last-modified', 'retrieved']) if (opt[k] !== undefined && !isDate(opt[k])) fail(`--${k} must be YYYY-MM-DD, got "${opt[k]}"`);
@@ -53,6 +53,7 @@ try {
   console.log(`  input lines:      ${s.lines} (+ ${s.blank} blank)`);
   console.log(`  malformed lines:  ${s.malformed}`);
   console.log(`  skipped:          ${KAIKKI_SKIPS.map((k) => `${k} ${s.skipped[k]}`).join(', ')}${nonWord ? ` (non-word: ${nonWord})` : ''}`);
+  if (s.aliases) console.log(`  spelling variants: ${s.aliases} small form-of entries added (uerbum, ejus: the other printed spellings of a Latin headword)`);
   console.log(`  entries kept:     ${s.kept} lines -> ${s.entries} entries (${s.forms} forms) after merging same form + part of speech + etymology + pronunciations`);
   console.log(`  with respelling:  ${s.withRespelling}; ipa ${s.withIpa}; romanization ${s.withRomanization}; register ${s.withRegister}`);
   console.log(`  inflected forms:  ${s.withFormOf} entries are forms of a lemma (${s.formOfRelations} form-of relations, no gloss of their own)`);

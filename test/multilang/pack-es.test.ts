@@ -24,7 +24,7 @@ describe('the Spanish manifest', () => {
     expect(validateManifest(es())).toEqual([]);
     expect(packFor('es')).toEqual(es());
     expect(packFor('es')!.status).toBe('installable');
-    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn']);
+    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn', 'pack:la', 'pack:he', 'pack:el']);
   });
 
   it('names the real adapter, its version, script and only capabilities the adapter supports', () => {

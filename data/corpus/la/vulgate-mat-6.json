@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 2,
+  "id": "vulgate-mat-6",
+  "lang": "la",
+  "title": "Matthaeus 6",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-la-clementine",
+    "kind": "scripture",
+    "title": "Biblia Sacra Vulgata (Clementine, 1592)"
+  },
+  "source": {
+    "id": "src:la:vulgate-mat-6",
+    "title": "Biblia Sacra Vulgata, Clementine edition (1592)",
+    "edition": "Clementine Vulgate 1592",
+    "attribution": "Biblia Sacra Vulgata, editio Clementina (1592), public domain. USFX text from seven1m/open-bibles, held by the Vetus V0 app.",
+    "provenance": "Taken verse by verse from vetus-v0/data/vulgate/lat-clementine.usfx.xml (SHA-256 5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf) by scripts/corpus-la-build.mts; nothing was retyped. Clementine spelling kept (ae ligatures as printed, i/j and u/v as printed, no macrons). One verse is one sentence (the verse is not split, although it may hold several clauses or sentences), so every sentence is addressable by its reference. The text has not been compared with a second, independent edition.",
+    "url": "https://github.com/seven1m/open-bibles",
+    "rights": "public-domain",
+    "licenseNote": "The Clementine Vulgate (1592) is in the public domain. The USFX file comes from seven1m/open-bibles (Bible texts that are public domain or openly licensed).",
+    "authorship": "public-domain",
+    "sourceHash": "5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf",
+    "licence": "public domain",
+    "modifications": "none: each sentence is exactly one verse of the source (surrounding whitespace trimmed)."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-la-scripture.mts",
+    "reviewedAt": "2026-10-17",
+    "notes": "Wording verified by byte-comparison against the Clementine USFX file it was copied from (a copy-integrity check, not a second edition)."
+  },
+  "topics": [
+    "scripture",
+    "matthew-6",
+    "gospel"
+  ],
+  "editorialTags": [
+    "clementine-orthography"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "vulgata-clementina",
+    "chapter": {
+      "index": 10,
+      "title": "Matthaeus 6"
+    }
+  },
+  "streams": [
+    "scripture"
+  ],
+  "scripture": {
+    "translationId": "latVulgClementine",
+    "translationName": "Biblia Sacra Vulgata (Clementine, 1592)",
+    "edition": "Clementine Vulgate 1592",
+    "book": "MAT",
+    "chapter": 6,
+    "verification": {
+      "against": "seven1m/open-bibles Clementine USFX (lat-clementine.usfx.xml, as held by vetus-v0)",
+      "url": "https://github.com/seven1m/open-bibles",
+      "checkedAt": "2026-10-17",
+      "method": "byte-comparison",
+      "by": "scripts/verify-la-scripture.mts"
+    }
+  },
+  "sections": [
+    {
+      "title": "Matthaeus 6",
+      "chapter": 6,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "MAT.6.1",
+              "text": "Attendite ne justitiam vestram faciatis coram hominibus, ut videamini ab eis : alioquin mercedem non habebitis apud Patrem vestrum qui in cælis est.",
+              "verseRefs": [
+                "MAT.6.1"
+              ]
+            },
+            {
+              "id": "MAT.6.2",
+              "text": "Cum ergo facis eleemosynam, noli tuba canere ante te, sicut hypocritæ faciunt in synagogis, et in vicis, ut honorificentur ab hominibus. Amen dico vobis, receperunt mercedem suam.",
+              "verseRefs": [
+                "MAT.6.2"
+              ]
+            },
+            {
+              "id": "MAT.6.3",
+              "text": "Te autem faciente eleemosynam, nesciat sinistra tua quid faciat dextera tua :",
+              "verseRefs": [
+                "MAT.6.3"
+              ]
+            },
+            {
+              "id": "MAT.6.4",
+              "text": "ut sit eleemosyna tua in abscondito, et Pater tuus, qui videt in abscondito, reddet tibi.",
+              "verseRefs": [
+                "MAT.6.4"
+              ]
+            },
+            {
+              "id": "MAT.6.5",
+              "text": "Et cum oratis, non eritis sicut hypocritæ qui amant in synagogis et in angulis platearum stantes orare, ut videantur ab hominibus : amen dico vobis, receperunt mercedem suam.",
+              "verseRefs": [
+                "MAT.6.5"
+              ]
+            },
+            {
+              "id": "MAT.6.6",
+              "text": "Tu autem cum oraveris, intra in cubiculum tuum, et clauso ostio, ora Patrem tuum in abscondito : et Pater tuus, qui videt in abscondito, reddet tibi.",
+              "verseRefs": [
+                "MAT.6.6"
+              ]
+            },
+            {
+              "id": "MAT.6.7",
+              "text": "Orantes autem, nolite multum loqui, sicut ethnici, putant enim quod in multiloquio suo exaudiantur.",
+              "verseRefs": [
+                "MAT.6.7"
+              ]
+            },
+            {
+              "id": "MAT.6.8",
+              "text": "Nolite ergo assimilari eis : scit enim Pater vester, quid opus sit vobis, antequam petatis eum.",
+              "verseRefs": [
+                "MAT.6.8"
+              ]
+            },
+            {
+              "id": "MAT.6.9",
+              "text": "Sic ergo vos orabitis : Pater noster, qui es in cælis, sanctificetur nomen tuum.",
+              "verseRefs": [
+                "MAT.6.9"
+              ]
+            },
+            {
+              "id": "MAT.6.10",
+              "text": "Adveniat regnum tuum ; fiat voluntas tua, sicut in cælo et in terra.",
+              "verseRefs": [
+                "MAT.6.10"
+              ]
+            },
+            {
+              "id": "MAT.6.11",
+              "text": "Panem nostrum supersubstantialem da nobis hodie,",
+              "verseRefs": [
+                "MAT.6.11"
+              ]
+            },
+            {
+              "id": "MAT.6.12",
+              "text": "et dimitte nobis debita nostra, sicut et nos dimittimus debitoribus nostris.",
+              "verseRefs": [
+                "MAT.6.12"
+              ]
+            },
+            {
+              "id": "MAT.6.13",
+              "text": "Et ne nos inducas in tentationem, sed libera nos a malo. Amen.",
+              "verseRefs": [
+                "MAT.6.13"
+              ]
+            },
+            {
+              "id": "MAT.6.14",
+              "text": "Si enim dimiseritis hominibus peccata eorum : dimittet et vobis Pater vester cælestis delicta vestra.",
+              "verseRefs": [
+                "MAT.6.14"
+              ]
+            },
+            {
+              "id": "MAT.6.15",
+              "text": "Si autem non dimiseritis hominibus : nec Pater vester dimittet vobis peccata vestra.",
+              "verseRefs": [
+                "MAT.6.15"
+              ]
+            },
+            {
+              "id": "MAT.6.16",
+              "text": "Cum autem jejunatis, nolite fieri sicut hypocritæ, tristes. Exterminant enim facies suas, ut appareant hominibus jejunantes. Amen dico vobis, quia receperunt mercedem suam.",
+              "verseRefs": [
+                "MAT.6.16"
+              ]
+            },
+            {
+              "id": "MAT.6.17",
+              "text": "Tu autem, cum jejunas, unge caput tuum, et faciem tuam lava,",
+              "verseRefs": [
+                "MAT.6.17"
+              ]
+            },
+            {
+              "id": "MAT.6.18",
+              "text": "ne videaris hominibus jejunans, sed Patri tuo, qui est in abscondito : et Pater tuus, qui videt in abscondito, reddet tibi.",
+              "verseRefs": [
+                "MAT.6.18"
+              ]
+            },
+            {
+              "id": "MAT.6.19",
+              "text": "Nolite thesaurizare vobis thesauros in terra : ubi ærugo, et tinea demolitur : et ubi fures effodiunt, et furantur.",
+              "verseRefs": [
+                "MAT.6.19"
+              ]
+            },
+            {
+              "id": "MAT.6.20",
+              "text": "Thesaurizate autem vobis thesauros in cælo, ubi neque ærugo, neque tinea demolitur, et ubi fures non effodiunt, nec furantur.",
+              "verseRefs": [
+                "MAT.6.20"
+              ]
+            },
+            {
+              "id": "MAT.6.21",
+              "text": "Ubi enim est thesaurus tuus, ibi est et cor tuum.",
+              "verseRefs": [
+                "MAT.6.21"
+              ]
+            },
+            {
+              "id": "MAT.6.22",
+              "text": "Lucerna corporis tui est oculus tuus. Si oculus tuus fuerit simplex, totum corpus tuum lucidum erit.",
+              "verseRefs": [
+                "MAT.6.22"
+              ]
+            },
+            {
+              "id": "MAT.6.23",
+              "text": "Si autem oculus tuus fuerit nequam, totum corpus tuum tenebrosum erit. Si ergo lumen, quod in te est, tenebræ sunt : ipsæ tenebræ quantæ erunt ?",
+              "verseRefs": [
+                "MAT.6.23"
+              ]
+            },
+            {
+              "id": "MAT.6.24",
+              "text": "Nemo potest duobus dominis servire : aut enim unum odio habebit, et alterum diliget : aut unum sustinebit, et alterum contemnet. Non potestis Deo servire et mammonæ.",
+              "verseRefs": [
+                "MAT.6.24"
+              ]
+            },
+            {
+              "id": "MAT.6.25",
+              "text": "Ideo dico vobis, ne solliciti sitis animæ vestræ quid manducetis, neque corpori vestro quid induamini. Nonne anima plus est quam esca, et corpus plus quam vestimentum ?",
+              "verseRefs": [
+                "MAT.6.25"
+              ]
+            },
+            {
+              "id": "MAT.6.26",
+              "text": "Respicite volatilia cæli, quoniam non serunt, neque metunt, neque congregant in horrea : et Pater vester cælestis pascit illa. Nonne vos magis pluris estis illis ?",
+              "verseRefs": [
+                "MAT.6.26"
+              ]
+            },
+            {
+              "id": "MAT.6.27",
+              "text": "Quis autem vestrum cogitans potest adjicere ad staturam suam cubitum unum ?",
+              "verseRefs": [
+                "MAT.6.27"
+              ]
+            },
+            {
+              "id": "MAT.6.28",
+              "text": "Et de vestimento quid solliciti estis ? Considerate lilia agri quomodo crescunt : non laborant, neque nent.",
+              "verseRefs": [
+                "MAT.6.28"
+              ]
+            },
+            {
+              "id": "MAT.6.29",
+              "text": "Dico autem vobis, quoniam nec Salomon in omni gloria sua coopertus est sicut unum ex istis.",
+              "verseRefs": [
+                "MAT.6.29"
+              ]
+            },
+            {
+              "id": "MAT.6.30",
+              "text": "Si autem fœnum agri, quod hodie est, et cras in clibanum mittitur, Deus sic vestit, quanto magis vos modicæ fidei ?",
+              "verseRefs": [
+                "MAT.6.30"
+              ]
+            },
+            {
+              "id": "MAT.6.31",
+              "text": "Nolite ergo solliciti esse, dicentes : Quid manducabimus, aut quid bibemus, aut quo operiemur ?",
+              "verseRefs": [
+                "MAT.6.31"
+              ]
+            },
+            {
+              "id": "MAT.6.32",
+              "text": "hæc enim omnia gentes inquirunt. Scit enim Pater vester, quia his omnibus indigetis.",
+              "verseRefs": [
+                "MAT.6.32"
+              ]
+            },
+            {
+              "id": "MAT.6.33",
+              "text": "Quærite ergo primum regnum Dei, et justitiam ejus : et hæc omnia adjicientur vobis.",
+              "verseRefs": [
+                "MAT.6.33"
+              ]
+            },
+            {
+              "id": "MAT.6.34",
+              "text": "Nolite ergo solliciti esse in crastinum. Crastinus enim dies sollicitus erit sibi ipsi : sufficit diei malitia sua.",
+              "verseRefs": [
+                "MAT.6.34"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

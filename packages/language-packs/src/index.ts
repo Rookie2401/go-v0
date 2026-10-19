@@ -1,6 +1,6 @@
 /**
- * @go/language-packs — the reusable language-pack framework of GoLearn, and the Albanian reference pack. Six languages of interest
- * (Norwegian, German, Albanian, Hindi, Thai, Spanish) are offered to any learner: see catalogue.ts.
+ * @go/language-packs — the reusable language-pack framework of GoLearn, and the Albanian reference pack. Seven languages of interest
+ * (Norwegian, German, Albanian, Hindi, Thai, Spanish, Latin) are offered to any learner: see catalogue.ts.
  * Imports: the repository contract, src/adapters/* (the analysers), src/dict/* (the sharded dictionary reader) and
  * src/core types. Never an application package. See README.md.
  */
@@ -20,9 +20,10 @@ export { experimentalManifest } from './packs/experimental';
 export type { ExperimentalSpec } from './packs/experimental';
 export { bokmalManifest, NB_VERSION, NB_VALIDATION } from './packs/nb';
 export { nynorskManifest, NN_VERSION, NN_VALIDATION } from './packs/nn';
+export { latinManifest, LA_VERSION, LA_VALIDATION, LA_DICTIONARY } from './packs/la';
 export {
   SQ_TUTORIAL, SQ_TUTORIAL_STEPS, SQ_PASSAGE, ES_TUTORIAL, ES_TUTORIAL_STEPS, ES_PASSAGE, DE_TUTORIAL, DE_TUTORIAL_STEPS, HI_TUTORIAL, HI_TUTORIAL_STEPS,
-  TH_TUTORIAL, TH_TUTORIAL_STEPS, NB_TUTORIAL, NB_TUTORIAL_STEPS, NN_TUTORIAL, NN_TUTORIAL_STEPS, TUTORIALS, tutorialFor,
+  TH_TUTORIAL, TH_TUTORIAL_STEPS, NB_TUTORIAL, NB_TUTORIAL_STEPS, NN_TUTORIAL, NN_TUTORIAL_STEPS, LA_TUTORIAL, LA_TUTORIAL_STEPS, TUTORIALS, tutorialFor,
 } from './tutorial';
 export type {
   Tutorial, TutorialAuthorship, TutorialExample, TutorialPassage, TutorialPractice, TutorialStep, TutorialStepKind,

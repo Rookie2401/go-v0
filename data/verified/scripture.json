@@ -497611,6 +497611,1396 @@
         }
       },
       "mismatches": []
+    },
+    {
+      "lang": "la",
+      "translationId": "latVulgClementine",
+      "name": "Biblia Sacra Vulgata (Clementine, 1592)",
+      "source": "seven1m/open-bibles (USFX), as held by vetus-v0",
+      "base": "https://github.com/seven1m/open-bibles",
+      "rightsStatement": "Public domain (Clementine Vulgate, 1592)",
+      "checkedAt": "2026-10-17",
+      "method": "byte-comparison",
+      "by": "scripts/verify-la-scripture.mts",
+      "verses": {
+        "1JN.1.1": {
+          "text": "Quod fuit ab initio, quod audivimus, quod vidimus oculis nostris, quod perspeximus, et manus nostræ contrectaverunt de verbo vitæ :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.2": {
+          "text": "et vita manifestata est, et vidimus, et testamur, et annuntiamus vobis vitam æternam, quæ erat apud Patrem, et apparuit nobis :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.3": {
+          "text": "quod vidimus et audivimus, annuntiamus vobis, ut et vos societatem habeatis nobiscum, et societas nostra sit cum Patre, et cum Filio ejus Jesu Christo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.4": {
+          "text": "Et hæc scribimus vobis ut gaudeatis, et gaudium vestrum sit plenum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.5": {
+          "text": "Et hæc est annuntiatio, quam audivimus ab eo, et annuntiamus vobis : quoniam Deus lux est, et tenebræ in eo non sunt ullæ.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.6": {
+          "text": "Si dixerimus quoniam societatem habemus cum eo, et in tenebris ambulamus, mentimur, et veritatem non facimus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.7": {
+          "text": "Si autem in luce ambulamus sicut et ipse est in luce, societatem habemus ad invicem, et sanguis Jesu Christi, Filii ejus, emundat nos ab omni peccato.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.8": {
+          "text": "Si dixerimus quoniam peccatum non habemus, ipsi nos seducimus, et veritas in nobis non est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.9": {
+          "text": "Si confiteamur peccata nostra : fidelis est, et justus, ut remittat nobis peccata nostra, et emundet nos ab omni iniquitate.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "1JN.1.10": {
+          "text": "Si dixerimus quoniam non peccavimus, mendacem facimus eum, et verbum ejus non est in nobis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.1": {
+          "text": "In principio creavit Deus cælum et terram.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.2": {
+          "text": "Terra autem erat inanis et vacua, et tenebræ erant super faciem abyssi : et spiritus Dei ferebatur super aquas.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.3": {
+          "text": "Dixitque Deus : Fiat lux. Et facta est lux.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.4": {
+          "text": "Et vidit Deus lucem quod esset bona : et divisit lucem a tenebris.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.5": {
+          "text": "Appellavitque lucem Diem, et tenebras Noctem : factumque est vespere et mane, dies unus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.6": {
+          "text": "Dixit quoque Deus : Fiat firmamentum in medio aquarum : et dividat aquas ab aquis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.7": {
+          "text": "Et fecit Deus firmamentum, divisitque aquas, quæ erant sub firmamento, ab his, quæ erant super firmamentum. Et factum est ita.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.8": {
+          "text": "Vocavitque Deus firmamentum, Cælum : et factum est vespere et mane, dies secundus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.9": {
+          "text": "Dixit vero Deus : Congregentur aquæ, quæ sub cælo sunt, in locum unum : et appareat arida. Et factum est ita.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.10": {
+          "text": "Et vocavit Deus aridam Terram, congregationesque aquarum appellavit Maria. Et vidit Deus quod esset bonum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.11": {
+          "text": "Et ait : Germinet terra herbam virentem, et facientem semen, et lignum pomiferum faciens fructum juxta genus suum, cujus semen in semetipso sit super terram. Et factum est ita.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.12": {
+          "text": "Et protulit terra herbam virentem, et facientem semen juxta genus suum, lignumque faciens fructum, et habens unumquodque sementem secundum speciem suam. Et vidit Deus quod esset bonum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.13": {
+          "text": "Et factum est vespere et mane, dies tertius.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.14": {
+          "text": "Dixit autem Deus : Fiant luminaria in firmamento cæli, et dividant diem ac noctem, et sint in signa et tempora, et dies et annos :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.15": {
+          "text": "ut luceant in firmamento cæli, et illuminent terram. Et factum est ita.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.16": {
+          "text": "Fecitque Deus duo luminaria magna : luminare majus, ut præesset diei : et luminare minus, ut præesset nocti : et stellas.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.17": {
+          "text": "Et posuit eas in firmamento cæli, ut lucerent super terram,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.18": {
+          "text": "et præessent diei ac nocti, et dividerent lucem ac tenebras. Et vidit Deus quod esset bonum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.19": {
+          "text": "Et factum est vespere et mane, dies quartus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.20": {
+          "text": "Dixit etiam Deus : Producant aquæ reptile animæ viventis, et volatile super terram sub firmamento cæli.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.21": {
+          "text": "Creavitque Deus cete grandia, et omnem animam viventem atque motabilem, quam produxerant aquæ in species suas, et omne volatile secundum genus suum. Et vidit Deus quod esset bonum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.22": {
+          "text": "Benedixitque eis, dicens : Crescite, et multiplicamini, et replete aquas maris : avesque multiplicentur super terram.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.23": {
+          "text": "Et factum est vespere et mane, dies quintus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.24": {
+          "text": "Dixit quoque Deus : Producat terra animam viventem in genere suo, jumenta, et reptilia, et bestias terræ secundum species suas. Factumque est ita.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.25": {
+          "text": "Et fecit Deus bestias terræ juxta species suas, et jumenta, et omne reptile terræ in genere suo. Et vidit Deus quod esset bonum,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.26": {
+          "text": "et ait : Faciamus hominem ad imaginem et similitudinem nostram : et præsit piscibus maris, et volatilibus cæli, et bestiis, universæque terræ, omnique reptili, quod movetur in terra.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.27": {
+          "text": "Et creavit Deus hominem ad imaginem suam : ad imaginem Dei creavit illum, masculum et feminam creavit eos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.28": {
+          "text": "Benedixitque illis Deus, et ait : Crescite et multiplicamini, et replete terram, et subjicite eam, et dominamini piscibus maris, et volatilibus cæli, et universis animantibus, quæ moventur super terram.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.29": {
+          "text": "Dixitque Deus : Ecce dedi vobis omnem herbam afferentem semen super terram, et universa ligna quæ habent in semetipsis sementem generis sui, ut sint vobis in escam :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.30": {
+          "text": "et cunctis animantibus terræ, omnique volucri cæli, et universis quæ moventur in terra, et in quibus est anima vivens, ut habeant ad vescendum. Et factum est ita.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "GEN.1.31": {
+          "text": "Viditque Deus cuncta quæ fecerat, et erant valde bona. Et factum est vespere et mane, dies sextus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.1": {
+          "text": "In principio erat Verbum, et Verbum erat apud Deum, et Deus erat Verbum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.2": {
+          "text": "Hoc erat in principio apud Deum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.3": {
+          "text": "Omnia per ipsum facta sunt : et sine ipso factum est nihil, quod factum est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.4": {
+          "text": "In ipso vita erat, et vita erat lux hominum :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.5": {
+          "text": "et lux in tenebris lucet, et tenebræ eam non comprehenderunt.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.6": {
+          "text": "Fuit homo missus a Deo, cui nomen erat Joannes.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.7": {
+          "text": "Hic venit in testimonium ut testimonium perhiberet de lumine, ut omnes crederent per illum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.8": {
+          "text": "Non erat ille lux, sed ut testimonium perhiberet de lumine.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.9": {
+          "text": "Erat lux vera, quæ illuminat omnem hominem venientem in hunc mundum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.10": {
+          "text": "In mundo erat, et mundus per ipsum factus est, et mundus eum non cognovit.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.11": {
+          "text": "In propria venit, et sui eum non receperunt.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.12": {
+          "text": "Quotquot autem receperunt eum, dedit eis potestatem filios Dei fieri, his qui credunt in nomine ejus :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.13": {
+          "text": "qui non ex sanguinibus, neque ex voluntate carnis, neque ex voluntate viri, sed ex Deo nati sunt.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.14": {
+          "text": "Et Verbum caro factum est, et habitavit in nobis : et vidimus gloriam ejus, gloriam quasi unigeniti a Patre plenum gratiæ et veritatis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.15": {
+          "text": "Joannes testimonium perhibet de ipso, et clamat dicens : Hic erat quem dixi : Qui post me venturus est, ante me factus est : quia prior me erat.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.16": {
+          "text": "Et de plenitudine ejus nos omnes accepimus, et gratiam pro gratia :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.17": {
+          "text": "quia lex per Moysen data est, gratia et veritas per Jesum Christum facta est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.18": {
+          "text": "Deum nemo vidit umquam : unigenitus Filius, qui est in sinu Patris, ipse enarravit.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.19": {
+          "text": "Et hoc est testimonium Joannis, quando miserunt Judæi ab Jerosolymis sacerdotes et Levitas ad eum ut interrogarent eum : Tu quis es ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.20": {
+          "text": "Et confessus est, et non negavit, et confessus est : Quia non sum ego Christus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.21": {
+          "text": "Et interrogaverunt eum : Quid ergo ? Elias es tu ? Et dixit : Non sum. Propheta es tu ? Et respondit : Non.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.22": {
+          "text": "Dixerunt ergo ei : Quis es ut responsum demus his qui miserunt nos ? quid dicis de teipso ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.23": {
+          "text": "Ait : Ego vox clamantis in deserto : Dirigite viam Domini, sicut dixit Isaias propheta.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.24": {
+          "text": "Et qui missi fuerant, erant ex pharisæis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.25": {
+          "text": "Et interrogaverunt eum, et dixerunt ei : Quid ergo baptizas, si tu non es Christus, neque Elias, neque propheta ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.26": {
+          "text": "Respondit eis Joannes, dicens : Ego baptizo in aqua : medius autem vestrum stetit, quem vos nescitis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.27": {
+          "text": "Ipse est qui post me venturus est, qui ante me factus est : cujus ego non sum dignus ut solvam ejus corrigiam calceamenti.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.28": {
+          "text": "Hæc in Bethania facta sunt trans Jordanem, ubi erat Joannes baptizans.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.29": {
+          "text": "Altera die vidit Joannes Jesum venientem ad se, et ait : Ecce agnus Dei, ecce qui tollit peccatum mundi.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.30": {
+          "text": "Hic est de quo dixi : Post me venit vir qui ante me factus est : quia prior me erat :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.31": {
+          "text": "et ego nesciebam eum, sed ut manifestetur in Israël, propterea veni ego in aqua baptizans.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.32": {
+          "text": "Et testimonium perhibuit Joannes, dicens : Quia vidi Spiritum descendentem quasi columbam de cælo, et mansit super eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.33": {
+          "text": "Et ego nesciebam eum : sed qui misit me baptizare in aqua, ille mihi dixit : Super quem videris Spiritum descendentem, et manentem super eum, hic est qui baptizat in Spiritu Sancto.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.34": {
+          "text": "Et ego vidi : et testimonium perhibui quia hic est Filius Dei.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.35": {
+          "text": "Altera die iterum stabat Joannes, et ex discipulis ejus duo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.36": {
+          "text": "Et respiciens Jesum ambulantem, dicit : Ecce agnus Dei.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.37": {
+          "text": "Et audierunt eum duo discipuli loquentem, et secuti sunt Jesum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.38": {
+          "text": "Conversus autem Jesus, et videns eos sequentes se, dicit eis : Quid quæritis ? Qui dixerunt ei : Rabbi (quod dicitur interpretatum Magister), ubi habitas ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.39": {
+          "text": "Dicit eis : Venite et videte. Venerunt, et viderunt ubi maneret, et apud eum manserunt die illo : hora autem erat quasi decima.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.40": {
+          "text": "Erat autem Andreas, frater Simonis Petri, unus ex duobus qui audierant a Joanne, et secuti fuerant eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.41": {
+          "text": "Invenit hic primum fratrem suum Simonem, et dicit ei : Invenimus Messiam (quod est interpretatum Christus).",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.42": {
+          "text": "Et adduxit eum ad Jesum. Intuitus autem eum Jesus, dixit : Tu es Simon, filius Jona ; tu vocaberis Cephas, quod interpretatur Petrus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.43": {
+          "text": "In crastinum voluit exire in Galilæam, et invenit Philippum. Et dicit ei Jesus : Sequere me.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.44": {
+          "text": "Erat autem Philippus a Bethsaida, civitate Andreæ et Petri.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.45": {
+          "text": "Invenit Philippus Nathanaël, et dicit ei : Quem scripsit Moyses in lege, et prophetæ, invenimus Jesum filium Joseph a Nazareth.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.46": {
+          "text": "Et dixit ei Nathanaël : A Nazareth potest aliquid boni esse ? Dicit ei Philippus : Veni et vide.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.47": {
+          "text": "Vidit Jesus Nathanaël venientem ad se, et dicit de eo : Ecce vere Israëlita, in quo dolus non est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.48": {
+          "text": "Dicit ei Nathanaël : Unde me nosti ? Respondit Jesus, et dixit ei : Priusquam te Philippus vocavit, cum esses sub ficu, vidi te.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.49": {
+          "text": "Respondit ei Nathanaël, et ait : Rabbi, tu es Filius Dei, tu es rex Israël.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.50": {
+          "text": "Respondit Jesus, et dixit ei : Quia dixi tibi : Vidi te sub ficu, credis ; majus his videbis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.1.51": {
+          "text": "Et dicit ei : Amen, amen dico vobis, videbitis cælum apertum, et angelos Dei ascendentes, et descendentes supra Filium hominis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.1": {
+          "text": "Erat autem homo ex pharisæis, Nicodemus nomine, princeps Judæorum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.2": {
+          "text": "Hic venit ad Jesum nocte, et dixit ei : Rabbi, scimus quia a Deo venisti magister, nemo enim potest hæc signa facere, quæ tu facis, nisi fuerit Deus cum eo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.3": {
+          "text": "Respondit Jesus, et dixit ei : Amen, amen dico tibi, nisi quis renatus fuerit denuo, non potest videre regnum Dei.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.4": {
+          "text": "Dicit ad eum Nicodemus : Quomodo potest homo nasci, cum sit senex ? numquid potest in ventrem matris suæ iterato introire et renasci ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.5": {
+          "text": "Respondit Jesus : Amen, amen dico tibi, nisi quis renatus fuerit ex aqua, et Spiritu Sancto, non potest introire in regnum Dei.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.6": {
+          "text": "Quod natum est ex carne, caro est : et quod natum est ex spiritu, spiritus est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.7": {
+          "text": "Non mireris quia dixi tibi : oportet vos nasci denuo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.8": {
+          "text": "Spiritus ubi vult spirat, et vocem ejus audis, sed nescis unde veniat, aut quo vadat : sic est omnis qui natus est ex spiritu.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.9": {
+          "text": "Respondit Nicodemus, et dixit ei : Quomodo possunt hæc fieri ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.10": {
+          "text": "Respondit Jesus, et dixit ei : Tu es magister in Israël, et hæc ignoras ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.11": {
+          "text": "Amen, amen dico tibi, quia quod scimus loquimur, et quod vidimus testamur, et testimonium nostrum non accipitis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.12": {
+          "text": "Si terrena dixi vobis, et non creditis : quomodo, si dixero vobis cælestia, credetis ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.13": {
+          "text": "Et nemo ascendit in cælum, nisi qui descendit de cælo, Filius hominis, qui est in cælo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.14": {
+          "text": "Et sicut Moyses exaltavit serpentem in deserto, ita exaltari oportet Filium hominis :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.15": {
+          "text": "ut omnis qui credit in ipsum, non pereat, sed habeat vitam æternam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.16": {
+          "text": "Sic enim Deus dilexit mundum, ut Filium suum unigenitum daret : ut omnis qui credit in eum, non pereat, sed habeat vitam æternam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.17": {
+          "text": "Non enim misit Deus Filium suum in mundum, ut judicet mundum, sed ut salvetur mundus per ipsum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.18": {
+          "text": "Qui credit in eum, non judicatur ; qui autem non credit, jam judicatus est : quia non credit in nomine unigeniti Filii Dei.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.19": {
+          "text": "Hoc est autem judicium : quia lux venit in mundum, et dilexerunt homines magis tenebras quam lucem : erant enim eorum mala opera.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.20": {
+          "text": "Omnis enim qui male agit, odit lucem, et non venit ad lucem, ut non arguantur opera ejus :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.21": {
+          "text": "qui autem facit veritatem, venit ad lucem, ut manifestentur opera ejus, quia in Deo sunt facta.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.22": {
+          "text": "Post hæc venit Jesus et discipuli ejus in terram Judæam : et illic demorabatur cum eis, et baptizabat.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.23": {
+          "text": "Erat autem et Joannes baptizans, in Ænnon, juxta Salim : quia aquæ multæ erant illic, et veniebant et baptizabantur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.24": {
+          "text": "Nondum enim missus fuerat Joannes in carcerem.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.25": {
+          "text": "Facta est autem quæstio ex discipulis Joannis cum Judæis de purificatione.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.26": {
+          "text": "Et venerunt ad Joannem, et dixerunt ei : Rabbi, qui erat tecum trans Jordanem, cui tu testimonium perhibuisti, ecce hic baptizat, et omnes veniunt ad eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.27": {
+          "text": "Respondit Joannes, et dixit : Non potest homo accipere quidquam, nisi fuerit ei datum de cælo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.28": {
+          "text": "Ipsi vos mihi testimonium perhibetis, quod dixerim : Non sum ego Christus : sed quia missus sum ante illum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.29": {
+          "text": "Qui habet sponsam, sponsus est : amicus autem sponsi, qui stat, et audit eum, gaudio gaudet propter vocem sponsi. Hoc ergo gaudium meum impletum est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.30": {
+          "text": "Illum oportet crescere, me autem minui.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.31": {
+          "text": "Qui desursum venit, super omnes est. Qui est de terra, de terra est, et de terra loquitur. Qui de cælo venit, super omnes est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.32": {
+          "text": "Et quod vidit, et audivit, hoc testatur : et testimonium ejus nemo accipit.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.33": {
+          "text": "Qui accepit ejus testimonium signavit, quia Deus verax est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.34": {
+          "text": "Quem enim misit Deus, verba Dei loquitur : non enim ad mensuram dat Deus spiritum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.35": {
+          "text": "Pater diligit Filium et omnia dedit in manu ejus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "JHN.3.36": {
+          "text": "Qui credit in Filium, habet vitam æternam ; qui autem incredulus est Filio, non videbit vitam, sed ira Dei manet super eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.1": {
+          "text": "Factum est autem in diebus illis, exiit edictum a Cæsare Augusto ut describeretur universus orbis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.2": {
+          "text": "Hæc descriptio prima facta est a præside Syriæ Cyrino :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.3": {
+          "text": "et ibant omnes ut profiterentur singuli in suam civitatem.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.4": {
+          "text": "Ascendit autem et Joseph a Galilæa de civitate Nazareth in Judæam, in civitatem David, quæ vocatur Bethlehem : eo quod esset de domo et familia David,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.5": {
+          "text": "ut profiteretur cum Maria desponsata sibi uxore prægnante.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.6": {
+          "text": "Factum est autem, cum essent ibi, impleti sunt dies ut pareret.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.7": {
+          "text": "Et peperit filium suum primogenitum, et pannis eum involvit, et reclinavit eum in præsepio : quia non erat eis locus in diversorio.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.8": {
+          "text": "Et pastores erant in regione eadem vigilantes, et custodientes vigilias noctis super gregem suum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.9": {
+          "text": "Et ecce angelus Domini stetit juxta illos, et claritas Dei circumfulsit illos, et timuerunt timore magno.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.10": {
+          "text": "Et dixit illis angelus : Nolite timere : ecce enim evangelizo vobis gaudium magnum, quod erit omni populo :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.11": {
+          "text": "quia natus est vobis hodie Salvator, qui est Christus Dominus, in civitate David.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.12": {
+          "text": "Et hoc vobis signum : invenietis infantem pannis involutum, et positum in præsepio.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.13": {
+          "text": "Et subito facta est cum angelo multitudo militiæ cælestis laudantium Deum, et dicentium :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.14": {
+          "text": "Gloria in altissimis Deo, et in terra pax hominibus bonæ voluntatis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.15": {
+          "text": "Et factum est, ut discesserunt ab eis angeli in cælum : pastores loquebantur ad invicem : Transeamus usque Bethlehem, et videamus hoc verbum, quod factum est, quod Dominus ostendit nobis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.16": {
+          "text": "Et venerunt festinantes : et invenerunt Mariam, et Joseph, et infantem positum in præsepio.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.17": {
+          "text": "Videntes autem cognoverunt de verbo, quod dictum erat illis de puero hoc.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.18": {
+          "text": "Et omnes qui audierunt, mirati sunt : et de his quæ dicta erant a pastoribus ad ipsos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.19": {
+          "text": "Maria autem conservabat omnia verba hæc, conferens in corde suo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.20": {
+          "text": "Et reversi sunt pastores glorificantes et laudantes Deum in omnibus quæ audierant et viderant, sicut dictum est ad illos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.21": {
+          "text": "Et postquam consummati sunt dies octo, ut circumcideretur puer, vocatum est nomen ejus Jesus, quod vocatum est ab angelo priusquam in utero conciperetur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.22": {
+          "text": "Et postquam impleti sunt dies purgationis ejus secundum legem Moysi, tulerunt illum in Jerusalem, ut sisterent eum Domino,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.23": {
+          "text": "sicut scriptum est in lege Domini : Quia omne masculinum adaperiens vulvam, sanctum Domino vocabitur :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.24": {
+          "text": "et ut darent hostiam secundum quod dictum est in lege Domini, par turturum, aut duos pullos columbarum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.25": {
+          "text": "Et ecce homo erat in Jerusalem, cui nomen Simeon, et homo iste justus, et timoratus, exspectans consolationem Israël : et Spiritus Sanctus erat in eo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.26": {
+          "text": "Et responsum acceperat a Spiritu Sancto, non visurum se mortem, nisi prius videret Christum Domini.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.27": {
+          "text": "Et venit in spiritu in templum. Et cum inducerent puerum Jesum parentes ejus, ut facerent secundum consuetudinem legis pro eo,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.28": {
+          "text": "et ipse accepit eum in ulnas suas : et benedixit Deum, et dixit :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.29": {
+          "text": "Nunc dimittis servum tuum Domine, secundum verbum tuum in pace :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.30": {
+          "text": "quia viderunt oculi mei salutare tuum,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.31": {
+          "text": "quod parasti ante faciem omnium populorum :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.32": {
+          "text": "lumen ad revelationem gentium, et gloriam plebis tuæ Israël.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.33": {
+          "text": "Et erat pater ejus et mater mirantes super his quæ dicebantur de illo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.34": {
+          "text": "Et benedixit illis Simeon, et dixit ad Mariam matrem ejus : Ecce positus est hic in ruinam et in resurrectionem multorum in Israël, et in signum cui contradicetur :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.35": {
+          "text": "et tuam ipsius animam pertransibit gladius ut revelentur ex multis cordibus cogitationes.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.36": {
+          "text": "Et erat Anna prophetissa, filia Phanuel, de tribu Aser : hæc processerat in diebus multis, et vixerat cum viro suo annis septem a virginitate sua.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.37": {
+          "text": "Et hæc vidua usque ad annos octoginta quatuor : quæ non discedebat de templo, jejuniis et obsecrationibus serviens nocte ac die.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.38": {
+          "text": "Et hæc, ipsa hora superveniens, confitebatur Domino : et loquebatur de illo omnibus, qui exspectabant redemptionem Israël.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.39": {
+          "text": "Et ut perfecerunt omnia secundum legem Domini, reversi sunt in Galilæam in civitatem suam Nazareth.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.40": {
+          "text": "Puer autem crescebat, et confortabatur plenus sapientia : et gratia Dei erat in illo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.41": {
+          "text": "Et ibant parentes ejus per omnes annos in Jerusalem, in die solemni Paschæ.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.42": {
+          "text": "Et cum factus esset annorum duodecim, ascendentibus illis Jerosolymam secundum consuetudinem diei festi,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.43": {
+          "text": "consummatisque diebus, cum redirent, remansit puer Jesus in Jerusalem, et non cognoverunt parentes ejus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.44": {
+          "text": "Existimantes autem illum esse in comitatu, venerunt iter diei, et requirebant eum inter cognatos et notos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.45": {
+          "text": "Et non invenientes, regressi sunt in Jerusalem, requirentes eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.46": {
+          "text": "Et factum est, post triduum invenerunt illum in templo sedentem in medio doctorum, audientem illos, et interrogantem eos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.47": {
+          "text": "Stupebant autem omnes qui eum audiebant, super prudentia et responsis ejus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.48": {
+          "text": "Et videntes admirati sunt. Et dixit mater ejus ad illum : Fili, quid fecisti nobis sic ? ecce pater tuus et ego dolentes quærebamus te.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.49": {
+          "text": "Et ait ad illos : Quid est quod me quærebatis ? nesciebatis quia in his quæ Patris mei sunt, oportet me esse ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.50": {
+          "text": "Et ipsi non intellexerunt verbum quod locutus est ad eos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.51": {
+          "text": "Et descendit cum eis, et venit Nazareth : et erat subditus illis. Et mater ejus conservabat omnia verba hæc in corde suo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "LUK.2.52": {
+          "text": "Et Jesus proficiebat sapientia, et ætate, et gratia apud Deum et homines.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.1": {
+          "text": "Initium Evangelii Jesu Christi, Filii Dei.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.2": {
+          "text": "Sicut scriptum est in Isaia propheta : Ecce ego mitto angelum meum ante faciem tuam, qui præparabit viam tuam ante te.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.3": {
+          "text": "Vox clamantis in deserto : Parate viam Domini, rectas facite semitas ejus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.4": {
+          "text": "Fuit Joannes in deserto baptizans, et prædicans baptismum pœnitentiæ in remissionem peccatorum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.5": {
+          "text": "Et egrediebatur ad eum omnis Judææ regio, et Jerosolymitæ universi, et baptizabantur ab illo in Jordanis flumine, confitentes peccata sua.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.6": {
+          "text": "Et erat Joannes vestitus pilis cameli, et zona pellicea circa lumbos ejus, et locustas et mel silvestre edebat.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.7": {
+          "text": "Et prædicabat dicens : Venit fortior me post me, cujus non sum dignus procumbens solvere corrigiam calceamentorum ejus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.8": {
+          "text": "Ego baptizavi vos aqua, ille vero baptizabit vos Spiritu Sancto.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.9": {
+          "text": "Et factum est : in diebus illis venit Jesus a Nazareth Galilææ : et baptizatus est a Joanne in Jordane.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.10": {
+          "text": "Et statim ascendens de aqua, vidit cælos apertos, et Spiritum tamquam columbam descendentem, et manentem in ipso.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.11": {
+          "text": "Et vox facta est de cælis : Tu es Filius meus dilectus, in te complacui.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.12": {
+          "text": "Et statim Spiritus expulit eum in desertum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.13": {
+          "text": "Et erat in deserto quadraginta diebus, et quadraginta noctibus : et tentabatur a Satana : eratque cum bestiis, et angeli ministrabant illi.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.14": {
+          "text": "Postquam autem traditus est Joannes, venit Jesus in Galilæam, prædicans Evangelium regni Dei,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.15": {
+          "text": "et dicens : Quoniam impletum est tempus, et appropinquavit regnum Dei : pœnitemini, et credite Evangelio.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.16": {
+          "text": "Et præteriens secus mare Galilææ, vidit Simonem, et Andream fratrem ejus, mittentes retia in mare (erant enim piscatores),",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.17": {
+          "text": "et dixit eis Jesus : Venite post me, et faciam vos fieri piscatores hominum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.18": {
+          "text": "Et protinus relictis retibus, secuti sunt eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.19": {
+          "text": "Et progressus inde pusillum, vidit Jacobum Zebedæi, et Joannem fratrem ejus, et ipsos componentes retia in navi :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.20": {
+          "text": "et statim vocavit illos. Et relicto patre suo Zebedæo in navi cum mercenariis, secuti sunt eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.21": {
+          "text": "Et ingrediuntur Capharnaum : et statim sabbatis ingressus in synagogam, docebat eos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.22": {
+          "text": "Et stupebant super doctrina ejus : erat enim docens eos quasi potestatem habens, et non sicut scribæ.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.23": {
+          "text": "Et erat in synagoga eorum homo in spiritu immundo : et exclamavit,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.24": {
+          "text": "dicens : Quid nobis et tibi, Jesu Nazarene ? venisti perdere nos ? scio qui sis, Sanctus Dei.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.25": {
+          "text": "Et comminatus est ei Jesus, dicens : Obmutesce, et exi de homine.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.26": {
+          "text": "Et discerpens eum spiritus immundus, et exclamans voce magna, exiit ab eo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.27": {
+          "text": "Et mirati sunt omnes, ita ut conquirerent inter se dicentes : Quidnam est hoc ? quænam doctrina hæc nova ? quia in potestate etiam spiritibus immundis imperat, et obediunt ei.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.28": {
+          "text": "Et processit rumor ejus statim in omnem regionem Galilææ.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.29": {
+          "text": "Et protinus egredientes de synagoga, venerunt in domum Simonis et Andreæ, cum Jacobo et Joanne.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.30": {
+          "text": "Decumbebat autem socrus Simonis febricitans : et statim dicunt ei de illa.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.31": {
+          "text": "Et accedens elevavit eam, apprehensa manu ejus : et continuo dimisit eam febris, et ministrabat eis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.32": {
+          "text": "Vespere autem facto cum occidisset sol, afferebant ad eum omnes male habentes, et dæmonia habentes :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.33": {
+          "text": "et erat omnis civitas congregata ad januam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.34": {
+          "text": "Et curavit multos, qui vexabantur variis languoribus, et dæmonia multa ejiciebat, et non sinebat ea loqui, quoniam sciebant eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.35": {
+          "text": "Et diluculo valde surgens, egressus abiit in desertum locum, ibique orabat.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.36": {
+          "text": "Et prosecutus est eum Simon, et qui cum illo erant.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.37": {
+          "text": "Et cum invenissent eum, dixerunt ei : Quia omnes quærunt te.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.38": {
+          "text": "Et ait illis : Eamus in proximos vicos, et civitates, ut et ibi prædicem : ad hoc enim veni.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.39": {
+          "text": "Et erat prædicans in synagogis eorum, et in omni Galilæa, et dæmonia ejiciens.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.40": {
+          "text": "Et venit ad eum leprosus deprecans eum : et genu flexo dixit ei : Si vis, potes me mundare.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.41": {
+          "text": "Jesus autem misertus ejus, extendit manum suam : et tangens eum, ait illi : Volo : mundare.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.42": {
+          "text": "Et cum dixisset, statim discessit ab eo lepra, et mundatus est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.43": {
+          "text": "Et comminatus est ei, statimque ejecit illum,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.44": {
+          "text": "et dicit ei : Vide nemini dixeris : sed vade, ostende te principi sacerdotum, et offer pro emundatione tua, quæ præcepit Moyses in testimonium illis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MRK.1.45": {
+          "text": "At ille egressus cœpit prædicare, et diffamare sermonem, ita ut jam non posset manifeste introire in civitatem, sed foris in desertis locis esset, et conveniebant ad eum undique.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.1": {
+          "text": "Liber generationis Jesu Christi filii David, filii Abraham.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.2": {
+          "text": "Abraham genuit Isaac. Isaac autem genuit Jacob. Jacob autem genuit Judam, et fratres ejus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.3": {
+          "text": "Judas autem genuit Phares, et Zaram de Thamar. Phares autem genuit Esron. Esron autem genuit Aram.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.4": {
+          "text": "Aram autem genuit Aminadab. Aminadab autem genuit Naasson. Naasson autem genuit Salmon.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.5": {
+          "text": "Salmon autem genuit Booz de Rahab. Booz autem genuit Obed ex Ruth. Obed autem genuit Jesse. Jesse autem genuit David regem.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.6": {
+          "text": "David autem rex genuit Salomonem ex ea quæ fuit Uriæ.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.7": {
+          "text": "Salomon autem genuit Roboam. Roboam autem genuit Abiam. Abias autem genuit Asa.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.8": {
+          "text": "Asa autem genuit Josophat. Josophat autem genuit Joram. Joram autem genuit Oziam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.9": {
+          "text": "Ozias autem genuit Joatham. Joatham autem genuit Achaz. Achaz autem genuit Ezechiam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.10": {
+          "text": "Ezechias autem genuit Manassen. Manasses autem genuit Amon. Amon autem genuit Josiam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.11": {
+          "text": "Josias autem genuit Jechoniam, et fratres ejus in transmigratione Babylonis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.12": {
+          "text": "Et post transmigrationem Babylonis : Jechonias genuit Salathiel. Salathiel autem genuit Zorobabel.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.13": {
+          "text": "Zorobabel autem genuit Abiud. Abiud autem genuit Eliacim. Eliacim autem genuit Azor.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.14": {
+          "text": "Azor autem genuit Sadoc. Sadoc autem genuit Achim. Achim autem genuit Eliud.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.15": {
+          "text": "Eliud autem genuit Eleazar. Eleazar autem genuit Mathan. Mathan autem genuit Jacob.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.16": {
+          "text": "Jacob autem genuit Joseph virum Mariæ, de qua natus est Jesus, qui vocatur Christus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.17": {
+          "text": "Omnes itaque generationes ab Abraham usque ad David, generationes quatuordecim : et a David usque ad transmigrationem Babylonis, generationes quatuordecim : et a transmigratione Babylonis usque ad Christum, generationes quatuordecim.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.18": {
+          "text": "Christi autem generatio sic erat : cum esset desponsata mater ejus Maria Joseph, antequam convenirent inventa est in utero habens de Spiritu Sancto.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.19": {
+          "text": "Joseph autem vir ejus cum esset justus, et nollet eam traducere, voluit occulte dimittere eam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.20": {
+          "text": "Hæc autem eo cogitante, ecce angelus Domini apparuit in somnis ei, dicens : Joseph, fili David, noli timere accipere Mariam conjugem tuam : quod enim in ea natum est, de Spiritu Sancto est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.21": {
+          "text": "Pariet autem filium : et vocabis nomen ejus Jesum : ipse enim salvum faciet populum suum a peccatis eorum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.22": {
+          "text": "Hoc autem totum factum est, ut adimpleretur quod dictum est a Domino per prophetam dicentem :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.23": {
+          "text": "Ecce virgo in utero habebit, et pariet filium : et vocabunt nomen ejus Emmanuel, quod est interpretatum Nobiscum Deus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.24": {
+          "text": "Exsurgens autem Joseph a somno, fecit sicut præcepit ei angelus Domini, et accepit conjugem suam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.1.25": {
+          "text": "Et non cognoscebat eam donec peperit filium suum primogenitum : et vocavit nomen ejus Jesum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.1": {
+          "text": "Videns autem Jesus turbas, ascendit in montem, et cum sedisset, accesserunt ad eum discipuli ejus,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.2": {
+          "text": "et aperiens os suum docebat eos dicens :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.3": {
+          "text": "Beati pauperes spiritu : quoniam ipsorum est regnum cælorum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.4": {
+          "text": "Beati mites : quoniam ipsi possidebunt terram.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.5": {
+          "text": "Beati qui lugent : quoniam ipsi consolabuntur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.6": {
+          "text": "Beati qui esuriunt et sitiunt justitiam : quoniam ipsi saturabuntur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.7": {
+          "text": "Beati misericordes : quoniam ipsi misericordiam consequentur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.8": {
+          "text": "Beati mundo corde : quoniam ipsi Deum videbunt.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.9": {
+          "text": "Beati pacifici : quoniam filii Dei vocabuntur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.10": {
+          "text": "Beati qui persecutionem patiuntur propter justitiam : quoniam ipsorum est regnum cælorum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.11": {
+          "text": "Beati estis cum maledixerint vobis, et persecuti vos fuerint, et dixerint omne malum adversum vos mentientes, propter me :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.12": {
+          "text": "gaudete, et exsultate, quoniam merces vestra copiosa est in cælis. Sic enim persecuti sunt prophetas, qui fuerunt ante vos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.13": {
+          "text": "Vos estis sal terræ. Quod si sal evanuerit, in quo salietur ? ad nihilum valet ultra, nisi ut mittatur foras, et conculcetur ab hominibus.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.14": {
+          "text": "Vos estis lux mundi. Non potest civitas abscondi supra montem posita,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.15": {
+          "text": "neque accendunt lucernam, et ponunt eam sub modio, sed super candelabrum, ut luceat omnibus qui in domo sunt.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.16": {
+          "text": "Sic luceat lux vestra coram hominibus : ut videant opera vestra bona, et glorificent Patrem vestrum, qui in cælis est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.17": {
+          "text": "Nolite putare quoniam veni solvere legem aut prophetas : non veni solvere, sed adimplere.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.18": {
+          "text": "Amen quippe dico vobis, donec transeat cælum et terra, jota unum aut unus apex non præteribit a lege, donec omnia fiant.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.19": {
+          "text": "Qui ergo solverit unum de mandatis istis minimis, et docuerit sic homines, minimus vocabitur in regno cælorum : qui autem fecerit et docuerit, hic magnus vocabitur in regno cælorum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.20": {
+          "text": "Dico enim vobis, quia nisi abundaverit justitia vestra plus quam scribarum et pharisæorum, non intrabitis in regnum cælorum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.21": {
+          "text": "Audistis quia dictum est antiquis : Non occides : qui autem occiderit, reus erit judicio.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.22": {
+          "text": "Ego autem dico vobis : quia omnis qui irascitur fratri suo, reus erit judicio. Qui autem dixerit fratri suo, raca : reus erit concilio. Qui autem dixerit, fatue : reus erit gehennæ ignis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.23": {
+          "text": "Si ergo offers munus tuum ad altare, et ibi recordatus fueris quia frater tuus habet aliquid adversum te :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.24": {
+          "text": "relinque ibi munus tuum ante altare, et vade prius reconciliari fratri tuo : et tunc veniens offeres munus tuum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.25": {
+          "text": "Esto consentiens adversario tuo cito dum es in via cum eo : ne forte tradat te adversarius judici, et judex tradat te ministro : et in carcerem mittaris.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.26": {
+          "text": "Amen dico tibi, non exies inde, donec reddas novissimum quadrantem.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.27": {
+          "text": "Audistis quia dictum est antiquis : Non mœchaberis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.28": {
+          "text": "Ego autem dico vobis : quia omnis qui viderit mulierem ad concupiscendum eam, jam mœchatus est eam in corde suo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.29": {
+          "text": "Quod si oculus tuus dexter scandalizat te, erue eum, et projice abs te : expedit enim tibi ut pereat unum membrorum tuorum, quam totum corpus tuum mittatur in gehennam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.30": {
+          "text": "Et si dextra manus tua scandalizat te, abscide eam, et projice abs te : expedit enim tibi ut pereat unum membrorum tuorum, quam totum corpus tuum eat in gehennam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.31": {
+          "text": "Dictum est autem : Quicumque dimiserit uxorem suam, det ei libellum repudii.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.32": {
+          "text": "Ego autem dico vobis : quia omnis qui dimiserit uxorem suam, excepta fornicationis causa, facit eam mœchari : et qui dimissam duxerit, adulterat.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.33": {
+          "text": "Iterum audistis quia dictum est antiquis : Non perjurabis : reddes autem Domino juramenta tua.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.34": {
+          "text": "Ego autem dico vobis, non jurare omnino, neque per cælum, quia thronus Dei est :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.35": {
+          "text": "neque per terram, quia scabellum est pedum ejus : neque per Jerosolymam, quia civitas est magni regis :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.36": {
+          "text": "neque per caput tuum juraveris, quia non potes unum capillum album facere, aut nigrum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.37": {
+          "text": "Sit autem sermo vester, est, est : non, non : quod autem his abundantius est, a malo est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.38": {
+          "text": "Audistis quia dictum est : Oculum pro oculo, et dentem pro dente.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.39": {
+          "text": "Ego autem dico vobis, non resistere malo : sed si quis te percusserit in dexteram maxillam tuam, præbe illi et alteram :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.40": {
+          "text": "et ei, qui vult tecum judicio contendere, et tunicam tuam tollere, dimitte ei et pallium :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.41": {
+          "text": "et quicumque te angariaverit mille passus, vade cum illo et alia duo.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.42": {
+          "text": "Qui petit a te, da ei : et volenti mutuari a te, ne avertaris.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.43": {
+          "text": "Audistis quia dictum est : Diliges proximum tuum, et odio habebis inimicum tuum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.44": {
+          "text": "Ego autem dico vobis : diligite inimicos vestros, benefacite his qui oderunt vos, et orate pro persequentibus et calumniantibus vos :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.45": {
+          "text": "ut sitis filii Patris vestri, qui in cælis est : qui solem suum oriri facit super bonos et malos : et pluit super justos et injustos.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.46": {
+          "text": "Si enim diligitis eos qui vos diligunt, quam mercedem habebitis ? nonne et publicani hoc faciunt ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.47": {
+          "text": "Et si salutaveritis fratres vestros tantum, quid amplius facitis ? nonne et ethnici hoc faciunt ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.5.48": {
+          "text": "Estote ergo vos perfecti, sicut et Pater vester cælestis perfectus est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.1": {
+          "text": "Attendite ne justitiam vestram faciatis coram hominibus, ut videamini ab eis : alioquin mercedem non habebitis apud Patrem vestrum qui in cælis est.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.2": {
+          "text": "Cum ergo facis eleemosynam, noli tuba canere ante te, sicut hypocritæ faciunt in synagogis, et in vicis, ut honorificentur ab hominibus. Amen dico vobis, receperunt mercedem suam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.3": {
+          "text": "Te autem faciente eleemosynam, nesciat sinistra tua quid faciat dextera tua :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.4": {
+          "text": "ut sit eleemosyna tua in abscondito, et Pater tuus, qui videt in abscondito, reddet tibi.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.5": {
+          "text": "Et cum oratis, non eritis sicut hypocritæ qui amant in synagogis et in angulis platearum stantes orare, ut videantur ab hominibus : amen dico vobis, receperunt mercedem suam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.6": {
+          "text": "Tu autem cum oraveris, intra in cubiculum tuum, et clauso ostio, ora Patrem tuum in abscondito : et Pater tuus, qui videt in abscondito, reddet tibi.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.7": {
+          "text": "Orantes autem, nolite multum loqui, sicut ethnici, putant enim quod in multiloquio suo exaudiantur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.8": {
+          "text": "Nolite ergo assimilari eis : scit enim Pater vester, quid opus sit vobis, antequam petatis eum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.9": {
+          "text": "Sic ergo vos orabitis : Pater noster, qui es in cælis, sanctificetur nomen tuum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.10": {
+          "text": "Adveniat regnum tuum ; fiat voluntas tua, sicut in cælo et in terra.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.11": {
+          "text": "Panem nostrum supersubstantialem da nobis hodie,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.12": {
+          "text": "et dimitte nobis debita nostra, sicut et nos dimittimus debitoribus nostris.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.13": {
+          "text": "Et ne nos inducas in tentationem, sed libera nos a malo. Amen.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.14": {
+          "text": "Si enim dimiseritis hominibus peccata eorum : dimittet et vobis Pater vester cælestis delicta vestra.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.15": {
+          "text": "Si autem non dimiseritis hominibus : nec Pater vester dimittet vobis peccata vestra.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.16": {
+          "text": "Cum autem jejunatis, nolite fieri sicut hypocritæ, tristes. Exterminant enim facies suas, ut appareant hominibus jejunantes. Amen dico vobis, quia receperunt mercedem suam.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.17": {
+          "text": "Tu autem, cum jejunas, unge caput tuum, et faciem tuam lava,",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.18": {
+          "text": "ne videaris hominibus jejunans, sed Patri tuo, qui est in abscondito : et Pater tuus, qui videt in abscondito, reddet tibi.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.19": {
+          "text": "Nolite thesaurizare vobis thesauros in terra : ubi ærugo, et tinea demolitur : et ubi fures effodiunt, et furantur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.20": {
+          "text": "Thesaurizate autem vobis thesauros in cælo, ubi neque ærugo, neque tinea demolitur, et ubi fures non effodiunt, nec furantur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.21": {
+          "text": "Ubi enim est thesaurus tuus, ibi est et cor tuum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.22": {
+          "text": "Lucerna corporis tui est oculus tuus. Si oculus tuus fuerit simplex, totum corpus tuum lucidum erit.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.23": {
+          "text": "Si autem oculus tuus fuerit nequam, totum corpus tuum tenebrosum erit. Si ergo lumen, quod in te est, tenebræ sunt : ipsæ tenebræ quantæ erunt ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.24": {
+          "text": "Nemo potest duobus dominis servire : aut enim unum odio habebit, et alterum diliget : aut unum sustinebit, et alterum contemnet. Non potestis Deo servire et mammonæ.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.25": {
+          "text": "Ideo dico vobis, ne solliciti sitis animæ vestræ quid manducetis, neque corpori vestro quid induamini. Nonne anima plus est quam esca, et corpus plus quam vestimentum ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.26": {
+          "text": "Respicite volatilia cæli, quoniam non serunt, neque metunt, neque congregant in horrea : et Pater vester cælestis pascit illa. Nonne vos magis pluris estis illis ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.27": {
+          "text": "Quis autem vestrum cogitans potest adjicere ad staturam suam cubitum unum ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.28": {
+          "text": "Et de vestimento quid solliciti estis ? Considerate lilia agri quomodo crescunt : non laborant, neque nent.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.29": {
+          "text": "Dico autem vobis, quoniam nec Salomon in omni gloria sua coopertus est sicut unum ex istis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.30": {
+          "text": "Si autem fœnum agri, quod hodie est, et cras in clibanum mittitur, Deus sic vestit, quanto magis vos modicæ fidei ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.31": {
+          "text": "Nolite ergo solliciti esse, dicentes : Quid manducabimus, aut quid bibemus, aut quo operiemur ?",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.32": {
+          "text": "hæc enim omnia gentes inquirunt. Scit enim Pater vester, quia his omnibus indigetis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.33": {
+          "text": "Quærite ergo primum regnum Dei, et justitiam ejus : et hæc omnia adjicientur vobis.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "MAT.6.34": {
+          "text": "Nolite ergo solliciti esse in crastinum. Crastinus enim dies sollicitus erit sibi ipsi : sufficit diei malitia sua.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.1.1": {
+          "text": "Beatus vir qui non abiit in consilio impiorum, et in via peccatorum non stetit, et in cathedra pestilentiæ non sedit ;",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.1.2": {
+          "text": "sed in lege Domini voluntas ejus, et in lege ejus meditabitur die ac nocte.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.1.3": {
+          "text": "Et erit tamquam lignum quod plantatum est secus decursus aquarum, quod fructum suum dabit in tempore suo : et folium ejus non defluet ; et omnia quæcumque faciet prosperabuntur.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.1.4": {
+          "text": "Non sic impii, non sic ; sed tamquam pulvis quem projicit ventus a facie terræ.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.1.5": {
+          "text": "Ideo non resurgent impii in judicio, neque peccatores in concilio justorum :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.1.6": {
+          "text": "quoniam novit Dominus viam justorum, et iter impiorum peribit.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.23.1": {
+          "text": "Psalmus David. Dominus regit me, et nihil mihi deerit :",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.23.2": {
+          "text": "in loco pascuæ, ibi me collocavit. Super aquam refectionis educavit me ;",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.23.3": {
+          "text": "animam meam convertit. Deduxit me super semitas justitiæ propter nomen suum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.23.4": {
+          "text": "Nam etsi ambulavero in medio umbræ mortis, non timebo mala, quoniam tu mecum es. Virga tua, et baculus tuus, ipsa me consolata sunt.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.23.5": {
+          "text": "Parasti in conspectu meo mensam adversus eos qui tribulant me ; impinguasti in oleo caput meum : et calix meus inebrians, quam præclarus est !",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        },
+        "PSA.23.6": {
+          "text": "Et misericordia tua subsequetur me omnibus diebus vitæ meæ ; et ut inhabitem in domo Domini in longitudinem dierum.",
+          "url": "https://github.com/seven1m/open-bibles/blob/master/lat-clementine.usfx.xml"
+        }
+      },
+      "mismatches": []
     }
   ]
 }

@@ -1,5 +1,5 @@
 /**
- * Choose your languages: the main page, where every first run ends up. The six languages are compact rows, each with a
+ * Choose your languages: the main page, where every first run ends up. The seven languages are compact rows, each with a
  * “Download language” menu; a downloaded language says so and stays enabled, so several can be on at once. Nothing else is asked
  * here: the account (optional) is on the sign-in page and under Settings.
  * A small link at the bottom leads to “How GoLearn reads pages” (the reader integration, an advanced screen).

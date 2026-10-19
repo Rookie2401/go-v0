@@ -1,0 +1,442 @@
+{
+  "schemaVersion": 2,
+  "id": "vulgate-luke-2",
+  "lang": "la",
+  "title": "Lucas 2",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-la-clementine",
+    "kind": "scripture",
+    "title": "Biblia Sacra Vulgata (Clementine, 1592)"
+  },
+  "source": {
+    "id": "src:la:vulgate-luke-2",
+    "title": "Biblia Sacra Vulgata, Clementine edition (1592)",
+    "edition": "Clementine Vulgate 1592",
+    "attribution": "Biblia Sacra Vulgata, editio Clementina (1592), public domain. USFX text from seven1m/open-bibles, held by the Vetus V0 app.",
+    "provenance": "Taken verse by verse from vetus-v0/data/vulgate/lat-clementine.usfx.xml (SHA-256 5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf) by scripts/corpus-la-build.mts; nothing was retyped. Clementine spelling kept (ae ligatures as printed, i/j and u/v as printed, no macrons). One verse is one sentence (the verse is not split, although it may hold several clauses or sentences), so every sentence is addressable by its reference. The text has not been compared with a second, independent edition.",
+    "url": "https://github.com/seven1m/open-bibles",
+    "rights": "public-domain",
+    "licenseNote": "The Clementine Vulgate (1592) is in the public domain. The USFX file comes from seven1m/open-bibles (Bible texts that are public domain or openly licensed).",
+    "authorship": "public-domain",
+    "sourceHash": "5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf",
+    "licence": "public domain",
+    "modifications": "none: each sentence is exactly one verse of the source (surrounding whitespace trimmed)."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-la-scripture.mts",
+    "reviewedAt": "2026-10-17",
+    "notes": "Wording verified by byte-comparison against the Clementine USFX file it was copied from (a copy-integrity check, not a second edition)."
+  },
+  "topics": [
+    "scripture",
+    "luke-2",
+    "gospel"
+  ],
+  "editorialTags": [
+    "clementine-orthography"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "vulgata-clementina",
+    "chapter": {
+      "index": 7,
+      "title": "Lucas 2"
+    }
+  },
+  "streams": [
+    "scripture"
+  ],
+  "scripture": {
+    "translationId": "latVulgClementine",
+    "translationName": "Biblia Sacra Vulgata (Clementine, 1592)",
+    "edition": "Clementine Vulgate 1592",
+    "book": "LUK",
+    "chapter": 2,
+    "verification": {
+      "against": "seven1m/open-bibles Clementine USFX (lat-clementine.usfx.xml, as held by vetus-v0)",
+      "url": "https://github.com/seven1m/open-bibles",
+      "checkedAt": "2026-10-17",
+      "method": "byte-comparison",
+      "by": "scripts/verify-la-scripture.mts"
+    }
+  },
+  "sections": [
+    {
+      "title": "Lucas 2",
+      "chapter": 2,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "LUK.2.1",
+              "text": "Factum est autem in diebus illis, exiit edictum a Cæsare Augusto ut describeretur universus orbis.",
+              "verseRefs": [
+                "LUK.2.1"
+              ]
+            },
+            {
+              "id": "LUK.2.2",
+              "text": "Hæc descriptio prima facta est a præside Syriæ Cyrino :",
+              "verseRefs": [
+                "LUK.2.2"
+              ]
+            },
+            {
+              "id": "LUK.2.3",
+              "text": "et ibant omnes ut profiterentur singuli in suam civitatem.",
+              "verseRefs": [
+                "LUK.2.3"
+              ]
+            },
+            {
+              "id": "LUK.2.4",
+              "text": "Ascendit autem et Joseph a Galilæa de civitate Nazareth in Judæam, in civitatem David, quæ vocatur Bethlehem : eo quod esset de domo et familia David,",
+              "verseRefs": [
+                "LUK.2.4"
+              ]
+            },
+            {
+              "id": "LUK.2.5",
+              "text": "ut profiteretur cum Maria desponsata sibi uxore prægnante.",
+              "verseRefs": [
+                "LUK.2.5"
+              ]
+            },
+            {
+              "id": "LUK.2.6",
+              "text": "Factum est autem, cum essent ibi, impleti sunt dies ut pareret.",
+              "verseRefs": [
+                "LUK.2.6"
+              ]
+            },
+            {
+              "id": "LUK.2.7",
+              "text": "Et peperit filium suum primogenitum, et pannis eum involvit, et reclinavit eum in præsepio : quia non erat eis locus in diversorio.",
+              "verseRefs": [
+                "LUK.2.7"
+              ]
+            },
+            {
+              "id": "LUK.2.8",
+              "text": "Et pastores erant in regione eadem vigilantes, et custodientes vigilias noctis super gregem suum.",
+              "verseRefs": [
+                "LUK.2.8"
+              ]
+            },
+            {
+              "id": "LUK.2.9",
+              "text": "Et ecce angelus Domini stetit juxta illos, et claritas Dei circumfulsit illos, et timuerunt timore magno.",
+              "verseRefs": [
+                "LUK.2.9"
+              ]
+            },
+            {
+              "id": "LUK.2.10",
+              "text": "Et dixit illis angelus : Nolite timere : ecce enim evangelizo vobis gaudium magnum, quod erit omni populo :",
+              "verseRefs": [
+                "LUK.2.10"
+              ]
+            },
+            {
+              "id": "LUK.2.11",
+              "text": "quia natus est vobis hodie Salvator, qui est Christus Dominus, in civitate David.",
+              "verseRefs": [
+                "LUK.2.11"
+              ]
+            },
+            {
+              "id": "LUK.2.12",
+              "text": "Et hoc vobis signum : invenietis infantem pannis involutum, et positum in præsepio.",
+              "verseRefs": [
+                "LUK.2.12"
+              ]
+            },
+            {
+              "id": "LUK.2.13",
+              "text": "Et subito facta est cum angelo multitudo militiæ cælestis laudantium Deum, et dicentium :",
+              "verseRefs": [
+                "LUK.2.13"
+              ]
+            },
+            {
+              "id": "LUK.2.14",
+              "text": "Gloria in altissimis Deo, et in terra pax hominibus bonæ voluntatis.",
+              "verseRefs": [
+                "LUK.2.14"
+              ]
+            },
+            {
+              "id": "LUK.2.15",
+              "text": "Et factum est, ut discesserunt ab eis angeli in cælum : pastores loquebantur ad invicem : Transeamus usque Bethlehem, et videamus hoc verbum, quod factum est, quod Dominus ostendit nobis.",
+              "verseRefs": [
+                "LUK.2.15"
+              ]
+            },
+            {
+              "id": "LUK.2.16",
+              "text": "Et venerunt festinantes : et invenerunt Mariam, et Joseph, et infantem positum in præsepio.",
+              "verseRefs": [
+                "LUK.2.16"
+              ]
+            },
+            {
+              "id": "LUK.2.17",
+              "text": "Videntes autem cognoverunt de verbo, quod dictum erat illis de puero hoc.",
+              "verseRefs": [
+                "LUK.2.17"
+              ]
+            },
+            {
+              "id": "LUK.2.18",
+              "text": "Et omnes qui audierunt, mirati sunt : et de his quæ dicta erant a pastoribus ad ipsos.",
+              "verseRefs": [
+                "LUK.2.18"
+              ]
+            },
+            {
+              "id": "LUK.2.19",
+              "text": "Maria autem conservabat omnia verba hæc, conferens in corde suo.",
+              "verseRefs": [
+                "LUK.2.19"
+              ]
+            },
+            {
+              "id": "LUK.2.20",
+              "text": "Et reversi sunt pastores glorificantes et laudantes Deum in omnibus quæ audierant et viderant, sicut dictum est ad illos.",
+              "verseRefs": [
+                "LUK.2.20"
+              ]
+            },
+            {
+              "id": "LUK.2.21",
+              "text": "Et postquam consummati sunt dies octo, ut circumcideretur puer, vocatum est nomen ejus Jesus, quod vocatum est ab angelo priusquam in utero conciperetur.",
+              "verseRefs": [
+                "LUK.2.21"
+              ]
+            },
+            {
+              "id": "LUK.2.22",
+              "text": "Et postquam impleti sunt dies purgationis ejus secundum legem Moysi, tulerunt illum in Jerusalem, ut sisterent eum Domino,",
+              "verseRefs": [
+                "LUK.2.22"
+              ]
+            },
+            {
+              "id": "LUK.2.23",
+              "text": "sicut scriptum est in lege Domini : Quia omne masculinum adaperiens vulvam, sanctum Domino vocabitur :",
+              "verseRefs": [
+                "LUK.2.23"
+              ]
+            },
+            {
+              "id": "LUK.2.24",
+              "text": "et ut darent hostiam secundum quod dictum est in lege Domini, par turturum, aut duos pullos columbarum.",
+              "verseRefs": [
+                "LUK.2.24"
+              ]
+            },
+            {
+              "id": "LUK.2.25",
+              "text": "Et ecce homo erat in Jerusalem, cui nomen Simeon, et homo iste justus, et timoratus, exspectans consolationem Israël : et Spiritus Sanctus erat in eo.",
+              "verseRefs": [
+                "LUK.2.25"
+              ]
+            },
+            {
+              "id": "LUK.2.26",
+              "text": "Et responsum acceperat a Spiritu Sancto, non visurum se mortem, nisi prius videret Christum Domini.",
+              "verseRefs": [
+                "LUK.2.26"
+              ]
+            },
+            {
+              "id": "LUK.2.27",
+              "text": "Et venit in spiritu in templum. Et cum inducerent puerum Jesum parentes ejus, ut facerent secundum consuetudinem legis pro eo,",
+              "verseRefs": [
+                "LUK.2.27"
+              ]
+            },
+            {
+              "id": "LUK.2.28",
+              "text": "et ipse accepit eum in ulnas suas : et benedixit Deum, et dixit :",
+              "verseRefs": [
+                "LUK.2.28"
+              ]
+            },
+            {
+              "id": "LUK.2.29",
+              "text": "Nunc dimittis servum tuum Domine, secundum verbum tuum in pace :",
+              "verseRefs": [
+                "LUK.2.29"
+              ]
+            },
+            {
+              "id": "LUK.2.30",
+              "text": "quia viderunt oculi mei salutare tuum,",
+              "verseRefs": [
+                "LUK.2.30"
+              ]
+            },
+            {
+              "id": "LUK.2.31",
+              "text": "quod parasti ante faciem omnium populorum :",
+              "verseRefs": [
+                "LUK.2.31"
+              ]
+            },
+            {
+              "id": "LUK.2.32",
+              "text": "lumen ad revelationem gentium, et gloriam plebis tuæ Israël.",
+              "verseRefs": [
+                "LUK.2.32"
+              ]
+            },
+            {
+              "id": "LUK.2.33",
+              "text": "Et erat pater ejus et mater mirantes super his quæ dicebantur de illo.",
+              "verseRefs": [
+                "LUK.2.33"
+              ]
+            },
+            {
+              "id": "LUK.2.34",
+              "text": "Et benedixit illis Simeon, et dixit ad Mariam matrem ejus : Ecce positus est hic in ruinam et in resurrectionem multorum in Israël, et in signum cui contradicetur :",
+              "verseRefs": [
+                "LUK.2.34"
+              ]
+            },
+            {
+              "id": "LUK.2.35",
+              "text": "et tuam ipsius animam pertransibit gladius ut revelentur ex multis cordibus cogitationes.",
+              "verseRefs": [
+                "LUK.2.35"
+              ]
+            },
+            {
+              "id": "LUK.2.36",
+              "text": "Et erat Anna prophetissa, filia Phanuel, de tribu Aser : hæc processerat in diebus multis, et vixerat cum viro suo annis septem a virginitate sua.",
+              "verseRefs": [
+                "LUK.2.36"
+              ]
+            },
+            {
+              "id": "LUK.2.37",
+              "text": "Et hæc vidua usque ad annos octoginta quatuor : quæ non discedebat de templo, jejuniis et obsecrationibus serviens nocte ac die.",
+              "verseRefs": [
+                "LUK.2.37"
+              ]
+            },
+            {
+              "id": "LUK.2.38",
+              "text": "Et hæc, ipsa hora superveniens, confitebatur Domino : et loquebatur de illo omnibus, qui exspectabant redemptionem Israël.",
+              "verseRefs": [
+                "LUK.2.38"
+              ]
+            },
+            {
+              "id": "LUK.2.39",
+              "text": "Et ut perfecerunt omnia secundum legem Domini, reversi sunt in Galilæam in civitatem suam Nazareth.",
+              "verseRefs": [
+                "LUK.2.39"
+              ]
+            },
+            {
+              "id": "LUK.2.40",
+              "text": "Puer autem crescebat, et confortabatur plenus sapientia : et gratia Dei erat in illo.",
+              "verseRefs": [
+                "LUK.2.40"
+              ]
+            },
+            {
+              "id": "LUK.2.41",
+              "text": "Et ibant parentes ejus per omnes annos in Jerusalem, in die solemni Paschæ.",
+              "verseRefs": [
+                "LUK.2.41"
+              ]
+            },
+            {
+              "id": "LUK.2.42",
+              "text": "Et cum factus esset annorum duodecim, ascendentibus illis Jerosolymam secundum consuetudinem diei festi,",
+              "verseRefs": [
+                "LUK.2.42"
+              ]
+            },
+            {
+              "id": "LUK.2.43",
+              "text": "consummatisque diebus, cum redirent, remansit puer Jesus in Jerusalem, et non cognoverunt parentes ejus.",
+              "verseRefs": [
+                "LUK.2.43"
+              ]
+            },
+            {
+              "id": "LUK.2.44",
+              "text": "Existimantes autem illum esse in comitatu, venerunt iter diei, et requirebant eum inter cognatos et notos.",
+              "verseRefs": [
+                "LUK.2.44"
+              ]
+            },
+            {
+              "id": "LUK.2.45",
+              "text": "Et non invenientes, regressi sunt in Jerusalem, requirentes eum.",
+              "verseRefs": [
+                "LUK.2.45"
+              ]
+            },
+            {
+              "id": "LUK.2.46",
+              "text": "Et factum est, post triduum invenerunt illum in templo sedentem in medio doctorum, audientem illos, et interrogantem eos.",
+              "verseRefs": [
+                "LUK.2.46"
+              ]
+            },
+            {
+              "id": "LUK.2.47",
+              "text": "Stupebant autem omnes qui eum audiebant, super prudentia et responsis ejus.",
+              "verseRefs": [
+                "LUK.2.47"
+              ]
+            },
+            {
+              "id": "LUK.2.48",
+              "text": "Et videntes admirati sunt. Et dixit mater ejus ad illum : Fili, quid fecisti nobis sic ? ecce pater tuus et ego dolentes quærebamus te.",
+              "verseRefs": [
+                "LUK.2.48"
+              ]
+            },
+            {
+              "id": "LUK.2.49",
+              "text": "Et ait ad illos : Quid est quod me quærebatis ? nesciebatis quia in his quæ Patris mei sunt, oportet me esse ?",
+              "verseRefs": [
+                "LUK.2.49"
+              ]
+            },
+            {
+              "id": "LUK.2.50",
+              "text": "Et ipsi non intellexerunt verbum quod locutus est ad eos.",
+              "verseRefs": [
+                "LUK.2.50"
+              ]
+            },
+            {
+              "id": "LUK.2.51",
+              "text": "Et descendit cum eis, et venit Nazareth : et erat subditus illis. Et mater ejus conservabat omnia verba hæc in corde suo.",
+              "verseRefs": [
+                "LUK.2.51"
+              ]
+            },
+            {
+              "id": "LUK.2.52",
+              "text": "Et Jesus proficiebat sapientia, et ætate, et gratia apud Deum et homines.",
+              "verseRefs": [
+                "LUK.2.52"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

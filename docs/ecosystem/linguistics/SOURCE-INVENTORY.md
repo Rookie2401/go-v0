@@ -61,6 +61,30 @@ several records, one per part of speech and etymology). The build streams the fi
 fly) and spills records to 256 temporary files by key hash, so memory is bounded (the Spanish plain file is read at under
 800 MB resident).
 
+### Latin `la` (added 2026-10-17)
+
+| | Latin `la` |
+|---|---|
+| input file | `kaikki-la.jsonl`, the kaikki.org Latin extract (`https://kaikki.org/dictionary/Latin/kaikki.org-dictionary-Latin.jsonl`), kept by the Romance project in `romance-v0/data/dict/` (not copied here: pass `--in`) |
+| bytes / lines / sha256 (first 12) | 1,219,776,083 / 892,320 (0 malformed, every line `lang_code: la`) / 22ba74c8c8a0 |
+| licence, attribution | CC BY-SA 4.0 (Wiktionary contributors), `Wiktionary, via kaikki.org — CC BY-SA 4.0`, as for the other five. The Romance project's notes say "CC BY-SA 3.0" (Wiktionary's text is dual-licensed); the manifests state 4.0 like the other languages |
+| dump date | not recorded by that download (file written 2026-09-22; the fetch log's "size mismatch" is the compressed Content-Length against the decompressed stream, the file is complete and every line parses). The schema-3 manifest carries `retrievedAt: 2026-09-22`; the id and the full manifest's `version` carry the build date, 2026-10-17 |
+| schema-3 build | `kaikki-la@2026-10-17`, 997,266 entries under 981,316 distinct keys, 1,024 shards, 71,910,912 bytes, largest 84,000; 20.6 s, 777 MB |
+| of those entries | 944,048 are form-of entries (inflected forms and spelling variants, no gloss of their own; 1,107,466 relations, 1,447 label sets); **166,685 of them are spelling-variant entries the build adds** (`uerbum`, `ejus`; `docs/latin/DICTIONARY.md`); 80,571 entries carry pronunciations (168,680 rows: Classical and Ecclesiastical IPA, tags kept) |
+| `full-2` build (plain) | 54,221 records under 51,368 lemma keys; 1,024 shards, 58,863,753 bytes, largest 97,864; 16.3 s, 683 MB. As `full-1` (`--schema full-1`): 2,048 shards, 159,258,005 bytes |
+| full: skipped | 837,956 inflected-form lines (no senses of their own), 143 non-word (99 characters, 38 symbols, 6 punctuation) |
+| with forms (tables) | 52,668 (97.1%) |
+| with etymology | 37,823 (69.8%) |
+| with IPA | 38,901 (71.7%) |
+| with audio | **0**: this extract carries no audio rows |
+
+What is particular to Latin: the headwords of this extract are the page titles, without macrons (`amo`, `verbum`), and the macron form is the
+`canonical` row of `forms` (`amō`); the inflection tables are in `forms` (`source`: `declension` or `conjugation`) and stay in the `f` rows
+with `s` set; `etymology_number` is a string ("2") and is read as a number for Latin only; a pronunciation row says "Classical-Latin" in its
+tags and "modern Italianate Ecclesiastical" in a free-text `note`, which the mapper turns into a verbatim tag; the short IPA of a schema-3
+entry is the Classical reading. The Wiktionary heading `conj` maps to `CONJ` (the parser's part-of-speech list has no CCONJ). Keys come from
+`src/dict/latin-normalize.ts`, shared with the Latin adapter. Details and tests: `docs/latin/DICTIONARY.md`.
+
 ### What is hosted
 
 - **Schema-3 shards of all five languages** are hosted at `https://rookie2401.github.io/go-v0/dict/<lang>/` (all answer 200;

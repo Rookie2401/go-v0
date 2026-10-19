@@ -8,6 +8,7 @@ import type { DictionaryEntry, DictionaryInfo, LanguageCode } from '../core';
 import {
   BUCKETS, DICT_SCHEMA, MAX_BUCKETS, MAX_GLOSSES, bucketOf, compactEntry, shardName, type DictionaryManifest, type LabelSetIndex,
 } from './format';
+import { latinAliases } from './latin';
 import { KAIKKI_SKIPS, mapKaikkiLine, type KaikkiSkip } from './map';
 
 export const KAIKKI_ATTRIBUTION = 'Wiktionary, via kaikki.org — CC BY-SA 4.0';
@@ -46,6 +47,8 @@ export interface BuildStats {
   nonWord: Record<string, number>;
   /** Lines that produced an entry (before merging). */
   kept: number;
+  /** Latin: the spelling-variant entries (uerbum, ejus) the build added beside the entries of the source (absent when the language has none). */
+  aliases?: number;
   /** Entries in the dictionary (after merging same form + part of speech + etymology + pronunciations). */
   entries: number;
   /** Distinct headwords. */
@@ -141,6 +144,15 @@ export interface BuilderOptions {
   normalize: (surface: string) => string;
   /** Leave the pronunciation off inflected-form entries (default: DROP_FORM_PRONUNCIATIONS for the language). */
   dropFormPronunciations?: boolean;
+  /** Extra entries to index beside a mapped entry (spelling variants). Default: Latin's (src/dict/latin.ts); other languages none. */
+  aliasesOf?: (entry: DictionaryEntry) => DictionaryEntry[];
+}
+
+/** The entry itself, then its aliases (counted in `stats.aliases`). */
+export function withAliases(entry: DictionaryEntry, opts: Pick<BuilderOptions, 'lang' | 'aliasesOf'>, stats: BuildStats): DictionaryEntry[] {
+  const aliases = (opts.aliasesOf ?? (opts.lang === ('la' as LanguageCode) ? latinAliases : undefined))?.(entry) ?? [];
+  if (aliases.length) stats.aliases = (stats.aliases ?? 0) + aliases.length;
+  return [entry, ...aliases];
 }
 
 /** The label lists of all form-of relations seen, counted, so that the manifest can name each distinct list once. */
@@ -334,12 +346,15 @@ export function createDictionaryBuilder(opts: BuilderOptions & { buckets?: numbe
   let estimate = 0;
   return {
     addLine(raw) {
-      const entry = ingest(raw);
-      if (!entry) return;
-      estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional));
-      const key = mergeKey(entry);
-      const prev = merged.get(key);
-      merged.set(key, prev ? mergeEntries(prev, entry) : entry);
+      const mapped = ingest(raw);
+      if (!mapped) return;
+      for (const entry of withAliases(mapped, opts, stats)) {
+        for (const f of entry.formOf ?? []) if (entry !== mapped) labelSets.note(f.tags);
+        estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional));
+        const key = mergeKey(entry);
+        const prev = merged.get(key);
+        merged.set(key, prev ? mergeEntries(prev, entry) : entry);
+      }
     },
     finish(date, source) {
       const forms = new Set<string>();

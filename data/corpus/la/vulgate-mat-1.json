@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 2,
+  "id": "vulgate-mat-1",
+  "lang": "la",
+  "title": "Matthaeus 1",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-la-clementine",
+    "kind": "scripture",
+    "title": "Biblia Sacra Vulgata (Clementine, 1592)"
+  },
+  "source": {
+    "id": "src:la:vulgate-mat-1",
+    "title": "Biblia Sacra Vulgata, Clementine edition (1592)",
+    "edition": "Clementine Vulgate 1592",
+    "attribution": "Biblia Sacra Vulgata, editio Clementina (1592), public domain. USFX text from seven1m/open-bibles, held by the Vetus V0 app.",
+    "provenance": "Taken verse by verse from vetus-v0/data/vulgate/lat-clementine.usfx.xml (SHA-256 5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf) by scripts/corpus-la-build.mts; nothing was retyped. Clementine spelling kept (ae ligatures as printed, i/j and u/v as printed, no macrons). One verse is one sentence (the verse is not split, although it may hold several clauses or sentences), so every sentence is addressable by its reference. The text has not been compared with a second, independent edition.",
+    "url": "https://github.com/seven1m/open-bibles",
+    "rights": "public-domain",
+    "licenseNote": "The Clementine Vulgate (1592) is in the public domain. The USFX file comes from seven1m/open-bibles (Bible texts that are public domain or openly licensed).",
+    "authorship": "public-domain",
+    "sourceHash": "5da5f3c07fa6896d4a2b45f5f309c3ece43e554fd059b31b8ae3688bbd182baf",
+    "licence": "public domain",
+    "modifications": "none: each sentence is exactly one verse of the source (surrounding whitespace trimmed)."
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-la-scripture.mts",
+    "reviewedAt": "2026-10-17",
+    "notes": "Wording verified by byte-comparison against the Clementine USFX file it was copied from (a copy-integrity check, not a second edition)."
+  },
+  "topics": [
+    "scripture",
+    "matthew-1",
+    "gospel"
+  ],
+  "editorialTags": [
+    "clementine-orthography"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "vulgata-clementina",
+    "chapter": {
+      "index": 8,
+      "title": "Matthaeus 1"
+    }
+  },
+  "streams": [
+    "scripture"
+  ],
+  "scripture": {
+    "translationId": "latVulgClementine",
+    "translationName": "Biblia Sacra Vulgata (Clementine, 1592)",
+    "edition": "Clementine Vulgate 1592",
+    "book": "MAT",
+    "chapter": 1,
+    "verification": {
+      "against": "seven1m/open-bibles Clementine USFX (lat-clementine.usfx.xml, as held by vetus-v0)",
+      "url": "https://github.com/seven1m/open-bibles",
+      "checkedAt": "2026-10-17",
+      "method": "byte-comparison",
+      "by": "scripts/verify-la-scripture.mts"
+    }
+  },
+  "english": {
+    "source": "World English Bible (public domain), eBible.org eng-web, copied verbatim from the German/Hindi corpora for the verses they carry"
+  },
+  "sections": [
+    {
+      "title": "Matthaeus 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "MAT.1.1",
+              "text": "Liber generationis Jesu Christi filii David, filii Abraham.",
+              "english": "The book of the genealogy of Jesus Christ, the son of David, the son of Abraham.",
+              "verseRefs": [
+                "MAT.1.1"
+              ]
+            },
+            {
+              "id": "MAT.1.2",
+              "text": "Abraham genuit Isaac. Isaac autem genuit Jacob. Jacob autem genuit Judam, et fratres ejus.",
+              "english": "Abraham became the father of Isaac. Isaac became the father of Jacob. Jacob became the father of Judah and his brothers.",
+              "verseRefs": [
+                "MAT.1.2"
+              ]
+            },
+            {
+              "id": "MAT.1.3",
+              "text": "Judas autem genuit Phares, et Zaram de Thamar. Phares autem genuit Esron. Esron autem genuit Aram.",
+              "english": "Judah became the father of Perez and Zerah by Tamar. Perez became the father of Hezron. Hezron became the father of Ram.",
+              "verseRefs": [
+                "MAT.1.3"
+              ]
+            },
+            {
+              "id": "MAT.1.4",
+              "text": "Aram autem genuit Aminadab. Aminadab autem genuit Naasson. Naasson autem genuit Salmon.",
+              "english": "Ram became the father of Amminadab. Amminadab became the father of Nahshon. Nahshon became the father of Salmon.",
+              "verseRefs": [
+                "MAT.1.4"
+              ]
+            },
+            {
+              "id": "MAT.1.5",
+              "text": "Salmon autem genuit Booz de Rahab. Booz autem genuit Obed ex Ruth. Obed autem genuit Jesse. Jesse autem genuit David regem.",
+              "english": "Salmon became the father of Boaz by Rahab. Boaz became the father of Obed by Ruth. Obed became the father of Jesse.",
+              "verseRefs": [
+                "MAT.1.5"
+              ]
+            },
+            {
+              "id": "MAT.1.6",
+              "text": "David autem rex genuit Salomonem ex ea quæ fuit Uriæ.",
+              "english": "Jesse became the father of King David. David the king became the father of Solomon by her who had been Uriah’s wife.",
+              "verseRefs": [
+                "MAT.1.6"
+              ]
+            },
+            {
+              "id": "MAT.1.7",
+              "text": "Salomon autem genuit Roboam. Roboam autem genuit Abiam. Abias autem genuit Asa.",
+              "english": "Solomon became the father of Rehoboam. Rehoboam became the father of Abijah. Abijah became the father of Asa.",
+              "verseRefs": [
+                "MAT.1.7"
+              ]
+            },
+            {
+              "id": "MAT.1.8",
+              "text": "Asa autem genuit Josophat. Josophat autem genuit Joram. Joram autem genuit Oziam.",
+              "english": "Asa became the father of Jehoshaphat. Jehoshaphat became the father of Joram. Joram became the father of Uzziah.",
+              "verseRefs": [
+                "MAT.1.8"
+              ]
+            },
+            {
+              "id": "MAT.1.9",
+              "text": "Ozias autem genuit Joatham. Joatham autem genuit Achaz. Achaz autem genuit Ezechiam.",
+              "english": "Uzziah became the father of Jotham. Jotham became the father of Ahaz. Ahaz became the father of Hezekiah.",
+              "verseRefs": [
+                "MAT.1.9"
+              ]
+            },
+            {
+              "id": "MAT.1.10",
+              "text": "Ezechias autem genuit Manassen. Manasses autem genuit Amon. Amon autem genuit Josiam.",
+              "english": "Hezekiah became the father of Manasseh. Manasseh became the father of Amon. Amon became the father of Josiah.",
+              "verseRefs": [
+                "MAT.1.10"
+              ]
+            },
+            {
+              "id": "MAT.1.11",
+              "text": "Josias autem genuit Jechoniam, et fratres ejus in transmigratione Babylonis.",
+              "english": "Josiah became the father of Jechoniah and his brothers at the time of the exile to Babylon.",
+              "verseRefs": [
+                "MAT.1.11"
+              ]
+            },
+            {
+              "id": "MAT.1.12",
+              "text": "Et post transmigrationem Babylonis : Jechonias genuit Salathiel. Salathiel autem genuit Zorobabel.",
+              "english": "After the exile to Babylon, Jechoniah became the father of Shealtiel. Shealtiel became the father of Zerubbabel.",
+              "verseRefs": [
+                "MAT.1.12"
+              ]
+            },
+            {
+              "id": "MAT.1.13",
+              "text": "Zorobabel autem genuit Abiud. Abiud autem genuit Eliacim. Eliacim autem genuit Azor.",
+              "english": "Zerubbabel became the father of Abiud. Abiud became the father of Eliakim. Eliakim became the father of Azor.",
+              "verseRefs": [
+                "MAT.1.13"
+              ]
+            },
+            {
+              "id": "MAT.1.14",
+              "text": "Azor autem genuit Sadoc. Sadoc autem genuit Achim. Achim autem genuit Eliud.",
+              "english": "Azor became the father of Zadok. Zadok became the father of Achim. Achim became the father of Eliud.",
+              "verseRefs": [
+                "MAT.1.14"
+              ]
+            },
+            {
+              "id": "MAT.1.15",
+              "text": "Eliud autem genuit Eleazar. Eleazar autem genuit Mathan. Mathan autem genuit Jacob.",
+              "english": "Eliud became the father of Eleazar. Eleazar became the father of Matthan. Matthan became the father of Jacob.",
+              "verseRefs": [
+                "MAT.1.15"
+              ]
+            },
+            {
+              "id": "MAT.1.16",
+              "text": "Jacob autem genuit Joseph virum Mariæ, de qua natus est Jesus, qui vocatur Christus.",
+              "english": "Jacob became the father of Joseph, the husband of Mary, from whom was born Jesus, who is called Christ.",
+              "verseRefs": [
+                "MAT.1.16"
+              ]
+            },
+            {
+              "id": "MAT.1.17",
+              "text": "Omnes itaque generationes ab Abraham usque ad David, generationes quatuordecim : et a David usque ad transmigrationem Babylonis, generationes quatuordecim : et a transmigratione Babylonis usque ad Christum, generationes quatuordecim.",
+              "english": "So all the generations from Abraham to David are fourteen generations; from David to the exile to Babylon fourteen generations; and from the carrying away to Babylon to the Christ, fourteen generations.",
+              "verseRefs": [
+                "MAT.1.17"
+              ]
+            },
+            {
+              "id": "MAT.1.18",
+              "text": "Christi autem generatio sic erat : cum esset desponsata mater ejus Maria Joseph, antequam convenirent inventa est in utero habens de Spiritu Sancto.",
+              "english": "Now the birth of Jesus Christ was like this: After his mother, Mary, was engaged to Joseph, before they came together, she was found pregnant by the Holy Spirit.",
+              "verseRefs": [
+                "MAT.1.18"
+              ]
+            },
+            {
+              "id": "MAT.1.19",
+              "text": "Joseph autem vir ejus cum esset justus, et nollet eam traducere, voluit occulte dimittere eam.",
+              "english": "Joseph, her husband, being a righteous man, and not willing to make her a public example, intended to put her away secretly.",
+              "verseRefs": [
+                "MAT.1.19"
+              ]
+            },
+            {
+              "id": "MAT.1.20",
+              "text": "Hæc autem eo cogitante, ecce angelus Domini apparuit in somnis ei, dicens : Joseph, fili David, noli timere accipere Mariam conjugem tuam : quod enim in ea natum est, de Spiritu Sancto est.",
+              "english": "But when he thought about these things, behold, an angel of the Lord appeared to him in a dream, saying, “Joseph, son of David, don’t be afraid to take to yourself Mary as your wife, for that which is conceived in her is of the Holy Spirit.",
+              "verseRefs": [
+                "MAT.1.20"
+              ]
+            },
+            {
+              "id": "MAT.1.21",
+              "text": "Pariet autem filium : et vocabis nomen ejus Jesum : ipse enim salvum faciet populum suum a peccatis eorum.",
+              "english": "She shall give birth to a son. You shall name him Jesus, for it is he who shall save his people from their sins.”",
+              "verseRefs": [
+                "MAT.1.21"
+              ]
+            },
+            {
+              "id": "MAT.1.22",
+              "text": "Hoc autem totum factum est, ut adimpleretur quod dictum est a Domino per prophetam dicentem :",
+              "english": "Now all this has happened that it might be fulfilled which was spoken by the Lord through the prophet, saying,",
+              "verseRefs": [
+                "MAT.1.22"
+              ]
+            },
+            {
+              "id": "MAT.1.23",
+              "text": "Ecce virgo in utero habebit, et pariet filium : et vocabunt nomen ejus Emmanuel, quod est interpretatum Nobiscum Deus.",
+              "english": "“Behold, the virgin shall be with child, and shall give birth to a son. They shall call his name Immanuel,” which is, being interpreted, “God with us.”",
+              "verseRefs": [
+                "MAT.1.23"
+              ]
+            },
+            {
+              "id": "MAT.1.24",
+              "text": "Exsurgens autem Joseph a somno, fecit sicut præcepit ei angelus Domini, et accepit conjugem suam.",
+              "english": "Joseph arose from his sleep, and did as the angel of the Lord commanded him, and took his wife to himself;",
+              "verseRefs": [
+                "MAT.1.24"
+              ]
+            },
+            {
+              "id": "MAT.1.25",
+              "text": "Et non cognoscebat eam donec peperit filium suum primogenitum : et vocavit nomen ejus Jesum.",
+              "english": "and didn’t know her sexually until she had given birth to her firstborn son. He named him Jesus.",
+              "verseRefs": [
+                "MAT.1.25"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

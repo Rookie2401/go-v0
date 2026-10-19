@@ -261,7 +261,7 @@ describe.each(Object.keys(NORWEGIAN))('the experimental %s pack (no dictionary)'
 
 describe('German, Hindi, Thai and Norwegian in the extension parser', () => {
   it('the parser registry lists them, with pack ids that carry the adapter version, and exposes their adapters to the resolver', () => {
-    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']);
+    expect([...PARSER_LANGUAGES]).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la']);
     expect(PACK_IDS).toMatchObject({ de: `pack:de:${deAdapter.version}`, hi: `pack:hi:${hiAdapter.version}`, th: `pack:th:${thAdapter.version}`, nb: `pack:nb:${nbAdapter.version}`, nn: `pack:nn:${nnAdapter.version}` });
     expect(parserAdapter('de')).toBe(deAdapter);
     expect(parserAdapter('hi')).toBe(hiAdapter);

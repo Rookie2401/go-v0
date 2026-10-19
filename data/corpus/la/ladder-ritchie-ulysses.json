@@ -1,0 +1,867 @@
+{
+  "schemaVersion": 2,
+  "id": "ladder-ritchie-ulysses",
+  "lang": "la",
+  "title": "Fabulae Faciles: Ulixes",
+  "contentType": "story",
+  "corpus": {
+    "id": "lit-la",
+    "kind": "comprehensible-input",
+    "title": "Latin literature"
+  },
+  "source": {
+    "id": "src:la:ladder-ritchie-ulysses",
+    "title": "Fabulae Faciles: A First Latin Reader (Ulixes)",
+    "author": "Francis Ritchie",
+    "date": "1903",
+    "url": "https://la.wikisource.org/wiki/Ritchie%27s_Fabulae_Faciles",
+    "edition": "Ritchie, Fabulae Faciles (1903), Latin Wikisource transcription",
+    "attribution": "Francis Ritchie, Fabulae Faciles (1903), public domain. Transcription: Latin Wikisource (Vicifons), CC BY-SA 4.0.",
+    "provenance": "Latin text taken by scripts/corpus-la-build.mts from the Latin Wikisource wikitext of the page, held by romance-v0/data/la/ritchie-fabulae-faciles.wikitext.json (SHA-256 d50eb1fd84ef7bb62ed81adc5bd56cc34a8475bb7d5ea8c18f7a275e00ef3ee5). Nothing was retyped. Only the Latin paragraphs are kept: the italic English argument before each tale is the editor's summary and is left out, and the section headings are Ritchie's English headings (the section title only, never sentence text). Paragraphs are split into sentences at \".\" \"?\" \"!\". Pedagogical Latin composed in 1903 in a classical register.",
+    "rights": "public-domain",
+    "licenseNote": "Francis Ritchie’s Fabulae Faciles was published in 1903: public domain. The Wikisource transcription is offered under CC BY-SA 4.0; the source is named here and on the text.",
+    "authorship": "public-domain",
+    "sourceHash": "d50eb1fd84ef7bb62ed81adc5bd56cc34a8475bb7d5ea8c18f7a275e00ef3ee5",
+    "licence": "public domain (1903); transcription CC BY-SA 4.0",
+    "modifications": "Paragraphs split into sentences; English argument omitted; 1 stray U+FFFD replacement character(s) in the stored copy removed (Hercules 23.5, before \"neque\"); nothing else changed."
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Copied mechanically from the Wikisource transcription; not proofread against the printed book."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "myth",
+    "ulysses"
+  ],
+  "editorialTags": [
+    "graded-reader",
+    "neo-latin"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "ritchie-fabulae-faciles",
+    "chapter": {
+      "index": 4,
+      "title": "Fabulae Faciles: Ulixes"
+    }
+  },
+  "streams": [
+    "library"
+  ],
+  "sections": [
+    {
+      "title": "81. HOMEWARD BOUND",
+      "chapter": 81,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.81.1",
+              "text": "Urbem Troiam a Graecis decem annos obsessam esse satis constat; de hoc enim bello Homerus, maximus poetarum Graecorum, Iliadem opus notissimum scripsit."
+            },
+            {
+              "id": "ulysses.81.2",
+              "text": "Troia tandem per insidias capta, Graeci longo bello fessi domum redire maturaverunt."
+            },
+            {
+              "id": "ulysses.81.3",
+              "text": "Omnibus rebus igitur ad profectionem paratis navis deduxerunt, et tempestatem idoneam nacti magno cum gaudio solverunt."
+            },
+            {
+              "id": "ulysses.81.4",
+              "text": "Erat inter primos Graecorum Ulixes quidam, vir summae virtutis ac prudentiae, quem dicunt nonnulli dolum istum excogitasse quo Troiam captam esse constat."
+            },
+            {
+              "id": "ulysses.81.5",
+              "text": "Hic regnum insulae Ithacae obtinuerat, et paulo antequam cum reliquis Graecis ad bellum profectus est, puellam formosissimam, nomine Penelopen, in matrimonium duxerat."
+            },
+            {
+              "id": "ulysses.81.6",
+              "text": "Nunc igitur cum iam decem annos quasi in exsilio consumpsisset, magna cupiditate patriae et uxoris videndae ardebat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "82. THE LOTUS-EATERS",
+      "chapter": 82,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.82.1",
+              "text": "Postquam tamen pauca milia passuum a litore Troiae progressi sunt, tanta tempestas subito coorta est ut nulla navium cursum tenere posset, sed aliae alias in partis disicerentur."
+            },
+            {
+              "id": "ulysses.82.2",
+              "text": "Navis autem qua ipse Ulixes vehebatur vi tempestatis ad meridiem delata decimo die ad litus Libyae appulsa est."
+            },
+            {
+              "id": "ulysses.82.3",
+              "text": "Ancoris iactis Ulixes constituit nonnullos e sociis in terram exponere, qui aquam ad navem referrent et qualis esset natura eius regionis cognoscerent."
+            },
+            {
+              "id": "ulysses.82.4",
+              "text": "Hi igitur e navi egressi imperata facere parabant."
+            },
+            {
+              "id": "ulysses.82.5",
+              "text": "Dum tamen fontem quaerunt, quibusdam ex incolis obviam facti ab iis hospitio accepti sunt."
+            },
+            {
+              "id": "ulysses.82.6",
+              "text": "Accidit autem ut maior pars victus eorum hominum in miro quodam fructu quem lotum appellabant consisteret."
+            },
+            {
+              "id": "ulysses.82.7",
+              "text": "Quam cum Graeci gustassent, patriae et sociorum statim obliti confirmaverunt se semper in ea terra mansuros, ut dulci illo cibo in perpetuum vescerentur."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "83. THE RESCUE",
+      "chapter": 83,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.83.1",
+              "text": "Ulixes cum ab hora septima ad vesperum exspectasset, veritus ne socii sui in periculo versarentur, nonnullos e reliquis misit, ut quae causa esset morae cognoscerent."
+            },
+            {
+              "id": "ulysses.83.2",
+              "text": "Hi igitur in terram expositi ad vicum qui non longe aberat se contulerunt; quo cum venissent, socios suos quasi vino ebrios reppererunt."
+            },
+            {
+              "id": "ulysses.83.3",
+              "text": "Tum ubi causam veniendi docuerunt, iis persuadere conabantur ut secum ad navem redirent."
+            },
+            {
+              "id": "ulysses.83.4",
+              "text": "Illi tamen resistere ac manu se defendere coeperunt, saepe clamitantes se numquam ex eo loco abituros."
+            },
+            {
+              "id": "ulysses.83.5",
+              "text": "Quae cum ita essent, nuntii re infecta ad Ulixem redierunt."
+            },
+            {
+              "id": "ulysses.83.6",
+              "text": "His rebus cognitis ipse cum omnibus qui in navi relicti erant ad locum venit; et socios suos frustra hortatus ut sua sponte redirent, manibus eorum post terga vinctis invitos ad navem reportavit."
+            },
+            {
+              "id": "ulysses.83.7",
+              "text": "Tum ancoris sublatis quam celerrime e portu solvit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "84. THE ONE-EYED GIANT",
+      "chapter": 84,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.84.1",
+              "text": "Postquam ea tota nocte remis contenderunt, postridie ad terram ignotam navem appulerunt."
+            },
+            {
+              "id": "ulysses.84.2",
+              "text": "Tum, quod naturam eius regionis ignorabat, ipse Ulixes cum duodecim e sociis in terram egressus loca explorare constituit."
+            },
+            {
+              "id": "ulysses.84.3",
+              "text": "Paulum a litore progressi ad speluncam ingentem pervenerunt, quam habitari senserunt; eius enim introitum et natura loci et manu munitum esse animadverterunt."
+            },
+            {
+              "id": "ulysses.84.4",
+              "text": "Mox, etsi intellegebant se non sine periculo id facturos, speluncam intraverunt; quod cum fecissent, magnam copiam lactis in vasis ingentibus conditam invenerunt."
+            },
+            {
+              "id": "ulysses.84.5",
+              "text": "Dum tamen mirantur quis in ea sede habitaret, sonitum terribilem audiverunt, et oculis ad portam tortis monstrum horribile viderunt, humana quidem specie et figura, sed ingenti magnitudine corporis."
+            },
+            {
+              "id": "ulysses.84.6",
+              "text": "Cum autem animadvertissent monstrum unum oculum tantum habere in media fronte positum, intellexerunt hunc esse unum e Cyclopibus, de quibus famam iam acceperant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "85. THE GIANT'S SUPPER",
+      "chapter": 85,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.85.1",
+              "text": "Cyclopes autem pastores erant quidam qui insulam Siciliam et praecipue montem Aetnam incolebant; ibi enim Volcanus, praeses fabrorum et ignis repertor, cuius servi Cyclopes erant, officinam suam habebat."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "ulysses.85.2",
+              "text": "Graeci igitur simul ac monstrum viderunt, terrore paene exanimati in interiorem partem speluncae refugerunt et se ibi abdere conabantur."
+            },
+            {
+              "id": "ulysses.85.3",
+              "text": "Polyphemus autem (sic enim Cyclops appellabatur) pecus suum in speluncam compulit; deinde, cum saxo ingenti portam obstruxisset, ignem in media spelunca fecit."
+            },
+            {
+              "id": "ulysses.85.4",
+              "text": "Hoc facto, oculo omnia perlustrabat, et cum sensisset homines in interiore parte speluncae esse abditos, magna voce exclamavit: \"Qui homines estis?"
+            },
+            {
+              "id": "ulysses.85.5",
+              "text": "Mercatores an latrones?\""
+            },
+            {
+              "id": "ulysses.85.6",
+              "text": "Tum Ulixes respondit se neque mercatores esse neque praedandi causa venisse; sed a Troia redeuntis vi tempestatum a recto cursu depulsos esse."
+            },
+            {
+              "id": "ulysses.85.7",
+              "text": "Oravit etiam ut sibi sine iniuria abire liceret."
+            },
+            {
+              "id": "ulysses.85.8",
+              "text": "Tum Polyphemus quaesivit ubi esset navis qua vecti essent; sed Ulixes cum sibi maxime praecavendum esse bene intellegeret, respondit navem suam in rupis coniectam omnino fractam esse."
+            },
+            {
+              "id": "ulysses.85.9",
+              "text": "Polyphemus autem nullo responso dato duo e sociis manu corripuit, et membris eorum divulsis carnem devorare coepit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "86. A DESPERATE SITUATION",
+      "chapter": 86,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.86.1",
+              "text": "Dum haec geruntur, Graecorum animos tantus terror occupavit ut ne vocem quidem edere possent, sed omni spe salutis deposita mortem praesentem exspectarent."
+            },
+            {
+              "id": "ulysses.86.2",
+              "text": "Polyphemus, postquam fames hac tam horribili cena depulsa est, humi prostratus somno se dedit."
+            },
+            {
+              "id": "ulysses.86.3",
+              "text": "Quod cum vidisset Ulixes, tantam occasionem rei gerendae non omittendam arbitratus, in eo erat ut pectus monstri gladio transfigeret."
+            },
+            {
+              "id": "ulysses.86.4",
+              "text": "Cum tamen nihil temere agendum existimaret, constituit explorare, antequam hoc faceret, qua ratione ex spelunca evadere possent."
+            },
+            {
+              "id": "ulysses.86.5",
+              "text": "At cum saxum animadvertisset quo introitus obstructus erat, nihil sibi profuturum intellexit si Polyphemum interfecisset."
+            },
+            {
+              "id": "ulysses.86.6",
+              "text": "Tanta enim erat eius saxi magnitudo ut ne a decem quidem hominibus amoveri posset."
+            },
+            {
+              "id": "ulysses.86.7",
+              "text": "Quae cum ita essent, Ulixes hoc conatu destitit et ad socios rediit; qui cum intellexissent quo in loco res essent, nulla spe salutis oblata de fortunis suis desperare coeperunt."
+            },
+            {
+              "id": "ulysses.86.8",
+              "text": "Ille tamen ne animos demitterent vehementer hortatus est; demonstravit se iam antea e multis et magnis periculis evasisse, neque dubium esse quin in tanto discrimine di auxilium laturi essent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "87. A PLAN FOR VENGEANCE",
+      "chapter": 87,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.87.1",
+              "text": "Orta luce Polyphemus iam e somno excitatus idem quod hesterno die fecit; correptis enim duobus e reliquis viris carnem eorum sine mora devoravit."
+            },
+            {
+              "id": "ulysses.87.2",
+              "text": "Tum, cum saxum amovisset, ipse cum pecore suo ex spelunca progressus est; quod cum Graeci viderent, magnam in spem se post paulum evasuros venerunt."
+            },
+            {
+              "id": "ulysses.87.3",
+              "text": "Mox tamen ab hac spe repulsi sunt; nam Polyphemus, postquam omnes oves exierunt, saxum in locum restituit."
+            },
+            {
+              "id": "ulysses.87.4",
+              "text": "Reliqui omni spe salutis deposita lamentis lacrimisque se dediderunt; Ulixes vero, qui, ut supra demonstravimus, vir magni fuit consili, etsi intellegebat rem in discrimine esse, nondum omnino desperabat."
+            },
+            {
+              "id": "ulysses.87.5",
+              "text": "Tandem, postquam diu haec toto animo cogitavit, hoc consilium cepit."
+            },
+            {
+              "id": "ulysses.87.6",
+              "text": "E lignis quae in spelunca reposita erant palum magnum delegit."
+            },
+            {
+              "id": "ulysses.87.7",
+              "text": "Hunc summa cum diligentia praeacutum fecit; tum, postquam sociis quid fieri vellet ostendit, reditum Polyphemi exspectabat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "88. A GLASS TOO MUCH",
+      "chapter": 88,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.88.1",
+              "text": "Sub vesperum Polyphemus ad speluncam rediit, et eodem modo quo antea cenavit."
+            },
+            {
+              "id": "ulysses.88.2",
+              "text": "Tum Ulixes utrem vini prompsit, quem forte (id quod ei erat saluti) secum attulerat; et postquam magnum poculum vino complevit, monstrum ad bibendum provocavit."
+            },
+            {
+              "id": "ulysses.88.3",
+              "text": "Polyphemus, qui numquam antea vinum gustaverat, totum poculum statim exhausit; quod cum fecisset, tantam voluptatem percepit ut iterum et tertium poculum repleri iusserit."
+            },
+            {
+              "id": "ulysses.88.4",
+              "text": "Tum, cum quaesivisset quo nomine Ulixes appellaretur, ille respondit se Neminem appellari; quod cum audivisset, Polyphemus ita locutus est: \"Hanc, tibi gratiam pro tanto beneficio referam; te postremum omnium devorabo.\""
+            },
+            {
+              "id": "ulysses.88.5",
+              "text": "Hoc cum dixisset, cibo vinoque gravis recubuit et brevi tempore somno oppressus est."
+            },
+            {
+              "id": "ulysses.88.6",
+              "text": "Tum Ulixes sociis convocatis, \"Habemus,\" inquit, \"quam petiimus facultatem; ne igitur tantam occasionem rei gerendae omittamus.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "89. THE BLINDING OF POLYPHEMUS",
+      "chapter": 89,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.89.1",
+              "text": "Hac oratione habita, postquam extremum palum igni calefecit, oculum Polyphemi dormientis ferventi ligno perfodit; quo facto omnes in diversas speluncae partis se abdiderunt."
+            },
+            {
+              "id": "ulysses.89.2",
+              "text": "At ille subito illo dolore oculi e somno excitatus clamorem terribilem sustulit, et dum per speluncam errat, Ulixem manu prehendere conabatur; cum tamen iam omnino caecus esset, nullo modo hoc efficere potuit."
+            },
+            {
+              "id": "ulysses.89.3",
+              "text": "Interea reliqui Cyclopes clamore audito undique ad speluncam convenerunt, et ad introitum adstantes quid Polyphemus ageret quaesiverunt, et quam ob causam tantum clamorem sustulisset."
+            },
+            {
+              "id": "ulysses.89.4",
+              "text": "Ille respondit se graviter vulneratum esse et magno dolore adfici."
+            },
+            {
+              "id": "ulysses.89.5",
+              "text": "Cum tamen postea quaesivissent quis ei vim intulisset, respondit ille Neminem id fecisse; quibus rebus auditis unus e Cyclopibus: \"At si nemo,\" inquit, \"te vulneravit, haud dubium est quin consilio deorum, quibus resistere nec possumus nec volumus, hoc supplicio adficiaris.\""
+            },
+            {
+              "id": "ulysses.89.6",
+              "text": "Hoc cum dixisset, abierunt Cyclopes eum in insaniam incidisse arbitrati."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "90. THE ESCAPE",
+      "chapter": 90,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.90.1",
+              "text": "Polyphemus ubi socios suos abiisse sensit, furore atque amentia impulsus Ulixem iterum quaerere coepit; tandem cum portam invenisset, saxum quo obstructa erat amovit, ut pecus in agros exiret."
+            },
+            {
+              "id": "ulysses.90.2",
+              "text": "Tum ipse in introitu consedit, et ut quaeque ovis ad hunc locum venerat, eius tergum manibus tractabat, ne viri inter ovis exire possent."
+            },
+            {
+              "id": "ulysses.90.3",
+              "text": "Quod cum animadvertisset Ulixes, intellexit omnem spem salutis in dolo magis quam in virtute poni."
+            },
+            {
+              "id": "ulysses.90.4",
+              "text": "Itaque hoc consilium iniit."
+            },
+            {
+              "id": "ulysses.90.5",
+              "text": "Primum tris quas vidit pinguissimas ex ovibus delegit, quas cum inter se viminibus coniunxisset, unum ex sociis suis ventribus earum ita subiecit ut omnino lateret; deinde ovis hominem secum ferentis ad portam egit."
+            },
+            {
+              "id": "ulysses.90.6",
+              "text": "Id accidit quod fore suspicatus erat."
+            },
+            {
+              "id": "ulysses.90.7",
+              "text": "Polyphemus enim postquam terga ovium manibus tractavit, eas praeterire passus est."
+            },
+            {
+              "id": "ulysses.90.8",
+              "text": "Ulixes ubi rem tam feliciter evenisse vidit, omnis socios suos ex ordine eodem modo emisit; quo facto ipse novissimus evasit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "91. OUT OF DANGER",
+      "chapter": 91,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.91.1",
+              "text": "Iis rebus ita confectis, Ulixes veritus ne Polyphemus fraudem sentiret, cum sociis quam celerrime ad litus contendit; quo cum venissent, ab iis qui navi praesidio relicti erant magna cum laetitia excepti sunt."
+            },
+            {
+              "id": "ulysses.91.2",
+              "text": "Hi enim cum anxiis animis iam tris dies continuos reditum eorum exspectavissent, eos in aliquod periculum magnum incidisse (id quidem quod erat) suspicati, ipsi auxiliandi causa egredi parabant."
+            },
+            {
+              "id": "ulysses.91.3",
+              "text": "Tum Ulixes non satis tutum arbitratus in eo loco manere, quam celerrime profisisci constituit."
+            },
+            {
+              "id": "ulysses.91.4",
+              "text": "Iussit igitur omnis navem conscendere, et ancoris sublatis paulum a litore in altum provectus est."
+            },
+            {
+              "id": "ulysses.91.5",
+              "text": "Tum magna voce exclamavit: \"Tu, Polypheme, qui iura hospiti spernis, iustam et debitam poenam immanitatis tuae solvisti.\""
+            },
+            {
+              "id": "ulysses.91.6",
+              "text": "Hac voce audita Polyphemus ira vehementer commotus ad mare se contulit, et ubi navem paulum a litore remotam esse intellexit, saxum ingens manu correptum in eam partem coniecit unde vocem venire sensit."
+            },
+            {
+              "id": "ulysses.91.7",
+              "text": "Graeci autem, etsi non multum afuit quin submergerentur, nullo damno accepto cursum tenuerunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "92. THE COUNTRY OF THE WINDS",
+      "chapter": 92,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.92.1",
+              "text": "Pauca milia passuum ab eo loco progressus Ulixes ad insulam Aeoliam navem appulit."
+            },
+            {
+              "id": "ulysses.92.2",
+              "text": "Haec patria erat ventorum, \"Hic vasto rex Aeolus antro luctantis ventos tempestatesque sonoras imperio premit ac vinclis et carcere frenat.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "ulysses.92.3",
+              "text": "Ibi rex ipse Graecos hospitio excepit, atque iis persuasit ut ad recuperandas viris paucos dies in ea regione commorarentur."
+            },
+            {
+              "id": "ulysses.92.4",
+              "text": "Septimo die cum socii e laboribus se recepissent, Ulixes, ne anni tempore a navigatione excluderetur, sibi sine mora proficiscendum statuit."
+            },
+            {
+              "id": "ulysses.92.5",
+              "text": "Tum Aeolus, qui sciebat Ulixem cupidissimum esse patriae videndae, ei iam profecturo magnum saccum e corio confectum dedit, in quo ventos omnis praeter unum incluserat."
+            },
+            {
+              "id": "ulysses.92.6",
+              "text": "Zephyrum tantum solverat, quod ille ventus ab insula Aeolia ad Ithacam naviganti est secundus."
+            },
+            {
+              "id": "ulysses.92.7",
+              "text": "Ulixes hoc donum libenter accepit, et gratiis pro tanto beneficio actis saccum ad malum adligavit."
+            },
+            {
+              "id": "ulysses.92.8",
+              "text": "Tum omnibus rebus ad profectionem paratis meridiano fere tempore e portu solvit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "93. THE WIND-BAG",
+      "chapter": 93,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.93.1",
+              "text": "Novem dies secundissimo vento cursum tenuerunt, iamque in conspectum patriae suae venerant, cum Ulixes lassitudine confectus (ipse enim gubernabat) ad quietem capiendam recubuit."
+            },
+            {
+              "id": "ulysses.93.2",
+              "text": "At socii, qui iam dudum mirabantur quid in illo sacco inclusum esset, cum ducem somno oppressum viderent, tantam occasionem non omittendam arbitrati sunt; credebant enim aurum et argentum ibi esse celata."
+            },
+            {
+              "id": "ulysses.93.3",
+              "text": "Itaque spe lucri adducti saccum sine mora solverunt, quo facto venti \"velut agmine facto qua data porta ruunt, et terras turbine perflant.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "id": "ulysses.93.4",
+              "text": "Hic tanta tempestas subito coorta est ut illi cursum tenere non possent sed in eandem partem unde erant profecti referrentur."
+            },
+            {
+              "id": "ulysses.93.5",
+              "text": "Ulixes e somno excitatus quo in loco res esset statim intellexit; saccum solutum, Ithacam post tergum relictam vidit."
+            },
+            {
+              "id": "ulysses.93.6",
+              "text": "Tum vero ira vehementer exarsit sociosque obiurgabat quod cupiditate pecuniae adducti spem patriae videndae proiecissent."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "94. A DRAWING OF LOTS",
+      "chapter": 94,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.94.1",
+              "text": "Brevi spatio intermisso Graeci insulae cuidam appropinquaverunt in qua Circe, filia Solis, habitabat."
+            },
+            {
+              "id": "ulysses.94.2",
+              "text": "Quo cum navem appulisset, Ulixes in terram frumentandi causa egrediendum esse statuit; nam cognoverat frumentum quod in navi haberent iam deficere."
+            },
+            {
+              "id": "ulysses.94.3",
+              "text": "Sociis igitur ad se convocatis quo in loco res esset et quid fieri vellet ostendit."
+            },
+            {
+              "id": "ulysses.94.4",
+              "text": "Cum tamen omnes memoria tenerent quam crudeli morte necati essent ii qui nuper e navi egressi essent, nemo repertus est qui hoc negotium suscipere vellet."
+            },
+            {
+              "id": "ulysses.94.5",
+              "text": "Quae cum ita essent, res ad controversiam deducta est."
+            },
+            {
+              "id": "ulysses.94.6",
+              "text": "Tandem Ulixes consensu omnium socios in duas partis divisit, quarum alteri Eurylochus, vir summae virtutis, alteri ipse praeesse."
+            },
+            {
+              "id": "ulysses.94.7",
+              "text": "Tum hi inter se sortiti sunt uter in terram egrederetur."
+            },
+            {
+              "id": "ulysses.94.8",
+              "text": "Hoc facto, Eurylocho sorte evenit ut cum duobus et viginti sociis rem susciperet."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "95. THE HOUSE OF THE ENCHANTRESS",
+      "chapter": 95,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.95.1",
+              "text": "His rebus ita constitutis ii qui sortiti erant in interiorem partem insulae profecti sunt."
+            },
+            {
+              "id": "ulysses.95.2",
+              "text": "Tantus tamen timor animos eorum occupaverat ut nihil dubitarent quin morti obviam irent."
+            },
+            {
+              "id": "ulysses.95.3",
+              "text": "Vix quidem poterant ii qui in navi relicti erant lacrimas tenere; credebant enim se socios suos numquam post hoc tempus visuros."
+            },
+            {
+              "id": "ulysses.95.4",
+              "text": "Illi autem aliquantum itineris progressi ad villam quandam pervenerunt summa magnificentia aedificatam, cuius ad ostium cum adiissent, cantum dulcissimum audiverunt."
+            },
+            {
+              "id": "ulysses.95.5",
+              "text": "Tanta autem fuit eius vocis dulcedo ut nullo modo retineri possent quin ianuam pulsarent."
+            },
+            {
+              "id": "ulysses.95.6",
+              "text": "Hoc facto ipsa Circe foras exiit, et summa cum benignitate omnis in hospitium invitavit."
+            },
+            {
+              "id": "ulysses.95.7",
+              "text": "Eurylochus insidias sibi comparari suspicatus foris exspectare constituit, sed reliqui rei novitate adducti intraverunt."
+            },
+            {
+              "id": "ulysses.95.8",
+              "text": "Cenam magnificam omnibus rebus instructam invenerunt et iussu dominae libentissime accubuerunt."
+            },
+            {
+              "id": "ulysses.95.9",
+              "text": "At Circe vinum quod servi apposuerunt medicamento quodam miscuerat; quod cum Graeci bibissent, gravi somno subito oppressi sunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "96. THE CHARM",
+      "chapter": 96,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.96.1",
+              "text": "Tum Circe, quae artis magicae summam scientiam habebat, baculo aureo quod gerebat capita eorum tetigit; quo facto omnes in porcos subito conversi sunt."
+            },
+            {
+              "id": "ulysses.96.2",
+              "text": "Interea Eurylochus ignarus quid in aedibus ageretur ad ostium sedebat; postquam tamen ad solis occasum anxio animo et sollicito exspectavit, solus ad navem regredi constituit."
+            },
+            {
+              "id": "ulysses.96.3",
+              "text": "Eo cum venisset, sollicitudine ac timore tam perturbatus fuit ut quae vidisset vix dilucide narrare posset."
+            },
+            {
+              "id": "ulysses.96.4",
+              "text": "Ulixes autem satis intellexit socios suos in periculo versari, et gladio correpto Eurylocho imperavit ut sine mora viam ad istam domum demonstraret."
+            },
+            {
+              "id": "ulysses.96.5",
+              "text": "Ille tamen multis cum lacrimis Ulixem complexus obsecrare coepit ne in tantum periculum se committeret; si quid gravius ei accidisset, omnium salutem in summo discrimine futuram."
+            },
+            {
+              "id": "ulysses.96.6",
+              "text": "Ulixes autem respondit se neminem invitum secum adducturum; ei licere, si mallet, in navi manere; se ipsum sine ullo praesidio rem suscepturum."
+            },
+            {
+              "id": "ulysses.96.7",
+              "text": "Hoc cum magna voce dixisset, e navi desiluit et nullo sequente solus in viam se dedit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "97. THE COUNTERCHARM",
+      "chapter": 97,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.97.1",
+              "text": "Aliquantum itineris progressus ad villam magnificam pervenit, quam cum oculis perlustrasset, statim intrare statuit; intellexit enim hanc esse eandem domum de qua Eurylochus mentionem fecisset."
+            },
+            {
+              "id": "ulysses.97.2",
+              "text": "At cum in eo esset ut limen intraret, subito ei obviam stetit adulescens forma pulcherrima aureum baculum gerens."
+            },
+            {
+              "id": "ulysses.97.3",
+              "text": "Hic Ulixem iam domum intrantem manu corripuit et, \"Quo ruis?\" inquit."
+            },
+            {
+              "id": "ulysses.97.4",
+              "text": "\"Nonne scis hanc esse Circes domum?"
+            },
+            {
+              "id": "ulysses.97.5",
+              "text": "Hic inclusi sunt amici tui ex humana specie in porcos conversi."
+            },
+            {
+              "id": "ulysses.97.6",
+              "text": "Num vis ipse in eandem calamitatem venire?\""
+            },
+            {
+              "id": "ulysses.97.7",
+              "text": "Ulixes simul ac vocem audivit, deum Mercurium agnovit; nullis tamen precibus ab instituto consilio deterreri potuit."
+            },
+            {
+              "id": "ulysses.97.8",
+              "text": "Quod cum Mercurius sensisset, herbam quandam ei dedit, quam contra carmina multum valere dicebat."
+            },
+            {
+              "id": "ulysses.97.9",
+              "text": "\"Hanc cape,\" inquit, \"et ubi Circe te baculo tetigerit, tu stricto gladio impetum in eam vide ut facias.\""
+            },
+            {
+              "id": "ulysses.97.10",
+              "text": "Mercurius postquam finem loquendi fecit, \"mortalis visus medio sermone reliquit, et procul in tenuem ex oculis evanuit auram.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "98. THE ENCHANTRESS IS FOILED",
+      "chapter": 98,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.98.1",
+              "text": "Brevi intermisso spatio Ulixes ad omnia pericula subeunda paratus ianuam pulsavit, et foribus patefactis ab ipsa Circe benigne exceptus est."
+            },
+            {
+              "id": "ulysses.98.2",
+              "text": "Omnia eodem modo atque antea facta sunt."
+            },
+            {
+              "id": "ulysses.98.3",
+              "text": "Cenam magnifice instructam vidit et accumbere iussus est."
+            },
+            {
+              "id": "ulysses.98.4",
+              "text": "Mox, ubi fames cibo depulsa est, Circe poculum aureum vino repletum Ulixi dedit."
+            },
+            {
+              "id": "ulysses.98.5",
+              "text": "Ille etsi suspicatus est venenum sibi paratum esse, poculum exhausit; quo facto Circe postquam caput eius baculo tetigit, ea verba locuta est quibus socios eius antea in porcos converterat."
+            },
+            {
+              "id": "ulysses.98.6",
+              "text": "Res tamen omnino aliter evenit atque illa speraverat."
+            },
+            {
+              "id": "ulysses.98.7",
+              "text": "Tanta enim vis erat eius herbae quam Ulixi Mercurius dederat ut neque venenum neque verba quicquam efficere possent."
+            },
+            {
+              "id": "ulysses.98.8",
+              "text": "Ulixes autem, ut ei praeceptum erat, gladio stricto impetum in eam fecit et mortem minitabatur."
+            },
+            {
+              "id": "ulysses.98.9",
+              "text": "Circe cum artem suam nihil valere sensisset, multis cum lacrimis eum obsecrare coepit ne sibi vitam adimeret."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "99. MEN ONCE MORE",
+      "chapter": 99,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.99.1",
+              "text": "Ulixes autem ubi sensit eam timore perterritam esse, postulavit ut socios suos sine mora in humanam speciem reduceret (certior enim factus erat a deo Mercurio eos in porcos conversos esse); nisi id factum esset, se debitas poenas sumpturum ostendit."
+            },
+            {
+              "id": "ulysses.99.2",
+              "text": "Circe his rebus graviter commota ei ad pedes se proiecit, et multis cum lacrimis iure iurando confirmavit se quae ille imperasset omnia facturam."
+            },
+            {
+              "id": "ulysses.99.3",
+              "text": "Tum porcos in atrium immitti iussit."
+            },
+            {
+              "id": "ulysses.99.4",
+              "text": "Illi dato signo inruerunt, et cum ducem suum agnovissent, magno dolore adfecti sunt quod nullo modo eum de rebus suis certiorem facere poterant."
+            },
+            {
+              "id": "ulysses.99.5",
+              "text": "Circe tamen unguento quodam corpora eorum unxit; quo facto sunt omnes statim in humanam speciem reducti."
+            },
+            {
+              "id": "ulysses.99.6",
+              "text": "Magno cum gaudio Ulixes suos amicos agnovit, et nuntium ad litus misit, qui reliquis Graecis socios receptos esse diceret."
+            },
+            {
+              "id": "ulysses.99.7",
+              "text": "Illi autem his rebus cognitis statim ad domum Circaeam se contulerunt; quo cum venissent, universi laetitiae se dediderunt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "100. AFLOAT AGAIN",
+      "chapter": 100,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "ulysses.100.1",
+              "text": "Postridie eius diei Ulixes ex hac insula quam celerrime discedere in animo habebat."
+            },
+            {
+              "id": "ulysses.100.2",
+              "text": "Circe tamen cum haec cognovisset, ex odio ad amorem conversa omnibus precibus eum orare et obtestari coepit ut paucos dies apud se moraretur; qua re tandem impetrata tanta beneficia in eum contulit ut facile ei persuasum sit ut diutius maneret."
+            },
+            {
+              "id": "ulysses.100.3",
+              "text": "Postquam tamen totum annum apud Circen consumpserat, Ulixes magno desiderio patriae suae motus est."
+            },
+            {
+              "id": "ulysses.100.4",
+              "text": "Sociis igitur ad se convocatis quid in animo haberet ostendit."
+            },
+            {
+              "id": "ulysses.100.5",
+              "text": "Ubi tamen ad litus descendit, navem suam tempestatibus tam adflictam invenit ut ad navigandum paene inutilis esset."
+            },
+            {
+              "id": "ulysses.100.6",
+              "text": "Hac re cognita omnia quae ad navis reficiendas usui essent comparari iussit, qua in re tantam diligentiam omnes adhibebant ut ante tertium diem opus perfecerint."
+            },
+            {
+              "id": "ulysses.100.7",
+              "text": "At Circe ubi omnia ad profectionem parata esse vidit, rem aegre ferebat et Ulixem vehementer obsecrabat ut eo consilio desisteret."
+            },
+            {
+              "id": "ulysses.100.8",
+              "text": "Ille tamen, ne anni tempore a navigatione excluderetur, maturandum sibi existimavit, et tempestatem idoneam nactus navem solvit."
+            },
+            {
+              "id": "ulysses.100.9",
+              "text": "Multa quidem pericula Ulixi subeunda erant antequam in patriam suam perveniret, quae tamen hoc loco longum est perscribere."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

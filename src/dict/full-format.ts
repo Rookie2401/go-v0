@@ -14,7 +14,7 @@
  */
 import type { LanguageCode, PartOfSpeech } from '../core';
 import { MAX_BUCKETS, PARTS_OF_SPEECH, bucketOf } from './format';
-import { NON_WORD_POS, partOfSpeechOf } from './map';
+import { NON_WORD_POS, etymologyNumberOf, partOfSpeechOf, soundsWithNotes } from './map';
 
 export const FULL_SCHEMA = 'full-1';
 /** The compact schema (src/dict/full2.ts): tag-set tables, interned strings, gzip at rest. Same records once read back. */
@@ -173,10 +173,10 @@ function formsOf(line: Record<string, unknown>, lang: string): FormsResult {
   return { forms, tpl, ...(rom ? { rom } : {}) };
 }
 
-function soundsOf(line: Record<string, unknown>): { ipa: FullIpa[]; audio: FullAudio[] } {
+function soundsOf(line: Record<string, unknown>, lang: string): { ipa: FullIpa[]; audio: FullAudio[] } {
   const ipa: FullIpa[] = [];
   const audio: FullAudio[] = [];
-  for (const raw of list(line.sounds)) {
+  for (const raw of soundsWithNotes(list(line.sounds), lang)) {
     if (!isObj(raw)) continue;
     const t = labelsOf(raw);
     const i = cleanOpt(raw.ipa);
@@ -275,20 +275,20 @@ export function mapFullLine(line: unknown, normalize: (surface: string) => strin
   if (!s.length) return { skipped: 'no-senses' };
 
   const p = partOfSpeechOf(heading);
-  const e = line.etymology_number;
+  const e = etymologyNumberOf(line.etymology_number, lang);
   // property order is fixed by construction, so shards are byte-stable
   const record: FullRecord = {
     w: word.normalize('NFC'),
     ...(p ? { p } : {}),
     ...(heading && (!p || p === 'X') ? { h: heading } : {}),
-    ...(typeof e === 'number' && Number.isInteger(e) && e >= 1 ? { e } : {}),
+    ...(e !== undefined ? { e } : {}),
     s,
   };
   const { forms, tpl, rom } = formsOf(line, lang);
   if (forms.length) record.f = forms;
   if (tpl.length) record.tpl = tpl;
   if (rom) record.rom = rom;
-  const { ipa, audio } = soundsOf(line);
+  const { ipa, audio } = soundsOf(line, lang);
   if (ipa.length) record.ipa = ipa;
   if (audio.length) record.audio = audio;
   const hyph = hyphenationsOf(line);

@@ -16,7 +16,7 @@ import { gradeTyped, normalizeAnswer } from '../../packages/goreview/src';
 import { setBody, stubLayout } from '../extension/dom';
 import { flushAfterAll, row } from './a11y.support';
 import {
-  dueCard, destroyRigs, ids, key, makeRig, reopen, seed, startWith, type as typeIn, until, FakeService,
+  dueCard, destroyRigs, ids, key, makeRig, reopenDetails, seed, startWith, type as typeIn, until, FakeService,
 } from '../gopractice/helpers';
 import { registerAllAnalysers } from '../support/analysers';
 
@@ -119,7 +119,8 @@ describe('the GoPractice review screens show Devanagari and Thai unchanged', () 
     const rig = await makeRig({ service: hiThService(lang), signedIn: true });
     const A = ids('L1', lang);
     await seed(rig, dueCard(A, label, 'written-recognition'));
-    await reopen(rig);
+    // the deck rows live on #/review/details since the GoReview home became the four entries (2026-10-16); the home itself is checked by startWith below
+    await reopenDetails(rig);
     const homeText = rig.root.textContent ?? '';
     expect(homeText.includes('�')).toBe(false);
     const deckRow = rig.qa('[data-item]').find((r) => (r.textContent ?? '').includes(label))!;

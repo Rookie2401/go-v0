@@ -6,7 +6,7 @@
  *   vite build -c packages/golearn-extension/vite.config.ts --mode content      -> dist/content.js (+ manifest.json, action/popup.html)
  *   vite build -c packages/golearn-extension/vite.config.ts --mode background   -> dist/background.js
  *   vite build -c packages/golearn-extension/vite.config.ts --mode action       -> dist/action/popup.js
- *   vite build -c packages/golearn-extension/vite.config.ts --mode analysers    -> dist/analysers/{sq,es,de,hi,th,nb,nn}.js (+ shared chunks)
+ *   vite build -c packages/golearn-extension/vite.config.ts --mode analysers    -> dist/analysers/{sq,es,de,hi,th,nb,nn,la}.js (+ shared chunks)
  *   vite build -c packages/golearn-extension/vite.config.ts --mode content-harness -> dist/content.harness.js (NOT part of ext:build; run it after)
  *
  * `npm run ext:build` runs the four in order. `content-harness` is the same content script compiled with `__GOLEARN_HARNESS__` true, which
@@ -43,7 +43,7 @@ const ENTRIES = {
 } as const;
 
 /** The analysers: one entry per language (`src/analysers/<id>.ts` exports the adapter as `adapter`). */
-const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn'] as const;
+const ANALYSER_IDS = ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la'] as const;
 
 /** Copy the static files once, in the first (content) build. */
 function copyStatic(): Plugin {

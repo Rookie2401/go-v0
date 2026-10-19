@@ -1,6 +1,6 @@
-// ───────────────────────────── the six languages and their tutorials ─────────────────────────────
+// ───────────────────────────── the seven languages and their tutorials ─────────────────────────────
 //
-// The language screen's cards come from the language-packs catalogue (`LANGUAGE_CATALOGUE`, six entries, in the order a picker shows
+// The language screen's cards come from the language-packs catalogue (`LANGUAGE_CATALOGUE`, seven entries, in the order a picker shows
 // them) and nothing else: the names, script, level, what works and what does not are the catalogue's, which reads them from the
 // manifests and the capability report. This file only turns an entry into the view the screen renders.
 import { LANGUAGE_CATALOGUE, PACKS, tutorialFor } from '../../language-packs/src';
@@ -51,7 +51,7 @@ export function languageView(e: CatalogueEntry): LanguageView {
   return out;
 }
 
-/** The six languages in the catalogue's order. */
+/** The seven languages in the catalogue's order. */
 export const languagesOf = (): LanguageView[] => LANGUAGE_CATALOGUE.map(languageView);
 
 /** The orientation of a language, from the pack registry's tutorials; undefined where there is none. */

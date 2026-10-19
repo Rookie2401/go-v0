@@ -10,6 +10,7 @@ export {
   ALBANIAN_ASSISTANCE, ALBANIAN_CORPUS_TARGETS, ALBANIAN_COURSE_ID, ALBANIAN_DOORS, ALBANIAN_SCRIPTURE_POLICY, ALBANIAN_STAGES, ALBANIAN_STREAMS,
   ALBANIAN_VARIETY_POLICY, ALBANIAN_WORKS, ALB_BIBLE_RIGHTS,
 } from './albanian';
+export { LATIN_COURSE_ID, LATIN_SHELVES, LATIN_STREAMS, LATIN_WORKS } from './latin';
 export { COURSE_DOORS } from './doors';
 export type { CourseDoor } from './doors';
 export { createCourseCatalog, mergeWork, stageMetaId } from './catalog';

@@ -29,13 +29,14 @@ import {
   FULL_SCHEMA, FULL_SCHEMA_2, FULL_SHARD_FILE, FULL_SKIPS, bucketOf, chooseFullBuckets, fullManifestText, fullShardName, fullShardText, mapFullLine, newFullCounts,
   occupiedHex, tallyFullRecord, type FullCounts, type FullManifest, type FullRecord, type FullSchema, type FullSkip,
 } from './full-format';
+import { latinNormalize } from './latin-normalize';
 import { FULL2_SIZE_FACTOR, FULL2_TARGET_SHARD_BYTES, buildStringTable, encodeShard2, internCandidates } from './full2';
 
 export const FULL_SPILL_PARTITIONS = 256;
 
 /** The language name kaikki uses in its file names. */
 export const KAIKKI_LANGUAGE_NAMES: Readonly<Record<string, string>> = {
-  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', nb: 'Norwegian Bokmål', en: 'English', grc: 'Ancient Greek',
+  sq: 'Albanian', de: 'German', es: 'Spanish', hi: 'Hindi', th: 'Thai', nb: 'Norwegian Bokmål', en: 'English', grc: 'Ancient Greek', la: 'Latin',
 };
 
 export interface BuildFullOptions {
@@ -134,8 +135,9 @@ function schema3Source(outDir: string, lang: string): { url?: string; lastModifi
 }
 
 export async function buildFullFile(opts: BuildFullOptions): Promise<BuildFullResult> {
-  const adapter = opts.normalize ? undefined : createAdapterRegistry().get(opts.lang);
-  const normalize = opts.normalize ?? ((s: string) => adapter!.normalize(s));
+  const latin = opts.lang === ('la' as LanguageCode); // the Latin key rule is src/dict/latin-normalize.ts, shared with the adapter
+  const adapter = opts.normalize || latin ? undefined : createAdapterRegistry().get(opts.lang);
+  const normalize = opts.normalize ?? (latin ? latinNormalize : (s: string) => adapter!.normalize(s));
   const stats: FullBuildStats = {
     lines: 0, blank: 0, malformed: 0, counts: newFullCounts(), buckets: 0, shards: 0, shardBytes: 0, largestShardBytes: 0, diskBytes: 0, largestDiskBytes: 0, strings: 0, keys: 0,
     skipped: Object.fromEntries(FULL_SKIPS.map((k) => [k, 0])) as Record<FullSkip, number>,
@@ -297,7 +299,7 @@ async function main(): Promise<void> {
   const args = process.argv.slice(2).filter((a) => a !== '--' && a !== '--gzip' && a !== '--no-gzip');
   const lang = args[0];
   if (!lang || lang.startsWith('--')) fail('a language code is required');
-  if (!(LANGUAGES as readonly string[]).includes(lang)) fail(`unknown language "${lang}" (one of ${LANGUAGES.join(', ')})`);
+  if (!([...LANGUAGES, 'la'] as readonly string[]).includes(lang)) fail(`unknown language "${lang}" (one of ${LANGUAGES.join(', ')}, la)`);
   const opt: Record<string, string> = {};
   for (let i = 1; i < args.length; i += 2) {
     const k = args[i], v = args[i + 1];

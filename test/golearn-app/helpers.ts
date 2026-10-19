@@ -134,13 +134,15 @@ const experimental = (languageId: string, name: string, nativeName: string, scri
 export const DE_FAKE = experimental('de', 'German', 'Deutsch');
 export const HI_FAKE = experimental('hi', 'Hindi', 'हिन्दी', 'Deva');
 export const TH_FAKE = experimental('th', 'Thai', 'ไทย', 'Thai');
+/** Latin (added 2026-10-17): an experimental pack in Latin script whose one analysed variety is Ecclesiastical (Clementine Vulgate spelling). */
+export const LA_FAKE: PackView = { ...experimental('la', 'Latin', 'Latina'), defaultVarietyId: 'la-ecclesiastical', varieties: [{ varietyId: 'la-ecclesiastical', label: 'Ecclesiastical Latin (Clementine Vulgate spelling)', analysed: true }, { varietyId: 'la-classical', label: 'Classical Latin', analysed: false }] };
 /** Spanish as an installable experimental pack with the two varieties the regional preference offers. */
 export const ES_OK_FAKE: PackView = {
   ...experimental('es', 'Spanish', 'español'), defaultVarietyId: 'es-419',
   varieties: [{ varietyId: 'es-419', label: 'Latin America (general)', analysed: true }, { varietyId: 'es-HN', label: 'Honduras', analysed: true }],
 };
 
-/** The six languages as the catalogue lists them: Norwegian first, with its written standard as a required choice; Spanish with an optional regional preference. */
+/** The seven languages as the catalogue lists them (Latin last): Norwegian first, with its written standard as a required choice; Spanish with an optional regional preference. */
 export const LANGUAGES_FAKE: LanguageView[] = [
   {
     languageId: 'nb', name: 'Norwegian', nativeName: 'norsk', scriptId: 'Latn', packIds: ['pack:nb', 'pack:nn'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false,
@@ -160,6 +162,7 @@ export const LANGUAGES_FAKE: LanguageView[] = [
       { id: 'es-standard', label: 'General', languageId: 'es', varietyId: 'es-419' }, { id: 'es-HN', label: 'Honduras (regional preference)', languageId: 'es', varietyId: 'es-HN' },
     ] },
   },
+  { languageId: 'la', name: 'Latin', nativeName: 'Latina', scriptId: 'Latn', packIds: ['pack:la'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: false, audio: 'no validated audio', whatWorks: ['Lemma and gloss.'], whatDoesNot: ['Many endings are written alike, so several readings are kept.'] },
 ];
 
 /** Practice sentence the real Albanian analyser reads (also used by test/extension). */
@@ -195,8 +198,8 @@ export interface FakePacks extends PackBindings {
 
 export function fakePacks(): FakePacks {
   const all = [SQ_FAKE, ES_FAKE, NB_FAKE, NN_FAKE];
-  /** German, Hindi and Thai resolve for the language cards but are not listed among the packs (the share screen would otherwise offer them). */
-  const extra = [DE_FAKE, HI_FAKE, TH_FAKE];
+  /** German, Hindi, Thai and Latin resolve for the language cards but are not listed among the packs (the share screen would otherwise offer them). */
+  const extra = [DE_FAKE, HI_FAKE, TH_FAKE, LA_FAKE];
   const f: FakePacks = {
     all, installs: [], verifies: [],
     nextInstall: passingInstall(),

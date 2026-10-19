@@ -82,9 +82,10 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   th: ['th-standard'],
   nb: ['nb', 'nb-riksmal'],
   nn: ['nn', 'nn-landsmal'],
+  la: ['la-ecclesiastical'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn' };
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
   sq: 'sq', sqi: 'sq', als: 'sq', aln: 'sq',
@@ -94,6 +95,7 @@ const PRIMARY: Readonly<Record<string, string>> = {
   hi: 'hi', hin: 'hi',
   nb: 'nb', nob: 'nb',
   nn: 'nn', nno: 'nn',
+  la: 'la', lat: 'la',
 };
 /** Tags that look like a pack language but are not the pack's language. */
 const NOT_THE_PACK: Readonly<Record<string, string>> = {

@@ -218,6 +218,20 @@ const PROBES: Readonly<Record<string, Probe[]>> = {
       run: (a) => typeof a.decode === 'function' && a.decode('ข้าว').length > 0,
     },
   ],
+  la: [
+    {
+      id: 'ligatures-and-macrons-stay-whole',
+      claim: 'The ae and oe ligatures (æ, œ) and macrons stay inside their words, and a word is found whichever way it is spelled.',
+      evidence: 'Cælum et terra, caelum et terra and Cælum with a macron are tokenised into three words each, and cælum and caelum fold to the same key',
+      run: (a) => words(a, 'Cælum et terra, caelum et terra.').length === 6 && a.normalize('cælum') === a.normalize('caelum'),
+    },
+    {
+      id: 'enclitic-que-ne',
+      claim: 'A trailing -que or -ne is read as its own word joined to the word before it, so the word itself is still found.',
+      evidence: 'the reading of terraque has the lemma terra',
+      run: (a) => { const t = a.tokenize('terraque'); return a.analyze(t).some((x) => x.token.isWord && x.candidates.some((c) => c.lemma === 'terra')); },
+    },
+  ],
 };
 
 // ───────────────────────────── the report ─────────────────────────────

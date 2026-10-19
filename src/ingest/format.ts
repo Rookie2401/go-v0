@@ -643,7 +643,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     return { issues };
   }
   const adapter = lang ? ctx.registry.get(lang) : undefined;
-  const scriptRe = lang ? { Latn: /\p{Script=Latin}/u, Deva: /\p{Script=Devanagari}/u, Thai: /\p{Script=Thai}/u }[LANGUAGE_ROWS.find((r) => r.id === lang)!.script] : undefined;
+  const scriptRe = lang ? { Latn: /\p{Script=Latin}/u, Deva: /\p{Script=Devanagari}/u, Thai: /\p{Script=Thai}/u, Hebr: /[\u0591-\u05C7\u05D0-\u05EA]/u, Grek: /[\u0370-\u03FF\u1F00-\u1FFF]/u }[LANGUAGE_ROWS.find((r) => r.id === lang)!.script] : undefined;
   const speakerIds = isObj(speakers) ? new Set(Object.keys(speakers).filter((k) => !k.startsWith('_'))) : new Set<string>();
   const seenIds = new Map<string, string>();
   let sentenceCount = 0;

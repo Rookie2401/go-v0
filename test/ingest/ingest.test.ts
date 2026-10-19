@@ -6,11 +6,15 @@ import {
   CorpusValidationError, applyReview, computePublished, contentSignatureOf, importDocuments, validateDocument, ingestAll, ingestDocument, testimonyDocument, testimonyDocumentId,
   type CorpusDocument,
 } from '../../src/ingest';
-import { loadSeedCorpus } from './seed';
+import { PERIOD_LANGS, SEED_BY_LANG, loadSeedCorpus } from './seed';
 import { baseDoc, clock, countWrites, registry, scriptureDoc, snapshot } from './helpers';
 
 const ANALYZED = [...LANGUAGES];
-const docs = loadSeedCorpus(); // the seed texts (three per language, seven languages); the course texts have their own tests (corpus.test.ts)
+/** The languages with a seed trio (Latin has course texts only). */
+const SEED_LANGS = ANALYZED.filter((l) => l in SEED_BY_LANG);
+/** The seven original seed languages: the learner-loop assertions (shared lemmas, target phrases) are about their texts; Hebrew and Greek have no phrase rules and their compiled analysers are seed cores. */
+const ORIGINAL_SEVEN = SEED_LANGS.filter((l) => !PERIOD_LANGS.includes(l));
+const docs = loadSeedCorpus(); // the seed texts (three per language); the course texts have their own tests (corpus.test.ts)
 const clone = <T,>(x: T): T => structuredClone(x);
 const sentencesOf = (d: CorpusDocument): string[] =>
   d.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences.map((x) => x.text) : [p.text])));
@@ -39,22 +43,23 @@ describe('import of the bundled corpus', () => {
 
   it('imports every seed document as created, with a per-document report', async () => {
     expect(report.ok).toBe(true);
-    expect(report.documents).toHaveLength(21);
+    expect(report.documents).toHaveLength(SEED_LANGS.length * 3); // three seed texts per seed language
     for (const r of report.documents) {
       expect(r.action).toBe('created');
       expect(r.contentVersion).toBe(1);
       expect(r.sentencesAdded).toBeGreaterThan(0);
       expect(r.sentencesRetired).toBe(0);
       expect(r.issues.filter((i) => i.severity === 'error')).toEqual([]);
-      expect(r.analysisCoverage.coverage, r.id).toBeGreaterThanOrEqual(0.95);
+      // Hebrew / Greek: the compiled analyser is a seed core, the full indexes are installed assets (measured in corpus.test.ts)
       const t = (await store.texts.get(r.textId!))!;
+      expect(r.analysisCoverage.coverage, r.id).toBeGreaterThanOrEqual(PERIOD_LANGS.includes(t.lang) ? 0.45 : 0.95);
       expect(t.published).toBe(r.published);
       expect(t.unpublishedReasons).toEqual(r.unpublishedReasons);
     }
     expect(await store.texts.count()).toBe(docs.length);
     expect(await store.sources.count()).toBe(docs.length);
-    for (const lang of LANGUAGES) expect((await store.texts.where('lang', lang)).map((t) => t.id).sort()).toEqual(
-      ['bible-1john-1', 'dialogue-01', 'story-01'].map((s) => ids.text(lang, s)).sort());
+    for (const lang of SEED_LANGS) expect((await store.texts.where('lang', lang)).map((t) => t.id).sort(), lang).toEqual(
+      SEED_BY_LANG[lang].map((s) => ids.text(lang, s)).sort());
   });
 
   it('the publication gate on the stored texts: only verified es / de / hi Scripture is published', async () => {
@@ -100,23 +105,25 @@ describe('import of the bundled corpus', () => {
 
   it('keeps scripture text unchanged and carries verse references (and translation identity) as metadata', async () => {
     const bibles = docs.filter((d) => d.contentType === 'scripture');
-    expect(bibles).toHaveLength(7);
+    expect(bibles).toHaveLength(SEED_LANGS.length);
     for (const d of bibles) {
       const textId = ids.text(d.lang, d.id);
       const text = (await store.texts.get(textId))!;
       expect(text.kind).toBe('scripture');
       expect(text.generated).toBe(false);
       expect(text.version).toBe(d.scripture!.translationName);
-      expect(text.scripture).toMatchObject({ book: '1JN', chapter: 1, translationId: d.scripture!.translationId, edition: d.scripture!.edition });
+      // Hebrew's scripture seed is Genesis 1:1–5 (see corpus.test.ts); every other language's is 1 John 1:8–9 + John 3:16
+      const genesis = d.id === 'bible-gen-1';
+      expect(text.scripture).toMatchObject({ book: genesis ? 'GEN' : '1JN', chapter: 1, translationId: d.scripture!.translationId, edition: d.scripture!.edition });
       expect(!!text.scripture!.verification).toBe(d.lang === 'es' || d.lang === 'de' || d.lang === 'hi');
       const stored = await liveSentences(store, textId);
-      expect(stored.map((s) => s.verseRefs)).toEqual([['1JN.1.8'], ['1JN.1.9'], ['JHN.3.16']]);
+      expect(stored.map((s) => s.verseRefs)).toEqual(genesis ? [['GEN.1.1'], ['GEN.1.2'], ['GEN.1.3'], ['GEN.1.4'], ['GEN.1.5']] : [['1JN.1.8'], ['1JN.1.9'], ['JHN.3.16']]);
       for (const s of stored) {
         expect(s.text).not.toMatch(/\d/);
         expect(s.text).not.toMatch(/[²³¹⁰⁴-⁹\[\]]/u);
       }
       const secs = (await store.sections.where('textId', textId)).sort((a, b) => a.index - b.index);
-      expect(secs.map((s) => s.chapter)).toEqual([1, 3]);
+      expect(secs.map((s) => s.chapter)).toEqual(genesis ? [1] : [1, 3]);
     }
     expect((await store.texts.get(ids.text('es', 'bible-1john-1')))!.version).toBe('Reina-Valera 1909');
     expect((await store.texts.get(ids.text('de', 'bible-1john-1')))!.version).toBe('Lutherbibel 1912');
@@ -139,13 +146,21 @@ describe('import of the bundled corpus', () => {
 
   it('is honest about rights and provenance', async () => {
     const source = async (lang: LanguageCode, slug: string) => (await store.sources.get(`src:${lang}:${slug}`))!;
-    for (const lang of LANGUAGES) {
+    for (const lang of SEED_LANGS) {
       for (const slug of ['story-01', 'dialogue-01']) {
         const s = await source(lang, slug);
-        expect(s.rights).toBe('owner-authored');
+        expect(s.rights, `${lang} ${slug}`).toBe('owner-authored');
         expect(s.provenance).toMatch(/native speaker/);
         expect(s.attribution).toBeTruthy();
       }
+    }
+    // Hebrew (MAM, stated CC BY-SA 4.0) and Greek (SBLGNT, stated CC BY 4.0): copied from the Biblia app's build, recorded UNVERIFIED until a byte-comparison is on file
+    for (const [lang, slug] of [['he', 'bible-gen-1'], ['el', 'bible-1john-1']] as const) {
+      const s = await source(lang, slug);
+      expect(s.rights, lang).toBe('unverified');
+      expect(s.licenseNote, lang).toMatch(/CC BY/);
+      expect(s.provenance, lang).toMatch(/verify-scripture/);
+      expect(s.provenance, lang).toMatch(/nothing retyped/);
     }
     for (const lang of ['es', 'de'] as const) {
       const s = await source(lang, 'bible-1john-1');
@@ -170,7 +185,7 @@ describe('import of the bundled corpus', () => {
 
   it('gives the same form in story and Bible the same formId, yet distinct tokens', async () => {
     const sharedContent: Record<LanguageCode, string[]> = {
-      es: ['pecado', 'dios'], de: ['sünde', 'gott'], sq: ['mëkat', 'perëndia'], th: ['บาป', 'พระเจ้า'], hi: ['पाप', 'परमेश्वर'], nb: [], nn: [],
+      es: ['pecado', 'dios'], de: ['sünde', 'gott'], sq: ['mëkat', 'perëndia'], th: ['บาป', 'พระเจ้า'], hi: ['पाप', 'परमेश्वर'], nb: [], nn: [], he: [], el: [], la: [],
     };
     for (const lang of LANGUAGES) {
       for (const word of sharedContent[lang]) {
@@ -195,7 +210,7 @@ describe('import of the bundled corpus', () => {
       }
       return out;
     };
-    for (const lang of ANALYZED) {
+    for (const lang of ORIGINAL_SEVEN) {
       const story = await lemmasIn(lang, 'story-01');
       const bible = await lemmasIn(lang, 'bible-1john-1');
       const shared = [...story].filter((l) => bible.has(l) && /:(NOUN|VERB|PROPN)$/.test(l));
@@ -210,7 +225,7 @@ describe('import of the bundled corpus', () => {
       sq: ['mëkat', 'fal', 'kuptoj', 'zemër', 'besoj'],
       th: ['บาป', 'ยก', 'เข้าใจ', 'หัวใจ', 'เชื่อ'],
       hi: ['पाप', 'क्षमा', 'समझना', 'दिल', 'विश्वास'],
-      nb: [], nn: [],
+      nb: [], nn: [], he: [], el: [], la: [],
     };
     for (const lang of ANALYZED) {
       const lemmas = await store.lemmas.where('lang', lang);
@@ -234,8 +249,12 @@ describe('import of the bundled corpus', () => {
       hi: { young: ['जब', '_', 'छोटा', 'होना'], began: ['समझना', 'लगना'], believe: ['_', 'पर', 'विश्वास'] },
       nb: { young: ['da', '_', 'være', 'ung'], began: ['begynne', 'å', 'forstå'], believe: ['tro', 'på', '_'] },
       nn: { young: ['då', '_', 'vere', 'ung'], began: ['byrje', 'å', 'forstå'], believe: ['tru', 'på', '_'] },
+      // no seed texts for Hebrew or Greek yet: nothing to mark
+      he: { young: [], began: [], believe: [] },
+      el: { young: [], began: [], believe: [] },
+      la: { young: [], began: [], believe: [] },
     };
-    for (const lang of ANALYZED) {
+    for (const lang of ORIGINAL_SEVEN) {
       const occIn = async (slug: string, pattern: string[]) =>
         (await store.phraseOccurrences.where('phraseId', ids.phrase(lang, pattern))).filter((o) => o.textId === ids.text(lang, slug));
       for (const key of ['young', 'began', 'believe'] as const) expect((await occIn('story-01', P[lang][key])).length, `${lang} story ${key}`).toBeGreaterThan(0);
@@ -251,7 +270,7 @@ describe('import of the bundled corpus', () => {
     const rows = await store.analyses.all();
     expect(rows.length).toBeGreaterThan(500);
     for (const a of rows) {
-      expect(a.analyzer).toMatch(/^adapter-(es|sq|th|hi|de|nb|nn)@\d+$/);
+      expect(a.analyzer).toMatch(/^adapter-(es|sq|th|hi|de|nb|nn|he|el)@\d+$/);
       expect(['lexicon', 'machine']).toContain(a.provenance);
       expect(a.confidence).toBeGreaterThan(0);
       expect(a.confidence).toBeLessThanOrEqual(1);

@@ -56,6 +56,16 @@ export interface ParseContext {
   selEnd?: number;
   direction?: 'ltr' | 'rtl' | 'unknown';
   pageLanguage?: string;
+  /**
+   * The variety the reader declares the text to be in, or the learner's target (a PERIOD for Hebrew / Greek: a Tanakh page is 'he-bib').
+   * Passed to the analyser, which uses it only to break ties the text leaves open; the text itself is never overridden.
+   */
+  varietyId?: string;
+  /**
+   * The SOURCE's own reading of the selected token, when the reader has one (Biblia: the Open Scriptures / MorphGNT column of that very word):
+   * the analyser's candidate with this lemma id and code is put first and says so. Never invents a reading: a gold the analyser does not hold is ignored.
+   */
+  gold?: { lemmaId: string; code: string; source?: string };
 }
 
 /** `languageId` is the language of the learner's enrolment; absent = Albanian (PARSER_LANGUAGE). An unlisted language throws a RangeError; a listed language whose analyser has not been loaded throws `AnalyserNotLoaded` (the caller loads it first: see registry.ts). */
@@ -100,9 +110,18 @@ export function parseSelection(input: ParseInput): CardModel {
   } else if (kind !== 'none') { kind = 'none'; reason ??= 'no context text was given'; }
 
   const tokens = surface ? L.adapter.tokenize(text) : [];
-  const analyses = surface ? L.adapter.analyze(tokens) : [];
+  const analyses = surface ? L.adapter.analyze(tokens, ctx.varietyId ? { varietyId: ctx.varietyId } : undefined) : [];
   const selected: number[] = [];
   tokens.forEach((t, i) => { if (t.isWord && t.start < selEnd && t.end > selStart) selected.push(i); });
+  // the source's reading of this very token (a reader that carries one) goes first, and says so; nothing is invented
+  if (ctx.gold && selected.length === 1) {
+    const a = analyses[selected[0]];
+    const k = a.candidates.findIndex((c) => c.notes?.lemmaId === ctx.gold!.lemmaId && c.notes?.code === ctx.gold!.code);
+    if (k > 0) {
+      const chosen = { ...a.candidates[k], notes: { ...a.candidates[k].notes, context: `the ${ctx.gold.source ?? 'source'} reads this very word so; the analyser's own first reading is kept as an alternative` } };
+      a.candidates = [chosen, ...a.candidates.filter((_, j) => j !== k)];
+    }
+  }
 
   // 2. context report (a fragment's hash is not a sentence identity)
   const context: ContextReport = { kind, confidence: kind === 'none' ? 0 : clamp01(ctx.confidence), reason, selectionLocated, direction: ctx.direction };
@@ -149,6 +168,8 @@ export function parseSelection(input: ParseInput): CardModel {
   const basis: string[] = []; let pronunciation: string[] = []; const alternatives: Alternative[] = [];
   let transliteration: string | undefined; let lemmaTransliteration: string | undefined;
   let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = []; let syntax: SyntaxNote | undefined;
+  let period: CardModel['period']; let variants: CardModel['variants'];
+  const varietyLabel = (code: string): string => L.adapter.varieties?.[code]?.label ?? code;
   const constructions: ConstructionNote[] = patternsFor(L, tokens, analyses, selected).map((p) => ({
     id: p.key, unitId: unitIds.syntactic(L.lang, p.key), title: p.title, explanation: p.explanation, confidence: clamp01(p.confidence), source: 'pattern' as const,
   }));
@@ -180,7 +201,17 @@ export function parseSelection(input: ParseInput): CardModel {
       if (typeof c.notes?.disputed === 'string') notes.push(`Sources disagree: ${c.notes.disputed}`);
       if (c.unit && c.unit.pieces.length > 1) notes.push(`Part of a unit with the neighbouring word: "${c.unit.display}".`);
       if (c.orthography) notes.push(`Spelling differs from today's standard (${c.orthography.modern}).`);
-      if (c.varieties?.length) notes.push(`Variety: ${c.varieties.join(', ')}.`);
+      if (c.varieties?.length) notes.push(`Variety: ${c.varieties.join(', ')}.`); // the codes, as before; a period's plain-words label is on the period line
+      // a language with period varieties: the period the analyser read the sentence in, and the word across the periods ("Variants")
+      if (typeof c.notes?.period === 'string' && L.adapter.varieties?.[c.notes.period]?.kind === 'period') {
+        period = { varietyId: c.notes.period, label: varietyLabel(c.notes.period), basis: typeof c.notes.periodBasis === 'string' ? c.notes.periodBasis : '' };
+      }
+      if (L.adapter.variants && c.lemma) {
+        try {
+          const v = L.adapter.variants(c.lemma, c.pos, tokens[i].surface);
+          if (v) variants = { ...v, rows: v.rows.map((r) => ({ ...r, ...(period && r.varietyId === period.varietyId ? { current: true } : {}) })) };
+        } catch { /* the Variants tab is an aid: it never breaks a card */ }
+      }
       for (const a of analyses[i].candidates) {
         if (a === c) continue;
         alternatives.push({ lemma: a.lemma, pos: a.pos, gloss: a.unconfirmed ? undefined : a.gloss, confidence: clamp01(a.confidence) });
@@ -228,6 +259,7 @@ export function parseSelection(input: ParseInput): CardModel {
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
     alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,
     features, constructions, role, syntaxNotes, ...(syntax ? { syntax } : {}), sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
+    ...(period ? { period } : {}), ...(variants ? { variants } : {}),
   };
 }
 
@@ -288,6 +320,8 @@ const SCRIPT_TEST: Record<string, { name: string; re: RegExp }> = {
   Latn: { name: 'Latin', re: /\p{Script=Latin}/u },
   Deva: { name: 'Devanagari', re: /\p{Script=Devanagari}/u },
   Thai: { name: 'Thai', re: /\p{Script=Thai}/u },
+  Hebr: { name: 'Hebrew', re: /\p{Script=Hebrew}/u },
+  Grek: { name: 'Greek', re: /\p{Script=Greek}/u },
 };
 const scriptName = (L: Lang): string => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).name;
 const hasScriptLetter = (L: Lang, s: string): boolean => (SCRIPT_TEST[L.adapter.script] ?? SCRIPT_TEST.Latn).re.test(s);

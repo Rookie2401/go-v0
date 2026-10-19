@@ -118,6 +118,21 @@ export const STORY: Record<LanguageCode, FixtureSentence[]> = {
     { tokens: ['Gud', 'tilgav', 'meg'].map(w).concat(dot()) },
     { tokens: ['Eg', 'forstår', 'hjartet', 'mitt'].map(w).concat(dot()) },
   ],
+  he: [
+    { tokens: ['אני', 'מאמין', 'באלוהים'].map(w).concat(dot()) },
+    { tokens: ['אלוהים', 'סלח', 'לי'].map(w).concat(dot()) },
+    { tokens: ['אני', 'מבין', 'את', 'ליבי'].map(w).concat(dot()) },
+  ],
+  el: [
+    { tokens: ['Πιστεύω', 'στον', 'Θεό'].map(w).concat(dot()) },
+    { tokens: ['Ο', 'Θεός', 'με', 'συγχώρεσε'].map(w).concat(dot()) },
+    { tokens: ['Καταλαβαίνω', 'την', 'καρδιά', 'μου'].map(w).concat(dot()) },
+  ],
+  la: [
+    { tokens: ['Credo', 'in', 'Deum'].map(w).concat(dot()) },
+    { tokens: ['Deus', 'mihi', 'remisit'].map(w).concat(dot()) },
+    { tokens: ['Intellego', 'cor', 'meum'].map(w).concat(dot()) },
+  ],
 };
 
 /** Scripture: verse numbers are metadata (verseRefs), never in the sentence text. */
@@ -149,6 +164,18 @@ export const SCRIPTURE: Record<LanguageCode, FixtureSentence[]> = {
   nn: [
     { tokens: ['For', 'så', 'høgt', 'elska', 'Gud', 'verda'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
     { tokens: ['Om', 'vi', 'stadfestar', 'syndene', 'våre'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  he: [
+    { tokens: ['כי', 'כה', 'אהב', 'אלוהים', 'את', 'העולם'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['אם', 'נתוודה', 'על', 'חטאינו'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  el: [
+    { tokens: ['Γιατί', 'ο', 'Θεός', 'αγάπησε', 'τον', 'κόσμο'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['Αν', 'ομολογούμε', 'τις', 'αμαρτίες', 'μας'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
+  ],
+  la: [
+    { tokens: ['Sic', 'enim', 'Deus', 'dilexit', 'mundum'].map(w).concat(dot()), verseRefs: ['JHN.3.16'] },
+    { tokens: ['Si', 'confiteamur', 'peccata', 'nostra'].map(w).concat(dot()), verseRefs: ['1JN.1.9'] },
   ],
 };
 

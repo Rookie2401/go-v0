@@ -1,6 +1,6 @@
 /**
- * The language catalogue: the six languages of interest, in the order a picker shows them, each with what a learner needs to
- * choose well. The product serves exactly these six; any learner may pick any language pack freely (there are no teams in the
+ * The language catalogue: the seven languages of interest, in the order a picker shows them, each with what a learner needs to
+ * choose well. The product serves exactly these seven; any learner may pick any language pack freely (there are no teams in the
  * apps, and a team is no longer how a language is chosen), and an account is optional.
  *
  *   Norwegian   (nb)  two written standards, Bokmål and Nynorsk, each its own pack; neither is the default for the other
@@ -9,6 +9,7 @@
  *   Hindi       (hi)  Devanagari
  *   Thai        (th)  Thai script
  *   Spanish     (es)  Honduras is a regional preference of the one Spanish pack, not a language of its own
+ *   Latin       (la)  Latin script; Clementine-Vulgate orthography (the seventh entry, added 2026-10-17)
  *
  * Everything but the fixed identity (which packs, which written standards, which varieties) is READ, never written here: the
  * names, script, level and validation come from the manifests; "a tutorial is available" from the tutorial registry and the
@@ -81,7 +82,7 @@ interface Spec {
   varieties?: CatalogueVariety[];
 }
 
-/** The six languages, in picker order. This table is the only hand-written part: which packs belong to a language. */
+/** The seven languages, in picker order. This table is the only hand-written part: which packs belong to a language. */
 const SPECS: readonly Spec[] = [
   {
     packIds: ['pack:nb', 'pack:nn'],
@@ -96,9 +97,20 @@ const SPECS: readonly Spec[] = [
     packIds: ['pack:es'],
     varieties: [{ id: 'es-standard', label: 'General' }, { id: 'es-HN', label: 'Honduras (regional preference)' }],
   },
+  { packIds: ['pack:la'] },
+  // Hebrew and Greek: one language each whose PERIODS are varieties; the learner's target period is a choice among them (Modern by
+  // default). Only the analysed periods are offered; the others are recognised on cards, not chosen.
+  {
+    packIds: ['pack:he'],
+    varieties: [{ id: 'he-mod', label: 'Modern Hebrew (default)' }, { id: 'he-bib', label: 'Biblical Hebrew' }],
+  },
+  {
+    packIds: ['pack:el'],
+    varieties: [{ id: 'el-mod', label: 'Modern Greek (default)' }, { id: 'el-koi', label: 'Koine Greek' }, { id: 'el-att', label: 'Attic Greek' }, { id: 'el-hom', label: 'Homeric Greek' }],
+  },
 ];
 
-const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script' };
+const SCRIPT_NAME: Readonly<Record<string, string>> = { Latn: 'Latin', Deva: 'Devanagari', Thai: 'Thai script', Hebr: 'Hebrew script', Grek: 'Greek alphabet' };
 
 const LEVEL_RANK: Readonly<Record<PackLevel, number>> = { planned: 0, experimental: 1, installable: 2 };
 const VALIDATION_ORDER: readonly ValidationLevel[] = ['unsupported', 'experimental', 'unreviewed', 'incomplete', 'production-validated'];
@@ -171,7 +183,7 @@ export interface CatalogueOptions {
   adapterOf?: (languageId: string) => LanguageAdapter | undefined;
 }
 
-/** Builds the six entries. A pack missing from the registry is a bug and throws. */
+/** Builds the seven entries. A pack missing from the registry is a bug and throws. */
 export function buildCatalogue(options: CatalogueOptions = {}): CatalogueEntry[] {
   const adapterOf = options.adapterOf ?? builtInAdapter;
   return SPECS.map((spec): CatalogueEntry => {
@@ -207,10 +219,10 @@ export function buildCatalogue(options: CatalogueOptions = {}): CatalogueEntry[]
   });
 }
 
-/** The six languages of interest, in the order a picker shows them. */
+/** The seven languages of interest, in the order a picker shows them. */
 export const LANGUAGE_CATALOGUE: readonly CatalogueEntry[] = Object.freeze(buildCatalogue());
 
-/** The entry of a language or of any of its packs (`nn` finds Norwegian); undefined for a language outside the six. */
+/** The entry of a language or of any of its packs (`nn` finds Norwegian); undefined for a language outside the seven. */
 export function catalogueEntry(languageId: string, catalogue: readonly CatalogueEntry[] = LANGUAGE_CATALOGUE): CatalogueEntry | undefined {
   return catalogue.find((e) => e.languageId === languageId || e.packs.some((p) => p.languageId === languageId));
 }

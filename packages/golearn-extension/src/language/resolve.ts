@@ -83,9 +83,12 @@ export const PACK_VARIETIES: Readonly<Record<string, readonly string[]>> = {
   nb: ['nb', 'nb-riksmal'],
   nn: ['nn', 'nn-landsmal'],
   la: ['la-ecclesiastical'],
+  // the packs' analysed varieties: the PERIODS a learner may target, and (Hebrew) Biblical Aramaic read beside it; the others are recognised on cards, not chosen
+  he: ['he-mod', 'he-bib', 'arc-bib'],
+  el: ['el-mod', 'el-koi', 'el-att', 'el-hom'],
 };
 /** The script each pack's language is written in; a tag that states another script (hi-Latn) names something no pack analyses. */
-const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn' };
+const PACK_SCRIPT: Readonly<Record<string, string>> = { sq: 'latn', es: 'latn', de: 'latn', hi: 'deva', th: 'thai', nb: 'latn', nn: 'latn', la: 'latn', he: 'hebr', el: 'grek' };
 
 const PRIMARY: Readonly<Record<string, string>> = {
   sq: 'sq', sqi: 'sq', als: 'sq', aln: 'sq',
@@ -96,6 +99,9 @@ const PRIMARY: Readonly<Record<string, string>> = {
   nb: 'nb', nob: 'nb',
   nn: 'nn', nno: 'nn',
   la: 'la', lat: 'la',
+  // Biblical Hebrew (hbo) and Ancient Greek (grc) are periods of the same packs, not other languages
+  he: 'he', heb: 'he', iw: 'he', hbo: 'he',
+  el: 'el', ell: 'el', gre: 'el', grc: 'el',
 };
 /** Tags that look like a pack language but are not the pack's language. */
 const NOT_THE_PACK: Readonly<Record<string, string>> = {
@@ -153,6 +159,13 @@ export function mapLanguageTag(tag: string): TagMapping {
   } else if (languageId === 'de' && region) {
     const v = `de-${region.toUpperCase()}`;
     if (PACK_VARIETIES.de.includes(v)) varietyId = v;
+  } else if (primary === 'hbo') {
+    varietyId = 'he-bib'; notes.push('hbo is Biblical Hebrew: a period of the Hebrew pack, read in its Biblical period');
+  } else if (primary === 'grc') {
+    // grc covers every ancient stage; a koi / x-koine subtag names the New Testament's stage, otherwise the tables' default, Attic
+    const koine = rest.some((p) => p === 'koi' || p === 'koine' || p === 'x-koine' || p === 'x-koi');
+    varietyId = koine ? 'el-koi' : 'el-att';
+    notes.push(koine ? 'grc with a Koine subtag: the Greek pack read in its Koine period' : 'grc is Ancient Greek: a period of the Greek pack, read as Attic unless the text itself shows another stage');
   }
   return { kind: 'pack', languageId, ...(varietyId ? { varietyId } : {}), notes };
 }
@@ -170,15 +183,17 @@ function sampleWords(sample: string): string[] {
   return out;
 }
 
-interface ScriptShare { latin: number; thai: number; devanagari: number; letters: number }
+interface ScriptShare { latin: number; thai: number; devanagari: number; hebrew: number; greek: number; letters: number }
 function scriptShare(sample: string): ScriptShare {
-  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, letters: 0 };
+  const r: ScriptShare = { latin: 0, thai: 0, devanagari: 0, hebrew: 0, greek: 0, letters: 0 };
   for (const ch of sample.slice(0, MAX_SAMPLE_CHARS)) {
     if (!/\p{L}/u.test(ch)) continue;
     r.letters++;
     if (/\p{Script=Latin}/u.test(ch)) r.latin++;
     else if (/\p{Script=Thai}/u.test(ch)) r.thai++;
     else if (/\p{Script=Devanagari}/u.test(ch)) r.devanagari++;
+    else if (/\p{Script=Hebrew}/u.test(ch)) r.hebrew++;
+    else if (/\p{Script=Greek}/u.test(ch)) r.greek++;
   }
   return r;
 }
@@ -218,8 +233,18 @@ function detect(sample: string, installed: ReadonlySet<string>, adapterOf: (l: s
     }
     return { confidence: 0, reasons: [`the sample is in Devanagari script, but the Hindi word list recognises only ${w.hits} of ${w.words} words: it may be Marathi, Nepali, Sanskrit, or Hindi outside the word list`] };
   }
+  // Hebrew script is shared with Aramaic and Yiddish; Greek script with nothing a pack reads. Which PERIOD of the pack applies is the
+  // analyser's per-sentence decision (cantillation, pointing, polytonic marks), not the resolver's: it names the language only.
+  if (share(sh.hebrew) >= MIN_SCRIPT_SHARE) {
+    if (!installed.has('he')) return { confidence: 0, reasons: ['the sample is in Hebrew script, but the Hebrew pack is not installed'] };
+    return { languageId: 'he', confidence: 0.85, reasons: ['the sample is in Hebrew script, which no other pack uses (the script is shared with Aramaic and Yiddish; the analyser decides the period sentence by sentence, Biblical Aramaic included)'] };
+  }
+  if (share(sh.greek) >= MIN_SCRIPT_SHARE) {
+    if (!installed.has('el')) return { confidence: 0, reasons: ['the sample is in Greek script, but the Greek pack is not installed'] };
+    return { languageId: 'el', confidence: 0.9, reasons: ['the sample is in Greek script, which no other pack uses (the analyser decides the period, Homeric to Modern, sentence by sentence)'] };
+  }
   if (share(sh.latin) < MIN_SCRIPT_SHARE) {
-    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai or Devanagari)'] };
+    return { confidence: 0, reasons: ['the sample is not mainly in one script this resolver can compare (Latin, Thai, Devanagari, Hebrew or Greek)'] };
   }
 
   // Latin script: a lexicon-hit comparison across the installed packs that have a word list.

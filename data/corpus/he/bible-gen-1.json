@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 2,
+  "id": "bible-gen-1",
+  "lang": "he",
+  "title": "בְּרֵאשִׁית א 1–5",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-he-mam",
+    "kind": "scripture",
+    "title": "Miqra according to the Masorah (מקרא על פי המסורה)"
+  },
+  "source": {
+    "id": "src:he:bible-gen-1",
+    "title": "Miqra according to the Masorah — a digital edition of the Tanakh based on the Aleppo Codex and related manuscripts",
+    "edition": "Miqra according to the Masorah (MAM), via the Sefaria API",
+    "attribution": "מקרא על פי המסורה (Miqra according to the Masorah), edited by Dovi (Hebrew Wikisource) — Creative Commons Attribution Share-Alike 4.0 (CC BY-SA 4.0); via the Sefaria API and the Biblia app's data build.",
+    "provenance": "Biblical Hebrew, the Masoretic text with points and cantillation. The verse wording is the MAM text as the Biblia app (C:/Users/CJWal/dev/biblia-v0, scripts/build-tanakh.mjs) fetched it from the Sefaria API on 2026-09-20; copied from that build on 2026-10-18, nothing retyped. NOT yet byte-compared here against Hebrew Wikisource or Sefaria by scripts/verify-scripture.mjs; until that check is recorded the text stays unpublished. There is no open-licence Hebrew New Testament at hand, so this language's scripture seed is Genesis 1:1–5 rather than 1 John 1; the English beside it is the course authors' own rendering, drafted by an AI assistant and not a published translation.",
+    "url": "https://he.wikisource.org/wiki/משתמש:Dovi/מקרא_על_פי_המסורה",
+    "rights": "unverified",
+    "licenseNote": "The edition states CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/); the text is passed on unchanged with attribution and under the same licence. Recorded as UNVERIFIED here until a byte-comparison against the edition (scripts/verify-scripture.mjs) is on file; the repository's bundle rule does not accept a licence claim without one.",
+    "authorship": "licensed"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Wording copied from the Biblia app's build of the MAM text; a byte-comparison against the edition (scripts/verify-scripture.mjs) has not been recorded yet. The verses are Biblical Hebrew, read by the Hebrew analyser in its Biblical period (the cantillation marks decide it)."
+  },
+  "topics": [
+    "scripture",
+    "genesis-1"
+  ],
+  "editorialTags": [
+    "verification-pending",
+    "english-machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "tanakh-mam",
+    "courseId": "hebrew",
+    "chapter": {
+      "index": 0,
+      "title": "בְּרֵאשִׁית א 1–5"
+    }
+  },
+  "scripture": {
+    "translationId": "mam",
+    "translationName": "Miqra according to the Masorah",
+    "edition": "MAM, via the Sefaria API",
+    "book": "GEN",
+    "chapter": 1
+  },
+  "english": {
+    "source": "Course authors' own English rendering (drafted by an AI assistant, not a published translation; not reviewed)"
+  },
+  "sections": [
+    {
+      "title": "בְּרֵאשִׁית א",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃",
+              "english": "In the beginning God created the heavens and the earth.",
+              "verseRefs": ["GEN.1.1"]
+            },
+            {
+              "text": "וְהָאָ֗רֶץ הָיְתָ֥ה תֹ֙הוּ֙ וָבֹ֔הוּ וְחֹ֖שֶׁךְ עַל־פְּנֵ֣י תְה֑וֹם וְר֣וּחַ אֱלֹהִ֔ים מְרַחֶ֖פֶת עַל־פְּנֵ֥י הַמָּֽיִם׃",
+              "english": "And the earth was formless and empty, and darkness was over the face of the deep, and the spirit of God was hovering over the face of the waters.",
+              "verseRefs": ["GEN.1.2"]
+            },
+            {
+              "text": "וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃",
+              "english": "And God said, “Let there be light,” and there was light.",
+              "verseRefs": ["GEN.1.3"]
+            },
+            {
+              "text": "וַיַּ֧רְא אֱלֹהִ֛ים אֶת־הָא֖וֹר כִּי־ט֑וֹב וַיַּבְדֵּ֣ל אֱלֹהִ֔ים בֵּ֥ין הָא֖וֹר וּבֵ֥ין הַחֹֽשֶׁךְ׃",
+              "english": "And God saw the light, that it was good, and God separated the light from the darkness.",
+              "verseRefs": ["GEN.1.4"]
+            },
+            {
+              "text": "וַיִּקְרָ֨א אֱלֹהִ֤ים ׀ לָאוֹר֙ י֔וֹם וְלַחֹ֖שֶׁךְ קָ֣רָא לָ֑יְלָה וַֽיְהִי־עֶ֥רֶב וַֽיְהִי־בֹ֖קֶר י֥וֹם אֶחָֽד׃",
+              "english": "And God called the light Day, and the darkness he called Night; and there was evening and there was morning, one day.",
+              "verseRefs": ["GEN.1.5"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

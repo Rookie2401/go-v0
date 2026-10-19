@@ -14,6 +14,9 @@ import { spanishManifest } from './packs/es';
 import { thaiManifest } from './packs/th';
 import { bokmalManifest } from './packs/nb';
 import { nynorskManifest } from './packs/nn';
+import { latinManifest } from './packs/la';
+import { hebrewManifest } from './packs/he';
+import { greekManifest } from './packs/el';
 
 export const PACKS: Readonly<Record<string, PackManifest>> = Object.freeze({
   sq: albanianManifest(),
@@ -23,6 +26,9 @@ export const PACKS: Readonly<Record<string, PackManifest>> = Object.freeze({
   th: thaiManifest(),
   nb: bokmalManifest(),
   nn: nynorskManifest(),
+  la: latinManifest(),
+  he: hebrewManifest(),
+  el: greekManifest(),
 });
 
 export function packFor(languageId: string): PackManifest | undefined {

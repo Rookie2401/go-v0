@@ -76,7 +76,7 @@ export async function createTellEngine(ctx: AppContext, id: Identity): Promise<T
   else if (manifest.status !== 'installable') analysisUnavailableReason = `The ${manifest.identity.name} pack is not installable yet, so nothing can be checked. You can still write and save.`;
   else {
     const runtime = createPackRuntime(manifest, { fetch: ctx.deps.fetch, baseUrl: ctx.deps.config.assetBaseUrl ?? './' });
-    analyzer = createAnalyzer({ languageId: id.languageId, runtime, manifest, now });
+    analyzer = createAnalyzer({ languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}), runtime, manifest, now });
     if (!analyzer.hasChecker) { analysisUnavailableReason = `The ${manifest.identity.name} pack has no checker yet, so nothing can be checked. You can still write and save.`; analyzer = undefined; }
   }
   // the remote-assistance switch: off unless the stored value is the boolean true; switching writes ConsentGiven / ConsentWithdrawn
@@ -118,10 +118,10 @@ export async function createTellEngine(ctx: AppContext, id: Identity): Promise<T
     analysisAvailable: !!analyzer,
     ...(analysisUnavailableReason ? { analysisUnavailableReason } : {}),
 
-    prompts: (opts) => promptsFor({ languageId: id.languageId, mode: opts.mode, ...(opts.category ? { category: opts.category } : {}), ...(opts.teamId ? { teamId: opts.teamId } : {}) }, PROMPTS),
+    prompts: (opts) => promptsFor({ languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}), mode: opts.mode, ...(opts.category ? { category: opts.category } : {}), ...(opts.teamId ? { teamId: opts.teamId } : {}) }, PROMPTS),
     promptById: (promptId) => promptById(promptId, PROMPTS),
     suggestPrompt(profile, opts) {
-      const candidates = promptsFor({ languageId: id.languageId, mode: opts.mode, ...(opts.category ? { category: opts.category } : {}), ...(opts.teamId ? { teamId: opts.teamId } : {}) }, PROMPTS);
+      const candidates = promptsFor({ languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}), mode: opts.mode, ...(opts.category ? { category: opts.category } : {}), ...(opts.teamId ? { teamId: opts.teamId } : {}) }, PROMPTS);
       const pick = selectPrompt(candidates, profile, opts.mode, { avoid: opts.exclude ?? [], random: ctx.deps.random });
       return pick ? { prompt: pick.prompt, reason: pick.reason } : undefined;
     },

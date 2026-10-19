@@ -62,7 +62,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
   const factsByUnit = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
   const factErrors = new Map<string, string>();
   for (const id of new Set(testable)) {
-    try { factsByUnit.set(id, await deps.facts.factsFor(id, preferences.languageId)); }
+    try { factsByUnit.set(id, await deps.facts.factsFor(id, preferences.languageId, preferences.varietyId)); }
     catch (e) { factErrors.set(id, e instanceof Error ? e.message : String(e)); }
   }
 
@@ -74,7 +74,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
     item.unitKind === 'form' && item.dimension === 'written-recognition' && item.status !== 'dismissed') : [];
   for (const item of existingFormRecognition) {
     if (factsByUnit.has(item.unitId) || factErrors.has(item.unitId)) continue;
-    try { factsByUnit.set(item.unitId, await deps.facts.factsFor(item.unitId, preferences.languageId)); }
+    try { factsByUnit.set(item.unitId, await deps.facts.factsFor(item.unitId, preferences.languageId, preferences.varietyId)); }
     catch (e) { factErrors.set(item.unitId, e instanceof Error ? e.message : String(e)); }
   }
 

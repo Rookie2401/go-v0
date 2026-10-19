@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { LANGUAGES } from '../../src/core';
 import { loadBundledCorpus } from '../../src/ingest';
 import { adapter } from './helpers';
+import { SEED_BY_LANG } from '../ingest/seed';
 
 const SAMPLES: Record<string, string[]> = {
   es: ['¿Cómo estás? Muy bien, «gracias».', 'Entenderlo… y perdonarnos: 3 cosas (o 4).', 'Dios ama al mundo — sí.'],
@@ -11,6 +12,9 @@ const SAMPLES: Record<string, string[]> = {
   nb: ['Jeg begynte å forstå det.', 'Hva sa du? Ikke noe: bare «ja» (eller nei).', 'Han kjøpte brød, smør og ost — på Grünerløkka.'],
   nn: ['Eg byrja å forstå det.', 'Kva sa du? Ikkje noko: berre «ja» (eller nei).', 'Ho kjøpte brød, smør og ost — på Grünerløkka.'],
   de: ['Ich fing an, es zu verstehen.', 'Am 3. Mai kam der Gotteshaus-Mann (z. B.) nach Hause!', 'Sünde — „Untugend“ und Wahrheit.'],
+  la: ['In principio erat Verbum, et Verbum erat apud Deum.', 'Dixitque Deus : Fiat lux. Et facta est lux.', 'Quid est veritas? Ecce homo — «vidēte» (cap. 3).'],
+  he: ['בְּרֵאשִׁ֖ית בָּרָ֣א אֱלֹהִ֑ים אֵ֥ת הַשָּׁמַ֖יִם וְאֵ֥ת הָאָֽרֶץ׃', 'וַיֹּ֥אמֶר אֱלֹהִ֖ים יְהִ֣י א֑וֹר וַֽיְהִי־אֽוֹר׃', 'מה זה? אני לא יודע: 3 ספרים (או 4).'],
+  el: ['Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν.', 'Τὸν δ᾽ ἀπαμειβόμενος προσέφη· οὐκ ἔσθ᾽ οὗτος ἀνήρ.', 'Τι κάνεις; Καλά, ευχαριστώ — 3 βιβλία (όχι 4)!'],
 };
 
 describe('token offsets round-trip (all five languages)', () => {
@@ -41,10 +45,10 @@ describe('token offsets round-trip (all five languages)', () => {
     it(`${lang}: every bundled corpus sentence`, () => {
       const ad = adapter(lang);
       const docs = loadBundledCorpus().filter((d) => d.lang === lang);
-      // the three original seed documents of each language are always there; further bundled texts are checked too
-      const SEED = ['story-01', 'dialogue-01', 'bible-1john-1'];
-      const seed = docs.filter((d) => SEED.includes(d.id));
-      expect(seed).toHaveLength(3);
+      // the three seed documents of each seed language are always there (Hebrew's scripture seed is bible-gen-1); further bundled texts are checked too
+      const seed = docs.filter((d) => (SEED_BY_LANG[lang] ?? []).includes(d.id));
+      // Latin has course texts only (Vulgate chapters, Ritchie, Caesar), no seed trio
+      if (lang in SEED_BY_LANG) expect(seed, lang).toHaveLength(3);
       expect(docs.length).toBeGreaterThanOrEqual(3);
       let checked = 0;
       for (const doc of docs) for (const sec of doc.sections) for (const par of sec.paragraphs) {

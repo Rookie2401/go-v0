@@ -5,12 +5,15 @@
  */
 import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
+import { elAdapter } from '../../src/adapters/el';
+import { heAdapter } from '../../src/adapters/he';
 import { hiAdapter } from '../../src/adapters/hi';
+import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
 import { sqAdapter } from '../../src/adapters/sq';
 import { thAdapter } from '../../src/adapters/th';
-import { registerAnalyser } from '../../packages/golearn-extension/src/parser/registry';
+import { languageMeta, registerAnalyser } from '../../packages/golearn-extension/src/parser/registry';
 
 export function registerAllAnalysers(): void {
   registerAnalyser('sq', sqAdapter);
@@ -20,4 +23,7 @@ export function registerAllAnalysers(): void {
   registerAnalyser('th', thAdapter);
   registerAnalyser('nb', nbAdapter);
   registerAnalyser('nn', nnAdapter);
+  if (languageMeta('he')) registerAnalyser('he', heAdapter); // once the parser's language table lists Hebrew
+  if (languageMeta('el')) registerAnalyser('el', elAdapter); // once the parser's language table lists Greek
+  if (languageMeta('la')) registerAnalyser('la', laAdapter); // once the adapter lane's parser entry exists
 }

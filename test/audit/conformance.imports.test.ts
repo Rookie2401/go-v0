@@ -21,7 +21,7 @@ import {
  * The analyser chunks the extension ships beside the content script (dist/analysers/<id>.js, vite.config.ts --mode analysers). They are
  * loaded by URL, so no import edge leads to them from an entry; each is an entry of its own, and every rule below applies to it.
  */
-const ANALYSER_ENTRIES = ['sq', 'es', 'de', 'hi', 'th'].map((id) => ({ id: 'golearn-analyser-' + id, file: 'packages/golearn-extension/src/analysers/' + id + '.ts' }));
+const ANALYSER_ENTRIES = ['sq', 'es', 'de', 'hi', 'th', 'he', 'el', 'la'].map((id) => ({ id: 'golearn-analyser-' + id, file: 'packages/golearn-extension/src/analysers/' + id + '.ts' }));
 const ALL_ENTRIES: ReadonlyArray<{ id: string; file: string }> = [...ENTRIES, ...ANALYSER_ENTRIES, { id: 'gotell (hosted workspace package index)', file: GOTELL_ENTRY }];
 /** The one non-literal dynamic import in the reached code: the extension imports its own analyser chunk by URL (a web accessible resource), which no static graph can follow; the chunks are entries above. */
 const URL_IMPORTS = ['packages/golearn-extension/src/analysers/urlLoader.ts'];
@@ -166,8 +166,8 @@ describe('(b) the salvage allow-list covers every legacy module that is reached'
     const wired = SALVAGE_ALLOW_LIST.filter((a) => [...u].some((f) => underPrefix(f, a.prefix))).map((a) => a.prefix);
     const unwired = SALVAGE_ALLOW_LIST.filter((a) => !wired.includes(a.prefix)).map((a) => a.prefix);
     if (print) console.info(`[allow-list] wired: ${wired.join(', ')}\n[allow-list] allowed but not reached: ${unwired.join(', ')}`);
-    // Albanian and Spanish are the two installable packs; German, Hindi, Thai and Norwegian (Bokmål, Nynorsk) are wired as experimental packs (analyser chunks)
-    for (const p of ['src/adapters/sq.ts', 'src/adapters/albanian/', 'src/adapters/es.ts', 'src/adapters/spanish/', 'src/adapters/de.ts', 'src/adapters/german/', 'src/adapters/hi.ts', 'src/adapters/hindi/', 'src/adapters/th.ts', 'src/adapters/thai/', 'src/adapters/nb.ts', 'src/adapters/nn.ts', 'src/adapters/norwegian/', 'src/adapters/shared.ts', 'src/core/', 'src/dict/']) expect(wired, p).toContain(p);
+    // Albanian and Spanish are the two installable packs; German, Hindi, Thai and Norwegian (Bokmål, Nynorsk), Hebrew and Greek are wired as experimental packs (analyser chunks)
+    for (const p of ['src/adapters/sq.ts', 'src/adapters/albanian/', 'src/adapters/es.ts', 'src/adapters/spanish/', 'src/adapters/de.ts', 'src/adapters/german/', 'src/adapters/hi.ts', 'src/adapters/hindi/', 'src/adapters/th.ts', 'src/adapters/thai/', 'src/adapters/nb.ts', 'src/adapters/nn.ts', 'src/adapters/norwegian/', 'src/adapters/he.ts', 'src/adapters/hebrew/', 'src/adapters/el.ts', 'src/adapters/greek/', 'src/adapters/shared.ts', 'src/core/', 'src/dict/']) expect(wired, p).toContain(p);
   });
 });
 

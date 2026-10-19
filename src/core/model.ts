@@ -14,12 +14,15 @@
 /**
  * BCP-47 primary subtags of the course languages. `nb` (Bokmål) and `nn` (Nynorsk) are two separate written standards of
  * Norwegian: separate codes keep their item ids, dictionaries and counts apart (one Norway course reads both).
+ * `he` (Hebrew) and `el` (Greek) are each ONE language whose historical stages (Biblical and Modern Hebrew; Homeric, Attic,
+ * Koine, Medieval and Modern Greek) are period varieties of it (core/variety.ts, kind 'period'), not separate codes: an
+ * item id is shared across the periods and the period travels on the reading and the enrolment (`varietyId`).
  */
-export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de' | 'nb' | 'nn';
+export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de' | 'nb' | 'nn' | 'he' | 'el' | 'la';
 import type { CurriculumMetadata } from '../course/curriculumPolicy';
-export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn'] as const;
+export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn', 'he', 'el', 'la'] as const;
 
-export type Script = 'Latn' | 'Deva' | 'Thai';
+export type Script = 'Latn' | 'Deva' | 'Thai' | 'Hebr' | 'Grek';
 
 export interface Language {
   id: LanguageCode;

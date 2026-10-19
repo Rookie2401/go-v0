@@ -48,7 +48,7 @@ export interface PracticeDeps {
 const TELL_TYPES = ['TellGoalDefined', 'TellTaskPresented', 'TellInterventionShown', 'TellAttemptSubmitted', 'TellTaskClosed'] as const;
 type TellEvent = Extract<DomainEvent, { type: (typeof TELL_TYPES)[number] }>;
 
-const LANG_NAME: Record<LanguageCode, string> = { es: 'Spanish', sq: 'Albanian', th: 'Thai', hi: 'Hindi', de: 'German', nb: 'Norwegian (Bokmål)', nn: 'Norwegian (Nynorsk)' };
+const LANG_NAME: Record<LanguageCode, string> = { es: 'Spanish', sq: 'Albanian', th: 'Thai', hi: 'Hindi', de: 'German', nb: 'Norwegian (Bokmål)', nn: 'Norwegian (Nynorsk)', he: 'Hebrew', el: 'Greek', la: 'Latin' };
 const SECTION_TITLE: Record<string, string> = {
   background: 'Background', childhood: 'Childhood', 'knowledge-of-christianity': 'What you knew', 'understanding-of-sin': 'Understanding of sin',
   conviction: 'Conviction', repentance: 'Repentance', faith: 'Faith', forgiveness: 'Forgiveness', grace: 'Grace', transformation: 'Transformation',

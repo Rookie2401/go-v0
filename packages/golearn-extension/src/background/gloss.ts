@@ -105,7 +105,7 @@ export function cleanSourceTemplates(v: unknown): SourceLinkTemplates {
   return out;
 }
 /** The language's name as Wiktionary and kaikki.org spell it (the section heading and the folder), where it differs from the learner-facing name. */
-const DICTIONARY_LANGUAGE_NAME: Record<string, string> = { nb: 'Norwegian Bokmål', nn: 'Norwegian Nynorsk' };
+const DICTIONARY_LANGUAGE_NAME: Record<string, string> = { nb: 'Norwegian Bokmål', nn: 'Norwegian Nynorsk', he: 'Hebrew', el: 'Greek' };
 /** A template filled in; undefined unless the result is a plain https address. In a fragment (`#{language}`) the language's spaces become underscores, as Wiktionary's section anchors have them. */
 export function fillSourceUrl(template: string | undefined, lemma: string, languageName: string): string | undefined {
   if (!template) return undefined;

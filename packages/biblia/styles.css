@@ -1,0 +1,46 @@
+/* Biblia — the Classical Library's quiet register: paper, one serif, generous leading; Hebrew and Greek in fonts that carry their marks. */
+:root {
+  --paper: #f7f2e8; --ink: #1d1a15; --muted: #6b6560; --line: #e3dccd; --accent: #7a4b23; --panel: #fffdf8;
+  --he-font: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "David Libre", "Noto Serif Hebrew", serif;
+  --el-font: "Gentium Plus", "Galatia SIL", "Noto Serif", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #16130f; --ink: #ece6da; --muted: #9a938a; --line: #2c2720; --accent: #d7a06a; --panel: #1d1914; }
+}
+html, body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 Georgia, "Times New Roman", serif; }
+#app { max-width: 52rem; margin: 0 auto; padding: 0 1rem 4rem; }
+a { color: var(--accent); }
+button { font: inherit; color: inherit; background: none; border: 1px solid var(--line); border-radius: 6px; padding: 0.3em 0.7em; cursor: pointer; }
+button:hover { border-color: var(--accent); }
+.topbar { display: flex; align-items: center; gap: 0.8rem; padding: 0.8rem 0; border-bottom: 1px solid var(--line); margin-bottom: 1rem; flex-wrap: wrap; }
+.topbar h1 { font-size: 1.1rem; font-weight: normal; margin: 0; flex: 1; }
+.topbar .crumb { color: var(--muted); font-size: 0.9rem; }
+.notice { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 0.6rem 0.9rem; margin: 0.8rem 0; color: var(--muted); font-size: 0.92rem; }
+.notice.err { border-color: #b4543c; color: #b4543c; }
+
+/* library: testament → division → book → chapters, as nested disclosures */
+.library details { border-left: 1px solid var(--line); margin: 0.2rem 0 0.2rem 0.4rem; padding-left: 0.8rem; }
+.library summary { cursor: pointer; padding: 0.3rem 0; list-style: none; }
+.library summary::before { content: '▸ '; color: var(--muted); }
+.library details[open] > summary::before { content: '▾ '; }
+.library .native { color: var(--muted); margin-left: 0.5em; font-size: 0.95em; }
+.library .chapters { display: flex; flex-wrap: wrap; gap: 0.3rem; padding: 0.3rem 0 0.6rem; }
+.library .chapters a { display: inline-block; min-width: 2.4em; text-align: center; padding: 0.15em 0.4em; border: 1px solid var(--line); border-radius: 6px; text-decoration: none; color: var(--ink); }
+.library .chapters a.last { border-color: var(--accent); }
+
+/* reader */
+.reader .nav { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; margin: 0.5rem 0 1rem; }
+.reader .prose { font-size: 1.35rem; line-height: 2.1; }
+.reader .prose[lang="he"] { font-family: var(--he-font); direction: rtl; text-align: right; }
+.reader .prose[lang="el"] { font-family: var(--el-font); }
+.reader .verse { display: inline; }
+.reader .vn { font-size: 0.6em; color: var(--muted); vertical-align: super; margin: 0 0.25em; user-select: none; }
+.reader .word { all: unset; cursor: pointer; border-radius: 3px; padding: 0 0.05em; }
+.reader .word:hover, .reader .word:focus-visible { background: rgba(122, 75, 35, 0.14); outline: none; }
+.reader .word.sel { background: rgba(122, 75, 35, 0.28); }
+.reader .mark { color: var(--muted); font-size: 0.7em; }
+.reader .poetry .verse { display: block; margin: 0.2em 0; }
+.reader .aramaic { border-inline-start: 3px solid var(--accent); padding-inline-start: 0.6em; }
+.period { color: var(--muted); font-size: 0.9rem; margin: 0.4rem 0 1rem; }
+.settings label { display: block; margin: 0.6rem 0; }
+.sources { font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1rem; }

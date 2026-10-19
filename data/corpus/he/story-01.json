@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "story-01",
+  "lang": "he",
+  "title": "הסיפור שלי",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-he",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hebrew (Modern)"
+  },
+  "source": {
+    "id": "src:he:story-01",
+    "title": "Modern Hebrew beginner story 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "attribution": "Course-authored beginner text. First draft by an AI assistant; not yet reviewed by a native speaker.",
+    "provenance": "Written for the course authors as a beginner seed text in contemporary Modern Hebrew (unpointed, as Hebrew is written today). The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; first draft machine-generated, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Drafted by an AI assistant; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "mission",
+    "testimony"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [
+    "JHN.3.16",
+    "1JN.1.8",
+    "1JN.1.9"
+  ],
+  "generated": true,
+  "english": {
+    "source": "The drafter's own glosses (AI assistant), unreviewed"
+  },
+  "sections": [
+    {
+      "title": "הסיפור שלי",
+      "paragraphs": [
+        {
+          "sentences": [
+            { "text": "כשהייתי צעיר, לא הבנתי את הלב שלי.", "english": "When I was young, I did not understand my heart." },
+            { "text": "כשהייתי צעיר, היה חטא בלב שלי.", "english": "When I was young, there was sin in my heart." },
+            { "text": "לא האמנתי באלוהים.", "english": "I did not believe in God." },
+            { "text": "יום אחד התחלתי להבין את החטא שלי.", "english": "One day I began to understand my sin." }
+          ]
+        },
+        {
+          "sentences": [
+            { "text": "אלוהים סלח על החטא שלי.", "english": "God forgave my sin." },
+            { "text": "עכשיו אני מאמין באלוהים.", "english": "Now I believe in God." },
+            { "text": "עכשיו יש שלום בלב שלי.", "english": "Now there is peace in my heart." },
+            { "text": "אלוהים אוהב את העולם.", "english": "God loves the world." },
+            { "text": "גם אני אוהב את אלוהים.", "english": "I love God too." },
+            { "text": "עכשיו אני מבין שאלוהים סולח לכולם.", "english": "Now I understand that God forgives everyone." }
+          ]
+        }
+      ]
+    }
+  ]
+}

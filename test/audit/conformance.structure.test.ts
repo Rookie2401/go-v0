@@ -23,9 +23,11 @@ describe('(c) exactly two application entry groups', () => {
     for (const e of ENTRIES.filter((e) => e.group === 'golearn-extension')) expect(e.file.startsWith('packages/golearn-extension/'), e.file).toBe(true);
   });
 
-  it('only golearn-extension, gopractice and the controlled-reader prototype contain a page, a manifest or a browser entry', () => {
+  it('only golearn-extension, gopractice, the Biblia reader and the controlled-reader prototype contain a page, a manifest or a browser entry', () => {
     const hasEntry = PACKAGES.filter((p) => listFiles(`packages/${p}`, /(^|\/)(manifest\.json|index\.html|popup\.html)$/).length > 0);
-    expect(hasEntry).toEqual(['controlled-reader', 'golearn-extension', 'gopractice']);
+    // biblia (2026-10-18): the Scripture reader page built on the extension's parser and card, with no analysis of its own (its README says so)
+    expect(hasEntry).toEqual(['biblia', 'controlled-reader', 'golearn-extension', 'gopractice']);
+    expect(readText('packages/biblia/README.md')).toMatch(/GoLearn/);
   });
 
   it('the controlled reader is a labelled prototype and no entry reaches it', () => {

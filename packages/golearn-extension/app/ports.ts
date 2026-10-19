@@ -121,7 +121,7 @@ export interface TutorialView {
 
 export interface PackBindings {
   packs(): PackView[];
-  /** The seven languages, in the catalogue's order. */
+  /** The nine languages, in the catalogue's order. */
   languages(): LanguageView[];
   packFor(languageId: string): PackView | undefined;
   install(pack: PackView, options: InstallOptions): Promise<VerifyView>;

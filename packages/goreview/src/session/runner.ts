@@ -220,7 +220,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     try {
       const builder = resolveBuilder(builders, p.family);
       if (!builder) return { ok: false, reason: `no exercise builder for ${p.family}` };
-      const f = await facts.factsFor(p.item.unitId, p.item.languageId);
+      const f = await facts.factsFor(p.item.unitId, p.item.languageId, p.item.varietyId);
       if (!f) return { ok: false, reason: 'the pack has no verified facts for this unit' };
       const target = targetOf(p);
       const ctx: BuildContext = { now: now(), ...(isAudioFamily(p.family) && audio ? { audio } : {}), random, ...(deps.pool ? { pool: await deps.pool() } : {}) };

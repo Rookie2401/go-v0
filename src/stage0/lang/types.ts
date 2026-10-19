@@ -32,7 +32,7 @@ export interface Stage0LanguageConfig {
   /** Where first-person forms depend on the speaker's gender: the question asked once. */
   speakerForms?: { question: string; why: string };
   script: {
-    kind: 'latin' | 'devanagari' | 'thai';
+    kind: 'latin' | 'devanagari' | 'thai' | 'hebrew' | 'greek';
     /** 'adapter': orth features from the language adapter's decoder; 'spelling': the patterns below. */
     features: 'adapter' | 'spelling';
     spelling?: Stage0SpellingFeature[];

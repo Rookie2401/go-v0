@@ -18,7 +18,7 @@ export interface PlannedSpec {
   nativeName: string;
   varieties: PackVariety[];
   /** Words in the shipped dictionary, when a kaikki dictionary for the language is built. */
-  dictionary?: { entries: number; frequency: boolean };
+  dictionary?: { entries: number; frequency: boolean; /** The dictionary manifest's own id, when it is not the default `kaikki-<lang>@2026-09-28` (Latin is built from another extract). */ id?: string };
   /** The adapter's own support levels, summarised. */
   adapterSummary: string;
   capabilities: string[];
@@ -27,6 +27,8 @@ export interface PlannedSpec {
   voices: string[];
   segmentation: { method: 'adapter' | 'intl'; notes: string };
   extraProvenance?: string[];
+  /** Writing direction of the script; 'ltr' when absent (Hebrew is 'rtl'). */
+  direction?: 'ltr' | 'rtl';
 }
 
 export function plannedManifest(s: PlannedSpec): PackManifest {
@@ -38,14 +40,14 @@ export function plannedManifest(s: PlannedSpec): PackManifest {
     scriptId: s.scriptId,
     version: s.version,
     compatibility: { contractVersion: CONTRACT_VERSION, extensionMin: '0.1.0' },
-    identity: { name: s.name, nativeName: s.nativeName, direction: 'ltr' },
+    identity: { name: s.name, nativeName: s.nativeName, direction: s.direction ?? 'ltr' },
     varieties: s.varieties,
     lexical: {
       handLexicon: { ref: `src/adapters/${lang}.ts (course word list and rules)`, licence: 'Owner-authored, AI-drafted', reviewStatus: 'machine-drafted' },
       ...(s.dictionary
         ? {
             dictionary: {
-              id: 'kaikki-' + lang + '@2026-09-28',
+              id: s.dictionary.id ?? 'kaikki-' + lang + '@2026-09-28',
               baseUrl: `dict/${lang}/`,
               licence: 'CC BY-SA 4.0 (Wiktionary contributors, via kaikki.org)',
               attribution: KAIKKI_ATTRIBUTION,
@@ -79,7 +81,7 @@ export function plannedManifest(s: PlannedSpec): PackManifest {
       ],
       licences: [
         { resource: `Course word list and rules (adapter-${lang})`, licence: 'Owner-authored, AI-drafted; not reviewed by a native speaker' },
-        ...(s.dictionary ? [{ resource: `Dictionary kaikki-${lang}@2026-09-28`, licence: 'CC BY-SA 4.0 (Wiktionary contributors, via kaikki.org)', notice: KAIKKI_ATTRIBUTION }] : []),
+        ...(s.dictionary ? [{ resource: `Dictionary ${s.dictionary.id ?? `kaikki-${lang}@2026-09-28`}`, licence: 'CC BY-SA 4.0 (Wiktionary contributors, via kaikki.org)', notice: KAIKKI_ATTRIBUTION }] : []),
       ],
       reviewStatus: 'machine-drafted',
     },

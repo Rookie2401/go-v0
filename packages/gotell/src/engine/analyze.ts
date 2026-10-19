@@ -107,6 +107,8 @@ export interface PackText {
 
 export interface AnalyzerDeps {
   languageId: string;
+  /** The learner's target variety (a period for Hebrew / Greek): the adapter reads and checks the draft against it. */
+  varietyId?: string;
   runtime: PackRuntime;
   manifest: PackManifest;
   now: () => Date | string;
@@ -202,9 +204,11 @@ export function createAnalyzer(deps: AnalyzerDeps): Analyzer {
   const packVersion = manifest.version;
   const closedForms = new Set((manifest.grammar.clitics ?? []).map((c) => (adapter ? adapter.normalize(c) : c.normalize('NFC').toLowerCase())));
 
+  const varietyOpts = deps.varietyId ? { varietyId: deps.varietyId } : undefined;
   const parseText = (text: string): Parsed => {
     const tokens = pack.tokenize(text);
-    return { text, tokens, analyses: pack.analyze(tokens) };
+    // with a target variety the adapter is asked directly, so a period-aware adapter orders its readings by it
+    return { text, tokens, analyses: adapter && varietyOpts ? adapter.analyze(tokens, varietyOpts) : pack.analyze(tokens) };
   };
 
   // unit ids as the extension's parser derives them: a creditable lemma → lemma:<lang>:<lemma>:<POS>, else form:<lang>:<normalised>
@@ -219,7 +223,7 @@ export function createAnalyzer(deps: AnalyzerDeps): Analyzer {
   function detectParsed(p: Parsed): { found: Detected[]; failure?: string } {
     if (!adapter) return { found: [] };
     let errors: ErrorCandidate[];
-    try { errors = adapter.checkProduction(p.tokens, p.analyses, p.text); } catch (e) {
+    try { errors = adapter.checkProduction(p.tokens, p.analyses, p.text, varietyOpts); } catch (e) {
       return { found: [], failure: e instanceof Error ? e.message : String(e) };
     }
     const found = errors.map((error): Detected => {

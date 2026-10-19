@@ -1,6 +1,6 @@
 // @vitest-environment node
 /**
- * The language catalogue (packages/language-packs/src/catalogue.ts): the six languages of interest, in the picker's order.
+ * The language catalogue (packages/language-packs/src/catalogue.ts): the seven languages of interest (Latin was added 2026-10-17), in the picker's order.
  * Everything that is not the fixed identity of an entry (which packs, which written standards, which varieties) is READ from the
  * manifests, the tutorial registry, GoListen's notes and the capability reports, and these tests compare it with them.
  */
@@ -10,15 +10,15 @@ import {
   LANGUAGE_CATALOGUE, LEVEL_LABEL, PACKS, TUTORIALS, audioLine, buildCatalogue, catalogueEntry, levelOf, packCapabilities, validationOf,
 } from '../../packages/language-packs/src';
 
-describe('LANGUAGE_CATALOGUE: exactly six languages, in order', () => {
-  it('Norwegian, German, Albanian, Hindi, Thai, Spanish', () => {
-    expect(LANGUAGE_CATALOGUE).toHaveLength(6);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.languageId)).toEqual(['nb', 'de', 'sq', 'hi', 'th', 'es']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.name)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.nativeName)).toEqual(['norsk', 'Deutsch', 'shqip', 'हिन्दी', 'ไทย', 'español']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptId)).toEqual(['Latn', 'Latn', 'Latn', 'Deva', 'Thai', 'Latn']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptName)).toEqual(['Latin', 'Latin', 'Latin', 'Devanagari', 'Thai script', 'Latin']);
-    expect(LANGUAGE_CATALOGUE.map((e) => e.packIds)).toEqual([['pack:nb', 'pack:nn'], ['pack:de'], ['pack:sq'], ['pack:hi'], ['pack:th'], ['pack:es']]);
+describe('LANGUAGE_CATALOGUE: exactly nine languages, in order (Latin, Hebrew and Greek were added 2026-10-17)', () => {
+  it('Norwegian, German, Albanian, Hindi, Thai, Spanish, Latin, Hebrew, Greek', () => {
+    expect(LANGUAGE_CATALOGUE).toHaveLength(9);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.languageId)).toEqual(['nb', 'de', 'sq', 'hi', 'th', 'es', 'la', 'he', 'el']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.name)).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.nativeName)).toEqual(['norsk', 'Deutsch', 'shqip', 'हिन्दी', 'ไทย', 'español', 'Latina', 'עברית', 'Ελληνικά']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptId)).toEqual(['Latn', 'Latn', 'Latn', 'Deva', 'Thai', 'Latn', 'Latn', 'Hebr', 'Grek']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.scriptName)).toEqual(['Latin', 'Latin', 'Latin', 'Devanagari', 'Thai script', 'Latin', 'Latin', 'Hebrew script', 'Greek alphabet']);
+    expect(LANGUAGE_CATALOGUE.map((e) => e.packIds)).toEqual([['pack:nb', 'pack:nn'], ['pack:de'], ['pack:sq'], ['pack:hi'], ['pack:th'], ['pack:es'], ['pack:la'], ['pack:he'], ['pack:el']]);
   });
 
   it('is frozen and has no team in it: a language is chosen freely, never by team', () => {
@@ -30,13 +30,13 @@ describe('LANGUAGE_CATALOGUE: exactly six languages, in order', () => {
   });
 
   it('Norwegian offers the two written standards, neither the default; Spanish offers the general variety and Honduras as a regional preference; the others offer neither', () => {
-    const [nb, de, sq, hi, th, es] = LANGUAGE_CATALOGUE;
+    const [nb, de, sq, hi, th, es, la] = LANGUAGE_CATALOGUE;
     expect(nb.writtenStandards).toEqual([{ id: 'nb', label: 'Bokmål' }, { id: 'nn', label: 'Nynorsk' }]);
     expect(nb.varieties).toBeUndefined();
     expect(JSON.stringify(nb)).not.toMatch(/default/i);
     expect(es.varieties).toEqual([{ id: 'es-standard', label: 'General' }, { id: 'es-HN', label: 'Honduras (regional preference)' }]);
     expect(es.writtenStandards).toBeUndefined();
-    for (const e of [de, sq, hi, th]) {
+    for (const e of [de, sq, hi, th, la]) {
       expect(e.writtenStandards, e.languageId).toBeUndefined();
       expect(e.varieties, e.languageId).toBeUndefined();
     }
@@ -69,16 +69,16 @@ describe('every field agrees with the manifests (nothing is hard-coded)', () => 
     expect(e.tutorialAvailable).toBe(true);
   });
 
-  it('the levels are the real ones: Albanian and Spanish installable and unreviewed; German, Hindi, Thai and both Norwegian packs experimental; none production-validated', () => {
+  it('the levels are the real ones: Albanian and Spanish installable and unreviewed; German, Hindi, Thai, Latin and both Norwegian packs experimental; none production-validated', () => {
     const by = Object.fromEntries(LANGUAGE_CATALOGUE.map((e) => [e.languageId, e]));
     expect([by.sq.level, by.sq.validation]).toEqual(['installable', 'unreviewed']);
     expect([by.es.level, by.es.validation]).toEqual(['installable', 'unreviewed']);
-    for (const l of ['nb', 'de', 'hi', 'th']) expect([by[l].level, by[l].validation, by[l].levelLabel], l).toEqual(['experimental', 'experimental', 'experimental, seed-only lemmatisation, unreviewed']);
+    for (const l of ['nb', 'de', 'hi', 'th', 'la']) expect([by[l].level, by[l].validation, by[l].levelLabel], l).toEqual(['experimental', 'experimental', 'experimental, seed-only lemmatisation, unreviewed']);
     expect(by.nb.packs.map((p) => p.level)).toEqual(['experimental', 'experimental']);
     for (const e of LANGUAGE_CATALOGUE) expect(e.validation, e.languageId).not.toBe('production-validated');
   });
 
-  it('catalogueEntry finds an entry by its language or by any of its packs (nn finds Norwegian), and nothing for a language outside the six', () => {
+  it('catalogueEntry finds an entry by its language or by any of its packs (nn finds Norwegian), and nothing for a language outside the seven', () => {
     expect(catalogueEntry('nb')).toBe(LANGUAGE_CATALOGUE[0]);
     expect(catalogueEntry('nn')).toBe(LANGUAGE_CATALOGUE[0]);
     expect(catalogueEntry('es')).toBe(LANGUAGE_CATALOGUE[5]);
@@ -113,8 +113,9 @@ describe('audio, whatWorks and whatDoesNot', () => {
       expect(e.whatWorks, e.languageId).toContain(`its lemma (${r[0].lemma.quality})`);
       if (r.every((x) => x.morphology.supported)) expect(e.whatWorks, e.languageId).toContain(`its grammar features (${r[0].morphology.quality})`);
       else expect(e.whatWorks, e.languageId).not.toContain('grammar features');
-      expect(e.whatWorks, e.languageId).toContain('fixed phrases');
-      expect(e.whatWorks, e.languageId).toContain('listed sentence patterns');
+      // a pack states phrases and patterns only when it declares them (Latin declares neither)
+      if (r.every((x) => x.phrases.supported)) expect(e.whatWorks, e.languageId).toContain('fixed phrases');
+      if (r.every((x) => x.constructions.supported)) expect(e.whatWorks, e.languageId).toContain('listed sentence patterns');
     }
     const th = LANGUAGE_CATALOGUE.find((e) => e.languageId === 'th')!;
     expect(th.whatWorks).toContain('word boundaries are limited');
@@ -136,7 +137,7 @@ describe('audio, whatWorks and whatDoesNot', () => {
 
   it('where the analyser is not loaded (a lazy build) the entry says so instead of claiming anything', () => {
     const lazy = buildCatalogue({ adapterOf: () => undefined });
-    expect(lazy).toHaveLength(6);
+    expect(lazy).toHaveLength(9);
     for (const e of lazy) {
       expect(e.whatWorks, e.languageId).toBe('The analyser is not loaded in this build, so no card capability is claimed here until it is.');
       expect(e.whatDoesNot, e.languageId).toMatch(/^Nothing is lemmatised or analysed until the analyser is loaded/);

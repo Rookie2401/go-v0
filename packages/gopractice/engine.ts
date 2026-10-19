@@ -38,7 +38,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
   const warmFacts = new WeakMap<RepositoryApi, Map<string, { at: number; facts: Awaited<ReturnType<FactsProvider['factsFor']>> }>>();
   /** Class Essentials phrases are answered from the deck's own table; every other unit goes to the pack, as before. */
-  const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) : base.factsFor(unitId, languageId)) });
+  const withClass = (base: FactsProvider): FactsProvider => ({ ...base, factsFor: async (unitId, languageId, varietyId) => (isClassUnit(unitId) ? classFacts(unitId, languageId) : base.factsFor(unitId, languageId, varietyId)) });
   const factsOf = (languageId: string, api: RepositoryApi): FactsProvider => withClass(packFactsOf(languageId, api));
   const packFactsOf = (languageId: string, api: RepositoryApi): FactsProvider => {
     let byLanguage = providers.get(api);
@@ -86,8 +86,8 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
           cache?.delete(`${req.prefs.languageId}\u0000${id}`);
         }
         const captured = new Map<string, Awaited<ReturnType<FactsProvider['factsFor']>>>();
-        const capturing: FactsProvider = { ...facts, async factsFor(unitId, languageId) {
-          const value = await facts.factsFor(unitId, languageId);
+        const capturing: FactsProvider = { ...facts, async factsFor(unitId, languageId, varietyId) {
+          const value = await facts.factsFor(unitId, languageId, varietyId);
           if (value) captured.set(unitId, value); // never retain missing/failed facts
           return value;
         } };

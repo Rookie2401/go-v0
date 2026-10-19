@@ -20,7 +20,7 @@ relative(sourceManifest);
 const raw = JSON.parse(fs.readFileSync(sourceManifest, 'utf8')) as BuildManifest;
 const lang = raw.lang as LanguageCode;
 const acquired = parseBuildManifest(raw, lang);
-const courses: Record<LanguageCode, string> = { de: 'germany-de', es: 'honduras-es', hi: 'india-hi', sq: 'albania-sq', th: 'thailand-th', nb: 'norway-nb', nn: 'norway-nb' };
+const courses: Record<LanguageCode, string> = { de: 'germany-de', es: 'honduras-es', hi: 'india-hi', sq: 'albania-sq', th: 'thailand-th', nb: 'norway-nb', nn: 'norway-nb', he: 'hebrew', el: 'greek', la: 'latin-la' };
 const courseId = courses[lang];
 if (!courseId) throw new Error(`Unsupported language: ${lang}`);
 const combinedFile = `data/sources/course-library/${lang}.json`;

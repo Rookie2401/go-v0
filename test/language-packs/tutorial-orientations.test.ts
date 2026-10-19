@@ -1,13 +1,14 @@
 // @vitest-environment node
 /**
  * The minimal orientations of the experimental packs (German, Hindi, Thai, Norwegian Bokmål and Nynorsk), and the registry that
- * returns one tutorial for each of the seven languages. Same standard as the Albanian one (tutorial.test.ts): flagged
+ * returns one tutorial for each of the ten languages (Latin is the eighth, 2026-10-17). Same standard as the Albanian one (tutorial.test.ts): flagged
  * machine-drafted and unreviewed everywhere they teach, plain text, and every practice target and example word read by the REAL
  * analyser. Nothing more is claimed: the check is of coverage, not of naturalness.
  */
 import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
 import { hiAdapter } from '../../src/adapters/hi';
+import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
 import { thAdapter } from '../../src/adapters/th';
@@ -16,16 +17,16 @@ import { audioOf } from '../../packages/golearn-extension/src/language/capabilit
 import { PACKS, TUTORIALS, readSelection, tutorialFor } from '../../packages/language-packs/src';
 import type { Tutorial, TutorialStep } from '../../packages/language-packs/src';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter };
-const NEW = ['de', 'hi', 'th', 'nb', 'nn'];
+const ADAPTERS: Record<string, LanguageAdapter> = { de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter };
+const NEW = ['de', 'hi', 'th', 'nb', 'nn', 'la'];
 
 /** The words a reader of the card would meet: every word of a sentence, read by the analyser, none of them a guess. */
 const wordsOf = (a: LanguageAdapter, text: string) => a.analyze(a.tokenize(text)).filter((x) => x.token.isWord);
 
 describe('the tutorial registry', () => {
-  it('has one tutorial for each of the seven languages, in the pack registry’s order, and none for another language or an inherited key', () => {
+  it('has one tutorial for each of the eight languages, in the pack registry’s order, and none for another language or an inherited key', () => {
     expect(Object.keys(TUTORIALS)).toEqual(Object.keys(PACKS));
-    expect(Object.keys(TUTORIALS)).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']);
+    expect(Object.keys(TUTORIALS)).toEqual(['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el']);
     for (const [id, t] of Object.entries(TUTORIALS)) {
       expect(tutorialFor(id), id).toBe(t);
       expect(t.languageId, id).toBe(id);

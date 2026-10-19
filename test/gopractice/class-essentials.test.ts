@@ -1,8 +1,9 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
 import { registry, resolveBuilder } from '../../packages/goreview/src';
-import { classCards, classDeckFor, classFacts, CLASS_ESSENTIALS_DESCRIPTION, CLASS_LANGUAGES, isClassUnit } from '../../packages/gopractice/classEssentials';
+import { classCards, classDeckFor, classFacts, CLASS_ESSENTIALS_DESCRIPTION, CLASS_ESSENTIALS_NOTES_LA, CLASS_LANGUAGES, isClassUnit } from '../../packages/gopractice/classEssentials';
 import { decksKey, listSavedDecks, type SavedDeck } from '../../packages/gopractice/deckModel';
+import { languageName } from '../../packages/gopractice/format';
 import { defaultService, destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, seed, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
@@ -14,8 +15,8 @@ const stored = async (rig: Rig, lang = 'sq'): Promise<SavedDeck[]> => {
 };
 
 describe('Class Essentials: the cards', () => {
-  it('has 28 cards in each of the six languages: fourteen topics, ten number cards, no duplicates, nothing empty', () => {
-    expect([...CLASS_LANGUAGES].sort()).toEqual(['de', 'es', 'hi', 'nb', 'sq', 'th']);
+  it('has 28 cards in each of the seven languages (Latin is the seventh, added 2026-10-17): fourteen topics, ten number cards, no duplicates, nothing empty', () => {
+    expect([...CLASS_LANGUAGES].sort()).toEqual(['de', 'es', 'hi', 'la', 'nb', 'sq', 'th']);
     for (const lang of CLASS_LANGUAGES) {
       const cards = classCards(lang);
       expect(cards, lang).toHaveLength(28);
@@ -28,17 +29,42 @@ describe('Class Essentials: the cards', () => {
     expect(classCards('en')).toEqual([]);
     expect(classCards('no')).toHaveLength(28);          // the Norwegian code some enrolments use
     expect(classCards('sq-AL')).toHaveLength(28);       // a variety belongs to its language
+    expect(classCards('la-ecclesiastical')).toHaveLength(28); // so do Latin's
   });
 
   it('keeps Thai and Hindi in their own scripts, and each language its own set', () => {
     expect(classCards('th').every((c) => /[฀-๿]/.test(c.phrase))).toBe(true);
     expect(classCards('hi').every((c) => /[ऀ-ॿ]/.test(c.phrase))).toBe(true);
     const hello = (lang: string): string => classCards(lang).find((c) => c.english === 'Hello')!.phrase;
-    expect(['es', 'sq', 'th', 'hi', 'de', 'nb'].map(hello)).toEqual(['Hola', 'Përshëndetje', 'สวัสดี', 'नमस्ते', 'Hallo', 'Hei']);
+    expect(['es', 'sq', 'th', 'hi', 'de', 'nb', 'la'].map(hello)).toEqual(['Hola', 'Përshëndetje', 'สวัสดี', 'नमस्ते', 'Hallo', 'Hei', 'Salve']);
     expect(classCards('de').find((c) => c.english === 'One coffee, please!')!.phrase).toBe('Einen Kaffee, bitte!');
     expect(classCards('nb').find((c) => c.english === 'Jesus is the Savior!')!.phrase).toBe('Jesus er Frelseren!');
     // the numbers are separate cards, in order
     expect(classCards('es').filter((c) => c.topic === 4).map((c) => c.phrase)).toEqual(['uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez']);
+  });
+
+  it('has the Latin set (Church Latin phrasing), word for word, in class order, with the numbers as lower-case words', () => {
+    expect(classCards('la').map((c) => [c.english, c.phrase])).toEqual([
+      ['Hello', 'Salve'], ['Goodbye', 'Vale'], ['Please', 'Quaeso'], ['Thank you', 'Gratias tibi ago'], ["I'm sorry", 'Ignosce mihi'], ['Excuse me', 'Da veniam'],
+      ['One', 'unus'], ['Two', 'duo'], ['Three', 'tres'], ['Four', 'quattuor'], ['Five', 'quinque'], ['Six', 'sex'], ['Seven', 'septem'], ['Eight', 'octo'], ['Nine', 'novem'], ['Ten', 'decem'],
+      ['How much is this?', 'Quanti hoc constat?'], ['My name is…', 'Nomen mihi est…'], ["I'm from…", 'Sum ex…'], ['Where is the restroom?', 'Ubi est latrina?'],
+      ['Water', 'Aqua'], ['Bottled water', 'Aqua in lagoena'], ['I would like…', 'Velim…'], ['Do you speak English?', 'Loquerisne Anglice?'], ['I do not understand', 'Non intellego'],
+      ["I don't speak the country's language, but I would like to learn.", 'Latine non loquor, sed discere velim.'], ['Jesus is the Savior!', 'Iesus est Salvator!'], ['One coffee, please!', 'Unum caffeum, quaeso!'],
+    ]);
+    // Latin is written in Latin script with no Greek, Thai or Devanagari in it, and its ids are its own
+    expect(classCards('la').every((c) => /^[A-Za-z…,.!? ]+$/.test(c.phrase) && c.unitId.startsWith('class:la:'))).toBe(true);
+    expect(classFacts(classCards('la')[0].unitId, 'la-ecclesiastical')!.glosses).toEqual(['Hello']);
+  });
+
+  it('the Latin deck says it has not been reviewed by a Latinist (there is no native speaker to review it), the others by a native speaker', () => {
+    const la = classDeckFor('la', 'la-ecclesiastical', '2026-10-17T00:00:00.000Z')!;
+    expect(la.id).toBe('class-essentials:la');
+    expect(la.languageId).toBe('la');
+    expect(la.notes).toBe(CLASS_ESSENTIALS_NOTES_LA);
+    expect(la.notes).toMatch(/not yet reviewed by a Latinist/);
+    expect(la.notes).not.toMatch(/native speaker/);
+    expect(la.items).toHaveLength(28);
+    expect(classDeckFor('de', undefined, '')!.notes).toMatch(/not yet reviewed by a native speaker/);
   });
 
   it('answers the exercise engine with the phrase and its English meaning, and nothing for a unit it does not own', () => {
@@ -178,5 +204,27 @@ describe('Class Essentials: in Saved decks', () => {
     expect(rig.root.querySelector('[data-deck-id^="class-essentials"]')).toBeNull();
     expect(await stored(rig, 'en')).toEqual([]);
     void defaultService;
+  });
+
+  it('seeds the Latin deck for a Latin enrolment once, however often the decks are opened, and lists it as Latin', async () => {
+    const service = new FakeService();
+    service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'la', varietyId: 'la-ecclesiastical' }]);
+    const rig = await makeRig({ service, signedIn: true });
+    expect(languageName('la')).toBe('Latin');
+    expect(languageName('la-ecclesiastical')).toBe('Latin');
+    expect(rig.q('#language-name').textContent).toBe('Latin'); // the GoReview home’s language kicker
+    await rig.go('review/decks');
+    await until(() => !!rig.root.querySelector('[data-deck-id="class-essentials:la"]'), 'the Latin deck');
+    const row = rig.q('[data-deck-id="class-essentials:la"]');
+    expect(row.querySelector('.deckrow-line')!.textContent).toBe('Class Essentials · 28 cards · Latin');
+    expect(row.textContent).toContain('not yet reviewed by a Latinist');
+    await listSavedDecks(rig.app.ctx, 'L1', 'la', 'la-ecclesiastical');
+    await listSavedDecks(rig.app.ctx, 'L1', 'la', 'la-ecclesiastical');
+    await rig.go('review'); await rig.go('review/decks');
+    const decks = await stored(rig, 'la');
+    expect(decks).toHaveLength(1);
+    expect(decks[0].items).toHaveLength(28);
+    expect(new Set(decks[0].items.map((i) => i.unitId)).size).toBe(28);
+    expect(decks[0].items[0].label).toBe('Salve');
   });
 });

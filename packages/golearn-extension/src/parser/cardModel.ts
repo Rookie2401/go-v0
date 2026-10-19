@@ -5,6 +5,8 @@
  *   analysis  - the parser's best reading, with its confidence and its source; machine-drafted unless a reviewer says otherwise
  *   inference - a learner-state estimate. The prototype has no learner state, so no field carries this label yet.
  */
+import type { VariantSet } from '../../../../src/core';
+
 export type EvidenceLabel = 'fact' | 'analysis' | 'inference';
 export type CardProvenance = 'lexicon' | 'rule' | 'none';
 export type ContextKindReport = 'sentence' | 'fragment' | 'none';
@@ -143,4 +145,11 @@ export interface CardModel {
   tokenCount: number;
   labels: Record<LabelledField, EvidenceLabel>;
   limits: string[];
+  /**
+   * A language with PERIOD varieties (Hebrew, Greek): the period the sentence was read in, as the analyser decided it, with its
+   * plain-words basis ("the text carries cantillation marks"). Absent for every other language.
+   */
+  period?: { varietyId: string; label: string; basis: string };
+  /** The word across the periods (the "Variants" pill), from the analyser's sources; absent for a language without period varieties or a multi-word selection. */
+  variants?: VariantSet;
 }

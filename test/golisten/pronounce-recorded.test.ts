@@ -97,6 +97,6 @@ describe('the German demonstration recording', () => {
   });
 
   it('the default registries carry sq, the de demonstration and es', () => {
-    expect(defaultRegistries().map((r) => r.languageId)).toEqual(['sq', 'de', 'es', 'hi', 'th', 'nb', 'nn']);
+    expect(defaultRegistries().map((r) => r.languageId)).toEqual(['sq', 'de', 'es', 'hi', 'th', 'nb', 'nn', 'he', 'el']);
   });
 });

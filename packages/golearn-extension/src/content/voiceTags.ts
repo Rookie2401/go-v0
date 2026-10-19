@@ -6,6 +6,8 @@
  */
 export const DEVICE_TAGS: Readonly<Record<string, readonly string[]>> = {
   de: ['de-DE', 'de-AT', 'de-CH', 'de'], es: ['es-HN', 'es-ES', 'es-MX', 'es-US', 'es'], hi: ['hi-IN', 'hi'], th: ['th-TH', 'th'], nb: ['nb-NO', 'nb', 'no-NO', 'no'], nn: ['nn-NO', 'nn'],
+  // Hebrew and Greek (2026-10-18): the Modern locales; iw is the retired Hebrew tag some voices still carry. No voice exists for the ancient periods.
+  he: ['he-IL', 'he', 'iw'], el: ['el-GR', 'el'],
 };
 
 /** Does any of these voices (the browser's `speechSynthesis.getVoices()`) serve the language, by the same strict tag rule? Albanian: never. */

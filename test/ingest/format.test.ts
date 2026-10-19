@@ -16,8 +16,8 @@ const has = (issues: ValidationIssue[], code: ValidationCode, severity?: 'error'
 describe('validateDocument — acceptance', () => {
   it('accepts every bundled document (errors: none)', () => {
     const docs = loadBundledCorpus();
-    expect(docs.filter(isSeed)).toHaveLength(21); // the seed texts; the course texts are added to the corpus over time
-    expect(docs.length).toBeGreaterThanOrEqual(21);
+    expect(docs.filter(isSeed)).toHaveLength(27); // the seed texts (three per seed language, nine languages); the course texts are added to the corpus over time
+    expect(docs.length).toBeGreaterThanOrEqual(27);
     for (const d of docs) expect(issuesOf(d).filter((i) => i.severity === 'error'), `${d.lang}/${d.id}`).toEqual([]);
     expect(validateBatch(docs, { registry }).ok).toBe(true);
   });

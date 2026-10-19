@@ -32,5 +32,14 @@ data/repository/
 packages/golearn-extension/dist-web/
 data/local-repository/
 
+# raw source downloads (kaikki extracts, Perseus treebank): never committed
+data/raw/
+
+# generated lexical assets of the Hebrew / Greek adapters (rebuilt by npm run he:build-biblical etc.)
+public/lexicon/
+
 # Go Repository backups written by scripts/ops/backup.mts (default --out)
 /backups/
+
+# Biblia reader: the Tanakh / Greek NT texts copied from the Biblia app (npm run biblia:import)
+packages/biblia/public/data/

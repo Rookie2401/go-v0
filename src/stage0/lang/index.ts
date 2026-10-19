@@ -155,6 +155,87 @@ export const STAGE0_LANGS: Record<LanguageCode, Stage0LanguageConfig> = {
     exit: NORWEGIAN_EXIT,
     intro: 'Nynorsk is spelled with the same patterns as Bokmål; you read it as the other written standard of Norwegian.',
   },
+  // machine-draft, native review pending. Only the language-level facts and a first set of sound-spelling features are here; no
+  // scenes, sounds or exit forms are authored for Hebrew yet (nothing under data/stage0/he), so this config alone makes no course.
+  // Hebrew is written right to left with 22 letters; most vowels are not written in everyday text, so the features describe consonants.
+  he: {
+    lang: 'he',
+    name: 'Hebrew',
+    voiceLangs: ['he-IL', 'he'],
+    speakerForms: { question: 'When you talk about yourself in Hebrew, which forms should Go teach you?', why: 'Hebrew verbs and adjectives change with the speaker: אני עייף (a man), אני עייפה (a woman).' },
+    script: {
+      kind: 'hebrew',
+      features: 'spelling',
+      spelling: [
+        { id: 'he:final-forms', label: 'ך ם ן ף ץ — five letters that are written differently at the end of a word (שלום, בן, סוף)', pattern: /[ךםןףץ]$/ },
+        { id: 'he:vav-yod', label: 'ו and י — a consonant (v, y) or a vowel (o or u, i): the word tells which (שלום, ילד)', pattern: /[וי]/ },
+        { id: 'he:chet', label: 'ח — a rough sound from the throat, like ch in Scottish "loch" (חבר)', pattern: /ח/ },
+        { id: 'he:tsadi', label: 'צ — like ts in "cats" (צבע)', pattern: /[צץ]/ },
+        { id: 'he:alef-ayin', label: 'א and ע — usually no sound of their own in everyday speech: they carry a vowel (אבא, עין)', pattern: /[אע]/ },
+        { id: 'he:shin', label: 'ש — usually sh (שלום); the dot that tells sh from s is not written in everyday text', pattern: /ש/ },
+        { id: 'he:bet-kaf-pe', label: 'ב, כ, פ — each has two sounds: b or v, k or kh, p or f (בית, פה)', pattern: /[בכפ]/ },
+      ],
+    },
+    bands: { earlyScenes: 4, earlyMaxNew: 5, laterMaxNew: 7, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
+    intro: 'Hebrew is written from right to left with 22 letters, and most vowels are not written. You learn the letters inside real words, a few at a time.',
+  },
+  // machine-draft, native review pending. Modern Greek, monotonic accents. As for Hebrew: no Stage 0 scenes are authored yet (nothing
+  // under data/stage0/el); the config is the language-level facts and a first set of sound-spelling features.
+  el: {
+    lang: 'el',
+    name: 'Greek',
+    voiceLangs: ['el-GR', 'el'],
+    speakerForms: { question: 'When you talk about yourself in Greek, which forms should Go teach you?', why: 'Some words change with the speaker: είμαι κουρασμένος (a man), είμαι κουρασμένη (a woman).' },
+    script: {
+      kind: 'greek',
+      features: 'spelling',
+      spelling: [
+        { id: 'el:final-sigma', label: 'ς — the form of σ at the end of a word (λόγος)', pattern: /ς$/ },
+        { id: 'el:ou', label: 'ου — one sound, like "oo" in "soup" (σου)', pattern: /ου/ },
+        { id: 'el:ee', label: 'η, ι, υ, ει, οι — all said "ee" (ήλιος, σύ, είναι, οικογένεια)', pattern: /[ηιυ]|ει|οι/ },
+        { id: 'el:ai', label: 'αι — said "e" as in "bed" (και, παιδί)', pattern: /αι/ },
+        { id: 'el:theta', label: 'θ — like th in "think" (θέλω)', pattern: /θ/ },
+        { id: 'el:delta', label: 'δ — like th in "this" (δεν)', pattern: /δ/ },
+        { id: 'el:gamma', label: 'γ — a soft "gh" sound; before ε, ι, η, υ like y in "yes" (γάλα, γη)', pattern: /γ/ },
+        { id: 'el:chi', label: 'χ — a rough sound from the throat, like ch in "loch" (χέρι)', pattern: /χ/ },
+        { id: 'el:ps-ks', label: 'ψ is ps (ψάρι) and ξ is ks (ξένος)', pattern: /[ψξ]/ },
+        { id: 'el:accent', label: 'ά έ ή ί ό ύ ώ — the accent mark shows the stressed syllable', pattern: /[άέήίόύώ]/ },
+      ],
+    },
+    bands: { earlyScenes: 4, earlyMaxNew: 5, laterMaxNew: 7, laterMinCoverage: 0.6, exitMinCoverage: 0.95 },
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
+    intro: 'Greek has 24 letters of its own. You learn them inside real words, a few at a time, and the accent mark shows where to stress each word.',
+  },
+  // Latin, read as Church (Ecclesiastical) Latin, the pronunciation of the Clementine Vulgate texts the course bundles. Machine-draft, no
+  // Latinist review yet (TODO(review)).
+  la: {
+    lang: 'la',
+    name: 'Latin',
+    voiceLangs: ['la', 'it-IT'],
+    speakerForms: { question: 'When you talk about yourself in Latin, which forms should Go teach you?', why: 'Some words change with the speaker: fessus sum (a man), fessa sum (a woman).' },
+    script: {
+      kind: 'latin',
+      features: 'spelling',
+      spelling: [
+        { id: 'la:ae-oe', label: 'ae, oe (also written æ, œ) — said "e" as in "bed" (caelum, poena)', pattern: /ae|oe|æ|œ/ },
+        { id: 'la:c-soft', label: 'c before e, i, ae, oe — "ch" as in "church" (caelum, pacem); elsewhere k', pattern: /c(?=[eiyæœ]|ae|oe)/ },
+        { id: 'la:g-soft', label: 'g before e, i — "j" as in "gentle" (genus, regina); elsewhere hard g', pattern: /g(?=[eiy])/ },
+        { id: 'la:gn', label: 'gn — "ny" as in "canyon" (agnus, magnus)', pattern: /gn/ },
+        { id: 'la:ti', label: 'ti before a vowel — "tsi" (gratia, tertius)', pattern: /ti(?=[aeiou])/ },
+        { id: 'la:i-consonant', label: 'i (or j) before a vowel at the start of a word — "y" as in "yes" (Iesus, iam)', pattern: /^[ij](?=[aeiou])|j/ },
+        { id: 'la:v', label: 'v — as in English (vita, verbum); u is always a vowel', pattern: /v/ },
+        { id: 'la:h', label: 'h — silent (homo, hora)', pattern: /h/ },
+        { id: 'la:qu', label: 'qu — "kw" (qui, aqua)', pattern: /qu/ },
+        { id: 'la:x', label: 'x — "ks" (lux, pax)', pattern: /x/ },
+        { id: 'la:double', label: 'a doubled consonant is held longer (terra, peccatum)', pattern: /([bcdfglmnprst])\1/ },
+        { id: 'la:vowels', label: 'every vowel is said: a e i o u as in Italian (Dominus, amicus)', pattern: /[aeiou]/ },
+      ],
+    },
+    bands: LATIN_BANDS,
+    exit: { reading: { minCorrect: 0.8, maxLookups: 4 }, listening: { minCorrect: 0.7 }, writing: { minAccepted: 2 }, speaking: { minRecorded: 1, minSelfChecked: 1 } },
+    intro: 'Latin uses the letters you know. Read as Church Latin: every vowel is said, c and g soften before e and i, and ae sounds like e.',
+  },
   hi: {
     lang: 'hi',
     name: 'Hindi',

@@ -16,14 +16,17 @@ import { hiAdapter } from '../../../src/adapters/hi';
 import { thAdapter } from '../../../src/adapters/th';
 import { nbAdapter } from '../../../src/adapters/nb';
 import { nnAdapter } from '../../../src/adapters/nn';
+import { laAdapter } from '../../../src/adapters/la';
+import { heAdapter } from '../../../src/adapters/he';
+import { elAdapter } from '../../../src/adapters/el';
 import type { LanguageAdapter } from '../../../src/core';
 
 /**
- * The analysers bundled with the runtime: the installable pack (Albanian), Spanish at a minimal level, and the five
- * experimental packs (German, Hindi, Thai, Norwegian Bokmål and Nynorsk). A language outside this set falls back to the
+ * The analysers bundled with the runtime: the installable pack (Albanian), Spanish at a minimal level, and the experimental
+ * packs (German, Hindi, Thai, Norwegian Bokmål and Nynorsk, Hebrew, Greek). A language outside this set falls back to the
  * tokenize-only analyser.
  */
-const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter });
+const BUILT_IN: Readonly<Record<string, LanguageAdapter>> = Object.freeze({ sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter });
 
 /** The analyser the runtime bundles for a language, if any. */
 export function builtInAdapter(languageId: string): LanguageAdapter | undefined {

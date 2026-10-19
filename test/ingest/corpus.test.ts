@@ -1,22 +1,28 @@
 import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { LANGUAGES, type LanguageCode } from '../../src/core';
+import { type LanguageCode } from '../../src/core';
 import { computePublished, loadBundledCorpus, type CorpusDocument } from '../../src/ingest';
 import { createMemoryStore } from '../../src/core';
 import { ALBANIAN_WORKS } from '../../src/course/albanian';
 import { GERMAN_WORKS } from '../../src/course/german';
 import { HINDI_WORKS } from '../../src/course/hindi';
+import { LATIN_WORKS } from '../../src/course/latin';
 import { THAI_WORKS } from '../../src/course/thai';
 import { SPANISH_WORKS } from '../../src/course/spanish';
 
 // The works of every course that bundles texts of its own: a course adds its list here.
-const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...THAI_WORKS];
+const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS, ...ALBANIAN_WORKS, ...THAI_WORKS, ...LATIN_WORKS];
 import { importDocuments, validateBatch } from '../../src/ingest';
 import { clock, registry } from './helpers';
-import { isSeed, loadCourseCorpus } from './seed';
+import { PERIOD_LANGS, SEED_BY_LANG, isSeed, loadCourseCorpus } from './seed';
 
 // The three original seed texts per language (story-01, dialogue-01, bible-1john-1): the shape assertions below are about them.
 // The course texts added to the bundled corpus later have their own describe at the end of this file.
+// Latin was added with course texts only (no seed trio): the seed assertions cover the seven seed languages. Hebrew and Greek have a seed trio
+// too (data/corpus/he, data/corpus/el) with two stated differences: Hebrew's scripture seed is Genesis 1:1–5 (no open-licence Hebrew New
+// Testament is at hand), and their compiled analysers are seed cores, so the coverage bars do not apply to them.
+const SEED_LANGS = ['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th'] as const;
+const ALL_SEED_LANGS = (Object.keys(SEED_BY_LANG) as LanguageCode[]).sort();
 const docs = loadBundledCorpus().filter(isSeed);
 const byLang = (l: LanguageCode) => docs.filter((d) => d.lang === l);
 type S = { text: string; english?: string; verseRefs?: string[] };
@@ -26,8 +32,8 @@ const sentencesOf = (d: CorpusDocument): S[] =>
 describe('bundled corpus shape (schema version 2)', () => {
   it('has story, dialogue and Bible doc for each language, sorted deterministically', () => {
     expect(docs.map((d) => `${d.lang}/${d.id}`)).toEqual(
-      ['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th'].flatMap((l) => ['bible-1john-1', 'dialogue-01', 'story-01'].map((s) => `${l}/${s}`)));
-    for (const l of LANGUAGES) expect(byLang(l).map((d) => d.contentType).sort()).toEqual(['dialogue', 'scripture', 'story']);
+      ALL_SEED_LANGS.flatMap((l) => SEED_BY_LANG[l].map((s) => `${l}/${s}`)));
+    for (const l of ALL_SEED_LANGS) expect(byLang(l).map((d) => d.contentType).sort(), l).toEqual(['dialogue', 'scripture', 'story']);
     for (const d of docs) expect(d.schemaVersion).toBe(2);
   });
 
@@ -36,7 +42,7 @@ describe('bundled corpus shape (schema version 2)', () => {
       const s = sentencesOf(d);
       if (d.contentType === 'story') expect(s.length, `${d.lang} story`).toBeGreaterThanOrEqual(8), expect(s.length).toBeLessThanOrEqual(12);
       if (d.contentType === 'dialogue') expect(s.length, `${d.lang} dialogue`).toBeGreaterThanOrEqual(6), expect(s.length).toBeLessThanOrEqual(8);
-      if (d.contentType === 'scripture') expect(s).toHaveLength(3);
+      if (d.contentType === 'scripture') expect(s, `${d.lang}/${d.id}`).toHaveLength(d.id === 'bible-gen-1' ? 5 : 3); // Hebrew: Genesis 1:1–5
       for (const x of s) expect(x.english, `${d.lang}/${d.id}: ${x.text}`).toBeTruthy();
       expect(d.english?.source, `${d.lang}/${d.id}`).toBeTruthy();
     }
@@ -70,23 +76,43 @@ describe('bundled corpus shape (schema version 2)', () => {
   });
 
   it('story prepTargets are verse refs resolved from the old prep: tags', () => {
-    for (const l of LANGUAGES) {
+    for (const l of ALL_SEED_LANGS) {
       const story = byLang(l).find((d) => d.id === 'story-01')!;
-      expect(story.prepTargets).toEqual(['JHN.3.16', '1JN.1.8', '1JN.1.9']);
-      expect(byLang(l).find((d) => d.id === 'dialogue-01')!.prepTargets).toEqual([]);
+      expect(story.prepTargets, l).toEqual(['JHN.3.16', '1JN.1.8', '1JN.1.9']);
+      expect(byLang(l).find((d) => d.id === 'dialogue-01')!.prepTargets, l).toEqual([]);
     }
   });
 
   it('Bible docs: 1 John 1:8–9 and John 3:16, never generated, WEB as English rescue', () => {
-    for (const l of LANGUAGES) {
+    for (const l of [...SEED_LANGS, 'el'] as LanguageCode[]) {
       const d = byLang(l).find((x) => x.contentType === 'scripture')!;
       const s = sentencesOf(d);
-      expect(s.map((x) => x.verseRefs?.[0])).toEqual(['1JN.1.8', '1JN.1.9', 'JHN.3.16']);
+      expect(s.map((x) => x.verseRefs?.[0]), l).toEqual(['1JN.1.8', '1JN.1.9', 'JHN.3.16']);
       expect(s[2].english).toMatch(/only born Son/);
       expect(s[0].english).toMatch(/we have no sin/);
       expect(d.generated).toBe(false);
       expect(d.english?.source).toMatch(/World English Bible/);
     }
+  });
+
+  it('Hebrew’s scripture seed is Genesis 1:1–5 from the Masoretic text (MAM, stated CC BY-SA 4.0), recorded unverified and unpublished, its English stated as the course authors’ own; Greek’s is the SBLGNT (stated CC BY 4.0), likewise unverified and unpublished', () => {
+    const d = byLang('he').find((x) => x.contentType === 'scripture')!;
+    expect(d.id).toBe('bible-gen-1');
+    expect(sentencesOf(d).map((x) => x.verseRefs?.[0])).toEqual(['GEN.1.1', 'GEN.1.2', 'GEN.1.3', 'GEN.1.4', 'GEN.1.5']);
+    expect(d.scripture).toMatchObject({ translationId: 'mam', book: 'GEN', chapter: 1 });
+    // the sources state their licences, but a licence claim without a verification record is not accepted by the bundle rule, so both are recorded unverified
+    expect(d.source.rights).toBe('unverified');
+    expect(d.source.licenseNote).toMatch(/CC BY-SA 4.0/);
+    expect(d.source.provenance).toMatch(/no open-licence Hebrew New Testament/);
+    expect(d.english?.source).toMatch(/Course authors.*not a published translation/);
+    expect(d.generated).toBe(false);
+    expect(d.review.status).toBe('unreviewed');
+    expect(computePublished(d).published).toBe(false);
+    const g = byLang('el').find((x) => x.contentType === 'scripture')!;
+    expect(g.source.rights).toBe('unverified');
+    expect(g.source.licenseNote).toMatch(/CC BY 4.0/);
+    expect(g.scripture).toMatchObject({ translationId: 'sblgnt', book: '1JN', chapter: 1 });
+    expect(computePublished(g).published).toBe(false);
   });
 
   it('es and de Scripture (public domain) and hi Scripture (licensed) are verified and published; sq and th are unverified and unpublished with reasons', () => {
@@ -128,11 +154,11 @@ describe('bundled corpus shape (schema version 2)', () => {
     }
   });
 
-  it('bundled es / de / hi Scripture text equals data/verified/scripture.json byte for byte', () => {
+  it('bundled es / de / hi / la Scripture text equals data/verified/scripture.json byte for byte', () => {
     const verified = JSON.parse(fs.readFileSync('data/verified/scripture.json', 'utf8')) as {
       by: string; checkedAt: string; translations: Array<{ lang: string; translationId: string; checkedAt?: string; verses: Record<string, { text: string }>; mismatches: unknown[] }>;
     };
-    expect(verified.translations.map((t) => t.lang).sort()).toEqual(['de', 'es', 'hi', 'th']);
+    expect(verified.translations.map((t) => t.lang).sort()).toEqual(['de', 'es', 'hi', 'la', 'th']); // la: the Clementine Vulgate slices (scripts/verify-la-scripture.mts)
     for (const t of verified.translations) {
       expect(t.mismatches).toEqual([]);
       // every verified document of the language, not only the first: each verse equals the record
@@ -162,7 +188,9 @@ describe('bundled corpus shape (schema version 2)', () => {
         const an = ad.analyze(toks);
         toks.forEach((t, i) => { if (t.isWord) { words++; if (an[i].candidates.length) analysed++; } });
       }
-      expect(analysed / words, `${d.lang}/${d.id}`).toBeGreaterThanOrEqual(0.95);
+      // Hebrew and Greek: the compiled analyser is a seed core (closed classes + the commonest Biblical / New Testament words; the full indexes are
+      // installed assets), so the Modern seed texts read at about half and the Biblical ones at 71–92 % (npm run corpus:validate)
+      expect(analysed / words, `${d.lang}/${d.id}`).toBeGreaterThanOrEqual(PERIOD_LANGS.includes(d.lang) ? 0.45 : 0.95);
     }
   });
 
@@ -172,6 +200,28 @@ describe('bundled corpus shape (schema version 2)', () => {
       for (const t of th.tokenize(s.text)) expect(/\s/u.test(t.surface)).toBe(false);
       expect(th.tokenize(s.text).filter((t) => t.isWord).length).toBeGreaterThanOrEqual(3);
     }
+  });
+});
+
+describe('Latin: course texts only, no seed trio (added 2026-10-17)', () => {
+  const la = loadBundledCorpus().filter((d) => d.lang === 'la');
+  const refsOf = (id: string) => new Set(la.find((d) => d.id === id)!.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences.flatMap((x) => x.verseRefs ?? []) : []))));
+
+  it('bundles at least eleven byte-verified Clementine Vulgate chapters (1 John 1:8–9 and John 3:16 among them) and the ladder texts', () => {
+    const scripture = la.filter((d) => d.contentType === 'scripture');
+    expect(scripture.length).toBeGreaterThanOrEqual(11);
+    for (const d of scripture) {
+      expect(d.scripture?.translationId).toBe('latVulgClementine');
+      expect(d.scripture?.verification?.method).toBe('byte-comparison');
+      expect(d.source.rights).toBe('public-domain');
+      expect(d.work?.slug).toBe('vulgata-clementina');
+    }
+    expect(refsOf('vulgate-1john-1').has('1JN.1.8') && refsOf('vulgate-1john-1').has('1JN.1.9')).toBe(true);
+    expect(refsOf('vulgate-john-3').has('JHN.3.16')).toBe(true);
+    const ladder = la.filter((d) => d.contentType !== 'scripture');
+    expect(ladder.length).toBeGreaterThanOrEqual(5);
+    for (const d of ladder) expect(['ritchie-fabulae-faciles', 'caesar-de-bello-gallico-1']).toContain(d.work?.slug);
+    expect(la.some((d) => ['story-01', 'dialogue-01', 'bible-1john-1'].includes(d.id))).toBe(false);
   });
 });
 

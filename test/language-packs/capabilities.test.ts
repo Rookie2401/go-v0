@@ -7,8 +7,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
+import { elAdapter } from '../../src/adapters/el';
 import { esAdapter } from '../../src/adapters/es';
 import { hiAdapter } from '../../src/adapters/hi';
+import { heAdapter } from '../../src/adapters/he';
+import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
 import { sqAdapter } from '../../src/adapters/sq';
@@ -17,7 +20,7 @@ import type { LanguageAdapter } from '../../src/core';
 import { PACKS, allPackCapabilities, levelOf, packCapabilities } from '../../packages/language-packs/src';
 import type { SupportLevel } from '../../src/core';
 
-const ADAPTERS: Record<string, LanguageAdapter> = { sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter };
+const ADAPTERS: Record<string, LanguageAdapter> = { sq: sqAdapter, es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter, he: heAdapter, el: elAdapter };
 const q = (l: SupportLevel): string => (l === 'dependable' ? 'dependable' : l === 'limited' ? 'limited' : 'none');
 
 describe('every pack’s report matches its manifest and its adapter', () => {
@@ -159,6 +162,7 @@ describe('script handling is verified live, every time the report is built', () 
     th: ['word-segmentation', 'tone-decoding'],
     nb: ['ae-oe-aa-stay-whole', 'particle-verbs'],
     nn: ['ae-oe-aa-stay-whole', 'particle-verbs'],
+    la: ['ligatures-and-macrons-stay-whole', 'enclitic-que-ne'],
   };
   it.each(Object.keys(claims))('%s: each claim has a probe and the probe passes on the real analyser', (lang) => {
     const items = packCapabilities(lang)!.scriptHandling.items;

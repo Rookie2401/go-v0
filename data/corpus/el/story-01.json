@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "story-01",
+  "lang": "el",
+  "title": "Η ιστορία μου",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-el",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Greek (Modern)"
+  },
+  "source": {
+    "id": "src:el:story-01",
+    "title": "Modern Greek beginner story 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "attribution": "Course-authored beginner text. First draft by an AI assistant; not yet reviewed by a native speaker.",
+    "provenance": "Written for the course authors as a beginner seed text in contemporary Modern Greek (monotonic spelling). The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; first draft machine-generated, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Drafted by an AI assistant; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "mission",
+    "testimony"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [
+    "JHN.3.16",
+    "1JN.1.8",
+    "1JN.1.9"
+  ],
+  "generated": true,
+  "english": {
+    "source": "The drafter's own glosses (AI assistant), unreviewed"
+  },
+  "sections": [
+    {
+      "title": "Η ιστορία μου",
+      "paragraphs": [
+        {
+          "sentences": [
+            { "text": "Όταν ήμουν νέος, δεν καταλάβαινα την καρδιά μου.", "english": "When I was young, I did not understand my heart." },
+            { "text": "Όταν ήμουν νέος, είχα αμαρτία στην καρδιά μου.", "english": "When I was young, I had sin in my heart." },
+            { "text": "Δεν πίστευα στον Θεό.", "english": "I did not believe in God." },
+            { "text": "Μια μέρα άρχισα να καταλαβαίνω την αμαρτία μου.", "english": "One day I began to understand my sin." }
+          ]
+        },
+        {
+          "sentences": [
+            { "text": "Ο Θεός συγχώρεσε την αμαρτία μου.", "english": "God forgave my sin." },
+            { "text": "Τώρα πιστεύω στον Θεό.", "english": "Now I believe in God." },
+            { "text": "Τώρα έχω ειρήνη στην καρδιά μου.", "english": "Now I have peace in my heart." },
+            { "text": "Ο Θεός αγαπάει τον κόσμο.", "english": "God loves the world." },
+            { "text": "Αγαπάω και εγώ τον Θεό.", "english": "I love God too." },
+            { "text": "Τώρα καταλαβαίνω ότι ο Θεός συγχωρεί όλους.", "english": "Now I understand that God forgives everyone." }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -98,7 +98,8 @@ export interface UnitFacts {
 }
 
 export interface FactsProvider {
-  factsFor(unitId: string, languageId: string): Promise<UnitFacts | undefined>;
+  /** `varietyId`: the learner's target variety (a PERIOD for Hebrew / Greek): the facts prefer sentences and forms of that period and never invent them. */
+  factsFor(unitId: string, languageId: string, varietyId?: string): Promise<UnitFacts | undefined>;
 }
 
 // ───────────────────────────── exercises ─────────────────────────────
@@ -303,6 +304,8 @@ export interface AudioAvailability { available: boolean; eligibleForEvidence: bo
 
 export interface ReviewPreferences {
   languageId: string;
+  /** The enrolment's target variety, when it has one (a period for Hebrew / Greek: 'he-bib', 'el-koi' …); facts and exercises prefer it. */
+  varietyId?: string;
   sessionMinutes: number;
   maxNew: number;
   desiredRetention: number;

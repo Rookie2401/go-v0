@@ -20,9 +20,9 @@ describe('readerSupport', () => {
     expect(readerSupport('constructor')).toBeUndefined();
   });
 
-  it('the parser can read exactly the packs that are wired: all seven, Norwegian Bokmål and Nynorsk included', () => {
+  it('the parser can read exactly the packs that are wired: all ten, Norwegian Bokmål, Nynorsk and (since 2026-10-17) Latin, Hebrew and Greek included', () => {
     for (const s of readerSupportList()) expect(s.parseable, s.languageId).toBe(PARSER_LANGUAGES.includes(s.languageId));
-    expect(readerSupportList().map((s) => s.parseable)).toEqual([true, true, true, true, true, true, true]);
+    expect(readerSupportList().map((s) => s.parseable)).toEqual([true, true, true, true, true, true, true, true, true, true]);
     for (const l of ['nb', 'nn']) {
       const s = readerSupport(l)!;
       expect(s.lines.join('\n'), l).not.toMatch(/cannot read selections/);
@@ -34,7 +34,7 @@ describe('readerSupport', () => {
   it('the setup page’s words: installable, and experimental (German, Hindi, Thai, Norwegian)', () => {
     expect(readerSupport('sq')!.levelLabel).toBe('installable');
     expect(readerSupport('es')!.levelLabel).toBe('installable');
-    for (const l of ['de', 'hi', 'th', 'nb', 'nn']) expect(readerSupport(l)!.levelLabel, l).toBe('experimental, seed-only lemmatisation, unreviewed');
+    for (const l of ['de', 'hi', 'th', 'nb', 'nn', 'la']) expect(readerSupport(l)!.levelLabel, l).toBe('experimental, seed-only lemmatisation, unreviewed');
   });
 
   it('what a card offers is what the report states, and never syntax roles', () => {

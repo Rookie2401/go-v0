@@ -159,11 +159,18 @@ details.feat > .muted { margin: 0.3em 0 0 0.2em; font-size: 0.92em; }
 .pills .btn { padding: 0.45em 0.85em; font-size: 0.85em; }
 .btn--quiet { border-color: transparent; background: transparent; color: #a89c86; margin-inline-start: auto; }
 .btn--quiet:hover:not(:disabled) { border-color: transparent; color: #d9cfbe; }
-.deeperBtn::after, .sentenceBtn::after { content: ' \\25BE'; }
-.deeperBtn[aria-expanded="true"]::after, .sentenceBtn[aria-expanded="true"]::after { content: ' \\25B4'; }
-.sentenceBox { margin-top: 0.8em; }
-.sentenceBox[hidden] { display: none; }
-.sentenceBox .more { margin-top: 0; }
+.deeperBtn::after, .sentenceBtn::after, .variantsBtn::after { content: ' \\25BE'; }
+.deeperBtn[aria-expanded="true"]::after, .sentenceBtn[aria-expanded="true"]::after, .variantsBtn[aria-expanded="true"]::after { content: ' \\25B4'; }
+.sentenceBox, .variantsBox { margin-top: 0.8em; }
+.sentenceBox[hidden], .variantsBox[hidden] { display: none; }
+.sentenceBox .more, .variantsBox .more { margin-top: 0; }
+table.variants { border-collapse: collapse; width: 100%; margin: 0.4em 0; }
+table.variants th, table.variants td { text-align: start; vertical-align: top; padding: 0.25em 0.5em 0.25em 0; border-bottom: 1px solid var(--line, #e3e1dc); font-weight: normal; }
+table.variants th { white-space: nowrap; color: var(--muted, #6b6b6b); }
+table.variants tr.current th { font-weight: 600; color: inherit; }
+table.variants .vform { font-size: 1.1em; }
+table.variants .vstatus, table.variants .vnone { color: var(--muted, #6b6b6b); font-size: 0.9em; }
+.periodLine { font-size: 0.85em; color: var(--muted, #6b6b6b); margin-top: 0.2em; }
 .deeper { margin-top: 0.8em; }
 .deeper h3 { margin: 0; padding: 0.8em 0 0.3em; border-top: 1px solid #322b22; letter-spacing: 0.16em; text-transform: uppercase; color: #a89c86; font-size: 0.69em; font-weight: 600; }
 .deeper .more { margin-top: 0; border-top: 0; padding-top: 0; }
@@ -229,10 +236,12 @@ form.fix input[type="text"] { width: 12em; border-radius: 6px; }
 type Child = Node | string | null | undefined | false;
 
 /** The sections "Go deeper" shows, in `LAYER_ORDER`. "Sentence" is the word-by-word English rescue list. */
-const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', grammar: 'Grammar', 'phrase-syntax': 'Syntax', forms: 'All forms', meaning: 'Meanings', origin: 'Origin', structure: 'Word structure', sentence: 'Sentence' };
-/** The panels renderPanels fills: the sections of "Go deeper" and the sentence (its own pill, "See full sentence", exclusive with "Go deeper"). */
-const PANEL_LAYERS: readonly LayerName[] = [...LAYER_ORDER, 'sentence'];
-const LAYER_CLASS: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', structure: 'l10' };
+const LAYER_TITLES: Record<LayerName, string> = { morphology: 'Form', grammar: 'Grammar', 'phrase-syntax': 'Syntax', forms: 'All forms', meaning: 'Meanings', origin: 'Origin', structure: 'Word structure', sentence: 'Sentence', variants: 'Variants' };
+/** The panels renderPanels fills: the sections of "Go deeper", the sentence (its own pill, "See full sentence") and the variants (its own pill, languages with period varieties only); the three pills are exclusive. */
+const PANEL_LAYERS: readonly LayerName[] = [...LAYER_ORDER, 'sentence', 'variants'];
+const LAYER_CLASS: Record<LayerName, string> = { morphology: 'l2', 'phrase-syntax': 'l3', grammar: 'l4', sentence: 'l5', forms: 'l6', meaning: 'l7', origin: 'l8', structure: 'l10', variants: 'l11' };
+/** The "Variants" rows in plain words. */
+const VARIANT_STATUS: Record<string, string> = { attested: 'attested', 'same-as-lemma': 'the same form', 'not-in-sources': 'not in our sources', 'not-yet-existing': 'not yet in the language', obsolete: 'no longer used' };
 const STRUCTURE_STATUS: Record<string, string> = { 'supported-by-source': 'From the dictionary: its etymology template names these parts.', provisional: "Provisional: from the analyser's rules only; no dictionary template confirms it." };
 const STATUS_MARK: Record<string, string> = { verified: '✓', supported: '◌', generated: '~', conflicted: '‼' };
 const STATUS_LABEL: Record<string, string> = { verified: 'both the rules and the dictionary', supported: 'the dictionary only', generated: 'the rules only (unverified)', conflicted: 'the two disagree' };
@@ -301,7 +310,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let actions: CardActions = {};
   let parts: {
     rows: HTMLElement; pronNote: HTMLElement; say: HTMLButtonElement; stopAudio?: HTMLButtonElement; audioSpeed?: HTMLSelectElement;
-    sources: HTMLElement; sourcesBtn: HTMLButtonElement; deeper: HTMLElement; deeperBtn: HTMLButtonElement; sentenceBox: HTMLElement; sentenceBtn: HTMLButtonElement; encounters: HTMLElement; levelName: HTMLElement;
+    sources: HTMLElement; sourcesBtn: HTMLButtonElement; deeper: HTMLElement; deeperBtn: HTMLButtonElement; sentenceBox: HTMLElement; sentenceBtn: HTMLButtonElement;
+    variantsBox?: HTMLElement; variantsBtn?: HTMLButtonElement; encounters: HTMLElement; levelName: HTMLElement;
     layers: Record<LayerName, HTMLElement>; fix: HTMLFormElement; report: HTMLButtonElement; rateBtns: Record<SelfMark, HTMLButtonElement>;
   } | undefined;
   // `autoPlay`: the render token of a card that should speak once as soon as its voice is known to be available (GoLearn Active's "Speak on click")
@@ -312,6 +322,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let analysisReported = false;
   // the sentence pill's first opening is reported once per card
   let sentenceReported = false;
+  let variantsReported = false;
   let renderToken = 0;
 
   const h = (tag: string, props: Record<string, string> = {}, ...children: Child[]): HTMLElement => {
@@ -447,6 +458,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       rows.push(h('div', { class: 'lemmaLine' }, h('span', { class: 'lv', lang: m.languageId }, m.lemma, m.pos ? h('span', { class: 'pos' }, m.pos) : null), lemmaRom ? h('span', { class: 'translit', role: 'note', 'aria-label': 'lemma transliteration', title: lemmaRomSource }, lemmaRom) : null, h('span', { class: 'kicker' }, m.unconfirmed ? 'lemma (guess)' : 'lemma')));
     }
     if (m.unconfirmed && m.tokenCount === 1) rows.push(h('div', { class: 'card__text' }, 'The lemma is a guess from the ending; the word list does not hold this word.'));
+    // a language with period varieties: which period this text was read in, and why (the analyser's own basis)
+    if (m.period) rows.push(h('div', { class: 'periodLine', 'data-row': 'period', title: m.period.basis }, `Read as ${m.period.label} — ${m.period.basis}`));
     if (m.words.length > 1) {
       const ul = h('ul', {}, ...m.words.map((w) => h('li', {}, h('span', { lang: m.languageId }, w.surface), ': ', w.lemma ? h('span', { lang: m.languageId }, w.lemma) : 'unknown', `${w.gloss ? ` – ${w.gloss}` : ''} (${w.confidence.toFixed(2)})`)));
       rows.push(h('div', { class: 'more-inline' }, ul));
@@ -905,9 +918,11 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       origin: (p) => fillOrigin(p, model!, view),
       structure: (p) => fillStructure(p, model!, view),
       sentence: (p) => fillSentence(p, model!, view),
+      variants: (p) => fillVariants(p, model!),
     };
     for (const name of PANEL_LAYERS) {
       const panel = parts.layers[name];
+      if (!panel) continue; // the variants panel exists only for a language with period varieties
       panel.replaceChildren();
       fills[name]?.(panel);
     }
@@ -942,7 +957,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
    * "Go deeper" and "See full sentence" are one or the other: opening either closes the other (aria-expanded on both). "Go deeper" opens every
    * grammatical section at once ("Less" closes them) and reports each, in order; the sentence reports its one event on its first opening.
    */
-  function setPills(which: 'deeper' | 'sentence' | 'none'): void {
+  function setPills(which: 'deeper' | 'sentence' | 'variants' | 'none'): void {
     if (!parts) return;
     const set = (box: HTMLElement, btn: HTMLButtonElement, open: boolean, openText: string, closedText: string): boolean => {
       const was = !box.hasAttribute('hidden');
@@ -953,6 +968,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     };
     const opened = set(parts.deeper, parts.deeperBtn, which === 'deeper', 'Less', 'Go deeper');
     const sentenceOpened = set(parts.sentenceBox, parts.sentenceBtn, which === 'sentence', 'Hide sentence', 'See full sentence');
+    const variantsOpened = parts.variantsBox && parts.variantsBtn ? set(parts.variantsBox, parts.variantsBtn, which === 'variants', 'Hide variants', 'Variants') : false;
     if (lastAnchor) place(lastAnchor);
     if (opened) {
       for (const name of LAYER_ORDER) {
@@ -961,9 +977,37 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       }
     }
     if (sentenceOpened && !sentenceReported) { sentenceReported = true; try { actions.onLayer?.('sentence'); } catch { /* reporting never blocks */ } }
+    if (variantsOpened && !variantsReported) { variantsReported = true; try { actions.onLayer?.('variants'); } catch { /* reporting never blocks */ } }
   }
   const toggleDeeper = (): void => setPills(parts!.deeper.hasAttribute('hidden') ? 'deeper' : 'none');
   const toggleSentence = (): void => setPills(parts!.sentenceBox.hasAttribute('hidden') ? 'sentence' : 'none');
+  const toggleVariants = (): void => setPills(parts!.variantsBox?.hasAttribute('hidden') ? 'variants' : 'none');
+
+  /**
+   * The "Variants" panel: the word across the periods of the language, one row per period in historical order, each with the form(s) a
+   * source attests, the meaning when a source gives one for that period, the status in plain words and the sources; the period the text
+   * itself is in is marked. A period no source knows is said to be "not in our sources" — never filled in.
+   */
+  function fillVariants(panel: HTMLElement, m: CardModel): void {
+    const v = m.variants;
+    if (!v) { panel.append(h('div', { class: 'note' }, 'This language has no period varieties to compare.')); return; }
+    if (m.period) panel.append(h('div', { class: 'note' }, `This text is read as ${m.period.label}: ${m.period.basis}.`));
+    const table = h('table', { class: 'variants' });
+    for (const row of v.rows) {
+      const forms = row.forms.length ? h('span', { class: 'vform', lang: m.languageId, dir: 'auto' }, row.forms.join(' · ')) : h('span', { class: 'vnone', 'aria-label': 'no form' }, '—');
+      const detail: string[] = [];
+      if (row.status !== 'attested' || !row.forms.length) detail.push(VARIANT_STATUS[row.status] ?? row.status);
+      if (row.gloss) detail.push(row.gloss);
+      if (row.note) detail.push(row.note);
+      if (row.sources.length) detail.push(`source: ${row.sources.join(', ')}`);
+      table.append(h('tr', { class: row.current ? 'current' : '' },
+        h('th', { scope: 'row' }, row.current ? `${row.label} (this text)` : row.label),
+        h('td', {}, forms, detail.length ? h('div', { class: 'vstatus' }, detail.join(' · ')) : null),
+      ));
+    }
+    panel.append(table);
+    panel.append(h('div', { class: 'note' }, `Lemma: ${v.lemma}. Every row states what a source attests for that period; a period with no row in the sources is left empty, not guessed.`));
+  }
 
   function buildCorrectionForm(m: CardModel): HTMLFormElement {
     const form = h('form', { class: 'fix', id: 'panel-fix', hidden: '', 'aria-label': 'Correct this analysis' }) as HTMLFormElement;
@@ -1000,7 +1044,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
 
   function show(m: CardModel, anchor: PopupAnchor, opts: ShowOptions = {}): Placement {
     renderToken++;
-    analysisOpen = false; analysisReported = false; sentenceReported = false;
+    analysisOpen = false; analysisReported = false; sentenceReported = false; variantsReported = false;
     pron.off?.();
     pron.offPlayback?.();
     pron = { available: false, note: 'Checking voices…', playing: false, plays: 0 };
@@ -1065,6 +1109,15 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (audioControls.childElementCount) deeper.append(h('h3', {}, 'Playback'), audioControls);
     const deeperBtn = h('button', { type: 'button', class: 'btn deeperBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-deeper' }, 'Go deeper') as HTMLButtonElement;
     deeperBtn.addEventListener('click', toggleDeeper);
+    // "Variants": the word across the periods of the language, its own panel and pill to the right of the sentence's; only for a language whose analyser has period varieties
+    let variantsBox: HTMLElement | undefined;
+    let variantsBtn: HTMLButtonElement | undefined;
+    if (m.variants) {
+      layers.variants = h('div', { class: `more layer ${LAYER_CLASS.variants}`, 'data-layer': 'variants', id: `panel-${LAYER_CLASS.variants}` });
+      variantsBox = h('div', { class: 'variantsBox', id: 'panel-variants', hidden: '' }, layers.variants);
+      variantsBtn = h('button', { type: 'button', class: 'btn variantsBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-variants' }, 'Variants') as HTMLButtonElement;
+      variantsBtn.addEventListener('click', toggleVariants);
+    }
 
     // the learner's own word on how well they know it: six levels, the current one shown pressed (a new mark replaces it)
     const rateBtns = {} as Record<SelfMark, HTMLButtonElement>;
@@ -1090,12 +1143,12 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       report.setAttribute('aria-expanded', String(openNow));
       if (lastAnchor) place(lastAnchor);
     });
-    const pills = h('div', { class: 'pills' }, deeperBtn, sentenceBtn, report);
+    const pills = h('div', { class: 'pills' }, deeperBtn, sentenceBtn, variantsBtn ?? null, report);
 
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
-    parts = { rows, pronNote, say, stopAudio, audioSpeed, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, encounters, levelName, layers, fix, report, rateBtns };
-    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, pronNote, fix, feedbackEl, statusEl);
+    parts = { rows, pronNote, say, stopAudio, audioSpeed, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, variantsBox, variantsBtn, encounters, levelName, layers, fix, report, rateBtns };
+    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });

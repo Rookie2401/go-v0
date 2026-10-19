@@ -10,10 +10,11 @@ import { importDocuments, validateBatch } from '../../src/ingest';
 import { exportLearner, restoreLearner, validateBackup } from '../../src/backup';
 import { bundled, bundledDoc, liveSentences, makeApp, makeClock, reader, seedUser, tokensOf } from './harness';
 
-const COURSES: Record<LanguageCode, string> = { es: 'honduras-es', sq: 'albania-sq', th: 'thailand-th', hi: 'india-hi', de: 'germany-de', nb: 'norway-nb', nn: 'norway-nb' };
-const LANGS = Object.keys(COURSES) as LanguageCode[];
+const COURSES: Record<LanguageCode, string> = { es: 'honduras-es', sq: 'albania-sq', th: 'thailand-th', hi: 'india-hi', de: 'germany-de', nb: 'norway-nb', nn: 'norway-nb', he: 'hebrew', el: 'greek', la: 'latin-la' };
+// la is left out: Latin bundles course texts only (Vulgate chapters, Ritchie, Caesar), not the story-01 / dialogue-01 / bible-1john-1 seed trio these checks read (its own checks: test/ingest/corpus.test.ts, test/corpus/la.test.ts)
+const LANGS = (Object.keys(COURSES) as LanguageCode[]).filter((l) => l !== 'la' && l !== 'he' && l !== 'el');
 // es and de: public-domain translations verified against the distributor; hi: a licensed translation (IRV, CC BY-SA 4.0) verified the same way
-const SCRIPTURE_PUBLISHED: Record<LanguageCode, boolean> = { es: true, de: true, sq: false, th: false, hi: true, nb: false, nn: false };
+const SCRIPTURE_PUBLISHED: Record<LanguageCode, boolean> = { es: true, de: true, sq: false, th: false, hi: true, nb: false, nn: false, he: false, el: false, la: true }; // la: the Clementine Vulgate slices, public domain, verified against the USFX source
 
 function graphemeBoundaries(text: string, lang: string): Set<number> {
   const out = new Set<number>([0, text.length]);

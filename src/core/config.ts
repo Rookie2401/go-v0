@@ -13,6 +13,9 @@ export const LANGUAGE_ROWS: Language[] = [
   { id: 'de', name: 'German', endonym: 'Deutsch', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
   { id: 'nb', name: 'Norwegian (Bokmål)', endonym: 'Norsk bokmål', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
   { id: 'nn', name: 'Norwegian (Nynorsk)', endonym: 'Norsk nynorsk', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'he', name: 'Hebrew', endonym: 'עברית', script: 'Hebr', direction: 'rtl', whitespaceDelimited: true },
+  { id: 'el', name: 'Greek', endonym: 'Ελληνικά', script: 'Grek', direction: 'ltr', whitespaceDelimited: true },
+  { id: 'la', name: 'Latin', endonym: 'Latina', script: 'Latn', direction: 'ltr', whitespaceDelimited: true },
 ];
 
 export const COURSES: Course[] = [
@@ -48,6 +51,24 @@ export const COURSES: Course[] = [
     // its own accounts (its items are `nn` items, never credited to Bokmål). The historical varieties (Riksmål,
     // Dano-Norwegian, Landsmål, Høgnorsk) are recognition-only.
     variety: { target: 'nb', within: [] },
+  },
+  {
+    id: 'hebrew', lang: 'he', country: 'Israel', title: 'Hebrew', preferredLocales: ['he-IL', 'he'],
+    // Default target: Modern Hebrew. Biblical Hebrew is a PERIOD variety of the same language (kind 'period'): a learner may
+    // make it the target instead (the enrolment's varietyId), and a Biblical reading is then 'target' and a Modern one
+    // receptive. Mishnaic and Medieval Hebrew are recognised from the sources' labels, not analysed. Biblical Aramaic is a
+    // heritage language: read as its own language, never credited to Hebrew.
+    variety: { target: 'he-mod', within: [] },
+  },
+  {
+    id: 'greek', lang: 'el', country: 'Greece', title: 'Greek', preferredLocales: ['el-GR', 'el'],
+    // Default target: Modern Greek. Homeric, Attic and Koine are period varieties a learner may target instead; Medieval
+    // (Byzantine) Greek is recognised from labels, not analysed.
+    variety: { target: 'el-mod', within: [] },
+  },
+  {
+    id: 'latin-la', lang: 'la', country: 'Rome', title: 'Latin', preferredLocales: ['la'],
+    // No variety policy yet: Classical Latin is the working target; the Vulgate and later Latin are read as Latin of their period.
   },
 ];
 

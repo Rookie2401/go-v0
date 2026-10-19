@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "id": "dialogue-01",
+  "lang": "el",
+  "title": "Μια συζήτηση",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-el",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Greek (Modern)"
+  },
+  "source": {
+    "id": "src:el:dialogue-01",
+    "title": "Modern Greek beginner dialogue 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "attribution": "Course-authored beginner text. First draft by an AI assistant; not yet reviewed by a native speaker.",
+    "provenance": "Written for the course authors as a beginner seed text in contemporary Modern Greek (monotonic spelling). The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; first draft machine-generated, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Drafted by an AI assistant; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "mission",
+    "conversation"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "The drafter's own glosses (AI assistant), unreviewed"
+  },
+  "sections": [
+    {
+      "title": "Μια συζήτηση",
+      "paragraphs": [
+        { "sentences": [{ "text": "Γεια σου, Άννα, τι κάνεις;", "english": "Hello, Anna, how are you?" }] },
+        { "sentences": [{ "text": "Είμαι καλά, Πέτρο, αλλά υπάρχει κάτι που δεν καταλαβαίνω.", "english": "I am fine, Petros, but there is something I do not understand." }] },
+        { "sentences": [{ "text": "Τι είναι αυτό που δεν καταλαβαίνεις;", "english": "What is it that you do not understand?" }] },
+        { "sentences": [{ "text": "Δεν καταλαβαίνω γιατί ο Θεός συγχωρεί την αμαρτία.", "english": "I do not understand why God forgives sin." }] },
+        { "sentences": [{ "text": "Και εγώ άρχισα να το καταλαβαίνω.", "english": "I have also begun to understand it." }] },
+        { "sentences": [{ "text": "Πιστεύω στον Θεό, και ο Θεός μας αγαπάει, και γι’ αυτό συγχωρεί.", "english": "I believe in God, and God loves us, and that is why he forgives." }] },
+        { "sentences": [{ "text": "Ευχαριστώ, Πέτρο. Τώρα καταλαβαίνω περισσότερο.", "english": "Thank you, Petros. Now I understand more." }] }
+      ]
+    }
+  ]
+}

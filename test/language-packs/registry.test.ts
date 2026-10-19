@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
 import { hiAdapter } from '../../src/adapters/hi';
+import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
 import { nnAdapter } from '../../src/adapters/nn';
 import { thAdapter } from '../../src/adapters/th';
@@ -9,10 +10,10 @@ import { LEVEL_LABEL, PACKS, TEAMS, installablePacks, languagesOf, levelOf, pack
 import type { TeamId } from '../../packages/language-packs/src';
 
 describe('PACKS and packFor', () => {
-  it('lists seven packs; Albanian and Spanish are installable, German, Hindi, Thai and both Norwegian packs experimental (installable)', () => {
-    expect(Object.keys(PACKS).sort()).toEqual(['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th']);
-    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn']);
-    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental' } as const;
+  it('lists ten packs (Latin, Hebrew and Greek were added 2026-10-17); Albanian and Spanish are installable, German, Hindi, Thai, Latin and both Norwegian packs experimental (installable)', () => {
+    expect(Object.keys(PACKS).sort()).toEqual(['de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'sq', 'th']);
+    expect(installablePacks().map((p) => p.packId)).toEqual(['pack:sq', 'pack:es', 'pack:de', 'pack:hi', 'pack:th', 'pack:nb', 'pack:nn', 'pack:la', 'pack:he', 'pack:el']);
+    const level = { sq: 'installable', es: 'installable', de: 'experimental', hi: 'experimental', th: 'experimental', nb: 'experimental', nn: 'experimental', la: 'experimental', he: 'experimental', el: 'experimental' } as const;
     for (const [lang, m] of Object.entries(PACKS)) {
       expect(m.languageId).toBe(lang);
       expect(m.packId).toBe(`pack:${lang}`);
@@ -22,7 +23,7 @@ describe('PACKS and packFor', () => {
   });
 
   it('an experimental pack says so: its level, its label and its review status; it never reads as plainly installable', () => {
-    for (const lang of ['de', 'hi', 'th', 'nb', 'nn']) {
+    for (const lang of ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el']) {
       const m = PACKS[lang];
       expect(m.level, lang).toBe('experimental');
       expect(LEVEL_LABEL[levelOf(m)]).toBe('experimental, seed-only lemmatisation, unreviewed');
@@ -87,7 +88,7 @@ describe('experimental packs without a dictionary (Norwegian)', () => {
 });
 
 describe('adapter versions', () => {
-  const adapters = { es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter } as const;
+  const adapters = { es: esAdapter, de: deAdapter, hi: hiAdapter, th: thAdapter, nb: nbAdapter, nn: nnAdapter, la: laAdapter } as const;
 
   it('name the real adapter and its current version (the version constant must not drift from the adapter)', () => {
     for (const [lang, a] of Object.entries(adapters)) {

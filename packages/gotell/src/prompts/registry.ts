@@ -199,7 +199,46 @@ function sqVariant(v: Variant): WritingPrompt {
   };
 }
 
-export const PROMPTS: WritingPrompt[] = [...NEUTRAL.map(toPrompt), ...SQ_VARIANTS.map(sqVariant)];
+/**
+ * Prompts written for one PERIOD of a language (Hebrew, Greek): offered only to a learner whose target is that period (`varietyIds`,
+ * read by promptsFor). Grammar targets are constructions or features of the he / el packs. Machine-drafted, unreviewed.
+ */
+const PERIOD_PROMPTS: WritingPrompt[] = [
+  {
+    promptId: 'period.he-bib.narrate-wayyiqtol', category: 'general', languageIds: ['he'], varietyIds: ['he-bib'], teams: [],
+    goal: 'Tell a short sequence of past events in the manner of Biblical narrative.',
+    instruction: 'Write three or four sentences telling what someone did one morning, as a Biblical narrator would: begin each new event with a wayyiqtol form (וַיָּקָם, וַיֵּלֶךְ, וַיֹּאמֶר).',
+    difficulty: 'short-paragraph', vocabularyDomains: ['daily-life', 'narrative'], grammarTargets: ['wayyiqtol-narrative', 'Conj'],
+    culturalNotes: ['Biblical Hebrew narrative chains events with wayyiqtol; Modern Hebrew uses the simple past instead. The checker marks a Modern tense form in this draft as a register note.'],
+    validation: { ...validation(), source: 'Pack he (machine-drafted): grammar targets from the manifest' },
+  },
+  {
+    promptId: 'period.he-bib.construct-chain', category: 'general', languageIds: ['he'], varietyIds: ['he-bib'], teams: [],
+    goal: 'Describe a place or a person with construct chains.',
+    instruction: 'Write two or three pointed sentences describing a house or a family, using at least three construct chains (בֵּית הַמֶּלֶךְ, בֶּן־אָדָם, דִּבְרֵי הַיָּמִים).',
+    difficulty: 'first-sentences', vocabularyDomains: ['family', 'places'], grammarTargets: ['construct-chain', 'State'],
+    culturalNotes: ['The article stands on the last noun of a construct chain only.'],
+    validation: { ...validation(), source: 'Pack he (machine-drafted): grammar targets from the manifest' },
+  },
+  {
+    promptId: 'period.el-koi.letter-opening', category: 'mission-communication', languageIds: ['el'], varietyIds: ['el-koi'], teams: [],
+    goal: 'Open a short letter to a community in the manner of a New Testament epistle.',
+    instruction: 'Write the opening of a letter (two or three polytonic sentences): who writes, to whom, and a greeting of grace and peace, with the article agreeing with every noun.',
+    difficulty: 'short-paragraph', vocabularyDomains: ['letters', 'community'], grammarTargets: ['article-agreement', 'Case'],
+    culturalNotes: ['Koine letters open with the sender in the nominative, the recipients in the dative and a greeting (χάρις ὑμῖν καὶ εἰρήνη). Monotonic spelling in this draft is marked as a register note, not an error.'],
+    validation: { ...validation(), source: 'Pack el (machine-drafted): grammar targets from the manifest' },
+  },
+  {
+    promptId: 'period.el-koi.retell-aorist', category: 'scripture-theology', languageIds: ['el'], varietyIds: ['el-koi'], teams: [],
+    goal: 'Retell a short event from a Gospel in your own Koine.',
+    instruction: 'Choose a short event from a Gospel and retell it in your own Koine, as you understand it, in three sentences: aorist indicative verbs for the events (ἦλθεν, εἶπεν, ἔδωκεν) and the imperfect for the background.',
+    difficulty: 'short-paragraph', vocabularyDomains: ['scripture', 'narrative'], grammarTargets: ['Tense', 'Mood'],
+    culturalNotes: ['Greek narrative puts the events in the aorist and the setting in the imperfect; the card names the tense of every verb you write.'],
+    validation: { ...validation(), source: 'Pack el (machine-drafted): grammar targets from the manifest' },
+  },
+];
+
+export const PROMPTS: WritingPrompt[] = [...NEUTRAL.map(toPrompt), ...SQ_VARIANTS.map(sqVariant), ...PERIOD_PROMPTS];
 
 // ───────────────────────────── modes ─────────────────────────────
 
@@ -219,7 +258,7 @@ export function promptById(promptId: string, prompts: readonly WritingPrompt[] =
   return prompts.find((p) => p.promptId === promptId);
 }
 
-export interface PromptQuery { languageId: string; teamId?: string; mode: WritingMode; category?: PromptCategory }
+export interface PromptQuery { languageId: string; teamId?: string; mode: WritingMode; category?: PromptCategory; /** The learner's target variety (a period for Hebrew / Greek). */ varietyId?: string }
 
 /**
  * The prompts for one language, team and mode, in registry order (the order carries no meaning). A language-specific
@@ -232,6 +271,8 @@ export function promptsFor(q: PromptQuery, prompts: readonly WritingPrompt[] = P
   return forLang.filter((p) => {
     if (p.languageIds.includes('*') && specific.has(`${p.promptId}.${q.languageId}`)) return false;
     if (q.teamId && p.teams.length > 0 && !p.teams.includes(q.teamId)) return false;
+    // a prompt written for certain varieties (a Koine letter opening, a Biblical narrative) is offered only to a learner whose target is one of them
+    if (p.varietyIds && p.varietyIds.length > 0 && (!q.varietyId || !p.varietyIds.includes(q.varietyId))) return false;
     if (!cats.includes(p.category)) return false;
     if (q.category && p.category !== q.category) return false;
     return true;

@@ -10,6 +10,7 @@ import * as LP from '../../packages/language-packs/src';
 import { createPackBindings, packStorage } from '../../packages/golearn-extension/app/bindings';
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
 import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
+import { laAdapter, laDictionaryOnDisk } from '../support/latin';
 
 const PUBLIC = path.resolve(__dirname, '../../public');
 const diskFetch = (async (input: RequestInfo | URL) => {
@@ -21,27 +22,27 @@ const BASE = 'http://app.test/';
 describe('the pack bindings', () => {
   const b = createPackBindings();
 
-  it('lists every pack with its status and level; Albanian and (at a minimal level) Spanish are installable, German, Hindi, Thai and the two Norwegian packs are experimental', () => {
+  it('lists every pack with its status and level; Albanian and (at a minimal level) Spanish are installable, German, Hindi, Thai, Latin and the two Norwegian packs are experimental', () => {
     const packs = b.packs();
-    expect(packs.map((p) => p.languageId).sort()).toEqual(['de', 'es', 'hi', 'nb', 'nn', 'sq', 'th']);
+    expect(packs.map((p) => p.languageId).sort()).toEqual(['de', 'el', 'es', 'he', 'hi', 'la', 'nb', 'nn', 'sq', 'th']);
     const sq = b.packFor('sq')!;
     expect(sq).toMatchObject({ packId: 'pack:sq', status: 'installable', name: 'Albanian', scriptId: 'Latn', defaultVarietyId: 'sq-standard' });
     expect(sq.attribution).toEqual(['Wiktionary, via kaikki.org — CC BY-SA 4.0']);
     expect(sq.licences.length).toBeGreaterThan(0);
     expect(sq.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['sq-standard']);
     expect(sq.remoteVoiceProvider).toBeTruthy();
-    for (const p of packs.filter((x) => ['de', 'hi', 'th', 'nb', 'nn'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, seed-only lemmatisation, unreviewed' });
+    for (const p of packs.filter((x) => ['de', 'hi', 'th', 'nb', 'nn', 'la', 'he', 'el'].includes(x.languageId))) expect(p, p.packId).toMatchObject({ status: 'installable', level: 'experimental', levelLabel: 'experimental, seed-only lemmatisation, unreviewed' });
     expect(sq).toMatchObject({ level: 'installable', levelLabel: 'installable' });
     expect(b.packFor('es')).toMatchObject({ packId: 'pack:es', status: 'installable', reviewStatus: 'machine-drafted' });
     expect(b.packFor('xx')).toBeUndefined();
     expect(b.packFor('constructor')).toBeUndefined();
   });
 
-  it('languages: six, in the catalogue’s order; Norwegian asks for its written standard, Spanish offers a regional preference, and every choice names a pack that exists', () => {
+  it('languages: nine, in the catalogue’s order; Norwegian asks for its written standard, Spanish offers a regional preference, and every choice names a pack that exists', () => {
     const languages = b.languages();
-    expect(languages).toHaveLength(6);
+    expect(languages).toHaveLength(9);
     expect(languages.map((l) => l.languageId)).toEqual(LP.LANGUAGE_CATALOGUE.map((e) => e.languageId));
-    expect(languages.map((l) => l.name.split(' ')[0])).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish']);
+    expect(languages.map((l) => l.name.split(' ')[0])).toEqual(['Norwegian', 'German', 'Albanian', 'Hindi', 'Thai', 'Spanish', 'Latin', 'Hebrew', 'Greek']);
     for (const l of languages) {
       expect(l.nativeName, l.name).toBeTruthy();
       expect(l.scriptId, l.name).toBeTruthy();
@@ -82,6 +83,30 @@ describe('the pack bindings', () => {
     expect(v.ok).toBe(true);
     expect(v.version).toBe(sq.version);
     expect(v.checks.length).toBe(r.checks.length);
+  });
+
+  it('Latin is listed (seventh, before Hebrew and Greek) and as an experimental pack in Latin script, with its one analysed variety and an orientation', () => {
+    const entry = b.languages().find((l) => l.languageId === 'la')!;
+    expect(entry).toMatchObject({ name: 'Latin', nativeName: 'Latina', scriptId: 'Latn', packIds: ['pack:la'], level: 'experimental, seed-only', validation: 'experimental', tutorialAvailable: true });
+    expect(entry.choice).toBeUndefined();
+    const la = b.packFor('la')!;
+    expect(la).toMatchObject({ packId: 'pack:la', status: 'installable', level: 'experimental', name: 'Latin', scriptId: 'Latn', defaultVarietyId: 'la-ecclesiastical' });
+    expect(la.varieties.filter((v) => v.analysed).map((v) => v.varietyId)).toEqual(['la-ecclesiastical']);
+    expect(la.attribution).toEqual(['Wiktionary, via kaikki.org — CC BY-SA 4.0']);
+    expect(b.tutorial('la')?.languageId).toBe('la');
+    expect(b.languages().map((l) => l.languageId).indexOf('la')).toBe(6);
+  });
+
+  it.skipIf(!laAdapter || !laDictionaryOnDisk())('installs Latin from the real dictionary files with the real analyser: dictionary description, a shard and every validation case, then reads the record back', async () => {
+    const area = createMemoryStorageArea();
+    const la = b.packFor('la')!;
+    const r = await b.install(la, { fetch: diskFetch, baseUrl: BASE, storage: area });
+    expect(r.ok, r.message).toBe(true);
+    expect(r.checks.map((c) => c.id).slice(0, 2)).toEqual(['dictionary-manifest', 'sample-shard']);
+    expect(r.checks.every((c) => c.ok)).toBe(true);
+    expect(r.checks[0].label).toMatch(/kaikki-la/);
+    expect(Object.keys(await area.get(null))).toEqual(['golearn:pack:installed:pack:la']);
+    expect((await b.verify(la, area)).ok).toBe(true);
   });
 
   it('a dictionary that is not there is reported as a failed check, not an exception', async () => {

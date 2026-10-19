@@ -14,11 +14,13 @@ export type GuessableLanguage = LanguageCode | 'da' | 'en' | 'pt' | 'fr' | 'it' 
 
 export const LANGUAGE_NAMES: Record<GuessableLanguage, string> = {
   es: 'Spanish', de: 'German', sq: 'Albanian', th: 'Thai', hi: 'Hindi', nb: 'Norwegian (Bokmål)', nn: 'Norwegian (Nynorsk)', da: 'Danish',
-  en: 'English', pt: 'Portuguese', fr: 'French', it: 'Italian', zh: 'Chinese', ru: 'Russian', ar: 'Arabic', he: 'Hebrew', el: 'Greek', ko: 'Korean', ja: 'Japanese',
+  en: 'English', pt: 'Portuguese', fr: 'French', it: 'Italian', zh: 'Chinese', ru: 'Russian', ar: 'Arabic', he: 'Hebrew', el: 'Greek', la: 'Latin', ko: 'Korean', ja: 'Japanese',
 };
 
 /** The commonest words of each Latin-script language the guesser knows; the share of a text they make up is the clue. */
-const PROFILES: Record<'es' | 'de' | 'sq' | 'en' | 'pt' | 'fr' | 'it', ReadonlySet<string>> = {
+const PROFILES: Record<'es' | 'de' | 'sq' | 'en' | 'pt' | 'fr' | 'it' | 'la', ReadonlySet<string>> = {
+  // Latin: the commonest function words of the Vulgate and of classical prose (i/j and u/v spellings both listed)
+  la: new Set('et in est non qui quae quod cum ad ut sed ab de ex per pro autem enim ergo etiam atque ac aut vel si ne nec neque sunt erat esse fuit eius ejus eum eos eorum hic haec hoc ille illa illi se sibi suo sua suum tu ego omnes omnia dominus deus dixit'.split(' ')),
   es: new Set('de la que el en y a los se del las un por con no una su para es al lo como más mas o pero sus le ya si porque esta entre cuando muy sin sobre me hasta hay donde quien desde todo nos durante también tambien ser son dos fue era yo él ella ellos había'.split(' ')),
   de: new Set('der die und in den von zu das mit sich des auf für fur ist im dem nicht ein eine als auch es an werden aus er hat dass daß sie nach wird bei einer um am sind noch wie einem über uber so zum ich war'.split(' ')),
   sq: new Set('dhe të te e që qe në ne për per me një nje nga është eshte i u si por do ka kjo ky ishte nuk më ajo ai kur edhe pas se sa duke janë'.split(' ')),

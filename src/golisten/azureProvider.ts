@@ -65,6 +65,21 @@ export const AZURE_VOICES: Record<LanguageCode, AzureVoiceEntry[]> = {
   // Nynorsk: Azure has no nn-NO voice. An empty list is honest: the voice plan then borrows the Bokmål voice and records that
   // its accent is not Nynorsk (src/golisten/voices.ts); an nb voice is never listed under nn here.
   nn: [],
+  // Hebrew and Greek: Azure's he-IL and el-GR neural voices (ids from memory of the Azure voice gallery; unverified against the live
+  // list, which `listVoices` reads at runtime when it can).
+  he: [
+    { id: 'he-IL-HilaNeural', locale: 'he-IL', gender: 'female' },
+    { id: 'he-IL-AvriNeural', locale: 'he-IL', gender: 'male' },
+  ],
+  el: [
+    { id: 'el-GR-AthinaNeural', locale: 'el-GR', gender: 'female' },
+    { id: 'el-GR-NestorasNeural', locale: 'el-GR', gender: 'male' },
+  ],
+  // Azure Speech has no Latin voice (checked 2026-10-17): Italian voices give the Ecclesiastical reading; recorded as a stand-in, not as Latin.
+  la: [
+    { id: 'it-IT-IsabellaNeural', locale: 'it-IT', gender: 'female' },
+    { id: 'it-IT-DiegoNeural', locale: 'it-IT', gender: 'male' },
+  ],
 };
 
 export interface AzureSpeechOptions {

@@ -144,6 +144,8 @@ const FUNCTION_WORDS: Partial<Record<LanguageCode, ReadonlySet<string>>> = {
   // machine-draft, native review pending
   nb: new Set('og i er det som på en et til av for med at har den ikke jeg var om han hun seg men vi kan fra så ble også å de du hva noen eller når skal vil blir bare hadde etter mer meg deg sin sitt sine ut opp inn her der hvor hvis nå mye alle andre ham dem oss'.split(' ')),
   nn: new Set('og i er det som på ein ei eit til av for med at har den ikkje eg var om han ho seg men vi me kan frå så vart også å dei du kva nokon eller når skal vil blir berre hadde etter meir meg deg sin sitt sine ut opp inn her der kor viss no mykje alle andre oss'.split(' ')),
+  // Latin: Vulgate and classical function words (i/j and u/v spellings both listed); machine-draft
+  la: new Set('et in est non qui quae quod cum ad ut sed a ab de ex per pro autem enim ergo etiam atque ac aut vel si ne nec neque sunt erat esse fuit eius ejus eum eos eorum hic haec hoc ille illa illi ei se sibi suo sua suum me te nos vos tu ego omnes omnia'.split(' ')),
 };
 const ENGLISH_WORDS = new Set('the of and to in is that it was for on are with as his they be at one have this from or had by not but what all were we when your can said there use an each which she do how their if will up other about out many then them these so some her would make like him into time has look two more write go see number no way could people my than first water been call who oil its now find long down day did get come made may part'.split(' '));
 
@@ -152,7 +154,7 @@ const SCRIPTS: Array<[string, RegExp]> = [
   ['Hebrew', /\p{Script=Hebrew}/u], ['Thai', /\p{Script=Thai}/u], ['Devanagari', /\p{Script=Devanagari}/u], ['Han', /\p{Script=Han}/u],
   ['Hangul', /\p{Script=Hangul}/u], ['Kana', /[\p{Script=Hiragana}\p{Script=Katakana}]/u],
 ];
-const EXPECTED_SCRIPT: Record<LanguageCode, string> = { es: 'Latin', de: 'Latin', sq: 'Latin', th: 'Thai', hi: 'Devanagari', nb: 'Latin', nn: 'Latin' };
+const EXPECTED_SCRIPT: Record<LanguageCode, string> = { es: 'Latin', de: 'Latin', sq: 'Latin', th: 'Thai', hi: 'Devanagari', nb: 'Latin', nn: 'Latin', he: 'Hebrew', el: 'Greek', la: 'Latin' };
 
 /**
  * Whether one paragraph looks like English rather than the language of the text: the paragraph rule of `inspectText`

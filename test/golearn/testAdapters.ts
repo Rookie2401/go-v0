@@ -12,7 +12,7 @@
  */
 import type { AdapterRegistry, LanguageAdapter, LanguageCode, RawToken, Script, SyllableAnalysis } from '../../src/core';
 
-const SCRIPT: Record<LanguageCode, Script> = { es: 'Latn', sq: 'Latn', de: 'Latn', th: 'Thai', hi: 'Deva', nb: 'Latn', nn: 'Latn' };
+const SCRIPT: Record<LanguageCode, Script> = { es: 'Latn', sq: 'Latn', de: 'Latn', th: 'Thai', hi: 'Deva', nb: 'Latn', nn: 'Latn', he: 'Hebr', el: 'Grek', la: 'Latn' };
 const CLASSES = ['mid', 'high', 'low'] as const;
 const TONES = ['mid', 'low', 'falling', 'high', 'rising'] as const;
 

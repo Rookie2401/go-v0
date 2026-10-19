@@ -162,7 +162,13 @@ export interface LanguageAdapter {
   normalize(surface: string): string;
   /** Normalize a search query in a script-aware way (strip accents for es? keep for de; NFC for Deva). */
   searchNormalize(query: string): string;
-  analyze(tokens: RawToken[]): AnalyzedToken[];
+  /**
+   * `opts.varietyId` (optional): the variety the text is known or believed to be in — the reader's declared period (a
+   * Tanakh verse is Biblical Hebrew), else the learner's enrolment. An adapter with period varieties uses it only to
+   * BREAK TIES between readings the text itself leaves open; what the text decides (pointing, polytonic accents, an
+   * attested form) is never overridden by it. Adapters without varieties ignore it.
+   */
+  analyze(tokens: RawToken[], opts?: AnalyzeOptions): AnalyzedToken[];
   detectPhrases(tokens: RawToken[], analyses: AnalyzedToken[]): PhraseCandidate[];
   detectPatterns(tokens: RawToken[], analyses: AnalyzedToken[]): PatternCandidate[];
   pronunciation(token: RawToken, analysis?: AnalyzedToken): PronunciationSupport;
@@ -170,7 +176,7 @@ export interface LanguageAdapter {
   speechNormalize(displayText: string, opts?: { isScripture?: boolean }): SpeechNormalizationResult;
   display: DisplayConventions;
   /** Rule-based checks on learner writing (GoTell). Empty array = nothing found, not "correct". */
-  checkProduction(tokens: RawToken[], analyses: AnalyzedToken[], sentence: string): ErrorCandidate[];
+  checkProduction(tokens: RawToken[], analyses: AnalyzedToken[], sentence: string, opts?: AnalyzeOptions): ErrorCandidate[];
   /**
    * Relation between two normalized forms (for "related item seen" in GoLearn):
    * 'same' | 'inflection' (same lemma) | 'component' (German compound part) | 'none'.
@@ -263,7 +269,41 @@ export interface LanguageAdapter {
   readonly varieties?: Readonly<Record<string, Variety>>;
   /** The adapter's own sources (hand word list, rule sets) with their honest review state, keyed by sourceId. */
   readonly sources?: Readonly<Record<string, AnalysisSourceInfo>>;
+  /**
+   * The word across the periods of the language (the card's "Variants" tab): for each period variety, the form(s) the
+   * adapter's sources attest, or a plain statement that they attest none. Optional: a language without period varieties
+   * omits it. Never invents a form (see VariantSet).
+   */
+  variants?(lemma: string, pos?: PartOfSpeech, surface?: string): VariantSet | undefined;
 }
+
+/** Options an engine may pass to `analyze` / `checkProduction`. All optional; an adapter may ignore them. */
+export interface AnalyzeOptions {
+  /** The variety the text is declared or believed to be in (a period variety for Hebrew/Greek, a region for Spanish). */
+  varietyId?: string;
+}
+
+/**
+ * One row of the "Variants" tab: the word in one period variety of the language.
+ *   attested         a source names this form for this period
+ *   same-as-lemma    the period uses the lemma unchanged (said explicitly, not left blank)
+ *   not-in-sources   the adapter's sources say nothing about this period for this word — NOT a claim that the word did not exist
+ *   not-yet-existing a source dates the word later than this period (a Modern coinage shown against Homeric)
+ *   obsolete         a source marks the word as no longer used in this period
+ */
+export interface VariantForm {
+  varietyId: string;
+  label: string;
+  forms: string[];
+  gloss?: string;
+  status: 'attested' | 'same-as-lemma' | 'not-in-sources' | 'not-yet-existing' | 'obsolete';
+  /** Source ids that attest the row ('oshb', 'morphgnt', 'kaikki-grc', 'perseus-agdt', …); empty for not-in-sources. */
+  sources: string[];
+  note?: string;
+  /** True on the row of the period the selected text itself is in. */
+  current?: boolean;
+}
+export interface VariantSet { lemma: string; pos?: PartOfSpeech; rows: VariantForm[] }
 
 /**
  * The decoding of one token, from the best source available: a decoding stored with the analysis (author-supplied),

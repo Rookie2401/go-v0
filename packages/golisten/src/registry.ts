@@ -174,6 +174,8 @@ export function noAudioRegistry(languageId: string, languageName: string, extraG
   };
 }
 
+const withGaps = (r: VoiceRegistry, gaps: string[]): VoiceRegistry => ({ ...r, gaps: [...r.gaps, ...gaps] });
+
 export function defaultRegistries(opts: { demoUrl?: string } = {}): VoiceRegistry[] {
   return [
     albanianRegistry(), demoGermanRegistry({ url: opts.demoUrl }), spanishRegistry(),
@@ -181,6 +183,11 @@ export function defaultRegistries(opts: { demoUrl?: string } = {}): VoiceRegistr
     noAudioRegistry('th', 'Thai', ['The Thai pack names Azure voices it expects to offer; they are not registered here.']),
     noAudioRegistry('nb', 'Norwegian Bokmål', ['The Bokmål pack names Azure voices it expects to offer; they are not registered here. A Nynorsk (nn) voice is never substituted.']),
     noAudioRegistry('nn', 'Norwegian Nynorsk', ['A Bokmål (nb) or generic Norwegian voice is never substituted for Nynorsk.']),
+    // Hebrew and Greek (2026-10-18): a strict device template each (he-IL / he / iw; el-GR / el), no recording, no remote voice. The ancient periods
+    // (Biblical Hebrew, Koine / Attic / Homeric Greek) have no voice of their own: a Modern device voice reads them with Modern letter values, and the
+    // cards say so; nothing is claimed as a historical pronunciation.
+    withGaps(deviceRegistry('he', ['he-IL', 'he', 'iw'], 'Hebrew'), ['No Hebrew recordings are registered; nothing is claimed.', 'No voice exists for Biblical Hebrew: a Modern Hebrew device voice, when the device has one, reads the pointed text with Modern letter values.']),
+    withGaps(deviceRegistry('el', ['el-GR', 'el'], 'Greek'), ['No Greek recordings are registered; nothing is claimed.', 'No voice exists for ancient Greek: a Modern Greek device voice, when the device has one, reads polytonic text in the Modern pronunciation; the card offers the Erasmian and reconstructed Koine conventions in writing only.']),
   ];
 }
 

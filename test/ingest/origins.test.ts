@@ -233,7 +233,10 @@ describe('re-import with a changed dictionary id', () => {
 
 describe('the other languages retain analysis facts and persist source descriptors when available', () => {
   it('the bundled es / de / sq / hi documents: only the explicit source snapshot extends the existing analysis record', async () => {
-    const docs = loadBundledCorpus().filter((d) => d.lang !== 'th');
+    // Thai, Hebrew and Greek are left out: their analysers carry an external source inside the adapter (the Thai dictionary; the Open Scriptures /
+    // MorphGNT / Wiktionary form indexes of he and el), so their bundled readings legitimately have origin 'dictionary'. Latin has course texts only.
+    const EXTERNAL_INSIDE_ADAPTER = new Set(['th', 'he', 'el', 'la']);
+    const docs = loadBundledCorpus().filter((d) => !EXTERNAL_INSIDE_ADAPTER.has(d.lang));
     expect((await Promise.resolve(docs)).length).toBeGreaterThan(0);
     const store = createMemoryStore();
     const reg = bareRegistry;
@@ -257,7 +260,7 @@ describe('the other languages retain analysis facts and persist source descripto
       }
       kinds.add(`${a.lang}:${a.origin}`);
     }
-    for (const lang of LANGUAGES.filter((l) => l !== 'th')) expect([...kinds].some((k) => k.startsWith(`${lang}:`)), lang).toBe(true);
+    for (const lang of LANGUAGES.filter((l) => !EXTERNAL_INSIDE_ADAPTER.has(l))) expect([...kinds].some((k) => k.startsWith(`${lang}:`)), lang).toBe(true);
   });
 
   it('a Spanish text imports identically with and without an installed (here empty) dictionary for another language', async () => {

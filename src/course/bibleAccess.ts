@@ -66,6 +66,33 @@ export const BIBLE_ACCESS: Readonly<Record<LanguageCode, BibleAccessRecord>> = {
     importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
     rights: 'Bibelselskapet states that the 1938 Nynorsk translation has "falt i det fri" (is free to use) but gives no legal basis, and the reviser died in 1984, so the claim is unchecked. The current translations are protected and are not bundled.',
   },
+  // Hebrew and Greek: the source of each is known, but neither text is imported into this repository. Both texts live in the Biblia
+  // app's data (C:/Users/CJWal/dev/biblia-v0), not here. They are the Scriptures in their original languages (Biblical Hebrew, Koine
+  // Greek), not a Modern Hebrew or Modern Greek translation.
+  he: {
+    lang: 'he', translation: 'Hebrew Bible, Miqra according to the Masorah (MAM)', edition: 'MAM', status: 'not-bundled',
+    sourceUrl: 'https://he.wikisource.org/wiki/משתמש:Dovi/מקרא_על_פי_המסורה',
+    method: 'Known source, not yet imported here: the text is held in the Biblia app\'s data (obtained via Sefaria) and has not been brought into this library or checked against the source in this repository. It is the Biblical Hebrew text of the Hebrew Bible, not a Modern Hebrew translation.',
+    importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
+    rights: 'CC BY-SA 4.0 for Miqra according to the Masorah, as stated on the source record; attribution and share-alike are retained if it is imported. Not yet verified in this repository.',
+    historicalVarieties: ['Biblical Hebrew'],
+  },
+  el: {
+    lang: 'el', translation: 'SBL Greek New Testament', edition: 'SBLGNT', status: 'not-bundled',
+    sourceUrl: 'https://sblgnt.com',
+    method: 'Known source, not yet imported here: the text is held in the Biblia app\'s data and has not been brought into this library or checked against the source in this repository. It is the Greek New Testament only, in Koine Greek, not a Modern Greek translation.',
+    importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
+    rights: 'CC BY 4.0 as stated on the SBLGNT site; attribution is retained if it is imported. Not yet verified in this repository.',
+    historicalVarieties: ['Koine Greek'],
+  },
+  la: {
+    lang: 'la', translation: 'Biblia Sacra Vulgata (Clementine, 1592)', edition: 'latVulgClementine', status: 'bundled',
+    sourceUrl: 'https://github.com/seven1m/open-bibles',
+    method: 'Slices (Genesis 1; Psalms 1 and 23; Matthew 1, 5 and 6; Mark 1; Luke 2; John 1 and 3; 1 John 1) taken verse by verse by scripts/corpus-la-build.mts from the seven1m/open-bibles USFX file held by the Vetus app, and byte-compared with that file by scripts/verify-la-scripture.mts (data/verified/scripture.json). Not yet compared with a second, independent edition.',
+    importMethod: 'An entitled personal .txt or unprotected .epub can be imported for ordinary reading on this device. The general importer does not create a verse-addressed Scripture edition.',
+    rights: 'Public domain: the Clementine Vulgate (1592); the USFX file is distributed as public domain by seven1m/open-bibles.',
+    historicalVarieties: ['Ecclesiastical Latin'],
+  },
   sq: {
     lang: 'sq', translation: 'Bibla Shqip “Së bashku” 2020', edition: 'AL', status: 'linked-online',
     sourceUrl: 'https://www.bible.com/versions/3631',

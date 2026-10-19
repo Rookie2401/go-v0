@@ -262,13 +262,15 @@ export function buildAnalysisShownEvent(b: InteractionContext, layers: string[])
   return followUp(b, 'AnalysisShown', { layers }, `shown:${b.sessionId}:${itemKey(b.card)}:${contextKey(b.card)}`);
 }
 
-export type ExpandedLayer = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence' | 'forms' | 'meaning' | 'origin' | 'structure' | 'sound';
+export type ExpandedLayer = 'morphology' | 'phrase-syntax' | 'grammar' | 'sentence' | 'forms' | 'meaning' | 'origin' | 'structure' | 'sound' | 'variants';
 
 /** The assistance each layer stands for. Layer 2 explains the form (morphology), layer 3 shows the word in its phrases and relations (example), layer 4 explains the grammar, layer 5 is the English rescue (translation). */
 export const LAYER_ASSISTANCE: Record<ExpandedLayer, 'morphology' | 'example' | 'grammar' | 'translation' | 'gloss' | 'hint' | 'pronunciation'> = {
   morphology: 'morphology', 'phrase-syntax': 'example', grammar: 'grammar', sentence: 'translation',
   // the deeper sections (Linguistic Engine V2): the paradigm is morphology help, every sense is gloss help, the origin and the word structure are hints, the sound is pronunciation help
   forms: 'morphology', meaning: 'gloss', origin: 'hint', structure: 'hint', sound: 'pronunciation',
+  // the word across the periods of a language (Hebrew, Greek): a hint about the word's history, like its origin
+  variants: 'hint',
 };
 
 /** The learner opened a deeper layer. A second opening of the same layer on the same card is the same event (same dedupe key). */

@@ -222,6 +222,75 @@ const TABLES: Record<LanguageCode, LangTable> = {
     now: { forms: ['no', 'nå', 'idag', 'dagens'], lexemes: ['no'] },
     share: { stems: ['fortel', 'fortald'], forms: ['dele', 'deler', 'delte'], lexemes: ['fortelje', 'dele'] },
   },
+  // machine-draft, native review pending: Modern Hebrew, unpointed. Exact forms only (no stems): Hebrew prefixes ב / ה / ל / מ attach to the
+  // word, so the common attached spellings are listed. 'ישוע' is the name used in Hebrew New Testament translations; 'ישו' is also listed.
+  he: {
+    young: { forms: ['צעיר', 'צעירה', 'צעירים', 'ילד', 'ילדה', 'ילדות', 'בילדותי', 'קטן', 'קטנה'], lexemes: ['צעיר'] },
+    family: { forms: ['משפחה', 'המשפחה', 'במשפחה', 'משפחתי', 'הורים', 'ההורים', 'אמא', 'אבא'], lexemes: ['משפחה'] },
+    jesus: { forms: ['ישוע', 'בישוע', 'לישוע', 'ישו', 'בישו', 'משיח', 'המשיח', 'אלוהים', 'באלוהים', 'אלוקים', 'כנסייה', 'הכנסייה', 'בכנסייה', 'קהילה', 'הקהילה'], lexemes: ['ישוע'] },
+    know: { forms: ['יודע', 'יודעת', 'יודעים', 'ידעתי', 'ידע', 'ידעה', 'ידעו', 'לדעת', 'מכיר', 'מכירה', 'הכרתי', 'להכיר'], lexemes: ['לדעת', 'להכיר'] },
+    understand: { forms: ['מבין', 'מבינה', 'מבינים', 'הבנתי', 'הבין', 'הבינה', 'להבין', 'הבנה'], lexemes: ['להבין'] },
+    sin: { forms: ['חטא', 'החטא', 'מהחטא', 'בחטא', 'לחטא', 'חטאי', 'חטאים', 'חטאתי', 'חוטא', 'חוטאת', 'לחטוא'], lexemes: ['חטא'] },
+    guilt: { forms: ['אשם', 'אשמה', 'האשמה', 'אשמתי', 'אשמים'], lexemes: ['אשמה'] },
+    conviction: { forms: ['משוכנע', 'משוכנעת', 'שכנוע'], lexemes: ['שכנוע'] },
+    repent: { forms: ['תשובה', 'בתשובה', 'התחרטתי', 'להתחרט', 'מתחרט', 'מתחרטת'], lexemes: ['תשובה'] },
+    regret: { forms: ['חרטה', 'מצטער', 'מצטערת', 'להצטער'], lexemes: ['להצטער'] },
+    forgive: { forms: ['סלח', 'סולח', 'סולחת', 'סלחתי', 'סליחה', 'לסלוח', 'מחילה', 'מוחל'], lexemes: ['לסלוח'] },
+    grace: { forms: ['חסד', 'חסדו', 'בחסדו', 'חסדי', 'חן'], lexemes: ['חסד'] },
+    salvation: { forms: ['ישועה', 'הושיע', 'מושיע', 'הציל', 'הצלה', 'גאולה'], lexemes: ['ישועה'] },
+    believe: { forms: ['מאמין', 'מאמינה', 'מאמינים', 'האמנתי', 'האמין', 'להאמין'], lexemes: ['להאמין'] },
+    faith: { forms: ['אמונה', 'באמונה', 'אמונתי'], lexemes: ['אמונה'] },
+    trust: { forms: ['בוטח', 'בוטחת', 'בטחתי', 'לבטוח', 'אמון'], lexemes: ['לבטוח'] },
+    change: { forms: ['שינה', 'שינוי', 'לשנות', 'השתנה', 'השתניתי', 'חדש', 'חדשה'], lexemes: ['לשנות'] },
+    now: { forms: ['עכשיו', 'כעת', 'עתה', 'היום', 'כיום'], lexemes: ['עכשיו'] },
+    share: { forms: ['לשתף', 'משתף', 'משתפת', 'שיתפתי', 'לספר', 'סיפרתי'], lexemes: ['לשתף', 'לספר'] },
+  },
+  // machine-draft, native review pending: Modern Greek, monotonic. Stems carry the accent as written in the base form (a stem with
+  // no accent does not match an accented form, so both spellings are listed where the accent moves).
+  el: {
+    young: { forms: ['νέος', 'νέα', 'νέο', 'νέοι', 'μικρός', 'μικρή', 'μικρό', 'παιδί', 'παιδιά', 'παιδική', 'παιδικά'], lexemes: ['νέος'] },
+    family: { stems: ['οικογένει'], forms: ['μητέρα', 'μάνα', 'πατέρας', 'πατέρα', 'γονείς'], lexemes: ['οικογένεια'] },
+    // not the stem 'χριστ': 'Χριστούγεννα' (Christmas) must not read as Christ
+    jesus: { stems: ['ιησού', 'εκκλησ'], forms: ['θεός', 'θεού', 'θεό', 'θεέ', 'χριστός', 'χριστού', 'χριστό', 'βίβλος', 'βίβλο', 'βίβλου'], lexemes: ['Ιησούς'] },
+    know: { forms: ['ξέρω', 'ξέρεις', 'ξέρει', 'ήξερα', 'ήξερε', 'γνωρίζω', 'γνώριζα', 'γνωρίζει'], lexemes: ['ξέρω', 'γνωρίζω'] },
+    understand: { stems: ['καταλαβ', 'καταλάβ', 'κατανο', 'κατανό'], lexemes: ['καταλαβαίνω'] },
+    sin: { stems: ['αμαρτ', 'αμάρτ'], lexemes: ['αμαρτία'] },
+    guilt: { stems: ['ενοχ', 'ένοχ'], lexemes: ['ενοχή'] },
+    conviction: { stems: ['πεποίθ'], forms: ['πεπεισμένος', 'πεπεισμένη'], lexemes: ['πεποίθηση'] },
+    repent: { stems: ['μετανο', 'μετανό', 'μετάνοι'], lexemes: ['μετανοώ'] },
+    regret: { forms: ['λυπάμαι', 'μετανιώνω', 'μετάνιωσα'], lexemes: ['μετανιώνω'] },
+    forgive: { stems: ['συγχωρ', 'συγχώρ'], lexemes: ['συγχωρώ'] },
+    grace: { forms: ['χάρη', 'χάρις'], lexemes: ['χάρη'] },
+    salvation: { stems: ['σωτηρ', 'σωτήρ', 'σώζ', 'σωζ', 'σώσ', 'έσωσ'], lexemes: ['σωτηρία'] },
+    believe: { stems: ['πιστεύ'], lexemes: ['πιστεύω'] },
+    faith: { forms: ['πίστη', 'πίστης'], lexemes: ['πίστη'] },
+    trust: { stems: ['εμπιστ'], lexemes: ['εμπιστεύομαι'] },
+    change: { stems: ['άλλαξ', 'αλλάξ', 'αλλάζ', 'αλλαγ'], forms: ['καινούργιος', 'καινούργια', 'καινούργιο'], lexemes: ['αλλάζω'] },
+    now: { forms: ['τώρα', 'σήμερα', 'πλέον', 'καθημερινά'], lexemes: ['τώρα'] },
+    share: { stems: ['μοιραστ', 'μοιράζ', 'μοιρασ', 'διηγ'], lexemes: ['μοιράζομαι'] },
+  },
+  // Latin (Ecclesiastical wording; i/j and u/v variants both listed). Machine-draft, no Latinist review yet (TODO(review)).
+  la: {
+    young: { stems: ['iuven', 'juven', 'puer', 'parvul', 'infant', 'adulescent', 'adolescent'], lexemes: ['iuvenis'] },
+    family: { stems: ['famili', 'parent'], forms: ['pater', 'patrem', 'patris', 'patre', 'mater', 'matrem', 'matris', 'matre', 'frater', 'fratrem', 'soror', 'sororem', 'domus', 'domo'], lexemes: ['familia'] },
+    jesus: { stems: ['iesu', 'jesu', 'christ', 'ecclesi', 'evangeli'], forms: ['deus', 'dei', 'deo', 'deum', 'dominus', 'domini', 'domino', 'dominum', 'domine', 'biblia', 'scriptura', 'scripturae', 'scripturam'], lexemes: ['Iesus'] },
+    know: { stems: ['cognosc', 'cognov', 'cognit'], forms: ['scio', 'scis', 'scit', 'scimus', 'sciebam', 'sciebat', 'scivi', 'scivit', 'novi', 'novit', 'noveram', 'noverat'], lexemes: ['scio', 'cognosco'] },
+    understand: { stems: ['intelleg', 'intellig', 'intellex', 'comprehend'], lexemes: ['intellego'] },
+    sin: { stems: ['peccat', 'pecca', 'delict'], lexemes: ['peccatum'] },
+    guilt: { stems: ['culp'], forms: ['reus', 'rea', 'reum', 'ream', 'rei', 'nocens', 'nocentem'], lexemes: ['culpa'] },
+    conviction: { stems: ['compunct', 'convict', 'persuas'], lexemes: ['compunctio'] },
+    repent: { stems: ['paenit', 'poenit', 'penit', 'resipisc', 'resipu'], lexemes: ['paenitentia'] },
+    regret: { stems: ['dole', 'dolu', 'piget', 'pigu'], lexemes: ['doleo'] },
+    forgive: { stems: ['remitt', 'remis', 'dimitt', 'dimis', 'ignosc', 'ignov', 'condon'], lexemes: ['remitto'] },
+    grace: { forms: ['gratia', 'gratiae', 'gratiam', 'gratiā'], lexemes: ['gratia'] },
+    salvation: { stems: ['salv', 'salus', 'salut', 'redempt', 'redemit'], lexemes: ['salus'] },
+    believe: { stems: ['cred'], lexemes: ['credo'] },
+    faith: { forms: ['fides', 'fidei', 'fidem', 'fide'], lexemes: ['fides'] },
+    trust: { stems: ['confid', 'confis', 'fiduci'], lexemes: ['confido'] },
+    change: { stems: ['mutav', 'mutat', 'muta', 'convers', 'convert', 'renov'], forms: ['novus', 'nova', 'novum', 'novam'], lexemes: ['muto'] },
+    now: { forms: ['nunc', 'hodie', 'iam', 'jam', 'cotidie', 'quotidie'], lexemes: ['nunc'] },
+    share: { stems: ['communic', 'narr', 'particip', 'annunti', 'nunti'], lexemes: ['communico'] },
+  },
 };
 
 /** Negation markers (per language). Used to keep negation outside a recombined phrase and flag it. */
@@ -234,6 +303,10 @@ export const NEGATORS: Record<LanguageCode, string[]> = {
   // machine-draft, native review pending
   nb: ['ikke', 'aldri', 'ingen', 'intet', 'ingenting', 'verken'],
   nn: ['ikkje', 'aldri', 'ingen', 'inkje', 'ingenting', 'verken'],
+  // machine-draft, native review pending
+  he: ['לא', 'אין', 'אינו', 'אינה', 'אינם', 'אינן', 'בלי', 'מעולם'],
+  el: ['δεν', 'μη', 'μην', 'όχι', 'ούτε', 'ποτέ', 'κανένας', 'καμία', 'κανένα'],
+  la: ['non', 'ne', 'nec', 'neque', 'nemo', 'nihil', 'nil', 'nullus', 'nulla', 'nullum', 'numquam', 'nunquam', 'haud', 'minime'],
 };
 
 /**
@@ -250,6 +323,10 @@ export const CHRONOLOGY: Record<LanguageCode, string[]> = {
   // machine-draft, native review pending
   nb: ['da', 'når', 'før', 'etter', 'så', 'deretter', 'nå', 'idag', 'igår', 'imorgen', 'allerede', 'ennå', 'fortsatt', 'alltid', 'aldri', 'først', 'endelig', 'mens', 'siden', 'inntil', 'snart', 'tidligere', 'senere'],
   nn: ['då', 'når', 'før', 'etter', 'så', 'deretter', 'no', 'nå', 'idag', 'igår', 'imorgon', 'allereie', 'enno', 'framleis', 'alltid', 'aldri', 'først', 'endeleg', 'medan', 'sidan', 'inntil', 'snart', 'tidlegare', 'seinare'],
+  // machine-draft, native review pending
+  he: ['כאשר', 'אחרי', 'לפני', 'אז', 'עכשיו', 'כעת', 'עתה', 'היום', 'אתמול', 'מחר', 'כבר', 'עדיין', 'תמיד', 'מעולם', 'קודם', 'לבסוף', 'בינתיים', 'מאז', 'עד'],
+  el: ['όταν', 'πριν', 'μετά', 'τότε', 'τώρα', 'σήμερα', 'χθες', 'αύριο', 'ήδη', 'ακόμα', 'ακόμη', 'πάντα', 'ποτέ', 'πρώτα', 'τελικά', 'ενώ', 'μέχρι', 'σύντομα', 'πια', 'πλέον'],
+  la: ['cum', 'quando', 'ante', 'antea', 'post', 'postea', 'postquam', 'deinde', 'tum', 'tunc', 'nunc', 'hodie', 'heri', 'cras', 'iam', 'jam', 'adhuc', 'semper', 'numquam', 'nunquam', 'primum', 'primo', 'denique', 'tandem', 'dum', 'donec', 'usque', 'mox', 'statim', 'olim', 'cotidie', 'quotidie'],
 };
 
 /** Subject pronouns: a slot filler that extends backwards stops here (the subject is not part of a phrase slot). */
@@ -262,6 +339,11 @@ export const SUBJECT_PRONOUNS: Record<LanguageCode, string[]> = {
   // machine-draft, native review pending
   nb: ['jeg', 'du', 'han', 'hun', 'vi', 'dere', 'de', 'man'],
   nn: ['eg', 'du', 'han', 'ho', 'vi', 'me', 'de', 'dei'],
+  // machine-draft, native review pending. Hebrew 'את' (you, feminine) is left out on purpose: it is spelled exactly like the
+  // direct-object marker את, and a slot filler would then stop at every definite object.
+  he: ['אני', 'אתה', 'הוא', 'היא', 'אנחנו', 'אתם', 'אתן', 'הם', 'הן'],
+  el: ['εγώ', 'εσύ', 'αυτός', 'αυτή', 'αυτό', 'εμείς', 'εσείς', 'αυτοί', 'αυτές', 'αυτά'],
+  la: ['ego', 'tu', 'is', 'ea', 'id', 'ille', 'illa', 'illud', 'hic', 'haec', 'hoc', 'nos', 'vos', 'ei', 'ii', 'eae', 'illi', 'illae'],
 };
 
 // ───────────────────────── compiled matchers ─────────────────────────

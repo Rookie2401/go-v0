@@ -67,6 +67,7 @@ const GOALS: CatalogGoal[] = [
 export const CATALOG_GOALS: SemanticGoal[] = GOALS.map((g) => ({ ...g, source: 'catalog', version: 1 }));
 
 const HI_MASC = 'Masculine forms (a man speaking); a woman uses the feminine forms (था → थी, -ता → -ती).';
+const HE_MASC = 'Masculine forms (a man speaking); a woman uses the feminine forms (צעיר → צעירה, אשם → אשמה, מאמין → מאמינה, בוטח → בוטחת, מבין → מבינה).';
 
 /** TODO(review): every wording below needs a native-speaker pass. Shown as "model wording, not yet reviewed". */
 const MODELS: Record<LanguageCode, Record<string, string | { text: string; note: string }>> = {
@@ -138,6 +139,61 @@ const MODELS: Record<LanguageCode, Record<string, string | { text: string; note:
     'goal:c.church-family': 'Kyrkja er familien min.',
     'goal:m.do-you-believe': 'Trur du på Jesus?',
     'goal:d.understand-now': 'No forstår eg.',
+  },
+  // machine-draft, native review pending: Modern Hebrew, unpointed. First-person verbs in the present are written with the masculine
+  // form; the note gives the feminine. 'ישוע' is the form used in Hebrew New Testament translations.
+  he: {
+    'goal:t.family': 'גדלתי עם המשפחה שלי.',
+    'goal:t.young-knew-jesus': { text: 'כשהייתי צעיר, ידעתי על ישוע.', note: HE_MASC },
+    'goal:t.not-understand-sin': 'אבל לא הבנתי את החטא שלי.',
+    'goal:t.felt-guilt': { text: 'הרגשתי אשם בפני אלוהים.', note: HE_MASC },
+    'goal:t.repented': { text: 'שבתי בתשובה מהחטא שלי.', note: 'The same phrase "לחזור בתשובה" often means becoming religiously observant in everyday Israeli Hebrew; a native reviewer should confirm this wording.' },
+    'goal:t.believe-jesus': { text: 'אני מאמין בישוע.', note: HE_MASC },
+    'goal:t.god-forgave': 'אלוהים סלח לי על החטא שלי.',
+    'goal:t.saved-by-grace': 'אלוהים הושיע אותי בחסדו.',
+    'goal:t.jesus-changed-me': 'ישוע שינה את חיי.',
+    'goal:t.now-trust': { text: 'עכשיו אני בוטח בישוע כל יום.', note: HE_MASC },
+    'goal:t.share': 'אני רוצה לשתף אותך בזה.',
+    'goal:s.jesus-forgives': 'ישוע סולח על חטאים.',
+    'goal:c.church-family': 'הכנסייה היא המשפחה שלי.',
+    'goal:m.do-you-believe': { text: 'האם אתה מאמין בישוע?', note: 'To a woman: "האם את מאמינה בישוע?".' },
+    'goal:d.understand-now': { text: 'עכשיו אני מבין.', note: HE_MASC },
+  },
+  // machine-draft, native review pending: Modern Greek, monotonic
+  el: {
+    'goal:t.family': 'Μεγάλωσα με την οικογένειά μου.',
+    'goal:t.young-knew-jesus': { text: 'Όταν ήμουν νέος, ήξερα για τον Ιησού.', note: 'A woman says "νέα".' },
+    'goal:t.not-understand-sin': 'Αλλά δεν καταλάβαινα την αμαρτία μου.',
+    'goal:t.felt-guilt': { text: 'Ένιωθα ένοχος μπροστά στον Θεό.', note: 'A woman says "ένοχη".' },
+    'goal:t.repented': 'Μετανόησα για την αμαρτία μου.',
+    'goal:t.believe-jesus': 'Πιστεύω στον Ιησού.',
+    'goal:t.god-forgave': 'Ο Θεός συγχώρεσε την αμαρτία μου.',
+    'goal:t.saved-by-grace': 'Ο Θεός με έσωσε με τη χάρη του.',
+    'goal:t.jesus-changed-me': 'Ο Ιησούς άλλαξε τη ζωή μου.',
+    'goal:t.now-trust': 'Τώρα εμπιστεύομαι τον Ιησού κάθε μέρα.',
+    'goal:t.share': 'Θέλω να το μοιραστώ μαζί σου.',
+    'goal:s.jesus-forgives': 'Ο Ιησούς συγχωρεί την αμαρτία.',
+    'goal:c.church-family': 'Η εκκλησία είναι η οικογένειά μου.',
+    'goal:m.do-you-believe': 'Πιστεύεις στον Ιησού;',
+    'goal:d.understand-now': 'Τώρα καταλαβαίνω.',
+  },
+  // Latin, Ecclesiastical wording (i for consonantal i, v for consonantal u). Machine-draft, no Latinist review yet (TODO(review)).
+  la: {
+    'goal:t.family': 'Cum familia mea crevi.',
+    'goal:t.young-knew-jesus': 'Cum iuvenis essem, de Iesu sciebam.',
+    'goal:t.not-understand-sin': 'Sed peccatum meum non intellegebam.',
+    'goal:t.felt-guilt': { text: 'Me reum coram Deo sentiebam.', note: 'A woman says "ream".' },
+    'goal:t.repented': 'Peccati mei paenitentiam egi.',
+    'goal:t.believe-jesus': 'Credo in Iesum.',
+    'goal:t.god-forgave': 'Deus peccatum meum remisit.',
+    'goal:t.saved-by-grace': 'Deus me gratia sua salvavit.',
+    'goal:t.jesus-changed-me': 'Iesus vitam meam mutavit.',
+    'goal:t.now-trust': 'Nunc Iesu cotidie confido.',
+    'goal:t.share': 'Hoc tecum communicare volo.',
+    'goal:s.jesus-forgives': 'Iesus peccatum remittit.',
+    'goal:c.church-family': 'Ecclesia familia mea est.',
+    'goal:m.do-you-believe': 'Credisne in Iesum?',
+    'goal:d.understand-now': 'Nunc intellego.',
   },
   hi: {
     'goal:t.family': { text: 'मैं अपने परिवार के साथ बड़ा हुआ।', note: HI_MASC },

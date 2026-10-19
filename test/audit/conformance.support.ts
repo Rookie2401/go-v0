@@ -230,6 +230,12 @@ export const SALVAGE_ALLOW_LIST: ReadonlyArray<{ prefix: string; status: 'salvag
   { prefix: 'src/adapters/nb.ts', status: 'salvaged', why: 'Norwegian Bokmal analyser' },
   { prefix: 'src/adapters/nn.ts', status: 'salvaged', why: 'Norwegian Nynorsk analyser' },
   { prefix: 'src/adapters/norwegian/', status: 'salvaged', why: 'Norwegian lexicon and rules' },
+  { prefix: 'src/adapters/la.ts', status: 'salvaged', why: 'Latin analyser (ported from the Romance app)' },
+  { prefix: 'src/adapters/latin/', status: 'salvaged', why: 'Latin lexicon, morphology and rules' },
+  { prefix: 'src/adapters/he.ts', status: 'salvaged', why: 'Hebrew analyser' },
+  { prefix: 'src/adapters/hebrew/', status: 'salvaged', why: 'Hebrew lexicon, morphology and rules' },
+  { prefix: 'src/adapters/el.ts', status: 'salvaged', why: 'Greek analyser' },
+  { prefix: 'src/adapters/greek/', status: 'salvaged', why: 'Greek lexicon, morphology and rules' },
   { prefix: 'src/core/', status: 'salvaged', why: 'adapter contract, token/analysis types, item ids (pure)' },
   { prefix: 'src/dict/', status: 'salvaged', why: 'dictionary format, sharded loader, mapper (browser-safe, licence-labelled)' },
 ];

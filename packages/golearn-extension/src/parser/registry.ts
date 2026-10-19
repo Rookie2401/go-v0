@@ -31,6 +31,9 @@ export const LANGUAGE_META: Readonly<Record<string, LanguageMeta>> = {
   nb: { lang: 'nb', name: 'Norwegian (Bokmål)', pageTag: /^(nb|no)(-|$)/, experimental: 'The Norwegian (Bokmål) pack is experimental: lemmatisation is seed-only (a machine-drafted word list), morphology and rules are limited, and nothing has been reviewed by a native speaker. Nynorsk words are never credited to it.' },
   nn: { lang: 'nn', name: 'Norwegian (Nynorsk)', pageTag: /^(nn|no)(-|$)/, experimental: 'The Norwegian (Nynorsk) pack is experimental: lemmatisation is seed-only (a machine-drafted word list, smaller than the Bokmål one), morphology and rules are limited, and nothing has been reviewed by a native speaker. Bokmål words are never credited to it.' },
   la: { lang: 'la', name: 'Latin', pageTag: /^la(-|$)/i, experimental: 'Latin analyser ported from the Romance app, 2026-10-17: Clementine-Vulgate orthography; no native review' },
+  // One language each with PERIOD varieties: a page tagged hbo (Biblical Hebrew) or grc (Ancient Greek) is the same pack as he / el
+  he: { lang: 'he', name: 'Hebrew', pageTag: /^(he|iw|hbo)(-|$)/, experimental: 'The Hebrew pack is experimental: readings come from the Open Scriptures morphology of the Bible and the Wiktionary tables; only the commonest Biblical words are compiled in, the rest needs the installed indexes; nothing has been reviewed by a Hebrew scholar or a native speaker.' },
+  el: { lang: 'el', name: 'Greek', pageTag: /^(el|grc)(-|$)/, experimental: 'The Greek pack is experimental: readings come from MorphGNT over the New Testament and the Wiktionary Ancient and Modern tables; only the commonest New Testament words are compiled in, the rest needs the installed indexes; nothing has been reviewed by a classicist or a native speaker.' },
 };
 
 /** The languages the parser CAN read (an analyser exists for them, loaded or not). */

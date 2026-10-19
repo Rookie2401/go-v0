@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 2,
+  "id": "bible-1john-1",
+  "lang": "el",
+  "title": "Α΄ Ἰωάννου 1:8–9; Ἰωάννην 3:16",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-el-sblgnt",
+    "kind": "scripture",
+    "title": "The Greek New Testament: SBL Edition"
+  },
+  "source": {
+    "id": "src:el:bible-1john-1",
+    "title": "The Greek New Testament: SBL Edition (Michael W. Holmes, ed.; Society of Biblical Literature / Logos Bible Software, 2010)",
+    "edition": "SBLGNT, as carried by MorphGNT (github.com/morphgnt/sblgnt)",
+    "publisher": "Society of Biblical Literature",
+    "attribution": "The Greek New Testament: SBL Edition, © 2010 Society of Biblical Literature and Logos Bible Software — Creative Commons Attribution 4.0 (CC BY 4.0), https://sblgnt.com; wording as carried by MorphGNT (CC BY-SA 3.0), via the Biblia app's data build.",
+    "provenance": "Koine Greek (first century). The verse wording is the SBLGNT text column of the MorphGNT files (62-1Jn-morphgnt.txt, 64-Jn-morphgnt.txt) as the Biblia app (C:/Users/CJWal/dev/biblia-v0, scripts/build-gnt.mjs) built them on 2026-09-20; copied from that build on 2026-10-18 by joining the printed tokens of each verse with spaces, nothing retyped. NOT yet byte-compared here against sblgnt.com or the MorphGNT repository by scripts/verify-scripture.mjs; until that check is recorded the text stays unpublished. The English beside it is the World English Bible, a separate public-domain text.",
+    "url": "https://sblgnt.com",
+    "rights": "unverified",
+    "licenseNote": "The source states CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/) for the SBLGNT text (sblgnt.com) and CC BY-SA 3.0 for MorphGNT's analysis; the text is passed on unchanged with attribution. Recorded as UNVERIFIED here until a byte-comparison against the distributor (scripts/verify-scripture.mjs) is on file; the repository's bundle rule does not accept a licence claim without one.",
+    "authorship": "licensed"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Wording copied from the Biblia app's build of the MorphGNT/SBLGNT files; a byte-comparison against the distributor (scripts/verify-scripture.mjs) has not been recorded yet. The verses are Koine Greek, read by the Greek analyser in its Koine period."
+  },
+  "topics": [
+    "scripture",
+    "1john-1",
+    "john-3"
+  ],
+  "editorialTags": [
+    "verification-pending"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "sblgnt",
+    "courseId": "greek",
+    "chapter": {
+      "index": 0,
+      "title": "Α΄ Ἰωάννου 1:8–9; Ἰωάννην 3:16"
+    }
+  },
+  "scripture": {
+    "translationId": "sblgnt",
+    "translationName": "The Greek New Testament: SBL Edition",
+    "edition": "SBLGNT (2010), via MorphGNT",
+    "book": "1JN",
+    "chapter": 1
+  },
+  "english": {
+    "source": "World English Bible (public domain), eBible.org eng-web"
+  },
+  "sections": [
+    {
+      "title": "Α΄ Ἰωάννου 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ἐὰν εἴπωμεν ὅτι ἁμαρτίαν οὐκ ἔχομεν, ἑαυτοὺς πλανῶμεν καὶ ἡ ἀλήθεια οὐκ ἔστιν ἐν ἡμῖν.",
+              "english": "If we say that we have no sin, we deceive ourselves, and the truth isn’t in us.",
+              "verseRefs": ["1JN.1.8"]
+            },
+            {
+              "text": "ἐὰν ὁμολογῶμεν τὰς ἁμαρτίας ἡμῶν, πιστός ἐστιν καὶ δίκαιος ἵνα ἀφῇ ἡμῖν τὰς ἁμαρτίας καὶ καθαρίσῃ ἡμᾶς ἀπὸ πάσης ἀδικίας.",
+              "english": "If we confess our sins, he is faithful and righteous to forgive us the sins, and to cleanse us from all unrighteousness.",
+              "verseRefs": ["1JN.1.9"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ἰωάννην 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Οὕτως γὰρ ἠγάπησεν ὁ θεὸς τὸν κόσμον ὥστε τὸν υἱὸν τὸν μονογενῆ ἔδωκεν, ἵνα πᾶς ὁ πιστεύων εἰς αὐτὸν μὴ ἀπόληται ἀλλὰ ἔχῃ ζωὴν αἰώνιον.",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": ["JHN.3.16"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

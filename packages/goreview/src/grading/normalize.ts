@@ -32,12 +32,29 @@ export function normalizeAnswer(s: string, mode: NormalizeMode = 'exact'): strin
     .replace(SURROUNDING, '')
     .replace(/\s+/gu, ' ')
     .trim();
-  return mode === 'loose' ? foldAlbanian(base) : base;
+  return mode === 'loose' ? foldGreek(foldHebrew(foldAlbanian(base))) : base;
 }
 
 /** ë→e and ç→c, nothing else (a stress mark or another letter is not Albanian orthography and is left alone). */
 export function foldAlbanian(s: string): string {
   return s.replace(/ë/gu, 'e').replace(/ç/gu, 'c');
+}
+
+/**
+ * Hebrew: the vowel points, dagesh, shin/sin dots and cantillation are removed, so an answer typed unpointed (as Modern Hebrew is
+ * written) meets a pointed key — a PARTIAL match, since the points are information the key carries. Letters are never changed; a
+ * string without Hebrew letters is left alone (the Devanagari / Thai rule above stands).
+ */
+export function foldHebrew(s: string): string {
+  return /[א-ת]/u.test(s) ? s.replace(/[֑-ֽֿ-ׂׄ-ׇ]/gu, '') : s;
+}
+
+/**
+ * Greek: accents, breathings, iota subscript and diaeresis are removed (NFD, strip, NFC), so a monotonic or unaccented answer meets
+ * a polytonic key — a PARTIAL match. Final sigma is kept: it is a letter of the spelling. A string without Greek letters is left alone.
+ */
+export function foldGreek(s: string): string {
+  return /[Ͱ-Ͽἀ-῿]/u.test(s) ? s.normalize('NFD').replace(/[̀-ͯ]/gu, '').normalize('NFC') : s;
 }
 
 /** True when the text holds at least one letter (an answer made of digits or punctuation cannot be graded). */

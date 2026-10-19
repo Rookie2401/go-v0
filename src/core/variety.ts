@@ -11,8 +11,13 @@ export interface Variety {
   /** 'es-HN', 'es-419', 'es-ES', 'es-hist', or a named feature such as 'voseo', 'vosotros'. */
   code: string;
   label: string; // "Honduras", "Latin America (general)", "Spain", "older Spanish", "voseo"
-  /** 'heritage': a related literary language read beside the course language (Awadhi, Braj beside Modern Standard Hindi): its own language, not an older stage of this one. */
-  kind: 'national' | 'regional' | 'supranational' | 'feature' | 'historical' | 'heritage';
+  /**
+   * 'heritage': a related literary language read beside the course language (Awadhi, Braj beside Modern Standard Hindi): its own language, not an older stage of this one.
+   * 'period': a historical stage of this language that a learner may actively TARGET (Biblical Hebrew, Koine Greek): unlike
+   * 'historical' (an older spelling or usage never adopted today), a period follows the course policy — it is the target when
+   * the policy names it, receptive otherwise. Nothing is suppressed either way.
+   */
+  kind: 'national' | 'regional' | 'supranational' | 'feature' | 'historical' | 'heritage' | 'period';
   /** The wider variety it belongs to ('es-HN' → 'es-CA' → 'es-419'). */
   parent?: string;
   note?: string;
@@ -47,6 +52,8 @@ export function varietyStanding(
   if (!tags || tags.length === 0) return 'general';
   if (tags.some((t) => varieties?.[t]?.kind === 'heritage')) return 'heritage';
   if (tags.some((t) => varieties?.[t]?.kind === 'historical')) return 'historical';
+  // a 'period' variety is judged by the policy below like a national one: a Koine reading is the target of a Koine learner,
+  // and receptive (an earlier stage of the language) for a Modern Greek learner
   if (!policy) return 'receptive';
   const active = new Set([policy.target, ...(policy.activeFeatures ?? [])]);
   if (tags.some((t) => active.has(t))) return 'target';
@@ -71,6 +78,9 @@ export function varietyLine(
     case 'within-target': return `${labels} — ordinary in the wider region you are aiming at.`;
     case 'historical': return `${labels} — older language: recognise it when reading; it is not used this way today.`;
     case 'heritage': return `${labels} — a related literary language, not the language of this course: read it as its own language.`;
-    case 'receptive': return `${labels} — used elsewhere: worth recognising, not your default for speaking or writing.`;
+    case 'receptive':
+      return tags.some((t) => varieties?.[t]?.kind === 'period')
+        ? `${labels} — a stage of the language other than the one you are aiming at: recognise it when reading; it is not your default for speaking or writing.`
+        : `${labels} — used elsewhere: worth recognising, not your default for speaking or writing.`;
   }
 }

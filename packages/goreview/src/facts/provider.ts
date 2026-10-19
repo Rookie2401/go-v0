@@ -28,8 +28,11 @@ import type { ExampleReading, FeatureDef, FormGroup, FormInfo, ReviewFacts } fro
 /** What the facts need of a language adapter (the Albanian adapter satisfies it as it is). */
 export interface FactsAdapter {
   tokenize(sentence: string): RawToken[];
-  analyze(tokens: RawToken[]): AnalyzedToken[];
+  /** `opts.varietyId` (optional): the target variety; an adapter with period varieties orders its readings by it, the others ignore it. */
+  analyze(tokens: RawToken[], opts?: { varietyId?: string }): AnalyzedToken[];
   normalize(surface: string): string;
+  /** The varieties the adapter labels (core/variety.ts); a variety of kind 'period' makes the facts period-aware. */
+  readonly varieties?: Readonly<Record<string, { kind: string; label: string }>>;
   describeMorph?(morph: Record<string, string>, pos?: AnalysisCandidate['pos']): string;
   detectPhrases?(tokens: RawToken[], analyses: AnalyzedToken[]): PhraseCandidate[];
   pronunciation?(token: RawToken, analysis?: AnalyzedToken): { notes?: string[] };
@@ -70,6 +73,12 @@ export interface FactsProviderDeps {
   now?: () => string;
   /** At most this many dictionary senses are taken (default 6). */
   maxDictionarySenses?: number;
+  /**
+   * The learner's target variety. When it is a PERIOD variety of the adapter (Biblical Hebrew, Koine Greek …), the pack's sentences
+   * are read in that period and an example sentence whose reading belongs to it is preferred over one of another period; a period
+   * with no sentence falls back to the others (nothing is invented, and the exercise says which period its sentence is in).
+   */
+  varietyId?: string;
 }
 
 /** A `unit` dependency that can be told which units are about to be asked for, so they come in a few calls instead of one each (audit PF-02). */
@@ -169,6 +178,8 @@ interface Occ {
   top?: AnalysisCandidate;
   status: AnalysisStatus;
   features: Record<string, string>;
+  /** The varieties of the best reading (a period for Hebrew / Greek), as the adapter labels them. */
+  periods: string[];
 }
 interface Sent { text: string; source: ExampleSentence['source']; occs: Occ[]; phrases: PhraseCandidate[]; tokens: RawToken[] }
 
@@ -182,6 +193,9 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
   const maxDict = deps.maxDictionarySenses ?? 6;
   const tutorial = deps.tutorial === undefined ? (lang === 'sq' ? SQ_TUTORIAL : null) : deps.tutorial;
   const patterns = deps.constructionPatterns ?? (lang === 'sq' ? SQ_CONSTRUCTION_PATTERNS : []);
+  // the target period, when the adapter has one by that name: readings are ordered by it and examples of it come first
+  const targetPeriod = deps.varietyId && adapter.varieties?.[deps.varietyId]?.kind === 'period' ? deps.varietyId : undefined;
+  const fitsPeriod = (o: Occ): boolean => !targetPeriod || o.periods.includes(targetPeriod);
 
   // the vocabulary of the pack's grammar
   const featureDefs: Record<string, FeatureDef> = {};
@@ -210,7 +224,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       let phrases: PhraseCandidate[] = [];
       try {
         tokens = adapter.tokenize(text);
-        analysed = adapter.analyze(tokens);
+        analysed = adapter.analyze(tokens, deps.varietyId ? { varietyId: deps.varietyId } : undefined);
         phrases = adapter.detectPhrases ? adapter.detectPhrases(tokens, analysed) : [];
       } catch { /* a sentence the adapter cannot read contributes nothing */ }
       const occs: Occ[] = [];
@@ -220,6 +234,7 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
         occs.push({
           surface: a.token.surface, normalized: a.token.normalized, start: a.token.start, end: a.token.end, tokenIndex: i,
           cands: a.candidates, ...(top ? { top } : {}), status: top ? statusOf(top, a.candidates) : 'provisional', features: flat(top?.morph),
+          periods: [...(top?.varieties ?? [])],
         });
       });
       return { text, source, occs, phrases, tokens };
@@ -240,13 +255,20 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
   function collect(pred: (o: Occ) => boolean): { examples: ExampleSentence[]; readings: ExampleReading[] } {
     const examples: ExampleSentence[] = [];
     const readings: ExampleReading[] = [];
-    for (const s of sentences()) {
-      for (const o of s.occs) {
-        if (!pred(o)) continue;
-        if (examples.length >= MAX_EXAMPLES) return { examples, readings };
-        examples.push(exampleOf(s, o));
-        readings.push(readingOf(o));
-        break; // one occurrence per sentence is enough to make an exercise
+    // two passes when a period is targeted: first the sentences whose reading belongs to it, then the others (never none)
+    const passes: Array<(o: Occ) => boolean> = targetPeriod ? [(o) => pred(o) && fitsPeriod(o), (o) => pred(o) && !fitsPeriod(o)] : [pred];
+    const taken = new Set<Sent>();
+    for (const pass of passes) {
+      for (const s of sentences()) {
+        if (taken.has(s)) continue;
+        for (const o of s.occs) {
+          if (!pass(o)) continue;
+          if (examples.length >= MAX_EXAMPLES) return { examples, readings };
+          examples.push(exampleOf(s, o));
+          readings.push(readingOf(o));
+          taken.add(s);
+          break; // one occurrence per sentence is enough to make an exercise
+        }
       }
     }
     return { examples, readings };

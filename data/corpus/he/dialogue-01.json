@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 2,
+  "id": "dialogue-01",
+  "lang": "he",
+  "title": "שיחה",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-he",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hebrew (Modern)"
+  },
+  "source": {
+    "id": "src:he:dialogue-01",
+    "title": "Modern Hebrew beginner dialogue 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "attribution": "Course-authored beginner text. First draft by an AI assistant; not yet reviewed by a native speaker.",
+    "provenance": "Written for the course authors as a beginner seed text in contemporary Modern Hebrew (unpointed). The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; first draft machine-generated, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Drafted by an AI assistant; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "mission",
+    "conversation"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "The drafter's own glosses (AI assistant), unreviewed"
+  },
+  "sections": [
+    {
+      "title": "שיחה",
+      "paragraphs": [
+        { "sentences": [{ "text": "שלום, דנה, מה שלומך?", "english": "Hello, Dana, how are you?" }] },
+        { "sentences": [{ "text": "אני בסדר, יוסי, אבל יש משהו שאני לא מבינה.", "english": "I am fine, Yossi, but there is something I do not understand." }] },
+        { "sentences": [{ "text": "מה את לא מבינה?", "english": "What do you not understand?" }] },
+        { "sentences": [{ "text": "אני לא מבינה למה אלוהים סולח על חטא.", "english": "I do not understand why God forgives sin." }] },
+        { "sentences": [{ "text": "גם אני התחלתי להבין את זה.", "english": "I have also begun to understand it." }] },
+        { "sentences": [{ "text": "אני מאמין באלוהים, ואלוהים אוהב אותנו, ולכן הוא סולח.", "english": "I believe in God, and God loves us, and therefore he forgives." }] },
+        { "sentences": [{ "text": "תודה, יוסי. עכשיו אני מבינה יותר.", "english": "Thank you, Yossi. Now I understand more." }] }
+      ]
+    }
+  ]
+}

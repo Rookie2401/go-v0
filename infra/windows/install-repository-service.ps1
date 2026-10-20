@@ -17,12 +17,16 @@
        (S4U logon: works logged in or not, no network credentials needed since the service only listens on 127.0.0.1),
        unlimited run time, restart every minute up to 99 times, allowed on battery, started late if the trigger was missed.
        Output goes to data\local-repository\service.log. No secrets are read or written.
-    2. cloudflared Windows service: copies %USERPROFILE%\.cloudflared\config.yml and the tunnel credentials JSON into the
-       LocalSystem profile (C:\Windows\System32\config\systemprofile\.cloudflared), which is where the Windows service
-       reads them, then `cloudflared service install` + Start-Service. A tunnel already running in a window is stopped
-       first (two copies would both register). Skipped with -SkipTunnel.
-    3. With -NeverSleepOnBattery: powercfg standby and hibernate timeouts on battery set to never (the AC side is already
-       never on this PC). Without the switch nothing about power changes.
+    2. With -NeverSleepOnBattery: powercfg standby and hibernate timeouts on battery set to never (the AC side is already
+       never on this PC). Without the switch nothing about power changes. (Before the service step on purpose.)
+    3. cloudflared Windows service: copies %USERPROFILE%\.cloudflared\config.yml and the tunnel credentials JSON into the
+       LocalSystem profile (C:\Windows\System32\config\systemprofile\.cloudflared), installs the service
+       (`cloudflared service install`) and then sets its command line to `cloudflared.exe --config <that config> tunnel run
+       <TunnelName>` with Windows failure actions (restart after 20 s, 20 s, 60 s): started bare, the service died within
+       seconds in a loop on 2026-10-20 although the same config ran by hand. A tunnel already running in a user session is
+       stopped first (two copies would both register); the service itself (session 0) is left alone. The service must still
+       be Running 15 s after the start, otherwise the script prints cloudflared's last Application-log lines and stops.
+       Skipped with -SkipTunnel.
     4. Verifies http://127.0.0.1:8790/health, then https://<Hostname>/health (ok:true, service "repository").
 
   Undo: Unregister-ScheduledTask GoRepositoryService; cloudflared service uninstall (elevated); powercfg as you had it.
@@ -49,6 +53,8 @@ param(
 $ErrorActionPreference = 'Stop'
 $isAdmin = ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 if (-not $isAdmin) { throw 'Run this from an ADMINISTRATOR PowerShell (a Scheduled Task at startup and a Windows service both need it).' }
+# the 32-bit PowerShell host redirects System32 to SysWOW64, so the system-profile config would land where the 64-bit service never looks
+if (-not [Environment]::Is64BitProcess) { throw 'Run this from the 64-bit PowerShell (C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe), not the x86 one.' }
 
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 $taskName = 'GoRepositoryService'
@@ -89,7 +95,16 @@ if ($onPort) { Write-Host "   stopping the process already listening on $Port (p
 Start-ScheduledTask -TaskName $taskName
 Write-Host "   task registered and started (state: $((Get-ScheduledTask -TaskName $taskName).State))"
 
-# ── 2. cloudflared as a Windows service ─────────────────────────────────────────────────────────────────────────────────
+# ── 2. power (opt-in; before the service step, so an aborted service install never skips it) ───────────────────────────
+if ($NeverSleepOnBattery) {
+  powercfg /change standby-timeout-dc 0 | Out-Null
+  powercfg /change hibernate-timeout-dc 0 | Out-Null
+  Write-Host '2. power: sleep and hibernate on battery set to never (AC was already never)'
+} else {
+  Write-Host '2. power: unchanged (pass -NeverSleepOnBattery to stop the PC sleeping on battery; asleep means no sync)'
+}
+
+# ── 3. cloudflared as a Windows service ─────────────────────────────────────────────────────────────────────────────────
 if (-not $SkipTunnel) {
   $cf = Find-Cloudflared $Cloudflared
   $userHome = Join-Path $env:USERPROFILE '.cloudflared'
@@ -103,24 +118,33 @@ if (-not $SkipTunnel) {
   if ($credRef -and (Test-Path $credRef)) { Copy-Item $credRef (Join-Path $sysHome (Split-Path $credRef -Leaf)) -Force }
   # point the system copy at the system-profile credentials (same file name)
   (Get-Content (Join-Path $sysHome 'config.yml')) -replace '^credentials-file:.*$', ("credentials-file: " + (Join-Path $sysHome (Split-Path $credRef -Leaf))) | Set-Content (Join-Path $sysHome 'config.yml') -Encoding ascii
-  Write-Host "2. cloudflared service: $cf (config copied to $sysHome)"
-  Get-Process cloudflared -ErrorAction SilentlyContinue | Where-Object { (Get-CimInstance Win32_Process -Filter "ProcessId=$($_.Id)").CommandLine -notmatch 'service' } | ForEach-Object { Write-Host "   stopping the tunnel running in a window (pid $($_.Id))"; Stop-Process -Id $_.Id -Force }
+  $sysConfig = Join-Path $sysHome 'config.yml'
+  Write-Host "3. cloudflared service: $cf (config copied to $sysHome)"
+  # tunnels started by hand run in a user session; the service runs in session 0 and must not be killed on a re-run
+  Get-Process cloudflared -ErrorAction SilentlyContinue | Where-Object { $_.SessionId -ne 0 } | ForEach-Object { Write-Host "   stopping the tunnel running in a window (pid $($_.Id))"; Stop-Process -Id $_.Id -Force }
   $svc = Get-Service -Name cloudflared -ErrorAction SilentlyContinue
   if (-not $svc) { & $cf service install | Out-Host }
+  if ((Get-Service cloudflared).Status -eq 'Running') { Stop-Service -Name cloudflared; (Get-Service cloudflared).WaitForStatus('Stopped', [TimeSpan]::FromSeconds(30)) }
+  # 2026-10-20: installed with the bare executable as its command line, the service died within seconds, 20+ times in a row (SCM
+  # event 7031; the Application log shows only "service starting"), although the very same config validated and ran when
+  # started by hand with --config. So the config and the run command go on the service's command line, which that log shows
+  # is honoured; and Windows restarts it on failure (20 s, 20 s, then 60 s; the counter resets after a day).
+  $bin = "`"$cf`" --config `"$sysConfig`" tunnel run $TunnelName"
+  # written through the registry (what `sc config binPath=` writes) because Windows PowerShell 5.1 does not escape the embedded
+  # quotes when it hands an argument to sc.exe; the failure actions carry no quotes and go through sc.exe
+  Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\cloudflared' -Name ImagePath -Value $bin
   Set-Service -Name cloudflared -StartupType Automatic
-  # a freshly installed service is Stopped: Restart-Service refuses to stop it ("cannot be stopped"), so start it; restart only a running one
-  if ((Get-Service cloudflared).Status -eq 'Running') { Restart-Service -Name cloudflared } else { Start-Service -Name cloudflared }
-  (Get-Service cloudflared).WaitForStatus('Running', [TimeSpan]::FromSeconds(30))
-  Write-Host "   service cloudflared: $((Get-Service cloudflared).Status), startup $((Get-Service cloudflared).StartType)"
-}
-
-# ── 3. power (opt-in) ───────────────────────────────────────────────────────────────────────────────────────────────────
-if ($NeverSleepOnBattery) {
-  powercfg /change standby-timeout-dc 0 | Out-Null
-  powercfg /change hibernate-timeout-dc 0 | Out-Null
-  Write-Host '3. power: sleep and hibernate on battery set to never (AC was already never)'
-} else {
-  Write-Host '3. power: unchanged (pass -NeverSleepOnBattery to stop the PC sleeping on battery; asleep means no sync)'
+  & sc.exe failure cloudflared reset= 86400 actions= restart/20000/restart/20000/restart/60000 | Out-Null
+  Start-Service -Name cloudflared
+  # a crash-looping service reports Running for a moment: it must still be running after 15 s
+  Start-Sleep -Seconds 15
+  $status = (Get-Service cloudflared).Status
+  Write-Host "   service cloudflared: $status after 15 s, startup $((Get-Service cloudflared).StartType), command: $bin"
+  if ($status -ne 'Running') {
+    Write-Host '   the service did not stay up. Last Application-log lines from cloudflared:'
+    Get-WinEvent -FilterHashtable @{LogName='Application'; ProviderName='Cloudflared'} -MaxEvents 8 -ErrorAction SilentlyContinue | ForEach-Object { Write-Host ("   " + $_.TimeCreated.ToString('HH:mm:ss') + " " + $_.Message.Substring(0, [Math]::Min(300, $_.Message.Length))) }
+    throw 'cloudflared service is not staying up; see the lines above and the Event Viewer (Windows Logs > Application, source Cloudflared).'
+  }
 }
 
 # ── 4. verify ───────────────────────────────────────────────────────────────────────────────────────────────────────────

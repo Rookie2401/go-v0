@@ -5,6 +5,7 @@
  */
 import type { ErrorCategory, GoTellSuggestion, ItemKnowledge, LanguageCode, ProvenanceRef, SemanticSection, SuggestionSource, Testimony, TestimonyDraft, TestimonyRevision } from '../model';
 import type { GoTellPractice } from './gotell-practice';
+import type { SuppliedWord, TextAssist } from '../assist';
 
 export type * from './gotell-practice';
 
@@ -80,7 +81,7 @@ export interface GoTell {
    * suggestion → assisted/copied; items the learner changed himself after a suggestion → self-repaired;
    * untouched correct items → independent. Emits ProductionRecorded per item and IndependentProductionDetected.
    */
-  acceptRevision(testimonyId: string, text: string): Promise<TestimonyRevision>;
+  acceptRevision(testimonyId: string, text: string, opts?: { assist?: TextAssist; supplied?: SuppliedWord[] }): Promise<TestimonyRevision>;
   listRevisions(testimonyId: string): Promise<TestimonyRevision[]>;
   diffRevisions(aId: string, bId: string): Promise<Array<{ kind: 'same' | 'added' | 'removed' | 'changed'; a?: string; b?: string }>>;
 
@@ -93,7 +94,7 @@ export interface GoTell {
    * Upsert the working draft. Rejects (throws DraftConflictError-like Error with name 'DraftConflict') when
    * `expectedSeq` is given and a newer draft exists, so a stale tab cannot overwrite newer writing.
    */
-  saveDraft(userId: string, lang: LanguageCode, text: string, opts?: { expectedSeq?: number; basedOnRevisionId?: string }): Promise<TestimonyDraft>;
+  saveDraft(userId: string, lang: LanguageCode, text: string, opts?: { expectedSeq?: number; basedOnRevisionId?: string; assist?: TextAssist }): Promise<TestimonyDraft>;
   clearDraft(userId: string, lang: LanguageCode): Promise<void>;
   /** Recovery: copy a saved version's text into the working draft (the version itself is untouched). */
   restoreRevisionAsDraft(revisionId: string): Promise<TestimonyDraft>;

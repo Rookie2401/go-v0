@@ -20,6 +20,7 @@
  */
 export type LanguageCode = 'es' | 'sq' | 'th' | 'hi' | 'de' | 'nb' | 'nn' | 'he' | 'el' | 'la';
 import type { CurriculumMetadata } from '../course/curriculumPolicy';
+import type { TextAssist } from './assist';
 export const LANGUAGES: readonly LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de', 'nb', 'nn', 'he', 'el', 'la'] as const;
 
 export type Script = 'Latn' | 'Deva' | 'Thai' | 'Hebr' | 'Grek';
@@ -850,6 +851,8 @@ export interface TestimonyRevision {
   /** Suggestion ids accepted in producing this revision. */
   acceptedSuggestionIds: string[];
   parentRevisionId?: string;
+  /** Guided help (docs/GOTELL-GUIDED.md): the ranges of `fullText` supplied from an English parenthetical or typed under a hint. */
+  assist?: TextAssist;
 }
 
 export type SuggestionKind = 'repair' | 'recombination' | 'expansion';
@@ -865,6 +868,8 @@ export interface TestimonyDraft {
   seq: number;
   /** The saved version this draft started from, if any. */
   basedOnRevisionId?: string;
+  /** Guided help ranges of `text` (docs/GOTELL-GUIDED.md); shifted by the editor on every edit. */
+  assist?: TextAssist;
 }
 
 /** Small key/value rows: policy versions, migrations run, settings that must travel with a backup. */
@@ -933,7 +938,8 @@ export interface SuggestionSource {
   surface: 'corpus' | 'scripture' | 'testimony' | 'listen';
 }
 
-export type ProductionKind = 'independent' | 'self-repaired' | 'assisted' | 'copied';
+/** `guided`: typed under a ghost hint (spelling help only); `supplied`: the word came from an English parenthetical lookup. */
+export type ProductionKind = 'independent' | 'self-repaired' | 'assisted' | 'copied' | 'guided' | 'supplied';
 
 // ───────────────────────────── engines' shared read models ─────────────────────────────
 

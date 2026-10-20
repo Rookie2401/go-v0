@@ -103,6 +103,10 @@ No LLM ships. `InterpretationProvider` exists so one can be added: its output is
 
 `testimonyMap()` lists the testimony meanings in story order with their level and whether they appear in the current saved version (own words or with suggestions), and three deliveries: **30-second** (4 core meanings), **two-minute** (10), **full story** (11), each with what he can say alone, what is in his testimony and what is missing. It shows meanings, never wording: the testimony stays his.
 
+### Guided help (2026-10-20, `evidence@9`)
+
+"Your Testimony" can show a faint hint of a known word while the learner types it, and can supply a word from an English parenthetical. Design, owner decisions and the build packages: `docs/GOTELL-GUIDED.md`. Evidence side: `TestimonyDraft.assist` / `TestimonyRevision.assist` keep the ranges; at `acceptRevision` a word typed under a hint is production kind `guided` (assistance 1, weight 0.7) and a word supplied from a parenthetical is `supplied` (assistance 3, weight 0.4), both below `independent`; each supplied word also emits the audit event `TestimonyWordSupplied` (not a fold type). Checking a draft still records nothing. Tests: `test/gotell/guidedEvidence.test.ts`, `test/golearn/guidedEvidence.test.ts`.
+
 ## 3. Invariants and where they are tested
 
 | Invariant | Test |
@@ -122,6 +126,7 @@ No LLM ships. `InterpretationProvider` exists so one can be added: its output is
 | State is a pure function of the log (backup/restore) | › productive state is a pure function |
 | Non-GoTell data untouched | › practice never writes My Testimony data…; all 128 earlier GoTell tests unchanged |
 | Privacy | › privacy |
+| Guided / supplied words are credited below independent; checking records nothing; the policy bump rebuilds | `test/gotell/guidedEvidence.test.ts`; `test/golearn/guidedEvidence.test.ts` |
 | Catalog self-consistency (each model carries its meaning, real checker silent, 5 languages) | `test/gotell/practice/engine.test.ts` › catalog |
 | Ladder order, labels, Thai/Hindi graphemes, language track | engine.test.ts › the ladder of help |
 | P7 only for own, uncopied sentences; testimony map | engine.test.ts › spontaneous use |

@@ -40,7 +40,7 @@ describe('the decay constants', () => {
   it('six weeks, half credit, and no version bump (the standing is derived at read time)', () => {
     expect(DECAY).toEqual({ weeks: 6, halfCredit: true });
     expect(DECAY_MS).toBe(6 * WEEK);
-    expect(POLICY_VERSION).toBe('evidence@8');
+    expect(POLICY_VERSION).toBe('evidence@9');
   });
 });
 

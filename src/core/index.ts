@@ -1,4 +1,5 @@
 export * from './model';
+export * from './assist';
 export * from './course';
 export * from './variety';
 export * from './ids';

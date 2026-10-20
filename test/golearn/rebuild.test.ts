@@ -115,7 +115,7 @@ describe('rebuild(userId)', () => {
     await buildSpanish(h.store);
     await h.view('u1', 'es', ES_STORY, 0);
     await h.golearn.rebuild('u1');
-    expect((await h.store.meta.all()).map((m) => m.value)).toEqual(['evidence@8']);
+    expect((await h.store.meta.all()).map((m) => m.value)).toEqual(['evidence@9']);
   });
 
   it('rebuilds a user with no events to an empty state', async () => {

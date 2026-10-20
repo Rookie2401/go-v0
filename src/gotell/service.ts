@@ -21,8 +21,9 @@ import type {
   GoTellSuggestionEdited, GoTellSuggestionRejected, GoTellSuggestionShown, IndependentProductionDetected, IntentProposal,
   IntentRequest, InterpretationProvider, ItemKind, ItemKnowledge, LanguageAdapter, LanguageCode, ProductionAnalysis, ProductionKind, ProductionRecorded,
   ProductionTask, ProvenanceRef, SuggestionKind, SuggestionProvider, SuggestionSource, Testimony, TestimonyDraft, TestimonyRevision,
-  TestimonyRevisionAccepted, TestimonySentence, TestimonyTextSubmitted, Text,
+  TestimonyRevisionAccepted, TestimonySentence, TestimonyTextSubmitted, TestimonyWordSupplied, Text,
 } from '../core';
+import type { Range, TextAssist } from './predict/types';
 import { checkerCoverage } from './coverage';
 import { createPractice } from './productive/practice';
 import { CONCEPTS, conceptsForToken, tagSection } from './concepts';
@@ -93,7 +94,7 @@ export function isTestimonyText(text: Text, corpus?: { kind: string }): boolean 
 export const MAX_SUGGESTIONS_PER_SENTENCE = 3;
 export const MAX_SUGGESTIONS_PER_DRAFT = 6;
 
-const STRENGTH: Record<ProductionKind, number> = { independent: 3, 'self-repaired': 2, assisted: 1, copied: 0 };
+const STRENGTH: Record<ProductionKind, number> = { independent: 5, 'self-repaired': 4, guided: 3, assisted: 2, supplied: 1, copied: 0 };
 const unique = <T,>(xs: T[]): T[] => [...new Set(xs)];
 
 /** Encountered = GoLearn has the item for this learner with at least one encounter (any modality, any help level). */
@@ -404,6 +405,10 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
 
   // ───────────────────────── revisions: provenance (rule 6) ─────────────────────────
 
+  /** Guided help ranges (full-text offsets) and where this sentence starts in the full text. */
+  interface SentenceHelp { base: number; assist: TextAssist }
+  const insideAny = (ranges: Range[], start: number, end: number) => ranges.some((r) => r.start <= start && end <= r.end);
+
   interface ItemEvidence { itemId: string; itemKind: ItemKind; kind: ProductionKind; suggestionId?: string }
 
   /**
@@ -414,7 +419,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
    *    shown but not accepted (he typed it himself after seeing it) => copied; in neither => self-repaired.
    * Items inside a token the checker still flags get no evidence at all.
    */
-  function classifySentence(adapter: LanguageAdapter, lang: LanguageCode, text: string, sugs: GoTellSuggestion[]): { items: ItemEvidence[]; used: Set<string> } {
+  function classifySentence(adapter: LanguageAdapter, lang: LanguageCode, text: string, sugs: GoTellSuggestion[], help?: SentenceHelp): { items: ItemEvidence[]; used: Set<string> } {
     const p = parse(adapter, text);
     const errTokens = new Set<number>();
     for (const e of adapter.checkProduction(p.tokens, p.analyses, text)) if (e.confidence >= MIN_ERROR_CONFIDENCE) e.tokenIndexes.forEach((i) => errTokens.add(i));
@@ -442,6 +447,15 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
       const shown = family.find((s) => introduced.get(s.id)!.has(n));
       if (shown) { tokenKind.set(i, { kind: 'copied', suggestionId: shown.id }); continue; }
       tokenKind.set(i, { kind: 'self-repaired' });
+    }
+    // guided help (docs/GOTELL-GUIDED.md): a token wholly inside a supplied / guided range is that kind, unless suggestion provenance already says less
+    if (help) {
+      for (const [i, ev] of tokenKind) {
+        const t = p.tokens[i];
+        const helped: ProductionKind | undefined = insideAny(help.assist.supplied, help.base + t.start, help.base + t.end) ? 'supplied'
+          : insideAny(help.assist.guided, help.base + t.start, help.base + t.end) ? 'guided' : undefined;
+        if (helped && STRENGTH[helped] < STRENGTH[ev.kind]) tokenKind.set(i, { kind: helped });
+      }
     }
 
     const items = new Map<string, ItemEvidence>();
@@ -484,14 +498,14 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
     };
 
     /** Upsert the working draft. seq is monotonic per learner + language and survives clearDraft. */
-    const writeDraft = (userId: string, lang: LanguageCode, text: string, opts: { expectedSeq?: number; basedOnRevisionId?: string } = {}): Promise<TestimonyDraft> =>
+    const writeDraft = (userId: string, lang: LanguageCode, text: string, opts: { expectedSeq?: number; basedOnRevisionId?: string; assist?: TextAssist } = {}): Promise<TestimonyDraft> =>
       store.transaction(['drafts'], async () => {
         const id = ids.draft(userId, lang);
         const existing = await store.drafts.get(id);
         // a stale tab must not overwrite newer writing; a cleared draft (empty) holds no writing, so it never conflicts
         if (opts.expectedSeq !== undefined && existing && existing.text !== '' && opts.expectedSeq !== existing.seq) throw new DraftConflictError(existing, opts.expectedSeq);
         const based = opts.basedOnRevisionId ?? existing?.basedOnRevisionId;
-        const draft: TestimonyDraft = { id, userId, lang, text, updatedAt: clock(), seq: (existing?.seq ?? 0) + 1, ...(based ? { basedOnRevisionId: based } : {}) };
+        const draft: TestimonyDraft = { id, userId, lang, text, updatedAt: clock(), seq: (existing?.seq ?? 0) + 1, ...(based ? { basedOnRevisionId: based } : {}), ...(opts.assist ? { assist: opts.assist } : {}) };
         await store.drafts.put(draft);
         return draft;
       });
@@ -543,7 +557,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
         const rev = await store.revisions.get(revisionId);
         if (!rev) throw new Error('GoTell: revision not found or not owned by this user');
         assertActor(rev.userId);
-        return writeDraft(rev.userId, rev.lang, rev.fullText, { basedOnRevisionId: rev.id });
+        return writeDraft(rev.userId, rev.lang, rev.fullText, { basedOnRevisionId: rev.id, ...(rev.assist ? { assist: rev.assist } : {}) });
       },
 
       async submitDraft(testimonyId, text) {
@@ -590,7 +604,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
         });
       },
 
-      async acceptRevision(testimonyId, text) {
+      async acceptRevision(testimonyId, text, opts) {
         const t = await ownedTestimony(testimonyId);
         const adapter = adapters.get(t.lang);
         const existing = (await store.revisions.where('testimonyId', testimonyId)).sort((a, b) => a.number - b.number);
@@ -602,6 +616,8 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
         const spans = adapter.segmentSentences(text).filter((s) => s.text.trim().length > 0);
         const sugs = (await store.suggestions.where('testimonyId', testimonyId)).filter((s) => s.userId === t.userId);
 
+        const assist = opts?.assist;
+        let from = 0; // where the previous sentence ended in the full text (sentence spans are located in order)
         const sentences: TestimonySentence[] = [];
         const evidence: Array<{ sentence: TestimonySentence; items: ItemEvidence[] }> = [];
         const acceptedIds = new Set<string>();
@@ -613,7 +629,9 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
             ...(tag ? { section: tag.section, sectionConfidence: tag.confidence } : {}),
           };
           sentences.push(sentence);
-          const cls = classifySentence(adapter, t.lang, spans[i].text, sugs);
+          const at = text.slice(spans[i].start, spans[i].end) === spans[i].text ? spans[i].start : text.indexOf(spans[i].text, from);
+          if (at >= 0) from = at + spans[i].text.length;
+          const cls = classifySentence(adapter, t.lang, spans[i].text, sugs, assist && at >= 0 ? { base: at, assist } : undefined);
           cls.used.forEach((id) => acceptedIds.add(id));
           evidence.push({ sentence, items: cls.items });
         }
@@ -630,6 +648,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
           ...(textId ? { textId } : {}),
           acceptedSuggestionIds: [...acceptedIds],
           ...(current ? { parentRevisionId: current.id } : {}),
+          ...(assist ? { assist } : {}),
         };
         await store.revisions.put(revision);
         await store.testimonies.put({ ...t, currentRevisionId: revisionId });
@@ -639,6 +658,13 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
 
         const session = `gotell:${testimonyId}`;
         await bus.emit<TestimonyRevisionAccepted>({ type: 'TestimonyRevisionAccepted', ...common(t.userId, t.lang, session, `rev:${revisionId}`), testimonyId, revisionId, number });
+        // audit trail of the guided-help lookups (not a fold type): once per supplied word
+        for (const w of new Map((opts?.supplied ?? []).map((x) => [x.itemId, x] as const)).values()) {
+          await bus.emit<TestimonyWordSupplied>({
+            type: 'TestimonyWordSupplied', ...common(t.userId, t.lang, session, `tws:${revisionId}:${w.itemId}`),
+            testimonyId, revisionId, english: w.english, itemId: w.itemId, word: w.surface, known: w.known,
+          });
+        }
         const independent: string[] = [];
         for (const { sentence, items } of evidence) {
           for (const it of items) {

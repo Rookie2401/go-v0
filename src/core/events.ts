@@ -152,6 +152,8 @@ export interface UserRecordingCreated extends Base { type: 'UserRecordingCreated
 // ── production (GoTell emits) ──
 export interface TestimonyTextSubmitted extends Base { type: 'TestimonyTextSubmitted'; testimonyId: string; draftHash: string; sentenceCount: number }
 export interface TestimonyRevisionAccepted extends Base { type: 'TestimonyRevisionAccepted'; testimonyId: string; revisionId: string; number: number }
+/** Audit trail of a guided-help lookup: not a fold type (the `supplied` ProductionRecorded carries the evidence). */
+export interface TestimonyWordSupplied extends Base { type: 'TestimonyWordSupplied'; testimonyId: string; revisionId: string; english: string; itemId: string; /** the supplied word as shown (Base.surface is the UI surface) */ word: string; known: boolean }
 export interface GoTellSuggestionShown extends Base { type: 'GoTellSuggestionShown'; suggestionId: string; kind: 'repair' | 'recombination' | 'expansion' }
 export interface GoTellSuggestionAccepted extends Base { type: 'GoTellSuggestionAccepted'; suggestionId: string; kind: 'repair' | 'recombination' | 'expansion'; itemIds: string[] }
 export interface GoTellSuggestionRejected extends Base { type: 'GoTellSuggestionRejected'; suggestionId: string }
@@ -231,7 +233,7 @@ export type DomainEvent =
   | ItemMarked | FormSearched | PhraseEncountered
   | AudioPlayed | AudioSegmentCompleted | AudioReplayed | PhraseReplayed | AudioSeeked | PlaybackSpeedChanged
   | TranscriptRevealed | AudioAbandoned | ListeningPositionSaved | ListeningAssessmentStarted | ListeningAssessmentSubmitted | ShadowingAttempt | UserRecordingCreated
-  | TestimonyTextSubmitted | TestimonyRevisionAccepted | GoTellSuggestionShown | GoTellSuggestionAccepted
+  | TestimonyTextSubmitted | TestimonyRevisionAccepted | TestimonyWordSupplied | GoTellSuggestionShown | GoTellSuggestionAccepted
   | GoTellSuggestionRejected | GoTellSuggestionEdited | ProductionRecorded | IndependentProductionDetected
   | TellGoalDefined | TellTaskPresented | TellInterventionShown | TellAttemptSubmitted | TellTaskClosed
   | Stage0CheckAnswered | Stage0DecodeAnswered | Stage0SupportUsed | Stage0ProductionAttempted | Stage0SpeakingRecorded

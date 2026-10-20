@@ -68,7 +68,7 @@ async function queryOne(
       const k = e.productionKind ?? productionKindOf(e.assistance);
       if (k === 'independent') productionEvidence.independent++;
       else if (k === 'self-repaired') productionEvidence.selfRepaired++;
-      else if (k === 'assisted') productionEvidence.assisted++;
+      else if (k === 'assisted' || k === 'guided' || k === 'supplied') productionEvidence.assisted++;
       else productionEvidence.copied++;
     }
   }

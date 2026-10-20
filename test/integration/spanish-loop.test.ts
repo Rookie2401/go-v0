@@ -359,7 +359,7 @@ describe('Spanish end-to-end loop', () => {
     expect(segs.map((s) => s!.displayText)).toEqual(revSentences.map((s) => s.text)); // the exact saved version
     expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ state: 'preview-only', evidenceEligible: false }); // voice not auditioned yet
     await live.golisten.setVoiceReview(r.manifest.voiceConfigId, 'reviewed', 'synthetic test review');
-    expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ evidenceEligible: false, isSpeech: true }); // synthetic: practice, never evidence (changed in evidence@8)
+    expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ evidenceEligible: false, isSpeech: true }); // synthetic: practice, never evidence (changed in evidence@9)
     const seg = segs[0]!;
     const emitter = listeningEmitter(live.bus, { userId: USER, lang: LANG, session: 'rehearse-1', textId: revisionTextId, surface: 'testimony', store: live.store });
     const before = (await live.golearn.getItemState(USER, sinForm))!;

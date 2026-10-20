@@ -4,7 +4,7 @@
  */
 import type {
   AssistanceLevel, ComfortBand, Encounter, EnglishRescue, GrammarPattern, ItemKnowledge, ItemKind, LanguageCode,
-  LearnerItemState, Lemma, PersonalizedCoverage, Phrase, PhraseOccurrence, Sentence, Token, TokenAnalysis,
+  LearnerItemState, Lemma, PersonalizedCoverage, Phrase, PhraseOccurrence, ProductionKind, Sentence, Token, TokenAnalysis,
 } from '../model';
 import type { DomainEvent } from '../events';
 import type { TextFeatures, TextProfile } from './library';
@@ -261,7 +261,7 @@ export interface EvidencePolicy {
   /** Weight of a listening completion given speed, replays and transcript/translation reveals. */
   listeningWeight(args: { speed: number; replays: number; transcriptRevealed: boolean; translationRevealed: boolean }): number;
   /** Weight of a production by kind. independent > selfRepaired > assisted > copied. */
-  productionWeight(kind: 'independent' | 'self-repaired' | 'assisted' | 'copied'): number;
+  productionWeight(kind: ProductionKind): number;
   /** Map accumulated evidence + counts to a level for one modality. */
   level(dimension: 'reading' | 'listening' | 'writing' | 'speaking', evidence: number, unassisted: number, assisted: number): string;
 }

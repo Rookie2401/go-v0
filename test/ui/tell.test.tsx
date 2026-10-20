@@ -158,9 +158,9 @@ describe('Practise saying it', () => {
     expect((await boot.services.bus.history({ userId: boot.user!.id })).length).toBe(before);
   });
 
-  it('My Testimony links to practice and shows the testimony map when opened', async () => {
+  it('My Testimony no longer links to practice (one prompt, Your Testimony; /tell stays reachable by URL) and shows the testimony map when opened', async () => {
     const page = await render('/testimony');
-    expect(qa<HTMLAnchorElement>(page, 'a').some((a) => /Practise saying parts of your testimony/.test(a.textContent ?? ''))).toBe(true);
+    expect(qa<HTMLAnchorElement>(page, 'a').some((a) => /Practise saying parts of your testimony/.test(a.textContent ?? ''))).toBe(false);
     await click(button(page, 'Your testimony map'));
     await flush(20);
     const map = q(page, '[data-testid="testimony-map"]')!;

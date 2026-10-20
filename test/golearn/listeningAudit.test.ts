@@ -456,7 +456,7 @@ describe('the evidence@8 bump leaves a reading-only learner untouched', () => {
     expect(before.items.length).toBeGreaterThan(0);
     await h.store.meta.put({ id: `golearn.policy:${U}`, value: 'evidence@7', updatedAt: '2026-01-01T00:00:00.000Z' });
     expect(await h.golearn.ensureCurrent(U)).toBe(true); // the bump triggers a rebuild ...
-    expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@8');
+    expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@9');
     expect(canon(await snapshot())).toBe(canon(before)); // ... learner state and its audit outputs do not change
     expect(canon(await snapshot())).toBe(canon(before)); // byte for byte, key order aside for a reading-only learner
   });

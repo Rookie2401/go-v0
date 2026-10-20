@@ -96,7 +96,7 @@ import type { AssistanceLevel, ComfortBand, EvidencePolicy, LearnerLevel, Produc
 import { LEVEL_ORDER } from '../core';
 
 /** Version of the evidence rules; stored per user in `meta`. Bump whenever a rule above changes. */
-export const POLICY_VERSION = 'evidence@8';
+export const POLICY_VERSION = 'evidence@9'; // @9: production kinds `guided` and `supplied` (docs/GOTELL-GUIDED.md); nothing else changed
 
 /**
  * Listening credit by observed coverage (eligibility.ts). `single`: the least heard share of a one-sentence segment that counts
@@ -112,6 +112,8 @@ export const PRODUCTION_WEIGHTS: Record<ProductionKind, number> = {
   'self-repaired': 0.8,
   assisted: 0.4,
   copied: 0.2,
+  guided: 0.7,
+  supplied: 0.4,
 };
 
 export const LEVEL_THRESHOLDS = {
@@ -180,6 +182,8 @@ export const PRODUCTION_ASSISTANCE: Record<ProductionKind, AssistanceLevel> = {
   'self-repaired': 1,
   assisted: 3,
   copied: 5,
+  guided: 1,
+  supplied: 3,
 };
 
 export function productionKindOf(assistance: AssistanceLevel): ProductionKind {

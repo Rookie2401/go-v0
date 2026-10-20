@@ -18,6 +18,8 @@ import { useApp } from '../context';
 import { formatDate, isTestimonyText, itemSurface } from '../format';
 import { BackLink, Collapsible, Disclosure, Topbar } from '../ui';
 import { statusText } from './draft';
+import { GhostEditor } from './GhostEditor';
+import { guidedDraftApi, newBridge, useGuided } from './useGuided';
 import { RevisionAudio } from './RevisionAudio';
 import { SuggestionCard } from './SuggestionCard';
 import { useDraft } from './useDraft';
@@ -28,7 +30,9 @@ type DiffRow = { kind: 'same' | 'added' | 'removed' | 'changed'; a?: string; b?:
 export function Testimony() {
   const { store, gotell, userId, lang, course, features } = useApp();
   const owner = useMemo(() => ({ userId, lang }), [userId, lang]);
-  const { ctrl: rawCtrl, rerender } = useDraft(gotell, owner);
+  const bridge = useRef(newBridge());
+  const draftApi = useMemo(() => guidedDraftApi(gotell, bridge), [gotell]);
+  const { ctrl: rawCtrl, rerender } = useDraft(draftApi, owner);
   // While the controller for a just-switched learner / language is being created, show nothing of the old one.
   const ctrl = rawCtrl && rawCtrl.owner.userId === userId && rawCtrl.owner.lang === lang ? rawCtrl : null;
   const draft = ctrl?.text ?? '';
@@ -93,6 +97,9 @@ export function Testimony() {
     rerender();
   }, [ctrl, rerender]);
 
+  // Guided help: the hint behind the text, the English-in-parentheses lookup, and the assist ranges kept beside the text.
+  const guided = useGuided({ text: draft, setText: setDraft, editable, userId, lang, bridge });
+
   const check = useCallback(async () => {
     if (!ctrl || !testimony || ctrl.text.trim() === '') return;
     setBusy('check'); setError(null); setNotice(null);
@@ -129,12 +136,18 @@ export function Testimony() {
     setBusy('save'); setError(null); setNotice(null);
     try {
       await ctrl.flush();
-      const rev = await gotell.acceptRevision(testimony.id, ctrl.text);
+      // What the learner was helped with travels with the version (assist ranges; words supplied from a parenthetical).
+      const assist = bridge.current.assist;
+      const supplied = guided.suppliedForSave();
+      const withOptions = assist.supplied.length > 0 || assist.guided.length > 0 || supplied.length > 0;
+      const rev = withOptions ? await gotell.acceptRevision(testimony.id, ctrl.text, { assist, supplied }) : await gotell.acceptRevision(testimony.id, ctrl.text);
+      guided.markReported(supplied);
+      guided.rebuildIndex(); // the saved version is now read text: its words can be hinted
       await ctrl.resync(); // saving a version touches the draft's bookkeeping (basedOnRevisionId)
       setRevisions((prev) => [rev, ...prev.filter((r) => r.id !== rev.id)].sort((a, b) => b.number - a.number));
       setNotice(`Saved as version ${rev.number}.`);
     } catch (e) { fail(e); } finally { setBusy(null); }
-  }, [gotell, testimony, ctrl]);
+  }, [gotell, testimony, ctrl, guided]);
 
   /** "Restore as draft": the version's text becomes the working draft; the version itself is untouched. */
   const restore = useCallback(async (rev: TestimonyRevision) => {
@@ -144,6 +157,7 @@ export function Testimony() {
       const previous = ctrl.text;
       await ctrl.flush(); // what was being written is stored before it is replaced
       const restored = await gotell.restoreRevisionAsDraft(rev.id);
+      bridge.current.seed = { text: restored.text, assist: restored.assist ?? { supplied: [], guided: [] } };
       ctrl.adopt(restored);
       rerender();
       setUndo(previous.trim() !== '' && previous !== restored.text ? { text: previous, number: rev.number } : null);
@@ -187,10 +201,9 @@ export function Testimony() {
 
   return (
     <div>
-      <Topbar title="My Testimony" left={<BackLink to="/" label="Home" />} />
+      <Topbar title="Your Testimony" left={<BackLink to="/" label="Home" />} />
       <div className="page page--narrow testimony route-fade">
         <p className="soft">Write in {course.title.split('→')[1]?.trim() ?? 'the language you are learning'}, in your own words. Suggestions are offered, never applied for you.</p>
-        {gotell.practice && <p className="faint"><Link to="/tell">Practise saying parts of your testimony</Link>, one meaning at a time.</p>}
 
         {error && <p role="alert" className="error">{error}</p>}
 
@@ -205,17 +218,26 @@ export function Testimony() {
           </div>
         )}
 
-        <label className="field">
+        <div className="guided-toggle">
+          <label className="guided-toggle__label" htmlFor="guided-help">
+            <input
+              id="guided-help" type="checkbox" aria-label="Guided help" aria-describedby="guided-help-note"
+              checked={guided.guidedOn} onChange={(e) => guided.setGuidedOn(e.target.checked)}
+            />
+            <span>Guided help</span>
+          </label>
+          <span id="guided-help-note" className="faint guided-toggle__note">Shows a faint hint of a word you know as you type it. Nothing is typed for you.</span>
+        </div>
+
+        <div className="field">
           <span className="label">Your testimony</span>
-          <textarea
-            className="editor" lang={lang} rows={8} value={draft} spellCheck={false}
-            aria-label="Your testimony" aria-busy={!editable}
-            readOnly={!editable}
-            placeholder=""
-            onChange={(e) => setDraft(e.target.value)}
+          <GhostEditor
+            value={draft} assist={guided.assist} lang={lang} ghost={guided.ghost} selection={guided.selection}
+            ariaLabel="Your testimony" ariaBusy={!editable} readOnly={!editable} rows={8}
+            onChange={guided.onChange} onCaret={guided.onCaret} onComposition={guided.onComposition}
             onBlur={() => { void ctrl?.flush(); }}
           />
-        </label>
+        </div>
         <p
           role="status" className={`draft-status draft-status--${status.kind}`} data-testid="draft-status" data-state={status.kind}
         >{statusText(status)}</p>

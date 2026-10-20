@@ -295,7 +295,7 @@ describe('one complete acquisition loop — Spanish', () => {
     expect(segs.map((s) => s!.displayText)).toEqual([OWN, 'Dios ama al mundo.']); // the exact saved version
     expect((await live.golisten.audioStatus(revisionTextId)).state).toBe('preview-only'); // voice not auditioned
     await live.golisten.setVoiceReview(r.manifest.voiceConfigId, 'reviewed', 'synthetic');
-    expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ evidenceEligible: false }); // synthetic: practice, never evidence (changed in evidence@8)
+    expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ evidenceEligible: false }); // synthetic: practice, never evidence (changed in evidence@9)
     const before = (await live.golearn.getItemState(USER, form('pecado')))!;
     const em = listeningEmitter(live.bus, { userId: USER, lang: LANG, session: 'rehearse', textId: revisionTextId, surface: 'testimony', store: live.store });
     const seg = segs[0]!;

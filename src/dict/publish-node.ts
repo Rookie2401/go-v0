@@ -9,7 +9,7 @@
  *             full manifest (full-1 shardFiles, or the full-2 `occupied` bitmap) and every shard it names. A manifest that
  *             names a shard that is not there, a zero-byte file or a manifest that cannot be read is an error and nothing
  *             is published.
- *   2. PLAN   the files to send (only dictionary files: manifests, shards, frequency tables), with their sizes.
+ *   2. PLAN   the files to send (only dictionary files: manifests, shards, frequency tables and, when there is a reverse/ folder, the reverse index), with their sizes.
  *   3. SEND   shards first, manifests last, so a reader that fetches a new manifest always finds the shards it names.
  *             A directory destination gets a temp-file-and-rename per file and is skipped file by file when the same bytes
  *             are already there; a remote destination goes through rsync (else scp). --dry-run does only 1 and 2.
@@ -24,6 +24,7 @@ import { LANGUAGES, type LanguageCode } from '../core';
 import { FULL_SCHEMA_2, FULL_SHARD_FILE, fullShardName, occupiedBuckets, parseFullManifest } from './full-format';
 import { repackFull } from './full-pack';
 import { SHARD_FILE, parseManifest } from './format';
+import { REVERSE_DIR, REVERSE_MANIFEST, REVERSE_SHARD_FILE, parseReverseManifest } from './reverse';
 
 export type FullShards = 'keep' | 'gzip' | 'plain';
 
@@ -34,7 +35,7 @@ export interface Plan {
   errors: Problem[];
   warnings: Problem[];
   /** per language: schema-3 shards, full shards, bytes */
-  summary: Array<{ lang: string; schema3?: string; full?: string; files: number; bytes: number }>;
+  summary: Array<{ lang: string; schema3?: string; full?: string; reverse?: string; files: number; bytes: number }>;
 }
 
 const sizeOf = (f: string): number => { try { return fs.statSync(f).size; } catch { return -1; } };
@@ -99,6 +100,26 @@ export function planPublish(src: string, langs?: readonly string[], fullDirs: Re
         }
       } catch (e) { err(`full/manifest.json cannot be read (${e instanceof Error ? e.message : String(e)})`); }
     } else warn('no full records (full/manifest.json)');
+    // the English -> target reverse index (src/dict/reverse.ts): only when the folder exists; shards first, its manifest last
+    const revDir = path.join(dir, REVERSE_DIR);
+    if (fs.existsSync(revDir) && fs.statSync(revDir).isDirectory()) {
+      const rFile = path.join(revDir, REVERSE_MANIFEST);
+      if (!fs.existsSync(rFile)) warn(`${REVERSE_DIR}/ has no ${REVERSE_MANIFEST}: the reverse index is not sent`);
+      else {
+        try {
+          const m = parseReverseManifest(readJson(rFile), lang as LanguageCode);
+          if (!m) err(`${REVERSE_DIR}/${REVERSE_MANIFEST} is not a readable reverse-index manifest`);
+          else {
+            if (!m.shardFiles.length) err(`${REVERSE_DIR}/${REVERSE_MANIFEST} names no shard files`);
+            for (const n of m.shardFiles) add(`${REVERSE_DIR}/${n}`);
+            const extra = fs.readdirSync(revDir).filter((n) => REVERSE_SHARD_FILE.test(n) && !m.shardFiles.includes(n));
+            if (extra.length) warn(`${extra.length} reverse shard file(s) on disk are not named by the manifest and are not sent (e.g. ${extra[0]})`);
+            add(`${REVERSE_DIR}/${REVERSE_MANIFEST}`, true);
+            entry.reverse = `${m.heads.toLocaleString('en-US')} heads · ${m.shardFiles.length} shards`;
+          }
+        } catch (e) { err(`${REVERSE_DIR}/${REVERSE_MANIFEST} cannot be read (${e instanceof Error ? e.message : String(e)})`); }
+      }
+    }
     entry.files = mine.length;
     entry.bytes = mine.reduce((n, f) => n + f.bytes, 0);
     plan.files.push(...mine);
@@ -163,7 +184,7 @@ export function publish(opts: PublishOptions): PublishResult {
     }
 
     const plan = planPublish(src, opts.langs, fullDirs);
-    for (const s of plan.summary) log(`dict:publish - ${s.lang}: ${[s.schema3, s.full ? `full ${s.full}` : undefined].filter(Boolean).join(' · ') || 'nothing to send'} · ${s.files} files, ${mb(s.bytes)}`);
+    for (const s of plan.summary) log(`dict:publish - ${s.lang}: ${[s.schema3, s.full ? `full ${s.full}` : undefined, s.reverse ? `reverse ${s.reverse}` : undefined].filter(Boolean).join(' · ') || 'nothing to send'} · ${s.files} files, ${mb(s.bytes)}`);
     for (const w of plan.warnings) log(`  warning (${w.lang}): ${w.message}`);
     for (const e of plan.errors) log(`  ERROR (${e.lang}): ${e.message}`);
     const total = plan.files.reduce((n, f) => n + f.bytes, 0);
@@ -181,13 +202,13 @@ export function publish(opts: PublishOptions): PublishResult {
         interface Group { lang: string; area: string; root: string; shards: string[]; manifests: string[] }
         const groups = new Map<string, Group>();
         for (const f of plan.files) {
-          const area = f.rel.startsWith('full/') ? 'full' : '';
+          const area = f.rel.startsWith('full/') ? 'full' : f.rel.startsWith(`${REVERSE_DIR}/`) ? REVERSE_DIR : '';
           const g = groups.get(`${f.lang}|${area}`) ?? { lang: f.lang, area, root: '', shards: [], manifests: [] };
           g.root = area ? path.dirname(f.abs) : path.join(src, f.lang);
-          (f.manifest ? g.manifests : g.shards).push(area ? f.rel.slice(5) : f.rel);
+          (f.manifest ? g.manifests : g.shards).push(area ? f.rel.slice(area.length + 1) : f.rel);
           groups.set(`${f.lang}|${area}`, g);
         }
-        const target = (g: Group) => `${opts.dest.replace(/[/\\]+$/, '')}/${g.lang}/${g.area ? 'full/' : ''}`;
+        const target = (g: Group) => `${opts.dest.replace(/[/\\]+$/, '')}/${g.lang}/${g.area ? `${g.area}/` : ''}`;
         let sent = 0;
         for (const pass of ['shards', 'manifests'] as const) {
           for (const [i, g] of [...groups.values()].entries()) {
@@ -232,8 +253,8 @@ export function publish(opts: PublishOptions): PublishResult {
           if (!fs.existsSync(d)) return;
           for (const n of fs.readdirSync(d)) {
             const p = path.join(d, n);
-            if (fs.statSync(p).isDirectory()) { if (n === 'full') walk(p); continue; }
-            if ((SHARD_FILE.test(n) || FULL_SHARD_FILE.test(n)) && !keep.has(p)) { fs.rmSync(p); removed++; }
+            if (fs.statSync(p).isDirectory()) { if (n === 'full' || n === REVERSE_DIR) walk(p); continue; }
+            if ((SHARD_FILE.test(n) || FULL_SHARD_FILE.test(n) || REVERSE_SHARD_FILE.test(n)) && !keep.has(p)) { fs.rmSync(p); removed++; }
           }
         };
         walk(path.join(opts.dest, lang));

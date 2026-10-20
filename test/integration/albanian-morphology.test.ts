@@ -188,6 +188,15 @@ describe('Albanian word forms (coordinator\'s judged table)', () => {
     expect(nji[0]?.relation?.standard).toBe('një');
   });
 
+  it('recognises the Gheg osht spelling as the Standard copula equivalent', () => {
+    for (const [form, standard] of [['osht', 'është']] as const) {
+      const r = analyzeSqForm(form);
+      expect(r[0]?.lemma).toBe('jam');
+      expect(r[0]?.relation).toMatchObject({ standard, period: 'aln' });
+      expect(r[0]?.varieties).toContain('aln');
+    }
+  });
+
   it('an unknown word is a marked guess or nothing — never a confident reading', () => {
     for (const w of ['zurfova', 'blorgave', 'xyzq']) {
       for (const r of analyzeSqForm(w)) {

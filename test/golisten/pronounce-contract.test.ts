@@ -27,11 +27,11 @@ describe('isIndependentEvidence: the evidence-direction rule', () => {
   });
 
   it('is false for every synthetic path GoListen can produce', async () => {
-    const device = ok(await createGoListen(base()).pronounce({ languageId: 'sq', text: TEXT, kind: 'word' }));
+    const device = ok(await createGoListen(base()).pronounce({ languageId: 'sq', text: TEXT, kind: 'word', preferred: 'device' }));
     expect(device.provenance.source).toBe('device-tts');
-    const remote = ok(await createGoListen(base({ speech: fakeSpeech([]) })).pronounce({ languageId: 'sq', text: TEXT, kind: 'word' }));
+    const remote = ok(await createGoListen(base({ speech: fakeSpeech([]) })).pronounce({ languageId: 'sq', text: TEXT, kind: 'word', processingPermission: 'allowed' }));
     expect(remote.provenance.source).toBe('remote-tts');
-    const demo = ok(await createGoListen(base()).pronounce({ languageId: 'de', text: 'Guten Tag!', kind: 'phrase' }));
+    const demo = ok(await createGoListen(base()).pronounce({ languageId: 'de', text: 'Guten Tag!', kind: 'phrase', preferred: 'recorded' }));
     expect(demo.provenance.source).toBe('recording');
     for (const r of [device, remote, demo]) expect(isIndependentEvidence(r.provenance), r.provenance.source).toBe(false);
     expect(device.voice.synthetic && remote.voice.synthetic).toBe(true);
@@ -41,7 +41,7 @@ describe('isIndependentEvidence: the evidence-direction rule', () => {
 describe('PronunciationPlayed events', () => {
   it('has the contract payload shape and validates with the Repository contract', async () => {
     const g = createGoListen(base());
-    const r = ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'word', autoplay: true }));
+    const r = ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'word', preferred: 'device', autoplay: true }));
     const ev = g.events(r, true)!;
     expect(ev.kind).toBe('PronunciationPlayed');
     expect(ev.payload).toEqual({ voice: 'synthetic', voiceId: 'device:Fake Albanian AL', repeated: false });
@@ -145,10 +145,10 @@ describe('pronounce never throws and never blocks', () => {
   it('a failing preferred provider falls through to the next one', async () => {
     const fx = configuredProxy();
     const g = createGoListen(base({ fetch: fx.fetch }));
-    const r = ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'word', preferred: 'remote' }));
+    const r = ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'word', preferred: 'remote', processingPermission: 'allowed' }));
     expect(r.provenance.source).toBe('remote-tts'); // preferred is tried first
     const down = createGoListen(base({ fetch: fakeFetch(() => { throw new TypeError('x'); }).fetch }));
-    const r2 = ok(await down.pronounce({ languageId: 'sq', text: TEXT, kind: 'word', preferred: 'remote' }));
+    const r2 = ok(await down.pronounce({ languageId: 'sq', text: TEXT, kind: 'word', preferred: 'remote', processingPermission: 'allowed' }));
     expect(r2.provenance.source).toBe('device-tts'); // remote was down; the local voice answered
   });
 

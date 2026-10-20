@@ -338,3 +338,14 @@ export const unitIds = {
   /** A stable feature key from a feature structure: sorted `k=v` pairs joined with `|`. */
   featureKey: (features: Record<string, string>): string => Object.keys(features).sort().map((k) => `${k}=${features[k]}`).join('|'),
 };
+
+/** Recover one bounded word from a reader-generated word unit id for surface-free encounter registration. */
+export function surfaceFromEncounterUnitId(id: unknown, languageId: string): string | undefined {
+  if (typeof id !== 'string' || !languageId || /\s/u.test(languageId)) return undefined;
+  const prefix = id.startsWith(`form:${languageId}:`) ? `form:${languageId}:` : id.startsWith(`lemma:${languageId}:`) ? `lemma:${languageId}:` : undefined;
+  if (!prefix) return undefined;
+  let surface = id.slice(prefix.length);
+  if (prefix.startsWith('lemma:')) surface = surface.replace(/:(?:NOUN|VERB|AUX|ADJ|ADV|PRON|DET|ADP|CCONJ|SCONJ|PART|NUM|INTJ|X)$/u, '');
+  if (!surface || surface.length > 120 || /\s|:/u.test(surface)) return undefined;
+  return surface.normalize('NFC');
+}

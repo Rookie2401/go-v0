@@ -600,7 +600,7 @@ describe('the rating row', () => {
     const real = r.store.append.bind(r.store);
     (r.store as { append: unknown }).append = async () => ({ ok: false, error: 'full' });
     click(r, '.rateBtn[data-mark="known"]'); await flush(5);
-    expect(root(r).querySelector('.feedback')!.textContent).toBe('Could not save that. Try again.');
+    expect(root(r).querySelector('.feedback')!.textContent).toBe('Could not save that: full. Try again.');
     expect(pressed(r)).toEqual(['Seen']); // the model's level (the lookup met the word: New is Seen), not the failed mark
     (r.store as { append: unknown }).append = real;
     click(r, '.rateBtn[data-mark="known"]'); await flush(5);

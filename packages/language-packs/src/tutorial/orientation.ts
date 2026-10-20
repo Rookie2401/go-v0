@@ -76,10 +76,10 @@ export function orientation(s: OrientationSpec): Tutorial {
 }
 
 /**
- * The sound note every experimental pack gives: no recordings of its own, written notes, and the honest state of GoListen at the time of
- * writing (no voice can read the language aloud). A test compares that statement with GoListen's own registry
+ * The sound note every experimental pack gives: no recordings of its own, written notes, and the honest device-voice capability.
+ * A test compares that statement with GoListen's own registry
  * (test/language-packs/tutorial-orientations.test.ts), so it cannot drift unnoticed. If a voice is added later, a device voice would be
  * practice only and a remote voice would need the learner's consent and key.
  */
-export const soundBody = (name: string, goListenNote = ''): string =>
-  `This pack has no recordings of its own. A card may list pronunciation notes in writing, produced by rules and not checked by a native speaker, so when a recording or a person disagrees, trust them. At the time this orientation was written GoListen holds no voice that can read ${name} text aloud${goListenNote}, so a card cannot play a word yet. If a voice is added, one from your device would be offered as practice only, and a remote voice only after you give consent and supply your own key; the word you select would then be sent to that service, and nothing is sent before you agree. Audio is never counted as evidence that you can understand speech.`;
+export const soundBody = (name: string, goListenNote = '', remoteNote = ''): string =>
+  `This pack has no recordings of its own. A card may list pronunciation notes in writing, produced by rules and not checked by a native speaker, so when a recording or a person disagrees, trust them. GoLearn can use a matching ${name} voice from your device, if one is installed${goListenNote}; it is synthetic practice only, and installed voices vary${remoteNote}. Audio is never counted as evidence that you can understand speech.`;

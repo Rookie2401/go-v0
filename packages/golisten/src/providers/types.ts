@@ -21,4 +21,4 @@ export type PrepareOutcome = { ok: true; prepared: Prepared } | Failure;
 export const fail = (reason: Failure['reason'], message: string, alternatives: string[] = []): Failure => ({ ok: false, reason, message, alternatives });
 
 /** The request fields every provider reads. */
-export type Req = Pick<PronunciationRequest, 'languageId' | 'varietyId' | 'text' | 'kind' | 'voiceId'>;
+export type Req = Pick<PronunciationRequest, 'languageId' | 'varietyId' | 'text' | 'kind' | 'voiceId' | 'processingPermission' | 'signal'>;

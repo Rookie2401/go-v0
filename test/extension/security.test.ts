@@ -140,9 +140,9 @@ describe('what the background will record for a content script', () => {
 describe('settings', () => {
   it('default to everything off; keepSnippets is not implemented and stays off however it is asked', async () => {
     const rig = createRig();
-    expect((await rig.page({ type: MSG.settings, op: 'get' })).settings).toEqual({ keepSnippets: false, remoteSpeechConsent: false, externalProcessingConsent: false });
-    const r = await rig.page({ type: MSG.settings, op: 'set', patch: { keepSnippets: true, remoteSpeechConsent: true, explanationDepth: 'explanatory' } });
-    expect(r.settings).toEqual({ keepSnippets: false, remoteSpeechConsent: true, externalProcessingConsent: false, explanationDepth: 'explanatory' });
+    expect((await rig.page({ type: MSG.settings, op: 'get' })).settings).toEqual({ keepSnippets: false, remoteSpeechConsent: false, localOnlySpeech: true, externalProcessingConsent: false });
+    const r = await rig.page({ type: MSG.settings, op: 'set', patch: { keepSnippets: true, remoteSpeechConsent: true, localOnlySpeech: false, explanationDepth: 'explanatory' } });
+    expect(r.settings).toEqual({ keepSnippets: false, remoteSpeechConsent: true, localOnlySpeech: false, externalProcessingConsent: false, explanationDepth: 'explanatory' });
     expect(r.notes?.[0]).toMatch(/not available in this version/);
     expect((await rig.page({ type: MSG.settings, op: 'set', patch: { explanationDepth: 'whatever' } })).ok).toBe(false);
     expect((await rig.page({ type: MSG.settings, op: 'set', patch: { explanationDepth: null } })).settings.explanationDepth).toBeUndefined();

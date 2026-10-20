@@ -53,7 +53,7 @@ export const DE_TUTORIAL: Tutorial = orientation({
     'There is no parser, so a case the neighbouring words do not settle stays a list of cases.',
     'A compound is split only into words the list knows, and the split is marked unconfirmed.',
   ],
-  sound: { id: 'sound-and-audio', body: soundBody('German', ' (it holds one short demonstration clip, which is not a pronunciation resource)') },
+  sound: { id: 'sound-and-audio', body: soundBody('German', ' (it holds one short demonstration clip, which is not a pronunciation resource)', '; a remote Azure voice is available only with your consent and key') },
   languageSteps: DE_TUTORIAL_STEPS_OWN,
   notice: 'This minimal orientation was drafted by an AI model and has not been checked by a native speaker of German. It covers how to select a word, what the card shows, the letters ä ö ü ß, eight nouns and what the experimental pack cannot do. You can skip it and come back at any time.',
 });

@@ -30,6 +30,10 @@ export interface PronunciationRequest {
   voiceId?: string;
   /** Start playing as soon as the result is returned (default false: the caller calls `playback.play()`). */
   autoplay?: boolean;
+  /** Source-text rights decision made by the privileged host before cloud processing. */
+  processingPermission?: 'allowed' | 'unknown' | 'forbidden';
+  /** Abort an in-flight remote preparation without allowing stale audio to surface. */
+  signal?: AbortSignal;
 }
 
 export type Availability = 'available' | 'needs-consent' | 'needs-key' | 'unavailable';
@@ -138,6 +142,9 @@ export interface AudioStimulus {
 }
 
 export interface StimulusRequest {
+  /** Required for synthetic network practice; qualified recordings need no remote text processing. */
+  processingPermission?: 'allowed' | 'unknown' | 'forbidden';
+  signal?: AbortSignal;
   languageId: string;
   varietyId?: string;
   kind: 'word' | 'sentence';
@@ -157,5 +164,7 @@ export interface ScoringMetadata {
 export interface AssessmentSource {
   prepareStimulus(req: StimulusRequest): Promise<AudioStimulus | { unavailable: true; reason: string }>;
   playbackOf(stimulus: AudioStimulus): PlaybackHandle;
+  /** Release prepared audio, including a remote stimulus that was never played. Scoring remains available. */
+  releaseStimulus?(stimulus: AudioStimulus): void;
   scoringMetadata(stimulus: AudioStimulus, replaysUsed: number): ScoringMetadata;
 }

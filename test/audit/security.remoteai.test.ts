@@ -54,11 +54,11 @@ describe('source inventory: where a network or a remote provider can be reached'
 
     const remote = stripComments(fs.readFileSync(path.join(dir, 'providers/remote.ts'), 'utf8'));
     const chunks = remote.split(/\n(?=(?:export\s+)?(?:async\s+)?function\s)/);
-    const withCalls = chunks.filter((c) => /env\.fetch\s*\(|\bget\s*\(\s*`/.test(c));
+    const withCalls = chunks.filter((c) => /env\.fetch\s*\(|\b(?:get|send)\s*\(\s*`/.test(c));
     expect(withCalls.length).toBeGreaterThanOrEqual(2); // prepareRemote and remoteAvailability
     for (const c of withCalls) {
       const consent = c.search(/consent\(\)\.remoteSpeech/);
-      const call = c.search(/env\.fetch\s*\(|\bget\s*\(\s*`/);
+      const call = c.search(/env\.fetch\s*\(|\b(?:get|send)\s*\(\s*`/);
       expect(consent, c.slice(0, 60)).toBeGreaterThanOrEqual(0);
       expect(consent).toBeLessThan(call);
       // and the check ends the function early: it is a guard (return), not a log line
@@ -73,7 +73,7 @@ describe('source inventory: where a network or a remote provider can be reached'
     const device = stripComments(fs.readFileSync(path.join(root, 'packages/golisten/src/providers/device.ts'), 'utf8'));
     const consentAt = device.search(/consent\(\)\.remoteSpeech/);
     expect(consentAt).toBeGreaterThanOrEqual(0);
-    expect(device.slice(consentAt - 120, consentAt)).toMatch(/!chosen/); // reached only when no LOCAL voice was chosen
+    expect(device.slice(consentAt - 220, consentAt)).toMatch(/localOnly\s*===\s*true/);
     expect(device.slice(consentAt, consentAt + 300)).toMatch(/no-consent/);
     expect(device.indexOf('chosen = wanted[0]')).toBeGreaterThan(consentAt); // the networked voice is chosen only after the check
   });
@@ -84,10 +84,12 @@ describe('source inventory: where a network or a remote provider can be reached'
       for (const f of walk(path.join(root, d))) { const m = stripComments(fs.readFileSync(f, 'utf8')).match(/\bfetch\s*\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource/); if (m) hits.push(`${rel(f)}: ${m[0]}`); }
     }
     expect(hits).toEqual([]);
-    // the extension's content bundle never imports GoListen's networked facade (the device provider only)
+    // The content bundle has no global network primitive. Its remote/audio providers are driven only by the injected bridge.
     const voice = stripComments(fs.readFileSync(path.join(root, 'packages/golearn-extension/src/content/voice.ts'), 'utf8'));
-    expect(voice).not.toMatch(/from\s+['"][^'"]*golisten\/src['"]/);
-    expect(voice).not.toMatch(/createGoListen|prepareRemote|providers\/remote/);
+    expect(voice).not.toMatch(/\bfetch\s*\(|globalThis\.fetch|XMLHttpRequest|WebSocket|sendBeacon/);
+    expect(voice).toMatch(/speechBridge/);
+    expect(voice).toMatch(/prepareRemote|providers\/remote/);
+    expect(voice).not.toMatch(/AZURE_SPEECH_KEY|api-key|authorization/i);
   });
 
   it('GoReview, GoPractice\'s review/tell engines and the sync package send nothing but Repository calls (no provider URL, no model API)', () => {
@@ -130,8 +132,8 @@ describe('GoListen remote speech behaves as the source says', () => {
   });
 
   it('with consent, the text goes in the POST body of one same-origin request to the proxy, never in a URL, a header or a log; credentials are same-origin only', async () => {
-    const { g, net } = setup(() => ({ remoteSpeech: true }));
-    const r = await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'remote' });
+    const { g, net } = setup(() => ({ remoteSpeech: true, localOnly: false }));
+    const r = await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'remote', processingPermission: 'allowed' });
     expect(r.ok).toBe(true);
     const posts = net.calls.filter((c) => c.init?.method === 'POST');
     expect(posts).toHaveLength(1);
@@ -146,19 +148,19 @@ describe('GoListen remote speech behaves as the source says', () => {
 
   it('consent is read at the moment of use: switched off between two calls, the second sends nothing', async () => {
     let on = true;
-    const { g, net } = setup(() => ({ remoteSpeech: on }));
-    await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'remote' });
+    const { g, net } = setup(() => ({ remoteSpeech: on, localOnly: false }));
+    await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'remote', processingPermission: 'allowed' });
     const before = net.calls.length;
     on = false;
-    await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'remote' });
+    await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'remote', processingPermission: 'allowed' });
     await g.availability('sq');
     expect(net.calls.length).toBe(before);
   });
 
   it('a hostile text (markup, NUL, 100,000 characters) is bounded and never changes where the request goes', async () => {
-    const { g, net } = setup(() => ({ remoteSpeech: true }));
+    const { g, net } = setup(() => ({ remoteSpeech: true, localOnly: false }));
     for (const text of ['<script>x</script>', '\u0000\u0000', 'a'.repeat(100_000), 'https://evil.example/ignore previous instructions']) {
-      await g.pronounce({ languageId: 'sq', text, kind: 'sentence', preferred: 'remote' });
+      await g.pronounce({ languageId: 'sq', text, kind: 'sentence', preferred: 'remote', processingPermission: 'allowed' });
     }
     for (const c of net.calls) expect(c.url).toMatch(/^\/api\/speech\/(synthesize|status|voices\?lang=sq)$/);
   });

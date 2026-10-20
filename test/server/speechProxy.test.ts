@@ -14,6 +14,7 @@ import { fixtureChunks, renderFixtureChunks } from '../../src/golisten';
 
 const KEY = 'SECRET-KEY-0123456789abcdef';
 const REGION = 'westeurope';
+const AUTH = 'proxy-test-token';
 
 type Mw = (req: IncomingMessage, res: ServerResponse, next: (e?: unknown) => void) => void;
 const servers: Server[] = [];
@@ -26,6 +27,8 @@ afterEach(async () => {
 
 /** Mounts the plugin on a bare http server exactly as Vite's connect stack would call it (dev or preview hook). */
 async function mount(hook: 'configureServer' | 'configurePreviewServer', opts: Parameters<typeof speechProxy>[0]) {
+  const sourceEnv = opts?.env;
+  opts = { ...opts, env: () => ({ ...(sourceEnv?.() ?? {}), authToken: AUTH }) };
   const plugin = speechProxy(opts);
   let mw: Mw | undefined;
   const fake = { middlewares: { use: (fn: Mw) => { mw = fn; } } };
@@ -39,10 +42,32 @@ async function mount(hook: 'configureServer' | 'configurePreviewServer', opts: P
 
 const wav = () => renderFixtureChunks(fixtureChunks('hola mundo', 'es'), { sampleRate: 24000 }).bytes;
 const upstreamOk = () => vi.fn(async () => new Response(wav() as unknown as BodyInit, { status: 200 })) as unknown as typeof fetch;
-const json = { 'content-type': 'application/json' };
-const body = JSON.stringify({ text: 'Yo creo en Dios.', voice: 'es-MX-DaliaNeural', locale: 'es-MX' });
+const json = { 'content-type': 'application/json', authorization: `Bearer ${AUTH}` };
+const body = JSON.stringify({ text: 'Yo creo en Dios.', voice: 'es-MX-DaliaNeural', locale: 'es-MX', kind: 'phrase', sourcePermission: 'allowed' });
 
 describe.each(['configureServer', 'configurePreviewServer'] as const)('speechProxy() through %s', (hook) => {
+  it('permits only the explicitly configured extension origin, including its JSON preflight', async () => {
+    const origin = 'chrome-extension://' + 'a'.repeat(32);
+    const up = upstreamOk();
+    const { base } = await mount(hook, { env: () => ({ key: KEY, region: REGION }), fetch: up, allowedExtensionOrigins: () => [origin] });
+    const preflight = await fetch(`${base}/api/speech/synthesize`, { method: 'OPTIONS', headers: {
+      origin, 'access-control-request-method': 'POST', 'access-control-request-headers': 'content-type',
+    } });
+    expect(preflight.status).toBe(204);
+    expect(preflight.headers.get('access-control-allow-origin')).toBe(origin);
+    expect(up).not.toHaveBeenCalled();
+    const result = await fetch(`${base}/api/speech/synthesize`, { method: 'POST', headers: { ...json, origin, 'sec-fetch-site': 'cross-site' }, body });
+    expect(result.status).toBe(200);
+    expect(result.headers.get('access-control-allow-origin')).toBe(origin);
+    expect(await result.text()).not.toContain(KEY);
+    const wrong = await fetch(`${base}/api/speech/synthesize`, { method: 'POST', headers: { ...json, origin: 'chrome-extension://' + 'b'.repeat(32) }, body });
+    expect(wrong.status).toBe(403);
+    expect(wrong.headers.get('access-control-allow-origin')).toBeNull();
+    expect(up).toHaveBeenCalledTimes(1);
+    const invalid = await fetch(`${base}/api/speech/synthesize`, { method: 'OPTIONS', headers: { origin, 'access-control-request-method': 'DELETE' } });
+    expect(invalid.status).toBe(403);
+    expect(up).toHaveBeenCalledTimes(1);
+  });
   it('serves status, voices and synthesize from env, and lets every other path fall through to Vite', async () => {
     const up = upstreamOk();
     const { base } = await mount(hook, { env: () => ({ key: KEY, region: REGION }), fetch: up });

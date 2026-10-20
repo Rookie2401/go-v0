@@ -35,7 +35,10 @@ describe.each(['memory', 'sqlite'] as const)('authentication (%s store)', (kind)
     const after = { ...fastCrypto.calls };
     expect(unknown.status).toBe(wrong.status);
     expect(unknown.text).toBe(wrong.text);
-    expect([...unknown.headers.entries()].filter(([k]) => k !== 'content-length')).toEqual([...wrong.headers.entries()].filter(([k]) => k !== 'content-length'));
+    // x-request-id (2026-10-17, one random id per request for the logs) is the one header that differs by design
+    const SAME = ([k]: [string, string]) => k !== 'content-length' && k !== 'x-request-id';
+    expect([...unknown.headers.entries()].filter(SAME)).toEqual([...wrong.headers.entries()].filter(SAME));
+    expect(unknown.headers.get('x-request-id')).not.toBe(wrong.headers.get('x-request-id'));
     // one verification each: the unknown email is checked against a throw-away hash, never skipped
     expect(mid.verify - before.verify).toBe(1);
     expect(after.verify - mid.verify).toBe(1);

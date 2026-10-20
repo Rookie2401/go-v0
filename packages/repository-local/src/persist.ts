@@ -18,8 +18,8 @@
  *
  * The knowledge projection (Layer C) is NEVER persisted: it is rebuilt from the events when the repository opens, so a stored
  * projection can never disagree with the log. Identity rows (learner, account, device, session) are recreated from `meta`.
- * A failed write (the browser's storage is full) does not fail the operation: the data stays in memory for this session and the
- * failure is counted, so the host can say so (`PersistStats`).
+ * A failed write (the browser's storage is full) is reported to the caller, retained in memory for retry, and counted so the host
+ * can say so (`PersistStats`).
  */
 import type {
   AssistancePreferences, Enrolment, FormAnalysis, LanguagePackInfo, LinguisticUnit, PrivateDocument, StoredEvent, Tombstone, UnitAlias, UnitRelation,
@@ -53,13 +53,15 @@ export function keysFor(p: string) {
 export type Keys = ReturnType<typeof keysFor>;
 
 /** What persistence has done, for the status reply. */
-export interface PersistStats { writes: number; failures: number; lastError?: string }
+export interface PersistStats { writes: number; failures: number; pendingWrites: number; lastError?: string }
 
 export interface PersistIO {
   area: KeyValueArea;
   prefix: string;
   keys: Keys;
   stats: PersistStats;
+  /** Rows whose last write failed; retried with the next write while the repository remains open. */
+  pendingWrites: Record<string, unknown>;
   /**
    * The identity row of a repository that has recorded nothing yet. It is written together with the first row that follows, never alone: a device that
    * opened the repository and never used it (or just cleared it) holds no row at all, not even a fresh anonymous learner id.
@@ -67,21 +69,32 @@ export interface PersistIO {
   pendingMeta?: LocalMeta;
 }
 
-/** Writes rows; a rejection is counted and swallowed (see the file comment). */
-export async function writeRows(io: PersistIO, items: Record<string, unknown>): Promise<void> {
-  if (!Object.keys(items).length) return;
+/** Writes rows; a rejection is counted, retained for retry, and reported to the caller. */
+export async function writeRows(io: PersistIO, items: Record<string, unknown>): Promise<boolean> {
+  const pending = io.pendingWrites;
+  if (!Object.keys(items).length && !Object.keys(pending).length) return true;
   if (io.pendingMeta) { items = { [io.keys.meta]: io.pendingMeta, ...items }; io.pendingMeta = undefined; }
+  const all = { ...pending, ...items };
   try {
-    await io.area.set(items);
-    io.stats.writes += Object.keys(items).length;
+    await io.area.set(all);
+    for (const key of Object.keys(all)) delete pending[key];
+    io.stats.writes += Object.keys(all).length;
+    io.stats.pendingWrites = 0;
+    return true;
   } catch (e) {
+    Object.assign(pending, all);
+    io.stats.pendingWrites = Object.keys(pending).length;
     io.stats.failures += 1;
     io.stats.lastError = e instanceof Error ? e.message : String(e);
+    return false;
   }
 }
 
 export async function removeRows(io: PersistIO, keys: string[]): Promise<void> {
   if (!keys.length) return;
+  for (const key of keys) delete io.pendingWrites[key];
+  io.stats.pendingWrites = Object.keys(io.pendingWrites).length;
+  if (keys.includes(io.keys.meta)) io.pendingMeta = undefined;
   try { await io.area.remove(keys); } catch (e) {
     io.stats.failures += 1;
     io.stats.lastError = e instanceof Error ? e.message : String(e);
@@ -104,7 +117,8 @@ async function allEvents(store: ConcreteStore, learnerId: string): Promise<Store
 async function reconcile(io: PersistIO, store: ConcreteStore, learnerId: string): Promise<void> {
   const live = new Set((await allEvents(store, learnerId)).map((e) => io.keys.event + e.seq));
   const stored = await io.area.list(io.keys.event);
-  await removeRows(io, stored.filter((k) => !live.has(k)));
+  const pending = Object.keys(io.pendingWrites).filter((k) => k.startsWith(io.keys.event));
+  await removeRows(io, [...new Set([...stored, ...pending])].filter((k) => !live.has(k)));
   const tombs: Record<string, unknown> = {};
   for (const t of await store.listTombstones(learnerId)) tombs[io.keys.tomb + t.tombstoneId] = t;
   await writeRows(io, tombs);
@@ -141,8 +155,11 @@ export function persistingStore(inner: ConcreteStore, io: PersistIO): ConcreteSt
         const e = await inner.get(learnerId, o.id);
         if (e) rows[k.event + e.seq] = eventRow(e);
       }
-      await writeRows(io, rows);
-      return out;
+      const durable = await writeRows(io, rows);
+      return durable ? out : out.map((o) => o.stored ? {
+        id: o.id, stored: false,
+        issues: [{ path: 'persistence', message: 'event was accepted in memory but could not be durably saved; it will be retried' }],
+      } : o);
     },
     async deleteEvents(learnerId, ids) {
       const n = await inner.deleteEvents(learnerId, ids);
@@ -159,6 +176,7 @@ export function persistingStore(inner: ConcreteStore, io: PersistIO): ConcreteSt
       const mine = [k.event, k.enrolment, k.pref, k.doc, k.tomb];
       const keys: string[] = [];
       for (const p of mine) keys.push(...(await io.area.list(p)));
+      keys.push(...Object.keys(io.pendingWrites).filter((key) => mine.some((p) => key.startsWith(p))));
       await removeRows(io, keys);
       return r;
     },

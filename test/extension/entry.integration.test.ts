@@ -30,7 +30,39 @@ const fileFetch: typeof fetch = (async (input: RequestInfo | URL) => {
 const PAGE = { id: 'test-ext-id', url: 'chrome-extension://test-ext-id/app/index.html' };
 const CONTENT = { id: 'test-ext-id', tab: { id: 7 }, url: 'https://example.test/page' };
 
+describe.each([
+  ['sq', 'libër'], ['de', 'Haus'], ['es', 'casa'], ['hi', 'लड़का'], ['th', 'เด็ก'],
+])('real full dictionary enrichment: %s', (languageId, lemma) => {
+  const available = fs.existsSync(path.join(ROOT, `dict/${languageId}/full/manifest.json`));
+  it.skipIf(!available)('returns sourced senses, origin and pronunciation through the worker', async () => {
+    const fake = createChromeFake();
+    delete (fake.runtime as { getURL?: unknown }).getURL;
+    createBackground(fake, { fetch: fileFetch }).register();
+    await fake.dispatch({ type: MSG.serviceConfig, op: 'set', baseUrl: 'https://repo.example', assetBase: DICT }, PAGE);
+    const reply = await fake.dispatch({ type: MSG.entry, lemma, pos: 'NOUN', languageId, forms: [lemma] }, CONTENT) as EntryReply;
+    expect(reply).toMatchObject({ ok: true, found: true, source: 'configured' });
+    expect(reply.attribution).toMatch(/Wiktionary/);
+    const record = pickRecord(reply.records as LexicalRecord[], 'NOUN')!;
+    expect(record.s?.some((sense) => sense.g.length > 0)).toBe(true);
+    expect(etymologyOf(record).status).toBe('supported-by-source');
+    expect(pronunciationOf(record).ipa.length).toBeGreaterThan(0);
+    if (languageId !== 'th') expect(record.f?.length).toBeGreaterThan(0);
+  });
+});
+
 describe.skipIf(!built)('the full record of a lemma, from the real shards through the worker', () => {
+  it('dy has a sourced origin and IPA even though it has no inflection table', async () => {
+    const fake = createChromeFake();
+    delete (fake.runtime as { getURL?: unknown }).getURL;
+    createBackground(fake, { fetch: fileFetch }).register();
+    await fake.dispatch({ type: MSG.serviceConfig, op: 'set', baseUrl: 'https://repo.example', assetBase: DICT }, PAGE);
+    const reply = await fake.dispatch({ type: MSG.entry, lemma: 'dy', pos: 'NUM', languageId: 'sq' }, CONTENT) as EntryReply;
+    expect(reply.found).toBe(true);
+    const record = pickRecord(reply.records as LexicalRecord[], 'NUM')!;
+    expect(etymologyOf(record).status).toBe('supported-by-source');
+    expect(pronunciationOf(record).ipa.length).toBeGreaterThan(0);
+    expect(record.f ?? []).toHaveLength(0);
+  });
   it('libër: the worker answers with the record; the page builds a declension with the dictionary half, the etymology and the IPA', async () => {
     const fake = createChromeFake();
     delete (fake.runtime as { getURL?: unknown }).getURL; // no extension-local copy in this test: the configured address is the one that answers

@@ -245,11 +245,11 @@ describe('§18 backlog: 50 due items against a ten-minute budget', () => {
     note('S18', '§18', 'backlog: 50 due items, 10-minute budget, written recognition', 'Σ estimated seconds ≤ 600; lowest-recall items first; 50 − planned listed as skipped "over budget"; deck unchanged', `${plan.items.length} planned (${seconds} s of 600), ${plan.skipped.length} skipped, dueCount ${plan.dueCount}; planned recall ${Math.min(...planned).toFixed(2)}–${Math.max(...planned).toFixed(2)} ≤ skipped ${Math.min(...skipped).toFixed(2)}–${Math.max(...skipped).toFixed(2)}`);
   });
 
-  it('a zero-minute budget plans nothing and loses nothing; a bigger budget plans more; due items always outrank new ones', () => {
+  it('zero means uncapped; a bigger positive budget plans more; the backlog fills a capped budget', () => {
     const deck = foldDeck(backlog(), SCHED, { now: NOW }).items;
     const none = mkPlan(deck, { sessionMinutes: 0 });
-    expect(none.items).toHaveLength(0);
-    expect(none.skipped).toHaveLength(50);
+    expect(none.items).toHaveLength(50);
+    expect(none.skipped).toHaveLength(0);
     expect(mkPlan(deck, { sessionMinutes: 20 }).items.length).toBeGreaterThan(mkPlan(deck, { sessionMinutes: 10 }).items.length);
     const fresh: IntakeOutcome = { unitId: 'lemma:sq:brandnew:NOUN', decision: 'test-now', reasons: ['score high'], proposed: { dimension: 'written-recognition', family: 'written-recognition' }, candidate: { unitId: 'lemma:sq:brandnew:NOUN', kind: 'lexeme', score: 0.9, reasons: [], targetDimension: 'readingRecognition', eligibility: { eligible: true, status: 'verified', caveats: [] }, cost: 0.2 } };
     const withNew = mkPlan(deck, {}, [fresh]);
@@ -281,7 +281,7 @@ describe('§18 backlog: 50 due items against a ten-minute budget', () => {
 describe('§18 candidate de-duplication', () => {
   const cand = (unitId: string): ReviewCandidate => ({ unitId, kind: 'lexeme', score: 0.8, reasons: [{ rule: 'demonstratedError', weight: 0.25 }], targetDimension: 'readingRecognition', eligibility: { eligible: true, status: 'verified', caveats: [] }, cost: 0.2 });
   const PREFS: ReviewPreferences = { languageId: 'sq', sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true };
-  const outcome = (unitId: string): IntakeOutcome => ({ unitId, decision: 'test-now', reasons: ['score high'], proposed: proposeFor(cand(unitId)), candidate: cand(unitId) });
+  const outcome = (unitId: string): IntakeOutcome => ({ unitId, decision: 'test-now', explicitlySelected: true, reasons: ['learner selected practice'], proposed: proposeFor(cand(unitId)), candidate: cand(unitId) });
 
   it('intake: once the item is in the deck, the same unit is already-covered; a dismissed one is not re-proposed', () => {
     const c = cand(UNIT);

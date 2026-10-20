@@ -16,7 +16,7 @@ import type { SessionManager } from './session';
 import { limitEventWords } from './wordids';
 
 /** The only event kinds a content script may ask the background to record. */
-export const CONTENT_EVENT_KINDS: readonly string[] = ['SelectionLookedUp', 'AnalysisShown', 'AssistanceRequested', 'PronunciationPlayed', 'ItemMarked', 'AnalysisCorrected'];
+export const CONTENT_EVENT_KINDS: readonly string[] = ['SelectionLookedUp', 'EncounterRecorded', 'AnalysisShown', 'AssistanceRequested', 'PronunciationPlayed', 'ItemMarked', 'AnalysisCorrected'];
 /** The placeholder a content script writes into the identity fields. */
 /** What an extension page (the setup page) may record in addition: its own tutorial lookups and the profile family. */
 export const PAGE_EVENT_KINDS: readonly string[] = [...CONTENT_EVENT_KINDS, 'PackInstalled', 'PreferenceChanged', 'ConsentGiven', 'ConsentWithdrawn'];

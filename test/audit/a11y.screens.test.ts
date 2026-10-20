@@ -111,7 +111,7 @@ describe('GoPractice screens', () => {
     await rig.go('review/transfer');
     audit(rig.root, 'practice/transfer');
     await reopen(rig);
-    // Save deck moves the deck to the previous decks; the list is audited too
+    // Save deck moves the deck to the saved decks; the list is audited too
     click(rig.q('#save-deck'));
     await until(() => /Deck saved/.test(rig.root.querySelector('#review-home > .status')?.textContent ?? ''), 'the deck to be saved');
     audit(rig.root, 'practice/review-home (after Save deck)');

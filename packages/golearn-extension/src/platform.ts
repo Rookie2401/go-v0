@@ -138,6 +138,8 @@ export const MSG = {
   gloss: 'golearn:gloss',
   explain: 'golearn:explain',
   pronounceInfo: 'golearn:pronounce-info',
+  speech: 'golearn:speech',
+  speechConfig: 'golearn:speech-config',
   /** The dictionary's full record of a lemma (Level 2: paradigm table, etymology, IPA, audio, relations). */
   entry: 'golearn:entry',
   correct: 'golearn:correct',

@@ -21,13 +21,15 @@ export interface PrivacySettings {
   keepSnippets: boolean;
   /** Allow a remote speech provider to receive the word to be pronounced. */
   remoteSpeechConsent: boolean;
+  /** Explicitly refuse every network speech provider, including browser cloud voices. */
+  localOnlySpeech?: boolean;
   /** Allow text to be processed by a service outside the device (none is called in this phase). */
   externalProcessingConsent: boolean;
   /** An explicit override of how much grammar explanation to show; absent = follow the Repository's preference. */
   explanationDepth?: ExplanationDepth;
 }
 
-export const DEFAULT_SETTINGS: PrivacySettings = { keepSnippets: false, remoteSpeechConsent: false, externalProcessingConsent: false };
+export const DEFAULT_SETTINGS: PrivacySettings = { keepSnippets: false, remoteSpeechConsent: false, externalProcessingConsent: false, localOnlySpeech: true };
 
 export interface SyncView {
   pending: number;

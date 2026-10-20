@@ -11,6 +11,7 @@
  */
 import type { Availability, PronunciationProvenance } from '../contracts';
 import type { GoListenEnv } from '../environment';
+import { speechVarietyLocale } from '../environment';
 import { descriptorOf } from '../registry';
 import type { VoiceEntry, VoiceRegistry } from '../registry';
 import { fail } from './types';
@@ -38,9 +39,19 @@ async function errorCode(res: { json(): Promise<unknown> }): Promise<string | un
 }
 
 export async function prepareRemote(req: Req, registry: VoiceRegistry, env: GoListenEnv): Promise<PrepareOutcome> {
+  if (req.signal?.aborted) return fail('offline', 'Pronunciation was cancelled.');
   let entries = registry.entries.filter((e): e is VoiceEntry & { source: { kind: 'remote'; providerId: string; providerVoice: string; locale: string } } => e.source.kind === 'remote');
   if (entries.length === 0) return fail('no-voice', `No remote voice is registered for ${req.languageId}.`);
   if (!env.consent().remoteSpeech) return fail('no-consent', NEEDS_CONSENT); // before anything else; no network
+  if (env.consent().localOnly === true) return fail('no-consent', 'Local-only speech is on.');
+  if (req.processingPermission !== 'allowed') return fail('no-consent', 'This reader has not permitted sending its text to a speech service.');
+  if (req.varietyId) {
+    const wantedVariety = speechVarietyLocale(req.languageId, req.varietyId);
+    if (wantedVariety === '__unsupported_gheg__') return fail('no-voice', 'No approved Gheg Azure voice is registered; the standard Albanian voice is not substituted.');
+    if (!wantedVariety) return fail('no-voice', `No remote voice is registered for variety ${req.varietyId}.`);
+    entries = entries.filter((e) => normalizeLocale(e.varietyId ?? e.source.locale) === wantedVariety);
+    if (entries.length === 0) return fail('no-voice', `No remote ${req.languageId} voice is registered for variety ${req.varietyId}; another variety is not substituted.`);
+  }
   if (req.voiceId?.includes(':') && !req.voiceId.startsWith('device:') && !req.voiceId.startsWith('recording:')) {
     entries = entries.filter((e) => e.voiceId === req.voiceId);
     if (entries.length === 0) return fail('no-voice', 'The requested remote voice is not registered for this language.');
@@ -52,23 +63,28 @@ export async function prepareRemote(req: Req, registry: VoiceRegistry, env: GoLi
   if (!env.audio || !env.objectUrl) return fail('provider-error', 'This environment cannot play audio returned by the speech service.');
 
   const { providerVoice, locale, providerId } = entry.source;
+  const send = env.fetch;
   let res;
   try {
-    res = await env.fetch(`${env.proxyBase}/synthesize`, {
+    if (req.signal?.aborted) return fail('offline', 'Pronunciation was cancelled.');
+    res = await send(`${env.proxyBase}/synthesize`, {
       method: 'POST', headers: { 'content-type': 'application/json' }, credentials: 'same-origin', cache: 'no-store',
-      body: JSON.stringify({ text: req.text, voice: providerVoice, locale }),
+      body: JSON.stringify({ text: req.text, voice: providerVoice, locale, kind: req.kind, sourcePermission: 'allowed' }), signal: req.signal,
     });
   } catch {
     return fail('offline', 'The speech service could not be reached. Check the connection.');
   }
+  if (req.signal?.aborted) return fail('offline', 'Pronunciation was cancelled.');
   if (!res.ok) return mapStatus(res.status, await errorCode(res));
   const type = res.headers?.get('content-type') ?? '';
   if (type && !type.toLowerCase().startsWith('audio/')) return fail('provider-error', 'The speech service did not return audio.');
   let blob: Blob;
   try { blob = await res.blob(); } catch { return fail('offline', 'The audio download was interrupted.'); }
+  if (!env.consent().remoteSpeech || env.consent().localOnly === true) return fail('no-consent', 'Remote speech permission changed while preparing audio.');
   if (blob.size === 0) return fail('provider-error', 'The speech service returned empty audio.');
   let url: string;
   try { url = env.objectUrl.create(blob); } catch { return fail('provider-error', 'This environment cannot play audio returned by the speech service.'); }
+  if (req.signal?.aborted) { try { env.objectUrl.revoke(url); } catch { /* cleanup */ } return fail('offline', 'Pronunciation was cancelled.'); }
 
   const provenance: PronunciationProvenance = {
     source: 'remote-tts', voiceId: entry.voiceId, providerId, generatedFromText: true,
@@ -76,6 +92,8 @@ export async function prepareRemote(req: Req, registry: VoiceRegistry, env: GoLi
   };
   return { ok: true, prepared: { voice: descriptorOf(entry), provenance, audio: { kind: 'remote', url }, ownsUrl: true } };
 }
+
+const normalizeLocale = (locale: string): string => locale.trim().replace(/_/g, '-').toLowerCase();
 
 type StatusAnswer = { ok: true; configured: boolean } | { ok: false };
 type VoicesAnswer = { ok: true; ids: string[] } | { ok: false; needsKey?: true };
@@ -97,6 +115,7 @@ function cached<T>(env: GoListenEnv, key: string, load: () => Promise<T>): Promi
 export async function remoteAvailability(entry: VoiceEntry, env: GoListenEnv): Promise<Availability> {
   if (entry.source.kind !== 'remote') return 'unavailable';
   if (!env.consent().remoteSpeech) return 'needs-consent';
+  if (env.consent().localOnly === true) return 'needs-consent';
   const get = env.fetch;
   if (!get) return 'unavailable';
   const base = env.proxyBase;

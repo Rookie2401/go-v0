@@ -21,6 +21,19 @@ export interface GoListenEnv {
 
 export const normalizeTag = (tag: string): string => tag.replace(/_/g, '-').toLowerCase();
 
+/** Maps pack-level variety ids to concrete speech locales. Gheg has no approved V1 voice. */
+export function speechVarietyLocale(languageId: string, varietyId: string | undefined): string | undefined {
+  if (!varietyId) return undefined;
+  const v = normalizeTag(varietyId);
+  if (v.includes('gheg')) return '__unsupported_gheg__';
+  const map: Record<string, string> = { 'sq-standard': 'sq-al', 'hi-standard': 'hi-in', 'th-standard': 'th-th', nb: 'nb-no', nn: 'nn-no', 'he-mod': 'he-il', 'el-mod': 'el-gr', 'la-ecclesiastical': 'it-it', 'la-classical': 'it-it' };
+  // Ancient and historical periods fall back to the Modern voice (the packs say so); they are not refused like Gheg.
+  for (const id of ['he-bib', 'he-mish', 'he-med', 'arc-bib']) map[id] = 'he-il';
+  for (const id of ['el-koi', 'el-att', 'el-hom', 'el-med']) map[id] = 'el-gr';
+  // Latin: both varieties play through the registered Italian stand-in (deviceTags.ts LATIN_DEVICE_TAGS); a real Latin voice is taken when the device has one
+  return map[v] ?? map[`${languageId}-${v}`] ?? v;
+}
+
 /**
  * STRICT match: the voice's language tag must equal one of the accepted tags (case and `_`/`-` insensitive). "sq" and
  * "sq-AL" accept a Kosovo or Macedonian variety only if the registry lists it; an English voice never matches Albanian,

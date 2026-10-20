@@ -9,11 +9,13 @@
  *             ever substituted. None is installed on the development machine.
  *   remote    Azure Neural "sq-AL-AnilaNeural" and "sq-AL-IlirNeural" through the same-origin speech proxy
  *             (server/speechHandler.ts). Synthetic, unverified, needs the learner's consent and a server key.
- * German (de) carries one demonstration recording (Wikimedia Commons De-Guten_Tag.oga, public domain), so playback can
- * be shown end to end. It says "Guten Tag!" and nothing else.
+ * German (de) carries one demonstration recording (Wikimedia Commons De-Guten_Tag.oga, public domain) and a strict
+ * device-voice template, so playback can be shown end to end. The recording says "Guten Tag!" and nothing else.
  */
 import type { PronunciationKind, PhoneticDetail, VoiceDescriptor } from './contracts';
 import { albanianPhonetics } from './phonetics';
+import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS } from './deviceTags';
+export { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS } from './deviceTags';
 
 export type VoiceSource =
   | { kind: 'device'; langTags: string[] }
@@ -83,7 +85,6 @@ function azureEntry(providerVoice: string, who: string, gender: string, lang = {
   };
 }
 
-export const ALBANIAN_DEVICE_TAGS = ['sq-AL', 'sq'] as const;
 
 export function albanianRegistry(): VoiceRegistry {
   return {
@@ -97,6 +98,7 @@ export function albanianRegistry(): VoiceRegistry {
       'No Albanian recordings exist; nothing is claimed.',
       'No Albanian voice is installed on the development machine; a device voice appears only if the device offers one tagged sq or sq-AL.',
       'No native-reviewed Albanian audio exists, so there is no Albanian listening evidence.',
+      'The Albanian course includes Gheg material, but these voices are tagged Albanian (sq/sq-AL) and are not a Gheg (aln) quality claim; Gheg assessment audio requires separately reviewed Gheg recordings.',
     ],
     phonetics: (text) => albanianPhonetics(text),
   };
@@ -127,7 +129,8 @@ export function demoGermanRegistry(opts: { url?: string } = {}): VoiceRegistry {
 }
 
 /** The device-voice language tags accepted for Spanish: Honduras (the course's target), Latin America (general), Mexico, Spain. */
-export const SPANISH_DEVICE_TAGS = ['es-HN', 'es-419', 'es-MX', 'es-ES'] as const;
+
+/** Device tags accepted by the GoLearn content voice path for the experimental packs. */
 
 /**
  * Spanish (es), the second language to go through the same shared interfaces as Albanian (prompt 6, section 25).
@@ -155,6 +158,42 @@ export function spanishRegistry(): VoiceRegistry {
   };
 }
 
+/** Hindi voices listed by Azure Speech's standard text-to-speech catalog. */
+function hindiRegistry(): VoiceRegistry {
+  const hi = { languageId: 'hi', locale: 'hi-IN', name: 'Hindi (India)' };
+  return {
+    languageId: 'hi',
+    entries: [
+      deviceEntry('hi', [...HINDI_DEVICE_TAGS], 'Hindi'),
+      azureEntry('hi-IN-SwaraNeural', 'Swara', 'female', hi),
+      azureEntry('hi-IN-MadhurNeural', 'Madhur', 'male', hi),
+    ],
+    gaps: [
+      'No Hindi recordings exist; nothing is claimed.',
+      'No native-reviewed Hindi audio exists, so there is no Hindi listening evidence.',
+      'A device voice appears only if the device offers one tagged hi-IN or hi.',
+    ],
+  };
+}
+
+/** Thai voices listed by Azure Speech's standard text-to-speech catalog. */
+function thaiRegistry(): VoiceRegistry {
+  const th = { languageId: 'th', locale: 'th-TH', name: 'Thai (Thailand)' };
+  return {
+    languageId: 'th',
+    entries: [
+      deviceEntry('th', [...THAI_DEVICE_TAGS], 'Thai'),
+      azureEntry('th-TH-PremwadeeNeural', 'Premwadee', 'female', th),
+      azureEntry('th-TH-NiwatNeural', 'Niwat', 'male', th),
+    ],
+    gaps: [
+      'No Thai recordings exist; nothing is claimed.',
+      'No native-reviewed Thai audio exists, so there is no Thai listening evidence.',
+      'A device voice appears only if the device offers one tagged th-TH or th.',
+    ],
+  };
+}
+
 /**
  * A registry that holds NO voice for a language: capability reporting only. It exists so that `availability(languageId)`
  * and the pack's `registryRef` (`golisten:<lang>`) resolve for every language of the product, answering "cannot speak"
@@ -174,21 +213,35 @@ export function noAudioRegistry(languageId: string, languageName: string, extraG
   };
 }
 
-const withGaps = (r: VoiceRegistry, gaps: string[]): VoiceRegistry => ({ ...r, gaps: [...r.gaps, ...gaps] });
+/** Synthetic pronunciation entries, with no demonstration recording or recording URL. */
+export function pronunciationRegistries(): VoiceRegistry[] {
+  const de = { languageId: 'de', locale: 'de-DE', name: 'German (Germany)' };
+  return [
+    albanianRegistry(),
+    {
+      languageId: 'de',
+      gaps: ['No native-reviewed German pronunciation or qualified assessment recording is supplied.'],
+      entries: [
+        deviceEntry('de', [...GERMAN_DEVICE_TAGS], 'German'),
+        azureEntry('de-DE-KatjaNeural', 'Katja', 'female', de),
+        azureEntry('de-DE-ConradNeural', 'Conrad', 'male', de),
+      ],
+    },
+    spanishRegistry(),
+    hindiRegistry(),
+    thaiRegistry(),
+    deviceRegistry('nb', [...BOKMAL_DEVICE_TAGS], 'Norwegian Bokmål'),
+    deviceRegistry('nn', [...NYNORSK_DEVICE_TAGS], 'Norwegian Nynorsk'),
+    { ...deviceRegistry('he', [...HEBREW_DEVICE_TAGS], 'Hebrew'), gaps: ['No Hebrew recordings are registered; nothing is claimed.', 'No voice exists for Biblical Hebrew: a Modern Hebrew device voice is the only playback, and it is labelled Modern (it does not pronounce Biblical Hebrew).'] },
+    { ...deviceRegistry('el', [...GREEK_DEVICE_TAGS], 'Greek'), gaps: ['No Greek recordings are registered; nothing is claimed.', 'No voice exists for ancient Greek (Homeric, Attic or Koine): a Modern Greek device voice is the only playback, and it is labelled Modern (it does not pronounce ancient Greek).'] },
+    { ...deviceRegistry('la', [...LATIN_DEVICE_TAGS], 'Latin'), gaps: ['No Latin recordings are registered; nothing is claimed.', 'No device ships a Latin voice: an Italian device voice (it-IT) is the registered stand-in for the Ecclesiastical (Church) reading of the Vulgate texts, and it is labelled a stand-in (it does not pronounce classical Latin; vowel length is not spoken).'] },
+  ];
+}
 
 export function defaultRegistries(opts: { demoUrl?: string } = {}): VoiceRegistry[] {
-  return [
-    albanianRegistry(), demoGermanRegistry({ url: opts.demoUrl }), spanishRegistry(),
-    noAudioRegistry('hi', 'Hindi', ['The Hindi pack names Azure voices it expects to offer; they are not registered here.']),
-    noAudioRegistry('th', 'Thai', ['The Thai pack names Azure voices it expects to offer; they are not registered here.']),
-    noAudioRegistry('nb', 'Norwegian Bokmål', ['The Bokmål pack names Azure voices it expects to offer; they are not registered here. A Nynorsk (nn) voice is never substituted.']),
-    noAudioRegistry('nn', 'Norwegian Nynorsk', ['A Bokmål (nb) or generic Norwegian voice is never substituted for Nynorsk.']),
-    // Hebrew and Greek (2026-10-18): a strict device template each (he-IL / he / iw; el-GR / el), no recording, no remote voice. The ancient periods
-    // (Biblical Hebrew, Koine / Attic / Homeric Greek) have no voice of their own: a Modern device voice reads them with Modern letter values, and the
-    // cards say so; nothing is claimed as a historical pronunciation.
-    withGaps(deviceRegistry('he', ['he-IL', 'he', 'iw'], 'Hebrew'), ['No Hebrew recordings are registered; nothing is claimed.', 'No voice exists for Biblical Hebrew: a Modern Hebrew device voice, when the device has one, reads the pointed text with Modern letter values.']),
-    withGaps(deviceRegistry('el', ['el-GR', 'el'], 'Greek'), ['No Greek recordings are registered; nothing is claimed.', 'No voice exists for ancient Greek: a Modern Greek device voice, when the device has one, reads polytonic text in the Modern pronunciation; the card offers the Erasmian and reconstructed Koine conventions in writing only.']),
-  ];
+  const demo = demoGermanRegistry({ url: opts.demoUrl });
+  return pronunciationRegistries().map(reg => reg.languageId === 'de'
+    ? { ...reg, entries: [...demo.entries, ...reg.entries], gaps: [...demo.gaps, ...reg.gaps] } : reg);
 }
 
 /** Merges registries of the same language (entries and gaps concatenate; the first `phonetics` wins). */

@@ -137,6 +137,19 @@ export function leanSpanish(): Plugin {
   };
 }
 
+/** The worker only resolves lexical readings; omit page-only Albanian generation, syntax and production tables. */
+export function leanAlbanian(): Plugin {
+  const stub = path.join(here, 'src/background/sqStub.ts');
+  return {
+    name: 'golearn-lean-albanian',
+    enforce: 'pre',
+    resolveId(source, importer) {
+      if (importer && /[\\/]src[\\/]adapters[\\/]sq$/.test(source)) return stub;
+      return null;
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => {
   if (mode === 'analysers') {
     return {
@@ -170,7 +183,7 @@ export default defineConfig(({ mode }) => {
     logLevel: 'warn',
     // only the harness build has the fixture hook (src/adapters/page.ts); everywhere else the flag is the literal false and the branch is removed
     define: { 'process.env.NODE_ENV': '"production"', __GOLEARN_HARNESS__: mode === 'content-harness' ? 'true' : 'false' },
-    plugins: [stubServiceHandler(mode), leanBuiltins(), ...(mode === 'background' ? [leanSpanish()] : []), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
+    plugins: [stubServiceHandler(mode), leanBuiltins(), ...(mode === 'background' ? [leanSpanish(), leanAlbanian()] : []), ...(mode === 'content' ? [cleanDistKeepingApp(), copyStatic()] : [])],
     build: {
       outDir: path.join(here, 'dist'),
       emptyOutDir: false,

@@ -1,10 +1,11 @@
 // @vitest-environment jsdom
 /**
  * GoLearn Active on a page: the scan underlines the words the learner has met (four levels, CSS highlights, the DOM
- * untouched), a scan records no event, a single click on a word opens the ordinary card (trigger `click`) and speaks
+ * untouched), a scan without durable visible layout records no event, a single click on a word opens the ordinary card (trigger `click`) and speaks
  * it when asked, controls are left alone, and stop() removes everything.
  */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import type { GoEvent } from '../../packages/repository-contract/src';
 import { ActiveMode } from '../../packages/golearn-extension/src/content/active';
 import type { HighlightLike } from '../../packages/golearn-extension/src/active/highlight';
 import { UnsupportedAdapter } from '../../packages/golearn-extension/src/adapters';
@@ -41,6 +42,7 @@ let rig: Rig;
 let active: ActiveMode | undefined;
 const asked: string[][] = [];
 const played: string[] = [];
+let restoreRects: (() => void) | undefined;
 
 const pronouncer: Pronouncer = {
   availability: (): PronounceAvailability => ({ available: true, note: 'test voice' }),
@@ -60,7 +62,7 @@ beforeEach(() => {
   rig = makeRig({ ui });
   holder.r = rig;
 });
-afterEach(() => { active?.stop(); active = undefined; rig.controller.dispose(); restore(); w.CSS = undefined; w.Highlight = undefined; document.documentElement.removeAttribute('lang'); });
+afterEach(() => { active?.stop(); active = undefined; restoreRects?.(); restoreRects = undefined; rig.controller.dispose(); restore(); w.CSS = undefined; w.Highlight = undefined; document.documentElement.removeAttribute('lang'); });
 
 const profile = async (unitIds: string[]): Promise<ProfileReply> => {
   asked.push(unitIds);
@@ -80,8 +82,69 @@ function caretAt(node: Node, offset: number): void {
 }
 const click = (target: Element, x = 10, y = 10): void => { target.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, clientX: x, clientY: y, button: 0 })); };
 const cardText = (): string => rig.ui.root()?.textContent ?? '';
+const visibleRects = (): void => {
+  const proto = Range.prototype as unknown as { getClientRects?: () => DOMRectList };
+  const old = proto.getClientRects;
+  Object.defineProperty(proto, 'getClientRects', { configurable: true, value: () => [{ top: 1, bottom: 20, left: 1, right: 120, width: 119, height: 19 }] });
+  restoreRects = () => { if (old) Object.defineProperty(proto, 'getClientRects', { configurable: true, value: old }); else delete proto.getClientRects; };
+};
+const emptyRects = (): void => {
+  const proto = Range.prototype as unknown as { getClientRects?: () => DOMRectList };
+  const old = proto.getClientRects;
+  Object.defineProperty(proto, 'getClientRects', { configurable: true, value: () => [] });
+  restoreRects = () => { if (old) Object.defineProperty(proto, 'getClientRects', { configurable: true, value: old }); else delete proto.getClientRects; };
+};
+const encounter = (ids: string[], n: number): GoEvent => ({
+  id: `enc-test-${n}`, v: 3, learnerId: 'local-learner', enrolmentId: 'local-enrolment:sq', languageId: 'sq', at: new Date(1_000 + n).toISOString(),
+  producer: { app: 'golearn-ext', version: 'test', deviceId: 'dev-test' }, kind: 'EncounterRecorded', subject: { itemIds: ids },
+  payload: { contextKind: 'none', tokenCount: 1, readerId: 'web-generic' }, dedupeKey: `enc:test:${n}`,
+});
 
 describe('the scan', () => {
+  it('records newly visible words only after the dwell, one token group per event', async () => {
+    visibleRects();
+    const events: GoEvent[] = [];
+    const a = make({
+      buildEncounter: (ids) => encounter(ids, events.length),
+      recordEncounter: async (e) => { events.push(e); return { ok: true }; },
+    });
+    await a.start({ speak: false });
+    expect(events).toEqual([]);
+    await flush(850);
+    expect(events.length).toBeGreaterThan(4);
+    expect(events.every((e) => (e.subject.itemIds?.length ?? 0) <= 2)).toBe(true);
+    const before = events.length;
+    await a.rescan(); await flush(850);
+    expect(events).toHaveLength(before);
+  });
+
+  it('does not record when layout gives no rectangle, and cancelling Active cancels a pending dwell', async () => {
+    emptyRects();
+    const events: GoEvent[] = [];
+    const a = make({ buildEncounter: (ids) => encounter(ids, events.length), recordEncounter: async (e) => { events.push(e); return { ok: true }; } });
+    await a.start({ speak: false }); await flush(850);
+    expect(events).toEqual([]);
+    visibleRects();
+    await a.rescan();
+    a.stop();
+    await flush(850);
+    expect(events).toEqual([]);
+  });
+
+  it('retries a rejected durable write without marking the words as captured', async () => {
+    visibleRects();
+    const events: GoEvent[] = []; let attempts = 0;
+    const a = make({
+      buildEncounter: (ids) => encounter(ids, attempts),
+      recordEncounter: async (e) => { attempts++; if (attempts === 1) return { ok: false }; events.push(e); return { ok: true }; },
+    });
+    await a.start({ speak: false }); await flush(850);
+    expect(events).toEqual([]);
+    await flush(1_100);
+    expect(events.length).toBeGreaterThan(0);
+    expect(attempts).toBeGreaterThan(1);
+  });
+
   it('underlines the met words by level through CSS highlights, asks the model in one batch, records nothing, and leaves the DOM alone', async () => {
     const before = document.body.innerHTML;
     const s = await make().start({ speak: false });

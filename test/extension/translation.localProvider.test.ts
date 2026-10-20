@@ -1,14 +1,16 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createLocalAlbanianTranslationProvider, prepareAlbanianTranslation } from '../../packages/golearn-extension/src/translation/localProvider';
 import { createTranslationEngine } from '../../packages/golearn-extension/src/translation/provider';
+import { LOCAL_TRANSLATION_MODELS } from '../../packages/golearn-extension/src/translation/models';
 
 describe('local Albanian translation', () => {
   it('uses only listed correspondences and preserves unknown forms, punctuation and case', () => {
     expect(prepareAlbanianTranslation('Sokrat i vuejtun apo derr i kënaqun?')).toEqual({ text: 'Sokrat i vuajtur apo derr i kënaqur?', changes: ['vuejtun → vuajtur', 'kënaqun → kënaqur'] });
     expect(prepareAlbanianTranslation('VUEJTUN, Kënaqun; kuptun dritun.').text).toBe('VUAJTUR, Kënaqur; kuptun dritun.');
+    expect(prepareAlbanianTranslation('constructor Constructor.')).toEqual({ text: 'constructor Constructor.', changes: [] });
   });
   it('translates only on request without granting remote permission and reports its preparation', async () => {
-    const send = vi.fn(async () => ({ ok: true as const, text: 'A suffering Socrates or a satisfied pig?', model: 'Helsinki-NLP/opus-mt-sq-en' as const, revision: 'abc' }));
+    const send = vi.fn(async () => ({ ok: true as const, text: 'A suffering Socrates or a satisfied pig?', model: 'Helsinki-NLP/opus-mt-sq-en' as const, revision: LOCAL_TRANSLATION_MODELS.sq.revision }));
     const engine = createTranslationEngine({ providers: [createLocalAlbanianTranslationProvider(send)] });
     const request = { text: 'Sokrat i vuejtun apo derr i kënaqun?', sourceLanguage: { languageId: 'sq', source: 'page' as const }, targetLanguage: { languageId: 'en', source: 'user' as const }, explicitlyRequested: false };
     await engine.translate(request);

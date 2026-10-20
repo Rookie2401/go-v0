@@ -66,6 +66,7 @@ export type FetchLike = (url: string, init?: {
   body?: string;
   credentials?: 'same-origin' | 'omit' | 'include';
   cache?: 'no-store';
+  signal?: AbortSignal;
 }) => Promise<FetchResponseLike>;
 
 /** Turns audio bytes into a playable URL and back (URL.createObjectURL in browsers). */
@@ -80,4 +81,6 @@ export interface ConsentState {
    * `localService` (it sends the text to the browser vendor's cloud).
    */
   remoteSpeech: boolean;
+  /** When true, remote providers and network-backed browser voices are forbidden. */
+  localOnly?: boolean;
 }

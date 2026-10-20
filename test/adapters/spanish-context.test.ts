@@ -531,6 +531,20 @@ describe('a conjugated verb before "a" and an infinitive', () => {
   });
 });
 
+describe('time adverbs and homographic first-person plural verbs', () => {
+  it('orders hablamos as preterite with ayer and present with ahora, keeping both readings', () => {
+    const past = read('Hablamos ayer.');
+    expect(past.first('Hablamos')).toBe('hablar/VERB');
+    expect(past.cands('Hablamos')[0].morph.Tense).toBe('Past');
+    expect(past.cands('Hablamos').some((c) => c.morph.Tense === 'Pres')).toBe(true);
+
+    const present = read('Hablamos ahora.');
+    expect(present.first('Hablamos')).toBe('hablar/VERB');
+    expect(present.cands('Hablamos')[0].morph.Tense).toBe('Pres');
+    expect(present.cands('Hablamos').some((c) => c.morph.Tense === 'Past')).toBe(true);
+  });
+});
+
 describe('a word that opens a sentence before its complement', () => {
   it('before a preposition and an infinitive, an adverb or a pronoun, or before "que": likelier the verb', () => {
     for (const [text, word, verb] of [

@@ -112,6 +112,18 @@ export interface LocalLinguisticsOptions {
 
 export function createLocalLinguistics(store: LinguisticStore, opts: LocalLinguisticsOptions): LinguisticsPort {
   const service = createLinguisticService(store, { now: opts.now });
+  const mergeAdapterUnits = async (units: LinguisticUnit[]): Promise<void> => {
+    const existing = new Map((await store.getUnits(units.map((u) => u.unitId))).map((u) => [u.unitId, u]));
+    const merged = units.map((u) => {
+      const old = existing.get(u.unitId);
+      // A local generic row is an intentionally sparse placeholder. Enrich that row in place when
+      // a real adapter becomes available, preserving its identity, creation time, and status.
+      const generic = old?.provenance.ref === 'generic' || old?.provenance.ref === 'generic@0' || old?.packId.endsWith(':generic');
+      if (!old || old.status === 'invalidated' || old.supersededBy || !generic) return u;
+      return { ...u, status: old.status, createdAt: old.createdAt, fieldStates: old.fieldStates };
+    });
+    if (merged.length) await store.putUnits(merged);
+  };
   return {
     async resolveAndStore(input: LookupInput): Promise<LookupResult> {
       const adapter = STOCK.has(input.languageId) ? undefined : opts.adapters?.[input.languageId];
@@ -119,7 +131,7 @@ export function createLocalLinguistics(store: LinguisticStore, opts: LocalLingui
         let resolved: LookupResult | undefined;
         try { resolved = resolveWithAdapter(adapter, input, opts.now()); } catch { resolved = undefined; }
         if (resolved) {
-          await store.putUnits(resolved.units);
+          await mergeAdapterUnits(resolved.units);
           await store.putRelations(resolved.relations);
           if (resolved.analysis && !(await store.getAnalysis(resolved.analysis.analysisId))) await store.putAnalyses([resolved.analysis]);
           return resolved;

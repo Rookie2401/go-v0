@@ -18,6 +18,7 @@ export async function prepareRecorded(req: Req, registry: VoiceRegistry, env: Go
   let sawText = false;
   for (const entry of entries) {
     if (entry.source.kind !== 'recorded') continue;
+    if (req.varietyId && entry.varietyId && normalizeText(entry.varietyId) !== normalizeText(req.varietyId)) continue;
     const clip = entry.source.recordings.find((r) => normalizeText(r.text) === wanted);
     if (!clip) continue;
     sawText = true;

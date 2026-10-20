@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { cardReasonFor, decideIntake, explainIntake, explainsReasons, proposeFor } from '../../../packages/goreview/src/intake/intake';
+import { cardReasonFor, decideIntake, explainIntake, explainsReasons, proposeFor, rankComparativePriority } from '../../../packages/goreview/src/intake/intake';
 import { gatherCandidates } from '../../../packages/goreview/src/intake/fetch';
 import type { UnitKnowledge } from '../../../packages/repository-contract/src';
 import { audioNone, audioOk, audioPractice, candidate, deckItem, facts, intakeInput, knowledge, NOW, prefs } from './fixtures';
@@ -118,10 +118,32 @@ describe('decideIntake: score, saved and the proposal', () => {
     expect(requested.explicitlySelected).toBe(true);
   });
 
-  it('score below 0.15 → low-priority', () => {
+  it('score below 0.15 → low comparative priority with a retained proposal', () => {
     const o = decideIntake(intakeInput({ candidate: candidate({ score: 0.1 }) }));
     expect(o.decision).toBe('low-priority');
     expect(o.reasons[0]).toContain('0.10');
+    expect(o.proposed?.family).toBe('written-recognition');
+  });
+
+  it('ranks all eligible proposals comparatively, including scores below 0.15', () => {
+    const low = decideIntake(intakeInput({ candidate: candidate({ unitId: 'form:sq:low', score: 0.05 }) }));
+    const high = decideIntake(intakeInput({ candidate: candidate({ unitId: 'form:sq:high', score: 0.1 }) }));
+    const equalB = decideIntake(intakeInput({ candidate: candidate({ unitId: 'form:sq:b', score: 0.1 }) }));
+    const equalA = decideIntake(intakeInput({ candidate: candidate({ unitId: 'form:sq:a', score: 0.1 }) }));
+    const ranked = rankComparativePriority([low, high, equalB, equalA], { limit: 2 });
+    expect(ranked.map((o) => o.unitId)).toEqual(['form:sq:a', 'form:sq:b', 'form:sq:high', 'form:sq:low']);
+    expect(ranked.slice(0, 2).every((o) => o.decision === 'test-now')).toBe(true);
+    expect(ranked.slice(2).every((o) => o.decision === 'low-priority')).toBe(true);
+    expect(ranked.at(-1)?.reasons.at(-1)).toContain('comparatively lower priority');
+  });
+
+  it('prioritizes explicitly saved proposals only when requested by the ranking options', () => {
+    const saved = candidate({ unitId: 'form:sq:saved', score: 0.05 });
+    const unsaved = candidate({ unitId: 'form:sq:unsaved', score: 0.9 });
+    const savedOutcome = decideIntake(intakeInput({ candidate: saved, saved: new Set([saved.unitId]) }));
+    const unsavedOutcome = decideIntake(intakeInput({ candidate: unsaved }));
+    expect(rankComparativePriority([savedOutcome, unsavedOutcome], { limit: 1 }).map((o) => o.unitId)[0]).toBe('form:sq:unsaved');
+    expect(rankComparativePriority([savedOutcome, unsavedOutcome], { limit: 1, prioritizeSaved: true }).map((o) => o.unitId)[0]).toBe('form:sq:saved');
   });
 
   it('score ≥ 0.5 → test-now; between → test-later', () => {
@@ -201,7 +223,7 @@ describe('explainIntake', () => {
     expect(s.startsWith('Test now as written-recognition: ')).toBe(true);
     expect(s).toContain('looked-up-often (3 lookups this week)');
     const t = explainIntake(decideIntake(intakeInput({ candidate: candidate({ score: 0.05 }) })));
-    expect(t.startsWith('Low priority: ')).toBe(true);
+    expect(t.startsWith('Low comparative priority as written-recognition: ')).toBe(true);
   });
 });
 
@@ -235,9 +257,10 @@ describe('gatherCandidates', () => {
     expect(calls.knowledge).toHaveLength(1);
     expect(calls.knowledge[0]).toEqual(units);
     expect(out.map((o) => [o.unitId, o.decision])).toEqual([
-      ['form:sq:a', 'test-now'], ['form:sq:b', 'test-later'], ['form:sq:c', 'low-priority'], ['form:sq:d', 'already-covered'],
+      ['form:sq:a', 'test-now'], ['form:sq:b', 'test-now'], ['form:sq:c', 'test-now'], ['form:sq:d', 'already-covered'],
     ]);
-    expect(calls.facts).toEqual(['form:sq:a', 'form:sq:b']); // not for the low-priority or already-covered ones
+    expect(calls.facts).toEqual(['form:sq:a', 'form:sq:b', 'form:sq:c']); // low comparative-priority proposals still need verified facts
+    expect(out[2].proposed?.family).toBe('written-recognition');
   });
 
   it('no pack facts → needs-validation', async () => {

@@ -76,7 +76,7 @@ function defaultObjectUrl(): ObjectUrlPort | undefined {
 export function createGoListen(opts: GoListenOptions): GoListen {
   const registries = indexRegistries(opts.registries);
   const consent = () => {
-    try { return { remoteSpeech: opts.consent().remoteSpeech === true }; } catch { return { remoteSpeech: false }; }
+    try { const c = opts.consent(); return { remoteSpeech: c.remoteSpeech === true, localOnly: c.localOnly === true }; } catch { return { remoteSpeech: false, localOnly: true }; }
   };
   const env: GoListenEnv = {
     consent,
@@ -94,6 +94,7 @@ export function createGoListen(opts: GoListenOptions): GoListen {
   const phonetics: GoListen['phonetics'] = (req) => {
     try { return registries.get(req.languageId)?.phonetics?.(req.text, req.kind); } catch { return undefined; }
   };
+  const assessment = createAssessmentSource({ registries, env });
 
   return {
     async pronounce(req) {
@@ -102,11 +103,22 @@ export function createGoListen(opts: GoListenOptions): GoListen {
         if (!text) return fail('unsupported-kind', 'There is nothing to say.');
         if (!KINDS.includes(req.kind)) return fail('unsupported-kind', 'GoListen pronounces a word, a phrase or a sentence.');
         const reg = registries.get(req.languageId);
-        const request = { languageId: req.languageId, varietyId: req.varietyId, text, kind: req.kind, voiceId: req.voiceId };
+        const request = { languageId: req.languageId, varietyId: req.varietyId, text, kind: req.kind, voiceId: req.voiceId, processingPermission: req.processingPermission, signal: req.signal };
         const out = await resolveFirst(providerOrder(req), request, reg, env);
         if (!out.ok) return out;
         const p = out.prepared;
-        const playback = openPlayback(p, reg!, env, clampRate(req.rate));
+        const playbackEnv = { ...env, consent: () => {
+          const c = env.consent();
+          return { ...c, remoteSpeech: c.remoteSpeech && req.processingPermission === 'allowed' && !req.signal?.aborted };
+        } };
+        const playback = openPlayback(p, reg!, playbackEnv, clampRate(req.rate));
+        if (req.signal) {
+          const abort = () => playback.dispose();
+          req.signal.addEventListener('abort', abort, { once: true });
+          const dispose = playback.dispose;
+          playback.dispose = () => { req.signal?.removeEventListener('abort', abort); dispose(); };
+          if (req.signal.aborted) { playback.dispose(); return fail('offline', 'Pronunciation was cancelled.'); }
+        }
         if (req.autoplay) playback.play();
         const phonetic = phonetics({ languageId: req.languageId, text, kind: req.kind });
         return { ok: true, voice: p.voice, playback, provenance: p.provenance, ...(phonetic ? { phonetic } : {}) };
@@ -135,6 +147,6 @@ export function createGoListen(opts: GoListenOptions): GoListen {
       };
     },
 
-    assessment: () => createAssessmentSource({ registries, env }),
+    assessment: () => assessment,
   };
 }

@@ -198,6 +198,7 @@ function loadFingerprints(): void {
 const MONTHS = 'the twelve German month names in calendar order (März … Dezember): a word list entry of the German analyser (src/adapters/german/lexicon-nouns.ts) and a line of the owner\'s lesson plan; generic vocabulary, no running text';
 /** The Norwegian analysers (lazily loaded chunk analysers/{nb,nn}.js, shared engine) hold the seven weekday names in week order, as the word list does; a line of the owner's Bokmål ladder lists them in the same order. */
 const WEEKDAYS = 'the seven Norwegian weekday names in week order (mandag … søndag): a word list entry of the Norwegian analysers (src/adapters/norwegian/lexicon-nouns-nb-2.ts) and a line of the owner\'s Bokmål ladder text; generic vocabulary, no running text';
+const GERMAN_WEEKDAYS = 'the five German weekday names in week order (Montag … Freitag): a word list entry of the German analyser (src/adapters/german/lexicon-nouns.ts) and the section headings of the owner\'s German A1-2-08 unit; generic vocabulary, no running text';
 const EXAMINED_OVERLAPS: ReadonlyArray<{ window: string; origin: string; why: string }> = [
   {
     window: 'märzaprilmaijunijuliaugustseptemberoktob',
@@ -249,6 +250,11 @@ const EXAMINED_OVERLAPS: ReadonlyArray<{ window: string; origin: string; why: st
     window: 'mandagtirsdagonsdagtorsdagfredaglørdagsø',
     origin: 'ladder:data/ladder/nb/authoring/a1-1/12.txt',
     why: WEEKDAYS,
+  },
+  {
+    window: 'montagdienstagmittwochdonnerstagfreitags',
+    origin: 'ladder:data/ladder/de/units/de-a1-2-08.json',
+    why: GERMAN_WEEKDAYS,
   },
 ];
 const explained = (hit: string): string | undefined => {
@@ -302,6 +308,12 @@ describe('fingerprint set (the scan is only meaningful if it knows the retired t
     const hits2: string[] = [];
     scanText(`x ${title} y`, hits2, 'planted.html');
     expect(hits2.length).toBe(1);
+  });
+
+  it('only explains the examined German weekday window with its exact owner unit provenance', () => {
+    expect(explained('analysers/de.js: shares a 40-character window "montagdienstagmittwochdonnerstagfreitags" with ladder:data/ladder/de/units/de-a1-2-08.json')).toBe(GERMAN_WEEKDAYS);
+    expect(explained('analysers/de.js: shares a 40-character window "montagdienstagmittwochdonnerstagfreitag" with ladder:data/ladder/de/units/de-a1-2-08.json')).toBeUndefined();
+    expect(explained('analysers/de.js: shares a 40-character window "montagdienstagmittwochdonnerstagfreitags" with ladder:data/ladder/de/authoring/a1-2/de-a1-2-08.txt')).toBeUndefined();
   });
 });
 

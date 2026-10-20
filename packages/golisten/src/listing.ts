@@ -33,7 +33,7 @@ export async function listVoices(registry: VoiceRegistry | undefined, env: GoLis
       for (const m of matches) {
         out.push({
           ...deviceDescriptor(entry, m.voice),
-          availability: async () => (m.networked && !env.consent().remoteSpeech ? 'needs-consent' : 'available'),
+          availability: async () => (m.networked && (!env.consent().remoteSpeech || env.consent().localOnly === true) ? 'needs-consent' : 'available'),
         });
       }
     } else if (entry.source.kind === 'remote') {

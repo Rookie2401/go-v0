@@ -9,11 +9,11 @@ export type { GoListen, GoListenOptions } from './golisten';
 export { listVoices, languageAvailability } from './listing';
 export type { LanguageAvailability, ListedVoice } from './listing';
 export {
-  albanianRegistry, spanishRegistry, SPANISH_DEVICE_TAGS, deviceRegistry, deviceEntry, demoGermanRegistry, noAudioRegistry, defaultRegistries, indexRegistries, descriptorOf,
+  albanianRegistry, spanishRegistry, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, deviceRegistry, deviceEntry, demoGermanRegistry, noAudioRegistry, defaultRegistries, indexRegistries, descriptorOf,
   DEFAULT_DEMO_URL, DEMO_RECORDING_TEXT, ALBANIAN_DEVICE_TAGS, AZURE_LICENCE, AZURE_PROVIDER_ID, DEVICE_LICENCE,
 } from './registry';
 export type { RecordedClip, VoiceEntry, VoiceRegistry, VoiceSource } from './registry';
-export { createAssessmentSource, assessmentEvidence, evidenceValidity, listeningAssessedPayload, DEFAULT_REPLAYS_ALLOWED } from './assessment';
+export { createAssessmentSource, assessmentEvidence, evidenceValidity, isAssessmentQualified, listeningAssessedPayload, DEFAULT_REPLAYS_ALLOWED } from './assessment';
 export { createPlayback, failedPlayback, clampRate, MIN_RATE, MAX_RATE } from './playback';
 export type { PlaybackDriver, DriverCallbacks } from './playback';
 export { createHtmlAudioPort, clipDriver } from './providers/audio';

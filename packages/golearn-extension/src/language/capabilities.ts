@@ -86,7 +86,8 @@ export function readerSupport(languageId: string): ReaderSupport | undefined {
   lines.push('No syntactic roles: a card never labels subject or object.');
   if (!report.checker.offered) lines.push('Nothing you write is checked.');
   const au = report.audio;
-  if (au && !au.deviceVoiceTemplate && au.remoteVoices.length === 0) lines.push(au.recordings > 0 ? 'The only audio is a short demonstration clip; no voice can read other text aloud.' : 'No voice is registered for this language: nothing can be played.');
+  if (au?.deviceVoiceTemplate) lines.push('A matching voice on your device can read text aloud as practice only; installed voices vary.');
+  else if (au && au.remoteVoices.length === 0) lines.push(au.recordings > 0 ? 'The only audio is a short demonstration clip; no voice can read other text aloud.' : 'No voice is registered for this language: nothing can be played.');
   return { languageId, parseable, levelLabel: LEVEL_LABEL[report.level], report, offers, lines };
 }
 

@@ -35,7 +35,9 @@ describe.skipIf(!have)('the built extension', () => {
     // Hindi reading must resolve in the offline Repository too. Its real analyser adds
     // about 460 KB to the former Albanian-only worker; classic workers cannot import
     // the page's analyser chunk. Keep an explicit ceiling rather than dropping analysis.
-    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1050 * KB);
+    // 2026-10-20: 1,050 -> 1,100 KB for the speech proxy client, the GoListen device registry and the encounter recorder
+    // (background.js measured 1,078 KB when that work was committed).
+    expect(sizes.get('background.js')!, 'background.js').toBeLessThanOrEqual(1100 * KB);
     if (sizes.has('app/app.js')) expect(sizes.get('app/app.js')!, 'app/app.js').toBeLessThanOrEqual(650 * KB);
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) expect(sizes.has(`analysers/${id}.js`), `analysers/${id}.js`).toBe(true);
   });

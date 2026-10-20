@@ -13,7 +13,15 @@ import { fail } from './providers/types';
 import type { Failure, Prepared, PrepareOutcome, Req } from './providers/types';
 import type { VoiceRegistry } from './registry';
 
-export const DEFAULT_ORDER: readonly ProviderKind[] = ['recorded', 'device', 'remote'];
+/**
+ * Azure is the primary synthetic voice when the learner has enabled remote speech and
+ * the server has a working key.  The resolver still falls through immediately when
+ * consent, connectivity, or server configuration is absent, so local device voices
+ * remain the natural local-only path.  Recorded material is retained as an explicit
+ * preference (or a future reviewed source) rather than silently winning over the
+ * configured pronunciation service.
+ */
+export const DEFAULT_ORDER: readonly ProviderKind[] = ['remote', 'recorded', 'device'];
 
 /** The providers to try, in order. A request for a specific voice only ever tries the provider that voice belongs to. */
 export function providerOrder(req: Pick<PronunciationRequest, 'preferred' | 'voiceId'>): ProviderKind[] {
@@ -43,7 +51,12 @@ export async function resolveFirst(order: ProviderKind[], req: Req, registry: Vo
   if (!registry) return fail('no-voice', `No voices are registered for ${req.languageId}.`, ['Continue without audio: GoLearn works text-first.']);
   const failures: Failure[] = [];
   for (const kind of order) {
+    if (req.signal?.aborted) return fail('offline', 'Pronunciation was cancelled.');
     const out = await prepareWith(kind, req, registry, env);
+    if (req.signal?.aborted) {
+      if (out.ok && out.prepared.ownsUrl && out.prepared.audio.kind !== 'device') env.objectUrl?.revoke(out.prepared.audio.url);
+      return fail('offline', 'Pronunciation was cancelled.');
+    }
     if (out.ok) return out;
     failures.push(out);
   }

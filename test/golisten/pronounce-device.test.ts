@@ -92,7 +92,7 @@ describe('device voices: a network browser voice needs consent', () => {
   });
   it('with consent it is used and described as remote execution', async () => {
     const { g } = setup([SQ_NET], { consent: true });
-    const r = ok(await g.pronounce({ languageId: 'sq', text: 'në', kind: 'word' }));
+    const r = ok(await g.pronounce({ languageId: 'sq', text: 'në', kind: 'word', preferred: 'device', processingPermission: 'allowed' }));
     expect(r.voice.execution).toBe('remote');
     expect(r.voice.knownLimitations.join(' ')).toMatch(/not local/);
   });
@@ -212,4 +212,36 @@ describe('device playback lifecycle', () => {
     listeners.forEach((f) => f());
     expect(ok(await pending).voice.label).toContain('Fake Albanian AL');
   });
+});
+
+
+it('rechecks cloud consent at start, replay and paused resume', async () => {
+  let allowed = true;
+  const speech = fakeSpeech([SQ_NET]);
+  const g = createGoListen({ registries: [albanianRegistry()], consent: () => ({ remoteSpeech: allowed }), speech, audio: fakeAudio(), utterance: fakeUtterance, voiceWaitMs: 0 });
+  const result = await g.pronounce({ languageId: 'sq', text: 'test', kind: 'word', preferred: 'device', processingPermission: 'allowed' });
+  if (!result.ok) throw new Error(result.message);
+  allowed = false; result.playback.play();
+  expect(result.playback.state).toBe('error'); expect(speech.spoken).toHaveLength(0);
+  allowed = true; result.playback.replay(); result.playback.pause();
+  allowed = false; result.playback.play();
+  expect(result.playback.state).toBe('error'); expect(speech.resumes).toBe(0);
+  result.playback.replay(); expect(speech.spoken).toHaveLength(1);
+});
+
+it('retired device handles cannot cancel, pause or resume the replacement', async () => {
+  const speech = fakeSpeech([SQ_AL]);
+  const { g } = setup([SQ_AL], { speech });
+  const a = await g.pronounce({ languageId: 'sq', text: 'one', kind: 'word' });
+  const b = await g.pronounce({ languageId: 'sq', text: 'two', kind: 'word' });
+  if (!a.ok || !b.ok) throw new Error('unavailable');
+  a.playback.play(); const old = speech.spoken[0];
+  b.playback.play();
+  expect(a.playback.state).toBe('idle');
+  const cancels = speech.cancels;
+  a.playback.pause(); a.playback.stop(); a.playback.dispose();
+  old.onend?.(); old.onerror?.({ error: 'synthesis-failed' });
+  expect(speech.cancels).toBe(cancels); expect(speech.pauses).toBe(0);
+  expect(b.playback.state).toBe('playing');
+  speech.finish(); expect(b.playback.state).toBe('ended');
 });

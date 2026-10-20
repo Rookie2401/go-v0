@@ -23,8 +23,13 @@ import {
  */
 const ANALYSER_ENTRIES = ['sq', 'es', 'de', 'hi', 'th', 'he', 'el', 'la'].map((id) => ({ id: 'golearn-analyser-' + id, file: 'packages/golearn-extension/src/analysers/' + id + '.ts' }));
 const ALL_ENTRIES: ReadonlyArray<{ id: string; file: string }> = [...ENTRIES, ...ANALYSER_ENTRIES, { id: 'gotell (hosted workspace package index)', file: GOTELL_ENTRY }];
-/** The one non-literal dynamic import in the reached code: the extension imports its own analyser chunk by URL (a web accessible resource), which no static graph can follow; the chunks are entries above. */
-const URL_IMPORTS = ['packages/golearn-extension/src/analysers/urlLoader.ts'];
+/**
+ * The non-literal dynamic imports in the reached code: the extension imports its own analyser chunk by URL (a web accessible
+ * resource), which no static graph can follow; the chunks are entries above. src/dict/gzip.ts (full-2 shards, 2026-10-17) imports
+ * node:zlib through a variable specifier so that a browser bundle never resolves it; in a browser or worker DecompressionStream
+ * is used and that branch is never reached.
+ */
+const URL_IMPORTS = ['packages/golearn-extension/src/analysers/urlLoader.ts', 'src/dict/gzip.ts'];
 const print = process.env.AUDIT_PRINT === '1';
 /** The resolved targets of a file's relative edges (repo-relative). */
 const infoEdges = (file: string): string[] => infoOf(file).edges.filter((e) => e.to).map((e) => e.to!);
@@ -265,11 +270,19 @@ describe('(e) no entry carries commercial ebook-provider code', () => {
     expect(JSON.stringify(m)).not.toMatch(/amazon|kindle|kobo/i);
   });
 
-  it('the only third-party package any entry imports is ts-fsrs (GoReview scheduling) plus node builtins', () => {
+  it('the only third-party packages any entry imports are ts-fsrs (GoReview scheduling), @capacitor/core (GoPractice only: the native-shell bridge) and pg (the Node service only) plus node builtins', () => {
+    // per entry: the Node service may load the Postgres driver (packages/repository-store/src/postgres-pool.ts, dynamic import, 2026-10-17);
+    // the GoPractice shell detects the iPhone build through @capacitor/core (packages/gopractice/mobile.ts, 2026-10-15). No browser
+    // entry of the extension reaches either.
+    const ALLOWED: Record<string, string[]> = { 'repository-service': ['pg'], gopractice: ['@capacitor/core'] };
     const externals = new Set<string>();
-    for (const e of ALL_ENTRIES) for (const x of reach(e.file).externals.keys()) externals.add(x);
+    for (const e of ALL_ENTRIES) {
+      const own = [...reach(e.file).externals.keys()].filter((x) => !x.startsWith('node:'));
+      expect(own.filter((x) => x !== 'ts-fsrs' && !(ALLOWED[e.id] ?? []).includes(x)), `${e.id}: third-party imports`).toEqual([]);
+      for (const x of reach(e.file).externals.keys()) externals.add(x);
+    }
     const nonNode = [...externals].filter((x) => !x.startsWith('node:'));
-    expect(nonNode.sort()).toEqual(['ts-fsrs']);
+    expect(nonNode.sort()).toEqual(['@capacitor/core', 'pg', 'ts-fsrs']);
     for (const x of externals) for (const p of EBOOK_PATTERNS) expect(p.re.test(x), x).toBe(false);
   });
 

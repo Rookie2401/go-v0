@@ -274,7 +274,9 @@ export function rankCandidates(inp: CandidateInputs): ReviewCandidate[] {
   const round = (x: number): number => Math.round(Math.min(1, Math.max(0, x)) * 1e9) / 1e9;
   for (const c of eligibleOut) c.score = round(c.score);
   const byScore = (a: ReviewCandidate, b: ReviewCandidate): number => b.score - a.score || (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0);
-  const kept = eligibleOut.filter((c) => c.score > 0).sort(byScore).slice(0, inp.limit);
+  // A low aggregate score is comparative priority, not an eligibility decision.
+  // Keep sound encountered candidates even when resource penalties reduce it to zero.
+  const kept = eligibleOut.sort(byScore).slice(0, inp.limit);
   const room = Math.max(0, inp.limit - kept.length);
   ineligibleOut.sort((a, b) => (a.unitId < b.unitId ? -1 : 1));
   return [...kept, ...ineligibleOut.slice(0, Math.min(room, R.maxIneligible))];

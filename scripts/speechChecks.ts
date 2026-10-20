@@ -33,6 +33,7 @@ const HOST = 'localhost:5196';
 /** A throw-away key used ONLY by the in-process chain, so the leak checks can search for a known string. Not a credential. */
 export const CHECK_KEY = 'SPEECH-CHECK-TEST-KEY-9f3a7c1e5b2d';
 export const CHECK_REGION = 'westeurope';
+const CHECK_AUTH_TOKEN = 'speech-check-mock-token';
 
 // ───────────────────────────── 1. configuration ─────────────────────────────
 
@@ -115,7 +116,7 @@ interface Scenario {
 }
 
 async function makeScenario(opts: { env?: SpeechEnv; behaviour?: Behaviour; maxAttempts?: number; proxy?: boolean; allowFixture?: boolean } = {}): Promise<Scenario> {
-  const env: SpeechEnv = opts.env ?? { key: CHECK_KEY, region: CHECK_REGION };
+  const env: SpeechEnv = { ...(opts.env ?? { key: CHECK_KEY, region: CHECK_REGION }), authToken: CHECK_AUTH_TOKEN };
   const store = createMemoryStore();
   await seedBasics(store);
   const clock = new Clock();
@@ -153,8 +154,8 @@ async function makeScenario(opts: { env?: SpeechEnv; behaviour?: Behaviour; maxA
     const u = new URL(String(input), ORIGIN);
     const out = await handleSpeechRequest({
       method: init?.method ?? 'GET', path: u.pathname, query: Object.fromEntries(u.searchParams),
-      headers: { host: HOST, origin: ORIGIN, 'content-type': 'application/json' },
-      body: typeof init?.body === 'string' ? init.body : undefined,
+      headers: { host: HOST, origin: ORIGIN, authorization: `Bearer ${CHECK_AUTH_TOKEN}`, 'content-type': 'application/json' },
+      body: typeof init?.body === 'string' && u.pathname.endsWith('/synthesize') ? JSON.stringify({ ...(JSON.parse(init.body as string) as Record<string, unknown>), kind: 'sentence', sourcePermission: 'allowed' }) : typeof init?.body === 'string' ? init.body : undefined,
     }, env, { fetch: azure, now: () => Date.now(), limiter, timeoutMs: 500, log: (line) => record('proxy log', line) });
     return new Response(out.body as unknown as BodyInit, { status: out.status, headers: out.headers });
   }) as unknown as typeof fetch;
@@ -553,11 +554,12 @@ export interface LiveResult {
  * live voice list offers for the Honduras course's ordered preferred locales (falling back to the static table, as
  * GoListen does). A pass means "valid audio arrived": it says nothing about how it sounds.
  */
-export async function runLiveSynthesis(a: { env: SpeechEnv; sentence: string; fetch?: typeof fetch }): Promise<LiveResult> {
+export async function runLiveSynthesis(a: { env: SpeechEnv; sentence: string; fetch?: typeof fetch; processingPermission?: 'allowed' }): Promise<LiveResult> {
+  if (a.processingPermission !== 'allowed' || !a.env.authToken) return { ok: false, problems: [], error: 'explicit live processing permission and GO_SPEECH_AUTH_TOKEN are required' };
   const doFetch = a.fetch ?? ((input: RequestInfo | URL, init?: RequestInit) => fetch(input, init));
   const deps = { fetch: doFetch as typeof fetch, now: () => Date.now(), timeoutMs: 20_000 };
   const call = async (method: string, path: string, query?: Record<string, string>, body?: string) =>
-    handleSpeechRequest({ method, path, query, headers: { host: HOST, ...(body ? { 'content-type': 'application/json' } : {}) }, body }, a.env, deps);
+    handleSpeechRequest({ method, path, query, headers: { host: HOST, authorization: `Bearer ${a.env.authToken}`, ...(body ? { 'content-type': 'application/json' } : {}) }, body }, a.env, deps);
   const text = (r: { body: Uint8Array | string }) => (typeof r.body === 'string' ? r.body : new TextDecoder().decode(r.body));
   const course = COURSES.find((c) => c.id === 'honduras-es')!;
   const requestedLocale = course.preferredLocales[0];
@@ -570,7 +572,7 @@ export async function runLiveSynthesis(a: { env: SpeechEnv; sentence: string; fe
     for (const loc of course.preferredLocales) { chosen = voices.find((v) => v.locale.toLowerCase() === loc.toLowerCase()); if (chosen) break; }
     chosen ??= voices[0];
     const norm = createAdapterRegistry().get('es').speechNormalize(a.sentence, { isScripture: true });
-    const out = await call('POST', '/api/speech/synthesize', undefined, JSON.stringify({ text: norm.speechText, voice: chosen.id, locale: chosen.locale, format: 'riff-24khz-16bit-mono-pcm' }));
+    const out = await call('POST', '/api/speech/synthesize', undefined, JSON.stringify({ text: norm.speechText, voice: chosen.id, locale: chosen.locale, format: 'riff-24khz-16bit-mono-pcm', kind: 'sentence', sourcePermission: 'allowed' }));
     if (out.status !== 200 || typeof out.body === 'string') {
       const err = (() => { try { const j = JSON.parse(text(out)) as { error?: string; message?: string }; return `${j.error ?? 'error'}: ${j.message ?? ''}`; } catch { return 'no detail'; } })();
       return { ok: false, voice: chosen.id, requestedLocale, problems: [], error: `HTTP ${out.status} ${err}` };

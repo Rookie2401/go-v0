@@ -1,0 +1,9 @@
+{
+  "sq": { "id": "Helsinki-NLP/opus-mt-sq-en", "revision": "10c8d34bcc202e0d8d75bd454b5e34bbea4c2909", "label": "Albanian", "modelSource": "sq", "license": "Apache-2.0" },
+  "hi": { "id": "Helsinki-NLP/opus-mt-hi-en", "revision": "a7d96a16729f812578bd55e7366147beda625d86", "label": "Hindi", "modelSource": "hi", "license": "Apache-2.0" },
+  "es": { "id": "Helsinki-NLP/opus-mt-es-en", "revision": "c96e2c5399ebfae4fc43d9669556b9afa74bb69d", "label": "Spanish", "modelSource": "es", "license": "Apache-2.0" },
+  "de": { "id": "Helsinki-NLP/opus-mt-de-en", "revision": "1a922f3b32a8e809e17a47d4b32142d8105924e5", "label": "German", "modelSource": "de", "license": "Apache-2.0" },
+  "th": { "id": "Helsinki-NLP/opus-mt-th-en", "revision": "0fff80be1c3f40d6180efd59f566ece956ace689", "label": "Thai", "modelSource": "th", "license": "Apache-2.0" },
+  "nb": { "id": "Helsinki-NLP/opus-mt-tc-big-gmq-en", "revision": "b243b46fc9e1eaf068ae0d8ae896ac1acd7d2380", "label": "Norwegian Bokmål", "modelSource": "nob", "license": "CC-BY-4.0" },
+  "nn": { "id": "Helsinki-NLP/opus-mt-tc-big-gmq-en", "revision": "b243b46fc9e1eaf068ae0d8ae896ac1acd7d2380", "label": "Norwegian Nynorsk", "modelSource": "nno", "license": "CC-BY-4.0" }
+}

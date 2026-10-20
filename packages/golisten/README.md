@@ -10,7 +10,7 @@ to append. `test/golisten/pronounce-boundary.test.ts` enforces the boundary, no 
 
 ```ts
 const golisten = createGoListen({
-  registries: defaultRegistries(),                 // sq, es (device + Azure), the de demonstration recording, and hi/th/nb/nn with no voice (honest capability reporting only)
+  registries: defaultRegistries(),                 // sq/es/hi/th (device + Azure), a de demonstration recording + device voice, and strict device voices for nb/nn
   consent: () => ({ remoteSpeech: learner.allowsRemoteSpeech }),
   // speech, audio, fetch, objectUrl, utterance, now: defaults to the browser's; tests inject fakes
   // speechProxyBase: '/api/speech'                // the same-origin proxy of server/speechHandler.ts
@@ -22,11 +22,28 @@ if (r.ok) { r.playback.play(); /* r.voice, r.provenance, r.phonetic */ } else { 
 `pronounce` never throws and never blocks the reader. Every failure is `ok: false` with a `reason`
 (`no-voice | wrong-language-voice | no-consent | provider-error | unsupported-kind | offline`), a message that never
 contains the text, and `alternatives` (what the learner can do instead, including the honest gaps). Providers are tried
-preferred first, then recorded, device, remote; a request for a specific `voiceId` only ever tries that voice's provider.
+preferred first, then remote (Azure through the host's authenticated backend), recorded, device; a request for a specific `voiceId` only ever tries that voice's provider.
 When several fail, the most actionable reason leads (`provider-error`, `offline`, `no-consent`, `wrong-language-voice`,
 `unsupported-kind`, `no-voice`) and the other messages follow. `phonetics()` works with no audio and no consent.
 
 ## Contracts (`src/contracts.ts`)
+
+### Playback and stimulus lifetime
+
+`assessment()` returns the same source for the lifetime of a GoListen engine. Keep the original prepared stimulus:
+playback and scoring require the unchanged object issued by that source. Deserialized or altered metadata cannot
+authorize playback or listening evidence; session recovery rebuilds its stimuli rather than trusting saved audio metadata.
+
+The source owns prepared audio. `playbackOf()` reuses a handle; disposing it revokes owned remote audio URLs.
+Call the optional `releaseStimulus(stimulus)` when a prompt is committed, skipped, rejected or discarded, including
+prefetched prompts that never played. Released audio cannot be played again, but its authoritative scoring metadata
+remains available for committing an answer. GoReview's runner performs this cleanup; its UI stops an unanswered
+managed handle on navigation so reopening the prompt can still play it.
+
+Device playback checks current remote-speech consent before starting or resuming a networked browser voice.
+Only the active GoListen driver may control the browser speech queue; disposing an older handle does not cancel
+its replacement. A hearing produces at most one terminal callback. GoLearn cancels pending pronunciation when
+the learner stops it, dismisses the card, replaces the selection or opens another message.
 
 | contract | what it is |
 |---|---|
@@ -34,7 +51,7 @@ When several fail, the most actionable reason leads (`provider-error`, `offline`
 | `PronunciationResult` | `{ ok: true, voice, playback, provenance, phonetic? }` or `{ ok: false, reason, message, alternatives }` |
 | `VoiceDescriptor` | `voiceId, languageId, varietyId?, provider, execution: local/remote, synthetic, licence, qualityVerification, knownLimitations, supports, suitableForAssessment, label` |
 | `PronunciationProvenance` | `source: device-tts/remote-tts/recording, voiceId, providerId?, generatedFromText, reviewedRecording?, note` |
-| `PlaybackHandle` | `play/pause/stop/replay/setRate/dispose`, `state: idle/playing/paused/ended/error`, `replays`, `rate`, `onEnd(cb)`, `durationMs?`. Rate is clamped to 0.5 to 1.5; `replays` counts every hearing after the first |
+| `PlaybackHandle` | `play/pause/stop/replay/setRate/dispose`, `state: idle/playing/paused/ended/error`, `replays`, `rate`, `onEnd(cb)`, optional `onState(cb)` for asynchronous failures, `durationMs?`. Rate is clamped to 0.5 to 1.5; `replays` counts every hearing after the first |
 | `PhoneticDetail` | `ipa?, respelling?, syllables?, stress?, tones?, notes, source` |
 | `AudioStimulus`, `AssessmentSource` | the GoReview interface, below |
 
@@ -70,6 +87,8 @@ only when its text matches; it never plays for other text. The host serves the f
 Other languages: `deviceRegistry(languageId, langTags, name)` gives a device-only registry with the same strict matching.
 
 ## Remote speech rules (`src/providers/remote.ts`)
+
+Cloud pronunciation requires `processingPermission: 'allowed'` on the request as well as current consent. Missing or unknown source rights refuse cloud processing, including network-backed browser voices. `consent().localOnly === true` blocks remote synthesis and availability requests. Hosts inject authenticated transport; GoLearn uses background messages and keeps the Azure key on the backend. Use `signal` to cancel preparation or dispose a prepared hearing. Cancellation never falls through to a new device hearing.
 
 Nothing is sent unless `consent().remoteSpeech === true`, checked at the moment of each call; without it the result is
 `no-consent` and `fetch` is never called. The text goes only in the POST body to `{speechProxyBase}/synthesize`

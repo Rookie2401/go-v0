@@ -9,8 +9,8 @@
  *  - the registry decides: an unsupported page or a refusing reader is never scanned, whatever the switch says;
  *  - only the viewport (plus one screen) is scanned, through the same readability rules as a lookup; frames only
  *    when the entry allows them, and only same-origin ones;
- *  - nothing leaves the device but unit ids (normalised single words), nothing is kept beyond the tab, and a scan
- *    records no event: seeing an underline is not an encounter; a click is;
+ *  - nothing leaves the device but unit ids (normalised single words), nothing is kept beyond the tab; after a short
+ *    stable visible dwell, each newly exposed word is recorded as a weak encounter, while seeing an underline alone is not;
  *  - the page's DOM is never changed: underlines are CSS custom highlights, and where that API is missing there are
  *    none (click-to-look-up still works and the state says so).
  */
@@ -21,6 +21,7 @@ import { levelOfRows, type ActiveLevel } from '../active/levels';
 import { createScanner, type ScanToken, type Scanner } from '../active/scan';
 import { GOLEARN_HOST_ATTR, type ReaderAdapter } from '../contract/readerAdapter';
 import type { KnowledgeView, ProfileReply } from '../protocol';
+import type { GoEvent } from '../../../repository-contract/src';
 import type { CardUI } from '../popup/card';
 import type { LookupController } from './controller';
 
@@ -31,6 +32,9 @@ export interface ActiveDeps {
   ui: CardUI;
   /** The learner model, through the background. Absent (no extension context): nothing is underlined and the state says why. */
   profile?: (unitIds: string[], languageId: string) => Promise<ProfileReply | undefined>;
+  /** Records the units newly seen in an explicitly enabled Active scan. */
+  recordEncounter?: (event: GoEvent) => Promise<unknown>;
+  buildEncounter?: (ids: string[], languageId: string, readerId: string) => GoEvent;
   adapterOf(languageId: string): LanguageAdapter | undefined;
   loadAnalyser?(languageId: string): Promise<void>;
   /** The background answers at most this many ids per request (profile.ts MAX_IDS_PER_REQUEST). */
@@ -57,6 +61,8 @@ export interface ActiveState {
   profileMs?: number;
   /** Lookups made by clicking a word. */
   clicks: number;
+  /** Distinct visible word forms acknowledged by the recorder in this activation. */
+  recordedWords?: number;
 }
 
 const SAMPLE_CHARS = 400;
@@ -75,10 +81,13 @@ export class ActiveMode {
   private listeners: Array<() => void> = [];
   private observers: MutationObserver[] = [];
   private debounce: ReturnType<typeof setTimeout> | undefined;
+  private encounterTimer: ReturnType<typeof setTimeout> | undefined;
+  private pendingEncounter: { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] } | undefined;
   private scanning: Promise<void> | undefined;
   private rescanWanted = false;
   private last: Pick<ActiveState, 'scanned' | 'marked' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: noMarks() };
   private clicks = 0;
+  private readonly encountered = new Set<string>();
   private offRecord: (() => void) | undefined;
   /** Counts the events recorded from this page; an answer asked for before one of them was recorded may not include it (see `consult`). */
   private epoch = 0;
@@ -89,7 +98,7 @@ export class ActiveMode {
   get state(): ActiveState {
     const top = this.highlighters.get(this.d.doc);
     const supported = top ? top.supported : createHighlighter(this.d.doc).supported;
-    return { on: this.on, speak: this.speak, supported, languageId: this.languageId, reason: this.reason, clicks: this.clicks, ...this.last };
+    return { on: this.on, speak: this.speak, supported, languageId: this.languageId, reason: this.reason, clicks: this.clicks, recordedWords: [...this.encountered].filter((id) => id.startsWith('form:')).length, ...this.last };
   }
 
   /** Switch Active on for this page (idempotent; a second call only updates `speak`). */
@@ -152,6 +161,9 @@ export class ActiveMode {
     this.d.controller.disable();
     this.offRecord?.(); this.offRecord = undefined;
     clearTimeout(this.debounce);
+    clearTimeout(this.encounterTimer);
+    this.encounterTimer = undefined;
+    this.pendingEncounter = undefined;
     for (const off of this.listeners) off();
     this.listeners = [];
     for (const o of this.observers) o.disconnect();
@@ -159,6 +171,7 @@ export class ActiveMode {
     for (const h of this.highlighters.values()) h.dispose();
     this.highlighters.clear();
     this.rows.clear();
+    this.encountered.clear();
     this.refetch.clear();
     this.languageId = undefined;
     this.scanner = undefined;
@@ -242,6 +255,26 @@ export class ActiveMode {
       }
       this.highlighterFor(root).apply(byLevel);
     }
+    if (this.d.recordEncounter) {
+      const groups = [...new Map([...byDoc.values()].flatMap((xs) => xs).map((t) => {
+        const ids = [...new Set(t.ids)].filter((id) => !this.encountered.has(id));
+        return [ids.join(','), ids] as const;
+      }).filter(([, ids]) => ids.length))].map(([, ids]) => ids);
+      if (groups.length) {
+        const tokens = [...byDoc.values()].flatMap((xs) => xs).filter((t) => t.ids.some((id) => groups.some((g) => g.includes(id))));
+        const old = this.pendingEncounter;
+        const oldKeys = new Set((old?.groups ?? []).map((g) => g.join(',')));
+        this.pendingEncounter = { groups: [...(old?.groups ?? []), ...groups.filter((g) => !oldKeys.has(g.join(',')))], languageId, readerId: this.entry?.readerId ?? 'active', tokens: [...(old?.tokens ?? []), ...tokens] };
+        clearTimeout(this.encounterTimer);
+        this.encounterTimer = setTimeout(() => {
+          this.encounterTimer = undefined;
+          const pending = this.pendingEncounter;
+          this.pendingEncounter = undefined;
+          if (!pending || !this.on || this.d.doc.visibilityState === 'hidden' || !pending.tokens.some((t) => this.tokenVisible(t))) return;
+          void this.persistEncounter(pending);
+        }, 800);
+      }
+    }
     this.last = { scanned, marked, scanMs: Math.round(scanMs * 100) / 100, profileMs: Math.round(profileMs * 100) / 100 };
     if (!this.d.profile) this.reason = 'The learner model is not reachable from this page, so nothing is underlined; clicking a word still looks it up.';
     else if (!this.highlighterFor(this.d.doc).supported) this.reason = 'This browser cannot draw the underlines (no CSS highlight API); clicking a word still looks it up.';
@@ -275,7 +308,10 @@ export class ActiveMode {
 
   private attachWatchers(): void {
     const view = this.d.doc.defaultView;
-    const later = () => { clearTimeout(this.debounce); this.debounce = setTimeout(() => { void this.rescan(); }, this.d.debounceMs ?? 150); };
+    const later = () => {
+      clearTimeout(this.encounterTimer); this.encounterTimer = undefined; this.pendingEncounter = undefined;
+      clearTimeout(this.debounce); this.debounce = setTimeout(() => { void this.rescan(); }, this.d.debounceMs ?? 150);
+    };
     if (view) {
       view.addEventListener('scroll', later, { capture: true, passive: true });
       view.addEventListener('resize', later, { passive: true });
@@ -283,7 +319,7 @@ export class ActiveMode {
       this.listeners.push(() => view.removeEventListener('scroll', later, { capture: true }), () => view.removeEventListener('resize', later), () => view.removeEventListener('pageshow', later));
     }
     // a tab shown for the first time (or again) gets its viewport then: scan once it is visible
-    const onVisible = () => { if (this.d.doc.visibilityState !== 'hidden') later(); };
+    const onVisible = () => { if (this.d.doc.visibilityState !== 'hidden') later(); else { clearTimeout(this.encounterTimer); this.encounterTimer = undefined; this.pendingEncounter = undefined; } };
     this.d.doc.addEventListener('visibilitychange', onVisible);
     this.listeners.push(() => this.d.doc.removeEventListener('visibilitychange', onVisible));
     const MO = (view as unknown as { MutationObserver?: typeof MutationObserver } | null)?.MutationObserver ?? (globalThis as { MutationObserver?: typeof MutationObserver }).MutationObserver;
@@ -298,6 +334,44 @@ export class ActiveMode {
         try { mo.observe(root.body, { childList: true, characterData: true, subtree: true }); this.observers.push(mo); } catch { /* a document that cannot be observed */ }
       }
     }
+  }
+
+  private tokenVisible(t: ScanToken): boolean {
+    try {
+      const doc = t.node.ownerDocument;
+      const r = doc.createRange(); r.setStart(t.node, t.start); r.setEnd(t.node, t.end);
+      const rects = [...r.getClientRects()];
+      if (!rects.length) return false;
+      const view = doc.defaultView;
+      const h = view?.innerHeight ?? 0; const w = view?.innerWidth ?? 0;
+      return rects.some((x) => x.width > 0 && x.height > 0 && (h <= 0 || (x.bottom > 0 && x.top < h)) && (w <= 0 || (x.right > 0 && x.left < w)));
+    } catch { return false; }
+  }
+
+  private async persistEncounter(pending: { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] }): Promise<void> {
+    const record = this.d.recordEncounter;
+    const build = this.d.buildEncounter;
+    if (!record || !build) return;
+    for (let i = 0; i < pending.groups.length; i++) {
+      if (!this.on || this.d.doc.visibilityState === 'hidden' || this.languageId !== pending.languageId) return;
+      const ids = pending.groups[i];
+      if (!pending.tokens.some((t) => t.ids.some((id) => ids.includes(id)) && this.tokenVisible(t))) continue;
+      let result: unknown;
+      try { result = await record(build(ids, pending.languageId, pending.readerId)); } catch { this.retryEncounter(pending, i); return; }
+      if (!result || (typeof result === 'object' && 'ok' in result && (result as { ok?: unknown }).ok !== true)) { this.retryEncounter(pending, i); return; }
+      for (const id of ids) this.encountered.add(id);
+    }
+  }
+
+  private retryEncounter(pending: { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] }, from: number): void {
+    if (!this.on || this.d.doc.visibilityState === 'hidden' || this.languageId !== pending.languageId) return;
+    this.pendingEncounter = { ...pending, groups: pending.groups.slice(from) };
+    clearTimeout(this.encounterTimer);
+    this.encounterTimer = setTimeout(() => {
+      this.encounterTimer = undefined;
+      const next = this.pendingEncounter; this.pendingEncounter = undefined;
+      if (next && this.on && this.d.doc.visibilityState !== 'hidden' && this.languageId === next.languageId) void this.persistEncounter(next);
+    }, 1000);
   }
 
   private attachClick(): void {

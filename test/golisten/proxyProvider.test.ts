@@ -15,6 +15,7 @@ import { AZURE_LANGS, addStory, makeEnv } from './support';
 
 const KEY = 'SECRET-KEY-0123456789abcdef';
 const REGION = 'westeurope';
+const AUTH = 'mock-speech-token';
 const ORIGIN = 'http://localhost:5196';
 const tid = (lang: LanguageCode) => ids.text(lang, 'story-01');
 const SETUP = 'Set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env.local and restart the server.';
@@ -38,7 +39,7 @@ const STATUS_OK = { configured: true, provider: 'azure-speech', providerVersion:
 /** A fetch whose far end is the real proxy handler; `azure` is the mocked Azure behind it. */
 function proxyNetwork(opts: { env?: SpeechEnv; azure?: Handler; limit?: number } = {}) {
   const azure = mockFetch(opts.azure ?? (() => azureOk()));
-  const env = opts.env ?? { key: KEY, region: REGION };
+  const env = { ...(opts.env ?? { key: KEY, region: REGION }), authToken: AUTH };
   const limiter = createRateLimiter({ limit: opts.limit ?? 1000, now: () => Date.now() });
   const seen: Array<{ url: string; init: RequestInit }> = [];
   const net = (async (input: RequestInfo | URL, init?: RequestInit) => {
@@ -46,8 +47,10 @@ function proxyNetwork(opts: { env?: SpeechEnv; azure?: Handler; limit?: number }
     seen.push({ url: String(input), init: init ?? {} });
     const out = await handleSpeechRequest({
       method: init?.method ?? 'GET', path: u.pathname, query: Object.fromEntries(u.searchParams),
-      headers: { host: u.host, origin: ORIGIN, 'content-type': 'application/json' },
-      body: typeof init?.body === 'string' ? init.body : undefined,
+      headers: { host: u.host, origin: ORIGIN, authorization: `Bearer ${AUTH}`, 'content-type': 'application/json' },
+      body: typeof init?.body === 'string' && u.pathname.endsWith('/synthesize')
+        ? JSON.stringify({ ...(JSON.parse(init.body as string) as Record<string, unknown>), kind: 'sentence', sourcePermission: 'allowed' })
+        : typeof init?.body === 'string' ? init.body : undefined,
     }, env, { fetch: azure.fn, now: () => Date.now(), limiter, timeoutMs: 500 });
     return new Response(out.body as unknown as BodyInit, { status: out.status, headers: out.headers });
   }) as unknown as typeof fetch;

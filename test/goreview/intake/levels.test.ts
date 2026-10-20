@@ -15,13 +15,19 @@ const at = (level: KnowledgeLevel) => ({ ...knowledge('form:sq:librin'), level }
 describe('intake: the level is in the reasons', () => {
   it.each(KNOWLEDGE_LEVELS.filter((l) => l !== 'automatic'))('a %s unit follows the conservative progression gate', (level) => {
     const o = decideIntake(intakeInput({ knowledge: at(level) }));
-    if (level === 'new' || level === 'seen') {
+    if (level === 'new') {
       expect(o.decision).toBe('low-priority');
-      expect(o.reasons[0]).toContain(`level ${level === 'new' ? 'New' : 'Seen'}`);
+      expect(o.reasons[0]).toContain('level New');
       return;
     }
     expect(['test-now', 'test-later']).toContain(o.decision);
     expect(o.reasons.some((r) => r.startsWith('level ') && r.toLowerCase().startsWith(`level ${level}`))).toBe(true);
+  });
+
+  it('a Seen word encountered once is eligible for recognition with a comparative-priority caveat', () => {
+    const o = decideIntake(intakeInput({ knowledge: at('seen') }));
+    expect(o.proposed?.family).toBe('written-recognition');
+    expect(o.reasons.some((r) => r.includes('encountered, so eligible'))).toBe(true);
   });
 
   it('a row with no level (an older projection) adds no level line and changes nothing else', () => {

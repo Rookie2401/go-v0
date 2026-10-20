@@ -13,6 +13,7 @@ export function sanitizeSettings(raw: unknown): PrivacySettings {
   return {
     keepSnippets: false,
     remoteSpeechConsent: r.remoteSpeechConsent === true,
+    localOnlySpeech: r.localOnlySpeech !== false,
     externalProcessingConsent: r.externalProcessingConsent === true,
     ...(isDepth(r.explanationDepth) ? { explanationDepth: r.explanationDepth } : {}),
   };
@@ -29,6 +30,7 @@ export function createSettings(area: StorageArea) {
     const notes: string[] = [];
     const next: PrivacySettings = { ...cur };
     if (typeof p.remoteSpeechConsent === 'boolean') next.remoteSpeechConsent = p.remoteSpeechConsent;
+    if (typeof p.localOnlySpeech === 'boolean') next.localOnlySpeech = p.localOnlySpeech;
     if (typeof p.externalProcessingConsent === 'boolean') next.externalProcessingConsent = p.externalProcessingConsent;
     if (p.keepSnippets === true) notes.push('Keeping sentences is not available in this version; it stays off.');
     if ('explanationDepth' in p) {

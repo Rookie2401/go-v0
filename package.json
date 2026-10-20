@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Go — a missions-oriented language-acquisition system (Comprehensible Input Corpus, Bible Corpus, My Testimony) with GoLearn / GoListen / GoTell engines underneath.",
   "scripts": {
+    "speech:serve": "vite-node --config scripts/vite.config.ts server/startSpeech.ts",
     "stage0:validate": "vite-node scripts/stage0-validate.mts",
     "ladder:check": "vite-node scripts/ladder-check.mts",
     "ladder:place": "vite-node scripts/ladder-place.mts",
@@ -87,6 +88,7 @@
     "local:service": "vite-node packages/repository-service/src/main.ts --port 8790 --data data/local-repository --host 127.0.0.1"
   },
   "dependencies": {
+    "@capacitor/core": "8.5.3",
     "@open-spaced-repetition/binding": "0.5.0",
     "dexie": "^4",
     "pg": "^8.23.1",

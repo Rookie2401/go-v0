@@ -12,7 +12,8 @@ import { fixtureChunks, renderFixtureChunks } from '../../src/golisten';
 
 const KEY = 'SECRET-KEY-0123456789abcdef';
 const REGION = 'westeurope';
-const ENV: SpeechEnv = { key: KEY, region: REGION };
+const AUTH = 'local-only-token';
+const ENV: SpeechEnv = { key: KEY, region: REGION, authToken: AUTH };
 const HOST = 'localhost:5196';
 
 const wav24k = (text = 'hola mundo') => renderFixtureChunks(fixtureChunks(text, 'es'), { sampleRate: 24000 }).bytes;
@@ -29,11 +30,11 @@ function mockUpstream(handler: (url: string, init: RequestInit) => Response | Pr
   return { fn, calls };
 }
 
-const synthBody = (over: Record<string, unknown> = {}) => JSON.stringify({ text: 'Yo creo en Dios.', voice: 'es-MX-DaliaNeural', locale: 'es-MX', format: 'riff-24khz-16bit-mono-pcm', ...over });
+const synthBody = (over: Record<string, unknown> = {}) => JSON.stringify({ text: 'Yo creo en Dios.', voice: 'es-MX-DaliaNeural', locale: 'es-MX', format: 'riff-24khz-16bit-mono-pcm', sourcePermission: 'allowed', kind: 'phrase', ...over });
 const post = (body: string | Uint8Array | undefined, headers: Record<string, string> = {}): SpeechRequest => ({
-  method: 'POST', path: '/api/speech/synthesize', headers: { host: HOST, origin: `http://${HOST}`, 'content-type': 'application/json', ...headers }, body,
+  method: 'POST', path: '/api/speech/synthesize', headers: { host: HOST, origin: `http://${HOST}`, authorization: `Bearer ${AUTH}`, 'content-type': 'application/json', ...headers }, body,
 });
-const get = (path: string, query: Record<string, string> = {}, headers: Record<string, string> = {}): SpeechRequest => ({ method: 'GET', path, query, headers: { host: HOST, ...headers } });
+const get = (path: string, query: Record<string, string> = {}, headers: Record<string, string> = {}): SpeechRequest => ({ method: 'GET', path, query, headers: { host: HOST, authorization: `Bearer ${AUTH}`, ...headers } });
 
 function deps(fetchFn: typeof fetch, extra: Partial<SpeechDeps> = {}): SpeechDeps {
   return { fetch: fetchFn, now: () => 1_000_000, ...extra };
@@ -43,7 +44,50 @@ const parse = (r: SpeechResponse) => JSON.parse(text(r)) as Record<string, unkno
 /** Everything a caller could observe of a response. */
 const surface = (r: SpeechResponse) => `${r.status}\n${JSON.stringify(r.headers)}\n${typeof r.body === 'string' ? r.body : new TextDecoder('latin1').decode(r.body)}`;
 
-afterEach(() => { vi.restoreAllMocks(); });
+afterEach(() => { vi.restoreAllMocks(); vi.useRealTimers(); });
+
+describe('upstream body deadline', () => {
+  it.each(['voices', 'synthesize'])('aborts a stalled %s body after headers arrive and returns upstream-timeout', async (endpoint) => {
+    vi.useFakeTimers();
+    const lines: string[] = [];
+    let signal: AbortSignal | undefined;
+    let reading = false;
+    const upstream = mockUpstream((_url, init) => {
+      signal = init.signal as AbortSignal;
+      const read = () => {
+        reading = true;
+        return new Promise<never>((_resolve, reject) => {
+          // Some transports reject body reads with an ordinary error on abort.
+          signal!.addEventListener('abort', () => reject(new Error(KEY)), { once: true });
+        });
+      };
+      return { ok: true, status: 200, json: read, arrayBuffer: read } as unknown as Response;
+    });
+    const req = endpoint === 'voices' ? get('/api/speech/voices') : post(synthBody());
+    const pending = handleSpeechRequest(req, ENV, deps(upstream.fn, { timeoutMs: 50, log: (line) => lines.push(line) }));
+    await vi.advanceTimersByTimeAsync(0);
+    expect(reading).toBe(true);
+    expect(signal?.aborted).toBe(false);
+    await vi.advanceTimersByTimeAsync(50);
+    const result = await pending;
+    expect(signal?.aborted).toBe(true);
+    expect(result.status).toBe(504);
+    expect(parse(result)).toMatchObject({ error: 'upstream-timeout' });
+    expect(surface(result)).not.toContain(KEY);
+    expect(lines).toEqual(['upstream timeout']);
+    expect(vi.getTimerCount()).toBe(0);
+  });
+
+  it.each(['voices', 'synthesize'])('clears the %s deadline after the body completes', async (endpoint) => {
+    vi.useFakeTimers();
+    const upstream = mockUpstream(() => endpoint === 'voices' ? new Response('[]') : okWav());
+    const req = endpoint === 'voices' ? get('/api/speech/voices') : post(synthBody());
+    expect((await handleSpeechRequest(req, ENV, deps(upstream.fn, { timeoutMs: 50 }))).status).toBe(200);
+    expect(vi.getTimerCount()).toBe(0);
+    await vi.advanceTimersByTimeAsync(100);
+    expect(upstream.calls[0].init.signal?.aborted).toBe(false);
+  });
+});
 
 describe('status', () => {
   const noFetch = mockUpstream(() => { throw new Error('status must not call upstream'); });
@@ -106,16 +150,17 @@ describe('synthesize', () => {
   it('delivered locale is the VOICE\'s locale even when another was requested', async () => {
     const up = mockUpstream(() => okWav());
     const r = await handleSpeechRequest(post(synthBody({ locale: 'es-HN', voice: 'es-MX-DaliaNeural' })), ENV, deps(up.fn));
-    expect(r.headers['x-speech-requested-locale']).toBe('es-HN');
-    expect(r.headers['x-speech-delivered-locale']).toBe('es-MX');
+    expect(r.status).toBe(400);
+    expect(parse(r).message).toMatch(/locale must match/i);
+    expect(up.calls).toHaveLength(0);
   });
 
   it('caller SSML keeps its inner markup but is re-wrapped in the validated voice element', async () => {
     const up = mockUpstream(() => okWav());
-    await handleSpeechRequest(post(synthBody({ text: undefined, ssml: '<speak version="1.0"><voice name="evil">Yo creo en <lang xml:lang="es-ES">Dios</lang>.</voice></speak>' })), ENV, deps(up.fn));
-    const sent = String(up.calls[0].init.body);
-    expect(sent.startsWith('<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="es-MX"><voice name="es-MX-DaliaNeural">')).toBe(true);
-    expect(sent).toContain('<lang xml:lang="es-ES">Dios</lang>');
+    const r = await handleSpeechRequest(post(synthBody({ text: undefined, ssml: '<speak>Yo creo</speak>' })), ENV, deps(up.fn));
+    expect(r.status).toBe(400);
+    expect(parse(r).message).toMatch(/ssml is not accepted/i);
+    expect(up.calls).toHaveLength(0);
   });
 
   it('401 and 403 from Azure -> 401 missing-credentials (no retry hint, no upstream body)', async () => {
@@ -180,7 +225,7 @@ describe('synthesize', () => {
 
   it('unconfigured server: 401 missing-credentials with the instruction, and nothing is sent upstream', async () => {
     const up = mockUpstream(() => okWav());
-    const r = await handleSpeechRequest(post(synthBody()), {}, deps(up.fn));
+    const r = await handleSpeechRequest(post(synthBody()), { authToken: AUTH }, deps(up.fn));
     expect(r.status).toBe(401);
     expect(parse(r)).toMatchObject({ error: 'missing-credentials' });
     expect(text(r)).toMatch(/AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in \.env\.local/);
@@ -214,6 +259,33 @@ describe('synthesize', () => {
 });
 
 describe('guards', () => {
+  it('requires the configured local bearer token and the explicit practice source permission', async () => {
+    const up = mockUpstream(() => okWav());
+    const secured = ENV;
+    const missingAuth = await handleSpeechRequest(post(synthBody(), { authorization: undefined as unknown as string }), secured, deps(up.fn));
+    expect(missingAuth.status).toBe(401);
+    expect(parse(missingAuth)).toMatchObject({ error: 'auth-required' });
+    const wrongAuth = await handleSpeechRequest(post(synthBody(), { authorization: 'Bearer wrong' }), secured, deps(up.fn));
+    expect(wrongAuth.status).toBe(401);
+    const missingPermission = await handleSpeechRequest(post(synthBody({ sourcePermission: undefined, kind: undefined }), { authorization: `Bearer ${AUTH}` }), secured, deps(up.fn));
+    expect(missingPermission.status).toBe(400);
+    expect(up.calls).toHaveLength(0);
+    const allowed = await handleSpeechRequest(post(synthBody({ sourcePermission: 'allowed', kind: 'phrase' }), { authorization: `Bearer ${AUTH}` }), secured, deps(up.fn));
+    expect(allowed.status).toBe(200);
+    expect((up.calls[0].init.headers as Record<string, string>)['Ocp-Apim-Subscription-Key']).toBe(KEY);
+    expect(String(up.calls[0].init.body)).not.toContain('local-only-token');
+  });
+
+  it('applies configured text and body limits and exposes only the text limit in status', async () => {
+    const up = mockUpstream(() => okWav());
+    const env = { ...ENV, maxTextChars: 3, maxBodyBytes: 1000 };
+    const status = await handleSpeechRequest(get('/api/speech/status'), env, deps(up.fn));
+    expect(parse(status)).toMatchObject({ maxChars: 3 });
+    expect((await handleSpeechRequest(post(synthBody({ text: 'abcd' })), env, deps(up.fn))).status).toBe(400);
+    expect((await handleSpeechRequest(post('x'.repeat(1001)), env, deps(up.fn))).status).toBe(413);
+    expect(up.calls).toHaveLength(0);
+  });
+
   it('rejects an oversized body with 413 before anything else (string and bytes)', async () => {
     const up = mockUpstream(() => okWav());
     const big = synthBody({ text: 'a'.repeat(MAX_BODY_BYTES) });
@@ -240,7 +312,7 @@ describe('guards', () => {
     expect(up.calls).toHaveLength(0);
     // same origin (Origin = Host, or Sec-Fetch-Site same-origin / none, or no Origin at all) is accepted
     for (const headers of [{ origin: `http://${HOST}` }, { origin: `http://${HOST}`, 'sec-fetch-site': 'same-origin' }, { 'sec-fetch-site': 'none', origin: undefined as unknown as string }]) {
-      const h = Object.fromEntries(Object.entries(headers).filter(([, v]) => v !== undefined)) as Record<string, string>;
+      const h = { authorization: `Bearer ${AUTH}`, ...Object.fromEntries(Object.entries(headers).filter(([, v]) => v !== undefined)) } as Record<string, string>;
       expect((await handleSpeechRequest({ ...post(synthBody()), headers: { host: HOST, ...h } }, ENV, deps(up.fn))).status).toBe(200);
     }
   });

@@ -182,13 +182,14 @@ describe('what each orientation teaches about its own script or standard', () =>
 });
 
 describe('the sound statements are true of GoListen today (a change there must change the orientation)', () => {
-  it.each(['de', 'hi', 'th'])('%s: no voice can read it aloud, so the "cannot play a word yet" step is accurate', (lang) => {
+  it.each(['de', 'hi', 'th'])('%s: a matching device voice is practice only', (lang) => {
     const a = audioOf(lang);
-    expect(a.deviceVoiceTemplate, lang).toBe(false);
-    expect(a.remoteVoices, lang).toEqual([]);
+    expect(a.deviceVoiceTemplate, lang).toBe(true);
+    expect(a.remoteVoices, lang).toHaveLength(2);
+    expect(a.remoteVoices.every((id) => id.startsWith('azure-speech:')), lang).toBe(true);
     const s = TUTORIALS[lang].steps.find((x) => x.id === 'sound-and-audio')!;
-    expect(s.body).toMatch(/GoListen holds no voice that can read .* text aloud/);
-    expect(s.body).toMatch(/a remote voice only after you give consent and supply your own key/);
+    expect(s.body).toMatch(/matching .* voice from your device/);
+    expect(s.body).toMatch(/synthetic practice only/);
     expect(s.body).toMatch(/never counted as evidence that you can understand speech/);
   });
 
@@ -197,9 +198,9 @@ describe('the sound statements are true of GoListen today (a change there must c
     expect(TUTORIALS.de.steps.find((x) => x.id === 'sound-and-audio')!.body).toMatch(/one short demonstration clip, which is not a pronunciation resource/);
   });
 
-  it.each(['nb', 'nn'])('%s: no voice and no recording in GoListen, as the honesty step says', (lang) => {
+  it.each(['nb', 'nn'])('%s: a matching device voice is practice only, as the honesty step says', (lang) => {
     const a = audioOf(lang);
-    expect(a).toMatchObject({ recordings: 0, deviceVoiceTemplate: false, remoteVoices: [] });
-    expect(TUTORIALS[lang].steps.find((x) => x.id === 'honesty-experimental')!.body).toMatch(/GoListen holds no voice that can read Norwegian aloud, so a card cannot play a word yet/);
+    expect(a).toMatchObject({ recordings: 0, deviceVoiceTemplate: true, remoteVoices: [] });
+    expect(TUTORIALS[lang].steps.find((x) => x.id === 'honesty-experimental')!.body).toMatch(/matching .* voice, GoLearn can play a word as synthetic practice only/);
   });
 });

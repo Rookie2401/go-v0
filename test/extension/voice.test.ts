@@ -15,10 +15,88 @@ const speechWith = (voices: V[]) => {
 const utterance = (text: string) => ({ text, lang: '', rate: 1, voice: null as unknown, onend: null, onerror: null });
 const make = (voices: V[], remoteConsent = false) => {
   const speech = speechWith(voices);
-  return { speech, p: createDevicePronouncer({ speech, utterance, remoteConsent: () => remoteConsent, voiceWaitMs: 0 }) };
+  return { speech, p: createDevicePronouncer({ processingPermission: () => 'allowed', speech, utterance, remoteConsent: () => remoteConsent, voiceWaitMs: 0 }) };
 };
 
 describe('the device pronouncer (GoListen\'s device provider)', () => {
+  it('Stop cancels preparation while consent is pending', async () => {
+    const speech = speechWith([{ name: 'Local', lang: 'sq-AL', localService: true }]);
+    let resolveConsent!: (value: boolean) => void;
+    const p = createDevicePronouncer({ processingPermission: () => 'allowed', speech, utterance, voiceWaitMs: 0,
+      refreshConsent: () => new Promise<boolean>((resolve) => { resolveConsent = resolve; }) });
+    const pending = p.play('mirë', 'sq');
+    p.stop!();
+    resolveConsent(true);
+    expect(await pending).toMatchObject({ ok: false });
+    expect(speech.spoken).toHaveLength(0);
+  });
+
+  it('only the latest pronunciation can start when consent resolves out of order', async () => {
+    const speech = speechWith([{ name: 'Local', lang: 'sq-AL', localService: true }]);
+    const resolvers: Array<(value: boolean) => void> = [];
+    const p = createDevicePronouncer({ processingPermission: () => 'allowed', speech, utterance, voiceWaitMs: 0,
+      refreshConsent: () => new Promise<boolean>((resolve) => { resolvers.push(resolve); }) });
+    const old = p.play('old', 'sq');
+    const latest = p.play('latest', 'sq');
+    resolvers[1](true);
+    expect(await latest).toMatchObject({ ok: true });
+    resolvers[0](true);
+    expect(await old).toMatchObject({ ok: false });
+    expect(speech.spoken.map((u) => u.text)).toEqual(['latest']);
+  });
+
+  it('Stop cancels preparation while device voices are loading', async () => {
+    let voices: V[] = [];
+    let changed!: () => void;
+    const speech = { ...speechWith([]), getVoices: () => voices,
+      addEventListener: (_type: string, cb: () => void) => { changed = cb; }, removeEventListener() {} };
+    const p = createDevicePronouncer({ processingPermission: () => 'allowed', speech, utterance, voiceWaitMs: 1000 });
+    const pending = p.play('mirë', 'sq');
+    for (let i = 0; i < 4; i++) await Promise.resolve();
+    p.stop!();
+    voices = [{ name: 'Local', lang: 'sq-AL', localService: true }];
+    changed();
+    expect(await pending).toMatchObject({ ok: false });
+    expect(speech.spoken).toHaveLength(0);
+  });
+
+  it('a concurrent availability consent refresh cannot grant playback consent', async () => {
+    const speech = speechWith([{ name: 'Cloud', lang: 'sq-AL', localService: false }]);
+    const p = createDevicePronouncer({ processingPermission: () => 'allowed', speech, utterance, voiceWaitMs: 0,
+      refreshConsent: async (lang) => lang === 'es' });
+    const pending = p.play('mirë', 'sq');
+    await p.availability('es');
+    expect(await pending).toMatchObject({ ok: false });
+    expect(speech.spoken).toHaveLength(0);
+  });
+
+  it('refreshes remote consent again after preparation before starting speech', async () => {
+    const speech = speechWith([{ name: 'Cloud', lang: 'sq-AL', localService: false }]);
+    let checks = 0;
+    const p = createDevicePronouncer({ processingPermission: () => 'allowed', speech, utterance, voiceWaitMs: 0,
+      refreshConsent: async () => ++checks === 1 });
+    expect(await p.play('mirë', 'sq')).toMatchObject({ ok: false, message: 'Remote speech is off.' });
+    expect(checks).toBe(2);
+    expect(speech.spoken).toHaveLength(0);
+  });
+
+  it('rechecks consent at playback after the card was opened, and fails closed when the setting cannot be read', async () => {
+    const speech = speechWith([{ name: 'Cloud', lang: 'sq-AL', localService: false }]);
+    let consent: boolean | 'unavailable' = true;
+    const p = createDevicePronouncer({ processingPermission: () => 'allowed', speech, utterance, voiceWaitMs: 0, refreshConsent: async () => {
+      if (consent === 'unavailable') throw new Error('worker unavailable');
+      return consent;
+    } });
+    expect((await p.availability('sq')).available).toBe(true);
+    consent = false;
+    expect(await p.play('mirë', 'sq')).toMatchObject({ ok: false });
+    expect(speech.spoken).toHaveLength(0);
+    consent = true;
+    expect(await p.play('mirë', 'sq')).toMatchObject({ ok: true });
+    consent = 'unavailable';
+    expect(await p.play('mirë', 'sq')).toMatchObject({ ok: false });
+    expect(speech.spoken).toHaveLength(1);
+  });
   it('plays a local Albanian voice, labelled practice, and reports the voice id', async () => {
     const { speech, p } = make([{ name: 'Anila', lang: 'sq-AL', localService: true }]);
     expect(await p.availability('sq')).toEqual({ available: true, note: 'Computer voice, practice only: not counted as listening. Nothing is sent anywhere.' });
@@ -47,12 +125,14 @@ describe('the device pronouncer (GoListen\'s device provider)', () => {
     expect(await refused.p.play('shtëpinë', 'sq')).toMatchObject({ ok: false });
     expect(refused.speech.spoken).toEqual([]);
     const allowed = make([cloud], true);
-    expect((await allowed.p.availability('sq')).note).toMatch(/not local; you allowed it/);
+    const note = (await allowed.p.availability('sq')).note;
+    expect(note).toMatch(/not local.*sends text to its speech service/);
+    expect(note).toMatch(/you allowed remote speech/);
     expect(await allowed.p.play('shtëpinë', 'sq')).toMatchObject({ ok: true });
   });
 
   it('no speech synthesis at all is a plain line', async () => {
-    const p = createDevicePronouncer({ speech: null, voiceWaitMs: 0 });
+    const p = createDevicePronouncer({ processingPermission: () => 'allowed', speech: null, voiceWaitMs: 0 });
     expect(await p.availability('sq')).toEqual({ available: false, note: 'Speech is not available in this browser.' });
     expect(await p.play('x', 'sq')).toEqual({ ok: false, message: 'Speech is not available in this browser.' });
   });
@@ -74,7 +154,7 @@ describe('the device pronouncer (GoListen\'s device provider)', () => {
   it('a voice list that arrives late is announced through onChange', () => {
     const listeners: Array<() => void> = [];
     const speech = { ...speechWith([]), addEventListener: (_t: string, cb: () => void) => { listeners.push(cb); }, removeEventListener: (_t: string, cb: () => void) => { listeners.splice(listeners.indexOf(cb), 1); } };
-    const p = createDevicePronouncer({ speech, utterance, voiceWaitMs: 0 });
+    const p = createDevicePronouncer({ processingPermission: () => 'allowed', speech, utterance, voiceWaitMs: 0 });
     let n = 0;
     const off = p.onChange!(() => { n++; });
     listeners.forEach((l) => l());

@@ -125,7 +125,7 @@ describe('who may send which message', () => {
 });
 
 describe('golearn:record from a tab', () => {
-  it('only the six reader kinds are accepted from a tab: every OTHER event kind of the contract is refused with kind-not-allowed', async () => {
+  it('only the seven reader kinds are accepted from a tab (EncounterRecorded since GoLearn Active records page encounters, 2026-10-20): every OTHER event kind of the contract is refused with kind-not-allowed', async () => {
     const x = await readyRig();
     const allKinds = Object.values(EVENT_KINDS).flat() as string[];
     const refused = allKinds.filter((k) => !CONTENT_EVENT_KINDS.includes(k));
@@ -137,7 +137,7 @@ describe('golearn:record from a tab', () => {
     for (const kind of ['ConsentGiven', 'ConsentWithdrawn', 'PrivacySettingChanged', 'PreferenceChanged', 'EnrolmentChanged', 'PackInstalled']) {
       expect(await x.rig.content({ type: MSG.record, event: { ...pendingEvent(), kind, producer: { app: 'golearn-app', version: '1', deviceId: 'x' } } }), kind).toMatchObject({ ok: false });
     }
-    expect(CONTENT_EVENT_KINDS).toEqual(['SelectionLookedUp', 'AnalysisShown', 'AssistanceRequested', 'PronunciationPlayed', 'ItemMarked', 'AnalysisCorrected']);
+    expect(CONTENT_EVENT_KINDS).toEqual(['SelectionLookedUp', 'EncounterRecorded', 'AnalysisShown', 'AssistanceRequested', 'PronunciationPlayed', 'ItemMarked', 'AnalysisCorrected']);
     expect(PAGE_EVENT_KINDS.filter((k) => !CONTENT_EVENT_KINDS.includes(k)).sort()).toEqual(['ConsentGiven', 'ConsentWithdrawn', 'PackInstalled', 'PreferenceChanged']);
   });
 

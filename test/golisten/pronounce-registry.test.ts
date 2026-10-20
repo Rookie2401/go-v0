@@ -39,6 +39,42 @@ describe('the Albanian registry', () => {
       if (e.synthetic) { expect(e.suitableForAssessment).toBe(false); expect(e.qualityVerification).not.toBe('native-reviewed'); }
     }
   });
+  it('default registries expose the same strict device tags as GoLearn for experimental packs', () => {
+    const byLanguage = new Map(defaultRegistries().map((r) => [r.languageId, r]));
+    for (const [languageId, tags] of [
+      ['de', ['de-DE', 'de-AT', 'de-CH', 'de']],
+      ['hi', ['hi-IN', 'hi']],
+      ['th', ['th-TH', 'th']],
+      ['nb', ['nb-NO', 'nb', 'no-NO', 'no']],
+      ['nn', ['nn-NO', 'nn']],
+    ] as const) {
+      const entry = byLanguage.get(languageId)!.entries.find((e) => e.source.kind === 'device')!;
+      expect(entry.source).toEqual({ kind: 'device', langTags: tags });
+      expect(entry.synthetic).toBe(true);
+      expect(entry.suitableForAssessment).toBe(false);
+    }
+  });
+
+  it('registers Azure fallback voices for Hindi and Thai using the documented standard voice ids', () => {
+    const byLanguage = new Map(defaultRegistries().map((r) => [r.languageId, r]));
+    expect(byLanguage.get('hi')!.entries.filter((e) => e.provider === 'remote').map((e) => e.source.kind === 'remote' && e.source.providerVoice))
+      .toEqual(['hi-IN-SwaraNeural', 'hi-IN-MadhurNeural']);
+    expect(byLanguage.get('th')!.entries.filter((e) => e.provider === 'remote').map((e) => e.source.kind === 'remote' && e.source.providerVoice))
+      .toEqual(['th-TH-PremwadeeNeural', 'th-TH-NiwatNeural']);
+    for (const languageId of ['hi', 'th'] as const) {
+      for (const entry of byLanguage.get(languageId)!.entries.filter((e) => e.provider === 'remote')) {
+        expect(entry).toMatchObject({ execution: 'remote', synthetic: true, qualityVerification: 'unverified', suitableForAssessment: false, licence: AZURE_LICENCE });
+      }
+    }
+  });
+
+  it('keeps German recording/device coverage and adds documented Azure fallback voices', () => {
+    const de = defaultRegistries().find((r) => r.languageId === 'de')!;
+    expect(de.entries.filter((e) => e.provider === 'recorded')).toHaveLength(1);
+    expect(de.entries.filter((e) => e.provider === 'device')).toHaveLength(1);
+    expect(de.entries.filter((e) => e.provider === 'remote').map((e) => e.source.kind === 'remote' && e.source.providerVoice))
+      .toEqual(['de-DE-KatjaNeural', 'de-DE-ConradNeural']);
+  });
   it('merges registries of the same language', () => {
     const merged = indexRegistries([albanianRegistry(), deviceRegistry('sq', ['sq'], 'Albanian')]).get('sq')!;
     expect(merged.entries).toHaveLength(4);
@@ -141,8 +177,8 @@ describe('listing and availability', () => {
   it('the German demonstration appears as one available recorded voice', async () => {
     const { g } = make();
     const de = await g.availability('de');
-    expect(de.voices).toHaveLength(1);
-    expect(de.voices[0]).toMatchObject({ provider: 'recorded', state: 'available', synthetic: false });
+    expect(de.voices.filter((v) => v.provider === 'recorded')).toHaveLength(1);
+    expect(de.voices.find((v) => v.provider === 'recorded')).toMatchObject({ state: 'available', synthetic: false });
   });
 });
 

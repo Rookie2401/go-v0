@@ -57,27 +57,34 @@ export function createPlayback(driver: PlaybackDriver, opts: PlaybackOptions): P
     const mine = ++token;
     hearings += 1;
     setState('playing');
+    if (disposed || mine !== token || state !== 'playing') return;
     startedAt = opts.now();
     try {
       driver.start(rate, {
         ended: () => {
           if (mine !== token || disposed) return;
-          setState('ended');
+          token += 1;
           measured = Math.max(0, opts.now() - startedAt);
+          setState('ended');
           for (const cb of [...listeners]) safe(cb);
         },
-        failed: () => { if (mine === token && !disposed) setState('error'); },
-        interrupted: () => { if (mine === token && !disposed) setState('idle'); },
+        failed: () => { if (mine === token && !disposed) { token += 1; setState('error'); } },
+        interrupted: () => { if (mine === token && !disposed) { token += 1; setState('idle'); } },
       });
     } catch {
-      setState('error');
+      if (mine === token && !disposed) { token += 1; setState('error'); }
     }
   };
 
   return {
     play() {
       if (disposed || state === 'playing') return;
-      if (state === 'paused') { safe(() => driver.resume()); setState('playing'); return; }
+      if (state === 'paused') {
+        setState('playing');
+        if (disposed || (state as PlaybackState) !== 'playing') return;
+        try { driver.resume(); } catch { token += 1; setState('error'); }
+        return;
+      }
       begin();
     },
     pause() {
@@ -120,6 +127,7 @@ export function createPlayback(driver: PlaybackDriver, opts: PlaybackOptions): P
       disposed = true;
       listeners.clear();
       setState('idle');
+      stateListeners.clear();
     },
   };
 }

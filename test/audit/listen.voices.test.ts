@@ -1,7 +1,7 @@
 // @vitest-environment node
 /**
  * AUDIT §19 (part 2) — device voices are strictly language-matched, and the per-language voice / audio-quality table
- * (sq, de, es, hi, th, nb, nn) is BUILT here from `defaultRegistries()`, the packs' pronunciation blocks and probes of the
+ * (sq, de, es, hi, th, nb, nn, he, el, la) is BUILT here from `defaultRegistries()`, the packs' pronunciation blocks and probes of the
  * two device-voice paths (the shared GoListen and the GoLearn extension's content-script pronouncer). "none" is stated
  * where nothing exists. The rows are written to the audit rows file when AUDIT_ROWS_DIR is set.
  */
@@ -16,7 +16,7 @@ import { flushRowsAfterAll, note } from './model.support';
 
 flushRowsAfterAll('listen.voices');
 
-const LANGS = ['sq', 'de', 'es', 'hi', 'th', 'nb', 'nn'] as const;
+const LANGS = ['sq', 'de', 'es', 'hi', 'th', 'nb', 'nn', 'he', 'el', 'la'] as const;
 type Lang = (typeof LANGS)[number];
 
 const opts = (o: Partial<GoListenOptions> = {}): GoListenOptions => ({
@@ -77,7 +77,7 @@ describe('§19 device voices are strictly language-matched (shared GoListen, Alb
     expect(noConsent.ok).toBe(false);
     if (!noConsent.ok) expect(noConsent.reason).toBe('no-consent');
     expect(speechNet.spoken).toEqual([]);
-    const withConsent = await createGoListen(opts({ speech: speechNet, consent: () => ({ remoteSpeech: true }) })).pronounce({ languageId: 'sq', text: 'shkollë', kind: 'word', autoplay: true });
+    const withConsent = await createGoListen(opts({ speech: speechNet, consent: () => ({ remoteSpeech: true }) })).pronounce({ languageId: 'sq', text: 'shkollë', kind: 'word', autoplay: true, processingPermission: 'allowed', preferred: 'device' });
     expect(withConsent.ok).toBe(true);
 
     const both = fakeSpeech([SQ_NET, SQ, EN]);
@@ -98,8 +98,8 @@ describe('§19 device voices are strictly language-matched (shared GoListen, Alb
 
 describe('§19 the extension\'s content-script pronouncer uses the same strict rule for every language of the product', () => {
   /** Voices of languages near to each target; none of them may ever be used for it. */
-  const OTHER_TAGS = ['en-US', 'sq-AL', 'de-DE', 'es-ES', 'hi-IN', 'th-TH', 'nb-NO', 'nn-NO', 'da-DK', 'sv-SE', 'nl-NL', 'pt-PT', 'ca-ES', 'ur-IN', 'mr-IN', 'sr-RS', 'mk-MK', 'lo-LA', 'is-IS'];
-  const tagsOf = (l: Lang): string[] => ({ sq: ['sq'], de: ['de'], es: ['es'], hi: ['hi'], th: ['th'], nb: ['nb', 'no'], nn: ['nn'] }[l]);
+  const OTHER_TAGS = ['en-US', 'sq-AL', 'de-DE', 'es-ES', 'hi-IN', 'th-TH', 'nb-NO', 'nn-NO', 'he-IL', 'el-GR', 'da-DK', 'sv-SE', 'nl-NL', 'pt-PT', 'ca-ES', 'ur-IN', 'mr-IN', 'sr-RS', 'mk-MK', 'lo-LA', 'is-IS'];
+  const tagsOf = (l: Lang): string[] => ({ sq: ['sq'], de: ['de'], es: ['es'], hi: ['hi'], th: ['th'], nb: ['nb', 'no'], nn: ['nn'], he: ['he', 'iw'], el: ['el'], la: ['la', 'it'] }[l]); // la: the Italian voice is Latin's registered stand-in (deviceTags.ts)
   const familyOf = (tag: string): string => tag.toLowerCase().split(/[-_]/)[0]!;
 
   it.each(LANGS)('%s: no voice is used when only other languages\' voices are installed; its own voice is used when present', async (lang) => {
@@ -112,7 +112,7 @@ describe('§19 the extension\'s content-script pronouncer uses the same strict r
     expect(played.ok).toBe(false);
     expect(speech.spoken).toEqual([]);
 
-    const own = voice(`Own ${lang}`, lang === 'nb' ? 'nb-NO' : `${lang}-${lang === 'sq' ? 'AL' : lang === 'de' ? 'DE' : lang === 'es' ? 'ES' : lang === 'hi' ? 'IN' : lang === 'th' ? 'TH' : 'NO'}`);
+    const own = voice(`Own ${lang}`, lang === 'nb' ? 'nb-NO' : `${lang}-${lang === 'sq' ? 'AL' : lang === 'de' ? 'DE' : lang === 'es' ? 'ES' : lang === 'hi' ? 'IN' : lang === 'th' ? 'TH' : lang === 'he' ? 'IL' : lang === 'el' ? 'GR' : lang === 'la' ? 'VA' : 'NO'}`);
     const speech2 = fakeSpeech([...others, own]);
     const p2 = createDevicePronouncer({ speech: speech2, utterance: fakeUtterance, voiceWaitMs: 0 });
     expect((await p2.availability(lang)).available).toBe(true);
@@ -144,6 +144,9 @@ const PROBE: Record<Lang, string[]> = {
   th: ['th', 'th-TH'],
   nb: ['nb', 'nb-NO', 'no', 'no-NO', 'nn-NO'],
   nn: ['nn', 'nn-NO', 'nb-NO', 'no', 'no-NO'],
+  he: ['he', 'he-IL', 'iw', 'yi', 'ar-SA'],
+  el: ['el', 'el-GR', 'el-CY', 'grc', 'tr-TR'],
+  la: ['la', 'la-VA', 'it', 'it-IT', 'es-ES', 'fr-FR', 'ro-RO'],
 };
 
 async function acceptedTags(lang: Lang): Promise<string[]> {
@@ -220,8 +223,11 @@ describe('§19 per-language voice and audio-quality table (sq, de, es, hi, th, n
     expect(table.filter((r) => r.registry === 'none').length + table.filter((r) => r.registry === 'yes').length).toBe(LANGS.length);
     // the extension accepts a device voice for every language of the product, but only for its own tags
     for (const l of LANGS) expect(row(l).deviceExt, l).not.toBe('none');
-    expect(row('es').deviceExt).toBe('es, es-ES, es-MX, es-US, es-HN');
+    expect(row('es').deviceExt).toBe('es-ES, es-MX, es-HN'); // the probe inventory has no es-419 voice
     expect(row('nn').deviceExt).toBe('nn, nn-NO');
+    expect(row('he').deviceExt).toBe('he, he-IL, iw');
+    expect(row('el').deviceExt).toBe('el, el-GR');
+    expect(row('la').deviceExt).toBe('la, la-VA, it, it-IT'); // the Italian stand-in is registered; Spanish, French, Romanian never serve Latin
     expect(row('sq').deviceExt).toBe('sq, sq-AL');
   });
 
@@ -241,14 +247,13 @@ describe('§19 per-language voice and audio-quality table (sq, de, es, hi, th, n
     expect(r.gaps.join(' ')).toMatch(/No Albanian recordings/);
   });
 
-  it('DEFECT D7 (fixed): every pack registryRef names a registry that exists and every language answers; hi, th, nb, nn declare NO voice and NO audio (no voice is invented); sq and es are hearable with a matching device voice', async () => {
+  it('DEFECT D7 (fixed): every pack registryRef names a registry that exists and every language answers; device speech is available only for each language\'s strict tags', async () => {
     const registries = indexRegistries(defaultRegistries());
     const dangling = LANGS.filter((l) => !registries.has(PACKS[l]!.pronunciation.registryRef.replace('golisten:', '')));
     const detail: string[] = [];
     const hearable: string[] = [];
     // a typical device voice for each language (a regional tag, as phones and desktops ship them)
-    const TYPICAL: Record<Lang, string> = { sq: 'sq-AL', de: 'de-DE', es: 'es-ES', hi: 'hi-IN', th: 'th-TH', nb: 'nb-NO', nn: 'nn-NO' };
-    const NO_AUDIO = ['hi', 'th', 'nb', 'nn'] as const;
+    const TYPICAL: Record<Lang, string> = { sq: 'sq-AL', de: 'de-DE', es: 'es-ES', hi: 'hi-IN', th: 'th-TH', nb: 'nb-NO', nn: 'nn-NO', he: 'he-IL', el: 'el-GR', la: 'it-IT' };
     for (const lang of LANGS) {
       const deps = createAudioDeps({ consent: () => false, registries: defaultRegistries(), speech: fakeSpeech([voice(`Own ${lang}`, TYPICAL[lang])]), audio: fakeAudio(900), voiceWaitMs: 0, utterance: fakeUtterance, objectUrl: fakeObjectUrls() });
       const g = createGoListen(opts({ speech: fakeSpeech([voice(`Own ${lang}`, TYPICAL[lang])]) }));
@@ -261,13 +266,8 @@ describe('§19 per-language voice and audio-quality table (sq, de, es, hi, th, n
       if (usable) hearable.push(lang);
       detail.push(`${lang}: registry ${registries.has(lang) ? 'yes' : 'none'}, entries ${registries.get(lang)?.entries.length ?? 0}, availability ${avail}, arbitrary word ${'unavailable' in stim ? 'unavailable' : 'prepared'}`);
     }
-    for (const l of NO_AUDIO) {
-      const r = registries.get(l)!;
-      expect(r.entries, `${l} declares no voice, no recording, no device template`).toEqual([]);
-      expect(r.gaps.join(' ')).toMatch(/nothing is claimed/);
-    }
-    expect(hearable).toEqual(['sq', 'es']); // only the languages that really have a device template (and Azure) are hearable; nothing was invented
-    note('D7', '§19', 'GoReview/GoPractice audio availability per language with a matching device voice installed; pack registryRef resolution', 'every registryRef resolves; every language answers; no voice invented for hi/th/nb/nn', `registryRef with no registry: [${dangling}]; hearable with a typical device voice: [${hearable}] (${detail.join('; ')}). Open: de reports available (one demonstration clip) but cannot speak an arbitrary word.`);
+    expect(hearable).toEqual(LANGS); // every language has a strict device template; synthetic speech remains practice only
+    note('D7', '§19', 'GoReview/GoPractice audio availability per language with a matching device voice installed; pack registryRef resolution', 'every registryRef resolves; every language answers; device speech is offered only for its own language tags', `registryRef with no registry: [${dangling}]; hearable with a typical device voice: [${hearable}] (${detail.join('; ')}).`);
     expect(dangling).toEqual([]);
   });
 });

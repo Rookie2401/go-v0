@@ -17,15 +17,14 @@ import { createMemoryMetricsStore } from '../metrics';
 import { PARSER_LANGUAGES, getAnalyser, hasAnalyser, parseSelection } from '../parser';
 import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from '../platform';
 import { createCardUI } from '../popup/card';
-import type { Pronouncer } from '../popup/view';
 import type { ActivateMessage } from '../protocol';
-import { PENDING_IDENTITY, createMemoryEncounterStore, type Identity } from '../store';
+import { PENDING_IDENTITY, buildEncounterEvent, createMemoryEncounterStore, type Identity } from '../store';
 import { ActiveMode } from './active';
 import { LookupController } from './controller';
 import { createBridge } from './services';
-import { createDevicePronouncer } from './voice';
+import { createGoListenPronouncer } from './voice';
 import { createBrowserTranslationProvider, createTranslationEngine } from '../translation/provider';
-import { createLocalAlbanianTranslationProvider } from '../translation/localProvider';
+import { createLocalTranslationProvider } from '../translation/localProvider';
 import { migjeniTitleReferenceProvider } from '../translation/referenceProvider';
 
 const GLOBAL_KEY = '__goLearnExtension';
@@ -46,18 +45,14 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   const identity: Identity = { ...PENDING_IDENTITY };
 
   // pronunciation: GoListen's device provider; whether a non-local browser voice may be used is the learner's setting, asked of the background
-  let remoteConsent = false;
-  const device = createDevicePronouncer({ speech: (globalThis as unknown as { speechSynthesis?: Parameters<typeof createDevicePronouncer>[0]['speech'] }).speechSynthesis ?? null, remoteConsent: () => remoteConsent });
-  const pronouncer: Pronouncer = {
-    ...device,
-    availability: async (lang) => {
-      const info = await bridge?.pronounceInfo(lang);
-      remoteConsent = info?.remoteConsent === true;
-      return device.availability(lang);
-    },
-  };
+  const pronouncer = createGoListenPronouncer({
+    speech: (globalThis as unknown as { speechSynthesis?: Parameters<typeof createGoListenPronouncer>[0]['speech'] }).speechSynthesis ?? null,
+    speechBridge: async (request) => bridge?.speech?.(request),
+    refreshConsent: async (lang) => (await bridge?.pronounceInfo(lang))?.remoteConsent === true,
+  });
 
   const holder: { controller?: LookupController } = {};
+  const activeSessionId = `active:${Date.now().toString(36)}:${Math.random().toString(36).slice(2, 8)}`;
   const ui = createCardUI({ doc, pronouncer, onDismiss: () => holder.controller?.onCardDismissed() });
   const fallbackEvents = bridge ? undefined : createMemoryEncounterStore();
   const adapters = createAdapters(doc);
@@ -83,7 +78,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
     services: bridge,
     translationEngine: createTranslationEngine({ providers: [
       migjeniTitleReferenceProvider,
-      ...(bridge?.translateSentence ? [createLocalAlbanianTranslationProvider((request) => bridge.translateSentence!(request))] : []),
+      ...(bridge?.translateSentence ? [createLocalTranslationProvider((request) => bridge.translateSentence!(request))] : []),
       createBrowserTranslationProvider(),
     ] }),
     analysers: [...PARSER_LANGUAGES],
@@ -98,6 +93,11 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   const active = new ActiveMode({
     doc, controller, adapters, ui, adapterOf: getAnalyser, loadAnalyser,
     profile: bridge?.activeProfile ? (unitIds, languageId) => bridge.activeProfile!({ unitIds, languageId }) : undefined,
+    recordEncounter: bridge?.events.append,
+    buildEncounter: (ids, languageId, readerId) => buildEncounterEvent({
+      languageId, itemIds: ids, readerId, identity, version: chromeApi?.runtime.getManifest?.().version ?? '0.0.0',
+      sessionId: activeSessionId, now: new Date(),
+    }),
   });
   w[GLOBAL_KEY] = { controller, active };
 

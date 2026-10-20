@@ -101,6 +101,9 @@ export type CorrectionState = { state: 'idle' } | { state: 'sending' } | { state
 export interface CardView {
   /** Language of the enrolment, as a learner-facing name ("Albanian"). */
   languageName: string;
+  pronunciationContext?: { readerId?: string; varietyId?: string; kind?: 'word' | 'phrase' | 'sentence' };
+  /** Transient reader context for an explicit sentence playback action; never stored in events. */
+  pronunciationSentence?: string;
   depth: ExplanationDepth;
   depthOrigin?: string;
   gloss: GlossView;
@@ -152,7 +155,7 @@ export type PlayResult = { ok: true; voice: 'synthetic' | 'recorded'; voiceId?: 
 /** How the card pronounces. The real one wraps GoListen's device provider (content/voice.ts); tests pass fakes. */
 export interface Pronouncer {
   availability(languageId: string): PronounceAvailability | Promise<PronounceAvailability>;
-  play(text: string, languageId: string): PlayResult | Promise<PlayResult>;
+  play(text: string, languageId: string, context?: { readerId?: string; varietyId?: string; kind?: 'word' | 'phrase' | 'sentence' }): PlayResult | Promise<PlayResult>;
   stop?(): void;
   /** The shared player reports delayed browser failures as well as normal completion. */
   onPlaybackState?(cb: (state: 'idle' | 'playing' | 'paused' | 'ended' | 'error') => void): () => void;

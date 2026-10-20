@@ -344,7 +344,7 @@ export class LookupController {
       };
 
       // ── the learner's own interactions with this card ──
-      const holder: { ictx?: InteractionContext } = {};
+      const holder: { ictx?: InteractionContext; why?: string } = {};
       let translationRequest = 0;
       // a press on the card can come before the lookup event has its context (the card is on screen a few frames earlier): it waits for it, briefly
       const ictxReady: { resolve?: () => void; promise: Promise<void> } = { promise: Promise.resolve() };
@@ -356,8 +356,9 @@ export class LookupController {
           await Promise.race([ictxReady.promise, new Promise<void>((r) => { timer = setTimeout(r, 3000); })]);
           clearTimeout(timer);
         }
-        if (!holder.ictx || this.disposed) return false;
+        if (!holder.ictx || this.disposed) { holder.why = 'the lookup of this word was not ready'; return false; }
         const res = await append(build({ ...holder.ictx, now: this.now() }));
+        holder.why = res.ok ? undefined : res.error;
         return res.ok;
       };
       // the learner's own mark on this card: shown at once when pressed (the profile replies never take it back), kept in the Repository by the same press
@@ -461,7 +462,7 @@ export class LookupController {
             } else if (marking.pressed === mark) {
               marking.pressed = before.pressed; marking.shown = before.shown;
               this.d.ui.update({ rated: before.shown });
-              this.d.ui.setFeedback('Could not save that. Try again.');
+              this.d.ui.setFeedback(`Could not save that${holder.why ? `: ${saveFailureWords(holder.why)}` : ''}. Try again.`);
             }
           });
         },
@@ -470,7 +471,7 @@ export class LookupController {
       const anchor = usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed;
       this.closeCard('new-lookup');
       this.currentRange = usedFallbackText ? undefined : sel.range;
-      this.d.ui.show(card, anchor, { focus: req.focus, view: { ...initialView(languageName), ...view }, actions });
+      this.d.ui.show(card, anchor, { focus: req.focus, view: { ...initialView(languageName), ...view, pronunciationSentence: ctx.kind === 'sentence' ? parseCtx.sentence : undefined, pronunciationContext: { readerId: adapter.id, varietyId: language.varietyId, kind: card.tokenCount > 1 ? 'phrase' : 'word' } }, actions });
       this.stampLanguage(language);
       timer.mark('popupPositioned');
       if (this.currentRange) this.watchLayout(adapter, my);
@@ -857,4 +858,10 @@ export function profileViewFrom(card: CardModel, reply: ProfileReply | undefined
   const mark = selfMarkOfRows(wordRows);
   // the word's level (the learner's mark, else the engine's, else the rows read with the page's thresholds) and how often it was met before: the card's rating row and its footer
   return { state: 'ready', met, recognition, weak, level: levelOfRows(wordRows), encounters: encountersOfRows(wordRows), ...(reply.stale ? { stale: true } : {}), ...(mark ? { selfMark: levelOfMark(mark.mark) } : {}) };
+}
+
+/** The worker's reason for refusing a write, in a short phrase for the card (never blind: the learner and the log both see why). */
+function saveFailureWords(why: string): string {
+  const w = why.replace(/\s+/g, ' ').replace(/[.\s]+$/, '').trim();
+  return (w.length > 90 ? `${w.slice(0, 89)}…` : w) || 'unknown reason';
 }

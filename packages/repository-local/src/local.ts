@@ -10,6 +10,7 @@
  * There is no password and no account in the sense of the server: the local account row says `localOnly`, its email is `local@device`, and
  * the session token exists in memory only (a restart makes a new one).
  */
+import { MAX_SURFACE_CHARS, surfaceFromEncounterUnitId } from '../../repository-contract/src';
 import type { Account, GoEvent, Learner } from '../../repository-contract/src';
 import { createProjectionEngine } from '../../repository-engine/src';
 import { createMemoryStore } from '../../repository-store/src/memory';
@@ -130,8 +131,8 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
   let lastWaiting = 0;
 
   async function build(keepDeviceId: string | undefined): Promise<State> {
-    const stats: PersistStats = { writes: 0, failures: 0 };
-    const io: PersistIO = { area: opts.area, prefix, keys, stats };
+    const stats: PersistStats = { writes: 0, failures: 0, pendingWrites: 0 };
+    const io: PersistIO = { area: opts.area, prefix, keys, stats, pendingWrites: {} };
     const stored = (await opts.area.get(keys.meta))[keys.meta] as Partial<LocalMeta> | undefined;
     const valid = !!stored && stored.format === FORMAT && typeof stored.learnerId === 'string' && typeof stored.deviceId === 'string' && typeof stored.accountId === 'string' && typeof stored.createdAt === 'string';
     const wantDevice = opts.deviceId ?? keepDeviceId;
@@ -184,13 +185,19 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
   const register = async (events: GoEvent[]): Promise<void> => {
     const seen = new Set<string>();
     for (const e of events) {
-      if (e.kind !== 'SelectionLookedUp') continue;
-      const surface = (e.payload as { surface?: unknown }).surface;
-      if (typeof surface !== 'string' || !surface.trim()) continue;
-      const k = `${e.languageId}\u0000${surface}`;
-      if (seen.has(k)) continue;
-      seen.add(k);
-      try { await state.linguistics.resolveAndStore({ languageId: e.languageId, surface }); } catch { /* a later lookup registers it */ }
+      const ids = e.kind === 'EncounterRecorded' && (e.subject?.itemIds?.length ?? 0) <= 4 ? e.subject?.itemIds ?? [] : [undefined];
+      const surfaces = e.kind === 'SelectionLookedUp'
+        ? [(e.payload as { surface?: unknown }).surface]
+        : ids.map((id) => {
+          return surfaceFromEncounterUnitId(id, e.languageId);
+        });
+      for (const surface of surfaces) {
+        if (typeof surface !== 'string' || !surface.trim() || surface.length > MAX_SURFACE_CHARS) continue;
+        const k = `${e.languageId}\u0000${surface}`;
+        if (seen.has(k)) continue;
+        seen.add(k);
+        try { await state.linguistics.resolveAndStore({ languageId: e.languageId, surface }); } catch { /* a later lookup registers it */ }
+      }
     }
   };
   const context = (): TransferContext => ({ io: state.io, store: state.store, learnerId: state.meta.learnerId, now, project, register });
@@ -208,6 +215,8 @@ export async function openLocalRepository(opts: OpenLocalOptions): Promise<Local
     rebuild: () => lock.run(async () => { await state.engine.rebuild(state.meta.learnerId); }),
     clear: () => lock.run(async () => {
       const mine = await opts.area.list(prefix);
+      mine.push(...Object.keys(state.io.pendingWrites));
+      if (state.io.pendingMeta) mine.push(state.io.keys.meta);
       await removeRows(state.io, mine);
       state = await build(state.meta.deviceId);
       api.token = state.token;

@@ -206,7 +206,7 @@ describe('§17 intake refuses a candidate whose analysis is conflicted, invalida
     const f = (await facts.factsFor(FORM, 'sq'))!;
     const outcomes = await gatherCandidates({
       api: { candidates: async () => stale, knowledge: async (ids) => w.engine.knowledge(LEARNER, ids) },
-      facts, audio: async () => AUDIO, deck: [], saved: new Set(), preferences: PREFS, now: NOW, enrolmentId: ENROL,
+      facts, audio: async () => AUDIO, deck: [], saved: new Set([FORM]), preferences: PREFS, now: NOW, enrolmentId: ENROL,
     });
     const mine = outcomes.find((o) => o.unitId === FORM)!;
     note('D5', '§17', 'stale eligible candidate + invalidated analysis through gatherCandidates', 'too-uncertain / needs-validation, nothing proposed', `${mine.decision}, proposed ${mine.proposed?.family}; facts.status=${f.status} but facts.analyses=[${f.analyses.map((a) => a.status)}]`);
@@ -234,17 +234,19 @@ describe('§17 intake refuses a candidate whose analysis is conflicted, invalida
     note('B4', '§17', 'provisional (rule-derived) analysis: grammar vs recognition target', 'grammar target refused (needs-validation); recognition target allowed with a provisional caveat', `grammar → ${refused.decision}; recognition → ${allowed.decision} (${allowed.reasons.find((x) => /caveat/.test(x))?.slice(0, 70)}…)`);
   });
 
-  it('control: a high-confidence, production-validated analysis IS allowed through, so the refusals above are about status and validation and not a blanket refusal', async () => {
+  it('control: validated analysis permits grammar in the explicitly enabled secondary practice lane', async () => {
     const w = await makeWorld('memory');
     await resolve(w, 'shkollë', SENT_SHKOLLE, 'production-validated');
     await struggle(w, CONSTR, 'grammar');
     await struggle(w, CONSTR, 'grammar');
     const c = await candidateOf(w, CONSTR);
     expect(c.eligibility.eligible).toBe(true);
-    const out = decideIntake(intakeFor(c));
+    const out = decideIntake(intakeFor(c, { secondaryPractice: true }));
     expect(['test-now', 'test-later']).toContain(out.decision);
+    expect(c.targetDimension).toBe('grammaticalUnderstanding');
     expect(out.proposed?.family).toBe('grammar-application');
-    note('B5', '§17', 'control: high-confidence construction with repeated grammar failures', 'test-now/test-later as grammar-application', `${out.decision} as ${out.proposed?.family}; score ${c.score}`);
+    expect(decideIntake(intakeFor(c)).proposed?.family).toBe('written-recognition');
+    note('B5', '§17', 'control: high-confidence construction with repeated grammar failures', 'test-now/test-later as grammar-application with secondary practice enabled; written recognition by default', `${out.decision} as ${out.proposed?.family}; score ${c.score}`);
   });
 
   it('an invalidated unit that is already in the deck is not proposed twice, and an explicit dismissal is not re-proposed', () => {

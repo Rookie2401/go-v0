@@ -2,6 +2,7 @@
 param(
   [string] $PythonExe = "$env:USERPROFILE\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe",
   [string] $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path,
+  [string[]] $Languages = @('sq','hi','es','de','th','nb','nn'),
   [switch] $SkipModelDownload,
   [switch] $NoStart
 )
@@ -13,8 +14,12 @@ $modelDir = Join-Path $localRoot 'model'
 $serviceConfig = Join-Path $localRoot 'service-config.json'
 $extensionConfig = Join-Path $localRoot 'extension-config.json'
 $distConfig = Join-Path $ProjectRoot 'packages\golearn-extension\dist\translation.local.json'
-$modelId = 'Helsinki-NLP/opus-mt-sq-en'
-$revision = '10c8d34bcc202e0d8d75bd454b5e34bbea4c2909'
+$catalogPath = Join-Path $ProjectRoot 'packages\golearn-extension\src\translation\models.json'
+$sharedCatalog = Get-Content -LiteralPath $catalogPath -Raw | ConvertFrom-Json
+$catalog = @{}
+foreach ($property in $sharedCatalog.PSObject.Properties) { $catalog[$property.Name] = $property.Value }
+foreach ($language in $Languages) { if (-not $catalog.ContainsKey($language)) { throw "Unsupported language code: $language" } }
+$requestedIds = @($Languages | ForEach-Object { $catalog[$_].id } | Sort-Object -Unique)
 
 if (-not (Test-Path -LiteralPath $PythonExe)) { throw 'The configured Python runtime was not found. Pass -PythonExe with a Python 3.12 executable.' }
 New-Item -ItemType Directory -Force -Path $localRoot | Out-Null
@@ -29,9 +34,15 @@ if ($LASTEXITCODE -ne 0) { throw 'Could not install the CPU-only PyTorch runtime
 if ($LASTEXITCODE -ne 0) { throw 'Could not install the local translation runtime packages.' }
 
 if (-not $SkipModelDownload) {
-  New-Item -ItemType Directory -Force -Path $modelDir | Out-Null
-  & $venvPython -c "import truststore; truststore.inject_into_ssl(); from huggingface_hub import snapshot_download; snapshot_download(repo_id='$modelId', revision='$revision', local_dir=r'$modelDir', allow_patterns=['README.md','config.json','generation_config.json','pytorch_model.bin','source.spm','target.spm','tokenizer_config.json','vocab.json'])"
-  if ($LASTEXITCODE -ne 0) { throw 'Could not download the pinned public translation model.' }
+  foreach ($modelId in $requestedIds) {
+    $entry = $catalog[($Languages | Where-Object { $catalog[$_].id -eq $modelId } | Select-Object -First 1)]
+    $modelKey = ($modelId -split '/')[-1] -replace '^opus-mt-','' -replace '-en$',''
+    $targetDir = if ($modelKey -eq 'sq') { $modelDir } else { Join-Path $modelDir $modelKey }
+    New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
+    $pythonArgs = @('-c', "import truststore; truststore.inject_into_ssl(); from huggingface_hub import snapshot_download; snapshot_download(repo_id='$($entry.id)', revision='$($entry.revision)', local_dir=r'$targetDir', allow_patterns=['README.md','config.json','generation_config.json','pytorch_model.bin','source.spm','target.spm','tokenizer_config.json','vocab.json'])")
+    & $venvPython @pythonArgs
+    if ($LASTEXITCODE -ne 0) { throw "Could not download the pinned public translation model for $modelKey." }
+  }
 }
 
 if (-not (Test-Path -LiteralPath $serviceConfig)) {
@@ -57,7 +68,11 @@ foreach ($secretPath in @($serviceConfig, $extensionConfig, $distConfig)) {
   if ($LASTEXITCODE -ne 0) { throw 'Could not restrict local translation config permissions.' }
 }
 
-Write-Output "Installed local Albanian-to-English model $modelId at pinned revision $revision."
+if ($SkipModelDownload) {
+  Write-Output "Prepared local translation settings for: $($Languages -join ', '); model downloads were skipped."
+} else {
+  Write-Output "Installed local source-to-English snapshots for: $($Languages -join ', ')."
+}
 Write-Output "Extension config is ready at $distConfig (token withheld). Rebuilds of the extension may replace dist; rerun this setup script after rebuilding."
 
 if (-not $NoStart) {

@@ -162,12 +162,64 @@ describe('A. a level pressed on the card is saved as soon as it is pressed', () 
     marker.controller.d.store.append = async () => ({ ok: false, error: 'full' });
     press(root, 'known');
     expect(pressed(root)).toEqual(['known']); // optimistic
-    await until(() => root.querySelector('.feedback')?.textContent === 'Could not save that. Try again.');
+    await until(() => root.querySelector('.feedback')?.textContent === 'Could not save that: full. Try again.');
     expect(pressed(root)).toEqual(['seen']); // taken back to what it was
     marker.controller.d.store.append = real;
     press(root, 'known');
     await until(async () => (await deviceEvents('ItemMarked')).length === 1);
     expect(pressed(root)).toEqual(['known']);
+  });
+});
+
+describe('C. a press the worker cannot save says why (the reason is the worker\'s own), for every level, signed out and signed in', () => {
+  const LEVELS = ['new', 'seen', 'recognized', 'familiar', 'known', 'automatic'] as const;
+  type Row = { kind?: string; event?: { kind?: string } };
+  /** The browser's store refuses the write of an ItemMarked event (a full store: `QUOTA_BYTES quota exceeded`) at the event log or at the sync queue; every other write goes through. */
+  function fullStoreForMarks(on: { value: boolean }, where: 'log' | 'queue'): void {
+    const local = rig.fake.local as unknown as { set(items: Record<string, unknown>): Promise<void> };
+    const real = local.set.bind(local);
+    local.set = async (items) => {
+      const hit = Object.entries(items).some(([k, v]) => where === 'log'
+        ? k.startsWith('golearn:event:') && (v as Row)?.kind === 'ItemMarked'
+        : k.startsWith('queue:ev:') && (v as Row)?.event?.kind === 'ItemMarked');
+      if (on.value && hit) throw new Error('QUOTA_BYTES quota exceeded');
+      return real(items);
+    };
+  }
+  for (const signedIn of [false, true]) {
+    it(`${signedIn ? 'signed in' : 'signed out'}: each of the six levels, refused by a full store, says "Could not save that: <reason>" and is taken back; saved once the store takes it`, async () => {
+      if (signedIn) { await rig.signUp(); await rig.connect(); }
+      await startActive();
+      const root = await clickWord('q', 'shkon');
+      const full = { value: true };
+      fullStoreForMarks(full, 'log');
+      const was = pressed(root);
+      expect(was).toEqual(['seen']); // the lookup met the word
+      for (const level of LEVELS) {
+        press(root, level);
+        await until(() => root.querySelector('.feedback')?.textContent === 'Could not save that: QUOTA_BYTES quota exceeded. Try again.');
+        expect(pressed(root)).toEqual(was); // taken back to what it was
+        root.querySelector('.feedback')!.textContent = '';
+      }
+      expect(await deviceEvents('ItemMarked')).toEqual([]);
+      full.value = false;
+      for (const level of LEVELS) {
+        press(root, level);
+        await until(async () => (await deviceEvents('ItemMarked')).length === LEVELS.indexOf(level) + 1);
+        expect(pressed(root)).toEqual([level]);
+      }
+      expect((await deviceEvents('ItemMarked')).map((e) => e.payload.mark)).toEqual([...LEVELS]);
+    }, 30_000);
+  }
+
+  it('a store that throws while queueing the event is a reason too, not a bare "internal" (the worker reply carries the message)', async () => {
+    await rig.signUp(); await rig.connect();
+    await startActive();
+    const root = await clickWord('q', 'shkon');
+    fullStoreForMarks({ value: true }, 'queue');
+    press(root, 'known');
+    await until(() => (root.querySelector('.feedback')?.textContent ?? '').startsWith('Could not save that: failed: QUOTA_BYTES quota exceeded'));
+    expect(pressed(root)).toEqual(['seen']);
   });
 });
 

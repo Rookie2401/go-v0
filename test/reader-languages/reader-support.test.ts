@@ -70,14 +70,21 @@ describe('audio: GoListen’s registry, read by the extension’s view, not a ha
     expect(audioOf('es').remoteVoices).toHaveLength(3);
   });
 
-  it('German has one demonstration recording and nothing else; Hindi, Thai and Norwegian have no audio at all, and say what is missing', () => {
+  it('German has one demonstration recording plus device practice; Hindi, Thai and Norwegian expose strict device templates', () => {
     const de = audioOf('de');
-    expect(de).toMatchObject({ recordings: 1, deviceVoiceTemplate: false, remoteVoices: [] });
+    expect(de).toMatchObject({ recordings: 1, deviceVoiceTemplate: true });
+    expect(de.remoteVoices).toHaveLength(2);
     expect(de.gaps.join(' ')).toMatch(/demonstration asset, not a pronunciation resource/);
-    for (const lang of ['hi', 'th', 'nb', 'nn']) {
+    for (const lang of ['nb', 'nn']) {
       const a = audioOf(lang);
-      expect(a, lang).toMatchObject({ recordings: 0, deviceVoiceTemplate: false, remoteVoices: [], phoneticNotes: false, listeningEvidence: false });
-      expect(a.gaps.join(' '), lang).toMatch(/no .* voice registered|nothing is claimed/);
+      expect(a, lang).toMatchObject({ recordings: 0, deviceVoiceTemplate: true, remoteVoices: [], phoneticNotes: false, listeningEvidence: false });
+      expect(a.gaps.join(' '), lang).toMatch(/No .* recordings are registered/);
+    }
+    for (const lang of ['hi', 'th']) {
+      const a = audioOf(lang);
+      expect(a, lang).toMatchObject({ recordings: 0, deviceVoiceTemplate: true, phoneticNotes: false, listeningEvidence: false });
+      expect(a.remoteVoices).toHaveLength(2);
+      expect(a.gaps.join(' '), lang).toMatch(/No .* recordings exist/);
     }
     expect(audioOf('xx').gaps.join(' ')).toMatch(/No voices are registered for xx/);
   });
@@ -85,8 +92,8 @@ describe('audio: GoListen’s registry, read by the extension’s view, not a ha
   it('no pack ever has listening evidence, and the reader’s report carries the audio line', () => {
     for (const s of readerSupportList()) expect(s.report.audio?.listeningEvidence, s.languageId).toBe(false);
     expect(reportWithAudio('hi')!.audio).toEqual(audioOf('hi'));
-    expect(readerSupport('hi')!.lines).toContain('No voice is registered for this language: nothing can be played.');
-    expect(readerSupport('de')!.lines).toContain('The only audio is a short demonstration clip; no voice can read other text aloud.');
+    expect(readerSupport('hi')!.lines).toContain('A matching voice on your device can read text aloud as practice only; installed voices vary.');
+    expect(readerSupport('de')!.lines).toContain('A matching voice on your device can read text aloud as practice only; installed voices vary.');
     expect(readerSupport('sq')!.lines.join(' ')).not.toMatch(/No voice is registered/);
   });
 
@@ -103,11 +110,10 @@ describe('audio: GoListen’s registry, read by the extension’s view, not a ha
     expect(no.voices.find((v) => v.provider === 'device')?.state).toBe('unavailable');
   });
 
-  it('Hindi has no voice at all, whatever the device offers', async () => {
+  it('Hindi becomes speakable when a matching device voice is installed', async () => {
     const r = await audioAvailability('hi', env([voice('Fake Hindi', 'hi-IN')]));
-    expect(r.canPronounce).toBe(false);
-    expect(r.voices).toEqual([]);
-    expect(r.gaps.join(' ')).toMatch(/no Hindi voice registered/);
+    expect(r.canPronounce).toBe(true);
+    expect(r.voices.find((v) => v.provider === 'device')?.state).toBe('available');
   });
 });
 

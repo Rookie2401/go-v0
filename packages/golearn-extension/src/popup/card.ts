@@ -324,6 +324,9 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   let sentenceReported = false;
   let variantsReported = false;
   let renderToken = 0;
+  // Voice discovery may be retriggered while the card is open (for example when the browser
+  // publishes voiceschanged). Only the newest check may change the speaker state.
+  let pronunciationAvailabilityRequest = 0;
 
   const h = (tag: string, props: Record<string, string> = {}, ...children: Child[]): HTMLElement => {
     const el = doc.createElement(tag);
@@ -505,10 +508,11 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     parts.say.disabled = !(pron.available && speakText) || pron.playing;
     // the speaker says why it cannot play in its title (no voice on this device, voices still loading); nothing else of that is shown
     parts.say.title = pron.available ? 'Play with GoListen' : pron.note;
-    // the note is for screen readers (a live region off screen); it is drawn only when playing failed
+    // Playback state is useful context for every learner, so keep the live note visible for
+    // availability, preparation, active playback, completion, and failures alike.
     parts.pronNote.textContent = pron.note;
-    parts.pronNote.className = pron.state === 'error' || pron.failed ? 'note pron' : 'sr pron';
-    if (parts.stopAudio) parts.stopAudio.disabled = pron.state !== 'playing' && pron.state !== 'paused';
+    parts.pronNote.className = 'note pron';
+    if (parts.stopAudio) parts.stopAudio.disabled = !pron.playing && pron.state !== 'playing' && pron.state !== 'paused';
     if (parts.audioSpeed) parts.audioSpeed.disabled = !pron.available;
   }
 
@@ -524,8 +528,9 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   /** A synchronous answer (the local voice list) is applied at once; a promised one (GoListen asks the device) when it arrives. */
   function checkPronunciation(token: number): void {
     if (!model) return;
+    const request = ++pronunciationAvailabilityRequest;
     const apply = (a: PronounceAvailability | undefined): void => {
-      if (token !== renderToken) return;
+      if (token !== renderToken || request !== pronunciationAvailabilityRequest) return;
       pron.available = !!a?.available;
       pron.note = a ? a.note : 'Pronunciation is not available right now.';
       renderPron();
@@ -542,20 +547,29 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     if (pron.available) onPronounceClick(); else pron.autoPlay = renderToken;
   }
 
+  let pronunciationRequest = 0;
   function onPronounceClick(): void {
+    if (!model) return;
+    playPronunciation(model.surface, view.pronunciationContext?.kind ?? (model.tokenCount > 1 ? 'phrase' : 'word'));
+  }
+  function playPronunciation(input: string, kind: 'word' | 'phrase' | 'sentence'): void {
     if (!model || !pron.available) return;
-    const text = model.surface.length <= 200 ? model.surface : '';
+    const text = input.length <= 5000 ? input : '';
     if (!text) return;
     const lang = model.languageId;
     const token = renderToken;
-    let result: PlayResult | Promise<PlayResult>;
-    try { result = pronouncer.play(text, lang); } catch { result = { ok: false, message: 'Pronunciation failed.' }; }
+    const request = ++pronunciationRequest;
+    // Clear a previous failure before invoking the provider. Local playback can publish
+    // `playing` or `ended` synchronously from play(), so this reset must happen first.
     pron.playing = true;
     pron.failed = false;
-    if (pronouncer.onPlaybackState && pron.state !== 'error') pron.note = 'Preparing pronunciation…';
+    pron.state = 'idle';
+    if (pronouncer.onPlaybackState) pron.note = 'Preparing pronunciation…';
     renderPron();
+    let result: PlayResult | Promise<PlayResult>;
+    try { result = pronouncer.play(text, lang, { ...view.pronunciationContext, kind }); } catch { result = { ok: false, message: 'Pronunciation failed.' }; }
     void Promise.resolve(result).then((r) => r, () => ({ ok: false, message: 'Pronunciation failed.' }) as PlayResult).then((r) => {
-      if (token !== renderToken) return;
+      if (token !== renderToken || request !== pronunciationRequest) return;
       pron.playing = false;
       if (r.ok) {
         if (!pronouncer.onPlaybackState || (pron.state !== 'error' && pron.state !== 'idle')) {
@@ -696,6 +710,11 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function fillSentence(panel: HTMLElement, m: CardModel, v: CardView): void {
     panel.append(h('div', { class: 'note' }, 'The list below is word by word. A sentence translation is shown only when you ask for it.'));
     const hasSentence = m.context.kind === 'sentence';
+    if (hasSentence && v.pronunciationSentence) {
+      const listenSentence = h('button', { type: 'button', class: 'listenSentence' }, 'Listen to sentence') as HTMLButtonElement;
+      listenSentence.addEventListener('click', () => playPronunciation(v.pronunciationSentence!, 'sentence'));
+      panel.append(listenSentence);
+    }
     const translation = v.sentenceTranslation;
     const processing = translation.processingMode ?? 'unknown';
     const referenceResult = translation.state === 'ready' && translation.origin === 'reference';
@@ -1047,6 +1066,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     analysisOpen = false; analysisReported = false; sentenceReported = false; variantsReported = false;
     pron.off?.();
     pron.offPlayback?.();
+    try { pronouncer.stop?.(); } catch { /* nothing playing */ }
     pron = { available: false, note: 'Checking voices…', playing: false, plays: 0 };
     model = m;
     view = { ...initialView(opts.view?.languageName ?? ''), ...opts.view };
@@ -1060,15 +1080,23 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     say.disabled = true;
     say.addEventListener('click', onPronounceClick);
     const wordLine = h('div', { class: 'wordline' }, word, say);
-    // read aloud by screen readers when something changes (a played hearing, a failure); drawn on the card only when playing failed
-    const pronNote = h('div', { class: 'sr pron', role: 'status', 'aria-live': 'polite' }, pron.note);
+    // Keep playback status visible while the learner waits, listens, or recovers from an error.
+    const pronNote = h('div', { class: 'note pron', role: 'status', 'aria-live': 'polite' }, pron.note);
     const audioControls = h('div', { class: 'actions', role: 'group', 'aria-label': 'Playback' });
     let stopAudio: HTMLButtonElement | undefined;
     let audioSpeed: HTMLSelectElement | undefined;
     if (pronouncer.onPlaybackState && pronouncer.stop) {
       stopAudio = h('button', { type: 'button' }, 'Stop pronunciation') as HTMLButtonElement;
       stopAudio.disabled = true;
-      stopAudio.addEventListener('click', () => { pron.pending = undefined; pronouncer.stop?.(); });
+      stopAudio.addEventListener('click', () => {
+        pronunciationRequest++;
+        pron.pending = undefined;
+        pron.playing = false;
+        pron.autoPlay = undefined;
+        pronouncer.stop?.();
+        pron.note = 'Pronunciation stopped.';
+        renderPron();
+      });
       audioControls.append(stopAudio);
     }
     if (pronouncer.setRate) {
@@ -1106,7 +1134,6 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const about = h('div', { class: 'more about', id: 'panel-about' });
     fillAbout(about, m);
     deeper.append(h('h3', {}, 'About this analysis'), about);
-    if (audioControls.childElementCount) deeper.append(h('h3', {}, 'Playback'), audioControls);
     const deeperBtn = h('button', { type: 'button', class: 'btn deeperBtn', 'aria-expanded': 'false', 'aria-controls': 'panel-deeper' }, 'Go deeper') as HTMLButtonElement;
     deeperBtn.addEventListener('click', toggleDeeper);
     // "Variants": the word across the periods of the language, its own panel and pill to the right of the sentence's; only for a language whose analyser has period varieties
@@ -1148,7 +1175,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     statusEl = h('div', { class: 'status', role: 'status', 'aria-live': 'polite' }, '');
     feedbackEl = h('div', { class: 'feedback', role: 'status', 'aria-live': 'polite' }, '');
     parts = { rows, pronNote, say, stopAudio, audioSpeed, sources, sourcesBtn, deeper, deeperBtn, sentenceBox, sentenceBtn, variantsBox, variantsBtn, encounters, levelName, layers, fix, report, rateBtns };
-    const wrapper = h('div', {}, top, wordLine, rows, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
+    const wrapper = h('div', {}, top, wordLine, rows, audioControls, h('div', {}, sourcesBtn), sources, rate, encounters, pills, deeper, sentenceBox, variantsBox ?? null, pronNote, fix, feedbackEl, statusEl);
     mountCard(wrapper, `GoLearn: ${m.surface}`);
     renderAll();
     pron.off = pronouncer.onChange?.(() => { checkPronunciation(renderToken); });
@@ -1159,9 +1186,20 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
       if (state === 'error') {
         pron.pending = undefined;
         pron.playing = false;
+        // Preserve the provider's failure state until a new attempt starts.
         pron.note = 'Pronunciation could not play. Try again, or continue with the written information.';
-      } else if (state === 'idle') { pron.pending = undefined; }
-      else if (state === 'ended') { completedPronunciation(); }
+      } else if (state === 'idle') {
+        pron.pending = undefined;
+      } else if (state === 'playing') {
+        pron.playing = true;
+        pron.note = 'Playing pronunciation…';
+      } else if (state === 'paused') {
+        pron.playing = true;
+        pron.note = 'Pronunciation paused.';
+      } else if (state === 'ended') {
+        pron.playing = false;
+        completedPronunciation();
+      }
       renderPron();
     });
     checkPronunciation(renderToken);
@@ -1193,7 +1231,9 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   function showMessage(text: string, anchor: PopupAnchor, kind: 'info' | 'error' = 'info'): Placement {
     renderToken++;
     model = undefined; parts = undefined; statusEl = undefined; feedbackEl = undefined;
-    pron.off?.(); pron = { available: false, note: '', playing: false, plays: 0 };
+    pron.off?.(); pron.offPlayback?.();
+    try { pronouncer.stop?.(); } catch { /* nothing playing */ }
+    pron = { available: false, note: '', playing: false, plays: 0 };
     const top = h('div', { class: 'top' }, h('span', { class: 'label' }, 'GoLearn'), closeButton());
     mountCard(h('div', {}, top, h('div', { class: kind === 'error' ? 'msg err' : 'msg', role: 'alert' }, text)), 'GoLearn message');
     return finish(anchor);

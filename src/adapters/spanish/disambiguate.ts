@@ -101,6 +101,9 @@ const SITTING_NEXT = new Set(['en', 'a', 'al', 'con', 'junto', 'cerca', 'aquí',
 const COME_HERE = new Set(['a', 'al', 'aquí', 'acá', 'conmigo', 'con', 'y', 'pronto', 'ya', 'tú', 'vos']);
 const KNOWING_NEXT = new Set(['que', 'qué', 'dónde', 'cómo', 'cuándo', 'quién', 'cuál', 'si', 'por', 'nada', 'algo', 'mucho', 'poco']);
 const NOT_EATING_NEXT = new Set(['si', 'antes', 'siempre', 'cuando', 'nunca']);
+/** Temporal adverbs that can decide the tense of an otherwise homographic finite form. */
+const PAST_TIME = new Set(['ayer', 'anoche', 'anteayer', 'antier']);
+const PRESENT_TIME = new Set(['ahora', 'actualmente']);
 /** Words of degree that stand before an adjective or adverb: muy alto, bien bonito, tan lejos. */
 const INTENSIFIERS = new Set(['muy', 'tan', 'más', 'menos', 'bien', 'bastante', 'demasiado', 'súper', 'super', 're', 'algo', 'poco', 'medio', 'casi']);
 /** Those of them that never stand before a noun (más pollo, bastante dinero, poco tiempo do): after these a quality is the only reading. */
@@ -443,6 +446,20 @@ function verbOrNot(i: number, tokens: RawToken[], base: C[][]): C[] {
   const hasLemma = (lemma: string): boolean => cands.some((c) => c.lemma === lemma);
   const p = form(prev);
   const n = form(next);
+
+  // hablamos, cantamos, etc. share the first-person plural present and preterite spelling.
+  // A nearby unambiguous time adverb is useful evidence for a learner-facing ordering, while
+  // retaining both readings for the ambiguity-preserving contract.
+  const timeCue = p !== undefined && (PAST_TIME.has(p) || PRESENT_TIME.has(p)) ? p
+    : n !== undefined && (PAST_TIME.has(n) || PRESENT_TIME.has(n)) ? n : undefined;
+  if (timeCue && cands.some((c) => c.morph.Tense === 'Past') && cands.some((c) => c.morph.Tense === 'Pres')) {
+    const tense = PAST_TIME.has(timeCue) ? 'Past' : 'Pres';
+    const selected = cands.filter((c) => c.morph.Tense === tense);
+    if (selected.length && mayLead(cands, selected[0], 'strong')) {
+      const rest = cands.filter((c) => c.morph.Tense !== tense).map((c) => ({ ...c, confidence: Math.min(c.confidence, 0.4) }));
+      return [{ ...selected[0], notes: { ...(selected[0].notes ?? {}), context: `near "${timeCue}": ${tense === 'Past' ? 'past' : 'present'} time` } }, ...selected.slice(1), ...rest];
+    }
+  }
 
   /**
    * Readings that satisfy `pred` first, in their order; the rest after them. A neighbour that decides marks the rest

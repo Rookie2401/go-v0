@@ -107,7 +107,8 @@ describe.each(services.slice(0, 2))('GoReview: cards for 200 units and one answe
       const runIntake = async (): Promise<void> => {
         outcomes = await gatherCandidates({
           api: { candidates: async () => candidates, knowledge: async (ids) => must<{ knowledge: UnitKnowledge[] }>(await who.api.knowledge(ids)).knowledge },
-          facts, audio, deck: [], saved: new Set(), preferences: prefs, now: nowIso(), enrolmentId: who.enrolmentId, limit: 300,
+          // The learner selected these units for practice; New-stage lookup exposure alone must not admit them.
+          facts, audio, deck: [], saved: new Set(units), preferences: prefs, now: nowIso(), enrolmentId: who.enrolmentId, limit: 300,
         });
       };
       // first run is cold (projection fold, linguistic rows, pack runtime shards); then 5 warm repeats

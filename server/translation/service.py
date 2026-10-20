@@ -5,14 +5,24 @@ import json
 import secrets
 import threading
 import os
+import gc
 import unicodedata
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable
+from collections import OrderedDict
 from urllib.parse import urlsplit
 
-MODEL_ID = "Helsinki-NLP/opus-mt-sq-en"
-MODEL_REVISION = "10c8d34bcc202e0d8d75bd454b5e34bbea4c2909"
+ROOT = Path(__file__).resolve().parents[2]
+MODEL_CATALOG_PATH = ROOT / "packages" / "golearn-extension" / "src" / "translation" / "models.json"
+_catalog_json = json.loads(MODEL_CATALOG_PATH.read_text(encoding="utf-8"))
+# Shared with the extension's provider registry so model IDs and revisions
+# cannot silently diverge between client validation and local inference.
+MODEL_REGISTRY = {
+    language: (item["id"], item["revision"], item["id"].rsplit("/", 1)[-1].removeprefix("opus-mt-").removesuffix("-en"), item["modelSource"])
+    for language, item in _catalog_json.items()
+}
+MODEL_ID, MODEL_REVISION, _MODEL_KEY, _MODEL_SOURCE = MODEL_REGISTRY["sq"]
 HOST = "127.0.0.1"
 PORT = 8792
 EXTENSION_ORIGIN = "chrome-extension://ckjmiefophlhjlobnidnclkiimbjalfo"
@@ -48,6 +58,41 @@ class LocalTranslator:
         return self._tokenizer.decode(generated[0], skip_special_tokens=True)
 
 
+class LocalModelPool:
+    """Load the requested installed model on demand; keep at most one resident."""
+
+    def __init__(self, models_root: Path, *, loader: Callable[[Path], Any] = LocalTranslator):
+        self.models_root = models_root
+        self.loader = loader
+        self._resident: OrderedDict[tuple[str, str], Any] = OrderedDict()
+
+    def _model(self, source_language: str) -> Any:
+        model_id, revision, model_key, _model_source = MODEL_REGISTRY[source_language]
+        cache_key = (model_id, revision)
+        model_dir = self.models_root if model_key == "sq" else self.models_root / model_key
+        # Fail before importing ML packages when this user's setup did not
+        # explicitly install the requested snapshot.
+        if not (model_dir / "config.json").is_file() or not (model_dir / "pytorch_model.bin").is_file():
+            raise FileNotFoundError("local model is not installed")
+        if cache_key not in self._resident:
+            self._resident.clear()
+            gc.collect()
+            self._resident[cache_key] = self.loader(model_dir)
+        return self._resident[cache_key]
+
+    def translate_pair(self, text: str, source_language: str) -> tuple[str, str, str]:
+        model_id, revision, _model_key, _model_source = MODEL_REGISTRY[source_language]
+        return self._model(source_language).translate(text), model_id, revision
+
+    def installed_languages(self) -> list[str]:
+        installed: list[str] = []
+        for language, (_model_id, _revision, model_key, _source_code) in MODEL_REGISTRY.items():
+            model_dir = self.models_root if model_key == "sq" else self.models_root / model_key
+            if (model_dir / "config.json").is_file() and (model_dir / "pytorch_model.bin").is_file():
+                installed.append(language)
+        return installed
+
+
 def _json_no_duplicates(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     result: dict[str, Any] = {}
     for key, value in pairs:
@@ -65,7 +110,7 @@ def validate_payload(payload: Any) -> str:
         raise InvalidRequest("invalid text")
     if any(unicodedata.category(char) == "Cc" for char in text):
         raise InvalidRequest("control characters are not accepted")
-    if payload["sourceLanguage"] != "sq" or payload["targetLanguage"] != "en":
+    if payload["sourceLanguage"] not in MODEL_REGISTRY or payload["targetLanguage"] != "en":
         raise InvalidRequest("unsupported language pair")
     return text
 
@@ -135,7 +180,9 @@ def create_handler(token: str, translator: Any, *, allowed_origin: str = EXTENSI
                     or not self._origin_ok() or not self._authorized()):
                 self._send(403, {"error": "forbidden"})
                 return
-            self._send(200, {"ready": True, "model": MODEL_ID, "revision": MODEL_REVISION}, cors=True)
+            installed = translator.installed_languages() if hasattr(translator, "installed_languages") else list(MODEL_REGISTRY)
+            self._send(200, {"ready": True, "model": MODEL_ID, "revision": MODEL_REVISION,
+                             "supportedSourceLanguages": installed, "targetLanguage": "en"}, cors=True)
 
         def do_POST(self) -> None:
             parts = urlsplit(self.path)
@@ -171,11 +218,21 @@ def create_handler(token: str, translator: Any, *, allowed_origin: str = EXTENSI
                 self._send(503, {"error": "translation-busy"}, cors=True)
                 return
             try:
-                translated = translator.translate(text)
+                source_language = payload["sourceLanguage"]
+                if hasattr(translator, "translate_pair"):
+                    translated, model_id, revision = translator.translate_pair(text, source_language)
+                else:
+                    # Backward-compatible test/local adapter for the original Albanian-only interface.
+                    if source_language != "sq":
+                        self._send(503, {"error": "translation-unavailable"}, cors=True)
+                        return
+                    model_id, revision, _model_key, _model_source = MODEL_REGISTRY["sq"]
+                    translated = translator.translate(text)
                 if not isinstance(translated, str) or not translated.strip() or len(translated) > MAX_OUTPUT_CHARS:
                     self._send(503, {"error": "translation-unavailable"}, cors=True)
                     return
-                self._send(200, {"text": translated.strip(), "model": MODEL_ID, "revision": MODEL_REVISION}, cors=True)
+                self._send(200, {"text": translated.strip(), "sourceLanguage": source_language,
+                                 "targetLanguage": "en", "model": model_id, "revision": revision}, cors=True)
             except InvalidRequest:
                 self._send(400, {"error": "input-too-long"}, cors=True)
             except Exception:
@@ -196,9 +253,9 @@ def load_config(config_path: Path) -> dict[str, Any]:
     return config
 
 
-def serve(config_path: Path, model_dir: Path) -> None:
+def serve(config_path: Path, models_root: Path) -> None:
     config = load_config(config_path)
-    translator = LocalTranslator(model_dir)
+    translator = LocalModelPool(models_root)
     server = ThreadingHTTPServer((HOST, PORT), create_handler(config["token"], translator))
     server.daemon_threads = True
     try:

@@ -1,16 +1,17 @@
 /**
  * The language tags a device voice must carry for each language (GoListen matches them strictly: no neighbour language is
- * ever "close enough"). Albanian has none: no device ships an Albanian voice today. Kept in a module of its own, with no
- * GoListen import, so the popup can say which chosen languages this browser can speak without reaching the audio code
- * (only the content script may reach GoListen: test/audit/conformance.structure.test.ts).
+ * ever "close enough"). Availability is measured from the browser, not assumed from the language. Kept in a module of its own, with no
+ * audio import, so the popup can say which chosen languages this browser can speak without reaching the audio code
+ * (only the content script may reach GoListen's playback code: test/audit/conformance.structure.test.ts).
  */
+import { ALBANIAN_DEVICE_TAGS, SPANISH_DEVICE_TAGS, GERMAN_DEVICE_TAGS, HINDI_DEVICE_TAGS, THAI_DEVICE_TAGS, BOKMAL_DEVICE_TAGS, NYNORSK_DEVICE_TAGS, HEBREW_DEVICE_TAGS, GREEK_DEVICE_TAGS, LATIN_DEVICE_TAGS } from '../../../golisten/src/deviceTags';
+
 export const DEVICE_TAGS: Readonly<Record<string, readonly string[]>> = {
-  de: ['de-DE', 'de-AT', 'de-CH', 'de'], es: ['es-HN', 'es-ES', 'es-MX', 'es-US', 'es'], hi: ['hi-IN', 'hi'], th: ['th-TH', 'th'], nb: ['nb-NO', 'nb', 'no-NO', 'no'], nn: ['nn-NO', 'nn'],
-  // Hebrew and Greek (2026-10-18): the Modern locales; iw is the retired Hebrew tag some voices still carry. No voice exists for the ancient periods.
-  he: ['he-IL', 'he', 'iw'], el: ['el-GR', 'el'],
+  sq: ALBANIAN_DEVICE_TAGS,
+  de: GERMAN_DEVICE_TAGS, es: SPANISH_DEVICE_TAGS, hi: HINDI_DEVICE_TAGS, th: THAI_DEVICE_TAGS, nb: BOKMAL_DEVICE_TAGS, nn: NYNORSK_DEVICE_TAGS, he: HEBREW_DEVICE_TAGS, el: GREEK_DEVICE_TAGS, la: LATIN_DEVICE_TAGS,
 };
 
-/** Does any of these voices (the browser's `speechSynthesis.getVoices()`) serve the language, by the same strict tag rule? Albanian: never. */
+/** Does any of these voices (the browser's `speechSynthesis.getVoices()`) serve the language, by the same strict tag rule? */
 export function hasDeviceVoice(languageId: string, voices: ReadonlyArray<{ lang: string }>): boolean {
   const tags = DEVICE_TAGS[languageId];
   if (!tags) return false;

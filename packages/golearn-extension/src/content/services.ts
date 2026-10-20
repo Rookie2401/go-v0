@@ -11,6 +11,7 @@ import type {
 } from '../protocol';
 import type { WriteResult } from '../store';
 import type { LocalSentenceTranslationReply, LocalSentenceTranslationRequest } from '../translation/localProtocol';
+import type { SpeechMessage, SpeechReply } from '../speechProtocol';
 
 /** Where the controller writes events: the background (identity replaced there), or a test store. */
 export interface EventSink { append(event: GoEvent): Promise<WriteResult> }
@@ -23,6 +24,7 @@ export interface ContentServices {
   explain(req: ExplainRequest): Promise<ExplainReply | undefined>;
   correct(req: CorrectRequest): Promise<CorrectReply | undefined>;
   pronounceInfo(languageId: string): Promise<PronounceInfoReply | undefined>;
+  speech?(req: SpeechMessage): Promise<SpeechReply | undefined>;
   /** Level 2: the dictionary's full record of a lemma (paradigm table, etymology, IPA, audio, relations). Optional: fakes without it mean "no deeper sections". */
   entry?(req: EntryRequest): Promise<EntryReply | undefined>;
   /** The GoLearn Active switches (read only: a content script cannot set them). Optional: test fakes without it mean "never asked". */
@@ -59,6 +61,7 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     explain: (req) => call<ExplainReply>(MSG.explain, { ...req }),
     correct: (req) => call<CorrectReply>(MSG.correct, { ...req }),
     pronounceInfo: (languageId) => call<PronounceInfoReply>(MSG.pronounceInfo, { languageId }),
+    speech: (req) => call<SpeechReply>(MSG.speech, { ...req }, 30_000),
     active: () => call<ActiveReply>(MSG.active, { op: 'get' }),
     entry: (req) => call<EntryReply>(MSG.entry, { ...req }),
     activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }),

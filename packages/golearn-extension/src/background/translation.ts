@@ -1,17 +1,16 @@
 import type { LocalSentenceTranslationReply, LocalSentenceTranslationRequest } from '../translation/localProtocol';
+import { isLocalTranslationLanguage, localModelFor } from '../translation/models';
 
 const CONFIG_FILE = 'translation.local.json';
 const LOOPBACK_HOST = ['127', '0', '0', '1'].join('.');
 const SERVICE_PORT = '8792';
 const SERVICE_PATH = '/translate';
-const MODEL = 'Helsinki-NLP/opus-mt-sq-en' as const;
 const MAX_INPUT = 2_000;
 const MAX_OUTPUT = 4_000;
-const MAX_REVISION = 100;
 const TOKEN = /^[a-f0-9]{32,}$/iu;
 
 interface LocalConfig { endpoint: string; token: string }
-interface ServiceResponse { text?: unknown; model?: unknown; revision?: unknown }
+interface ServiceResponse { text?: unknown; model?: unknown; revision?: unknown; sourceLanguage?: unknown; targetLanguage?: unknown }
 
 function fixedLoopbackEndpoint(value: unknown): string | undefined {
   if (typeof value !== 'string') return undefined;
@@ -52,10 +51,11 @@ export function createLocalTranslationService(options: LocalTranslationServiceOp
   return {
     async translate(raw: unknown): Promise<LocalSentenceTranslationReply> {
       const req = raw as Partial<LocalSentenceTranslationRequest> | null;
-      if (!req || req.explicitlyRequested !== true || req.sourceLanguage !== 'sq' || req.targetLanguage !== 'en'
+      if (!req || req.explicitlyRequested !== true || !isLocalTranslationLanguage(req.sourceLanguage) || req.targetLanguage !== 'en'
         || typeof req.text !== 'string' || !req.text.trim() || req.text.length > MAX_INPUT || /[\u0000]/u.test(req.text)) {
         return { ok: false, reason: 'invalid-request' };
       }
+      const expectedModel = localModelFor(req.sourceLanguage)!;
       if (!options.hasLoopbackPermission || !(await options.hasLoopbackPermission().catch(() => false))) {
         return { ok: false, reason: 'host-permission-unavailable' };
       }
@@ -65,18 +65,24 @@ export function createLocalTranslationService(options: LocalTranslationServiceOp
         const response = await options.fetch(config.endpoint, {
           method: 'POST',
           headers: { 'content-type': 'application/json', authorization: `Bearer ${config.token}` },
-          body: JSON.stringify({ text: req.text, sourceLanguage: 'sq', targetLanguage: 'en' }),
+          body: JSON.stringify({ text: req.text, sourceLanguage: req.sourceLanguage, targetLanguage: 'en' }),
           cache: 'no-store', credentials: 'omit', redirect: 'error',
           timeoutMs: 60_000,
         } as RequestInit);
         if (!response.ok) return { ok: false, reason: 'service-error' };
         const result = await response.json() as ServiceResponse;
-        if (typeof result.text !== 'string' || !result.text.trim() || result.text.length > MAX_OUTPUT || result.model !== MODEL) {
+        const hasRequiredEcho = req.sourceLanguage === 'sq'
+          ? result.sourceLanguage === undefined || result.sourceLanguage === req.sourceLanguage
+          : result.sourceLanguage === req.sourceLanguage;
+        const hasRequiredRevision = req.sourceLanguage === 'sq' && result.revision === undefined
+          ? true : result.revision === expectedModel.revision;
+        if (typeof result.text !== 'string' || !result.text.trim() || result.text.length > MAX_OUTPUT
+          || result.model !== expectedModel.id || !hasRequiredRevision || !hasRequiredEcho
+          || (result.targetLanguage !== undefined && result.targetLanguage !== 'en')) {
           return { ok: false, reason: 'service-error' };
         }
-        const revision = typeof result.revision === 'string' && result.revision.length <= MAX_REVISION && /^[\w.+-]+$/u.test(result.revision)
-          ? result.revision : undefined;
-        return { ok: true, text: result.text.trim(), model: MODEL, ...(revision ? { revision } : {}) };
+        return { ok: true, text: result.text.trim(), model: expectedModel.id, revision: expectedModel.revision,
+          sourceLanguage: req.sourceLanguage, targetLanguage: 'en' };
       } catch { return { ok: false, reason: 'unavailable' }; }
     },
   };

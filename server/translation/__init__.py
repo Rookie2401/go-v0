@@ -1,1 +1,1 @@
-"""Loopback-only, offline Albanian-to-English translation service."""
+"""Loopback-only, offline local-to-English translation service."""

@@ -34,7 +34,7 @@
  */
 import type { GoEvent } from '../../../repository-contract/src';
 import { validateEvent } from '../../../repository-contract/src';
-import type { AssessmentSource } from '../../../golisten/src/contracts';
+import type { AssessmentSource, AudioStimulus } from '../../../golisten/src/contracts';
 import type { KeyValueArea } from '../../../repository-sync/src/area';
 import { getOne } from '../../../repository-sync/src/area';
 import { FAMILY_DIMENSION } from '../types';
@@ -203,6 +203,22 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
   const cache = new Map<number, Promise<Built>>();
   let initialStateSaved = false;
 
+  function release(stimulus: AudioStimulus): void {
+    try { audio?.releaseStimulus?.(stimulus); } catch (e) { persistErrs.push(`audio cleanup failed (${errText(e)})`); }
+  }
+
+  async function releaseCached(index: number): Promise<void> {
+    const pending = cache.get(index);
+    cache.delete(index);
+    if (!pending) return;
+    const result = await pending;
+    if (result.ok && result.exercise.prompt.audio) release(result.exercise.prompt.audio);
+  }
+
+  async function releaseCache(): Promise<void> {
+    await Promise.all([...cache.keys()].map(releaseCached));
+  }
+
   async function save(): Promise<void> {
     try { await persist.set({ [key(st.sessionId)]: clone(st) }); } catch (e) { persistErrs.push(errText(e)); }
   }
@@ -217,22 +233,38 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
   async function build(i: number): Promise<Built> {
     const p = planned(i);
     if (!p) return { ok: false, reason: 'no such plan item' };
+    const prepared: AudioStimulus[] = [];
+    let retained: AudioStimulus | undefined;
     try {
       const builder = resolveBuilder(builders, p.family);
       if (!builder) return { ok: false, reason: `no exercise builder for ${p.family}` };
       const f = await facts.factsFor(p.item.unitId, p.item.languageId, p.item.varietyId);
       if (!f) return { ok: false, reason: 'the pack has no verified facts for this unit' };
       const target = targetOf(p);
-      const ctx: BuildContext = { now: now(), ...(isAudioFamily(p.family) && audio ? { audio } : {}), random, ...(deps.pool ? { pool: await deps.pool() } : {}) };
+      const trackedAudio: AssessmentSource | undefined = audio ? {
+        prepareStimulus: async (req) => {
+          const stimulus = await audio.prepareStimulus(req);
+          if (!('unavailable' in stimulus)) prepared.push(stimulus);
+          return stimulus;
+        },
+        playbackOf: (stimulus) => audio.playbackOf(stimulus),
+        scoringMetadata: (stimulus, replays) => audio.scoringMetadata(stimulus, replays),
+        ...(audio.releaseStimulus ? { releaseStimulus: (stimulus: AudioStimulus) => audio.releaseStimulus!(stimulus) } : {}),
+      } : undefined;
+      const ctx: BuildContext = { now: now(), ...(isAudioFamily(p.family) && trackedAudio ? { audio: trackedAudio } : {}), random, ...(deps.pool ? { pool: await deps.pool() } : {}) };
       if (isAudioFamily(p.family) && !audio) return { ok: false, reason: 'no audio source for a listening exercise' };
       if (!builder.canBuild(target, f, ctx)) return { ok: false, reason: `the facts do not support a ${p.family} exercise` };
       const ex = await builder.build(target, f, ctx);
       if ('unavailable' in ex) return { ok: false, reason: ex.reason };
+      if (ex.prompt.audio) prepared.push(ex.prompt.audio);
       if (!ex.validation.ok) return { ok: false, reason: `the exercise failed its own validation: ${ex.validation.issues.join('; ') || 'no detail'}` };
       if (!ex.eligibility.eligible) return { ok: false, reason: `not eligible for assessment: ${ex.eligibility.reason}` };
+      retained = ex.prompt.audio;
       return { ok: true, exercise: ex, builder };
     } catch (e) {
       return { ok: false, reason: `the exercise could not be built (${errText(e)})` };
+    } finally {
+      for (const stimulus of new Set(prepared)) if (stimulus !== retained) release(stimulus);
     }
   }
 
@@ -260,7 +292,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
         return { index: i, total: st.plan.items.length, planned: st.plan.items[i], exercise: b.exercise };
       }
       st.skips.push({ index: i, itemId: st.plan.items[i].item.itemId, reason: b.reason, at: now(), kind: 'build-failed' });
-      cache.delete(i);
+      await releaseCached(i);
       st.index += 1;
       await save();
     }
@@ -376,7 +408,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
 
     st.results.push(result);
     st.index = index + 1;
-    cache.delete(index);
+    await releaseCached(index);
     await save();
     return clone(result);
   }
@@ -430,7 +462,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     const p = planned(st.index);
     if (!p) return;
     st.skips.push({ index: st.index, itemId: p.item.itemId, reason, at: now(), kind: 'learner' });
-    cache.delete(st.index);
+    await releaseCached(st.index);
     st.index += 1;
     await save();
   }
@@ -465,17 +497,18 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     undo: (resultId, reason) => serialize(() => undoUnsafe(resultId, reason)),
     finish: () => serialize(async () => {
       if (st.status === 'in-progress') { st.status = 'finished'; st.finishedAt = now(); }
+      await releaseCache();
       await save();
       return clone(st);
     }),
     recover: (id, suppliedEvents) => serialize(async () => {
       const saved = await getOne<PersistedSession>(persist, key(id));
       if (!saved) return false;
+      await releaseCache();
       st = clone(saved);
       st.skips ??= [];
       st.recoveryNotes ??= [];
       initialStateSaved = true;
-      cache.clear();
       const committed = suppliedEvents ?? await deps.committedEvents?.() ?? [];
       let recovered = 0;
       while (st.status === 'in-progress' && st.index < st.plan.items.length) {

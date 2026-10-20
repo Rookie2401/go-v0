@@ -54,7 +54,7 @@ export const HI_TUTORIAL: Tutorial = orientation({
     'Words written alike in two ways keep every reading, because there is no parser to choose between them.',
     'The Devanagari script is shared with Marathi, Nepali and Sanskrit; this pack reads Hindi only.',
   ],
-  sound: { id: 'sound-and-audio', body: soundBody('Hindi') },
+  sound: { id: 'sound-and-audio', body: soundBody('Hindi', '', '; a remote Azure voice is available only with your consent and key') },
   languageSteps: HI_TUTORIAL_STEPS_OWN,
   notice: 'This minimal orientation was drafted by an AI model and has not been checked by a native speaker of Hindi. It covers how to select a word, what the card shows, how Devanagari is built, eight nouns and what the experimental pack cannot do. You can skip it and come back at any time.',
 });

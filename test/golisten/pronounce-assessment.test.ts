@@ -3,13 +3,13 @@ import { describe, expect, it } from 'vitest';
 import { validateEvent, validatePayload } from '../../packages/repository-contract/src';
 import type { GoEvent } from '../../packages/repository-contract/src';
 import {
-  albanianRegistry, assessmentEvidence, createGoListen, defaultRegistries, demoGermanRegistry, listeningAssessedPayload,
+  albanianRegistry, assessmentEvidence, createGoListen, defaultRegistries, demoGermanRegistry, isAssessmentQualified, listeningAssessedPayload,
 } from '../../packages/golisten/src';
 import type { AudioStimulus, GoListenOptions, StimulusRequest, VoiceRegistry } from '../../packages/golisten/src';
 import { SQ_AL, configuredProxy, fakeAudio, fakeObjectUrls, fakeSpeech, fakeUtterance } from './pronounce-fakes';
 
 const TEXT = 'faleminderit';
-const REQ: StimulusRequest = { languageId: 'sq', kind: 'word', text: TEXT, itemIds: ['sq:lex:0042'] };
+const REQ: StimulusRequest = { languageId: 'sq', kind: 'word', text: TEXT, itemIds: ['sq:lex:0042'], processingPermission: 'allowed' };
 const opts = (o: Partial<GoListenOptions> = {}): GoListenOptions => ({
   registries: defaultRegistries(), consent: () => ({ remoteSpeech: true }), speech: fakeSpeech([SQ_AL]), audio: fakeAudio(900),
   fetch: configuredProxy().fetch, objectUrl: fakeObjectUrls(), utterance: fakeUtterance, voiceWaitMs: 0, ...o,
@@ -28,6 +28,13 @@ const reviewedRegistry = (suitable: boolean): VoiceRegistry => {
 };
 
 describe('assessment stimuli hide the answer and reflect the evidence rule', () => {
+  it('requires both native review and explicit assessment approval', () => {
+    const base = { ...albanianRegistry().entries[0], synthetic: false as const, qualityVerification: 'native-reviewed' as const };
+    expect(isAssessmentQualified({ ...base, suitableForAssessment: true })).toBe(true);
+    expect(isAssessmentQualified({ ...base, suitableForAssessment: false })).toBe(false);
+    expect(isAssessmentQualified({ ...base, qualityVerification: 'unverified' as const, suitableForAssessment: true })).toBe(false);
+  });
+
   it('a device-voice stimulus is practice: answerHidden, not eligible, no text outside audio.text', async () => {
     const g = createGoListen(opts());
     const s = await stim(g);
@@ -52,7 +59,7 @@ describe('assessment stimuli hide the answer and reflect the evidence rule', () 
   });
 
   it('the German demonstration recording is not eligible: it serves a phrase only, and it is unreviewed', async () => {
-    const g = createGoListen(opts());
+    const g = createGoListen(opts({ registries: [demoGermanRegistry()] }));
     const u = await g.assessment().prepareStimulus({ languageId: 'de', kind: 'sentence', text: 'Guten Tag!', itemIds: [] });
     expect(u).toMatchObject({ unavailable: true }); // a stimulus is a word or a sentence; the demonstration is neither
 
@@ -210,4 +217,43 @@ describe('registries are inputs', () => {
       expect(s.validity.eligibleForEvidence).toBe(false);
     }
   });
+});
+
+
+it('keeps one assessment source and rejects unknown and altered evidence bindings', async () => {
+  const g = createGoListen(opts({ registries: [reviewedRegistry(true)] }));
+  expect(g.assessment()).toBe(g.assessment());
+  const s = await stim(g, { languageId: 'de', kind: 'sentence', text: 'Guten Tag!', itemIds: ['de:x'] });
+  const src = g.assessment();
+  expect(src.scoringMetadata({ ...s }, 0).eligibleForEvidence).toBe(false);
+  for (const change of [() => { s.audio = { kind: 'recorded', url: '/different.wav' }; }, () => { s.voice.suitableForAssessment = false; }, () => { s.itemIds.push('different'); }, () => { s.replaysAllowed = 99; }]) {
+    const saved = JSON.stringify(s); change();
+    expect(src.scoringMetadata(s, 0).eligibleForEvidence).toBe(false);
+    expect(src.playbackOf(s).state).toBe('error');
+    Object.assign(s, JSON.parse(saved));
+  }
+  const p = src.playbackOf(s); p.dispose();
+  expect(src.scoringMetadata(s, 0).eligibleForEvidence).toBe(true);
+  src.releaseStimulus!(s);
+  expect(src.scoringMetadata(s, 0).eligibleForEvidence).toBe(true);
+  const unsuitable = createGoListen(opts({ registries: [reviewedRegistry(false)] }));
+  const s2 = await stim(unsuitable, { languageId: 'de', kind: 'sentence', text: 'Guten Tag!', itemIds: [] });
+  s2.validity.eligibleForEvidence = true; s2.voice.suitableForAssessment = true;
+  expect(unsuitable.assessment().scoringMetadata(s2, 0).eligibleForEvidence).toBe(false);
+});
+
+it('releases remote stimuli once through playback disposal or explicit unused cleanup', async () => {
+  const urls = fakeObjectUrls();
+  const g = createGoListen(opts({ speech: fakeSpeech([]), objectUrl: urls }));
+  const src = g.assessment();
+  const s = await stim(g);
+  const p = src.playbackOf(s);
+  expect(src.playbackOf(s)).toBe(p);
+  p.play(); p.dispose(); p.dispose(); src.releaseStimulus!(s);
+  expect(urls.revoked).toEqual(['blob:fake/1']);
+  expect(src.playbackOf(s).state).toBe('error');
+  const unused = await stim(g);
+  if (unused.audio.kind !== 'device') unused.audio.url = '/tampered.wav';
+  src.releaseStimulus!(unused); src.releaseStimulus!(unused);
+  expect(urls.revoked).toEqual(['blob:fake/1', 'blob:fake/2']);
 });

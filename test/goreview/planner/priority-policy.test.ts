@@ -28,9 +28,9 @@ describe('versioned Knowability policy and transparent priority', () => {
     expect(eligibleByKnowability({ ...base('automatic'), explicitRequest: true })).toBe(true);
   });
 
-  it('requires spaced encounters for Seen unless another trustworthy trigger exists', () => {
+  it('allows an encountered Seen word while retaining stronger priority triggers', () => {
     const seen = { ...knowledge('lemma:sq:libër'), level: 'seen' as const, encounters: 3, firstSeenAt: '2026-10-01T00:00:00.000Z', lastSeenAt: '2026-10-01T01:00:00.000Z' };
-    expect(seenEligibility({ knowledge: seen })).toBe(false);
+    expect(seenEligibility({ knowledge: seen })).toBe(true);
     expect(seenEligibility({ knowledge: { ...seen, lastSeenAt: '2026-10-02T00:00:00.000Z' } })).toBe(true);
     expect(seenEligibility({ assistanceRequests: 2 })).toBe(true);
     expect(seenEligibility({ explicitRequest: true })).toBe(true);

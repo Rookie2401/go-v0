@@ -6,7 +6,7 @@ export { resolveSelection, statusFor, analysisIdOf, CLOSE, HIGH_CONFIDENCE, SQ_V
 export { fieldStatesFor, contextualFieldStates, pickFieldStates } from './field-states';
 export type { FieldStatesInput, FieldReading, ExternalField, ExternalStatus, CellStatusIn, SyntaxStatusIn } from './field-states';
 export type { ResolveInput, Resolution, StatusOptions, FieldEvidence } from './resolver';
-export { albanianPack, genericPack, packFor, ALBANIAN_PACK_ID, packValidation, genericValidation, withValidation } from './packs';
+export { albanianPack, genericPack, hindiPack, packFor, ALBANIAN_PACK_ID, packValidation, genericValidation, withValidation } from './packs';
 export {
   createLinguisticService, LEARNER_CORRECTION_CONFIDENCE, REVIEWER_CORRECTION_CONFIDENCE, CERTAIN_MIGRATION,
 } from './service';

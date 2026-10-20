@@ -450,7 +450,14 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
     const fromRel = rels.length ? parseLemmaId(rels[0].toId, lang) : undefined;
     if (fromRel) { lemma = fromRel.lemma; lemmaPos = fromRel.pos; }
     if (!lemma && rec) {
-      for (const a of rec.analyses) {
+      // A form can retain an older generic analysis after a real adapter is installed.
+      // Keep that history, but prefer a live candidate that names a lexeme for display and eligibility.
+      const analyses = [...rec.analyses].sort((a, b) => {
+        const aNamed = a.candidates.some((c) => !!c.lexemeId);
+        const bNamed = b.candidates.some((c) => !!c.lexemeId);
+        return Number(bNamed) - Number(aNamed) || b.candidates.reduce((m, c) => Math.max(m, c.confidence), 0) - a.candidates.reduce((m, c) => Math.max(m, c.confidence), 0);
+      });
+      for (const a of analyses) {
         const c = a.candidates[a.chosen ?? 0];
         const p = c?.lexemeId ? parseLemmaId(c.lexemeId, lang) : undefined;
         if (p) { lemma = p.lemma; lemmaPos = p.pos; break; }
@@ -485,7 +492,22 @@ export function createFactsProvider(deps: FactsProviderDeps): FactsProvider & { 
       const c = sentences().flatMap((s) => s.occs).find((x) => x.normalized === formNorm && x.top?.gloss && !x.top.unconfirmed)?.top;
       if (c?.gloss) lexGloss.push(c.gloss);
     }
-    const g: Awaited<ReturnType<typeof glossesOf>> = lemma ? await glossesOf(lemma, lemmaPos ?? pos, lexGloss) : { glosses: lexGloss, lexiconCount: lexGloss.length };
+    // Some real Repository form rows are deliberately surface-only: the language adapter did not
+    // identify a lemma, but the bundled dictionary may still have a headword entry for that exact
+    // spelling. Read that entry by surface as a dictionary source; never infer a lemma or fabricate
+    // a gloss from the surface. This keeps recognition useful while the normal eligibility gate still
+    // treats the underlying analysis as provisional.
+    let g: Awaited<ReturnType<typeof glossesOf>> = lemma
+      ? await glossesOf(lemma, lemmaPos ?? pos, lexGloss)
+      : { glosses: lexGloss, lexiconCount: lexGloss.length };
+    if (!lemma && !g.glosses.length) {
+      try {
+        const surfaceGloss = await pack.runtime.gloss(label, pos);
+        if (surfaceGloss?.senses.length) {
+          g = { glosses: [...new Set(surfaceGloss.senses.map((s) => s.gloss).filter((s) => !!s))], lexiconCount: 0, attribution: surfaceGloss.attribution };
+        }
+      } catch { /* an absent dictionary leaves this surface-only fact without an answer */ }
+    }
     const siblings = lemma ? formsOfLemma(lemma, lemmaPos).filter((f) => f.surface !== formNorm) : [];
     const constructionId = pos && Object.keys(features).length ? unitIds.morph(lang, pos, unitIds.featureKey(features)) : undefined;
     const matched = matchConstruction(pos, features, lemma);

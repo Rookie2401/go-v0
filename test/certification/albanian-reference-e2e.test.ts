@@ -354,15 +354,14 @@ describe('§14 Review (steps 12–19): the real GoPractice shell on the real Rep
     await until(() => !!practiceRoot.querySelector(`#candidates li[data-unit="${LEMMA}"]`), 10_000);
     const row = pq(`#candidates li[data-unit="${LEMMA}"]`);                                // 13. the review candidate
     const why = row.querySelector('details.why')!.textContent ?? '';                       // 14. why it was selected
-    expect(row.getAttribute('data-decision'), why).toMatch(/test-now|test-later/);
+    expect(row.getAttribute('data-decision'), why).toBe('low-priority');
+    expect(why).toMatch(/level New: automatic review excludes/i);
     expect(why).toMatch(/repeatedLookups|saved|looked up|met/i);
     expect(why.length).toBeGreaterThan(20);
-    if (row.getAttribute('data-decision') === 'test-later') {                         // the Repository explains a "later"; the learner decides to test it now
-      expect(why).toMatch(/score|later/i);
-      (row.querySelector('[data-act="test-now"]') as HTMLButtonElement).click();
-      await until(() => /Added .* to your deck/.test(practiceRoot.textContent ?? ''), 8000);
-      await practice!.ctx.syncNow({ force: true });
-    }
+    // This fixture explicitly requests written practice; New items are not admitted automatically.
+    ok(await api.appendEvents([buildCardAdded({ learnerId, enrolmentId, languageId: 'sq', at: nowIso(), deviceId: learnerDevice, producerVersion: 'cert', unitId: LEMMA, unitKind: 'lexeme', dimension: 'written-recognition', family: 'written-recognition', addedBy: 'learner' })]));
+    await practice!.ctx.syncNow({ force: true });
+    await go('review', '#review-home > *');
   }, 30_000);
 
   it('15–17. a written exercise is presented; an incorrect response lowers the relevant estimate only', async () => {
@@ -443,6 +442,10 @@ describe('§14 Listening (steps 20–24): GoListen through the real shell, with 
     expect(practiceRoot.querySelector('#session')!.textContent).not.toMatch(/liber.wav|test:sq/); // the voice descriptor (which names a file) is never on screen before the answer
     pq('#audio-play').click();
     await until(() => played.includes('test://sq/liber.wav'), 5000);
+    const listeningPrompt = await practice!.ctx.run.active!.driver.current();
+    const listeningStimulus = listeningPrompt!.exercise.prompt.audio!;
+    // Starting the audio is exposure intent; answer only after the hearing naturally completes.
+    await until(() => audioDeps.playbackOf(listeningStimulus).state === 'ended', 5000);
     const before = await dimsOf(learnerId, LEMMA);
     const outcome = await answer((x) => (x.hasInput ? 'book' : x.choices.find((c) => /book/i.test(c)) ?? x.choices[0]));   // 22. respond
     expect(outcome).toMatch(/^Correct/);
@@ -604,9 +607,13 @@ describe('§14 Reconstruct learner state (steps 38–43)', () => {
     const ids = [...new Set(history.flatMap((e) => e.subject.itemIds ?? []))];
     await fresh.putUnits(await store.getUnits(ids));
     await fresh.putAliases(await store.aliasesFor(ids));
-    const shuffled = [...history].sort((a, b) => (a.id < b.id ? 1 : -1));            // arrival order deliberately scrambled
+    // Review appends preserve CardAdded and predecessor dependencies; independent events may arrive shuffled.
+    const shuffled = [
+      ...history.filter((e) => e.subject.cardId).sort((a, b) => a.seq - b.seq),
+      ...history.filter((e) => !e.subject.cardId).sort((a, b) => a.id < b.id ? 1 : -1),
+    ];
     const outcomes = await fresh.append(learnerId, shuffled.map(({ seq: _s, recordedAt: _r, ...e }) => e as GoEvent));
-    expect(outcomes.every((o) => o.stored)).toBe(true);
+    expect(outcomes.every((o) => o.stored), JSON.stringify(outcomes.filter((o) => !o.stored))).toBe(true);
     const replay = createProjectionEngine({ store: fresh, now: nowIso });
     const current = await engine.knowledge(learnerId, ids);
     const rebuilt = await replay.knowledge(learnerId, ids);

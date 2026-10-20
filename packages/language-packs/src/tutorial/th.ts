@@ -54,7 +54,7 @@ export const TH_TUTORIAL: Tutorial = orientation({
     'Word segmentation is the weakest part: because Thai has no word spaces, a compound can be cut where you do not expect, and this has not been measured on real prose.',
     'Sentence breaks need a newline or two spaces; a single space is only a pause.',
   ],
-  sound: { id: 'sound-and-audio', body: soundBody('Thai', '; a Thai tone is shown in the written notes only where the spelling decides it') },
+  sound: { id: 'sound-and-audio', body: soundBody('Thai', '; a Thai tone is shown in the written notes only where the spelling decides it', '; a remote Azure voice is available only with your consent and key') },
   languageSteps: TH_TUTORIAL_STEPS_OWN,
   notice: 'This minimal orientation was drafted by an AI model and has not been checked by a native speaker of Thai. It covers how to select a word, what the card shows, how Thai script works, nine words and what the experimental pack cannot do. You can skip it and come back at any time.',
 });

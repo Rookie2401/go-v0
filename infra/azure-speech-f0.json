@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "description": "GoListen Azure AI Speech F0 resource. Deploy only into an explicitly selected resource group and region."
+  },
+  "parameters": {
+    "speechAccountName": {
+      "type": "string",
+      "metadata": { "description": "Globally unique Azure Speech resource name." }
+    },
+    "location": {
+      "type": "string",
+      "metadata": { "description": "Approved Azure region for the Speech resource." }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2023-05-01",
+      "name": "[parameters('speechAccountName')]",
+      "location": "[parameters('location')]",
+      "kind": "SpeechServices",
+      "sku": { "name": "F0" },
+      "properties": {
+        "customSubDomainName": "[parameters('speechAccountName')]",
+        "publicNetworkAccess": "Enabled"
+      }
+    }
+  ],
+  "outputs": {
+    "speechRegion": {
+      "type": "string",
+      "value": "[parameters('location')]"
+    }
+  }
+}

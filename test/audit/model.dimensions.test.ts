@@ -30,6 +30,25 @@ async function rebuildEqualsLive(w: World): Promise<void> {
 }
 
 describe.each(KINDS)('§17 four learners on the %s store', (kind) => {
+  it('a valid corrected review remains in history but is removed from the rebuilt learner projection', async () => {
+    const w = await fixture(kind);
+    const cardId = `card:test:${LEM}`;
+    const original = ev('CardReviewed', [LEM], {
+      cardKind: 'recall', grade: 'good', correct: true, hinted: false, rating: 3,
+    }, { id: `correctable-${kind}`, cardId, at: '2026-10-09T10:00:00.000Z', evidence: { quality: 'strong' } });
+    await append(w, original);
+    expect((await w.engine.knowledge(LEARNER)).find((r) => r.unitId === LEM)?.dimensions.productiveRetrieval.weight).toBeGreaterThan(0);
+
+    const correction = ev('CardReviewed', [LEM], {
+      cardKind: 'recall', grade: 'good', correct: true, hinted: false, rating: null, challenged: true,
+    }, { id: `correction-${kind}`, cardId, at: '2026-10-09T10:01:00.000Z', correctionOf: original.id, evidence: { quality: 'none' } });
+    await append(w, correction);
+    const row = (await w.engine.knowledge(LEARNER)).find((r) => r.unitId === LEM);
+    expect(row?.dimensions.productiveRetrieval.weight ?? 0).toBe(0);
+    expect((await w.store.list({ learnerId: LEARNER, kinds: ['CardReviewed'] })).map((e) => e.id)).toContain(original.id);
+    expect((await w.engine.rebuild(LEARNER)).find((r) => r.unitId === LEM)?.dimensions.productiveRetrieval.weight ?? 0).toBe(0);
+  });
+
   it('fixture: the real Albanian resolver stored shkollë with a high-confidence reading, lexeme, sense and construction', async () => {
     const w = await fixture(kind);
     const units = await w.store.getUnits([FORM, LEM, SENSE, CONSTR]);

@@ -233,7 +233,7 @@ describe('keyboard and tab order', () => {
     expect(say.disabled).toBe(true);
     expect(say.getAttribute('aria-label')).toBe('Play with GoListen');
     expect(say.title).toMatch(/Speech is not available/); // the title says so; nothing else of it is drawn
-    expect(visibleText(ui.root())).not.toMatch(/Speech is not available/);
+    expect(visibleText(ui.root())).toMatch(/Speech is not available/);
   });
   it('with a voice: the speaker comes right after Close, and the list is Close, Play with GoListen, view sources, the six levels, Go deeper, See full sentence, Report', () => {
     ui.destroy(); ui = make({ getVoices: () => [{ lang: 'sq-AL', name: 'sq', localService: true }], speak() {}, cancel() {} });
@@ -320,7 +320,7 @@ describe('pronunciation', () => {
     ui.show(cardFor(), anchor());
     expect((ui.root()!.querySelector('.say') as HTMLButtonElement).disabled).toBe(true);
     expect((ui.root()!.querySelector('.say') as HTMLButtonElement).title).toMatch(/No local Albanian voice/);
-    expect(visibleText(ui.root())).not.toMatch(/No local Albanian voice/); // the title says so; no note row is drawn
+    expect(visibleText(ui.root())).toMatch(/No local Albanian voice/);
     expect(speech.spoken).toEqual([]);
   });
   it('no Albanian voice at all: disabled', () => {

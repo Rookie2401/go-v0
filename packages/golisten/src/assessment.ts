@@ -12,13 +12,24 @@
  */
 import type { EvidenceNote, ListeningAssessmentPayload } from '../../repository-contract/src';
 import { isIndependentEvidence } from './contracts';
-import type { AssessmentSource, AudioStimulus, PronunciationProvenance, ScoringMetadata, StimulusRequest, VoiceDescriptor } from './contracts';
+import type { AssessmentSource, AudioStimulus, PlaybackHandle, PronunciationProvenance, ScoringMetadata, StimulusRequest, VoiceDescriptor } from './contracts';
 import type { GoListenEnv } from './environment';
 import { failedPlayback } from './playback';
 import { openPlayback, resolveFirst } from './resolve';
 import type { VoiceRegistry } from './registry';
 
 export const DEFAULT_REPLAYS_ALLOWED = 2;
+
+/**
+ * The two registry claims required before a recording may be used as an assessment source.
+ * A provider being reachable, or a descriptor carrying a review label, is not approval.
+ * Keep this predicate small and shared by every consumer that reports qualification.
+ */
+export function isAssessmentQualified(voice: VoiceDescriptor): boolean {
+  return voice.synthetic === false
+    && voice.qualityVerification === 'native-reviewed'
+    && voice.suitableForAssessment === true;
+}
 
 export function evidenceValidity(voice: VoiceDescriptor, provenance: PronunciationProvenance): AudioStimulus['validity'] {
   if (voice.synthetic || provenance.generatedFromText) {
@@ -27,7 +38,7 @@ export function evidenceValidity(voice: VoiceDescriptor, provenance: Pronunciati
   if (!isIndependentEvidence(provenance)) {
     return { eligibleForEvidence: false, reason: `The recording has not been reviewed by a human (${voice.qualityVerification}); it cannot be listening evidence.` };
   }
-  if (!voice.suitableForAssessment) {
+  if (!isAssessmentQualified(voice)) {
     return { eligibleForEvidence: false, reason: 'The recording is reviewed but not marked suitable for assessment.' };
   }
   return { eligibleForEvidence: true, reason: 'A reviewed human recording that exists independently of the text.' };
@@ -42,7 +53,14 @@ const fnv = (s: string): string => {
 export function createAssessmentSource(deps: { registries: Map<string, VoiceRegistry>; env: GoListenEnv }): AssessmentSource {
   const { registries, env } = deps;
   let counter = 0;
-  const provenanceByStimulus = new Map<string, PronunciationProvenance>();
+  const prepared = new WeakMap<AudioStimulus, {
+    signature: string; eligible: boolean; synthetic: boolean; replaysAllowed: number;
+    playback?: PlaybackHandle; release(): void; released: boolean;
+  }>();
+  const bound = (stimulus: AudioStimulus) => {
+    const record = prepared.get(stimulus);
+    try { return record?.signature === JSON.stringify(stimulus) ? record : undefined; } catch { return undefined; }
+  };
 
   return {
     async prepareStimulus(req: StimulusRequest) {
@@ -51,12 +69,12 @@ export function createAssessmentSource(deps: { registries: Map<string, VoiceRegi
         if (!text || (req.kind !== 'word' && req.kind !== 'sentence')) return { unavailable: true as const, reason: 'There is nothing to say, or the stimulus kind is not a word or a sentence.' };
         const reg = registries.get(req.languageId);
         // Assessment looks for a real recording first, then synthetic practice voices.
-        const out = await resolveFirst(['recorded', 'device', 'remote'], { languageId: req.languageId, varietyId: req.varietyId, text, kind: req.kind }, reg, env);
+        const out = await resolveFirst(['recorded', 'device', 'remote'], { languageId: req.languageId, varietyId: req.varietyId, text, kind: req.kind, processingPermission: req.processingPermission, signal: req.signal }, reg, env);
         if (!out.ok) return { unavailable: true as const, reason: out.message };
         const p = out.prepared;
+        const ownedUrl = p.ownsUrl && p.audio.kind !== 'device' ? p.audio.url : undefined;
         counter += 1;
         const stimulusId = `stim:${req.languageId}:${counter}:${fnv(`${p.voice.voiceId}|${text}|${req.itemIds.join(',')}`)}`;
-        provenanceByStimulus.set(stimulusId, p.provenance);
         const stimulus: AudioStimulus = {
           stimulusId, languageId: req.languageId, kind: req.kind, itemIds: [...req.itemIds], voice: p.voice,
           audio: p.audio.kind === 'device' ? { kind: 'device', text: p.audio.text } : p.audio,
@@ -64,6 +82,14 @@ export function createAssessmentSource(deps: { registries: Map<string, VoiceRegi
           replaysAllowed: Math.max(0, Math.floor(req.replaysAllowed ?? DEFAULT_REPLAYS_ALLOWED)),
           validity: evidenceValidity(p.voice, p.provenance),
         };
+        prepared.set(stimulus, {
+          signature: JSON.stringify(stimulus), eligible: stimulus.validity.eligibleForEvidence,
+          synthetic: p.voice.synthetic, replaysAllowed: stimulus.replaysAllowed, released: false,
+          release: () => {
+            try { if (ownedUrl) env.objectUrl?.revoke(ownedUrl); }
+            catch { /* Cleanup must not block navigation or scoring. */ }
+          },
+        });
         return stimulus;
       } catch {
         return { unavailable: true as const, reason: 'The listening stimulus could not be prepared.' };
@@ -71,17 +97,36 @@ export function createAssessmentSource(deps: { registries: Map<string, VoiceRegi
     },
 
     playbackOf(stimulus) {
+      const record = bound(stimulus);
+      if (!record || record.released) return failedPlayback(env.now);
+      if (record.playback) return record.playback;
       const reg = registries.get(stimulus.languageId);
       if (!reg) return failedPlayback(env.now);
-      return openPlayback({ voice: stimulus.voice, audio: stimulus.audio }, reg, env);
+      const playback = openPlayback({ voice: stimulus.voice, audio: stimulus.audio }, reg, env);
+      const dispose = playback.dispose;
+      playback.dispose = () => {
+        dispose();
+        if (!record.released) { record.released = true; record.release(); }
+      };
+      record.playback = playback;
+      return playback;
+    },
+
+    releaseStimulus(stimulus) {
+      // Cleanup still works if a caller mutated the public metadata.
+      const record = prepared.get(stimulus);
+      if (!record || record.released) return;
+      if (record.playback) record.playback.dispose();
+      else { record.released = true; record.release(); }
     },
 
     scoringMetadata(stimulus, replaysUsed): ScoringMetadata {
-      const replays = Math.max(0, Math.floor(replaysUsed));
-      // Eligibility is a property of how the stimulus was made; the stored provenance can only confirm it, never raise it.
-      const prov = provenanceByStimulus.get(stimulus.stimulusId);
-      const eligible = stimulus.validity.eligibleForEvidence && !stimulus.voice.synthetic && (!prov || isIndependentEvidence(prov));
-      return { voice: stimulus.voice.synthetic ? 'synthetic' : 'recorded', hinted: replays > stimulus.replaysAllowed, replays, eligibleForEvidence: eligible };
+      const replays = Number.isFinite(replaysUsed) ? Math.max(0, Math.floor(replaysUsed)) : 0;
+      const record = bound(stimulus);
+      // Only this source's unchanged preparation can authorize evidence. Public fields cannot raise it.
+      return { voice: (record?.synthetic ?? stimulus.voice.synthetic) ? 'synthetic' : 'recorded',
+        hinted: !Number.isFinite(replaysUsed) || replays > (record?.replaysAllowed ?? 0), replays,
+        eligibleForEvidence: record?.eligible === true };
     },
   };
 }

@@ -42,7 +42,7 @@ describe('the Spanish registry', () => {
   const es = spanishRegistry();
 
   it('is data in the default registries: a device template, Azure es voices, no recordings, nothing claimed beyond that', () => {
-    expect(defaultRegistries().map((r) => r.languageId)).toEqual(['sq', 'de', 'es', 'hi', 'th', 'nb', 'nn', 'he', 'el']);
+    expect(defaultRegistries().map((r) => r.languageId)).toEqual(['sq', 'de', 'es', 'hi', 'th', 'nb', 'nn', 'he', 'el', 'la']);
     expect(es.languageId).toBe('es');
     expect(es.entries.map((e) => e.provider)).toEqual(['device', 'remote', 'remote', 'remote']);
     expect(es.entries.some((e) => e.provider === 'recorded')).toBe(false);

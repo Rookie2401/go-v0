@@ -29,6 +29,16 @@ export const MAX_BODY_BYTES = 20 * 1024;
 export const MAX_TEXT_CHARS = 5000;
 export const DEFAULT_RATE_LIMIT_PER_MINUTE = 30;
 export const DEFAULT_UPSTREAM_TIMEOUT_MS = 20_000;
+export const DEFAULT_DAILY_CHARACTER_LIMIT = 100_000;
+export const MAX_AUDIO_BYTES = 4 * 1024 * 1024;
+
+export interface SpeechLimits {
+  maxBodyBytes: number;
+  maxTextChars: number;
+  rateLimitPerMinute: number;
+  upstreamTimeoutMs: number;
+  dailyCharacterLimit: number;
+}
 
 export interface SpeechRequest {
   method: string;
@@ -40,8 +50,19 @@ export interface SpeechRequest {
   body?: string | Uint8Array;
   /** Caller identity for the rate limit (remote address); optional. */
   remote?: string;
+  signal?: AbortSignal;
 }
-export interface SpeechEnv { key?: string; region?: string }
+export interface SpeechEnv {
+  key?: string;
+  region?: string;
+  /** Required for voice listing and synthesis. It is never sent to Azure. */
+  authToken?: string;
+  maxBodyBytes?: number;
+  maxTextChars?: number;
+  rateLimitPerMinute?: number;
+  upstreamTimeoutMs?: number;
+  dailyCharacterLimit?: number;
+}
 export interface RateLimiter { take(key: string): { ok: boolean; retryAfterSec: number } }
 export interface SpeechDeps {
   fetch: typeof fetch;
@@ -84,6 +105,18 @@ const LANG_RE = /^[A-Za-z]{2,3}$/;
 
 const BASE_HEADERS = { 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' } as const;
 
+export function speechLimits(env: SpeechEnv): SpeechLimits {
+  const positive = (value: unknown, fallback: number, max: number) => typeof value === 'number' && Number.isFinite(value) && value > 0
+    ? Math.min(max, Math.floor(value)) : fallback;
+  return {
+    maxBodyBytes: positive(env.maxBodyBytes, MAX_BODY_BYTES, 1_000_000),
+    maxTextChars: positive(env.maxTextChars, MAX_TEXT_CHARS, 100_000),
+    rateLimitPerMinute: positive(env.rateLimitPerMinute, DEFAULT_RATE_LIMIT_PER_MINUTE, 10_000),
+    upstreamTimeoutMs: positive(env.upstreamTimeoutMs, DEFAULT_UPSTREAM_TIMEOUT_MS, 120_000),
+    dailyCharacterLimit: positive(env.dailyCharacterLimit, DEFAULT_DAILY_CHARACTER_LIMIT, 10_000_000),
+  };
+}
+
 const json = (status: number, body: unknown, extra: Record<string, string> = {}): SpeechResponse => ({
   status, headers: { ...BASE_HEADERS, 'content-type': 'application/json; charset=utf-8', ...extra }, body: JSON.stringify(body),
 });
@@ -108,6 +141,12 @@ function sameOriginProblem(h: SpeechRequest['headers']): string | undefined {
     if (!h['host'] || originHost.toLowerCase() !== h['host'].toLowerCase()) return 'the Origin does not match the Host';
   }
   return undefined;
+}
+
+function authProblem(h: SpeechRequest['headers'], env: SpeechEnv): boolean {
+  if (!env.authToken) return true;
+  const supplied = h.authorization;
+  return supplied !== `Bearer ${env.authToken}`;
 }
 
 function byteLength(b: string | Uint8Array | undefined): number {
@@ -139,23 +178,37 @@ export function localeOfVoice(voice: string): string | undefined {
 
 const isTimeout = (e: unknown) => !!e && typeof e === 'object' && ((e as { name?: unknown }).name === 'AbortError' || (e as { name?: unknown }).name === 'TimeoutError');
 
-type Upstream = { ok: true; res: Response } | { ok: false; out: SpeechResponse };
-
-async function callUpstream(url: string, init: RequestInit, env: SpeechEnv, deps: SpeechDeps): Promise<Upstream> {
+/** Keep the deadline active until the response body has been consumed. */
+async function callUpstream(url: string, init: RequestInit, env: SpeechEnv, deps: SpeechDeps, consume: (res: Response, signal: AbortSignal) => Promise<SpeechResponse>, requestSignal?: AbortSignal): Promise<SpeechResponse> {
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), deps.timeoutMs ?? DEFAULT_UPSTREAM_TIMEOUT_MS);
+  const abort = () => controller.abort();
+  requestSignal?.addEventListener('abort', abort, { once: true });
+  const timer = setTimeout(() => controller.abort(), deps.timeoutMs ?? speechLimits(env).upstreamTimeoutMs);
   try {
     const res = await deps.fetch(url, { ...init, signal: controller.signal });
-    return { ok: true, res };
+    return await consume(res, controller.signal);
   } catch (e) {
     const timedOut = isTimeout(e) || controller.signal.aborted;
     deps.log?.(redactKey(`upstream ${timedOut ? 'timeout' : 'network failure'}`, env.key));
-    return { ok: false, out: timedOut
+    return timedOut
       ? failure(504, 'upstream-timeout', 'The speech service did not answer in time.')
-      : failure(504, 'upstream-unreachable', 'The speech service could not be reached from the server.') };
+      : failure(504, 'upstream-unreachable', 'The speech service could not be reached from the server.');
   } finally {
     clearTimeout(timer);
+    requestSignal?.removeEventListener('abort', abort);
   }
+}
+
+const dailyUsage = new Map<string, { day: string; chars: number }>();
+function chargeDaily(env: SpeechEnv, req: SpeechRequest, chars: number): boolean {
+  const limit = speechLimits(env).dailyCharacterLimit;
+  const key = env.authToken ?? `unauthed:${req.remote ?? 'local'}`;
+  const day = new Date().toISOString().slice(0, 10);
+  const current = dailyUsage.get(key);
+  const used = current?.day === day ? current.chars : 0;
+  if (used + chars > limit) return false;
+  dailyUsage.set(key, { day, chars: used + chars });
+  return true;
 }
 
 /** Maps a non-2xx upstream status; never echoes the upstream body. */
@@ -189,11 +242,14 @@ async function route(req: SpeechRequest, env: SpeechEnv, deps: SpeechDeps): Prom
 
   const problem = sameOriginProblem(req.headers);
   if (problem) return failure(403, 'forbidden-origin', `Same-origin requests only (${problem}).`);
+  // Status is deliberately public but redacted. The authenticated backend endpoints fail closed:
+  // an unset token is just as invalid as a missing or incorrect bearer token.
+  if (path !== `${SPEECH_PATH_PREFIX}/status` && authProblem(req.headers, env)) return failure(401, 'auth-required', 'This speech proxy requires its configured local client authorization.');
 
   if (path === `${SPEECH_PATH_PREFIX}/status`) {
     if (method !== 'GET') return failure(405, 'method-not-allowed', 'Use GET.', { allow: 'GET' });
     const ok = configured(env);
-    return json(200, { configured: ok, provider: SPEECH_PROVIDER_ID, providerVersion: SPEECH_PROVIDER_VERSION, ...(ok ? { region: env.region } : {}), format: SPEECH_OUTPUT_FORMAT, maxChars: MAX_TEXT_CHARS });
+    return json(200, { configured: ok, provider: SPEECH_PROVIDER_ID, providerVersion: SPEECH_PROVIDER_VERSION, ...(ok ? { region: env.region } : {}), format: SPEECH_OUTPUT_FORMAT, maxChars: speechLimits(env).maxTextChars });
   }
 
   const isVoices = path === `${SPEECH_PATH_PREFIX}/voices`;
@@ -203,7 +259,8 @@ async function route(req: SpeechRequest, env: SpeechEnv, deps: SpeechDeps): Prom
   if (isSynth && method !== 'POST') return failure(405, 'method-not-allowed', 'Use POST.', { allow: 'POST' });
 
   // Cheap checks first, so a rejected request never touches the limiter's budget or the upstream.
-  if (isSynth && byteLength(req.body) > MAX_BODY_BYTES) return failure(413, 'payload-too-large', `The request body is limited to ${MAX_BODY_BYTES} bytes.`);
+  const limits = speechLimits(env);
+  if (isSynth && byteLength(req.body) > limits.maxBodyBytes) return failure(413, 'payload-too-large', `The request body is limited to ${limits.maxBodyBytes} bytes.`);
   if (!configured(env)) return notConfigured();
   if (deps.limiter) {
     const t = deps.limiter.take(req.remote ?? 'local');
@@ -215,26 +272,29 @@ async function route(req: SpeechRequest, env: SpeechEnv, deps: SpeechDeps): Prom
 async function voices(req: SpeechRequest, env: { key: string; region: string }, deps: SpeechDeps): Promise<SpeechResponse> {
   const lang = req.query?.lang;
   if (lang !== undefined && !LANG_RE.test(lang)) return failure(400, 'bad-request', 'lang must be a language code such as "es".');
-  const up = await callUpstream(`https://${env.region}.tts.speech.microsoft.com/cognitiveservices/voices/list`, {
+  return callUpstream(`https://${env.region}.tts.speech.microsoft.com/cognitiveservices/voices/list`, {
     method: 'GET', headers: { 'Ocp-Apim-Subscription-Key': env.key, 'User-Agent': 'go-v0-speech-proxy' },
-  }, env, deps);
-  if (!up.ok) return up.out;
-  if (!up.res.ok) return mapUpstreamStatus(up.res.status, up.res, env, deps);
-  let list: unknown;
-  try { list = await up.res.json(); } catch { return failure(502, 'upstream-error', 'The voice list was not valid JSON.'); }
-  if (!Array.isArray(list)) return failure(502, 'upstream-error', 'The voice list had an unexpected shape.');
-  const want = lang?.toLowerCase();
-  const out = (list as Array<Record<string, unknown>>)
-    .filter((v) => typeof v?.ShortName === 'string' && typeof v?.Locale === 'string')
-    .filter((v) => !want || (v.Locale as string).toLowerCase().startsWith(`${want}-`))
-    .map((v) => {
-      const g = typeof v.Gender === 'string' ? v.Gender.toLowerCase() : undefined;
-      return { id: v.ShortName as string, name: `Azure ${v.ShortName as string}`, lang: (v.Locale as string).split('-')[0].toLowerCase(), locale: v.Locale as string, ...(g === 'female' || g === 'male' || g === 'neutral' ? { gender: g } : {}) };
-    });
-  return json(200, { voices: out });
+  }, env, deps, async (res, signal) => {
+    if (!res.ok) return mapUpstreamStatus(res.status, res, env, deps);
+    let list: unknown;
+    try { list = await res.json(); } catch (e) {
+      if (isTimeout(e) || signal.aborted) throw e;
+      return failure(502, 'upstream-error', 'The voice list was not valid JSON.');
+    }
+    if (!Array.isArray(list)) return failure(502, 'upstream-error', 'The voice list had an unexpected shape.');
+    const want = lang?.toLowerCase();
+    const out = (list as Array<Record<string, unknown>>)
+      .filter((v) => typeof v?.ShortName === 'string' && typeof v?.Locale === 'string')
+      .filter((v) => !want || (v.Locale as string).toLowerCase().startsWith(`${want}-`))
+      .map((v) => {
+        const g = typeof v.Gender === 'string' ? v.Gender.toLowerCase() : undefined;
+        return { id: v.ShortName as string, name: `Azure ${v.ShortName as string}`, lang: (v.Locale as string).split('-')[0].toLowerCase(), locale: v.Locale as string, ...(g === 'female' || g === 'male' || g === 'neutral' ? { gender: g } : {}) };
+      });
+    return json(200, { voices: out });
+  });
 }
 
-async function synthesize(req: SpeechRequest, env: { key: string; region: string }, deps: SpeechDeps): Promise<SpeechResponse> {
+async function synthesize(req: SpeechRequest, env: SpeechEnv & { key: string; region: string }, deps: SpeechDeps): Promise<SpeechResponse> {
   const bad = (m: string) => failure(400, 'bad-request', m);
   let p: Record<string, unknown>;
   try {
@@ -251,31 +311,41 @@ async function synthesize(req: SpeechRequest, env: { key: string; region: string
   if (text !== undefined && typeof text !== 'string') return bad('text must be a string.');
   if (ssml !== undefined && typeof ssml !== 'string') return bad('ssml must be a string.');
   if (text === undefined && ssml === undefined) return bad('Provide text or ssml.');
-  if (Math.max(text?.length ?? 0, ssml?.length ?? 0) > MAX_TEXT_CHARS) return bad(`The text is limited to ${MAX_TEXT_CHARS} characters.`);
+  if (ssml !== undefined) return bad('ssml is not accepted; provide plain text.');
+  if ((text?.length ?? 0) > speechLimits(env).maxTextChars) return bad(`The text is limited to ${speechLimits(env).maxTextChars} characters.`);
   if (!(text ?? '').trim() && !(ssml ?? '').trim()) return bad('The text is empty.');
+  const voiceLocale = localeOfVoice(voice);
+  if (voiceLocale && voiceLocale.toLowerCase() !== loc.toLowerCase()) return bad('locale must match the selected voice.');
+  if (p.sourcePermission !== 'allowed' || !['word', 'phrase', 'sentence'].includes(String(p.kind))) {
+    return bad('sourcePermission and kind are required for authenticated speech processing.');
+  }
+  if (!chargeDaily(env, req, (text ?? '').length)) return failure(429, 'daily-limit', 'The daily speech character limit has been reached.');
 
-  const up = await callUpstream(`https://${env.region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
+  return callUpstream(`https://${env.region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
     method: 'POST',
     headers: {
       'Ocp-Apim-Subscription-Key': env.key, 'Content-Type': 'application/ssml+xml',
       'X-Microsoft-OutputFormat': SPEECH_OUTPUT_FORMAT, 'User-Agent': 'go-v0-speech-proxy',
     },
     body: buildSsml({ text, ssml, voice, locale: loc }),
-  }, env, deps);
-  if (!up.ok) return up.out;
-  if (!up.res.ok) return mapUpstreamStatus(up.res.status, up.res, env, deps);
+  }, env, deps, async (res, signal) => {
+    if (!res.ok) return mapUpstreamStatus(res.status, res, env, deps);
 
-  let bytes: Uint8Array;
-  try { bytes = new Uint8Array(await up.res.arrayBuffer()); } catch { return failure(504, 'upstream-unreachable', 'The audio download was interrupted.'); }
-  const riff = bytes.length > 44 && bytes[0] === 0x52 && bytes[1] === 0x49 && bytes[2] === 0x46 && bytes[3] === 0x46;
-  if (!riff) return failure(502, 'upstream-error', 'The speech service returned something that is not a WAV file.');
-  return {
-    status: 200,
-    headers: {
-      ...BASE_HEADERS, 'content-type': 'audio/wav', 'content-length': String(bytes.length),
-      'x-speech-provider-version': SPEECH_PROVIDER_VERSION, 'x-speech-voice': voice,
-      'x-speech-requested-locale': loc, 'x-speech-delivered-locale': localeOfVoice(voice) ?? loc,
-    },
-    body: bytes,
-  };
+    let bytes: Uint8Array;
+    try { bytes = new Uint8Array(await res.arrayBuffer()); } catch (e) {
+      if (isTimeout(e) || signal.aborted) throw e;
+      return failure(504, 'upstream-unreachable', 'The audio download was interrupted.');
+    }
+    const riff = bytes.length > 44 && bytes.length <= MAX_AUDIO_BYTES && bytes[0] === 0x52 && bytes[1] === 0x49 && bytes[2] === 0x46 && bytes[3] === 0x46 && bytes[8] === 0x57 && bytes[9] === 0x41 && bytes[10] === 0x56 && bytes[11] === 0x45;
+    if (!riff) return failure(502, 'upstream-error', 'The speech service returned something that is not a WAV file.');
+    return {
+      status: 200,
+      headers: {
+        ...BASE_HEADERS, 'content-type': 'audio/wav', 'content-length': String(bytes.length),
+        'x-speech-provider-version': SPEECH_PROVIDER_VERSION, 'x-speech-voice': voice,
+        'x-speech-requested-locale': loc, 'x-speech-delivered-locale': localeOfVoice(voice) ?? loc,
+      },
+      body: bytes,
+    };
+  }, req.signal);
 }

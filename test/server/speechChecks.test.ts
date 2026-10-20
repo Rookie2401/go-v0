@@ -13,6 +13,7 @@ import {
 
 const KEY = 'REAL-LOOKING-KEY-0123456789abcdef-DO-NOT-PRINT';
 const REGION = 'westeurope';
+const AUTH = 'speech-check-test-token';
 const bi = (b: Uint8Array) => b as unknown as BodyInit;
 const tone = () => {
   const n = 24_000;
@@ -104,7 +105,7 @@ describe('runLiveSynthesis (mocked: the real service is never called here)', () 
 
   it('one synthesis request, the sentence it was given, WAV validated, locale and duration reported, audition still required', async () => {
     const m = mock({ voices: [{ ShortName: 'es-MX-DaliaNeural', Locale: 'es-MX', Gender: 'Female' }] });
-    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION }, sentence, fetch: m.fn });
+    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION, authToken: AUTH }, sentence, processingPermission: 'allowed', fetch: m.fn });
     expect(r).toMatchObject({ ok: true, voice: 'es-MX-DaliaNeural', requestedLocale: 'es-HN', deliveredLocale: 'es-MX', sampleRate: 24_000, durationMs: 1000, problems: [] });
     const synth = m.calls.filter((c) => c.url.endsWith('/cognitiveservices/v1'));
     expect(synth).toHaveLength(1);
@@ -120,20 +121,20 @@ describe('runLiveSynthesis (mocked: the real service is never called here)', () 
 
   it('prefers an es-HN voice when the live list has one (the Honduras course is then exact)', async () => {
     const m = mock({ voices: [{ ShortName: 'es-MX-DaliaNeural', Locale: 'es-MX' }, { ShortName: 'es-HN-KarlaNeural', Locale: 'es-HN', Gender: 'Female' }] });
-    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION }, sentence, fetch: m.fn });
+    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION, authToken: AUTH }, sentence, processingPermission: 'allowed', fetch: m.fn });
     expect(r).toMatchObject({ ok: true, voice: 'es-HN-KarlaNeural', requestedLocale: 'es-HN', deliveredLocale: 'es-HN' });
   });
 
   it('falls back to the static voice table when the voice list is unavailable', async () => {
     const m = mock({ voices: [] });
-    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION }, sentence, fetch: m.fn });
+    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION, authToken: AUTH }, sentence, processingPermission: 'allowed', fetch: m.fn });
     expect(r.ok).toBe(true);
     expect(r.voice).toBe('es-MX-DaliaNeural');
   });
 
   it('a service refusal is a failure with the proxy error code, not a pass, and never carries the key', async () => {
     const m = mock({ voices: [], synth: () => new Response(`bad key ${KEY}`, { status: 401 }) });
-    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION }, sentence, fetch: m.fn });
+    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION, authToken: AUTH }, sentence, processingPermission: 'allowed', fetch: m.fn });
     expect(r.ok).toBe(false);
     expect(r.error).toMatch(/HTTP 401 missing-credentials/);
     expect(JSON.stringify(r)).not.toContain(KEY);
@@ -145,7 +146,7 @@ describe('runLiveSynthesis (mocked: the real service is never called here)', () 
 
   it('a WAV that fails validation (silence) is a failure with the validator problems', async () => {
     const m = mock({ voices: [], synth: () => new Response(bi(encodeWav({ samples: new Int16Array(24_000), sampleRate: 24_000 })), { status: 200 }) });
-    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION }, sentence, fetch: m.fn });
+    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION, authToken: AUTH }, sentence, processingPermission: 'allowed', fetch: m.fn });
     expect(r.ok).toBe(false);
     expect(r.problems).toContain('silent');
     expect(formatLive(r).join('\n')).toMatch(/REAL SPEECH: FAILED/);
@@ -153,7 +154,7 @@ describe('runLiveSynthesis (mocked: the real service is never called here)', () 
 
   it('a network failure is reported without the thrown text', async () => {
     const fn = vi.fn(async () => { throw new Error(`socket closed for ${KEY}`); }) as unknown as typeof fetch;
-    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION }, sentence, fetch: fn });
+    const r = await runLiveSynthesis({ env: { key: KEY, region: REGION, authToken: AUTH }, sentence, processingPermission: 'allowed', fetch: fn });
     expect(r.ok).toBe(false);
     expect(JSON.stringify(r)).not.toContain(KEY);
   });

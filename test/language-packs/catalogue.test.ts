@@ -98,8 +98,10 @@ describe('audio, whatWorks and whatDoesNot', () => {
     const by = Object.fromEntries(c.map((e) => [e.languageId, e]));
     expect(by.sq.audio).toBe('a voice from your device, if it has one; a remote voice, only with your consent and your own key; none of it is listening evidence');
     expect(by.es.audio).toBe(by.sq.audio);
-    expect(by.de.audio).toBe('1 short demonstration recording; none of it is listening evidence');
-    for (const l of ['nb', 'hi', 'th']) expect(by[l].audio, l).toBe('no validated audio');
+    expect(by.de.audio).toBe('1 short demonstration recording; a voice from your device, if it has one; a remote voice, only with your consent and your own key; none of it is listening evidence');
+    const devicePractice = 'a voice from your device, if it has one; none of it is listening evidence';
+    expect(by.nb.audio).toBe(devicePractice);
+    for (const l of ['hi', 'th']) expect(by[l].audio, l).toBe('a voice from your device, if it has one; a remote voice, only with your consent and your own key; none of it is listening evidence');
     // the same GoListen facts the reader's capability view reports
     expect(audioOf('de').recordings).toBe(1);
     expect(audioOf('sq').remoteVoices.length).toBeGreaterThan(0);

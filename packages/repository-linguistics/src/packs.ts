@@ -3,6 +3,7 @@
  * The Albanian pack is described from the real adapter; every other language gets a generic, form-only pack.
  */
 import { sqAdapter } from '../../../src/adapters/sq';
+import { hiAdapter } from '../../../src/adapters/hi';
 import { validationForPack } from '../../repository-contract/src';
 import type { LanguagePackInfo, ProvenanceOrigin, ProvenanceSource, UnitProvenance, ValidationLevel } from '../../repository-contract/src';
 
@@ -27,6 +28,17 @@ export const packValidation = (languageId: string): ValidationLevel =>
 export const genericValidation = (languageId: string): ValidationLevel => packValidation(languageId);
 
 export const ALBANIAN_PACK_ID = 'pack:sq';
+
+/** Hindi is an experimental, seed-only pack, but it still has a real analyser. Keep its
+ * identity here so Repository rows and GoReview facts refer to the same pack. */
+export function hindiPack(): LanguagePackInfo {
+  return {
+    packId: 'pack:hi', languageId: 'hi', version: String(hiAdapter.version), analyzerId: `adapter-hi@${hiAdapter.version}`,
+    coverage: { notes: ['Seed-only Hindi word list and rule-based morphology; no native-speaker review.'] },
+    licences: [{ resource: 'Hindi course word list and morphology rules (adapter-hi)', licence: 'Owner-authored, machine-drafted; not yet reviewed by a native speaker' }],
+    reviewStatus: 'machine-drafted', level: 'experimental', validation: 'experimental',
+  };
+}
 
 /** The adapter does not export its word list; the count is read from its own statement of its limits, and omitted when that text changes. */
 function lexemeCount(): number | undefined {
@@ -83,5 +95,7 @@ export function genericPack(languageId: string): LanguagePackInfo {
 }
 
 export function packFor(languageId: string): LanguagePackInfo {
-  return languageId === 'sq' ? albanianPack() : genericPack(languageId);
+  if (languageId === 'sq') return albanianPack();
+  if (languageId === 'hi') return hindiPack();
+  return genericPack(languageId);
 }

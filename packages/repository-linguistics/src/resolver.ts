@@ -5,16 +5,18 @@
  *
  * Languages with an adapter in the registry below (Albanian, Spanish) are resolved by the SAME code with the same unit-id
  * derivation (`unitIds.lexeme/form/morph …` carry the language code, so the two languages' units never collide). Any
- * other language, or a surface with no Latin letter, gets a single provisional `form` unit.
+ * other language gets a single provisional `form` unit. Script-specific adapters such as Hindi are allowed to read
+ * their own script; the Latin-letter guard only protects the Latin-only adapters below.
  */
 import { esAdapter } from '../../../src/adapters/es';
+import { hiAdapter } from '../../../src/adapters/hi';
 import { sqAdapter } from '../../../src/adapters/sq';
 import type { AnalysisCandidate as AdapterCandidate, AnalyzedToken, LanguageAdapter, PhraseCandidate, RawToken } from '../../../src/core';
 import { unitIds } from '../../repository-contract/src';
 import type {
   AnalysisCandidate, AnalysisStatus, FormAnalysis, LanguagePackInfo, LinguisticUnit, ProvenanceSource, UnitKind, UnitProvenance, UnitRelation, ValidationLevel,
 } from '../../repository-contract/src';
-import { albanianPack, genericPack, genericValidation, packValidation, withValidation } from './packs';
+import { albanianPack, genericPack, genericValidation, hindiPack, packValidation, withValidation } from './packs';
 import { CLOSE, HIGH_CONFIDENCE, contextualFieldStates, fieldStatesFor, pickFieldStates } from './field-states';
 import type { FieldReading, FieldStatesInput } from './field-states';
 
@@ -84,6 +86,7 @@ function spanishPack(): LanguagePackInfo {
 const LANGUAGES: Readonly<Record<string, LanguageEntry>> = {
   sq: { adapter: sqAdapter, name: 'Albanian', varietyId: SQ_VARIETY, pack: albanianPack },
   es: { adapter: esAdapter, name: 'Spanish', varietyId: ES_VARIETY, pack: spanishPack },
+  hi: { adapter: hiAdapter, name: 'Hindi', varietyId: 'hi-standard', pack: hindiPack },
 };
 
 const entryFor = (languageId: string): LanguageEntry | undefined =>
@@ -233,7 +236,7 @@ export function resolveSelection(input: ResolveInput): Resolution {
     const surface = (input.surface ?? '').normalize('NFC').trim();
     const entry = entryFor(input.languageId);
     if (!entry) return genericResolution(input, `No analyzer for language "${input.languageId}" in the Repository: only the form is recorded.`);
-    if (!hasLatinLetter(surface)) return genericResolution(input, `This selection has no Latin letters: the ${entry.name} word list does not apply to it.`);
+    if (!hasLatinLetter(surface) && input.languageId !== 'hi') return genericResolution(input, `This selection has no Latin letters: the ${entry.name} word list does not apply to it.`);
     return resolveWith(input, surface, entry);
   } catch (e) {
     return genericResolution(input, `The analyzer failed (${e instanceof Error ? e.message : String(e)}); only the form is recorded.`);

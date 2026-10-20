@@ -1,18 +1,18 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { albanianRegistry, AZURE_LICENCE, createGoListen, isIndependentEvidence } from '../../packages/golisten/src';
+import { albanianRegistry, AZURE_LICENCE, createGoListen, isIndependentEvidence, spanishRegistry } from '../../packages/golisten/src';
 import type { FetchLike, PronunciationResult } from '../../packages/golisten/src';
 import { configuredProxy, fakeAudio, fakeFetch, fakeObjectUrls, fakeSpeech, fakeUtterance, jsonResponse, unconfiguredProxy, wavResponse } from './pronounce-fakes';
 import type { FakeFetch } from './pronounce-fakes';
 
 const TEXT = 'mirëdita, si jeni sot';
 
-function setup(net: FakeFetch | undefined, o: { consent?: () => boolean; proxyBase?: string; now?: () => number } = {}) {
+function setup(net: FakeFetch | undefined, o: { consent?: () => boolean; proxyBase?: string; now?: () => number; registries?: ReturnType<typeof albanianRegistry>[] } = {}) {
   const audio = fakeAudio(1800);
   const urls = fakeObjectUrls();
   const state = { consent: false };
   const g = createGoListen({
-    registries: [albanianRegistry()], consent: o.consent ? () => ({ remoteSpeech: o.consent!() }) : () => ({ remoteSpeech: state.consent }),
+    registries: o.registries ?? [albanianRegistry()], consent: o.consent ? () => ({ remoteSpeech: o.consent!() }) : () => ({ remoteSpeech: state.consent }),
     speech: fakeSpeech([]), audio, fetch: net?.fetch, objectUrl: urls, utterance: fakeUtterance, speechProxyBase: o.proxyBase, now: o.now, voiceWaitMs: 0,
   });
   return { g, audio, urls, state, net };
@@ -48,10 +48,10 @@ describe('remote speech needs consent', () => {
     const net = configuredProxy();
     let allowed = true;
     const { g } = setup(net, { consent: () => allowed });
-    ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence' }));
+    ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', processingPermission: 'allowed' }));
     expect(net.calls.filter((c) => c.url.endsWith('/synthesize'))).toHaveLength(1);
     allowed = false;
-    const r = await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence' });
+    const r = await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', processingPermission: 'allowed' });
     expect(r.ok).toBe(false);
     expect(net.calls.filter((c) => c.url.endsWith('/synthesize'))).toHaveLength(1);
   });
@@ -62,7 +62,7 @@ describe('remote speech with consent', () => {
     const net = configuredProxy();
     const { g, audio, urls, state } = setup(net);
     state.consent = true;
-    const r = ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'remote', rate: 0.9 }));
+    const r = ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'remote', processingPermission: 'allowed', rate: 0.9 }));
 
     expect(net.calls).toHaveLength(1);
     const call = net.calls[0];
@@ -71,7 +71,7 @@ describe('remote speech with consent', () => {
     expect(call.init?.method).toBe('POST');
     expect(call.init?.credentials).toBe('same-origin');
     expect(Object.keys(call.init?.headers ?? {})).toEqual(['content-type']); // no key, no token: the proxy holds the key
-    expect(JSON.parse(call.init!.body!)).toEqual({ text: TEXT, voice: 'sq-AL-AnilaNeural', locale: 'sq-AL' });
+    expect(JSON.parse(call.init!.body!)).toEqual({ text: TEXT, voice: 'sq-AL-AnilaNeural', locale: 'sq-AL', kind: 'sentence', sourcePermission: 'allowed' });
 
     expect(r.voice).toMatchObject({
       voiceId: 'azure-speech:sq-AL-AnilaNeural', provider: 'remote', execution: 'remote', synthetic: true, languageId: 'sq', varietyId: 'sq-AL',
@@ -104,13 +104,25 @@ describe('remote speech with consent', () => {
     const net = configuredProxy();
     const { g, state } = setup(net, { proxyBase: 'https://app.example.test/api/speech/' });
     state.consent = true;
-    const r = ok(await g.pronounce({ languageId: 'sq', text: 'faleminderit', kind: 'word', voiceId: 'azure-speech:sq-AL-IlirNeural' }));
+    const r = ok(await g.pronounce({ languageId: 'sq', text: 'faleminderit', kind: 'word', voiceId: 'azure-speech:sq-AL-IlirNeural', processingPermission: 'allowed' }));
     expect(r.voice.voiceId).toBe('azure-speech:sq-AL-IlirNeural');
     expect(net.calls[0].url).toBe('https://app.example.test/api/speech/synthesize');
     expect(JSON.parse(net.calls[0].init!.body!).voice).toBe('sq-AL-IlirNeural');
-    const none = await g.pronounce({ languageId: 'sq', text: 'faleminderit', kind: 'word', voiceId: 'azure-speech:sq-AL-NobodyNeural' });
+    const none = await g.pronounce({ languageId: 'sq', text: 'faleminderit', kind: 'word', voiceId: 'azure-speech:sq-AL-NobodyNeural', processingPermission: 'allowed' });
     expect(none.ok).toBe(false);
     expect(net.calls).toHaveLength(1);
+  });
+
+  it('selects the requested locale and refuses an unavailable variety instead of using the first remote entry', async () => {
+    const net = configuredProxy();
+    const { g, state } = setup(net, { registries: [spanishRegistry()] });
+    state.consent = true;
+    const mx = ok(await g.pronounce({ languageId: 'es', varietyId: 'es-MX', text: 'hola', kind: 'word', preferred: 'remote', processingPermission: 'allowed' }));
+    expect(mx.voice.varietyId).toBe('es-MX');
+    expect(JSON.parse(net.calls.at(-1)!.init!.body!).locale).toBe('es-MX');
+    const hnOnly = await g.pronounce({ languageId: 'es', varietyId: 'es-419', text: 'hola', kind: 'word', preferred: 'remote', processingPermission: 'allowed' });
+    expect(hnOnly.ok).toBe(false);
+    if (!hnOnly.ok) expect(hnOnly.message).toMatch(/another variety is not substituted/);
   });
 
   it('maps proxy and network failures to results, never to exceptions, and never repeats the text', async () => {
@@ -126,7 +138,7 @@ describe('remote speech with consent', () => {
     for (const [name, net, reason] of cases) {
       const { g, state } = setup(net);
       state.consent = true;
-      const r = await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence' });
+      const r = await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', processingPermission: 'allowed' });
       expect(r.ok, name).toBe(false);
       if (r.ok) continue;
       expect(r.reason, name).toBe(reason);
@@ -139,7 +151,7 @@ describe('remote speech with consent', () => {
     const net = configuredProxy();
     const { g, state } = setup(net);
     state.consent = true;
-    const r = await g.pronounce({ languageId: 'sq', text: 'a'.repeat(5001), kind: 'sentence' });
+    const r = await g.pronounce({ languageId: 'sq', text: 'a'.repeat(5001), kind: 'sentence', processingPermission: 'allowed' });
     expect(r.ok).toBe(false);
     if (!r.ok) expect(r.reason).toBe('unsupported-kind');
     expect(net.calls).toHaveLength(0);
@@ -148,14 +160,14 @@ describe('remote speech with consent', () => {
   it('without a fetch, or with an object-URL port that fails, it returns provider-error', async () => {
     vi.stubGlobal('fetch', undefined);
     const noFetch = await createGoListen({ registries: [albanianRegistry()], consent: () => ({ remoteSpeech: true }), speech: fakeSpeech([]), audio: fakeAudio(), objectUrl: fakeObjectUrls(), utterance: fakeUtterance, voiceWaitMs: 0 })
-      .pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence' });
+      .pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', processingPermission: 'allowed' });
     expect(noFetch.ok).toBe(false);
     if (!noFetch.ok) expect(noFetch.reason).toBe('provider-error');
 
     const net = configuredProxy();
     const broken = { create: () => { throw new Error('no object urls here'); }, revoke: () => undefined };
     const noUrl = await createGoListen({ registries: [albanianRegistry()], consent: () => ({ remoteSpeech: true }), speech: fakeSpeech([]), audio: fakeAudio(), fetch: net.fetch, objectUrl: broken, utterance: fakeUtterance, voiceWaitMs: 0 })
-      .pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence' });
+      .pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', processingPermission: 'allowed' });
     expect(noUrl.ok).toBe(false);
     if (!noUrl.ok) expect(noUrl.reason).toBe('provider-error');
   });
@@ -181,7 +193,7 @@ describe('the fetch passed in is the only network path', () => {
       speech: fakeSpeech([{ name: 'Local Albanian', lang: 'sq-AL', voiceURI: 'Local Albanian', localService: true }]),
       audio: fakeAudio(), fetch: fetchSpy, objectUrl: fakeObjectUrls(), utterance: fakeUtterance, voiceWaitMs: 0,
     });
-    const r = ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence' }));
+    const r = ok(await g.pronounce({ languageId: 'sq', text: TEXT, kind: 'sentence', preferred: 'device', processingPermission: 'allowed' }));
     expect(r.provenance.source).toBe('device-tts'); // the local voice wins over the remote one
     expect(fetchSpy).not.toHaveBeenCalled();
   });

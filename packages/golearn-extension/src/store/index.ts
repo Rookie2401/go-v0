@@ -177,12 +177,37 @@ export interface BuildContext {
   language?: LanguageEvidenceInfo;
 }
 
+/** An exposure produced by GoLearn Active after the learner has explicitly enabled page reading. */
+export interface EncounterContext {
+  languageId: string;
+  itemIds: string[];
+  readerId: string;
+  identity: Identity;
+  version: string;
+  sessionId: string;
+  now: Date;
+  language?: LanguageEvidenceInfo;
+}
+
 let counter = 0;
 const randomPart = (): string => {
   const c = (globalThis as { crypto?: { randomUUID?: () => string } }).crypto;
   return c?.randomUUID ? c.randomUUID().slice(0, 8) : Math.random().toString(36).slice(2, 10);
 };
 export const newEventId = (now: Date): string => `ev:${now.getTime().toString(36)}:${(counter++).toString(36)}:${randomPart()}`;
+
+export function buildEncounterEvent(b: EncounterContext): GoEvent {
+  const itemIds = [...new Set(b.itemIds)].slice(0, 100);
+  const payload: Record<string, unknown> = { tokenCount: 1, contextKind: 'none', readerId: b.readerId };
+  const language = languagePayload(b.language, b.languageId);
+  if (language) payload.language = language;
+  return {
+    id: newEventId(b.now), v: CONTRACT_VERSION, learnerId: b.identity.learnerId, enrolmentId: b.identity.enrolmentId,
+    languageId: b.languageId, at: b.now.toISOString(), producer: { app: 'golearn-ext', version: b.version, deviceId: b.identity.deviceId, surface: 'active-reading' },
+    kind: 'EncounterRecorded', subject: { itemIds }, payload,
+    dedupeKey: `enc:${b.sessionId}:${itemIds.join(',')}`,
+  };
+}
 
 /** Prototype identity: there is no account yet. Not a real learner id; it never leaves the device. */
 export const LOCAL_IDENTITY = { learnerId: 'local-learner', enrolmentId: 'local-enrolment:sq' } as const;

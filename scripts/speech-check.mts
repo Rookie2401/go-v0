@@ -30,7 +30,11 @@ console.log('These prove the code path only. They say nothing about the live ser
 
 console.log('\n== 3. Real speech ==');
 let liveFailed = false;
-if (!config.configured) {
+const liveRequested = process.argv.includes('--live');
+const sourcePermissionAllowed = process.argv.includes('--source-permission-allowed');
+if (!liveRequested || !sourcePermissionAllowed || !env.authToken) {
+  console.log('REAL SPEECH: NOT VERIFIED — live checks require --live, --source-permission-allowed, and GO_SPEECH_AUTH_TOKEN');
+} else if (!config.configured) {
   console.log(REAL_SPEECH_NOT_VERIFIED);
 } else {
   // The sentence is read from the verified document, never retyped here.
@@ -40,7 +44,7 @@ if (!config.configured) {
     console.log('REAL SPEECH: FAILED \u2014 the verified Spanish Scripture sample (bible-1john-1) could not be read');
   } else {
     console.log(`sentence: first sentence of the Spanish bible-1john-1 (${sentence.length} characters; read from the verified document)`);
-    const live = await runLiveSynthesis({ env, sentence });
+    const live = await runLiveSynthesis({ env, sentence, processingPermission: 'allowed' });
     liveFailed = !live.ok;
     for (const line of formatLive(live)) console.log(line);
   }

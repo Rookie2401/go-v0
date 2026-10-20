@@ -23,7 +23,7 @@
  *      A written exercise is NEVER substituted for a listening target: it would credit a different skill.
  *   8. the learner saved the unit and `prioritizeSaved` → test-now (placed before 9 so an explicit save is not lost to a
  *      low score).
- *   9. candidate.score < 0.15 → low-priority.
+ *   9. candidate.score < 0.15 → low-priority (comparative priority; the proposal remains eligible after the hard gates).
  *  10. candidate.score ≥ 0.5 → test-now; otherwise → test-later.
  *
  * REVIEW FOLLOWS THE LEVEL (projection@4, docs/ecosystem/KNOWLEDGE-LEVELS.md). The Repository draws candidates by the unit's knowledge level (new / seen /
@@ -128,6 +128,9 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
     if (!seenEligibility({ knowledge, assistanceRequests, explicitRequest, readingRelevance: recent ? 1 : 0 })) {
       return makeDecision(candidate, 'low-priority', ['level Seen: no qualifying repeated encounter, repeated assistance, current reading relevance, or explicit request for practice']);
     }
+    if (!explicitRequest && assistanceRequests < 2 && !recent && (knowledge?.encounters ?? 0) > 0) {
+      caveats.push('level Seen: encountered, so eligible for recognition; repeated encounters or assistance would raise its comparative priority');
+    }
   }
   if (knowledge?.level === 'automatic' && !eligibleByKnowability({
     level: 'automatic', explicitRequest: saved.has(candidate.unitId),
@@ -210,7 +213,9 @@ export function decideIntake(input: IntakeInput): IntakeOutcome {
 
   // 9 ── not worth a card ────────────────────────────────────────────────────────────────────────────────────────
   if (candidate.score < SCORE_LOW_PRIORITY) {
-    return makeDecision(candidate, 'low-priority', [`score ${candidate.score.toFixed(2)} is below ${SCORE_LOW_PRIORITY}`]);
+    return makeDecision(candidate, 'low-priority', [
+      `comparative priority: raw score ${candidate.score.toFixed(2)} is considered against the other encountered words`,
+    ], proposed);
   }
 
   // 10 ── score ──────────────────────────────────────────────────────────────────────────────────────────────────
@@ -227,7 +232,7 @@ const HEADLINE: Record<IntakeDecision, string> = {
   redundant: 'Not needed',
   'too-uncertain': 'Too uncertain',
   'needs-validation': 'Needs validation first',
-  'low-priority': 'Low priority',
+  'low-priority': 'Low comparative priority',
   'test-now': 'Test now',
   'test-later': 'Test later',
 };
@@ -237,6 +242,34 @@ export function explainIntake(outcome: IntakeOutcome): string {
   const skill = outcome.proposed ? ` as ${outcome.proposed.family}` : '';
   return `${HEADLINE[outcome.decision]}${skill}: ${outcome.reasons.join('; ')}.`;
 }
+
+/**
+ * Candidates that pass intake's hard gates compete by score within the encountered set.
+ * The order is stable across runs: equal scores are resolved by unit id. Low-priority is
+ * retained as the persisted compatibility decision, while its proposal stays eligible.
+ */
+export function rankComparativePriority(outcomes: readonly IntakeOutcome[], options: { limit?: number; prioritizeSaved?: boolean } = {}): IntakeOutcome[] {
+  const eligible = outcomes
+    .filter((outcome) => !!outcome.proposed && (outcome.decision === 'test-now' || outcome.decision === 'test-later' || outcome.decision === 'low-priority'))
+    .sort((a, b) => (options.prioritizeSaved ? Number(b.explicitlySelected === true) - Number(a.explicitlySelected === true) : 0) ||
+      b.candidate.score - a.candidate.score || (a.unitId < b.unitId ? -1 : a.unitId > b.unitId ? 1 : 0));
+  const limit = Math.max(0, Math.floor(options.limit ?? 5));
+  return eligible.map((outcome, index) => {
+    const audioDeferred = outcome.decision === 'test-later' && outcome.reasons.some((reason) =>
+      reason.includes('listening practice is switched off') || reason.includes('no suitable audio') || reason.includes('practice only'));
+    const selected = index < limit && !audioDeferred;
+    const decision: IntakeOutcome['decision'] = audioDeferred ? 'test-later' : selected ? 'test-now' : 'low-priority';
+    const status = audioDeferred ? 'audio deferred' : selected ? 'selected for immediate practice' : 'comparatively lower priority';
+    return {
+      ...outcome,
+      decision,
+      reasons: [...outcome.reasons, `comparative rank ${index + 1} of ${eligible.length} encountered words (score ${outcome.candidate.score.toFixed(2)}; ${status})`],
+    };
+  });
+}
+
+/** Alias used by callers that treat the intake result as a ranked candidate list. */
+export const rankIntakeOutcomes = rankComparativePriority;
 
 /** Test/UI helper: the knowledge row's estimate for the candidate's target dimension. */
 export const targetEstimate = (c: ReviewCandidate, k?: UnitKnowledge) => k?.dimensions[c.targetDimension];

@@ -22,9 +22,9 @@ import { append, changed, dimOf, ev, flushRowsAfterAll, LEARNER, makeWorld, note
 flushRowsAfterAll('listen.evidence');
 
 const WORD = 'shkollë';
-const SQ_REQ: StimulusRequest = { languageId: 'sq', kind: 'word', text: WORD, itemIds: ['form:sq:shkollë'] };
+const SQ_REQ: StimulusRequest = { languageId: 'sq', kind: 'word', text: WORD, itemIds: ['form:sq:shkollë'], processingPermission: 'allowed' };
 const opts = (o: Partial<GoListenOptions> = {}): GoListenOptions => ({
-  registries: defaultRegistries(), consent: () => ({ remoteSpeech: true }), speech: fakeSpeech([SQ_AL]), audio: fakeAudio(900),
+  registries: defaultRegistries(), consent: () => ({ remoteSpeech: true, localOnly: false }), speech: fakeSpeech([SQ_AL]), audio: fakeAudio(900),
   fetch: configuredProxy().fetch, objectUrl: fakeObjectUrls(), utterance: fakeUtterance, voiceWaitMs: 0, ...o,
 });
 
@@ -65,7 +65,7 @@ describe('§19 playback never yields a ListeningAssessed event', () => {
     const e3 = device.events(r2, false); // started and replayed twice, never ended
 
     const remote = createGoListen(opts({ speech: fakeSpeech([]) }));
-    const r4 = await remote.pronounce({ languageId: 'sq', text: WORD, kind: 'word', autoplay: true });
+    const r4 = await remote.pronounce({ languageId: 'sq', text: WORD, kind: 'word', autoplay: true, processingPermission: 'allowed' });
     if (!r4.ok) throw new Error(r4.message);
     const e4 = remote.events(r4, true);
 
@@ -161,7 +161,7 @@ describe('§19 isIndependentEvidence', () => {
   it('real provenance from the registries: device, remote and the unreviewed German recording are all false', async () => {
     const g = createGoListen(opts({ registries: defaultRegistries() }));
     const dev = await g.pronounce({ languageId: 'sq', text: WORD, kind: 'word' });
-    const rem = await createGoListen(opts({ speech: fakeSpeech([]) })).pronounce({ languageId: 'sq', text: WORD, kind: 'word' });
+    const rem = await createGoListen(opts({ speech: fakeSpeech([]) })).pronounce({ languageId: 'sq', text: WORD, kind: 'word', processingPermission: 'allowed' });
     const demo = await g.pronounce({ languageId: 'de', text: 'Guten Tag!', kind: 'phrase' });
     for (const r of [dev, rem, demo]) {
       if (!r.ok) throw new Error(r.message);
@@ -209,7 +209,8 @@ describe('§19 an assessment stimulus hides the answer', () => {
   it('DEFECT D9 (fixed): the stimulus handed to the UI (publicView) contains no form of the answer — itemIds are content-derived unit ids such as form:sq:shkollë', async () => {
     const g = createGoListen(opts({ speech: fakeSpeech([]) })); // remote voice: the only text that could appear is the id
     const facts = { unit: { unitId: 'form:sq:shkollë', kind: 'form', label: WORD } } as UnitFacts;
-    const prep = await prepareListening({ audio: g.assessment() }, { unitId: 'form:sq:shkollë', unitKind: 'form', languageId: 'sq', dimension: 'auditory-transcription' }, facts);
+    const source = g.assessment();
+    const prep = await prepareListening({ audio: { ...source, prepareStimulus: (req) => source.prepareStimulus({ ...req, processingPermission: 'allowed' }) } }, { unitId: 'form:sq:shkollë', unitKind: 'form', languageId: 'sq', dimension: 'auditory-transcription' }, facts);
     if ('unavailable' in prep) throw new Error(prep.reason);
     const pub = JSON.stringify(publicView(prep));
     note('D9', '§19', 'publicView(prepared) of a remote-voice transcription item (answer = the written form)', 'no occurrence of the written form ("recorded and remote audio carries no text at all")', `occurs ${pub.split(WORD).length - 1}× (prepared stimulus keeps ${JSON.stringify(prep.stimulus.itemIds)} for the producer; the public view shows ${JSON.stringify(publicView(prep).stimulus.itemIds)})`);
@@ -271,7 +272,7 @@ describe('§19 eligibility of a stimulus, and the chain GoListen → event → e
     note('L8', '§19', 'eligibility of the voices that ship', 'device, remote and demo clip: not eligible, evidence quality none', `device ${device.validity.eligibleForEvidence}, remote ${remote.validity.eligibleForEvidence}, demo ${demo.validity.eligibleForEvidence} (${demo.validity.reason})`);
   });
 
-  it('a forged "eligible" flag on a stimulus the source made is overruled (synthetic voice, unreviewed recording); a source that did not make it takes the descriptor at its word', async () => {
+  it('forged eligibility is refused by the issuing source, repeated source access and another engine', async () => {
     const device = createGoListen(opts());
     const src = device.assessment();
     const s = await src.prepareStimulus(SQ_REQ);
@@ -281,7 +282,7 @@ describe('§19 eligibility of a stimulus, and the chain GoListen → event → e
     const flipped: AudioStimulus = { ...forged, voice: { ...forged.voice, synthetic: false } };
     expect(src.scoringMetadata(flipped, 0).eligibleForEvidence).toBe(false); // made here: the stored provenance (device-tts, generated from text) overrules the descriptor
     const fresh = createGoListen(opts()).assessment().scoringMetadata(flipped, 0).eligibleForEvidence;
-    expect(fresh).toBe(true); // observation O2: a source with no record of making the stimulus (a second assessment() call, a reload) trusts what it is handed
+    expect(fresh).toBe(false); // unknown source: public descriptors cannot authorize evidence
 
     const unreviewedG = createGoListen(opts({ registries: [recordingRegistry({ verification: 'unverified', suitable: true })] }));
     const usrc = unreviewedG.assessment();
@@ -289,8 +290,8 @@ describe('§19 eligibility of a stimulus, and the chain GoListen → event → e
     if ('unavailable' in u) throw new Error(u.reason);
     const forgedU: AudioStimulus = { ...u, validity: { eligibleForEvidence: true, reason: 'forged' } };
     expect(usrc.scoringMetadata(forgedU, 0).eligibleForEvidence).toBe(false); // the stored provenance says unreviewed
-    expect(unreviewedG.assessment().scoringMetadata(forgedU, 0).eligibleForEvidence).toBe(true); // a second assessment() instance has no record: O2 again
-    note('L9', '§19', 'forged eligibility flags handed to scoringMetadata', 'a stimulus the source made cannot be upgraded (synthetic voice, unreviewed recording)', 'same source instance: synthetic forged → false, descriptor edited to synthetic:false → false, unreviewed recording forged → false. A DIFFERENT assessment() instance (no provenance record) returns true for both forgeries (observation O2: GoPractice keeps one instance, createAudioDeps)');
+    expect(unreviewedG.assessment().scoringMetadata(forgedU, 0).eligibleForEvidence).toBe(false);
+    note('L9', '§19', 'forged eligibility flags handed to scoringMetadata', 'unknown or altered stimuli cannot authorize evidence', 'synthetic forged → false, descriptor edited to synthetic:false → false, unreviewed recording forged → false. Repeated assessment() access and a different engine also refuse forgeries; O2 is fixed.');
   });
 
   it('chain: the reviewed recording becomes a valid ListeningAssessed that moves listeningRecognition; hints move assistedRecognition; synthetic moves nothing', async () => {

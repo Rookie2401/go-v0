@@ -50,6 +50,20 @@ describe('sentence translation card flow', () => {
     expect(rig.ui.root()!.textContent).toContain('Sentence context is not available');
   });
 
+  it('uses language-agnostic local-service guidance when a configured provider cannot translate', async () => {
+    const engine = { translate: async (): Promise<TranslationResult> => ({ status: 'unavailable', reason: 'provider-unavailable' }) };
+    rig = makeRig({ analysers: ['sq'], translationEngine: engine });
+    selectText(document.querySelector('p')!, 'lexoj');
+    const result = await rig.controller.lookup({ trigger: 'command' });
+    if (result.status !== 'shown') throw new Error('Expected card');
+    openSentence().click();
+    await flush();
+    const text = rig.ui.root()!.textContent ?? '';
+    expect(text).toContain('The local translation service is not ready for this language pair');
+    expect(text).not.toContain('local Albanian');
+    expect(text).not.toContain('browser model');
+  });
+
   it('calls the injected engine only on click and ignores a superseded reply', async () => {
     let resolve!: (result: TranslationResult) => void;
     const requests: TranslationRequest[] = [];

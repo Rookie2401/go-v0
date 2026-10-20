@@ -1,3 +1,10 @@
+# Current implementation audit
+
+The capability table below is a historical certification snapshot. For the current shared registries, playback,
+consent and assessment lifecycle, see `../../golisten/CURRENT-SYSTEM-AUDIT-2026-10-11.md` and
+`../../../packages/golisten/README.md`. In particular, the current registry includes device voices for all seven
+languages and Azure entries for sq/es/de/hi/th; device voice availability still depends on the user's browser.
+
 # GoListen — three separated capabilities and the voices that exist
 
 Status: 2026-10-09. GoListen (`packages/golisten`) is a shared subsystem, not an application. Sources: `packages/golisten/README.md`,

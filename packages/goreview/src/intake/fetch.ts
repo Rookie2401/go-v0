@@ -5,7 +5,7 @@
  */
 import type { GoEvent, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
 import type { AudioAvailability, DeckItem, FactsProvider, IntakeOutcome, ReviewPreferences } from '../types';
-import { decideIntake } from './intake';
+import { decideIntake, rankComparativePriority } from './intake';
 
 /** Recognition aliasing does not assert that every morphological feature is verified. */
 const reliableFormLink = (relation: import('../../../repository-contract/src').UnitRelation): boolean =>
@@ -55,7 +55,8 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
     const base = { candidate, knowledge: knowledge[candidate.unitId], existing: deck, audio, saved, preferences, now, readingSignals: deps.readingSignals, secondaryPractice: deps.secondaryPractice };
     return { candidate, base, first: decideIntake(base) };
   });
-  const testable = passes.filter((p) => p.first.decision === 'test-now' || p.first.decision === 'test-later').map((p) => p.candidate.unitId);
+  const testable = passes.filter((p) => p.first.proposed &&
+    (p.first.decision === 'test-now' || p.first.decision === 'test-later' || p.first.decision === 'low-priority')).map((p) => p.candidate.unitId);
   // One batched read of those units (chunks of 50) instead of one request each; a provider that cannot batch just answers one by one.
   try { await (deps.facts as PrimableFacts).prime?.([...new Set(testable)]); } catch { /* factsFor still works one by one */ }
 
@@ -152,5 +153,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
       out.push({ ...first, decision: 'needs-validation', reasons: [`pack facts could not be read (${e instanceof Error ? e.message : String(e)})`, ...first.reasons] });
     }
   }
-  return out;
+  const outcomeKey = (outcome: IntakeOutcome): string => `${outcome.unitId}|${outcome.proposed?.dimension ?? ''}`;
+  const ranked = new Map(rankComparativePriority(out, { limit: preferences.maxNew, prioritizeSaved: preferences.prioritizeSaved }).map((outcome) => [outcomeKey(outcome), outcome] as const));
+  return out.map((outcome) => ranked.get(outcomeKey(outcome)) ?? outcome);
 }

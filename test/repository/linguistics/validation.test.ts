@@ -43,4 +43,13 @@ describe('validation stamped by the resolver', () => {
     const nb = resolveSelection({ languageId: 'nb', surface: 'bok', now: NOW });
     expect(eligibilityFor(nb.units[0], [nb.analysis], 'readingRecognition')).toMatchObject({ eligible: false, status: 'requires-review' });
   });
+
+  it('Hindi uses its real experimental analyser: recognition is allowed provisionally, production questions are refused', () => {
+    const hi = resolveSelection({ languageId: 'hi', surface: 'किताब', sentence: 'मैं हर दिन किताब पढ़ता हूँ।', now: NOW });
+    expect(hi.units[0]).toMatchObject({ packId: 'pack:hi', packVersion: '6', provenance: { validation: 'experimental' } });
+    expect(hi.analysis).toMatchObject({ analyzerId: 'adapter-hi@6', packId: 'pack:hi', packVersion: '6' });
+    expect(hi.analysis.candidates[0]).toMatchObject({ lexemeId: 'lemma:hi:किताब:NOUN', provenance: { validation: 'experimental' } });
+    expect(eligibilityFor(hi.units[0], [hi.analysis], 'readingRecognition')).toMatchObject({ eligible: true, status: 'provisional' });
+    expect(eligibilityFor(hi.units[0], [hi.analysis], 'productiveRetrieval')).toMatchObject({ eligible: false });
+  });
 });

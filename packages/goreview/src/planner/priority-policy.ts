@@ -122,7 +122,7 @@ export function scoreReviewPriority(signals: PrioritySignals, policy: Knowabilit
   return explainReviewPriority(signals, policy).score;
 }
 
-/** Seen is allowed after spaced encounters, repeat assistance, explicit request, or current/recent reading relevance. */
+/** Seen is review material once encountered; spacing, help and current reading relevance raise priority. */
 export function seenEligibility(input: {
   knowledge?: UnitKnowledge;
   assistanceRequests?: number;
@@ -134,6 +134,7 @@ export function seenEligibility(input: {
   validateKnowabilityPolicy(policy);
   if (input.explicitRequest || (input.assistanceRequests ?? 0) >= 2 || (input.readingRelevance ?? 0) >= 0.66) return true;
   const k = input.knowledge;
+  if (k && k.level === 'seen' && k.encounters > 0) return true;
   const threshold = policy.seenEncounterThreshold ?? 2;
   return !!k && k.level === 'seen' && k.encounters >= threshold &&
     !!k.firstSeenAt && !!k.lastSeenAt && Number.isFinite(Date.parse(k.firstSeenAt)) && Number.isFinite(Date.parse(k.lastSeenAt)) &&

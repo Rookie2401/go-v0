@@ -12,12 +12,13 @@
  */
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { loadEnv, type Plugin } from 'vite';
-import { MAX_BODY_BYTES, createRateLimiter, handleSpeechRequest, isSpeechPath, type SpeechDeps, type SpeechEnv, type SpeechResponse } from './speechHandler.ts';
+import { createRateLimiter, handleSpeechRequest, isSpeechPath, speechLimits, type SpeechDeps, type SpeechEnv, type SpeechResponse } from './speechHandler.ts';
 
-export { handleSpeechRequest, createRateLimiter, isSpeechPath, redactKey, localeOfVoice, SPEECH_OUTPUT_FORMAT, SPEECH_PROVIDER_ID, SPEECH_PROVIDER_VERSION, MAX_BODY_BYTES, MAX_TEXT_CHARS, DEFAULT_RATE_LIMIT_PER_MINUTE } from './speechHandler.ts';
+export { handleSpeechRequest, createRateLimiter, isSpeechPath, speechLimits, redactKey, localeOfVoice, SPEECH_OUTPUT_FORMAT, SPEECH_PROVIDER_ID, SPEECH_PROVIDER_VERSION, MAX_BODY_BYTES, MAX_TEXT_CHARS, DEFAULT_RATE_LIMIT_PER_MINUTE, DEFAULT_DAILY_CHARACTER_LIMIT, MAX_AUDIO_BYTES } from './speechHandler.ts';
 export type { SpeechRequest, SpeechResponse, SpeechEnv, SpeechDeps, RateLimiter } from './speechHandler.ts';
 
 export const SPEECH_ENV_NAMES = ['AZURE_SPEECH_KEY', 'AZURE_SPEECH_REGION'] as const;
+const SPEECH_CONFIG_ENV_NAMES = ['GO_SPEECH_AUTH_TOKEN', 'GO_SPEECH_MAX_BODY_BYTES', 'GO_SPEECH_MAX_TEXT_CHARS', 'GO_SPEECH_RATE_LIMIT_PER_MINUTE', 'GO_SPEECH_UPSTREAM_TIMEOUT_MS', 'GO_SPEECH_DAILY_CHARACTER_LIMIT'] as const;
 
 /**
  * The two speech variables, from the process environment and the env files (process.env wins, as with every Vite
@@ -25,8 +26,19 @@ export const SPEECH_ENV_NAMES = ['AZURE_SPEECH_KEY', 'AZURE_SPEECH_REGION'] as c
  */
 export function readSpeechEnv(envDir: string, mode: string, processEnv: Record<string, string | undefined> = process.env): SpeechEnv {
   const fromFiles = loadEnv(mode, envDir, ''); // explicit empty prefix: every name is loaded, and we keep exactly two
-  const pick = (name: (typeof SPEECH_ENV_NAMES)[number]) => (processEnv[name] ?? fromFiles[name] ?? '').trim() || undefined;
-  return { key: pick('AZURE_SPEECH_KEY'), region: pick('AZURE_SPEECH_REGION') };
+  const pick = (name: (typeof SPEECH_ENV_NAMES)[number] | (typeof SPEECH_CONFIG_ENV_NAMES)[number]) => (processEnv[name] ?? fromFiles[name] ?? '').trim() || undefined;
+  const number = (name: (typeof SPEECH_CONFIG_ENV_NAMES)[number]) => {
+    const value = pick(name); if (!value) return undefined;
+    const parsed = Number(value); return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
+  };
+  const out: SpeechEnv = { key: pick('AZURE_SPEECH_KEY'), region: pick('AZURE_SPEECH_REGION') };
+  const authToken = pick('GO_SPEECH_AUTH_TOKEN'); if (authToken) out.authToken = authToken;
+  const maxBodyBytes = number('GO_SPEECH_MAX_BODY_BYTES'); if (maxBodyBytes) out.maxBodyBytes = maxBodyBytes;
+  const maxTextChars = number('GO_SPEECH_MAX_TEXT_CHARS'); if (maxTextChars) out.maxTextChars = maxTextChars;
+  const rateLimitPerMinute = number('GO_SPEECH_RATE_LIMIT_PER_MINUTE'); if (rateLimitPerMinute) out.rateLimitPerMinute = rateLimitPerMinute;
+  const upstreamTimeoutMs = number('GO_SPEECH_UPSTREAM_TIMEOUT_MS'); if (upstreamTimeoutMs) out.upstreamTimeoutMs = upstreamTimeoutMs;
+  const dailyCharacterLimit = number('GO_SPEECH_DAILY_CHARACTER_LIMIT'); if (dailyCharacterLimit) out.dailyCharacterLimit = dailyCharacterLimit;
+  return out;
 }
 
 export interface SpeechProxyOptions {
@@ -38,6 +50,8 @@ export interface SpeechProxyOptions {
   rateLimitPerMinute?: number;
   /** Receives key-free diagnostics. Default: silent. */
   log?: (line: string) => void;
+  /** Explicit extension origins permitted by the local host. Empty by default; never a wildcard. */
+  allowedExtensionOrigins?: () => readonly string[];
 }
 
 /** Beyond this the request is not even drained: the connection is closed. */
@@ -74,37 +88,70 @@ function send(res: ServerResponse, out: SpeechResponse): void {
   res.end(typeof out.body === 'string' ? out.body : Buffer.from(out.body));
 }
 
-export function speechProxy(options: SpeechProxyOptions = {}): Plugin {
-  let envDir = process.cwd();
-  let mode = 'development';
-  const getEnv = options.env ?? (() => readSpeechEnv(envDir, mode));
+export function createSpeechMiddleware(options: SpeechProxyOptions = {}) {
+  const getEnv = options.env ?? (() => readSpeechEnv(process.cwd(), 'development'));
+  const limiters = new Map<number, ReturnType<typeof createRateLimiter>>();
+  const limiter = { take(key: string) {
+    const env = getEnv();
+    const limit = options.rateLimitPerMinute ?? speechLimits(env).rateLimitPerMinute;
+    let selected = limiters.get(limit);
+    if (!selected) { selected = createRateLimiter({ limit, now: () => Date.now() }); limiters.set(limit, selected); }
+    return selected.take(key);
+  } };
   const deps: SpeechDeps = {
     fetch: options.fetch ?? ((input, init) => fetch(input, init)),
     now: () => Date.now(),
     log: options.log,
-    limiter: createRateLimiter({ limit: options.rateLimitPerMinute, now: () => Date.now() }),
+    limiter,
   };
 
   const middleware = async (req: IncomingMessage, res: ServerResponse, next: (err?: unknown) => void): Promise<void> => {
     const url = new URL(req.url ?? '/', 'http://localhost');
     if (!isSpeechPath(url.pathname)) { next(); return; }
     try {
+      const env = getEnv();
       let body: Uint8Array | undefined;
       if (req.method === 'POST') {
-        const read = await collectBody(req, MAX_BODY_BYTES);
+        const read = await collectBody(req, speechLimits(env).maxBodyBytes);
         if (read === 'too-large' || read === 'too-large-abort') {
           // A drained request can be answered normally; an abusive one is answered and the socket closed.
           if (read === 'too-large-abort') res.setHeader('Connection', 'close');
-          send(res, { status: 413, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }, body: JSON.stringify({ error: 'payload-too-large', message: `The request body is limited to ${MAX_BODY_BYTES} bytes.` }) });
+          send(res, { status: 413, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }, body: JSON.stringify({ error: 'payload-too-large', message: `The request body is limited to ${speechLimits(env).maxBodyBytes} bytes.` }) });
           return;
         }
         body = read;
       }
       const headers: Record<string, string | undefined> = {};
       for (const [k, v] of Object.entries(req.headers)) headers[k.toLowerCase()] = Array.isArray(v) ? v.join(', ') : v;
+      const origin = headers.origin;
+      const allowed = !!origin && /^chrome-extension:\/\/[a-p]{32}$/.test(origin) &&
+        options.allowedExtensionOrigins?.().includes(origin) === true;
+      if (allowed) {
+        res.setHeader('Access-Control-Allow-Origin', origin!);
+        res.setHeader('Vary', 'Origin');
+        if (req.method === 'OPTIONS') {
+          const method = headers['access-control-request-method'];
+          const requestedHeaders = (headers['access-control-request-headers'] ?? '').toLowerCase().split(',').map((h) => h.trim()).filter(Boolean);
+          if (!['GET', 'POST'].includes(method ?? '') || requestedHeaders.some((h) => h !== 'content-type' && h !== 'authorization')) {
+            send(res, { status: 403, headers: { 'content-type': 'application/json' }, body: JSON.stringify({ error: 'forbidden-origin', message: 'This preflight is not allowed.' }) });
+            return;
+          }
+          res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+          res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+          res.statusCode = 204; res.end(); return;
+        }
+        // The default handler still rejects every cross-origin request. Only a host-authorized
+        // extension is treated as its own caller, after the exact-origin check above.
+        delete headers.origin;
+        delete headers['sec-fetch-site'];
+        delete headers.referer;
+      }
+      const disconnect = new AbortController();
+      res.once('close', () => disconnect.abort());
       const out = await handleSpeechRequest({
         method: req.method ?? 'GET', path: url.pathname, query: Object.fromEntries(url.searchParams), headers, body, remote: req.socket.remoteAddress,
-      }, getEnv(), deps);
+        signal: disconnect.signal,
+      }, env, deps);
       send(res, out);
     } catch {
       // No error text is forwarded: nothing here may carry a secret into a log or a response.
@@ -113,6 +160,13 @@ export function speechProxy(options: SpeechProxyOptions = {}): Plugin {
     }
   };
 
+  return middleware;
+}
+
+export function speechProxy(options: SpeechProxyOptions = {}): Plugin {
+  let envDir = process.cwd();
+  let mode = 'development';
+  const middleware = createSpeechMiddleware({ ...options, env: options.env ?? (() => readSpeechEnv(envDir, mode)) });
   return {
     name: 'go-speech-proxy',
     configResolved(config) { envDir = typeof config.envDir === 'string' ? config.envDir : config.root; mode = config.mode; },

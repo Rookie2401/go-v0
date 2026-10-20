@@ -8,6 +8,7 @@
  * The intended expression travels in the metadata so the result can be checked afterwards; it is NEVER shown before the
  * response (the UI must show `publicView(prepared)`, which omits it).
  */
+import { isAssessmentQualified } from '../../../golisten/src/assessment';
 import type { AssessmentSource, AudioStimulus, ScoringMetadata, VoiceDescriptor } from '../../../golisten/src/contracts';
 import type { Grading, Response, ReviewResult, ReviewTarget, UnitFacts } from '../types';
 
@@ -66,7 +67,7 @@ export async function prepareListening(deps: ListeningDeps, target: ReviewTarget
     metadata: {
       languageId: res.languageId, ...(v.varietyId !== undefined ? { varietyId: v.varietyId } : target.varietyId !== undefined ? { varietyId: target.varietyId } : {}),
       intendedExpression: expression, source: res.audio.kind, voiceId: v.voiceId, synthetic: v.synthetic,
-      pronunciationValidated: v.qualityVerification === 'native-reviewed', licence: v.licence, replaysAllowed: res.replaysAllowed,
+      pronunciationValidated: isAssessmentQualified(v), licence: v.licence, replaysAllowed: res.replaysAllowed,
     },
   };
 }
@@ -87,7 +88,7 @@ export function publicView(p: ListeningPrepared): { stimulus: AudioStimulus; met
 export function withholdIfUnreliable(voice: VoiceDescriptor): { withhold: true; reason: string } | { withhold: false } {
   if (voice.synthetic) return { withhold: true, reason: 'synthetic speech is generated from the text: practice only' };
   if (voice.qualityVerification === 'unverified') return { withhold: true, reason: 'the recording has not been verified' };
-  if (!voice.suitableForAssessment) return { withhold: true, reason: 'the recording is not marked suitable for assessment' };
+  if (!isAssessmentQualified(voice)) return { withhold: true, reason: 'the recording is not marked suitable for assessment' };
   return { withhold: false };
 }
 
@@ -140,6 +141,6 @@ export function resultScoring(stimulus: AudioStimulus, score: ListeningScore): N
   return {
     voice: score.voice, hinted: score.hinted, replays: score.replays, eligibleForEvidence: score.eligibleForEvidence,
     stimulusId: stimulus.stimulusId, voiceId: stimulus.voice.voiceId, synthetic: stimulus.voice.synthetic,
-    pronunciationValidated: stimulus.voice.qualityVerification === 'native-reviewed', licence: stimulus.voice.licence,
+    pronunciationValidated: isAssessmentQualified(stimulus.voice), licence: stimulus.voice.licence,
   };
 }

@@ -305,6 +305,114 @@ describe('exercises that cannot be built are skipped with the reason and never s
   });
 });
 
+describe('session audio ownership', () => {
+  function audioSetup(over: Partial<RunnerDeps> = {}) {
+    const released: string[] = [];
+    const prepared: string[] = [];
+    const scored: string[] = [];
+    const base = fakeAudioSource();
+    const audio = {
+      ...base,
+      prepareStimulus: async (req: Parameters<typeof base.prepareStimulus>[0]) => {
+        const stimulus = await base.prepareStimulus(req);
+        if (!('unavailable' in stimulus)) prepared.push(stimulus.stimulusId);
+        return stimulus;
+      },
+      releaseStimulus: (stimulus: Parameters<typeof base.playbackOf>[0]) => { released.push(stimulus.stimulusId); },
+      scoringMetadata: (stimulus: Parameters<typeof base.playbackOf>[0], replays: number) => {
+        expect(released).not.toContain(stimulus.stimulusId);
+        scored.push(stimulus.stimulusId);
+        return base.scoringMetadata(stimulus, replays);
+      },
+    };
+    return { ...setup({ plan: makePlan({ due: 2, dueFamilies: ['audio-to-meaning', 'audio-to-meaning'] }), audio, ...over }), released, prepared, scored };
+  }
+
+  it('keeps unanswered audio on repeated views and preview, then releases after scoring and recording', async () => {
+    let fail = true;
+    const { runner, released, scored } = audioSetup({ record: async () => { if (fail) throw new Error('queue full'); } });
+    const first = await runner.current();
+    expect((await runner.current())?.exercise).toBe(first?.exercise);
+    await runner.preview(right({ audioPlayed: true }));
+    await expect(runner.answer(right({ audioPlayed: true }))).rejects.toThrow('queue full');
+    expect(released).toEqual([]);
+    fail = false;
+    await runner.answer(right({ audioPlayed: true }));
+    expect(scored).toContain(first!.exercise.prompt.audio!.stimulusId);
+    expect(released).toEqual([first!.exercise.prompt.audio!.stimulusId]);
+    await runner.finish();
+  });
+
+  it('releases skipped audio and prefetched never-played audio on finish, once each', async () => {
+    const { runner, released, prepared } = audioSetup();
+    await runner.current();
+    await runner.skip();
+    expect(released).toHaveLength(1);
+    await runner.finish();
+    expect(prepared).toHaveLength(2);
+    expect(released.sort()).toEqual([...prepared].sort());
+    await runner.finish();
+    expect(released).toHaveLength(2);
+  });
+
+  it('releases audio when a builder rejects validation', async () => {
+    const { runner, released, prepared } = audioSetup({ builders: fakeBuilders(undefined, { invalid: ['audio-to-meaning'] }) });
+    expect(await runner.current()).toBeNull();
+    expect(prepared).toHaveLength(2);
+    expect(released.sort()).toEqual([...prepared].sort());
+  });
+
+  it('waits for a pending prefetch on finish and releases its eventual stimulus', async () => {
+    const base = fakeAudioSource();
+    const released: string[] = [];
+    let calls = 0;
+    let completePrefetch!: () => void;
+    const prefetchGate = new Promise<void>((resolve) => { completePrefetch = resolve; });
+    const { runner } = audioSetup({ audio: {
+      ...base,
+      prepareStimulus: async (req) => {
+        if (++calls === 2) await prefetchGate;
+        return base.prepareStimulus(req);
+      },
+      releaseStimulus: (stimulus) => { released.push(stimulus.stimulusId); },
+    } });
+    const first = await runner.current();
+    let finished = false;
+    const finishing = runner.finish().then(() => { finished = true; });
+    await Promise.resolve();
+    await Promise.resolve();
+    expect(finished).toBe(false);
+    completePrefetch();
+    await finishing;
+    expect(released).toHaveLength(2);
+    expect(released).toContain(first!.exercise.prompt.audio!.stimulusId);
+  });
+
+  it('releases audio prepared before a builder throws', async () => {
+    const builder = fakeBuilders().find((b) => b.family === 'audio-to-meaning')!;
+    const { runner, released, prepared } = audioSetup({ builders: [{ ...builder, build: async (target, facts, ctx) => {
+      await builder.build(target, facts, ctx);
+      throw new Error('builder failed after preparing');
+    } }] });
+    expect(await runner.current()).toBeNull();
+    expect(prepared).toHaveLength(2);
+    expect(released.sort()).toEqual([...prepared].sort());
+  });
+
+  it('releases the old current and pending prefetch cache before recovery replaces it', async () => {
+    const { runner, released, prepared } = audioSetup();
+    await runner.current();
+    expect(await runner.recover(runner.sessionId)).toBe(true);
+    expect(prepared).toHaveLength(2);
+    expect(released.sort()).toEqual([...prepared].sort());
+    const rebuilt = await runner.current();
+    expect(rebuilt?.index).toBe(0);
+    expect(released).toHaveLength(2);
+    await runner.finish();
+    expect(released).toHaveLength(4);
+  });
+});
+
 describe('listening', () => {
   const audioPlan = () => makePlan({ due: 1, dueFamilies: ['audio-to-meaning'] });
 

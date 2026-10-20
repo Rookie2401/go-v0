@@ -1,5 +1,5 @@
 import type { FetchLike, FetchResponseLike } from '../golisten/src/ports';
-import type { SpeechMessage, SpeechReply } from '../golearn-extension/src/speechProtocol';
+import type { SpeechMessage, SpeechReply } from './speechProtocol';
 
 export interface PracticeExtensionRuntime {
   id?: string;

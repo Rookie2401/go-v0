@@ -80,7 +80,7 @@ export const NB_TUTORIAL: Tutorial = orientation({
     'There is no parser, so what the neighbouring words do not settle stays a list of readings.',
     'A compound is split only into words the list knows, and no meaning is given for it.',
     'There is no dictionary for Norwegian in this build, so meanings come from the word list alone.',
-    'There are no recordings and GoListen holds no voice that can read Norwegian aloud, so a card cannot play a word yet; no spoken standard is claimed, and a card gives a rule-based East Norwegian respelling, not a norm.',
+    'There are no recordings. If your device has a matching Bokmål voice, GoLearn can play a word as synthetic practice only; no spoken standard is claimed, and a card gives a rule-based East Norwegian respelling, not a norm.',
   ],
   languageSteps: NB_TUTORIAL_STEPS_OWN,
   notice: 'This minimal orientation was drafted by an AI model and has not been checked by a native speaker of Norwegian. It covers how to select a word, what the card shows, the letters æ ø å, the two written standards, eight nouns, the definite ending and what the experimental pack cannot do. You can skip it and come back at any time.',

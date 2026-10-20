@@ -45,8 +45,8 @@ export const LITERARY_GHEG_PARTICIPLES: Readonly<Record<string, string>> = {
 
 /** Listed pairs: Gheg written form → Standard form. No identities (kam, ke ... are the same in both). */
 const LISTED: ReadonlyArray<readonly [string[], string, string]> = [
-  [['âsht', 'asht', 'âshtë', 'ashtë'], 'është', 'Gheg "is" (âsht / asht)'],
-  [["s'âsht", "s'asht", "s'âshtë", "s'ashtë"], "s'është", 'Gheg "is not" (s\'âsht)'],
+  [['âsht', 'asht', 'âshtë', 'ashtë', 'osht'], 'është', 'Gheg "is" (âsht / asht / osht)'],
+  [["s'âsht", "s'asht", "s'âshtë", "s'ashtë", "s'osht"], "s'është", 'Gheg "is not" (s\'âsht / s\'osht)'],
   [['nji'], 'një', 'Gheg "one, a" (nji)'],
   [['shpi', 'shpia'], 'shtëpi', 'Gheg "house" (shpi)'],
   [['tue'], 'duke', 'Gheg "-ing" particle (tue + participle)'],

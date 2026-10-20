@@ -51,7 +51,8 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     const langs = s.installedLanguages ?? [s.languageId];
     const yes = langs.filter((l) => hasDeviceVoice(l, voices)).map(languageNameOf);
     const no = langs.filter((l) => !hasDeviceVoice(l, voices)).map(languageNameOf);
-    el.textContent = `Speaking on click uses a voice installed on this device: ${yes.length ? `yes for ${yes.join(', ')}` : 'none yet for your languages'}${no.length ? `; none for ${no.join(', ')}${no.includes('Albanian') ? ' (no device ships an Albanian voice)' : ' (add the language\'s voice in the system settings)'}` : ''}.`;
+    const cloud = s.settings.remoteSpeechConsent && s.settings.localOnlySpeech === false;
+    el.textContent = `${cloud ? 'GoListen tries Azure through your authenticated backend when source permissions allow it. Local fallback: ' : 'Local-only speech uses a matching installed voice: '}${yes.length ? `yes for ${yes.join(', ')}` : 'none yet for your languages'}${no.length ? `; none for ${no.join(', ')} (a matching language voice is needed)` : ''}.`;
   }
 
   function renderStatus(s: PageStatus | undefined): void {
@@ -107,7 +108,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     activeToggle.disabled = false;
     activeToggle.checked = r.settings.active;
     if (!r.ok && r.message) { activeStatus.textContent = r.message; activeStatus.classList.add('warn'); return; }
-    if (r.settings.active && r.registered) activeStatus.textContent = `On. Every page you open is read on this device and the words you have met are underlined (${r.excluded} refusing readers excluded). A page that was already open gets it when you reload it.`;
+    if (r.settings.active && r.registered) activeStatus.textContent = `On. Every page you open is read on this device and the words you have met are underlined (${r.excluded} refusing readers excluded). Words that stay visible briefly are recorded in My words as exposure, not proof that you know them. A page that was already open gets it when you reload it.`;
     else if (r.settings.active) { activeStatus.textContent = 'On, but GoLearn is not registered for pages; switch it off and on again.'; activeStatus.classList.add('warn'); }
     else activeStatus.textContent = 'Off. Nothing is read before you select a word.';
   }
@@ -122,7 +123,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     if (s.reason) { pageLine.textContent = `This page: ${s.reason}`; return; }
     const marked = (Object.keys(s.marked) as ActiveLevel[]).reduce((n, k) => n + s.marked[k], 0);
     const parts = ACTIVE_LEVELS.filter((l) => s.marked[l]).map((l) => `${LEVEL_LEGEND[l].title.toLowerCase()} ${s.marked[l]}`).join(', ');
-    pageLine.textContent = `This page (${s.languageId ?? 'language unknown'}): ${s.scanned} words read, ${marked} underlined${parts ? ` (${parts})` : ''}${s.clicks ? `; ${s.clicks} click${s.clicks === 1 ? '' : 's'} looked up` : ''}.`;
+    pageLine.textContent = `This page (${s.languageId ?? 'language unknown'}): ${s.scanned} words scanned, ${marked} underlined${parts ? ` (${parts})` : ''}${typeof s.recordedWords === 'number' ? `; ${s.recordedWords} distinct words recorded` : ''}${s.clicks ? `; ${s.clicks} click${s.clicks === 1 ? '' : 's'} looked up` : ''}.`;
   }
   activeToggle.addEventListener('change', async () => {
     activeToggle.disabled = true;

@@ -29,6 +29,7 @@ import { createSettings } from './settings';
 import { restrictStorageToTrustedContexts } from './storageAccess';
 import { createSyncService } from './sync';
 import { createLocalTranslationService } from './translation';
+import { createSpeechService } from './speech';
 import { QUARANTINE_PREFIX, QUEUE_PREFIX, REJECTED_PREFIX } from '../../../repository-sync/src';
 
 export const CONTEXT_MENU_ID = 'golearn-lookup';
@@ -52,12 +53,14 @@ type SenderKind = 'page' | 'content' | 'foreign';
 const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
   MSG.getState, MSG.setEnabled, MSG.serviceConfig, MSG.connect, MSG.createAccount, MSG.disconnect, MSG.syncNow,
   MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.clearLocal, MSG.localRepo,
+  MSG.speechConfig,
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
   MSG.translateSentence,
+  MSG.speech,
 ]);
 
 type TimedRequestInit = RequestInit & { timeoutMs?: number };
@@ -96,6 +99,10 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
 
   // ───────────── the services, wired together ─────────────
   const settings = createSettings(local);
+  const speech = createSpeechService({ area: local, settings: settings.get, fetch: doFetch,
+    extensionId: chrome.runtime.id,
+    hasPermission: async (origin) => await chrome.permissions?.contains({ origins: [origin] }) === true,
+  });
   const packs = bg.packs ?? defaultPacks;
   const packAvailable = (l: string): boolean => packs.manifest(l)?.status === 'installable';
   const holder: { recorder?: ReturnType<typeof createRecorder>; sync?: ReturnType<typeof createSyncService>; profile?: ReturnType<typeof createProfileService>; local?: ReturnType<typeof createLocalRepoService> } = {};
@@ -282,8 +289,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     const st = await settings.get();
     if (!isLanguageId(languageId)) return { ok: false, deviceVoice: 'no', remoteConsent: false, sources: [], note: 'Not a valid language.' };
     return {
-      ok: true, deviceVoice: 'maybe', remoteConsent: st.remoteSpeechConsent, sources: [],
-      note: 'Pronunciation uses a voice installed on this device. Remote voices are not played inside web pages by this version.',
+      ok: true, deviceVoice: 'maybe', remoteConsent: st.remoteSpeechConsent && st.localOnlySpeech === false, sources: [],
+      note: st.localOnlySpeech !== false ? 'Local-only speech: a matching installed voice is required.' : 'Azure speech uses the authenticated backend when source permissions allow it; matching device voices provide fallback.',
     };
   }
 
@@ -310,7 +317,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     return 'foreign';
   }
 
-  async function handle(type: string, m: Record<string, unknown>, kind: Exclude<SenderKind, 'foreign'>): Promise<unknown> {
+  async function handle(type: string, m: Record<string, unknown>, kind: Exclude<SenderKind, 'foreign'>, sender?: MessageSender): Promise<unknown> {
     switch (type) {
       case MSG.getState: return typeof m.tabId === 'number' ? readState(m.tabId) : { enabled: false };
       case MSG.setEnabled:
@@ -324,7 +331,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
         return { ok: true, settings: await settings.get(), unavailable: SETTINGS_UNAVAILABLE } satisfies SettingsReply;
       }
       case MSG.record: {
-        const reply = await recorder.record(m.event, kind);
+        // an exception (a full or failing store) is a reason the card can show, not a bare 'internal'
+        const reply = await recorder.record(m.event, kind).catch((e: unknown): RecordReply => ({ ok: false, error: `failed: ${e instanceof Error ? e.message : String(e)}` }));
         return reply satisfies RecordReply;
       }
       case MSG.profile: {
@@ -337,6 +345,8 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.entry: return gloss.entryFor(m);
       case MSG.explain: return gloss.explainFor(m);
       case MSG.pronounceInfo: return pronounceInfo(m);
+      case MSG.speechConfig: return kind === 'page' ? speech.configure(m) : { ok: false };
+      case MSG.speech: return speech.handle(m, `${sender?.tab?.id ?? 'page'}:${sender?.frameId ?? 0}`, sender?.url);
       case MSG.correct: return correct(m);
       case MSG.metrics: return storeMetric(m);
       case MSG.active: return active.handle(m, kind);
@@ -405,7 +415,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       const kind = classify(sender);
       const allowed = kind === 'page' ? (PAGE_ONLY.has(type) || CONTENT_OK.has(type)) : kind === 'content' ? CONTENT_OK.has(type) : false;
       if (!allowed) { sendResponse({ ok: false, error: 'forbidden' }); return; }
-      void handle(type, m!, kind as 'page' | 'content').then(sendResponse, () => sendResponse({ ok: false, error: 'internal' }));
+      void handle(type, m!, kind as 'page' | 'content', sender).then(sendResponse, () => sendResponse({ ok: false, error: 'internal' }));
       return true;
     });
   }

@@ -5,11 +5,12 @@
  */
 import { createHash } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
-import type { GoEvent } from '../../packages/repository-contract/src';
+import { CONTRACT_VERSION, type GoEvent } from '../../packages/repository-contract/src';
 import { inspectLocal, markEventsOwned, openLocalRepository, sha256Hex, UPLOAD_BATCH } from '../../packages/repository-local/src';
 import type { LocalRepository } from '../../packages/repository-local/src';
 import { createInProcessApi, type RepositoryApi } from '../../packages/repository-service/src/api';
 import type { KeyValueArea } from '../../packages/repository-sync/src/area';
+import { hiAdapter } from '../../src/adapters/hi';
 import { clock, createRemote, failingArea, lookup, newArea, review, type TestArea, type Who } from './support';
 
 const ok = <T,>(r: { ok: boolean; status: number } & Record<string, unknown>): T => {
@@ -88,6 +89,30 @@ describe('a local repository has no password and no account elsewhere', () => {
 });
 
 describe('persistence', () => {
+  it('upgrades a generic Hindi encounter in place when the real adapter is later installed', async () => {
+    const area = newArea();
+    const c = clock();
+    const first = await openLocalRepository({ area, now: c.now });
+    const id = await first.identity();
+    const enrolled = ok<{ enrolment: { enrolmentId: string } }>(await first.api.enrol({ languageId: 'hi', packId: 'pack:hi', packVersion: '6', goals: [{ kind: 'reading' }] }));
+    const who = { learnerId: id.learnerId, deviceId: id.deviceId, enrolmentId: enrolled.enrolment.enrolmentId };
+    const encounter = (n: number, itemIds: string[]): GoEvent => ({
+      id: `hi-encounter-${n}`, v: CONTRACT_VERSION, learnerId: who.learnerId, enrolmentId: who.enrolmentId, languageId: 'hi', at: c.now(),
+      producer: { app: 'golearn-ext', version: '1', deviceId: who.deviceId }, kind: 'EncounterRecorded', subject: { itemIds },
+      payload: { contextKind: 'none', tokenCount: itemIds.length, contextConfidence: 0, readerId: 'test', helpShown: [] }, dedupeKey: `hi-encounter-${n}`,
+    });
+    await append(first, encounter(1, ['form:hi:किताब', 'form:hi:घर']));
+    const before = ok<{ unit: { label: string; packId: string } }>(await first.api.unit('form:hi:किताब'));
+    expect(before.unit).toMatchObject({ label: 'किताब', packId: 'pack:hi' });
+    const second = await openLocalRepository({ area, now: c.now, adapters: { hi: hiAdapter } });
+    await append(second, encounter(2, ['form:hi:किताब', 'form:hi:घर']));
+    const upgraded = ok<{ unit: { label: string; packId: string; packVersion: string }; analyses: Array<{ candidates: Array<{ lexemeId?: string }> }> }>(await second.api.unit('form:hi:किताब'));
+    expect(upgraded.unit).toMatchObject({ label: 'किताब', packId: 'pack:hi', packVersion: '6' });
+    expect(upgraded.analyses.some((a) => a.candidates.some((c) => c.lexemeId?.startsWith('lemma:hi:')))).toBe(true);
+    const vocab = ok<{ items: Array<{ knowledge: { unitId: string }; unit?: { label?: string } }> }>(await second.api.vocabulary({ languageId: 'hi', limit: 20 }));
+    expect(vocab.items.map((x) => x.knowledge.unitId)).toEqual(expect.arrayContaining(['form:hi:किताब', 'form:hi:घर']));
+  });
+
   it('a reopened repository holds the same events, enrolments, units and knowledge', async () => {
     const { repo, area, c } = await open();
     const who = await enrolSq(repo);
@@ -159,17 +184,28 @@ describe('persistence', () => {
     expect(await third.exportEvents()).toEqual(await reopened.exportEvents());
   });
 
-  it('a full disk does not fail the operation: the data stays in memory and the failure is counted', async () => {
+  it('a full disk refuses durable acknowledgement, keeps the event in memory, and retries it later', async () => {
     const area = failingArea(newArea());
     const { repo, c } = await open(area);
     const who = await enrolSq(repo);
     area.failing = true;
     c.tick();
-    const r = await append(repo, lookup(who, 'shtëpi', c));
-    expect(r.stored).toBe(1);
+    const lost = lookup(who, 'shtëpi', c);
+    const r = await append(repo, lost);
+    expect(r.stored).toBe(0);
     const st = await inspectLocal(repo);
     expect(st.persistence.failures).toBeGreaterThan(0);
+    expect(st.persistence.pendingWrites).toBeGreaterThan(0);
     expect(st.persistence.lastError).toMatch(/quota/i);
+    area.failing = false;
+    expect((await repo.api.putTombstone({ kind: 'event', id: lost.id }, 'user deleted it')).ok).toBe(true);
+    c.tick();
+    const retry = await append(repo, lookup(who, 'libër', c));
+    expect(retry.stored).toBe(1);
+    const reopened = await openLocalRepository({ area, now: c.now });
+    const ids = (await reopened.exportEvents()).flatMap((e) => e.subject?.itemIds ?? []);
+    expect(ids).toContain('lemma:sq:libër:NOUN');
+    expect(ids).not.toContain('lemma:sq:shtëpi:NOUN');
   });
 
   it('reports what it holds', async () => {

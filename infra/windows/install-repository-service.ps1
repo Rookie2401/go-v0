@@ -108,7 +108,9 @@ if (-not $SkipTunnel) {
   $svc = Get-Service -Name cloudflared -ErrorAction SilentlyContinue
   if (-not $svc) { & $cf service install | Out-Host }
   Set-Service -Name cloudflared -StartupType Automatic
-  Restart-Service -Name cloudflared
+  # a freshly installed service is Stopped: Restart-Service refuses to stop it ("cannot be stopped"), so start it; restart only a running one
+  if ((Get-Service cloudflared).Status -eq 'Running') { Restart-Service -Name cloudflared } else { Start-Service -Name cloudflared }
+  (Get-Service cloudflared).WaitForStatus('Running', [TimeSpan]::FromSeconds(30))
   Write-Host "   service cloudflared: $((Get-Service cloudflared).Status), startup $((Get-Service cloudflared).StartType)"
 }
 

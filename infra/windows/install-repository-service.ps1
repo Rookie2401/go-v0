@@ -94,7 +94,7 @@ if (-not $SkipTunnel) {
   $cf = Find-Cloudflared $Cloudflared
   $userHome = Join-Path $env:USERPROFILE '.cloudflared'
   $config = Join-Path $userHome 'config.yml'
-  if (-not (Test-Path $config)) { throw "No $config: run infra\cloudflare\setup-named-tunnel.ps1 -Hostname $Hostname first (it creates the tunnel, the config and the DNS route)." }
+  if (-not (Test-Path $config)) { throw "No ${config}: run infra\cloudflare\setup-named-tunnel.ps1 -Hostname $Hostname first (it creates the tunnel, the config and the DNS route)." }
   # the Windows service runs as LocalSystem and reads its config from the system profile, not from this user's folder
   $sysHome = Join-Path $env:SystemRoot 'System32\config\systemprofile\.cloudflared'
   New-Item -ItemType Directory -Force -Path $sysHome | Out-Null

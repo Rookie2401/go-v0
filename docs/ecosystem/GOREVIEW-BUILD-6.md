@@ -1,6 +1,6 @@
 # GoReview TestFlight build 6 (2026-10-19)
 
-Status: Expo cloud build FINISHED and the App Store Connect upload SUCCEEDED (the first upload since build 4; builds 5's four
+Status: IN TESTFLIGHT (the owner saw it listed on 2026-10-19). Expo cloud build FINISHED and the App Store Connect upload SUCCEEDED (the first upload since build 4; builds 5's four
 submissions had errored with no detail, see `GOREVIEW-BUILD-5.md`). Apple's processing email and the TestFlight page decide the
 rest: https://appstoreconnect.apple.com/apps/6822923834/testflight/ios
 

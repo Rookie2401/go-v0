@@ -161,6 +161,12 @@ if (-not $SkipTunnel) {
     try { $r = Invoke-RestMethod -Uri "https://$Hostname/health" -TimeoutSec 10; if ($r.ok -eq $true -and $r.service -eq 'repository') { $ok = $true } } catch { Start-Sleep -Seconds 5 }
   }
   if ($ok) { Write-Host "   public: https://$Hostname/health ok" }
-  else { Write-Host "   public: not reachable. If the TLS handshake fails (connection reset, no HTTP status), the zone's edge certificate is not active: Cloudflare dashboard -> SSL/TLS -> Edge Certificates (Universal SSL), and the zone must show Active. If HTTP 530: the tunnel is not connected (Get-Service cloudflared; the log is in the Event Viewer under Application)."; exit 3 }
+  else {
+    # this check runs from the PC itself. On this laptop's Wi-Fi (2026-10-19) a router URL filter blocks the domain (plain HTTP
+    # answers with a urlblock page, HTTPS is reset after the ClientHello) while probes from outside get 200, so a failure here
+    # is NOT by itself a failure of the tunnel: the service state above and an outside probe decide.
+    Write-Host "   public: not reachable FROM THIS PC. If the cloudflared service is Running above, check from outside first (phone on cellular, or https://api.hackertarget.com/httpheaders/?q=https://$Hostname/health): this PC's own network may filter the domain. If outside probes fail too: a TLS reset with no HTTP status means the zone's edge certificate is not active (Cloudflare dashboard -> SSL/TLS -> Edge Certificates, zone Active); HTTP 530 means the tunnel is not connected (Get-Service cloudflared; Event Viewer > Application, source Cloudflared)."
+    exit 3
+  }
 }
 Write-Host 'Done. Both start with Windows now; the PC must still be on and online for the phone to sync.'

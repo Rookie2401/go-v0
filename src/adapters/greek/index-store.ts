@@ -26,6 +26,8 @@ export interface GreekFormIndex {
   codes: 'morphgnt' | 'kaikki-tags';
   /** The default period of the index's readings; a kaikki-grc row's table header may name another (Epic, Ionic, Koine …). */
   period: 'el-koi' | 'el-att' | 'el-mod';
+  /** A SHARD of a larger index (scripts/el-shard-ancient.mts): the prefix of the bare letters its keys share; shards of one id are installed side by side. */
+  shard?: string;
   source: { label: string; licence: string; url: string; retrieved?: string; note?: string };
   built: string;
   lemmas: Record<string, ElLemmaRow>;
@@ -43,10 +45,16 @@ export interface GreekFormIndex {
 export interface ElIndexHit { index: GreekFormIndex; key: string; row: ElFormRow; viaBare: boolean }
 
 const INSTALLED = new Map<string, GreekFormIndex>();
+const storeKey = (id: string, shard?: string): string => (shard ? `${id}#${shard}` : id);
 
-export function installGreekIndex(idx: GreekFormIndex): void { INSTALLED.set(idx.id, idx); }
+/** Installs an index, or one shard of one (keyed by id and shard, so the shards of an id sit side by side); re-installing replaces. */
+export function installGreekIndex(idx: GreekFormIndex): void { INSTALLED.set(storeKey(idx.id, idx.shard), idx); }
+export function uninstallGreekIndex(id: string, shard?: string): boolean { return INSTALLED.delete(storeKey(id, shard)); }
 export function installedGreekIndexes(): GreekFormIndex[] { return [...INSTALLED.values()]; }
-export function resetGreekIndexes(keep?: (id: string) => boolean): void { for (const id of [...INSTALLED.keys()]) if (!keep?.(id)) INSTALLED.delete(id); }
+/** Forgets every installed index (or shard) for which `keep(id, shard)` is not true. */
+export function resetGreekIndexes(keep?: (id: string, shard?: string) => boolean): void {
+  for (const [k, idx] of [...INSTALLED.entries()]) if (!keep?.(idx.id, idx.shard)) INSTALLED.delete(k);
+}
 
 /**
  * Readings of a key across the installed indexes, most frequent first. The bare map is consulted when the key itself has no row

@@ -17,3 +17,11 @@ Every row is a Wiktionary table row (with its table header), an alternative form
 | index size | 130.5 MB (public/lexicon/el/ancient-index.json, git-ignored) |
 
 Table headers seen (top 30): Attic declension-2 8,424, Attic declension-3 4,385, Attic declension-1 3,848, aorist 2,495, present 2,470, imperfect 2,236, future 2,183, perfect 1,864, pluperfect 1,036, contracted present 784, contracted imperfect 698, Epic declension-2 618, Epic aorist 604, Epic declension-3 564, Epic imperfect 462, Attic contracted declension-3 448, contracted future 394, Ionic declension-3 320, Ionic declension-2 290, Epic present 286, Epic declension-1 224, Ionic declension-1 158, Epic future 140, Attic present 115, Koine declension-2 98, Attic imperfect 96, Epic perfect 87, Attic aorist 84, future perfect 82, Doric declension-1 78.
+
+## Shards (2026-10-22)
+
+`npm run el:shard-ancient` cuts this index into 130 shards under `public/lexicon/el/ancient/` (git-ignored), 12.2 MB
+gzipped against 102.5 MB plain, largest 0.47 MB, prefixes of up to 2 bare letters (a key goes to the longest
+listed prefix of its diacritic-free letters; '_' holds the keys with no Greek letter). A host loads the shards of the keys it is about to read
+(src/adapters/greek/shards.ts: Biblia does so per chapter, keeping at most 48 shards in memory); a paradigm or the Variants tab shows what
+the loaded shards hold and says so.

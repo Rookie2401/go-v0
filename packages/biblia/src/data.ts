@@ -8,6 +8,7 @@
  */
 import { installHebrewIndex, type HebrewFormIndex } from '../../../src/adapters/hebrew/index-store';
 import { installGreekIndex, type GreekFormIndex } from '../../../src/adapters/greek/index-store';
+import { createGreekShardLoader, type GreekShardLoader } from '../../../src/adapters/greek/shards';
 import type { BibliaLang } from './canon';
 
 export type HeTok = [lemma: string, morph: string, seg?: string];
@@ -19,13 +20,18 @@ export interface HeBook { book: string; chapters: Chapter<HeVerse>[] }
 export interface GrBook { book: string; chapters: Chapter<GrVerse>[] }
 export type AnyBook = ({ lang: 'he' } & HeBook) | ({ lang: 'el' } & GrBook);
 
-export interface DataSource { fetchJson(path: string): Promise<unknown> }
+export interface DataSource { fetchJson(path: string): Promise<unknown>; fetchBytes?(path: string): Promise<Uint8Array> }
 
 export const fetchJsonWith = (fetcher: typeof fetch, base = './'): DataSource => ({
   async fetchJson(path) {
     const r = await fetcher(`${base}${path}`);
     if (!r.ok) throw new Error(`${path}: ${r.status}`);
     return r.json();
+  },
+  async fetchBytes(path) {
+    const r = await fetcher(`${base}${path}`);
+    if (!r.ok) throw new Error(`${path}: ${r.status}`);
+    return new Uint8Array(await r.arrayBuffer());
   },
 });
 
@@ -54,12 +60,14 @@ export const greekVerseText = (v: GrVerse): string => v.w.map((t) => t[0]).join(
 /** The Aramaic chapters of the Tanakh (Daniel 2:4b–7:28, Ezra 4:8–6:18, 7:12–26, Jeremiah 10:11): a verse is Aramaic when its readings carry the A language letter. */
 export const verseIsAramaic = (v: HeVerse): boolean => v.w.filter((t): t is HeTok => !!t).length > 0 && v.w.filter((t): t is HeTok => !!t).every((t) => t[1][0] === 'A');
 
-export interface IndexLoad { he: boolean; el: boolean; notes: string[] }
+export interface IndexLoad { he: boolean; el: boolean; /** the sharded Ancient Greek tables (Attic, Homeric …), loaded per chapter */ ancient?: GreekShardLoader; notes: string[] }
 
 /** Installs the full Biblical and Koine form indexes (public/lexicon/{he,el}, built locally) so every word of the text has its source's reading; says which could not be loaded. */
 export async function installFullIndexes(src: DataSource): Promise<IndexLoad> {
   const out: IndexLoad = { he: false, el: false, notes: [] };
   try { installHebrewIndex((await src.fetchJson('lexicon/he/biblical-index.json')) as HebrewFormIndex); out.he = true; } catch (e) { out.notes.push(`The full Biblical Hebrew index is not available (${e instanceof Error ? e.message : String(e)}): only the commonest Biblical words are read.`); }
+  // the Ancient Greek tables are 130 shards (12 MB gzipped); the reader loads the shards of each chapter's words (src/adapters/greek/shards.ts)
+  try { out.ancient = await createGreekShardLoader(src, { base: 'lexicon/el/ancient', maxLoaded: 48 }); } catch (e) { out.notes.push(`The Ancient Greek tables (Attic, Homeric readings for the Variants tab) are not available (${e instanceof Error ? e.message : String(e)}): run npm run el:build-ancient and npm run el:shard-ancient.`); }
   try { installGreekIndex((await src.fetchJson('lexicon/el/koine-index.json')) as GreekFormIndex); out.el = true; } catch (e) { out.notes.push(`The full Koine index is not available (${e instanceof Error ? e.message : String(e)}): only the commonest New Testament words are read.`); }
   return out;
 }

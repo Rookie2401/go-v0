@@ -46,6 +46,10 @@ function copyIndexes(outDir: string): Plugin {
         fs.mkdirSync(path.join(outDir, 'lexicon', lang), { recursive: true });
         fs.copyFileSync(from, path.join(outDir, 'lexicon', lang, file));
       }
+      // the sharded Ancient Greek tables (npm run el:shard-ancient): 130 gzip shards + manifest, about 12 MB
+      const shards = path.join(repoRoot, 'public', 'lexicon', 'el', 'ancient');
+      if (fs.existsSync(path.join(shards, 'manifest.json'))) fs.cpSync(shards, path.join(outDir, 'lexicon', 'el', 'ancient'), { recursive: true });
+      else console.warn('[biblia] public/lexicon/el/ancient is not built (npm run el:shard-ancient); the Variants tab will show New Testament readings only');
     },
   };
 }

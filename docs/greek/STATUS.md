@@ -32,8 +32,9 @@ a Modern reading. Readings of the chosen period go first; none is removed; every
 - The Attic/Homeric readings are single-source (Wiktionary tables) until the Perseus treebank agreement run exists.
 - Pronunciation is three written conventions; no voice exists for ancient Greek.
 - The kaikki Greek dictionaries are downloaded but not built as dictionary shards; the pack declares no dictionary.
-- Not done: the Perseus treebank is used for the AUDIT below but not yet as a second source inside the Attic/Homeric readings; dictionary shards;
-  sharding of the Ancient asset. Done 2026-10-21: Biblia ships as an extension page (`npm run local:build`, "Open Biblia" on the reader screen). Done since the first draft: GoTell/GoReview period targeting (P4), the Biblia reader shell (P5), and (2026-10-19)
+- Not done: the Perseus treebank is used for the AUDIT below but not yet as a second source inside the Attic/Homeric readings; dictionary shards.
+  Done 2026-10-21: the Ancient asset is SHARDED (`npm run el:shard-ancient`: 130 gzip shards, 12 MB; `src/adapters/greek/shards.ts` loads the
+  shards of the keys a host is about to read, LRU of 48; Biblia loads them per chapter, so its Variants tab has Attic and Homeric rows); Biblia ships as an extension page (`npm run local:build`, "Open Biblia" on the reader screen). Done since the first draft: GoTell/GoReview period targeting (P4), the Biblia reader shell (P5), and (2026-10-19)
   the extension registration of `el`: `LANGUAGE_META` (page tags el, grc), the analyser loader and chunk (`dist/analysers/el.js`), the resolver
   (grc → Attic, or Koine with a koi / x-koine subtag; Greek script detected), the setup app's language list.
 

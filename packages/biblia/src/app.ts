@@ -229,17 +229,26 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       h('span', { class: 'crumb' }, `${info.en} ${ch}`, h('span', { class: 'native', lang: info.lang, dir: 'auto' }, ` · ${info.native} ${numeral(info.lang, ch)}`)),
       next ? h('a', { href: `#/read/${next.book}/${next.ch}` }, `${canon.refLabel(next.book, next.ch)} →`) : h('span', {}));
     const prose = h('div', { class: `prose${POETRY.has(bookId) ? ' poetry' : ''}`, lang: info.lang, dir: info.lang === 'he' ? 'rtl' : 'ltr' });
+    const chapterNotes: string[] = [];
     let aramaicVerses = 0;
     if (book.lang === 'he') {
       for (const v of (chapter as { verses: HeVerse[] }).verses) { const ar = verseIsAramaic(v); if (ar) aramaicVerses++; prose.append(renderHebrewVerse(info, ch, v, ar), doc.createTextNode(' ')); }
     } else {
-      for (const v of (chapter as { verses: GrVerse[] }).verses) prose.append(renderGreekVerse(info, ch, v), doc.createTextNode(' '));
+      const verses = (chapter as { verses: GrVerse[] }).verses;
+      // the Ancient Greek tables are sharded: fetch the shards this chapter's words live in, so Attic and Homeric readings are on the card
+      if (indexes.ancient) {
+        const keys: string[] = [];
+        for (const v of verses) for (const t of elAdapter.tokenize(greekVerseText(v))) if (t.isWord) keys.push(t.normalized);
+        const r = await indexes.ancient.ensure(keys);
+        if (r.failed.length) chapterNotes.push(`${r.failed.length} of the Ancient Greek shards this chapter needs could not be loaded (${r.failed[0][1]}); the Variants tab shows less for those words.`);
+      }
+      for (const v of verses) prose.append(renderGreekVerse(info, ch, v), doc.createTextNode(' '));
     }
     const period = info.lang === 'he'
       ? (aramaicVerses ? `Read as Biblical Hebrew; ${aramaicVerses} verse${aramaicVerses === 1 ? '' : 's'} of this chapter are Biblical Aramaic (marked) and are read as Aramaic.` : 'Read as Biblical Hebrew (the Masoretic text, with its cantillation).')
-      : 'Read as Koine Greek (the Greek New Testament).';
+      : `Read as Koine Greek (the Greek New Testament)${indexes.ancient ? `; the Attic and Homeric tables are loaded for this chapter's words (${indexes.ancient.loaded().length} shards in memory)` : ''}.`;
     noticeEl = h('div', { class: 'notice', role: 'status', hidden: '' });
-    return h('div', { class: 'reader' }, topbar(canon.refLabel(bookId, ch), TREE.find((t) => t.lang === info.lang)?.title), nav, h('div', { class: 'period' }, period), ...notices.map((n) => h('div', { class: 'notice' }, n)), prose, noticeEl, nav.cloneNode(true) as HTMLElement, sourcesNote());
+    return h('div', { class: 'reader' }, topbar(canon.refLabel(bookId, ch), TREE.find((t) => t.lang === info.lang)?.title), nav, h('div', { class: 'period' }, period), ...[...notices, ...chapterNotes].map((n) => h('div', { class: 'notice' }, n)), prose, noticeEl, nav.cloneNode(true) as HTMLElement, sourcesNote());
   }
 
   // ── settings and sources ──

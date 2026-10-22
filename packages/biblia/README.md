@@ -35,6 +35,11 @@ vite build -c packages/biblia/vite.config.ts --mode extension  # packages/golear
 npm run biblia:build-ext                    # the same; npm run local:build runs it last, so the packaged extension carries Biblia
 ```
 
+Ancient Greek readings (2026-10-21): the Wiktionary Ancient Greek tables (Attic by default, Epic, Ionic, Koine …; 660,000 forms) are
+too large to carry whole, so `npm run el:shard-ancient` cuts them into 130 gzip shards (12 MB, `public/lexicon/el/ancient/`, git-ignored)
+and the reader fetches the shards of each chapter's words before rendering it (at most 48 shards kept; the period line says how many).
+The Variants tab then shows Attic and Homeric rows for New Testament words; a paradigm shows what the loaded shards hold.
+
 Inside the extension (2026-10-21): `npm run local:build` ends with this build, so `dist/biblia/index.html` ships with the extension and
 opens from the setup app's reader screen ("Open Biblia"), where lookups and marks reach the on-device Repository under the Hebrew or
 Greek enrolment. The page carries the texts (about 20 MB) and the Biblical and Koine form indexes (about 7 MB); nothing is fetched.

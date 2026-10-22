@@ -112,4 +112,5 @@ export const elAdapter: LanguageAdapter = {
   variants: (lemma, pos, surface): VariantSet | undefined => elVariants(lemma, pos, surface),
 };
 
-export const elInstalledIndexes = (): string[] => installedGreekIndexes().map((i) => i.id);
+/** The ids of the installed indexes (a sharded index counts once, however many shards are loaded). */
+export const elInstalledIndexes = (): string[] => [...new Set(installedGreekIndexes().map((i) => i.id))];

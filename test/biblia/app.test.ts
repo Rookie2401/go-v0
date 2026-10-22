@@ -23,6 +23,11 @@ const localSource: DataSource = {
     if (!fs.existsSync(file)) throw new Error(`no such file ${file}`);
     return JSON.parse(fs.readFileSync(file, 'utf8'));
   },
+  async fetchBytes(path) {
+    const file = `public/${path}`;
+    if (!fs.existsSync(file)) throw new Error(`no such file ${file}`);
+    return new Uint8Array(fs.readFileSync(file));
+  },
 };
 function fakeRecorder(): Recorder & { events: GoEvent[]; enrolments: string[] } {
   const events: GoEvent[] = [];
@@ -67,6 +72,8 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
     const gw = [...document.querySelectorAll('.reader .prose button.word')].map((b) => b.textContent);
     expect(gw.slice(0, 5)).toEqual(['Ἐν', 'ἀρχῇ', 'ἦν', 'ὁ', 'λόγος']);
     expect(document.querySelector('.period')!.textContent).toMatch(/Koine/);
+    // the sharded Ancient tables (built locally): the chapter's shards are loaded, so Attic and Homeric readings reach the Variants tab
+    if (fs.existsSync('public/lexicon/el/ancient/manifest.json')) expect(document.querySelector('.period')!.textContent).toMatch(/the Attic and Homeric tables are loaded for this chapter.s words \(\d+ shards in memory\)/);
   });
 
   it('Daniel 2 marks its Aramaic verses and says so', async () => {

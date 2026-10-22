@@ -24,10 +24,12 @@ function devLexicon(): Plugin {
     apply: 'serve',
     configureServer(server) {
       server.middlewares.use('/lexicon', (req, res, next) => {
-        const rel = (req.url ?? '').split('?')[0].replace(/^\/+/, '');
+        // <lang>/<file>.json, or the shard folder <lang>/ancient/<prefix>.json[.gz] (the prefix is Greek letters, URL-encoded by the browser)
+        const rel = decodeURIComponent((req.url ?? '').split('?')[0].replace(/^\/+/, ''));
         const file = path.join(repoRoot, 'public', 'lexicon', rel);
-        if (!/^[a-z]{2}\/[a-z-]+\.json$/.test(rel) || !fs.existsSync(file)) return next();
-        res.setHeader('Content-Type', 'application/json');
+        if (!/^[a-z]{2}\/([a-z-]+\.json|[a-z]+\/[^/]+\.json(\.gz)?)$/u.test(rel) || !fs.existsSync(file)) return next();
+        // a .gz shard is sent as the gzip bytes it is (no Content-Encoding): the loader inflates it itself, as it does in the extension
+        res.setHeader('Content-Type', rel.endsWith('.gz') ? 'application/gzip' : 'application/json');
         fs.createReadStream(file).pipe(res);
       });
     },

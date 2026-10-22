@@ -87,6 +87,13 @@ describe('the loader on a tiny index', () => {
     expect(loader.loaded().sort()).toEqual(['αρ', 'λ']);
     expect(lookupGreekForm('λόγος').filter((h) => h.index.id === 'kaikki-grc-tables')).toHaveLength(1);
   });
+  it('a .gz shard a server has already inflated (Content-Encoding: gzip, as vite preview does) is read as the JSON it is', async () => {
+    const src = sourceOf(true);
+    const loader = await createGreekShardLoader({ ...src, fetchBytes: async () => new TextEncoder().encode(JSON.stringify(TINY['λ'])) }, { base: 'lexicon/el/ancient' });
+    const r = await loader.ensure(['λόγος']);
+    expect(r).toEqual({ loaded: ['λ'], failed: [] });
+    expect(lookupGreekForm('λόγος').some((h) => h.index.id === 'kaikki-grc-tables')).toBe(true);
+  });
   it('a missing shard is a reported failure and the others still load', async () => {
     const src = sourceOf(false);
     const loader = await createGreekShardLoader({ ...src, fetchJson: async (p) => { if (p.endsWith('λ.json')) throw new Error('gone'); return src.fetchJson(p); } }, { base: 'x' });

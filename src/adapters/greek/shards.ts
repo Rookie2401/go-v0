@@ -88,7 +88,11 @@ export async function createGreekShardLoader(src: GreekShardSource, opts: { base
     let idx: GreekFormIndex;
     if (entry.file.endsWith('.gz')) {
       if (!src.fetchBytes) throw new Error('the data source cannot fetch bytes, which a compressed shard needs');
-      idx = JSON.parse(await inflate(await src.fetchBytes(path))) as GreekFormIndex;
+      // a static server may send the file with Content-Encoding: gzip, in which case the browser has already inflated it (the bytes are
+      // then JSON text); an extension page or a file read gives the raw gzip. The gzip magic (1f 8b) decides, not the file name.
+      const bytes = await src.fetchBytes(path);
+      const gzipped = bytes.length > 2 && bytes[0] === 0x1f && bytes[1] === 0x8b;
+      idx = JSON.parse(gzipped ? await inflate(bytes) : new TextDecoder().decode(bytes)) as GreekFormIndex;
     } else idx = (await src.fetchJson(path)) as GreekFormIndex;
     if (idx.id !== manifest.id || idx.shard !== p) throw new Error(`${path} is not shard ${p} of ${manifest.id}`);
     installGreekIndex(idx);

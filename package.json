@@ -35,6 +35,7 @@
     "biblia:import": "vite-node --config scripts/vite.config.ts scripts/biblia-import.mts",
     "biblia:dev": "vite -c packages/biblia/vite.config.ts --port 5199",
     "biblia:build": "vite build -c packages/biblia/vite.config.ts",
+    "biblia:build-ext": "vite build -c packages/biblia/vite.config.ts --mode extension",
     "dict:build-full": "vite-node --config scripts/vite.config.ts src/dict/build-full.ts",
     "dict:compare": "vite-node --config scripts/vite.config.ts scripts/dict-compare.mts",
     "dict:status": "vite-node --config scripts/vite.config.ts scripts/dict-status.mts",
@@ -84,7 +85,7 @@
     "reader:fixture": "vite-node --config scripts/vite.config.ts packages/controlled-reader/scripts/make-fixture.mts",
     "reader:build": "vite build --config packages/controlled-reader/vite.config.ts --mode prototype",
     "ext:build:harness": "vite build -c packages/golearn-extension/vite.config.ts --mode content-harness",
-    "local:build": "npm run ext:build && vite build -c packages/golearn-extension/app/vite.config.ts --mode options && vite build -c packages/golearn-extension/app/vite.config.ts --mode web && vite build -c packages/gopractice/vite.config.ts && vite build -c packages/gopractice/vite.config.ts --mode extension",
+    "local:build": "npm run ext:build && vite build -c packages/golearn-extension/app/vite.config.ts --mode options && vite build -c packages/golearn-extension/app/vite.config.ts --mode web && vite build -c packages/gopractice/vite.config.ts && vite build -c packages/gopractice/vite.config.ts --mode extension && npm run biblia:build-ext",
     "local:seed": "vite-node scripts/local/seed-teams.ts",
     "local:service": "vite-node packages/repository-service/src/main.ts --port 8790 --data data/local-repository --host 127.0.0.1"
   },

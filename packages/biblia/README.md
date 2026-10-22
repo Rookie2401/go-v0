@@ -32,6 +32,11 @@ npm run biblia:import                       # copy the texts from the Biblia app
 npx vite -c packages/biblia/vite.config.ts  # development server (port 5199)
 vite build -c packages/biblia/vite.config.ts                   # packages/biblia/dist
 vite build -c packages/biblia/vite.config.ts --mode extension  # packages/golearn-extension/dist/biblia/ (after npm run ext:build)
+npm run biblia:build-ext                    # the same; npm run local:build runs it last, so the packaged extension carries Biblia
 ```
+
+Inside the extension (2026-10-21): `npm run local:build` ends with this build, so `dist/biblia/index.html` ships with the extension and
+opens from the setup app's reader screen ("Open Biblia"), where lookups and marks reach the on-device Repository under the Hebrew or
+Greek enrolment. The page carries the texts (about 20 MB) and the Biblical and Koine form indexes (about 7 MB); nothing is fetched.
 
 Tests: `npx vitest run test/biblia`.

@@ -23,6 +23,12 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
           'Or select a word and right-click: “Look up with GoLearn”.',
           'Nothing is read until you do one of these, and it stops when you leave the page.',
         ])),
+      // Biblia (2026-10-21): the Hebrew Bible and the Greek New Testament as a page of the extension (packages/biblia, built by npm run local:build)
+      h('section', { class: 'card', id: 'biblia' },
+        h('h2', {}, 'Biblia: the Hebrew Bible and the Greek New Testament'),
+        p('The Scriptures in their own languages, read with the same card as any page: every word parsed in the period of its text (Biblical Hebrew, Biblical Aramaic, Koine Greek), with the Variants tab across the periods. Lookups and marks are recorded here, under Hebrew or Greek, so they reach GoReview.'),
+        h('p', {}, h('a', { href: chrome.runtime.getURL?.('biblia/index.html') ?? '../biblia/index.html', id: 'biblia-link' }, 'Open Biblia')),
+        p('Choose Hebrew or Greek on the Languages page first; the texts are inside the extension, nothing is fetched.', 'muted')),
     ]);
   } else {
     const note = h('p', { class: 'status', role: 'status', 'aria-live': 'polite', id: 'reader-note' });
@@ -36,6 +42,7 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
           h('li', {}, 'Pin the GoLearn button to the toolbar so you can switch it on for a tab. This page cannot check whether the extension is installed; the extension’s own settings page (the same screens as these) shows “installed” once it is.'),
         ),
         p('Safari and Firefox are not supported yet.', 'muted'),
+        p('Biblia, the Hebrew Bible and the Greek New Testament read with GoLearn, is a page of the extension; it opens from this screen once the extension is installed.', 'muted'),
         h('p', {}, button('I have installed it', async () => { await ctx.state.patchProgress({ readerAck: true }); ctx.changed(); note.textContent = 'Noted.'; }, { id: 'reader-ack' })),
         note),
     ]);

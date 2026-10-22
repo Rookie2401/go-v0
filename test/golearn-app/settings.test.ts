@@ -36,6 +36,8 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
     expect(guide.textContent).toContain('Chrome Web Store');
     expect(guide.textContent).toMatch(/cannot check whether the extension is installed/);
     expect(rig.root.querySelector('#reader-installed')).toBeNull();
+    expect(rig.root.querySelector('#biblia-link')).toBeNull(); // Biblia is a page of the extension: named on the web, not linked
+    expect(guide.textContent).toContain('Biblia');
     // acknowledging is remembered, because the page cannot verify it; it is no part of setup
     rig.q('#reader-ack').click();
     await until(() => rig.q('#reader-note').textContent === 'Noted.');
@@ -51,6 +53,11 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
     expect(text).toContain('Alt+Shift+G');
     expect(text).toContain('right-click');
     expect(rig.root.querySelector('#reader-install')).toBeNull();
+    // Biblia (2026-10-21): a page of the extension, linked from here; recorded under Hebrew / Greek
+    const biblia = rig.q('#biblia');
+    expect(biblia.textContent).toContain('Hebrew Bible and the Greek New Testament');
+    expect(biblia.textContent).toContain('GoReview');
+    expect(rig.q<HTMLAnchorElement>('#biblia-link').getAttribute('href')).toMatch('biblia/index.html');
   });
 
   it('the permissions it explains are exactly the ones the manifest declares', () => {

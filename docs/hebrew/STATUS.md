@@ -30,7 +30,8 @@ Readings of the chosen period go first on every word; none is removed; every rea
 - Prefix peeling is by rule and low-confidence; a prefix + unknown stem gets nothing.
 - Transliteration is a general scheme with Modern letter values; no voice exists for Biblical Hebrew.
 - The kaikki Hebrew dictionary is downloaded (data/raw/kaikki-he) but not yet built as dictionary shards (`dict:build --lang he`); the pack declares no dictionary.
-- Not done: the extension-page build of Biblia; the hosts' loading of the full index assets outside Biblia; dictionary shards. Done since the first
+- Not done: the hosts' loading of the full index assets outside Biblia; dictionary shards. Done 2026-10-21: the extension-page build of
+  Biblia (`npm run local:build` ends with `biblia:build-ext`; "Open Biblia" on the setup app's reader screen). Done since the first
   draft of this file: GoTell/GoReview period targeting (PLAN14 P4), the Biblia reader shell (P5, `packages/biblia`), and (2026-10-19) the extension
   registration of `he`: `LANGUAGE_META` (page tags he, iw, hbo), the analyser loader and chunk (`dist/analysers/he.js`), the resolver (hbo → the
   Biblical period; Hebrew script detected, shared with Aramaic and Yiddish, so the analyser decides the period), the setup app's language list.

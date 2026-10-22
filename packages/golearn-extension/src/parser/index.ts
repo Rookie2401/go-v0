@@ -168,7 +168,7 @@ export function parseSelection(input: ParseInput): CardModel {
   const basis: string[] = []; let pronunciation: string[] = []; const alternatives: Alternative[] = [];
   let transliteration: string | undefined; let lemmaTransliteration: string | undefined;
   let features: FeatureItem[] = []; let role: string | undefined; const syntaxNotes: string[] = []; let syntax: SyntaxNote | undefined;
-  let period: CardModel['period']; let variants: CardModel['variants'];
+  let period: CardModel['period']; let variants: CardModel['variants']; let glossSource: string | undefined;
   const varietyLabel = (code: string): string => L.adapter.varieties?.[code]?.label ?? code;
   const constructions: ConstructionNote[] = patternsFor(L, tokens, analyses, selected).map((p) => ({
     id: p.key, unitId: unitIds.syntactic(L.lang, p.key), title: p.title, explanation: p.explanation, confidence: clamp01(p.confidence), source: 'pattern' as const,
@@ -183,6 +183,8 @@ export function parseSelection(input: ParseInput): CardModel {
     if (selStart > tokens[i].start || selEnd < tokens[i].end) notes.push(`The selection is part of the word "${tokens[i].surface}"; the reading is for the whole word.`);
     if (c) {
       lemma = c.lemma; pos = c.pos; gloss = c.unconfirmed ? undefined : c.gloss;
+      // a reading from an external source (the Open Scriptures morphology, MorphGNT, the Wiktionary tables): the card names it, not "course word list"
+      if (c.origin === 'dictionary' && c.sourceId && L.adapter.sources?.[c.sourceId]) glossSource = L.adapter.sources[c.sourceId].label.replace(/\s*\(.*$/, '').replace(/,.*$/, '');
       morphology = describe(L, c);
       confidence = clamp01(c.confidence);
       provenance = provenanceOf(c);
@@ -203,13 +205,15 @@ export function parseSelection(input: ParseInput): CardModel {
       if (c.orthography) notes.push(`Spelling differs from today's standard (${c.orthography.modern}).`);
       if (c.varieties?.length) notes.push(`Variety: ${c.varieties.join(', ')}.`); // the codes, as before; a period's plain-words label is on the period line
       // a language with period varieties: the period the analyser read the sentence in, and the word across the periods ("Variants")
-      if (typeof c.notes?.period === 'string' && L.adapter.varieties?.[c.notes.period]?.kind === 'period') {
+      // a period variety, or a heritage language read beside the language (Biblical Aramaic inside a Hebrew text)
+      if (typeof c.notes?.period === 'string' && ['period', 'heritage'].includes(L.adapter.varieties?.[c.notes.period]?.kind ?? '')) {
         period = { varietyId: c.notes.period, label: varietyLabel(c.notes.period), basis: typeof c.notes.periodBasis === 'string' ? c.notes.periodBasis : '' };
       }
       if (L.adapter.variants && c.lemma) {
         try {
           const v = L.adapter.variants(c.lemma, c.pos, tokens[i].surface);
-          if (v) variants = { ...v, rows: v.rows.map((r) => ({ ...r, ...(period && r.varietyId === period.varietyId ? { current: true } : {}) })) };
+          // "this text" is the period the sentence was read in, and that one only (the adapter's own guess from the surface gives way to it)
+          if (v) variants = { ...v, rows: v.rows.map((r) => ({ ...r, ...(period ? { current: r.varietyId === period.varietyId } : {}) })) };
         } catch { /* the Variants tab is an aid: it never breaks a card */ }
       }
       for (const a of analyses[i].candidates) {
@@ -259,7 +263,7 @@ export function parseSelection(input: ParseInput): CardModel {
     words: selected.length > 1 ? lines.slice(0, MAX_WORD_LINES) : [],
     alternatives: alternatives.slice(0, 3), basis, notes, pronunciation, ...(transliteration ? { transliteration } : {}), ...(lemmaTransliteration ? { lemmaTransliteration } : {}), itemIds,
     features, constructions, role, syntaxNotes, ...(syntax ? { syntax } : {}), sentenceWords, unitIds: unitIdsToAsk, formId: formUnit,
-    ...(period ? { period } : {}), ...(variants ? { variants } : {}),
+    ...(period ? { period } : {}), ...(variants ? { variants } : {}), ...(glossSource ? { glossSource } : {}),
   };
 }
 

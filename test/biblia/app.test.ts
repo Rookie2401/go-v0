@@ -83,6 +83,36 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
     expect(document.querySelector('.period')!.textContent).toMatch(/Biblical Aramaic/);
   });
 
+  describe.skipIf(!languageMeta('he'))('the card in an Aramaic verse, and where a reading comes from', () => {
+    beforeAll(() => { registerAllAnalysers(); });
+    it('a word of an Aramaic verse is read as Biblical Aramaic: the period line says so and the Aramaic row of Variants is the one marked "this text"', async () => {
+      app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: fakeRecorder(), now: () => new Date() });
+      await app.go('#/read/Dan/2');
+      const word = document.querySelector('.verse.aramaic button.word') as HTMLButtonElement;
+      word.click();
+      await new Promise((r) => setTimeout(r, 20));
+      const root = app.cardRoot()!;
+      expect(root.querySelector('[data-row="period"]')!.textContent).toMatch(/^Read as Biblical Aramaic/);
+      (root.querySelector('.variantsBtn') as HTMLButtonElement).click();
+      const rows = [...root.querySelectorAll('table.variants tr')].map((tr) => [tr.classList.contains('current'), tr.querySelector('th')!.textContent]);
+      expect(rows[0]).toEqual([true, 'Biblical Aramaic (this text)']);
+      expect(rows.filter(([cur]) => cur)).toHaveLength(1);
+    });
+    it('the meaning kicker and "view sources" name the Open Scriptures morphology, not the course word list', async () => {
+      app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: fakeRecorder(), now: () => new Date() });
+      await app.go('#/read/Gen/1');
+      const word = [...document.querySelectorAll('.reader .prose button.word')].find((b) => b.textContent === 'אֱלֹהִ֑ים') as HTMLButtonElement;
+      word.click();
+      await new Promise((r) => setTimeout(r, 20));
+      const root = app.cardRoot()!;
+      expect(root.querySelector('.kicker')!.textContent).toBe('Meaning · Open Scriptures Hebrew Bible morphology');
+      (root.querySelector('.sourcesBtn') as HTMLButtonElement).click();
+      const sources = [...root.querySelectorAll('.sources li')].map((li) => li.textContent ?? '');
+      expect(sources.some((s) => /Open Scriptures Hebrew Bible morphology/.test(s))).toBe(true);
+      expect(root.querySelector('.sources')!.textContent).not.toMatch(/No external source/);
+    });
+  });
+
   it('a bad reference is refused with a way back', async () => {
     app = await createBibliaApp({ win: window, doc: document, source: localSource, recorder: fakeRecorder(), now: () => new Date() });
     await app.go('#/read/Gen/99');

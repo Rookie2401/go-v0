@@ -193,7 +193,11 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       void deps.recorder.record([selection]).then((r2) => { if (!r2.ok) showNotice(`Could not record this lookup: ${r2.message ?? 'unknown reason'}.`); });
     }
     card.show(model, anchor, {
-      view: { languageName: `${LANGUAGE_NAME[ref.lang]} · ${canon.refLabel(ref.book, ref.ch)}:${ref.v}` },
+      view: {
+        languageName: `${LANGUAGE_NAME[ref.lang]} · ${canon.refLabel(ref.book, ref.ch)}:${ref.v}`,
+        // "view sources": the analyser's own sources for this language (the Open Scriptures morphology, MorphGNT, the Wiktionary tables, the rules)
+        sources: Object.values((ref.lang === 'he' ? heAdapter : elAdapter).sources ?? {}).map((s) => ({ label: s.label, ...(s.licence ? { licence: s.licence } : {}) })),
+      },
       actions: {
         onLayer: (layer) => { if (ictx) void deps.recorder.record([buildAssistanceEvent({ ...ictx, now: deps.now() }, layer as ExpandedLayer)]); },
         onRate: (mark) => {

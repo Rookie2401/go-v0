@@ -135,6 +135,8 @@ export function heVariants(lemma: string, pos?: PartOfSpeech, surface?: string):
   }
   const fullIndexes = { bib: tanakh.some((i) => i.id === 'oshb-tanakh'), mod: modern.length > 0 };
 
+  // Biblical Aramaic (a heritage language read beside Hebrew): first, when the lemma has readings in the Aramaic chapters of Daniel and Ezra
+  if (bib.aramaic) rows.push({ varietyId: 'arc-bib', label: HE_VARIETIES['arc-bib'].label, forms: bib.forms, status: 'attested', sources: ['oshb-tanakh'], note: 'read in the Aramaic chapters (Daniel 2–7, Ezra 4–7) with its own morphology' });
   for (const code of HE_PERIOD_ORDER) {
     const label = HE_VARIETIES[code].label;
     if (code === 'he-bib') {

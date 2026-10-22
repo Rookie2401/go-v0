@@ -74,6 +74,17 @@ describe('the Variants pill', () => {
     expect(layers.filter((l) => l === 'variants')).toEqual(['variants']); // once
     expect(layers).toContain('sentence');
   });
+  it('only the period the text was read in is marked "this text", whatever the rows say themselves', () => {
+    const m = model(true);
+    m.period = { varietyId: 'he-mod', label: 'Modern Hebrew', basis: 'unpointed text' };
+    // the parser overrides the rows' own current flags with the sentence's period; the card renders what the model states
+    m.variants!.rows = m.variants!.rows.map((r) => ({ ...r, current: r.varietyId === m.period!.varietyId }));
+    ui.show(m, anchor, { view: { languageName: 'Hebrew' } });
+    (ui.root()!.querySelector('.variantsBtn') as HTMLButtonElement).click();
+    const current = [...ui.root()!.querySelectorAll('table.variants tr.current th')].map((th) => th.textContent);
+    expect(current).toEqual(['Modern Hebrew (this text)']);
+  });
+
   it('the top rows say which period the text was read in', () => {
     ui.show(model(true), anchor);
     expect(ui.root()!.querySelector('[data-row="period"]')!.textContent).toBe('Read as Biblical Hebrew — the text carries cantillation marks: a Masoretic text');

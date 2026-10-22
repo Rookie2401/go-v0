@@ -427,7 +427,7 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
   /** The meaning under the word: the lexicon gloss at once, else the dictionary's, else "looking up…" while it is on its way. */
   function meaningText(m: CardModel, v: CardView): { text: string; attr?: string; muted: boolean; from?: string } {
     const dict = v.gloss;
-    if (m.gloss) return { text: m.gloss, muted: false, from: 'Course word list' };
+    if (m.gloss) return { text: m.gloss, muted: false, from: m.glossSource ?? 'Course word list' };
     // a dictionary-only meaning carries its attribution beside it (CC BY-SA: the notice goes wherever the entry is shown)
     if (dict.state === 'ready' && dict.senses.length) return { text: dict.senses.slice(0, 3).join('; '), ...(dict.attribution ? { attr: dict.attribution } : {}), muted: false, from: 'Wiktionary' };
     if (dict.state === 'loading') return { text: 'looking up…', muted: true };

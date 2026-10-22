@@ -150,6 +150,8 @@ export interface CardModel {
    * plain-words basis ("the text carries cantillation marks"). Absent for every other language.
    */
   period?: { varietyId: string; label: string; basis: string };
+  /** The source the reading and its gloss come from, in plain words (the adapter's own source metadata), when it is not the course word list. */
+  glossSource?: string;
   /** The word across the periods (the "Variants" pill), from the analyser's sources; absent for a language without period varieties or a multi-word selection. */
   variants?: VariantSet;
 }

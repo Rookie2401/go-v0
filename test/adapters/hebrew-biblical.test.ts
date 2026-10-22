@@ -174,6 +174,10 @@ describe.skipIf(!fs.existsSync(FULL_BIB) || !fs.existsSync(FULL_MOD))('with the 
     expect(c).toMatchObject({ lemma: 'כָּתַב', pos: 'VERB', morph: { Conj: 'Past', Person: '1', Number: 'Sing', VerbForm: 'Fin' } });
   });
 
+  it('a lemma held by the compiled core AND the full index is counted once in Variants (2,599 for אֱלֹהִים, not twice that)', () => {
+    const v = heAdapter.variants!('אֱלֹהִים', 'NOUN', 'אֱלֹהִ֑ים');
+    expect(v?.rows.find((r) => r.varietyId === 'he-bib')?.note).toMatch(/^2,599 occurrences/);
+  });
   it('the Mishnaic plural ־ִין is read as the ־ִים form the tables hold, marked as a rule and counted as Mishnaic evidence', () => {
     const c = best('חַיָּבִין', 'חַיָּבִין');
     expect(c).toMatchObject({ lemma: 'חַיָּב', origin: 'rule', unconfirmed: true, notes: { rule: expect.stringMatching(/Mishnaic plural/) } });

@@ -92,7 +92,10 @@ export function elVariants(lemma: string, pos?: PartOfSpeech, surface?: string):
     : undefined;
 
   // what each source holds
-  const ntRows = nt.flatMap((i) => lemmaIdsIn(i, lemma, pos).map((id) => i.lemmas[id]));
+  // the compiled core and the full index hold the same lemma ids: each lemma once, with the larger count (never summed across them)
+  const ntById = new Map<string, (typeof nt)[number]['lemmas'][string]>();
+  for (const i of nt) for (const id of lemmaIdsIn(i, lemma, pos)) { const row = i.lemmas[id]; const have = ntById.get(id); if (!have || row[3] > have[3]) ntById.set(id, row); }
+  const ntRows = [...ntById.values()];
   const grcIds = grc.flatMap((i) => lemmaIdsIn(i, lemma, pos).map((id) => [i, id] as const));
   const modIds = mod.flatMap((i) => lemmaIdsIn(i, lemma, pos).map((id) => [i, id] as const));
   const dialectForms = (code: string): string[] => {

@@ -118,12 +118,15 @@ export function heVariants(lemma: string, pos?: PartOfSpeech, surface?: string):
 
   // Biblical: attested lemma(s) with the token count
   const bib: { forms: string[]; count: number; aramaic: boolean } = { forms: [], count: 0, aramaic: false };
+  // the compiled core and the full index hold the same lemma ids: a lemma is counted once (the larger figure), never summed across them
+  const counted = new Map<string, number>();
   for (const idx of tanakh) for (const id of lemmaIdsIn(idx, lemma, pos)) {
     const row = idx.lemmas[id];
     if (!bib.forms.includes(row[0])) bib.forms.push(row[0]);
-    bib.count += row[3];
+    counted.set(id, Math.max(counted.get(id) ?? 0, row[3]));
     for (const [, r] of reverse(idx).byLemma.get(id) ?? []) if (r[1][0] === 'A') bib.aramaic = true;
   }
+  bib.count = [...counted.values()].reduce((a, b) => a + b, 0);
   // Modern: the lemma row(s) and their period labels
   const mod: { forms: string[]; gloss?: string; labels: Set<string> } = { forms: [], labels: new Set() };
   for (const idx of modern) for (const id of lemmaIdsIn(idx, lemma, pos)) {

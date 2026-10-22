@@ -141,6 +141,10 @@ describe.skipIf(!FULL.every((f) => fs.existsSync(f)))('with the full indexes ins
     expect(run('λόγος', 'el-koi').analyses[0].candidates[0].notes).toMatchObject({ period: 'el-koi' });
     expect(best(MODERN, 'λόγος', 'el-koi').notes).toMatchObject({ period: 'el-mod' }); // monotonic text with Modern readings stays Modern
   });
+  it('a lemma held by the compiled core AND the full index is counted once in Variants (330× for λόγος in the New Testament, not twice that)', () => {
+    const v = elAdapter.variants!('λόγος', 'NOUN', 'λόγος');
+    expect(v?.rows.find((r) => r.varietyId === 'el-koi')?.note).toMatch(/^330× in the New Testament, 1,239× in the Septuagint/);
+  });
   it('a sentence whose spelling shows neither system (λόγος.) is read on in the period of the sentence before; with nothing before, as Modern', () => {
     resetElPeriodMemory();
     expect(run('λόγος.').analyses[0].candidates[0].notes).toMatchObject({ period: 'el-mod' });

@@ -471,7 +471,8 @@ export class LookupController {
       const anchor = usedFallbackText ? fixed : safe(() => adapter.anchor(sel.range)) ?? fixed;
       this.closeCard('new-lookup');
       this.currentRange = usedFallbackText ? undefined : sel.range;
-      this.d.ui.show(card, anchor, { focus: req.focus, view: { ...initialView(languageName), ...view, pronunciationSentence: ctx.kind === 'sentence' ? parseCtx.sentence : undefined, pronunciationContext: { readerId: adapter.id, varietyId: language.varietyId, kind: card.tokenCount > 1 ? 'phrase' : 'word' } }, actions });
+      const analyserSources: SourceLink[] = Object.values(this.d.analyserOf?.(card.languageId)?.sources ?? {}).map((s) => ({ label: s.label, ...(s.licence ? { licence: s.licence } : {}) }));
+      this.d.ui.show(card, anchor, { focus: req.focus, view: { ...initialView(languageName), ...view, ...(analyserSources.length ? { sources: analyserSources } : {}), pronunciationSentence: ctx.kind === 'sentence' ? parseCtx.sentence : undefined, pronunciationContext: { readerId: adapter.id, varietyId: language.varietyId, kind: card.tokenCount > 1 ? 'phrase' : 'word' } }, actions });
       this.stampLanguage(language);
       timer.mark('popupPositioned');
       if (this.currentRange) this.watchLayout(adapter, my);
@@ -484,7 +485,8 @@ export class LookupController {
       };
       const pending: Array<Promise<void>> = [];
       // where the information came from (the "view sources" list): what the dictionary replies named, gathered as they arrive
-      let gathered: SourceLink[] = [];
+      // the analyser's own sources come first (the Open Scriptures morphology, MorphGNT, the Wiktionary tables …): a reading has a source even when no dictionary answers
+      let gathered: SourceLink[] = Object.values(this.d.analyserOf?.(card.languageId)?.sources ?? {}).map((s) => ({ label: s.label, ...(s.licence ? { licence: s.licence } : {}) }));
       const gather = (more: SourceLink[] | undefined): Partial<CardView> => {
         if (!more?.length) return {};
         gathered = mergeSources(gathered, more);

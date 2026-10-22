@@ -16,7 +16,7 @@ import { resolveLanguage } from '../language/resolve';
 import { createMemoryMetricsStore } from '../metrics';
 import { PARSER_LANGUAGES, getAnalyser, hasAnalyser, parseSelection } from '../parser';
 import { MSG, getContentChrome, type ContentChromeApi, type LookupMessage } from '../platform';
-import { createCardUI } from '../popup/card';
+import { createCardUI, type CardUI } from '../popup/card';
 import type { ActivateMessage } from '../protocol';
 import { PENDING_IDENTITY, buildEncounterEvent, createMemoryEncounterStore, type Identity } from '../store';
 import { ActiveMode } from './active';
@@ -27,6 +27,7 @@ import { createBrowserTranslationProvider, createTranslationEngine } from '../tr
 import { createLocalTranslationProvider } from '../translation/localProvider';
 import { migjeniTitleReferenceProvider } from '../translation/referenceProvider';
 
+declare const __GOLEARN_HARNESS__: boolean | undefined;
 const GLOBAL_KEY = '__goLearnExtension';
 
 /** The sentence cutter of a loaded language (its own analyser's); a language that is not loaded is cut by the adapter's default. */
@@ -35,7 +36,7 @@ const segmenterOf = (languageId: string): ((t: string) => Array<{ start: number;
   return a ? (t) => a.segmentSentences(t) : undefined;
 };
 
-interface InstalledMarker { controller: LookupController; active: ActiveMode }
+interface InstalledMarker { controller: LookupController; active: ActiveMode; /** harness build only: the card, so a loopback harness page can read it */ card?: CardUI }
 
 export async function install(chromeApi: ContentChromeApi | undefined = getContentChrome(), doc: Document = document): Promise<LookupController | undefined> {
   const w = globalThis as unknown as Record<string, InstalledMarker | undefined>;
@@ -99,7 +100,8 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
       sessionId: activeSessionId, now: new Date(),
     }),
   });
-  w[GLOBAL_KEY] = { controller, active };
+  // the harness build (loopback pages, never shipped) also exposes the card, so a harness page can read what the card says
+  w[GLOBAL_KEY] = { controller, active, ...(typeof __GOLEARN_HARNESS__ !== 'undefined' && __GOLEARN_HARNESS__ ? { card: ui } : {}) };
 
   chromeApi?.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // only this extension's own background may drive the content script

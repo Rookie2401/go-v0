@@ -31,8 +31,8 @@ The two previews were started from a Claude session and stop with it; the comman
    Settings → Hebrew text: full / vowels only / consonants only.
 2. **Biblia, Greek.** John 1: the period line says Koine and "the Attic and Homeric tables are loaded for this chapter's words (N shards
    in memory)". Tap λόγος → Variants: **Attic attested** (the Ancient entry's gloss), Koine as this text (660× in the NT), **Modern attested**
-   (the stated descendant), Homeric "no Epic-specific form", Medieval "none here". Tap ἀρχῇ, ἦν, θεόν likewise. Matthew 1: names (Ἀβραάμ)
-   have the New Testament reading only.
+   (the stated descendant), Homeric "no Epic-specific form", Medieval "none here". Tap ἀρχῇ, ἦν, θεόν likewise. Matthew 1: a name with a Wiktionary entry (Ἀβραάμ)
+   also has an Attic row; a name without one has the New Testament reading only. Checked 2026-10-22: all of this passes.
 3. **Recording.** Inside the extension's Biblia, rate a word (How well do you know it?). Then GoPractice (popup → Practise, or :5198 signed in
    with the same account): the word should appear in the Hebrew or Greek review under its period (`he-bib` / `el-koi`).
 4. **The extension on a web page.** Any Greek or Hebrew web page (Wikipedia in Greek; a Sefaria page): switch GoLearn on for the tab, select a

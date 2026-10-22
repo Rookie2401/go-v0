@@ -19,6 +19,6 @@
     }
   },
   "web_accessible_resources": [
-    { "resources": ["analysers/*.js"], "matches": ["<all_urls>"] }
+    { "resources": ["analysers/*.js", "lexicon/*"], "matches": ["<all_urls>"] }
   ]
 }

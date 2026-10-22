@@ -7,6 +7,8 @@ import { deAdapter } from '../../src/adapters/de';
 import { esAdapter } from '../../src/adapters/es';
 import { elAdapter } from '../../src/adapters/el';
 import { heAdapter } from '../../src/adapters/he';
+import { createGreekShardLoader } from '../../src/adapters/greek/shards';
+import { createHebrewShardLoader } from '../../src/adapters/hebrew/shards';
 import { hiAdapter } from '../../src/adapters/hi';
 import { laAdapter } from '../../src/adapters/la';
 import { nbAdapter } from '../../src/adapters/nb';
@@ -23,7 +25,7 @@ export function registerAllAnalysers(): void {
   registerAnalyser('th', thAdapter);
   registerAnalyser('nb', nbAdapter);
   registerAnalyser('nn', nnAdapter);
-  if (languageMeta('he')) registerAnalyser('he', heAdapter); // once the parser's language table lists Hebrew
-  if (languageMeta('el')) registerAnalyser('el', elAdapter); // once the parser's language table lists Greek
+  if (languageMeta('he')) registerAnalyser('he', heAdapter, { createShardLoader: createHebrewShardLoader }); // with the chunk's extras, as dist/analysers/he.js brings them
+  if (languageMeta('el')) registerAnalyser('el', elAdapter, { createShardLoader: createGreekShardLoader });
   if (languageMeta('la')) registerAnalyser('la', laAdapter); // once the adapter lane's parser entry exists
 }

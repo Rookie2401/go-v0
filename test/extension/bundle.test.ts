@@ -52,7 +52,8 @@ describe.skipIf(!have)('the built extension', () => {
       expect(code, id).not.toMatch(/\beval\s*\(|new Function\s*\(/);
     }
     const m = JSON.parse(read('manifest.json'));
-    expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js'], matches: ['<all_urls>'] }]);
+    // lexicon/* (2026-10-22): the sharded Hebrew and Greek form indexes the content script loads before a lookup
+    expect(m.web_accessible_resources).toEqual([{ resources: ['analysers/*.js', 'lexicon/*'], matches: ['<all_urls>'] }]);
     // every shared chunk the analysers import sits in analysers/ too, so the one pattern covers it
     for (const id of ['sq', 'es', 'de', 'hi', 'th', 'nb', 'nn']) for (const [, spec] of read(`analysers/${id}.js`).matchAll(/from\s*"(\.[^"]+)"/g)) expect(spec, id).toMatch(/^\.\/[^/]+\.js$/);
   });

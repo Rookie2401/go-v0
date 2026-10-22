@@ -17,3 +17,11 @@ Every row is a Wiktionary table row (with its table header), an alternative form
 | index size | 58.0 MB (public/lexicon/el/modern-index.json, git-ignored) |
 
 Table headers seen (top 30): (none) 24,746, perfect 136, deponent 130, imperfective 47, present 13, deponent present 10, irregular 7, deponent irregular 4, declension-2 3, imperfect present 2, irregular perfective 1, irregular present 1, imperfective irregular 1, imperfective present 1, imperfect perfective present 1, Attic declension-2 1.
+
+## Shards (2026-10-22)
+
+`npm run lexicon:shard -- --set el/modern` cuts this index into 53 shards under `public/lexicon/el/modern/` (git-ignored), 6.4 MB
+gzipped against 45.5 MB plain, largest 0.55 MB, prefixes of up to 2 bare letters (a key goes to
+the longest listed prefix of its letters; '_' holds the keys with no letter of the script). A host loads the shards of the keys it is about to
+read (src/adapters/shared/shards.ts; Biblia per chapter, the extension's content script before a lookup); a paradigm or the Variants tab
+shows what the loaded shards hold and says so.

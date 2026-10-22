@@ -237,9 +237,17 @@ export function sentencePeriod(tokens: RawToken[], base: AnalysisCandidate[][], 
   base.forEach((cands, i) => {
     if (!tokens[i].isWord || !cands.length) return;
     voters++;
-    // each period a word has a reading in gets one vote from that word (a source's confidence is not evidence of period)
-    const periods = new Set(cands.flatMap((c) => c.varieties ?? []));
-    for (const v of periods) votes[v] = (votes[v] ?? 0) + 1;
+    // each period a word has a reading in gets a vote from that word. A reading matched as written counts in full. An UNPOINTED word
+    // reaching a form through its consonants alone (points inferred) counts in full for Modern Hebrew, which is written unpointed, and
+    // half for the other periods, whose texts are pointed; so unpointed Modern text is not outvoted by the Biblical forms its letters
+    // happen to match, while a pointed word attested in two periods alike stays a tie for the declared variety to break.
+    const unpointedWord = !isPointed(tokens[i].surface);
+    const best = new Map<string, number>();
+    for (const c of cands) {
+      const inferred = c.notes?.pointing === 'inferred';
+      for (const v of c.varieties ?? []) { const w = !inferred ? 1 : unpointedWord && v === 'he-mod' ? 1 : 0.5; best.set(v, Math.max(best.get(v) ?? 0, w)); }
+    }
+    for (const [v, w] of best) votes[v] = (votes[v] ?? 0) + w;
   });
   // Biblical Aramaic is its own language: a sentence is read as Aramaic only when more words have an Aramaic reading than a Hebrew one
   const bib = votes['he-bib'] ?? 0;
@@ -255,7 +263,7 @@ export function sentencePeriod(tokens: RawToken[], base: AnalysisCandidate[][], 
     if (allPointed) return { period: 'he-bib', basis: 'the words are read in more than one period alike; the text is fully pointed, as a Biblical text is' };
     return { period: 'he-mod', basis: 'the words are read in more than one period alike; unpointed text is read as Modern Hebrew' };
   }
-  return { period: top[0] as HePeriod, basis: `${Math.round((top[1] / ranked.reduce((s, r) => s + r[1], 0)) * 100)} % of the ${voters} recognised words have a reading in ${PERIOD_LABEL(top[0])}` };
+  return { period: top[0] as HePeriod, basis: `${Math.round((top[1] / ranked.reduce((s, r) => s + r[1], 0)) * 100)} % of the weight of the ${voters} recognised words' readings is in ${PERIOD_LABEL(top[0])} (an unpointed word's consonant-only match of a pointed period weighs half)` };
 }
 
 /** Readings of the sentence's period first on every word; every reading says which period the sentence was read in. */

@@ -56,10 +56,22 @@ export class AnalyserNotLoaded extends Error {
 const loaded = new Map<string, LanguageAdapter>();
 
 /** Makes `adapter` the analyser the parser reads `languageId` with. Re-registering the same language replaces it. An unknown language is refused. */
-export function registerAnalyser(languageId: string, adapter: LanguageAdapter): void {
+export function registerAnalyser(languageId: string, adapter: LanguageAdapter, extras?: AnalyserExtras): void {
   if (!languageMeta(languageId)) throw new RangeError(`No parser for language "${languageId}".`);
   loaded.set(languageId, adapter);
+  if (extras) loadedExtras.set(languageId, extras); else loadedExtras.delete(languageId);
 }
+
+/**
+ * What an analyser chunk brings beside its adapter. A chunk is its own bundle with its own copy of the language's index store, so a
+ * sharded index must be installed through the chunk's OWN loader factory, never through the content script's copy of the module.
+ */
+export interface AnalyserExtras {
+  createShardLoader?: (src: { fetchJson(path: string): Promise<unknown>; fetchBytes?(path: string): Promise<Uint8Array> }, opts: { base: string; maxLoaded?: number }) => Promise<{ ensure(keys: Iterable<string>): Promise<{ loaded: string[]; failed: Array<[string, string]> }>; loaded(): string[] }>;
+}
+const loadedExtras = new Map<string, AnalyserExtras>();
+/** The extras an analyser chunk registered with its adapter; undefined when it brought none (or the analyser is not loaded). */
+export const analyserExtras = (languageId: string): AnalyserExtras | undefined => loadedExtras.get(languageId);
 
 /** True when the language's analyser is in memory (a language the parser does not know is never loaded). */
 export const hasAnalyser = (languageId: string): boolean => loaded.has(languageId);

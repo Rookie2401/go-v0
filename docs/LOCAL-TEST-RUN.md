@@ -37,12 +37,12 @@ The two previews were started from a Claude session and stop with it; the comman
    with the same account): the word should appear in the Hebrew or Greek review under its period (`he-bib` / `el-koi`).
 4. **The extension on a web page.** Any Greek or Hebrew web page (Wikipedia in Greek; a Sefaria page): switch GoLearn on for the tab, select a
    word → the same card. Checked 2026-10-22 on the harness pages (`packages/golearn-extension/harness/active-he.html`, `active-el.html`, served
-   from the package root with the harness build): the card, the period line, the pills and the sources are right. What the EXTENSION context
-   cannot do yet, because it carries only the compiled cores (Koine New Testament words; the commonest Biblical Hebrew words) and not the full
-   indexes that Biblia ships: a monotonic Greek sentence reads as Koine, not Modern (no Modern readings to vote with); unpointed Modern Hebrew
-   reads as Biblical for the same reason; a Homeric line (Μῆνιν ἄειδε) or a Modern word outside the core gets no reading; and the Variants rows
-   for Attic, Homeric and Modern say "index not loaded". Shipping the shards (Ancient Greek) and the Modern indexes to the extension is the
-   next piece of work; until then those four expectations hold only inside Biblia.
+   from the package root with the harness build) AFTER the full indexes were shipped to the extension (`dist/lexicon/`, 23 MB of gzip shards,
+   loaded before a lookup): a polytonic sentence reads as Koine with Attic and Modern rows in Variants; the Iliad line reads as Homeric (lemma
+   μῆνις); a monotonic sentence reads as Modern with its Attic and Koine rows; a pointed Hebrew verse reads as Biblical with its Modern row;
+   an unpointed Modern sentence reads as Modern (a consonant-only Biblical match weighs half). The first lookup on a page fetches the shards its
+   sentence needs (a few hundred kB), later ones reuse them. Known limit: a page tagged `grc` reads as Attic unless the text itself shows
+   Homeric marks; Attic prose and literary Koine are not told apart by vocabulary.
 5. **Audio.** Hebrew and Greek words play only if the device has a Hebrew/Greek voice (Windows: Settings → Time & language → Speech → add
    Hebrew and Greek voices); ancient periods use the Modern voice and the card says so.
 6. **GoTell / GoReview period targeting.** In GoPractice, with a Greek enrolment, the writing prompts in Koine (two) and the review facts per

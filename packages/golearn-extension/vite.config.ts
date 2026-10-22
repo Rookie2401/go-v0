@@ -60,6 +60,12 @@ function copyStatic(): Plugin {
       fs.copyFileSync(path.join(here, 'action/popup.html'), path.join(dist, 'action/popup.html'));
       const notices = path.join(here, '..', '..', 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(dist, 'THIRD-PARTY-NOTICES.md'));
+      // the sharded form indexes (npm run lexicon:shard): gzip shards + manifest per set, loaded by the content script before a lookup
+      for (const set of ['el/ancient', 'el/modern', 'he/biblical', 'he/modern']) {
+        const from = path.join(here, '..', '..', 'public', 'lexicon', set);
+        if (fs.existsSync(path.join(from, 'manifest.json'))) fs.cpSync(from, path.join(dist, 'lexicon', set), { recursive: true });
+        else console.warn(`[golearn] public/lexicon/${set} is not built (npm run lexicon:shard): the extension will read ${set.split('/')[0]} with its compiled core only`);
+      }
     },
   };
 }

@@ -19,3 +19,11 @@ source's reading of that word in the Bible; nothing here was analysed by this re
 | core compiled into the adapter | 441 lemmas, 6,994 forms, 7,482 readings, 67.7 % of aligned tokens, 605 kB |
 
 Tokens by part of speech (corpus majority per lemma mapped from the OSHB code): NOUN 111,847, VERB 73,667, PROPN 33,879, ADP 24,427, PART 22,578, ADJ 7,951, PRON 7,766, NUM 6,389, CONJ 6,376, SCONJ 5,802, ADV 4,297, INTJ 329, DET 1.
+
+## Shards (2026-10-22)
+
+`npm run lexicon:shard -- --set he/biblical` cuts this index into 22 shards under `public/lexicon/he/biblical/` (git-ignored), 1.4 MB
+gzipped against 4.6 MB plain, largest 0.35 MB, prefixes of up to 1 consonants (a key goes to
+the longest listed prefix of its letters; '_' holds the keys with no letter of the script). A host loads the shards of the keys it is about to
+read (src/adapters/shared/shards.ts; Biblia per chapter, the extension's content script before a lookup); a paradigm or the Variants tab
+shows what the loaded shards hold and says so.

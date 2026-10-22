@@ -75,6 +75,8 @@ export interface ControllerDeps {
    * linked in (tests, a harness without chunks). Must be idempotent; a rejection is shown to the learner as a failed load.
    */
   loadAnalyser?: (languageId: string) => Promise<void>;
+  /** Loads the language's full form indexes for this text before it is parsed (the sharded Hebrew and Greek sets); never throws. */
+  prepareLexicon?: (languageId: string, text: string) => Promise<unknown>;
   /** True when the language's analyser is already in memory (no load, no "loading" message). Absent with a `loadAnalyser` = not loaded. */
   hasAnalyser?: (languageId: string) => boolean;
   /** The dictionary spellings of a lemma in a loaded language (normalised, with the analyser's variants), sent with the gloss request because the worker does not carry that analyser. */
@@ -319,6 +321,8 @@ export class LookupController {
         kind: ctx.kind, confidence: ctx.confidence, reason: ctx.reason, sentence: ctx.sentence, selStart: ctx.selStart, selEnd: ctx.selEnd,
         direction: sel.direction, pageLanguage: sel.pageLanguage,
       };
+      // the full indexes of a sharded language (Hebrew, Greek) for this sentence, before the parse; a failure leaves the compiled core
+      if (this.d.prepareLexicon) { try { await this.d.prepareLexicon(languageId, parseCtx.sentence ?? sel.surface); } catch { /* the card says what is not loaded */ } if (!live()) return { status: 'superseded' }; }
       let card: LookupCard;
       try { card = this.d.parse({ surface: sel.surface, context: parseCtx, languageId }); } catch { return say('parser-error', MESSAGES.parserFailed); }
       card.language = language;

@@ -38,7 +38,8 @@ npm run biblia:build-ext                    # the same; npm run local:build runs
 Ancient Greek readings (2026-10-21): the Wiktionary Ancient Greek tables (Attic by default, Epic, Ionic, Koine …; 660,000 forms) are
 too large to carry whole, so `npm run el:shard-ancient` cuts them into 130 gzip shards (12 MB, `public/lexicon/el/ancient/`, git-ignored)
 and the reader fetches the shards of each chapter's words before rendering it (at most 48 shards kept; the period line says how many).
-The Variants tab then shows Attic and Homeric rows for New Testament words; a paradigm shows what the loaded shards hold.
+The Variants tab then shows Attic and Homeric rows for New Testament words; a paradigm shows what the loaded shards hold. The Modern Greek and
+Modern Hebrew tables are shards too (`lexicon/el/modern`, `lexicon/he/modern`), loaded per chapter the same way, so the Modern rows are attested.
 
 Inside the extension (2026-10-21): `npm run local:build` ends with this build, so `dist/biblia/index.html` ships with the extension and
 opens from the setup app's reader screen ("Open Biblia"), where lookups and marks reach the on-device Repository under the Hebrew or

@@ -11,6 +11,7 @@
  */
 import { bootStart } from '../boot';
 import { createAnalyserLoader } from '../analysers/urlLoader';
+import { createLexiconPreparer } from '../lexicon/prepare';
 import { createAdapters } from '../adapters';
 import { resolveLanguage } from '../language/resolve';
 import { createMemoryMetricsStore } from '../metrics';
@@ -58,6 +59,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
   const fallbackEvents = bridge ? undefined : createMemoryEncounterStore();
   const adapters = createAdapters(doc);
   const loadAnalyser = createAnalyserLoader(chromeApi);
+  const lexicon = createLexiconPreparer(chromeApi);
   const controller = new LookupController({
     doc,
     adapters,
@@ -70,6 +72,7 @@ export async function install(chromeApi: ContentChromeApi | undefined = getConte
       return [...new Set([a.normalize(lemma), ...(a.lemmaVariants?.(lemma, pos as Parameters<NonNullable<typeof a.lemmaVariants>>[1]) ?? []).map((v) => a.normalize(v))])].slice(0, 8);
     },
     loadAnalyser,
+    prepareLexicon: (languageId, text) => lexicon.prepare(languageId, text),
     hasAnalyser,
     analyserOf: getAnalyser,
     parse: parseSelection,

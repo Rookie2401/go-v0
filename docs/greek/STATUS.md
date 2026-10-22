@@ -33,8 +33,10 @@ a Modern reading. Readings of the chosen period go first; none is removed; every
 - Pronunciation is three written conventions; no voice exists for ancient Greek.
 - The kaikki Greek dictionaries are downloaded but not built as dictionary shards; the pack declares no dictionary.
 - Not done: the Perseus treebank is used for the AUDIT below but not yet as a second source inside the Attic/Homeric readings; dictionary shards.
-  Done 2026-10-21: the Ancient asset is SHARDED (`npm run el:shard-ancient`: 130 gzip shards, 12 MB; `src/adapters/greek/shards.ts` loads the
-  shards of the keys a host is about to read, LRU of 48; Biblia loads them per chapter, so its Variants tab has Attic and Homeric rows); Biblia ships as an extension page (`npm run local:build`, "Open Biblia" on the reader screen). Done since the first draft: GoTell/GoReview period targeting (P4), the Biblia reader shell (P5), and (2026-10-19)
+  Done 2026-10-21/22: the Ancient AND Modern assets are SHARDED (`npm run lexicon:shard`: el/ancient 130 shards 12 MB, el/modern 53 shards
+  6.4 MB; the shared loader src/adapters/shared/shards.ts loads the shards of the keys a host is about to read, LRU of 48, never evicting the
+  current call's); Biblia loads them per chapter and the EXTENSION loads them before a lookup (dist/lexicon/, through the analyser chunk's own
+  loader factory, since a chunk has its own copy of the index store), so a web page's monotonic Greek reads as Modern and Homer as Homeric; Biblia ships as an extension page (`npm run local:build`, "Open Biblia" on the reader screen). Done since the first draft: GoTell/GoReview period targeting (P4), the Biblia reader shell (P5), and (2026-10-19)
   the extension registration of `el`: `LANGUAGE_META` (page tags el, grc), the analyser loader and chunk (`dist/analysers/el.js`), the resolver
   (grc → Attic, or Koine with a koi / x-koine subtag; Greek script detected), the setup app's language list.
 

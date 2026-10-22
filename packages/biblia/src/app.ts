@@ -236,7 +236,14 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     const chapterNotes: string[] = [];
     let aramaicVerses = 0;
     if (book.lang === 'he') {
-      for (const v of (chapter as { verses: HeVerse[] }).verses) { const ar = verseIsAramaic(v); if (ar) aramaicVerses++; prose.append(renderHebrewVerse(info, ch, v, ar), doc.createTextNode(' ')); }
+      const verses = (chapter as { verses: HeVerse[] }).verses;
+      if (indexes.modernHe) {
+        const keys: string[] = [];
+        for (const v of verses) for (const t of heAdapter.tokenize(v.t)) if (t.isWord) keys.push(t.normalized);
+        const r = await indexes.modernHe.ensure(keys);
+        if (r.failed.length) chapterNotes.push(`${r.failed.length} of the Modern Hebrew shards this chapter needs could not be loaded (${r.failed[0][1]}); the Variants tab shows less for those words.`);
+      }
+      for (const v of verses) { const ar = verseIsAramaic(v); if (ar) aramaicVerses++; prose.append(renderHebrewVerse(info, ch, v, ar), doc.createTextNode(' ')); }
     } else {
       const verses = (chapter as { verses: GrVerse[] }).verses;
       // the Ancient Greek tables are sharded: fetch the shards this chapter's words live in, so Attic and Homeric readings are on the card
@@ -245,6 +252,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         for (const v of verses) for (const t of elAdapter.tokenize(greekVerseText(v))) if (t.isWord) keys.push(t.normalized);
         const r = await indexes.ancient.ensure(keys);
         if (r.failed.length) chapterNotes.push(`${r.failed.length} of the Ancient Greek shards this chapter needs could not be loaded (${r.failed[0][1]}); the Variants tab shows less for those words.`);
+        if (indexes.modernEl) { const m = await indexes.modernEl.ensure(keys); if (m.failed.length) chapterNotes.push(`${m.failed.length} of the Modern Greek shards this chapter needs could not be loaded (${m.failed[0][1]}).`); }
       }
       for (const v of verses) prose.append(renderGreekVerse(info, ch, v), doc.createTextNode(' '));
     }

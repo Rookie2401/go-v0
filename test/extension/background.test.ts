@@ -43,7 +43,7 @@ describe('manifest', () => {
     expect(manifest.optional_host_permissions).toEqual(['https://*/*', 'http://*/*']);
     expect(manifest.content_scripts).toBeUndefined(); // injected on a gesture only, never declared
     // the analyser chunks the content script imports on demand (German, Hindi, Thai, Spanish), and nothing else
-    expect(manifest.web_accessible_resources).toEqual([{ resources: ['analysers/*.js'], matches: ['<all_urls>'] }]);
+    expect(manifest.web_accessible_resources).toEqual([{ resources: ['analysers/*.js', 'lexicon/*'], matches: ['<all_urls>'] }]); // lexicon/*: the sharded Hebrew and Greek indexes (2026-10-22)
     expect(manifest.externally_connectable).toBeUndefined();
   });
   it('has the Alt+Shift+G command, an action popup and a service worker', () => {

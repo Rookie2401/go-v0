@@ -15,3 +15,11 @@ Every row is a Wiktionary inflection-table row or a "form of" entry; its labels 
 | lemmas | 14,456 |
 | entries whose every sense is labelled Biblical / Mishnaic / Medieval / Modern / Aramaic | 121 / 0 / 9 / 69 / 0 |
 | index size | 18.7 MB (public/lexicon/he/modern-index.json, git-ignored) |
+
+## Shards (2026-10-22)
+
+`npm run lexicon:shard -- --set he/modern` cuts this index into 23 shards under `public/lexicon/he/modern/` (git-ignored), 2.7 MB
+gzipped against 15.6 MB plain, largest 0.37 MB, prefixes of up to 1 consonants (a key goes to
+the longest listed prefix of its letters; '_' holds the keys with no letter of the script). A host loads the shards of the keys it is about to
+read (src/adapters/shared/shards.ts; Biblia per chapter, the extension's content script before a lookup); a paradigm or the Variants tab
+shows what the loaded shards hold and says so.

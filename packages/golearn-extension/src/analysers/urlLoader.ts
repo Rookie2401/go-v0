@@ -7,7 +7,7 @@
  * Idempotent; a load in flight is shared; a failed import rejects and is not remembered, so the next lookup tries again.
  */
 import type { LanguageAdapter } from '../../../../src/core';
-import { hasAnalyser, registerAnalyser } from '../parser/registry';
+import { hasAnalyser, registerAnalyser, type AnalyserExtras } from '../parser/registry';
 
 /** The part of the extension API this needs. */
 export interface UrlLoaderApi { runtime: { getURL?(path: string): string } }
@@ -27,9 +27,9 @@ export function createAnalyserLoader(chromeApi: UrlLoaderApi | undefined, base: 
     let p = inflight.get(languageId);
     if (!p) {
       p = (async () => {
-        const mod = (await import(/* @vite-ignore */ urlOf(languageId))) as { adapter?: LanguageAdapter };
+        const mod = (await import(/* @vite-ignore */ urlOf(languageId))) as { adapter?: LanguageAdapter; createShardLoader?: AnalyserExtras['createShardLoader'] };
         if (!mod.adapter) throw new Error(`the ${languageId} analyser chunk has no adapter`);
-        registerAnalyser(languageId, mod.adapter);
+        registerAnalyser(languageId, mod.adapter, mod.createShardLoader ? { createShardLoader: mod.createShardLoader } : undefined);
       })().finally(() => { inflight.delete(languageId); });
       inflight.set(languageId, p);
     }

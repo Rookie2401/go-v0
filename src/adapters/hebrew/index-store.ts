@@ -34,6 +34,8 @@ export interface HebrewFormIndex {
   codes: 'oshb' | 'kaikki-tags';
   /** The period variety every reading of this index belongs to (a row may override it: see `aramaic`). */
   period: 'he-bib' | 'he-mod';
+  /** A SHARD of a larger index (scripts/lexicon-shard.mts): the prefix of the consonants its keys share; shards of one id are installed side by side. */
+  shard?: string;
   source: { label: string; licence: string; url: string; retrieved?: string; note?: string };
   built: string;
   lemmas: Record<string, HeLemmaRow>;
@@ -54,17 +56,19 @@ export interface HeIndexHit {
 }
 
 const INSTALLED = new Map<string, HebrewFormIndex>();
+const storeKey = (id: string, shard?: string): string => (shard ? `${id}#${shard}` : id);
 
-/** Install (or replace) an index. The core index is installed by the adapter module itself; a host adds the full assets. */
+/** Install (or replace) an index, or one shard of one (keyed by id and shard, so the shards of an id sit side by side). The core index is installed by the adapter module itself; a host adds the full assets. */
 export function installHebrewIndex(idx: HebrewFormIndex): void {
-  INSTALLED.set(idx.id, idx);
+  INSTALLED.set(storeKey(idx.id, idx.shard), idx);
 }
+export function uninstallHebrewIndex(id: string, shard?: string): boolean { return INSTALLED.delete(storeKey(id, shard)); }
 export function installedHebrewIndexes(): HebrewFormIndex[] {
   return [...INSTALLED.values()];
 }
-/** For tests. */
-export function resetHebrewIndexes(keep?: (id: string) => boolean): void {
-  for (const id of [...INSTALLED.keys()]) if (!keep?.(id)) INSTALLED.delete(id);
+/** For tests: forgets every installed index (or shard) for which `keep(id, shard)` is not true. */
+export function resetHebrewIndexes(keep?: (id: string, shard?: string) => boolean): void {
+  for (const [k, idx] of [...INSTALLED.entries()]) if (!keep?.(idx.id, idx.shard)) INSTALLED.delete(k);
 }
 
 /**

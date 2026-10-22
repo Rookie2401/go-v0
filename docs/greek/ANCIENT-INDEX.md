@@ -20,8 +20,8 @@ Table headers seen (top 30): Attic declension-2 8,424, Attic declension-3 4,385,
 
 ## Shards (2026-10-22)
 
-`npm run el:shard-ancient` cuts this index into 130 shards under `public/lexicon/el/ancient/` (git-ignored), 12.2 MB
-gzipped against 102.5 MB plain, largest 0.47 MB, prefixes of up to 2 bare letters (a key goes to the longest
-listed prefix of its diacritic-free letters; '_' holds the keys with no Greek letter). A host loads the shards of the keys it is about to read
-(src/adapters/greek/shards.ts: Biblia does so per chapter, keeping at most 48 shards in memory); a paradigm or the Variants tab shows what
-the loaded shards hold and says so.
+`npm run lexicon:shard -- --set el/ancient` cuts this index into 130 shards under `public/lexicon/el/ancient/` (git-ignored), 12.2 MB
+gzipped against 102.5 MB plain, largest 0.47 MB, prefixes of up to 2 bare letters (a key goes to
+the longest listed prefix of its letters; '_' holds the keys with no letter of the script). A host loads the shards of the keys it is about to
+read (src/adapters/shared/shards.ts; Biblia per chapter, the extension's content script before a lookup); a paradigm or the Variants tab
+shows what the loaded shards hold and says so.

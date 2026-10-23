@@ -1,0 +1,1 @@
+import{n as e}from"./index-DmROXSvt.js";export{e as adapter};

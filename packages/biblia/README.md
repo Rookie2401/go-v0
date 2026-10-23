@@ -32,7 +32,7 @@ npm run biblia:import                       # copy the texts from the Biblia app
 npx vite -c packages/biblia/vite.config.ts  # development server (port 5199)
 vite build -c packages/biblia/vite.config.ts                   # packages/biblia/dist
 vite build -c packages/biblia/vite.config.ts --mode extension  # packages/golearn-extension/dist/biblia/ (after npm run ext:build)
-npm run biblia:build-ext                    # the same; npm run local:build runs it last, so the packaged extension carries Biblia
+npm run biblia:build-ext                    # the same; since 2026-10-23 npm run local:build no longer runs it (the extension links to the hosted edition instead)
 BIBLIA_SERVICE_URL=https://repo.golearn-global-languages.com npm run biblia:build-standalone   # packages/biblia/dist-standalone: the installable web app
 ```
 
@@ -51,8 +51,12 @@ and the reader fetches the shards of each chapter's words before rendering it (a
 The Variants tab then shows Attic and Homeric rows for New Testament words; a paradigm shows what the loaded shards hold. The Modern Greek and
 Modern Hebrew tables are shards too (`lexicon/el/modern`, `lexicon/he/modern`), loaded per chapter the same way, so the Modern rows are attested.
 
-Inside the extension (2026-10-21): `npm run local:build` ends with this build, so `dist/biblia/index.html` ships with the extension and
-opens from the setup app's reader screen ("Open Biblia"), where lookups and marks reach the on-device Repository under the Hebrew or
-Greek enrolment. The page carries the texts (about 20 MB) and the Biblical and Koine form indexes (about 7 MB); nothing is fetched.
+Inside the extension (2026-10-21 to 2026-10-23): `npm run local:build` used to end with the `--mode extension` build, so `dist/biblia/index.html`
+shipped with the extension and opened from the setup app's reader screen, recording to the on-device Repository. That put 49 MB of
+Scripture text inside the extension (test/audit/rights.dist objects to Scripture in the extension dist), so since 2026-10-23 the extension no
+longer carries it: the reader screen's "Open Biblia" opens the hosted edition (`bibliaUrl` in `packages/golearn-extension/app/config.json`,
+https://rookie2401.github.io/biblia/, published that day), where the learner signs in with the same GoLearn account. The `--mode extension`
+build and the `'extension'` recorder mode still exist and work when built by hand; the GoReview iPhone app keeps its own bundled copy
+(`BIBLIA_OUT`, recorder mode `'app'`).
 
 Tests: `npx vitest run test/biblia`.

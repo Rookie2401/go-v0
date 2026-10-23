@@ -9,6 +9,22 @@ import type { View } from './view';
 
 export const EXTENSION_FOLDER = 'packages/golearn-extension/dist';
 
+/**
+ * Biblia (2026-10-23): the Hebrew Bible and the Greek New Testament, read with the same card, is its own installable app at the hosted
+ * address named in config.json (`bibliaUrl`; nothing is linked when the config names none). It uses the same GoLearn account: what is looked
+ * up and marked there is recorded under Hebrew or Greek and reaches GoReview and this extension's page marks. It was a page inside the
+ * extension from 2026-10-21 to 2026-10-23; that put 49 MB of Scripture text inside the extension (test/audit/rights.dist), so it moved out.
+ */
+function bibliaCard(ctx: AppContext): HTMLElement {
+  const url = ctx.deps.config.bibliaUrl;
+  return h('section', { class: 'card', id: 'biblia' },
+    h('h2', {}, 'Biblia: the Hebrew Bible and the Greek New Testament'),
+    p('The Scriptures in their own languages, read with the same card as any page: every word parsed in the period of its text (Biblical Hebrew, Biblical Aramaic, Koine Greek), with the Variants tab across the periods. Biblia is its own app; sign in there with this same account and your lookups and marks are recorded under Hebrew or Greek, so they reach GoReview and the marks on the pages you read here.'),
+    url
+      ? h('p', {}, h('a', { href: url, id: 'biblia-link', target: '_blank', rel: 'noopener' }, 'Open Biblia'), ' (opens in a new tab; it can be added to the home screen of a phone)')
+      : p('This build names no Biblia address (config.json bibliaUrl).', 'muted'));
+}
+
 export async function render(el: HTMLElement, ctx: AppContext, _view: View): Promise<void> {
   const chrome = ctx.deps.chrome;
   if (chrome) {
@@ -23,12 +39,9 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
           'Or select a word and right-click: “Look up with GoLearn”.',
           'Nothing is read until you do one of these, and it stops when you leave the page.',
         ])),
-      // Biblia (2026-10-21): the Hebrew Bible and the Greek New Testament as a page of the extension (packages/biblia, built by npm run local:build)
-      h('section', { class: 'card', id: 'biblia' },
-        h('h2', {}, 'Biblia: the Hebrew Bible and the Greek New Testament'),
-        p('The Scriptures in their own languages, read with the same card as any page: every word parsed in the period of its text (Biblical Hebrew, Biblical Aramaic, Koine Greek), with the Variants tab across the periods. Lookups and marks are recorded here, under Hebrew or Greek, so they reach GoReview.'),
-        h('p', {}, h('a', { href: chrome.runtime.getURL?.('biblia/index.html') ?? '../biblia/index.html', id: 'biblia-link' }, 'Open Biblia')),
-        p('Choose Hebrew or Greek on the Languages page first; the texts are inside the extension, nothing is fetched.', 'muted')),
+      // Biblia (2026-10-23): its own installable app at the hosted address (config.json bibliaUrl); it was a page of the extension from
+      // 2026-10-21 to 2026-10-23, which put 49 MB of Scripture text inside the extension (test/audit/rights.dist). Same account, same card.
+      bibliaCard(ctx),
     ]);
   } else {
     const note = h('p', { class: 'status', role: 'status', 'aria-live': 'polite', id: 'reader-note' });
@@ -42,9 +55,9 @@ export async function render(el: HTMLElement, ctx: AppContext, _view: View): Pro
           h('li', {}, 'Pin the GoLearn button to the toolbar so you can switch it on for a tab. This page cannot check whether the extension is installed; the extension’s own settings page (the same screens as these) shows “installed” once it is.'),
         ),
         p('Safari and Firefox are not supported yet.', 'muted'),
-        p('Biblia, the Hebrew Bible and the Greek New Testament read with GoLearn, is a page of the extension; it opens from this screen once the extension is installed.', 'muted'),
         h('p', {}, button('I have installed it', async () => { await ctx.state.patchProgress({ readerAck: true }); ctx.changed(); note.textContent = 'Noted.'; }, { id: 'reader-ack' })),
         note),
+      bibliaCard(ctx),
     ]);
   }
 

@@ -36,8 +36,9 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
     expect(guide.textContent).toContain('Chrome Web Store');
     expect(guide.textContent).toMatch(/cannot check whether the extension is installed/);
     expect(rig.root.querySelector('#reader-installed')).toBeNull();
-    expect(rig.root.querySelector('#biblia-link')).toBeNull(); // Biblia is a page of the extension: named on the web, not linked
-    expect(guide.textContent).toContain('Biblia');
+    // Biblia (2026-10-23): its own hosted app, shown on the web too; this rig's config names no address, so the card says so and links nothing
+    expect(rig.q('#biblia').textContent).toContain('names no Biblia address');
+    expect(rig.root.querySelector('#biblia-link')).toBeNull();
     // acknowledging is remembered, because the page cannot verify it; it is no part of setup
     rig.q('#reader-ack').click();
     await until(() => rig.q('#reader-note').textContent === 'Noted.');
@@ -45,7 +46,7 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
   });
 
   it('in the extension: installed, its version, and how it is switched on', async () => {
-    const rig = await makeRig({ extension: true });
+    const rig = await makeRig({ extension: true, config: { bibliaUrl: 'https://rookie2401.github.io/biblia/' } });
     await rig.go('reader');
     expect(rig.q('#ext-version').textContent).toBe(`Installed, version ${rig.chrome!.runtime.getManifest!().version}.`);
     const text = rig.q('#reader-installed').textContent!;
@@ -53,11 +54,15 @@ describe('How GoLearn reads pages (the reader integration, an advanced screen)',
     expect(text).toContain('Alt+Shift+G');
     expect(text).toContain('right-click');
     expect(rig.root.querySelector('#reader-install')).toBeNull();
-    // Biblia (2026-10-21): a page of the extension, linked from here; recorded under Hebrew / Greek
+    // Biblia (2026-10-23): its own hosted app on the same account (config.json bibliaUrl), linked in a new tab; no longer a page inside the extension
     const biblia = rig.q('#biblia');
     expect(biblia.textContent).toContain('Hebrew Bible and the Greek New Testament');
     expect(biblia.textContent).toContain('GoReview');
-    expect(rig.q<HTMLAnchorElement>('#biblia-link').getAttribute('href')).toMatch('biblia/index.html');
+    const link = rig.q<HTMLAnchorElement>('#biblia-link');
+    expect(link.getAttribute('href')).toBe('https://rookie2401.github.io/biblia/');
+    expect(link.getAttribute('target')).toBe('_blank');
+    expect(link.getAttribute('rel')).toBe('noopener');
+    expect(biblia.textContent).not.toContain('biblia/index.html');
   });
 
   it('the permissions it explains are exactly the ones the manifest declares', () => {

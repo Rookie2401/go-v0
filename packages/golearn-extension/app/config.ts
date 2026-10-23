@@ -11,6 +11,8 @@ export interface AppConfig {
   assetBaseUrl?: string;
   /** A hosted copy of `dict/<language>/` (the project’s GitHub Pages site), tried last when neither the learner’s address nor the app’s own folder has the language. */
   dictionaryFallbackUrl?: string;
+  /** The hosted Biblia edition (2026-10-23: rookie2401.github.io/biblia), its own installable app on the same GoLearn account; https only. The reader screen links there. */
+  bibliaUrl?: string;
 }
 
 export type UrlCheck = { ok: true; url: string } | { ok: false; message: string };
@@ -44,6 +46,7 @@ export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): 
     if (typeof j.serviceUrl === 'string' && validateServiceUrl(j.serviceUrl).ok) out.serviceUrl = (validateServiceUrl(j.serviceUrl) as { url: string }).url;
     if (typeof j.assetBaseUrl === 'string' && j.assetBaseUrl) out.assetBaseUrl = j.assetBaseUrl;
     if (typeof j.dictionaryFallbackUrl === 'string') { const c = validateServiceUrl(j.dictionaryFallbackUrl); if (c.ok) out.dictionaryFallbackUrl = c.url; }
+    if (typeof j.bibliaUrl === 'string') { const c = validateServiceUrl(j.bibliaUrl); if (c.ok && c.url.startsWith('https://')) out.bibliaUrl = c.url + '/'; }
     return out;
   } catch { return {}; }
 }

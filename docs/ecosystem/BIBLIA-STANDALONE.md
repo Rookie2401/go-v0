@@ -63,7 +63,9 @@ git fetch origin
 git worktree add -B gh-pages C:\Users\CJWal\dev\biblia-pages origin/gh-pages
 cd C:\Users\CJWal\dev\biblia-pages
 
-# make the branch exactly dist-standalone (robocopy /MIR deletes what is not in the source; .git and .nojekyll are protected)
+# make the branch exactly dist-standalone (robocopy /MIR deletes what is not in the source). In a WORKTREE `.git` is a FILE (the
+# pointer to the main repository), so it must be excluded with /XF as well as /XD; dropping it from /XF on 2026-10-23 deleted the
+# pointer and git stopped recognising the folder (recovered by writing "gitdir: C:/Users/CJWal/dev/biblia-v0/.git/worktrees/biblia-pages" back).
 robocopy C:\Users\CJWal\dev\go-v0\packages\biblia\dist-standalone . /MIR /XD .git /XF .git .nojekyll
 # robocopy exit codes 0-7 are success
 
@@ -141,4 +143,16 @@ out returns the signed-out notice and removes every level mark and the legend. T
 pane (it never can on that host); its rules are exercised by `node --check` and the build test only.
 
 **Publish build (2026-10-22):** `BIBLIA_SERVICE_URL=https://repo.golearn-global-languages.com npm run biblia:build-standalone` →
-`dist-standalone` 49 MB, `config.json` with the https address, `sw.js` `BUILD_ID bc49b2116c8a`. Waiting for the owner's push.
+`dist-standalone` 49 MB, `config.json` with the https address, `sw.js` `BUILD_ID bc49b2116c8a`.
+
+**Published 2026-10-23** (on the owner's instruction, by this session): `gh-pages` of `Rookie2401/biblia` moved from `5b3604a0` (the old
+app) to `16904713` (600 files changed). Checked on the live site right after: `<meta name="biblia-edition" content="standalone">`, the
+manifest link, `config.json` with the https service address, `sw.js` `BUILD_ID bc49b2116c8a`, `data/he/Gen.json` 200 (924,101 bytes).
+Not checked: a phone's add-to-home-screen and a returning visitor's worker replacement.
+
+**GoLearn points here (2026-10-23):** `packages/golearn-extension/app/config.json` gained `bibliaUrl`
+(`https://rookie2401.github.io/biblia/`; `app/config.ts` validates it, https only); the setup app's reader screen shows the Biblia card on
+the web and in the extension with "Open Biblia" opening that address in a new tab (`app/screens/reader.ts`); `npm run local:build` no
+longer runs `biblia:build-ext`, so the extension's dist carries no Biblia page or texts any more (its rights audit no longer finds
+Scripture there; the Hebrew / Greek lexicon shards and the Latin sample text it still objects to belong to other lanes). The GoReview
+iPhone app keeps its own bundled Biblia (`BIBLIA_OUT`, recorder mode `'app'`).

@@ -3,7 +3,7 @@
  * resources, built by npm run lexicon:shard and copied by ext:build) are loaded on demand BEFORE a lookup is parsed, so the card
  * reads the selection with the same sources Biblia has (Attic and Homeric readings, Modern Hebrew and Greek, the whole Tanakh),
  * not the compiled core alone. `prepare(languageId, text)` fetches the shards the text's words live in; a failure is remembered
- * for that set and reported once, and the lookup goes on with what is installed (the card's Variants rows say "not loaded").
+ * for that set (`unavailable()`), and the lookup goes on with what is installed (the card's Variants rows say "not loaded"); nothing is logged.
  *
  * Where the files are read from: the extension's own files (`chrome.runtime.getURL`), or, on a harness page with no
  * `chrome.runtime`, `/dist/lexicon/…` on the page's origin (the same rule as the analyser chunks, analysers/urlLoader.ts).
@@ -40,7 +40,8 @@ export function createLexiconPreparer(chromeApi: UrlLoaderApi | undefined, fetch
     if (!p) {
       // the analyser chunk's own factory installs into the chunk's index store; the src factories serve only an analyser registered from src (tests)
       const make = analyserExtras(set.slice(0, 2))?.createShardLoader ?? (set.startsWith('el/') ? createGreekShardLoader : createHebrewShardLoader);
-      p = make(source, { base: set, maxLoaded }).then((l) => l as ShardLoader, (e) => { unavailable.add(set); console.warn(`[golearn] the ${set} index is not available in this build (${e instanceof Error ? e.message : String(e)}); the compiled core is used`); return undefined; });
+      // the content script logs nothing (test/audit/security.bundle.test.ts): a missing set is remembered here and shows on the card as "not loaded"
+      p = make(source, { base: set, maxLoaded }).then((l) => l as ShardLoader, () => { unavailable.add(set); return undefined; });
       loaders.set(set, p);
     }
     return p;

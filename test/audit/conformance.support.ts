@@ -220,6 +220,7 @@ export const SALVAGE_ALLOW_LIST: ReadonlyArray<{ prefix: string; status: 'salvag
   { prefix: 'src/adapters/es.ts', status: 'salvaged', why: 'Spanish analyser (installable at a minimal level)' },
   { prefix: 'src/adapters/spanish/', status: 'salvaged', why: 'Spanish lexicon and rules' },
   { prefix: 'src/adapters/shared.ts', status: 'salvaged', why: 'language-agnostic tokenizer, lexicon helpers and phrase matcher' },
+  { prefix: 'src/adapters/shared/', status: 'salvaged', why: 'language-agnostic sharded-index loader (prefix shards, gzip inflate, LRU) used by the Hebrew and Greek adapters' },
   { prefix: 'src/adapters/index.ts', status: 'flagged', why: 'registry that names every course adapter' },
   { prefix: 'src/adapters/de.ts', status: 'salvaged', why: 'German analyser' },
   { prefix: 'src/adapters/german/', status: 'salvaged', why: 'German lexicon and rules' },

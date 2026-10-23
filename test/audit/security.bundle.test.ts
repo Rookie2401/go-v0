@@ -40,9 +40,11 @@ describe('manifest (source)', () => {
     for (const key of ['content_scripts', 'externally_connectable', 'content_security_policy', 'update_url', 'key', 'sandbox', 'declarative_net_request', 'devtools_page', 'chrome_url_overrides', 'incognito', 'oauth2', 'omnibox', 'nacl_modules', 'storage', 'file_browser_handlers', 'browser_specific_settings']) {
       expect(manifest[key], key).toBeUndefined();
     }
-    // the one page-visible resource: the analyser chunks the content script imports on demand (German, Hindi, Thai, Spanish). They are code with no
-    // network call (bundle.test.ts), readable by any page because the script is injected, per gesture, on any reading site. Nothing else is exposed.
-    expect(manifest.web_accessible_resources).toEqual([{ resources: ['analysers/*.js'], matches: ['<all_urls>'] }]);
+    // the page-visible resources: the analyser chunks the content script imports on demand (German, Hindi, Thai, Spanish, Latin, Hebrew, Greek) and,
+    // since 2026-10-22, the sharded Hebrew and Greek form indexes under lexicon/ (gzip JSON built from Open Scriptures, MorphGNT and Wiktionary tables:
+    // public dictionary data, no code, no learner data) that the content script fetches through chrome.runtime.getURL before a lookup. They are
+    // readable by any page because the script is injected, per gesture, on any reading site; both expose the extension's presence and nothing else.
+    expect(manifest.web_accessible_resources).toEqual([{ resources: ['analysers/*.js', 'lexicon/*'], matches: ['<all_urls>'] }]);
     const { web_accessible_resources: _exposed, ...rest } = manifest;
     expect(JSON.stringify(rest)).not.toMatch(/unsafe-eval|unsafe-inline|<all_urls>|\*:\/\//);
   });
@@ -61,7 +63,10 @@ describe.skipIf(!have)('the built extension', () => {
 
   it('the content script can do nothing but run in the page and send messages: no network, no web storage, no extension storage, no credential, no dynamic code, no page channel', () => {
     const code = read('content.js');
+    // its only fetches are the extension's own packaged files (analyser chunks, lexicon shards) by chrome.runtime.getURL, through an injected fetcher
+    // (lexicon/prepare.ts); the regexes below hold because no bundle code calls fetch() by name and no address is named
     expect(code).not.toMatch(NETWORK);
+    expect(code).toMatch(/runtime.getURL/);
     expect(code).not.toMatch(WEB_STORAGE);
     expect(code).not.toMatch(EXT_STORAGE);
     expect(code).not.toMatch(CREDENTIAL);

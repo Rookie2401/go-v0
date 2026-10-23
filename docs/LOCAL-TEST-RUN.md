@@ -1,4 +1,4 @@
-# Running the whole GoLearn system locally, and what to test (2026-10-21, updated 2026-10-22)
+# Running the whole GoLearn system locally, and what to test (2026-10-21, updated 2026-10-23)
 
 Everything below is on this PC; nothing needs the network except the phone's own sync through the tunnel.
 
@@ -8,7 +8,9 @@ Everything below is on this PC; nothing needs the network except the phone's own
 |---|---|---|
 | Repository service (accounts, enrolments, events, sync) | http://127.0.0.1:8790 (health: /health) | Scheduled Task `GoRepositoryService`, starts with Windows, restarts itself; log `data/local-repository/service.log` |
 | Cloudflare tunnel (the phone's way in) | https://repo.golearn-global-languages.com | Windows service `cloudflared`; blocked from the laptop's own Masters-WiFi network (test from the phone on cellular) |
-| GoLearn extension (reader card, setup app, GoPractice page, **Biblia page**) | `packages/golearn-extension/dist` | load unpacked (below) |
+| GoLearn extension (reader card, setup app, GoPractice page; since 2026-10-23 **no Biblia page**: Open Biblia opens the hosted app) | `packages/golearn-extension/dist` | load unpacked (below) |
+| Biblia, hosted edition (installable, records to the public service when signed in; `docs/ecosystem/BIBLIA-STANDALONE.md`) | https://rookie2401.github.io/biblia/ | published by the owner from `packages/biblia/dist-standalone`; on this PC's Masters-WiFi the public service address is blocked, so here it reads but cannot record |
+| Biblia, standalone edition served locally against the local service | http://localhost:4199 | `npm run biblia:build-standalone` then `npx vite preview --outDir packages/biblia/dist-standalone --port 4199` (localhost, so its service worker can register) |
 | Biblia, standalone (reader only: nothing is recorded; carries the Biblical Hebrew and Koine indexes whole and the Ancient Greek, Modern Greek and Modern Hebrew shards) | http://127.0.0.1:5199 | `npx vite preview -c packages/biblia/vite.config.ts --port 5199` over `packages/biblia/dist` |
 | GoPractice, web copy (needs an account; points at the local service) | http://127.0.0.1:5198 | `npx vite preview -c packages/gopractice/vite.config.ts --port 5198` over `packages/gopractice/dist` |
 
@@ -20,8 +22,10 @@ The two previews were started from a Claude session and stop with it; the comman
 1. Chrome → `chrome://extensions` → Developer mode → **Load unpacked** → `C:\Users\CJWal\dev\go-v0\packages\golearn-extension\dist`.
 2. Pin the GoLearn button. Open **GoLearn setup** (popup button). Choose languages: for this round take **Hebrew** and **Greek** (both are
    experimental packs) beside Albanian or Spanish. Create a local account or sign in; the service address is `http://127.0.0.1:8790`.
-3. Settings → *How GoLearn reads pages* → **Open Biblia**. (Biblia inside the extension records lookups and marks under the Hebrew or
-   Greek enrolment; the standalone copy on :5199 records nothing and says so.)
+3. Settings → *How GoLearn reads pages* → **Open Biblia** opens https://rookie2401.github.io/biblia/ in a new tab. Sign in there with the same
+   GoLearn account; its lookups and ratings are then recorded under the Hebrew or Greek enrolment through the public service (from this PC's
+   network that address is blocked, so test the recording from the phone or another network, or use the local :4199 copy against
+   `http://127.0.0.1:8790`). The reader-only copy on :5199 records nothing and says so.
 
 ## What to test, in order
 
@@ -34,8 +38,10 @@ The two previews were started from a Claude session and stop with it; the comman
    in memory)". Tap λόγος → Variants: **Attic attested** (the Ancient entry's gloss), Koine as this text (660× in the NT), **Modern attested**
    (the stated descendant), Homeric "no Epic-specific form", Medieval "none here". Tap ἀρχῇ, ἦν, θεόν likewise. Matthew 1: a name with a Wiktionary entry (Ἀβραάμ)
    also has an Attic row; a name without one has the New Testament reading only. Checked 2026-10-22: all of this passes.
-3. **Recording.** Inside the extension's Biblia, rate a word (How well do you know it?). Then GoPractice (popup → Practise, or :5198 signed in
-   with the same account): the word should appear in the Hebrew or Greek review under its period (`he-bib` / `el-koi`).
+3. **Recording.** In the hosted Biblia (or the :4199 copy), signed in, rate a word (How well do you know it?). Then GoPractice (popup → Practise, or
+   :5198 signed in with the same account): the word should appear in the Hebrew or Greek review under its period (`he-bib` / `el-koi`).
+   The service must allow the page's origin (https://rookie2401.github.io) in its CORS settings for the hosted edition to record; if the
+   browser console shows a CORS error on the service calls, that setting is missing (service side, not the build).
 4. **The extension on a web page.** Any Greek or Hebrew web page (Wikipedia in Greek; a Sefaria page): switch GoLearn on for the tab, select a
    word → the same card. Checked 2026-10-22 on the harness pages (`packages/golearn-extension/harness/active-he.html`, `active-el.html`, served
    from the package root with the harness build) AFTER the full indexes were shipped to the extension (`dist/lexicon/`, 23 MB of gzip shards,

@@ -58,6 +58,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       return;
     }
     const id = model.identity;
+    const bibliaLink = ctx.deps.links?.biblia;
     const [holdOut, saved, resumable, vocab] = await Promise.all([
       holdOutOf(ctx, id.learnerId, id.languageId),
       listSavedDecks(ctx, id.learnerId, id.languageId, id.varietyId),
@@ -69,7 +70,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (!view.alive()) return;
     clear(root);
     root.setAttribute('lang', 'en');
-    append(root, [tellEntry(), deckEntry(model, deck, resumable[0]?.sessionId), previousEntry(saved.length), vocabEntry(Math.max(words, 0)), status]);
+    append(root, [tellEntry(), deckEntry(model, deck, resumable[0]?.sessionId), previousEntry(saved.length), vocabEntry(Math.max(words, 0)), ...(bibliaLink ? [bibliaEntry(bibliaLink)] : []), status]);
   }
 
   /** GoTell: of its own hierarchy, not pedagogically related to what follows; set apart above a rule. */
@@ -79,6 +80,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
         h('span', { class: 'entry-title' }, 'GoTell'), h('span', { class: 'entry-kicker' }, 'Write and be corrected')));
   }
 
+  /** Biblia, when it ships beside this app (the iPhone edition, the extension): the Hebrew Bible and the Greek New Testament read with GoLearn, recorded into this account. */
+  function bibliaEntry(href: string): HTMLElement {
+    return h('section', { class: 'entry', 'data-entry': 'biblia' },
+      h('a', { class: 'entry-link', href, id: 'entry-biblia' },
+        h('span', { class: 'entry-title' }, 'Biblia'), h('span', { class: 'entry-kicker' }, 'The Hebrew Bible and the Greek New Testament, read with GoLearn')));
+  }
   function previousEntry(count: number): HTMLElement {
     return h('section', { class: 'entry', 'data-entry': 'previous' },
       h('a', { class: 'entry-link', href: '#/review/decks', id: 'entry-previous' },

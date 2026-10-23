@@ -27,6 +27,8 @@ export interface BibliaDeps {
   source: DataSource;
   recorder: Recorder;
   storage?: Storage;
+  /** Where "GoReview" at the top leads when Biblia is a page of the GoReview app (the iPhone edition); absent elsewhere. */
+  backUrl?: string;
   now(): Date;
 }
 
@@ -80,7 +82,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   const notices: string[] = [...analyserNotes, ...indexes.notes, ...(deps.recorder.mode === 'none' && deps.recorder.reason ? [deps.recorder.reason] : [])];
 
   function topbar(title: string, crumb?: string): HTMLElement {
-    return h('div', { class: 'topbar' }, h('a', { href: '#/', class: 'crumb' }, 'Biblia'), crumb ? h('span', { class: 'crumb' }, `· ${crumb}`) : null, h('h1', {}, title), h('a', { href: '#/settings' }, 'Settings'));
+    return h('div', { class: 'topbar' }, deps.backUrl ? h('a', { href: deps.backUrl, class: 'crumb back' }, '← GoReview') : null, h('a', { href: '#/', class: 'crumb' }, 'Biblia'), crumb ? h('span', { class: 'crumb' }, `· ${crumb}`) : null, h('h1', {}, title), h('a', { href: '#/settings' }, 'Settings'));
   }
 
   // ── library ──
@@ -275,7 +277,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     }
     box.append(group);
     box.append(h('p', { class: 'notice' }, 'The Hebrew analyser always reads the full Masoretic text, whatever is displayed; the display only hides marks.'));
-    box.append(h('p', { class: 'notice' }, deps.recorder.mode === 'extension' ? 'Your lookups and marks are recorded in the GoLearn extension’s on-device Repository, under a Hebrew or Greek enrolment whose variety is the period of the text (Biblical Hebrew, Biblical Aramaic, Koine Greek); GoReview reads them from there.' : (deps.recorder.reason ?? 'Nothing is recorded here.')));
+    box.append(h('p', { class: 'notice' }, deps.recorder.mode === 'app' ? 'Your lookups and marks are recorded in your GoReview account, under a Hebrew or Greek enrolment whose variety is the period of the text; they reach your review on this phone and everywhere you sign in.' : deps.recorder.mode === 'extension' ? 'Your lookups and marks are recorded in the GoLearn extension’s on-device Repository, under a Hebrew or Greek enrolment whose variety is the period of the text (Biblical Hebrew, Biblical Aramaic, Koine Greek); GoReview reads them from there.' : (deps.recorder.reason ?? 'Nothing is recorded here.')));
     return box;
   }
   function renderSources(): HTMLElement {

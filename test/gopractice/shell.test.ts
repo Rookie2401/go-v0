@@ -69,6 +69,15 @@ describe('the service address', () => {
     const badConfig = (async () => new Response(JSON.stringify({ speechProxyBase: '/api/speech' }), { status: 200 })) as unknown as typeof fetch;
     await expect(loadConfig(badConfig)).resolves.not.toHaveProperty('speechProxyBase');
   });
+
+  it('accepts a Biblia link only as a relative page beside the app or an https address (the iPhone edition ships "./biblia/index.html")', async () => {
+    const cfg = (j: unknown) => (async () => new Response(JSON.stringify(j), { status: 200 })) as unknown as typeof fetch;
+    await expect(loadConfig(cfg({ bibliaUrl: './biblia/index.html' }))).resolves.toMatchObject({ bibliaUrl: './biblia/index.html' });
+    await expect(loadConfig(cfg({ bibliaUrl: 'https://example.org/biblia/' }))).resolves.toMatchObject({ bibliaUrl: 'https://example.org/biblia/' });
+    for (const bad of ['/biblia/index.html', 'http://example.org/biblia/', 'javascript:alert(1)', '../../x.html', 42]) {
+      await expect(loadConfig(cfg({ bibliaUrl: bad })), String(bad)).resolves.not.toHaveProperty('bibliaUrl');
+    }
+  });
 });
 
 describe('sign-in', () => {

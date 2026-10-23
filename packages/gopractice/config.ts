@@ -15,6 +15,8 @@ export interface AppConfig {
   assetBaseUrl?: string;
   /** Absolute speech proxy endpoint. Relative paths use the current origin, which is wrong for the extension page. */
   speechProxyBase?: string;
+  /** Biblia (the Hebrew Bible and the Greek New Testament on GoLearn) when it ships beside this app: a relative page ("./biblia/index.html") or https. */
+  bibliaUrl?: string;
 }
 
 export type UrlCheck = { ok: true; url: string } | { ok: false; message: string };
@@ -61,6 +63,7 @@ export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): 
     if (typeof j.assetBaseUrl === 'string' && j.assetBaseUrl) out.assetBaseUrl = j.assetBaseUrl;
     if (typeof j.speechProxyBase === 'string' && j.speechProxyBase) { const c = validateSpeechProxyBase(j.speechProxyBase); if (c.ok) out.speechProxyBase = c.url; }
     if (typeof j.extensionUrl === 'string' && /^(https:|chrome-extension:)/.test(j.extensionUrl)) out.extensionUrl = j.extensionUrl;
+    if (typeof j.bibliaUrl === 'string' && /^(\.\/[A-Za-z0-9_./-]+|https:\/\/[^\s]+)$/.test(j.bibliaUrl)) out.bibliaUrl = j.bibliaUrl;
     return out;
   } catch { return {}; }
 }

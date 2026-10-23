@@ -48,16 +48,20 @@ function copyIndexes(outDir: string): Plugin {
         fs.mkdirSync(path.join(outDir, 'lexicon', lang), { recursive: true });
         fs.copyFileSync(from, path.join(outDir, 'lexicon', lang, file));
       }
-      // the sharded Ancient Greek tables (npm run el:shard-ancient): 130 gzip shards + manifest, about 12 MB
-      const shards = path.join(repoRoot, 'public', 'lexicon', 'el', 'ancient');
-      if (fs.existsSync(path.join(shards, 'manifest.json'))) fs.cpSync(shards, path.join(outDir, 'lexicon', 'el', 'ancient'), { recursive: true });
-      else console.warn('[biblia] public/lexicon/el/ancient is not built (npm run el:shard-ancient); the Variants tab will show New Testament readings only');
+      // the sharded tables (npm run lexicon:shard): Ancient Greek (130 gzip shards, 12 MB), Modern Greek (53, 6.4 MB), Modern Hebrew (23, 2.7 MB);
+      // the Biblical Hebrew index travels whole above, so its shards are not needed here
+      for (const set of ['el/ancient', 'el/modern', 'he/modern']) {
+        const shards = path.join(repoRoot, 'public', 'lexicon', set);
+        if (fs.existsSync(path.join(shards, 'manifest.json'))) fs.cpSync(shards, path.join(outDir, 'lexicon', set), { recursive: true });
+        else console.warn(`[biblia] public/lexicon/${set} is not built (npm run lexicon:shard); the Variants tab will show less for that period`);
+      }
     },
   };
 }
 
 export default defineConfig(({ mode }) => {
-  const outDir = mode === 'extension' ? path.join(repoRoot, 'packages', 'golearn-extension', 'dist', 'biblia') : path.join(here, 'dist');
+  // BIBLIA_OUT=<folder> puts the build there instead (the GoReview iPhone stage builds Biblia into its web/biblia/)
+  const outDir = process.env.BIBLIA_OUT ? path.resolve(repoRoot, process.env.BIBLIA_OUT) : mode === 'extension' ? path.join(repoRoot, 'packages', 'golearn-extension', 'dist', 'biblia') : path.join(here, 'dist');
   return {
     root: here,
     base: './',

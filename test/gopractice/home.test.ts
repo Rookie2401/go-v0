@@ -15,6 +15,15 @@ const savedDecks = async (rig: Rig): Promise<SavedDeck[]> => {
 };
 
 describe('the GoReview home', () => {
+  it('shows a fifth entry, Biblia, when the app ships Biblia beside it (the iPhone edition, the extension), linking to it', async () => {
+    const rig = await makeRig({ signedIn: true, links: { biblia: './biblia/index.html' } });
+    await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form')]);
+    await reopen(rig);
+    expect(rig.qa('#review-home > section').map((s) => s.getAttribute('data-entry'))).toEqual(['tell', 'deck', 'previous', 'vocab', 'biblia']);
+    expect(rig.q<HTMLAnchorElement>('#entry-biblia').getAttribute('href')).toBe('./biblia/index.html');
+    expect(rig.q('#entry-biblia .entry-kicker').textContent).toMatch(/Hebrew Bible and the Greek New Testament/);
+  });
+
   it('shows four entries in order (GoTell above a rule, the current deck, saved decks, my vocab) and nothing else', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);

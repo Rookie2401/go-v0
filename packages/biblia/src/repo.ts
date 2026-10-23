@@ -16,8 +16,8 @@ const PACK_VERSION: Record<BibliaLang, string> = { he: '1', el: '1' };
 
 export interface Identity { learnerId: string; enrolmentId: string; deviceId: string }
 export interface Recorder {
-  /** 'extension' when the on-device Repository is reachable, else 'none' with the reason the page shows. */
-  mode: 'extension' | 'none';
+  /** 'extension' when the on-device Repository is reachable; 'app' inside the GoReview iPhone app over its signed-in session; else 'none' with the reason the page shows. */
+  mode: 'extension' | 'app' | 'none';
   reason?: string;
   /** The identity for events of this language and period (an enrolment is made on first use); undefined when nothing is recorded. */
   identity(lang: BibliaLang, varietyId: string): Promise<Identity | undefined>;
@@ -38,7 +38,7 @@ export function extensionSend(g: GlobalLike = globalThis as unknown as GlobalLik
 export const noRecorder = (reason: string): Recorder => ({ mode: 'none', reason, identity: async () => undefined, record: async () => ({ ok: false, message: reason }) });
 
 /** A recorder over a Repository API with a learner id (the on-device one through the extension, or any other the host provides). */
-export function apiRecorder(api: RepositoryApi, learner: () => Promise<{ learnerId: string; deviceId?: string }>): Recorder {
+export function apiRecorder(api: RepositoryApi, learner: () => Promise<{ learnerId: string; deviceId?: string }>, mode: 'extension' | 'app' = 'extension'): Recorder {
   const enrolments = new Map<string, Promise<Enrolment | undefined>>();
   const enrolmentFor = (lang: BibliaLang, varietyId: string): Promise<Enrolment | undefined> => {
     const key = `${lang}|${varietyId}`;
@@ -59,7 +59,7 @@ export function apiRecorder(api: RepositoryApi, learner: () => Promise<{ learner
     return p;
   };
   return {
-    mode: 'extension',
+    mode,
     async identity(lang, varietyId) {
       const who = await learner();
       const e = await enrolmentFor(lang, varietyId);
@@ -76,7 +76,9 @@ export function apiRecorder(api: RepositoryApi, learner: () => Promise<{ learner
 }
 
 /** The recorder for this page: the extension's on-device Repository when the page is an extension page, else none. */
-export function makeRecorder(send = extensionSend()): Recorder {
+export function makeRecorder(send = extensionSend(), app?: { api: RepositoryApi; learnerId: string; deviceId: string }): Recorder {
+  // inside the GoReview iPhone app: the account session the app keeps in Keychain, against the app's Repository address
+  if (app) return apiRecorder(app.api, async () => ({ learnerId: app.learnerId, deviceId: app.deviceId }), 'app');
   if (!send) return noRecorder('Open Biblia from the GoLearn extension to record what you read: here it is a reader only, and nothing is kept.');
   const local = connectLocalRepository(send, MSG_LOCAL_REPO);
   return apiRecorder(local.api, () => local.identity());

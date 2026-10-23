@@ -337,11 +337,18 @@ describe.each(DISTS)('$id', (dist) => {
 
   it('contains only the file kinds of a web build: no EPUB, USFM, audio, archive, source map or database; no library, corpus, ladder, stage0 or Bible directory', (ctx) => {
     guard(ctx);
-    expect(files.filter((f) => /\.(epub|usfm|usx|sfm|wav|oga|ogg|mp3|m4a|zip|gz|tgz|map|sqlite|db|jsonl|pdf|docx?)$/i.test(f))).toEqual([]);
+    // The one gzip kind allowed: the sharded Hebrew and Greek FORM INDEXES under lexicon/<lang>/<set>/ (since 2026-10-22, commit cfee3d4c), each a
+    // gzip-compressed JSON object (word forms -> lemma, features, counts; Open Scriptures, MorphGNT and Wiktionary data, licences in the manifest
+    // beside them) that the extension inflates in memory before a lookup. They are data tables, not an archive of files and not Scripture text (no
+    // verse travels in them); gzip keeps the four sets at 23 MB instead of about 70. Each shard must sit beside its set's manifest.json.
+    const shards = files.filter((f) => /^lexicon\/(he|el)\/[a-z]+\/[^/]+\.json\.gz$/.test(f));
+    for (const sh of shards) expect(files, `manifest beside ${sh}`).toContain(path.posix.join(path.posix.dirname(sh), 'manifest.json'));
+    const rest = files.filter((f) => !shards.includes(f));
+    expect(rest.filter((f) => /\.(epub|usfm|usx|sfm|wav|oga|ogg|mp3|m4a|zip|gz|tgz|map|sqlite|db|jsonl|pdf|docx?)$/i.test(f))).toEqual([]);
     const dirs = new Set(files.flatMap((f) => f.split('/').slice(0, -1)));
     expect([...dirs].filter((d) => /^(library|corpus|sources|ladder|stage0|scripture|bible|bibles|audio|recordings|texts|books)$/i.test(d))).toEqual([]);
     // every file is one of the build's known kinds
-    expect(files.filter((f) => !TEXT_EXT.test(f) && !FONT_EXT.test(f))).toEqual([]);
+    expect(rest.filter((f) => !TEXT_EXT.test(f) && !FONT_EXT.test(f))).toEqual([]);
   });
 
   it('ships exactly the font files its stylesheet names (woff2 only) and the EB Garamond SIL OFL text beside the notices', (ctx) => {

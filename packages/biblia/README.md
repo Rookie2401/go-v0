@@ -33,7 +33,17 @@ npx vite -c packages/biblia/vite.config.ts  # development server (port 5199)
 vite build -c packages/biblia/vite.config.ts                   # packages/biblia/dist
 vite build -c packages/biblia/vite.config.ts --mode extension  # packages/golearn-extension/dist/biblia/ (after npm run ext:build)
 npm run biblia:build-ext                    # the same; npm run local:build runs it last, so the packaged extension carries Biblia
+BIBLIA_SERVICE_URL=https://repo.golearn-global-languages.com npm run biblia:build-standalone   # packages/biblia/dist-standalone: the installable web app
 ```
+
+Standalone edition (2026-10-22): `--mode standalone` builds the same site as an installable web app (docs/ecosystem/BIBLIA-STANDALONE.md,
+plan in docs/ecosystem/BIBLIA-STANDALONE-PLAN.md). It adds `config.json` (the Repository address: the source `packages/biblia/config.json`
+holds `http://127.0.0.1:8790`; `BIBLIA_SERVICE_URL`, https only or http on localhost / 127.0.0.1 with no query, fragment or credentials,
+replaces it in the copy and anything else refuses to build), a web manifest, icons (the Biblia app's own), the iOS home-screen tags, the
+marker `<meta name="biblia-edition" content="standalone">` that `main.ts` reads, and a service worker that precaches the shell only and
+keeps each text and lexicon file the first time it is read, so a chapter once read works offline. `BIBLIA_OUT=<folder>` still puts any build
+elsewhere. The default and extension builds carry none of these files. The edition is published to the `gh-pages` branch of
+github.com/Rookie2401/biblia by the owner (commands in the document above). Test: `test/biblia/standalone-build.test.ts`.
 
 Ancient Greek readings (2026-10-21): the Wiktionary Ancient Greek tables (Attic by default, Epic, Ionic, Koine …; 660,000 forms) are
 too large to carry whole, so `npm run el:shard-ancient` cuts them into 130 gzip shards (12 MB, `public/lexicon/el/ancient/`, git-ignored)

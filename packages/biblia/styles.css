@@ -36,6 +36,14 @@ button:hover { border-color: var(--accent); }
 .reader .verse { display: inline; }
 .reader .vn { font-size: 0.6em; color: var(--muted); vertical-align: super; margin: 0 0.25em; user-select: none; }
 .reader .word { all: unset; cursor: pointer; border-radius: 3px; padding: 0 0.05em; }
+/* knowledge levels (the standalone edition, signed in): the extension's six marks. Known and Automatic carry none. Placed before :hover / .sel so a hovered or selected word still shows its own tint. */
+.reader .word[data-level="new"], .swatch[data-level="new"] { background-color: rgba(173, 216, 230, 0.45); }
+.reader .word[data-level="seen"], .swatch[data-level="seen"] { text-decoration: underline solid; text-decoration-thickness: 2px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.8); text-decoration-color: color-mix(in srgb, currentColor 80%, transparent); }
+.reader .word[data-level="recognized"], .swatch[data-level="recognized"] { text-decoration: underline solid; text-decoration-thickness: 1.25px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.55); text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }
+.reader .word[data-level="familiar"], .swatch[data-level="familiar"] { text-decoration: underline solid; text-decoration-thickness: 0.75px; text-underline-offset: 0.2em; text-decoration-color: rgba(120, 100, 70, 0.3); text-decoration-color: color-mix(in srgb, currentColor 30%, transparent); }
+@media (prefers-color-scheme: dark) {
+  .reader .word[data-level="new"], .swatch[data-level="new"] { background-color: rgba(110, 165, 205, 0.32); }
+}
 .reader .word:hover, .reader .word:focus-visible { background: rgba(122, 75, 35, 0.14); outline: none; }
 .reader .word.sel { background: rgba(122, 75, 35, 0.28); }
 .reader .mark { color: var(--muted); font-size: 0.7em; }
@@ -44,3 +52,23 @@ button:hover { border-color: var(--accent); }
 .period { color: var(--muted); font-size: 0.9rem; margin: 0.4rem 0 1rem; }
 .settings label { display: block; margin: 0.6rem 0; }
 .sources { font-size: 0.9rem; color: var(--muted); border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1rem; }
+
+/* the standalone edition: the account line, the account screen, the legal drafts, the legend of the marks */
+.accountline { font-size: 0.92rem; color: var(--muted); margin: 0 0 0.6rem; }
+button.linklike { all: unset; color: var(--accent); text-decoration: underline; cursor: pointer; }
+button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.account form label, .account .forgot label { display: block; margin: 0.6rem 0; }
+.account input[type="email"], .account input[type="password"] { display: block; width: 100%; max-width: 24rem; box-sizing: border-box; margin-top: 0.2rem; font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 0.4em 0.6em; }
+.account .hint, .account .forgot .hint { color: var(--muted); font-size: 0.9rem; }
+.account .forgot { margin: 1rem 0; }
+.account .forgot summary { cursor: pointer; }
+.status { min-height: 1.4em; margin: 0.4rem 0; font-size: 0.95rem; }
+.status.ok { color: #3f7a4a; }
+.status.error { color: #b4543c; }
+.status.info { color: var(--muted); }
+@media (prefers-color-scheme: dark) { .status.ok { color: #7cc48a; } .status.error { color: #e0866f; } }
+.legal-links { font-size: 0.9rem; color: var(--muted); margin-top: 1.2rem; }
+.legal-text h2 { font-size: 1.25rem; } .legal-text h3 { font-size: 1.1rem; } .legal-text h4 { font-size: 1rem; }
+.legal-text p, .legal-text li { font-size: 0.95rem; }
+.legend { color: var(--muted); font-size: 0.9rem; margin: 0.4rem 0 1rem; }
+.legend .swatch { padding: 0 0.15em; border-radius: 3px; }

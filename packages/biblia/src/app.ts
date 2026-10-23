@@ -20,12 +20,17 @@ import { consonantal } from '../../../src/adapters/hebrew/text';
 import { Canon, TREE, numeral, parseCanon, type BibliaLang, type BookInfo } from './canon';
 import { Texts, greekVerseText, installFullIndexes, verseIsAramaic, type AnyBook, type DataSource, type GrVerse, type HeVerse } from './data';
 import { APP_VERSION, READER_ID, type Recorder } from './repo';
+import { renderAccountScreen, renderLegalScreen, type AccountService } from './account';
+import { createLevels, type LevelSite } from './levels';
+import type { GoEvent } from '../../repository-contract/src';
 
 export interface BibliaDeps {
   win: Window;
   doc: Document;
   source: DataSource;
   recorder: Recorder;
+  /** The standalone web edition's account (sign-in state, the screen at #/account); absent in the extension, in the iPhone app and in a plain reader. With it, the chapter on screen carries the learner's knowledge levels while signed in. */
+  account?: AccountService;
   storage?: Storage;
   /** Where "GoReview" at the top leads when Biblia is a page of the GoReview app (the iPhone edition); absent elsewhere. */
   backUrl?: string;
@@ -79,7 +84,31 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   const clearSelection = (): void => { selectedButton?.classList.remove('sel'); selectedButton = undefined; };
 
   let route = '';
-  const notices: string[] = [...analyserNotes, ...indexes.notes, ...(deps.recorder.mode === 'none' && deps.recorder.reason ? [deps.recorder.reason] : [])];
+  const account = deps.account;
+  const baseNotices: string[] = [...analyserNotes, ...indexes.notes];
+  /** Where lookups and marks go, per mode (read live: the standalone edition changes mode when the learner signs in or out). */
+  function recordingNotice(): string {
+    const mode = deps.recorder.mode;
+    if (mode === 'app') return 'Your lookups and marks are recorded in your GoReview account, under a Hebrew or Greek enrolment whose variety is the period of the text; they reach your review on this phone and everywhere you sign in.';
+    if (mode === 'extension') return 'Your lookups and marks are recorded in the GoLearn extension’s on-device Repository, under a Hebrew or Greek enrolment whose variety is the period of the text (Biblical Hebrew, Biblical Aramaic, Koine Greek); GoReview reads them from there.';
+    if (mode === 'account') return `Your lookups and marks are recorded in your GoLearn account${account?.state().email ? ` (${account.state().email})` : ''}, under a Hebrew or Greek enrolment whose variety is the period of the text; GoReview and the GoLearn extension read them there. The words you have met anywhere are marked on the page by how well you know them.`;
+    return deps.recorder.reason ?? 'Nothing is recorded here.';
+  }
+  const readerNotices = (): string[] => [...baseNotices, ...(deps.recorder.mode === 'none' && deps.recorder.reason ? [deps.recorder.reason] : [])];
+  const libraryNotices = (): string[] => [...baseNotices, recordingNotice()];
+
+  // the knowledge levels on the chapter being read: only with an account (the standalone edition), only while signed in
+  const levels = account ? createLevels({ win, doc, api: () => account.api(), onAuthExpired: () => account.expire() }) : undefined;
+  const siteByEl = new WeakMap<HTMLElement, LevelSite>();
+  const sitesOfView = new WeakMap<HTMLElement, LevelSite[]>();
+  const unitsOf = (events: GoEvent[]): string[] => [...new Set(events.flatMap((e) => e.subject?.itemIds ?? []))];
+  const offAppended = account?.onAppended((events) => { void levels?.refresh(unitsOf(events)); });
+  const offAccount = account?.subscribe(() => {
+    const st = account.state();
+    if (!st.signedIn) levels?.clear();
+    if (route === 'library' || route === 'account' || route === 'settings') void render();
+    else if (!st.signedIn && st.expired) showNotice('Your sign-in has ended, so the levels are no longer shown. Sign in again from the library; what you did since is kept on this device and sent after.');
+  });
 
   function topbar(title: string, crumb?: string): HTMLElement {
     return h('div', { class: 'topbar' }, deps.backUrl ? h('a', { href: deps.backUrl, class: 'crumb back' }, '← GoReview') : null, h('a', { href: '#/', class: 'crumb' }, 'Biblia'), crumb ? h('span', { class: 'crumb' }, `· ${crumb}`) : null, h('h1', {}, title), h('a', { href: '#/settings' }, 'Settings'));
@@ -108,7 +137,18 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       }
       lib.append(td);
     }
-    return h('div', {}, topbar('Library'), ...notices.map((n) => h('div', { class: 'notice' }, n)), lib, sourcesNote());
+    return h('div', {}, topbar('Library'), accountLine(), ...libraryNotices().map((n) => h('div', { class: 'notice' }, n)), lib, sourcesNote());
+  }
+
+  /** Standalone edition only: who is signed in (with Sign out), or the way to sign in. */
+  function accountLine(): HTMLElement | null {
+    if (!account) return null;
+    const st = account.state();
+    if (!st.signedIn) return h('div', { class: 'accountline', id: 'accountline' }, h('a', { href: '#/account' }, st.expired ? 'Your sign-in ended: sign in again' : 'Sign in to record what you read'));
+    const out = h('button', { type: 'button', class: 'linklike', id: 'signout' }, 'Sign out');
+    out.addEventListener('click', () => { void account.signOut(); });
+    const waiting = deps.recorder.pending?.() ?? 0;
+    return h('div', { class: 'accountline', id: 'accountline' }, `Signed in as ${st.email ?? 'your account'}`, st.offline ? ' (the service could not be reached; what you do is kept on this device)' : '', waiting ? ` · ${waiting} waiting to be sent` : '', ' · ', out);
   }
 
   function sourcesNote(): HTMLElement {
@@ -121,7 +161,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   // ── reader ──
   interface WordRef { lang: BibliaLang; book: string; ch: number; v: number; sentence: string; start: number; end: number; surface: string; varietyId: string; gold?: { lemmaId: string; code: string; source: string } }
 
-  function renderHebrewVerse(info: BookInfo, ch: number, v: HeVerse, aramaic: boolean): HTMLElement {
+  function renderHebrewVerse(info: BookInfo, ch: number, v: HeVerse, aramaic: boolean, sites: LevelSite[]): HTMLElement {
     const text = hebrewDisplay === 'full' ? v.t : hebrewDisplay === 'niqqud' ? v.t.replace(/[֑-ֽֿ֯׀ׅׄ]/g, '') : consonantal(v.t).replace(/־/g, ' ');
     const el = h('span', { class: `verse${aramaic ? ' aramaic' : ''}`, 'data-v': String(v.n) }, h('span', { class: 'vn' }, numeral('he', v.n)));
     if (v.absent) { el.append(h('span', { class: 'mark' }, '(absent from this edition)')); return el; }
@@ -136,7 +176,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         const g = wordCount === v.w.length ? v.w[wi] : null;
         wi++;
         const gold = g ? { lemmaId: g[0].split('/').pop()!.replace(/\+$/, ''), code: g[1], source: 'Open Scriptures morphology' } : undefined;
-        el.append(wordButton({ lang: 'he', book: info.id, ch, v: v.n, sentence: text, start: t.start, end: t.end, surface: piece, varietyId, ...(gold ? { gold } : {}) }));
+        el.append(wordButton({ lang: 'he', book: info.id, ch, v: v.n, sentence: text, start: t.start, end: t.end, surface: piece, varietyId, ...(gold ? { gold } : {}) }, sites));
       } else el.append(doc.createTextNode(piece));
       el.append(doc.createTextNode(text.slice(t.end, nextStart(text, t.end))));
     }
@@ -147,7 +187,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
   /** The whitespace between a token's end and the next non-space character (tokens drop whitespace; the text keeps it). */
   const nextStart = (text: string, from: number): number => { let i = from; while (i < text.length && /\s/u.test(text[i])) i++; return i; };
 
-  function renderGreekVerse(info: BookInfo, ch: number, v: GrVerse): HTMLElement {
+  function renderGreekVerse(info: BookInfo, ch: number, v: GrVerse, sites: LevelSite[]): HTMLElement {
     const text = greekVerseText(v);
     const el = h('span', { class: 'verse', 'data-v': String(v.n) }, h('span', { class: 'vn' }, numeral('el', v.n)));
     // MorphGNT's reading of each word, by word order (its printed tokens with letters align one to one with the word tokens)
@@ -161,16 +201,21 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         const g = wordCount === golds.length ? golds[wi] : undefined;
         wi++;
         const gold = g ? { lemmaId: g[1].normalize('NFC'), code: `${g[2]}|${g[3] ?? ''}`, source: 'MorphGNT' } : undefined;
-        el.append(wordButton({ lang: 'el', book: info.id, ch, v: v.n, sentence: text, start: t.start, end: t.end, surface: piece, varietyId: 'el-koi', ...(gold ? { gold } : {}) }));
+        el.append(wordButton({ lang: 'el', book: info.id, ch, v: v.n, sentence: text, start: t.start, end: t.end, surface: piece, varietyId: 'el-koi', ...(gold ? { gold } : {}) }, sites));
       } else el.append(doc.createTextNode(piece));
       el.append(doc.createTextNode(text.slice(t.end, nextStart(text, t.end))));
     }
     return el;
   }
 
-  function wordButton(ref: WordRef): HTMLElement {
+  function wordButton(ref: WordRef, sites: LevelSite[]): HTMLElement {
     const b = h('button', { type: 'button', class: 'word', lang: ref.lang }, ref.surface);
     b.addEventListener('click', () => { void lookup(ref, b); });
+    if (levels) {
+      const site: LevelSite = { el: b, lang: ref.lang, sentence: ref.sentence, start: ref.start, end: ref.end, surface: ref.surface, varietyId: ref.varietyId, ...(ref.gold ? { gold: { lemmaId: ref.gold.lemmaId, code: ref.gold.code } } : {}) };
+      siteByEl.set(b, site);
+      sites.push(site);
+    }
     return b;
   }
 
@@ -192,7 +237,9 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       const base = { card: model, readerId: READER_ID, identity, version: APP_VERSION, sessionId, now, direction, language: { languageId: ref.lang, varietyId: ref.varietyId, basis: 'override' as const, confidence: 1, source: `biblia:${ref.book}.${ref.ch}.${ref.v}` } };
       const selection = buildSelectionEvent(base);
       ictx = { ...base, selectionEventId: selection.id };
-      void deps.recorder.record([selection]).then((r2) => { if (!r2.ok) showNotice(`Could not record this lookup: ${r2.message ?? 'unknown reason'}.`); });
+      void deps.recorder.record([selection]).then((r2) => { if (!r2.ok) showNotice(`Could not record this lookup: ${r2.message ?? 'unknown reason'}.`); else if (r2.message) showNotice(r2.message); });
+      const site = siteByEl.get(button);
+      if (levels && site) { levels.learn(site, model.itemIds); levels.met(model.itemIds); }
     }
     card.show(model, anchor, {
       view: {
@@ -201,10 +248,16 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         sources: Object.values((ref.lang === 'he' ? heAdapter : elAdapter).sources ?? {}).map((s) => ({ label: s.label, ...(s.licence ? { licence: s.licence } : {}) })),
       },
       actions: {
-        onLayer: (layer) => { if (ictx) void deps.recorder.record([buildAssistanceEvent({ ...ictx, now: deps.now() }, layer as ExpandedLayer)]); },
+        onLayer: (layer) => { if (ictx) void deps.recorder.record([buildAssistanceEvent({ ...ictx, now: deps.now() }, layer as ExpandedLayer)]).then((r2) => { if (!r2.ok) showNotice(`Could not record this: ${r2.message ?? 'unknown reason'}.`); }); },
         onRate: (mark) => {
           if (!ictx) { showNotice(deps.recorder.reason ?? 'Nothing is recorded here.'); return; }
-          void deps.recorder.record([buildMarkEvent({ ...ictx, now: deps.now() }, mark as KnowledgeLevel)]).then((r2) => card.update({ rated: r2.ok ? mark : undefined, correction: r2.ok ? { state: 'idle' } : { state: 'error', message: `Could not save that: ${r2.message ?? 'unknown reason'}. Try again.` } }));
+          const when = deps.now();
+          levels?.mark(model.itemIds, mark as KnowledgeLevel, when.toISOString()); // the word is repainted at once, before the service has answered
+          void deps.recorder.record([buildMarkEvent({ ...ictx, now: when }, mark as KnowledgeLevel)]).then((r2) => {
+            if (!r2.ok) levels?.forget(model.itemIds);
+            else if (r2.message) showNotice(r2.message);
+            card.update({ rated: r2.ok ? mark : undefined, correction: r2.ok ? { state: 'idle' } : { state: 'error', message: `Could not save that: ${r2.message ?? 'unknown reason'}. Try again.` } });
+          });
         },
       },
     });
@@ -215,6 +268,13 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     if (!noticeEl) return;
     noticeEl.textContent = text;
     noticeEl.removeAttribute('hidden');
+  }
+
+  /** While signed in (standalone edition): what the marks on the words mean. */
+  function levelLegend(): HTMLElement | null {
+    if (!levels || !account?.state().signedIn) return null;
+    const item = (level: string, label: string): HTMLElement => h('span', { class: 'legend-item' }, h('span', { class: 'swatch', 'data-level': level }, 'אα'), ` ${label}`);
+    return h('div', { class: 'legend', id: 'level-legend' }, 'How well you know each word: ', item('new', 'New'), ' · ', item('seen', 'Seen'), ' · ', item('recognized', 'Recognized'), ' · ', item('familiar', 'Familiar'), '; known words carry no mark.');
   }
 
   async function renderReader(bookId: string, ch: number): Promise<HTMLElement> {
@@ -234,6 +294,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       prev ? h('a', { href: `#/read/${prev.book}/${prev.ch}` }, `← ${canon.refLabel(prev.book, prev.ch)}`) : h('span', {}),
       h('span', { class: 'crumb' }, `${info.en} ${ch}`, h('span', { class: 'native', lang: info.lang, dir: 'auto' }, ` · ${info.native} ${numeral(info.lang, ch)}`)),
       next ? h('a', { href: `#/read/${next.book}/${next.ch}` }, `${canon.refLabel(next.book, next.ch)} →`) : h('span', {}));
+    const sites: LevelSite[] = [];
     const prose = h('div', { class: `prose${POETRY.has(bookId) ? ' poetry' : ''}`, lang: info.lang, dir: info.lang === 'he' ? 'rtl' : 'ltr' });
     const chapterNotes: string[] = [];
     let aramaicVerses = 0;
@@ -245,7 +306,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         const r = await indexes.modernHe.ensure(keys);
         if (r.failed.length) chapterNotes.push(`${r.failed.length} of the Modern Hebrew shards this chapter needs could not be loaded (${r.failed[0][1]}); the Variants tab shows less for those words.`);
       }
-      for (const v of verses) { const ar = verseIsAramaic(v); if (ar) aramaicVerses++; prose.append(renderHebrewVerse(info, ch, v, ar), doc.createTextNode(' ')); }
+      for (const v of verses) { const ar = verseIsAramaic(v); if (ar) aramaicVerses++; prose.append(renderHebrewVerse(info, ch, v, ar, sites), doc.createTextNode(' ')); }
     } else {
       const verses = (chapter as { verses: GrVerse[] }).verses;
       // the Ancient Greek tables are sharded: fetch the shards this chapter's words live in, so Attic and Homeric readings are on the card
@@ -256,13 +317,15 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         if (r.failed.length) chapterNotes.push(`${r.failed.length} of the Ancient Greek shards this chapter needs could not be loaded (${r.failed[0][1]}); the Variants tab shows less for those words.`);
         if (indexes.modernEl) { const m = await indexes.modernEl.ensure(keys); if (m.failed.length) chapterNotes.push(`${m.failed.length} of the Modern Greek shards this chapter needs could not be loaded (${m.failed[0][1]}).`); }
       }
-      for (const v of verses) prose.append(renderGreekVerse(info, ch, v), doc.createTextNode(' '));
+      for (const v of verses) prose.append(renderGreekVerse(info, ch, v, sites), doc.createTextNode(' '));
     }
     const period = info.lang === 'he'
       ? (aramaicVerses ? `Read as Biblical Hebrew; ${aramaicVerses} verse${aramaicVerses === 1 ? '' : 's'} of this chapter are Biblical Aramaic (marked) and are read as Aramaic.` : 'Read as Biblical Hebrew (the Masoretic text, with its cantillation).')
       : `Read as Koine Greek (the Greek New Testament)${indexes.ancient ? `; the Attic and Homeric tables are loaded for this chapter's words (${indexes.ancient.loaded().length} shards in memory)` : ''}.`;
     noticeEl = h('div', { class: 'notice', role: 'status', hidden: '' });
-    return h('div', { class: 'reader' }, topbar(canon.refLabel(bookId, ch), TREE.find((t) => t.lang === info.lang)?.title), nav, h('div', { class: 'period' }, period), ...[...notices, ...chapterNotes].map((n) => h('div', { class: 'notice' }, n)), prose, noticeEl, nav.cloneNode(true) as HTMLElement, sourcesNote());
+    const view = h('div', { class: 'reader' }, topbar(canon.refLabel(bookId, ch), TREE.find((t) => t.lang === info.lang)?.title), nav, h('div', { class: 'period' }, period), levelLegend(), ...[...readerNotices(), ...chapterNotes].map((n) => h('div', { class: 'notice' }, n)), prose, noticeEl, nav.cloneNode(true) as HTMLElement, sourcesNote());
+    sitesOfView.set(view, sites);
+    return view;
   }
 
   // ── settings and sources ──
@@ -277,7 +340,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     }
     box.append(group);
     box.append(h('p', { class: 'notice' }, 'The Hebrew analyser always reads the full Masoretic text, whatever is displayed; the display only hides marks.'));
-    box.append(h('p', { class: 'notice' }, deps.recorder.mode === 'app' ? 'Your lookups and marks are recorded in your GoReview account, under a Hebrew or Greek enrolment whose variety is the period of the text; they reach your review on this phone and everywhere you sign in.' : deps.recorder.mode === 'extension' ? 'Your lookups and marks are recorded in the GoLearn extension’s on-device Repository, under a Hebrew or Greek enrolment whose variety is the period of the text (Biblical Hebrew, Biblical Aramaic, Koine Greek); GoReview reads them from there.' : (deps.recorder.reason ?? 'Nothing is recorded here.')));
+    box.append(h('p', { class: 'notice' }, recordingNotice()));
     return box;
   }
   function renderSources(): HTMLElement {
@@ -306,18 +369,26 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     if (id === 'read' && m?.[2]) { route = `read/${m[2]}/${m[3] ?? '1'}`; view = await renderReader(decodeURIComponent(m[2]), Number(m[3] ?? '1')); }
     else if (id === 'settings') { route = 'settings'; view = renderSettings(); }
     else if (id === 'sources') { route = 'sources'; view = renderSources(); }
+    else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: topbar('Account'), done: () => { void api.go('#/'); } }); }
+    else if ((id === 'privacy' || id === 'terms') && account) { route = id; view = renderLegalScreen({ doc, which: id, topbar: topbar(id === 'privacy' ? 'Privacy Policy' : 'Terms') }); }
     else { route = 'library'; view = renderLibrary(); }
     root.replaceChildren(view);
     try { win.scrollTo(0, 0); } catch { /* jsdom has no layout */ }
+    if (levels) { const sites = sitesOfView.get(view); if (id === 'read' && sites) void levels.setChapter(route, sites); else void levels.setChapter(undefined, []); }
   }
   const onHash = (): void => { if ((win.location.hash || '#/') !== renderedHash) void render(); };
   win.addEventListener('hashchange', onHash);
   await render();
 
-  return {
+  const api: BibliaApp = {
     get route() { return route; },
     async go(hash: string) { win.location.hash = hash.startsWith('#') ? hash : `#/${hash.replace(/^\/+/, '')}`; await render(); },
     cardRoot: () => card.root() ?? undefined,
-    destroy() { win.removeEventListener('hashchange', onHash); card.destroy(); },
+    destroy() {
+      win.removeEventListener('hashchange', onHash);
+      offAppended?.(); offAccount?.(); levels?.destroy(); deps.recorder.destroy?.();
+      card.destroy();
+    },
   };
+  return api;
 }

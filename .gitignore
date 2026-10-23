@@ -43,3 +43,6 @@ public/lexicon/
 
 # Biblia reader: the Tanakh / Greek NT texts copied from the Biblia app (npm run biblia:import)
 packages/biblia/public/data/
+
+# Biblia standalone edition build (npm run biblia:build-standalone; 49 MB)
+packages/biblia/dist-standalone/

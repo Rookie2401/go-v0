@@ -41,6 +41,7 @@
     "biblia:dev": "vite -c packages/biblia/vite.config.ts --port 5199",
     "biblia:build": "vite build -c packages/biblia/vite.config.ts",
     "biblia:build-ext": "vite build -c packages/biblia/vite.config.ts --mode extension",
+    "biblia:build-standalone": "vite build -c packages/biblia/vite.config.ts --mode standalone",
     "dict:build-full": "vite-node --config scripts/vite.config.ts src/dict/build-full.ts",
     "dict:compare": "vite-node --config scripts/vite.config.ts scripts/dict-compare.mts",
     "dict:status": "vite-node --config scripts/vite.config.ts scripts/dict-status.mts",

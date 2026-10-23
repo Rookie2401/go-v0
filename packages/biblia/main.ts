@@ -1,7 +1,12 @@
-/** Entry point: the real environment (fetch, the document, the extension's Repository when this page is an extension page, the GoReview app's account when this page is bundled in the iPhone app) for `createBibliaApp`. */
+/**
+ * Entry point: the real environment (fetch, the document, the extension's Repository when this page is an extension page, the GoReview app's account
+ * when this page is bundled in the iPhone app, the Repository service named in config.json when this is the standalone web edition) for `createBibliaApp`.
+ */
 import { createBibliaApp } from './src/app';
 import { fetchJsonWith } from './src/data';
-import { makeRecorder } from './src/repo';
+import { accountRecorder, extensionSend, makeRecorder, noRecorder, type Recorder } from './src/repo';
+import { createAccountService, type AccountService } from './src/account';
+import { createEventQueue } from './src/queue';
 import { createMobileRuntime } from '../gopractice/mobile';
 import { loadConfig } from '../gopractice/config';
 import { createRepositoryApi } from '../repository-service/src/api';
@@ -20,20 +25,46 @@ async function inApp(): Promise<{ api: ReturnType<typeof createRepositoryApi>; l
   } catch { return undefined; }
 }
 
+/** The standalone web edition: the build injects <meta name="biblia-edition" content="standalone">; then the page connects to the service in config.json. */
+const isStandalone = (): boolean => document.querySelector('meta[name="biblia-edition"]')?.getAttribute('content') === 'standalone';
+
+const storage = ((): Storage | undefined => { try { const s = window.localStorage; s.getItem('biblia:probe'); return s; } catch { return undefined; } })();
+
+/** The account (sign-in state, the screen) and its recorder, over the Repository service config.json names. Without an address the page stays a reader and says so. */
+async function standalone(): Promise<{ recorder: Recorder; account?: AccountService }> {
+  const config = await loadConfig((input, init) => globalThis.fetch(input, init));
+  if (!config.serviceUrl) return { recorder: noRecorder('This copy of Biblia names no Repository service in its config.json, so it is a reader only and nothing is kept.') };
+  const account = createAccountService({ serviceUrl: config.serviceUrl, ...(storage ? { storage } : {}), fetch: (input, init) => globalThis.fetch(input, init) });
+  const recorder = accountRecorder({
+    session: () => { const s = account.session(); const api = account.api(); return s && api ? { api, learnerId: s.learnerId, deviceId: s.deviceId } : undefined; },
+    queue: createEventQueue(storage),
+    ...(storage ? { storage } : {}),
+    win: window,
+    onAppended: (events) => account.emitAppended(events),
+    onAuthExpired: () => account.expire(),
+  });
+  return { recorder, account };
+}
+
 const started = (async () => {
   const mobile = createMobileRuntime(window);
   const app = await inApp();
-  const recorder = app ? makeRecorder(undefined, app) : mobile.native
+  const own = !app && !mobile.native && !extensionSend() && isStandalone() ? await standalone() : undefined;
+  const recorder = own ? own.recorder : app ? makeRecorder(undefined, app) : mobile.native
     ? { ...makeRecorder(undefined), reason: 'Sign in to GoReview (the app this page belongs to) to record what you read; until then Biblia is a reader only.' }
     : makeRecorder();
-  return createBibliaApp({
+  const running = await createBibliaApp({
     win: window, doc: document,
     source: fetchJsonWith((input, init) => globalThis.fetch(input, init), './'),
     recorder,
+    ...(own?.account ? { account: own.account } : {}),
     ...(mobile.native ? { backUrl: '../index.html#/review' } : {}),
-    storage: (() => { try { const s = window.localStorage; s.getItem('biblia:probe'); return s; } catch { return undefined; } })(),
+    ...(storage ? { storage } : {}),
     now: () => new Date(),
   });
+  // a kept sign-in is confirmed with the service, then what waited in the offline queue is sent
+  if (own?.account) void (async () => { await own.account!.start(); await own.recorder.flush?.(); })();
+  return running;
 })();
 started.catch((e) => {
   const el = document.getElementById('app');

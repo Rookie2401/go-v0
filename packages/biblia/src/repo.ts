@@ -2,12 +2,15 @@
  * Where Biblia's events go. Inside the GoLearn extension (this page served from chrome-extension://…/biblia/) the extension's background
  * worker owns the device's Repository and this page reaches it over `golearn:local-repo` (the same route GoPractice uses); the learner's
  * enrolment in Hebrew or Greek is found or made there, with the period the text is in as its variety. Anywhere else there is no repository:
- * the reader works, records nothing, and says so. No account, token or password is handled here.
+ * the reader works, records nothing, and says so. Two further modes sit beside these: 'app' (inside the GoReview iPhone app, over its Keychain
+ * session) and, in the standalone web edition, 'account' (signed in to the Repository service named in config.json; see `accountRecorder`,
+ * which keeps an offline queue). Nothing in this file handles a password; the account mode holds only the session the service gave.
  */
 import { connectLocalRepository } from '../../repository-local/src/proxy';
 import type { GoEvent, Enrolment } from '../../repository-contract/src';
 import type { RepositoryApi } from '../../repository-service/src/api';
 import type { BibliaLang } from './canon';
+import { QUEUE_CAP, type EventQueue } from './queue';
 
 const MSG_LOCAL_REPO = 'golearn:local-repo';
 export const READER_ID = 'biblia';
@@ -15,13 +18,24 @@ export const APP_VERSION = '0.1.0';
 const PACK_VERSION: Record<BibliaLang, string> = { he: '1', el: '1' };
 
 export interface Identity { learnerId: string; enrolmentId: string; deviceId: string }
+/** `ok` = the events are safe (sent, or kept in the offline queue: then `queued`); `message` is for the learner either way (a refusal, a full queue, the offline note). */
+export interface RecordResult { ok: boolean; message?: string; queued?: boolean }
+export interface FlushResult { status: 'ok' | 'offline' | 'auth' | 'rejected'; sent: number; pending: number; rejected: number; message?: string }
+/** Remembers which enrolment an account's events of a language and period belong to, so a lookup made offline can still be recorded. */
+export interface EnrolmentMemo { get(key: string): string | undefined; set(key: string, enrolmentId: string): void; clear(): void }
+
 export interface Recorder {
-  /** 'extension' when the on-device Repository is reachable; 'app' inside the GoReview iPhone app over its signed-in session; else 'none' with the reason the page shows. */
-  mode: 'extension' | 'app' | 'none';
-  reason?: string;
+  /** 'extension' when the on-device Repository is reachable; 'app' inside the GoReview iPhone app over its signed-in session; 'account' in the standalone web edition while signed in to the service; else 'none' with the reason the page shows. */
+  readonly mode: 'extension' | 'app' | 'account' | 'none';
+  readonly reason?: string;
   /** The identity for events of this language and period (an enrolment is made on first use); undefined when nothing is recorded. */
   identity(lang: BibliaLang, varietyId: string): Promise<Identity | undefined>;
-  record(events: GoEvent[]): Promise<{ ok: boolean; message?: string }>;
+  record(events: GoEvent[]): Promise<RecordResult>;
+  /** Account mode: send what the offline queue holds now (on start, when the browser comes back online). */
+  flush?(): Promise<FlushResult>;
+  /** Account mode: how many events wait in the offline queue for the signed-in learner. */
+  pending?(): number;
+  destroy?(): void;
 }
 
 interface GlobalLike { chrome?: { runtime?: { id?: string; sendMessage?: (m: unknown) => Promise<unknown> } }; location?: { protocol?: string } }
@@ -38,7 +52,7 @@ export function extensionSend(g: GlobalLike = globalThis as unknown as GlobalLik
 export const noRecorder = (reason: string): Recorder => ({ mode: 'none', reason, identity: async () => undefined, record: async () => ({ ok: false, message: reason }) });
 
 /** A recorder over a Repository API with a learner id (the on-device one through the extension, or any other the host provides). */
-export function apiRecorder(api: RepositoryApi, learner: () => Promise<{ learnerId: string; deviceId?: string }>, mode: 'extension' | 'app' = 'extension'): Recorder {
+export function apiRecorder(api: RepositoryApi, learner: () => Promise<{ learnerId: string; deviceId?: string }>, mode: 'extension' | 'app' | 'account' = 'extension', opts: { memo?: EnrolmentMemo } = {}): Recorder {
   const enrolments = new Map<string, Promise<Enrolment | undefined>>();
   const enrolmentFor = (lang: BibliaLang, varietyId: string): Promise<Enrolment | undefined> => {
     const key = `${lang}|${varietyId}`;
@@ -61,10 +75,17 @@ export function apiRecorder(api: RepositoryApi, learner: () => Promise<{ learner
   return {
     mode,
     async identity(lang, varietyId) {
-      const who = await learner();
-      const e = await enrolmentFor(lang, varietyId);
-      if (!e) return undefined;
-      return { learnerId: who.learnerId, enrolmentId: e.enrolmentId, deviceId: who.deviceId ?? 'this-device' };
+      // a Repository that cannot be reached is "no identity" (the lookup still shows its card), never an exception
+      try {
+        const who = await learner();
+        const key = `${who.learnerId}|${lang}|${varietyId}`;
+        const known = opts.memo?.get(key);
+        if (known) return { learnerId: who.learnerId, enrolmentId: known, deviceId: who.deviceId ?? 'this-device' };
+        const e = await enrolmentFor(lang, varietyId);
+        if (!e) return undefined;
+        opts.memo?.set(key, e.enrolmentId);
+        return { learnerId: who.learnerId, enrolmentId: e.enrolmentId, deviceId: who.deviceId ?? 'this-device' };
+      } catch { return undefined; }
     },
     async record(events) {
       try {
@@ -82,4 +103,130 @@ export function makeRecorder(send = extensionSend(), app?: { api: RepositoryApi;
   if (!send) return noRecorder('Open Biblia from the GoLearn extension to record what you read: here it is a reader only, and nothing is kept.');
   const local = connectLocalRepository(send, MSG_LOCAL_REPO);
   return apiRecorder(local.api, () => local.identity());
+}
+
+// ───────────────────────────── the standalone web edition: signed in to the Repository service ─────────────────────────────
+
+export const SIGNED_OUT_REASON = 'Sign in to record what you read; until you do, Biblia is a reader only.';
+const ENROLMENTS_KEY = 'biblia:enrolments';
+const BATCH = 100;
+
+/** The enrolment ids of this browser's account(s), in localStorage (ids only; nothing a learner typed). */
+export function enrolmentMemo(storage: Storage | undefined): EnrolmentMemo {
+  const read = (): Record<string, string> => {
+    try { const j = JSON.parse(storage?.getItem(ENROLMENTS_KEY) ?? '{}') as unknown; return j && typeof j === 'object' && !Array.isArray(j) ? (j as Record<string, string>) : {}; } catch { return {}; }
+  };
+  const write = (m: Record<string, string>): void => { try { storage?.setItem(ENROLMENTS_KEY, JSON.stringify(m)); } catch { /* storage blocked */ } };
+  return {
+    get: (key) => { const v = read()[key]; return typeof v === 'string' && v ? v : undefined; },
+    set: (key, id) => write({ ...read(), [key]: id }),
+    clear: () => { try { storage?.removeItem(ENROLMENTS_KEY); } catch { /* storage blocked */ } },
+  };
+}
+
+export interface AccountRecorderOptions {
+  /** The signed-in session right now, or undefined when signed out (read at every call, so signing in or out needs no new recorder). */
+  session(): { api: RepositoryApi; learnerId: string; deviceId: string } | undefined;
+  queue: EventQueue;
+  storage?: Storage;
+  /** The window whose 'online' event flushes the queue. */
+  win?: Pick<Window, 'addEventListener' | 'removeEventListener'>;
+  /** Events the service has acknowledged (the levels on the page refresh from them). */
+  onAppended?(events: GoEvent[]): void;
+  /** The service said 401: the session is no longer valid (the events stay queued). */
+  onAuthExpired?(): void;
+}
+export type AccountRecorder = Recorder & { flush(): Promise<FlushResult>; pending(): number; destroy(): void };
+
+/**
+ * The recorder of the standalone edition. `mode` is 'account' while a session exists and 'none' (with the sign-in reason) otherwise, read live.
+ * Identities come from `apiRecorder` over the signed-in api (the enrolment is made on first use, then remembered). Every record() goes into the
+ * offline queue first and is then sent from it, oldest first, in batches; a batch the service cannot take now (offline, 5xx, 429) stays queued and
+ * is retried on start, on the window's 'online' event and after the next successful append; a batch refused for good (4xx) is dropped, one event
+ * at a time, so a single bad event cannot block the rest.
+ */
+export function accountRecorder(o: AccountRecorderOptions): AccountRecorder {
+  const memo = enrolmentMemo(o.storage);
+  const inner = new WeakMap<RepositoryApi, Recorder>();
+  const innerFor = (s: NonNullable<ReturnType<AccountRecorderOptions['session']>>): Recorder => {
+    let r = inner.get(s.api);
+    if (!r) { r = apiRecorder(s.api, async () => ({ learnerId: s.learnerId, deviceId: s.deviceId }), 'account', { memo }); inner.set(s.api, r); }
+    return r;
+  };
+  const authEnded = (): void => { try { o.onAuthExpired?.(); } catch { /* a listener never stops the queue */ } };
+  const appended = (events: GoEvent[]): void => { try { o.onAppended?.(events); } catch { /* a listener never stops the queue */ } };
+  const transient = (status: number): boolean => status === 0 || status >= 500 || status === 429 || status === 408;
+
+  async function drain(): Promise<FlushResult> {
+    const s = o.session();
+    const out: FlushResult = { status: 'ok', sent: 0, pending: 0, rejected: 0 };
+    if (!s) return out;
+    const left = (): number => o.queue.count(s.learnerId);
+    for (;;) {
+      const batch = o.queue.peek(s.learnerId, BATCH);
+      if (!batch.length) break;
+      let r;
+      try { r = await s.api.appendEvents(batch); } catch { return { ...out, status: 'offline', pending: left(), message: 'The service could not be reached.' }; }
+      if (r.ok) { o.queue.remove(batch.map((e) => e.id)); out.sent += batch.length; appended(batch); continue; }
+      if (r.status === 401) { authEnded(); return { ...out, status: 'auth', pending: left(), message: 'Your sign-in has ended.' }; }
+      if (transient(r.status)) return { ...out, status: 'offline', pending: left(), message: r.message || `The service answered ${r.status}.` };
+      // refused for good: find which events, one at a time, so the good ones still go
+      memo.clear();
+      for (const e of batch) {
+        let one;
+        try { one = await s.api.appendEvents([e]); } catch { return { ...out, status: 'offline', pending: left(), message: 'The service could not be reached.' }; }
+        if (one.ok) { o.queue.remove([e.id]); out.sent += 1; appended([e]); }
+        else if (one.status === 401) { authEnded(); return { ...out, status: 'auth', pending: left(), message: 'Your sign-in has ended.' }; }
+        else if (transient(one.status)) return { ...out, status: 'offline', pending: left(), message: one.message || `The service answered ${one.status}.` };
+        else { o.queue.remove([e.id]); out.rejected += 1; out.status = 'rejected'; out.message = one.message || `The service refused it (${one.status}).`; }
+      }
+    }
+    out.pending = left();
+    return out;
+  }
+
+  let running: Promise<FlushResult> | undefined;
+  let again = false;
+  function flush(): Promise<FlushResult> {
+    if (running) { again = true; return running; }
+    running = (async () => {
+      let last: FlushResult;
+      let sent = 0; let rejected = 0; let message: string | undefined;
+      do {
+        again = false;
+        last = await drain();
+        sent += last.sent; rejected += last.rejected; message = last.message ?? message;
+        if (last.status === 'auth') break;
+      } while (again); // a flush asked for while this one was running (the browser came back online, a new event) gets one more try, never a loop
+      return { ...last, sent, rejected, ...(message ? { message } : {}) };
+    })().finally(() => { running = undefined; });
+    return running;
+  }
+
+  const onOnline = (): void => { void flush(); };
+  o.win?.addEventListener('online', onOnline);
+
+  return {
+    get mode() { return o.session() ? 'account' : 'none'; },
+    get reason() { return o.session() ? undefined : SIGNED_OUT_REASON; },
+    async identity(lang, varietyId) {
+      const s = o.session();
+      return s ? innerFor(s).identity(lang, varietyId) : undefined;
+    },
+    async record(events) {
+      const s = o.session();
+      if (!s) return { ok: false, message: SIGNED_OUT_REASON };
+      const { dropped } = o.queue.push(events);
+      const notes: string[] = [];
+      if (dropped) notes.push(`${dropped} of the oldest events waiting on this device were dropped: the offline queue holds at most ${QUEUE_CAP.toLocaleString('en-US')}.`);
+      const r = await flush();
+      if (r.status === 'auth') return { ok: false, queued: true, message: 'Your sign-in has ended. Sign in again; what you did is kept on this device until then.' };
+      if (r.status === 'rejected' && r.pending === 0 && r.sent === 0) return { ok: false, message: r.message ?? 'The service refused this.' };
+      if (r.status === 'offline' || r.pending > 0) notes.unshift(`Saved on this device (${r.pending} waiting); it is sent when the service can be reached.`);
+      return { ok: true, ...(r.pending > 0 ? { queued: true } : {}), ...(notes.length ? { message: notes.join(' ') } : {}) };
+    },
+    flush,
+    pending() { const s = o.session(); return s ? o.queue.count(s.learnerId) : 0; },
+    destroy() { o.win?.removeEventListener('online', onOnline); },
+  };
 }

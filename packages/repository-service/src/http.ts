@@ -35,6 +35,11 @@ export const CORS: Record<string, string> = {
   'Access-Control-Max-Age': '7200',
   // the typed client reads the validator to ask "has it changed?" next time
   'Access-Control-Expose-Headers': 'ETag, Retry-After, X-Request-Id, Content-Disposition',
+  // Private Network Access (Chromium): a page served from a public https origin (the hosted GoReview, setup app or Biblia) may call a
+  // service on a loopback or private address only if the preflight answers this header. It lets a developer point a hosted page at the
+  // local service (Service address: http://127.0.0.1:8790) to test it; a public deployment of the service is never on a private address,
+  // so there the header changes nothing (2026-10-23).
+  'Access-Control-Allow-Private-Network': 'true',
 };
 
 /**

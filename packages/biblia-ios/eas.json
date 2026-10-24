@@ -21,7 +21,7 @@
   "submit": {
     "testflight": {
       "ios": {
-        "ascAppId": "REPLACE_WITH_BIBLIA_APP_STORE_CONNECT_APP_ID"
+        "ascAppId": "6826655180"
       }
     }
   }

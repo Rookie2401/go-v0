@@ -66,3 +66,14 @@ Local development: `npm run prepare:web` builds the standalone edition into `web
 ## Not verified here
 
 Windows cannot compile, sign or run the iOS app: no Xcode build, no simulator run, no EAS build and no TestFlight upload were done. The Capacitor project is the output of `npx cap add ios` plus the edits above (display name, encryption flag, portrait iPhone-only, privacy manifest, shared scheme copied from GoReview's, native icon).
+
+## State on 2026-10-24
+
+- Expo project created: `@rookie56r/biblia-ios`, id `04e595f4-05bc-44f5-85a5-fa9cb76e9202` (set `BIBLIA_EAS_PROJECT_ID` for every stage).
+- First `eas build` (non-interactive) stopped at credentials: "Distribution Certificate is not validated for non-interactive builds …
+  Run this command again in interactive mode." The bundle id `com.cjwalker.biblia` has no provisioning profile yet, and EAS will only
+  create one in an interactive session with the owner's Apple sign-in (or an App Store Connect API key the owner chooses). That step is
+  the owner's: from `packages\biblia-ios\.eas-project` in a terminal, `npx eas build --platform ios --profile testflight` without
+  `--non-interactive`, accept "Set up credentials" and sign in when asked; afterwards non-interactive builds work.
+- `eas.json` `ascAppId` is still the placeholder: the App Store Connect app record "Biblia" (bundle id `com.cjwalker.biblia`) must be
+  created by the owner, and its numeric Apple ID put there before `eas submit`.

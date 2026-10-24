@@ -59,7 +59,16 @@ async function copySafe(source, destination, relative = '') {
 run('npm', ['run', 'release:sync'], packageDir);
 // The App Store icon of the native project is the supplied assets/icon.png (validated above).
 await cp(path.join(packageDir, 'assets', 'icon.png'), path.join(packageDir, 'ios', 'App', 'App', 'Assets.xcassets', 'AppIcon.appiconset', 'AppIcon-512@2x.png'));
-await rm(stageDir, { recursive: true, force: true });
+// Reset the stage. A terminal left open inside .eas-project (the interactive `eas build` is run from there) keeps the folder itself busy
+// on Windows (EBUSY on rmdir) while its CONTENTS can still be removed, so fall back to emptying it; if even that fails, say what to close.
+async function resetStage() {
+  try { await rm(stageDir, { recursive: true, force: true }); } catch (e) {
+    if (e?.code !== 'EBUSY' && e?.code !== 'EPERM' && e?.code !== 'ENOTEMPTY') throw e;
+    try { for (const name of await readdir(stageDir)) await rm(path.join(stageDir, name), { recursive: true, force: true }); }
+    catch (inner) { throw new Error(`${stageDir} is in use (${inner?.code ?? inner}). Close the terminal or window that is open inside it (cd out of .eas-project) and run release:stage again.`); }
+  }
+}
+await resetStage();
 await mkdir(stageDir, { recursive: true });
 await mkdir(path.join(stageDir, '.eas'), { recursive: true });
 await mkdir(path.join(stageDir, 'scripts'), { recursive: true });

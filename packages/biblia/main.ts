@@ -49,7 +49,9 @@ async function standalone(): Promise<{ recorder: Recorder; account?: AccountServ
 const started = (async () => {
   const mobile = createMobileRuntime(window);
   const app = await inApp();
-  const own = !app && !mobile.native && !extensionSend() && isStandalone() ? await standalone() : undefined;
+  // The standalone marker wins wherever the GoReview app's session is not present: the hosted web edition, and (2026-10-24) Biblia's own
+  // native shell (packages/biblia-ios), which bundles the standalone edition and signs in on its own.
+  const own = !app && !extensionSend() && isStandalone() ? await standalone() : undefined;
   const recorder = own ? own.recorder : app ? makeRecorder(undefined, app) : mobile.native
     ? { ...makeRecorder(undefined), reason: 'Sign in to GoReview (the app this page belongs to) to record what you read; until then Biblia is a reader only.' }
     : makeRecorder();
@@ -58,7 +60,8 @@ const started = (async () => {
     source: fetchJsonWith((input, init) => globalThis.fetch(input, init), './'),
     recorder,
     ...(own?.account ? { account: own.account } : {}),
-    ...(mobile.native ? { backUrl: '../index.html#/review' } : {}),
+    // the way back to GoReview exists only when this page is bundled INSIDE the GoReview app (not in Biblia's own shell, which has the marker)
+    ...(mobile.native && !isStandalone() ? { backUrl: '../index.html#/review' } : {}),
     ...(storage ? { storage } : {}),
     now: () => new Date(),
   });

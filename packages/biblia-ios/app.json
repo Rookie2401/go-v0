@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "Biblia",
+    "slug": "biblia-ios",
+    "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "com.example.provisional.biblia",
+      "buildNumber": "1",
+      "supportsTablet": false
+    }
+  }
+}

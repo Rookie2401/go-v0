@@ -1,0 +1,24 @@
+{
+  "name": "@gopractice/biblia-ios",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Capacitor iOS shell for the standalone Biblia edition",
+  "scripts": {
+    "prepare:web": "node scripts/prepare-web.mjs",
+    "sync:ios": "npm run prepare:web && cap sync ios",
+    "release:sync": "node scripts/prepare-web.mjs --release && cap sync ios",
+    "release:stage": "node scripts/build-eas-project.mjs",
+    "open:ios": "cap open ios",
+    "release:preflight": "node scripts/prepare-web.mjs --release",
+    "validate:eas-config": "node scripts/validate-eas-config.mjs",
+    "validate:submit-config": "node scripts/validate-eas-config.mjs --submit"
+  },
+  "dependencies": {
+    "@capacitor/core": "8.5.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.3",
+    "@capacitor/ios": "8.5.3",
+    "eas-cli": "24.13.0"
+  }
+}

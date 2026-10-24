@@ -1,0 +1,28 @@
+{
+  "cli": {
+    "version": ">=24.13.0",
+    "appVersionSource": "local",
+    "requireCommit": false
+  },
+  "build": {
+    "testflight": {
+      "node": "24.11.1",
+      "distribution": "store",
+      "credentialsSource": "remote",
+      "ios": {
+        "image": "macos-tahoe-26.5-xcode-26.6",
+        "scheme": "App",
+        "buildConfiguration": "Release",
+        "config": "ios-testflight.yml",
+        "applicationArchivePath": "ios/build/*.ipa"
+      }
+    }
+  },
+  "submit": {
+    "testflight": {
+      "ios": {
+        "ascAppId": "REPLACE_WITH_BIBLIA_APP_STORE_CONNECT_APP_ID"
+      }
+    }
+  }
+}

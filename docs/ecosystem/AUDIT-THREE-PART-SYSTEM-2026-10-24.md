@@ -85,8 +85,11 @@ Codex ("Team Luna", Sol leading) set the environment on the Render service and r
   is for the Caddy / nginx deployment in `infra/`.
 - **Mail configured**: Resend domain verified, a restricted key, `MAIL_FROM`, and `APP_PUBLIC_URL=https://rookie2401.github.io/go-v0/app/`
   (Codex's report; a delivery test reached the owner's address). Not re-verified from this session: the Render environment is not
-  visible from here and the connected mailbox is not the owner's Outlook address. A real password reset remains untested because the
-  owner's address has no account; the first "Forgot password" by a registered user is that test.
+  visible from here and the connected mailbox is not the owner's Outlook address.
+- **Real password reset PASSED** (owner, ~22:55, from the hosted setup app with the Service address set to the Render name): the owner
+  registered their own account, asked for a reset link, the email arrived in Outlook, the link opened the app's reset screen and the new
+  password signs in. Finding 2 closed. (The first attempt was refused with "Too many attempts": the recovery rule is a token bucket of
+  10 per hour per address, and the audit's own probes from the same network had spent it; it refills one attempt per six minutes.)
 
 ## Verdict
 

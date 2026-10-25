@@ -70,7 +70,8 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 .mark.fail { color: var(--bad); }
 
 /* page */
-.screen { padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; }
+/* centred like GoReview's .screen (2026-10-24: the column sat against the left edge on a wide window) */
+.screen { width: 100%; padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; }
 .screen:focus { outline: none; }
 h1 {
   font-size: clamp(1.5rem, 4.5vw, 2.1rem); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; text-align: center;

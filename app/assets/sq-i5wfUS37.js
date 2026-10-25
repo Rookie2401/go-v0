@@ -1,0 +1,1 @@
+import{n as e}from"./index-BnmrE6Au.js";export{e as adapter};

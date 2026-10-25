@@ -1,1 +1,0 @@
-import{t as e}from"./es-C8COWLlC.js";export{e as adapter};

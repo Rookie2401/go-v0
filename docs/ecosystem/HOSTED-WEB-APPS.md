@@ -6,7 +6,7 @@ Three of the ecosystem's apps are served from GitHub Pages; all three talk to th
 
 | app | address | branch / folder | built from | notes |
 |---|---|---|---|---|
-| GoReview, web edition | https://rookie2401.github.io/go-v0/review/ | `Rookie2401/go-v0` `gh-pages`, `review/` | `packages/gopractice/dist-review` (`GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com GOPRACTICE_DICT=hi npx vite build -c packages/gopractice/vite.config.ts --mode review`), `sw.js` `BUILD_ID 0debfb0790d6`, 58 MB | installable; Hindi dictionary bundled, other languages' meanings come from the service |
+| GoReview, web edition | https://rookie2401.github.io/go-v0/review/ | `Rookie2401/go-v0` `gh-pages`, `review/` | `packages/gopractice/dist-review` (`GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com GOPRACTICE_DICT=hi,la npx vite build -c packages/gopractice/vite.config.ts --mode review`), `sw.js` `BUILD_ID ebb80c3e7dad`, 187 MB (gh-pages `c29deb7f`, 2026-10-25; before: Hindi only, 58 MB, `0debfb0790d6`) | installable; the Hindi and Latin dictionaries bundled (Latin added 2026-10-25 so the hosted edition can be tested as far as the native one, short of the shell), other languages' meanings come from the service |
 | GoLearn setup app | https://rookie2401.github.io/go-v0/app/ | same branch, `app/` | `packages/golearn-extension/dist-web` (`vite build -c packages/golearn-extension/app/vite.config.ts --mode web`), then `config.json`'s `serviceUrl` set to the public address by hand (that build has no environment override) | the address the account emails should open: set `APP_PUBLIC_URL=https://rookie2401.github.io/go-v0/app/` on the service |
 | Biblia | https://rookie2401.github.io/biblia/ | `Rookie2401/biblia` `gh-pages` (root) | `packages/biblia/dist-standalone`, see `BIBLIA-STANDALONE.md` | published 2026-10-23 |
 
@@ -17,7 +17,7 @@ The root of the `go-v0` Pages site (the earlier Go PWA, `dict/` with the hosted 
 
 ```powershell
 cd C:\Users\CJWal\dev\go-v0
-$env:GOPRACTICE_SERVICE_URL='https://repo.golearn-global-languages.com'; $env:GOPRACTICE_DICT='hi'
+$env:GOPRACTICE_SERVICE_URL='https://repo.golearn-global-languages.com'; $env:GOPRACTICE_DICT='hi,la'
 npx vite build -c packages/gopractice/vite.config.ts --mode review
 npx vite build -c packages/golearn-extension/app/vite.config.ts --mode web
 # worktree of gh-pages (never under OneDrive); .git in a worktree is a FILE: never let a mirror copy delete it

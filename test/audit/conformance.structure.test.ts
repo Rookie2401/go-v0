@@ -21,7 +21,10 @@ const trackedPackages = (): Set<string> => {
   } catch { return new Set(); } // no git: every folder counts
 };
 const tracked = trackedPackages();
-const PACKAGES = fs.readdirSync(path.join(ROOT, 'packages'), { withFileTypes: true }).filter((d) => d.isDirectory() && (tracked.size === 0 || tracked.has(d.name))).map((d) => d.name).sort();
+// A native shell (packages/<app>-ios: the Capacitor wrapper of an app that exists as a package of its own) is not an application entry
+// group: its web content is a generated copy of that app (web/, ios/App/App/public/), and it is excluded here (2026-10-24, biblia-ios).
+const isNativeShell = (name: string): boolean => /-ios$/.test(name);
+const PACKAGES = fs.readdirSync(path.join(ROOT, 'packages'), { withFileTypes: true }).filter((d) => d.isDirectory() && !isNativeShell(d.name) && (tracked.size === 0 || tracked.has(d.name))).map((d) => d.name).sort();
 const pkgSet = (files: Iterable<string>): string[] => [...new Set([...files].filter((f) => f.startsWith('packages/')).map(packageOf))].sort();
 
 describe('(c) exactly two application entry groups', () => {

@@ -131,8 +131,11 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   // ── service address
   const url = h('input', { type: 'url', id: 'settings-svc-url', name: 'svc-url', autocomplete: 'off', spellcheck: 'false', value: await ctx.serviceUrl() }) as HTMLInputElement;
   const svcStatus = statusLine();
+  const serviceHelp = ctx.deps.mobile?.native
+    ? 'https, or http on localhost for development. Leave empty to use the default. Changing this address signs you out; queued events stay with the previous service. Switch back to sync them.'
+    : 'https, or http on localhost for development. Leave empty to use the default.';
   append(serviceBox, [
-    field('Go Repository service', url, 'https, or http on localhost for development. Leave empty to use the default.'),
+    field('Go Repository service', url, serviceHelp),
     h('div', { class: 'row' }, button('Use this address', () => {
       void (async () => {
         const raw = url.value.trim();

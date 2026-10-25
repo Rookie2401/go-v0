@@ -36,7 +36,7 @@ npm run release:stage
 
 Preparation fails unless the URL is public HTTPS and `<URL>/health` reports `ok: true`, `service: "repository"`, and `contractVersion: 3`. No backend host is provisioned by this package.
 
-The generated stage has no EAS project ID until the owner links or creates one. After confirming the Bundle ID and endpoint, go to `.eas-project/` and run `npx eas init --account rookie56r` once, then configure the App Store distribution credentials with `npx eas credentials --platform ios`. These are account changes and are intentionally left to the owner. The cloud build command is:
+The stage retains the existing Expo project ID: an explicit `GOREVIEW_EAS_PROJECT_ID` override takes precedence, followed by a previously linked stage, then this package's tracked `app.json`. A clean checkout therefore uses the existing GoReview project instead of requiring a new `eas init`. Invalid project IDs stop preparation. If setting up a genuinely new app, link its project and configure distribution credentials once; existing releases reuse the credentials already held in Expo. This environment still needs an authenticated Expo session to build or submit. The cloud build command is:
 
 ```powershell
 $stage = (Resolve-Path .).Path
@@ -48,6 +48,12 @@ npx eas build --platform ios --profile testflight
 Run it with the working directory set to `.eas-project/`. `EAS_NO_VCS` and `EAS_PROJECT_ROOT` make the uploaded project root the standalone stage rather than the containing monorepo. EAS CLI 24.13.0 is pinned locally. No EAS project was created, no remote build was started, and no Apple credential was changed during this setup. EAS currently offers up to 15 iOS builds per billing cycle on its free plan; verify current account usage before starting a build.
 
 EAS Build returns an App Store Connect IPA but does not submit it. After the App Store Connect app record exists and its App Store Connect API key is configured in EAS, submit the completed build with `npx eas submit --platform ios --latest` or use App Store Connect Transporter. Finish build processing and enable TestFlight testers in App Store Connect.
+
+### Release validation
+
+Set `GOPRACTICE_DICT` to the intended language packs (previous Hindi/Latin releases used `hi,la`). Development builds permit missing generated data; release preparation now refuses a missing selected dictionary manifest or shard, an incomplete Biblia canon or missing book, missing Hebrew/Greek indexes, and missing fonts or attribution. Restore or regenerate those inputs before staging; do not remove a selected language merely to make a release pass.
+
+`release:stage` validates both the web folder and the actual native `public/` payload. It verifies their service addresses match, keeps the existing Expo project link, stamps the supplied build number and marketing version into both Xcode projects, then validates those native values. EAS repeats stamping before reading build metadata, so its metadata and the IPA use the same version. A successful stage is still not a compiled/signed IPA or a device test. Check the latest uploaded TestFlight build before choosing the next number.
 
 ## Release preflight and archive
 

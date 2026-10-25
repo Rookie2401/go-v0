@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { isIP } from 'node:net';
+import { dictionaryLanguages, validateBundledAssets } from './release-inputs.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const pkg = path.resolve(here, '..');
@@ -105,5 +106,6 @@ html = html.replace(/<link\s+rel="apple-touch-icon"[^>]*>\s*/i, '');
 await writeFile(htmlPath, html);
 await rm(path.join(web, 'sw.js'), { force: true });
 await rm(path.join(web, 'manifest.webmanifest'), { force: true });
+if (release) await validateBundledAssets(web, dictionaryLanguages(process.env.GOPRACTICE_DICT));
 
 console.log(`Prepared bundled GoReview web assets at ${path.relative(pkg, web)}${release ? ' with validated Bundle ID and healthy HTTPS Repository URL' : ''}.`);

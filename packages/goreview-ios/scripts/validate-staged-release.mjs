@@ -1,9 +1,11 @@
 import { readFile } from 'node:fs/promises';
 import { validateAppIcons } from './validate-app-icon.mjs';
+import { resolveProjectId, validateBundledAssets } from './release-inputs.mjs';
 
 const app = JSON.parse(await readFile('app.json', 'utf8'));
 const capacitor = JSON.parse(await readFile('capacitor.config.json', 'utf8'));
 const webConfig = JSON.parse(await readFile('web/config.json', 'utf8'));
+const nativeConfig = JSON.parse(await readFile('ios/App/App/public/config.json', 'utf8'));
 const bundleId = app?.expo?.ios?.bundleIdentifier;
 const buildNumber = app?.expo?.ios?.buildNumber;
 const serviceUrl = webConfig?.serviceUrl;
@@ -18,6 +20,19 @@ if (!buildNumber || !/^[1-9][0-9]*$/.test(buildNumber)) {
 }
 if (capacitor.appId !== bundleId || capacitor.server?.url) {
   throw new Error('Capacitor appId must match the Bundle ID and server.url must be absent.');
+}
+if (nativeConfig.serviceUrl !== serviceUrl) throw new Error('The native bundle and web bundle must use the same Repository endpoint.');
+if (!resolveProjectId({ tracked: app?.expo?.extra?.eas?.projectId })) throw new Error('The stage is not linked to the existing GoReview Expo project.');
+const languages = app?.expo?.extra?.goreviewRelease?.dictionaryLanguages;
+if (!Array.isArray(languages) || languages.some((v) => typeof v !== 'string')) throw new Error('The staged app must record its selected dictionary languages.');
+await validateBundledAssets('web', languages);
+await validateBundledAssets('ios/App/App/public', languages);
+for (const project of ['ios/App/App.xcodeproj/project.pbxproj', 'ios/GoReview.xcodeproj/project.pbxproj']) {
+  const text = await readFile(project, 'utf8');
+  for (const [key, expected] of [['CURRENT_PROJECT_VERSION', buildNumber], ['MARKETING_VERSION', app.expo.version], ['PRODUCT_BUNDLE_IDENTIFIER', bundleId]]) {
+    const values = [...text.matchAll(new RegExp(`^\\s*${key}\\s*=\\s*([^;]+);`, 'gm'))].map((m) => m[1].trim().replace(/^"|"$/g, ''));
+    if (values.length < 2 || values.some((v) => v !== expected)) throw new Error(`${project} does not consistently use staged ${key}=${expected}.`);
+  }
 }
 let endpoint;
 try { endpoint = new URL(serviceUrl); } catch { throw new Error('The bundled Repository service URL is missing or invalid.'); }

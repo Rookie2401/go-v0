@@ -12,14 +12,14 @@ build:
         working_directory: .
         command: node scripts/prepare-eas-ios-project.mjs
     - run:
+        name: Apply staged version to the existing Xcode project
+        working_directory: .
+        command: node scripts/set-build-version.mjs
+    - run:
         name: Validate staged release inputs
         working_directory: .
         command: node scripts/validate-staged-release.mjs
     - eas/resolve_build_config
-    - run:
-        name: Apply staged version to the existing Xcode project
-        working_directory: .
-        command: node scripts/set-build-version.mjs
     - eas/configure_ios_credentials
     - eas/generate_gymfile_from_template:
         inputs:

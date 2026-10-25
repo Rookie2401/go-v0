@@ -25,6 +25,7 @@ for (const name of required) if (!stepNames.includes(name)) throw new Error(`Cus
 if (stepNames.includes('eas/prebuild')) throw new Error('Capacitor workflow must not run Expo Prebuild over its existing Xcode project.');
 if (!stepNames.some((name) => name === 'run:Expose the shared native project to EAS scheme discovery')) throw new Error('Custom workflow must expose its shared scheme at ios/*.xcodeproj after Capacitor sync.');
 if (!stepNames.some((name) => name === 'run:Apply staged version to the existing Xcode project')) throw new Error('Custom workflow must set iOS version/build in both native project paths.');
+if (stepNames.indexOf('run:Apply staged version to the existing Xcode project') > stepNames.indexOf('eas/resolve_build_config')) throw new Error('Stamp the native version before EAS reads build metadata.');
 if (easJson.build?.testflight?.ios?.image !== 'macos-tahoe-26.5-xcode-26.6' || easJson.build?.testflight?.node !== '24.11.1') {
   throw new Error('EAS profile must pin the documented Xcode 26.6 image and Node.js 24.11.1 override.');
 }

@@ -171,6 +171,11 @@ export interface AccountScreenDeps {
 
 type Child = Node | string | null | undefined | false;
 
+/**
+ * The account screen, in GoReview's design (packages/gopractice/screens/signin.ts): a title with its rule, a WELCOME card that says what the
+ * account is for, the SIGN IN card with its EMAIL and PASSWORD labels and the gold Sign in button, the "Forgot password?" disclosure, the
+ * note about email links and the line to the drafts. Signed in, the same page says who and offers Sign out.
+ */
 export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   const { doc, account } = d;
   const h = (tag: string, attrs: Record<string, string | undefined> = {}, ...children: Child[]): HTMLElement => {
@@ -179,16 +184,22 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
     for (const c of children) if (c !== null && c !== undefined && c !== false) el.append(typeof c === 'string' ? doc.createTextNode(c) : c);
     return el;
   };
-  const status = (cls = ''): HTMLElement => h('p', { class: `status${cls ? ` ${cls}` : ''}`, role: 'status' });
-  const say = (el: HTMLElement, text: string, kind: 'ok' | 'error' | 'info'): void => { el.textContent = text; el.className = `status ${kind}`; };
-  const legal = h('p', { class: 'legal-links' }, h('a', { href: '#/privacy' }, 'Privacy Policy'), ' · ', h('a', { href: '#/terms' }, 'Terms'));
+  const status = (cls = ''): HTMLElement => h('p', { class: `status${cls ? ` ${cls}` : ''}`, role: 'status', 'aria-live': 'polite' });
+  const say = (el: HTMLElement, text: string, kind: 'ok' | 'error' | 'info'): void => { el.textContent = text; el.className = `status ${kind}`; el.setAttribute('data-kind', kind); };
+  const field = (caption: string, control: HTMLElement): HTMLElement => h('label', { class: 'field' }, h('span', { class: 'cap' }, caption), control);
+  const legal = h('p', { class: 'muted legal-links' }, h('a', { href: '#/terms' }, 'Terms'), ' · ', h('a', { href: '#/privacy' }, 'Privacy Policy'), ' (drafts)');
   const box = h('div', { class: 'account' }, d.topbar);
+  const screen = h('div', { class: 'screen' });
+  box.append(screen);
 
   const st = account.state();
   if (st.signedIn) {
-    box.append(
-      h('p', { id: 'account-who' }, `Signed in as ${st.email ?? 'your account'}. What you look up and mark in Biblia is recorded in your GoLearn account, and the words you have met anywhere are shown on the page.`),
-      h('p', {}, h('button', { type: 'button', id: 'account-signout' }, 'Sign out')),
+    screen.append(
+      h('h1', {}, 'Account'),
+      h('section', { class: 'card', id: 'account-signed-in', 'aria-labelledby': 'account-signed-in-h' },
+        h('h2', { id: 'account-signed-in-h' }, 'Signed in'),
+        h('p', { id: 'account-who' }, `Signed in as ${st.email ?? 'your account'}. What you look up and mark in Biblia is recorded in your GoLearn account, and the words you have met anywhere are shown on the page.`),
+        h('div', { class: 'row' }, h('button', { type: 'button', class: 'btn', id: 'account-signout' }, 'Sign out'))),
       legal);
     (box.querySelector('#account-signout') as HTMLButtonElement).addEventListener('click', () => { void account.signOut().then(() => d.done()); });
     return box;
@@ -197,15 +208,15 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   const email = h('input', { type: 'email', id: 'account-email', name: 'email', autocomplete: 'email', required: '', spellcheck: 'false' }) as HTMLInputElement;
   const password = h('input', { type: 'password', id: 'account-password', name: 'password', autocomplete: 'current-password', required: '' }) as HTMLInputElement;
   const out = status();
-  const signInBtn = h('button', { type: 'submit', id: 'account-signin' }, 'Sign in') as HTMLButtonElement;
-  const createBtn = h('button', { type: 'button', id: 'account-create' }, 'Create account') as HTMLButtonElement;
+  const signInBtn = h('button', { type: 'submit', id: 'account-signin', class: 'btn primary' }, 'Sign in') as HTMLButtonElement;
+  const createBtn = h('button', { type: 'button', id: 'account-create', class: 'btn' }, 'Create account') as HTMLButtonElement;
   const more = h('div', { id: 'account-more' });
-  const form = h('form', { id: 'account-form', novalidate: '' },
-    h('p', {}, 'Use your GoLearn account to record what you read here and to see, on the page, how well you know each word. Without one, Biblia is a reader only.'),
-    h('label', {}, 'Email', email),
-    h('label', {}, 'Password', password),
-    h('p', { class: 'hint' }, `A new password needs at least ${MIN_PASSWORD} characters. It is sent to the service and nowhere else; it is never kept here.`),
-    h('p', { class: 'row' }, signInBtn, ' ', createBtn),
+  const form = h('form', { id: 'account-form', class: 'card', novalidate: '' },
+    h('h2', {}, 'Sign in'),
+    field('Email', email),
+    field('Password', password),
+    h('p', { class: 'hint muted' }, `A new password needs at least ${MIN_PASSWORD} characters. It is sent to the service and nowhere else; it is never kept here.`),
+    h('div', { class: 'row' }, signInBtn, createBtn),
     out, more);
   if (st.expired) say(out, 'Your sign-in has ended. Sign in again; anything you did meanwhile is kept on this device and sent after.', 'error');
 
@@ -220,7 +231,7 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
   };
   const unverified = (addr: string): void => {
     const again = status();
-    const btn = h('button', { type: 'button', id: 'account-resend' }, 'Send the confirmation email again') as HTMLButtonElement;
+    const btn = h('button', { type: 'button', id: 'account-resend', class: 'btn' }, 'Send the confirmation email again') as HTMLButtonElement;
     btn.addEventListener('click', () => {
       void (async () => {
         say(again, 'Sending…', 'info');
@@ -228,7 +239,7 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
         say(again, r.ok ? `If ${addr} still needs confirming, a new email is on its way.` : r.message, r.ok ? 'ok' : 'error');
       })();
     });
-    more.replaceChildren(h('p', {}, btn), again);
+    more.replaceChildren(h('div', { class: 'row' }, btn), again);
   };
 
   form.addEventListener('submit', (ev) => {
@@ -256,18 +267,18 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
         const sent = r.verificationSent === true ? ` Check your email: a link to confirm ${v.addr} is on its way.` : r.verificationSent === false ? ' The confirmation email could not be sent; ask for it again when you sign in.' : '';
         say(out, `Account created and signed in as ${v.addr}.${sent}`, 'ok');
         // the learner reads the "check your email" line before leaving this screen: no automatic redirect after a sign-up
-        more.replaceChildren(h('p', {}, h('a', { href: '#/' }, 'Continue to the library')));
+        more.replaceChildren(h('p', {}, h('a', { class: 'btn primary', href: '#/' }, 'Continue to the library')));
       } finally { password.value = ''; busy(false); }
     })();
   });
 
   const fEmail = h('input', { type: 'email', id: 'forgot-email', name: 'forgot-email', autocomplete: 'email', spellcheck: 'false' }) as HTMLInputElement;
   const fOut = status();
-  const fBtn = h('button', { type: 'button', id: 'forgot-submit' }, 'Email me a reset link') as HTMLButtonElement;
-  const forgot = h('details', { id: 'forgot', class: 'forgot' },
+  const fBtn = h('button', { type: 'button', id: 'forgot-submit', class: 'btn' }, 'Email me a reset link') as HTMLButtonElement;
+  const forgot = h('details', { id: 'forgot', class: 'card forgot' },
     h('summary', {}, 'Forgot password?'),
-    h('p', { class: 'hint' }, 'Enter the email address of your account and the service will send a link to choose a new password.'),
-    h('label', {}, 'Email', fEmail), h('p', {}, fBtn), fOut);
+    h('p', { class: 'hint muted' }, 'Enter the email address of your account and the service will send a link to choose a new password.'),
+    field('Email', fEmail), h('div', { class: 'row' }, fBtn), fOut);
   forgot.addEventListener('toggle', () => { if ((forgot as HTMLDetailsElement).open && !fEmail.value) fEmail.value = email.value.trim(); });
   fBtn.addEventListener('click', () => {
     void (async () => {
@@ -279,18 +290,33 @@ export function renderAccountScreen(d: AccountScreenDeps): HTMLElement {
     })();
   });
 
-  box.append(form, forgot, legal);
+  screen.append(
+    h('h1', {}, 'Sign in'),
+    h('section', { class: 'card', id: 'account-welcome', 'aria-labelledby': 'account-welcome-h' },
+      h('h2', { id: 'account-welcome-h' }, 'Welcome to Biblia'),
+      h('p', {}, 'Biblia records what you read with GoLearn on the same account. Sign in with the account you use in GoLearn: what you look up and mark here is kept in it, GoReview and the GoLearn extension see it too, and the words you have met anywhere are marked on the page by how well you know them.'),
+      h('p', { class: 'muted' }, 'Without an account Biblia is a reader only: every word can be looked up, but nothing is recorded and nothing is marked.')),
+    form, forgot,
+    h('p', { class: 'muted', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup.'),
+    legal);
   return box;
 }
 
 /** #/privacy and #/terms: the legal drafts of the repository (docs/legal), rendered safely. */
 export function renderLegalScreen(d: { doc: Document; topbar: HTMLElement; which: 'privacy' | 'terms' }): HTMLElement {
-  const wrap = d.doc.createElement('div');
-  wrap.className = 'legal';
-  const back = d.doc.createElement('p');
+  const el = (tag: string, cls?: string): HTMLElement => { const e = d.doc.createElement(tag); if (cls) e.className = cls; return e; };
+  const wrap = el('div', 'legal');
+  const screen = el('div', 'screen');
+  const title = el('h1');
+  title.textContent = d.which === 'privacy' ? 'Privacy Policy' : 'Terms of use';
+  const body = el('section', 'card legal');
+  body.setAttribute('aria-label', d.which === 'privacy' ? 'Privacy Policy (draft)' : 'Terms of Use (draft)');
+  body.append(renderMarkdown(d.which === 'privacy' ? PRIVACY_POLICY_MD : TERMS_MD_TEXT, 2));
+  const back = el('p', 'muted');
   const a = d.doc.createElement('a');
   a.href = '#/account'; a.textContent = 'Back to the account';
   back.append(a);
-  wrap.append(d.topbar, renderMarkdown(d.which === 'privacy' ? PRIVACY_POLICY_MD : TERMS_MD_TEXT, 2), back);
+  screen.append(title, body, back);
+  wrap.append(d.topbar, screen);
   return wrap;
 }

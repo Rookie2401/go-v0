@@ -53,8 +53,8 @@ describe.skipIf(!fs.existsSync(`${DATA}/canon.json`))('Biblia over the imported 
     expect(t).toContain('Tanakh');
     expect(t).toContain('Torah');
     expect(t).toContain('New Testament');
-    expect(document.querySelector('a[href="#/read/Gen/1"]')?.textContent).toBe('א׳');
-    expect(document.querySelector('a[href="#/read/John/3"]')?.textContent).toBe('γʹ');
+    expect(document.querySelector('a[href="#/read/Gen/1"] .entry__native')?.textContent).toBe('פֶּרֶק א׳'); // the chapter entry: "Chapter 1", the native heading, the verse count
+    expect(document.querySelector('a[href="#/read/John/3"] .entry__native')?.textContent).toBe('Κεφάλαιον γʹ');
   });
 
   it('renders Genesis 1 right-to-left with every word a button, verse numbers in Hebrew numerals, the period line, and John 1 in Greek', async () => {

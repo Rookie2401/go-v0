@@ -218,7 +218,34 @@ describe('the account screen', () => {
     expect(q('#account-signin').textContent).toBe('Sign in');
     expect(q('#account-create').textContent).toBe('Create account');
     expect(q('#forgot summary').textContent).toBe('Forgot password?');
-    expect([...document.querySelectorAll('.legal-links a')].map((a) => [a.textContent, a.getAttribute('href')])).toEqual([['Privacy Policy', '#/privacy'], ['Terms', '#/terms']]);
+    expect([...document.querySelectorAll('.legal-links a')].map((a) => [a.textContent, a.getAttribute('href')])).toEqual([['Terms', '#/terms'], ['Privacy Policy', '#/privacy']]); // GoReview's order: Terms · Privacy Policy (drafts)
+  });
+
+  it('is GoReview\'s sign-in design: the title with its rule, a WELCOME card, a SIGN IN card with EMAIL / PASSWORD labels, the gold Sign in, the forgot disclosure, the email-links note and the drafts line', () => {
+    mount();
+    expect(q('.screen > h1').textContent).toBe('Sign in');
+    expect([...document.querySelectorAll('.screen > section.card > h2, .screen > form.card > h2')].map((h) => h.textContent)).toEqual(['Welcome to Biblia', 'Sign in']);
+    expect(q('#account-welcome').textContent).toMatch(/records what you read with GoLearn on the same account/);
+    expect(q('#account-welcome').textContent).toMatch(/reader only/);
+    // labelled inputs: the caption sits in a label with the control (CSS shows it in tracked capitals)
+    expect([...document.querySelectorAll('#account-form label.field > .cap')].map((c) => c.textContent)).toEqual(['Email', 'Password']);
+    expect(q('#account-email').closest('label')!.textContent).toContain('Email');
+    expect(q('#account-signin').classList.contains('primary')).toBe(true); // the gold button
+    expect(q('#account-create').classList.contains('primary')).toBe(false);
+    expect(q('#forgot').tagName).toBe('DETAILS');
+    expect(q('#forgot').classList.contains('card')).toBe(true);
+    expect(q('#email-links-note').textContent).toBe('Links in confirmation and password-reset emails open GoLearn setup.');
+    expect(q('.legal-links').textContent).toBe('Terms · Privacy Policy (drafts)');
+    // the order of the page: welcome, sign in, forgot, the note, the drafts
+    expect([...document.querySelector('.screen')!.children].map((c) => c.id || c.className.split(' ')[0] || c.tagName.toLowerCase())).toEqual(['h1', 'account-welcome', 'account-form', 'forgot', 'email-links-note', 'muted']);
+  });
+
+  it('signed in, the same page is titled Account and carries who and Sign out in a card', async () => {
+    await account.signIn('ana@example.org', PASSWORD);
+    mount();
+    expect(q('.screen > h1').textContent).toBe('Account');
+    expect(q('#account-signed-in > h2').textContent).toBe('Signed in');
+    expect(q('#account-signed-in #account-signout').textContent).toBe('Sign out');
   });
 
   it('Sign in: checks the fields first, then signs in, empties the password field and moves on', async () => {

@@ -1,15 +1,17 @@
 // @vitest-environment node
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { startMigrationGate } from '../../../infra/repository/render-start.mjs';
+import { startBackupScheduler, startMigrationGate } from '../../../infra/repository/render-start.mjs';
 
 describe('Render repository migration startup gate', () => {
   let directory: string | undefined;
   let gate: Awaited<ReturnType<typeof startMigrationGate>> | undefined;
 
   afterEach(async () => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
     await gate?.close();
     gate = undefined;
     if (directory) await rm(directory, { recursive: true, force: true });
@@ -66,5 +68,56 @@ describe('Render repository migration startup gate', () => {
     ready = true;
     await expect(gate.launched).resolves.toBe(0);
     expect(launches).toBe(1);
+  });
+
+  it('delays the first backup, never overlaps a running backup, schedules the next after completion, and stops cleanly', async () => {
+    vi.useFakeTimers();
+    const runs: Array<{ finish: (result: { ok: boolean }) => void; stop: () => void }> = [];
+    let stops = 0;
+    const results: Array<{ ok: boolean }> = [];
+    const scheduler = startBackupScheduler({
+      initialDelayMs: 60_000,
+      intervalMs: 86_400_000,
+      runBackup: () => {
+        let finish!: (result: { ok: boolean }) => void;
+        const done = new Promise<{ ok: boolean }>((resolvePromise) => { finish = resolvePromise; });
+        const run = { finish, stop: () => { stops++; finish({ ok: false }); } };
+        runs.push(run);
+        return { done, stop: run.stop };
+      },
+      onResult: (result) => results.push(result),
+    });
+
+    await vi.advanceTimersByTimeAsync(59_999);
+    expect(runs).toHaveLength(0);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(runs).toHaveLength(1);
+    await vi.advanceTimersByTimeAsync(86_400_000);
+    expect(runs).toHaveLength(1);
+
+    runs[0]!.finish({ ok: true });
+    await vi.advanceTimersByTimeAsync(86_399_999);
+    expect(runs).toHaveLength(1);
+    await vi.advanceTimersByTimeAsync(1);
+    expect(runs).toHaveLength(2);
+    await scheduler.close();
+    expect(stops).toBe(1);
+    expect(results).toEqual([{ ok: true }, { ok: false }]);
+    await vi.advanceTimersByTimeAsync(86_400_000);
+    expect(runs).toHaveLength(2);
+  });
+
+  it('reports a failed backup without exposing runner error details', async () => {
+    vi.useFakeTimers();
+    const error = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const scheduler = startBackupScheduler({
+      initialDelayMs: 1,
+      intervalMs: 86_400_000,
+      runBackup: () => { throw new Error('private file path or secret'); },
+    });
+    await vi.advanceTimersByTimeAsync(1);
+    expect(error).toHaveBeenCalledWith('repository backup: failed');
+    expect(error.mock.calls.flat().join(' ')).not.toContain('private file path or secret');
+    await scheduler.close();
   });
 });

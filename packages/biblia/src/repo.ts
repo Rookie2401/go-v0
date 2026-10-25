@@ -110,6 +110,8 @@ export function makeRecorder(send = extensionSend(), app?: { api: RepositoryApi;
 export const SIGNED_OUT_REASON = 'Sign in to record what you read; until you do, Biblia is a reader only.';
 const ENROLMENTS_KEY = 'biblia:enrolments';
 const BATCH = 100;
+export const UPLOAD_RETRY_BASE_MS = 5_000;
+export const UPLOAD_RETRY_MAX_MS = 30_000;
 
 /** The enrolment ids of this browser's account(s), in localStorage (ids only; nothing a learner typed). */
 export function enrolmentMemo(storage: Storage | undefined): EnrolmentMemo {
@@ -131,18 +133,25 @@ export interface AccountRecorderOptions {
   storage?: Storage;
   /** The window whose 'online' event flushes the queue. */
   win?: Pick<Window, 'addEventListener' | 'removeEventListener'>;
+  /** Account state changes flush after sign-in and cancel retries after sign-out or expiry. */
+  subscribeSession?(listener: () => void): () => void;
+  /** Timer seam for deterministic retry tests. */
+  timers?: { set(fn: () => void, ms: number): unknown; clear(handle: unknown): void };
+  /** Optional observer for queue and upload state. */
+  onStatus?(status: AccountRecorderStatus): void;
   /** Events the service has acknowledged (the levels on the page refresh from them). */
   onAppended?(events: GoEvent[]): void;
   /** The service said 401: the session is no longer valid (the events stay queued). */
   onAuthExpired?(): void;
 }
-export type AccountRecorder = Recorder & { flush(): Promise<FlushResult>; pending(): number; destroy(): void };
+export interface AccountRecorderStatus { pending: number; lastSuccessAt?: number; lastError?: string; retryAt?: number; retrying: boolean }
+export type AccountRecorder = Recorder & { flush(): Promise<FlushResult>; pending(): number; status(): AccountRecorderStatus; subscribeStatus(listener: (status: AccountRecorderStatus) => void): () => void; destroy(): void };
 
 /**
  * The recorder of the standalone edition. `mode` is 'account' while a session exists and 'none' (with the sign-in reason) otherwise, read live.
  * Identities come from `apiRecorder` over the signed-in api (the enrolment is made on first use, then remembered). Every record() goes into the
  * offline queue first and is then sent from it, oldest first, in batches; a batch the service cannot take now (offline, 5xx, 429) stays queued and
- * is retried on start, on the window's 'online' event and after the next successful append; a batch refused for good (4xx) is dropped, one event
+ * is retried on start, sign-in, online/focus/resume, and a bounded 5/10/20/30-second ladder; a batch refused for good (4xx) is dropped, one event
  * at a time, so a single bad event cannot block the rest.
  */
 export function accountRecorder(o: AccountRecorderOptions): AccountRecorder {
@@ -156,6 +165,10 @@ export function accountRecorder(o: AccountRecorderOptions): AccountRecorder {
   const authEnded = (): void => { try { o.onAuthExpired?.(); } catch { /* a listener never stops the queue */ } };
   const appended = (events: GoEvent[]): void => { try { o.onAppended?.(events); } catch { /* a listener never stops the queue */ } };
   const transient = (status: number): boolean => status === 0 || status >= 500 || status === 429 || status === 408;
+  const sameSession = (a: NonNullable<ReturnType<AccountRecorderOptions['session']>> | undefined): boolean => {
+    const b = o.session();
+    return !!a && !!b && a.api === b.api && a.learnerId === b.learnerId && a.deviceId === b.deviceId;
+  };
 
   async function drain(): Promise<FlushResult> {
     const s = o.session();
@@ -163,18 +176,30 @@ export function accountRecorder(o: AccountRecorderOptions): AccountRecorder {
     if (!s) return out;
     const left = (): number => o.queue.count(s.learnerId);
     for (;;) {
+      if (destroyed || !sameSession(s)) { out.pending = left(); return out; }
       const batch = o.queue.peek(s.learnerId, BATCH);
       if (!batch.length) break;
       let r;
-      try { r = await s.api.appendEvents(batch); } catch { return { ...out, status: 'offline', pending: left(), message: 'The service could not be reached.' }; }
+      try { r = await s.api.appendEvents(batch); } catch {
+        if (!sameSession(s)) { out.pending = left(); return out; }
+        return { ...out, status: 'offline', pending: left(), message: 'The service could not be reached.' };
+      }
+      // A response from the previous account may arrive after sign-out or account switching. Keep its events for that learner and never
+      // let an old 401 expire the new account's session.
+      if (destroyed || !sameSession(s)) { out.pending = left(); return out; }
       if (r.ok) { o.queue.remove(batch.map((e) => e.id)); out.sent += batch.length; appended(batch); continue; }
       if (r.status === 401) { authEnded(); return { ...out, status: 'auth', pending: left(), message: 'Your sign-in has ended.' }; }
       if (transient(r.status)) return { ...out, status: 'offline', pending: left(), message: r.message || `The service answered ${r.status}.` };
       // refused for good: find which events, one at a time, so the good ones still go
       memo.clear();
       for (const e of batch) {
+        if (destroyed || !sameSession(s)) { out.pending = left(); return out; }
         let one;
-        try { one = await s.api.appendEvents([e]); } catch { return { ...out, status: 'offline', pending: left(), message: 'The service could not be reached.' }; }
+        try { one = await s.api.appendEvents([e]); } catch {
+          if (!sameSession(s)) { out.pending = left(); return out; }
+          return { ...out, status: 'offline', pending: left(), message: 'The service could not be reached.' };
+        }
+        if (destroyed || !sameSession(s)) { out.pending = left(); return out; }
         if (one.ok) { o.queue.remove([e.id]); out.sent += 1; appended([e]); }
         else if (one.status === 401) { authEnded(); return { ...out, status: 'auth', pending: left(), message: 'Your sign-in has ended.' }; }
         else if (transient(one.status)) return { ...out, status: 'offline', pending: left(), message: one.message || `The service answered ${one.status}.` };
@@ -186,9 +211,53 @@ export function accountRecorder(o: AccountRecorderOptions): AccountRecorder {
   }
 
   let running: Promise<FlushResult> | undefined;
+  let runningOwner: NonNullable<ReturnType<AccountRecorderOptions['session']>> | undefined;
   let again = false;
+  const timers = o.timers ?? { set: (fn: () => void, ms: number) => setTimeout(fn, ms), clear: (h: unknown) => clearTimeout(h as ReturnType<typeof setTimeout>) };
+  let retryTimer: unknown;
+  let retryStreak = 0;
+  let destroyed = false;
+  let retryAt: number | undefined;
+  let lastSuccessAt: number | undefined;
+  let lastError: string | undefined;
+  const statusListeners = new Set<(status: AccountRecorderStatus) => void>();
+  const status = (): AccountRecorderStatus => {
+    const s = o.session();
+    return {
+      pending: s ? o.queue.count(s.learnerId) : 0,
+      ...(lastSuccessAt !== undefined ? { lastSuccessAt } : {}),
+      ...(lastError ? { lastError } : {}),
+      ...(retryAt !== undefined ? { retryAt } : {}),
+      retrying: !!running,
+    };
+  };
+  const notifyStatus = (): void => {
+    const value = status();
+    try { o.onStatus?.(value); } catch { /* status observers cannot stop uploads */ }
+    for (const listener of [...statusListeners]) { try { listener(value); } catch { /* a listener cannot stop uploads */ } }
+  };
+  const clearRetry = (reset = false): void => {
+    if (retryTimer !== undefined) timers.clear(retryTimer);
+    retryTimer = undefined;
+    retryAt = undefined;
+    if (reset) retryStreak = 0;
+  };
+  const armRetry = (result: FlushResult, owner: NonNullable<ReturnType<AccountRecorderOptions['session']>>): void => {
+    if (destroyed || result.status !== 'offline' || result.pending === 0 || !sameSession(owner)) { clearRetry(true); return; }
+    clearRetry();
+    retryStreak += 1;
+    const delay = Math.min(UPLOAD_RETRY_MAX_MS, UPLOAD_RETRY_BASE_MS * 2 ** (retryStreak - 1));
+    retryAt = Date.now() + delay;
+    retryTimer = timers.set(() => { retryTimer = undefined; void flush(); }, delay);
+  };
   function flush(): Promise<FlushResult> {
-    if (running) { again = true; return running; }
+    if (destroyed) return Promise.resolve({ status: 'ok', sent: 0, pending: 0, rejected: 0 });
+    const owner = o.session();
+    if (!owner) { clearRetry(true); return Promise.resolve({ status: 'ok', sent: 0, pending: 0, rejected: 0 }); }
+    clearRetry();
+    if (running) { runningOwner = owner; again = true; return running; }
+    lastError = undefined;
+    runningOwner = owner;
     running = (async () => {
       let last: FlushResult;
       let sent = 0; let rejected = 0; let message: string | undefined;
@@ -199,12 +268,25 @@ export function accountRecorder(o: AccountRecorderOptions): AccountRecorder {
         if (last.status === 'auth') break;
       } while (again); // a flush asked for while this one was running (the browser came back online, a new event) gets one more try, never a loop
       return { ...last, sent, rejected, ...(message ? { message } : {}) };
-    })().finally(() => { running = undefined; });
+    })().then((result) => {
+      const resultOwner = runningOwner ?? owner;
+      if (destroyed || !sameSession(resultOwner)) { clearRetry(true); lastError = undefined; return result; }
+      if (result.status === 'ok' && result.pending === 0) { lastSuccessAt = Date.now(); lastError = undefined; clearRetry(true); }
+      else if (result.status !== 'ok') lastError = result.message ?? (result.status === 'auth' ? 'Your sign-in has ended.' : 'Upload is waiting for the service.');
+      armRetry(result, resultOwner);
+      return result;
+    }).finally(() => { running = undefined; runningOwner = undefined; notifyStatus(); });
+    notifyStatus();
     return running;
   }
 
-  const onOnline = (): void => { void flush(); };
-  o.win?.addEventListener('online', onOnline);
+  const onWake = (): void => { void flush(); };
+  const wakeEvents = ['online', 'focus', 'pageshow', 'resume'] as const;
+  for (const event of wakeEvents) o.win?.addEventListener(event, onWake);
+  const unsubscribeSession = o.subscribeSession?.(() => {
+    if (o.session()) { clearRetry(true); void flush(); }
+    else { clearRetry(true); lastError = undefined; notifyStatus(); }
+  });
 
   return {
     get mode() { return o.session() ? 'account' : 'none'; },
@@ -217,16 +299,26 @@ export function accountRecorder(o: AccountRecorderOptions): AccountRecorder {
       const s = o.session();
       if (!s) return { ok: false, message: SIGNED_OUT_REASON };
       const { dropped } = o.queue.push(events);
+      notifyStatus();
       const notes: string[] = [];
       if (dropped) notes.push(`${dropped} of the oldest events waiting on this device were dropped: the offline queue holds at most ${QUEUE_CAP.toLocaleString('en-US')}.`);
       const r = await flush();
+      const pending = o.queue.count(s.learnerId);
       if (r.status === 'auth') return { ok: false, queued: true, message: 'Your sign-in has ended. Sign in again; what you did is kept on this device until then.' };
-      if (r.status === 'rejected' && r.pending === 0 && r.sent === 0) return { ok: false, message: r.message ?? 'The service refused this.' };
-      if (r.status === 'offline' || r.pending > 0) notes.unshift(`Saved on this device (${r.pending} waiting); it is sent when the service can be reached.`);
-      return { ok: true, ...(r.pending > 0 ? { queued: true } : {}), ...(notes.length ? { message: notes.join(' ') } : {}) };
+      if (r.status === 'rejected' && pending === 0 && r.sent === 0) return { ok: false, message: r.message ?? 'The service refused this.' };
+      if (r.status === 'offline' || pending > 0) notes.unshift(`Saved on this device (${pending} waiting); it is sent when the service can be reached.`);
+      return { ok: true, ...(pending > 0 ? { queued: true } : {}), ...(notes.length ? { message: notes.join(' ') } : {}) };
     },
     flush,
     pending() { const s = o.session(); return s ? o.queue.count(s.learnerId) : 0; },
-    destroy() { o.win?.removeEventListener('online', onOnline); },
+    status,
+    subscribeStatus(listener) { statusListeners.add(listener); try { listener(status()); } catch { /* */ } return () => { statusListeners.delete(listener); }; },
+    destroy() {
+      destroyed = true;
+      clearRetry(true);
+      for (const event of wakeEvents) o.win?.removeEventListener(event, onWake);
+      unsubscribeSession?.();
+      statusListeners.clear();
+    },
   };
 }

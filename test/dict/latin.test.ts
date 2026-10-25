@@ -75,6 +75,12 @@ describe('spelling variants', () => {
     expect(latinLookupKeys('Verbō')[0]).toBe('verbo');
     expect(latinLookupKeys('Jesus')).toEqual(['jesus', 'iesus']);
     expect(latinLookupKeys('Ejus')).toContain('eius');
+    // an edition printing v for every u (VERBVM, VOLVNTAS, vt): the key with the vowels back as u and the consonants as v is offered too (2026-10-25)
+    expect(latinLookupKeys('VERBVM')).toContain('verbum');
+    expect(latinLookupKeys('VOLVNTAS')).toContain('voluntas');
+    expect(latinLookupKeys('vt')).toContain('ut');
+    expect(latinLookupKeys('VIVVS')).toContain('vivus');
+    expect(latinLookupKeys('QVI')).toContain('qui');
     expect(latinLookupKeys('uerbum')).toContain('verbum');
     expect(latinLookupKeys('iuuenis')).toContain('iuvenis');
     expect(latinLookupKeys('uiuus')).toContain('vivus');

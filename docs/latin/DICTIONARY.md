@@ -74,5 +74,5 @@ when `public/dict/la` is not built).
 
 - The consonantal-`u` reading in `latinLookupKeys` is a heuristic (a run like `uu` is read by what follows it); the dictionary side has no such
   guess (`v` is `v`).
-- Texts printed with `v` for every u (`VERBVM`, `vt`) are not covered: `latinSkeleton` compares them, the lookup does not.
+- Texts printed with `v` for every u (`VERBVM`, `vt`, `VOLVNTAS`): covered since 2026-10-25. `latinLookupKeys` adds, after the other keys, the spelling with every v read as u and the consonantal ones read back as v (`verbum`, `ut`, `voluntas`), so an all-capital inscription or an early print finds its entry. Still at most 6 keys.
 - Dump date unknown (see the inventory); the build date stands in for it in the dictionary id.

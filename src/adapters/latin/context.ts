@@ -41,8 +41,9 @@ export function applyContextRules(tokens: RawToken[], base: AnalysisCandidate[][
     const prevTok = i > 0 ? tokens[i - 1] : undefined;
     const startsSentence = w === 0 || (!!prevTok && !prevTok.isWord && /^[.:;?!]$/.test(prevTok.surface));
     if (!startsSentence && /^\p{Lu}/u.test(surface) && list.some((c) => c.pos === 'PROPN')) {
-      scale(list, (c) => c.pos !== 'PROPN', 0.4, 'a capitalised word inside a sentence: a name');
-      scale(list, (c) => c.pos === 'PROPN', 1.4, 'a capitalised word inside a sentence: a name');
+      // 0.4 / 1.4 until 2026-10-25: Maria (count 74) still lost to mare (477, the plural); a capitalised word inside a sentence is a name when it can be one
+      scale(list, (c) => c.pos !== 'PROPN', 0.2, 'a capitalised word inside a sentence: a name');
+      scale(list, (c) => c.pos === 'PROPN', 1.6, 'a capitalised word inside a sentence: a name');
     }
 
     const key = tokens[i].normalized;

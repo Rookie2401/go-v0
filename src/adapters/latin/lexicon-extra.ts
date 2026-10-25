@@ -31,6 +31,15 @@ export const EXTRA_NOUNS: NounRow[] = [
   ['sanguis', 'sanguinis', 'm', 'blood', 350],
   ['spiritus', 'spiritus', 'm', 'breath, spirit, the Spirit', 600],
   ['caelum', 'caeli', 'n', 'heaven, sky', 700],
+  // 2026-10-25: Vulgate nouns Whitaker lacks, from the unconfirmed-word list of docs/latin/EVAL.md (counts = Vulgate occurrences)
+  ['superhumerale', 'superhumeralis', 'n', 'ephod (the priestly shoulder-garment)', 29],
+  ['tetrarcha', 'tetrarchae', 'm', 'tetrarch (ruler of a fourth part)', 8],
+  ['cidaris', 'cidaris', 'f', 'turban, mitre (of the high priest)', 7],
+  ['sartatecta', 'sartatectorum', 'np', 'repairs (of the temple)', 7],
+  ['theraphim', '', 'n', 'teraphim, household idols', 6],
+  ['phurim', '', 'n', 'Purim (the feast of lots)', 3],
+  ['minoratio', 'minorationis', 'f', 'lessening, diminution', 3],
+  ['pelagus', 'pelagi', 'n', 'the open sea, the deep', 3],
 ];
 
 export const EXTRA_ADJS: AdjRow[] = [

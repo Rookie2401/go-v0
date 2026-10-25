@@ -52,6 +52,31 @@ What the owner asked: that the GitHub build syncs with the greater GoLearn syste
    database; what differs is the network path, which the outside probe covers. A check from a phone on cellular (open the review address,
    sign in, see the two Hebrew words) closes that last gap and is the owner's to do.
 
+## The service moved to Render (2026-10-24, evening)
+
+Codex ("Team Luna") cut the Repository service over to Render: service `go-v0` (Oregon, 0.5 CPU / 512 MB, 1 GB persistent disk,
+about 7.25 USD a month), `https://go-v0.onrender.com`, with the canonical name `repo.golearn-global-languages.com` now a DNS-only
+CNAME to it (an outside probe answers `200` with `x-render-origin-server: Render`). 7 accounts, 7 learners, 3,029 events, 10 enrolments
+were migrated (schema 4, contract 3); the PC writer was stopped and its `GoRepositoryService` task disabled; the old tunnel is left in
+place but no longer serves the name. The deployed code is the branch `fix/sync-reliability-2026-10-24` (`b91e6f30`), merged into
+master as `12e15b66`. Full report: the owner's Codex outputs folder, `cloud-server-cutover-2026-10-24.md`.
+
+**Three-way connection test against Render (this session, the test account from the Biblia walk):**
+
+| system | how | result |
+|---|---|---|
+| GoReview, hosted (`/go-v0/review/`) | Service address set to `https://go-v0.onrender.com`, signed in | home "2 cards ready, My vocab 2 words"; My vocab lists אֱלֹהִים and שָׁמַיִם, the words from the Biblia walks, migrated |
+| Biblia, the redesigned build pointed at `https://go-v0.onrender.com` (served locally) | signed in at #/account, Genesis 1 | both words painted Seen from the migrated data; a tap on הָאָרֶץ went New → Seen and the status bar said "Uploads complete" |
+| GoReview again | reloaded | "3 cards ready, 3 words": the Biblia tap arrived through Render |
+| GoLearn setup app, hosted (`/go-v0/app/`) | Service address `https://go-v0.onrender.com`, signed in | "Signed in … Progress is now synced to your account"; the Hebrew enrolment taken from the account, 22 checks passed |
+
+Why the Render address and not the canonical one in these tests: this PC's network still blocks `golearn-global-languages.com`;
+from anywhere else the canonical name works, and the apps' configs keep it. `go-v0.onrender.com` is reachable from here.
+
+Still to do on the owner's desktop: the installed GoLearn extension names `http://127.0.0.1:8790` (the stopped PC service); on its
+Sign-in screen expand "Service address", enter `https://go-v0.onrender.com` (this network) or leave the canonical name (any other),
+"Use this address", sign in. Known cosmetic issue from the merged branch: Biblia's sync-status bar offers "Sign in" even while signed in.
+
 ## Loose ends
 
 - `packages/repository-service/src/http.ts` now sends `Access-Control-Allow-Private-Network: true` (`dcd6eceb`) so a hosted page can be pointed

@@ -63,8 +63,8 @@ the audit (pushed as part of shipping, below).
 ## Findings, ranked
 
 1. **Deployed service without rate limits** (above). Not a blocker for the owner's own use; it is one before opening sign-up to
-   strangers. Fix on Render: remove `RATE_LIMIT=off` if set, set `TRUST_PROXY=1`, redeploy; then the twelve-call check above must
-   end in 429.
+   strangers. Fix on Render: remove `RATE_LIMIT=off` if set, set `TRUST_PROXY` (it turned out to need `cloudflare`, not `1`; see the
+   addendum), redeploy; then the twelve-call check above must end in 429.
 2. **No mail sender on the service**: password reset and email verification cannot reach anyone. Fix: a Resend API key and a verified
    sending domain (or SMTP), `MAIL_FROM`, `APP_PUBLIC_URL=https://rookie2401.github.io/go-v0/app/`, on Render.
 3. **This PC's network filters the canonical domain**: every client made here must use the Render name; phones and other networks are
@@ -72,6 +72,21 @@ the audit (pushed as part of shipping, below).
 4. **Audit debts in other lanes**: the Latin sample text in three bundles; the five-dictionary default dist; the certification suite.
 5. **Not seen on a device by this session**: TestFlight builds 10 and 3, the phone layout of the redesign, the service worker in a real
    browser. The owner's phone is the check.
+
+## Addendum, later the same night: findings 1 and 2 closed on Render
+
+Codex ("Team Luna", Sol leading) set the environment on the Render service and reported both fixed. Re-checked from this PC against
+`https://go-v0.onrender.com`:
+
+- **Rate limits in force.** `POST /accounts/password/forgot` for an unregistered address: `202 ×10, 429, 429`, the 429 carrying
+  `retry-after` and `{"error":"rate-limited","rule":"recovery"}`. `POST /sessions` with wrong passwords: `422 ×10, 429, 429`, rule
+  `signin`. Finding 1 closed. Note for the ops doc: `TRUST_PROXY=1` (the last X-Forwarded-For entry) did NOT work on Render;
+  `TRUST_PROXY=cloudflare` (CF-Connecting-IP) did, because Render's edge sits behind Cloudflare, which sets that header. `TRUST_PROXY=1`
+  is for the Caddy / nginx deployment in `infra/`.
+- **Mail configured**: Resend domain verified, a restricted key, `MAIL_FROM`, and `APP_PUBLIC_URL=https://rookie2401.github.io/go-v0/app/`
+  (Codex's report; a delivery test reached the owner's address). Not re-verified from this session: the Render environment is not
+  visible from here and the connected mailbox is not the owner's Outlook address. A real password reset remains untested because the
+  owner's address has no account; the first "Forgot password" by a registered user is that test.
 
 ## Verdict
 

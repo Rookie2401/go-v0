@@ -5,7 +5,7 @@
  * | variable | meaning | default |
  * |---|---|---|
  * | DATABASE_URL | `postgres://…` selects the Postgres store; absent: SQLite in `--data` | SQLite |
- * | TRUST_PROXY | `1`: believe the last X-Forwarded-For entry (behind Caddy); `cloudflare`: believe CF-Connecting-IP (behind a Cloudflare tunnel). The service must listen on 127.0.0.1 only | off |
+ * | TRUST_PROXY | `1`: believe the last X-Forwarded-For entry (behind Caddy); `cloudflare`: believe CF-Connecting-IP (behind a Cloudflare tunnel, and on Render, whose edge sits behind Cloudflare: `1` did not key the limits there, 2026-10-24). The service must listen on 127.0.0.1 only | off |
  * | LOG_FORMAT | `json` for one JSON object per request | text |
  * | METRICS_TOKEN | Bearer token for `GET /metrics`; absent: loopback only | none |
  * | RATE_LIMIT / RATE_<NAME>_MAX / RATE_<NAME>_WINDOW_S | see ./ratelimit | see ./ratelimit |

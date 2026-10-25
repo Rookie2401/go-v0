@@ -1,0 +1,16 @@
+node_modules/
+web/
+.eas-project/
+ios/Pods/
+ios/build/
+ios/App/DerivedData/
+output/
+.review-build/
+ios/App/App/public/
+ios/App/App/capacitor.config.json
+ios/App/App/config.xml
+*.xcuserstate
+xcuserdata/
+.env
+.env.*
+!.env.example

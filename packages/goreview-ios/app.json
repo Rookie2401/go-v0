@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "GoReview",
+    "slug": "goreview-ios",
+    "version": "1.0.0",
+    "ios": {
+      "bundleIdentifier": "com.example.provisional.goreview",
+      "buildNumber": "2",
+      "supportsTablet": false
+    },
+    "extra": {
+      "eas": {
+        "projectId": "668babc5-29cc-4185-b101-b963fce37ea1"
+      }
+    }
+  }
+}

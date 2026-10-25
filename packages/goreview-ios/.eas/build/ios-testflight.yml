@@ -1,0 +1,47 @@
+build:
+  name: GoReview Capacitor iOS TestFlight
+  steps:
+    - eas/checkout
+    - eas/install_node_modules
+    - run:
+        name: Sync the bundled web app into Capacitor
+        working_directory: .
+        command: npm run sync:ios
+    - run:
+        name: Expose the shared native project to EAS scheme discovery
+        working_directory: .
+        command: node scripts/prepare-eas-ios-project.mjs
+    - run:
+        name: Validate staged release inputs
+        working_directory: .
+        command: node scripts/validate-staged-release.mjs
+    - eas/resolve_build_config
+    - run:
+        name: Apply staged version to the existing Xcode project
+        working_directory: .
+        command: node scripts/set-build-version.mjs
+    - eas/configure_ios_credentials
+    - eas/generate_gymfile_from_template:
+        inputs:
+          scheme: App
+          build_configuration: Release
+          credentials: ${ eas.job.secrets.buildCredentials }
+          template: |
+            suppress_xcode_output(true)
+            clean(<%- CLEAN %>)
+            project("GoReview.xcodeproj")
+            scheme("<%- SCHEME %>")
+            configuration("<%- BUILD_CONFIGURATION %>")
+            export_options({
+              method: "<%- EXPORT_METHOD %>",
+              provisioningProfiles: {<% _.forEach(PROFILES, function(profile) { %>
+                "<%- profile.BUNDLE_ID %>" => "<%- profile.UUID %>",<% }); %>
+              }
+            })
+            export_xcargs "OTHER_CODE_SIGN_FLAGS=\"--keychain <%- KEYCHAIN_PATH %>\""
+            disable_xcpretty(true)
+            buildlog_path("<%- LOGS_DIRECTORY %>")
+            output_directory("<%- OUTPUT_DIRECTORY %>")
+            output_name("GoReview")
+    - eas/run_fastlane
+    - eas/find_and_upload_build_artifacts

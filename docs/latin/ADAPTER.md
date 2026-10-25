@@ -85,7 +85,10 @@ The analyser chunk is about as large as the other languages' (`es` 230 KB, `sq` 
 - **Gloss order**: for a reader of the Vulgate the *leading* gloss of the 233 lemmas in `gloss-data.ts` is the Vulgate sense (`dominus`: "lord, master (the Lord, God or Christ); owner"; `ecclesia`: "church; assembly, congregation"; `caro`: "flesh; the body, human nature"), and Whitaker's own senses follow
   (`orderGloss` in `lexicon.ts` drops a sense whose every word the lead already says). Every other lemma keeps Whitaker's order. The leads are curated by hand with the Wiktionary entries as the checklist: an automatic pick of the first Wiktionary senses was tried and rejected because it was worse than Whitaker for many lemmas
   (*sto* "to be", *virga* "penis", *apprehendo* "to learn"). `GLOSS_REPORT=1 node scripts/latin-build-glosses.mjs` prints, for the commonest lemmas, the Wiktionary senses tagged Ecclesiastical / Biblical / Late Latin beside the plain first sense as a review aid.
-  Only 233 lemmas have a lead, not ~500: the rest of the commonest are either fine in Whitaker's order or not yet reviewed.
+  545 lemmas have a lead (2026-10-25): every one of the 520 commonest Vulgate lemmas of the seed lexicon (the first 233 on 2026-10-19, the
+  remaining 312 in the script's "batch 2"), plus the earlier extras; every lead is hand-written, Vulgate sense first. A lead that repeats
+  Whitaker's first sense still earns its place when it shortens or re-orders the rest (*salus* "salvation" before "health"; *tabernaculum* "tent;
+  the Tabernacle"; *percutio* "strike, smite; slay"). Lemmas outside the 520 keep Whitaker's order.
 - **Describe** (`describe.ts`), **tags** (`tags.ts`: `featuresFromTableTags`, `morphFromTags`), **paradigm / cellsFor** (`paradigm.ts`: noun, adjective, verb and pronoun tables with layouts; participles listed in the nominative singular),
   **pronunciation** (`pronunciation.ts`: syllables, ecclesiastical vs classical notes), `speechNormalize` (numbers 1-999 in Latin words).
 - **Constructions** (`constructions.ts`): ablative absolute; accusative + infinitive (statement) and object + infinitive (command); `cum` + subjunctive / indicative; `ut` + subjunctive (purpose / result), `ut` + indicative, `ne` + subjunctive;

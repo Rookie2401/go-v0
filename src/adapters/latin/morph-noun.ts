@@ -132,7 +132,9 @@ export function nounCells(lemma: string, gen: string, gender: string): Cell[] {
     } else {
       const voc = /ius$/.test(lemma) ? stem : /us$/.test(lemma) ? stem + 'e' : lemma;
       sg([lemma, stem + 'i' + (/ii$/.test(gen) ? '|' + stem : ''), stem + 'o', stem + 'um', stem + 'o', voc + (/^(Deus)$/.test(lemma) ? '|' + lemma : '')]);
-      pl([stem + 'i', stem + 'orum|' + stem + 'um', stem + 'is', stem + 'os', stem + 'is', stem + 'i']);
+      // locus has the neuter plural loca beside loci (loca deserta, loca sancta): an alternative in the three plural cells (2026-10-25)
+      const het = lower === 'locus' ? '|loca' : '';
+      pl([stem + 'i' + het, stem + 'orum|' + stem + 'um', stem + 'is', stem + 'os' + het, stem + 'is', stem + 'i' + het]);
     }
   } else if (d === '3') {
     const stem = gen.slice(0, -2);

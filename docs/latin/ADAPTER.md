@@ -8,7 +8,7 @@ orthography; no native review"). Machine-drafted; no Latinist has checked any of
 Two layers of vocabulary:
 
 - **Seed lexicon** (inline, always there): 1,916 lexemes: 1,500 hand-ranked Whitaker rows plus the closed classes and rule-built lexemes. The analyser works the moment its chunk is loaded.
-- **Full lexicon** (lazy, `loadLatinLexicon()`): Whitaker's whole DICTLINE.GEN (about 38,000 more lexemes), Lewis & Short as a backstop (about 12,000 more), and the form priors from the treebanks.
+- **Full lexicon** (lazy, `loadLatinLexicon()`): Whitaker's whole DICTLINE.GEN (about 38,000 more lexemes), Lewis & Short as a backstop (about 12,000 more), the names of the Vulgate (146 rows, 2026-10-25), the form priors from the treebanks and the hand-written Vulgate priors.
   52,270 lexemes in all. **Anything that wants the near-complete coverage below must `await loadLatinLexicon()` once** (the extension chunk `analysers/la.ts` does it itself on load;
   the evaluation script `scripts/latin-eval.mts` does not, so it measures the seed unless it is run through a wrapper that awaits it first, as the numbers here were). Before the load completes, analysis sees the seed only.
 
@@ -23,6 +23,8 @@ Two layers of vocabulary:
 | **Full lexicon** (`lexicon-full-data.ts`, generated, 2.4 MB of text): every noun, adjective, verb, adverb, preposition, conjunction, interjection, numeral and compound-verb entry | the whole of the same `DICTLINE.GEN`, by `scripts/latin-build-full.mjs` (macrons dropped, the stems turned back into principal parts, rows the seed holds skipped so its ranking stays) | as above |
 | **Lewis & Short backstop** (`lexicon-ls-data.ts`, generated, 420 KB, 12,090 rows): lemma, part of speech, declension class and a short English gloss for headwords Whitaker lacks | *A Latin Dictionary* (Lewis & Short, 1879), the Perseus TEI edition held by Vetus V0 (`vetus-v0/data/lewis-short`), parsed by `scripts/latin-build-ls.mjs`; only entries whose head line gives enough to generate the forms (genitive or ending, gender, principal parts) are kept; the rest are listed as skipped by the script | CC BY-SA 4.0 (Perseus Digital Library, Tufts); the glosses are shortened paraphrases of the entry |
 | The ranking of the rows (counts only) | lemma occurrence counts in the Clementine Vulgate from `vetus-v0/data/build/conc-la.json`; coarse part of speech from `la-lemma-pos.json` | counts of a public-domain text (Clementine, 1592). Those files derive in part from the PROIEL treebank (CC BY-NC-SA) and Whitaker; **no PROIEL text or annotation is shipped**, only which lemmas are frequent |
+| **Vulgate names** (`lexicon-names-data.ts`, generated, 7 KB, 146 rows): names the Clementine text uses that Whitaker and Lewis & Short do not decline (Iordanis, Ioppe, Sion, Edom, Lachis, Sodoma -orum ...): lemma, genitive (empty = undeclined), gender, the name's capitalised occurrences in the Vulgate as its weight, a short gloss | the Wiktionary `name` entries of the kaikki.org Latin extract, kept only where a form of the entry occurs capitalised inside a sentence of the Clementine Vulgate (96 rows), plus 50 hand-written rows for the commonest names Wiktionary has no page for, by `scripts/latin-build-names.mjs` (2026-10-25) | Wiktionary CC BY-SA 4.0; the Vulgate text is public domain; the hand rows are the app's own |
+| **Vulgate priors** (`priors-vulgate.ts`, hand-written, 35 forms): noun / verb homographs the Vulgate reads one way (scribis, laudem, legi, vasa, loca, praecepta, facies, ventus ...) and the degree adverbs | written from the New Testament miss list and a reading of the text (2026-10-25); installed after the treebank priors, so they win for the forms listed | the app's own |
 | **Form priors** (`priors-data.ts`, generated, 118 KB): for the commonest written forms, which (lemma, part of speech) the treebanks read them as | Perseus Latin Dependency Treebank (AGLDT) of Caesar BG 7, Sallust, Tacitus (Annals), Petronius, Phaedrus, Suetonius (Divus Augustus), Propertius and the Res Gestae, by `scripts/latin-build-priors.mjs` | CC BY-SA 3.0 (Perseus Digital Library, Tufts); only form -> reading counts are shipped, no text |
 | **Gloss leads** (`gloss-data.ts`, generated + curated, 233 lemmas) | written for this app, with the Wiktionary entries (kaikki.org extract on disk) as the checklist: `scripts/latin-build-glosses.mjs` | the leads are offered under CC BY-SA 4.0 with the rest of the data |
 | Wiktionary inflection-tag vocabulary (`tags.ts`) | the tag names of the kaikki.org Latin extract (`romance-v0/data/dict/kaikki-la.jsonl`), mapped to features; no table data copied | CC BY-SA 4.0 (Wiktionary) |
@@ -39,6 +41,7 @@ node scripts/latin-build-lexicon.mjs <out>\closed.json 1500      # src/adapters/
 node scripts/latin-build-full.mjs                                 # src/adapters/latin/lexicon-full-data.ts   (full Whitaker)
 node scripts/latin-build-ls.mjs                                   # src/adapters/latin/lexicon-ls-data.ts     (Lewis & Short)
 node scripts/latin-build-priors.mjs                               # src/adapters/latin/priors-data.ts         (form priors)
+node scripts/latin-build-names.mjs                                # src/adapters/latin/lexicon-names-data.ts  (Vulgate names; about 15 s)
 node scripts/latin-build-glosses.mjs                              # src/adapters/latin/gloss-data.ts          (Vulgate-first glosses)
 ```
 
@@ -52,6 +55,7 @@ Measured by bundling `packages/golearn-extension/src/analysers/la.ts` with esbui
 | full Whitaker lexicon (`shared-*.js`) | 2,497,941 | 811,447 | lazily, by `loadLatinLexicon()` |
 | Lewis & Short backstop | 431,058 | 124,639 | lazily, with the above |
 | form priors | 117,566 | 37,463 | lazily, with the above |
+| Vulgate names | 5,762 | 2,609 | lazily, with the above (2026-10-25) |
 
 The analyser chunk is about as large as the other languages' (`es` 230 KB, `sq` 258 KB, `de` 396 KB, `hi` 470 KB; `th` 225 KB), so it stays inline as asked; the 3.0 MB of vocabulary data is three dynamic imports that the bundler emits as chunks beside it
 (`analysers/shared-*.js`, matched by the manifest's `analysers/*.js` web-accessible pattern). No change to `loaders.ts` or the extension vite config was needed for them. Building the index over the full lexicon takes 35-110 ms the first time (on first analysis), then about 40,000-80,000 words per second.
@@ -63,6 +67,7 @@ The analyser chunk is about as large as the other languages' (`es` 230 KB, `sq` 
 - **Identity and dictionary key**: `laAdapter.normalize`, `searchNormalize` and `RawToken.normalized` are exactly `latinNormalize` of `src/dict/latin-normalize.ts` (NFC, lower case, every combining mark off, `æ -> ae`, `œ -> oe`, `ſ -> s`; `j`, `v`, `u`, `i` kept as written), the key the Latin dictionary shards are built under.
   "Jesus" and "Iesus" are therefore distinct identities, joined by the dictionary's spelling aliases and by `lemmaVariants` (`coelum`/`celum` for `caelum`, `Jesus` for `Iesus`). The written form is never changed.
 - **Analysis key** (`foldKey`, internal): the same plus `j -> i`, `v -> u`; the lexicon and the morphology look words up under it, so every spelling of a word finds the same reading.
+- **Names** (`context.ts`): a capitalised word inside a sentence that has a reading as a name is read as one: the name reading is weighted 1.6, every other 0.2 (0.4 / 1.4 until 2026-10-25, when *Maria* still lost to *mare*, whose count is six times higher). A sentence-initial word is left to the counts.
 - **Lexicon** (`lexicon.ts`): regular lexemes carry their folded `stems` and sit in a prefix stem index, their cells generated lazily when a written form starts with one of the stems; irregular and closed lexemes are expanded eagerly into a direct form map.
   `extend(text)` adds the full Whitaker text and the Lewis & Short rows; a row the seed already holds is skipped (so the Vulgate-count ranking of the seed stays), a duplicate entry of the same verb adds its second perfect (`acquiesco`: `acquiei` and `acquievi`) or second participle (`misereor`: `miseritus` and `misertus`), a capitalised entry for a word that is also a common noun (`Deus`) adds nothing.
   Counts rank homographs: the Vulgate occurrence count of the lemma where the concordance has it, else Whitaker's frequency letter as a pseudo count (A 60, B 30, C 12, D 5, E 2, F 1; L&S rows 1).
@@ -96,28 +101,28 @@ The analyser chunk is about as large as the other languages' (`es` 230 KB, `sq` 
   Fixed phrases (in principio, per omnia saecula saeculorum, Deo gratias ...) through `detectPhrases`.
 - **Syntax** (`syntax.ts`, `syntax()`): shallow dependency relations from case and agreement, clause by clause between punctuation marks. Alternatives kept where the form does not decide.
 
-## Measured results (full lexicon, `scripts/latin-eval.mts`, run 2026-10-19; the report of record is `docs/latin/EVAL.md`)
+## Measured results (full lexicon, `scripts/latin-eval.mts`, run 2026-10-25 after the gap work below; the report of record is `docs/latin/EVAL.md`; the 2026-10-19 figures are in brackets where they differ)
 
 Coverage = first reading of each word token. "Lexicon" = confirmed by a lexeme; "rule" = rule-built lexeme (compound, derived adverb, name by ending); "guess" = ending-based guess; "none" = no lemma.
 
 | corpus | words | any reading | lexicon | rule | guess | none |
 |---|---:|---:|---:|---:|---:|---:|
-| whole Clementine Vulgate | 612,227 | 100.0 % | 97.2 % | 2.6 % | 0.2 % | 0.0 % |
-| Vulgate NT (PROIEL-aligned) | 126,563 | 100.0 % | 98.5 % | 1.2 % | 0.2 % | 0.0 % |
+| whole Clementine Vulgate | 612,227 | 100.0 % | 97.3 % (97.2) | 2.6 % | 0.1 % (0.2) | 0.0 % |
+| Vulgate NT (PROIEL-aligned) | 126,563 | 100.0 % | 98.7 % (98.5) | 1.2 % | 0.1 % (0.2) | 0.0 % |
 | Cicero (Wikisource) | 27,221 | 100.0 % | 98.7 % | 0.8 % | 0.5 % | 0.0 % |
 | Vergil (Wikisource) | 20,535 | 100.0 % | 97.9 % | 0.7 % | 1.4 % | 0.0 % |
 | Ovid (Wikisource) | 5,097 | 100.0 % | 97.8 % | 0.9 % | 1.3 % | 0.0 % |
-| Newton, Principia | 99,976 | 99.7 % | 93.3 % | 2.8 % | 3.6 % | 0.3 % |
+| Newton, Principia | 99,976 | 99.7 % | 93.3 % | 2.8 % | 3.5 % (3.6) | 0.3 % |
 
 Accuracy of the *first* reading against gold, strict / lenient (lenient = the explicit equivalence table in EVAL.md: treebank conventions that the adapter does not share, such as PROIEL's adverb-as-adjective lemma, are not counted against it):
 
 | gold (aligned tokens) | lemma | POS | lemma + POS | features (subset) | lemma any reading (lenient) |
 |---|---:|---:|---:|---:|---:|
-| PROIEL Latin NT (104,345) | 95.6 / 97.5 | 88.7 / 98.2 | 86.1 / 97.0 | 47.5 / 89.5 | 99.4 |
-| Perseus Cicero (5,254) | 91.7 / 92.7 | 88.6 / 95.2 | 84.4 / 90.5 | 46.0 / 89.6 | 97.4 |
-| Perseus Vergil (2,131) | 89.8 / 90.3 | 89.5 / 94.6 | 84.6 / 88.0 | 38.7 / 84.1 | 95.9 |
-| Perseus Ovid (3,529) | 89.7 / 90.5 | 90.2 / 94.2 | 85.9 / 88.8 | 42.8 / 88.5 | 96.0 |
-| Perseus Jerome (8,338, own text) | 95.5 / 95.6 | 93.4 / 97.5 | 91.0 / 94.8 | 48.9 / 89.2 | 98.2 |
+| PROIEL Latin NT (104,345) | 95.6 / 97.6 (97.5) | 88.7 / 98.3 (98.2) | 86.2 / 97.1 (86.1 / 97.0) | 47.6 / 89.6 | 99.5 (99.4) |
+| Perseus Cicero (5,254) | 91.7 / 92.6 (92.7) | 88.6 / 95.2 | 84.3 / 90.4 (84.4 / 90.5) | 46.0 / 89.5 | 97.4 |
+| Perseus Vergil (2,131) | 89.5 / 90.0 (89.8 / 90.3) | 89.6 / 94.6 | 84.4 / 87.8 (84.6 / 88.0) | 38.7 / 83.9 (84.1) | 96.1 (95.9) |
+| Perseus Ovid (3,529) | 89.6 / 90.4 (89.7 / 90.5) | 90.4 / 94.4 (90.2 / 94.2) | 85.9 / 88.8 | 42.9 / 88.5 | 96.0 |
+| Perseus Jerome (8,338, own text) | 95.5 / 95.6 | 93.5 / 97.5 | 91.0 / 94.8 | 48.9 / 89.3 | 98.2 |
 
 **Held-out and not held-out.** The priors (`priors-data.ts`) were trained on the Perseus treebank texts of Caesar, Sallust, Tacitus, Petronius, Phaedrus, Suetonius, Propertius and the Res Gestae. The rows of `docs/latin/EVAL.md` for those eight texts (`perseus-caesar` ... `perseus-resgestae`) therefore include training text and
 are NOT held-out accuracy; do not quote them. The five rows above (NT, Cicero, Vergil, Ovid, Jerome) are text the priors never saw. Feature strictness: the *strict* figure counts a union reading ("Acc,Nom" for a form that is both) as wrong when the gold has one case; the adapter keeps the union on purpose (narrowing right 4 times in 100 words and wrong once lost more than it gained).
@@ -126,19 +131,30 @@ Where the first reading is still wrong (NT, by count; the lists are in `data/rev
 
 - `quod`/`quam`/`quo`/`cum` as pronoun, adverb, conjunction or preposition (about 400 tokens): a syntactic choice the sentence layer makes with two heuristics only.
 - an adjective form that the treebank reads as an adverb (`primum`, `tantum`, `multum`, `solum`, `forte`, `male`, `vero`: about 270): the adapter reads `primum regnum` as the adjective next to its noun; PROIEL calls it an adverb. Weighting the adverb 8 or 12 times heavier gained a point of strict POS and lost a few tenths of lemma, so it was left.
-- noun / verb homographs the lemma count cannot settle (`scribis`: scriba or scribo, `ventus`, `auditus`: about 450): no form-level frequency for text types the priors were not trained on.
+- noun / verb homographs (about 450 on 2026-10-19): since 2026-10-25 the 35 forms of `priors-vulgate.ts` (scribis, laudem, legi, vasa, loca, praecepta, facies, ventus, auditus ...) are read the Vulgate's way; `scribis`, `laudem`, `legi` and `Maria` (37 tokens read as *mare*) have left the NT miss list. The forms not listed there still fall to the lemma count.
 - treebank lemma conventions (PROIEL `Iudaei` for Iudaeus, `vos`/`nos` apart from `tu`/`ego`, `mortuus` -> morior, `uterus` adjective...): partly mapped in the lenient table, not changed in the adapter.
-- the tail of names and Greek words: 0.2-1.4 % of tokens are guesses (Edom, Jordanis, Joppen, Dardanidae, Pergama); a name outside Whitaker and Lewis & Short is declined by its ending, or left undeclined.
+- the tail of names and Greek words: since 2026-10-25 the Vulgate's names come from `lexicon-names-data.ts` (Edom, Jordanis, Joppen, Lachis, Sodomorum, Sion ... now confirmed); the Vulgate's unconfirmed-or-missing tokens fell from 1,067 to 509 and the capitalised ones among them from 638 to 144 (Alohes, Herodiadis, Gomorrhaeorum-class rarities). In the classical texts (Dardanidae, Pergama) a name outside Whitaker and Lewis & Short is still declined by its ending, or left undeclined. What is left in the Vulgate list is mostly compound ordinals (quintodecimo, tertiodecimo), late forms (exiet, benefac), the Hebrew letter names of Lamentations (Ghimel) and words of the Principia kind.
 - Principia: diagram letters and labels (`gr`, `Dd`, `pQ`, `BDq`), Neo-Latin vocabulary Whitaker lacks (`acceleratrix`, `perpendicularis`, `oscillans`), and Greek-derived geometry (`Syzygiis`, `Ellipseos`, `hypothesin`): 3.6 % guesses, 0.3 % no reading. They are read as symbols (`X`, lemma = the written form) or as names, not as lexemes.
+
+## The gap work of 2026-10-25
+
+Asked to address the known gaps, in one pass: (1) the names of the Vulgate as a third lexicon backstop (`scripts/latin-build-names.mjs`); (2) the
+capitalised-name weight raised so *Maria* beats *mare*; (3) hand-written Vulgate form priors for the noun / verb homographs
+(`priors-vulgate.ts`, tuned on the NT miss list, said so there); (4) the dictionary lookup keys for v-printed-for-u editions
+(`src/dict/latin-normalize.ts`); (5) three more medieval spelling habits and the final t / d swap; (6) a Wiktionary table row for two or
+three genders placed in every one of its cells; (7) eight Vulgate nouns Whitaker lacks (superhumerale, tetrarcha, cidaris ...) in
+`lexicon-extra.ts`. Not done, and still open: a parser (the quod / quam / cum choices, about 400 NT tokens), the treebanks' adverb-for-adjective
+convention (primum, tantum: about 270), vowel length, production checks, the participle rows of the paradigm beyond the nominative, and the
+Principia's Neo-Latin. Tests: the Latin suites (228) and the typecheck are green; the evaluation above is the second baseline (adapter fingerprint
+6219833f55d47516).
 
 ## What is not covered
 
 - Vowel length is neither in the text nor analysed; forms that differ only by length share one spelling and show as separate readings only where cells differ.
 - No parser. The sentence layer decides prepositions, `cum`, `quam`, `vis`, the personal-pronoun genitives and agreement in the noun phrase; subject-verb agreement, relative clauses, indirect questions, conditionals and the sequence of tenses are not used to rank readings (the syntax layer uses them but does not feed back).
-- Names: a name outside Whitaker's file and Lewis & Short is declined by a rule from its ending, or left indeclinable (Israel, David, Abraham ...); Hebrew names that decline in part in the Vulgate are approximate.
-- Medieval spellings the fold does not cover (e for ae, m/n before d and q, ch/h, ti/ci are covered; other changes are not).
+- Names: the Vulgate's are covered by `lexicon-names-data.ts` (2026-10-25); a name outside Whitaker's file, Lewis & Short and that list is declined by a rule from its ending, or left indeclinable; Hebrew names that decline in part in the Vulgate are approximate (`LATINISED`).
+- Medieval spellings: e for ae, m/n before d and q, ch/h, y/i, ti/ci, mpn/mn, k/c, a final t for d (set, aput) and an initial h dropped or added are tried when the written form itself is unknown (`spellingAlternatives`); other changes (w, double vowels, Italianate z for di) are not.
 - No production checks (`checkProduction` returns nothing; `support.productionChecks: 'none'`).
-- The dictionary half of the paradigm (Wiktionary table rows) is mapped but a row standing for all three genders (`bonis`) is placed in the masculine cell only.
 - Participles and the gerundive are listed in the paradigm in the nominative singular only; the analysis finds every case.
 - Lewis & Short rows give lemma, class and a short gloss only; their forms are generated by the same rules, so an irregular L&S word is right only if its class is regular.
 - Known small defects: the accusative of an emphatic pronoun (`teipsum`) keeps the pronoun's own case union (Abl,Acc) rather than narrowing to the `ipsum` case; `exiet` (future of exeo in -iet) and `nequissima` (superlative of `nequam`) are not generated; multiplicative adverbs in -ies (`decies`) come from the guess.

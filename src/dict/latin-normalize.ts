@@ -84,7 +84,8 @@ function uToV(key: string): string {
 
 /**
  * The keys to ask the dictionary for, most likely first: the normalized surface, then j read as i, then the same with a
- * consonantal u read as v ("uerbum" to "verbum", "iuuenis" to "iuvenis"), then `v` as the key it is. At most 6.
+ * consonantal u read as v ("uerbum" to "verbum", "iuuenis" to "iuvenis"), then `v` as the key it is, then, for a v printed where only a vowel
+ * can stand (VERBVM, vt), every v as u and the consonantal ones back as v ("verbum", "ut"). At most 6.
  */
 export function latinLookupKeys(surface: string): string[] {
   const k = latinNormalize(surface);
@@ -95,7 +96,12 @@ export function latinLookupKeys(surface: string): string[] {
   const i = k.replace(/j/g, 'i');
   add(i);
   add(uToV(i));
-  if (k.includes('v') || i.includes('v')) add(vToU(i));
+  if (k.includes('v') || i.includes('v')) {
+    const u = vToU(i);
+    add(u);
+    // an edition printing v for every u (VERBVM, VOLVNTAS, vt) gives a v in vowel position: read all as u, then the consonantal ones back as v (2026-10-25)
+    add(uToV(u));
+  }
   return out.slice(0, 6);
 }
 

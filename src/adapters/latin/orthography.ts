@@ -150,6 +150,8 @@ const PAIRS: Array<[string, string, string, string]> = [
   ['ae', 'e', 'la-medieval', 'ae for e'], ['oe', 'e', 'la-medieval', 'oe for e'], ['ae', 'oe', 'la-orthographic', 'ae for oe'], ['oe', 'ae', 'la-orthographic', 'oe for ae'],
   ['md', 'nd', 'la-orthographic', 'm for n before d (quemdam, eamdem, eumdem)'], ['mq', 'nq', 'la-orthographic', 'm for n before q'],
   ['ii', 'i', 'la-orthographic', 'ii for i'], ['ce', 'cae', 'la-medieval', 'e for ae after c'], ['mihi', 'michi', 'la-medieval', 'mihi'], ['uu', 'u', 'la-orthographic', 'uu for u'],
+  // 2026-10-25: three more medieval habits: mpn for mn (dampnum, sompnus, columpna), k for c (karissimus, kalendae), and t for a final d (set, aput, quot, at)
+  ['mpn', 'mn', 'la-medieval', 'mpn for mn (dampnum, columpna)'], ['k', 'c', 'la-medieval', 'k for c (karissimus)'], ['c', 'k', 'la-medieval', 'c for k'],
 ];
 
 /** The other spellings a word may have in the texts (assimilated prefixes, medieval e for ae and ch for h, doubled and single consonants, o for u), most likely first. Looked up only when the written form itself is unknown. */
@@ -183,6 +185,9 @@ export function spellingAlternatives(key: string): SpellingAlternative[] {
     // i for ii at the end (consili, imperi)
     if (/[^i]i$/.test(k)) push(k + 'i', 'la-orthographic', 'i for ii in the genitive (consili)');
     if (/[^i]is$/.test(k)) push(k.slice(0, -2) + 'iis', 'la-orthographic', 'is for iis');
+    // a final t for d and d for t (set, aput, quot, at, inquid)
+    if (/[aeiou]t$/.test(k) && k.length >= 2) push(k.slice(0, -1) + 'd', 'la-medieval', 'final t for d (set, aput)');
+    if (/[aeiou]d$/.test(k) && k.length >= 2) push(k.slice(0, -1) + 't', 'la-medieval', 'final d for t');
     if (/^h/.test(k)) push(k.slice(1), 'la-orthographic', 'initial h dropped');
     else push('h' + k, 'la-orthographic', 'initial h added');
   };

@@ -1,11 +1,11 @@
 {
  "tool": "scripts/latin-eval.mts",
- "runAt": "2026-10-19T16:54:32.720Z",
+ "runAt": "2026-10-25T21:50:20.305Z",
  "adapter": {
   "id": "adapter-la@1",
   "version": "1",
-  "fingerprint": "1f9ba9db2e9d3ebc",
-  "files": 29
+  "fingerprint": "6219833f55d47516",
+  "files": 31
  },
  "options": {
   "corpora": [
@@ -32,7 +32,7 @@
   "limit": null,
   "rawPrincipia": false
  },
- "initMs": 43,
+ "initMs": 60,
  "corpora": {
   "vulgate": {
    "name": "vulgate",
@@ -42,31 +42,31 @@
    "sentences": 35809,
    "tokens": 612227,
    "excludedLabels": 0,
-   "analyzeMs": 9414,
-   "wordsPerSecond": 65035,
+   "analyzeMs": 10985,
+   "wordsPerSecond": 55734,
    "anyReadingPct": 99.98,
-   "lexiconConfirmedPct": 97.22,
-   "ruleBuiltPct": 2.61,
-   "unconfirmedGuessPct": 0.16,
+   "lexiconConfirmedPct": 97.33,
+   "ruleBuiltPct": 2.59,
+   "unconfirmedGuessPct": 0.07,
    "noReadingPct": 0.02,
-   "multiReadingPct": 44.33,
+   "multiReadingPct": 44.45,
    "counts": {
-    "anyReading": 612122,
-    "lexiconConfirmed": 595208,
-    "ruleBuilt": 15952,
-    "unconfirmedGuess": 962,
-    "noReading": 105,
-    "multiReading": 271373,
-    "lowConfidenceConfirmed": 9554
+    "anyReading": 612125,
+    "lexiconConfirmed": 595877,
+    "ruleBuilt": 15841,
+    "unconfirmedGuess": 407,
+    "noReading": 102,
+    "multiReading": 272161,
+    "lowConfidenceConfirmed": 9466
    },
    "distinctForms": 46373,
    "missBreakdown": {
-    "names": 638,
+    "names": 144,
     "enclitic": 9,
     "short": 0,
-    "other": 420
+    "other": 356
    },
-   "listedFormsSharePct": 83.41,
+   "listedFormsSharePct": 86.44,
    "gold": null,
    "goldNote": "gold for the New Testament portion: see the nt row"
   },
@@ -78,29 +78,29 @@
    "sentences": 7951,
    "tokens": 126563,
    "excludedLabels": 0,
-   "analyzeMs": 1603,
-   "wordsPerSecond": 78951,
+   "analyzeMs": 2258,
+   "wordsPerSecond": 56060,
    "anyReadingPct": 99.98,
-   "lexiconConfirmedPct": 98.54,
-   "ruleBuiltPct": 1.22,
-   "unconfirmedGuessPct": 0.22,
+   "lexiconConfirmedPct": 98.66,
+   "ruleBuiltPct": 1.21,
+   "unconfirmedGuessPct": 0.11,
    "noReadingPct": 0.02,
-   "multiReadingPct": 44.82,
+   "multiReadingPct": 44.9,
    "counts": {
-    "anyReading": 126539,
-    "lexiconConfirmed": 124717,
-    "ruleBuilt": 1546,
-    "unconfirmedGuess": 276,
-    "noReading": 24,
-    "multiReading": 56730,
-    "lowConfidenceConfirmed": 1969
+    "anyReading": 126541,
+    "lexiconConfirmed": 124872,
+    "ruleBuilt": 1529,
+    "unconfirmedGuess": 140,
+    "noReading": 22,
+    "multiReading": 56830,
+    "lowConfidenceConfirmed": 1965
    },
    "distinctForms": 15704,
    "missBreakdown": {
-    "names": 197,
+    "names": 83,
     "enclitic": 2,
     "short": 0,
-    "other": 101
+    "other": 77
    },
    "listedFormsSharePct": 100,
    "gold": {
@@ -109,41 +109,41 @@
     "goldUnits": 110384,
     "aligned": 104345,
     "alignedPct": 94.53,
-    "lemmaStrict": 95.56,
-    "lemmaLenient": 97.52,
-    "lemmaAnyLenient": 99.41,
-    "posStrict": 88.72,
-    "posLenient": 98.23,
-    "lemmaPosStrict": 86.13,
-    "lemmaPosLenient": 97.03,
-    "featuresSubsetStrict": 47.5,
-    "featuresSubsetLenient": 89.47,
+    "lemmaStrict": 95.64,
+    "lemmaLenient": 97.6,
+    "lemmaAnyLenient": 99.46,
+    "posStrict": 88.74,
+    "posLenient": 98.3,
+    "lemmaPosStrict": 86.21,
+    "lemmaPosLenient": 97.11,
+    "featuresSubsetStrict": 47.62,
+    "featuresSubsetLenient": 89.63,
     "featuresDenominator": 72329,
     "featuresDenominatorLenient": 72329,
-    "fullStrict": 56.75,
-    "fullLenient": 90.98,
+    "fullStrict": 56.82,
+    "fullLenient": 91.05,
     "perFeature": {
      "Case": {
       "n": 51045,
       "nLenient": 51045,
-      "strict": 55.16,
-      "lenient": 92.39
+      "strict": 55.28,
+      "lenient": 92.49
      },
      "Number": {
       "n": 70266,
       "nLenient": 70040,
-      "strict": 91.93,
-      "lenient": 95.55
+      "strict": 92.01,
+      "lenient": 95.63
      },
      "Gender": {
       "n": 50586,
       "nLenient": 48182,
-      "strict": 66.83,
-      "lenient": 93.62
+      "strict": 67.13,
+      "lenient": 93.91
      },
      "Person": {
       "n": 28393,
-      "nLenient": 22901,
+      "nLenient": 22899,
       "strict": 79.69,
       "lenient": 98.86
      },
@@ -162,8 +162,8 @@
      "Voice": {
       "n": 25592,
       "nLenient": 25592,
-      "strict": 92.33,
-      "lenient": 97.11
+      "strict": 92.32,
+      "lenient": 97.1
      },
      "VerbForm": {
       "n": 25690,
@@ -174,70 +174,70 @@
      "Degree": {
       "n": 4583,
       "nLenient": 4583,
-      "strict": 8.07,
-      "lenient": 97.01
+      "strict": 8.12,
+      "lenient": 97.05
      }
     },
     "topPosErrors": [
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 272,
-      "sharePct": 14.73
+      "n": 268,
+      "sharePct": 15.08
      },
      {
       "gold": "NOUN",
       "system": "ADJ",
-      "n": 249,
-      "sharePct": 13.49
-     },
-     {
-      "gold": "NOUN",
-      "system": "VERB",
-      "n": 201,
-      "sharePct": 10.89
+      "n": 239,
+      "sharePct": 13.45
      },
      {
       "gold": "VERB",
       "system": "NOUN",
-      "n": 165,
-      "sharePct": 8.94
+      "n": 166,
+      "sharePct": 9.34
+     },
+     {
+      "gold": "NOUN",
+      "system": "VERB",
+      "n": 156,
+      "sharePct": 8.78
      },
      {
       "gold": "SCONJ",
       "system": "PRON",
       "n": 155,
-      "sharePct": 8.4
-     },
-     {
-      "gold": "ADJ",
-      "system": "NOUN",
-      "n": 121,
-      "sharePct": 6.55
+      "sharePct": 8.72
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 118,
-      "sharePct": 6.39
+      "sharePct": 6.64
+     },
+     {
+      "gold": "ADJ",
+      "system": "NOUN",
+      "n": 111,
+      "sharePct": 6.25
      },
      {
       "gold": "ADV",
       "system": "NUM",
       "n": 60,
-      "sharePct": 3.25
+      "sharePct": 3.38
      },
      {
       "gold": "ADV",
       "system": "NOUN",
       "n": 50,
-      "sharePct": 2.71
+      "sharePct": 2.81
      },
      {
       "gold": "SCONJ",
       "system": "ADP",
       "n": 50,
-      "sharePct": 2.71
+      "sharePct": 2.81
      }
     ],
     "topPosErrorsStrict": [
@@ -245,25 +245,31 @@
       "gold": "ADV",
       "system": "CONJ",
       "n": 3483,
-      "sharePct": 29.6
+      "sharePct": 29.65
      },
      {
       "gold": "PRON|DET",
       "system": "ADJ",
-      "n": 3341,
-      "sharePct": 28.39
+      "n": 3343,
+      "sharePct": 28.45
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 1723,
-      "sharePct": 14.64
+      "sharePct": 14.67
      },
      {
       "gold": "ADV",
       "system": "SCONJ",
       "n": 399,
-      "sharePct": 3.39
+      "sharePct": 3.4
+     },
+     {
+      "gold": "NOUN",
+      "system": "PROPN",
+      "n": 286,
+      "sharePct": 2.43
      },
      {
       "gold": "VERB",
@@ -274,32 +280,26 @@
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 272,
-      "sharePct": 2.31
+      "n": 268,
+      "sharePct": 2.28
      },
      {
       "gold": "NOUN",
       "system": "ADJ",
-      "n": 249,
-      "sharePct": 2.12
-     },
-     {
-      "gold": "NOUN",
-      "system": "PROPN",
-      "n": 205,
-      "sharePct": 1.74
-     },
-     {
-      "gold": "NOUN",
-      "system": "VERB",
-      "n": 201,
-      "sharePct": 1.71
+      "n": 239,
+      "sharePct": 2.03
      },
      {
       "gold": "PRON|DET",
       "system": "NOUN",
       "n": 200,
       "sharePct": 1.7
+     },
+     {
+      "gold": "VERB",
+      "system": "NOUN",
+      "n": 166,
+      "sharePct": 1.41
      }
     ],
     "topLemmaErrors": [],
@@ -307,22 +307,22 @@
     "topFeatureErrors": [],
     "byKind": {
      "lexicon": {
-      "n": 103115,
-      "lemmaLenient": 100673,
-      "lemmaPosLenient": 100169
+      "n": 103196,
+      "lemmaLenient": 100759,
+      "lemmaPosLenient": 100257
      },
      "rule": {
-      "n": 1083,
+      "n": 1082,
       "lemmaLenient": 1070,
       "lemmaPosLenient": 1070
      },
      "guess": {
-      "n": 129,
-      "lemmaLenient": 13,
-      "lemmaPosLenient": 7
+      "n": 51,
+      "lemmaLenient": 7,
+      "lemmaPosLenient": 5
      },
      "none": {
-      "n": 18,
+      "n": 16,
       "lemmaLenient": 0,
       "lemmaPosLenient": 0
      }
@@ -337,8 +337,8 @@
    "sentences": 1072,
    "tokens": 27221,
    "excludedLabels": 0,
-   "analyzeMs": 544,
-   "wordsPerSecond": 50028,
+   "analyzeMs": 832,
+   "wordsPerSecond": 32715,
    "anyReadingPct": 99.96,
    "lexiconConfirmedPct": 98.68,
    "ruleBuiltPct": 0.82,
@@ -368,37 +368,37 @@
     "goldUnits": 5519,
     "aligned": 5254,
     "alignedPct": 95.2,
-    "lemmaStrict": 91.72,
-    "lemmaLenient": 92.65,
+    "lemmaStrict": 91.66,
+    "lemmaLenient": 92.6,
     "lemmaAnyLenient": 97.39,
     "posStrict": 88.6,
-    "posLenient": 95.18,
-    "lemmaPosStrict": 84.37,
-    "lemmaPosLenient": 90.48,
-    "featuresSubsetStrict": 46.01,
-    "featuresSubsetLenient": 89.57,
+    "posLenient": 95.17,
+    "lemmaPosStrict": 84.32,
+    "lemmaPosLenient": 90.41,
+    "featuresSubsetStrict": 45.98,
+    "featuresSubsetLenient": 89.46,
     "featuresDenominator": 3806,
     "featuresDenominatorLenient": 3806,
     "fullStrict": 52.19,
-    "fullLenient": 86.41,
+    "fullLenient": 86.33,
     "perFeature": {
      "Case": {
       "n": 2805,
       "nLenient": 2805,
-      "strict": 52.48,
-      "lenient": 93.26
+      "strict": 52.37,
+      "lenient": 93.16
      },
      "Number": {
       "n": 3570,
       "nLenient": 3545,
-      "strict": 92.21,
-      "lenient": 95.37
+      "strict": 92.16,
+      "lenient": 95.32
      },
      "Gender": {
       "n": 2810,
       "nLenient": 2570,
       "strict": 64.2,
-      "lenient": 95.37
+      "lenient": 95.25
      },
      "Person": {
       "n": 760,
@@ -441,62 +441,62 @@
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 43,
-      "sharePct": 17
+      "n": 41,
+      "sharePct": 16.14
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 26,
-      "sharePct": 10.28
+      "sharePct": 10.24
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 25,
-      "sharePct": 9.88
+      "sharePct": 9.84
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 21,
-      "sharePct": 8.3
+      "sharePct": 8.27
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 17,
-      "sharePct": 6.72
+      "sharePct": 6.69
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 15,
-      "sharePct": 5.93
+      "sharePct": 5.91
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 14,
-      "sharePct": 5.53
+      "sharePct": 5.51
      },
      {
       "gold": "PROPN",
       "system": "ADJ",
       "n": 12,
-      "sharePct": 4.74
+      "sharePct": 4.72
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADP",
       "n": 10,
-      "sharePct": 3.95
+      "sharePct": 3.94
      },
      {
-      "gold": "ADV",
-      "system": "NOUN",
+      "gold": "ADJ|DET",
+      "system": "PROPN",
       "n": 9,
-      "sharePct": 3.56
+      "sharePct": 3.54
      }
     ],
     "topPosErrorsStrict": [
@@ -527,8 +527,8 @@
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 43,
-      "sharePct": 7.18
+      "n": 41,
+      "sharePct": 6.84
      },
      {
       "gold": "CONJ|SCONJ",
@@ -567,8 +567,8 @@
     "byKind": {
      "lexicon": {
       "n": 5191,
-      "lemmaLenient": 4823,
-      "lemmaPosLenient": 4710
+      "lemmaLenient": 4820,
+      "lemmaPosLenient": 4706
      },
      "rule": {
       "n": 52,
@@ -596,26 +596,26 @@
    "sentences": 1082,
    "tokens": 20535,
    "excludedLabels": 0,
-   "analyzeMs": 520,
-   "wordsPerSecond": 39506,
+   "analyzeMs": 889,
+   "wordsPerSecond": 23091,
    "anyReadingPct": 99.96,
-   "lexiconConfirmedPct": 97.86,
+   "lexiconConfirmedPct": 97.93,
    "ruleBuiltPct": 0.65,
-   "unconfirmedGuessPct": 1.44,
+   "unconfirmedGuessPct": 1.38,
    "noReadingPct": 0.04,
-   "multiReadingPct": 52.04,
+   "multiReadingPct": 52.15,
    "counts": {
     "anyReading": 20526,
-    "lexiconConfirmed": 20096,
+    "lexiconConfirmed": 20109,
     "ruleBuilt": 134,
-    "unconfirmedGuess": 296,
+    "unconfirmedGuess": 283,
     "noReading": 9,
-    "multiReading": 10687,
-    "lowConfidenceConfirmed": 818
+    "multiReading": 10709,
+    "lowConfidenceConfirmed": 810
    },
    "distinctForms": 8160,
    "missBreakdown": {
-    "names": 250,
+    "names": 237,
     "enclitic": 2,
     "short": 7,
     "other": 46
@@ -627,36 +627,36 @@
     "goldUnits": 2186,
     "aligned": 2131,
     "alignedPct": 97.48,
-    "lemmaStrict": 89.82,
-    "lemmaLenient": 90.29,
-    "lemmaAnyLenient": 95.92,
-    "posStrict": 89.54,
-    "posLenient": 94.6,
-    "lemmaPosStrict": 84.56,
-    "lemmaPosLenient": 88.03,
-    "featuresSubsetStrict": 38.72,
-    "featuresSubsetLenient": 84.14,
+    "lemmaStrict": 89.54,
+    "lemmaLenient": 90,
+    "lemmaAnyLenient": 96.06,
+    "posStrict": 89.58,
+    "posLenient": 94.56,
+    "lemmaPosStrict": 84.42,
+    "lemmaPosLenient": 87.8,
+    "featuresSubsetStrict": 38.66,
+    "featuresSubsetLenient": 83.91,
     "featuresDenominator": 1728,
     "featuresDenominatorLenient": 1728,
     "fullStrict": 44.39,
-    "fullLenient": 81.65,
+    "fullLenient": 81.46,
     "perFeature": {
      "Case": {
       "n": 1379,
       "nLenient": 1379,
-      "strict": 35.1,
-      "lenient": 89.41
+      "strict": 34.95,
+      "lenient": 89.12
      },
      "Number": {
       "n": 1676,
       "nLenient": 1666,
-      "strict": 89.14,
-      "lenient": 89.98
+      "strict": 89.02,
+      "lenient": 89.86
      },
      "Gender": {
       "n": 1376,
       "nLenient": 1340,
-      "strict": 68.6,
+      "strict": 68.68,
       "lenient": 90.52
      },
      "Person": {
@@ -668,8 +668,8 @@
      "Tense": {
       "n": 505,
       "nLenient": 505,
-      "strict": 83.56,
-      "lenient": 85.35
+      "strict": 83.37,
+      "lenient": 85.15
      },
      "Mood": {
       "n": 301,
@@ -680,14 +680,14 @@
      "Voice": {
       "n": 467,
       "nLenient": 467,
-      "strict": 86.51,
-      "lenient": 87.15
+      "strict": 86.3,
+      "lenient": 86.94
      },
      "VerbForm": {
       "n": 511,
       "nLenient": 511,
-      "strict": 85.32,
-      "lenient": 85.32
+      "strict": 85.13,
+      "lenient": 85.13
      },
      "Degree": {
       "n": 23,
@@ -701,61 +701,61 @@
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 19,
-      "sharePct": 16.52
+      "sharePct": 16.38
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 12,
-      "sharePct": 10.43
+      "sharePct": 10.34
      },
      {
       "gold": "ADV",
       "system": "ADP",
       "n": 11,
-      "sharePct": 9.57
+      "sharePct": 9.48
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 11,
+      "sharePct": 9.48
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 10,
-      "sharePct": 8.7
-     },
-     {
-      "gold": "VERB|AUX",
-      "system": "NOUN",
-      "n": 10,
-      "sharePct": 8.7
+      "sharePct": 8.62
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
-      "n": 8,
-      "sharePct": 6.96
-     },
-     {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 7,
-      "sharePct": 6.09
+      "n": 9,
+      "sharePct": 7.76
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 7,
-      "sharePct": 6.09
+      "sharePct": 6.03
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 6,
+      "sharePct": 5.17
      },
      {
       "gold": "ADV",
       "system": "NUM",
       "n": 4,
-      "sharePct": 3.48
+      "sharePct": 3.45
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 4,
-      "sharePct": 3.48
+      "sharePct": 3.45
      }
     ],
     "topPosErrorsStrict": [
@@ -763,61 +763,61 @@
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 49,
-      "sharePct": 21.97
+      "sharePct": 22.07
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 19,
-      "sharePct": 8.52
+      "sharePct": 8.56
      },
      {
       "gold": "PRON|DET",
       "system": "ADJ",
       "n": 18,
-      "sharePct": 8.07
+      "sharePct": 8.11
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 14,
-      "sharePct": 6.28
+      "sharePct": 6.31
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 12,
-      "sharePct": 5.38
+      "sharePct": 5.41
      },
      {
       "gold": "ADV",
       "system": "ADP",
       "n": 11,
-      "sharePct": 4.93
+      "sharePct": 4.95
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 11,
-      "sharePct": 4.93
+      "sharePct": 4.95
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 11,
+      "sharePct": 4.95
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 10,
-      "sharePct": 4.48
+      "sharePct": 4.5
      },
      {
-      "gold": "VERB|AUX",
-      "system": "NOUN",
-      "n": 10,
-      "sharePct": 4.48
-     },
-     {
-      "gold": "ADV",
-      "system": "SCONJ",
+      "gold": "ADJ|DET",
+      "system": "PROPN",
       "n": 9,
-      "sharePct": 4.04
+      "sharePct": 4.05
      }
     ],
     "topLemmaErrors": [],
@@ -826,8 +826,8 @@
     "byKind": {
      "lexicon": {
       "n": 2085,
-      "lemmaLenient": 1903,
-      "lemmaPosLenient": 1856
+      "lemmaLenient": 1897,
+      "lemmaPosLenient": 1851
      },
      "rule": {
       "n": 14,
@@ -855,26 +855,26 @@
    "sentences": 190,
    "tokens": 5097,
    "excludedLabels": 0,
-   "analyzeMs": 128,
-   "wordsPerSecond": 39767,
+   "analyzeMs": 139,
+   "wordsPerSecond": 36634,
    "anyReadingPct": 99.96,
-   "lexiconConfirmedPct": 97.8,
+   "lexiconConfirmedPct": 97.82,
    "ruleBuiltPct": 0.88,
-   "unconfirmedGuessPct": 1.28,
+   "unconfirmedGuessPct": 1.26,
    "noReadingPct": 0.04,
    "multiReadingPct": 48.6,
    "counts": {
     "anyReading": 5095,
-    "lexiconConfirmed": 4985,
+    "lexiconConfirmed": 4986,
     "ruleBuilt": 45,
-    "unconfirmedGuess": 65,
+    "unconfirmedGuess": 64,
     "noReading": 2,
     "multiReading": 2477,
-    "lowConfidenceConfirmed": 173
+    "lowConfidenceConfirmed": 172
    },
    "distinctForms": 2979,
    "missBreakdown": {
-    "names": 48,
+    "names": 47,
     "enclitic": 0,
     "short": 1,
     "other": 18
@@ -886,37 +886,37 @@
     "goldUnits": 4132,
     "aligned": 3529,
     "alignedPct": 85.41,
-    "lemmaStrict": 89.69,
-    "lemmaLenient": 90.51,
+    "lemmaStrict": 89.6,
+    "lemmaLenient": 90.42,
     "lemmaAnyLenient": 96,
-    "posStrict": 90.22,
-    "posLenient": 94.19,
-    "lemmaPosStrict": 85.86,
-    "lemmaPosLenient": 88.81,
-    "featuresSubsetStrict": 42.78,
+    "posStrict": 90.39,
+    "posLenient": 94.36,
+    "lemmaPosStrict": 85.89,
+    "lemmaPosLenient": 88.84,
+    "featuresSubsetStrict": 42.85,
     "featuresSubsetLenient": 88.48,
     "featuresDenominator": 2882,
     "featuresDenominatorLenient": 2882,
-    "fullStrict": 48.26,
-    "fullLenient": 84.44,
+    "fullStrict": 48.31,
+    "fullLenient": 84.47,
     "perFeature": {
      "Case": {
       "n": 2145,
       "nLenient": 2145,
-      "strict": 38.83,
-      "lenient": 91.47
+      "strict": 38.93,
+      "lenient": 91.56
      },
      "Number": {
       "n": 2795,
       "nLenient": 2786,
-      "strict": 92.34,
-      "lenient": 93.65
+      "strict": 92.49,
+      "lenient": 93.79
      },
      "Gender": {
       "n": 2145,
       "nLenient": 2071,
-      "strict": 71.05,
-      "lenient": 92.61
+      "strict": 71.28,
+      "lenient": 92.71
      },
      "Person": {
       "n": 648,
@@ -960,61 +960,61 @@
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 54,
-      "sharePct": 26.34
+      "sharePct": 27.14
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
-      "n": 25,
-      "sharePct": 12.2
+      "n": 24,
+      "sharePct": 12.06
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 18,
-      "sharePct": 8.78
+      "sharePct": 9.05
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 15,
-      "sharePct": 7.32
+      "sharePct": 7.54
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 15,
-      "sharePct": 7.32
+      "sharePct": 7.54
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
       "n": 13,
-      "sharePct": 6.34
+      "sharePct": 6.53
      },
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 9,
-      "sharePct": 4.39
+      "n": 8,
+      "sharePct": 4.02
      },
      {
       "gold": "ADV",
       "system": "NUM",
       "n": 4,
-      "sharePct": 1.95
+      "sharePct": 2.01
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADP",
       "n": 4,
-      "sharePct": 1.95
+      "sharePct": 2.01
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADV",
       "n": 4,
-      "sharePct": 1.95
+      "sharePct": 2.01
      }
     ],
     "topPosErrorsStrict": [
@@ -1022,61 +1022,61 @@
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 54,
-      "sharePct": 15.65
+      "sharePct": 15.93
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 53,
-      "sharePct": 15.36
+      "sharePct": 15.63
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 29,
-      "sharePct": 8.41
+      "sharePct": 8.55
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
-      "n": 25,
-      "sharePct": 7.25
+      "n": 24,
+      "sharePct": 7.08
      },
      {
       "gold": "ADJ|DET",
       "system": "NUM",
       "n": 22,
-      "sharePct": 6.38
+      "sharePct": 6.49
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 18,
-      "sharePct": 5.22
+      "sharePct": 5.31
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 15,
-      "sharePct": 4.35
+      "sharePct": 4.42
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 15,
-      "sharePct": 4.35
+      "sharePct": 4.42
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
       "n": 13,
-      "sharePct": 3.77
+      "sharePct": 3.83
      },
      {
       "gold": "ADJ|DET",
       "system": "VERB",
       "n": 9,
-      "sharePct": 2.61
+      "sharePct": 2.65
      }
     ],
     "topLemmaErrors": [],
@@ -1085,8 +1085,8 @@
     "byKind": {
      "lexicon": {
       "n": 3455,
-      "lemmaLenient": 3148,
-      "lemmaPosLenient": 3093
+      "lemmaLenient": 3145,
+      "lemmaPosLenient": 3094
      },
      "rule": {
       "n": 33,
@@ -1114,31 +1114,31 @@
    "sentences": 5672,
    "tokens": 99976,
    "excludedLabels": 7276,
-   "analyzeMs": 1795,
-   "wordsPerSecond": 55706,
+   "analyzeMs": 2276,
+   "wordsPerSecond": 43917,
    "anyReadingPct": 99.65,
-   "lexiconConfirmedPct": 93.28,
+   "lexiconConfirmedPct": 93.29,
    "ruleBuiltPct": 2.81,
-   "unconfirmedGuessPct": 3.56,
+   "unconfirmedGuessPct": 3.55,
    "noReadingPct": 0.35,
    "multiReadingPct": 48.78,
    "counts": {
     "anyReading": 99628,
-    "lexiconConfirmed": 93255,
+    "lexiconConfirmed": 93265,
     "ruleBuilt": 2812,
-    "unconfirmedGuess": 3561,
+    "unconfirmedGuess": 3551,
     "noReading": 348,
-    "multiReading": 48769,
-    "lowConfidenceConfirmed": 3626
+    "multiReading": 48771,
+    "lowConfidenceConfirmed": 3649
    },
    "distinctForms": 10211,
    "missBreakdown": {
-    "names": 1863,
+    "names": 1861,
     "enclitic": 10,
-    "short": 846,
-    "other": 1190
+    "short": 842,
+    "other": 1186
    },
-   "listedFormsSharePct": 72.83,
+   "listedFormsSharePct": 72.99,
    "gold": null
   },
   "perseus-caesar": {
@@ -1149,8 +1149,8 @@
    "sentences": 71,
    "tokens": 1334,
    "excludedLabels": 0,
-   "analyzeMs": 27,
-   "wordsPerSecond": 49086,
+   "analyzeMs": 32,
+   "wordsPerSecond": 41445,
    "anyReadingPct": 100,
    "lexiconConfirmedPct": 97.08,
    "ruleBuiltPct": 1.72,
@@ -1164,7 +1164,7 @@
     "unconfirmedGuess": 16,
     "noReading": 0,
     "multiReading": 717,
-    "lowConfidenceConfirmed": 33
+    "lowConfidenceConfirmed": 34
    },
    "distinctForms": 767,
    "missBreakdown": {
@@ -1180,37 +1180,37 @@
     "goldUnits": 1334,
     "aligned": 1334,
     "alignedPct": 100,
-    "lemmaStrict": 87.93,
-    "lemmaLenient": 88.08,
+    "lemmaStrict": 87.71,
+    "lemmaLenient": 87.86,
     "lemmaAnyLenient": 92.8,
-    "posStrict": 90.7,
-    "posLenient": 95.13,
+    "posStrict": 91,
+    "posLenient": 95.35,
     "lemmaPosStrict": 83.13,
     "lemmaPosLenient": 86.21,
-    "featuresSubsetStrict": 50.7,
+    "featuresSubsetStrict": 50.8,
     "featuresSubsetLenient": 88.05,
     "featuresDenominator": 1004,
     "featuresDenominatorLenient": 1004,
-    "fullStrict": 53.3,
+    "fullStrict": 53.37,
     "fullLenient": 81.78,
     "perFeature": {
      "Case": {
       "n": 765,
       "nLenient": 765,
-      "strict": 52.55,
-      "lenient": 90.85
+      "strict": 52.68,
+      "lenient": 90.98
      },
      "Number": {
       "n": 931,
       "nLenient": 914,
-      "strict": 88.18,
-      "lenient": 92.89
+      "strict": 88.29,
+      "lenient": 93
      },
      "Gender": {
       "n": 762,
       "nLenient": 744,
-      "strict": 67.59,
-      "lenient": 93.41
+      "strict": 67.45,
+      "lenient": 93.28
      },
      "Person": {
       "n": 169,
@@ -1251,64 +1251,64 @@
     },
     "topPosErrors": [
      {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 9,
-      "sharePct": 13.85
-     },
-     {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 8,
-      "sharePct": 12.31
+      "sharePct": 12.9
      },
      {
       "gold": "NUM",
       "system": "NOUN",
       "n": 7,
-      "sharePct": 10.77
+      "sharePct": 11.29
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 6,
+      "sharePct": 9.68
      },
      {
       "gold": "ADV",
       "system": "ADP",
       "n": 5,
-      "sharePct": 7.69
+      "sharePct": 8.06
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 5,
-      "sharePct": 7.69
+      "sharePct": 8.06
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 5,
-      "sharePct": 7.69
+      "sharePct": 8.06
      },
      {
       "gold": "ADV",
       "system": "NOUN",
       "n": 4,
-      "sharePct": 6.15
+      "sharePct": 6.45
      },
      {
       "gold": "ADV",
       "system": "NUM",
       "n": 3,
-      "sharePct": 4.62
+      "sharePct": 4.84
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 3,
-      "sharePct": 4.62
+      "sharePct": 4.84
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 2,
-      "sharePct": 3.08
+      "sharePct": 3.23
      }
     ],
     "topPosErrorsStrict": [
@@ -1316,61 +1316,61 @@
       "gold": "PRON|DET",
       "system": "ADJ",
       "n": 24,
-      "sharePct": 19.35
+      "sharePct": 20
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 13,
-      "sharePct": 10.48
+      "sharePct": 10.83
      },
      {
       "gold": "PROPN",
       "system": "NOUN",
-      "n": 10,
-      "sharePct": 8.06
-     },
-     {
-      "gold": "ADV",
-      "system": "ADJ",
       "n": 9,
-      "sharePct": 7.26
+      "sharePct": 7.5
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 8,
-      "sharePct": 6.45
+      "sharePct": 6.67
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 7,
-      "sharePct": 5.65
+      "sharePct": 5.83
      },
      {
       "gold": "NUM",
       "system": "NOUN",
       "n": 7,
-      "sharePct": 5.65
+      "sharePct": 5.83
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 6,
+      "sharePct": 5
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 6,
-      "sharePct": 4.84
+      "sharePct": 5
      },
      {
       "gold": "ADV",
       "system": "ADP",
       "n": 5,
-      "sharePct": 4.03
+      "sharePct": 4.17
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 5,
-      "sharePct": 4.03
+      "sharePct": 4.17
      }
     ],
     "topLemmaErrors": [],
@@ -1379,7 +1379,7 @@
     "byKind": {
      "lexicon": {
       "n": 1295,
-      "lemmaLenient": 1158,
+      "lemmaLenient": 1155,
       "lemmaPosLenient": 1133
      },
      "rule": {
@@ -1408,8 +1408,8 @@
    "sentences": 326,
    "tokens": 5519,
    "excludedLabels": 0,
-   "analyzeMs": 97,
-   "wordsPerSecond": 57070,
+   "analyzeMs": 103,
+   "wordsPerSecond": 53695,
    "anyReadingPct": 100,
    "lexiconConfirmedPct": 98.77,
    "ruleBuiltPct": 0.98,
@@ -1439,37 +1439,37 @@
     "goldUnits": 5519,
     "aligned": 5519,
     "alignedPct": 100,
-    "lemmaStrict": 91.65,
-    "lemmaLenient": 92.55,
+    "lemmaStrict": 91.59,
+    "lemmaLenient": 92.5,
     "lemmaAnyLenient": 97.25,
     "posStrict": 88.66,
-    "posLenient": 95.18,
-    "lemmaPosStrict": 84.4,
-    "lemmaPosLenient": 90.43,
-    "featuresSubsetStrict": 46.28,
-    "featuresSubsetLenient": 89.29,
+    "posLenient": 95.16,
+    "lemmaPosStrict": 84.34,
+    "lemmaPosLenient": 90.36,
+    "featuresSubsetStrict": 46.26,
+    "featuresSubsetLenient": 89.19,
     "featuresDenominator": 4023,
     "featuresDenominatorLenient": 4023,
     "fullStrict": 52.15,
-    "fullLenient": 86.1,
+    "fullLenient": 86.03,
     "perFeature": {
      "Case": {
       "n": 2962,
       "nLenient": 2962,
-      "strict": 52.67,
-      "lenient": 92.84
+      "strict": 52.57,
+      "lenient": 92.74
      },
      "Number": {
       "n": 3776,
       "nLenient": 3748,
-      "strict": 92.03,
-      "lenient": 95.09
+      "strict": 91.98,
+      "lenient": 95.04
      },
      "Gender": {
       "n": 2972,
       "nLenient": 2719,
       "strict": 64.13,
-      "lenient": 95.55
+      "lenient": 95.44
      },
      "Person": {
       "n": 804,
@@ -1512,62 +1512,62 @@
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 45,
-      "sharePct": 16.92
+      "n": 43,
+      "sharePct": 16.1
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 29,
-      "sharePct": 10.9
+      "sharePct": 10.86
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 26,
-      "sharePct": 9.77
+      "sharePct": 9.74
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 21,
-      "sharePct": 7.89
+      "sharePct": 7.87
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 18,
-      "sharePct": 6.77
+      "sharePct": 6.74
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 15,
-      "sharePct": 5.64
+      "sharePct": 5.62
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 14,
-      "sharePct": 5.26
+      "sharePct": 5.24
      },
      {
       "gold": "PROPN",
       "system": "ADJ",
       "n": 12,
-      "sharePct": 4.51
+      "sharePct": 4.49
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADP",
       "n": 11,
-      "sharePct": 4.14
+      "sharePct": 4.12
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 11,
-      "sharePct": 4.14
+      "sharePct": 4.12
      }
     ],
     "topPosErrorsStrict": [
@@ -1598,8 +1598,8 @@
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 45,
-      "sharePct": 7.19
+      "n": 43,
+      "sharePct": 6.87
      },
      {
       "gold": "CONJ|SCONJ",
@@ -1638,8 +1638,8 @@
     "byKind": {
      "lexicon": {
       "n": 5451,
-      "lemmaLenient": 5059,
-      "lemmaPosLenient": 4943
+      "lemmaLenient": 5056,
+      "lemmaPosLenient": 4939
      },
      "rule": {
       "n": 54,
@@ -1667,8 +1667,8 @@
    "sentences": 364,
    "tokens": 4372,
    "excludedLabels": 0,
-   "analyzeMs": 91,
-   "wordsPerSecond": 47991,
+   "analyzeMs": 107,
+   "wordsPerSecond": 40979,
    "anyReadingPct": 100,
    "lexiconConfirmedPct": 96.71,
    "ruleBuiltPct": 1.19,
@@ -1682,7 +1682,7 @@
     "unconfirmedGuess": 92,
     "noReading": 0,
     "multiReading": 2404,
-    "lowConfidenceConfirmed": 124
+    "lowConfidenceConfirmed": 125
    },
    "distinctForms": 2205,
    "missBreakdown": {
@@ -1698,37 +1698,37 @@
     "goldUnits": 4372,
     "aligned": 4372,
     "alignedPct": 100,
-    "lemmaStrict": 91.01,
-    "lemmaLenient": 91.93,
-    "lemmaAnyLenient": 96.07,
-    "posStrict": 86.83,
-    "posLenient": 95.36,
-    "lemmaPosStrict": 83.05,
-    "lemmaPosLenient": 90.37,
-    "featuresSubsetStrict": 36.45,
-    "featuresSubsetLenient": 86.63,
+    "lemmaStrict": 90.94,
+    "lemmaLenient": 91.86,
+    "lemmaAnyLenient": 96.09,
+    "posStrict": 86.85,
+    "posLenient": 95.38,
+    "lemmaPosStrict": 82.98,
+    "lemmaPosLenient": 90.3,
+    "featuresSubsetStrict": 36.42,
+    "featuresSubsetLenient": 86.52,
     "featuresDenominator": 3501,
     "featuresDenominatorLenient": 3501,
-    "fullStrict": 41.24,
-    "fullLenient": 84.81,
+    "fullStrict": 41.22,
+    "fullLenient": 84.72,
     "perFeature": {
      "Case": {
       "n": 2647,
       "nLenient": 2647,
-      "strict": 32.68,
-      "lenient": 89.31
+      "strict": 32.64,
+      "lenient": 89.23
      },
      "Number": {
       "n": 3276,
       "nLenient": 3273,
-      "strict": 90.08,
-      "lenient": 91.2
+      "strict": 90.02,
+      "lenient": 91.14
      },
      "Gender": {
       "n": 2645,
       "nLenient": 2415,
-      "strict": 63.63,
-      "lenient": 90.72
+      "strict": 63.55,
+      "lenient": 90.52
      },
      "Person": {
       "n": 630,
@@ -1771,62 +1771,62 @@
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
-      "n": 46,
-      "sharePct": 22.66
+      "n": 49,
+      "sharePct": 24.26
      },
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 19,
-      "sharePct": 9.36
+      "n": 17,
+      "sharePct": 8.42
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 17,
-      "sharePct": 8.37
+      "sharePct": 8.42
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 15,
-      "sharePct": 7.39
+      "sharePct": 7.43
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 12,
-      "sharePct": 5.91
-     },
-     {
-      "gold": "NOUN|PROPN",
-      "system": "VERB",
-      "n": 10,
-      "sharePct": 4.93
+      "sharePct": 5.94
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 10,
-      "sharePct": 4.93
+      "sharePct": 4.95
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 9,
-      "sharePct": 4.43
+      "sharePct": 4.46
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 9,
+      "sharePct": 4.46
      },
      {
       "gold": "INTJ",
       "system": "ADP",
       "n": 8,
-      "sharePct": 3.94
+      "sharePct": 3.96
      },
      {
       "gold": "ADJ|DET",
       "system": "VERB",
       "n": 7,
-      "sharePct": 3.45
+      "sharePct": 3.47
      }
     ],
     "topPosErrorsStrict": [
@@ -1834,61 +1834,61 @@
       "gold": "PRON|DET",
       "system": "ADJ",
       "n": 134,
-      "sharePct": 23.26
+      "sharePct": 23.3
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 84,
-      "sharePct": 14.58
+      "sharePct": 14.61
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 63,
-      "sharePct": 10.94
+      "sharePct": 10.96
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 56,
-      "sharePct": 9.72
+      "sharePct": 9.74
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
-      "n": 46,
-      "sharePct": 7.99
+      "n": 49,
+      "sharePct": 8.52
      },
      {
       "gold": "ADV",
       "system": "SCONJ",
       "n": 28,
-      "sharePct": 4.86
+      "sharePct": 4.87
      },
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 19,
-      "sharePct": 3.3
+      "n": 17,
+      "sharePct": 2.96
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 17,
-      "sharePct": 2.95
+      "sharePct": 2.96
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 15,
-      "sharePct": 2.6
+      "sharePct": 2.61
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 12,
-      "sharePct": 2.08
+      "sharePct": 2.09
      }
     ],
     "topLemmaErrors": [],
@@ -1897,8 +1897,8 @@
     "byKind": {
      "lexicon": {
       "n": 4228,
-      "lemmaLenient": 3921,
-      "lemmaPosLenient": 3861
+      "lemmaLenient": 3918,
+      "lemmaPosLenient": 3858
      },
      "rule": {
       "n": 52,
@@ -1926,8 +1926,8 @@
    "sentences": 699,
    "tokens": 10751,
    "excludedLabels": 0,
-   "analyzeMs": 226,
-   "wordsPerSecond": 47574,
+   "analyzeMs": 260,
+   "wordsPerSecond": 41342,
    "anyReadingPct": 99.92,
    "lexiconConfirmedPct": 98.28,
    "ruleBuiltPct": 0.6,
@@ -1941,7 +1941,7 @@
     "unconfirmedGuess": 112,
     "noReading": 9,
     "multiReading": 5659,
-    "lowConfidenceConfirmed": 304
+    "lowConfidenceConfirmed": 303
    },
    "distinctForms": 3979,
    "missBreakdown": {
@@ -1957,37 +1957,37 @@
     "goldUnits": 10746,
     "aligned": 10746,
     "alignedPct": 100,
-    "lemmaStrict": 89.33,
-    "lemmaLenient": 89.92,
+    "lemmaStrict": 89.14,
+    "lemmaLenient": 89.74,
     "lemmaAnyLenient": 94.31,
     "posStrict": 89.13,
     "posLenient": 92.54,
-    "lemmaPosStrict": 84.61,
-    "lemmaPosLenient": 87.61,
-    "featuresSubsetStrict": 42.92,
-    "featuresSubsetLenient": 86.07,
+    "lemmaPosStrict": 84.45,
+    "lemmaPosLenient": 87.46,
+    "featuresSubsetStrict": 42.95,
+    "featuresSubsetLenient": 85.93,
     "featuresDenominator": 8111,
     "featuresDenominatorLenient": 8111,
     "fullStrict": 49.82,
-    "fullLenient": 81.24,
+    "fullLenient": 81.09,
     "perFeature": {
      "Case": {
       "n": 6334,
       "nLenient": 6334,
-      "strict": 43.42,
-      "lenient": 88.82
+      "strict": 43.38,
+      "lenient": 88.74
      },
      "Number": {
       "n": 7692,
       "nLenient": 7617,
-      "strict": 89.46,
-      "lenient": 91.89
+      "strict": 89.4,
+      "lenient": 91.83
      },
      "Gender": {
       "n": 6339,
       "nLenient": 6147,
-      "strict": 68.09,
-      "lenient": 92.78
+      "strict": 68.04,
+      "lenient": 92.6
      },
      "Person": {
       "n": 1351,
@@ -2034,16 +2034,16 @@
       "sharePct": 24.94
      },
      {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 68,
-      "sharePct": 8.48
-     },
-     {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 62,
       "sharePct": 7.73
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 57,
+      "sharePct": 7.11
      },
      {
       "gold": "PROPN",
@@ -2059,6 +2059,12 @@
      },
      {
       "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 44,
+      "sharePct": 5.49
+     },
+     {
+      "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 39,
       "sharePct": 4.86
@@ -2068,12 +2074,6 @@
       "system": "PRON",
       "n": 37,
       "sharePct": 4.61
-     },
-     {
-      "gold": "ADJ|DET",
-      "system": "PROPN",
-      "n": 36,
-      "sharePct": 4.49
      },
      {
       "gold": "ADV",
@@ -2114,16 +2114,16 @@
       "sharePct": 6.51
      },
      {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 68,
-      "sharePct": 5.82
-     },
-     {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 62,
       "sharePct": 5.31
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 57,
+      "sharePct": 4.88
      },
      {
       "gold": "PROPN",
@@ -2145,9 +2145,9 @@
      },
      {
       "gold": "ADJ|DET",
-      "system": "NOUN",
-      "n": 39,
-      "sharePct": 3.34
+      "system": "PROPN",
+      "n": 44,
+      "sharePct": 3.77
      }
     ],
     "topLemmaErrors": [],
@@ -2156,8 +2156,8 @@
     "byKind": {
      "lexicon": {
       "n": 10565,
-      "lemmaLenient": 9596,
-      "lemmaPosLenient": 9351
+      "lemmaLenient": 9576,
+      "lemmaPosLenient": 9334
      },
      "rule": {
       "n": 64,
@@ -2185,22 +2185,22 @@
    "sentences": 177,
    "tokens": 2186,
    "excludedLabels": 0,
-   "analyzeMs": 39,
-   "wordsPerSecond": 56165,
+   "analyzeMs": 48,
+   "wordsPerSecond": 45128,
    "anyReadingPct": 100,
    "lexiconConfirmedPct": 97.71,
    "ruleBuiltPct": 0.64,
    "unconfirmedGuessPct": 1.65,
    "noReadingPct": 0,
-   "multiReadingPct": 53.06,
+   "multiReadingPct": 53.11,
    "counts": {
     "anyReading": 2186,
     "lexiconConfirmed": 2136,
     "ruleBuilt": 14,
     "unconfirmedGuess": 36,
     "noReading": 0,
-    "multiReading": 1160,
-    "lowConfidenceConfirmed": 95
+    "multiReading": 1161,
+    "lowConfidenceConfirmed": 88
    },
    "distinctForms": 1512,
    "missBreakdown": {
@@ -2216,37 +2216,37 @@
     "goldUnits": 2186,
     "aligned": 2186,
     "alignedPct": 100,
-    "lemmaStrict": 89.3,
-    "lemmaLenient": 89.8,
-    "lemmaAnyLenient": 95.33,
+    "lemmaStrict": 89.07,
+    "lemmaLenient": 89.57,
+    "lemmaAnyLenient": 95.47,
     "posStrict": 89.62,
-    "posLenient": 94.6,
-    "lemmaPosStrict": 84.17,
-    "lemmaPosLenient": 87.69,
+    "posLenient": 94.56,
+    "lemmaPosStrict": 84.03,
+    "lemmaPosLenient": 87.51,
     "featuresSubsetStrict": 38.6,
-    "featuresSubsetLenient": 84.13,
+    "featuresSubsetLenient": 83.96,
     "featuresDenominator": 1777,
     "featuresDenominatorLenient": 1777,
-    "fullStrict": 44.05,
-    "fullLenient": 81.43,
+    "fullStrict": 44.1,
+    "fullLenient": 81.29,
     "perFeature": {
      "Case": {
       "n": 1418,
       "nLenient": 1418,
-      "strict": 34.84,
-      "lenient": 89.21
+      "strict": 34.77,
+      "lenient": 89.07
      },
      "Number": {
       "n": 1724,
       "nLenient": 1714,
-      "strict": 88.81,
-      "lenient": 89.61
+      "strict": 88.75,
+      "lenient": 89.56
      },
      "Gender": {
       "n": 1415,
       "nLenient": 1379,
       "strict": 68.48,
-      "lenient": 90.5
+      "lenient": 90.43
      },
      "Person": {
       "n": 309,
@@ -2257,8 +2257,8 @@
      "Tense": {
       "n": 518,
       "nLenient": 518,
-      "strict": 83.98,
-      "lenient": 85.71
+      "strict": 83.78,
+      "lenient": 85.52
      },
      "Mood": {
       "n": 310,
@@ -2269,14 +2269,14 @@
      "Voice": {
       "n": 479,
       "nLenient": 479,
-      "strict": 86.85,
-      "lenient": 87.47
+      "strict": 86.64,
+      "lenient": 87.27
      },
      "VerbForm": {
       "n": 524,
       "nLenient": 524,
-      "strict": 85.69,
-      "lenient": 85.69
+      "strict": 85.5,
+      "lenient": 85.5
      },
      "Degree": {
       "n": 23,
@@ -2290,61 +2290,61 @@
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 18,
-      "sharePct": 15.25
+      "sharePct": 15.13
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 13,
-      "sharePct": 11.02
+      "sharePct": 10.92
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 12,
+      "sharePct": 10.08
      },
      {
       "gold": "ADV",
       "system": "ADP",
       "n": 11,
-      "sharePct": 9.32
+      "sharePct": 9.24
      },
      {
-      "gold": "VERB|AUX",
-      "system": "NOUN",
-      "n": 11,
-      "sharePct": 9.32
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 10,
+      "sharePct": 8.4
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 10,
-      "sharePct": 8.47
-     },
-     {
-      "gold": "ADJ|DET",
-      "system": "PROPN",
-      "n": 9,
-      "sharePct": 7.63
-     },
-     {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 7,
-      "sharePct": 5.93
+      "sharePct": 8.4
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 7,
-      "sharePct": 5.93
+      "sharePct": 5.88
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 6,
+      "sharePct": 5.04
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 5,
-      "sharePct": 4.24
+      "sharePct": 4.2
      },
      {
       "gold": "ADV",
       "system": "NUM",
       "n": 4,
-      "sharePct": 3.39
+      "sharePct": 3.36
      }
     ],
     "topPosErrorsStrict": [
@@ -2379,6 +2379,12 @@
       "sharePct": 5.73
      },
      {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 12,
+      "sharePct": 5.29
+     },
+     {
       "gold": "ADV",
       "system": "ADP",
       "n": 11,
@@ -2391,22 +2397,16 @@
       "sharePct": 4.85
      },
      {
-      "gold": "VERB|AUX",
-      "system": "NOUN",
-      "n": 11,
-      "sharePct": 4.85
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 10,
+      "sharePct": 4.41
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 10,
       "sharePct": 4.41
-     },
-     {
-      "gold": "ADJ|DET",
-      "system": "PROPN",
-      "n": 9,
-      "sharePct": 3.96
      }
     ],
     "topLemmaErrors": [],
@@ -2415,8 +2415,8 @@
     "byKind": {
      "lexicon": {
       "n": 2136,
-      "lemmaLenient": 1942,
-      "lemmaPosLenient": 1897
+      "lemmaLenient": 1937,
+      "lemmaPosLenient": 1893
      },
      "rule": {
       "n": 14,
@@ -2444,22 +2444,22 @@
    "sentences": 317,
    "tokens": 4133,
    "excludedLabels": 0,
-   "analyzeMs": 71,
-   "wordsPerSecond": 58308,
+   "analyzeMs": 83,
+   "wordsPerSecond": 49794,
    "anyReadingPct": 100,
    "lexiconConfirmedPct": 97.8,
    "ruleBuiltPct": 0.94,
    "unconfirmedGuessPct": 1.26,
    "noReadingPct": 0,
-   "multiReadingPct": 47.11,
+   "multiReadingPct": 47.13,
    "counts": {
     "anyReading": 4133,
     "lexiconConfirmed": 4042,
     "ruleBuilt": 39,
     "unconfirmedGuess": 52,
     "noReading": 0,
-    "multiReading": 1947,
-    "lowConfidenceConfirmed": 128
+    "multiReading": 1948,
+    "lowConfidenceConfirmed": 127
    },
    "distinctForms": 2465,
    "missBreakdown": {
@@ -2475,67 +2475,67 @@
     "goldUnits": 4132,
     "aligned": 4132,
     "alignedPct": 100,
-    "lemmaStrict": 89.25,
-    "lemmaLenient": 90,
-    "lemmaAnyLenient": 95.5,
-    "posStrict": 89.93,
-    "posLenient": 94.14,
+    "lemmaStrict": 89.16,
+    "lemmaLenient": 89.91,
+    "lemmaAnyLenient": 95.52,
+    "posStrict": 90.08,
+    "posLenient": 94.29,
     "lemmaPosStrict": 85.45,
     "lemmaPosLenient": 88.43,
-    "featuresSubsetStrict": 42.41,
-    "featuresSubsetLenient": 87.97,
+    "featuresSubsetStrict": 42.44,
+    "featuresSubsetLenient": 87.94,
     "featuresDenominator": 3341,
     "featuresDenominatorLenient": 3341,
-    "fullStrict": 47.97,
+    "fullStrict": 47.99,
     "fullLenient": 83.91,
     "perFeature": {
      "Case": {
       "n": 2490,
       "nLenient": 2490,
-      "strict": 38.19,
-      "lenient": 91.33
+      "strict": 38.27,
+      "lenient": 91.45
      },
      "Number": {
       "n": 3243,
       "nLenient": 3230,
-      "strict": 92.14,
-      "lenient": 93.37
+      "strict": 92.26,
+      "lenient": 93.5
      },
      "Gender": {
       "n": 2490,
       "nLenient": 2407,
-      "strict": 70.84,
-      "lenient": 92.31
+      "strict": 70.96,
+      "lenient": 92.36
      },
      "Person": {
       "n": 751,
       "nLenient": 751,
-      "strict": 98.54,
-      "lenient": 98.67
+      "strict": 98.4,
+      "lenient": 98.54
      },
      "Tense": {
       "n": 1091,
       "nLenient": 1091,
-      "strict": 87.72,
-      "lenient": 89.83
+      "strict": 87.63,
+      "lenient": 89.73
      },
      "Mood": {
       "n": 751,
       "nLenient": 751,
-      "strict": 96.94,
-      "lenient": 97.47
+      "strict": 96.8,
+      "lenient": 97.34
      },
      "Voice": {
       "n": 1091,
       "nLenient": 1091,
-      "strict": 87.17,
-      "lenient": 91.57
+      "strict": 87.08,
+      "lenient": 91.48
      },
      "VerbForm": {
       "n": 1092,
       "nLenient": 1092,
-      "strict": 91.58,
-      "lenient": 91.58
+      "strict": 91.48,
+      "lenient": 91.48
      },
      "Degree": {
       "n": 27,
@@ -2549,61 +2549,61 @@
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 58,
-      "sharePct": 23.97
+      "sharePct": 24.58
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
-      "n": 29,
-      "sharePct": 11.98
+      "n": 28,
+      "sharePct": 11.86
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 23,
-      "sharePct": 9.5
+      "sharePct": 9.75
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PROPN",
       "n": 16,
-      "sharePct": 6.61
+      "sharePct": 6.78
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
       "n": 15,
-      "sharePct": 6.2
+      "sharePct": 6.36
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 15,
-      "sharePct": 6.2
+      "sharePct": 6.36
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 15,
-      "sharePct": 6.2
+      "sharePct": 6.36
      },
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 10,
-      "sharePct": 4.13
-     },
-     {
-      "gold": "PROPN",
-      "system": "ADJ",
-      "n": 5,
-      "sharePct": 2.07
+      "n": 9,
+      "sharePct": 3.81
      },
      {
       "gold": "ADV",
       "system": "NUM",
       "n": 4,
-      "sharePct": 1.65
+      "sharePct": 1.69
+     },
+     {
+      "gold": "CONJ|SCONJ",
+      "system": "ADP",
+      "n": 4,
+      "sharePct": 1.69
      }
     ],
     "topPosErrorsStrict": [
@@ -2611,61 +2611,61 @@
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 68,
-      "sharePct": 16.35
+      "sharePct": 16.59
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 58,
-      "sharePct": 13.94
+      "sharePct": 14.15
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 31,
-      "sharePct": 7.45
+      "sharePct": 7.56
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
-      "n": 29,
-      "sharePct": 6.97
+      "n": 28,
+      "sharePct": 6.83
      },
      {
       "gold": "ADJ|DET",
       "system": "NUM",
       "n": 24,
-      "sharePct": 5.77
+      "sharePct": 5.85
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 23,
-      "sharePct": 5.53
+      "sharePct": 5.61
      },
      {
       "gold": "ADV",
       "system": "SCONJ",
       "n": 23,
-      "sharePct": 5.53
+      "sharePct": 5.61
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PROPN",
       "n": 16,
-      "sharePct": 3.85
+      "sharePct": 3.9
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
       "n": 15,
-      "sharePct": 3.61
+      "sharePct": 3.66
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 15,
-      "sharePct": 3.61
+      "sharePct": 3.66
      }
     ],
     "topLemmaErrors": [],
@@ -2674,7 +2674,7 @@
     "byKind": {
      "lexicon": {
       "n": 4041,
-      "lemmaLenient": 3664,
+      "lemmaLenient": 3660,
       "lemmaPosLenient": 3606
      },
      "rule": {
@@ -2703,8 +2703,8 @@
    "sentences": 1114,
    "tokens": 11140,
    "excludedLabels": 0,
-   "analyzeMs": 241,
-   "wordsPerSecond": 46315,
+   "analyzeMs": 280,
+   "wordsPerSecond": 39801,
    "anyReadingPct": 99.79,
    "lexiconConfirmedPct": 96.04,
    "ruleBuiltPct": 0.92,
@@ -2718,7 +2718,7 @@
     "unconfirmedGuess": 315,
     "noReading": 23,
     "multiReading": 5420,
-    "lowConfidenceConfirmed": 284
+    "lowConfidenceConfirmed": 285
    },
    "distinctForms": 4695,
    "missBreakdown": {
@@ -2734,37 +2734,37 @@
     "goldUnits": 11129,
     "aligned": 11129,
     "alignedPct": 100,
-    "lemmaStrict": 88.35,
-    "lemmaLenient": 89.61,
+    "lemmaStrict": 88.26,
+    "lemmaLenient": 89.52,
     "lemmaAnyLenient": 94.57,
-    "posStrict": 88.74,
-    "posLenient": 92.99,
-    "lemmaPosStrict": 82.68,
-    "lemmaPosLenient": 87.08,
-    "featuresSubsetStrict": 49.72,
-    "featuresSubsetLenient": 87.07,
+    "posStrict": 88.76,
+    "posLenient": 93.01,
+    "lemmaPosStrict": 82.61,
+    "lemmaPosLenient": 87.02,
+    "featuresSubsetStrict": 49.75,
+    "featuresSubsetLenient": 87.05,
     "featuresDenominator": 8069,
     "featuresDenominatorLenient": 8069,
     "fullStrict": 54.68,
-    "fullLenient": 82.59,
+    "fullLenient": 82.51,
     "perFeature": {
      "Case": {
       "n": 5623,
       "nLenient": 5623,
       "strict": 50.99,
-      "lenient": 89.03
+      "lenient": 88.99
      },
      "Number": {
       "n": 7767,
       "nLenient": 7722,
-      "strict": 91.86,
-      "lenient": 93.89
+      "strict": 91.82,
+      "lenient": 93.85
      },
      "Gender": {
       "n": 5632,
       "nLenient": 5252,
-      "strict": 66.28,
-      "lenient": 91.98
+      "strict": 66.32,
+      "lenient": 91.96
      },
      "Person": {
       "n": 2127,
@@ -2799,8 +2799,8 @@
      "Degree": {
       "n": 87,
       "nLenient": 87,
-      "strict": 89.66,
-      "lenient": 89.66
+      "strict": 90.8,
+      "lenient": 90.8
      }
     },
     "topPosErrors": [
@@ -2808,61 +2808,61 @@
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 136,
-      "sharePct": 17.44
+      "sharePct": 17.48
      },
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 72,
-      "sharePct": 9.23
+      "n": 65,
+      "sharePct": 8.35
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 64,
-      "sharePct": 8.21
+      "sharePct": 8.23
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 61,
-      "sharePct": 7.82
+      "sharePct": 7.84
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 40,
-      "sharePct": 5.13
+      "sharePct": 5.14
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 39,
-      "sharePct": 5
+      "sharePct": 5.01
      },
      {
       "gold": "PROPN",
       "system": "ADJ",
       "n": 35,
-      "sharePct": 4.49
+      "sharePct": 4.5
      },
      {
       "gold": "ADV",
       "system": "CONJ",
       "n": 32,
-      "sharePct": 4.1
+      "sharePct": 4.11
      },
      {
       "gold": "NOUN|PROPN",
       "system": "X",
       "n": 30,
-      "sharePct": 3.85
+      "sharePct": 3.86
      },
      {
-      "gold": "CONJ|SCONJ",
-      "system": "ADP",
-      "n": 27,
-      "sharePct": 3.46
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 29,
+      "sharePct": 3.73
      }
     ],
     "topPosErrorsStrict": [
@@ -2870,61 +2870,61 @@
       "gold": "ADV",
       "system": "PART",
       "n": 156,
-      "sharePct": 12.45
+      "sharePct": 12.47
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 136,
-      "sharePct": 10.85
+      "sharePct": 10.87
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 92,
-      "sharePct": 7.34
+      "sharePct": 7.35
      },
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 72,
-      "sharePct": 5.75
+      "n": 65,
+      "sharePct": 5.2
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 64,
-      "sharePct": 5.11
+      "sharePct": 5.12
      },
      {
       "gold": "ADJ|DET",
       "system": "NUM",
       "n": 64,
-      "sharePct": 5.11
+      "sharePct": 5.12
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 61,
-      "sharePct": 4.87
+      "sharePct": 4.88
      },
      {
       "gold": "ADV",
       "system": "CONJ",
       "n": 60,
-      "sharePct": 4.79
+      "sharePct": 4.8
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 58,
-      "sharePct": 4.63
+      "sharePct": 4.64
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 40,
-      "sharePct": 3.19
+      "sharePct": 3.2
      }
     ],
     "topLemmaErrors": [],
@@ -2933,8 +2933,8 @@
     "byKind": {
      "lexicon": {
       "n": 10689,
-      "lemmaLenient": 9770,
-      "lemmaPosLenient": 9518
+      "lemmaLenient": 9760,
+      "lemmaPosLenient": 9511
      },
      "rule": {
       "n": 103,
@@ -2962,8 +2962,8 @@
    "sentences": 582,
    "tokens": 5345,
    "excludedLabels": 0,
-   "analyzeMs": 101,
-   "wordsPerSecond": 52755,
+   "analyzeMs": 126,
+   "wordsPerSecond": 42255,
    "anyReadingPct": 99.98,
    "lexiconConfirmedPct": 98.47,
    "ruleBuiltPct": 1.2,
@@ -2993,67 +2993,67 @@
     "goldUnits": 5345,
     "aligned": 5345,
     "alignedPct": 100,
-    "lemmaStrict": 92.31,
-    "lemmaLenient": 92.8,
+    "lemmaStrict": 92.16,
+    "lemmaLenient": 92.65,
     "lemmaAnyLenient": 97.23,
-    "posStrict": 91.21,
-    "posLenient": 95.83,
-    "lemmaPosStrict": 87.39,
-    "lemmaPosLenient": 90.83,
-    "featuresSubsetStrict": 47.85,
-    "featuresSubsetLenient": 89.54,
+    "posStrict": 91.17,
+    "posLenient": 95.77,
+    "lemmaPosStrict": 87.28,
+    "lemmaPosLenient": 90.7,
+    "featuresSubsetStrict": 47.76,
+    "featuresSubsetLenient": 89.37,
     "featuresDenominator": 4301,
     "featuresDenominatorLenient": 4301,
-    "fullStrict": 51.23,
-    "fullLenient": 85.82,
+    "fullStrict": 51.15,
+    "fullLenient": 85.69,
     "perFeature": {
      "Case": {
       "n": 2985,
       "nLenient": 2985,
-      "strict": 44.69,
-      "lenient": 93.13
+      "strict": 44.62,
+      "lenient": 93.03
      },
      "Number": {
       "n": 4073,
       "nLenient": 4037,
-      "strict": 92.81,
-      "lenient": 95.71
+      "strict": 92.76,
+      "lenient": 95.67
      },
      "Gender": {
       "n": 2989,
       "nLenient": 2852,
-      "strict": 66.71,
-      "lenient": 96.07
+      "strict": 66.68,
+      "lenient": 95.93
      },
      "Person": {
       "n": 1084,
       "nLenient": 1084,
-      "strict": 98.71,
-      "lenient": 98.8
+      "strict": 98.62,
+      "lenient": 98.71
      },
      "Tense": {
       "n": 1629,
       "nLenient": 1629,
-      "strict": 87.72,
-      "lenient": 89.99
+      "strict": 87.6,
+      "lenient": 89.87
      },
      "Mood": {
       "n": 1085,
       "nLenient": 1085,
-      "strict": 95.94,
-      "lenient": 96.31
+      "strict": 95.85,
+      "lenient": 96.22
      },
      "Voice": {
       "n": 1460,
       "nLenient": 1460,
-      "strict": 91.51,
-      "lenient": 93.08
+      "strict": 91.37,
+      "lenient": 92.95
      },
      "VerbForm": {
       "n": 1655,
       "nLenient": 1655,
-      "strict": 92.99,
-      "lenient": 92.99
+      "strict": 92.87,
+      "lenient": 92.87
      },
      "Degree": {
       "n": 77,
@@ -3066,124 +3066,124 @@
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 53,
-      "sharePct": 23.77
+      "n": 52,
+      "sharePct": 23.01
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 21,
+      "sharePct": 9.29
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 20,
-      "sharePct": 8.97
-     },
-     {
-      "gold": "VERB|AUX",
-      "system": "NOUN",
-      "n": 20,
-      "sharePct": 8.97
+      "sharePct": 8.85
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 15,
-      "sharePct": 6.73
+      "sharePct": 6.64
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 15,
-      "sharePct": 6.73
+      "sharePct": 6.64
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 14,
-      "sharePct": 6.28
+      "sharePct": 6.19
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 12,
-      "sharePct": 5.38
+      "sharePct": 5.31
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
-      "n": 9,
-      "sharePct": 4.04
+      "n": 10,
+      "sharePct": 4.42
      },
      {
       "gold": "ADV",
       "system": "PROPN",
       "n": 9,
-      "sharePct": 4.04
+      "sharePct": 3.98
      },
      {
       "gold": "ADJ|DET",
       "system": "VERB",
       "n": 6,
-      "sharePct": 2.69
+      "sharePct": 2.65
      }
     ],
     "topPosErrorsStrict": [
      {
-      "gold": "PRON|DET",
-      "system": "ADJ",
-      "n": 72,
-      "sharePct": 15.32
-     },
-     {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 72,
-      "sharePct": 15.32
+      "sharePct": 15.25
+     },
+     {
+      "gold": "PRON|DET",
+      "system": "ADJ",
+      "n": 71,
+      "sharePct": 15.04
      },
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 53,
-      "sharePct": 11.28
+      "n": 52,
+      "sharePct": 11.02
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 48,
-      "sharePct": 10.21
+      "sharePct": 10.17
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 25,
-      "sharePct": 5.32
+      "sharePct": 5.3
+     },
+     {
+      "gold": "VERB|AUX",
+      "system": "NOUN",
+      "n": 21,
+      "sharePct": 4.45
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 20,
-      "sharePct": 4.26
-     },
-     {
-      "gold": "VERB|AUX",
-      "system": "NOUN",
-      "n": 20,
-      "sharePct": 4.26
+      "sharePct": 4.24
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 15,
-      "sharePct": 3.19
+      "sharePct": 3.18
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 15,
-      "sharePct": 3.19
+      "sharePct": 3.18
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 14,
-      "sharePct": 2.98
+      "sharePct": 2.97
      }
     ],
     "topLemmaErrors": [],
@@ -3192,8 +3192,8 @@
     "byKind": {
      "lexicon": {
       "n": 5263,
-      "lemmaLenient": 4899,
-      "lemmaPosLenient": 4794
+      "lemmaLenient": 4891,
+      "lemmaPosLenient": 4787
      },
      "rule": {
       "n": 64,
@@ -3221,8 +3221,8 @@
    "sentences": 116,
    "tokens": 2616,
    "excludedLabels": 0,
-   "analyzeMs": 64,
-   "wordsPerSecond": 40904,
+   "analyzeMs": 73,
+   "wordsPerSecond": 35748,
    "anyReadingPct": 99.85,
    "lexiconConfirmedPct": 95.49,
    "ruleBuiltPct": 1.22,
@@ -3236,7 +3236,7 @@
     "unconfirmedGuess": 82,
     "noReading": 4,
     "multiReading": 1305,
-    "lowConfidenceConfirmed": 52
+    "lowConfidenceConfirmed": 56
    },
    "distinctForms": 1250,
    "missBreakdown": {
@@ -3252,24 +3252,24 @@
     "goldUnits": 2613,
     "aligned": 2613,
     "alignedPct": 100,
-    "lemmaStrict": 89.21,
-    "lemmaLenient": 89.44,
-    "lemmaAnyLenient": 92.19,
-    "posStrict": 88.06,
-    "posLenient": 91.54,
-    "lemmaPosStrict": 81.06,
-    "lemmaPosLenient": 83.89,
+    "lemmaStrict": 89.09,
+    "lemmaLenient": 89.32,
+    "lemmaAnyLenient": 92.23,
+    "posStrict": 87.91,
+    "posLenient": 91.39,
+    "lemmaPosStrict": 80.83,
+    "lemmaPosLenient": 83.66,
     "featuresSubsetStrict": 40.58,
-    "featuresSubsetLenient": 87.46,
+    "featuresSubsetLenient": 87.36,
     "featuresDenominator": 2001,
     "featuresDenominatorLenient": 2001,
-    "fullStrict": 49.64,
-    "fullLenient": 79.87,
+    "fullStrict": 49.56,
+    "fullLenient": 79.64,
     "perFeature": {
      "Case": {
       "n": 1725,
       "nLenient": 1725,
-      "strict": 48.06,
+      "strict": 47.94,
       "lenient": 90.72
      },
      "Number": {
@@ -3281,38 +3281,38 @@
      "Gender": {
       "n": 1727,
       "nLenient": 1693,
-      "strict": 69.31,
-      "lenient": 92.5
+      "strict": 69.48,
+      "lenient": 92.44
      },
      "Person": {
       "n": 252,
       "nLenient": 252,
-      "strict": 99.6,
-      "lenient": 99.6
+      "strict": 99.21,
+      "lenient": 99.21
      },
      "Tense": {
       "n": 384,
       "nLenient": 384,
-      "strict": 93.75,
-      "lenient": 94.01
+      "strict": 93.49,
+      "lenient": 93.75
      },
      "Mood": {
       "n": 252,
       "nLenient": 252,
-      "strict": 99.6,
-      "lenient": 99.6
+      "strict": 99.21,
+      "lenient": 99.21
      },
      "Voice": {
       "n": 360,
       "nLenient": 360,
-      "strict": 93.89,
-      "lenient": 95.83
+      "strict": 93.61,
+      "lenient": 95.56
      },
      "VerbForm": {
       "n": 396,
       "nLenient": 396,
-      "strict": 94.95,
-      "lenient": 94.95
+      "strict": 94.7,
+      "lenient": 94.7
      },
      "Degree": {
       "n": 21,
@@ -3326,61 +3326,61 @@
       "gold": "NOUN|PROPN",
       "system": "PRON",
       "n": 67,
-      "sharePct": 30.32
+      "sharePct": 29.78
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
-      "n": 32,
-      "sharePct": 14.48
+      "n": 38,
+      "sharePct": 16.89
      },
      {
       "gold": "NUM",
       "system": "NOUN",
       "n": 19,
-      "sharePct": 8.6
+      "sharePct": 8.44
      },
      {
       "gold": "ADV",
       "system": "X",
       "n": 17,
-      "sharePct": 7.69
+      "sharePct": 7.56
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 16,
-      "sharePct": 7.24
+      "sharePct": 7.11
      },
      {
       "gold": "PROPN",
       "system": "ADJ",
       "n": 14,
-      "sharePct": 6.33
+      "sharePct": 6.22
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 9,
-      "sharePct": 4.07
+      "sharePct": 4
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 7,
-      "sharePct": 3.17
+      "sharePct": 3.11
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
-      "n": 5,
-      "sharePct": 2.26
+      "n": 6,
+      "sharePct": 2.67
      },
      {
       "gold": "NUM",
       "system": "X",
       "n": 4,
-      "sharePct": 1.81
+      "sharePct": 1.78
      }
     ],
     "topPosErrorsStrict": [
@@ -3388,61 +3388,61 @@
       "gold": "NOUN|PROPN",
       "system": "PRON",
       "n": 67,
-      "sharePct": 21.47
+      "sharePct": 21.2
      },
      {
       "gold": "ADJ|DET",
       "system": "NUM",
       "n": 52,
-      "sharePct": 16.67
+      "sharePct": 16.46
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
-      "n": 32,
-      "sharePct": 10.26
+      "n": 38,
+      "sharePct": 12.03
      },
      {
       "gold": "NUM",
       "system": "NOUN",
       "n": 19,
-      "sharePct": 6.09
+      "sharePct": 6.01
      },
      {
       "gold": "ADV",
       "system": "X",
       "n": 17,
-      "sharePct": 5.45
+      "sharePct": 5.38
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 16,
-      "sharePct": 5.13
+      "sharePct": 5.06
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 15,
-      "sharePct": 4.81
+      "sharePct": 4.75
      },
      {
       "gold": "PROPN",
       "system": "ADJ",
       "n": 14,
-      "sharePct": 4.49
+      "sharePct": 4.43
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 9,
-      "sharePct": 2.88
+      "sharePct": 2.85
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 8,
-      "sharePct": 2.56
+      "sharePct": 2.53
      }
     ],
     "topLemmaErrors": [],
@@ -3451,8 +3451,8 @@
     "byKind": {
      "lexicon": {
       "n": 2496,
-      "lemmaLenient": 2276,
-      "lemmaPosLenient": 2145
+      "lemmaLenient": 2273,
+      "lemmaPosLenient": 2139
      },
      "rule": {
       "n": 32,
@@ -3480,8 +3480,8 @@
    "sentences": 346,
    "tokens": 7002,
    "excludedLabels": 0,
-   "analyzeMs": 168,
-   "wordsPerSecond": 41581,
+   "analyzeMs": 190,
+   "wordsPerSecond": 36895,
    "anyReadingPct": 99.86,
    "lexiconConfirmedPct": 97.51,
    "ruleBuiltPct": 1.03,
@@ -3495,7 +3495,7 @@
     "unconfirmedGuess": 92,
     "noReading": 10,
     "multiReading": 3623,
-    "lowConfidenceConfirmed": 216
+    "lowConfidenceConfirmed": 226
    },
    "distinctForms": 3773,
    "missBreakdown": {
@@ -3513,35 +3513,35 @@
     "alignedPct": 99.99,
     "lemmaStrict": 89.89,
     "lemmaLenient": 90.26,
-    "lemmaAnyLenient": 94.73,
-    "posStrict": 89.41,
-    "posLenient": 93.81,
-    "lemmaPosStrict": 84.3,
-    "lemmaPosLenient": 87.53,
-    "featuresSubsetStrict": 47.44,
-    "featuresSubsetLenient": 88.85,
+    "lemmaAnyLenient": 94.77,
+    "posStrict": 89.47,
+    "posLenient": 93.84,
+    "lemmaPosStrict": 84.36,
+    "lemmaPosLenient": 87.56,
+    "featuresSubsetStrict": 47.52,
+    "featuresSubsetLenient": 88.63,
     "featuresDenominator": 5074,
     "featuresDenominatorLenient": 5074,
-    "fullStrict": 54.37,
-    "fullLenient": 83.99,
+    "fullStrict": 54.46,
+    "fullLenient": 83.94,
     "perFeature": {
      "Case": {
       "n": 4070,
       "nLenient": 4070,
-      "strict": 53.34,
-      "lenient": 93.46
+      "strict": 53.27,
+      "lenient": 93.34
      },
      "Number": {
       "n": 4825,
       "nLenient": 4756,
-      "strict": 92.99,
-      "lenient": 95.16
+      "strict": 92.93,
+      "lenient": 95.1
      },
      "Gender": {
       "n": 4051,
       "nLenient": 3972,
-      "strict": 66.28,
-      "lenient": 94.46
+      "strict": 66.45,
+      "lenient": 94.28
      },
      "Person": {
       "n": 763,
@@ -3582,64 +3582,64 @@
     },
     "topPosErrors": [
      {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 68,
-      "sharePct": 15.7
-     },
-     {
       "gold": "ADJ|DET",
       "system": "PROPN",
-      "n": 59,
-      "sharePct": 13.63
+      "n": 67,
+      "sharePct": 15.55
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 65,
+      "sharePct": 15.08
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 55,
-      "sharePct": 12.7
-     },
-     {
-      "gold": "PROPN",
-      "system": "ADJ",
-      "n": 41,
-      "sharePct": 9.47
+      "sharePct": 12.76
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 36,
-      "sharePct": 8.31
+      "sharePct": 8.35
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 35,
+      "sharePct": 8.12
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 23,
-      "sharePct": 5.31
+      "sharePct": 5.34
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 22,
-      "sharePct": 5.08
+      "sharePct": 5.1
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 21,
-      "sharePct": 4.85
+      "sharePct": 4.87
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 15,
-      "sharePct": 3.46
+      "sharePct": 3.48
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADP",
       "n": 14,
-      "sharePct": 3.23
+      "sharePct": 3.25
      }
     ],
     "topPosErrorsStrict": [
@@ -3647,61 +3647,61 @@
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 92,
-      "sharePct": 12.42
+      "sharePct": 12.48
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 85,
-      "sharePct": 11.47
-     },
-     {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 68,
-      "sharePct": 9.18
+      "sharePct": 11.53
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
-      "n": 59,
-      "sharePct": 7.96
+      "n": 67,
+      "sharePct": 9.09
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 65,
+      "sharePct": 8.82
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 55,
-      "sharePct": 7.42
+      "sharePct": 7.46
      },
      {
       "gold": "PRON|DET",
       "system": "ADJ",
       "n": 49,
-      "sharePct": 6.61
+      "sharePct": 6.65
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 44,
-      "sharePct": 5.94
-     },
-     {
-      "gold": "PROPN",
-      "system": "ADJ",
-      "n": 41,
-      "sharePct": 5.53
+      "sharePct": 5.97
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 36,
-      "sharePct": 4.86
+      "sharePct": 4.88
+     },
+     {
+      "gold": "PROPN",
+      "system": "ADJ",
+      "n": 35,
+      "sharePct": 4.75
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 23,
-      "sharePct": 3.1
+      "sharePct": 3.12
      }
     ],
     "topLemmaErrors": [],
@@ -3711,7 +3711,7 @@
      "lexicon": {
       "n": 6826,
       "lemmaLenient": 6227,
-      "lemmaPosLenient": 6043
+      "lemmaPosLenient": 6045
      },
      "rule": {
       "n": 72,
@@ -3739,8 +3739,8 @@
    "sentences": 197,
    "tokens": 2881,
    "excludedLabels": 0,
-   "analyzeMs": 65,
-   "wordsPerSecond": 43998,
+   "analyzeMs": 69,
+   "wordsPerSecond": 42040,
    "anyReadingPct": 99.97,
    "lexiconConfirmedPct": 97.67,
    "ruleBuiltPct": 1.04,
@@ -3754,7 +3754,7 @@
     "unconfirmedGuess": 36,
     "noReading": 1,
     "multiReading": 1597,
-    "lowConfidenceConfirmed": 95
+    "lowConfidenceConfirmed": 96
    },
    "distinctForms": 1790,
    "missBreakdown": {
@@ -3770,36 +3770,36 @@
     "goldUnits": 2881,
     "aligned": 2881,
     "alignedPct": 100,
-    "lemmaStrict": 90.91,
-    "lemmaLenient": 91.15,
+    "lemmaStrict": 90.8,
+    "lemmaLenient": 91.04,
     "lemmaAnyLenient": 95.42,
-    "posStrict": 88.62,
-    "posLenient": 95.07,
-    "lemmaPosStrict": 84.45,
-    "lemmaPosLenient": 88.58,
-    "featuresSubsetStrict": 39.88,
-    "featuresSubsetLenient": 84.82,
+    "posStrict": 88.72,
+    "posLenient": 95.18,
+    "lemmaPosStrict": 84.42,
+    "lemmaPosLenient": 88.55,
+    "featuresSubsetStrict": 40.02,
+    "featuresSubsetLenient": 84.87,
     "featuresDenominator": 2154,
     "featuresDenominatorLenient": 2154,
-    "fullStrict": 47.48,
+    "fullStrict": 47.55,
     "fullLenient": 82.33,
     "perFeature": {
      "Case": {
       "n": 1819,
       "nLenient": 1819,
-      "strict": 45.52,
-      "lenient": 90.16
+      "strict": 45.57,
+      "lenient": 90.27
      },
      "Number": {
       "n": 2060,
       "nLenient": 2050,
-      "strict": 90.87,
-      "lenient": 92.34
+      "strict": 90.92,
+      "lenient": 92.39
      },
      "Gender": {
       "n": 1819,
       "nLenient": 1787,
-      "strict": 68.94,
+      "strict": 69.05,
       "lenient": 95.41
      },
      "Person": {
@@ -3844,61 +3844,61 @@
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 29,
-      "sharePct": 20.42
+      "sharePct": 20.86
      },
      {
       "gold": "ADV",
       "system": "ADJ",
-      "n": 23,
-      "sharePct": 16.2
+      "n": 20,
+      "sharePct": 14.39
      },
      {
       "gold": "PROPN",
       "system": "ADJ",
-      "n": 20,
-      "sharePct": 14.08
+      "n": 19,
+      "sharePct": 13.67
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
-      "n": 11,
-      "sharePct": 7.75
+      "n": 12,
+      "sharePct": 8.63
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 10,
-      "sharePct": 7.04
+      "sharePct": 7.19
      },
      {
       "gold": "ADV",
       "system": "PRON",
       "n": 8,
-      "sharePct": 5.63
+      "sharePct": 5.76
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 5,
-      "sharePct": 3.52
+      "sharePct": 3.6
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 4,
-      "sharePct": 2.82
+      "sharePct": 2.88
+     },
+     {
+      "gold": "ADJ|DET",
+      "system": "PROPN",
+      "n": 3,
+      "sharePct": 2.16
      },
      {
       "gold": "ADJ|DET",
       "system": "ADV",
       "n": 2,
-      "sharePct": 1.41
-     },
-     {
-      "gold": "ADJ|DET",
-      "system": "PROPN",
-      "n": 2,
-      "sharePct": 1.41
+      "sharePct": 1.44
      }
     ],
     "topPosErrorsStrict": [
@@ -3906,61 +3906,61 @@
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 67,
-      "sharePct": 20.43
+      "sharePct": 20.62
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 46,
-      "sharePct": 14.02
+      "sharePct": 14.15
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 29,
-      "sharePct": 8.84
+      "sharePct": 8.92
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 28,
-      "sharePct": 8.54
-     },
-     {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 23,
-      "sharePct": 7.01
+      "sharePct": 8.62
      },
      {
       "gold": "PRON|DET",
       "system": "ADJ",
       "n": 23,
-      "sharePct": 7.01
+      "sharePct": 7.08
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 20,
+      "sharePct": 6.15
      },
      {
       "gold": "PROPN",
       "system": "ADJ",
-      "n": 20,
-      "sharePct": 6.1
+      "n": 19,
+      "sharePct": 5.85
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
-      "n": 11,
-      "sharePct": 3.35
+      "n": 12,
+      "sharePct": 3.69
      },
      {
       "gold": "ADV",
       "system": "SCONJ",
       "n": 10,
-      "sharePct": 3.05
+      "sharePct": 3.08
      },
      {
       "gold": "NOUN|PROPN",
       "system": "VERB",
       "n": 10,
-      "sharePct": 3.05
+      "sharePct": 3.08
      }
     ],
     "topLemmaErrors": [],
@@ -3969,8 +3969,8 @@
     "byKind": {
      "lexicon": {
       "n": 2814,
-      "lemmaLenient": 2582,
-      "lemmaPosLenient": 2509
+      "lemmaLenient": 2579,
+      "lemmaPosLenient": 2508
      },
      "rule": {
       "n": 30,
@@ -3998,26 +3998,26 @@
    "sentences": 617,
    "tokens": 8366,
    "excludedLabels": 0,
-   "analyzeMs": 119,
-   "wordsPerSecond": 70399,
+   "analyzeMs": 128,
+   "wordsPerSecond": 65456,
    "anyReadingPct": 99.98,
-   "lexiconConfirmedPct": 99.15,
-   "ruleBuiltPct": 0.61,
-   "unconfirmedGuessPct": 0.22,
+   "lexiconConfirmedPct": 99.18,
+   "ruleBuiltPct": 0.62,
+   "unconfirmedGuessPct": 0.18,
    "noReadingPct": 0.02,
-   "multiReadingPct": 43.28,
+   "multiReadingPct": 43.34,
    "counts": {
     "anyReading": 8364,
-    "lexiconConfirmed": 8295,
-    "ruleBuilt": 51,
-    "unconfirmedGuess": 18,
+    "lexiconConfirmed": 8297,
+    "ruleBuilt": 52,
+    "unconfirmedGuess": 15,
     "noReading": 2,
-    "multiReading": 3621,
-    "lowConfidenceConfirmed": 87
+    "multiReading": 3626,
+    "lowConfidenceConfirmed": 86
    },
    "distinctForms": 2179,
    "missBreakdown": {
-    "names": 11,
+    "names": 8,
     "enclitic": 0,
     "short": 0,
     "other": 9
@@ -4029,37 +4029,37 @@
     "goldUnits": 8340,
     "aligned": 8338,
     "alignedPct": 99.98,
-    "lemmaStrict": 95.47,
-    "lemmaLenient": 95.61,
-    "lemmaAnyLenient": 98.2,
-    "posStrict": 93.43,
-    "posLenient": 97.45,
+    "lemmaStrict": 95.45,
+    "lemmaLenient": 95.6,
+    "lemmaAnyLenient": 98.21,
+    "posStrict": 93.45,
+    "posLenient": 97.46,
     "lemmaPosStrict": 91.05,
     "lemmaPosLenient": 94.76,
     "featuresSubsetStrict": 48.86,
-    "featuresSubsetLenient": 89.24,
+    "featuresSubsetLenient": 89.25,
     "featuresDenominator": 5825,
     "featuresDenominatorLenient": 5825,
-    "fullStrict": 59.59,
-    "fullLenient": 89.4,
+    "fullStrict": 59.58,
+    "fullLenient": 89.37,
     "perFeature": {
      "Case": {
       "n": 4458,
       "nLenient": 4458,
-      "strict": 55.72,
-      "lenient": 92.58
+      "strict": 55.7,
+      "lenient": 92.55
      },
      "Number": {
       "n": 5741,
       "nLenient": 5728,
-      "strict": 91.08,
-      "lenient": 94.85
+      "strict": 91.03,
+      "lenient": 94.8
      },
      "Gender": {
       "n": 4445,
       "nLenient": 4336,
-      "strict": 71.38,
-      "lenient": 94.67
+      "strict": 71.43,
+      "lenient": 94.72
      },
      "Person": {
       "n": 1280,
@@ -4103,61 +4103,61 @@
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 83,
-      "sharePct": 38.97
+      "sharePct": 39.15
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 19,
-      "sharePct": 8.92
+      "sharePct": 8.96
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 18,
-      "sharePct": 8.45
+      "sharePct": 8.49
      },
      {
       "gold": "NUM",
       "system": "NOUN",
       "n": 15,
-      "sharePct": 7.04
-     },
-     {
-      "gold": "NOUN|PROPN",
-      "system": "VERB",
-      "n": 13,
-      "sharePct": 6.1
+      "sharePct": 7.08
      },
      {
       "gold": "ADV",
       "system": "NOUN",
-      "n": 11,
-      "sharePct": 5.16
+      "n": 12,
+      "sharePct": 5.66
+     },
+     {
+      "gold": "NOUN|PROPN",
+      "system": "VERB",
+      "n": 12,
+      "sharePct": 5.66
      },
      {
       "gold": "ADJ|DET",
       "system": "PROPN",
       "n": 5,
-      "sharePct": 2.35
-     },
-     {
-      "gold": "ADV",
-      "system": "ADJ",
-      "n": 5,
-      "sharePct": 2.35
+      "sharePct": 2.36
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PRON",
       "n": 5,
-      "sharePct": 2.35
+      "sharePct": 2.36
+     },
+     {
+      "gold": "ADV",
+      "system": "ADJ",
+      "n": 4,
+      "sharePct": 1.89
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "PROPN",
       "n": 4,
-      "sharePct": 1.88
+      "sharePct": 1.89
      }
     ],
     "topPosErrorsStrict": [
@@ -4165,61 +4165,61 @@
       "gold": "ADJ|DET",
       "system": "NUM",
       "n": 107,
-      "sharePct": 19.53
+      "sharePct": 19.6
      },
      {
       "gold": "NOUN|PROPN",
       "system": "ADJ",
       "n": 84,
-      "sharePct": 15.33
+      "sharePct": 15.38
      },
      {
       "gold": "ADV",
       "system": "PART",
       "n": 67,
-      "sharePct": 12.23
+      "sharePct": 12.27
      },
      {
       "gold": "ADV",
       "system": "SCONJ",
       "n": 58,
-      "sharePct": 10.58
+      "sharePct": 10.62
      },
      {
       "gold": "CONJ|SCONJ",
       "system": "ADV",
       "n": 34,
-      "sharePct": 6.2
+      "sharePct": 6.23
      },
      {
       "gold": "ADV",
       "system": "INTJ",
       "n": 23,
-      "sharePct": 4.2
+      "sharePct": 4.21
      },
      {
       "gold": "ADJ|DET",
       "system": "NOUN",
       "n": 19,
-      "sharePct": 3.47
+      "sharePct": 3.48
      },
      {
       "gold": "VERB|AUX",
       "system": "ADJ",
       "n": 19,
-      "sharePct": 3.47
+      "sharePct": 3.48
      },
      {
       "gold": "VERB|AUX",
       "system": "NOUN",
       "n": 18,
-      "sharePct": 3.28
+      "sharePct": 3.3
      },
      {
-      "gold": "ADJ|DET",
-      "system": "PRON",
+      "gold": "NUM",
+      "system": "NOUN",
       "n": 15,
-      "sharePct": 2.74
+      "sharePct": 2.75
      }
     ],
     "topLemmaErrors": [],
@@ -4227,19 +4227,19 @@
     "topFeatureErrors": [],
     "byKind": {
      "lexicon": {
-      "n": 8269,
+      "n": 8271,
       "lemmaLenient": 7924,
-      "lemmaPosLenient": 7853
+      "lemmaPosLenient": 7854
      },
      "rule": {
-      "n": 51,
-      "lemmaLenient": 40,
-      "lemmaPosLenient": 40
+      "n": 52,
+      "lemmaLenient": 41,
+      "lemmaPosLenient": 41
      },
      "guess": {
-      "n": 16,
-      "lemmaLenient": 8,
-      "lemmaPosLenient": 8
+      "n": 13,
+      "lemmaLenient": 6,
+      "lemmaPosLenient": 6
      },
      "none": {
       "n": 2,

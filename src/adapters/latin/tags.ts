@@ -2,8 +2,8 @@
  * Wiktionary's Latin inflection tags (as the kaikki.org extract and the dictionary shards carry them) mapped to this adapter's
  * feature keys. Only the vocabulary of the tags is used (nominative, first-person, pluperfect ...); no table data is copied.
  * A row whose tags name a form the adapter does not model (the archaic sigmatic future and aorist, a potential infinitive) maps to
- * undefined: it is not placed in the table. A row that stands for all three genders (the dative plural bonis) is placed in the
- * masculine cell; the feminine and neuter cells of that case stay "rules only".
+ * undefined: it is not placed in the table. A row that stands for two or three genders (the dative plural bonis) carries the union
+ * ("Fem,Masc,Neut"), which the cell selection reads as every one of those cells (2026-10-25; before, the masculine cell only).
  */
 import type { PartOfSpeech } from '../../core';
 
@@ -13,6 +13,9 @@ const GENDER: Record<string, string> = { masculine: 'Masc', feminine: 'Fem', neu
 const PERSON: Record<string, string> = { 'first-person': '1', 'second-person': '2', 'third-person': '3' };
 const IGNORED = new Set(['canonical', 'table-tags', 'inflection-template', 'alternative', 'noun-from-verb', 'obsolete', 'archaic', 'rare', 'poetic', 'dialectal', 'uncommon', 'Medieval-Latin', 'Late-Latin', 'Old-Latin', 'Classical-Latin', 'Ecclesiastical', 'New-Latin', 'Medieval', 'Late', 'Early', 'nonstandard', 'vulgar', 'proscribed', 'misspelling', 'pronunciation-spelling', 'post-Augustan', 'Latin']);
 const UNMODELLED = new Set(['sigmatic', 'aorist', 'potential', 'adverb', 'diminutive', 'abbreviation', 'comparative', 'superlative', 'positive', 'oblique', 'stem', 'class', 'pronominal', 'contraction', 'syncope', 'apocopic', 'clitic', 'emphatic', 'before-vowel', 'symbol', 'uppercase', 'lowercase']);
+
+/** One gender, or the sorted union the cell selection splits on commas ("Fem,Masc,Neut"). */
+const genderUnion = (g: string[]): string => [...new Set(g)].sort().join(',');
 
 export type TableRow = { features: Record<string, string> } | { unplaced: string };
 
@@ -40,19 +43,19 @@ export function latinTableRow(tags: readonly string[], pos: PartOfSpeech): Table
       // the future passive participle is the gerundive
       f.VerbForm = 'Gdv';
       f.Voice = 'Pass';
-      if (genders.length) f.Gender = genders[0];
+      if (genders.length) f.Gender = genderUnion(genders);
       return { features: f };
     }
     if (t.has('participle')) {
       f.VerbForm = 'Part';
       f.Tense = t.has('future') ? 'Fut' : t.has('perfect') ? 'Perf' : 'Pres';
       if (voice) f.Voice = voice;
-      if (genders.length) f.Gender = genders[0];
+      if (genders.length) f.Gender = genderUnion(genders);
       return { features: f };
     }
     if (t.has('gerund')) { f.VerbForm = 'Ger'; delete f.Number; return { features: f }; }
     if (t.has('supine')) { f.VerbForm = 'Sup'; delete f.Number; return { features: f }; }
-    if (t.has('gerundive')) { f.VerbForm = 'Gdv'; f.Voice = 'Pass'; if (genders.length) f.Gender = genders[0]; return { features: f }; }
+    if (t.has('gerundive')) { f.VerbForm = 'Gdv'; f.Voice = 'Pass'; if (genders.length) f.Gender = genderUnion(genders); return { features: f }; }
     f.VerbForm = 'Fin';
     if (t.has('indicative')) f.Mood = 'Ind';
     else if (t.has('subjunctive')) f.Mood = 'Sub';
@@ -71,7 +74,7 @@ export function latinTableRow(tags: readonly string[], pos: PartOfSpeech): Table
     return { features: f };
   }
   if (!f.Case || !f.Number) return { unplaced: 'no case or number' };
-  if ((pos === 'ADJ' || pos === 'PRON' || pos === 'DET' || pos === 'NUM') && genders.length) f.Gender = genders[0];
+  if ((pos === 'ADJ' || pos === 'PRON' || pos === 'DET' || pos === 'NUM') && genders.length) f.Gender = genderUnion(genders);
   return { features: f };
 }
 

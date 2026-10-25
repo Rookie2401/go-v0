@@ -481,17 +481,20 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
         next = check.url;
       }
       const previousUrl = await serviceUrl();
-      const previousSession = deps.mobile?.native ? await state.getSession() : undefined;
+      const previousSession = await state.getSession();
       const nextUrl = resolveServiceUrl(next, deps.config);
-      if (deps.mobile?.native && previousUrl !== nextUrl) {
+      if (previousUrl !== nextUrl) {
+        // A session is bound to the service that issued its token. Once the URL changes, keeping the session makes
+        // the app look signed in while every protected request is sent without its bearer token and gets a 401.
+        // Stop the old sync loop and clear the session on every host; leave the durable learner queue/log in place.
+        dropHandle();
         if (previousSession) {
           try { await deps.createApi(previousUrl, previousSession.token).deleteSession(); } catch { /* the old credential is still cleared locally */ }
           try { await state.clearSession(); }
           catch { return { ok: false, message: 'GoReview could not clear the previous sign-in securely. Try again before changing the service address.' }; }
           await state.clearCaches(previousSession.learnerId);
-          await removeByPrefix(deps.area, [`gopractice:choices:${previousSession.learnerId}`, `gopractice:prefs:${previousSession.learnerId}:`]);
+          if (deps.mobile?.native) await removeByPrefix(deps.area, [`gopractice:choices:${previousSession.learnerId}`, `gopractice:prefs:${previousSession.learnerId}:`]);
         }
-        dropHandle();
         authExpired = false;
         changed();
       }

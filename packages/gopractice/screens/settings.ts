@@ -140,7 +140,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
         const r = await ctx.saveService(raw || undefined);
         if (!r.ok) { setStatus(svcStatus, r.message, 'error'); return; }
         url.value = await ctx.serviceUrl();
-        setStatus(svcStatus, `Service address set to ${url.value}. Sign in again if you changed service.`, 'ok');
+        setStatus(svcStatus, `Service address set to ${url.value}. If this is a different service, sign in again; saved events stay on this device.`, 'ok');
       })();
     }, { id: 'settings-svc-save', class: 'btn' })), svcStatus,
   ]);

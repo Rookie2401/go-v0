@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { validateAppIcons } from './validate-app-icon.mjs';
+import { dictionaryLanguages, resolveProjectId } from './release-inputs.mjs';
 
 const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const repositoryDir = path.resolve(packageDir, '../..');
@@ -19,11 +20,14 @@ if (!/^\d+\.\d+(?:\.\d+)?$/.test(marketingVersion)) throw new Error('GOREVIEW_MA
 await validateAppIcons(packageDir);
 
 const previousAppConfigPath = path.join(stageDir, 'app.json');
-let existingProjectId;
+let previousProjectId;
 try {
   const previous = JSON.parse(await readFile(previousAppConfigPath, 'utf8'));
-  existingProjectId = previous?.expo?.extra?.eas?.projectId;
+  previousProjectId = previous?.expo?.extra?.eas?.projectId;
 } catch { /* first stage */ }
+const trackedApp = JSON.parse(await readFile(path.join(packageDir, 'app.json'), 'utf8'));
+const existingProjectId = resolveProjectId({ explicit: process.env.GOREVIEW_EAS_PROJECT_ID, previous: previousProjectId, tracked: trackedApp?.expo?.extra?.eas?.projectId });
+const languages = dictionaryLanguages(process.env.GOPRACTICE_DICT);
 
 function run(command, args, cwd) {
   const result = spawnSync(command, args, { cwd, env: process.env, stdio: 'inherit', shell: process.platform === 'win32' });
@@ -74,6 +78,7 @@ await cp(path.join(packageDir, 'scripts', 'validate-staged-release.mjs'), path.j
 await cp(path.join(packageDir, 'scripts', 'set-build-version.mjs'), path.join(stageDir, 'scripts', 'set-build-version.mjs'), { recursive: true });
 await cp(path.join(packageDir, 'scripts', 'prepare-eas-ios-project.mjs'), path.join(stageDir, 'scripts', 'prepare-eas-ios-project.mjs'));
 await cp(path.join(packageDir, 'scripts', 'validate-app-icon.mjs'), path.join(stageDir, 'scripts', 'validate-app-icon.mjs'));
+await cp(path.join(packageDir, 'scripts', 'release-inputs.mjs'), path.join(stageDir, 'scripts', 'release-inputs.mjs'));
 await cp(path.join(packageDir, 'eas.json'), path.join(stageDir, 'eas.json'));
 
 // This lock contains only Capacitor runtime/build packages, never the package-local EAS CLI.
@@ -85,7 +90,7 @@ const easApp = {
     name: 'GoReview', slug: 'goreview-ios', version: marketingVersion,
     icon: './assets/icon.png',
     ios: { bundleIdentifier: bundleId, buildNumber, supportsTablet: false },
-    extra: existingProjectId ? { eas: { projectId: existingProjectId } } : undefined,
+    extra: { ...(existingProjectId ? { eas: { projectId: existingProjectId } } : {}), goreviewRelease: { dictionaryLanguages: languages } },
   },
 };
 if (!easApp.expo.extra) delete easApp.expo.extra;
@@ -100,6 +105,7 @@ let xcodeProject = await readFile(xcodeProjectPath, 'utf8');
 xcodeProject = xcodeProject.replaceAll('com.example.provisional.goreview', bundleId);
 await writeFile(xcodeProjectPath, xcodeProject);
 run(process.execPath, [path.join(stageDir, 'scripts', 'prepare-eas-ios-project.mjs')], stageDir);
+run(process.execPath, [path.join(stageDir, 'scripts', 'set-build-version.mjs')], stageDir);
 
 await writeFile(path.join(stageDir, '.easignore'), [
   'node_modules/', '**/node_modules/', 'Pods/', '**/Pods/', '.env', '.env.*', '!.env.example', '**/.env', '**/.env.*',
@@ -127,5 +133,6 @@ await validateAppIcons(stageDir);
 if (serviceConfig.serviceUrl !== process.env.REPOSITORY_SERVICE_URL.replace(/\/+$/, '')) {
   throw new Error('Staged Repository endpoint does not match the validated release input.');
 }
+run(process.execPath, [path.join(stageDir, 'scripts', 'validate-staged-release.mjs')], stageDir);
 console.log(`Created isolated EAS project at ${path.relative(repositoryDir, stageDir)}. Only this directory will be submitted to EAS.`);
-console.log('Before any remote build, link this stage to the chosen Expo project and configure its App Store signing credentials.');
+console.log(existingProjectId ? `Retained existing Expo project ${existingProjectId}.` : 'Before a remote build, link the stage to the chosen Expo project.');

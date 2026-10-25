@@ -52,6 +52,22 @@ describe('synchronisation', () => {
     expect(rig.q('#signed-in-as').textContent).toContain('has expired');
     expect(rig.q('#signed-in-as').textContent).toContain('nothing on this device was lost');
   });
+
+  it('clears a web session when the service address changes and keeps queued events', async () => {
+    const service = defaultService();
+    const rig = await makeRig({ service, signedIn: true });
+    await rig.app.ctx.whenSynced();
+    service.netDown = true;
+    await rig.app.ctx.record([cardAdded(A, 'zog', 'meaning-to-form', '2026-10-08T09:00:00.000Z')]);
+    expect((await queued(rig)).length).toBe(1);
+
+    const changed = await rig.app.ctx.saveService('https://other.example.org');
+
+    expect(changed.ok).toBe(true);
+    expect((await rig.area.get(KEYS.session))[KEYS.session]).toBeUndefined();
+    expect((await rig.area.list('u:L1:queue:')).length).toBe(1);
+    expect(await rig.app.ctx.mode()).toBe('none');
+  });
 });
 
 describe('Settings', () => {

@@ -5,7 +5,10 @@ import { createMemoryArea } from '../../packages/repository-sync/src';
 import { createMobileRuntime, createNativeKeyValueArea, nativeLearnerPrefix, type GoReviewNativeBridge } from '../../packages/gopractice/mobile';
 import { createScopedArea, createStateStore, KEYS, learnerPrefix, type Session } from '../../packages/gopractice/state';
 import type { MobileRuntime } from '../../packages/gopractice/mobile';
-import { candidate, cardAdded, defaultService, destroyRigs, ids, makeRig, type, until } from './helpers';
+import { createInProcessApi } from '../../packages/repository-service/src/api';
+import type { Transport } from '../../packages/repository-sync/src';
+import { createRemote, review as realReview } from '../repository-local/support';
+import { candidate, cardAdded, defaultService, destroyRigs, ids, makeRig, type, until, type FakeService } from './helpers';
 
 const session: Session = { token: 'secret-token', learnerId: 'learner-A', email: 'a@example.org', expiresAt: '2027-01-01T00:00:00.000Z', serviceUrl: 'https://repo.example.org' };
 
@@ -132,6 +135,75 @@ describe('GoReview native runtime', () => {
     expect(mobile.secret()?.token).toBeTruthy();
   });
 
+  it('keeps an offline native queue and catches up with another device on app resume through the real Repository handler', async () => {
+    const remote = createRemote();
+    const email = 'native-sync@example.org';
+    const password = 'correct horse battery staple';
+    const account = await remote.signUp(email, 'seed-device');
+    const serverEvents = async () => {
+      const result = await account.api.listEvents();
+      if (!result.ok) throw new Error(`Repository event read failed: ${result.status} ${result.message}`);
+      return result.data.events;
+    };
+    const service = { api: (token?: string) => createInProcessApi(remote.deps, token) } as unknown as FakeService;
+    const deviceOneNetwork = { online: true };
+    const deviceTwoNetwork = { online: true };
+    const transport = (network: { online: boolean }) => (api: import('../../packages/repository-service/src/api').RepositoryApi): Transport => ({
+      async push(req) {
+        if (!network.online) throw new Error('network unavailable');
+        const r = await api.syncPush(req);
+        if (!r.ok) throw new Error(r.message);
+        return r.data;
+      },
+      async pull(req) {
+        if (!network.online) throw new Error('network unavailable');
+        const r = await api.syncPull(req);
+        if (!r.ok) throw new Error(r.message);
+        return r.data;
+      },
+    });
+
+    const areaOne = createMemoryArea();
+    const mobileOne = memoryMobile(areaOne);
+    const first = await makeRig({ service, area: areaOne, mobile: mobileOne, transport: transport(deviceOneNetwork) });
+    expect((await first.app.ctx.signIn({ email, password })).ok).toBe(true);
+    await first.app.ctx.syncNow({ force: true });
+
+    const firstIdentity = (await first.app.ctx.identity())!;
+    const offlineEvent = realReview(firstIdentity, 'lemma:sq:offline-native:NOUN', remote.clock);
+    deviceOneNetwork.online = false;
+    expect((await first.app.ctx.record([offlineEvent])).queued).toBe(1);
+    await first.app.ctx.syncNow({ force: true });
+    await until(async () => await (await first.app.ctx.data())?.queue.size() === 1, 'the offline native queue to remain pending');
+    expect((await serverEvents()).some((e) => e.id === offlineEvent.id)).toBe(false);
+    destroyRigs();
+
+    const areaTwo = createMemoryArea();
+    const second = await makeRig({ service, area: areaTwo, mobile: memoryMobile(areaTwo), transport: transport(deviceTwoNetwork) });
+    expect((await second.app.ctx.signIn({ email, password })).ok).toBe(true);
+    const secondIdentity = (await second.app.ctx.identity())!;
+    const otherDeviceEvent = realReview(secondIdentity, 'lemma:sq:other-device:NOUN', remote.clock);
+    expect((await second.app.ctx.record([otherDeviceEvent])).queued).toBe(1);
+    await second.app.ctx.syncNow({ force: true });
+    await until(async () => (await serverEvents()).some((e) => e.id === otherDeviceEvent.id), 'the other device event to reach the Repository');
+    destroyRigs();
+
+    deviceOneNetwork.online = false;
+    const reopened = await makeRig({ service, area: areaOne, mobile: mobileOne, transport: transport(deviceOneNetwork) });
+    const reloaded = await reopened.app.ctx.data();
+    expect(reloaded).toBeDefined();
+    await reopened.app.ctx.whenSynced();
+    expect(await reloaded!.queue.size()).toBe(1);
+    expect((await reopened.app.ctx.events('sq')).some((e) => e.id === otherDeviceEvent.id)).toBe(false);
+
+    deviceOneNetwork.online = true;
+    reopened.deps.win.dispatchEvent(new Event('resume'));
+    await until(async () => (await reopened.app.ctx.events('sq')).some((e) => e.id === otherDeviceEvent.id), 'the resumed device to pull the other device event');
+    await until(async () => (await reloaded!.queue.size()) === 0, 'the resumed device to flush its queued event');
+    expect((await serverEvents()).map((e) => e.id)).toEqual(expect.arrayContaining([offlineEvent.id, otherDeviceEvent.id]));
+    expect((await reopened.app.ctx.events('sq')).map((e) => e.id)).toEqual(expect.arrayContaining([offlineEvent.id, otherDeviceEvent.id]));
+  });
+
   it('renders the authenticated GoReview home and fetched vocabulary after a native sign-in', async () => {
     const service = defaultService();
     service.candidates.set('L1-e1', [candidate('det', 0.8)]);
@@ -157,6 +229,9 @@ describe('GoReview native runtime', () => {
     await rig.app.ctx.record([cardAdded(ids('L1', 'sq'), 'zog', 'meaning-to-form', '2026-10-08T10:00:00.000Z')]);
     const oldPrefix = nativeLearnerPrefix('L1', 'https://repository.example.org');
     expect(await rig.area.list(`${oldPrefix}queue:`)).toHaveLength(1);
+    await rig.go('settings');
+    expect(rig.q('#settings-service').textContent).toContain('queued events stay with the previous service');
+    expect(rig.q('#settings-service').textContent).toContain('Switch back to sync them');
 
     expect(await rig.app.ctx.saveService('https://other.example.org')).toEqual({ ok: true });
     expect(mobile.secret()).toBeUndefined();

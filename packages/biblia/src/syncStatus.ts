@@ -34,7 +34,7 @@ export function createSyncStatus(options: SyncStatusOptions): SyncStatusView {
   element.setAttribute('role', 'status');
   element.setAttribute('aria-live', 'polite');
   element.setAttribute('aria-atomic', 'true');
-  Object.assign(element.style, { position: 'sticky', top: '0', zIndex: '20', padding: '0.5rem 1rem', fontSize: '0.85rem', background: 'var(--paper, #f7f2e8)', borderBottom: '1px solid var(--rule, #d7cfc2)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.65rem' });
+  Object.assign(element.style, { position: 'sticky', top: '0', zIndex: '30', padding: '0.5rem 1rem', fontSize: '0.85rem', background: 'var(--paper, #f7f2e8)', borderBottom: '1px solid var(--rule, #d7cfc2)', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '0.65rem' });
   element.hidden = true;
 
   const message = doc.createElement('span');
@@ -99,6 +99,8 @@ export function createSyncStatus(options: SyncStatusOptions): SyncStatusView {
     action.hidden = !showAction;
     signIn.hidden = !showSignIn;
     element.hidden = text.length === 0;
+    // the page's sticky top bars read --sync-h (styles.css) so they stick just below this bar instead of under it
+    try { doc.documentElement.style.setProperty('--sync-h', element.hidden ? '0px' : `${element.offsetHeight || 0}px`); } catch { /* no layout (tests) */ }
   };
 
   const onClick = (): void => { void recorder.flush().catch(() => undefined); };

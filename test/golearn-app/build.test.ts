@@ -27,12 +27,17 @@ describe.skipIf(!has('dist/app/app.js'))('the options-page build (dist/app)', ()
     const code = read('dist/app/app.js');
     expect(code).not.toMatch(/^\s*(import|export)\s/m);
     expect(code).not.toMatch(/\beval\s*\(|new Function\s*\(/);
-    // the one dynamic import is the analyser loader's: German, Hindi, Thai and Spanish are the extension's own analysers/<id>.js, read on demand
-    // (a web accessible resource), not linked into this script
-    expect(code.match(/\bimport\s*\(/g) ?? []).toHaveLength(1);
+    // two dynamic imports, neither a module graph: the analyser loader's (German, Hindi, Thai and Spanish are the extension's own
+    // analysers/<id>.js, read on demand as a web accessible resource, not linked into this script), and src/dict/gzip.ts's import of
+    // node:zlib through a variable specifier (full-2 shards, 2026-10-17), which a browser never reaches (DecompressionStream is used)
+    // and which a bundler cannot resolve, so it is left as the call it is
+    expect(code.match(/\bimport\s*\(/g) ?? []).toHaveLength(2);
+    expect(code).toContain('node:zlib');
     expect(code).toContain('analysers/');
     expect(code).not.toContain('adapter-de@');
-    expect(code.length).toBeLessThan(650 * 1024);
+    // 2026-10-24: 650 -> 760 KB, the same ceiling test/extension/bundle.test.ts keeps for app/app.js; the setup app grew with the
+    // Hebrew, Greek and Latin packs' tutorials and catalogue rows (measured 708 KB on the day)
+    expect(code.length).toBeLessThan(760 * 1024);
   });
 
   it('carries the dictionary the installer fetches, and nothing of a planned language', () => {

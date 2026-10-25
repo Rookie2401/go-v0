@@ -89,7 +89,7 @@ h1, h2, h3, h4, p { margin: 0; }
 
 /* ---------------------------------------------------------------- top bar */
 .topbar {
-  position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 0.5rem; min-height: 3rem;
+  position: sticky; top: var(--sync-h, 0px); z-index: 20; display: flex; align-items: center; gap: 0.5rem; min-height: 3rem;
   padding: 0.55rem 0.9rem; padding-top: calc(0.55rem + var(--safe-top));
   padding-left: max(0.9rem, env(safe-area-inset-left, 0px)); padding-right: max(0.9rem, env(safe-area-inset-right, 0px));
   background: color-mix(in srgb, var(--paper) 88%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule);
@@ -175,7 +175,7 @@ button.linklike:focus-visible { outline: 2px solid var(--accent); outline-offset
 
 /* ---------------------------------------------------------------- reader */
 .reader { min-height: 100vh; min-height: 100dvh; }
-.reader__header { position: sticky; top: 0; z-index: 15; background: color-mix(in srgb, var(--paper) 90%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+.reader__header { position: sticky; top: var(--sync-h, 0px); z-index: 15; background: color-mix(in srgb, var(--paper) 90%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
 .reader__header-inner { max-width: 44rem; margin: 0 auto; display: flex; align-items: center; gap: 0.5rem; padding: calc(0.45rem + var(--safe-top)) 0.9rem 0.5rem; }
 .reader__headbtn { min-width: 0; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; gap: 0.05rem; text-align: left; }
 .reader__crumb { display: block; max-width: 100%; letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-faint); font-size: 0.72rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -310,3 +310,7 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
   .field { max-width: none; }
   .field input[type='text'], .field input[type='url'], .field input[type='email'], .field input[type='password'] { font-size: 1rem; min-height: 2.75rem; } /* 16px or more: iOS does not zoom the page on focus */
 }
+
+/* The account edition's sync-status bar (src/syncStatus.ts) sits above the page, sticky at the top; it sets --sync-h on <html> to its own
+   height while visible (0 when hidden) so the top bars stick just below it instead of under it (2026-10-24). */
+.sync-status { z-index: 30; }

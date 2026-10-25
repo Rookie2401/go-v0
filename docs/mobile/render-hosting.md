@@ -1,73 +1,48 @@
 # Optional Render host for GoLearn and GoReview
 
-This is a ready-to-review Render option for the Repository sync service. It defines one paid Node web service, one 1 GB persistent disk, TLS through Render's public service hostname, and no automatic deploys. The blueprint is at `infra/repository/render.yaml` so it cannot accidentally become the repository's default root Blueprint. In Render's Blueprint setup, set the Blueprint file path to `infra/repository/render.yaml`.
+This is a reviewed option for moving the Repository sync service off the owner’s PC. The Blueprint is `infra/repository/render.yaml`; in Render, set the Blueprint path to that file. It defines one paid Node web service, one 1 GB persistent disk, TLS, and manual deploys. **The Render service has not been provisioned and no production database has been uploaded.**
 
-No Render service has been created and no database has been uploaded. Applying the Blueprint provisions the paid service and makes its public `onrender.com` URL available; a custom domain is optional. Provisioning requires a Render account and authorization for the recurring hosting charge.
+## Hosting plan
 
-## What this plan creates
+The Blueprint pins Node 24.21.0 and stores SQLite at `/var/data/repository/repository.sqlite` on the persistent disk. It binds to `0.0.0.0:$PORT`. Until a restored database and its readiness marker are present, `/health` answers with `service: "migration-pending"` and every application route returns 503. After a verified restore is marked ready, the existing repository service starts. The build installs the existing `vite-node` dependency with `npm ci --include=dev`.
 
-The Blueprint pins Node to 24.21.0 and stores the SQLite database at `/var/data/repository/repository.sqlite` on a Render persistent disk. Its startup guard binds `0.0.0.0:$PORT`. While `REPOSITORY_MIGRATION_PENDING=true` and `/var/data/repository/.migration-ready` is absent, `/health` reports `service: "migration-pending"` with HTTP 200, while every application route is unavailable. After a database file and marker exist, the guard closes its listener and starts the existing service. `npm ci --include=dev` installs its existing `vite-node` development dependency.
+After the restored service reports healthy, the startup wrapper waits one minute and then runs the existing `scripts/ops/backup.mts` tool daily. It takes a live, application-consistent SQLite snapshot, writes the archive and `.sha256` checksum under `/var/data/repository/backups`, and applies the existing retention of seven daily and four weekly backups. Runs do not overlap. `REPOSITORY_BACKUP_INTERVAL_MS` can override the daily interval (minimum 60,000 ms); leave it unset for daily backups. Logs report only success or a sanitized failure code, never archive paths or tool output. The job is not started while the migration gate is pending.
 
-It sets `numInstances: 1` and disables automatic deploys. Keep one service process for this SQLite database: the service's sign-in throttle and long-poll notifications are process-local, and a persistent disk can attach to only one Render service instance. A disk-backed deploy stops the old instance before starting the new one, so a short interruption during deploy is expected. Render's 25-second `/sync/wait` route is comfortably below its documented HTTP response limit.
+It uses one instance because sign-in throttles and long-poll notifications are process-local, and the disk can attach to only one service instance. Disk-backed deploys stop the old instance before starting the new one, so brief interruptions are expected. The service's 25-second `/sync/wait` request is below Render's documented HTTP response limit. Keep `TRUST_PROXY` off unless the forwarded-IP chain has been verified against the service's trust policy.
 
-Render issues TLS and a default service hostname without a domain purchase. Point both apps at the exact same `https://<service-name>.onrender.com` base URL. You do not need a Mac or the Apple Developer account for this hosted service; those are separate requirements for distributing the iOS app.
+The proposed Starter plan provides 0.5 CPU and 512 MB RAM. The successful restore rehearsal below used about 203 MB resident memory while idle; that is a single idle measurement, not a load test or proof of headroom. Watch memory and CPU after cutover and increase the plan if observed workload needs it. The current cost estimate is **$7.25/month** ($7 Starter plus $0.25 for a 1 GB disk), before bandwidth or workspace overages. This estimate comes from Render's [Starter plan article](https://render.com/articles/best-railway-alternatives) and [disk pricing article](https://render.com/articles/how-much-does-cloud-application-hosting-cost-for-small-businesses); confirm the actual price shown in the account before provisioning.
 
-## Estimated price
+Render provides a default `onrender.com` address and TLS. For production, preserve the current canonical service address **`https://repo.golearn-global-languages.com`**: add that hostname as the Render custom domain and follow Render's DNS instructions to route it to the service. Render provisions TLS after the hostname validates. The generated `onrender.com` URL is useful for pre-cutover checks; it is not the production address clients should keep. Keep the PC service available as rollback while the canonical hostname and both clients are verified. No custom domain purchase is required because this hostname already exists.
 
-The proposed `starter` web plan is 0.5 CPU / 512 MB RAM and Render's article lists it at **$7/month**. Render's published disk rate is **$0.25 per GB-month**, so a 1 GB disk brings the estimate to **$7.25/month**, before bandwidth or workspace overages. Render prorates these amounts by runtime. Treat this as an **unverified estimate**, based on Render's [Starter plan article](https://render.com/articles/best-railway-alternatives) and [disk pricing article](https://render.com/articles/how-much-does-cloud-application-hosting-cost-for-small-businesses); its [pricing page](https://render.com/pricing) uses a dynamic table that could not be independently read here. Confirm the actual checkout and billing view before provisioning because provider prices and account usage can change.
+## Restore rehearsal
 
-## Provisioning steps when you're ready
+A private fresh SQLite backup was verified and restored into a separate test location using the repository's backup and restore scripts. The backup had schema version 4 and contained 7 learners, 7 accounts, and 3,029 issued events. The restored service reported `service: "repository"`, contract version 3, and migration version 4. Its idle RSS was about 203 MB. This rehearsal did not provision Render or upload the backup. Keep backup files, checksums, and any paths to them out of this public repository; the database contains account and learning data.
 
-1. Put this reviewed Blueprint on a Git branch Render can access. The Render account needs access to the repository. Its default `onrender.com` host is sufficient; a custom domain is optional.
-2. In Render, create a Blueprint from that repository and set the Blueprint path to `infra/repository/render.yaml`. Review the displayed resources and paid Starter plan before applying.
-3. Review the existing-data migration status below. The startup guard does not create or open a database by itself.
-4. Apply the Blueprint. Before restore, check `https://<service-name>.onrender.com/health` returns `ok: true` and `service: "migration-pending"`; `/sync/*` and other application routes must return 503. For a disposable empty-service smoke test only, initialize a new empty database and release the guard over SSH:
+The service supports account email verification and password reset. Verification is enforced by default when a mailer that can deliver messages is configured; `REQUIRE_EMAIL_VERIFICATION` can override that behavior. Configure a real mail delivery provider and the public app URL if users need to receive verification or reset links. Without a delivering mailer, those messages cannot reach users and verification is not enforced by default. See `packages/repository-service/README.md` and `infra/repository/go-repository.env.example` for settings.
+
+## Production migration and cutover
+
+The current local service and `data/local-repository/repository.sqlite` remain the source of truth until cutover is complete. The migration uses a full service database backup, not a learner-scoped `/export` file. The existing backup script creates an application-consistent SQLite snapshot while the service is running, runs integrity checks, and writes a `.sha256` checksum beside the archive. The restore script checks that checksum, verifies integrity, opens the database with the current code, reports counts, and can write the readiness marker only after a successful restore.
+
+1. Create the Render Blueprint from the repository and review the paid resources and displayed price before applying it. Confirm `/health` reports `service: "migration-pending"`; application routes must return 503. Do not create an empty database for production.
+2. Ahead of cutover, rehearse the process on a disposable copy using the scripts below. Keep both the archive and its `.sha256` sidecar together. The first command verifies without modifying the target. The second restores into the mounted data directory and writes `.migration-ready` last, after successful verification and restore.
 
    ```sh
-   ssh SERVICE@ssh.oregon.render.com 'mkdir -p /var/data/repository && test ! -e /var/data/repository/repository.sqlite && : > /var/data/repository/repository.sqlite && touch /var/data/repository/.migration-ready'
+   npx vite-node --config scripts/vite.config.ts scripts/ops/restore.mts -- --file <backup-file> --verify-only
+   npx vite-node --config scripts/vite.config.ts scripts/ops/restore.mts -- --file <backup-file> --data /var/data/repository --mark-ready
    ```
 
-   For existing account data, follow the verified backup restore procedure below instead of creating an empty database.
-5. After `/health` reports `service: "repository"` and `contractVersion: 3`, use a disposable test account only. Sign in on GoLearn with one device ID and on GoReview with a different device ID, both against that same HTTPS URL and account. Confirm an encounter pushed from GoLearn appears in GoReview's candidate list, then submit a test review and confirm it is pulled by GoLearn. The included [cross-device integration test](../../test/repository/service/mobile-cross-device.test.ts) exercises the same account isolation and retry contract locally.
-6. Delete the disposable account with the service's account deletion flow after the smoke test, or keep the service suspended until the production cutover decision. Automatic deploys remain off; deploy reviewed commits manually.
+   Transfer the archive **and its checksum sidecar** to the service using Render's [SSH and Shell instructions](https://render.com/docs/ssh) and [persistent disk guidance](https://render.com/docs/disks). Keep them private, and use the exact remote paths in the restore command. Do not copy the live `repository.sqlite` file by itself; committed data can still be in SQLite's WAL file. An encrypted archive also requires `BACKUP_PASSPHRASE` in the restore process environment.
+3. For the actual cutover, pause writes to the local service and create a fresh application-consistent backup:
 
-No secrets are required by the current server service, and the Blueprint does not define or request any. Account passwords and sessions are handled by the service. Do not place test or learner credentials in the repository, build command, or logs.
+   ```sh
+   npx vite-node --config scripts/vite.config.ts scripts/ops/backup.mts -- --data data/local-repository --out <private-backup-directory>
+   ```
 
-## Existing local database and safe migration
+   Transfer the generated archive and its same-name `.sha256` file, run verify-only on the service copy, then restore with `--mark-ready` as above. The host gate switches from migration-pending to the restored service after the command succeeds. Allow for a brief interruption while the application starts.
+4. Verify `https://repo.golearn-global-languages.com/health` reports `service: "repository"`, `contractVersion: 3`, and migration 4. Check account sign-in, learner/event counts, documents, and sync cursors against the backup report. Keep the old PC service and database intact until these checks pass.
+5. Once the Render service and canonical hostname are verified, update the server URL in both users' locally configured GoLearn/GoReview extensions to `https://repo.golearn-global-languages.com`. The current localhost setting points to the PC; update it before retiring that PC service. Confirm each extension syncs against the hosted service.
 
-The active local service and its database at `data/local-repository/repository.sqlite` remain the current source of truth. Keep the local service and its database in place while evaluating Render. A new Render deployment stays behind the startup guard with no database until the operator restores a backup or explicitly releases a disposable empty database; neither path copies local data automatically.
+Never put a production backup, checksum, private backup path, credentials, or tokens in the repository or logs. The archive contains password hashes, sessions, learner events, and private documents. The scheduled archives live on the same persistent disk, so Render's daily whole-disk snapshots include them but they are not an independent failure-domain backup. No off-host upload is configured by default. If desired, configure the backup tool's existing `BACKUP_S3_*` settings or `BACKUP_UPLOAD_CMD` to copy archives and checksums to a separately secured location; keep those credentials in Render's secret environment settings. Perform a restore drill after changing hosts and quarterly. Render's [persistent disks](https://render.com/docs/disks) are limited to one service instance; disk snapshots and local archives do not replace application-consistent off-host backups.
 
-The service has a learner-scoped `/export` route, but no matching import endpoint; the app's device-local upload flow is not a service-database migration. The local source remains `data/local-repository/repository.sqlite`; it has not been changed or uploaded. A private, application-consistent snapshot was prepared separately and integrity-checked, outside this repository. Make a fresh coordinated backup at cutover. A raw full-database copy contains every account in the database, so handle it as sensitive data and confirm the account scope before transferring.
-
-Cross-platform migration is authorized. This Blueprint provides a guarded full-database file restore; it does not import learner-scoped `/export` bundles. Test against a separate disposable backup first. At cutover, coordinate a write pause and fresh application-consistent backup, then restore to a new empty service disk as follows. Render supports SFTP/SCP transfer to a paid web service with SSH enabled; use its [SSH and Shell instructions](https://render.com/docs/ssh) and [persistent disk transfer guidance](https://render.com/docs/disks).
-
-1. Create a private, application-consistent snapshot from `data/local-repository/repository.sqlite` using Node 24's [`node:sqlite` backup API](https://nodejs.org/download/release/latest-v24.x/docs/api/sqlite.html#sqlitebackupsource-path-options). Do this while the service is running; do not copy only the live SQLite main file because committed WAL data may be missing.
-2. Connect to the new service's live instance over SSH, create the data directory, and copy the backup as a temporary file on the mounted disk, for example:
-
-```sh
-ssh SERVICE@ssh.oregon.render.com 'mkdir -p /var/data/repository'
-scp -s ./repository-migration.sqlite SERVICE@ssh.oregon.render.com:/var/data/repository/repository.sqlite.restore
-```
-
-Replace `SERVICE` and host with the service SSH command shown in Render. In the service shell, verify the received copy before activation, then atomically install it and create the sentinel last:
-
-```sh
-cd /var/data/repository
-node --input-type=module -e 'import { DatabaseSync } from "node:sqlite"; const db = new DatabaseSync("repository.sqlite.restore", { readOnly: true }); try { const result = db.prepare("PRAGMA integrity_check").get(); if (result.integrity_check !== "ok") process.exitCode = 1; else console.log("integrity_check=ok"); } finally { db.close(); }'
-chmod 600 repository.sqlite.restore
-mv repository.sqlite.restore repository.sqlite
-touch .migration-ready.tmp
-mv .migration-ready.tmp .migration-ready
-```
-
-Create the marker only after the transferred file is verified and installed. The guard then closes its health-only listener and starts the repository service; wait for `/health` to report `service: "repository"` and `contractVersion: 3`. Check account access, event counts, documents, and sync cursors before retiring the local service. Keep the local database untouched and available until those checks pass. Protect backup files as sensitive account data, verify `PRAGMA integrity_check` on a separate copy before transfer, and never put the backup or its private path in this repository.
-
-## Storage, backup, and operational limits
-
-Render preserves only files under `/var/data`; the app writes the SQLite database below that path. Disk capacity can be increased later but not reduced, so check usage before changing it. Render attaches the disk to only one service and disables multi-instance scaling. Disk-backed deploys are not zero-downtime; Render stops the old instance first to protect the disk from concurrent application versions. These are platform constraints, not settings to work around with a second process. See [Render Persistent Disks](https://render.com/docs/disks).
-
-Render takes daily disk snapshots and retains them for at least seven days, but these are whole-disk restores and lose changes newer than the selected snapshot. A custom SQLite database still needs application-consistent backups and a restore drill. Use Node 24's `node:sqlite` backup API or stop the service cleanly before copying the closed database; never treat a live copy of just `repository.sqlite` as a backup while SQLite WAL mode is active. Keep encrypted copies in another failure domain and check restore integrity. See the [Node 24 SQLite backup API](https://nodejs.org/download/release/latest-v24.x/docs/api/sqlite.html#sqlitebackupsource-path-options).
-
-The running service supports v3 accounts, device-bound sessions, `/sync/push`, `/sync/pull`, `/sync/status`, `/sync/wait` long polling, and `/candidates`. It still has per-process sign-in throttling and no account email verification or password reset. Keep one instance, and review the service's full limits in `packages/repository-service/README.md` before inviting users.
-
-The Blueprint uses fields documented in Render's [Blueprint specification](https://render.com/docs/blueprint-spec). The current Render Node runtime is pinned explicitly using the documented `NODE_VERSION` setting from [Setting Your Node.js Version](https://render.com/docs/node-version). Render's public hostname, health checks, TLS, port binding, and web service behavior are described in [Web Services](https://render.com/docs/web-services).
+The Blueprint uses Render's documented [Blueprint specification](https://render.com/docs/blueprint-spec), [Node version setting](https://render.com/docs/node-version), and [web service behavior](https://render.com/docs/web-services).

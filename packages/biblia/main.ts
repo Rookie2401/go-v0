@@ -4,9 +4,10 @@
  */
 import { createBibliaApp } from './src/app';
 import { fetchJsonWith } from './src/data';
-import { accountRecorder, extensionSend, makeRecorder, noRecorder, type Recorder } from './src/repo';
+import { accountRecorder, extensionSend, makeRecorder, noRecorder, type AccountRecorder, type Recorder } from './src/repo';
 import { createAccountService, type AccountService } from './src/account';
 import { createEventQueue } from './src/queue';
+import { createSyncStatus } from './src/syncStatus';
 import { createMobileRuntime } from '../gopractice/mobile';
 import { loadConfig } from '../gopractice/config';
 import { createRepositoryApi } from '../repository-service/src/api';
@@ -31,7 +32,7 @@ const isStandalone = (): boolean => document.querySelector('meta[name="biblia-ed
 const storage = ((): Storage | undefined => { try { const s = window.localStorage; s.getItem('biblia:probe'); return s; } catch { return undefined; } })();
 
 /** The account (sign-in state, the screen) and its recorder, over the Repository service config.json names. Without an address the page stays a reader and says so. */
-async function standalone(): Promise<{ recorder: Recorder; account?: AccountService }> {
+async function standalone(): Promise<{ recorder: AccountRecorder; account: AccountService } | { recorder: Recorder; account?: undefined }> {
   const config = await loadConfig((input, init) => globalThis.fetch(input, init));
   if (!config.serviceUrl) return { recorder: noRecorder('This copy of Biblia names no Repository service in its config.json, so it is a reader only and nothing is kept.') };
   const account = createAccountService({ serviceUrl: config.serviceUrl, ...(storage ? { storage } : {}), fetch: (input, init) => globalThis.fetch(input, init) });
@@ -40,6 +41,7 @@ async function standalone(): Promise<{ recorder: Recorder; account?: AccountServ
     queue: createEventQueue(storage),
     ...(storage ? { storage } : {}),
     win: window,
+    subscribeSession: (listener) => account.subscribe(listener),
     onAppended: (events) => account.emitAppended(events),
     onAuthExpired: () => account.expire(),
   });
@@ -65,6 +67,21 @@ const started = (async () => {
     ...(storage ? { storage } : {}),
     now: () => new Date(),
   });
+  if (own?.account) {
+    const syncStatus = createSyncStatus({ doc: document, account: own.account, recorder: own.recorder });
+    document.getElementById('app')?.before(syncStatus.element);
+    const destroy = running.destroy.bind(running);
+    running.destroy = () => { syncStatus.destroy(); destroy(); };
+  }
+  // The standalone Biblia bundled in a native shell receives Capacitor resume as a browser-style event.
+  // The recorder owns the listener; tie the native bridge subscription to the app lifetime as well.
+  if (own?.account && mobile.native) {
+    const removeLifecycle = mobile.installLifecycle?.(window);
+    if (removeLifecycle) {
+      const destroy = running.destroy.bind(running);
+      running.destroy = () => { removeLifecycle(); destroy(); };
+    }
+  }
   // a kept sign-in is confirmed with the service, then what waited in the offline queue is sent
   if (own?.account) void (async () => { await own.account!.start(); await own.recorder.flush?.(); })();
   return running;

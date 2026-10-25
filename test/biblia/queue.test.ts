@@ -1,11 +1,11 @@
 /**
  * The offline queue of the standalone Biblia (packages/biblia/src/queue.ts) and the account recorder that sends from it (repo.ts `accountRecorder`):
  * kept under 'biblia:queue', capped at 2,000 events (oldest dropped, and the caller told), flushed in order, kept while the service cannot be
- * reached, refused events dropped one at a time, flushed again on the window's 'online' event. Fake RepositoryApi objects only: no network.
+ * reached, refused events dropped one at a time, retried with backoff, and woken on foreground/resume. Fake RepositoryApi objects only: no network.
  */
 import { describe, expect, it, vi } from 'vitest';
 import { QUEUE_CAP, QUEUE_KEY, createEventQueue } from '../../packages/biblia/src/queue';
-import { accountRecorder } from '../../packages/biblia/src/repo';
+import { accountRecorder, UPLOAD_RETRY_BASE_MS, UPLOAD_RETRY_MAX_MS } from '../../packages/biblia/src/repo';
 import type { GoEvent } from '../../packages/repository-contract/src';
 import type { ApiResult, EventsResponse, RepositoryApi } from '../../packages/repository-service/src/api';
 
@@ -97,18 +97,35 @@ function fakeApi(append: Append): RepositoryApi & { appendEvents: ReturnType<typ
 }
 function setup(append: Append, opts: { signedIn?: boolean } = {}) {
   const api = fakeApi(append);
+  const otherApi = fakeApi(async (events) => okResult(events));
   const st = memoryStorage();
   const queue = createEventQueue(st);
   let signedIn = opts.signedIn ?? true;
   const appended: string[] = [];
   const authEnded = vi.fn();
   const listeners = new Map<string, () => void>();
+  const sessionListeners = new Set<() => void>();
+  let learnerId = 'L1';
+  let activeApi = api;
+  const scheduled: Array<{ fn: () => void; ms: number; cleared: boolean; fired: boolean }> = [];
+  const timers = {
+    set(fn: () => void, ms: number) { const timer = { fn, ms, cleared: false, fired: false }; scheduled.push(timer); return timer; },
+    clear(handle: unknown) { (handle as (typeof scheduled)[number]).cleared = true; },
+  };
+  const liveTimers = () => scheduled.filter((t) => !t.cleared && !t.fired);
+  const fire = (timer: (typeof scheduled)[number]) => { timer.fired = true; timer.fn(); };
   const win = { addEventListener: (t: string, f: () => void) => { listeners.set(t, f); }, removeEventListener: (t: string) => { listeners.delete(t); } };
   const rec = accountRecorder({
-    session: () => (signedIn ? { api, learnerId: 'L1', deviceId: 'biblia:web:d' } : undefined),
-    queue, storage: st, win: win as never, onAppended: (e) => appended.push(...e.map((x) => x.id)), onAuthExpired: authEnded,
+    session: () => (signedIn ? { api: activeApi, learnerId, deviceId: learnerId === 'L1' ? 'biblia:web:d' : `biblia:web:${learnerId}` } : undefined),
+    queue, storage: st, win: win as never, timers, subscribeSession: (fn) => { sessionListeners.add(fn); return () => sessionListeners.delete(fn); },
+    onAppended: (e) => appended.push(...e.map((x) => x.id)), onAuthExpired: authEnded,
   });
-  return { api, st, queue, rec, appended, authEnded, listeners, signOut: () => { signedIn = false; } };
+  return {
+    api, otherApi, st, queue, rec, appended, authEnded, listeners, scheduled, liveTimers, fire,
+    signOut: () => { signedIn = false; for (const fn of [...sessionListeners]) fn(); },
+    signIn: () => { signedIn = true; for (const fn of [...sessionListeners]) fn(); },
+    switchAccount: () => { learnerId = 'L2'; activeApi = otherApi; for (const fn of [...sessionListeners]) fn(); },
+  };
 }
 
 describe('the account recorder', () => {
@@ -168,6 +185,120 @@ describe('the account recorder', () => {
     expect(s.listeners.has('online')).toBe(false);
   });
 
+  it('retries transient failures on the bounded 5/10/20/30 second ladder and recovers without an online event', async () => {
+    let status = 503;
+    const s = setup(async (e) => (status ? refused(status) : okResult(e)));
+    await s.rec.record([ev()]);
+    const delays: number[] = [];
+    for (const delay of [5_000, 10_000, 20_000, 30_000, 30_000]) {
+      const [timer] = s.liveTimers();
+      expect(timer?.ms).toBe(delay);
+      delays.push(timer.ms);
+      const before = s.api.appendEvents.mock.calls.length;
+      s.fire(timer);
+      await vi.waitFor(() => expect(s.api.appendEvents.mock.calls.length).toBeGreaterThan(before));
+      await vi.waitFor(() => expect(s.liveTimers()).toHaveLength(1));
+    }
+    expect(delays.at(-1)).toBe(UPLOAD_RETRY_MAX_MS);
+    expect(UPLOAD_RETRY_BASE_MS).toBe(5_000);
+    status = 0;
+    const retry = s.liveTimers()[0];
+    s.fire(retry);
+    await vi.waitFor(() => expect(s.rec.pending()).toBe(0));
+    expect(s.api.appendEvents).toHaveBeenCalledTimes(7); // initial failure + five retries + recovery
+    expect(s.liveTimers()).toHaveLength(0);
+  });
+
+  it('exposes pending, last error, retry time, and last successful upload to observers', async () => {
+    let status = 503;
+    const states: Array<{ pending: number; lastSuccessAt?: number; lastError?: string; retryAt?: number; retrying: boolean }> = [];
+    const s = setup(async (e) => (status ? refused(status, 'service unavailable') : okResult(e)));
+    const unsubscribe = s.rec.subscribeStatus((value) => states.push(value));
+    await s.rec.record([ev()]);
+    expect(s.rec.status()).toMatchObject({ pending: 1, lastError: 'service unavailable', retryAt: expect.any(Number), retrying: false });
+    status = 0;
+    s.listeners.get('focus')!();
+    await vi.waitFor(() => expect(s.rec.status()).toMatchObject({ pending: 0, lastSuccessAt: expect.any(Number), retrying: false }));
+    expect(s.rec.status().lastError).toBeUndefined();
+    expect(states.length).toBeGreaterThan(2);
+    unsubscribe();
+  });
+
+  it.each(['focus', 'pageshow', 'resume'])('flushes promptly on %s and cancels the delayed retry', async (event) => {
+    let status = 503;
+    const s = setup(async (e) => (status ? refused(status) : okResult(e)));
+    await s.rec.record([ev()]);
+    expect(s.liveTimers()[0]?.ms).toBe(UPLOAD_RETRY_BASE_MS);
+    status = 0;
+    s.listeners.get(event)!();
+    await vi.waitFor(() => expect(s.rec.pending()).toBe(0));
+    expect(s.liveTimers()).toHaveLength(0);
+  });
+
+  it('cancels retries on sign-out, flushes on sign-in, and removes retry and lifecycle hooks on destroy', async () => {
+    let status = 503;
+    const s = setup(async (e) => (status ? refused(status) : okResult(e)));
+    await s.rec.record([ev()]);
+    expect(s.liveTimers()).toHaveLength(1);
+    s.signOut();
+    expect(s.liveTimers()).toHaveLength(0);
+    status = 0;
+    s.signIn();
+    await vi.waitFor(() => expect(s.rec.pending()).toBe(0));
+    expect(s.api.appendEvents).toHaveBeenCalledTimes(2);
+
+    status = 503;
+    await s.rec.record([ev()]);
+    expect(s.liveTimers()).toHaveLength(1);
+    s.rec.destroy();
+    expect(s.liveTimers()).toHaveLength(0);
+    expect(s.listeners.size).toBe(0);
+  });
+
+  it('coalesces concurrent flush requests into one active upload drain', async () => {
+    let release!: (result: ApiResult<EventsResponse>) => void;
+    const s = setup(() => new Promise((resolve) => { release = resolve; }));
+    const recording = s.rec.record([ev()]);
+    await vi.waitFor(() => expect(s.api.appendEvents).toHaveBeenCalledTimes(1));
+    const a = s.rec.flush();
+    const b = s.rec.flush();
+    expect(s.api.appendEvents).toHaveBeenCalledTimes(1);
+    release(okResult([]));
+    await Promise.all([recording, a, b]);
+    expect(s.rec.pending()).toBe(0);
+    expect(s.api.appendEvents).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(['sign-out', 'destroy'])('does not continue a multi-batch drain or arm retries after %s during a request', async (stop) => {
+    let release!: (result: ApiResult<EventsResponse>) => void;
+    const s = setup(() => new Promise((resolve) => { release = resolve; }));
+    const recording = s.rec.record(Array.from({ length: 101 }, () => ev()));
+    await vi.waitFor(() => expect(s.api.appendEvents).toHaveBeenCalledTimes(1));
+    if (stop === 'sign-out') s.signOut(); else s.rec.destroy();
+    release(okResult([]));
+    await recording;
+    expect(s.api.appendEvents).toHaveBeenCalledTimes(1);
+    expect(s.queue.count('L1')).toBe(101); // ambiguous in-flight acknowledgement stays queued for idempotent retry
+    expect(s.liveTimers()).toHaveLength(0);
+  });
+
+  it('does not let an old account 401 expire a newly selected account', async () => {
+    let release!: (result: ApiResult<EventsResponse>) => void;
+    const s = setup(() => new Promise((resolve) => { release = resolve; }));
+    const recording = s.rec.record([ev('L1')]);
+    await vi.waitFor(() => expect(s.api.appendEvents).toHaveBeenCalledTimes(1));
+    s.switchAccount();
+    release(refused(401, 'old token expired'));
+    const result = await recording;
+    expect(result).toMatchObject({ ok: true, queued: true });
+    expect(result.message).toMatch(/Saved on this device \(1 waiting\)/);
+    expect(s.authEnded).not.toHaveBeenCalled();
+    expect(s.queue.count('L1')).toBe(1);
+    expect(s.rec.pending()).toBe(0); // status is scoped to the newly selected account
+    expect(s.otherApi.appendEvents).not.toHaveBeenCalled();
+    expect(s.liveTimers()).toHaveLength(0);
+  });
+
   it('a 401 keeps the events, reports the session as ended and does not retry in a loop', async () => {
     const s = setup(async () => refused(401, 'expired'));
     const r = await s.rec.record([ev()]);
@@ -176,6 +307,7 @@ describe('the account recorder', () => {
     expect(s.authEnded).toHaveBeenCalledTimes(1);
     expect(s.api.appendEvents).toHaveBeenCalledTimes(1);
     expect(s.rec.pending()).toBe(1);
+    expect(s.liveTimers()).toHaveLength(0);
   });
 
   it('an event the service refuses for good is dropped on its own; the others still go', async () => {

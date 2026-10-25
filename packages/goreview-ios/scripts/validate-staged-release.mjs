@@ -39,7 +39,13 @@ try { endpoint = new URL(serviceUrl); } catch { throw new Error('The bundled Rep
 if (endpoint.protocol !== 'https:' || !endpoint.hostname || endpoint.username || endpoint.password || endpoint.search || endpoint.hash) {
   throw new Error('The bundled Repository service URL must be a public HTTPS URL without credentials, query, or fragment.');
 }
-const response = await fetch(`${serviceUrl.replace(/\/+$/, '')}/health`, { headers: { accept: 'application/json' }, signal: AbortSignal.timeout(10000) });
+// REPOSITORY_HEALTH_CHECK_URL: where THIS machine reaches the same service when the public name is filtered here (the owner's router);
+// the bundle still carries serviceUrl. The same rule as prepare-web.mjs (2026-10-25).
+const probe = process.env.REPOSITORY_HEALTH_CHECK_URL ? new URL(process.env.REPOSITORY_HEALTH_CHECK_URL) : undefined;
+if (probe && !/^https?:$/.test(probe.protocol)) throw new Error('REPOSITORY_HEALTH_CHECK_URL must be an http(s) URL.');
+const healthBase = probe ? probe.origin + probe.pathname.replace(/\/+$/, '') : serviceUrl.replace(/\/+$/, '');
+if (probe) console.warn(`validate-staged-release: health check sent to ${healthBase} instead of ${serviceUrl} (REPOSITORY_HEALTH_CHECK_URL); the bundle still uses ${serviceUrl}`);
+const response = await fetch(`${healthBase}/health`, { headers: { accept: 'application/json' }, signal: AbortSignal.timeout(10000) });
 if (!response.ok) throw new Error(`Repository health check returned HTTP ${response.status}.`);
 const health = await response.json();
 if (health?.ok !== true || health?.service !== 'repository' || health?.contractVersion !== 3) {

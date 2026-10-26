@@ -12,7 +12,7 @@ import { loadConfig } from './config';
 import { createReviewEngine } from './engine';
 import { packFactsFor } from './packFacts';
 import type { Deps } from './ports';
-import { createWebKeyValueArea } from './state';
+import { createIndexedDbKeyValueArea, createWebKeyValueArea } from './state';
 import { createMobileRuntime } from './mobile';
 import { APP_VERSION } from './version';
 
@@ -21,14 +21,18 @@ function storageArea(mobile: ReturnType<typeof createMobileRuntime>): Deps['area
     if (mobile.area) return mobile.area;
     throw new NativeStorageUnavailableError();
   }
+  let s: Storage | undefined;
+  try { s = window.localStorage; s.getItem('gopractice:probe'); } catch { s = undefined; }
+  // IndexedDB first (2026-10-26): localStorage's ~5 MB is shared by every app on this origin (GitHub Pages serves GoReview, the GoLearn
+  // setup app and the old PWA from one), and the learner's event log is one row per event, so a few thousand events exceeded it and
+  // sync failed with "The quota has been exceeded". GoReview's rows (gopractice:*, u:*) are moved out of localStorage once, on first use.
   try {
-    const s = window.localStorage;
-    s.getItem('gopractice:probe');
-    return createWebKeyValueArea(s);
-  } catch {
-    // storage blocked (a private window): the app works for this visit, and nothing is kept afterwards
-    return createMemoryArea();
-  }
+    const idb = window.indexedDB;
+    if (idb) return createIndexedDbKeyValueArea(idb, 'gopractice', s ? { from: s, prefixes: ['gopractice:', 'u:'] } : undefined);
+  } catch { /* no IndexedDB here: localStorage below */ }
+  if (s) return createWebKeyValueArea(s);
+  // storage blocked (a private window): the app works for this visit, and nothing is kept afterwards
+  return createMemoryArea();
 }
 
 const uuid = (): string => (typeof crypto !== 'undefined' && 'randomUUID' in crypto

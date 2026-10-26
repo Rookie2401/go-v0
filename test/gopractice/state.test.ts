@@ -2,7 +2,9 @@
 import { describe, expect, it } from 'vitest';
 import { createMemoryArea } from '../../packages/repository-sync/src';
 import type { KeyValueArea } from '../../packages/repository-sync/src';
-import { clampPrefs, createLocalEventLog, createScopedArea, createWebKeyValueArea, DEFAULT_PREFERENCES, removeByPrefix } from '../../packages/gopractice/state';
+import 'fake-indexeddb/auto';
+import { IDBFactory } from 'fake-indexeddb';
+import { clampPrefs, createIndexedDbKeyValueArea, createLocalEventLog, createScopedArea, createWebKeyValueArea, DEFAULT_PREFERENCES, removeByPrefix } from '../../packages/gopractice/state';
 import { cardAdded, ids, reviewed } from './helpers';
 
 const A = ids('L1', 'sq');
@@ -93,6 +95,51 @@ describe('storage areas', () => {
     expect(Object.keys(await area.get(null)).sort()).toEqual(['other', 'p:a', 'p:b']);
     await area.remove(['p:a', 'p:b']);
     expect(await area.list('p:')).toEqual([]);
+  });
+
+  // 2026-10-26: the hosted edition keeps its rows in IndexedDB (localStorage's ~5 MB is shared by every app on the Pages origin and the
+  // event log is one row per event: "The quota has been exceeded" on sync)
+  it('the IndexedDB area round-trips JSON, lists by prefix in order, and reads every row', async () => {
+    const area = createIndexedDbKeyValueArea(new IDBFactory(), 'gopractice-test');
+    await area.set({ 'p:b': { x: 1, when: undefined }, 'p:a': [1, 2], other: 'z', 'q:1': 1 });
+    expect(await area.list('p:')).toEqual(['p:a', 'p:b']);
+    expect((await area.get('p:b'))['p:b']).toEqual({ x: 1 }); // through JSON, like localStorage: no undefined fields
+    expect(await area.get(['p:a', 'missing'])).toEqual({ 'p:a': [1, 2] });
+    expect(Object.keys(await area.get(null)).sort()).toEqual(['other', 'p:a', 'p:b', 'q:1']);
+    expect(await area.list('')).toEqual(['other', 'p:a', 'p:b', 'q:1']);
+    await area.remove(['p:a', 'p:b']);
+    expect(await area.list('p:')).toEqual([]);
+    expect((await area.get(null)).other).toBe('z');
+  });
+
+  it('moves GoReview\'s rows out of localStorage once (its prefixes only), marks the move, and leaves the other apps\' rows alone', async () => {
+    localStorage.clear();
+    localStorage.setItem('gopractice:session', JSON.stringify({ token: 't' }));
+    localStorage.setItem('u:L1:log:e1', JSON.stringify({ id: 'e1' }));
+    localStorage.setItem('golearn:session', JSON.stringify({ app: 'setup' })); // the setup app's row on the same origin
+    localStorage.setItem('u:L1:broken', '{not json');
+    const factory = new IDBFactory();
+    const area = createIndexedDbKeyValueArea(factory, 'gopractice-move', { from: localStorage, prefixes: ['gopractice:', 'u:'] });
+    expect(await area.get(['gopractice:session', 'u:L1:log:e1'])).toEqual({ 'gopractice:session': { token: 't' }, 'u:L1:log:e1': { id: 'e1' } });
+    expect(localStorage.getItem('gopractice:session')).toBeNull();
+    expect(localStorage.getItem('u:L1:log:e1')).toBeNull();
+    expect(localStorage.getItem('golearn:session')).toBe(JSON.stringify({ app: 'setup' }));
+    expect(localStorage.getItem('u:L1:broken')).toBe('{not json'); // unreadable: left where it was
+    expect(localStorage.getItem('gopractice:moved-to-indexeddb')).toBe('1');
+    // a second area over the same database and localStorage does not move anything again (a row written to localStorage later stays there)
+    localStorage.setItem('gopractice:later', JSON.stringify(1));
+    const again = createIndexedDbKeyValueArea(factory, 'gopractice-move', { from: localStorage, prefixes: ['gopractice:', 'u:'] });
+    expect(await again.get('gopractice:later')).toEqual({});
+    expect(localStorage.getItem('gopractice:later')).toBe('1');
+  });
+
+  it('falls back to localStorage when IndexedDB will not open', async () => {
+    localStorage.clear();
+    const broken = { open: () => { throw new Error('private window'); } } as unknown as IDBFactory;
+    const area = createIndexedDbKeyValueArea(broken, 'gopractice-x', { from: localStorage, prefixes: ['gopractice:'] });
+    await area.set({ 'gopractice:k': 7 });
+    expect(localStorage.getItem('gopractice:k')).toBe('7');
+    expect(await area.list('gopractice:')).toEqual(['gopractice:k']);
   });
 });
 

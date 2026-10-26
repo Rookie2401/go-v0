@@ -73,6 +73,108 @@ export function createWebKeyValueArea(storage: Storage): KeyValueArea {
   };
 }
 
+/**
+ * A KeyValueArea over IndexedDB (one object store of JSON-able values keyed by string), for the hosted web edition (2026-10-26).
+ * Why: localStorage holds about 5 MB for the whole origin, and GitHub Pages serves GoReview, the GoLearn setup app and the old PWA from
+ * ONE origin; GoReview keeps the learner's event log one row per event, so a few thousand events filled it and the browser answered
+ * "The quota has been exceeded" on sync. IndexedDB holds hundreds of megabytes. Rows the localStorage area already holds under the given
+ * prefixes are moved across once, on first use, and deleted from localStorage (freeing it for the setup app); a marker row remembers
+ * that the move was made. Every method waits for the open and the move. The caller falls back to localStorage when IndexedDB will not
+ * open (a private window that forbids it).
+ */
+export function createIndexedDbKeyValueArea(idb: IDBFactory, dbName: string, migrate?: { from: Storage; prefixes: string[] }, fallback?: KeyValueArea): KeyValueArea {
+  const STORE = 'kv';
+  const MARK = 'gopractice:moved-to-indexeddb';
+  const req = <T>(r: IDBRequest<T>): Promise<T> => new Promise((resolve, reject) => { r.onsuccess = () => resolve(r.result); r.onerror = () => reject(r.error ?? new Error('IndexedDB request failed')); });
+  const done = (tx: IDBTransaction): Promise<void> => new Promise((resolve, reject) => { tx.oncomplete = () => resolve(); tx.onerror = () => reject(tx.error ?? new Error('IndexedDB transaction failed')); tx.onabort = () => reject(tx.error ?? new Error('IndexedDB transaction aborted')); });
+  const open = (): Promise<IDBDatabase> => new Promise((resolve, reject) => {
+    let r: IDBOpenDBRequest;
+    try { r = idb.open(dbName, 1); } catch (e) { reject(e instanceof Error ? e : new Error('IndexedDB would not open')); return; }
+    r.onupgradeneeded = () => { const db = r.result; if (!db.objectStoreNames.contains(STORE)) db.createObjectStore(STORE); };
+    r.onsuccess = () => resolve(r.result);
+    r.onerror = () => reject(r.error ?? new Error('IndexedDB would not open'));
+    r.onblocked = () => reject(new Error('IndexedDB open blocked'));
+  });
+  const upper = (prefix: string): IDBKeyRange => (prefix ? IDBKeyRange.bound(prefix, prefix + '￿', false, false) : IDBKeyRange.lowerBound(''));
+
+  /** The area over an open database. */
+  const over = (db: IDBDatabase): KeyValueArea => ({
+    async get(keys) {
+      const tx = db.transaction(STORE, 'readonly');
+      const store = tx.objectStore(STORE);
+      const out: Record<string, unknown> = {};
+      if (keys == null) {
+        const [ks, vs] = await Promise.all([req(store.getAllKeys()), req(store.getAll())]);
+        ks.forEach((k, i) => { if (typeof k === 'string' && vs[i] !== undefined) out[k] = vs[i]; });
+      } else {
+        const list = Array.isArray(keys) ? keys : [keys];
+        const vs = await Promise.all(list.map((k) => req(store.get(k))));
+        list.forEach((k, i) => { if (vs[i] !== undefined) out[k] = vs[i]; });
+      }
+      await done(tx);
+      return out;
+    },
+    async set(items) {
+      const tx = db.transaction(STORE, 'readwrite');
+      const store = tx.objectStore(STORE);
+      // values go through JSON like the localStorage area's, so what comes back is the same plain data (no Dates, no undefined fields)
+      for (const [k, v] of Object.entries(items)) store.put(JSON.parse(JSON.stringify(v)), k);
+      await done(tx);
+    },
+    async remove(keys) {
+      const tx = db.transaction(STORE, 'readwrite');
+      const store = tx.objectStore(STORE);
+      for (const k of Array.isArray(keys) ? keys : [keys]) store.delete(k);
+      await done(tx);
+    },
+    async list(prefix) {
+      const tx = db.transaction(STORE, 'readonly');
+      const ks = await req(tx.objectStore(STORE).getAllKeys(upper(prefix)));
+      await done(tx);
+      return ks.filter((k): k is string => typeof k === 'string').sort();
+    },
+  });
+
+  /** Rows the localStorage area holds under the prefixes go across once; then they are removed there and a marker says so. */
+  const moveAcross = async (area: KeyValueArea): Promise<void> => {
+    if (!migrate) return;
+    const from = migrate.from;
+    let moved = false;
+    try { moved = from.getItem(MARK) === '1'; } catch { moved = false; }
+    if (moved) return;
+    const keys: string[] = [];
+    for (let i = 0; i < from.length; i++) { const k = from.key(i); if (k !== null && migrate.prefixes.some((p) => k.startsWith(p))) keys.push(k); }
+    const items: Record<string, unknown> = {};
+    for (const k of keys) { const raw = from.getItem(k); if (raw === null) continue; try { items[k] = JSON.parse(raw); } catch { /* an unreadable row is left where it is */ } }
+    if (Object.keys(items).length) await area.set(items);
+    for (const k of Object.keys(items)) from.removeItem(k);
+    try { from.setItem(MARK, '1'); } catch { /* nothing to remember with: the move repeats harmlessly next time (nothing left to move) */ }
+  };
+
+  // the backend: the database once it is open and the move is made; else the fallback (a private window that forbids IndexedDB)
+  const backend: Promise<KeyValueArea> = open()
+    .then(async (db) => { const area = over(db); await moveAcross(area); return area; })
+    .catch(() => fallback ?? createWebKeyValueAreaOrMemory(migrate?.from));
+  return {
+    get: async (keys) => (await backend).get(keys),
+    set: async (items) => (await backend).set(items),
+    remove: async (keys) => (await backend).remove(keys),
+    list: async (prefix) => (await backend).list(prefix),
+  };
+}
+
+/** The localStorage area when there is one, else a memory area that lives for the visit. */
+function createWebKeyValueAreaOrMemory(storage: Storage | undefined): KeyValueArea {
+  if (storage) return createWebKeyValueArea(storage);
+  const rows = new Map<string, unknown>();
+  return {
+    async get(keys) { const out: Record<string, unknown> = {}; for (const k of keys == null ? [...rows.keys()] : Array.isArray(keys) ? keys : [keys]) if (rows.has(k)) out[k] = rows.get(k); return out; },
+    async set(items) { for (const [k, v] of Object.entries(items)) rows.set(k, JSON.parse(JSON.stringify(v))); },
+    async remove(keys) { for (const k of Array.isArray(keys) ? keys : [keys]) rows.delete(k); },
+    async list(prefix) { return [...rows.keys()].filter((k) => k.startsWith(prefix)).sort(); },
+  };
+}
+
 /** The same area with every key under `prefix`: one learner's rows cannot be read through another learner's area. */
 export function createScopedArea(base: KeyValueArea, prefix: string): KeyValueArea {
   return {

@@ -270,14 +270,25 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     return { ok: true, languageId, languageName: languageNameOf(languageId), where: onDevice && onAccount ? 'both' : onDevice ? 'device' : 'account' };
   }
 
+  /** The languages of the account's open enrolments, when signed in and the service answers within a moment; else none (the popup never waits on the network). */
+  async function accountLanguages(): Promise<string[]> {
+    const a = await session.authenticated();
+    if (!a) return [];
+    const quiet = new Promise<string[]>((resolve) => setTimeout(() => resolve([]), 2500));
+    const ask = a.api.listEnrolments().then((r) => (r.ok ? [...new Set(r.data.enrolments.filter((e) => !e.endedAt).map((e) => e.languageId))] : []), () => []);
+    return Promise.race([ask, quiet]);
+  }
+
   async function pageStatus(): Promise<PageStatus> {
     const [pub, s, st, sy] = await Promise.all([publicStatus(), session.status(), settings.get(), sync.status()]);
     // `revocationPending`: the last sign-out could not reach the service (audit P-08); the setup page may say so
     const out: PageStatus & { revocationPending?: boolean } = {
       // a language chosen on this device counts: an account without an enrolment yet must not make the popup say "choose a language"
       ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
-      // the popup's language switch lists these (the account's enrolment first, then the device's open enrolments, in setup order)
-      chosenLanguages: [...new Set([s.languageId, ...(await localRepo.chosenLanguages())].filter((l): l is string => !!l))],
+      // the popup's language switch lists these: the account's enrolment first, then the device's open enrolments in setup order, then the
+      // account's other open enrolments (a language chosen in the hosted setup app or on another device; read from the service when it
+      // answers within a moment, never waited for)
+      chosenLanguages: [...new Set([s.languageId, ...(await localRepo.chosenLanguages()), ...(await accountLanguages())].filter((l): l is string => !!l))],
       needsSignIn: pub.needsSignIn || sy.needsSignIn,
       sync: { pending: sy.pending, localOnly: sy.localOnly, rejected: sy.rejected, lastPushAt: sy.lastPushAt, lastError: sy.lastError, online: sy.online, needsSignIn: sy.needsSignIn || (s.connected && s.expired) },
       ...(s.revocationPending ? { revocationPending: true } : {}),

@@ -119,7 +119,11 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     if (!s.connected) { syncLine.textContent = y.localOnly ? `${y.localOnly} event${y.localOnly === 1 ? '' : 's'} waiting for an account` : 'Nothing to sync.'; syncLine.classList.remove('warn'); detail.textContent = ''; return; }
     syncLine.textContent = `Sync: ${y.pending} pending · last sync ${ago(y.lastPushAt)}${y.online ? '' : ' · offline'}${y.rejected ? ` · ${y.rejected} refused by the service` : ''}`;
     syncLine.classList.toggle('warn', !!y.lastError);
-    detail.textContent = y.lastError ?? '';
+    // an unreachable service names the address in use and the way to change it (2026-10-25: the owner's network filters the usual name)
+    const unreachable = !!y.lastError && /fetch|network|reach|ECONN|timed? ?out/i.test(y.lastError);
+    detail.textContent = !y.lastError ? '' : unreachable
+      ? `${y.lastError}: the service at ${s.baseUrl ?? 'the configured address'} could not be reached. If your network blocks that name, set another address for the same service under Sign in · Service address in GoLearn setup.`
+      : y.lastError;
   }
 
   // ── GoLearn Active: the one switch, what it found on this page, and the legend ──

@@ -54,6 +54,38 @@ describe('not connected', () => {
 });
 
 describe('connected', () => {
+  it('the language switch lists the account\'s other enrolments too, and switching to one selects it on the account (2026-10-25)', async () => {
+    await rig.signUp();
+    await rig.connect();
+    await rig.fireTimers();
+    const page = { id: rig.fake.runtime.id, url: `chrome-extension://${rig.fake.runtime.id}/action/popup.html` };
+    // a second language enrolled on the account only (as the hosted setup app does), not on this device
+    const made = await rig.fake.dispatch({ type: MSG.enrol, languageId: 'de', packId: 'pack:de', packVersion: '1', goals: [{ kind: 'reading' }] }, page) as { ok: boolean };
+    expect(made.ok).toBe(true);
+    await initPopup(document, rig.fake);
+    const select = $<HTMLSelectElement>('language-select');
+    expect([...select.options].map((o) => o.value)).toContain('de');
+    expect(select.disabled).toBe(false);
+    select.value = 'de';
+    select.dispatchEvent(new Event('change'));
+    await flush(60);
+    const status = await rig.fake.dispatch({ type: MSG.status }, page) as { languageId: string };
+    expect(status.languageId).toBe('de');
+    expect(text('language')).toMatch(/^German/);
+  });
+
+  it('an unreachable service is named with the way to change its address (2026-10-25)', async () => {
+    await rig.signUp();
+    await rig.connect();
+    await rig.fireTimers();
+    rig.offline.value = true;
+    await rig.content({ type: MSG.record, event: pendingEvent() });
+    await rig.fake.dispatch({ type: MSG.syncNow }, { id: rig.fake.runtime.id, url: `chrome-extension://${rig.fake.runtime.id}/action/popup.html` });
+    await initPopup(document, rig.fake);
+    expect(text('sync-detail')).toMatch(/could not be reached\. If your network blocks that name, set another address for the same service under Sign in · Service address in GoLearn setup\./);
+    expect(text('sync-detail')).toContain('the service at http');
+  });
+
   it('shows who, the language, and the sync state, and syncs on request', async () => {
     await rig.signUp();
     await rig.connect();

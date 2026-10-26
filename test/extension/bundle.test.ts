@@ -95,7 +95,9 @@ describe.skipIf(!have)('the built extension', () => {
       const code = read(f);
       expect(code, f).not.toMatch(/^\s*(import|export)\s/m);
       expect(code, f).not.toMatch(/\beval\s*\(|new Function\s*\(/);
-      expect(code, f).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i); // no address the code could call: the service is configured by the learner
+      // no address the code could call: the service is configured by the learner. The SVG namespace is an identifier, never fetched
+      // (the card's drawn speaker, 2026-10-25), so it is taken out before the check
+      expect(code.replaceAll('http://www.w3.org/2000/svg', ''), f).not.toMatch(/https?:\/\/[a-z0-9.-]+\.[a-z]{2,}/i);
     }
   });
 

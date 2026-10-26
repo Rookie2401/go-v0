@@ -42,7 +42,7 @@ Settings → **Clear local data** is the explicit way to remove the device's dat
 |---|---|
 | `#/signin` | the optional account (extension copy: "Not now", upload count) or the explanation of the hosted copy; email + password to the service; the service address is under a disclosure |
 | `#/review` | GoReview workspace: due summary, intake outcomes with reasons (each names the unit's knowledge level: candidates are drawn by level, see `docs/ecosystem/KNOWLEDGE-LEVELS.md`) and a "Why" expander per candidate (Test now / Later / Dismiss), session controls, the deck with per-item snooze / suspend / dismiss / resume, "Start a session" |
-| `#/review/session` | one exercise at a time, feedback, challenge, analysis-error report, per-item tools, summary |
+| `#/review/session` | one exercise at a time, feedback, challenge, analysis-error report, per-item tools, summary; at the end of a deck: Repeat this deck, or New deck from the weak words (half of the new deck is the weak words, weakest first, the rest what is due or new next; `deckModel.ts` weakEntries / planFollowUp) |
 | `#/review/history/<item>` | the item's review history (the scheduler numbers are labelled bookkeeping) |
 | `#/review/transfer` | transfer measures — "research measures, not conclusions" — with their basis and what they cannot show |
 | `#/tell` | GoTell: the writing workspace (modes, prompts, writer with analysis and the six-level assistance ladder, versions, goals, privacy); see `docs/ecosystem/GOTELL-ARCHITECTURE.md` |

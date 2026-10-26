@@ -12,7 +12,7 @@
  * `{ v: 1, decks: SavedDeck[], holdOut: string[] }`; a missing or damaged record reads as "no saved decks".
  */
 import { KNOWLEDGE_LEVELS, type KnowledgeLevel, type UnitKnowledge } from '../repository-contract/src';
-import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, SessionPlan } from '../goreview/src/types';
+import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, ReviewResult, SessionPlan } from '../goreview/src/types';
 import type { AppContext } from './context';
 import { unitLabel } from './format';
 import { clampDeckSize } from './state';
@@ -234,13 +234,100 @@ export function removeFromAdded(ctx: AppContext, id: { learnerId: string; langua
   });
 }
 
-/** A saved deck's cards asked again, as a plan (cards the deck still holds as they stand; the rest as new). */
-export function planFromSaved(ctx: AppContext, model: ReviewModel, deck: SavedDeck): Promise<SessionPlan> {
-  const wanted: Wanted[] = deck.items.map((e) => ({
-    unitId: e.unitId, unitKind: e.unitKind, dimension: e.dimension, family: e.family,
-    ...(model.outcomes.find((o) => o.unitId === e.unitId && o.proposed?.dimension === e.dimension) ? { outcome: model.outcomes.find((o) => o.unitId === e.unitId && o.proposed?.dimension === e.dimension) } : {}),
-  }));
-  return assemble(ctx, model, wanted, Math.max(1, deck.items.length));
+/** Deck entries asked again, as a plan (cards the deck still holds as they stand; the rest as new), in the entries' order. */
+export function planFromEntries(ctx: AppContext, model: ReviewModel, entries: readonly DeckEntry[], size = Math.max(1, entries.length)): Promise<SessionPlan> {
+  const wanted: Wanted[] = entries.map((e) => {
+    const outcome = model.outcomes.find((o) => o.unitId === e.unitId && o.proposed?.dimension === e.dimension);
+    return { unitId: e.unitId, unitKind: e.unitKind, dimension: e.dimension, family: e.family, ...(outcome ? { outcome } : {}) };
+  });
+  return assemble(ctx, model, wanted, size);
+}
+
+/** A saved deck's cards asked again, as a plan. */
+export const planFromSaved = (ctx: AppContext, model: ReviewModel, deck: SavedDeck): Promise<SessionPlan> => planFromEntries(ctx, model, deck.items);
+
+// ───────────────────────────── after a session: repeat, or a new deck from the weak words ─────────────────────────────
+
+/** What a finished session leaves behind that the next deck is built from. */
+export interface FinishedRun {
+  plan: SessionPlan;
+  results: readonly ReviewResult[];
+  /** Item ids the learner skipped (nothing was written for them). */
+  skipped: readonly string[];
+  /** Items the learner set aside (snoozed, suspended, dismissed): never asked again by the next deck. */
+  controls: ReadonlyArray<{ itemId: string }>;
+}
+
+/** The cards of a finished session, in the order they were planned, as entries a new plan can be built from. */
+export const entriesOf = (plan: SessionPlan): DeckEntry[] => plan.items.map(entryOf);
+
+/** How a card counted as weak, from the weakest down: the order the next deck takes them in. */
+export type Weakness = 'incorrect' | 'skipped' | 'partial' | 'hard' | 'unjudged';
+export interface WeakEntry extends DeckEntry { weakness: Weakness }
+const WEAKNESS_RANK: Readonly<Record<Weakness, number>> = { incorrect: 0, skipped: 1, partial: 2, hard: 3, unjudged: 4 };
+
+/**
+ * The weak words of a finished session: cards answered "not quite" (incorrect) or "partly" (partial), rated Again or Hard, skipped, or
+ * not judged (ambiguous, failed audio); a card answered correctly is not weak, and one set aside is left out. Weakest first, then the
+ * session's order; a card asked twice counts by its worst answer.
+ */
+export function weakEntries(run: FinishedRun): WeakEntry[] {
+  const aside = new Set(run.controls.map((c) => c.itemId));
+  const byItem = new Map<string, Weakness>();
+  const worse = (itemId: string, w: Weakness): void => { const have = byItem.get(itemId); if (have === undefined || WEAKNESS_RANK[w] < WEAKNESS_RANK[have]) byItem.set(itemId, w); };
+  for (const r of run.results) {
+    const o = r.grading.outcome;
+    if (o === 'incorrect' || r.rating === 1) worse(r.itemId, 'incorrect');
+    else if (o === 'partial' || r.rating === 2) worse(r.itemId, r.rating === 2 && o === 'correct' ? 'hard' : 'partial');
+    else if (o !== 'correct') worse(r.itemId, 'unjudged');
+  }
+  for (const id of run.skipped) worse(id, 'skipped');
+  return run.plan.items
+    .filter((p) => byItem.has(p.item.itemId) && !aside.has(p.item.itemId))
+    .map((p) => ({ ...entryOf(p), weakness: byItem.get(p.item.itemId)! }))
+    .sort((a, b) => WEAKNESS_RANK[a.weakness] - WEAKNESS_RANK[b.weakness]);
+}
+
+/** The share of a follow-up deck given to the previous deck's weak words; the rest is what is due or new next. */
+export const WEAK_SHARE = 0.5;
+
+export interface FollowUpDeck {
+  plan: SessionPlan;
+  /** How many of the weak words the deck asks (weakest first), and how many fresh cards fill the rest. */
+  weakTaken: number;
+  fresh: number;
+  /** The weak words that did not fit the share, or that could not be asked. */
+  weakLeft: number;
+}
+
+/**
+ * A new deck after a session: half of it (WEAK_SHARE of the learner's cards-per-deck, rounded up) is the previous deck's weak words,
+ * weakest first; the rest is what the home would offer next, with the previous deck's cards left out. Fewer weak words than the share
+ * leaves more room for fresh cards; no fresh card leaves a deck of weak words alone; no weak word at all gives no deck (the caller
+ * says so, and the home's current deck is the thing to begin instead).
+ */
+export async function planFollowUp(ctx: AppContext, model: ReviewModel, run: FinishedRun): Promise<FollowUpDeck | undefined> {
+  const weak = weakEntries(run);
+  if (!weak.length) return undefined;
+  const size = fillSize(model);
+  const share = Math.min(weak.length, Math.max(1, Math.ceil(size * WEAK_SHARE)));
+  const weakPlan = await planFromEntries(ctx, model, weak.slice(0, share), share);
+  const taken = new Set(weakPlan.items.map((p) => p.item.unitId));
+  const previous = new Set(run.plan.items.map((p) => p.item.unitId));
+  let items: PlannedItem[] = weakPlan.items;
+  let fresh = 0;
+  if (items.length < size) {
+    const next = await planCurrentDeck(ctx, model, previous);
+    const extra = next.plan.items.filter((p) => !taken.has(p.item.unitId) && !previous.has(p.item.unitId)).slice(0, size - items.length);
+    fresh = extra.length;
+    items = [...items, ...extra];
+  }
+  if (!items.length) return undefined;
+  const plan: SessionPlan = {
+    ...weakPlan, items, dueCount: 0, newCount: items.filter((p) => p.isNew).length,
+    listeningCount: items.filter((p) => isAudio(p.family)).length, grammarCount: items.filter((p) => GRAMMAR.has(p.family)).length,
+  };
+  return { plan, weakTaken: weakPlan.items.length, fresh, weakLeft: weak.length - weakPlan.items.length };
 }
 
 // ───────────────────────────── saved decks ─────────────────────────────

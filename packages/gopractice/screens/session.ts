@@ -14,7 +14,7 @@
  * choices in a choice question), Space plays and replays the audio, Esc skips the item. The character keys (1-4, Space) can
  * be turned off in the session controls (WCAG 2.1.4); Enter and Esc are not character keys and stay. There is no timer on screen.
  */
-import type { Grading, Response } from '../../goreview/src/types';
+import type { Grading, Response, SessionPlan } from '../../goreview/src/types';
 import type { PlaybackHandle, PronunciationResult } from '../../golisten/src/contracts';
 import type { AppContext } from '../context';
 import { explainFailure } from '../config';
@@ -24,9 +24,9 @@ import {
 } from '../format';
 import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../goreview/src/exercises/shared';
-import { endSavedSession, recoverableSessions, resumeSession } from '../workspace';
+import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession } from '../workspace';
 import { fillItemHistory } from './history';
-import { VOCAB_NOTE } from '../deckModel';
+import { entriesOf, planFollowUp, planFromEntries, VOCAB_NOTE, WEAK_SHARE, weakEntries } from '../deckModel';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import type { View } from './view';
 
@@ -86,23 +86,35 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   }
   const root = h('div', { id: 'session', class: 'session' });
   el.append(root);
+  /** The summary's "Repeat this deck" / "New deck from the weak words": the new run takes this screen over, in place. */
+  const restart = async (next: ActiveRun): Promise<void> => {
+    if (!view.alive()) return;
+    ctx.run.active = next;
+    clear(el);
+    await render(el, ctx, view);
+  };
   if (run.finish) {
-    await renderSummary(root, ctx, run);
-    view.onDispose(ctx.onData(() => { void repaintSummary(root, ctx, run, view); }));
+    const off = ctx.onData(() => { void repaintSummary(root, ctx, run, view, actions); });
+    const actions: NextActions = { restart: async (next) => { off(); await restart(next); } };
+    view.onDispose(off);
+    await renderSummary(root, ctx, run, actions);
     return;
   }
-  await new Controller(root, ctx, run, view).start();
+  await new Controller(root, ctx, run, view, restart).start();
 }
 
 /**
  * A live update reached a finished session: the summary is drawn again from the same run (its sync line reads the fresh state).
  * Not while a grade is being undone (that button is disabled until the correction is written).
  */
-async function repaintSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, view: View): Promise<void> {
+async function repaintSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, view: View, actions?: NextActions): Promise<void> {
   if (!view.alive() || !root.querySelector('#summary') || root.querySelector('#session-undo button:disabled')) return;
   clear(root);
-  await renderSummary(root, ctx, run);
+  await renderSummary(root, ctx, run, actions);
 }
+
+/** What the summary can start next; absent when the screen cannot be taken over (a summary drawn alone). */
+export interface NextActions { restart(run: ActiveRun): Promise<void> }
 
 type Stage = 'loading' | 'prompt' | 'feedback' | 'summary';
 
@@ -142,8 +154,13 @@ class Controller {
   private readonly doc: Document;
   /** Interface switches of this device, read when the session screen opens. */
   private ui: UiPrefs = { ...DEFAULT_UI };
+  /** Set when the summary handed the screen to a new run: this controller then touches the screen no more. */
+  private retired = false;
+  private offData: () => void = () => {};
+  private readonly actions: NextActions;
 
-  constructor(private root: HTMLElement, private ctx: AppContext, private run: ActiveRun, view: View) {
+  constructor(private root: HTMLElement, private ctx: AppContext, private run: ActiveRun, view: View, restart: (run: ActiveRun) => Promise<void>) {
+    this.actions = { restart: async (next) => { this.retired = true; this.offData(); await restart(next); } };
     this.doc = ctx.deps.doc;
     this.tag = run.ctx.varietyId ?? run.ctx.languageId;
     const onKey = (ev: KeyboardEvent): void => { this.trackReviewActivity(); void this.key(ev); };
@@ -164,10 +181,12 @@ class Controller {
     ctx.deps.win.addEventListener('resume', onResume);
     // a live update while a card is on screen touches nothing (the answer box, the choice, the grade stay as they are);
     // what arrived is read when the summary is drawn, and a summary already on screen is drawn again
-    view.onDispose(ctx.onData(() => {
-      if (this.stage === 'summary') void repaintSummary(this.root, this.ctx, this.run, view);
+    this.offData = ctx.onData(() => {
+      if (this.retired) return;
+      if (this.stage === 'summary') void repaintSummary(this.root, this.ctx, this.run, view, this.actions);
       else this.dataWaiting = true;
-    }));
+    });
+    view.onDispose(this.offData);
     view.onDispose(() => {
       this.doc.removeEventListener('keydown', onKey);
       this.doc.removeEventListener('pointerdown', onActivity, true);
@@ -227,7 +246,7 @@ class Controller {
     this.stage = 'summary';
     this.disposeAudio();
     clear(this.root);
-    await renderSummary(this.root, this.ctx, this.run);
+    await renderSummary(this.root, this.ctx, this.run, this.actions);
   }
 
   /** Records the answered item (if any) through the driver. Throws when the queue refuses; nothing advanced then. */
@@ -838,7 +857,48 @@ export function parseCorrection(text: string): { lexemeId: string } | { features
 
 // ───────────────────────────── summary ─────────────────────────────
 
-export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun): Promise<void> {
+/**
+ * What to do next with this deck: ask the same cards again, or build a new deck of which half (WEAK_SHARE) is this deck's weak
+ * words (not quite, skipped, partly, hard, not judged; weakest first) and the rest what is due or new next. Each begins a new
+ * session on this screen; the finished one is already recorded.
+ */
+function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, tag: string): HTMLElement {
+  const weak = weakEntries(run);
+  const planned = run.plan.items.length;
+  const status = statusLine();
+  const sharePct = Math.round(WEAK_SHARE * 100);
+  const cards = (n: number): string => `${n} card${n === 1 ? '' : 's'}`;
+  const begin = async (make: (model: NonNullable<Awaited<ReturnType<typeof loadReviewModel>>>) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
+    for (const b of buttons) b.disabled = true;
+    try {
+      const model = await loadReviewModel(ctx);
+      if (!model) { setStatus(status, 'Choose a language first.', 'error'); return; }
+      const plan = await make(model);
+      if (!plan || !plan.items.length) { setStatus(status, 'None of these cards can be asked right now.', 'info'); return; }
+      const r = await beginSession(ctx, model, { plan });
+      if (!r.ok) { setStatus(status, r.message, 'info'); return; }
+      await actions.restart(r.run);
+    } catch (e) {
+      setStatus(status, `The next deck could not be started: ${e instanceof Error ? e.message : String(e)}`, 'error');
+    } finally { for (const b of buttons) b.disabled = false; }
+  };
+  const repeat = button('Repeat this deck', () => { void begin((model) => planFromEntries(ctx, model, entriesOf(run.plan)), [repeat, fresh]); },
+    { class: 'btn', id: 'repeat-deck', 'aria-label': `Repeat this deck: the same ${cards(planned)} again` });
+  const fresh = button('New deck from the weak words', () => { void begin(async (model) => (await planFollowUp(ctx, model, run))?.plan, [repeat, fresh]); },
+    { class: 'btn primary', id: 'new-deck-weak' });
+  if (!weak.length) fresh.disabled = true;
+  const names = weak.slice(0, 6).flatMap((w, i) => [i ? ', ' : '', h('span', langProps(tag), w.label)]);
+  return h('section', { id: 'summary-next', class: 'card', 'aria-labelledby': 'summary-next-heading' },
+    h('h2', { id: 'summary-next-heading' }, 'Next'),
+    p(`Repeat asks the same ${cards(planned)} again, in a new session.`, 'muted'),
+    h('p', { class: 'muted', id: 'weak-note' }, ...(weak.length
+      ? [`${weak.length} of the ${cards(planned)} ${weak.length === 1 ? 'was' : 'were'} weak (not quite, skipped, partly, hard): `, ...names, weak.length > 6 ? `, and ${weak.length - 6} more` : '',
+        `. The new deck gives ${sharePct}% of its cards to them, weakest first, and fills the rest with what is due or new next.`]
+      : ['Every card was answered correctly, so there are no weak words to build a new deck from; the home has your next deck.'])),
+    h('div', { class: 'row' }, repeat, fresh), status);
+}
+
+export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions): Promise<void> {
   const tag = run.ctx.varietyId ?? run.ctx.languageId;
   const results = run.results;
   const planned = run.plan.items.length;
@@ -886,6 +946,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
       p(`${view.status?.pending ?? 0} event(s) wait to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'),
       h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/review', id: 'back-to-review' }, 'Back to GoReview'))),
+    ...(actions ? [nextDeckSection(ctx, run, actions, tag)] : []),
   ]);
   if (run.driver.undo) {
     const undoable = results.filter((result) => result.evidence && !result.correctedAt && !result.response.challenged);

@@ -76,6 +76,25 @@ const GAP = 8;
 const CARD_WIDTH = 340;
 const clamp = (v: number, lo: number, hi: number): number => Math.min(Math.max(v, lo), Math.max(lo, hi));
 
+/** The speaker beside the word: a stroke drawing in the button's colour (an emoji would be the platform's picture, glossy on an iPhone). Decorative; the button carries the label. */
+function speakerIcon(doc: Document): SVGSVGElement {
+  const NS = 'http://www.w3.org/2000/svg';
+  const svg = doc.createElementNS(NS, 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  for (const [tag, attrs] of [
+    ['path', { d: 'M4 9.5v5h3.5L13 19V5L7.5 9.5H4z' }],
+    ['path', { d: 'M16 9.2a4 4 0 0 1 0 5.6' }],
+    ['path', { d: 'M18.6 6.6a7.5 7.5 0 0 1 0 10.8' }],
+  ] as const) {
+    const el = doc.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+    svg.append(el);
+  }
+  return svg;
+}
+
 /** Pure placement: below the anchor, flipped above when it does not fit and there is more room above; clamped to the viewport. */
 export function computePosition(anchor: PopupAnchor, size: { width: number; height: number }): Placement {
   const { rect, viewport } = anchor;
@@ -108,7 +127,9 @@ const CSS = `
 .top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .wordline { display: flex; align-items: center; gap: 0.35em; margin: 0.2em 0 0.1em; }
 .word { font-size: 1.85em; font-weight: 400; line-height: 1.2; margin: 0; overflow-wrap: anywhere; min-width: 0; color: #d9cfbe; }
-.say { flex: none; border: 0; background: none; color: #c8a06a; padding: 0.15em 0.3em; line-height: 1; font-size: 1em; }
+.say { flex: none; display: inline-flex; align-items: center; justify-content: center; border: 0; background: none; color: #c8a06a; padding: 0.15em 0.3em; line-height: 1; font-size: 1em; }
+.say svg { width: 1.1em; height: 1.1em; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+.say:disabled svg { opacity: .55; }
 .say:disabled { opacity: .55; }
 .card__gloss { font-size: 1.1em; line-height: 1.4; margin: 0.1em 0 0; color: #d9cfbe; overflow-wrap: anywhere; }
 .card__gloss--quote::before { content: '\\201C'; color: #a89c86; }
@@ -1089,7 +1110,8 @@ export function createCardUI(options: CardUIOptions = {}): CardUI {
     const rows = h('div', { class: 'rows' });
 
     // the speaker beside the word: GoListen's device provider speaks it; with no device voice its title says so (disabled, nothing else shown)
-    const say = h('button', { type: 'button', class: 'say', 'aria-label': 'Play with GoListen', title: pron.note }, h('span', { 'aria-hidden': 'true' }, '🔊')) as HTMLButtonElement;
+    // a drawn speaker, not the 🔊 character: an emoji is rendered by the platform (Apple's glossy picture on an iPhone), a stroke in currentColor is the card's own line everywhere (2026-10-25)
+    const say = h('button', { type: 'button', class: 'say', 'aria-label': 'Play with GoListen', title: pron.note }, speakerIcon(doc)) as HTMLButtonElement;
     say.disabled = true;
     say.addEventListener('click', onPronounceClick);
     const wordLine = h('div', { class: 'wordline' }, word, say);

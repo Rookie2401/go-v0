@@ -151,6 +151,18 @@ describe('the card in the page', () => {
     expect(document.head.querySelector('style')).toBeNull();
   });
 
+  it('gives touch users 44px controls while keeping the six knowledge marks in a tight row', () => {
+    ui.show(cardFor(), anchor());
+    const css = ui.root()!.querySelector('style')!.textContent!;
+    expect(css).toContain('@media (pointer: coarse)');
+    expect(css).toContain('button, input, select { min-width: 44px; min-height: 44px; }');
+    // 2026-10-25: the button IS the circle (26px, the same border and gold fill as with a pointer) and an invisible ::after halo makes the 44px
+    // target; before, a 44px transparent button with a ::before circle was painted gold whole by the more specific .rateBtn.on rule (iPhone blobs)
+    expect(css).toContain('.rateBtn { min-width: 26px; min-height: 26px; width: 26px; height: 26px; margin: 9px; position: relative; }');
+    expect(css).toContain('.rateBtn::after { content: \'\'; position: absolute; inset: -9px; border-radius: 50%; }');
+    expect(css).not.toMatch(/pointer: coarse[\s\S]*\.rateBtn[^{]*\{[^}]*background: transparent/);
+  });
+
   it('page text reaches the DOM only as text: markup in a selection is shown literally and runs nothing', () => {
     const evil = '<img src=x onerror="window.__pwned=1"> <b>bold</b>';
     const c = parseSelection({ surface: evil, context: { kind: 'none', confidence: 0 } });

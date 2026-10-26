@@ -1,0 +1,1 @@
+import{t as e}from"./es-Dfl34Edf.js";export{e as adapter};

@@ -48,6 +48,21 @@ describe('tokensIn', () => {
     for (const t of tokens) expect(t.ids[0]).toMatch(/^form:sq:/);
   });
 
+  it('says which words the language knows (2026-10-25): a creditable reading is `known`; another language\'s word or a name on the same page is not, and gets no lemma id', () => {
+    const p = document.getElementById('p2')!;
+    p.textContent = 'Beni shkon në shkollë. The righteous flourish. אֱלֹהִים';
+    const tokens = make().tokensIn([p.firstChild as Text], 'sq');
+    const by = Object.fromEntries(tokens.map((t) => [t.surface, t]));
+    expect(by['shkollë'].known).toBe(true);
+    expect(by['shkollë'].ids).toHaveLength(2);
+    // ("The" is left out of the list on purpose: it is an Albanian word too, the aorist "the" of them, and the analyser rightly knows it)
+    for (const w of ['righteous', 'flourish', 'אֱלֹהִים']) {
+      expect(by[w], w).toBeDefined();
+      expect(by[w].known, w).toBe(false);
+      expect(by[w].ids, w).toEqual([`form:sq:${by[w].ids[0].slice('form:sq:'.length)}`]); // the form id only: nothing creditable to credit
+    }
+  });
+
   it('caches per text node while its text is unchanged, and re-reads it after a change', () => {
     const s = make();
     const p2 = document.getElementById('p2')!.firstChild as Text;

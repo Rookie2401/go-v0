@@ -67,6 +67,8 @@ export interface PageStatus extends PublicStatus {
   expiresAt?: string;
   hasEnrolment: boolean;
   settings: PrivacySettings;
+  /** The languages the learner has chosen (the account's enrolment, the device's open enrolments), for the popup's language switch (2026-10-25). */
+  chosenLanguages?: string[];
 }
 
 export interface DimView { score: number; confidence: number; observations: number; positive: number; negative: number }

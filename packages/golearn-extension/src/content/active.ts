@@ -55,6 +55,8 @@ export interface ActiveState {
   /** Word tokens found in the last scan, and how many are marked per level. */
   scanned: number;
   marked: Record<ActiveLevel, number>;
+  /** Words of the last scan the active language's analyser did not know (another language's words, names): left alone, neither underlined nor recorded (2026-10-25). */
+  skipped?: number;
   /** Milliseconds the last scan spent on the page (reading and tokenising), without the learner-model wait. */
   scanMs?: number;
   /** Milliseconds waiting for the learner model in the last scan. */
@@ -85,7 +87,7 @@ export class ActiveMode {
   private pendingEncounter: { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] } | undefined;
   private scanning: Promise<void> | undefined;
   private rescanWanted = false;
-  private last: Pick<ActiveState, 'scanned' | 'marked' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: noMarks() };
+  private last: Pick<ActiveState, 'scanned' | 'marked' | 'skipped' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: noMarks() };
   private clicks = 0;
   private readonly encountered = new Set<string>();
   private offRecord: (() => void) | undefined;
@@ -232,13 +234,14 @@ export class ActiveMode {
     const want = new Set<string>();
     for (const id of this.refetch) this.rows.delete(id); // answers that were asked for before an event of this page was recorded
     this.refetch.clear();
-    for (const tokens of byDoc.values()) for (const t of tokens) for (const id of t.ids) if (!this.rows.has(id)) want.add(id);
+    for (const tokens of byDoc.values()) for (const t of tokens) if (t.known) for (const id of t.ids) if (!this.rows.has(id)) want.add(id);
     const t1 = clock.now();
     await this.consult([...want], languageId);
     const profileMs = clock.now() - t1;
     if (!this.on) return;
 
     let scanned = 0;
+    let skipped = 0;
     const marked = noMarks();
     // with no learner model at all, nothing is marked (every word would be "new" for the wrong reason)
     const modelKnown = !!this.d.profile && [...this.rows.values()].length > 0 || this.rows.size > 0;
@@ -246,6 +249,9 @@ export class ActiveMode {
       const byLevel = new Map<ActiveLevel, Range[]>();
       for (const t of tokens) {
         scanned++;
+        // a word the active language's analyser does not know (another language's word on the same page, a name) is left alone:
+        // not underlined as "new", not recorded as met (2026-10-25: a Hebrew-and-English page read as German underlined every word)
+        if (!t.known) { skipped++; continue; }
         if (!modelKnown) continue;
         const level = levelOfRows(t.ids.map((id) => this.rows.get(id) ?? undefined));
         let range: Range;
@@ -256,12 +262,12 @@ export class ActiveMode {
       this.highlighterFor(root).apply(byLevel);
     }
     if (this.d.recordEncounter) {
-      const groups = [...new Map([...byDoc.values()].flatMap((xs) => xs).map((t) => {
+      const groups = [...new Map([...byDoc.values()].flatMap((xs) => xs).filter((t) => t.known).map((t) => {
         const ids = [...new Set(t.ids)].filter((id) => !this.encountered.has(id));
         return [ids.join(','), ids] as const;
       }).filter(([, ids]) => ids.length))].map(([, ids]) => ids);
       if (groups.length) {
-        const tokens = [...byDoc.values()].flatMap((xs) => xs).filter((t) => t.ids.some((id) => groups.some((g) => g.includes(id))));
+        const tokens = [...byDoc.values()].flatMap((xs) => xs).filter((t) => t.known && t.ids.some((id) => groups.some((g) => g.includes(id))));
         const old = this.pendingEncounter;
         const oldKeys = new Set((old?.groups ?? []).map((g) => g.join(',')));
         this.pendingEncounter = { groups: [...(old?.groups ?? []), ...groups.filter((g) => !oldKeys.has(g.join(',')))], languageId, readerId: this.entry?.readerId ?? 'active', tokens: [...(old?.tokens ?? []), ...tokens] };
@@ -275,7 +281,7 @@ export class ActiveMode {
         }, 800);
       }
     }
-    this.last = { scanned, marked, scanMs: Math.round(scanMs * 100) / 100, profileMs: Math.round(profileMs * 100) / 100 };
+    this.last = { scanned, marked, skipped, scanMs: Math.round(scanMs * 100) / 100, profileMs: Math.round(profileMs * 100) / 100 };
     if (!this.d.profile) this.reason = 'The learner model is not reachable from this page, so nothing is underlined; clicking a word still looks it up.';
     else if (!this.highlighterFor(this.d.doc).supported) this.reason = 'This browser cannot draw the underlines (no CSS highlight API); clicking a word still looks it up.';
     else this.reason = undefined;

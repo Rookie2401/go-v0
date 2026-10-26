@@ -53,12 +53,12 @@ describe('GoLearn Active in the popup', () => {
     await flush(30);
     expect(fake.permissionRequests).toEqual([{ origins: [...ACTIVE_ORIGINS] }]);
     expect($<HTMLInputElement>('active').checked).toBe(false);
-    expect($('active-status').textContent).toMatch(/did not allow/);
+    expect($('active-status').textContent).toMatch(/Site access was not allowed/);
     expect(fake.registeredScripts).toEqual([]);
   });
 
   it('a "yes" registers GoLearn for pages and starts it on the page in front; the popup then says what that page got', async () => {
-    await initPopup(document, fake);
+    const popup = await initPopup(document, fake);
     pageState = { on: true, speak: true, supported: true, languageId: 'sq', scanned: 230, marked: { new: 0, seen: 16, recognized: 3, familiar: 0, known: 4, automatic: 8 }, clicks: 1, recordedWords: 18 };
     change($('active'), true);
     await flush(40);
@@ -66,8 +66,12 @@ describe('GoLearn Active in the popup', () => {
     expect(fake.registeredScripts.map((s) => s.id)).toEqual(['golearn-active']);
     expect(fake.messagesToTabs.some((m) => (m.message as { type: string }).type === MSG.activate)).toBe(true);
     expect($<HTMLInputElement>('active').checked).toBe(true);
-    expect($('active-status').textContent).toMatch(/^On\. Every page you open is read on this device/);
-    expect($('active-page').textContent).toBe('This page (sq): 230 words scanned, 31 underlined (seen 16, recognized 3, known 4, automatic 8); 18 distinct words recorded; 1 click looked up.');
+    expect($('active-status').textContent).toMatch(/^On\. GoLearn scans supported pages on this device/);
+    // 2026-10-25: the language by its name, and the words the analyser did not know (another language's) counted as left alone
+    expect($('active-page').textContent).toBe('This page (Albanian): 230 words scanned, 31 underlined (seen 16, recognized 3, known 4, automatic 8); 18 distinct words recorded; 1 click looked up.');
+    pageState = { ...pageState, skipped: 57 };
+    await popup.refresh();
+    expect($('active-page').textContent).toContain('; 57 not Albanian words, left alone;');
   });
 
   it('a page where Active read nothing shows the reason; a page without the script says to reload it', async () => {
@@ -97,10 +101,53 @@ describe('GoLearn Active in the popup', () => {
     expect($('active-page').textContent).toBe('');
   });
 
-  it('the popup text says what Active reads and never promises more than the extension does', () => {
-    expect(html).toMatch(/read on this device only/);
-    expect(html).toMatch(/never sent anywhere/);
-    expect(html).toMatch(/Kindle, Kobo, readAwrite, MEB, Pratilipi/);
+  it('the language switch (2026-10-25): the downloaded languages as a select, a change makes the chosen one the reading language on the device and restarts every Active page in it', async () => {
+    const page = { id: fake.runtime.id, url: `chrome-extension://${fake.runtime.id}/action/popup.html` };
+    // two languages chosen on this device (no account): Spanish first, German last, so German is the one in use
+    await fake.dispatch({ type: MSG.localRepo, op: 'enrol', languageId: 'es', goals: [{ kind: 'reading' }] }, page);
+    await fake.dispatch({ type: MSG.localRepo, op: 'enrol', languageId: 'de', goals: [{ kind: 'reading' }] }, page);
+    fake.grantOrigins(ACTIVE_ORIGINS);
+    await fake.dispatch({ type: MSG.active, op: 'set', patch: { active: true } }, page);
+    fake.messagesToTabs.length = 0;
+    await initPopup(document, fake);
+    const select = $<HTMLSelectElement>('language-select');
+    expect([...select.options].map((o) => [o.value, o.textContent])).toEqual([['es', 'Spanish'], ['de', 'German']]);
+    expect(select.value).toBe('de');
+    expect(select.disabled).toBe(false);
+    expect($('language').textContent).toMatch(/^German/); // "(no pack yet)" follows with the fake packs
+    // the switch: Spanish becomes the device's active enrolment, the status follows, and the Active pages were told to stop and start again
+    select.value = 'es';
+    select.dispatchEvent(new Event('change'));
+    await flush(40);
+    expect(select.value).toBe('es');
+    expect($('language').textContent).toMatch(/^Spanish/);
+    const status = await fake.dispatch({ type: MSG.status }, page) as { languageId: string };
+    expect(status.languageId).toBe('es');
+    const types = fake.messagesToTabs.map((m) => (m.message as { type: string }).type);
+    expect(types.indexOf(MSG.deactivate)).toBeGreaterThanOrEqual(0);
+    expect(types.lastIndexOf(MSG.activate)).toBeGreaterThan(types.indexOf(MSG.deactivate));
+    // a language not chosen here is refused with the way to add it
+    const refused = await fake.dispatch({ type: MSG.useLanguage, languageId: 'hi' }, page) as { ok: boolean; message?: string };
+    expect(refused.ok).toBe(false);
+    expect(refused.message).toMatch(/not one of your chosen languages here\. Download it in GoLearn setup first\./);
+  });
+
+  it('with one language downloaded the select is there but disabled, and the line says where others are added', async () => {
+    await initPopup(document, fake);
+    const select = $<HTMLSelectElement>('language-select');
+    expect(select.options).toHaveLength(1);
+    expect(select.disabled).toBe(true);
+    expect($('language').textContent).toMatch(/is the only language downloaded here; others are added in GoLearn setup\./);
+  });
+
+  it('the popup text describes Active page scanning, encounter data, and speech without overpromising', () => {
+    expect(html).toMatch(/Active scans page text on this device/);
+    expect(html).toMatch(/scan does not send or retain page text/);
+    expect(html).toMatch(/records vocabulary encounters using word IDs/);
+    expect(html).toMatch(/history syncs with your account/);
+    expect(html).toMatch(/may speak it automatically according to your speech settings/);
+    expect(html).toMatch(/Some reading apps block extensions from reading their pages/);
     expect(html).not.toMatch(/team|leader/i);
+    expect(html).not.toMatch(/Brave|never sent anywhere|nothing of them is kept/i);
   });
 });

@@ -55,6 +55,43 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     el.textContent = `${cloud ? 'GoListen tries Azure through your authenticated backend when source permissions allow it. Local fallback: ' : 'Local-only speech uses a matching installed voice: '}${yes.length ? `yes for ${yes.join(', ')}` : 'none yet for your languages'}${no.length ? `; none for ${no.join(', ')} (a matching language voice is needed)` : ''}.`;
   }
 
+  /**
+   * The language switch (2026-10-25): the chosen languages (downloaded in GoLearn setup) as a select, the one GoLearn reads in selected;
+   * a change asks the background to make it the active one on the device and on the account, and every Active page starts again in it.
+   */
+  const langSelect = $<HTMLSelectElement>('language-select');
+  const langLine = $('language');
+  function renderLanguages(s: PageStatus): void {
+    const chosen = s.chosenLanguages?.length ? s.chosenLanguages : [s.languageId];
+    const list = chosen.includes(s.languageId) ? chosen : [s.languageId, ...chosen];
+    langSelect.replaceChildren(...list.map((l) => {
+      const o = doc.createElement('option');
+      o.value = l;
+      o.textContent = languageNameOf(l);
+      if (l === s.languageId) o.selected = true;
+      return o;
+    }));
+    langSelect.value = s.languageId;
+    langSelect.disabled = list.length < 2;
+    langLine.classList.remove('warn');
+    langLine.textContent = list.length < 2
+      ? `${s.languageName} is the only language downloaded here; others are added in GoLearn setup.${s.packAvailable ? '' : ' No pack yet.'}`
+      : `${s.languageName}${s.packAvailable ? '' : ' (no pack yet)'}`;
+  }
+  langSelect.addEventListener('change', async () => {
+    const languageId = langSelect.value;
+    if (!languageId) return;
+    langSelect.disabled = true;
+    langLine.textContent = `Switching to ${languageNameOf(languageId)}…`;
+    let r: { ok?: boolean; message?: string; where?: string } | undefined;
+    try { r = (await chrome.runtime.sendMessage({ type: MSG.useLanguage, languageId })) as typeof r; } catch { r = undefined; }
+    if (!r || r.ok !== true) {
+      langLine.textContent = r?.message ?? 'GoLearn could not switch the language.';
+      langLine.classList.add('warn');
+    }
+    await refresh();
+  });
+
   function renderStatus(s: PageStatus | undefined): void {
     const conn = $('connection');
     const setup = $<HTMLButtonElement>('open-setup');
@@ -68,7 +105,7 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
       syncLine.textContent = ''; detail.textContent = ''; syncBtn.disabled = true;
       return;
     }
-    $('language').textContent = `${s.languageName} (${s.languageId})${s.packAvailable ? '' : ' - no pack yet'}`;
+    renderLanguages(s);
     if (s.connected) {
       conn.textContent = s.needsSignIn ? `Signed in as ${s.email ?? 'your account'}, but the service no longer accepts the sign-in.` : `Connected as ${s.email ?? 'your account'}`;
       if (s.needsSignIn) conn.classList.add('warn');
@@ -123,7 +160,9 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     if (s.reason) { pageLine.textContent = `This page: ${s.reason}`; return; }
     const marked = (Object.keys(s.marked) as ActiveLevel[]).reduce((n, k) => n + s.marked[k], 0);
     const parts = ACTIVE_LEVELS.filter((l) => s.marked[l]).map((l) => `${LEVEL_LEGEND[l].title.toLowerCase()} ${s.marked[l]}`).join(', ');
-    pageLine.textContent = `This page (${s.languageId ?? 'language unknown'}): ${s.scanned} words scanned, ${marked} underlined${parts ? ` (${parts})` : ''}${typeof s.recordedWords === 'number' ? `; ${s.recordedWords} distinct words recorded` : ''}${s.clicks ? `; ${s.clicks} click${s.clicks === 1 ? '' : 's'} looked up` : ''}.`;
+    const lang = s.languageId ? languageNameOf(s.languageId) : 'language unknown';
+    const skipped = s.skipped ? `; ${s.skipped} not ${lang} words, left alone` : '';
+    pageLine.textContent = `This page (${lang}): ${s.scanned} words scanned, ${marked} underlined${parts ? ` (${parts})` : ''}${skipped}${typeof s.recordedWords === 'number' ? `; ${s.recordedWords} distinct words recorded` : ''}${s.clicks ? `; ${s.clicks} click${s.clicks === 1 ? '' : 's'} looked up` : ''}.`;
   }
   activeToggle.addEventListener('change', async () => {
     activeToggle.disabled = true;

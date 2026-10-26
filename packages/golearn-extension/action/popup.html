@@ -78,7 +78,12 @@
   <div class="err" id="error" role="status" aria-live="polite"></div>
   <hr>
 
-  <div class="row"><span>Language</span><span class="grow" id="language">Albanian</span></div>
+  <div class="row">
+    <label for="language-select">Language</label>
+    <select id="language-select" class="grow" aria-describedby="language-note"><option value="">Checking…</option></select>
+  </div>
+  <div class="status-line muted" id="language" role="status" aria-live="polite"></div>
+  <div class="muted" id="language-note">The language GoLearn reads in and records against; only the languages downloaded in GoLearn setup are listed. Pages that are Active start again in it.</div>
 
   <div class="status-line" id="sync" role="status" aria-live="polite"></div>
   <div class="row"><button type="button" id="sync-now">Sync now</button><span class="muted" id="sync-detail"></span></div>

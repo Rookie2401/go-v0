@@ -19,6 +19,12 @@ export interface ScanToken {
   surface: string;
   /** The unit ids the learner model is asked about for this word: the form id, then the creditable lemma id if any. */
   ids: string[];
+  /**
+   * True when the language's analyser read the word as one of its own (a creditable lemma: in its lexicon, above the parser's
+   * confidence floor). False for a word the active language does not have: another language's word on the same page, a name,
+   * a number-like run. Active leaves such a word alone, neither underlined nor recorded (2026-10-25).
+   */
+  known: boolean;
 }
 
 export interface ScannerOptions {
@@ -119,8 +125,9 @@ export function createScanner(opts: ScannerOptions): Scanner {
       if (end <= start) return;
       const ids = [`form:${languageId}:${adapter.normalize(t.surface)}`];
       const best = analysed[i]?.candidates?.reduce((m, c) => (c.confidence > m.confidence ? c : m), analysed[i].candidates[0]);
-      if (best?.lemma && !best.unconfirmed && best.confidence >= LEMMA_MIN_CONFIDENCE) ids.push(`lemma:${languageId}:${best.lemma}${best.pos ? ':' + best.pos : ''}`);
-      out.push({ node, start, end, surface: t.surface, ids });
+      const known = !!best?.lemma && !best.unconfirmed && best.confidence >= LEMMA_MIN_CONFIDENCE;
+      if (known) ids.push(`lemma:${languageId}:${best!.lemma}${best!.pos ? ':' + best!.pos : ''}`);
+      out.push({ node, start, end, surface: t.surface, ids, known });
     });
     cache.set(node, { data: raw, languageId, tokens: out });
     return out;

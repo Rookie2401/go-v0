@@ -52,7 +52,7 @@ type SenderKind = 'page' | 'content' | 'foreign';
 
 const PAGE_ONLY: ReadonlySet<string> = new Set<string>([
   MSG.getState, MSG.setEnabled, MSG.serviceConfig, MSG.connect, MSG.createAccount, MSG.disconnect, MSG.syncNow,
-  MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.clearLocal, MSG.localRepo,
+  MSG.enrol, MSG.refreshSession, MSG.selectEnrolment, MSG.useLanguage, MSG.clearLocal, MSG.localRepo,
   MSG.speechConfig,
 ]);
 const CONTENT_OK: ReadonlySet<string> = new Set<string>([
@@ -242,12 +242,42 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     };
   }
 
+  /**
+   * The popup's language switch (2026-10-25): make `languageId`, one of the chosen languages, the one GoLearn reads in. On the device the
+   * open enrolment in that language becomes the active one (the worker records against it); signed in, the account's open enrolment in
+   * it is selected too (the status then names it). Pages that are Active start again, so they resolve and scan in the new language.
+   * A language with no enrolment anywhere is refused: it is chosen in the setup page, where the pack is downloaded.
+   */
+  async function useLanguage(languageId: string): Promise<{ ok: boolean; languageId?: string; languageName?: string; where?: 'device' | 'account' | 'both'; message?: string }> {
+    if (!isLanguageId(languageId)) return { ok: false, message: 'Not a language.' };
+    let onDevice = false;
+    let onAccount = false;
+    const list = await localRepo.handle({ op: 'enrolments' }) as { ok: boolean; enrolments?: Array<{ enrolmentId: string; languageId: string; endedAt?: string; explicit: boolean }> };
+    const local = list.ok ? (list.enrolments ?? []).find((e) => e.languageId === languageId && !e.endedAt && e.explicit) : undefined;
+    if (local) {
+      const r = await localRepo.handle({ op: 'select', enrolmentId: local.enrolmentId }) as { ok: boolean };
+      onDevice = r.ok;
+    }
+    const a = await session.authenticated();
+    if (a) {
+      let r: Awaited<ReturnType<typeof a.api.listEnrolments>> | undefined;
+      try { r = await a.api.listEnrolments(); } catch { r = undefined; }
+      const remote = r?.ok ? r.data.enrolments.filter((e) => e.languageId === languageId && !e.endedAt).sort((x, y) => y.startedAt.localeCompare(x.startedAt))[0] : undefined;
+      if (remote) onAccount = (await session.selectEnrolment(remote.enrolmentId)).ok;
+    }
+    if (!onDevice && !onAccount) return { ok: false, message: `${languageNameOf(languageId)} is not one of your chosen languages here. Download it in GoLearn setup first.` };
+    await active.restart();
+    return { ok: true, languageId, languageName: languageNameOf(languageId), where: onDevice && onAccount ? 'both' : onDevice ? 'device' : 'account' };
+  }
+
   async function pageStatus(): Promise<PageStatus> {
     const [pub, s, st, sy] = await Promise.all([publicStatus(), session.status(), settings.get(), sync.status()]);
     // `revocationPending`: the last sign-out could not reach the service (audit P-08); the setup page may say so
     const out: PageStatus & { revocationPending?: boolean } = {
       // a language chosen on this device counts: an account without an enrolment yet must not make the popup say "choose a language"
       ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
+      // the popup's language switch lists these (the account's enrolment first, then the device's open enrolments, in setup order)
+      chosenLanguages: [...new Set([s.languageId, ...(await localRepo.chosenLanguages())].filter((l): l is string => !!l))],
       needsSignIn: pub.needsSignIn || sy.needsSignIn,
       sync: { pending: sy.pending, localOnly: sy.localOnly, rejected: sy.rejected, lastPushAt: sy.lastPushAt, lastError: sy.lastError, online: sy.online, needsSignIn: sy.needsSignIn || (s.connected && s.expired) },
       ...(s.revocationPending ? { revocationPending: true } : {}),
@@ -372,6 +402,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       case MSG.syncNow: return { ...(await sync.syncOnce({ force: true })), status: await sync.status() };
       case MSG.refreshSession: return session.refresh();
       case MSG.selectEnrolment: return session.selectEnrolment(String(m.enrolmentId ?? ''));
+      case MSG.useLanguage: return useLanguage(String(m.languageId ?? ''));
       case MSG.enrol: {
         const goals = Array.isArray(m.goals) ? (m.goals as Array<{ kind: 'reading' }>) : [{ kind: 'reading' as const }];
         return session.enrol({ languageId: String(m.languageId ?? ''), packId: String(m.packId ?? ''), packVersion: String(m.packVersion ?? ''), goals, ...(typeof m.varietyId === 'string' ? { varietyId: m.varietyId } : {}), ...(typeof m.scriptId === 'string' ? { scriptId: m.scriptId } : {}), ...(typeof m.teamId === 'string' && m.teamId ? { teamId: m.teamId } : {}) });

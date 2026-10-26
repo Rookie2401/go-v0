@@ -24,7 +24,9 @@ describe('not connected', () => {
     await initPopup(document, rig.fake);
     expect(text('connection')).toBe('Not connected. Your lookups are kept on this device.');
     expect(text('open-setup')).toBe('Open GoLearn setup');
-    expect(text('language')).toBe('Albanian (sq)');
+    // 2026-10-25: the language row is a select; with one language the line says where others are added
+    expect($<HTMLSelectElement>('language-select').value).toBe('sq');
+    expect(text('language')).toMatch(/^Albanian is the only language downloaded here; others are added in GoLearn setup\./);
     expect(text('sync')).toBe('Nothing to sync.');
     expect($<HTMLButtonElement>('sync-now').disabled).toBe(true);
   });
@@ -60,7 +62,8 @@ describe('connected', () => {
     await initPopup(document, rig.fake);
     expect(text('connection')).toBe('Connected as ana@example.com');
     expect(text('open-setup')).toBe('Open GoLearn setup');
-    expect(text('language')).toBe('Albanian (sq)');
+    expect($<HTMLSelectElement>('language-select').value).toBe('sq');
+    expect(text('language')).toMatch(/^Albanian is the only language downloaded here/);
     expect(text('sync')).toMatch(/^Sync: 1 pending · last sync .*/);
     $('sync-now').click();
     await flush(60);

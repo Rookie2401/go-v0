@@ -144,7 +144,15 @@ export function createActiveService(o: ActiveServiceOptions) {
     return reply(await get());
   }
 
-  return { get, set, granted, registered, register, unregister, restore, watchPermission, handle, activateFrontTab };
+  /** After the reading language changed (the popup's switch, 2026-10-25): every page that is Active stops and starts again, so it resolves and scans in the new language. Nothing when Active is off. */
+  async function restart(): Promise<void> {
+    const s = await get();
+    if (!s.active) return;
+    await broadcast({ type: MSG.deactivate });
+    await broadcast({ type: MSG.activate, speak: s.speakOnClick } satisfies ActivateMessage);
+  }
+
+  return { get, set, granted, registered, register, unregister, restore, watchPermission, handle, activateFrontTab, restart };
 }
 
 export type ActiveService = ReturnType<typeof createActiveService>;

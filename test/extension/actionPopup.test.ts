@@ -13,8 +13,11 @@ let fake: ChromeFake;
 beforeEach(() => { document.body.innerHTML = body; fake = createChromeFake(); });
 
 describe('action popup page', () => {
-  it('is a page with a script and no inline script; the language is read from the enrolment, not chosen here', () => {
-    expect(document.querySelector('#language select, select#language')).toBeNull();
+  it('is a page with a script and no inline script; the language switch (2026-10-25) is a labelled select of the downloaded languages', () => {
+    const select = document.querySelector<HTMLSelectElement>('select#language-select');
+    expect(select).not.toBeNull();
+    expect(document.querySelector('label[for="language-select"]')?.textContent).toBe('Language');
+    expect(select!.getAttribute('aria-describedby')).toBe('language-note');
     expect(html).toContain('<script src="popup.js"></script>');
     expect(html).not.toMatch(/<script>[^<]/); // no inline script (extension pages forbid it)
   });

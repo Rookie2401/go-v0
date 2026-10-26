@@ -155,6 +155,8 @@ export const MSG = {
   enrol: 'golearn:enrol',
   refreshSession: 'golearn:session-refresh',
   selectEnrolment: 'golearn:select-enrolment',
+  /** The popup's language switch (2026-10-25): make one of the chosen languages the one GoLearn reads in, on the device and on the account; pages that are Active start again in it. */
+  useLanguage: 'golearn:use-language',
   clearLocal: 'golearn:clear-local',
   /** The device-local Repository (no account needed): see `LocalRepoRequest` in protocol.ts. Extension pages only. */
   localRepo: 'golearn:local-repo',

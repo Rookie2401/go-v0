@@ -85,7 +85,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const statusLink = h('a', { href: '#/home', id: 'status-link', class: 'top-link' }, 'Status');
   const cog = h('a', { href: '#/settings', id: 'settings-link', class: 'cog', 'aria-label': 'Settings', title: 'Settings' }, h('span', { 'aria-hidden': 'true' }, '⚙'));
   const bar = h('header', { class: 'topbar' },
-    h('a', { class: 'brand', href: '#/languages' }, 'GoLearn'), titleEl,
+    h('a', { class: 'brand go-brand', href: '#/languages', 'aria-label': 'GoLearn home' }, h('img', { src: new URL('../../shared-brand/go-logo.png', import.meta.url).href, alt: '', width: '88', height: '44' }), h('span', {}, 'GoLearn')), titleEl,
     h('nav', { class: 'top-actions', 'aria-label': 'GoLearn' }, statusLink, cog));
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   const shell = h('div', { class: 'shell' }, bar, main);

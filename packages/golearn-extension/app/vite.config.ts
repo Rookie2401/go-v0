@@ -62,6 +62,7 @@ function staticFiles(outDir: string, classic: boolean): Plugin {
     closeBundle() {
       fs.mkdirSync(outDir, { recursive: true });
       fs.copyFileSync(path.join(here, 'config.json'), path.join(outDir, 'config.json'));
+      fs.cpSync(path.join(here, 'icons'), path.join(outDir, 'icons'), { recursive: true });
       if (classic) {
         // a classic script, not a module: the page loads ./app.js with defer
         const html = fs.readFileSync(path.join(here, 'index.html'), 'utf8')

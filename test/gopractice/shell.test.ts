@@ -27,11 +27,11 @@ describe('the hash router', () => {
     expect(rig.q('#sync-indicator').textContent).toBe('Not signed in');
   });
 
-  it('after sign-in the header is the language and the Settings cog; the screens are reached from the home', async () => {
+  it('after sign-in the header has the Go logo, language and Settings cog; the screens are reached from the home', async () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('.topnav')).toBeNull();
-    expect([...rig.root.querySelectorAll('header a')].map((a) => a.getAttribute('aria-label'))).toEqual(['Settings']);
+    expect([...rig.root.querySelectorAll('header a')].map((a) => a.getAttribute('aria-label'))).toEqual(['GoReview home', 'Settings']);
     expect(rig.q('#language-name')).toBeTruthy();
     expect(rig.root.querySelector('#back-home')).toBeNull();      // the home has nowhere to go back to
     await rig.go('tell');

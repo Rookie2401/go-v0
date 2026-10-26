@@ -139,7 +139,7 @@ function reviewHtml(): Plugin {
           '<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">',
           '<meta name="apple-mobile-web-app-title" content="GoReview">',
           '<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">',
-          '<link rel="icon" type="image/svg+xml" href="./icons/icon.svg">',
+          '<link rel="icon" type="image/png" href="./icons/icon-192.png">',
         ].join('\n');
         return html
           .replace('<title>GoPractice</title>', '<title>GoReview</title>')

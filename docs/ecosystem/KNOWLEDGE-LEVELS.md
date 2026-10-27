@@ -43,24 +43,26 @@ unit **without** its self-mark observations, so a mark cannot raise the level it
 Worked examples (a recognition card answered correctly weighs 0.56): one correct card = Recognized; two = Familiar (score 0.76);
 four = Known (0.85). Two correct recall cards = Automatic (0.78). Four lookups and nothing else = Seen.
 
-## 2. What the learner says: self-marks, contradiction, release
+## 2. What the learner says: self-marks, and the one automatic step
 
 `UnitKnowledge.selfMark` is the learner's **latest** mark of the unit, as a level (latest by event instant, then event id). The newest
-mark **decides the level outright** until later evidence disagrees. "Later" is exact: the fold builds the unit's evidence from the
-observations dated *after* the mark, leaving out other self-reports.
+mark **decides the level outright**, and it holds until the learner marks the word again (the owner's rule of 2026-10-26: after the first
+automatic step from New to Seen, only the learner changes a word's state). "Later" is exact: the fold builds the unit's evidence from the
+observations dated *after* the mark, leaving out other self-reports; only the mark of New reads it.
 
-- **Contradicted (downward).** The evidence after the mark contains something *against* it (a lookup, an assistance request, a failed
-  judgement) **and** puts the unit two or more levels below the mark: the level is then what the evidence supports. A plain
-  re-encounter, a correct answer and anything dated before the mark never contradict. (`CANDIDATE_RULES`' reason `selfMarkContradicted`
-  names the mark and the level the evidence supports.)
-- **Released (upward).** The evidence after the mark puts the unit two or more levels *above* it (a word marked New, then recognised
-  reliably): the level is what the evidence supports. An old request for help does not stop a word progressing.
+- **Every mark other than New is in force whatever comes after it (2026-10-26).** A lookup, an exposure, a help request, a failed or a
+  correct answer dated after the mark neither lowers nor raises the level. Until 2026-10-26 two rules did: *contradicted (downward)*, when
+  the evidence after the mark held something against it (a lookup, an assistance request, a failed judgement) and put the unit two or more
+  levels below the mark, so that opening the card of a word marked Known read it back down to Seen, which is what the owner had seen and
+  ended; and *released (upward)*, when the evidence after the mark put the unit two or more levels above it. `MarkStatus` keeps the two
+  words for rows and reasons stored before; `CANDIDATE_RULES`' reason `selfMarkContradicted` can no longer arise.
 - **A mark of New is released by any later observation (2026-10-10).** New means *not met*: a lookup, an exposure, a help request or a
   failed attempt dated after the mark is a meeting, so the level becomes `max(seen, what the evidence supports)`. This is why clicking a New
   word in GoLearn turns it into Seen at once (the click records `SelectionLookedUp`). No two-level gap applies (nothing lies below New);
   an observation dated before the mark never releases it, and marking the word New again starts over. Rows stored before this rule keep the
   level they were folded with until the unit's next event refolds them.
-- Otherwise the mark stands. A later mark replaces an earlier one, so a word can be marked back down.
+- A later mark replaces an earlier one, so a word is marked up or down by the learner alone. Without any mark the evidence decides, which
+  is the other automatic step: the first lookup of a never-met word makes it Seen.
 
 `saved` and `ignore` are bookmarks. They never set a mark and are not evidence either way.
 
@@ -84,8 +86,8 @@ are immutable and still valid: the contract's validator accepts the six level wo
 **Known caveat.** `known` is both a legacy word and a level word, and an event cannot say which was meant. `levelOfMark('known')` reads
 it as the level **Known**; `LEGACY_MARK_LEVEL.known` ("I recognise it" = Recognized) is the older meaning and is only reachable by a
 caller that asks for it explicitly. A `known` mark stored by the three-choice card therefore reads one level high until the learner
-marks the word again. The contradiction rule softens this: any lookup or failure after such a mark brings the level back down. If the owner
-prefers the other reading, it is a one-line change in `levelOfMark`, plus a rebuild.
+marks the word again (since 2026-10-26 no later lookup or failure brings it down). If the owner prefers the other reading, it is a one-line
+change in `levelOfMark`, plus a rebuild.
 
 ## 4. Encounters
 
@@ -102,7 +104,7 @@ Nothing is asked of the learner and no event is required. `engine.candidates` dr
 - **recognized, familiar**: reading recognition (and its retention) on the same signals; decayed retention raises the score but is not, alone, a reason (a word recognised once is not re-tested just because days passed).
 - **known**: retrieval (`productiveRetrieval`), only when retention decayed or the word is common. When the unit's analysis cannot support
   a production item but can support recognition, recognition is asked and the reason `levelTarget` says so.
-- **automatic**: only when retention decayed or the mark was contradicted.
+- **automatic**: only when retention decayed (a mark is no longer contradicted by evidence, 2026-10-26).
 - **Retention decayed**: the retention estimate (already decayed to now) is below 0.3 **and** the strongest dimension was last observed
   at least one half-life ago (reason `retentionDecayed`, weight 0.15).
 

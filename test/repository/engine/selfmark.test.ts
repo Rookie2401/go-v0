@@ -167,7 +167,9 @@ describe('candidates read the learner\'s marks', () => {
     }
   });
 
-  it('...until later evidence contradicts it: a lookup, an assistance request or a failed judgement after the mark brings it back, and says why', async () => {
+  // 2026-10-26, the owner's rule: a mark holds until the learner marks again. A lookup, a help request or a failed judgement after a Known
+  // mark no longer brings the word back as a candidate (until then the mark was "contradicted" and the reason selfMarkContradicted said so).
+  it('...and later evidence does not bring it back: a lookup, a failed card or a failed production after the mark leaves it Known, with no contradiction reason', async () => {
     resetIds();
     const marked = mark('known', T(8), [LEMMA]);
     const cases: Array<[string, GoEvent]> = [
@@ -176,16 +178,15 @@ describe('candidates read the learner\'s marks', () => {
       ['a later failed production', production([LEMMA], { usedCorrectly: false }, { at: T(9) })],
     ];
     for (const [name, later] of cases) {
-      const { cand } = await candidatesFor([...lookups(3), marked, later]);
-      expect(cand, name).toBeDefined();
-      const why = cand!.reasons.find((r) => r.rule === 'selfMarkContradicted');
-      expect(why, name).toMatchObject({ weight: 0 });
-      expect(why!.detail).toContain('later evidence disagrees');
-      expect(why!.detail).toContain('"Known"');
-      expect(why!.detail).toContain('supports');
+      const { list, cand } = await candidatesFor([...lookups(3), marked, later]);
+      expect(cand, name).toBeUndefined(); // a known unit waits for retention decay, whatever came after the mark
+      expect(list.flatMap((c) => c.reasons).some((r) => r.rule === 'selfMarkContradicted'), name).toBe(false);
     }
     const { cand } = await candidatesFor([...lookups(3), mark('productive', T(8), [LEMMA]), lookup([LEMMA], { at: T(9) })]);
-    expect(cand!.reasons.find((r) => r.rule === 'selfMarkContradicted')!.detail).toContain('"Known"'); // "I can use it" = the level known
+    expect(cand).toBeUndefined(); // "I can use it" = the level known: the same
+    // the learner's own later mark is what changes it: marked Seen again, the word is drawn once more
+    const again = await candidatesFor([...lookups(3), marked, lookup([LEMMA], { at: T(9) }), mark('seen', T(10), [LEMMA])]);
+    expect(again.cand).toBeDefined();
   });
 
   it('evidence from BEFORE the mark does not contradict it, and a correct answer after it is no contradiction either', async () => {

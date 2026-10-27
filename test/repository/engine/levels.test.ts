@@ -181,22 +181,29 @@ describe('the learner\'s newest mark decides the level, until later evidence con
     expect(levelFrom([mark('automatic', T(8)), card([U], 'recall', true, {}, { at: T(9) })])).toBe('automatic');
   });
 
-  it('a lookup, an assistance request or a failed judgement AFTER a mark two or more levels above contradicts it: the evidence decides', () => {
+  // 2026-10-26, the owner's rule: after the first automatic step from New to Seen, only the learner changes a word's state. A mark other
+  // than New holds whatever comes after it (until 2026-10-26 evidence two levels against it "contradicted" it, so opening the card of a word
+  // marked Known read it back down to Seen).
+  it('a lookup, an assistance request or a failed judgement AFTER a mark leaves the mark in force: the level stays what the learner said', () => {
     resetIds();
     for (const later of [lookup([U], { at: T(9) }), assist([U], { assistance: 'gloss' }, { at: T(9) }), card([U], 'recall', false, {}, { at: T(9) })]) {
       const row = rowOf([mark('known', T(8)), later]);
       expect(row.selfMark?.mark).toBe('known'); // the mark is still the learner's latest
-      expect(['seen', 'recognized']).toContain(row.level);
-      expect(markStatus(row, undefined).status).not.toBe('none');
+      expect(row.level).toBe('known');
+      expect(markStatus(row, undefined).status).toBe('in-force');
     }
-    expect(levelFrom([mark('automatic', T(8)), lookup([U], { at: T(9) })])).not.toBe('automatic');
+    expect(levelFrom([mark('automatic', T(8)), lookup([U], { at: T(9) })])).toBe('automatic');
+    expect(levelFrom([mark('familiar', T(8)), lookup([U], { at: T(9) }), lookup([U], { at: T(9, 1) }), lookup([U], { at: T(9, 2) })])).toBe('familiar');
   });
 
-  it('one level of disagreement is not a contradiction: a recognized mark survives a later lookup, a familiar mark does not', () => {
+  it('a mark is changed only by a later mark: the newest one decides, up or down', () => {
     resetIds();
     expect(levelFrom([mark('recognized', T(8)), lookup([U], { at: T(9) })])).toBe('recognized');
-    expect(levelFrom([mark('familiar', T(8)), lookup([U], { at: T(9) })])).not.toBe('familiar');
-    expect(LEVEL_THRESHOLDS.contradictionGap).toBe(2);
+    expect(levelFrom([mark('known', T(8)), lookup([U], { at: T(9) }), mark('seen', T(10))])).toBe('seen');
+    expect(levelFrom([mark('seen', T(8)), mark('known', T(10)), lookup([U], { at: T(11) })])).toBe('known');
+    // correct answers after a Seen mark do not raise it either: the learner raises it
+    expect(levelFrom([mark('seen', T(8)), card([U], 'recognition', true, {}, { at: T(9, 0) }), card([U], 'recognition', true, {}, { at: T(9, 1) }), card([U], 'recognition', true, {}, { at: T(9, 2) })])).toBe('seen');
+    expect(LEVEL_THRESHOLDS.contradictionGap).toBe(2); // kept for the candidate rules' reason text; no longer decides a level
   });
 
   it('the other way: evidence two or more levels ABOVE the mark, dated after it, releases it (a word marked new, then recognised reliably)', () => {
@@ -384,7 +391,7 @@ describe('candidates are drawn by level: review is a progression, not a request'
     expect(old.cand!.reasons.map((r) => r.rule)).toContain('levelTarget');
   });
 
-  it('production reviews do not create automatic; an explicit automatic mark can be contradicted', async () => {
+  it('production reviews do not create automatic; an explicit automatic mark holds through a later lookup (2026-10-26: only the learner changes it)', async () => {
     resetIds();
     const fresh = await run(recallCards(2, 7));
     expect(fresh.row.level).toBe('recognized');
@@ -393,11 +400,8 @@ describe('candidates are drawn by level: review is a progression, not a request'
     expect(old.row.level).toBe('recognized');
     expect(old.cand).toBeUndefined();
     const marked = await run([mark('automatic', T(8, 0, 7)), lookup([U], { at: T(9, 0, 7) })]);
-    expect(marked.row.level).not.toBe('automatic');
-    const why = marked.cand!.reasons.find((r) => r.rule === 'selfMarkContradicted')!;
-    expect(why.weight).toBe(0);
-    expect(why.detail).toContain('"Automatic"');
-    expect(why.detail).toContain('later evidence disagrees');
+    expect(marked.row.level).toBe('automatic');
+    expect(marked.cand?.reasons.some((r) => r.rule === 'selfMarkContradicted') ?? false).toBe(false);
   });
 
   it('a unit marked known and left alone is not proposed (the claim stands until evidence or decay says otherwise)', async () => {

@@ -15,17 +15,17 @@
  * construction is understood as a whole, also phraseComprehension and grammaticalUnderstanding; the highest level any of them reaches counts.
  * The score is the engine's own estimate (prior 0.5, weighted positives), so a self-report alone (weight <= 0.09) never reaches a threshold.
  *
- * WHAT THE LEARNER SAYS (`UnitKnowledge.selfMark`, already a level): the newest self-mark decides the level outright, until later evidence
- * disagrees with it:
- *   - contradicted DOWNWARD: evidence dated AFTER the mark contains something against it (a lookup, an assistance request, a failed
- *     judgement) AND puts the unit two or more levels below the mark -> the level is what the evidence says. Evidence from before the mark,
- *     a plain re-encounter and a correct answer never contradict.
- *   - released UPWARD: evidence dated after the mark puts the unit two or more levels ABOVE it (a word marked "new", then recognised
- *     reliably) -> the level is what the evidence says. Progression is not stopped by an old request for help.
- *   - released by ANY later observation, when the mark is `new` (2026-10-10): "new" means not met, so meeting the word after saying so (a click
+ * WHAT THE LEARNER SAYS (`UnitKnowledge.selfMark`, already a level): the newest self-mark decides the level outright, and it holds until the
+ * learner marks the word again (the owner's rule, 2026-10-26: after the first automatic step from New to Seen, only the learner changes a
+ * word's state):
+ *   - a mark of `new` is released by ANY later observation (2026-10-10): "new" means not met, so meeting the word after saying so (a click
  *     that looks it up, an exposure, a help request, a failed attempt: anything dated after the mark) makes it at least `seen`; the level is
- *     max(seen, what the evidence says). The two-level gap above does not apply to this mark (nothing lies below `new`); an observation dated
- *     BEFORE the mark never releases it.
+ *     max(seen, what the evidence says). An observation dated BEFORE the mark never releases it.
+ *   - every other mark is in force whatever comes after it: a lookup, an exposure, a help request, a failed or a correct answer neither
+ *     lowers nor raises the level. (Until 2026-10-26 evidence two levels against the mark "contradicted" it, so opening the card of a word
+ *     marked Known read it back down to Seen, and evidence two levels above "released" it upward; `MarkStatus` keeps both words for the
+ *     stored rows and reasons that still name them.)
+ * Without a mark, the level is what the evidence says, so the first lookup of a word takes it from New to Seen by itself.
  * `evidenceDims` is the unit folded WITHOUT its self-mark observations, so a self-report never counts toward a threshold it did not earn (the fold
  * builds it exactly; without it the row's own dimensions are used, self-report included, which can only add a weak observation).
  * `since` is the evidence dated after the mark, which the fold builds exactly from the unit's observations. Without it (a caller holding
@@ -106,10 +106,9 @@ export function markStatus(k: LevelInput, since?: LevelDimensions, evidenceDims?
   if (!DIMENSIONS.some((d) => fresh[d]?.observations > 0)) return { status: 'in-force', evidence };
   // a mark of "new" says "not met": any observation after it is a meeting, so the evidence decides (and it is never below seen)
   if (mark.mark === 'new') return { status: 'released', evidence: higher('seen', evidence) };
-  const freshLevel = evidenceLevelOf(fresh);
-  const gap = LEVEL_THRESHOLDS.contradictionGap;
-  if (rank(mark.mark) - rank(freshLevel) >= gap && holdsEvidenceAgainst(fresh)) return { status: 'contradicted', evidence };
-  if (rank(freshLevel) - rank(mark.mark) >= gap) return { status: 'released', evidence };
+  // every other mark holds until the learner marks the word again (2026-10-26, the owner's rule): a lookup, an exposure, a help request, a
+  // failed or a correct answer after the mark neither lowers nor raises the level. Before, evidence two levels against the mark contradicted
+  // it, so opening the card of a word marked Known read it back down to Seen; and evidence two levels above released it upward.
   return { status: 'in-force', evidence };
 }
 

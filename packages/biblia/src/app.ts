@@ -7,6 +7,7 @@
  * a Repository event through the Recorder (repo.ts) when one exists.
  */
 import { createCardUI, type CardUI } from '../../golearn-extension/src/popup/card';
+import type { CardView } from '../../golearn-extension/src/popup/view';
 import type { CardModel } from '../../golearn-extension/src/parser';
 import { parseSelection } from '../../golearn-extension/src/parser';
 import { hasAnalyser, languageMeta, registerAnalyser } from '../../golearn-extension/src/parser/registry';
@@ -129,7 +130,8 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
 
   const card: CardUI = createCardUI({ doc, speech: (win as unknown as { speechSynthesis?: SpeechSynthesis }).speechSynthesis ?? null, onDismiss: () => clearSelection() });
   let selectedButton: HTMLElement | undefined;
-  const clearSelection = (): void => { selectedButton?.classList.remove('sel'); selectedButton = undefined; };
+  let offCardLevel: (() => void) | undefined; // the open card follows its word's level on the page until it closes
+  const clearSelection = (): void => { selectedButton?.classList.remove('sel'); selectedButton = undefined; offCardLevel?.(); offCardLevel = undefined; };
 
   let route = '';
   const account = deps.account;
@@ -369,9 +371,24 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
       const site = siteByEl.get(button);
       if (levels && site) { levels.learn(site, model.itemIds); levels.met(model.itemIds); }
     }
+    // the card opens showing how well the word is known (the level the page paints on it: the learner's own mark first, else the service's
+    // rows; a word still New is Seen from this tap, which is the only state the tap itself changes) and follows it while open, so the rows
+    // fetched after the tap, or a mark made on another device, show on the card without reopening it
+    const profileNow = (): Partial<CardView> | undefined => {
+      const p = levels?.profileOf(button);
+      if (!p) return undefined;
+      return { profile: { state: p.level ? 'ready' : 'loading', weak: [], ...(p.level ? { level: p.level } : {}), ...(p.encounters !== undefined ? { encounters: p.encounters } : {}) } };
+    };
+    offCardLevel?.();
+    offCardLevel = levels?.subscribe(() => {
+      if (selectedButton !== button) return;
+      const p = profileNow();
+      if (p) card.update(p);
+    });
     card.show(model, anchor, {
       view: {
         languageName: `${LANGUAGE_NAME[ref.lang]} · ${canon.refLabel(ref.book, ref.ch)}:${ref.v}`,
+        ...(profileNow() ?? {}),
         // "view sources": the analyser's own sources for this language (the Open Scriptures morphology, MorphGNT, the Wiktionary tables, the rules)
         sources: Object.values((ref.lang === 'he' ? heAdapter : elAdapter).sources ?? {}).map((s) => ({ label: s.label, ...(s.licence ? { licence: s.licence } : {}) })),
       },

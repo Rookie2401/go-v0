@@ -27,12 +27,19 @@ describe('levelOfRows', () => {
     expect(levelOfRows([row('form:el:x', { level: 'seen' }), row('lemma:el:x:NOUN', { level: 'familiar' })])).toBe('familiar');
     expect(levelOfRows([row('form:el:x', { level: 'automatic' }), undefined])).toBe('automatic');
   });
-  it('the learner own latest mark decides, at the level the engine gave the row that carries it', () => {
+  it('the learner own latest mark decides outright: after New steps to Seen, only the learner changes a word state', () => {
     const a = row('form:el:x', { level: 'known', selfMark: mark('known', '2026-10-22T10:00:00.000Z') });
     const b = row('lemma:el:x:NOUN', { level: 'automatic' });
     expect(levelOfRows([a, b])).toBe('known'); // the mark, not the higher level of the other row
     const newer = row('lemma:el:x:NOUN', { level: 'new', selfMark: mark('new', '2026-10-22T11:00:00.000Z') });
     expect(levelOfRows([a, newer])).toBe('new'); // the later mark wins
+    // a row folded under the older engine rule, which read a Known word back down to Seen after a lookup: the mark stands, not the stale level
+    const stale = row('form:el:y', { level: 'seen', selfMark: mark('known', '2026-10-22T10:00:00.000Z') });
+    expect(levelOfRows([stale])).toBe('known');
+    expect(levelOfRows([stale, row('lemma:el:y:NOUN', { level: 'automatic' })])).toBe('known');
+    // a mark of New is released by a later meeting: the engine's level of that row decides (never below Seen once met)
+    const met = row('form:el:z', { level: 'seen', selfMark: mark('new', '2026-10-22T10:00:00.000Z') });
+    expect(levelOfRows([met])).toBe('seen');
   });
   it('a stored mark in an older word is read through levelOfMark; a row without a level is Seen if it was ever met', () => {
     const legacy = { ...row('form:el:x'), level: undefined, selfMark: { mark: 'productive', at: '2026-10-22T10:00:00.000Z' } } as unknown as UnitKnowledge;
@@ -238,6 +245,38 @@ describe('the levels controller', () => {
     api.rows[form] = { level: 'recognized', selfMark: mark('recognized', '2026-10-22T13:00:00.000Z') }; // marked again on another device
     await levels.refresh([form]);
     expect(sites[0].el.getAttribute(LEVEL_ATTR)).toBe('recognized'); // the override was settled, so the service is believed again
+    levels.destroy();
+  });
+
+  it('looking a word up changes nothing but New to Seen; the card profile follows the page and the service rows', async () => {
+    const sites = sitesOf();
+    const known = unitIdsOfSite(sites[0]);
+    const fresh = unitIdsOfSite(sites[1]);
+    const api = fakeKnowledge({ [known[0]]: { level: 'known', encounters: 7, selfMark: mark('known', '2026-10-22T10:00:00.000Z') } });
+    const { levels } = make(api);
+    const painted = vi.fn();
+    const off = levels.subscribe(painted);
+    await levels.setChapter('read/John/1', sites);
+    expect(levels.profileOf(sites[0].el)).toEqual({ level: 'known', encounters: 7 });
+    expect(levels.profileOf(sites[1].el)).toEqual({ level: 'new' }); // no row yet: no count to show
+    painted.mockClear();
+    levels.met(known); // the card of a Known word was opened: it stays Known
+    expect(sites[0].el.getAttribute(LEVEL_ATTR)).toBe('known');
+    expect(levels.profileOf(sites[0].el)?.level).toBe('known');
+    levels.met(fresh); // the card of a New word was opened: Seen, the one state the tap itself changes
+    expect(sites[1].el.getAttribute(LEVEL_ATTR)).toBe('seen');
+    expect(levels.profileOf(sites[1].el)?.level).toBe('seen');
+    expect(painted).toHaveBeenCalledTimes(2);
+    // the service answers the lookup under the older rule (the row read down to Seen): the learner's mark still decides on the page
+    api.rows[known[0]] = { level: 'seen', encounters: 8, selfMark: mark('known', '2026-10-22T10:00:00.000Z') };
+    await levels.refresh(known);
+    expect(sites[0].el.getAttribute(LEVEL_ATTR)).toBe('known');
+    expect(levels.profileOf(sites[0].el)).toEqual({ level: 'known', encounters: 8 });
+    off();
+    painted.mockClear();
+    levels.met(fresh);
+    expect(painted).not.toHaveBeenCalled(); // unsubscribed
+    expect(levels.profileOf(document.createElement('button'))).toBeUndefined(); // not a word of the chapter
     levels.destroy();
   });
 

@@ -112,12 +112,17 @@ function newestMark(rows: Array<UnitKnowledge | undefined | null>): { level: Kno
 }
 
 /**
- * The level of a word from its rows (its form row and its lemma row): the learner's own latest mark decides, as the engine has weighed it
- * against what came after (the level of the row that carries the mark); else the highest level any row reports; no row at all is New.
+ * The level of a word from its rows (its form row and its lemma row): the learner's own latest mark decides outright — after the first
+ * automatic step from New to Seen, only the learner changes a word's state (the owner's rule, 2026-10-26), so a mark other than New stands
+ * whatever the engine folded after it (a row still folded under the older rule, which read a Known word back down to Seen after a lookup,
+ * is read by its mark, not its stale level). A mark of New means "not met": it is released by any later meeting, so there the engine's
+ * level of the row that carries the mark decides (never below Seen once met). Without a mark, the highest level any row reports; no row at
+ * all is New.
  */
 export function levelOfRows(rows: Array<UnitKnowledge | undefined | null>): KnowledgeLevel {
   const mark = newestMark(rows);
   if (mark) {
+    if (mark.level !== 'new') return mark.level;
     let engine: KnowledgeLevel | undefined;
     for (const r of rows) {
       if (!r || r.selfMark?.at !== mark.at) continue;
@@ -160,6 +165,14 @@ export interface Levels {
   learn(site: LevelSite, unitIds: string[]): void;
   /** The level painted on a word button (for tests and the legend). */
   levelOf(el: Element): KnowledgeLevel | undefined;
+  /**
+   * What the card shows for a word of the chapter on screen: its level (the learner's own mark first, as `levelFor` paints it) and how often
+   * it was met (the larger of its rows' encounters). `undefined` level = its rows were not fetched yet; a button that is not a word of the
+   * chapter on screen gets undefined.
+   */
+  profileOf(el: Element): { level?: KnowledgeLevel; encounters?: number } | undefined;
+  /** Called after every repaint (rows fetched, a mark, a lookup), so an open card can follow the word's level. */
+  subscribe(cb: () => void): () => void;
   /** Paint no levels and forget what was fetched (signed out). */
   clear(): void;
   destroy(): void;
@@ -167,7 +180,7 @@ export interface Levels {
 
 type Rows = Map<string, UnitKnowledge | null>;
 interface OwnMark { level: KnowledgeLevel; at: string }
-interface Current { key: string; sites: LevelSite[]; ids: Map<LevelSite, string[]>; all: Set<string>; rows: Rows; ready: boolean }
+interface Current { key: string; sites: LevelSite[]; byEl: Map<Element, LevelSite>; ids: Map<LevelSite, string[]>; all: Set<string>; rows: Rows; ready: boolean }
 
 export function createLevels(o: LevelsOptions): Levels {
   const { win, doc } = o;
@@ -176,6 +189,8 @@ export function createLevels(o: LevelsOptions): Levels {
   const mets = new Set<string>(); // units looked up since the page was drawn (New is at least Seen)
   let cur: Current | undefined;
   let setGen = 0;
+  const listeners = new Set<() => void>();
+  const notifyPainted = (): void => { for (const l of [...listeners]) { try { l(); } catch { /* a listener never breaks the page */ } } };
   const yieldNow = o.yieldNow ?? (() => new Promise<void>((r) => { win.setTimeout(r, 0); }));
 
   const rowsFor = (key: string): Rows => {
@@ -213,9 +228,11 @@ export function createLevels(o: LevelsOptions): Levels {
       const level = levelFor(cur, site);
       if (level) site.el.setAttribute(LEVEL_ATTR, level); else site.el.removeAttribute(LEVEL_ATTR);
     }
+    notifyPainted();
   }
   function unpaint(): void {
     for (const site of cur?.sites ?? []) site.el.removeAttribute(LEVEL_ATTR);
+    notifyPainted();
   }
 
   /** Drops the overrides the service has caught up with. */
@@ -298,7 +315,7 @@ export function createLevels(o: LevelsOptions): Levels {
       unpaint();
       pending = undefined;
       if (key === undefined || !sites.length) { cur = undefined; return; }
-      const c: Current = { key, sites, ids: new Map(), all: new Set(), rows: rowsFor(key), ready: false };
+      const c: Current = { key, sites, byEl: new Map(sites.map((s) => [s.el, s] as const)), ids: new Map(), all: new Set(), rows: rowsFor(key), ready: false };
       cur = c;
       if (!o.api()) return;
       // the unit ids of every word, a few verses at a time so a long chapter does not freeze the page
@@ -343,6 +360,22 @@ export function createLevels(o: LevelsOptions): Levels {
       const v = el.getAttribute(LEVEL_ATTR);
       return isKnowledgeLevel(v) ? v : undefined;
     },
+    profileOf(el) {
+      const c = cur;
+      const site = c?.byEl.get(el);
+      if (!c || !site || !o.api()) return undefined;
+      const level = levelFor(c, site);
+      let encounters: number | undefined;
+      for (const id of c.ids.get(site) ?? []) {
+        const n = c.rows.get(id)?.encounters;
+        if (typeof n === 'number' && (encounters === undefined || n > encounters)) encounters = n;
+      }
+      return { ...(level ? { level } : {}), ...(encounters !== undefined ? { encounters } : {}) };
+    },
+    subscribe(cb) {
+      listeners.add(cb);
+      return () => { listeners.delete(cb); };
+    },
     clear() {
       setGen++;
       pending = undefined;
@@ -353,6 +386,7 @@ export function createLevels(o: LevelsOptions): Levels {
       cur = undefined;
     },
     destroy() {
+      listeners.clear();
       win.clearInterval(timer);
       win.removeEventListener('focus', onFocus);
       doc.removeEventListener('visibilitychange', onVisible);

@@ -93,8 +93,12 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const langWrap = h('div', { class: 'language' });
   const syncEl = h('p', { id: 'sync-indicator', class: 'sync', role: 'status', 'aria-live': 'polite' });
   const acctEl = h('p', { class: 'account', id: 'account' });
-  const brandLink = h('a', { class: 'go-brand', href: '#/review', 'aria-label': 'GoReview home' }, h('img', { src: new URL('../shared-brand/go-logo.png', import.meta.url).href, alt: '', width: '88', height: '44' }), h('span', {}, 'GoReview'));
-  const header = h('header', { class: 'topbar' }, brandLink, langWrap, syncEl, acctEl);
+  const logoUrl = new URL('../shared-brand/go-logo.png', import.meta.url).href;
+  const brandMark = deps.edition === 'review'
+    ? h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: '--go-brand-mask: url("' + logoUrl + '")' })
+    : h('img', { src: logoUrl, alt: '', width: '88', height: '44' });
+  const brandLink = h('a', { class: 'go-brand', href: '#/review', 'aria-label': 'GoReview home' }, brandMark, h('span', {}, 'GoReview'));
+  const header = h('header', { class: deps.edition === 'review' ? 'topbar topbar-review' : 'topbar' }, brandLink, langWrap, syncEl, acctEl);
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   clear(root);
   root.append(h('div', { class: 'shell' }, header, main));

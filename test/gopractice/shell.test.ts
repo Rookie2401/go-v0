@@ -27,10 +27,27 @@ describe('the hash router', () => {
     expect(rig.q('#sync-indicator').textContent).toBe('Not signed in');
   });
 
+  it('keeps the GoReview identity and controls accessible without the image tile', async () => {
+    const rig = await makeRig({ edition: 'review', signedIn: true });
+    const home = rig.q<HTMLAnchorElement>('.go-brand');
+    const mark = rig.q<HTMLElement>('.go-brand-mark');
+    expect(home.getAttribute('href')).toBe('#/review');
+    expect(home.getAttribute('aria-label')).toBe('GoReview home');
+    expect(mark.getAttribute('aria-hidden')).toBe('true');
+    expect(mark.style.getPropertyValue('--go-brand-mask')).toContain('go-logo.png');
+    expect(rig.root.querySelector('.go-brand img')).toBeNull();
+    expect(rig.q('#language-name')).toBeTruthy();
+    expect(rig.q<HTMLAnchorElement>('#settings-link').getAttribute('aria-label')).toBe('Settings');
+    window.dispatchEvent(new Event('goreview:update-ready'));
+    const update = rig.q('#update-ready');
+    expect(update.parentElement).toBe(rig.q('header'));
+    expect(update.nextElementSibling).toBe(rig.q('#sync-indicator'));
+  });
   it('after sign-in the header has the Go logo, language and Settings cog; the screens are reached from the home', async () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('.topnav')).toBeNull();
+    expect(rig.q('.go-brand img')).toBeTruthy();
     expect([...rig.root.querySelectorAll('header a')].map((a) => a.getAttribute('aria-label'))).toEqual(['GoReview home', 'Settings']);
     expect(rig.q('#language-name')).toBeTruthy();
     expect(rig.root.querySelector('#back-home')).toBeNull();      // the home has nowhere to go back to

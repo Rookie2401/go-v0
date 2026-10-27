@@ -410,3 +410,30 @@ img, svg, video, canvas { max-width: 100%; }
 .go-brand img { display: block; width: 88px; height: 44px; object-fit: contain; background: #f7f2e8; border-radius: 5px; }
 .go-brand:hover { text-decoration: none; }
 @media (max-width: 380px) { .go-brand img { width: 64px; height: 36px; } }
+/* GoReview: align the identity with the reading column and tint its transparent silhouette. */
+.topbar-review {
+  width: 100%; max-width: 52rem; margin-inline: auto; justify-content: space-between;
+  padding-top: max(.65rem, env(safe-area-inset-top, 0px)); padding-bottom: .65rem;
+  padding-left: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-right, 0px));
+}
+.topbar-review .go-brand {
+  gap: .6rem; color: var(--accent); font-family: var(--serif); font-size: 1.2rem;
+  font-weight: 600; letter-spacing: .035em;
+}
+.topbar-review .go-brand-mark {
+  display: block; flex: 0 0 4.75rem; width: 4.75rem; height: 2.75rem;
+  background: currentColor;
+  -webkit-mask: var(--go-brand-mask) center / 145% auto no-repeat;
+  mask: var(--go-brand-mask) center / 145% auto no-repeat;
+}
+.topbar-review .cog { width: 2.75rem; height: 2.75rem; }
+.topbar-review .language:empty, .topbar-review .account:empty { display: none; }
+@media (max-width: 430px) {
+  .topbar-review { flex-wrap: wrap; gap: .2rem .5rem; }
+  .topbar-review .go-brand { order: 1; flex: 1 1 0; min-width: 0; }
+  .topbar-review .account { order: 2; flex: 0 0 auto; margin-left: auto; }
+  .topbar-review .language { order: 3; flex: 1 0 100%; min-width: 0; }
+  .topbar-review #update-ready { order: 4; flex: 1 0 100%; justify-content: flex-start; min-width: 0; }
+  .topbar-review .sync:not(.sr) { order: 5; flex: 1 0 100%; width: 100%; max-width: none; margin: 0; }
+}

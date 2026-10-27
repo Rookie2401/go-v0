@@ -121,7 +121,7 @@ describe('Prompt 3 §18 — the Albanian learner, end to end over the real packa
     expect(counters).toMatchObject({ lookups: 1, assistance: 1, playbacks: 1 });
     // projection@5: the rows the service returns carry the level and the encounters (a lookup and an assistance request are two encounters; a playback is none)
     const row = (await knowledgeOf(a, [LEMMA])).find((r) => r.unitId === LEMMA)!;
-    expect(row).toMatchObject({ level: 'seen', encounters: 2, modelVersion: 'projection@5' });
+    expect(row).toMatchObject({ level: 'seen', encounters: 2, modelVersion: 'projection@6' });
   });
 
   it('8. review candidates are explainable, and the provisional construction is not eligible for a grammar assessment', async () => {

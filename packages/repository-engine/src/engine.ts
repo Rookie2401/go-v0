@@ -17,6 +17,11 @@ import type { ExposureCounters, UnitResolver } from './projection';
 import { estimateSuitability } from './suitability';
 
 /**
+ * projection@6: the same rows, refolded under the mark rule of 2026-10-26 (the owner's rule: after the first automatic step from New to Seen,
+ * only the learner changes a word's state; `levels.ts` markStatus). The rule changed without a version step, so rows the service and the
+ * on-device Repositories had folded before it kept their old level (a word marked Known that was looked up afterwards read Seen) until the
+ * unit's next event. A stored cursor at projection@5 is rebuilt from the immutable events on the next read, as every version step is; the
+ * dimension estimates come out unchanged, only the level of a marked row can move, back to the mark. Nothing stored is rewritten.
  * projection@5: the six knowledge levels. `UnitKnowledge.level` (new, seen, recognized, familiar, known, automatic; `levelOf`), `UnitKnowledge.encounters`
  * (distinct encounter events) and a `selfMark` that is a LEVEL (a stored legacy `learning` / `known` / `productive` mark is read through `levelOfMark`);
  * ItemMarked accepts the six level words beside the legacy ones; the candidate rules draw units by level, and review is a progression, not a request.
@@ -26,7 +31,7 @@ import { estimateSuitability } from './suitability';
  * (projection@3: `selfMark` and the `productive` mark credited to productiveRetrieval. projection@2: the eighth dimension,
  * phraseComprehension, and language-basis weighting of exposure.) A stored cursor at another version is rebuilt from the immutable events on the next read.
  */
-export const MODEL_VERSION = 'projection@5';
+export const MODEL_VERSION = 'projection@6';
 const PAGE = 500;
 
 export type EngineStore = EventLog & ProjectionStore & LinguisticStore & TombstoneStore & Pick<IdentityStore, 'listEnrolments'>;
@@ -56,7 +61,7 @@ function carryLegacyAutomatic(rows: UnitKnowledge[], previousRows: UnitKnowledge
   return rows.map((row) => {
     const old = previous.get(row.unitId);
     let legacy = old?.legacyKnowability;
-    if (!legacy && migrate && old?.modelVersion === 'projection@4' && old.level === 'automatic' && old.selfMark?.mark !== 'automatic') {
+    if (!legacy && migrate && old?.modelVersion === 'projection@4' && old.level === 'automatic' && old.selfMark?.mark !== 'automatic') { // a row still at @4 (never refolded by @5) is carried the same way
       legacy = { level: 'automatic', modelVersion: 'projection@4', migratedAt, basis: 'legacy-production-inference' };
     }
     if (!legacy) return row;

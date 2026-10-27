@@ -408,7 +408,7 @@ describe('suitability', () => {
 
   it('counts recognised, uncertain and unknown tokens and lists the difficulties', async () => {
     const { est } = await run();
-    expect(est).toMatchObject({ languageId: 'sq', tokens: 9, wordTokens: 6, recognized: 2, uncertain: 2, unknown: 2, modelVersion: 'projection@5' });
+    expect(est).toMatchObject({ languageId: 'sq', tokens: 9, wordTokens: 6, recognized: 2, uncertain: 2, unknown: 2, modelVersion: 'projection@6' });
     expect(est.recognized + est.uncertain + est.unknown).toBe(est.wordTokens);
     expect(est.familiarUnits).toEqual(['form:sq:u1']);
     expect(est.difficultUnits.map((d) => d.unitId)).toEqual(['form:sq:u4']);

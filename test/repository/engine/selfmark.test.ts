@@ -122,10 +122,10 @@ describe('UnitKnowledge.selfMark: the latest explicit mark', () => {
   });
 });
 
-describe('projection@5 rebuilds what projection@2 stored', () => {
-  it('MODEL_VERSION is projection@5, and a stored projection@2 cursor is rebuilt on the next read, adding the selfMark, the level and the encounters', async () => {
+describe('projection@6 rebuilds what projection@2 stored', () => {
+  it('MODEL_VERSION is projection@6, and a stored projection@2 cursor is rebuilt on the next read, adding the selfMark, the level and the encounters', async () => {
     resetIds();
-    expect(MODEL_VERSION).toBe('projection@5');
+    expect(MODEL_VERSION).toBe('projection@6');
     const store = new FakeStore();
     await store.append(L, [mark('known', T(9))]);
     const old = createProjectionEngine({ store, now: () => NOW, modelVersion: 'projection@2' });
@@ -133,9 +133,9 @@ describe('projection@5 rebuilds what projection@2 stored', () => {
     expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@2' });
     const engine = createProjectionEngine({ store, now: () => NOW });
     const rows = await engine.knowledge(L);
-    expect(rows.every((r) => r.modelVersion === 'projection@5')).toBe(true);
+    expect(rows.every((r) => r.modelVersion === 'projection@6')).toBe(true);
     expect(rows.find((r) => r.unitId === LEMMA)?.selfMark).toEqual({ mark: 'known', at: T(9) });
-    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@5' });
+    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@6' });
     expect(rows.find((r) => r.unitId === LEMMA)).toMatchObject({ level: 'known', encounters: 0 });
   });
 });

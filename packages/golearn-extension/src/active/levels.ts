@@ -72,18 +72,25 @@ export function selfMarkOfRows(rows: Array<KnowledgeView | undefined>): { mark: 
 /**
  * The level of a word: the learner's own mark when they made one; else the highest level any of its rows supports (its
  * lemma row and its form row are both consulted); else `new`.
+ *
+ * After the first automatic step from New to Seen, only the learner changes a word's state (the owner's rule, 2026-10-26), so a
+ * mark other than New decides outright, whatever level the engine stored on the row: a row folded before that rule (a service not
+ * yet redeployed, an on-device Repository not yet refolded) carries a Known word read back down to Seen by a later lookup, and it
+ * must not repaint the page or the card that way. A mark of New says "not met" and is released by any later meeting, so there the
+ * engine's level of the row that carries it stands (never below Seen once met).
  */
 export function levelOfRows(rows: Array<KnowledgeView | undefined>): ActiveLevel {
   const mark = selfMarkOfRows(rows);
   if (mark) {
-    // the engine already weighed the mark against the evidence dated after it (including "new is released by any later meeting"): its level for the row(s) carrying that mark stands
+    const marked = levelOfMark(mark.mark);
+    if (marked !== 'new') return marked;
+    // a mark of New: the engine already weighed it against the evidence dated after it ("new is released by any later meeting"): its level for the row(s) carrying that mark stands
     let engine: ActiveLevel | undefined;
     for (const r of rows) {
       if (!r || r.selfMark?.at !== mark.at || !r.level || !(KNOWLEDGE_LEVELS as readonly string[]).includes(r.level)) continue;
       if (!engine || KNOWLEDGE_LEVEL_RANK[r.level] > KNOWLEDGE_LEVEL_RANK[engine]) engine = r.level;
     }
     if (engine) return engine;
-    const marked = levelOfMark(mark.mark);
     // no engine level: the same rule on the row's own dates. A mark of "new" says not met; anything observed after it (a click that looked the word up) makes it seen.
     if (marked === 'new' && rows.some((r) => !!r?.lastSeenAt && Date.parse(r.lastSeenAt) > Date.parse(mark.at))) return 'seen';
     return marked;

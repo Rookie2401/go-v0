@@ -2,7 +2,7 @@
 
 Turns learner events into multidimensional knowledge estimates, assistance preferences, review candidates, review
 eligibility and reading suitability. Imports only `../../repository-contract/src`. Implements `ProjectionEngine`
-(`createProjectionEngine`, `modelVersion = 'projection@4'`); consumes `EventLog`, `ProjectionStore`, `LinguisticStore`
+(`createProjectionEngine`, `modelVersion = 'projection@6'`); consumes `EventLog`, `ProjectionStore`, `LinguisticStore`
 (read only), `TombstoneStore` and `IdentityStore.listEnrolments`.
 
 **These estimates are hypotheses until calibrated against independent assessments.** Every number below is a first

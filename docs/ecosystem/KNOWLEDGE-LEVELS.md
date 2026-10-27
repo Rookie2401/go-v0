@@ -135,3 +135,17 @@ contradiction rule are always exact; a caller that folds one observation into a 
 ## 8. Migration: projection@4 -> projection@5
 
 Projection@5 no longer infers `automatic` from production/review counts alone. Existing rows that were `automatic` under projection@4 are carried in `legacyKnowability` with basis `legacy-production-inference`; this is explicitly marked as a legacy inference, never converted into a self-mark or a fabricated event. The carried label remains until a later explicit non-automatic self-mark or an unassisted negative productive-retrieval observation occurs after the migration time. New successful reviews alone cannot create `automatic`.
+
+## 9. Migration: projection@5 -> projection@6
+
+The mark rule changed on 2026-10-26 (section 2: after the first automatic step from New to Seen, only the learner changes a word's state)
+without a version step, so every Repository — the service on Render, the GoLearn extension's on-device Repository, GoReview's — kept the
+rows it had folded under the older rule until a unit's next event: a word marked Known that was looked up afterwards still read Seen, in
+Biblia, on the GoLearn page and card, and in GoReview's drawing. `MODEL_VERSION` is `projection@6`: a stored cursor at projection@5 is
+rebuilt from the immutable events on the next read, as every version step is. The dimension estimates come out unchanged (no evidence
+rule changed); only the level of a marked row can move, back to the mark. `legacyKnowability` is carried as before. Nothing stored is
+rewritten.
+
+The readers apply the same rule on their side too, so a page against a service not yet redeployed shows the right level: a mark other
+than New decides outright over the level the row carries (`golearn-extension/src/active/levels.ts` `levelOfRows`, `biblia/src/levels.ts`
+`levelOfRows`); a mark of New is read through the engine's level of the row that carries it (released to Seen by a later meeting).

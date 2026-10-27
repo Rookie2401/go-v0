@@ -72,6 +72,15 @@ describe('levelOfRows', () => {
     ])).toBe('seen');
   });
 
+  it('a mark other than New stands over the level the engine stored on the row: a Known word looked up later is still Known (2026-10-26)', () => {
+    // a row folded before the rule (a service not yet redeployed, an on-device Repository not yet refolded) reads the lookup as a contradiction
+    const stale = { ...row({ exposure: dim({ observations: 3, negative: 2 }) }), level: 'seen' as const, selfMark: { mark: 'known' as const, at: '2026-10-10T10:00:00.000Z' }, lastSeenAt: '2026-10-11T10:00:00.000Z' };
+    expect(levelOfRows([stale])).toBe('known');
+    expect(levelOfRows([stale, { ...row({}), level: 'automatic' }])).toBe('known'); // nor does the other row's higher level override the mark
+    // a mark of New is the one the engine may release (to Seen, by the meeting)
+    expect(levelOfRows([{ ...row({ exposure: dim({ observations: 1 }) }), level: 'seen', selfMark: { mark: 'new', at: '2026-10-10T10:00:00.000Z' } }])).toBe('seen');
+  });
+
   it('a mark of "new" is released by a later observation (the click that looks the word up): it reads as seen; a lookup dated before the mark does not', () => {
     const mark = { mark: 'new' as const, at: '2026-10-10T10:00:00.000Z' };
     // no engine level: the page applies the rule to the row's dates

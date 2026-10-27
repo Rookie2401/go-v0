@@ -292,10 +292,10 @@ describe('the projection (live and rebuilt) carries level and encounters', () =>
 
     const engine = createProjectionEngine({ store, now: () => NOW });
     const rows = await engine.knowledge(L);
-    expect(rows[0].modelVersion).toBe('projection@5');
+    expect(rows[0].modelVersion).toBe('projection@6');
     expect(rows[0].dimensions).toEqual(before[0].dimensions); // every number the old projection stored, unchanged
     expect(rows[0]).toMatchObject({ level: 'familiar', encounters: 4, selfMark: { mark: 'new', at: T(9) } }); // new -> released by two reliable recognitions after it
-    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@5' });
+    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@6' });
     expect(JSON.stringify(await store.list({ learnerId: L, limit: 100 }))).toBe(eventsBefore); // nothing stored was rewritten
   });
 

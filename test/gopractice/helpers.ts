@@ -29,7 +29,7 @@ const gloss = (label: string): string => GLOSS[label] ?? 'thing';
 
 // ───────────────────────────── the fake service ─────────────────────────────
 
-export interface Account { email: string; password: string; learnerId: string }
+export interface Account { email: string; password: string; learnerId: string; displayName?: string }
 
 export class FakeService {
   accounts = new Map<string, Account>();
@@ -94,7 +94,7 @@ export class FakeService {
       async me() {
         net(false); const l = learner(); if (!l) return fail(401);
         const a = [...self.accounts.values()].find((x) => x.learnerId === l)!;
-        return ok({ learner: undefined, account: { accountId: `acc-${l}`, email: a.email, createdAt: T0 }, enrolments: self.enrolments.get(l) ?? [], devices: [], consents: [] });
+        return ok({ learner: { learnerId: l, createdAt: T0, ...(a.displayName ? { displayName: a.displayName } : {}) }, account: { accountId: `acc-${l}`, email: a.email, createdAt: T0 }, enrolments: self.enrolments.get(l) ?? [], devices: [], consents: [] });
       },
       async listEnrolments() { net(false); const l = learner(); return l ? ok({ enrolments: self.enrolments.get(l) ?? [] }) : fail(401); },
       async candidates(enrolmentId: string) {

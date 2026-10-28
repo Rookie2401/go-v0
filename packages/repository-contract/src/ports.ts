@@ -182,7 +182,8 @@ export type SecurityEventKind =
   | 'account-created' | 'sign-in' | 'sign-in-failed' | 'sign-out' | 'sessions-revoked'
   | 'email-verification-sent' | 'email-verified'
   | 'password-reset-requested' | 'password-reset-used'
-  | 'export-requested' | 'deletion-requested' | 'deletion-cancelled' | 'deletion-purged';
+  | 'export-requested' | 'deletion-requested' | 'deletion-cancelled' | 'deletion-purged'
+  | 'profile-updated';
 
 /** What accounts hardening needs beyond `IdentityStore`. Optional on `RepositoryStore` so a store written before it still satisfies the port; the service answers 501 for the routes that need it. */
 export interface SecurityStore {

@@ -27,12 +27,13 @@ describe('on the device, with no account', () => {
     const rig = await makeRig({ local: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('#signin-form')).toBeNull();
-    // the header is the language and the Settings cog; the account offer lives in Settings
+    // the header is the language, the person (the account page) and the Settings cog; the account offer lives on the account page
     expect(rig.root.querySelector('.topnav')).toBeNull();
     expect(rig.q('#settings-link').getAttribute('aria-label')).toBe('Settings');
+    expect(rig.q('#header-account').getAttribute('aria-label')).toBe('Account');
     expect(rig.q('#sync-indicator').textContent).toBe('On this device only');
     expect(rig.root.querySelector('#account-link')).toBeNull();
-    await rig.go('settings');
+    await rig.go('account');
     expect(rig.q<HTMLAnchorElement>('#settings-keep-progress').getAttribute('href')).toBe('#/signin');
     expect(rig.q('#settings-keep-progress').textContent).toBe('Keep your progress across devices (optional)');
     await rig.go('review');
@@ -221,8 +222,8 @@ describe('the account is optional and only keeps progress across devices', () =>
     await rig.go('signin');
     submitSignIn(rig);
     await until(() => /Signed in as/.test(rig.q('#signin-form .status').textContent ?? ''), 'the sign-in');
-    await rig.go('settings');
-    expect(rig.q('#settings-email').textContent).toBe('Signed in as ana@example.org');
+    await rig.go('account');
+    expect(rig.q('#verification-state').textContent).toBe('ana@example.org');
     click(rig.q('#sign-out'));
     await until(async () => (await rig.app.ctx.mode()) === 'device', 'the device mode');
     await rig.app.ready(); await flush(8);
@@ -238,7 +239,7 @@ describe('the account is optional and only keeps progress across devices', () =>
   it('Clear local data is explicit: armed by one click, disarmed by leaving it, done by the second, and it never happens at sign-out', async () => {
     const rig = await makeRig({ local: true });
     await rig.app.ctx.record([cardAdded(LOC, 'zog', 'meaning-to-form', '2026-09-01T09:00:00.000Z')]);
-    await rig.go('settings');
+    await rig.go('account');
     expect(rig.q('#settings-device-only').textContent).toBe('On this device only.');
     expect(rig.q<HTMLAnchorElement>('#settings-keep-progress').getAttribute('href')).toBe('#/signin');
     const btn = rig.q<HTMLButtonElement>('#clear-local');
@@ -252,7 +253,7 @@ describe('the account is optional and only keeps progress across devices', () =>
     await flush(4);
     click(btn);
     await until(() => rig.local!.cleared === 1, 'the clear');
-    await until(() => /Cleared the local data/.test(rig.q('#settings-account').textContent ?? ''), 'the confirmation');
+    await until(() => /Cleared the local data/.test(rig.q('#account-card').textContent ?? ''), 'the confirmation');
     expect(Object.keys(await rig.area.get(null)).filter((k) => k.startsWith(`u:${LOCAL_LEARNER}:`))).toEqual([]);
   });
 });

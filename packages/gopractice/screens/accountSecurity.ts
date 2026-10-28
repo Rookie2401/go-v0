@@ -50,7 +50,7 @@ const EVENT_LABEL: Record<string, string> = {
   'password-reset': 'Password changed with an emailed link', 'password-changed': 'Password changed', 'password-reset-requested': 'Password reset asked for',
   'email-verified': 'Email address confirmed', 'verification-resent': 'Confirmation email asked for again',
   'session-revoked': 'A session was ended', 'sessions-revoked': 'Other sessions were ended',
-  'deletion-requested': 'Account deletion scheduled', 'deletion-cancelled': 'Account deletion cancelled', 'data-exported': 'Data downloaded',
+  'deletion-requested': 'Account deletion scheduled', 'profile-updated': 'Name changed', 'deletion-cancelled': 'Account deletion cancelled', 'data-exported': 'Data downloaded',
 };
 export const eventLabel = (kind: string): string => EVENT_LABEL[kind] ?? (kind.replace(/[-_.]+/g, ' ').replace(/^./, (c) => c.toUpperCase()) || 'Event');
 

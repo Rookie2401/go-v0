@@ -136,7 +136,7 @@ describe('the remote-speech switch in Settings records the consent (P-09)', () =
 describe('Settings and History (A-10, A-19)', () => {
   it('A-10 the synchronisation and diagnostics sections keep the name of their heading after a repaint', async () => {
     const rig = await makeRig({ signedIn: true });
-    await rig.go('settings');
+    await rig.go('developer');
     await until(() => !!rig.root.querySelector('#diagnostics'), 'the diagnostics');
     for (const [section, heading] of [['#settings-sync', 'sync-h'], ['#settings-diagnostics', 'diag-h']] as const) {
       expect(rig.q(section).getAttribute('aria-labelledby')).toBe(heading);

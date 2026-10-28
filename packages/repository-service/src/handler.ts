@@ -472,6 +472,21 @@ route('DELETE', '/sessions/current', true, async (ctx) => {
   return respond(204);
 });
 
+// The learner's own profile: the display name (set at account creation, or here), trimmed, at most 200 characters; an empty name clears it.
+route('POST', '/me/profile', true, async (ctx) => {
+  const b = await ctx.body();
+  if (typeof b.displayName !== 'string' || b.displayName.length > 200) throw invalid('"displayName" must be a string of at most 200 characters.');
+  const { store } = ctx.deps;
+  const learner = await store.getLearner(ctx.session.learnerId);
+  if (!learner) throw new Refusal(404, 'not-found', 'There is no learner record for this session.');
+  const name = b.displayName.trim();
+  const { displayName: _old, ...rest } = learner;
+  const next: Learner = name ? { ...rest, displayName: name } : rest;
+  await store.putLearner(next);
+  await audit(ctx.deps, 'profile-updated', learner.learnerId, {}, ctx.now());
+  return respond(200, { learner: next });
+});
+
 route('GET', '/me', true, async (ctx) => {
   const { store } = ctx.deps;
   const learnerId = ctx.session.learnerId;

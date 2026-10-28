@@ -82,7 +82,7 @@ export interface AppContext {
   deviceId(): Promise<string>;
   identity(): Promise<AppIdentity>;
   /** Sign in (or create the account and sign in). A different sign-in replaces the old session and clears the cached profile. */
-  signIn(input: { email: string; password: string; create: boolean }): Promise<SignInResult>;
+  signIn(input: { email: string; password: string; create: boolean; /** The name for a new account's learner record. */ displayName?: string }): Promise<SignInResult>;
   /** Sign out of this device: the service session is revoked when reachable; the local session and cached profile go either way. */
   signOut(): Promise<void>;
   /** Make this enrolment the one events are recorded against. */
@@ -121,12 +121,12 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   };
 
   /** Sign-in without a background worker: the typed API client from this page, the session in the shared storage. */
-  async function directSignIn(input: { email: string; password: string; create: boolean }, baseUrl: string): Promise<SignInResult> {
+  async function directSignIn(input: { email: string; password: string; create: boolean; displayName?: string }, baseUrl: string): Promise<SignInResult> {
     try {
       const api = deps.createApi(baseUrl);
       let sent: unknown;
       if (input.create) {
-        const made = await api.createAccount({ email: input.email, password: input.password });
+        const made = await api.createAccount({ email: input.email, password: input.password, ...(input.displayName ? { displayName: input.displayName } : {}) });
         if (!made.ok) return { ok: false, message: explainFailure(made, 'create'), code: made.error };
         sent = (made.data as { verificationSent?: unknown } | null)?.verificationSent;
       }
@@ -330,7 +330,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
       const email = input.email.trim();
       if (inExtension) {
         const r = await ask<{ ok?: boolean; message?: string }>(
-          { type: input.create ? MSG.createAccount : MSG.connect, baseUrl: check.url, email, password: input.password }, SIGN_IN_TIMEOUT_MS);
+          { type: input.create ? MSG.createAccount : MSG.connect, baseUrl: check.url, email, password: input.password, ...(input.create && input.displayName ? { displayName: input.displayName } : {}) }, SIGN_IN_TIMEOUT_MS);
         if (r.answered && r.value && typeof (r.value as { ok?: unknown }).ok === 'boolean') {
           if (okOf(r)) {
             await state.clearProfile();

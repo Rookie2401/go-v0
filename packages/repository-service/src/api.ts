@@ -51,6 +51,8 @@ export interface RepositoryApi {
   createSession(input: { email: string; password: string; deviceId: string; platform?: string }): Promise<ApiResult<{ token: string; learnerId: string; expiresAt: string }>>;
   deleteSession(): Promise<ApiResult<null>>;
   me(): Promise<ApiResult<MeResponse>>;
+  /** The learner's display name: set with a non-empty string, cleared with an empty one. */
+  updateProfile(input: { displayName: string }): Promise<ApiResult<{ learner: Learner }>>;
   deleteMe(confirmEmail: string): Promise<ApiResult<null>>;
   listEnrolments(): Promise<ApiResult<{ enrolments: Enrolment[] }>>;
   enrol(input: EnrolInput): Promise<ApiResult<{ enrolment: Enrolment }>>;
@@ -134,6 +136,7 @@ export function createRepositoryApi(opts: ApiOptions): RepositoryApi {
       return r;
     },
     me: () => call('GET', '/me'),
+    updateProfile: (input) => call('POST', '/me/profile', input),
     deleteMe: (confirmEmail) => call('DELETE', '/me', { confirmEmail }),
     listEnrolments: () => call('GET', '/enrolments'),
     enrol: (input) => call('POST', '/enrolments', input),

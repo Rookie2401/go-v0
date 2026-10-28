@@ -335,6 +335,25 @@ details.advanced { margin: 1.2rem 0 .4rem; }
 details.advanced > summary { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); padding: .4rem 0; }
 details.advanced[open] > summary { color: var(--ink); margin-bottom: .4rem; }
 .prefs-reset { margin-top: 1rem; }
+/* #/account: two facts, then the plain actions in a centred column; the deletion as a guided step below */
+.account-facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: .5rem 1.2rem; margin: .4rem 0 1.2rem; align-items: baseline; }
+.account-facts dt { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); }
+.account-facts dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.account-facts .help { display: block; margin-top: .2rem; }
+.account-name-edit { display: inline-flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.account-name-edit input { max-width: 16rem; }
+.account-actions { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin: 1.4rem 0 .6rem; }
+.account-actions .linklike { font-size: 1rem; }
+.linklike.danger { color: var(--bad); text-decoration-color: color-mix(in srgb, var(--bad) 45%, transparent); }
+.linklike.danger:hover:not(:disabled) { color: var(--bad); text-decoration-color: var(--bad); }
+.btn.danger { color: var(--bad); border-color: var(--bad); }
+.btn.danger:hover:not(:disabled) { background: color-mix(in srgb, var(--bad) 10%, transparent); }
+#delete-body { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+#delete-body .steps { padding-left: 1.2rem; display: grid; gap: .5rem; }
+details.quiet { margin-top: 1.4rem; }
+details.quiet > summary { color: var(--ink-soft); font-size: .9rem; }
+details.quiet > .card { margin-top: .6rem; box-shadow: none; }
+.developer-line { margin-top: 1.6rem; font-size: .85rem; }
 .pills { display: flex; flex-wrap: wrap; gap: .4rem; }
 button.pill { padding: .1rem .9rem; border-radius: 999px; font-size: .95rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink-soft); }
 button.pill:hover:not(:disabled) { color: var(--ink); }

@@ -22,6 +22,8 @@ import type { Deps } from './ports';
 import * as legalScreen from './screens/legal';
 import * as reviewScreen from './screens/review';
 import * as settingsScreen from './screens/settings';
+import * as accountScreen from './screens/account';
+import * as developerScreen from './screens/developer';
 import * as signinScreen from './screens/signin';
 import * as tellScreen from './screens/tell';
 import * as vocabularyScreen from './screens/vocabulary';
@@ -31,7 +33,7 @@ import { shortDate } from './dom';
 import { dismissSplash } from './splash';
 
 export interface RouteDef {
-  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'signin' | 'privacy' | 'terms';
+  id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'privacy' | 'terms';
   title: string;
   render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): void | Promise<void>;
 }
@@ -41,12 +43,14 @@ export const ROUTES: readonly RouteDef[] = [
   { id: 'tell', title: 'GoTell', render: tellScreen.render },
   { id: 'vocabulary', title: 'My Vocabulary', render: vocabularyScreen.render },
   { id: 'settings', title: 'Settings', render: settingsScreen.render },
+  { id: 'account', title: 'Account', render: accountScreen.render },
+  { id: 'developer', title: 'Developer', render: developerScreen.render },
   { id: 'signin', title: 'Sign in', render: signinScreen.render },
   { id: 'privacy', title: 'Privacy Policy', render: legalScreen.renderPrivacy },
   { id: 'terms', title: 'Terms of use', render: legalScreen.renderTerms },
 ];
 /** The routes that get a quiet way back to the GoReview home above their title. */
-const HAS_BACK = new Set<RouteDef['id']>(['tell', 'vocabulary', 'settings', 'privacy', 'terms']);
+const HAS_BACK = new Set<RouteDef['id']>(['tell', 'vocabulary', 'settings', 'account', 'developer', 'privacy', 'terms']);
 
 /** The Settings cog: a plain SVG (no icon font, nothing fetched), named for assistive technology by the link. */
 function cogIcon(doc: Document): Element {
@@ -58,6 +62,19 @@ function cogIcon(doc: Document): Element {
   const path = doc.createElementNS(ns, 'path');
   path.setAttribute('d', 'M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z');
   svg.append(circle, path);
+  return svg;
+}
+
+/** The Account person (a head over shoulders, the same drawing as Biblia's): a plain SVG, named for assistive technology by the link. */
+function personIcon(doc: Document): Element {
+  const ns = 'http://www.w3.org/2000/svg';
+  const svg = doc.createElementNS(ns, 'svg');
+  for (const [k, v] of Object.entries({ viewBox: '0 0 24 24', width: '20', height: '20', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.6', 'stroke-linecap': 'round', 'stroke-linejoin': 'round', 'aria-hidden': 'true', focusable: 'false' })) svg.setAttribute(k, v);
+  const head = doc.createElementNS(ns, 'circle');
+  for (const [k, v] of Object.entries({ cx: '12', cy: '8.5', r: '3.5' })) head.setAttribute(k, v);
+  const shoulders = doc.createElementNS(ns, 'path');
+  shoulders.setAttribute('d', 'M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6');
+  svg.append(head, shoulders);
   return svg;
 }
 
@@ -215,9 +232,12 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     // the account is offered any time, never required
     clear(acctEl);
     if (mode !== 'none') {
+      // the account (the person) beside the Settings cog: the account page handles every state, signed in or not
+      const who = h('a', { href: '#/account', id: 'header-account', class: 'cog', 'aria-label': 'Account', title: 'Account', ...(route === 'account' ? { 'aria-current': 'page' } : {}) });
+      who.append(personIcon(deps.doc));
       const cog = h('a', { href: '#/settings', id: 'settings-link', class: 'cog', 'aria-label': 'Settings', title: 'Settings', ...(route === 'settings' ? { 'aria-current': 'page' } : {}) });
       cog.append(cogIcon(deps.doc));
-      acctEl.append(cog);
+      acctEl.append(who, cog);
     }
   }
 

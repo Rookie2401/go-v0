@@ -31,7 +31,7 @@ describe('the hash router', () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('.topnav')).toBeNull();
-    expect([...rig.root.querySelectorAll('header a')].map((a) => a.getAttribute('aria-label'))).toEqual(['GoReview home', 'Settings']);
+    expect([...rig.root.querySelectorAll('header a')].map((a) => a.getAttribute('aria-label'))).toEqual(['GoReview home', 'Account', 'Settings']);
     // the Go mark (the G and the globe) as a silhouette the accent colour fills, beside the name
     const mark = rig.q<HTMLElement>('header .go-brand-mark');
     expect(mark.getAttribute('aria-hidden')).toBe('true');

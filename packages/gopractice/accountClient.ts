@@ -16,6 +16,10 @@ export interface SecurityEvent { kind: string; at: string; deviceLabel?: string 
 
 /** What `GET /me` says about the account that matters here; each field is absent when the service did not say. */
 export interface AccountState {
+  /** The display name on the account (the learner record), when one is set. */
+  name?: string;
+  /** The address the service has for the account. */
+  email?: string;
   /** true = the email address is confirmed. */
   verified?: boolean;
   /** When the account will be purged, if its deletion is scheduled. */
@@ -37,6 +41,8 @@ export interface AccountClient {
   deleteAccount(password: string): Promise<AccountResult<{ scheduledPurgeAt?: string }>>;
   cancelDeletion(): Promise<AccountResult<null>>;
   securityEvents(): Promise<AccountResult<{ events: SecurityEvent[] }>>;
+  /** Sets the display name on the account (POST /me/profile); an older service answers 404. */
+  rename(displayName: string): Promise<AccountResult<null>>;
 }
 
 export interface AccountClientOptions { baseUrl: string; fetch: typeof fetch; token?: string }
@@ -49,6 +55,11 @@ export function readAccountState(me: unknown): AccountState {
   const top = rec(me) ?? {};
   const account = rec(top.account) ?? {};
   const out: AccountState = {};
+  const learner = rec(top.learner) ?? {};
+  const name = str(learner.displayName);
+  if (name) out.name = name;
+  const email = str(account.email);
+  if (email) out.email = email;
   for (const key of ['verified', 'emailVerified']) {
     if (typeof account[key] === 'boolean') { out.verified = account[key] as boolean; break; }
     if (typeof top[key] === 'boolean') { out.verified = top[key] as boolean; break; }
@@ -104,6 +115,7 @@ export function createAccountClient(o: AccountClientOptions): AccountClient {
     deleteAccount: (password) => call('DELETE', '/me', { session: true, body: { password } }),
     cancelDeletion: () => call('POST', '/me/delete/cancel', { session: true, body: {} }),
     securityEvents: () => call('GET', '/me/security-events', { session: true }),
+    rename: (displayName) => call('POST', '/me/profile', { session: true, body: { displayName } }),
   };
 }
 

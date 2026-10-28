@@ -141,9 +141,21 @@ describe('Sign-in page (optional)', () => {
     await flush(10);
     expect(rig.q('#acct-form .status').textContent).toMatch(/at least 10/);
     expect(rig.service.calls).toHaveLength(0);
-    await signIn(rig, 'new@example.org', 'a long enough password', true);
+    // a name is part of creating an account: refused without one, sent with the account when given
+    type(rig.q('#acct-password'), 'a long enough password');
+    submit(rig.q('#acct-form'));
+    await flush(10);
+    expect(rig.q('#acct-form .status').textContent).toBe('Enter your name.');
+    expect(rig.service.calls).toHaveLength(0);
+    expect(rig.q<HTMLElement>('#acct-name-field').hidden).toBe(false);
+    await signIn(rig, 'new@example.org', 'a long enough password', true, 'Ana');
     expect(rig.service.calls.map((c) => c.method)).toEqual(expect.arrayContaining(['createAccount', 'createSession']));
+    expect(rig.service.calls.find((c) => c.method === 'createAccount')!.args).toEqual(['new@example.org', 'Ana']);
     expect((await sessionOf(rig.area))!.email).toBe('new@example.org');
+    // signing in asks for no name
+    await rig.go('signin');
+    choose(rig.q('#acct-mode'), 'signin');
+    expect(rig.q<HTMLElement>('#acct-name-field').hidden).toBe(true);
   });
 
   it('explains wrong credentials and an unreachable service plainly, and keeps nothing', async () => {

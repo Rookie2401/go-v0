@@ -58,7 +58,7 @@ describe('Settings', () => {
   it('shows the scheduler identity, the versions and the counts', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), cardAdded(A, 'mace', 'meaning-to-form', '2026-10-08T09:00:00.000Z')]);
-    await rig.go('settings');
+    await rig.go('developer');
     await until(() => !!rig.root.querySelector('#diagnostics dt'), 'the diagnostics');
     const text = rig.q('#diagnostics').textContent!;
     expect(text).toContain('fsrs@v5.4.2 using FSRS-6.0');
@@ -66,7 +66,6 @@ describe('Settings', () => {
     expect(text).toContain('Events in the local log3');
     expect(text).toContain('Deck items2');
     expect(text).toContain('Desired retention90%');
-    expect(rig.q('#settings-email').textContent).toBe('Signed in as ana@example.org');
     expect(rig.q('#sync-pending').textContent).toBe('0');
   });
 
@@ -83,7 +82,7 @@ describe('Settings', () => {
 
   it('validates the service address and keeps the old one when it is refused', async () => {
     const rig = await makeRig({ signedIn: true });
-    await rig.go('settings');
+    await rig.go('developer');
     type(rig.q<HTMLInputElement>('#settings-svc-url'), 'http://repository.example.org');
     rig.q('#settings-svc-save').click();
     await until(() => !!rig.q('#settings-service .status').textContent, 'the message');
@@ -100,7 +99,7 @@ describe('Settings', () => {
     await rig.app.ctx.whenSynced();
     service.netDown = true;
     await rig.app.ctx.record([cardAdded(A, 'zog', 'meaning-to-form', '2026-10-08T09:00:00.000Z')]);
-    await rig.go('settings');
+    await rig.go('account');
     rig.q('#sign-out').click();
     await until(() => rig.app.current() === 'signin', 'the sign-in screen');
     expect((await rig.area.get(KEYS.session))[KEYS.session]).toBeUndefined();
@@ -110,7 +109,7 @@ describe('Settings', () => {
     expect(keys.some((k) => k.startsWith('u:L1:queue:'))).toBe(true);
 
     await rig.signIn();
-    await rig.go('settings');
+    await rig.go('account');
     rig.q('#sign-out-forget').click();
     await until(() => rig.app.current() === 'signin', 'the sign-in screen');
     keys = Object.keys(await rig.area.get(null));

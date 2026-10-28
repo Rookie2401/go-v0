@@ -110,3 +110,10 @@ service worker, "Update ready — reload"), starting at `#/review`, titled GoRev
 Repository service reachable over HTTPS. While it is visible, online and signed in, `live.ts` holds `POST /sync/wait` and pulls when GoLearn pushes
 (60 s pull as the fallback); `snapshot.ts` keeps the vocabulary list and the intake proposals on the device so the home, My vocab and Saved decks
 render offline. Hosting, the service requirement, what "live" means on iOS and the limits: `docs/ecosystem/GOREVIEW-IPHONE.md`.
+
+The home comes back at once: `screens/review.ts` keeps the last painted home per app instance under a key over every local store the deck
+and the counts depend on (events, preferences, words added by hand, hold-out, saved decks, open sessions, the vocabulary snapshot), so a return from
+Settings or the account page with nothing changed makes no request (2026-10-28: it took seconds on a phone, mostly the vocabulary pages and one unit
+read per candidate word); a sync that brings events changes the key, and after ten minutes the Repository is asked again anyway. On a full load the
+vocabulary count comes from the snapshot first and the live list replaces it, and the planner reads the units it may ask about in one batch
+(`primeFacts`). While a screen opens, `loading.ts` shows the loading mark: the logo’s globe, its sphere turning (`packages/shared-brand/go-globe-*.png`).

@@ -471,3 +471,17 @@ img, svg, video, canvas { max-width: 100%; }
 /* the wordmark left, the account (the cog) at the right edge, whatever sits between them */
 .topbar > .account { margin-left: auto; }
 @media (max-width: 430px) { .go-brand { --mark-h: 30px; } }
+
+/* The loading mark (loading.ts): the logo's globe, its sphere turning inside the still meridian and stand, in the ink; the shell shows it while a
+   screen opens, the home while its deck loads. Both layers are CSS masks whose images are inline styles on the spans (absolute URLs from the
+   script), so they resolve wherever the stylesheet lives. It appears only after a moment, so a load that ends within a blink shows nothing. */
+.go-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; min-height: 38vh; color: var(--brand); opacity: 0; }
+.go-globe { position: relative; display: block; width: 104px; height: 104px; }
+.go-globe > span { position: absolute; inset: 0; display: block; background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; }
+@keyframes go-spin { to { transform: rotate(360deg); } }
+@keyframes go-appear { to { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  .go-loading { animation: go-appear .2s ease .15s forwards; }
+  .go-globe-disc { animation: go-spin 2.2s linear infinite; transform-origin: 50% 50%; }
+}
+@media (prefers-reduced-motion: reduce) { .go-loading { opacity: 1; } } /* the mark stands still, and at once */

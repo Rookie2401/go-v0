@@ -12,7 +12,9 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, releaseHoldOut, saveDeck, type CurrentDeck } from '../deckModel';
+import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planCurrentDeck, releaseHoldOut, saveDeck, type CurrentDeck, type SavedDeck, type VocabRow } from '../deckModel';
+import { loadingMark } from '../loading';
+import { readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
 import { deckSizeControl } from './cardsper';
@@ -23,6 +25,37 @@ import * as sessionScreen from './session';
 import type { View } from './view';
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
+
+/**
+ * The home as it was last painted, per app instance (a restart starts afresh) and per learner and enrolment. Coming back from Settings
+ * or the account page with nothing changed paints it again at once, with no request to the Repository (2026-10-28: on a phone the
+ * requests took seconds). "Nothing changed" is a key over every local store the deck and the counts depend on: the events (a sync that
+ * brings events from another device changes it), the preferences (the deck size), the words added by hand, the hold-out, the saved
+ * decks, the open sessions and the device's vocabulary snapshot (written by My vocab and by every live read). The candidates can only
+ * move with the events, so they are not asked for again while the key holds; after HOME_MEMO_MS they are asked for anyway.
+ */
+interface PaintedHome { key: string; at: number; model: ReviewModel; deck: CurrentDeck; resumeId: string | undefined; saved: number; words: number }
+const painted = new WeakMap<AppContext, Map<string, PaintedHome>>();
+/** How long a painted home is reused unchanged before the Repository is asked again anyway. */
+export const HOME_MEMO_MS = 10 * 60_000;
+/** Forgets the painted homes of one app instance: for a test that swaps the Repository under the app (in use, a change there reaches the device as events, which change the key). */
+export const forgetPaintedHome = (ctx: AppContext): void => { painted.delete(ctx); };
+
+/** The local reads the home depends on, and the key over them. */
+interface HomeLocal { id: string; key: string; holdOut: Set<string>; saved: SavedDeck[]; resumable: Awaited<ReturnType<typeof recoverableSessions>>; snapshot: ReviewSnapshot | undefined }
+async function homeLocal(ctx: AppContext): Promise<HomeLocal | undefined> {
+  const idn = await ctx.identity();
+  if (!idn) return undefined;
+  const { learnerId, languageId, varietyId, enrolmentId } = idn;
+  // before any store is read: a store the storage lost comes back from the snapshot (reading it first would create it empty)
+  await restoreMissing(ctx, learnerId, languageId);
+  const [prefs, events, added, holdOut, saved, resumable, snapshot] = await Promise.all([
+    ctx.state.getPrefs(learnerId, languageId), ctx.events(languageId), addedWords(ctx, learnerId, languageId), holdOutOf(ctx, learnerId, languageId),
+    listSavedDecks(ctx, learnerId, languageId, varietyId), recoverableSessions(ctx), readSnapshot(ctx, learnerId, languageId).catch(() => undefined),
+  ]);
+  const key = JSON.stringify([enrolmentId, varietyId ?? '', events.length, prefs, added.map((w) => w.unitId), [...holdOut].sort(), saved.map((d) => d.id), resumable.map((s) => s.sessionId), snapshot?.vocab?.rows.length ?? 0]);
+  return { id: `${learnerId}|${enrolmentId}`, key, holdOut, saved, resumable, snapshot };
+}
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): Promise<void> {
   const [sub, ...rest] = params;
@@ -41,7 +74,26 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   /** Whether the inline deck-size stepper is open (it stays open across the re-plan a change causes). */
   let sizeOpen = false;
 
+  /** Draws the four entries. */
+  function draw(model: ReviewModel, deck: CurrentDeck, resumeId: string | undefined, savedCount: number, words: number): void {
+    const bibliaLink = ctx.deps.links?.biblia;
+    clear(root);
+    root.setAttribute('lang', 'en');
+    append(root, [tellEntry(), deckEntry(model, deck, resumeId), previousEntry(savedCount), vocabEntry(Math.max(words, 0)), ...(bibliaLink ? [bibliaEntry(bibliaLink)] : []), status]);
+  }
+
   async function paint(): Promise<void> {
+    const local = await homeLocal(ctx).catch(() => undefined);
+    const now = ctx.deps.now().getTime();
+    const memo = local ? painted.get(ctx)?.get(local.id) : undefined;
+    if (memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS) {
+      if (!view.alive()) return;
+      paintedEvents = memo.model.events.length;
+      draw(memo.model, memo.deck, memo.resumeId, memo.saved, memo.words);
+      return;
+    }
+    // the first paint shows the loading mark; a repaint over a painted home keeps it until the new one is ready
+    if (!root.childElementCount) root.append(loadingMark('Loading your deck…'));
     const model = await loadReviewModel(ctx);
     if (!view.alive()) return;
     paintedEvents = model?.events.length ?? -1;
@@ -58,19 +110,41 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       return;
     }
     const id = model.identity;
-    const bibliaLink = ctx.deps.links?.biblia;
-    const [holdOut, saved, resumable, vocab] = await Promise.all([
+    // the local stores are read after the model: loading it may have brought decks and preferences back from the snapshot (restoreMissing)
+    const [holdOut, saved, resumable, snapshot] = await Promise.all([
       holdOutOf(ctx, id.learnerId, id.languageId),
       listSavedDecks(ctx, id.learnerId, id.languageId, id.varietyId),
       recoverableSessions(ctx),
-      loadVocabSafe(ctx, id.languageId),
+      readSnapshot(ctx, id.learnerId, id.languageId).catch(() => undefined),
     ]);
+    // My vocab: the Repository's list takes a page per hundred words, each a slow read that holds the service's other answers back; the
+    // device's snapshot of it (written at every live read) paints the home now, the live list is read once the home is drawn, and its count
+    // replaces the snapshot's when it arrives. With no snapshot yet, the live list is waited for.
+    const snapRows = (snapshot?.vocab?.rows ?? []) as VocabRow[];
+    let live: Promise<VocabRow[]> | undefined = snapRows.length ? undefined : loadVocabSafe(ctx, id.languageId);
+    const vocab = live ? await live : snapRows;
     const deck = await planCurrentDeck(ctx, model, holdOut, vocab);
     const words = vocab.length || model.knowledge.length;
     if (!view.alive()) return;
-    clear(root);
-    root.setAttribute('lang', 'en');
-    append(root, [tellEntry(), deckEntry(model, deck, resumable[0]?.sessionId), previousEntry(saved.length), vocabEntry(Math.max(words, 0)), ...(bibliaLink ? [bibliaEntry(bibliaLink)] : []), status]);
+    draw(model, deck, resumable[0]?.sessionId, saved.length, words);
+    // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
+    const after = await homeLocal(ctx).catch(() => undefined);
+    const same = after && after.id === `${id.learnerId}|${id.enrolmentId}` ? after : undefined;
+    if (same) {
+      const map = painted.get(ctx) ?? new Map<string, PaintedHome>();
+      map.set(same.id, { key: same.key, at: now, model, deck, resumeId: resumable[0]?.sessionId, saved: saved.length, words });
+      painted.set(ctx, map);
+    }
+    if (!live) {
+      live = loadVocabSafe(ctx, id.languageId);
+      void live.then((rows) => {
+        if (!view.alive() || !rows.length || rows.length === words) return;
+        const m = same ? painted.get(ctx)?.get(same.id) : undefined;
+        if (m && m.model === model) m.words = rows.length;
+        const kicker = root.querySelector('#vocab-count');
+        if (kicker) kicker.textContent = plural(rows.length, 'word', 'words');
+      });
+    }
   }
 
   /** GoTell: of its own hierarchy, not pedagogically related to what follows; set apart above a rule. */

@@ -32,6 +32,7 @@ import { createLive, type Live } from './live';
 import type { View } from './screens/view';
 import { shortDate } from './dom';
 import { dismissSplash } from './splash';
+import { loadingMark } from './loading';
 
 export interface RouteDef {
   id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'account' | 'developer' | 'signin' | 'privacy' | 'terms';
@@ -274,7 +275,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     disposers = [];
     clear(main);
     main.setAttribute('data-route', [id, ...params].join('/'));
-    append(main, [p('Opening GoReview…', 'muted')]);
+    append(main, [loadingMark('Opening GoReview…')]);
     const recovery = (message: string, retry: () => void): HTMLElement => {
       const button = h('button', { type: 'button', class: 'btn primary' }, 'Try again') as HTMLButtonElement;
       button.addEventListener('click', retry);
@@ -306,7 +307,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const home = review && subs.length === 0;
     main.append(...(review ? [h('h1', { class: 'sr' }, def.title)] : [h('h1', {}, def.title)]), ...(home ? [h('div', { class: 'home-language', id: 'home-language' })] : []), body);
     placeLanguage();
-    body.append(p('Loading your saved account data…', 'muted'));
+    body.append(loadingMark('Loading your saved account data…'));
     let idn: Awaited<ReturnType<AppContext['identity']>>;
     try { idn = await ctx.identity(); }
     catch {

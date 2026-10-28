@@ -81,6 +81,11 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
   const fresh: IntakeOutcome[] = [];
   const order: string[] = [];
   const api = (await ctx.api()).api;
+  // one batched read of the units the loop may ask about, instead of one request per word (2026-10-28: the home took seconds to come back)
+  if (ctx.engine.primeFacts && !opts.unchecked) {
+    const probe = [...new Set(wanted.filter((w) => !holds(w) && !(isAudio(w.family) && !listeningOk)).slice(0, (size + 4) * 3).map((w) => w.unitId))];
+    if (probe.length) { try { await ctx.engine.primeFacts(model.identity.languageId, api, probe); } catch { /* factsFor still answers one by one */ } }
+  }
   let tried = 0;
   for (const w of wanted) {
     if (order.length >= size + 4 || tried >= (size + 4) * 3) break;
@@ -372,6 +377,11 @@ function cleanStore(raw: unknown): DeckStore {
   return { v: 1, decks, holdOut: Array.isArray(r.holdOut) ? r.holdOut.filter(str) : [], added, dismissed: Array.isArray(r.dismissed) ? r.dismissed.filter(str) : [] };
 }
 
+/** The words the learner added to the current deck by hand (My vocab, Add): the home's key reads them. */
+export async function addedWords(ctx: AppContext, learnerId: string, languageId: string): Promise<Array<{ unitId: string }>> {
+  return (await readStore(ctx, learnerId, languageId)).added;
+}
+
 async function readStore(ctx: AppContext, learnerId: string, languageId: string): Promise<DeckStore> {
   const key = decksKey(learnerId, languageId);
   try { return cleanStore((await ctx.deps.area.get(key))[key]); } catch { return cleanStore(undefined); }
@@ -567,16 +577,18 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ row
   }
   const forms = records.filter((r) => r.kind === 'form');
   const present = new Set(records.map((r) => r.unitId));
-  for (let at = 0; at < forms.length && typeof api.units === 'function'; at += UNITS_PER_BATCH) {
-    const chunk = forms.slice(at, at + UNITS_PER_BATCH);
-    try {
-      const u = await api.units(chunk.map((f) => f.unitId));
-      if (!u.ok) break;
-      for (const f of chunk) {
-        const rel = u.data.units[f.unitId]?.relations.find((x) => x.relation === 'form-of' && x.fromId === f.unitId);
+  if (typeof api.units === 'function' && forms.length) {
+    const chunks: VocabRecord[][] = [];
+    for (let at = 0; at < forms.length; at += UNITS_PER_BATCH) chunks.push(forms.slice(at, at + UNITS_PER_BATCH));
+    // the batches are independent of one another: all at once, not one after the other (a batch that fails leaves its forms without a lemma)
+    const answers = await Promise.all(chunks.map(async (chunk) => { try { const u = await api.units(chunk.map((f) => f.unitId)); return u.ok ? u.data.units : undefined; } catch { return undefined; } }));
+    answers.forEach((units, i) => {
+      if (!units) return;
+      for (const f of chunks[i]) {
+        const rel = units[f.unitId]?.relations.find((x) => x.relation === 'form-of' && x.fromId === f.unitId);
         if (rel && present.has(rel.toId)) f.lemmaId = rel.toId;
       }
-    } catch { break; }
+    });
   }
   const rows = mergeVocab(records);
   return { rows, total: rows.length };

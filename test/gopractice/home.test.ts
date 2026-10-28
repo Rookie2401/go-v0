@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { decksKey, sortVocab, type SavedDeck } from '../../packages/gopractice/deckModel';
+import { forgetPaintedHome } from '../../packages/gopractice/screens/review';
 import { UI_KEY } from '../../packages/gopractice/screens/uiprefs';
 import { candidate, defaultService, destroyRigs, dueCard, ids, flush, makeRig, queued, reopen, seed, until, unitOf, type Rig } from './helpers';
 
@@ -185,6 +186,7 @@ function useRecords(rig: Rig, items: VocabularyItem[], formOf: Record<string, st
   }));
   const api = { vocabulary: vi.fn(async () => ({ ok: true as const, status: 200, data: page })), units } as unknown as RepositoryApi;
   rig.app.ctx.api = async () => ({ api, session: undefined, baseUrl: '' });
+  forgetPaintedHome(rig.app.ctx); // the Repository changed under the app: in use that arrives as events, which the painted home's key sees
 }
 
 describe('My vocab: one line per word', () => {

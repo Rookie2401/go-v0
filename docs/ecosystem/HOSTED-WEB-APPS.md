@@ -1,12 +1,13 @@
 # The hosted web apps on GitHub Pages (2026-10-23)
 
-Three of the ecosystem's apps are served from GitHub Pages; all three talk to the same Go Repository service,
-`https://repo.golearn-global-languages.com` (the PC behind the named Cloudflare tunnel until the server cut-over,
-`docs/ops/DEPLOY.md`). Same account everywhere: what is read or reviewed in one shows in the others.
+Three of the ecosystem's apps are served from GitHub Pages; all three talk to the same Go Repository service, on Render at
+`https://go-v0.onrender.com` (the default address of every system since 2026-10-27; the canonical name `https://repo.golearn-global-languages.com`
+is a DNS-only CNAME to the same service, blocked by some home routers, so no longer a default; before 2026-10-24 the service was the PC behind
+a named Cloudflare tunnel, `docs/ops/DEPLOY.md`). Same account everywhere: what is read or reviewed in one shows in the others.
 
 | app | address | branch / folder | built from | notes |
 |---|---|---|---|---|
-| GoReview, web edition | https://rookie2401.github.io/go-v0/review/ | `Rookie2401/go-v0` `gh-pages`, `review/` | `packages/gopractice/dist-review` (`GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com GOPRACTICE_DICT=hi,la npx vite build -c packages/gopractice/vite.config.ts --mode review`), `sw.js` `BUILD_ID ebb80c3e7dad`, 187 MB (gh-pages `c29deb7f`, 2026-10-25; before: Hindi only, 58 MB, `0debfb0790d6`) | installable; the Hindi and Latin dictionaries bundled (Latin added 2026-10-25 so the hosted edition can be tested as far as the native one, short of the shell), other languages' meanings come from the service |
+| GoReview, web edition | https://rookie2401.github.io/go-v0/review/ | `Rookie2401/go-v0` `gh-pages`, `review/` | `packages/gopractice/dist-review` (`GOPRACTICE_SERVICE_URL=https://go-v0.onrender.com GOPRACTICE_DICT=hi,la npx vite build -c packages/gopractice/vite.config.ts --mode review`; until 2026-10-27 the canonical name), `sw.js` `BUILD_ID ebb80c3e7dad`, 187 MB (gh-pages `c29deb7f`, 2026-10-25; before: Hindi only, 58 MB, `0debfb0790d6`) | installable; the Hindi and Latin dictionaries bundled (Latin added 2026-10-25 so the hosted edition can be tested as far as the native one, short of the shell), other languages' meanings come from the service |
 | GoLearn setup app | https://rookie2401.github.io/go-v0/app/ | same branch, `app/` | `packages/golearn-extension/dist-web` (`vite build -c packages/golearn-extension/app/vite.config.ts --mode web`), then `config.json`'s `serviceUrl` set to the public address by hand (that build has no environment override) | the address the account emails should open: set `APP_PUBLIC_URL=https://rookie2401.github.io/go-v0/app/` on the service |
 | Biblia | https://rookie2401.github.io/biblia/ | `Rookie2401/biblia` `gh-pages` (root) | `packages/biblia/dist-standalone`, see `BIBLIA-STANDALONE.md` | published 2026-10-23 |
 
@@ -17,7 +18,7 @@ The root of the `go-v0` Pages site (the earlier Go PWA, `dict/` with the hosted 
 
 ```powershell
 cd C:\Users\CJWal\dev\go-v0
-$env:GOPRACTICE_SERVICE_URL='https://repo.golearn-global-languages.com'; $env:GOPRACTICE_DICT='hi,la'
+$env:GOPRACTICE_SERVICE_URL='https://go-v0.onrender.com'; $env:GOPRACTICE_DICT='hi,la'; $env:BIBLIA_SERVICE_URL='https://go-v0.onrender.com'
 npx vite build -c packages/gopractice/vite.config.ts --mode review
 npx vite build -c packages/golearn-extension/app/vite.config.ts --mode web
 # worktree of gh-pages (never under OneDrive); .git in a worktree is a FILE: never let a mirror copy delete it
@@ -25,8 +26,7 @@ git worktree add -B gh-pages C:\Users\CJWal\dev\go-v0-pages origin/gh-pages     
 cd C:\Users\CJWal\dev\go-v0-pages
 robocopy C:\Users\CJWal\dev\go-v0\packages\gopractice\dist-review .\review /MIR
 robocopy C:\Users\CJWal\dev\go-v0\packages\golearn-extension\dist-web .\app /MIR
-# set the setup app's service address in the copy (the web build keeps the development address)
-$c = Get-Content .\app\config.json -Raw | ConvertFrom-Json; $c.serviceUrl = 'https://repo.golearn-global-languages.com'; $c | ConvertTo-Json -Depth 5 | Set-Content .\app\config.json -Encoding utf8
+# the setup app's config.json already names the default address (packages/golearn-extension/app/config.json: https://go-v0.onrender.com); nothing to edit in the copy
 git add -- review app; git commit -m "Deploy: GoReview web + GoLearn setup app"; git push origin gh-pages
 ```
 Pages serves the new files within a minute or two. The service workers of GoReview and Biblia replace their caches by `BUILD_ID`.
@@ -51,6 +51,16 @@ What the owner asked: that the GitHub build syncs with the greater GoLearn syste
 3. **Not shown from here:** the Pages copy itself reaching the public service. It is the same files, the same service code and the same
    database; what differs is the network path, which the outside probe covers. A check from a phone on cellular (open the review address,
    sign in, see the two Hebrew words) closes that last gap and is the owner's to do.
+
+## The default address is the Render one (2026-10-27)
+
+The owner: "Make v0.gorender the default address for every system." Done the same evening: GoReview web (`review/`, `BUILD_ID 18600d52ca75`),
+the setup app (`app/`) and Biblia (`BUILD_ID 58891c4898f8`) rebuilt from master with `https://go-v0.onrender.com` in their `config.json` and republished;
+the extension's own `app/config.json` already named it; the iPhone shells' `.env.example` and READMEs name it as `REPOSITORY_SERVICE_URL` for the
+next TestFlight stage (GoReview 11 and Biblia 3, already uploaded, still carry the canonical name in their bundles: their sign-in screens' "Service
+address" field accepts the Render one until the next build). Both service workers fetch `config.json` network-first, so an installed copy takes the
+new default on its next open; a learner who typed an address of their own keeps it (the override wins over config.json everywhere). The canonical
+name keeps resolving to the same service; it is simply not a default any more, because the owner's home router blocks it.
 
 ## The service moved to Render (2026-10-24, evening)
 

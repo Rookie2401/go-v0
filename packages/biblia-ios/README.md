@@ -8,7 +8,7 @@ It is modelled on `packages/goreview-ios` (same EAS custom iOS workflow, same st
 
 | variable | needed for | meaning |
 |---|---|---|
-| `REPOSITORY_SERVICE_URL` | release stage | public HTTPS origin of the Repository service, e.g. `https://repo.golearn-global-languages.com`. Loopback, private ranges, placeholder domains, credentials, query and fragment are refused. Written into the bundled `config.json` |
+| `REPOSITORY_SERVICE_URL` | release stage | public HTTPS origin of the Repository service: `https://go-v0.onrender.com`, the default of every system since 2026-10-27 (the canonical name `https://repo.golearn-global-languages.com` reaches the same service but some home routers block it). Loopback, private ranges, placeholder domains, credentials, query and fragment are refused. Written into the bundled `config.json` |
 | `REPOSITORY_HEALTH_CHECK_URL` | optional | where THIS computer reaches the same service for the pre-build health check (the PC's network blocks the public domain: use `http://127.0.0.1:8790`). Only the check moves; the bundle keeps `REPOSITORY_SERVICE_URL`. Honoured by `prepare-web.mjs` and `validate-staged-release.mjs` |
 | `BIBLIA_BUNDLE_ID` | release stage | the reverse-DNS App ID registered to the Apple Developer account; the owner will use `com.cjwalker.biblia`. Placeholders (`example`, `invalid`, `test`, `localhost` segments) are refused |
 | `BIBLIA_BUILD_NUMBER` | release stage | positive integer, higher than the last uploaded build of this app |
@@ -41,8 +41,8 @@ Prerequisite for the texts: `packages/biblia/public/data` (`npm run biblia:impor
 
 ```powershell
 npm install                       # once
-$env:REPOSITORY_SERVICE_URL='https://repo.golearn-global-languages.com'
-$env:REPOSITORY_HEALTH_CHECK_URL='http://127.0.0.1:8790'   # this PC's router blocks the domain; the local service is the same code
+$env:REPOSITORY_SERVICE_URL='https://go-v0.onrender.com'
+# $env:REPOSITORY_HEALTH_CHECK_URL='http://127.0.0.1:8790'   # only for an address this PC cannot reach (the canonical name); the Render address needs no redirect
 $env:BIBLIA_BUNDLE_ID='com.cjwalker.biblia'
 $env:BIBLIA_BUILD_NUMBER='1'
 $env:BIBLIA_MARKETING_VERSION='1.0.0'

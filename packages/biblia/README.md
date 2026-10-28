@@ -33,7 +33,7 @@ npx vite -c packages/biblia/vite.config.ts  # development server (port 5199)
 vite build -c packages/biblia/vite.config.ts                   # packages/biblia/dist
 vite build -c packages/biblia/vite.config.ts --mode extension  # packages/golearn-extension/dist/biblia/ (after npm run ext:build)
 npm run biblia:build-ext                    # the same; since 2026-10-23 npm run local:build no longer runs it (the extension links to the hosted edition instead)
-BIBLIA_SERVICE_URL=https://repo.golearn-global-languages.com npm run biblia:build-standalone   # packages/biblia/dist-standalone: the installable web app
+BIBLIA_SERVICE_URL=https://go-v0.onrender.com npm run biblia:build-standalone   # packages/biblia/dist-standalone: the installable web app
 ```
 
 Standalone edition (2026-10-22): `--mode standalone` builds the same site as an installable web app (docs/ecosystem/BIBLIA-STANDALONE.md,

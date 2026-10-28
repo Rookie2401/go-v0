@@ -27,7 +27,7 @@ EAS monorepo uploads include the whole repository, which would include unrelated
 On Windows PowerShell, set the public backend URL, registered App ID, and unused build number in the current shell, then prepare the stage:
 
 ```powershell
-$env:REPOSITORY_SERVICE_URL = 'https://your-public-repository-host'
+$env:REPOSITORY_SERVICE_URL = 'https://go-v0.onrender.com'   # the default address of every system (2026-10-27)
 $env:GOREVIEW_BUNDLE_ID = 'your.registered.bundle.id'
 $env:GOREVIEW_BUILD_NUMBER = '1'
 $env:GOREVIEW_MARKETING_VERSION = '1.0.0'
@@ -54,7 +54,7 @@ EAS Build returns an App Store Connect IPA but does not submit it. After the App
 Set these values in the shell or a local ignored environment file, never in a committed file:
 
 ```sh
-export REPOSITORY_SERVICE_URL='https://your-public-repository-host'
+export REPOSITORY_SERVICE_URL='https://go-v0.onrender.com'   # the default address of every system (2026-10-27)
 export GOREVIEW_BUNDLE_ID='your.registered.bundle.id'
 export APPLE_TEAM_ID='ABCDEFGHIJ'
 export GOREVIEW_BUILD_NUMBER='1'

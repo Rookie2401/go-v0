@@ -131,3 +131,9 @@ owner's PC (infra/cloudflare/README.md: tunnel goreview-repository, zone golearn
 edition against it with GOPRACTICE_SERVICE_URL=https://repo.golearn-global-languages.com (the copied config.json gets that
 serviceUrl; the source config.json keeps the local address), and use the same address as REPOSITORY_SERVICE_URL for the
 next TestFlight build. The PC must still be on and online; the tunnel is not yet installed as a Windows service.
+
+**Default address (2026-10-27).** The owner made `https://go-v0.onrender.com` the default address of every system: the hosted GoReview and Biblia and the setup
+app are built and published with it, the extension's `app/config.json` names it, and the iPhone shells take it as `REPOSITORY_SERVICE_URL`. The
+canonical name `https://repo.golearn-global-languages.com` is a DNS-only CNAME to the same Render service; it stays valid for anyone who typed it, but it is
+blocked by some home routers (the owner's among them), which is why it is no longer the default anywhere. Build against the default:
+`GOPRACTICE_SERVICE_URL=https://go-v0.onrender.com` for the installable GoReview, `REPOSITORY_SERVICE_URL=https://go-v0.onrender.com` for a TestFlight stage.

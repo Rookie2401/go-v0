@@ -34,13 +34,13 @@ npm run biblia:import                       # only if packages/biblia/public/dat
 ```
 PowerShell:
 ```
-$env:BIBLIA_SERVICE_URL = "https://repo.golearn-global-languages.com"
+$env:BIBLIA_SERVICE_URL = "https://go-v0.onrender.com"
 npm run biblia:build-standalone
 Remove-Item Env:BIBLIA_SERVICE_URL
 ```
 Bash:
 ```
-BIBLIA_SERVICE_URL=https://repo.golearn-global-languages.com npm run biblia:build-standalone
+BIBLIA_SERVICE_URL=https://go-v0.onrender.com npm run biblia:build-standalone
 ```
 Check the result: `packages/biblia/dist-standalone/config.json` must show the https address. The folder is about 49 MB (texts 19 MB,
 lexicon 28 MB, shell 1.4 MB), far under GitHub Pages' 1 GB limit.
@@ -83,7 +83,7 @@ inside it (it holds only built files), then continue from `robocopy`. If the bra
 GitHub Pages builds the branch within a minute or two: <https://rookie2401.github.io/biblia/>. The Pages settings (branch `gh-pages`, root) are
 already in place for the old app. Afterwards `git worktree remove C:\Users\CJWal\dev\biblia-pages` is optional tidying.
 
-The service address must be reachable from where the app is opened: `https://repo.golearn-global-languages.com` is. The service has to allow the
+The service address must be reachable from where the app is opened: `https://go-v0.onrender.com` is, and it is the default of every system since 2026-10-27 (the canonical name `https://repo.golearn-global-languages.com` reaches the same service but some home routers, the owner's included, block it). The service has to allow the
 page's origin (`https://rookie2401.github.io`) in its CORS settings; that is a service-side setting, not part of this build.
 
 ## The service worker

@@ -1,4 +1,4 @@
-/* GoReview service worker (classic script). Built into dist-review/sw.js by packages/gopractice/vite.config.ts --mode review,
+/* GoReview service worker (classic script). Built into dist-review/sw.js by packages/goreview/app/vite.config.ts --mode review,
  * which replaces the two tokens below: the build id (a hash of every shell file) and the list of files to precache.
  *
  *   shell        precached at install under "goreview-shell-<build id>": index, hashed assets, fonts, manifest, icons, config.json.
@@ -11,7 +11,7 @@
  */
 'use strict';
 
-var BUILD_ID = 'a6f4e79f8a0a';
+var BUILD_ID = '67cfd78c3de6';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -24,7 +24,7 @@ var PRECACHE = [
   "./assets/go-globe-land-B9y_pZR9.png",
   "./assets/go-globe-rim-B6Ee6OWP.png",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-Tl4UoGun.js",
+  "./assets/index-Db9QgdYz.js",
   "./assets/style-DAzcX7Hi.css",
   "./config.json",
   "./icons/apple-touch-icon.png",

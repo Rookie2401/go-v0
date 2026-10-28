@@ -404,3 +404,9 @@ img, svg, video, canvas { max-width: 100%; }
 .legal-text ul, .legal-text ol { padding-inline-start: 1.3rem; }
 .legal-text li { margin: .25rem 0; }
 .legal-text .notice { margin: .8rem 0; }
+
+/* GoReview's mark: the serif G on paper (its app icon), beside the name. */
+.go-brand { display: inline-flex; align-items: center; gap: .5rem; flex-shrink: 0; color: var(--ink); font-size: .95rem; letter-spacing: .01em; text-decoration: none; }
+.go-brand img { display: block; width: 36px; height: 36px; border-radius: 8px; }
+.go-brand:hover { text-decoration: none; }
+@media (max-width: 380px) { .go-brand img { width: 32px; height: 32px; } }

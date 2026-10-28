@@ -93,7 +93,9 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const langWrap = h('div', { class: 'language' });
   const syncEl = h('p', { id: 'sync-indicator', class: 'sync', role: 'status', 'aria-live': 'polite' });
   const acctEl = h('p', { class: 'account', id: 'account' });
-  const header = h('header', { class: 'topbar' }, langWrap, syncEl, acctEl);
+  // the mark is GoReview's own serif G (public/icons/icon.svg: the Western Canon brown on paper, the app's reading-room look), the same mark as its app icon
+  const brandLink = h('a', { class: 'go-brand', href: '#/review', 'aria-label': 'GoReview home' }, h('img', { src: new URL('./public/icons/icon.svg', import.meta.url).href, alt: '', width: '36', height: '36' }), h('span', {}, 'GoReview'));
+  const header = h('header', { class: 'topbar' }, brandLink, langWrap, syncEl, acctEl);
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   clear(root);
   root.append(h('div', { class: 'shell' }, header, main));

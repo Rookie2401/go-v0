@@ -73,19 +73,20 @@ const started = (async () => {
   const recorder = own ? own.recorder : app ? makeRecorder(undefined, app) : mobile.native
     ? { ...makeRecorder(undefined), reason: 'Sign in to GoReview (the app this page belongs to) to record what you read; until then Biblia is a reader only.' }
     : makeRecorder();
+  // the account edition's sync notice: shown by the Settings page (Account card), no longer a bar above every page (2026-10-27)
+  const syncStatus = own?.account ? createSyncStatus({ doc: document, account: own.account, recorder: own.recorder }) : undefined;
   const running = await createBibliaApp({
     win: window, doc: document,
     source: fetchJsonWith((input, init) => globalThis.fetch(input, init), './'),
     recorder,
     ...(own?.account ? { account: own.account, serviceAddress: own.serviceAddress } : {}),
+    ...(syncStatus ? { syncStatus: syncStatus.element } : {}),
     // the way back to GoReview exists only when this page is bundled INSIDE the GoReview app (not in Biblia's own shell, which has the marker)
     ...(mobile.native && !isStandalone() ? { backUrl: '../index.html#/review' } : {}),
     ...(storage ? { storage } : {}),
     now: () => new Date(),
   });
-  if (own?.account) {
-    const syncStatus = createSyncStatus({ doc: document, account: own.account, recorder: own.recorder });
-    document.getElementById('app')?.before(syncStatus.element);
+  if (syncStatus) {
     const destroy = running.destroy.bind(running);
     running.destroy = () => { syncStatus.destroy(); destroy(); };
   }

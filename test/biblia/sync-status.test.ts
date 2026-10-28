@@ -49,6 +49,15 @@ describe('Biblia sync status', () => {
     s.destroy();
   });
 
+  it('is a plain block for the Settings page, not a sticky bar: no inline position, no --sync-h on <html> (2026-10-27)', () => {
+    const s = setup({ pending: 2, retrying: false });
+    expect(s.element.style.position).toBe('');
+    expect(s.element.getAttribute('style')).toBeNull();
+    expect(document.documentElement.style.getPropertyValue('--sync-h')).toBe('');
+    expect(s.element.querySelector('button')?.classList.contains('btn')).toBe(true);
+    s.destroy();
+  });
+
   it('explains an expired sign-in and links back to the account screen', () => {
     const s = setup({ pending: 3, retrying: false });
     s.setState({ signedIn: false, expired: true });

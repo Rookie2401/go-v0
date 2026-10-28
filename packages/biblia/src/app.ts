@@ -34,6 +34,8 @@ export interface BibliaDeps {
   account?: AccountService;
   /** With the account: the Repository address in use, the usual one, and the way to change it on this device (the sign-in screen's "Service address", 2026-10-25). */
   serviceAddress?: { current: string; standard: string; set(url: string | undefined): void };
+  /** With the account: the live sync notice (src/syncStatus.ts), shown in the Settings page's Account card and nowhere else (2026-10-27: it used to be a bar above every page). */
+  syncStatus?: HTMLElement;
   storage?: Storage;
   /** Where "GoReview" at the top leads when Biblia is a page of the GoReview app (the iPhone edition); absent elsewhere. */
   backUrl?: string;
@@ -559,13 +561,16 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
         accountCard.append(
           h('p', { id: 'settings-email' }, `Signed in as ${st.email ?? 'your account'}`),
           para(recordingNotice(), 'muted'),
-          ...(waiting ? [para(`${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} waiting on this device to be sent.`, 'muted')] : []),
+          // the live sync notice (pending items, Sync now, last sent) lives here; without it, the plain count
+          ...(deps.syncStatus ? [deps.syncStatus] : waiting ? [para(`${waiting} lookup${waiting === 1 ? '' : 's'} and mark${waiting === 1 ? '' : 's'} waiting on this device to be sent.`, 'muted')] : []),
           h('div', { class: 'row' }, out, h('a', { class: 'btn', href: '#/account' }, 'Account')),
           legalLinks());
       } else {
         accountCard.append(
           h('p', { id: 'settings-signed-out', class: st.expired ? 'error' : 'muted' }, st.expired ? 'Your sign-in ended. Sign in again; what you did since is kept on this device and sent after.' : 'Not signed in.'),
           para(recordingNotice(), 'muted'),
+          // an expired sign-in's notice names what waits on the device
+          ...(deps.syncStatus && st.expired ? [deps.syncStatus] : []),
           h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/account', id: 'settings-signin' }, 'Sign in')),
           legalLinks());
       }

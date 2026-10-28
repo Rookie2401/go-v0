@@ -311,6 +311,8 @@ button.pill[aria-pressed='true'] { background: var(--accent); border-color: var(
   .field input[type='text'], .field input[type='url'], .field input[type='email'], .field input[type='password'] { font-size: 1rem; min-height: 2.75rem; } /* 16px or more: iOS does not zoom the page on focus */
 }
 
-/* The account edition's sync-status bar (src/syncStatus.ts) sits above the page, sticky at the top; it sets --sync-h on <html> to its own
-   height while visible (0 when hidden) so the top bars stick just below it instead of under it (2026-10-24). */
-.sync-status { z-index: 30; }
+/* The account edition's sync notice (src/syncStatus.ts) is a line of the Settings page's Account card: pending items with Sync now, or the
+   last successful send. Until 2026-10-27 it was a bar sticky above every page (and set --sync-h, which the top bars still read, now always 0). */
+.sync-status { display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem; margin: 0.65rem 0; color: var(--ink-soft); }
+.sync-status[hidden] { display: none; }
+.sync-status .sync-status__action { font-size: 0.92rem; }

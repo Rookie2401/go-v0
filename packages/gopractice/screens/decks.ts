@@ -1,7 +1,8 @@
 /**
  * #/review/decks — Saved decks: the decks the learner saved, newest first ("date · N cards · language"), and Class Essentials, the built-in deck
  * for the language: its name as a bigger, friendlier title over "N cards · language", with no description or note on this page (the owner,
- * 2026-10-28; the deck keeps both in its record). Each: Practise again, Remove. A removed Class Essentials can be restored.
+ * 2026-10-28; the deck keeps both in its record). The card itself is the control: pressing it starts the practice (no "Practise again"
+ * button, the owner, 2026-10-28), and Remove sits at the card's top right. A removed Class Essentials can be restored.
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
@@ -41,25 +42,27 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     for (const d of decks) {
       const when = d.name ?? new Date(d.savedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
       const language = languageName(d.languageId);
-      const again = button('Practise again', () => {
-        again.disabled = true;
-        void practise(d).finally(() => { if (view.alive()) again.disabled = false; });
-      }, { class: 'btn small', 'data-action': 'practise-again', 'aria-label': `Practise again: ${when}, ${plural(d.items.length, 'card', 'cards')}` });
       const remove = button('Remove', () => {
         void (async () => {
           await removeSavedDeck(ctx, id!.learnerId, id!.languageId, d.id);
           setStatus(status, 'Deck removed.', 'ok');
           await paint();
         })();
-      }, { class: 'linklike', 'data-action': 'remove-deck', 'aria-label': `Remove the deck of ${when}` });
+      }, { class: 'linklike deckrow-remove', 'data-action': 'remove-deck', 'aria-label': `Remove the deck of ${when}` });
       const builtin = d.builtin === 'class-essentials';
-      list.append(h('li', { class: builtin ? 'deckrow deckrow-builtin' : 'deckrow', 'data-deck-id': d.id },
+      // the whole card is the button that starts the practice; its visible text is its name, with "press to practise" for a screen reader
+      const open = h('button', { type: 'button', class: 'deckrow-open', 'data-action': 'practise-again' },
         h('span', { class: 'deckrow-body' },
           builtin ? h('span', { class: 'deckrow-title' }, when) : null,
           h('span', { class: 'deckrow-line' }, builtin ? `${plural(d.items.length, 'card', 'cards')} · ${language}` : `${when} · ${plural(d.items.length, 'card', 'cards')} · ${language}`),
           !builtin && d.description ? h('span', { class: 'deckrow-note' }, d.description) : null,
           !builtin && d.notes ? h('span', { class: 'deckrow-note deckrow-fine' }, d.notes) : null),
-        h('span', { class: 'entry-actions' }, again, remove)));
+        h('span', { class: 'sr' }, ', press to practise')) as HTMLButtonElement;
+      open.addEventListener('click', () => {
+        open.disabled = true;
+        void practise(d).finally(() => { if (view.alive()) open.disabled = false; });
+      });
+      list.append(h('li', { class: builtin ? 'deckrow deckrow-builtin' : 'deckrow', 'data-deck-id': d.id }, open, remove));
     }
   }
   await paint();

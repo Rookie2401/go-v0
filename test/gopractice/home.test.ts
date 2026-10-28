@@ -72,7 +72,7 @@ describe('the GoReview home', () => {
     expect(rig.root.querySelector('#save-deck')).toBeNull();
   });
 
-  it('Save deck moves the deck to Saved decks and plans a fresh one; the list offers Practise again and Remove', async () => {
+  it('Save deck moves the deck to Saved decks and plans a fresh one; pressing the card starts the practice and Remove sits on the card (2026-10-28: no "Practise again" button)', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), ...dueCard(A, 'mace', 'meaning-to-form')]);
     await reopen(rig);
@@ -87,7 +87,15 @@ describe('the GoReview home', () => {
     click(rig.q('#entry-previous'));
     await until(() => rig.app.current() === 'review/decks' && rig.qa('.deckrow').length === 2, 'the list');
     expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) .deckrow-line').textContent).toMatch(/ · 2 cards · Albanian$/);
-    click(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="practise-again"]'));
+    // the card is the button: it holds the deck's line and names itself for a screen reader; no separate "Practise again" button, Remove beside it
+    const card = rig.q<HTMLButtonElement>('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="practise-again"]');
+    expect(card.tagName).toBe('BUTTON');
+    expect(card.classList.contains('deckrow-open')).toBe(true);
+    expect(card.querySelector('.deckrow-line')).not.toBeNull();
+    expect(card.textContent).toMatch(/2 cards · Albanian, press to practise$/);
+    expect(rig.root.querySelector('.deckrow .btn')).toBeNull();
+    expect(rig.q('[data-deck-id]:not([data-deck-id^="class-essentials"]) [data-action="remove-deck"]').classList.contains('deckrow-remove')).toBe(true);
+    click(card);
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     expect(rig.app.ctx.run.active!.plan.items.map((p) => p.item.unitId).sort()).toEqual([unitOf('mace'), unitOf('zog')]);
 

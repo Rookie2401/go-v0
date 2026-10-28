@@ -246,15 +246,18 @@ ul.vocablist, ul.decklist { list-style: none; padding: 0; margin: .4rem 0 0; bor
 .vocab-met { flex: 0 1 auto; font-size: .9rem; color: var(--ink-soft); overflow-wrap: anywhere; }
 .vocab-level { margin-left: auto; flex: 0 0 auto; font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
 .vocab-more { margin: 1rem 0 0; text-align: center; }
-.deckrow { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1.2rem; padding: .85rem .5rem; }
+/* a saved deck is one card: the whole of it is the button that starts the practice; Remove sits at its top right (the owner, 2026-10-28) */
+.deckrow { position: relative; padding: .85rem .5rem; }
+.deckrow:hover { background: color-mix(in srgb, var(--divider) 35%, transparent); }
+.deckrow-open { display: block; width: 100%; min-height: 0; padding: 0 5.5rem 0 0; text-align: left; font: inherit; color: inherit; background: none; border: 0; border-radius: 4px; cursor: pointer; }
+.deckrow-open:hover:not(:disabled) { background: none; border-color: transparent; }
+.deckrow-remove { position: absolute; top: .85rem; right: .5rem; }
 .deckrow-line { font-size: 1.15rem; }
 /* Class Essentials (the preloaded class deck): its name as a bigger, friendlier title; the count and language quiet under it (the owner, 2026-10-28) */
 .deckrow-title { font-size: 1.6rem; line-height: 1.2; color: var(--ink); letter-spacing: .005em; }
 .deckrow-builtin { padding-top: 1.05rem; padding-bottom: 1.05rem; }
 .deckrow-builtin .deckrow-line { font-size: 1rem; color: var(--ink-soft); }
-.deckrow-builtin .entry-actions { align-self: center; }
-.deckrow .entry-actions { margin: 0; }
-.deckrow .btn.small { border-radius: 999px; padding: .1rem .85rem; }
+.deckrow-builtin .deckrow-remove { top: 1.05rem; }
 #decks-empty, #vocab-empty { padding: .9rem .5rem; }
 ul.plainlinks { list-style: none; padding: 0; margin: .3rem 0; }
 ul.plainlinks li { padding: .3rem 0; }
@@ -314,6 +317,7 @@ html[data-edition="review"] { overscroll-behavior-y: none; }
   .vocab-history, .update-link, .linklike, .toggle-link { min-width: 2.75rem; }
   .vocab-row { min-height: 2.75rem; }
   button.grade { min-height: 2.75rem; min-width: 2.75rem; padding: .2rem .5rem; }
+  .deckrow-open { display: block; justify-content: flex-start; min-height: 2.75rem; } /* the card stays a block of text, not a centred button */
   .btn.small, button.small { padding: .1rem .85rem; }
   .entry-link { min-height: 2.75rem; }
   .vocab-sorts, .entry-actions, .bar-actions { gap: .3rem 1rem; }
@@ -404,7 +408,7 @@ img, svg, video, canvas { max-width: 100%; }
   .grades { flex-wrap: nowrap; justify-content: space-between; gap: 0; }
   button.grade { flex: 1 1 0; min-width: 0; justify-content: center; gap: .3rem; padding: 0 .1rem; }
   .grade-word { font-size: .85rem; }
-  .deckrow { gap: .3rem .8rem; }
+  .deckrow-open { padding-right: 4.75rem; }
   .deckrow-line { font-size: 1.05rem; }
   .deckrow-title { font-size: 1.45rem; }
   .deckrow-builtin .deckrow-line { font-size: .95rem; }
@@ -424,7 +428,7 @@ img, svg, video, canvas { max-width: 100%; }
 }
 
 /* Saved decks: a built-in deck carries a name, a description and a fine-print note under its line */
-.deckrow-body { display: flex; flex-direction: column; gap: .15rem; min-width: 0; flex: 1 1 14rem; }
+.deckrow-body { display: flex; flex-direction: column; gap: .15rem; min-width: 0; }
 .deckrow-note { color: var(--ink-soft); font-size: .95rem; overflow-wrap: anywhere; }
 .deckrow-fine { color: var(--ink-faint); font-size: .85rem; font-style: italic; }
 .restore-line { margin: .8rem 0 0; max-width: none; }

@@ -205,16 +205,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     password.focus();
   }
 
-  // ── the devices signed in, out of the way
-  // the devices signed in, out of the way; with them, the way to leave this device clean (a shared or borrowed one)
-  const forget = button('Sign out and remove this device\x27s data', () => {
-    void (async () => {
-      await ctx.signOut({ forget: true });
-      ctx.go((await ctx.mode()) === 'device' ? 'review' : 'signin');
-    })();
-  }, { id: 'sign-out-forget', class: 'linklike small' });
-  const devices = h('details', { class: 'quiet', id: 'acct-devices' }, h('summary', {}, 'Devices signed in'), sessionsBlock(ctx, view),
-    h('p', { class: 'muted help' }, 'On a shared or borrowed device: ', forget, '. It also deletes the local copy of your events and any events that could not be sent.'));
+  // ── the devices signed in, out of the way (the owner's request of 2026-10-28: no "remove this device's data" link; Sign out is the one exit)
+  const devices = h('details', { class: 'quiet', id: 'acct-devices' }, h('summary', {}, 'Devices signed in'), sessionsBlock(ctx, view));
 
   append(card, [
     banner,

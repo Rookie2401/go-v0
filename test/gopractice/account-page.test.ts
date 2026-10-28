@@ -47,9 +47,9 @@ describe('the account page', () => {
     expect(actions.map((b) => b.textContent)).toEqual(['Sign out', 'Download my data', 'Delete account']);
     for (const b of actions) expect(b.classList.contains('linklike'), b.id).toBe(true);
     expect(rig.q('#delete-open').classList.contains('danger')).toBe(true);
-    // the device-forgetting sign-out is kept, but out of the way, under the devices disclosure
-    expect(rig.root.querySelector('.account-actions #sign-out-forget')).toBeNull();
-    expect(rig.q('#acct-devices #sign-out-forget').classList.contains('linklike')).toBe(true);
+    // there is no "remove this device's data" link anywhere on the page: Sign out is the one exit
+    expect(rig.root.querySelector('#sign-out-forget')).toBeNull();
+    expect(rig.q('#account-card').textContent).not.toContain('remove this device');
     // nothing of the deletion is on the page before it is asked for; the devices wait under a closed disclosure
     expect(rig.q<HTMLElement>('#delete-body').hidden).toBe(true);
     expect(rig.q('#delete-body').textContent).toBe('');

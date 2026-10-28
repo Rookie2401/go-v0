@@ -93,7 +93,7 @@ describe('Settings', () => {
     await until(async () => (await rig.app.ctx.serviceUrl()) === 'https://other.example.org', 'the new address');
   });
 
-  it('signs out: the session and cache go, unsent events stay under the account; "remove this device\'s data" removes them too', async () => {
+  it('signs out: the session and cache go, unsent events stay under the account; the page offers no "remove this device\'s data" link', async () => {
     const service = defaultService();
     const rig = await makeRig({ service, signedIn: true });
     await rig.app.ctx.whenSynced();
@@ -110,8 +110,9 @@ describe('Settings', () => {
 
     await rig.signIn();
     await rig.go('account');
-    rig.q('#sign-out-forget').click();
-    await until(() => rig.app.current() === 'signin', 'the sign-in screen');
+    expect(rig.root.querySelector('#sign-out-forget')).toBeNull();
+    // the device-forgetting sign-out remains in the context (ctx.signOut({ forget: true }), test/audit/privacy.devices.test.ts); the page no longer offers it
+    await rig.app.ctx.signOut({ forget: true });
     keys = Object.keys(await rig.area.get(null));
     expect(keys.filter((k) => k.startsWith('u:L1:'))).toEqual([]);
     expect(keys.filter((k) => k.startsWith('gopractice:prefs:L1'))).toEqual([]);

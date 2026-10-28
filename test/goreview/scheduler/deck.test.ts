@@ -77,6 +77,20 @@ describe('foldDeck: creating items and scheduling', () => {
     expect(item.history.map((h) => h.elapsedDays)).toEqual([0, 1, 1, 1, 1]);
   });
 
+  it('does not schedule legacy-shaped forged invalid, assisted or no-claim grades', () => {
+    const cases = [
+      reviewed(ID, at(1000), 3, { extra: { outcome: 'invalid-question' } }),
+      reviewed(ID, at(2000), 3, { extra: { hinted: true } }),
+      { ...reviewed(ID, at(3000), 3), evidence: { quality: 'none' as const } },
+      reviewed(ID, at(4000), 3, { extra: { challenged: true } }),
+      reviewed(ID, at(5000), 3, { extra: { retrievalAttempted: false } }),
+    ];
+    const fold = foldDeck([added('lex:logos', T0), ...cases], sched, { now: NOW });
+    expect(fold.items[0]!.schedule.reps).toBe(0);
+    expect(fold.items[0]!.history).toEqual([]);
+    expect(fold.unscored[ID]).toBe(5);
+  });
+
   it('takes outcome, exerciseId and family from the payload when they are valid, and falls back otherwise', () => {
     const evs = [
       added('lex:logos', T0),

@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { validateAppIcons } from './validate-app-icon.mjs';
+import { verifyNativePayloadManifest } from './native-payload.mjs';
 
 const packageDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const repositoryDir = path.resolve(packageDir, '../..');
@@ -52,6 +53,7 @@ async function copySafe(source, destination, relative = '') {
 }
 
 run('npm', ['run', 'release:sync'], packageDir);
+verifyNativePayloadManifest(path.join(packageDir, 'web'), { requireRelease: true });
 // Reset the stage. A terminal left open inside .eas-project keeps the folder itself busy on Windows (EBUSY on rmdir) while its CONTENTS
 // can still be removed, so fall back to emptying it; if even that fails, say what to close (2026-10-24, seen on the Biblia shell).
 async function resetStage() {
@@ -67,10 +69,13 @@ await mkdir(path.join(stageDir, '.eas'), { recursive: true });
 await mkdir(path.join(stageDir, 'scripts'), { recursive: true });
 
 await copySafe(path.join(packageDir, 'web'), path.join(stageDir, 'web'), 'web');
+verifyNativePayloadManifest(path.join(stageDir, 'web'), { requireRelease: true });
 await copySafe(path.join(packageDir, 'ios'), path.join(stageDir, 'ios'), 'ios');
 await cp(path.join(packageDir, '.eas', 'build'), path.join(stageDir, '.eas', 'build'), { recursive: true });
 await cp(path.join(packageDir, 'templates', 'eas-project', 'package.json'), path.join(stageDir, 'package.json'));
 await cp(path.join(packageDir, 'scripts', 'validate-staged-release.mjs'), path.join(stageDir, 'scripts', 'validate-staged-release.mjs'), { recursive: true });
+await cp(path.join(packageDir, 'scripts', 'native-payload.mjs'), path.join(stageDir, 'scripts', 'native-payload.mjs'));
+await cp(path.join(packageDir, 'scripts', 'verify-native-payload.mjs'), path.join(stageDir, 'scripts', 'verify-native-payload.mjs'));
 await cp(path.join(packageDir, 'scripts', 'set-build-version.mjs'), path.join(stageDir, 'scripts', 'set-build-version.mjs'), { recursive: true });
 await cp(path.join(packageDir, 'scripts', 'prepare-eas-ios-project.mjs'), path.join(stageDir, 'scripts', 'prepare-eas-ios-project.mjs'));
 await cp(path.join(packageDir, 'scripts', 'validate-app-icon.mjs'), path.join(stageDir, 'scripts', 'validate-app-icon.mjs'));

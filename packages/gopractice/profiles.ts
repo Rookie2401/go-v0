@@ -1,23 +1,36 @@
 import { CONTRACT_VERSION, validateEvent, type GoEvent, type SchedulerProfile } from '../repository-contract/src';
 import { createFsrsScheduler } from '../goreview/src/scheduler/fsrs';
+import { schedulerForReviewProfile } from '../goreview/src/scheduler/replay-profile';
 import { KNOWABILITY_PRIORITY_POLICY_VERSION } from '../goreview/src/planner/priority-policy';
 import type { AppContext } from './context';
 import { button, field, h, p, setStatus, statusLine } from './dom';
 
 export const PROFILE_KEY = 'goreview.schedulerProfile';
 
-/** Explicit profile assertions stay in the shared Repository event stream. */
+export interface SchedulerProfileSelection { profile?: SchedulerProfile; error?: string; reset?: boolean }
+export function schedulerProfileSelection(events: readonly GoEvent[]): SchedulerProfileSelection {
+  const candidates = events.filter(e => e.kind === 'PreferenceChanged' && e.payload.key === PROFILE_KEY && Number.isFinite(Date.parse(e.at)));
+  const byId = new Map<string, GoEvent>(), conflicts = new Set<string>();
+  const identity = (event: GoEvent) => JSON.stringify(event, (key,value) => key === 'seq' || key === 'recordedAt' ? undefined : value && typeof value === 'object' && !Array.isArray(value) ? Object.fromEntries(Object.entries(value).sort(([a],[b])=>a<b?-1:a>b?1:0)) : value);
+  for (const e of candidates) {
+    const old = byId.get(e.id);
+    if (old && identity(old) !== identity(e)) conflicts.add(e.id);
+    if (!old || identity(e) < identity(old)) byId.set(e.id,e);
+  }
+  const newest = [...byId.values()].sort((a,b) => Date.parse(b.at)-Date.parse(a.at) || (b.id<a.id?-1:b.id>a.id?1:0))[0];
+  if (!newest) return {};
+  if (conflicts.has(newest.id)) return { error: 'The selected memory profile has conflicting event identities. Select a valid profile or return to supported defaults.' };
+  const value = newest.payload.value;
+  if (value === null) return { reset: true };
+  if (value === undefined) return { error: 'The selected profile assertion has no settings. Return to supported defaults.' };
+  const resolved = schedulerForReviewProfile(value, createFsrsScheduler());
+  if ('error' in resolved) return { error: resolved.error + '. Select a valid profile or return to supported defaults.' };
+  if (!resolved.scheduler.profile?.parameters || resolved.scheduler.profile.parameters.length !== 21) return { error: 'The selected profile has no supported FSRS parameter vector.' };
+  return { profile: { ...resolved.scheduler.profile, parameters: [...resolved.scheduler.profile.parameters], priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION } };
+}
+/** Compatibility accessor. Hosts must inspect schedulerProfileSelection.error before scheduling. */
 export function activeSchedulerProfile(events: readonly GoEvent[]): SchedulerProfile | undefined {
-  const newest = events.filter((e) => e.kind === 'PreferenceChanged' && e.payload.key === PROFILE_KEY)
-    .sort((a, b) => Date.parse(b.at) - Date.parse(a.at) || b.id.localeCompare(a.id))[0];
-  const value = newest?.payload.value as SchedulerProfile | null | undefined;
-  if (!value) return undefined;
-  try {
-    if (!Array.isArray(value.parameters) || value.parameters.length !== 21) return undefined;
-    const scheduler = createFsrsScheduler({ parameters: value.parameters, desiredRetention: value.desiredRetention, maximumInterval: value.maximumInterval });
-    if (scheduler.parametersVersion !== value.parametersVersion) return undefined;
-    return { ...scheduler.profile!, priorityPolicyVersion: KNOWABILITY_PRIORITY_POLICY_VERSION };
-  } catch { return undefined; }
+  return schedulerProfileSelection(events).profile;
 }
 
 export async function profileControls(ctx: AppContext): Promise<HTMLElement> {
@@ -26,8 +39,9 @@ export async function profileControls(ctx: AppContext): Promise<HTMLElement> {
   if (!identity) { details.append(p('Choose a language first.')); return details; }
   const file = h('input', { id: 'scheduler-candidate', type: 'file', accept: '.json,application/json' }) as HTMLInputElement;
   const status = statusLine();
-  const active = activeSchedulerProfile(await ctx.events(identity.languageId));
-  details.append(p(active ? 'An explicitly selected personal profile is active for future reviews.' : 'Supported default parameters are active.'),
+  const selection = schedulerProfileSelection(await ctx.events(identity.languageId));
+  const active = selection.profile;
+  details.append(p(selection.error ?? (active ? 'An explicitly selected personal profile is active for future reviews.' : 'Supported default parameters are active.')),
     p('Import a validated candidate from the local official optimizer. This changes future reviews; past grades retain their own parameter profiles. No history is uploaded.'), field('Candidate report', file));
   const recordProfile = async (value: SchedulerProfile | null) => {
     const context = await ctx.eventContext();

@@ -26,11 +26,22 @@ import type { ActiveRun, ItemControl, Presented } from '../ports';
 import type { ReviewExercise } from '../../goreview/src/exercises/shared';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession } from '../workspace';
 import { fillItemHistory } from './history';
-import { entriesOf, planFollowUp, planFromEntries, VOCAB_NOTE, WEAK_SHARE, weakEntries } from '../deckModel';
+import { entriesOf, planFromEntries, planRemediation, planCurrentDeck, VOCAB_NOTE } from '../deckModel';
+import { remediationBacklog } from '../../goreview/src/planner/remediation';
 import { DEFAULT_UI, getUiPrefs, type UiPrefs } from './uiprefs';
 import type { View } from './view';
 
 const GRADES = ['again', 'hard', 'good', 'easy'] as const;
+const OVERLAP_LABEL: Record<NonNullable<Presented['planned']['overlap']>, string> = {
+  scheduled: 'Scheduled return', remediation: 'Remediation reassessment', explicit: 'Optional extra practice',
+};
+const PRESENTATION_REASON_LABEL: Record<string, string> = {
+  'due-learning-return': 'A timed learning return became due.',
+  'remediation-reassessment': 'You chose a delayed remediation reassessment.',
+  'explicit-repeat': 'You chose to repeat this practice.',
+};
+const presentationReasonLabel = (reason: string | undefined, overlap: NonNullable<Presented['planned']['overlap']>): string =>
+  PRESENTATION_REASON_LABEL[reason ?? ''] ?? OVERLAP_LABEL[overlap];
 
 /** A speaker icon for the card's corner: plain SVG, no text; the button around it carries the name. */
 function speakerIcon(doc: Document): Element {
@@ -214,6 +225,7 @@ class Controller {
   private async showCurrent(): Promise<void> {
     this.disposeAudio();
     this.presented = await this.run.driver.current();
+    this.run.plan = this.run.driver.state().plan;
     if (!this.presented) { await this.conclude('complete'); return; }
     this.given = undefined;
     this.revealed = false;
@@ -290,8 +302,20 @@ class Controller {
       try { await this.commit(); } catch (e) { this.say(`That answer could not be recorded (${e instanceof Error ? e.message : String(e)}).`, 'error'); return; }
       const ectx = await this.ctx.eventContext();
       const ev = ectx ? this.ctx.engine.controlEvent(ectx, item, c) : undefined;
-      if (ev) {
-        await this.ctx.record([ev]);
+      if (ev && ectx) {
+        const history = await this.ctx.events(ectx.languageId);
+        const prefs = await this.ctx.state.getPrefs(ectx.learnerId, ectx.languageId);
+        const exists = this.ctx.engine.foldDeck(history, ectx.languageId, prefs, ectx.now).some(row => row.itemId === item.itemId);
+        const batch = [];
+        if (!exists) {
+          const creation = this.ctx.engine.cardAdded(ectx, item, 'learner');
+          creation.payload.lifecycle = 'create';
+          creation.payload.admission = {at:ectx.now,intent:{kind:'explicit',reason:'selected-vocabulary',requestedAt:ectx.now}};
+          batch.push(creation);
+        }
+        batch.push(ev);
+        const recorded = await this.ctx.record(batch);
+        if (recorded.refused.length) { this.say('The control could not be saved: ' + recorded.refused[0].issues.join('; '), 'error'); return; }
         this.run.controls.push({ itemId: item.itemId, unitId: item.unitId, control: c.kind });
       }
       // the answered item (if any) already advanced the session; an unanswered one is passed over without a write
@@ -422,6 +446,8 @@ class Controller {
     return h('div', { class: 'session-bar', id: 'session-header', role: 'group', 'aria-label': 'Session' },
       h('span', { class: 'bar-kicker', id: 'session-progress' }, `${pr.index + 1} of ${pr.total}`),
       h('span', { class: 'bar-kicker bar-kind' }, FAMILY_LABEL[pr.exercise.family]),
+      pr.planned.overlap ? h('span', { class: 'bar-kicker session-overlap', 'data-overlap': pr.planned.overlap },
+        `${OVERLAP_LABEL[pr.planned.overlap]}${PRESENTATION_REASON_LABEL[pr.planned.presentationReason ?? ''] ? ` · ${PRESENTATION_REASON_LABEL[pr.planned.presentationReason!]}` : ''}`) : null,
       h('span', { class: 'bar-actions' },
         withSkip ? button('Skip', () => void this.skip(), { id: 'skip', class: 'linklike', title: 'Skip (Esc)', 'aria-keyshortcuts': 'Escape' }) : null,
         button('Finish early', () => void this.finish('early'), { id: 'finish-early', class: 'linklike' })));
@@ -857,16 +883,13 @@ export function parseCorrection(text: string): { lexemeId: string } | { features
 
 // ───────────────────────────── summary ─────────────────────────────
 
-/**
- * What to do next with this deck: ask the same cards again, or build a new deck of which half (WEAK_SHARE) is this deck's weak
- * words (not quite, skipped, partly, hard, not judged; weakest first) and the rest what is due or new next. Each begins a new
- * session on this screen; the finished one is already recorded.
- */
-function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, tag: string): HTMLElement {
-  const weak = weakEntries(run);
-  const planned = run.plan.items.length;
+/** Next paths are labeled by their actual scheduling purpose. */
+async function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, _tag: string): Promise<HTMLElement> {
+  const planned = run.plan.initialQuestionCount ?? run.plan.items.length;
   const status = statusLine();
-  const sharePct = Math.round(WEAK_SHARE * 100);
+  const model = await loadReviewModel(ctx);
+  const scheduled = model ? await planCurrentDeck(ctx, model) : undefined;
+  const remediation = model ? remediationBacklog(model.deck.filter(item => !item.invalidatedAt), model.events, model.now) : [];
   const cards = (n: number): string => `${n} card${n === 1 ? '' : 's'}`;
   const begin = async (make: (model: NonNullable<Awaited<ReturnType<typeof loadReviewModel>>>) => Promise<SessionPlan | undefined>, buttons: HTMLButtonElement[]): Promise<void> => {
     for (const b of buttons) b.disabled = true;
@@ -882,30 +905,47 @@ function nextDeckSection(ctx: AppContext, run: ActiveRun, actions: NextActions, 
       setStatus(status, `The next deck could not be started: ${e instanceof Error ? e.message : String(e)}`, 'error');
     } finally { for (const b of buttons) b.disabled = false; }
   };
-  const repeat = button('Repeat this deck', () => { void begin((model) => planFromEntries(ctx, model, entriesOf(run.plan)), [repeat, fresh]); },
+  const repeat = button('Repeat this batch', () => { void begin(async (model) => {
+    return planFromEntries(ctx, model, entriesOf(run.plan), run.plan.batch?.targetQuestions ?? run.plan.questionLimit ?? planned);
+  }, [repeat]); },
     { class: 'btn', id: 'repeat-deck', 'aria-label': `Repeat this deck: the same ${cards(planned)} again` });
-  const fresh = button('New deck from the weak words', () => { void begin(async (model) => (await planFollowUp(ctx, model, run))?.plan, [repeat, fresh]); },
-    { class: 'btn primary', id: 'new-deck-weak' });
-  if (!weak.length) fresh.disabled = true;
-  const names = weak.slice(0, 6).flatMap((w, i) => [i ? ', ' : '', h('span', langProps(tag), w.label)]);
+  const fresh = button('Begin ready reassessment', () => { void begin(async (model) => planRemediation(ctx, model), [repeat, fresh]); },
+    { class: 'btn primary', id: 'begin-remediation' });
+  fresh.disabled = !remediation.some(c => c.ready);
+  const nextAt = scheduled?.summary.nextReturnAt;
+  const nextReviewAt = scheduled?.summary.nextReviewAt;
+  const continueWork = scheduled?.entries.length ? button(`Continue ready work (${cards(scheduled.entries.length)})`, (event) => {
+    void begin(async (model) => (await planCurrentDeck(ctx, model)).plan, [event.currentTarget as HTMLButtonElement]);
+  }, { id: 'continue-due-work', class: 'btn primary' }) : undefined;
+  const setupLink = ctx.deps.links?.setup ?? ctx.deps.links?.extension;
+  const goLearn = setupLink ? h('a', { class: 'btn', id: 'continue-golearn', href: setupLink }, 'Continue reading in GoLearn') : null;
+  const remediationNote = h('p', { class: 'muted', id: 'next-remediation-note' },
+    `Remediation is optional and separate from due work: ${remediation.filter(c => !c.studiedAt).length} need study, ${remediation.filter(c => !!c.studiedAt && !c.ready).length} await their delayed return, and ${remediation.filter(c => c.ready).length} are ready for reassessment.`);
+  const extra = h('details', { id: 'optional-extra-practice', class: 'card' }, h('summary', {}, 'Optional extra practice'),
+    h('p', { class: 'muted', id: 'optional-repeat-note' }, 'Repeat the same session items, capped by your current deck size and session time settings. Other saved-deck members remain available in their collection; this does not represent a new due session.'), repeat);
   return h('section', { id: 'summary-next', class: 'card', 'aria-labelledby': 'summary-next-heading' },
     h('h2', { id: 'summary-next-heading' }, 'Next'),
-    p(`Repeat asks the same ${cards(planned)} again, in a new session.`, 'muted'),
-    h('p', { class: 'muted', id: 'weak-note' }, ...(weak.length
-      ? [`${weak.length} of the ${cards(planned)} ${weak.length === 1 ? 'was' : 'were'} weak (not quite, skipped, partly, hard): `, ...names, weak.length > 6 ? `, and ${weak.length - 6} more` : '',
-        `. The new deck gives ${sharePct}% of its cards to them, weakest first, and fills the rest with what is due or new next.`]
-      : ['Every card was answered correctly, so there are no weak words to build a new deck from; the home has your next deck.'])),
-    h('div', { class: 'row' }, repeat, fresh), status);
+    p(`Next scheduled session: ${scheduled?.entries.length ?? 0} eligible question(s) now · ${scheduled?.summary.dueReviews ?? 0} due reviews · ${scheduled?.summary.dueLearning ?? 0} due learning returns · ${scheduled?.summary.newAvailable ?? 0} new admissions.`, 'muted'),
+    continueWork ?? null,
+    nextAt ? p(`Next short-term learning return: ${new Date(nextAt).toLocaleString()}. GoReview keeps it scheduled; you do not need to wait here.`, 'muted') : null,
+    nextReviewAt ? p(`Next scheduled review: ${new Date(nextReviewAt).toLocaleString()}.`, 'muted') : null,
+    remediationNote,
+    fresh,
+    h('div', { class: 'row' }, button(remediation.some(c => !c.studiedAt) ? 'Study remediation' : 'Open remediation', () => ctx.go('review/remediation'), { class: 'btn', id: 'open-remediation' })),
+    h('h3', {}, 'Continue GoLearn'), goLearn ?? p('Continue your next reading in GoLearn; GoReview keeps your due work here.', 'muted'),
+    extra, status);
 }
 
 export async function renderSummary(root: HTMLElement, ctx: AppContext, run: ActiveRun, actions?: NextActions): Promise<void> {
   const tag = run.ctx.varietyId ?? run.ctx.languageId;
   const results = run.results;
-  const planned = run.plan.items.length;
+  const sessionState = run.driver.state();
+  const initialPlanCount = sessionState.plan.initialQuestionCount ?? run.plan.initialQuestionCount ?? run.plan.items.length;
+  const presentedCount = sessionState.presentations?.length ?? (results.length + run.skipped.length + run.controls.length);
   const answered = results.length;
   const correct = results.filter((r) => r.grading.outcome === 'correct').length;
   const unbuildable = run.driver.skips().filter((s) => s.kind === 'build-failed');
-  const left = Math.max(0, planned - answered - run.skipped.length - run.controls.length - unbuildable.length);
+  const left = Math.max(0, sessionState.plan.items.length - sessionState.index) + (sessionState.deferredItems?.length ?? 0);
   const recorded = results.filter((r) => r.evidence);
   const counting = recorded.filter((r) => (r.evidence?.evidence?.quality ?? 'none') !== 'none');
 
@@ -923,12 +963,20 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
   const kinds = new Map<string, number>();
   for (const r of recorded) kinds.set(r.evidence!.kind, (kinds.get(r.evidence!.kind) ?? 0) + 1);
   const view = await ctx.syncView();
+  const overlapPresentations = (run.driver.state().presentations ?? []).filter(row => row.overlap);
+  const overlapSection = overlapPresentations.length ? h('section', { class: 'card', id: 'session-overlap-history', 'aria-labelledby': 'session-overlap-heading' },
+    h('h3', { id: 'session-overlap-heading' }, 'Why questions appeared again'),
+    p('GoReview records why each repeated presentation was scheduled, requested, or part of remediation.', 'muted'),
+    h('ul', {}, ...overlapPresentations.map(row => {
+      const item = run.plan.items.find(planItem => planItem.item.itemId === row.itemId)?.item;
+      return h('li', { 'data-overlap': row.overlap }, `${item ? unitLabel(item.unitId) : 'Question'} · ${presentationReasonLabel(row.presentationReason, row.overlap!)}`);
+    }))) : null;
 
   append(root, [
     h('section', { id: 'summary', class: 'card summary' },
       h('h2', {}, run.finish === 'early' ? 'Session ended early' : 'Session complete'),
       h('dl', { class: 'facts' },
-        h('dt', {}, 'Answered'), h('dd', { id: 'sum-answered' }, `${answered} of ${planned} planned, ${correct} correct`),
+        h('dt', {}, 'Answered'), h('dd', { id: 'sum-answered' }, `${answered} answered; ${presentedCount} prompt(s) shown; ${initialPlanCount} initially planned; ${correct} correct`),
         h('dt', {}, 'Skipped'), h('dd', { id: 'sum-skipped' }, String(run.skipped.length)),
         h('dt', {}, 'Set aside'), h('dd', { id: 'sum-controls' }, ...(run.controls.length ? run.controls.flatMap((c, i) => [i ? ', ' : '', h('span', langProps(tag), unitLabel(c.unitId)), ` (${c.control})`]) : ['none'])),
         h('dt', {}, 'Still due'), h('dd', { id: 'sum-left' }, `${left + run.skipped.length} item(s) were not answered; nothing was written for them, so they stay due.`)),
@@ -937,6 +985,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
         h('thead', {}, h('tr', {}, h('th', {}, 'Dimension'), h('th', {}, 'Answered'), h('th', {}, 'Correct'), h('th', {}, 'Partly'), h('th', {}, 'Not quite'), h('th', {}, 'Not judged'))),
         h('tbody', {}, ...[...byDim].map(([k, d]) => h('tr', {}, h('th', { scope: 'row' }, k), h('td', {}, String(d.answered)), h('td', {}, String(d.correct)), h('td', {}, String(d.partial)), h('td', {}, String(d.incorrect)), h('td', {}, String(d.other)))))) : p('No answers.', 'muted'),
       p('Dimensions are kept apart: a pass in one says nothing about another.', 'muted'),
+      overlapSection,
       h('h3', {}, 'What was recorded'),
       h('p', { id: 'sum-recorded' }, recorded.length
         ? `${recorded.length} event(s) were written to your record (${[...kinds].map(([k, n]) => `${n} ${k}`).join(', ')}); ${counting.length} count as evidence.${run.addedCount ? ` Up to ${run.addedCount} new item(s) joined your deck as they were answered.` : ''}`
@@ -946,7 +995,7 @@ export async function renderSummary(root: HTMLElement, ctx: AppContext, run: Act
       unbuildable.length ? h('p', { class: 'muted', id: 'sum-unbuildable' }, 'Could not be asked: ', ...unbuildable.flatMap((u, i) => [i ? '; ' : '', h('span', langProps(tag), itemLabel(u.itemId)), ` (${u.reason})`]), '.') : null,
       p(`${view.status?.pending ?? 0} event(s) wait to be sent${view.status?.online === false ? '; you are offline, so they wait on this device' : ''}.`, 'muted'),
       h('div', { class: 'row' }, h('a', { class: 'btn primary', href: '#/review', id: 'back-to-review' }, 'Back to GoReview'))),
-    ...(actions ? [nextDeckSection(ctx, run, actions, tag)] : []),
+    ...(actions ? [await nextDeckSection(ctx, run, actions, tag)] : []),
   ]);
   if (run.driver.undo) {
     const undoable = results.filter((result) => result.evidence && !result.correctedAt && !result.response.challenged);

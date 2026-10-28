@@ -195,6 +195,8 @@ export interface Response {
 export type GradeOutcome = 'correct' | 'incorrect' | 'partial' | 'ambiguous' | 'invalid-question' | 'unable-to-grade';
 
 export interface Grading {
+  /** Required content was successfully recalled despite a minor answer defect. */
+  retrievalSucceeded?: boolean;
   outcome: GradeOutcome;
   /** 0..1 confidence in the outcome (1 for an exact match; lower for loose matches and self-grades). */
   confidence: number;
@@ -248,7 +250,7 @@ export interface ScheduleState {
   parametersVersion: string;
 }
 
-export interface ReviewLogEntry { at: string; rating: Rating; outcome: GradeOutcome; deviceId: string; exerciseId: string; family: ExerciseFamily; elapsedDays: number; eventId?: string; retracted?: boolean }
+export interface ReviewLogEntry { at: string; rating: Rating; outcome: GradeOutcome; deviceId: string; exerciseId: string; family: ExerciseFamily; elapsedDays: number; eventId?: string; retracted?: boolean; scheduleExcluded?: string; conflict?: boolean }
 
 export type ItemStatus = 'active' | 'snoozed' | 'suspended' | 'dismissed';
 
@@ -270,6 +272,12 @@ export interface DeckItem {
   snoozedUntil?: string;
   /** Set when a `ReviewItemInvalidated` event suspended the item (e.g. 'analysis-invalidated'); absent for a learner's own suspension. */
   suspendedReason?: string;
+  /** Replay cannot reconstruct a required scheduler profile; ordinary Resume cannot override this. */
+  schedulingIssue?: string;
+  /** A challenged answer key remains withheld pending an explicit facts repair workflow. */
+  invalidatedAt?: string;
+  /** Event that invalidated this card; a repair must cite this exact event. */
+  invalidatedBy?: string;
 }
 
 export interface Scheduler {
@@ -302,12 +310,17 @@ export type IntakeDecision = 'already-covered' | 'redundant' | 'too-uncertain' |
 
 export interface AudioAvailability { available: boolean; eligibleForEvidence: boolean; reason: string }
 
+export type ReviewIntent = { kind: 'automatic' } | { kind: 'explicit'; reason: 'saved-deck' | 'selected-vocabulary' | 'early-review' | 'reassessment'; requestedAt: string };
+
 export interface ReviewPreferences {
   languageId: string;
   /** The enrolment's target variety, when it has one (a period for Hebrew / Greek: 'he-bib', 'el-koi' …); facts and exercises prefer it. */
   varietyId?: string;
   sessionMinutes: number;
   maxNew: number;
+  /** Automatic first effective reviews allowed in a UTC day; counted from shared history. */
+  dailyNewLimit?: number;
+  practiceGoals?: Array<'recognition' | 'retrieval' | 'listening' | 'application'>;
   desiredRetention: number;
   includeListening: boolean;
   /** Preferred share of grammar items in a session, 0..1. */
@@ -330,8 +343,14 @@ export interface IntakeInput {
   /** Repeated event evidence used only to qualify Seen/Automatic stages. */
   readingSignals?: GoEvent[];
   assistanceRequests?: number;
+  /** Precomputed from the same call's evidence snapshot when ranking multiple candidates. */
+  automaticFailureUnits?: ReadonlySet<string>;
+  /** Call-scoped indexes reused across the fact-free and facts-backed candidate passes. */
+  practiceEvidenceByUnit?: import('./planner/learning-policy').PracticeEvidenceByUnit;
+  eligibilityContext?: import('./planner/eligibility').ReviewEligibilityContext;
   /** Explicit opt-in to productive/grammar/listening targets; default is contextual reading recognition. */
   secondaryPractice?: boolean;
+  intent?: ReviewIntent;
 }
 
 export interface IntakeOutcome {
@@ -346,9 +365,12 @@ export interface IntakeOutcome {
   knowledge?: UnitKnowledge;
   /** A persisted target is user-selected, so policy may admit it even when New. */
   explicitlySelected?: boolean;
+  intent?: ReviewIntent;
 }
 
-export interface PlannedItem { item: DeckItem; family: ExerciseFamily; why: string[]; estimatedSeconds: number; isNew: boolean }
+export interface PlannedItem { item: DeckItem; family: ExerciseFamily; why: string[]; estimatedSeconds: number; isNew: boolean; origin?: 'scheduled' | 'intake' | 'vocabulary' | 'saved-deck' | 'explicit' | 'remediation'; schedulingCardExists?: boolean; admissionKnowledge?: UnitKnowledge; intent?: ReviewIntent; queue?: 'learning' | 'due' | 'remediation' | 'new'; overlap?: 'scheduled' | 'remediation' | 'explicit'; presentationReason?: string }
+
+export interface SessionBatch { targetQuestions: number; workloadLimit: number; estimatedSeconds: number; reasons: string[] }
 
 export interface SessionPlan {
   planId: string;
@@ -361,6 +383,17 @@ export interface SessionPlan {
   newCount: number;
   listeningCount: number;
   grammarCount: number;
+  intent?: ReviewIntent;
+  /** Maximum total questions, including due timed returns. */
+  questionLimit?: number;
+  /** Adaptive initial micro-deck target and separate active-practice workload budget. */
+  batch?: SessionBatch;
+  /** Original number of planned questions, retained when timed returns displace unshown work. */
+  initialQuestionCount?: number;
+  /** Eligible workload-bounded candidates, including work beyond the current micro-deck window. */
+  availableWork?: { questions: number; newQuestions: number };
+  /** Persistent instruction opportunities; these are not assessment questions or FSRS demand. */
+  remediation?: Array<{ itemId: string; unitId: string; failureEventId: string; failures: number; repairRequired: boolean; studiedAt?: string; readyAt?: string; ready: boolean; needsStudy: boolean }>;
 }
 
 export interface SessionState {
@@ -374,4 +407,12 @@ export interface SessionState {
   status: 'in-progress' | 'finished' | 'abandoned';
   /** Notes explaining deterministic event reconciliation performed after a page/process crash. */
   recoveryNotes?: string[];
+  pendingReturns?: Array<{ itemId: string; due: string }>;
+  nextReturnAt?: string;
+  /** Work displaced by due learning returns; remains durable for later planning. */
+  deferredItems?: PlannedItem[];
+  /** Actual prompt presentations, distinct from questions originally planned. */
+  presentations?: Array<{ presentationId: string; itemId: string; index: number; at: string; estimatedSeconds: number; actualSeconds?: number; overlap?: 'scheduled' | 'remediation' | 'explicit'; presentationReason?: string }>;
+  /** Saved before display so reload resumes the same prompt without counting a second presentation. */
+  displayedPrompt?: { index: number; presentationId: string };
 }

@@ -8,8 +8,8 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { decksKey } from '../../packages/gopractice/deckModel';
-import { readSnapshot } from '../../packages/gopractice/snapshot';
-import { candidate, cardAdded, defaultService, destroyRigs, dueCard, flush, ids, makeRig, queued, reopen, seed, until, unitOf, type Rig } from './helpers';
+import { readSnapshot, writeSnapshot } from '../../packages/gopractice/snapshot';
+import { candidate, knowledgeRow, cardAdded, defaultService, destroyRigs, dueCard, flush, ids, makeRig, queued, reopen, seed, until, unitOf, type Rig } from './helpers';
 
 const A = ids('L1', 'sq');
 const click = (el: Element): void => (el as HTMLElement).click();
@@ -91,11 +91,31 @@ describe('offline: My vocab', () => {
 });
 
 describe('offline: the home keeps its deck', () => {
+  it('does not replay an offline cached proposal after its practice goal is disabled, and keeps due cards', async () => {
+    const service = defaultService();
+    const rig = await makeRig({ service, signedIn: true });
+    await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 10, maxNew: 2, desiredRetention: 0.9,
+      includeListening: false, grammarShare: 0.2, prioritizeSaved: true, practiceGoals: ['recognition'] });
+    await seed(rig, dueCard(A, 'mace', 'meaning-to-form'));
+    const stale = candidate('det', 0.8, { objectiveDimension: 'productiveRetrieval' });
+    await writeSnapshot(rig.app.ctx, 'L1', 'sq', { model: { savedAt: '2026-10-08T10:00:00.000Z', knowledge: [], outcomes: [{
+      unitId: stale.unitId, candidate: stale, decision: 'test-now', reasons: ['saved productive proposal'],
+      proposed: { dimension: 'meaning-to-target-retrieval', family: 'meaning-to-form' },
+    }] } });
+    service.allDown = true; setOnline(false);
+    await rig.app.ctx.deps.area.remove(`gopractice:candidates:L1:L1-e1`);
+    rig.deps.engine.intake = async () => { throw new Error('offline'); };
+    await reopen(rig);
+    expect(rig.root.querySelector(`#candidates [data-unit="${stale.unitId}"]`)).toBeNull();
+    expect(Number(rig.q('#deck-count').getAttribute('data-cards'))).toBeGreaterThan(0);
+  });
+
   it('the proposals of the last successful load stand in when intake cannot run offline, minus what the deck has taken', async () => {
     const service = defaultService();
     const rig = await makeRig({ service, signedIn: true });
-    await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 10, maxNew: 0, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
+    await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 10, maxNew: 2, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
     service.candidates.set('L1-e1', [candidate('det', 0.8), candidate('diell', 0.5)]);
+    service.knowledge.set('L1',['det','diell'].map(x=>({...knowledgeRow('L1',unitOf(x),'sq',{}),level:'recognized'})));
     await reopen(rig);
     const online = Number(rig.q('#deck-count').getAttribute('data-cards'));
     expect(online).toBeGreaterThan(0);
@@ -115,8 +135,9 @@ describe('offline: the home keeps its deck', () => {
   it('without the snapshot the same offline home would be empty (the snapshot is what carries it)', async () => {
     const service = defaultService();
     const rig = await makeRig({ service, signedIn: true });
-    await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 10, maxNew: 0, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
+    await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', sessionMinutes: 10, maxNew: 2, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true });
     service.candidates.set('L1-e1', [candidate('det', 0.8)]);
+    service.knowledge.set('L1',[{...knowledgeRow('L1',unitOf('det'),'sq',{}),level:'recognized'}]);
     await reopen(rig);
     expect(Number(rig.q('#deck-count').getAttribute('data-cards'))).toBeGreaterThan(0);
     service.allDown = true; setOnline(false);

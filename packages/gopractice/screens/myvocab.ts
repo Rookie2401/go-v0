@@ -9,7 +9,7 @@
 import { KNOWLEDGE_LEVELS } from '../../repository-contract/src';
 import type { AppContext } from '../context';
 import { append, button, clear, h, langProps, p, setStatus, statusLine } from '../dom';
-import { addToDeck, holdOutOf, loadVocab, planCurrentDeck, removeFromAdded, sortVocab, type VocabRow, type VocabSort } from '../deckModel';
+import { addToDeck, loadVocab, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, sortVocab, type VocabRow, type VocabSort } from '../deckModel';
 import { itemMarked } from '../events';
 import { loadReviewModel } from '../workspace';
 import type { View } from './view';
@@ -36,6 +36,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const glossed = new Map<string, string | null>();
   /** The units of the current deck, once known; a word of one of them is "In your deck". */
   let deckUnits: Set<string> | undefined;
+  /** Optional learner-selected words are shown separately from the next automatic batch. */
+  let selectedUnits = new Set<string>();
+  let selectionRevision = 0;
   /** The word whose question is open under its row. */
   let asking: string | undefined;
   /** An Add in flight, or the first load: a live repaint waits for them, so nothing under the learner's finger is replaced. */
@@ -60,9 +63,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     try {
       const model = await loadReviewModel(ctx);
       if (!model || !view.alive()) return;
-      const deck = await planCurrentDeck(ctx, model, await holdOutOf(ctx, identity.learnerId, identity.languageId), rows);
+      const selectionAtStart = selectionRevision;
+      const deck = await planCurrentDeck(ctx, model, new Set(), rows);
       if (!view.alive()) return;
       deckUnits = new Set(deck.entries.map((e) => e.unitId));
+      const currentSelected = await selectedPracticeUnits(ctx, identity.learnerId, identity.languageId);
+      if (selectionAtStart === selectionRevision) selectedUnits = new Set(currentSelected);
       paintList();
     } catch { /* the question is still asked; Add reports what happened */ }
   }
@@ -75,16 +81,19 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       const marked = await ctx.record([itemMarked(ectx, ctx.deps.newId(), r.unitId, 'saved')]);
       if (marked.refused.length) { setStatus(status, marked.refused[0].issues.join('; '), 'error'); return; }
       await addToDeck(ctx, identity, { unitId: r.unitId, unitKind: r.kind ?? 'lexeme', dimension: 'written-recognition', family: 'written-recognition' });
+      selectionRevision++;
+      selectedUnits = new Set([...selectedUnits, r.unitId]);
       const model = await loadReviewModel(ctx);
-      const deck = model ? await planCurrentDeck(ctx, model, await holdOutOf(ctx, identity.learnerId, identity.languageId), rows) : undefined;
+      const selected = model ? await planSelectedPractice(ctx, model) : undefined;
+      const deck = selected ? { entries: selected.items.map(p => ({ unitId: p.item.unitId })) } : undefined;
       if (!view.alive()) return;
+      selectedUnits = new Set(await selectedPracticeUnits(ctx, identity.learnerId, identity.languageId));
       if (deck?.entries.some((e) => e.unitId === r.unitId)) {
-        deckUnits = new Set(deck.entries.map((e) => e.unitId));
+        selectedUnits = new Set([...selectedUnits, ...deck.entries.map((e) => e.unitId)]);
         asking = undefined;
-        setStatus(status, `${r.label} is in your deck.`, 'ok');
+        setStatus(status, `${r.label} is selected for optional practice. It does not change the next automatic batch.`, 'ok');
       } else {
-        await removeFromAdded(ctx, identity, r.unitId);
-        setStatus(status, `${r.label} cannot be asked yet: no exercise can be built for it. Your choice is kept as a saved word.`, 'info');
+        setStatus(status, `${r.label} is selected for optional practice, but no usable question fits the current session limits. It remains selected for a later practice session.`, 'info');
       }
       paintList();
     } catch (e) { setStatus(status, e instanceof Error ? e.message : 'The word could not be added.', 'error'); } finally { busy = false; }
@@ -94,6 +103,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const known = glossed.get(r.unitId);
     const gloss = h('span', { class: 'vocab-gloss', 'data-gloss': r.unitId }, known ?? '');
     const present = inDeck(r);
+    const selected = selectedUnits.has(r.unitId);
     const open = asking === r.unitId;
     const line = h('div', { class: 'vocab-line' },
       button('', () => { asking = open ? undefined : r.unitId; paintList(); void (deckUnits ? Promise.resolve() : refreshDeck()); }, {
@@ -105,15 +115,17 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       h('span', { ...langProps(tag), class: 'vocab-word target-text' }, r.label), gloss,
       r.metAs?.length ? h('span', { class: 'vocab-met' }, 'met as: ', h('span', langProps(tag), r.metAs.join(', '))) : null,
       present ? h('span', { class: 'vocab-indeck' }, 'In your deck') : null,
+      selected ? h('span', { class: 'vocab-selected' }, 'Selected for optional practice') : null,
       h('span', { class: 'vocab-level' }, r.level),
     ]);
     const item = h('li', { class: 'vocab-item', 'data-unit-id': r.unitId, 'data-level': r.level, ...(present ? { 'data-in-deck': 'true' } : {}) }, line);
     if (open) {
       const ask = h('div', { class: 'vocab-ask', role: 'group', 'aria-label': `Add ${r.label} to the current deck` });
-      if (present) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is already in your deck.'));
+      if (present) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is in the current automatic deck.'));
+      else if (selected) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is selected for optional practice. It does not change the next automatic batch.'));
       else {
-        const addBtn = button('Add', () => { addBtn.disabled = true; void add(r).finally(() => { addBtn.disabled = false; }); }, { class: 'btn small', 'data-action': 'add-to-deck' });
-        ask.append(h('p', {}, 'Add ', h('span', langProps(tag), r.label), ' to the current deck?'),
+        const addBtn = button('Select for optional practice', () => { addBtn.disabled = true; void add(r).finally(() => { addBtn.disabled = false; }); }, { class: 'btn small', 'data-action': 'add-to-deck' });
+        ask.append(h('p', {}, 'Choose ', h('span', langProps(tag), r.label), ' for an optional practice session?'),
           h('div', { class: 'entry-actions' }, addBtn, button('Not now', () => { asking = undefined; paintList(); }, { class: 'linklike', 'data-action': 'not-now' })));
       }
       item.append(ask);

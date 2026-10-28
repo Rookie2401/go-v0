@@ -128,7 +128,7 @@ describe('pending GoListen playback', () => {
 
 describe('a self-graded question', () => {
   it.each([
-    ['1', 'again', 'Not quite', 1], ['2', 'hard', 'Partly correct', 2], ['3', 'good', 'Correct', 3], ['4', 'easy', 'Correct', 4],
+    ['1', 'again', 'Not quite', 1], ['2', 'hard', 'Correct', 2], ['3', 'good', 'Correct', 3], ['4', 'easy', 'Correct', 4],
   ] as const)('key %s is %s', async (digit, grade, outcome, rating) => {
     const rig = await makeRig({ signedIn: true });
     await startWith(rig, dueCard(A, 'shtepi', 'phrase-comprehension'));
@@ -367,11 +367,14 @@ describe('an audio-only question', () => {
     expect(rig.q('#sum-withheld').textContent).toContain('could not be heard');
   });
 
-  it('is asked in writing, counted as reading, when listening is switched off', async () => {
+  it('does not substitute written credit for a listening obligation when listening is switched off', async () => {
     const rig = await makeRig({ signedIn: true });
-    await startWith(rig, dueCard(A, 'qen', 'audio-to-meaning'), { includeListening: false });
-    expect(rig.q('.exercise').getAttribute('data-family')).toBe('written-recognition');
-    expect(rig.root.querySelector('#audio')).toBeNull();
+    const {seed,reopen}=await import('./helpers');
+    await seed(rig,dueCard(A,'qen','audio-to-meaning'));
+    await rig.app.ctx.state.updatePrefs('L1','sq',{includeListening:false});
+    await reopen(rig);
+    expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
+    expect(await queued(rig)).toEqual([]);
   });
 });
 
@@ -400,7 +403,7 @@ describe('skipping, finishing early and setting items aside', () => {
     rig.q('#finish-early').click();
     await until(() => !!rig.root.querySelector('#summary'), 'the summary');
     expect((await queued(rig)).length).toBe(1);
-    expect(rig.q('#sum-answered').textContent).toBe('1 of 2 planned, 1 correct');
+    expect(rig.q('#sum-answered').textContent).toBe('1 answered; 1 prompt(s) shown; 2 initially planned; 1 correct');
     await reopenDetails(rig);
     expect(rig.q('#count-due').textContent).toBe('1');
   });
@@ -565,7 +568,7 @@ describe('the summary', () => {
     const rows = rig.qa('#sum-dimensions tbody tr').map((r) => r.querySelector('th')!.textContent);
     expect(rows.sort()).toEqual(['Meaning to word', 'Phrases']);
     expect(rig.q('#sum-recorded').textContent).toContain('2 event(s)');
-    expect(rig.q('#sum-answered').textContent).toBe('2 of 2 planned, 1 correct');
+    expect(rig.q('#sum-answered').textContent).toBe('2 answered; 2 prompt(s) shown; 2 initially planned; 1 correct');
     expect(rig.q('#summary').textContent).toContain('Nothing was withheld');
     expect(rig.q('#summary').textContent).not.toMatch(/streak|points|badge/i);
   });

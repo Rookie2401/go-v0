@@ -14,7 +14,17 @@ npm run prepare:web
 npx cap sync ios
 ```
 
-`prepare:web` runs the repository's existing GoReview Vite build and stages it at `web/`. It is useful for local inspection and does not create a release configuration. `sync:ios` combines preparation with Capacitor sync. On a Mac with Xcode installed, open the app with `npm run open:ios` or open `ios/App/App.xcodeproj`.
+`prepare:web` explicitly runs the developer-mode GoReview Vite build and stages it at `web/`. Each output contains `goreview-release-manifest.json`, which records the verified GoReview source/build, and `goreview-native-payload-manifest.json`, which links that parent build to the final transformed native payload (including Biblia). The latter hashes the final files after configuration changes and PWA removal. `sync:ios` verifies the copied Capacitor web directory too. On a Mac with Xcode installed, open the app with `npm run open:ios` or open `ios/App/App.xcodeproj`.
+
+Run the local regression and artifact check before changing or staging a native release:
+
+```sh
+npm run release:preflight:local
+```
+
+It runs the GoReview type check and bounded regression suites across the Repository contract/engine/service/store/sync, GoLearn, GoListen, GoTell, GoReview, GoPractice, and review optimizer, prepares and verifies an explicit developer-mode native payload, then writes a command/exit-code and source/artifact hash receipt to the ignored `.preflight/` folder outside the hashed web payload. Vitest also writes a JSON report there; the receipt summarizes passed, failed, skipped, and test-file counts from this run. The previous report is removed before testing, and artifacts are only referenced in the receipt after this run verifies them. The test child has `TEST_DATABASE_URL` unset so this local check cannot touch an inherited external test database. `npm run release:preflight` runs the same checks before release-mode native preparation; that path requires a clean source tree, real Bundle ID/service configuration, and the Repository health check.
+
+To validate a clean web release without Apple setup or any Repository health request, run `node packages/goreview-ios/scripts/release-preflight.mjs --web-only` from the repository root. It runs the same checks, builds GoReview directly in explicit release mode, verifies the release artifact, and writes its receipt beside (not inside) the ignored `.preflight/web-release/` artifact.
 
 The generated Bundle ID `com.example.provisional.goreview` is deliberately provisional. The release stage requires the reverse-DNS App ID registered to the owner's Apple Developer account. Do not put signing certificates, passwords, App Store Connect API keys, or provisioning credentials in this package.
 
@@ -35,6 +45,8 @@ npm run release:stage
 ```
 
 Preparation fails unless the URL is public HTTPS and `<URL>/health` reports `ok: true`, `service: "repository"`, and `contractVersion: 3`. No backend host is provisioned by this package.
+
+The EAS staging command verifies the linked native payload before copying it into `.eas-project/web`, and verifies the copy again. The standalone staged-release validator repeats that payload check before its endpoint health check.
 
 The generated stage has no EAS project ID until the owner links or creates one. After confirming the Bundle ID and endpoint, go to `.eas-project/` and run `npx eas init --account rookie56r` once, then configure the App Store distribution credentials with `npx eas credentials --platform ios`. These are account changes and are intentionally left to the owner. The cloud build command is:
 

@@ -22,6 +22,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { defineConfig, type Plugin } from 'vite';
+import { createReleaseManifest, normalizeCompiledModuleId, verifyReleaseArtifact } from '../../scripts/goreview-release.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(here, '../..');
@@ -160,6 +161,32 @@ function reviewHtml(): Plugin {
   };
 }
 
+/** Review web output is the shared embedded-web artifact for web and native wrappers. */
+function reviewProvenance(outDir: string): Plugin {
+  const compiledModules = new Set<string>();
+  const compiledDependencies = new Set<string>();
+  return {
+    name: 'goreview-release-provenance',
+    apply: 'build',
+    generateBundle(_options, bundle) {
+      for (const output of Object.values(bundle)) {
+        if (output.type !== 'chunk') continue;
+        for (const id of Object.keys(output.modules)) {
+          const resolved = normalizeCompiledModuleId(id, repoRoot);
+          if (resolved?.sourcePath || resolved?.dependencyPath) {
+            compiledModules.add(id);
+            if (resolved.dependencyPath) compiledDependencies.add(id);
+          }
+        }
+      }
+    },
+    closeBundle() {
+      createReleaseManifest(outDir, (process.env.GOREVIEW_RELEASE_MODE ?? 'release') as 'release' | 'developer', [...compiledModules], repoRoot, [...compiledDependencies]);
+      verifyReleaseArtifact(outDir, { compareCurrentSource: true });
+    },
+  };
+}
+
 export default defineConfig(({ command, mode }) => {
   if (command === 'serve') {
     return { root: here, base: './', publicDir: path.join(repoRoot, 'public'), plugins: [devFonts()], server: { port: 5198, strictPort: true, watch: { ignored: ['**/public/dict/**', '**/public/library/**', '**/data/**'] } } };
@@ -176,7 +203,7 @@ export default defineConfig(({ command, mode }) => {
     publicDir: false,
     logLevel: 'warn',
     define: { 'process.env.NODE_ENV': '"production"' },
-    plugins: [staticFiles(outDir, review), ...(review ? [reviewHtml()] : [])],
+    plugins: [staticFiles(outDir, review), ...(review ? [reviewHtml(), reviewProvenance(outDir)] : [])],
     build: { outDir, emptyOutDir: true, copyPublicDir: false, sourcemap: false, minify: true, target: extension ? 'chrome110' : 'es2022', cssCodeSplit: false, chunkSizeWarningLimit: 2500 },
   };
 });

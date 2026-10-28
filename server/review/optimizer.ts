@@ -1,3 +1,5 @@
+import { effectiveReviewEvents, type GoEvent } from '../../packages/repository-contract/src';
+import { createFsrsScheduler, foldDeck } from '../../packages/goreview/src/scheduler';
 /** Node-only personalization. Never bundled in the reader or run after each grade. */
 import { computeParameters, FSRSBinding, FSRSBindingItem, FSRSBindingReview } from '@open-spaced-repetition/binding';
 import { default_w } from 'ts-fsrs';
@@ -66,4 +68,21 @@ export async function optimizeReviewProfile(history: ReliableReview[], scope: { 
   return { ...base, status: improved ? 'candidate' : 'not-improved', reason: improved
     ? 'A candidate improved chronological held-out prediction; it requires explicit activation.'
     : 'Keep the current profile: the candidate did not improve both validation measures.', baseline, candidate, ...(improved ? { parameters } : {}) };
+}
+
+/** Adapt raw exported activity to the same effective memory history used by the application.
+ * Raw concurrent branches remain evidence, but cannot train FSRS as sequential retrievals.
+ */
+export function reliableReviewHistory(events: GoEvent[], languageId: string): ReliableReview[] {
+  const learners=[...new Set(events.map(e=>e.learnerId))];
+  if(learners.length>1)throw new Error('Optimize one learner at a time.');
+  const instants=events.map(e=>Date.parse(e.at)).filter(Number.isFinite);
+  const folded=foldDeck(events,createFsrsScheduler(),{languageId,learnerId:learners[0],now:new Date(instants.length?instants.reduce((a,b)=>Math.max(a,b),0):0).toISOString()});
+  const valid=new Set(folded.items.flatMap(i=>i.history.filter(h=>!h.retracted&&!h.scheduleExcluded&&!h.conflict).map(h=>h.eventId)));
+  return effectiveReviewEvents(events).filter(e=>valid.has(e.id)).sort((a,b)=>Date.parse(a.at)-Date.parse(b.at)||(a.id<b.id?-1:a.id>b.id?1:0)).map(e=>({
+    eventId:e.id,targetId:e.subject.cardId!,languageId:e.languageId,
+    objective:String(e.payload.assessmentDimension??e.payload.family??'unknown'),at:e.at,rating:e.payload.rating as 1|2|3|4,
+    independent:e.evidence?.quality!==undefined && e.evidence.quality!=='none' && e.evidence.assisted!==true && e.payload.hinted!==true
+      && e.payload.answerShownBefore!==true && e.payload.retrievalAttempted!==false,
+  }));
 }

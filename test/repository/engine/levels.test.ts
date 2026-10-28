@@ -4,7 +4,7 @@
  * `encounters`, the legacy-mark mapping, the rebuild from immutable events, and the candidates drawn BY LEVEL (review as a progression).
  */
 import { describe, expect, it } from 'vitest';
-import { KNOWLEDGE_LEVELS, LEGACY_MARK_LEVEL, levelOfMark } from '../../../packages/repository-contract/src';
+import { DIMENSIONS, KNOWLEDGE_LEVELS, LEGACY_MARK_LEVEL, levelOfMark } from '../../../packages/repository-contract/src';
 import type { Dimension, DimensionEstimate, GoEvent, KnowledgeLevel, UnitKnowledge } from '../../../packages/repository-contract/src';
 import {
   CANDIDATE_RULES, LEVEL_THRESHOLDS, MODEL_VERSION, RULES, createProjectionEngine, emptyRow, evidenceLevelOf, foldEvents, levelOf, markStatus, observationsOf,
@@ -52,12 +52,14 @@ describe('levelOf: the thresholds, on the dimension estimates', () => {
     expect(LEVEL_THRESHOLDS.familiar).toEqual({ score: 0.6, observations: 2 });
   });
 
-  it('known: score >= 0.8 over >= 4 observations, and listening recognition counts too', () => {
-    expect(levelOf({ dimensions: dims({ readingRecognition: { observations: 4, positive: 2, score: 0.8 } }) })).toBe('known');
+  it('known: score/count plus delayed independent evidence, and listening recognition counts too', () => {
+    const qualifying = { independentPositiveEvents: 4, delayedIndependentPositiveEvents: 2 };
+    expect(levelOf({ dimensions: dims({ readingRecognition: { observations: 4, positive: 2, score: 0.8, ...qualifying } }) })).toBe('known');
     expect(levelOf({ dimensions: dims({ readingRecognition: { observations: 3, positive: 2, score: 0.9 } }) })).toBe('familiar');
     expect(levelOf({ dimensions: dims({ readingRecognition: { observations: 4, positive: 2, score: 0.79 } }) })).toBe('familiar');
-    expect(levelOf({ dimensions: dims({ listeningRecognition: { observations: 4, positive: 2, score: 0.85 } }) })).toBe('known');
-    expect(LEVEL_THRESHOLDS.known).toEqual({ score: 0.8, observations: 4 });
+    expect(levelOf({ dimensions: dims({ readingRecognition: { observations: 4, positive: 2, score: 0.85, independentPositiveEvents: 4 } }) })).toBe('familiar');
+    expect(levelOf({ dimensions: dims({ listeningRecognition: { observations: 4, positive: 2, score: 0.85, ...qualifying } }) })).toBe('known');
+    expect(LEVEL_THRESHOLDS.known).toEqual({ score: 0.8, observations: 4, independentPositiveEvents: 4, delayedIndependentPositiveEvents: 2, spacingMs: 86_400_000, sourceReliability: 0.8 });
   });
 
   it('production successes alone do not establish automatic knowledge', () => {
@@ -68,8 +70,22 @@ describe('levelOf: the thresholds, on the dimension estimates', () => {
     expect(LEVEL_THRESHOLDS).not.toHaveProperty('automatic');
   });
 
+  it('independently authored, objectively judged GoTell production remains a production skill and never implies Automatic', () => {
+    resetIds();
+    const events = Array.from({ length: 4 }, (_, i) => {
+      const event = production([U], { mode: 'retrieval', authorship: 'independent', usedCorrectly: true, assisted: false, assistance: [] }, {
+        id: `tell-${i}`, at: T(8, 0, 6 + i), evidence: { quality: 'strong', assisted: false, sourceReliability: 1 },
+      });
+      event.producer.app = 'gopractice-tell';
+      return event;
+    });
+    const row = rowOf(events);
+    expect(row.dimensions.productiveRetrieval).toMatchObject({ independentPositiveEvents: 4, delayedIndependentPositiveEvents: 3 });
+    expect(row.level).toBe('recognized');
+  });
+
   it('a phrase or a construction is understood as a whole: phraseComprehension and grammaticalUnderstanding count as recognition', () => {
-    expect(levelOf({ dimensions: dims({ phraseComprehension: { observations: 4, positive: 3, score: 0.85 } }) })).toBe('known');
+    expect(levelOf({ dimensions: dims({ phraseComprehension: { observations: 4, positive: 3, score: 0.85, independentPositiveEvents: 4, delayedIndependentPositiveEvents: 2 } }) })).toBe('known');
     expect(levelOf({ dimensions: dims({ grammaticalUnderstanding: { observations: 2, positive: 1, score: 0.7 } }) })).toBe('familiar');
   });
 
@@ -92,17 +108,72 @@ describe('levels from real events (the fold)', () => {
     expect(levelFrom([card([U], 'recognition', true)])).toBe('recognized');
   });
 
-  it('two correct recognition cards are familiar, four are known', () => {
+  it('rapid correct recognition cards are familiar; delayed independent evidence is required for Known', () => {
     resetIds();
     const cards = (n: number): GoEvent[] => Array.from({ length: n }, (_, i) => card([U], 'recognition', true, {}, { at: T(8, i) }));
     expect(levelFrom(cards(2))).toBe('familiar');
     expect(levelFrom(cards(3))).toBe('familiar');
-    expect(levelFrom(cards(4))).toBe('known');
+    expect(levelFrom(cards(4))).toBe('familiar'); // rapid/unqualified attempts do not satisfy delayed knowability
   });
 
-  it('four correct recorded-voice listening answers are known (listening counts)', () => {
+  it('Known requires four independent moderate/strong successes with reliability >= 0.8 and repeated 24-hour spacing', () => {
     resetIds();
-    expect(levelFrom(Array.from({ length: 4 }, (_, i) => listening([U], true, {}, { at: T(8, i) })))).toBe('known');
+    const review = (i: number, day: number): GoEvent => {
+      const event = card([U], 'recognition', true,
+        { outcome: 'correct', rating: 3, expectedPreviousReviewId: i ? `typed-${i - 1}` : null },
+        { id: `typed-${i}`, at: T(8, 0, day), evidence: { quality: 'moderate', assisted: false, sourceReliability: 1 } });
+      event.producer.app = 'gopractice-review';
+      event.producer.deviceId = 'device-a';
+      event.subject.cardId = 'card:review';
+      return event;
+    };
+    const rapid = Array.from({ length: 4 }, (_, i) => review(i, 6));
+    const spaced = Array.from({ length: 4 }, (_, i) => review(i, 6 + i));
+    expect(rowOf(rapid).dimensions.readingRecognition.independentPositiveEvents).toBe(4);
+    expect(rowOf(rapid).dimensions.readingRecognition.delayedIndependentPositiveEvents).toBe(0);
+    expect(levelFrom(rapid)).toBe('familiar');
+    expect(rowOf(spaced).dimensions.readingRecognition.delayedIndependentPositiveEvents).toBe(3);
+    expect(levelFrom(spaced)).toBe('known');
+    expect(rowOf([...spaced, ...spaced]).dimensions.readingRecognition.independentPositiveEvents).toBe(4);
+    const lowReliability = spaced.map((event) => ({ ...event, evidence: { ...event.evidence!, sourceReliability: 0.7 } }));
+    expect(rowOf(lowReliability).dimensions.readingRecognition.independentPositiveEvents).toBe(0);
+    expect(levelFrom(lowReliability)).toBe('familiar');
+  });
+
+  it('a New reset hides historically Known inference until post-reset evidence qualifies again', () => {
+    resetIds();
+    const knownHistory = Array.from({ length: 4 }, (_, i) => {
+      const event = card([U], 'recognition', true,
+        { outcome: 'correct', rating: 3, expectedPreviousReviewId: i ? `prior-${i - 1}` : null },
+        { id: `prior-${i}`, at: T(8, 0, 1 + i), evidence: { quality: 'moderate', assisted: false, sourceReliability: 1 } });
+      event.producer.app = 'gopractice-review';
+      event.subject.cardId = 'card:reset';
+      return event;
+    });
+    expect(levelFrom(knownHistory)).toBe('known');
+    const afterReset = [mark('new', T(8, 0, 6)), lookup([U], { at: T(9, 0, 6) })];
+    const resetRow = rowOf([...knownHistory, ...afterReset]);
+    expect(resetRow.level).toBe('seen');
+    expect(resetRow.dimensions.readingRecognition.observations).toBe(5);
+    expect(resetRow.dimensions.readingRecognition.independentPositiveEvents).toBe(4);
+  });
+
+  it('self, choice and weak partial Hard evidence can never qualify as delayed knowability', () => {
+    resetIds();
+    const selfOrChoice = Array.from({ length: 4 }, (_, i) => {
+      const event = listening([U], true, { outcome: 'correct', rating: 3, responseMode: i % 2 ? 'self-report' : 'choice' }, { id: `mode-${i}`, at: T(8, 0, 6 + i) });
+      event.producer.app = 'gopractice-review';
+      event.subject.cardId = 'card:audio';
+      event.evidence = { quality: 'weak', assisted: false, sourceReliability: 0.6 };
+      return event;
+    });
+    expect(levelFrom(selfOrChoice)).not.toBe('known');
+    expect(rowOf(selfOrChoice).dimensions.listeningRecognition.independentPositiveEvents).toBe(0);
+  });
+
+  it('rapid recorded-voice choice answers do not alone establish Known', () => {
+    resetIds();
+    expect(levelFrom(Array.from({ length: 4 }, (_, i) => listening([U], true, {}, { at: T(8, i) })))).toBe('familiar'); // choice/self evidence cannot qualify
   });
 
   it('correct recall cards do not alone reach automatic; failures lower the evidence estimate', () => {
@@ -240,6 +311,20 @@ describe('the learner\'s newest mark decides the level, until later evidence con
     expect(levelOf({ dimensions: touched, selfMark: { mark: 'new', at: T(8) } })).toBe('seen');
     expect(levelOf({ dimensions: touched, selfMark: { mark: 'new', at: T(10) } })).toBe('new');
   });
+
+  it('does not treat a different ISO spelling of the same instant as evidence after a New reset', () => {
+    resetIds();
+    const reset = mark('new', '2026-10-06T08:00:00+00:00');
+    const sameInstantLookup = lookup([U], { at: '2026-10-06T08:00:00Z' });
+    expect(levelFrom([reset, sameInstantLookup])).toBe('new');
+  });
+
+  it('a stored-row fallback cannot carry historical Known evidence across a New reset', () => {
+    const historical = dims({ readingRecognition: {
+      observations: 4, positive: 2, score: 0.9, independentPositiveEvents: 4, delayedIndependentPositiveEvents: 2, lastAt: T(9),
+    } });
+    expect(levelOf({ dimensions: historical, selfMark: { mark: 'new', at: T(8) } })).toBe('seen');
+  });
 });
 
 describe('encounters: distinct encounter events', () => {
@@ -292,10 +377,14 @@ describe('the projection (live and rebuilt) carries level and encounters', () =>
 
     const engine = createProjectionEngine({ store, now: () => NOW });
     const rows = await engine.knowledge(L);
-    expect(rows[0].modelVersion).toBe('projection@6');
-    expect(rows[0].dimensions).toEqual(before[0].dimensions); // every number the old projection stored, unchanged
+    expect(rows[0].modelVersion).toBe('projection@7');
+    for (const dimension of DIMENSIONS) {
+      const { independentPositiveEvents: _ip, delayedIndependentPositiveEvents: _dp, lastIndependentPositiveAt: _la, ...oldEstimate } = before[0].dimensions[dimension];
+      const { independentPositiveEvents: _nip, delayedIndependentPositiveEvents: _ndp, lastIndependentPositiveAt: _nla, ...newEstimate } = rows[0].dimensions[dimension];
+      expect(newEstimate).toEqual(oldEstimate); // prior numeric evidence remains unchanged
+    }
     expect(rows[0]).toMatchObject({ level: 'familiar', encounters: 4, selfMark: { mark: 'new', at: T(9) } }); // new -> released by two reliable recognitions after it
-    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@6' });
+    expect(await store.getProjectionCursor(L)).toMatchObject({ modelVersion: 'projection@7' });
     expect(JSON.stringify(await store.list({ learnerId: L, limit: 100 }))).toBe(eventsBefore); // nothing stored was rewritten
   });
 
@@ -335,8 +424,13 @@ describe('candidates are drawn by level: review is a progression, not a request'
     return { list, cand: list.find((c) => c.unitId === U), row: rows.find((r) => r.unitId === U)! };
   }
   // `day` 7 = yesterday (October); `day` 1 = in September, five weeks before NOW and far past the half-life of this little evidence.
-  const monthOf = (day: number): number => (day === 1 ? 9 : 10);
-  const recognitionCards = (n: number, day: number): GoEvent[] => Array.from({ length: n }, (_, i) => card([U], 'recognition', true, {}, { at: T(8, i, day, monthOf(day)) }));
+  const monthOf = (day: number): number => (day <= 4 ? 9 : 10);
+  const recognitionCards = (n: number, day: number): GoEvent[] => Array.from({ length: n }, (_, i) => {
+    const ev = card([U], 'recognition', true, { outcome: 'correct', rating: 3, expectedPreviousReviewId: i ? `review-${i - 1}` : null }, { id: `review-${i}`, at: T(8, 0, day + i, monthOf(day + i)), evidence: { quality: 'moderate', assisted: false, sourceReliability: 1 } });
+    ev.producer.app = 'gopractice-review';
+    ev.subject.cardId = 'review-card';
+    return ev;
+  });
   const recallCards = (n: number, day: number): GoEvent[] => Array.from({ length: n }, (_, i) => card([U], 'recall', true, {}, { at: T(8, i, day, monthOf(day)) }));
 
   it('seen: a looked-up unit is proposed for recognition practice, and the reason names the level', async () => {

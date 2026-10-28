@@ -21,7 +21,7 @@ const read = (dir: string, ...p: string[]): string => fs.readFileSync(path.join(
 
 function build(mode: 'review' | 'extension' | 'web'): void {
   const args = [vite, 'build', '-c', 'packages/gopractice/vite.config.ts', ...(mode === 'web' ? [] : ['--mode', mode])];
-  execFileSync(process.execPath, args, { cwd: root, stdio: 'pipe', timeout: 120_000, env: { ...process.env, GOPRACTICE_DICT: '', GOPRACTICE_OUT: outs[mode] } });
+  execFileSync(process.execPath, args, { cwd: root, stdio: 'pipe', timeout: 120_000, env: { ...process.env, GOREVIEW_RELEASE_MODE: 'developer', GOPRACTICE_DICT: '', GOPRACTICE_OUT: outs[mode] } });
 }
 
 beforeAll(() => { build('review'); build('web'); build('extension'); }, 300_000);

@@ -17,6 +17,8 @@ import type { ExposureCounters, UnitResolver } from './projection';
 import { estimateSuitability } from './suitability';
 
 /**
+ * projection@7: shared causal review validity and per-dimension delayed independent evidence gate inferred Known. A deliberate New mark
+ * starts a fresh visible inference window; historical numeric evidence remains available. Rebuild older rows from immutable events.
  * projection@6: the same rows, refolded under the mark rule of 2026-10-26 (the owner's rule: after the first automatic step from New to Seen,
  * only the learner changes a word's state; `levels.ts` markStatus). The rule changed without a version step, so rows the service and the
  * on-device Repositories had folded before it kept their old level (a word marked Known that was looked up afterwards read Seen) until the
@@ -31,7 +33,7 @@ import { estimateSuitability } from './suitability';
  * (projection@3: `selfMark` and the `productive` mark credited to productiveRetrieval. projection@2: the eighth dimension,
  * phraseComprehension, and language-basis weighting of exposure.) A stored cursor at another version is rebuilt from the immutable events on the next read.
  */
-export const MODEL_VERSION = 'projection@6';
+export const MODEL_VERSION = 'projection@7';
 const PAGE = 500;
 
 export type EngineStore = EventLog & ProjectionStore & LinguisticStore & TombstoneStore & Pick<IdentityStore, 'listEnrolments'>;
@@ -43,6 +45,7 @@ export interface CandidateOptions {
   includeCovered?: boolean;
   /** Receives notes about rules that could not run (for example a pack with no mission word list). */
   notes?: string[];
+  objectiveDimensions?: import('../../repository-contract/src').Dimension[];
 }
 export interface ProjectionEngineX extends ProjectionEngine {
   candidates(learnerId: string, enrolmentId: string, opts?: CandidateOptions): Promise<ReviewCandidate[]>;
@@ -234,23 +237,63 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
     const tombstones = await store.listTombstones(learnerId);
     const resolve = await resolverFor([...rows.map((r) => r.unitId), ...events.flatMap((e) => e.subject?.itemIds ?? [])]);
 
-    // Card state per unit: the latest of CardAdded / CardRemoved / ReviewItemInvalidated decides coverage.
+    // Card state per unit and objective dimension: a written-recognition card does not
+    // cover listening or production. Legacy lifecycle events without a dimension retain
+    // the old same-target coverage behavior.
     const cards = new Map<string, CardState>();
-    const marks = new Map<string, { at: string; id: string; covered: boolean }>();
+    const marks = new Map<string, Map<string, { at: string; id: string; covered: boolean; blocked: boolean }>>();
+    const objectiveDimension = (value: unknown): import('../../repository-contract/src').Dimension | undefined => ({
+      'written-recognition': 'readingRecognition', 'phrase-comprehension': 'phraseComprehension',
+      'meaning-recall': 'readingRecognition', 'audio-to-meaning': 'listeningRecognition', 'auditory-recognition': 'listeningRecognition',
+      'auditory-transcription': 'listeningRecognition', 'meaning-to-target-retrieval': 'productiveRetrieval', 'meaning-to-form': 'productiveRetrieval',
+      'morphological-identification': 'grammaticalUnderstanding', 'morphological-analysis': 'grammaticalUnderstanding',
+      'grammar-application': 'grammaticalUnderstanding', 'construction-understanding': 'grammaticalUnderstanding',
+      'sentence-completion': 'contextualProduction', 'productive-recall': 'contextualProduction', readingRecognition: 'readingRecognition', listeningRecognition: 'listeningRecognition',
+      productiveRetrieval: 'productiveRetrieval', contextualProduction: 'contextualProduction', grammaticalUnderstanding: 'grammaticalUnderstanding',
+      phraseComprehension: 'phraseComprehension', assistedRecognition: 'assistedRecognition',
+    } as Record<string, import('../../repository-contract/src').Dimension>)[String(value)];
     for (const e of dedupeEvents(events)) {
       if (isTombstoned(e, tombstones)) continue;
-      const ids = [...new Set((e.subject?.itemIds ?? []).map(resolve))];
+      const idsFromSubject = e.subject?.itemIds ?? [];
+      const cardUnit = !idsFromSubject.length && e.subject?.cardId?.startsWith('card:')
+        ? e.subject.cardId.split(':').slice(2).join(':') : undefined;
+      const ids = [...new Set([...idsFromSubject, ...(cardUnit ? [cardUnit] : [])].map(resolve))];
       for (const id of ids) {
         const st = cards.get(id) ?? { covered: false };
         if (e.kind === 'CardReviewed' && (st.lastReviewAt === undefined || compareAt(e.at, st.lastReviewAt) > 0)) st.lastReviewAt = e.at;
         if (e.kind === 'CardAdded' || e.kind === 'CardRemoved' || e.kind === 'ReviewItemInvalidated') {
-          const m = marks.get(id);
-          if (!m || compareAt(e.at, m.at) > 0 || (compareAt(e.at, m.at) === 0 && e.id > m.id)) marks.set(id, { at: e.at, id: e.id, covered: e.kind === 'CardAdded' });
+          const cardDimension = objectiveDimension(e.payload.dimension) ?? objectiveDimension(e.subject.cardId?.slice('card:'.length).split(':', 1)[0]);
+          const dimension = cardDimension;
+          const reason = String(e.payload.reason ?? '');
+          const until = Date.parse(String(e.payload.until ?? ''));
+          const blocked = e.kind === 'ReviewItemInvalidated' || e.kind === 'CardRemoved' &&
+            (reason === 'suspended' || reason === 'dismissed' || reason === 'snoozed' && Number.isFinite(until) && until > Date.parse(at));
+          if (dimension) {
+            const byDimension = marks.get(id) ?? new Map();
+            const m = byDimension.get(dimension);
+            if (!m || compareAt(e.at, m.at) > 0 || (compareAt(e.at, m.at) === 0 && e.id > m.id)) {
+              byDimension.set(dimension, { at: e.at, id: e.id, covered: e.kind === 'CardAdded', blocked });
+            }
+            marks.set(id, byDimension);
+          } else {
+            const m = marks.get(id)?.get('*');
+            if (!m || compareAt(e.at, m.at) > 0 || (compareAt(e.at, m.at) === 0 && e.id > m.id)) {
+              const byDimension = marks.get(id) ?? new Map();
+              byDimension.set('*', { at: e.at, id: e.id, covered: e.kind === 'CardAdded', blocked });
+              marks.set(id, byDimension);
+            }
+          }
         }
         cards.set(id, st);
       }
     }
-    for (const [id, m] of marks) cards.set(id, { ...(cards.get(id) ?? { covered: false }), covered: m.covered });
+    for (const [id, byDimension] of marks) {
+      const legacy = byDimension.get('*');
+      const coveredDimensions = new Set([...byDimension].filter(([key, mark]) => key !== '*' && mark.covered).map(([key]) => key as import('../../repository-contract/src').Dimension));
+      const blockedDimensions = new Set([...byDimension].filter(([key, mark]) => key !== '*' && mark.blocked).map(([key]) => key as import('../../repository-contract/src').Dimension));
+      cards.set(id, { ...(cards.get(id) ?? { covered: false }), covered: legacy?.covered ?? false,
+        ...(coveredDimensions.size ? { coveredDimensions } : {}), ...(blockedDimensions.size ? { blockedDimensions } : {}), ...(legacy?.blocked ? { blocked: true } : {}) });
+    }
 
     // When the learner struggled (lookup, assistance request, failed recognition) with each unit: the construction rule's window reads these.
     const struggles = new Map<string, string[]>();
@@ -283,6 +326,7 @@ export function createProjectionEngine(deps: EngineDeps): ProjectionEngineX {
 
     return rankCandidates({
       rows, units, analyses, realizedBy, cards, goals: enrolment.goals, now: at, limit: opts?.limit ?? 20, struggles,
+      ...(opts?.objectiveDimensions ? { objectiveDimensions: opts.objectiveDimensions } : {}),
       ...(missionUnits ? { missionUnits } : {}), ...(opts?.includeCovered ? { includeCovered: true } : {}), ...(opts?.notes ? { notes: opts.notes } : {}),
     });
   }

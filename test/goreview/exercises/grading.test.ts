@@ -184,7 +184,7 @@ describe('gradeSelf', () => {
   const key = { accepted: ['book'], explanation: 'libër is book.' };
   it('maps the learner’s own judgement to an outcome at confidence 0.6', () => {
     expect(gradeSelf(key, resp({ selfGrade: 'again' }))).toMatchObject({ outcome: 'incorrect', confidence: 0.6 });
-    expect(gradeSelf(key, resp({ selfGrade: 'hard' }))).toMatchObject({ outcome: 'partial', confidence: 0.6 });
+    expect(gradeSelf(key, resp({ selfGrade: 'hard' }))).toMatchObject({ outcome: 'correct', confidence: 0.6 });
     expect(gradeSelf(key, resp({ selfGrade: 'good' }))).toMatchObject({ outcome: 'correct', confidence: 0.6 });
     expect(gradeSelf(key, resp({ selfGrade: 'easy' }))).toMatchObject({ outcome: 'correct', confidence: 0.6 });
     expect(gradeSelf(key, resp({ selfGrade: 'good' })).explanation).toContain('libër is book.');
@@ -227,9 +227,11 @@ describe('ratingFor', () => {
     ['correct, unhinted', grading('correct'), {}, 3],
     ['correct, self-graded easy', grading('correct'), { selfGrade: 'easy' }, 4],
     ['correct, self-graded good', grading('correct'), { selfGrade: 'good' }, 3],
+    ['correct, self-graded hard', grading('correct'), { selfGrade: 'hard' }, 2],
     ['correct, hinted', grading('correct'), { hinted: true }, null],
     ['correct, hinted, easy', grading('correct'), { hinted: true, selfGrade: 'easy' }, null],
-    ['partial', grading('partial'), {}, 2],
+    ['partial, essential retrieval not established', grading('partial'), {}, 1],
+    ['partial, successful retrieval with a minor defect', { ...grading('partial'), retrievalSucceeded: true }, {}, 2],
     ['partial, hinted', grading('partial'), { hinted: true }, null],
     ['incorrect', grading('incorrect'), {}, 1],
     ['incorrect, hinted', grading('incorrect'), { hinted: true }, null],

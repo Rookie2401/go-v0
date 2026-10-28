@@ -138,7 +138,7 @@ describe('invariant (g): the fold is deterministic, order-independent and idempo
 
   it('property: the same 30 events in 20 seeded shuffles give identical stored rows', async () => {
     const events = thirty();
-    const baseline = JSON.stringify(foldEvents(events, { modelVersion: 'projection@6' }));
+    const baseline = JSON.stringify(foldEvents(events, { modelVersion: 'projection@7' }));
     expect(JSON.parse(baseline).length).toBeGreaterThan(2);
     const rand = rng(99);
     for (let k = 0; k < 20; k++) {
@@ -153,7 +153,7 @@ describe('invariant (g): the fold is deterministic, order-independent and idempo
 
   it('property: shuffled arrival split into three projected batches gives the same rows too', async () => {
     const events = thirty();
-    const baseline = JSON.stringify(foldEvents(events, { modelVersion: 'projection@6' }));
+    const baseline = JSON.stringify(foldEvents(events, { modelVersion: 'projection@7' }));
     const rand = rng(5);
     for (let k = 0; k < 10; k++) {
       const order = shuffled(events, rand);
@@ -167,8 +167,8 @@ describe('invariant (g): the fold is deterministic, order-independent and idempo
 
   it('duplicates of an event (same id) change nothing, at the fold and through the store', async () => {
     const events = thirty();
-    const once = JSON.stringify(foldEvents(events, { modelVersion: 'projection@6' }));
-    expect(JSON.stringify(foldEvents([...events, ...events.slice(0, 12), ...events], { modelVersion: 'projection@6' }))).toBe(once);
+    const once = JSON.stringify(foldEvents(events, { modelVersion: 'projection@7' }));
+    expect(JSON.stringify(foldEvents([...events, ...events.slice(0, 12), ...events], { modelVersion: 'projection@7' }))).toBe(once);
     const store = new FakeStore();
     await store.append(L, events);
     const engine = createProjectionEngine({ store, now: () => NOW });
@@ -209,8 +209,8 @@ describe('invariant (h): rebuild from the log equals the incrementally projected
     expect((await store.getKnowledge(L))[0].modelVersion).toBe('projection@0-test');
     const v2 = createProjectionEngine({ store, now: () => NOW });
     expect((await v2.project(L)).folded).toBe(1);
-    expect((await store.getKnowledge(L))[0].modelVersion).toBe('projection@6');
-    expect(await store.getProjectionCursor(L)).toEqual({ seq: 1, modelVersion: 'projection@6' });
+    expect((await store.getKnowledge(L))[0].modelVersion).toBe('projection@7');
+    expect(await store.getProjectionCursor(L)).toEqual({ seq: 1, modelVersion: 'projection@7' });
   });
 });
 

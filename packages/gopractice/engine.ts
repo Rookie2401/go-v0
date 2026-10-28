@@ -1,3 +1,5 @@
+import { validateExercise } from '../goreview/src/exercises/validate';
+import { schedulerForReviewProfile } from '../goreview/src/scheduler/replay-profile';
 /**
  * The one file that imports GoReview's modules and adapts them to the `ReviewEngine` port (ports.ts). Everything the
  * screens know about intake, scheduling, planning and the session runner comes through that port.
@@ -10,7 +12,7 @@ import {
   applyControls, buildCardAdded, createFsrsScheduler, createSessionRunner, decideIntake, explainIntake, explainItem, foldDeckItems,
   gatherCandidates, measuresFor, planSession, reviewHistory, resolveBuilder,
 } from '../goreview/src';
-import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome } from '../goreview/src';
+import type { BuilderRegistry, FactsProvider, GradingPort, IntakeOutcome, Exercise } from '../goreview/src';
 import type { RepositoryApi } from '../repository-service/src/api';
 import type { ItemControl, ReviewEngine } from './ports';
 import { classFacts, isClassUnit } from './classEssentials';
@@ -31,8 +33,12 @@ const WARM_FACTS_TTL_MS = 30_000;
 export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   const now = opts.now ?? (() => new Date().toISOString());
   const random = opts.random ?? Math.random;
-  const scheduler = (desiredRetention: number, profile?: SchedulerProfile) => createFsrsScheduler({ desiredRetention,
-    ...(profile ? { parameters: profile.parameters, maximumInterval: profile.maximumInterval } : {}) });
+  const scheduler = (desiredRetention: number, profile?: SchedulerProfile) => {
+    const fallback = createFsrsScheduler({desiredRetention});
+    const resolved = schedulerForReviewProfile(profile, fallback);
+    if ('error' in resolved) throw new Error(resolved.error);
+    return resolved.scheduler;
+  };
   // Pack analyzers are language scoped, while their repository lookup is API scoped. Reuse the
   // provider only for the exact API client (the context keeps that client stable per service/token).
   const providers = new WeakMap<RepositoryApi, Map<string, FactsProvider>>();
@@ -62,6 +68,39 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
   };
 
   return {
+    async repairMaterial(request) {
+      const prepared=new Set<NonNullable<Exercise['prompt']['audio']>>();
+      let handedOff=false,released=false;
+      const release=()=>{if(released)return;released=true;for(const stimulus of prepared)request.assessment?.releaseStimulus?.(stimulus);};
+      const audio=request.assessment?{...request.assessment,prepareStimulus:async(...args:Parameters<NonNullable<typeof request.assessment>['prepareStimulus']>)=>{
+        const stimulus=await request.assessment!.prepareStimulus(...args);
+        if(!('unavailable' in stimulus))prepared.add(stimulus);
+        return stimulus;
+      }}:undefined;
+      try {
+        const item=request.item;
+        const facts=await factsOf(item.languageId,request.api).factsFor(item.unitId,item.languageId,item.varietyId);
+        const builder=resolveBuilder(opts.builders,item.family);
+        if(!facts||!builder)return {unavailable:'Verified study material or its exercise builder is unavailable.'};
+        if(facts.unit.unitId!==item.unitId||facts.unit.languageId!==item.languageId)
+          return {unavailable:'Current study facts belong to another unit or language.'};
+        if(facts.status==='invalidated'||facts.status==='conflicted'||facts.analyses.length>0&&facts.analyses.every(a=>a.status==='invalidated'))
+          return {unavailable:'The current facts are invalidated or conflicted; they cannot be used for study or repair.'};
+        const target={unitId:item.unitId,unitKind:item.unitKind,languageId:item.languageId,dimension:item.dimension,...(item.varietyId?{varietyId:item.varietyId}:{})};
+        const context={now:request.now,random:()=>0,...(audio?{audio}:{})};
+        if(!builder.canBuild(target,facts,context))return {unavailable:'Current facts cannot build a valid exercise for this skill.'};
+        const exercise=await builder.build(target,facts,context);
+        if('unavailable' in exercise)return {unavailable:exercise.reason};
+        if(exercise.prompt.audio)prepared.add(exercise.prompt.audio);
+        if(exercise.family!==item.family||exercise.target.unitId!==item.unitId||exercise.target.languageId!==item.languageId||exercise.target.dimension!==item.dimension)
+          return {unavailable:'Rebuilt study material does not match this card and skill.'};
+        const validation=validateExercise(exercise);
+        if(!exercise.eligibility.eligible||!exercise.validation.ok||!validation.ok)
+          return {unavailable:'Current material did not pass exercise validation: '+[...exercise.validation.issues,...validation.issues].join('; ')};
+        handedOff=true;return {facts,exercise,release};
+      } catch(error){return {unavailable:error instanceof Error?error.message:'Study material could not be rebuilt.'};}
+      finally{if(!handedOff)release();}
+    },
     factsFor: (unitId, languageId, api) => factsOf(languageId, api).factsFor(unitId, languageId),
     async exerciseAvailable(request) {
       const facts = takeWarmFacts(request.api, request.languageId, request.unitId) ?? await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId);
@@ -95,6 +134,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
           api: { candidates: async () => req.candidates, knowledge: async () => req.knowledge },
           facts: Object.assign(capturing, { prime: (ids: string[]) => (facts as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(ids) ?? Promise.resolve() }),
           audio: async () => req.audio, deck: req.deck, saved: req.saved, preferences: req.prefs, now: req.now, enrolmentId: '', limit: req.candidates.length || 1,
+          readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
         });
         if (captured.size) {
           let cache = warmFacts.get(req.api);
@@ -109,6 +149,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       const byUnit = new Map(req.knowledge.map((k) => [k.unitId, k] as const));
       return req.candidates.map((candidate): IntakeOutcome => decideIntake({
         candidate, knowledge: byUnit.get(candidate.unitId), existing: req.deck, audio: req.audio, saved: req.saved, preferences: req.prefs, now: req.now,
+        readingSignals: req.events, secondaryPractice: req.secondaryPractice, intent: req.intent,
       }));
     },
     explainIntake,
@@ -130,18 +171,18 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       deck: req.deck, intake: req.intake, preferences: req.prefs, audio: req.audio, scheduler: scheduler(req.prefs.desiredRetention, req.schedulerProfile), now: req.now,
       ...(req.recentHelp ? { recentHelp: req.recentHelp } : {}), random,
       knowledge: req.knowledge, readingSignals: req.readingSignals,
-      observedReviewSeconds: req.observedReviewSeconds,
+      observedReviewSeconds: req.observedReviewSeconds, intent: req.intent, learnerId: req.learnerId, remediationItemIds:req.remediationItemIds,
     }),
 
     startSession(start) {
       const runner = createSessionRunner({
-        plan: start.plan, builders: opts.builders, facts: factsOf(start.ctx.languageId, start.api),
+        plan: start.plan, preferences:start.prefs, builders: opts.builders, facts: factsOf(start.ctx.languageId, start.api),
         grading: { ratingFor: opts.ratingFor, evidenceFor: opts.evidenceFor },
         ...(start.assessment ? { audio: start.assessment } : {}),
         scheduler: scheduler(start.prefs.desiredRetention),
         schedulerForItem: () => scheduler(start.prefs.desiredRetention, start.schedulerProfile),
         identity: { learnerId: start.ctx.learnerId, enrolmentId: start.ctx.enrolmentId, deviceId: start.ctx.deviceId },
-        record: start.record, persist: start.persist, now, random, committedEvents: start.committedEvents,
+        record: start.record, persist: start.persist, now, random, committedEvents: start.committedEvents, canPresent: start.canPresent,
       });
       return {
         plan: start.plan,

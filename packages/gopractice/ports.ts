@@ -7,7 +7,7 @@ import type { AppendOutcome, Enrolment, GoEvent, ReviewCandidate, UnitKnowledge,
 import type { AssessmentSource, PlaybackHandle, PronunciationRequest, PronunciationResult } from '../golisten/src/contracts';
 import type { RepositoryApi } from '../repository-service/src/api';
 import type {
-  AudioAvailability, DeckItem, Exercise, Grading, IntakeOutcome, PlannedItem, Response, ReviewPreferences, ReviewResult, Scheduler, SessionPlan, SessionState, UnitFacts,
+  AudioAvailability, DeckItem, Exercise, Grading, IntakeOutcome, PlannedItem, Response, ReviewIntent, ReviewPreferences, ReviewResult, Scheduler, SessionPlan, SessionState, UnitFacts,
 } from '../goreview/src/types';
 import type { ItemHistory } from '../goreview/src/history/history';
 import type { Measure } from '../goreview/src/transfer/measures';
@@ -33,6 +33,9 @@ export interface EventContext {
 export type ItemControl = { kind: 'snooze'; until: string } | { kind: 'suspend' } | { kind: 'dismiss' } | { kind: 'resume' };
 
 export interface IntakeRequest {
+  events?: GoEvent[];
+  intent?: ReviewIntent;
+  secondaryPractice?: boolean;
   /** For the pack facts intake consults (the unit lookup). */
   api: RepositoryApi;
   candidates: ReviewCandidate[];
@@ -67,6 +70,7 @@ export interface SessionDriver {
 }
 
 export interface SessionStart {
+  canPresent?: (planned: PlannedItem, at: string) => Promise<{ eligible: boolean; reason?: string }>;
   schedulerProfile?: SchedulerProfile;
   prefs: ReviewPreferences;
   plan: SessionPlan;
@@ -103,6 +107,10 @@ export interface ActiveRun {
 }
 
 export interface PlanRequest {
+  /** Explicit ready reassessment targets; ordinary non-target cards retain automatic eligibility. */
+  remediationItemIds?: Set<string>;
+  learnerId?: string;
+  intent?: ReviewIntent;
   observedReviewSeconds?: Record<string, number>;
   schedulerProfile?: SchedulerProfile;
   deck: DeckItem[];
@@ -117,6 +125,8 @@ export interface PlanRequest {
 }
 
 export interface ReviewEngine {
+  /** Rebuild current study/repair material with the configured facts and exercise builder. Release prepared audio afterwards. */
+  repairMaterial?(request:{item:DeckItem;api:RepositoryApi;now:string;assessment?:AssessmentSource}):Promise<{facts:UnitFacts;exercise:Exercise;release:()=>void}|{unavailable:string}>;
   factsFor?(unitId: string, languageId: string, api: RepositoryApi): Promise<UnitFacts | undefined>;
   /** Whether the proposed family has verified facts and can produce a valid exercise. */
   exerciseAvailable?(request: { unitId: string; unitKind: string; languageId: string; dimension: import('../goreview/src/types').AssessmentDimension; family: import('../goreview/src/types').ExerciseFamily; api: RepositoryApi; now: string }): Promise<boolean>;

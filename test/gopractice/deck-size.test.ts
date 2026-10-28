@@ -47,7 +47,7 @@ describe('cards per deck', () => {
     click(rig.q('#home-more'));
     await until(() => cards(rig) === 6, 'six cards');
     click(rig.q('#deck-size-box [data-cards="15"]'));
-    await until(() => cards(rig) === 14, 'all fourteen: fewer than the size when there is less material');
+    await until(() => cards(rig) === 10, 'adaptive target stays near ten under the configured fifteen-card maximum');
     type(rig.q<HTMLInputElement>('#home-size'), '1');
     await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 5, 'the lower clamp');
     type(rig.q<HTMLInputElement>('#home-size'), '999');
@@ -55,21 +55,21 @@ describe('cards per deck', () => {
     await until(() => rig.q<HTMLButtonElement>('#home-more').disabled, 'the stepper to stop at 60');
   });
 
-  it('tops the schedule up from the vocabulary toward the size, never padding past the words there are', async () => {
+  it('does not top the schedule up merely because more vocabulary exists', async () => {
     const rig = await makeRig({ signedIn: true });
     useWords(rig, [word('zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), word('mace', 'new', 1, '2026-10-06T00:00:00.000Z'), word('qen', 'new', 1, '2026-10-04T00:00:00.000Z'), word('diell', 'seen', 2, '2026-10-03T00:00:00.000Z')]);
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 20 });
     await seed(rig, dueMany(2));
     await reopen(rig);
-    expect(cards(rig)).toBe(6); // two due cards and the four words
+    expect(cards(rig)).toBe(2); // two actual due cards; catalog membership creates no demand
   });
 
-  it('with fewer words than the size the deck is all the words', async () => {
+  it('with vocabulary but no justified scheduled work the batch stays empty', async () => {
     const rig = await makeRig({ signedIn: true });
     useWords(rig, [word('zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), word('mace', 'new', 1, '2026-10-06T00:00:00.000Z'), word('qen', 'new', 1, '2026-10-04T00:00:00.000Z')]);
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 30 });
     await reopen(rig);
-    expect(cards(rig)).toBe(3);
+    expect(cards(rig)).toBe(0);
   });
 
   it('the saved deck keeps its own size', async () => {
@@ -115,7 +115,7 @@ describe('cards per deck', () => {
     expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck).toBe(5);
   });
 
-  it('is operable and named: labelled stepper (Settings has the stepper alone; the home keeps the pills), a 44 px target in standalone mode', async () => {
+  it('is operable and named: labelled centered Settings stepper without presets, a 44 px target in standalone mode', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('settings');
     expect(rig.q('#pref-less').getAttribute('aria-label')).toBe('Fewer cards per deck');

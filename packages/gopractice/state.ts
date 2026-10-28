@@ -51,7 +51,7 @@ export const clampDeckSize = (v: unknown): number => (typeof v === 'number' && N
 export const cardsFromMinutes = (minutes: number): number => (minutes === 0 ? DEFAULT_CARDS_PER_DECK : clampDeckSize(minutes * 2));
 
 export const DEFAULT_PREFERENCES = (languageId: string): ReviewPreferences => ({
-  languageId, sessionMinutes: 10, maxNew: 5, desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
+  languageId, sessionMinutes: 10, maxNew: 5, dailyNewLimit: 5, practiceGoals: ['recognition', 'retrieval', 'application'], desiredRetention: 0.9, includeListening: false, grammarShare: 0.2, prioritizeSaved: true, cardsPerDeck: DEFAULT_CARDS_PER_DECK,
 });
 
 // ───────────────────────────── key-value areas ─────────────────────────────
@@ -330,6 +330,8 @@ export const clampPrefs = (p: Partial<ReviewPreferences> & { languageId: string 
     languageId: p.languageId,
     sessionMinutes: p.sessionMinutes === 0 ? 0 : Math.round(num(p.sessionMinutes, 1, 120, d.sessionMinutes)),
     maxNew: Math.round(num(p.maxNew, 0, 50, d.maxNew)),
+    dailyNewLimit: Math.round(num(p.dailyNewLimit, 0, 200, d.dailyNewLimit ?? d.maxNew)),
+    practiceGoals: Array.isArray(p.practiceGoals) ? [...new Set(p.practiceGoals.filter(g => ['recognition','retrieval','listening','application'].includes(g)))] : d.practiceGoals,
     desiredRetention: num(p.desiredRetention, 0.7, 0.97, d.desiredRetention),
     includeListening: p.includeListening === true,
     grammarShare: num(p.grammarShare, 0, 1, d.grammarShare),

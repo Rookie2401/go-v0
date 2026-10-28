@@ -249,7 +249,7 @@ describe('Prompt 5 §21 — GoReview over the real Repository, pack, scheduler, 
     const audio = await audioDeps.availability('sq');
     expect(audio).toMatchObject({ available: true, eligibleForEvidence: true });
     const deck = await deckOf(a);
-    const plan = planSession({ deck: deck.filter((d) => d.dimension === 'auditory-recognition'), intake: [], preferences: prefs, audio, scheduler, now: nowIso(), random: () => 0.5 });
+    const plan = planSession({ deck: deck.filter((d) => d.dimension === 'auditory-recognition'), knowledge: Object.values(await knowledge(a,[LEMMA])), intake: [], preferences: prefs, audio, scheduler, now: nowIso(), random: () => 0.5 });
     expect(plan.listeningCount).toBeGreaterThan(0);
     const runner = runnerFor(a, plan, { audio: true });
     const cur = (await runner.current())!;

@@ -9,11 +9,11 @@
  * These estimates are hypotheses until calibrated against independent assessments.
  */
 import { DIMENSIONS } from '../../repository-contract/src';
-import { effectiveReviewEvents } from '../../repository-contract/src';
+import { effectiveReviewEvents, isValidReviewClaim, selectReviewEvidenceEvents } from '../../repository-contract/src';
 import type { Dimension, DimensionEstimate, GoEvent, Tombstone, UnitKnowledge } from '../../repository-contract/src';
 import { observationsOf } from './evidence';
 import type { Observation } from './evidence';
-import { RECOGNITION_LEVEL_DIMENSIONS, levelOf } from './levels';
+import { LEVEL_THRESHOLDS, RECOGNITION_LEVEL_DIMENSIONS, levelOf } from './levels';
 
 /** Pseudo-observations at 0.5 that every judged dimension starts from: a prior of "undecided". */
 export const PRIOR = 1;
@@ -36,7 +36,7 @@ export function compareAt(a: string, b: string): number {
 }
 
 export function emptyEstimate(exposure = false): DimensionEstimate {
-  return { score: exposure ? 0 : 0.5, confidence: 0, observations: 0, positive: 0, negative: 0, weight: 0, contexts: 0 };
+  return { score: exposure ? 0 : 0.5, confidence: 0, observations: 0, positive: 0, negative: 0, weight: 0, contexts: 0, independentPositiveEvents: 0, delayedIndependentPositiveEvents: 0 };
 }
 
 export function emptyRow(learnerId: string, unitId: string, languageId: string, modelVersion: string): UnitKnowledge {
@@ -140,7 +140,9 @@ export function finalizeRow(row: UnitKnowledge, state: FoldState): UnitKnowledge
     const ownState = newFoldState();
     for (const o of [...state.observations].filter((x) => x.selfMark === undefined).sort(compareObservations)) own = foldOne(own, o, row.modelVersion, ownState);
     evidence = (own ?? emptyRow(row.learnerId, row.unitId, row.languageId, row.modelVersion)).dimensions;
-    const fresh = state.observations.filter((o) => o.selfMark === undefined && compareAt(o.at, mark.at) > 0).sort(compareObservations);
+    // A New reset is strict by instant; alternate ISO spellings of the same instant are not post-reset evidence.
+    const markTime = Date.parse(mark.at);
+    const fresh = state.observations.filter((o) => o.selfMark === undefined && Date.parse(o.at) > markTime).sort(compareObservations);
     const st = newFoldState();
     let acc: UnitKnowledge | undefined;
     for (const o of fresh) acc = foldOne(acc, o, row.modelVersion, st);
@@ -172,6 +174,14 @@ function foldOne(row: UnitKnowledge | undefined, o: Observation, modelVersion: s
     else e.positive = prev.positive + 1;
   } else if (o.outcome === 'positive') e.positive = r9(prev.positive + o.weight);
   else e.negative = r9(prev.negative + o.weight);
+
+  if (o.knowabilityQualified === true && o.outcome === 'positive') {
+    const previousAt = prev.lastIndependentPositiveAt;
+    const delayed = previousAt !== undefined && Date.parse(o.at) - Date.parse(previousAt) >= LEVEL_THRESHOLDS.known.spacingMs;
+    e.independentPositiveEvents = (prev.independentPositiveEvents ?? 0) + 1;
+    e.delayedIndependentPositiveEvents = (prev.delayedIndependentPositiveEvents ?? 0) + (delayed ? 1 : 0);
+    if (previousAt === undefined || compareAt(o.at, previousAt) > 0) e.lastIndependentPositiveAt = o.at;
+  }
 
   const cmp = prev.lastAt === undefined ? 1 : compareAt(o.at, prev.lastAt);
   if (cmp > 0) { e.lastAt = o.at; e.lastAssisted = o.assisted; } else if (cmp === 0) e.lastAssisted = (prev.lastAssisted ?? false) || o.assisted;
@@ -314,8 +324,16 @@ export function makeResolver(aliases: Array<{ oldId: string; newId: string; mapp
 /** Observations of the live (non-tombstoned, de-duplicated) events, with unit ids re-targeted through `resolve`. */
 export function observationsFromEvents(events: GoEvent[], tombstones: Tombstone[], resolve: UnitResolver = identityResolver): Observation[] {
   const out: Observation[] = [];
-  const live = effectiveReviewEvents(dedupeEvents(events).filter((e) => !isTombstoned(e, tombstones)));
+  const visible = events.filter((e) => !isTombstoned(e, tombstones));
+  // The shared selector sees immutable review history (including retracted parents) while output comes from the
+  // correction-filtered stream. This keeps Repository evidence aligned with FSRS and the other evidence consumers.
+  const live = effectiveReviewEvents(dedupeEvents(visible));
+  const allowed = new Set(selectReviewEvidenceEvents(visible).events.map((e) => e.id));
   for (const e of live) {
+    if (['CardReviewed','AssessmentAnswered','ListeningAssessed'].includes(e.kind)) {
+      if (!isValidReviewClaim(e)) continue;
+      if (!allowed.has(e.id)) continue;
+    }
     for (const o of observationsOf(e)) out.push({ ...o, unitId: resolve(o.unitId) });
   }
   return out;

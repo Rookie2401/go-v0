@@ -6,6 +6,8 @@
 import type { GoEvent, ReviewCandidate, UnitKnowledge } from '../../../repository-contract/src';
 import type { AudioAvailability, DeckItem, FactsProvider, IntakeOutcome, ReviewPreferences } from '../types';
 import { decideIntake, rankComparativePriority } from './intake';
+import { createReviewEligibilityContext } from '../planner/eligibility';
+import { indexPracticeEvidence } from '../planner/learning-policy';
 
 /** Recognition aliasing does not assert that every morphological feature is verified. */
 const reliableFormLink = (relation: import('../../../repository-contract/src').UnitRelation): boolean =>
@@ -15,7 +17,7 @@ const reliableFormLink = (relation: import('../../../repository-contract/src').U
 
 export interface GatherDeps {
   api: {
-    candidates(enrolmentId: string, limit: number): Promise<ReviewCandidate[]>;
+    candidates(enrolmentId: string, limit: number, objectiveDimensions?: import('../../../repository-contract/src').Dimension[]): Promise<ReviewCandidate[]>;
     /** One batch for every candidate; a record by unit id or a plain array (the engine returns an array). */
     knowledge(unitIds: string[]): Promise<Record<string, UnitKnowledge> | UnitKnowledge[]>;
   };
@@ -30,6 +32,7 @@ export interface GatherDeps {
   limit?: number;
   readingSignals?: GoEvent[];
   secondaryPractice?: boolean;
+  intent?: import('../types').ReviewIntent;
 }
 
 export const DEFAULT_CANDIDATE_LIMIT = 40;
@@ -42,8 +45,17 @@ export type PrimableFacts = FactsProvider & { prime?(unitIds: string[]): Promise
 
 export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[]> {
   const { preferences, deck, saved, now } = deps;
-  const candidates = await deps.api.candidates(deps.enrolmentId, deps.limit ?? DEFAULT_CANDIDATE_LIMIT);
+  const objectives = [
+    ...(deps.preferences.practiceGoals?.includes('retrieval') ? ['productiveRetrieval' as const] : []),
+    ...(deps.preferences.practiceGoals?.includes('application') ? ['grammaticalUnderstanding' as const, 'contextualProduction' as const] : []),
+    ...(deps.preferences.includeListening && deps.preferences.practiceGoals?.includes('listening') ? ['listeningRecognition' as const] : []),
+    ...(deps.preferences.practiceGoals?.includes('recognition') ? ['readingRecognition' as const] : []),
+  ];
+  const candidates = await deps.api.candidates(deps.enrolmentId, deps.limit ?? DEFAULT_CANDIDATE_LIMIT, objectives);
   if (!candidates.length) return [];
+  const eligibilityContext = createReviewEligibilityContext(deck, deps.readingSignals ?? [], now);
+  const automaticFailureUnits = eligibilityContext.automaticFailureUnits;
+  const practiceEvidenceByUnit = indexPracticeEvidence(eligibilityContext.selectedReviewEvidence.events);
   const knowledge = toRecord(await deps.api.knowledge([...new Set(candidates.map((c) => c.unitId))]));
   let audio: AudioAvailability;
   try { audio = await deps.audio(preferences.languageId); } catch (e) {
@@ -52,7 +64,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
 
   // First pass without facts, for every candidate; only the ones it would test need pack facts.
   const passes = candidates.map((candidate) => {
-    const base = { candidate, knowledge: knowledge[candidate.unitId], existing: deck, audio, saved, preferences, now, readingSignals: deps.readingSignals, secondaryPractice: deps.secondaryPractice };
+    const base = { candidate, knowledge: knowledge[candidate.unitId], existing: deck, audio, saved, preferences, now, readingSignals: deps.readingSignals, automaticFailureUnits, practiceEvidenceByUnit, eligibilityContext, secondaryPractice: deps.secondaryPractice, intent: deps.intent };
     return { candidate, base, first: decideIntake(base) };
   });
   const testable = passes.filter((p) => p.first.proposed &&
@@ -140,7 +152,7 @@ export async function gatherCandidates(deps: GatherDeps): Promise<IntakeOutcome[
       out.push({ ...first, decision: 'redundant', proposed: undefined, reasons: [`merged into canonical lexeme ${canonicalLexemeId} through one reliable lexical form-of relation; one encounter creates one reading-recognition objective`, ...first.reasons] });
       continue;
     }
-    if (first.decision !== 'test-now' && first.decision !== 'test-later') { out.push(first); continue; }
+    if (first.decision !== 'test-now' && first.decision !== 'test-later' && first.decision !== 'low-priority') { out.push(first); continue; }
     try {
       if (factErrors.has(candidate.unitId)) throw new Error(factErrors.get(candidate.unitId));
       const facts = factsByUnit.get(candidate.unitId);

@@ -78,7 +78,7 @@ function buildEvidence(
   if (response.audioFailed === true) return null;
   if (NO_CLAIM.includes(grading.outcome)) return null;
 
-  const correct = grading.outcome === 'correct';
+  const correct = grading.outcome === 'correct' || grading.retrievalSucceeded === true;
     const hinted = response.hinted === true || (response.assistance?.length ?? 0) > 0 || response.retrievalAttempted === false;
   const kind = responseKind(e, response);
   const dimension = FAMILY_DIMENSION[e.family];

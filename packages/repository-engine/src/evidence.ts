@@ -25,6 +25,7 @@
  */
 import { levelOfMark } from '../../repository-contract/src';
 import type { Dimension, GoEvent, KnowledgeLevel, LevelMark } from '../../repository-contract/src';
+import { LEVEL_THRESHOLDS } from './levels';
 
 export type ObservationOutcome = 'positive' | 'negative' | 'exposure';
 /** What kind of exposure an exposure observation is (kept so lookups, assistance and playbacks can be counted). */
@@ -51,6 +52,8 @@ export interface Observation {
   languageBasis?: string;
   /** projection@3/4: set on the observation of an ItemMarked level or legacy mark, as the LEVEL it means; the fold keeps the latest one per unit as `UnitKnowledge.selfMark`. */
   selfMark?: SelfMark;
+  /** projection@7: this positive may contribute to delayed knowability if it is causally valid and independent. */
+  knowabilityQualified?: boolean;
 }
 
 /** The level a self-mark means (`levelOfMark`): `learning` = new, `productive` = known, a level word is itself. */
@@ -200,10 +203,38 @@ export function observationsOf(event: GoEvent): Observation[] {
       if (d.counter) o.counter = d.counter;
       if (d.languageBasis !== undefined) o.languageBasis = d.languageBasis;
       if (d.selfMark !== undefined) o.selfMark = d.selfMark;
+      if (qualifiesForKnowability(event, dimension, d.outcome, assisted, reliability)) o.knowabilityQualified = true;
       out.push(o);
     }
   }
   return out;
+}
+
+/**
+ * A knowability success is deliberately narrower than numeric evidence. It is an unassisted positive from an explicit
+ * strong/moderate source. GoReview's typed assessments carry moderate quality; choice and self reports carry weak
+ * quality. Listening must explicitly be typed. GoTell must explicitly record independently authored, objectively
+ * judged correct production. This does not change the ordinary dimension score or discard any history.
+ */
+function qualifiesForKnowability(event: GoEvent, dimension: Dimension, outcome: ObservationOutcome, assisted: boolean, reliability: number): boolean {
+  if (outcome !== 'positive' || assisted || event.evidence?.assisted === true) return false;
+  if (event.evidence?.quality !== 'moderate' && event.evidence?.quality !== 'strong') return false;
+  if (reliability < LEVEL_THRESHOLDS.known.sourceReliability) return false;
+  const p = (event.payload ?? {}) as Record<string, unknown>;
+  if (p.hinted === true || p.answerShownBefore === true || p.transcriptShownBefore === true || p.retrievalAttempted === false) return false;
+  if (event.kind === 'ProductionRecorded') {
+    return event.producer.app === 'gopractice-tell' && p.authorship === 'independent' && p.usedCorrectly === true &&
+      p.assisted !== true && (!Array.isArray(p.assistance) || p.assistance.length === 0) && dimension !== 'exposure';
+  }
+  if (event.kind === 'ListeningAssessed') return p.responseMode === 'typed' && p.voice === 'recorded' && p.correct === true && p.outcome === 'correct';
+  if (event.kind === 'CardReviewed' || event.kind === 'AssessmentAnswered') {
+    if ((p.responseMode !== undefined && p.responseMode !== 'typed') || p.outcome !== 'correct' || p.correct !== true) return false;
+    if (event.kind === 'AssessmentAnswered' && typeof p.answer === 'string' && typeof p.expected === 'string') return false;
+    // Current GoReview emits moderate quality only for typed responses; self and choice evidence is weak. A direct
+    // responseMode field is honored when present, while the source quality supports legacy typed payloads without it.
+    return event.producer.app === 'gopractice-review' && dimension !== 'assistedRecognition';
+  }
+  return false;
 }
 
 function draftsOf(e: GoEvent): Draft[] {

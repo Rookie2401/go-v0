@@ -1,14 +1,8 @@
 /**
- * The session controls (ReviewPreferences), shared by Settings and the review details page. Saved on every change.
- *
- * Settings shows one thing first: Cards per deck, a centred stepper (fewer · the number · more). Everything else sits under
- * "Advanced settings", a closed disclosure: the other numbers as the same kind of stepper (new items per session, desired
- * retention, share of grammar items), the switches, and at the bottom "Reset to default", which puts every preference on this
- * page back to the defaults (the deck size and the device's shortcut switch included). The details page, which has its own
- * deck-size control, gets the same fields flat.
- *
- * `track` is handed each save as it starts, so a caller that acts on the saved values (Start a session) can wait for them.
- * The interface switch (one-key shortcuts) is kept per device, not per learner (./uiprefs).
+ * Review preferences shared by Settings and the review details page. Settings keeps the deck size
+ * prominent and places the remaining learning controls under a closed Advanced settings disclosure.
+ * `track` receives each save as it starts so callers can wait before starting a session.
+ * The keyboard shortcut preference is device-local (./uiprefs).
  */
 import type { ReviewPreferences } from '../../goreview/src/types';
 import type { AppContext } from '../context';
@@ -19,7 +13,7 @@ import { getUiPrefs, patchUiPrefs } from './uiprefs';
 
 interface Stepper { root: HTMLElement; input: HTMLInputElement; set(value: number): void }
 
-/** A whole number between `min` and `max`, stepped by its own fewer / more buttons; the number itself can be typed. Changes are 'change' events on the input. */
+/** A clamped whole-number input with accessible fewer/more buttons and keyboard typing support. */
 function stepper(id: string, label: string, value: number, min: number, max: number, step: number): Stepper {
   const input = h('input', { type: 'number', id, name: id, class: 'stepper-value', min, max, step, value, inputmode: 'numeric', 'aria-label': label }) as HTMLInputElement;
   const clamp = (v: number): number => Math.min(max, Math.max(min, Math.round(Number.isFinite(v) ? v : value)));
@@ -33,39 +27,54 @@ function stepper(id: string, label: string, value: number, min: number, max: num
   return { root: h('div', { class: 'stepper', role: 'group', 'aria-label': label }, less, input, more), input, set };
 }
 
+const goalNames = ['recognition', 'retrieval', 'listening', 'application'] as const;
+const goalLabels: Record<typeof goalNames[number], string> = {
+  recognition: 'Reading recognition', retrieval: 'Recall from meaning', listening: 'Listening recognition', application: 'Grammar and context',
+};
+const goalHelp: Record<typeof goalNames[number], string> = {
+  recognition: 'Recognize a written word or phrase.',
+  retrieval: 'Produce a word from its meaning after independent recognition evidence.',
+  listening: 'Only available when listening is enabled and suitable audio exists.',
+  application: 'Use contextual or grammatical practice after sufficient recognition evidence.',
+};
+
 export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPreferences, onSaved?: (p: ReviewPreferences) => void, track?: (saving: Promise<unknown>) => void, opts: { deckSize?: boolean } = {}): HTMLElement {
   let current = initial;
   const status = statusLine();
   const maxNew = stepper('pref-max-new', 'New items per session', initial.maxNew, 0, 50, 1);
+  const dailyNew = stepper('pref-daily-new', 'Automatic new items per UTC day', initial.dailyNewLimit ?? initial.maxNew, 0, 200, 1);
   const retention = stepper('pref-retention', 'Desired retention, per cent', Math.round(initial.desiredRetention * 100), 70, 97, 1);
-  const grammar = stepper('pref-grammar', 'Share of grammar items, per cent', Math.round(initial.grammarShare * 100), 0, 100, 5);
-  const listening = h('input', { type: 'checkbox', id: 'pref-listening', name: 'pref-listening', ...(initial.includeListening ? { checked: true } : {}) }) as HTMLInputElement;
-  const saved = h('input', { type: 'checkbox', id: 'pref-saved', name: 'pref-saved', ...(initial.prioritizeSaved ? { checked: true } : {}) }) as HTMLInputElement;
+  const listening = h('input', { type: 'checkbox', id: 'pref-listening', name: 'pref-listening', checked: initial.includeListening }) as HTMLInputElement;
+  const saved = h('input', { type: 'checkbox', id: 'pref-saved', name: 'pref-saved', checked: initial.prioritizeSaved }) as HTMLInputElement;
+  const goals = Object.fromEntries(goalNames.map((goal) => [goal, h('input', { type: 'checkbox', id: `pref-goal-${goal}`, name: `pref-goal-${goal}`, checked: initial.practiceGoals?.includes(goal) ?? false })])) as Record<typeof goalNames[number], HTMLInputElement>;
   listening.checked = initial.includeListening;
   saved.checked = initial.prioritizeSaved;
 
-  /** The controls show the preferences as saved (a typed value out of range comes back clamped). */
   function show(prefs: ReviewPreferences): void {
     current = prefs;
     maxNew.set(prefs.maxNew);
+    dailyNew.set(prefs.dailyNewLimit ?? prefs.maxNew);
     retention.set(Math.round(prefs.desiredRetention * 100));
-    grammar.set(Math.round(prefs.grammarShare * 100));
     listening.checked = prefs.includeListening;
     saved.checked = prefs.prioritizeSaved;
+    for (const goal of goalNames) goals[goal].checked = prefs.practiceGoals?.includes(goal) ?? false;
   }
 
   async function save(): Promise<void> {
     const next = await ctx.state.updatePrefs(learnerId, current.languageId, {
-      maxNew: Number(maxNew.input.value), desiredRetention: Number(retention.input.value) / 100,
-      grammarShare: Number(grammar.input.value) / 100, includeListening: listening.checked, prioritizeSaved: saved.checked,
+      maxNew: Number(maxNew.input.value), dailyNewLimit: Number(dailyNew.input.value),
+      desiredRetention: Number(retention.input.value) / 100,
+      includeListening: listening.checked, prioritizeSaved: saved.checked,
+      practiceGoals: goalNames.filter((goal) => goals[goal].checked),
     });
     show(next);
     setStatus(status, 'Saved on this device.', 'ok');
     onSaved?.(next);
   }
-  for (const c of [maxNew.input, retention.input, grammar.input, listening, saved]) c.addEventListener('change', () => { const saving = save(); track?.(saving); void saving; });
+  for (const c of [maxNew.input, dailyNew.input, retention.input, listening, saved, ...Object.values(goals)]) {
+    c.addEventListener('change', () => { const saving = save(); track?.(saving); void saving; });
+  }
 
-  // interface switches of this device (WCAG 2.1.4 and 2.2.2): defaults are on; read when the form is built
   const shortcuts = h('input', { type: 'checkbox', id: 'pref-shortcuts', name: 'pref-shortcuts', checked: true }) as HTMLInputElement;
   void getUiPrefs(ctx).then((ui) => { shortcuts.checked = ui.shortcuts; });
   shortcuts.addEventListener('change', () => { const saving = patchUiPrefs(ctx, { shortcuts: shortcuts.checked }).then(() => setStatus(status, 'Saved on this device.', 'ok')); track?.(saving); });
@@ -73,11 +82,9 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
   const toggle = (box: HTMLInputElement, label: string, help: string): HTMLElement =>
     h('label', { class: 'toggle' }, box, h('span', {}, label, h('span', { class: 'help' }, ` ${help}`)));
 
-  // the deck size (Settings only; the details page has its own control beside the deck)
   const deck: DeckSizeControl | undefined = opts.deckSize === false ? undefined
     : deckSizeControl(ctx, learnerId, current.languageId, initial.cardsPerDeck, (_n, prefs) => { current = prefs; onSaved?.(prefs); }, 'pref', { presets: false, centred: true });
 
-  /** Every preference on this page back to the defaults: the review preferences of this language, and this device's shortcut switch. */
   const reset = button('Reset to default', () => {
     reset.disabled = true;
     const saving = (async () => {
@@ -97,8 +104,11 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
 
   const advanced = [
     field('New items per session (at most)', maxNew.root),
+    field('Automatic new items per UTC day', dailyNew.root, 'Counted from synchronized review history. Independent offline devices can temporarily exceed the shared allowance; optional practice is separate.'),
     field('Desired retention (%)', retention.root, 'How likely you want to recall an item when it comes due. Higher means more reviews.'),
-    field('Share of grammar items (%)', grammar.root, 'Approximate; due items are never dropped to reach it.'),
+    h('fieldset', { class: 'field', id: 'pref-practice-goals' }, h('legend', {}, 'Deliberate practice goals'),
+      ...goalNames.map((goal) => toggle(goals[goal], goalLabels[goal], goalHelp[goal])),
+      p('Goals select one practice dimension at a time. Multiple choice and assisted answers do not establish productive mastery.', 'help')),
     toggle(listening, 'Include listening practice', 'Needs audio. Synthetic speech is practice only and is never recorded as listening evidence.'),
     toggle(saved, 'Prioritise items I saved', 'Items you marked as saved are proposed first.'),
     toggle(shortcuts, 'Keyboard shortcuts in a session', 'The keys 1 to 4 answer or grade and Space plays the audio. Turn them off if speech input or a switch device triggers them by accident; every action stays a button, and Enter and Esc still work.'),
@@ -108,7 +118,7 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
 
   const form = h('div', { class: 'prefs', id: 'prefs-form' });
   append(form, [
-    deck ? h('div', { class: 'field deck-field' }, h('span', { class: 'cap' }, 'Cards per deck'), deck, h('span', { class: 'help' }, 'How many cards the current deck holds, from 5 to 60. It changes the deck at once.')) : null,
+    deck ? h('div', { class: 'field deck-field' }, h('span', { class: 'cap' }, 'Cards per deck'), deck, h('span', { class: 'help' }, 'Maximum questions in a batch, from 5 to 60. A batch can contain fewer eligible questions.')) : null,
     deck ? h('details', { class: 'advanced', id: 'pref-advanced' }, h('summary', {}, 'Advanced settings'), ...advanced) : h('div', { id: 'pref-advanced' }, ...advanced),
     status,
   ]);

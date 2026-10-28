@@ -4,3 +4,5 @@ export { assertValidEvent, buildCardAdded, buildCardRemoved, foldDeck, foldDeckI
 export type { CardAddedInput, CardRemovedInput, DeckFold, EventBase, FoldOptions } from './deck';
 export { checkInvariants, checkLibraryAgainstVectors, checkRepeatAgreesWithNext, checkSchedulerAgainstVectors, computeReferenceVectors, REFERENCE_START } from './verify';
 export type { ReferenceStep, ReferenceVectors } from './verify';
+
+export { schedulerForReviewProfile } from './replay-profile';

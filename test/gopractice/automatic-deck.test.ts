@@ -1,5 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
+import { planCurrentDeck } from '../../packages/gopractice/deckModel';
 import { loadReviewModel } from '../../packages/gopractice/workspace';
 import { destroyRigs, candidate, defaultService, knowledgeRow, makeRig, queued, reopen, type Rig, FAKE_BUILDERS } from './helpers';
 
@@ -17,13 +18,13 @@ async function setup(labels: Array<[string, number]>, maxNew = 2, builders = FAK
 }
 
 describe('GoReview automatic deck admission', () => {
-  it('adds the highest scored buildable items and stays idempotent across reloads', async () => {
+  it('proposes the highest scored buildable items without creating cards and stays idempotent across reloads', async () => {
     const rig = await setup([['low', .01], ['high', .12], ['middle', .08]], 2);
     // Every raw score is below the old absolute cutoff. Concurrent workspace loads
-    // still select the strongest two and durably admit each only once.
+    // still select the strongest two and create no scheduling progress.
     const [first] = await Promise.all([loadReviewModel(rig.app.ctx), loadReviewModel(rig.app.ctx)]);
-    expect(first?.deck.filter((x) => x.history.length === 0).map((x) => x.unitId)).toEqual(['lemma:sq:high:NOUN', 'lemma:sq:middle:NOUN']);
-    const n = (await queued(rig)).filter((e) => e.kind === 'CardAdded').length;
+    expect((await planCurrentDeck(rig.app.ctx,first!)).entries.map(x=>x.unitId)).toEqual(['lemma:sq:high:NOUN', 'lemma:sq:middle:NOUN']);
+    const n = 0; expect(await queued(rig)).toEqual([]);
     await reopen(rig);
     await loadReviewModel(rig.app.ctx);
     expect((await queued(rig)).filter((e) => e.kind === 'CardAdded')).toHaveLength(n);
@@ -33,7 +34,7 @@ describe('GoReview automatic deck admission', () => {
     const builders = FAKE_BUILDERS.map((b) => b.family === 'written-recognition' ? { ...b, canBuild: (target: { unitId: string }) => !target.unitId.includes(':broken:') } : b);
     const rig = await setup([['broken', .99], ['usable', .4]], 1, builders);
     const model = await loadReviewModel(rig.app.ctx);
-    expect(model?.deck.some((x) => x.unitId.includes(':usable:'))).toBe(true);
+    expect((await planCurrentDeck(rig.app.ctx,model!)).entries.some((x) => x.unitId.includes(':usable:'))).toBe(true);
     expect(model?.deck.some((x) => x.unitId.includes(':broken:'))).toBe(false);
     expect(model?.outcomes.find((x) => x.unitId.includes(':broken:'))).toMatchObject({ decision: 'needs-validation', proposed: undefined });
     expect(model?.candidateNote).toContain('1 word waiting for a usable exercise');
@@ -41,15 +42,15 @@ describe('GoReview automatic deck admission', () => {
 
   it('retries the same evidence snapshot when admission preferences or buildability change', async () => {
     const rig = await setup([['same', .8]], 0);
-    expect((await loadReviewModel(rig.app.ctx))?.deck.some((x) => x.unitId.includes(':same:'))).toBe(false);
+    expect((await planCurrentDeck(rig.app.ctx,(await loadReviewModel(rig.app.ctx))!)).entries.some((x) => x.unitId.includes(':same:'))).toBe(false);
     await rig.app.ctx.state.setPrefs('L1', { languageId: 'sq', maxNew: 1, sessionMinutes: 10, desiredRetention: .9, includeListening: false, grammarShare: .2, prioritizeSaved: true });
-    expect((await loadReviewModel(rig.app.ctx))?.deck.some((x) => x.unitId.includes(':same:'))).toBe(true);
+    expect((await planCurrentDeck(rig.app.ctx,(await loadReviewModel(rig.app.ctx))!)).entries.some((x) => x.unitId.includes(':same:'))).toBe(true);
 
     let repaired = false;
     const builders = FAKE_BUILDERS.map((b) => b.family === 'written-recognition' ? { ...b, canBuild: (target: { unitId: string }) => repaired || !target.unitId.includes(':repair:') } : b);
     const repairRig = await setup([['repair', .9]], 1, builders);
-    expect((await loadReviewModel(repairRig.app.ctx))?.deck.some((x) => x.unitId.includes(':repair:'))).toBe(false);
+    expect((await planCurrentDeck(repairRig.app.ctx,(await loadReviewModel(repairRig.app.ctx))!)).entries.some((x) => x.unitId.includes(':repair:'))).toBe(false);
     repaired = true;
-    expect((await loadReviewModel(repairRig.app.ctx))?.deck.some((x) => x.unitId.includes(':repair:'))).toBe(true);
+    expect((await planCurrentDeck(repairRig.app.ctx,(await loadReviewModel(repairRig.app.ctx))!)).entries.some((x) => x.unitId.includes(':repair:'))).toBe(true);
   });
 });

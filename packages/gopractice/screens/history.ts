@@ -3,6 +3,7 @@ import type { AppContext } from '../context';
 import { append, clear, embedTarget, h, langProps, p } from '../dom';
 import { DIMENSION_LABEL, FAMILY_LABEL, OUTCOME_LABEL, RATING_LABEL, unitLabel } from '../format';
 import type { View } from './view';
+import { learningMetrics } from '../../goreview/src/transfer/learning-metrics';
 
 /**
  * Fills `el` with the item's history: the plain-language account, then every recorded review. `level` is the heading level of
@@ -37,9 +38,12 @@ export async function fillItemHistory(ctx: AppContext, el: HTMLElement, itemId: 
   ]);
   if (item.reasons.length) append(el, [h(level, {}, 'Why it is in your deck'), h('ul', {}, ...item.reasons.map((r) => h('li', {}, ...embedTarget(r.split(' | ')[0], [unitLabel(item.unitId)], tag ?? id.varietyId ?? id.languageId))))]);
   if (item.history.length) {
-    append(el, [h(level, {}, 'Scheduled reviews'), h('table', { class: 'plain' },
-      h('thead', {}, h('tr', {}, h('th', {}, 'When'), h('th', {}, 'Kind'), h('th', {}, 'Outcome'), h('th', {}, 'Rating'), h('th', {}, 'Days since last'))),
-      h('tbody', {}, ...item.history.map((r) => h('tr', {}, h('td', {}, r.at.slice(0, 16).replace('T', ' ')), h('td', {}, FAMILY_LABEL[r.family]), h('td', {}, OUTCOME_LABEL[r.outcome]), h('td', {}, RATING_LABEL[r.rating]), h('td', {}, String(Math.round(r.elapsedDays * 10) / 10))))))]);
+    append(el, [h(level, {}, 'Recorded review history'), h('p', { class: 'muted' }, 'Raw answers remain visible. Only rows marked effective contributed to the current schedule.'), h('table', { class: 'plain' },
+      h('thead', {}, h('tr', {}, h('th', {}, 'When'), h('th', {}, 'Kind'), h('th', {}, 'Outcome recorded'), h('th', {}, 'Schedule contribution'), h('th', {}, 'Rating'), h('th', {}, 'Days since last'))),
+      h('tbody', {}, ...item.history.map((r) => {
+        const status = r.retracted ? 'Retracted; excluded from schedule' : r.conflict ? `Conflicting event; excluded from schedule${r.scheduleExcluded ? ` (${r.scheduleExcluded})` : ''}` : r.scheduleExcluded ? `Excluded from schedule (${r.scheduleExcluded})` : 'Effective scheduled review';
+        return h('tr', { 'data-review-id': r.eventId ?? '', 'data-schedule-status': r.retracted ? 'retracted' : r.conflict ? 'conflict' : r.scheduleExcluded ? 'excluded' : 'effective' }, h('td', {}, r.at.slice(0, 16).replace('T', ' ')), h('td', {}, FAMILY_LABEL[r.family]), h('td', {}, OUTCOME_LABEL[r.outcome]), h('td', {}, status), h('td', {}, RATING_LABEL[r.rating]), h('td', {}, String(Math.round(r.elapsedDays * 10) / 10)));
+      }))) ]);
   }
   if (hist && hist.reviews > item.history.length) {
     append(el, [p(`${hist.reviews - item.history.length} further answer(s) were recorded without a rating (challenged, invalid or not heard): they are in your history and did not move the schedule.`, 'muted')]);
@@ -66,6 +70,19 @@ export async function renderTransfer(el: HTMLElement, ctx: AppContext): Promise<
   const events = await ctx.events(id.languageId);
   const prefs = await ctx.state.getPrefs(id.learnerId, id.languageId);
   const deck = ctx.engine.foldDeck(events, id.languageId, prefs, ctx.deps.now().toISOString());
+  const metrics = learningMetrics(events, deck, { learnerId: id.learnerId, languageId: id.languageId, now: ctx.deps.now().toISOString() });
+  const pct = (value: number | null): string => value === null ? 'not enough observations' : `${Math.round(value * 100)}%`;
+  append(el, [h('section', { class: 'card', id: 'local-learning-measures' },
+    h('h2', {}, 'Local learning measures'),
+    p('Descriptive counts from this device’s available event history. Coverage can be incomplete while offline or before history syncs; these measures do not establish mastery or causal learning effects.', 'muted'),
+    h('ul', {},
+      h('li', {}, `Delayed independent recall: ${metrics.delayedCorrect}/${metrics.delayedAttempts} successful (24-hour interval); observed after ${pct(metrics.delayedRecallCoverage)} of independent reviews.`),
+      h('li', {}, `Due work observed: ${metrics.completedDue} completed at/after due, ${metrics.earlyReviews} reviewed early, ${metrics.outstandingDue} currently due; ${metrics.dueReviewsObserved} reviews included a due-time record.`),
+      h('li', {}, `Time coverage: ${metrics.timedReviews}/${metrics.independentReviews} reviews timed (${pct(metrics.timedReviewCoverage)}); ${Math.round(metrics.measuredSeconds)} seconds recorded.`),
+      h('li', {}, `Repeated failure: ${metrics.repeatedFailureCards} active cards currently have at least five recent Again ratings; delayed reassessment ${metrics.successfulReassessments}/${metrics.reassessedAfterFailure} successful.`),
+      h('li', {}, `Observed recognition-to-production transfer: ${metrics.recognitionThenProduction} unit(s) with independent production at least 24 hours after recognition.`),
+      h('li', {}, `Reading attempts: ${metrics.readingAttempts}; listening attempts: ${metrics.listeningAttempts}.`),
+      h('li', {}, `Retrievability calibration (Brier): ${metrics.predictionBrier === null ? 'not enough observations' : metrics.predictionBrier.toFixed(3)} across ${metrics.predictionSamples} predictions.`)))]);
   const units = [...new Set(deck.filter((i) => i.history.length > 0).map((i) => i.unitId))].sort();
   if (!units.length) { append(el, [p('Nothing has been reviewed yet, so there is nothing to measure.', 'muted')]); return; }
   const tag = id.varietyId ?? id.languageId;

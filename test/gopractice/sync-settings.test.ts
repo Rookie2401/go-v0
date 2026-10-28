@@ -58,7 +58,7 @@ describe('Settings', () => {
   it('shows the scheduler identity, the versions and the counts', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), cardAdded(A, 'mace', 'meaning-to-form', '2026-10-08T09:00:00.000Z')]);
-    await rig.go('settings');
+    await rig.go('developer');
     await until(() => !!rig.root.querySelector('#diagnostics dt'), 'the diagnostics');
     const text = rig.q('#diagnostics').textContent!;
     expect(text).toContain('fsrs@v5.4.2 using FSRS-6.0');
@@ -66,7 +66,6 @@ describe('Settings', () => {
     expect(text).toContain('Events in the local log3');
     expect(text).toContain('Deck items2');
     expect(text).toContain('Desired retention90%');
-    expect(rig.q('#settings-email').textContent).toBe('Signed in as ana@example.org');
     expect(rig.q('#sync-pending').textContent).toBe('0');
   });
 
@@ -83,7 +82,7 @@ describe('Settings', () => {
 
   it('validates the service address and keeps the old one when it is refused', async () => {
     const rig = await makeRig({ signedIn: true });
-    await rig.go('settings');
+    await rig.go('developer');
     type(rig.q<HTMLInputElement>('#settings-svc-url'), 'http://repository.example.org');
     rig.q('#settings-svc-save').click();
     await until(() => !!rig.q('#settings-service .status').textContent, 'the message');
@@ -94,13 +93,13 @@ describe('Settings', () => {
     await until(async () => (await rig.app.ctx.serviceUrl()) === 'https://other.example.org', 'the new address');
   });
 
-  it('signs out: the session and cache go, unsent events stay under the account; "remove this device\'s data" removes them too', async () => {
+  it('signs out: the session and cache go, unsent events stay under the account; the page offers no "remove this device\'s data" link', async () => {
     const service = defaultService();
     const rig = await makeRig({ service, signedIn: true });
     await rig.app.ctx.whenSynced();
     service.netDown = true;
     await rig.app.ctx.record([cardAdded(A, 'zog', 'meaning-to-form', '2026-10-08T09:00:00.000Z')]);
-    await rig.go('settings');
+    await rig.go('account');
     rig.q('#sign-out').click();
     await until(() => rig.app.current() === 'signin', 'the sign-in screen');
     expect((await rig.area.get(KEYS.session))[KEYS.session]).toBeUndefined();
@@ -110,9 +109,10 @@ describe('Settings', () => {
     expect(keys.some((k) => k.startsWith('u:L1:queue:'))).toBe(true);
 
     await rig.signIn();
-    await rig.go('settings');
-    rig.q('#sign-out-forget').click();
-    await until(() => rig.app.current() === 'signin', 'the sign-in screen');
+    await rig.go('account');
+    expect(rig.root.querySelector('#sign-out-forget')).toBeNull();
+    // the device-forgetting sign-out remains in the context (ctx.signOut({ forget: true }), test/audit/privacy.devices.test.ts); the page no longer offers it
+    await rig.app.ctx.signOut({ forget: true });
     keys = Object.keys(await rig.area.get(null));
     expect(keys.filter((k) => k.startsWith('u:L1:'))).toEqual([]);
     expect(keys.filter((k) => k.startsWith('gopractice:prefs:L1'))).toEqual([]);
@@ -133,6 +133,36 @@ describe('the review history and the transfer measures', () => {
     expect(rig.qa('#item-history tbody tr')).toHaveLength(2);
   });
 
+  it('marks corrected raw answers as retracted rather than effective scheduled progress', async () => {
+    const rig = await makeRig({ signedIn: true });
+    const original = reviewed(A, 'zog', 'meaning-to-form', 3, '2026-09-02T10:00:00.000Z');
+    const correction = { ...original, id: 'correction-zog', at: '2026-09-02T11:00:00.000Z', correctionOf: original.id,
+      payload: { ...original.payload, rating: null, challenged: true }, evidence: { quality: 'none' as const } };
+    await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), original, correction]);
+    await rig.go(`review/history/${encodeURIComponent(original.subject.cardId!)}`);
+    await until(() => !!rig.root.querySelector('#item-history tbody'), 'the corrected history');
+    const row = rig.q<HTMLTableRowElement>(`#item-history tr[data-review-id="${original.id}"]`);
+    expect(row.dataset.scheduleStatus).toBe('retracted');
+    expect(row.textContent).toContain('Retracted; excluded from schedule');
+    expect(rig.q('#item-history').textContent).toContain('Only rows marked effective contributed to the current schedule');
+  });
+
+  it('labels conflicting raw grades as excluded from schedule contribution', async () => {
+    const rig = await makeRig({ signedIn: true });
+    const raw = reviewed(A, 'zog', 'meaning-to-form', 3, '2026-09-02T10:00:00.000Z');
+    await seed(rig, [...dueCard(A, 'zog', 'meaning-to-form'), raw]);
+    const fold = rig.app.ctx.engine.foldDeck.bind(rig.app.ctx.engine);
+    rig.app.ctx.engine.foldDeck = (events, languageId, prefs, now) => fold(events, languageId, prefs, now).map((item) => ({
+      ...item, history: item.history.map((entry) => ({ ...entry, conflict: true, scheduleExcluded: 'conflicting duplicate event ID' })),
+    }));
+    await rig.go(`review/history/${encodeURIComponent(raw.subject.cardId!)}`);
+    await until(() => !!rig.root.querySelector('#item-history tbody'), 'the conflicting history');
+    const row = rig.q<HTMLTableRowElement>(`#item-history tr[data-review-id="${raw.id}"]`);
+    expect(row.dataset.scheduleStatus).toBe('conflict');
+    expect(row.textContent).toContain('Conflicting event; excluded from schedule');
+    expect(row.textContent).toContain('Good');
+  });
+
   it('says plainly when the item is not in the deck', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('review/history/card%3Anothing');
@@ -146,6 +176,8 @@ describe('the review history and the transfer measures', () => {
     await rig.go('review/transfer');
     await until(() => !!rig.root.querySelector('.measures'), 'the measures');
     expect(rig.q('#transfer-notice').textContent).toContain('Research measures, not conclusions');
+    expect(rig.q('#local-learning-measures').textContent).toMatch(/coverage can be incomplete/i);
+    expect(rig.q('#local-learning-measures').textContent).toContain('Retrievability calibration');
     const card = rig.q(`.measures[data-unit="${unitOf('zog')}"]`);
     expect(card.querySelectorAll('.measure').length).toBeGreaterThanOrEqual(4);
     expect(card.textContent).toContain('Cannot show:');

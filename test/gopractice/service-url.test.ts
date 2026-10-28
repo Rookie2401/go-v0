@@ -17,7 +17,7 @@ afterAll(() => { fs.rmSync(scratch, { recursive: true, force: true }); });
 function build(out: string, serviceUrl?: string): void {
   execFileSync(process.execPath, [vite, 'build', '-c', 'packages/gopractice/vite.config.ts', '--mode', 'review'], {
     cwd: root, stdio: 'pipe', timeout: 120_000,
-    env: { ...process.env, GOPRACTICE_DICT: '', GOPRACTICE_OUT: out, ...(serviceUrl !== undefined ? { GOPRACTICE_SERVICE_URL: serviceUrl } : {}) },
+    env: { ...process.env, GOREVIEW_RELEASE_MODE: 'developer', GOPRACTICE_DICT: '', GOPRACTICE_OUT: out, ...(serviceUrl !== undefined ? { GOPRACTICE_SERVICE_URL: serviceUrl } : {}) },
   });
 }
 

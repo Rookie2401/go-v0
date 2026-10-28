@@ -233,7 +233,7 @@ describe('live updates in the app', () => {
       await until(() => svc.held.length > 0, 'a wait');
       svc.push();
       await until(() => rig.q('#summary') !== before, 'the summary to be drawn again');
-      expect(rig.q('#sum-answered').textContent).toMatch(/^1 of 2 planned/);
+      expect(rig.q('#sum-answered').textContent).toMatch(/^1 answered; 2 prompt\(s\) shown; 2 initially planned/);
     });
   });
 

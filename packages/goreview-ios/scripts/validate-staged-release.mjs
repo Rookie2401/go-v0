@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { validateAppIcons } from './validate-app-icon.mjs';
+import { verifyNativePayloadManifest } from './native-payload.mjs';
 
 const app = JSON.parse(await readFile('app.json', 'utf8'));
 const capacitor = JSON.parse(await readFile('capacitor.config.json', 'utf8'));
@@ -9,6 +10,7 @@ const buildNumber = app?.expo?.ios?.buildNumber;
 const serviceUrl = webConfig?.serviceUrl;
 
 await validateAppIcons(process.cwd());
+verifyNativePayloadManifest('web', { requireRelease: true });
 
 if (!bundleId || !/^[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$/.test(bundleId) || /(^|\.)(example|invalid|test|localhost)(\.|$)/i.test(bundleId)) {
   throw new Error('The staged app.json must contain the real registered reverse-DNS Bundle ID.');

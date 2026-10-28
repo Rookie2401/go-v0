@@ -150,6 +150,7 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
 
     expect(app.current()).toBe('signin');
     choose(q('#acct-mode'), 'create');
+    type(q<HTMLInputElement>('#acct-name'), 'Ben Example');
     type(q<HTMLInputElement>('#acct-email'), EMAIL);
     type(q<HTMLInputElement>('#acct-password'), PASSWORD);
     submit(q<HTMLFormElement>('#acct-form'));

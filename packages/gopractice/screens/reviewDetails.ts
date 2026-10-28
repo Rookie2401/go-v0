@@ -12,7 +12,7 @@ import { DIMENSION_LABEL, FAMILY_LABEL, languageName, unitLabel } from '../forma
 import { beginSession, endSavedSession, loadReviewModel, observedReviewSeconds, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import { deckSizeControl } from './cardsper';
 import { prefsForm } from './prefs';
-import { holdOutOf, planCurrentDeck } from '../deckModel';
+import { addToDeck, planCurrentDeck } from '../deckModel';
 import type { View } from './view';
 
 export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
@@ -117,7 +117,7 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
       start.disabled = true;
       void (async () => {
         const current = await freshModel(m);
-        const planned = await planCurrentDeck(ctx, current, await holdOutOf(ctx, current.identity.learnerId, current.identity.languageId));
+        const planned = await planCurrentDeck(ctx, current);
         const r = await beginSession(ctx, current, { plan: planned.plan });
         if (!r.ok) { start.disabled = false; setStatus(status, r.message, 'info'); return; }
         ctx.run.active = r.run;
@@ -154,12 +154,9 @@ export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View
         button('Test now', () => void act(async () => {
           const ectx = await ctx.eventContext();
           if (!ectx || !o.proposed) return;
-          const reason = o.reasons[0] ?? o.decision;
-          const ev = ctx.engine.cardAdded(ectx, { unitId: o.unitId, unitKind: o.candidate.kind, dimension: o.proposed.dimension, family: o.proposed.family, reasons: [reason] }, 'learner');
-          const r = await ctx.record([ev]);
-          if (r.refused.length) throw new Error(r.refused[0].issues.join('; '));
+          await addToDeck(ctx, m.identity, { unitId:o.unitId, unitKind:o.candidate.kind, ...o.proposed });
           await ctx.state.setChoice(m.identity.learnerId, o.unitId, undefined);
-        }, ['Added ', quote(o.unitId, tag), ' to your deck.']), { class: 'btn small', 'data-act': 'test-now', 'aria-label': `Test now: ${label}` }),
+        }, ['Added ', quote(o.unitId, tag), ' to optional selected practice.']), { class: 'btn small', 'data-act': 'test-now', 'aria-label': `Test now: ${label}` }),
         button(later ? 'Undo "later"' : 'Later', () => void act(async () => { await ctx.state.setChoice(m.identity.learnerId, o.unitId, later ? undefined : 'later'); }, later ? 'Back in the proposals.' : 'Kept for later; it will not be added to the next session.'), { class: 'btn small', 'data-act': 'later', 'aria-label': `${later ? 'Undo "later"' : 'Later'}: ${label}` }),
       );
     }

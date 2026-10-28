@@ -2,7 +2,7 @@
 import { describe, expect, it } from 'vitest';
 import { default_w } from 'ts-fsrs';
 import { createFsrsScheduler } from '../../packages/goreview/src/scheduler/fsrs';
-import { activeSchedulerProfile, PROFILE_KEY } from '../../packages/gopractice/profiles';
+import { activeSchedulerProfile, schedulerProfileSelection, PROFILE_KEY } from '../../packages/gopractice/profiles';
 import { CONTRACT_VERSION, type GoEvent } from '../../packages/repository-contract/src';
 import { createReviewEngine } from '../../packages/gopractice/engine';
 import { evidenceFor, ratingFor, buildCardAdded } from '../../packages/goreview/src';
@@ -44,4 +44,38 @@ describe('explicit shared scheduler profile selection', () => {
     expect(activeSchedulerProfile(events)).toBeUndefined();
     expect(activeSchedulerProfile([preference('invalid', '2026-01-01T10:00:00Z', { ...scheduler.profile, parametersVersion: 'forged' })])).toBeUndefined();
   });
+});
+
+
+describe('Phase One profile admission safeguards', () => {
+  it('distinguishes unsupported and missing profile assertions from an explicit reset', () => {
+    const supported=createFsrsScheduler().profile!;
+    expect(schedulerProfileSelection([preference('bad','2026-01-01T10:00:00Z',{...supported,algorithm:'fsrs@999'})]).error).toMatch(/unsupported/i);
+    expect(schedulerProfileSelection([preference('missing','2026-01-01T10:00:00Z',undefined)]).error).toMatch(/no settings/i);
+    expect(schedulerProfileSelection([preference('reset','2026-01-01T10:00:00Z',null)])).toEqual({reset:true});
+  });
+  it('preserves validated full settings and diagnoses conflicting duplicate selection IDs', () => {
+    const scheduler=createFsrsScheduler({desiredRetention:0.95,maximumInterval:999,enableShortTerm:true,learningSteps:['2m','15m'],relearningSteps:['20m']});
+    const event=preference('choice','2026-01-01T10:00:00Z',scheduler.profile);
+    const selected=schedulerProfileSelection([event,event]);
+    expect(selected.error).toBeUndefined();
+    expect(selected.profile?.parametersVersion).toEqual(scheduler.profile?.parametersVersion);
+    expect(selected.profile).toMatchObject({maximumInterval:999,enableShortTerm:true,learningSteps:['2m','15m'],relearningSteps:['20m']});
+    expect(selected.profile?.desiredRetention).toBe(0.95);
+    expect(schedulerProfileSelection([event,{...event,payload:{...event.payload,value:null}}]).error).toMatch(/conflicting/);
+  });
+});
+
+it('the application adapter uses every validated active setting rather than reconstructing a partial profile',()=>{
+ const selected=createFsrsScheduler({desiredRetention:.96,maximumInterval:27,enableShortTerm:true,learningSteps:['3m','25m'],relearningSteps:['35m']});
+ const engine=createReviewEngine({builders:[],evidenceFor,ratingFor});
+ expect(engine.scheduler(DEFAULT_PREFERENCES('sq'),{...selected.profile!,priorityPolicyVersion:'knowability-priority@2'}).profile).toEqual(selected.profile);
+ expect(()=>engine.scheduler(DEFAULT_PREFERENCES('sq'),{...selected.profile!,algorithm:'future',priorityPolicyVersion:'knowability-priority@2'})).toThrow(/unsupported/);
+});
+
+it('accepts semantic profile redelivery with reordered properties and server-added metadata',()=>{
+ const profile=createFsrsScheduler().profile!,event=preference('redelivered','2026-01-01T10:00:00Z',profile);
+ const copy={...event,seq:5,recordedAt:'2026-01-02T10:00:00Z',payload:{...event.payload,value:Object.fromEntries(Object.entries(profile).reverse())}};
+ expect(schedulerProfileSelection([event,copy]).error).toBeUndefined();
+ expect(schedulerProfileSelection([event,copy]).profile?.parametersVersion).toBe(profile.parametersVersion);
 });

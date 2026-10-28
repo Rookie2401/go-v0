@@ -109,6 +109,11 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
   // ── sign in / create
   const mode = h('select', { id: 'acct-mode', name: 'mode' }, h('option', { value: 'signin' }, 'Sign in'), h('option', { value: 'create' }, 'Create an account')) as HTMLSelectElement;
   const email = h('input', { type: 'email', id: 'acct-email', name: 'email', autocomplete: 'email', required: true }) as HTMLInputElement;
+  // the name goes on the account's learner record (shown on the account pages); asked for only when creating an account
+  const name = h('input', { type: 'text', id: 'acct-name', name: 'name', autocomplete: 'name', maxlength: 100 }) as HTMLInputElement;
+  const nameField = field('Your name', name, 'Shown on your account in GoLearn and GoReview.');
+  nameField.id = 'acct-name-field';
+  nameField.hidden = true;
   const password = h('input', { type: 'password', id: 'acct-password', name: 'password', autocomplete: 'current-password', required: true }) as HTMLInputElement;
   const hint = h('p', { class: 'muted' });
   const terms = h('p', { class: 'muted', id: 'terms-note', hidden: true }, 'By creating an account you accept the ', h('a', { href: '#/terms', id: 'link-terms' }, 'Terms'), ' and the ', h('a', { href: '#/privacy', id: 'link-privacy' }, 'Privacy Policy'), '.');
@@ -116,12 +121,13 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
     password.setAttribute('autocomplete', mode.value === 'create' ? 'new-password' : 'current-password');
     hint.textContent = mode.value === 'create' ? `At least ${MIN_PASSWORD} characters. The password is sent to the service only; it is never stored here.` : '';
     terms.hidden = mode.value !== 'create';
+    nameField.hidden = mode.value !== 'create';
   });
   const status = statusLine();
   const submit = h('button', { type: 'submit', id: 'acct-submit', class: 'btn primary' }, 'Continue') as HTMLButtonElement;
   const unverified = h('div', { id: 'unverified-notice' });
   const form = h('form', { id: 'acct-form', novalidate: true },
-    field('What would you like to do?', mode), field('Email', email), field('Password', password), hint, terms, h('div', { class: 'row' }, submit), status, unverified);
+    field('What would you like to do?', mode), nameField, field('Email', email), field('Password', password), hint, terms, h('div', { class: 'row' }, submit), status, unverified);
   append(formBox, [form, forgotBlock(ctx, email)]);
 
   form.addEventListener('submit', (ev) => {
@@ -133,11 +139,13 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
       if (!EMAIL.test(addr)) { setStatus(status, 'Enter a valid email address.', 'error'); return; }
       if (!secret) { setStatus(status, 'Enter your password.', 'error'); return; }
       if (creating && secret.length < MIN_PASSWORD) { setStatus(status, `Choose a password of at least ${MIN_PASSWORD} characters.`, 'error'); return; }
+      const who = name.value.trim();
+      if (creating && !who) { setStatus(status, 'Enter your name.', 'error'); return; }
       submit.disabled = true;
       clear(unverified);
       setStatus(status, creating ? 'Creating the account…' : 'Signing in…', 'info');
       try {
-        const r = await ctx.signIn({ email: addr, password: secret, create: creating });
+        const r = await ctx.signIn({ email: addr, password: secret, create: creating, ...(creating ? { displayName: who } : {}) });
         const sent = r.ok && r.uploaded !== undefined ? ` ${r.uploaded === 0 ? 'Nothing needed uploading from this device.' : `Uploaded ${r.uploaded} event${r.uploaded === 1 ? '' : 's'} from this device to your account.`} Progress is now synced to your account.` : r.ok ? ' Progress is now synced to your account.' : '';
         const said = r.ok ? (creating ? `Account created and signed in as ${addr}.` : `Signed in as ${addr}.`) + sent + (creating ? ' Check your email to confirm the address.' : '') : r.message;
         setStatus(status, said, r.ok ? 'ok' : 'error');

@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import type { GoEvent, LanguagePackInfo, LinguisticUnit, ReviewCandidate, UnitProvenance } from '../../../packages/repository-contract/src';
 import { CANDIDATE_RULES, MISSION_SKIPPED_NOTE, createProjectionEngine } from '../../../packages/repository-engine/src';
 import { FakeStore } from './fakeStore';
-import { E, L, NOW, assist, card, enrolment, ev, lookup, realizes, resetIds, unit } from './helpers';
+import { E, L, NOW, assist, card, encounter, enrolment, ev, lookup, realizes, resetIds, unit } from './helpers';
 
 const CX = 'morph:sq:NOUN:Case=Acc|Definite=Def';
 const FORMS = ['form:sq:librin', 'form:sq:shtëpinë', 'form:sq:mësuesin', 'form:sq:djalin'];
@@ -159,7 +159,7 @@ describe('existingCoverage', () => {
     const removed = [...carded, ev('CardRemoved', [F], {}, { at: '2026-10-07T12:00:00.000Z' })];
     expect(by((await run(removed, setup)).list, F)).toBeDefined();
     const invalidated = [...carded, ev('ReviewItemInvalidated', [F], { reason: 'analysis-invalidated' }, { at: '2026-10-07T12:00:00.000Z' })];
-    expect(by((await run(invalidated, setup)).list, F)).toBeDefined();
+    expect(by((await run(invalidated, setup)).list, F)).toBeUndefined(); // invalidation blocks a fresh dimension until facts are repaired
   });
 
   it('includeCovered lists it with the documented penalty and the reason', async () => {
@@ -175,6 +175,76 @@ describe('existingCoverage', () => {
     const { list } = await run(events, world(FORMS));
     expect(by(list, CX)).toBeUndefined();
     for (const f of FORMS) expect(rules(by(list, f))).not.toContain('explained-by-construction');
+  });
+
+  it('recognition coverage does not cover a separately opted-in listening objective', async () => {
+    resetIds();
+    const events = [
+      ...base(),
+      ev('CardAdded', [F], { dimension: 'written-recognition', family: 'written-recognition', unitId: F, unitKind: 'form', addedBy: 'intake' }, { at: '2026-10-07T11:00:00.000Z' }),
+    ];
+    const store = new FakeStore();
+    store.enrolments.push(enrolment([{ kind: 'reading' }, { kind: 'listening' }]));
+    setup(store);
+    await store.append(L, events);
+    const list = await createProjectionEngine({ store, now: () => NOW }).candidates(L, E, { now: NOW });
+    expect(by(list, F)).toMatchObject({ targetDimension: 'readingRecognition', objectiveDimension: 'listeningRecognition' });
+  });
+
+  it('an existing listening objective is not proposed a second time', async () => {
+    resetIds();
+    const events = [
+      ...base(),
+      ev('CardAdded', [F], { dimension: 'written-recognition', family: 'written-recognition', unitId: F, unitKind: 'form', addedBy: 'intake' }, { at: '2026-10-07T10:00:00.000Z' }),
+      ev('CardAdded', [F], { dimension: 'audio-to-meaning', family: 'audio-to-meaning', unitId: F, unitKind: 'form', addedBy: 'intake' }, { at: '2026-10-07T11:00:00.000Z' }),
+    ];
+    const store = new FakeStore();
+    store.enrolments.push(enrolment([{ kind: 'reading' }, { kind: 'listening' }]));
+    setup(store);
+    await store.append(L, events);
+    const list = await createProjectionEngine({ store, now: () => NOW }).candidates(L, E, { now: NOW });
+    expect(by(list, F)).toBeUndefined();
+  });
+
+  it.each(['dismissed', 'suspended'] as const)('%s lifecycle control blocks admission through another objective', async (reason) => {
+    resetIds();
+    const added = ev('CardAdded', [F], { dimension: 'written-recognition', family: 'written-recognition', unitId: F, unitKind: 'form', addedBy: 'intake' }, { at: '2026-10-07T10:00:00.000Z' });
+    added.subject.cardId = `card:written-recognition:${F}`;
+    const removed = ev('CardRemoved', [F], { reason }, { at: '2026-10-07T11:00:00.000Z' });
+    removed.subject.cardId = added.subject.cardId;
+    delete removed.subject.itemIds; // production lifecycle events identify their unit by the stable card id
+    const { list } = await run([...base(), added, removed], (s) => {
+      s.enrolments.push(enrolment([{ kind: 'reading' }, { kind: 'listening' }]));
+      setup(s);
+    });
+    expect(by(list, F)).toBeUndefined();
+  });
+
+  it('does not share dimension coverage across distinct unit identities with the same label', async () => {
+    resetIds();
+    const other = 'form:sq:punoj:variant';
+    const events = [
+      ...base(),
+      lookup([other], { at: RECENT }),
+      ev('CardAdded', [F], { dimension: 'written-recognition', family: 'written-recognition', unitId: F, unitKind: 'form', addedBy: 'intake' }, { at: '2026-10-07T11:00:00.000Z' }),
+    ];
+    const { list } = await run(events, (s) => {
+      s.units.set(F, unit(F, 'form', 'verified', { label: 'punoj' }));
+      s.units.set(other, unit(other, 'form', 'verified', { label: 'punoj' }));
+    });
+    expect(by(list, F)).toBeUndefined();
+    expect(by(list, other)).toBeDefined();
+  });
+
+  it('candidate rows and evidence stay inside the enrolment language', async () => {
+    resetIds();
+    const spanish = 'form:es:punoj';
+    const { list } = await run([lookup([F]), lookup([spanish], { languageId: 'es' })], (s) => {
+      s.units.set(F, unit(F, 'form', 'verified'));
+      s.units.set(spanish, unit(spanish, 'form', 'verified', { languageId: 'es' }));
+    });
+    expect(by(list, F)).toBeDefined();
+    expect(by(list, spanish)).toBeUndefined();
   });
 });
 
@@ -202,6 +272,21 @@ describe('benefitVsBurden', () => {
     const P = 'phrase:sq:a_b';
     const { list } = await run([lookup([P], { at: RECENT }), lookup([P], { at: RECENT })], (s) => { s.units.set(P, unit(P, 'multiword', 'verified', { label: 'a b' })); });
     expect(rules(by(list, P))).not.toContain('benefitVsBurden');
+  });
+});
+
+describe('repeat encounter ranking', () => {
+  it('uses distinct observed unit events to rank an already signalled candidate without drawing from exposure alone', async () => {
+    resetIds();
+    const F = 'form:sq:repeat';
+    const oneLookup = [lookup([F], { at: RECENT })];
+    const repeated = [...oneLookup, encounter([F], { at: '2026-10-06T11:00:00.000Z' }), encounter([F], { at: '2026-10-06T12:00:00.000Z' })];
+    const runFor = (events: GoEvent[]) => run(events, (s) => s.units.set(F, unit(F, 'form', 'verified')));
+    const one = by((await runFor(oneLookup)).list, F)!;
+    const many = by((await runFor(repeated)).list, F)!;
+    expect(many.reasons.find((r) => r.rule === 'repeatedEncounters')).toMatchObject({ weight: 0.1, detail: '3 distinct encounters and judgements' });
+    expect(many.score).toBeGreaterThan(one.score);
+    expect(by((await runFor(repeated.slice(1))).list, F)).toBeUndefined();
   });
 });
 

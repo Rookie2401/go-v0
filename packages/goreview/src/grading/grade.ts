@@ -111,7 +111,8 @@ export function gradeChoice(key: GradingKey, response: Pick<Response, 'choice'> 
 export function gradeSelf(key: Pick<AnswerKey, 'explanation' | 'deeper' | 'accepted'>, response: Pick<Response, 'selfGrade'>): Grading {
   const g = response?.selfGrade;
   if (!g) return { outcome: 'unable-to-grade', confidence: 0, explanation: 'No self-grade was given, so nothing could be graded.' };
-  const outcome: GradeOutcome = g === 'again' ? 'incorrect' : g === 'hard' ? 'partial' : 'correct';
+  // Hard is successful retrieval with greater subjective effort; self-report remains low-reliability evidence.
+  const outcome: GradeOutcome = g === 'again' ? 'incorrect' : 'correct';
   const shown = key.accepted[0] ? ` The reference answer is ${quote(key.accepted[0])}.` : '';
   return finish(outcome, CONF.self, `You graded this yourself: ${g}.${shown}`, key);
 }
@@ -144,9 +145,9 @@ export function gradeResponse(exercise: Exercise, response: Response): Grading {
 /**
  * The FSRS rating a grading earns, or null when it must not schedule anything.
  *   challenged, audioFailed, ambiguous, invalid-question, unable-to-grade   → null
- *   correct, unhinted                                                       → 3 (4 when the learner self-graded easy)
- *   correct, hinted                                                         → 2
- *   partial                                                                 → 2
+ *   correct, unhinted                                                       → 3 (2 Hard, 4 Easy when self-graded)
+ *   correct, hinted                                                         → null
+ *   partial                                                                 → 1 unless successful recall is established
  *   incorrect                                                               → 1
  */
 export function ratingFor(grading: Grading, response: Response): Rating | null {
@@ -160,9 +161,9 @@ export function ratingFor(grading: Grading, response: Response): Rating | null {
     case 'incorrect':
       return 1;
     case 'partial':
-      return 2;
+      return grading.retrievalSucceeded === true ? 2 : 1;
     case 'correct':
-      return response.selfGrade === 'easy' ? 4 : 3;
+      return response.selfGrade === 'hard' ? 2 : response.selfGrade === 'easy' ? 4 : 3;
     default:
       return null;
   }

@@ -472,6 +472,21 @@ route('DELETE', '/sessions/current', true, async (ctx) => {
   return respond(204);
 });
 
+// The learner's own profile: the display name (set at account creation, or here), trimmed, at most 200 characters; an empty name clears it.
+route('POST', '/me/profile', true, async (ctx) => {
+  const b = await ctx.body();
+  if (typeof b.displayName !== 'string' || b.displayName.length > 200) throw invalid('"displayName" must be a string of at most 200 characters.');
+  const { store } = ctx.deps;
+  const learner = await store.getLearner(ctx.session.learnerId);
+  if (!learner) throw new Refusal(404, 'not-found', 'There is no learner record for this session.');
+  const name = b.displayName.trim();
+  const { displayName: _old, ...rest } = learner;
+  const next: Learner = name ? { ...rest, displayName: name } : rest;
+  await store.putLearner(next);
+  await audit(ctx.deps, 'profile-updated', learner.learnerId, {}, ctx.now());
+  return respond(200, { learner: next });
+});
+
 route('GET', '/me', true, async (ctx) => {
   const { store } = ctx.deps;
   const learnerId = ctx.session.learnerId;
@@ -918,17 +933,17 @@ route('GET', '/vocabulary', true, async (ctx) => {
  */
 export const CANDIDATE_CACHE_MS = 20_000;
 const candidateCaches = new WeakMap<object, Map<string, { head: number; at: number; ranked: Awaited<ReturnType<ServiceDeps['engine']['candidates']>> }>>();
-async function rankedCandidates(ctx: Ctx, enrolmentId: string) {
+async function rankedCandidates(ctx: Ctx, enrolmentId: string, objectiveDimensions: import('../../repository-contract/src').Dimension[] = []) {
   const { store, engine } = ctx.deps;
   const learnerId = ctx.session.learnerId;
   let cache = candidateCaches.get(store);
   if (!cache) { cache = new Map(); candidateCaches.set(store, cache); }
-  const key = `${learnerId}|${enrolmentId}`;
+  const key = `${learnerId}|${enrolmentId}|${objectiveDimensions.join(',')}`;
   const nowMs = Date.parse(ctx.now());
   const head = await store.head(learnerId);
   const hit = cache.get(key);
   if (hit && hit.head === head && nowMs - hit.at >= 0 && nowMs - hit.at < CANDIDATE_CACHE_MS) return hit.ranked;
-  const ranked = await engine.candidates(learnerId, enrolmentId, { limit: Number.MAX_SAFE_INTEGER, now: ctx.now() });
+  const ranked = await engine.candidates(learnerId, enrolmentId, { limit: Number.MAX_SAFE_INTEGER, now: ctx.now(), objectiveDimensions });
   if (cache.size >= 64) cache.delete(cache.keys().next().value as string);
   cache.set(key, { head, at: nowMs, ranked });
   return ranked;
@@ -945,9 +960,15 @@ route('GET', '/candidates', true, async (ctx) => {
   const limit = intParam(ctx.query, 'limit', { def: 20, min: 1, max: 200, clamp: true });
   const after = ctx.query.get('after');
   if (after !== null && (!after || after.length > 300)) throw new Refusal(422, 'invalid-query', 'The candidate cursor is invalid.');
+  const rawObjectives = ctx.query.get('objectives');
+  const allowedObjectives = new Set(['readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding', 'phraseComprehension']);
+  const objectiveDimensions = rawObjectives ? rawObjectives.split(',') : [];
+  if (objectiveDimensions.length > 6 || objectiveDimensions.some((d) => !allowedObjectives.has(d)) || new Set(objectiveDimensions).size !== objectiveDimensions.length) {
+    throw new Refusal(422, 'invalid-query', 'Candidate objectives must be distinct supported skill dimensions.');
+  }
   // The engine already ranks the complete learner set. Page that order so unusable
   // exercises in an early page cannot hide usable, comparatively lower candidates.
-  const ranked = await rankedCandidates(ctx, enrolmentId);
+  const ranked = await rankedCandidates(ctx, enrolmentId, objectiveDimensions as import('../../repository-contract/src').Dimension[]);
   const boundary = after === null ? -1 : ranked.findIndex((candidate) => candidate.unitId === after);
   if (after !== null && boundary < 0) throw new Refusal(422, 'invalid-query', 'The candidate list changed. Refresh and try again.');
   const page = ranked.slice(boundary + 1, boundary + 1 + limit);

@@ -2,17 +2,17 @@
  * Versioned GoReview eligibility and ranking policy. These are experimental product weights,
  * not parameters of FSRS and not claims about scientifically optimal practice.
  */
-import { KNOWLEDGE_LEVELS } from '../../../repository-contract/src';
-import type { KnowledgeLevel, UnitKnowledge } from '../../../repository-contract/src';
+import { KNOWLEDGE_LEVELS, selectReviewEvidenceEvents } from '../../../repository-contract/src';
+import type { GoEvent, KnowledgeLevel, UnitKnowledge } from '../../../repository-contract/src';
 
-export const KNOWABILITY_PRIORITY_POLICY_VERSION = 'knowability-priority@1';
+export const KNOWABILITY_PRIORITY_POLICY_VERSION = 'knowability-priority@2';
 export const DEFAULT_KNOWABILITY_WEIGHTS: Readonly<Record<KnowledgeLevel, number>> = Object.freeze({
   new: 0,
-  seen: 0.3,
-  recognized: 1.5,
-  familiar: 1.5,
-  known: 0.25,
-  automatic: 0.03,
+  seen: 15,
+  recognized: 100,
+  familiar: 100,
+  known: 25,
+  automatic: 3,
 });
 
 export interface KnowabilityPolicy {
@@ -142,27 +142,28 @@ export function seenEligibility(input: {
 }
 
 /** A distinct unassisted wrong retrieval is the only implicit Automatic reactivation trigger. */
-export function hasConfirmedAutomaticFailure(events: readonly import('../../../repository-contract/src').GoEvent[], unitId: string, window = 10): boolean {
-  const byId = new Map(events.map((e) => [e.id, e] as const));
-  const candidateCorrections = events.filter((e) => e.correctionOf).filter((correction) => {
-    const original = byId.get(correction.correctionOf!);
-    if (!original || original.correctionOf || original.kind !== correction.kind || original.learnerId !== correction.learnerId ||
-      original.enrolmentId !== correction.enrolmentId || original.languageId !== correction.languageId ||
-      original.subject?.cardId !== correction.subject?.cardId || !correction.subject?.itemIds || !original.subject?.itemIds ||
-      correction.subject.itemIds.length !== original.subject.itemIds.length ||
-      [...correction.subject.itemIds].sort().some((id, i) => id !== [...original.subject!.itemIds!].sort()[i]) ||
-      Date.parse(correction.at) <= Date.parse(original.at)) return false;
-    const p = correction.payload as Record<string, unknown>;
-    return p.rating === null && p.challenged === true && correction.evidence?.quality === 'none';
-  });
-  const counts = new Map<string, number>();
-  candidateCorrections.forEach((e) => counts.set(e.correctionOf!, (counts.get(e.correctionOf!) ?? 0) + 1));
-  const corrected = new Set([...counts].filter(([, n]) => n === 1).map(([id]) => id));
-  const relevant = events.filter((e) => !e.correctionOf && !corrected.has(e.id) && e.subject?.itemIds?.includes(unitId))
-    .filter((e) => ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(e.kind))
-    .sort((a, b) => Date.parse(a.at) - Date.parse(b.at) || a.id.localeCompare(b.id)).slice(-window);
-  return relevant.some((e) => {
-    const p = e.payload as Record<string, unknown>;
-    return p.correct === false && p.hinted !== true && p.answerShownBefore !== true && p.rating === 1 && e.evidence?.assisted !== true && e.evidence?.quality !== 'none';
-  });
+export function hasConfirmedAutomaticFailure(events: readonly GoEvent[], unitId: string, window = 10): boolean {
+  return confirmedAutomaticFailureUnits(events, window).has(unitId);
+}
+
+/** Select review history once and index the last bounded window by unit for a planning snapshot. */
+export function confirmedAutomaticFailureUnits(events: readonly GoEvent[], window = 10): ReadonlySet<string> {
+  return confirmedAutomaticFailureUnitsFromSelected(selectReviewEvidenceEvents(events).events, window);
+}
+
+export function confirmedAutomaticFailureUnitsFromSelected(selected: readonly GoEvent[], window = 10): ReadonlySet<string> {
+  const byUnit = new Map<string, GoEvent[]>();
+  const families = new Set(['meaning-to-form', 'audio-transcription', 'sentence-completion', 'morphological-identification', 'grammar-application']);
+  for (const e of selected) {
+    if (!families.has(String(e.payload.family))) continue;
+    for (const unitId of e.subject?.itemIds ?? []) (byUnit.get(unitId) ?? byUnit.set(unitId, []).get(unitId)!).push(e);
+  }
+  const out = new Set<string>();
+  for (const [unitId, relevant] of byUnit) {
+    relevant.sort((a, b) => Date.parse(a.at) - Date.parse(b.at) || a.id.localeCompare(b.id));
+    if (relevant.slice(-window).some((e) => e.payload.correct === false && e.payload.hinted !== true && e.payload.answerShownBefore !== true
+      && e.payload.transcriptShownBefore !== true && e.payload.rating === 1 && e.payload.retrievalAttempted !== false
+      && e.evidence?.assisted !== true && ['moderate', 'strong'].includes(String(e.evidence?.quality)))) out.add(unitId);
+  }
+  return out;
 }

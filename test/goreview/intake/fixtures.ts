@@ -52,7 +52,7 @@ export const deckItem = (over: Partial<DeckItem> & { unitId?: string; family?: E
 };
 
 export const intakeInput = (over: Partial<IntakeInput> = {}): IntakeInput => ({
-  candidate: candidate(), existing: [], audio: audioOk, saved: new Set(), preferences: prefs(), now: NOW, ...over,
+  candidate: candidate(), knowledge: knowledge((over.candidate ?? candidate()).unitId), existing: [], audio: audioOk, saved: new Set(), preferences: prefs(), now: NOW, ...over,
 });
 
 /** A scheduler whose "retrievability" IS the stability field, so tests control ordering directly. Due = `due <= now`. */

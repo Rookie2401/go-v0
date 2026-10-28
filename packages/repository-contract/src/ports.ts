@@ -5,7 +5,7 @@
  */
 import type { GoEvent } from './index';
 import type { FormAnalysis, LanguagePackInfo, LinguisticUnit, UnitAlias, UnitCorrection, UnitRelation } from './units';
-import type { AssistancePreferences, Device, Enrolment, Learner, ReviewCandidate, SuitabilityEstimate, Team, UnitKnowledge } from './learner';
+import type { AssistancePreferences, Device, Dimension, Enrolment, Learner, ReviewCandidate, SuitabilityEstimate, Team, UnitKnowledge } from './learner';
 import type { KnowledgeLevel } from './knowledge-levels';
 
 // ───────────────────────────── events (Layer B) ─────────────────────────────
@@ -182,7 +182,8 @@ export type SecurityEventKind =
   | 'account-created' | 'sign-in' | 'sign-in-failed' | 'sign-out' | 'sessions-revoked'
   | 'email-verification-sent' | 'email-verified'
   | 'password-reset-requested' | 'password-reset-used'
-  | 'export-requested' | 'deletion-requested' | 'deletion-cancelled' | 'deletion-purged';
+  | 'export-requested' | 'deletion-requested' | 'deletion-cancelled' | 'deletion-purged'
+  | 'profile-updated';
 
 /** What accounts hardening needs beyond `IdentityStore`. Optional on `RepositoryStore` so a store written before it still satisfies the port; the service answers 501 for the routes that need it. */
 export interface SecurityStore {
@@ -246,7 +247,7 @@ export interface ProjectionEngine {
   rebuild(learnerId: string): Promise<UnitKnowledge[]>;
   knowledge(learnerId: string, unitIds?: string[]): Promise<UnitKnowledge[]>;
   preferences(learnerId: string, languageId?: string): Promise<AssistancePreferences>;
-  candidates(learnerId: string, enrolmentId: string, opts?: { limit?: number; now?: string }): Promise<ReviewCandidate[]>;
+  candidates(learnerId: string, enrolmentId: string, opts?: { limit?: number; now?: string; objectiveDimensions?: Dimension[] }): Promise<ReviewCandidate[]>;
   suitability(learnerId: string, languageId: string, sample: { unitIds: string[]; tokenCount: number; constructionIds?: string[] }): Promise<SuitabilityEstimate>;
 }
 

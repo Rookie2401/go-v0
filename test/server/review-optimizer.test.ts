@@ -1,8 +1,10 @@
+import { buildCardAdded, createFsrsScheduler } from '../../packages/goreview/src/scheduler';
+import type { GoEvent } from '../../packages/repository-contract/src';
 // @vitest-environment node
 import { describe, expect, it } from 'vitest';
 import { FSRSBinding, FSRSBindingItem, FSRSBindingReview } from '@open-spaced-repetition/binding';
 import { default_w } from 'ts-fsrs';
-import { optimizeReviewProfile, prepareOptimization, type ReliableReview } from '../../server/review/optimizer';
+import { optimizeReviewProfile, prepareOptimization, reliableReviewHistory, type ReliableReview } from '../../server/review/optimizer';
 
 const sample = (overrides: Partial<ReliableReview> = {}): ReliableReview => ({ eventId: 'r1', targetId: 'word', languageId: 'hi', objective: 'written-recognition', at: '2026-01-01T10:00:00Z', rating: 3, independent: true, ...overrides });
 
@@ -38,4 +40,14 @@ describe('official FSRS personalization boundary', () => {
     expect(Number.isFinite(result.baseline?.logLoss)).toBe(true);
     expect(Number.isFinite(result.candidate?.logLoss)).toBe(true);
   }, 45_000);
+});
+
+it('does not train on raw offline sibling branches or unsupported profile reviews',()=>{
+ const scheduler=createFsrsScheduler(),addition=buildCardAdded({learnerId:'L',enrolmentId:'E',languageId:'hi',deviceId:'D',at:'2026-01-01T10:00:00Z',unitId:'lemma:hi:test:NOUN',unitKind:'lexeme',family:'written-recognition',dimension:'written-recognition',addedBy:'intake'});
+ const review=(id:string,at:string,parent:string|null):GoEvent=>({...addition,id,at,kind:'CardReviewed',payload:{cardKind:'recognition',grade:'good',correct:true,hinted:false,rating:3,family:'written-recognition',expectedPreviousReviewId:parent,schedulerProfile:scheduler.profile},evidence:{quality:'moderate',assisted:false}});
+ const first=review('a','2026-01-01T10:01:00Z',null),sibling=review('b','2026-01-02T10:01:00Z',null),child=review('child','2026-01-03T10:01:00Z','a');
+ const bad=review('future','2026-01-04T10:01:00Z','child');bad.payload.schedulerProfile={...scheduler.profile,algorithm:'future'};
+ const rows=reliableReviewHistory([sibling,child,bad,addition,first],'hi');
+ expect(rows.map(r=>r.eventId)).toEqual(['a','child']);
+ expect(prepareOptimization(rows,'hi','written-recognition').rows.map(r=>r.eventId)).toEqual(['a','child']);
 });

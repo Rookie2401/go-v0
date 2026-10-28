@@ -1,3 +1,4 @@
+import { planCurrentDeck } from '../../packages/gopractice/deckModel';
 // @vitest-environment jsdom
 import { describe, expect, it } from 'vitest';
 import { openLocalRepository } from '../../packages/repository-local/src';
@@ -17,7 +18,7 @@ const fileFetch = (async (input: RequestInfo | URL) => {
 }) as unknown as typeof fetch;
 
 describe('real Hindi automatic deck', () => {
-  it('builds dictionary-backed surfaces and keeps the deck durable', async () => {
+  it('proposes dictionary-backed surfaces and persists only answered cards', async () => {
     const clock = () => '2026-10-12T10:00:00.000Z';
     const area = createMemoryArea();
     const repo = await openLocalRepository({ area, now: clock, adapters: { hi: hiAdapter } });
@@ -67,13 +68,13 @@ describe('real Hindi automatic deck', () => {
     });
     await app.ready();
     const firstModel = await loadReviewModel(app.ctx);
-    expect(firstModel?.deck.length).toBeGreaterThan(0);
-    const firstCardIds = firstModel?.deck.map((x) => x.itemId).sort();
-    expect(firstCardIds).toEqual(['card:written-recognition:form:hi:कोमल', 'card:written-recognition:form:hi:उत्पत्ति'].sort());
-    const stored = (await app.ctx.events('hi')).filter((e) => e.kind === 'CardAdded');
-    expect(stored.length).toBe(firstModel?.deck.length);
-    const secondModel = await loadReviewModel(app.ctx);
-    expect(secondModel?.deck.map((x) => x.itemId).sort()).toEqual(firstCardIds);
+    const firstPlan=(await planCurrentDeck(app.ctx,firstModel!)).plan;
+    expect(firstModel?.deck).toEqual([]);
+    const firstCardIds=firstPlan.items.map(x=>x.item.itemId).sort();
+    expect(firstCardIds).toEqual(['card:written-recognition:form:hi:कोमल','card:written-recognition:form:hi:उत्पत्ति'].sort());
+    expect((await app.ctx.events('hi')).filter(e=>e.kind==='CardAdded')).toEqual([]);
+    const secondModel=await loadReviewModel(app.ctx);
+    expect((await planCurrentDeck(app.ctx,secondModel!)).plan.items.map(x=>x.item.itemId).sort()).toEqual(firstCardIds);
     const session = await beginSession(app.ctx, secondModel!);
     expect(session.ok).toBe(true);
     if (session.ok) {
@@ -85,6 +86,13 @@ describe('real Hindi automatic deck', () => {
       expect(root.querySelector('.flashcard[data-side="back"]')).not.toBeNull();
       expect(root.querySelector('#revealed-answer')?.textContent).toBeTruthy();
       expect((await app.ctx.events('hi')).filter((event) => event.kind === 'CardReviewed')).toEqual([]);
+      // Use the real builder, evidence module, local Repository and FSRS projection.
+      await session.run.driver.answer({selfGrade:'good',retrievalAttempted:true,hinted:false,assistance:[]});
+      const events=await app.ctx.events('hi');
+      expect(events.filter(e=>e.kind==='CardAdded')).toHaveLength(1);
+      expect(events.filter(e=>e.kind==='CardReviewed')).toHaveLength(1);
+      const reloaded=await loadReviewModel(app.ctx);
+      expect(reloaded!.deck).toHaveLength(1);expect(reloaded!.deck[0].schedule.reps).toBe(1);
     }
     app.destroy();
     await repo.close();

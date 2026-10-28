@@ -5,7 +5,7 @@ import { withApiRequestTimeout } from '../../packages/gopractice/main';
 import type { RepositoryApi } from '../../packages/repository-service/src/api';
 import type { FactsProvider } from '../../packages/goreview/src';
 import { DEFAULT_PREFERENCES } from '../../packages/gopractice/state';
-import { candidate, defaultService, destroyRigs, fakeFacts, makeRig } from './helpers';
+import { candidate, knowledgeRow, defaultService, destroyRigs, fakeFacts, makeRig } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -68,7 +68,7 @@ describe('GoPractice startup performance guards', () => {
     const engine = createReviewEngine({ builders: [], evidenceFor: vi.fn() as never, ratingFor: vi.fn() as never, factsFor: () => ({ factsFor }) });
     const c = candidate('zog', 0.8);
     const request = {
-      api, candidates: [c], knowledge: [], deck: [], saved: new Set<string>(), prefs: DEFAULT_PREFERENCES('sq'),
+      api, candidates: [c], knowledge: [knowledgeRow('L1',c.unitId,'sq',{})], deck: [], saved: new Set<string>(), prefs: DEFAULT_PREFERENCES('sq'),
       audio: { available: false, eligibleForEvidence: false, reason: 'unavailable' }, now: '2026-10-14T12:00:00.000Z',
     };
 

@@ -185,7 +185,7 @@ describe('the Sync line in Settings', () => {
     const service = defaultService();
     const rig = await makeRig({ service, signedIn: true });
     await rig.app.ctx.whenSynced();
-    await rig.go('settings');
+    await rig.go('developer');
     await until(() => !!rig.root.querySelector('#sync-line'), 'the sync line');
     expect(rig.q('#sync-line').textContent).toMatch(/^Up to date · sent (just now|never)|^Up to date · nothing sent yet · fetched just now · nothing waiting$/);
     expect(rig.q('#sync-line').getAttribute('data-kind')).toBe('ok');

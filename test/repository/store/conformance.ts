@@ -1,3 +1,4 @@
+import { buildCardAdded, createFsrsScheduler, foldDeck, itemIdFor } from '../../../packages/goreview/src/scheduler';
 /**
  * The behaviour every RepositoryStore must have, run against each implementation (memory.test.ts, sqlite.test.ts).
  * Each case opens a fresh store through `open()` and closes it afterwards.
@@ -35,7 +36,7 @@ export function storeConformance(name: string, open: () => Promise<RepositorySto
       expect(await s.get(L1, 'nope')).toBeUndefined();
     }));
 
-    it('atomically checks the effective graded predecessor, retaining rejected events only as caller-recoverable outcomes', withStore(async (s) => {
+    it('preserves offline stale-state evidence and corrections independently of ingestion order', withStore(async (s) => {
       const card = 'card:lemma:sq:test:NOUN';
       const target = { itemIds: ['lemma:sq:test:NOUN'], cardId: card };
       const grade = (id: string, at: string, expectedPreviousReviewId: string | null) => ev(id, {
@@ -44,7 +45,7 @@ export function storeConformance(name: string, open: () => Promise<RepositorySto
         evidence: { quality: 'strong' },
       });
       expect((await s.append(L1, [grade('orphan-review', '2026-10-08T09:58:00.000Z', null)]))[0]).toMatchObject({
-        stored: false, issues: [{ path: 'subject.cardId' }],
+        stored: true,
       });
       expect((await s.append(L1, [ev('card-added', {
         kind: 'CardAdded', at: '2026-10-08T09:59:00.000Z', subject: target,
@@ -52,7 +53,7 @@ export function storeConformance(name: string, open: () => Promise<RepositorySto
       })]))[0]?.stored).toBe(true);
       expect((await s.append(L1, [grade('review-1', '2026-10-08T10:00:00.000Z', null)]))[0]?.stored).toBe(true);
       expect((await s.append(L1, [grade('review-stale', '2026-10-08T10:01:00.000Z', null)]))[0]).toMatchObject({
-        stored: false, issues: [{ path: 'payload.expectedPreviousReviewId' }],
+        stored: true,
       });
       expect((await s.append(L1, [grade('review-2', '2026-10-08T10:02:00.000Z', 'review-1')]))[0]?.stored).toBe(true);
       const correction = ev('correction-2', {
@@ -61,8 +62,31 @@ export function storeConformance(name: string, open: () => Promise<RepositorySto
       });
       expect((await s.append(L1, [correction]))[0]?.stored).toBe(true);
       expect((await s.append(L1, [grade('review-3', '2026-10-08T10:04:00.000Z', 'review-1')]))[0]?.stored).toBe(true);
-      expect((await s.list({ learnerId: L1, kinds: ['CardReviewed'] })).map((e) => e.id)).toEqual(['review-1', 'review-2', 'correction-2', 'review-3']);
+      expect((await s.list({ learnerId: L1, kinds: ['CardReviewed'] })).map((e) => e.id)).toEqual(['orphan-review','review-1','review-stale','review-2','correction-2','review-3']);
     }));
+
+    it('converges offline review branches and late corrections through the real store in opposite delivery orders', async () => {
+      const unitId='lemma:sq:offline:NOUN',cardId=itemIdFor(unitId,'written-recognition'),scheduler=createFsrsScheduler();
+      const add=buildCardAdded({learnerId:L1,enrolmentId:'E1',languageId:'sq',deviceId:'device-a',at:'2026-10-08T09:59:00Z',unitId,unitKind:'lexeme',dimension:'written-recognition',family:'written-recognition',addedBy:'intake'});
+      const review=(id:string,at:string,parent:string|null,rating:1|3)=>ev(id,{enrolmentId:'E1',kind:'CardReviewed',at,subject:{cardId,itemIds:[unitId]},payload:{cardKind:'recognition',grade:rating===1?'again':'good',correct:rating===3,hinted:false,rating,family:'written-recognition',expectedPreviousReviewId:parent,schedulerProfile:{...scheduler.profile,priorityPolicyVersion:'knowability-priority@2'}},evidence:{quality:'moderate',assisted:false}});
+      const root=review('root','2026-10-08T10:00:00Z',null,3),sibling=review('sibling','2026-10-08T10:01:00Z',null,1);
+      const child=review('child','2026-10-09T10:00:00Z','root',3),descendant=review('descendant','2026-10-10T10:00:00Z','child',3);
+      const correction={...child,id:'correction',at:'2026-10-11T10:00:00Z',correctionOf:'child',payload:{...child.payload,rating:null,challenged:true},evidence:{quality:'none' as const}};
+      const events=[add,root,sibling,child,descendant,correction];
+      const expected=foldDeck(events,scheduler,{now:'2026-10-12T10:00:00Z'});
+      expect(expected.items[0].schedule.reps).toBe(2);
+      for(const order of [events,[...events].reverse()]){
+        const store=await open();
+        try{
+          for(const event of order){expect(validateEvent(event)).toEqual([]);const outcome=(await store.append(L1,[event]))[0];expect(outcome,JSON.stringify(outcome)).toMatchObject({stored:true});}
+          expect((await store.append(L1,[root]))[0]).toMatchObject({stored:false,duplicateOf:'root'});
+          const conflicting={...root,payload:{...root.payload,rating:1,grade:'again',correct:false}};
+          expect((await store.append(L1,[conflicting]))[0]).toMatchObject({stored:false,issues:[{path:'id',message:expect.stringContaining('conflicting review')}]});
+          const stored=await store.list({learnerId:L1});expect(stored).toHaveLength(events.length);
+          expect(foldDeck(stored,scheduler,{now:'2026-10-12T10:00:00Z'})).toEqual(expected);
+        }finally{await store.close();}
+      }
+    });
 
     it('refuses an invalid event with issues and stores nothing', withStore(async (s) => {
       const out = await s.append(L1, [ev('bad', { kind: 'PageRead' as never }), null as never, ev('good')]);

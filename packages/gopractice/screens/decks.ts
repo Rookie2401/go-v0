@@ -7,6 +7,7 @@ import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
 import { classEssentialsRemoved, listSavedDecks, planFromSaved, removeSavedDeck, restoreClassEssentials, type SavedDeck } from '../deckModel';
 import { languageName } from '../format';
 import { beginSession, loadReviewModel } from '../workspace';
+import { recordSavedDeckChange } from '../savedDeckSync';
 import type { View } from './view';
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
@@ -16,7 +17,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const status = statusLine();
   const list = h('ul', { class: 'decklist', id: 'saved-decks' });
   const restoreBox = h('p', { class: 'restore-line' });
-  append(el, [h('p', {}, h('a', { href: '#/review' }, '← GoReview')), h('h2', { class: 'page-title', id: 'decks-title', tabindex: '-1' }, 'Saved decks'), list, restoreBox, status]);
+  append(el, [h('p', {}, h('a', { href: '#/review' }, '← GoReview')), h('h2', { class: 'page-title', id: 'decks-title', tabindex: '-1' }, 'Saved decks'), p('Optional extra practice. Independent answers use their actual review time; learner controls still apply.', 'muted'), list, restoreBox, button('Sync saved decks', () => { void (async () => { try { for (const deck of await listSavedDecks(ctx, id!.learnerId, id!.languageId, id!.varietyId)) if (!deck.builtin) await recordSavedDeckChange(ctx, 'save', deck); setStatus(status, 'Saved decks queued for synchronization.', 'ok'); } catch (e) { setStatus(status, e instanceof Error ? e.message : 'The decks could not be synchronized.', 'error'); } })(); }, { class: 'btn', id: 'sync-saved-decks' }), status]);
   if (!id) { list.replaceWith(p('Choose a language to see its saved decks.', 'muted')); return; }
 
   async function practise(saved: SavedDeck): Promise<void> {

@@ -101,7 +101,7 @@ describe('audio-transcription', () => {
     expect(e.responseMode).toBe('typed');
     expect(gradeAndRate(e, resp({ typed: 'libër' }), { now: NOW })).toMatchObject({ grading: { outcome: 'correct' }, rating: 3 });
     expect(gradeAndRate(e, resp({ typed: 'LIBËR' }), { now: NOW }).grading.outcome).toBe('correct');
-    expect(gradeAndRate(e, resp({ typed: 'liber' }), { now: NOW })).toMatchObject({ grading: { outcome: 'partial' }, rating: 2 });
+    expect(gradeAndRate(e, resp({ typed: 'liber' }), { now: NOW })).toMatchObject({ grading: { outcome: 'partial' }, rating: 1 });
     expect(gradeAndRate(e, resp({ typed: 'librin' }), { now: NOW })).toMatchObject({ grading: { outcome: 'incorrect' }, rating: 1 });
     expect(gradeAndRate(e, resp({ selfGrade: 'good' }), { now: NOW }).grading.outcome).toBe('unable-to-grade');
   });

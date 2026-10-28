@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
-import { destroyRigs, defaultService, candidate, cardAdded, flush, ids, makeRig, queued, reopenDetails, reviewed, seed, type, until, unitOf, type Rig, FakeService } from './helpers';
+import { destroyRigs, defaultService, knowledgeRow, candidate, cardAdded, flush, ids, makeRig, queued, reopenDetails, reviewed, seed, type, until, unitOf, type Rig, FakeService } from './helpers';
 
 afterEach(() => destroyRigs());
 
@@ -14,6 +14,7 @@ async function fixtureRig(): Promise<Rig> {
   service.candidates.set('L1-e1', [
     candidate('det', 0.8), candidate('diell', 0.3), candidate('hene', 0.05), candidate('zog', 0.9),
   ]);
+  service.knowledge.set('L1',['det','diell','hene'].map(x=>({...knowledgeRow('L1',unitOf(x),'sq',{}),level:'recognized'})));
   await seed(rig, [
     cardAdded(A, 'zog', 'written-recognition', '2026-09-01T09:00:00.000Z', { reason: 'you looked it up three times' }),
     reviewed(A, 'zog', 'written-recognition', 3, '2026-09-01T10:00:00.000Z'),
@@ -72,16 +73,12 @@ describe('the candidate list', () => {
     expect(why.textContent).toContain('Low comparative priority');
   });
 
-  it('"Test now" adds the selected recognition skill and then marks that candidate covered', async () => {
+  it('"Test now" selects optional recognition practice without creating scheduling history', async () => {
     const rig = await fixtureRig();
     rig.q('[data-unit="' + unitOf('hene') + '"] [data-act="test-now"]').click();
-    await until(async () => (await queued(rig)).some((e) => e.kind === 'CardAdded'), 'the CardAdded');
-    const added = (await queued(rig)).find((e) => e.kind === 'CardAdded' && (e.payload as { addedBy?: string }).addedBy === 'learner')!;
-    expect(added.payload).toMatchObject({ unitId: unitOf('hene'), addedBy: 'learner', family: 'written-recognition' });
-    expect(added.producer.app).toBe('gopractice-review');
-    await until(() => rig.q('#count-fresh').textContent === '2', 'the deck to grow');
-    // The selected recognition skill covers this candidate's recognition need.
-    expect(rig.q(`[data-unit="${unitOf('hene')}"]`).getAttribute('data-decision')).toBe('already-covered');
+    await until(async () => (await import('../../packages/gopractice/deckModel')).selectedPracticeUnits(rig.app.ctx,'L1','sq').then(x=>x.includes(unitOf('hene'))),'selected practice');
+    expect((await queued(rig)).filter(e=>e.kind==='CardAdded')).toEqual([]);
+    expect(rig.q('#count-fresh').textContent).toBe('1');
 
     rig.q(`[data-unit="${unitOf('diell')}"] [data-act="dismiss"]`).click();
     await until(async () => (await queued(rig)).some((e) => e.kind === 'ItemMarked'), 'the ItemMarked');
@@ -174,17 +171,21 @@ describe('the session controls', () => {
     const rig = await makeRig({ service, signedIn: true });
     await reopenDetails(rig);
     rig.root.querySelector<HTMLElement>('#session-controls')!.setAttribute('open', '');
+    expect(rig.root.querySelector('#pref-grammar')).toBeNull();
+    expect(rig.root.querySelector('#pref-goal-recognition')).not.toBeNull();
     type(rig.q<HTMLInputElement>('#details-size'), '25');
     type(rig.q<HTMLInputElement>('#pref-max-new'), '3');
     type(rig.q<HTMLInputElement>('#pref-retention'), '85');
     const listening = rig.q<HTMLInputElement>('#pref-listening');
     listening.checked = true; listening.dispatchEvent(new Event('change'));
+    const retrievalGoal = rig.q<HTMLInputElement>('#pref-goal-retrieval');
+    retrievalGoal.checked = false; retrievalGoal.dispatchEvent(new Event('change'));
     const saved = rig.q<HTMLInputElement>('#pref-saved');
     saved.checked = false; saved.dispatchEvent(new Event('change'));
     await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).includeListening, 'the preferences to be saved');
     await flush(4);
     expect(await rig.app.ctx.state.getPrefs('L1', 'sq')).toEqual({
-      languageId: 'sq', sessionMinutes: 10, cardsPerDeck: 25, maxNew: 3, desiredRetention: 0.85, includeListening: true, grammarShare: 0.2, prioritizeSaved: false,
+      languageId: 'sq', sessionMinutes: 10, cardsPerDeck: 25, dailyNewLimit: 5, practiceGoals: ['recognition','application'], maxNew: 3, desiredRetention: 0.85, includeListening: true, grammarShare: 0.2, prioritizeSaved: false,
     });
     const { area } = rig;
     rig.app.destroy();
@@ -194,6 +195,7 @@ describe('the session controls', () => {
     again.root.querySelector<HTMLElement>('#session-controls')!.setAttribute('open', '');
     expect(again.q<HTMLInputElement>('#details-size').value).toBe('25');
     expect(again.q<HTMLInputElement>('#pref-listening').checked).toBe(true);
+    expect(again.q<HTMLInputElement>('#pref-goal-retrieval').checked).toBe(false);
     expect(again.q<HTMLInputElement>('#pref-saved').checked).toBe(false);
   });
 

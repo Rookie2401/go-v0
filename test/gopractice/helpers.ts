@@ -9,7 +9,7 @@ import type {
   Dimension, DimensionEstimate, Enrolment, GoEvent, PrivateDocument, ReviewCandidate, StoredEvent, SyncPullRequest, SyncPushRequest, UnitKnowledge,
 } from '../../packages/repository-contract/src';
 import { buildCardAdded, gradeResponse, itemIdFor, ratingFor, FAMILY_DIMENSION } from '../../packages/goreview/src';
-import type { Exercise, ExerciseBuilder, ExerciseFamily, FactsProvider, GradingPort, ReviewPreferences, UnitFacts } from '../../packages/goreview/src';
+import type { Exercise, ExerciseBuilder, ExerciseFamily, FactsProvider, GradingPort, ReviewPreferences } from '../../packages/goreview/src';
 import { DEFAULT_PREFERENCES } from '../../packages/gopractice/state';
 import type { AssessmentSource, AudioStimulus, PlaybackHandle, PronunciationRequest, PronunciationResult } from '../../packages/golisten/src/contracts';
 import type { ApiResult, RepositoryApi } from '../../packages/repository-service/src/api';
@@ -29,7 +29,7 @@ const gloss = (label: string): string => GLOSS[label] ?? 'thing';
 
 // ───────────────────────────── the fake service ─────────────────────────────
 
-export interface Account { email: string; password: string; learnerId: string }
+export interface Account { email: string; password: string; learnerId: string; displayName?: string }
 
 export class FakeService {
   accounts = new Map<string, Account>();
@@ -94,7 +94,7 @@ export class FakeService {
       async me() {
         net(false); const l = learner(); if (!l) return fail(401);
         const a = [...self.accounts.values()].find((x) => x.learnerId === l)!;
-        return ok({ learner: undefined, account: { accountId: `acc-${l}`, email: a.email, createdAt: T0 }, enrolments: self.enrolments.get(l) ?? [], devices: [], consents: [] });
+        return ok({ learner: { learnerId: l, createdAt: T0, ...(a.displayName ? { displayName: a.displayName } : {}) }, account: { accountId: `acc-${l}`, email: a.email, createdAt: T0 }, enrolments: self.enrolments.get(l) ?? [], devices: [], consents: [] });
       },
       async listEnrolments() { net(false); const l = learner(); return l ? ok({ enrolments: self.enrolments.get(l) ?? [] }) : fail(401); },
       async candidates(enrolmentId: string) {
@@ -290,7 +290,15 @@ export const FAKE_BUILDERS: ExerciseBuilder[] = [
   })),
 ];
 
-export const fakeFacts: FactsProvider = { factsFor: async (unitId, languageId) => ({ unit: { unitId, languageId }, relations: [], analyses: [], glosses: [gloss(labelOf(unitId))] }) as unknown as UnitFacts };
+export const fakeFacts: FactsProvider = { factsFor: async (unitId, languageId) => ({
+  // Keep this fixture as complete as a verified pack response. Production intake must
+  // continue rejecting incomplete facts and unreviewed production sources.
+  unit: { unitId, kind: 'lexeme', languageId, label: labelOf(unitId), packId: `pack-${languageId}`, packVersion: '1',
+    provenance: { source: 'hand-lexicon', ref: `test:${unitId}`, confidence: 1, validation: 'production-validated' },
+    status: 'verified', createdAt: T0 },
+  relations: [], analyses: [], status: 'verified', glosses: [gloss(labelOf(unitId))], constructionIds: [], featureExplanations: {},
+  siblingForms: [], exampleSentences: [], pronunciationNotes: [],
+}) };
 
 export const fakeEvidenceFor: GradingPort['evidenceFor'] = (i) => {
   const audio = i.exercise.family === 'audio-to-meaning' || i.exercise.family === 'audio-transcription';

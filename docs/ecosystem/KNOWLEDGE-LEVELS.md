@@ -10,8 +10,8 @@ metric shown to the learner**: whether a word comes back for practice is a natur
 | **Seen** | met or looked up, nothing shows it was understood | faint dotted | same: recognition practice |
 | **Recognized** | understood with help, or recognised once | dotted | reading recognition, and its retention (on the same signals) |
 | **Familiar** | recognised repeatedly while reading | thin solid, faint | reading recognition, and its retention (on the same signals) |
-| **Known** | recognised reliably, or marked as known | hairline, faint | retrieval (the next step up), only when retention decayed or the word is common |
-| **Automatic** | produced or retrieved without help, or marked as automatic | hairline, barely visible | left alone unless retention decayed or the learner's mark was contradicted |
+| **Known** | recognised reliably across delayed, independent successes, or marked as known | hairline, faint | retrieval (the next step up), only when retention decayed or the word is common |
+| **Automatic** | marked as automatic, or preserved as legacy inference | hairline, barely visible | left alone unless retention decayed |
 
 The vocabulary, its order and its words live in `packages/repository-contract/src/knowledge-levels.ts` (`KnowledgeLevel`,
 `KNOWLEDGE_LEVELS`, `KNOWLEDGE_LEVEL_RANK`, `KNOWLEDGE_LEVEL_WORDS`, `levelOfMark`). The computation lives in
@@ -28,20 +28,21 @@ From the unit's dimension estimates alone (`UnitKnowledge.dimensions`; the score
 | seen | something was observed (a lookup, an encounter, a help request, a failed attempt), nothing shows it was understood |
 | recognized | a positive `assistedRecognition` (understood with help), **or** a positive recognition observation (read once, or below the familiar bar), **or** one correct unassisted production |
 | familiar | a recognition dimension with score >= 0.6 over >= 2 observations |
-| known | a recognition dimension with score >= 0.8 over >= 4 observations |
-| automatic | `productiveRetrieval` or `contextualProduction` with score >= 0.7 over >= 2 observations |
+| known | a recognition dimension with score >= 0.8 over >= 4 observations, >= 4 qualified independent positive events, and >= 2 positive events at least 24 hours after the preceding qualified positive |
+| automatic | not inferred from current evidence; explicit marks or preserved legacy inference only |
 
-"A recognition dimension" is `readingRecognition` or `listeningRecognition` (listening counts like reading), and, because a phrase or a
-construction is understood as a whole, also `phraseComprehension` and `grammaticalUnderstanding`; the highest level any of them
-reaches counts. Two things differ from the shortest reading of the owner's list, deliberately: a negative-only
+"A recognition dimension" is `readingRecognition`, `listeningRecognition`, `phraseComprehension` or `grammaticalUnderstanding`; the highest
+qualifying dimension determines the overall level, without asserting equal mastery of production, listening and reading. A negative-only
 `assistedRecognition` ("I needed help and still failed") is not recognition, and a recognition observation that is *negative only*
 leaves the unit at Seen, not Recognized.
 
-A self-report never reaches a threshold: a mark weighs at most 0.09 as evidence (below), and the fold computes the evidence level on the
-unit **without** its self-mark observations, so a mark cannot raise the level it is being compared with.
+A self-report, a choice response, or a rapid sequence alone cannot establish Known. Qualified positives must be causally valid, unassisted
+moderate/strong typed assessments, or independent objectively judged GoTell production, with effective source reliability >= 0.8. Numeric dimension scores and counts remain intact;
+these extra aggregates affect only inferred Known.
 
-Worked examples (a recognition card answered correctly weighs 0.56): one correct card = Recognized; two = Familiar (score 0.76);
-four = Known (0.85). Two correct recall cards = Automatic (0.78). Four lookups and nothing else = Seen.
+Worked examples (a typed recognition card answered correctly weighs 0.56): one correct card = Recognized; two = Familiar (score 0.76);
+four rapid correct cards remain Familiar; four qualified successes spaced across at least three 24-hour intervals may reach Known (if the
+score is at least 0.8). Two correct recall cards = Recognized, never Automatic. Four lookups and nothing else = Seen.
 
 ## 2. What the learner says: self-marks, and the one automatic step
 
@@ -57,7 +58,8 @@ observations dated *after* the mark, leaving out other self-reports; only the ma
   ended; and *released (upward)*, when the evidence after the mark put the unit two or more levels above it. `MarkStatus` keeps the two
   words for rows and reasons stored before; `CANDIDATE_RULES`' reason `selfMarkContradicted` can no longer arise.
 - **A mark of New is released by any later observation (2026-10-10).** New means *not met*: a lookup, an exposure, a help request or a
-  failed attempt dated after the mark is a meeting, so the level becomes `max(seen, what the evidence supports)`. This is why clicking a New
+  failed attempt dated after the mark is a meeting, so the visible level is `max(seen, what post-mark evidence supports)`. Historical evidence
+  before the reset does not promote the visible level. This is why clicking a New
   word in GoLearn turns it into Seen at once (the click records `SelectionLookedUp`). No two-level gap applies (nothing lies below New);
   an observation dated before the mark never releases it, and marking the word New again starts over. Rows stored before this rule keep the
   level they were folded with until the unit's next event refolds them.
@@ -104,12 +106,12 @@ Nothing is asked of the learner and no event is required. `engine.candidates` dr
 - **recognized, familiar**: reading recognition (and its retention) on the same signals; decayed retention raises the score but is not, alone, a reason (a word recognised once is not re-tested just because days passed).
 - **known**: retrieval (`productiveRetrieval`), only when retention decayed or the word is common. When the unit's analysis cannot support
   a production item but can support recognition, recognition is asked and the reason `levelTarget` says so.
-- **automatic**: only when retention decayed (a mark is no longer contradicted by evidence, 2026-10-26).
+- **automatic**: only when retention decayed for an explicit or preserved legacy Automatic level; current evidence does not infer it.
 - **Retention decayed**: the retention estimate (already decayed to now) is below 0.3 **and** the strongest dimension was last observed
   at least one half-life ago (reason `retentionDecayed`, weight 0.15).
 
-Every candidate carries a `knowledgeLevel` reason (weight 0, an explanation) such as `Known (4 encounters): recognised reliably; retrieving it
-moves it to Automatic`. A demonstrated error still decides the target dimension; the level supplies it only when nothing went wrong.
+Every candidate carries a `knowledgeLevel` reason (weight 0, an explanation) such as `Known: recognised reliably across delayed independent
+successes; retrieval is the next practice objective`. A demonstrated error still decides the target dimension; the level supplies it only when nothing went wrong.
 
 ## 6. Who reads the levels
 
@@ -149,3 +151,18 @@ rewritten.
 The readers apply the same rule on their side too, so a page against a service not yet redeployed shows the right level: a mark other
 than New decides outright over the level the row carries (`golearn-extension/src/active/levels.ts` `levelOfRows`, `biblia/src/levels.ts`
 `levelOfRows`); a mark of New is read through the engine's level of the row that carries it (released to Seen by a later meeting).
+
+## 10. Migration: projection@6 -> projection@7
+
+Projection@7 adds optional `DimensionEstimate.independentPositiveEvents`, `delayedIndependentPositiveEvents` and
+`lastIndependentPositiveAt` aggregates. The engine refolds the immutable event log under the new model version; old rows remain readable while
+the refold is pending. Existing numeric dimension evidence, manual non-New marks, and raw events are preserved. No event is rewritten.
+
+Inferred Known now requires the existing score/count threshold plus four independent positive events and two successes each at least 24 hours
+after the prior qualifying positive. The first success establishes the clock. GoReview typed assessments and objectively judged independent GoTell
+production can qualify when valid, unassisted, explicitly moderate/strong and at least 0.8 reliable; choice and self-report repetitions do not. Scheduler concurrency credit
+is not itself delayed knowability. Automatic remains explicit or preserved legacy state; this change does not infer it from production counts.
+
+A mark of New starts a fresh knowability window. The first later lookup still releases the visible status to Seen, even if older evidence had once
+qualified as Known; only observations after the mark can promote that visible status. The historical dimension scores and aggregates remain on the
+row. Other manual marks remain sticky until the learner changes them.

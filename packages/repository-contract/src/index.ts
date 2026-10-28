@@ -22,6 +22,8 @@ export * from './learner';
 export * from './payloads';
 export * from './sources';
 export * from './review-corrections';
+export * from './review-classification';
+export * from './review-evidence';
 export * from './ports';
 export type { ValidationIssue };
 

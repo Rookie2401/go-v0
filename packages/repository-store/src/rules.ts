@@ -2,7 +2,7 @@
  * The rules both stores share, written once so memory and SQLite cannot drift apart. Pure functions only: no I/O, no
  * clock beyond the injected one, nothing that knows which backend calls it.
  */
-import { MAX_CORRECTIONS, STATUS_RANK, effectiveReviewEvents, invalidateFieldStates, sourceLocator, validateEvent } from '../../repository-contract/src';
+import { MAX_CORRECTIONS, STATUS_RANK, invalidateFieldStates, sourceLocator, validateEvent } from '../../repository-contract/src';
 import type {
   AnalysisStatus, EventFilter, FormAnalysis, GoEvent, LanguagePackInfo, LinguisticUnit, PrivateDocument, RepositoryStore, SourceRef, StoredEvent, Tombstone,
   ProvenanceOrigin, UnitCorrection, UnitProvenance, ValidationLevel,
@@ -40,28 +40,25 @@ export function appendIssues(learnerId: string, e: unknown): Array<{ path: strin
   return issues;
 }
 
-/** Atomic review-history compare-and-set. Legacy payloads omit the token and remain ingestible. */
-export function expectedReviewPredecessorIssue(e: GoEvent, existing: GoEvent[]): { path: string; message: string } | undefined {
-  const payload = e.payload as Record<string, unknown>;
-  if (payload.expectedPreviousReviewId === undefined) return undefined;
-  const cardId = e.subject.cardId;
-  if (!cardId) return { path: 'subject.cardId', message: 'a versioned review must name its card' };
-  const sameCard = existing.filter((x) => x.learnerId === e.learnerId && x.languageId === e.languageId && x.subject.cardId === cardId);
-  const isGrade = ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(e.kind) && Number.isInteger(payload.rating) && Number(payload.rating) >= 1 && Number(payload.rating) <= 4;
-  const isCorrection = e.correctionOf !== undefined && payload.rating === null;
-  if (isGrade && !sameCard.some((x) => x.kind === 'CardAdded' && Date.parse(x.at) <= Date.parse(e.at))) {
-    return { path: 'subject.cardId', message: 'a versioned grade requires an earlier CardAdded event for this card' };
-  }
-  if (isCorrection && !sameCard.some((x) => x.id === e.correctionOf)) {
-    return { path: 'correctionOf', message: 'a review correction must reference an existing grade for this card' };
-  }
-  const effective = effectiveReviewEvents(sameCard)
-    .filter((x) => ['CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'].includes(x.kind) && typeof (x.payload as Record<string, unknown>).rating === 'number')
-    .sort((a, b) => Date.parse(a.at) - Date.parse(b.at) || a.id.localeCompare(b.id));
-  const latest = effective.at(-1)?.id ?? null;
-  if (payload.expectedPreviousReviewId !== latest) {
-    return { path: 'payload.expectedPreviousReviewId', message: `stale review predecessor; expected ${latest ?? 'no prior graded review'}. Keep this review for recovery and refresh the schedule.` };
-  }
+/** Predecessor tokens describe the state a device observed; they are not ingestion locks.
+ * Offline siblings, missing predecessors and corrections must converge as immutable raw
+ * evidence regardless of arrival order. The scheduling projection diagnoses and excludes
+ * stale branches. Contract validation still checks the token and the review envelope.
+ * Kept as an internal compatibility accessor for every storage backend.
+ */
+export function expectedReviewPredecessorIssue(e: GoEvent, _existing: GoEvent[] = []): { path:string; message:string } | undefined {
+  if (e.payload.expectedPreviousReviewId !== undefined && !e.subject.cardId)
+    return {path:'subject.cardId',message:'a versioned review must name its card'};
+  return undefined;
+}
+
+/** A retry may add transport metadata, but may not change an immutable review. */
+export function conflictingReviewIdentity(existing: GoEvent, incoming: GoEvent): {path:string;message:string}|undefined {
+  const reviews=['CardReviewed','AssessmentAnswered','ListeningAssessed'];
+  if(!reviews.includes(existing.kind)&&!reviews.includes(incoming.kind))return undefined;
+  const canonical=(event:GoEvent)=>JSON.stringify(Object.fromEntries(Object.entries(event).filter(([key])=>key!=='seq'&&key!=='recordedAt')),
+    (_key,value)=>value&&typeof value==='object'&&!Array.isArray(value)?Object.fromEntries(Object.entries(value).sort(([a],[b])=>a<b?-1:a>b?1:0)):value);
+  if(canonical(existing)!==canonical(incoming))return {path:'id',message:'conflicting review event identity; the original is preserved, retain this submission for recovery with an explicit correction or a new event identity'};
   return undefined;
 }
 

@@ -5,7 +5,7 @@ import { createMemoryArea } from '../../packages/repository-sync/src';
 import { createMobileRuntime, createNativeKeyValueArea, nativeLearnerPrefix, type GoReviewNativeBridge } from '../../packages/gopractice/mobile';
 import { createScopedArea, createStateStore, KEYS, learnerPrefix, type Session } from '../../packages/gopractice/state';
 import type { MobileRuntime } from '../../packages/gopractice/mobile';
-import { candidate, cardAdded, defaultService, destroyRigs, ids, makeRig, type, until } from './helpers';
+import { candidate, knowledgeRow, unitOf, cardAdded, defaultService, destroyRigs, ids, makeRig, type, until } from './helpers';
 
 const session: Session = { token: 'secret-token', learnerId: 'learner-A', email: 'a@example.org', expiresAt: '2027-01-01T00:00:00.000Z', serviceUrl: 'https://repo.example.org' };
 
@@ -135,6 +135,7 @@ describe('GoReview native runtime', () => {
   it('renders the authenticated GoReview home and fetched vocabulary after a native sign-in', async () => {
     const service = defaultService();
     service.candidates.set('L1-e1', [candidate('det', 0.8)]);
+    service.knowledge.set('L1',[{...knowledgeRow('L1',unitOf('det'),'sq',{}),level:'recognized'}]);
     const mobile = memoryMobile();
     const rig = await makeRig({ service, mobile });
     type(rig.q<HTMLInputElement>('#signin-email'), 'ana@example.org');

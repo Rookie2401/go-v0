@@ -1,228 +1,185 @@
+import { itemIdFor } from '../goreview/src/scheduler/deck';
 /**
- * The model behind the GoReview home: the current deck (always ready), the saved decks, and the vocabulary list with
- * its two orders. No DOM, so a test reads it directly.
- *
- * The current deck is what a session would ask. It is planned exactly as the session always was (`engine.plan`, the
- * spaced-repetition scheduler's due and new items). When that yields nothing, the deck is filled so the learner is never
- * met with an empty home: first from the intake outcomes marked "test later", then from the learner's weakest known
- * units (the Repository's candidates and the deck, by knowledge level: new, seen, recognized first). The reasons stay
- * available on the details page; the home says only "N cards".
- *
- * Saved decks are kept in the application area under `gopractice:decks:<learner>:<language>` as
- * `{ v: 1, decks: SavedDeck[], holdOut: string[] }`; a missing or damaged record reads as "no saved decks".
+ * GoReview batches contain justified eligible work. Batch size is a maximum, never
+ * a demand to fill. Saved/selected practice carries a typed explicit intent.
  */
-import { KNOWLEDGE_LEVELS, type KnowledgeLevel, type UnitKnowledge } from '../repository-contract/src';
-import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, ReviewResult, SessionPlan } from '../goreview/src/types';
+import { KNOWLEDGE_LEVELS, type KnowledgeLevel } from '../repository-contract/src';
+import type { AssessmentDimension, DeckItem, ExerciseFamily, IntakeOutcome, PlannedItem, ReviewIntent, SessionPlan } from '../goreview/src/types';
+import { reviewEligibility } from '../goreview/src/planner/eligibility';
+import { admissionBudget } from '../goreview/src/planner/budget';
+import { chooseMicrodeckTarget, microdeckMaximum } from '../goreview/src/planner/microdeck';
+import { estimateSeconds, microdeckObservations } from '../goreview/src/planner/planner';
+import { remediationBacklog, type RemediationCandidate } from '../goreview/src/planner/remediation';
 import type { AppContext } from './context';
 import { unitLabel } from './format';
-import { clampDeckSize } from './state';
+import { recordSavedDeckChange, sharedSavedDecks } from './savedDeckSync';
 import { classDeckFor, classLanguageOf, isClassUnit } from './classEssentials';
 import { readSnapshot, writeSnapshot, MAX_SNAPSHOT_WORDS } from './snapshot';
 import { observedReviewSeconds, type ReviewModel } from './workspace';
 
-// ───────────────────────────── the current deck ─────────────────────────────
-
-/** One card of a deck as a snapshot can hold it: enough to ask it again later. */
 export interface DeckEntry {
-  itemId: string;
-  unitId: string;
-  unitKind: string;
-  label: string;
-  dimension: AssessmentDimension;
-  family: ExerciseFamily;
+  itemId: string; unitId: string; unitKind: string; label: string;
+  dimension: AssessmentDimension; family: ExerciseFamily;
 }
-
 export interface CurrentDeck {
-  plan: SessionPlan;
-  entries: DeckEntry[];
-  /** True when the scheduler had nothing to ask and the deck was filled from test-later and the weakest known units. */
-  filled: boolean;
-  /** Whether the Repository holds any vocabulary at all (candidates, deck cards or knowledge rows). */
-  hasVocabulary: boolean;
+  plan: SessionPlan; entries: DeckEntry[]; filled: boolean; hasVocabulary: boolean;
+  summary: { dueReviews: number; dueLearning: number; newAvailable: number; remediation: number; classRemediation: number; targetQuestions: number;
+    questionsAvailable: number; batchQuestions: number; estimatedSeconds: number; workloadLimit: number; nextReturnAt?: string; nextReviewAt?: string };
+  remediation: RemediationCandidate[];
 }
-
-/** What a deck wants asked: a unit along one dimension, with the intake outcome that proposed it when there is one. */
 export interface Wanted { unitId: string; unitKind: string; dimension: AssessmentDimension; family: ExerciseFamily; outcome?: IntakeOutcome }
-
 const rankOf = (level: KnowledgeLevel | undefined): number => (level ? Math.max(0, KNOWLEDGE_LEVELS.indexOf(level)) : 0);
 const isAudio = (family: ExerciseFamily): boolean => family === 'audio-to-meaning' || family === 'audio-transcription';
-const GRAMMAR: ReadonlySet<ExerciseFamily> = new Set<ExerciseFamily>(['morphological-identification', 'grammar-application']);
-
-/** How many cards the current deck holds: the learner's "cards per deck" (5 to 60). */
-export function fillSize(model: Pick<ReviewModel, 'prefs'>): number {
-  return clampDeckSize(model.prefs.cardsPerDeck);
+const GRAMMAR: ReadonlySet<ExerciseFamily> = new Set(['morphological-identification', 'grammar-application']);
+export const fillSize = (model: Pick<ReviewModel, 'prefs'>): number => microdeckMaximum(model.prefs.cardsPerDeck);
+const entryOf = (p: PlannedItem): DeckEntry => ({ itemId: p.item.itemId, unitId: p.item.unitId, unitKind: p.item.unitKind,
+  label: unitLabel(p.item.unitId), dimension: p.item.dimension, family: p.family });
+const effective = (item: DeckItem) => item.history.filter(h => !h.retracted && !h.scheduleExcluded && !h.conflict);
+const knownItem = (model: ReviewModel, w: Pick<Wanted, 'unitId' | 'dimension'>) =>
+  [...model.deck, ...(model.classDeck ?? [])].find(i => i.unitId === w.unitId && i.dimension === w.dimension);
+function eligibility(model: ReviewModel, w: Wanted, intent: ReviewIntent, remainingNew: number) {
+  return reviewEligibility({ item: knownItem(model, w), itemId:itemIdFor(w.unitId,w.dimension), unitId: w.unitId, knowledge: model.knowledge.find(k => k.unitId === w.unitId),
+    events: model.events, now: model.now, intent, remainingNew,
+    factsInvalidated: ['needs-validation', 'too-uncertain'].includes(w.outcome?.decision ?? '') });
 }
-
-const entryOf = (p: PlannedItem): DeckEntry => ({
-  itemId: p.item.itemId, unitId: p.item.unitId, unitKind: p.item.unitKind, label: unitLabel(p.item.unitId), dimension: p.item.dimension, family: p.item.family,
+const budgetFor = (model: ReviewModel) => admissionBudget(model.events, {
+  learnerId: model.identity.learnerId, languageId: model.identity.languageId, now: model.now,
+  maxNew: model.prefs.maxNew, dailyNewLimit: model.prefs.dailyNewLimit ?? model.prefs.maxNew,
 });
-
-/** The deck as the scheduler plans it today, with the units of `holdOut` left out (the deck that was just saved). */
 function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string>): SessionPlan {
-  return ctx.engine.plan({
-    deck: model.deck.filter((i) => !holdOut.has(i.unitId) && !isClassUnit(i.unitId)),
-    intake: model.outcomes.filter((o) => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
-    // the deck is sized by cards, not minutes: flexible time, so the planner's budget never cuts it short of the size
-    prefs: { ...model.prefs, sessionMinutes: 0 }, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
-    schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events),
-  });
+  return ctx.engine.plan({ deck: model.deck.filter(i => !holdOut.has(i.unitId) && !isClassUnit(i.unitId)),
+    intake: model.outcomes.filter(o => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
+    prefs: model.prefs, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
+    schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events), intent: { kind: 'automatic' } });
 }
-
-/**
- * Turns an ordered list of wanted cards into a session plan. A card the deck already holds is asked as it stands; a new
- * one goes through the planner as a deliberate selection (so the new-item limit and the level gates of the automatic plan
- * do not drop it), after the exercise engine has said it can be built. The result keeps the order of `wanted`.
- */
-export async function assemble(ctx: AppContext, model: ReviewModel, wanted: readonly Wanted[], size: number, opts: { unchecked?: boolean } = {}): Promise<SessionPlan> {
+/** All callers, including explicit saved decks, use the same hard control gates. */
+export async function assemble(ctx: AppContext, model: ReviewModel, wanted: readonly Wanted[], size: number,
+  opts: { unchecked?: boolean; intent?: ReviewIntent; origin?: PlannedItem['origin'] } = {}): Promise<SessionPlan> {
+  const intent: ReviewIntent = opts.intent ?? { kind: 'automatic' };
+  const explicit = intent.kind === 'explicit';
+  const target = chooseMicrodeckTarget({ configuredMaximum: model.prefs.cardsPerDeck,
+    observations: microdeckObservations(model.events, model.identity.languageId, model.now),
+    cognitiveCost: model.outcomes.filter(o=>o.decision==='test-now').reduce((sum,o)=>sum+(Number.isFinite(o.candidate.cost)?o.candidate.cost:0),0)
+      / Math.max(1,model.outcomes.filter(o=>o.decision==='test-now').length) });
+  const requestedLimit = Number.isFinite(size) ? Math.max(0, Math.min(Math.floor(size), fillSize(model), target.targetQuestions)) : 0;
   const listeningOk = model.prefs.includeListening && model.audio.available;
-  const holds = (w: Wanted): DeckItem | undefined =>
-    [...model.deck, ...(model.classDeck ?? [])].find((i) => i.unitId === w.unitId && i.dimension === w.dimension && i.status !== 'dismissed' && i.status !== 'suspended');
-  const direct = new Map<string, PlannedItem>();
-  const fresh: IntakeOutcome[] = [];
-  const order: string[] = [];
-  const api = (await ctx.api()).api;
-  let tried = 0;
+  const direct = new Map<string, PlannedItem>(), fresh: IntakeOutcome[] = [], order: string[] = [];
+  const { api } = await ctx.api();
+  let remainingNew = Math.min(model.prefs.maxNew, budgetFor(model).remaining);
   for (const w of wanted) {
-    if (order.length >= size + 4 || tried >= (size + 4) * 3) break;
-    const key = `${w.unitId}|${w.dimension}`;
-    if (order.includes(key)) continue;
-    if (isAudio(w.family) && !listeningOk) continue;
-    const held = holds(w);
+    if (order.length >= requestedLimit) break;
+    const key = w.unitId + '|' + w.dimension;
+    if (order.includes(key) || isAudio(w.family) && !listeningOk || !eligibility(model, w, intent, remainingNew).eligible) continue;
+    const held = knownItem(model, w);
     if (held) {
-      if (isAudio(held.family) && !listeningOk) continue;
-      direct.set(key, { item: held, family: held.family, why: ['extra practice: this word is not due yet'], estimatedSeconds: 25, isNew: held.history.length === 0 });
-      order.push(key);
-      continue;
+      direct.set(key, { item: held, family: held.family, why: [explicit ? 'Optional independent practice at the actual review time.' : 'Eligible scheduled work.'],
+        estimatedSeconds: observedReviewSeconds(model.events)[held.itemId] ?? estimateSeconds(held.family,held.schedule.phase),
+        isNew: effective(held).length === 0, schedulingCardExists: true, admissionKnowledge:model.knowledge.find(k=>k.unitId===held.unitId), origin: opts.origin ?? 'scheduled', intent });
+      if (!explicit && effective(held).length === 0) remainingNew--;
+    } else {
+      // No unchecked fallback: an unbuildable or invalid exercise is never demand.
+      if (!ctx.engine.exerciseAvailable || !(await ctx.engine.exerciseAvailable({ unitId: w.unitId, unitKind: w.unitKind,
+        languageId: model.identity.languageId, dimension: w.dimension, family: w.family, api, now: model.now }).catch(() => false))) continue;
+      const base: IntakeOutcome = w.outcome ?? { unitId: w.unitId, decision: 'test-now', reasons: ['Explicit vocabulary practice.'],
+        candidate: { unitId: w.unitId, kind: w.unitKind, score: .5, reasons: [], targetDimension: 'readingRecognition',
+          eligibility: { eligible: true, status: 'high-confidence', caveats: [] }, cost: .2 } };
+      fresh.push({ ...base, decision: 'test-now', proposed: { dimension: w.dimension, family: w.family }, explicitlySelected: explicit, intent });
+      if (!explicit) remainingNew--;
     }
-    tried += 1;
-    if (ctx.engine.exerciseAvailable && !opts.unchecked) {
-      try {
-        if (!(await ctx.engine.exerciseAvailable({ unitId: w.unitId, unitKind: w.unitKind, languageId: model.identity.languageId, dimension: w.dimension, family: w.family, api, now: model.now }))) continue;
-      } catch { continue; }
-    }
-    const base: IntakeOutcome = w.outcome ?? {
-      unitId: w.unitId, decision: 'test-now', reasons: ['asked again from a saved deck'],
-      candidate: { unitId: w.unitId, kind: w.unitKind, score: 0.5, reasons: [], targetDimension: 'readingRecognition', eligibility: { eligible: true, status: 'high-confidence', caveats: [] }, cost: 0.2 },
-    };
-    fresh.push({ ...base, decision: 'test-now', proposed: { dimension: w.dimension, family: w.family }, explicitlySelected: true });
     order.push(key);
   }
-  // the planner builds the DeckItem of each new card (its schedule, reason and id); flexible time and no new-item cap so none is dropped
-  const skeleton = ctx.engine.plan({
-    deck: [], intake: fresh, prefs: { ...model.prefs, sessionMinutes: 0, maxNew: Math.max(1, fresh.length) }, audio: model.audio, now: model.now,
-    knowledge: model.knowledge, readingSignals: model.events, schedulerProfile: model.schedulerProfile,
-  });
-  const built = new Map<string, PlannedItem>(skeleton.items.map((p) => [`${p.item.unitId}|${p.item.dimension}`, p]));
-  const items = order.map((key) => direct.get(key) ?? built.get(key)).filter((p): p is PlannedItem => !!p).slice(0, size);
-  return {
-    ...skeleton, budgetMinutes: model.prefs.sessionMinutes, items, skipped: skeleton.skipped,
-    dueCount: 0, newCount: items.filter((p) => p.isNew).length,
-    listeningCount: items.filter((p) => isAudio(p.family)).length, grammarCount: items.filter((p) => GRAMMAR.has(p.family)).length,
-  };
-}
-
-/** The fallback order: test-later first, then the weakest known units by level (new, seen, recognized, …), the most met first among equals. */
-function fillOrder(model: ReviewModel, holdOut: ReadonlySet<string>): Wanted[] {
-  const known = new Map<string, UnitKnowledge>(model.knowledge.map((k) => [k.unitId, k]));
-  const levelOf = (unitId: string, outcome?: IntakeOutcome): KnowledgeLevel | undefined => known.get(unitId)?.level ?? outcome?.knowledge?.level;
-  const encountersOf = (unitId: string, outcome?: IntakeOutcome): number => known.get(unitId)?.encounters ?? outcome?.knowledge?.encounters ?? 0;
-  const usable = (o: IntakeOutcome): o is IntakeOutcome & { proposed: NonNullable<IntakeOutcome['proposed']> } => !!o.proposed && o.decision !== 'already-covered';
-  const wantedOf = (o: IntakeOutcome & { proposed: NonNullable<IntakeOutcome['proposed']> }): Wanted =>
-    ({ unitId: o.unitId, unitKind: o.candidate.kind, dimension: o.proposed.dimension, family: o.proposed.family, outcome: o });
-  const later = model.outcomes.filter(usable).filter((o) => o.decision === 'test-later');
-  const laterIds = new Set(later.map((o) => o.unitId));
-  type Ranked = { w: Wanted; rank: number; encounters: number };
-  const rest: Ranked[] = [];
-  for (const o of model.outcomes.filter(usable)) {
-    if (laterIds.has(o.unitId)) continue;
-    rest.push({ w: wantedOf(o), rank: rankOf(levelOf(o.unitId, o)), encounters: encountersOf(o.unitId, o) });
+  const skeleton = ctx.engine.plan({ deck: [], intake: fresh, prefs: { ...model.prefs, sessionMinutes: 0,
+      ...(explicit ? { maxNew: Math.max(1, fresh.length) } : {}) }, audio: model.audio, now: model.now, knowledge: model.knowledge,
+    readingSignals: model.events, schedulerProfile: model.schedulerProfile, intent });
+  const built = new Map(skeleton.items.map(p => [p.item.unitId + '|' + p.item.dimension,
+    { ...p, schedulingCardExists: false, origin: opts.origin ?? 'explicit', intent }]));
+  const timeLimit = model.prefs.sessionMinutes === 0 ? Infinity : Math.max(0,model.prefs.sessionMinutes * 60);
+  const selected: PlannedItem[] = [], skipped = [...skeleton.skipped]; let usedSeconds=0;
+  for (const key of order) {
+    const planned = direct.get(key) ?? built.get(key);
+    if (!planned) continue;
+    if (usedSeconds + planned.estimatedSeconds > timeLimit) { skipped.push({ itemId:planned.item.itemId, why:'over workload limit; remains in the saved or selected collection' }); continue; }
+    usedSeconds += planned.estimatedSeconds;
+    const repeated = !planned.isNew;
+    selected.push({ ...planned, ...(repeated ? { overlap:'explicit' as const, presentationReason:'explicit-repeat' } : {}) });
   }
-  for (const item of model.deck) {
-    if (item.status === 'dismissed' || item.status === 'suspended') continue;
-    rest.push({ w: { unitId: item.unitId, unitKind: item.unitKind, dimension: item.dimension, family: item.family }, rank: rankOf(levelOf(item.unitId)), encounters: encountersOf(item.unitId) });
-  }
-  rest.sort((a, b) => a.rank - b.rank || b.encounters - a.encounters || (a.w.unitId < b.w.unitId ? -1 : a.w.unitId > b.w.unitId ? 1 : 0));
-  const all = [...later.map(wantedOf), ...rest.map((r) => r.w)];
-  const kept = all.filter((w) => !holdOut.has(w.unitId));
-  return kept.length ? kept : all;
+  const items = selected;
+  const workloadLimit = Number.isFinite(timeLimit) ? timeLimit : 0;
+  return { ...skeleton, items, skipped, questionLimit: items.length, intent,
+    batch: { targetQuestions: requestedLimit, workloadLimit, estimatedSeconds:usedSeconds, reasons: [...target.reasons, 'Explicit practice is capped by the requested collection, configured maximum, and available session time.'] },
+    initialQuestionCount: items.length,
+    dueCount: items.filter(p => effective(p.item).length && Date.parse(p.item.schedule.due) <= Date.parse(model.now)).length,
+    newCount: items.filter(p => p.isNew).length, listeningCount: items.filter(p => isAudio(p.family)).length,
+    grammarCount: items.filter(p => GRAMMAR.has(p.family)).length };
 }
-
-/** The one note the session shows when the deck was built from the learner's vocabulary instead of the review schedule. */
-export const VOCAB_NOTE = 'Some cards come from your vocabulary, not from the review schedule: they fill the deck to its size.';
-
-/** Words the learner has met, as cards to ask: least known first, then the most recently met, as written recognition (what a provisional analysis is allowed). */
-function vocabularyOrder(rows: readonly VocabRow[], holdOut: ReadonlySet<string>): Wanted[] {
-  const when = (r: VocabRow): number => { const t = r.lastSeenAt ? Date.parse(r.lastSeenAt) : NaN; return Number.isFinite(t) ? t : -Infinity; };
-  const text = (a: string, b: string): number => (a < b ? -1 : a > b ? 1 : 0);
-  const ordered = [...rows].sort((a, b) => rankOf(a.level) - rankOf(b.level) || when(b) - when(a) || b.encounters - a.encounters || text(a.unitId, b.unitId));
-  const all = ordered.map((r): Wanted => ({ unitId: r.unitId, unitKind: r.kind ?? 'lexeme', dimension: 'written-recognition', family: 'written-recognition' }));
-  const kept = all.filter((w) => !holdOut.has(w.unitId));
-  return kept.length ? kept : all;
-}
-
+export const VOCAB_NOTE = 'Optional vocabulary practice uses actual review times and does not create a due obligation just to fill a batch.';
 export async function loadVocabSafe(ctx: AppContext, languageId: string): Promise<VocabRow[]> {
   try { return (await loadVocab(ctx, languageId)).rows; } catch { return []; }
 }
-
-/**
- * The deck the home offers now: the scheduled plan; when that yields nothing, the candidates (test-later first, then the weakest by level);
- * when those yield nothing too, the learner's own vocabulary (My vocab: least known first, then most recently met) as written-recognition
- * cards. Words the learner added by hand (My vocab, Add) come first and stay until the session begins or the deck is saved.
- * Never empty while My vocab holds a word. `vocab` is My vocab's merged entries when the caller already loaded them.
- */
+/** Only justified scheduler/intake work is offered. Catalog membership never fills a batch. */
 export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string> = new Set(), vocab?: readonly VocabRow[]): Promise<CurrentDeck> {
-  const { learnerId, languageId } = model.identity;
-  const size = fillSize(model);
-  let plan = scheduledPlan(ctx, model, holdOut);
-  if (!plan.items.length && holdOut.size) plan = scheduledPlan(ctx, model, new Set());
-  // exactly the learner's deck size when there is enough material: the schedule first, then the candidates, then the vocabulary
-  let items: PlannedItem[] = plan.items.slice(0, size);
-  let filled = false;
-  const have = (): Set<string> => new Set(items.map((p) => p.item.unitId));
-  const take = (from: SessionPlan, mark?: (p: PlannedItem) => PlannedItem): void => {
-    const taken = have();
-    const extra = from.items.filter((p) => !taken.has(p.item.unitId)).slice(0, size - items.length).map((p) => (mark ? mark(p) : p));
-    if (extra.length) { items = [...items, ...extra]; filled = true; plan = { ...from, items }; }
-  };
-  if (items.length < size) {
-    const taken = have();
-    const pool = fillOrder(model, holdOut).filter((w) => !taken.has(w.unitId));
-    if (pool.length) take(await assemble(ctx, model, pool, size - items.length));
-  }
-  let rows = vocab;
-  if (items.length < size) {
-    rows = rows ?? await loadVocabSafe(ctx, languageId);
-    if (rows.length) {
-      const taken = have();
-      const order = vocabularyOrder(rows, holdOut).filter((w) => !taken.has(w.unitId));
-      if (order.length) {
-        let fromVocab = await assemble(ctx, model, order, size - items.length);
-        // the exercise engine may refuse every word it cannot build yet; with nothing else in the deck it is still offered, and the session says which cards it could not ask
-        if (!fromVocab.items.length && !items.length) fromVocab = await assemble(ctx, model, order, size - items.length, { unchecked: true });
-        take(fromVocab, (p) => ({ ...p, why: [VOCAB_NOTE, ...p.why] }));
-      }
+  const planned = scheduledPlan(ctx, model, holdOut);
+  const items = (model.schedulerIssue ? [] : planned.items).map(p => ({ ...p, schedulingCardExists: !!knownItem(model, p.item),
+    origin: knownItem(model, p.item) ? 'scheduled' as const : 'intake' as const, intent: { kind: 'automatic' as const } }));
+  const remediation = remediationBacklog(model.deck.filter(item => !item.invalidatedAt), model.events, model.now);
+  const classRemediation = remediationBacklog((model.classDeck ?? []).filter(item => !item.invalidatedAt), model.events, model.now);
+  const plan: SessionPlan = { ...planned, items, initialQuestionCount:items.length,
+    availableWork: model.schedulerIssue ? { questions:0,newQuestions:0 } : planned.availableWork ?? { questions:items.length,newQuestions:items.filter(p=>p.isNew).length },
+    batch: { ...(planned.batch ?? { targetQuestions: fillSize(model), workloadLimit:model.prefs.sessionMinutes===0?0:model.prefs.sessionMinutes*60, estimatedSeconds:0, reasons:[] }),
+      estimatedSeconds:items.reduce((sum,p)=>sum+p.estimatedSeconds,0) },
+    ...(model.schedulerIssue ? { questionLimit:0 } : {}) };
+  const targetQuestions = plan.batch?.targetQuestions ?? fillSize(model);
+  const workloadLimit = plan.batch?.workloadLimit ?? (model.prefs.sessionMinutes===0?0:model.prefs.sessionMinutes*60);
+  const estimatedSeconds = plan.batch?.estimatedSeconds ?? items.reduce((sum,p)=>sum+p.estimatedSeconds,0);
+  const summary: CurrentDeck['summary'] = { dueReviews: 0, dueLearning: 0, newAvailable:plan.availableWork?.newQuestions ?? items.filter(p => p.isNew).length,
+    remediation: remediation.length, classRemediation: classRemediation.length, targetQuestions, questionsAvailable:plan.availableWork?.questions ?? items.length, batchQuestions:items.length, estimatedSeconds, workloadLimit };
+  for (const item of model.deck) {
+    const w = { unitId: item.unitId, unitKind: item.unitKind, dimension: item.dimension, family: item.family };
+    if (!effective(item).length || isClassUnit(item.unitId)) continue;
+    const due = Date.parse(item.schedule.due) <= Date.parse(model.now);
+    if (due && eligibility(model, w, { kind: 'automatic' }, 0).eligible) {
+      if (item.schedule.phase === 'learning' || item.schedule.phase === 'relearning') summary.dueLearning++;
+      else summary.dueReviews++;
+    } else if (!due && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason) {
+      const dueAt = Date.parse(item.schedule.due);
+      const canBecomeDue = Number.isFinite(dueAt) && reviewEligibility({ item, itemId:item.itemId, unitId:item.unitId, knowledge:model.knowledge.find(k=>k.unitId===item.unitId),
+        events:model.events, now:item.schedule.due, intent:{ kind:'explicit', reason:'early-review', requestedAt:model.now }, remainingNew:0 }).eligible;
+      if (canBecomeDue && (item.schedule.phase==='learning' || item.schedule.phase==='relearning')
+        && (!summary.nextReturnAt || dueAt < Date.parse(summary.nextReturnAt))) summary.nextReturnAt = item.schedule.due;
+      else if (canBecomeDue && item.schedule.phase==='review'
+        && (!summary.nextReviewAt || dueAt < Date.parse(summary.nextReviewAt))) summary.nextReviewAt = item.schedule.due;
     }
   }
-  plan = { ...plan, items };
-  // the learner's own additions lead the deck, beyond its size when it is full
-  const added = (await readStore(ctx, learnerId, languageId)).added;
-  if (added.length) {
-    const mine = await assemble(ctx, model, added, added.length);
-    if (mine.items.length) {
-      const taken = new Set(mine.items.map((p) => p.item.unitId));
-      plan = { ...plan, items: [...mine.items, ...plan.items.filter((p) => !taken.has(p.item.unitId))] };
-    }
-  }
-  const hasVocabulary = plan.items.length > 0 || model.outcomes.length > 0 || model.deck.length > 0 || model.knowledge.length > 0 || (rows?.length ?? 0) > 0;
-  return { plan, entries: plan.items.map(entryOf), filled, hasVocabulary };
+  Object.assign(plan, { intent: { kind: 'automatic' as const },
+    dueCount: items.filter(p => !p.isNew && Date.parse(p.item.schedule.due) <= Date.parse(model.now)).length,
+    newCount: items.filter(p => p.isNew).length });
+  return { plan, entries: items.map(entryOf), filled: false, summary, remediation,
+    hasVocabulary: !!(items.length || model.outcomes.length || model.deck.length || model.knowledge.length || vocab?.length) };
+}
+
+/** Due-only Class Essentials practice. Unreviewed seeded cards are never admitted as new work here. */
+export async function planClassEssentialsDue(ctx: AppContext, model: ReviewModel): Promise<SessionPlan> {
+  const deck = (model.classDeck ?? []).filter(item => effective(item).length > 0
+    && item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
+    && Date.parse(item.schedule.due) <= Date.parse(model.now));
+  const plan = ctx.engine.plan({ deck, intake: [], prefs: model.prefs, audio: model.audio, now: model.now,
+    knowledge: model.knowledge, readingSignals: model.events, schedulerProfile: model.schedulerProfile,
+    observedReviewSeconds: observedReviewSeconds(model.events), intent: { kind: 'automatic' } });
+  return { ...plan, dueCount: plan.items.length, newCount: 0 };
+}
+export async function selectedPracticeUnits(ctx: AppContext, learnerId: string, languageId: string): Promise<string[]> {
+  return (await readStore(ctx, learnerId, languageId)).added.map(w => w.unitId);
+}
+export async function planSelectedPractice(ctx: AppContext, model: ReviewModel): Promise<SessionPlan> {
+  const added = (await readStore(ctx, model.identity.learnerId, model.identity.languageId)).added;
+  return assemble(ctx, model, added, added.length, { intent: { kind: 'explicit', reason: 'selected-vocabulary', requestedAt: model.now }, origin: 'vocabulary' });
 }
 
 /** Puts a word into the current deck by the learner's own choice: it leads the deck until the session begins or the deck is saved. */
 export function addToDeck(ctx: AppContext, id: { learnerId: string; languageId: string }, word: Pick<Wanted, 'unitId' | 'unitKind' | 'dimension' | 'family'>): Promise<void> {
   return serial(async () => {
     const store = await readStore(ctx, id.learnerId, id.languageId);
-    if (store.added.some((w) => w.unitId === word.unitId)) return;
-    store.added = [...store.added, { unitId: word.unitId, unitKind: word.unitKind, dimension: word.dimension, family: word.family }].slice(-50);
+    store.added = [...store.added.filter((w) => w.unitId !== word.unitId), { unitId: word.unitId, unitKind: word.unitKind, dimension: word.dimension, family: word.family }].slice(-50);
     await writeStore(ctx, id.learnerId, id.languageId, store);
   });
 }
@@ -240,95 +197,28 @@ export function planFromEntries(ctx: AppContext, model: ReviewModel, entries: re
     const outcome = model.outcomes.find((o) => o.unitId === e.unitId && o.proposed?.dimension === e.dimension);
     return { unitId: e.unitId, unitKind: e.unitKind, dimension: e.dimension, family: e.family, ...(outcome ? { outcome } : {}) };
   });
-  return assemble(ctx, model, wanted, size);
+  return assemble(ctx, model, wanted, size, { intent: { kind: 'explicit', reason: 'saved-deck', requestedAt: model.now }, origin: 'saved-deck' });
 }
 
 /** A saved deck's cards asked again, as a plan. */
 export const planFromSaved = (ctx: AppContext, model: ReviewModel, deck: SavedDeck): Promise<SessionPlan> => planFromEntries(ctx, model, deck.items);
 
-// ───────────────────────────── after a session: repeat, or a new deck from the weak words ─────────────────────────────
-
-/** What a finished session leaves behind that the next deck is built from. */
-export interface FinishedRun {
-  plan: SessionPlan;
-  results: readonly ReviewResult[];
-  /** Item ids the learner skipped (nothing was written for them). */
-  skipped: readonly string[];
-  /** Items the learner set aside (snoozed, suspended, dismissed): never asked again by the next deck. */
-  controls: ReadonlyArray<{ itemId: string }>;
+/** Optional delayed retrieval over persisted remediation candidates; it does not alter the scheduled queue. */
+export async function planRemediation(ctx: AppContext, model: ReviewModel, candidates = remediationBacklog([...model.deck, ...(model.classDeck ?? [])].filter(item => !item.invalidatedAt), model.events, model.now)): Promise<SessionPlan> {
+  const ready = new Set(candidates.filter(candidate => candidate.ready).map(candidate => candidate.itemId));
+  const entries = [...model.deck, ...(model.classDeck ?? [])].filter(item => ready.has(item.itemId)).map(item => ({
+    itemId: item.itemId, unitId: item.unitId, unitKind: item.unitKind, label: unitLabel(item.unitId), dimension: item.dimension, family: item.family,
+  }));
+  const plan = await assemble(ctx, model, entries, fillSize(model), {
+    intent: { kind: 'explicit', reason: 'reassessment', requestedAt: model.now }, origin: 'remediation',
+  });
+  return { ...plan, items: plan.items.map(item => ({ ...item, queue: 'remediation', overlap:'remediation', presentationReason:'remediation-reassessment' })) };
 }
 
-/** The cards of a finished session, in the order they were planned, as entries a new plan can be built from. */
+// ───────────────────────────── after a session ─────────────────────────────
+
+/** The cards of a finished session, in the order they were planned. */
 export const entriesOf = (plan: SessionPlan): DeckEntry[] => plan.items.map(entryOf);
-
-/** How a card counted as weak, from the weakest down: the order the next deck takes them in. */
-export type Weakness = 'incorrect' | 'skipped' | 'partial' | 'hard' | 'unjudged';
-export interface WeakEntry extends DeckEntry { weakness: Weakness }
-const WEAKNESS_RANK: Readonly<Record<Weakness, number>> = { incorrect: 0, skipped: 1, partial: 2, hard: 3, unjudged: 4 };
-
-/**
- * The weak words of a finished session: cards answered "not quite" (incorrect) or "partly" (partial), rated Again or Hard, skipped, or
- * not judged (ambiguous, failed audio); a card answered correctly is not weak, and one set aside is left out. Weakest first, then the
- * session's order; a card asked twice counts by its worst answer.
- */
-export function weakEntries(run: FinishedRun): WeakEntry[] {
-  const aside = new Set(run.controls.map((c) => c.itemId));
-  const byItem = new Map<string, Weakness>();
-  const worse = (itemId: string, w: Weakness): void => { const have = byItem.get(itemId); if (have === undefined || WEAKNESS_RANK[w] < WEAKNESS_RANK[have]) byItem.set(itemId, w); };
-  for (const r of run.results) {
-    const o = r.grading.outcome;
-    if (o === 'incorrect' || r.rating === 1) worse(r.itemId, 'incorrect');
-    else if (o === 'partial' || r.rating === 2) worse(r.itemId, r.rating === 2 && o === 'correct' ? 'hard' : 'partial');
-    else if (o !== 'correct') worse(r.itemId, 'unjudged');
-  }
-  for (const id of run.skipped) worse(id, 'skipped');
-  return run.plan.items
-    .filter((p) => byItem.has(p.item.itemId) && !aside.has(p.item.itemId))
-    .map((p) => ({ ...entryOf(p), weakness: byItem.get(p.item.itemId)! }))
-    .sort((a, b) => WEAKNESS_RANK[a.weakness] - WEAKNESS_RANK[b.weakness]);
-}
-
-/** The share of a follow-up deck given to the previous deck's weak words; the rest is what is due or new next. */
-export const WEAK_SHARE = 0.5;
-
-export interface FollowUpDeck {
-  plan: SessionPlan;
-  /** How many of the weak words the deck asks (weakest first), and how many fresh cards fill the rest. */
-  weakTaken: number;
-  fresh: number;
-  /** The weak words that did not fit the share, or that could not be asked. */
-  weakLeft: number;
-}
-
-/**
- * A new deck after a session: half of it (WEAK_SHARE of the learner's cards-per-deck, rounded up) is the previous deck's weak words,
- * weakest first; the rest is what the home would offer next, with the previous deck's cards left out. Fewer weak words than the share
- * leaves more room for fresh cards; no fresh card leaves a deck of weak words alone; no weak word at all gives no deck (the caller
- * says so, and the home's current deck is the thing to begin instead).
- */
-export async function planFollowUp(ctx: AppContext, model: ReviewModel, run: FinishedRun): Promise<FollowUpDeck | undefined> {
-  const weak = weakEntries(run);
-  if (!weak.length) return undefined;
-  const size = fillSize(model);
-  const share = Math.min(weak.length, Math.max(1, Math.ceil(size * WEAK_SHARE)));
-  const weakPlan = await planFromEntries(ctx, model, weak.slice(0, share), share);
-  const taken = new Set(weakPlan.items.map((p) => p.item.unitId));
-  const previous = new Set(run.plan.items.map((p) => p.item.unitId));
-  let items: PlannedItem[] = weakPlan.items;
-  let fresh = 0;
-  if (items.length < size) {
-    const next = await planCurrentDeck(ctx, model, previous);
-    const extra = next.plan.items.filter((p) => !taken.has(p.item.unitId) && !previous.has(p.item.unitId)).slice(0, size - items.length);
-    fresh = extra.length;
-    items = [...items, ...extra];
-  }
-  if (!items.length) return undefined;
-  const plan: SessionPlan = {
-    ...weakPlan, items, dueCount: 0, newCount: items.filter((p) => p.isNew).length,
-    listeningCount: items.filter((p) => isAudio(p.family)).length, grammarCount: items.filter((p) => GRAMMAR.has(p.family)).length,
-  };
-  return { plan, weakTaken: weakPlan.items.length, fresh, weakLeft: weak.length - weakPlan.items.length };
-}
 
 // ───────────────────────────── saved decks ─────────────────────────────
 
@@ -389,7 +279,7 @@ const serial = <T>(fn: () => Promise<T>): Promise<T> => { const run = chain.then
  */
 export async function listSavedDecks(ctx: AppContext, learnerId: string, languageId: string, varietyId?: string): Promise<SavedDeck[]> {
   const first = await readStore(ctx, learnerId, languageId);
-  if (!classLanguageOf(languageId)) return first.decks;
+  if (!classLanguageOf(languageId)) return sharedSavedDecks(ctx, learnerId, languageId, first.decks);
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
     const seed = classDeckFor(languageId, varietyId, ctx.deps.now().toISOString());
@@ -397,7 +287,7 @@ export async function listSavedDecks(ctx: AppContext, learnerId: string, languag
       store.decks = [seed, ...store.decks];
       await writeStore(ctx, learnerId, languageId, store);
     }
-    return store.decks;
+    return sharedSavedDecks(ctx, learnerId, languageId, store.decks);
   });
 }
 /** Whether Class Essentials was removed, so Saved decks can offer to restore it. */
@@ -424,6 +314,7 @@ export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: s
     if (!entries.length) return undefined;
     const store = await readStore(ctx, id.learnerId, id.languageId);
     const saved: SavedDeck = { id: ctx.deps.newId(), savedAt: ctx.deps.now().toISOString(), languageId: id.languageId, ...(id.varietyId ? { varietyId: id.varietyId } : {}), items: entries.map((e) => ({ ...e })) };
+    await recordSavedDeckChange(ctx, 'save', saved);
     store.decks = [saved, ...store.decks].slice(0, MAX_SAVED);
     store.holdOut = [...new Set(entries.map((e) => e.unitId))];
     store.added = [];
@@ -434,19 +325,20 @@ export function saveDeck(ctx: AppContext, id: { learnerId: string; languageId: s
 export function removeSavedDeck(ctx: AppContext, learnerId: string, languageId: string, deckId: string): Promise<void> {
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
-    const gone = store.decks.find((d) => d.id === deckId);
+    const gone = (await sharedSavedDecks(ctx, learnerId, languageId, store.decks)).find((d) => d.id === deckId);
+    if (gone && !gone.builtin) await recordSavedDeckChange(ctx, 'remove', gone);
     store.decks = store.decks.filter((d) => d.id !== deckId);
     if (gone?.builtin && !store.dismissed.includes(gone.id)) store.dismissed = [...store.dismissed, gone.id];
     await writeStore(ctx, learnerId, languageId, store);
   });
 }
 /** Once a session has begun the held-out units may come back in later decks, and the words added by hand have been asked. */
-export function releaseHoldOut(ctx: AppContext, learnerId: string, languageId: string): Promise<void> {
+export function releaseHoldOut(ctx: AppContext, learnerId: string, languageId: string, opts: { preserveAdded?: boolean } = {}): Promise<void> {
   return serial(async () => {
     const store = await readStore(ctx, learnerId, languageId);
     if (!store.holdOut.length && !store.added.length) return;
     store.holdOut = [];
-    store.added = [];
+    if (!opts.preserveAdded) store.added = [];
     await writeStore(ctx, learnerId, languageId, store);
   });
 }

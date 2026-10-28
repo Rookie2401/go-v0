@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { cardReasonFor, decideIntake, explainIntake, explainsReasons, proposeFor, rankComparativePriority } from '../../../packages/goreview/src/intake/intake';
 import { gatherCandidates } from '../../../packages/goreview/src/intake/fetch';
 import type { UnitKnowledge } from '../../../packages/repository-contract/src';
+import type { UnitFacts } from '../../../packages/goreview/src/types';
 import { audioNone, audioOk, audioPractice, candidate, deckItem, facts, intakeInput, knowledge, NOW, prefs } from './fixtures';
 
 describe('decideIntake: eligibility', () => {
@@ -106,12 +107,12 @@ describe('decideIntake: deck and knowledge', () => {
 });
 
 describe('decideIntake: score, saved and the proposal', () => {
-  it('a New-stage item stays out automatically, but an explicit save requests written recognition', () => {
+  it('a New-stage item stays out automatically, but a typed explicit request permits written recognition', () => {
     const c = candidate();
     const newKnowledge = { ...knowledge(c.unitId), level: 'new' as const };
     expect(decideIntake(intakeInput({ candidate: c, knowledge: newKnowledge })).decision).toBe('low-priority');
     const requested = decideIntake(intakeInput({
-      candidate: c, knowledge: newKnowledge, saved: new Set([c.unitId]), preferences: prefs({ prioritizeSaved: false }),
+      candidate: c, knowledge: newKnowledge, saved: new Set([c.unitId]), intent: {kind:'explicit',reason:'selected-vocabulary',requestedAt:NOW}, preferences: prefs({ prioritizeSaved: false }),
     }));
     expect(requested.decision).toBe('test-now');
     expect(requested.proposed?.family).toBe('written-recognition');
@@ -207,6 +208,19 @@ describe('decideIntake: audio', () => {
     expect(o.reasons.join(' ')).toContain('switched off');
   });
 
+  it('does not let an unsupported fetched unit back a listening objective', () => {
+    const listeningObjective = candidate({ targetDimension: 'readingRecognition', objectiveDimension: 'listeningRecognition' });
+    const unsupported = facts(listeningObjective.unitId, { unit: { ...facts(listeningObjective.unitId).unit, provenance: { source: 'rule', ref: 'unsupported', confidence: 1, validation: 'unsupported' } } as UnitFacts['unit'] });
+    expect(decideIntake(intakeInput({ candidate: listeningObjective, facts: unsupported, audio: audioOk, knowledge: knowledge(listeningObjective.unitId, { readingRecognition: { score: 0.9, confidence: 0.9 } }) })).decision).toBe('needs-validation');
+  });
+
+  it('does not let facts from an incompatible variety back a secondary objective', () => {
+    const listeningObjective = candidate({ targetDimension: 'readingRecognition', objectiveDimension: 'listeningRecognition' });
+    const source = facts(listeningObjective.unitId);
+    const incompatible = facts(listeningObjective.unitId, { unit: { ...source.unit, varietyId: 'sq-XX' } });
+    expect(decideIntake(intakeInput({ candidate: listeningObjective, facts: incompatible, preferences: prefs({ varietyId: 'sq-YY' }), audio: audioOk })).decision).toBe('needs-validation');
+  });
+
   it('a saved listening unit still waits for audio', () => {
     const o = decideIntake(intakeInput({ candidate: listening, audio: audioNone, saved: new Set([listening.unitId]), secondaryPractice: true }));
     expect(o.decision).toBe('test-later');
@@ -241,7 +255,7 @@ describe('gatherCandidates', () => {
     const base = {
       api: {
         candidates: async (enrolmentId: string, limit: number) => { calls.candidates.push([enrolmentId, limit]); return cands; },
-        knowledge: async (ids: string[]) => { calls.knowledge.push(ids); return [knowledge(units[3], { readingRecognition: { score: 0.95, confidence: 0.9 } })] as UnitKnowledge[]; },
+        knowledge: async (ids: string[]) => { calls.knowledge.push(ids); return [...units.slice(0,3).map(id=>knowledge(id)), knowledge(units[3], { readingRecognition: { score: 0.95, confidence: 0.9 } })] as UnitKnowledge[]; },
       },
       facts: { factsFor: async (id: string) => { calls.facts.push(id); return facts(id); } },
       audio: async () => audioOk,
@@ -270,6 +284,37 @@ describe('gatherCandidates', () => {
     expect(out[0].reasons[0]).toContain('no verified facts');
   });
 
+  it('incomplete pack facts are rejected safely before provenance is read', async () => {
+    const { deps: d } = deps({ facts: { factsFor: async (id: string, languageId: string) => ({
+      unit: { unitId: id, languageId }, relations: [], analyses: [], glosses: [],
+    }) as unknown as UnitFacts } });
+    const out = await gatherCandidates(d);
+    expect(out[0].decision).toBe('needs-validation');
+    expect(out[0].reasons.join(' ')).toContain('facts are incomplete');
+  });
+
+  it.each([
+    ['facts status', { status: 'verified-ish' }],
+    ['unit status', { unit: { ...facts('form:sq:a').unit, status: 'trusted' } }],
+    ['provenance validation', { unit: { ...facts('form:sq:a').unit, provenance: { ...facts('form:sq:a').unit.provenance, validation: 'almost-production' } } }],
+  ])('rejects malformed %s without treating it as verified', (_name, override) => {
+    const malformed = facts('form:sq:librin', override as Partial<UnitFacts>);
+    const out = decideIntake(intakeInput({ facts: malformed }));
+    expect(out.decision).toBe('needs-validation');
+    expect(out.reasons.join(' ')).toContain('facts are incomplete');
+  });
+
+  it('keeps valid provisional recognition usable while withholding provisional production', () => {
+    const source = facts('form:sq:librin');
+    const provisional = facts('form:sq:librin', { status: 'provisional', unit: { ...source.unit,
+      status: 'provisional', provenance: { ...source.unit.provenance, validation: 'unreviewed' } } });
+    const recognition = decideIntake(intakeInput({ facts: provisional, candidate: candidate({ eligibility: { eligible: false, status: 'provisional', reason: 'unreviewed resource' } }) }));
+    expect(recognition.decision).toBe('test-now');
+    const productionCandidate = candidate({ targetDimension: 'productiveRetrieval', objectiveDimension: 'productiveRetrieval', eligibility: { eligible: true, status: 'provisional', caveats: [] } });
+    const production = decideIntake(intakeInput({ candidate: productionCandidate, facts: provisional }));
+    expect(production.decision).toBe('needs-validation');
+  });
+
   it('conflicted pack facts stop an otherwise test-now unit', async () => {
     const { deps: d } = deps({ facts: { factsFor: async (id: string) => facts(id, { status: 'conflicted' }) } });
     const out = await gatherCandidates(d);
@@ -286,7 +331,7 @@ describe('gatherCandidates', () => {
   it('a failing audio probe means no audio, not an error', async () => {
     const lc = candidate({ unitId: 'form:sq:l', targetDimension: 'listeningRecognition', score: 0.9 });
     const { deps: d } = deps({
-      api: { candidates: async () => [lc], knowledge: async () => [] },
+      api: { candidates: async () => [lc], knowledge: async () => [knowledge(lc.unitId)] },
       audio: async () => { throw new Error('probe failed'); },
       secondaryPractice: true,
     });
@@ -321,7 +366,11 @@ describe('gatherCandidates', () => {
     const separate = await gatherCandidates(deps({
       secondaryPractice: true,
       api: { candidates: async () => [morphology, lexemeCandidate], knowledge: async () => [knowledge(formId), knowledge(lexemeId)] },
-      facts: { factsFor: async (id: string) => facts(id, id === formId ? { relations: [relation] } : {}) },
+      facts: { factsFor: async (id: string) => {
+        if (id !== formId) return facts(id);
+        const formFacts = facts(id);
+        return facts(id, { relations: [relation], unit: { ...formFacts.unit, provenance: { ...formFacts.unit.provenance, validation: 'production-validated' } } });
+      } },
     }).deps);
     expect(separate[0].decision).toBe('test-now');
     expect(separate[0].proposed?.family).toBe('morphological-identification');

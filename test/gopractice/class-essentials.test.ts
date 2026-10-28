@@ -1,10 +1,12 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
 import { registry, resolveBuilder } from '../../packages/goreview/src';
+import { itemIdFor } from '../../packages/goreview/src/scheduler/deck';
+import type { GoEvent } from '../../packages/repository-contract/src';
 import { classCards, classDeckFor, classFacts, CLASS_ESSENTIALS_DESCRIPTION, CLASS_ESSENTIALS_NOTES_LA, CLASS_LANGUAGES, isClassUnit } from '../../packages/gopractice/classEssentials';
 import { decksKey, listSavedDecks, type SavedDeck } from '../../packages/gopractice/deckModel';
 import { languageName } from '../../packages/gopractice/format';
-import { defaultService, destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, seed, until, type Rig } from './helpers';
+import { defaultService, destroyRigs, dueCard, FakeService, ids, makeRig, queued, reopen, reviewed, seed, until, type Rig } from './helpers';
 
 afterEach(() => destroyRigs());
 const A = ids('L1', 'sq');
@@ -108,6 +110,8 @@ describe('Class Essentials: the cards', () => {
 describe('Class Essentials: in Saved decks', () => {
   it('is there on the first visit with no GoLearn encounter, and seeding again never duplicates it', async () => {
     const rig = await makeRig({ signedIn: true });
+    expect(rig.root.querySelector('#class-essentials-due-count')?.textContent).toBe('No reviewed cards due');
+    expect(rig.root.querySelector('#start-class-essentials-due')).toBeNull(); // the saved 28-card set does not become due work by being seeded
     expect(await stored(rig)).toHaveLength(1); // the first visit of the home already seeded it
     const first = await listSavedDecks(rig.app.ctx, 'L1', 'sq', 'sq-AL');
     const second = await listSavedDecks(rig.app.ctx, 'L1', 'sq', 'sq-AL');
@@ -140,6 +144,41 @@ describe('Class Essentials: in Saved decks', () => {
     expect((await stored(rig)).find((d) => d.id === mine.id)).toEqual(mine);
   });
 
+  it('offers a separate bounded due-only session after ordinary cards are saved, without adding fresh class phrases', async () => {
+    const rig = await makeRig({ signedIn: true, builders: registry as never });
+    const classIds = ['Përshëndetje', 'Mirupafshim', 'Ju lutem', 'Faleminderit', 'Më vjen keq', 'Më falni'].map(phrase => `class:sq:${phrase}`);
+    const classReviews: GoEvent[] = classIds.flatMap((unitId, index) => dueCard(A, `seed${index}`, 'written-recognition').map((event) => {
+      const payload = { ...event.payload, ...(event.kind === 'CardAdded' ? { unitId, unitKind: 'lexeme' } : {}) };
+      return { ...event, subject: { ...event.subject, itemIds: [unitId], cardId: itemIdFor(unitId, 'written-recognition') }, payload };
+    }));
+    const laterReview = reviewed(A, 'seed5', 'written-recognition', 4, '2026-09-02T10:00:00.000Z');
+    classReviews.push({ ...laterReview, subject: { ...laterReview.subject, itemIds: [classIds[5]], cardId: itemIdFor(classIds[5], 'written-recognition') } });
+    await seed(rig, [...classReviews, ...dueCard(A, 'zog', 'meaning-to-form')]);
+    await rig.app.ctx.state.setPrefs('L1', { ...(await rig.app.ctx.state.getPrefs('L1', 'sq')), cardsPerDeck: 5 });
+    await reopen(rig);
+    expect(rig.q('#class-essentials-due-count').textContent).toContain('due card');
+    expect(rig.qa('#class-essentials-due button')).toHaveLength(1);
+    expect(rig.root.querySelector('#open-class-remediation')?.textContent).toBe('Study Class Essentials remediation (5)');
+    click(rig.q('#save-deck'));
+    await until(() => rig.q('#previous-count').textContent === '2 saved', 'ordinary due card saved');
+    expect(rig.q('#deck-count').getAttribute('data-cards')).toBe('1'); // saving does not hide due work from the current automatic plan
+    expect(rig.q('#class-essentials-due-count').textContent).toContain('due card');
+    expect((await stored(rig)).find((deck) => deck.id === 'class-essentials:sq')!.items).toHaveLength(28);
+
+    click(rig.q('#start-class-essentials-due'));
+    await until(() => rig.app.current() === 'review/session', 'the class due session route');
+    await until(() => !!rig.root.querySelector('#session .exercise'), `the class due exercise: ${rig.root.textContent}`);
+    const plan = rig.app.ctx.run.active!.plan;
+    expect(plan.items).toHaveLength(5);
+    expect(plan.items.every(item => classIds.includes(item.item.unitId))).toBe(true);
+    expect(plan.items.every(item => item.isNew === false)).toBe(true);
+    expect(plan.items.some(item => item.item.unitId === classIds[5])).toBe(false); // due learning/relearning returns take precedence over established review
+    expect(plan.questionLimit).toBe(5);
+    expect((await stored(rig)).find((deck) => deck.id === 'class-essentials:sq')!.items).toHaveLength(28);
+    await rig.go('review/remediation');
+    await until(() => !!rig.root.querySelector('[data-source="class-essentials"]'), 'Class Essentials remediation source');
+  });
+
   it('opens through the flashcard flow: the phrase, the meaning hidden, then revealed, graded once, and the ordinary queue never meets it', async () => {
     const rig = await makeRig({ signedIn: true, builders: registry as never });
     await rig.go('review/decks');
@@ -147,7 +186,9 @@ describe('Class Essentials: in Saved decks', () => {
     click(rig.q('[data-deck-id="class-essentials:sq"] [data-action="practise-again"]'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the first card');
     const items = rig.app.ctx.run.active!.plan.items;
-    expect(items).toHaveLength(28);
+    expect(items).toHaveLength(10); // the saved collection remains complete; the session uses the configured maximum
+    expect(rig.app.ctx.run.active!.plan.batch?.targetQuestions).toBe(10);
+    expect((await stored(rig)).find((deck) => deck.id === 'class-essentials:sq')!.items).toHaveLength(28);
     expect(items.every((p) => p.family === 'written-recognition' && isClassUnit(p.item.unitId))).toBe(true);
     expect(rig.q('.exercise').classList.contains('flashcard')).toBe(true);
     expect(rig.q('#stimulus').textContent).toBe('Përshëndetje');
@@ -164,7 +205,7 @@ describe('Class Essentials: in Saved decks', () => {
     // the cards are reviewed, but they stay out of the ordinary queue, My vocab's candidates and the home's deck
     await reopen(rig);
     expect(rig.q('#deck-count').getAttribute('data-cards')).toBe('0');
-    expect(rig.q('#deck-count').textContent).toBe('Read with GoLearn to build your first deck');
+    expect(rig.q('#deck-count').textContent).toBe('No eligible reviews right now');
     await rig.go('review/details');
     expect(rig.q('#deck').textContent).not.toContain('Përshëndetje');
   });

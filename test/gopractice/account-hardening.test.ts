@@ -115,13 +115,14 @@ describe('#/signin', () => {
   });
 });
 
-describe('#/settings → account', () => {
+describe('#/account', () => {
   it('shows the verification state: not confirmed (with a resend), confirmed, and not reported', async () => {
     const { rig, acct } = await signedIn();
-    await rig.go('settings');
+    await rig.go('account');
     await until(() => !!rig.q('#verification-state').getAttribute('data-state'), 'the state');
     expect(rig.q('#verification-state').getAttribute('data-state')).toBe('unverified');
-    expect(rig.q('#verification-state').textContent).toContain('ana@example.org is not confirmed yet');
+    expect(rig.q('#verification-state').textContent).toBe('ana@example.org');
+    expect(rig.q('#verification-note').textContent).toContain('Not confirmed yet');
     await click(rig.q('#verification-resend'));
     await until(() => !!rig.q('#acct-verification .status').textContent, 'the resend answer');
     expect(acct.last('POST', '/accounts/verify/resend')!.body).toEqual({ email: 'ana@example.org' });
@@ -129,29 +130,30 @@ describe('#/settings → account', () => {
 
     acct.verified = true;
     await rig.go('review');
-    await rig.go('settings');
+    await rig.go('account');
     await until(() => !!rig.q('#verification-state').getAttribute('data-state'), 'the state');
     expect(rig.q('#verification-state').getAttribute('data-state')).toBe('verified');
     expect(rig.q('#verification-resend').hidden).toBe(true);
 
     acct.reportVerified = false;
     await rig.go('review');
-    await rig.go('settings');
+    await rig.go('account');
     await until(() => !!rig.q('#verification-state').getAttribute('data-state'), 'the state');
     expect(rig.q('#verification-state').getAttribute('data-state')).toBe('unknown');
   });
 
   it('has no account blocks without an account', async () => {
     const rig = await makeRig({ local: true, fetch: new FakeAccountService().fetch });
-    await rig.go('settings');
+    await rig.go('account');
     expect(rig.root.querySelector('#acct-sessions')).toBeNull();
     expect(rig.root.querySelector('#acct-delete')).toBeNull();
+    await rig.go('settings');
     expect(rig.q<HTMLAnchorElement>('#legal-links #link-terms').getAttribute('href')).toBe('#/terms');
   });
 
   it('lists the sessions, ends one, and signs out everywhere else', async () => {
     const { rig, acct } = await signedIn();
-    await rig.go('settings');
+    await rig.go('account');
     await until(() => rig.root.querySelectorAll('#sessions li').length === 3, 'the sessions');
     const rows = [...rig.root.querySelectorAll('#sessions li')];
     expect(rows[0].textContent).toContain('This browser');
@@ -172,7 +174,7 @@ describe('#/settings → account', () => {
 
   it('says what went wrong when a session cannot be ended', async () => {
     const { rig, acct } = await signedIn();
-    await rig.go('settings');
+    await rig.go('account');
     await until(() => rig.root.querySelectorAll('#sessions li').length === 3, 'the sessions');
     acct.failNext.set('DELETE /me/sessions/s-phone', { status: 500, body: { error: 'boom', message: 'The store is busy.' } });
     await click(rig.q('[data-revoke="s-phone"]'));
@@ -182,25 +184,25 @@ describe('#/settings → account', () => {
 
   it('“Download my data” offers the export as goreview-data-<date>.json, sent with the session’s token', async () => {
     const { rig, acct, downloads } = await signedIn();
-    await rig.go('settings');
+    await rig.go('account');
     await click(rig.q('#export-data'));
     await until(() => downloads.length === 1, 'the download');
     expect(downloads[0].filename).toBe('goreview-data-2026-10-08.json');
     expect(downloads[0].blob.type).toBe('application/json');
     expect(JSON.parse(await readBlob(downloads[0].blob))).toEqual(acct.exportBody);
     expect(acct.last('GET', '/me/export')!.auth).toMatch(/^Bearer tok-L1-/);
-    expect(rig.q('#acct-export .status').textContent).toBe('Your data is ready: goreview-data-2026-10-08.json.');
+    expect(rig.q('#account-status').textContent).toBe('Your data is ready: goreview-data-2026-10-08.json.');
   });
 
   it('a refused or unreachable download downloads nothing and says why', async () => {
     const { rig, acct, downloads } = await signedIn();
-    await rig.go('settings');
+    await rig.go('account');
     acct.failNext.set('GET /me/export', { status: 401, body: { error: 'unauthorized', message: '' } });
     await click(rig.q('#export-data'));
-    await until(() => /no longer valid/.test(rig.q('#acct-export .status').textContent ?? ''), 'the 401 message');
+    await until(() => /no longer valid/.test(rig.q('#account-status').textContent ?? ''), 'the 401 message');
     acct.down = true;
     await click(rig.q('#export-data'));
-    await until(() => /could not be reached/.test(rig.q('#acct-export .status').textContent ?? ''), 'the unreachable message');
+    await until(() => /could not be reached/.test(rig.q('#account-status').textContent ?? ''), 'the unreachable message');
     expect(downloads).toHaveLength(0);
   });
 
@@ -208,7 +210,7 @@ describe('#/settings → account', () => {
     const acct = new FakeAccountService();
     acct.events = Array.from({ length: 25 }, (_, i) => ({ kind: i === 24 ? 'password-reset' : 'sign-in', at: `2026-10-${String(i + 1).padStart(2, '0')}T09:00:00.000Z`, ...(i === 24 ? {} : { deviceLabel: 'Phone' }) }));
     const { rig } = await signedIn(acct);
-    await rig.go('settings');
+    await rig.go('developer');
     await until(() => rig.root.querySelectorAll('#events li').length === 20, 'twenty events');
     expect(rig.root.querySelector('#events li')!.textContent).toContain('Password changed with an emailed link');
     expect(rig.root.querySelectorAll('#events li')[1].textContent).toContain('Phone');
@@ -218,7 +220,9 @@ describe('#/settings → account', () => {
 describe('deleting the account', () => {
   it('needs the password, explains the 14-day grace, then shows the pending deletion with a Cancel', async () => {
     const { rig, acct } = await signedIn();
-    await rig.go('settings');
+    await rig.go('account');
+    await until(() => !!rig.root.querySelector('#delete-open'), 'the delete link');
+    await click(rig.q('#delete-open'));
     await until(() => !!rig.root.querySelector('#delete-account'), 'the delete form');
     expect(rig.q('#delete-body').textContent).toContain('14 days');
     expect(rig.root.querySelector('#deletion-banner')).toBeNull();
@@ -240,7 +244,7 @@ describe('deleting the account', () => {
     expect(JSON.stringify(await rig.area.get(null))).not.toContain(acct.password);
     expect((await rig.area.get('gopractice:session'))['gopractice:session']).toBeDefined();
     await click(rig.q('#delete-cancel'));
-    await until(() => !!rig.root.querySelector('#delete-account'), 'the form again');
+    await until(() => !!rig.root.querySelector('#delete-open'), 'the link again');
     expect(acct.count('POST', '/me/delete/cancel')).toBe(1);
     expect(acct.scheduledPurgeAt).toBeUndefined();
     await until(() => !rig.root.querySelector('#deletion-banner'), 'the banner gone');
@@ -250,15 +254,15 @@ describe('deleting the account', () => {
   it('the banner’s own Cancel cancels the deletion and the delete block follows; a failed cancel says it is still scheduled', async () => {
     const { rig, acct } = await signedIn();
     acct.scheduledPurgeAt = acct.purgeAt;
-    await rig.go('settings');
-    await until(() => !!rig.root.querySelector('#deletion-banner') && !!rig.root.querySelector('#delete-cancel'), 'the pending state');
+    await rig.go('account');
+    await until(() => !!rig.root.querySelector('#deletion-banner'), 'the pending state');
     acct.failNext.set('POST /me/delete/cancel', { status: 500, body: { error: 'boom', message: 'Try later.' } });
     await click(rig.q('#deletion-cancel'));
     await until(() => /still scheduled/.test(rig.q('#deletion-banner .status').textContent ?? ''), 'the failure');
     expect(acct.scheduledPurgeAt).toBe(acct.purgeAt);
     await click(rig.q('#deletion-cancel'));
     await until(() => !!rig.root.querySelector('#deletion-cancelled'), 'the cancelled note');
-    await until(() => !!rig.root.querySelector('#delete-account'), 'the form again');
+    await until(() => !rig.root.querySelector('#deletion-banner'), 'the banner gone');
     expect(acct.scheduledPurgeAt).toBeUndefined();
   });
 });
@@ -303,9 +307,14 @@ describe('the changed pages are accessible', () => {
     rig.q<HTMLDetailsElement>('#forgot').open = true;
     results.push(auditDom(rig.root, 'practice/signin (signed in, forgot open)'));
     acct.scheduledPurgeAt = acct.purgeAt;
-    await rig.go('settings');
-    await until(() => rig.root.querySelectorAll('#sessions li').length === 3 && !!rig.root.querySelector('#deletion-banner') && rig.root.querySelectorAll('#events li').length > 0 && !!rig.root.querySelector('#delete-cancel'), 'the account blocks');
-    results.push(auditDom(rig.root, 'practice/settings (account blocks, deletion pending)'));
+    await rig.go('account');
+    await until(() => rig.root.querySelectorAll('#sessions li').length === 3 && !!rig.root.querySelector('#deletion-banner'), 'the account page');
+    rig.q<HTMLDetailsElement>('#acct-devices').open = true;
+    await click(rig.q('#delete-open'));
+    results.push(auditDom(rig.root, 'practice/account (devices open, deletion pending)'));
+    await rig.go('developer');
+    await until(() => rig.root.querySelectorAll('#events li').length > 0 && !!rig.root.querySelector('#diagnostics dt'), 'the developer page');
+    results.push(auditDom(rig.root, 'practice/developer'));
     await rig.go('privacy');
     results.push(auditDom(rig.root, 'practice/privacy'));
     await rig.go('terms');

@@ -11,7 +11,7 @@
  */
 'use strict';
 
-var BUILD_ID = '284d1da2b756';
+var BUILD_ID = 'f6dedf012e98';
 var PRECACHE = [
   "./",
   "./EB-Garamond-OFL.txt",
@@ -21,8 +21,8 @@ var PRECACHE = [
   "./assets/fonts/eb-garamond-latin-400.woff2",
   "./assets/fonts/eb-garamond-latin-600.woff2",
   "./assets/go-logo-D1Qp-DDg.png",
-  "./assets/index-Bp7e98Bh.js",
-  "./assets/style-C-8d1GY1.css",
+  "./assets/index-7_CZuRlW.js",
+  "./assets/style-CIJJUVas.css",
   "./config.json",
   "./icons/apple-touch-icon.png",
   "./icons/go-logo.png",

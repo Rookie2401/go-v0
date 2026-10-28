@@ -1,0 +1,1 @@
+import{t as e}from"./es-fIOu__I2.js";export{e as adapter};

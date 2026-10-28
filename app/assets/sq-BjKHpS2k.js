@@ -1,1 +1,0 @@
-import{n as e}from"./index-Bvqcr7Lz.js";export{e as adapter};

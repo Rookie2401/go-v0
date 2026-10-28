@@ -1,0 +1,1 @@
+import{n as e}from"./index-CtMVE5fl.js";export{e as adapter};

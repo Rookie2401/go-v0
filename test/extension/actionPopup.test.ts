@@ -46,7 +46,7 @@ describe('action popup page', () => {
     expect(fs.readFileSync(icons).equals(fs.readFileSync(path.resolve(__dirname, '../../packages/shared-brand/go-logo.png')))).toBe(true);
     const style = /<style>([\s\S]*?)<\/style>/.exec(html)![1];
     expect(style).toMatch(/\.go-brand-mark \{[^}]*mask: var\(--go-brand-mask\)/);
-    expect(style).toMatch(/\.go-brand \{[^}]*color: var\(--accent\)/);
+    expect(style).toMatch(/\.go-brand \{[^}]*color: var\(--ink\)/);
   });
 
   it('A-02 / A-05 the popup sizes its text in rem and has a dark-theme colour for error and warning text', () => {

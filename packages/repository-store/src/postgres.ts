@@ -22,7 +22,7 @@ import type {
 import { applyPgMigrations } from './postgres-migrate';
 import type { PgClient, PgPool, PgQueryable } from './postgres-types';
 import {
-  appendIssues, expectedReviewPredecessorIssue, assertSameOwner, atMs, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack,
+  appendIssues, conflictingReviewIdentity, expectedReviewPredecessorIssue, assertSameOwner, atMs, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack,
   mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, sortPacks, withCorrection, zeroErase,
 } from './rules';
 import type { ConcreteStore, EraseCounts, ProvenanceCount, StoreOptions } from './rules';
@@ -148,9 +148,10 @@ export async function openPostgresStore(pool: PgPool, opts: PostgresOptions = {}
           const id = outcomeId(e);
           const issues = appendIssues(learnerId, e);
           if (issues.length) { out.push({ id, stored: false, issues }); continue; }
-          const owner = await get('SELECT learner_id FROM events WHERE id = ?', e.id);
+          const owner = await get('SELECT learner_id, json FROM events WHERE id = ?', e.id);
           if (owner) {
-            out.push(owner.learner_id === learnerId ? { id, stored: false, duplicateOf: id } : { id, stored: false, issues: [{ path: 'id', message: 'event id already in use' }] });
+            const conflict=owner.learner_id===learnerId?conflictingReviewIdentity(obj<StoredEvent>(owner),e):undefined;
+            out.push(owner.learner_id === learnerId ? conflict?{id,stored:false,issues:[conflict]}:{ id, stored: false, duplicateOf: id } : { id, stored: false, issues: [{ path: 'id', message: 'event id already in use' }] });
             continue;
           }
           if (e.dedupeKey !== undefined) {
@@ -158,17 +159,8 @@ export async function openPostgresStore(pool: PgPool, opts: PostgresOptions = {}
             if (first) { out.push({ id, stored: false, duplicateOf: first.id as string }); continue; }
           }
           if (await tombstonedEvent(learnerId, e.id)) { out.push({ id, stored: false, issues: [{ path: 'id', message: 'this event was deleted by a tombstone' }] }); continue; }
-          if ((e.payload as Record<string, unknown>).expectedPreviousReviewId !== undefined) {
-            const cardId = e.subject.cardId;
-            const history = cardId
-              ? (await all(
-                `SELECT json FROM events WHERE learner_id = ? AND language_id = ? AND (json -> 'subject') ->> 'cardId' = ? AND kind = ANY(?::text[])`,
-                learnerId, e.languageId, cardId, ['CardAdded', 'CardReviewed', 'AssessmentAnswered', 'ListeningAssessed'],
-              )).map((r) => obj<StoredEvent>(r))
-              : [];
-            const casIssue = expectedReviewPredecessorIssue(e, history);
-            if (casIssue) { out.push({ id, stored: false, issues: [casIssue] }); continue; }
-          }
+          const predecessorIssue = expectedReviewPredecessorIssue(e);
+          if (predecessorIssue) { out.push({id,stored:false,issues:[predecessorIssue]}); continue; }
           const recordedAt = now();
           const seq = Number((await get(
             'INSERT INTO event_heads (learner_id, head) VALUES (?, 1) ON CONFLICT (learner_id) DO UPDATE SET head = event_heads.head + 1 RETURNING head',

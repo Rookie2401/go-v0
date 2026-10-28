@@ -21,7 +21,7 @@ import type {
 } from '../../repository-contract/src';
 import { applyMigrations } from './migrate';
 import {
-  appendIssues, expectedReviewPredecessorIssue, assertSameOwner, atMs, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack,
+  appendIssues, conflictingReviewIdentity, expectedReviewPredecessorIssue, assertSameOwner, atMs, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated, latestPack,
   mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, sortPacks, withCorrection, zeroErase,
 } from './rules';
 import type { ConcreteStore, EraseCounts, ProvenanceCount, StoreOptions } from './rules';
@@ -166,9 +166,10 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
           const id = outcomeId(e);
           const issues = appendIssues(learnerId, e);
           if (issues.length) { out.push({ id, stored: false, issues }); continue; }
-          const owner = get('SELECT learner_id FROM events WHERE id = ?', e.id);
+          const owner = get('SELECT learner_id, json FROM events WHERE id = ?', e.id);
           if (owner) {
-            out.push(owner.learner_id === learnerId ? { id, stored: false, duplicateOf: id } : { id, stored: false, issues: [{ path: 'id', message: 'event id already in use' }] });
+            const conflict=owner.learner_id===learnerId?conflictingReviewIdentity(parse<StoredEvent>(owner),e):undefined;
+            out.push(owner.learner_id === learnerId ? conflict?{id,stored:false,issues:[conflict]}:{ id, stored: false, duplicateOf: id } : { id, stored: false, issues: [{ path: 'id', message: 'event id already in use' }] });
             continue;
           }
           if (e.dedupeKey !== undefined) {
@@ -176,12 +177,8 @@ export function openSqliteStore(path: string | ':memory:', opts: SqliteOptions =
             if (first) { out.push({ id, stored: false, duplicateOf: first.id as string }); continue; }
           }
           if (tombstonedEvent(learnerId, e.id)) { out.push({ id, stored: false, issues: [{ path: 'id', message: 'this event was deleted by a tombstone' }] }); continue; }
-          if ((e.payload as Record<string, unknown>).expectedPreviousReviewId !== undefined) {
-            const cardId = e.subject.cardId;
-            const history = cardId ? all(`SELECT json FROM events WHERE learner_id = ? AND language_id = ? AND json_extract(json, '$.subject.cardId') = ? AND kind IN ('CardAdded', 'CardReviewed', 'AssessmentAnswered', 'ListeningAssessed')`, learnerId, e.languageId, cardId).map((r) => parse<StoredEvent>(r)) : [];
-            const casIssue = expectedReviewPredecessorIssue(e, history);
-            if (casIssue) { out.push({ id, stored: false, issues: [casIssue] }); continue; }
-          }
+          const predecessorIssue = expectedReviewPredecessorIssue(e);
+          if (predecessorIssue) { out.push({id,stored:false,issues:[predecessorIssue]}); continue; }
           const recordedAt = now();
           const seq = Number((get(
             'INSERT INTO event_heads (learner_id, head) VALUES (?, 1) ON CONFLICT (learner_id) DO UPDATE SET head = head + 1 RETURNING head',

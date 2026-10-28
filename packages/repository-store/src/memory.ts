@@ -8,7 +8,7 @@ import type {
   LinguisticUnit, PrivateDocument, ReviewStatusSummary, Session, StoredEvent, Team, Tombstone, UnitAlias, UnitKnowledge, UnitRelation,
 } from '../../repository-contract/src';
 import {
-  appendIssues, expectedReviewPredecessorIssue, assertSameOwner, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated,
+  appendIssues, conflictingReviewIdentity, expectedReviewPredecessorIssue, assertSameOwner, byKey, carried, carriedAnalysis, clampLimit, decidePutDocument, defaultNow, deletedDocument, envelopeOf, invalidated,
   latestPack, matchesFilter, mayReplaceAnalysis, mayReplaceByRank, normalizeEmail, outcomeId, relationKey, sortPacks, tombstonedEventIds, withCorrection, zeroErase,
 } from './rules';
 import type { ConcreteStore, EraseCounts, ProvenanceCount, StoreOptions } from './rules';
@@ -85,14 +85,14 @@ export function createMemoryStore(opts: StoreOptions = {}): ConcreteStore {
         const issues = appendIssues(learnerId, e);
         if (issues.length) { out.push({ id, stored: false, issues }); continue; }
         const owner = idOwner.get(e.id);
-        if (owner === learnerId) { out.push({ id, stored: false, duplicateOf: id }); continue; }
+        if (owner === learnerId) { const conflict=conflictingReviewIdentity(logs.get(learnerId)!.find(row=>row.id===id)!,e); out.push(conflict?{id,stored:false,issues:[conflict]}:{id,stored:false,duplicateOf:id}); continue; }
         if (owner !== undefined) { out.push({ id, stored: false, issues: [{ path: 'id', message: 'event id already in use' }] }); continue; }
         if (e.dedupeKey !== undefined) {
           const first = dedupe.get(k2(learnerId, e.dedupeKey));
           if (first !== undefined) { out.push({ id, stored: false, duplicateOf: first }); continue; }
         }
         if (blocked.has(e.id)) { out.push({ id, stored: false, issues: [{ path: 'id', message: 'this event was deleted by a tombstone' }] }); continue; }
-        const casIssue = expectedReviewPredecessorIssue(e, logs.get(learnerId) ?? []);
+        const casIssue = expectedReviewPredecessorIssue(e);
         if (casIssue) { out.push({ id, stored: false, issues: [casIssue] }); continue; }
         const seq = (heads.get(learnerId) ?? 0) + 1;
         heads.set(learnerId, seq);

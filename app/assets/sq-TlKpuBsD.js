@@ -1,1 +1,0 @@
-import{n as e}from"./index-DgqbGoL5.js";export{e as adapter};

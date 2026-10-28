@@ -1,1 +1,0 @@
-import{t as e}from"./engine-CsMfya5b.js";var t=e(`nb`);export{t as adapter};

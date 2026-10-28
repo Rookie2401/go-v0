@@ -1,0 +1,1 @@
+import{t as e}from"./es-DCHPlaK4.js";export{e as adapter};

@@ -1,1 +1,0 @@
-import{t as e}from"./engine-BUASX7Wj.js";var t=e(`nn`);export{t as adapter};

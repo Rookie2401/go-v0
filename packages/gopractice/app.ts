@@ -49,8 +49,7 @@ export const ROUTES: readonly RouteDef[] = [
   { id: 'privacy', title: 'Privacy Policy', render: legalScreen.renderPrivacy },
   { id: 'terms', title: 'Terms of use', render: legalScreen.renderTerms },
 ];
-/** The routes that get a quiet way back to the GoReview home above their title. */
-const HAS_BACK = new Set<RouteDef['id']>(['tell', 'vocabulary', 'settings', 'account', 'developer', 'privacy', 'terms']);
+// No screen carries a "← GoReview" link any more (the owner, 2026-10-28): the Go mark in the top bar is the way home, on every screen.
 
 /** The Settings cog: a plain SVG (no icon font, nothing fetched), named for assistive technology by the link. */
 function cogIcon(doc: Document): Element {
@@ -116,15 +115,17 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   // the top bar carries the Go mark alone (the launch screen showed the full GO / REVIEW wordmark); the link's label says the name
   const brandLink = h('a', { class: 'go-brand', href: '#/review', 'aria-label': 'GoReview home' },
     h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: `--go-brand-mask: url("${logoUrl}")` }));
-  const header = h('header', { class: 'topbar' }, brandLink, langWrap, syncEl, acctEl);
+  // the top bar is the same on every screen: the Go mark, the sync line (visually hidden unless it errs), the account and Settings icons
+  const header = h('header', { class: 'topbar' }, brandLink, syncEl, acctEl);
   /**
-   * The language switcher lives in ONE element. On the home it stands where the page title used to be (the slot the home's
-   * shell renders, #home-language); on every other screen it sits in the top bar beside the wordmark.
+   * The language switcher lives in ONE element and is shown on the home alone, where the page title used to be (the slot the home's
+   * shell renders, #home-language). On every other screen it is off the page (the owner, 2026-10-28: the language is changed from the
+   * home; the top bar never carries it), though it is kept filled so the home shows it at once on return.
    */
   function placeLanguage(): void {
     const slot = main.querySelector('#home-language');
     if (slot) { if (langWrap.parentElement !== slot) slot.append(langWrap); }
-    else if (langWrap.parentElement !== header) header.insertBefore(langWrap, syncEl);
+    else langWrap.remove();
   }
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   clear(root);
@@ -300,8 +301,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     // every review screen keeps its 'GoReview' h1 for assistive technology only (the wordmark is in the top bar); the home alone shows the dropdown in the title's place
     const review = def.id === 'review' && mode !== 'none';
     const home = review && subs.length === 0;
-    main.append(...(mode !== 'none' && HAS_BACK.has(def.id) ? [h('p', { class: 'crumb' }, h('a', { href: '#/review', id: 'back-home' }, '← GoReview'))] : []),
-      ...(review ? [h('h1', { class: 'sr' }, def.title)] : [h('h1', {}, def.title)]), ...(home ? [h('div', { class: 'home-language', id: 'home-language' })] : []), body);
+    main.append(...(review ? [h('h1', { class: 'sr' }, def.title)] : [h('h1', {}, def.title)]), ...(home ? [h('div', { class: 'home-language', id: 'home-language' })] : []), body);
     placeLanguage();
     body.append(p('Loading your saved account data…', 'muted'));
     let idn: Awaited<ReturnType<AppContext['identity']>>;

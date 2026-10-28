@@ -169,7 +169,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     sizeBox.append(deckSizeControl(ctx, m.identity.learnerId, m.identity.languageId, m.prefs.cardsPerDeck, () => {
       if (resumeId) { setStatus(status, 'A session is open: the new size applies to the next deck.', 'info'); return; }
       void paint();
-    }, 'home'));
+    }, 'home', { centred: true }));
     return h('section', { class: 'entry', 'data-entry': 'deck', id: 'current-deck' },
       h('h2', { class: 'entry-title' }, 'Current deck'),
       h('p', { class: 'entry-kicker', id: 'deck-count', 'data-cards': String(count) }, kicker),

@@ -53,12 +53,13 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 [hidden] { display: none !important; }
 
-/* top bar: translucent paper; the language on the left, the Settings cog on the right, nothing else */
+/* top bar, the same on every screen: the Go mark on the left, the account and Settings icons on the right, nothing else. Opaque paper
+   (the owner, 2026-10-28: it used to be translucent over the scrolled page and looked as if it faded into the top of the screen). */
 .shell { min-height: 100vh; }
 .shell, #app, .topbar > *, .screen, .screen > * { min-width: 0; }
 .topbar {
   display: flex; flex-wrap: wrap; gap: .35rem 1.25rem; align-items: center; min-height: 3rem; padding: .55rem clamp(1rem, 4vw, 3rem);
-  background: color-mix(in srgb, var(--paper) 88%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  background: var(--paper);
   border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 20;
 }
 .language-kicker { font: inherit; font-size: .8rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint); }
@@ -74,8 +75,6 @@ select.language-kicker:hover { color: var(--ink); }
 .cog { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 999px; color: var(--ink-soft); }
 .cog:hover { color: var(--ink); background: color-mix(in srgb, var(--ink) 5%, transparent); text-decoration: none; }
 .cog[aria-current="page"] { color: var(--accent); }
-.crumb { margin: 0 0 .25rem; font-size: .95rem; }
-.crumb a { color: var(--ink-soft); }
 
 /* page */
 .screen { width: 100%; padding: 1.75rem clamp(1rem, 4vw, 3rem) 4rem; max-width: 52rem; margin: 0 auto; overflow-wrap: anywhere; }
@@ -301,12 +300,12 @@ html[data-edition="review"] body::before { content: ""; position: fixed; top: 0;
 html[data-edition="review"] { overscroll-behavior-y: none; }
 
 @media (pointer: coarse), (display-mode: standalone) {
-  button, .btn, .toggle-link, .linklike, .vocab-history, .update-link, .crumb a, #signin-not-now {
+  button, .btn, .toggle-link, .linklike, .vocab-history, .update-link, #signin-not-now {
     min-height: 2.75rem; display: inline-flex; align-items: center; justify-content: center;
   }
   select.language-kicker { min-height: 2.75rem; }
   .cog, .icon-btn { width: 2.75rem; height: 2.75rem; }
-  .vocab-history, .crumb a, .update-link, .linklike, .toggle-link { min-width: 2.75rem; }
+  .vocab-history, .update-link, .linklike, .toggle-link { min-width: 2.75rem; }
   .vocab-row { min-height: 2.75rem; }
   button.grade { min-height: 2.75rem; min-width: 2.75rem; padding: .2rem .5rem; }
   .btn.small, button.small { padding: .1rem .85rem; }
@@ -317,9 +316,9 @@ html[data-edition="review"] { overscroll-behavior-y: none; }
   .toggle input { transform: none; width: 1.4rem; height: 1.4rem; }
 }
 
-/* the deck size: a quiet stepper and presets as quiet pills */
+/* the deck size: a quiet stepper, centred on the home (the preset pills were cut 2026-10-28; the box keeps the room they took, so Begin stays put) */
 .deck-size-line { margin: .5rem 0 0; max-width: none; }
-.deck-size-box { margin: .6rem 0 0; }
+.deck-size-box { margin: .6rem 0 0; padding-bottom: 2.2rem; }
 .deck-size { display: grid; gap: .6rem; max-width: 24rem; }
 .stepper { display: inline-flex; align-items: center; gap: .4rem; }
 .stepper-btn { width: 2.4rem; height: 2.4rem; padding: 0; border-radius: 999px; font-size: 1.3rem; line-height: 1; background: none; border: 1px solid var(--rule-strong); color: var(--ink); }
@@ -354,13 +353,9 @@ details.quiet { margin-top: 1.4rem; }
 details.quiet > summary { color: var(--ink-soft); font-size: .9rem; }
 details.quiet > .card { margin-top: .6rem; box-shadow: none; }
 .developer-line { margin-top: 1.6rem; font-size: .85rem; }
-.pills { display: flex; flex-wrap: wrap; gap: .4rem; }
-button.pill { padding: .1rem .9rem; border-radius: 999px; font-size: .95rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink-soft); }
-button.pill:hover:not(:disabled) { color: var(--ink); }
-button.pill[aria-pressed="true"] { color: var(--ink); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 @media (pointer: coarse), (display-mode: standalone) {
   .stepper-btn { width: 2.75rem; height: 2.75rem; }
-  button.pill { min-height: 2.75rem; min-width: 2.75rem; }
+  .deck-size-box { padding-bottom: 3.35rem; }
   #deck-size-link { min-height: 2.75rem; }
 }
 

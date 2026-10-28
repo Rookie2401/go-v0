@@ -24,7 +24,7 @@ describe('the account page', () => {
     await rig.go('account');
     expect(rig.q('main h1').textContent).toBe('Account');
     expect(rig.q('header #header-account').getAttribute('aria-current')).toBe('page');
-    expect(rig.q<HTMLAnchorElement>('#back-home').getAttribute('href')).toBe('#/review');
+    expect(rig.root.querySelector('#back-home')).toBeNull(); // the Go mark in the top bar is the way home
   });
 
   it('shows name and email, then Sign out, Download my data and a red Delete account as plain text; no ids, no expiry, no boxes', async () => {

@@ -28,13 +28,13 @@ async function fixtureRig(): Promise<Rig> {
 }
 
 describe('the due-review summary', () => {
-  it('offers the deck size presets in place of the session time, and saves the choice', async () => {
+  it('offers the deck size stepper in place of the session time (no preset pills since 2026-10-28), and saves the choice', async () => {
     const rig = await fixtureRig();
-    expect([...rig.q('#review-details .pills').querySelectorAll('button')].map((b) => b.textContent)).toEqual(['5', '10', '15', '20', '30']);
+    expect(rig.root.querySelector('#review-details .pills')).toBeNull();
     expect(rig.root.querySelector('.time-presets')).toBeNull();
-    rig.q('#review-details [data-cards="20"]').click();
-    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 20, 'the deck size preference');
-    await until(() => rig.q('#review-details').textContent.includes('20 cards per deck'), 'the refreshed note');
+    rig.q('#details-more').click();
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 11, 'the deck size preference');
+    await until(() => rig.q('#review-details').textContent.includes('11 cards per deck'), 'the refreshed note');
   });
 
   it('counts due, learning, new items, candidates and listening from the local log', async () => {
@@ -148,16 +148,19 @@ describe('the one active language', () => {
 
   it('re-folds the deck for the language it switches to, from the same local log', async () => {
     const { rig } = await twoLanguages();
-    // the newest enrolment is active by default: de (three new items); sq is the other
-    const select = rig.q<HTMLSelectElement>('#language-select');
-    expect(select.options.length).toBe(2);
-    const first = select.value;
     const counts = (): string => `${rig.q('#count-due').textContent}/${rig.q('#count-fresh').textContent}`;
     const before = counts();
+    // the language is switched on the home, the one place that shows the dropdown (2026-10-28: the top bar never carries it)
+    await rig.go('review');
+    expect(rig.root.querySelector('header #language-select')).toBeNull();
+    // the newest enrolment is active by default: de (three new items); sq is the other
+    const select = rig.q<HTMLSelectElement>('#home-language #language-select');
+    expect(select.options.length).toBe(2);
+    const first = select.value;
     select.value = first === 'L1-e1' ? 'L1-e2' : 'L1-e1';
     select.dispatchEvent(new Event('change'));
-    // switching sends the learner to the home; the counts are on the details page
-    await until(() => rig.app.current() === 'review' && !!rig.root.querySelector('#current-deck'), 'the home of the other language');
+    // switching draws the home afresh for the other language (a new dropdown element); the counts are on the details page
+    await until(() => rig.app.current() === 'review' && rig.root.querySelector('#home-language #language-select') !== select && !!rig.root.querySelector('#current-deck'), 'the home of the other language');
     await rig.go('review/details');
     await until(() => !!rig.root.querySelector('#count-due') && counts() !== before, 'the other language');
     const after = counts();

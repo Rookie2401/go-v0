@@ -16,7 +16,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const status = statusLine();
   const list = h('ul', { class: 'decklist', id: 'saved-decks' });
   const restoreBox = h('p', { class: 'restore-line' });
-  append(el, [h('p', {}, h('a', { href: '#/review' }, '← GoReview')), h('h2', { class: 'page-title', id: 'decks-title', tabindex: '-1' }, 'Saved decks'), list, restoreBox, status]);
+  append(el, [h('h2', { class: 'page-title', id: 'decks-title', tabindex: '-1' }, 'Saved decks'), list, restoreBox, status]);
   if (!id) { list.replaceWith(p('Choose a language to see its saved decks.', 'muted')); return; }
 
   async function practise(saved: SavedDeck): Promise<void> {

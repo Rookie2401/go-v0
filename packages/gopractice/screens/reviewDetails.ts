@@ -17,7 +17,7 @@ import type { View } from './view';
 
 export async function renderDetails(el: HTMLElement, ctx: AppContext, view: View): Promise<void> {
   const root = h('div', { id: 'review-details' });
-  el.append(h('p', {}, h('a', { href: '#/review' }, '← GoReview')), root);
+  el.append(root);
   const status = statusLine();
   /** Saves of the session controls still in flight: Start waits for them, so a preference changed an instant before is the one planned with. */
   let saving: Promise<unknown>[] = [];

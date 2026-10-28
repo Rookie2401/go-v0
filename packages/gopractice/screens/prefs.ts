@@ -75,7 +75,7 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
 
   // the deck size (Settings only; the details page has its own control beside the deck)
   const deck: DeckSizeControl | undefined = opts.deckSize === false ? undefined
-    : deckSizeControl(ctx, learnerId, current.languageId, initial.cardsPerDeck, (_n, prefs) => { current = prefs; onSaved?.(prefs); }, 'pref', { presets: false, centred: true });
+    : deckSizeControl(ctx, learnerId, current.languageId, initial.cardsPerDeck, (_n, prefs) => { current = prefs; onSaved?.(prefs); }, 'pref', { centred: true });
 
   /** Every preference on this page back to the defaults: the review preferences of this language, and this device's shortcut switch. */
   const reset = button('Reset to default', () => {

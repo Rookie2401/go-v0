@@ -191,8 +191,13 @@ describe('Class Essentials: in Saved decks', () => {
     const service = new FakeService();
     service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'sq', varietyId: 'sq-AL' }, { languageId: 'de' }, { languageId: 'en' }]);
     const rig = await makeRig({ service, signedIn: true });
-    const select = rig.q<HTMLSelectElement>('#language-select');
-    const pick = async (enrolment: string): Promise<void> => { select.value = enrolment; select.dispatchEvent(new Event('change')); await until(() => rig.q<HTMLSelectElement>('#language-select').value === enrolment, 'the switch'); };
+    // the language is switched on the home, the one place that shows the dropdown (2026-10-28: the top bar never carries it)
+    const pick = async (enrolment: string): Promise<void> => {
+      await rig.go('review');
+      const select = rig.q<HTMLSelectElement>('#home-language #language-select');
+      select.value = enrolment; select.dispatchEvent(new Event('change'));
+      await until(() => { const now = rig.root.querySelector<HTMLSelectElement>('#home-language #language-select'); return !!now && now !== select && now.value === enrolment; }, 'the switch');
+    };
     await pick('L1-e2');
     await rig.go('settings'); await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('.deckrow'), 'the German deck');

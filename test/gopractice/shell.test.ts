@@ -27,7 +27,7 @@ describe('the hash router', () => {
     expect(rig.q('#sync-indicator').textContent).toBe('Not signed in');
   });
 
-  it('after sign-in the header has the Go logo, language and Settings cog; the screens are reached from the home', async () => {
+  it('after sign-in the header has the Go logo, the account and Settings icons, and is the same on every screen (no language, no "← GoReview"; the logo is the way home)', async () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('.topnav')).toBeNull();
@@ -40,16 +40,27 @@ describe('the hash router', () => {
     expect(rig.q('header .go-brand').textContent).toBe(''); // the mark alone: the launch screen showed GO over REVIEW
     expect(rig.root.querySelector('.go-brand-word')).toBeNull();
     expect(rig.q('header .go-brand').getAttribute('aria-label')).toBe('GoReview home');
-    expect(rig.q('#language-name')).toBeTruthy();
-    expect(rig.root.querySelector('#back-home')).toBeNull();      // the home has nowhere to go back to
+    expect(rig.q('#home-language #language-name')).toBeTruthy(); // the language stands on the home, never in the top bar
+    expect(rig.root.querySelector('header .language')).toBeNull();
+    expect(rig.root.querySelector('#back-home')).toBeNull();
+    expect(rig.q('header .go-brand').getAttribute('href')).toBe('#/review');
+    const headerOf = (): string => rig.q('header').innerHTML;
+    const homeHeader = headerOf();
     await rig.go('tell');
     expect(rig.q('main h1').textContent).toBe('GoTell');
-    expect(rig.q<HTMLAnchorElement>('#back-home').getAttribute('href')).toBe('#/review');
+    expect(rig.root.querySelector('#back-home, .crumb')).toBeNull();
+    expect(rig.root.querySelector('header .language, header #language-name, header #language-select')).toBeNull();
+    expect(headerOf()).toBe(homeHeader); // the top bar does not change between screens
     await rig.go('vocabulary');
     expect(rig.q('main h1').textContent).toBe('My Vocabulary');
+    expect(rig.root.querySelector('#back-home, .crumb')).toBeNull();
     await rig.go('settings');
     expect(rig.q('main h1').textContent).toBe('Settings');
+    expect(rig.root.querySelector('header .language')).toBeNull();
+    expect(rig.root.querySelector('main a[href="#/review"]')).toBeNull(); // no "← GoReview" on the page either
     expect(rig.q('#settings-link').getAttribute('aria-current')).toBe('page');
+    await rig.go('review');
+    expect(rig.q('#home-language #language-name')).toBeTruthy(); // back on the home the language is there again
     window.location.hash = '#/review';
     await until(() => rig.app.current() === 'review', 'the hashchange');
   });

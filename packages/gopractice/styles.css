@@ -54,7 +54,8 @@ code, kbd { font: .86em var(--mono); background: color-mix(in srgb, var(--divide
 [hidden] { display: none !important; }
 
 /* top bar, the same on every screen: the Go mark on the left, the account and Settings icons on the right, nothing else. Opaque paper
-   (the owner, 2026-10-28: it used to be translucent over the scrolled page and looked as if it faded into the top of the screen). */
+   (the owner, 2026-10-28: it used to be translucent over the scrolled page and looked as if it faded into the top of the screen; later the
+   same day, more room between the status bar and the mark on a phone, so nothing at the top reads as a fade). */
 .shell { min-height: 100vh; }
 .shell, #app, .topbar > *, .screen, .screen > * { min-width: 0; }
 .topbar {
@@ -247,6 +248,11 @@ ul.vocablist, ul.decklist { list-style: none; padding: 0; margin: .4rem 0 0; bor
 .vocab-more { margin: 1rem 0 0; text-align: center; }
 .deckrow { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1.2rem; padding: .85rem .5rem; }
 .deckrow-line { font-size: 1.15rem; }
+/* Class Essentials (the preloaded class deck): its name as a bigger, friendlier title; the count and language quiet under it (the owner, 2026-10-28) */
+.deckrow-title { font-size: 1.6rem; line-height: 1.2; color: var(--ink); letter-spacing: .005em; }
+.deckrow-builtin { padding-top: 1.05rem; padding-bottom: 1.05rem; }
+.deckrow-builtin .deckrow-line { font-size: 1rem; color: var(--ink-soft); }
+.deckrow-builtin .entry-actions { align-self: center; }
 .deckrow .entry-actions { margin: 0; }
 .deckrow .btn.small { border-radius: 999px; padding: .1rem .85rem; }
 #decks-empty, #vocab-empty { padding: .9rem .5rem; }
@@ -283,7 +289,7 @@ button.grade:focus-visible { outline: 2px solid var(--accent); outline-offset: 2
       the quiet update link, and fingertip-sized targets (at least 44 x 44 CSS px: 2.75rem at the default size) ── */
 .shell { min-height: 100vh; min-height: 100dvh; }
 .topbar {
-  padding-top: calc(.55rem + env(safe-area-inset-top, 0px));
+  padding-top: calc(.9rem + env(safe-area-inset-top, 0px));
   padding-left: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-left, 0px));
   padding-right: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-right, 0px));
 }
@@ -368,7 +374,7 @@ body { min-height: 100vh; min-height: 100dvh; overflow-x: hidden; }
 img, svg, video, canvas { max-width: 100%; }
 @media (max-width: 430px) {
   body { font-size: 1rem; line-height: 1.55; }
-  .topbar { flex-wrap: nowrap; gap: .5rem; align-items: center; min-height: calc(2.75rem + env(safe-area-inset-top, 0px)); padding-top: env(safe-area-inset-top, 0px); padding-bottom: 0;
+  .topbar { flex-wrap: nowrap; gap: .5rem; align-items: center; min-height: calc(3.75rem + env(safe-area-inset-top, 0px)); padding-top: calc(.75rem + env(safe-area-inset-top, 0px)); padding-bottom: .25rem;
     padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
   .language { flex: 1 1 auto; min-width: 0; }
   .language-picker, #language-name { max-width: 100%; }
@@ -400,6 +406,8 @@ img, svg, video, canvas { max-width: 100%; }
   .grade-word { font-size: .85rem; }
   .deckrow { gap: .3rem .8rem; }
   .deckrow-line { font-size: 1.05rem; }
+  .deckrow-title { font-size: 1.45rem; }
+  .deckrow-builtin .deckrow-line { font-size: .95rem; }
   table.plain th, table.plain td { padding: .35rem .5rem .35rem 0; font-size: .92rem; }
   /* My vocab: the word and its level on one line, the meaning under the word, a small History link at the right */
   .vocab-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "word level" "gloss indeck" "met met"; gap: .05rem .75rem; align-items: baseline; padding: .55rem 0; }

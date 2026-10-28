@@ -26,7 +26,8 @@ describe('the phone layout', () => {
   it('has a phone block with 16px gutters and safe-area padding under the notch and above the home indicator', () => {
     expect(phone).not.toBe('');
     expect(phone).toMatch(/\.screen \{[^}]*padding: 1rem max\(16px, env\(safe-area-inset-right[^}]*calc\(2rem \+ env\(safe-area-inset-bottom[^}]*max\(16px, env\(safe-area-inset-left/);
-    expect(phone).toMatch(/\.topbar \{[^}]*padding-top: env\(safe-area-inset-top[^}]*max\(16px, env\(safe-area-inset-left/);
+    // .75rem of room between the status bar and the mark (the owner, 2026-10-28: nothing at the top should read as a fade)
+    expect(phone).toMatch(/\.topbar \{[^}]*padding-top: calc\(\.75rem \+ env\(safe-area-inset-top[^}]*max\(16px, env\(safe-area-inset-left/);
   });
 
   it('scales the type for a handheld: title 1.4rem, entry titles 1.7rem, kickers 0.7rem, body 1rem', () => {
@@ -36,8 +37,8 @@ describe('the phone layout', () => {
     expect(phone).toMatch(/\.entry-kicker \{ font-size: \.7rem/);
   });
 
-  it('keeps the header one compact 44 px line, the card full width with 16px padding, and the four grades on one line', () => {
-    expect(phone).toMatch(/\.topbar \{[^}]*flex-wrap: nowrap[^}]*min-height: calc\(2\.75rem \+ env\(safe-area-inset-top/);
+  it('keeps the header one line (44 px of targets plus the room above), the card full width with 16px padding, and the four grades on one line', () => {
+    expect(phone).toMatch(/\.topbar \{[^}]*flex-wrap: nowrap[^}]*min-height: calc\(3\.75rem \+ env\(safe-area-inset-top/);
     expect(phone).toMatch(/\.card, \.exercise, \.feedback \{ padding: 16px; \}/);
     expect(phone).toMatch(/\.grades \{ flex-wrap: nowrap/);
     expect(phone).toMatch(/button\.grade \{ flex: 1 1 0; min-width: 0/);

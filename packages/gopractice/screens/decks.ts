@@ -1,6 +1,7 @@
 /**
  * #/review/decks — Saved decks: the decks the learner saved, newest first ("date · N cards · language"), and Class Essentials, the built-in deck
- * for the language (its name, its description, its notes). Each: Practise again, Remove. A removed Class Essentials can be restored.
+ * for the language: its name as a bigger, friendlier title over "N cards · language", with no description or note on this page (the owner,
+ * 2026-10-28; the deck keeps both in its record). Each: Practise again, Remove. A removed Class Essentials can be restored.
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
@@ -51,11 +52,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
           await paint();
         })();
       }, { class: 'linklike', 'data-action': 'remove-deck', 'aria-label': `Remove the deck of ${when}` });
-      list.append(h('li', { class: 'deckrow', 'data-deck-id': d.id },
+      const builtin = d.builtin === 'class-essentials';
+      list.append(h('li', { class: builtin ? 'deckrow deckrow-builtin' : 'deckrow', 'data-deck-id': d.id },
         h('span', { class: 'deckrow-body' },
-          h('span', { class: 'deckrow-line' }, `${when} · ${plural(d.items.length, 'card', 'cards')} · ${language}`),
-          d.description ? h('span', { class: 'deckrow-note' }, d.description) : null,
-          d.notes ? h('span', { class: 'deckrow-note deckrow-fine' }, d.notes) : null),
+          builtin ? h('span', { class: 'deckrow-title' }, when) : null,
+          h('span', { class: 'deckrow-line' }, builtin ? `${plural(d.items.length, 'card', 'cards')} · ${language}` : `${when} · ${plural(d.items.length, 'card', 'cards')} · ${language}`),
+          !builtin && d.description ? h('span', { class: 'deckrow-note' }, d.description) : null,
+          !builtin && d.notes ? h('span', { class: 'deckrow-note deckrow-fine' }, d.notes) : null),
         h('span', { class: 'entry-actions' }, again, remove)));
     }
   }

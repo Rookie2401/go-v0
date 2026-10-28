@@ -48,6 +48,7 @@
     "dict:verify-full": "vite-node --config scripts/vite.config.ts scripts/dict-verify-full.mts",
     "dict:publish": "vite-node --config scripts/vite.config.ts scripts/dict-publish.mts",
     "dict:build-reverse": "vite-node --config scripts/vite.config.ts scripts/build-reverse-gloss.mts",
+    "dict:build-forms": "vite-node --config scripts/vite.config.ts scripts/build-forms-index.mts",
     "rights:check": "vite-node --config scripts/vite.config.ts scripts/rights-gate.mts",
     "hi:gold": "vite-node --config scripts/vite.config.ts scripts/hi-gold.mts",
     "hi:eval-gold": "vite-node --config scripts/vite.config.ts scripts/eval-hi-gold.mts",

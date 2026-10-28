@@ -19,6 +19,7 @@ import { METRIC_KEY_PREFIX, } from '../metrics';
 import { EVENT_KEY_PREFIX, getDeviceId } from '../store';
 import { createActiveService } from './active';
 import { createGlossService, defaultPacks, type PackProvider } from './gloss';
+import { createFormsService } from './forms';
 import { levelOf } from '../../../language-packs/src/manifest';
 import { PACKS } from '../../../language-packs/src/registry';
 import { createLocalRepoService } from './localRepo';
@@ -61,6 +62,7 @@ const CONTENT_OK: ReadonlySet<string> = new Set<string>([
   MSG.record, MSG.profile, MSG.gloss, MSG.entry, MSG.explain, MSG.pronounceInfo, MSG.correct, MSG.metrics, MSG.status, MSG.settings,
   MSG.active, // a content script may read the Active switches (to start on a page); only an extension page may set them (active.ts checks the kind)
   MSG.activeProfile, // the scan's learner-model question: device rows only, and only while Active is on (below)
+  MSG.confirmForms, // the scan's dictionary question: public dictionary data only, forms in, lemmas out
   MSG.translateSentence,
   MSG.speech,
 ]);
@@ -126,6 +128,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     onDisconnect: async () => { await holder.profile?.clear(); },
   });
   const gloss = createGlossService({ area: local, session, fetch: doFetch, packs, now, getURL: (path) => chrome.runtime.getURL?.(path) });
+  const forms = createFormsService({ gloss });
   const translation = createLocalTranslationService({
     fetch: doFetch,
     extensionId: chrome.runtime.id,
@@ -433,6 +436,7 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       }
       case MSG.gloss: return gloss.glossFor(m) satisfies Promise<GlossReply>;
       case MSG.entry: return gloss.entryFor(m);
+      case MSG.confirmForms: return forms.confirm(m);
       case MSG.explain: return gloss.explainFor(m);
       case MSG.pronounceInfo: return pronounceInfo(m);
       case MSG.speechConfig: return kind === 'page' ? speech.configure(m) : { ok: false };

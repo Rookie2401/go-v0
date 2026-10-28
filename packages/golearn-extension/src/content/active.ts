@@ -18,9 +18,9 @@ import type { LanguageAdapter } from '../../../../src/core';
 import { chooseAdapter, describePage, entryRefuses, registryEntry, type ReaderRegistryEntry } from '../adapters';
 import { createHighlighter, type Highlighter } from '../active/highlight';
 import { levelOfRows, type ActiveLevel } from '../active/levels';
-import { createScanner, type ScanToken, type Scanner } from '../active/scan';
+import { applyConfirmations, createScanner, formsToConfirm, type Confirmations, type ScanToken, type Scanner } from '../active/scan';
 import { GOLEARN_HOST_ATTR, type ReaderAdapter } from '../contract/readerAdapter';
-import type { KnowledgeView, ProfileReply } from '../protocol';
+import { MAX_CONFIRM_FORMS, isUnitId, type ConfirmFormsReply, type KnowledgeView, type ProfileReply } from '../protocol';
 import type { GoEvent } from '../../../repository-contract/src';
 import type { CardUI } from '../popup/card';
 import type { LookupController } from './controller';
@@ -32,6 +32,11 @@ export interface ActiveDeps {
   ui: CardUI;
   /** The learner model, through the background. Absent (no extension context): nothing is underlined and the state says why. */
   profile?: (unitIds: string[], languageId: string) => Promise<ProfileReply | undefined>;
+  /**
+   * The dictionary's forms index, through the background (2026-10-27): which of these normalised forms (the words the analyser could not
+   * confirm) does the language's dictionary have? Absent: the analyser's word list alone decides, as before.
+   */
+  confirmForms?: (forms: string[], languageId: string) => Promise<ConfirmFormsReply | undefined>;
   /** Records the units newly seen in an explicitly enabled Active scan. */
   recordEncounter?: (event: GoEvent) => Promise<unknown>;
   buildEncounter?: (ids: string[], languageId: string, readerId: string) => GoEvent;
@@ -57,6 +62,9 @@ export interface ActiveState {
   marked: Record<ActiveLevel, number>;
   /** Words of the last scan the active language's analyser did not know (another language's words, names): left alone, neither underlined nor recorded (2026-10-25). */
   skipped?: number;
+  /** Of the last scan's words, those the analyser did not know but the dictionary did (they are marked and recorded like any analysed word), and those the dictionary was asked about and did not have (they stay in `skipped`). */
+  confirmed?: number;
+  unconfirmed?: number;
   /** Milliseconds the last scan spent on the page (reading and tokenising), without the learner-model wait. */
   scanMs?: number;
   /** Milliseconds waiting for the learner model in the last scan. */
@@ -68,6 +76,9 @@ export interface ActiveState {
 }
 
 const SAMPLE_CHARS = 400;
+/** After a question the dictionary could not answer (unreachable), the next one waits this long. */
+const CONFIRM_RETRY_MS = 15_000;
+const CONFIRM_OFFLINE = 'The dictionary could not be reached, so only the course word list underlines words.';
 const CONTROL_SEL = 'a[href], button, input, textarea, select, label, summary, [role="button"], [role="link"], [role="menuitem"], [contenteditable]:not([contenteditable="false"])';
 
 export class ActiveMode {
@@ -87,13 +98,20 @@ export class ActiveMode {
   private pendingEncounter: { groups: string[][]; languageId: string; readerId: string; tokens: ScanToken[] } | undefined;
   private scanning: Promise<void> | undefined;
   private rescanWanted = false;
-  private last: Pick<ActiveState, 'scanned' | 'marked' | 'skipped' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: noMarks() };
+  private last: Pick<ActiveState, 'scanned' | 'marked' | 'skipped' | 'confirmed' | 'unconfirmed' | 'scanMs' | 'profileMs'> = { scanned: 0, marked: noMarks() };
   private clicks = 0;
   private readonly encountered = new Set<string>();
   private offRecord: (() => void) | undefined;
   /** Counts the events recorded from this page; an answer asked for before one of them was recorded may not include it (see `consult`). */
   private epoch = 0;
   private readonly refetch = new Set<string>();
+  /** What the dictionary said about each form id asked on this tab: the lemma id, or null = not in the dictionary. Never asked twice. */
+  private readonly confirmed = new Map<string, string | null>();
+  /** The dictionary can say nothing for this language on this tab (no pack, no forms index there): stop asking. */
+  private confirmOff = false;
+  /** The dictionary could not be reached: shown as the tab's reason until a question gets through; asked again after `confirmRetryAt`. */
+  private confirmReason: string | undefined;
+  private confirmRetryAt = 0;
 
   constructor(private readonly d: ActiveDeps) {}
 
@@ -175,6 +193,7 @@ export class ActiveMode {
     this.rows.clear();
     this.encountered.clear();
     this.refetch.clear();
+    this.confirmed.clear(); this.confirmOff = false; this.confirmReason = undefined; this.confirmRetryAt = 0;
     this.languageId = undefined;
     this.scanner = undefined;
     this.last = { scanned: 0, marked: noMarks() };
@@ -230,6 +249,11 @@ export class ActiveMode {
     }
     const scanMs = clock.now() - t0;
 
+    // the words the analyser could not confirm are asked of the dictionary BEFORE the learner model is consulted, so a word it has is
+    // treated exactly like an analysed one from here on (levels, highlights, encounters)
+    const counts = await this.confirm([...byDoc.values()].flat(), languageId, clock);
+    if (!this.on) return;
+
     // the learner model, for the ids not asked about yet on this tab
     const want = new Set<string>();
     for (const id of this.refetch) this.rows.delete(id); // answers that were asked for before an event of this page was recorded
@@ -281,10 +305,48 @@ export class ActiveMode {
         }, 800);
       }
     }
-    this.last = { scanned, marked, skipped, scanMs: Math.round(scanMs * 100) / 100, profileMs: Math.round(profileMs * 100) / 100 };
+    this.last = { scanned, marked, skipped, confirmed: counts.confirmed, unconfirmed: counts.unconfirmed, scanMs: Math.round(scanMs * 100) / 100, profileMs: Math.round(profileMs * 100) / 100 };
     if (!this.d.profile) this.reason = 'The learner model is not reachable from this page, so nothing is underlined; clicking a word still looks it up.';
     else if (!this.highlighterFor(this.d.doc).supported) this.reason = 'This browser cannot draw the underlines (no CSS highlight API); clicking a word still looks it up.';
-    else this.reason = undefined;
+    else this.reason = this.confirmReason;
+  }
+
+  /**
+   * Ask the background's dictionary about the unconfirmed words not asked about yet (once per form per tab, at most MAX_CONFIRM_FORMS to a
+   * message), then apply every answer held so far to the tokens (a re-scan, or a node whose text changed, asks nothing). A hit becomes
+   * a known word with a lemma id; a form the index lacks is remembered as `null` and stays skipped. A reply with a `reason` is
+   * not an answer about the words: no `null` is remembered (they are asked again later), and the reason is kept for the tab's reason text.
+   */
+  private async confirm(tokens: ScanToken[], languageId: string, clock: { now(): number }): Promise<{ confirmed: number; unconfirmed: number }> {
+    const ask = this.d.confirmForms;
+    if (ask && !this.confirmOff && clock.now() >= this.confirmRetryAt) {
+      const prefix = `form:${languageId}:`;
+      const want = formsToConfirm(tokens, languageId, this.confirmed);
+      for (let i = 0; i < want.length; i += MAX_CONFIRM_FORMS) {
+        const ids = want.slice(i, i + MAX_CONFIRM_FORMS);
+        let reply: ConfirmFormsReply | undefined;
+        try { reply = await ask(ids.map((id) => id.slice(prefix.length)), languageId); } catch { reply = undefined; }
+        if (!this.on || this.languageId !== languageId) return { confirmed: 0, unconfirmed: 0 };
+        if (!reply || !reply.ok || typeof reply.forms !== 'object' || !reply.forms) { this.confirmRetryAt = clock.now() + CONFIRM_RETRY_MS; break; }
+        for (const id of ids) {
+          // a form missing from the reply was not answered (the worker's compound budget did not reach it): it is asked again on a later scan, not remembered as absent
+          if (!Object.prototype.hasOwnProperty.call(reply.forms, id.slice(prefix.length))) continue;
+          const row = reply.forms[id.slice(prefix.length)];
+          const lemma = Array.isArray(row) && typeof row[0] === 'string' && row[0] ? row[0] : undefined;
+          const pos = Array.isArray(row) && typeof row[1] === 'string' && /^[A-Za-z]{1,8}$/.test(row[1]) ? row[1] : undefined;
+          const lemmaId = lemma ? `lemma:${languageId}:${lemma}${pos ? ':' + pos : ''}` : undefined;
+          if (lemmaId && isUnitId(lemmaId)) this.confirmed.set(id, lemmaId);
+          else if (!reply.reason) this.confirmed.set(id, null); // the index answered and does not have the word
+        }
+        if (reply.reason) {
+          if (reply.reason === 'no-pack' || reply.reason === 'no-index') this.confirmOff = true; // nothing to ask for this language here: today's behaviour, quietly
+          else { this.confirmReason = CONFIRM_OFFLINE; this.confirmRetryAt = clock.now() + CONFIRM_RETRY_MS; }
+          break;
+        }
+        this.confirmReason = undefined;
+      }
+    }
+    return applyConfirmations(tokens, this.confirmed as Confirmations);
   }
 
   private highlighterFor(root: Document): Highlighter {

@@ -220,9 +220,8 @@ export function createGlossService(opts: GlossServiceOptions) {
     return { reason: 'no-asset-base', message: `No dictionary location has ${languageId}. Open GoLearn setup.` };
   }
 
-  async function runtimeFor(languageId: string): Promise<{ rt?: PackRuntimeLike; reason?: GlossReply['reason']; message?: string; source?: DictionarySource }> {
-    const manifest = packs.manifest(languageId);
-    if (!manifest || manifest.status !== 'installable') return { reason: 'no-pack' };
+  /** The location of a language's dictionary, searched once and kept for the worker's lifetime (a failed search is made again next time). */
+  function locatedFor(languageId: string, manifest: PackManifest): Promise<Located> {
     let loc = located.get(languageId);
     if (!loc) {
       const mine = locate(languageId, manifest);
@@ -231,7 +230,27 @@ export function createGlossService(opts: GlossServiceOptions) {
       const forget = (): void => { if (located.get(languageId) === mine) located.delete(languageId); };
       void mine.then((l) => { if (!l.base) forget(); }, forget);
     }
-    const { base, source, reason, message } = await loc;
+    return loc;
+  }
+
+  /**
+   * Where a language's dictionary files are, for readers that fetch their own files from it (the forms index, `background/forms.ts`):
+   * the same location order as a gloss (`locate`), the same caching shard fetch, and the dictionary folder relative to the location
+   * (`dict/de/`, from the pack manifest). An installable pack (experimental ones are installable) that declares a dictionary qualifies.
+   */
+  async function dictionaryAt(languageId: string): Promise<{ ok: true; base: string; rel: string; source: DictionarySource; fetch: ShardFetch } | { ok: false; reason: 'no-pack' | 'no-asset-base' | 'offline'; message?: string }> {
+    const manifest = packs.manifest(languageId);
+    const rel = manifest?.lexical?.dictionary?.baseUrl?.replace(/^\/+|\/+$/g, '');
+    if (!manifest || manifest.status !== 'installable' || !rel) return { ok: false, reason: 'no-pack' };
+    const { base, source, reason, message } = await locatedFor(languageId, manifest);
+    if (!base || !source) return { ok: false, reason: reason ?? 'no-asset-base', message };
+    return { ok: true, base, rel, source, fetch: shardFetchFor(base) };
+  }
+
+  async function runtimeFor(languageId: string): Promise<{ rt?: PackRuntimeLike; reason?: GlossReply['reason']; message?: string; source?: DictionarySource }> {
+    const manifest = packs.manifest(languageId);
+    if (!manifest || manifest.status !== 'installable') return { reason: 'no-pack' };
+    const { base, source, reason, message } = await locatedFor(languageId, manifest);
     if (!base) return { reason, message };
     const cacheKey = `${languageId}@${base}`;
     let rt = runtimes.get(cacheKey);
@@ -346,7 +365,7 @@ export function createGlossService(opts: GlossServiceOptions) {
     }
   }
 
-  return { glossFor, entryFor, explainFor, packAvailable };
+  return { glossFor, entryFor, explainFor, packAvailable, dictionaryAt };
 }
 
 export type GlossService = ReturnType<typeof createGlossService>;

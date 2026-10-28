@@ -227,6 +227,24 @@ export interface ActiveReply {
   message?: string;
 }
 
+/** The most forms one `golearn:confirm-forms` message may carry; the content side splits larger sets. */
+export const MAX_CONFIRM_FORMS = 500;
+
+/**
+ * Content -> background (2026-10-27): ask the dictionary's slim forms index which of these words it knows. `forms` are normalised
+ * forms (the analyser's `normalize`, the part after `form:<lang>:`), single words, never page text beyond that.
+ */
+export interface ConfirmFormsRequest { languageId: string; forms: string[] }
+export interface ConfirmFormsReply {
+  ok: boolean;
+  /** One key per form asked: `[lemma, part of speech | null]` (the index's first row), or `null` for a form the index lacks. Empty when `reason` is set. */
+  forms: Record<string, [lemma: string, pos: string | null] | null>;
+  /** Where the index was read from. */
+  source?: 'configured' | 'extension' | 'hosted';
+  /** Why nothing could be confirmed: no pack/dictionary for the language, no location, the location unreachable, or no forms index there. */
+  reason?: 'no-pack' | 'no-asset-base' | 'offline' | 'no-index';
+}
+
 /** Background -> content: start (or update) Active on this page. */
 export interface ActivateMessage { type: 'golearn:activate'; speak: boolean }
 

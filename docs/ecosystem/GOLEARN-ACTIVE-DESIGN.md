@@ -156,3 +156,46 @@ Where the build differs from §1–§6, and why:
   records no event. The scan reads the page's text into memory for tokenising and drops it; this is the same kind of
   reading a lookup does for its sentence context, now for the visible screen. Sites whose entry refuses are never
   scanned, whatever the switch says (the registration excludes them, and the scan checks the registry again).
+
+## 8. The dictionary confirms the words the analyser does not know (2026-10-27)
+
+Contract: `docs/ecosystem/GOLEARN-ACTIVE-DICTIONARY.md`. The gate in `active/scan.ts` (`known`) is still the analyser's: a creditable lemma
+from the course word list. What changed is what the page does with the words that fail it.
+
+- **The question.** After `tokensIn`, `scanOnce` collects the tokens that are not `known` and are made of letters only (`formsToConfirm`),
+  takes the normalised form from `ids[0]` and asks the background, once per form per tab, `golearn:confirm-forms`
+  `{ languageId, forms }` (at most 500 forms a message; the content side splits larger sets). The reply is
+  `{ ok, forms: { [form]: [lemma, pos | null] | null }, source?, reason? }`: `null` = the index lacks the form; the first row of the index
+  is the one returned. A per-instance `Map<formId, lemmaId | null>` holds the answers, so a re-scan, a `refetch` or an edited node asks nothing.
+- **A hit** sets `known = true` and appends `lemma:<lang>:<lemma>[:<pos>]` (the same id shape the scanner gives an analysed word), and
+  only then is the learner model consulted (confirm first, `consult` second), so levels, highlights and encounters treat the word like any
+  analysed one. **A miss** (names, other languages, typos) stays skipped, exactly as before: the dictionary can only ADD words of the active
+  language, so the 2026-10-25 rule (a Hebrew or English word on a German page stays unmarked) is untouched.
+- **The per-node token cache is not frozen.** The answers live outside the cache (the map above); `applyConfirmations` writes a hit onto the
+  scanner's cached token, flipping `known` only from false to true, and runs on every scan over all tokens. A node whose text changed is
+  tokenised afresh and picks its answers up from the map with no request. Nothing is invalidated, because an answer never changes within a tab.
+  `stop()` clears the map with the scanner.
+- **No answer.** A reply with a `reason` is not an answer about the words: no `null` is remembered. `no-pack` and `no-index` (no dictionary for
+  the language, or none with a forms index at the located place) stop the questions for this tab and say nothing: that is today's behaviour.
+  `offline` and `no-asset-base` set the tab's reason ("The dictionary could not be reached, so only the course word list underlines words.")
+  and the question is asked again after 15 s, on a later scan; the scan never waits on it beyond the one round trip. A silent background
+  (no reply, an error) is treated the same way without a reason. `ActiveState` gains `confirmed` (tokens the dictionary confirmed in the last
+  scan) and `unconfirmed` (tokens asked about and not found); `skipped` still counts every token that is not known. The popup does not show them yet.
+- **Background.** `background/forms.ts` takes the location from the gloss service (`gloss.dictionaryAt(languageId)`: the same `locate`,
+  the same order: the learner's dictionary address, the extension's own `app/`, the hosted copy from `app/config.json`; the same caching
+  `shardFetch`, so forms shards persist under `pack:shard:dict/<lang>/forms/…` beside the gloss shards and work offline once read). It builds a
+  `createFormsSource` per language and location with that fetch, `base` being the folder that holds the language folders. The index's
+  manifest is probed first through the caching fetch: a 404/410 is remembered (`no-index`), a thrown fetch or a 5xx is `offline` and is not
+  remembered; a shard that fails during a lookup makes the reply `offline` with the hits it did get, never a false "absent". It never
+  throws to the content script. The message is allowed for content scripts and gated by nothing but its bounds (it carries public
+  dictionary data, no learner data). The worker holds no address: nothing is hard-coded, so the bundles stay free of URLs.
+- **What ships.** No forms index is bundled into `dist/app`: Albanian answers `no-index` from the extension's own files (the first location
+  that has `dict/sq/manifest.json`) and German is served from the configured or hosted dictionary once `dict/de/forms/` is published there.
+- **German fallbacks after the index (`background/compounds.ts`, wired in `background/forms.ts`).** For a `de` form the index lacks as a whole
+  (never re-derived when it has it): (1) `retryEndings`: strip an adjective/participle ending (`en er em es e`, longest first; remainder >= 4 letters)
+  and accept an ADJ hit, or a VERB hit when the remainder is a present participle (`-end`) or a `ge-` past participle; or strip the dative plural `-n` and
+  accept a NOUN hit on a remainder ending in `e`; one extra `lookupForms` call. The answer is the hit's own lemma and pos. (2) `splitCompounds` on what is
+  still missing: forms of >= 8 letters cut at every point leaving >= 3 / >= 4 letters; the right part must be a NOUN/ADJ row (not PROPN, not closed class),
+  the left part in the index as written or without a linking element (`s es n en e er ens`), or itself a compound one level down; the longest right
+  part wins; the lemma is the left part as written + the head lemma (capitalised for a NOUN). One `lookupForms` call per level, at most 200 distinct
+  strings per request; a form the budget did not reach is left OUT of the reply (the page asks again on a later scan) rather than reported absent.

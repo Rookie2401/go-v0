@@ -7,7 +7,7 @@ import type { GoEvent } from '../../../repository-contract/src';
 import type { MetricsRow } from '../metrics';
 import { MSG, type ContentChromeApi } from '../platform';
 import type {
-  ActiveReply, CorrectReply, CorrectRequest, EntryReply, EntryRequest, ExplainReply, ExplainRequest, GlossReply, GlossRequest, PronounceInfoReply, ProfileReply, ProfileRequest, PublicStatus, RecordReply,
+  ActiveReply, ConfirmFormsReply, ConfirmFormsRequest, CorrectReply, CorrectRequest, EntryReply, EntryRequest, ExplainReply, ExplainRequest, GlossReply, GlossRequest, PronounceInfoReply, ProfileReply, ProfileRequest, PublicStatus, RecordReply,
 } from '../protocol';
 import type { WriteResult } from '../store';
 import type { LocalSentenceTranslationReply, LocalSentenceTranslationRequest } from '../translation/localProtocol';
@@ -31,6 +31,8 @@ export interface ContentServices {
   active?(): Promise<ActiveReply | undefined>;
   /** The scan's learner-model question (the words on screen): the worker answers from the device's own Repository, only while Active is on. */
   activeProfile?(req: ProfileRequest): Promise<ProfileReply | undefined>;
+  /** The scan's dictionary question (2026-10-27): which of these normalised forms does the language's forms index have? Public dictionary data only. */
+  confirmForms?(req: ConfirmFormsRequest): Promise<ConfirmFormsReply | undefined>;
   /** Calls the background's local model bridge only after an explicit sentence-translation action. */
   translateSentence?(req: LocalSentenceTranslationRequest): Promise<LocalSentenceTranslationReply | undefined>;
 }
@@ -65,6 +67,8 @@ export function createBridge(api: ContentChromeApi, timeoutMs = 4_000): Bridge {
     active: () => call<ActiveReply>(MSG.active, { op: 'get' }),
     entry: (req) => call<EntryReply>(MSG.entry, { ...req }),
     activeProfile: (req) => call<ProfileReply>(MSG.activeProfile, { ...req }),
+    // the first question of a page may make the worker locate the dictionary and fetch several shards: more time than a profile row
+    confirmForms: (req) => call<ConfirmFormsReply>(MSG.confirmForms, { ...req }, 20_000),
     // The worker allows a cold local model up to 60 seconds; include time for its private config read and message round-trip.
     translateSentence: (req) => call<LocalSentenceTranslationReply>(MSG.translateSentence, { ...req }, 125_000),
     events: {

@@ -1,7 +1,8 @@
-// Splits the Go logo (packages/shared-brand/go-logo.png) into the globe's two layers for the loading mark (packages/gopractice/loading.ts):
-//   go-globe-disc.png   the sphere (continents and the inner rim), which turns
-//   go-globe-frame.png  the rim's outer ring, the meridian arc with its knob, and the stand, which stay still
-// Both are the same square box around the sphere's centre, so the disc turns about the box centre with CSS alone. Run after go-logo.png changes:
+// Splits the Go logo (packages/shared-brand/go-logo.png) into the globe's three layers for the loading mark (packages/gopractice/loading.ts):
+//   go-globe-land.png   the continents, which drift across the sphere as it turns about its axis
+//   go-globe-rim.png    the rim's inner ring, still
+//   go-globe-frame.png  the rim's outer ring, the meridian arc with its knobs, and the stand, still
+// All three are the same square box around the sphere's centre, so the land can be clipped to the sphere with CSS alone. Run after go-logo.png changes:
 //   node scripts/split-go-globe.cjs packages/shared-brand/go-logo.png packages/shared-brand
 const fs = require('node:fs');
 const path = require('node:path');
@@ -48,31 +49,41 @@ function encode(w, h, rgba) {
   return Buffer.concat([Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk('IHDR', ihdr), chunk('IDAT', zlib.deflateSync(raw, { level: 9 })), chunk('IEND', Buffer.alloc(0))]);
 }
 
-/** Writes go-globe-disc.png (inside the circle, radius R + 1.5 so the anti-aliased rim stays whole) and go-globe-frame.png (the rest), both in one square box around the circle's centre that holds the whole globe, plus a geometry JSON. */
-function write({ w, h, rgba, cx, cy, R, gx0, gx1, gy0, gy1, outDir }) {
+/**
+ * Writes the three layers, each in the same square box around the circle's centre that holds the whole globe:
+ *   go-globe-land.png   the continents: everything inside the rim's inner edge (d < rIn); the layer that moves
+ *   go-globe-rim.png    the rim's inner ring (rIn ≤ d ≤ R − 8), still
+ *   go-globe-frame.png  the rest: the rim's outermost ring, the meridian arc with its knobs, and the stand, still
+ * plus a geometry JSON. `landRadiusShare` (rIn / size) is the radius of the circle the land is clipped to, as a share of the box, which
+ * packages/gopractice/styles.css carries as the clip-path of .go-globe-sphere.
+ */
+function write({ w, h, rgba, cx, cy, R, rIn, gx0, gx1, gy0, gy1, outDir }) {
   const alpha = (x, y) => (x < 0 || y < 0 || x >= w || y >= h) ? 0 : rgba[(y * w + x) * 4 + 3];
-  // the disc stops 8 px inside the rim's outer edge: the rim's outermost ring is round, so it may stay with the frame, and the two places where the
-  // meridian arc crosses the rim then stay still instead of turning with the sphere
+  // the rim layer stops 8 px inside the rim's outer edge: the rim's outermost ring is round, so it may stay with the frame, and the two places
+  // where the meridian arc crosses the rim then belong to the frame
   const edge = R - 8;
   const half = Math.ceil(Math.max(cx - gx0, gx1 - cx, cy - gy0, gy1 - cy) + 6);
   const size = half * 2;
   const left = Math.round(cx) - half, top = Math.round(cy) - half;
-  const disc = Buffer.alloc(size * size * 4), frame = Buffer.alloc(size * size * 4);
-  let discInk = 0, frameInk = 0, band = 0;
+  const land = Buffer.alloc(size * size * 4), rim = Buffer.alloc(size * size * 4), frame = Buffer.alloc(size * size * 4);
+  let landInk = 0, rimInk = 0, frameInk = 0, band = 0;
   for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) {
     const sx = left + x, sy = top + y;
     if (sx < gx0) continue; // the box reaches into the G: the globe alone
     const a = alpha(sx, sy); if (!a) continue;
     const i = (sy * w + sx) * 4, o = (y * size + x) * 4;
     const d = Math.hypot(sx + 0.5 - cx, sy + 0.5 - cy);
-    const target = d <= edge ? disc : frame;
+    const target = d < rIn ? land : d <= edge ? rim : frame;
     target[o] = rgba[i]; target[o + 1] = rgba[i + 1]; target[o + 2] = rgba[i + 2]; target[o + 3] = a;
-    if (target === disc) discInk += a; else { frameInk += a; if (d <= edge + 6) band += a; }
+    if (target === land) landInk += a; else if (target === rim) rimInk += a; else { frameInk += a; if (d <= edge + 6) band += a; }
   }
   fs.mkdirSync(outDir, { recursive: true });
-  fs.writeFileSync(path.join(outDir, 'go-globe-disc.png'), encode(size, size, disc));
+  fs.writeFileSync(path.join(outDir, 'go-globe-land.png'), encode(size, size, land));
+  fs.writeFileSync(path.join(outDir, 'go-globe-rim.png'), encode(size, size, rim));
   fs.writeFileSync(path.join(outDir, 'go-globe-frame.png'), encode(size, size, frame));
-  const geometry = { source: { w, h }, globeBox: { x0: gx0, x1: gx1, y0: gy0, y1: gy1 }, circle: { cx, cy, r: R }, box: { size, left, top }, discInkShare: discInk / (discInk + frameInk), inkInBandOutsideCircle: band / 255 };
+  for (const stale of ['go-globe-disc.png']) { const p = path.join(outDir, stale); if (fs.existsSync(p)) fs.unlinkSync(p); }
+  const total = landInk + rimInk + frameInk;
+  const geometry = { source: { w, h }, globeBox: { x0: gx0, x1: gx1, y0: gy0, y1: gy1 }, circle: { cx, cy, r: R, rIn }, box: { size, left, top }, landRadiusShare: rIn / size, inkShare: { land: landInk / total, rim: rimInk / total, frame: frameInk / total }, inkInBandOutsideCircle: band / 255 };
   fs.writeFileSync(path.join(outDir, 'go-globe-geometry.json'), JSON.stringify(geometry, null, 2));
   return geometry;
 }
@@ -114,5 +125,5 @@ function thickness(dx, dy) { let r = rIn; let seenInk = false; for (; r < rIn + 
 const ts = [thickness(0, -1), thickness(-1, 0), thickness(1, 0)].sort((a, b) => a - b);
 const t = ts[1];
 const R = rIn + t;
-const geometry = write({ w, h, rgba, cx, cy, R, gx0, gx1, gy0, gy1, outDir });
+const geometry = write({ w, h, rgba, cx, cy, R, rIn, gx0, gx1, gy0, gy1, outDir });
 console.log(JSON.stringify({ enclosedPixels: count, inner: { ex0, ex1, ey0, ey1, rIn }, thicknesses: ts, circle: { cx, cy, R }, ...geometry }));

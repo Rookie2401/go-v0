@@ -103,9 +103,10 @@ describe('focus indicators, motion and colour scheme', () => {
   });
 
   it('A-C04 transitions are limited to prefers-reduced-motion: no-preference; there are no animations or smooth scrolling anywhere, except the loading indicator\u2019s turn', () => {
-    // The one allowance (2026-10-28): the loading mark's sphere (.go-globe-disc) turns outside the media query, because the turning IS the
-    // loading indicator (WCAG 2.3.3 excludes motion essential to the information conveyed); reduced motion only slows it (animation-duration).
-    const essential = (selector: string): boolean => selector === '.go-globe-disc';
+    // The one allowance (2026-10-28): the loading mark's globe turns outside the media query (.go-globe-turn, the strip of land sliding across
+    // the sphere), because the turning IS the loading indicator (WCAG 2.3.3 excludes motion essential to the information conveyed); reduced
+    // motion only slows it (animation-duration).
+    const essential = (selector: string): boolean => selector === '.go-globe-turn';
     for (const s of SHEETS) {
       const motion = s.rules.filter((r) => 'transition' in r.decls || 'animation' in r.decls || r.decls['scroll-behavior'] === 'smooth');
       for (const r of motion) if (!essential(r.selector)) expect(r.media.join(' '), `${s.key} ${r.selector}`).toContain('prefers-reduced-motion: no-preference');

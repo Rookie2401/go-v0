@@ -74,9 +74,15 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     langSelect.value = s.languageId;
     langSelect.disabled = list.length < 2;
     langLine.classList.remove('warn');
+    // one language only: say why, truthfully. With the account unreadable (its service cannot be reached, nothing kept from before) the
+    // account's languages are simply not known here yet; that is not "others are added in GoLearn setup" (2026-10-27)
+    const accountUnread = s.connected && s.accountLanguagesFresh === false;
     langLine.textContent = list.length < 2
-      ? `${s.languageName} is the only language downloaded here; others are added in GoLearn setup.${s.packAvailable ? '' : ' No pack yet.'}`
+      ? accountUnread
+        ? `${s.languageName} is the only language on this device; the languages of your account will be listed once the service can be reached (see Sync below).`
+        : `${s.languageName} is the only language downloaded here; others are added in GoLearn setup.${s.packAvailable ? '' : ' No pack yet.'}`
       : `${s.languageName}${s.packAvailable ? '' : ' (no pack yet)'}`;
+    if (accountUnread) langLine.classList.add('warn');
   }
   langSelect.addEventListener('change', async () => {
     const languageId = langSelect.value;
@@ -121,9 +127,26 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     syncLine.classList.toggle('warn', !!y.lastError);
     // an unreachable service names the address in use and the way to change it (2026-10-25: the owner's network filters the usual name)
     const unreachable = !!y.lastError && /fetch|network|reach|ECONN|timed? ?out/i.test(y.lastError);
+    const stored = (s.baseUrl ?? '').replace(/\/+$/, '');
+    const standard = (s.defaultBaseUrl ?? '').replace(/\/+$/, '');
+    const local = /^https?:\/\/(127\.0\.0\.1|localhost|\[::1\])(:|\/|$)/.test(stored);
     detail.textContent = !y.lastError ? '' : unreachable
-      ? `${y.lastError}: the service at ${s.baseUrl ?? 'the configured address'} could not be reached. If your network blocks that name, set another address for the same service under Sign in · Service address in GoLearn setup.`
+      ? `${y.lastError}: the service at ${s.baseUrl ?? 'the configured address'}${local ? ' (a development address on this computer)' : ''} could not be reached. If your network blocks that name, set another address for the same service under Sign in · Service address in GoLearn setup.`
       : y.lastError;
+    // one click to the address the extension ships with, when the stored one is not it (2026-10-27: a development address from an
+    // earlier install, or a name a network filters); the sign-in is kept per address, so the account is signed in again after
+    if (y.lastError && unreachable && standard && stored !== standard) {
+      const use = doc.createElement('button');
+      use.type = 'button';
+      use.id = 'use-standard-service';
+      use.textContent = `Use ${standard} instead`;
+      use.addEventListener('click', async () => {
+        use.disabled = true;
+        try { await chrome.runtime.sendMessage({ type: MSG.serviceConfig, op: 'set', baseUrl: standard }); } catch { /* the status below says what happened */ }
+        await refresh();
+      });
+      detail.append(' ', use);
+    }
   }
 
   // ── GoLearn Active: the one switch, what it found on this page, and the legend ──

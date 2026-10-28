@@ -71,7 +71,7 @@ export interface Rig {
 /** The shard the fake dictionary serves (one file, no content that matters). */
 const shard = (): Response => new Response('{}', { status: 200, headers: { 'content-type': 'application/json' } });
 
-export function createRig(): Rig {
+export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
   const h = createHarness();
   h.clock.set(new Date().toISOString()); // the service and the worker agree on the time, whatever day the tests run
   const fake = createChromeFake();
@@ -89,7 +89,7 @@ export function createRig(): Rig {
     if (u.includes('/dict/')) { if (offline.value) throw new TypeError('Failed to fetch'); log.push({ method: 'GET', path: new URL(u).pathname, status: 200 }); return shard(); }
     return svcFetch(input, init);
   }) as typeof fetch;
-  const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
+  const bg = createBackground(fake, { fetch: fetchImpl, packs: fakePacks(glossCalls), now: () => clock.now, ...(opts.defaultServiceUrl ? { defaultServiceUrl: opts.defaultServiceUrl } : {}), timers: { set: (fn, ms) => { const t = { ms, cleared: false, fired: false, fire() { if (!t.cleared && !t.fired) { t.fired = true; fn(); } } }; timers.push(t); return t; }, clear: (h) => { (h as { cleared: boolean }).cleared = true; } } });
   bg.register();
   const rig: Rig = {
     fake, h, bg, log, glossCalls, offline, clock, timers,

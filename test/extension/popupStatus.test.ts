@@ -74,6 +74,50 @@ describe('connected', () => {
     expect(text('language')).toMatch(/^German/);
   });
 
+  it('a stored address that is not the shipped one gets a one-click switch to it when unreachable; the language line says the account is unread, not "others are added in setup" (2026-10-27)', async () => {
+    const r2 = createRig({ defaultServiceUrl: 'https://go-v0.example.org' });
+    document.body.innerHTML = body;
+    await r2.signUp();
+    await r2.connect();
+    await r2.fireTimers();
+    const page = { id: r2.fake.runtime.id, url: `chrome-extension://${r2.fake.runtime.id}/action/popup.html` };
+    // the account's languages were never read (no copy kept), and the service is now unreachable
+    await r2.fake.storage.local.remove('golearn:account-languages');
+    r2.offline.value = true;
+    await r2.content({ type: MSG.record, event: pendingEvent() });
+    await r2.fake.dispatch({ type: MSG.syncNow }, page);
+    await initPopup(document, r2.fake);
+    expect(text('language')).toMatch(/^Albanian is the only language on this device; the languages of your account will be listed once the service can be reached/);
+    expect($('language').classList.contains('warn')).toBe(true);
+    const use = $<HTMLButtonElement>('use-standard-service');
+    expect(use.textContent).toBe('Use https://go-v0.example.org instead');
+    use.click();
+    await flush(60);
+    const status = await r2.fake.dispatch({ type: MSG.status }, page) as { baseUrl?: string };
+    expect(status.baseUrl).toBe('https://go-v0.example.org');
+  });
+
+  it('the account\'s languages kept from the last answer still fill the switch while the service is unreachable, and switching to one enrols it on this device (2026-10-27)', async () => {
+    await rig.signUp();
+    await rig.connect();
+    await rig.fireTimers();
+    const page = { id: rig.fake.runtime.id, url: `chrome-extension://${rig.fake.runtime.id}/action/popup.html` };
+    await rig.fake.dispatch({ type: MSG.enrol, languageId: 'de', packId: 'pack:de', packVersion: '1', goals: [{ kind: 'reading' }] }, page);
+    await rig.fake.dispatch({ type: MSG.status }, page); // online: the account's languages are read and kept
+    rig.offline.value = true;
+    await initPopup(document, rig.fake);
+    const select = $<HTMLSelectElement>('language-select');
+    expect([...select.options].map((o) => o.value)).toContain('de');
+    expect(text('language')).not.toMatch(/will be listed once the service can be reached/);
+    select.value = 'de';
+    select.dispatchEvent(new Event('change'));
+    await flush(60);
+    const status = await rig.fake.dispatch({ type: MSG.status }, page) as { languageId: string };
+    expect(status.languageId).toBe('de'); // the device's new enrolment, made without the service
+    const local = await rig.fake.dispatch({ type: MSG.localRepo, op: 'enrolments' }, page) as { enrolments: Array<{ languageId: string; active: boolean }> };
+    expect(local.enrolments.find((e) => e.languageId === 'de')?.active).toBe(true);
+  });
+
   it('an unreachable service is named with the way to change its address (2026-10-25)', async () => {
     await rig.signUp();
     await rig.connect();

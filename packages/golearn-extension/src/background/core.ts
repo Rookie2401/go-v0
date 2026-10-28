@@ -46,6 +46,8 @@ export interface BackgroundOptions {
   /** The language packs (tests pass a fake). */
   packs?: PackProvider;
   timers?: { set(fn: () => void, ms: number): unknown; clear(handle: unknown): void };
+  /** The service address the extension ships with; read from app/config.json when absent (tests pass one). */
+  defaultServiceUrl?: string;
 }
 
 type SenderKind = 'page' | 'content' | 'foreign';
@@ -253,10 +255,19 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     let onDevice = false;
     let onAccount = false;
     const list = await localRepo.handle({ op: 'enrolments' }) as { ok: boolean; enrolments?: Array<{ enrolmentId: string; languageId: string; endedAt?: string; explicit: boolean }> };
-    const local = list.ok ? (list.enrolments ?? []).find((e) => e.languageId === languageId && !e.endedAt && e.explicit) : undefined;
-    if (local) {
-      const r = await localRepo.handle({ op: 'select', enrolmentId: local.enrolmentId }) as { ok: boolean };
+    const have = list.ok ? (list.enrolments ?? []).find((e) => e.languageId === languageId && !e.endedAt && e.explicit) : undefined;
+    if (have) {
+      const r = await localRepo.handle({ op: 'select', enrolmentId: have.enrolmentId }) as { ok: boolean };
       onDevice = r.ok;
+    } else {
+      // a language chosen on the account (the hosted setup app, another device) but not yet on this one: enrol it here too, as the setup
+      // page's Download would, so the switch works even while the service cannot be reached (2026-10-27). The dictionary pack is not
+      // fetched by this; meanings then come from the service or the hosted copy, and Settings says "no pack yet" until it is downloaded.
+      const chosen = (await accountLanguages()).languages.includes(languageId) || !!packs.manifest(languageId);
+      if (chosen) {
+        const r = await localRepo.handle({ op: 'enrol', languageId, goals: [{ kind: 'reading' }] }) as { ok: boolean };
+        onDevice = r.ok;
+      }
     }
     const a = await session.authenticated();
     if (a) {
@@ -270,13 +281,44 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     return { ok: true, languageId, languageName: languageNameOf(languageId), where: onDevice && onAccount ? 'both' : onDevice ? 'device' : 'account' };
   }
 
-  /** The languages of the account's open enrolments, when signed in and the service answers within a moment; else none (the popup never waits on the network). */
-  async function accountLanguages(): Promise<string[]> {
+  /**
+   * The languages of the account's open enrolments: read from the service when signed in and it answers within a moment, and kept in
+   * storage so that the next time it does not answer (the owner's network filters a name, the address is stale) the popup still lists
+   * them (2026-10-27). `fresh` is false only when neither the service nor the stored copy gave a list. The popup never waits on the network.
+   */
+  const ACCOUNT_LANGUAGES_KEY = 'golearn:account-languages';
+  async function accountLanguages(): Promise<{ languages: string[]; fresh: boolean }> {
     const a = await session.authenticated();
-    if (!a) return [];
-    const quiet = new Promise<string[]>((resolve) => setTimeout(() => resolve([]), 2500));
-    const ask = a.api.listEnrolments().then((r) => (r.ok ? [...new Set(r.data.enrolments.filter((e) => !e.endedAt).map((e) => e.languageId))] : []), () => []);
-    return Promise.race([ask, quiet]);
+    if (!a) return { languages: [], fresh: true };
+    const quiet = new Promise<string[] | undefined>((resolve) => setTimeout(() => resolve(undefined), 2500));
+    const ask = a.api.listEnrolments().then((r) => (r.ok ? [...new Set(r.data.enrolments.filter((e) => !e.endedAt).map((e) => e.languageId))] : undefined), () => undefined);
+    const live = await Promise.race([ask, quiet]);
+    if (live) {
+      try { await local.set({ [ACCOUNT_LANGUAGES_KEY]: { learnerId: a.session.learnerId, languages: live } }); } catch { /* the list still serves this call */ }
+      return { languages: live, fresh: true };
+    }
+    try {
+      const kept = (await local.get(ACCOUNT_LANGUAGES_KEY))[ACCOUNT_LANGUAGES_KEY] as { learnerId?: string; languages?: unknown } | undefined;
+      if (kept && kept.learnerId === a.session.learnerId && Array.isArray(kept.languages)) return { languages: kept.languages.filter((l): l is string => typeof l === 'string'), fresh: true };
+    } catch { /* no copy */ }
+    return { languages: [], fresh: false };
+  }
+
+  /** The service address the extension ships with (app/config.json's serviceUrl), read once; undefined outside an extension or without one. */
+  let defaultServiceP: Promise<string | undefined> | undefined;
+  function defaultServiceUrl(): Promise<string | undefined> {
+    defaultServiceP ??= (async () => {
+      if (bg.defaultServiceUrl) return bg.defaultServiceUrl.replace(/\/+$/, '');
+      try {
+        const url = chrome.runtime.getURL?.('app/config.json');
+        if (!url) return undefined;
+        const res = await doFetch(url);
+        if (!res.ok) return undefined;
+        const cfg = JSON.parse(await res.text()) as { serviceUrl?: unknown };
+        return typeof cfg.serviceUrl === 'string' && /^https?:\/\//.test(cfg.serviceUrl) ? cfg.serviceUrl.replace(/\/+$/, '') : undefined;
+      } catch { return undefined; }
+    })();
+    return defaultServiceP;
   }
 
   async function pageStatus(): Promise<PageStatus> {
@@ -287,8 +329,15 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
       ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
       // the popup's language switch lists these: the account's enrolment first, then the device's open enrolments in setup order, then the
       // account's other open enrolments (a language chosen in the hosted setup app or on another device; read from the service when it
-      // answers within a moment, never waited for)
-      chosenLanguages: [...new Set([s.languageId, ...(await localRepo.chosenLanguages()), ...(await accountLanguages())].filter((l): l is string => !!l))],
+      // answers within a moment, else the copy kept from the last time it did)
+      ...(await (async () => {
+        const acct = await accountLanguages();
+        return {
+          chosenLanguages: [...new Set([s.languageId, ...(await localRepo.chosenLanguages()), ...acct.languages].filter((l): l is string => !!l))],
+          accountLanguagesFresh: acct.fresh,
+        };
+      })()),
+      ...(await (async () => { const d = await defaultServiceUrl(); return d ? { defaultBaseUrl: d } : {}; })()),
       needsSignIn: pub.needsSignIn || sy.needsSignIn,
       sync: { pending: sy.pending, localOnly: sy.localOnly, rejected: sy.rejected, lastPushAt: sy.lastPushAt, lastError: sy.lastError, online: sy.online, needsSignIn: sy.needsSignIn || (s.connected && s.expired) },
       ...(s.revocationPending ? { revocationPending: true } : {}),

@@ -37,6 +37,8 @@ try {
   foreach ($size in @(16,32,48,128)) { Export-GoIcon "packages\golearn-extension\icons\icon-$size.png" $size }
   # the transparent master beside the extension icons: the action popup draws it as a CSS mask (copyStatic ships the whole folder)
   Copy-Item (Join-Path $repo 'packages\shared-brand\go-logo.png') (Join-Path $repo 'packages\golearn-extension\icons\go-logo.png') -Force
+  # and beside the setup app's icons: its header draws it as a CSS mask by a URL relative to the page (the options page is a classic script with no import.meta.url)
+  Copy-Item (Join-Path $repo 'packages\shared-brand\go-logo.png') (Join-Path $repo 'packages\golearn-extension\app\icons\go-logo.png') -Force
   foreach ($name in @('splash-2732x2732.png','splash-2732x2732-1.png','splash-2732x2732-2.png')) { Export-GoSplash "packages\goreview-ios\ios\App\App\Assets.xcassets\Splash.imageset\$name" 2732 }
   foreach ($size in @(192,512)) {
     Export-GoIcon "packages\golearn-extension\app\icons\icon-$size.png" $size

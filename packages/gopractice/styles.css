@@ -8,7 +8,7 @@
 @font-face { font-family: 'EB Garamond'; src: url('./fonts/eb-garamond-latin-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
 
 :root {
-  /* the top safe-area inset, counted once: 0 where the page already starts below the status bar (statusBar.ts sets data-status-bar="clear") */
+  /* the top safe-area inset: the height of the status bar the installed GoReview draws its page under */
   --top-inset: env(safe-area-inset-top, 0px);
   color-scheme: light dark;
   font-size: 100%;
@@ -307,8 +307,6 @@ button.grade:focus-visible { outline: 2px solid var(--accent); outline-offset: 2
 .update-link:hover { text-decoration-color: var(--accent); }
 /* the installed app uses a translucent status bar with light text: a band of ink behind the clock keeps it legible on the paper */
 html[data-edition="review"] body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: var(--top-inset); background: var(--ink); z-index: 30; }
-/* the page already starts below the status bar: nothing to pad, no band behind the clock */
-html[data-status-bar="clear"] { --top-inset: 0px; }
 @media (prefers-color-scheme: dark) { html[data-edition="review"] body::before { background: var(--paper); } }
 html[data-edition="review"] { overscroll-behavior-y: none; }
 

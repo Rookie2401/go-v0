@@ -55,8 +55,8 @@ export interface AppContext {
   mode(): Promise<Mode>;
   /** The on-device Repository, when this copy has one. */
   local(): Promise<LocalRepo | undefined>;
+  /** The service address: config.json's, else the development default. Nothing in the app can change it (2026-10-28). */
   serviceUrl(): Promise<string>;
-  saveService(baseUrl: string | undefined): Promise<{ ok: true } | { ok: false; message: string }>;
   api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }>;
   /** The account-hardening routes (confirmation, reset, sessions, export, deletion) on the service address, with the session’s token when it belongs to that address. */
   accountApi(): Promise<{ client: AccountClient; session: Session | undefined; baseUrl: string }>;
@@ -165,7 +165,7 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   const onlineNow = (): boolean => (deps.win.navigator ? deps.win.navigator.onLine !== false : true);
 
   async function serviceUrl(): Promise<string> {
-    return resolveServiceUrl((await state.getService())?.baseUrl, deps.config);
+    return resolveServiceUrl(deps.config);
   }
 
   async function deviceId(): Promise<string> {
@@ -473,32 +473,6 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
   const ctx: AppContext = {
     deps, state, engine: deps.engine, run,
     serviceUrl, mode, local: openLocal,
-    async saveService(baseUrl) {
-      let next: string | undefined;
-      if (baseUrl !== undefined && baseUrl.trim() !== '') {
-        const check = validateServiceUrl(baseUrl);
-        if (!check.ok) return { ok: false, message: check.message };
-        next = check.url;
-      }
-      const previousUrl = await serviceUrl();
-      const previousSession = deps.mobile?.native ? await state.getSession() : undefined;
-      const nextUrl = resolveServiceUrl(next, deps.config);
-      if (deps.mobile?.native && previousUrl !== nextUrl) {
-        if (previousSession) {
-          try { await deps.createApi(previousUrl, previousSession.token).deleteSession(); } catch { /* the old credential is still cleared locally */ }
-          try { await state.clearSession(); }
-          catch { return { ok: false, message: 'GoReview could not clear the previous sign-in securely. Try again before changing the service address.' }; }
-          await state.clearCaches(previousSession.learnerId);
-          await removeByPrefix(deps.area, [`gopractice:choices:${previousSession.learnerId}`, `gopractice:prefs:${previousSession.learnerId}:`]);
-        }
-        dropHandle();
-        authExpired = false;
-        changed();
-      }
-      await state.setService(next);
-      if (!(deps.mobile?.native && previousUrl !== nextUrl)) invalidateIdentity();
-      return { ok: true };
-    },
     api, deviceId,
     async accountApi() {
       const [baseUrl, session] = await Promise.all([serviceUrl(), state.getSession()]);

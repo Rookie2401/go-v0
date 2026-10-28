@@ -1,6 +1,6 @@
 /**
  * Sign in: the first page on a first run (no language chosen, nobody signed in) and always reachable from the cog under Settings.
- * The brand, one sentence, the account form (sign in or create, email, password; the service address under a closed detail) and a
+ * The brand, one sentence, the account form (sign in or create, email, password) and a
  * plain “Continue without an account”. An account is optional: it only keeps progress across devices. After sign-in, account
  * creation or “Continue without an account” the application moves to the languages page.
  */

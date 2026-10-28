@@ -56,8 +56,9 @@ has to be **reachable from the phone**:
   2. **A development tunnel** to the service running on the laptop (a Cloudflare quick tunnel, `ngrok http 8790`, Tailscale Funnel,
      or similar): an `https://….` address that forwards to `127.0.0.1:8790`. Fine for trying it; the address changes with some tunnels
      and it only works while the laptop and the tunnel are running.
-- Tell the app the address one of two ways: put it in `dist-review/config.json` (`"serviceUrl": "https://repository.example.org"`)
-  before you host the folder, or type it under "Service address" on the sign-in page of the phone (it is remembered on the phone).
+- Tell the app the address by putting it in `dist-review/config.json` (`"serviceUrl": "https://repository.example.org"`, written by
+  `GOPRACTICE_SERVICE_URL` at build time) before you host the folder. Until 2026-10-28 it could also be typed under "Service address" on
+  the phone's sign-in page; that field is gone, the address is the build's.
   The service must allow the app's origin (CORS) for the `Authorization` header.
 - **No secrets in the repository or in `config.json`.** The service address is public information; a password and a token are
   typed on the phone and live only in that phone's storage. Do not paste tokens, keys or passwords into any file of this repo.

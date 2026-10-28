@@ -2,13 +2,12 @@
  * Sign in (optional): the form on the sign-in page, and the account state with sign-out under Settings. Without an account everything stays on this device; signing in keeps
  * the learner’s progress across devices: what is already on this device is uploaded once, the languages chosen here become
  * enrolments on the account, and from then on the two are kept in step. Signing out returns to the device alone and removes nothing.
- * The service address (create account / sign in go there) is kept as an advanced detail under the form.
+ * The service address (create account / sign in go there) is config.json's; nothing on the page names or changes it (2026-10-28).
  *
  * The password goes to the service address and nowhere else (in the extension: to the background worker, which sends
  * it to the service); it is never stored, logged or kept beyond the request. The bearer token is written only into
  * `golearn:session` (by the worker, or by this page when there is no worker).
  */
-import { validateServiceUrl } from '../config';
 import { recordTermsAcceptance } from '../consent';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
@@ -30,7 +29,7 @@ export interface AccountHooks {
 
 export interface AccountOptions {
   /**
-   * true (default): the sign in / create form and the service address, as on the sign-in page.
+   * true (default): the sign in / create form, as on the sign-in page.
    * false: only who is signed in and the way out (the Account section of Settings); the form is a link to the sign-in page.
    */
   form?: boolean;
@@ -47,27 +46,9 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
   const stateBox = h('p', { id: 'account-state', class: 'status-note', role: 'status' });
   const sessionBox = h('div', { id: 'account-session' });
   const formBox = h('div', { id: 'account-form-box' });
-  const serviceBox = h('details', { class: 'service-address', id: 'service-address' });
   append(el, [
     opts.intro === false ? null : p(opts.intro ?? ACCOUNT_INTRO),
-    stateBox, sessionBox, withForm ? formBox : null, withForm ? serviceBox : null,
-  ]);
-
-  // ── service address
-  const urlInput = h('input', { type: 'url', id: 'svc-url', name: 'svc-url', autocomplete: 'off', spellcheck: 'false', value: await ctx.serviceUrl() }) as HTMLInputElement;
-  const svcStatus = statusLine();
-  const save = button('Use this address', async () => {
-    const raw = urlInput.value.trim();
-    if (raw) { const c = validateServiceUrl(raw); if (!c.ok) { setStatus(svcStatus, c.message, 'error'); return; } }
-    const r = await ctx.saveService(raw || undefined);
-    if (!r.ok) { setStatus(svcStatus, r.message, 'error'); return; }
-    urlInput.value = await ctx.serviceUrl();
-    setStatus(svcStatus, raw ? `Service address set to ${urlInput.value}.` : 'Back to the default address.', 'ok');
-  }, { id: 'svc-save' });
-  append(serviceBox, [
-    h('summary', { id: 'svc-h' }, 'Service address (only used if you sign in)'),
-    field('Go Repository service', urlInput, 'https, or http on localhost for development. Leave empty to use the default.'),
-    h('div', { class: 'row' }, save), svcStatus,
+    stateBox, sessionBox, withForm ? formBox : null,
   ]);
 
   // ── session

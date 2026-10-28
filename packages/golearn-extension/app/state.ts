@@ -5,7 +5,7 @@
  *
  * Keys (the extension’s own keys, so the background worker and this page see the same state):
  *   golearn:session   { token, learnerId, enrolmentId, languageId, expiresAt, email }  — the ONLY place the bearer token is written
- *   golearn:service   { baseUrl, assetBase? }  — the Repository service address (https, or http on localhost) and the dictionary address
+ *   golearn:service   { baseUrl, assetBase? }  — the dictionary address the learner set (assetBase) beside a copy of config.json's service address; the address in use is always config.json's (2026-10-28)
  *   golearn:settings  { keepSnippets, remoteSpeechConsent, externalProcessingConsent, explanationDepth? }  — the learner’s privacy switches
  *   golearn:app       { visited[], tutorial, tutorialStep, packs{}, readerAck } — progress of this application only
  *   golearn:profile   { fetchedAt, email, learnerId, enrolments[] } — enrolments cached by this application; cleared at every account switch

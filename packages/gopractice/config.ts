@@ -7,7 +7,7 @@ import type { ApiResult } from '../repository-service/src/api';
 export const DEFAULT_SERVICE_URL = 'http://127.0.0.1:8790';
 
 export interface AppConfig {
-  /** Default service address (from config.json next to the app); the learner may override it in Settings or at sign-in. */
+  /** The service address (from config.json next to the app, written by the build). Nothing in the app changes it (2026-10-28: the fields that did are gone). */
   serviceUrl?: string;
   /** The extension's GoPractice page, for the hosted copy to point at (it cannot know the extension's id by itself). */
   extensionUrl?: string;
@@ -68,11 +68,9 @@ export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): 
   } catch { return {}; }
 }
 
-/** Learner override, then config.json, then the development default. An override that no longer validates is ignored. */
-export function resolveServiceUrl(override: string | undefined, config: AppConfig): string {
-  if (override) { const c = validateServiceUrl(override); if (c.ok) return c.url; }
-  if (config.serviceUrl) return config.serviceUrl;
-  return DEFAULT_SERVICE_URL;
+/** config.json's address, else the development default. No learner override (2026-10-28: the client cannot change the service address). */
+export function resolveServiceUrl(config: AppConfig): string {
+  return config.serviceUrl ?? DEFAULT_SERVICE_URL;
 }
 
 // ───────────────────────────── plain-language failures ─────────────────────────────

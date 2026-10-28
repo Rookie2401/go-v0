@@ -58,8 +58,8 @@ No account, no team and no service are needed for any of these.
 6. Practise: the **Practise** button in the toolbar popup (or on the setup page's Status screen) opens GoPractice as a
    page of the extension. It works on the device, without signing in: GoReview reads the candidates and knowledge from
    the on-device Repository, GoTell saves drafts there.
-7. Optional, on the **Sign in** page (the first page of a first run, or cog → Account → Sign in): enter the service address (under the form, in "Service address") (https, or http on localhost) and
-   create an account or sign in. The password goes to the service only. What is already on this device is uploaded
+7. Optional, on the **Sign in** page (the first page of a first run, or cog → Account → Sign in): create an account or sign in (the service address is the extension's own, from `app/config.json`; since 2026-10-28 nothing on
+   the page names or changes it). The password goes to the service only. What is already on this device is uploaded
    **once** (the page says how many events), the status changes from "On this device only" to "Synced to your
    account", and your language is enrolled on the account too. Signing out returns to this device alone and removes
    nothing; clearing the device's data is its own deliberate step (Privacy → Clear local data). Signing in on another

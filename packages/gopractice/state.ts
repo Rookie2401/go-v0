@@ -4,7 +4,6 @@
  *
  * Keys (the bearer token is written in `gopractice:session` and nowhere else):
  *   gopractice:session            { token, learnerId, email, expiresAt }
- *   gopractice:service            { baseUrl }                      the Repository service address the learner chose
  *   gopractice:settings           { remoteSpeechConsent }          device switches
  *   gopractice:deviceId           the random id of this device (created once)
  *   gopractice:profile            { fetchedAt, email, learnerId, enrolments[] }   cached enrolments; cleared at every account switch
@@ -23,7 +22,6 @@ import type { ReviewPreferences } from '../goreview/src/types';
 
 export const KEYS = {
   session: 'gopractice:session',
-  service: 'gopractice:service',
   settings: 'gopractice:settings',
   device: 'gopractice:deviceId',
   profile: 'gopractice:profile',
@@ -304,8 +302,6 @@ export interface StateStore {
   getSession(): Promise<Session | undefined>;
   setSession(s: Session): Promise<void>;
   clearSession(): Promise<void>;
-  getService(): Promise<{ baseUrl: string } | undefined>;
-  setService(baseUrl: string | undefined): Promise<void>;
   getSettings(): Promise<Settings>;
   patchSettings(p: Partial<Settings>): Promise<Settings>;
   getProfile(): Promise<Profile | undefined>;
@@ -365,8 +361,6 @@ export function createStateStore(area: KeyValueArea, secureSession?: SecureSessi
     },
     setSession: (s) => secureSession ? secureSession.set(s) : area.set({ [KEYS.session]: s }),
     clearSession: () => secureSession ? secureSession.clear() : area.remove(KEYS.session),
-    async getService() { const v = await read<{ baseUrl?: unknown }>(KEYS.service); return v && str(v.baseUrl) ? { baseUrl: v.baseUrl } : undefined; },
-    async setService(baseUrl) { if (baseUrl) await area.set({ [KEYS.service]: { baseUrl } }); else await area.remove(KEYS.service); },
     async getSettings() { const v = (await read<Record<string, unknown>>(KEYS.settings)) ?? {}; return { remoteSpeechConsent: v.remoteSpeechConsent === true }; },
     patchSettings: (p) => serial(async () => {
       const cur = (await read<Record<string, unknown>>(KEYS.settings)) ?? {};

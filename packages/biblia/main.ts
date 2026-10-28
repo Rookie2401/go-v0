@@ -5,7 +5,7 @@
 import { createBibliaApp } from './src/app';
 import { fetchJsonWith } from './src/data';
 import { accountRecorder, extensionSend, makeRecorder, noRecorder, type AccountRecorder, type Recorder } from './src/repo';
-import { createAccountService, normalizeServiceAddress, type AccountService } from './src/account';
+import { createAccountService, type AccountService } from './src/account';
 import { createEventQueue } from './src/queue';
 import { createSyncStatus } from './src/syncStatus';
 import { createMobileRuntime } from '../gopractice/mobile';
@@ -32,25 +32,14 @@ const isStandalone = (): boolean => document.querySelector('meta[name="biblia-ed
 const storage = ((): Storage | undefined => { try { const s = window.localStorage; s.getItem('biblia:probe'); return s; } catch { return undefined; } })();
 
 /** The account (sign-in state, the screen) and its recorder, over the Repository service config.json names. Without an address the page stays a reader and says so. */
-/** The Repository address chosen on this device in place of config.json's (the sign-in screen's "Service address", 2026-10-25); absent = the usual one. */
+/** Until 2026-10-28 a learner could keep another address in place of config.json's under this key (the "Service address" field, 2026-10-25); the field is gone and a kept value is dropped. */
 const SERVICE_OVERRIDE_KEY = 'biblia:serviceUrl';
-type ServiceAddress = { current: string; standard: string; set(url: string | undefined): void };
 
-async function standalone(): Promise<{ recorder: AccountRecorder; account: AccountService; serviceAddress: ServiceAddress } | { recorder: Recorder; account?: undefined; serviceAddress?: undefined }> {
+async function standalone(): Promise<{ recorder: AccountRecorder; account: AccountService } | { recorder: Recorder; account?: undefined }> {
   const config = await loadConfig((input, init) => globalThis.fetch(input, init));
   if (!config.serviceUrl) return { recorder: noRecorder('This copy of Biblia names no Repository service in its config.json, so it is a reader only and nothing is kept.') };
-  const standard = config.serviceUrl.replace(/\/+$/, '');
-  const override = normalizeServiceAddress(storage?.getItem(SERVICE_OVERRIDE_KEY) ?? '');
-  const serviceUrl = override && override !== standard ? override : standard;
-  const serviceAddress: ServiceAddress = {
-    current: serviceUrl,
-    standard,
-    set(url) {
-      try { if (url && url !== standard) storage?.setItem(SERVICE_OVERRIDE_KEY, url); else storage?.removeItem(SERVICE_OVERRIDE_KEY); } catch { /* no storage: nothing to keep */ }
-      // sessions, queues and levels are kept per address: the page starts again on the new one
-      window.setTimeout(() => window.location.reload(), 150);
-    },
-  };
+  const serviceUrl = config.serviceUrl.replace(/\/+$/, '');
+  try { storage?.removeItem(SERVICE_OVERRIDE_KEY); } catch { /* no storage: nothing was kept */ }
   const account = createAccountService({ serviceUrl, ...(storage ? { storage } : {}), fetch: (input, init) => globalThis.fetch(input, init) });
   const recorder = accountRecorder({
     session: () => { const s = account.session(); const api = account.api(); return s && api ? { api, learnerId: s.learnerId, deviceId: s.deviceId } : undefined; },
@@ -61,7 +50,7 @@ async function standalone(): Promise<{ recorder: AccountRecorder; account: Accou
     onAppended: (events) => account.emitAppended(events),
     onAuthExpired: () => account.expire(),
   });
-  return { recorder, account, serviceAddress };
+  return { recorder, account };
 }
 
 const started = (async () => {
@@ -79,7 +68,7 @@ const started = (async () => {
     win: window, doc: document,
     source: fetchJsonWith((input, init) => globalThis.fetch(input, init), './'),
     recorder,
-    ...(own?.account ? { account: own.account, serviceAddress: own.serviceAddress } : {}),
+    ...(own?.account ? { account: own.account } : {}),
     ...(syncStatus ? { syncStatus: syncStatus.element } : {}),
     // the way back to GoReview exists only when this page is bundled INSIDE the GoReview app (not in Biblia's own shell, which has the marker)
     ...(mobile.native && !isStandalone() ? { backUrl: '../index.html#/review' } : {}),

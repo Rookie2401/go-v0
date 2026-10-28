@@ -53,9 +53,10 @@ export interface AppContext {
   inExtension: boolean;
   /** Ask the background worker; `answered: false` when there is no extension, no listener or no reply in time. */
   ask<T = unknown>(message: Record<string, unknown>, timeoutMs?: number): Promise<BackgroundReply<T>>;
+  /** The service address: config.json's, else the development default. Nothing on the pages can change it (2026-10-28). */
   serviceUrl(): Promise<string>;
-  /** The service address and the dictionary address as stored (the latter may be unset). */
-  saveService(baseUrl: string | undefined, assetBase?: string | null): Promise<Saved>;
+  /** The dictionary address (where dictionary shards are read from first; packInstall.ts); null or '' clears it. Stored beside the service address, which stays config.json's. */
+  saveDictionaryAddress(assetBase: string | null): Promise<Saved>;
   api(): Promise<{ api: RepositoryApi; session: Session | undefined; baseUrl: string }>;
   /** The account-hardening routes (confirmation, reset, sessions, export, deletion) on the service address, with the session’s token when there is one. */
   accountApi(): Promise<{ client: AccountClient; session: Session | undefined; baseUrl: string }>;
@@ -286,15 +287,12 @@ export function createContext(deps: Deps, hooks: { go(route: string): void; chan
     },
     destroy() { const o = localOpen; localOpen = undefined; if (o) void o.then((l) => { try { return l?.close(); } catch { return undefined; } }, () => undefined); },
     async serviceUrl() {
-      const stored = await state.getService();
-      return resolveServiceUrl(stored?.baseUrl, deps.config);
+      return resolveServiceUrl(deps.config);
     },
-    async saveService(baseUrl, assetBase) {
-      const cur = await state.getService();
-      const base = baseUrl ?? resolveServiceUrl(undefined, deps.config);
-      const check = validateServiceUrl(base);
+    async saveDictionaryAddress(assetBase) {
+      const check = validateServiceUrl(resolveServiceUrl(deps.config));
       if (!check.ok) return { ok: false, message: check.message };
-      let asset: string | undefined = assetBase === undefined ? cur?.assetBase : assetBase === null || assetBase === '' ? undefined : assetBase;
+      let asset: string | undefined = assetBase === null || assetBase === '' ? undefined : assetBase;
       if (asset !== undefined) {
         const a = validateServiceUrl(asset);
         if (!a.ok) return { ok: false, message: `Dictionary address: ${a.message}` };

@@ -125,28 +125,13 @@ export async function initPopup(doc: Document, chrome: ChromeApi): Promise<Popup
     if (!s.connected) { syncLine.textContent = y.localOnly ? `${y.localOnly} event${y.localOnly === 1 ? '' : 's'} waiting for an account` : 'Nothing to sync.'; syncLine.classList.remove('warn'); detail.textContent = ''; return; }
     syncLine.textContent = `Sync: ${y.pending} pending · last sync ${ago(y.lastPushAt)}${y.online ? '' : ' · offline'}${y.rejected ? ` · ${y.rejected} refused by the service` : ''}`;
     syncLine.classList.toggle('warn', !!y.lastError);
-    // an unreachable service names the address in use and the way to change it (2026-10-25: the owner's network filters the usual name)
+    // an unreachable service is named; the address is the extension's own (app/config.json) and nothing in the popup or in setup changes it (2026-10-28)
     const unreachable = !!y.lastError && /fetch|network|reach|ECONN|timed? ?out/i.test(y.lastError);
     const stored = (s.baseUrl ?? '').replace(/\/+$/, '');
-    const standard = (s.defaultBaseUrl ?? '').replace(/\/+$/, '');
     const local = /^https?:\/\/(127\.0\.0\.1|localhost|\[::1\])(:|\/|$)/.test(stored);
     detail.textContent = !y.lastError ? '' : unreachable
-      ? `${y.lastError}: the service at ${s.baseUrl ?? 'the configured address'}${local ? ' (a development address on this computer)' : ''} could not be reached. If your network blocks that name, set another address for the same service under Sign in · Service address in GoLearn setup.`
+      ? `${y.lastError}: the service at ${s.baseUrl ?? 'the configured address'}${local ? ' (a development address on this computer)' : ''} could not be reached. Check your connection; GoLearn tries again by itself.`
       : y.lastError;
-    // one click to the address the extension ships with, when the stored one is not it (2026-10-27: a development address from an
-    // earlier install, or a name a network filters); the sign-in is kept per address, so the account is signed in again after
-    if (y.lastError && unreachable && standard && stored !== standard) {
-      const use = doc.createElement('button');
-      use.type = 'button';
-      use.id = 'use-standard-service';
-      use.textContent = `Use ${standard} instead`;
-      use.addEventListener('click', async () => {
-        use.disabled = true;
-        try { await chrome.runtime.sendMessage({ type: MSG.serviceConfig, op: 'set', baseUrl: standard }); } catch { /* the status below says what happened */ }
-        await refresh();
-      });
-      detail.append(' ', use);
-    }
   }
 
   // ── GoLearn Active: the one switch, what it found on this page, and the legend ──

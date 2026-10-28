@@ -6,7 +6,8 @@
  *
  * Nothing here is ever put in a message to a content script, in a page, in a log or in a status reply. The token is read
  * from storage for each call (a service worker may be restarted at any time) and handed only to the typed API client.
- * The service address must be https, or http on a loopback host (a local development service).
+ * The service address must be https, or http on a loopback host (a local development service). When the extension ships one
+ * (app/config.json, `shippedBaseUrl`) that is the address in use; what golearn:service holds is never used in its place (2026-10-28).
  */
 import { createRepositoryApi, type ApiResult, type MeResponse, type RepositoryApi } from '../../../repository-service/src/api';
 import type { Enrolment, LearningGoal } from '../../../repository-contract/src';
@@ -61,6 +62,8 @@ export interface SessionManagerOptions {
   extensionId?: string;
   area: StorageArea;
   fetch: typeof fetch;
+  /** The service address the extension ships with; when it gives one, that is the address in use (2026-10-28). */
+  shippedBaseUrl?: () => Promise<string | undefined>;
   now?: () => number;
   /** Whether a language has an installable pack (the choice of enrolment prefers one that has). */
   packAvailable?: (languageId: string) => boolean;
@@ -124,7 +127,9 @@ export function createSessionManager(opts: SessionManagerOptions) {
   const readService = async (): Promise<ServiceConfig | undefined> => {
     const v = (await area.get(SERVICE_KEY))[SERVICE_KEY] as Partial<ServiceConfig> | undefined;
     if (!v || typeof v.baseUrl !== 'string') return undefined;
-    const ok = validateBaseUrl(v.baseUrl); // never trust what is in storage either
+    // the extension's own address wins over a stored one (an earlier build's, or the field that existed until 2026-10-28)
+    const shipped = validateBaseUrl(await opts.shippedBaseUrl?.());
+    const ok = shipped.ok ? shipped : validateBaseUrl(v.baseUrl); // never trust what is in storage either
     if (!ok.ok) return undefined;
     return { baseUrl: ok.url, ...(typeof v.assetBase === 'string' && validateAssetBase(v.assetBase, opts.extensionId).ok ? { assetBase: v.assetBase } : {}) };
   };

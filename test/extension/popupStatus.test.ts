@@ -74,13 +74,16 @@ describe('connected', () => {
     expect(text('language')).toMatch(/^German/);
   });
 
-  it('a stored address that is not the shipped one gets a one-click switch to it when unreachable; the language line says the account is unread, not "others are added in setup" (2026-10-27)', async () => {
+  it('an unreachable service is named with no "Use … instead" button; the extension\'s own address is the one in use whatever was stored (2026-10-28)', async () => {
     const r2 = createRig({ defaultServiceUrl: 'https://go-v0.example.org' });
     document.body.innerHTML = body;
     await r2.signUp();
     await r2.connect();
     await r2.fireTimers();
     const page = { id: r2.fake.runtime.id, url: `chrome-extension://${r2.fake.runtime.id}/action/popup.html` };
+    // a stored address (an earlier build, or the field that existed until 2026-10-28) is never the one in use
+    await r2.fake.dispatch({ type: MSG.serviceConfig, op: 'set', baseUrl: 'https://other.example.org' }, page);
+    expect(((await r2.fake.dispatch({ type: MSG.status }, page)) as { baseUrl?: string }).baseUrl).toBe('https://go-v0.example.org');
     // the account's languages were never read (no copy kept), and the service is now unreachable
     await r2.fake.storage.local.remove('golearn:account-languages');
     r2.offline.value = true;
@@ -89,12 +92,9 @@ describe('connected', () => {
     await initPopup(document, r2.fake);
     expect(text('language')).toMatch(/^Albanian is the only language on this device; the languages of your account will be listed once the service can be reached/);
     expect($('language').classList.contains('warn')).toBe(true);
-    const use = $<HTMLButtonElement>('use-standard-service');
-    expect(use.textContent).toBe('Use https://go-v0.example.org instead');
-    use.click();
-    await flush(60);
-    const status = await r2.fake.dispatch({ type: MSG.status }, page) as { baseUrl?: string };
-    expect(status.baseUrl).toBe('https://go-v0.example.org');
+    expect(document.getElementById('use-standard-service')).toBeNull();
+    expect(text('sync-detail')).toContain('https://go-v0.example.org');
+    expect(text('sync-detail')).not.toMatch(/Service address|set another address/);
   });
 
   it('the account\'s languages kept from the last answer still fill the switch while the service is unreachable, and switching to one enrols it on this device (2026-10-27)', async () => {
@@ -118,7 +118,7 @@ describe('connected', () => {
     expect(local.enrolments.find((e) => e.languageId === 'de')?.active).toBe(true);
   });
 
-  it('an unreachable service is named with the way to change its address (2026-10-25)', async () => {
+  it('an unreachable service is named, with no way to change its address (2026-10-28; until then the message pointed at the Service address field)', async () => {
     await rig.signUp();
     await rig.connect();
     await rig.fireTimers();
@@ -126,7 +126,9 @@ describe('connected', () => {
     await rig.content({ type: MSG.record, event: pendingEvent() });
     await rig.fake.dispatch({ type: MSG.syncNow }, { id: rig.fake.runtime.id, url: `chrome-extension://${rig.fake.runtime.id}/action/popup.html` });
     await initPopup(document, rig.fake);
-    expect(text('sync-detail')).toMatch(/could not be reached\. If your network blocks that name, set another address for the same service under Sign in · Service address in GoLearn setup\./);
+    expect(text('sync-detail')).toMatch(/could not be reached\. Check your connection; GoLearn tries again by itself\./);
+    expect(text('sync-detail')).not.toMatch(/Service address|set another address/);
+    expect(document.getElementById('use-standard-service')).toBeNull();
     expect(text('sync-detail')).toContain('the service at http');
   });
 

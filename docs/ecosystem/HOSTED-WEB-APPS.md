@@ -52,6 +52,18 @@ What the owner asked: that the GitHub build syncs with the greater GoLearn syste
    database; what differs is the network path, which the outside probe covers. A check from a phone on cellular (open the review address,
    sign in, see the two Hebrew words) closes that last gap and is the owner's to do.
 
+## No client can change the service address (2026-10-28)
+
+The owner: "Remove the option to change the service address. The client cannot have access to that." Gone the same day: GoReview's
+"Service address" disclosure on the sign-in page and the section on `#/developer` (the page still names the address, read-only, among the
+diagnostics); the GoLearn setup app's disclosure under the sign-in form and the popup's "Use … instead" button; Biblia's disclosure on the
+account page. The address in use is the one in each copy's `config.json` (written by the build: `GOPRACTICE_SERVICE_URL`,
+`BIBLIA_SERVICE_URL`, the extension's own `app/config.json`, `REPOSITORY_SERVICE_URL` for a TestFlight stage), else the development
+default `http://127.0.0.1:8790`. A value a learner stored earlier is ignored everywhere: the extension's worker uses its own address whatever
+`golearn:service` holds (a sign-in made at the old address is then refused and the popup says "Sign in again"); Biblia drops its stored
+override; GoReview no longer reads its `gopractice:service` key. The setup app's dictionary address (where dictionary shards are read from
+first) is unchanged. The iPhone shells get this with their next builds (GoReview 12, Biblia 4); builds 11 and 3 still carry the field.
+
 ## The default address is the Render one (2026-10-27)
 
 The owner: "Make v0.gorender the default address for every system." Done the same evening: GoReview web (`review/`, `BUILD_ID 18600d52ca75`),
@@ -83,9 +95,8 @@ master as `12e15b66`. Full report: the owner's Codex outputs folder, `cloud-serv
 Why the Render address and not the canonical one in these tests: this PC's network still blocks `golearn-global-languages.com`;
 from anywhere else the canonical name works, and the apps' configs keep it. `go-v0.onrender.com` is reachable from here.
 
-Still to do on the owner's desktop: the installed GoLearn extension names `http://127.0.0.1:8790` (the stopped PC service); on its
-Sign-in screen expand "Service address", enter `https://go-v0.onrender.com` (this network) or leave the canonical name (any other),
-"Use this address", sign in. Known cosmetic issue from the merged branch: Biblia's sync-status bar offers "Sign in" even while signed in.
+Done since (2026-10-28, below): the installed extension takes its address from its own `app/config.json` when its worker starts, so the
+stale `http://127.0.0.1:8790` it named is replaced without anyone typing; the "Service address" fields are gone from every client. Known cosmetic issue from the merged branch: Biblia's sync-status bar offers "Sign in" even while signed in.
 
 ## Loose ends
 

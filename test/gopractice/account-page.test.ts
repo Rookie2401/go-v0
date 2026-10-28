@@ -110,7 +110,8 @@ describe('Settings without the analytics', () => {
     await rig.go('developer');
     expect(rig.q('main h1').textContent).toBe('Developer');
     await until(() => !!rig.root.querySelector('#diagnostics dt'), 'the diagnostics');
-    for (const there of ['#settings-service', '#settings-sync', '#settings-diagnostics', '#sync-now', '#settings-svc-url']) expect(rig.root.querySelector(there), there).not.toBeNull();
+    for (const there of ['#settings-sync', '#settings-diagnostics', '#sync-now']) expect(rig.root.querySelector(there), there).not.toBeNull();
+    for (const gone of ['#settings-service', '#settings-svc-url']) expect(rig.root.querySelector(gone), gone).toBeNull(); // no way to change the service address (2026-10-28)
     expect(rig.q('#diagnostics').textContent).toContain('Session until');
   });
 });

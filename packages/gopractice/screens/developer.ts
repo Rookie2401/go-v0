@@ -1,12 +1,11 @@
 /**
- * #/developer — what the owner and the developers need and a learner never does (moved out of Settings on 2026-10-28): the service address,
+ * #/developer — what the owner and the developers need and a learner never does (moved out of Settings on 2026-10-28): the service address (read-only, among the diagnostics; the field that changed it went the same day),
  * the synchronisation state with its counters and "Sync now", the diagnostics (versions, scheduler, learner and device ids, queue counts,
  * cursors, clock skew) and the account's security events. Reached from the quiet "Developer information" line at the foot of Settings.
  */
 import { CONTRACT_VERSION } from '../../repository-contract/src';
 import type { AppContext } from '../context';
-import { validateServiceUrl } from '../config';
-import { append, button, clear, field, h, setStatus, shortDate, statusLine } from '../dom';
+import { append, button, clear, h, shortDate } from '../dom';
 import { eventsBlock } from './accountSecurity';
 import { syncLine } from './settings';
 import type { View } from './view';
@@ -15,27 +14,9 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const session = await ctx.state.getSession();
   const mode = await ctx.mode();
   const id = await ctx.identity();
-  const serviceBox = h('section', { class: 'card', id: 'settings-service', 'aria-labelledby': 'svc-h' }, h('h2', { id: 'svc-h' }, 'Service address (only used if you sign in)'));
   const syncBox = h('section', { class: 'card', id: 'settings-sync', 'aria-labelledby': 'sync-h' }, h('h2', { id: 'sync-h' }, 'Synchronisation'));
   const diagBox = h('section', { class: 'card', id: 'settings-diagnostics', 'aria-labelledby': 'diag-h' }, h('h2', { id: 'diag-h' }, 'Diagnostics'));
-  el.append(h('p', { class: 'muted' }, 'For the people who run GoReview. Nothing here is needed to learn with it.'), serviceBox, syncBox, diagBox, ...(session ? [eventsBlock(ctx, view)] : []));
-
-  // ── service address
-  const url = h('input', { type: 'url', id: 'settings-svc-url', name: 'svc-url', autocomplete: 'off', spellcheck: 'false', value: await ctx.serviceUrl() }) as HTMLInputElement;
-  const svcStatus = statusLine();
-  append(serviceBox, [
-    field('Go Repository service', url, 'https, or http on localhost for development. Leave empty to use the default.'),
-    h('div', { class: 'row' }, button('Use this address', () => {
-      void (async () => {
-        const raw = url.value.trim();
-        if (raw) { const c = validateServiceUrl(raw); if (!c.ok) { setStatus(svcStatus, c.message, 'error'); return; } }
-        const r = await ctx.saveService(raw || undefined);
-        if (!r.ok) { setStatus(svcStatus, r.message, 'error'); return; }
-        url.value = await ctx.serviceUrl();
-        setStatus(svcStatus, `Service address set to ${url.value}. Sign in again if you changed service.`, 'ok');
-      })();
-    }, { id: 'settings-svc-save', class: 'btn' })), svcStatus,
-  ]);
+  el.append(h('p', { class: 'muted' }, 'For the people who run GoReview. Nothing here is needed to learn with it.'), syncBox, diagBox, ...(session ? [eventsBlock(ctx, view)] : []));
 
   // ── sync + diagnostics
   async function paintSync(): Promise<void> {
@@ -66,6 +47,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     const rows: Array<[string, string]> = [
       ['GoPractice', ctx.deps.appVersion],
       ['Event contract', String(CONTRACT_VERSION)],
+      ['Service', await ctx.serviceUrl()],
       ['Scheduler', scheduler ? scheduler.algorithm : 'choose a language to see'],
       ['Scheduler parameters', scheduler ? scheduler.parametersVersion : 'choose a language to see'],
       ['Desired retention', prefs ? `${Math.round(prefs.desiredRetention * 100)}%` : '–'],

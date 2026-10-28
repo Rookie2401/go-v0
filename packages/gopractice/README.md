@@ -116,4 +116,5 @@ and the counts depend on (events, preferences, words added by hand, hold-out, sa
 Settings or the account page with nothing changed makes no request (2026-10-28: it took seconds on a phone, mostly the vocabulary pages and one unit
 read per candidate word); a sync that brings events changes the key, and after ten minutes the Repository is asked again anyway. On a full load the
 vocabulary count comes from the snapshot first and the live list replaces it, and the planner reads the units it may ask about in one batch
-(`primeFacts`). While a screen opens, `loading.ts` shows the loading mark: the logo’s globe, its sphere turning (`packages/shared-brand/go-globe-*.png`).
+(`primeFacts`). While a screen opens, `loading.ts` shows the loading mark: the logo’s globe, its sphere turning (`packages/shared-brand/go-globe-*.png`; the turn is the indicator
+itself, so it goes on under reduced motion too, slower; the mask sits on a child of the turning span, which WebKit needs to repaint the animation).

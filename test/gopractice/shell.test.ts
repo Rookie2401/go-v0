@@ -37,7 +37,9 @@ describe('the hash router', () => {
     expect(mark.getAttribute('aria-hidden')).toBe('true');
     expect(mark.style.getPropertyValue('--go-brand-mask')).toMatch(/go-logo\.png/);
     expect(rig.root.querySelector('header .go-brand img')).toBeNull();
-    expect(rig.q('header .go-brand').textContent).toBe('GoReview');
+    expect(rig.q('header .go-brand').textContent).toBe(''); // the mark alone: the launch screen showed GO over REVIEW
+    expect(rig.root.querySelector('.go-brand-word')).toBeNull();
+    expect(rig.q('header .go-brand').getAttribute('aria-label')).toBe('GoReview home');
     expect(rig.q('#language-name')).toBeTruthy();
     expect(rig.root.querySelector('#back-home')).toBeNull();      // the home has nowhere to go back to
     await rig.go('tell');

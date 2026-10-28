@@ -17,7 +17,7 @@
   --paper: #f7f2e8; --paper-raised: #fdfaf3; --ink: #2b2620; --ink-soft: #5c5346;
   --ink-faint: #6b6052;      /* text-safe: 5.5:1 on paper (the reader's own #8a7f6d is decoration only) */
   --ink-whisper: #8a7f6d;    /* decoration only, never text */
-  --rule: #e0d6c2; --rule-strong: #cdbfa3; --accent: #6b4f2a; --accent-soft: #8a6b40; --accent-ink: #fdfaf3;
+  --rule: #e0d6c2; --rule-strong: #cdbfa3; --accent: #6b4f2a; --accent-soft: #8a6b40; --accent-ink: #fdfaf3; --brand: var(--ink);
   --selection: rgba(107, 79, 42, .16);
   --shadow-raised: 0 1px 2px rgba(43, 38, 32, .06), 0 6px 20px rgba(43, 38, 32, .07);
   --control-line: #8a7d68;   /* form-control and button borders: 3.6:1 on paper */
@@ -30,7 +30,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --paper: #16130f; --paper-raised: #1e1a15; --ink: #d9cfbe; --ink-soft: #a89c86; --ink-faint: #a09478; --ink-whisper: #7d7059;
-    --rule: #322b22; --rule-strong: #453c2f; --accent: #c8a06a; --accent-soft: #b98f57; --accent-ink: #16130f;
+    --rule: #322b22; --rule-strong: #453c2f; --accent: #c8a06a; --accent-soft: #b98f57; --accent-ink: #16130f; --brand: var(--ink);
     --selection: rgba(200, 160, 106, .2);
     --shadow-raised: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .35);
     --control-line: #80735c;
@@ -415,7 +415,28 @@ img, svg, video, canvas { max-width: 100%; }
 .legal-text .notice { margin: .8rem 0; }
 
 /* The Go mark (the G and the globe) beside the name: a silhouette filled with the accent colour, so it is the brown of the paper theme and the lighter brown of the dark one. */
-.go-brand { display: inline-flex; align-items: center; gap: .5rem; flex-shrink: 0; color: var(--accent); font-size: .95rem; letter-spacing: .01em; text-decoration: none; }
-.go-brand-mark { display: block; width: 72px; height: 36px; background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
+/* The top bar carries the mark alone. The image box carries 0.34 of its height as empty margin on the left, pulled out so the G sits on the page's own
+   left edge. --mark-h is the only size. */
+.go-brand { --mark-h: 36px; margin-left: calc(var(--mark-h) * -0.34); }
+/* The launch screen (review build; see splash.ts): the mark over REVIEW, stacked and centred, in the ink on the paper; .out fades it away. */
+#goreview-splash { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem;
+  background: var(--paper); color: var(--brand); opacity: 1; transition: opacity .55s ease; }
+#goreview-splash.out { opacity: 0; pointer-events: none; }
+.splash-mark { display: block; width: 176px; height: 88px; background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; } /* the mask image itself is an inline style on the element (index.html), so its relative URL resolves against the page */
+.splash-word { font-size: 2rem; line-height: 1; letter-spacing: .22em; margin-left: .22em; text-transform: uppercase; font-weight: 400; }
+@media (prefers-reduced-motion: reduce) { #goreview-splash { transition: none; } }
+/* the home: the language dropdown stands where the page title was, in the title's size, over the same short centred rule */
+.home-language { text-align: center; margin: .5rem 0 1.5rem; }
+.home-language::after { content: ""; display: block; width: 3rem; height: 1px; margin: 1.1rem auto 0; background: var(--rule-strong); }
+.home-language .language-kicker { font-size: clamp(1.5rem, 4.5vw, 2.1rem); line-height: 1.2; font-weight: 600; letter-spacing: .14em; color: var(--ink); }
+.home-language .language-picker { max-width: 100%; }
+.home-language select.language-kicker { padding: .1rem 1.6rem .1rem .4rem; text-align: center; text-align-last: center; }
+.home-language select.language-kicker:hover { color: var(--accent); }
+.home-language .language-caret { font-size: 1.1rem; right: .25rem; color: var(--ink-soft); }
+/* the mark in the ink of the body text (--brand: cream on the dark theme, dark brown on paper), the same ink the launch screen uses */
+.go-brand { display: inline-flex; align-items: center; gap: 0; flex-shrink: 0; color: var(--brand); font-size: .95rem; letter-spacing: .01em; text-decoration: none; }
+.go-brand-mark { display: block; width: calc(var(--mark-h) * 2); height: var(--mark-h); background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
 .go-brand:hover { text-decoration: none; }
-@media (max-width: 380px) { .go-brand-mark { width: 60px; height: 30px; } }
+/* the wordmark left, the account (the cog) at the right edge, whatever sits between them */
+.topbar > .account { margin-left: auto; }
+@media (max-width: 430px) { .go-brand { --mark-h: 30px; } }

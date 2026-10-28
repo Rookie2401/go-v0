@@ -28,6 +28,7 @@ import * as vocabularyScreen from './screens/vocabulary';
 import { createLive, type Live } from './live';
 import type { View } from './screens/view';
 import { shortDate } from './dom';
+import { dismissSplash } from './splash';
 
 export interface RouteDef {
   id: 'review' | 'tell' | 'vocabulary' | 'settings' | 'signin' | 'privacy' | 'terms';
@@ -95,9 +96,19 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const acctEl = h('p', { class: 'account', id: 'account' });
   // the Go mark (the G and the globe, packages/shared-brand) as a silhouette filled with the accent colour: the Western Canon brown on paper, the lighter brown of the dark theme
   const logoUrl = new URL('../shared-brand/go-logo.png', import.meta.url).href;
+  // the top bar carries the Go mark alone (the launch screen showed the full GO / REVIEW wordmark); the link's label says the name
   const brandLink = h('a', { class: 'go-brand', href: '#/review', 'aria-label': 'GoReview home' },
-    h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: `--go-brand-mask: url("${logoUrl}")` }), h('span', {}, 'GoReview'));
+    h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: `--go-brand-mask: url("${logoUrl}")` }));
   const header = h('header', { class: 'topbar' }, brandLink, langWrap, syncEl, acctEl);
+  /**
+   * The language switcher lives in ONE element. On the home it stands where the page title used to be (the slot the home's
+   * shell renders, #home-language); on every other screen it sits in the top bar beside the wordmark.
+   */
+  function placeLanguage(): void {
+    const slot = main.querySelector('#home-language');
+    if (slot) { if (langWrap.parentElement !== slot) slot.append(langWrap); }
+    else if (langWrap.parentElement !== header) header.insertBefore(langWrap, syncEl);
+  }
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   clear(root);
   root.append(h('div', { class: 'shell' }, header, main));
@@ -265,7 +276,13 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     clear(main);
     main.setAttribute('data-route', route);
     const body = h('div', { class: 'body' });
-    main.append(...(mode !== 'none' && HAS_BACK.has(def.id) ? [h('p', { class: 'crumb' }, h('a', { href: '#/review', id: 'back-home' }, '← GoReview'))] : []), h('h1', {}, def.title), body);
+    // the home has no visible title: the wordmark is in the top bar and the language dropdown takes the title's place (the h1 stays for assistive technology)
+    // every review screen keeps its 'GoReview' h1 for assistive technology only (the wordmark is in the top bar); the home alone shows the dropdown in the title's place
+    const review = def.id === 'review' && mode !== 'none';
+    const home = review && subs.length === 0;
+    main.append(...(mode !== 'none' && HAS_BACK.has(def.id) ? [h('p', { class: 'crumb' }, h('a', { href: '#/review', id: 'back-home' }, '← GoReview'))] : []),
+      ...(review ? [h('h1', { class: 'sr' }, def.title)] : [h('h1', {}, def.title)]), ...(home ? [h('div', { class: 'home-language', id: 'home-language' })] : []), body);
+    placeLanguage();
     body.append(p('Loading your saved account data…', 'muted'));
     let idn: Awaited<ReturnType<AppContext['identity']>>;
     try { idn = await ctx.identity(); }
@@ -312,7 +329,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
     const open = (await ctx.mode()) !== 'none';
     const first = initial ?? { id: (open ? 'review' : 'signin') as RouteDef['id'], params: [], path: open ? 'review' : 'signin' };
     if (win.location.hash !== `#/${first.path}` && !initial) win.location.hash = `#/${first.path}`;
-    await show(first.id, first.params);
+    // the launch screen (review build) fades once the first screen is there, whatever that screen is
+    try { await show(first.id, first.params); } finally { dismissSplash(deps.doc, win); }
   })();
 
   return {

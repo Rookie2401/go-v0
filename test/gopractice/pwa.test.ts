@@ -102,6 +102,17 @@ describe('index.html of the review build', () => {
     expect(h).toMatch(/host === 'localhost'/);
   });
 
+  it('carries the launch screen (the Go mark over REVIEW) from the first paint, with its mark beside the icons and a fade in the stylesheet', () => {
+    const h = html();
+    expect(h).toContain('id="goreview-splash"');
+    expect(h).toContain('class="splash-word">REVIEW<');
+    expect(h).toContain("mask-image: url('./icons/go-logo.png')");
+    expect(fs.existsSync(path.join(outs.review, 'icons', 'go-logo.png'))).toBe(true);
+    const css = read(pkg, 'styles.css');
+    expect(css).toContain('#goreview-splash.out { opacity: 0;');
+    expect(css).toMatch(/#goreview-splash \{[^}]*flex-direction: column/);
+  });
+
   it('starts at the review home: the manifest start_url and the router both land on #/review', () => {
     expect(JSON.parse(read(outs.review, 'manifest.webmanifest')).start_url).toMatch(/#\/review$/);
   });

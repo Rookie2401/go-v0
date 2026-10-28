@@ -112,6 +112,8 @@ function shellFiles(outDir: string): string[] {
 function writePwa(outDir: string): void {
   fs.copyFileSync(path.join(pwaSource, 'manifest.webmanifest'), path.join(outDir, 'manifest.webmanifest'));
   fs.cpSync(path.join(pwaSource, 'icons'), path.join(outDir, 'icons'), { recursive: true });
+  // the launch screen's mark (the same PNG the app masks for its top bar), served beside the icons so index.html can show it before any script runs
+  fs.copyFileSync(path.join(repoRoot, 'packages', 'shared-brand', 'go-logo.png'), path.join(outDir, 'icons', 'go-logo.png'));
   const files = shellFiles(outDir);
   const hash = crypto.createHash('sha256');
   for (const f of files) { hash.update(f); hash.update(fs.readFileSync(path.join(outDir, f))); }
@@ -123,7 +125,13 @@ function writePwa(outDir: string): void {
   fs.writeFileSync(path.join(outDir, 'sw.js'), worker);
 }
 
-/** Review build only: the title, the manifest and iOS tags, the edition marker the app reads, and the worker's registration (inline, runs after load). */
+/** The launch screen of the review build: the Go mark over REVIEW, in the page's ink on its paper, from the first paint; the app fades it out (splash.ts). */
+const SPLASH_HTML = `<div id="goreview-splash" role="img" aria-label="GoReview">
+  <span class="splash-mark" style="-webkit-mask-image: url('./icons/go-logo.png'); mask-image: url('./icons/go-logo.png')"></span>
+  <span class="splash-word">REVIEW</span>
+</div>`;
+
+/** Review build only: the title, the manifest and iOS tags, the edition marker the app reads, the launch screen, and the worker's registration (inline, runs after load). */
 function reviewHtml(): Plugin {
   const register = fs.readFileSync(path.join(pwaSource, 'register.js'), 'utf8');
   return {
@@ -145,6 +153,7 @@ function reviewHtml(): Plugin {
           .replace('<title>GoPractice</title>', '<title>GoReview</title>')
           .replace('content="width=device-width, initial-scale=1"', 'content="width=device-width, initial-scale=1, viewport-fit=cover"')
           .replace('</head>', () => `${tags}\n</head>`)
+          .replace('<body>', () => `<body>\n${SPLASH_HTML}`)
           .replace('</body>', () => `<script>\n${register}</script>\n</body>`);
       },
     },

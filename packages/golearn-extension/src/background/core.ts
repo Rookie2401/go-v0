@@ -325,12 +325,15 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     return { languages: [], fresh: false };
   }
 
+  /** A session from before the name was kept (2026-10-28): the enrolments are re-read once per worker life, which stores the name for the next status. */
+  let nameAsked = false;
   async function pageStatus(): Promise<PageStatus> {
     const [pub, s, st, sy] = await Promise.all([publicStatus(), session.status(), settings.get(), sync.status()]);
+    if (s.connected && !s.expired && !s.displayName && !nameAsked) { nameAsked = true; void session.refresh().catch(() => undefined); }
     // `revocationPending`: the last sign-out could not reach the service (audit P-08); the setup page may say so
     const out: PageStatus & { revocationPending?: boolean } = {
       // a language chosen on this device counts: an account without an enrolment yet must not make the popup say "choose a language"
-      ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
+      ...pub, email: s.email, displayName: s.displayName, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
       // the popup's language switch lists these: the account's enrolment first, then the device's open enrolments in setup order, then the
       // account's other open enrolments (a language chosen in the hosted setup app or on another device; read from the service when it
       // answers within a moment, else the copy kept from the last time it did)

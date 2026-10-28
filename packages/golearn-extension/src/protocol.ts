@@ -62,6 +62,8 @@ export interface PublicStatus {
 export interface PageStatus extends PublicStatus {
   sync: SyncView;
   email?: string;
+  /** The learner's display name, when the account carries one: the popup's "Welcome, <name>" (2026-10-28). */
+  displayName?: string;
   baseUrl?: string;
   assetBase?: string;
   expiresAt?: string;

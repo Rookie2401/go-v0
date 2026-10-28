@@ -76,10 +76,11 @@ describe('what each entry may reach (exact package sets)', () => {
     // the background worker hosts the device-local Repository (packages/repository-local), which brings the service's store, engine and linguistic layer with it
     'golearn-background': ['golearn-extension', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
     'golearn-content': ['golearn-extension', 'golisten', 'repository-contract'],
-    'golearn-popup': ['golearn-extension', 'golisten', 'repository-contract'],
+    // the popup stopped naming the device voices on 2026-10-28 (the owner's cut), so it no longer reaches GoListen's tag data; the setup page's Audio guide does
+    'golearn-popup': ['golearn-extension', 'repository-contract'],
     // the setup app and GoPractice work with no account: inside the extension they connect to the worker's device-local Repository, and the hosted
     // setup app opens one of its own (a lazy chunk); repository-local brings the store, engine and linguistic layer with it (reached only through it, below)
-    'golearn-app': ['golearn-extension', 'golearn-share', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
+    'golearn-app': ['golearn-extension', 'golearn-share', 'golisten', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
     gopractice: ['gopractice', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
     'repository-service': ['repository-contract', 'repository-engine', 'repository-linguistics', 'repository-service', 'repository-store'],
   };
@@ -115,10 +116,10 @@ describe('what each entry may reach (exact package sets)', () => {
     for (const banned of ['repository-service', 'repository-sync', 'repository-store', 'repository-engine', 'repository-linguistics', 'language-packs']) expect(pk, banned).not.toContain(banned);
   });
 
-  it('GoLearn keeps audio behind the content voice adapter: popup reaches tag data; content uses injected providers', () => {
+  it('GoLearn keeps audio behind the content voice adapter: the setup page (its Audio guide) reaches tag data only; the popup and the worker none; content uses injected providers', () => {
     for (const e of ENTRIES.filter((x) => x.group === 'golearn-extension' && x.id !== 'golearn-content')) {
       const listen = [...reach(e.file).files].filter((f) => f.startsWith('packages/golisten/')).sort();
-      expect(listen, e.id).toEqual(e.id === 'golearn-popup' ? ['packages/golisten/src/deviceTags.ts'] : []);
+      expect(listen, e.id).toEqual(e.id === 'golearn-app' ? ['packages/golisten/src/deviceTags.ts'] : []);
     }
     const content = [...reach('packages/golearn-extension/src/content/index.ts').files].filter((f) => f.startsWith('packages/golisten/'));
     expect(content.length).toBeGreaterThan(0);

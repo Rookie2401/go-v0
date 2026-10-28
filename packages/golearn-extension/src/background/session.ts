@@ -2,7 +2,7 @@
  * The Repository connection. It lives ONLY in the background worker:
  *
  *   chrome.storage.local  golearn:service  { baseUrl, assetBase? }
- *   chrome.storage.local  golearn:session  { token, learnerId, enrolmentId?, languageId?, expiresAt, email }
+ *   chrome.storage.local  golearn:session  { token, learnerId, enrolmentId?, languageId?, expiresAt, email, displayName? }
  *
  * Nothing here is ever put in a message to a content script, in a page, in a log or in a status reply. The token is read
  * from storage for each call (a service worker may be restarted at any time) and handed only to the typed API client.
@@ -33,6 +33,8 @@ export interface SessionRecord {
   languageId?: string;
   expiresAt: string;
   email: string;
+  /** The learner's display name as GET /me reported it (at sign-in, and again whenever the enrolments are re-read); absent when the account has none. The popup greets by it (2026-10-28). */
+  displayName?: string;
 }
 
 /** What may be said about a session outside the background: no token, no learner id. */
@@ -41,6 +43,7 @@ export interface SessionStatus {
   /** The stored session has passed its expiry (the service will answer 401). */
   expired: boolean;
   email?: string;
+  displayName?: string;
   languageId?: string;
   hasEnrolment: boolean;
   /** The last sign-out could not reach the service: its session is still alive there and is revoked at the next connection. */
@@ -139,6 +142,19 @@ export function createSessionManager(opts: SessionManagerOptions) {
     return v as SessionRecord;
   };
   const isExpired = (s: SessionRecord): boolean => { const t = Date.parse(s.expiresAt); return Number.isFinite(t) && t <= now(); };
+  /** The display name GET /me carries, trimmed; undefined when the account has none. */
+  const nameOf = (me: MeResponse): string | undefined => {
+    const n = (me.learner as { displayName?: unknown } | undefined)?.displayName;
+    return typeof n === 'string' && n.trim() ? n.trim() : undefined;
+  };
+  /** The name as the service now reports it (set in GoReview's account page, or none): kept on the session for the popup's greeting. */
+  async function rememberName(name: string | undefined): Promise<void> {
+    const s = await readSession();
+    if (!s || s.displayName === name) return;
+    const next: SessionRecord = { ...s };
+    if (name) next.displayName = name; else delete next.displayName;
+    await area.set({ [SESSION_KEY]: next });
+  }
 
   const apiFor = (baseUrl: string, token?: string): RepositoryApi => createRepositoryApi({ baseUrl, fetch: opts.fetch, token });
 
@@ -146,7 +162,7 @@ export function createSessionManager(opts: SessionManagerOptions) {
     const [svc, s, pending] = await Promise.all([readService(), readSession(), area.get(PENDING_REVOKE_KEY)]);
     return {
       ...(pending[PENDING_REVOKE_KEY] ? { revocationPending: true } : {}),
-      connected: !!s, expired: s ? isExpired(s) : false, email: s?.email, languageId: s?.languageId, hasEnrolment: !!s?.enrolmentId,
+      connected: !!s, expired: s ? isExpired(s) : false, email: s?.email, displayName: s?.displayName, languageId: s?.languageId, hasEnrolment: !!s?.enrolmentId,
       expiresAt: s?.expiresAt, baseUrl: svc?.baseUrl, assetBase: svc?.assetBase,
     };
   }
@@ -167,8 +183,12 @@ export function createSessionManager(opts: SessionManagerOptions) {
   async function signedIn(baseUrl: string, api: RepositoryApi, token: string, learnerId: string, expiresAt: string, email: string): Promise<SessionResult> {
     // enrolment: best effort; a learner who has not enrolled yet is connected without one
     let enrolment: Enrolment | undefined;
-    try { const me = await api.me(); if (me.ok) enrolment = pickEnrolment((me.data as MeResponse).enrolments, packAvailable); } catch { /* connected without an enrolment */ }
-    const record: SessionRecord = { token, learnerId, expiresAt, email, ...(enrolment ? { enrolmentId: enrolment.enrolmentId, languageId: enrolment.languageId } : {}) };
+    let displayName: string | undefined;
+    try {
+      const me = await api.me();
+      if (me.ok) { enrolment = pickEnrolment((me.data as MeResponse).enrolments, packAvailable); displayName = nameOf(me.data as MeResponse); }
+    } catch { /* connected without an enrolment */ }
+    const record: SessionRecord = { token, learnerId, expiresAt, email, ...(displayName ? { displayName } : {}), ...(enrolment ? { enrolmentId: enrolment.enrolmentId, languageId: enrolment.languageId } : {}) };
     const prev = (await readService()) ?? { baseUrl };
     await area.set({ [SESSION_KEY]: record, [SERVICE_KEY]: { ...prev, baseUrl } satisfies ServiceConfig });
     await opts.onConnect?.(record);
@@ -255,6 +275,7 @@ export function createSessionManager(opts: SessionManagerOptions) {
     let me: ApiResult<MeResponse>;
     try { me = await a.api.me(); } catch { return fail('unreachable', 'GoLearn could not reach the service.'); }
     if (!me.ok) return fromApi(me);
+    await rememberName(nameOf(me.data));
     const keep = me.data.enrolments.find((e) => e.enrolmentId === a.session.enrolmentId && !e.endedAt);
     return updateEnrolment(keep ?? pickEnrolment(me.data.enrolments, packAvailable));
   }

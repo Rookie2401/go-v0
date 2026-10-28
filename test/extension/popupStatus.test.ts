@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 /**
- * The action popup's connection, language and sync lines, and its buttons, against a real background worker (and the
- * real service handler for the connected cases).
+ * The action popup's greeting, its one line under the brand, the language switch and the setup button, against a real background
+ * worker (and the real service handler for the connected cases). Since 2026-10-28 (the owner) the popup carries no sync line, no
+ * Sync now, no Practise and no connection prose: the worker syncs by itself, and the brand is the way to the setup page.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -20,25 +21,28 @@ let rig: Rig;
 beforeEach(() => { document.body.innerHTML = body; rig = createRig(); });
 
 describe('not connected', () => {
-  it('says so, offers "Open GoLearn setup", and keeps sync off', async () => {
+  it('greets without a name, says the progress stays on the device, and offers the brand as the way to setup; no sync, no Practise', async () => {
     await initPopup(document, rig.fake);
-    expect(text('connection')).toBe('Not connected. Your lookups are kept on this device.');
-    expect(text('open-setup')).toBe('Open GoLearn setup');
+    expect(text('welcome')).toBe('Welcome');
+    expect(text('connection')).toBe('Not signed in: your progress stays on this device.');
+    expect($('connection').classList.contains('warn')).toBe(false);
+    expect($('open-setup').getAttribute('aria-label')).toBe('Open GoLearn setup');
+    expect(text('open-setup')).toBe('GoLearn→');
     // 2026-10-25: the language row is a select; with one language the line says where others are added
     expect($<HTMLSelectElement>('language-select').value).toBe('sq');
     expect(text('language')).toMatch(/^Albanian is the only language downloaded here; others are added in GoLearn setup\./);
-    expect(text('sync')).toBe('Nothing to sync.');
-    expect($<HTMLButtonElement>('sync-now').disabled).toBe(true);
+    for (const gone of ['sync', 'sync-now', 'sync-detail', 'practise', 'voices', 'language-note']) expect(document.getElementById(gone), gone).toBeNull();
   });
 
-  it('events recorded while signed out are counted as waiting for an account', async () => {
+  it('events recorded while signed out wait on the device without a line about them', async () => {
     await rig.content({ type: MSG.record, event: pendingEvent() });
     await rig.content({ type: MSG.record, event: pendingEvent('libër') });
     await initPopup(document, rig.fake);
-    expect(text('sync')).toBe('2 events waiting for an account');
+    expect(text('connection')).toBe('Not signed in: your progress stays on this device.');
+    expect(document.body.textContent).not.toMatch(/waiting for an account|Sync/);
   });
 
-  it('"Open GoLearn setup" opens the options page', async () => {
+  it('the brand (GOLEARN →) opens the options page', async () => {
     await initPopup(document, rig.fake);
     $('open-setup').click();
     await flush(5);
@@ -49,7 +53,9 @@ describe('not connected', () => {
     const dead = createRig().fake;
     dead.events.onMessage.listeners.clear();
     await initPopup(document, dead);
+    expect(text('welcome')).toBe('Welcome');
     expect(text('connection')).toBe('The background worker did not answer. Reload the extension.');
+    expect($('connection').classList.contains('warn')).toBe(true);
   });
 });
 
@@ -74,7 +80,7 @@ describe('connected', () => {
     expect(text('language')).toMatch(/^German/);
   });
 
-  it('an unreachable service is named with no "Use … instead" button; the extension\'s own address is the one in use whatever was stored (2026-10-28)', async () => {
+  it('an unreachable service is one warning line under the brand, with no address and no way to change it (2026-10-28)', async () => {
     const r2 = createRig({ defaultServiceUrl: 'https://go-v0.example.org' });
     document.body.innerHTML = body;
     await r2.signUp();
@@ -93,8 +99,9 @@ describe('connected', () => {
     expect(text('language')).toMatch(/^Albanian is the only language on this device; the languages of your account will be listed once the service can be reached/);
     expect($('language').classList.contains('warn')).toBe(true);
     expect(document.getElementById('use-standard-service')).toBeNull();
-    expect(text('sync-detail')).toContain('https://go-v0.example.org');
-    expect(text('sync-detail')).not.toMatch(/Service address|set another address/);
+    expect(text('connection')).toBe('GoLearn cannot reach its service right now; it keeps trying by itself and nothing is lost.');
+    expect($('connection').classList.contains('warn')).toBe(true);
+    expect(document.body.textContent).not.toMatch(/go-v0\.example\.org|Service address|set another address/);
   });
 
   it('the account\'s languages kept from the last answer still fill the switch while the service is unreachable, and switching to one enrols it on this device (2026-10-27)', async () => {
@@ -118,39 +125,24 @@ describe('connected', () => {
     expect(local.enrolments.find((e) => e.languageId === 'de')?.active).toBe(true);
   });
 
-  it('an unreachable service is named, with no way to change its address (2026-10-28; until then the message pointed at the Service address field)', async () => {
-    await rig.signUp();
-    await rig.connect();
-    await rig.fireTimers();
-    rig.offline.value = true;
-    await rig.content({ type: MSG.record, event: pendingEvent() });
-    await rig.fake.dispatch({ type: MSG.syncNow }, { id: rig.fake.runtime.id, url: `chrome-extension://${rig.fake.runtime.id}/action/popup.html` });
-    await initPopup(document, rig.fake);
-    expect(text('sync-detail')).toMatch(/could not be reached\. Check your connection; GoLearn tries again by itself\./);
-    expect(text('sync-detail')).not.toMatch(/Service address|set another address/);
-    expect(document.getElementById('use-standard-service')).toBeNull();
-    expect(text('sync-detail')).toContain('the service at http');
-  });
-
-  it('shows who, the language, and the sync state, and syncs on request', async () => {
-    await rig.signUp();
+  it('greets the learner by the name the account carries, shows the language, and syncs by itself: no Sync now, nothing pending after the worker\'s round', async () => {
+    await rig.signUp(); // the rig creates the account as Ana
     await rig.connect();
     await rig.fireTimers();
     await rig.content({ type: MSG.record, event: pendingEvent() });
     await initPopup(document, rig.fake);
-    expect(text('connection')).toBe('Connected as ana@example.com');
-    expect(text('open-setup')).toBe('Open GoLearn setup');
+    expect(text('welcome')).toBe('Welcome, Ana');
+    expect(text('connection')).toBe('');
     expect($<HTMLSelectElement>('language-select').value).toBe('sq');
     expect(text('language')).toMatch(/^Albanian is the only language downloaded here/);
-    expect(text('sync')).toMatch(/^Sync: 1 pending · last sync .*/);
-    $('sync-now').click();
-    await flush(60);
-    expect(text('sync')).toMatch(/^Sync: 0 pending · last sync (just now|never)/);
-    expect(text('sync')).not.toContain('never');
-    expect(text('sync-detail')).toBe('');
+    expect(document.getElementById('sync-now')).toBeNull();
+    await rig.fireTimers(); // the worker's own debounced round
+    const page = { id: rig.fake.runtime.id, url: `chrome-extension://${rig.fake.runtime.id}/action/popup.html` };
+    const status = await rig.fake.dispatch({ type: MSG.status }, page) as { sync: { pending: number } };
+    expect(status.sync.pending).toBe(0);
   });
 
-  it('after a 401 it says the sign-in is no longer accepted and offers "Sign in again"', async () => {
+  it('after a 401 it says the sign-in is no longer accepted and points at setup', async () => {
     await rig.signUp();
     await rig.connect();
     const token = ((await rig.fake.local.get('golearn:session'))['golearn:session'] as { token: string }).token;
@@ -158,20 +150,24 @@ describe('connected', () => {
     await rig.content({ type: MSG.record, event: pendingEvent() });
     await rig.page({ type: MSG.syncNow });
     await initPopup(document, rig.fake);
-    expect(text('connection')).toBe('Signed in as ana@example.com, but the service no longer accepts the sign-in.');
-    expect(text('open-setup')).toBe('Sign in again');
+    expect(text('connection')).toBe('Your sign-in is no longer accepted. Sign in again in GoLearn setup.');
     expect($('connection').classList.contains('warn')).toBe(true);
-    expect($<HTMLButtonElement>('sync-now').disabled).toBe(true);
+    expect(text('welcome')).toBe('Welcome, Ana'); // the name is kept with the session until the learner signs out
   });
 
-  it('signed in but not enrolled: asks to finish setup', async () => {
-    await rig.page({ type: MSG.createAccount, baseUrl: 'https://repo.example', email: 'new@example.com', password: 'correct horse battery' });
+  it('an account made from the setup page with a name is greeted by it; one made without a name is greeted plainly', async () => {
+    await rig.page({ type: MSG.createAccount, baseUrl: 'https://repo.example', email: 'new@example.com', password: 'correct horse battery', displayName: 'Nour' });
     await initPopup(document, rig.fake);
-    expect(text('connection')).toBe('Connected as new@example.com');
-    expect(text('open-setup')).toBe('Finish setup (choose a language)');
+    expect(text('welcome')).toBe('Welcome, Nour');
+    expect(text('connection')).toBe('');
+    const r2 = createRig();
+    document.body.innerHTML = body;
+    await r2.page({ type: MSG.createAccount, baseUrl: 'https://repo.example', email: 'plain@example.com', password: 'correct horse battery' });
+    await initPopup(document, r2.fake);
+    expect(text('welcome')).toBe('Welcome');
   });
 
-  it('shows the offline state and the last error', async () => {
+  it('shows the offline state as the one warning line', async () => {
     await rig.signUp();
     await rig.connect();
     await rig.fireTimers();
@@ -179,8 +175,8 @@ describe('connected', () => {
     await rig.content({ type: MSG.record, event: pendingEvent() });
     await rig.page({ type: MSG.syncNow });
     await initPopup(document, rig.fake);
-    expect(text('sync-detail')).toMatch(/fetch/i);
-    expect($('sync').classList.contains('warn')).toBe(true);
+    expect(text('connection')).toMatch(/cannot reach its service right now/);
+    expect($('connection').classList.contains('warn')).toBe(true);
   });
 
   it('clearing the device (the setup page\'s Privacy screen sends MSG.clearLocal) also clears the unsent queue and the caches, and does not sign the learner out', async () => {

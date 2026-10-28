@@ -1,13 +1,12 @@
 // @vitest-environment jsdom
 /**
  * The popup's one GoLearn Active switch: on asks the browser's prompt inside the learner's click and registers for pages; off withdraws
- * the page access as well; the legend; and what Active found on the page in front.
+ * the page access as well; the one-line legend (Biblia's, since 2026-10-28); and the one line about the page in front.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { initPopup } from '../../packages/golearn-extension/action/popup';
-import { ACTIVE_LEVELS } from '../../packages/golearn-extension/src/active/levels';
 import { createBackground } from '../../packages/golearn-extension/src/background/core';
 import { MSG } from '../../packages/golearn-extension/src/platform';
 import { ACTIVE_ORIGINS } from '../../packages/golearn-extension/src/protocol';
@@ -37,13 +36,16 @@ beforeEach(() => {
 const change = (el: HTMLInputElement, checked: boolean): void => { el.checked = checked; el.dispatchEvent(new Event('change')); };
 
 describe('GoLearn Active in the popup', () => {
-  it('starts off, with the legend of the six underline levels and nothing about this page', async () => {
+  it('starts off, with the one-line legend of the four marks (known words carry none) and nothing about this page', async () => {
     await initPopup(document, fake);
     expect($<HTMLInputElement>('active').checked).toBe(false);
-    expect($('active-status').textContent).toMatch(/^Off\. Nothing is read/);
+    expect($('active-status').textContent).toBe('Off.');
     expect($('active-page').textContent).toBe('');
-    expect($('active-legend').querySelectorAll('li')).toHaveLength(ACTIVE_LEVELS.length);
-    expect($('active-legend').textContent).toMatch(/New.*Seen.*Recognized.*Familiar.*Known.*Automatic/s);
+    const legend = $('active-legend');
+    expect(legend.textContent).toBe('How well you know each word: Aa New · Aa Seen · Aa Recognized · Aa Familiar; known words carry no mark.');
+    expect([...legend.querySelectorAll('.legend-item .sw')].map((s) => s.className)).toEqual(['sw sw-new', 'sw sw-seen', 'sw sw-recognized', 'sw sw-familiar']);
+    expect(legend.querySelectorAll('li')).toHaveLength(0);
+    expect(legend.textContent).not.toMatch(/Automatic|highlight|underline/);
   });
 
   it('switching on asks the browser for the host permission inside the click; a "no" keeps Active off and says so', async () => {
@@ -57,7 +59,7 @@ describe('GoLearn Active in the popup', () => {
     expect(fake.registeredScripts).toEqual([]);
   });
 
-  it('a "yes" registers GoLearn for pages and starts it on the page in front; the popup then says what that page got', async () => {
+  it('a "yes" registers GoLearn for pages and starts it on the page in front; the popup then says, in one line, what that page got', async () => {
     const popup = await initPopup(document, fake);
     pageState = { on: true, speak: true, supported: true, languageId: 'sq', scanned: 230, marked: { new: 0, seen: 16, recognized: 3, familiar: 0, known: 4, automatic: 8 }, clicks: 1, recordedWords: 18 };
     change($('active'), true);
@@ -66,12 +68,12 @@ describe('GoLearn Active in the popup', () => {
     expect(fake.registeredScripts.map((s) => s.id)).toEqual(['golearn-active']);
     expect(fake.messagesToTabs.some((m) => (m.message as { type: string }).type === MSG.activate)).toBe(true);
     expect($<HTMLInputElement>('active').checked).toBe(true);
-    expect($('active-status').textContent).toMatch(/^On\. GoLearn scans supported pages on this device/);
-    // 2026-10-25: the language by its name, and the words the analyser did not know (another language's) counted as left alone
-    expect($('active-page').textContent).toBe('This page (Albanian): 230 words scanned, 31 underlined (seen 16, recognized 3, known 4, automatic 8); 18 distinct words recorded; 1 click looked up.');
-    pageState = { ...pageState, skipped: 57 };
+    expect($('active-status').textContent).toBe('On.');
+    // the words that carry a mark (new, seen, recognized, familiar) are the underlined ones; known and automatic carry none and are counted as known
+    expect($('active-page').textContent).toBe('This page (Albanian): 230 words; 19 underlined (seen 16, recognized 3); 12 known.');
+    pageState = { ...pageState, marked: { new: 5, seen: 16, recognized: 3, familiar: 2, known: 4, automatic: 8 } };
     await popup.refresh();
-    expect($('active-page').textContent).toContain('; 57 not Albanian words, left alone;');
+    expect($('active-page').textContent).toBe('This page (Albanian): 230 words; 26 underlined (new 5, seen 16, recognized 3, familiar 2); 12 known.');
   });
 
   it('a page where Active read nothing shows the reason; a page without the script says to reload it', async () => {
@@ -97,7 +99,7 @@ describe('GoLearn Active in the popup', () => {
     expect(fake.registeredScripts).toEqual([]);
     expect(fake.messagesToTabs.some((m) => (m.message as { type: string }).type === MSG.deactivate)).toBe(true);
     expect($<HTMLInputElement>('active').checked).toBe(false);
-    expect($('active-status').textContent).toMatch(/^Off\. Nothing is read/);
+    expect($('active-status').textContent).toBe('Off.');
     expect($('active-page').textContent).toBe('');
   });
 
@@ -140,14 +142,12 @@ describe('GoLearn Active in the popup', () => {
     expect($('language').textContent).toMatch(/is the only language downloaded here; others are added in GoLearn setup\./);
   });
 
-  it('the popup text describes Active page scanning, encounter data, and speech without overpromising', () => {
-    expect(html).toMatch(/Active scans page text on this device/);
-    expect(html).toMatch(/scan does not send or retain page text/);
-    expect(html).toMatch(/records vocabulary encounters using word IDs/);
-    expect(html).toMatch(/history syncs with your account/);
-    expect(html).toMatch(/may speak it automatically according to your speech settings/);
-    expect(html).toMatch(/Some reading apps block extensions from reading their pages/);
+  it('the popup carries no explanations, no Practise, no sync and no voices line, and names no browser (the owner, 2026-10-28)', () => {
+    expect(html).not.toMatch(/Practise|Sync now|Reading acquisition|Look up words as you read|history is kept on this device|export and deletion/);
+    expect(html).not.toMatch(/id="(voices|sync|sync-now|sync-detail|practise|language-note)"/);
     expect(html).not.toMatch(/team|leader/i);
     expect(html).not.toMatch(/Brave|never sent anywhere|nothing of them is kept/i);
+    // the brand is the way to setup: the mark, the name, an arrow
+    expect(html).toMatch(/<button[^>]*id="open-setup"[^>]*>[\s\S]*go-brand-mark[\s\S]*GoLearn[\s\S]*→[\s\S]*<\/button>/);
   });
 });

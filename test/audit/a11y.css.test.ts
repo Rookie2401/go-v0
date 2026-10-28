@@ -279,8 +279,9 @@ describe('contrast of the colour pairs actually used (WCAG 2.x, AA)', () => {
     const white: Rgba = { r: 255, g: 255, b: 255, a: 1 };
     const text: Array<[string, string, string]> = [
       ['body', 'body text (body)', 'body'], ['err', 'error text (.err)', '.err'], ['warn', 'warning status (.status-line.warn)', '.status-line.warn'],
-      // the protocol note (.proto) left the popup with its housekeeping controls on 2026-10-09; the closing note uses .muted
-      ['sub', 'sub-title (.sub)', '.sub'], ['hint', 'hint (.hint)', '.hint'], ['legend', 'underline legend (.legend)', '.legend'], ['muted', 'muted detail (.muted)', '.muted'], ['title', 'popup title (h1)', 'h1'],
+      // the protocol note (.proto) left the popup with its housekeeping controls on 2026-10-09; the sub-title, the hint and the h1 left with
+      // the owner's cut of 2026-10-28 (the greeting, the brand button to setup and the one-line legend took their place)
+      ['welcome', 'greeting (.welcome)', '.welcome'], ['setup', 'the brand button to setup (.setup-link)', '.setup-link'], ['legend', 'the one-line legend (.legend)', '.legend'], ['sample', 'a sample word of the legend (.legend .sw)', '.legend .sw'], ['muted', 'muted detail (.muted)', '.muted'],
     ];
     const rs: Result[] = [];
     for (const scheme of ['light', 'dark'] as const) {

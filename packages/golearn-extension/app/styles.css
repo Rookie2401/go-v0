@@ -180,6 +180,23 @@ progress { width: 100%; max-width: 28rem; height: .6rem; accent-color: var(--acc
 .service-address { margin: 1.1rem 0 .4rem; }
 .footer-link { margin-top: 2.5rem; font-size: .95rem; }
 
+/* the main page's two sections, Language and Audio, as disclosures whose summary is the heading (the owner, 2026-10-28) */
+details.disclosure { margin: 1.4rem 0 0; border-top: 1px solid var(--rule); }
+details.disclosure > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: .6rem; padding: .9rem 0 .7rem; }
+details.disclosure > summary::-webkit-details-marker { display: none; }
+details.disclosure > summary::before { content: '▸'; color: var(--ink-faint); font-size: .95rem; }
+details.disclosure[open] > summary::before { content: '▾'; }
+details.disclosure > summary > h2 { margin: 0; padding: 0; border: 0; font-size: 1.05rem; }
+details.disclosure > summary:hover > h2 { color: var(--ink); }
+details.disclosure > .body { padding: 0 0 1rem; }
+.audio-guide h3 { margin: 1.3rem 0 .3rem; font-size: 1.05rem; }
+.audio-guide ol, .audio-guide ul { padding-inline-start: 1.3rem; }
+.audio-guide li { margin: .35rem 0; }
+.audio-guide table { border-collapse: collapse; margin: .4rem 0 .8rem; }
+.audio-guide th, .audio-guide td { text-align: start; vertical-align: top; padding: .15rem .8rem .15rem 0; border-bottom: 1px solid var(--divider); font-size: .95rem; font-weight: 400; }
+.audio-guide th { color: var(--ink-faint); white-space: nowrap; }
+.audio-guide code { font-size: .9em; }
+
 /* a language row: name and level at the left, the Download language menu (or the downloaded state) at the right, feedback and Details under */
 .lang-rows { list-style: none; margin: .5rem 0; padding: 0; border-top: 1px solid var(--divider); }
 .lang-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(12rem, 22rem); gap: .2rem 1.25rem; align-items: start; padding: .75rem .6rem; border-bottom: 1px solid var(--divider); border-inline-start: 3px solid transparent; }

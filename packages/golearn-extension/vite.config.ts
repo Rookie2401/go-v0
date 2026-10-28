@@ -60,6 +60,7 @@ function copyStatic(): Plugin {
       fs.copyFileSync(path.join(here, 'action/popup.html'), path.join(dist, 'action/popup.html'));
       const notices = path.join(here, '..', '..', 'THIRD-PARTY-NOTICES.md');
       if (fs.existsSync(notices)) fs.copyFileSync(notices, path.join(dist, 'THIRD-PARTY-NOTICES.md'));
+      fs.cpSync(path.join(here, 'icons'), path.join(dist, 'icons'), { recursive: true });
       // the sharded form indexes (npm run lexicon:shard): gzip shards + manifest per set, loaded by the content script before a lookup
       for (const set of ['el/ancient', 'el/modern', 'he/biblical', 'he/modern']) {
         const from = path.join(here, '..', '..', 'public', 'lexicon', set);

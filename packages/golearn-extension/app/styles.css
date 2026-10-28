@@ -234,3 +234,9 @@ details.forgot > summary { cursor: pointer; }
 @media (max-width: 640px) {
   .lang-row { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* The Go mark (the G and the globe) beside the name: a silhouette filled with the accent colour (brown on paper; the lighter brown of the dark theme). */
+.go-brand { display: inline-flex; align-items: center; gap: .5rem; flex-shrink: 0; color: var(--accent); text-decoration: none; }
+.go-brand-mark { display: block; width: 72px; height: 36px; background: currentColor; -webkit-mask: var(--go-brand-mask) center / contain no-repeat; mask: var(--go-brand-mask) center / contain no-repeat; }
+.go-brand:hover { text-decoration: none; }
+@media (max-width: 380px) { .go-brand-mark { width: 60px; height: 30px; } }

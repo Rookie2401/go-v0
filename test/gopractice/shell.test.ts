@@ -27,13 +27,16 @@ describe('the hash router', () => {
     expect(rig.q('#sync-indicator').textContent).toBe('Not signed in');
   });
 
-  it('after sign-in the header has the GoReview mark, the language and the Settings cog; the screens are reached from the home', async () => {
+  it('after sign-in the header has the Go logo, language and Settings cog; the screens are reached from the home', async () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('.topnav')).toBeNull();
     expect([...rig.root.querySelectorAll('header a')].map((a) => a.getAttribute('aria-label'))).toEqual(['GoReview home', 'Settings']);
-    // the mark is GoReview's own serif G (its app icon), not the shared GoLearn globe
-    expect(rig.q<HTMLImageElement>('header .go-brand img').getAttribute('src')).toMatch(/icons\/icon\.svg$/);
+    // the Go mark (the G and the globe) as a silhouette the accent colour fills, beside the name
+    const mark = rig.q<HTMLElement>('header .go-brand-mark');
+    expect(mark.getAttribute('aria-hidden')).toBe('true');
+    expect(mark.style.getPropertyValue('--go-brand-mask')).toMatch(/go-logo\.png/);
+    expect(rig.root.querySelector('header .go-brand img')).toBeNull();
     expect(rig.q('header .go-brand').textContent).toBe('GoReview');
     expect(rig.q('#language-name')).toBeTruthy();
     expect(rig.root.querySelector('#back-home')).toBeNull();      // the home has nowhere to go back to

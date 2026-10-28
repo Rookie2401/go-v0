@@ -93,8 +93,10 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const langWrap = h('div', { class: 'language' });
   const syncEl = h('p', { id: 'sync-indicator', class: 'sync', role: 'status', 'aria-live': 'polite' });
   const acctEl = h('p', { class: 'account', id: 'account' });
-  // the mark is GoReview's own serif G (public/icons/icon.svg: the Western Canon brown on paper, the app's reading-room look), the same mark as its app icon
-  const brandLink = h('a', { class: 'go-brand', href: '#/review', 'aria-label': 'GoReview home' }, h('img', { src: new URL('./public/icons/icon.svg', import.meta.url).href, alt: '', width: '36', height: '36' }), h('span', {}, 'GoReview'));
+  // the Go mark (the G and the globe, packages/shared-brand) as a silhouette filled with the accent colour: the Western Canon brown on paper, the lighter brown of the dark theme
+  const logoUrl = new URL('../shared-brand/go-logo.png', import.meta.url).href;
+  const brandLink = h('a', { class: 'go-brand', href: '#/review', 'aria-label': 'GoReview home' },
+    h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: `--go-brand-mask: url("${logoUrl}")` }), h('span', {}, 'GoReview'));
   const header = h('header', { class: 'topbar' }, brandLink, langWrap, syncEl, acctEl);
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   clear(root);

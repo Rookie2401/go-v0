@@ -85,7 +85,9 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
   const statusLink = h('a', { href: '#/home', id: 'status-link', class: 'top-link' }, 'Status');
   const cog = h('a', { href: '#/settings', id: 'settings-link', class: 'cog', 'aria-label': 'Settings', title: 'Settings' }, h('span', { 'aria-hidden': 'true' }, '⚙'));
   const bar = h('header', { class: 'topbar' },
-    h('a', { class: 'brand', href: '#/languages' }, 'GoLearn'), titleEl,
+    // the Go mark (the G and the globe, packages/shared-brand) as a silhouette filled with the accent colour, beside the name
+    h('a', { class: 'brand go-brand', href: '#/languages', 'aria-label': 'GoLearn home' },
+      h('span', { class: 'go-brand-mark', 'aria-hidden': 'true', style: `--go-brand-mask: url("${new URL('../../shared-brand/go-logo.png', import.meta.url).href}")` }), h('span', {}, 'GoLearn')), titleEl,
     h('nav', { class: 'top-actions', 'aria-label': 'GoLearn' }, statusLink, cog));
   const main = h('main', { id: 'screen', class: 'screen', tabindex: '-1' });
   const shell = h('div', { class: 'shell' }, bar, main);

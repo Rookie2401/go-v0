@@ -55,13 +55,13 @@ describe('the web manifest', () => {
     expect(html).toContain(`<meta name="theme-color" content="${dark}" media="(prefers-color-scheme: dark)">`);
   });
 
-  it('lists an SVG icon and PNG icons of 192, 512 and a maskable 512, every one of them present in the build', () => {
+  it('lists PNG icons of 192, 512 and a maskable 512, every one of them present in the build', () => {
     const icons = manifest().icons;
     const by = (size: string, purpose: string): string | undefined => icons.find((i) => i.sizes === size && (i.purpose ?? 'any') === purpose)?.src;
     expect(by('192x192', 'any')).toBe('./icons/icon-192.png');
     expect(by('512x512', 'any')).toBe('./icons/icon-512.png');
     expect(by('512x512', 'maskable')).toBe('./icons/icon-maskable-512.png');
-    expect(icons.some((i) => i.type === 'image/svg+xml' && i.src === './icons/icon.svg')).toBe(true);
+    expect(icons.every((i) => i.type === 'image/png')).toBe(true);
     for (const i of icons) expect(fs.existsSync(path.join(outs.review, i.src)), i.src).toBe(true);
   });
 });
@@ -73,7 +73,7 @@ describe('the icons', () => {
     expect(pngSize(path.join(dir, 'icon-192.png'))).toEqual({ w: 192, h: 192 });
     expect(pngSize(path.join(dir, 'icon-512.png'))).toEqual({ w: 512, h: 512 });
     expect(pngSize(path.join(dir, 'icon-maskable-512.png'))).toEqual({ w: 512, h: 512 });
-    expect(read(dir, 'icon.svg')).toMatch(/^<svg[^>]+viewBox="0 0 512 512"/);
+    expect(fs.existsSync(path.resolve(pkg, '../shared-brand/go-logo.png'))).toBe(true);
   });
 });
 

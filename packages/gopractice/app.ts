@@ -16,6 +16,7 @@
  *           #/privacy and #/terms (the legal drafts; open without an account)
  */
 import { append, clear, h, p } from './dom';
+import { watchStatusBar } from './statusBar';
 import { languageName } from './format';
 import { createContext, type AppContext, type Mode, type SyncView } from './context';
 import type { Deps } from './ports';
@@ -133,6 +134,8 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
 
   const brand = deps.edition === 'review' ? 'GoReview' : 'GoPractice';
   if (deps.edition === 'review') deps.doc.documentElement.setAttribute('data-edition', 'review');
+  // the status bar counted once: where the page already starts below it, the top bar adds no inset (statusBar.ts)
+  const offStatusBar = watchStatusBar(win, deps.doc);
   let live: Live | undefined;
   const ctx = createContext(deps, { go: (r) => { void go(r); }, changed: () => { void safeRefreshHeader(); live?.kick(); } });
 
@@ -367,6 +370,7 @@ export function createApp(root: HTMLElement, deps: Deps): AppHandle {
       updateEl?.removeEventListener('click', onUpdateClick);
       live?.destroy();
       offSync();
+      offStatusBar();
       for (const d of disposers) { try { d(); } catch { /* */ } }
       disposers = [];
       ctx.destroy();

@@ -8,6 +8,8 @@
 @font-face { font-family: 'EB Garamond'; src: url('./fonts/eb-garamond-latin-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
 
 :root {
+  /* the top safe-area inset, counted once: 0 where the page already starts below the status bar (statusBar.ts sets data-status-bar="clear") */
+  --top-inset: env(safe-area-inset-top, 0px);
   color-scheme: light dark;
   font-size: 100%;
   --serif: 'EB Garamond', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', 'Cardo', Georgia, 'Times New Roman', serif;
@@ -292,7 +294,7 @@ button.grade:focus-visible { outline: 2px solid var(--accent); outline-offset: 2
       the quiet update link, and fingertip-sized targets (at least 44 x 44 CSS px: 2.75rem at the default size) ── */
 .shell { min-height: 100vh; min-height: 100dvh; }
 .topbar {
-  padding-top: calc(.9rem + env(safe-area-inset-top, 0px));
+  padding-top: calc(.9rem + var(--top-inset));
   padding-left: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-left, 0px));
   padding-right: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-right, 0px));
 }
@@ -304,7 +306,9 @@ button.grade:focus-visible { outline: 2px solid var(--accent); outline-offset: 2
 .update-link { font-size: .9rem; font-style: italic; color: var(--accent); text-decoration: underline; text-underline-offset: .2em; text-decoration-color: var(--rule-strong); }
 .update-link:hover { text-decoration-color: var(--accent); }
 /* the installed app uses a translucent status bar with light text: a band of ink behind the clock keeps it legible on the paper */
-html[data-edition="review"] body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: env(safe-area-inset-top, 0px); background: var(--ink); z-index: 30; }
+html[data-edition="review"] body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: var(--top-inset); background: var(--ink); z-index: 30; }
+/* the page already starts below the status bar: nothing to pad, no band behind the clock */
+html[data-status-bar="clear"] { --top-inset: 0px; }
 @media (prefers-color-scheme: dark) { html[data-edition="review"] body::before { background: var(--paper); } }
 html[data-edition="review"] { overscroll-behavior-y: none; }
 
@@ -378,7 +382,8 @@ body { min-height: 100vh; min-height: 100dvh; overflow-x: hidden; }
 img, svg, video, canvas { max-width: 100%; }
 @media (max-width: 430px) {
   body { font-size: 1rem; line-height: 1.55; }
-  .topbar { flex-wrap: nowrap; gap: .5rem; align-items: center; min-height: calc(3.75rem + env(safe-area-inset-top, 0px)); padding-top: calc(.75rem + env(safe-area-inset-top, 0px)); padding-bottom: .25rem;
+  /* the header row right under the status bar, as Duolingo sets its own (the owner, 2026-10-28): the 44 px targets centred 22 px below it */
+  .topbar { flex-wrap: nowrap; gap: .5rem; align-items: center; min-height: calc(3.125rem + var(--top-inset)); padding-top: var(--top-inset); padding-bottom: .375rem;
     padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
   .language { flex: 1 1 auto; min-width: 0; }
   .language-picker, #language-name { max-width: 100%; }

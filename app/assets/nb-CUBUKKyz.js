@@ -1,1 +1,0 @@
-import{t as e}from"./engine-JG2ISNiB.js";var t=e(`nb`);export{t as adapter};

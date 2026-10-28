@@ -102,11 +102,16 @@ describe('focus indicators, motion and colour scheme', () => {
     expect(r.length).toBe(0);
   });
 
-  it('A-C04 transitions are limited to prefers-reduced-motion: no-preference; there are no animations or smooth scrolling anywhere', () => {
+  it('A-C04 transitions are limited to prefers-reduced-motion: no-preference; there are no animations or smooth scrolling anywhere, except the loading indicator\u2019s turn', () => {
+    // The one allowance (2026-10-28): the loading mark's sphere (.go-globe-disc) turns outside the media query, because the turning IS the
+    // loading indicator (WCAG 2.3.3 excludes motion essential to the information conveyed); reduced motion only slows it (animation-duration).
+    const essential = (selector: string): boolean => selector === '.go-globe-disc';
     for (const s of SHEETS) {
       const motion = s.rules.filter((r) => 'transition' in r.decls || 'animation' in r.decls || r.decls['scroll-behavior'] === 'smooth');
-      for (const r of motion) expect(r.media.join(' '), `${s.key} ${r.selector}`).toContain('prefers-reduced-motion: no-preference');
-      row(`A-C04:${s.key}`, 'css', `${s.label}: motion`, motion.length ? `${motion.length} transition rule(s), all inside prefers-reduced-motion: no-preference` : 'none');
+      for (const r of motion) if (!essential(r.selector)) expect(r.media.join(' '), `${s.key} ${r.selector}`).toContain('prefers-reduced-motion: no-preference');
+      const allowed = motion.filter((r) => essential(r.selector));
+      for (const r of allowed) expect(r.media.join(' '), `${s.key} ${r.selector} is the indicator and must not be gated off`).not.toContain('prefers-reduced-motion');
+      row(`A-C04:${s.key}`, 'css', `${s.label}: motion`, motion.length ? `${motion.length - allowed.length} transition rule(s), all inside prefers-reduced-motion: no-preference${allowed.length ? `; ${allowed.length} allowed outside it (the loading indicator's turn, slowed under reduced motion)` : ''}` : 'none');
     }
   });
 

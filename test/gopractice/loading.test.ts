@@ -44,12 +44,13 @@ describe('the loading mark', () => {
     expect(disc[25]).toBe(6);
   });
 
-  it('turns the sphere always (slower under reduced motion), on an unmasked span of its own layer; appears after a moment, at once under reduced motion', () => {
+  it('turns the sphere always (slower under reduced motion), on an unmasked span of its own layer; appears after a moment when motion is welcome, at once under reduced motion', () => {
     expect(css).toMatch(/@keyframes go-spin \{ from \{ transform: rotate\(0deg\); \} to \{ transform: rotate\(360deg\); \} \}/);
-    // the spin is not behind a media query: it is the loading indicator itself
+    // the spin is not behind a media query: it is the loading indicator itself (the audit's one allowance, A-C04)
     expect(css).toMatch(/^\.go-globe-disc \{ animation: go-spin 2\.2s linear infinite; transform-origin: 50% 50%; will-change: transform; \}$/m);
-    expect(css).toMatch(/\.go-loading \{[^}]*opacity: 0;[^}]*animation: go-appear/);
-    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{ \.go-loading \{ animation: none; opacity: 1; \} \.go-globe-disc \{ animation-duration: 6s; \} \}/);
+    expect(css).toMatch(/\.go-loading \{[^}]*opacity: 0; \}/);
+    expect(css).toMatch(/@media \(prefers-reduced-motion: no-preference\) \{ \.go-loading \{ animation: go-appear \.2s ease \.15s forwards; \} \}/);
+    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{ \.go-loading \{ opacity: 1; \} \.go-globe-disc \{ animation-duration: 6s; \} \}/);
     // the layers take the ink and are masks, not images; the mask is never on the turning span
     expect(css).toMatch(/\.go-loading \{[^}]*color: var\(--brand\)/);
     expect(css).toMatch(/\.go-globe-frame, \.go-globe-sphere \{ background: currentColor;[^}]*mask-size: contain/);

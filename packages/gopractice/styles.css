@@ -483,13 +483,15 @@ img, svg, video, canvas { max-width: 100%; }
    screen opens, the home while its deck loads. Both layers are CSS masks whose images are inline styles on the spans (absolute URLs from the
    script), so they resolve wherever the stylesheet lives. The turning span carries no mask of its own (WebKit does not repaint a transform
    animation on a masked element; the sphere's mask is on its child) and has its own layer. The turning IS the loading indicator, so it goes on
-   under reduced motion too, only slower; the fade-in is what reduced motion drops. It appears only after a moment, so a load that ends within
-   a blink shows nothing. */
-.go-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; min-height: 38vh; color: var(--brand); opacity: 0; animation: go-appear .2s ease .15s forwards; }
+   under reduced motion too, only slower: the one animation outside prefers-reduced-motion: no-preference (test/audit/a11y.css.test.ts A-C04
+   names this selector); the fade-in is what reduced motion drops. It appears only after a moment, so a load that ends within a blink shows
+   nothing. */
+.go-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .75rem; min-height: 38vh; color: var(--brand); opacity: 0; }
 .go-globe { position: relative; display: block; width: 104px; height: 104px; }
 .go-globe > span, .go-globe-sphere { position: absolute; inset: 0; display: block; }
 .go-globe-frame, .go-globe-sphere { background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; }
 .go-globe-disc { animation: go-spin 2.2s linear infinite; transform-origin: 50% 50%; will-change: transform; }
 @keyframes go-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes go-appear { to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .go-loading { animation: none; opacity: 1; } .go-globe-disc { animation-duration: 6s; } } /* at once, and a slow turn */
+@media (prefers-reduced-motion: no-preference) { .go-loading { animation: go-appear .2s ease .15s forwards; } }
+@media (prefers-reduced-motion: reduce) { .go-loading { opacity: 1; } .go-globe-disc { animation-duration: 6s; } } /* at once, and a slow turn */

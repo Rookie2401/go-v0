@@ -1,7 +1,9 @@
 /**
- * The "Cards per deck" control: a quiet stepper (fewer, the number, more) and presets 5 · 10 · 15 · 20 · 30 as quiet pills. Shared by
- * Settings, the details page and the home (inline, under the deck's kicker). Each change is saved with the review preferences at once
- * (one whole number, 5 to 60) and reported to the caller, which re-plans the deck.
+ * The "Cards per deck" control: a quiet stepper (fewer, the number, more) and, where asked for, presets 5 · 10 · 15 · 20 · 30 as quiet
+ * pills. Shared by Settings (the stepper alone, centred), the details page and the home (inline, under the deck's kicker, with the
+ * presets). Each change is saved with the review preferences at once (one whole number, 5 to 60) and reported to the caller, which
+ * re-plans the deck. The element returned carries `setSize`, so a form that resets the preferences can show the new size without
+ * rebuilding the control.
  */
 import type { ReviewPreferences } from '../../goreview/src/types';
 import type { AppContext } from '../context';
@@ -10,13 +12,15 @@ import { clampDeckSize, DEFAULT_CARDS_PER_DECK, MAX_CARDS_PER_DECK, MIN_CARDS_PE
 
 export const DECK_SIZE_PRESETS = [5, 10, 15, 20, 30] as const;
 
-export function deckSizeControl(ctx: AppContext, learnerId: string, languageId: string, initial: number | undefined, onChange?: (size: number, prefs: ReviewPreferences) => void, idPrefix = 'deck'): HTMLElement {
+export interface DeckSizeControl extends HTMLElement { setSize(size: number): void }
+
+export function deckSizeControl(ctx: AppContext, learnerId: string, languageId: string, initial: number | undefined, onChange?: (size: number, prefs: ReviewPreferences) => void, idPrefix = 'deck', opts: { presets?: boolean; centred?: boolean } = {}): DeckSizeControl {
   let size = clampDeckSize(initial ?? DEFAULT_CARDS_PER_DECK);
   const status = statusLine();
   const input = h('input', { type: 'number', id: `${idPrefix}-size`, name: 'cards-per-deck', class: 'stepper-value', min: MIN_CARDS_PER_DECK, max: MAX_CARDS_PER_DECK, step: 1, inputmode: 'numeric', 'aria-label': 'Cards per deck', value: size }) as HTMLInputElement;
   const less = button('−', () => void apply(size - 1), { class: 'stepper-btn', id: `${idPrefix}-less`, 'aria-label': 'Fewer cards per deck' });
   const more = button('+', () => void apply(size + 1), { class: 'stepper-btn', id: `${idPrefix}-more`, 'aria-label': 'More cards per deck' });
-  const pills = DECK_SIZE_PRESETS.map((n) => button(String(n), () => void apply(n), { class: 'pill', 'data-cards': n, 'aria-label': `${n} cards per deck` }));
+  const pills = opts.presets === false ? [] : DECK_SIZE_PRESETS.map((n) => button(String(n), () => void apply(n), { class: 'pill', 'data-cards': n, 'aria-label': `${n} cards per deck` }));
 
   function show(): void {
     input.value = String(size);
@@ -38,7 +42,9 @@ export function deckSizeControl(ctx: AppContext, learnerId: string, languageId: 
   }
   input.addEventListener('change', () => { void apply(Number(input.value)); });
   show();
-  return h('div', { class: 'deck-size', role: 'group', 'aria-label': 'Cards per deck' },
+  const root = h('div', { class: opts.centred ? 'deck-size centred' : 'deck-size', role: 'group', 'aria-label': 'Cards per deck' },
     h('div', { class: 'stepper' }, less, input, more),
-    h('div', { class: 'pills', role: 'group', 'aria-label': 'Deck size presets' }, ...pills), status);
+    ...(pills.length ? [h('div', { class: 'pills', role: 'group', 'aria-label': 'Deck size presets' }, ...pills)] : []), status) as DeckSizeControl;
+  root.setSize = (n: number) => { size = clampDeckSize(n); show(); };
+  return root;
 }

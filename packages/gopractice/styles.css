@@ -326,6 +326,15 @@ html[data-edition="review"] { overscroll-behavior-y: none; }
 .stepper-btn:disabled { opacity: .4; }
 input.stepper-value { width: 4rem; text-align: center; font-size: 1.15rem; border: 0; border-bottom: 1px solid var(--rule-strong); border-radius: 0; background: transparent; padding: .2rem 0; font-variant-numeric: tabular-nums; -moz-appearance: textfield; }
 input.stepper-value::-webkit-outer-spin-button, input.stepper-value::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+/* Settings: the deck stepper alone, centred, then the disclosure that holds the rest; its numbers are steppers of the same kind */
+.deck-size.centred { max-width: none; justify-items: center; text-align: center; }
+.deck-field { justify-items: center; text-align: center; max-width: none; }
+.deck-field .help { max-width: 28rem; }
+.deck-size.centred > .status:empty { display: none; }
+details.advanced { margin: 1.2rem 0 .4rem; }
+details.advanced > summary { font-weight: 600; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-soft); padding: .4rem 0; }
+details.advanced[open] > summary { color: var(--ink); margin-bottom: .4rem; }
+.prefs-reset { margin-top: 1rem; }
 .pills { display: flex; flex-wrap: wrap; gap: .4rem; }
 button.pill { padding: .1rem .9rem; border-radius: 999px; font-size: .95rem; background: none; border: 1px solid var(--rule-strong); color: var(--ink-soft); }
 button.pill:hover:not(:disabled) { color: var(--ink); }

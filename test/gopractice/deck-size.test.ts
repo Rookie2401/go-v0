@@ -115,17 +115,20 @@ describe('cards per deck', () => {
     expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck).toBe(5);
   });
 
-  it('is operable and named: labelled stepper and pills, a 44 px target in standalone mode, in Settings too', async () => {
+  it('is operable and named: labelled stepper (Settings has the stepper alone; the home keeps the pills), a 44 px target in standalone mode', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('settings');
     expect(rig.q('#pref-less').getAttribute('aria-label')).toBe('Fewer cards per deck');
     expect(rig.q('#pref-more').getAttribute('aria-label')).toBe('More cards per deck');
     expect(rig.q('#pref-size').getAttribute('aria-label')).toBe('Cards per deck');
-    expect(rig.qa('.deck-size .pill').map((b) => b.getAttribute('aria-label'))).toEqual(['5 cards per deck', '10 cards per deck', '15 cards per deck', '20 cards per deck', '30 cards per deck']);
+    expect(rig.qa('.deck-size .pill')).toEqual([]);
     expect(rig.q('#pref-size').closest('[role="group"]')?.getAttribute('aria-label')).toBe('Cards per deck');
-    click(rig.q('[data-cards="20"]'));
-    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 20, 'the preset');
-    expect(rig.q('[data-cards="20"]').getAttribute('aria-pressed')).toBe('true');
+    click(rig.q('#pref-more'));
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 11, 'one more');
+    expect(rig.q<HTMLInputElement>('#pref-size').value).toBe('11');
+    await rig.go('review');
+    click(rig.q('#deck-size-link'));
+    expect(rig.qa('#deck-size-box .pill').map((b) => b.getAttribute('aria-label'))).toEqual(['5 cards per deck', '10 cards per deck', '15 cards per deck', '20 cards per deck', '30 cards per deck']);
     const css = readFileSync('packages/gopractice/styles.css', 'utf8');
     expect(css).toMatch(/@media \(pointer: coarse\), \(display-mode: standalone\) \{[^]*?\.stepper-btn \{ width: 2\.75rem; height: 2\.75rem; \}[^]*?button\.pill \{ min-height: 2\.75rem/);
   });

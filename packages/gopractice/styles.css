@@ -439,11 +439,11 @@ img, svg, video, canvas { max-width: 100%; }
 .go-brand { --mark-h: 36px; margin-left: calc(var(--mark-h) * -0.34); }
 /* The launch screen (review build; see splash.ts): the mark over REVIEW, stacked and centred, in the ink on the paper; .out fades it away. */
 #goreview-splash { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .55rem;
-  background: var(--paper); color: var(--brand); opacity: 1; transition: opacity .55s ease; }
+  background: var(--paper); color: var(--brand); opacity: 1; }
 #goreview-splash.out { opacity: 0; pointer-events: none; }
 .splash-mark { display: block; width: 176px; height: 88px; background: currentColor; -webkit-mask-size: contain; -webkit-mask-position: center; -webkit-mask-repeat: no-repeat; mask-size: contain; mask-position: center; mask-repeat: no-repeat; } /* the mask image itself is an inline style on the element (index.html), so its relative URL resolves against the page */
 .splash-word { font-size: 2rem; line-height: 1; letter-spacing: .22em; margin-left: .22em; text-transform: uppercase; font-weight: 400; }
-@media (prefers-reduced-motion: reduce) { #goreview-splash { transition: none; } }
+@media (prefers-reduced-motion: no-preference) { #goreview-splash { transition: opacity .55s ease; } } /* the fade only when motion is welcome (audit A-C04) */
 /* the home: the language dropdown stands where the page title was, in the title's size, over the same short centred rule */
 .home-language { text-align: center; margin: .5rem 0 1.5rem; }
 .home-language::after { content: ""; display: block; width: 3rem; height: 1px; margin: 1.1rem auto 0; background: var(--rule-strong); }

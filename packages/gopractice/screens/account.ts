@@ -3,9 +3,9 @@
  *
  *   Name           the display name on the account (set when the account is created in GoLearn; editable here)
  *   Email          the address, and only if it is not confirmed yet, a note with "send the email again"
- *   Sign out                      plain text, no box
- *   Download my data              plain text, centred
- *   Delete account                plain red text, centred; opens the guided deletion below, nothing of it shown before
+ *   Sign out                      a friendly pill, centred (the owner, 2026-10-28: the plain text links read as sterile)
+ *   Download my data              the same
+ *   Delete account                the same in red; opens the guided deletion below, nothing of it shown before
  *
  * The deletion walks through what happens (nothing for 14 days), how to restore the account in that time (sign in and press
  * Cancel), then asks for the password and deletes. While a deletion is pending the banner with its Cancel sits at the top.
@@ -63,7 +63,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
 
   // ── name: shown, and editable in place
   const nameText = h('span', { id: 'account-name' }, '…');
-  const nameEdit = button('Edit', () => openNameEditor(), { class: 'linklike small', id: 'account-name-edit' });
+  const nameEdit = button('Edit', () => openNameEditor(), { class: 'btn friendly small', id: 'account-name-edit' });
   const nameRow = h('dd', { class: 'account-name-row' }, nameText, ' ', nameEdit);
   let currentName = '';
   function showName(name: string | undefined): void {
@@ -121,7 +121,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       // back to the device alone where there is one (nothing was removed); the hosted copy has nothing to show without an account
       ctx.go((await ctx.mode()) === 'device' ? 'review' : 'signin');
     })();
-  }, { id: 'sign-out', class: 'linklike' });
+  }, { id: 'sign-out', class: 'btn friendly' });
   const download = button('Download my data', () => {
     void (async () => {
       const { client, session: s } = await ctx.accountApi();
@@ -133,8 +133,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       saveFile(ctx, name, new Blob([r.data], { type: 'application/json' }));
       setStatus(status, `Your data is ready: ${name}.`, 'ok');
     })();
-  }, { id: 'export-data', class: 'linklike' });
-  const deleteOpen = button('Delete account', () => { void openDeletion(); }, { id: 'delete-open', class: 'linklike danger' });
+  }, { id: 'export-data', class: 'btn friendly' });
+  const deleteOpen = button('Delete account', () => { void openDeletion(); }, { id: 'delete-open', class: 'btn friendly danger' });
   const actions = h('div', { class: 'account-actions' }, signOut, download, deleteOpen);
 
   // ── the guided deletion, shown only once asked for

@@ -22,39 +22,43 @@ function useWords(rig: Rig, items: VocabularyItem[]): void {
 }
 
 describe('cards per deck', () => {
-  it('defaults to 10; the home sizes the deck to it and the quiet "deck size" link opens the stepper inline', async () => {
+  it('defaults to 10; the home sizes the deck to it and carries no deck-size control (Settings keeps the stepper; the owner, 2026-10-28)', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, dueMany(14));
     await reopen(rig);
     expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck).toBe(10);
     expect(cards(rig)).toBe(10);
-    expect(rig.q('#deck-size-link').textContent).toBe('deck size: 10');
-    expect(rig.q<HTMLElement>('#deck-size-box').hidden).toBe(true);
-    click(rig.q('#deck-size-link'));
-    expect(rig.q<HTMLElement>('#deck-size-box').hidden).toBe(false);
-    expect(rig.q('#deck-size-link').getAttribute('aria-expanded')).toBe('true');
+    expect(rig.root.querySelector('#deck-size-link, #deck-size-box, #home-size')).toBeNull();
+    expect(rig.q('#review-home').textContent).not.toMatch(/deck size/i);
   });
 
-  it('the typed number and the stepper change the plan size at once, and the size is clamped to 5 to 60 (no preset pills, 2026-10-28)', async () => {
+  it('the typed number and the stepper in Settings change the plan size for the next visit to the home, and the size is clamped to 5 to 60 (no preset pills, 2026-10-28)', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, dueMany(14));
     await reopen(rig);
-    click(rig.q('#deck-size-link'));
-    expect(rig.qa('#deck-size-box button').map((b) => b.id)).toEqual(['home-less', 'home-more']); // the stepper alone: the 5 · 10 · 15 · 20 · 30 pills are gone
-    expect(rig.q('#deck-size-box .deck-size').classList.contains('centred')).toBe(true);
-    type(rig.q<HTMLInputElement>('#home-size'), '5');
+    const prefs = async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck;
+    await rig.go('settings');
+    expect(rig.qa('#settings-prefs .deck-size .stepper-btn').map((b) => b.id)).toEqual(['pref-less', 'pref-more']); // the stepper alone: the 5 · 10 · 15 · 20 · 30 pills are gone
+    type(rig.q<HTMLInputElement>('#pref-size'), '5');
+    await until(async () => (await prefs()) === 5, 'five');
+    await rig.go('review');
     await until(() => cards(rig) === 5, 'five cards');
-    expect(rig.q<HTMLElement>('#deck-size-box').hidden).toBe(false); // it stays open across the re-plan
-    expect(rig.q('#deck-size-link').textContent).toBe('deck size: 5');
-    click(rig.q('#home-more'));
+    await rig.go('settings');
+    click(rig.q('#pref-more'));
+    await until(async () => (await prefs()) === 6, 'six');
+    await rig.go('review');
     await until(() => cards(rig) === 6, 'six cards');
-    type(rig.q<HTMLInputElement>('#home-size'), '15');
+    await rig.go('settings');
+    type(rig.q<HTMLInputElement>('#pref-size'), '15');
+    await until(async () => (await prefs()) === 15, 'fifteen');
+    await rig.go('review');
     await until(() => cards(rig) === 14, 'all fourteen: fewer than the size when there is less material');
-    type(rig.q<HTMLInputElement>('#home-size'), '1');
-    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 5, 'the lower clamp');
-    type(rig.q<HTMLInputElement>('#home-size'), '999');
-    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 60, 'the upper clamp');
-    await until(() => rig.q<HTMLButtonElement>('#home-more').disabled, 'the stepper to stop at 60');
+    await rig.go('settings');
+    type(rig.q<HTMLInputElement>('#pref-size'), '1');
+    await until(async () => (await prefs()) === 5, 'the lower clamp');
+    type(rig.q<HTMLInputElement>('#pref-size'), '999');
+    await until(async () => (await prefs()) === 60, 'the upper clamp');
+    await until(() => rig.q<HTMLButtonElement>('#pref-more').disabled, 'the stepper to stop at 60');
   });
 
   it('tops the schedule up from the vocabulary toward the size, never padding past the words there are', async () => {
@@ -102,22 +106,21 @@ describe('cards per deck', () => {
     expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck).toBe(60);
   });
 
-  it('with a session open the new size applies to the next deck, and the home says so quietly', async () => {
+  it('with a session open a new size set in Settings is kept for the next deck; the open session stays resumable', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, dueMany(12));
     await reopen(rig);
     click(rig.q('#start-session'));
     await until(() => rig.app.current() === 'review/session' && !!rig.root.querySelector('#session .exercise'), 'the session');
     await rig.go('settings');
+    type(rig.q<HTMLInputElement>('#pref-size'), '5');
+    await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 5, 'the new size');
     await rig.go('review');
     await until(() => !!rig.root.querySelector('[data-action="resume-session"]'), 'the resumable session');
-    click(rig.q('#deck-size-link'));
-    type(rig.q<HTMLInputElement>('#home-size'), '5');
-    await until(() => /next deck/.test(rig.q('#review-home > .status').textContent ?? ''), 'the quiet note');
-    expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck).toBe(5);
+    expect(rig.root.querySelector('#deck-size-link')).toBeNull();
   });
 
-  it('is operable and named: a labelled stepper everywhere (no pills on Settings or the home), a 44 px target in standalone mode, the home keeping the room the pills took', async () => {
+  it('is operable and named: a labelled stepper in Settings (no pills anywhere, nothing on the home), a 44 px target in standalone mode', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('settings');
     expect(rig.q('#pref-less').getAttribute('aria-label')).toBe('Fewer cards per deck');
@@ -129,14 +132,10 @@ describe('cards per deck', () => {
     await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 11, 'one more');
     expect(rig.q<HTMLInputElement>('#pref-size').value).toBe('11');
     await rig.go('review');
-    click(rig.q('#deck-size-link'));
-    expect(rig.qa('#deck-size-box .pill')).toEqual([]);
-    expect(rig.q('#deck-size-box [role="group"]').getAttribute('aria-label')).toBe('Cards per deck');
+    expect(rig.root.querySelector('#deck-size-box, #deck-size-link')).toBeNull(); // the home has no stepper of its own since 2026-10-28
     const css = readFileSync('packages/gopractice/styles.css', 'utf8');
     expect(css).toMatch(/@media \(pointer: coarse\), \(display-mode: standalone\) \{[^]*?\.stepper-btn \{ width: 2\.75rem; height: 2\.75rem; \}/);
     expect(css).not.toMatch(/\.pill\b/);
-    // the spacing is kept: the box is padded by about the height of the row the pills had (taller where they had the 44 px target)
-    expect(css).toMatch(/\.deck-size-box \{ margin: \.6rem 0 0; padding-bottom: 2\.2rem; \}/);
-    expect(css).toMatch(/@media \(pointer: coarse\), \(display-mode: standalone\) \{[^]*?\.deck-size-box \{ padding-bottom: 3\.35rem; \}/);
+    expect(css).not.toMatch(/\.deck-size-(box|line)/);
   });
 });

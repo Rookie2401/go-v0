@@ -35,7 +35,9 @@ describe('the GoReview home', () => {
     expect(rig.q('#deck-count').textContent).toBe('2 cards ready');
     expect(rig.q('#previous-count').textContent).toBe('1 saved'); // Class Essentials, the built-in deck, is already there
     expect(rig.q('#vocab-count').textContent).toMatch(/^\d+ words?$/);
-    expect(rig.qa('#review-home button:not(.stepper-btn):not(.pill)').map((b) => b.textContent)).toEqual(['deck size: 10', 'Begin', 'Save deck']);   // the four entries and one quiet size line
+    expect(rig.qa('#review-home button').map((b) => b.textContent)).toEqual(['Begin', 'Save deck']);   // the four entries; no deck-size line (Settings keeps the stepper, 2026-10-28)
+    expect(rig.q('#save-deck').classList.contains('friendly')).toBe(true); // Save deck as the friendly pill beside Begin
+    expect(rig.q('#review-home').textContent).not.toMatch(/deck size/);
     // none of what the home used to show
     for (const gone of ['.card', '#due-summary', '.time-presets', '#session-controls', '#candidates', '#deck-list', 'table', 'dl', 'details', '#link-transfer']) {
       expect(rig.root.querySelector(`#review-home ${gone}`), gone).toBeNull();

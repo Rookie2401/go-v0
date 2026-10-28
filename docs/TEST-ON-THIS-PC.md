@@ -11,11 +11,11 @@ progress across devices. There are no teams and no seeding step.
 
 ```bash
 cd C:\Users\CJWal\dev\go-v0
-npm run local:build                                                   # extension (dist/), setup page (dist/app + dist-web/), hosted GoPractice (packages/gopractice/dist)
-npx vite build -c packages/gopractice/vite.config.ts --mode extension # GoPractice as a page of the extension (dist/practice) — run it AFTER local:build
+npm run local:build                                                   # extension (dist/), setup page (dist/app + dist-web/), hosted GoPractice (packages/goreview/app/dist)
+npx vite build -c packages/goreview/app/vite.config.ts --mode extension # GoPractice as a page of the extension (dist/review) — run it AFTER local:build
 ```
 
-`npm run ext:build` (inside `local:build`) empties the extension's `dist/` except `dist/app/`, so `dist/practice/` has to be built after it, every time.
+`npm run ext:build` (inside `local:build`) empties the extension's `dist/` except `dist/app/`, so `dist/review/` has to be built after it, every time.
 
 ## 2. Load the extension into Brave (you do this part; it is a browser setting)
 
@@ -74,4 +74,4 @@ Check <http://127.0.0.1:8790/health> answers `{"ok":true,…}`. Stop everything 
 
 ## 6. Rebuilding after code changes
 
-`npm run local:build`, then `npx vite build -c packages/gopractice/vite.config.ts --mode extension`, then in `brave://extensions` press the reload arrow on "GoLearn reader", and refresh the local pages.
+`npm run local:build`, then `npx vite build -c packages/goreview/app/vite.config.ts --mode extension`, then in `brave://extensions` press the reload arrow on "GoLearn reader", and refresh the local pages.

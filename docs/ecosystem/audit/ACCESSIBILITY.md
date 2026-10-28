@@ -2,18 +2,18 @@
 
 Date: 2026-10-09. Owner of this file and of `test/audit/a11y.*`: the performance and accessibility audit session (its sibling is `PERFORMANCE.md`).
 Remediation: 2026-10-09 (same day, a later session). **All 21 defects are fixed** (A-11 and A-14 with a stated limit, section 7); the product code, the stylesheets and the tests below were changed for that. Sections 2 to 6 describe what the audit found BEFORE the remediation; section 7 gives the status and the proving test of each defect.
-Suite: `npx vitest run test/audit/a11y.*.test.ts --reporter=dot` → **4 files, 78 tests, all green, none of them `it.fails`** (the 23 defect tests were flipped to plain `it`); more tests for the new behaviour live in `test/gopractice/a11y-fixes.test.ts` (15), `test/golearn-app/settings.test.ts` (+4), `test/extension/actionPopup.test.ts` (+2) and `test/goreview/exercises/grading.test.ts` (+2).
+Suite: `npx vitest run test/audit/a11y.*.test.ts --reporter=dot` → **4 files, 78 tests, all green, none of them `it.fails`** (the 23 defect tests were flipped to plain `it`); more tests for the new behaviour live in `test/goreview-app/a11y-fixes.test.ts` (15), `test/golearn-app/settings.test.ts` (+4), `test/extension/actionPopup.test.ts` (+2) and `test/goreview/exercises/grading.test.ts` (+2).
 
 ## How to read this
 
-The checks are static or run in jsdom over the REAL screens (the same rigs as `test/gopractice`, `test/gotell-ui`, `test/golearn-app`, `test/extension`). Each test states the **correct** behaviour. Where the product does not have it yet the test is written with `it.fails` and its title begins `DEFECT A-nn`: it passes while the defect exists and turns red the day the defect is fixed, which is the signal to delete `.fails`. The title of the rest begins with the check id (A-C… stylesheets, A-K… contrast, A-S… screens, A-D… card and focus, A-U… Unicode).
+The checks are static or run in jsdom over the REAL screens (the same rigs as `test/goreview-app`, `test/gotell-ui`, `test/golearn-app`, `test/extension`). Each test states the **correct** behaviour. Where the product does not have it yet the test is written with `it.fails` and its title begins `DEFECT A-nn`: it passes while the defect exists and turns red the day the defect is fixed, which is the signal to delete `.fails`. The title of the rest begins with the check id (A-C… stylesheets, A-K… contrast, A-S… screens, A-D… card and focus, A-U… Unicode).
 Every defect test was run once with `.fails` removed to prove it fails on the assertion it names and not on a setup error.
 
 **jsdom is not a screen reader.** It has no accessibility tree, no layout, no cascade for linked stylesheets and no real focus rules for hidden elements. The audit computes a simplified accessible name (aria-labelledby, aria-label, `<label>`, content, `alt`, `value`; `title`/`placeholder` are reported as weak) and says so in section 6. Section 7 lists what a manual NVDA pass must check. The auditor itself is tested (A-S08): on a deliberately broken page it reports 27 findings in 19 rules, so "no findings" elsewhere means something.
 
 | target | how it was mounted | states audited |
 |---|---|---|
-| GoPractice shell and GoReview (`packages/gopractice/screens/**`) | `makeRig` / `makeTellRig` (fake service, real app) | sign-in; review home (also with every `<details>` open, and after "Test now"); a session through **all five exercise families**, question and feedback of each; session summary; transfer; history |
+| GoPractice shell and GoReview (`packages/goreview/app/screens/**`) | `makeRig` / `makeTellRig` (fake service, real app) | sign-in; review home (also with every `<details>` open, and after "Test now"); a session through **all five exercise families**, question and feedback of each; session summary; transfer; history |
 | GoTell (`screens/tell/**`) | `makeTellRig` | home; prompts; writer (empty, analysed, with the help ladder open); goals; privacy; Settings |
 | GoLearn setup app (`packages/golearn-extension/app/**`) | `test/golearn-app` rig | all ten screens, signed out and signed in (20 states) |
 | lookup card (`src/popup/card.ts`, closed shadow root) | `createCardUI` + `parseSelection` | closed, every layer + correction form + More open, message state, no-voice state |

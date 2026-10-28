@@ -20,7 +20,8 @@ const list = (dir: string): string[] => {
 };
 const imports = (file: string): string[] =>
   [...fs.readFileSync(file, 'utf8').matchAll(/from\s+['"]([^'"]+)['"]/g)].map((m) => m[1]);
-const pkgOf = (file: string): string => path.relative(ROOT, file).split(path.sep)[0];
+// the GoReview app (packages/goreview/app, the shell that was packages/gopractice until 2026-10-28) is its own package, goreview-app, apart from the engine in packages/goreview/src
+const pkgOf = (file: string): string => { const parts = path.relative(ROOT, file).split(path.sep); return parts[0] === 'goreview' && parts[1] === 'app' ? 'goreview-app' : parts[0]; };
 
 const RETIRED = ['src/course', 'src/ladder', 'src/stage0', 'src/library', '/course/', '/ladder/', '/stage0/', '/library/'];
 
@@ -55,9 +56,9 @@ describe('package boundaries', () => {
   });
 
   it('application packages import only the contract and the shared subsystems, never each other or the engine/store', () => {
-    const apps = new Set(['golearn-app', 'golearn-extension', 'goreview', 'gotell', 'gopractice']);
-    // the GoPractice shell hosts both workspaces; the workspaces never import each other
-    const hosts: Record<string, string[]> = { gopractice: ['goreview', 'gotell'] };
+    const apps = new Set(['golearn-app', 'golearn-extension', 'goreview', 'gotell', 'goreview-app']);
+    // the GoReview shell hosts both workspaces; the workspaces never import each other
+    const hosts: Record<string, string[]> = { 'goreview-app': ['goreview', 'gotell'] };
     // shared subsystems an application may use: the contract, GoListen, the language packs, the device-side sync
     // client and the typed API client of the service (never the service handler, store or engine)
     // golearn-share (the mobile share contract) is a shared library that imports only the contract

@@ -29,7 +29,7 @@ brief's own list differs, the lines need re-mapping.
   | golearn-content | `packages/golearn-extension/src/content/index.ts` | `dist/content.js` |
   | golearn-popup | `packages/golearn-extension/action/popup.ts` | `dist/action/popup.js` |
   | golearn-app | `packages/golearn-extension/app/main.ts` | `dist/app/app.js` (options page) and `dist-web/` (hosted setup page) |
-  | gopractice | `packages/gopractice/main.ts` | `packages/gopractice/dist/` |
+  | gopractice | `packages/goreview/app/main.ts` | `packages/goreview/app/dist/` |
   | repository-service | `packages/repository-service/src/main.ts` | Node service (dynamic imports followed) |
   | gotell (package index) | `packages/gotell/src/index.ts` | no build of its own: hosted by the GoPractice shell |
 
@@ -52,7 +52,7 @@ GoLearn  (one application, one package: packages/golearn-extension)
                     inside the extension the app only connects to the worker's device-local Repository (connectLocalRepository), and the
                     hosted copy opens one of its own through a lazy chunk the options build leaves out
 
-GoPractice  (one application: packages/gopractice, the shell)
+GoPractice  (one application: packages/goreview/app, the shell)
   main.ts     ──► gopractice (33) · goreview (41) · gotell (38) · golisten (16) · language-packs (16) · repository-sync (6)
                   · repository-service api client (3) · repository-contract (5) · ts-fsrs (external) · legacy src/ (103)
                   · since 2026-10-09: repository-local (and through it store, engine, linguistics) for the extension page's device mode
@@ -147,7 +147,7 @@ chain, from the content script:
   packages/golearn-extension/src/content/index.ts
   -> src/adapters/sq.ts -> src/core/index.ts -> src/core/model.ts -> src/course/curriculumPolicy.ts
 chain, from GoPractice:
-  packages/gopractice/main.ts -> packages/goreview/src/index.ts -> packages/goreview/src/facts/index.ts
+  packages/goreview/app/main.ts -> packages/goreview/src/index.ts -> packages/goreview/src/facts/index.ts
   -> packages/goreview/src/facts/provider.ts -> src/core/index.ts -> src/core/model.ts -> src/course/curriculumPolicy.ts
 chain, from the service:
   packages/repository-service/src/main.ts -> packages/repository-linguistics/src/index.ts

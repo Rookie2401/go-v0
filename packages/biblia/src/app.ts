@@ -609,7 +609,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
           h('li', {}, 'Greek New Testament: The Greek New Testament: SBL Edition (Michael W. Holmes, ed.; SBL / Logos, 2010) — CC BY 4.0; analysis: MorphGNT (CC BY-SA 3.0); glosses: Dodson, Abbott-Smith, Strong’s (public domain); Septuagint counts: lxx-morph.'),
           h('li', {}, 'Both copied from the owner’s Biblia app’s data build (npm run biblia:import). None of that app’s parsing code is used: every word is read by the Go analysers adapter-he and adapter-el, whose readings are the sources’ own readings of these very words; the compiled cores hold the commonest words and the full indexes (loaded here when built) the rest.'))),
       kickerCard('sources-limits', 'Limits',
-        para('No dictionary panel yet (BDB / Abbott-Smith entries are not shown); no search, no vocabulary list (GoPractice shows the vocabulary); a form the Bible reads two ways shows both, the commoner first; nothing has been reviewed by a Hebrew scholar, a classicist or a native speaker; no voice exists for Biblical Hebrew or Koine Greek.')),
+        para('No dictionary panel yet (BDB / Abbott-Smith entries are not shown); no search, no vocabulary list (GoReview shows the vocabulary); a form the Bible reads two ways shows both, the commoner first; nothing has been reviewed by a Hebrew scholar, a classicist or a native speaker; no voice exists for Biblical Hebrew or Koine Greek.')),
       kickerCard('sources-type', 'Type',
         para('EB Garamond (Latin and Greek) and Frank Ruhl Libre (Hebrew), SIL Open Font License 1.1.', 'muted')),
       h('p', {}, h('a', { class: 'btn', href: '#/' }, 'Library'))));

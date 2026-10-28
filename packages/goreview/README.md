@@ -1,6 +1,11 @@
 # GoReview
 
-The review half of GoPractice. It reads the learner's Repository (candidates, knowledge, events), keeps a spaced-repetition
+One package, two parts. `src/` is the review engine, described below. `app/` is the application: the shell with the review, GoTell and
+Settings workspaces, the account, sync and the builds (the installable GoReview edition, the page inside the GoLearn extension, the plain
+web copy); it was `packages/gopractice` until 2026-10-28, when the GoPractice name went. The engine never imports the app; the audits
+(test/audit/conformance.*) keep the two apart as `goreview` and `goreview-app`.
+
+The engine reads the learner's Repository (candidates, knowledge, events), keeps a spaced-repetition
 deck, plans a session, asks questions, grades them, and writes review and listening events back. It imports the
 Repository contract and GoListen's contracts only (`src/types.ts` is the vocabulary all modules share).
 

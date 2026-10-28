@@ -390,7 +390,7 @@ function flatFeatures(morph: Record<string, unknown> | undefined): Record<string
 /**
  * Constructions the form's own features show. Only what the features state, nothing inferred. The unit id is the
  * Repository's morphological-construction id (`morph:<lang>:<pos>:<feature key>`), the same id the linguistics
- * resolver stores and GoPractice's grammar assessments name, so the learner model's grammar estimate for this
+ * resolver stores and GoReview's grammar assessments name, so the learner model's grammar estimate for this
  * construction reaches the card. The pack-level `id` (e.g. `definite-accusative-singular`) only selects an explanation.
  */
 function formConstructions(L: Lang, c: AnalysisCandidate): ConstructionNote[] {

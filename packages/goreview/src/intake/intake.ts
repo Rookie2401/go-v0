@@ -84,7 +84,7 @@ export function proposeFor(candidate: Pick<ReviewCandidate, 'kind' | 'targetDime
 
 const pct = (x: number): string => `${Math.round(x * 100)}%`;
 
-/** What the level means for the next question (shown in the reasons, so GoPractice says why a unit is asked as it is). */
+/** What the level means for the next question (shown in the reasons, so GoReview says why a unit is asked as it is). */
 const LEVEL_ASK: Record<KnowledgeLevel, string> = {
   new: 'not understood yet, so a recognition question',
   seen: 'met but not shown to be understood, so a recognition question',

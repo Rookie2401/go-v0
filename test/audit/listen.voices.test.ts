@@ -9,7 +9,7 @@ import { describe, expect, it } from 'vitest';
 import { PACKS } from '../../packages/language-packs/src';
 import { albanianRegistry, createGoListen, defaultRegistries, deviceRegistry, indexRegistries } from '../../packages/golisten/src';
 import type { GoListenOptions } from '../../packages/golisten/src';
-import { createAudioDeps } from '../../packages/gopractice/audio';
+import { createAudioDeps } from '../../packages/goreview/app/audio';
 import { createDevicePronouncer } from '../../packages/golearn-extension/src/content/voice';
 import { EN, ES, fakeAudio, fakeFetch, fakeObjectUrls, fakeSpeech, fakeUtterance, jsonResponse, SQ, SQ_AL, SQ_NET, voice, wavResponse } from '../golisten/pronounce-fakes';
 import { flushRowsAfterAll, note } from './model.support';
@@ -267,7 +267,7 @@ describe('§19 per-language voice and audio-quality table (sq, de, es, hi, th, n
       detail.push(`${lang}: registry ${registries.has(lang) ? 'yes' : 'none'}, entries ${registries.get(lang)?.entries.length ?? 0}, availability ${avail}, arbitrary word ${'unavailable' in stim ? 'unavailable' : 'prepared'}`);
     }
     expect(hearable).toEqual(LANGS); // every language has a strict device template; synthetic speech remains practice only
-    note('D7', '§19', 'GoReview/GoPractice audio availability per language with a matching device voice installed; pack registryRef resolution', 'every registryRef resolves; every language answers; device speech is offered only for its own language tags', `registryRef with no registry: [${dangling}]; hearable with a typical device voice: [${hearable}] (${detail.join('; ')}).`);
+    note('D7', '§19', 'GoReview/GoReview audio availability per language with a matching device voice installed; pack registryRef resolution', 'every registryRef resolves; every language answers; device speech is offered only for its own language tags', `registryRef with no registry: [${dangling}]; hearable with a typical device voice: [${hearable}] (${detail.join('; ')}).`);
     expect(dangling).toEqual([]);
   });
 });

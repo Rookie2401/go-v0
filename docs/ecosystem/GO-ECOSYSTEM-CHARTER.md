@@ -126,6 +126,6 @@ is the model; team-branded builds, if wanted, come from the same implementation.
 
 `LEGACY-SALVAGE-AUDIT.md` (what exists and what becomes of it), `GO-REPOSITORY-DESIGN.md` (the shared data model and
 its boundaries), `GOLEARN-EXTENSION-STRATEGY.md` (the extension, reader adapters, language packs),
-`GOPRACTICE-DESIGN.md` (GoReview and GoTell), `RIGHTS-AND-PRIVACY-BOUNDARIES.md` (decisions per source category and
+`GOREVIEW-APP-DESIGN.md` (GoReview and GoTell), `RIGHTS-AND-PRIVACY-BOUNDARIES.md` (decisions per source category and
 activity), `IMPLEMENTATION-ROADMAP.md` (sequence, the vertical slice, ownership), `BASELINE-TEST-REPORT.md` (the
 measured state of the code before any change).

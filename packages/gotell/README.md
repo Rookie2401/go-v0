@@ -4,7 +4,7 @@ GoTell is where a learner writes in the language they are learning, in their own
 for it. The learner's text is the artefact. A correction is a proposal. Nothing replaces the learner's words unless the
 learner presses *Accept*, and the words that were there before stay in the version history.
 
-It lives in GoPractice at `#/tell`. The package here has no DOM; the screens are in `packages/gopractice/screens/tell/`.
+It lives in GoReview at `#/tell`. The package here has no DOM; the screens are in `packages/goreview/app/screens/tell/`.
 
 ## Independence
 
@@ -27,8 +27,8 @@ screens, the engine wiring and `src/workspace` for that, and `test/gotell/bounda
 | `src/privacy/` | the privacy statement, export of everything, deletion, device cleanup, the remote-assistance gate |
 | `src/workspace/` | the **port** the screens depend on (`TellEngine`, `TellHost`), the writer session logic, goals, draft helpers |
 
-`packages/gopractice/tellEngine.ts` is the one file that wires the real modules and the language pack runtime to the port.
-A test passes a fake through `tellOverrides.engine` (`packages/gopractice/screens/tell/overrides.ts`).
+`packages/goreview/app/tellEngine.ts` is the one file that wires the real modules and the language pack runtime to the port.
+A test passes a fake through `tellOverrides.engine` (`packages/goreview/app/screens/tell/overrides.ts`).
 
 ## Modes
 

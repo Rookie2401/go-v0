@@ -21,8 +21,8 @@ real Genesis 1 / John 1 data. Builds: `vite build -c packages/biblia/vite.config
 ```
 Source file `packages/biblia/config.json` holds the development address `http://127.0.0.1:8790`. The build copies it; the environment
 variable `BIBLIA_SERVICE_URL` (https, or http on localhost/127.0.0.1; no query, fragment or credentials; a trailing slash is dropped)
-replaces `serviceUrl` in the COPY only, exactly as `GOPRACTICE_SERVICE_URL` does in `packages/gopractice/vite.config.ts`. Read at
-runtime with `loadConfig` from `packages/gopractice/config.ts`.
+replaces `serviceUrl` in the COPY only, exactly as `GOREVIEW_SERVICE_URL` does in `packages/goreview/app/vite.config.ts`. Read at
+runtime with `loadConfig` from `packages/goreview/app/config.ts`.
 
 ### Recorder modes (`src/repo.ts`)
 
@@ -53,7 +53,7 @@ learner's own mark the word is repainted at once; the chapter is refreshed when 
 ### Standalone edition markers (lane B)
 
 `index.html` is left as it is; the standalone build injects `<meta name="biblia-edition" content="standalone">`, the manifest link,
-the iOS meta tags and the inline service-worker registration through a Vite HTML transform, exactly as `packages/gopractice/vite.config.ts`
+the iOS meta tags and the inline service-worker registration through a Vite HTML transform, exactly as `packages/goreview/app/vite.config.ts`
 does for GoReview (`reviewHtml`, `writePwa`, `public/{manifest.webmanifest,sw.js,register.js,icons}`). `main.ts` (lane A) reads the
 marker: `document.querySelector('meta[name=biblia-edition]')?.content === 'standalone'` means "connect to the service in config.json".
 
@@ -63,7 +63,7 @@ marker: `document.querySelector('meta[name=biblia-edition]')?.content === 'stand
 
 Owns: `packages/biblia/main.ts`, `packages/biblia/src/app.ts`, `src/repo.ts`, `src/session.ts` (new), `src/account.ts` (new: the
 sign-in / sign-up / forgot-password screen, in Biblia's own DOM style, over `createRepositoryApi` from `packages/repository-service/src/api`
-and `createAccountClient` from `packages/gopractice/accountClient.ts`), `src/queue.ts` (new: an offline queue of `GoEvent[]` under
+and `createAccountClient` from `packages/goreview/app/accountClient.ts`), `src/queue.ts` (new: an offline queue of `GoEvent[]` under
 `'biblia:queue'`, flushed on start, on `online`, after each successful append; capped at 2,000 events, oldest dropped with a notice),
 `src/levels.ts` (new), `packages/biblia/styles.css`, tests `test/biblia/{session,account,queue,levels,live}.test.ts` (fake
 `RepositoryApi` objects; `test/golearn-app/accountFake.ts` shows a fake of the account routes). Must keep `test/biblia/app.test.ts`
@@ -72,7 +72,7 @@ and `canon.test.ts` green and both existing modes working (`'extension'`, `'app'
 Screens: the library view gets an account line (signed out: "Sign in to record what you read" → the account screen; signed in: the
 email, "Sign out"); the notice box says, per mode, where lookups and marks go. The account screen: email + password, Sign in; Create
 account (same fields; after it, "check your email" when the service says `verificationSent`); Forgot password (email only → "if the
-address exists, an email was sent"); links to the Privacy Policy and Terms (`packages/gopractice/legal.ts` has the texts). Sign-in
+address exists, an email was sent"); links to the Privacy Policy and Terms (`packages/goreview/app/legal.ts` has the texts). Sign-in
 errors are the service's own messages (`explainAccountFailure`). No password is ever logged, stored or echoed.
 
 ### Lane B — the installable build, its assets, its test, the publish notes (Sonnet)

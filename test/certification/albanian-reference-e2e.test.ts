@@ -6,7 +6,7 @@
  *   - GoLearn: the real setup application (the sign-in page, then the languages page: download the language, whose pack installs by itself), the real background worker
  *     with the real Albanian pack (dictionary shards read from public/dict/sq), the real content-script controller and
  *     card on a page;
- *   - GoPractice: the real shell (`createApp`) with GoReview's real builders, scheduler, intake, planner, runner and
+ *   - GoReview: the real shell (`createApp`) with GoReview's real builders, scheduler, intake, planner, runner and
  *     evidence, the real pack facts, and GoTell's real engine behind the real writing screens;
  *   - GoListen: the real assessment source and playback, with a TEST registry entry that stands in for a reviewed
  *     Albanian recording (no such recording exists; §14 asks for exactly this when validated audio is unavailable).
@@ -38,11 +38,11 @@ import { MSG, type ChromeApi } from '../../packages/golearn-extension/src/platfo
 import { createCardUI } from '../../packages/golearn-extension/src/popup/card';
 import { createMemoryStorageArea } from '../../packages/golearn-extension/src/store';
 import { buildCardAdded, createFsrsScheduler, evidenceFor, foldDeckItems, planSession, ratingFor, registry } from '../../packages/goreview/src';
-import { createApp as createPracticeApp, type AppHandle } from '../../packages/gopractice/app';
-import { createAudioDeps } from '../../packages/gopractice/audio';
-import { createReviewEngine } from '../../packages/gopractice/engine';
-import { packFactsFor } from '../../packages/gopractice/packFacts';
-import type { Deps as PracticeDeps } from '../../packages/gopractice/ports';
+import { createApp as createPracticeApp, type AppHandle } from '../../packages/goreview/app/app';
+import { createAudioDeps } from '../../packages/goreview/app/audio';
+import { createReviewEngine } from '../../packages/goreview/app/engine';
+import { packFactsFor } from '../../packages/goreview/app/packFacts';
+import type { Deps as PracticeDeps } from '../../packages/goreview/app/ports';
 import { decodeBody } from '../../packages/gotell/src/documents';
 import type { VoiceRegistry } from '../../packages/golisten/src';
 import type { AudioClip, AudioPort } from '../../packages/golisten/src/ports';
@@ -154,7 +154,7 @@ async function lookup(r: ReturnType<typeof reader>, word: string) {
   return out;
 }
 
-// ───────────────────────────── GoPractice: the real shell ─────────────────────────────
+// ───────────────────────────── GoReview: the real shell ─────────────────────────────
 let practice: AppHandle | undefined;
 let practiceRoot: HTMLElement;
 const audioDeps = createAudioDeps({ consent: () => false, registries: [TEST_SQ_REGISTRY], audio: fakeAudio, speech: noSpeech });
@@ -340,9 +340,9 @@ describe('§14 Acquisition (steps 1–11): GoLearn over the real Repository', ()
   });
 });
 
-describe('§14 Review (steps 12–19): the real GoPractice shell on the real Repository', () => {
-  it('12–14. GoPractice opens, signs in, and shows the candidate with the reason it was selected', async () => {
-    await openPractice();                                                                  // 12. open GoPractice
+describe('§14 Review (steps 12–19): the real GoReview shell on the real Repository', () => {
+  it('12–14. GoReview opens, signs in, and shows the candidate with the reason it was selected', async () => {
+    await openPractice();                                                                  // 12. open GoReview
     await until(() => !!practiceRoot.querySelector('#signin-form'), 8000);
     typeInto(pq<HTMLInputElement>('#signin-email'), EMAIL);
     typeInto(pq<HTMLInputElement>('#signin-password'), PASSWORD);

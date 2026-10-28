@@ -12,7 +12,7 @@ Everything below is on this PC; nothing needs the network except the phone's own
 | Biblia, hosted edition (installable, records to the public service when signed in; `docs/ecosystem/BIBLIA-STANDALONE.md`) | https://rookie2401.github.io/biblia/ | published by the owner from `packages/biblia/dist-standalone`; on this PC's Masters-WiFi the public service address is blocked, so here it reads but cannot record |
 | Biblia, standalone edition served locally against the local service | http://localhost:4199 | `npm run biblia:build-standalone` then `npx vite preview --outDir packages/biblia/dist-standalone --port 4199` (localhost, so its service worker can register) |
 | Biblia, standalone (reader only: nothing is recorded; carries the Biblical Hebrew and Koine indexes whole and the Ancient Greek, Modern Greek and Modern Hebrew shards) | http://127.0.0.1:5199 | `npx vite preview -c packages/biblia/vite.config.ts --port 5199` over `packages/biblia/dist` |
-| GoPractice, web copy (needs an account; points at the local service) | http://127.0.0.1:5198 | `npx vite preview -c packages/gopractice/vite.config.ts --port 5198` over `packages/gopractice/dist` |
+| GoPractice, web copy (needs an account; points at the local service) | http://127.0.0.1:5198 | `npx vite preview -c packages/goreview/app/vite.config.ts --port 5198` over `packages/goreview/app/dist` |
 
 The two previews were started from a Claude session and stop with it; the commands above restart them. The builds come from
 `npm run local:build` (extension + setup app + GoPractice + Biblia, in that order; `dist/` is about 450 MB with the dictionaries).

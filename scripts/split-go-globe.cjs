@@ -1,4 +1,4 @@
-// Splits the Go logo (packages/shared-brand/go-logo.png) into the globe's three layers for the loading mark (packages/gopractice/loading.ts):
+// Splits the Go logo (packages/shared-brand/go-logo.png) into the globe's three layers for the loading mark (packages/goreview/app/loading.ts):
 //   go-globe-land.png   the continents, which drift across the sphere as it turns about its axis
 //   go-globe-rim.png    the rim's inner ring, still
 //   go-globe-frame.png  the rim's outer ring, the meridian arc with its knobs, and the stand, still
@@ -55,7 +55,7 @@ function encode(w, h, rgba) {
  *   go-globe-rim.png    the rim's inner ring (rIn ≤ d ≤ R − 8), still
  *   go-globe-frame.png  the rest: the rim's outermost ring, the meridian arc with its knobs, and the stand, still
  * plus a geometry JSON. `landRadiusShare` (rIn / size) is the radius of the circle the land is clipped to, as a share of the box, which
- * packages/gopractice/styles.css carries as the clip-path of .go-globe-sphere.
+ * packages/goreview/app/styles.css carries as the clip-path of .go-globe-sphere.
  */
 function write({ w, h, rgba, cx, cy, R, rIn, gx0, gx1, gy0, gy1, outDir }) {
   const alpha = (x, y) => (x < 0 || y < 0 || x >= w || y >= h) ? 0 : rgba[(y * w + x) * 4 + 3];

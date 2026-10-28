@@ -1,5 +1,5 @@
 # The Go mark (the G and the globe, in the Western Canon brown #6b4f2a on paper #f7f2e8; packages/shared-brand) drawn at every icon size
-# the family ships: the extension (16-128), the hosted setup app (180, 192, 512), GoReview / GoPractice (180, 192, 512, maskable 512)
+# the family ships: the extension (16-128), the hosted setup app (180, 192, 512), GoReview / GoReview (180, 192, 512, maskable 512)
 # and the GoReview iPhone app (1024, opaque). Run after changing packages/shared-brand/go-icon-source.png:
 #   powershell -File scripts/sync-go-brand.ps1
 $ErrorActionPreference='Stop'
@@ -42,11 +42,11 @@ try {
   foreach ($name in @('splash-2732x2732.png','splash-2732x2732-1.png','splash-2732x2732-2.png')) { Export-GoSplash "packages\goreview-ios\ios\App\App\Assets.xcassets\Splash.imageset\$name" 2732 }
   foreach ($size in @(192,512)) {
     Export-GoIcon "packages\golearn-extension\app\icons\icon-$size.png" $size
-    Export-GoIcon "packages\gopractice\public\icons\icon-$size.png" $size
+    Export-GoIcon "packages\goreview\app\public\icons\icon-$size.png" $size
   }
   Export-GoIcon 'packages\golearn-extension\app\icons\apple-touch-icon.png' 180
-  Export-GoIcon 'packages\gopractice\public\icons\apple-touch-icon.png' 180
-  Export-GoIcon 'packages\gopractice\public\icons\icon-maskable-512.png' 512
+  Export-GoIcon 'packages\goreview\app\public\icons\apple-touch-icon.png' 180
+  Export-GoIcon 'packages\goreview\app\public\icons\icon-maskable-512.png' 512
   Export-GoIcon 'packages\goreview-ios\assets\icon.png' 1024
   Export-GoIcon 'packages\goreview-ios\ios\App\App\Assets.xcassets\AppIcon.appiconset\AppIcon-512@2x.png' 1024
 } finally { $source.Dispose(); $logo.Dispose() }

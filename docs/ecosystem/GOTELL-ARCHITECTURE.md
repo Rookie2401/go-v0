@@ -20,7 +20,7 @@ packages/gotell/src/
   evidence/       DraftSaved + one qualified ProductionRecorded per sentence, Correction{Accepted,Rejected}; never text
   privacy/        statement, export of all writing, deletion, device cleanup, the remote-assistance gate
   workspace/      the port the screens use
-packages/gopractice/screens/tell/   home, prompt picker, writer, goals, privacy; tellEngine.ts wires the real modules
+packages/goreview/app/screens/tell/   home, prompt picker, writer, goals, privacy; tellEngine.ts wires the real modules
 ```
 
 Independence (tested): `packages/gotell` imports the contract, the language packs, the sync client and the API

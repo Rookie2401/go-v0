@@ -66,14 +66,14 @@ describe('authenticated speech background boundary', () => {
     expect((await result).ok).toBe(false);
     expect(h.fetch).not.toHaveBeenCalled();
   });
-  it('accepts only the exact GoPractice review page for isolated words', async () => {
+  it('accepts only the exact GoReview review page for isolated words', async () => {
     const h = harness(); await h.configure();
     const review = { op: 'synthesize' as const, requestId: 'review:1', languageId: 'es', readerId: 'gopractice-review', kind: 'word' as const, text: 'hola', voice: 'es-HN-KarlaNeural', locale: 'es-HN', processingPermission: 'allowed' as const };
-    const good = await h.service.handle(review, 'page', 'chrome-extension://ext-id/practice/index.html');
+    const good = await h.service.handle(review, 'page', 'chrome-extension://ext-id/review/index.html');
     expect(good.ok).toBe(true);
-    expect((await h.service.handle({ ...review, text: 'hola mundo' }, 'page', 'chrome-extension://ext-id/practice/index.html')).status).toBe(400);
-    expect((await h.service.handle({ ...review, kind: 'phrase' }, 'page', 'chrome-extension://ext-id/practice/index.html')).status).toBe(400);
-    expect((await h.service.handle(review, 'page', 'chrome-extension://ext-id/practice/index.html?x=1')).status).toBe(403);
-    expect((await h.service.handle(review, 'page', 'chrome-extension://other/practice/index.html')).status).toBe(403);
+    expect((await h.service.handle({ ...review, text: 'hola mundo' }, 'page', 'chrome-extension://ext-id/review/index.html')).status).toBe(400);
+    expect((await h.service.handle({ ...review, kind: 'phrase' }, 'page', 'chrome-extension://ext-id/review/index.html')).status).toBe(400);
+    expect((await h.service.handle(review, 'page', 'chrome-extension://ext-id/review/index.html?x=1')).status).toBe(403);
+    expect((await h.service.handle(review, 'page', 'chrome-extension://other/review/index.html')).status).toBe(403);
   });
 });

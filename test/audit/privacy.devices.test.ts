@@ -3,7 +3,7 @@
  * Privacy audit (5) device synchronisation and (6) local data cleanup.
  *
  * Devices are real: the sync client with its durable queue, local log and document store (one memory area per device, as
- * chrome.storage / localStorage would be), GoPractice's application context, and the GoLearn background worker. The service is the
+ * chrome.storage / localStorage would be), GoReview's application context, and the GoLearn background worker. The service is the
  * real one. Cleanup is judged by reading the device's whole storage back as text.
  */
 import { afterEach, describe, expect, it } from 'vitest';
@@ -88,7 +88,7 @@ describe.each(STORE_KINDS)('device synchronisation — %s store', (kind) => {
     expect(net.count('/sync/pull')).toBeGreaterThanOrEqual(3);
   }, 30_000);
 
-  it('GoPractice on two devices: each records, each syncs, both local logs hold the union once', async () => {
+  it('GoReview on two devices: each records, each syncs, both local logs hold the union once', async () => {
     const s = make(kind);
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'setup');
@@ -244,7 +244,7 @@ describe.each(STORE_KINDS)('local data cleanup: the GoLearn extension — %s sto
   });
 });
 
-describe.each(STORE_KINDS)('local data cleanup: GoPractice and GoTell — %s store', (kind) => {
+describe.each(STORE_KINDS)('local data cleanup: GoReview and GoTell — %s store', (kind) => {
   async function signedIn(deviceName = 'web') {
     const s = make(kind);
     const net = createNet(s);

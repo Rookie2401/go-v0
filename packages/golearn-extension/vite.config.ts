@@ -79,7 +79,7 @@ function cleanDistKeepingApp(): Plugin {
     buildStart() {
       const dist = path.join(here, 'dist');
       if (!fs.existsSync(dist)) return;
-      for (const name of fs.readdirSync(dist)) if (name !== 'app' && name !== 'practice') fs.rmSync(path.join(dist, name), { recursive: true, force: true });
+      for (const name of fs.readdirSync(dist)) if (name !== 'app' && name !== 'review') fs.rmSync(path.join(dist, name), { recursive: true, force: true });
     },
   };
 }

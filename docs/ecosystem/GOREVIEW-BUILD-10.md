@@ -10,7 +10,7 @@ TestFlight page decide the rest: https://appstoreconnect.apple.com/apps/68229238
 | staged version | 1.0.0 (10), bundle `com.cjwalker.goreview` |
 | built from | the working tree at `ee81e6cd` plus the staging-script fix below (`packages/goreview-ios` is still untracked in git) |
 | Repository address in the bundle | `https://repo.golearn-global-languages.com` |
-| web assets staged | 235 MB: GoReview, the Hindi and Latin dictionaries (`GOPRACTICE_DICT=hi,la`), and Biblia WITH its texts this time |
+| web assets staged | 235 MB: GoReview, the Hindi and Latin dictionaries (`GOREVIEW_DICT=hi,la`), and Biblia WITH its texts this time |
 
 ## Why build 10 exists: "Biblia could not start" in build 9
 
@@ -37,7 +37,7 @@ secret or database file patterns are still refused everywhere. Build 10's stage 
 ```powershell
 $env:REPOSITORY_SERVICE_URL='https://repo.golearn-global-languages.com'
 $env:REPOSITORY_HEALTH_CHECK_URL='http://127.0.0.1:8790'   # this PC's router blocks the domain; the local service is the same code
-$env:GOPRACTICE_DICT='hi,la'
+$env:GOREVIEW_DICT='hi,la'
 $env:GOREVIEW_BUNDLE_ID='com.cjwalker.goreview'
 $env:GOREVIEW_BUILD_NUMBER='10'
 $env:GOREVIEW_MARKETING_VERSION='1.0.0'

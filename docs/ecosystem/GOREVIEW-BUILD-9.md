@@ -10,7 +10,7 @@ TestFlight page decide the rest: https://appstoreconnect.apple.com/apps/68229238
 | staged version | 1.0.0 (9), bundle `com.cjwalker.goreview` |
 | built from | `a7cb1a37` (the working tree was clean in every path the build packages) |
 | Repository address in the bundle | `https://repo.golearn-global-languages.com` |
-| web assets staged | 216 MB: GoReview, the Hindi and Latin dictionaries (`GOPRACTICE_DICT=hi,la`, as build 8), and Biblia inside the app (`bibliaUrl: ./biblia/index.html`, recorder mode `'app'`) |
+| web assets staged | 216 MB: GoReview, the Hindi and Latin dictionaries (`GOREVIEW_DICT=hi,la`, as build 8), and Biblia inside the app (`bibliaUrl: ./biblia/index.html`, recorder mode `'app'`) |
 
 ## What is new since build 8
 
@@ -19,7 +19,7 @@ TestFlight page decide the rest: https://appstoreconnect.apple.com/apps/68229238
   too, since it only needs a `RepositoryApi` with a learner (not exercised on a device by this session).
 - GoLearn's reader screen points at the hosted Biblia (`d1ccaa08`); that concerns the extension and setup app, not this bundle.
 - The Hebrew / Greek session's commits after build 8 (audit fixes, docs), and the Latin session's commits. See `git log bf1316eb..a7cb1a37`
-  for the full list; nothing in `packages/gopractice`, `packages/goreview` or `packages/language-packs` changed between the two builds
+  for the full list; nothing in `packages/goreview/app`, `packages/goreview` or `packages/language-packs` changed between the two builds
   except what those commits record.
 
 ## What was verified, and what was not
@@ -34,7 +34,7 @@ TestFlight page decide the rest: https://appstoreconnect.apple.com/apps/68229238
 ```powershell
 $env:REPOSITORY_SERVICE_URL='https://repo.golearn-global-languages.com'
 $env:REPOSITORY_HEALTH_CHECK_URL='http://127.0.0.1:8790'   # this PC's router blocks the domain; the local service is the same code
-$env:GOPRACTICE_DICT='hi,la'
+$env:GOREVIEW_DICT='hi,la'
 $env:GOREVIEW_BUNDLE_ID='com.cjwalker.goreview'
 $env:GOREVIEW_BUILD_NUMBER='9'
 $env:GOREVIEW_MARKETING_VERSION='1.0.0'

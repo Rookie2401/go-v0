@@ -9,7 +9,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import type { GoEvent } from '../../packages/repository-contract/src';
 import { foldDeckItems } from '../../packages/goreview/src';
 import { albanianRegistry, createGoListen } from '../../packages/golisten/src';
-import { createAudioDeps } from '../../packages/gopractice/audio';
+import { createAudioDeps } from '../../packages/goreview/app/audio';
 import { createMemoryArea } from '../../packages/repository-sync/src';
 import {
   STORE_KINDS, createNet, createStack, serverEvents, signUp, text, type Stack, type StoreKind,
@@ -59,7 +59,7 @@ describe('speech synthesis unavailable: GoListen says so, honestly, and never th
     expect(r.ok).toBe(false);
   });
 
-  it('GoPractice\'s view of it: available:false with the reason, and never "eligible for evidence"', async () => {
+  it('GoReview\'s view of it: available:false with the reason, and never "eligible for evidence"', async () => {
     const deps = createAudioDeps({ consent: () => false, registries: [albanianRegistry()], speech: quietSpeech });
     const av = await deps.availability('sq');
     expect(av).toMatchObject({ available: false, eligibleForEvidence: false });

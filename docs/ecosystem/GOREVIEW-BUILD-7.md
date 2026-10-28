@@ -9,8 +9,8 @@ submission is recorded below. TestFlight page: https://appstoreconnect.apple.com
 | EAS submission | see "Submission" below |
 | staged version | 1.0.0 (7), bundle `com.cjwalker.goreview` |
 | Repository address in the bundle | `https://repo.golearn-global-languages.com` (the named Cloudflare tunnel) |
-| dictionaries bundled | Hindi (52 MB) **and Latin (130 MB)**, `GOPRACTICE_DICT=hi,la`; 178 MB of web assets in all |
-| what is in it | everything committed through `c436e6bb` (Latin `8cc22f55`/`b5a9f191`, Hebrew/Greek `c436e6bb`, build-6 docs `029cd3f1`) plus the working tree's uncommitted GoListen/playback refactor under `packages/golisten` and the extension (the phone build packages `packages/gopractice` + `packages/goreview` + `packages/language-packs` + `packages/repository-*` + `src/dict` + `src/core`; the Latin voice rows ride along with that refactor) |
+| dictionaries bundled | Hindi (52 MB) **and Latin (130 MB)**, `GOREVIEW_DICT=hi,la`; 178 MB of web assets in all |
+| what is in it | everything committed through `c436e6bb` (Latin `8cc22f55`/`b5a9f191`, Hebrew/Greek `c436e6bb`, build-6 docs `029cd3f1`) plus the working tree's uncommitted GoListen/playback refactor under `packages/golisten` and the extension (the phone build packages `packages/goreview/app` + `packages/goreview` + `packages/language-packs` + `packages/repository-*` + `src/dict` + `src/core`; the Latin voice rows ride along with that refactor) |
 
 ## The first attempt errored, and why
 
@@ -49,7 +49,7 @@ check, never the cloud step.
 cd packages\goreview-ios
 $env:REPOSITORY_SERVICE_URL='https://repo.golearn-global-languages.com'
 $env:REPOSITORY_HEALTH_CHECK_URL='http://127.0.0.1:8790'   # local staging check only (router blocks the domain here)
-$env:GOPRACTICE_DICT='hi,la'
+$env:GOREVIEW_DICT='hi,la'
 $env:GOREVIEW_BUNDLE_ID='com.cjwalker.goreview'
 $env:GOREVIEW_BUILD_NUMBER='7'
 $env:GOREVIEW_MARKETING_VERSION='1.0.0'

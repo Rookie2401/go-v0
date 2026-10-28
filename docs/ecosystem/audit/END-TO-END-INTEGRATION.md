@@ -70,10 +70,10 @@ own sync paths.
 
 §14 asks for a clearly identified test fixture when validated production audio is unavailable. The registry entry
 `test:sq-liber-recording` (provider `recorded`, `synthetic: false`, label "TEST asset (not real Albanian audio)",
-licence "TEST FIXTURE — not a real recording") exists only in tests (here and in `test/gopractice-e2e/review-reference.test.ts`), never in a shipped registry. It proves the software path (hidden answer,
+licence "TEST FIXTURE — not a real recording") exists only in tests (here and in `test/goreview-app-e2e/review-reference.test.ts`), never in a shipped registry. It proves the software path (hidden answer,
 playback, response, `ListeningAssessed`, a separate listening estimate). It is not evidence that Albanian listening
 assessment works for learners: with the shipped registry the planner asks a due listening item in writing, flagged,
-and adds no new listening items (`GOLISTEN-CAPABILITIES` in the final reports; `test/gopractice-e2e` "missing audio").
+and adds no new listening items (`GOLISTEN-CAPABILITIES` in the final reports; `test/goreview-app-e2e` "missing audio").
 
 ## 4. Defects found by this test, and their state
 

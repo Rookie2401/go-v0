@@ -247,7 +247,7 @@ function walk(dir: string): Array<{ rel: string; bytes: number; gzip: number }> 
 
 describe('built artefacts (not built here: read as they stand)', () => {
   const targets: Array<[string, string]> = [
-    ['PF-M50', 'packages/golearn-extension/dist'], ['PF-M51', 'packages/golearn-extension/dist-web'], ['PF-M52', 'packages/gopractice/dist'],
+    ['PF-M50', 'packages/golearn-extension/dist'], ['PF-M51', 'packages/golearn-extension/dist-web'], ['PF-M52', 'packages/goreview/app/dist'],
   ];
   it.each(targets)('%s %s', (id, rel) => {
     const dir = path.join(REPO, rel);

@@ -32,8 +32,8 @@ const styleFromHtml = (rel: string): string => /<style>([\s\S]*?)<\/style>/.exec
 interface Sheet { key: string; label: string; css: string; rules: CssRule[] }
 const sheet = (key: string, label: string, css: string): Sheet => ({ key, label, css, rules: parseCss(css) });
 const SHEETS: Sheet[] = [
-  sheet('practice', 'GoPractice styles.css', read('packages/gopractice/styles.css')),
-  sheet('tell', 'GoTell workspace styles (screens/tell/styles.ts)', cssFromTs('packages/gopractice/screens/tell/styles.ts')),
+  sheet('practice', 'GoReview styles.css', read('packages/goreview/app/styles.css')),
+  sheet('tell', 'GoTell workspace styles (screens/tell/styles.ts)', cssFromTs('packages/goreview/app/screens/tell/styles.ts')),
   sheet('app', 'GoLearn setup app styles.css', read('packages/golearn-extension/app/styles.css')),
   sheet('card', 'Lookup card (popup/card.ts, shadow DOM)', cssFromTs('packages/golearn-extension/src/popup/card.ts')),
   sheet('action', 'Action popup (action/popup.html <style>)', styleFromHtml('packages/golearn-extension/action/popup.html')),
@@ -69,7 +69,7 @@ describe('font sizes: relative units or fixed pixels', () => {
     }
   });
 
-  it('the application stylesheets (GoPractice, GoTell, setup app) declare no pixel font size except the root', () => {
+  it('the application stylesheets (GoReview, GoTell, setup app) declare no pixel font size except the root', () => {
     for (const key of ['practice', 'tell', 'app']) {
       const px = fontSizes(by(key).rules).filter((x) => x.unit === 'px' && x.selector !== ':root');
       expect(px, key).toEqual([]);
@@ -80,7 +80,7 @@ describe('font sizes: relative units or fixed pixels', () => {
 // ───────────────────────────── focus, motion, scheme ─────────────────────────────
 
 describe('focus indicators, motion and colour scheme', () => {
-  it('A-C02 GoPractice, GoTell and the setup app declare :focus-visible with a 3px outline, and never remove the outline from a control', () => {
+  it('A-C02 GoReview, GoTell and the setup app declare :focus-visible with a 3px outline, and never remove the outline from a control', () => {
     for (const key of ['practice', 'app']) {
       const fv = by(key).rules.filter((r) => r.selector.includes(':focus-visible'));
       expect(fv.length, key).toBeGreaterThan(0);
@@ -177,7 +177,7 @@ const fmtRows = (rs: Result[]): void => {
 };
 
 describe('contrast of the colour pairs actually used (WCAG 2.x, AA)', () => {
-  // ── GoPractice, GoTell and the setup app share one token set; each sheet is evaluated from its own tokens
+  // ── GoReview, GoTell and the setup app share one token set; each sheet is evaluated from its own tokens
   const appPairs = (s: Sheet): Pair[] => {
     const P = (id: string, what: string, fg: string, bg: string, extra: Partial<Pair> = {}): Pair => ({ id, sheet: s.key, what, fg, bg, kind: 'text', ...extra });
     const common: Pair[] = [

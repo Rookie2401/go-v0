@@ -5,7 +5,7 @@ import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { validateEvent } from '../../packages/repository-contract/src';
 import { foldGoals, GOAL_KEY } from '../../packages/gotell/src/workspace/goals';
-import { queued } from '../gopractice/helpers';
+import { queued } from '../goreview-app/helpers';
 import { draftIdFromHash, flush, makeTellRig, resetTellRig, typeInto, until } from './rig';
 
 afterEach(() => resetTellRig());
@@ -94,8 +94,8 @@ describe('independence', () => {
   it('imports nothing of the review side, in the screens, the engine wiring or the workspace logic', () => {
     const root = path.resolve(__dirname, '../../packages');
     const files = [
-      path.join(root, 'gopractice/screens/tell.ts'), path.join(root, 'gopractice/tellEngine.ts'),
-      ...walk(path.join(root, 'gopractice/screens/tell')), ...walk(path.join(root, 'gotell/src/workspace')),
+      path.join(root, 'goreview/app/screens/tell.ts'), path.join(root, 'goreview/app/tellEngine.ts'),
+      ...walk(path.join(root, 'goreview/app/screens/tell')), ...walk(path.join(root, 'gotell/src/workspace')),
     ];
     expect(files.length).toBeGreaterThan(10);
     for (const f of files) {

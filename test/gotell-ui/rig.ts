@@ -6,8 +6,8 @@ import type { GoEvent } from '../../packages/repository-contract/src';
 import { validateEvent } from '../../packages/repository-contract/src';
 import type { Identity } from '../../packages/gotell/src/types';
 import type { FileOut } from '../../packages/gotell/src/workspace/port';
-import { tellOverrides } from '../../packages/gopractice/screens/tell/overrides';
-import { defaultService, destroyRigs, flush, makeRig, until, type FakeService, type Rig } from '../gopractice/helpers';
+import { tellOverrides } from '../../packages/goreview/app/screens/tell/overrides';
+import { defaultService, destroyRigs, flush, makeRig, until, type FakeService, type Rig } from '../goreview-app/helpers';
 import { fakeEngine, manualTimers, type FakeEngine, type FakeEngineOptions } from './fakes';
 
 export { flush, until };

@@ -2,7 +2,7 @@
  * A `LocalRepository` for a page that must not open a second copy of the device's data.
  *
  * Two in-memory copies of write-through rows over one storage area would number their events from the same sequence and overwrite each other, so the
- * extension keeps ONE repository, in its background worker, and an extension page (the setup app, GoPractice when it runs as an extension page) talks to
+ * extension keeps ONE repository, in its background worker, and an extension page (the setup app, GoReview when it runs as an extension page) talks to
  * it by message. `connectLocalRepository(send, type)` gives the page the same interface: `api` forwards each method call as `{ type, op: 'api', method, args }`
  * and returns the worker's `ApiResult`; the other methods are the worker's ops of the same name.
  *

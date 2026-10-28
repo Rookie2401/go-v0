@@ -67,9 +67,9 @@ if (healthCheckUrl) console.warn(`prepare-web: health check sent to ${healthChec
 if (release) await verifyRepositoryEndpoint(healthCheckUrl ? healthCheckUrl.origin + healthCheckUrl.pathname.replace(/\/+$/, '') : releaseServiceUrl);
 
 const vite = path.join(repo, 'node_modules', 'vite', 'bin', 'vite.js');
-const build = spawnSync(process.execPath, [vite, 'build', '-c', 'packages/gopractice/vite.config.ts', '--mode', 'review'], {
+const build = spawnSync(process.execPath, [vite, 'build', '-c', 'packages/goreview/app/vite.config.ts', '--mode', 'review'], {
   cwd: repo,
-  env: { ...process.env, GOPRACTICE_OUT: path.join(pkg, '.review-build') },
+  env: { ...process.env, GOREVIEW_OUT: path.join(pkg, '.review-build') },
   stdio: 'inherit',
 });
 if (build.status !== 0) throw new Error(`GoReview review build failed (exit ${build.status ?? 'unknown'}).`);

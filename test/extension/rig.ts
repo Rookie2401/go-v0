@@ -111,7 +111,7 @@ export function createRig(opts: { defaultServiceUrl?: string } = {}): Rig {
   return rig;
 }
 
-/** A knowledge row for the fake engine's store (what GoPractice's activity would have produced). */
+/** A knowledge row for the fake engine's store (what GoReview's activity would have produced). */
 export function knowledgeRow(learnerId: string, unitId: string, dims: Partial<Record<string, { score?: number; confidence?: number; observations?: number; positive?: number; negative?: number }>>): UnitKnowledge {
   const dim = (d?: { score?: number; confidence?: number; observations?: number; positive?: number; negative?: number }) => ({
     score: d?.score ?? 0, confidence: d?.confidence ?? 0, observations: d?.observations ?? 0, positive: d?.positive ?? 0, negative: d?.negative ?? 0, weight: 0, contexts: 0,

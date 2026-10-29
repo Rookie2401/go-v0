@@ -5,11 +5,11 @@
   "releaseEligible": true,
   "buildMode": "release",
   "git": {
-    "commit": "d79d096379bdd25933a79f5297ae9bc58e335b72",
-    "tree": "939635470068e29e3daae9947cd82023bd5bb330",
+    "commit": "2663f585334b5a2c5b9001b020229262d41b5098",
+    "tree": "546053090d5a0f16fae8ef93c4564a1e5c00b697",
     "dirty": false
   },
-  "sourceManifestSha256": "8ff0da7c8743857fb9932908bb1d3cd2ff58da8f71f901edc220329bdd4cd2cd",
+  "sourceManifestSha256": "ea17af341ba8819ba5efce6650961c06866576ac43bec5f5508d2a5a89191408",
   "sourceFiles": [
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -365,7 +365,7 @@
     },
     {
       "path": "packages/goreview/app/audio.ts",
-      "sha256": "d8c566567317c5b950f89c45818cb4d86a5a2ef7629285c04bb2bc5782fc74fb"
+      "sha256": "c62556421b08d8f2b41a83dc02c964a453651792b4cf0ee38519679283119f19"
     },
     {
       "path": "packages/goreview/app/classEssentials.ts",
@@ -541,7 +541,7 @@
     },
     {
       "path": "packages/goreview/app/screens/session.ts",
-      "sha256": "1a1eff6c4f368e8cd08bc175b087774497640f68b2938ea39be230372b4bb562"
+      "sha256": "541e604fa82d5b04d89e26bba7f61e8a84fd4b3fe2b5a06645c6b982c0f39c43"
     },
     {
       "path": "packages/goreview/app/screens/settings.ts",
@@ -620,12 +620,16 @@
       "sha256": "3bd7049dce4d53e9fe77cc5c48a8e74838b7340e80e45bc2d12f21c39c7c2cca"
     },
     {
+      "path": "packages/goreview/app/speechUnlock.ts",
+      "sha256": "e83cf61b19ea458ff81aecdf1eb4d3994ff24956f71df12bf516f4c74b7fe4cd"
+    },
+    {
       "path": "packages/goreview/app/splash.ts",
       "sha256": "2c9544318a5bba663ca2e98db08491e3c162a9ec9e81c9f743e85b1b74fd106a"
     },
     {
       "path": "packages/goreview/app/state.ts",
-      "sha256": "150baf32c5f38f3f97ddb9fc9ddbf17ae80f503e4dc6ef9f83d6ae2308d72867"
+      "sha256": "127373f777fbe83ee192fc5f6da45bd40081c37286c7f04d3df919fe9d732b0c"
     },
     {
       "path": "packages/goreview/app/styles.css",
@@ -865,7 +869,7 @@
     },
     {
       "path": "packages/goreview/src/types.ts",
-      "sha256": "98db81b9ed7b7ea85aae5bf577f238bce993232342d704251ae38d8e79a2a2c0"
+      "sha256": "b7332f85ed1e48983436049fb308fd0590b813a5e17a9857a2b2dabcf442dad5"
     },
     {
       "path": "packages/gotell/src/documents/README.md",
@@ -18326,6 +18330,7 @@
     "packages/goreview/app/screens/vocabulary.ts",
     "packages/goreview/app/snapshot.ts",
     "packages/goreview/app/speechBridge.ts",
+    "packages/goreview/app/speechUnlock.ts",
     "packages/goreview/app/splash.ts",
     "packages/goreview/app/state.ts",
     "packages/goreview/app/styles.css",
@@ -18759,7 +18764,7 @@
   ],
   "compiledDependencyFiles": [],
   "compiledDependencyManifestSha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
-  "artifactManifestSha256": "8c4493a61fee201675cda914b8263d833c44bd695b9002ddb661751ee5c5dc98",
+  "artifactManifestSha256": "d9a7321958e9c2c8c535a3095492a9deb90c8ba29cc5aeef95795eb7c7faf0fc",
   "artifactFiles": [
     {
       "path": "EB-Garamond-OFL.txt",
@@ -18802,8 +18807,8 @@
       "sha256": "dd6bf43f4bc52bcff09c2ef89c9c9ec462cfcc7f31189275c1b31daf71e9236f"
     },
     {
-      "path": "assets/index-CHiogNkC.js",
-      "sha256": "3fe34d7fd4c4d0da393ebbd3e2af8a8251fe88913a4adab5314a2b08c8efa319"
+      "path": "assets/index-DfF3Te-e.js",
+      "sha256": "5fdb74ba73cfd4a441fa419c029ded9a4560271eefb77366b86b0af9c786ed75"
     },
     {
       "path": "assets/style-BjgAnIgB.css",
@@ -31347,7 +31352,7 @@
     },
     {
       "path": "index.html",
-      "sha256": "dcbbbb5b14e6865fc8d46c170cf4027a59cf6b0b8972b4eaebd840d273ee3e8f"
+      "sha256": "53d2182726ace9ef790d0ae9618866c028f76953b53c6a9f143320a97858aaf9"
     },
     {
       "path": "manifest.webmanifest",
@@ -31355,7 +31360,7 @@
     },
     {
       "path": "sw.js",
-      "sha256": "6d0c5fc29db8a788d873bf53062d65f7f4d054117bc7db546089880343773f81"
+      "sha256": "84b855554cf40001745d373f54257585391393beaaad68e848faca34e028b6e4"
     }
   ]
 }

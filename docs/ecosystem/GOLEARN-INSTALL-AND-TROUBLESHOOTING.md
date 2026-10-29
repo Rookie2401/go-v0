@@ -19,10 +19,10 @@ Builds:
 npm run ext:build                                                              # dist/content.js, background.js, action/
 npx vite build -c packages/golearn-extension/app/vite.config.ts --mode options # dist/app/ (the options page + dict/sq)
 npx vite build -c packages/golearn-extension/app/vite.config.ts --mode web     # dist-web/ (hosted setup page)
-npx vite build -c packages/gopractice/vite.config.ts --mode extension          # dist/practice/ (GoPractice as a page of the extension)
+npx vite build -c packages/goreview/app/vite.config.ts --mode extension          # dist/review/ (GoPractice as a page of the extension)
 ```
 Run the options build after `ext:build` (the content build keeps `dist/app/`). `ext:build` empties everything else in
-`dist/`, including `dist/practice/`, so build GoPractice for the extension after it, every time.
+`dist/`, including `dist/review/`, so build GoPractice for the extension after it, every time.
 
 ## 2. First run, in order
 
@@ -82,7 +82,7 @@ No account, no team and no service are needed for any of these.
 | Diagnostics says the service speaks an older contract | the service build is behind the extension | update the service; the extension keeps working for lookups and queues events |
 | The pack screen says "planned, not installable" | that pack has no analyser in this build | no action; every language of the six has an installable pack today (Albanian is the reference, the rest are experimental) |
 | GoPractice from a website says it "needs an account" | that is the hosted copy, which keeps its data on an account and has no on-device Repository | use the **Practise** button of the extension (its copy works on the device with no account), or sign in to the hosted copy |
-| The **Practise** button says it cannot find the practice page | `dist/practice/` was emptied by a later `ext:build` | `npx vite build -c packages/gopractice/vite.config.ts --mode extension`, then reload the extension |
+| The **Practise** button says it cannot find the practice page | `dist/review/` was emptied by a later `ext:build` | `npx vite build -c packages/goreview/app/vite.config.ts --mode extension`, then reload the extension |
 
 ## 4. What is not available and is not claimed
 

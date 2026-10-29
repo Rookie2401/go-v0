@@ -26,14 +26,14 @@ export const ENTRIES = [
   { id: 'golearn-content', group: 'golearn-extension', file: 'packages/golearn-extension/src/content/index.ts', role: 'content script injected into reader pages' },
   { id: 'golearn-popup', group: 'golearn-extension', file: 'packages/golearn-extension/action/popup.ts', role: 'toolbar action popup' },
   { id: 'golearn-app', group: 'golearn-extension', file: 'packages/golearn-extension/app/main.ts', role: 'setup / onboarding app (options page and hosted web build)' },
-  { id: 'gopractice', group: 'gopractice', file: 'packages/gopractice/main.ts', role: 'GoPractice shell (GoReview + GoTell)' },
+  { id: 'goreview-app', group: 'goreview-app', file: 'packages/goreview/app/main.ts', role: 'GoReview app (the shell: the review, GoTell and Settings workspaces)' },
   { id: 'repository-service', group: 'service', file: 'packages/repository-service/src/main.ts', role: 'Repository HTTP service (Node)' },
 ] as const;
 export type EntryId = (typeof ENTRIES)[number]['id'];
 
-/** The GoTell entry is the package index: GoTell has no entry of its own, the GoPractice shell hosts it. */
+/** The GoTell entry is the package index: GoTell has no entry of its own, the GoReview shell hosts it. */
 export const GOTELL_ENTRY = 'packages/gotell/src/index.ts';
-export const GOREVIEW_ROOT = 'packages/goreview/';
+export const GOREVIEW_ROOT = 'packages/goreview/src/';
 
 // ---------------------------------------------------------------------------------------------------------------------
 // graph
@@ -294,8 +294,12 @@ export function listFiles(dir: string, re: RegExp = /\.(ts|tsx|mts)$/): string[]
 /** Parsed edges of one repo-relative file (cached). */
 export const infoOf = (file: string): FileInfo => parseFile(abs(file));
 
-/** The package a repo-relative file belongs to: `packages/<name>` -> `<name>`, `src/...` -> `src`, `data/...` -> `data`. */
-export const packageOf = (file: string): string => (file.startsWith('packages/') ? file.split('/')[1] : file.split('/')[0]);
+/**
+ * The package a repo-relative file belongs to: `packages/<name>` -> `<name>`, `src/...` -> `src`, `data/...` -> `data`. The GoReview app
+ * (packages/goreview/app, the shell that was packages/gopractice until 2026-10-28) is its own group, `goreview-app`, so the engine's purity
+ * (packages/goreview/src imports the Repository contract and GoListen's contracts only) is still checked apart from the app.
+ */
+export const packageOf = (file: string): string => (file.startsWith('packages/goreview/app/') ? 'goreview-app' : file.startsWith('packages/') ? file.split('/')[1] : file.split('/')[0]);
 
 /**
  * Identifiers and string-literal texts of a TypeScript file, comments excluded. Used for pattern rules ("no Kindle

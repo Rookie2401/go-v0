@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 /**
- * The action popup from the setup application's side (the owner, 2026-10-28): no Practise button any more (GoPractice stays a page of the
+ * The action popup from the setup application's side (the owner, 2026-10-28): no Practise button any more (GoReview stays a page of the
  * extension, reached from the setup page's status home), the brand as the one way to the setup page, and nothing about teams.
  */
 import fs from 'node:fs';

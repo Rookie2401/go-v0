@@ -22,12 +22,12 @@ const SOURCE_ROOTS = [
   'packages/goreview/src', 'packages/gopractice', 'packages/repository-contract/src',
   'packages/repository-engine/src', 'packages/repository-service/src', 'packages/repository-store/src',
   'packages/repository-sync/src', 'packages/golisten/src', 'packages/gotell/src', 'packages/shared-brand', 'packages/shared-fonts',
-  'packages/biblia/src', 'packages/biblia/public', 'packages/gopractice/public',
+  'packages/biblia/src', 'packages/biblia/public', 'packages/goreview/app/public',
 ];
 const BUILD_INPUTS = [
   'package.json', 'package-lock.json', 'pnpm-lock.yaml', 'yarn.lock', 'tsconfig.json', 'scripts/vite.config.ts',
   'scripts/goreview-release.mjs', 'scripts/goreview-release.d.mts', 'THIRD-PARTY-NOTICES.md',
-  'packages/gopractice/vite.config.ts', 'packages/biblia/vite.config.ts', 'packages/biblia/index.html',
+  'packages/goreview/app/vite.config.ts', 'packages/biblia/vite.config.ts', 'packages/biblia/index.html',
   'packages/goreview-ios/package.json', 'packages/goreview-ios/package-lock.json', 'packages/biblia-ios/package.json', 'packages/biblia-ios/package-lock.json',
   'packages/goreview-ios/scripts/prepare-web.mjs', 'packages/goreview-ios/scripts/native-payload.mjs',
   'packages/goreview-ios/scripts/native-payload.d.mts', 'packages/goreview-ios/scripts/verify-native-payload.mjs',
@@ -117,7 +117,7 @@ function walkFiles(root, directory) {
 
 /** Source fingerprint captured before local preflight commands run, including expected copied static inputs. */
 export function captureReleaseSourceFingerprint(projectRoot = ROOT) {
-  const languages = (process.env.GOPRACTICE_DICT ?? 'sq,es,de,hi,th').split(',').map(value => value.trim()).filter(Boolean);
+  const languages = (process.env.GOREVIEW_DICT ?? 'sq,es,de,hi,th').split(',').map(value => value.trim()).filter(Boolean);
   const staticInputs = [
     ...languages.flatMap(language => walkFiles(projectRoot, `public/dict/${language}`).filter(file => path.basename(file) !== 'frequency.json')),
     ...walkFiles(projectRoot, 'public/lexicon'),

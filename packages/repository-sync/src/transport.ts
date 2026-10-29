@@ -3,7 +3,7 @@
  * (`422 invalid-events`, "nothing was stored") and names the bad ones by index. One event the service will never accept
  * (a clock gone wrong, a kind from a build it does not know) must not hold every later event of the learner back for ever:
  * it is reported as refused (the sync client sets it aside as a `rejected:` row the learner can see) and the rest is sent
- * again in the same round. Written once here so every host's transport behaves alike (GoLearn's worker, GoPractice).
+ * again in the same round. Written once here so every host's transport behaves alike (GoLearn's worker, GoReview).
  */
 import type { AppendOutcome, GoEvent, SyncPushRequest, SyncPushResponse, ValidationIssue } from '../../repository-contract/src';
 

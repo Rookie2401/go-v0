@@ -26,7 +26,7 @@ Command (run 2026-10-09, 10:09): `npx vitest run test/multilang --reporter=verbo
 
 The +173,937 B between the last two builds is not attributable to Spanish alone (security and card changes were made in between); the Spanish share was not measured. For scale, unminified source on disk: `src/adapters/spanish` 264,120 B, `src/adapters/albanian` 397,805 B.
 `background.js` went 303,152 B to 496,425 B and `app.js` 392,551 B to 586,513 B over the same period (same caveat). `PF-05` notes the per-page parse cost in a browser is unmeasured.
-The Spanish dictionary (`public/dict/es`, 808,278 entries, `kaikki-es@2026-09-28`) is on disk but is **not** in any build: `packages/golearn-extension/dist/app/dict` and `packages/gopractice/dist/dict` contain only `sq`. Whether a built extension can install `pack:es` end to end was not verified.
+The Spanish dictionary (`public/dict/es`, 808,278 entries, `kaikki-es@2026-09-28`) is on disk but is **not** in any build: `packages/golearn-extension/dist/app/dict` and `packages/goreview/app/dist/dict` contain only `sq`. Whether a built extension can install `pack:es` end to end was not verified.
 
 ## 3. The thin parts (verified in source unless marked)
 

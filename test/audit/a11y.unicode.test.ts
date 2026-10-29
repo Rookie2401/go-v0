@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 /**
  * ACCESSIBILITY audit, lane 4 of 4 (docs/ecosystem/audit/ACCESSIBILITY.md): Unicode rendering of Devanagari (Hindi) and Thai through
- * the lookup card and the GoPractice/GoTell renderers. For each string: the text reaches the DOM unchanged (NFC-stable strings are
+ * the lookup card and the GoReview/GoTell renderers. For each string: the text reaches the DOM unchanged (NFC-stable strings are
  * byte-identical; others only through NFC), no U+FFFD appears, grapheme clusters (Intl.Segmenter) are intact and in the same order,
  * `lang` and `dir` are right, and the font stack names a face for the script.
  * Also the typed-answer path: whether a vowel sign or tone mark at the end of an answer survives the normaliser.
@@ -17,7 +17,7 @@ import { setBody, stubLayout } from '../extension/dom';
 import { flushAfterAll, row } from './a11y.support';
 import {
   dueCard, destroyRigs, ids, key, makeRig, reopenDetails, seed, startWith, type as typeIn, until, FakeService,
-} from '../gopractice/helpers';
+} from '../goreview-app/helpers';
 import { registerAllAnalysers } from '../support/analysers';
 
 registerAllAnalysers(); // the parser carries Albanian; the other analysers are chunks the content script loads on demand
@@ -106,7 +106,7 @@ describe('the lookup card shows Devanagari and Thai unchanged', () => {
   });
 });
 
-describe('the GoPractice review screens show Devanagari and Thai unchanged', () => {
+describe('the GoReview review screens show Devanagari and Thai unchanged', () => {
   afterEach(() => destroyRigs());
 
   const hiThService = (lang: 'hi' | 'th'): FakeService => {
@@ -141,7 +141,7 @@ describe('the GoPractice review screens show Devanagari and Thai unchanged', () 
   }, 30_000);
 
   it('A-U04 the stylesheet gives target-language text a face for Devanagari, Thai and Arabic', () => {
-    const css = fs.readFileSync(path.resolve(__dirname, '../../packages/gopractice/styles.css'), 'utf8');
+    const css = fs.readFileSync(path.resolve(__dirname, '../../packages/goreview/app/styles.css'), 'utf8');
     const rule = /\.target-text\s*\{([^}]*)\}/.exec(css)![1];
     for (const face of ['Noto Sans Devanagari', 'Noto Sans Thai', 'Noto Naskh Arabic']) expect(rule, face).toContain(face);
     expect(rule).toContain('unicode-bidi: plaintext');

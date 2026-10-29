@@ -1,6 +1,6 @@
 # GoReview iPhone shell
 
-This package wraps the existing `packages/gopractice` review edition in a Capacitor 8 iOS app. The review site is compiled from local repository files and copied into the app bundle. The release configuration does not set `server.url` and the staged web bundle has no PWA service worker registration or manifest.
+This package wraps the existing `packages/goreview/app` review edition in a Capacitor 8 iOS app. The review site is compiled from local repository files and copied into the app bundle. The release configuration does not set `server.url` and the staged web bundle has no PWA service worker registration or manifest.
 
 The Capacitor setup follows its [official existing-web-app setup](https://capacitorjs.com/docs/getting-started) and [custom iOS plugin registration guide](https://capacitorjs.com/docs/ios/custom-code). Apple requires Xcode for iOS builds; current Capacitor 8 iOS setup calls for Xcode 26 or newer. See Apple's [upload builds guide](https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds/) and [TestFlight overview](https://developer.apple.com/help/app-store-connect/test-a-beta-version/testflight-overview/) for the final App Store Connect steps.
 

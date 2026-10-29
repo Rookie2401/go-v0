@@ -1,5 +1,5 @@
 /**
- * @go/goreview — the review half of GoPractice (see ../README.md). Three responsibilities kept apart: intake (which
+ * @go/goreview — the review half of GoReview (see ../README.md). Three responsibilities kept apart: intake (which
  * candidates become deck items), scheduling (when an item is next reviewed), assessment (what is asked, how it is graded).
  * The planner and the session runner compose them. Application code imports this barrel only.
  */

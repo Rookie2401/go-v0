@@ -13,9 +13,9 @@ import { planSession } from '../../../packages/goreview/src/planner/planner';
 import { registry } from '../../../packages/goreview/src/exercises';
 import { factsProvider, IDENTITY, makePlan, wrong } from '../session/helpers';
 import { audioOk, knowledge as knowledgeRow, NOW, prefs, testNow } from '../intake/fixtures';
-import { destroyRigs, makeRig, reopen, seed, T0 } from '../../gopractice/helpers';
-import { loadReviewModel } from '../../../packages/gopractice/workspace';
-import { listSavedDecks, planFromSaved, removeSavedDeck, saveDeck, type DeckEntry } from '../../../packages/gopractice/deckModel';
+import { destroyRigs, makeRig, reopen, seed, T0 } from '../../goreview-app/helpers';
+import { loadReviewModel } from '../../../packages/goreview/app/workspace';
+import { listSavedDecks, planFromSaved, removeSavedDeck, saveDeck, type DeckEntry } from '../../../packages/goreview/app/deckModel';
 
 const t0='2026-10-20T10:00:00.000Z';
 afterEach(()=>destroyRigs());

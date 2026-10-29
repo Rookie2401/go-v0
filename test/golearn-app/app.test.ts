@@ -142,7 +142,7 @@ describe('the router and the shell', () => {
     expect(rig.q('#progress-mode').textContent).toContain('On this device only');
     expect(rig.q('#progress-mode').getAttribute('data-state')).toBe('device');
     expect(rig.q<HTMLAnchorElement>('#keep-progress').getAttribute('href')).toBe('#/signin');
-    expect(rig.q<HTMLAnchorElement>('#practise').getAttribute('href')).toBe('../practice/index.html');
+    expect(rig.q<HTMLAnchorElement>('#practise').getAttribute('href')).toBe('../review/index.html');
     expect(rig.q('#status-list li[data-route="languages"]').textContent).toContain('Albanian');
     expect(rig.root.querySelector('a[href="#/tutorial"], a[href="#/account"], a[href="#/language"], a[href="#/pack"], a[href="#/welcome"]')).toBeNull();
     await rig.go('diagnostics');

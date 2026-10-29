@@ -64,7 +64,7 @@ const workerFetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
   return u.includes('/dict/') ? fileFetch(input) : serviceFetch(input, init);
 }) as typeof fetch;
 
-/** The Repository's own construction id for a form of the passage (what GoPractice's assessments name). */
+/** The Repository's own construction id for a form of the passage (what GoReview's assessments name). */
 const PASSAGE = 'Fëmijët lexojnë librin. Nëna është në kuzhinë. Beni e pi çajin dhe ha bukën.';
 const SENTENCE_1 = 'Fëmijët lexojnë librin.';
 const constructionOf = (word: string, sentence = SENTENCE_1): string => {
@@ -230,9 +230,9 @@ describe('Prompt 4 §17 — GoLearn for an Albanian learner, end to end', () => 
     for (const k of ['readingRecognition', 'listeningRecognition', 'productiveRetrieval', 'contextualProduction', 'grammaticalUnderstanding'] as const) expect(d[k].weight, k).toBe(0);
   });
 
-  it('16. GoPractice records a wrong answer on the construction through the Repository', async () => {
+  it('16. GoReview records a wrong answer on the construction through the Repository', async () => {
     const api = createRepositoryApi({ baseUrl: 'http://127.0.0.1:8790', fetch: serviceFetch, token });
-    // GoPractice is its own device of the account (a device id an event names must be registered to the learner)
+    // GoReview is its own device of the account (a device id an event names must be registered to the learner)
     await store.putDevice({ deviceId: 'practice-dev', learnerId, registeredAt: clock(), platform: 'test' });
     const ev: GoEvent = {
       id: 'ref:grammar:1', v: CONTRACT_VERSION, learnerId, enrolmentId, languageId: 'sq', at: clock(),

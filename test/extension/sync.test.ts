@@ -194,7 +194,7 @@ describe('the learner-model cache', () => {
     expect(r.rows[unit].dimensions.grammaticalUnderstanding).toEqual({ score: 0.3, confidence: 0.4, observations: 3, positive: 1, negative: 2 });
   });
 
-  it('is refreshed after each successful sync, so what GoPractice changed reaches the reader at the next lookup', async () => {
+  it('is refreshed after each successful sync, so what GoReview changed reaches the reader at the next lookup', async () => {
     const rig = createRig();
     const who = await rig.signUp();
     await rig.h.store.putKnowledge([knowledgeRow(who.learnerId, unit, { exposure: { observations: 1 } })]);
@@ -202,7 +202,7 @@ describe('the learner-model cache', () => {
     await rig.fireTimers();
     const ask = async () => (await rig.content({ type: MSG.profile, unitIds: [unit], languageId: 'sq' })).rows[unit].dimensions.exposure.observations;
     expect(await ask()).toBe(1);
-    // GoPractice's activity: the projection changes on the server
+    // GoReview's activity: the projection changes on the server
     await rig.h.store.putKnowledge([knowledgeRow(who.learnerId, unit, { exposure: { observations: 7 } })]);
     expect(await ask()).toBe(1); // within the lifetime the cache answers
     await rig.content({ type: MSG.record, event: pendingEvent() });

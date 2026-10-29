@@ -23,7 +23,7 @@ language class.* A topic with several expressions is several cards; the numbers 
 
 ## How it works
 
-- **Where the data is:** `packages/gopractice/classEssentials.ts` (the table, `classCards`, `classDeckFor`, `classFacts`). Nothing in the Repository.
+- **Where the data is:** `packages/goreview/app/classEssentials.ts` (the table, `classCards`, `classDeckFor`, `classFacts`). Nothing in the Repository.
 - **Seeding:** the first visit to Saved decks (or the home, which counts them) adds the deck for the active language to that learner's saved decks,
   with the stable id `class-essentials:<lang>`. Calling it again finds the deck and adds nothing; no card is ever duplicated (a unit id is
   `class:<lang>:<phrase>` and a repeated phrase is dropped). It needs no GoLearn encounter.

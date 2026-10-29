@@ -7,7 +7,7 @@ a named Cloudflare tunnel, `docs/ops/DEPLOY.md`). Same account everywhere: what 
 
 | app | address | branch / folder | built from | notes |
 |---|---|---|---|---|
-| GoReview, web edition | https://rookie2401.github.io/go-v0/review/ | `Rookie2401/go-v0` `gh-pages`, `review/` | `packages/gopractice/dist-review` (`GOPRACTICE_SERVICE_URL=https://go-v0.onrender.com GOPRACTICE_DICT=hi,la npx vite build -c packages/gopractice/vite.config.ts --mode review`; until 2026-10-27 the canonical name), `sw.js` `BUILD_ID ebb80c3e7dad`, 187 MB (gh-pages `c29deb7f`, 2026-10-25; before: Hindi only, 58 MB, `0debfb0790d6`) | installable; the Hindi and Latin dictionaries bundled (Latin added 2026-10-25 so the hosted edition can be tested as far as the native one, short of the shell), other languages' meanings come from the service |
+| GoReview, web edition | https://rookie2401.github.io/go-v0/review/ | `Rookie2401/go-v0` `gh-pages`, `review/` | `packages/goreview/app/dist-review` (`GOREVIEW_SERVICE_URL=https://go-v0.onrender.com GOREVIEW_DICT=hi,la npx vite build -c packages/goreview/app/vite.config.ts --mode review`; until 2026-10-27 the canonical name), `sw.js` `BUILD_ID ebb80c3e7dad`, 187 MB (gh-pages `c29deb7f`, 2026-10-25; before: Hindi only, 58 MB, `0debfb0790d6`) | installable; the Hindi and Latin dictionaries bundled (Latin added 2026-10-25 so the hosted edition can be tested as far as the native one, short of the shell), other languages' meanings come from the service |
 | GoLearn setup app | https://rookie2401.github.io/go-v0/app/ | same branch, `app/` | `packages/golearn-extension/dist-web` (`vite build -c packages/golearn-extension/app/vite.config.ts --mode web`), then `config.json`'s `serviceUrl` set to the public address by hand (that build has no environment override) | the address the account emails should open: set `APP_PUBLIC_URL=https://rookie2401.github.io/go-v0/app/` on the service |
 | Biblia | https://rookie2401.github.io/biblia/ | `Rookie2401/biblia` `gh-pages` (root) | `packages/biblia/dist-standalone`, see `BIBLIA-STANDALONE.md` | published 2026-10-23 |
 
@@ -16,10 +16,13 @@ The root of the `go-v0` Pages site (the earlier Go PWA, `dict/` with the hosted 
 
 ## Publishing again
 
+Since 2026-10-28 the GoReview application lives in `packages/goreview/app` (it was `packages/gopractice`, named GoPractice) and the build switches are
+`GOREVIEW_SERVICE_URL`, `GOREVIEW_DICT` and `GOREVIEW_OUT` (the `GOPRACTICE_*` names are no longer read); inside the GoLearn extension the page is `review/`, not `practice/`.
+
 ```powershell
 cd C:\Users\CJWal\dev\go-v0
-$env:GOPRACTICE_SERVICE_URL='https://go-v0.onrender.com'; $env:GOPRACTICE_DICT='hi,la'; $env:BIBLIA_SERVICE_URL='https://go-v0.onrender.com'
-npx vite build -c packages/gopractice/vite.config.ts --mode review
+$env:GOREVIEW_SERVICE_URL='https://go-v0.onrender.com'; $env:GOREVIEW_DICT='hi,la'; $env:BIBLIA_SERVICE_URL='https://go-v0.onrender.com'
+npx vite build -c packages/goreview/app/vite.config.ts --mode review
 npx vite build -c packages/golearn-extension/app/vite.config.ts --mode web
 # worktree of gh-pages (never under OneDrive); .git in a worktree is a FILE: never let a mirror copy delete it
 git worktree add -B gh-pages C:\Users\CJWal\dev\go-v0-pages origin/gh-pages      # or: cd there; git fetch origin; git reset --hard origin/gh-pages
@@ -57,7 +60,7 @@ What the owner asked: that the GitHub build syncs with the greater GoLearn syste
 The owner: "Remove the option to change the service address. The client cannot have access to that." Gone the same day: GoReview's
 "Service address" disclosure on the sign-in page and the section on `#/developer` (the page still names the address, read-only, among the
 diagnostics); the GoLearn setup app's disclosure under the sign-in form and the popup's "Use … instead" button; Biblia's disclosure on the
-account page. The address in use is the one in each copy's `config.json` (written by the build: `GOPRACTICE_SERVICE_URL`,
+account page. The address in use is the one in each copy's `config.json` (written by the build: `GOREVIEW_SERVICE_URL`,
 `BIBLIA_SERVICE_URL`, the extension's own `app/config.json`, `REPOSITORY_SERVICE_URL` for a TestFlight stage), else the development
 default `http://127.0.0.1:8790`. A value a learner stored earlier is ignored everywhere: the extension's worker uses its own address whatever
 `golearn:service` holds (a sign-in made at the old address is then refused and the popup says "Sign in again"); Biblia drops its stored

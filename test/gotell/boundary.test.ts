@@ -1,5 +1,5 @@
 /**
- * The GoTell boundary (docs/ecosystem/GOPRACTICE-DESIGN.md §3, §4): GoTell is an independent sibling of GoReview. In this
+ * The GoTell boundary (docs/ecosystem/GOREVIEW-APP-DESIGN.md §3, §4): GoTell is an independent sibling of GoReview. In this
  * phase it imports the Repository contract and the typed API client only, and it initialises with no deck, no session and
  * no review event.
  */

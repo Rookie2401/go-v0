@@ -32,7 +32,7 @@ packages/golisten/src/providers/remote.ts
 packages/golisten/src/providers/types.ts
 packages/golisten/src/registry.ts
 packages/golisten/src/resolve.ts
-packages/gopractice/audio.ts
+packages/goreview/app/audio.ts
 packages/goreview/src/listening/assessment.ts
 scripts/speech-check.mts
 scripts/speechChecks.ts

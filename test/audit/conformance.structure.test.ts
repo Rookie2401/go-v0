@@ -1,6 +1,6 @@
 /**
  * Architecture conformance, rule (c) and the structural half of §13 (docs/ecosystem/audit/ARCHITECTURE-CONFORMANCE.md):
- * exactly two application entry groups exist (GoLearn incl. its extension and setup app; GoPractice), the Repository
+ * exactly two application entry groups exist (GoLearn incl. its extension and setup app; GoReview), the Repository
  * service is shared infrastructure, and the shared packages reach no application, service, store or engine, transitively.
  *
  * test/ecosystem/boundaries.test.ts checks the literal import strings of each file; this file checks the transitive
@@ -10,7 +10,7 @@ import { describe, expect, it } from 'vitest';
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { ENTRIES, GOTELL_ENTRY, ROOT, chainTo, listFiles, packageOf, reach, readText, unionOf } from './conformance.support';
+import { ENTRIES, GOTELL_ENTRY, ROOT, chainTo, listFiles, packageOf, reach, readText, rel, unionOf } from './conformance.support';
 
 // Only packages git tracks are part of the architecture. An untracked folder under packages/ (2026-10-20: packages/goreview-ios,
 // the Capacitor shell of the TestFlight build, not committed) is someone's working copy, not a shipped entry group.
@@ -28,18 +28,19 @@ const PACKAGES = fs.readdirSync(path.join(ROOT, 'packages'), { withFileTypes: tr
 const pkgSet = (files: Iterable<string>): string[] => [...new Set([...files].filter((f) => f.startsWith('packages/')).map(packageOf))].sort();
 
 describe('(c) exactly two application entry groups', () => {
-  it('the product entries fall into golearn-extension and gopractice, plus the shared service', () => {
+  it('the product entries fall into golearn-extension and goreview-app, plus the shared service', () => {
     const groups = new Set(ENTRIES.map((e) => e.group));
-    expect([...groups].sort()).toEqual(['golearn-extension', 'gopractice', 'service']);
+    expect([...groups].sort()).toEqual(['golearn-extension', 'goreview-app', 'service']);
     // the golearn group is the extension (background, content, popup) AND its setup app: four entries, one package
     expect(ENTRIES.filter((e) => e.group === 'golearn-extension').map((e) => e.id).sort()).toEqual(['golearn-app', 'golearn-background', 'golearn-content', 'golearn-popup']);
     for (const e of ENTRIES.filter((e) => e.group === 'golearn-extension')) expect(e.file.startsWith('packages/golearn-extension/'), e.file).toBe(true);
   });
 
-  it('only golearn-extension, gopractice, the Biblia reader and the controlled-reader prototype contain a page, a manifest or a browser entry', () => {
-    const hasEntry = PACKAGES.filter((p) => listFiles(`packages/${p}`, /(^|\/)(manifest\.json|index\.html|popup\.html)$/).length > 0);
+  it('only golearn-extension, goreview-app, the Biblia reader and the controlled-reader prototype contain a page, a manifest or a browser entry', () => {
+    // by package group (packageOf): the GoReview app's page lives under packages/goreview/app and counts as goreview-app, not as the engine
+    const hasEntry = [...new Set(PACKAGES.flatMap((p) => listFiles(`packages/${p}`, /(^|\/)(manifest\.json|index\.html|popup\.html)$/)).map((f) => packageOf(rel(f))))].sort();
     // biblia (2026-10-18): the Scripture reader page built on the extension's parser and card, with no analysis of its own (its README says so)
-    expect(hasEntry).toEqual(['biblia', 'controlled-reader', 'golearn-extension', 'gopractice']);
+    expect(hasEntry).toEqual(['biblia', 'controlled-reader', 'golearn-extension', 'goreview-app']);
     expect(readText('packages/biblia/README.md')).toMatch(/GoLearn/);
   });
 
@@ -49,7 +50,8 @@ describe('(c) exactly two application entry groups', () => {
   });
 
   it('GoReview, GoTell and the shared libraries have no page, manifest or main.ts of their own; the service has no page', () => {
-    for (const p of ['goreview', 'gotell', 'golisten', 'golearn-share', 'language-packs', 'repository-contract', 'repository-sync', 'repository-store', 'repository-engine', 'repository-linguistics']) {
+    // the GoReview engine is packages/goreview/src; its app (packages/goreview/app, the former GoPractice shell) is the entry and has the page
+    for (const p of ['goreview/src', 'gotell', 'golisten', 'golearn-share', 'language-packs', 'repository-contract', 'repository-sync', 'repository-store', 'repository-engine', 'repository-linguistics']) {
       expect(listFiles(`packages/${p}`, /(^|\/)(manifest\.json|index\.html|popup\.html|main\.ts)$/), p).toEqual([]);
     }
     // the service's main.ts is the Node bridge, a service entry and not an application
@@ -62,12 +64,12 @@ describe('(c) exactly two application entry groups', () => {
     for (const e of ENTRIES) expect(reach(e.file).files.has('src/main.tsx'), e.id).toBe(false);
   });
 
-  it('the two applications never reach each other, and GoPractice never reaches the extension or the controlled reader', () => {
+  it('the two applications never reach each other, and GoReview never reaches the extension or the controlled reader', () => {
     const golearn = pkgSet(unionOf(ENTRIES.filter((e) => e.group === 'golearn-extension').map((e) => e.file)));
-    const gopractice = pkgSet(reach('packages/gopractice/main.ts').files);
-    expect(golearn.filter((p) => ['gopractice', 'goreview', 'gotell'].includes(p))).toEqual([]);
-    expect(gopractice).not.toContain('golearn-extension');
-    expect(gopractice).not.toContain('controlled-reader');
+    const goreviewApp = pkgSet(reach('packages/goreview/app/main.ts').files);
+    expect(golearn.filter((p) => ['goreview-app', 'goreview', 'gotell'].includes(p))).toEqual([]);
+    expect(goreviewApp).not.toContain('golearn-extension');
+    expect(goreviewApp).not.toContain('controlled-reader');
   });
 });
 
@@ -78,10 +80,11 @@ describe('what each entry may reach (exact package sets)', () => {
     'golearn-content': ['golearn-extension', 'golisten', 'repository-contract'],
     // the popup stopped naming the device voices on 2026-10-28 (the owner's cut), so it no longer reaches GoListen's tag data; the setup page's Audio guide does
     'golearn-popup': ['golearn-extension', 'repository-contract'],
-    // the setup app and GoPractice work with no account: inside the extension they connect to the worker's device-local Repository, and the hosted
+    // the setup app and GoReview work with no account: inside the extension they connect to the worker's device-local Repository, and the hosted
     // setup app opens one of its own (a lazy chunk); repository-local brings the store, engine and linguistic layer with it (reached only through it, below)
     'golearn-app': ['golearn-extension', 'golearn-share', 'golisten', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
-    gopractice: ['gopractice', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync'],
+    // shared-brand: the Go mark and the loading mark's globe (PNG masks the app resolves with new URL(..., import.meta.url))
+    'goreview-app': ['goreview-app', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-contract', 'repository-engine', 'repository-linguistics', 'repository-local', 'repository-service', 'repository-store', 'repository-sync', 'shared-brand'],
     'repository-service': ['repository-contract', 'repository-engine', 'repository-linguistics', 'repository-service', 'repository-store'],
   };
   it.each(ENTRIES.map((e) => [e.id, e.file]))('%s reaches exactly the packages listed in the doc', (id, file) => {
@@ -108,7 +111,7 @@ describe('what each entry may reach (exact package sets)', () => {
 
   it('the service reaches no application, no GoListen, no language pack and no sync client', () => {
     const pk = pkgSet(reach('packages/repository-service/src/main.ts').files);
-    for (const banned of ['golearn-extension', 'gopractice', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-sync', 'controlled-reader']) expect(pk).not.toContain(banned);
+    for (const banned of ['golearn-extension', 'goreview-app', 'goreview', 'gotell', 'golisten', 'language-packs', 'repository-sync', 'controlled-reader']) expect(pk).not.toContain(banned);
   });
 
   it('the content script reaches no Repository client, sync, store or service code (it only messages the worker)', () => {

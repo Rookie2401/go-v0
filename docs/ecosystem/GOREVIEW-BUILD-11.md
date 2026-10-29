@@ -10,7 +10,7 @@ Apple's processing email and the TestFlight page decide the rest: https://appsto
 | staged version | 1.0.0 (11), bundle `com.cjwalker.goreview` |
 | built from | master at `8ee6d594` (`packages/goreview-ios` is still untracked in git; its staging script is the build-10 version) |
 | Repository address in the bundle | `https://repo.golearn-global-languages.com`, which now resolves to the Render-hosted service |
-| web assets staged | 236 MB: GoReview, the Hindi and Latin dictionaries (`GOPRACTICE_DICT=hi,la`), and Biblia with its texts, indexes, sharded tables and the redesign's fonts |
+| web assets staged | 236 MB: GoReview, the Hindi and Latin dictionaries (`GOREVIEW_DICT=hi,la`), and Biblia with its texts, indexes, sharded tables and the redesign's fonts |
 
 ## Why build 11 exists
 
@@ -42,7 +42,7 @@ outside the web content, so `biblia/data/canon.json` and the books are in the st
 ```powershell
 $env:REPOSITORY_SERVICE_URL='https://repo.golearn-global-languages.com'
 $env:REPOSITORY_HEALTH_CHECK_URL='https://go-v0.onrender.com'
-$env:GOPRACTICE_DICT='hi,la'
+$env:GOREVIEW_DICT='hi,la'
 $env:GOREVIEW_BUNDLE_ID='com.cjwalker.goreview'
 $env:GOREVIEW_BUILD_NUMBER='11'
 $env:GOREVIEW_MARKETING_VERSION='1.0.0'

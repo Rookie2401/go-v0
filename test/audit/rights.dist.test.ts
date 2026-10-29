@@ -5,7 +5,7 @@
  * Scanned folders (git-ignored build output, so each is skipped with the build command when absent):
  *   packages/golearn-extension/dist/       the loadable extension (+ dist/app, its setup page)
  *   packages/golearn-extension/dist-web/   the hosted setup page
- *   packages/gopractice/dist/              GoPractice
+ *   packages/goreview/app/dist/              GoReview
  *
  * Checks, per folder: no frequency sidecar; no file kinds or directory names of the retired library; no text of the
  * retired corpus (every string of data/corpus, data/ladder, data/stage0 and all four verified Bibles, plus a stride
@@ -37,8 +37,8 @@ const DISTS: Dist[] = [
     notices: ['THIRD-PARTY-NOTICES.md'], dictDir: 'dict',
   },
   {
-    id: 'GoPractice (dist)', dir: 'packages/gopractice/dist',
-    builds: 'npx vite build -c packages/gopractice/vite.config.ts',
+    id: 'GoReview (dist)', dir: 'packages/goreview/app/dist',
+    builds: 'npx vite build -c packages/goreview/app/vite.config.ts',
     notices: ['THIRD-PARTY-NOTICES.md'], dictDir: 'dict',
   },
 ];
@@ -355,7 +355,7 @@ describe.each(DISTS)('$id', (dist) => {
     guard(ctx);
     const sheets = files.filter((f) => /\.css$/i.test(f));
     const named = sheets.flatMap((c) => [...fs.readFileSync(path.join(abs(dist.dir), c), 'utf8').matchAll(/url\(\s*['"]?(\.\/fonts\/[^'")]+\.woff2)['"]?\s*\)/g)].map((m) => path.posix.join(path.posix.dirname(c), m[1])));
-    // the extension dist carries two stylesheets that name them (the setup app's and GoPractice's page under practice/), each beside its own fonts/ copy
+    // the extension dist carries two stylesheets that name them (the setup app's and GoReview's page under practice/), each beside its own fonts/ copy
     expect([...new Set(named.map((f) => path.posix.basename(f)))].sort(), 'the stylesheets name the three EB Garamond files').toHaveLength(3);
     const shipped = files.filter((f) => FONT_EXT.test(f));
     expect(shipped.filter((f) => !named.includes(f)), 'a font file nothing names').toEqual([]);

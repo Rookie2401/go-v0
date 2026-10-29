@@ -95,11 +95,11 @@ try {
   run('npx', ['vitest', 'run', '--configLoader', 'runner', '--maxWorkers=4', '--reporter=default', '--reporter=json',
     `--outputFile.json=${path.relative(repo, testReportPath)}`,
     'test/contract', 'test/repository', 'test/golearn', 'test/golearn-app', 'test/golearn-e2e', 'test/golisten', 'test/gotell',
-    'test/goreview', 'test/gopractice', 'test/server/review-optimizer.test.ts']);
+    'test/goreview', 'test/goreview-app', 'test/server/review-optimizer.test.ts']);
   if (webOnly) {
     const artifactDir = path.join(pkg, '.preflight', 'web-release');
-    run('node', ['node_modules/vite/bin/vite.js', 'build', '-c', 'packages/gopractice/vite.config.ts', '--mode', 'review'], {
-      GOPRACTICE_OUT: artifactDir,
+    run('node', ['node_modules/vite/bin/vite.js', 'build', '-c', 'packages/goreview/app/vite.config.ts', '--mode', 'review'], {
+      GOREVIEW_OUT: artifactDir,
       GOREVIEW_RELEASE_MODE: 'release',
     });
     run('node', ['scripts/goreview-release.mjs', 'verify', path.relative(repo, artifactDir), '--release']);

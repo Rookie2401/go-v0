@@ -1,9 +1,9 @@
 // @vitest-environment jsdom
 /**
  * ACCESSIBILITY audit, lane 2 of 4 (docs/ecosystem/audit/ACCESSIBILITY.md): the real screens, mounted in jsdom the way
- * test/gopractice, test/gotell-ui and test/golearn-app mount them, and audited with `auditDom` (accessible names, labels,
+ * test/goreview-app, test/gotell-ui and test/golearn-app mount them, and audited with `auditDom` (accessible names, labels,
  * ids, headings, landmarks, live regions, `lang` on target-language text, repeated ambiguous names).
- *   GoPractice: sign-in, GoReview home / session (every exercise family, question and feedback) / summary / transfer, GoTell home /
+ *   GoReview: sign-in, GoReview home / session (every exercise family, question and feedback) / summary / transfer, GoTell home /
  *   prompts / writer / goals / privacy, settings.   GoLearn setup app: every screen.   Action popup.
  * Defects are asserted with `it.fails` (see a11y.css.test.ts for the convention).
  */
@@ -11,8 +11,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, afterEach, describe, expect, it } from 'vitest';
 import { accessibleName, auditDom, flushAfterAll, row, tabSequence, type Finding } from './a11y.support';
-import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, key, makeRig, reopen, reopenDetails, seed, startWith, type as typeIn, until } from '../gopractice/helpers';
-import { destroyRigs } from '../gopractice/helpers';
+import { candidate, cardAdded, defaultService, dueCard, fakeAudio, flush, ids, key, makeRig, reopen, reopenDetails, seed, startWith, type as typeIn, until } from '../goreview-app/helpers';
+import { destroyRigs } from '../goreview-app/helpers';
 import { makeTellRig, resetTellRig, typeInto, type TellRig } from '../gotell-ui/rig';
 import { HOME, SCREENS } from '../../packages/golearn-extension/app/app';
 import { downloadLanguage as appChoose, destroyRigs as destroyAppRigs, failingInstall as appFailingInstall, makeRig as makeAppRig, signIn as appSignIn } from '../golearn-app/helpers';
@@ -43,14 +43,14 @@ afterEach(() => { resetTellRig(); destroyAppRigs(); });
 
 const click = (el: Element | null | undefined): void => { if (!el) throw new Error('nothing to click'); (el as HTMLElement).click(); };
 
-// ───────────────────────────── GoPractice ─────────────────────────────
+// ───────────────────────────── GoReview ─────────────────────────────
 
-describe('GoPractice screens', () => {
+describe('GoReview screens', () => {
   it('A-S01 sign-in (signed out)', async () => {
     const rig = await makeRig();
     expect(rig.q('#signin-form')).toBeTruthy();
     const f = audit(rig.root, 'practice/signin');
-    row('A-S01', 'screens', 'GoPractice sign-in', f.length ? `${f.length} findings` : 'clean', f.map((x) => `${x.rule}: ${x.where}`).join('; '));
+    row('A-S01', 'screens', 'GoReview sign-in', f.length ? `${f.length} findings` : 'clean', f.map((x) => `${x.rule}: ${x.where}`).join('; '));
     destroyRigs();
   });
 

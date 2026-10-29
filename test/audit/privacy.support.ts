@@ -20,9 +20,9 @@ import { createRepositoryApi, createInProcessApi, type RepositoryApi } from '../
 import type { ServiceDeps } from '../../packages/repository-service/src/deps';
 import { handle } from '../../packages/repository-service/src/handler';
 import { adaptLinguistics } from '../../packages/repository-service/src/linguistics-adapter';
-import { createContext, type AppContext } from '../../packages/gopractice/context';
-import type { Deps } from '../../packages/gopractice/ports';
-import { createLocalEventLog } from '../../packages/gopractice/state';
+import { createContext, type AppContext } from '../../packages/goreview/app/context';
+import type { Deps } from '../../packages/goreview/app/ports';
+import { createLocalEventLog } from '../../packages/goreview/app/state';
 import {
   createLocalDocuments, createLocalQueue, createMemoryArea, createSyncClient,
   type KeyValueArea, type LocalDocuments, type LocalQueue, type SyncClient, type Transport,
@@ -251,7 +251,7 @@ export function createNet(s: Stack, baseUrl = 'http://repository.local'): Net {
 
 // ───────────────────────────── a device with the real sync client ─────────────────────────────
 
-/** The transport of the apps: the typed client's two sync calls, throwing on any failure (what GoPractice and the extension do). */
+/** The transport of the apps: the typed client's two sync calls, throwing on any failure (what GoReview and the extension do). */
 export function transportOf(api: RepositoryApi): Transport {
   return {
     async push(req) { const r = await api.syncPush(req); if (!r.ok) throw new Error(`sync push refused: ${r.status} ${r.error}`); return r.data; },
@@ -320,7 +320,7 @@ export async function comparableKnowledge(s: Stack, learnerId: string): Promise<
   })).sort((a, b) => (a.unitId < b.unitId ? -1 : 1));
 }
 
-// ───────────────────────────── a GoPractice device (the web app's context over the real service) ─────────────────────────────
+// ───────────────────────────── a GoReview device (the web app's context over the real service) ─────────────────────────────
 
 
 export interface PracticeDevice {
@@ -332,7 +332,7 @@ export interface PracticeDevice {
   changed: number;
 }
 
-/** GoPractice's application context (session, per-learner prefixed storage, queue, local log, sync client) over the real service, with a device id of its own. */
+/** GoReview's application context (session, per-learner prefixed storage, queue, local log, sync client) over the real service, with a device id of its own. */
 export function createPracticeDevice(net: Net, opts: { area?: PracticeDevice['area']; clock?: { ms: number }; serviceUrl?: string; deviceName?: string } = {}): PracticeDevice {
   const area = opts.area ?? createMemoryArea();
   const clock = opts.clock ?? { ms: Date.parse('2026-10-09T08:00:00.000Z') };
@@ -402,7 +402,7 @@ export function firstDifference(a: unknown, b: unknown, path = '$'): string {
 
 // ───────────────────────────── a localStorage stand-in ─────────────────────────────
 
-/** The `Storage` interface over a Map (the GoPractice web app keeps everything in localStorage as JSON text); `raw` is the text as stored. */
+/** The `Storage` interface over a Map (the GoReview web app keeps everything in localStorage as JSON text); `raw` is the text as stored. */
 export function fakeLocalStorage(): Storage & { raw: Map<string, string> } {
   const raw = new Map<string, string>();
   return {

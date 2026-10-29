@@ -45,7 +45,7 @@ describe('entry points exist', () => {
     expect(manifest.background.service_worker).toBe('background.js');
     expect(readText('packages/golearn-extension/app/index.html')).toContain('./main.ts');
     expect(readText('packages/golearn-extension/action/popup.html')).toContain('popup.js');
-    expect(readText('packages/gopractice/index.html')).toContain('./main.ts');
+    expect(readText('packages/goreview/app/index.html')).toContain('./main.ts');
     // the build maps these exact sources to the shipped scripts
     const vite = readText('packages/golearn-extension/vite.config.ts');
     expect(vite).toContain("src/content/index.ts");
@@ -181,8 +181,8 @@ describe('(d) GoTell and GoReview are independent', () => {
   const tell = reach(GOTELL_ENTRY);
   const review = reach('packages/goreview/src/index.ts');
 
-  it("GoTell's entry reaches no GoReview, GoPractice shell or GoLearn module", () => {
-    const bad = [...tell.files].filter((f) => /^packages\/(goreview|gopractice|golearn-extension|controlled-reader)\//.test(f));
+  it("GoTell's entry reaches no GoReview, GoReview shell or GoLearn module", () => {
+    const bad = [...tell.files].filter((f) => /^packages\/(goreview|goreview-app|golearn-extension|controlled-reader)\//.test(f));
     expect(bad.map((f) => chainTo(tell, f).join(' -> '))).toEqual([]);
   });
 
@@ -196,13 +196,13 @@ describe('(d) GoTell and GoReview are independent', () => {
   });
 
   it('GoTell reaches nothing of GoReview even through the shell it is hosted by, except that the shell reaches both', () => {
-    const shell = reach('packages/gopractice/main.ts');
+    const shell = reach('packages/goreview/app/main.ts');
     expect([...shell.files].some((f) => f.startsWith('packages/gotell/'))).toBe(true);
     expect([...shell.files].some((f) => f.startsWith(GOREVIEW_ROOT))).toBe(true);
-    // ...and the two meet only in the shell: nothing in goreview/ or gotell/ names the other
-    for (const [pkg, other] of [['goreview', 'gotell'], ['gotell', 'goreview']] as const) {
-      const files = [...shell.files].filter((f) => f.startsWith(`packages/${pkg}/`));
-      for (const f of files) for (const to of infoEdges(f)) expect(to.startsWith(`packages/${other}/`), `${f} -> ${to}`).toBe(false);
+    // ...and the two meet only in the shell (packages/goreview/app): nothing in the engine (packages/goreview/src) or in gotell/ names the other
+    for (const [pkgRoot, otherRoot] of [[GOREVIEW_ROOT, 'packages/gotell/'], ['packages/gotell/', 'packages/goreview/']] as const) {
+      const files = [...shell.files].filter((f) => f.startsWith(pkgRoot));
+      for (const f of files) for (const to of infoEdges(f)) expect(to.startsWith(otherRoot), `${f} -> ${to}`).toBe(false);
     }
   });
 });
@@ -270,11 +270,11 @@ describe('(e) no entry carries commercial ebook-provider code', () => {
     expect(JSON.stringify(m)).not.toMatch(/amazon|kindle|kobo/i);
   });
 
-  it('the only third-party packages any entry imports are ts-fsrs (GoReview scheduling), @capacitor/core (GoPractice only: the native-shell bridge) and pg (the Node service only) plus node builtins', () => {
+  it('the only third-party packages any entry imports are ts-fsrs (GoReview scheduling), @capacitor/core (GoReview only: the native-shell bridge) and pg (the Node service only) plus node builtins', () => {
     // per entry: the Node service may load the Postgres driver (packages/repository-store/src/postgres-pool.ts, dynamic import, 2026-10-17);
-    // the GoPractice shell detects the iPhone build through @capacitor/core (packages/gopractice/mobile.ts, 2026-10-15). No browser
+    // the GoReview shell detects the iPhone build through @capacitor/core (packages/goreview/app/mobile.ts, 2026-10-15). No browser
     // entry of the extension reaches either.
-    const ALLOWED: Record<string, string[]> = { 'repository-service': ['pg'], gopractice: ['@capacitor/core'] };
+    const ALLOWED: Record<string, string[]> = { 'repository-service': ['pg'], 'goreview-app': ['@capacitor/core'] };
     const externals = new Set<string>();
     for (const e of ALL_ENTRIES) {
       const own = [...reach(e.file).externals.keys()].filter((x) => !x.startsWith('node:'));

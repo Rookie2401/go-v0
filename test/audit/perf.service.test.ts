@@ -14,7 +14,7 @@ import type { GoEvent, ReviewCandidate, UnitKnowledge } from '../../packages/rep
 import { validateEvent } from '../../packages/repository-contract/src';
 import { buildCardAdded, createFsrsScheduler, createSessionRunner, foldDeckItems, gatherCandidates, planSession, registry, type DeckItem, type IntakeOutcome, type ReviewPreferences } from '../../packages/goreview/src';
 import { parseSelection } from '../../packages/golearn-extension/src/parser';
-import { packFactsFor } from '../../packages/gopractice/packFacts';
+import { packFactsFor } from '../../packages/goreview/app/packFacts';
 import { createMemoryStore } from '../../packages/repository-store/src';
 import { createRepositoryApi } from '../../packages/repository-service/src/api';
 import { createLocalQueue, createMemoryArea, createSyncClient, newEventId, type Transport } from '../../packages/repository-sync/src';

@@ -433,7 +433,7 @@ describe.each(STORE_KINDS)('expired or revoked session (401) — %s store', (kin
     expect(await countOf(s, a.learnerId, eventId)).toBe(1);
   });
 
-  it('GoPractice: a 401 on sync sets authExpired, keeps the learner\'s queue, and signing in again sends it once', async () => {
+  it('GoReview: a 401 on sync sets authExpired, keeps the learner\'s queue, and signing in again sends it once', async () => {
     const s = make(kind);
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'setup');
@@ -595,10 +595,10 @@ describe.each(STORE_KINDS)('one event the service will not accept must not hold 
   });
 
   // DEFECT O-06: the service refuses a whole /sync/push batch when any event in it is invalid (422, "nothing was stored"). The sync
-  // client only knows "the transport threw", so GoPractice's transport (`defaultTransport`) turns the 422 into a failure of the whole
+  // client only knows "the transport threw", so GoReview's transport (`defaultTransport`) turns the 422 into a failure of the whole
   // batch, which is retried unchanged on every round, for ever: one event with a clock gone wrong (or written by a build the service
   // does not accept) holds every later event of the learner back. (The GoLearn worker now isolates the bad event, see above.)
-  it('O-06 (fixed): GoPractice: an event the service refuses does not hold back the good events queued with it', async () => {
+  it('O-06 (fixed): GoReview: an event the service refuses does not hold back the good events queued with it', async () => {
     const s = make(kind);
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'setup');
@@ -616,7 +616,7 @@ describe.each(STORE_KINDS)('one event the service will not accept must not hold 
     for (const e of [good1, good2]) expect(await countOf(s, a.learnerId, e.id)).toBe(1);
   });
 
-  it('FINDING (O-06 after the fix): with GoPractice nothing is dropped: the refused event is kept as a rejected row and all three are still on the device', async () => {
+  it('FINDING (O-06 after the fix): with GoReview nothing is dropped: the refused event is kept as a rejected row and all three are still on the device', async () => {
     const s = make(kind);
     const net = createNet(s);
     const a = await signUp(s, 'ana@example.com', 'setup');

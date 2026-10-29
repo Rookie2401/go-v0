@@ -5,9 +5,9 @@
  * What the page keeps is the session the service gave (session.ts).
  */
 import { createRepositoryApi, type RepositoryApi } from '../../repository-service/src/api';
-import { createAccountClient, explainAccountFailure, type AccountClient } from '../../gopractice/accountClient';
-import { explainFailure, type Refused } from '../../gopractice/config';
-import { PRIVACY_POLICY_MD, TERMS_MD_TEXT, renderMarkdown } from '../../gopractice/legal';
+import { createAccountClient, explainAccountFailure, type AccountClient } from '../../goreview/app/accountClient';
+import { explainFailure, type Refused } from '../../goreview/app/config';
+import { PRIVACY_POLICY_MD, TERMS_MD_TEXT, renderMarkdown } from '../../goreview/app/legal';
 import type { GoEvent } from '../../repository-contract/src';
 import { clearSession, deviceIdFor, loadSession, saveSession, type BibliaSession } from './session';
 
@@ -172,7 +172,7 @@ export interface AccountScreenDeps {
 type Child = Node | string | null | undefined | false;
 
 /**
- * The account screen, in GoReview's design (packages/gopractice/screens/signin.ts): a title with its rule, a WELCOME card that says what the
+ * The account screen, in GoReview's design (packages/goreview/app/screens/signin.ts): a title with its rule, a WELCOME card that says what the
  * account is for, the SIGN IN card with its EMAIL and PASSWORD labels and the gold Sign in button, the "Forgot password?" disclosure, the
  * note about email links and the line to the drafts. Signed in, the same page says who and offers Sign out.
  */

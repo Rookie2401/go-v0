@@ -7,16 +7,16 @@ The manifest records the Git commit and tree, whether the checkout was dirty, th
 Release builds use the default `GOREVIEW_RELEASE_MODE=release`. A dirty checkout causes the build to stop. Set `GOREVIEW_RELEASE_MODE=developer` explicitly for a local development build; its manifest is marked development-only and cannot pass `--release` verification.
 
 ```powershell
-vite build -c packages/gopractice/vite.config.ts --mode review
-node scripts/goreview-release.mjs verify packages/gopractice/dist-review --release
+vite build -c packages/goreview/app/vite.config.ts --mode review
+node scripts/goreview-release.mjs verify packages/goreview/app/dist-review --release
 ```
 
 Developer builds can be checked without the release eligibility assertion:
 
 ```powershell
 $env:GOREVIEW_RELEASE_MODE = 'developer'
-vite build -c packages/gopractice/vite.config.ts --mode review
-node scripts/goreview-release.mjs verify packages/gopractice/dist-review
+vite build -c packages/goreview/app/vite.config.ts --mode review
+node scripts/goreview-release.mjs verify packages/goreview/app/dist-review
 ```
 
 ## Fresh-checkout preparation

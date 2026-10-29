@@ -8,8 +8,8 @@ against the real service, and what the service holds afterwards.
 
 ```
 npx tsc -b   # clean for every GoTell file (other lanes' in-flight files may still show errors)
-npx vitest run test/gotell-engine test/gotell-prompts test/gotell-documents test/gotell-ui test/gotell-e2e test/gotell test/gopractice test/ecosystem test/audit/security.remoteai.test.ts --reporter=dot
-npx vite build -c packages/gopractice/vite.config.ts   # builds; dist/THIRD-PARTY-NOTICES.md is copied
+npx vitest run test/gotell-engine test/gotell-prompts test/gotell-documents test/gotell-ui test/gotell-e2e test/gotell test/goreview-app test/ecosystem test/audit/security.remoteai.test.ts --reporter=dot
+npx vite build -c packages/goreview/app/vite.config.ts   # builds; dist/THIRD-PARTY-NOTICES.md is copied
 ```
 
 | suite | tests | what it proves |
@@ -20,7 +20,7 @@ npx vite build -c packages/gopractice/vite.config.ts   # builds; dist/THIRD-PART
 | `test/gotell-ui` | 48 | routes and modes; draft list actions; prompt picker; goals event shape; privacy page; writer: autosave is device-only (no network), Save makes a version and submits evidence without text, Analyse marks issues, the ladder is strictly ordered, Model expression needs a second click and shows a refusal honestly, Accept replaces one sentence and keeps history, Reject records and mutes, meaning-change warning blocks one-click acceptance, versions diff/restore, export, delete, Ctrl+S; the whole flow through the real checker and stores; the coverage is one line with a closed details element holding the whole adapter statement; the accept notice (copied from the model, no production credit) is on screen before the Accept button; hint on one sentence leaves an edited neighbour independent at Save; the privacy page links to the licences; the real shell queue receives `ConsentGiven` then `ConsentWithdrawn` when the switch is flipped |
 | `test/gotell/boundary.test.ts` | 6 | `packages/gotell` imports nothing from GoReview or the shell; initialises with an empty log and no deck |
 | `test/gotell-e2e/albanian-acceptance.test.ts` | 14 | the §12 scenario (§2) |
-| `test/gopractice` (8 files) and `test/ecosystem` | 78 and 7 | the shell still passes with the new workspace; the Settings "Licences and attribution" section (closed until opened, reads the shipped notices, falls back when the file is missing, offline or answered with the app's own page; text is never rendered as markup) |
+| `test/goreview-app` (8 files) and `test/ecosystem` | 78 and 7 | the shell still passes with the new workspace; the Settings "Licences and attribution" section (closed until opened, reads the shipped notices, falls back when the file is missing, offline or answered with the app's own page; text is never rendered as markup) |
 | `test/audit/security.remoteai.test.ts` | 13 | includes the S-14 case, now a plain `it` (it was `it.fails`): a truthy non-boolean or a Promise from a consent store is not consent |
 | whole command above | 589 in 44 files (the S-14 file is counted in it) | all green |
 
@@ -46,7 +46,7 @@ network (in-process), the clock, a remote assistant that proposes a wrong rewrit
 
 ## 3. Browser walk (Chromium pane, 2026-10-09 16:00–16:05 UTC)
 
-Real service process on `127.0.0.1:8790` (learner ana@albania.test), the built `packages/gopractice/dist` on
+Real service process on `127.0.0.1:8790` (learner ana@albania.test), the built `packages/goreview/app/dist` on
 `localhost:5199`, real keystrokes for the text and the save.
 
 | step | observed |

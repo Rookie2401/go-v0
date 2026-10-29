@@ -5,7 +5,7 @@ desktop app's browser pane against the real local Repository service, not a fake
 
 ## Set-up
 
-- Build: `GOPRACTICE_SERVICE_URL=http://127.0.0.1:8790 GOPRACTICE_DICT=la GOPRACTICE_OUT=<scratch>/goreview-la npx vite build -c packages/gopractice/vite.config.ts --mode review`
+- Build: `GOREVIEW_SERVICE_URL=http://127.0.0.1:8790 GOREVIEW_DICT=la GOREVIEW_OUT=<scratch>/goreview-la npx vite build -c packages/goreview/app/vite.config.ts --mode review`
   (the Latin dictionary alone is 130 MB in the build: schema 3 + full-2; see DICTIONARY.md), served by `scripts/local/static-server.cjs` on 127.0.0.1:5200.
 - Service: the local Repository on 127.0.0.1:8790, restarted after the Latin pack and analyser were added (an older process does
   not know `la`: `GET /packs?languageId=la` was empty until the restart).

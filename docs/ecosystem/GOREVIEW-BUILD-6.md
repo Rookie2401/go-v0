@@ -10,13 +10,13 @@ rest: https://appstoreconnect.apple.com/apps/6822923834/testflight/ios
 | EAS submission | `37c09f19-0250-49fc-acd0-773fbe10ea46` |
 | staged version | 1.0.0 (6), bundle `com.cjwalker.goreview` |
 | Repository address in the bundle | `https://repo.golearn-global-languages.com` (the named Cloudflare tunnel, `infra/cloudflare/README.md`) |
-| dictionaries bundled | Hindi only (`GOPRACTICE_DICT=hi`, full-2 plain layout; 56 MB of web assets). Latin left out on the Latin session's advice (its dictionary alone is 130 MB; Latin review cards still work through the service's lookups) |
-| what is in it | everything committed through `cc6fbbd8` (accounts hardening client flows, scheduled deletion, data download, legal drafts, live sync loop) plus the Hebrew/Greek and Latin sessions' uncommitted but frozen edits under `packages/gopractice`, `packages/goreview`, `packages/language-packs` (both sessions confirmed those paths stable before the build) |
+| dictionaries bundled | Hindi only (`GOREVIEW_DICT=hi`, full-2 plain layout; 56 MB of web assets). Latin left out on the Latin session's advice (its dictionary alone is 130 MB; Latin review cards still work through the service's lookups) |
+| what is in it | everything committed through `cc6fbbd8` (accounts hardening client flows, scheduled deletion, data download, legal drafts, live sync loop) plus the Hebrew/Greek and Latin sessions' uncommitted but frozen edits under `packages/goreview/app`, `packages/goreview`, `packages/language-packs` (both sessions confirmed those paths stable before the build) |
 
 ## What was verified, and what was not
 
 - Verified: the staged `app.json` says version 1.0.0, build 6; the staged `public/config.json` carries the public hostname;
-  `test/gopractice`, `test/gopractice-e2e`, `test/goreview` and `test/language-packs` on the built tree: 910 of 914 passed. The four
+  `test/goreview-app`, `test/goreview-app-e2e`, `test/goreview` and `test/language-packs` on the built tree: 910 of 914 passed. The four
   failures are the sibling sessions' in-progress pins (he/el capabilities rows; two Latin adapter validation cases), none in code
   the phone build runs.
 - NOT verified from the binary: the IPA's `CFBundleVersion`. Expo's metadata shows "1.0 / 2" exactly as it did for build 5, because
@@ -38,7 +38,7 @@ rest: https://appstoreconnect.apple.com/apps/6822923834/testflight/ios
 cd packages/goreview-ios
 $env:REPOSITORY_SERVICE_URL='https://repo.golearn-global-languages.com'
 $env:REPOSITORY_HEALTH_CHECK_URL='http://127.0.0.1:8790'   # only while the router blocks the domain
-$env:GOPRACTICE_DICT='hi'
+$env:GOREVIEW_DICT='hi'
 $env:GOREVIEW_BUNDLE_ID='com.cjwalker.goreview'
 $env:GOREVIEW_BUILD_NUMBER='6'
 $env:GOREVIEW_MARKETING_VERSION='1.0.0'

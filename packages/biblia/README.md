@@ -19,7 +19,7 @@
 
 - No dictionary panel of its own: Biblia's BDB / Abbott-Smith HTML entries are not shown; the card's Meanings come from the analysers' glosses
   (BDB / Strong's short glosses for the Tanakh, Dodson / Abbott-Smith / Strong's for the New Testament) until the he / el dictionaries exist.
-- No search, vocabulary list or progress screens: vocabulary and knowledge live in the Repository and are shown by GoPractice; Biblia keeps
+- No search, vocabulary list or progress screens: vocabulary and knowledge live in the Repository and are shown by GoReview; Biblia keeps
   only the last position per device.
 - No per-token gold hint yet: the source's reading of the very token (the `w` column) reaches the card through the installed full index, which
   carries every reading of that written form; a form the Bible reads two ways is shown with both, the commoner first (PLAN14 follow-up).

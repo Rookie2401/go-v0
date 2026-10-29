@@ -8,8 +8,8 @@ import { accountRecorder, extensionSend, makeRecorder, noRecorder, type AccountR
 import { createAccountService, type AccountService } from './src/account';
 import { createEventQueue } from './src/queue';
 import { createSyncStatus } from './src/syncStatus';
-import { createMobileRuntime } from '../gopractice/mobile';
-import { loadConfig } from '../gopractice/config';
+import { createMobileRuntime } from '../goreview/app/mobile';
+import { loadConfig } from '../goreview/app/config';
 import { createRepositoryApi } from '../repository-service/src/api';
 
 /** Inside the GoReview iPhone app (a native Capacitor platform): the app's Repository address (its config.json, one folder up) and its signed-in session, from Keychain. */

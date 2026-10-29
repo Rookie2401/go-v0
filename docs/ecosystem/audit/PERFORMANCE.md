@@ -179,7 +179,7 @@ That is about 6,000 events/s (in-test) and 5,000 events/s (separate process) on 
 | `app/app.js` (setup application) | 572.8 KB | 188.1 KB |
 | `action/popup.js` | 15.6 KB | 5.6 KB |
 | `packages/golearn-extension/dist-web/` (web build of the setup app; 262 files) | 6,567 KB | 1,763 KB |
-| `packages/gopractice/dist/` (262 files; main bundle 815.7 KB, 264.7 KB gzip) | 6,809 KB | 1,839 KB |
+| `packages/goreview/app/dist/` (262 files; main bundle 815.7 KB, 264.7 KB gzip) | 6,809 KB | 1,839 KB |
 
 The same dictionary (5,985 KB) is carried by each of the three artefacts.
 

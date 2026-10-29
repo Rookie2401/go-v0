@@ -14,6 +14,8 @@
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
 import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planClassEssentialsDue, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, releaseHoldOut, saveDeck, type CurrentDeck, type SavedDeck, type VocabRow } from '../deckModel';
+import { explainAdmissions } from '../admissionExplanation';
+import { freshModel, planCouldHaveChanged } from '../freshness';
 import { loadingMark } from '../loading';
 import { readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
@@ -106,7 +108,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const local = await homeLocal(ctx).catch(() => undefined);
     const now = ctx.deps.now().getTime();
     const memo = local ? painted.get(ctx)?.get(local.id) : undefined;
-    if (!force && memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS && !scheduleMovedSince(memo.model, now)) {
+    if (!force && memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS && !scheduleMovedSince(memo.model, now) && !planCouldHaveChanged(memo.model, now)) {
       if (!view.alive()) return;
       paintedEvents = memo.model.events.length;
       draw(memo.model, memo.deck, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.classDue);
@@ -202,7 +204,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const start = button('Review Class Essentials due', () => {
       start.disabled = true;
       void (async () => {
-        const current = await freshModel(m);
+        const current = await freshModel(ctx, m);
         const plan = await planClassEssentialsDue(ctx, current);
         if (!plan.items.length) { setStatus(status, 'No Class Essentials cards are due for this capped session.', 'info'); return; }
         const result = await beginSession(ctx, current, { plan });
@@ -223,21 +225,8 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       nextReturn ? h('p', { class: 'muted', id: 'class-essentials-next-return' }, `Next short-term class return: ${new Date(nextReturn.schedule.due).toLocaleString()}.`) : null);
   }
 
-  /**
-   * The model to plan with: the one on screen, unless the saved preferences or the local log have moved on since it was painted
-   * (a sync brought a card from another device), or a card has come due since, in which case it is loaded again.
-   */
-  async function freshModel(m: ReviewModel): Promise<ReviewModel> {
-    try {
-      const prefs = await ctx.state.getPrefs(m.identity.learnerId, m.identity.languageId);
-      const events = await ctx.events(m.identity.languageId);
-      if (JSON.stringify(prefs) === JSON.stringify(m.prefs) && events.length === m.events.length && !scheduleMovedSince(m, ctx.deps.now().getTime())) return m;
-      return (await loadReviewModel(ctx)) ?? m;
-    } catch { return m; }
-  }
-
   async function begin(m: ReviewModel): Promise<void> {
-    const current = await freshModel(m);
+    const current = await freshModel(ctx, m);
     const { learnerId, languageId } = current.identity;
     const planned = await planCurrentDeck(ctx, current, await holdOutOf(ctx, learnerId, languageId));
     const r = await beginSession(ctx, current, { plan: planned.plan });
@@ -265,7 +254,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const actions = h('div', { class: 'entry-actions' }, start);
     if (selectedCount) actions.append(button(`Practice selected words (${selectedCount})`, () => {
       void (async () => {
-        const current = await freshModel(m);
+        const current = await freshModel(ctx, m);
         const plan = await planSelectedPractice(ctx, current);
         if (!plan.items.length) { setStatus(status, 'Selected words are controlled or no usable exercise is available.', 'info'); return; }
         const result = await beginSession(ctx, current, { plan });
@@ -286,7 +275,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     if (ready) {
       actions.append(button('Save deck', () => {
         void (async () => {
-          const current = await freshModel(m);
+          const current = await freshModel(ctx, m);
           const holdOut = await holdOutOf(ctx, current.identity.learnerId, current.identity.languageId);
           const now = await planCurrentDeck(ctx, current, holdOut);
           const saved = await saveDeck(ctx, current.identity, now.entries);
@@ -300,10 +289,12 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
         })();
       }, { class: 'btn friendly', id: 'save-deck' }));
     }
+    const whyNoNew = explainAdmissions(m, deck);
     return h('section', { class: 'entry', 'data-entry': 'deck', id: 'current-deck' },
       h('h2', { class: 'entry-title' }, 'GoReview'),
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
       h('p', { id: 'review-obligations', class: 'entry-kicker' }, `${deck.summary.dueReviews} due reviews · ${deck.summary.dueLearning} due learning/relearning · ${deck.summary.newAvailable} eligible new admissions · ${deck.summary.remediation} unresolved remediation`),
+      whyNoNew ? h('p', { id: 'why-no-new', class: 'muted', 'data-code': whyNoNew.code }, whyNoNew.text) : null,
       h('p', { id: 'microdeck-size', class: 'muted' }, `${deck.summary.batchQuestions} question(s) in this batch · ${deck.summary.questionsAvailable} eligible now · target ${deck.summary.targetQuestions}.`),
       h('p', { id: 'microdeck-estimate', class: 'muted' }, `${timeEstimate(deck.summary.estimatedSeconds)} active practice${deck.summary.workloadLimit ? `, within a ${Math.round(deck.summary.workloadLimit / 60)} minute workload limit` : ', with no fixed session-time limit'}. Estimates are approximate.`),
       deck.plan.batch?.reasons.length ? p(deck.plan.batch.reasons.join(' '), 'help') : null,

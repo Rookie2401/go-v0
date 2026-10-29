@@ -35,18 +35,20 @@ describe('cards per deck', () => {
     expect(rig.q('#deck-size-link').getAttribute('aria-expanded')).toBe('true');
   });
 
-  it('presets and the stepper change the plan size at once, and the size is clamped to 5 to 60', async () => {
+  it('the typed number and the stepper change the plan size at once, and the size is clamped to 5 to 60 (no preset pills, 2026-10-28)', async () => {
     const rig = await makeRig({ signedIn: true });
     await seed(rig, dueMany(14));
     await reopen(rig);
     click(rig.q('#deck-size-link'));
-    click(rig.q('#deck-size-box [data-cards="5"]'));
+    expect(rig.qa('#deck-size-box button').map((b) => b.id)).toEqual(['home-less', 'home-more']); // the stepper alone: the 5 · 10 · 15 · 20 · 30 pills are gone
+    expect(rig.q('#deck-size-box .deck-size').classList.contains('centred')).toBe(true);
+    type(rig.q<HTMLInputElement>('#home-size'), '5');
     await until(() => cards(rig) === 5, 'five cards');
     expect(rig.q<HTMLElement>('#deck-size-box').hidden).toBe(false); // it stays open across the re-plan
     expect(rig.q('#deck-size-link').textContent).toBe('deck size: 5');
     click(rig.q('#home-more'));
     await until(() => cards(rig) === 6, 'six cards');
-    click(rig.q('#deck-size-box [data-cards="15"]'));
+    type(rig.q<HTMLInputElement>('#home-size'), '15');
     await until(() => cards(rig) === 10, 'adaptive target stays near ten under the configured fifteen-card maximum');
     type(rig.q<HTMLInputElement>('#home-size'), '1');
     await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 5, 'the lower clamp');
@@ -55,21 +57,16 @@ describe('cards per deck', () => {
     await until(() => rig.q<HTMLButtonElement>('#home-more').disabled, 'the stepper to stop at 60');
   });
 
-  it('does not top the schedule up merely because more vocabulary exists', async () => {
+  it('does not fill the ordinary deck from catalog membership when no card is due or admitted', async () => {
     const rig = await makeRig({ signedIn: true });
     useWords(rig, [word('zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), word('mace', 'new', 1, '2026-10-06T00:00:00.000Z'), word('qen', 'new', 1, '2026-10-04T00:00:00.000Z'), word('diell', 'seen', 2, '2026-10-03T00:00:00.000Z')]);
+    await rig.app.ctx.state.updatePrefs('L1', 'sq', { maxNew: 0 });
     await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 20 });
-    await seed(rig, dueMany(2));
-    await reopen(rig);
-    expect(cards(rig)).toBe(2); // two actual due cards; catalog membership creates no demand
-  });
-
-  it('with vocabulary but no justified scheduled work the batch stays empty', async () => {
-    const rig = await makeRig({ signedIn: true });
-    useWords(rig, [word('zog', 'seen', 4, '2026-10-05T00:00:00.000Z'), word('mace', 'new', 1, '2026-10-06T00:00:00.000Z'), word('qen', 'new', 1, '2026-10-04T00:00:00.000Z')]);
-    await rig.app.ctx.state.updatePrefs('L1', 'sq', { cardsPerDeck: 30 });
     await reopen(rig);
     expect(cards(rig)).toBe(0);
+    expect(rig.q('#deck-count').textContent).toBe('No eligible reviews right now');
+    expect(rig.q<HTMLButtonElement>('#start-session').disabled).toBe(true);
+    expect(rig.q('#vocab-count').textContent).toBe('4 words');
   });
 
   it('the saved deck keeps its own size', async () => {
@@ -110,12 +107,12 @@ describe('cards per deck', () => {
     await rig.go('review');
     await until(() => !!rig.root.querySelector('[data-action="resume-session"]'), 'the resumable session');
     click(rig.q('#deck-size-link'));
-    click(rig.q('#deck-size-box [data-cards="5"]'));
+    type(rig.q<HTMLInputElement>('#home-size'), '5');
     await until(() => /next deck/.test(rig.q('#review-home > .status').textContent ?? ''), 'the quiet note');
     expect((await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck).toBe(5);
   });
 
-  it('is operable and named: labelled centered Settings stepper without presets, a 44 px target in standalone mode', async () => {
+  it('is operable and named: a labelled centered Settings stepper without presets, a 44 px target in standalone mode', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('settings');
     expect(rig.q('#pref-less').getAttribute('aria-label')).toBe('Fewer cards per deck');
@@ -128,8 +125,13 @@ describe('cards per deck', () => {
     expect(rig.q<HTMLInputElement>('#pref-size').value).toBe('11');
     await rig.go('review');
     click(rig.q('#deck-size-link'));
-    expect(rig.qa('#deck-size-box .pill').map((b) => b.getAttribute('aria-label'))).toEqual(['5 cards per deck', '10 cards per deck', '15 cards per deck', '20 cards per deck', '30 cards per deck']);
+    expect(rig.qa('#deck-size-box .pill')).toEqual([]);
+    expect(rig.q('#deck-size-box [role="group"]').getAttribute('aria-label')).toBe('Cards per deck');
     const css = readFileSync('packages/gopractice/styles.css', 'utf8');
-    expect(css).toMatch(/@media \(pointer: coarse\), \(display-mode: standalone\) \{[^]*?\.stepper-btn \{ width: 2\.75rem; height: 2\.75rem; \}[^]*?button\.pill \{ min-height: 2\.75rem/);
+    expect(css).toMatch(/@media \(pointer: coarse\), \(display-mode: standalone\) \{[^]*?\.stepper-btn \{ width: 2\.75rem; height: 2\.75rem; \}/);
+    expect(css).not.toMatch(/\.pill\b/);
+    // Keep the spacious home stepper layout while the phone status-bar and header remain safe-area aware.
+    expect(css).toMatch(/\.deck-size-box \{ margin: \.6rem 0 0; padding-bottom: 2\.2rem; \}/);
+    expect(css).toMatch(/@media \(pointer: coarse\), \(display-mode: standalone\) \{[^]*?\.deck-size-box \{ padding-bottom: 3\.35rem; \}/);
   });
 });

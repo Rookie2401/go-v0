@@ -102,6 +102,8 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
       finally{if(!handedOff)release();}
     },
     factsFor: (unitId, languageId, api) => factsOf(languageId, api).factsFor(unitId, languageId),
+    // the pack's provider batches unit reads (prime); a provider without it answers one by one, as before
+    primeFacts: (languageId, api, unitIds) => (factsOf(languageId, api) as FactsProvider & { prime?(ids: string[]): Promise<void> }).prime?.(unitIds) ?? Promise.resolve(),
     async exerciseAvailable(request) {
       const facts = takeWarmFacts(request.api, request.languageId, request.unitId) ?? await factsOf(request.languageId, request.api).factsFor(request.unitId, request.languageId);
       const builder = resolveBuilder(opts.builders, request.family);

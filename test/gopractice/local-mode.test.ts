@@ -197,7 +197,7 @@ describe('the account is optional and only keeps progress across devices', () =>
     const rig = await makeRig({ local: true });
     await rig.go('signin');
     submitSignIn(rig, 'ana@example.org', 'nope');
-    await until(() => !!rig.q('#signin-form .status').textContent, 'an error');
+    await until(() => { const t = rig.q('#signin-form .status').textContent; return !!t && t !== 'Signing in…'; }, 'an error'); // the form says 'Signing in…' at once (2026-10-28: no service-address check before it)
     expect(rig.q('#signin-form .status').textContent).toBe('That email and password were not accepted.');
     expect(await rig.app.ctx.mode()).toBe('device');
     expect(rig.local!.uploads).toHaveLength(0);
@@ -207,7 +207,7 @@ describe('the account is optional and only keeps progress across devices', () =>
     const rig = await makeRig({ local: { worker: true } });
     await rig.go('signin');
     submitSignIn(rig, 'ana@example.org', 'nope');
-    await until(() => !!rig.q('#signin-form .status').textContent, 'an error');
+    await until(() => { const t = rig.q('#signin-form .status').textContent; return !!t && t !== 'Signing in…'; }, 'an error'); // the form says 'Signing in…' at once (2026-10-28: no service-address check before it)
     expect(rig.q('#signin-form .status').textContent).toBe('The email or password was not accepted.');
     expect(rig.service.calls).not.toContain('createSession'); // the page did not go on without the worker
     submitSignIn(rig);

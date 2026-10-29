@@ -80,17 +80,12 @@ describe('Settings', () => {
     await until(async () => (await rig.app.ctx.state.getPrefs('L1', 'sq')).cardsPerDeck === 15, 'the preference');
   });
 
-  it('validates the service address and keeps the old one when it is refused', async () => {
+  it('the Developer page names the service address read-only and offers no way to change it (2026-10-28)', async () => {
     const rig = await makeRig({ signedIn: true });
     await rig.go('developer');
-    type(rig.q<HTMLInputElement>('#settings-svc-url'), 'http://repository.example.org');
-    rig.q('#settings-svc-save').click();
-    await until(() => !!rig.q('#settings-service .status').textContent, 'the message');
-    expect(rig.q('#settings-service .status').getAttribute('data-kind')).toBe('error');
-    expect((await rig.area.get(KEYS.service))[KEYS.service]).toBeUndefined();
-    type(rig.q<HTMLInputElement>('#settings-svc-url'), 'https://other.example.org/');
-    rig.q('#settings-svc-save').click();
-    await until(async () => (await rig.app.ctx.serviceUrl()) === 'https://other.example.org', 'the new address');
+    await until(() => !!rig.root.querySelector('#diagnostics dt'), 'the diagnostics');
+    for (const gone of ['#settings-service', '#settings-svc-url', '#settings-svc-save']) expect(rig.root.querySelector(gone), gone).toBeNull();
+    expect(rig.q('#diagnostics').textContent).toContain('https://repository.example.org');
   });
 
   it('signs out: the session and cache go, unsent events stay under the account; the page offers no "remove this device\'s data" link', async () => {
@@ -176,8 +171,6 @@ describe('the review history and the transfer measures', () => {
     await rig.go('review/transfer');
     await until(() => !!rig.root.querySelector('.measures'), 'the measures');
     expect(rig.q('#transfer-notice').textContent).toContain('Research measures, not conclusions');
-    expect(rig.q('#local-learning-measures').textContent).toMatch(/coverage can be incomplete/i);
-    expect(rig.q('#local-learning-measures').textContent).toContain('Retrievability calibration');
     const card = rig.q(`.measures[data-unit="${unitOf('zog')}"]`);
     expect(card.querySelectorAll('.measure').length).toBeGreaterThanOrEqual(4);
     expect(card.textContent).toContain('Cannot show:');

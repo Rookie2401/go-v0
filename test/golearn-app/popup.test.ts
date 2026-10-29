@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 /**
- * The action popup's “Practise” button: GoPractice is a page of the extension (dist/practice/), so the button opens the extension’s own address for it,
- * with no sign-in and nothing about teams in the popup.
+ * The action popup from the setup application's side (the owner, 2026-10-28): no Practise button any more (GoPractice stays a page of the
+ * extension, reached from the setup page's status home), the brand as the one way to the setup page, and nothing about teams.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,27 +16,30 @@ const body = /<body>([\s\S]*)<\/body>/.exec(html)![1].replace(/<script[\s\S]*?<\
 afterEach(() => { document.body.innerHTML = ''; });
 
 describe('the popup', () => {
-  it('has a Practise button that opens the extension’s GoPractice page in a new tab', async () => {
+  it('has no Practise button and opens no tab of its own; the brand (GOLEARN →) is the one button, and it opens the setup page', async () => {
     document.body.innerHTML = body;
     const fake = createChromeFake();
     const opened: string[] = [];
-    (fake.runtime as unknown as { getURL: (p: string) => string }).getURL = (p) => `chrome-extension://${fake.runtime.id}/${p}`;
     (fake.tabs as unknown as { create: (p: { url: string }) => Promise<void> }).create = async (p) => { opened.push(p.url); };
     await initPopup(document, fake as unknown as ChromeApi);
-    const btn = document.getElementById('practise') as HTMLButtonElement;
-    expect(btn.textContent).toBe('Practise');
-    expect(document.body.textContent).toContain('no account needed');
-    btn.click();
-    expect(opened).toEqual([`chrome-extension://${fake.runtime.id}/practice/index.html`]);
+    expect(document.getElementById('practise')).toBeNull();
+    expect(document.body.textContent).not.toMatch(/Practise|no account needed/);
+    const buttons = [...document.querySelectorAll('button')];
+    expect(buttons.map((b) => b.id)).toEqual(['open-setup']);
+    expect(buttons[0].getAttribute('aria-label')).toBe('Open GoLearn setup');
+    expect(buttons[0].querySelector('.go-brand-mark')).not.toBeNull();
+    expect(buttons[0].textContent).toBe('GoLearn→');
+    buttons[0].click();
+    expect(fake.options.opened).toBe(1);
+    expect(opened).toEqual([]);
   });
 
-  it('says plainly when the extension cannot give the practice page’s address', async () => {
+  it('greets first: "Welcome" stands above the brand', async () => {
     document.body.innerHTML = body;
-    const fake = createChromeFake();
-    delete (fake.runtime as { getURL?: unknown }).getURL; // an extension that cannot name its own files
-    await initPopup(document, fake as unknown as ChromeApi);
-    (document.getElementById('practise') as HTMLButtonElement).click();
-    expect(document.getElementById('error')!.textContent).toBe('GoLearn could not find the practice page.');
+    await initPopup(document, createChromeFake() as unknown as ChromeApi);
+    const welcome = document.getElementById('welcome')!;
+    expect(welcome.textContent).toBe('Welcome');
+    expect(welcome.nextElementSibling?.id).toBe('open-setup');
   });
 
   it('mentions no team, mission team or leader', () => {

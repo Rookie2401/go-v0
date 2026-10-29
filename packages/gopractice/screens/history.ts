@@ -55,14 +55,13 @@ export async function fillItemHistory(ctx: AppContext, el: HTMLElement, itemId: 
 export async function renderHistory(el: HTMLElement, ctx: AppContext, view: View, params: string[]): Promise<void> {
   const itemId = decodeURIComponent(params.join('/'));
   const body = h('section', { class: 'card', id: 'item-history' });
-  append(el, [h('p', {}, h('a', { href: '#/review' }, '← GoReview')), body]);
+  append(el, [body]);
   await fillItemHistory(ctx, body, itemId, undefined, 'h2');
   void view;
 }
 
 export async function renderTransfer(el: HTMLElement, ctx: AppContext): Promise<void> {
   append(el, [
-    h('p', {}, h('a', { href: '#/review' }, '← GoReview')),
     h('p', { class: 'notice', id: 'transfer-notice' }, 'Research measures, not conclusions. Each line describes what was recorded, with the observations behind it and what it cannot show. None of it is a score of what you know, and none of it changes your schedule.'),
   ]);
   const id = await ctx.identity();

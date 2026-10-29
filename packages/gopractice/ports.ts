@@ -130,6 +130,8 @@ export interface ReviewEngine {
   factsFor?(unitId: string, languageId: string, api: RepositoryApi): Promise<UnitFacts | undefined>;
   /** Whether the proposed family has verified facts and can produce a valid exercise. */
   exerciseAvailable?(request: { unitId: string; unitKind: string; languageId: string; dimension: import('../goreview/src/types').AssessmentDimension; family: import('../goreview/src/types').ExerciseFamily; api: RepositoryApi; now: string }): Promise<boolean>;
+  /** Reads the Repository units that the next `exerciseAvailable` calls will ask about, fifty at a time, so they do not go one request each. */
+  primeFacts?(languageId: string, api: RepositoryApi, unitIds: string[]): Promise<void>;
   scheduler(prefs: ReviewPreferences, profile?: SchedulerProfile): Scheduler;
   /** The deck of one language as a fold over the learner's events (a snooze that has ended by `now` is over). */
   foldDeck(events: GoEvent[], languageId: string, prefs: ReviewPreferences, now: string): DeckItem[];

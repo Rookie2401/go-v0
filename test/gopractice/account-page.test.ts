@@ -24,7 +24,7 @@ describe('the account page', () => {
     await rig.go('account');
     expect(rig.q('main h1').textContent).toBe('Account');
     expect(rig.q('header #header-account').getAttribute('aria-current')).toBe('page');
-    expect(rig.q<HTMLAnchorElement>('#back-home').getAttribute('href')).toBe('#/review');
+    expect(rig.root.querySelector('#back-home')).toBeNull(); // the Go mark in the top bar is the way home
   });
 
   it('shows name and email, then Sign out, Download my data and a red Delete account as plain text; no ids, no expiry, no boxes', async () => {
@@ -110,7 +110,8 @@ describe('Settings without the analytics', () => {
     await rig.go('developer');
     expect(rig.q('main h1').textContent).toBe('Developer');
     await until(() => !!rig.root.querySelector('#diagnostics dt'), 'the diagnostics');
-    for (const there of ['#settings-service', '#settings-sync', '#settings-diagnostics', '#sync-now', '#settings-svc-url']) expect(rig.root.querySelector(there), there).not.toBeNull();
+    for (const there of ['#settings-sync', '#settings-diagnostics', '#sync-now']) expect(rig.root.querySelector(there), there).not.toBeNull();
+    for (const gone of ['#settings-service', '#settings-svc-url']) expect(rig.root.querySelector(gone), gone).toBeNull(); // no way to change the service address (2026-10-28)
     expect(rig.q('#diagnostics').textContent).toContain('Session until');
   });
 });

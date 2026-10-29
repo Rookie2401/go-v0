@@ -130,7 +130,7 @@ export function dictionaryCard(ctx: AppContext, current: string | undefined, loc
     h('div', { class: 'row' },
       button('Save', async () => {
         const raw = input.value.trim();
-        const r = await ctx.saveService(await ctx.serviceUrl(), raw === '' ? null : raw);
+        const r = await ctx.saveDictionaryAddress(raw === '' ? null : raw);
         if (!r.ok) { setStatus(status, r.message, 'error'); return; }
         setStatus(status, raw ? 'Dictionary address saved.' : 'Dictionary address cleared.', 'ok');
       }, { id: 'asset-save' }),

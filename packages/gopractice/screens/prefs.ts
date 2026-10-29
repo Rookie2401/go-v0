@@ -83,7 +83,7 @@ export function prefsForm(ctx: AppContext, learnerId: string, initial: ReviewPre
     h('label', { class: 'toggle' }, box, h('span', {}, label, h('span', { class: 'help' }, ` ${help}`)));
 
   const deck: DeckSizeControl | undefined = opts.deckSize === false ? undefined
-    : deckSizeControl(ctx, learnerId, current.languageId, initial.cardsPerDeck, (_n, prefs) => { current = prefs; onSaved?.(prefs); }, 'pref', { presets: false, centred: true });
+    : deckSizeControl(ctx, learnerId, current.languageId, initial.cardsPerDeck, (_n, prefs) => { current = prefs; onSaved?.(prefs); }, 'pref', { centred: true });
 
   const reset = button('Reset to default', () => {
     reset.disabled = true;

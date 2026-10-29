@@ -47,7 +47,10 @@ const budgetFor = (model: ReviewModel) => admissionBudget(model.events, {
   maxNew: model.prefs.maxNew, dailyNewLimit: model.prefs.dailyNewLimit ?? model.prefs.maxNew,
 });
 function scheduledPlan(ctx: AppContext, model: ReviewModel, holdOut: ReadonlySet<string>): SessionPlan {
-  return ctx.engine.plan({ deck: model.deck.filter(i => !holdOut.has(i.unitId) && !isClassUnit(i.unitId)),
+  return ctx.engine.plan({ deck: model.deck.filter(i => !isClassUnit(i.unitId)
+      // A saved collection may hold a unit out of fresh admission, but it cannot
+      // erase an existing scheduled obligation from the primary automatic plan.
+      && (!holdOut.has(i.unitId) || Date.parse(i.schedule.due) <= Date.parse(model.now))),
     intake: model.outcomes.filter(o => model.choices[o.unitId] !== 'later' && !holdOut.has(o.unitId)),
     prefs: model.prefs, audio: model.audio, now: model.now, knowledge: model.knowledge, readingSignals: model.events,
     schedulerProfile: model.schedulerProfile, observedReviewSeconds: observedReviewSeconds(model.events), intent: { kind: 'automatic' } });
@@ -63,8 +66,18 @@ export async function assemble(ctx: AppContext, model: ReviewModel, wanted: read
       / Math.max(1,model.outcomes.filter(o=>o.decision==='test-now').length) });
   const requestedLimit = Number.isFinite(size) ? Math.max(0, Math.min(Math.floor(size), fillSize(model), target.targetQuestions)) : 0;
   const listeningOk = model.prefs.includeListening && model.audio.available;
-  const direct = new Map<string, PlannedItem>(), fresh: IntakeOutcome[] = [], order: string[] = [];
-  const { api } = await ctx.api();
+  const holds = (w: Wanted): DeckItem | undefined =>
+    [...model.deck, ...(model.classDeck ?? [])].find((i) => i.unitId === w.unitId && i.dimension === w.dimension && i.status !== 'dismissed' && i.status !== 'suspended');
+  const direct = new Map<string, PlannedItem>();
+  const fresh: IntakeOutcome[] = [];
+  const order: string[] = [];
+  const api = (await ctx.api()).api;
+  // Prime the facts cache in one request for the likely candidates; factsFor remains
+  // the fallback when a batch read is unavailable.
+  if (ctx.engine.primeFacts && !opts.unchecked) {
+    const probe = [...new Set(wanted.filter((w) => !holds(w) && !(isAudio(w.family) && !listeningOk)).slice(0, (size + 4) * 3).map((w) => w.unitId))];
+    if (probe.length) { try { await ctx.engine.primeFacts(model.identity.languageId, api, probe); } catch { /* factsFor still answers one by one */ } }
+  }
   let remainingNew = Math.min(model.prefs.maxNew, budgetFor(model).remaining);
   for (const w of wanted) {
     if (order.length >= requestedLimit) break;
@@ -260,6 +273,11 @@ function cleanStore(raw: unknown): DeckStore {
   }
   const added = (Array.isArray(r.added) ? r.added : []).filter((w): w is AddedWord => !!w && str((w as AddedWord).unitId) && str((w as AddedWord).unitKind) && str((w as AddedWord).dimension) && str((w as AddedWord).family));
   return { v: 1, decks, holdOut: Array.isArray(r.holdOut) ? r.holdOut.filter(str) : [], added, dismissed: Array.isArray(r.dismissed) ? r.dismissed.filter(str) : [] };
+}
+
+/** The words the learner added to the current deck by hand (My vocab, Add): the home's key reads them. */
+export async function addedWords(ctx: AppContext, learnerId: string, languageId: string): Promise<Array<{ unitId: string }>> {
+  return (await readStore(ctx, learnerId, languageId)).added;
 }
 
 async function readStore(ctx: AppContext, learnerId: string, languageId: string): Promise<DeckStore> {
@@ -459,16 +477,18 @@ async function loadVocabLive(ctx: AppContext, languageId: string): Promise<{ row
   }
   const forms = records.filter((r) => r.kind === 'form');
   const present = new Set(records.map((r) => r.unitId));
-  for (let at = 0; at < forms.length && typeof api.units === 'function'; at += UNITS_PER_BATCH) {
-    const chunk = forms.slice(at, at + UNITS_PER_BATCH);
-    try {
-      const u = await api.units(chunk.map((f) => f.unitId));
-      if (!u.ok) break;
-      for (const f of chunk) {
-        const rel = u.data.units[f.unitId]?.relations.find((x) => x.relation === 'form-of' && x.fromId === f.unitId);
+  if (typeof api.units === 'function' && forms.length) {
+    const chunks: VocabRecord[][] = [];
+    for (let at = 0; at < forms.length; at += UNITS_PER_BATCH) chunks.push(forms.slice(at, at + UNITS_PER_BATCH));
+    // the batches are independent of one another: all at once, not one after the other (a batch that fails leaves its forms without a lemma)
+    const answers = await Promise.all(chunks.map(async (chunk) => { try { const u = await api.units(chunk.map((f) => f.unitId)); return u.ok ? u.data.units : undefined; } catch { return undefined; } }));
+    answers.forEach((units, i) => {
+      if (!units) return;
+      for (const f of chunks[i]) {
+        const rel = units[f.unitId]?.relations.find((x) => x.relation === 'form-of' && x.fromId === f.unitId);
         if (rel && present.has(rel.toId)) f.lemmaId = rel.toId;
       }
-    } catch { break; }
+    });
   }
   const rows = mergeVocab(records);
   return { rows, total: rows.length };

@@ -137,9 +137,13 @@ describe('Class Essentials: in Saved decks', () => {
     await until(() => rig.qa('.deckrow').length === 2, 'both decks');
     expect(rig.q('h2#decks-title').textContent).toBe('Saved decks');
     const row = rig.q('[data-deck-id="class-essentials:sq"]');
-    expect(row.querySelector('.deckrow-line')!.textContent).toBe('Class Essentials · 28 cards · Albanian');
-    expect(row.textContent).toContain('Essential phrases for language class.');
-    expect(row.textContent).toContain('not yet reviewed by a native speaker');
+    // the preloaded deck: its name as a bigger title, the count and language under it, no description or note (the owner, 2026-10-28)
+    expect(row.querySelector('.deckrow-title')!.textContent).toBe('Class Essentials');
+    expect(row.querySelector('.deckrow-line')!.textContent).toBe('28 cards · Albanian');
+    expect(row.textContent).not.toContain('Essential phrases for language class.');
+    expect(row.textContent).not.toContain('native speaker');
+    expect(row.querySelector('.deckrow-note')).toBeNull();
+    expect(rig.root.querySelector(`[data-deck-id="${mine.id}"] .deckrow-title`)).toBeNull(); // a deck the learner saved keeps its one line
     expect(rig.q(`[data-deck-id="${mine.id}"] .deckrow-line`).textContent).toMatch(/ · 2 cards · Albanian$/);
     expect((await stored(rig)).find((d) => d.id === mine.id)).toEqual(mine);
   });
@@ -232,12 +236,18 @@ describe('Class Essentials: in Saved decks', () => {
     const service = new FakeService();
     service.addAccount('ana@example.org', 'correct-horse-battery', 'L1', [{ languageId: 'sq', varietyId: 'sq-AL' }, { languageId: 'de' }, { languageId: 'en' }]);
     const rig = await makeRig({ service, signedIn: true });
-    const select = rig.q<HTMLSelectElement>('#language-select');
-    const pick = async (enrolment: string): Promise<void> => { select.value = enrolment; select.dispatchEvent(new Event('change')); await until(() => rig.q<HTMLSelectElement>('#language-select').value === enrolment, 'the switch'); };
+    // the language is switched on the home, the one place that shows the dropdown (2026-10-28: the top bar never carries it)
+    const pick = async (enrolment: string): Promise<void> => {
+      await rig.go('review');
+      const select = rig.q<HTMLSelectElement>('#home-language #language-select');
+      select.value = enrolment; select.dispatchEvent(new Event('change'));
+      await until(() => { const now = rig.root.querySelector<HTMLSelectElement>('#home-language #language-select'); return !!now && now !== select && now.value === enrolment; }, 'the switch');
+    };
     await pick('L1-e2');
     await rig.go('settings'); await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('.deckrow'), 'the German deck');
-    expect(rig.q('.deckrow-line').textContent).toBe('Class Essentials · 28 cards · German');
+    expect(rig.q('.deckrow-title').textContent).toBe('Class Essentials');
+    expect(rig.q('.deckrow-line').textContent).toBe('28 cards · German');
     expect((await stored(rig, 'de'))[0].items[0].label).toBe('Hallo');
     await pick('L1-e3');
     await rig.go('settings'); await rig.go('review/decks');
@@ -257,8 +267,9 @@ describe('Class Essentials: in Saved decks', () => {
     await rig.go('review/decks');
     await until(() => !!rig.root.querySelector('[data-deck-id="class-essentials:la"]'), 'the Latin deck');
     const row = rig.q('[data-deck-id="class-essentials:la"]');
-    expect(row.querySelector('.deckrow-line')!.textContent).toBe('Class Essentials · 28 cards · Latin');
-    expect(row.textContent).toContain('not yet reviewed by a Latinist');
+    expect(row.querySelector('.deckrow-title')!.textContent).toBe('Class Essentials');
+    expect(row.querySelector('.deckrow-line')!.textContent).toBe('28 cards · Latin');
+    expect(row.textContent).not.toContain('Latinist'); // the note stays in the deck's record, not on this page
     await listSavedDecks(rig.app.ctx, 'L1', 'la', 'la-ecclesiastical');
     await listSavedDecks(rig.app.ctx, 'L1', 'la', 'la-ecclesiastical');
     await rig.go('review'); await rig.go('review/decks');

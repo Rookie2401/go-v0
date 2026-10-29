@@ -150,27 +150,6 @@ describe('GoReview native runtime', () => {
     expect(rig.root.textContent).not.toContain('This screen could not be shown');
   });
 
-  it('clears the previous native account on service change while retaining its queued events under its origin', async () => {
-    const mobile = memoryMobile();
-    const rig = await makeRig({ mobile });
-    expect((await rig.app.ctx.signIn({ email: 'ana@example.org', password: 'correct-horse-battery' })).ok).toBe(true);
-    rig.service.netDown = true;
-    await rig.app.ctx.record([cardAdded(ids('L1', 'sq'), 'zog', 'meaning-to-form', '2026-10-08T10:00:00.000Z')]);
-    const oldPrefix = nativeLearnerPrefix('L1', 'https://repository.example.org');
-    expect(await rig.area.list(`${oldPrefix}queue:`)).toHaveLength(1);
-
-    expect(await rig.app.ctx.saveService('https://other.example.org')).toEqual({ ok: true });
-    expect(mobile.secret()).toBeUndefined();
-    expect((await rig.area.get(KEYS.profile))[KEYS.profile]).toBeUndefined();
-    expect(await rig.area.list(`${oldPrefix}queue:`)).toHaveLength(1);
-
-    rig.service.netDown = false;
-    expect((await rig.app.ctx.signIn({ email: 'ana@example.org', password: 'correct-horse-battery' })).ok).toBe(true);
-    const current = await rig.app.ctx.data();
-    expect(await current?.queue.size()).toBe(0);
-    expect(await rig.area.list(`${oldPrefix}queue:`)).toHaveLength(1);
-  });
-
   it('reports secure session write failures without persisting the bearer token in local storage', async () => {
     localStorage.clear();
     const mobile = memoryMobile(createMemoryArea(), true);

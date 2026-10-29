@@ -24,7 +24,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const toggles = h('div', { class: 'vocab-sorts', role: 'group', 'aria-label': 'Order the words' });
   const list = h('ul', { class: 'vocablist', id: 'vocab-list' });
   const more = h('div', { class: 'vocab-more' });
-  append(el, [h('p', {}, h('a', { href: '#/review' }, '← GoReview')), h('h2', { class: 'page-title', id: 'vocab-title' }, 'My vocab'), toggles, list, more, status]);
+  append(el, [h('h2', { class: 'page-title', id: 'vocab-title' }, 'My vocab'), toggles, list, more, status]);
   if (!id) { toggles.remove(); list.replaceWith(p('Choose a language to see the words you have met.', 'muted')); return; }
   const identity = id;
   const tag = identity.varietyId ?? identity.languageId;

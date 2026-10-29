@@ -32,8 +32,6 @@ export interface BibliaDeps {
   recorder: Recorder;
   /** The standalone web edition's account (sign-in state, the screen at #/account); absent in the extension, in the iPhone app and in a plain reader. With it, the chapter on screen carries the learner's knowledge levels while signed in. */
   account?: AccountService;
-  /** With the account: the Repository address in use, the usual one, and the way to change it on this device (the sign-in screen's "Service address", 2026-10-25). */
-  serviceAddress?: { current: string; standard: string; set(url: string | undefined): void };
   /** With the account: the live sync notice (src/syncStatus.ts), shown in the Settings page's Account card and nowhere else (2026-10-27: it used to be a bar above every page). */
   syncStatus?: HTMLElement;
   storage?: Storage;
@@ -632,7 +630,7 @@ export async function createBibliaApp(deps: BibliaDeps): Promise<BibliaApp> {
     if (id === 'read' && m?.[2]) { route = `read/${m[2]}/${m[3] ?? '1'}`; view = await renderReader(decodeURIComponent(m[2]), Number(m[3] ?? '1')); }
     else if (id === 'settings') { route = 'settings'; view = renderSettings(); }
     else if (id === 'sources') { route = 'sources'; view = renderSources(); }
-    else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); }, ...(deps.serviceAddress ? { serviceAddress: deps.serviceAddress } : {}) }); }
+    else if (id === 'account' && account) { route = 'account'; view = renderAccountScreen({ doc, account, topbar: plainBar('Biblia', 'account'), done: () => { void api.go('#/'); } }); }
     else if ((id === 'privacy' || id === 'terms') && account) { route = id; view = renderLegalScreen({ doc, which: id, topbar: plainBar('Biblia', undefined, '#/account') }); }
     else { route = 'library'; view = renderLibrary(); }
     root.replaceChildren(view);

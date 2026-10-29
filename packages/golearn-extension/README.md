@@ -16,14 +16,14 @@ Design sources: `docs/ecosystem/READER-ARCHITECTURE-DECISION.md`, `GOLEARN-EXTEN
 
 * **Content script** (`src/content/`, `src/popup/`, `src/parser/`): selection → context → the bundled Albanian analyser → card. Its only way out of the page is a message to the background. The built `content.js` contains no `fetch(`, no `XMLHttpRequest`, no storage access and no token key (`test/extension/bundle.test.ts` checks the text of the file). Pronunciation uses **GoListen's device provider** only (strict language match; a non-local browser voice needs consent).
 * **Background worker** (`src/background/`): the Repository connection, the durable event queue, sync, the learner-model cache, dictionary glosses, grammar explanations, settings. It checks every message sender (see Security).
-* **Action popup** (`action/`): connection status, per-tab switch, language, sync state, "Open GoLearn setup" (`chrome.runtime.openOptionsPage()`), export / delete.
+* **Action popup** (`action/`): since 2026-10-28 (the owner) a greeting ("Welcome, <name>" from the session's display name), the brand as the one button to setup (`chrome.runtime.openOptionsPage()`), the GoLearn Active switch with one line about the page in front and Biblia's one-line legend, and the language switch. No Practise, no sync line or button (the worker syncs by itself), no voices line, no explanations; export / delete stay under the setup page's Privacy.
 * **Setup page** (`app/`, built by its own `app/vite.config.ts`, declared as `options_page: app/index.html`): not part of this config. Build it **after** `npm run ext:build` (the content build clears `dist/` but keeps `dist/app/`).
 
 ## Layout
 
 ```
 manifest.json               MV3; options_page app/index.html; permissions below; no host permission by default (optional for GoLearn Active); Alt+Shift+G
-action/popup.html|ts        connection, Practise, per-tab switch, GoLearn Active (switch, Speak on click, legend, withdraw), language, sync, export / delete
+action/popup.html|ts        greeting, the brand → setup, GoLearn Active (switch, the page line, the one-line legend, withdraw), language
 src/active/*.ts             GoLearn Active: levels and legend, the exclude list from the registry, CSS highlights, the page scan
 src/content/active.ts       GoLearn Active on the page: language, scan, learner-model batches, click to look up, speak, stop
 src/background/active.ts    GoLearn Active in the worker: the switches, the permission check, the dynamic content script, broadcast

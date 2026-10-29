@@ -25,11 +25,9 @@ describe('the service address', () => {
     }
   });
 
-  it('resolves override, then config.json, then the development default; a config that fails validation is dropped', async () => {
-    expect(resolveServiceUrl(undefined, {})).toBe(DEFAULT_SERVICE_URL);
-    expect(resolveServiceUrl(undefined, { serviceUrl: 'https://r.example.org' })).toBe('https://r.example.org');
-    expect(resolveServiceUrl('https://mine.example.org', { serviceUrl: 'https://r.example.org' })).toBe('https://mine.example.org');
-    expect(resolveServiceUrl('http://evil.example', {})).toBe(DEFAULT_SERVICE_URL);
+  it('resolves config.json, else the development default; a config that fails validation is dropped (no learner override since 2026-10-28)', async () => {
+    expect(resolveServiceUrl({})).toBe(DEFAULT_SERVICE_URL);
+    expect(resolveServiceUrl({ serviceUrl: 'https://r.example.org' })).toBe('https://r.example.org');
     const ok = async () => new Response(JSON.stringify({ serviceUrl: 'https://r.example.org/', assetBaseUrl: '/x/' }));
     expect(await loadConfig(ok as unknown as typeof fetch)).toEqual({ serviceUrl: 'https://r.example.org', assetBaseUrl: '/x/' });
     const insecure = async () => new Response(JSON.stringify({ serviceUrl: 'http://evil.example' }));
@@ -42,45 +40,19 @@ describe('the service address', () => {
 });
 
 describe('Sign-in page (optional)', () => {
-  it('refuses an http, non-localhost service address and keeps the old one', async () => {
+  it('has no service-address field: the address is config.json\'s, and an address an earlier install stored is ignored (2026-10-28)', async () => {
     const rig = await makeRig({ config: { serviceUrl: 'https://repository.example.org' } });
+    await rig.deps.area.set({ [KEYS.service]: { baseUrl: 'https://mine.example.org' } });
     await rig.go('signin');
-    const input = rig.q<HTMLInputElement>('#svc-url');
-    expect(input.value).toBe('https://repository.example.org');
-    type(input, 'http://repository.example.org');
-    rig.q('#svc-save').click();
-    await flush(10);
-    const status = rig.q('#svc-save').closest('details')!.querySelector('.status')!;
-    expect(status.getAttribute('data-kind')).toBe('error');
-    expect(status.textContent).toContain('https');
-    expect((await rig.area.get(KEYS.service))[KEYS.service]).toBeUndefined();
-    // and a sign-in still goes to the address that was valid
+    expect(rig.root.querySelector('#svc-url, #svc-save, #service-address')).toBeNull();
+    expect(rig.text()).not.toContain('Service address');
     expect(await rig.app.ctx.serviceUrl()).toBe('https://repository.example.org');
-  });
-
-  it('accepts localhost over http and https, and an empty field returns to the default', async () => {
-    const rig = await makeRig();
-    await rig.go('signin');
-    const input = rig.q<HTMLInputElement>('#svc-url');
-    expect(input.value).toBe(DEFAULT_SERVICE_URL);
-    type(input, 'http://localhost:9000/');
-    rig.q('#svc-save').click();
-    await flush(10);
-    expect(await rig.app.ctx.serviceUrl()).toBe('http://localhost:9000');
-    type(input, 'https://repository.example.org');
-    rig.q('#svc-save').click();
-    await flush(10);
-    expect(await rig.app.ctx.serviceUrl()).toBe('https://repository.example.org');
-    type(input, '');
-    rig.q('#svc-save').click();
-    await flush(10);
-    expect(await rig.app.ctx.serviceUrl()).toBe(DEFAULT_SERVICE_URL);
   });
 
   it('never sends the password to an insecure address, even when one slipped into storage', async () => {
     const rig = await makeRig();
     await rig.deps.area.set({ [KEYS.service]: { baseUrl: 'http://evil.example' } });
-    // the stored value no longer validates, so the default is used; nothing is sent to evil.example
+    // a stored address is never the one in use (2026-10-28); nothing is sent to evil.example
     expect(await rig.app.ctx.serviceUrl()).toBe(DEFAULT_SERVICE_URL);
     await signIn(rig);
     expect(rig.createApiCalls.every((c) => c.baseUrl === DEFAULT_SERVICE_URL)).toBe(true);
@@ -251,15 +223,12 @@ describe('connecting in the extension', () => {
     expect(await sessionOf(rig.area)).toBeUndefined();
   });
 
-  it('the service address goes to the worker too (golearn:service-config), which validates and stores it', async () => {
-    const rig = await makeRig({ extension: true });
+  it('the dictionary address goes to the worker (golearn:service-config) beside config.json\'s service address, never one typed on a page (2026-10-28)', async () => {
+    const rig = await makeRig({ extension: true, config: { serviceUrl: 'https://repository.example.org' } });
     const bg = fakeBackground(rig);
-    await rig.go('signin');
-    type(rig.q('#svc-url'), 'https://repository.example.org/');
-    rig.q('#svc-save').click();
+    expect(await rig.app.ctx.saveDictionaryAddress('https://mine.example.org/files/')).toEqual({ ok: true });
     await until(() => bg.messages.some((m) => m.type === 'golearn:service-config'));
-    expect(bg.messages.find((m) => m.type === 'golearn:service-config')).toMatchObject({ op: 'set', baseUrl: 'https://repository.example.org' });
-    await flush(20);
+    expect(bg.messages.find((m) => m.type === 'golearn:service-config')).toMatchObject({ op: 'set', baseUrl: 'https://repository.example.org', assetBase: 'https://mine.example.org/files' });
     expect(await rig.app.ctx.serviceUrl()).toBe('https://repository.example.org');
   });
 });
@@ -275,8 +244,8 @@ describe('an account is optional and only keeps progress across devices', () => 
     expect(rig.q('.topbar .brand').textContent).toBe('GoLearn');
     expect(rig.q('.signin .hero-brand').textContent).toBe('GoLearn');
     expect(rig.text()).toContain('select a word on a web page');
-    for (const id of ['#acct-form', '#acct-email', '#acct-password', '#acct-mode', '#acct-submit', '#service-address']) expect(rig.root.querySelector(id), id).not.toBeNull();
-    expect(rig.q<HTMLDetailsElement>('#service-address').open).toBe(false);
+    for (const id of ['#acct-form', '#acct-email', '#acct-password', '#acct-mode', '#acct-submit']) expect(rig.root.querySelector(id), id).not.toBeNull();
+    expect(rig.root.querySelector('#service-address')).toBeNull(); // no way to change the service address (2026-10-28)
     expect(rig.q('#continue-without-account').textContent).toBe('Continue without an account');
     expect(rig.text()).toContain('An account is optional: it only keeps your progress across devices');
     expect(rig.q('#account-state').textContent).toBe('On this device only');
@@ -474,11 +443,9 @@ describe('after sign-in everything that needs doing happens by itself', () => {
     expect(rig.q('#next-note').textContent).toContain('GoLearn Active');
   });
 
-  it('the service address sits under the form as an advanced detail, closed by default', async () => {
+  it('nothing on the sign-in page names or changes the service address (2026-10-28)', async () => {
     const rig = await makeRig();
-    const d = rig.q<HTMLDetailsElement>('#service-address');
-    expect(d.open).toBe(false);
-    expect(d.querySelector('summary')!.textContent).toMatch(/Service address/);
-    expect(d.querySelector('#svc-url')).not.toBeNull();
+    expect(rig.root.querySelector('#service-address, #svc-url, #svc-save')).toBeNull();
+    expect(rig.text()).not.toContain('Service address');
   });
 });

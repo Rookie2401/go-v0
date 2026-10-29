@@ -110,9 +110,27 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
   const packs = bg.packs ?? defaultPacks;
   const packAvailable = (l: string): boolean => packs.manifest(l)?.status === 'installable';
   const holder: { recorder?: ReturnType<typeof createRecorder>; sync?: ReturnType<typeof createSyncService>; profile?: ReturnType<typeof createProfileService>; local?: ReturnType<typeof createLocalRepoService> } = {};
+  /** The service address the extension ships with (app/config.json's serviceUrl), read once; undefined outside an extension or without one.
+   * When there is one it is the address in use, whatever golearn:service holds (2026-10-28: no client can change the service address). */
+  let defaultServiceP: Promise<string | undefined> | undefined;
+  function defaultServiceUrl(): Promise<string | undefined> {
+    defaultServiceP ??= (async () => {
+      if (bg.defaultServiceUrl) return bg.defaultServiceUrl.replace(/\/+$/, '');
+      try {
+        const url = chrome.runtime.getURL?.('app/config.json');
+        if (!url) return undefined;
+        const res = await doFetch(url);
+        if (!res.ok) return undefined;
+        const cfg = JSON.parse(await res.text()) as { serviceUrl?: unknown };
+        return typeof cfg.serviceUrl === 'string' && /^https?:\/\//.test(cfg.serviceUrl) ? cfg.serviceUrl.replace(/\/+$/, '') : undefined;
+      } catch { return undefined; }
+    })();
+    return defaultServiceP;
+  }
+
   const session = createSessionManager({
     extensionId: chrome.runtime.id,
-    area: local, fetch: doFetch, now, packAvailable,
+    area: local, fetch: doFetch, now, packAvailable, shippedBaseUrl: defaultServiceUrl,
     onConnect: async (s) => {
       await holder.profile?.clear();
       await holder.recorder?.setAsideForeign(s.learnerId);
@@ -307,29 +325,15 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
     return { languages: [], fresh: false };
   }
 
-  /** The service address the extension ships with (app/config.json's serviceUrl), read once; undefined outside an extension or without one. */
-  let defaultServiceP: Promise<string | undefined> | undefined;
-  function defaultServiceUrl(): Promise<string | undefined> {
-    defaultServiceP ??= (async () => {
-      if (bg.defaultServiceUrl) return bg.defaultServiceUrl.replace(/\/+$/, '');
-      try {
-        const url = chrome.runtime.getURL?.('app/config.json');
-        if (!url) return undefined;
-        const res = await doFetch(url);
-        if (!res.ok) return undefined;
-        const cfg = JSON.parse(await res.text()) as { serviceUrl?: unknown };
-        return typeof cfg.serviceUrl === 'string' && /^https?:\/\//.test(cfg.serviceUrl) ? cfg.serviceUrl.replace(/\/+$/, '') : undefined;
-      } catch { return undefined; }
-    })();
-    return defaultServiceP;
-  }
-
+  /** A session from before the name was kept (2026-10-28): the enrolments are re-read once per worker life, which stores the name for the next status. */
+  let nameAsked = false;
   async function pageStatus(): Promise<PageStatus> {
     const [pub, s, st, sy] = await Promise.all([publicStatus(), session.status(), settings.get(), sync.status()]);
+    if (s.connected && !s.expired && !s.displayName && !nameAsked) { nameAsked = true; void session.refresh().catch(() => undefined); }
     // `revocationPending`: the last sign-out could not reach the service (audit P-08); the setup page may say so
     const out: PageStatus & { revocationPending?: boolean } = {
       // a language chosen on this device counts: an account without an enrolment yet must not make the popup say "choose a language"
-      ...pub, email: s.email, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
+      ...pub, email: s.email, displayName: s.displayName, baseUrl: s.baseUrl, assetBase: s.assetBase, expiresAt: s.expiresAt, hasEnrolment: s.hasEnrolment || pub.installedLanguages !== undefined && (await localRepo.chosenLanguages()).length > 0, settings: st,
       // the popup's language switch lists these: the account's enrolment first, then the device's open enrolments in setup order, then the
       // account's other open enrolments (a language chosen in the hosted setup app or on another device; read from the service when it
       // answers within a moment, else the copy kept from the last time it did)
@@ -340,7 +344,6 @@ export function createBackground(chrome: ChromeApi, bg: BackgroundOptions = {}) 
           accountLanguagesFresh: acct.fresh,
         };
       })()),
-      ...(await (async () => { const d = await defaultServiceUrl(); return d ? { defaultBaseUrl: d } : {}; })()),
       needsSignIn: pub.needsSignIn || sy.needsSignIn,
       sync: { pending: sy.pending, localOnly: sy.localOnly, rejected: sy.rejected, lastPushAt: sy.lastPushAt, lastError: sy.lastError, online: sy.online, needsSignIn: sy.needsSignIn || (s.connected && s.expired) },
       ...(s.revocationPending ? { revocationPending: true } : {}),

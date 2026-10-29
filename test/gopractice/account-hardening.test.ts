@@ -293,7 +293,8 @@ describe('the legal pages', () => {
     await rig.go('settings');
     expect(rig.q<HTMLAnchorElement>('#legal-links #link-terms').getAttribute('href')).toBe('#/terms');
     await rig.go('privacy');
-    expect(rig.q('#back-home').getAttribute('href')).toBe('#/review');
+    expect(rig.root.querySelector('#back-home')).toBeNull(); // no "← GoReview" on any screen: the Go mark in the top bar is the way home
+    expect(rig.q('header .go-brand').getAttribute('href')).toBe('#/review');
   });
 });
 

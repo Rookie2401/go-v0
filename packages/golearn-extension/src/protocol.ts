@@ -62,6 +62,8 @@ export interface PublicStatus {
 export interface PageStatus extends PublicStatus {
   sync: SyncView;
   email?: string;
+  /** The learner's display name, when the account carries one: the popup's "Welcome, <name>" (2026-10-28). */
+  displayName?: string;
   baseUrl?: string;
   assetBase?: string;
   expiresAt?: string;
@@ -71,8 +73,6 @@ export interface PageStatus extends PublicStatus {
   chosenLanguages?: string[];
   /** False when the account's enrolments could not be read now and no earlier copy is held: `chosenLanguages` then names the device's languages only (2026-10-27). */
   accountLanguagesFresh?: boolean;
-  /** The service address the extension ships with (app/config.json), so the popup can offer it when the stored one cannot be reached (2026-10-27). */
-  defaultBaseUrl?: string;
 }
 
 export interface DimView { score: number; confidence: number; observations: number; positive: number; negative: number }

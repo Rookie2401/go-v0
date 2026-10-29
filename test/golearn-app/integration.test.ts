@@ -112,6 +112,7 @@ describe('the setup application with the real worker and the real service', () =
     choose(q('#acct-mode'), 'create');
     type(q<HTMLInputElement>('#acct-name'), 'Ana Example');
     type(q<HTMLInputElement>('#acct-email'), 'ana@example.org');
+    type(q<HTMLInputElement>('#acct-name'), 'Ana'); // the sign-up asks for a name since bebefcb7
     type(q<HTMLInputElement>('#acct-password'), 'a very long password 123');
     submit(q<HTMLFormElement>('#acct-form'));
     await until(() => app!.current() === 'languages' && document.getElementById('flash'), 8000);

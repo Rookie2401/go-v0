@@ -1,9 +1,8 @@
 /**
- * #/review — the GoReview home: actual scheduled work, justified admissions and separate optional practice.
+ * #/review — the GoReview home. Four things and nothing else, each a large serif title over a one-line kicker:
  *
  *   GoTell          its own hierarchy (above a rule): the writing workspace, #/tell
- *   Current batch   Due/learning/new/remediation counts, time estimate and Begin; it may contain zero questions.
- *   Class Essentials A distinct due-only scope, with its own remediation and upcoming returns.
+ *   Current deck    accurate due/new/remediation counts, an adaptive bounded batch, and a separate optional selected-practice action
  *   Saved decks     "N saved" → #/review/decks
  *   My vocab        "N words" → #/review/vocab
  *
@@ -13,7 +12,9 @@
  */
 import type { AppContext } from '../context';
 import { append, button, clear, h, p, setStatus, statusLine } from '../dom';
-import { loadVocabSafe, listSavedDecks, planCurrentDeck, planClassEssentialsDue, planSelectedPractice, selectedPracticeUnits, releaseHoldOut, saveDeck, type CurrentDeck } from '../deckModel';
+import { addedWords, holdOutOf, loadVocabSafe, listSavedDecks, planClassEssentialsDue, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, releaseHoldOut, saveDeck, type CurrentDeck, type SavedDeck, type VocabRow } from '../deckModel';
+import { loadingMark } from '../loading';
+import { readSnapshot, restoreMissing, type ReviewSnapshot } from '../snapshot';
 import { beginSession, endSavedSession, loadReviewModel, recoverableSessions, resumeSession, type ReviewModel } from '../workspace';
 import * as decksScreen from './decks';
 import { deckSizeControl } from './cardsper';
@@ -27,6 +28,37 @@ import type { View } from './view';
 
 const plural = (n: number, one: string, many: string): string => `${n} ${n === 1 ? one : many}`;
 const timeEstimate = (seconds: number): string => seconds < 60 ? 'about 1 minute' : `about ${Math.max(1, Math.round(seconds / 60))} minutes`;
+
+/**
+ * The home as it was last painted, per app instance (a restart starts afresh) and per learner and enrolment. Coming back from Settings
+ * or the account page with nothing changed paints it again at once, with no request to the Repository (2026-10-28: on a phone the
+ * requests took seconds). "Nothing changed" is a key over every local store the deck and the counts depend on: the events (a sync that
+ * brings events from another device changes it), the preferences (the deck size), the words added by hand, the hold-out, the saved
+ * decks, the open sessions and the device's vocabulary snapshot (written by My vocab and by every live read). The candidates can only
+ * move with the events, so they are not asked for again while the key holds; after HOME_MEMO_MS they are asked for anyway.
+ */
+interface PaintedHome { key: string; at: number; model: ReviewModel; deck: CurrentDeck; classDue?: Awaited<ReturnType<typeof planClassEssentialsDue>>; selectedCount: number; resumeId: string | undefined; saved: number; words: number }
+const painted = new WeakMap<AppContext, Map<string, PaintedHome>>();
+/** How long a painted home is reused unchanged before the Repository is asked again anyway. */
+export const HOME_MEMO_MS = 10 * 60_000;
+/** Forgets the painted homes of one app instance: for a test that swaps the Repository under the app (in use, a change there reaches the device as events, which change the key). */
+export const forgetPaintedHome = (ctx: AppContext): void => { painted.delete(ctx); };
+
+/** The local reads the home depends on, and the key over them. */
+interface HomeLocal { id: string; key: string; holdOut: Set<string>; saved: SavedDeck[]; resumable: Awaited<ReturnType<typeof recoverableSessions>>; snapshot: ReviewSnapshot | undefined }
+async function homeLocal(ctx: AppContext): Promise<HomeLocal | undefined> {
+  const idn = await ctx.identity();
+  if (!idn) return undefined;
+  const { learnerId, languageId, varietyId, enrolmentId } = idn;
+  // before any store is read: a store the storage lost comes back from the snapshot (reading it first would create it empty)
+  await restoreMissing(ctx, learnerId, languageId);
+  const [prefs, events, added, holdOut, saved, resumable, snapshot] = await Promise.all([
+    ctx.state.getPrefs(learnerId, languageId), ctx.events(languageId), addedWords(ctx, learnerId, languageId), holdOutOf(ctx, learnerId, languageId),
+    listSavedDecks(ctx, learnerId, languageId, varietyId), recoverableSessions(ctx), readSnapshot(ctx, learnerId, languageId).catch(() => undefined),
+  ]);
+  const key = JSON.stringify([enrolmentId, varietyId ?? '', events.length, prefs, added.map((w) => w.unitId), [...holdOut].sort(), saved.map((d) => d.id), resumable.map((s) => s.sessionId), snapshot?.vocab?.rows.length ?? 0]);
+  return { id: `${learnerId}|${enrolmentId}`, key, holdOut, saved, resumable, snapshot };
+}
 
 export async function render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): Promise<void> {
   const [sub, ...rest] = params;
@@ -50,25 +82,38 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   function armNextDueRefresh(model: ReviewModel): void {
     if (nextDueTimer !== undefined) ctx.deps.win.clearTimeout(nextDueTimer);
     const now = Date.parse(model.now);
-    const nextDue = model.deck.filter(item => item.status === 'active' && !item.invalidatedAt && !item.suspendedReason)
+    const nextDue = [...model.deck, ...(model.classDeck ?? [])].filter(item => item.status === 'active' && !item.invalidatedAt && !item.suspendedReason)
       .map(item => Date.parse(item.schedule.due)).filter(due => Number.isFinite(due) && due > now).sort((a, b) => a - b)[0];
     if (nextDue === undefined) { nextDueTimer = undefined; return; }
-    // Long timers are capped and re-armed after each paint; returning to the app
-    // also refreshes immediately from the shared clock.
     const delay = Math.min(2_147_000_000, Math.max(25, nextDue - now + 25));
-    nextDueTimer = ctx.deps.win.setTimeout(() => {
-      nextDueTimer = undefined;
-      if (view.alive()) void paint();
-    }, delay) as unknown as number;
+    nextDueTimer = ctx.deps.win.setTimeout(() => { nextDueTimer = undefined; if (view.alive()) void paint(true); }, delay) as unknown as number;
   }
 
-  async function paint(): Promise<void> {
+  /** Draws the four entries. */
+  function draw(model: ReviewModel, deck: CurrentDeck, resumeId: string | undefined, savedCount: number, words: number,
+    selectedCount: number, classDue?: Awaited<ReturnType<typeof planClassEssentialsDue>>): void {
+    const bibliaLink = ctx.deps.links?.biblia;
+    clear(root);
+    root.setAttribute('lang', 'en');
+    append(root, [tellEntry(), deckEntry(model, deck, resumeId, selectedCount), ...(classDue ? [classDueEntry(model, classDue, deck.summary.classRemediation)] : []), previousEntry(savedCount), vocabEntry(Math.max(words, 0)), ...(bibliaLink ? [bibliaEntry(bibliaLink)] : []), status]);
+  }
+
+  async function paint(force = false): Promise<void> {
+    const local = await homeLocal(ctx).catch(() => undefined);
+    const now = ctx.deps.now().getTime();
+    const memo = local ? painted.get(ctx)?.get(local.id) : undefined;
+    if (!force && memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS) {
+      if (!view.alive()) return;
+      paintedEvents = memo.model.events.length;
+      draw(memo.model, memo.deck, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.classDue);
+      return;
+    }
+    // the first paint shows the loading mark; a repaint over a painted home keeps it until the new one is ready
+    if (!root.childElementCount) root.append(loadingMark('Loading your deck…'));
     const model = await loadReviewModel(ctx);
     if (!view.alive()) return;
     paintedEvents = model?.events.length ?? -1;
     if (!model) {
-      if (nextDueTimer !== undefined) ctx.deps.win.clearTimeout(nextDueTimer);
-      nextDueTimer = undefined;
       clear(root);
       const [enrolments, mode] = await Promise.all([ctx.enrolments(), ctx.mode()]);
       const setup = ctx.deps.links?.setup;
@@ -81,21 +126,44 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       return;
     }
     const id = model.identity;
-    const bibliaLink = ctx.deps.links?.biblia;
-    const [saved, resumable, vocab] = await Promise.all([
+    // the local stores are read after the model: loading it may have brought decks and preferences back from the snapshot (restoreMissing)
+    const [holdOut, saved, resumable, snapshot] = await Promise.all([
+      holdOutOf(ctx, id.learnerId, id.languageId),
       listSavedDecks(ctx, id.learnerId, id.languageId, id.varietyId),
       recoverableSessions(ctx),
-      loadVocabSafe(ctx, id.languageId),
+      readSnapshot(ctx, id.learnerId, id.languageId).catch(() => undefined),
     ]);
-    const deck = await planCurrentDeck(ctx, model, new Set(), vocab);
+    // My vocab: the Repository's list takes a page per hundred words, each a slow read that holds the service's other answers back; the
+    // device's snapshot of it (written at every live read) paints the home now, the live list is read once the home is drawn, and its count
+    // replaces the snapshot's when it arrives. With no snapshot yet, the live list is waited for.
+    const snapRows = (snapshot?.vocab?.rows ?? []) as VocabRow[];
+    let live: Promise<VocabRow[]> | undefined = snapRows.length ? undefined : loadVocabSafe(ctx, id.languageId);
+    const vocab = live ? await live : snapRows;
+    const deck = await planCurrentDeck(ctx, model, holdOut, vocab);
     const classDue = classLanguageOf(model.identity.languageId) ? await planClassEssentialsDue(ctx, model) : undefined;
-    armNextDueRefresh(model);
     const selected = await selectedPracticeUnits(ctx, id.learnerId, id.languageId);
+    armNextDueRefresh(model);
     const words = vocab.length || model.knowledge.length;
     if (!view.alive()) return;
-    clear(root);
-    root.setAttribute('lang', 'en');
-    append(root, [tellEntry(), deckEntry(model, deck, resumable[0]?.sessionId, selected.length), ...(classDue ? [classDueEntry(model, classDue, deck.summary.classRemediation)] : []), previousEntry(saved.length), vocabEntry(Math.max(words, 0)), ...(bibliaLink ? [bibliaEntry(bibliaLink)] : []), status]);
+    draw(model, deck, resumable[0]?.sessionId, saved.length, words, selected.length, classDue);
+    // the key as the stores stand now, after the paint (a restored deck or preference is part of it)
+    const after = await homeLocal(ctx).catch(() => undefined);
+    const same = after && after.id === `${id.learnerId}|${id.enrolmentId}` ? after : undefined;
+    if (same) {
+      const map = painted.get(ctx) ?? new Map<string, PaintedHome>();
+      map.set(same.id, { key: same.key, at: now, model, deck, classDue, selectedCount: selected.length, resumeId: resumable[0]?.sessionId, saved: saved.length, words });
+      painted.set(ctx, map);
+    }
+    if (!live) {
+      live = loadVocabSafe(ctx, id.languageId);
+      void live.then((rows) => {
+        if (!view.alive() || !rows.length || rows.length === words) return;
+        const m = same ? painted.get(ctx)?.get(same.id) : undefined;
+        if (m && m.model === model) m.words = rows.length;
+        const kicker = root.querySelector('#vocab-count');
+        if (kicker) kicker.textContent = plural(rows.length, 'word', 'words');
+      });
+    }
   }
 
   /** GoTell: of its own hierarchy, not pedagogically related to what follows; set apart above a rule. */
@@ -139,16 +207,16 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       })().catch(error => setStatus(status, String(error), 'error')).finally(() => { if (view.alive()) start.disabled = false; });
     }, { id: 'start-class-essentials-due', class: 'btn', ...(due.items.length ? {} : { disabled: true }) });
     const limit = due.batch?.workloadLimit ?? (m.prefs.sessionMinutes === 0 ? 0 : m.prefs.sessionMinutes * 60);
+    const nextReturn = (m.classDeck ?? []).filter(item => item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
+      && (item.schedule.phase === 'learning' || item.schedule.phase === 'relearning') && Date.parse(item.schedule.due) > Date.parse(m.now))
+      .sort((a, b) => Date.parse(a.schedule.due) - Date.parse(b.schedule.due))[0];
     return h('section', { class: 'entry', 'data-entry': 'class-essentials-due', id: 'class-essentials-due' },
       h('h2', { class: 'entry-title' }, 'Class Essentials'),
       h('p', { class: 'entry-kicker', id: 'class-essentials-due-count' }, count ? `${plural(count, 'due card', 'due cards')} · ${reviewDue} scheduled review(s) · ${learningDue} learning return(s)` : 'No reviewed cards due'),
       h('p', { class: 'muted' }, `Due-only practice · ${due.items.length} question(s) in this session${limit ? ` · up to ${Math.round(limit / 60)} minutes` : ''}. Unreviewed phrases stay in the saved collection and are not counted as due.`),
       due.items.length ? start : null,
       classRemediation ? h('p', { class: 'entry-actions' }, h('a', { class: 'btn', id: 'open-class-remediation', href: '#/review/remediation' }, `Study Class Essentials remediation (${classRemediation})`)) : null,
-      ...((m.classDeck ?? []).filter(item => item.status === 'active' && !item.invalidatedAt && !item.suspendedReason
-        && (item.schedule.phase === 'learning' || item.schedule.phase === 'relearning') && Date.parse(item.schedule.due) > Date.parse(m.now))
-        .sort((a, b) => Date.parse(a.schedule.due) - Date.parse(b.schedule.due)).slice(0, 1)
-        .map(item => h('p', { class: 'muted', id: 'class-essentials-next-return' }, `Next short-term class return: ${new Date(item.schedule.due).toLocaleString()}.`))));
+      nextReturn ? h('p', { class: 'muted', id: 'class-essentials-next-return' }, `Next short-term class return: ${new Date(nextReturn.schedule.due).toLocaleString()}.`) : null);
   }
 
   /**
@@ -167,7 +235,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   async function begin(m: ReviewModel): Promise<void> {
     const current = await freshModel(m);
     const { learnerId, languageId } = current.identity;
-    const planned = await planCurrentDeck(ctx, current);
+    const planned = await planCurrentDeck(ctx, current, await holdOutOf(ctx, learnerId, languageId));
     const r = await beginSession(ctx, current, { plan: planned.plan });
     if (!r.ok) { setStatus(status, r.message, 'info'); return; }
     await releaseHoldOut(ctx, learnerId, languageId, { preserveAdded: true });
@@ -191,7 +259,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       void (resumeId ? resume(resumeId) : begin(m)).finally(() => { if (view.alive()) start.disabled = false; });
     }, { id: 'start-session', class: 'btn primary', ...(resumeId ? { 'data-action': 'resume-session' } : {}), ...(!ready && !resumeId ? { disabled: true } : {}) });
     const actions = h('div', { class: 'entry-actions' }, start);
-    if (selectedCount) actions.append(button('Practice selected words (' + selectedCount + ')', () => {
+    if (selectedCount) actions.append(button(`Practice selected words (${selectedCount})`, () => {
       void (async () => {
         const current = await freshModel(m);
         const plan = await planSelectedPractice(ctx, current);
@@ -215,13 +283,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
       actions.append(button('Save deck', () => {
         void (async () => {
           const current = await freshModel(m);
-          const now = await planCurrentDeck(ctx, current);
+          const holdOut = await holdOutOf(ctx, current.identity.learnerId, current.identity.languageId);
+          const now = await planCurrentDeck(ctx, current, holdOut);
           const saved = await saveDeck(ctx, current.identity, now.entries);
-          const alternative = saved ? await planCurrentDeck(ctx, current, new Set(saved.items.map(item => item.unitId))) : undefined;
-          const message = !saved ? 'There is no deck to save yet.' : !alternative?.entries.length
-            ? 'Deck saved. No unseen eligible alternatives are available right now.'
-            : alternative.entries.length < now.entries.length ? 'Deck saved. A smaller eligible alternative is available.' : 'Deck saved. A fresh eligible alternative is available.';
-          setStatus(status, message, saved ? 'ok' : 'info');
+          const savedMessage = now.summary.newAvailable > 0
+            ? `Deck saved. ${plural(now.summary.newAvailable, 'unseen eligible new item', 'unseen eligible new items')} available; due reviews remain ready.`
+            : 'Deck saved. No unseen eligible alternatives; due obligations remain ready.';
+          setStatus(status, saved ? savedMessage : 'There is no deck to save yet.', saved ? 'ok' : 'info');
           await paint();
         })();
       }, { class: 'linklike', id: 'save-deck' }));
@@ -236,7 +304,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     sizeBox.append(deckSizeControl(ctx, m.identity.learnerId, m.identity.languageId, m.prefs.cardsPerDeck, () => {
       if (resumeId) { setStatus(status, 'A session is open: the new size applies to the next deck.', 'info'); return; }
       void paint();
-    }, 'home'));
+    }, 'home', { centred: true }));
     return h('section', { class: 'entry', 'data-entry': 'deck', id: 'current-deck' },
       h('h2', { class: 'entry-title' }, 'GoReview'),
       m.schedulerIssue ? p(m.schedulerIssue, 'notice') : null,
@@ -278,13 +346,4 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
   view.onDispose(ctx.onSync(() => { void repaintIfChanged(); }));
   // a live update: the same guarded repaint (it waits while a field has focus)
   view.onDispose(ctx.onData(() => { void repaintIfChanged(); }));
-  const refreshOnReturn = (): void => { if (view.alive()) void paint(); };
-  const refreshOnVisibility = (): void => { if (ctx.deps.doc.visibilityState !== 'hidden') refreshOnReturn(); };
-  ctx.deps.win.addEventListener('pageshow', refreshOnReturn);
-  ctx.deps.doc.addEventListener('visibilitychange', refreshOnVisibility);
-  view.onDispose(() => {
-    if (nextDueTimer !== undefined) ctx.deps.win.clearTimeout(nextDueTimer);
-    ctx.deps.win.removeEventListener('pageshow', refreshOnReturn);
-    ctx.deps.doc.removeEventListener('visibilitychange', refreshOnVisibility);
-  });
 }

@@ -8,6 +8,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { UnitKnowledge } from '../../packages/repository-contract/src';
 import type { RepositoryApi, VocabularyItem, VocabularyPage } from '../../packages/repository-service/src/api';
 import { decksKey } from '../../packages/gopractice/deckModel';
+import { forgetPaintedHome } from '../../packages/gopractice/screens/review';
 import { readSnapshot, writeSnapshot } from '../../packages/gopractice/snapshot';
 import { candidate, knowledgeRow, cardAdded, defaultService, destroyRigs, dueCard, flush, ids, makeRig, queued, reopen, seed, until, unitOf, type Rig } from './helpers';
 
@@ -35,6 +36,7 @@ function useVocabulary(rig: Rig, items: VocabularyItem[]): { down: boolean } {
     const page: VocabularyPage = { items, catalog: { total: items.length, counts: { new: 0, seen: items.length, recognized: 0, familiar: 0, known: 0, automatic: 0 } } };
     return Object.create(api, { vocabulary: { value: async () => { if (net.down) throw new TypeError('Failed to fetch'); return { ok: true as const, status: 200, data: page }; } } }) as RepositoryApi;
   };
+  forgetPaintedHome(rig.app.ctx); // the Repository changed under the app (in use that arrives as events, which the painted home's key sees)
   return net;
 }
 
@@ -142,6 +144,7 @@ describe('offline: the home keeps its deck', () => {
     expect(Number(rig.q('#deck-count').getAttribute('data-cards'))).toBeGreaterThan(0);
     service.allDown = true; setOnline(false);
     await rig.app.ctx.deps.area.remove(['gopractice:candidates:L1:L1-e1', 'gopractice:snapshot:L1:sq']);
+    forgetPaintedHome(rig.app.ctx); // a restart with the storage wiped: nothing painted survives either
     const engine = rig.deps.engine;
     engine.intake = async () => { throw new Error('offline'); };
     await reopen(rig);

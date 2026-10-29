@@ -18,7 +18,7 @@ GOPRACTICE_DICT=sq,de npx vite build …                   → which dictionarie
 ```
 
 `config.json` next to the page: `{ "serviceUrl", "assetBaseUrl", "speechProxyBase"?, "extensionUrl"? }`. The service address must be https (http only on
-localhost); the learner can override it at sign-in or in Settings. `extensionUrl` (https, or chrome-extension) is where the hosted copy points to the
+localhost); it is the build's, and nothing in the app changes it (the sign-in and Developer fields that did are gone since 2026-10-28). `extensionUrl` (https, or chrome-extension) is where the hosted copy points to the
 extension's GoPractice page; without it the page tells the learner to use the extension's **Practise** button.
 
 When present, `speechProxyBase` must be an absolute `https://` endpoint (or `http://` on localhost for development). It is forwarded to GoListen;
@@ -40,14 +40,14 @@ Settings → **Clear local data** is the explicit way to remove the device's dat
 
 | route | what |
 |---|---|
-| `#/signin` | the optional account (extension copy: "Not now", upload count) or the explanation of the hosted copy; email + password to the service; the service address is under a disclosure |
+| `#/signin` | the optional account (extension copy: "Not now", upload count) or the explanation of the hosted copy; email + password to the address in `config.json` (no field for it since 2026-10-28) |
 | `#/review` | GoReview workspace: due summary, intake outcomes with reasons (each names the unit's knowledge level: candidates are drawn by level, see `docs/ecosystem/KNOWLEDGE-LEVELS.md`) and a "Why" expander per candidate (Test now / Later / Dismiss), session controls, the deck with per-item snooze / suspend / dismiss / resume, "Start a session" |
 | `#/review/session` | one exercise at a time, feedback, challenge, analysis-error report, per-item tools, summary; at the end of a deck: Repeat this deck, or New deck from the weak words (half of the new deck is the weak words, weakest first, the rest what is due or new next; `deckModel.ts` weakEntries / planFollowUp) |
 | `#/review/history/<item>` | the item's review history (the scheduler numbers are labelled bookkeeping) |
 | `#/review/transfer` | transfer measures — "research measures, not conclusions" — with their basis and what they cannot show |
 | `#/tell` | GoTell: the writing workspace (modes, prompts, writer with analysis and the six-level assistance ladder, versions, goals, privacy); see `docs/ecosystem/GOTELL-ARCHITECTURE.md` |
 | `#/account` | the person icon beside the Settings cog (2026-10-28): name (set when the account is created in GoLearn; editable here, `POST /me/profile`) and email (with the resend only while unconfirmed), then Sign out, Download my data and Delete account as plain text, the last one red; the deletion is a guided step (what happens, how to restore within 14 days, the password) shown only when asked for; the devices signed in wait under a closed disclosure; on the device-only copy, the account offer and Clear local data. Nothing of the learner id or the session expiry |
-| `#/developer` | the quiet "Developer information" line at the foot of Settings: the service address, the synchronisation counters with Sync now, the diagnostics (versions, FSRS algorithm string, ids, counts, cursors, clock skew) and the security events; a learner never needs it |
+| `#/developer` | the quiet "Developer information" line at the foot of Settings: the service address (read-only, among the diagnostics), the synchronisation counters with Sync now, the diagnostics (versions, FSRS algorithm string, ids, counts, cursors, clock skew) and the security events; a learner never needs it |
 | `#/settings` | review preferences and the remote-speech switch, the links to the detail pages, the licences and the legal drafts. (Before 2026-10-28 it also held the account, the service address, sync and diagnostics; those moved to `#/account` and `#/developer`.) The account's older description, kept for the record: **Email address** (confirmed or not, with a resend), **Sessions** (device, last use, end one, "Sign out everywhere else"), **Download my data** (`GET /me/export` → `goreview-data-<date>.json`, through the share sheet on a phone), **Delete my account** (password-confirmed, 14-day grace, then the pending deletion with Cancel) and **Security events** (the last 20); a banner shows while a deletion is pending (`screens/accountSecurity.ts`, `accountClient.ts`) |
 | `#/privacy`, `#/terms` | the Privacy Policy and the Terms of use, the drafts in `docs/legal` (marked "not in force"), rendered as text (`legal.ts`, `screens/legal.ts`); open without an account |
 
@@ -110,3 +110,10 @@ service worker, "Update ready — reload"), starting at `#/review`, titled GoRev
 Repository service reachable over HTTPS. While it is visible, online and signed in, `live.ts` holds `POST /sync/wait` and pulls when GoLearn pushes
 (60 s pull as the fallback); `snapshot.ts` keeps the vocabulary list and the intake proposals on the device so the home, My vocab and Saved decks
 render offline. Hosting, the service requirement, what "live" means on iOS and the limits: `docs/ecosystem/GOREVIEW-IPHONE.md`.
+
+The home comes back at once: `screens/review.ts` keeps the last painted home per app instance under a key over every local store the deck
+and the counts depend on (events, preferences, words added by hand, hold-out, saved decks, open sessions, the vocabulary snapshot), so a return from
+Settings or the account page with nothing changed makes no request (2026-10-28: it took seconds on a phone, mostly the vocabulary pages and one unit
+read per candidate word); a sync that brings events changes the key, and after ten minutes the Repository is asked again anyway. On a full load the
+vocabulary count comes from the snapshot first and the live list replaces it, and the planner reads the units it may ask about in one batch
+(`primeFacts`). While a screen opens, `loading.ts` shows the loading mark: the logo’s globe, its sphere turning (`packages/shared-brand/go-globe-*.png`).

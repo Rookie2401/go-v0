@@ -5,7 +5,7 @@
 export const DEFAULT_SERVICE_URL = 'http://127.0.0.1:8790';
 
 export interface AppConfig {
-  /** Default service address (from config.json next to the app); the learner may override it on the Account screen. */
+  /** The service address (from config.json next to the app; the extension's own copy). Nothing on the pages changes it (2026-10-28: the field that did is gone). */
   serviceUrl?: string;
   /** Where language-pack files (dictionary shards …) are served from; relative to the app page, or absolute. Default: the app’s own folder. */
   assetBaseUrl?: string;
@@ -51,9 +51,7 @@ export async function loadConfig(fetchFn: typeof fetch, url = './config.json'): 
   } catch { return {}; }
 }
 
-/** Learner override, then config.json, then the development default. An override that no longer validates is ignored. */
-export function resolveServiceUrl(override: string | undefined, config: AppConfig): string {
-  if (override) { const c = validateServiceUrl(override); if (c.ok) return c.url; }
-  if (config.serviceUrl) return config.serviceUrl;
-  return DEFAULT_SERVICE_URL;
+/** config.json's address, else the development default. No learner override (2026-10-28: the client cannot change the service address). */
+export function resolveServiceUrl(config: AppConfig): string {
+  return config.serviceUrl ?? DEFAULT_SERVICE_URL;
 }

@@ -2,6 +2,8 @@
  * #/signin — the optional account. Email and password go to the Repository service and nowhere else; the password is never stored or
  * logged. The bearer token is kept in this application's own storage only.
  *
+ * The password goes to the address in config.json and nowhere else; no field on the page names or changes that address (2026-10-28).
+ *
  * Three situations, one page:
  *   - inside the GoLearn extension (the on-device Repository answers): the account only keeps progress across devices. Everything works
  *     without it; signing in uploads what is already on this device once, says how many events, and switches to the account;
@@ -10,7 +12,6 @@
  *   - signed in already: who, and that another sign-in switches accounts.
  */
 import type { AppContext } from '../context';
-import { validateServiceUrl } from '../config';
 import { append, button, clear, field, h, p, setStatus, statusLine } from '../dom';
 import { mountDeletionBanner } from './accountSecurity';
 import type { View } from './view';
@@ -61,7 +62,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       : null,
     !hosted && !session && links.setup ? h('p', { class: 'muted' }, h('a', { href: links.setup, id: 'link-setup' }, 'GoLearn setup')) : null,
   ]);
-  const url = h('input', { type: 'url', id: 'svc-url', name: 'svc-url', autocomplete: 'off', spellcheck: 'false', value: await ctx.serviceUrl() }) as HTMLInputElement;
   const email = h('input', { type: 'email', id: 'signin-email', name: 'email', autocomplete: 'email', required: true, value: session?.email ?? '' }) as HTMLInputElement;
   const password = h('input', { type: 'password', id: 'signin-password', name: 'password', autocomplete: 'current-password', required: true }) as HTMLInputElement;
   const status = statusLine();
@@ -71,7 +71,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
   const form = h('form', { id: 'signin-form', novalidate: true, class: 'card' },
     h('h2', {}, 'Sign in'),
     field('Email', email), field('Password', password),
-    h('details', {}, h('summary', {}, 'Service address'), field('Go Repository service', url, 'https, or http on localhost for development.')),
     h('div', { class: 'row' }, submit), status, unverified, next);
   const banner = h('div', { id: 'deletion-slot' });
   el.append(banner, form, forgotBlock(ctx, email), h('p', { class: 'muted', id: 'email-links-note' }, 'Links in confirmation and password-reset emails open GoLearn setup. ',
@@ -86,12 +85,6 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       const secret = password.value;
       if (!EMAIL.test(addr)) { setStatus(status, 'Enter a valid email address.', 'error'); return; }
       if (!secret) { setStatus(status, 'Enter your password.', 'error'); return; }
-      const raw = url.value.trim();
-      if (raw) { const c = validateServiceUrl(raw); if (!c.ok) { setStatus(status, c.message, 'error'); return; } }
-      if (raw && raw !== (await ctx.serviceUrl())) {
-        const saved = await ctx.saveService(raw);
-        if (!saved.ok) { setStatus(status, saved.message, 'error'); return; }
-      }
       submit.disabled = true;
       clear(unverified);
       setStatus(status, 'Signing in…', 'info');

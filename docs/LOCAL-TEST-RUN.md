@@ -21,7 +21,7 @@ The two previews were started from a Claude session and stop with it; the comman
 
 1. Chrome → `chrome://extensions` → Developer mode → **Load unpacked** → `C:\Users\CJWal\dev\go-v0\packages\golearn-extension\dist`.
 2. Pin the GoLearn button. Open **GoLearn setup** (popup button). Choose languages: for this round take **Hebrew** and **Greek** (both are
-   experimental packs) beside Albanian or Spanish. Create a local account or sign in; the service address is `http://127.0.0.1:8790`.
+   experimental packs) beside Albanian or Spanish. Create a local account or sign in; the service address is the one in the extension's `app/config.json` (set it to `http://127.0.0.1:8790` before `npm run ext:build`; no field on the page since 2026-10-28).
 3. Settings → *How GoLearn reads pages* → **Open Biblia** opens https://rookie2401.github.io/biblia/ in a new tab. Sign in there with the same
    GoLearn account; its lookups and ratings are then recorded under the Hebrew or Greek enrolment through the public service (from this PC's
    network that address is blocked, so test the recording from the phone or another network, or use the local :4199 copy against

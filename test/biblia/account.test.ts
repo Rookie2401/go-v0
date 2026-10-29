@@ -221,42 +221,12 @@ describe('the account screen', () => {
     expect([...document.querySelectorAll('.legal-links a')].map((a) => [a.textContent, a.getAttribute('href')])).toEqual([['Terms', '#/terms'], ['Privacy Policy', '#/privacy']]); // GoReview's order: Terms · Privacy Policy (drafts)
   });
 
-  it('the Service address disclosure (2026-10-25): shown only when the page offers it, prefilled, validated, saved through set(); the usual address clears the override', () => {
+  it('has no service-address control (2026-10-28): the address is config.json\'s and nothing on the page changes it', () => {
     mount();
-    expect(document.querySelector('#service-address')).toBeNull();
-    const set = vi.fn();
-    const el = renderAccountScreen({ doc: document, account, topbar: topbar(), done: done as unknown as () => void, serviceAddress: { current: 'https://repo.example.org', standard: 'https://repo.example.org', set } });
-    document.body.replaceChildren(el);
-    expect(q('#service-address summary').textContent).toMatch(/^Service address/);
-    expect(q<HTMLInputElement>('#service-url').value).toBe('https://repo.example.org');
-    expect(q<HTMLButtonElement>('#service-reset').hidden).toBe(true);
-    // the disclosure sits after Forgot password and before the email-links note, in the same card style
+    expect(document.querySelector('#service-address, #service-url, #service-save, #service-reset')).toBeNull();
+    expect(document.body.textContent).not.toContain('Service address');
     const order = [...document.querySelectorAll('.screen > *')].map((n) => n.id || n.tagName.toLowerCase());
-    expect(order.indexOf('service-address')).toBe(order.indexOf('forgot') + 1);
-    expect(order.indexOf('email-links-note')).toBe(order.indexOf('service-address') + 1);
-    // a bad address is refused and set() is not called
-    q<HTMLInputElement>('#service-url').value = 'ftp://x';
-    q<HTMLButtonElement>('#service-save').click();
-    expect(q('#service-address .status').getAttribute('data-kind')).toBe('error');
-    expect(set).not.toHaveBeenCalled();
-    // the same address is a no-op
-    q<HTMLInputElement>('#service-url').value = 'https://repo.example.org/';
-    q<HTMLButtonElement>('#service-save').click();
-    expect(set).not.toHaveBeenCalled();
-    // another name for the service is kept (normalised: scheme added, trailing slash dropped)
-    q<HTMLInputElement>('#service-url').value = 'go-v0.onrender.com/';
-    q<HTMLButtonElement>('#service-save').click();
-    expect(set).toHaveBeenCalledWith('https://go-v0.onrender.com');
-    // with an override in force, the reset button shows and clears it
-    const el2 = renderAccountScreen({ doc: document, account, topbar: topbar(), done: done as unknown as () => void, serviceAddress: { current: 'https://go-v0.onrender.com', standard: 'https://repo.example.org', set } });
-    document.body.replaceChildren(el2);
-    expect(q<HTMLButtonElement>('#service-reset').hidden).toBe(false);
-    q<HTMLButtonElement>('#service-reset').click();
-    expect(set).toHaveBeenLastCalledWith(undefined);
-    // typing the usual address back also clears the override
-    q<HTMLInputElement>('#service-url').value = 'https://repo.example.org';
-    q<HTMLButtonElement>('#service-save').click();
-    expect(set).toHaveBeenLastCalledWith(undefined);
+    expect(order.indexOf('email-links-note')).toBe(order.indexOf('forgot') + 1);
   });
 
   it('is GoReview\'s sign-in design: the title with its rule, a WELCOME card, a SIGN IN card with EMAIL / PASSWORD labels, the gold Sign in, the forgot disclosure, the email-links note and the drafts line', () => {

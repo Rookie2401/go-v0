@@ -27,7 +27,7 @@ describe('the hash router', () => {
     expect(rig.q('#sync-indicator').textContent).toBe('Not signed in');
   });
 
-  it('after sign-in the header has the Go logo, language and Settings cog; the screens are reached from the home', async () => {
+  it('after sign-in the header has the Go logo, the account and Settings icons, and is the same on every screen (no language, no "← GoReview"; the logo is the way home)', async () => {
     const rig = await makeRig({ signedIn: true });
     expect(rig.app.current()).toBe('review');
     expect(rig.root.querySelector('.topnav')).toBeNull();
@@ -40,29 +40,39 @@ describe('the hash router', () => {
     expect(rig.q('header .go-brand').textContent).toBe(''); // the mark alone: the launch screen showed GO over REVIEW
     expect(rig.root.querySelector('.go-brand-word')).toBeNull();
     expect(rig.q('header .go-brand').getAttribute('aria-label')).toBe('GoReview home');
-    expect(rig.q('#language-name')).toBeTruthy();
-    expect(rig.root.querySelector('#back-home')).toBeNull();      // the home has nowhere to go back to
+    expect(rig.q('#home-language #language-name')).toBeTruthy(); // the language stands on the home, never in the top bar
+    expect(rig.root.querySelector('header .language')).toBeNull();
+    expect(rig.root.querySelector('#back-home')).toBeNull();
+    expect(rig.q('header .go-brand').getAttribute('href')).toBe('#/review');
+    const headerOf = (): string => rig.q('header').innerHTML;
+    const homeHeader = headerOf();
     await rig.go('tell');
     expect(rig.q('main h1').textContent).toBe('GoTell');
-    expect(rig.q<HTMLAnchorElement>('#back-home').getAttribute('href')).toBe('#/review');
+    expect(rig.root.querySelector('#back-home, .crumb')).toBeNull();
+    expect(rig.root.querySelector('header .language, header #language-name, header #language-select')).toBeNull();
+    expect(headerOf()).toBe(homeHeader); // the top bar does not change between screens
     await rig.go('vocabulary');
     expect(rig.q('main h1').textContent).toBe('My Vocabulary');
+    expect(rig.root.querySelector('#back-home, .crumb')).toBeNull();
     await rig.go('settings');
     expect(rig.q('main h1').textContent).toBe('Settings');
+    expect(rig.root.querySelector('header .language')).toBeNull();
+    expect(rig.root.querySelector('main a[href="#/review"]')).toBeNull(); // no "← GoReview" on the page either
     expect(rig.q('#settings-link').getAttribute('aria-current')).toBe('page');
+    await rig.go('review');
+    expect(rig.q('#home-language #language-name')).toBeTruthy(); // back on the home the language is there again
     window.location.hash = '#/review';
     await until(() => rig.app.current() === 'review', 'the hashchange');
   });
 });
 
 describe('the service address', () => {
-  it('accepts https anywhere and http only on a loopback host; resolves override, config, default', async () => {
+  it('accepts https anywhere and http only on a loopback host; resolves config.json, else the development default (no learner override since 2026-10-28)', async () => {
     expect(validateServiceUrl('https://r.example.org/')).toEqual({ ok: true, url: 'https://r.example.org' });
     expect(validateServiceUrl('http://localhost:8790').ok).toBe(true);
     for (const bad of ['http://example.org', 'ftp://x.org', 'https://u:p@x.org', 'https://x.org/?a=1', '', 'not a url']) expect(validateServiceUrl(bad).ok, bad).toBe(false);
-    expect(resolveServiceUrl(undefined, {})).toBe(DEFAULT_SERVICE_URL);
-    expect(resolveServiceUrl('https://mine.example.org', { serviceUrl: 'https://r.example.org' })).toBe('https://mine.example.org');
-    expect(resolveServiceUrl('http://evil.example', { serviceUrl: 'https://r.example.org' })).toBe('https://r.example.org');
+    expect(resolveServiceUrl({})).toBe(DEFAULT_SERVICE_URL);
+    expect(resolveServiceUrl({ serviceUrl: 'https://r.example.org' })).toBe('https://r.example.org');
     expect(await loadConfig((async () => new Response('<!doctype html>')) as unknown as typeof fetch)).toEqual({});
   });
 
@@ -106,7 +116,7 @@ describe('sign-in', () => {
     type(rig.q<HTMLInputElement>('#signin-email'), 'ana@example.org');
     type(rig.q<HTMLInputElement>('#signin-password'), 'nope');
     rig.q('#signin-form').dispatchEvent(new Event('submit', { cancelable: true }));
-    await until(() => !!rig.q('#signin-form .status').textContent, 'an error');
+    await until(() => { const t = rig.q('#signin-form .status').textContent; return !!t && t !== 'Signing in…'; }, 'an error'); // the form says 'Signing in…' at once (2026-10-28: no service-address check before it)
     expect(rig.q('#signin-form .status').textContent).toBe('That email and password were not accepted.');
     expect((await rig.area.get(KEYS.session))[KEYS.session]).toBeUndefined();
   });
@@ -118,19 +128,17 @@ describe('sign-in', () => {
     type(rig.q<HTMLInputElement>('#signin-email'), 'ana@example.org');
     type(rig.q<HTMLInputElement>('#signin-password'), 'x');
     rig.q('#signin-form').dispatchEvent(new Event('submit', { cancelable: true }));
-    await until(() => !!rig.q('#signin-form .status').textContent, 'an error');
+    await until(() => { const t = rig.q('#signin-form .status').textContent; return !!t && t !== 'Signing in…'; }, 'an error'); // the form says 'Signing in…' at once (2026-10-28: no service-address check before it)
     expect(rig.q('#signin-form .status').textContent).toContain('Could not reach the service');
   });
 
-  it('refuses a plain-http remote service address before sending the password anywhere', async () => {
+  it('has no service-address field: the password goes to config.json\'s address and nowhere else, whatever an earlier GoReview stored (2026-10-28)', async () => {
     const rig = await makeRig();
-    type(rig.q<HTMLInputElement>('#signin-email'), 'ana@example.org');
-    type(rig.q<HTMLInputElement>('#signin-password'), 'correct-horse-battery');
-    type(rig.q<HTMLInputElement>('#svc-url'), 'http://repository.example.org');
-    rig.q('#signin-form').dispatchEvent(new Event('submit', { cancelable: true }));
-    await until(() => !!rig.q('#signin-form .status').textContent, 'an error');
-    expect(rig.q('#signin-form .status').textContent).toContain('https');
-    expect(rig.service.calls).not.toContain('createSession');
+    await rig.area.set({ 'gopractice:service': { baseUrl: 'https://other.example.org' } }); // the key the field wrote until 2026-10-28
+    await rig.go('signin');
+    expect(rig.root.querySelector('#svc-url')).toBeNull();
+    expect(rig.root.textContent).not.toContain('Service address');
+    expect(await rig.app.ctx.serviceUrl()).toBe('https://repository.example.org');
   });
 });
 

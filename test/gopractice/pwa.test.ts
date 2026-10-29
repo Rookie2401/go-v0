@@ -126,7 +126,7 @@ describe('the stylesheet for a phone', () => {
   });
   it('gives every control a target of at least 44 CSS px on a touch screen (2.75rem at the default size)', () => {
     const block = /@media \(pointer: coarse\)[^{]*\{([\s\S]*?)\n\}\n/.exec(css)![1];
-    for (const sel of ['button', '.btn', '.toggle-link', '.linklike', '.vocab-history', '.crumb a', '.cog', '.icon-btn', 'button.grade', '.vocab-row']) expect(block, sel).toContain(sel);
+    for (const sel of ['button', '.btn', '.toggle-link', '.linklike', '.vocab-history', '.cog', '.icon-btn', 'button.grade', '.vocab-row']) expect(block, sel).toContain(sel);
     expect(block).toMatch(/min-height:\s*2\.75rem/);
     expect(block).toMatch(/\.cog, \.icon-btn \{ width: 2\.75rem; height: 2\.75rem; \}/);
   });

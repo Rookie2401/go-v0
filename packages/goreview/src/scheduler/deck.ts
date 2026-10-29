@@ -101,6 +101,7 @@ function orderAtAndCausality(events: readonly GoEvent[]): GoEvent[] {
 }
 
 const isRating = (x: unknown): x is Rating => x === 1 || x === 2 || x === 3 || x === 4;
+const isExplicitIntent = (x: unknown): boolean => !!x && typeof x === 'object' && (x as { kind?: unknown }).kind === 'explicit';
 const isSchedulableReview = (e: GoEvent): boolean => isValidReviewClaim(e) && !!e.subject?.cardId && isRating(e.payload.rating)
   && e.payload.hinted !== true && e.payload.answerShownBefore !== true && e.payload.transcriptShownBefore !== true
   && e.evidence?.assisted !== true && e.evidence?.quality !== 'none';
@@ -323,13 +324,20 @@ export function foldDeck(events: readonly GoEvent[], scheduler: Scheduler, opts:
       const resolved = schedulerForReviewProfile(payload.schedulerProfile, scheduler);
       if ('error' in resolved && !excluded) { excluded = resolved.error; item.status = 'suspended'; item.suspendedReason = resolved.error; item.schedulingIssue = resolved.error; }
       let next = item.schedule;
-      if (!excluded && 'scheduler' in resolved) {
+      // Explicit practice (a saved deck, selected words, Repeat this batch) of a card that is not yet due: the answer stays in the causal
+      // chain and in the Repository's evidence, but a success does not move the schedule (no learning step is skipped and no interval
+      // grows from a repetition minutes apart); a failure is a lapse wherever it happens. The first review of a fresh card, and any
+      // review at or after the due time, schedules as usual: one memory history, actual elapsed time (the owner's brief, 2026-10-29).
+      const earlyPractice = !excluded && isExplicitIntent(payload.practiceIntent) && gradeRating !== 1
+        && item.history.some(h => !h.retracted && !h.scheduleExcluded && !h.conflict) && Date.parse(e.at) < Date.parse(item.schedule.due);
+      if (!excluded && !earlyPractice && 'scheduler' in resolved) {
         try { next = resolved.scheduler.review(item.schedule, gradeRating, e.at); }
         catch (error) { excluded = 'review cannot be scheduled: ' + (error instanceof Error ? error.message : String(error)); }
       }
       const entry: ReviewLogEntry = { at: e.at, rating: gradeRating, outcome: outcomeOf(payload), deviceId: e.producer?.deviceId ?? 'unknown',
         exerciseId: nonEmpty(payload.exerciseId) ? payload.exerciseId : e.id, family: isFamily(payload.family) ? payload.family : item.family,
         elapsedDays: next.elapsedDays, eventId: e.id, ...(retracted.has(e.id) ? { retracted: true } : {}),
+        ...(earlyPractice ? { earlyPractice: true } : {}),
         ...(excluded ? { scheduleExcluded: excluded, conflict: !retracted.has(e.id) } : {}) };
       item.history.push(entry);
       if (excluded) { if (!retracted.has(e.id)) ignore(e,excluded); }

@@ -9,7 +9,7 @@
 import { KNOWLEDGE_LEVELS } from '../../../repository-contract/src';
 import type { AppContext } from '../context';
 import { append, button, clear, h, langProps, p, setStatus, statusLine } from '../dom';
-import { addToDeck, loadVocab, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, sortVocab, type VocabRow, type VocabSort } from '../deckModel';
+import { addedCardFor, addToDeck, loadVocab, planCurrentDeck, planSelectedPractice, selectedPracticeUnits, sortVocab, type VocabRow, type VocabSort } from '../deckModel';
 import { itemMarked } from '../events';
 import { loadReviewModel } from '../workspace';
 import type { View } from './view';
@@ -80,7 +80,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       if (!ectx) { setStatus(status, 'Choose a language first.', 'error'); return; }
       const marked = await ctx.record([itemMarked(ectx, ctx.deps.newId(), r.unitId, 'saved')]);
       if (marked.refused.length) { setStatus(status, marked.refused[0].issues.join('; '), 'error'); return; }
-      await addToDeck(ctx, identity, { unitId: r.unitId, unitKind: r.kind ?? 'lexeme', dimension: 'written-recognition', family: 'written-recognition' });
+      await addToDeck(ctx, identity, { unitId: r.unitId, unitKind: r.kind ?? 'lexeme', ...addedCardFor(r.unitId, r.kind) }); // a phrase is asked as phrase-comprehension, any other unit as written-recognition
       selectionRevision++;
       selectedUnits = new Set([...selectedUnits, r.unitId]);
       const model = await loadReviewModel(ctx);
@@ -91,7 +91,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
       if (deck?.entries.some((e) => e.unitId === r.unitId)) {
         selectedUnits = new Set([...selectedUnits, ...deck.entries.map((e) => e.unitId)]);
         asking = undefined;
-        setStatus(status, `${r.label} is selected for optional practice. It does not change the next automatic batch.`, 'ok');
+        setStatus(status, `${r.label} is selected for optional practice. It leads the next deck you start; with “prioritise saved words” on (the default), a word GoReview was already proposing also moves to the front of the automatic batch.`, 'ok');
       } else {
         setStatus(status, `${r.label} is selected for optional practice, but no usable question fits the current session limits. It remains selected for a later practice session.`, 'info');
       }
@@ -122,7 +122,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View): Prom
     if (open) {
       const ask = h('div', { class: 'vocab-ask', role: 'group', 'aria-label': `Add ${r.label} to the current deck` });
       if (present) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is in the current automatic deck.'));
-      else if (selected) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is selected for optional practice. It does not change the next automatic batch.'));
+      else if (selected) ask.append(h('p', { class: 'muted' }, h('span', langProps(tag), r.label), ' is selected for optional practice. It leads the next deck you start; with “prioritise saved words” on (the default), a word GoReview was already proposing also moves to the front of the automatic batch.'));
       else {
         const addBtn = button('Select for optional practice', () => { addBtn.disabled = true; void add(r).finally(() => { addBtn.disabled = false; }); }, { class: 'btn small', 'data-action': 'add-to-deck' });
         ask.append(h('p', {}, 'Choose ', h('span', langProps(tag), r.label), ' for an optional practice session?'),

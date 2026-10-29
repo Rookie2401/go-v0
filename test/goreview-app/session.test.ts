@@ -496,6 +496,23 @@ describe('challenging an answer and reporting an analysis error', () => {
       formId: unitOf('zog'), features: { case: 'gen', number: 'pl' }, reason: 'this is the genitive', enrolmentId: 'L1-e1', languageId: 'sq',
     });
     await until(() => rig.q<HTMLButtonElement>('#challenge').disabled, 'the challenge');
+    // the report sets the card aside until verified facts repair it (2026-10-29): once the answer is recorded (Next), a retraction with the
+    // report's reason and a ReviewItemInvalidated follow it
+    expect(rig.q('#report-error .status').textContent).toContain('waits until the analysis is repaired');
+    rig.clock.set(new Date(rig.clock.now.getTime() + 1000).toISOString()); // a second passes before Next, as it does
+    rig.q('#next').click();
+    await until(() => !!rig.root.querySelector('#summary'), 'the summary');
+    await until(async () => (await queued(rig)).some((e) => e.kind === 'ReviewItemInvalidated'), 'the invalidation');
+    const events = await queued(rig);
+    const retraction = events.find((e) => e.kind === 'CardReviewed' && e.correctionOf);
+    const invalidated = events.find((e) => e.kind === 'ReviewItemInvalidated');
+    expect(retraction?.payload).toMatchObject({ rating: null, challenged: true, challengeReason: 'analysis reported wrong' });
+    expect(invalidated?.subject.cardId).toBe(retraction?.subject.cardId);
+    expect(invalidated?.payload).toMatchObject({ reason: 'analysis-invalidated', reviewEventId: retraction?.correctionOf });
+    expect(rig.q('#sum-withheld').textContent).toContain('reported wrong');
+    await reopenDetails(rig);
+    rig.root.querySelector<HTMLElement>('#deck')!.setAttribute('open', '');
+    expect(rig.q('#deck').textContent).toMatch(/suspended|set aside|repair/i); // not due again with the same key
   });
 });
 

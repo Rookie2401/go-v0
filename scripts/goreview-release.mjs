@@ -19,23 +19,39 @@ export const REQUIRED_CAPABILITIES = Object.freeze([
   'packages/repository-contract/src/review-evidence.ts',
 ]);
 const SOURCE_ROOTS = [
-  'packages/goreview/src', 'packages/gopractice', 'packages/repository-contract/src',
+  'packages/goreview/src', 'packages/goreview/app', 'packages/repository-contract/src',
   'packages/repository-engine/src', 'packages/repository-service/src', 'packages/repository-store/src',
   'packages/repository-sync/src', 'packages/golisten/src', 'packages/gotell/src', 'packages/shared-brand', 'packages/shared-fonts',
   'packages/biblia/src', 'packages/biblia/public', 'packages/goreview/app/public',
 ];
+// Single files hashed into the manifest beside SOURCE_ROOTS. Grouped by area and sorted within each group; a path that does not exist is skipped.
 const BUILD_INPUTS = [
-  'package.json', 'package-lock.json', 'pnpm-lock.yaml', 'yarn.lock', 'tsconfig.json', 'scripts/vite.config.ts',
-  'scripts/goreview-release.mjs', 'scripts/goreview-release.d.mts', 'THIRD-PARTY-NOTICES.md',
-  'packages/goreview/app/vite.config.ts', 'packages/biblia/vite.config.ts', 'packages/biblia/index.html',
-  'packages/goreview-ios/package.json', 'packages/goreview-ios/package-lock.json', 'packages/biblia-ios/package.json', 'packages/biblia-ios/package-lock.json',
-  'packages/goreview-ios/scripts/prepare-web.mjs', 'packages/goreview-ios/scripts/native-payload.mjs',
-  'packages/goreview-ios/scripts/native-payload.d.mts', 'packages/goreview-ios/scripts/verify-native-payload.mjs',
-  'packages/goreview-ios/scripts/release-preflight.mjs', 'packages/goreview-ios/scripts/build-eas-project.mjs', 'packages/goreview-ios/scripts/validate-staged-release.mjs',
-  'packages/goreview-ios/ios/App/App.xcodeproj/project.pbxproj', 'packages/goreview-ios/ios/App/App/AppDelegate.swift',
-  'packages/goreview-ios/ios/App/App/GoReviewNativePlugin.swift', 'packages/goreview-ios/ios/App/App/GoReviewViewController.swift',
-  'packages/goreview-ios/ios/App/App/SceneDelegate.swift', 'packages/goreview-ios/ios/App/App/Info.plist',
-  'packages/goreview-ios/ios/App/App/PrivacyInfo.xcprivacy', 'packages/goreview-ios/assets/icon.png',
+  // repository root: dependencies, compiler, notices
+  'package-lock.json', 'package.json', 'pnpm-lock.yaml', 'THIRD-PARTY-NOTICES.md', 'tsconfig.json', 'yarn.lock',
+  // the web builds and this release tooling
+  'packages/biblia/index.html', 'packages/biblia/vite.config.ts', 'packages/goreview/app/vite.config.ts',
+  'scripts/goreview-release.d.mts', 'scripts/goreview-release.mjs', 'scripts/vite.config.ts',
+  // native shells: package manifests
+  'packages/biblia-ios/package-lock.json', 'packages/biblia-ios/package.json',
+  'packages/goreview-ios/package-lock.json', 'packages/goreview-ios/package.json',
+  // GoReview iOS shell: native workflow configuration (changing any of these changes the manifest)
+  'packages/goreview-ios/app.json', 'packages/goreview-ios/capacitor.config.ts', 'packages/goreview-ios/eas.json',
+  // GoReview iOS shell: release and build scripts
+  'packages/goreview-ios/scripts/archive-testflight.sh', 'packages/goreview-ios/scripts/build-eas-project.mjs',
+  'packages/goreview-ios/scripts/native-payload.d.mts', 'packages/goreview-ios/scripts/native-payload.mjs',
+  'packages/goreview-ios/scripts/prepare-eas-ios-project.mjs', 'packages/goreview-ios/scripts/prepare-web.mjs',
+  'packages/goreview-ios/scripts/release-preflight.mjs', 'packages/goreview-ios/scripts/set-build-version.mjs',
+  'packages/goreview-ios/scripts/validate-app-icon.mjs', 'packages/goreview-ios/scripts/validate-eas-config.mjs',
+  'packages/goreview-ios/scripts/validate-staged-release.mjs', 'packages/goreview-ios/scripts/verify-native-payload.mjs',
+  // GoReview iOS shell: native project and assets
+  'packages/goreview-ios/assets/icon.png', 'packages/goreview-ios/ios/App/App.xcodeproj/project.pbxproj',
+  'packages/goreview-ios/ios/App/App/AppDelegate.swift', 'packages/goreview-ios/ios/App/App/GoReviewNativePlugin.swift',
+  'packages/goreview-ios/ios/App/App/GoReviewViewController.swift', 'packages/goreview-ios/ios/App/App/Info.plist',
+  'packages/goreview-ios/ios/App/App/PrivacyInfo.xcprivacy', 'packages/goreview-ios/ios/App/App/SceneDelegate.swift',
+];
+// Whole directories of native-workflow inputs, every file below them hashed: the EAS build workflow (.eas/build/*.yml) and the staged EAS project template.
+const BUILD_INPUT_DIRECTORIES = [
+  'packages/goreview-ios/.eas/build', 'packages/goreview-ios/templates/eas-project',
 ];
 
 const toRepoRelative = (absolute, root) => {
@@ -87,6 +103,7 @@ function sourceFiles(root, compiledSourceModules = [], staticInputs = []) {
     }
   };
   SOURCE_ROOTS.forEach(visit);
+  BUILD_INPUT_DIRECTORIES.forEach(visit);
   for (const input of BUILD_INPUTS) if (fs.existsSync(path.join(root, input))) files.push(input);
   for (const input of [...compiledSourceModules, ...staticInputs]) if (fs.existsSync(path.join(root, input))) files.push(normalized(input));
   return [...new Set(files)].sort();
@@ -194,12 +211,38 @@ export function createReleaseManifest(outDir, mode = process.env.GOREVIEW_RELEAS
   return manifest;
 }
 
+/**
+ * Release verification: the commit and tree recorded in the manifest must be the HEAD commit and tree of the repository that holds the
+ * artifact source. An artifact built at one commit is refused once HEAD has moved, even by an empty commit. The only way around that is
+ * the explicit expectCommit option (CLI: --expect-commit <sha>): the manifest must then record that named commit and HEAD is not consulted.
+ */
+function assertArtifactMatchesCheckout(manifest, projectRoot, expectCommit) {
+  const recorded = manifest.git?.commit;
+  if (typeof recorded !== 'string' || !/^[0-9a-f]{40}$/.test(recorded)) throw new Error('Release verification refused: the manifest does not record a Git commit.');
+  if (expectCommit !== undefined) {
+    if (typeof expectCommit !== 'string' || !/^[0-9a-f]{7,40}$/i.test(expectCommit)) throw new Error(`Release verification refused: --expect-commit needs a commit sha of 7 to 40 hex digits, got "${expectCommit}".`);
+    if (!recorded.startsWith(expectCommit.toLowerCase())) throw new Error(`Release verification refused: the artifact was built from ${recorded}, not from the expected commit ${expectCommit}.`);
+    return;
+  }
+  let head;
+  let headTree;
+  try {
+    head = git(projectRoot, 'rev-parse', 'HEAD');
+    headTree = git(projectRoot, 'rev-parse', 'HEAD^{tree}');
+  } catch {
+    throw new Error(`Release verification refused: cannot read the Git HEAD of ${projectRoot}. Verify from the checkout the artifact was built in, or name the build commit with --expect-commit <sha>.`);
+  }
+  if (recorded !== head) throw new Error(`Release verification refused: the artifact was built from commit ${recorded} but the checkout is at ${head}. Check out ${recorded} and verify again, or name the build commit explicitly with --expect-commit <sha>.`);
+  if (manifest.git.tree !== headTree) throw new Error(`Release verification refused: the artifact records tree ${manifest.git.tree} but HEAD's tree is ${headTree}.`);
+}
+
 export function verifyReleaseArtifact(outDir, options = {}) {
   const manifestPath = path.join(outDir, MANIFEST_NAME);
   const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
   if (manifest.schemaVersion !== 1 || manifest.product !== 'GoReview' || manifest.artifactKind !== 'embedded-web') throw new Error('Unsupported GoReview artifact manifest.');
   if (manifest.releaseEligible && (manifest.buildMode !== 'release' || manifest.git.dirty)) throw new Error('Release eligibility contradicts recorded source state.');
   if (options.requireRelease && !manifest.releaseEligible) throw new Error('Artifact is development-only and is not release-eligible.');
+  if (options.requireRelease) assertArtifactMatchesCheckout(manifest, options.projectRoot ?? ROOT, options.expectCommit);
   const actualArtifacts = artifactFiles(outDir);
   if (manifest.artifactManifestSha256 !== sha256(json(manifest.artifactFiles)) || json(actualArtifacts) !== json(manifest.artifactFiles)) throw new Error('Built artifact integrity check failed.');
   if (manifest.sourceManifestSha256 !== sha256(json(manifest.sourceFiles))) throw new Error('Source manifest integrity check failed.');
@@ -218,9 +261,30 @@ export function verifyReleaseArtifact(outDir, options = {}) {
   return manifest;
 }
 
+const USAGE = 'Usage: node scripts/goreview-release.mjs verify <artifact-directory> [--release [--expect-commit <sha>]]';
+
+/** Parse `verify <dir> [--release] [--expect-commit <sha>]`; anything else throws the usage text. --expect-commit needs --release. */
+export function parseVerifyArgs(args) {
+  const [command, target, ...rest] = args;
+  if (command !== 'verify' || !target || target.startsWith('--')) throw new Error(USAGE);
+  let requireRelease = false;
+  let expectCommit;
+  for (let i = 0; i < rest.length; i += 1) {
+    const arg = rest[i];
+    if (arg === '--release') requireRelease = true;
+    else if (arg === '--expect-commit') {
+      expectCommit = rest[i + 1];
+      if (!expectCommit || expectCommit.startsWith('--')) throw new Error(`--expect-commit needs a commit sha. ${USAGE}`);
+      i += 1;
+    } else if (arg.startsWith('--expect-commit=')) expectCommit = arg.slice('--expect-commit='.length);
+    else throw new Error(`Unknown argument ${arg}. ${USAGE}`);
+  }
+  if (expectCommit !== undefined && !requireRelease) throw new Error(`--expect-commit applies to release verification only; add --release. ${USAGE}`);
+  return { target, requireRelease, expectCommit };
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const [command, target, flag] = process.argv.slice(2);
-  if (command !== 'verify' || !target) throw new Error('Usage: node scripts/goreview-release.mjs verify <artifact-directory> [--release]');
-  const manifest = verifyReleaseArtifact(path.resolve(ROOT, target), { requireRelease: flag === '--release', compareCurrentSource: true });
+  const { target, requireRelease, expectCommit } = parseVerifyArgs(process.argv.slice(2));
+  const manifest = verifyReleaseArtifact(path.resolve(ROOT, target), { requireRelease, expectCommit, compareCurrentSource: true });
   console.log(`Verified ${manifest.buildMode} GoReview artifact from ${manifest.git.commit}; ${manifest.artifactFiles.length} files checked.`);
 }

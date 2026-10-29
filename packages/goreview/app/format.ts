@@ -1,4 +1,5 @@
 /** Labels, durations and the evidence explanations shared by the screens. No DOM. */
+import { replaysExceeded } from '../src/grading/grade';
 import type { AssessmentDimension, Exercise, ExerciseFamily, Grading, GradeOutcome, Response, ReviewResult } from '../src/types';
 
 /** A readable label from a unit id such as `lemma:sq:shtëpi:NOUN` or `form:sq:shtëpinë`; the id itself when it has no such shape. */
@@ -56,6 +57,9 @@ export function duration(ms: number): string {
 
 export const isAudioExercise = (e: Exercise): boolean => e.family === 'audio-to-meaning' || e.family === 'audio-transcription';
 
+/** Whether the audio was replayed more often than the stimulus allows: such a result is recorded as help and does not move the schedule. */
+export const extraReplays = (response: Pick<Response, 'replays'>, exercise: Exercise): boolean => replaysExceeded(response, exercise.prompt?.audio?.replaysAllowed);
+
 /** Whether the learner's answer is in the target language (so the input and the answer carry `lang`). */
 export const answerInTarget = (family: ExerciseFamily): boolean =>
   family === 'meaning-to-form' || family === 'sentence-completion' || family === 'audio-transcription' || family === 'grammar-application';
@@ -69,6 +73,7 @@ export function withheldReason(result: ReviewResult, exercise: Exercise): string
   if (result.grading.outcome === 'invalid-question') return 'the question was not valid, so nothing about you was observed';
   if (result.grading.outcome === 'unable-to-grade') return 'the answer could not be graded, so nothing about you was observed';
   if (result.response.challenged) return 'you challenged the answer key: kept in your history, not counted as evidence';
+  if (extraReplays(result.response, exercise)) return 'you replayed the audio more often than allowed, so this was recorded as help and does not move your schedule';
   if (!result.evidence) return 'the engine claimed no evidence for this answer';
   if (result.evidence.evidence?.quality === 'none') {
     if (isAudioExercise(exercise)) return exercise.prompt.audio?.validity.reason ?? 'this audio is practice only: it cannot be listening evidence';
@@ -85,6 +90,9 @@ export function forecastRecording(grading: Grading, response: Response, exercise
   if (response.challenged) return 'Will be kept in your history, not counted as evidence and not used to schedule the item.';
   if (response.retrievalAttempted === false || response.hinted || response.assistance.length || response.transcriptShownBefore) {
     return 'Will be kept in your history without a recall rating or evidence weight because help was used or no retrieval attempt was confirmed.';
+  }
+  if (extraReplays(response, exercise)) {
+    return 'Will be recorded as help, not as recall: you replayed the audio more often than allowed, so it does not move your schedule.';
   }
   if (isAudioExercise(exercise) && !exercise.prompt.audio?.validity.eligibleForEvidence) {
     return 'Will be recorded as listening practice with no evidence weight: synthetic or unreviewed speech cannot be listening evidence.';

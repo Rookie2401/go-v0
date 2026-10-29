@@ -28,6 +28,16 @@ describe('shared eligibility, budgets and persistent remediation',()=>{
   const explicit=ev('explicit','2026-10-08T01:15:00Z',3,{practiceIntent:{kind:'explicit',reason:'selected-vocabulary',requestedAt:'2026-10-08T01:15:00Z'}});explicit.subject={cardId:'explicit-card',itemIds:['explicit-unit']};
   expect(admissionBudget([repeat,explicit,fresh,old,fresh],{learnerId:'L',languageId:'sq',now:NOW,maxNew:4,dailyNewLimit:2})).toEqual({used:1,remaining:1});
  });
+ it('an explicit first creation (a saved deck or a selected word practised before GoReview proposed it) is an introduction; an explicit re-review stays free (2026-10-29)',()=>{
+  const intent={kind:'explicit',reason:'saved-deck',requestedAt:'2026-10-08T01:00:00Z'};
+  const created:GoEvent={...ev('made','2026-10-08T01:00:00Z',null),kind:'CardAdded',payload:{lifecycle:'create',admission:{at:'2026-10-08T01:00:00Z',intent}}};created.subject={cardId:'saved-card',itemIds:['saved-unit']};
+  const answered=ev('answered','2026-10-08T01:00:00Z',3,{practiceIntent:intent});answered.subject={cardId:'saved-card',itemIds:['saved-unit']};
+  const again=ev('again','2026-10-08T02:00:00Z',3,{practiceIntent:intent});again.subject={cardId:'saved-card',itemIds:['saved-unit']};
+  expect(admissionBudget([created,answered,again],{learnerId:'L',languageId:'sq',now:NOW,maxNew:4,dailyNewLimit:2})).toEqual({used:1,remaining:1});
+  // a card that already existed, practised again from a saved deck: no introduction
+  const old=ev('old','2026-10-06T12:00:00Z',3),oldAgain=ev('old-again','2026-10-08T03:00:00Z',3,{practiceIntent:intent});
+  expect(admissionBudget([old,oldAgain],{learnerId:'L',languageId:'sq',now:NOW,maxNew:4,dailyNewLimit:2})).toEqual({used:0,remaining:2});
+ });
  it('keeps snooze, suspension and dismissal hard even for saved or selected practice',()=>{
   for(const status of ['suspended','dismissed','snoozed'] as const)
    expect(reviewEligibility({item:{...item(),status,snoozedUntil:'2027-01-01T00:00:00Z'},unitId:unit,knowledge:knowledge(unit),events:[],now:NOW,intent:{kind:'explicit',reason:'saved-deck',requestedAt:NOW}}).eligible).toBe(false);

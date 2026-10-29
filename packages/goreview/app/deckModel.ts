@@ -188,6 +188,12 @@ export async function planSelectedPractice(ctx: AppContext, model: ReviewModel):
   return assemble(ctx, model, added, added.length, { intent: { kind: 'explicit', reason: 'selected-vocabulary', requestedAt: model.now }, origin: 'vocabulary' });
 }
 
+/** The card a word added by hand should be asked as: a multiword unit (a phrase: unit id `phrase:...` or kind multiword/phrase) can only be built as phrase-comprehension; every other unit as written-recognition. */
+export function addedCardFor(unitId: string, unitKind: string | undefined): Pick<Wanted, 'dimension' | 'family'> {
+  const phrase = unitKind === 'multiword' || unitKind === 'phrase' || unitId.startsWith('phrase:');
+  return phrase ? { dimension: 'phrase-comprehension', family: 'phrase-comprehension' } : { dimension: 'written-recognition', family: 'written-recognition' };
+}
+
 /** Puts a word into the current deck by the learner's own choice: it leads the deck until the session begins or the deck is saved. */
 export function addToDeck(ctx: AppContext, id: { learnerId: string; languageId: string }, word: Pick<Wanted, 'unitId' | 'unitKind' | 'dimension' | 'family'>): Promise<void> {
   return serial(async () => {

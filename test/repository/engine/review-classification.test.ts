@@ -34,6 +34,18 @@ describe('shared causal review classification', () => {
     expect(row.dimensions.readingRecognition.observations).toBe(4);
   });
 
+  it('accepts a sibling just under 24 hours after the winner but not one at exactly 24 hours (the Known-spacing rule treats 24h as delayed)', () => {
+    const parent = review('parent', '2026-10-02T00:00:00Z', null);
+    const winner = review('winner', '2026-10-03T00:00:00Z', parent.id);
+    const justUnder = review('just-under', '2026-10-03T23:59:59.999Z', parent.id);
+    const exactly = review('exactly-24h', '2026-10-04T00:00:00Z', parent.id);
+    const result = classifyReviewEvents([parent, winner, justUnder, exactly]);
+    expect(result.effectiveIds).toEqual(new Set(['parent', 'winner']));
+    expect(result.independentSiblingIds).toEqual(new Set(['just-under']));
+    expect(result.excludedReasons.get('exactly-24h')).toMatch(/24-hour/);
+    expect(result.independentSiblingIds.has('exactly-24h')).toBe(false);
+  });
+
   it('rejects malformed, cross-card, cyclic and conflict-tainted claims without deleting raw events', () => {
     const root = review('root', '2026-10-01T00:00:00Z', null);
     const malformed = review('malformed', '2026-10-02T00:00:00Z', '' );

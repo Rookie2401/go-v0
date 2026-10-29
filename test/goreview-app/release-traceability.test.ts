@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { assertBuildModeAllowed, createReleaseManifest, normalizeCompiledModuleId, REQUIRED_CAPABILITIES, verifyReleaseArtifact } from '../../scripts/goreview-release.mjs';
+import { assertBuildModeAllowed, createReleaseManifest, normalizeCompiledModuleId, parseVerifyArgs, REQUIRED_CAPABILITIES, verifyReleaseArtifact } from '../../scripts/goreview-release.mjs';
 
 const temporary: string[] = [];
 const hash = (text: string | Buffer) => createHash('sha256').update(text).digest('hex');
@@ -30,6 +30,10 @@ function cleanProject(): string {
   execFileSync('git', ['-c', 'user.name=GoReview Test', '-c', 'user.email=goreview-test@example.invalid', 'commit', '-qm', 'reviewed source'], { cwd: root });
   return root;
 }
+
+const identity = ['-c', 'user.name=GoReview Test', '-c', 'user.email=goreview-test@example.invalid'];
+const commit = (root: string, ...args: string[]) => execFileSync('git', [...identity, 'commit', '-q', ...args], { cwd: root });
+const head = (root: string) => execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim();
 
 afterEach(() => { for (const dir of temporary.splice(0)) fs.rmSync(dir, { recursive: true, force: true }); });
 
@@ -111,5 +115,72 @@ describe('GoReview release traceability', () => {
     expect(manifest.compiledDependencyFiles).toEqual([{ path: 'node_modules/tiny-dependency/index.mjs', sha256: hash('export const installed = true;') }]);
     const verified = verifyReleaseArtifact(artifact, { compareCurrentSource: true, projectRoot: root }) as typeof manifest;
     expect(verified.compiledDependencyFiles).toEqual(manifest.compiledDependencyFiles);
+  });
+
+  it('verifies a release artifact at the commit it was built from and refuses it once an empty commit moves HEAD', () => {
+    const root = cleanProject();
+    const artifact = artifactDir();
+    const built = createReleaseManifest(artifact, 'release', [...REQUIRED_CAPABILITIES], root) as { git: { commit: string; tree: string } };
+    expect(built.git.commit).toBe(head(root));
+    expect(verifyReleaseArtifact(artifact, { requireRelease: true, compareCurrentSource: true, projectRoot: root })).toMatchObject({ releaseEligible: true });
+
+    commit(root, '--allow-empty', '-m', 'empty commit after the build');
+    expect(head(root)).not.toBe(built.git.commit);
+    expect(() => verifyReleaseArtifact(artifact, { requireRelease: true, compareCurrentSource: true, projectRoot: root })).toThrow(/built from commit [0-9a-f]{40} but the checkout is at [0-9a-f]{40}/);
+    // developer-mode verification (no --release) is unchanged: the source still matches, so it passes
+    expect(verifyReleaseArtifact(artifact, { compareCurrentSource: true, projectRoot: root })).toMatchObject({ releaseEligible: true });
+  });
+
+  it('--expect-commit verifies against a named commit: the right sha passes, a wrong sha or a malformed one fails', () => {
+    const root = cleanProject();
+    const artifact = artifactDir();
+    const built = createReleaseManifest(artifact, 'release', [...REQUIRED_CAPABILITIES], root) as { git: { commit: string } };
+    commit(root, '--allow-empty', '-m', 'HEAD moved on');
+    const options = { requireRelease: true, compareCurrentSource: true, projectRoot: root };
+    expect(verifyReleaseArtifact(artifact, { ...options, expectCommit: built.git.commit })).toMatchObject({ releaseEligible: true });
+    expect(verifyReleaseArtifact(artifact, { ...options, expectCommit: built.git.commit.slice(0, 10) })).toMatchObject({ releaseEligible: true });
+    expect(() => verifyReleaseArtifact(artifact, { ...options, expectCommit: head(root) })).toThrow(/not from the expected commit/);
+    expect(() => verifyReleaseArtifact(artifact, { ...options, expectCommit: '0'.repeat(40) })).toThrow(/not from the expected commit/);
+    expect(() => verifyReleaseArtifact(artifact, { ...options, expectCommit: 'not-a-sha' })).toThrow(/7 to 40 hex digits/);
+  });
+
+  it('parses the verify command line: --expect-commit only with --release, never by default', () => {
+    expect(parseVerifyArgs(['verify', 'out'])).toEqual({ target: 'out', requireRelease: false, expectCommit: undefined });
+    expect(parseVerifyArgs(['verify', 'out', '--release'])).toEqual({ target: 'out', requireRelease: true, expectCommit: undefined });
+    expect(parseVerifyArgs(['verify', 'out', '--release', '--expect-commit', 'abc1234'])).toMatchObject({ requireRelease: true, expectCommit: 'abc1234' });
+    expect(parseVerifyArgs(['verify', 'out', '--release', '--expect-commit=abc1234'])).toMatchObject({ expectCommit: 'abc1234' });
+    expect(() => parseVerifyArgs(['verify', 'out', '--expect-commit', 'abc1234'])).toThrow(/release verification only/);
+    expect(() => parseVerifyArgs(['verify', 'out', '--release', '--expect-commit'])).toThrow(/needs a commit sha/);
+    expect(() => parseVerifyArgs(['verify', 'out', '--relese'])).toThrow(/Unknown argument/);
+    expect(() => parseVerifyArgs(['verify'])).toThrow(/Usage/);
+  });
+
+  it('hashes the native-shell workflow inputs, so changing one changes the manifest', () => {
+    const root = cleanProject();
+    const inputs = [
+      'packages/goreview-ios/app.json', 'packages/goreview-ios/eas.json', 'packages/goreview-ios/capacitor.config.ts',
+      'packages/goreview-ios/.eas/build/ios-testflight.yml', 'packages/goreview-ios/scripts/set-build-version.mjs',
+      'packages/goreview-ios/scripts/prepare-eas-ios-project.mjs', 'packages/goreview-ios/scripts/validate-app-icon.mjs',
+      'packages/goreview-ios/scripts/archive-testflight.sh', 'packages/goreview-ios/templates/eas-project/package.json',
+      'packages/goreview-ios/templates/eas-project/nested/extra.txt',
+    ];
+    for (const file of inputs) {
+      fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true });
+      fs.writeFileSync(path.join(root, file), `original ${file}
+`);
+    }
+    execFileSync('git', ['add', '.'], { cwd: root });
+    commit(root, '-m', 'native shell inputs');
+    const build = () => createReleaseManifest(artifactDir(), 'release', [...REQUIRED_CAPABILITIES], root) as { sourceManifestSha256: string; sourceFiles: { path: string }[] };
+    const before = build();
+    for (const file of inputs) expect(before.sourceFiles.map((entry) => entry.path)).toContain(file);
+    // each input is changed and committed in turn (a clean tree is needed for release mode); every one of them moves the source manifest hash
+    for (const file of inputs) {
+      fs.writeFileSync(path.join(root, file), `changed ${file}
+`);
+      execFileSync('git', ['add', '.'], { cwd: root });
+      commit(root, '-m', `change ${file}`);
+      expect(build().sourceManifestSha256, file).not.toBe(before.sourceManifestSha256);
+    }
   });
 });

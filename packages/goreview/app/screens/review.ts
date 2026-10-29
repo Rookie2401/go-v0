@@ -60,6 +60,12 @@ async function homeLocal(ctx: AppContext): Promise<HomeLocal | undefined> {
   return { id: `${learnerId}|${enrolmentId}`, key, holdOut, saved, resumable, snapshot };
 }
 
+/** A card (a short learning return, most often) has come due since the model was folded: a plan from that model would miss it, and Begin could say nothing is due (2026-10-29). */
+export function scheduleMovedSince(m: Pick<ReviewModel, 'now' | 'deck' | 'classDeck'>, nowMs: number): boolean {
+  const then = Date.parse(m.now);
+  return [...m.deck, ...(m.classDeck ?? [])].some((i) => i.status === 'active' && Date.parse(i.schedule.due) > then && Date.parse(i.schedule.due) <= nowMs);
+}
+
 export async function render(el: HTMLElement, ctx: AppContext, view: View, params: string[]): Promise<void> {
   const [sub, ...rest] = params;
   if (sub === 'session') return sessionScreen.render(el, ctx, view);
@@ -100,7 +106,7 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
     const local = await homeLocal(ctx).catch(() => undefined);
     const now = ctx.deps.now().getTime();
     const memo = local ? painted.get(ctx)?.get(local.id) : undefined;
-    if (!force && memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS) {
+    if (!force && memo && local && memo.key === local.key && now - memo.at < HOME_MEMO_MS && !scheduleMovedSince(memo.model, now)) {
       if (!view.alive()) return;
       paintedEvents = memo.model.events.length;
       draw(memo.model, memo.deck, memo.resumeId, memo.saved, memo.words, memo.selectedCount, memo.classDue);
@@ -219,13 +225,13 @@ export async function render(el: HTMLElement, ctx: AppContext, view: View, param
 
   /**
    * The model to plan with: the one on screen, unless the saved preferences or the local log have moved on since it was painted
-   * (a sync brought a card from another device), in which case it is loaded again.
+   * (a sync brought a card from another device), or a card has come due since, in which case it is loaded again.
    */
   async function freshModel(m: ReviewModel): Promise<ReviewModel> {
     try {
       const prefs = await ctx.state.getPrefs(m.identity.learnerId, m.identity.languageId);
       const events = await ctx.events(m.identity.languageId);
-      if (JSON.stringify(prefs) === JSON.stringify(m.prefs) && events.length === m.events.length) return m;
+      if (JSON.stringify(prefs) === JSON.stringify(m.prefs) && events.length === m.events.length && !scheduleMovedSince(m, ctx.deps.now().getTime())) return m;
       return (await loadReviewModel(ctx)) ?? m;
     } catch { return m; }
   }

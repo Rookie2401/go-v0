@@ -64,8 +64,8 @@ export interface SessionDriver {
   skips(): Array<{ itemId: string; reason: string; kind: 'learner' | 'build-failed' }>;
   state(): SessionState;
   finish(): Promise<SessionState>;
-  /** Append a validated reversal; never delete historical evidence. */
-  undo?(resultId: string, reason?: string): Promise<ReviewResult | undefined>;
+  /** Append a validated reversal; never delete historical evidence. With keyIsWrong (the learner reported the analysis), the card is set aside until verified facts repair it. */
+  undo?(resultId: string, reason?: string, opts?: { keyIsWrong?: boolean }): Promise<ReviewResult | undefined>;
   recover?(sessionId: string): Promise<boolean>;
 }
 

@@ -70,19 +70,25 @@ export function gradeTyped(key: GradingKey, response: Pick<Response, 'typed'> | 
     return finish('ambiguous', 0.5, `${quote(raw.trim())} is a right answer for another meaning (${alt.sense}), but this question asked about ${quote(accepted[0] ?? '')}. It is not counted either way.`, key, { matched: alt.answer, normalizedResponse: exact });
   }
 
-  // 4. the spelling needed ë→e / ç→c: right word, wrong letters
+  // 4. the spelling needed a fold: right word, wrong letters or marks. The loose normalisation holds every fold (Albanian ë→e / ç→c,
+  //    Hebrew points, Greek accents) and each fold leaves a string of another script alone, so this is language-general.
   if (loose) {
-    const folded = foldAlbanian(exact);
+    const folded = normalizeAnswer(exact, 'loose');
     for (const x of norm) {
       const candidates = [x.n, stripArticle(x.n, articles)].filter((s): s is string => !!s);
-      if (candidates.some((c) => foldAlbanian(c) === folded)) {
-        return finish('partial', CONF.folded, `Almost: the word is right, but ë and ç are letters of their own in Albanian. It is written ${quote(x.a)}.`, key, { matched: x.a, normalizedResponse: exact });
+      const hitFold = candidates.find((c) => normalizeAnswer(c, 'loose') === folded);
+      if (hitFold !== undefined) {
+        // the Albanian wording when the ë / ç fold alone explains the difference, otherwise the marks of the script
+        const lead = foldAlbanian(hitFold) === foldAlbanian(exact)
+          ? `Almost: the word is right, but ë and ç are letters of their own in Albanian. It is written ${quote(x.a)}.`
+          : `Almost: the word is right, but its vowel points or accents are part of the spelling. It is written ${quote(x.a)}.`;
+        return finish('partial', CONF.folded, lead, key, { matched: x.a, normalizedResponse: exact });
       }
     }
   }
 
   // 5. a listed near miss (the lemma when a specific form was asked)
-  const near = (key.partial ?? []).find((p) => normalizeAnswer(p, 'exact') === exact || (loose && foldAlbanian(normalizeAnswer(p, 'exact')) === foldAlbanian(exact)));
+  const near = (key.partial ?? []).find((p) => normalizeAnswer(p, 'exact') === exact || (loose && normalizeAnswer(p, 'loose') === normalizeAnswer(exact, 'loose')));
   if (near) {
     return finish('partial', CONF.nearMiss, key.partialExplanation ?? `${quote(near)} is the dictionary form, but the question asked for a specific form: ${quote(accepted[0] ?? '')}.`, key, { matched: near, normalizedResponse: exact });
   }
@@ -117,8 +123,24 @@ export function gradeSelf(key: Pick<AnswerKey, 'explanation' | 'deeper' | 'accep
   return finish(outcome, CONF.self, `You graded this yourself: ${g}.${shown}`, key);
 }
 
-/** Grades a response against an exercise by its response mode. This is what every builder's `grade` calls. */
+/** A Grading that remembers the audio was replayed beyond the stimulus's allowance (extra replays are help, not recall evidence). */
+export type GradingWithReplays = Grading & { replaysExceeded?: true };
+
+/** True when the response replayed the audio more often than the allowance (the same rule as listening/assessment.ts `scoreListening`). */
+export const replaysExceeded = (response: Pick<Response, 'replays'>, replaysAllowed: number | undefined): boolean =>
+  replaysAllowed !== undefined && Math.floor(Math.max(0, response.replays ?? 0)) > replaysAllowed;
+
+/**
+ * Grades a response against an exercise by its response mode. This is what every builder's `grade` calls. The response carries the
+ * replay count but not the allowance (that belongs to the stimulus), so a grading earned with extra replays is stamped here and
+ * `ratingFor` reads the stamp: the recorded rating then agrees with the `hinted` flag the session puts on the event.
+ */
 export function gradeResponse(exercise: Exercise, response: Response): Grading {
+  const g = gradeByMode(exercise, response);
+  return replaysExceeded(response, exercise.prompt?.audio?.replaysAllowed) ? { ...g, replaysExceeded: true } as GradingWithReplays : g;
+}
+
+function gradeByMode(exercise: Exercise, response: Response): Grading {
   if (!exercise.validation.ok) {
     return { outcome: 'invalid-question', confidence: 0, explanation: `This question failed its own checks and is not counted: ${exercise.validation.issues.join('; ') || 'unspecified'}.` };
   }
@@ -146,11 +168,13 @@ export function gradeResponse(exercise: Exercise, response: Response): Grading {
  * The FSRS rating a grading earns, or null when it must not schedule anything.
  *   challenged, audioFailed, ambiguous, invalid-question, unable-to-grade   → null
  *   correct, unhinted                                                       → 3 (2 Hard, 4 Easy when self-graded)
- *   correct, hinted                                                         → null
+ *   correct, hinted / extra replays / transcript shown first               → null
  *   partial                                                                 → 1 unless successful recall is established
  *   incorrect                                                               → 1
  */
-export function ratingFor(grading: Grading, response: Response): Rating | null {
+export function ratingFor(grading: Grading, response: Response, opts: { replaysAllowed?: number } = {}): Rating | null {
+  // listening replays beyond the allowance are help: stamped on the grading by gradeResponse, or checked here when the caller knows the allowance
+  if ((grading as GradingWithReplays).replaysExceeded === true || replaysExceeded(response, opts.replaysAllowed)) return null;
   if (response.challenged === true || response.audioFailed === true || response.retrievalAttempted === false ||
       response.hinted === true || (response.assistance?.length ?? 0) > 0 || response.transcriptShownBefore === true) return null;
   switch (grading.outcome) {

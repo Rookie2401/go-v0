@@ -133,7 +133,7 @@ class Controller {
   private stage: Stage = 'loading';
   private presented: Presented | undefined;
   /** The answer given and its preview, waiting to be committed. */
-  private given: { response: Response; grading: Grading; challenged: boolean; committed?: import('../../src/types').ReviewResult } | undefined;
+  private given: { response: Response; grading: Grading; challenged: boolean; /** the analysis was reported wrong before the commit: the card is set aside once the answer is recorded */ keyIsWrong?: boolean; committed?: import('../../src/types').ReviewResult } | undefined;
   private playback: PlaybackHandle | undefined;
   private pronunciation: PlaybackHandle | undefined;
   private pronunciationStateOff: (() => void) | undefined;
@@ -267,11 +267,19 @@ class Controller {
     const pr = this.presented;
     if (!g || !pr) return;
     if (g.committed) { this.given = undefined; return; }
-    const response: Response = g.challenged ? { ...g.response, challenged: true } : g.response;
-    const result = await this.run.driver.answer(response);
+    // an analysis reported wrong before the commit: the answer is recorded, then retracted with keyIsWrong, so the invalidation can name
+    // the recorded review and the card waits for verified facts (a pre-commit challenge alone records a null-rated answer and nothing else)
+    const reportWrong = g.keyIsWrong && !!this.run.driver.undo;
+    const response: Response = g.challenged && !reportWrong ? { ...g.response, challenged: true } : g.response;
+    let result = await this.run.driver.answer(response);
     this.given = undefined;
+    if (reportWrong) {
+      const retracted = await this.run.driver.undo!(result.resultId, 'analysis reported wrong', { keyIsWrong: true }).catch(() => undefined);
+      if (retracted) result = retracted;
+      else this.say('The report was sent, but this answer could not be retracted here; it stays an ordinary answer. Challenge it from the summary.', 'error');
+    }
     this.run.results.push(result);
-    const why = withheldReason(result, pr.exercise);
+    const why = reportWrong ? 'the analysis was reported wrong; the card waits for a repair' : withheldReason(result, pr.exercise);
     if (why) this.run.withheld.push({ itemId: result.itemId, unitId: result.target.unitId, family: FAMILY_LABEL[result.family], reason: why });
   }
 
@@ -790,13 +798,17 @@ class Controller {
     return box;
   }
 
-  /** Before the answer counts: the learner disputes the key. The result is kept, scheduled nowhere, and counts as no evidence. */
-  private challenge(): void {
+  /**
+   * Before the answer counts: the learner disputes the key. The result is kept, scheduled nowhere, and counts as no evidence.
+   * With keyIsWrong (the analysis was reported wrong), the card is also set aside until verified facts repair it, so the same key
+   * does not come back next session (2026-10-29).
+   */
+  private challenge(opts: { keyIsWrong?: boolean } = {}): void {
     const g = this.given;
     if (!g || g.challenged || !this.presented) return;
     if (g.committed && this.run.driver.undo) {
       const committed = g.committed;
-      void this.run.driver.undo(committed.resultId, 'learner challenged the answer').then((updated) => {
+      void this.run.driver.undo(committed.resultId, opts.keyIsWrong ? 'analysis reported wrong' : 'learner challenged the answer', opts).then((updated) => {
         if (!updated) { this.say('This answer could not be reversed.', 'error'); return; }
         const index = this.run.results.findIndex((result) => result.resultId === updated.resultId);
         if (index >= 0) this.run.results[index] = updated;
@@ -812,11 +824,12 @@ class Controller {
       return;
     }
     g.challenged = true;
+    if (opts.keyIsWrong) g.keyIsWrong = true;
     const rec = this.root.querySelector<HTMLElement>('#recording');
     if (rec) rec.textContent = forecastRecording(g.grading, { ...g.response, challenged: true }, this.presented.exercise);
     const btn = this.root.querySelector<HTMLButtonElement>('#challenge');
     if (btn) btn.disabled = true;
-    this.say('Challenged. The answer stays in your history and is not counted as evidence or used to schedule the item.', 'ok');
+    this.say(opts.keyIsWrong ? 'Reported. The answer will not count as evidence, and the card waits until the analysis is repaired.' : 'Challenged. The answer stays in your history and is not counted as evidence or used to schedule the item.', 'ok');
   }
 
   private reportForm(pr: Presented): HTMLElement {
@@ -832,8 +845,8 @@ class Controller {
         try {
           const r = await api.correct({ formId, ...parsed, ...(reason.value.trim() ? { reason: reason.value.trim() } : {}), enrolmentId: this.run.ctx.enrolmentId, languageId: this.run.ctx.languageId });
           if (!r.ok) { setStatus(out, explainFailure(r), 'error'); return; }
-          setStatus(out, 'Reported. The correction is recorded and the analysis may be replaced; this answer will not count as evidence.', 'ok');
-          this.challenge();
+          setStatus(out, 'Reported. The correction is recorded and the analysis may be replaced; this answer will not count as evidence, and the card waits until the analysis is repaired.', 'ok');
+          this.challenge({ keyIsWrong: true });
         } catch { setStatus(out, 'The service could not be reached. Try again when you are online.', 'error'); }
       })();
     }, { id: 'report-send', class: 'btn' });

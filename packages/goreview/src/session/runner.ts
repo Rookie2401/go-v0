@@ -147,7 +147,7 @@ export interface SessionRunner {
   skip(reason?: string): Promise<void>;
   challenge(reason: string, opts?: { keyIsWrong?: boolean }): Promise<ReviewResult | undefined>;
   /** Append-only correction that removes the event's schedule/evidence contribution on refold. */
-  undo(resultId: string, reason: string): Promise<ReviewResult | undefined>;
+  undo(resultId: string, reason: string, opts?: { keyIsWrong?: boolean }): Promise<ReviewResult | undefined>;
   finish(): Promise<SessionState>;
   /** Loads a saved session (state and skips) from the area and continues from it; false when none exists. */
   recover(sessionId: string, committedEvents?: GoEvent[]): Promise<boolean>;
@@ -625,8 +625,10 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     if (st.results.some((r) => r.itemId === last.itemId && !r.response.challenged && Date.parse(r.at) > Date.parse(last.at))) {
       throw new Error('cannot undo an older review after a newer effective review; refresh the deck and resolve the conflict first');
     }
-    const at = now();
-    if (Date.parse(at) <= Date.parse(last.evidence.at)) throw new RangeError('correction time must follow the graded event');
+    // a correction follows the graded event: when the clock has not moved since (the report-then-commit path, or the same millisecond),
+    // it is dated one millisecond after it rather than refused
+    const clock = now();
+    const at = Date.parse(clock) <= Date.parse(last.evidence.at) ? new Date(Date.parse(last.evidence.at) + 1).toISOString() : clock;
     const events: GoEvent[] = [];
     const orig = last.evidence;
     const note: GoEvent = {
@@ -701,7 +703,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     answer: (response) => serializeTransition(() => answerUnsafe(response)),
     skip: (reason) => serializeTransition(() => skipUnsafe(reason)),
     challenge: (reason, opts) => serialize(() => challengeUnsafe(reason, opts)),
-    undo: (resultId, reason) => serialize(() => undoUnsafe(resultId, reason)),
+    undo: (resultId, reason, opts) => serialize(() => undoUnsafe(resultId, reason, opts)),
     finish: () => serialize(async () => {
       if (st.status === 'in-progress') { st.status = 'finished'; st.finishedAt = now(); }
       await releaseCache();

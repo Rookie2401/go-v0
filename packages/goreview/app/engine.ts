@@ -196,7 +196,7 @@ export function createReviewEngine(opts: EngineOptions): ReviewEngine {
         state: () => runner.state(),
         finish: () => runner.finish(),
         recover: (sessionId) => runner.recover(sessionId),
-        undo: (resultId, reason) => runner.undo(resultId, reason ?? 'learner corrected review grade'),
+        undo: (resultId, reason, opts) => runner.undo(resultId, reason ?? 'learner corrected review grade', opts),
       };
     },
 

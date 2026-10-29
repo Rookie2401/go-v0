@@ -17,7 +17,7 @@ const scopeOf = (e: GoEvent): string => `${e.learnerId}\u0000${e.languageId}\u00
 /**
  * Shared causal classification for FSRS and Repository evidence. For events that carry
  * expectedPreviousReviewId, only a fully resolved causal branch can advance scheduling.
- * Only a sibling on a distinct, named device within 24 hours of the deterministic winner
+ * Only a sibling on a distinct, named device strictly less than 24 hours after the deterministic winner
  * may provide evidence. Same-device later siblings, siblings outside that window, and all
  * sibling descendants are excluded as stale state claims. The earliest timestamp then ID
  * advances FSRS. This bounded concurrent evidence is not a spacing guarantee; level promotion
@@ -122,7 +122,7 @@ export function classifyReviewEvents(events: readonly GoEvent[], retracted: Read
       effectiveIds.add(winner.id);
       for (const e of valid.slice(1)) {
         const delta = Date.parse(e.at) - Date.parse(winner.at), device = e.producer?.deviceId;
-        if (winnerDevice && device && winnerDevice !== device && delta >= 0 && delta <= 24 * 60 * 60_000) {
+        if (winnerDevice && device && winnerDevice !== device && delta >= 0 && delta < 24 * 60 * 60_000) {
           excludedReasons.set(e.id, 'concurrent sibling; canonical event is ' + winner.id); independentSiblingIds.add(e.id);
         } else excludedReasons.set(e.id, !winnerDevice || !device ? 'concurrent sibling lacks distinct device identity' : winnerDevice === device ? 'stale same-device sibling; canonical event is ' + winner.id : 'sibling outside 24-hour concurrency window');
         queue.push({ scope, parent: e.id, inherited: excludedReasons.get(e.id) });

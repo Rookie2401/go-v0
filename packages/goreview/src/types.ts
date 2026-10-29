@@ -250,7 +250,9 @@ export interface ScheduleState {
   parametersVersion: string;
 }
 
-export interface ReviewLogEntry { at: string; rating: Rating; outcome: GradeOutcome; deviceId: string; exerciseId: string; family: ExerciseFamily; elapsedDays: number; eventId?: string; retracted?: boolean; scheduleExcluded?: string; conflict?: boolean }
+export interface ReviewLogEntry { at: string; rating: Rating; outcome: GradeOutcome; deviceId: string; exerciseId: string; family: ExerciseFamily; elapsedDays: number; eventId?: string; retracted?: boolean; scheduleExcluded?: string; conflict?: boolean;
+  /** An explicit practice answer (saved deck, selected words, Repeat this batch) given before the card was due: in the chain and in the evidence, but the schedule was kept (2026-10-29). */
+  earlyPractice?: boolean }
 
 export type ItemStatus = 'active' | 'snoozed' | 'suspended' | 'dismissed';
 

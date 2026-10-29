@@ -2,7 +2,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { computePosition, createCardUI, type CardUI, type DismissReason, type SpeechLike } from '../../packages/golearn-extension/src/popup/card';
+import { computePosition, createCardUI, localSpeechPronouncer, type CardUI, type DismissReason, type SpeechLike } from '../../packages/golearn-extension/src/popup/card';
+import { DEVICE_TAGS } from '../../packages/golearn-extension/src/content/voiceTags';
 import { parseSelection, type CardModel } from '../../packages/golearn-extension/src/parser';
 import { GOLEARN_HOST_ATTR, type PopupAnchor } from '../../packages/golearn-extension/src/contract/readerAdapter';
 import { setBody, stubLayout } from './dom';
@@ -331,8 +332,8 @@ describe('pronunciation', () => {
     ui.destroy(); ui = make(speech);
     ui.show(cardFor(), anchor());
     expect((ui.root()!.querySelector('.say') as HTMLButtonElement).disabled).toBe(true);
-    expect((ui.root()!.querySelector('.say') as HTMLButtonElement).title).toMatch(/No local Albanian voice/);
-    expect(visibleText(ui.root())).toMatch(/No local Albanian voice/);
+    expect((ui.root()!.querySelector('.say') as HTMLButtonElement).title).toMatch(/No Albanian voice on this device/);
+    expect(visibleText(ui.root())).toMatch(/No Albanian voice on this device/);
     expect(speech.spoken).toEqual([]);
   });
   it('no Albanian voice at all: disabled', () => {
@@ -340,6 +341,31 @@ describe('pronunciation', () => {
     ui.destroy(); ui = make(speech);
     ui.show(cardFor(), anchor());
     expect((ui.root()!.querySelector('.say') as HTMLButtonElement).disabled).toBe(true);
+  });
+});
+
+describe('the built-in local pronouncer (the GoLearn web app card, on an iPhone too)', () => {
+  const speechOf = (voices: Array<{ lang: string; name: string; localService?: boolean }>) =>
+    ({ spoken: [] as unknown[], getVoices: () => voices, speak(u: unknown) { (this as { spoken: unknown[] }).spoken.push(u); }, cancel() {} });
+  const say = (text: string, voice: { lang: string }) => ({ text, voice });
+  it('takes the same voices as the extension: Latin is read by an Italian voice, and says so (2026-10-29)', () => {
+    const speech = speechOf([{ lang: 'en-US', name: 'en', localService: true }, { lang: 'it-IT', name: 'Alice', localService: true }]);
+    const p = localSpeechPronouncer(speech, say, DEVICE_TAGS);
+    const a = p.availability('la') as { available: boolean; note: string };
+    expect(a.available).toBe(true);
+    expect(a.note).toContain('it-IT, standing in');
+    expect(p.play('salve', 'la')).toMatchObject({ ok: true, voiceId: 'device:Alice' });
+    expect(speech.spoken).toEqual([{ text: 'salve', voice: expect.objectContaining({ lang: 'it-IT' }) }]);
+  });
+  it('without a voice says which language is missing and where to add one; for Latin, an Italian voice', () => {
+    const speech = speechOf([{ lang: 'en-US', name: 'en', localService: true }]);
+    const p = localSpeechPronouncer(speech, say, DEVICE_TAGS);
+    expect((p.availability('de') as { note: string }).note).toBe("No German voice on this device. Add one in the system's speech settings; GoLearn setup, Audio, shows how.");
+    expect((p.availability('la') as { note: string }).note).toContain('Add an Italian voice, which reads Latin here,');
+  });
+  it('an empty voice list is still loading (Safari fills it only once asked), not a device without voices', () => {
+    const p = localSpeechPronouncer(speechOf([]), say, DEVICE_TAGS);
+    expect(p.availability('hi')).toEqual({ available: false, note: 'Looking for a voice on this device…' });
   });
 });
 

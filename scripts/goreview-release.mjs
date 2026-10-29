@@ -22,7 +22,7 @@ const SOURCE_ROOTS = [
   'packages/goreview/src', 'packages/goreview/app', 'packages/repository-contract/src',
   'packages/repository-engine/src', 'packages/repository-service/src', 'packages/repository-store/src',
   'packages/repository-sync/src', 'packages/golisten/src', 'packages/gotell/src', 'packages/shared-brand', 'packages/shared-fonts',
-  'packages/biblia/src', 'packages/biblia/public', 'packages/goreview/app/public',
+  'packages/biblia/src', 'packages/biblia/public',
 ];
 // Single files hashed into the manifest beside SOURCE_ROOTS. Grouped by area and sorted within each group; a path that does not exist is skipped.
 const BUILD_INPUTS = [

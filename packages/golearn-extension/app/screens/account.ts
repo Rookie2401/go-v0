@@ -3,6 +3,8 @@
  * the learner’s progress across devices: what is already on this device is uploaded once, the languages chosen here become
  * enrolments on the account, and from then on the two are kept in step. Signing out returns to the device alone and removes nothing.
  * The service address (create account / sign in go there) is config.json's; nothing on the page names or changes it (2026-10-28).
+ * The name: asked for when the account is created (the field shows only under "Create an account"), and shown on the signed-in state
+ * with Edit / Add a name in place (POST /me/profile), so GoLearn names the account the way GoReview's account page does (the owner, 2026-10-28).
  *
  * The password goes to the service address and nowhere else (in the extension: to the background worker, which sends
  * it to the service); it is never stored, logged or kept beyond the request. The bearer token is written only into
@@ -11,6 +13,7 @@
 import { recordTermsAcceptance } from '../consent';
 import type { AppContext } from '../context';
 import { append, button, clear, field, h, p, setStatus, shortDate, statusLine } from '../dom';
+import { explainAccountFailure } from '../accountClient';
 import { setCheckEmail } from '../flash';
 import type { View } from './view';
 
@@ -70,6 +73,7 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
     const out = statusLine();
     append(sessionBox, [
       h('p', { id: 'signed-in-as' }, `Signed in as ${s.email}`),
+      nameLine(),
       h('p', { class: 'muted' }, `Learner ${s.learnerId} · session ${expired ? 'expired' : 'valid'} until ${shortDate(s.expiresAt)}`),
       expired ? p('The session has expired. Sign in again below.', 'error') : null,
       h('div', { class: 'row' }, button('Sign out of this device', async () => {
@@ -84,6 +88,56 @@ export async function renderAccountSection(el: HTMLElement, ctx: AppContext, vie
         : h('p', {}, h('a', { href: '#/signin', id: 'settings-signin' }, 'Sign in with another account')),
     ]);
   }
+  /**
+   * "Name: Ana  Edit" — the display name on the account, the one GoReview's account page shows; fetched from the service after the line
+   * is on the page, and set in place (an empty name is refused; an older service that has no POST /me/profile is explained).
+   */
+  function nameLine(): HTMLElement {
+    const text = h('span', { id: 'account-name' }, '…');
+    const edit = button('Edit', () => openEditor(), { class: 'btn small', id: 'account-name-edit', hidden: true });
+    const row = h('p', { class: 'account-name-line', id: 'account-name-line' }, h('span', { class: 'account-name-cap' }, 'Name'), ' ', text, ' ', edit);
+    const note = statusLine();
+    let current = '';
+    function show(name: string | undefined): void {
+      current = name ?? '';
+      text.textContent = name || 'No name yet';
+      text.classList.toggle('muted', !name);
+      edit.textContent = name ? 'Edit' : 'Add a name';
+      edit.hidden = false;
+    }
+    function openEditor(): void {
+      const input = h('input', { type: 'text', id: 'account-name-input', name: 'name', autocomplete: 'name', maxlength: 100, value: current, 'aria-label': 'Your name' }) as HTMLInputElement;
+      const save = button('Save', () => {
+        void (async () => {
+          const name = input.value.trim();
+          if (!name) { setStatus(note, 'Enter a name, or cancel.', 'error'); return; }
+          save.disabled = true;
+          setStatus(note, 'Saving…', 'info');
+          const { client } = await ctx.accountApi();
+          const r = await client.rename(name);
+          if (!view.alive()) return;
+          save.disabled = false;
+          if (!r.ok) { setStatus(note, r.status === 404 ? 'This service cannot change names yet; the name stays as it was.' : explainAccountFailure(r), 'error'); return; }
+          show(name);
+          editor.replaceWith(row);
+          setStatus(note, 'Name saved. GoReview shows it too.', 'ok');
+        })();
+      }, { class: 'btn small', id: 'account-name-save' });
+      const cancel = button('Cancel', () => { editor.replaceWith(row); setStatus(note, '', 'info'); }, { class: 'linklike small', id: 'account-name-cancel' });
+      const editor = h('p', { class: 'account-name-line account-name-edit' }, h('span', { class: 'account-name-cap' }, 'Name'), ' ', input, ' ', save, ' ', cancel);
+      row.replaceWith(editor);
+      input.focus();
+    }
+    void (async () => {
+      const { client } = await ctx.accountApi();
+      const r = await client.state();
+      if (!view.alive()) return;
+      show(r.ok ? r.data.name : undefined);
+    })();
+    const box = h('div', { class: 'account-name' }, row, note);
+    return box;
+  }
+
   await paintSession();
   if (!withForm) return;
 

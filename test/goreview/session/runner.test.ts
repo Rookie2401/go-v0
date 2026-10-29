@@ -426,12 +426,25 @@ describe('listening', () => {
     expect(validateEvent(r.evidence!)).toEqual([]);
   });
 
-  it('a synthetic voice is practice: the result is kept, the event carries quality none', async () => {
+  it('a synthetic voice is practice: the result is kept, the event carries quality none, and the rating stays as schedule bookkeeping stamped listeningPractice', async () => {
     const { runner } = setup({ plan: audioPlan(), audio: fakeAudioSource(syntheticVoice) });
     const r = await runner.answer(right({ audioPlayed: true }));
     expect(r.scoring?.eligibleForEvidence).toBe(false);
     expect(r.scoring?.synthetic).toBe(true);
     expect(r.evidence?.evidence?.quality).toBe('none');
+    // 2026-10-29: a card whose answers never rated was re-planned as new work in every session; the rating now moves the card's own
+    // schedule while the quality-none note still claims no listening knowledge
+    expect(r.rating).toBe(3);
+    expect(r.evidence?.payload.rating).toBe(3);
+    expect(r.evidence?.payload.listeningPractice).toBe(true);
+    expect(validateEvent(r.evidence!)).toEqual([]);
+  });
+
+  it('a synthetic voice with the audio replayed beyond the allowance is help: no rating, no listeningPractice stamp', async () => {
+    const { runner } = setup({ plan: audioPlan(), audio: fakeAudioSource(syntheticVoice) });
+    const r = await runner.answer(right({ audioPlayed: true, replays: 5 }));
+    expect(r.rating).toBeNull();
+    expect(r.evidence?.payload.listeningPractice).toBeUndefined();
   });
 
   it('audio failure → unable-to-grade, rating null, evidence null, nothing recorded, but the result is kept and the session advances', async () => {

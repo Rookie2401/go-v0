@@ -6,9 +6,11 @@ export const isValidReviewClaim = (e: GoEvent): boolean => REVIEW_KINDS.has(e.ki
   && !['invalid-question','ambiguous','unable-to-grade'].includes(String(e.payload.outcome))
   && e.payload.challenged !== true && e.payload.audioFailed !== true && e.payload.retrievalAttempted !== false;
 const rating = (e: GoEvent): unknown => e.payload.rating;
+// A listening answer to a computer voice (`payload.listeningPractice`, written by GoReview) is rated with evidence quality 'none': it is a
+// link in the card's causal chain and moves the card's schedule, while every reader of knowledge still weighs it at nothing (2026-10-29).
 const rated = (e: GoEvent): boolean => isValidReviewClaim(e) && Number.isInteger(rating(e)) && Number(rating(e)) >= 1 && Number(rating(e)) <= 4
   && e.payload.hinted !== true && e.payload.answerShownBefore !== true && e.payload.transcriptShownBefore !== true
-  && e.evidence?.assisted !== true && e.evidence?.quality !== 'none';
+  && e.evidence?.assisted !== true && (e.evidence?.quality !== 'none' || e.payload.listeningPractice === true);
 const parentOf = (e: GoEvent): string | null => typeof e.payload.expectedPreviousReviewId === 'string' ? e.payload.expectedPreviousReviewId : null;
 const compare = (a: GoEvent, b: GoEvent): number => Date.parse(a.at) - Date.parse(b.at) || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
 const sameScope = (a: GoEvent, b: GoEvent): boolean => a.learnerId === b.learnerId && a.languageId === b.languageId && a.subject?.cardId === b.subject?.cardId;

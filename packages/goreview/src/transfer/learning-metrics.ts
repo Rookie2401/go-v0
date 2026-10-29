@@ -126,7 +126,7 @@ export function learningMetrics(events: readonly GoEvent[], deck: readonly DeckI
   const selection = selectReviewEvidenceEvents(asOfEvents);
   const rows = selection.events.filter(e => !selection.assistedIds.has(e.id) && typeof e.subject.cardId==='string' && e.subject.cardId.length>0 && e.learnerId === scope.learnerId && e.languageId === scope.languageId &&
     REVIEW_KINDS.has(e.kind) && Number.isInteger(e.payload.rating) && Number(e.payload.rating) >= 1 && Number(e.payload.rating) <= 4 &&
-    e.evidence?.quality !== undefined && e.evidence.quality !== 'none' && !assisted(e) &&
+    e.evidence?.quality !== undefined && e.evidence.quality !== 'none' && e.payload.listeningPractice !== true && !assisted(e) &&
     (e.kind!=='ListeningAssessed'||validListeningAttempt(e)) && Number.isFinite(Date.parse(e.at)) && Date.parse(e.at) <= now)
     .sort((a,b)=>Date.parse(a.at)-Date.parse(b.at)||a.id.localeCompare(b.id));
 

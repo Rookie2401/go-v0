@@ -504,8 +504,14 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
     }
 
     let rating: Rating | null = NO_EVENT_OUTCOMES.has(grading.outcome) || res.challenged ? null : gradingPort.ratingFor(grading, res);
-    if (res.audioFailed || listening && !listening.eligibleForEvidence) rating = null;
-    return { exercise, evidenceExercise: b.exercise, family, response: res, grading, listening, scoring, rating, at, factsFingerprint: b.factsFingerprint };
+    // extra replays are help (listening/assessment.ts marks the score `hinted`): no rating, whatever the grading port said
+    if (res.audioFailed || listening?.hinted) rating = null;
+    // A valid answer to a computer voice (or an unreviewed recording) keeps its rating as SCHEDULE bookkeeping only: the card then comes back
+    // on its own interval instead of as fresh work in every session (2026-10-29: a card whose answers never rated was re-planned as new
+    // every time and ate the new-card allowance). The evidence note stays quality 'none' (golisten assessmentEvidence), so the Repository
+    // never reads listening knowledge from it; the event is stamped `listeningPractice` so every reader of ratings can tell it apart.
+    const listeningPractice = rating !== null && !!listening && !listening.eligibleForEvidence;
+    return { exercise, evidenceExercise: b.exercise, family, response: res, grading, listening, scoring, rating, at, factsFingerprint: b.factsFingerprint, listeningPractice };
   }
 
   function normalise(ev: GoEvent, cur: CurrentExercise, rating: Rating | null, result: Pick<ReviewResult, 'exerciseId' | 'family' | 'grading' | 'response'>, index: number, quality?: 'none'): GoEvent {
@@ -577,6 +583,7 @@ export function createSessionRunner(deps: RunnerDeps): SessionRunner {
       if (raw) {
         evidence = normalise(raw, cur, a.rating, result, index, a.response.challenged ? 'none' : undefined);
         evidence.payload.assessmentFingerprint = a.factsFingerprint;
+        if (a.listeningPractice) evidence.payload.listeningPractice = true;
       }
     }
     if (evidence) {

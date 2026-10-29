@@ -27,6 +27,20 @@ export interface CurrentDeck {
     questionsAvailable: number; batchQuestions: number; estimatedSeconds: number; workloadLimit: number; nextReturnAt?: string; nextReviewAt?: string };
   remediation: RemediationCandidate[];
 }
+/**
+ * The ONE remediation projection every GoReview surface reads (home counts, the remediation screen, the next-deck panel, planning).
+ * It is computed once over ordinary cards and Class Essentials together; invalidated questions belong to facts repair, not here.
+ * `ready` is a studied marker plus the elapsed delay; a study marker alone never resolves a failure (see planner/remediation.ts).
+ */
+export interface EffectiveRemediation {
+  all: RemediationCandidate[]; ordinary: RemediationCandidate[]; class: RemediationCandidate[];
+  ready: RemediationCandidate[]; needsStudy: RemediationCandidate[]; waiting: RemediationCandidate[];
+}
+export function effectiveRemediation(model: Pick<ReviewModel, 'deck' | 'classDeck' | 'events' | 'now'>): EffectiveRemediation {
+  const all = remediationBacklog([...model.deck, ...(model.classDeck ?? [])].filter(item => !item.invalidatedAt), model.events, model.now);
+  return { all, ordinary: all.filter(c => !isClassUnit(c.unitId)), class: all.filter(c => isClassUnit(c.unitId)),
+    ready: all.filter(c => c.ready), needsStudy: all.filter(c => !c.studiedAt), waiting: all.filter(c => !!c.studiedAt && !c.ready) };
+}
 export interface Wanted { unitId: string; unitKind: string; dimension: AssessmentDimension; family: ExerciseFamily; outcome?: IntakeOutcome }
 const rankOf = (level: KnowledgeLevel | undefined): number => (level ? Math.max(0, KNOWLEDGE_LEVELS.indexOf(level)) : 0);
 const isAudio = (family: ExerciseFamily): boolean => family === 'audio-to-meaning' || family === 'audio-transcription';
@@ -134,8 +148,7 @@ export async function planCurrentDeck(ctx: AppContext, model: ReviewModel, holdO
   const planned = scheduledPlan(ctx, model, holdOut);
   const items = (model.schedulerIssue ? [] : planned.items).map(p => ({ ...p, schedulingCardExists: !!knownItem(model, p.item),
     origin: knownItem(model, p.item) ? 'scheduled' as const : 'intake' as const, intent: { kind: 'automatic' as const } }));
-  const remediation = remediationBacklog(model.deck.filter(item => !item.invalidatedAt), model.events, model.now);
-  const classRemediation = remediationBacklog((model.classDeck ?? []).filter(item => !item.invalidatedAt), model.events, model.now);
+  const { ordinary: remediation, class: classRemediation } = effectiveRemediation(model);
   const plan: SessionPlan = { ...planned, items, initialQuestionCount:items.length,
     availableWork: model.schedulerIssue ? { questions:0,newQuestions:0 } : planned.availableWork ?? { questions:items.length,newQuestions:items.filter(p=>p.isNew).length },
     batch: { ...(planned.batch ?? { targetQuestions: fillSize(model), workloadLimit:model.prefs.sessionMinutes===0?0:model.prefs.sessionMinutes*60, estimatedSeconds:0, reasons:[] }),
@@ -223,9 +236,9 @@ export function planFromEntries(ctx: AppContext, model: ReviewModel, entries: re
 export const planFromSaved = (ctx: AppContext, model: ReviewModel, deck: SavedDeck): Promise<SessionPlan> => planFromEntries(ctx, model, deck.items);
 
 /** Optional delayed retrieval over persisted remediation candidates; it does not alter the scheduled queue. */
-export async function planRemediation(ctx: AppContext, model: ReviewModel, candidates = remediationBacklog([...model.deck, ...(model.classDeck ?? [])].filter(item => !item.invalidatedAt), model.events, model.now)): Promise<SessionPlan> {
+export async function planRemediation(ctx: AppContext, model: ReviewModel, candidates: readonly RemediationCandidate[] = effectiveRemediation(model).all): Promise<SessionPlan> {
   const ready = new Set(candidates.filter(candidate => candidate.ready).map(candidate => candidate.itemId));
-  const entries = [...model.deck, ...(model.classDeck ?? [])].filter(item => ready.has(item.itemId)).map(item => ({
+  const entries = [...model.deck, ...(model.classDeck ?? [])].filter(item => ready.has(item.itemId) && !item.invalidatedAt).map(item => ({
     itemId: item.itemId, unitId: item.unitId, unitKind: item.unitKind, label: unitLabel(item.unitId), dimension: item.dimension, family: item.family,
   }));
   const plan = await assemble(ctx, model, entries, fillSize(model), {

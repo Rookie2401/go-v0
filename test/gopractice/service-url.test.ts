@@ -15,9 +15,12 @@ const scratch = fs.mkdtempSync(path.join(os.tmpdir(), 'goreview-service-url-'));
 afterAll(() => { fs.rmSync(scratch, { recursive: true, force: true }); });
 
 function build(out: string, serviceUrl?: string): void {
+  const env: NodeJS.ProcessEnv = { ...process.env, GOREVIEW_RELEASE_MODE: 'developer', GOPRACTICE_DICT: '', GOPRACTICE_OUT: out };
+  if (serviceUrl === undefined) delete env.GOPRACTICE_SERVICE_URL;
+  else env.GOPRACTICE_SERVICE_URL = serviceUrl;
   execFileSync(process.execPath, [vite, 'build', '-c', 'packages/gopractice/vite.config.ts', '--mode', 'review'], {
     cwd: root, stdio: 'pipe', timeout: 120_000,
-    env: { ...process.env, GOREVIEW_RELEASE_MODE: 'developer', GOPRACTICE_DICT: '', GOPRACTICE_OUT: out, ...(serviceUrl !== undefined ? { GOPRACTICE_SERVICE_URL: serviceUrl } : {}) },
+    env,
   });
 }
 

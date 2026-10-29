@@ -36,12 +36,20 @@ grammar-application (constructions), listening → audio-to-meaning, contextual 
 
 ## Planning rules (`planSession`)
 
-Due items first (lowest recall probability first), then repeated weak points (≥ 2 Again in the last 10 reviews, or repeated
-help requests; at most 5 extra), then new items (never-reviewed deck items, then intake `test-now`) up to `maxNew`, all inside
-`sessionMinutes` using estimated seconds per family (written 25 s, choice 15 s, grammar 35 s, sentence completion 40 s,
-audio 30 s + 8 s per expected replay). Listening items are planned only when listening is on and audio is available;
-otherwise a due listening item is asked in writing (and counts as reading) and a new one is not added. `grammarShare` is
-approximated for the optional tiers. benefit = recall deficit × candidate score ÷ cost.
+The automatic queues are due learning/relearning, due reviews, then eligible new admissions. Due time orders cards within each
+due tier; the versioned priority score breaks equal-due-time ties. New admissions are bounded by `maxNew`, the UTC-day
+`dailyNewLimit`, workload admission, the adaptive initial target, and the active-practice time budget. The target defaults to
+10 and is capped at 20 and by the learner's configured maximum. Estimated seconds per family are written 25 s, choice 15 s,
+grammar 35 s, sentence completion 40 s, and audio 30 s plus 8 s per expected replay. A zero time budget is flexible time.
+Due work that exceeds the active-practice time budget remains due and is skipped as over budget; due work beyond the initial
+micro-deck remains available for a later batch. Listening obligations are never replaced by written questions when
+listening is off or suitable audio is unavailable.
+
+Remediation is not an automatic weak-point queue. It is a separate optional flow: an eligible unresolved failure can be
+studied, then explicitly selected for reassessment after a 10-minute delay. Persistent failure also requires repair study
+and an independent delayed reassessment. Saved-deck repeats and selected vocabulary are separate explicit practice; they
+remain bounded by the configured question maximum and workload cap. A bounded-remediation interleave is available to
+controlled policy evaluation, but production planning defaults to strict due order and does not silently insert remediation.
 
 A session too short for the due items **never drops them silently**: they stay due (nothing is written) and the plan lists
 them in `skipped` as "over budget". Learner controls (`applyControls`) snooze, suspend, dismiss or resume by producing
